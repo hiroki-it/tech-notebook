@@ -23,7 +23,7 @@ OpenTelemetry Collectorは、Receiver、Processor、Exporter、といったコ�
 
 otelクライアントパッケージからのテレメトリーデータを、Receiverで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。
 
-テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetry Collectorを使用した方が良い。
+テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetry Collectorを使用したほうが良い。
 
 もし、サービスメッシュツール (例：Istio、Linkerdなど) のサイドカーモデルとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがプロキシ (例：OpenTelemetry Collector) にテレメトリーデータを送信する責務を持つ。
 
@@ -72,7 +72,7 @@ OpenTelemetryクライアントのProcessorと同じである。
 
 OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaegerなど) のテレメトリーを監視バックエンドに送信する。
 
-また、OpenTelemetryのスキーマ (`semconv`パッケージ) を経由して、スパンのデータ構造を変換する。
+また、OpenTelemetryのスキーマ (`semconv` パッケージ) を経由して、スパンのデータ構造を変換する。
 
 OpenTelemetryクライアントのExporterと同じである。
 
@@ -90,7 +90,7 @@ OpenTelemetry Collectorの持つ任意のメトリクス (例：別に収集し�
 
 AWS CloudWatch Metricsは、埋め込みメトリクスフォーマットに変換されたログに基づいて、カスタムメトリクスの元になるデータポイントを作成する。
 
-例えば、AWS CloudWatchがデフォルトで対応していないメトリクス (例：Prometheus) を一度ログに変換した上で、カスタムメトリクスとして表示し直すことができる。
+例えば、AWS CloudWatchがデフォルトで対応していないメトリクス (例：Prometheus) を一度ログに変換したうえで、カスタムメトリクスとして表示し直すことができる。
 
 > - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter
 > - https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-amazon-eks-with-aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/
@@ -203,7 +203,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 
 #### ▼ ゲートウェイパターンとは
 
-テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) は`L7`ロードバランサーを経由してテレメトリーを収集する。
+テレメトリーの送信元では、ゲートウェイ (OpenTelemetry Collector) は `L7` ロードバランサーを経由してテレメトリーを収集する。
 
 さらに、ゲートウェイはテレメトリーを監視バックエンドに送信する。
 
@@ -211,7 +211,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 
 #### ▼ ゲートウェイパターンの実装例
 
-`L7`ロードバランサーはIngress Controllerやistio-proxy、ゲートウェイはDeploymentなどで実装できる。
+`L7` ロードバランサーはIngress Controllerやistio-proxy、ゲートウェイはDeploymentなどで実装できる。
 
 #### ▼ ゲートウェイパターンのデメリット
 

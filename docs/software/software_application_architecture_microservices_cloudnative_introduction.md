@@ -39,7 +39,7 @@
 
 ![architecture_map.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/a19bfc23-74da-4347-b34d-3fe523fbe866.png)
 
-アーキテクチャスタイルは、ソフトウェアアーキテクチャを取り巻く技術的なトピックの一つです。
+アーキテクチャスタイルは、ソフトウェアアーキテクチャを取り巻く技術的なトピックの1つです。
 
 アーキテクチャパターンとも呼びます。
 

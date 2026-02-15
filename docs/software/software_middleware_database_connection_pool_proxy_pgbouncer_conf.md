@@ -15,7 +15,7 @@ description: 設定ファイル＠PgBouncerの知見を記録しています。
 
 ## 01. 設定ファイル
 
-### `pgbouncer.ini`ファイル
+### `pgbouncer.ini` ファイル
 
 PgBouncerの設定ファイルである。
 
@@ -127,7 +127,7 @@ foo_db = host=127.0.0.1 port=5432 dbname=foo_db
 
 デフォルトでは、くえりが完了するまでの待機し続けてしまう。
 
-`query_wait_timeout`を設定すれば、タイムアウト時間を超えてもDBから返信が無い場合、接続を切断するようになる。
+`query_wait_timeout` を設定すれば、タイムアウト時間を超えてもDBから返信が無い場合、接続を切断するようになる。
 
 ```ini
 [databases]

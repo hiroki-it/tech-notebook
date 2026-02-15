@@ -70,7 +70,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ マウントの仕組み
 
-ホスト側の`$MINIKUBE_HOME/files`ディレクトリ配下に保管したファイルは、ゲスト仮想環境内のNodeのルート直下にマウントされる。
+ホスト側の `$MINIKUBE_HOME/files` ディレクトリ配下に保管したファイルは、ゲスト仮想環境内のNodeのルート直下にマウントされる。
 
 ```bash
 $ mkdir -p ~/.minikube/files/etc
@@ -105,7 +105,7 @@ $ minikube start
 
 #### ▼ マウントの仕組み
 
-Minikubeには、HostPath CSIドライバー (`storage-provisioner`アドオン) とStorageClassがデフォルトで存在している。
+Minikubeには、HostPath CSIドライバー (`storage-provisioner` アドオン) とStorageClassがデフォルトで存在している。
 
 そのため、PersistentVolumeClaimを作成すれば、ゲスト仮想環境内のNodeにPersistentVolumeが自動的に作成される。
 
@@ -156,7 +156,7 @@ spec:
 
 #### ▼ マウントの仕組み
 
-Minikubeでは、`mount`コマンド、ホスト側の`$MINIKUBE_HOME/files`ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のNodeのディレクトリにマウントできる。
+Minikubeでは、`mount` コマンド、ホスト側の `$MINIKUBE_HOME/files` ディレクトリ、ドライバーを使用して、ホスト側のディレクトリをゲスト仮想環境内のNodeのディレクトリにマウントできる。
 
 またNodeでは、決められたディレクトリからPersistentVolumeを自動的に作成する。
 
@@ -172,7 +172,7 @@ Minikubeでは、`mount`コマンド、ホスト側の`$MINIKUBE_HOME/files`デ�
 
 `(1)`
 
-: HyperKitドライバーを使用する場合、ホストとNode間のマウント機能がない。そこで`mount`コマンドを使用して、ホスト側のディレクトリをNodeのボリュームにマウントする。
+: HyperKitドライバーを使用する場合、ホストとNode間のマウント機能がない。そこで `mount` コマンドを使用して、ホスト側のディレクトリをNodeのボリュームにマウントする。
 
 ```bash
 $ minikube start \
@@ -224,7 +224,7 @@ spec:
 
 #### ▼ Nodeの場合
 
-Node内で`ip addr`コマンドを実行することにより、Nodeに割り当てられたCIDRブロックを確認できる。
+Node内で `ip addr` コマンドを実行することにより、Nodeに割り当てられたCIDRブロックを確認できる。
 
 > - https://nishipy.com/archives/1467
 
@@ -232,7 +232,7 @@ Node内で`ip addr`コマンドを実行することにより、Nodeに割り当
 
 CNIとしてBridgeアドオンを使用している。
 
-CIDRブロックは、`192.168.49.2/24`である。
+CIDRブロックは、`192.168.49.2/24` である。
 
 ```bash
 $ minikube ssh
@@ -246,13 +246,13 @@ docker@minikube:~$ ip addr | grep eth0
 
 #### ▼ Pod
 
-Node内で`/etc/cni/net.d`ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
+Node内で `/etc/cni/net.d` ディレクトリ配下にあるファイルを確認すると、Podに割り当てられたCIDRブロックを確認できる。
 
 **＊例＊**
 
 CNIとしてBridgeアドオンを使用している。
 
-CIDRブロックは、`10.85.0.0/16`である。
+CIDRブロックは、`10.85.0.0/16` である。
 
 ```bash
 $ minikube ssh
@@ -292,7 +292,7 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 
 ### Minikube外のdockerネットワーク宛にリクエスト
 
-Minikubeは、dockerドライバーを使用した場合、デフォルトで`minikube`というdockerネットワークが作成する。
+Minikubeは、dockerドライバーを使用した場合、デフォルトで `minikube` というdockerネットワークが作成する。
 
 プロファイル名を指定した場合、その名前のネットワークになる。
 
@@ -309,7 +309,7 @@ b1bdec6c4578   minikube             bridge    local
 
 ```
 
-`minikube`という既存のdockerネットワークを使用すると、Minikubeに接続できる。
+`minikube` という既存のdockerネットワークを使用すると、Minikubeに接続できる。
 
 ```yaml
 services:
@@ -341,7 +341,7 @@ $ kubectl exec -it <Pod名> -- bash
 $ curl host.minikube.internal
 ```
 
-DNS名は、Minikube内の`/etc/hosts`ファイルに定義されている。
+DNS名は、Minikube内の `/etc/hosts` ファイルに定義されている。
 
 ```bash
 $ minikube ssh
@@ -358,7 +358,7 @@ ff02::2 ip6-allrouters
 192.168.58.2    control-plane.minikube
 ```
 
-(フロントエンドのPodがKeycloakのPodとの間で認証処理を実施する時は、実際には`localhost`でリクエストを送信する必要があり、なぜかよくわからない...)
+(フロントエンドのPodがKeycloakのPodとの間で認証処理を実施するときは、実際には `localhost` でリクエストを送信する必要があり、なぜかよくわからない...)
 
 > - https://minikube.sigs.k8s.io/docs/handbook/host-access/
 
@@ -378,11 +378,11 @@ Minikubeは、クラウドプロバイダーとは状況が異なり、Minikube�
 
 ### NodePort Serviceの場合
 
-#### ▼ `minikube service`コマンドによる接続
+#### ▼ `minikube service` コマンドによる接続
 
-NodePort Serviceの場合、`minikube service`コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。
+NodePort Serviceの場合、`minikube service` コマンドを使用して、Minikube仮想サーバー内のNodeに接続できる。
 
-`http://127.0.0.1:<自動的に発行されたトンネルポート番号>`の形式でURLが発行されるため、ブラウザや`curl`コマンドで接続を確認できる。
+`http://127.0.0.1:<自動的に発行されたトンネルポート番号>` の形式でURLが発行されるため、ブラウザや `curl` コマンドで接続を確認できる。
 
 NodePort Serviceで指定した宛先ポート番号の数だけ、これに紐づくトンネルポート番号を発行する。
 
@@ -397,7 +397,7 @@ http://127.0.0.1:<自動的に発行されたトンネルポート番号3>
 $ curl http://127.0.0.1:<自動的に発行されたトンネルポート番号>
 ```
 
-`ps`コマンドを使用して、NodePort Serviceのいずれの宛先ポート番号がトンネルポート番号に紐づいているかを確認できる。
+`ps` コマンドを使用して、NodePort Serviceのいずれの宛先ポート番号がトンネルポート番号に紐づいているかを確認できる。
 
 ```bash
 $ ps -ef | grep docker@127.0.0.1
@@ -416,7 +416,7 @@ $ minikube service istio-ingressgateway --url -n istio-ingress
 
 > - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
 
-#### ▼ `kubectl port-forward`コマンドによる接続
+#### ▼ `kubectl port-forward` コマンドによる接続
 
 Ingressを介さずに、Podに直接的に接続する。
 
@@ -432,9 +432,9 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポー
 
 ### LoadBalancer Serviceの場合
 
-#### ▼ `minikube tunnel`コマンドによる接続
+#### ▼ `minikube tunnel` コマンドによる接続
 
-LoadBalancer Serviceの場合、`minikube tunnel`コマンドでLoadBalancer Serviceに`EXTERNAL-IP`が割り当てられるIPアドレスから、Minikube仮想サーバー内のNodeに接続できる。
+LoadBalancer Serviceの場合、`minikube tunnel` コマンドでLoadBalancer Serviceに `EXTERNAL-IP` が割り当てられるIPアドレスから、Minikube仮想サーバー内のNodeに接続できる。
 
 ```bash
 $ minikube tunnel
@@ -466,7 +466,7 @@ Nginx Ingress Controllerを含むIngress Controllerは、Hostヘッダーにド�
 $ minikube addons enable ingress-dns
 ```
 
-また、`/etc/resolver/minikube-test `ファイルを以下の通りに編集する。
+また、`/etc/resolver/minikube-test ` ファイルを以下の通りに編集する。
 
 ```bash
 $ vim /etc/resolver/minikube-test
@@ -477,7 +477,7 @@ search_order 1
 timeout 5
 ```
 
-あとは、`minikube`というドメインで、Minikube仮想サーバー内のNodeに接続できる。
+あとは、`minikube` というドメインで、Minikube仮想サーバー内のNodeに接続できる。
 
 ```bash
 $ curl http://foo.minikube
@@ -486,7 +486,7 @@ $ curl http://foo.minikube
 > - https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/
 
-#### ▼ `kubectl port-forward`コマンドによる接続
+#### ▼ `kubectl port-forward` コマンドによる接続
 
 Ingressを介さずに、Podに直接的に接続する。
 

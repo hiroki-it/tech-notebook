@@ -35,7 +35,7 @@ PersistentVolumeにAWS EBSを紐付け、PodがAWS EBSをPersistentVolumeとし�
 
 Terraformを使用する。
 
-Terraformの`aws_eks_addon`でEKSアドオンをインストールし、AWS EBS CSIドライバーに関するKubernetesリソースを作成する。
+Terraformの `aws_eks_addon` でEKSアドオンをインストールし、AWS EBS CSIドライバーに関するKubernetesリソースを作成する。
 
 ```terraform
 # AWS EKSアドオンをインストールする。
@@ -116,7 +116,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 
 別途、AWS EBS CSIドライバーのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。
 
-ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。
+ServiceAccountは、Terraformではなくマニフェストで定義したほうが良い。
 
 ```yaml
 apiVersion: v1
@@ -220,7 +220,7 @@ PersistentVolumeClaimでVolumeを要求する。
 
 PersistentVolumeClaimでVolumeを要求すると、AWS EBS CSIドライバーは、PersistentVolumeとそれに紐づくAWS EBSを自動的に作成する。
 
-Podの`.spec.nodeSelector`キーも不要である。
+Podの `.spec.nodeSelector` キーも不要である。
 
 **＊実装例＊**
 
@@ -288,7 +288,7 @@ AWS EBSは、AWS EBS CSIドライバーが自動で作成するため、作成�
 
 要求するAWS EBSのタイプをStorageClassで指定する。
 
-`reclaimPolicy`が`Delete`になっているPersistentVolumeClaimを削除すれば、StorageClassがEBSもよしなに削除してくれる。
+`reclaimPolicy` が `Delete` になっているPersistentVolumeClaimを削除すれば、StorageClassがEBSもよしなに削除してくれる。
 
 **＊実装例＊**
 
@@ -338,7 +338,7 @@ PersistentVolumeClaimでStorageClassを指定し、外部サービスが提供�
 
 StorageClassが指定されたPersistentVolumeClaimでVolumeを要求すると、AWS EBS CSIドライバーは、PersistentVolumeとそれに紐づくAWS EBSを自動的に作成する。
 
-Podの`.spec.nodeSelector`キーも不要である。
+Podの `.spec.nodeSelector` キーも不要である。
 
 **＊実装例＊**
 

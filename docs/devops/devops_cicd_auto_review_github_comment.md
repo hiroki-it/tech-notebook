@@ -33,7 +33,7 @@ $ tar zxvf github-comment_<バージョン>_linux_amd64.tar.gz
 
 ### -k
 
-`github-comment.yaml`ファイルのテンプレート名を指定して、レビューコメントを作成する。
+`github-comment.yaml` ファイルのテンプレート名を指定して、レビューコメントを作成する。
 
 ```bash
 $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
@@ -47,7 +47,7 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 
 #### ▼ -varとは
 
-レビューコメントのテンプレートの`{{ .Vars.<変数> }}`に出力できる変数を定義する。
+レビューコメントのテンプレートの `{{ .Vars.<変数> }}` に出力できる変数を定義する。
 
 実行コマンドごとに異なる文字列を使用したい場合に役立つ。
 
@@ -177,9 +177,9 @@ $ ./github-comment hide -k <テンプレート名>
 
 <br>
 
-## 05. `github-comment.yaml`ファイル
+## 05. `github-comment.yaml` ファイル
 
-### `github-comment.yaml`ファイルとは
+### `github-comment.yaml` ファイルとは
 
 GitHubに送信するレビューコメントのテンプレートを設定する。
 
@@ -206,7 +206,7 @@ GitHubに送信するレビューコメントのテンプレートを設定す�
 
 #### ▼ execとは
 
-`github-comment exec`コマンドの結果に使用するテンプレート
+`github-comment exec` コマンドの結果に使用するテンプレート
 
 #### ▼ テンプレート名
 
@@ -302,13 +302,13 @@ exec:
 
 #### ▼ 必要なコマンド
 
-`default`のテンプレートを使用する場合、`-k`オプションは不要である。
+`default` のテンプレートを使用する場合、`-k` オプションは不要である。
 
 ```bash
 $ ./github-comment exec -- <好きなコマンド>
 ```
 
-`default`以外のテンプレートを使用する場合、`-k`オプションが必要である。
+`default` 以外のテンプレートを使用する場合、`-k` オプションが必要である。
 
 ```bash
 $ ./github-comment exec -k test -- <好きなコマンド>
@@ -356,7 +356,7 @@ hide:
 
 | 記法                        | 説明                                               | 中身                                                            |
 | --------------------------- | -------------------------------------------------- | --------------------------------------------------------------- |
-| `{{ template "status" . }}` | 終了ステータスコードが`0`なら ✅ 、それ以外なら ❌ | `:{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:` |
+| `{{ template "status" . }}` | 終了ステータスコードが `0` なら ✅ 、それ以外なら ❌ | `:{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:` |
 | `{{ template "link" . }}`   | Jobへのリンク                                      | CIツールによって異なる。                                        |
 
 > - https://suzuki-shunsuke.github.io/github-comment/builtin-template
@@ -408,7 +408,7 @@ exec:
 
 **＊実装例＊**
 
-テンプレートが1つの場合は、`when`キーを`true`とする
+テンプレートが1つの場合は、`when` キーを `true` とする
 
 ````yaml
 ---
@@ -443,7 +443,7 @@ exec:
 
 **※実装例※**
 
-終了コードを条件とする場合、`ExitCode`を使用する。
+終了コードを条件とする場合、`ExitCode` を使用する。
 
 ````yaml
 ---

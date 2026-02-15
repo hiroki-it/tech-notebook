@@ -17,7 +17,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 ### helm-dashboardとは
 
-`helm`コマンドで確認できる情報 (例：インストールされているHelmチャート、リビジョン履歴など) をダッシュボードで表示する。
+`helm` コマンドで確認できる情報 (例：インストールされているHelmチャート、リビジョン履歴など) をダッシュボードで表示する。
 
 > - https://github.com/komodorio/helm-dashboard
 
@@ -47,7 +47,7 @@ $ helm dashboard
 
 ### helm-diffとは
 
-3方向の戦略的マージパッチを使用して、『`helm get`コマンドによる最新のリリースによるマニフェスト』『`helm template`コマンドによる現在のチャートによるマニフェスト』『前回リリース後のHelm以外の方法によるマニフェスト』を比較する。
+3方向の戦略的マージパッチを使用して、『`helm get` コマンドによる最新のリリースによるマニフェスト』『`helm template` コマンドによる現在のチャートによるマニフェスト』『前回リリース後のHelm以外の方法によるマニフェスト』を比較する。
 
 ```bash
 $ helm diff
@@ -79,7 +79,7 @@ AWS S3をチャートリポジトリとして使用するために、チャー�
 
 ### helm-secretsとは
 
-暗号化ツールを使用して、`values`ファイルを復号し、Secretのデータとして注入する。
+暗号化ツールを使用して、`values` ファイルを復号し、Secretのデータとして注入する。
 
 また反対に、Secretのデータを復号する。
 
@@ -113,13 +113,13 @@ Secretの元となるデータを管理するバックエンドとして、以�
 
 ### 注意点
 
-#### ▼ `secrets`ファイルの名前の制限
+#### ▼ `secrets` ファイルの名前の制限
 
 helm-secretsには、zendesk製 (2022/11/29時点でメンテナンスされていない) と、zendesk製からフォークされたjkroepke製がある。
 
-zendesk製を使用している場合、SOPSの`secrets`ファイルの名前を『`secrets.yaml`』『`secrets.<任意の名前>.yaml`』とする必要がある。
+zendesk製を使用している場合、SOPSの `secrets` ファイルの名前を『`secrets.yaml`』『`secrets.<任意の名前>.yaml`』とする必要がある。
 
-一方でjkeroepke製では、執筆時点 (2022/11/29) で、`secrets`ファイルの名前が任意である。
+一方でjkeroepke製では、執筆時点 (2022/11/29) で、`secrets` ファイルの名前が任意である。
 
 > - https://github.com/zendesk/helm-secrets#usage-and-examples
 > - https://github.com/jkroepke/helm-secrets/wiki/Usage
@@ -130,7 +130,7 @@ zendesk製を使用している場合、SOPSの`secrets`ファイルの名前を
 
 #### ▼ `secrets://`
 
-SOPSの`secrets`ファイルを指定する時に`secrets://`を使用すると、サブコマンドの`secrets`が不要になる。
+SOPSの `secrets` ファイルを指定するときに `secrets://` を使用すると、サブコマンドの `secrets` が不要になる。
 
 ```bash
 $ helm template . -f secrets://foo-secrets.yaml
@@ -140,11 +140,11 @@ $ helm template . -f secrets://foo-secrets.yaml
 
 #### ▼ -f
 
-暗号化された`values`ファイル (`secrets`ファイル) と、平文の`values`ファイルを使用して、`helm`コマンドを実行する。
+暗号化された `values` ファイル (`secrets` ファイル) と、平文の `values` ファイルを使用して、`helm` コマンドを実行する。
 
-これにより、暗号化された値を`helm`コマンドの実行時のみ復号し、マニフェストに出力できる。
+これにより、暗号化された値を `helm` コマンドの実行時のみ復号し、マニフェストに出力できる。
 
-補足としてこの時、`values`ファイル側には`secrets`ファイルの値を設定しておく必要はない。
+補足としてこの時、`values` ファイル側には `secrets` ファイルの値を設定しておく必要はない。
 
 ```bash
 $ helm secrets template <チャートへのパス> -f <SOPSが作成したsecretsファイルへのパス> -f foo-values.yaml
@@ -152,7 +152,7 @@ $ helm secrets template <チャートへのパス> -f <SOPSが作成したsecret
 
 **＊例＊**
 
-以下のようなSOPSの`secrets`ファイルがあるとする。
+以下のようなSOPSの `secrets` ファイルがあるとする。
 
 ```yaml
 # secretsファイル
@@ -183,9 +183,9 @@ data:
   foo: {{.Values.foo | b64enc}}
 ```
 
-この時、`helm secrets`コマンドで`secrets`ファイルを指定すると、復号した上で`.Values`に出力してくれる。
+この時、`helm secrets` コマンドで `secrets` ファイルを指定すると、復号したうえで `.Values` に出力してくれる。
 
-ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPSのバージョン (`sops`キーの値) に合わせた方が良い。
+ArgoCDが使用するSOPSのバージョンは、暗号化時に使用したSOPSのバージョン (`sops` キーの値) に合わせたほうが良い。
 
 結果的に、base64方式でエンコードされ、マニフェストを作成する。
 
@@ -209,7 +209,7 @@ data:
 
 #### ▼ decrypt
 
-指定した`values`ファイルを復号し、`.yaml.dec`ファイルに出力する。
+指定した `values` ファイルを復号し、`.yaml.dec` ファイルに出力する。
 
 ```bash
 $ helm secrets decrypt <暗号化されたvaluesファイル>
@@ -228,7 +228,7 @@ db:
 
 #### ▼ encrypt
 
-指定した`values`ファイルを暗号化し、元の`values`ファイルを上書きする。
+指定した `values` ファイルを暗号化し、元の `values` ファイルを上書きする。
 
 ```bash
 $ helm secrets encrypt <平文のvaluesファイル>

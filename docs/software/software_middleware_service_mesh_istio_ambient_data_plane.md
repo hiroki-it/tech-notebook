@@ -23,11 +23,11 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 Node外からのインバウンド通信、またNode外へのアウトバウンド通信は、ztunnel Podを経由して、一度waypoint-proxy Podにリダイレクトされる。
 
-サイドカーモードを将来的に廃止するということはなく、好きな方を選べるようにするらしい。
+サイドカーモードを将来的に廃止するということはなく、好きなほうを選べるようにするらしい。
 
 ztunnel Podを経由した段階でHTTPSプロトコルになる。
 
-ハードウェアリソースの消費量の少ない`L4`プロトコルと、消費量の多い`L7`プロトコルのプロコトルの処理の責務が分離されているため、サイドカーモードと比較して、`L4`プロトコルのみを処理する場合、Nodeのハードウェアリソース消費量を節約できる。
+ハードウェアリソースの消費量の少ない `L4` プロトコルと、消費量の多い `L7` プロトコルのプロコトルの処理の責務が分離されているため、サイドカーモードと比較して、`L4` プロトコルのみを処理する場合、Nodeのハードウェアリソース消費量を節約できる。
 
 サービスメッシュ内へのリクエストの経路は以下の通りである。
 
@@ -103,15 +103,15 @@ ztunnel Pod (L4) # DaemonSet配下なので、Nodeごとにいる
 
 実体は、DaemonSetとして稼働する。
 
-`kube-system`のNamespaceにおき、PriorityClassを`system-node-critical`とすることが推奨である。
+`kube-system` のNamespaceにおき、PriorityClassを `system-node-critical` とすることが推奨である。
 
-istio-cniは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でztunnelから接続される。
+istio-cniは、`/var/run/ztunnel/ztunnel.sock` ファイル経由でztunnelから接続される。
 
 そのため、istio-cniはztunnelと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。
 
 #### ▼ 仕組み
 
-以下を設定し、`L4`インバウンド通信とアウトバウンド通信をztunnel Podへリダイレクトできるようにする。
+以下を設定し、`L4` インバウンド通信とアウトバウンド通信をztunnel Podへリダイレクトできるようにする。
 
 - Nodeのiptables
 - ztunnel Podのiptables
@@ -140,11 +140,11 @@ Google Cloud Meshでは、istio-cniのロジックがGKEに統合されており
 
 #### ▼ ztunnelとは
 
-サービスメッシュ内の`L4`トラフィックを管理する。
+サービスメッシュ内の `L4` トラフィックを管理する。
 
 実体はDaemonSet配下のPodであり、Nodeごとにスケジューリングされている。
 
-ztunnel Podは、`/var/run/ztunnel/ztunnel.sock`ファイル経由でistio-cniに接続する。
+ztunnel Podは、`/var/run/ztunnel/ztunnel.sock` ファイル経由でistio-cniに接続する。
 
 そのため、ztunnel Podはistio-cniと同じNode上に作成する必要がある (Namespaceは違っていても良い) 。
 
@@ -160,15 +160,15 @@ ztunnelへのリダイレクトの仕組みは一度リプレイスされてい�
 
 アウトバウンド通信の仕組みは以下の通りである。
 
-1. Pod内マイクロサービスが`L4`アウトバウンド通信を送信する。
+1. Pod内マイクロサービスが `L4` アウトバウンド通信を送信する。
 2. Pod内iptablesが通信をztunnel Podにリダイレクトする。
 3. ztunnel Podは通信を宛先に送信する。
 
 一方で、インバウンド通信の仕組みは以下の通りである。
 
-1. Podが`L4`インバウンド通信を受信する。
+1. Podが `L4` インバウンド通信を受信する。
 2. Pod内iptablesが通信をztunnel Podにリダイレクトする。
-3. Pod内マイクロサービスが`L4`アウトバウンド通信を受信する。
+3. Pod内マイクロサービスが `L4` アウトバウンド通信を受信する。
 
 ![istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail.png)
 
@@ -192,7 +192,7 @@ ztunnelへのリダイレクトの仕組みは一度リプレイスされてい�
 
 #### ▼ waypoint-proxyとは
 
-サービスメッシュ内の`L7`トラフィックを管理する。
+サービスメッシュ内の `L7` トラフィックを管理する。
 
 実体は、Gateway-APIで作成されたistio-proxyを含むPodである。
 
@@ -449,7 +449,7 @@ spec:
 
 #### ▼ 仕組み
 
-Namespace外からの`L7`インバウンド通信をHBORNを経由して受信し、Namespace内の宛先Podに送信する。
+Namespace外からの `L7` インバウンド通信をHBORNを経由して受信し、Namespace内の宛先Podに送信する。
 
 waypoint-proxyは、サービス検出により宛先情報を取得し、また証明書を管理する。
 

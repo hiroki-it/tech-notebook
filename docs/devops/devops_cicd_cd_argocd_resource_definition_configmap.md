@@ -17,7 +17,7 @@ description: ConfigMap系＠リソース定義の知見を記録しています�
 
 ArgoCDの各コンポーネントの機密でない変数やファイルを管理する。
 
-ConfigMapでは、`.metadata.labels`キー配下に、必ず`app.kubernetes.io/part-of: argocd`キーを割り当てる必要がある。
+ConfigMapでは、`.metadata.labels` キー配下に、必ず `app.kubernetes.io/part-of: argocd` キーを割り当てる必要がある。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
 
@@ -43,7 +43,7 @@ ArgoCDのExec機能を設定する。
 
 Exec機能を有効化する。
 
-`kubectl exec`コマンドのようにして、ArgoCDのダッシュボード上からコンテナにログインできる。
+`kubectl exec` コマンドのようにして、ArgoCDのダッシュボード上からコンテナにログインできる。
 
 ```yaml
 apiVersion: v1
@@ -57,7 +57,7 @@ data:
   exec.enabled: "true"
 ```
 
-argocd-serverに紐づけるClusterRoleでは、Podの`exec`リソースと`create`アクションを許可する必要がある。
+argocd-serverに紐づけるClusterRoleでは、Podの `exec` リソースと `create` アクションを許可する必要がある。
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -107,9 +107,9 @@ data:
 
 Kubernetesリソースや子Applicationが親Applicationを識別するためのラベルのキー名を設定する。
 
-デフォルトは`app.kubernetes.io/instance`キーであり、コンフリクトしやすいキー名なため、変更した方が良い。
+デフォルトは `app.kubernetes.io/instance` キーであり、コンフリクトしやすいキー名なため、変更したほうが良い。
 
-ラベルのキー名は`1`個しか設定できない。
+ラベルのキー名は `1` 個しか設定できない。
 
 ```yaml
 apiVersion: v1
@@ -127,11 +127,11 @@ data:
 
 #### ▼ ラベル挿入のタイミング
 
-`argocd.argoproj.io/instance`ラベルの挿入は、application-controllerが実行する。
+`argocd.argoproj.io/instance` ラベルの挿入は、application-controllerが実行する。
 
 そのため挿入のタイミングは、マニフェスト作成のタイミングではなく、Syncの直前である。
 
-ConfigMapやSecretのファイル変更に合わせてチェックサム値を更新するようなロジックがチャートあったとしても、repo-serverがマニフェスト作成時に`argocd.argoproj.io/instance`ラベルを挿入するわけではないので、チェックサム値は変更にならない。
+ConfigMapやSecretのファイル変更に合わせてチェックサム値を更新するようなロジックがチャートあったとしても、repo-serverがマニフェスト作成時に `argocd.argoproj.io/instance` ラベルを挿入するわけではないので、チェックサム値は変更にならない。
 
 なお、CRDには挿入しない仕様になっている。
 
@@ -139,13 +139,13 @@ ConfigMapやSecretのファイル変更に合わせてチェックサム値を�
 
 #### ▼ RootのApplication名の重複
 
-単一のKubernetes ClusterでNamespacedスコープのArgoCDを構築している時、RootのApplicationを`default`というAppProjectに配置すると、この問題が起こる可能性がある。
+単一のKubernetes ClusterでNamespacedスコープのArgoCDを構築しているとき、RootのApplicationを `default` というAppProjectに配置すると、この問題が起こる可能性がある。
 
-`default`のAppProjectに所属したApplicationは、Namespacedスコープのapplication-controllerであって、他のNamespaceも見てしまうようである。
+`default` のAppProjectに所属したApplicationは、Namespacedスコープのapplication-controllerであって、他のNamespaceも見てしまうようである。
 
 RootのApplication名が重複している場合、たとえNamespaceが異なっていても、Namespace間でRootのApplicationを共有してしまう。
 
-ちなみに、ClusterスコープのArgoCDに限り、`.spec.sourceNamespaces`キーを使用して、この重複を許可できる。
+ちなみに、ClusterスコープのArgoCDに限り、`.spec.sourceNamespaces` キーを使用して、この重複を許可できる。
 
 > - https://github.com/argoproj/argo-cd/issues/9420
 > - https://github.com/argoproj/argo-cd/issues/2352
@@ -159,7 +159,7 @@ RootのApplication名が重複している場合、たとえNamespaceが異な�
 
 トラッキングIDを有効化する。
 
-- `label` (`argocd.argoproj.io/instance`ラベルを指す)
+- `label` (`argocd.argoproj.io/instance` ラベルを指す)
 - `annotation+label`
 - `annotation`
 
@@ -186,7 +186,7 @@ data:
 
 グローバルスコープを持つ親AppProjectと、これの設定値を継承させる子AppProjectを指定する。
 
-`labelSelector`キーで、子Projectの条件を設定する。
+`labelSelector` キーで、子Projectの条件を設定する。
 
 ```yaml
 apiVersion: v1
@@ -226,7 +226,7 @@ spec: ...
 
 Kustomizeの実行時に、コマンドに渡すオプションを設定する。
 
-特に、Kustomizeのプラグイン (例：KSOPSなど) を使用する場合、`--enable-alpha-plugins`オプションと`--enable-exec`オプションを有効化する必要がある。
+特に、Kustomizeのプラグイン (例：KSOPSなど) を使用する場合、`--enable-alpha-plugins` オプションと `--enable-exec` オプションを有効化する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -240,7 +240,7 @@ data:
   kustomize.buildOptions: --enable-alpha-plugins --enable-exec
 ```
 
-なお、`kustomize.path.<バージョン>`オプションを使用している場合、`kustomize.buildOptions.<バージョン>`オプションの使用が必須であり、バージョンごとにオプションを設定できる。
+なお、`kustomize.path.<バージョン>` オプションを使用している場合、`kustomize.buildOptions.<バージョン>` オプションの使用が必須であり、バージョンごとにオプションを設定できる。
 
 ```yaml
 apiVersion: v1
@@ -265,7 +265,7 @@ data:
 
 デフォルトのKustomizeのバージョン以外のものも使用したい場合、そののバージョンと、バイナリファイルの置き場所を設定する。
 
-ArgoCDで一つのバージョンのKustomizeしか使用しない場合、`kustomize.path.<バージョン>`で`/usr/local/bin/kustomize`を指定する。
+ArgoCDで1つのバージョンのKustomizeしか使用しない場合、`kustomize.path.<バージョン>` で `/usr/local/bin/kustomize` を指定する。
 
 ```yaml
 apiVersion: v1
@@ -296,7 +296,7 @@ data:
 
 #### ▼ 各ApplicationでKustomizeを使用する
 
-Applicationの`.spec.kustomize.version`キーで、使用するKustomizeのバージョンを指定する。
+Applicationの `.spec.kustomize.version` キーで、使用するKustomizeのバージョンを指定する。
 
 各Applicationで異なるバージョンのKustomizeを指定できる。
 
@@ -366,7 +366,7 @@ data:
 
 ArgoCDから認証フェーズの委譲先のIDプロバイダーに直接的に接続するのではなく、ハブとしてのDexを使用する。
 
-Dexは`dex-server`コンテナとして稼働させる。
+Dexは `dex-server` コンテナとして稼働させる。
 
 ```yaml
 apiVersion: v1
@@ -414,7 +414,7 @@ ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止�
 
 #### ▼ resource.customizations.ignoreDifferences.allとは
 
-ArgoCD全体で`.spec.ignoreDifferences`キーと同じ機能を有効化する。
+ArgoCD全体で `.spec.ignoreDifferences` キーと同じ機能を有効化する。
 
 ```yaml
 apiVersion: v1
@@ -572,7 +572,7 @@ ArgoCDを構成するKubernetesリソースにリクエストを送信するた�
 
 Casbinの記法を使用して、ロールと認可スコープを定義しつつ、これをグループ名に紐付ける。
 
-`readonly`と`admin`というロールは、デフォルトで定義済みである。
+`readonly` と `admin` というロールは、デフォルトで定義済みである。
 
 | 記号                 | 項目                                                                                                                | 説明                                                                                          |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -595,14 +595,14 @@ AppProjectに所属するArgoCD系リソースのみへのアクセスを許可�
 
 **＊実装例＊**
 
-管理チーム (`app`、`infra`) 単位でAppProjectを作成した上で、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
+管理チーム (`app`、`infra`) 単位でAppProjectを作成したうえで、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
 
 これにより、その管理チームに所属するエンジニアしかSyncできなくなる。
 
-- `app`ロールに、`app`のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
-- `infra`ロールに、`infra`のみを操作できる認可スコープ
-- `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
-- 認証グループに該当する認可ロールがなければ、`readonly`になる。
+- `app` ロールに、`app` のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
+- `infra` ロールに、`infra` のみを操作できる認可スコープ
+- `maintainer` ロールに、`app` と `infra` の両方を操作できる認可スコープ
+- 認証グループに該当する認可ロールがなければ、`readonly` になる。
 
 ```yaml
 apiVersion: v1
@@ -635,11 +635,11 @@ data:
 
 **＊実装例＊**
 
-実行環境 (`dev`、`prd`) 別にAppProjectを作成した上で、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
+実行環境 (`dev`、`prd`) 別にAppProjectを作成したうえで、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
 
-- `developer`ロールに、開発環境のAppProject内に所属するArgoCD系リソースのみを操作できる認可スコープ
-- `maintainer`ロールに、開発環境と本番環境の両方を操作できる認可スコープ
-- 認証グループに該当する認可ロールがなければ、`readonly`になる。
+- `developer` ロールに、開発環境のAppProject内に所属するArgoCD系リソースのみを操作できる認可スコープ
+- `maintainer` ロールに、開発環境と本番環境の両方を操作できる認可スコープ
+- 認証グループに該当する認可ロールがなければ、`readonly` になる。
 
 ```yaml
 apiVersion: v1
@@ -676,10 +676,10 @@ IDプロバイダー側で、チームによる認証グループがすでに存
 
 以下のように、ロールと認可スコープを紐付ける。
 
-- `app`ロールに、`app`のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
-- `infra`ロールに、`infra`のみを操作できる認可スコープ
-- `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
-- 認証グループに該当する認可ロールがなければ、`readonly`になる。
+- `app` ロールに、`app` のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
+- `infra` ロールに、`infra` のみを操作できる認可スコープ
+- `maintainer` ロールに、`app` と `infra` の両方を操作できる認可スコープ
+- 認証グループに該当する認可ロールがなければ、`readonly` になる。
 
 ```yaml
 apiVersion: v1
@@ -708,14 +708,14 @@ data:
 
 IDプロバイダー側で、チームによる認証グループがすでに存在しているとする。
 
-実行環境 (`dev-*`、`prd-*`) 別にAppProjectを作成した上で、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
+実行環境 (`dev-*`、`prd-*`) 別にAppProjectを作成したうえで、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。
 
 以下のように、ロールと認可スコープを紐付ける。
 
-- `app`ロールに、`dev-app`のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
-- `infra`ロールに、`dev-infra`のみを操作できる認可スコープ
-- `maintainer`ロールに、`dev-app`と`dev-infra`の両方を操作できる認可スコープ
-- 認証グループに該当する認可ロールがなければ、`readonly`になる。
+- `app` ロールに、`dev-app` のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
+- `infra` ロールに、`dev-infra` のみを操作できる認可スコープ
+- `maintainer` ロールに、`dev-app` と `dev-infra` の両方を操作できる認可スコープ
+- 認証グループに該当する認可ロールがなければ、`readonly` になる。
 
 ```yaml
 apiVersion: v1
@@ -750,10 +750,10 @@ IDプロバイダー側で、メールアドレスによる認証グループが
 
 以下のように、ロールと認可スコープを紐付ける。
 
-- `app`ロールに、`app`のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
-- `infra`ロールに、`infra`のみを操作できる認可スコープ
-- `maintainer`ロールに、`app`と`infra`の両方を操作できる認可スコープ
-- 認証グループに該当する認可ロールがなければ、`readonly`になる。
+- `app` ロールに、`app` のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ
+- `infra` ロールに、`infra` のみを操作できる認可スコープ
+- `maintainer` ロールに、`app` と `infra` の両方を操作できる認可スコープ
+- 認証グループに該当する認可ロールがなければ、`readonly` になる。
 
 ```yaml
 apiVersion: v1
@@ -833,7 +833,7 @@ application-controller、argocd-server、はrepo-serverに対してHTTPSリク�
 
 ArgoCDは、ArgoCDの外 (特にリポジトリ) にHTTPSリクエストを送信する。
 
-ArgoCDでは、コンテナイメージの`/etc/ssl`ディレクトリにデフォルトのサーバー証明書が配置されているが、ユーザー定義のサーバー証明書を使用したい場合がある。
+ArgoCDでは、コンテナイメージの `/etc/ssl` ディレクトリにデフォルトのサーバー証明書が配置されているが、ユーザー定義のサーバー証明書を使用したい場合がある。
 
 このConfigMapは、そのためのユーザー定義のサーバー証明書を管理する。
 
@@ -844,9 +844,9 @@ ArgoCDでは、コンテナイメージの`/etc/ssl`ディレクトリにデフ�
 
 ## 06. argocd-ssh-known-hosts-cm
 
-SSH公開鍵認証でリポジトリに接続してポーリングする場合、argocd-serverで必要な`known_hosts`ファイルを設定する。
+SSH公開鍵認証でリポジトリに接続してポーリングする場合、argocd-serverで必要な `known_hosts` ファイルを設定する。
 
-`known_hosts`ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。
+`known_hosts` ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。
 
 ```yaml
 apiVersion: v1

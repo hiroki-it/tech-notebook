@@ -28,7 +28,7 @@ $ yum install -y nodejs
 
 <br>
 
-### `package.json`ファイル
+### `package.json` ファイル
 
 #### ▼ author
 
@@ -63,7 +63,7 @@ $ yum install -y nodejs
 
 NPMに登録されていないパッケージは、『`git+<GitHubリポジトリURL>`』を指定する。
 
-`npm install`コマンドの実行時に`--production`オプションを有効化すると、`dependencies`キーが使用される。
+`npm install` コマンドの実行時に `--production` オプションを有効化すると、`dependencies` キーが使用される。
 
 ```yaml
 {
@@ -90,7 +90,7 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 
 開発環境のみ依存するパッケージ名を設定する。
 
-`npm install`コマンドの実行時に`--production`オプションを有効化しないと、`devDependencies`キーが使用される。
+`npm install` コマンドの実行時に `--production` オプションを有効化しないと、`devDependencies` キーが使用される。
 
 ```yaml
 {
@@ -109,7 +109,7 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 
 パッケージのディレクトリ構造を設定する。
 
-`doc`キーでドキュメントのパス、`lib`でパッケージのパスを指定する。
+`doc` キーでドキュメントのパス、`lib` でパッケージのパスを指定する。
 
 ```yaml
 {"directories": {"doc": "foo/doc", "lib": "foo/lib"}}
@@ -119,7 +119,7 @@ NPMに登録されていないパッケージは、『`git+<GitHubリポジト�
 
 #### ▼ engines
 
-`npm`コマンドのバージョンを設定する。
+`npm` コマンドのバージョンを設定する。
 
 使用するバージョンを強制し、他のバージョンではコマンドの実行で失敗する。
 
@@ -174,7 +174,7 @@ npmパッケージ名を設定する。
 
 #### ▼ scripts
 
-汎用コマンドとエイリアスを設定する。`npm run <エイリアス>`コマンドで実行できる。
+汎用コマンドとエイリアスを設定する。`npm run <エイリアス>` コマンドで実行できる。
 
 ```yaml
 {"scripts": {"foo": "npm install"}}
@@ -194,9 +194,9 @@ npmパッケージ名を設定する。
 
 <br>
 
-### `package.lock`ファイル
+### `package.lock` ファイル
 
-Composerの`composer.lock`ファイルに相当する。
+Composerの `composer.lock` ファイルに相当する。
 
 <br>
 
@@ -204,9 +204,9 @@ Composerの`composer.lock`ファイルに相当する。
 
 ### init
 
-#### ▼ `package.json`ファイルの作成
+#### ▼ `package.json` ファイルの作成
 
-プロジェクトの`package.json`ファイルを作成する。
+プロジェクトの `package.json` ファイルを作成する。
 
 ```bash
 $ npm init
@@ -218,9 +218,9 @@ $ npm init
 
 #### ▼ installとは
 
-アプリケーションにて、`package.lock`ファイルに実装されたパッケージのうちで、インスールされていないものをインストールする。
+アプリケーションにて、`package.lock` ファイルに実装されたパッケージのうちで、インスールされていないものをインストールする。
 
-`package.lock`ファイルのおかげで、リポジトリの利用者が、`npm install`の実行時に、共通のバージョンのパッケージをインストールできる。
+`package.lock` ファイルのおかげで、リポジトリの利用者が、`npm install` の実行時に、共通のバージョンのパッケージをインストールできる。
 
 ```bash
 $ npm install
@@ -244,7 +244,7 @@ $ npm install --force
 
 #### ▼ --global
 
-パッケージをシステムの`node_modules`ディレクトリにインストールする。
+パッケージをシステムの `node_modules` ディレクトリにインストールする。
 
 ```bash
 $ npm install --save
@@ -254,9 +254,9 @@ $ npm install --save
 
 #### ▼ --save
 
-パッケージを各プロジェクトの`node_modules`ディレクトリにインストールし、`dependencies`キーにパッケージ名とバージョンを書き込む。
+パッケージを各プロジェクトの `node_modules` ディレクトリにインストールし、`dependencies` キーにパッケージ名とバージョンを書き込む。
 
-デフォルトで`true`である。
+デフォルトで `true` である。
 
 ```bash
 $ npm install --save
@@ -266,7 +266,7 @@ $ npm install --save
 
 #### ▼ --save--dev
 
-パッケージをインストールし、`devDependencies`キーにパッケージ名とバージョンを書き込む。
+パッケージをインストールし、`devDependencies` キーにパッケージ名とバージョンを書き込む。
 
 ```bash
 $ npm install --save--dev
@@ -278,7 +278,7 @@ $ npm install --save--dev
 
 #### ▼ updateとは
 
-全てのパッケージのバージョンを、`package.json`ファイルの範囲内でアップグレードする。
+全てのパッケージのバージョンを、`package.json` ファイルの範囲内でアップグレードする。
 
 ```bash
 $ npm update
@@ -296,11 +296,11 @@ $ npm update
 $ npm run <エイリアス>
 ```
 
-あらかじめ、任意のエイリアスを`scripts`キー下に定義する。
+あらかじめ、任意のエイリアスを `scripts` キー下に定義する。
 
 エイリアスの中で、実行するコマンドのセットを定義する。
 
-補足として、実行するコマンドの中で、再び`npm run`コマンドも定義できる。
+補足として、実行するコマンドの中で、再び `npm run` コマンドも定義できる。
 
 ```yaml
 {
@@ -352,15 +352,15 @@ $ npm install --global yarn
 
 <br>
 
-### `package.json`ファイル
+### `package.json` ファイル
 
 Npmと同じ。
 
 <br>
 
-### `yarn.lock`ファイル
+### `yarn.lock` ファイル
 
-Composerの`composer.lock`ファイルに相当する。
+Composerの `composer.lock` ファイルに相当する。
 
 <br>
 
@@ -370,13 +370,13 @@ Composerの`composer.lock`ファイルに相当する。
 
 #### ▼ addとは
 
-指定したパッケージのバージョンを、`package.json`ファイルを無視してインストールする。
+指定したパッケージのバージョンを、`package.json` ファイルを無視してインストールする。
 
 ```bash
 $ yarn add <パッケージ名>@<バージョンタグ>
 ```
 
-特定のパッケージのバージョンを検証する場合は、`yarn remove`コマンドと`yarn add`コマンドを使用する。
+特定のパッケージのバージョンを検証する場合は、`yarn remove` コマンドと `yarn add` コマンドを使用する。
 
 ```bash
 $ yarn remove foo && yarn add foo@<バージョンタグ>
@@ -384,7 +384,7 @@ $ yarn remove foo && yarn add foo@<バージョンタグ>
 
 #### ▼ --dev
 
-パッケージをインストールし、`devDependencies`キーにパッケージ名とバージョンを書き込む。
+パッケージをインストールし、`devDependencies` キーにパッケージ名とバージョンを書き込む。
 
 ```bash
 $ yarn add <パッケージ名>@<バージョンタグ> --dev
@@ -420,7 +420,7 @@ $ yarn audit --level critical
 
 本番環境用アプリケーションをビルドする。
 
-`package.json`ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら`next build`コマンド) を実行している。
+`package.json` ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら `next build` コマンド) を実行している。
 
 ```bash
 $ yarn build
@@ -432,7 +432,7 @@ $ yarn build
 
 #### ▼ installとは
 
-指定したバージョンのパッケージを、`package.json`ファイルの範囲内でインストールする。
+指定したバージョンのパッケージを、`package.json` ファイルの範囲内でインストールする。
 
 ```bash
 $ yarn install <パッケージ名>@<バージョンタグ>
@@ -440,7 +440,7 @@ $ yarn install <パッケージ名>@<バージョンタグ>
 
 #### ▼ --check-files
 
-必要なパッケージが`node_modules`ディレクトリ内にインストールされているかを確認しつつ、不足があれば`install`コマンドを実行する。
+必要なパッケージが `node_modules` ディレクトリ内にインストールされているかを確認しつつ、不足があれば `install` コマンドを実行する。
 
 ```bash
 $ yarn install --check-files
@@ -450,11 +450,11 @@ $ yarn install --check-files
 
 #### ▼ --production
 
-デフォルト値は`false`である。
+デフォルト値は `false` である。
 
-`package.json`ファイルの`devDependencies`キーのパッケージをインストールしない。
+`package.json` ファイルの `devDependencies` キーのパッケージをインストールしない。
 
-`NODE_ENV`変数に`production`を設定しても有効化できる。
+`NODE_ENV` 変数に `production` を設定しても有効化できる。
 
 ```bash
 $ yarn install --production
@@ -476,7 +476,7 @@ $ yarn install --verbose
 
 開発環境用アプリケーションを起動する。
 
-`package.json`ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら`next dev`コマンド) を実行している。
+`package.json` ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら `next dev` コマンド) を実行している。
 
 <br>
 
@@ -484,7 +484,7 @@ $ yarn install --verbose
 
 静的解析を実行する。
 
-`package.json`ファイルに定義があり、実際には`eslint`コマンドを実行している。
+`package.json` ファイルに定義があり、実際には `eslint` コマンドを実行している。
 
 ```bash
 $ yarn lint
@@ -518,7 +518,7 @@ $ yarn remove <パッケージ名>
 
 ビルド済みの本番環境用アプリケーションを起動する。
 
-`package.json`ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら`next start`コマンド) を実行している。
+`package.json` ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら `next start` コマンド) を実行している。
 
 ```bash
 $ yarn build
@@ -530,7 +530,7 @@ $ yarn build
 
 #### ▼ upgradeとは
 
-指定したパッケージを`package.json`ファイルの範囲内でアップグレードする。
+指定したパッケージを `package.json` ファイルの範囲内でアップグレードする。
 
 パッケージ数が少ないプロジェクトではキャレット表記で積極的にアップグレードし、規模が大きくなるほどチルダ表記で慎重にアップグレードすると良い。
 
@@ -548,7 +548,7 @@ $ yarn upgrade <パッケージ名>@~<バージョンタグ>
 
 #### ▼ latest
 
-全てのパッケージを、`package.json`ファイルを無視して最新までアップグレードする。
+全てのパッケージを、`package.json` ファイルを無視して最新までアップグレードする。
 
 ```bash
 $ yarn upgrade --latest
@@ -564,13 +564,13 @@ $ yarn upgrade --latest
 
 #### ▼ 読み込むパッケージをまとめる
 
-`js`ファイルを読み込むscriptタグを1つにまとめる。
+`js` ファイルを読み込むscriptタグを1つにまとめる。
 
-`html`ファイルがブラウザにレンダリングされると、JavaScriptのファイルに対するリクエスト数が減るため、Webページの読み出しが早くなる。
+`html` ファイルがブラウザにレンダリングされると、JavaScriptのファイルに対するリクエスト数が減るため、Webページの読み出しが早くなる。
 
 **＊例＊**
 
-以下のような`html`ファイルがあるとする。
+以下のような `html` ファイルがあるとする。
 
 ```html
 <!doctype html>

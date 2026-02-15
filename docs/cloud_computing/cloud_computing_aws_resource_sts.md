@@ -33,7 +33,7 @@ AssumeRole (権限委譲) によって、ユーザーのAWS IAMロールを動�
 
 必要なポリシーが設定されたAWS IAMロールを作成する。
 
-その時信頼ポリシーでは、AWS IAMユーザーの`ARN`を信頼されたエンティティとして設定しておく。
+その時信頼ポリシーでは、AWS IAMユーザーの `ARN` を信頼されたエンティティとして設定しておく。
 
 これにより、そのAWS IAMユーザーに対して、AWS IAMロールを紐付けできるようになる。
 
@@ -64,7 +64,7 @@ AssumeRole (権限委譲) によって、ユーザーのAWS IAMロールを動�
 
 信頼されたエンティティから、STSのエンドポイント (`https://sts.amazonaws.com`) に対して、ロールの紐付けをリクエストする。
 
-OIDCによるフェデレーションユーザーの場合は、`--external-id`オプションの代わりに、`--web-identity-token`オプションを使用する。
+OIDCによるフェデレーションユーザーの場合は、`--external-id` オプションの代わりに、`--web-identity-token` オプションを使用する。
 
 このオプションに、発行されたJWTを設定する必要がある。
 
@@ -120,9 +120,9 @@ aws_sts_credentials="$(aws sts assume-role \
 
 STSのエンドポイントから一時的な資格情報が発行される。
 
-また同時に、この資格情報は、ローカルマシンの`~/.aws/cli/cache`ディレクトリ配下にも`json`ファイルで保管される。
+また同時に、この資格情報は、ローカルマシンの `~/.aws/cli/cache` ディレクトリ配下にも `json` ファイルで保管される。
 
-資格情報の失効時間に合わせて、STSはこの`json`ファイルを定期的に更新する。
+資格情報の失効時間に合わせて、STSはこの `json` ファイルを定期的に更新する。
 
 ```yaml
 {
@@ -164,7 +164,7 @@ STSのエンドポイントから一時的な資格情報が発行される。
 
 この時、アクセスキーID、シークレットアクセスキー、セッショントークンが必要になる。
 
-代わりに、`~/.aws/cli/cache`ディレクトリ配下の`json`ファイルから取得しても良い。
+代わりに、`~/.aws/cli/cache` ディレクトリ配下の `json` ファイルから取得しても良い。
 
 資格情報を環境変数として出力し、使用できるようにする。
 
@@ -203,7 +203,7 @@ echo aws_session_token = $(echo "$aws_sts_credentials" | jq -r ".SessionToken") 
 
 ロールを引き受けた新しいアカウントを使用して、AWSリソースに認証／認可できるか否かを確認する。
 
-資格情報の取得方法として資格情報ファイルの作成を`tfstate`ファイル択した場合、`profile`オプションが必要である。
+資格情報の取得方法として資格情報ファイルの作成を `tfstate` ファイル択した場合、`profile` オプションが必要である。
 
 ```bash
 #!/bin/bash
@@ -295,11 +295,11 @@ CognitoをIDプロバイダーとして使用するように、信頼された�
 
 ![AWS EKS_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EKS_oidc.png)
 
-AWS EKSをIDプロバイダーとして使用するように、`Federated`キーでAWS EKS Clusterの識別子を設定する。
+AWS EKSをIDプロバイダーとして使用するように、`Federated` キーでAWS EKS Clusterの識別子を設定する。
 
 これにより、AWS EKS Cluster内で認証済みのServiceAccountにAWS IAMロールを紐付けることができるようになる。
 
-また、`Condition`キーで特定のServiceAccountを指定できるようにする。
+また、`Condition` キーで特定のServiceAccountを指定できるようにする。
 
 ```yaml
 {
@@ -329,7 +329,7 @@ AWS EKSをIDプロバイダーとして使用するように、`Federated`キー
 
 KubernetesのServiceAccountを作成し、AWS IAMロールのARNを設定する。
 
-ServiceAccountは、Terraformではなくマニフェストで定義した方が良い。
+ServiceAccountは、Terraformではなくマニフェストで定義したほうが良い。
 
 ```yaml
 apiVersion: v1

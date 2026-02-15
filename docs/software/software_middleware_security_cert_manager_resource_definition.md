@@ -35,7 +35,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manag
 
 ### Certificateとは
 
-認証局を使用して、秘密鍵と証明書署名要求で署名済みの`X.509`のサーバー証明書 (`.crt`ファイル) を作成する。
+認証局を使用して、秘密鍵と証明書署名要求で署名済みの `X.509` のサーバー証明書 (`.crt` ファイル) を作成する。
 
 証明書自体は、紐づくSecretに割り当てられる。
 
@@ -64,7 +64,7 @@ spec:
 
 #### ▼ サーバー証明書を使用する
 
-Ingressの`.spec.tls[*].secretName`キーにて、Secretを設定する。
+Ingressの `.spec.tls[*].secretName` キーにて、Secretを設定する。
 
 これにより、Ingressにサーバー証明書を割り当てられる。
 
@@ -136,7 +136,7 @@ spec:
 
 ### CertificateRequestとは
 
-秘密鍵から、証明書署名要求 (`.csr`ファイル) を作成する。
+秘密鍵から、証明書署名要求 (`.csr` ファイル) を作成する。
 
 > - https://cert-manager.io/docs/concepts/certificaterequest/
 > - https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate
@@ -147,7 +147,7 @@ spec:
 
 #### ▼ request
 
-証明書署名要求 (`.csr`ファイル) の作成に必要な秘密鍵を設定する。
+証明書署名要求 (`.csr` ファイル) の作成に必要な秘密鍵を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -165,7 +165,7 @@ spec:
 
 #### ▼ isCAとは
 
-秘密鍵と証明書署名要求 (`.csr`ファイル) で署名済みのサーバー証明書が、中間CA証明書であるか否かを設定する。
+秘密鍵と証明書署名要求 (`.csr` ファイル) で署名済みのサーバー証明書が、中間CA証明書であるか否かを設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1

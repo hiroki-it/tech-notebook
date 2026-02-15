@@ -87,7 +87,7 @@ Webサーバー上のソフトウェアによって稼働するアプリケー�
 
 ### ハイブリッドアプリケーション
 
-端末でWebviewを稼働させ、ソフトウェアの`html`ファイルのレンダリングをWebview上で実行するアプリケーションのこと。
+端末でWebviewを稼働させ、ソフトウェアの `html` ファイルのレンダリングをWebview上で実行するアプリケーションのこと。
 
 ![Webviewよるアプリパッケージ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Webviewよるアプリパッケージ.png)
 
@@ -146,7 +146,7 @@ Webサーバー上のソフトウェアによって稼働するアプリケー�
 
 Unixを源流として派生したOS。
 
-現在では主に、Linux系統 (緑色) 、BSD系統 (黄色) 、SystemV系統 (青色) の`3`個に分けられる。
+現在では主に、Linux系統 (緑色) 、BSD系統 (黄色) 、SystemV系統 (青色) の `3` 個に分けられる。
 
 ※補足として、MacOSはBSD系統
 

@@ -168,7 +168,7 @@ SELECT * from USER where USER_NAME = '{user_name}' and PASSWORD = '{password}'
 SELECT * from USER where USER_NAME = 'foo' and PASSWORD = 'aaa' or '1' ='1'
 ```
 
-このSQLは、`'1' ='1'`により`true`となり、処理に成功してしまう。
+このSQLは、`'1' ='1'` により `true` となり、処理に成功してしまう。
 
 > - https://zenn.dev/mo_ri_regen/articles/sql-injection
 

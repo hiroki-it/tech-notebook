@@ -17,9 +17,9 @@ description: Notation＠セキュリティ系ミドルウェアの知見を記�
 
 コンテナイメージを署名し、また署名を検証する。
 
-1. `notation sign`コマンドでコンテナイメージを署名する。
-2. `notation policy import`コマンドで信頼ポリシーを読み込む。
-3. `notation verify`コマンドでコンテナイメージの署名を検証する。
+1. `notation sign` コマンドでコンテナイメージを署名する。
+2. `notation policy import` コマンドで信頼ポリシーを読み込む。
+3. `notation verify` コマンドでコンテナイメージの署名を検証する。
 
 <br>
 

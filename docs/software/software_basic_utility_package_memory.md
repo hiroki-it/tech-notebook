@@ -92,7 +92,7 @@ supervisor自体のプロセスのこと。
 
 #### ▼ supervisordセクションとは
 
-supervisorの`supervisord`プロセスのプールを設定する。
+supervisorの `supervisord` プロセスのプールを設定する。
 
 ```ini
 [supervisord]
@@ -235,9 +235,9 @@ startretries=10
 
 デーモン化されたプロセスの標準出力/標準エラー出力の出力先を設定する。
 
-デフォルト値は`/var/log/supervisor`ディレクトリである。
+デフォルト値は `/var/log/supervisor` ディレクトリである。
 
-もし、`/dev/stdout`ディレクトリまたは`/dev/stderr`ディレクトリを使用する場合は、`logfile_maxbytes `オプションの値を`0` (無制限) とする必要がある。
+もし、`/dev/stdout` ディレクトリまたは `/dev/stderr` ディレクトリを使用する場合は、`logfile_maxbytes ` オプションの値を `0` (無制限) とする必要がある。
 
 ```ini
 [program:foo]
@@ -312,7 +312,7 @@ programs=bar,baz
 
 指定したデーモンを再起動する。
 
-`all`とした場合は、全てを再起動する。
+`all` とした場合は、全てを再起動する。
 
 ```bash
 $ supervisorctl restart <デーモン名>
@@ -322,7 +322,7 @@ $ supervisorctl restart <デーモン名>
 
 #### ▼ update
 
-もし`supervisord.conf`ファイルの設定を変更した場合、これを再読み出しする。
+もし `supervisord.conf` ファイルの設定を変更した場合、これを再読み出しする。
 
 ```bash
 $ supervisorctl update
@@ -381,9 +381,9 @@ $ apt-get install systemd
 
 デーモンの起動/停止方法を定義したファイル。
 
-デフォルト値が定義されたファイルは`/usr/lib/systemd/system`ディレクトリ配下に配置され、これは変更できない。
+デフォルト値が定義されたファイルは `/usr/lib/systemd/system` ディレクトリ配下に配置され、これは変更できない。
 
-カスタムユニットファイルは、`/etc/sytemd/system`ディレクトリ配下に配置する。
+カスタムユニットファイルは、`/etc/sytemd/system` ディレクトリ配下に配置する。
 
 > - https://tex2e.github.io/blog/linux/create-my-systemd-service
 > - https://zaki-hmkc.hatenablog.com/entry/2021/04/11/003202
@@ -428,7 +428,7 @@ PrivateTmp=true
 LimitNOFILE=12345
 ```
 
-`EnvironmentFile`として使用する`sysconfig`ファイルには、`.env`ファイルと同じような形式のものを作成する。
+`EnvironmentFile` として使用する `sysconfig` ファイルには、`.env` ファイルと同じような形式のものを作成する。
 
 ```bash
 OPTIONS=foo
@@ -440,7 +440,7 @@ OPTIONS=foo
 
 #### ▼ Installセクション
 
-ユニットのインストール (`systemctl enable`コマンドの実行) 時のオプションを設定する。
+ユニットのインストール (`systemctl enable` コマンドの実行) 時のオプションを設定する。
 
 ```ini
 [Install]
@@ -454,11 +454,11 @@ WantedBy=multi-user.target
 
 #### ▼ daemon-reload
 
-サーバー内で`/etc/sytemd/system`ディレクトリ配下のカスタムユニットファイルを直接変更した場合に使用する。
+サーバー内で `/etc/sytemd/system` ディレクトリ配下のカスタムユニットファイルを直接変更した場合に使用する。
 
 全てのデーモンのカスタムユニットファイルを再読み込みする。
 
-ただし、デーモンが既に稼働中の場合は、`systemctl restart`コマンドが別途必要になる。
+ただし、デーモンがすでに稼働中の場合は、`systemctl restart` コマンドが別途必要になる。
 
 ```bash
 $ systemctl daemon-reload
@@ -494,9 +494,9 @@ $ systemctl enable httpd.service
 
 プロセスが正常に実行されているかどうかを確認する。
 
-正常の場合は`active`、異常の場合は`failed`になる。
+正常の場合は `active`、異常の場合は `failed` になる。
 
-これは、`systemctl status`コマンドのActive行でも確認できる。
+これは、`systemctl status` コマンドのActive行でも確認できる。
 
 ```bash
 $ systemctl is-failed <ユニット名>
@@ -510,7 +510,7 @@ active
 
 デーモン化されたプロセスの稼働状態を一覧を取得する。
 
-`grep`と組み合わせて、起動中 (`active`) 、停止中 (`inactive`) 、起動失敗 (`failed`) のデーモンのみを取得すると良い。
+`grep` と組み合わせて、起動中 (`active`) 、停止中 (`inactive`) 、起動失敗 (`failed`) のデーモンのみを取得すると良い。
 
 ```bash
 $ systemctl list-units --type=<ユニットの拡張子>
@@ -572,7 +572,7 @@ proc-sys-fs-binfmt_misc.mount static
 
 #### ▼ log
 
-`systemctl`コマンドにはログを取得するオプションがないため、代わりに`journalctl`コマンドを使用する。
+`systemctl` コマンドにはログを取得するオプションがないため、代わりに `journalctl` コマンドを使用する。
 
 #### ▼ reload
 
@@ -663,7 +663,7 @@ $ systemctl stop nginx.service
 
 systemで管理する全てのユニットの標準出力と標準エラー出力のログを取得する。
 
-`grep`コマンドで特定のエラーログレベルに絞る必要がある。
+`grep` コマンドで特定のエラーログレベルに絞る必要がある。
 
 ```bash
 $ journalctl | grep -i error
@@ -682,7 +682,7 @@ $ journalctl -u foo.service | grep -i error
 
 #### ▼ -f
 
-`tail`コマンドのようにログを出力し続ける。
+`tail` コマンドのようにログを出力し続ける。
 
 ```bash
 $ journalctl -f -u foo.service | grep -i error
@@ -694,9 +694,9 @@ $ journalctl -f -u foo.service | grep -i error
 
 #### ▼ アラートを直接的に通知する場合
 
-デーモンが失敗状態になった時、メールアドレスやチャット宛にアラートを直接的に送信するためには、`OnFailure`オプションを使用する。
+デーモンが失敗状態になったとき、メールアドレスやチャット宛にアラートを直接的に送信するためには、`OnFailure` オプションを使用する。
 
-この時に指定するユニットファイル名には、「`@%i`』が必要である (実際のファイル名に`%i`は不要である) 。
+この時に指定するユニットファイル名には、「`@%i`』が必要である (実際のファイル名に `%i` は不要である) 。
 
 ```ini
 [Unit]
@@ -707,7 +707,7 @@ $ journalctl -f -u foo.service | grep -i error
 OnFailure=notify-email@%i.service
 ```
 
-`/etc/systemd/system/notify-email@.service`ファイルで、失敗状態時に起動するユニットを定義しておく。`ExecStart`オプションで、特定のアドレスにメールを送信する。
+`/etc/systemd/system/notify-email@.service` ファイルで、失敗状態時に起動するユニットを定義しておく。`ExecStart` オプションで、特定のアドレスにメールを送信する。
 
 ```ini
 # notify-email@.serviceファイル
@@ -729,7 +729,7 @@ WantedBy=multi-user.target
 
 #### ▼ アラートを間接的に通知する場合
 
-デーモンが失敗状態になった時、出力したログを使用してアラートを送信するためには、`StandardOutput`オプションや`StandardError`オプションを使用する。
+デーモンが失敗状態になったとき、出力したログを使用してアラートを送信するためには、`StandardOutput` オプションや `StandardError` オプションを使用する。
 
 一度、ログとして出力し、このログをAWS CloudWatch Logsなどに送信する。
 

@@ -61,9 +61,9 @@ OAuthをベースとして、認証フェーズを追加し、認証/認可を�
 
 ### 認可リクエスト時のクレームの取得
 
-#### ▼ `scope`パラメーター
+#### ▼ `scope` パラメーター
 
-認可リクエスト時に、`scope`パラメーターでクレームグループを指定し、IDプロバイダーからクレームを取得できる。
+認可リクエスト時に、`scope` パラメーターでクレームグループを指定し、IDプロバイダーからクレームを取得できる。
 
 IDプロバイダーは、取得したクレームグループに対応したクレームをIDトークンに設定し、クライアントに返信する。
 
@@ -81,9 +81,9 @@ IDプロバイダーは、取得したクレームグループに対応したク
 > - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim
 > - https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims
 
-#### ▼ `claims`パラメーター
+#### ▼ `claims` パラメーター
 
-認可リクエスト時に、`claims`パラメーターで特定のクレームを指定し、クレームを取得できる。
+認可リクエスト時に、`claims` パラメーターで特定のクレームを指定し、クレームを取得できる。
 
 クレームの指定の仕方が複雑らしい...
 
@@ -243,7 +243,7 @@ $ curl -X POST -d "client_id=rp1&client_secret=<Client Secret>&grant_type=refres
 
 ### 運搬
 
-アクセストークンを`Authorization`ヘッダーで運べる。
+アクセストークンを `Authorization` ヘッダーで運べる。
 
 > - https://github.com/oauth2-proxy/oauth2-proxy/issues/843
 

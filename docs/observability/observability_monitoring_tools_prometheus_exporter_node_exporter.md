@@ -148,13 +148,13 @@ Nodeのディスク使用率を取得する。
 100 - (node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100
 ```
 
-`mountpoint`ディメンションを使用して、マウントポイント別のディスク使用率を取得する。
+`mountpoint` ディメンションを使用して、マウントポイント別のディスク使用率を取得する。
 
 ```bash
 100 - (node_filesystem_avail_bytes{mountpoint="/var/lib/data"} / node_filesystem_size_bytes{mountpoint="/var/lib/data"} ) * 100
 ```
 
-`job`ディメンションを使用して、収集対象別にのディスク使用率を取得する。
+`job` ディメンションを使用して、収集対象別にのディスク使用率を取得する。
 
 ```bash
 100 - (node_filesystem_avail_bytes{job="foo-node"} / node_filesystem_size_bytes{job="foo-node"} ) * 100
@@ -168,7 +168,7 @@ Nodeのディスク使用率を取得する。
 
 ディスクのI/OによるCPU使用率 (ディスクのI/OがNodeのCPUをどの程度使用しているか) を取得する。
 
-`iostat`コマンドの`%util`指標と同じである。
+`iostat` コマンドの `%util` 指標と同じである。
 
 ```bash
 # 秒当たりの平均増加率を１分間で集約する

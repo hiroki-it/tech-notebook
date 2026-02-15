@@ -154,7 +154,7 @@ Envoyの実行時に、リスナーの暗号化の設定を動的に検出可能
 
 #### ▼ 実装
 
-Envoyを使用するサービス検出ツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに`go-control-plane`パッケージが使用されている。
+Envoyを使用するサービス検出ツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに `go-control-plane` パッケージが使用されている。
 
 > - https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/resource/v3/resource.go#L34-L43
 > - https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/server/v3/gateway.go#L38-L98
@@ -344,7 +344,7 @@ message DiscoveryResponse {
 
 #### ▼ 静的なリスナー登録
 
-`envoy.yaml`ファイルにて、`listeners`キーを設定することにより、Envoyに静的にリスナーを静的に設定できる。
+`envoy.yaml` ファイルにて、`listeners` キーを設定することにより、Envoyに静的にリスナーを静的に設定できる。
 
 ```yaml
 static_resources:
@@ -478,7 +478,7 @@ service ListenerDiscoveryService {
 
 **＊実装例＊**
 
-Istioを使用して、`envoy`コンテナを稼働させるとする。
+Istioを使用して、`envoy` コンテナを稼働させるとする。
 
 Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
 
@@ -622,7 +622,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 TCPプロトコルの処理や後続のHTTPフィルターの管理を実施する。
 
-主要なネットワークフィルターとして、`network.http_connection_manager`や`network.tcp_proxy`がある。
+主要なネットワークフィルターとして、`network.http_connection_manager` や `network.tcp_proxy` がある。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/listeners/listener_filters#network-l3-l4-filters
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
@@ -633,7 +633,7 @@ TCPプロトコルの処理や後続のHTTPフィルターの管理を実施す�
 
 HTTPリクエストの処理を実施する。
 
-主要なHTTPフィルターとして、`http.router`や`http.grpc_web`がある。
+主要なHTTPフィルターとして、`http.router` や `http.grpc_web` がある。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_filters
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/http/http
@@ -652,7 +652,7 @@ HTTPリクエストの処理を実施する。
 
 認証／認可を実施する。
 
-主なフィルターとして、`http.rbac.v3.RBAC`がある。
+主なフィルターとして、`http.rbac.v3.RBAC` がある。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/rbac_filter
 > - https://qiita.com/ryysud/items/17a4f86819b96eb73f64#authorization-policy-%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF
@@ -684,7 +684,7 @@ MySQLプロトコル内のSQLを解析、メトリクスとして収集する。
 
 #### ▼ 静的なルート登録
 
-`static_resources.listeners`キー配下で、リスナーと合わせて設定する。
+`static_resources.listeners` キー配下で、リスナーと合わせて設定する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
@@ -728,7 +728,7 @@ service RouteDiscoveryService {
 
 **＊実装例＊**
 
-Istioを使用して、`envoy`コンテナを稼働させるとする。
+Istioを使用して、`envoy` コンテナを稼働させるとする。
 
 Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
 
@@ -838,7 +838,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 #### ▼ クラスターの静的な登録
 
-`envoy.yaml`ファイルにて、`clusters`キーを設定することにより、Envoyに静的にクラスターを静的に設定できる。
+`envoy.yaml` ファイルにて、`clusters` キーを設定することにより、Envoyに静的にクラスターを静的に設定できる。
 
 ```yaml
 static_resources:
@@ -954,7 +954,7 @@ service ClusterDiscoveryService {
 
 **＊実装例＊**
 
-Istioを使用して、`envoy`コンテナを稼働させるとする。
+Istioを使用して、`envoy` コンテナを稼働させるとする。
 
 Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
 
@@ -1055,7 +1055,7 @@ Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキ
 
 ### エンドポイントの静的な登録
 
-`static_resources.clusters`キー配下で、リスナーと合わせて設定する。
+`static_resources.clusters` キー配下で、リスナーと合わせて設定する。
 
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
@@ -1142,7 +1142,7 @@ Envoyはマルチスレッドでパケットを処理する。
 
 通信をリスナー/フィルター/ルート/クラスター/エンドポイントで処理し、宛先にロードバランシングする。
 
-`--concurrency`オプションで並列処理数を設定できる。
+`--concurrency` オプションで並列処理数を設定できる。
 
 ![envoy_thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png)
 
@@ -1167,7 +1167,7 @@ Envoyはマルチスレッドでパケットを処理する。
 
 Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。
 
-この時、Envoyは`http://localhost:<ポート番号>`で待ち受け、一方で外部が指定するURLも`http://localhost:<ポート番号>`である。
+この時、Envoyは `http://localhost:<ポート番号>` で待ち受け、一方で外部が指定するURLも `http://localhost:<ポート番号>` である。
 
 サービスメッシュ外や他のPodからリクエストを受信するために使用する。
 
@@ -1182,7 +1182,7 @@ Envoyは、リバースプロキシとして、外部 (例：ロードバラン�
 
 Envoyは、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。
 
-この時、Envoyは`http://0.0.0.0:<ポート番号>`で待ち受け、一方でローカルホストにあるマイクロサービスが指定するURLは`http://<マイクロサービスのホスト>:<ポート番号>`である。
+この時、Envoyは `http://0.0.0.0:<ポート番号>` で待ち受け、一方でローカルホストにあるマイクロサービスが指定するURLは `http://<マイクロサービスのホスト>:<ポート番号>` である。
 
 サービスメッシュ外や他のPodにリクエストを送信するために使用する。
 
@@ -1227,7 +1227,7 @@ Nginx
 
 <br>
 
-### `L4`/`L7`ロードバランサーのミドルウェアとして
+### `L4`/`L7` ロードバランサーのミドルウェアとして
 
 Envoyの文脈では、ロードバランサーとしての使い方を『フロントプロキシ』『エッジプロキシ』とも呼んでいる。
 

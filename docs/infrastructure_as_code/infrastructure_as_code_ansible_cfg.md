@@ -13,7 +13,7 @@ description: ansible.cfg＠Ansibleの知見を記録しています。
 
 <br>
 
-## 01. `ansible.cfg`ファイル
+## 01. `ansible.cfg` ファイル
 
 Ansible自体を設定する。
 
@@ -30,7 +30,7 @@ Ansible自体を設定する。
 
 #### ▼ hostfileとは
 
-`inventory`ファイルの場所を指定する
+`inventory` ファイルの場所を指定する
 
 ```ini
 [defaults]

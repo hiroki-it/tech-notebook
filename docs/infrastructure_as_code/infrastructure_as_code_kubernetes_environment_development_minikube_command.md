@@ -114,11 +114,11 @@ $ minikube start --cni=cilium
 
 #### ▼ configとは
 
-`minikube`コマンドに関するパラメーターを操作する。
+`minikube` コマンドに関するパラメーターを操作する。
 
 #### ▼ set
 
-`kubectl`コマンド実行時のデフォルト値を設定する。
+`kubectl` コマンド実行時のデフォルト値を設定する。
 
 **＊例＊**
 
@@ -196,9 +196,9 @@ $ minikube delete --all --purge
 
 #### ▼ docker-envとは
 
-ホストで`docker`コマンドを実行した時に、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のNodeのdockerデーモンにリクエストを送信できるように環境変数を設定する。
+ホストで `docker` コマンドを実行したときに、ホスト側のdockerデーモンでなく、ゲスト仮想環境内のNodeのdockerデーモンにリクエストを送信できるように環境変数を設定する。
 
-バージョンタグ名が`latest`であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
+バージョンタグ名が `latest` であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
 
 **＊例＊**
 
@@ -227,7 +227,7 @@ DOCKER_CERT_PATH=/Users/hiroki.hasegawa/.minikube/certs
 MINIKUBE_ACTIVE_DOCKERD=minikube
 ```
 
-もし、 Makefileのターゲット内でこれを実行する場合は、`$(shell ...)`とする。
+もし、 Makefileのターゲット内でこれを実行する場合は、`$(shell ...)` とする。
 
 ```makefile
 docker-env:
@@ -264,9 +264,9 @@ $ minikube ip
 
 #### ▼ kubectlとは
 
-Minikubeのkube-apiserverをコンテキストとする`kubectl`コマンドを実行する。
+Minikubeのkube-apiserverをコンテキストとする `kubectl` コマンドを実行する。
 
-ローカルマシンに`kubectl`コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
+ローカルマシンに `kubectl` コマンドがインストールされていなくとも、Minikubeに対してこれを実行できる。ClientとServerのバージョンが自動的に揃えられる。
 
 ```bash
 $ minikube kubectl -- version
@@ -307,7 +307,7 @@ Server Version: version.Info{
 
 #### ▼ add
 
-Nodeを`1`個だけ追加する。
+Nodeを `1` 個だけ追加する。
 
 #### ▼ --control-plane
 
@@ -325,7 +325,7 @@ $ minikube node add --control-plane
 $ minikube node add --worker
 ```
 
-追加したワーカーNodeに`.metadata.labeles`キーを追加すれば、node affinityやnode selectorを検証できる。
+追加したワーカーNodeに `.metadata.labeles` キーを追加すれば、node affinityやnode selectorを検証できる。
 
 ```bash
 # minikube-m01 はコントロールプレーンNodeのため、ラベルづけ不要である。
@@ -403,7 +403,7 @@ $ minikube update-context
 
 NodePort Serviceを指定し、ホストから仮想サーバーを介して、Node内のServiceにポートフォワーディングを実行する。
 
-`http://127.0.0.1:<自動的に発行されたポート番号>`の形式でURLが発行されるため、ブラウザや`curl`コマンドで接続を確認できる。
+`http://127.0.0.1:<自動的に発行されたポート番号>` の形式でURLが発行されるため、ブラウザや `curl` コマンドで接続を確認できる。
 
 ```bash
 $ minikube service <NodePort Service名> -n foo-namespace
@@ -427,7 +427,7 @@ $ minikube service istio-ingressgateway -n istio-ingress
 > - https://minikube.sigs.k8s.io/docs/commands/service/
 > - https://cstoku.dev/posts/2018/k8sdojo-09/#minikube%E3%81%A7%E3%81%AEnodeport%E3%81%B8%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9
 
-ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、`kubectl port-forward`コマンドでPodを指定すると良い。
+ただし、ポートフォワーディングのポート番号がランダムなため、もしポート番号を固定したい場合は、`kubectl port-forward` コマンドでPodを指定すると良い。
 
 ```bash
 # Podに直接的に指定する場合
@@ -442,7 +442,7 @@ $ curl http://127.0.0.1:<ホストポート番号>
 
 > - https://mome-n.com/posts/minikube-service-fixed-port/
 
-ServiceのIPアドレスがNodeのIPアドレスと一致することは、`minikube ip`コマンドから確認できる。
+ServiceのIPアドレスがNodeのIPアドレスと一致することは、`minikube ip` コマンドから確認できる。
 
 ```bash
 $ minikube ip
@@ -450,7 +450,7 @@ $ minikube ip
 *.*.*.*
 ```
 
-補足として、`minikube service`コマンドを使用せずに、`ssh`コマンドでNodeに接続しても、同様にServiceにリクエストを送信できる。
+補足として、`minikube service` コマンドを使用せずに、`ssh` コマンドでNodeに接続しても、同様にServiceにリクエストを送信できる。
 
 ```bash
 $ minikube ssh
@@ -484,9 +484,9 @@ $ minikube service list
 
 Minikube仮想サーバー内のNodeのIPアドレスと、NodePort Serviceのポート番号を取得する。
 
-`http://127.0.0.1:<自動的に発行されたポート番号>`の形式でURLが発行されるため、ブラウザや`curl`コマンドで接続を確認できる。
+`http://127.0.0.1:<自動的に発行されたポート番号>` の形式でURLが発行されるため、ブラウザや `curl` コマンドで接続を確認できる。
 
-`--url`オプションを使用しない場合とは異なり、ポートフォワーディングを実行しない。
+`--url` オプションを使用しない場合とは異なり、ポートフォワーディングを実行しない。
 
 ```bash
 $ minikube service <NodePort Service名> --url -n foo-namespace
@@ -568,7 +568,7 @@ yes
 zcat
 ```
 
-Nodeの中では`docker`コマンドを実行でき、コンテナイメージもデバッグできる。
+Nodeの中では `docker` コマンドを実行でき、コンテナイメージもデバッグできる。
 
 ```bash
 $ minikube ssh
@@ -669,7 +669,7 @@ $ minikube start --container-runtime=cri-o
 
 Minikubeの各Nodeのハードウェアリソースを設定する (これはMinikubeクラスターの上限ではない) 。
 
-そのため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが`NotReady`になる。
+そのため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが `NotReady` になる。
 
 また、Nodeを増やすとMinikubeクラスター全体のハードウェアリソースの要求量が増える。
 
@@ -717,11 +717,11 @@ Mem:           7951        1853        3080         333        3017        5594
 Swap:          1023           0        1023
 ```
 
-metrics-serverを入れて、`kubectl top node`コマンドを実行してもよいが、Minikubeクラスター全体であれば`minikube ssh`コマンドでMinikubeクラスターに入って確認した方が良い。
+metrics-serverを入れて、`kubectl top node` コマンドを実行してもよいが、Minikubeクラスター全体であれば `minikube ssh` コマンドでMinikubeクラスターに入って確認したほうが良い。
 
 #### ▼ --docker-env
 
-別に`docker-env`コマンドを実行しつつ、`start`コマンドを実行する。
+別に `docker-env` コマンドを実行しつつ、`start` コマンドを実行する。
 
 **＊例＊**
 
@@ -731,13 +731,13 @@ $ minikube start --docker-env
 
 #### ▼ --ha
 
-コントロールプレーンNodeを`3`個に冗長化する。
+コントロールプレーンNodeを `3` 個に冗長化する。
 
 kube-apiserverは負荷が高まりクラッシュしやすいため、対策になる。
 
 ただ、ワーカーNode以外のNode数が増える。
 
-ため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが`NotReady`になる。
+ため、DockerDesktopの上限を高く設定しておかないと、ホストOSがMinikubeクラスターに割り当てられるハードウェアリソースが足りなくなり、MinikubeのNodeが `NotReady` になる。
 
 ```bash
 $ minikube start --ha
@@ -758,7 +758,7 @@ $ minikube node add --control-plane
 
 #### ▼ --driver
 
-ゲスト仮想環境のドライバーを指定し、`start`コマンドを実行する。
+ゲスト仮想環境のドライバーを指定し、`start` コマンドを実行する。
 
 ホストごとに標準の仮想環境が異なり、MacOSはDockerドライバーがデフォルトである。
 
@@ -775,7 +775,7 @@ $ minikube start --driver=virtualbox
 
 #### ▼ --kubernetes-vsersion
 
-Minikubeで稼働させるKubernetesのバージョンを指定しつつ、`start`コマンドを実行する。
+Minikubeで稼働させるKubernetesのバージョンを指定しつつ、`start` コマンドを実行する。
 
 ```bash
 $ minikube start --kubernetes-version=v1.23.0
@@ -795,7 +795,7 @@ $ minikube start --listen-address=0.0.0.0
 
 #### ▼ --mount、--mount--string
 
-ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、`start`コマンドを実行する。
+ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、`start` コマンドを実行する。
 
 **＊例＊**
 
@@ -805,11 +805,11 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 #### ▼ --nodes
 
-作成するNode数を指定し、`start`コマンドを実行する。
+作成するNode数を指定し、`start` コマンドを実行する。
 
 マルチNodeのKubernetes Clusterを作成できる。
 
-Minikubeは、同じCPUとメモリを持つNodeを冗長化するため、`--nodes`オプションでNodeを増やすだけ、Podのリソースに余裕がでる。
+Minikubeは、同じCPUとメモリを持つNodeを冗長化するため、`--nodes` オプションでNodeを増やすだけ、Podのリソースに余裕がでる。
 
 **＊例＊**
 
@@ -849,7 +849,7 @@ host: Running
 kubelet: Running
 ```
 
-補足として、コントロールプレーンNodeも単なるNodeの`1`個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングさせる。
+補足として、コントロールプレーンNodeも単なるNodeの `1` 個なため、Deploymentを作成すると、コントロールプレーンNodeにもPodをスケジューリングさせる。
 
 ```bash
 $ kubectl get pod -o wide
@@ -917,7 +917,7 @@ LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐付
 
 紐付けられたLoadBalancer Serviceには『External Endpoints (`http://127.0.0.1:80`) 』が割り当てられ、ここからLoadBalancer Serviceにリクエストを送信できるようになる。
 
-Node外からPodに通信できるようになる。`minikube ssh`コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
+Node外からPodに通信できるようになる。`minikube ssh` コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
 
 **＊例＊**
 

@@ -298,17 +298,17 @@ fields @log, @timestamp, @message
 
 W3C Trace Context仕様のルートスパンのIDに相当する。
 
-#### ▼ `trace_id`キー
+#### ▼ `trace_id` キー
 
 セグメントとサブセグメントを紐づける。
 
-`<バージョン>-<ルートセグメントのタイプスタンプ>-<サブセグメントごとのユニークID>`からなる。
+`<バージョン>-<ルートセグメントのタイプスタンプ>-<サブセグメントごとのユニークID>` からなる。
 
-例えば、`1-58406520-a006649127e371903a2de979`になる。
+例えば、`1-58406520-a006649127e371903a2de979` になる。
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields
 
-#### ▼ `parent_id`キー
+#### ▼ `parent_id` キー
 
 親のサブセグメントIDを持つ。
 
@@ -318,11 +318,11 @@ W3C Trace Context仕様のスパンのIDに相当する。
 
 ### サブセグメント系
 
-#### ▼ `subsegments`キー
+#### ▼ `subsegments` キー
 
 サグセグメントの情報を持つ。
 
-例えば、サブセグメントIDであれば`<サブセグメントごとのユニークID>`になる。
+例えば、サブセグメントIDであれば `<サブセグメントごとのユニークID>` になる。
 
 ```yaml
 {
@@ -355,7 +355,7 @@ W3C Trace Context仕様のスパンのIDに相当する。
 
 ### リクエスト系
 
-#### ▼ `http`キー
+#### ▼ `http` キー
 
 スパンのHTTPリクエストの情報を持つ。
 
@@ -375,7 +375,7 @@ W3C Trace Context仕様のスパンのIDに相当する。
 
 ### AWSリソース系
 
-#### ▼ `aws`キー
+#### ▼ `aws` キー
 
 スパンの作成元のAWSリソース情報を持つ。
 
@@ -550,7 +550,7 @@ W3C Trace Context仕様のスパンのIDに相当する。
 
 #### ▼ 設定例
 
-ここでは、`aws.log.group.arns`属性を設定すると仮定する。
+ここでは、`aws.log.group.arns` 属性を設定すると仮定する。
 
 ```go
 package trace

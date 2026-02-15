@@ -15,7 +15,7 @@ description: 設定ファイル＠Keycloakの知見を記録しています。
 
 ## 01. 設定方法
 
-Keycloakでは、コマンドオプション、環境変数、`keycloak.conf`ファイルのいずれかでパラメーターを設定できる。
+Keycloakでは、コマンドオプション、環境変数、`keycloak.conf` ファイルのいずれかでパラメーターを設定できる。
 
 > - https://docs.redhat.com/ja/documentation/red_hat_build_of_keycloak/24.0/html/server_guide/configuration-formats-for-configuration#configuration-example-alternative-formats-based-on-configuration-source
 
@@ -48,8 +48,8 @@ db=postgres
 
 | 変数             | 値の例       | 説明                                                                                                                                               |
 | ---------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `KC_CACHE`       | `ispn`       | セッションデータ管理の仕組みを設定する。例えば`ispn`の場合、KeycloakクラスターでInfinispanを使用する。                                             |
-| `KC_CACHE_STACK` | `kubernetes` | Keycloakクラスター内のクラスターインスタンス間の通信方法を設定する。例えば`kubernetes`の場合、KeycloakクラスターでKubernetesによる通信を使用する。 |
+| `KC_CACHE`       | `ispn`       | セッションデータ管理の仕組みを設定する。例えば `ispn` の場合、KeycloakクラスターでInfinispanを使用する。                                             |
+| `KC_CACHE_STACK` | `kubernetes` | Keycloakクラスター内のクラスターインスタンス間の通信方法を設定する。例えば `kubernetes` の場合、KeycloakクラスターでKubernetesによる通信を使用する。 |
 
 <br>
 
@@ -67,7 +67,7 @@ Keycloakと各DBのバージョンの相性を確認しておく必要がある�
 
 | 変数                 | 値の例                                | 説明                                                                                                    |
 | -------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `KC_DB`              | `mysql`                               | Keycloakで使用するDBベンダーを設定する。 開発環境では、`dev-file`とするとファイルシステムを使用できる。 |
+| `KC_DB`              | `mysql`                               | Keycloakで使用するDBベンダーを設定する。 開発環境では、`dev-file` とするとファイルシステムを使用できる。 |
 | `KC_DB_URL`          | `jdbc:mysql://<ホスト名>:3306/<DB名>` |                                                                                                         |
 | `KC_DB_URL_DATABASE` | `keycloak`                            |                                                                                                         |
 | `KC_DB_USERNAME`     | `keycloak`                            |                                                                                                         |
@@ -111,7 +111,7 @@ Keycloakと各DBのバージョンの相性を確認しておく必要がある�
 
 | 変数       | 値の例 | 説明                                                                                                    |
 | ---------- | ------ | ------------------------------------------------------------------------------------------------------- |
-| `KC_PROXY` | `edge` | Keycloalyがリバースプロキシを後ろにあること有効化する。Kubernetesではこれを`edge`を設定する必要がある。 |
+| `KC_PROXY` | `edge` | Keycloalyがリバースプロキシを後ろにあること有効化する。Kubernetesではこれを `edge` を設定する必要がある。 |
 
 <br>
 
@@ -127,13 +127,13 @@ Keycloakと各DBのバージョンの相性を確認しておく必要がある�
 
 <br>
 
-## 04. `Cookie`ヘッダー
+## 04. `Cookie` ヘッダー
 
 ### AUTH_SESSION_ID
 
-Keycloakのログイン後、`Cookie`ヘッダーによって運搬されるセッションデータである。
+Keycloakのログイン後、`Cookie` ヘッダーによって運搬されるセッションデータである。
 
-`<セッションID>.keycloak-0-27504`の形式になる。
+`<セッションID>.keycloak-0-27504` の形式になる。
 
 > - https://qiita.com/i7a7467/items/57ef85d601a854519ff3#auth_session_id
 

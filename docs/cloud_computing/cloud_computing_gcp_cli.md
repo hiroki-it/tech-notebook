@@ -31,9 +31,9 @@ project = foo-project
 
 ### ログファイル
 
-`gcloud`コマンドのログを出力する。
+`gcloud` コマンドのログを出力する。
 
-`gcloud`コマンドはわかりにくいエラーを出力することがあり、足がかりを掴めることがある。
+`gcloud` コマンドはわかりにくいエラーを出力することがあり、足がかりを掴めることがある。
 
 ```bash
 $ cat /root/.config/gcloud/logs/<タイムスタンプ>/<タイムスタンプ>.log
@@ -64,7 +64,7 @@ Traceback (most recent call last):
 
 資格情報ファイルを使用して、ServiceAccountにログインする。
 
-資格情報ファイルは使用後に削除した方が良いらしい。
+資格情報ファイルは使用後に削除したほうが良いらしい。
 
 ```bash
 $ gcloud auth activate-service-account foo-service-account@foo-project.iam.gserviceaccount.com \
@@ -102,11 +102,11 @@ ACTIVE  ACCOUNT
 
 Google Cloud CLIによるGoogle Cloudリソースへのアクセスを認証するために使用する。
 
-`~/.config/gcloud/application_default_credentials.json`ファイルを作成し、資格情報を定義する。
+`~/.config/gcloud/application_default_credentials.json` ファイルを作成し、資格情報を定義する。
 
 また、これ使用してGoogle Cloudにログインする。
 
-`~/.config/gcloud/application_default_credentials.json`ファイルは`1`個のプリンシパルの資格情報しか持てないため、プリンシパルを切り替える場合はファイルを再作成する必要がある。
+`~/.config/gcloud/application_default_credentials.json` ファイルは `1` 個のプリンシパルの資格情報しか持てないため、プリンシパルを切り替える場合はファイルを再作成する必要がある。
 
 ```bash
 $ gcloud auth application-default login
@@ -152,9 +152,9 @@ $ gcloud auth login
 
 #### ▼ login --update-adc
 
-`gcloud auth application-default login`コマンドと`gcloud auth login`コマンドを同時に実行する。
+`gcloud auth application-default login` コマンドと `gcloud auth login` コマンドを同時に実行する。
 
-これにより、Google Cloud CLIのための資格情報 (`~/.config/gcloud/application_default_credentials.json`ファイル) とGoogle Cloud SDKのための資格情報が更新される。
+これにより、Google Cloud CLIのための資格情報 (`~/.config/gcloud/application_default_credentials.json` ファイル) とGoogle Cloud SDKのための資格情報が更新される。
 
 ```bash
 $ gcloud auth login --update-adc
@@ -200,11 +200,11 @@ $ gcloud auth revoke foo2-serviceaccount@foo-project.iam.gserviceaccount.com
 
 #### ▼ componentとは
 
-`gcloud`コマンドのコンポーネントを管理する。
+`gcloud` コマンドのコンポーネントを管理する。
 
 #### ▼ install
 
-`gcloud`コマンドのコンポーネントをインストールする。
+`gcloud` コマンドのコンポーネントをインストールする。
 
 ```bash
 $ gcloud components install
@@ -233,7 +233,7 @@ To add gcloud components to your PATH, add this to your profile:
 
 #### ▼ update
 
-`gcloud`コマンドのコンポーネントをアップグレードする。
+`gcloud` コマンドのコンポーネントをアップグレードする。
 
 ```bash
 $ gcloud components update
@@ -241,7 +241,7 @@ $ gcloud components update
 
 #### ▼ list
 
-`gcloud`コマンドのコンポーネントの一覧を取得する。
+`gcloud` コマンドのコンポーネントの一覧を取得する。
 
 ```bash
 $ gcloud components list
@@ -273,7 +273,7 @@ The latest available version is: 400.0.0
 
 #### ▼ config configurationとは
 
-`gcloud`コマンドのConfigurationを操作する。
+`gcloud` コマンドのConfigurationを操作する。
 
 #### ▼ activate
 
@@ -646,7 +646,7 @@ $ gcloud storage cp gs://<Google Cloud Storage名>/<オブジェクトのファ�
 
 > - https://cloud.google.com/sdk/gcloud/reference/storage/cp
 
-ディレクトリごとコピーする場合は、`--recursive`オプションを使用する。
+ディレクトリごとコピーする場合は、`--recursive` オプションを使用する。
 
 ```bash
 $ gcloud storage cp --recursive gs://<Google Cloud Storage名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>

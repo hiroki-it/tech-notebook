@@ -56,7 +56,7 @@ repmgrdは、DBインスタンス間でフェイルオーバーできるよう�
 
 <br>
 
-## 03. `repmgr`コマンド
+## 03. `repmgr` コマンド
 
 ### cluster
 

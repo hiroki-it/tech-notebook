@@ -43,7 +43,7 @@ type Context struct {
 
 処理中のコンテキスト (例：デッドライン、キャンセルなど) を持つ。
 
-処理中のコンテキストは、`gin.Context.Request.Context`関数で取得できる。
+処理中のコンテキストは、`gin.Context.Request.Context` 関数で取得できる。
 
 ```go
 type Context struct {
@@ -51,7 +51,7 @@ type Context struct {
 }
 ```
 
-Ginの計装で必要なコンテキストも`gin.Context.Request.Context`である。
+Ginの計装で必要なコンテキストも `gin.Context.Request.Context` である。
 
 ```go
 func Middleware(service string, opts ...Option) gin.HandlerFunc {
@@ -103,7 +103,7 @@ Content-TypeヘッダーのMIMEタイプに応じて、バインド関数をコ�
 
 #### ▼ 処理
 
-`Content-Type`ヘッダーのMIMEタイプが`application/json`であることが前提である。
+`Content-Type` ヘッダーのMIMEタイプが `application/json` であることが前提である。
 
 リクエストからJSON型データを取得し、構造体に紐付ける。
 
@@ -130,9 +130,9 @@ type User struct {
 
 #### ▼ 処理
 
-同じリクエストにて`Set`関数でセットされたmap型データから、インターフェース型で値を取得する。
+同じリクエストにて `Set` 関数でセットされたmap型データから、インターフェース型で値を取得する。
 
-値が存在しない場合は、第二返却値で`false`を返却する。
+値が存在しない場合は、第二返却値で `false` を返却する。
 
 > - https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get
 
@@ -211,7 +211,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 #### ▼ 処理
 
-同じリクエストにて`Set`関数でセットされたmap型データから、インターフェース型で値を取得する。
+同じリクエストにて `Set` 関数でセットされたmap型データから、インターフェース型で値を取得する。
 
 値が存在しない場合は、ランタイムエラーとなる。
 
@@ -310,7 +310,7 @@ func printRequestHeaderList(ginCtx *gin.Context) {
 
 クエリパラメーターからデータを取得する。
 
-この後、構造体に紐付ける場合は、`BindQuery`関数を使用した方が良い。
+この後、構造体に紐付ける場合は、`BindQuery` 関数を使用したほうが良い。
 
 <br>
 
@@ -324,11 +324,11 @@ func printRequestHeaderList(ginCtx *gin.Context) {
 
 #### ▼ 注意点
 
-データ型を変換した値を`Set`関数で保管しないようにすることによりある。
+データ型を変換した値を `Set` 関数で保管しないようにすることによりある。
 
-`Set`関数後に`Get`関数で取得される値は、元のデータ型に関係なくインターフェース型に変換されてしまう。
+`Set` 関数後に `Get` 関数で取得される値は、元のデータ型に関係なくインターフェース型に変換されてしまう。
 
-そのため、例えば、タイプID型として値を保管したとしても、`Get`関数で得られたインターフェース型データを改めて変換しないといけなくなってしまう。
+そのため、例えば、タイプID型として値を保管したとしても、`Get` 関数で得られたインターフェース型データをあらためて変換しないといけなくなってしまう。
 
 **＊実装例＊**
 
@@ -407,9 +407,9 @@ router := gin.New()
 
 ユーザー定義のミドルウェアを使用する。
 
-`gin.HandlerFunc`関数というGin固有のデータ型が必要である。
+`gin.HandlerFunc` 関数というGin固有のデータ型が必要である。
 
-ミドルウェアは、`Use`した順番で実行する。
+ミドルウェアは、`Use` した順番で実行する。
 
 ```go
 package main
@@ -431,11 +431,11 @@ func FooMiddleware() gin.HandlerFunc {
 }
 ```
 
-#### ▼ `http.Handler`や`http.HandlerFunc`から`gin.HandlerFunc`への変換
+#### ▼ `http.Handler` や `http.HandlerFunc` から `gin.HandlerFunc` への変換
 
-`gin.HandlerFunc`関数を引数にとるパッケージに`http.Handler`関数や`http.HandlerFunc`関数を渡すことができる。
+`gin.HandlerFunc` 関数を引数にとるパッケージに `http.Handler` 関数や `http.HandlerFunc` 関数を渡すことができる。
 
-`WrapH`関数や`WrapF`関数を使用すると、`http.Handler`や`http.HandlerFunc`から`gin.HandlerFunc`に変換できる。
+`WrapH` 関数や `WrapF` 関数を使用すると、`http.Handler` や `http.HandlerFunc` から `gin.HandlerFunc` に変換できる。
 
 ```go
 package main
@@ -469,13 +469,13 @@ func BazMiddleware(next http.Handler) http.HandlerFunc {
 
 > - https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813
 
-#### ▼ `gin.HandlerFunc`から`http.Handler`への変換
+#### ▼ `gin.HandlerFunc` から `http.Handler` への変換
 
-`http.Handler`関数を引数にとるパッケージに`gin.HandlerFunc`関数を渡すことは諦めた方がいい。
+`http.Handler` 関数を引数にとるパッケージに `gin.HandlerFunc` 関数を渡すことは諦めたほうがいい。
 
-`gin.HandlerFunc`関数は`http.Handler`のラッパーである。
+`gin.HandlerFunc` 関数は `http.Handler` のラッパーである。
 
-そのため、`http.Handler`関数から`gin.HandlerFunc`関数への変換は簡単にできるが、その逆は`gin.HandlerFunc`関数から値を取り出さないといけず、難しい。
+そのため、`http.Handler` 関数から `gin.HandlerFunc` 関数への変換は簡単にできるが、その逆は `gin.HandlerFunc` 関数から値を取り出さないといけず、難しい。
 
 <br>
 

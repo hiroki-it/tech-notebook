@@ -44,13 +44,13 @@ CRDのマニフェストをインストールする。
 $ wget https://github.com/hiroki-hasegawa/foo-repository/crds.yaml
 ```
 
-あるいは、`json`形式のスキーマを直接インストールしてもよい。
+あるいは、`json` 形式のスキーマを直接インストールしてもよい。
 
 この場合、後述のスキーマの作成は不要になる。
 
 #### ▼ スキーマの作成
 
-`openapi2jsonschema`を使い、CRDのマニフェストから各カスタムリソースのスキーマを`json`形式で作成する。
+`openapi2jsonschema` を使い、CRDのマニフェストから各カスタムリソースのスキーマを `json` 形式で作成する。
 
 ```bash
 # 各カスタムリソースのJSONスキーマのファイル形式を設定する
@@ -131,7 +131,7 @@ $ kubeconform \
 
 #### ▼ -schema-locationとは
 
-`json`形式のスキーマの場所を明示的に設定する。
+`json` 形式のスキーマの場所を明示的に設定する。
 
 Goテンプレートのように、マニフェスト内の値をスキーマのパスに出力できる。
 
@@ -142,9 +142,9 @@ $ kubeconform \
     manifest.yaml
 ```
 
-Kubernetesリソースのスキーマは、`default`エイリアス (`https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/{{.NormalizedKubernetesVersion}}-standalone{{.StrictSuffix}}/{{.ResourceKind}}{{.KindSuffix}}.json`) にある。
+Kubernetesリソースのスキーマは、`default` エイリアス (`https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/{{.NormalizedKubernetesVersion}}-standalone{{.StrictSuffix}}/{{.ResourceKind}}{{.KindSuffix}}.json`) にある。
 
-`kubeconform`コマンドは、` -kubernetes-version`オプションで渡したKubernetesのバージョンを`{{.NormalizedKubernetesVersion}} `に出力する。
+`kubeconform` コマンドは、` -kubernetes-version` オプションで渡したKubernetesのバージョンを `{{.NormalizedKubernetesVersion}} ` に出力する。
 
 CRDのスキーマは、`https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json` にある。
 

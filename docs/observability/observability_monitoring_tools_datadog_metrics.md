@@ -29,7 +29,7 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 ### セットアップ
 
-#### ▼ `/etc/datadog-agent/datadog.yaml`ファイル
+#### ▼ `/etc/datadog-agent/datadog.yaml` ファイル
 
 > - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
 

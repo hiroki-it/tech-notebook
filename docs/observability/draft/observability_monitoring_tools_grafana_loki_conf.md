@@ -157,7 +157,7 @@ frontend_worker:
 
 構造化の場合、メトリッククエリのフィールドの条件 (例：`{app="foo", namespace="foo"}`) を設定する。
 
-また、構造化ログ全体を検索し、`ERROR`という文字があった場合、アラートを作成する。
+また、構造化ログ全体を検索し、`ERROR` という文字があった場合、アラートを作成する。
 
 ```yaml
 groups:
@@ -248,7 +248,7 @@ query_range:
 
 クエリ処理を並列化する。
 
-Grafana Lokiで`context canceled`エラーが出る場合、こちらを無効化すると良い。
+Grafana Lokiで `context canceled` エラーが出る場合、こちらを無効化すると良い。
 
 ```yaml
 query_range:

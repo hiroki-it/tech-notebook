@@ -98,7 +98,7 @@ GoogleCloudリソース自体のアカウントである。
 $ gcloud auth login --cred-file="<資格情報ファイルのパス>"
 ```
 
-資格情報ファイルの現在のパスは、`gcloud info`コマンドで確認する。
+資格情報ファイルの現在のパスは、`gcloud info` コマンドで確認する。
 
 ```bash
 $ gcloud info
@@ -113,13 +113,13 @@ $ gcloud info
 
 #### ▼ ファイルパスを指定しない場合
 
-ファイルパスを指定しない場合、`$HOME/.config/gcloud/application_default_credentials.json`ファイルを読み込む。
+ファイルパスを指定しない場合、`$HOME/.config/gcloud/application_default_credentials.json` ファイルを読み込む。
 
 > - https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#personal
 
 #### ▼ ファイルパスの指定する場合
 
-資格情報ファイルのパスを`GOOGLE_APPLICATION_CREDENTIALS`変数に設定する。
+資格情報ファイルのパスを `GOOGLE_APPLICATION_CREDENTIALS` 変数に設定する。
 
 サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。
 
@@ -206,7 +206,7 @@ GoogleCloud外リソース (例：AWS、Azure、Kubernetesなど) からGoogleCl
 
 GoogleCloud外リソースのグループを設定する。
 
-例えば、AWS側でOpenTelemetry Collectorを使用する場合、Workload Identityプールは`opentelemetry-collector`とする。
+例えば、AWS側でOpenTelemetry Collectorを使用する場合、Workload Identityプールは `opentelemetry-collector` とする。
 
 #### ▼ プロバイダー
 
@@ -214,13 +214,13 @@ GoogleCloud外リソースのグループを設定する。
 
 外部リソースの種類ごとに単位 (例：AWSであればAWSアカウントごと) が異なる。
 
-例えば、AWS側の本番環境でOpenTelemetry Collectorを使用する場合、Workload Identityプールは`prd-opentelemetry-collector`とする。
+例えば、AWS側の本番環境でOpenTelemetry Collectorを使用する場合、Workload Identityプールは `prd-opentelemetry-collector` とする。
 
 #### ▼ アクセス許可
 
 プロバイダーに応じた権限を設定する。
 
-例えば、プロバイダーがAWSであれば`aws_role`でIAMロールの委譲用のARN (`arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>`) を設定し、IAMロールにサービスアカウントを紐づけられる。
+例えば、プロバイダーがAWSであれば `aws_role` でIAMロールの委譲用のARN (`arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>`) を設定し、IAMロールにサービスアカウントを紐づけられる。
 
 > - https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2
 

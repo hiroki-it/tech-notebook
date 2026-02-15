@@ -33,7 +33,7 @@ const object = {
 
 #### ▼ コンストラクタ関数
 
-関数宣言方式の`Function`コンストラクタを使用して、オブジェクトを定義する。
+関数宣言方式の `Function` コンストラクタを使用して、オブジェクトを定義する。
 
 ```javascript
 // 関数宣言による定義
@@ -123,11 +123,11 @@ asyncFunc(testParam, (err, data) => {
 
 #### ▼ ファイル外で読み込む
 
-関数の前で`export`を宣言する。
+関数の前で `export` を宣言する。
 
 **＊実装例＊**
 
-関数の定義と`export`の宣言を同時に実行する。
+関数の定義と `export` の宣言を同時に実行する。
 
 ```javascript
 export function foo() {
@@ -153,7 +153,7 @@ export default foo;
 
 #### ▼ undefined
 
-データを代入しない時に適用されるデータ型である。
+データを代入しないときに適用されるデータ型である。
 
 **＊実装例＊**
 
@@ -167,7 +167,7 @@ console.log(b); // undefied
 
 #### ▼ null
 
-`null`は、undefinedとは異なり、意図して代入しなければ適用されないデータ型である。
+`null` は、undefinedとは異なり、意図して代入しなければ適用されないデータ型である。
 
 **＊実装例＊**
 
@@ -180,7 +180,7 @@ console.log(a); // null
 
 #### ▼ undefinedの返却
 
-undefinedを返却する場合、`return`のみを記述する。
+undefinedを返却する場合、`return` のみを記述する。
 
 **＊実装例＊**
 
@@ -206,12 +206,12 @@ console.log(foo); // 『undefined』が出力される。
 | :--------------------- | :----------- | :--------------- | ---------------- |
 | 再宣言                 | 可能         | 不可能           | 不可能           |
 | 再代入                 | 可能         | 可能             | 不可能           |
-| 初期化 (`undefined`化) | 可能         | 可能             | 不可能           |
+| 初期化 (`undefined` 化) | 可能         | 可能             | 不可能           |
 | スコープ               | 関数スコープ | ブロックスコープ | ブロックスコープ |
 
 #### ▼ `const`
 
-基本的には、宣言に`const`を使用する
+基本的には、宣言に `const` を使用する
 
 ```javascript
 if (true) {
@@ -231,7 +231,7 @@ console.log(foo); // ERROR
 
 #### ▼ `let`
 
-繰り返し処理で再代入が必要であれば、`const`ではなく`let`を使用する。
+繰り返し処理で再代入が必要であれば、`const` ではなく `let` を使用する。
 
 ```javascript
 if (true) {
@@ -249,7 +249,7 @@ if (true) {
 console.log(foo); // ERROR
 ```
 
-また、`try-catch`では変数への代入が保証されていないため、`let`を使用して、あらかじめ初期化しておく必要がある。
+また、`try-catch` では変数への代入が保証されていないため、`let` を使用して、あらかじめ初期化しておく必要がある。
 
 ```javascript
 const asyncFunc = async () => {
@@ -291,11 +291,11 @@ console.log(foo); // foo
 
 #### ▼ 巻き上げとは
 
-巻き上げは、`var`を使用して変数を宣言した時や、関数で発生し得る。
+巻き上げは、`var` を使用して変数を宣言したときや、関数で発生し得る。
 
-確認のため`console.log`関数を実行した場合、`foo`を宣言していないため、『x is not defined 』エラーになりそうである。
+確認のため `console.log` 関数を実行した場合、`foo` を宣言していないため、『x is not defined 』エラーになりそうである。
 
-しかし実際は、宣言が既に済んでおり、`foo`に値が代入されていないことを示す『undefined』となる。
+しかし実際は、宣言がすでに済んでおり、`foo` に値が代入されていないことを示す『undefined』となる。
 
 ```javascript
 console.log(foo); // undefined
@@ -329,7 +329,7 @@ var foo = function () {
 };
 ```
 
-#### ▼ `var`使用時の対策
+#### ▼ `var` 使用時の対策
 
 意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初に実行するようにする。
 
@@ -349,9 +349,9 @@ var foo = function () {
 foo(); // foo
 ```
 
-#### ▼ `let`,`const`使用時の対策
+#### ▼ `let`,`const` 使用時の対策
 
-宣言に`let`、`const`を使用した場合、巻き上げは起こらないため、宣言と代入の場所を気にしなくともよくなる。
+宣言に `let`、`const` を使用した場合、巻き上げは起こらないため、宣言と代入の場所を気にしなくともよくなる。
 
 ```javascript
 console.log(foo); // foo is not defined
@@ -406,13 +406,13 @@ console.log(baz); // 3
 
 ### `for  of`
 
-#### ▼ `for  of`とは
+#### ▼ `for  of` とは
 
 順序を保ったまま配列を走査し、値を取得する。
 
-オブジェクトに対して`entires`関数を使用して、一度配列に変換すれば、オブジェクトでも`for  of`を使用できる。
+オブジェクトに対して `entires` 関数を使用して、一度配列に変換すれば、オブジェクトでも `for  of` を使用できる。
 
-`for  in`を使用するより、こちらを使用した方が良い。
+`for  in` を使用するより、こちらを使用したほうが良い。
 
 #### ▼ 配列の場合
 
@@ -428,7 +428,7 @@ for (const value of array) {
 // baz
 ```
 
-配列の`entires`関数を使用すれば、インデックス番号を取得もできる。
+配列の `entires` 関数を使用すれば、インデックス番号を取得もできる。
 
 ```javascript
 const array = ["foo", "bar", "baz"];
@@ -444,7 +444,7 @@ for (const [key, value] of array.entries()) {
 
 #### ▼ オブジェクトの場合
 
-オブジェクトに対して`entires`関数を実行し、一度連想配列に変換すれば、オブジェクトでも`for ... of`を使用できる。
+オブジェクトに対して `entires` 関数を実行し、一度連想配列に変換すれば、オブジェクトでも `for ... of` を使用できる。
 
 ```javascript
 const object = {
@@ -468,7 +468,7 @@ for (const [property, value] of Object.entries(object)) {
 
 #### ▼ スプレッド構文とは
 
-ドット`3`個で記載する。
+ドット `3` 個で記載する。
 
 順序を保ったまま配列を走査し、値を取得する。
 
@@ -490,7 +490,7 @@ console.log(...array);
 
 ### `for  in`
 
-#### ▼ `for  in`とは
+#### ▼ `for  in` とは
 
 配列/オブジェクト (連想配列) を順序を保たずに走査し、オブジェクトのプロパティ名や配列のキー名を取得する。
 
@@ -551,19 +551,19 @@ for (const [key, value] of array.entries()) {
 // baz
 ```
 
-#### ▼ `forEach`関数を使用した代替法
+#### ▼ `forEach` 関数を使用した代替法
 
-反復処理のループを`continue`でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。
+反復処理のループを `continue` でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。
 
-`continue`を使用するより、こちらの方が良い。
+`continue` を使用するより、こちらの方が良い。
 
 > - https://www.deep-rain.com/programming/javascript/778#continue
 
-PHPにも、`forEach`関数と同様に配列に対してコールバック関数を適用する関数 (`find`、`fliter`、`map`、`reduce`、`some`) があり、用途に合わせて使い分ける。
+PHPにも、`forEach` 関数と同様に配列に対してコールバック関数を適用する関数 (`find`、`fliter`、`map`、`reduce`、`some`) があり、用途に合わせて使い分ける。
 
 > - https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
 
-補足としてPHPにも、`forEach`関数と同じような使い方をする`array_walk`関数がある。
+補足としてPHPにも、`forEach` 関数と同じような使い方をする `array_walk` 関数がある。
 
 > - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html
 

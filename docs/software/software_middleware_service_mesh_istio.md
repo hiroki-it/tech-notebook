@@ -202,7 +202,7 @@ L3/L4/L7に対応している。
 
 実は、サービスメッシュ内のPod間通信では、kube-proxyは使用しない。
 
-`istio-init`コンテナは、`istio-iptables`コマンドを実行し、iptablesのルールを書き換える。
+`istio-init` コンテナは、`istio-iptables` コマンドを実行し、iptablesのルールを書き換える。
 
 これにより、送信元Podから宛先Podに直接通信できるようになる。
 
@@ -260,11 +260,11 @@ L3/L4/L7に対応している。
 
 定義されていないが通信が許可されているサービスメッシュ外の送信元 (`InPassthroughCluster`) ／宛先 (`OutboundPassthroughCluster`) のこと。
 
-Istio `v1.3`以降で、デフォルトで全てのサービスメッシュ外へのリクエストのポリシーが `ALLOW_ANY`となり、`PassthroughCluster`として扱うようになった。
+Istio `v1.3` 以降で、デフォルトで全てのサービスメッシュ外へのリクエストのポリシーが `ALLOW_ANY` となり、`PassthroughCluster` として扱うようになった。
 
 ServiceEntryを使用すれば、名前をつけられる。
 
-注意点として、`REGISTRY_ONLY`モードを有効化すると、ServiceEntryで登録された宛先以外へのサービスメッシュ外への全通信が `BlackHoleCluster`扱いになってしまう
+注意点として、`REGISTRY_ONLY` モードを有効化すると、ServiceEntryで登録された宛先以外へのサービスメッシュ外への全通信が `BlackHoleCluster` 扱いになってしまう
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 > - https://dev.to/hsatac/howto-find-egress-traffic-destination-in-istio-service-mesh-4l61
@@ -274,7 +274,7 @@ ServiceEntryを使用すれば、名前をつけられる。
 
 IPアドレスを指定して送信できない宛先のこと。
 
-基本的に、サービスメッシュ外へのリクエストは失敗し、`502`ステータスになる (`502 Bad Gateway`)。
+基本的に、サービスメッシュ外へのリクエストは失敗し、`502` ステータスになる (`502 Bad Gateway`)。
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 
@@ -302,19 +302,19 @@ IPアドレスを指定して送信できない宛先のこと。
 
 istio-proxyでサーキットブレイカーを実現する。
 
-ただし、サーキットブレイカー後のフォールバックは`istoi-proxy`コンテナでは実装できず、マイクロサービスで実装する必要がある。
+ただし、サーキットブレイカー後のフォールバックは `istoi-proxy` コンテナでは実装できず、マイクロサービスで実装する必要がある。
 
-istio-proxyは、送信可能な宛先がなくなると`503`レスポンスを返信する。
+istio-proxyは、送信可能な宛先がなくなると `503` レスポンスを返信する。
 
 Envoyは以下の機能を持っている。
 
 - Envoyでは、接続プールの上限を条件として、サーキットブレイカーを発動する
 - Envoyでは、ステータスコードの外れ値を条件として、ロードバランシングで異常なホストを排除する
 
-Istioでは、外れ値の排除率を`100`%とすることで、ステータスコードもサーキットブレイカーの条件にできる。
+Istioでは、外れ値の排除率を `100`%とすることで、ステータスコードもサーキットブレイカーの条件にできる。
 
 - Istioでは、接続プールの上限を条件として、サーキットブレイカーを発動する
-- Istioでは、ステータスコードの外れ値を条件を`100`%とすることにより、サーキットブレイカーを発動する
+- Istioでは、ステータスコードの外れ値を条件を `100`%とすることにより、サーキットブレイカーを発動する
 
 > - https://istio.io/latest/docs/concepts/traffic-management/#working-with-your-applications
 > - https://github.com/istio/istio/issues/20778#issuecomment-1099766930
@@ -401,7 +401,7 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、Open Policy Age
 
 ### クライアント証明書／サーバー証明書発行
 
-#### ▼ Istiodコントロールプレーン (`discovery`コンテナ) をルート認証局として使用する場合
+#### ▼ Istiodコントロールプレーン (`discovery` コンテナ) をルート認証局として使用する場合
 
 デフォルトでは、Istiodコントロールプレーンがルート認証局として働く。
 
@@ -424,7 +424,7 @@ AuthorizationPolicyで認可プロバイダー (例：Keycloak、Open Policy Age
 
 #### ▼ 外部ツールをルート認証局として使用する場合
 
-Istiodコントロールプレーン (`discovery`コンテナ) を中間認証局として使用し、ルート認証局をIstio以外に委譲できる。
+Istiodコントロールプレーン (`discovery` コンテナ) を中間認証局として使用し、ルート認証局をIstio以外に委譲できる。
 
 外部のルート認証局は、istio-proxyから送信された秘密鍵と証明書署名要求で署名済みのサーバー証明書を作成する。
 
@@ -443,7 +443,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) を中間認証�
 
 #### ▼ 相互TLS認証とは
 
-相互TLS認証を実施し、`L7`のアプリケーションデータを暗号化/復号する。
+相互TLS認証を実施し、`L7` のアプリケーションデータを暗号化/復号する。
 
 > - https://istio.io/latest/docs/concepts/security/#authentication-architecture
 
@@ -462,7 +462,7 @@ Istiodコントロールプレーン (`discovery`コンテナ) を中間認証�
 
 アウトバウンド通信、istio-proxyは宛先にHTTPSリクエストを送信する。
 
-この時、実際はタイムアウト時間を超過していても、`TLS handshake timeout`というエラーなってしまう。
+この時、実際はタイムアウト時間を超過していても、`TLS handshake timeout` というエラーなってしまう。
 
 <br>
 
@@ -482,11 +482,11 @@ istio-proxyは、テレメトリーを作成する。
 
 ### メトリクスの作成と送信
 
-istio-proxyはメトリクスの元になるデータポイントを作成し、Istiodコントロールプレーン (`discovery`コンテナ) に送信する。
+istio-proxyはメトリクスの元になるデータポイントを作成し、Istiodコントロールプレーン (`discovery` コンテナ) に送信する。
 
-Prometheusは、`discovery`コンテナの `/stats/prometheus`エンドポイント (`15090`番ポート) からメトリクスの元になるデータポイントを収集する。
+Prometheusは、`discovery` コンテナの `/stats/prometheus` エンドポイント (`15090` 番ポート) からメトリクスの元になるデータポイントを収集する。
 
-なお、istio-proxyにも `/stats/prometheus`エンドポイントはある。
+なお、istio-proxyにも `/stats/prometheus` エンドポイントはある。
 
 > - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/
 > - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=22
@@ -530,7 +530,7 @@ scrape_configs:
 
 #### ▼ カスタムリソースの場合
 
-Prometheusが `discovery`コンテナからデータポイントを取得するためには、`discovery`コンテナのPodを監視するためのServiceMonitorが必要である。
+Prometheusが `discovery` コンテナからデータポイントを取得するためには、`discovery` コンテナのPodを監視するためのServiceMonitorが必要である。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -623,11 +623,11 @@ spec:
 
 | メトリクス名  | 単位     | 説明                                                                                                                              |
 | ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `istio_build` | カウント | Istioの各コンポーネントの情報を表す。`istio_build{component="pilot"}`とすることで、Istiodコントロールプレーンの情報を取得できる。 |
+| `istio_build` | カウント | Istioの各コンポーネントの情報を表す。`istio_build{component="pilot"}` とすることで、Istiodコントロールプレーンの情報を取得できる。 |
 
 #### ▼ istio-proxyに関するメトリクス
 
-Prometheus上でメトリクスをクエリすると、Istiodコントロールプレーン (`discovery`コンテナ) から収集したデータポイントを取得できる。
+Prometheus上でメトリクスをクエリすると、Istiodコントロールプレーン (`discovery` コンテナ) から収集したデータポイントを取得できる。
 
 | メトリクス名                          | 単位     | 説明                                                                                                                                                                                   |
 | ------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -654,7 +654,7 @@ Prometheus上でメトリクスをクエリすると、Istiodコントロール�
 
 Istioを使わないと送信元IPアドレスで特定する必要があるが、プロキシによって書き換えられてしまうため、実際はかなり無理がある。
 
-Istio Ingress Gatewayを経由せずにサービスメッシュ外からインバウンド通信 (例えば、Prometheusやkubeletの`/metrics`スクレイピング) がくると、ラベル値が`unknown`になってしまう。
+Istio Ingress Gatewayを経由せずにサービスメッシュ外からインバウンド通信 (例えば、Prometheusやkubeletの `/metrics` スクレイピング) がくると、ラベル値が `unknown` になってしまう。
 
 | ラベル                           | 説明                                                                        | 例                                                                                              | 注意点                                                                                                                                                                                                                                                                |
 | -------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -665,8 +665,8 @@ Istio Ingress Gatewayを経由せずにサービスメッシュ外からイン�
 | `destination_workload`           | リクエストの宛先のDeployment名を表す。                                      | `foo-deployment                                                                                 |                                                                                                                                                                                                                                                                       |
 | `destination_workload_namespace` | 送信元のNamespace名を表す。                                                 |                                                                                                 |                                                                                                                                                                                                                                                                       |
 | `reporter`                       | データポイントの作成者を表す。istio-proxyかIngressGatewayのいずれかである。 | ・`destination` (宛先の istio-proxy)`<br>`・`source` (送信元のIngressGatewayまたは istio-proxy) |                                                                                                                                                                                                                                                                       |
-| `response_flags`                 | Envoyの `%RESPONSE_FLAGS%`変数を表す。                                      | `-` (値なし)                                                                                    |                                                                                                                                                                                                                                                                       |
-| `response_code`                  | istio-proxyが返信したレスポンスコードの値を表す。                           | `200`、`404`、`0`                                                                               | `reporter="source"`の場合、送信元istio-proxyに対して、宛先 istio-proxyがマイクロサービスから受信したステータスコードを集計する。`reporter="destination"`の場合、送信元istio-proxyに対して、宛先 istio-proxyがマイクロサービスから受信したステータスコードを集計する。 |
+| `response_flags`                 | Envoyの `%RESPONSE_FLAGS%` 変数を表す。                                      | `-` (値なし)                                                                                    |                                                                                                                                                                                                                                                                       |
+| `response_code`                  | istio-proxyが返信したレスポンスコードの値を表す。                           | `200`、`404`、`0`                                                                               | `reporter="source"` の場合、送信元istio-proxyに対して、宛先 istio-proxyがマイクロサービスから受信したステータスコードを集計する。`reporter="destination"` の場合、送信元istio-proxyに対して、宛先 istio-proxyがマイクロサービスから受信したステータスコードを集計する。 |
 | `source_app`                     | 送信元のコンテナ名を表す。                                                  | `foo-container`                                                                                 |                                                                                                                                                                                                                                                                       |
 | `source_cluster`                 | 送信元のKubernetes Cluster名を表す。                                        | `Kubernetes`                                                                                    |                                                                                                                                                                                                                                                                       |
 | `source_workload`                | 送信元のDeployment名を表す。                                                | `foo-deployment`                                                                                |                                                                                                                                                                                                                                                                       |
@@ -800,7 +800,7 @@ spec:
 
 Istioの代わりに、OpenTelemetry Collectorでスパン名を変更することもできる。
 
-あらかじめ、Telemetryで`http.url.path`という属性を設定しておく。
+あらかじめ、Telemetryで `http.url.path` という属性を設定しておく。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1

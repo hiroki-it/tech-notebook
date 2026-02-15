@@ -63,7 +63,7 @@ $ pip3 install ansible
 
 ### ディレクトリ構成規約
 
-#### ▼ `group_vars`ディレクトリの構成
+#### ▼ `group_vars` ディレクトリの構成
 
 ```yaml
 repository/
@@ -82,7 +82,7 @@ repository/
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 > - https://thinkit.co.jp/article/9871
 
-#### ▼ `host_vars`ディレクトリの構成
+#### ▼ `host_vars` ディレクトリの構成
 
 ```yaml
 repository/
@@ -97,7 +97,7 @@ repository/
 > - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
 > - https://thinkit.co.jp/article/9871
 
-#### ▼ `inventories`ディレクトリの構成
+#### ▼ `inventories` ディレクトリの構成
 
 ```yaml
 repository/
@@ -116,7 +116,7 @@ repository/
 
 > - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
 
-#### ▼ `roles`ディレクトリの構成
+#### ▼ `roles` ディレクトリの構成
 
 モノリポジトリの場合、以下とする。
 

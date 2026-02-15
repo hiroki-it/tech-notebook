@@ -114,7 +114,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 マイクロサービスアーキテクチャでは、リバースプロキシのレイテンシー (≒レスポンスタイム) が重要である。
 
-Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーが最も小さいとの結果が出ている。
+Envoy、Nginx、HAProxy、のレイテンシーの比較では、Envoyのレイテンシーがもっとも小さいとの結果が出ている。
 
 ![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
 

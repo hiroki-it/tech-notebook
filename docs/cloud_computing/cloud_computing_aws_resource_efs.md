@@ -34,7 +34,7 @@ description: AWS EFS＠AWSリソースの知見を記録しています。
 | パフォーマンスモード     |                                                                                                                                         |                                                                                                                                                                                                                                                                                                                             |
 | スループットモード       | AWS EFSのスループット性能を設定する。                                                                                                   |                                                                                                                                                                                                                                                                                                                             |
 | ライフサイクルポリシー   | しばらくリクエストされていないファイルが低頻度アクセス (IA：Infrequent Access) ストレージクラスに移動保管するまでの有効期限を設定する。 | ・ライフサイクルポリシーを有効化しない場合、スタンダードストレージクラスのみが使用される。<br>・画面から両ストレージのサイズを確認できる。<br>https://ap-northeast-1.console.aws.amazon.com/efs/home?region=ap-northeast-1#/file-systems/fs-f77d60d6                                                                        |
-| ファイルシステムポリシー | 他のAWSリソースがAWS EFSを利用する時のポリシーを設定する。                                                                              |                                                                                                                                                                                                                                                                                                                             |
+| ファイルシステムポリシー | 他のAWSリソースがAWS EFSを利用するときのポリシーを設定する。                                                                              |                                                                                                                                                                                                                                                                                                                             |
 | 自動バックアップ         | AWS Backupに定期的に保管するか否かを設定する。                                                                                          |                                                                                                                                                                                                                                                                                                                             |
 | ネットワーク             | マウントターゲットを配置するサブネット、セキュリティグループを設定する。                                                                | ・サブネットは、ファイル供給の速度の観点から、マウントターゲットにリクエストを送信するAWSリソースと同じにする。<br>・セキュリティグループは、EC2からのNFSプロトコルアクセスを許可したものを設定する。EC2のセキュリティグループを通過したアクセスのみを許可するために、IPアドレスでは、EC2のセキュリティグループを設定する。 |
 
@@ -56,7 +56,7 @@ description: AWS EFS＠AWSリソースの知見を記録しています。
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-size.png)
 
-残高は、`BurstCreditBalance`メトリクスから確認できる。
+残高は、`BurstCreditBalance` メトリクスから確認できる。
 
 このメトリクスが常に減少し続けている場合はプロビジョニングモードの方がより適切である。
 
@@ -78,7 +78,7 @@ description: AWS EFS＠AWSリソースの知見を記録しています。
 
 ### 登録
 
-`mount`コマンドを使用して、AWS EFSにマウントする。
+`mount` コマンドを使用して、AWS EFSにマウントする。
 
 ```bash
 # mount -t efs -o tls <ファイルシステムID>:<マウント元ディレクトリ> <マウントポイント>
@@ -91,9 +91,9 @@ $ mount -t efs -o tls fs-*****:/ /var/www/foo
 
 ### 解除
 
-`unmount`コマンドを使用して、AWS EFSからアンマウントする。
+`unmount` コマンドを使用して、AWS EFSからアンマウントする。
 
-`df`コマンドで、AWS EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、`unmount`コマンドを実行する。
+`df` コマンドで、AWS EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、`unmount` コマンドを実行する。
 
 ```bash
 $ df

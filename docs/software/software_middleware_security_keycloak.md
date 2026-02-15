@@ -78,7 +78,7 @@ Keycloakクラスターでは、JGroupsはInfinispanクラスターインスタ�
 
 固定されたIPとポート番号を宛先情報として使用する。
 
-`7800`番ポート (以前は`7600`番だった) を使用し、TCPプロトコルのレプリケーション通信を実施する。
+`7800` 番ポート (以前は `7600` 番だった) を使用し、TCPプロトコルのレプリケーション通信を実施する。
 
 > - https://www.keycloak.org/2019/05/keycloak-cluster-setup
 > - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
@@ -89,7 +89,7 @@ Keycloakクラスターでは、JGroupsはInfinispanクラスターインスタ�
 
 クラスターインスタンスは自身の宛先情報をサービスレジストリに登録する (セルフ登録パターン) 。
 
-`7800`番 (以前は`7600`番だった) と`57800`番のポートを使用し、TCPプロトコルのレプリケーション通信を実施する。
+`7800` 番 (以前は `7600` 番だった) と `57800` 番のポートを使用し、TCPプロトコルのレプリケーション通信を実施する。
 
 > - https://www.keycloak.org/2019/05/keycloak-cluster-setup
 > - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
@@ -101,7 +101,7 @@ Keycloakクラスターでは、JGroupsはInfinispanクラスターインスタ�
 
 ドメインレジストラはクラスターインスタンスの宛先情報をサービスレジストリに登録する (サードパーティ登録パターン) 。
 
-`7800`番ポート (以前は`7600`番だった) を使用し、TCPプロトコルのレプリケーション通信を実施する。
+`7800` 番ポート (以前は `7600` 番だった) を使用し、TCPプロトコルのレプリケーション通信を実施する。
 
 - Kubernetes環境でHeadless Serviceを作成する
 - Keycloakの環境変数を設定する
@@ -194,7 +194,7 @@ master realmでログイン後、ユーザー定義のrealmを作成すると良
 
 #### ▼ JWTの場合
 
-Keycloakクライアントは、『ヘッダー』『ペイロード』『署名』のそれぞれのJSON型データを`base64`方式によってエンコードし、ドットでつなぐ。
+Keycloakクライアントは、『ヘッダー』『ペイロード』『署名』のそれぞれのJSON型データを `base64` 方式によってエンコードし、ドットでつなぐ。
 
 これらの処理によって、JWTを作成する。
 
@@ -320,7 +320,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 
 JWTトークンの発行元IDプロバイダーの識別子である。
 
-クライアント側では`authority`値として指定する。
+クライアント側では `authority` 値として指定する。
 
 ```bash
 GET https://<Keycloakのドメイン名>/realms/<realm名>
@@ -527,7 +527,7 @@ http://localhost:8000/logout/complete?state=e18689b0503aab42574427fb575645aca006
 
 | パラメーター | 説明                                  |
 | ------------ | ------------------------------------- |
-| `state`      | リクエスト時の`state`パラメーターの値 |
+| `state`      | リクエスト時の `state` パラメーターの値 |
 
 > - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6

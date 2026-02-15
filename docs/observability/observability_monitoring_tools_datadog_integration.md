@@ -124,7 +124,7 @@ AWSリソースで作成されたメトリクス/ログ/分散トレースをDat
 
 `(4)`
 
-: トリガーとするAWSリソースの命名によって、ログの`service`属性の値が変わる。
+: トリガーとするAWSリソースの命名によって、ログの `service` 属性の値が変わる。
 
      例えば、AWS CloudWatch Logsのロググループ名が『`api-gateway-*****`』から始まる場合、`service`属性の値は`apigateway`になる。
 

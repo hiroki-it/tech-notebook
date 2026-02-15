@@ -42,7 +42,7 @@ baz:
   - quux: QUUX
 ```
 
-注意点として、`yq`コマンドはGoテンプレートをサポートしていない。
+注意点として、`yq` コマンドはGoテンプレートをサポートしていない。
 
 > - https://github.com/mikefarah/yq/issues/636
 
@@ -52,7 +52,7 @@ baz:
 
 標準入力からファイル名を入力する。
 
-`find`コマンドと組み合わせて、複数のファイルを操作する場合に使用する。
+`find` コマンドと組み合わせて、複数のファイルを操作する場合に使用する。
 
 ```bash
 $ find ./* -name "*.yaml" -exec yq 'del(.spec.foo)' -i {} \;
@@ -68,7 +68,7 @@ $ find ./* -name "*.yaml" -exec yq 'del(.spec.foo)' -i {} \;
 
 キー名を取得する。
 
-配列型のキー名を取得する場合は、`[]`を使用する。
+配列型のキー名を取得する場合は、`[]` を使用する。
 
 ```bash
 $ cat data.yaml | yq '.baz[] | keys'
@@ -93,7 +93,7 @@ $ yq -i '.metadata.namespace = "foo"' manifest.yaml
 
 #### ▼ -Pとは
 
-`json`ファイルを`yaml`ファイルに変換する。
+`json` ファイルを `yaml` ファイルに変換する。
 
 ```bash
 $ yq -P foo.json > foo.yaml
@@ -105,7 +105,7 @@ $ yq -P foo.json > foo.yaml
 
 ### reduceとは
 
-入力された`yaml`ファイルを処理し、新しい`yaml`ファイルとして出力する。
+入力された `yaml` ファイルを処理し、新しい `yaml` ファイルとして出力する。
 
 <br>
 

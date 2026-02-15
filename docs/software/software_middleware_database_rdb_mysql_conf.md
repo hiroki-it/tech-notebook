@@ -19,13 +19,13 @@ description: 設定ファイル＠MySQLの知見を記録しています。
 
 #### ▼ dnfリポジトリから
 
-`mysql`コマンドのみをインストールしたい場合はこちら。
+`mysql` コマンドのみをインストールしたい場合はこちら。
 
 ```bash
 $ dnf install -y mysql
 ```
 
-`mysql`コマンド、MySQLのRDBMSをインストールしたい場合はこちら。
+`mysql` コマンド、MySQLのRDBMSをインストールしたい場合はこちら。
 
 ```bash
 $ dnf install -y mysql-server
@@ -33,13 +33,13 @@ $ dnf install -y mysql-server
 
 #### ▼ yumリポジトリから
 
-`mysql`コマンドのみをインストールしたい場合はこちら。
+`mysql` コマンドのみをインストールしたい場合はこちら。
 
 ```bash
 $ yum install -y mysql
 ```
 
-`mysql`コマンド、MySQLのRDBMSをインストールしたい場合はこちら。
+`mysql` コマンド、MySQLのRDBMSをインストールしたい場合はこちら。
 
 ```bash
 $ yum install -y mysql mysql-server
@@ -128,15 +128,15 @@ SHOW GLOBAL VARIABLES LIKE "%time_zone";
 
 ## 02. 設定ファイルの種類 (※ Dockerの場合)
 
-### `/etc/mysql/my.cnf`ファイル
+### `/etc/mysql/my.cnf` ファイル
 
-#### ▼ `/etc/mysql/my.cnf`ファイルとは
+#### ▼ `/etc/mysql/my.cnf` ファイルとは
 
 MySQLの起動時の値を設定する。
 
-`my.cnf`ファイルは、`/etc/mysql`ディレクトリ配下に配置されている。
+`my.cnf` ファイルは、`/etc/mysql` ディレクトリ配下に配置されている。
 
-ただ実際には、`/etc/mysql/conf.d/`ディレクトリと`/etc/mysql/mysql.conf.d/`ディレクトリ配下にある`*.cnf`ファイルを読み込むようになっている。
+ただ実際には、`/etc/mysql/conf.d/` ディレクトリと `/etc/mysql/mysql.conf.d/` ディレクトリ配下にある `*.cnf` ファイルを読み込むようになっている。
 
 ```ini
 # Copyright (c) 2016, 2021, Oracle and/or its affiliates.
@@ -167,9 +167,9 @@ MySQLの起動時の値を設定する。
 
 <br>
 
-### `/var/log/mysqld.log`ファイル
+### `/var/log/mysqld.log` ファイル
 
-#### ▼ `/var/log/mysqld.log`ファイルとは
+#### ▼ `/var/log/mysqld.log` ファイルとは
 
 MySQLプロセスの実行ログを出力する。
 
@@ -190,7 +190,7 @@ $ less mysqld.log | grep "temporary password"
 
 ### mysqldセクション
 
-mysqlサーバーの`mysqld`プロセスのプールを設定する。
+mysqlサーバーの `mysqld` プロセスのプールを設定する。
 
 <br>
 
@@ -226,7 +226,7 @@ collation_server = utf8mb4_general_ci
 
 MySQLの認証方法を設定する。
 
-MySQL`v8.0`未満では、認証方法はパスワード認証であった。
+MySQL`v8.0` 未満では、認証方法はパスワード認証であった。
 
 ```ini
 [mysqld]
@@ -250,7 +250,7 @@ SELECT user, host, plugin FROM mysql.user;
 +------------------+-----------+-----------------------+
 ```
 
-MySQL`v8.0`以降では、SHA-256プラガブル認証がデフォルトになった。
+MySQL`v8.0` 以降では、SHA-256プラガブル認証がデフォルトになった。
 
 ```ini
 [mysqld]
@@ -300,11 +300,11 @@ DBの定義ファイルを配置するディレクトリを設定する。
 datadir = /var/lib/mysql
 ```
 
-#### ▼ `datadir`ディレクトリ
+#### ▼ `datadir` ディレクトリ
 
 DBの定義ファイルを管理する。
 
-基本的には`/var/lib/mysql`ディレクトリを使用するように設定されている。
+基本的には `/var/lib/mysql` ディレクトリを使用するように設定されている。
 
 DB固有の情報は、DB名のディレクトリで管理されている。
 
@@ -511,7 +511,7 @@ user = mysql
 
 ### clientセクションとは
 
-mysqlクライアントツールの`client`プロセスのプールを設定する。
+mysqlクライアントツールの `client` プロセスのプールを設定する。
 
 <br>
 

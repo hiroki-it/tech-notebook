@@ -45,7 +45,7 @@ gem "semantic_logger", "~> 4.16.1"
 
 #### ▼ add_appender
 
-`formatter`を`json`とし、ログを構造化する。
+`formatter` を `json` とし、ログを構造化する。
 
 ```ruby
 require 'semantic_logger'

@@ -13,7 +13,7 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 <br>
 
-## 01. `victoria-metrics-prod`コマンド
+## 01. `victoria-metrics-prod` コマンド
 
 ### -downsampling.period
 
@@ -23,7 +23,7 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 **＊例＊**
 
-`30`日以前のデータを`5`分ごとダウンサンプリングにする。
+`30` 日以前のデータを `5` 分ごとダウンサンプリングにする。
 
 ```bash
 $ victoria-metrics-prod -downsampling.period=30d:5m
@@ -96,7 +96,7 @@ $ victoria-metrics-prod -insert.maxQueueDuration=32
 
 DBへの書き込みの最大同時実行数を設定する。
 
-各CPUで一つずつ実行するため、 設定値はホストマシン (仮想サーバー、コンテナなど) のCPUのコア数に応じて自動的に設定される。
+各CPUで1つずつ実行するため、 設定値はホストマシン (仮想サーバー、コンテナなど) のCPUのコア数に応じて自動的に設定される。
 
 最大同時実行数を制限することで、CPUやメモリのスパイクと、それに伴うクラッシュを防げる。
 
@@ -119,7 +119,7 @@ $ victoria-metrics-prod -maxConcurrentInserts=<ホストマシンのCPUのコア
 
 メトリクスに付与できるラベルの上限数を設定する。
 
-VictoriaMetricsでは、デフォルトで`30`個しかラベルをつけられず、それ以上のラベルは切り捨てる。
+VictoriaMetricsでは、デフォルトで `30` 個しかラベルをつけられず、それ以上のラベルは切り捨てる。
 
 **＊例＊**
 
@@ -220,7 +220,7 @@ $ victoria-metrics-prod -storage.cacheSizeIndexDBTagFilters=0
 
 メトリクスを保管するディレクトリを設定する。
 
-設定したディレクトリ配下に`data`ディレクトリを作成し、これの配下にメトリクスを保管する。
+設定したディレクトリ配下に `data` ディレクトリを作成し、これの配下にメトリクスを保管する。
 
 **＊例＊**
 
@@ -236,7 +236,7 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 サーバー証明書のパスを設定する。
 
-ペアになる秘密鍵を`-tlsKeyFile`オプションで指定する必要がある。
+ペアになる秘密鍵を `-tlsKeyFile` オプションで指定する必要がある。
 
 **＊例＊**
 
@@ -254,7 +254,7 @@ $ victoria-metrics-prod -tlsCertFile=/etc/victoriametrics/server.crt -tlsKeyFile
 
 指定したURLのVictoriaMetricsのAPIからデータをエクスポートし、宛先のAPIにインポートする。
 
-`vm-native-filter-time-end`オプションを指定しなければ、`vm-native-filter-time-start`オプションの値以降のデータをエクスポートする。
+`vm-native-filter-time-end` オプションを指定しなければ、`vm-native-filter-time-start` オプションの値以降のデータをエクスポートする。
 
 ```bash
 $ vmctl-prod vm-native \
@@ -267,7 +267,7 @@ $ vmctl-prod vm-native \
 
 #### ▼ vm-native-filter-time-end
 
-エクスポートする時の終了期間を設定する。
+エクスポートするときの終了期間を設定する。
 
 ```bash
 $ vmctl-prod vm-native \

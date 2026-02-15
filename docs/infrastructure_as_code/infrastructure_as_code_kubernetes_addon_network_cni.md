@@ -17,9 +17,9 @@ description: CNI＠ネットワーク系の知見を記録しています。
 
 ### CNIとは
 
-CNIは、Cluster内に`L2`または`L3`を提供する (CNIによってさまざま) 。
+CNIは、Cluster内に `L2` または `L3` を提供する (CNIによってさまざま) 。
 
-Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。
+Podを新しく作成するときに、kubeletからのリクエストによって、新しいPodをClusterネットワークに参加させる。
 
 kubeletは、設定ファイルで指定されたCNIを実行する。
 
@@ -77,7 +77,7 @@ PodをNode内のClusterネットワークに参加させると、異なるNode�
 
 ### CNI例
 
-CNIによって、`L2`または`L3`を提供する。
+CNIによって、`L2` または `L3` を提供する。
 
 - calico-ipip (`L3`、Kubeadmで推奨)
 - flannel-vxlan (`L2`)
@@ -124,7 +124,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 ### CNI例
 
-CNIによって、`L2`または`L3`を提供する。
+CNIによって、`L2` または `L3` を提供する。
 
 - calico-bgp (`L3`、Kubeadmで推奨)
 - flannel-hostgw (`L3`)
@@ -148,7 +148,7 @@ CNIによって、`L2`または`L3`を提供する。
 
 ### CNI例
 
-CNIによって、`L2`または`L3`を提供する。
+CNIによって、`L2` または `L3` を提供する。
 
 - Aliyun
 

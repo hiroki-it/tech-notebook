@@ -35,7 +35,7 @@ mutating-admissionステップは、リクエストの内容を変更する。
 
 またvalidating-admissionステップは、リクエストを許可するか否かを決める。
 
-kube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへのフォワーディング) 時、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。
+kube-apiserverクライアント (`kubectl` クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへのフォワーディング) 時、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。
 
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png)
 
@@ -53,7 +53,7 @@ kube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソ
 
 admissionプラグインは、ビルトイン処理やユーザー定義の処理を発火させられるアドオンから構成されている。
 
-kube-apiserverの起動時に実行される`kube-apiserver`コマンドの結果から、使用しているadmissionプラグインの一覧を取得できる。
+kube-apiserverの起動時に実行される `kube-apiserver` コマンドの結果から、使用しているadmissionプラグインの一覧を取得できる。
 
 ```bash
 $ kube-apiserver -h | grep enable-admission-plugins
@@ -82,11 +82,11 @@ ValidatingAdmissionWebhook,
 
 #### ▼ Webhook系プラグインのサーバー証明書
 
-Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhookなど) では、kube-apiserverからwebhookサーバーにHTTPSリクエストを送信する時、webhookサーバーのためにSL証明書が必要である。
+Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhookなど) では、kube-apiserverからwebhookサーバーにHTTPSリクエストを送信するとき、webhookサーバーのためにSL証明書が必要である。
 
 このサーバー証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfigurationなど) で管理している。
 
-サーバー証明書を含むSecretの作成は`kube-webhook-certgen`イメージで`create`コマンドを実行することにより、Configurationへの挿入は`patch`コマンドを実行することで実現している。
+サーバー証明書を含むSecretの作成は `kube-webhook-certgen` イメージで `create` コマンドを実行することにより、Configurationへの挿入は `patch` コマンドを実行することで実現している。
 
 > - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-create
 > - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-patch

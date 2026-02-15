@@ -13,7 +13,7 @@ description: コマンド＠Dockerの知見を記録しています。
 
 <br>
 
-## 01. `docker`コマンド
+## 01. `docker` コマンド
 
 ### attach
 
@@ -35,7 +35,7 @@ $ docker attach <起動中コンテナ名>
 
 **＊例＊**
 
-キャッシュ無しで、指定のDockerfileを基に、コンテナイメージをビルドする。失敗した時は削除するように、`--force-rm`オプションを有効化するか否かを設定する。
+キャッシュ無しで、指定のDockerfileを基に、コンテナイメージをビルドする。失敗したときは削除するように、`--force-rm` オプションを有効化するか否かを設定する。
 
 ```bash
 $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージョンタグ> --force-rm=true --no-cache .
@@ -72,7 +72,7 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 
 #### ▼ buildxとは
 
-`docker build`コマンドを拡張する。
+`docker build` コマンドを拡張する。
 
 > - https://github.com/docker/buildx
 
@@ -80,7 +80,7 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 
 複数のコンテナイメージを並列的にビルドする。
 
-`--push`オプションで、ビルド後にコンテナレジストリにプッシュできる。
+`--push` オプションで、ビルド後にコンテナレジストリにプッシュできる。
 
 ```bash
 $ docker buildx bake --push
@@ -90,13 +90,13 @@ $ docker buildx bake --push
 
 コンテナイメージをビルドする。
 
-`--push`オプションで、ビルド後にコンテナレジストリにプッシュできる。
+`--push` オプションで、ビルド後にコンテナレジストリにプッシュできる。
 
 ```bash
 $ docker buildx build --push
 ```
 
-`--platform`オプションで、任意のCPUアーキテクチャに対応するコンテナイメージをビルドできる。
+`--platform` オプションで、任意のCPUアーキテクチャに対応するコンテナイメージをビルドできる。
 
 ```bash
 $ docker buildx build --platform linux/amd64
@@ -164,7 +164,7 @@ $ docker container prune
 
 #### ▼ cpとは
 
-Dockerfileの`COPY`コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにコンテナイメージをビルドを実行することは面倒のため、ホストからコンテナにコピーし、再読み出しを実行する。
+Dockerfileの `COPY` コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにコンテナイメージをビルドを実行することは面倒のため、ホストからコンテナにコピーし、再読み出しを実行する。
 
 ただし、コンテナを再作成すると元に戻ってしまうことに注意。
 
@@ -209,7 +209,7 @@ $ docker create <コンテナ名> <コンテナイメージ名>:<バージョン
 
 デタッチドモードを使用して、起動中コンテナ内でコマンドを実行する。
 
-実行するコマンドが`bash`や`shell`の場合、コンテナに通信できる。
+実行するコマンドが `bash` や `shell` の場合、コンテナに通信できる。
 
 ```bash
 # i：interactive、t：tty (対話モード)
@@ -221,9 +221,9 @@ $ docker exec -it <起動中コンテナ名> /bin/sh
 
 #### ▼ attach、execの違い
 
-まず`docker attach`コマンドでは、起動中コンテナに接続する。
+まず `docker attach` コマンドでは、起動中コンテナに接続する。
 
-`exit`コマンドを使用して、コンテナとの接続を切断した後、コンテナが停止してしまう。
+`exit` コマンドを使用して、コンテナとの接続を切断した後、コンテナが停止してしまう。
 
 ```bash
 # デタッチドモードによる起動
@@ -245,11 +245,11 @@ root        33  0.0  0.1  45696  3732 pts/1    R+   18:22   0:00 ps aux
 $ docker container ps -a --no-trunc # コンテナのフェーズがEXITedになっている
 ```
 
-一方で`docker exec`コマンドでは、起動中コンテナでコマンドを実行する。
+一方で `docker exec` コマンドでは、起動中コンテナでコマンドを実行する。
 
-実行するコマンドが`bash`や`shell`の場合、コンテナに通信できる。
+実行するコマンドが `bash` や `shell` の場合、コンテナに通信できる。
 
-`exit`コマンドを使用して、コンテナとの接続を切断した後でも、コンテナが起動し続ける。
+`exit` コマンドを使用して、コンテナとの接続を切断した後でも、コンテナが起動し続ける。
 
 ```bash
 # デタッチドモードによる起動
@@ -330,7 +330,7 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 
 起動中コンテナの全ての設定内容を取得する。
 
-`grep`とも組み合わせられる。
+`grep` とも組み合わせられる。
 
 ```bash
 $ docker inspect <起動中コンテナ名>
@@ -340,7 +340,7 @@ $ docker inspect <起動中コンテナ名> | grep IPAddress
 
 **＊例＊**
 
-json-fileドライバーを使用している時に、ログファイルの出力先を確認する。
+json-fileドライバーを使用しているときに、ログファイルの出力先を確認する。
 
 ```bash
  $ docker inspect <起動中コンテナ名> | grep LogPath
@@ -354,7 +354,7 @@ json-fileドライバーを使用している時に、ログファイルの出�
 
 #### ▼ --follow
 
-標準出力 (`/dev/stdout`) /標準エラー出力 (`/dev/stderr`) に出力されたログを表示し続ける。ロギングドライバーが`json-file`の場合のみ有効。
+標準出力 (`/dev/stdout`) /標準エラー出力 (`/dev/stderr`) に出力されたログを表示し続ける。ロギングドライバーが `json-file` の場合のみ有効。
 
 ```bash
 $ docker logs -f <コンテナ名>
@@ -364,7 +364,7 @@ $ docker logs -f <コンテナ名>
 
 **＊例＊**
 
-指定した行数だけ、ログを取得する。ロギングドライバーが`json-file`の場合のみ有効。
+指定した行数だけ、ログを取得する。ロギングドライバーが `json-file` の場合のみ有効。
 
 ```bash
 $ docker logs --follow=true --tail=500 <コンテナ名>
@@ -380,7 +380,7 @@ $ docker logs --follow=true --tail=500 <コンテナ名>
 
 #### ▼ --password-stdin
 
-コマンドへの標準入力をパスワードとしつつ、`docker login`コマンドを実行する。
+コマンドへの標準入力をパスワードとしつつ、`docker login` コマンドを実行する。
 
 ```bash
 $ echo "pass" \
@@ -411,7 +411,7 @@ $ docker network prune
 
 #### ▼ inspect
 
-複数のコンテナが稼働している時に、コンテナがいずれのネットワークを使用しているかを確認する。
+複数のコンテナが稼働しているときに、コンテナがいずれのネットワークを使用しているかを確認する。
 
 ```bash
 $ docker network inspect <ネットワーク名>
@@ -493,9 +493,9 @@ $ docker rm --force $(docker ps --all --quiet)
 
 #### ▼ --hostname
 
-コンテナ内の`/etc/hosts`ファイルで、コンテナのプライベートIPアドレスを確認できる。
+コンテナ内の `/etc/hosts` ファイルで、コンテナのプライベートIPアドレスを確認できる。
 
-`--hostname`オプションで命名していればその名前、指定していなければランダムな文字列が割り当てられる。
+`--hostname` オプションで命名していればその名前、指定していなければランダムな文字列が割り当てられる。
 
 **＊例＊**
 
@@ -516,7 +516,7 @@ ff02::2	ip6-allrouters
 
 #### ▼ --publish
 
-指定したホストポートとコンテナポートのマッピングを実行する。`--publish-all`オプションではホストポートをランダムに選択してポートマッピングを実行する。
+指定したホストポートとコンテナポートのマッピングを実行する。`--publish-all` オプションではホストポートをランダムに選択してポートマッピングを実行する。
 
 ```bash
 $ docker run -d -it --name <コンテナ名> --publish=8080:80 <コンテナイメージ名>:<バージョンタグ> /bin/bash
@@ -526,7 +526,7 @@ $ docker run -d -it --name <コンテナ名> --publish=8080:80 <コンテナイ�
 
 #### ▼ --expose
 
-他のコンテナに公開するコンテナポートを`--expose`オプションで設定できる。
+他のコンテナに公開するコンテナポートを `--expose` オプションで設定できる。
 
 これはDockerfileでEXPOSE命令として設定しても良い。
 
@@ -544,13 +544,13 @@ $ docker run -d -it --name <コンテナ名> --expose=80 <コンテナイメー�
 
 加えてそのコンテナ内でコマンドを実行する。
 
-起動時に`bash`プロセスや`shell`プロセスを実行すると、コンテナに通信できる。
+起動時に `bash` プロセスや `shell` プロセスを実行すると、コンテナに通信できる。
 
-何も渡さない場合は、デフォルトのプロセスとして`bash`プロセスが実行される。
+何も渡さない場合は、デフォルトのプロセスとして `bash` プロセスが実行される。
 
-`docker run`コマンドでは、アタッチモードとデタッチモードを選択できる。
+`docker run` コマンドでは、アタッチモードとデタッチモードを選択できる。
 
-新しく起動したコンテナを停止後に自動削除する場合は、`rm`オプションを付けるようにする。
+新しく起動したコンテナを停止後に自動削除する場合は、`rm` オプションを付けるようにする。
 
 **＊例＊**
 
@@ -562,9 +562,9 @@ $ docker run -a -it --rm --name <コンテナ名> <コンテナイメージ名>:
 $ docker run -d -it --rm --name <コンテナ名> <コンテナイメージ名>:<バージョンタグ> /bin/bash
 ```
 
-コンテナの起動時に、`bash`プロセスを実行すると以下のようなエラーが出ることがある。
+コンテナの起動時に、`bash` プロセスを実行すると以下のようなエラーが出ることがある。
 
-その場合は、`shell`プロセスを実行する。
+その場合は、`shell` プロセスを実行する。
 
 ```bash
 docker: Error response from daemon: OCI runtime create failed: container_linux.go:370: starting container process caused: exec: "/bin/bash": stat /bin/bash: no such file or directory: unknown.
@@ -600,7 +600,7 @@ $ docker run -d -it --name <コンテナ名> <コンテナイメージ名>:<バ�
 
 コンテナを起動する。
 
-`start`コマンドでは、アタッチモードによる起動しかできない。
+`start` コマンドでは、アタッチモードによる起動しかできない。
 
 **＊例＊**
 
@@ -678,7 +678,7 @@ $ docker stop $(docker ps --all --quiet)
 
 ボリュームマウントを作成する。
 
-`docker`コマンドではなく、`docker compose`コマンドで作成することが推奨である。
+`docker` コマンドではなく、`docker compose` コマンドで作成することが推奨である。
 
 **＊例＊**
 

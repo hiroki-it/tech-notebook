@@ -13,7 +13,7 @@ description: コマンド＠Kustomizeの知見を記録しています。
 
 <br>
 
-## 01. `kustomize`コマンド
+## 01. `kustomize` コマンド
 
 ### build
 
@@ -25,13 +25,13 @@ Kustomizeの設定ファイルに基づいて、マニフェストを作成す�
 $ kustomize build
 ```
 
-`kusomize build`コマンドの結果をデプロイする場合、パイプで`kubectl apply`コマンドに渡す。
+`kusomize build` コマンドの結果をデプロイする場合、パイプで `kubectl apply` コマンドに渡す。
 
 ```bash
 $ kustomize build kubectl apply -f -
 ```
 
-もしくは、`kubectl`コマンドの`-k`オプションでも`kustomization.yaml`ファイル指定してもデプロイできる。
+もしくは、`kubectl` コマンドの `-k` オプションでも `kustomization.yaml` ファイル指定してもデプロイできる。
 
 ```bash
 $ kubectl apply -k kustomization.yaml
@@ -41,7 +41,7 @@ $ kubectl apply -k kustomization.yaml
 
 #### ▼ --enable-alpha-plugins
 
-プラグインを使用して、`kustomize build`コマンドを実行する。
+プラグインを使用して、`kustomize build` コマンドを実行する。
 
 ```bash
 $ kustomize build --enable-alpha-plugins ./kustomize/overlay
@@ -65,13 +65,13 @@ $ kustomize build --output ./tmp ./kustomize/overlay
 
 <br>
 
-## 02. `kubectl`コマンドを使用したKustomizeの適用
+## 02. `kubectl` コマンドを使用したKustomizeの適用
 
 ### diff/apply -k
 
-`kustomize.yaml`ファイルを使用して、`kubectl`コマンドを実行する。
+`kustomize.yaml` ファイルを使用して、`kubectl` コマンドを実行する。
 
-ローカルマシンにある`kustomize.yaml`ファイルを使用する場合、`kustomize.yaml`ファイルのあるパスを指定する。
+ローカルマシンにある `kustomize.yaml` ファイルを使用する場合、`kustomize.yaml` ファイルのあるパスを指定する。
 
 ```bash
 $ kubectl diff -k ./ > kustomize.diff
@@ -81,7 +81,7 @@ $ kubectl apply -k ./
 
 > - https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
-リモートにある`kustomize.yaml`ファイルを使用する場合も、同じく`kustomize.yaml`ファイルのあるディレクトリのURLを指定する。
+リモートにある `kustomize.yaml` ファイルを使用する場合も、同じく `kustomize.yaml` ファイルのあるディレクトリのURLを指定する。
 
 ```bash
 $ kubectl diff -k "<リポジトリのURL>/<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>" > kustomize.diff
@@ -93,7 +93,7 @@ $ kubectl apply -k "<リポジトリのURL>/<kustomize.yamlファイルのある
 
 **＊実行例＊**
 
-例えば、argocd-cdチャートの`5.28.0`を使用する場合、これはArgoCDの`2.6.7`に対応しているため、以下の値で作成/変更する。
+例えば、argocd-cdチャートの `5.28.0` を使用する場合、これはArgoCDの `2.6.7` に対応しているため、以下の値で作成/変更する。
 
 ```bash
 $ kubectl diff -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"
@@ -101,7 +101,7 @@ $ kubectl diff -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7
 $ kubectl apply -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"
 ```
 
-例えば、aws-load-balancer-controllerチャートの`1.5.2`を使用する場合、これはaws-load-balancer-controllerの`2.5.1`に対応しているため、以下の値で作成/変更する。
+例えば、aws-load-balancer-controllerチャートの `1.5.2` を使用する場合、これはaws-load-balancer-controllerの `2.5.1` に対応しているため、以下の値で作成/変更する。
 
 ```bash
 $ kubectl diff -k "https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1"
@@ -113,7 +113,7 @@ $ kubectl apply -k "https://github.com/kubernetes-sigs/aws-load-balancer-control
 
 ### kustomize
 
-`kustomize.yaml`ファイルを使用して、テンプレートからマニフェストを作成する。
+`kustomize.yaml` ファイルを使用して、テンプレートからマニフェストを作成する。
 
 ```bash
 $ kubectl kustomize ./

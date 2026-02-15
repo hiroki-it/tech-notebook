@@ -91,7 +91,7 @@ $ circleci config validate
 
 #### ▼ 処理の展開
 
-設定ファイルを実行した時の処理を展開し、ファイルに出力できる
+設定ファイルを実行したときの処理を展開し、ファイルに出力できる
 
 ```bash
 $ circleci config process .circleci/config.yml > .circleci/process.yml
@@ -129,7 +129,7 @@ $ pbcopy < ~/.ssh/github/<秘密鍵名>
 
 `(3)`
 
-: CircleCIの`Enable SSH`ステップに表示された`ssh`コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証を実行する。
+: CircleCIの `Enable SSH` ステップに表示された `ssh` コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証を実行する。
 
 ```bash
 $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>

@@ -123,9 +123,9 @@ foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1
 
 CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。
 
-ちなみに、ここでは`foo-secrets.yaml`を渡している。
+ちなみに、ここでは `foo-secrets.yaml` を渡している。
 
-クラウドの暗号化キーを使用する場合、復号でクラウドとの通信が発生してしまうが、CI上でクラウドとの通信は不要であるため、暗号化されたまま`helm template`コマンドに渡している。。
+クラウドの暗号化キーを使用する場合、復号でクラウドとの通信が発生してしまうが、CI上でクラウドとの通信は不要であるため、暗号化されたまま `helm template` コマンドに渡している。。
 
 ```bash
 $ helm template . -f foo-values.yaml -f foo-secrets.yaml \
@@ -152,7 +152,7 @@ $ pluto list-versions -f additional-versions.yaml
 > - https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks
 > - https://github.com/FairwindsOps/pluto/blob/master/versions.yaml
 
-#### ▼ `additional-versions.yaml`ファイル
+#### ▼ `additional-versions.yaml` ファイル
 
 追加で検証するAPIグループのルールを設定する。
 
@@ -189,7 +189,7 @@ deprecated-versions:
     component: istio
 ```
 
-このファイルを`-f`オプションで渡すと、追加したAPIグループのルールを検証できるようになる。
+このファイルを `-f` オプションで渡すと、追加したAPIグループのルールを検証できるようになる。
 
 ```bash
 $ pluto list-versions -f additional-versions.yaml
@@ -201,7 +201,7 @@ Gateway                          networking.istio.io/v1alpha3           n/a     
 VirtualService                   networking.istio.io/v1beta1            n/a             n/a          n/a                                    n/a             istio
 ```
 
-Istioの主要カスタムリソースで`v1`がリリース (2024/05/14) されたので、`v1beta1`が非推奨になる日も近い...。
+Istioの主要カスタムリソースで `v1` がリリース (2024/05/14) されたので、`v1beta1` が非推奨になる日も近い...。
 
 > - https://istio.io/latest/blog/2024/v1-apis/#overview-of-istio-crds
 
@@ -211,7 +211,7 @@ Istioの主要カスタムリソースで`v1`がリリース (2024/05/14) され
 
 #### ▼ -tとは
 
-plutoで検証するターゲットコンポーネントのバージョン (`versions.yaml`ファイルの`target-versions`キー) を指定する。
+plutoで検証するターゲットコンポーネントのバージョン (`versions.yaml` ファイルの `target-versions` キー) を指定する。
 
 マイナーバージョン (例：`1.24.0`) まで指定する必要がある。
 
@@ -269,7 +269,7 @@ $ pluto detect - -o markdown
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨apiVersionを検出する。
 
-`pluto detect-api-resources`コマンドとの違いは記入中...
+`pluto detect-api-resources` コマンドとの違いは記入中...
 
 ```bash
 $ pluto detect - -o wide
@@ -289,7 +289,7 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 
 kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨apiVersionを検出する。
 
-`pluto detect`コマンドとの違いは記入中...
+`pluto detect` コマンドとの違いは記入中...
 
 ```bash
 $ pluto detect-api-resources - -o wide

@@ -15,7 +15,7 @@ description: リソース定義＠OpenTelemetryの知見を記録しています
 
 ## 01. Instrumentation
 
-### Podの`.metadata.annotations`キー
+### Podの `.metadata.annotations` キー
 
 Podにアノテーションを設定し、自動計装を実施するPodを制御できる。
 

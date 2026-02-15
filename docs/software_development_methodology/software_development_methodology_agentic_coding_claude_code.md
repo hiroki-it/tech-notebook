@@ -29,7 +29,7 @@ $ claude --allow-dangerously-skip-permissions
 
 ## 02. setting.json
 
-`~/.claude/setting.json`に設定を実装する。
+`~/.claude/setting.json` に設定を実装する。
 
 ```yaml
 {

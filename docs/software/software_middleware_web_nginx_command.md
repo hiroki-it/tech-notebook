@@ -17,7 +17,7 @@ description: コマンド＠Nginxの知見を記録しています。
 
 ### -c
 
-設定ファイルを指定して、`nginx`プロセスを実行する。
+設定ファイルを指定して、`nginx` プロセスを実行する。
 
 ```bash
 $ nginx -c ./custom-nginx.conf
@@ -27,9 +27,9 @@ $ nginx -c ./custom-nginx.conf
 
 ### reload
 
-`nginx`プロセスをGraceful Restartする。
+`nginx` プロセスをGraceful Restartする。
 
-`systemctl`コマンドでも再起動できる。
+`systemctl` コマンドでも再起動できる。
 
 ```bash
 $ nginx -s reload
@@ -44,9 +44,9 @@ $ nginx -s reload
 
 設定ファイルのバリデーションを実行する。
 
-また、読み込まれている全ての設定ファイル (`include`ディレクティブの対象も含む) の内容の一覧を取得する。
+また、読み込まれている全ての設定ファイル (`include` ディレクティブの対象も含む) の内容の一覧を取得する。
 
-`service`コマンドでもバリデーションを実行できる。
+`service` コマンドでもバリデーションを実行できる。
 
 ```bash
 $ nginx -t

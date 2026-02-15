@@ -44,13 +44,13 @@ $ php -r "unlink('composer-setup.php');"
 
 <br>
 
-### `composer.json`ファイル
+### `composer.json` ファイル
 
 #### ▼ autoload
 
 名前空間とパスの対応関係を設定する。
 
-`require`関数を使用せずに、クラスの名前空間を`use`で指定するのみでファイルを読み込めるようになる。
+`require` 関数を使用せずに、クラスの名前空間を `use` で指定するのみでファイルを読み込めるようになる。
 
 ```yaml
 {
@@ -228,27 +228,27 @@ Composerのバージョンを設定する。
 
 <br>
 
-### `composer.lock`ファイル
+### `composer.lock` ファイル
 
-プロジェクトで`composer install`コマンドが実行された時、`composer.json`ファイルでのバージョンの指定方法が『固定』以外であると、コマンドの実行タイミングによって、インストールされるバージョンが変わってしまう。
+プロジェクトで `composer install` コマンドが実行されたとき、`composer.json` ファイルでのバージョンの指定方法が『固定』以外であると、コマンドの実行タイミングによって、インストールされるバージョンが変わってしまう。
 
-インストーされるバージョンをチーム内で固定するため、プロジェクトが正しく動作するバージョンのセットを記載した`composer.lock`ファイルを作成しておく必要がある。
+インストーされるバージョンをチーム内で固定するため、プロジェクトが正しく動作するバージョンのセットを記載した `composer.lock` ファイルを作成しておく必要がある。
 
-これは、`composer update`の実行時に作成される。
+これは、`composer update` の実行時に作成される。
 
-`composer install`の実行タイミングに限らず、共通のバージョンのセットをインストールできる。
+`composer install` の実行タイミングに限らず、共通のバージョンのセットをインストールできる。
 
-もし、アプリケーションに実際にインストールされている各パッケージのバージョンを知りたい場合は、`composer.json`ファイルではなく、`composer.lock`ファイルを確認すること。
+もし、アプリケーションに実際にインストールされている各パッケージのバージョンを知りたい場合は、`composer.json` ファイルではなく、`composer.lock` ファイルを確認すること。
 
 <br>
 
-### `autoload.php`ファイル
+### `autoload.php` ファイル
 
-#### ▼ `autoload.php`ファイルとは
+#### ▼ `autoload.php` ファイルとは
 
-プロジェクト内の全てのphpファイルを名前空間に対応づけ、`require`関数を使用せずに名前空間のみでパッケージを読み込めるようにする。
+プロジェクト内の全てのphpファイルを名前空間に対応づけ、`require` 関数を使用せずに名前空間のみでパッケージを読み込めるようにする。
 
-エントリーポイント (`index.php`ファイル) あるいは`bootstrap.php`ファイルで、`autoload.php`ファイルを読み込むようにすると良い。
+エントリーポイント (`index.php` ファイル) あるいは `bootstrap.php` ファイルで、`autoload.php` ファイルを読み込むようにすると良い。
 
 ```php
 <?php
@@ -282,7 +282,7 @@ return array(
 
 #### ▼ 確認方法
 
-登録済みのphpファイルと名前空間の対応関係は、`php`コマンドで確認すると良い。
+登録済みのphpファイルと名前空間の対応関係は、`php` コマンドで確認すると良い。
 
 ```bash
 $ php -r '
@@ -307,11 +307,11 @@ $ composer clear-cache
 
 ### create-project
 
-パッケージが既に組み込まれたプロジェクトを作成する。
+パッケージがすでに組み込まれたプロジェクトを作成する。
 
-プロジェクトを`git clone`コマンドを実行することにより、プロジェクト内で`composer install`コマンドを実行することと同じである。
+プロジェクトを `git clone` コマンドを実行することにより、プロジェクト内で `composer install` コマンドを実行することと同じである。
 
-新しいディレクトリを作成しつつ、プロジェクトのファイルを展開もできるが、カレントディレクトリ配下にそのまま展開した方が便利である。
+新しいディレクトリを作成しつつ、プロジェクトのファイルを展開もできるが、カレントディレクトリ配下にそのまま展開したほうが便利である。
 
 補足として、ファイルが1つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。
 
@@ -344,19 +344,19 @@ Checking https connectivity to packagist: OK
 
 ### dump-autoload
 
-事前に設定された`autoload`プロパティを基に、クラスの名前空間とパスの対応関係を登録する。
+事前に設定された `autoload` プロパティを基に、クラスの名前空間とパスの対応関係を登録する。
 
 ```bash
 $ composer dump-autoload
 ```
 
-存在するクラスが見つからないエラーに悩まされた時は、クラスが登録されていない可能性があるため、`dump-autoload`を実行すると良い。
+存在するクラスが見つからないエラーに悩まされたときは、クラスが登録されていない可能性があるため、`dump-autoload` を実行すると良い。
 
 ```bash
  Exception : Target class [FooClass] does not exist.
 ```
 
-また、`autoload`プロパティに登録されているパスが誤っていないかも確認した方が良い。
+また、`autoload` プロパティに登録されているパスが誤っていないかも確認したほうが良い。
 
 ```yaml
 {"autoload": {"psr-4": {}}}
@@ -368,7 +368,7 @@ $ composer dump-autoload
 
 ### init
 
-対話形式で`composer.json`ファイルを作成する。
+対話形式で `composer.json` ファイルを作成する。
 
 ```bash
 $ composer init
@@ -382,7 +382,7 @@ $ composer init
 
 #### ▼ installとは
 
-事前に`composer.json`ファイルに書き込まれたパッケージを、`composer.lock`ファイルに書き込まれたバージョンでインストールする。
+事前に `composer.json` ファイルに書き込まれたパッケージを、`composer.lock` ファイルに書き込まれたバージョンでインストールする。
 
 ```bash
 $ composer install
@@ -409,7 +409,7 @@ $ composer install --no-dev
 
 #### ▼ --prefer-dist
 
-Composerの配布サイトからインストールする。`prefer-source`オプションを使用するよりも高速でインストールできる。
+Composerの配布サイトからインストールする。`prefer-source` オプションを使用するよりも高速でインストールできる。
 
 デフォルトでdistを使用するため、実際は宣言しなくても問題ない。
 
@@ -443,7 +443,7 @@ $ composer reinstall <パッケージ名>
 
 再インストールで問題を解決できなければ、全てのパッケージを再インストールすると良い。
 
-composerキャッシュと`vendor`ディレクトリを削除し、`composer install`コマンドを実行する。
+composerキャッシュと `vendor` ディレクトリを削除し、`composer install` コマンドを実行する。
 
 ```bash
 $ composer clearcache
@@ -457,7 +457,7 @@ $ composer install -vvv
 
 #### ▼ removeとは
 
-パッケージを`composer.json`ファイルと`composer.lock`ファイルの両方から削除する。
+パッケージを `composer.json` ファイルと `composer.lock` ファイルの両方から削除する。
 
 ```bash
 $ composer remove <パッケージ名>
@@ -472,7 +472,7 @@ $ composer remove <パッケージ名>
 
 #### ▼ requireとは
 
-パッケージ名を`composer.json`ファイルと`composer.lock`ファイルの両方に書き込み、インストールする。
+パッケージ名を `composer.json` ファイルと `composer.lock` ファイルの両方に書き込み、インストールする。
 
 または、パッケージのアップグレード/ダウングレードする場合、パッケージのバージョンを書き換える。
 
@@ -489,7 +489,7 @@ $ composer require <パッケージ名>:^1.0
 
 ### scripts
 
-事前に設定された`scripts`プロパティに設定されたスクリプトを実行する。
+事前に設定された `scripts` プロパティに設定されたスクリプトを実行する。
 
 ```bash
 $ composer <スクリプト名>
@@ -501,11 +501,11 @@ $ composer <スクリプト名>
 
 #### ▼ updateとは
 
-事前に`composer.json`ファイルに書き込まれたパッケージを最新のバージョンでインストールし、`composer.lock`ファイルを書き換える。
+事前に `composer.json` ファイルに書き込まれたパッケージを最新のバージョンでインストールし、`composer.lock` ファイルを書き換える。
 
-`composer.lock`ファイルに全てのパッケージ情報を書き込むため、リポジトリの利用者がインストールするパッケージにも影響を与える。
+`composer.lock` ファイルに全てのパッケージ情報を書き込むため、リポジトリの利用者がインストールするパッケージにも影響を与える。
 
-パッケージ内でエラーが発生したら、`composer update`コマンドによるパッケージの更新が原因だと考えた方が良い。
+パッケージ内でエラーが発生したら、`composer update` コマンドによるパッケージの更新が原因だと考えたほうが良い。
 
 いずれかのパッケージで新バージョンがリリースされたが、これに不具合があった可能性が高い。
 

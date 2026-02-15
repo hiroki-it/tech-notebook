@@ -21,7 +21,7 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 ## 02. 種類
 
-### `L7`ロードバランサー
+### `L7` ロードバランサー
 
 - 外部HTTPS負荷分散プロキシ
 - 内部HTTPS負荷分散プロキシ
@@ -32,7 +32,7 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 <br>
 
-### `L4`ロードバランサー
+### `L4` ロードバランサー
 
 - TCP/SSLプロキシ負荷分散プロキシ
 - TCP/UDPネットワーク負荷分散パススルー

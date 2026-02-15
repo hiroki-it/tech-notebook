@@ -19,7 +19,7 @@ description: コマンド＠Helmfileの知見を記録しています。
 
 #### ▼ オプション無し
 
-使用する`helmfile.d`ディレクトリ下にある`helm.yaml`ファイルを再帰的に使用する。
+使用する `helmfile.d` ディレクトリ下にある `helm.yaml` ファイルを再帰的に使用する。
 
 ```bash
 # helmfile.dディレクトリ配下を再帰的に読み込む。
@@ -50,7 +50,7 @@ $ helmfile -e prd apply
 
 #### ▼ -f
 
-使用する`helmfile.yaml`ファイルを指定する。
+使用する `helmfile.yaml` ファイルを指定する。
 
 ```bash
 $ helmfile -e prd -f ./helmfile.yaml <コマンド>
@@ -89,9 +89,9 @@ $ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
 
 #### ▼ apply
 
-まず`helmfile diff`コマンドを実行することにより、この時に差分があれば、`helmfile sync`コマンドを実行する。
+まず `helmfile diff` コマンドを実行することにより、この時に差分があれば、`helmfile sync` コマンドを実行する。
 
-`helmfile sync`コマンドとは異なり、Helmリリース間に差分がないと、リビジョンは更新されない。
+`helmfile sync` コマンドとは異なり、Helmリリース間に差分がないと、リビジョンは更新されない。
 
 注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。
 
@@ -122,7 +122,7 @@ foo-release         ./charts/foo         0.0.1
 
 CRDの作成をスキップする。
 
-`kubectl apply`コマンドでCRDを作成した場合に役立つ。
+`kubectl apply` コマンドでCRDを作成した場合に役立つ。
 
 注意点として、CRDの更新はHelmがサポートしていないため、あくまで作成をスキップする。
 
@@ -132,7 +132,7 @@ $ helmfile -e prd apply --skip-crds
 
 #### ▼ --skip-diff-on-install
 
-`helmfile apply`コマンド時に`helmfile diff`コマンドを実行しない。
+`helmfile apply` コマンド時に `helmfile diff` コマンドを実行しない。
 
 ```bash
 $ helmfile -e prd apply --skip-diff-on-install
@@ -156,11 +156,11 @@ $ helmfile -e prd destroy
 
 > - https://helmfile.readthedocs.io/en/latest/#destroy
 
-#### ▼ 特定のHelmリリースのみ`destroy`したい
+#### ▼ 特定のHelmリリースのみ `destroy` したい
 
-`helmfile`コマンドで複数のHelmリリースを一緒に管理している場合、特定のHelmリリースのみ`destroy`できない。
+`helmfile` コマンドで複数のHelmリリースを一緒に管理している場合、特定のHelmリリースのみ `destroy` できない。
 
-代わりに、`helm uninstall`コマンドで特定のHelmリリースを削除する。
+代わりに、`helm uninstall` コマンドで特定のHelmリリースを削除する。
 
 ```bash
 $ helm uninstall <Helmリリース名>
@@ -194,7 +194,7 @@ baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
 
 全てのHelmリリースに対して、helm-diffプラグインを実行する。
 
-helm-diffプラグインでは、前回のHelmリリースと、今回の`helm upgrade --dry-run`コマンドの差分を取得する。
+helm-diffプラグインでは、前回のHelmリリースと、今回の `helm upgrade --dry-run` コマンドの差分を取得する。
 
 ```bash
 $ helmfile -e prd diff
@@ -205,12 +205,12 @@ $ helmfile -e prd diff
 
 #### ▼ --debug
 
-オプションの無い`helmfile diff`では、以下の出力になってしまう。
+オプションの無い `helmfile diff` では、以下の出力になってしまう。
 
 - Secretに出力された値がエンコードされてしまっている。
-- `helm upgrade --dry-run`コマンドのどの段階でエラーになったかがわからない。
+- `helm upgrade --dry-run` コマンドのどの段階でエラーになったかがわからない。
 
-`--debug`オプションであれば、これらを確認できる。
+`--debug` オプションであれば、これらを確認できる。
 
 ```bash
 $ helmfile -e prd --debug diff
@@ -218,9 +218,9 @@ $ helmfile -e prd --debug diff
 
 #### ▼ 色付け
 
-`helmfile diff`コマンドでは、差分を色付けできる。
+`helmfile diff` コマンドでは、差分を色付けできる。
 
-ただ、バージョンによって機能しないことがあるため、その場合は明示的に`HELM_DIFF_COLOR`変数を有効化する。
+ただ、バージョンによって機能しないことがあるため、その場合は明示的に `HELM_DIFF_COLOR` 変数を有効化する。
 
 ```bash
 $ HELM_DIFF_COLOR=true helmfile -e prd diff
@@ -230,9 +230,9 @@ $ HELM_DIFF_COLOR=true helmfile -e prd diff
 
 #### ▼ grepとの組み合わせ
 
-マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握した方がよい。
+マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握したほうがよい。
 
-`grep`コマンドを使用して、差分のあるリソースやファイルを確認しておく。
+`grep` コマンドを使用して、差分のあるリソースやファイルを確認しておく。
 
 ```bash
 $ helmfile -e prd diff | grep kind
@@ -258,9 +258,9 @@ Source: project/manifests/persistent-volume.yaml
 
 #### ▼ syncとは
 
-全てのHelmリリースに関して、`helm upgrade --install`コマンドを実行する。
+全てのHelmリリースに関して、`helm upgrade --install` コマンドを実行する。
 
-`helmfile apply`コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョンを更新する。
+`helmfile apply` コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョンを更新する。
 
 注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。
 
@@ -277,7 +277,7 @@ $ helmfile -e prd sync
 
 #### ▼ templateとは
 
-全てのHelmリリースに関して、`helm template`コマンドを実行する。
+全てのHelmリリースに関して、`helm template` コマンドを実行する。
 
 ```bash
 $ helmfile -e prd template
@@ -285,7 +285,7 @@ $ helmfile -e prd template
 
 #### ▼ --include-crds
 
-CRDも含めて、`helm template`コマンドを実行する。
+CRDも含めて、`helm template` コマンドを実行する。
 
 ```bash
 $ helmfile -e prd template --include-crds
@@ -297,11 +297,11 @@ $ helmfile -e prd template --include-crds
 
 #### ▼ write-valuesとは
 
-個人的に感動したコマンド。`helmfile`コマンドの実行で使用される`values`ファイルを、ファイルに書き出す。
+個人的に感動したコマンド。`helmfile` コマンドの実行で使用される `values` ファイルを、ファイルに書き出す。
 
-複数の`values`ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた`values`ファイルが優先されるようになっている。
+複数の `values` ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた `values` ファイルが優先されるようになっている。
 
-この時に、`helmfile write-values`コマンドを使用すると、優先された値で定義された`values`ファイルを確認できる。
+この時に、`helmfile write-values` コマンドを使用すると、優先された値で定義された `values` ファイルを確認できる。
 
 ```bash
 $ helmfile -e prd -f ./helmfile.yaml write-values

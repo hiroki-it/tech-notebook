@@ -29,21 +29,21 @@ $ brew install sops
 
 #### ▼ 平文ファイル
 
-`yaml`ファイル、`.env`ファイルなどを暗号化できる。
+`yaml` ファイル、`.env` ファイルなどを暗号化できる。
 
-暗号化すると、`secrets`ファイルになる。
+暗号化すると、`secrets` ファイルになる。
 
-#### ▼ `secrets`ファイル
+#### ▼ `secrets` ファイル
 
 SOPSによって暗号化されたファイルであり、キーバリュー型ストアとして機能する。
 
-`sops`キー以下に暗号化の設定値が記載される。
+`sops` キー以下に暗号化の設定値が記載される。
 
 他のキーバリュー型ストア (例：Hashicorp Vaultなど) よりも安全で、またクラウドキーバリュー型ストア (例：AWS パラメーターストアなど) よりも簡単に変数を管理できる。
 
 **＊実装例＊**
 
-ここでは、`yaml`ファイルを暗号化する。
+ここでは、`yaml` ファイルを暗号化する。
 
 ```bash
 # 平文ファイル
@@ -90,9 +90,9 @@ sops:
 
 > - https://blog.serverworks.co.jp/encypt-secrets-by-sops
 
-#### ▼ `.sops.yaml`ファイルを使用する場合
+#### ▼ `.sops.yaml` ファイルを使用する場合
 
-`sops`コマンドのパラメーターを定義する。
+`sops` コマンドのパラメーターを定義する。
 
 コマンドを実行するディレクトリに配置しておく必要がある。
 
@@ -117,9 +117,9 @@ creation_rules:
 $ sops -e ./values/foo-values.yaml
 ```
 
-#### ▼ `.sops.yaml`ファイルを使用しない場合
+#### ▼ `.sops.yaml` ファイルを使用しない場合
 
-`.sops.yaml`ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。
+`.sops.yaml` ファイルを使用しない場合は、環境変数でパラメーターを渡す必要がある。
 
 ```bash
 $ export SOPS_KMS_ARN="arn:aws:kms:ap-northeast-1:<AWSアカウントID>:key/*****"
@@ -133,7 +133,7 @@ $ sops -e ./values/foo-values.yaml -k $SOPS_KMS_ARN
 
 ### 環境変数
 
-`EnvVar`キーの定義された項目を参照せよ。
+`EnvVar` キーの定義された項目を参照せよ。
 
 > - https://github.com/getsops/sops/blob/v3.7.3/cmd/sops/main.go#L542-L701
 
@@ -143,7 +143,7 @@ $ sops -e ./values/foo-values.yaml -k $SOPS_KMS_ARN
 
 #### ▼ -d
 
-`yaml`ファイルや`json`ファイルの値の部分を復号する。
+`yaml` ファイルや `json` ファイルの値の部分を復号する。
 
 標準出力に出力されるため、ファイルに書き出すようにすると良い。
 
@@ -159,9 +159,9 @@ $ sops -d ./secrets/foo-secrets.yaml > ./values/foo-values.yaml
 
 #### ▼ -e
 
-外部の暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGPなど) に基づいて、`yaml`ファイルや`json`ファイルの値の部分を暗号化する。
+外部の暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGPなど) に基づいて、`yaml` ファイルや `json` ファイルの値の部分を暗号化する。
 
-環境変数や`.sops.yaml`ファイルで暗号化ルールを定義しておく必要がある。
+環境変数や `.sops.yaml` ファイルで暗号化ルールを定義しておく必要がある。
 
 標準出力に出力されるため、ファイルに書き出すようにすると良い。
 

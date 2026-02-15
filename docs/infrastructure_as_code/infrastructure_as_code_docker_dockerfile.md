@@ -29,7 +29,7 @@ $ apt-get install -y \
 
 > - https://docs.docker.com/engine/install/ubuntu/#install-docker-engine
 
-`docker`プロセスをデーモンとして起動する。
+`docker` プロセスをデーモンとして起動する。
 
 ```bash
 $ systemctl start docker
@@ -45,11 +45,11 @@ $ systemctl start docker
 
 ビルドに失敗したコンテナイメージからコンテナを作成し、接続する。
 
-`rm`オプションを設定し、接続の切断後にコンテナを削除する。
+`rm` オプションを設定し、接続の切断後にコンテナを削除する。
 
-Dockerfileで、コンテナイメージのプロセスの起動コマンドを`ENTRYPOINT`で設定している場合は、後から上書きできなくなる。
+Dockerfileで、コンテナイメージのプロセスの起動コマンドを `ENTRYPOINT` で設定している場合は、後から上書きできなくなる。
 
-そのため、`docker run`コマンドの引数として新しいコマンドを渡せずに、デバッグできないことがある。
+そのため、`docker run` コマンドの引数として新しいコマンドを渡せずに、デバッグできないことがある。
 
 ```bash
 $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/bash
@@ -67,7 +67,7 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 ### ADDとは
 
-ホスト側のファイルを、コンテナの指定ディレクトリ配下にコピーし、このファイルが`tar`ファイルの場合は解凍する。
+ホスト側のファイルを、コンテナの指定ディレクトリ配下にコピーし、このファイルが `tar` ファイルの場合は解凍する。
 
 また、URLを直接的に指定して、ダウンロードから解凍までを実行もできる。
 
@@ -77,15 +77,15 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 ### COPYとの違い
 
-似た命令として`COPY`処理がある。
+似た命令として `COPY` 処理がある。
 
-`ADD`処理は`COPY`処理とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。
+`ADD` 処理は `COPY` 処理とは異なり、インターネットからファイルをダウンロードして解凍したうえで、コピーする。
 
-解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、`COPY`処理が推奨である。
+解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、`COPY` 処理が推奨である。
 
 **＊実装例＊**
 
-以下では`ADD`処理を使用している。
+以下では `ADD` 処理を使用している。
 
 URLを直接的に指定し、ダウンロードから解凍までを実行している。
 
@@ -118,9 +118,9 @@ Dockerfileの命令で扱える変数を定義する。
 
 ### ENVとの違い
 
-似た命令として`ENV`がある。
+似た命令として `ENV` がある。
 
-`ARG`も`ENV`と同様に、`RUN`命令内で変数展開できる。ただし、`ARG`はビルド時のみ有効で、コンテナ実行時には参照できない点が異なる。
+`ARG` も `ENV` と同様に、`RUN` 命令内で変数展開できる。ただし、`ARG` はビルド時のみ有効で、コンテナ実行時には参照できない点が異なる。
 
 ```dockerfile
 # ARGは、ビルド時のRUN命令内で変数展開できる。
@@ -171,7 +171,7 @@ RUN pyenv install ${PYTHON_VERSION}
 
 #### ▼ FROMより前のARG
 
-`FROM`より前で使用した`ARGS`は、後続含めて`FROM`でしか使用できない。
+`FROM` より前で使用した `ARGS` は、後続含めて `FROM` でしか使用できない。
 
 ```dockerfile
 ARG PYTHON_VERSION="3.8.0"
@@ -184,7 +184,7 @@ RUN echo $PYTHON_VERSION
 FROM python:${PYTHON_VERSION}
 ```
 
-もし`FROM`内で使用する場合は、変数の再宣言が必要である。
+もし `FROM` 内で使用する場合は、変数の再宣言が必要である。
 
 値の格納は不要である。
 
@@ -212,7 +212,7 @@ FROM python:${PYTHON_VERSION}
 
 イメージのプロセスの起動コマンドを実行する。
 
-パラメーターの記述形式には、文字列形式、`json`形式がある。
+パラメーターの記述形式には、文字列形式、`json` 形式がある。
 
 > - https://docs.docker.com/engine/reference/builder/#cmd
 
@@ -220,9 +220,9 @@ FROM python:${PYTHON_VERSION}
 
 ### 注意点
 
-Dockerfileで`CMD`を指定しない場合、コンテナイメージのデフォルトのバイナリファイルが割り当てられる。
+Dockerfileで `CMD` を指定しない場合、コンテナイメージのデフォルトのバイナリファイルが割り当てられる。
 
-一旦、デフォルトのバイナリファイルを確認した後に、これをDockerfileに明示的に実装する。
+いったん、デフォルトのバイナリファイルを確認した後に、これをDockerfileに明示的に実装する。
 
 ```bash
 CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS                    NAMES
@@ -231,9 +231,9 @@ CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS        
 
 静的型付け言語ではプロセスの起動時に、代わりにアーティファクトのバイナリファイルを実行しても良い。
 
-その場合、`bin`ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる。
+その場合、`bin` ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる。
 
-しかし、`bin`ディレクトリへの認可スコープがないことがあるため、その場合は、1つ下にディレクトリを作成し、そこにバイナリファイルを配置するようにする。
+しかし、`bin` ディレクトリへの認可スコープがないことがあるため、その場合は、1つ下にディレクトリを作成し、そこにバイナリファイルを配置するようにする。
 
 ```bash
 # /go/bin にアクセスできない時は、/go/bin/cmdにアーティファクトを配置する。
@@ -252,13 +252,13 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 COPY ./src src/
 ```
 
-コンテナ側のパスは、`WORKDIR`をルートとした相対パスで定義できるが、絶対パスで指定した方がわかりやすい。
+コンテナ側のパスは、`WORKDIR` をルートとした相対パスで定義できるが、絶対パスで指定したほうがわかりやすい。
 
 ディレクトリ内の複数ファイルを丸ごとコンテナ内にコピーする場合は、『`/`』で終える必要がある。
 
 イメージのビルド時にコピーされるのみで、ビルド後のコードの変更は反映されない。
 
-設定ファイル (例：`nginx.conf`ファイル、`php.ini`ファイル) をホストからコンテナにコピーしたい時によく使用する。
+設定ファイル (例：`nginx.conf` ファイル、`php.ini` ファイル) をホストからコンテナにコピーしたいときによく使用する。
 
 > - https://docs.docker.com/engine/reference/builder/#copy
 
@@ -292,13 +292,13 @@ COPY --from=nginx:latest /etc/nginx/nginx.conf /nginx.conf
 
 ### CMDとの違い
 
-似た命令として`CMD`がある。
+似た命令として `CMD` がある。
 
-`CMD`とは異なり、後から上書き実行できない。
+`CMD` とは異なり、後から上書き実行できない。
 
 使用者に、コンテナの起動方法を強制させたい場合に適する。
 
-イメージのプロセスの起動コマンドを後から上書きできなくなるため、`docker run`コマンドの引数として新しいコマンドを渡せずに、デバッグできないことがある。
+イメージのプロセスの起動コマンドを後から上書きできなくなるため、`docker run` コマンドの引数として新しいコマンドを渡せずに、デバッグできないことがある。
 
 ```bash
 # 上書きできず、失敗してしまう。
@@ -323,7 +323,7 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 他のコンテナに対してコンテナポートを開放する。
 
-また、コンテナイメージの利用者にとってのドキュメンテーション機能もあり、ポートマッピングを実行する時に使用できるコンテナポートとして保証する機能もある。
+また、コンテナイメージの利用者にとってのドキュメンテーション機能もあり、ポートマッピングを実行するときに使用できるコンテナポートとして保証する機能もある。
 
 ホスト側からはアクセスできないことに注意する。
 
@@ -340,7 +340,7 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 ただし、多くの場合デフォルトでこれが設定されている。
 
-例えば、PHP-FPMでは、`/usr/local/etc/www.conf.default`ファイルと`/usr/local/etc/php-fpm.d/www.conf`ファイルには、`listen`オプションの値に`127.0.0.1:9000`が割り当てられている。
+例えば、PHP-FPMでは、`/usr/local/etc/www.conf.default` ファイルと `/usr/local/etc/php-fpm.d/www.conf` ファイルには、`listen` オプションの値に `127.0.0.1:9000` が割り当てられている。
 
 <br>
 
@@ -364,7 +364,7 @@ FROM python:latest-slim
 
 #### ▼ DockerHub
 
-PHP-FPMをインストールする場合は、`php:8.0-fpm`である。
+PHP-FPMをインストールする場合は、`php:8.0-fpm` である。
 
 > - https://hub.docker.com/_/php
 
@@ -372,7 +372,7 @@ PHP-FPMをインストールする場合は、`php:8.0-fpm`である。
 
 パブリックなAWS ECR、Google Container Registry、Google Cloud Artifact Registry、RedHat Quay、からイメージをプルする。
 
-ECRパブリックギャラリーからPHP-FPMをインストールする場合は、`public.ecr.aws/bitnami/php-fpm:latest`である。
+ECRパブリックギャラリーからPHP-FPMをインストールする場合は、`public.ecr.aws/bitnami/php-fpm:latest` である。
 
 > - https://gallery.ecr.aws/bitnami/php-fpm
 
@@ -380,7 +380,7 @@ ECRパブリックギャラリーからPHP-FPMをインストールする場合�
 
 プライベートなAWS ECR、Google Container Registry、Google Cloud Artifact Registry、RedHat Quay、からイメージをプルする。
 
-ECRプライベートレジストリからPHP-FPMをインストールする場合は、`<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest`である。
+ECRプライベートレジストリからPHP-FPMをインストールする場合は、`<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest` である。
 
 > - https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1
 
@@ -412,7 +412,7 @@ FROM python@sha256:*****
 
 #### ▼ DockerHub
 
-DockerHubのレートリミットは、匿名アカウントであれば`100`プル/`6`時間、無料アカウントであれば`200`プル/`6`時間、である。
+DockerHubのレートリミットは、匿名アカウントであれば `100` プル/`6` 時間、無料アカウントであれば `200` プル/`6` 時間、である。
 
 CIパイプライン上でコンテナイメージをビルドしていると、これにひっかかりやすい。
 
@@ -422,7 +422,7 @@ CIパイプライン上でコンテナイメージをビルドしていると、
 
 #### ▼ crane
 
-`crane`コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。
+`crane` コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。
 
 ```bash
 # AWS ECRにログインする
@@ -437,7 +437,7 @@ $ crane copy nginx:<バージョン> *****.dkr.ecr.ap-northeast-1.amazonaws.com/
 
 #### ▼ krane
 
-`crane auth`コマンドを簡略化したコマンド
+`crane auth` コマンドを簡略化したコマンド
 
 <br>
 
@@ -445,7 +445,7 @@ $ crane copy nginx:<バージョン> *****.dkr.ecr.ap-northeast-1.amazonaws.com/
 
 #### ▼ CPUアーキテクチャの指定
 
-`docker buildx`コマンドを実行し、複数のCPUアーキテクチャに対応したコンテナイメージを作成する。
+`docker buildx` コマンドを実行し、複数のCPUアーキテクチャに対応したコンテナイメージを作成する。
 
 イメージの対応するCPUアーキテクチャ (例：Intel、AMD、ARM) を設定する。
 
@@ -457,9 +457,9 @@ FROM --platform=linux/amd64 python:latest-slim
 
 > - https://stackoverflow.com/questions/60251383/dockerfile-from-platform-option
 
-#### ▼ `docker buildx`コマンドのセットアップ
+#### ▼ `docker buildx` コマンドのセットアップ
 
-`docker buildx`コマンド時に、`Multi-platform build is not supported for the docker driver.`というエラーになることがある。
+`docker buildx` コマンド時に、`Multi-platform build is not supported for the docker driver.` というエラーになることがある。
 
 これのために、マルチCPUアーキテクチャをビルドする実行環境を構築する必要がある。
 

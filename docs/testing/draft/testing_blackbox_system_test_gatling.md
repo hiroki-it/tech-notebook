@@ -27,7 +27,7 @@ $ apt-get install gatling
 
 ## 02. 設定ファイル
 
-### `gatling.conf`ファイル
+### `gatling.conf` ファイル
 
 #### ▼ charting
 

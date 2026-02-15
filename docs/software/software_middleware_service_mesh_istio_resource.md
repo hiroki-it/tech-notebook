@@ -24,7 +24,7 @@ description: リソース＠Istioの知見を記録しています。
 
 ### ルートへの変換
 
-いずれのIstioリソースがルートに変換されたかは、ルートの`metadata.filter_metadata`キーで確認できる。
+いずれのIstioリソースがルートに変換されたかは、ルートの `metadata.filter_metadata` キーで確認できる。
 
 ```yaml
 metadata:
@@ -37,7 +37,7 @@ metadata:
 
 ### クラスターへの変換
 
-いずれのIstioリソースがクラスターに変換されたかは、クラスターの`metadata.filter_metadata`キーで確認できる。
+いずれのIstioリソースがクラスターに変換されたかは、クラスターの `metadata.filter_metadata` キーで確認できる。
 
 ```yaml
 metadata:
@@ -137,7 +137,7 @@ configs:
 
 ### Istio Ingress Gatewayとは
 
-サービスメッシュ内宛の通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
+サービスメッシュ内宛の通信をロードバランシングする `L4`/`L7` ロードバランサーを作成する。
 
 GatewayとVirtualServiceの設定値に基づいて、Node外からインバウンド通信を受信し、Podにルーティングする。
 
@@ -156,8 +156,8 @@ KubernetesリソースのIngressの代わりとして使用できる。
 
 Istio Ingress Gatewayは、以下から構成される。
 
-- `istio-ingressgateway`というService (NodePort ServiceまたはLoadBalancer Service)
-- Deployment配下の`istio-ingressgateway-*****`というPod (istio-proxyのみが稼働)
+- `istio-ingressgateway` というService (NodePort ServiceまたはLoadBalancer Service)
+- Deployment配下の `istio-ingressgateway-*****` というPod (istio-proxyのみが稼働)
 
 Serviceは、おおよそGatewayの設定で決まる。
 
@@ -265,7 +265,7 @@ spec:
 
 #### ▼ 宛先Podに接続できない
 
-`upstream connect error or disconnect/reset before headers. reset reason: connection termination`というエラーになる。
+`upstream connect error or disconnect/reset before headers. reset reason: connection termination` というエラーになる。
 
 以下の場合がある。
 
@@ -282,7 +282,7 @@ spec:
 
 ### Istio Egress Gatewayとは
 
-Istio Egress Gatewayは、サービスメッシュ外宛ての通信をロードバランシングする`L4`/`L7`ロードバランサーを作成する。
+Istio Egress Gatewayは、サービスメッシュ外宛ての通信をロードバランシングする `L4`/`L7` ロードバランサーを作成する。
 
 Clusterネットワーク内から通信を受信し、フィルタリングした後、Cluster外 (例：外部マイクロサービス、外部サービスのAPI、データベース、メッセージキューなど) にルーティングする。
 
@@ -364,7 +364,7 @@ Istio Ingress Gateway (厳密に言うとGateway) は、独自プロトコル (�
 
 #### ▼ ロードバランサーで使用する場合
 
-VirtualServiceは、Istio Ingress Gatewayの一部として、受信した`L4`/`L7`通信をJWTトークンleに紐づくPodにルーティングする。
+VirtualServiceは、Istio Ingress Gatewayの一部として、受信した `L4`/`L7` 通信をJWTトークンleに紐づくPodにルーティングする。
 
 ![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
 
@@ -530,14 +530,14 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 ### プラクティス
 
-#### ▼ `404`ステータス
+#### ▼ `404` ステータス
 
-以下の理由などでVirtualServiceの設定が誤っていると、`404`レスポンスを返信する。
+以下の理由などでVirtualServiceの設定が誤っていると、`404` レスポンスを返信する。
 
-- Gatewayで受信した通信の`Host`ヘッダーとVirtualServiceのそれが合致していない
-- VirtualServiceの`.spec.exportTo`キーで`.`を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)
+- Gatewayで受信した通信の `Host` ヘッダーとVirtualServiceのそれが合致していない
+- VirtualServiceの `.spec.exportTo` キーで `.` を設定したことにより、Gatewayがルーティング先のVirtualServiceを見つけられない (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)
 
-`istioctl proxy-config route`コマンドで、Gatewayに紐づくVirtualServiceがいるかを確認できる。
+`istioctl proxy-config route` コマンドで、Gatewayに紐づくVirtualServiceがいるかを確認できる。
 
 ```bash
 # VirtualServiceが404になっている。
@@ -555,14 +555,14 @@ http.50004     blackhole:50004     *           /*                     404
 > - https://stackoverflow.com/a/73824193
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 
-#### ▼ `503`ステータス
+#### ▼ `503` ステータス
 
-以下の理由などでVirtualServiceの設定が誤っていると、`503`レスポンスを返信する。
+以下の理由などでVirtualServiceの設定が誤っていると、`503` レスポンスを返信する。
 
-- VirtualServiceで受信した通信の`Host`ヘッダーとJWTトークンleのそれが合致していない
-- JWTトークンleの`.spec.exportTo`キーで`.`を設定したことにより、VirtualServiceがルーティング先のJWTトークンleが見つけられない。 (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)
+- VirtualServiceで受信した通信の `Host` ヘッダーとJWTトークンleのそれが合致していない
+- JWTトークンleの `.spec.exportTo` キーで `.` を設定したことにより、VirtualServiceがルーティング先のJWTトークンleが見つけられない。 (Istio Ingress Gatewayからリクエストを受信するPodでは要注意)
 
-`istioctl proxy-config cluster`コマンドで、VirtualServiceに紐づくJWTトークンleがいるかを確認できる。
+`istioctl proxy-config cluster` コマンドで、VirtualServiceに紐づくJWTトークンleがいるかを確認できる。
 
 ```bash
 # helloworldでは、紐づくDestinationが見つからない
@@ -585,7 +585,7 @@ httpbin-app-service.services.svc.cluster.local                                  
 
 Istioは、宛先のServiceに送信しようとするプロトコルを厳格に認識する。
 
-宛先のServiceの`.spec.ports[*].name`キー (`<プロトコル名>-<任意の文字列>`) または`.spec.ports[*].appProtocol`キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。
+宛先のServiceの `.spec.ports[*].name` キー (`<プロトコル名>-<任意の文字列>`) または `.spec.ports[*].appProtocol` キーを認識し、そのServiceには指定されたプロトコルでしか通信を送れなくなる。
 
 **＊例＊**
 
@@ -656,7 +656,7 @@ spec:
 
 #### ▼ ロードバランサーで使用する場合
 
-JWTトークンleは、Istio Ingress Gateway (VirtualService + JWTトークンle) で受信した`L4`/`L7`通信を、いずれのPodにルーティングするかを決める。
+JWTトークンleは、Istio Ingress Gateway (VirtualService + JWTトークンle) で受信した `L4`/`L7` 通信を、いずれのPodにルーティングするかを決める。
 
 Istio Ingress Gatewayの実体はPodのため、ロードバランサーというよりは実際はPod間通信で使用していると言える。
 
@@ -668,7 +668,7 @@ Podの宛先情報は、KubernetesのServiceから取得する。
 
 #### ▼ Pod間通信のみで使用する場合
 
-JWTトークンleは、VirtualServiceで受信した`L4`/`L7`通信を、いずれのPodにルーティングするかを決める。
+JWTトークンleは、VirtualServiceで受信した `L4`/`L7` 通信を、いずれのPodにルーティングするかを決める。
 
 Podの宛先情報は、KubernetesのServiceから取得する。
 
@@ -838,11 +838,11 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 ServiceEntryは、クラスター外のドメイン名などを登録する。
 
-Istio`v1.3`より前は、ConfigMapでデフォルトで`REGISTRY_ONLY`になっていたため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。
+Istio`v1.3` より前は、ConfigMapでデフォルトで `REGISTRY_ONLY` になっていたため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。
 
-しかし、`v1.3`以降、ServiceEntryでマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。
+しかし、`v1.3` 以降、ServiceEntryでマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。
 
-ただし、登録しない限り、マイクロサービスを個別に認識することはできず、すべて`PassthroughCluster`として扱う。
+ただし、登録しない限り、マイクロサービスを個別に認識することはできず、すべて `PassthroughCluster` として扱う。
 
 類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。
 
@@ -907,11 +907,11 @@ ServiceEntryから外部にHTTPリクエストを送信する場合、JWTトー�
 
 ### ネットワークフィルター
 
-#### ▼ `network.http_connection_manager`をマッチ対象とする場合
+#### ▼ `network.http_connection_manager` をマッチ対象とする場合
 
-`network.http_connection_manager`をマッチ対象として、フィルターを変更する。
+`network.http_connection_manager` をマッチ対象として、フィルターを変更する。
 
-例えば、Istioの`v1.17.5`のistio-proxyのフィルターの設定値を変更する。
+例えば、Istioの `v1.17.5` のistio-proxyのフィルターの設定値を変更する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1005,11 +1005,11 @@ spec:
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
 > - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
 
-#### ▼ `network.tcp_proxy`をマッチ対象とする場合
+#### ▼ `network.tcp_proxy` をマッチ対象とする場合
 
-`network.tcp_proxy`をマッチ対象として、フィルターを変更する。
+`network.tcp_proxy` をマッチ対象として、フィルターを変更する。
 
-例えば、Istioの`v1.17.5`のistio-proxyのフィルターの設定値を変更する。
+例えば、Istioの `v1.17.5` のistio-proxyのフィルターの設定値を変更する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1111,9 +1111,9 @@ Pod間通信時、相互TLS認証を実施する。
 
 Pod間通信時、JWTによる認証と認可を実施する。
 
-JWTトークンが失効／不正な場合、RequestAuthenticationは`401`レスポンスを返信する。
+JWTトークンが失効／不正な場合、RequestAuthenticationは `401` レスポンスを返信する。
 
-JWTトークンがない場合、AuthorizationPolicyは`403`レスポンスを返信する必要がある。
+JWTトークンがない場合、AuthorizationPolicyは `403` レスポンスを返信する必要がある。
 
 なお、RequestAuthenticationを使用せずにマイクロサービスで同様の実装をしても良い。
 
@@ -1129,7 +1129,7 @@ JWTトークンがない場合、AuthorizationPolicyは`403`レスポンスを�
 
 注意点として、そもそもリクエストにJWTトークンが含まれていない場合には認証処理をスキップできてしまう。
 
-代わりに、JWTトークンが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
+代わりに、JWTトークンが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403` ステータス) として扱う必要がある。
 
 Auth0 (クラウドのためサービスメッシュ外にある) の宛先情報をIstioに登録する必要があるため、Istio Egress GatewayやServiceEntry経由で接続できるようにする。
 
@@ -1177,7 +1177,7 @@ spec:
 
 注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。
 
-代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
+代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403` ステータス) として扱う必要がある。
 
 Keycloakの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。
 
@@ -1228,7 +1228,7 @@ spec:
 
 注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。
 
-代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
+代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403` ステータス) として扱う必要がある。
 
 OAuth2 Proxyの宛先情報をIstioに登録する必要があるため、これのPodをサービスメッシュ内に配置するか、サービスメッシュ外に配置してIstio Egress GatewayやServiceEntry経由で接続できるようにする。
 
@@ -1303,7 +1303,7 @@ data:
 
 | 環境変数                                         | 対応する設定 (実験段階)                                                                |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors`を有効化してもよい。                 |
+| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors` を有効化してもよい。                 |
 | `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、istio-proxyの代わりにKubernetesのInit Container |
 | `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                                                        |
 | `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                                                        |

@@ -22,7 +22,7 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 **＊実装例＊**
 
-非同期化する処理を`setTimeout`関数に渡し、処理を遅らせる。
+非同期化する処理を `setTimeout` 関数に渡し、処理を遅らせる。
 
 先行の処理をバックグラウンドで実行したまま、後続する処理が先に実行される。
 
@@ -55,7 +55,7 @@ JavaScriptで、非同期処理の成否を管理し、後続する処理を定�
 
 Promiseオブジェクトのコンストラクタに、非同期処理を持つ関数を渡すことにより、Promiseオブジェクトはこの関数内の非同期処理の成否を管理する。
 
-実装量を減らして同じことを実装する場合、`async`宣言を使用する。
+実装量を減らして同じことを実装する場合、`async` 宣言を使用する。
 
 Promiseオブジェクトの実装の仕様は取り決められており、以下のリンクを参考にせよ。
 
@@ -89,19 +89,19 @@ const asyncFunc = () => {
 
 <br>
 
-## 02-02. `resolve`関数、`reject`関数
+## 02-02. `resolve` 関数、`reject` 関数
 
-### `resolve`関数、`reject`関数とは
+### `resolve` 関数、`reject` 関数とは
 
-`resolve`関数、`reject`関数をコールすると、暗黙的にtry-catchが実行される。
+`resolve` 関数、`reject` 関数をコールすると、暗黙的にtry-catchが実行される。
 
-そのため、`try-catch`で囲うことは不要である。
+そのため、`try-catch` で囲うことは不要である。
 
-関数内の処理が成功であれば`resolve`関数を実行し (`try`ブロック内の処理に相当) 、反対に失敗であれば`reject`関数を実行する (`catch`ブロック内の処理に相当) 。
+関数内の処理が成功であれば `resolve` 関数を実行し (`try` ブロック内の処理に相当) 、反対に失敗であれば `reject` 関数を実行する (`catch` ブロック内の処理に相当) 。
 
-`resolve`関数と`resolve`関数の後に`return`を使用しないと、後続する処理も実行される。
+`resolve` 関数と `resolve` 関数の後に `return` を使用しないと、後続する処理も実行される。
 
-また、`return`を使用しないと、`resolve`関数と`resolve`関数の結果は返却されない。
+また、`return` を使用しないと、`resolve` 関数と `resolve` 関数の結果は返却されない。
 
 <br>
 
@@ -134,7 +134,7 @@ console.log(asyncFunc());
 // Promise { 'SUCCESS' }
 ```
 
-`resolve`関数と`resolve`関数のコール時に`return`を使用すると、後続する処理は実行されない。
+`resolve` 関数と `resolve` 関数のコール時に `return` を使用すると、後続する処理は実行されない。
 
 ```javascript
 const asyncFunc = () => {
@@ -162,7 +162,7 @@ console.log(asyncFunc());
 
 ### Promiseオブジェクトのコンストラクタを使用しない場合
 
-Promiseオブジェクトから直接的に`resolve`関数や`reject`関数をコールする。
+Promiseオブジェクトから直接的に `resolve` 関数や `reject` 関数をコールする。
 
 ```javascript
 const asyncFunc = () => {
@@ -233,25 +233,25 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 try-catch-finally句に相当する。
 
-Promiseオブジェクトの`then`関数、`catch`関数、`finally`関数を使用してエラーハンドリングを実装できる。
+Promiseオブジェクトの `then` 関数、`catch` 関数、`finally` 関数を使用してエラーハンドリングを実装できる。
 
 <br>
 
-### `then`関数
+### `then` 関数
 
-#### ▼ `then`関数とは
+#### ▼ `then` 関数とは
 
-Promiseオブジェクトの`resolve`関数の結果を引数に受け取り、コールバック関数を実行する。
+Promiseオブジェクトの `resolve` 関数の結果を引数に受け取り、コールバック関数を実行する。
 
 > - https://qiita.com/saka212/items/9b6cfe06b464580c2ee6#promise%E3%81%AE%E5%9F%BA%E6%9C%AC
 
 <br>
 
-### `catch`関数
+### `catch` 関数
 
-#### ▼ `catch`関数とは
+#### ▼ `catch` 関数とは
 
-Promiseオブジェクトの`reject`関数の結果を引数に受け取り、コールバック関数を実行する。
+Promiseオブジェクトの `reject` 関数の結果を引数に受け取り、コールバック関数を実行する。
 
 > - https://qiita.com/saka212/items/9b6cfe06b464580c2ee6#promise%E3%81%AE%E5%9F%BA%E6%9C%AC
 
@@ -273,9 +273,9 @@ rejectFunc.catch((err) => {
 
 <br>
 
-### `finally`関数
+### `finally` 関数
 
-#### ▼ `finally`関数とは
+#### ▼ `finally` 関数とは
 
 記入中...
 
@@ -370,7 +370,7 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 
 非同期処理を順次処理に、処理の完了を待つようにする。
 
-Promiseオブジェクトの`then`関数に相当するが、`then`関数のように関数チェーンする必要はなくなるため、可読性が高い。
+Promiseオブジェクトの `then` 関数に相当するが、`then` 関数のように関数チェーンする必要はなくなるため、可読性が高い。
 
 時間のかかる非同期処理でこれを宣言すると、予期せず処理が流れてしまうことを防げる。
 
@@ -422,13 +422,13 @@ const asyncFunc = async () => {
 
 #### ▼ そもそも非同期にしなければawait宣言は不要なのでは？
 
-関数を非同期処理化しなければ、`await`宣言がそもそも不要なのではという疑問がある。
+関数を非同期処理化しなければ、`await` 宣言がそもそも不要なのではという疑問がある。
 
 例えば、通信処理を非同期処理化し、後続の通信処理結果によらない他の処理 (例：UIの更新) を実行しておく。
 
 一方で、ファイル操作であれば、後続の処理は先行の処理結果が必要になるため、同期処理が適している場合がある。
 
-ただ、使用するパッケージの仕様が非同期処理になっている場合 (例：Node.js上で使用できるJavaScriptには非同期処理の関数が多い) 、`await`宣言を使用せざるを得ない。
+ただ、使用するパッケージの仕様が非同期処理になっている場合 (例：Node.js上で使用できるJavaScriptには非同期処理の関数が多い) 、`await` 宣言を使用せざるを得ない。
 
 > - https://blog.honjala.net/entry/2018/08/08/022027
 > - https://zenn.dev/h_tatsuru/articles/28149eac34d55c#%F0%9F%90%B2%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%A8%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%AE%E6%A9%9F%E8%83%BD%E4%BE%8B
@@ -439,7 +439,7 @@ const asyncFunc = async () => {
 
 #### ▼ try-catchとは
 
-`try-catch`では、特定の処理の中で起こる想定できない例外を捉えられる。
+`try-catch` では、特定の処理の中で起こる想定できない例外を捉えられる。
 
 想定できない例外が起こる場合として、以下の状況がある。
 
@@ -486,9 +486,9 @@ const asyncFunc = async () => {
 
 #### ▼ async-retryとは
 
-`async`による非同期処理をリトライする。
+`async` による非同期処理をリトライする。
 
-`await`宣言した関数を`retry`関数に渡す。
+`await` 宣言した関数を `retry` 関数に渡す。
 
 ```typescript
 const response = await retry(
@@ -551,15 +551,15 @@ JQueryパッケージの提供する独自のPromiseオブジェクトである�
 
 <br>
 
-### `done`関数、`fail`関数、`always`関数
+### `done` 関数、`fail` 関数、`always` 関数
 
 JQuery Promiseオブジェクトが持つ関数。
 
-`ajax`関数によってレスポンスを受信した後、その結果を`done`、`fail`、`always`の`3`個に分類し、これに応じたコールバック処理を実行する。
+`ajax` 関数によってレスポンスを受信した後、その結果を `done`、`fail`、`always` の `3` 個に分類し、これに応じたコールバック処理を実行する。
 
 **＊実装例＊**
 
-JQueryパッケージの`get`関数や`post`関数を使用した場合。
+JQueryパッケージの `get` 関数や `post` 関数を使用した場合。
 
 ```javascript
 const url = "https://www.google.co.jp/";
@@ -589,7 +589,7 @@ $.post(url, params)
   });
 ```
 
-JQueryパッケージの`ajax`関数を使用した場合。
+JQueryパッケージの `ajax` 関数を使用した場合。
 
 ```javascript
 const id = 1;
@@ -622,17 +622,17 @@ $.ajax({
 
 <br>
 
-### `then`関数
+### `then` 関数
 
 JQuery Promiseオブジェクトが持つ関数。
 
-`ajax`関数によってレスポンスを受信した後、その結果を`then`関数の引数の順番で分類し、これに応じたコールバック処理を実行する。
+`ajax` 関数によってレスポンスを受信した後、その結果を `then` 関数の引数の順番で分類し、これに応じたコールバック処理を実行する。
 
 非同期処理の後に同期処理を行いたい場合に使用する。
 
 **＊実装例＊**
 
-JQueryパッケージの`ajax`関数を使用した場合。
+JQueryパッケージの `ajax` 関数を使用した場合。
 
 ```javascript
 const id = 1;

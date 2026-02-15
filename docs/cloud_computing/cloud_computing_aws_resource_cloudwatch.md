@@ -36,7 +36,7 @@ AWS CloudWatchは、データポイントからメトリクスの元になるデ
 
 | 集約名         | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| ディメンション | インスタンスの設定値をグループとした集約のこと (例：インスタンスID、スペック、AZなど) 。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される (例えば、AWS EC2のストレージで、`/var/lib/foo`パーティションのディスク使用率のデータポイントが `30`%だとする。AWS EC2のインスタンスIDをディメンションにした場合に、`/var/lib/foo`以外のパーティションが `30`%より低いため、インスタンスIDのディメンション全体としては `10%`ほどのディスク使用率になる) 。AWS CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集約する必要がある。 |
+| ディメンション | インスタンスの設定値をグループとした集約のこと (例：インスタンスID、スペック、AZなど) 。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される (例えば、AWS EC2のストレージで、`/var/lib/foo` パーティションのディスク使用率のデータポイントが `30`%だとする。AWS EC2のインスタンスIDをディメンションにした場合に、`/var/lib/foo` 以外のパーティションが `30`%より低いため、インスタンスIDのディメンション全体としては `10%` ほどのディスク使用率になる) 。AWS CloudWatchアラームではディメンションしか指定できず、ディメンションを正確に集約する必要がある。 |
 | 名前空間       | AWSリソースをグループとした集約のこと (例：AWS EC2、AWS RDS、AWS ALBなど) 。AWSリソース名で表す。cloudwatchエージェントでカスタムメトリクスの元になるデータポイントを収集すると、名前空間はCWAgentになる。                                                                                                                                                                                                                                                                                                                                                                           |
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistic
@@ -64,7 +64,7 @@ RDS (AWS Aurora、AWS RDS) の性能に関するメトリクスの元になる�
 
 特定の集約 (例：各クエリ) で監視できるようになる。
 
-パラメーターグループの `performance_schema`を有効化する必要がある。
+パラメーターグループの `performance_schema` を有効化する必要がある。
 
 対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。
 
@@ -93,7 +93,7 @@ AWS Lambdaの性能に関するメトリクスの元になるデータポイン�
 
 AWS CloudWatch Logs上で構造化ログのログイベントを自動的に集約し、AWS CloudWatch Metrics上でカスタムメトリクスを生成してくれる。
 
-AWS CloudWatch Logsに送る構造化ログには、`metrics`オブジェクトを定義する必要がある。
+AWS CloudWatch Logsに送る構造化ログには、`metrics` オブジェクトを定義する必要がある。
 
 ```yaml
 # 構造化ログ
@@ -192,7 +192,7 @@ AWSリソースで作成されたログを収集できる。
 
 | 設定項目                     | 説明                                                                                                                                               | 補足                                                                                                                                                                                                            |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ロググループ                 | ログストリームをグループ化して収集するか否かを設定する。                                                                                           | 基本的に、ログファイルはグループ化せずに、`1`個のロググループには `1`個のログストリームしか含まれないようにする。マイクロサービスアーキテクチャでは、全てのマイクロサービスを同じロググループで定義するとよい。 |
+| ロググループ                 | ログストリームをグループ化して収集するか否かを設定する。                                                                                           | 基本的に、ログファイルはグループ化せずに、`1` 個のロググループには `1` 個のログストリームしか含まれないようにする。マイクロサービスアーキテクチャでは、全てのマイクロサービスを同じロググループで定義するとよい。 |
 | メトリクスフィルター         | フィルターパターンに合致した文字列を持つログをトリガーとして、データポイントを発生させる。このデータポイントを集約し、メトリクスとして使用できる。 |                                                                                                                                                                                                                 |
 | サブスクリプションフィルター |                                                                                                                                                    |                                                                                                                                                                                                                 |
 | データ保護                   | ログに含まれる機密性の高い情報を保護するために、ログをマスキングする。                                                                             | ・https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/mask-sensitive-log-data.html                                                                                                                         |
@@ -258,7 +258,7 @@ OR条件と除外条件を組み合わせようとすると、OR条件が認識�
 
 執筆時点 (2020/10/05) では非推奨で、cloudwatchエージェントへの設定の移行が推奨である。
 
-#### ▼ `/var/awslogs/etc/awslogs.conf`ファイル
+#### ▼ `/var/awslogs/etc/awslogs.conf` ファイル
 
 AWS CloudWatch Logsエージェントを設定する。
 
@@ -321,7 +321,7 @@ log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 
 #### ▼ コマンド
 
-設定後、`awslogs`コマンドでプロセスを起動する。
+設定後、`awslogs` コマンドでプロセスを起動する。
 
 **＊例＊**
 
@@ -360,7 +360,7 @@ $ service awslogs start
 
 **＊例＊**
 
-`@message`で、小文字と大文字を区別せずにErrorを含むログを検索する。
+`@message` で、小文字と大文字を区別せずにErrorを含むログを検索する。
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -370,7 +370,7 @@ fields @timestamp, @message, @logStream
 | limit 100
 ```
 
-構造化ログであれば、`log`フィールドがあるかもしれない。
+構造化ログであれば、`log` フィールドがあるかもしれない。
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -380,7 +380,7 @@ fields @timestamp, @message, @logStream
 | limit 100
 ```
 
-構造化ログであれば、`stream`フィールドがあるかもしれない。
+構造化ログであれば、`stream` フィールドがあるかもしれない。
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -391,7 +391,7 @@ fields @timestamp, @message, @logStream
 
 **＊例＊**
 
-`@message`フィールドに`like`を使用して、小文字と大文字を区別せずにWarningまたはErrorを含むログを検索する。
+`@message` フィールドに `like` を使用して、小文字と大文字を区別せずにWarningまたはErrorを含むログを検索する。
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -404,9 +404,9 @@ fields @timestamp, @message, @logStream
 
 **＊例＊**
 
-JSONがネストになっている場合、`filter`では`.` (ドット) でつなぐ。
+JSONがネストになっている場合、`filter` では `.` (ドット) でつなぐ。
 
-ここでは`foo-app`コンテナを集計している。
+ここでは `foo-app` コンテナを集計している。
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -417,7 +417,7 @@ fields @timestamp, @message, @logStream
 | limit 100
 ```
 
-`like`の代わりに書き方として、`=~`で正規表現を使用できる。
+`like` の代わりに書き方として、`=~` で正規表現を使用できる。
 
 ```sql
 fields @timestamp, @message, @logStream
@@ -432,7 +432,7 @@ fields @timestamp, @message, @logStream
 
 閾値以上の実行時間のスロークエリを実行時間の昇順で取得する。
 
-`parse`関数でQuery_timeの値を抽出している。
+`parse` 関数でQuery_timeの値を抽出している。
 
 ```sql
 fields @timestamp, @message
@@ -498,13 +498,13 @@ $ yum install collectd -y
 
 #### ▼ ウィザードの場合
 
-ウィザードを使用して設定ファイル (`amazon-cloudwatch-agent.json`ファイル) をセットアップする場合、ウィザードは `amazon-cloudwatch-agent.json`ファイルを `/opt/aws/amazon-cloudwatch-agent/bin`ディレクトリ配下に自動的に作成する。
+ウィザードを使用して設定ファイル (`amazon-cloudwatch-agent.json` ファイル) をセットアップする場合、ウィザードは `amazon-cloudwatch-agent.json` ファイルを `/opt/aws/amazon-cloudwatch-agent/bin` ディレクトリ配下に自動的に作成する。
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html
 
 #### ▼ 手動の場合
 
-手動で設定ファイル (`amazon-cloudwatch-agent.json`ファイル) をセットアップする場合、`amazon-cloudwatch-agent.json`ファイルを指定されたディレクトリに配置する必要がある。
+手動で設定ファイル (`amazon-cloudwatch-agent.json` ファイル) をセットアップする場合、`amazon-cloudwatch-agent.json` ファイルを指定されたディレクトリに配置する必要がある。
 
 | OS      | 配置先のパス                                    |
 | ------- | ----------------------------------------------- |
@@ -515,21 +515,21 @@ $ yum install collectd -y
 
 <br>
 
-### `amazon-cloudwatch-agent.json`ファイル
+### `amazon-cloudwatch-agent.json` ファイル
 
-#### ▼ `amazon-cloudwatch-agent.json`ファイルとは
+#### ▼ `amazon-cloudwatch-agent.json` ファイルとは
 
-cloudwatchエージェントのオプションを設定する。セットアップ方法ごとに、設定後、`amazon-cloudwatch-agent-ctl`コマンドで設定ファイルを読み込ませる。
+cloudwatchエージェントのオプションを設定する。セットアップ方法ごとに、設定後、`amazon-cloudwatch-agent-ctl` コマンドで設定ファイルを読み込ませる。
 
-全てのセクションを設定する必要はなく、`logs`セクションまたは `metrics`セクションのいずれかのみを設定でもよい (例：cloudwatchエージェントを使用してAWS CloudWatchにログファイルを送信するのみであれば、`log`セッションのみ) 。
+全てのセクションを設定する必要はなく、`logs` セクションまたは `metrics` セクションのいずれかのみを設定でもよい (例：cloudwatchエージェントを使用してAWS CloudWatchにログファイルを送信するのみであれば、`log` セッションのみ) 。
 
-注意点として、cloudwatchエージェントは、起動後に `amazon-cloudwatch-agent.json`ファイルを `/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_amazon-cloudwatch-agent.json`ファイルとして移動してしまい、元々の `amazon-cloudwatch-agent.json`ファイルは無くなってしまう。
+注意点として、cloudwatchエージェントは、起動後に `amazon-cloudwatch-agent.json` ファイルを `/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_amazon-cloudwatch-agent.json` ファイルとして移動してしまい、元々の `amazon-cloudwatch-agent.json` ファイルは無くなってしまう。
 
 > - https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local
 
-#### ▼ `amazon-cloudwatch-agent-ctl`コマンド
+#### ▼ `amazon-cloudwatch-agent-ctl` コマンド
 
-`amazon-cloudwatch-agent-ctl`コマンドを使用して、設定ファイルを読み込みつつ、cloudwatchエージェントを起動できる。
+`amazon-cloudwatch-agent-ctl` コマンドを使用して、設定ファイルを読み込みつつ、cloudwatchエージェントを起動できる。
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-AWS CloudWatch-Agent-commandline-fleet.html
 
@@ -573,7 +573,7 @@ $ /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
     -a status
 ```
 
-#### ▼ `agent`セクション
+#### ▼ `agent` セクション
 
 cloudwatchエージェント全体を設定する。
 
@@ -594,7 +594,7 @@ cloudwatchエージェント全体を設定する。
     }}
 ```
 
-#### ▼ `metrics`セクション
+#### ▼ `metrics` セクション
 
 AWSリソースが標準で収集しないカスタムメトリクスの元になるデータポイントの収集について設定する。
 
@@ -661,7 +661,7 @@ AWSリソースが標準で収集しないカスタムメトリクスの元に�
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#AWS CloudWatch-Agent-Configuration-File-Metricssection
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/metrics-collected-by-AWS CloudWatch-agent.html
 
-#### ▼ `logs`セクション
+#### ▼ `logs` セクション
 
 ログの収集について設定する。
 
@@ -702,7 +702,7 @@ AWSリソースが標準で収集しないカスタムメトリクスの元に�
 
 ### ログ
 
-#### ▼ `amazon-cloudwatch-agent.log`ファイル
+#### ▼ `amazon-cloudwatch-agent.log` ファイル
 
 cloudwatchエージェントのプロセスに関するログを出力する。
 
@@ -710,7 +710,7 @@ cloudwatchエージェントのプロセスに関するログを出力する。
 $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
 ```
 
-#### ▼ `configuration-validation.log`ファイル
+#### ▼ `configuration-validation.log` ファイル
 
 cloudwatchエージェントの設定ファイルの構文チェックに関するログを出力する。
 
@@ -754,7 +754,7 @@ AWS以外 (オンプレミス、他のクラウドプロバイダー) のサー�
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | 名前空間     | 紐付くロググループが所属する名前空間を設定する。AWS CloudWatch Logsが、設定した名前空間に対して、値を発行する。                 |                                                       |
 | メトリクス   | 紐付くロググループが所属する名前空間内のメトリクスを設定する。AWS CloudWatch Logsが、設定したメトリクスに対して、値を発行する。 |                                                       |
-| メトリクス値 | フィルターパターンでログが検知された時に、データポイントとして発生させる値のこと。                                              | 例えば『検出数』を発行する場合は、『`1`』を設定する。 |
+| メトリクス値 | フィルターパターンでログが検知されたときに、データポイントとして発生させる値のこと。                                              | 例えば『検出数』を発行する場合は、『`1`』を設定する。 |
 
 #### ▼ メトリクスが監視対象の場合
 

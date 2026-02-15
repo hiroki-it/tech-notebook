@@ -29,7 +29,7 @@ description: 13章＠ドメイン駆動設計入門ボトムアップの知見�
 
 複数のエンティティをまたぐビジネスルールの検証はSpecificationパターンに切り分けるのがよい。
 
-単一のエンティティに関する単一のビジネスルールの場合は、Specificationパターンとして切り分けずに、そのエンティティにboolean値関数 (`isFoo`関数) をもたせる。
+単一のエンティティに関する単一のビジネスルールの場合は、Specificationパターンとして切り分けずに、そのエンティティにboolean値関数 (`isFoo` 関数) をもたせる。
 
 ```typescript
 export class CircleFullSpecification {

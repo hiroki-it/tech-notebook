@@ -15,7 +15,7 @@ description: goreleaser＠CDツールの知見を記録しています。
 
 ## goreleaserとは
 
-さまざまなOSやCPUアーキテクチャ向けに`go build`の成果物を作成し、GitHubのリリースページに送信する。
+さまざまなOSやCPUアーキテクチャ向けに `go build` の成果物を作成し、GitHubのリリースページに送信する。
 
 CIでタグ付けに応じて実行するように設定すると良い。
 

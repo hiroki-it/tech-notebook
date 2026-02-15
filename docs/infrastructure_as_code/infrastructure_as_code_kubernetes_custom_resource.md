@@ -23,11 +23,11 @@ Kubernetesに標準で備わっていないKubernetesリソースを提供する
 
 ### 管理方針
 
-CRDは、作成も変更もHelmの管理外 (`kubectl`コマンド) で作成/変更したほうがよい。
+CRDは、作成も変更もHelmの管理外 (`kubectl` コマンド) で作成/変更したほうがよい。
 
 理由としては以下の通りである。
 
-- CRDの作成が衝突する可能性があり、CRDに`meta.helm.sh`キーを付与したくない
+- CRDの作成が衝突する可能性があり、CRDに `meta.helm.sh` キーを付与したくない
 - HelmはCRDを作成できるが更新できないため、作成もHelmの管理外にしたい
 
 カスタムリソースのマニフェストで定義できるオプションやデータ型は、CRDのスキーマ定義に応じて決まる。
@@ -60,7 +60,7 @@ Failed to render chart: exit status 1: Error: unable to build kubernetes objects
 
 | 問題                                                                                                                                                                     | 解決策                                                                                                                                                                                                         | 該当のカスタムリソース |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `.spec.affinity`キーの変更を適用するために、Podを再スケジューリングさせた。`.spec.affinity`キーの設定が機能せず、変更前と同じNodeにPodが再スケジューリングされてしまう。 | PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐付けるために、同じNodeにPodを再スケジューリングさせている可能性がある。Podを再スケジューリングさせた後に、すぐにPersistentVolumeも再作成する。 | Prometheus系           |
+| `.spec.affinity` キーの変更を適用するために、Podを再スケジューリングさせた。`.spec.affinity` キーの設定が機能せず、変更前と同じNodeにPodが再スケジューリングされてしまう。 | PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐付けるために、同じNodeにPodを再スケジューリングさせている可能性がある。Podを再スケジューリングさせた後に、すぐにPersistentVolumeも再作成する。 | Prometheus系           |
 
 <br>
 
@@ -108,9 +108,9 @@ Custom Controllerのチャートをインストールし、後はCustom Controll
 
 ### カスタムリソースの宣言値の決まり方
 
-マニフェストの`.apiVersion`キーで、『`<.spec.groupキー名>/<.spec.versionキー名>`』と宣言し、カスタムリソースを使用する。
+マニフェストの `.apiVersion` キーで、『`<.spec.groupキー名>/<.spec.versionキー名>`』と宣言し、カスタムリソースを使用する。
 
-例えば『`example.com`』というグループと『`v1`』というバージョンを定義したとすると、カスタムリソースからは`example.com/v1`というAPIからコールできるようになる。
+例えば『`example.com`』というグループと『`v1`』というバージョンを定義したとすると、カスタムリソースからは `example.com/v1` というAPIからコールできるようになる。
 
 > - https://hi1280.hatenablog.com/entry/2019/11/15/003101
 > - https://www.takutakahashi.dev/lazy-custom-controller-for-kubernetes/
@@ -190,7 +190,7 @@ spec:
 
 #### ▼ Clusterの場合
 
-同じカスタムリソースがCluster内に`1`個のみ存在できるようにする。
+同じカスタムリソースがCluster内に `1` 個のみ存在できるようにする。
 
 Namespaceごとにカスタムリソースを作成できなくなる。
 
@@ -208,7 +208,7 @@ spec:
 
 #### ▼ Namespacedの場合
 
-同じカスタムリソースがNamespace内に`1`個のみ存在できるようにする。
+同じカスタムリソースがNamespace内に `1` 個のみ存在できるようにする。
 
 Namespaceごとにカスタムリソースを作成できるようになる。
 
@@ -234,9 +234,9 @@ spec:
 
 #### ▼ kind
 
-カスタムリソースの`.kind`キー名を設定する。
+カスタムリソースの `.kind` キー名を設定する。
 
-例えば『`Foo`』という宣言名にすると、マニフェストの`.kind`キーで、`Foo`というカスタムリソース名で使用できるようになる。
+例えば『`Foo`』という宣言名にすると、マニフェストの `.kind` キーで、`Foo` というカスタムリソース名で使用できるようになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -259,9 +259,9 @@ spec: ...
 
 #### ▼ plural
 
-`kubectl`コマンドで使用するカスタムリソースの複数形名を設定する。
+`kubectl` コマンドで使用するカスタムリソースの複数形名を設定する。
 
-例えば『`foos`』という宣言名にすると、`kubectl`コマンドで`foos`というカスタムリソース名で使用できるようになる。
+例えば『`foos`』という宣言名にすると、`kubectl` コマンドで `foos` というカスタムリソース名で使用できるようになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -281,9 +281,9 @@ $ kubectl get foos
 
 #### ▼ singular
 
-`kubectl`コマンドで使用するカスタムリソースの単数形名を設定する。
+`kubectl` コマンドで使用するカスタムリソースの単数形名を設定する。
 
-例えば『`foo`』という宣言名にすると、`kubectl`コマンドで`foo`というカスタムリソース名で使用できるようになる。
+例えば『`foo`』という宣言名にすると、`kubectl` コマンドで `foo` というカスタムリソース名で使用できるようになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -303,9 +303,9 @@ $ kubectl get foo
 
 #### ▼ shortNames
 
-`kubectl`コマンドで使用するカスタムリソースの省略名を設定する。
+`kubectl` コマンドで使用するカスタムリソースの省略名を設定する。
 
-例えば『`fo`』という宣言名にすると、`kubectl`コマンドで`fo`というカスタムリソース名で使用できるようになる。
+例えば『`fo`』という宣言名にすると、`kubectl` コマンドで `fo` というカスタムリソース名で使用できるようになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -332,7 +332,7 @@ $ kubectl get fo
 
 CRDに対応するカスタムリソースに関して、APIグループのバージョンを設定する。
 
-複数のバージョンのCRDをCluster内で同時に管理する場合、`.spec.versions[*].name`キー配下に複数のスキーマを定義する。
+複数のバージョンのCRDをCluster内で同時に管理する場合、`.spec.versions[*].name` キー配下に複数のスキーマを定義する。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -356,7 +356,7 @@ spec:
 
 APIグループのバージョン名を設定する。
 
-例えば『`v1`』というstring型のキーを設定すると、マニフェストの`.apiVersion`で、`/v1`を最後につけてコールすることになる。
+例えば『`v1`』というstring型のキーを設定すると、マニフェストの `.apiVersion` で、`/v1` を最後につけてコールすることになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1
@@ -390,9 +390,9 @@ spec:
 
 #### ▼ schema
 
-カスタムリソースの`.spec`キー以下に設定できるキーと、これのデータ型を設定する。
+カスタムリソースの `.spec` キー以下に設定できるキーと、これのデータ型を設定する。
 
-例えば『`message`』というstring型のキーを設定すると、カスタムリソースの`.spec.message`キーに任意のstring型を設定できるようになる。
+例えば『`message`』というstring型のキーを設定すると、カスタムリソースの `.spec.message` キーに任意のstring型を設定できるようになる。
 
 ```yaml
 apiVersion: apiextensions.k8s.io/v1beta1

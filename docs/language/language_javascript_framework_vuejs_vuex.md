@@ -33,7 +33,7 @@ Vue.jsでパッケージの1つで、状態管理を実施する。
 
 ### Vueストアとは
 
-`Vuex.Store`関数で実装できる。
+`Vuex.Store` 関数で実装できる。
 
 外部のコンポーネントは、各オプションにアクセスできる。
 
@@ -59,15 +59,15 @@ Vue.jsでパッケージの1つで、状態管理を実施する。
 
 データに状態 (`state`) を設定する関数をいくつか持つ。
 
-保守性の観点から、`mutations:{}`におく関数間は同期的に実行されるようにしておかなければならない。
+保守性の観点から、`mutations:{}` におく関数間は同期的に実行されるようにしておかなければならない。
 
 クラスベースオブジェクト指向でいうところの、Setter関数に相当する。
 
 #### ▼ `actions:{}`
 
-定義された`mutations{}`の関数を間接的にコールするための関数をいくつか持つ。
+定義された `mutations{}` の関数を間接的にコールするための関数をいくつか持つ。
 
-また、JQueryの`ajax`関数 をコールし、サーバー側からレスポンスされたデータを`mutations:{}`へ渡す。
+また、JQueryの `ajax` 関数 をコールし、サーバー側からレスポンスされたデータを `mutations:{}` へ渡す。
 
 クラスベースオブジェクト指向でいうところの、Setter関数に相当する。
 
@@ -135,7 +135,7 @@ module.exports = new Vuex.Store({
 
 ### Vuexへのアクセスとは
 
-例えば、子コンポーネントのファイル (`template`タグを持つファイル) の下部に、以下を記述することにより、`Vuex.Store`関数とデータを受け渡しできるようになる。
+例えば、子コンポーネントのファイル (`template` タグを持つファイル) の下部に、以下を記述することにより、`Vuex.Store` 関数とデータを受け渡しできるようになる。
 
 <br>
 
@@ -143,27 +143,27 @@ module.exports = new Vuex.Store({
 
 #### ▼ `computed: {}`
 
-イベントハンドラ関数として、`mapGetters`ヘルパーと`mapState`ヘルパーを設定する。
+イベントハンドラ関数として、`mapGetters` ヘルパーと `mapState` ヘルパーを設定する。
 
 #### ▼ `methods: {}`
 
-イベントハンドラ関数として、`mapMutations`ヘルパーと`mapActions`ヘルパーを設定する。
+イベントハンドラ関数として、`mapMutations` ヘルパーと `mapActions` ヘルパーを設定する。
 
-#### ▼ `mapGetters`ヘルパー
+#### ▼ `mapGetters` ヘルパー
 
-コンポーネントの`computed:{}`に、`Vuex.Store`関数の`getters: {}`をマッピングし、コール可能にする。
+コンポーネントの `computed:{}` に、`Vuex.Store` 関数の `getters: {}` をマッピングし、コール可能にする。
 
-#### ▼ `mapState`ヘルパー
+#### ▼ `mapState` ヘルパー
 
-コンポーネントの`computed:{}`に、`Vuex.Store`関数の`state: {}`をマッピングし、コール可能にする。
+コンポーネントの `computed:{}` に、`Vuex.Store` 関数の `state: {}` をマッピングし、コール可能にする。
 
-#### ▼ `mapMutations`ヘルパー
+#### ▼ `mapMutations` ヘルパー
 
-コンポーネントの`methods: {}`に、Vuex.Store`関数の`mutations: {}```をマッピングし、コール可能にする。
+コンポーネントの `methods: {}` に、Vuex.Store`関数の`mutations: {}```をマッピングし、コール可能にする。
 
-#### ▼ `mapActions`ヘルパー
+#### ▼ `mapActions` ヘルパー
 
-コンポーネントの`methods: {}`に、`Vuex.Store`関数の`actions:{}`をマッピングし、コール可能にする。
+コンポーネントの `methods: {}` に、`Vuex.Store` 関数の `actions:{}` をマッピングし、コール可能にする。
 
 **＊実装例＊**
 

@@ -64,7 +64,7 @@ Exporterには、KubernetesのNode上でどう稼働させるかに応じて、�
 | Exporter名                                                        | 説明                                                                                                                                                                                                  | 待ち受けポート番号 | 待ち受けエンドポイント | メトリクス名     |
 | :---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ---------------------- | ---------------- |
 | [Node Exporter](https://github.com/prometheus/node_exporter)      | Nodeに関するメトリクスの元になるデータポイントを収集する。                                                                                                                                            | `9100`             | `/metrics`             | `node_*`         |
-| [Process Exporter](https://github.com/ncabatoff/process-exporter) | Nodeの非コンテナのプロセスに関するメトリクスの元になるデータポイントを収集する。収集対象のプロセス名は`config.yaml`ファイルで設定できる。 <br>・https://qiita.com/kkentaro/items/c01b8cf332da893791bb | `9256`             | 同上                   | `namedprocess_*` |
+| [Process Exporter](https://github.com/ncabatoff/process-exporter) | Nodeの非コンテナのプロセスに関するメトリクスの元になるデータポイントを収集する。収集対象のプロセス名は `config.yaml` ファイルで設定できる。 <br>・https://qiita.com/kkentaro/items/c01b8cf332da893791bb | `9256`             | 同上                   | `namedprocess_*` |
 
 #### ▼ Deploymentパターン
 
@@ -202,9 +202,9 @@ mysqld_exporter_build_info{branch="HEAD",goversion="go1.12.7",revision="48667bf7
 
 PostgreSQLのプロセスのステータスを表す。
 
-`pg_up`は、PostgreSQLのプロセスのステータスを表す。
+`pg_up` は、PostgreSQLのプロセスのステータスを表す。
 
-正常な場合に`1`、異常な場合に`0`となる。
+正常な場合に `1`、異常な場合に `0` となる。
 
 ```bash
 pg_up == 0
@@ -214,7 +214,7 @@ pg_up == 0
 
 #### ▼ PostgreSQLの連続稼働時間
 
-`pg_postmaster_start_time_seconds`は、PostgreSQLのマスタープロセス (postmasterプロセス) の連続稼働時間を表す。
+`pg_postmaster_start_time_seconds` は、PostgreSQLのマスタープロセス (postmasterプロセス) の連続稼働時間を表す。
 
 ```bash
 time() - pg_postmaster_start_time_seconds
@@ -228,7 +228,7 @@ time() - pg_postmaster_start_time_seconds
 
 PostgreSQLで、RepmgrによるDBクラスターを採用している場合に、DBインスタンス間のデータ同期の遅延を表す。
 
-`pg_replication_lag`は、DBインスタンス間のデータ同期にかかる時間を表す。
+`pg_replication_lag` は、DBインスタンス間のデータ同期にかかる時間を表す。
 
 ```bash
 pg_replication_lag > 10

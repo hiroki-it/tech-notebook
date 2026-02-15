@@ -29,7 +29,7 @@ workflow-controller、DB、から構成される。
 
 RDBMSとして、PostgreSQLとMySQLを使用できる。
 
-`phase`カラムや`progress`カラムを永続化できる。
+`phase` カラムや `progress` カラムを永続化できる。
 
 ```go
 type archivedWorkflowMetadata struct {

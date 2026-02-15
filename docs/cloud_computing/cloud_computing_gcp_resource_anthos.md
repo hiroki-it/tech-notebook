@@ -122,7 +122,7 @@ Google Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベア�
 
 #### ▼ connect-gateway
 
-Google Cloud上で`kubectl`コマンドを実行して各クラウドプロバイダー上のGoogle Anthos GKE Clusterのkube-apiserverにリクエストを送信する時に、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
+Google Cloud上で `kubectl` コマンドを実行して各クラウドプロバイダー上のGoogle Anthos GKE Clusterのkube-apiserverにリクエストを送信するときに、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。
 
 ![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_connect-gateway.png)
 
@@ -196,13 +196,13 @@ Google Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理で�
 
 #### ▼ ワークステーションとは
 
-Google Anthos Clusterの作成時やアップグレード時に、`bmctl`コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。
+Google Anthos Clusterの作成時やアップグレード時に、`bmctl` コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。
 
 ベアメタルであるため、自前で仮想サーバー (例：VMware) を作成する必要がある。
 
 Kindはコンテナを構築し、そのコンテナ内でブートストラップClusterを作成できるか否かを検証することにより、Google Anthos Clusterの事前検証する。
 
-Kindがコンテナを構築するために、Google Anthos Clusterの構築前に、`docker`プロセスを起動しておく必要がある。
+Kindがコンテナを構築するために、Google Anthos Clusterの構築前に、`docker` プロセスを起動しておく必要がある。
 
 ```bash
 $ systemctl start docker
@@ -214,7 +214,7 @@ Kindがコンテナ内で作成する仮想的なGoogle Anthos Clusterのこと�
 
 VClusterを使用して、仮想的なGoogle Anthos Clusterを作成している。
 
-`~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig`ファイルを指定することにより、ブートストラップClusterのkube-apiserverにリクエストを送信できる。
+`~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig` ファイルを指定することにより、ブートストラップClusterのkube-apiserverにリクエストを送信できる。
 
 ```bash
 $ kubectl get pod \
@@ -250,7 +250,7 @@ Google CloudのAPIを経由して、他のクラウドプロバイダー (例：
 
 #### ▼ check preflightとは
 
-`bmctl upgrade`コマンドの実行時に実施されるプリフライトチェックのみを実施する。
+`bmctl upgrade` コマンドの実行時に実施されるプリフライトチェックのみを実施する。
 
 ```bash
 $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace

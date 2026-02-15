@@ -27,9 +27,9 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 #### ▼ Dockerfile
 
-Dockerfileにて、自前の`/etc/envoy/envoy.yaml`ファイルを組み込む。
+Dockerfileにて、自前の `/etc/envoy/envoy.yaml` ファイルを組み込む。
 
-拡張子は、`yml`ではなく、`yaml`とする。
+拡張子は、`yml` ではなく、`yaml` とする。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/start/docker
 
@@ -45,7 +45,7 @@ RUN chmod go+r /etc/envoy/envoy.yaml
 
 #### ▼ Istio
 
-Istioは、Envoyをベースとしたリバースプロキシを自動的に挿入する。この場合、`/etc/istio/proxy/envoy-rev0.json`ファイルを設定ファイルとして扱う。
+Istioは、Envoyをベースとしたリバースプロキシを自動的に挿入する。この場合、`/etc/istio/proxy/envoy-rev0.json` ファイルを設定ファイルとして扱う。
 
 > - https://istio.io/latest/docs/ops/deployment/architecture/#envoy
 > - https://cloud.tencent.com/developer/article/1701214
@@ -58,9 +58,9 @@ Istioは、Envoyをベースとしたリバースプロキシを自動的に挿�
 
 執筆時点 (2022/11/16) では、設定ファイルのドキュメントの記載が不十分である。
 
-設定ファイルのYAMLファイルのデータ型や階層は、APIの`json`形式と同じ構成になっている。
+設定ファイルのYAMLファイルのデータ型や階層は、APIの `json` 形式と同じ構成になっている。
 
-そのため、設定ファイルのドキュメントで探す代わりに、APIのドキュメントを確認した方が良い。
+そのため、設定ファイルのドキュメントで探す代わりに、APIのドキュメントを確認したほうが良い。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/api
 
@@ -158,7 +158,7 @@ admin:
 
 静的な値を設定する。
 
-執筆時点 (2022/11/12) では、`listeners`キーと`clusters`キーのみを設定できる。
+執筆時点 (2022/11/12) では、`listeners` キーと `clusters` キーのみを設定できる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/bootstrap#config-overview-bootstrap
@@ -231,7 +231,7 @@ static_resources:
 
 **＊実装例＊**
 
-ネットワークフィルターである`network.http_connection_manager`を指定する。
+ネットワークフィルターである `network.http_connection_manager` を指定する。
 
 ```yaml
 static_resources:
@@ -315,11 +315,11 @@ RPCでは、JSON内のデータのデータ型を指定するために使用す�
 
 #### ▼ `network.tcp_proxy`
 
-`network.tcp_proxy`はデフォルトで有効になっているネットワークフィルターである。
+`network.tcp_proxy` はデフォルトで有効になっているネットワークフィルターである。
 
-Envoyが`L4`プロトコルを処理できるようになる。
+Envoyが `L4` プロトコルを処理できるようになる。
 
-`network.http_connection_manager`とは異なり、ルートではなくクラスターに処理を繋ぐ。
+`network.http_connection_manager` とは異なり、ルートではなくクラスターに処理を繋ぐ。
 
 **＊実装例＊**
 
@@ -341,11 +341,11 @@ static_resources:
 
 #### ▼ `network.http_connection_manager`
 
-`network.http_connection_manager`はデフォルトで有効になっているネットワークフィルターである。
+`network.http_connection_manager` はデフォルトで有効になっているネットワークフィルターである。
 
-Envoyが`L7`プロトコルを処理できるようになる。
+Envoyが `L7` プロトコルを処理できるようになる。
 
-`network.tcp_proxy`とは異なり、ルートに処理を繋ぐ。
+`network.tcp_proxy` とは異なり、ルートに処理を繋ぐ。
 
 **＊実装例＊**
 
@@ -368,9 +368,9 @@ static_resources:
 
 #### ▼ `http.router`
 
-`http.router`はデフォルトで有効になっているHTTPフィルターである。
+`http.router` はデフォルトで有効になっているHTTPフィルターである。
 
-`typed_config.route_config`を使用できるようにする。
+`typed_config.route_config` を使用できるようにする。
 
 ```yaml
 static_resources:
@@ -400,13 +400,13 @@ static_resources:
 
 #### ▼ `http.grpc_web`
 
-`http.grpc_web`はデフォルトで有効になっているHTTPフィルターである。
+`http.grpc_web` はデフォルトで有効になっているHTTPフィルターである。
 
 受信したHTTP/1.1をHTTP/2 (例：gRPC、GraphQLなど) やHTTP/3に変換し、gRPCサーバーに送信する。
 
 また、gRPCサーバーからのHTTP/2のレスポンスをHTTP/1.1に変換する。
 
-`http.grpc_http1_bridge`の後継でもある。
+`http.grpc_http1_bridge` の後継でもある。
 
 ```yaml
 static_resources:
@@ -447,11 +447,11 @@ static_resources:
 
 仮想ホスト名を設定する。
 
-Envoyが、複数のドメインを仮想的に持ち、`Host`ヘッダー値で合致した条件に応じて分岐できる。
+Envoyが、複数のドメインを仮想的に持ち、`Host` ヘッダー値で合致した条件に応じて分岐できる。
 
-特に`domains`キーには、受信する通信の`Host`ヘッダー値を設定する。
+特に `domains` キーには、受信する通信の `Host` ヘッダー値を設定する。
 
-補足として`Host`ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
+補足として `Host` ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
 
 **＊実装例＊**
 
@@ -494,7 +494,7 @@ static_resources:
 
 #### ▼ `virtual_hosts.routes.route.max_stream_duration`
 
-`max_stream_duration`は`max_grpc_timeout`の移行先として追加された設定である。
+`max_stream_duration` は `max_grpc_timeout` の移行先として追加された設定である。
 
 **＊実装例＊**
 
@@ -540,15 +540,15 @@ static_resources:
 > - https://github.com/envoyproxy/envoy/issues/12578
 > - https://github.com/envoyproxy/envoy/pull/13018
 
-Envoyは、gRPCのストリーミングのタイムアウト時間を適切に処理できておらず、`max_grpc_timeout`は非推奨となった。
+Envoyは、gRPCのストリーミングのタイムアウト時間を適切に処理できておらず、`max_grpc_timeout` は非推奨となった。
 
-gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を`grpc-timeout`ヘッダーに設定する。
+gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を `grpc-timeout` ヘッダーに設定する。
 
-一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウト時間を開始し、`grpc-timeout`ヘッダーとは別にタイムアウト時間を管理する。
+一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウト時間を開始し、`grpc-timeout` ヘッダーとは別にタイムアウト時間を管理する。
 
 これにより、クライアント側が想定しているタイムアウト時間よりも短い時間でEnvoyがタイムアウト時間を迎える可能性がある。
 
-例えば、以下の図ではクライアント側で`25`秒のタイムアウト時間を設定したと仮定している。
+例えば、以下の図ではクライアント側で `25` 秒のタイムアウト時間を設定したと仮定している。
 
 <!-- prettier-ignore-start -->
 
@@ -582,7 +582,7 @@ sequenceDiagram
 
 例えば、以下のようにgRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまうことがある。
 
-そのため、gRPCクライアントにて、ステータスコードを`DeadlineExceeded`ではなく、`Unavailable`としてしまう。
+そのため、gRPCクライアントにて、ステータスコードを `DeadlineExceeded` ではなく、`Unavailable` としてしまう。
 
 <!-- prettier-ignore-start -->
 
@@ -635,12 +635,12 @@ gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
 
 > - https://github.com/istio/istio/pull/45234#discussion_r1213965308
 
-しかし、移行先の`max_stream_duration`にもgRPCによるHTTPレスポンスの返信とタイムアウト時間超過による通信切断のタイミングに問題がある。
+しかし、移行先の `max_stream_duration` にもgRPCによるHTTPレスポンスの返信とタイムアウト時間超過による通信切断のタイミングに問題がある。
 
 > - https://github.com/envoyproxy/envoy/issues/16129
 > - https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029
 
-そこで、サービスメッシュツール (例：Istio) では、`max_grpc_timeout`を使用し続けている。
+そこで、サービスメッシュツール (例：Istio) では、`max_grpc_timeout` を使用し続けている。
 
 > - https://github.com/istio/istio/pull/45234#discussion_r1213965308
 > - https://github.com/istio/istio/issues/45141
@@ -672,7 +672,7 @@ static_resources:
 
 インバウンド通信のルーティング先のマイクロサービスをグループ化する。
 
-対象が`1`個であっても、`clusters`キーは必須である。
+対象が `1` 個であっても、`clusters` キーは必須である。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
 
@@ -835,7 +835,7 @@ HTTPSリクエストを送受信する場合に、証明書を設定する。
 
 **＊実装例＊**
 
-サービスメッシュツールを使用せずに、`envoy`コンテナを直接的に稼働させるとする。
+サービスメッシュツールを使用せずに、`envoy` コンテナを直接的に稼働させるとする。
 
 また、静的な値を設定したとする。
 
@@ -900,7 +900,7 @@ static_resources:
 
 **＊実装例＊**
 
-サービスメッシュツールを使用せずに、`envoy`コンテナを直接的に稼働させるとする。また、コントロールプレーンのSDS-APIから取得した動的な値を設定したとする。
+サービスメッシュツールを使用せずに、`envoy` コンテナを直接的に稼働させるとする。また、コントロールプレーンのSDS-APIから取得した動的な値を設定したとする。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server
 
@@ -1010,13 +1010,13 @@ ADS-APIとして使用するクラスター名を設定する。
 
 クラスターとはgRPCを使用してパケットを送受信する。
 
-ADS-APIの宛先情報は、`static_resources.clusters`キー配下で設定しておく。
+ADS-APIの宛先情報は、`static_resources.clusters` キー配下で設定しておく。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc
 
 **＊実装例＊**
 
-サービスメッシュツールを使用せずに、`envoy`コンテナを直接的に稼働させるとする。
+サービスメッシュツールを使用せずに、`envoy` コンテナを直接的に稼働させるとする。
 
 ```yaml
 dynamic_resources:
@@ -1074,7 +1074,7 @@ static_resources:
 
 **＊実装例＊**
 
-Istioを使用して、`envoy`コンテナを稼働させるとする。
+Istioを使用して、`envoy` コンテナを稼働させるとする。
 
 Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
 
@@ -1139,7 +1139,7 @@ CDS-APIに関して設定する。
 
 #### ▼ path
 
-`cds.yaml`ファイル (CDS-APIから取得した動的な宛先情報が設定されたファイル) を読み込む。
+`cds.yaml` ファイル (CDS-APIから取得した動的な宛先情報が設定されたファイル) を読み込む。
 
 **＊実装例＊**
 
@@ -1159,7 +1159,7 @@ LDS-APIに関して設定する。
 
 #### ▼ path
 
-`lds.yaml`ファイル (LDS-APIから取得した動的な宛先情報が設定されたファイル) を読み込む。
+`lds.yaml` ファイル (LDS-APIから取得した動的な宛先情報が設定されたファイル) を読み込む。
 
 **＊実装例＊**
 

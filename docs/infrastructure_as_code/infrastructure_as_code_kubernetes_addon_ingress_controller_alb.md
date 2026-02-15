@@ -105,11 +105,11 @@ LoadBalancer Serviceを作成すると、AWS EKS内のcloud-controller-manager�
 
 AWS Load Balancer Controllerは、サブネットを自動的に検出し、これにAWS ALBをプロビジョニングする。
 
-Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、`kubernetes.io/role/elb`というタグ (値は`1`または空文字) を全てのパブリックサブネットに設定する。
+Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、`kubernetes.io/role/elb` というタグ (値は `1` または空文字) を全てのパブリックサブネットに設定する。
 
-一方で、プライベートサブネットで作成する場合、`kubernetes.io/role/internal-elb`というタグ (値は`1`または空文字) をプライベートサブネットに設定する。
+一方で、プライベートサブネットで作成する場合、`kubernetes.io/role/internal-elb` というタグ (値は `1` または空文字) をプライベートサブネットに設定する。
 
-またパブリックサブネットまたはプライベートサブネットのいずれであっても`kubernetes.io/cluster/<AWS EKS Clusterの名前>` (値は、複数のAWS EKS Clusterで共有するサブネットの場合は`shared`、単一のAWS EKS Clusterの場合は`owned`とする) を設定する。
+またパブリックサブネットまたはプライベートサブネットのいずれであっても `kubernetes.io/cluster/<AWS EKS Clusterの名前>` (値は、複数のAWS EKS Clusterで共有するサブネットの場合は `shared`、単一のAWS EKS Clusterの場合は `owned` とする) を設定する。
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
@@ -120,7 +120,7 @@ AWS Load Balancer Controllerのセットアップのうち、AWS側で必要な�
 
 ここでは、Terraformの公式モジュールを使用する。
 
-コマンド (例：`eksctl`コマンド) を使用しても良い。
+コマンド (例：`eksctl` コマンド) を使用しても良い。
 
 ```terraform
 module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
@@ -184,7 +184,7 @@ IRSAにより、ServiceAccountにAWSのIAMロールが紐づく。
 
 > - https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
 
-#### ▼ `awscli`コマンド、`eksctl`コマンドの場合
+#### ▼ `awscli` コマンド、`eksctl` コマンドの場合
 
 AWS Load Balancer Controllerのセットアップのうち、AWS側で必要なものをまとめる。
 
@@ -192,7 +192,7 @@ AWS Load Balancer Controllerのセットアップのうち、AWS側で必要な�
 
 `(1)`
 
-: ローカルマシンにIAMポリシーの`json`ファイルをダウンロードする。
+: ローカルマシンにIAMポリシーの `json` ファイルをダウンロードする。
 
 ```bash
 $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json -o iam_policy.json
@@ -203,7 +203,7 @@ $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-co
 
 `(2)`
 
-: `json`ファイルを使用して、ServiceAccountのIAMロールに紐付けるためのIAMポリシーを作成する。
+: `json` ファイルを使用して、ServiceAccountのIAMロールに紐付けるためのIAMポリシーを作成する。
 
 ```bash
 $ aws iam create-policy \
@@ -355,7 +355,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
 `(3)`
 
-: もし、以下の様に、`53`番ポートへの接続でエラーになってしまう場合は、CoreDNSによる名前解決が正しくできていない。
+: もし、以下の様に、`53` 番ポートへの接続でエラーになってしまう場合は、CoreDNSによる名前解決が正しくできていない。
 
      そのため、CoreDNSが正常に稼働しているか否かを確認する。
 
@@ -393,7 +393,7 @@ AWS Load Balancer Controllerは、Deployment (aws-load-balancer-controller) 、S
 
 #### ▼ aws-load-balancer-controller
 
-Deploymentは、Ingressで`alb`のIngressClassを指定していること検知して、AWS ALBをプロビジョニングする。
+Deploymentは、Ingressで `alb` のIngressClassを指定していること検知して、AWS ALBをプロビジョニングする。
 
 ```yaml
 apiVersion: v1

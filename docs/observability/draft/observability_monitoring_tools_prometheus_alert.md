@@ -17,7 +17,7 @@ description: アラート＠Prometheusの知見を記録しています。
 
 ### `KubeAPIDown`
 
-kube-apiserverから`15`分以上レスポンスがない場合に発火する。
+kube-apiserverから `15` 分以上レスポンスがない場合に発火する。
 
 Kubernetes Clusterのアップグレード時に発火する可能性がある。
 

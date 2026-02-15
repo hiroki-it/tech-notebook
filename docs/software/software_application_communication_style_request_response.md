@@ -156,7 +156,7 @@ JavaScriptのビルトインオブジェクトである。
 
 > - https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
 
-#### ▼ `fetch`関数
+#### ▼ `fetch` 関数
 
 JavaScriptのビルトイン関数である。
 

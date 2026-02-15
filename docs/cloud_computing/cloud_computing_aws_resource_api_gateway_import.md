@@ -17,17 +17,17 @@ description: AWS API Gatewayへのymlインポート＠AWSの知見を記録し�
 
 #### ▼ 必要なキー
 
-AWS API Gatewayのインポートに当たり、OpenAPIの`yaml`ファイルにキーを新たに実装する必要がある。
+AWS API Gatewayのインポートに当たり、OpenAPIの `yaml` ファイルにキーを新たに実装する必要がある。
 
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
 
 <br>
 
-### `x-amazon-apigateway-integration`キー
+### `x-amazon-apigateway-integration` キー
 
-#### ▼ `x-amazon-apigateway-integration`キーとは
+#### ▼ `x-amazon-apigateway-integration` キーとは
 
-該当するHTTPメソッドで統合リクエストや統合レスポンスを定義するために `x-amazon-apigateway-integration`キー が必要である。各項目の説明は以下のリンクを参考にせよ。
+該当するHTTPメソッドで統合リクエストや統合レスポンスを定義するために `x-amazon-apigateway-integration` キー が必要である。各項目の説明は以下のリンクを参考にせよ。
 
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
 
@@ -128,13 +128,13 @@ paths:
 
 <br>
 
-### `x-amazon-apigateway-request-validators`キー
+### `x-amazon-apigateway-request-validators` キー
 
-#### ▼ `x-amazon-apigateway-request-validators`キーとは
+#### ▼ `x-amazon-apigateway-request-validators` キーとは
 
-メソッドリクエストで各種パラメーターのバリデーションを定義するために、`x-amazon-apigateway-request-validators`キーが必要である。
+メソッドリクエストで各種パラメーターのバリデーションを定義するために、`x-amazon-apigateway-request-validators` キーが必要である。
 
-実際に定義したものを使用する時は、後述の`x-amazon-apigateway-request-validator`キーが必要である。
+実際に定義したものを使用するときは、後述の `x-amazon-apigateway-request-validator` キーが必要である。
 
 #### ▼ セットアップ
 
@@ -160,15 +160,15 @@ x-amazon-apigateway-request-validators:
 
 <br>
 
-### `x-amazon-apigateway-request-validator`キー
+### `x-amazon-apigateway-request-validator` キー
 
-#### ▼ `x-amazon-apigateway-request-validator`キーとは
+#### ▼ `x-amazon-apigateway-request-validator` キーとは
 
-メソッドリクエストで各種パラメーターのバリデーションを実行するために、`x-amazon-apigateway-request-validator`キーが必要である。
+メソッドリクエストで各種パラメーターのバリデーションを実行するために、`x-amazon-apigateway-request-validator` キーが必要である。
 
 #### ▼ セットアップ
 
-事前に定義した`x-amazon-apigateway-request-validators`キーの中から、使用するバリデーションのエイリアスを宣言する。
+事前に定義した `x-amazon-apigateway-request-validators` キーの中から、使用するバリデーションのエイリアスを宣言する。
 
 ```yaml
 paths:
@@ -206,18 +206,18 @@ x-amazon-apigateway-request-validators:
 
 インポートにあたり、以下に注意する。
 
-Swagger EditorでAPIの仕様書の`html`ファイルを確認できる。
+Swagger EditorでAPIの仕様書の `html` ファイルを確認できる。
 
 > - https://editor.swagger.io/
 
 - OpenAPI仕様のバージョン2.0と3.0をサポートしている。
-- `x-amazon-apigateway-integration`キーを各HTTPメソッドに定義する。
-- AWS API Gatewayが`security`キーのルート定義に非対応のため、冗長ではあるが、各HTTPメソッドに個別に定義する。
-- リクエストメソッドで受信するAPIキーのヘッダー名は、小文字で『`x-api-key`』以外は設定できない。ただし、統合リクエストでフォワーディングする時に付与するヘッダー名は『`X-API-Key`』と設定できる。
+- `x-amazon-apigateway-integration` キーを各HTTPメソッドに定義する。
+- AWS API Gatewayが `security` キーのルート定義に非対応のため、冗長ではあるが、各HTTPメソッドに個別に定義する。
+- リクエストメソッドで受信するAPIキーのヘッダー名は、小文字で『`x-api-key`』以外は設定できない。ただし、統合リクエストでフォワーディングするときに付与するヘッダー名は『`X-API-Key`』と設定できる。
 - 統合リクエストでバックエンドにフォワーディングするAPIキーは、シングルクオートで囲う必要がある。
 - APIキーの作成は手動で行う必要がある。
 - ステージの作成は手動で行う必要がある。
-- `servers`キーの実装はインポートしても反映できない。
+- `servers` キーの実装はインポートしても反映できない。
 - マッピングテンプレートはVTLを使用して定義できる。
 
 #### ▼ その他非対応な記法

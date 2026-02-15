@@ -34,7 +34,7 @@ description: Reactパッケージ＠JavaScriptの知見を記録しています�
 
 #### ▼ CSRモード
 
-エントリーポイント (`main`ファイル) でDOMツリーのルートによる`render`関数の実行が必要である。
+エントリーポイント (`main` ファイル) でDOMツリーのルートによる `render` 関数の実行が必要である。
 
 ```jsx
 import {StrictMode} from "react";
@@ -212,11 +212,11 @@ export const MyComponent = () => {
 > - https://qiita.com/omo_taku/items/18da0c020672a368f166#%E9%96%A2%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88
 > - https://zenn.dev/swata_dev/articles/7f8ef4333057d7
 
-#### ▼ `async`宣言不可
+#### ▼ `async` 宣言不可
 
-Reactでは、関数コンポーネントで`async`宣言は使用できない仕様になっている。
+Reactでは、関数コンポーネントで `async` 宣言は使用できない仕様になっている。
 
-非同期関数を`useEffect`関数に渡したうえで、これをreactコンポーネントにする必要がある。
+非同期関数を `useEffect` 関数に渡したうえで、これをreactコンポーネントにする必要がある。
 
 > - https://stackoverflow.com/a/78877882/12771072
 > - https://stackoverflow.com/a/75689915/12771072
@@ -260,7 +260,7 @@ export const MyComponent = ({ initialCount = 0, label }: MyComponentProps) => {
 
 コンポーネントをキャッシュする。
 
-`useMemo`のコンポーネント版である。
+`useMemo` のコンポーネント版である。
 
 ```jsx
 import React from "react";
@@ -282,7 +282,7 @@ const Counter = React.memo(function Counter({ value }: Props) {
 
 reactコンポーネント内で、状態の変化に応じて非同期処理を使用できるようにする。
 
-フロントエンドの文脈では、レンダリング後のデータ変更処理を非同期処理とするとよく、レンダリング後にこの処理を`useEffect`関数で実行する。
+フロントエンドの文脈では、レンダリング後のデータ変更処理を非同期処理とするとよく、レンダリング後にこの処理を `useEffect` 関数で実行する。
 
 ```jsx
 // useEffect関数内でsetFooState関数を実行し、state変数を動的に変更する
@@ -305,7 +305,7 @@ useEffect(
 );
 ```
 
-`return`のみを使用すると、`useEffect`で早期リターンも実装できる。
+`return` のみを使用すると、`useEffect` で早期リターンも実装できる。
 
 ```jsx
 const [fooState setFooState] = useState("<初期値>");
@@ -395,9 +395,9 @@ export const App = () => {
 
 #### ▼ 実行の順番
 
-`useEffect`関数はレンダリング後に実行される。
+`useEffect` 関数はレンダリング後に実行される。
 
-そのため、`useEffect`関数の後の関数が`useEffect`関数よりも先に実行される。
+そのため、`useEffect` 関数の後の関数が `useEffect` 関数よりも先に実行される。
 
 ```jsx
 import React, { useState, useEffect } from 'react';
@@ -437,7 +437,7 @@ export App = () => {
 
 処理負荷を軽減するため、該当のstate変数の状態が変わらない限り処理結果を再利用する。
 
-`useEffect`で複数のstate変数の状態を管理している場合に、一方の変数の状態だけを再利用できる。
+`useEffect` で複数のstate変数の状態を管理している場合に、一方の変数の状態だけを再利用できる。
 
 ```jsx
 import {useState, useMemo} from "react";
@@ -483,7 +483,7 @@ export default function App() {
 
 reactコンポーネント内で状態を管理できるようにする。
 
-`state`変数と`setState`関数を返却するため、これを任意の名前の変数に格納する。
+`state` 変数と `setState` 関数を返却するため、これを任意の名前の変数に格納する。
 
 ```jsx
 import {useEffect, useState} from "react";

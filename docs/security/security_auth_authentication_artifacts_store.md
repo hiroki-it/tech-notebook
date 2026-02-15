@@ -63,7 +63,7 @@ SSRのアプリケーションはブラウザを操作できないため、ブ�
 
 **＊例＊**
 
-ローカルマシンがMacOSであれば、Chromeは`~/Library/Application Support/Google/Chrome/<Profile>/Local Storage/`ディレクトリに保管する。
+ローカルマシンがMacOSであれば、Chromeは `~/Library/Application Support/Google/Chrome/<Profile>/Local Storage/` ディレクトリに保管する。
 
 > - https://stackoverflow.com/questions/8634058/where-the-sessionstorage-and-localstorage-stored
 
@@ -143,7 +143,7 @@ LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危
 
 **＊例＊**
 
-ローカルマシンがMacOSであれば、Chromeは`~/Library/Application Support/Google/Chrome/<Profile>/Local Storage/`ディレクトリに保管する。
+ローカルマシンがMacOSであれば、Chromeは `~/Library/Application Support/Google/Chrome/<Profile>/Local Storage/` ディレクトリに保管する。
 
 > - https://stackoverflow.com/a/27612275/12771072
 
@@ -163,7 +163,7 @@ LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危
 
 フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。
 
-CSRまたはSSRのアプリケーションは、`Cookie`ヘッダーを介してブラウザのCookieにアクセストークンを保存できる。
+CSRまたはSSRのアプリケーションは、`Cookie` ヘッダーを介してブラウザのCookieにアクセストークンを保存できる。
 
 トークン (例：アクセストークン、IDトークンなど) で認証アーティファクトを運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。
 
@@ -179,7 +179,7 @@ CSRまたはSSRのアプリケーションは、`Cookie`ヘッダーを介して
 
 **＊例＊**
 
-クライアントPCがMacOSであれば、Chromeは`/Users/<ユーザー名>/Library/Application Support/Google/Chrome/Default/Cookies`ディレクトリに`Cookie`ヘッダーの値を保管する。
+クライアントPCがMacOSであれば、Chromeは `/Users/<ユーザー名>/Library/Application Support/Google/Chrome/Default/Cookies` ディレクトリに `Cookie` ヘッダーの値を保管する。
 
 > - https://qiita.com/EasyCoder/items/8ce7dfd75d05079be9d7#cookie%E3%81%AF%E3%81%A9%E3%81%93%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B
 

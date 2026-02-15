@@ -27,7 +27,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 また読み出しエンドポイントを指定すれば、vmselectを経由して、vmstorageからメトリクスを読み込める。
 
-補足として、PrometheusがリモートストレージとしてVictoriaMetricsを使用する時、Grafanaのようにリアルタイムにデータを取得し続けることはできない。
+補足として、PrometheusがリモートストレージとしてVictoriaMetricsを使用するとき、Grafanaのようにリアルタイムにデータを取得し続けることはできない。
 
 代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得することはできる。
 
@@ -82,7 +82,7 @@ VictoriaMetricsを監視バックエンドかつ監視フロントエンドと�
 
 #### ▼ ログ
 
-これは、`journalctl`コマンドのログである。
+これは、`journalctl` コマンドのログである。
 
 ```bash
 # インデックスDBを読みこむ
@@ -111,7 +111,7 @@ VictoriaMetricsを監視バックエンドかつ監視フロントエンドと�
 
 #### ▼ インストール
 
-もう一方のシングルNodeモードとは、バイナリ (`-cluster`という接尾辞がつく) やセットアップ方法が異なる。
+もう一方のシングルNodeモードとは、バイナリ (`-cluster` という接尾辞がつく) やセットアップ方法が異なる。
 
 > - https://docs.victoriametrics.com/cluster-victoriametrics/#binaries
 
@@ -130,7 +130,7 @@ VictoriaMetricsを監視バックエンドかつ監視フロントエンドと�
 
 #### ▼ ロードバランサーとは
 
-HTTPSリクエストの`8224`番ポートでインバウンド通信を待ち受け、vmselectやvminsertに通信をルーティングする。
+HTTPSリクエストの `8224` 番ポートでインバウンド通信を待ち受け、vmselectやvminsertに通信をルーティングする。
 
 このロードバランサー自体をヘルスチェックすれば、VictoriaMetricsのプロセスが稼働しているか否かを監視できる。
 
@@ -161,7 +161,7 @@ VictoriaMetricsは、クエリの実行前に、ディスクに永続化した�
 
 #### ▼ カーディナリティ
 
-とある期間で区切った時の固有な時系列データの断片数である。
+とある期間で区切ったときの固有なとき系列データの断片数である。
 
 この断片数が多くなる程、読み出しで負荷がかかる。
 
@@ -179,13 +179,13 @@ VictoriaMetricsは、クエリの実行前に、ディスクに永続化した�
 
 保管時にデータを圧縮している。
 
-公式での情報は見つからなかったが、圧縮率は約`10%`らしい。
+公式での情報は見つからなかったが、圧縮率は約 `10%` らしい。
 
 > - https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
 
 #### ▼ ディレクトリ構成
 
-VictoriaMetricsのプロセスを`victoria-metrics-prod`コマンドで起動する時に、`storageDataPath`オプションでディレクトリ名を渡す。
+VictoriaMetricsのプロセスを `victoria-metrics-prod` コマンドで起動するときに、`storageDataPath` オプションでディレクトリ名を渡す。
 
 これにより、マウント先のディレクトリを設定できる。ディレクトリ構造は以下のようになっている。
 
@@ -204,7 +204,7 @@ VictoriaMetricsのプロセスを`victoria-metrics-prod`コマンドで起動す
 └── tmp/
 ```
 
-`du`コマンドを使用して、ストレージ使用量を確認できる。
+`du` コマンドを使用して、ストレージ使用量を確認できる。
 
 ```bash
 $ du -hs /var/lib/victoriametrics/data
@@ -222,7 +222,7 @@ VictoriaMetricsは、容量節約のためにデータブロックを定期的�
 
 vmstorageは、サイズいっぱいまでデータが保管されると、ランタイムエラーを起こしてしまう。これを回避するために、ReadOnlyモードがある。
 
-ReadOnlyモードにより、vmstorageの空きサイズが`minFreeDiskSpaceBytes`オプション値を超えると、書き込みできなくなるような仕様になっている。
+ReadOnlyモードにより、vmstorageの空きサイズが `minFreeDiskSpaceBytes` オプション値を超えると、書き込みできなくなるような仕様になっている。
 
 これにより、vmstorageの最大サイズを超えてデータを書き込むことを防いでいる。
 
@@ -230,13 +230,13 @@ ReadOnlyモードにより、vmstorageの空きサイズが`minFreeDiskSpaceByte
 
 #### ▼ 保管期間
 
-vmstorageは、保管期間を過ぎたメトリクスファイル (主に、`data`ディレクトリ、`indexdb`ディレクトリの配下など) を削除する。
+vmstorageは、保管期間を過ぎたメトリクスファイル (主に、`data` ディレクトリ、`indexdb` ディレクトリの配下など) を削除する。
 
 ただし実際には、期間を過ぎたメトリクスファイルを翌日にすぐ削除するわけではなく、月初のバックグラウンドマージ中にまとめて削除する。
 
-VictoriaMetricsの起動時に、`victoria-metrics-prod`コマンドの`-retentionPeriod`オプションで指定できる。
+VictoriaMetricsの起動時に、`victoria-metrics-prod` コマンドの `-retentionPeriod` オプションで指定できる。
 
-例えば、`-retentionPeriod`オプションを90日とすれば、91日を超えたメトリクスファイルを月初にまとめて削除する。
+例えば、`-retentionPeriod` オプションを90日とすれば、91日を超えたメトリクスファイルを月初にまとめて削除する。
 
 日時的な削除処理によって、CPUやディスクI/Oがスパイクになることがある。
 
@@ -246,9 +246,9 @@ VictoriaMetricsの起動時に、`victoria-metrics-prod`コマンドの`-retenti
 
 #### ▼ ストレージの必要サイズの見積もり
 
-vmstorageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vmstorageの必要最低限のサイズを算出できる。
+vmstorageの `/var/lib/victoriametrics` ディレクトリ配下の増加量 (日) を調査し、これに非機能的な品質の保管日数をかけることにより、vmstorageの必要最低限のサイズを算出できる。
 
-また、`20`%の空きサイズを考慮するために、増加量を`1.2`倍する必要がある。
+また、`20`%の空きサイズを考慮するために、増加量を `1.2` 倍する必要がある。
 
 > - https://docs.victoriametrics.com/#capacity-planning
 
@@ -274,9 +274,9 @@ vmstorageの`/var/lib/victoriametrics`ディレクトリ配下の増加量 (日)
 
 これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。
 
-もし、データの保管日数が`10`日分という非機能的な品質であれば、vmstorageは常に過去`10`日分のデータを保管している必要がある。
+もし、データの保管日数が `10` 日分という非機能的な品質であれば、vmstorageは常に過去 `10` 日分のデータを保管している必要がある。
 
-そのため、以下の数式で`10`日分のサイズを算出できる。
+そのため、以下の数式で `10` 日分のサイズを算出できる。
 
 ```mathematica
 (増加量の合計)
@@ -304,9 +304,9 @@ VictoriaMetricsを、もしAWS EC2上で稼働させる場合、AWS EBSボリュ
 
 ## 02. セットアップ
 
-### `systemctl`コマンド
+### `systemctl` コマンド
 
-`systemctl`コマンドを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
+`systemctl` コマンドを使用して、VictoriaMetricsプロセスをデーモンとして起動する。
 
 `(1)`
 
@@ -343,7 +343,7 @@ WantedBy=multi-user.target
 
 `(2)`
 
-: victoriametricsのプロセスを`systemctl`で起動する。
+: victoriametricsのプロセスを `systemctl` で起動する。
 
 ```bash
 # 作成したファイルを読み込み、VictoriaMetricsプロセスをデーモンとして起動する。

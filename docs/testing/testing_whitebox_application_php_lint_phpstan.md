@@ -38,7 +38,7 @@ $ vendor/bin/phpstan analyse
 
 ## 03. phpstan.neonファイル
 
-### `phpstan.neonファイル`とは
+### `phpstan.neonファイル` とは
 
 PHPStanの設定を実行する。
 

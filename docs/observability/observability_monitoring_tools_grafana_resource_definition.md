@@ -54,7 +54,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prome
 
 #### ▼ ドキュメントから
 
-Grafanaのドキュメントから`yaml`ファイルをコピーし、`grafana.yaml`ファイルを作成する。
+Grafanaのドキュメントから `yaml` ファイルをコピーし、`grafana.yaml` ファイルを作成する。
 
 これを作成する。
 
@@ -145,7 +145,7 @@ spec:
 
 Grafanaのダッシュボードに接続できる。
 
-ユーザー名は`admin`、パスワードは`prom-operator`がデフォルト値である。
+ユーザー名は `admin`、パスワードは `prom-operator` がデフォルト値である。
 
 ```bash
 $ kubectl port-forward svc/grafana -n prometheus 8000:80

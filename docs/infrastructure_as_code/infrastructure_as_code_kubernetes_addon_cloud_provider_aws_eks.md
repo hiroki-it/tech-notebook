@@ -120,7 +120,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-vpc-cn
 
 ### AWS CoreDNSとは
 
-EKSの各Node上で、`kube-dns`という名前のDeploymentとして稼働する。
+EKSの各Node上で、`kube-dns` という名前のDeploymentとして稼働する。
 
 同じCluster内の全てのPodの名前解決を行う。
 
@@ -154,7 +154,7 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 ### AWS kube-proxyとは
 
-EKSの各Node上で、`kube-proxy`という名前のDaemonSetとして稼働する。
+EKSの各Node上で、`kube-proxy` という名前のDaemonSetとして稼働する。
 
 EKSのコントロールプレーン上のkube-apiserverが、Node外からPod内へのリクエストをルーティングできるようにする。
 

@@ -35,7 +35,7 @@ description: コマンド＠Terraformの知見を記録しています。
 
 指定したバックエンドで管理するリソースを削除する。
 
-削除後に、パラメーターとして使用した`tfvars`ファイル自体を削除する必要がある。
+削除後に、パラメーターとして使用した `tfvars` ファイル自体を削除する必要がある。
 
 ```bash
 # 削除するまでに以下の手順が必要である。
@@ -60,9 +60,9 @@ $ terraform apply -destroy -var-file=foo.tfvars
 
 並列処理数を設定できる。
 
-デフォルト値は`10`である。
+デフォルト値は `10` である。
 
-クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を`5`ほどに小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。
+クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を `5` ほどに小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。
 
 ```bash
 $ terraform apply \
@@ -81,13 +81,13 @@ $ export TF_CLI_ARGS_apply="--parallelism=50"
 
 #### ▼ -refresh-only
 
-すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、`tfstate`ファイルにその状態を書き込む。
+すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、`tfstate` ファイルにその状態を書き込む。
 
-もし、Terraform管理外の実インフラがない場合は、`No changes.`になる。
+もし、Terraform管理外の実インフラがない場合は、`No changes.` になる。
 
-具体的は、`terraform plan`コマンドで出力される`Note: Objects have changed outside of Terraform`の内容を指す。
+具体的は、`terraform plan` コマンドで出力される `Note: Objects have changed outside of Terraform` の内容を指す。
 
-ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) を処理することはできず、代わりに`terraform import`コマンドの実行が必要になる。
+ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) を処理することはできず、代わりに `terraform import` コマンドの実行が必要になる。
 
 ```bash
 $ terraform apply -refresh-only
@@ -119,7 +119,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed. # 実インフラは
 
 #### ▼ -target
 
-特定の`resource`ブロックを使用して、`terraform apply`コマンドを実行する。
+特定の `resource` ブロックを使用して、`terraform apply` コマンドを実行する。
 
 リリース用のブランチに、今回はリリースしたくない差分が含まれてしまっているような場合、特定の差分のみをプロビジョニングできる。
 
@@ -129,7 +129,7 @@ $ terraform apply \
     -target='<resourceタイプ>.<resourceブロック名>'
 ```
 
-`module`ブロックを採用している場合、指定の方法が異なる。
+`module` ブロックを採用している場合、指定の方法が異なる。
 
 ```bash
 $ terraform apply \
@@ -165,9 +165,9 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-#### ▼ `.tfplan`ファイル
+#### ▼ `.tfplan` ファイル
 
-事前に、`terraform plan`コマンドによって作成された実行プランファイルを元に、`terraform apply`コマンドを実行する。
+事前に、`terraform plan` コマンドによって作成された実行プランファイルを元に、`terraform apply` コマンドを実行する。
 
 実行プランを渡す場合は、環境変数をオプションに設定する必要はない。
 
@@ -181,9 +181,9 @@ $ terraform apply foo.tfplan
 
 #### ▼ initとは
 
-`terraform`コマンドを実行しているローカルマシンの`.terraform`ディレクトリを初期化 (`terraform.lock.hcl`ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど) を実行する。
+`terraform` コマンドを実行しているローカルマシンの `.terraform` ディレクトリを初期化 (`terraform.lock.hcl` ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど) を実行する。
 
-`tfstate`ファイルを書き換えることはしないため、基本的には安全である。
+`tfstate` ファイルを書き換えることはしないため、基本的には安全である。
 
 もしプロバイダーをアップグレードした場合は、新バージョンのインストールするために、本コマンドを実行する必要がある。
 
@@ -207,7 +207,7 @@ Initializing provider plugins...
 
 指定したバックエンドの初期化をスキップする。
 
-一度でもバックエンドを初期化している場合は、改めて初期化することは不要なため、このオプションを使用する。
+一度でもバックエンドを初期化している場合は、あらためて初期化することは不要なため、このオプションを使用する。
 
 ```bash
 $ terraform init -backend=false
@@ -222,13 +222,13 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 #### ▼ -backend=true, -backend-config
 
-指定したバックエンドにある`tfstate`ファイルを使用して、ローカルマシンの`.terraform`ディレクトリを初期化する。
+指定したバックエンドにある `tfstate` ファイルを使用して、ローカルマシンの `.terraform` ディレクトリを初期化する。
 
-また、`terraform plan`コマンドや`terraform apply`コマンドの向き先を別のバックエンドに切り替える。
+また、`terraform plan` コマンドや `terraform apply` コマンドの向き先を別のバックエンドに切り替える。
 
-バックエンドの代わりに、`terraform`ブロック内の`backend`オプションで指定しても良い。
+バックエンドの代わりに、`terraform` ブロック内の `backend` オプションで指定しても良い。
 
-ただし、`terraform setting`ブロック内では通常変数を使用できないため、こちらのオプションが推奨である。
+ただし、`terraform setting` ブロック内では通常変数を使用できないため、こちらのオプションが推奨である。
 
 ```bash
 $ terraform init \
@@ -245,9 +245,9 @@ $ terraform init \
 
 #### ▼ -reconfigure
 
-初期化のための`terraform init`コマンドの時、今現在で設定しているバックエンドにある`tfstate`ファイルをそのまま使用する。
+初期化のための `terraform init` コマンドの時、今現在で設定しているバックエンドにある `tfstate` ファイルをそのまま使用する。
 
-`--migrate-state`オプションとは異なり、元のバックエンドが異なる場合、元のバックエンドの`tfstate`ファイルはそのまま保持される。
+`--migrate-state` オプションとは異なり、元のバックエンドが異なる場合、元のバックエンドの `tfstate` ファイルはそのまま保持される。
 
 ```bash
 $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
@@ -262,9 +262,9 @@ $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 
 #### ▼ --migrate-state
 
-初期化のための`terraform init`コマンドの時、この時、元のバックエンドにある`tfstate`ファイルをコピーし、指定したバックエンドに移行する。
+初期化のための `terraform init` コマンドの時、この時、元のバックエンドにある `tfstate` ファイルをコピーし、指定したバックエンドに移行する。
 
-元のバックエンドの`tfstate`ファイルを削除するか否かを選択できる。
+元のバックエンドの `tfstate` ファイルを削除するか否かを選択できる。
 
 ```bash
 $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
@@ -276,9 +276,9 @@ $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 
 現在のバージョンを基に、自前/公式リモートモジュール、プラグイン、のアップグレード/ダウングレードを行う。
 
-合わせて、`.terraform.lock.hcl`ファイルを更新する。
+合わせて、`.terraform.lock.hcl` ファイルを更新する。
 
-リモートモジュールやプラグインのバージョンを固定していない場合、`upgrade`オプションによって、最新のバージョンを毎回インストールすることになる。
+リモートモジュールやプラグインのバージョンを固定していない場合、`upgrade` オプションによって、最新のバージョンを毎回インストールすることになる。
 
 ```bash
 $ terraform init -upgrade
@@ -288,7 +288,7 @@ $ terraform init -upgrade
 
 #### ▼ 問題が起こる場合
 
-`terraform init`コマンドで以下のようなエラーが起こる場合がある。
+`terraform init` コマンドで以下のようなエラーが起こる場合がある。
 
 ```bash
 │ Error: Failed to query available provider packages
@@ -325,7 +325,7 @@ $ mkdir -p $HOME/.terraform.d/plugins/registry.terraform.io/hashicorp/${PROVIDER
 
 #### ▼ fmtとは
 
-`.tf`ファイルのコードを整形する。
+`.tf` ファイルのコードを整形する。
 
 #### ▼ -check
 
@@ -362,9 +362,9 @@ main.tf
 
 ### get
 
-`terraform`コマンドを実行しているローカルマシンの`.terraform`ディレクトリに、ローカル/リモートモジュールをインストールする。
+`terraform` コマンドを実行しているローカルマシンの `.terraform` ディレクトリに、ローカル/リモートモジュールをインストールする。
 
-ただし、`terraform init`コマンドに同じ機能が含まれている。
+ただし、`terraform init` コマンドに同じ機能が含まれている。
 
 ```bash
 $ terraform get
@@ -378,9 +378,9 @@ $ terraform get
 
 #### ▼ graphとは
 
-`tfstate`ファイルに基づいて、リソース間の依存関係をグラフ化する。
+`tfstate` ファイルに基づいて、リソース間の依存関係をグラフ化する。
 
-これにより、どの`resource`ブロックが他のどの`resource`ブロックを使用しているかがわかる。
+これにより、どの `resource` ブロックが他のどの `resource` ブロックを使用しているかがわかる。
 
 Graphvizのダウンロードが必要である。
 
@@ -407,15 +407,15 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 | 図形   | 種類                                                  |
 | ------ | ----------------------------------------------------- |
 | 楕円   | ルートモジュール                                      |
-| 菱形   | `provider`ブロック                                    |
-| 四角   | `resource`ブロック、`data`ブロック                    |
-| ノート | `variable`ブロック、`output`ブロック、`local`ブロック |
+| 菱形   | `provider` ブロック                                    |
+| 四角   | `resource` ブロック、`data` ブロック                    |
+| ノート | `variable` ブロック、`output` ブロック、`local` ブロック |
 
 > - https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355
 
 #### ▼ 他のツール
 
-`terraform graph`コマンドを使用する以外に、リソース間の依存関係をグラフ化する。
+`terraform graph` コマンドを使用する以外に、リソース間の依存関係をグラフ化する。
 
 - Terraform graph beautifie
 - Rover
@@ -432,11 +432,11 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 
 #### ▼ importとは
 
-実インフラの状態を読み込み、`tfstate`ファイルに反映する。
+実インフラの状態を読み込み、`tfstate` ファイルに反映する。
 
 #### ▼ -var-file
 
-`.tfvars`ファイルを指定して、`terraform import`コマンドを実行する。
+`.tfvars` ファイルを指定して、`terraform import` コマンドを実行する。
 
 ```bash
 $ terraform import \
@@ -454,7 +454,7 @@ your Terraform state and will henceforth be managed by Terraform.
 
 ### output
 
-`tfstate`ファイルの`output`ブロックを表示する。
+`tfstate` ファイルの `output` ブロックを表示する。
 
 ```bash
 $ terraform output -json
@@ -495,9 +495,9 @@ Plan: 0 to add, 0 to change, 10 to destroy.
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い、現在のインフラリソースの状態を`tfstate`ファイルには反映せずに、設定ファイルの記述との差分を検証する。
+クラウドに対してリクエストを行い、現在のインフラリソースの状態を `tfstate` ファイルには反映せずに、設定ファイルの記述との差分を検証する。
 
-スクリプト実行時に、環境変数が定義されたファイルを実行すると、`variable`ブロックで宣言した変数に、値が格納される。
+スクリプト実行時に、環境変数が定義されたファイルを実行すると、`variable` ブロックで宣言した変数に、値が格納される。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars
@@ -522,7 +522,7 @@ actions need to be performed.
 
 #### ▼ -target
 
-特定の`resource`ブロックを使用して、`terraform plan`コマンドを実行する。`terraform plan`コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使用できる。`-target`オプションで指定するアドレスは、`terraform plan`コマンド自身の出力結果や、`terraform state list`コマンドで確認できる。
+特定の `resource` ブロックを使用して、`terraform plan` コマンドを実行する。`terraform plan` コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使用できる。`-target` オプションで指定するアドレスは、`terraform plan` コマンド自身の出力結果や、`terraform state list` コマンドで確認できる。
 
 > - https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 
@@ -532,7 +532,7 @@ $ terraform plan \
     -target='<resourceタイプ>.<resourceブロック名>'
 ```
 
-`module`ブロックを使用している場合、指定の方法が異なる。
+`module` ブロックを使用している場合、指定の方法が異なる。
 
 ```bash
 $ terraform plan \
@@ -540,9 +540,9 @@ $ terraform plan \
     -target='module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
 ```
 
-指定方法は、全てのブロックを対象とした`terraform plan`コマンドが参考になる。
+指定方法は、全てのブロックを対象とした `terraform plan` コマンドが参考になる。
 
-`grep`コマンドを使用してresourceタイプ名や`module`ブロック名で抽出すると、指定方法がわかる。
+`grep` コマンドを使用してresourceタイプ名や `module` ブロック名で抽出すると、指定方法がわかる。
 
 ```bash
 # resourceブロックの指定方法を調べる。
@@ -574,9 +574,9 @@ $ terraform plan \
 
 #### ▼ -refresh
 
-このオプションをつければ、`terraform refresh`コマンドを同時に実行してくれる。
+このオプションをつければ、`terraform refresh` コマンドを同時に実行してくれる。
 
-ただし、デフォルトで`true`なため、不要である。
+ただし、デフォルトで `true` なため、不要である。
 
 ```bash
 $ terraform plan \
@@ -590,7 +590,7 @@ $ terraform plan \
 
 並列処理数を設定できる。
 
-デフォルト値は`10`である。
+デフォルト値は `10` である。
 
 クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。
 
@@ -604,7 +604,7 @@ $ terraform plan \
 
 実行プランファイルを作成する。
 
-`terraform apply`コマンドのために使用できる。
+`terraform apply` コマンドのために使用できる。
 
 ```bash
 $ terraform plan \
@@ -638,7 +638,7 @@ $ terraform plan \
 
 そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるかを表している。
 
-結果の最後に表示される対象の`resource`ブロックの数を確認しても、前半部分の`resource`ブロックは含まれていないことがわかる。
+結果の最後に表示される対象の `resource` ブロックの数を確認しても、前半部分の `resource` ブロックは含まれていないことがわかる。
 
 ```bash
 Note: Objects have changed outside of Terraform
@@ -669,15 +669,15 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 値を変更した場合に差分として認識されるものを示した。
 
-ただし、差分として認識されるものの`moved`ブロックを使用すれば、差分を回避できる。
+ただし、差分として認識されるものの `moved` ブロックを使用すれば、差分を回避できる。
 
 | 変更内容                                                                                 | される/されない |
 | ---------------------------------------------------------------------------------------- | --------------- |
-| `resource`ブロック名の変更                                                               | される          |
-| `module`ブロック名の変更                                                                 | される          |
+| `resource` ブロック名の変更                                                               | される          |
+| `module` ブロック名の変更                                                                 | される          |
 | ファイルやディレクトリを指定するパスの変更                                               | されない        |
-| `resource`ブロックにハードコーディングされた値を環境変数に変更 (`.tfvars`ファイルに移行) | されない        |
-| `variables`ブロック名の変更                                                              | されない        |
+| `resource` ブロックにハードコーディングされた値を環境変数に変更 (`.tfvars` ファイルに移行) | されない        |
+| `variables` ブロック名の変更                                                              | されない        |
 
 > - https://moneyforward.com/engineers_blog/2021/12/27/refactoring-terraform/
 
@@ -687,11 +687,11 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 #### ▼ providerとは
 
-`terraform.lock.hcl`ファイルを作成する。
+`terraform.lock.hcl` ファイルを作成する。
 
 **＊例＊**
 
-CPUアーキテクチャ (例：Intel、AMD、ARM) を設定しつつ、`terraform.lock.hcl`ファイルを作成する。
+CPUアーキテクチャ (例：Intel、AMD、ARM) を設定しつつ、`terraform.lock.hcl` ファイルを作成する。
 
 ```bash
 $ terraform providers lock \
@@ -702,7 +702,7 @@ $ terraform providers lock \
     -platform=windows_amd64
 ```
 
-事前に、`terraform.lock.hcl`ファイルを削除する必要がある。
+事前に、`terraform.lock.hcl` ファイルを削除する必要がある。
 
 ```bash
 $ rm .terraform.lock.hcl
@@ -716,7 +716,7 @@ $ rm .terraform.lock.hcl
 
 #### ▼ -var-file
 
-クラウドに対してリクエストを行い、現在のインフラリソースの状態を`tfstate`ファイルに反映する。非推奨であり、代わりに、`terraform apply -refresh-only`コマンドを使用する。
+クラウドに対してリクエストを行い、現在のインフラリソースの状態を `tfstate` ファイルに反映する。非推奨であり、代わりに、`terraform apply -refresh-only` コマンドを使用する。
 
 ```bash
 $ terraform refresh -var-file=foo.tfvars
@@ -728,11 +728,11 @@ $ terraform refresh -var-file=foo.tfvars
 
 #### ▼ stateとは
 
-`tfstate`ファイルを操作する。
+`tfstate` ファイルを操作する。
 
 #### ▼ list
 
-`tfstate`ファイルで定義されている`resource`ブロック (`tfstate`ファイル上では`managed`モード) の一覧を取得する。`terraform apply`コマンドで`-target`オプションを使用する前にアドレスを確認したい場合や、`terraform apply`コマンドの実行に失敗した時に`tfstate`ファイルと実インフラにどのような差分があるかを確認する場合に使用する。
+`tfstate` ファイルで定義されている `resource` ブロック (`tfstate` ファイル上では `managed` モード) の一覧を取得する。`terraform apply` コマンドで `-target` オプションを使用する前にアドレスを確認したい場合や、`terraform apply` コマンドの実行に失敗したときに `tfstate` ファイルと実インフラにどのような差分があるかを確認する場合に使用する。
 
 > - https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 
@@ -740,7 +740,7 @@ $ terraform refresh -var-file=foo.tfvars
 $ terraform state list
 ```
 
-以下の通り、`module`ブロックも含めて、`resource`ブロックが表示される。
+以下の通り、`module` ブロックも含めて、`resource` ブロックが表示される。
 
 ```bash
 aws_instance.www-1a
@@ -764,7 +764,7 @@ module.vpc_module.aws_vpc.vpc
 
 #### ▼ pull
 
-リモートにある`tfstate`ファイルをローカルマシンにダウンロードする。
+リモートにある `tfstate` ファイルをローカルマシンにダウンロードする。
 
 ```bash
 $ terraform state pull > <tfstateファイル名>
@@ -772,9 +772,9 @@ $ terraform state pull > <tfstateファイル名>
 
 #### ▼ rm
 
-`tfstate`ファイルから状態を削除し、Terraformの管理外にする。
+`tfstate` ファイルから状態を削除し、Terraformの管理外にする。
 
-`count`引数や`for_each`引数を使用している場合は、シングルクオーテーションで囲う必要がある。
+`count` 引数や `for_each` 引数を使用している場合は、シングルクオーテーションで囲う必要がある。
 
 ```bash
 # 関数を使用せずに定義されている場合
@@ -843,7 +843,7 @@ $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
 
 #### ▼ show list
 
-`tfstate`ファイルを表示する。
+`tfstate` ファイルを表示する。
 
 ```bash
 $ terraform state
@@ -906,7 +906,7 @@ $ terraform state
 }
 ```
 
-特定の`resource`ブロックのみを表示することもできる。
+特定の `resource` ブロックのみを表示することもできる。
 
 ```bash
 $ terraform state show 'aws_instance.bastion'
@@ -918,13 +918,13 @@ $ terraform state show 'aws_instance.bastion'
 
 #### ▼ taintとは
 
-バックエンドにある`tfstate`ファイルにて、指定された`resource`ブロックの`tainted`フラグを立てる。
+バックエンドにある `tfstate` ファイルにて、指定された `resource` ブロックの `tainted` フラグを立てる。
 
 #### ▼ -var-file `<resourceブロック>`
 
-例えば、`apply`したが、途中でエラーが発生してしまい、実インフラに中途半端に作成されてしまうことがある。
+例えば、`apply` したが、途中でエラーが発生してしまい、実インフラに中途半端に作成されてしまうことがある。
 
-ここで、`tainted`を立てておくと、実インフラの`resource`ブロックを削除したと想定した`terraform plan`コマンドを実行できる。
+ここで、`tainted` を立てておくと、実インフラの `resource` ブロックを削除したと想定した `terraform plan` コマンドを実行できる。
 
 ```bash
 $ terraform taint \
@@ -932,7 +932,7 @@ $ terraform taint \
     module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>
 ```
 
-この後の`terraform plan`コマンドのログからも、`-/+`で削除が行われる想定で、差分を比較していることがわかる。
+この後の `terraform plan` コマンドのログからも、`-/+` で削除が行われる想定で、差分を比較していることがわかる。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars
@@ -971,17 +971,17 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 <br>
 
-## 02. 実インフラの全ての設定値を`tfstate`ファイルに取り込む
+## 02. 実インフラの全ての設定値を `tfstate` ファイルに取り込む
 
-### `import`について
+### `import` について
 
-実インフラの全ての設定値を`tfstate`ファイルに取り込む場合、これの設定値を`resource`ブロックの設定値として`tfstate`ファイルに書き込み、Terraformの管理下におく必要がある (`tfstate`ファイル上では、`resource`ブロックは`managed`モードという表記になる) 。
+実インフラの全ての設定値を `tfstate` ファイルに取り込む場合、これの設定値を `resource` ブロックの設定値として `tfstate` ファイルに書き込み、Terraformの管理下におく必要がある (`tfstate` ファイル上では、`resource` ブロックは `managed` モードという表記になる) 。
 
-この時、`terraform import`コマンドを実行するか、コンソール画面から一度削除した上で`terraform apply`コマンドを実行する方法がある (前者が推奨) 。
+この時、`terraform import` コマンドを実行するか、コンソール画面から一度削除したうえで `terraform apply` コマンドを実行する方法がある (前者が推奨) 。
 
-執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを`1`個ずつ指定して、`tfstate`ファイルに書き込んでいく必要がある。
+執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを `1` 個ずつ指定して、`tfstate` ファイルに書き込んでいく必要がある。
 
-似た目的で使用する`terraform apply -refresh-only`コマンドは実インフラの一部の設定値が対象であるが、`import`は実インフラの全ての設定値が対象である。
+似た目的で使用する `terraform apply -refresh-only` コマンドは実インフラの一部の設定値が対象であるが、`import` は実インフラの全ての設定値が対象である。
 
 > - https://dtan4.hatenablog.com/entry/2016/08/18/010652
 
@@ -991,7 +991,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 `(1)`
 
-: バックエンドがリモートの場合、ローカルマシンに`tfstate`ファイルをダウンロードする。
+: バックエンドがリモートの場合、ローカルマシンに `tfstate` ファイルをダウンロードする。
 
 ```bash
 # バックエンドがS3バケットの場合
@@ -1003,7 +1003,7 @@ $ gsutil cp gs://<Google Cloud Storage名>/<tfstateファイルへのパス> <�
 
 `(2)`
 
-: ダウンロードした`tfstate`ファイルを`local`バックエンドで指定する。
+: ダウンロードした `tfstate` ファイルを `local` バックエンドで指定する。
 
 ```terraform
 terraform {
@@ -1019,19 +1019,19 @@ terraform {
 
 `(3)`
 
-: `local`バックエンドで初期化する。
+: `local` バックエンドで初期化する。
 
 ```bash
 $ terraform init -reconfigure
 ```
 
-### `tf`ファイルを定義する
+### `tf` ファイルを定義する
 
-#### ▼ `terraform import`コマンドの場合
+#### ▼ `terraform import` コマンドの場合
 
 `(4)`
 
-: `.tfstate`ファイルと差分のない`tf`ファイルを定義する
+: `.tfstate` ファイルと差分のない `tf` ファイルを定義する
 
     手動で作成する場合は、頑張るしかない。
 
@@ -1041,9 +1041,9 @@ resource "<resourceタイプ>" "<resourceブロック名>" {
 }
 ```
 
-#### ▼ `import`ブロックの場合
+#### ▼ `import` ブロックの場合
 
-`import`ブロックを使用すると、`.tf`ファイルを自動生成できる。
+`import` ブロックを使用すると、`.tf` ファイルを自動生成できる。
 
 ```terraform
 import {
@@ -1056,7 +1056,7 @@ import {
 
 **＊実行例＊**
 
-`import`ブロックを使用して、`resource "aws_instance" "ec2" {...}`という実装を自動作成する。
+`import` ブロックを使用して、`resource "aws_instance" "ec2" {...}` という実装を自動作成する。
 
 ```terraform
 import {
@@ -1071,7 +1071,7 @@ import {
 $ terraform plan -var-file=foo.tfvars -generate-config-out=aws_instance.tf
 ```
 
-これにより、`aws_instance.tf`ファイルを自動作成できる。
+これにより、`aws_instance.tf` ファイルを自動作成できる。
 
 ```terraform
 # __generated__ by Terraform
@@ -1095,13 +1095,13 @@ resource "aws_instance" "foo" {
 
 <br>
 
-### `import`を実施する
+### `import` を実施する
 
-#### ▼ `terraform import`コマンドの場合
+#### ▼ `terraform import` コマンドの場合
 
 `(5)`
 
-: `terraform import`コマンドを実行する。
+: `terraform import` コマンドを実行する。
 
      これにより、`resource`タイプと`resource`ブロック名を指定し、`tfstate`ファイルに実インフラの状態を書き込む。
 
@@ -1202,9 +1202,9 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 > - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
 > - https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
 
-#### ▼ `import`ブロックの場合
+#### ▼ `import` ブロックの場合
 
-`import`ブロックの場合、自動作成した`.tf`ファイルも含めて`terraform apply`コマンドを実行する。
+`import` ブロックの場合、自動作成した `.tf` ファイルも含めて `terraform apply` コマンドを実行する。
 
 ```bash
 $ terraform apply
@@ -1221,11 +1221,11 @@ Apply complete! Resources: 1 imported, 0 added, 0 changed, 0 destroyed.
 
 <br>
 
-### 差分を解消する (`import`ブロックの場合は不要)
+### 差分を解消する (`import` ブロックの場合は不要)
 
 `(6)`
 
-: `tfstate`ファイルと実インフラの差分が無くなったら完了である。
+: `tfstate` ファイルと実インフラの差分が無くなったら完了である。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars
@@ -1237,19 +1237,19 @@ No changes. Infrastructure is up-to-date.
 
 ### Tips
 
-#### ▼ importできない`resource`タイプ
+#### ▼ importできない `resource` タイプ
 
-`resource`ブロック間の紐付けに特化したような`resource`ブロックは、`terraform import`コマンドに対応していないものが多い (AWSであれば、`aws_acm_certificate_validation`、`aws_lb_target_group_attachment`など) 。
+`resource` ブロック間の紐付けに特化したような `resource` ブロックは、`terraform import` コマンドに対応していないものが多い (AWSであれば、`aws_acm_certificate_validation`、`aws_lb_target_group_attachment` など) 。
 
-その場合、`tfstate`ファイルと実インフラの差分を解消できない。
+その場合、`tfstate` ファイルと実インフラの差分を解消できない。
 
-ただし、こういった非対応の`resource`ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の`resource`ブロックであることが多い。
+ただし、こういった非対応の `resource` ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の `resource` ブロックであることが多い。
 
-そのため、実際に`terraform apply`コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
+そのため、実際に `terraform apply` コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
 
 #### ▼ importを行わなかった場合のエラー
 
-もし`terraform import`コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになってしまう。
+もし `terraform import` コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになってしまう。
 
 (エラー例1)
 
@@ -1265,13 +1265,13 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 <br>
 
-## 03. 実インフラの一部の設定値を`tfstate`ファイルに取り込む
+## 03. 実インフラの一部の設定値を `tfstate` ファイルに取り込む
 
-### `terraform apply -refresh-only`コマンドについて
+### `terraform apply -refresh-only` コマンドについて
 
-実インフラから実インフラの一部の設定値を`tfstate`ファイルに取り込む場合、以下の方法が便利である。
+実インフラから実インフラの一部の設定値を `tfstate` ファイルに取り込む場合、以下の方法が便利である。
 
-似た目的で使用する`import`は実インフラの全ての設定値が対象であるが、`terraform apply -refresh-only`コマンドは実インフラの一部の設定値が対象である。
+似た目的で使用する `import` は実インフラの全ての設定値が対象であるが、`terraform apply -refresh-only` コマンドは実インフラの一部の設定値が対象である。
 
 `(1)`
 
@@ -1279,11 +1279,11 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 `(2)`
 
-: `terraform apply -refresh-only`コマンドまたは`terraform apply`コマンドを実行する。
+: `terraform apply -refresh-only` コマンドまたは `terraform apply` コマンドを実行する。
 
 `(3)`
 
-: 実インフラは変更されず、`tfstate`ファイルに状態が書き込まれる。
+: 実インフラは変更されず、`tfstate` ファイルに状態が書き込まれる。
 
 > - https://medium.com/@mehmetodabashi/how-to-updateterraform-state-file-with-manually-changed-resources-2407b4843a55
 

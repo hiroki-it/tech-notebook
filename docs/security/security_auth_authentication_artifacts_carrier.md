@@ -17,20 +17,20 @@ description: 認証アーティファクトの運搬＠認証アーティファ�
 
 マイクロサービスアーキテクチャの文脈では、各認証アーティファクトにさまざまな運搬媒体があります。
 
-セッションID、アクセストークンであるJWTトークンやOpaqueトークン、APIキーはHTTP/1.1リクエストの`Cookie`ヘッダーや`Authorization`ヘッダーで運搬できます。
+セッションID、アクセストークンであるJWTトークンやOpaqueトークン、APIキーはHTTP/1.1リクエストの `Cookie` ヘッダーや `Authorization` ヘッダーで運搬できます。
 
 HTTP/2では、ヘッダー名は小文字にする必要があります。
 
 | HTTP/1.1                    | HTTP/2                      | **セッションID** | **JWTトークン** | Opaqueトークン | APIキー |
 | --------------------------- | --------------------------- | :--------------: | :-------------: | :------------: | :-----: |
-| **`Cookie`ヘッダー**        | **`cookie`ヘッダー**        |       ✔︎        |       ✔︎       |      ✔︎       |         |
-| **`Authorization`ヘッダー** | **`authorization`ヘッダー** |        無        |       ✔︎       |      ✔︎       |   ✔︎   |
+| **`Cookie` ヘッダー**        | **`cookie` ヘッダー**        |       ✔︎        |       ✔︎       |      ✔︎       |         |
+| **`Authorization` ヘッダー** | **`authorization` ヘッダー** |        無        |       ✔︎       |      ✔︎       |   ✔︎   |
 | **カスタムヘッダー**        | **カスタムヘッダー**        |                  |                 |                |   ✔︎   |
-| **クエリパラメーター**      | `:path`ヘッダー             |                  |                 |                |         |
+| **クエリパラメーター**      | `:path` ヘッダー             |                  |                 |                |         |
 
 <br>
 
-## 02. `Cookie`ヘッダーによる運搬
+## 02. `Cookie` ヘッダーによる運搬
 
 ### 適するユースケース
 
@@ -43,11 +43,11 @@ HTTP/2では、ヘッダー名は小文字にする必要があります。
 
 ### セッションIDを運搬する場合
 
-セッションベース認証の場合、セッションIDを`Cookie`ヘッダーで運搬する。
+セッションベース認証の場合、セッションIDを `Cookie` ヘッダーで運搬する。
 
 `(1)`
 
-: セッションIDを`Cookie`ヘッダーに割り当て、リクエストを送信する。
+: セッションIDを `Cookie` ヘッダーに割り当て、リクエストを送信する。
 
 `(2)`
 
@@ -82,7 +82,7 @@ POST https://example.com/foo-form
 
 `(5)`
 
-: レスポンスの`Set-Cookie`ヘッダーにセッションIDを割り当て、クライアントに送信する。`Set-Cookie`ヘッダーにより、クライアントは`Cookie`ヘッダーを設定しなければいけなくなる。
+: レスポンスの `Set-Cookie` ヘッダーにセッションIDを割り当て、クライアントに送信する。`Set-Cookie` ヘッダーにより、クライアントは `Cookie` ヘッダーを設定しなければいけなくなる。
 
 ```yaml
 200 OK
@@ -116,13 +116,13 @@ cookie: sessionid=<セッションID>
 
 ### アクセストークンを運搬する場合
 
-トークンベース認証の場合、アクセストークンを`Cookie`ヘッダーで運搬する。
+トークンベース認証の場合、アクセストークンを `Cookie` ヘッダーで運搬する。
 
 CSRFトークンと組み合わせるとさらに良くなる。
 
-なお、APIではリクエストの送受信時に`Cookie`ヘッダーよりも`Authorization`ヘッダーの方が扱いやすいため、`Authorization`ヘッダーでアクセストークンを運搬することになる。
+なお、APIではリクエストの送受信時に `Cookie` ヘッダーよりも `Authorization` ヘッダーの方が扱いやすいため、`Authorization` ヘッダーでアクセストークンを運搬することになる。
 
-また、スマホアプリも`Cookie`ヘッダーより`Authorization`ヘッダーがいいらしい。
+また、スマホアプリも `Cookie` ヘッダーより `Authorization` ヘッダーがいいらしい。
 
 ![JWT](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JWT.png)
 
@@ -134,7 +134,7 @@ CSRFトークンと組み合わせるとさらに良くなる。
 
 <br>
 
-## 03. `Authorization`ヘッダーによる運搬
+## 03. `Authorization` ヘッダーによる運搬
 
 ### 適するユースケース
 
@@ -146,13 +146,13 @@ CSRFトークンと組み合わせるとさらに良くなる。
 
 ### セッションIDを運搬する場合
 
-セッションベース認証の場合は、セッションIDを`Authorization`ヘッダーで運搬することはない。
+セッションベース認証の場合は、セッションIDを `Authorization` ヘッダーで運搬することはない。
 
 <br>
 
 ### アクセストークンを運搬する場合
 
-トークンベース認証の場合、アクセストークンを`Authorization`ヘッダーで運搬する。
+トークンベース認証の場合、アクセストークンを `Authorization` ヘッダーで運搬する。
 
 ```yaml
 POST https://example.com/foo
@@ -160,13 +160,13 @@ POST https://example.com/foo
 authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエンコード値>.<署名JSONエンコード値>
 ```
 
-なお不便ではあるが、`Authorization`ヘッダーは`Cookie`ヘッダーとは異なり、ローカルマシンに保管できない。
+なお不便ではあるが、`Authorization` ヘッダーは `Cookie` ヘッダーとは異なり、ローカルマシンに保管できない。
 
 その代わり、ブラウザの設定によって、ブラウザのWebストレージで保管できる (Chromeでは、LocalStorageあるいはSessionStorage) 。
 
-なお、APIではリクエストの送受信時に`Cookie`ヘッダーよりも`Authorization`ヘッダーの方が扱いやすいため、`Authorization`ヘッダーでアクセストークンを運搬することになる。
+なお、APIではリクエストの送受信時に `Cookie` ヘッダーよりも `Authorization` ヘッダーの方が扱いやすいため、`Authorization` ヘッダーでアクセストークンを運搬することになる。
 
-また、スマホアプリも`Cookie`ヘッダーより`Authorization`ヘッダーがいいらしい。
+また、スマホアプリも `Cookie` ヘッダーより `Authorization` ヘッダーがいいらしい。
 
 > - https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a
 > - https://softwareengineering.stackexchange.com/a/141434

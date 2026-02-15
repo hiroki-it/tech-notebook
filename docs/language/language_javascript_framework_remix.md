@@ -48,9 +48,9 @@ SSRのアプリケーションで以下の順に処理を実行し、データ�
 
 | 順番 | 名前                | ディレクトリ     | ロジック                                              | 責務                                                                                                                                                                                                                              |
 | ---- | ------------------- | ---------------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1    | ブラウザ上          | -                | -                                                     | 最初、ブラウザからRemixにリクエストを送信する。ほかに、アクション中の`remix-link`コンポーネントが、URLクエリストリングのページ値（`?page=n`）が書き換える。                                                                       |
-| 2    | ローダー            | `app/routes`     | バックエンド                                          | レンダリング前にバックエンドでデータを処理し、`return json()`でフロントエンドにデータを渡す。ローダーの段階でデータを用意しておき、フロントエンドではデータ表示ロジックだけを実装すると、ブラウザの描画のパフォーマンスが上がる。 |
-| 3    | remixコンポーネント | `app/components` | UIロジック、CSSスタイリングロジック、状態管理ロジック | レンダリング処理を実行する。reactコンポーネントとは区別する。また、`app/components`にあるreactコンポーネント（UIレンダリングロジック、状態管理ロジック）を呼び出す。 生成したページをブラウザに返信する。                         |
+| 1    | ブラウザ上          | -                | -                                                     | 最初、ブラウザからRemixにリクエストを送信する。ほかに、アクション中の `remix-link` コンポーネントが、URLクエリストリングのページ値（`?page=n`）が書き換える。                                                                       |
+| 2    | ローダー            | `app/routes`     | バックエンド                                          | レンダリング前にバックエンドでデータを処理し、`return json()` でフロントエンドにデータを渡す。ローダーの段階でデータを用意しておき、フロントエンドではデータ表示ロジックだけを実装すると、ブラウザの描画のパフォーマンスが上がる。 |
+| 3    | remixコンポーネント | `app/components` | UIロジック、CSSスタイリングロジック、状態管理ロジック | レンダリング処理を実行する。reactコンポーネントとは区別する。また、`app/components` にあるreactコンポーネント（UIレンダリングロジック、状態管理ロジック）を呼び出す。 生成したページをブラウザに返信する。                         |
 | 4    | ブラウザ上          | -                | -                                                     | Remixからページを取得し、表示する                                                                                                                                                                                                 |
 | 5    | アクション          | `app/routes`     | バックエンド                                          | レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストコンテキストを受信し、DBのデータを変更する。また、レスポンスをremixコンポーネントに渡す。                               |
 | 6    | ローダー            | `app/routes`     | UIロジック、CSSスタイリングロジック、状態管理ロジック | ブラウザ操作に応じて、アクションからデータを取得する。                                                                                                                                                                            |
@@ -97,7 +97,7 @@ SSRのため、サーバーレンダリングとしている。
 
 #### ▼ ローダーとは
 
-ローダーは、`loader`関数として定義できる。
+ローダーは、`loader` 関数として定義できる。
 
 レンダリング前にAPIからデータを取得し、またブラウザ操作に応じてアクションからデータを取得する。
 
@@ -140,7 +140,7 @@ export const loader = async () => {
 
 #### ▼ ロギング
 
-ローダー内で`console.log`関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。
+ローダー内で `console.log` 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。
 
 #### ▼ useLoaderData
 
@@ -238,7 +238,7 @@ export default function Posts() {
 
 #### ▼ ロギング
 
-remixコンポーネント内で`console.log`関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。
+remixコンポーネント内で `console.log` 関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。
 
 #### ▼ アクションではなくremixコンポーネントに実装するべき処理
 
@@ -254,7 +254,7 @@ remixコンポーネント内で`console.log`関数を実行すると、ブラ�
 
 また、レスポンスのデータをremixコンポーネントに渡す。
 
-componentを同じファイルに実装する以外に、`.server`ディレクトリに切り分ける方法もある。
+componentを同じファイルに実装する以外に、`.server` ディレクトリに切り分ける方法もある。
 
 ```jsx
 import type { ActionFunctionArgs } from "@remix-run/node";
@@ -323,7 +323,7 @@ export async function action({request}: ActionFunctionArgs) {
 
 #### ▼ ロギング
 
-アクション内で`console.log`関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。
+アクション内で `console.log` 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。
 
 <br>
 
@@ -386,9 +386,9 @@ Remixでは、SSRモード、CSRモード、SSGモードがある。
 
 CSRモードとSSGモードは厳密ではなく、Remix独自の擬似的なモードである。
 
-それぞれのモードで、`entry.server.tsx`ファイルと`entry.client.tsx`ファイルが関与する。
+それぞれのモードで、`entry.server.tsx` ファイルと `entry.client.tsx` ファイルが関与する。
 
-|           | `entry.server.tsx`ファイル               | `entry.client.tsx`ファイル         |
+|           | `entry.server.tsx` ファイル               | `entry.client.tsx` ファイル         |
 | --------- | ---------------------------------------- | ---------------------------------- |
 | SSR       | サーバーレンダリング関連の処理           | ハイドレーション関連の処理         |
 | 擬似的CSR | 最小限のサーバーレンダリング関連の処理   | クライアントレンダリング関連の処理 |
@@ -400,7 +400,7 @@ CSRモードとSSGモードは厳密ではなく、Remix独自の擬似的なモ
 
 ### 構成
 
-`app`ディレクトリ配下はユーザーで構成する必要があり、例えば以下のようにする。
+`app` ディレクトリ配下はユーザーで構成する必要があり、例えば以下のようにする。
 
 ```yaml
 .
@@ -436,7 +436,7 @@ CSRモードとSSGモードは厳密ではなく、Remix独自の擬似的なモ
 
 アプリケーションのルートである。
 
-`link`タグ、`meta`タグ、`script`タグを定義する。
+`link` タグ、`meta` タグ、`script` タグを定義する。
 
 > - https://remix.run/docs/en/main/file-conventions/root
 
@@ -460,15 +460,15 @@ CSRモードとSSGモードは厳密ではなく、Remix独自の擬似的なモ
 
 レスポンス作成処理のエントリーポイントである。
 
-`RemixServer`で設定を変更できる。
+`RemixServer` で設定を変更できる。
 
-#### ▼ `default`エクスポート
+#### ▼ `default` エクスポート
 
-`entry.server`ファイルの`default`エクスポート関数は、RemixのSSRモードのエントリーポイントになる。
+`entry.server` ファイルの `default` エクスポート関数は、RemixのSSRモードのエントリーポイントになる。
 
-`handleRequest`という名前であることが多いが、どんな名前でもよい。
+`handleRequest` という名前であることが多いが、どんな名前でもよい。
 
-`default`エクスポート関数を複数定義することはできない。
+`default` エクスポート関数を複数定義することはできない。
 
 > - https://remix.run/docs/en/main/file-conventions/entry.server#entryserver
 
@@ -476,7 +476,7 @@ CSRモードとSSGモードは厳密ではなく、Remix独自の擬似的なモ
 
 Remixの内部で実行され、JSONデータを作成し、Remixのフロントエンド処理に渡す。
 
-`useLoaderData`関数や`useFetcher().data`関数で取得できる。
+`useLoaderData` 関数や `useFetcher().data` 関数で取得できる。
 
 ```jsx
 export function handleDataRequest(response: Response, {request, params, context}: LoaderFunctionArgs | ActionFunctionArgs
@@ -526,7 +526,7 @@ app
 
 ### React Router v6
 
-Remix v2を`@remix-run/node`パッケージからインポートする。
+Remix v2を `@remix-run/node` パッケージからインポートする。
 
 ```jsx
 import {redirect} from "@remix-run/node";
@@ -539,7 +539,7 @@ import {redirect} from "@remix-run/node";
 
 ### React Router v7以降
 
-Remix自体がReact Routerに統合されたため、`react-router`パッケージをインポートする。
+Remix自体がReact Routerに統合されたため、`react-router` パッケージをインポートする。
 
 ```jsx
 import {redirect} from "react-router";
@@ -559,7 +559,7 @@ Remixでは、ブラウザルーティングとAPIエンドポイントを区別
 
 ただし、ファイル名によって区別することもできる。
 
-`app/routes/api.<任意のパス>`ファイルまたは`app/routes/api/<任意のパス>`ファイルを作成する。
+`app/routes/api.<任意のパス>` ファイルまたは `app/routes/api/<任意のパス>` ファイルを作成する。
 
 このファイルの処理は、APIとして処理される。
 
@@ -656,7 +656,7 @@ export default function Post() {
 > - https://zenn.dev/ak/articles/cef68c1b67a314#dynamic-segments
 > - https://zenn.dev/link/comments/ddd4650a1941e3
 
-#### ▼ 子の`_<ルート以降のパス>.tsx`
+#### ▼ 子の `_<ルート以降のパス>.tsx`
 
 子のファイル名にプレフィクスとして `_` (パスレスルート) をつける。
 
@@ -664,9 +664,9 @@ export default function Post() {
 
 **＊実装例＊**
 
-`_home.auth.tsx`ファイルは、親の`home.tsx`ファイルのレイアウトを引き継いでいる。
+`_home.auth.tsx` ファイルは、親の `home.tsx` ファイルのレイアウトを引き継いでいる。
 
-しかし、`/home/auth`パスではなく、`/auth`パスになる。
+しかし、`/home/auth` パスではなく、`/auth` パスになる。
 
 ```yaml
 app/                       #  URLパス                   引き継ぐレイアウト
@@ -685,15 +685,15 @@ app/                       #  URLパス                   引き継ぐレイア�
 
 > - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%91%E3%82%B9%E3%83%AC%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%88%EF%BC%88nested-layouts-without-nested-urls%EF%BC%89
 
-#### ▼ 親の`_<ルート以降のパス>.tsx` (親がパスレスルート)
+#### ▼ 親の `_<ルート以降のパス>.tsx` (親がパスレスルート)
 
 親のファイル名にプレフィクスとして `_` (パスレスルート) をつける。
 
 **＊実装例＊**
 
-`_auth.<任意の名前>.tsx`ファイルは、親の`_auth.tsx`ファイルのレイアウトを引き継いでいる。
+`_auth.<任意の名前>.tsx` ファイルは、親の `_auth.tsx` ファイルのレイアウトを引き継いでいる。
 
-しかし、全てのファイルのURLに`auth`が含まれない。
+しかし、全てのファイルのURLに `auth` が含まれない。
 
 ```yaml
 app/                               # URLパス
@@ -768,7 +768,7 @@ app/routes-hybrid-files/
 
 Remixの仕様ではディレクトリ構造やファイル名がエンドポイントに影響してしまう。
 
-エンドポイントを崩さずに`routes`にサブディレクトリを作る場合、ファイル名を部分的に変えないといけず、エンドポイントが一目ではわかりにくくなる。
+エンドポイントを崩さずに `routes` にサブディレクトリを作る場合、ファイル名を部分的に変えないといけず、エンドポイントが一目ではわかりにくくなる。
 
 現在の状態であれば、ファイルは多くて辛いが、エンドポイントがファイル名から一目でわかる。
 
@@ -794,17 +794,17 @@ Remixがコンポーネントであることを認識するために、名前の
 
 ### Remix Formコンポーネント
 
-`form`タグをレンダリングする。
+`form` タグをレンダリングする。
 
-`action`値を省略した場合、フォームの入力データは他に送信されず、そのremixコンポーネント内のみで処理される。
+`action` 値を省略した場合、フォームの入力データは他に送信されず、そのremixコンポーネント内のみで処理される。
 
-`action`値を`/foos?index`パスとした場合、`routes/foos/index.jsx`ファイルにデータを送信する。
+`action` 値を `/foos?index` パスとした場合、`routes/foos/index.jsx` ファイルにデータを送信する。
 
-一方で、`action`値を`/foos`パスとした場合、`routes/foos.jsx`ファイルにデータを送信する。
+一方で、`action` 値を `/foos` パスとした場合、`routes/foos.jsx` ファイルにデータを送信する。
 
 **＊実装例＊**
 
-ここでは`action`値を省略している。
+ここでは `action` 値を省略している。
 
 ```jsx
 import {Form} from "@remix-run/react";
@@ -885,7 +885,7 @@ export async function loader({request}: LoaderFunctionArgs) {
 
 ### Remix Metaコンポーネント
 
-Webページの`meta`タグ (Webサイト名、説明など) をレンダリングする。
+Webページの `meta` タグ (Webサイト名、説明など) をレンダリングする。
 
 ```jsx
 import {Meta} from "@remix-run/react";

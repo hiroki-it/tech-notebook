@@ -29,7 +29,7 @@ description: 分散トレース＠Datadogの知見を記録しています。
 
 ### セットアップ
 
-#### ▼ `/etc/datadog-agent/datadog.yaml`ファイル
+#### ▼ `/etc/datadog-agent/datadog.yaml` ファイル
 
 > - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
 
@@ -58,7 +58,7 @@ datadogコンテナ内のdatadogエージェントはこれをHTTPSプロトコ�
 
 #### ▼ エージェント
 
-dockerエージェントにて、`DD_APM_ENABLED`の環境変数に`true`を割り当てると、合わせてトレースエージェントが有効になる。
+dockerエージェントにて、`DD_APM_ENABLED` の環境変数に `true` を割り当てると、合わせてトレースエージェントが有効になる。
 
 APMエージェントを有効化し、分散トレース監視バックエンドを送信できる。
 
@@ -75,7 +75,7 @@ APMエージェントを有効化し、分散トレース監視バックエン�
 
 | 方法                      | 説明                                                                                                                                                                                    | 補足                                                                                                                                                                             |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 起動ログの有効化          | 環境変数の`DD_TRACE_STARTUP_LOGS`を有効化することにより、起動ログを標準出力に出力可能にする。起動ログから、クライアントパッケージの設定値を確認できる。                                 | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                          |
+| 起動ログの有効化          | 環境変数の `DD_TRACE_STARTUP_LOGS` を有効化することにより、起動ログを標準出力に出力可能にする。起動ログから、クライアントパッケージの設定値を確認できる。                                 | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                          |
 | デバッグログの有効化      | 各クライアントパッケージが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力可能にする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。 | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                    |
 | Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し、Datadogサポートにdatadogコンテナの構成情報をメール送信する。                                                                            | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad <br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
 
@@ -136,7 +136,7 @@ Datadogで、スパンはJSON型データとして定義される。アプリケ
 
 #### ▼ トレースコンテキスト
 
-スパンの`meta`キーにトレースコンテキストのセットを割り当てられる。
+スパンの `meta` キーにトレースコンテキストのセットを割り当てられる。
 
 トレースコンテキストはタグとして動作する。
 
@@ -226,9 +226,9 @@ PHP用のクライアントパッケージでlaravel内からタグを収集し�
 
 #### ▼ マイクロサービスタイプとは
 
-分散トレースのクライアントパッケージによって、マイクロサービスは『Web』『DB』『Cache』『Cache』の`4`個に分類される。
+分散トレースのクライアントパッケージによって、マイクロサービスは『Web』『DB』『Cache』『Cache』の `4` 個に分類される。
 
-各マイクロサービスの`span.type`属性に割り当てられるタイプ名から自動的に割り振られる。
+各マイクロサービスの `span.type` 属性に割り当てられるタイプ名から自動的に割り振られる。
 
 タイプの種類については、以下のリンクを参考にせよ。
 

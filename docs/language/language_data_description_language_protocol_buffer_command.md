@@ -17,11 +17,11 @@ description: コマンド＠Protocol Bufferの知見を記録しています。
 
 ### -I (--proto_path)
 
-`--proto_path`でも良い。
+`--proto_path` でも良い。
 
-`proto`ファイルのあるディレクトリを指定する。
+`proto` ファイルのあるディレクトリを指定する。
 
-`protoc`コマンドで`proto`ファイルを直接指定するだけではエラーになる。
+`protoc` コマンドで `proto` ファイルを直接指定するだけではエラーになる。
 
 ```bash
 # foo.protoファイルのあるディレクトリを指定する
@@ -36,7 +36,7 @@ $ protoc -I=. --go_out=. foo.proto
 
 ### --プラグイン名\_optとは
 
-`proto`ファイルから`pb`ファイルをコンパイルする時のオプションを設定する。
+`proto` ファイルから `pb` ファイルをコンパイルするときのオプションを設定する。
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
 
@@ -74,9 +74,9 @@ $ protoc \
 
 #### ▼ require_unimplemented_servers
 
-`pb.go`ファイルに`mustEmbedUnimplemented<Service名>Server`関数を自動定義するかどうかを設定する。
+`pb.go` ファイルに `mustEmbedUnimplemented<Service名>Server` 関数を自動定義するかどうかを設定する。
 
-古い`github.com/golang/protobuf`パッケージから新しい`google.golang.org/protobuf`パッケージに移行する場合、これを`false`にする必要がある。
+古い `github.com/golang/protobuf` パッケージから新しい `google.golang.org/protobuf` パッケージに移行する場合、これを `false` にする必要がある。
 
 ```bash
 $ protoc \
@@ -97,7 +97,7 @@ $ protoc \
 
 ### --プラグイン名\_outとは
 
-`pb`ファイルの出力先パスを設定する。
+`pb` ファイルの出力先パスを設定する。
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
 
@@ -105,7 +105,7 @@ $ protoc \
 
 ### --go_out
 
-`foo.proto`ファイルから、`foo.pb.go`ファイルをコンパイルする。
+`foo.proto` ファイルから、`foo.pb.go` ファイルをコンパイルする。
 
 ```bash
 $ protoc -I=. --go_out=. foo.proto
@@ -115,7 +115,7 @@ $ protoc -I=. --go_out=. foo.proto
 
 ### --go-grpc_out
 
-`foo.proto`ファイルから、gRPCに対応する`foo.pb.go`ファイルをコンパイルする。
+`foo.proto` ファイルから、gRPCに対応する `foo.pb.go` ファイルをコンパイルする。
 
 ```bash
 $ protoc -I=. --go_out=. --go-grpc_out=. foo.proto
@@ -125,7 +125,7 @@ $ protoc -I=. --go_out=. --go-grpc_out=. foo.proto
 
 ### --java_out
 
-`foo.proto`ファイルから、`foo.pb.java`ファイルをコンパイルする。
+`foo.proto` ファイルから、`foo.pb.java` ファイルをコンパイルする。
 
 ```bash
 $ protoc -I=. --java_out=. foo.proto
@@ -135,7 +135,7 @@ $ protoc -I=. --java_out=. foo.proto
 
 ### --php_out
 
-`foo.proto`ファイルから、`foo.pb.php`ファイルをコンパイルする。
+`foo.proto` ファイルから、`foo.pb.php` ファイルをコンパイルする。
 
 ```bash
 $ protoc -I=. --php_out=. foo.proto
@@ -145,7 +145,7 @@ $ protoc -I=. --php_out=. foo.proto
 
 ### --python_out
 
-`foo.proto`ファイルから、`foo.pb.py`ファイルをコンパイルする。
+`foo.proto` ファイルから、`foo.pb.py` ファイルをコンパイルする。
 
 ```bash
 $ protoc -I=. --python_out=. foo.proto
@@ -155,7 +155,7 @@ $ protoc -I=. --python_out=. foo.proto
 
 ### --ruby_out
 
-`foo.proto`ファイルから、`foo.pb.rb`ファイルをコンパイルする。
+`foo.proto` ファイルから、`foo.pb.rb` ファイルをコンパイルする。
 
 ```bash
 $ protoc -I=. --ruby_out=. foo.proto
@@ -165,7 +165,7 @@ $ protoc -I=. --ruby_out=. foo.proto
 
 ### --rust_out
 
-`foo.proto`ファイルから、`foo.pb.rs`ファイルをコンパイルする。
+`foo.proto` ファイルから、`foo.pb.rs` ファイルをコンパイルする。
 
 ```bash
 $ protoc -I=. --rust_out=. foo.proto

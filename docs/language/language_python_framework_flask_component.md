@@ -23,7 +23,7 @@ WSGIアプリケーションの実行に関する関数を持つ。
 
 クラスの引数に、グローバル変数の『`__name__`』あるいはエントリーポイントのパスを直接的に設定する。
 
-環境変数の`FLASK_APP`で指定したエントリーポイントでは、必ずFlaskクラスのインスタンスを作成する必要がある。
+環境変数の `FLASK_APP` で指定したエントリーポイントでは、必ずFlaskクラスのインスタンスを作成する必要がある。
 
 ```python
 from flask import Flask
@@ -38,9 +38,9 @@ app = Flask(__name__)
 
 <br>
 
-### `route`関数
+### `route` 関数
 
-#### ▼ `route`関数
+#### ▼ `route` 関数
 
 Flaskクラスにエンドポイントを追加する。
 
@@ -59,9 +59,9 @@ PREFIX_FOO = "foo"
 
 <br>
 
-### `run`関数
+### `run` 関数
 
-#### ▼ `run`関数とは
+#### ▼ `run` 関数とは
 
 設定されたルーティングを元に、WerkzeugによるWebサーバーを起動する。
 
@@ -87,8 +87,8 @@ app.run()
 | 引数           | 説明                                                                                                 |
 | -------------- | ---------------------------------------------------------------------------------------------------- |
 | `debug`        | エラーログをブラウザ上に表示するか否かを設定する。                                                   |
-| `host`         | 受信する通信のIPアドレスを設定する。全てのIPアドレスの場合は、`0.0.0.0`とする。                      |
-| `load_dotenv`  | `dotenv`パッケージを読み込むか否かを設定する。これを有効化すれば、他の引数は環境変数から設定できる。 |
+| `host`         | 受信する通信のIPアドレスを設定する。全てのIPアドレスの場合は、`0.0.0.0` とする。                      |
+| `load_dotenv`  | `dotenv` パッケージを読み込むか否かを設定する。これを有効化すれば、他の引数は環境変数から設定できる。 |
 | `port`         | インバウンド通信を待ち受けるポート番号を設定する。                                                   |
 | `use_reloader` | ホットリロードを有効化するか否かを設定する。                                                         |
 
@@ -105,7 +105,7 @@ app.run()
 
 アプリケーションのエントリーポイントを設定する。
 
-| `FLASK_APP`の値     | 説明                                                   |
+| `FLASK_APP` の値     | 説明                                                   |
 | ------------------- | ------------------------------------------------------ |
 | `module:name`       | モジュール名 (ファイル名) とインスタンス名を設定する。 |
 | `module:function()` | モジュール名 (ファイル名) と関数名を設定する。         |
@@ -116,9 +116,9 @@ app.run()
 
 #### ▼ SESSION_COOKIE_NAME
 
-`Cookie`ヘッダーでセッションデータ (ペイロード + タイムスタンプ + 署名) を運搬する時のキー名を設定する。
+`Cookie` ヘッダーでセッションデータ (ペイロード + タイムスタンプ + 署名) を運搬するときのキー名を設定する。
 
-デフォルトでは、キー名は`session`になる。
+デフォルトでは、キー名は `session` になる。
 
 ```yaml
 # レスポンス
@@ -139,7 +139,7 @@ Cookie: session=*****
 
 #### ▼ SECRET_KEY
 
-`Cookie`ヘッダーでペイロードとタイムスタンプを署名するためのキーを設定する。
+`Cookie` ヘッダーでペイロードとタイムスタンプを署名するためのキーを設定する。
 
 > - https://qiita.com/showchan33/items/b714cca80985b3db2565#3%E3%81%A4%E7%9B%AE%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AF%E7%BD%B2%E5%90%8D
 > - https://flask.palletsprojects.com/en/stable/api/#flask.Flask.secret_key
@@ -152,7 +152,7 @@ Cookie: session=*****
 
 #### ▼ アプリケーションファクトリーパターンとは
 
-Pythonのコードを配置するディレクトリに`__init__.py`ファイルを配置し、ここでFlaskクラスのインスタンスを作成する関数を定義する。
+Pythonのコードを配置するディレクトリに `__init__.py` ファイルを配置し、ここでFlaskクラスのインスタンスを作成する関数を定義する。
 
 ```python
 # __init__.py
@@ -174,9 +174,9 @@ def create_app():
 
 #### ▼ エントリーポイント
 
-プロジェクトのルートディレクトリに、`create_app`関数を実行するエントリーポイント (例：`main.py`ファイル) を配置する。
+プロジェクトのルートディレクトリに、`create_app` 関数を実行するエントリーポイント (例：`main.py` ファイル) を配置する。
 
-名前空間を判定する条件分の外で`create_app`関数を実行しないと、uwsgiがapp変数を見つけられない。
+名前空間を判定する条件分の外で `create_app` 関数を実行しないと、uwsgiがapp変数を見つけられない。
 
 ```python
 from src import create_app
@@ -191,7 +191,7 @@ if __name__ == '__main__':
 
 #### ▼ 開発環境と本番環境の違い
 
-本番環境では、アプリケーションの実行に`run`関数と`flask run`コマンドを使用しないようにする。
+本番環境では、アプリケーションの実行に `run` 関数と `flask run` コマンドを使用しないようにする。
 
 代わりに、uWSGIやgunicornを使用して、エントリーポイントの関数を直接的にコールする。
 
@@ -279,7 +279,7 @@ def home():
 
 #### ▼ セッションデータの作成
 
-セッションデータを作成し、レスポンスの`Set-Cookie`ヘッダーに保管する。
+セッションデータを作成し、レスポンスの `Set-Cookie` ヘッダーに保管する。
 
 ```python
 from flask import Flask, session
@@ -294,7 +294,7 @@ session['username'] = user
 
 #### ▼ セッションデータの取得
 
-レスポンスの`Set-Cookie`ヘッダーやリクエストの`Cookie`ヘッダーから、セッションデータを取得する。
+レスポンスの `Set-Cookie` ヘッダーやリクエストの `Cookie` ヘッダーから、セッションデータを取得する。
 
 ```python
 from flask import Flask, session
@@ -305,7 +305,7 @@ session['username'] = request.form['username']
 username = session['username']
 ```
 
-`session.get`関数でも取得でき、デフォルト値を設定できる。
+`session.get` 関数でも取得でき、デフォルト値を設定できる。
 
 ```python
 from flask import Flask, session
@@ -320,7 +320,7 @@ session.get('username', 'None')
 
 #### ▼ セッションデータの保持期間
 
-`app.permanent_session_lifetime`で、セッションデータの保持期間を設定できる。
+`app.permanent_session_lifetime` で、セッションデータの保持期間を設定できる。
 
 ```python
 from flask import Flask, session
@@ -330,7 +330,7 @@ app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(days=5)
 ```
 
-セッションデータを作成する前に`session.permanent`を有効化しておくと、セッションデータの保持期間を無期限にできる。
+セッションデータを作成する前に `session.permanent` を有効化しておくと、セッションデータの保持期間を無期限にできる。
 
 この場合、保持期間は無視される。
 

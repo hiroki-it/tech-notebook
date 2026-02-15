@@ -13,17 +13,17 @@ description: Nginx Ingress Controller＠Ingress Controllerの知見を記録し�
 
 <br>
 
-## 01. Ingressの`.metadata.annotations`キー
+## 01. Ingressの `.metadata.annotations` キー
 
-### Ingressの`.metadata.annotations`キーとは
+### Ingressの `.metadata.annotations` キーとは
 
 特定のALBのリスナールールを決める。
 
-Ingressで`nginx`のIngressClassを指定する必要がある。
+Ingressで `nginx` のIngressClassを指定する必要がある。
 
 <br>
 
-### `nginx.ingress.kubernetes.io/affinity`キー
+### `nginx.ingress.kubernetes.io/affinity` キー
 
 Podへのルーティング時にセッションを維持する (スティッキーセッション) かどうかを設定する。
 
@@ -42,7 +42,7 @@ metadata:
 
 <br>
 
-### `nginx.ingress.kubernetes.io/whitelist-source-range`キー
+### `nginx.ingress.kubernetes.io/whitelist-source-range` キー
 
 インバウンド通信で許可するCIDRを設定する。
 
@@ -59,7 +59,7 @@ metadata:
 
 <br>
 
-### `nginx.ingress.kubernetes.io/denylist-source-range`キー
+### `nginx.ingress.kubernetes.io/denylist-source-range` キー
 
 インバウンド通信で拒否するCIDRを設定する。
 
@@ -118,7 +118,7 @@ data:
 
 ### use-forwarded-headers
 
-通過したリクエストに`X-Forwarded-For`ヘッダーを追加する。
+通過したリクエストに `X-Forwarded-For` ヘッダーを追加する。
 
 送信元IPアドレスを保持するために役立つ。
 

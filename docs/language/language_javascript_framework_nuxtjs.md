@@ -33,7 +33,7 @@ Vue.jsフレームワークを使用したフレームワークである。
 
 開発環境のため、SSRアプリケーションをビルドし、Nodeサーバーを起動する。
 
-Webpackは使用されないため、静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) の圧縮や画像ファイル名のハッシュ化は実行されない。
+Webpackは使用されないため、静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) の圧縮や画像ファイル名のハッシュ化は実行されない。
 
 > - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
@@ -42,7 +42,7 @@ Webpackは使用されないため、静的ファイル (例：`html`ファイ�
 $ yarn dev
 ```
 
-補足として、`yarn dev`コマンドを実行した場合、環境変数の`NODE_ENV`が`development`になる。
+補足として、`yarn dev` コマンドを実行した場合、環境変数の `NODE_ENV` が `development` になる。
 
 > - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
@@ -50,9 +50,9 @@ $ yarn dev
 
 本番環境のため、JavaScriptサーバーの起動前にSSRアプリケーションのビルドを実行する。
 
-`yarn dev`コマンドとは異なり、ビルド時にWebpackによる最適化が実行される。
+`yarn dev` コマンドとは異なり、ビルド時にWebpackによる最適化が実行される。
 
-これにより、`.js`ファイルと`.css`ファイルはミニファイされる。
+これにより、`.js` ファイルと `.css` ファイルはミニファイされる。
 
 ミニファイにより、不要な改行やインデントが削除され、パッケージの読み出し用のURLはまとめられ、圧縮される。
 
@@ -65,14 +65,14 @@ $ yarn build
 
 > - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
-次の理由で、`yarn build`コマンドでしか再現できないエラーがあることに注意である
+次の理由で、`yarn build` コマンドでしか再現できないエラーがあることに注意である
 
-- `yarn build`時には`yarn dev`にはないミニファイという内部処理があり、その過程でフロントエンドが想定外のビルド結果になる
-- `yarn dev`ではReactのHydrationで起こるエラーに寛容であり、`yarn build`では厳しいため、フロントエンドで問題がないように見える
+- `yarn build` 時には `yarn dev` にはないミニファイという内部処理があり、その過程でフロントエンドが想定外のビルド結果になる
+- `yarn dev` ではReactのHydrationで起こるエラーに寛容であり、`yarn build` では厳しいため、フロントエンドで問題がないように見える
 
 #### ▼ `start`
 
-本番環境のため、`yarn build`コマンドによるビルド完了後にNodeサーバーを起動する。
+本番環境のため、`yarn build` コマンドによるビルド完了後にNodeサーバーを起動する。
 
 SSRモードのために使用する。
 
@@ -83,7 +83,7 @@ $ yarn start
 
 > - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
-補足として、`yarn start`コマンドを実行した場合、環境変数の`NODE_ENV`が`production`になる。
+補足として、`yarn start` コマンドを実行した場合、環境変数の `NODE_ENV` が `production` になる。
 
 > - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
@@ -101,11 +101,11 @@ $ yarn start
 
 開発環境でSSGアプリケーションを稼働させるために使用する。
 
-Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) を作成する。
+Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を作成する。
 
 そのため、SSGモードで作成されるアプリは完全な静的ファイルでない。
 
-また、`build`コマンドとは異なり、Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
+また、`build` コマンドとは異なり、Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
 
 ```bash
 # リファレンスでは nuxt devとなっているが、yarn devで問題ない。
@@ -114,7 +114,7 @@ $ yarn dev
 
 > - https://nuxtjs.org/ja/docs/get-started/commands/#target-static
 
-補足として、`yarn dev`コマンドを実行した場合、環境変数の`NODE_ENV`が`development`になる。
+補足として、`yarn dev` コマンドを実行した場合、環境変数の `NODE_ENV` が `development` になる。
 
 > - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
@@ -122,7 +122,7 @@ $ yarn dev
 
 本番環境でSSGアプリケーションを稼働させるために使用する。
 
-`yarn dev`コマンドとは異なり、Nodeサーバーは起動せず、そのままJavaScriptから静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) を作成する。
+`yarn dev` コマンドとは異なり、Nodeサーバーは起動せず、そのままJavaScriptから静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を作成する。
 
 そのため、SSGは完全な静的ファイルからなる。
 
@@ -146,7 +146,7 @@ $ yarn generate
 $ yarn start
 ```
 
-補足として、`yarn start`コマンドを実行した場合、環境変数の`NODE_ENV`が`production`になる。
+補足として、`yarn start` コマンドを実行した場合、環境変数の `NODE_ENV` が `production` になる。
 
 > - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
 
@@ -154,7 +154,7 @@ $ yarn start
 
 ### ビルド時のWebpackオプション
 
-SSRモードとSSGモードで、`build`コマンド時に使用されるWebpackの最適化方法を指定できる。
+SSRモードとSSGモードで、`build` コマンド時に使用されるWebpackの最適化方法を指定できる。
 
 `
 
@@ -164,7 +164,7 @@ SSRモードとSSGモードで、`build`コマンド時に使用されるWebpack
 
 ### キャッシュ削除
 
-Nuxt.jsのキャッシュは`node_modules/.cache`ディレクトリ配下に作成される。
+Nuxt.jsのキャッシュは `node_modules/.cache` ディレクトリ配下に作成される。
 
 そのため、キャッシュを削除したい場合はこのディレクトリごと削除する。
 
@@ -174,9 +174,9 @@ $ rm -rf node_modules/.cache/hard-source/
 
 <br>
 
-## 03. `nuxt.config.js`ファイル
+## 03. `nuxt.config.js` ファイル
 
-### `nuxt.config.js`ファイルとは
+### `nuxt.config.js` ファイルとは
 
 Nuxtがデフォルトで用意している設定をプロパティの設定値で上書きできる。
 
@@ -194,13 +194,13 @@ const nuxtConfig: Configuration = {
 
 <br>
 
-### `process.env`への環境変数格納
+### `process.env` への環境変数格納
 
-#### ▼ `dotenv`パッケージの利用
+#### ▼ `dotenv` パッケージの利用
 
 あらかじめ、dotenvモジュールをインストールしておく。
 
-`process.env`から`.env`ファイルの環境変数を参照する。
+`process.env` から `.env` ファイルの環境変数を参照する。
 
 定数に代入する場合は、まとめて代入すると良い。
 
@@ -291,13 +291,13 @@ const nuxtConfig: Configuration = {
 
 すなわち、SSRモードのクライアント側のみが対応している。
 
-環境変数は、`pages`、`store`、`components`、`plugin`ディレクトリで使用できる。
+環境変数は、`pages`、`store`、`components`、`plugin` ディレクトリで使用できる。
 
 ブラウザのJavaScriptソースタブで公開されてしまうため、機密な変数は設定しないようにする。
 
-もし`publicRuntimeConfig`で同じ名前の変数が設定されていた場合は、この値を上書きする。
+もし `publicRuntimeConfig` で同じ名前の変数が設定されていた場合は、この値を上書きする。
 
-環境変数は、`context`オブジェクトの`config`変数から取得できる。
+環境変数は、`context` オブジェクトの `config` 変数から取得できる。
 
 ```javascript
 import {Configuration} from "@nuxt/types";
@@ -335,9 +335,9 @@ export function foo() {
 
 すなわち、全モード (SSG/CSR/SSRモード) が対応している。
 
-環境変数は、`pages`、`store`、`components`、`plugin`ディレクトリで使用できる。
+環境変数は、`pages`、`store`、`components`、`plugin` ディレクトリで使用できる。
 
-環境変数は、`context`オブジェクトの`config`変数から取得できる。
+環境変数は、`context` オブジェクトの `config` 変数から取得できる。
 
 ```javascript
 import {Configuration} from "@nuxt/types";
@@ -372,7 +372,7 @@ export function foo() {
 
 ビルド時にログを最小限にする。
 
-CIツールでログが確認できなくなるため、無効化しておいた方が良い。
+CIツールでログが確認できなくなるため、無効化しておいたほうが良い。
 
 ```javascript
 import {Configuration} from "@nuxt/types";
@@ -409,7 +409,7 @@ const nuxtConfig: Configuration = {
 
 ### buildModules
 
-SSG/SSRモードの`yarn dev` (開発用コマンド) 、またSSRモードの`yarn build`の時のみ、`node_module`ディレクトリ内に作成するパッケージを設定する。
+SSG/SSRモードの `yarn dev` (開発用コマンド) 、またSSRモードの `yarn build` の時のみ、`node_module` ディレクトリ内に作成するパッケージを設定する。
 
 ```javascript
 import {Configuration} from "@nuxt/types";
@@ -425,21 +425,21 @@ const nuxtConfig: Configuration = {
 
 ## 04. ディレクトリ
 
-### `dist`ディレクトリ：`distribution`
+### `dist` ディレクトリ：`distribution`
 
-SSGモードの`generate`コマンドの実行時に、アーティファクトが配置される。
+SSGモードの `generate` コマンドの実行時に、アーティファクトが配置される。
 
 > - https://nuxtjs.org/ja/docs/directory-structure/dist
 
 <br>
 
-### `module`ディレクトリ
+### `module` ディレクトリ
 
 > - https://nuxtjs.org/docs/directory-structure/modules
 
 <br>
 
-### `plugin`ディレクトリ
+### `plugin` ディレクトリ
 
 > - https://nuxtjs.org/docs/directory-structure/plugins/
 > - https://github.com/nuxt/nuxt.js/issues/2820

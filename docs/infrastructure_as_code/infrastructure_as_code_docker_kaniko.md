@@ -66,7 +66,7 @@ spec:
 
 ### DockerHub
 
-DockerHubの資格情報は、エンコードした上で、あらかじめGitLab CIの変数 (`DOCKERHUB_TOKEN`) に設定しておく。
+DockerHubの資格情報は、エンコードしたうえで、あらかじめGitLab CIの変数 (`DOCKERHUB_TOKEN`) に設定しておく。
 
 ```bash
 $ echo -n USER:PASSWORD | base64

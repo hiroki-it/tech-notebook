@@ -27,7 +27,7 @@ description: コマンド＠Laravelの知見を記録しています。
 
 #### ▼ キャッシュの削除
 
-キャッシュ (`bootstrap/cache/config.php`ファイル) を削除する。
+キャッシュ (`bootstrap/cache/config.php` ファイル) を削除する。
 
 ```bash
 $ php artisan config:clear
@@ -168,7 +168,7 @@ $ php artisan migrate:reset
 
 #### ▼ refresh
 
-全てのロールバック (`migrate:reset`) を実行し、次いで`migrate`を実行する。
+全てのロールバック (`migrate:reset`) を実行し、次いで `migrate` を実行する。
 
 ```bash
 $ php artisan migrate:refresh
@@ -178,7 +178,7 @@ $ php artisan migrate:refresh
 
 #### ▼ fresh
 
-全てのテーブルを削除と`migrate`を実行する。
+全てのテーブルを削除と `migrate` を実行する。
 
 DBマイグレーションファイルの構文チェックを行わずに、強制的に実行される。
 
@@ -241,7 +241,7 @@ $ php artisan optimize:clear
 
 #### ▼ seed
 
-Seederを実行する。Seederを新しく作成した時やSeeder名を変更した時、Composerの`dump-autoload`を実行する必要がある。
+Seederを実行する。Seederを新しく作成したときやSeeder名を変更したとき、Composerの `dump-autoload` を実行する必要がある。
 
 ```bash
 $ composer dump-autoload

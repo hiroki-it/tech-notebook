@@ -136,7 +136,7 @@ spec:
 
 #### ▼ requestとは
 
-base64方式でエンコードした証明書署名要求 (`.csr`ファイル) を設定する。
+base64方式でエンコードした証明書署名要求 (`.csr` ファイル) を設定する。
 
 ```yaml
 apiVersion: certificates.k8s.io/v1
@@ -158,7 +158,7 @@ spec:
 > - https://qiita.com/knqyf263/items/aefb0ff139cfb6519e27
 > - https://goodbyegangster.hatenablog.com/entry/2021/01/18/131452
 
-定義したCertificateSigningRequestを承認し、サーバー証明書 (`.crt`) を作成するためには、`kubectl certificate approve`コマンドを使用する。
+定義したCertificateSigningRequestを承認し、サーバー証明書 (`.crt`) を作成するためには、`kubectl certificate approve` コマンドを使用する。
 
 ```bash
 # 承認
@@ -176,7 +176,7 @@ $ kubectl get csr foo-csr -o jsonpath='{.status.certificate}'| base64 -d > foo.c
 
 #### ▼ clustersとは
 
-`kubectl`コマンドの向き先となるClusterを設定する。
+`kubectl` コマンドの向き先となるClusterを設定する。
 
 > - https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
@@ -242,7 +242,7 @@ clusters:
 
 #### ▼ contextsとは
 
-`kubectl`コマンドの向き先の候補を設定する。
+`kubectl` コマンドの向き先の候補を設定する。
 
 > - https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
@@ -269,7 +269,7 @@ contexts:
 
 #### ▼ context
 
-実際に使用するCluster名とServiceAccountユーザー名を、`.contexts[*].context.cluster`キーと`.contexts[*].context.user`キーから選んで設定する。
+実際に使用するCluster名とServiceAccountユーザー名を、`.contexts[*].context.cluster` キーと `.contexts[*].context.user` キーから選んで設定する。
 
 ```yaml
 apiVersion: v1
@@ -307,7 +307,7 @@ contexts:
 
 #### ▼ current-contextとは
 
-`kubectl`コマンドの現在の向き先の名前を設定する。
+`kubectl` コマンドの現在の向き先の名前を設定する。
 
 ```yaml
 apiVersion: v1
@@ -337,7 +337,7 @@ preferences: {}
 
 #### ▼ usersとは
 
-kube-apiserverのクライアント (特に`kubectl`コマンド実行者) のUserAccountの情報を設定する。
+kube-apiserverのクライアント (特に `kubectl` コマンド実行者) のUserAccountの情報を設定する。
 
 > - https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#define-clusters-users-and-contexts
 
@@ -587,17 +587,17 @@ spec:
 > - https://kubernetes.io/ja/docs/concepts/workloads/controllers/cron-jobs/#cron-job-limitations
 > - https://qiita.com/tmshn/items/aedf0d739a43a1d6423d#%E3%82%B1%E3%83%BC%E3%82%B93-startingdeadlineseconds
 
-CronJobのデフォルトの仕様として、Jobが`100`回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。
+CronJobのデフォルトの仕様として、Jobが `100` 回連続で失敗すると、CronJobを再作成しない限りJobを再実行できなくなる。
 
-1時間にJobを1回実行すると仮定すると、簡単に`100`回を超過してしまう。
+1時間にJobを1回実行すると仮定すると、簡単に `100` 回を超過してしまう。
 
 ```bash
 停止時間 (8h) * 実行間隔 (60/h) = 480回
 ```
 
-この時、`.spec.startingDeadlineSeconds`キーを設定しておくと、これの期間に`100`回連続で失敗した時のみ、Jobを再実行できなくなる。
+この時、`.spec.startingDeadlineSeconds` キーを設定しておくと、これの期間に `100` 回連続で失敗したときのみ、Jobを再実行できなくなる。
 
-`100`回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。
+`100` 回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。
 
 > - https://engineering.mercari.com/blog/entry/k8s-cronjob-20200908/
 > - https://qiita.com/sekinet/items/c717104fbb9bd74872f0#%E3%81%AA%E3%81%9C%E5%95%8F%E9%A1%8C%E3%81%8C%E8%B5%B7%E3%81%8D%E3%81%9F%E3%81%8B
@@ -633,7 +633,7 @@ Deploymentと同じである。
 
 ### .spec.strategy (RollingUpdateの場合)
 
-Podで`.spec.containers[*].ports[*].hostPort`キーを使用する場合、`.spec.strategy.rollingUpdate.maxSurge`キーは`0` (デフォルト値) にしなければならない。
+Podで `.spec.containers[*].ports[*].hostPort` キーを使用する場合、`.spec.strategy.rollingUpdate.maxSurge` キーは `0` (デフォルト値) にしなければならない。
 
 > - https://qiita.com/yosshi_/items/ec042a801ef69fa44ef6#%E6%B3%A8%E6%84%8F%E7%82%B9hostport-%E3%81%AE%E5%88%A9%E7%94%A8
 > - https://github.com/kubernetes/enhancements/tree/master/keps/sig-apps/1591-daemonset-surge#proposal
@@ -650,7 +650,7 @@ Cluster内で維持するPodのレプリカ数を設定する。
 
 Cluster内に複数のNodeが存在していて、いずれかのNodeが停止した場合、稼働中のNode内でレプリカ数を維持するようにPod数が増加する。
 
-HorizontalPodAutoscalerを使用する場合、レプリカ数はHPAが決めるため`.spec.replicas`は設定不要である。
+HorizontalPodAutoscalerを使用する場合、レプリカ数はHPAが決めるため `.spec.replicas` は設定不要である。
 
 ```yaml
 apiVersion: apps/v1
@@ -684,7 +684,7 @@ spec:
 
 もし依存のリビジョンにロールバックする場合があるのであれば、必要数を設定しておく。
 
-デフォルトは`10`個で、個人的にこれは多い。
+デフォルトは `10` 個で、個人的にこれは多い。
 
 ```yaml
 apiVersion: apps/v1
@@ -716,9 +716,9 @@ Deploymentで管理するPodを明示的に設定する。
 
 #### ▼ matchLabels
 
-Podの`.metadata.labels`キーを指定する。
+Podの `.metadata.labels` キーを指定する。
 
-Podに複数の`.metadata.labels`キーが付与されている時は、これらを全て指定する必要がある。
+Podに複数の `.metadata.labels` キーが付与されているときは、これらを全て指定する必要がある。
 
 ```yaml
 apiVersion: apps/v1
@@ -741,9 +741,9 @@ spec:
 
 #### ▼ `field is immutable`
 
-Deploymentの`.spec.selector.matchLabels`キーの値は変更できないため、もしこの値を変更する場合は、Deploymentを再作成する必要がある。
+Deploymentの `.spec.selector.matchLabels` キーの値は変更できないため、もしこの値を変更する場合は、Deploymentを再作成する必要がある。
 
-例えば、以下のマニフェストの`.spec.selector.matchLabels`キーの値を変更しようとする。
+例えば、以下のマニフェストの `.spec.selector.matchLabels` キーの値を変更しようとする。
 
 ```yaml
 apiVersion: apps/v1
@@ -784,8 +784,8 @@ v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/name":"foo-pod
 
 | 箇所                                 | 説明                                                             |
 | ------------------------------------ | ---------------------------------------------------------------- |
-| `.spec.replicas`キー                 | Podのレプリカ数を変更すると、DeploymentはPodを再デプロイする。   |
-| `.spec.template`キー配下の任意のキー | Podテンプレートを変更した場合、DeploymentはPodを再デプロイする。 |
+| `.spec.replicas` キー                 | Podのレプリカ数を変更すると、DeploymentはPodを再デプロイする。   |
+| `.spec.template` キー配下の任意のキー | Podテンプレートを変更した場合、DeploymentはPodを再デプロイする。 |
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
 
@@ -832,7 +832,7 @@ spec:
 
 #### ▼ ブルーグリーン方式 (パーセントの場合)
 
-もし`.spec.strategy.rollingUpdate.maxSurge`キーを`100`%、また`.spec.strategy.rollingUpdate.maxUnavailable`キーを`0`%とすると仮定する。
+もし `.spec.strategy.rollingUpdate.maxSurge` キーを `100`%、また `.spec.strategy.rollingUpdate.maxUnavailable` キーを `0`%とすると仮定する。
 
 ```yaml
 apiVersion: apps/v1
@@ -862,9 +862,9 @@ spec:
 
 この場合、RollingUpdate戦略時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
 
-`.spec.strategy.rollingUpdate.maxSurge`キーにより、`10`個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計`20`個ある) 。
+`.spec.strategy.rollingUpdate.maxSurge` キーにより、`10` 個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計 `20` 個ある) 。
 
-`.spec.strategy.rollingUpdate.maxUnavailable`キーにより、`0`個が停止している状態にならないようにする (停止するPodがない)。
+`.spec.strategy.rollingUpdate.maxUnavailable` キーにより、`0` 個が停止している状態にならないようにする (停止するPodがない)。
 
 また、Podの停止数がレプリカ数を下回らないようになる。
 
@@ -875,7 +875,7 @@ spec:
 
 #### ▼ ブルーグリーン方式 (絶対値の場合)
 
-もし`.spec.strategy.rollingUpdate.maxSurge`キーを`10`、また`.spec.strategy.rollingUpdate.maxUnavailable`キーを`0`とすると仮定する。
+もし `.spec.strategy.rollingUpdate.maxSurge` キーを `10`、また `.spec.strategy.rollingUpdate.maxUnavailable` キーを `0` とすると仮定する。
 
 ```yaml
 apiVersion: apps/v1
@@ -905,9 +905,9 @@ spec:
 
 この場合、RollingUpdate戦略時に、Podのレプリカ数と同じ数だけ新しいPodを作成するようになる。
 
-`.spec.strategy.rollingUpdate.maxSurge`キーにより、`10`個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計`20`個ある)。
+`.spec.strategy.rollingUpdate.maxSurge` キーにより、`10` 個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計 `20` 個ある)。
 
-`.spec.strategy.rollingUpdate.maxUnavailable`キーにより、`0`個が停止している状態にならないようにする (停止するPodがない)。
+`.spec.strategy.rollingUpdate.maxUnavailable` キーにより、`0` 個が停止している状態にならないようにする (停止するPodがない)。
 
 また、Podの停止数がレプリカ数を下回らないようになる。
 
@@ -923,7 +923,7 @@ Deploymentで維持管理するPodテンプレートを設定する。
 
 設定項目はPodと同じである。
 
-Deployment自体の`.metadata.labels`キーを更新した場合はPodは再作成しないが、`.spec.template`キー配下の`.metadata.labels`キーの場合は、Podの再作成となる。
+Deployment自体の `.metadata.labels` キーを更新した場合はPodは再作成しないが、`.spec.template` キー配下の `.metadata.labels` キーの場合は、Podの再作成となる。
 
 > - https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
 
@@ -1125,9 +1125,9 @@ spec:
 
 自動水平スケーリングのスケールアウト時の最大Pod数を設定する。
 
-最初、Deploymentの`spec.replicas`キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの`.spec.minReplicas`キーが優先される。
+最初、Deploymentの `spec.replicas` キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの `.spec.minReplicas` キーが優先される。
 
-この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの`spec.replicas`キーの設定を削除しておくことが推奨である。
+この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの `spec.replicas` キーの設定を削除しておくことが推奨である。
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -1146,9 +1146,9 @@ spec:
 
 自動水平スケーリングのスケールイン時の最小Pod数を設定する。
 
-最初、Deploymentの`spec.replicas`キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの`.spec.minReplicas`キーが優先される。
+最初、Deploymentの `spec.replicas` キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの `.spec.minReplicas` キーが優先される。
 
-この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの`spec.replicas`キーの設定を削除しておくことが推奨である。
+この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの `spec.replicas` キーの設定を削除しておくことが推奨である。
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -1298,7 +1298,7 @@ IngressClassの専用オプションを設定する。
 
 #### ▼ ingressClassNameとは
 
-IngressClassの`.metadata.name`キーの値を設定する。
+IngressClassの `.metadata.name` キーの値を設定する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1320,7 +1320,7 @@ spec:
 
 ルーティング条件とするHostヘッダー値を設定する。
 
-`.spec.rules[*].hosts`キーを設定しなければ、全てのHostヘッダー値が対象になる。
+`.spec.rules[*].hosts` キーを設定しなければ、全てのHostヘッダー値が対象になる。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1554,7 +1554,7 @@ spec:
 
 #### ▼ gatewayClassNameとは
 
-GatewayClassの`.metadata.name`キーの値を設定する。
+GatewayClassの `.metadata.name` キーの値を設定する。
 
 Gatewayは共有のNamespaceに配置し、HTTPRouteはマイクロサービスのある各Namespaceに配置する。
 
@@ -1811,7 +1811,7 @@ NetworkPolicyを適用するPodを設定する。
 
 #### ▼ matchLabels
 
-`metadata.labels`キーの値でPodを選ぶ。
+`metadata.labels` キーの値でPodを選ぶ。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1853,7 +1853,7 @@ spec:
 
 許否ルールを適用する通信タイプを設定する。
 
-デフォルト値は`Ingress`タイプが設定される。
+デフォルト値は `Ingress` タイプが設定される。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -1881,7 +1881,7 @@ Jobの試行の上限実行時間を設定する。
 
 設定された時間を超過すると、エラーが返却される。
 
-`.spec.backoffLimit`キーよりも優先される。
+`.spec.backoffLimit` キーよりも優先される。
 
 ```yaml
 apiVersion: batch/v1
@@ -1971,7 +1971,7 @@ Jobが成功/失敗した場合のJob自体の削除を有効化しつつ、そ�
 
 失敗したJobが残り続けると、データポイント収集ツール (例：Prometheus) でメトリクスが記録され続け、アラートを送信し続けてしまう。
 
-そのため、できるだけJobは削除した方が良い。
+そのため、できるだけJobは削除したほうが良い。
 
 ```yaml
 apiVersion: batch/v1
@@ -1992,7 +1992,7 @@ spec:
 
 Kubernetesの実行時に自動的に作成される。
 
-もし手動で作成する場合は、`kubectl`コマンドを実行することにより、その時に`--register-node`キーを`false`とする必要がある。
+もし手動で作成する場合は、`kubectl` コマンドを実行することにより、その時に `--register-node` キーを `false` とする必要がある。
 
 <br>
 
@@ -2004,7 +2004,7 @@ Kubernetesの実行時に自動的に作成される。
 
 Namespace内のコンテナのハードウェアリソースの上限必要サイズを設定する。
 
-Podの`.spec.containers[*].resources`キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。
+Podの `.spec.containers[*].resources` キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。
 
 ```yaml
 apiVersion: v1
@@ -2075,7 +2075,7 @@ spec:
 
 ボリュームに対して、単一のNodeからのみ読み出し/書き込み可能にする。
 
-もしNodeにPodのインスタンスが複数ある場合、`ReadWriteOnce`であっても複数のPodから読み込み/書き込みがある。
+もしNodeにPodのインスタンスが複数ある場合、`ReadWriteOnce` であっても複数のPodから読み込み/書き込みがある。
 
 **＊実装例＊**
 
@@ -2129,7 +2129,7 @@ Volumeの一種であるPodによるHostPath Volumeとは区別すること。
 
 Node側のマウント元のディレクトリを設定する。
 
-Podのマウントポイントは、Podの`.spec.containers[*].volumeMount`キーで設定する。
+Podのマウントポイントは、Podの `.spec.containers[*].volumeMount` キーで設定する。
 
 ```yaml
 apiVersion: v1
@@ -2164,7 +2164,7 @@ spec:
 
 Node上にストレージ上にボリュームを作成する。
 
-`.spec.nodeAffinity`キーの設定が必須であり、Nodeを明示的に指定できる。
+`.spec.nodeAffinity` キーの設定が必須であり、Nodeを明示的に指定できる。
 
 ```yaml
 apiVersion: v1
@@ -2248,14 +2248,14 @@ PersistentVolumeの作成先とするNodeを設定する。
 
 #### ▼ required.nodeSelectorTerms.matchExpressions
 
-作成先のNodeの`.metadata.labels`キーを指定するための条件 (`In`、`NotIn`、`Exists`) を設定する。
+作成先のNodeの `.metadata.labels` キーを指定するための条件 (`In`、`NotIn`、`Exists`) を設定する。
 
 | 設定値        | 条件の説明                                                  |
 | ------------- | ----------------------------------------------------------- |
-| In            | 指定した`metadata.labels`キー配下に、指定した値を持つ。     |
-| NotIn         | 指定した`metadata.labels`キー配下に、指定した値を持たない。 |
-| Exists        | 指定した`metadata.labels`キーを持つ。                       |
-| DoesNotExists | 指定した`metadata.labels`キーを持たない。                   |
+| In            | 指定した `metadata.labels` キー配下に、指定した値を持つ。     |
+| NotIn         | 指定した `metadata.labels` キー配下に、指定した値を持たない。 |
+| Exists        | 指定した `metadata.labels` キーを持つ。                       |
+| DoesNotExists | 指定した `metadata.labels` キーを持たない。                   |
 
 **＊実装例＊**
 
@@ -2361,9 +2361,9 @@ spec:
 
 ストレージクラス名を設定する。
 
-特に、PersistentVolumeClaimがStorageClassに対応するPersistentVolumeを要求する時に役立つ。
+特に、PersistentVolumeClaimがStorageClassに対応するPersistentVolumeを要求するときに役立つ。
 
-例えば、StorageClassに数種類のボリュームタイプ (`standard`、`fast`、`slow`、`gp2`など) がある場合に、区別しやすくなる。
+例えば、StorageClassに数種類のボリュームタイプ (`standard`、`fast`、`slow`、`gp2` など) がある場合に、区別しやすくなる。
 
 PersistentVolumeにストレージクラス名を設定しない場合、これを要求できるのは、同じくストレージクラス名を持たないPersistentVolumeClaimだけである。
 
@@ -2447,7 +2447,7 @@ spec:
 
 要求対象のPersistentVolumeのストレージクラス名を設定する。
 
-これを設定しない場合は、ストレージクラス名が`standard`のPersistentVolumeを要求する。
+これを設定しない場合は、ストレージクラス名が `standard` のPersistentVolumeを要求する。
 
 注意点として、もし異なるStorageClassNameに変更したい場合は、PersistentVolumeを作成し直す必要がある。
 
@@ -2475,9 +2475,9 @@ spec:
 
 Podのスケジューリング対象のNodeを設定する。
 
-`.spec.tolerations`キーとは反対の条件である。
+`.spec.tolerations` キーとは反対の条件である。
 
-`.spec.nodeSelector`キーと比較して、より複雑に条件を設定できる。
+`.spec.nodeSelector` キーと比較して、より複雑に条件を設定できる。
 
 DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、条件に合わせてkube-schedulerがスケジューリングさせる。
 
@@ -2491,13 +2491,13 @@ DeploymentやStatefulでこれを使用する場合は、Podのレプリカそ�
 
 #### ▼ affinity.nodeAffinityとは
 
-Nodeの`.metadata.labels`キーを指定することにより、kube-schedulerがPodをスケジューリングさせるNodeを設定する。
+Nodeの `.metadata.labels` キーを指定することにより、kube-schedulerがPodをスケジューリングさせるNodeを設定する。
 
-`.spec.nodeSelector`キーと比較して、より複雑に条件を設定できる。
+`.spec.nodeSelector` キーと比較して、より複雑に条件を設定できる。
 
 DeploymentやStatefulでこれを使用する場合は、Podのレプリカそれぞれが独立し、kube-schedulerは条件に合わせてスケジューリングさせる。
 
-複数のNodeに同じ`.metadata.labels`キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングさせられる。
+複数のNodeに同じ `.metadata.labels` キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループ単位でPodをスケジューリングさせられる。
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://www.devopsschool.com/blog/understanding-node-selector-and-node-affinity-in-kubernetes/
@@ -2509,9 +2509,9 @@ DeploymentやStatefulでこれを使用する場合は、Podのレプリカそ�
 
 もし条件に合致するNodeがない場合、Podのスケジューリングを待機し続ける。
 
-共通する`SchedulingIgnoredDuringExecution`の名前の通り、`.spec.affinity`キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングさせないといけない。
+共通する `SchedulingIgnoredDuringExecution` の名前の通り、`.spec.affinity` キーによるスケジューリングの制御は新しく作成されるPodにしか適用できず、すでに実行中のPodには適用できず、再スケジューリングさせないといけない。
 
-Podが削除された後にNodeの`.metadata.labels`キーの値が変更されたとしても、一度スケジューリングされたPodが`.spec.affinity`キーの設定で再スケジューリングされることはない。
+Podが削除された後にNodeの `.metadata.labels` キーの値が変更されたとしても、一度スケジューリングされたPodが `.spec.affinity` キーの設定で再スケジューリングされることはない。
 
 ```yaml
 apiVersion: v1
@@ -2550,11 +2550,11 @@ spec:
 
 条件に合致しないNodeの探索で重みづけルールを設定できる。
 
-共通する`SchedulingIgnoredDuringExecution`の名前の通り、`.spec.affinity`キーによるスケジューリングの制御は新しく作成されるPodにしか適用できない。
+共通する `SchedulingIgnoredDuringExecution` の名前の通り、`.spec.affinity` キーによるスケジューリングの制御は新しく作成されるPodにしか適用できない。
 
 すでに実行中のPodには適用できず、再スケジューリングさせないといけない。
 
-Podが削除された後にNodeの`.metadata.labels`キーの値が変更されたとしても、一度スケジューリングされたPodが`.spec.affinity`キーの設定で再スケジューリングされることはない。
+Podが削除された後にNodeの `.metadata.labels` キーの値が変更されたとしても、一度スケジューリングされたPodが `.spec.affinity` キーの設定で再スケジューリングされることはない。
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity
 > - https://cstoku.dev/posts/2018/k8sdojo-18/#%E6%9D%A1%E4%BB%B6%E3%81%AE%E5%BF%85%E9%A0%88%E8%A6%81%E4%BB%B6%E3%81%A8%E6%8E%A8%E5%A5%A8%E8%A6%81%E4%BB%B6
@@ -2565,7 +2565,7 @@ Podが削除された後にNodeの`.metadata.labels`キーの値が変更され�
 
 #### ▼ affinity.podAffinityとは
 
-Node内のPodを、`.metadata.labels`キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングさせる。
+Node内のPodを、`.metadata.labels` キーで指定することにより、そのPodと同じNode内に、新しいPodをスケジューリングさせる。
 
 ```yaml
 apiVersion: v1
@@ -2597,7 +2597,7 @@ spec:
 > - https://qiita.com/Esfahan/items/a673317a29ca407e5ae7#pod-affinity
 > - https://zenn.dev/geek/articles/c74d204b00ba1a
 
-preferredDuringSchedulingIgnoredDuringExecutionの場合、`podAffinityTerm`キーや`preference`キーが必要である。
+preferredDuringSchedulingIgnoredDuringExecutionの場合、`podAffinityTerm` キーや `preference` キーが必要である。
 
 ```yaml
 apiVersion: v1
@@ -2628,11 +2628,11 @@ spec:
 
 #### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
 
-`.spec.affinity.nodeAffinity`キーのPod版である。
+`.spec.affinity.nodeAffinity` キーのPod版である。
 
 #### ▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)
 
-`.spec.affinity.nodeAffinity`キーのPod版である。
+`.spec.affinity.nodeAffinity` キーのPod版である。
 
 <br>
 
@@ -2640,7 +2640,7 @@ spec:
 
 #### ▼ affinity.podAntiAffinityとは
 
-`.metadata.labels`キーを持つNodeとは異なるNode内に、そのPodをスケジューリングさせる。
+`.metadata.labels` キーを持つNodeとは異なるNode内に、そのPodをスケジューリングさせる。
 
 ```yaml
 apiVersion: v1
@@ -2671,7 +2671,7 @@ spec:
 
 > - https://hawksnowlog.blogspot.com/2021/03/namespaced-pod-antiaffinity-with-deployment.html
 
-preferredDuringSchedulingIgnoredDuringExecutionの場合、`podAffinityTerm`キーや`preference`キーが必要である。
+preferredDuringSchedulingIgnoredDuringExecutionの場合、`podAffinityTerm` キーや `preference` キーが必要である。
 
 ```yaml
 apiVersion: v1
@@ -2704,9 +2704,9 @@ spec:
 
 もし、コピーするPodの名前を設定した場合、Podのレプリカ同士は同じNodeにスケジューリングされることを避ける。
 
-また、分散単位に`topology.kubernetes.io/zone`を設定しているため、各AZにPodをバラバラにスケジューリングさせる。
+また、分散単位に `topology.kubernetes.io/zone` を設定しているため、各AZにPodをバラバラにスケジューリングさせる。
 
-結果として、各AZのNodeにPodが`1`個ずつスケジューリングされるようになる。
+結果として、各AZのNodeにPodが `1` 個ずつスケジューリングされるようになる。
 
 ```yaml
 apiVersion: apps/v1
@@ -2747,11 +2747,11 @@ spec:
 
 #### ▼ requiredDuringSchedulingIgnoredDuringExecution (ハード)
 
-`.spec.affinity.nodeAffinity`キーのアンチPod版である。
+`.spec.affinity.nodeAffinity` キーのアンチPod版である。
 
 #### ▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)
 
-`.spec.affinity.nodeAffinity`キーのアンチPod版である。
+`.spec.affinity.nodeAffinity` キーのアンチPod版である。
 
 #### ▼ node affinity conflict
 
@@ -2817,7 +2817,7 @@ spec:
 
 **＊実装例＊**
 
-`status.podIP`から自身のIPアドレスを取得し、`MY_POD_IP`という名前で設定する。
+`status.podIP` から自身のIPアドレスを取得し、`MY_POD_IP` という名前で設定する。
 
 ```yaml
 apiVersion: v1
@@ -2840,7 +2840,7 @@ spec:
 
 #### ▼ envFrom
 
-`.spec.volumes.secret`キー (ファイルをコンテナに設定する) とは異なり、SecretやConfigMapからコンテナに環境変数を出力する。
+`.spec.volumes.secret` キー (ファイルをコンテナに設定する) とは異なり、SecretやConfigMapからコンテナに環境変数を出力する。
 
 **＊実装例＊**
 
@@ -2870,7 +2870,7 @@ spec:
 
 単なる仕様であり、ドキュメントとしての役割がある。
 
-コンテナがポート番号を公開してさえいれば、`.spec.containers[*].ports`キーは設定しなくとも問題ない。
+コンテナがポート番号を公開してさえいれば、`.spec.containers[*].ports` キーは設定しなくとも問題ない。
 
 ```yaml
 apiVersion: v1
@@ -2921,18 +2921,18 @@ spec:
 
 Node全体のハードウェアリソースを分母として、Pod内のコンテナが要求するリソースの下限/上限必要サイズを設定する。
 
-各PodはNode内のハードウェアリソース (`cpu`、`memory`、`ephemeral-storage`) を奪い合っており、Nodeが複数ある場合、kube-schedulerは`requests`値以上の余剰があるNode上にPodのスケジューリングを実行する。
+各PodはNode内のハードウェアリソース (`cpu`、`memory`、`ephemeral-storage`) を奪い合っており、Nodeが複数ある場合、kube-schedulerは `requests` 値以上の余剰があるNode上にPodのスケジューリングを実行する。
 
-この時kube-schedulerは、コンテナの`resource`キーの値に基づいて、どのNodeにPodを作成するかを決めている。
+この時kube-schedulerは、コンテナの `resource` キーの値に基づいて、どのNodeにPodを作成するかを決めている。
 
-同じPod内に`resources`キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
+同じPod内に `resources` キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
 
 | キー名     | 説明                                             | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `requests` | ハードウェアリソースの下限必要サイズを設定する。 | ・高くしすぎると、そのPod内のコンテナがハードウェアリソースを常に要求するため、他のPodがスケーリングしにくくなる。<br>・もし、設定値がNodeのハードウェアリソース以上の場合、コンテナは永遠に起動しない。<br>・https://qiita.com/jackchuka/items/b82c545a674975e62c04#cpu <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの下限がなくなる。そのため、Kubernetesが重要なPodにリソースを必要最低限しか割かず、性能が低くなる可能性がある。                                                                                                                                                                                                                                                                                                                                                                     |
 | `limits`   | ハードウェアリソースの上限必要サイズを設定する。 | ・低くしすぎると、コンテナにハードウェアリソースを割り当てられないため、性能が常時悪くなる。<br>・もし、コンテナが上限値以上のハードウェアリソースを要求すると、CPUの場合はPodは削除されずに、コンテナのスロットリング (起動と停止を繰り返す) が起こる。一方でメモリの場合は、OOMキラーによってPodのプロセスが削除され、Podは再作成される。<br>・https://blog.mosuke.tech/entry/2020/03/31/kubernetes-resource/ <br>・もし、これを設定しない場合は、コンテナが使用できるハードウェアリソースの上限がなくなる。そのため、Kubernetesが重要でないPodにリソースを割いてしまう可能性がある。<br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/#if-you-do-not-specify-a-cpu-limit <br>・https://kubernetes.io/docs/tasks/configure-pod-container/assign-memory-resource/#if-you-do-not-specify-a-memory-limit |
 
-補足として、Node全体のハードウェアリソースは、`kubectl describe`コマンドから確認できる。
+補足として、Node全体のハードウェアリソースは、`kubectl describe` コマンドから確認できる。
 
 ```bash
 $ kubectl describe node <Node名>
@@ -2967,7 +2967,7 @@ Allocatable:
 
 | ハードウェアリソース名 |                                                     | 単位                                              |
 | ---------------------- | --------------------------------------------------- | ------------------------------------------------- |
-| `cpu`                  | コンテナのCPU                                       | m：millicores (`1`m = `1` ユニット = `0.001`コア) |
+| `cpu`                  | コンテナのCPU                                       | m：millicores (`1`m = `1` ユニット = `0.001` コア) |
 | `memory`               | コンテナのメモリ                                    | Mi：mebibyte (`1`Mi = `1.04858`MB)                |
 | `ephemeral-storage`    | EmptyDir Volume、ログ、ローカルディスクへの書き込み | Mi：mebibyte                                      |
 
@@ -2997,7 +2997,7 @@ spec:
       ...
 ```
 
-各コンテナの実際のハードウェアリソース消費量を確認する場合は、`kubectl top`コマンドを使用する。
+各コンテナの実際のハードウェアリソース消費量を確認する場合は、`kubectl top` コマンドを使用する。
 
 『`(実測値) ÷ (メモリ上限値) × 100`』で計算できる。
 
@@ -3017,9 +3017,9 @@ Pod内のコンテナのマウントポイントを設定する。
 
 パスは相対パスではなく絶対パスで指定する。
 
-`.spec.volumes`キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
+`.spec.volumes` キーで設定されたボリュームのうちから、コンテナにマウントするボリュームを設定する。
 
-Node側のマウント元のディレクトリは、PersistentVolumeの`.spec.hostPath`キーで設定する。
+Node側のマウント元のディレクトリは、PersistentVolumeの `.spec.hostPath` キーで設定する。
 
 volumeMountという名前であるが、『ボリュームマウント』を実行するわけではなく、VolumeやPersistentVolumeで設定された任意のマウントを実行できることに注意する。
 
@@ -3115,7 +3115,7 @@ data:
 
 コンテナの作業ディレクトリを設定する。
 
-ただし、作業ディレクトリの設定はアプリケーション側の責務のため、Kubernetesで設定するよりもDockerfileで定義した方が良い。
+ただし、作業ディレクトリの設定はアプリケーション側の責務のため、Kubernetesで設定するよりもDockerfileで定義したほうが良い。
 
 ```yaml
 apiVersion: v1
@@ -3141,7 +3141,7 @@ kubeletがヘルスチェックを実行することで、コンテナが正常�
 
 注意点として、LivenessProbeヘルスチェックの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
 
-`terminationGracePeriodSeconds`に関しては、`.spec.terminationGracePeriodSeconds`キーでPod単位での待機時間を設定することもできる。
+`terminationGracePeriodSeconds` に関しては、`.spec.terminationGracePeriodSeconds` キーでPod単位での待機時間を設定することもできる。
 
 ```yaml
 apiVersion: v1
@@ -3176,7 +3176,7 @@ spec:
 
 コンテナのLivenessProbeヘルスチェックで、任意のコマンドによるヘルスチェックを実行する。
 
-終了コード`0`なら成功である。
+終了コード `0` なら成功である。
 
 LivenessProbeが対応可能なプロトコル (HTTP、TCP、gRPCによるHTTP) 以外で、ヘルスチェックを実行したい場合に役立つ。
 
@@ -3200,9 +3200,9 @@ spec:
 
 #### ▼ httpGet
 
-コンテナのLivenessProbeヘルスチェックで、`L7`チェックを実行する。
+コンテナのLivenessProbeヘルスチェックで、`L7` チェックを実行する。
 
-`200`ステータスから`399`ステータスまでの間なら成功である。
+`200` ステータスから `399` ステータスまでの間なら成功である。
 
 具体的には、コンテナの指定したエンドポイントにGETメソッドでHTTPリクエストを送信し、レスポンスのステータスコードを検証する。
 
@@ -3235,7 +3235,7 @@ spec:
 
 #### ▼ failureThreshold
 
-デフォルト値は`3`である。
+デフォルト値は `3` である。
 
 コンテナのLivenessProbeヘルスチェックが失敗したとみなす試行回数を設定する。
 
@@ -3256,13 +3256,13 @@ spec:
 
 #### ▼ initialDelaySecond
 
-デフォルト値は`0`である。
+デフォルト値は `0` である。
 
 初回のLivenessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
 この時間を過ぎてもコンテナのLivenessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
 
-設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の`0`は短すぎる) 。
+設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の `0` は短すぎる) 。
 
 一方で、設定した時間が長すぎると、Podの作成開始から完了まで時間がかかりすぎてしまう。
 
@@ -3284,7 +3284,7 @@ spec:
 
 #### ▼ periodSeconds
 
-デフォルト値は`10`である。
+デフォルト値は `10` である。
 
 コンテナのLivenessProbeヘルスチェックの試行当たりの間隔を設定する。
 
@@ -3306,7 +3306,7 @@ spec:
 
 #### ▼ successThreshold
 
-デフォルト値は`1`である。
+デフォルト値は `1` である。
 
 LivenessProbeヘルスチェックの失敗後のリトライで、成功と判定する最小試行回数を設定する。
 
@@ -3327,7 +3327,7 @@ spec:
 
 #### ▼ tcpSocket
 
-コンテナのLivenessProbeヘルスチェックで、`L4`チェックを実行する。
+コンテナのLivenessProbeヘルスチェックで、`L4` チェックを実行する。
 
 具体的には、コンテナにTCPスリーウェイハンドシェイクを実行し、TCP接続を確立できるかを検証する。
 
@@ -3347,7 +3347,7 @@ spec:
 
 #### ▼ terminationGracePeriodSeconds
 
-デフォルト値はPod単位の`.spec.terminationGracePeriodSeconds`キーを継承し、`30`である。
+デフォルト値はPod単位の `.spec.terminationGracePeriodSeconds` キーを継承し、`30` である。
 
 コンテナの終了プロセスを開始するまで待機時間を設定する。
 
@@ -3373,7 +3373,7 @@ spec:
 
 #### ▼ timeoutSeconds
 
-デフォルト値は`1`である。
+デフォルト値は `1` である。
 
 コンテナのLivenessProbeヘルスチェックのタイムアウト時間を設定する。
 
@@ -3441,7 +3441,7 @@ spec:
 
 kubeletがヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。
 
-`terminationGracePeriodSeconds`に関しては、`.spec.terminationGracePeriodSeconds`キーでPod単位での待機時間を設定することもできる。
+`terminationGracePeriodSeconds` に関しては、`.spec.terminationGracePeriodSeconds` キーでPod単位での待機時間を設定することもできる。
 
 ```yaml
 apiVersion: v1
@@ -3516,7 +3516,7 @@ spec:
 
 注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
 
-そのため、`READY`は`0`で、`STATUS`は`Running`になる。
+そのため、`READY` は `0` で、`STATUS` は `Running` になる。
 
 ```bash
 $ kubectl get pod -n foo-namespace
@@ -3539,7 +3539,7 @@ Readiness probe failed: Get "http://*.*.*.*:*/ready": dial tcp *.*.*.*:*: connec
 
 コンテナのLivenessProbeヘルスチェックで、任意のコマンドのヘルスチェックを実行する。
 
-終了コード`0`なら成功である。
+終了コード `0` なら成功である。
 
 LivenessProbeが対応可能なプロトコル (HTTP、TCP、gRPCによるHTTP) 以外で、ヘルスチェックを実行したい場合に役立つ。
 
@@ -3563,9 +3563,9 @@ spec:
 
 #### ▼ httpGet
 
-コンテナのReadinessProbeヘルスチェックで、`L7`チェックを実行する。
+コンテナのReadinessProbeヘルスチェックで、`L7` チェックを実行する。
 
-`200`ステータスから`399`ステータスまでの間なら成功である。
+`200` ステータスから `399` ステータスまでの間なら成功である。
 
 具体的には、コンテナの指定したエンドポイントにGETメソッドでHTTPリクエストを送信し、レスポンスのステータスコードを検証する。
 
@@ -3588,7 +3588,7 @@ spec:
 
 #### ▼ failureThreshold
 
-デフォルト値は`3`である。
+デフォルト値は `3` である。
 
 ReadinessProbeヘルスチェックが失敗したとみなす試行回数を設定する。
 
@@ -3609,17 +3609,17 @@ spec:
 
 #### ▼ initialDelaySeconds
 
-デフォルト値は`0`である。
+デフォルト値は `0` である。
 
 初回のReadinessProbeヘルスチェックを開始するまでの待機時間を設定する。
 
 この時間を過ぎてもコンテナのReadinessProbeヘルスチェックが失敗する場合、Podはコンテナを再起動する。
 
-設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の`0`は短すぎる) 。
+設定した時間が短すぎると、Podがコンテナの起動を待てずに再起動を繰り返してしまう (デフォルト値の `0` は短すぎる) 。
 
 一方で、設定した時間が長すぎると、Podの作成開始から完了まで時間（つまり、リリースの作業時間）がかかりすぎてしまう。
 
-例えば、gRPCサーバーであれば基本的には`1`秒以内で起動するため、`initialDelaySeconds`は`5`ほどでよい。
+例えば、gRPCサーバーであれば基本的には `1` 秒以内で起動するため、`initialDelaySeconds` は `5` ほどでよい。
 
 Workloadを何度かリスタートし、問題なく起動できれば調整は完了である。
 
@@ -3640,11 +3640,11 @@ spec:
 
 #### ▼ periodSeconds
 
-デフォルト値は`10`である。
+デフォルト値は `10` である。
 
 ReadinessProbeヘルスチェックの試行当たりの間隔を設定する。
 
-適正値は`10`秒ほどで良い。
+適正値は `10` 秒ほどで良い。
 
 Workloadを何度かリスタートし、問題なく起動できれば調整は完了である。
 
@@ -3665,7 +3665,7 @@ spec:
 
 #### ▼ successThreshold
 
-デフォルト値は`1`である。
+デフォルト値は `1` である。
 
 ReadinessProbeヘルスチェックの失敗後のリトライで、成功と判定する最小試行回数を設定する。
 
@@ -3686,7 +3686,7 @@ spec:
 
 #### ▼ tcpSocket
 
-ReadinessProbeヘルスチェックで、`L4`チェックを実行する。
+ReadinessProbeヘルスチェックで、`L4` チェックを実行する。
 
 コンテナにTCPスリーウェイハンドシェイクを実行し、TCP接続を確立できるかを検証する。
 
@@ -3708,7 +3708,7 @@ spec:
 
 #### ▼ terminationGracePeriodSeconds
 
-デフォルト値はPod単位の`.spec.terminationGracePeriodSeconds`キーを継承し、`30`である。
+デフォルト値はPod単位の `.spec.terminationGracePeriodSeconds` キーを継承し、`30` である。
 
 コンテナの終了プロセスを開始するまで待機時間を設定する。
 
@@ -3734,7 +3734,7 @@ spec:
 
 #### ▼ timeoutSeconds
 
-デフォルト値は`1`である。
+デフォルト値は `1` である。
 
 コンテナのReadinessProbeヘルスチェックのタイムアウト時間を設定する。
 
@@ -3764,7 +3764,7 @@ spec:
 
 Pod内の特定のコンテナに対して、認可スコープを設定する。
 
-オプションは、`.spec.securityContext`キーと同じである。
+オプションは、`.spec.securityContext` キーと同じである。
 
 > - https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc
 
@@ -3865,7 +3865,7 @@ spec:
 
 Podのホスト名を設定する。
 
-また、`.spec.hostname`キーが設定されていない時は、`.metadata.name`がホスト名として使用される。
+また、`.spec.hostname` キーが設定されていないときは、`.metadata.name` がホスト名として使用される。
 
 **＊実装例＊**
 
@@ -3915,7 +3915,7 @@ spec:
 
 プライベートイメージリポジトリからコンテナイメージをプルするため、プライベートイメージリポジトリの資格情報を持つSecretを設定する。
 
-別途、ServiceAccountの`.imagePullSecrets`キーでも同じSecretを指定しておき、このServiceAccountをPodに紐付ける。
+別途、ServiceAccountの `.imagePullSecrets` キーでも同じSecretを指定しておき、このServiceAccountをPodに紐付ける。
 
 これにより、PodはSecretにあるプライベートリポジトリの資格情報を使用できるようになる。
 
@@ -3942,7 +3942,7 @@ spec:
 
 #### ▼ initContainersとは
 
-`.spec.containers`キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。
+`.spec.containers` キーで設定したコンテナよりも先に起動するコンテナ (InitContainer) を設定する。
 
 依存先コンテナ (例：DBコンテナ、インメモリDBコンテナ) の待機処理、依存ツールやサーバー証明書のインストール処理などのために使用する。
 
@@ -4001,7 +4001,7 @@ spec:
 
 #### ▼ restartPolicy
 
-`Always`値を設定することで、サイドカーコンテナを作成できる。
+`Always` 値を設定することで、サイドカーコンテナを作成できる。
 
 ```yaml
 apiVersion: v1
@@ -4064,7 +4064,7 @@ DaemonSet配下のPodは、デフォルトで全てのNodeでスケジューリ�
 
 ただし何らかの理由 (例：ハードウェアリソース不足など) で、特定のNodeでDaemonSet配下のPodをスケジューリングさせられないことがある。
 
-他のPodよりスケジューリングの優先度を上げるために、DaemonSet配下のPodには必ず、`system-node-critical`のPriorityClassNameを設定しておく。
+他のPodよりスケジューリングの優先度を上げるために、DaemonSet配下のPodには必ず、`system-node-critical` のPriorityClassNameを設定しておく。
 
 > - https://stackoverflow.com/questions/74987515/k8s-daemonset-pod-placement
 > - https://stackoverflow.com/questions/55832300/cluster-autoscaler-not-triggering-scale-up-on-daemonset-deployment
@@ -4077,9 +4077,9 @@ DaemonSet配下のPodは、デフォルトで全てのNodeでスケジューリ�
 
 Podのスケジューリング対象とするNodeを設定する。
 
-`.spec.affinity`キーと比較して、より単純に条件を設定できる。
+`.spec.affinity` キーと比較して、より単純に条件を設定できる。
 
-複数のNodeに同じ`.metadata.labels`キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。
+複数のNodeに同じ `.metadata.labels` キーを付与しておき、このNode群をNodeグループと定義すれば、特定のNodeにPodを作成するのみでなくNodeグループにPodを作成できる。
 
 ```yaml
 apiVersion: v1
@@ -4104,7 +4104,7 @@ DaemonSetでは、特定のNodeにPodをスケジューリングさせられる�
 
 #### ▼ nodeSelectorとaffinittyの両方設定
 
-`.spec.nodeSelector`キーと`.spec.affinity`キーの両方を設定できる。
+`.spec.nodeSelector` キーと `.spec.affinity` キーの両方を設定できる。
 
 両方を設定した場合、両方を満たしたNodeにPodをスケジューリングさせられる。
 
@@ -4120,7 +4120,7 @@ Pod内のコンテナのライフサイクルの再起動ポリシーを設定�
 
 #### ▼ Always
 
-コンテナが停止した場合、これが正常 (終了ステータス`0`) か異常 (終了ステータス`1`) か否かに関わらず、常にコンテナを再起動する。
+コンテナが停止した場合、これが正常 (終了ステータス `0`) か異常 (終了ステータス `1`) か否かに関わらず、常にコンテナを再起動する。
 
 ```yaml
 apiVersion: v1
@@ -4152,7 +4152,7 @@ spec:
 
 #### ▼ OnFailure
 
-コンテナが停止した場合、これが異常 (終了ステータス`1`) の場合にのみ、常にコンテナを再起動する。
+コンテナが停止した場合、これが異常 (終了ステータス `1`) の場合にのみ、常にコンテナを再起動する。
 
 ```yaml
 apiVersion: v1
@@ -4244,11 +4244,11 @@ Pod内のコンテナ内のファイルに以下を実行する。
 
 - 指定した番号のユーザーグループを作成する
 - ファイルのユーザーグループ権限を指定したユーザーグループ番号に設定する
-- ファイルのアクセス権限を`0660`に設定する
+- ファイルのアクセス権限を `0660` に設定する
 
 設定しない場合、ボリュームのファイルの権限はrootユーザー (コンテナのデフォルトユーザー) になる。
 
-例えば、`999`にすれば、`999`というユーザーグループが作成され、`999`番グループしかファイルを利用できなくなる。
+例えば、`999` にすれば、`999` というユーザーグループが作成され、`999` 番グループしかファイルを利用できなくなる。
 
 ```yaml
 apiVersion: v1
@@ -4302,7 +4302,7 @@ Podの終了プロセスを開始するまで待機時間を設定する。
 
 この時間を超えてもPodを終了できていない場合は、コンテナを強制的に停止する。
 
-なお、`.spec.containers[*].xxxProbe.terminationGracePeriodSeconds`キーでコンテナ単位での待機時間を設定することもできる。
+なお、`.spec.containers[*].xxxProbe.terminationGracePeriodSeconds` キーでコンテナ単位での待機時間を設定することもできる。
 
 ```yaml
 apiVersion: v1
@@ -4337,9 +4337,9 @@ Pod内にアプリ以外にコンテナ (istio-proxyなど) がある場合、�
 
 TaintsとTolerationsを使用すると、指定した条件に合致するPod以外をNodeにスケジューリングさせないようにできる。
 
-例えば、Workloadが少ないNodeグループ (`monitoring`、`ingress`など) にTaintを設定し、Workloadが多いNodeグループ (`app`、`system`など) にはこれを設定しないようにする。
+例えば、Workloadが少ないNodeグループ (`monitoring`、`ingress` など) にTaintを設定し、Workloadが多いNodeグループ (`app`、`system` など) にはこれを設定しないようにする。
 
-すると、`.spec.tolerations`キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。
+すると、`.spec.tolerations` キーを設定しない限り、Podが多いNodeグループの方にPodがスケジューリングされる。
 
 そのため、NodeSelectorやNodeAffinityを使用するより、スケジューリング対象のNodeを設定する手間が省ける。
 
@@ -4355,7 +4355,7 @@ $ kubectl taint node foo-node group=monitoring:NoSchedule
 # NodeグループやNodeプールで一括してTaintを設定する
 ```
 
-Taintへの耐性を`.spec.tolerations`キーで設定する。
+Taintへの耐性を `.spec.tolerations` キーで設定する。
 
 ```yaml
 apiVersion: v1
@@ -4374,11 +4374,11 @@ spec:
       effect: <エフェクト>
 ```
 
-合致する条件の`.spec.tolerations`キーを持つPodしか、Taintを持つNodeにスケジューリングさせられない。
+合致する条件の `.spec.tolerations` キーを持つPodしか、Taintを持つNodeにスケジューリングさせられない。
 
-`.spec.affinity`キーとは反対の条件である。
+`.spec.affinity` キーとは反対の条件である。
 
-デフォルトでは、Podは以下のNodeの`metadata.labels`キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングさせる。
+デフォルトでは、Podは以下のNodeの `metadata.labels` キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングさせる。
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions
 
@@ -4390,9 +4390,9 @@ spec:
 
 **＊実装例＊**
 
-`kube-system`で管理したいような重要なPodに`CriticalAddonsOnly`キーのTolerationsを設定する。
+`kube-system` で管理したいような重要なPodに `CriticalAddonsOnly` キーのTolerationsを設定する。
 
-合わせてNodeのTaintにも`CriticalAddonsOnly`キーを設定することで、Taintに耐性のあるPod (`CriticalAddonsOnly`キー) しか、このNodeにスケジューリングできなくなる。
+合わせてNodeのTaintにも `CriticalAddonsOnly` キーを設定することで、Taintに耐性のあるPod (`CriticalAddonsOnly` キー) しか、このNodeにスケジューリングできなくなる。
 
 ```yaml
 apiVersion: v1
@@ -4481,18 +4481,18 @@ spec:
 
 異なるリージョン、AZ、Node、にPodを分散させる。
 
-`.spec.nodeSelector`キーや`.spec.affinity`キーのスーパーセットであり、これと比べて、Podのスケジューリングをより柔軟に定義できる。
+`.spec.nodeSelector` キーや `.spec.affinity` キーのスーパーセットであり、これと比べて、Podのスケジューリングをより柔軟に定義できる。
 
 > - https://stackoverflow.com/a/73159361
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/
 
 #### ▼ maxSkew
 
-`.spec.topologySpreadConstraints[*].topologyKey`キーで指定した分散の単位の間で、Podの個数差を設定する。
+`.spec.topologySpreadConstraints[*].topologyKey` キーで指定した分散の単位の間で、Podの個数差を設定する。
 
 **＊実装例＊**
 
-AZが`2`個あるとすると、各AZ間のPodの個数差を`1`個にする。
+AZが `2` 個あるとすると、各AZ間のPodの個数差を `1` 個にする。
 
 ```yaml
 apiVersion: v1
@@ -4590,15 +4590,15 @@ Pod内で使用するボリュームを設定する。
 
 #### ▼ configMap
 
-ConfigMapの`.data`キー配下のキーをファイルとしてマウントする。
+ConfigMapの `.data` キー配下のキーをファイルとしてマウントする。
 
-Secretをマウントする場合は、`.spec.volumes.secret`キーで設定することに注意する。
+Secretをマウントする場合は、`.spec.volumes.secret` キーで設定することに注意する。
 
 **＊実装例＊**
 
-ConfigMapの持つキー (ここでは`fluent-bit.conf`キー) をコンテナにファイルとしてマウントする
+ConfigMapの持つキー (ここでは `fluent-bit.conf` キー) をコンテナにファイルとしてマウントする
 
-そのため、コンテナには`fluent-bit.conf`ファイルが配置されることになる。
+そのため、コンテナには `fluent-bit.conf` ファイルが配置されることになる。
 
 ```yaml
 apiVersion: v1
@@ -4847,15 +4847,15 @@ spec:
 
 #### ▼ secret
 
-Secretの`.data`キー配下のキーをファイルとしてマウントする。
+Secretの `.data` キー配下のキーをファイルとしてマウントする。
 
-`.spec.containers[*].envFrom`キー (環境変数をコンテナに出力する) とは異なり、Secretからファイルを設定する。
+`.spec.containers[*].envFrom` キー (環境変数をコンテナに出力する) とは異なり、Secretからファイルを設定する。
 
-ConfigMapをマウントする場合は、`.spec.volumes.configMap`キーで設定することに注意する。
+ConfigMapをマウントする場合は、`.spec.volumes.configMap` キーで設定することに注意する。
 
 **＊実装例＊**
 
-Secretが持つ資格情報ファイル (ここでは`credentials.json`キー) をコンテナにファイルとしてマウントする
+Secretが持つ資格情報ファイル (ここでは `credentials.json` キー) をコンテナにファイルとしてマウントする
 
 そのため、コンテナには資格情報ファイルが配置されることになる。
 
@@ -4909,7 +4909,7 @@ data:
 
 これを設定しないと、特定のWorkload (例：Deployment、DaemonSet、StatefulSet、Jobなど) 配下のPodを全て退避してしまう問題が起こる。
 
-まずは`.spec.minAvailable`キーでスケジューリングさせられる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
+まずは `.spec.minAvailable` キーでスケジューリングさせられる新しいPodの個数を制御し、その後に `.spec.minAvailable` キーで退避できる古いPodの個数を制御する。
 
 ```yaml
 apiVersion: policy/v1
@@ -4932,7 +4932,7 @@ spec:
 
 他のNodeで新しいPodのスケジューリングの完了を待機してから、古いPodを退避させられる。
 
-まずは`.spec.minAvailable`キーでスケジューリングさせられる新しいPodの個数を制御し、その後に`.spec.minAvailable`キーで退避できる古いPodの個数を制御する。
+まずは `.spec.minAvailable` キーでスケジューリングさせられる新しいPodの個数を制御し、その後に `.spec.minAvailable` キーで退避できる古いPodの個数を制御する。
 
 ```yaml
 apiVersion: policy/v1
@@ -4951,7 +4951,7 @@ spec:
 
 ### .spec.selector
 
-古いPodをNodeから退避させる時に、Podの`metadata.labels`キーを設定する。
+古いPodをNodeから退避させる時に、Podの `metadata.labels` キーを設定する。
 
 ```yaml
 apiVersion: policy/v1
@@ -4991,7 +4991,7 @@ spec:
 
 グローバルスコープにするかどうかを設定する。
 
-`true`の場合、PriorityClassを指定していないWorkloadに対しても、PriorityClassを一律に設定する。
+`true` の場合、PriorityClassを指定していないWorkloadに対しても、PriorityClassを一律に設定する。
 
 ```yaml
 apiVersion: scheduling.k8s.io/v1
@@ -5011,7 +5011,7 @@ globalDefault: false
 
 #### ▼ `Never`
 
-`Never`とすると、必ず他のPodのスケジューリングを優先するようになる。
+`Never` とすると、必ず他のPodのスケジューリングを優先するようになる。
 
 ```yaml
 apiVersion: scheduling.k8s.io/v1
@@ -5043,7 +5043,7 @@ value: 1000000
 
 #### ▼ `-1`
 
-`-1`とすると、優先度が最低になる。
+`-1` とすると、優先度が最低になる。
 
 ```yaml
 apiVersion: scheduling.k8s.io/v1
@@ -5225,7 +5225,7 @@ Kubernetesリソースに渡す機密な変数を設定する。
 
 Secretで保持するstring型変数を設定する。
 
-使用時に`base64`方式で自動的にデコードされるため、あらかじめ`base64`方式でエンコードしておく必要がある。
+使用時に `base64` 方式で自動的にデコードされるため、あらかじめ `base64` 方式でエンコードしておく必要がある。
 
 ```yaml
 apiVersion: v1
@@ -5241,7 +5241,7 @@ data:
 
 > - https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data
 
-string型の変数しか設定できないため、`base64`方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
+string型の変数しか設定できないため、`base64` 方式でデコード後にinteger型やboolean型になってしまう値は、ダブルクオーテーションで囲う必要がある。
 
 ```yaml
 apiVersion: v1
@@ -5385,9 +5385,9 @@ data:
 
 #### ▼ kubernetes.io/service-account-token
 
-Kubernetesの`v1.24`以降では、Secretが自動的に作成されないようになっている。
+Kubernetesの `v1.24` 以降では、Secretが自動的に作成されないようになっている。
 
-`.metadata.annotations`キーと`.type`キーを設定したSecretを作成すると、Kubernetesはこれの`data`キー配下にトークン文字列を自動的に追加する。
+`.metadata.annotations` キーと `.type` キーを設定したSecretを作成すると、Kubernetesはこれの `data` キー配下にトークン文字列を自動的に追加する。
 
 このトークンには、失効期限がない。
 
@@ -5543,7 +5543,7 @@ spec:
 
 受信する通信のプロトコルを設定する。
 
-`.spec.ports.protocol`キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
+`.spec.ports.protocol` キーとは異なり、アプリケーション層のプロトコルを明示的に指定できる。
 
 ```yaml
 apiVersion: v1
@@ -5660,11 +5660,11 @@ spec:
 
 #### ▼ targetPort
 
-受信した通信をPodにフォワーディングする時に、いずれのポート番号を指定するか否かを設定する。
+受信した通信をPodにフォワーディングするときに、いずれのポート番号を指定するか否かを設定する。
 
-Pod内で最初にインバウンド通信を受信するコンテナの`containerPort`の番号に合わせるようにする。
+Pod内で最初にインバウンド通信を受信するコンテナの `containerPort` の番号に合わせるようにする。
 
-デフォルトでは、`.spec.ports.port`キーと同じに値になる。
+デフォルトでは、`.spec.ports.port` キーと同じに値になる。
 
 **＊実装例＊**
 
@@ -5700,7 +5700,7 @@ spec:
 
 LoadBalancer Serviceのみで設定できる。
 
-プロビジョニングされる`L4`ロードバランサーのインバウンド通信で許可するCIDRを設定する。
+プロビジョニングされる `L4` ロードバランサーのインバウンド通信で許可するCIDRを設定する。
 
 **＊実装例＊**
 
@@ -5730,7 +5730,7 @@ spec:
 
 #### ▼ selectorとは
 
-インバウンド通信のフォワーディング先とするPodの`.metadata.labels`キー名と値を設定する。
+インバウンド通信のフォワーディング先とするPodの `.metadata.labels` キー名と値を設定する。
 
 **＊実装例＊**
 
@@ -5802,7 +5802,7 @@ spec:
 
 #### ▼ sessionAffinityConfigとは
 
-`.spec.sessionAffinity`キーを使用している場合に、セッションのタイムアウト時間を設定する。
+`.spec.sessionAffinity` キーを使用している場合に、セッションのタイムアウト時間を設定する。
 
 タイムアウト時間を過ぎると、Node上に保管したセッションIDを削除する。
 
@@ -5833,7 +5833,7 @@ Serviceのタイプを設定する。
 
 ClusterIP Serviceを設定する。
 
-`.spec.clusterIP`キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。
+`.spec.clusterIP` キーでCluster-IPを指定しない場合は、ランダムにIPアドレスが割り当てられる。
 
 ```yaml
 apiVersion: v1
@@ -5902,7 +5902,7 @@ spec:
     app.kubernetes.io/name: foo-pod
 ```
 
-NodePortのポート番号は、`30000` 〜 `32767`番である必要がある。
+NodePortのポート番号は、`30000` 〜 `32767` 番である必要がある。
 
 ```bash
 spec.ports[0].nodePort: Invalid value: 80: provided port is not in the valid range. The range of valid ports is 30000-32767
@@ -5916,11 +5916,11 @@ LoadBalancer Serviceを設定する。
 
 クラウドプロバイダーでLoadBalancer Serviceを作成すると、External-IPを宛先IPアドレスとするロードバランサーを自動的にプロビジョニングする。
 
-同時に、`.status.loadBalancer`キーが自動的に追加される。
+同時に、`.status.loadBalancer` キーが自動的に追加される。
 
-`.status.loadBalancer.ingress`キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『`ingress`』である。
+`.status.loadBalancer.ingress` キーは、KubernetesのIngressとは無関係であり、インバウンドを表す『`ingress`』である。
 
-`.status.loadBalancer.ingress.ip`キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。
+`.status.loadBalancer.ingress.ip` キーには、ロードバランサーで指定するServiceのExternal-IPが設定される。
 
 ```yaml
 apiVersion: v1
@@ -5957,7 +5957,7 @@ status:
 
 ServiceAccountのPod内のコンテナへのマウントを有効化する。
 
-デフォルト値は`true`である。
+デフォルト値は `true` である。
 
 ```yaml
 apiVersion: v1
@@ -5969,7 +5969,7 @@ automountServiceAccountToken: true
 
 service-account-admission-controllerは、AdmissionWebhookの仕組みでPodの作成時にマニフェストを変更する。
 
-これにより、Volume上の`/var/run/secrets/kubernetes.io/serviceaccount`ディレクトリをコンテナに自動的にマウントするようになる。
+これにより、Volume上の `/var/run/secrets/kubernetes.io/serviceaccount` ディレクトリをコンテナに自動的にマウントするようになる。
 
 ```yaml
 apiVersion: v1
@@ -6022,9 +6022,9 @@ spec:
               path: token
 ```
 
-マウント後、トークンの文字列はコンテナの`/var/run/secrets/kubernetes.io/serviceaccount/token`ファイルに記載されている。
+マウント後、トークンの文字列はコンテナの `/var/run/secrets/kubernetes.io/serviceaccount/token` ファイルに記載されている。
 
-もし、AWS EKSを使用している場合、加えて`/var/run/secrets/eks.amazonaws.com/serviceaccount/token`ファイルにもトークンの文字列が記載されている。
+もし、AWS EKSを使用している場合、加えて `/var/run/secrets/eks.amazonaws.com/serviceaccount/token` ファイルにもトークンの文字列が記載されている。
 
 ```yaml
 [root@<foo-pod:/] $ cat /var/run/secrets/kubernetes.io/serviceaccount/token | base64 -d; echo
@@ -6221,7 +6221,7 @@ spec:
 
 PersistentVolumeClaimを作成する。
 
-設定の項目は`kind: PersistentVolumeClaim`の場合と同じである。
+設定の項目は `kind: PersistentVolumeClaim` の場合と同じである。
 
 StatefulSetが削除されても、これは削除されない。
 
@@ -6332,7 +6332,7 @@ provisioner: k8s.io/minikube-hostpath
 
 ### reclaimPolicy
 
-PersistentVolumeClaimが削除された時に、Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeを削除する否かを設定する。
+PersistentVolumeClaimが削除されたときに、Node外ストレージツール (例：AWS EBS、NFS、iSCSI、Cephなどなど) が提供するVolumeを削除する否かを設定する。
 
 PersistentVolumeにも同様の機能がある。
 

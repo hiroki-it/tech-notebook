@@ -92,7 +92,7 @@ description: 認証ロジック＠JavaScriptを記録しています。
 
 #### ▼ 保管
 
-`document.cookie`に値を格納する。
+`document.cookie` に値を格納する。
 
 ```javascript
 // key=value
@@ -106,7 +106,7 @@ console.log(document.cookie);
 
 #### ▼ 取得
 
-`document.cookie`から値を出力する。
+`document.cookie` から値を出力する。
 
 ```javascript
 const cookie = document.cookie;
@@ -119,13 +119,13 @@ console.log(cookie);
 
 #### ▼ 削除
 
-`document.cookie`の有効期限を過去に設定する。
+`document.cookie` の有効期限を過去に設定する。
 
 ```javascript
 document.cookie = "user=Tarou; expires=Mon, 1 Nov 2021 20:00:00 GMT";
 ```
 
-または、`document.cookie`の有効期限を`0`秒に設定する
+または、`document.cookie` の有効期限を `0` 秒に設定する
 
 ```javascript
 document.cookie = "user=Tarou; max-age=0";

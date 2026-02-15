@@ -160,7 +160,7 @@ argocd-managerの実体は、ServiceAccountである。
 
 このServiceAccountを介して、ArgoCDのapplication-controllerはClusterにKubernetesリソースをデプロイする。
 
-`argocd cluster add <デプロイ先のClusterのコンテキスト>`コマンドで、`argocd-manager`というServiceAccountを作成できる。
+`argocd cluster add <デプロイ先のClusterのコンテキスト>` コマンドで、`argocd-manager` というServiceAccountを作成できる。
 
 ```bash
 # デフォルトでkube-systemに作成するため、nオプションは不要である

@@ -27,7 +27,7 @@ Reactパッケージを使用したフレームワークである。
 
 以下の時にCSRモードになり、SPAをレンダリングする。
 
-- ファイルの先頭に`"use client"`を指定している。
+- ファイルの先頭に `"use client"` を指定している。
 
 ```typescript
 "use client";
@@ -79,8 +79,8 @@ export default CsrPage;
 
 以下の時にSSRモードになる。
 
-- `fetch`関数の第二引数に、`{ cache: "no-store" }`を指定している
-- `useEffect`、`useState`、`onClick`などのブラウザ依存の機能を使用していない
+- `fetch` 関数の第二引数に、`{ cache: "no-store" }` を指定している
+- `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
 
 ```jsx
 import React from "react";
@@ -114,7 +114,7 @@ const SsrPage = async () => {
 export default SsrPage;
 ```
 
-または`'force-dynamic'`を宣言する。
+または `'force-dynamic'` を宣言する。
 
 ```jsx
 export const dynamic = "force-dynamic";
@@ -143,8 +143,8 @@ Route (app)                              Size     First Load JS
 
 以下の時にSSGモードになる。
 
-- `fetch`関数の第二引数に、`{ cache: "force-cache" }`を指定しているか、または何も指定していない
-- `useEffect`、`useState`、`onClick`などのブラウザ依存の機能を使用していない
+- `fetch` 関数の第二引数に、`{ cache: "force-cache" }` を指定しているか、または何も指定していない
+- `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
 
 ```jsx
 import React from "react";
@@ -176,7 +176,7 @@ const SsgPage = async () => {
 export default SsgPage;
 ```
 
-または`'auto'`を宣言する。
+または `'auto'` を宣言する。
 
 ```jsx
 export const dynamic = "auto";
@@ -205,8 +205,8 @@ Route (app)                              Size     First Load JS
 
 以下の時にISRモードになる。
 
-- `fetch`関数の第二引数に、`{ next: { revalidate: <任意の値> } }`を指定している
-- `useEffect`、`useState`、`onClick`などのブラウザ依存の機能を使用していない
+- `fetch` 関数の第二引数に、`{ next: { revalidate: <任意の値> } }` を指定している
+- `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
 
 ```jsx
 import React from "react";
@@ -295,9 +295,9 @@ Route (app)                              Size     First Load JS
 
 #### ▼ APIルートモード
 
-`app/api/foo`ディレクトリに`route.ts`ファイルをおくと、`app/api/`がエンドポイントのAPIルートモードになる。
+`app/api/foo` ディレクトリに `route.ts` ファイルをおくと、`app/api/` がエンドポイントのAPIルートモードになる。
 
-APIルートモードとほかのモード（CSR、SSR、SSG）はディレクトリを分けて共存させられるため、一つのアプリケーションでフロントエンドアプリケーションとBFFを兼ねることができる。
+APIルートモードとほかのモード（CSR、SSR、SSG）はディレクトリを分けて共存させられるため、1つのアプリケーションでフロントエンドアプリケーションとBFFを兼ねることができる。
 
 ```typescript
 // app/api/foo/route.tsファイル
@@ -314,61 +314,61 @@ export default (_: NextApiRequest, res: NextApiResponse) => {
 
 ### 言語の実行環境
 
-- `export`コマンドで出力する
+- `export` コマンドで出力する
 - コンテナの環境変数として出力する
 
 <br>
 
 ### プレフィクス
 
-| モード                                   | 出力タイミング             | `NEXT_PUBLIC_****` |      `****` (`NEXT_PUBLIC`なし)      |
+| モード                                   | 出力タイミング             | `NEXT_PUBLIC_****` |      `****` (`NEXT_PUBLIC` なし)      |
 | ---------------------------------------- | -------------------------- | :----------------: | :----------------------------------: |
 | SSRモード                                | サーバーへのリクエストごと |         ✅         |                  ✅                  |
 | SSGモード                                | サーバーのビルド時         |         ✅         |                  ✅                  |
 | CSRモード                                | ブラウザ上                 |         ✅         |                  ❌                  |
-| APIルートモード (厳密にはモードではない) | サーバーへのリクエストごと |         ✅         | ✅ (`api`ディレクトリ配下で読み込む) |
+| APIルートモード (厳密にはモードではない) | サーバーへのリクエストごと |         ✅         | ✅ (`api` ディレクトリ配下で読み込む) |
 
 <br>
 
-### `.env`ファイル
+### `.env` ファイル
 
 #### ▼ 仕組み
 
-`.env`ファイルを自動的に読み込み、また名前に応じて処理が変わる。
+`.env` ファイルを自動的に読み込み、また名前に応じて処理が変わる。
 
 dotenvパッケージは不要である。
 
-#### ▼ `.env`ファイル
+#### ▼ `.env` ファイル
 
-全ての`yarn`コマンドで自動的に読み込まれる。
+全ての `yarn` コマンドで自動的に読み込まれる。
 
-#### ▼ `.env.local`ファイル
+#### ▼ `.env.local` ファイル
 
-全ての`yarn`コマンドで自動的に読み込まれる。
-
-> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
-
-#### ▼ `.env.development`ファイル
-
-`yarn dev`コマンドで自動的に読み込まれる。
+全ての `yarn` コマンドで自動的に読み込まれる。
 
 > - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
 
-#### ▼ `.env.development.local`ファイル
+#### ▼ `.env.development` ファイル
 
-`yarn dev`コマンドで自動的に読み込まれる。
-
-> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
-
-#### ▼ `.env.production`ファイル
-
-`yarn start`コマンドと`next build`コマンドで自動的に読み込まれる。
+`yarn dev` コマンドで自動的に読み込まれる。
 
 > - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
 
-#### ▼ `.env.production.local`ファイル
+#### ▼ `.env.development.local` ファイル
 
-`yarn start`コマンドと`next build`コマンドで自動的に読み込まれる。
+`yarn dev` コマンドで自動的に読み込まれる。
+
+> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+#### ▼ `.env.production` ファイル
+
+`yarn start` コマンドと `next build` コマンドで自動的に読み込まれる。
+
+> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+
+#### ▼ `.env.production.local` ファイル
+
+`yarn start` コマンドと `next build` コマンドで自動的に読み込まれる。
 
 > - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
 

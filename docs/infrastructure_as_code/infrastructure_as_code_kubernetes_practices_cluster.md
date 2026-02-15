@@ -35,11 +35,11 @@ GitOpsを採用できないため、CIOpsになる。
 
 アップグレード時、新旧バージョンのコントロールプレーンNodeが並行的に稼働する。
 
-基本的にはいずれのコントロールプレーンNodeも、並行的に稼働するコンポーネントのバージョンを前方/後方の `1`個のマイナーバージョン以内に収める必要がある。
+基本的にはいずれのコントロールプレーンNodeも、並行的に稼働するコンポーネントのバージョンを前方/後方の `1` 個のマイナーバージョン以内に収める必要がある。
 
-そのため、Kubernetesのアップグレードもこれに合わせて、後方の `1`個のマイナーバージョンにアップグレードしていくことになる。
+そのため、Kubernetesのアップグレードもこれに合わせて、後方の `1` 個のマイナーバージョンにアップグレードしていくことになる。
 
-マイナーバージョンを `2`個以上跨いだアップグレードは非推奨である。
+マイナーバージョンを `2` 個以上跨いだアップグレードは非推奨である。
 
 > - https://kubernetes.io/releases/version-skew-policy/
 
@@ -81,11 +81,11 @@ GitOpsを採用できないため、CIOpsになる。
 
 #### ▼ アップグレード後は、PodだけでなくWorkloadのコンディションとステータスを確認する
 
-動作確認として、`Ready`コンディションと `Running`ステータスを `kubectl get pod`で確認する。
+動作確認として、`Ready` コンディションと `Running` ステータスを `kubectl get pod` で確認する。
 
-また加えて、Podの作成が始まらないと、`kubectl get pod`コマンドにPod自体が表示されない。
+また加えて、Podの作成が始まらないと、`kubectl get pod` コマンドにPod自体が表示されない。
 
-そのため、`kubectl get deployment`で、Podの管理リソース (例：Deployment) の全てのPodが `Ready`コンディションかどうかを確認しておく。
+そのため、`kubectl get deployment` で、Podの管理リソース (例：Deployment) の全てのPodが `Ready` コンディションかどうかを確認しておく。
 
 #### ▼ 自動アップグレードを採用できるのであれば採用する
 
@@ -134,7 +134,7 @@ GitOpsを採用できないため、CIOpsになる。
 | --------------------------------------- | -------- | ------------ | ------------ | ------------------------------------------------------------------- |
 | インプレース方式                        | より短い | より簡単     | より長い     | ダウンタイムが許されるなら、労力も時間もかからないのでオススメ。    |
 | ローリング方式 (サージ方式、ライブ方式) | ^        | ^            | v            |                                                                     |
-| ブルー/グリーン方式                     | より長い | より難しい   | なし         | Clusterの作成の労力が、もう `1`個実行環境を作成することに相当する。 |
+| ブルー/グリーン方式                     | より長い | より難しい   | なし         | Clusterの作成の労力が、もう `1` 個実行環境を作成することに相当する。 |
 
 > - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgrademng/
 
@@ -174,7 +174,7 @@ GitOpsを採用できないため、CIOpsになる。
 
 `(2)`
 
-: `kubectl drain`コマンドを実行することにより、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。
+: `kubectl drain` コマンドを実行することにより、旧Nodeグループ内のワーカーNodeでドレイン処理を開始させる。
 
      この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。
 
@@ -244,7 +244,7 @@ ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none> 
 
 新しいClusterを作成することにより、ワーカーNodeをアップグレードする。
 
-いずれ (例：`L7`ロードバランサー) を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。
+いずれ (例：`L7` ロードバランサー) を基点にしてルーティング先を切り替えるかによって、具体的な方法が大きく異なる。
 
 メリットとして、バージョンを1つずつのみでなく飛び越えてアップグレードできる。
 
@@ -277,7 +277,7 @@ ArgoCDをNamespacedスコープで分割している場合、カスタムリソ�
 
 この場合、カスタムリソースへの影響を考えて、CRDの差分がないバージョンまではArgoCDをアップグレードできる。
 
-`kubectl diff`コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。
+`kubectl diff` コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。
 
 ```bash
 $ kubectl diff -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=<アップグレード先のArgoCDのバージョン>"
@@ -291,7 +291,7 @@ aws-loadbalancer-controllerの場合、チャートをアップグレードす�
 
 各サービスのALBへの影響を考えて、CRDの差分がないバージョンまではaws-loadbalancer-controllerをアップグレードできる。
 
-`kubectl diff`コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。
+`kubectl diff` コマンドで、現在と新CRDの間に差分があるかどうかを確認できる。
 
 ```bash
 $ kubectl diff -k "https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=<アップグレード先のaws-loadbalancer-controllerのバージョン>"

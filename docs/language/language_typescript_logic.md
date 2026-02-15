@@ -245,7 +245,7 @@ greet(user);
 
 ### 返却値の型
 
-TypeScriptでは、 `return`の型のみを指定すれば良い。
+TypeScriptでは、 `return` の型のみを指定すれば良い。
 
 ```typescript
 // Error型は返却値の型に指定しなくても良い
@@ -321,19 +321,19 @@ foo();
 
 ### エラーハンドリングとは
 
-Typescriptでは`throw`は、Errorオブジェクトだけでなく、どんな型でも返却できる。
+Typescriptでは `throw` は、Errorオブジェクトだけでなく、どんな型でも返却できる。
 
 ちなみに、よくある型はErrorオブジェクト型、object型、string型である。
 
-これを`catch`する場合、さまざまな型を考慮する必要がある。
+これを `catch` する場合、さまざまな型を考慮する必要がある。
 
 <br>
 
-### まずは緩い型で`catch`する
+### まずは緩い型で `catch` する
 
 #### ▼ unknown
 
-`unknown`を使用した場合、それ以降の処理では型を無視して処理する。
+`unknown` を使用した場合、それ以降の処理では型を無視して処理する。
 
 ```typescript
 function foo(): string | unknown {
@@ -358,7 +358,7 @@ function foo(): string | unknown {
 
 #### ▼ any
 
-`any`を使用した場合、それ以降の処理では型を無視して処理する。
+`any` を使用した場合、それ以降の処理では型を無視して処理する。
 
 ```typescript
 function foo(): string | any {
@@ -383,11 +383,11 @@ function foo(): string | any {
 
 <br>
 
-### `catch`した型に応じた処理
+### `catch` した型に応じた処理
 
-#### ▼ `catch`した型に応じた処理とは
+#### ▼ `catch` した型に応じた処理とは
 
-TypeScriptの`try-catch`で捕捉したエラーの型に応じて処理を実行し分ける場合、`catch`ブロックを複数書くのではなく、`if`文を使用する必要がある。
+TypeScriptの `try-catch` で捕捉したエラーの型に応じて処理を実行し分ける場合、`catch` ブロックを複数書くのではなく、`if` 文を使用する必要がある。
 
 ```typescript
 import axios, {AxiosError} from "axios";
@@ -719,7 +719,7 @@ async function getUserNames(
 
 線形探索とは、配列などを先頭から順に走査し、特定の要素を抽出する処理である。
 
-ループ内の線形探索を実行すると処理量が多くなるため、`Set`関数や`Map`関数で事前準備しておく。
+ループ内の線形探索を実行すると処理量が多くなるため、`Set` 関数や `Map` 関数で事前準備しておく。
 
 #### ▼ 悪い例
 

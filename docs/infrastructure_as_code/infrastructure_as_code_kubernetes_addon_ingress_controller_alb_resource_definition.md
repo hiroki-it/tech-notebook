@@ -13,15 +13,15 @@ description: リソース定義＠AWS Load Balancer Controllerの知見を記録
 
 <br>
 
-## 01. Ingressの`.metadata.annotations`キー
+## 01. Ingressの `.metadata.annotations` キー
 
-### Ingressの`.metadata.annotations`キーとは
+### Ingressの `.metadata.annotations` キーとは
 
 特定のNginxのルーティングルールを決める。
 
-Ingressで`alb`のIngressClassを指定する必要がある。
+Ingressで `alb` のIngressClassを指定する必要がある。
 
-AWS Load Balancer Controllerは、Ingressの`.metadata.annotations`キーと`.spec.rules`キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
+AWS Load Balancer Controllerは、Ingressの `.metadata.annotations` キーと `.spec.rules` キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
 
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
@@ -29,9 +29,9 @@ AWS Load Balancer Controllerは、Ingressの`.metadata.annotations`キーと`.sp
 
 <br>
 
-### `alb.ingress.kubernetes.io/certificate-arn`キー
+### `alb.ingress.kubernetes.io/certificate-arn` キー
 
-#### ▼ `alb.ingress.kubernetes.io/certificate-arn`キーとは
+#### ▼ `alb.ingress.kubernetes.io/certificate-arn` キーとは
 
 AWS ALBでHTTPSプロトコルを受け付ける場合、事前に作成したAWS Certificate Managerのサーバー証明書のARNを設定する。
 
@@ -53,19 +53,19 @@ metadata:
 
 AWS Certificate Managerのサーバー証明書のARNを指定せずとも、オートディスカバリーを使用して、AWS Certificate Managerのサーバー証明書を紐づけられる。
 
-aws-load-balancer-controllerは、Ingressの`.spec.tls`キーや`.spec.rules[*].host`キーに基づいて、適切なAWS Certificate Managerのサーバー証明書をAWS ALBに自動的に紐づける。
+aws-load-balancer-controllerは、Ingressの `.spec.tls` キーや `.spec.rules[*].host` キーに基づいて、適切なAWS Certificate Managerのサーバー証明書をAWS ALBに自動的に紐づける。
 
-例えばIngressで`.spec.rules[*].hosts`キーに`foo.example.com`を設定していた場合、aws-load-balancer-controllerは`*.example.com`で認証されたサーバー証明書をAWS Certificate Managerから探す。
+例えばIngressで `.spec.rules[*].hosts` キーに `foo.example.com` を設定していた場合、aws-load-balancer-controllerは `*.example.com` で認証されたサーバー証明書をAWS Certificate Managerから探す。
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/cert_discovery/#discover-via-ingress-rule-host
 
 <br>
 
-### `alb.ingress.kubernetes.io/healthcheck-path`キー
+### `alb.ingress.kubernetes.io/healthcheck-path` キー
 
 ヘルスチェック対象としてPodのコンテナのパスを設定する。
 
-`alb.ingress.kubernetes.io/target-type`キー値が`instance`でも`ip`でも、ヘルスチェック対象はPodである。
+`alb.ingress.kubernetes.io/target-type` キー値が `instance` でも `ip` でも、ヘルスチェック対象はPodである。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -94,11 +94,11 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/healthcheck-port`キー
+### `alb.ingress.kubernetes.io/healthcheck-port` キー
 
 ヘルスチェック対象として、Podのコンテナのポート番号を設定する。
 
-`alb.ingress.kubernetes.io/target-type`キー値が`instance`でも`ip`でも、ヘルスチェック対象はPodである。
+`alb.ingress.kubernetes.io/target-type` キー値が `instance` でも `ip` でも、ヘルスチェック対象はPodである。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -114,11 +114,11 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/inbound-cidrs`キー
+### `alb.ingress.kubernetes.io/inbound-cidrs` キー
 
 インバウンド通信で許可するCIDRを設定する。
 
-`alb.ingress.kubernetes.io/wafv2-acl-arn`キーを使用して、同じルールを持ったAWS WAFを紐づけても良い。
+`alb.ingress.kubernetes.io/wafv2-acl-arn` キーを使用して、同じルールを持ったAWS WAFを紐づけても良い。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -131,7 +131,7 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/listen-ports`キー
+### `alb.ingress.kubernetes.io/listen-ports` キー
 
 AWS ALBでインバウンド通信を受け付けるポート番号を設定する。
 
@@ -146,7 +146,7 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/load-balancer-attributes`キー
+### `alb.ingress.kubernetes.io/load-balancer-attributes` キー
 
 AWS ALBの属性を設定する。
 
@@ -161,11 +161,11 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/group.name`キー
+### `alb.ingress.kubernetes.io/group.name` キー
 
 Ingressのグループ名を設定する。
 
-同じ`alb.ingress.kubernetes.io/group.name`キーのIngressを作成した場合、新しくALBを作成するのではなく、既存のALBにインバウンドルールのみを追加する。
+同じ `alb.ingress.kubernetes.io/group.name` キーのIngressを作成した場合、新しくALBを作成するのではなく、既存のALBにインバウンドルールのみを追加する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -180,7 +180,7 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/scheme`キー
+### `alb.ingress.kubernetes.io/scheme` キー
 
 AWS ALBのスキームを設定する。
 
@@ -195,7 +195,7 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/success-codes`キー
+### `alb.ingress.kubernetes.io/success-codes` キー
 
 成功した場合のステータスコードを設定する。
 
@@ -210,7 +210,7 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/subnets`キー
+### `alb.ingress.kubernetes.io/subnets` キー
 
 AWS ALBのルーティング先のサブネットを設定する。
 
@@ -225,13 +225,13 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/target-type`キー
+### `alb.ingress.kubernetes.io/target-type` キー
 
-#### ▼ `alb.ingress.kubernetes.io/target-type`キーとは
+#### ▼ `alb.ingress.kubernetes.io/target-type` キーとは
 
 ルーティング先のターゲットタイプを設定する。
 
-#### ▼ `instance`の場合
+#### ▼ `instance` の場合
 
 instanceターゲットタイプを設定する。
 
@@ -250,13 +250,13 @@ metadata:
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing
 > - https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
 
-#### ▼ `ip`の場合
+#### ▼ `ip` の場合
 
 IPターゲットタイプを設定する。
 
 IPターゲットタイプの場合、宛先Podの送信元のServiceはClusterIP Serviceとする。
 
-AWS Fargateの場合は、`ip`を設定する必要がある。
+AWS Fargateの場合は、`ip` を設定する必要がある。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -274,7 +274,7 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/waf-acl-id`キー
+### `alb.ingress.kubernetes.io/waf-acl-id` キー
 
 LBに紐付けるAWS WAF v1のIDを設定する。ALBと同じリージョンで、AWS WAF v1を作成する必要がある。
 
@@ -291,7 +291,7 @@ metadata:
 
 <br>
 
-### `alb.ingress.kubernetes.io/wafv2-acl-arn`キー
+### `alb.ingress.kubernetes.io/wafv2-acl-arn` キー
 
 LBに紐付けるAWS WAF v2のARNを設定する。ALBと同じリージョンで、AWS WAF v2を作成する必要がある。
 
@@ -308,9 +308,9 @@ metadata:
 
 <br>
 
-## 02. Ingressの`.spec.rules`キー
+## 02. Ingressの `.spec.rules` キー
 
-AWS ALBのリスナールールを定義するために、Ingressの`.spec.rules`キーを設定する。
+AWS ALBのリスナールールを定義するために、Ingressの `.spec.rules` キーを設定する。
 
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 

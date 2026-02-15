@@ -15,9 +15,9 @@ description: 設定ファイル＠Kindの知見を記録しています。
 
 ## `kind-config.yaml`
 
-### `kind-config.yaml`ファイルとは
+### `kind-config.yaml` ファイルとは
 
-`kind`コマンドのオプションを設定する。
+`kind` コマンドのオプションを設定する。
 
 <br>
 
@@ -47,7 +47,7 @@ nodes:
 
 #### ▼ kubeadmConfigPatches
 
-`kubeadm init`コマンドの実行時に、コントロールプレーンにオプションを設定する。
+`kubeadm init` コマンドの実行時に、コントロールプレーンにオプションを設定する。
 
 ```yaml
 apiVersion: kind.x-k8s.io/v1alpha4

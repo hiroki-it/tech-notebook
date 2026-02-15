@@ -33,7 +33,7 @@ configValidationMode: warn
 
 ### customとは
 
-スコープが`serverless.yml`ファイル内のみの変数を設定する。
+スコープが `serverless.yml` ファイル内のみの変数を設定する。
 
 **＊実装例＊**
 
@@ -111,7 +111,7 @@ Lambda関数に紐付けて作成するAWS EventBridgeを設定する。
 
 **＊実装例＊**
 
-イベントパターンとして、`json`ファイルを読み込む
+イベントパターンとして、`json` ファイルを読み込む
 
 ```yaml
 functions:
@@ -209,7 +209,7 @@ Lambda関数に紐付けるIAMロールを設定する。
 
 **＊実装例＊**
 
-別に`resources.Resources`を使用して作成したIAMロールを設定する。
+別に `resources.Resources` を使用して作成したIAMロールを設定する。
 
 ```yaml
 functions:
@@ -388,7 +388,7 @@ IAMロールを作成する。
 
 **＊実装例＊**
 
-IAMロールに紐付けるIAMポリシーは、`json`ファイルで切り分けておいた方が良い。
+IAMロールに紐付けるIAMポリシーは、`json` ファイルで切り分けておいたほうが良い。
 
 ```yaml
 resources:

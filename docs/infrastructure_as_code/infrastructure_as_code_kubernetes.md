@@ -29,7 +29,7 @@ Kubernetesは、コントロールコンポーネント、Nodeコンポーネン
 
 ### デフォルトのルート認証局
 
-Kubernetesのルート認証局のCA証明書は、`kube-root-ca.crt`というConfigMapで定義されている。
+Kubernetesのルート認証局のCA証明書は、`kube-root-ca.crt` というConfigMapで定義されている。
 
 ```yaml
 apiVersion: v1
@@ -60,11 +60,11 @@ data:
 
 | 送信元                                                                                  | 宛先           | 種類               | Node上の証明書のマウント先 (kubeadmの場合)                                                   | 説明                                                                                                                                                                                                                                                                                                                                                                   |
 | --------------------------------------------------------------------------------------- | -------------- | ------------------ | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| kube-apiserver                                                                          | kubelet        | クライアント証明書 | `/etc/kubernetes/kubelet.conf `ファイル (証明書の中身は`/var/lib/kubelet/pki/*.pem`ファイル) | kube-apiserverが、kubeletにHTTPSリクエストを送信するための証明書。                                                                                                                                                                                                                                                                                                     |
+| kube-apiserver                                                                          | kubelet        | クライアント証明書 | `/etc/kubernetes/kubelet.conf ` ファイル (証明書の中身は `/var/lib/kubelet/pki/*.pem` ファイル) | kube-apiserverが、kubeletにHTTPSリクエストを送信するための証明書。                                                                                                                                                                                                                                                                                                     |
 | kube-apiserver                                                                          | etcd           | クライアント証明書 | 記入中...                                                                                    | kube-apiserverが、etcdにHTTPSリクエストを送信するための証明書。                                                                                                                                                                                                                                                                                                        |
-| kube-apiserverクライアント (`kubectl`クライアント、Kubernetesリソース) のローカルマシン | kube-apiserver | クライアント証明書 | `/etc/kubernetes/admin.conf`ファイル                                                         | クライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。証明書の値は、`kubeconfig`ファイルの`client-certificate-data`キーに設定されている。証明書に不一致があると、クライアントからのリクエストで、『`x509: certificate has expired or is not yet valid`』や『`error: You must be logged in to the server (Unauthorized)`』というエラーになってしまう。 |
-| kube-controller-manager                                                                 | kube-apiserver | クライアント証明書 | `/etc/kubernetes/controller-manager.conf `ファイル                                           | kube-controller-managerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、`kubeconfig`ファイルも必要になる。                                                                                                                                                                                                                                     |
-| kube-scheduler                                                                          | kube-apiserver | クライアント証明書 | `/etc/kubernetes/scheduler.conf `ファイル                                                    | kube-schedulerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、`kubeconfig`ファイルも必要になる。                                                                                                                                                                                                                                              |
+| kube-apiserverクライアント (`kubectl` クライアント、Kubernetesリソース) のローカルマシン | kube-apiserver | クライアント証明書 | `/etc/kubernetes/admin.conf` ファイル                                                         | クライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。証明書の値は、`kubeconfig` ファイルの `client-certificate-data` キーに設定されている。証明書に不一致があると、クライアントからのリクエストで、『`x509: certificate has expired or is not yet valid`』や『`error: You must be logged in to the server (Unauthorized)`』というエラーになってしまう。 |
+| kube-controller-manager                                                                 | kube-apiserver | クライアント証明書 | `/etc/kubernetes/controller-manager.conf ` ファイル                                           | kube-controller-managerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、`kubeconfig` ファイルも必要になる。                                                                                                                                                                                                                                     |
+| kube-scheduler                                                                          | kube-apiserver | クライアント証明書 | `/etc/kubernetes/scheduler.conf ` ファイル                                                    | kube-schedulerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、`kubeconfig` ファイルも必要になる。                                                                                                                                                                                                                                              |
 | その他のコンポーネント                                                                  | kube-apiserver | サーバー証明書     | 記入中...                                                                                    | kube-apiserverが各コンポーネントからHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                            |
 | kube-apiserver                                                                          | kubelet        | サーバー証明書     | 記入中                                                                                       | kubeletが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                                 |
 | kube-apiserver                                                                          | front-proxy    | サーバー証明書     | 記入中...                                                                                    | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                             |
@@ -78,11 +78,11 @@ data:
 
 #### ▼ 期限の確認方法
 
-各サーバー証明書の有効期限は`1`年間である。
+各サーバー証明書の有効期限は `1` 年間である。
 
-証明書は、KubernetesリソースのConfigの`client-certificate-data`キー配下に設定されている。
+証明書は、KubernetesリソースのConfigの `client-certificate-data` キー配下に設定されている。
 
-`openssl`コマンドの標準入力にこれを渡すと、証明書の有効期限を確認できる。
+`openssl` コマンドの標準入力にこれを渡すと、証明書の有効期限を確認できる。
 
 Kubernetesでは非常に多くの証明書があるため、期限切れの証明書を特定することは大変である。
 
@@ -101,7 +101,7 @@ notAfter=Jan 10 09:31:55 2022 GMT  # 終了日
 
 Configによっては、証明書のパスが設定されている場合がある。
 
-その場合は、`openssl`コマンドで直接的にこれを指定する。
+その場合は、`openssl` コマンドで直接的にこれを指定する。
 
 ```bash
 $ openssl x509 -noout -dates -in <証明書へのパス>
@@ -111,7 +111,7 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 #### ▼ 更新方法
 
-`kubelet`プロセスの実行時に、`--rotate-certificates`オプションを有効化すると、証明書の更新処理を自動化できる。
+`kubelet` プロセスの実行時に、`--rotate-certificates` オプションを有効化すると、証明書の更新処理を自動化できる。
 
 > - https://kubernetes.io/docs/tasks/tls/certificate-rotation/#enabling-client-certificate-rotation
 
@@ -264,7 +264,7 @@ Namespaceに親子関係を定義し、各Namespaceをテナントとする。
 
 ただそもそも、Namespaceだけでは実行間環境間の分割が足りず、安全性が低い。
 
-そのため、Cluster自体を分割した方がよい。
+そのため、Cluster自体を分割したほうがよい。
 
 > - https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html
 > - https://aptakube.com/blog/namespaces-best-practices
@@ -380,7 +380,7 @@ spec:
       kind: Group
 ```
 
-`capsule.clastix.io/tenant`キーを使用して、fooチームが操作するNamespaceをfooテナントに所属させる。
+`capsule.clastix.io/tenant` キーを使用して、fooチームが操作するNamespaceをfooテナントに所属させる。
 
 ```yaml
 kind: Namespace

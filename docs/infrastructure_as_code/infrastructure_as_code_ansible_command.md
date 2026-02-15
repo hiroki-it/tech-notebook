@@ -27,7 +27,7 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 Ansibleのバージョンを確認する。
 
-`ansible version`コマンドではなく、こちらの使用する。
+`ansible version` コマンドではなく、こちらの使用する。
 
 ```bash
 $ ansible-community --version
@@ -87,7 +87,7 @@ inventoryファイルを指定する。
 
 これにより、プロビジョニングの実行先の管理対象ノードを指定できる。
 
-基本的には、ディレクトリを指定した方が良い。
+基本的には、ディレクトリを指定したほうが良い。
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ>
@@ -141,7 +141,7 @@ $ ansible-vault decrypt parameters.yml
 
 ### encrypt
 
-指定した平文ファイルを暗号化し、元の平文ファイルを上書きする。暗号化済みのファイルを使用する場合、`ansible-playbook`コマンドで`--ask-vault-pass`オプションを有効化する必要がある。
+指定した平文ファイルを暗号化し、元の平文ファイルを上書きする。暗号化済みのファイルを使用する場合、`ansible-playbook` コマンドで `--ask-vault-pass` オプションを有効化する必要がある。
 
 ```bash
 $ ansible-vault encrypt parameters.yml
@@ -169,7 +169,7 @@ $ANSIBLE_VAULT;1.1;AES256
 
 #### ▼ --listとは
 
-`inventory`ファイルを指定し、`json`形式に変換する。
+`inventory` ファイルを指定し、`json` 形式に変換する。
 
 ```bash
 $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list
@@ -185,7 +185,7 @@ $ ansible-inventory -i ./inventories/inventory --list
 
 #### ▼ -y
 
-`inventory`ファイルを指定し、`yml`形式に変換する。
+`inventory` ファイルを指定し、`yml` 形式に変換する。
 
 ```bash
 $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y

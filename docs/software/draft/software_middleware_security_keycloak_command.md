@@ -59,9 +59,9 @@ $ kc.sh start --cache-stack kubernetes
 
 #### ▼ --import-realm
 
-起動時に`/opt/keycloak/data/import`ディレクトリ内にあるrealm定義ファイル (`<任意の名前>.json`ファイル) をインポートする。
+起動時に `/opt/keycloak/data/import` ディレクトリ内にあるrealm定義ファイル (`<任意の名前>.json` ファイル) をインポートする。
 
-コンテナであれば、`/opt/keycloak/data/import`ディレクトリ内にrealm定義ファイルをマウントしておく。
+コンテナであれば、`/opt/keycloak/data/import` ディレクトリ内にrealm定義ファイルをマウントしておく。
 
 ```bash
 $ kc.sh start --import-realm

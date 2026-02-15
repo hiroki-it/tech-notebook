@@ -23,7 +23,7 @@ Istioの各コンポーネントの機密でない変数やファイルを管理
 
 ### istio-ca-root-certとは
 
-Istiodコントロールプレーン (`discovery`コンテナ) による中間認証局を使用する場合、`istio-ca-root-cert`を自動的に作成する。
+Istiodコントロールプレーン (`discovery` コンテナ) による中間認証局を使用する場合、`istio-ca-root-cert` を自動的に作成する。
 
 ルート認証局から発行されたCA証明書 (ルート証明書) をもち、各マイクロサービスのPodにマウントされる。
 
@@ -101,7 +101,7 @@ data:
 
 ### istio-<リビジョン>とは
 
-Istiodコントロールプレーン (`discovery`コンテナ) のため、全てのistio-proxyにグローバルに設定する変数を管理する。
+Istiodコントロールプレーン (`discovery` コンテナ) のため、全てのistio-proxyにグローバルに設定する変数を管理する。
 
 ```yaml
 apiVersion: v1
@@ -116,7 +116,7 @@ data:
     ...
 ```
 
-代わりに、IstioOperatorの`.spec.meshConfig`キーで定義することもできるが、これは非推奨である。
+代わりに、IstioOperatorの `.spec.meshConfig` キーで定義することもできるが、これは非推奨である。
 
 ```yaml
 # これは非推奨
@@ -218,10 +218,10 @@ data:
 
 #### ▼ discoverySelectorsとは
 
-`ENHANCED_RESOURCE_SCOPING`を有効化し、IstiodコントロールプレーンがwatchするNamespaceを限定する。
+`ENHANCED_RESOURCE_SCOPING` を有効化し、IstiodコントロールプレーンがwatchするNamespaceを限定する。
 Istiodは全てのNamespaceをwatchするが、特定のNamespaceのみをwatchするようにできる。
 
-これは、サイドカーをインジェクションする`istio.io/rev`キーよりも強い影響力がある。
+これは、サイドカーをインジェクションする `istio.io/rev` キーよりも強い影響力がある。
 
 例えば、サイドカーをインジェクションしているNamespaceのみをwatchすることにより、Istiodコントロールプレーンの負荷を下げられる。
 
@@ -243,7 +243,7 @@ data:
 
 #### ▼ REGISTRY_ONLY
 
-サービスメッシュ外へのリクエストの宛先を`BlackHoleCluster` (`502 Bad Gateway`で通信負荷) として扱う。
+サービスメッシュ外へのリクエストの宛先を `BlackHoleCluster` (`502 Bad Gateway` で通信負荷) として扱う。
 
 また、ServiceEntryとして登録した宛先には固有の名前がつく。
 
@@ -272,7 +272,7 @@ data:
 
 リトライポリシーのデフォルト値を設定する。
 
-ただし、`.spec.http[*].retries.perTryTimeout`キーは各VirtualServiceで設定する必要がある。
+ただし、`.spec.http[*].retries.perTryTimeout` キーは各VirtualServiceで設定する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -298,7 +298,7 @@ istio-proxyのアウトバウンド通信時リトライ条件は以下である
 - リトライすると解決する可能性がある
 - リクエストを繰り返しても状態が変わらずに冪等性がある (二重処理にならない) がある
 
-`503`と`reset`によるリトライは冪等性に問題があり、設定に注意が必要である。
+`503` と `reset` によるリトライは冪等性に問題があり、設定に注意が必要である。
 
 ![istio_inbound-retry_reset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_inbound-retry_reset.png)
 
@@ -306,7 +306,7 @@ istio-proxyのアウトバウンド通信時リトライ条件は以下である
 | ------------------------------------------------------------------------ | :--------------------------------: | :------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `connect-failure`                                                        |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、接続タイムアウト (Connection timeout) が起こった場合に、リトライを実行する。                                                 |
 | `gateway-error`                                                          |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、Gateway系ステータスコード (`502`、`503`、`504`) が返信された場合に、リトライを実行する。冪性がない可能性がある。             |
-| `retriable-status-codes` (`5xx`のように任意のステータスコードを設定する) |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、指定したHTTPステータスであった場合に、リトライを実行する。冪等性がない可能性がある。                                         |
+| `retriable-status-codes` (`5xx` のように任意のステータスコードを設定する) |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、指定したHTTPステータスであった場合に、リトライを実行する。冪等性がない可能性がある。                                         |
 | `reset`                                                                  |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、接続切断／接続リセット／読み取りタイムアウト (Read timeout) が起こった場合に、リトライを実行する。冪等性がない可能性がある。 |
 
 > - https://cloud.google.com/storage/docs/retry-strategy?hl=ja#retryable
@@ -316,10 +316,10 @@ istio-proxyのアウトバウンド通信時リトライ条件は以下である
 
 | HTTP/2のステータスコード | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                                                                                                      |
 | ------------------------ | :--------------------------------: | :------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cancelled`              |                 ⭕️                 |                | **マイクロサービスからのアウトバウンド**通信時、gRPCステータスコードが`Cancelled`であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。 |
-| `deadline-exceeded`      |                 ⭕️                 |       ✅       | マイクロサービスからアウトバウンド通信時、gRPCステータスコードが`DeadlineExceeded`であった場合に、リトライを実行する。                                                                            |
+| `cancelled`              |                 ⭕️                 |                | **マイクロサービスからのアウトバウンド**通信時、gRPCステータスコードが `Cancelled` であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。 |
+| `deadline-exceeded`      |                 ⭕️                 |       ✅       | マイクロサービスからアウトバウンド通信時、gRPCステータスコードが `DeadlineExceeded` であった場合に、リトライを実行する。                                                                            |
 | `refused-stream`         |                 ⭕️                 |       ✅       | 同時接続上限数を超過するストリームをマイクロサービスが作成しようとした場合に、リトライを実行する。                                                                                                |
-| `resource-exhausted`     |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、gRPCステータスコードが`ResourceExhausted`であった場合に、リトライを実行する。                                                                         |
+| `resource-exhausted`     |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、gRPCステータスコードが `ResourceExhausted` であった場合に、リトライを実行する。                                                                         |
 | `unavailable`            |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった場合に、リトライを実行する。                                                                |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
@@ -329,7 +329,7 @@ istio-proxyのアウトバウンド通信時リトライ条件は以下である
 
 istio-proxyのインバウンド通信時のリトライ条件は以下である。
 
-執筆時点 (2025/02/26) では、`ENABLE_INBOUND_RETRY_POLICY`変数を`true` (デフォルト値) にすると使用できる。
+執筆時点 (2025/02/26) では、`ENABLE_INBOUND_RETRY_POLICY` 変数を `true` (デフォルト値) にすると使用できる。
 
 | HTTP/1.1のステータスコード | マイクロサービスに通信が届いている | 冪等性がある | 理由                                                                                                 |
 | -------------------------- | :--------------------------------: | :----------: | ---------------------------------------------------------------------------------------------------- |
@@ -341,11 +341,11 @@ istio-proxyのインバウンド通信時のリトライ条件は以下である
 
 #### ▼ defaultProvidersとは
 
-`extensionProviders`キーで定義したもののうち、デフォルトで使用するプロバイダーを設定する。
+`extensionProviders` キーで定義したもののうち、デフォルトで使用するプロバイダーを設定する。
 
 Telemetryで自動的に選択される、
 
-Envoyを使用してアクセスログを収集する場合、`.mesh.defaultProviders.accessLogging`キーには何も設定しなくてよい。
+Envoyを使用してアクセスログを収集する場合、`.mesh.defaultProviders.accessLogging` キーには何も設定しなくてよい。
 
 また、Istioがデフォルトで用意している分散トレースツールを使用する場合も同様に不要である。
 
@@ -376,7 +376,7 @@ data:
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-DefaultProviders
 
-Envoyのアクセスログの場合、代わりに`.mesh.accessLogEncoding`キーと`.mesh.accessLogFile`キーを設定する。
+Envoyのアクセスログの場合、代わりに `.mesh.accessLogEncoding` キーと `.mesh.accessLogFile` キーを設定する。
 
 ```yaml
 apiVersion: v1
@@ -390,7 +390,7 @@ data:
     accessLogFile: /dev/stdout
 ```
 
-分散トレースの場合、代わりに`.mesh.enableTracing`キーと`.mesh.extensionProviders`キーを設定する。
+分散トレースの場合、代わりに `.mesh.enableTracing` キーと `.mesh.extensionProviders` キーを設定する。
 
 ```yaml
 apiVersion: v1
@@ -476,9 +476,9 @@ data:
 
 #### ▼ ingressSelectorとは
 
-全てのistio-proxyに関して、使用するGatewayの`.metadata.labels.istio`キーの値を設定する。
+全てのistio-proxyに関して、使用するGatewayの `.metadata.labels.istio` キーの値を設定する。
 
-デフォルトでは、Ingressとして`ingressgateway`が設定される。
+デフォルトでは、Ingressとして `ingressgateway` が設定される。
 
 ```yaml
 apiVersion: v1
@@ -497,9 +497,9 @@ data:
 
 #### ▼ ingressServiceとは
 
-全てのistio-proxyに関して、使用するIngress Controllerの`.metadata.labels.istio`キーの値を設定する。
+全てのistio-proxyに関して、使用するIngress Controllerの `.metadata.labels.istio` キーの値を設定する。
 
-デフォルトでは、Ingressとして`ingressgateway`が設定される。
+デフォルトでは、Ingressとして `ingressgateway` が設定される。
 
 ```yaml
 apiVersion: v1
@@ -562,7 +562,7 @@ data:
 
 #### ▼ ALLOW_ANY (デフォルト)
 
-サービスメッシュ外へのリクエストの宛先を`PassthroughCluster`として扱う。
+サービスメッシュ外へのリクエストの宛先を `PassthroughCluster` として扱う。
 
 また、ServiceEntryとして登録した宛先には固有の名前がつく。
 
@@ -584,7 +584,7 @@ data:
 
 #### ▼ ALLOW_ANYの注意点
 
-サービスメッシュ外の "クラスター外" の宛先であれば、`ALLOW_ANY`のため接続可能である (Kiali上は PassthroughClusterという表記) 。
+サービスメッシュ外の "クラスター外" の宛先であれば、`ALLOW_ANY` のため接続可能である (Kiali上は PassthroughClusterという表記) 。
 
 一方で、サービスメッシュ外の "クラスター内" であると、Istioリソースで宛先を登録する必要がある。
 
@@ -622,11 +622,11 @@ data:
 
 Istioの全てのコンポーネントに適用する変数のデフォルト値を設定する。
 
-他にProxyConfig (と思ったが、ProxyConfigのドキュメントに載っていない設定は無理みたい) 、Podの`.metadata.annotations.proxy.istio.io/config`キーでも設定できる。
+他にProxyConfig (と思ったが、ProxyConfigのドキュメントに載っていない設定は無理みたい) 、Podの `.metadata.annotations.proxy.istio.io/config` キーでも設定できる。
 
 ProxyConfigが最優先であり、これらの設定はマージされる。
 
-`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
+`.meshConfig.defaultConfig` キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
 
 3つの箇所で設定できる。
 
@@ -830,9 +830,9 @@ spec:
 > - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
 > - https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters
 
-オプションを有効化すると、istio-proxyの`.spec.containers[*].lifecycle.postStart.exec.command`キーに、`pilot-agent -wait`コマンドが挿入される。
+オプションを有効化すると、istio-proxyの `.spec.containers[*].lifecycle.postStart.exec.command` キーに、`pilot-agent -wait` コマンドが挿入される。
 
-`.spec.containers[*].lifecycle.preStop.exec.command`キーへの自動設定は、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数で対応する。
+`.spec.containers[*].lifecycle.preStop.exec.command` キーへの自動設定は、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数で対応する。
 
 ```yaml
 ...
@@ -862,7 +862,7 @@ istio-proxyのコンテナイメージのタイプを設定する。
 
 これは、ConfigMapではなくProxyConfigでも設定できる。
 
-`distroless`型を選ぶと、istio-proxyにログインできなくなり、より安全なイメージになる。
+`distroless` 型を選ぶと、istio-proxyにログインできなくなり、より安全なイメージになる。
 
 一方で、デバッグしにくくなる。
 
@@ -879,7 +879,7 @@ data:
         imageType: distroless
 ```
 
-`istio-cni`でも、Helmチャートで別に設定すれば、`distroless`型を選べる。
+`istio-cni` でも、Helmチャートで別に設定すれば、`distroless` 型を選べる。
 
 > - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyImage
 > - https://cloud.google.com/service-mesh/docs/enable-optional-features-in-cluster?hl=ja#distroless_proxy_image
@@ -905,11 +905,11 @@ data:
 
 ### proxyHeaders
 
-デフォルト値は`true`である。
+デフォルト値は `true` である。
 
-`x-envoy`ヘッダーを有効化するか否かを設定する。
+`x-envoy` ヘッダーを有効化するか否かを設定する。
 
-例えば、接続プール上限超過によるサーキットブレイカーが起こったことを示す`x-envoy-overloaded`ヘッダーがある。
+例えば、接続プール上限超過によるサーキットブレイカーが起こったことを示す `x-envoy-overloaded` ヘッダーがある。
 
 ```yaml
 apiVersion: v1
@@ -1000,7 +1000,7 @@ spec:
 
 ZipkinとJaegerはトレースコンテキスト仕様が同じであるため、zipkinパッケージをJaegerのクライアントとしても使用できる。
 
-`.mesh.defaultConfig.enableTracing`キーも有効化する必要がある。
+`.mesh.defaultConfig.enableTracing` キーも有効化する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -1018,7 +1018,7 @@ data:
           address: "jaeger-collector.observability:9411"
 ```
 
-ただし、非推奨であるため`extensionProviders`キーを使用した方が良い
+ただし、非推奨であるため `extensionProviders` キーを使用したほうが良い
 
 ```yaml
 apiVersion: v1
@@ -1040,13 +1040,13 @@ data:
 
 ### tracingServiceName
 
-スパンの`service.name`属性の値を設定する。
+スパンの `service.name` 属性の値を設定する。
 
 マイクロサービスがバージョニングされている場合、マイクロサービスの正式名 (canonical-name) でグループ化できる。
 
-デフォルトでは`APP_LABEL_AND_NAMESPACE`であり、`<Namespace>.<appラベル値>`になる。
+デフォルトでは `APP_LABEL_AND_NAMESPACE` であり、`<Namespace>.<appラベル値>` になる。
 
-appラベルがないマイクロサービスのために、canonical名に基づく`CANONICAL_NAME_AND_NAMESPACE`を使用した方が良い。
+appラベルがないマイクロサービスのために、canonical名に基づく `CANONICAL_NAME_AND_NAMESPACE` を使用したほうが良い。
 
 ```yaml
 apiVersion: v1
@@ -1130,7 +1130,7 @@ data:
 
 ### `ENABLE_DEFERRED_CLUSTER_CREATION`
 
-`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
+`pilot-discovery` コマンドでも設定できるため、そちらを参照せよ。
 
 **＊実装例＊**
 
@@ -1153,9 +1153,9 @@ data:
 
 ### `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
 
-デフォルトで`true`である。
+デフォルトで `true` である。
 
-`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
+`pilot-discovery` コマンドでも設定できるため、そちらを参照せよ。
 
 **＊実装例＊**
 
@@ -1179,9 +1179,9 @@ data:
 
 ### `ENABLE_INBOUND_RETRY_POLICY`
 
-デフォルトで`true`である。
+デフォルトで `true` である。
 
-`pilot-discovery`コマンドでも設定できるため、そちらを参照せよ。
+`pilot-discovery` コマンドでも設定できるため、そちらを参照せよ。
 
 **＊実装例＊**
 
@@ -1207,17 +1207,17 @@ data:
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
-デフォルト値は`false`である。
+デフォルト値は `false` である。
 
 istio-proxyへのリクエストが無くなってから、Envoyのプロセスを終了する。
 
-具体的には、`downstream_cx_active`メトリクスの値 (アクティブな接続数) を監視し、`0`になるまでドレイン処理を実行し続ける。
+具体的には、`downstream_cx_active` メトリクスの値 (アクティブな接続数) を監視し、`0` になるまでドレイン処理を実行し続ける。
 
-ドレイン処理前の待機時間は、`MINIMUM_DRAIN_DURATION`で設定する。
+ドレイン処理前の待機時間は、`MINIMUM_DRAIN_DURATION` で設定する。
 
-オプションを有効化すると、istio-proxyの`.spec.containers[*].lifecycle.preStop.exec.command`キーに、`sleep`コマンドが自動で挿入される。
+オプションを有効化すると、istio-proxyの `.spec.containers[*].lifecycle.preStop.exec.command` キーに、`sleep` コマンドが自動で挿入される。
 
-`.spec.containers[*].lifecycle.postStart.exec.command`キーへの自動設定は、`.mesh.defaultConfig.holdApplicationUntilProxyStarts`キーで対応する。
+`.spec.containers[*].lifecycle.postStart.exec.command` キーへの自動設定は、`.mesh.defaultConfig.holdApplicationUntilProxyStarts` キーで対応する。
 
 **＊実装例＊**
 
@@ -1241,7 +1241,7 @@ data:
 
 ### `ISTIO_META_CERT_SIGNER`
 
-デフォルトで`""` (空文字) である。
+デフォルトで `""` (空文字) である。
 
 **＊実装例＊**
 
@@ -1264,13 +1264,13 @@ data:
 
 ### `ISTIO_META_DNS_AUTO_ALLOCATE`
 
-デフォルト値は`false`である。
+デフォルト値は `false` である。
 
 固定IPアドレスが設定されていないServiceEntryに対して、IPアドレスを動的に設定する。
 
-`ISTIO_META_DNS_CAPTURE`を有効にしないと、`ISTIO_META_DNS_AUTO_ALLOCATE`は機能しない。
+`ISTIO_META_DNS_CAPTURE` を有効にしないと、`ISTIO_META_DNS_AUTO_ALLOCATE` は機能しない。
 
-`PILOT_ENABLE_IP_AUTOALLOCATE`と同じであり、Istio 1.25以降で、`PILOT_ENABLE_IP_AUTOALLOCATE`の方が推奨になった。
+`PILOT_ENABLE_IP_AUTOALLOCATE` と同じであり、Istio 1.25以降で、`PILOT_ENABLE_IP_AUTOALLOCATE` の方が推奨になった。
 
 **＊実装例＊**
 
@@ -1309,7 +1309,7 @@ spec:
 
 ### `ISTIO_META_DNS_CAPTURE`
 
-デフォルト値は`false`である。
+デフォルト値は `false` である。
 
 マイクロサービスからのリクエストに、Pod内のistio-proxyやztunnelプロキシをDNSプロキシとして使用できるようになる。
 
@@ -1406,7 +1406,7 @@ Istio Ingress Gateway (厳密に言うとGateway) は、独自プロトコルを
 
 宛先が独自プロトコルリクエストのポート番号だけで宛先 (例：ServiceEntry、外部サーバーなど) を決めてしまう。
 
-同じポート番号で待ち受ける複数のServiceEntryがあると、`.spec.hosts`キーを設定していたとしても、誤った方のServiceEntryを選ぶ可能性がある。
+同じポート番号で待ち受ける複数のServiceEntryがあると、`.spec.hosts` キーを設定していたとしても、誤ったほうのServiceEntryを選ぶ可能性がある。
 
 ```yaml
 apiVersion: v1
@@ -1459,23 +1459,23 @@ spec:
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
-デフォルト値は`5`である (対応する`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`キーと同じ) 。
+デフォルト値は `5` である (対応する `.metadata.annotations.proxy.istio.io/config.terminationDrainDuration` キーと同じ) 。
 
-`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`変数が`true`な場合にのみ設定できる。
+`EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数が `true` な場合にのみ設定できる。
 
-`false`の場合は、代わりに`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`を設定する。
+`false` の場合は、代わりに `.metadata.annotations.proxy.istio.io/config.terminationDrainDuration` を設定する。
 
 istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
 
 この接続のドレイン処理前の待機時間を設定する。
 
-`terminationDrainDuration`との違いとして、`MINIMUM_DRAIN_DURATION`の時間だけ待機した後、ドレイン処理を開始し、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS`によって`downstream_cx_active`メトリクスが0になるまでドレイン処理をし続ける点である。
+`terminationDrainDuration` との違いとして、`MINIMUM_DRAIN_DURATION` の時間だけ待機した後、ドレイン処理を開始し、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS` によって `downstream_cx_active` メトリクスが0になるまでドレイン処理をし続ける点である。
 
-Podの`.metadata.annotations.proxy.istio.io/config.drainDuration`キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。
+Podの `.metadata.annotations.proxy.istio.io/config.drainDuration` キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。
 
 **＊実装例＊**
 
-Envoyプロセスの接続のドレイン処理前に`5`秒間に待機し、`downstream_cx_active`メトリクスが0になるまでドレイン処理を続ける。
+Envoyプロセスの接続のドレイン処理前に `5` 秒間に待機し、`downstream_cx_active` メトリクスが0になるまでドレイン処理を続ける。
 
 ```yaml
 apiVersion: v1
@@ -1497,11 +1497,11 @@ data:
 
 ### `PILOT_ENABLE_IP_AUTOALLOCATE`
 
-デフォルト値は`true`である。
+デフォルト値は `true` である。
 
-`ISTIO_META_DNS_AUTO_ALLOCATE`と同じであり、Istio 1.25以降で、`PILOT_ENABLE_IP_AUTOALLOCATE`の方が推奨になった。
+`ISTIO_META_DNS_AUTO_ALLOCATE` と同じであり、Istio 1.25以降で、`PILOT_ENABLE_IP_AUTOALLOCATE` の方が推奨になった。
 
-`ISTIO_META_DNS_CAPTURE`を有効にしないと、`PILOT_ENABLE_IP_AUTOALLOCATE`は機能しない。
+`ISTIO_META_DNS_CAPTURE` を有効にしないと、`PILOT_ENABLE_IP_AUTOALLOCATE` は機能しない。
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 > - https://istio.io/latest/news/releases/1.25.x/announcing-1.25/change-notes/#deprecation-notices
@@ -1644,7 +1644,7 @@ datadogエージェントの宛先情報をIstioに登録する必要がある�
 
 ただ、datadogエージェントをサービスメッシュ内に配置すると、Telemetryリソースがdatadogエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 
-`.mesh.enableTracing`キーも有効化する必要がある。
+`.mesh.enableTracing` キーも有効化する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -1667,7 +1667,7 @@ data:
 
 #### ▼ Telemetryの定義
 
-Datadogに送信するためには、`.mesh.extensionProviders[*].datadog`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+Datadogに送信するためには、`.mesh.extensionProviders[*].datadog` キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
 分散トレースの設定は以下の通りである。
 
@@ -1732,7 +1732,7 @@ OpenTelemetry Collectorの宛先情報をIstioに登録する必要があるた�
 
 ただ、OpenTelemetry Collectorをサービスメッシュ内に配置すると、TelemetryリソースがOpenTelemetry Collector自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 
-`.mesh.enableTracing`キーも有効化する必要がある。
+`.mesh.enableTracing` キーも有効化する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -1766,7 +1766,7 @@ data:
 
 #### ▼ Telemetryの定義
 
-OpenTelemetryに送信するためには、`.mesh.extensionProviders[*].opentelemetry`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+OpenTelemetryに送信するためには、`.mesh.extensionProviders[*].opentelemetry` キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
 分散トレースの設定は以下の通りである。
 
@@ -1845,7 +1845,7 @@ jaegerエージェントの宛先情報をIstioに登録する必要があるた
 
 ただ、jaegerエージェントをサービスメッシュ内に配置すると、Telemetryリソースがjaegerエージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 
-`.mesh.enableTracing`キーも有効化する必要がある。
+`.mesh.enableTracing` キーも有効化する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -1867,7 +1867,7 @@ data:
           path: /dev/stdout
 ```
 
-ZipkinやJaegerに送信するためには、`.mesh.extensionProviders[*].zipkin`キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
+ZipkinやJaegerに送信するためには、`.mesh.extensionProviders[*].zipkin` キーに設定した宛先情報を使用して、Telemetryを定義する必要がある。
 
 分散トレースの設定は以下の通りである。
 
@@ -1997,7 +1997,7 @@ data:
 
 #### ▼ configとは
 
-Istiodコントロールプレーン (`discovery`コンテナ) のため、Istioのサイドカーインジェクションの変数やpatch処理の内容を管理する。
+Istiodコントロールプレーン (`discovery` コンテナ) のため、Istioのサイドカーインジェクションの変数やpatch処理の内容を管理する。
 
 ```yaml
 apiVersion: v1
@@ -2022,7 +2022,7 @@ data:
 
 istio-proxyコンテナの設定値をHelmテンプレートの状態で管理する。
 
-Istioは、istio-sidecar-injectorの`.values`キーを使用してテンプレートを動的に完成させる。
+Istioは、istio-sidecar-injectorの `.values` キーを使用してテンプレートを動的に完成させる。
 
 ```yaml
 apiVersion: v1
@@ -2045,7 +2045,7 @@ data:
 
 ### values
 
-istio-sidecar-injectorの`.templates.sidecar`キーに出力する値を`values`ファイルとして管理する。
+istio-sidecar-injectorの `.templates.sidecar` キーに出力する値を `values` ファイルとして管理する。
 
 ```yaml
 apiVersion: v1
@@ -2167,7 +2167,7 @@ spec:
 
 ### `ENABLE_DEFERRED_CLUSTER_CREATION`
 
-デフォルト値は`true`である。
+デフォルト値は `true` である。
 
 リクエストがある場合にのみ、Envoyのクラスターを作成する。
 
@@ -2195,7 +2195,7 @@ spec:
 
 ### `ENABLE_DEFERRED_STATS_CREATION`
 
-デフォルト値は`true`である。
+デフォルト値は `true` である。
 
 Envoyの統計情報を遅延初期化する。
 
@@ -2224,9 +2224,9 @@ spec:
 
 ### `ENABLE_ENHANCED_RESOURCE_SCOPING`
 
-デフォルト値は`true`である。
+デフォルト値は `true` である。
 
-`meshConfig.discoverySelectors`キーを使用できるようにする。
+`meshConfig.discoverySelectors` キーを使用できるようにする。
 
 ```yaml
 apiVersion: apps/v1
@@ -2250,9 +2250,9 @@ spec:
 
 ### `ENABLE_ENHANCED_DESTINATIONRULE_MERGE`
 
-デフォルト値は`true`である。
+デフォルト値は `true` である。
 
-複数のDestinationRuleで`.spec.exportTo`キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。
+複数のDestinationRuleで `.spec.exportTo` キーの対象のNamespaceが同じ場合、これらの設定をマージして処理する。
 
 もし対象のNamespaceが異なる場合、独立した設定として処理する。
 
@@ -2278,15 +2278,15 @@ spec:
 
 ### `ENABLE_INBOUND_RETRY_POLICY`
 
-デフォルト値は`true`である。
+デフォルト値は `true` である。
 
-istio-proxyがインバウンド通信をマイクロサービスに送信するときのリトライ (執筆時点2025/02/26では`reset-before-request`のみ) を設定する。
+istio-proxyがインバウンド通信をマイクロサービスに送信するときのリトライ (執筆時点2025/02/26では `reset-before-request` のみ) を設定する。
 
 今後は、宛先istio-proxyがマイクロサービスに対してリトライできるようになる。
 
 istio-proxy間の問題の切り分けがしやすくなる。
 
-`false`の場合、送信元istio-proxyから宛先istio-proxyへ通信時、送信元istio-proxyしかリトライできない。
+`false` の場合、送信元istio-proxyから宛先istio-proxyへ通信時、送信元istio-proxyしかリトライできない。
 
 ```yaml
 apiVersion: apps/v1
@@ -2311,17 +2311,17 @@ spec:
 
 ### `EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`
 
-デフォルト値は`true`である。
+デフォルト値は `true` である。
 
-POSTリクエストの結果で、マイクロサービスから`503`ステータスが返信された場合、未処理とは限らない。
+POSTリクエストの結果で、マイクロサービスから `503` ステータスが返信された場合、未処理とは限らない。
 
 この場合にリトライすると結果的に二重で処理が実行されてしまう。
 
-そのため、マイクロサービスから`503`ステータスが返信された場合は、リトライしないようにする。
+そのため、マイクロサービスから `503` ステータスが返信された場合は、リトライしないようにする。
 
-なおこの問題は、`reset`によるリトライでも起こりうるため、`reset`もデフォルトから外れている。
+なおこの問題は、`reset` によるリトライでも起こりうるため、`reset` もデフォルトから外れている。
 
-リトライの結果でistio-proxyが`503`レスポンスを返信する場合とは区別する。
+リトライの結果でistio-proxyが `503` レスポンスを返信する場合とは区別する。
 
 ```yaml
 apiVersion: apps/v1
@@ -2349,7 +2349,7 @@ spec:
 
 分散トレースの収集率を設定する。
 
-基本的には`100`% (値は`1`) を設定する。
+基本的には `100`% (値は `1`) を設定する。
 
 ```yaml
 apiVersion: apps/v1
@@ -2401,7 +2401,7 @@ spec:
 
 ### `PILOT_ENABLE_MYSQL_FILTER`
 
-Envoyの`mysql_proxy`を有効化し、MySQLのメトリクスを収集できるようにする。
+Envoyの `mysql_proxy` を有効化し、MySQLのメトリクスを収集できるようにする。
 
 ```yaml
 apiVersion: apps/v1
@@ -2418,7 +2418,7 @@ spec:
             value: "true"
 ```
 
-`proxyStatsMatcher`でも設定が必要である。
+`proxyStatsMatcher` でも設定が必要である。
 
 ```yaml
 apiVersion: v1
@@ -2441,7 +2441,7 @@ data:
 
 ### `PILOT_ENABLE_REDIS_FILTER`
 
-Envoyの`redis_proxy`を有効化し、MySQLのメトリクスを収集できるようにする。
+Envoyの `redis_proxy` を有効化し、MySQLのメトリクスを収集できるようにする。
 
 ```yaml
 apiVersion: apps/v1
@@ -2458,7 +2458,7 @@ spec:
             value: "true"
 ```
 
-`proxyStatsMatcher`でも設定が必要である。
+`proxyStatsMatcher` でも設定が必要である。
 
 ```yaml
 apiVersion: v1

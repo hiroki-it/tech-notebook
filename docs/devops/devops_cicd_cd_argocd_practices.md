@@ -33,7 +33,7 @@ Volumeの種類によるが、EmptyDir Volumeであれば、Podを再作成す�
 
 repo-serverの冗長化は、可用性だけでなく性能設計の改善にもつながる。
 
-例えば、レプリカ数を`3`倍にすると、Sync時間が1/3になる。
+例えば、レプリカ数を `3` 倍にすると、Sync時間が1/3になる。
 
 > - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
 > - https://saikiranpikili.medium.com/make-your-argocd-super-fast-9c75fa94b840
@@ -57,7 +57,7 @@ spec:
             - 5
 ```
 
-#### ▼ レプリカ当たりの処理効率の向上 (`.argocd-allow-concurrency`ファイル)
+#### ▼ レプリカ当たりの処理効率の向上 (`.argocd-allow-concurrency` ファイル)
 
 repo-serverは、レプリカ当たり同時に1つの処理しかできない。
 
@@ -65,7 +65,7 @@ repo-serverは、レプリカ当たり同時に1つの処理しかできない�
 
 すると、各Applicationのマニフェスト作成処理はrepo-serverのレプリカ数に影響を受ける。
 
-Applicationがポーリングするリポジトリのパス直下に`.argocd-allow-concurrency`ファイルを配置しておくと並行処理をしてくれる。
+Applicationがポーリングするリポジトリのパス直下に `.argocd-allow-concurrency` ファイルを配置しておくと並行処理をしてくれる。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#enable-concurrent-processing
@@ -78,7 +78,7 @@ repo-serverは、デプロイ対象のリポジトリにあるマニフェスト
 
 この時、リポジトリがモノリポジトリ (たくさんのHelmチャートが含まれる) であり、複数のApplicationがこの単一のモノリポジトリをポーリングしていると仮定する。
 
-例えば、Applicationが`500`個でリポジトリが`1`個のような場合である。
+例えば、Applicationが `500` 個でリポジトリが `1` 個のような場合である。
 
 すると、各Applicationでは、デプロイ対象のHelmチャートだけでなく、それ以外のHelmチャートの変更であっても、キャッシュを再作成してしまう。
 
@@ -86,9 +86,9 @@ repo-serverは、デプロイ対象のリポジトリにあるマニフェスト
 
 そのため、モノリポジトリには注意が必要である。
 
-Applicationの`metadata.annotations`キーに`argocd.argoproj.io/manifest-generate-paths`キーを設定し、マニフェストのキャッシュ再作成のトリガーとするディレクトリを設定する。
+Applicationの `metadata.annotations` キーに `argocd.argoproj.io/manifest-generate-paths` キーを設定し、マニフェストのキャッシュ再作成のトリガーとするディレクトリを設定する。
 
-これにより、`argocd_app_reconcile_count`と`argocd_git_request_total`のメトリクスを改善できる。
+これにより、`argocd_app_reconcile_count` と `argocd_git_request_total` のメトリクスを改善できる。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -131,18 +131,18 @@ ArgoCDの場合、冗長化はapplication-controllerの性能設計の改善に�
 
 テナントにいくつかの実行環境のApplicationを集約する場合に、Application数が増えがちになる。
 
-application-controllerは、デフォルトだとレプリカ当たり`400`個のApplicationまでReconciliationできる。
+application-controllerは、デフォルトだとレプリカ当たり `400` 個のApplicationまでReconciliationできる。
 
-- `--status-processors`は、application-controllerがデプロイ対象のClusterに対してヘルスチェックするためのプロセッサ数
-- `--operation-processors`は、application-controllerがデプロイ対象のClusterに対して、差分確認 (`kubectl diff`) と Sync (`kubectl apply`) するためのプロセッサ数
+- `--status-processors` は、application-controllerがデプロイ対象のClusterに対してヘルスチェックするためのプロセッサ数
+- `--operation-processors` は、application-controllerがデプロイ対象のClusterに対して、差分確認 (`kubectl diff`) と Sync (`kubectl apply`) するためのプロセッサ数
 
 #### ▼ レプリカ当たりの処理効率の向上 (`--status-processors`、`--operation-processors`)
 
-application-controllerは、Reconciliation時にApplicationを一つずつ処理していく。
+application-controllerは、Reconciliation時にApplicationを1つずつ処理していく。
 
 CPUの並列処理数を増やすと、レプリカ当たりの処理効率を上げられる。
 
-Clusterのヘルスチェックの並列処理数は`--status-processors`オプションで、Diff/Sync処理のそれは`--operation-processors`オプションで変更できる。
+Clusterのヘルスチェックの並列処理数は `--status-processors` オプションで、Diff/Sync処理のそれは `--operation-processors` オプションで変更できる。
 
 ```yaml
 apiVersion: apps/v1
@@ -179,8 +179,8 @@ data:
 > - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
 > - https://web.archive.org/web/20231202091510/https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 
-- Application`1000`個の場合、`--status-processors`に`50`、`--operation-processors`に`25`を指定
-- Application`400`個の場合、`--status-processors`に`20`、`--operation-processors`に`10`を指定 (デフォルト値)
+- Application`1000` 個の場合、`--status-processors` に `50`、`--operation-processors` に `25` を指定
+- Application`400` 個の場合、`--status-processors` に `20`、`--operation-processors` に `10` を指定 (デフォルト値)
 
 Application数が多くなるほど、Reconciliationの処理キューを空にするのに時間がかかる。
 
@@ -197,7 +197,7 @@ application-controllerは、デプロイ対象のClusterを処理する。
 
 レプリカ数を単純に増やしても、application-controllerの各レプリカは全てのClusterに対する処理を実行してしまう。
 
-例えば、`ARGOCD_CONTROLLER_REPLICAS`をレプリカ数と同じ数値で設定すると、application-controllerのレプリカは、Clusterに対する処理を分業するようになる。
+例えば、`ARGOCD_CONTROLLER_REPLICAS` をレプリカ数と同じ数値で設定すると、application-controllerのレプリカは、Clusterに対する処理を分業するようになる。
 
 ```yaml
 apiVersion: apps/v1
@@ -245,7 +245,7 @@ data:
 
 #### ▼ 処理結果のキャッシュの更新頻度を低減 (`ARGOCD_CLUSTER_CACHE_RESYNC_DURATION`)
 
-application-controllerは、クラスターの処理結果のキャッシュを定期的に削除する (デフォルトでは`12`時間) 。
+application-controllerは、クラスターの処理結果のキャッシュを定期的に削除する (デフォルトでは `12` 時間) 。
 
 キャッシュの削除時の間、SyncやRefreshの処理を実施できなくなる。
 
@@ -336,7 +336,7 @@ argocd-serverは、ステートレスで高負荷になりにくい。
 
 #### ▼ レプリカ当たりの負荷を低減
 
-`ARGOCD_API_SERVER_REPLICAS`変数で、argocd-serverの異なるレプリカへのリクエストを分散できる。
+`ARGOCD_API_SERVER_REPLICAS` 変数で、argocd-serverの異なるレプリカへのリクエストを分散できる。
 
 ```yaml
 apiVersion: apps/v1
@@ -358,7 +358,7 @@ spec:
 
 #### ▼ サイドカーのメモリ
 
-argocd-serverのサイドカー上 (`***-cmp-server`) で`helm`コマンドのなどを実行する場合、マニフェストの展開にはスパイク的にメモリが必要になる。
+argocd-serverのサイドカー上 (`***-cmp-server`) で `helm` コマンドのなどを実行する場合、マニフェストの展開にはスパイク的にメモリが必要になる。
 
 そのため、サイドカー (`***-cmp-server`) にはたくさんのメモリを割り当てるようにする。
 
@@ -366,7 +366,7 @@ argocd-serverのサイドカー上 (`***-cmp-server`) で`helm`コマンドの�
 
 ### 安全性
 
-ArgoCDには、ダッシュボード上から特定の`kubectl`コマンド (`kubectl logs`コマンド、`kubectl exec`コマンド) を実行できる機能がある。
+ArgoCDには、ダッシュボード上から特定の `kubectl` コマンド (`kubectl logs` コマンド、`kubectl exec` コマンド) を実行できる機能がある。
 
 ダッシュボードの操作者にその権限がない場合、権限を絞る必要がある。
 
@@ -502,7 +502,7 @@ infra-manifest-repository/ # マニフェストリポジトリまたはチャー
 
 親Applicationで子Applicationをグループ化したように構成する。
 
-Applicationの`.resource`キー配下で、紐づく子Applicationを管理している。
+Applicationの `.resource` キー配下で、紐づく子Applicationを管理している。
 
 ![root-application](https://raw.githubusercontent.com/hiroki-it/helm-charts-practice/main/root-application.png)
 
@@ -518,7 +518,7 @@ root-applicationとAppProjectは同じNamespaceに所属する必要がある。
 
 状態の影響範囲を加味して、デプロイ先のCluster (異なる実行環境も含む) を粒度として、root-applicationを作成する。
 
-root-applicationは、`default`や`root`のAppProjectに配置する。
+root-applicationは、`default` や `root` のAppProjectに配置する。
 
 ```yaml
 # 最上位Application
@@ -634,9 +634,9 @@ data:
   application.instanceLabelKey: argocd.argoproj.io/instance
 ```
 
-ArgoCDは、Kubernetesリソースの`.metadata.labels`キーにこのラベル (ここでは`argocd.argoproj.io/instance`キー) を自動的に設定する。
+ArgoCDは、Kubernetesリソースの `.metadata.labels` キーにこのラベル (ここでは `argocd.argoproj.io/instance` キー) を自動的に設定する。
 
-AppProjectが異なる限り、同じCluster内にある同じ`argocd.argoproj.io/instance`キー値を持つApplicationは区別される。
+AppProjectが異なる限り、同じCluster内にある同じ `argocd.argoproj.io/instance` キー値を持つApplicationは区別される。
 
 一方で、同じAppProjectにあるApplicationは、たとえNamespaceが異なっていても区別できない。
 
@@ -706,7 +706,7 @@ ArgoCDをServiceAccountで認証し、またClusterRoleで認可する。
 | 期限   | 説明                                                                 | 方法                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 推奨/非推奨 |
 | ------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------: |
 | 恒久的 | CDツールを恒久的に認証し、また同様に認可スコープを恒久的に付与する。 | Kubernetes `v1.21` 以前では、ServiceAccountの認証用のトークンに期限がない。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |   非推奨    |
-| 一時的 | CDツールを一時的に認証し、また同様に認可スコープを一時的に付与する。 | Kubernetes `v1.22` 以降では、BoundServiceAccountTokenVolumeにより、ServiceAccountのトークンに`1`時間の有効期限がある。kube-apiserverのクライアント側が特定のバージョンのclientパッケージを使用していれば、認証用のトークンが定期的に再作成されるようになっており、一時的な認証を実現できている。一方で、CDツールにClusterRoleの認可スコープ一時的に付与する方法は、調査した限り見つからなかったが、preSyncなどを使用すればできるかも。<br>参考：<br>・https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782 <br>・https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume |    推奨     |
+| 一時的 | CDツールを一時的に認証し、また同様に認可スコープを一時的に付与する。 | Kubernetes `v1.22` 以降では、BoundServiceAccountTokenVolumeにより、ServiceAccountのトークンに `1` 時間の有効期限がある。kube-apiserverのクライアント側が特定のバージョンのclientパッケージを使用していれば、認証用のトークンが定期的に再作成されるようになっており、一時的な認証を実現できている。一方で、CDツールにClusterRoleの認可スコープ一時的に付与する方法は、調査した限り見つからなかったが、preSyncなどを使用すればできるかも。<br>参考：<br>・https://github.com/argoproj/argo-cd/issues/9417#issuecomment-1162548782 <br>・https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#bound-service-account-token-volume |    推奨     |
 
 <br>
 
@@ -754,11 +754,11 @@ PruneによるKubernetesリソースの削除を有効化し、フォアグラ�
 
 `(1)`
 
-: Applicationの`.spec.syncPolicy.allowEmpty`キーを有効化する。
+: Applicationの `.spec.syncPolicy.allowEmpty` キーを有効化する。
 
 `(2)`
 
-: フォアグラウンドで削除すると、Applicationの`.metadata.finalizers`キーの値に削除中のリソースが設定される。
+: フォアグラウンドで削除すると、Applicationの `.metadata.finalizers` キーの値に削除中のリソースが設定される。
 
      この配列を空配列に変更する。ArgoCDのUIからは変更できず、`kubectl patch`コマンドを使用する必要がある。
 
@@ -772,7 +772,7 @@ $ kubectl patch crd applications.argoproj.io \
 
 `(3)`
 
-: 1つ目の`.spec.syncPolicy.allowEmpty`キーの変更を元に戻す。
+: 1つ目の `.spec.syncPolicy.allowEmpty` キーの変更を元に戻す。
 
 #### ▼ Namespaceを削除できない
 
@@ -813,9 +813,9 @@ ArgoCDを使用しない場合と同様にして、ConfigMapやSecretの設定�
 
 <br>
 
-### `Progressing`状態でスタックする
+### `Progressing` 状態でスタックする
 
-Ingress、StatefulSet、DaemonSet、で特定の設定値を使用していると、ArgoCDの`Progressing`状態でスタックすることがある。
+Ingress、StatefulSet、DaemonSet、で特定の設定値を使用していると、ArgoCDの `Progressing` 状態でスタックすることがある。
 
 > - https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
 
@@ -857,7 +857,7 @@ ArgoCDでは、CI上でClusterのバージョンをテストしており、CIの
 
 このテストでは、CI上に特定のバージョンのKubernetes Clusterを作成し、またこのClusterに対してArgoCDの稼働や各種処理 (マニフェストデプロイ) を実行する。
 
-例えば、ArgoCDの`v2.7.3`は、K3Sの`v1.26.0`/`v1.25.4`/`v1.24.3`/`v1.23.3`をサポートしているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。
+例えば、ArgoCDの `v2.7.3` は、K3Sの `v1.26.0`/`v1.25.4`/`v1.24.3`/`v1.23.3` をサポートしているため、これらのバージョンのClusterで稼働しつつ、マニフェストをデプロイできることが保証されている。
 
 > - https://github.com/argoproj/argo-cd/blob/v2.7.3/.github/workflows/ci-build.yaml#L359-L462
 > - https://github.com/argoproj/argo-cd/tree/master/test/e2e
@@ -876,7 +876,7 @@ ArgoCD自体をArgoCDで管理することはできないため、手動やマ�
 
 マニフェストリポジトリやチャートリポジトリの設計によっては、新バージョンのKubernetesリソース名にリビジョンがつくようになっていることがある (例：Istioのチャート) 。
 
-この場合、Pruneを無効化した上で、既存のKubernetesリソースをそのままに、新バージョンを新しく作成する。
+この場合、Pruneを無効化したうえで、既存のKubernetesリソースをそのままに、新バージョンを新しく作成する。
 
 新バージョンの動作が問題なければ、旧バージョンのKubernetesリソースをPruneで削除する。
 
@@ -911,7 +911,7 @@ AWS ALBのターゲットグループでB/G Clusterを切り替える方法。
 
 ArgoCDと同時にKubernetesもアップグレードする場合、問題を切り分けやすいように、別々にアップグレードする。
 
-検証時は`1`バージョンずつアップグレードし、最終的な設定方法を探る。
+検証時は `1` バージョンずつアップグレードし、最終的な設定方法を探る。
 
 検証後は、最終的な設定方法で一気にアップグレードすると良い。
 
@@ -945,7 +945,7 @@ ArgoCDはデータポイントを作成し、これをPrometheusで収集でき�
 | `argocd_redis_request_total`          |     Counter      | Redisへのリクエスト数を表す。                                                                                                                                                                                                  |
 | `app_reconciliation_queue`            |     Counter      | application-controllerはカスタムリソースのReconciliation処理をキューに格納する。これの処理数を表す。                                                                                                                           |
 | `app_operation_processing_queue`      |     Counter      | application-controllerはSync処理をキューに格納する。これの処理数を表す。                                                                                                                                                       |
-| `argocd_git_request_total`            |     Counter      | repo-serverの`git ls-remote`コマンドや`git fetch`コマンドの実行数を表す。これらは、`request_type`ラベルで`ls-remote`と`fetch`という値で取得できる。キャッシュが更新される頻度が高いと`git fetch`コマンドの実行頻度も高くなる。 |
+| `argocd_git_request_total`            |     Counter      | repo-serverの `git ls-remote` コマンドや `git fetch` コマンドの実行数を表す。これらは、`request_type` ラベルで `ls-remote` と `fetch` という値で取得できる。キャッシュが更新される頻度が高いと `git fetch` コマンドの実行頻度も高くなる。 |
 
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/
@@ -1179,8 +1179,8 @@ ArgoCD
 Cluster
 ```
 
-- ArgoCDの送信元のAWS ALBにAWS WAFを紐づけ、特定のIPアドレス以外を `403`ステータス (認可エラー) にする。
-- ArgoCDのログインにSSOを使用し、利用者以外を `401`ステータス (認証エラー) にする
+- ArgoCDの送信元のAWS ALBにAWS WAFを紐づけ、特定のIPアドレス以外を `403` ステータス (認可エラー) にする。
+- ArgoCDのログインにSSOを使用し、利用者以外を `401` ステータス (認証エラー) にする
 
 ### ArgoCD ➡️ (アクセス制御) ➡️ Cluster の部分
 
@@ -1196,8 +1196,8 @@ ArgoCD
 Cluster
 ```
 
-- `policy.csv`ファイルでArgoCD上の認可スコープを定義し、 `403` (認可エラー) にする。 ただし、SSOが成功すればArgoCDの閲覧は可能とする。
+- `policy.csv` ファイルでArgoCD上の認可スコープを定義し、 `403` (認可エラー) にする。 ただし、SSOが成功すればArgoCDの閲覧は可能とする。
 - Cluster側でArgoCDの送信元IPアドレス (AWSならNAT Gateway) を許可し、特定のArgoCD以外を `403` (認可エラー) にする。
-- AWS EKS ClusterのARNを登録しない場合は、`404`にする。 (これは、ArgoCDが`cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured`を返却してくれる)
+- AWS EKS ClusterのARNを登録しない場合は、`404` にする。 (これは、ArgoCDが `cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured` を返却してくれる)
 
 <br>

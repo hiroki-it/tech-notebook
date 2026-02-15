@@ -29,7 +29,7 @@ $ npm run dev
 
 #### ▼ アセットの自動再コンパイル
 
-アセットのコードが変更された時に、これと検知し、自動的に再コンパイルを実行する。
+アセットのコードが変更されたときに、これと検知し、自動的に再コンパイルを実行する。
 
 ```bash
 $ npm run watch
@@ -158,7 +158,7 @@ PHPStromでLaravelを開発する場合、拡張機能を提供する。
 > - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 > - https://pleiades.io/help/phpstorm/laravel.html
 
-プロバイダーを`app.php`ファイルに登録する必要がある。
+プロバイダーを `app.php` ファイルに登録する必要がある。
 
 ```php
 <?php
@@ -182,7 +182,7 @@ return [
 
 #### ▼ Facade
 
-PHPStromで、関数が定義された場所にジャンプできるように、`_ide_helper.php`ファイルを作成する。
+PHPStromで、関数が定義された場所にジャンプできるように、`_ide_helper.php` ファイルを作成する。
 
 > - https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
 
@@ -202,7 +202,7 @@ $ php artisan ide-helper:models
 
 #### ▼ 予測表示
 
-PHPStromで、Laravelの関数を予測表示できるように、`phpstorm.meta.php`ファイルを作成する。
+PHPStromで、Laravelの関数を予測表示できるように、`phpstorm.meta.php` ファイルを作成する。
 
 > - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 

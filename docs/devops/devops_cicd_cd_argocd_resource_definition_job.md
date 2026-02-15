@@ -23,7 +23,7 @@ Jobに、ArgoCDのSyncに伴う処理を設定する。
 
 ### generateName
 
-Jobに、`Sync`フェーズフック名を設定する。
+Jobに、`Sync` フェーズフック名を設定する。
 
 ```yaml
 apiVersion: batch/v1
@@ -42,7 +42,7 @@ metadata:
 
 #### ▼ argocd.argoproj.io/hook
 
-Jobに、ArgoCDの`Sync`フェーズを設定する。
+Jobに、ArgoCDの `Sync` フェーズを設定する。
 
 設定したフェーズのタイミングで、ArgoCDはこのJobをフックする。
 
@@ -61,9 +61,9 @@ Jobに、ArgoCDの`Sync`フェーズを設定する。
 
 DBマイグレーションを実行するJobを定義しておき、これをArgoCDのSync前にフックする。
 
-フックのタイミングは、`argocd.argoproj.io/hook`キーで設定する。
+フックのタイミングは、`argocd.argoproj.io/hook` キーで設定する。
 
-その場合、`DBマイグレーション ---> ArgoCD Sync開始 ---> アプリ起動 ---> ArgoCD Sync完了`という流れになる。
+その場合、`DBマイグレーション ---> ArgoCD Sync開始 ---> アプリ起動 ---> ArgoCD Sync完了` という流れになる。
 
 ```yaml
 apiVersion: batch/v1
@@ -93,9 +93,9 @@ spec:
       restartPolicy: Never
 ```
 
-もしArgoCDの`Sync`フェーズを使用しない場合、アプリケーションの起動直前にDBマイグレーションを実行してしまってもよい。
+もしArgoCDの `Sync` フェーズを使用しない場合、アプリケーションの起動直前にDBマイグレーションを実行してしまってもよい。
 
-その場合、`ArgoCD Sync開始 ---> DBマイグレーション ---> アプリ起動 ---> ArgoCD Sync完了`という流れになる。
+その場合、`ArgoCD Sync開始 ---> DBマイグレーション ---> アプリ起動 ---> ArgoCD Sync完了` という流れになる。
 
 ```dockerfile
 FROM node:22.11.0-bullseye-slim as base
@@ -106,7 +106,7 @@ FROM node:22.11.0-bullseye-slim as base
 ENTRYPOINT ["npx prisma migrate deploy", "npm run start"]
 ```
 
-もし手動でマイグレーションを実行する運用であれば、`kubectl exec`コマンドで接続した後に、マイグレーションコマンドを実行する。
+もし手動でマイグレーションを実行する運用であれば、`kubectl exec` コマンドで接続した後に、マイグレーションコマンドを実行する。
 
 ```bash
 $ kubectl exec -it <Pod名> -- bash
@@ -119,13 +119,13 @@ $ kubectl exec -it <Pod名> -- bash
 
 #### ▼ argocd.argoproj.io/sync-wave
 
-同じ`Sync`フェーズに実行するように設定したJobが複数ある場合、Jobの実行の優先度付けを設定する。
+同じ `Sync` フェーズに実行するように設定したJobが複数ある場合、Jobの実行の優先度付けを設定する。
 
-正負の数字を設定でき、数字が小さい方が優先される。
+正負の数字を設定でき、数字が小さいほうが優先される。
 
 優先度が同じ場合、ArgoCDがよしなに順番を決めてしまう。
 
-デフォルトでは優先度が`0`であるため、必ず明示的に設定しておく。
+デフォルトでは優先度が `0` であるため、必ず明示的に設定しておく。
 
 ```yaml
 apiVersion: batch/v1

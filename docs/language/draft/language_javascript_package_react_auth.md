@@ -15,7 +15,7 @@ description: 認証パッケージ＠Reactの知見を記録しています。
 
 ## 01. react-oidc-context
 
-`oidc-client-ts`パッケージをReact用にラップした認証パッケージである。
+`oidc-client-ts` パッケージをReact用にラップした認証パッケージである。
 
 > - https://github.com/authts/react-oidc-context
 

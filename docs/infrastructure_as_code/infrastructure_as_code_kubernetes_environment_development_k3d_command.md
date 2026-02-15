@@ -62,7 +62,7 @@ $ kubectl label node k3d-foo-cluster-agent-2 node-type=app --overwrite
 
 #### ▼ --config
 
-`config.yaml`ファイルを使用して、K3D Clusterを作成する。
+`config.yaml` ファイルを使用して、K3D Clusterを作成する。
 
 ```bash
 $ k3d cluster create --config config.yaml
@@ -95,7 +95,7 @@ $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --servers 2
 
 ホストマシンのファイルをK3d Clusterにマウントする。
 
-`config.yaml`ファイルや`registries.yaml`ファイルをK3D Cluster内に配置する時に役立つ。
+`config.yaml` ファイルや `registries.yaml` ファイルをK3D Cluster内に配置するときに役立つ。
 
 ```bash
 $ k3d cluster create foo-cluster --volume "registries.yaml:/etc/rancher/k3s/registries.yaml
@@ -105,9 +105,9 @@ $ k3d cluster create foo-cluster --volume "registries.yaml:/etc/rancher/k3s/regi
 
 #### ▼ --wait
 
-デフォルト値は`true`である。
+デフォルト値は `true` である。
 
-kube-apiserverからリクエストが返却された上で、処理を完了させる。
+kube-apiserverからリクエストが返却されたうえで、処理を完了させる。
 
 ```bash
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --wait
@@ -140,7 +140,7 @@ foo-cluster   1/1       4/4      true
 
 ### init
 
-`config.yaml`ファイルを作成する。
+`config.yaml` ファイルを作成する。
 
 ```bash
 $ k3d config init

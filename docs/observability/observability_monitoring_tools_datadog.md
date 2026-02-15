@@ -41,7 +41,7 @@ description: Datadog＠監視ツールの知見を記録しています。
 
 #### ▼ マルチアラート
 
-ログクエリで`group by`句を定義すると、選択できるようになる。
+ログクエリで `group by` 句を定義すると、選択できるようになる。
 
 <br>
 
@@ -67,7 +67,7 @@ description: Datadog＠監視ツールの知見を記録しています。
 
 #### ▼ 変数を使用した重要度レベルの共通化
 
-重要度レベルは、アプリケーション間で共通である方が良い。
+重要度レベルは、アプリケーション間で共通であるほうが良い。
 
 通知内容に変数を使用することにより、異なるアプリケーションに共通のアラート条件を適用できるようになる。
 
@@ -85,7 +85,7 @@ description: Datadog＠監視ツールの知見を記録しています。
 
 #### ▼ マルチアラート変数
 
-クエリの`group by`句に割り当てたタグやファセットを変数として出力する。
+クエリの `group by` 句に割り当てたタグやファセットを変数として出力する。
 
 マルチアラートモニターを使用する場合のみ、使用できる。
 
@@ -93,7 +93,7 @@ description: Datadog＠監視ツールの知見を記録しています。
 
 構造化ログの属性値またはタグ値を変数として出力する。
 
-`{{ log.attributes.<キー名> }}` または`{{ log.tags.<キー名> }}`として実装する。
+`{{ log.attributes.<キー名> }}` または `{{ log.tags.<キー名> }}` として実装する。
 
 > - https://docs.datadoghq.com/monitors/notify/variables/?tab=is_alert#matching-attributetag-variables
 
@@ -156,9 +156,9 @@ Datadogで、ブラウザのエラーは以下に分類される。
 
 | エラーのソース       | エラーの例                                                                                                                          |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| コード上             | ・ハンドリングされずにコード上に表示された例外<br>・ハンドリングされずにコード上に表示されたPromiseオブジェクトの`reject`関数の結果 |
-| ブラウザコンソール上 | `console.error`関数によって、コンソール上に出力されたテキスト                                                                       |
-| カスタム             | `@datadog/browser-rum`パッケージの`addError`関数によって、datadog-APIに送信されたテキスト                                           |
+| コード上             | ・ハンドリングされずにコード上に表示された例外<br>・ハンドリングされずにコード上に表示されたPromiseオブジェクトの `reject` 関数の結果 |
+| ブラウザコンソール上 | `console.error` 関数によって、コンソール上に出力されたテキスト                                                                       |
+| カスタム             | `@datadog/browser-rum` パッケージの `addError` 関数によって、datadog-APIに送信されたテキスト                                           |
 
 > - https://docs.datadoghq.com/real_user_monitoring/browser/collecting_browser_errors/?tab=npm
 
@@ -185,9 +185,9 @@ Datadog社の物理サーバーがリクエストを送信する。
 | `user-agent`                  | ブラウザテストで設定したブラウザが割り当てられる。                                                                                      |
 | `sec-datadog`                 | ブラウザテストのIDが割り当てられる。                                                                                                    |
 | `x-datadog-trace-id`          | バックエンドがマイクロサービスアーキテクチャの場合、収集できる分散トレースを紐付けるIDが割り当てられる。                                |
-| `x-datadog-parent-id`         | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースのルートスパンとして、`0`が割り当てられる。                             |
-| `x-datadog-origin`            | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースがAPMクオータに影響しないように、`synthetics-browser`が割り当てられる。 |
-| `x-datadog-sampling-priority` | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが収集される優先度として、`1`が割り当てれる。                           |
+| `x-datadog-parent-id`         | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースのルートスパンとして、`0` が割り当てられる。                             |
+| `x-datadog-origin`            | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースがAPMクオータに影響しないように、`synthetics-browser` が割り当てられる。 |
+| `x-datadog-sampling-priority` | バックエンドがマイクロサービスアーキテクチャの場合、分散トレースが収集される優先度として、`1` が割り当てれる。                           |
 
 > - https://docs.datadoghq.com/synthetics/guide/identify_synthetics_bots/?tab=singleandmultistepapitests#default-headers
 > - https://docs.datadoghq.com/synthetics/apm/#how-are-traces-linked-to-tests

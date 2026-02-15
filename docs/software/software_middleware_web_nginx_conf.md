@@ -19,7 +19,7 @@ description: 設定ファイル＠Nginxの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-nginxを`apt-get`コマンドでインストールすると、旧バージョンが指定されるため、`apt`コマンドを使用する。
+nginxを `apt-get` コマンドでインストールすると、旧バージョンが指定されるため、`apt` コマンドを使用する。
 
 ```bash
 $ apt install nginx
@@ -39,9 +39,9 @@ $ yum install -y nginx
 
 ## 02. 設定ファイルの種類
 
-### `/etc/nginx/conf.d/*.conf`ファイル
+### `/etc/nginx/conf.d/*.conf` ファイル
 
-#### ▼ `.../conf.d/*.conf`ファイルとは
+#### ▼ `.../conf.d/*.conf` ファイルとは
 
 デフォルトの設定が定義されているいくつかのファイル。
 
@@ -55,9 +55,9 @@ include /etc/nginx/conf.d/*.conf;
 
 <br>
 
-### `/usr/share/nginx/modules/*.conf`ファイル
+### `/usr/share/nginx/modules/*.conf` ファイル
 
-#### ▼ `.../modules/*.conf`ファイルとは
+#### ▼ `.../modules/*.conf` ファイルとは
 
 モジュールの読み出し処理が定義されているファイル。
 
@@ -67,9 +67,9 @@ include  /usr/share/nginx/modules/*.conf;
 
 <br>
 
-### `/etc/nginx/mime.types`ファイル
+### `/etc/nginx/mime.types` ファイル
 
-#### ▼ `mime.types`ファイルとは
+#### ▼ `mime.types` ファイルとは
 
 リクエストのContent-TypeのMIMEタイプとファイル拡張子の間の対応関係が定義されているファイル。
 
@@ -79,15 +79,15 @@ include /etc/nginx/mime.types;
 
 <br>
 
-### `/etc/nginx/fastcgi_params`ファイル
+### `/etc/nginx/fastcgi_params` ファイル
 
-#### ▼ `fastcgi_params`ファイルとは
+#### ▼ `fastcgi_params` ファイルとは
 
 FastCGIプロトコルでルーティングする場合に使用する。
 
 アプリケーションで使用できる変数を定義する。
 
-`nginx.conf`ファイルによって読み込まれる。
+`nginx.conf` ファイルによって読み込まれる。
 
 OSやそのバージョンによっては、変数のデフォルト値が異なることがある。
 
@@ -181,9 +181,9 @@ include /etc/nginx/conf.d/*.conf;
 
 > - https://nginx.org/en/docs/ngx_core_module.html#include
 
-`include`ディレクティブをどの階層で実行したかによって、指定した設定ファイル内で実行できるディレクティブが異なる。
+`include` ディレクティブをどの階層で実行したかによって、指定した設定ファイル内で実行できるディレクティブが異なる。
 
-例えば、`http`ディレクティブは一番上の階層で実行する必要があるため、これを定義した設定ファイルは一番上の階層の`include`ディレクティブで指定する必要がある。
+例えば、`http` ディレクティブは一番上の階層で実行する必要があるため、これを定義した設定ファイルは一番上の階層の `include` ディレクティブで指定する必要がある。
 
 ```nginx
 include /etc/nginx/conf.d/foo_module.conf;
@@ -197,9 +197,9 @@ http {
 
 #### ▼ load_module
 
-Nginxでは、ビルド時にモジュール (`so`ファイル) をバイナリを組み込むが、すでにビルド済みのモジュールを実行時に読み込める。
+Nginxでは、ビルド時にモジュール (`so` ファイル) をバイナリを組み込むが、すでにビルド済みのモジュールを実行時に読み込める。
 
-デフォルトでは、モジュールは`modules`ディレクトリにある。
+デフォルトでは、モジュールは `modules` ディレクトリにある。
 
 ```nginx
 load_module modules/<動的モジュール名>;

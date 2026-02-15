@@ -75,7 +75,7 @@ OCIランタイム (例：runC) と単一／複数のCNIプラグイン (例：f
 
 #### ▼ イメージレイヤーのキャッシュ
 
-コンテナランタイム (例：Docker、Containerdなど) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker`ディレクトリ、`var/lib/containerd`ディレクトリなど) に保管する。
+コンテナランタイム (例：Docker、Containerdなど) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker` ディレクトリ、`var/lib/containerd` ディレクトリなど) に保管する。
 
 > - https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images
 > - https://stackoverflow.com/a/75905173

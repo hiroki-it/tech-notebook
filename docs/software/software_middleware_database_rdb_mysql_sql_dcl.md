@@ -27,7 +27,7 @@ description: DCL＠SQLの知見を記録しています。
 
 トランザクションを開始する。
 
-`START TRANSACTION`としてもよい。
+`START TRANSACTION` としてもよい。
 
 ```mysql
 BEGIN;
@@ -98,7 +98,7 @@ GRANT SELECT ON <DB名>.* TO '<ユーザー名>';
 
 DB名は、シングルクオーテーションで囲う必要が無い。
 
-全権限を付与する場合、`PRIVILEGES`は省略できるが、厳密には省略しないようほうが良い。
+全権限を付与する場合、`PRIVILEGES` は省略できるが、厳密には省略しないようほうが良い。
 
 ```mysql
 -- 全てのDBに関する権限を付与
@@ -134,7 +134,7 @@ GRANT SELECT ON <DB名>.* TO "<ユーザー名>";
 SHOW GRANTS FOR "<ユーザー名>";
 ```
 
-作成したのみで権限を何も付与してないユーザーの場合、『DBサーバー内の全DBに関して、全権限なし』を表す`USAGE`として表示される。
+作成したのみで権限を何も付与してないユーザーの場合、『DBサーバー内の全DBに関して、全権限なし』を表す `USAGE` として表示される。
 
 ```mysql
 GRANT USAGE ON *.* TO "<ユーザー名>";

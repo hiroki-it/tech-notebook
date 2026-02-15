@@ -48,7 +48,7 @@ $ sudo chmod go-r $HOME/.kube/config
 
 ### kubectl
 
-K3S Clusterに`kubectl`コマンドを実行する。
+K3S Clusterに `kubectl` コマンドを実行する。
 
 ```bash
 $ k3s kubectl get pod

@@ -29,7 +29,7 @@ PHP Version => 7.4
 
 ```
 
-出力サイズが多いため、`grep`を使用して、特定の項目のみを表示すると良い。
+出力サイズが多いため、`grep` を使用して、特定の項目のみを表示すると良い。
 
 ```bash
 # PHPのプロセスが使用できるメモリを確認する。
@@ -42,7 +42,7 @@ memory_limit => 2048M => 2048M
 
 ### --ini
 
-Configuration Fileの項目で、`php.ini`ファイルのあるディレクトリを取得する。
+Configuration Fileの項目で、`php.ini` ファイルのあるディレクトリを取得する。
 
 **＊例＊**
 
@@ -90,7 +90,7 @@ zlib
 [Zend Modules]
 ```
 
-注意点として、実際に読み込まれているか否かは、`get_loaded_extensions`関数で確認できる。
+注意点として、実際に読み込まれているか否かは、`get_loaded_extensions` 関数で確認できる。
 
 ```bash
 $ php -r 'print_r(get_loaded_extensions());'

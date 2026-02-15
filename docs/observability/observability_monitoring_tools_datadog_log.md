@@ -69,7 +69,7 @@ description: ログ＠Datadogの知見を記録しています。
 
 ### セットアップ
 
-#### ▼ `/etc/datadog-agent/datadog.yaml`ファイル
+#### ▼ `/etc/datadog-agent/datadog.yaml` ファイル
 
 > - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_agent_conf.html
 
@@ -130,7 +130,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 #### ▼ ブラウザログSDKとは
 
-ブラウザ上のJavaScriptで実行され、`console.error`関数の実行結果、キャッチされていない例外、ネットワークエラーを含む構造化ログをDatadogに送信する。
+ブラウザ上のJavaScriptで実行され、`console.error` 関数の実行結果、キャッチされていない例外、ネットワークエラーを含む構造化ログをDatadogに送信する。
 
 > - https://docs.datadoghq.com/logs/log_collection/javascript
 
@@ -140,7 +140,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 #### ▼ 送信される構造化ログ
 
-`status`キー
+`status` キー
 
 > - https://docs.datadoghq.com/logs/log_collection/javascript/#results
 
@@ -185,7 +185,7 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 **＊実装例＊**
 
-Nuxt.jsの場合、エントリーポイントは`nuxt.config`ファイルである。
+Nuxt.jsの場合、エントリーポイントは `nuxt.config` ファイルである。
 
 プラグインとして実装し、これをエントリーポイントで読み込むようにする。
 
@@ -276,12 +276,12 @@ export default browserLogsForSsgPlugin;
 
 | 属性名     | 説明                                           | 補足                                                                                                                                                                                                                                                                                                                                  | 例                                                                                    |
 | ---------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `host`     | ログの作成元のホスト名を示す。                 | ログが作成元とは別の場所から受信した場合に役立つ。datadogコンテナの環境変数にて、`DD_HOSTNAME`を使用して`host`属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるのみでなく、ログエクスプローラでホストタグが属性として付与される。他にAWSインテグレーションでは、送信元のロググループ名やバケット名が付与される。 | ・`foo`<br>・`foo-backend`<br>・`foo-frontend`<br>・`foo-log-group`<br>・`foo-bucket` |
+| `host`     | ログの作成元のホスト名を示す。                 | ログが作成元とは別の場所から受信した場合に役立つ。datadogコンテナの環境変数にて、`DD_HOSTNAME` を使用して `host` 属性を設定する。これにより、ホストマップでホストを俯瞰できるようになるのみでなく、ログエクスプローラでホストタグが属性として付与される。他にAWSインテグレーションでは、送信元のロググループ名やバケット名が付与される。 | ・`foo`<br>・`foo-backend`<br>・`foo-frontend`<br>・`foo-log-group`<br>・`foo-bucket` |
 | `source`   | ログの作成元の名前を示す。                     | ベンダー名を使用するとわかりやすい。                                                                                                                                                                                                                                                                                                  | ・`laravel`<br>・`nginx`<br>・`redis`                                                 |
 | `status`   | ログのレベルを示す。                           |                                                                                                                                                                                                                                                                                                                                       |                                                                                       |
 | `service`  | ログの作成元のアプリケーション名を示す。       | ログとAPM分散トレースを紐付けるため、両方に同じ名前を割り当てる必要がある。                                                                                                                                                                                                                                                           | ・`foo`<br>・`bar-backend`<br>・`baz-frontend`                                        |
 | `trace_id` | ログを分散トレースやスパンと紐付けるIDを示す。 |                                                                                                                                                                                                                                                                                                                                       |                                                                                       |
-| `message`  | ログメッセージを示す。                         | 受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの`message`属性に割り当てられる。一方で、構造化ログであった場合は`message`属性は使用されない。                                                                                                                                                                         |                                                                                       |
+| `message`  | ログメッセージを示す。                         | 受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの `message` 属性に割り当てられる。一方で、構造化ログであった場合は `message` 属性は使用されない。                                                                                                                                                                         |                                                                                       |
 
 > - https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/
 
@@ -319,7 +319,7 @@ export default browserLogsForSsgPlugin;
 
 #### ▼ PHP Monologの場合
 
-LogパッケージにMonologを採用している場合、`/etc/datadog-agent/conf.d/php.d`ディレクトリ配下に`conf.yaml`ファイルを作成する。ここに、Datadogにログを送信するための設定を実行する。
+LogパッケージにMonologを採用している場合、`/etc/datadog-agent/conf.d/php.d` ディレクトリ配下に `conf.yaml` ファイルを作成する。ここに、Datadogにログを送信するための設定を実行する。
 
 **＊実装例＊**
 
@@ -421,7 +421,7 @@ AWS CloudWatch Logsから、以下のようなAWS API Gatewayアクセスログ�
 
 これに対して、リマッパーのルールを定義する。
 
-例えば、リクエストに関する属性値を`http`属性内の各属性に割り当て直す。
+例えば、リクエストに関する属性値を `http` 属性内の各属性に割り当て直す。
 
 ```yaml
 {
@@ -477,7 +477,7 @@ AWS CloudWatch Logsから、以下のようなAWS API Gatewayアクセスログ�
 
 #### ▼ ログステータスリマッパー
 
-指定した属性/タグに割り当てられた値を、ルールを基に、ステータスファセットの各ステータス (`INFO`、`WARNING`、`ERROR`など) として登録する。
+指定した属性/タグに割り当てられた値を、ルールを基に、ステータスファセットの各ステータス (`INFO`、`WARNING`、`ERROR` など) として登録する。
 
 ログコンソール画面にて、ステータスファセットとして表示される。
 
@@ -513,7 +513,7 @@ Nginxから、以下のような非構造化ログを受信する例を考える
 
 以下のようなGrokパーサールールを定義する。
 
-`http.status_code`属性にステータスコード値を割り当てる。
+`http.status_code` 属性にステータスコード値を割り当てる。
 
 ```
 access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
@@ -541,7 +541,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 これに対して、以下のようなカテゴリパーサーのルールを定義する。
 
-`http.status_code`属性のステータスコード値に応じて、`http.status_category`属性にレベル値 (`info`、`notice`、`warning`、`critical`) に変換する。
+`http.status_code` 属性のステータスコード値に応じて、`http.status_category` 属性にレベル値 (`info`、`notice`、`warning`、`critical`) に変換する。
 
 ステータスコードとレベルの対応関係については、以下のリンクを参考にせよ。
 
@@ -554,9 +554,9 @@ WARNING @http.status_code:[400 TO 499]
 CRITICAL @http.status_code:[500 TO 599]
 ```
 
-これにより、構造化ログの`http.status_category`属性にログステータス値が割り当てられる。
+これにより、構造化ログの `http.status_category` 属性にログステータス値が割り当てられる。
 
-補足として、`http.status_category`属性以外は元の構造化ログと同じため、省略している。
+補足として、`http.status_category` 属性以外は元の構造化ログと同じため、省略している。
 
 ```yaml
 {"http": {status_category: "info"}, ...}
@@ -564,7 +564,7 @@ CRITICAL @http.status_code:[500 TO 599]
 
 これに対して、ステータスリマッパーのルールを定義する。
 
-`http.status_category`属性のログステータス値が、ステータスファセット (`INFO`、`WARNING`、`ERROR`など) として登録されるようにする。
+`http.status_category` 属性のログステータス値が、ステータスファセット (`INFO`、`WARNING`、`ERROR` など) として登録されるようにする。
 
 <br>
 
@@ -574,7 +574,7 @@ CRITICAL @http.status_code:[500 TO 599]
 
 #### ▼ Grokパーサーとは
 
-パースルール (`%{<マッチャー名>:<エクストラクト名>:<フィルター名>}`) を使用して、`message`属性に割り当てられた非構造化ログを構造化し、構造化ログに付与する。また、Extractを使用すると、`message`属性以外に対してGrokパーサーを使用できるようになるため、構造化ログも扱えるようになる。
+パースルール (`%{<マッチャー名>:<エクストラクト名>:<フィルター名>}`) を使用して、`message` 属性に割り当てられた非構造化ログを構造化し、構造化ログに付与する。また、Extractを使用すると、`message` 属性以外に対してGrokパーサーを使用できるようになるため、構造化ログも扱えるようになる。
 
 > - https://docs.datadoghq.com/logs/processing/parsing/?tab=matcher
 > - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#grok-parser
@@ -600,7 +600,7 @@ Laravelから、以下のような非構造化ログを受信する例を考え�
 [2021-01-01 00:00:00] production.ERROR: ログのメッセージ
 ```
 
-非構造化ログのため、ログは基底構造化ログの`message`属性に割り当てられる。
+非構造化ログのため、ログは基底構造化ログの `message` 属性に割り当てられる。
 
 ```yaml
 {
@@ -617,13 +617,13 @@ Laravelから、以下のような非構造化ログを受信する例を考え�
 
 以下のようなGrokパーサールールを定義する。
 
-`date`マッチャーを使用して、また`date`属性をエクストラクト先とする。
+`date` マッチャーを使用して、また `date` 属性をエクストラクト先とする。
 
-`word`マッチャーを使用して、また`log_status`カスタム属性をエクストラクト先とする。
+`word` マッチャーを使用して、また `log_status` カスタム属性をエクストラクト先とする。
 
 任意のルール名を設定できる。
 
-`date`マッチャーのタイムスタンプ形式の指定は以下を参考にせよ。
+`date` マッチャーのタイムスタンプ形式の指定は以下を参考にせよ。
 
 > - https://docs.datadoghq.com/logs/log_configuration/parsing/?tab=matchers#parsing-dates
 
@@ -693,7 +693,7 @@ AWS WAFから以下のような構造化ログを受信する例を考える。
 
 以下のようなGrokパーサールールを定義する。
 
-`data`マッチャーを使用して、また`wafacl_name`カスタム属性をエクストラクト先とする。
+`data` マッチャーを使用して、また `wafacl_name` カスタム属性をエクストラクト先とする。
 
 抽出する必要のない文字列は、ワイルドカード (`.*`) を指定する。
 
@@ -701,9 +701,9 @@ AWS WAFから以下のような構造化ログを受信する例を考える。
 Rule .*\/webacl\/%{data:wafacl_name}\/.*
 ```
 
-また、Extract機能の対象キーを`webaclId`属性とする。
+また、Extract機能の対象キーを `webaclId` 属性とする。
 
-これにより、`webaclId`属性の非構造化ログは以下の様に構造化され、構造化ログに付与される。
+これにより、`webaclId` 属性の非構造化ログは以下の様に構造化され、構造化ログに付与される。
 
 ```yaml
 {"wafacl_name": "prd-foo-alb-waf"}
@@ -727,7 +727,7 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 192.168.0.1 [2021-01-01 12:00:00] GET /users?paginate=10&fooId=1 200
 ```
 
-非構造化ログのため、ログは基底構造化ログの`message`属性に割り当てられる。
+非構造化ログのため、ログは基底構造化ログの `message` 属性に割り当てられる。
 
 ```yaml
 {
@@ -763,7 +763,7 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
 
 これに対して、Urlパーサのルールを定義する。
 
-`http.url`属性からパスパラメーターやクエリパラメーターを検出し、`http.url_details`属性として新しく付与する。
+`http.url` 属性からパスパラメーターやクエリパラメーターを検出し、`http.url_details` 属性として新しく付与する。
 
 ```yaml
 {
@@ -832,7 +832,7 @@ AWS CloudWatch Logsから、以下のようなAWS API Gatewayアクセスログ�
 }
 ```
 
-これに対して、以下のようなカテゴリパーサーのルールを定義する。各Lambdaの`aws.invoked_function_arn`属性のARNに応じて、`service`属性にサービス値 (`foo-apigateway`、`bar-apigateway`、`baz-apigateway`) を付与する。この属性を使用する理由は、さまざまなAWSリソースの構造化ログが持っているためである (`owner`属性でも良い。ただし、おそらくS3からログを収集する場合はこれがない？) 。元の構造化ログにすでに`service`属性があるため、この値が上書きされる。
+これに対して、以下のようなカテゴリパーサーのルールを定義する。各Lambdaの `aws.invoked_function_arn` 属性のARNに応じて、`service` 属性にサービス値 (`foo-apigateway`、`bar-apigateway`、`baz-apigateway`) を付与する。この属性を使用する理由は、さまざまなAWSリソースの構造化ログが持っているためである (`owner` 属性でも良い。ただし、おそらくS3からログを収集する場合はこれがない？) 。元の構造化ログにすでに `service` 属性があるため、この値が上書きされる。
 
 ```
 foo-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
@@ -840,9 +840,9 @@ bar-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<AWSア�
 baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
 ```
 
-これにより、構造化ログの`service`属性にサービス値が割り当てられる。
+これにより、構造化ログの `service` 属性にサービス値が割り当てられる。
 
-補足として、`service`属性以外は元の構造化ログと同じため、省略している。
+補足として、`service` 属性以外は元の構造化ログと同じため、省略している。
 
 ```yaml
 {
@@ -859,7 +859,7 @@ baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<AWSア�
 
 これに対して、サービスリマッパーのルールを定義する。
 
-`service`属性のサービス値が、サービスファセットとして登録されるようにする。
+`service` 属性のサービス値が、サービスファセットとして登録されるようにする。
 
 <br>
 
@@ -879,7 +879,7 @@ Nginxから、以下のような非構造化ログを受信する例を考える
 
 これに対して、以下のようなGrokパーサーのルールを定義する。
 
-`http.useragent`属性にユーザーエージェント値を割り当てる。
+`http.useragent` 属性にユーザーエージェント値を割り当てる。
 
 ```
 access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] "(?>%{_method} |)%{_url}(?> %{_version}|)" %{_status_code} (?>%{_bytes_written}|-)
@@ -907,7 +907,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 これに対して、ユーザーエージェントパーサーのルールを定義する。
 
-`http.useragent`属性の値を分解し、`useragent_details`属性に振り分けるようにする。
+`http.useragent` 属性の値を分解し、`useragent_details` 属性に振り分けるようにする。
 
 これにより、構造化ログの各属性に値が割り当てられる。
 
@@ -967,7 +967,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 これに対して、ストリングビルダープロセッサーのルールを定義する。
 
-構造化ログの`http.url`の値を出力して完全なURLを作成し、これを`http.url_full`属性として新しく付与する。
+構造化ログの `http.url` の値を出力して完全なURLを作成し、これを `http.url_full` 属性として新しく付与する。
 
 ```
 https://example.com%{http.url}
@@ -995,26 +995,26 @@ https://example.com%{http.url}
 
 | 規則                            | 例               | 用途                                      |
 | ------------------------------- | ---------------- | ----------------------------------------- |
-| `<マイクロサービス名>-pipeline` | `order-pipeline` | `order`マイクロサービスのログを処理する。 |
+| `<マイクロサービス名>-pipeline` | `order-pipeline` | `order` マイクロサービスのログを処理する。 |
 
 #### ▼ プロセッサー系
 
 | 規則                                              | 例                            | 用途                                                                           |
 | ------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------ |
-| `<プロセッサーに合わせた動詞> <属性へのアクセス>` | `Categorize http.status_code` | `http.status_code`属性にアクセスし、値に応じてカテゴリプロセッサーを実行する。 |
+| `<プロセッサーに合わせた動詞> <属性へのアクセス>` | `Categorize http.status_code` | `http.status_code` 属性にアクセスし、値に応じてカテゴリプロセッサーを実行する。 |
 
 #### ▼ パーサー系
 
 | 規則                          | パーサーの種類   | 例                                                            | 用途                                                     |
 | ----------------------------- | ---------------- | ------------------------------------------------------------- | -------------------------------------------------------- |
-| `Parse <属性へのアクセス名>`  | Grokパーサー以外 | `Parse http.url`                                              | `http.url`属性にアクセスし、パーサーを実行する。         |
+| `Parse <属性へのアクセス名>`  | Grokパーサー以外 | `Parse http.url`                                              | `http.url` 属性にアクセスし、パーサーを実行する。         |
 | `Parse <タグ名> <ログの種類>` | Grokパーサー     | ・`Parse php-fpm access logs`<br>・`Parse php-fpm error logs` | 指定したタグの付いたログに対してGrokパーサーを実行する。 |
 
 #### ▼ リマッパー系
 
 | 規則                         | 例                           | 用途                                                               |
 | ---------------------------- | ---------------------------- | ------------------------------------------------------------------ |
-| `Remap <属性へのアクセス名>` | `Remap http.status_category` | `http.status_category`属性にアクセスし、属性のリマップを実行する。 |
+| `Remap <属性へのアクセス名>` | `Remap http.status_category` | `http.status_category` 属性にアクセスし、属性のリマップを実行する。 |
 
 <br>
 
@@ -1059,11 +1059,11 @@ log-pipeline
 
 #### ▼ リマッパーによる定義
 
-リマッパーでは、`Force attribute type`の項目で、再配置する属性のデータ型を指定できる。
+リマッパーでは、`Force attribute type` の項目で、再配置する属性のデータ型を指定できる。
 
-ログコンソールでフィルタリングする時に、ファセットで設定したデータ型と実際のデータ型が一致しないとフィルタリングできない。
+ログコンソールでフィルタリングするときに、ファセットで設定したデータ型と実際のデータ型が一致しないとフィルタリングできない。
 
-そのため、リマッパーを使用する時は明示的にデータ型を設定する。
+そのため、リマッパーを使用するときは明示的にデータ型を設定する。
 
 ![datadog_log-pipeline_data-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_log-pipeline_data-type.png)
 
@@ -1106,9 +1106,9 @@ autoFilledRule3 ...
 
 予約済み属性 (`message`、`timestamp`、`status`、`host`、`service`) に基づいて、ログを構造化する。
 
-例えば、受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの`message`属性に割り当てられる。
+例えば、受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの `message` 属性に割り当てられる。
 
-一方で、構造化ログであった場合は`message`属性は使用されない。
+一方で、構造化ログであった場合は `message` 属性は使用されない。
 
 > - https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source#preprocessing
 

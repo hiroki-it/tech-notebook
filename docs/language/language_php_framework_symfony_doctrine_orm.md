@@ -27,7 +27,7 @@ Data Mapperパターンで実装されている。
 
 ### SQLの定義
 
-#### ▼ `createQueryBuilder`関数
+#### ▼ `createQueryBuilder` 関数
 
 CRUD処理に必要なSQLを保持し、トランザクションによってSQLを実行する。
 
@@ -46,9 +46,9 @@ $queryBuilder = $this->createQueryBuilder();
 
 ### 読み出し
 
-#### ▼ `select`関数
+#### ▼ `select` 関数
 
-QueryBuilderクラスにおける`select`関数に、値を設定する。
+QueryBuilderクラスにおける `select` 関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -64,9 +64,9 @@ $queryBuilder
 
 ### 書き込み
 
-#### ▼ `insert`関数
+#### ▼ `insert` 関数
 
-QueryBuilderクラスにおける`insert`関数に、値を設定する。
+QueryBuilderクラスにおける `insert` 関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -77,9 +77,9 @@ $queryBuilder
     ->insert("mst_users")
 ```
 
-#### ▼ `update`関数
+#### ▼ `update` 関数
 
-QueryBuilderクラスにおける`update`関数に、値を設定する。
+QueryBuilderクラスにおける `update` 関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -90,9 +90,9 @@ $queryBuilder
     ->update("mst_users");
 ```
 
-#### ▼ `delete`関数
+#### ▼ `delete` 関数
 
-QueryBuilderクラスにおける`delete`関数に、値を設定する。
+QueryBuilderクラスにおける `delete` 関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -107,11 +107,11 @@ $queryBuilder
 
 ### 実行
 
-#### ▼ `getConnection`関数、`executeQuery`関数、`fetchAll`関数
+#### ▼ `getConnection` 関数、`executeQuery` 関数、`fetchAll` 関数
 
 DBへの接続し、SQLの実行する。
 
-DB接続に関わる`getConnection`関数を開始点として、返り値から繰り返し関数を取得し、`fetchAll`関数で、テーブルのクエリ名をキーとした連想配列が返される。
+DB接続に関わる `getConnection` 関数を開始点として、返り値から繰り返し関数を取得し、`fetchAll` 関数で、テーブルのクエリ名をキーとした連想配列が返される。
 
 **＊実装例＊**
 
@@ -132,7 +132,7 @@ $queryBuilder->getConnection()
 
 #### ▼ プレースホルダー
 
-プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡した上で、SQLとして発行する。
+プリペアードステートメントのSQL中にパラメーターを設定し、値をパラメーターに渡したうえで、SQLとして発行する。
 
 処理速度が速い。
 
@@ -227,7 +227,7 @@ class Foo
 
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
 
-RDBの処理用語に相当する`beginTransaction`関数、`commit`関数、`rollBack`関数を使用して、RDBを操作する。
+RDBの処理用語に相当する `beginTransaction` 関数、`commit` 関数、`rollBack` 関数を使用して、RDBを操作する。
 
 **＊実装例＊**
 

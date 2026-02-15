@@ -66,7 +66,7 @@ class Bar(Foo):
 
 #### ▼ コンストラクタインジェクション
 
-依存先のUserNameクラスを、`__init__`関数の引数として、Userクラスに注入する。
+依存先のUserNameクラスを、`__init__` 関数の引数として、Userクラスに注入する。
 
 ```python
 class User:

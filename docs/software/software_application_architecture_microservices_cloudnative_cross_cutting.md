@@ -55,7 +55,7 @@ flowchart LR
 | -------------------- | ------------------------------------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | AWS Systems Manager  | AWSリソースの非公開設定 (例：DBの認証情報)                    | AWS KMS                      | Terraformの使用時に、AWSリソースを構築する機密な設定を管理しておく。                                                                                             |
 | Kubernetes ConfigMap | コンテナが使用する公開設定 (例：タイムアウト値、タイムゾーン) | なし                         | ファイルや環境変数として、設定をコンテナに渡せる。設定を平文で管理する。                                                                                         |
-| Kubernetes Secret    | コンテナが使用する非公開設定 (例：DB認証情報)                 | Kubernetesリポジトリ内のSOPS | ファイルや環境変数として、コンテナに設定を渡せる。設定をbase64方式エンコードし、管理する。機密な設定を平文で管理することは危険であり、Secretで管理する方が良い。 |
+| Kubernetes Secret    | コンテナが使用する非公開設定 (例：DB認証情報)                 | Kubernetesリポジトリ内のSOPS | ファイルや環境変数として、コンテナに設定を渡せる。設定をbase64方式エンコードし、管理する。機密な設定を平文で管理することは危険であり、Secretで管理するほうが良い。 |
 
 [Microservices Pattern: Pattern: Externalized configuration](https://microservices.io/patterns/externalized-configuration.html)
 
@@ -127,13 +127,13 @@ CD設定のコードは、マイクロサービス間で統一するために、
 
 ArgoCDを採用している場合、ArgoCDのルートApplicationをプラットフォームリポジトリ、各チームの親Applicationを共有リポジトに配置します。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png).png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png).png)
 
 ### RPC-API開発ツール
 
 RPC-API開発ツールのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。
 
-gRPCでは、クライアントとサーバーの両方で、サービス定義ファイル (`proto`ファイル) から作成したpbファイルを使用しなければなりません。
+gRPCでは、クライアントとサーバーの両方で、サービス定義ファイル (`proto` ファイル) から作成したpbファイルを使用しなければなりません。
 
 各リポジトリでpbファイルを作成するような運用であると、サービス定義ファイルの変更時に、各リポジトリでpbファイルやAPI仕様書を作成しなければならず、管理が煩雑になります。
 
@@ -416,7 +416,7 @@ CDNを採用している場合は、デプロイ前後で必要な静的ファ�
 
 また、E2Eツール (例：Playwright) を使用して、実際のユーザーを模した一連の操作を実施し、全てのコンポーネントを対象としたシステムテストを実施すべきです。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png)
 
 ### BFF
 
@@ -426,7 +426,7 @@ CDNを採用している場合は、デプロイ前後で必要な静的ファ�
 
 CI/CDパイプラインは、以下の要素からなります。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png)
 
 ### マイクロサービス
 
@@ -442,7 +442,7 @@ CI/CDパイプラインは、以下の要素からなります。
 
 また、ロードテストツール (例：Gatling) を使用して、マイクロサービスアーキテクチャ全体のロードテスト / 回帰テスト、を実施すべきです。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png)
 
 ### SREツール
 
@@ -453,7 +453,7 @@ CI/CDパイプラインは、以下の要素からなります。
 - KubernetesリポジトリのCIパイプライン (１行目)
 - CDパイプライン (２行目)
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png)
 
 ## リポジトリ分割パターンに基づくGitOpsパターン
 
@@ -696,7 +696,7 @@ kubeletがPodの開始プロセスを始めると、以下の一連のプロセ�
 | プラクティス項目                    | 説明                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Kubernetes Pod Probeオプション      | StartupProbe、LivenessProbe、ReadinessProbe、を使い分け、正常性を素早く検知する。                                                                                                                                                                                                                                                                                                                                               |
-| Kubernetes Pod PullPolicyオプション | コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。そこで、`.spec.containers[*].imagePullPolicy`キーにIfNotPresentを使用し、Node上にイメージのキャッシュがない場合だけプルできるようにする。Kubernetesでは、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用できる。デフォルトでは、コンテナイメージのキャッシュがあれば、イメージをプルせずにキャッシュを使用してくれる。 |
+| Kubernetes Pod PullPolicyオプション | コンテナ作成のたびにイメージをプルすると、イメージレジストリに負荷がかかる。そこで、`.spec.containers[*].imagePullPolicy` キーにIfNotPresentを使用し、Node上にイメージのキャッシュがない場合だけプルできるようにする。Kubernetesでは、一度プルしたコンテナイメージを基本的に削除しないため、キャッシュとして再利用できる。デフォルトでは、コンテナイメージのキャッシュがあれば、イメージをプルせずにキャッシュを使用してくれる。 |
 
 kubeletは、コンテナをヘルスチェック (例：StartupProbe、LivenessProbe、ReadinessProbe) し、障害を防ぎます。
 
@@ -727,8 +727,8 @@ Serviceとkube-proxyがPodの宛先情報を削除する前にPodが終了して
 
 | プラクティス項目                                          | 説明                                                                                                                                                                                                                                                                                                                                                                               |
 | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kubernetes Pod PreStopオプション                          | コンテナの削除後にPodを終了できるように、ユーザーがPodの`.spec.containers[*].lifecycle.preStop`キーに任意の秒数を設定する。コンテナが待機処理 (例：`sleep`コマンド) を実行できるようになる。                                                                                                                                                                                       |
-| Kubernetes Pod TerminationGracefulPeriodSecondsオプション | Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの`.spec.terminationGracePeriodSeconds`キーに任意の秒数を設定する。Podの削除に伴うServiceとkube-proxyの処理の完了を待機できるようになる。なお、`.spec.terminationGracePeriodSeconds`の秒数が長すぎると、Podの終了に時間がかかりすぎるようになり、Podの更新やAWS EKSクラスターのアップグレードに時間に影響が出る。 |
+| Kubernetes Pod PreStopオプション                          | コンテナの削除後にPodを終了できるように、ユーザーがPodの `.spec.containers[*].lifecycle.preStop` キーに任意の秒数を設定する。コンテナが待機処理 (例：`sleep` コマンド) を実行できるようになる。                                                                                                                                                                                       |
+| Kubernetes Pod TerminationGracefulPeriodSecondsオプション | Serviceとkube-proxyの処理後にPodを終了できるように、ユーザーがPodの `.spec.terminationGracePeriodSeconds` キーに任意の秒数を設定する。Podの削除に伴うServiceとkube-proxyの処理の完了を待機できるようになる。なお、`.spec.terminationGracePeriodSeconds` の秒数が長すぎると、Podの終了に時間がかかりすぎるようになり、Podの更新やAWS EKSクラスターのアップグレードに時間に影響が出る。 |
 
 ## サービスメッシュ外
 
@@ -871,7 +871,7 @@ KarpenterとAWSマネージドNodeグループNodeグループの間では、機
 | 機能例                   | Karpenter                                                            | AWSマネージドNodeグループNodeグループ                                                                                                                                           |
 | ------------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Node作成                 | ラベル付きのNodeを作成する。                                         | ラベル付きのNodeを作成する。                                                                                                                                                    |
-| Graceful Shutdown        | 自身の作成したNodeを削除する時に、GracefulShutdownを実行する。       | デフォルトではGraceful Shutdownを実行できない。EC2 UserDataで、`kubelet-config.json`にShutdownGracePeriodとShutdownGracePeriodCriticalPodsの設定が必要である。                  |
+| Graceful Shutdown        | 自身の作成したNodeを削除するときに、GracefulShutdownを実行する。       | デフォルトではGraceful Shutdownを実行できない。EC2 UserDataで、`kubelet-config.json` にShutdownGracePeriodとShutdownGracePeriodCriticalPodsの設定が必要である。                  |
 | 料金最適化               | Nodeの統合と垂直水平スケーリングを実行し、料金を最適化する。         | Cluster Autoscalerを併用してもしなくても、料金を最適化できない。                                                                                                                |
 | ハードウェア消費量最適化 | Nodeの垂直水平スケーリングを実行し、ハードウェア消費量を最適化する。 | Cluster Autoscalerを併用しなければスケーリングを実行できず、ハードウェア消費量を最適化できない。AWSマネージドNodeグループNodeグループは、設定されたNode数を維持するだけである。 |
 

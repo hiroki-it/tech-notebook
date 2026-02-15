@@ -23,7 +23,7 @@ description: 静的解析＠インフラのホワイトボックステストの�
 
 > - https://github.com/sbaudoin/yamllint
 
-なお、YAMLの静的解析ツールでHelmチャートを検証したい場合、`Chart.yaml`ファイルや`values`ファイルは`yaml`ファイルなので検証できるが、Helmテンプレートを検証できない。
+なお、YAMLの静的解析ツールでHelmチャートを検証したい場合、`Chart.yaml` ファイルや `values` ファイルは `yaml` ファイルなので検証できるが、Helmテンプレートを検証できない。
 
 > - https://github.com/sbaudoin/yamllint/issues/16
 > - https://github.com/helm/chart-testing/blob/v3.9.0/pkg/chart/chart.go#L474-L482
@@ -83,14 +83,14 @@ Kubernetesリソースのスキーマ (カスタムリソースであればCRD) 
 
 #### ▼ バージョンテスト
 
-指定したKubernetesのバージョンに基づいて、マニフェストのバージョン (`apiVersion`キー) を検証する。
+指定したKubernetesのバージョンに基づいて、マニフェストのバージョン (`apiVersion` キー) を検証する。
 
-`helm install`コマンドにも、マニフェストの`apiVersion`キーが非推奨かどうかを検証する。
+`helm install` コマンドにも、マニフェストの `apiVersion` キーが非推奨かどうかを検証する。
 
 - pluto
 - kubeplug
 - kubent (kube-no-trouble)
-- `helm install`コマンド
+- `helm install` コマンド
 
 > - https://helm.sh/docs/topics/kubernetes_apis/
 
@@ -121,7 +121,7 @@ Kubernetesリソースのスキーマ (カスタムリソースであればCRD) 
 
 #### ▼ 文法違反テスト
 
-- `terraform validate`コマンド
+- `terraform validate` コマンド
 
 #### ▼ 脆弱性診断
 
@@ -148,7 +148,7 @@ Kubernetesリソースのスキーマ (カスタムリソースであればCRD) 
 
 チャートの公式ルールに基づいて、構造の誤りを検出する。
 
-- `helm lint`コマンド
+- `helm lint` コマンド
 
 #### ▼ バージョンテスト
 

@@ -19,9 +19,9 @@ description: 分散トレース＠クライアントパッケージの知見を�
 
 OpenTelemetryをセットアップし、スパンを作成する機能を提供する。
 
-Goなら、`go.opentelemetry.io/otel/sdk`パッケージからコールできる。
+Goなら、`go.opentelemetry.io/otel/sdk` パッケージからコールできる。
 
-`NewTracerProvider`関数に分散トレースのオプションを渡す。
+`NewTracerProvider` 関数に分散トレースのオプションを渡す。
 
 ```go
 func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
@@ -108,7 +108,7 @@ func main()  {
 
 ### TracerProviderOption
 
-分散トレースのオプションを持つ`TracerProviderOption`構造体を別に作成し、TracerProviderに渡してもよい。
+分散トレースのオプションを持つ `TracerProviderOption` 構造体を別に作成し、TracerProviderに渡してもよい。
 
 ```go
 func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
@@ -256,9 +256,9 @@ TracerProviderのデフォルト値である。
 
 多くの言語で、TracerProviderのインターフェースの実装である。
 
-また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK固有の一部の関数 (`ForceFlush`関数) がある場合は使用できない。
+また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK固有の一部の関数 (`ForceFlush` 関数) がある場合は使用できない。
 
-Go (`v1.20`) から`go.opentelemetry.io/otel/trace/noop`に移動したため、アップグレード時はパッケージを変更する必要がある。
+Go (`v1.20`) から `go.opentelemetry.io/otel/trace/noop` に移動したため、アップグレード時はパッケージを変更する必要がある。
 
 ```go
 type TracerProvider interface {
@@ -278,7 +278,7 @@ type noopTracerProvider struct{
 
 開発環境では、分散トレースを実施したくない。
 
-`NeverSample`関数を使用し、スパンの作成を無効化するとよい。
+`NeverSample` 関数を使用し、スパンの作成を無効化するとよい。
 
 TracerProviderの初期化処理はそのままで、スパンの作成のみを無効化できる。
 
@@ -340,9 +340,9 @@ func newSampler() sdktrace.Sampler {
 > - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-2678508
 > - https://stackoverflow.com/a/75901212
 
-#### ▼ `OTEL_SDK_DISABLED`を有効化する
+#### ▼ `OTEL_SDK_DISABLED` を有効化する
 
-`OTEL_SDK_DISABLED`を有効化すると、実装をそのままで分散トレースを無効化できる。
+`OTEL_SDK_DISABLED` を有効化すると、実装をそのままで分散トレースを無効化できる。
 
 ただし、言語 (例：Go) によってはサポートしていない場合がある。
 
@@ -800,7 +800,7 @@ func main() {
 
 ### 未送信スパンの送信
 
-処理の失敗時にSpan Processor内に未送信なスパンがある場合、これを送信し切ってしまう方が良い。
+処理の失敗時にSpan Processor内に未送信なスパンがある場合、これを送信し切ってしまうほうが良い。
 
 ```go
 func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {
@@ -978,15 +978,15 @@ func main()  {
 
 標準出力をスパンの宛先とする。
 
-例えばGoの場合、`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`パッケージからコールできる。
+例えばGoの場合、`go.opentelemetry.io/otel/exporters/stdout/stdouttrace` パッケージからコールできる。
 
-`go.opentelemetry.io/otel/sdk/export/`パッケージは執筆時点 (2023/09/18時点) で非推奨である。
+`go.opentelemetry.io/otel/sdk/export/` パッケージは執筆時点 (2023/09/18時点) で非推奨である。
 
 #### ▼ OTLP HTTP Exporter
 
 OpenTelemetry Collectorをスパンの宛先とし、HTTPでOpenTelemetry Collector接続する。
 
-例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`パッケージからコールできる。
+例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp` パッケージからコールできる。
 
 #### ▼ OTLP gRPC Exporter
 
@@ -994,13 +994,13 @@ OpenTelemetry Collectorをスパンの宛先とし、gRPCでOpenTelemetry Collec
 
 gRPCクライアントとして、gRPCサーバーに接続可能なアプリケーションで使用できる。
 
-例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc`パッケージからコールできる。
+例えばGoの場合、`go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc` パッケージからコールできる。
 
 #### ▼ Jaeger Exporter
 
 Jaegerをスパンの宛先とする。
 
-例えばGoの場合、`go.opentelemetry.io/otel/exporters/trace/jaeger`パッケージからコールできる。
+例えばGoの場合、`go.opentelemetry.io/otel/exporters/trace/jaeger` パッケージからコールできる。
 
 #### ▼ AWS X-Ray Exporter
 
@@ -1010,7 +1010,7 @@ AWS X-Rayをスパンの宛先とする。
 
 Google Cloud Traceをスパンの宛先とする。
 
-例えばGoの場合、`github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace`パッケージからコールできる。
+例えばGoの場合、`github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace` パッケージからコールできる。
 
 > - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/CHANGELOG.md#0290---2022-04-11
@@ -1019,7 +1019,7 @@ Google Cloud Traceをスパンの宛先とする。
 
 ### スパン宛先の設定
 
-Goの場合、`WithEndpoint`関数を使用して、スパンの宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.foo-namespace.svc.cluster.local:4317`など) を設定する。
+Goの場合、`WithEndpoint` 関数を使用して、スパンの宛先 (例：`127.0.0.1:4317`、`opentelemetry-collector.foo-namespace.svc.cluster.local:4317` など) を設定する。
 
 <br>
 
@@ -1178,11 +1178,11 @@ func main()  {
 
 #### ▼ Batch Span Processor
 
-テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくした上でExporterに渡す。
+テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくしたうえでExporterに渡す。
 
 Exporterがまとめてスパンを送信できるようになるため、スパンの送信でスループットを高められる。
 
-Goの場合、`BatchSpanProcessor`関数を使用する。
+Goの場合、`BatchSpanProcessor` 関数を使用する。
 
 > - https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor
 
@@ -1336,7 +1336,7 @@ func (tc TraceContext) extract(carrier TextMapCarrier) trace.SpanContext {
 
 OpenTelemetryが定めるトレースコンテキスト仕様である。
 
-例えばGoの場合、`go.opentelemetry.io/otel/propagation`パッケージからコールできる。
+例えばGoの場合、`go.opentelemetry.io/otel/propagation` パッケージからコールできる。
 
 #### ▼ X-Ray
 
@@ -1348,7 +1348,7 @@ X-Rayが定めるトレースコンテキスト仕様である。
 
 いずれのトレースコンテキスト仕様を使用するかをクライアント側とサーバー側の両方で設定する必要がある。
 
-例えばGoの場合、`SetTextMapPropagator`関数を使用してトレースコンテキスト仕様を設定する。
+例えばGoの場合、`SetTextMapPropagator` 関数を使用してトレースコンテキスト仕様を設定する。
 
 ```go
 // クライアント側マイクロサービス
@@ -1398,11 +1398,11 @@ func NewTracerProvider() {
 
 デフォルトで、さまざまな属性を持っている。
 
-例えばGoであれば、`go.opentelemetry.io/otel/resource`パッケージからコールできる。
+例えばGoであれば、`go.opentelemetry.io/otel/resource` パッケージからコールできる。
 
 有益な属性として、以下がある。
 
-分散トレースの監視バックエンド (例：X-Ray) 上では、キー名は`otel.resource.<属性名>`になる。
+分散トレースの監視バックエンド (例：X-Ray) 上では、キー名は `otel.resource.<属性名>` になる。
 
 ```yaml
 {
@@ -1443,7 +1443,7 @@ func NewTracerProvider() {
 
 | 項目 | 必要なパッケージ                                                 |
 | ---- | ---------------------------------------------------------------- |
-| Go   | `go.opentelemetry.io/otel/sdk/trace`パッケージからコールできる。 |
+| Go   | `go.opentelemetry.io/otel/sdk/trace` パッケージからコールできる。 |
 
 <br>
 
@@ -1465,7 +1465,7 @@ func NewTracerProvider() {
 
 クライアント側でのサンプリング率を設定する。
 
-Tail-based方式の場合、前提としてアプリケーションで全てのスパンをサンプリングするため、サンプリング率は`100`% (`AlwaysOn`または`TraceIdRationBased=1.0`) が推奨である。
+Tail-based方式の場合、前提としてアプリケーションで全てのスパンをサンプリングするため、サンプリング率は `100`% (`AlwaysOn` または `TraceIdRationBased=1.0`) が推奨である。
 
 ただ、負荷を抑える目的で、一定割合のアプリケーションでサンプリングすることもある。
 
@@ -1474,7 +1474,7 @@ Tail-based方式の場合、前提としてアプリケーションで全ての�
 | `AlwaysOn`           | 全てのスパンをサンプリングする。本番環境で注意して使用する (非推奨というわけではない)。 |
 | `AlwaysOff`          | スパンをサンプリングしない。                                                            |
 | `TraceIdRationBased` | 指定した割合でスパンをランダムにサンプリングする。                                      |
-| `ParentBased`        | 親スパンの設定を継承する。`TraceIdRationBased`と組み合わせて使用することが多い。        |
+| `ParentBased`        | 親スパンの設定を継承する。`TraceIdRationBased` と組み合わせて使用することが多い。        |
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
 > - https://zenn.dev/ishii1648/articles/167e199bab5396
@@ -1483,7 +1483,7 @@ Tail-based方式の場合、前提としてアプリケーションで全ての�
 
 #### ▼ サーバー側 (OpenTelemetry Collector) のサンプリング率
 
-Tail-based方式の場合、OpenTelemetry Collectorでアプリケーションからの全てのスパンを収集した上で、Span Processorでサンプリング率を決める。
+Tail-based方式の場合、OpenTelemetry Collectorでアプリケーションからの全てのスパンを収集したうえで、Span Processorでサンプリング率を決める。
 
 ```yaml
 processors:
@@ -1523,7 +1523,7 @@ OpenTelemetryの仕様では、あるべき環境変数が決まっている。
 | `OTEL_LOGS_EXPORTER`       | ログのExporter名を設定する。                                                                                                      |
 | `OTEL_METRICS_EXPORTER`    | メトリクスのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`prometheus`、`none`、から設定できる。         |
 | `OTEL_PROPAGATORS`         | トレースコンテキスト仕様を設定する。                                                                                              |
-| `OTEL_SERVICE_NAME`        | Resourceの`service.name`を設定する。                                                                                              |
+| `OTEL_SERVICE_NAME`        | Resourceの `service.name` を設定する。                                                                                              |
 | `OTEL_RESOURCE_ATTRIBUTES` | Resourceの任意の属性を設定する。キーバリュー式 (`key1=value1,key2=value2`) で設定できる。                                         |
 | `OTEL_TRACES_EXPORTER`     | 分散トレースのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`jaeger`、`zipkin`、`none`、から設定できる。 |
 | `OTEL_TRACES_SAMPLER`      | 使用するSamplerを設定する。                                                                                                       |

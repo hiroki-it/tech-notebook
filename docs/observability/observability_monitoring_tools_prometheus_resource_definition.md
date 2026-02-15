@@ -297,7 +297,7 @@ Alertmanagerのセットアップ方法を決める。
 
 Alertmanagerのコンテナイメージのバージョンを設定する。
 
-使用するコンテナイメージは、`.spec.baseImage`キーに設定する。
+使用するコンテナイメージは、`.spec.baseImage` キーに設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -335,7 +335,7 @@ spec:
 
 Alertmanagerのコンテナイメージを設定する。
 
-コンテナイメージのバージョンは、`.spec.version`キーに設定する。
+コンテナイメージのバージョンは、`.spec.version` キーに設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -462,9 +462,9 @@ Serviceを持つPodではServiceMonitorを使用し、これを持たないPod�
 
 ### .spec.namespaceSelector
 
-PodMonitorを有効化する時の任意の`metadata.labels`キー設定する。
+PodMonitorを有効化するときの任意の `metadata.labels` キー設定する。
 
-Prometheusは、`metadata.labels`キー有効化したNamespace内のPodを監視する。
+Prometheusは、`metadata.labels` キー有効化したNamespace内のPodを監視する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -533,7 +533,7 @@ spec:
 
 ### .spec.externalLabel
 
-Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信する時に、これに付与するラベルを設定する。
+Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信するときに、これに付与するラベルを設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -663,7 +663,7 @@ spec:
 
 ルール (アラートルール、レコーディングルール) を設定する。
 
-PrometheusRuleの定義に応じて、prometheusコンテナの`/etc/prometheus/rules`ディレクトリ配下にルールの設定ファイルが配置される。
+PrometheusRuleの定義に応じて、prometheusコンテナの `/etc/prometheus/rules` ディレクトリ配下にルールの設定ファイルが配置される。
 
 有効になっているPrometheusRuleは、Prometheusダッシュボードの Status > Rule タブで確認できる。
 
@@ -704,7 +704,7 @@ record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
 
 #### ▼ 公開ルールレシピとは
 
-自前ルールを定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins、runbooks) を使用した方が良い。
+自前ルールを定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins、runbooks) を使用したほうが良い。
 
 > - https://monitoring.mixins.dev
 
@@ -732,9 +732,9 @@ prometheus-opratorでは、アラートルールとレコーディングルー�
 | Receiver          | string型 | `.Receiver`                                                                       | アラートの受信者が割り当てられている。                                                                                                                                                                      |
 | Status            | string型 | `.Status`                                                                         | アラートがFiring状態/Resolved状態が割り当てられている。                                                                                                                                                     |
 | Alerts            | map型    | `.Alerts.Labels.SortedPairs`                                                      | アラートの情報が割り当てられている。<br>・https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                                                   |
-| GroupLabels       | map型    | ・`.GroupLabels.alertname` <br>・`.GroupLabels.instance` <br>・`.GroupLabels.job` | 特定のアラートグループに関するラベルが割り当てられている。`.spec.groups[*].rules[*].labels`キー配下で設定したユーザー定義のラベルも含む。<br>・https://prometheus.io/docs/alerting/latest/notifications/#kv |
+| GroupLabels       | map型    | ・`.GroupLabels.alertname` <br>・`.GroupLabels.instance` <br>・`.GroupLabels.job` | 特定のアラートグループに関するラベルが割り当てられている。`.spec.groups[*].rules[*].labels` キー配下で設定したユーザー定義のラベルも含む。<br>・https://prometheus.io/docs/alerting/latest/notifications/#kv |
 | CommonLabels      | map型    | `.CommonLabels.alertname`                                                         | 全てのアラートに共通するラベルが割り当てられている。                                                                                                                                                        |
-| CommonAnnotations | map型    | `.CommonAnnotations.summary`                                                      | 全てのアラートに共通するアノテーションが割り当てられている。`.spec.groups[*].rules[*].labels`キー配下で設定したユーザー定義のアノテーションも含む。                                                         |
+| CommonAnnotations | map型    | `.CommonAnnotations.summary`                                                      | 全てのアラートに共通するアノテーションが割り当てられている。`.spec.groups[*].rules[*].labels` キー配下で設定したユーザー定義のアノテーションも含む。                                                         |
 | ExternalURL       | string型 | `.ExternalURL`                                                                    | AlertmangerのURLが割り当てられている。                                                                                                                                                                      |
 
 > - https://www.amazon.co.jp/dp/4910313001
@@ -777,14 +777,14 @@ spec:
 
 #### ▼ rules (アラートルールの場合)
 
-`alert`キーを宣言し、アラートルールを設定する。
+`alert` キーを宣言し、アラートルールを設定する。
 
 アラートルールは、『アッパーキャメルケース』で命名する。
 
 | 項目          | 説明                                                                                                                       |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `alert`       | アラートルール名を設定する                                                                                                 |
-| `annotations` | アラートルールによるアラートの通知内容を設定する。`.metadata.labels`キーや発火値 (`$value`) を通知内容に変数で出力できる。 |
+| `annotations` | アラートルールによるアラートの通知内容を設定する。`.metadata.labels` キーや発火値 (`$value`) を通知内容に変数で出力できる。 |
 | `expr`        | アラートルールで監視するメトリクスに関するPromQLを設定する。ロジックを変更すればアラートの発火をテストできる。             |
 | `for`         | アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。                           |
 | `labels`      | アラートの通知内容に付与するラベルを設定する                                                                               |
@@ -822,7 +822,7 @@ spec:
 
 #### ▼ rules (レコーディングルールの場合)
 
-`record`キーを宣言し、レコーディングルールを設定する。
+`record` キーを宣言し、レコーディングルールを設定する。
 
 アラートルールは、『スネークケース』『コロン区切り』で命名する。
 
@@ -979,13 +979,13 @@ spec:
 
 作成したメトリクスのラベルやその値を変換する。
 
-ServiceMonitorでは、Kubernetes SD configurationsのメタラベルのうちで、`service`/`pod`/`endpoints`のラベルを変換できる。
+ServiceMonitorでは、Kubernetes SD configurationsのメタラベルのうちで、`service`/`pod`/`endpoints` のラベルを変換できる。
 
 **＊例＊**
 
-Node Exporterが作成したメトリクスでは、`instance`ラベルが`*.*.*.*:<ポート番号>`になっている。
+Node Exporterが作成したメトリクスでは、`instance` ラベルが `*.*.*.*:<ポート番号>` になっている。
 
-これだとわかりにくいため、Podの`__meta_kubernetes_pod_node_name`ラベルの値 (Nodeのホスト名) に変換する。
+これだとわかりにくいため、Podの `__meta_kubernetes_pod_node_name` ラベルの値 (Nodeのホスト名) に変換する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -1133,7 +1133,7 @@ metadata:
 
 ![prometheus-operator_service-monitor_match-labels](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor_match-labels.png)
 
-収集の対象とするServiceに付与された`.metadata.labels`キーを設定する。
+収集の対象とするServiceに付与された `.metadata.labels` キーを設定する。
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1

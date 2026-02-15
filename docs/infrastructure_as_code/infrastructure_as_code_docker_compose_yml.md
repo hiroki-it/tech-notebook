@@ -25,7 +25,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 ## 02. services
 
-### `services`とは
+### `services` とは
 
 コンテナオーケストレーションにおける1つのコンテナを定義する。
 
@@ -33,7 +33,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 コンテナ名と異なり、サービス名は他のプロジェクトと重複しても良い。
 
-`docker compose`コマンドの引数として指定するため、できるだけ簡潔にする。
+`docker compose` コマンドの引数として指定するため、できるだけ簡潔にする。
 
 オプション一覧は以下のリンクを参考にせよ。
 
@@ -43,9 +43,9 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 ### `args`
 
-Dockerfileの`ARGS`に展開する変数を定義する。
+Dockerfileの `ARGS` に展開する変数を定義する。
 
-Dockerfileに直接的に実装することとの使い分けとして、Dockerfileの実装は簡単に変更できないが、`docker-compose.yml`ファイルにおける定義は変更しやすい。
+Dockerfileに直接的に実装することとの使い分けとして、Dockerfileの実装は簡単に変更できないが、`docker-compose.yml` ファイルにおける定義は変更しやすい。
 
 そのため、使用者に変更して欲しくない変数はDockerfileに実装し、変更しても問題ない変数はこのオプションを使用する。
 
@@ -129,7 +129,7 @@ Dockerfileを必要とせず、ベンダーが提供するイメージをその�
 
 **＊実装例＊**
 
-mysqlイメージを使用してコンテナを作成する時に、最初に文字コードを設定するコマンドを実行する。
+mysqlイメージを使用してコンテナを作成するときに、最初に文字コードを設定するコマンドを実行する。
 
 ```yaml
 services:
@@ -187,7 +187,7 @@ dotenv系パッケージを使用しなくてもよくなる。
 
 mysqlイメージを使用した場合、DBの環境変数の設定が必要である。
 
-DBの環境変数は、バックエンドコンテナでも必要なため、`environment`キーに直接的に環境変数を設定せずに、`env`ファイルに定義した環境変数を`environment`キーで参照すると良い。
+DBの環境変数は、バックエンドコンテナでも必要なため、`environment` キーに直接的に環境変数を設定せずに、`env` ファイルに定義した環境変数を `environment` キーで参照すると良い。
 
 ```yaml
 services:
@@ -243,7 +243,7 @@ services:
 
 コンテナに、ユーザー定義のプライベートIPアドレスと、これにマッピングされたホスト名を設定する。
 
-マッピングは、`/etc/hosts`ファイルに書き込まれる。
+マッピングは、`/etc/hosts` ファイルに書き込まれる。
 
 もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。
 
@@ -278,7 +278,7 @@ ff02::2 ip6-allrouters
 
 DBのような、コンテナの起動後にトラフィックが処理可能になるまで時間がかかるツールで役立つ。
 
-`wait`コマンドを実行することに相当する。
+`wait` コマンドを実行することに相当する。
 
 ```yaml
 services:
@@ -322,7 +322,7 @@ services:
 
 コンテナに割り当てられるプライベートIPアドレスに、指定したホスト名をマッピングする。
 
-マッピングは、`/etc/hosts`ファイルに書き込まれる。
+マッピングは、`/etc/hosts` ファイルに書き込まれる。
 
 もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。
 
@@ -559,7 +559,7 @@ services:
 
 ### `stdin_open`
 
-`docker compose`コマンドの裏側で実行される`docker run`コマンドで、`i`オプションを有効化するか否かを設定する。
+`docker compose` コマンドの裏側で実行される `docker run` コマンドで、`i` オプションを有効化するか否かを設定する。
 
 **＊実装例＊**
 
@@ -573,9 +573,9 @@ services:
 
 ### `tty`
 
-`docker compose`コマンドの裏側で実行される`docker run`コマンドで、`t`オプションを有効化するか否かを設定する。
+`docker compose` コマンドの裏側で実行される `docker run` コマンドで、`t` オプションを有効化するか否かを設定する。
 
-疑似ターミナルを割り当てるによって、`exit`の後もバックグラウンドでコンテナを起動させ続けられる。
+疑似ターミナルを割り当てるによって、`exit` の後もバックグラウンドでコンテナを起動させ続けられる。
 
 **＊実装例＊**
 
@@ -589,7 +589,7 @@ services:
 
 ### `user`
 
-`docker compose`コマンドの裏側で実行される`docker run`コマンドで、`u`オプションを有効化するか否かを設定する。
+`docker compose` コマンドの裏側で実行される `docker run` コマンドで、`u` オプションを有効化するか否かを設定する。
 
 コンテナの実行ユーザーのユーザーIDとグループIDを設定する。
 
@@ -607,9 +607,9 @@ services:
 
 ### `volumes` (バインドマウント)
 
-最上層と`service`内で、異なるボリューム名を記述した場合、バインドマウントを定義する。
+最上層と `service` 内で、異なるボリューム名を記述した場合、バインドマウントを定義する。
 
-ホスト側の`/Users`ディレクトリをコンテナ側にマウントする。
+ホスト側の `/Users` ディレクトリをコンテナ側にマウントする。
 
 **＊実装例＊**
 
@@ -624,9 +624,9 @@ services:
 
 ### `volumes` (ボリュームマウント)
 
-最上層と`service`内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。
+最上層と `service` 内の両方に、同じボリューム名を記述した場合、ボリュームマウントを定義する。
 
-dockerエリアにVolumeが作成され、`service`オプション内に設定した`volumes`オプションでボリュームマウントを実行する。
+dockerエリアにVolumeが作成され、`service` オプション内に設定した `volumes` オプションでボリュームマウントを実行する。
 
 > - https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c
 
@@ -660,7 +660,7 @@ DRIVER    VOLUME NAME
 local     mysql_db_data
 ```
 
-権限、バインドマウントで`datadir`ディレクトリにマウントしようとすると、権限エラーになってしまう。
+権限、バインドマウントで `datadir` ディレクトリにマウントしようとすると、権限エラーになってしまう。
 
 ```bash
 mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - Permission denied)
@@ -672,7 +672,7 @@ mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - P
 
 ### 変数展開
 
-環境変数を`docker-compose.yml`ファイルに展開する。変数の展開にあたり、`docker-compose.yml`ファイルと同じ階層にある`.env`ファイルが自動的に読み込まれる。この展開に`env_file`オプションを使用できない。そのため、例えば`.env`ファイル以外の名前の環境変数ファイルを変数展開のために使用できない。
+環境変数を `docker-compose.yml` ファイルに展開する。変数の展開にあたり、`docker-compose.yml` ファイルと同じ階層にある `.env` ファイルが自動的に読み込まれる。この展開に `env_file` オプションを使用できない。そのため、例えば `.env` ファイル以外の名前の環境変数ファイルを変数展開のために使用できない。
 
 **＊実装例＊**
 
@@ -689,7 +689,7 @@ services:
 
 ## 03. networks
 
-### `networks`とは
+### `networks` とは
 
 標準のネットワークを作成する。ただし定義しなくとも自動的に作成される。
 
@@ -765,17 +765,17 @@ $ docker network inspect foo-network
 
 ### `external`
 
-#### ▼ `external`とは
+#### ▼ `external` とは
 
 ![docker-compose_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-compose_external.png)
 
-異なる`docker-compose.yml`ファイルから相互に通信できるネットワークを作成する。
+異なる `docker-compose.yml` ファイルから相互に通信できるネットワークを作成する。
 
-作成されるネットワーク名は、`<プロジェクト名>_<ネットワーク名>`になる。
+作成されるネットワーク名は、`<プロジェクト名>_<ネットワーク名>` になる。
 
 **＊実装例＊**
 
-フロントエンド領域とバックエンド領域が異なる`docker-compose.yml`ファイルで管理されている。
+フロントエンド領域とバックエンド領域が異なる `docker-compose.yml` ファイルで管理されている。
 
 フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。
 
@@ -785,7 +785,7 @@ $ docker network inspect foo-network
 $ docker network create shared-network
 ```
 
-(2) バックエンドのdocker-composeを設定する。この時、`backend-network`というdockerネットワークを新しく作成し、また既存の`shared-network`に接続する。
+(2) バックエンドのdocker-composeを設定する。この時、`backend-network` というdockerネットワークを新しく作成し、また既存の `shared-network` に接続する。
 
 ```yaml
 # バックエンドのDocker-compose
@@ -809,7 +809,7 @@ networks:
     external: true
 ```
 
-(3) フロントエンドのdocker-composeを設定する。この時、既存の`shared-network`に接続する。
+(3) フロントエンドのdocker-composeを設定する。この時、既存の `shared-network` に接続する。
 
 ```yaml
 # フロントエンドのDocker-compose
@@ -835,11 +835,11 @@ networks:
 
 #### ▼ dockerネットワーク外からの通信
 
-`external`オプションはdockerネットワーク間を接続する。
+`external` オプションはdockerネットワーク間を接続する。
 
-一方で、dockerネットワーク外からの通信であれば、`external`オプションは不要である。
+一方で、dockerネットワーク外からの通信であれば、`external` オプションは不要である。
 
-例えば、仮想サーバーからDBコンテナに接続する場合、仮想サーバーで`localhost` (コンテナの`hostname`オプションではなく) を指定すればよい。
+例えば、仮想サーバーからDBコンテナに接続する場合、仮想サーバーで `localhost` (コンテナの `hostname` オプションではなく) を指定すればよい。
 
 <br>
 
@@ -849,7 +849,7 @@ networks:
 
 #### ▼ NFSストレージ
 
-NFSプラグインを使用することにより、永続データを`/var/lib/docker/volumes`ディレクトリではなく、NFSストレージに保管する。
+NFSプラグインを使用することにより、永続データを `/var/lib/docker/volumes` ディレクトリではなく、NFSストレージに保管する。
 
 **＊実装例＊**
 
@@ -886,9 +886,9 @@ local     app_data
 
 #### ▼ ビルド時にSQL実行
 
-mysqlコンテナには`docker-entrypoint-initdb.d`ディレクトリがある。
+mysqlコンテナには `docker-entrypoint-initdb.d` ディレクトリがある。
 
-このディレクトリ配下に配置された`sql`ファイルや`bash`プロセスは、mysqlコンテナのビルド時に`docker-entrypoint.sh`ファイルによって実行される。
+このディレクトリ配下に配置された `sql` ファイルや `bash` プロセスは、mysqlコンテナのビルド時に `docker-entrypoint.sh` ファイルによって実行される。
 
 そのため、バインドマウントを使用してこのディレクトリ配下にファイルを配置することにより、初期データの挿入や複数DBの作成を実現できる。
 
@@ -898,7 +898,7 @@ mysqlコンテナには`docker-entrypoint-initdb.d`ディレクトリがある�
 
 **＊実装例＊**
 
-mysqlコンテナに、PHPUnitの実行時のみ使用するDBを追加する。以下のような、`docker-compose.yml`ファイルを作成する。
+mysqlコンテナに、PHPUnitの実行時のみ使用するDBを追加する。以下のような、`docker-compose.yml` ファイルを作成する。
 
 ```yaml
 version: "3.9"
@@ -929,7 +929,7 @@ volumes:
   db_data:
 ```
 
-また、`docker-entrypoint-initdb.d`ディレクトリ配下に配置するファイルとして、以下の`sql`ファイルを作成する。
+また、`docker-entrypoint-initdb.d` ディレクトリ配下に配置するファイルとして、以下の `sql` ファイルを作成する。
 
 ```yaml
 # initdbに複数のsqlファイルを置く
@@ -938,7 +938,7 @@ initdb
 └── bar.sql
 ```
 
-このSQLでは、`test`というDBを作成し、ユーザーが`test`DBに接続できるようにする。
+このSQLでは、`test` というDBを作成し、ユーザーが `test`DBに接続できるようにする。
 
 ```mysql
 CREATE DATABASE IF NOT EXISTS `test` COLLATE 'utf8mb4_general_ci' CHARACTER SET 'utf8mb4';

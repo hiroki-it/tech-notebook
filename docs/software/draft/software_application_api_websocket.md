@@ -156,7 +156,7 @@ Sec-WebSocket-Version: 13
 
 #### ▼ レスポンスヘッダー
 
-サーバーは、HTTPレスポンスに`Upgrade`ヘッダーを設定する。
+サーバーは、HTTPレスポンスに `Upgrade` ヘッダーを設定する。
 
 これにより、HTTPプロトコルがWebsocketプロトコルに変更される。
 
@@ -314,7 +314,7 @@ Sec-WebSocket-Version: 13
 
 #### ▼ レスポンスヘッダー
 
-MQTTサーバーは、HTTPレスポンスに`Upgrade`ヘッダーを設定する。
+MQTTサーバーは、HTTPレスポンスに `Upgrade` ヘッダーを設定する。
 
 これにより、HTTPプロトコルがWebsocketプロトコルに変更される。
 

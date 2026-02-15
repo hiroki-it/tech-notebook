@@ -21,7 +21,7 @@ description: リソース定義＠Istioの知見を記録しています。
 
 チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
-チャートは、`istioctl`コマンドインストール時に`manifests`ディレクトリ以下に同梱される。
+チャートは、`istioctl` コマンドインストール時に `manifests` ディレクトリ以下に同梱される。
 
 ```bash
 # IstioOperatorのdemoをインストールし、リソースを作成する
@@ -113,9 +113,9 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/gateway -n
 
 AuthorizationPolicyの適用範囲の仕組みは、RequestAuthenticationと同じである。
 
-作成したNamespaceに対して適用され、`istio-system`に置いた場合は全てのNamespaceに適用される。
+作成したNamespaceに対して適用され、`istio-system` に置いた場合は全てのNamespaceに適用される。
 
-もし、適用範囲を小さくしたい場合は、`.spec.selector`キーを使用する。
+もし、適用範囲を小さくしたい場合は、`.spec.selector` キーを使用する。
 
 <br>
 
@@ -145,7 +145,7 @@ spec:
 
 認可フェーズの委譲先のIDプロバイダーを設定する。
 
-事前に、ConfigMapの`.mesh.extensionProvider`キーにIDプロバイダーを登録しておく必要がある。
+事前に、ConfigMapの `.mesh.extensionProvider` キーにIDプロバイダーを登録しておく必要がある。
 
 **＊実装例＊**
 
@@ -203,7 +203,7 @@ data:
 
 送信元Podに紐づくServiceAccountが送信元の場合、認可を実施する。
 
-Istioはクライアント証明書にID (例：SPIFEE ID) を設定しており、このIDが`principals`値と一致するかを検証する。
+Istioはクライアント証明書にID (例：SPIFEE ID) を設定しており、このIDが `principals` 値と一致するかを検証する。
 
 Kubernetesでは送信元Podの名前を知る方法がない (IPアドレスは可能) なので、制御しやすくなる。
 
@@ -381,11 +381,11 @@ spec:
 
 デフォルト値である。
 
-他のNamespaceのVirtualServiceに紐づける場合、`*`とする必要がある。
+他のNamespaceのVirtualServiceに紐づける場合、`*` とする必要がある。
 
-もし、同じNamespace内のVirtualServiceと紐づける場合、`.`とする。
+もし、同じNamespace内のVirtualServiceと紐づける場合、`.` とする。
 
-つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
+つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは `*` とし、それ以外のこれらの場合は `.` とする。
 
 **＊実装例＊**
 
@@ -413,11 +413,11 @@ spec:
 
 #### ▼ `.` (ドット)
 
-同じNamespace内のVirtualServiceと紐づける場合、`.`とする。
+同じNamespace内のVirtualServiceと紐づける場合、`.` とする。
 
-もし、他のNamespaceのVirtualServiceに紐づける場合、`*`とする必要がある。
+もし、他のNamespaceのVirtualServiceに紐づける場合、`*` とする必要がある。
 
-つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
+つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは `*` とし、それ以外のこれらの場合は `.` とする。
 
 **＊実装例＊**
 
@@ -475,17 +475,17 @@ spec:
 
 VirtualServiceを起点としたPodのカナリアリリースで使用する。
 
-ルーティング先のPodの`.metadata.labels`キーを設定する。
+ルーティング先のPodの `.metadata.labels` キーを設定する。
 
-`.spec.subsets[*].name`キーの値は、VirtualServiceで設定した`.spec.http[*].route[*].destination.subset`キーに合わせる必要がある。
+`.spec.subsets[*].name` キーの値は、VirtualServiceで設定した `.spec.http[*].route[*].destination.subset` キーに合わせる必要がある。
 
 ![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
 
 **＊実装例＊**
 
-`subset`が`v1`に対するインバウンド通信では、`version`キーの値が`v1`であるPodにルーティングする。
+`subset` が `v1` に対するインバウンド通信では、`version` キーの値が `v1` であるPodにルーティングする。
 
-`v2`も同様である。
+`v2` も同様である。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -516,7 +516,7 @@ spec:
 
 デフォルトでは上限がない。
 
-`2`以上であればTCP KeepAliveを実施し、`1`とする場合はTCP KeepAliveは無効になる。
+`2` 以上であればTCP KeepAliveを実施し、`1` とする場合はTCP KeepAliveは無効になる。
 
 また、サーキットブレイカーを開始するための外れ値の閾値になる。
 
@@ -560,7 +560,7 @@ spec:
 
 キューに入れられるHTTPリクエストの最大数を設定する。
 
-キューを超えるHTTPリクエストに対しては、`503`レスポンスを返信する。
+キューを超えるHTTPリクエストに対しては、`503` レスポンスを返信する。
 
 **＊実装例＊**
 
@@ -583,7 +583,7 @@ spec:
 
 同時処理できるHTTP/1.1とHTTP/2の最大リクエスト数である。
 
-これを超過した場合、そのリクエストに対しては`503`ステータスになる。
+これを超過した場合、そのリクエストに対しては `503` ステータスになる。
 
 **＊実装例＊**
 
@@ -669,7 +669,7 @@ spec:
 
 不要な接続を早期に切断できる。
 
-VirtualServiceの`.spec.http.timeout`キーとは異なり、DestinationRuleのアイドルタイムアウトはTCP接続中に無通信状態を許可する時間である。
+VirtualServiceの `.spec.http.timeout` キーとは異なり、DestinationRuleのアイドルタイムアウトはTCP接続中に無通信状態を許可する時間である。
 
 **＊実装例＊**
 
@@ -733,11 +733,11 @@ spec:
 
 オープン状態の期間を設定する。
 
-`baseEjectionTime`キー後、宛先の正常性を確認し、もしエラー条件が発生していなければサーキットブレイカーを停止する。
+`baseEjectionTime` キー後、宛先の正常性を確認し、もしエラー条件が発生していなければサーキットブレイカーを停止する。
 
-もしエラー条件がまだ解決していなければ、もう一度`baseEjectionTime`を実行する。
+もしエラー条件がまだ解決していなければ、もう一度 `baseEjectionTime` を実行する。
 
-どのくらいの期間で10回以上を判定するかは、`interval`キーで設定する。
+どのくらいの期間で10回以上を判定するかは、`interval` キーで設定する。
 
 **＊実装例＊**
 
@@ -765,11 +765,11 @@ spec:
 
 #### ▼ outlierDetection.consecutiveGatewayErrors
 
-サーキットブレイカーを開始する外れ値 (Gateway系ステータスの`502`、`503`、`504`) の閾値を設定する。
+サーキットブレイカーを開始する外れ値 (Gateway系ステータスの `502`、`503`、`504`) の閾値を設定する。
 
-似た設定として、`500`系ステータスの閾値を設定する`consecutive5xxErrors`キーがあるが、併用できる。
+似た設定として、`500` 系ステータスの閾値を設定する `consecutive5xxErrors` キーがあるが、併用できる。
 
-どのくらいの期間で10回以上を判定するかは、`interval`キーで設定する。
+どのくらいの期間で10回以上を判定するかは、`interval` キーで設定する。
 
 **＊実装例＊**
 
@@ -796,15 +796,15 @@ spec:
 
 #### ▼ outlierDetection.consecutive5xxErrors
 
-サーキットブレイカーを開始する外れ値 (`500`系ステータス) の閾値を設定する。
+サーキットブレイカーを開始する外れ値 (`500` 系ステータス) の閾値を設定する。
 
-似た設定として、Gateway系ステータス率の閾値を設定する`consecutiveGatewayErrors`キーがあるが、併用できる。
+似た設定として、Gateway系ステータス率の閾値を設定する `consecutiveGatewayErrors` キーがあるが、併用できる。
 
-どのくらいの期間で10回以上を判定するかは、`interval`キーで設定する。
+どのくらいの期間で10回以上を判定するかは、`interval` キーで設定する。
 
 **＊実装例＊**
 
-`500`系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
+`500` 系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
 
 サーキットブレイカー中に、異常なPodを30秒間排除する
 
@@ -832,7 +832,7 @@ spec:
 
 **＊実装例＊**
 
-`500`系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
+`500` 系ステータスが10秒間に10回以上発生したら、サーキットブレイカーを開始する。
 
 サーキットブレイカー中に、異常なPodを30秒間排除する
 
@@ -861,7 +861,7 @@ Pod全体のうちで排除できる最大Pod数を設定する。
 
 全てのPodを排除する。
 
-代わりにistio-proxyから返却された`503`ステータス (response_flagは`UH`) のレスポンスに応じて、送信元マイクロサービスでフォールバックを実行する。
+代わりにistio-proxyから返却された `503` ステータス (response_flagは `UH`) のレスポンスに応じて、送信元マイクロサービスでフォールバックを実行する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -883,7 +883,7 @@ spec:
 
 指定された割合で正常になるように、ルーティング先を決める。
 
-異常なルーティング先がある場合は正常な方にルーティングし、異常なルーティング先が回復することを待つ。
+異常なルーティング先がある場合は正常なほうにルーティングし、異常なルーティング先が回復することを待つ。
 
 **＊実装例＊**
 
@@ -929,7 +929,7 @@ spec:
 
 指定したゾーンのPodに対して、指定した重みづけでルーティングする。
 
-リージョン名やゾーン名は、Podの`topology.kubernetes.io/region`キーや`topology.kubernetes.io/zone`キーの値を設定する。
+リージョン名やゾーン名は、Podの `topology.kubernetes.io/region` キーや `topology.kubernetes.io/zone` キーの値を設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -1087,7 +1087,7 @@ spec:
 
 スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で、増加率を設定する。
 
-`1`の場合は、直線的に増加する。
+`1` の場合は、直線的に増加する。
 
 リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要なJVM言語製アプリケーション) にいきなり高負荷をかけないようにできる。
 
@@ -1158,7 +1158,7 @@ spec:
 
 **＊実装例＊**
 
-ネットワークフィルターである`network.http_connection_manager`の設定値を変更する。
+ネットワークフィルターである `network.http_connection_manager` の設定値を変更する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1196,7 +1196,7 @@ spec:
 
 フィルターの設定値を変更する場合、その実行条件を設定する。
 
-条件に合致する設定値があった場合、`.spec.configPatches.patch`キーで設定した内容の変更処理を実施する。
+条件に合致する設定値があった場合、`.spec.configPatches.patch` キーで設定した内容の変更処理を実施する。
 
 #### ▼ cluster
 
@@ -1302,7 +1302,7 @@ spec:
 
 #### ▼ patchとは
 
-`.spec.configPatches.match`キーに設定した設定値があった場合、フィルターの設定値の変更内容を設定する。
+`.spec.configPatches.match` キーに設定した設定値があった場合、フィルターの設定値の変更内容を設定する。
 
 #### ▼ operation
 
@@ -1325,7 +1325,7 @@ spec:
 
 **＊実装例＊**
 
-`.spec.configPatches.match`キーに合致したフィルターの直前に挿入する。
+`.spec.configPatches.match` キーに合致したフィルターの直前に挿入する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1554,7 +1554,7 @@ spec:
 > - https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit
 > - https://learncloudnative.com/blog/2022-09-08-ratelimit-istio
 
-#### ▼ JWTの同じ`sub`に対して
+#### ▼ JWTの同じ `sub` に対して
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1766,7 +1766,7 @@ VirtualServiceとDestinationRuleの設定値は、istio-proxyに適用される�
 
 ### annotationsの定義
 
-DeploymentやPodの`.metadata.anontations`キーにて、istio-proxyごとのオプション値を設定する。
+DeploymentやPodの `.metadata.anontations` キーにて、istio-proxyごとのオプション値を設定する。
 
 > - https://istio.io/latest/docs/reference/config/annotations/
 
@@ -1828,11 +1828,11 @@ spec:
 
 #### ▼ selectorとは
 
-Istio Ingress Gateway/EgressGatewayに付与された`.metadata.labels`キーを設定する。
+Istio Ingress Gateway/EgressGatewayに付与された `.metadata.labels` キーを設定する。
 
-デフォルトでは、Istio Ingress Gatewayには`istio`ラベルがあり、値は`ingressgateway`である。
+デフォルトでは、Istio Ingress Gatewayには `istio` ラベルがあり、値は `ingressgateway` である。
 
-また、Istio Egress Gatewayには`istio`ラベルがあり、値は`egressgateway`である。
+また、Istio Egress Gatewayには `istio` ラベルがあり、値は `egressgateway` である。
 
 **＊実装例＊**
 
@@ -1974,7 +1974,7 @@ spec:
 
 ### .spec.servers.hosts
 
-Gatewayでフィルタリングするインバウンド通信の`Host`ヘッダー名を設定する。
+Gatewayでフィルタリングするインバウンド通信の `Host` ヘッダー名を設定する。
 
 Istio Ingress Gatewayでは、複数のマイクロサービスでAPIを公開している場合、ワイルドカード (`*`) を使用して全てのドメインを許可することになる。
 
@@ -2008,7 +2008,7 @@ spec:
 
 ### .spec.servers.tls.caCertificates
 
-`.spec.servers.tls.mode`キーで相互TLS認証を設定している場合、クライアント証明書のペアになるCA証明書が必要である。
+`.spec.servers.tls.mode` キーで相互TLS認証を設定している場合、クライアント証明書のペアになるCA証明書が必要である。
 
 **＊実装例＊**
 
@@ -2031,7 +2031,7 @@ spec:
 
 CAを含むサーバー証明書を保持するSecretを設定する。
 
-サーバー証明書のファイルを指定する場合は、`.spec.servers[*].tls.serverCertificate`キーを設定する。
+サーバー証明書のファイルを指定する場合は、`.spec.servers[*].tls.serverCertificate` キーを設定する。
 
 Secretを更新した場合、Podを再起動せずに、PodにSecretを再マウントできる。
 
@@ -2121,9 +2121,9 @@ GatewayでHTTPSリクエストを受信した場合、サーバー証明書を�
 
 つまり、Gatewayの宛先にサーバー証明書を設定する必要がある。
 
-`PASSTHROUGH`以外のモードでは、GatewayでSSLを検証し、場合にとってはSSL終端となる。
+`PASSTHROUGH` 以外のモードでは、GatewayでSSLを検証し、場合にとってはSSL終端となる。
 
-注意点として、Gatewayは受信したHTTPSをTCPプロトコルとして処理するため、`L7`ヘッダーにあるHTTPヘッダーやパスを使用してトラフィックを制御できない。
+注意点として、Gatewayは受信したHTTPSをTCPプロトコルとして処理するため、`L7` ヘッダーにあるHTTPヘッダーやパスを使用してトラフィックを制御できない。
 
 **＊実装例＊**
 
@@ -2167,9 +2167,9 @@ spec:
 
 サーバー証明書のファイルを設定する。
 
-`.spec.servers.tls.mode`キーで相互TLS認証を設定している場合、クライアント証明書のペアになるサーバー証明書が必要である。
+`.spec.servers.tls.mode` キーで相互TLS認証を設定している場合、クライアント証明書のペアになるサーバー証明書が必要である。
 
-サーバー証明書を保持するSecretを指定する場合は、`.spec.servers[*].tls.credentialName`キーを設定する。
+サーバー証明書を保持するSecretを指定する場合は、`.spec.servers[*].tls.credentialName` キーを設定する。
 
 **＊実装例＊**
 
@@ -2265,7 +2265,7 @@ transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_A
 
 サービスメッシュ全体、特定Namespace、特定ワークロードのistio-proxyにて、ワーカースレッド数を設定する。
 
-`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
+`.meshConfig.defaultConfig` キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -2285,7 +2285,7 @@ spec:
 
 サービスメッシュ全体、特定Namespace、特定ワークロードのistio-proxyにて、環境変数を設定する。
 
-`.meshConfig.defaultConfig`キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
+`.meshConfig.defaultConfig` キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
 
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -2309,9 +2309,9 @@ spec:
 
 RequestAuthenticationの適用範囲の仕組みは、AuthorizationPolicyと同じである。
 
-作成したNamespaceに対して適用され、`istio-system`に置いた場合は全てのNamespaceに適用される。
+作成したNamespaceに対して適用され、`istio-system` に置いた場合は全てのNamespaceに適用される。
 
-もし、適用範囲を小さくしたい場合は、`.spec.selector`キーを使用する。
+もし、適用範囲を小さくしたい場合は、`.spec.selector` キーを使用する。
 
 IstioコントロールプレーンのログからRequestAuthenticationをデバッグできる。
 
@@ -2327,11 +2327,11 @@ $ kubectl logs <IstiodコントロールプレーンのPod> -n istio-system
 
 Bearer認証で使用するJWTトークンの発行元IDプロバイダーを設定する。
 
-JWTトークンが失効していたり、不正な場合、認証処理を失敗として`401`レスポンスを返信する。
+JWTトークンが失効していたり、不正な場合、認証処理を失敗として `401` レスポンスを返信する。
 
 注意点として、そもそもリクエストにJWTが含まれていない場合には認証処理をスキップできてしまう。
 
-代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403`ステータス) として扱う必要がある。
+代わりに、JWTが含まれていないリクエストをAuthorizationPolicyによる認可処理失敗 (`403` ステータス) として扱う必要がある。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2423,9 +2423,9 @@ spec:
     - forwardOriginalToken: true
 ```
 
-外部API (例：Google APIs) によっては、不要なJWTがリクエストヘッダーにあると、`401`レスポンスを返信する。
+外部API (例：Google APIs) によっては、不要なJWTがリクエストヘッダーにあると、`401` レスポンスを返信する。
 
-そのため、外部APIに接続するマイクロサービスのRequestAuthenticationでは、`forwardOriginalToken`を`false`とし、JWTを削除しておく。
+そのため、外部APIに接続するマイクロサービスのRequestAuthenticationでは、`forwardOriginalToken` を `false` とし、JWTを削除しておく。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2441,11 +2441,11 @@ spec:
 
 #### ▼ fromCookies
 
-`Cookie`ヘッダーの指定したキー名からアクセストークンを取得する。
+`Cookie` ヘッダーの指定したキー名からアクセストークンを取得する。
 
-`Cookie`ヘッダーを使用して認証アーティファクトを運搬する場合 (例：フロントエンドアプリケーションがCSRやSSR) に役立つ。
+`Cookie` ヘッダーを使用して認証アーティファクトを運搬する場合 (例：フロントエンドアプリケーションがCSRやSSR) に役立つ。
 
-大文字 (`.spec.jwtRules.fromCookies`キー) ではないことに注意する。
+大文字 (`.spec.jwtRules.fromCookies` キー) ではないことに注意する。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2465,7 +2465,7 @@ spec:
 
 指定したヘッダーからアクセストークンを取得する。
 
-`Authorization`ヘッダーを使用して認証アーティファクトを運搬する場合 (例：フロントエンドアプリケーションがCSR) に役立つ。
+`Authorization` ヘッダーを使用して認証アーティファクトを運搬する場合 (例：フロントエンドアプリケーションがCSR) に役立つ。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2531,13 +2531,13 @@ spec:
 
 ルーティング先のIPアドレスを設定する。
 
-`L4`プロトコル (TCPLなど) では、リクエストにHostヘッダーがない。
+`L4` プロトコル (TCPLなど) では、リクエストにHostヘッダーがない。
 
-これらのプロトコルでは、`.spec.hosts`キーの値を無視し、IPアドレスにリクエストをルーティングする。
+これらのプロトコルでは、`.spec.hosts` キーの値を無視し、IPアドレスにリクエストをルーティングする。
 
-なお、`.spec.hosts`キーは必須であり省略できないため、便宜上ではあるが何らかの名前をつけておく。
+なお、`.spec.hosts` キーは必須であり省略できないため、便宜上ではあるが何らかの名前をつけておく。
 
-送信側のVirtualServiceの`destination`では、Hostヘッダーに "." をつけないとエラーになるため、受信側のServiceEntryも合わせておく (例：`tcp.smtp`) とよい。
+送信側のVirtualServiceの `destination` では、Hostヘッダーに "." をつけないとエラーになるため、受信側のServiceEntryも合わせておく (例：`tcp.smtp`) とよい。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2561,9 +2561,9 @@ spec:
       protocol: TCP
 ```
 
-`L7`プロトコル (HTTP、HTTPS、MySQLなど) では、リクエストにHostヘッダーがある。
+`L7` プロトコル (HTTP、HTTPS、MySQLなど) では、リクエストにHostヘッダーがある。
 
-送信側のVirtualServiceの`.spec.http[*].route[*].destination`では、Hostヘッダーに "." をつけないとエラーになるため、受信側のServiceEntryも合わせておく (例：`tcp.smtp`) とよい。
+送信側のVirtualServiceの `.spec.http[*].route[*].destination` では、Hostヘッダーに "." をつけないとエラーになるため、受信側のServiceEntryも合わせておく (例：`tcp.smtp`) とよい。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2595,7 +2595,7 @@ spec:
 
 そのServiceEntryにリクエストできるNamespaceを設定する。
 
-ServiceEntryはIstio Egress Gatewayからリクエストを受信するため、基本的には`*`となるはずである。
+ServiceEntryはIstio Egress Gatewayからリクエストを受信するため、基本的には `*` となるはずである。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2749,7 +2749,7 @@ Istio Egress Gatewayは値に注意が必要である。
 
 ServiceEntryに対するリクエストの宛先IPアドレスはIstio Egress Gatewayに書き換えられている。
 
-そのため、DNS解決を`NONE`にすると、Istio Egress GatewayはServiceEntryを見つけられず、自分自身でループしてしまう。
+そのため、DNS解決を `NONE` にすると、Istio Egress GatewayはServiceEntryを見つけられず、自分自身でループしてしまう。
 
 **＊実装例＊**
 
@@ -2847,7 +2847,7 @@ spec:
 
 NamespaceでTelemetyの対象のistio-proxyを絞れる。
 
-もし`istio-system`を指定した場合、Root Namespaceという設定になり、istio-proxyコンテナのある全てのNamespaceが対象になる。
+もし `istio-system` を指定した場合、Root Namespaceという設定になり、istio-proxyコンテナのある全てのNamespaceが対象になる。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1
@@ -3005,11 +3005,11 @@ spec:
 
 デフォルト値である。
 
-他のNamespaceのGatewayやDestinationRuleに紐づける場合、`*`とする必要がある。
+他のNamespaceのGatewayやDestinationRuleに紐づける場合、`*` とする必要がある。
 
-もし、同じNamespace内のGatewayやDestinationRuleと紐づける場合、`.`とする。
+もし、同じNamespace内のGatewayやDestinationRuleと紐づける場合、`.` とする。
 
-つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
+つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは `*` とし、それ以外のこれらの場合は `.` とする。
 
 **＊実装例＊**
 
@@ -3031,11 +3031,11 @@ spec:
 
 #### ▼ `.` (ドット)
 
-同じNamespace内のGatewayやDestinationRuleと紐づける場合、`.`とする。
+同じNamespace内のGatewayやDestinationRuleと紐づける場合、`.` とする。
 
-もし、他のNamespaceのGatewayやDestinationRuleに紐づける場合、`*`とする必要がある。
+もし、他のNamespaceのGatewayやDestinationRuleに紐づける場合、`*` とする必要がある。
 
-つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは`*`とし、それ以外のこれらの場合は`.`とする。
+つまり、Istio Ingress GatewayやIstio Egress Gatewayとリクエストを送受信するVirtualServiceとDestinationRuleでは `*` とし、それ以外のこれらの場合は `.` とする。
 
 **＊実装例＊**
 
@@ -3058,11 +3058,11 @@ spec:
 
 #### ▼ hostsとは
 
-VirtualServiceの設定値を適用する`Host`ヘッダー値を設定する。
+VirtualServiceの設定値を適用する `Host` ヘッダー値を設定する。
 
 ワイルドカード (`*`) を使用して全てのドメインを許可しても良いが、特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可すると良い。
 
-なお、`.spec.gateways`キーで`mesh` (デフォルト値) を使用する場合、ワイルドカード以外を設定しないといけない。 (例：`.spec.hosts`キーを設定しない、特定のHostヘッダー値を設定するなど)
+なお、`.spec.gateways` キーで `mesh` (デフォルト値) を使用する場合、ワイルドカード以外を設定しないといけない。 (例：`.spec.hosts` キーを設定しない、特定のHostヘッダー値を設定するなど)
 
 **＊実装例＊**
 
@@ -3096,9 +3096,9 @@ spec:
 
 Gateway名とこれのNamespaceを設定する。
 
-VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる (`.spec.export`キーとは関係ない) 。
+VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる (`.spec.export` キーとは関係ない) 。
 
-ただ、Namespaceは省略しない方がわかりやすい。
+ただ、Namespaceは省略しないほうがわかりやすい。
 
 **＊実装例＊**
 
@@ -3120,11 +3120,11 @@ spec:
 
 いずれのGatewayの条件に合致したリクエストを処理するかを設定する。
 
-VirtualServiceを、Istio Ingress Gateway/EgressGatewayに紐づける場合 (サービスメッシュ内外の通信) は`<Gateway名>`とする。
+VirtualServiceを、Istio Ingress Gateway/EgressGatewayに紐づける場合 (サービスメッシュ内外の通信) は `<Gateway名>` とする。
 
-VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる (`.spec.export`キーとは関係ない) 。
+VirtualServiceとGatewayが同じNamespaceに所属する場合は、Namespaceを省略できる (`.spec.export` キーとは関係ない) 。
 
-ただ、Namespaceは省略しない方がわかりやすい。
+ただ、Namespaceは省略しないほうがわかりやすい。
 
 **＊実装例＊**
 
@@ -3272,9 +3272,9 @@ spec:
 
 #### ▼ mesh
 
-VirtualServiceを、Pod間通信で使用する場合は`mesh` (デフォルト値) とする。
+VirtualServiceを、Pod間通信で使用する場合は `mesh` (デフォルト値) とする。
 
-Hostヘッダーに`*` (ワイルドカード) を使用できず、特定のHostヘッダーのみを許可する必要がある。
+Hostヘッダーに `*` (ワイルドカード) を使用できず、特定のHostヘッダーのみを許可する必要がある。
 
 **＊実装例＊**
 
@@ -3298,7 +3298,7 @@ spec:
 
 HTTP/1.1、HTTP/2 (例：gRPC、GraphQLなど) のプロトコルによる通信をDestinationRuleに紐づくPodにルーティングする。
 
-`.spec.tcp`キーや`.spec.tls`キーとは異なり、マイクロサービスがHTTPプロトコルで通信を送受信し、istio-proxy間で相互TLS認証を実施する場合、これを使用する。
+`.spec.tcp` キーや `.spec.tls` キーとは異なり、マイクロサービスがHTTPプロトコルで通信を送受信し、istio-proxy間で相互TLS認証を実施する場合、これを使用する。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
 
@@ -3324,7 +3324,7 @@ HTTP/1.1、HTTP/2 (例：gRPC、GraphQLなど) のプロトコルによる通信
 
 **＊実装例＊**
 
-`503`ステータスのエラーを`100`%の確率で発生させる。
+`503` ステータスのエラーを `100`%の確率で発生させる。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3346,7 +3346,7 @@ spec:
 
 **＊実装例＊**
 
-`10`秒のレスポンスの遅延を`100`%の確率で発生させる。
+`10` 秒のレスポンスの遅延を `100`%の確率で発生させる。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3380,7 +3380,7 @@ spec:
 
 **＊実装例＊**
 
-受信した通信のうち、`x-foo`ヘッダーに`bar`が割り当てられたものだけにルールを適用する。
+受信した通信のうち、`x-foo` ヘッダーに `bar` が割り当てられたものだけにルールを適用する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3430,7 +3430,7 @@ spec:
 
 #### ▼ gateways
 
-`.spec.gateways`キーで設定した`<Gateway名>`と`mesh` (デフォルト値) のうちで、その合致条件に使用する方を設定する。
+`.spec.gateways` キーで設定した `<Gateway名>` と `mesh` (デフォルト値) のうちで、その合致条件に使用するほうを設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3478,7 +3478,7 @@ spec:
 
 **＊実装例＊**
 
-受信した通信のうち、URLの接頭辞が`/foo`のものだけにルールを適用する。
+受信した通信のうち、URLの接頭辞が `/foo` のものだけにルールを適用する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3503,15 +3503,15 @@ spec:
 
 リトライ条件を設定する。
 
-なお、TCP接続には`spec.tcp[*].retries`キーのような同様の設定は存在しない。
+なお、TCP接続には `spec.tcp[*].retries` キーのような同様の設定は存在しない。
 
 **＊実装例＊**
 
-500系ステータスの場合、`attempts`の数だけリトライする。
+500系ステータスの場合、`attempts` の数だけリトライする。
 
-各リトライで処理の結果が返却されるまでの処理タイムアウト時間を`perTryTimeout`で設定する。
+各リトライで処理の結果が返却されるまでの処理タイムアウト時間を `perTryTimeout` で設定する。
 
-初回リクエストのリトライを`timeout`で、失敗時のリトライの処理タイムアウト時間を`retries.perTryTimeout`で設定する。
+初回リクエストのリトライを `timeout` で、失敗時のリトライの処理タイムアウト時間を `retries.perTryTimeout` で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3536,9 +3536,9 @@ spec:
         retryOn: gateway-error
 ```
 
-Gateway系ステータス (`502`、`503`、`504`) の場合、`attempts`の数だけリトライする。
+Gateway系ステータス (`502`、`503`、`504`) の場合、`attempts` の数だけリトライする。
 
-初回リクエストのリトライを`timeout`で、失敗時のリトライの処理タイムアウト時間を`retries.perTryTimeout`で設定する。
+初回リクエストのリトライを `timeout` で、失敗時のリトライの処理タイムアウト時間を `retries.perTryTimeout` で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3590,13 +3590,13 @@ spec:
 
 リトライ失敗の理由を設定する。
 
-istio-proxyは、レスポンスの`x-envoy-retry-on`ヘッダーに割り当てるため、これの値を設定する。
+istio-proxyは、レスポンスの `x-envoy-retry-on` ヘッダーに割り当てるため、これの値を設定する。
 
 **＊実装例＊**
 
-デフォルトでは、リトライの条件は`connect-failure,refused-stream,unavailable`である。
+デフォルトでは、リトライの条件は `connect-failure,refused-stream,unavailable` である。
 
-`EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY`変数を`true`にすると、元はデフォルト値であった`503`を設定できる。
+`EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY` 変数を `true` にすると、元はデフォルト値であった `503` を設定できる。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3713,7 +3713,7 @@ spec:
 
 Serviceの重み付けルーティングの割合を設定する。
 
-`.spec.http[*].route[*].destination.subset`キーの値は、DestinationRuleで設定した`.spec.subsets[*].name`キーに合わせる必要がある。
+`.spec.http[*].route[*].destination.subset` キーの値は、DestinationRuleで設定した `.spec.subsets[*].name` キーに合わせる必要がある。
 
 重み付けの偏りの割合によって、カナリアリリースやB/Gデプロイメントを実現できる。
 
@@ -3758,9 +3758,9 @@ spec:
 
 istio-proxyの宛先にリクエストを送信してから返信があるまでの処理タイムアウト時間を設定する (DestinationRuleは接続タイムアウト) 。
 
-`0`秒の場合、処理タイムアウトは無制限になる。
+`0` 秒の場合、処理タイムアウトは無制限になる。
 
-これは、Envoyのルートの`grpc_timeout_header_max`と`timeout`の両方に適用される。
+これは、Envoyのルートの `grpc_timeout_header_max` と `timeout` の両方に適用される。
 
 指定した時間以内に、istio-proxyの宛先からレスポンスがなければ、istio-proxyは処理タイムアウト時間を超過したものとして処理する。
 
@@ -3800,7 +3800,7 @@ spec:
 
 #### ▼ tcpとは
 
-`.spec.http`キーや`.spec.tls`キーとは異なり、TCPプロトコルや独自プロトコル (例：MySQLなど) による通信をDestinationRuleに紐づくPodにルーティングする。
+`.spec.http` キーや `.spec.tls` キーとは異なり、TCPプロトコルや独自プロトコル (例：MySQLなど) による通信をDestinationRuleに紐づくPodにルーティングする。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 
@@ -3821,7 +3821,7 @@ spec:
 
 #### ▼ route.destination.host
 
-`.spec.http`キーと同じ機能である。
+`.spec.http` キーと同じ機能である。
 
 **＊実装例＊**
 
@@ -3845,7 +3845,7 @@ spec:
 
 #### ▼ route.destination.port
 
-`.spec.http`キーと同じ機能である。
+`.spec.http` キーと同じ機能である。
 
 **＊実装例＊**
 
@@ -3871,7 +3871,7 @@ spec:
 
 #### ▼ route.destination.subset
 
-`.spec.http`キーと同じ機能である。
+`.spec.http` キーと同じ機能である。
 
 **＊実装例＊**
 
@@ -3907,7 +3907,7 @@ spec:
 
 #### ▼ tlsとは
 
-`.spec.http`キーや`.spec.tcp`キーとは異なり、HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。
+`.spec.http` キーや `.spec.tcp` キーとは異なり、HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。
 
 マイクロサービスがHTTPSプロトコルで通信を送受信し、istio-proxy間で相互TLS認証を実施する場合、これを使用する。
 
@@ -3917,7 +3917,7 @@ spec:
 
 #### ▼ Istio Egress GatewayのVirtualServiceでの注意点
 
-`.spec.tls`キーで送信する場合、Istio Egress Gatewayはアプリケーションデータを復号できないため、プロトコルをTCPとして扱う。
+`.spec.tls` キーで送信する場合、Istio Egress Gatewayはアプリケーションデータを復号できないため、プロトコルをTCPとして扱う。
 
 そのため、Istio Egress Gateway上を通過するTLSはIstioのメトリクスではTCPとして処理され、またIstio Egress Gatewayではスパンを作成できない。
 

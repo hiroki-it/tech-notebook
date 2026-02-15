@@ -31,9 +31,9 @@ AWS VPC CNIがAWS EKS Cluster内に無い場合、EC2ワーカーNodeにアタ�
 
 ### アーキテクチャ
 
-AWS EKS Cluster内に`L3`を提供する。
+AWS EKS Cluster内に `L3` を提供する。
 
-AWS VPC CNIは、L-IPAMデーモン (`aws-node`という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。
+AWS VPC CNIは、L-IPAMデーモン (`aws-node` という名前のDaemonSet) 、CNIバイナリ、といったコンポーネントから構成されている。
 
 AWS EKS Cluster内にネットワークを作成する。
 
@@ -46,7 +46,7 @@ AWS EKS Cluster内にネットワークを作成する。
 
 CNIバイナリは、L-IPAMデーモンからIPアドレスを取得する。
 
-Podを新しく作成する時に、kubeletからのリクエストによって、新しいPodをNode内のClusterネットワークに参加させる。
+Podを新しく作成するときに、kubeletからのリクエストによって、新しいPodをNode内のClusterネットワークに参加させる。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
@@ -61,7 +61,7 @@ L-IPAMデーモンは、割り当てモードに応じて、IPアドレスをPod
 
 #### ▼ ログ
 
-L-IPAMデーモンは、`var/log/aws-routed-eni/ipamd.log`ファイルと`/var/log/aws-routed-eni/plugin.log`ファイルにログを出力する。
+L-IPAMデーモンは、`var/log/aws-routed-eni/ipamd.log` ファイルと `/var/log/aws-routed-eni/plugin.log` ファイルにログを出力する。
 
 AWS VPC CNIが正しく動作しない場合、L-IPAMデーモンのログを確認する。
 
@@ -337,14 +337,14 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 | `ENABLE_POD_ENI`                        | Podにセキュリティグループを紐づける機能 (Security groups for Pods) を有効化するかどうかを設定する。                                                                                                                                                                                  | `false`                                                                          |
 | `ENABLE_PREFIX_DELEGATION`              | Prefix delegationモードを有効化するかを設定する。                                                                                                                                                                                                                                    | `false`                                                                          |
 | `MAX_ENI`                               | AWS EC2/FargateワーカーNode当たりで最大で紐づけるENI数を設定する。                                                                                                                                                                                                                   | `20`                                                                             |
-| `MINIMUM_IP_TARGET`                     | `WARM_ENI_TARGET`と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで最低限確保するセカンダリープライベートIPアドレス数を設定する。                                                                                                                   | `20`                                                                             |
+| `MINIMUM_IP_TARGET`                     | `WARM_ENI_TARGET` と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりで最低限確保するセカンダリープライベートIPアドレス数を設定する。                                                                                                                   | `20`                                                                             |
 | `MY_NODE_NAME`                          | ワーカーNode名が設定されているマニフェストのキーを設定する。                                                                                                                                                                                                                         | `"fieldRef": {"apiVersion": "v1","fieldPath": "spec.nodeName"}}`                 |
 | `MY_POD_NAME`                           | Pod名が設定されているマニフェストのキーを設定する。                                                                                                                                                                                                                                  | `"fieldRef": {"apiVersion": "v1","fieldPath": "metadata.name"}}`                 |
-| `POD_SECURITY_GROUP_ENFORCING_MODE`     | Podのセキュリティグループの適用方法を設定する。注意点として、Podの送信元IPアドレスにも影響を与える。                                                                                                                                                                                 | `standard` (`standard`の場合は、プライマリーENIのセキュリティグループを適用する) |
+| `POD_SECURITY_GROUP_ENFORCING_MODE`     | Podのセキュリティグループの適用方法を設定する。注意点として、Podの送信元IPアドレスにも影響を与える。                                                                                                                                                                                 | `standard` (`standard` の場合は、プライマリーENIのセキュリティグループを適用する) |
 | `VPC_ID`                                | AWS VPCのIDを設定する。                                                                                                                                                                                                                                                              | `vpc-*****`                                                                      |
 | `WARM_ENI_TARGET`                       | AWS EC2/FargateワーカーNode当たりで最低限確保するAWS ENI数を設定する。                                                                                                                                                                                                               | `1`                                                                              |
 | `WARM_PREFIX_TARGET`                    |                                                                                                                                                                                                                                                                                      | `1`                                                                              |
-| `WARM_IP_TARGET`                        | `WARM_ENI_TARGET`と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりでウォーム状態にしておくセカンダリープライベートIPアドレス数を設定する。`WARM_ENI_TARGET`の値が小さすぎると、EC2-APIのコール回数が増え、リクエスト数制限にひっかかる可能性がある。 | `2`                                                                              |
+| `WARM_IP_TARGET`                        | `WARM_ENI_TARGET` と競合するため、デフォルトでは設定されていない。AWS EC2/FargateワーカーNode当たりでウォーム状態にしておくセカンダリープライベートIPアドレス数を設定する。`WARM_ENI_TARGET` の値が小さすぎると、EC2-APIのコール回数が増え、リクエスト数制限にひっかかる可能性がある。 | `2`                                                                              |
 
 > - https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
 > - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments
@@ -357,7 +357,7 @@ Kubernetesのバージョンに応じて、異なるアドオンのバージョ�
 
 ### 確認方法
 
-L-IPAMデーモンが`aws-node`というDaemonSetとして稼働している。
+L-IPAMデーモンが `aws-node` というDaemonSetとして稼働している。
 
 これのコンテナの環境変数で、アドオンの設定が管理されている。
 
@@ -380,16 +380,16 @@ Nodeのインスタンスタイプごとに紐付けられるセカンダリーI
 
 |           | `t3.nano` | `t3.micro` | `t3.small` | `t3.medium` | `t3.large` | `t3.xlarge` | `t3.2xlarge` |
 | --------- | --------- | ---------- | ---------- | ----------- | ---------- | ----------- | ------------ |
-| Node`1`個 | 4         | 4          | 11         | 17          | 35         | 58          | 58           |
-| `2`個     | 8         | 8          | 22         | 34          | 70         | 116         | 116          |
-| `3`個     | 12        | 12         | 33         | 51          | 105        | 174         | 174          |
-| `4`個     | 16        | 16         | 44         | 68          | 140        | 232         | 232          |
+| Node`1` 個 | 4         | 4          | 11         | 17          | 35         | 58          | 58           |
+| `2` 個     | 8         | 8          | 22         | 34          | 70         | 116         | 116          |
+| `3` 個     | 12        | 12         | 33         | 51          | 105        | 174         | 174          |
+| `4` 個     | 16        | 16         | 44         | 68          | 140        | 232         | 232          |
 
 <br>
 
 ### 現在の上限数
 
-`kubectl describe`コマンドの`Capacity`項目で、現在のPodの上限数を確認できる。
+`kubectl describe` コマンドの `Capacity` 項目で、現在のPodの上限数を確認できる。
 
 ```bash
 $ kubectl describe node <Node名>
@@ -424,7 +424,7 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
 この時、Nodeのインスタンスタイプごとに紐付けられるセカンダリープライベートIPアドレス数に制限があるため、Node上でスケジューリングさせるPod数がインスタンスタイプに依存する。
 
-執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり`1`個しかPodをスケジューリングさせられない。
+執筆時点 (2022/09/24) のFargateでは、インスタンスタイプに限らずNode当たり `1` 個しかPodをスケジューリングさせられない。
 
 ![aws-eks-vpc-cni-addon_standard-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png)
 
@@ -445,7 +445,7 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
 `(2)`
 
-: kubeletは、kube-apiserverからPodの`ADD`/`DEL`リクエストを受信する。
+: kubeletは、kube-apiserverからPodの `ADD`/`DEL` リクエストを受信する。
 
     Podの`ADD`/`DEL`リクエストをCNIバイナリに送信する。
 
@@ -461,7 +461,7 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
 `(3)`
 
-: kubeletは、セカンダリープライベートIPアドレスの`ADD`/`DEL`リクエストを、CNIバイナリに送信する。
+: kubeletは、セカンダリープライベートIPアドレスの `ADD`/`DEL` リクエストを、CNIバイナリに送信する。
 
 `(4)`
 
@@ -483,13 +483,13 @@ L-IPAMデーモンは、元からあるこの機能を利用し、NodeのAWS ENI
 
 #### ▼ 環境変数
 
-`MINIMUM_IP_TARGET` (Node当たり最低限のセカンダリープライベートIPアドレス数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
+`MINIMUM_IP_TARGET` (Node当たり最低限のセカンダリープライベートIPアドレス数) または `WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
 
 他にも設定可能な変数があるが、ここではこの2つを使用する。
 
-`MINIMUM_IP_TARGET`には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。
+`MINIMUM_IP_TARGET` には、Podの冗長化数も加味して予想されるPod数分プラスアルファを設定する。
 
-また、`WARM_IP_TARGET`には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。
+また、`WARM_IP_TARGET` には、ウォーム状態のセカンダリープライベートIPアドレスを設定する。
 
 Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで確保するセカンダリープライベートIPアドレス数も考慮すること。
 
@@ -497,15 +497,15 @@ Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで
 
 ### シナリオ
 
-例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、`10`個だとする。
+例えば、Node当たりにスケジューリングされるPod数の最大数が、Podの冗長化の数も考慮して、`10` 個だとする。
 
 `(1)`
 
-: Nodeで小さめのインスタンスサイズを選びつつ、`MINIMUM_IP_TARGET=10+2`と`WARM_IP_TARGET=2`を設定する。
+: Nodeで小さめのインスタンスサイズを選びつつ、`MINIMUM_IP_TARGET=10+2` と `WARM_IP_TARGET=2` を設定する。
 
 `(2)`
 
-: Node当たり`12`個のセカンダリープライベートIPアドレスを確保する。
+: Node当たり `12` 個のセカンダリープライベートIPアドレスを確保する。
 
      さらに追加で、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
 
@@ -513,7 +513,7 @@ Podの上限数を上げる場合、AWS EKSが属するAWS VPCサブネットで
 
 `(3)`
 
-: Podが`12`個を超えた段階で、合計のセカンダリープライベートIPアドレス数は`2`個のウォーム状態数を維持しながら増えていく。
+: Podが `12` 個を超えた段階で、合計のセカンダリープライベートIPアドレス数は `2` 個のウォーム状態数を維持しながら増えていく。
 
 > - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
@@ -531,11 +531,11 @@ AWSのENIには、Prefix delegation (プレフィクス委譲) という機能�
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix
 
-L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (サブネット内の`*.*.*.*/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
+L-IPAMデーモンは、元からあるこの機能を利用し、NodeのENIにCIDR (サブネット内の `*.*.*.*/28`) を割り当て、これから取得したIPアドレスをPodに割り当てる。
 
-ENIの個数を増やすごとに、`16`個分のIPアドレス (サブネット内の`*.*.*.*/28`) を確保できる。
+ENIの個数を増やすごとに、`16` 個分のIPアドレス (サブネット内の `*.*.*.*/28`) を確保できる。
 
-Prefix delegationモードを使用する場合、Nodeを配置するAWSサブネットのCIDRを`*.*.*.*/28`よりも大きくしておく必要がある。
+Prefix delegationモードを使用する場合、Nodeを配置するAWSサブネットのCIDRを `*.*.*.*/28` よりも大きくしておく必要がある。
 
 ![aws-eks-vpc-cni_prefix-delegation-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png)
 
@@ -552,7 +552,7 @@ Prefix delegationモードを採用可能なインスタンスタイプを選ぶ
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances
 
-AWS VPC CNIの環境変数の`ENABLE_PREFIX_DELEGATION`に`true`を設定する。
+AWS VPC CNIの環境変数の `ENABLE_PREFIX_DELEGATION` に `true` を設定する。
 
 ```terraform
 resource "aws_eks_addon" "vpc_cni" {
@@ -572,19 +572,19 @@ resource "aws_eks_addon" "vpc_cni" {
 }
 ```
 
-#### ▼ `bootstrap.sh`ファイル
+#### ▼ `bootstrap.sh` ファイル
 
 AWSのセルフマネージドNodeグループで任意のAMIを使用していたり、またはマネージドNodeグループで起動テンプレートでNodeを作成している場合に、以降の手順が必要になる。
 
-一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (`v1.9`以上のAWS VPC CNI)。
+一方で、AMIを指定していなかったり、起動テンプレートを使用していない場合には、以降の手順は不要である (`v1.9` 以上のAWS VPC CNI)。
 
-`max-pods-calculator.sh`ファイルを使用して、事前にPodの最大数を計算しておく。
+`max-pods-calculator.sh` ファイルを使用して、事前にPodの最大数を計算しておく。
 
-なお、vCPUが`30`未満のインスタンスタイプの場合に最大数は`110`個になり、それ以外の場合は`250`個になる。
+なお、vCPUが `30` 未満のインスタンスタイプの場合に最大数は `110` 個になり、それ以外の場合は `250` 個になる。
 
-設定した上限に合わせて、CIDR (サブネット内の`*.*.*.*/28`) の予約が必要になる。
+設定した上限に合わせて、CIDR (サブネット内の `*.*.*.*/28`) の予約が必要になる。
 
-例えば、`48`個のPodを乗せたいなら、CIDR (サブネット内の`*.*.*.*/28`) 当たりで`16`個のIPアドレスを使用できるようになるので、CIDR (サブネット内の`*.*.*.*/28`) は`3`個予約する必要がある。
+例えば、`48` 個のPodを乗せたいなら、CIDR (サブネット内の `*.*.*.*/28`) 当たりで `16` 個のIPアドレスを使用できるようになるので、CIDR (サブネット内の `*.*.*.*/28`) は `3` 個予約する必要がある。
 
 ```bash
 # ファイルをダウンロードする
@@ -600,7 +600,7 @@ $ ./max-pods-calculator.sh \
     --cni-prefix-delegation-enabled
 ```
 
-`bootstrap.sh`ファイルに必要なパラメーターを渡す。
+`bootstrap.sh` ファイルに必要なパラメーターを渡す。
 
 ```bash
 #!/bin/bash
@@ -620,7 +620,7 @@ $ ./max-pods-calculator.sh \
 
 #### ▼ 環境変数
 
-`MINIMUM_IP_TARGET` (Node当たりの`*.*.*.*/28`を持つENIの個数) または`WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
+`MINIMUM_IP_TARGET` (Node当たりの `*.*.*.*/28` を持つENIの個数) または `WARM_IP_TARGET` (Node当たりのウォーム状態のセカンダリープライベートIPアドレス数) で、Node当たりのPod数を設定する。
 
 他にも設定可能な変数があるが、ここではこの2つを使用する。
 
@@ -640,7 +640,7 @@ AWSとしては、Prefix delegationモードの方を使って欲しいのかも
 
 #### ▼ セカンダリーIPアドレス割り当てモードからの移行
 
-もし、セカンダリーIPアドレス割り当てモードからPrefix delegationモードに移行する場合、既存のNodeグループとNodeを削除した上で、Nodeを新規作成する。
+もし、セカンダリーIPアドレス割り当てモードからPrefix delegationモードに移行する場合、既存のNodeグループとNodeを削除したうえで、Nodeを新規作成する。
 
 ローリングアップグレードで移行する場合、セカンダリーIPアドレス割り当てモードとPrefix delegationモードの両方をNodeに適用してしまう。
 

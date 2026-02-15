@@ -65,7 +65,7 @@ DFD、ユースケース図、アクティビティ図などがある。
 | パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_package.png)             | アクターによって提供する機能に違いがある場合、これの境界線を表す。                                                                                                                                                                       |                              |
 | 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_association.png)           | アクターと機能を結ぶことにより、機能がアクターに提供されることを表す。                                                                                                                                                                   |                              |
 | 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_genelization.png)         | アクター間またはユースケース間に、is-a-kind-ofな関係 (グループとメンバーの関係性) があることを表す。                                                                                                                                     |                              |
-| 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png)                   | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。                                                                                                                                                                           | `<< invoke >>`も同じである。 |
+| 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png)                   | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。                                                                                                                                                                           | `<< invoke >>` も同じである。 |
 | 先行：<br>`<< precedes >>`                                                                                                                                         | 矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表す。                                                                                                                                                               |                              |
 | 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png)                     | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                   |                              |
 | ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                       | 機能の前提事項や考慮事項を記載する。認証／認可は全てのユースケースに関係するため、ノートに記載する。<br>- https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent> |                              |
@@ -75,7 +75,7 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 **＊例＊**
 
-とある映画チケット料金を題材に、ハッシュタグチケット料金モデリングとして、色々な方がユースケース図とクラス図を作成されている。
+とある映画チケット料金を題材に、ハッシュタグチケット料金モデリングとして、色々なほうがユースケース図とクラス図を作成されている。
 
 いずれの方も非常に参考になる
 
@@ -171,7 +171,7 @@ stateDiagram-v2
 
 ![ストップウォッチのステートマシン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン図.jpg)
 
-ステートマシン表を作成してみると、ステートマシン図では、9つあるセルのうち`4`個のセルしか表現できておらず、残り5つのセルは表現されていないことに気づける。
+ステートマシン表を作成してみると、ステートマシン図では、9つあるセルのうち `4` 個のセルしか表現できておらず、残り5つのセルは表現されていないことに気づける。
 
 ![ストップウォッチのステートマシン表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン表.jpg)
 

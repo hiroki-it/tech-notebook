@@ -27,13 +27,13 @@ $ pip3 install uwsgi
 
 ## 02. 設定ファイルの種類
 
-### `uwsgi.ini`ファイル
+### `uwsgi.ini` ファイル
 
-#### ▼ `uwsgi.ini`ファイルとは
+#### ▼ `uwsgi.ini` ファイルとは
 
 uWSGIの起動時の値を設定する。
 
-`json`形式や`xml`形式でも問題ない。
+`json` 形式や `xml` 形式でも問題ない。
 
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html
 > - https://qiita.com/11ohina017/items/da2ae5b039257752e558
@@ -96,7 +96,7 @@ spawned uWSGI http 1 (pid: 10)
 
 ### uwsgiセクションとは
 
-uWSGIの`uwsgi`プロセスのプールを設定する。
+uWSGIの `uwsgi` プロセスのプールを設定する。
 
 <br>
 
@@ -104,7 +104,7 @@ uWSGIの`uwsgi`プロセスのプールを設定する。
 
 アプリケーションのインスタンスの変数名を設定する。
 
-デフォルト値は、`application`である。
+デフォルト値は、`application` である。
 
 ```ini
 [uwsgi]

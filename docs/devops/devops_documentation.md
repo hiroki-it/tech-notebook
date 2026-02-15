@@ -53,7 +53,7 @@ description: ドキュメンテーション＠DevOpsの知見を記録してい�
 |                            | ビジネス成果監視         |                                | Metabase                                                                   |
 | セキュリティ               | 機密情報のバージョン管理 |                                | Sops、Vault                                                                |
 |                            | VPN                      |                                | OpenVPN                                                                    |
-| テスト                     | ホワイトボックス         |                                | `go test`コマンド、PHPUnit                                                 |
+| テスト                     | ホワイトボックス         |                                | `go test` コマンド、PHPUnit                                                 |
 |                            | ブラックボックス         |                                | ChaosMesh、Postman、Taurus                                                 |
 
 #### ▼ 設計規約書
@@ -123,7 +123,7 @@ description: ドキュメンテーション＠DevOpsの知見を記録してい�
 | アプリ   | RESTful-API              | RESTful-APIを採用している場合、ドキュメント作成ツール (例：openapi-generatorなど) を使用して、APIのドキュメントのおおよその部分を自動的に作成する。    |                                                          |
 |          | RPC-API                  | RPC-APIを採用している場合、ドキュメント作成ツール (例：protoc-gen-docなど) を使用して、APIのドキュメントのおおよその部分を自動的に作成する。           |                                                          |
 | インフラ | Helm                     | ユーザー定義のチャートを採用している場合、外部のドキュメント作成ツール (例：helm-docs) を使用して、チャートのドキュメントを自動的に作成する。          | ・https://github.com/norwoodj/helm-docs                  |
-|          | Terraform                | 外部のドキュメント自動作成ツール (例：terraform-docs) を使用して、`variable`ブロック、`output`ブロック、`module`ブロックなどのドキュメントを作成する。 | ・https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6 |
+|          | Terraform                | 外部のドキュメント自動作成ツール (例：terraform-docs) を使用して、`variable` ブロック、`output` ブロック、`module` ブロックなどのドキュメントを作成する。 | ・https://qiita.com/yutachaos/items/1a7f5a93ceaf972c76c6 |
 
 #### ▼ 構造検証ツール
 

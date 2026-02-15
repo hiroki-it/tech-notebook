@@ -40,13 +40,13 @@ namespaceでは、カーネルを分離できるため、カーネルの要素 (
 
 ベースイメージは、実行OSによらずに一貫してビルドできるため、配布できる。
 
-各イメージレジストリ (例：DockerHub、AWS ECR、Google Container Registry、Artifactory、Harborなど) には、カスタマイズする上でのベースとなるベースイメージが提供されている。
+各イメージレジストリ (例：DockerHub、AWS ECR、Google Container Registry、Artifactory、Harborなど) には、カスタマイズするうえでのベースとなるベースイメージが提供されている。
 
 #### ▼ イメージレイヤー
 
 ![イメージレイヤーからなるコンテナイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージのビルド.png)
 
-イメージレイヤーの実体は、`/var/lib/docker/overlay2`ディレクトリ配下にハッシュ値の名前からなるファイルとして保管されている。
+イメージレイヤーの実体は、`/var/lib/docker/overlay2` ディレクトリ配下にハッシュ値の名前からなるファイルとして保管されている。
 
 Dockerは、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。
 
@@ -68,7 +68,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 #### ▼ コンテナレイヤー
 
-コンテナイメージからコンテナを作成する時に、コンテナイメージレイヤーの上にコンテナレイヤーが積み重ねられる。
+コンテナイメージからコンテナを作成するときに、コンテナイメージレイヤーの上にコンテナレイヤーが積み重ねられる。
 
 ![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
 
@@ -82,7 +82,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITEなど) の全て持つユーザーで実行したコンテナのこと。
 
-例えば、特権コンテナの実行ユーザーはルートファイルシステムにある`/proc`に書き込みする権限を持つ。
+例えば、特権コンテナの実行ユーザーはルートファイルシステムにある `/proc` に書き込みする権限を持つ。
 
 /proc配下にはNodeへのアクセスを中継するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。
 
@@ -112,7 +112,7 @@ rootユーザーで実行したコンテナのこと。
 
 #### ▼ dockerクライアントとは
 
-dockerクライアントは、`docker`コマンドを使用してdockerデーモンAPIをコールできる。
+dockerクライアントは、`docker` コマンドを使用してdockerデーモンAPIをコールできる。
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-client.png)
 
@@ -128,7 +128,7 @@ dockerクライアントは、`docker`コマンドを使用してdockerデーモ
 
 dockerクライアントにdockerデーモンAPIを公開する。
 
-クライアントが`docker`コマンドを実行することにより、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
+クライアントが `docker` コマンドを実行することにより、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-daemon.png)
 
@@ -243,11 +243,11 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 #### ▼ json-file
 
-標準出力/標準エラー出力に出力されたログを、`/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log`ファイルにフォワーディングする。
+標準出力/標準エラー出力に出力されたログを、`/var/lib/docker/containers/＜コンテナID＞/＜コンテナID＞-json.log` ファイルにフォワーディングする。
 
 デフォルトの設定値である。
 
-`labels`キーで文字列リストを設定すると、属性キーを付与できる。
+`labels` キーで文字列リストを設定すると、属性キーを付与できる。
 
 ```yaml
 {
@@ -352,11 +352,11 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 #### ▼ nginxイメージ
 
-公式のnginxイメージは、`/dev/stdout`というシンボリックリンクを、`/var/log/nginx/access.log`ファイルに作成している。
+公式のnginxイメージは、`/dev/stdout` というシンボリックリンクを、`/var/log/nginx/access.log` ファイルに作成している。
 
-また、`/dev/stderr`というシンボリックリンクを、`/var/log/nginx/error.log`ファイルに作成している。
+また、`/dev/stderr` というシンボリックリンクを、`/var/log/nginx/error.log` ファイルに作成している。
 
-これにより、これらのファイルに対するログの出力は、`/dev/stdout`と`/dev/stderr`にフォワーディングされる。
+これにより、これらのファイルに対するログの出力は、`/dev/stdout` と `/dev/stderr` にフォワーディングされる。
 
 > - https://docs.docker.com/config/containers/logging/
 

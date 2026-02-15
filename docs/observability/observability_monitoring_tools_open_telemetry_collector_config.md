@@ -19,8 +19,8 @@ description: 設定ファイル＠OpenTelemetry Collectorの知見を記録し�
 
 #### ▼ otel/opentelemetry-collector
 
-標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の`otel/opentelemetry-collector-k8s`ではなく
-`otel/opentelemetry-collector-core`を使用する必要がある。
+標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の `otel/opentelemetry-collector-k8s` ではなく
+`otel/opentelemetry-collector-core` を使用する必要がある。
 
 エントリポイントが異なるため、コマンド名も異なる。
 
@@ -46,8 +46,8 @@ $ otelcol-k8s --config relay.yaml
 
 #### ▼ otel/opentelemetry-collector-contrib
 
-標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の`otel/opentelemetry-collector-k8s`ではなく
-`otel/opentelemetry-collector-contrib`を使用する必要がある。
+標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の `otel/opentelemetry-collector-k8s` ではなく
+`otel/opentelemetry-collector-contrib` を使用する必要がある。
 
 エントリポイントが異なるため、コマンド名も異なる。
 
@@ -66,7 +66,7 @@ $ otelcol-contrib --config relay.yaml
 
 設定名のこと。
 
-各コンポーネントで、`タイプ/<任意の文字列>`でテレメトリーの処理方法を設定する。
+各コンポーネントで、`タイプ/<任意の文字列>` でテレメトリーの処理方法を設定する。
 
 ```yaml
 receivers:
@@ -111,7 +111,7 @@ service:
 
 タイプさえ正しければ問題なく、同じタイプを複数設定できる。
 
-例えば、`exporters`の宛先が冗長化されている場合、同じタイプ名で複数の宛先を設定することになる。
+例えば、`exporters` の宛先が冗長化されている場合、同じタイプ名で複数の宛先を設定することになる。
 
 ```yaml
 exporters:
@@ -269,7 +269,7 @@ exporters:
 
 重要度レベルを設定する。
 
-通常レベルは`basic`である。
+通常レベルは `basic` である。
 
 ```yaml
 exporters:
@@ -281,7 +281,7 @@ exporters:
 2024-03-26T04:41:52.163Z	info	TracesExporter	{"kind": "exporter", "data_type": "traces", "name": "debug", "resource spans": 1, "spans": <フォワーディングしたスパン数>}
 ```
 
-スパンを標準出力により詳細に出力したい場合、`detailed`とする。
+スパンを標準出力により詳細に出力したい場合、`detailed` とする。
 
 ```yaml
 exporters:
@@ -351,7 +351,7 @@ exporters:
 
 これは非推奨である。
 
-代わりに、`debug`を使用すること。
+代わりに、`debug` を使用すること。
 
 ```yaml
 exporters:
@@ -430,7 +430,7 @@ Processorを設定する
 
 テレメトリーに付与する属性を設定する。
 
-可読性が低くなるため、属性はアプリ側で実装した方が良い。
+可読性が低くなるため、属性はアプリ側で実装したほうが良い。
 
 ```yaml
 processors:
@@ -472,7 +472,7 @@ processors:
 
 #### ▼ batchとは
 
-テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくした上でExporterに渡す。
+テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくしたうえでExporterに渡す。
 
 推奨である。
 
@@ -492,7 +492,7 @@ processors:
 
 バッチ当たりの上限サイズを設定する。
 
-`0`は上限なしを表す。
+`0` は上限なしを表す。
 
 ```yaml
 processors:
@@ -659,7 +659,7 @@ service:
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
 > - https://opentelemetry.io/docs/collector/internal-telemetry/#configure-internal-logs
 
-ログレベルが`debug`の場合、例えば以下になる。
+ログレベルが `debug` の場合、例えば以下になる。
 
 ```bash
 2024-03-25T03:22:08.220Z	debug	awsxrayexporter@v0.96.0/awsxray.go:57	TracesExporter	{"kind": "exporter", "data_type": "traces", "name": "awsxray", "type": "awsxray", "name": "awsxray", "#spans": 1}

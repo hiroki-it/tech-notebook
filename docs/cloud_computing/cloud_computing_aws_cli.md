@@ -90,21 +90,21 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 ## 01-02. 設定ファイル
 
-### `~/.aws/confidentials`ファイル
+### `~/.aws/confidentials` ファイル
 
-#### ▼ `~/.aws/confidentials`ファイルとは
+#### ▼ `~/.aws/confidentials` ファイルとは
 
 資格情報を設定する。
 
-LinuxやUnixの場合は、`$HOME/.aws/<資格情報ファイル名>`に配置される。
+LinuxやUnixの場合は、`$HOME/.aws/<資格情報ファイル名>` に配置される。
 
-また、Windowsの場合は、`%USERPROFILE%\.aws\<資格情報ファイル名>`に配置される。
+また、Windowsの場合は、`%USERPROFILE%\.aws\<資格情報ファイル名>` に配置される。
 
 #### ▼ aws_access_key_id
 
 AWS CLIを実行するアカウントのアクセスキーIDを設定する。
 
-`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨である。
+`config` ファイルに設定することもできるが、`confidentials` ファイルへの設定が推奨である。
 
 ```ini
 [default]
@@ -117,7 +117,7 @@ aws_access_key_id = *****
 
 AWS CLIを実行するアカウントのシークレットアクセスキーIDを設定する。
 
-`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨である。
+`config` ファイルに設定することもできるが、`confidentials` ファイルへの設定が推奨である。
 
 ```ini
 [default]
@@ -130,7 +130,7 @@ aws_secret_access_key = *****
 
 認証で補助的に使用するセッショントークン値を設定する。
 
-`config`ファイルに設定することもできるが、`confidentials`ファイルへの設定が推奨である。
+`config` ファイルに設定することもできるが、`confidentials` ファイルへの設定が推奨である。
 
 ```ini
 [default]
@@ -141,7 +141,7 @@ aws_session_token = *****
 
 <br>
 
-### `~/.aws/config`ファイル
+### `~/.aws/config` ファイル
 
 #### ▼ output
 
@@ -216,7 +216,7 @@ $ export AWS_ACCESS_KEY_ID=<アクセスキーID>
 
 現在のターミナルで使用するプロファイルを設定する。
 
-`AWS_PROFILE`変数よりも優先される。
+`AWS_PROFILE` 変数よりも優先される。
 
 ```bash
 $ export AWS_DEFAULT_PROFILE=default
@@ -264,7 +264,7 @@ $ export AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
 
 現在のターミナルで使用するセッショントークンを設定する。
 
-AWS STSで発行された一時的な資格情報に含まれ、この資格情報を使用する時に、アクセスキーIDとシークレットアクセスキーと合わせて必要になる。
+AWS STSで発行された一時的な資格情報に含まれ、この資格情報を使用するときに、アクセスキーIDとシークレットアクセスキーと合わせて必要になる。
 
 ```bash
 $ export AWS_SESSION_TOKEN=<セッショントークン>
@@ -284,7 +284,7 @@ $ export AWS_SESSION_TOKEN=<セッショントークン>
 
 #### ▼ json
 
-`json`形式で取得する。
+`json` 形式で取得する。
 
 ```bash
 $ aws iam list-users --output json > data.json
@@ -292,7 +292,7 @@ $ aws iam list-users --output json > data.json
 
 #### ▼ yaml
 
-`yaml`形式で取得する。
+`yaml` 形式で取得する。
 
 ```bash
 $ aws iam list-users --output yaml > data.yaml
@@ -352,7 +352,7 @@ AWSリソースのAPI側でフィルタリングし、実際に取得するデ�
 
 AWSリソースごとに専用のオプションがある。
 
-代わりに、`jq`コマンドの`select`関数を使用しても良い。
+代わりに、`jq` コマンドの `select` 関数を使用しても良い。
 
 > - https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
 
@@ -385,7 +385,7 @@ AWS Certificate Managerなど
 
 コマンド実行側でフィルタリングし、取得するキーや値を制御できる。
 
-代わりに、`jq`コマンドのパスを使用しても良い。
+代わりに、`jq` コマンドのパスを使用しても良い。
 
 #### ▼ --query
 
@@ -463,9 +463,9 @@ $ aws cloudwatch set-alarm-state \
 
 **＊例＊**
 
-全てのロググループに対して、一日当たりの収集サイズを`start-time`から`end-time`の間で取得する。
+全てのロググループに対して、一日当たりの収集サイズを `start-time` から `end-time` の間で取得する。
 
-`--dimensions`オプションを使用して、特定のディメンション (ロググループ) に対して集計を実行もできる (ただし、やってみたけどうまくいかず) 。
+`--dimensions` オプションを使用して、特定のディメンション (ロググループ) に対して集計を実行もできる (ただし、やってみたけどうまくいかず) 。
 
 ```bash
 $ aws cloudwatch get-metric-statistics \
@@ -520,7 +520,7 @@ $ aws ec2 describe-instances \
 
 一時的に有効なパスワード取得する。
 
-`aws ecr get-login --no-include-email`コマンドを使用することは非推奨である。
+`aws ecr get-login --no-include-email` コマンドを使用することは非推奨である。
 
 ```bash
 $ aws ecr get-login-password --region ap-northeast-1
@@ -727,7 +727,7 @@ $ aws secretsmanager get-secret-value \
 
 もしAWS Secrets ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。
 
-そのため、`--output`オプションで`text`使用してダブルクオーテーションを削除する必要がある。
+そのため、`--output` オプションで `text` 使用してダブルクオーテーションを削除する必要がある。
 
 ```bash
 $ aws secretsmanager get-secret-value \
@@ -763,7 +763,7 @@ $ aws sts decode-authorization-message --encoded-message zAc3k...
 
 一時的な資格情報を取得する。
 
-`~/.aws/cli/cache`ディレクトリ配下に資格情報のキャッシュが作成される。
+`~/.aws/cli/cache` ディレクトリ配下に資格情報のキャッシュが作成される。
 
 ```bash
 $ aws sts get-caller-identity --profile foo
@@ -785,7 +785,7 @@ $ aws ssm create-activation \
     --registration-limit 2
 ```
 
-発行したIDとコードは、`amazon-ssm-agent`コマンドの実行時に必要になる。
+発行したIDとコードは、`amazon-ssm-agent` コマンドの実行時に必要になる。
 
 ```bash
 $ amazon-ssm-agent \
@@ -921,7 +921,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 
 #### ▼ 送信元IPに基づく制限
 
-特定の送信元IPアドレスを制限するポリシーをAWS IAMユーザーに紐付けることにより、そのAWS IAMユーザーがAWS CLIの実行する時に、社外から実行できないように制限をかけられる。
+特定の送信元IPアドレスを制限するポリシーをAWS IAMユーザーに紐付けることにより、そのAWS IAMユーザーがAWS CLIの実行するときに、社外から実行できないように制限をかけられる。
 
 **＊実装例＊**
 

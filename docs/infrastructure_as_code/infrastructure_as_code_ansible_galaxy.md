@@ -15,7 +15,7 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 ## 01. Ansible Galaxyとは
 
-`role`ディレクトリ配下をroleモジュールとして別リポジトリに切り分け、これをリモート参照する仕組みのこと。
+`role` ディレクトリ配下をroleモジュールとして別リポジトリに切り分け、これをリモート参照する仕組みのこと。
 
 > - https://knowledge.sakura.ad.jp/3118/
 
@@ -27,7 +27,7 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 #### ▼ 複数のtaskがある場合
 
-`meta`ディレクトリ配下に、roleモジュールを宣言する設定ファイルを配置する。
+`meta` ディレクトリ配下に、roleモジュールを宣言する設定ファイルを配置する。
 
 ```yaml
 foo-role-module-repository/ # roleモジュール
@@ -71,7 +71,7 @@ foo-role-module-repository/ # roleモジュール
 
 #### ▼ 複数のtaskがある場合
 
-`meta`ディレクトリ配下に、roleモジュールを宣言する設定ファイルを配置する。
+`meta` ディレクトリ配下に、roleモジュールを宣言する設定ファイルを配置する。
 
 ```yaml
 foo-role-module-repository/ # roleモジュール
@@ -105,7 +105,7 @@ foo-role-module-repository/ # roleモジュール
 
 ### meta/meta.yml
 
-`meta`ディレクトリ配下の`main.yml`ファイルで、roleモジュールであることを宣言する。
+`meta` ディレクトリ配下の `main.yml` ファイルで、roleモジュールであることを宣言する。
 
 ```yaml
 galaxy_info:
@@ -122,7 +122,7 @@ dependencies: []
 
 ### ディレクトリ構成
 
-`meta`ディレクトリ配下に、roleモジュールを宣言する設定ファイルを配置する。
+`meta` ディレクトリ配下に、roleモジュールを宣言する設定ファイルを配置する。
 
 ```yaml
 repository/
@@ -161,7 +161,7 @@ repository/
 
 ### playbook.yml
 
-`playbook.yml`ファイルでroleモジュール名を設定する。
+`playbook.yml` ファイルでroleモジュール名を設定する。
 
 ```yaml
 - hosts: all
@@ -174,7 +174,7 @@ repository/
 
 ### コマンド
 
-Ansibleのコントロールノードで`ansible-galaxy`コマンドを実行することにより、管理対象ノードの`~/.ansible/roles`ディレクトリ配下にroleモジュールをインストールする。
+Ansibleのコントロールノードで `ansible-galaxy` コマンドを実行することにより、管理対象ノードの `~/.ansible/roles` ディレクトリ配下にroleモジュールをインストールする。
 
 ```bash
 $ ansible-galaxy install <roleモジュール名>

@@ -87,7 +87,7 @@ Webhookリクエスト時に実行するKyvernoのルールを設定する。
 
 **＊実装例＊**
 
-コンテナイメージのタグ名が『`latest`』だった場合に、マニフェストに`imagePullPolicy`キーを追加する。
+コンテナイメージのタグ名が『`latest`』だった場合に、マニフェストに `imagePullPolicy` キーを追加する。
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -117,7 +117,7 @@ spec:
 
 **＊実装例＊**
 
-Podのマニフェストの`metadata.labels`キー以下に、`app.kubernetes.io/name`キーがあるか否かを検証する。
+Podのマニフェストの `metadata.labels` キー以下に、`app.kubernetes.io/name` キーがあるか否かを検証する。
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -145,7 +145,7 @@ spec:
 
 **＊実装例＊**
 
-Podのマニフェストの`.spec.containers`キー以下に、`resources`キーがあるか否かを検証する。
+Podのマニフェストの `.spec.containers` キー以下に、`resources` キーがあるか否かを検証する。
 
 ```yaml
 apiVersion: kyverno.io/v1

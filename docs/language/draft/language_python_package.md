@@ -192,7 +192,7 @@ def getFoo():
 
 #### ▼ bind
 
-`logger.add`関数で`format="{extra[<フィールド名>]}"`を設定した上で、構造ログに独自フィールドを設定できる。
+`logger.add` 関数で `format="{extra[<フィールド名>]}"` を設定したうえで、構造ログに独自フィールドを設定できる。
 
 ```python
 import requests

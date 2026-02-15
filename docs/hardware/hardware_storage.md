@@ -66,7 +66,7 @@ Google Driveのストリーミング機能では、仮想ドライブをロー�
 | ----- | :----------------------------------------------------------- |
 | RAID0 | データを複数のHDDに振り分けて書き込む。                      |
 | RAID1 | データを複数のHDDにコピーして書き込む。                      |
-| RAID5 | データとパリティ (誤り訂正符号) を`3`個以上のHDDに書き込む。 |
+| RAID5 | データとパリティ (誤り訂正符号) を `3` 個以上のHDDに書き込む。 |
 
 ![RAIDの種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/RAIDの種類.png)
 

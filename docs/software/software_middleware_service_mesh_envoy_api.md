@@ -17,7 +17,7 @@ description: API＠Envoyの知見を記録しています。
 
 Envoyの設定値をレスポンスとして返信する。ただ、欲しい設定をどのエンドポイントから取得すれば良いのかが個人的にはわかりにくい。
 
-そのため、サービスメッシュツール (例：Istio、Linkerd) でサポートされている付属ツール (例：`istioctl proxy-config`コマンド) を使用した方が良い。
+そのため、サービスメッシュツール (例：Istio、Linkerd) でサポートされている付属ツール (例：`istioctl proxy-config` コマンド) を使用したほうが良い。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -74,7 +74,7 @@ $ kubectl exec \
 
 宛先情報のバージョンが表示される。
 
-宛先情報が変わった場合、コントロールプレーンは`version_info`キーの値が変更する。
+宛先情報が変わった場合、コントロールプレーンは `version_info` キーの値が変更する。
 
 ```yaml
 [
@@ -96,9 +96,9 @@ $ kubectl exec \
 
 <br>
 
-## 03. `/clusters`エンドポイント
+## 03. `/clusters` エンドポイント
 
-### `/clusters`エンドポイントとは
+### `/clusters` エンドポイントとは
 
 静的な設定値 (特に、クラスター) 、サービス検出によって動的に登録された設定値 (特に、クラスター) を、見やすい形式でレスポンスとして返信する。
 
@@ -148,11 +148,11 @@ outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.3:80::regi
 
 <br>
 
-## 04. `/config_dump`エンドポイント
+## 04. `/config_dump` エンドポイント
 
-### `/config_dump`エンドポイントとは
+### `/config_dump` エンドポイントとは
 
-Envoyの現在の全ての設定値を、`json`形式でレスポンスとして返信する。
+Envoyの現在の全ての設定値を、`json` 形式でレスポンスとして返信する。
 
 Envoyの稼働するサーバー/コンテナからローカルホストにリクエストを送信すると確認できる。
 
@@ -194,7 +194,7 @@ $ kubectl exec \
 
 #### ▼ include_edsパラメーターとは
 
-サービス検出によって動的に登録された設定値 (特に、エンドポイント) を、`json`形式でレスポンスとして返信する。
+サービス検出によって動的に登録された設定値 (特に、エンドポイント) を、`json` 形式でレスポンスとして返信する。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -232,15 +232,15 @@ $ kubectl exec \
 
 > - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
 
-#### ▼ `dynamic_endpoint_configs`キー
+#### ▼ `dynamic_endpoint_configs` キー
 
 準備済みのエンドポイントが設定されている。
 
-`cluster_name`キーは、`/config_dump?resource={dynamic_active_clusters}`エンドポイントから取得できるJSONの`service_name`キーのエイリアスと紐づいている。
+`cluster_name` キーは、`/config_dump?resource={dynamic_active_clusters}` エンドポイントから取得できるJSONの `service_name` キーのエイリアスと紐づいている。
 
 **＊例＊**
 
-foo-podに登録されているbar-podの`endpoint`値を確認してみる。
+foo-podに登録されているbar-podの `endpoint` 値を確認してみる。
 
 ```yaml
 $ kubectl exec \
@@ -340,7 +340,7 @@ configs:
 
 #### ▼ resourceパラメーターとは
 
-`config_dump`エンドポイントの`json`形式のレスポンスのうち、JSONのルートに反復して出現するキーをフィルタリングし、返信する。
+`config_dump` エンドポイントの `json` 形式のレスポンスのうち、JSONのルートに反復して出現するキーをフィルタリングし、返信する。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -351,11 +351,11 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 
 #### ▼ dynamic_active_clusters
 
-準備済みのクラスターを、`json`形式でレスポンスとして返信する。
+準備済みのクラスターを、`json` 形式でレスポンスとして返信する。
 
-クラスターに紐づく宛先に関して、`load_assignment`キーで宛先IPアドレスを直接的に設定する場合と、`service_name`キーでエイリアスを設定する場合がある。
+クラスターに紐づく宛先に関して、`load_assignment` キーで宛先IPアドレスを直接的に設定する場合と、`service_name` キーでエイリアスを設定する場合がある。
 
-`service_name`キーに紐づく宛先情報は、`/config_dump?include_eds`エンドポイントのレスポンスの`dynamic_endpoint_configs`キー配下にある`cluster_name`キーで確認できる。
+`service_name` キーに紐づく宛先情報は、`/config_dump?include_eds` エンドポイントのレスポンスの `dynamic_endpoint_configs` キー配下にある `cluster_name` キーで確認できる。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -367,7 +367,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 **＊例＊**
 
-foo-podに登録されているbar-podの`dynamic_active_clusters`値を確認してみる。
+foo-podに登録されているbar-podの `dynamic_active_clusters` 値を確認してみる。
 
 ```yaml
 $ kubectl exec \
@@ -407,9 +407,9 @@ configs:
 
 #### ▼ dynamic_warm_clusters
 
-準備が完了していない (ウォーミングアップ中の) クラスターを、`json`形式でレスポンスとして返信する。
+準備が完了していない (ウォーミングアップ中の) クラスターを、`json` 形式でレスポンスとして返信する。
 
-もしウォーミングアップ中の宛先にルーティングしてしまった場合は、`404`ステータスや`503`ステータス (特に、Istio) になる。
+もしウォーミングアップ中の宛先にルーティングしてしまった場合は、`404` ステータスや `503` ステータス (特に、Istio) になる。
 
 ```bash
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_warming_clusters}
@@ -422,7 +422,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 **＊例＊**
 
-foo-podに登録されているbar-podの`dynamic_warming_clusters`値を確認してみる。
+foo-podに登録されているbar-podの `dynamic_warming_clusters` 値を確認してみる。
 
 ```yaml
 $ kubectl exec \
@@ -445,7 +445,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 #### ▼ dynamic_listeners
 
-サービス検出によって動的に登録された設定値 (特に、リスナー) を、`json`形式でレスポンスとして返信する。
+サービス検出によって動的に登録された設定値 (特に、リスナー) を、`json` 形式でレスポンスとして返信する。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -456,7 +456,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 **＊例＊**
 
-foo-podに登録されているbar-podの`dynamic_listeners`値を確認してみる。
+foo-podに登録されているbar-podの `dynamic_listeners` 値を確認してみる。
 
 ```yaml
 $ kubectl exec \
@@ -510,7 +510,7 @@ configs:
 
 #### ▼ dynamic_route_configs
 
-サービス検出によって動的に登録された設定値 (特に、ルート) を、`json`形式でレスポンスとして返信する。
+サービス検出によって動的に登録された設定値 (特に、ルート) を、`json` 形式でレスポンスとして返信する。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -521,7 +521,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 
 **＊例＊**
 
-foo-podに登録されているbar-podの`dynamic_route_configs`値を確認してみる。
+foo-podに登録されているbar-podの `dynamic_route_configs` 値を確認してみる。
 
 ```yaml
 $ kubectl exec \
@@ -594,7 +594,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={sta
 
 **＊例＊**
 
-foo-podに登録されているbar-podの`static_listeners`値を確認してみる。
+foo-podに登録されているbar-podの `static_listeners` 値を確認してみる。
 
 ```yaml
 $ kubectl exec \

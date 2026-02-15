@@ -21,11 +21,11 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
-プロファイルは、設定済みのIstioOperatorのチャートであり、`istioctl`コマンドインストール時に`manifests`ディレクトリ以下に同梱される。
+プロファイルは、設定済みのIstioOperatorのチャートであり、`istioctl` コマンドインストール時に `manifests` ディレクトリ以下に同梱される。
 
 `(1)`
 
-: `istioctl`コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルト値は`istio-system`にIstioリソースを作成するようになっている。
+: `istioctl` コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルト値は `istio-system` にIstioリソースを作成するようになっている。
 
 ```bash
 $ istioctl operator init
@@ -40,7 +40,7 @@ Operator controller will watch namespaces: istio-system
 
 `(2)`
 
-: IstioOperatorが定義されたマニフェストを、`istioctl`コマンドまたは`kubectl`コマンドを使用して、Istioリソースを作成する。
+: IstioOperatorが定義されたマニフェストを、`istioctl` コマンドまたは `kubectl` コマンドを使用して、Istioリソースを作成する。
 
      その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。`kubectl apply`コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
 
@@ -69,7 +69,7 @@ istiooperator.install.istio.io/istio-operator created
 
 チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
-チャートは、`istioctl`コマンドインストール時の`manifests`ディレクトリ以下に同梱されている。
+チャートは、`istioctl` コマンドインストール時の `manifests` ディレクトリ以下に同梱されている。
 
 ```bash
 $ helm install <Helmリリース名> manifests/charts/istio-operator -n istio-operator --version <バージョンタグ>
@@ -84,7 +84,7 @@ $ helm install <Helmリリース名> manifests/charts/istio-operator -n istio-op
 
 ### .metadata.name
 
-リソース名は`istio-operator`とする必要がある。
+リソース名は `istio-operator` とする必要がある。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -202,7 +202,7 @@ spec:
         enabled: "true"
 ```
 
-`.spec.egressGateways.k8s`キーでServiceの定義を設定できるが、これは非推奨である。
+`.spec.egressGateways.k8s` キーでServiceの定義を設定できるが、これは非推奨である。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -244,7 +244,7 @@ spec:
         enabled: "true"
 ```
 
-`.spec.ingressGateways.k8s`キーでServiceの定義を設定できるが、これは非推奨である。
+`.spec.ingressGateways.k8s` キーでServiceの定義を設定できるが、これは非推奨である。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -269,7 +269,7 @@ spec:
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
 
-最終的な設定値は、`kubectl get`コマンドで確認できる。
+最終的な設定値は、`kubectl get` コマンドで確認できる。
 
 ```yaml
 $ kubectl get service istio-ingressgateway -o yaml -n istio-system
@@ -497,13 +497,13 @@ spec:
 
 #### ▼ valuesとは
 
-`manifests/charts/global.yaml`ファイルの設定値を上書きする。
+`manifests/charts/global.yaml` ファイルの設定値を上書きする。
 
 > - https://github.com/istio/istio/blob/1.14.3/manifests/profiles/default.yaml#L43
 
 #### ▼ base
 
-`values`ファイルの`base`の項目を上書きする。
+`values` ファイルの `base` の項目を上書きする。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -520,7 +520,7 @@ spec:
 
 #### ▼ gateways.istio-egressgateway
 
-`values`ファイルの`istio-egressgateway`の項目を上書きする。
+`values` ファイルの `istio-egressgateway` の項目を上書きする。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -548,7 +548,7 @@ spec:
 
 #### ▼ gateways.istio-ingressgateway
 
-`values`ファイルの`istio-ingressgateway`の項目を上書きする。
+`values` ファイルの `istio-ingressgateway` の項目を上書きする。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -578,7 +578,7 @@ spec:
 
 #### ▼ pilot
 
-`values`ファイルの`pilot`の項目を上書きする。
+`values` ファイルの `pilot` の項目を上書きする。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

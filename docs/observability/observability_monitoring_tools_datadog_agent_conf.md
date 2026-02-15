@@ -74,13 +74,13 @@ $ bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh
 
 <br>
 
-## 02-02. `/etc/datadog-agent/datadog.yaml`ファイル
+## 02-02. `/etc/datadog-agent/datadog.yaml` ファイル
 
-### `datadog.yaml`ファイルとは
+### `datadog.yaml` ファイルとは
 
-datadogエージェントを設定する。 `/etc/datadog-agent`ディレクトリに配置される。
+datadogエージェントを設定する。 `/etc/datadog-agent` ディレクトリに配置される。
 
-datadogエージェントをインストールすると、`datadog.yaml.example`ファイルが作成されるため、これをコピーして作成する。
+datadogエージェントをインストールすると、`datadog.yaml.example` ファイルが作成されるため、これをコピーして作成する。
 
 > - https://app.datadoghq.com/account/settings#agent
 > - https://docs.datadoghq.com/getting_started/agent/#configuration
@@ -292,11 +292,11 @@ datadogコンテナがコンテナからメトリクスの元になるデータ�
 
 <br>
 
-## 03-02. `/etc/datadog-agent/datadog.yaml`ファイル
+## 03-02. `/etc/datadog-agent/datadog.yaml` ファイル
 
-### `datadog.yaml`ファイルとは
+### `datadog.yaml` ファイルとは
 
-コンテナもサーバーと同様にして`datadog.yaml`ファイルが必要である。
+コンテナもサーバーと同様にして `datadog.yaml` ファイルが必要である。
 
 ただサーバーの場合とは異なり、環境変数から値を設定できる。
 
@@ -315,7 +315,7 @@ datadogコンテナの環境変数として設定する。
 | 変数名        | 説明                                                                             | 補足                                                                                                                                                                 | DatadogコンソールURL                         |
 | ------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
 | `DD_API_KEY`  | datadogコンテナがあらゆるデータをDatadogに送信するために必要である。             |                                                                                                                                                                      |                                              |
-| `DD_ENV`      | APMを使用する場合、マイクロサービスや分散トレースにて、`env`タグに値を設定する。 |                                                                                                                                                                      | https://app.datadoghq.com/apm/services       |
+| `DD_ENV`      | APMを使用する場合、マイクロサービスや分散トレースにて、`env` タグに値を設定する。 |                                                                                                                                                                      | https://app.datadoghq.com/apm/services       |
 | `DD_HOSTNAME` | コンテナのホスト名を設定する。                                                   | AWS ECS Fargateの場合は、これを使用しないようにする。<br>・https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#other-environment-variables | https://app.datadoghq.com/infrastructure/map |
 | `ECS_FARGATE` | AWS ECS Fargateを使用する場合、これを宣言する。                                  |                                                                                                                                                                      |                                              |
 
@@ -376,7 +376,7 @@ datadogコンテナの環境変数として設定する。
 | 変数名                                    | 説明                                                                                                                                                                     | 画面                                   |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- |
 | `DD_SERVICE_MAPPING`                      | 分散トレースにマイクロサービス名を設定する。マイクロサービス名はデフォルトのインテグレーション名になるが、これを上書きできる。<br>(例) `laravel:foo-laravel,pdo:foo-pdo` | https://app.datadoghq.com/apm/services |
-| `DD_SERVICE_NAME`                         | 分散トレースにマイクロサービス名を設定する。`DD_SERVICE_MAPPING`がnullの場合、この環境変数の値が代わりにマイクロサービス名になる (仕組みがよくわからん) 。               |                                        |
+| `DD_SERVICE_NAME`                         | 分散トレースにマイクロサービス名を設定する。`DD_SERVICE_MAPPING` がnullの場合、この環境変数の値が代わりにマイクロサービス名になる (仕組みがよくわからん) 。               |                                        |
 | `DD_TRACE_<インテグレーション名>_ENABLED` | 有効化するインテグレーション名を設定する。デフォルトで全てのインテグレーションが有効化されているため、設定は不要である。Datadogのインテグレーションを無効化する場合は    |                                        |
 | `DD_<インテグレーション名>_DISABLED`      | 無効化するインテグレーション名を設定する。                                                                                                                               |                                        |
 

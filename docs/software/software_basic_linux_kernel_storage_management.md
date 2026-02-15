@@ -66,7 +66,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 `(1)`
 
-: ストレージのサイズを現状から`100`GBまで拡張する。
+: ストレージのサイズを現状から `100`GBまで拡張する。
 
 `(2)`
 
@@ -105,7 +105,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 `(4)`
 
-: パーティションを`growpart`コマンドで拡張する。
+: パーティションを `growpart` コマンドで拡張する。
 
 ```bash
 $ growpart /dev/sda 2
@@ -113,7 +113,7 @@ $ growpart /dev/sda 2
 
 `(5)`
 
-: 論理ボリュームを拡張できるように、事前に物理ボリュームを`pvresize`コマンドで拡張する。
+: 論理ボリュームを拡張できるように、事前に物理ボリュームを `pvresize` コマンドで拡張する。
 
 ```bash
 $ pvresize /dev/sda2
@@ -121,7 +121,7 @@ $ pvresize /dev/sda2
 
 `(6)`
 
-: 論理ボリュームを`lvextend`コマンドで拡張する。ここでは、空きサイズいっぱいに拡張する。
+: 論理ボリュームを `lvextend` コマンドで拡張する。ここでは、空きサイズいっぱいに拡張する。
 
 ```bash
 $ lvextend -l +100%FREE /dev/root
@@ -176,7 +176,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 1つの領域を複数に見せかけられる。
 
-`/dev`ディレクトリ配下にストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
+`/dev` ディレクトリ配下にストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/partition_volume.png)
 
@@ -199,13 +199,13 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 #### ▼ Linuxの場合
 
-Linuxでは、パーティションとマウントポイントは`df`コマンドで確認できる。
+Linuxでは、パーティションとマウントポイントは `df` コマンドで確認できる。
 
 **＊例＊**
 
-Linuxの場合、`/dev/xvda1`をルートディレクトリにマウントしていることがある。
+Linuxの場合、`/dev/xvda1` をルートディレクトリにマウントしていることがある。
 
-`Filesystem`列にパーティション、`Mounted on`列にパーティションに対応するマウントポイントが表示される。
+`Filesystem` 列にパーティション、`Mounted on` 列にパーティションに対応するマウントポイントが表示される。
 
 ```bash
 $ df
@@ -218,7 +218,7 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 
 **＊例＊**
 
-特にCentOSの場合、`/dev/mapper/rhel-root`をルートディレクトリにマウントしていることがある。
+特にCentOSの場合、`/dev/mapper/rhel-root` をルートディレクトリにマウントしていることがある。
 
 ```bash
 $ df -hT
@@ -244,13 +244,13 @@ Windowsでは、CドライブとDドライブがパーティションに相当�
 
 #### ▼ MacOSの場合
 
-MacOSでは、`diskutil`コマンドを実行することにより、パーティションとマウントポイントを確認できる。
+MacOSでは、`diskutil` コマンドを実行することにより、パーティションとマウントポイントを確認できる。
 
 > - https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280
 
 **＊例＊**
 
-ストレージに紐づく`2`個のデバイスファイルが表示され、`disk0`ファイル は2つ、また`disk1`ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、`IDENTIFIER`列で表示される (例：パーティションのデバイスファイル名が`/dev/disk0`なら、マウントポイントは`/dev/disk0<IDENTIFIER名>`になる) 。
+ストレージに紐づく `2` 個のデバイスファイルが表示され、`disk0` ファイル は2つ、また `disk1` ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、`IDENTIFIER` 列で表示される (例：パーティションのデバイスファイル名が `/dev/disk0` なら、マウントポイントは `/dev/disk0<IDENTIFIER名>` になる) 。
 
 ```bash
 $ diskutil list
@@ -281,7 +281,7 @@ $ diskutil list
 
 ### 論理ボリュームとは
 
-異なる物理ボリュームにまたがる領域を組み合わせ、`1`個の仮想的なボリュームとした扱ったもの。
+異なる物理ボリュームにまたがる領域を組み合わせ、`1` 個の仮想的なボリュームとした扱ったもの。
 
 ![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logical-volume.png)
 
@@ -295,7 +295,7 @@ $ diskutil list
 
 **＊例＊**
 
-Linuxでは論理ボリュームは、`lvdisplay`コマンドで確認できる。
+Linuxでは論理ボリュームは、`lvdisplay` コマンドで確認できる。
 
 ```bash
 $ lvdisplay
@@ -339,7 +339,7 @@ $ lvdisplay
 
 Linuxカーネルが入出力装置や標準入出力を操作できるように、これらのインターフェースをファイルとして扱ったもの。
 
-`/dev`ディレクトリ配下に配置されている。
+`/dev` ディレクトリ配下に配置されている。
 
 各ファイルには具体的な入出力装置を示す番号 (メジャー番号、マイナー番号) が割り当てられている。
 
@@ -356,7 +356,7 @@ Linuxカーネルが入出力装置や標準入出力を操作できるように
 
 **＊例＊**
 
-Linuxのデバイスファイルは`/dev`ディレクトリ配下にある。
+Linuxのデバイスファイルは `/dev` ディレクトリ配下にある。
 
 Dockerのデバイスファイルを確認すると、以下のデバイスファイルがある。
 
@@ -516,7 +516,7 @@ HHD (`/dev/hd`) 、メモリなどがある。
 
 ### ファイルシステムの作成方法
 
-#### ▼ `mkfs`コマンドの場合
+#### ▼ `mkfs` コマンドの場合
 
 さまざまなタイプのファイルシステムを作成する。
 
@@ -535,9 +535,9 @@ $ mkfs -t xfs /dev/xvdb
 > - https://kazmax.zpp.jp/linux_beginner/mkfs.html
 > - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
 
-#### ▼ `mke2fs`コマンドの場合
+#### ▼ `mke2fs` コマンドの場合
 
-`ext`系タイプ (`ext2`、`ext3`、`ext4`) のファイルシステムを作成する。
+`ext` 系タイプ (`ext2`、`ext3`、`ext4`) のファイルシステムを作成する。
 
 ```bash
 $ mke2fs -t <ファイルシステムのタイプ> <パーティションのデバイスファイル名>
@@ -569,7 +569,7 @@ NFSサーバーに配置されたファイルを、他のサーバー (NFSクラ
 
 `(1)`
 
-: ホスト側のMacOSにて、`/etc/exports`ファイルにマウントオプションを設定する。また、`/etc/exports`ファイルを検証する。
+: ホスト側のMacOSにて、`/etc/exports` ファイルにマウントオプションを設定する。また、`/etc/exports` ファイルを検証する。
 
 > - https://qiita.com/imaiworks/items/b657046ea499ec8fd95c
 

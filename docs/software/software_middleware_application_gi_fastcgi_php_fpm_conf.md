@@ -31,17 +31,17 @@ $ apt-get install php-fpm
 
 ## 02. 設定ファイルの種類 (※ Dockerの場合)
 
-### `/usr/local/etc/php-fpm.conf`ファイル
+### `/usr/local/etc/php-fpm.conf` ファイル
 
-#### ▼ `php-fpm.conf`ファイルとは
+#### ▼ `php-fpm.conf` ファイルとは
 
 PHP-FPMの全てのプロセスを設定する。
 
-設定ファイルを切り分ける場合、`/etc/php-fpm.d`ディレクトリ配下に`<実行ユーザー名>.conf`ファイルの名前で配置する。
+設定ファイルを切り分ける場合、`/etc/php-fpm.d` ディレクトリ配下に `<実行ユーザー名>.conf` ファイルの名前で配置する。
 
-PHP-FPMの仕様として、異なる`.conf`ファイルで同じプールで同じオプションを設定した場合は、後ろにくる名前のファイルの設定が優先されるようになっている。
+PHP-FPMの仕様として、異なる `.conf` ファイルで同じプールで同じオプションを設定した場合は、後ろにくる名前のファイルの設定が優先されるようになっている。
 
-そのため、同じプールの設定を異なる`.conf`ファイルに分割する場合、同じオプションを設定しないように注意する。
+そのため、同じプールの設定を異なる `.conf` ファイルに分割する場合、同じオプションを設定しないように注意する。
 
 ```ini
 ;;;;;;;;;;;;;;;;;;;;;
@@ -88,30 +88,30 @@ daemonize = yes
 
 <br>
 
-### `/usr/local/etc/php-fpm.d/www.conf`ファイル
+### `/usr/local/etc/php-fpm.d/www.conf` ファイル
 
-#### ▼ `www.conf`ファイルとは
+#### ▼ `www.conf` ファイルとは
 
-PHP-FPMの`www`プロセスのプールを設定する。
+PHP-FPMの `www` プロセスのプールを設定する。
 
-`www.conf`ファイルは、`/usr/local/etc/php-fpm.d`ディレクトリ配下に配置されている。
+`www.conf` ファイルは、`/usr/local/etc/php-fpm.d` ディレクトリ配下に配置されている。
 
-`php.ini`ファイルによって読み込まれ、`php.ini`ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。
+`php.ini` ファイルによって読み込まれ、`php.ini` ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。
 
-NginxからPHP-FPMにインバウンド通信をルーティングする場合、Nginxの設定ファイル (`/etc/nginx/nginx.conf`ファイル) とPHP-FPMの設定ファイル (`/usr/local/etc/php-fpm.d/www.conf`ファイル) の両方で、プロセスのユーザー名を『`www-data`』とする必要がある。
+NginxからPHP-FPMにインバウンド通信をルーティングする場合、Nginxの設定ファイル (`/etc/nginx/nginx.conf` ファイル) とPHP-FPMの設定ファイル (`/usr/local/etc/php-fpm.d/www.conf` ファイル) の両方で、プロセスのユーザー名を『`www-data`』とする必要がある。
 
-補足として、『`www-data`』は`apache`プロセスのユーザー名のデフォルト値である。
+補足として、『`www-data`』は `apache` プロセスのユーザー名のデフォルト値である。
 
 > - https://www.php.net/manual/ja/install.fpm.configuration.php
 > - https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
 
-#### ▼ `zz-docker.conf `ファイルについて
+#### ▼ `zz-docker.conf ` ファイルについて
 
-PHP-FPMのベースイメージには`zz-docker.conf `ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。
+PHP-FPMのベースイメージには `zz-docker.conf ` ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。
 
-PHP-FPMの仕様では、同じプールに同じオプションを設定した場合は、名前が後ろに来るファイルの設定が優先されるため、デフォルトのベースイメージでは`zz-docker.conf`ファイルの設定が最優先になっている。
+PHP-FPMの仕様では、同じプールに同じオプションを設定した場合は、名前が後ろに来るファイルの設定が優先されるため、デフォルトのベースイメージでは `zz-docker.conf` ファイルの設定が最優先になっている。
 
-このファイルに後勝ちできるように、ホストでは`www.conf`ファイルとして定義しておき、コンテナ側にコピーする時は`zzz-www.conf`ファイルとする。
+このファイルに後勝ちできるように、ホストでは `www.conf` ファイルとして定義しておき、コンテナ側にコピーするときは `zzz-www.conf` ファイルとする。
 
 ```dockerfile
 COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
@@ -122,11 +122,11 @@ COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 
 <br>
 
-### `/usr/local/etc/php-fpm.d/docker.conf`ファイル
+### `/usr/local/etc/php-fpm.d/docker.conf` ファイル
 
-#### ▼ `docker.conf`ファイルとは
+#### ▼ `docker.conf` ファイルとは
 
-PHP-FPMをコンテナで稼働させるために必要な項目を設定する。ファイルは、`/usr/local/etc/php-fpm.d`ディレクトリ配下に配置されている。
+PHP-FPMをコンテナで稼働させるために必要な項目を設定する。ファイルは、`/usr/local/etc/php-fpm.d` ディレクトリ配下に配置されている。
 
 ```ini
 [global]
@@ -178,7 +178,7 @@ pid = /run/php-fpm/php-fpm.pid
 
 ### wwwセクションとは
 
-PHP-FPMの`www`プロセスのプールを設定する。
+PHP-FPMの `www` プロセスのプールを設定する。
 
 > - https://www.php.net/manual/ja/install.fpm.configuration.php
 > - https://hackers-high.com/linux/php-fpm-config/
@@ -206,7 +206,7 @@ clear_env = no
 
 プロセスのプール内に出力する環境変数を設定する。
 
-この環境変数はPHPのプロセスで定義された環境変数ではないため、`php`コマンドを直接的に実行しても確認できないことに注意する。
+この環境変数はPHPのプロセスで定義された環境変数ではないため、`php` コマンドを直接的に実行しても確認できないことに注意する。
 
 ```ini
 [www]
@@ -245,7 +245,7 @@ listen = /var/run/php-fpm/php-fpm.sock
 
 コメントアウトが推奨である。
 
-代わりに、`listen.owner`と`listen.group`を設定する。
+代わりに、`listen.owner` と `listen.group` を設定する。
 
 ```ini
 [www]
@@ -304,7 +304,7 @@ listen.owner = www-data
 
 Apacheのみで使用できる。
 
-PHPの`ini`ファイルで設定されたboolean値のオプションを上書きし、他から上書きされないようにする。
+PHPの `ini` ファイルで設定されたboolean値のオプションを上書きし、他から上書きされないようにする。
 
 全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
@@ -326,7 +326,7 @@ php_admin_flag[log_errors] = on
 
 Apacheのみで使用できる。
 
-PHPの`ini`ファイルで設定されたboolean値以外のオプションを上書きし、他から上書きされないようにする。
+PHPの `ini` ファイルで設定されたboolean値以外のオプションを上書きし、他から上書きされないようにする。
 
 全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
@@ -348,7 +348,7 @@ php_admin_value[error_log] = /dev/stderr
 
 #### ▼ php_flagとは
 
-PHPの`ini`ファイルで設定されたboolean値のオプションを上書きする。
+PHPの `ini` ファイルで設定されたboolean値のオプションを上書きする。
 
 全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
@@ -370,7 +370,7 @@ php_flag[display_errors] = off
 
 #### ▼ php_valueとは
 
-PHPの`ini`ファイルで設定されたboolean値以外のオプションを上書きする。
+PHPの `ini` ファイルで設定されたboolean値以外のオプションを上書きする。
 
 全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
@@ -381,9 +381,9 @@ PHPの`ini`ファイルで設定されたboolean値以外のオプションを�
 
 セッションデータの保管形式を設定する。
 
-デフォルト値は`files`形式でサーバー内に保管する。
+デフォルト値は `files` 形式でサーバー内に保管する。
 
-`redis`レコード形式でセッションDB (例：PHP Redis、ElastiCache Redisなど) に保管するように設定もできる。
+`redis` レコード形式でセッションDB (例：PHP Redis、ElastiCache Redisなど) に保管するように設定もできる。
 
 > - https://zapanet.info/blog/item/3364
 
@@ -396,9 +396,9 @@ php_value[session.save_handler] = redis
 
 セッションデータの保管場所のディレクトリを設定する。
 
-保管形式に`redis`を設定した場合には、Redisのエンドポイントを設定できる。
+保管形式に `redis` を設定した場合には、Redisのエンドポイントを設定できる。
 
-デフォルト値は`/var/lib/php/session`ディレクトリである。
+デフォルト値は `/var/lib/php/session` ディレクトリである。
 
 > - https://zapanet.info/blog/item/3364
 
@@ -420,7 +420,7 @@ php_value[soap.wsdl_cache_dir] = /var/lib/php/wsdlcache
 
 子プロセス数の増減タイプを設定する。
 
-`static`の場合は、リクエスト数によらず一定数の子プロセスをメモリに割り当て、`dynamic`の場合はリクエスト数によって子プロセスを増減させる。
+`static` の場合は、リクエスト数によらず一定数の子プロセスをメモリに割り当て、`dynamic` の場合はリクエスト数によって子プロセスを増減させる。
 
 > - https://life.iua.jp/?p=230
 

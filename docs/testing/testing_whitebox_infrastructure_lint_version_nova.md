@@ -25,7 +25,7 @@ Helmのチャートリポジトリ上のチャートバージョンと、Cluster
 
 <br>
 
-## 02. `nova.yaml`ファイル
+## 02. `nova.yaml` ファイル
 
 ### desired-versions
 
@@ -44,7 +44,7 @@ desired-versions:
 
 ### --config
 
-使用する`nova.yaml`ファイルを指定する。
+使用する `nova.yaml` ファイルを指定する。
 
 ```bash
 $ nova find --config nova.yaml

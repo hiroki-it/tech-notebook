@@ -43,7 +43,7 @@ description: システムの知見を記録しています。
 
 近年は、仮想環境を使用してWebシステムのハードウェア部分を作成することが多い。
 
-そのため、Web/App/DBサーバーではなく、仮想Web/App/DB環境と呼ぶ方が適切かもしれない。
+そのため、Web/App/DBサーバーではなく、仮想Web/App/DB環境と呼ぶほうが適切かもしれない。
 
 ![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/web-server_app-server_db-server.png)
 
@@ -98,7 +98,7 @@ Go、JavaScript、ではWebサーバーとAppサーバーがいらない。
 
 ### Webサーバーとの違い
 
-Webサーバーとは異なり、静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) を直接的に提供できない。
+Webサーバーとは異なり、静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を直接的に提供できない。
 
 一方で、Webサーバーはロードバランシングが苦手である。
 
@@ -154,7 +154,7 @@ Webサーバーとは異なり、静的ファイル (例：`html`ファイル、
 
 クラウドの場合も、仮想環境が作成されるのみで、配置場所は同じである。
 
-各CDNが提供するDNS (例：Akamaiなら`<ドメイン名>.edgekey.net`、AWSなら`<自動発行されるランダム文字列>.cloudfront.net`) を、ドメインレジストリのレコードに登録する。
+各CDNが提供するDNS (例：Akamaiなら `<ドメイン名>.edgekey.net`、AWSなら `<自動発行されるランダム文字列>.cloudfront.net`) を、ドメインレジストリのレコードに登録する。
 
 このDNSからエッジサーバーのIPアドレスを正引きできる。
 

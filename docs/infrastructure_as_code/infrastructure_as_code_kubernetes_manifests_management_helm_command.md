@@ -13,7 +13,7 @@ description: コマンド＠Helmの知見を記録しています。
 
 <br>
 
-## 01. `helm`コマンド
+## 01. `helm` コマンド
 
 ### create
 
@@ -41,7 +41,7 @@ $ helm destroy <Helmリリース名>
 
 Helmは、CRDを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
 
-そのため、`helm destroy`コマンド時にはCRDを削除しない仕様になっている。
+そのため、`helm destroy` コマンド時にはCRDを削除しない仕様になっている。
 
 CRDは手動で削除する必要がある。
 
@@ -59,9 +59,9 @@ $ kubectl delete crd <CRD名>
 
 #### ▼ build
 
-`requirements.yaml`ファイルに定義された依存対象のサブチャートを、`chart`ディレクトリ内にダウンロードする。
+`requirements.yaml` ファイルに定義された依存対象のサブチャートを、`chart` ディレクトリ内にダウンロードする。
 
-また、`Chart.lock`ファイルを作成する。
+また、`Chart.lock` ファイルを作成する。
 
 ```bash
 $ helm dependency build
@@ -119,7 +119,7 @@ HELM_REPOSITORY_CONFIG="/.config/helm/repositories.yaml"
 
 #### ▼ getとは
 
-特定のHelmリリースに含まれる`helm template`コマンドの結果を取得する。
+特定のHelmリリースに含まれる `helm template` コマンドの結果を取得する。
 
 ```bash
 $ helm get <Helmリリース名>
@@ -166,13 +166,13 @@ $ helm install <Helmリリース名> <チャートへのパス>
 | `<チャートレジストリ名>/<チャートリポジトリ名>`                         | `foo-registry/foo-repository`                               | ・https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                                            |
 | チャートリポジトリURL                                                   | `https://example.com/foo-chart`                             |                                                                                                                                                               |
 | `<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>` | `https://example.com/foo-chart foo-registry/foo-repository` |                                                                                                                                                               |
-| チャートアーカイブへのパス                                              | `./foo-chart-<バージョンタグ>.tgz`                          | `values`ファイルを使用する場合、`values`ファイルはチャートアーカイブ (`.tgz`形式ファイル) の外にある必要がある。<br>・https://helm.sh/docs/helm/helm_install/ |
+| チャートアーカイブへのパス                                              | `./foo-chart-<バージョンタグ>.tgz`                          | `values` ファイルを使用する場合、`values` ファイルはチャートアーカイブ (`.tgz` 形式ファイル) の外にある必要がある。<br>・https://helm.sh/docs/helm/helm_install/ |
 
 > - https://helm.sh/docs/helm/helm_install/
 
 #### ▼ --disable-openapi-validation
 
-チャートをインストールする時に、OpenAPIを使用したマニフェストの静的解析を無効化する。
+チャートをインストールするときに、OpenAPIを使用したマニフェストの静的解析を無効化する。
 
 特に、CRDのファイルサイズが大きすぎてインストールできない場合に使用する。
 
@@ -198,7 +198,7 @@ kind: Deployment
 
 #### ▼ -f
 
-指定した`values`ファイル使用して、`helm install`コマンドを実行する。
+指定した `values` ファイル使用して、`helm install` コマンドを実行する。
 
 チャートのルートディレクトリに『`values.yaml`』の名前でファイルが存在している場合、自動的に読み込まれる.
 
@@ -208,20 +208,20 @@ kind: Deployment
 $ helm install <Helmリリース名> <チャートへのパス>
 ```
 
-これ以外の名前の場合は、オプションによる`values`ファイルの指定が必要になる。
+これ以外の名前の場合は、オプションによる `values` ファイルの指定が必要になる。
 
-なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの`values`ファイルも暗黙的に読み込まれていることに注意する。
+なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの `values` ファイルも暗黙的に読み込まれていることに注意する。
 
-この`values`ファイルは、デフォルト値として使用される。
+この `values` ファイルは、デフォルト値として使用される。
 
 ```bash
 # デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている
 $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.yaml
 ```
 
-複数を指定することができ、同じ設定値がある場合は、より後に読み込んだ`values`ファイルの設定値を優先する。
+複数を指定でき、同じ設定値がある場合は、より後に読み込んだ `values` ファイルの設定値を優先する。
 
-同様にして、指定したvaluesファイルとは別に、チャートのルートディレクトリの`values`ファイルも暗黙的に読み込まれていることに注意する。
+同様にして、指定したvaluesファイルとは別に、チャートのルートディレクトリの `values` ファイルも暗黙的に読み込まれていることに注意する。
 
 ```bash
 # デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている
@@ -232,7 +232,7 @@ $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.ya
 
 #### ▼ kube-context
 
-`helm`コマンドの向き先を指定して、`helm install`コマンドを実行する。
+`helm` コマンドの向き先を指定して、`helm install` コマンドを実行する。
 
 ```bash
 # Minikubeの場合
@@ -246,7 +246,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/<チャー
 
 #### ▼ --generate-name
 
-リリース名を省略して、`helm install`コマンドを実行する。
+リリース名を省略して、`helm install` コマンドを実行する。
 
 代わりに、ランダム値がリリース名になる。
 
@@ -261,7 +261,7 @@ $ helm install <チャートリポジトリ名>/<チャート名> --generate-nam
 
 既存のマニフェストを置き換える。
 
-`kubectl replace`コマンドに近い。
+`kubectl replace` コマンドに近い。
 
 ```bash
 $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.yaml --force
@@ -271,7 +271,7 @@ $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.ya
 
 #### ▼ --wait
 
-作成したPodがReady状態になるまで、`helm install`コマンドの完了を待機する。
+作成したPodがReady状態になるまで、`helm install` コマンドの完了を待機する。
 
 ```bash
 $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.yaml --wait
@@ -291,7 +291,7 @@ $ helm install foo-release . -f foo-values.yaml --wait
 
 #### ▼ lintとは
 
-チャートの構造の誤り (例：`values`ファイルや`Chart.yaml`ファイルがあるか) を実行する。
+チャートの構造の誤り (例：`values` ファイルや `Chart.yaml` ファイルがあるか) を実行する。
 
 例えば、以下ではエラーになっていない。
 
@@ -324,11 +324,11 @@ Error: 1 chart(s) linted, 1 chart(s) failed
 
 #### ▼ -f
 
-指定した`values`ファイル使用して、`helm lint`コマンドを実行する。
+指定した `values` ファイル使用して、`helm lint` コマンドを実行する。
 
-なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの`values`ファイルも暗黙的に読み込まれていることに注意する。
+なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの `values` ファイルも暗黙的に読み込まれていることに注意する。
 
-この`values`ファイルは、デフォルト値として使用される。
+この `values` ファイルは、デフォルト値として使用される。
 
 ```bash
 # デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている
@@ -354,9 +354,9 @@ $ helm lint <チャートへのパス> --quiet -f foo-values.yaml
 
 #### ▼ --strict
 
-warningでも終了コード`1` (失敗) で終えるようにする。
+warningでも終了コード `1` (失敗) で終えるようにする。
 
-また、`values`ファイルの値がHelmテンプレートで使用されていない場合に、これを警告する。
+また、`values` ファイルの値がHelmテンプレートで使用されていない場合に、これを警告する。
 
 執筆時点 (2023/05/26) でまだリリースされていない。
 
@@ -374,7 +374,7 @@ $ helm lint <チャートへのパス> --strict -f foo-values.yaml
 
 Helmリリースの一覧を取得する。
 
-チャートは、バージョンによって中身の`yaml`ファイルに差があるため、ここでチャートのバージョンを確認すると良い。
+チャートは、バージョンによって中身の `yaml` ファイルに差があるため、ここでチャートのバージョンを確認すると良い。
 
 ```bash
 $ helm list
@@ -391,7 +391,7 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 #### ▼ packageとは
 
-チャートからチャートアーカイブ (`.tgz`形式ファイル) を作成する。
+チャートからチャートアーカイブ (`.tgz` 形式ファイル) を作成する。
 
 または、すでにアーカイブが存在する場合は更新する。
 
@@ -409,7 +409,7 @@ Successfully packaged chart and saved it to: /foo-<バージョンタグ>.tgz
 
 #### ▼ -d
 
-チャートアーカイブ (`.tgz`形式ファイル) の作成先のディレクトリを指定しつつ、`helm package`コマンドを実行する。
+チャートアーカイブ (`.tgz` 形式ファイル) の作成先のディレクトリを指定しつつ、`helm package` コマンドを実行する。
 
 ```bash
 $ helm package <チャートへのパス> -d <作成するチャートアーカイブのパス>
@@ -453,13 +453,13 @@ $ helm plugin uninstall secrets
 
 #### ▼ pullとは
 
-指定したチャートリポジトリからチャートをチャートアーカイブ (`.tgz`形式ファイル) でプルする。
+指定したチャートリポジトリからチャートをチャートアーカイブ (`.tgz` 形式ファイル) でプルする。
 
-チャートアーカイブは、チャートに解凍した上で使用した方がよい。
+チャートアーカイブは、チャートに解凍したうえで使用したほうがよい。
 
 #### ▼ -d
 
-チャートのプル先のディレクトリを指定して、`helm pull`コマンドを実行する。
+チャートのプル先のディレクトリを指定して、`helm pull` コマンドを実行する。
 
 ```bash
 $ helm pull <チャートリポジトリURL> -d <プル先のディレクトリ>
@@ -476,7 +476,7 @@ $ helm pull oci://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<�
 
 #### ▼ --version
 
-チャートのバージョンを指定して、`helm pull`コマンドを実行する。
+チャートのバージョンを指定して、`helm pull` コマンドを実行する。
 
 ```bash
 $ helm pull <チャートリポジトリURL> --version <バージョンタグ>
@@ -490,7 +490,7 @@ $ helm pull <チャートリポジトリURL> --version <バージョンタグ>
 
 チャートリポジトリにチャートをプッシュする。
 
-プッシュする前にチャートをチャートアーカイブ (`.tgz`形式ファイル) に圧縮しておく必要がある。
+プッシュする前にチャートをチャートアーカイブ (`.tgz` 形式ファイル) に圧縮しておく必要がある。
 
 ```bash
 $ helm push <チャートアーカイブへのパス> <チャートリポジトリURL>
@@ -540,7 +540,7 @@ $ aws ecr get-login-password --region ap-northeast-1 | helm registry login \
 
 #### ▼ add
 
-`helm`コマンドの実行環境にチャートリポジトリを登録する。
+`helm` コマンドの実行環境にチャートリポジトリを登録する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> <チャートリポジトリURL>
@@ -548,7 +548,7 @@ $ helm repo add <チャートリポジトリ名> <チャートリポジトリURL
 "<チャート名>" has been added to your repositories
 ```
 
-登録していないチャートに`helm`コマンドでアクセスしようとするとエラーになってしまう。
+登録していないチャートに `helm` コマンドでアクセスしようとするとエラーになってしまう。
 
 ```bash
 $ helm show all <チャートリポジトリ名>
@@ -560,7 +560,7 @@ Error: failed to download "<チャートリポジトリ名>"
 
 #### ▼ index
 
-チャートリポジトリのメタデータが設定された`index.yaml`ファイルを作成する。
+チャートリポジトリのメタデータが設定された `index.yaml` ファイルを作成する。
 
 ```bash
 $ helm repo index <チャートへのパス>
@@ -574,7 +574,7 @@ $ helm repo index .
 
 #### ▼ list
 
-事前に`helm repo add`コマンドで追加しておいたチャートリポジトリの一覧を取得する。
+事前に `helm repo add` コマンドで追加しておいたチャートリポジトリの一覧を取得する。
 
 ```bash
 $ helm repo list
@@ -585,7 +585,7 @@ NAME                 URL
 
 #### ▼ remove
 
-事前に`helm repo add`コマンドで追加しておいたチャートリポジトリを削除する。
+事前に `helm repo add` コマンドで追加しておいたチャートリポジトリを削除する。
 
 ```bash
 $ helm repo remove <チャート名>
@@ -601,7 +601,7 @@ $ helm repo remove foo-chart
 
 #### ▼ update
 
-事前に`helm repo add`コマンドで追加しておいたチャートリポジトリの情報を更新する。
+事前に `helm repo add` コマンドで追加しておいたチャートリポジトリの情報を更新する。
 
 チャートを特定のバージョンにアップグレードする前にリポジトリの情報を更新しておく必要がある。
 
@@ -621,7 +621,7 @@ Update Complete. ⎈Happy Helming!⎈
 
 #### ▼ searchとは
 
-事前に`helm repo add`コマンドで追加しておいたチャートリポジトリを検索する。
+事前に `helm repo add` コマンドで追加しておいたチャートリポジトリを検索する。
 
 > - https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
 
@@ -660,7 +660,7 @@ $ helm show all foo-chart
 
 #### ▼ chart
 
-チャートの`Chart.yaml`ファイルを取得する。
+チャートの `Chart.yaml` ファイルを取得する。
 
 ```bash
 $ helm show chart <チャート名>
@@ -676,9 +676,9 @@ version: <バージョンタグ>
 
 #### ▼ values
 
-チャートに渡せるパラメーターを`values`ファイルとして取得する。
+チャートに渡せるパラメーターを `values` ファイルとして取得する。
 
-`values`ファイル本体は、チャートリポジトリで参照できる。
+`values` ファイル本体は、チャートリポジトリで参照できる。
 
 ```bash
 $ helm show values <チャート名>
@@ -700,7 +700,7 @@ $ helm show values foo-chart
 
 Kubernetesに作成されるリソースのマニフェストを出力する。
 
-`yaml`ファイルにリダイレクトするようにすると良い。
+`yaml` ファイルにリダイレクトするようにすると良い。
 
 ```bash
 # チャート名をreleasesとしている場合
@@ -709,11 +709,11 @@ $ helm template . -f foo-values.yaml >| releases.yaml
 
 #### ▼ -f
 
-指定した`values`ファイル使用して、`helm template`コマンドを実行する。
+指定した `values` ファイル使用して、`helm template` コマンドを実行する。
 
-なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの`values`ファイルも暗黙的に読み込まれていることに注意する。
+なお、指定したvaluesファイルとは別に、チャートのルートディレクトリの `values` ファイルも暗黙的に読み込まれていることに注意する。
 
-この`values`ファイルは、デフォルト値として使用される。
+この `values` ファイルは、デフォルト値として使用される。
 
 ```bash
 # デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている
@@ -730,7 +730,7 @@ $ helm template . -f foo-values.yaml >| release.yaml
 
 CI上でマニフェストの静的解析を実行したい場合に、CIの実行環境に暗号化キーの使用許可を付与する必要はない。
 
-`helm template`コマンドに暗号化されたYAMLファイルをそのまま渡すと、暗号化ツール (例：SOPS) を介さない。
+`helm template` コマンドに暗号化されたYAMLファイルをそのまま渡すと、暗号化ツール (例：SOPS) を介さない。
 
 ```bash
 # 暗号化ツールを使用せずにSecretを作成する
@@ -742,7 +742,7 @@ $ helm template . -f foo-values.yaml -f <暗号化されたYAMLファイル> >| 
 foo: ***
 ```
 
-`helm template`コマンドは、暗号化されたYAMLファイルを単なるYAMLファイルとして認識し、暗号化されたままマニフェストを展開する。
+`helm template` コマンドは、暗号化されたYAMLファイルを単なるYAMLファイルとして認識し、暗号化されたままマニフェストを展開する。
 
 ```yaml
 apiVersion: v1
@@ -757,7 +757,7 @@ data:
 
 #### ▼ -set
 
-デフォルト値を上書きし、`helm template`コマンドを実行する。
+デフォルト値を上書きし、`helm template` コマンドを実行する。
 
 ```bash
 $ helm template . -f foo-values.yaml -set foo.test=TEST >| release.yaml
@@ -811,13 +811,13 @@ $ helm uninstall foo-release
 
 Helmは、CRDを含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。
 
-そのため、`helm upgrade`コマンド時にはCRDのインストールを実行する仕様になっている。
+そのため、`helm upgrade` コマンド時にはCRDのインストールを実行する仕様になっている。
 
 > - https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 
 #### ▼ --atomic
 
-`helm upgrade`コマンドが正常に完了しなかった場合に、自動的にロールバックする。
+`helm upgrade` コマンドが正常に完了しなかった場合に、自動的にロールバックする。
 
 ```bash
 $ helm upgrade --atomic <Helmリリース名> <チャートへのパス> -f foo-values.yaml
@@ -849,7 +849,7 @@ TEST SUITE: None
 
 既存のマニフェストを置き換える。
 
-`kubectl replace`コマンドに近い。
+`kubectl replace` コマンドに近い。
 
 ```bash
 $ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.yaml --force
@@ -857,9 +857,9 @@ $ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.ya
 
 #### ▼ --skip-crds
 
-`--install`オプションを有効化した上で、`--skip-crds`オプションを有効化する。
+`--install` オプションを有効化したうえで、`--skip-crds` オプションを有効化する。
 
-これにより、`helm upgrade`コマンド時にCRDのインストールをスキップし、非CRDのみをインストールできる。
+これにより、`helm upgrade` コマンド時にCRDのインストールをスキップし、非CRDのみをインストールできる。
 
 なお、CRDのアップグレードはHelmの仕様上必ずスキップする。
 
@@ -869,7 +869,7 @@ $ helm upgrade --skip-crds --install <Helmリリース名> <チャートへの�
 
 **＊例＊**
 
-`helm upgrade`コマンド時に、CRDの作成をスキップし、非CRDのみをインストールする。
+`helm upgrade` コマンド時に、CRDの作成をスキップし、非CRDのみをインストールする。
 
 ```bash
 $ helm upgrade --skip-crds --install foo-release . -f foo-values.yaml >| release.yaml
@@ -879,7 +879,7 @@ $ helm upgrade --skip-crds --install foo-release . -f foo-values.yaml >| release
 
 #### ▼ --wait
 
-作成したPodがReady状態になるまで、`helm upgrade`コマンドの完了を待機する。
+作成したPodがReady状態になるまで、`helm upgrade` コマンドの完了を待機する。
 
 ```bash
 $ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.yaml --wait

@@ -36,7 +36,7 @@ app = FastAPI()
 
 FastAPIクラスに非同期処理を実行するエンドポイントを追加する。
 
-FastAPIインスタンスに登録するためには、`include_router`関数にAPIRouterインスタンスを渡す必要がある。
+FastAPIインスタンスに登録するためには、`include_router` 関数にAPIRouterインスタンスを渡す必要がある。
 
 また、DBのセッションを開始するために、DBオブジェクトを注入する必要がある。
 
@@ -63,9 +63,9 @@ app.include_router(router)
 
 ## 02. 非同期
 
-I/Oバウンドが発生しない場合や`async/await`宣言をサポートしているパッケージを利用する場合は、これを使用する関数側で`async`宣言を使用する必要がある。
+I/Oバウンドが発生しない場合や `async/await` 宣言をサポートしているパッケージを利用する場合は、これを使用する関数側で `async` 宣言を使用する必要がある。
 
-ただし、`async/await`宣言をサポートしているパッケージがほとんどないことが現状である。
+ただし、`async/await` 宣言をサポートしているパッケージがほとんどないことが現状である。
 
 > - https://qiita.com/ffggss/items/e4c06f86fb28a62948e0
 

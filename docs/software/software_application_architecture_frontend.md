@@ -87,7 +87,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 ### UI部品合成とは
 
-静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) のコンポーネントを、各マイクロサービスに対応するように分割する設計方法。
+静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) のコンポーネントを、各マイクロサービスに対応するように分割する設計方法。
 
 ![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composite-ui.png)
 
@@ -105,17 +105,17 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 #### ▼ クライアントサイド合成パターンとは
 
-クライアント側 (ブラウザ上) で、静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) を合成する。
+クライアント側 (ブラウザ上) で、静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を合成する。
 
 #### ▼ iframeタグ
 
-ページにコンポーネントに対応する`iframe`タグを組み込むする。
+ページにコンポーネントに対応する `iframe` タグを組み込むする。
 
-各`iframe`タグが表示したいコンポーネントのURLを`src`タグで指定する
+各 `iframe` タグが表示したいコンポーネントのURLを `src` タグで指定する
 
 > - https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaIframes
 
-#### ▼ `script`タグ
+#### ▼ `script` タグ
 
 > - https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaJavascript
 
@@ -137,7 +137,7 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 #### ▼ サーバーサイド合成パターンとは
 
-サーバーサイド側 (ブラウザ上) で、静的ファイル (例：`html`ファイル、`css`ファイル、画像、動画、メールなど) を合成する。
+サーバーサイド側 (ブラウザ上) で、静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を合成する。
 
 > - https://martinfowler.com/articles/micro-frontends.html#Server-sideTemplateComposition
 

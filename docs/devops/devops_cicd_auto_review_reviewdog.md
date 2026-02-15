@@ -23,7 +23,7 @@ description: reviewdog＠自動レビューツールの知見を記録してい�
 
 ### -conf
 
-`reviewdog.yml`ファイルを指定して、`review`コマンドを実行する。
+`reviewdog.yml` ファイルを指定して、`review` コマンドを実行する。
 
 ```bash
 $ reviewdog -conf=.reviewdog.yml
@@ -35,9 +35,9 @@ $ reviewdog -conf=.reviewdog.yml
 
 #### ▼ -fとは
 
-`reviewdog`コマンドに渡す時の標準出力/標準エラー出力のフォーマットを設定する。
+`reviewdog` コマンドに渡すときの標準出力/標準エラー出力のフォーマットを設定する。
 
-このフォーマットに基づいて、`reviewdog`コマンドは処理結果を認識する。
+このフォーマットに基づいて、`reviewdog` コマンドは処理結果を認識する。
 
 ビルトインのフォーマットがあればこれを使用でき、無い場合はユーザーがツールの出力内容に基づいて設定する必要がある。
 
@@ -68,7 +68,7 @@ $ yamllint foo.yaml \
 
 宛先に送信するビルトインのエラーフォーマットを表示する。
 
-`-f`オプションで指定できる。
+`-f` オプションで指定できる。
 
 ```bash
 $ reviewdog --list
@@ -86,9 +86,9 @@ yamllint        (yamllint -f parsable) A linter for YAML files                  
 
 <br>
 
-## 03. `.reviewdog.yml`ファイル
+## 03. `.reviewdog.yml` ファイル
 
-`reviewdog`コマンドのオプションを宣言的に設定できる。
+`reviewdog` コマンドのオプションを宣言的に設定できる。
 
 ```yaml
 runner:

@@ -29,26 +29,26 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 
 | jobs        | 説明                                                                                              |
 | ----------- | ------------------------------------------------------------------------------------------------- |
-| plan        | aws-cliのインストールから`terraform plan -out`コマンドまでの一連の処理を実行する。                |
+| plan        | aws-cliのインストールから `terraform plan -out` コマンドまでの一連の処理を実行する。                |
 | 承認Job     |                                                                                                   |
-| apply       | ステージング環境または本番環境に対して、`terraform apply`コマンドを実行する。                     |
-| plan (任意) | `terraform apply`によって差分が無くなったかを、`terraform plan`コマンドを改めて実行し、確認する。 |
+| apply       | ステージング環境または本番環境に対して、`terraform apply` コマンドを実行する。                     |
+| plan (任意) | `terraform apply` によって差分が無くなったかを、`terraform plan` コマンドをあらためて実行し、確認する。 |
 
 #### ▼ Workflow
 
 | workflows | 説明                                            |
 | --------- | ----------------------------------------------- |
-| feature   | `feature`ブランチからテスト環境にデプロイ       |
-| develop   | `develop`ブランチからステージング環境にデプロイ |
-| main      | `main`ブランチから本番環境にデプロイ            |
+| feature   | `feature` ブランチからテスト環境にデプロイ       |
+| develop   | `develop` ブランチからステージング環境にデプロイ |
+| main      | `main` ブランチから本番環境にデプロイ            |
 
 <br>
 
-### `config.yml`ファイル
+### `config.yml` ファイル
 
 #### ▼ モノレポの場合
 
-実行環境のイメージに`terraform`を使用する。
+実行環境のイメージに `terraform` を使用する。
 
 **＊実装例＊**
 
@@ -261,7 +261,7 @@ workflows:
 
 ### シェルスクリプト
 
-#### ▼ `assume_role.sh`ファイル
+#### ▼ `assume_role.sh` ファイル
 
 Assume Roleを実行し、CircleCIで使用するIAMユーザーにロールを一時的に委譲する。
 
@@ -322,9 +322,9 @@ export AWS_DEFAULT_REGION="ap-northeast-1"
 EOF
 ```
 
-#### ▼ `terraform_apply.sh`ファイル
+#### ▼ `terraform_apply.sh` ファイル
 
-特定のAWSアカウントに対して`terraform apply`コマンドを実行する。
+特定のAWSアカウントに対して `terraform apply` コマンドを実行する。
 
 **＊実装例＊**
 
@@ -341,9 +341,9 @@ terraform -chdir=./"${ENV}" apply \
   "${ENV}".tfplan
 ```
 
-#### ▼ `terraform_fmt.sh`ファイル
+#### ▼ `terraform_fmt.sh` ファイル
 
-GitHubリポジトリにプッシュされたコードに対して`terraform fmt`コマンドを実行する。
+GitHubリポジトリにプッシュされたコードに対して `terraform fmt` コマンドを実行する。
 
 **＊実装例＊**
 
@@ -357,9 +357,9 @@ terraform fmt \
   -check
 ```
 
-#### ▼ `terraform_init.sh`ファイル
+#### ▼ `terraform_init.sh` ファイル
 
-GitHubリポジトリにプッシュされたコードに対して`terraform init`コマンドを実行する。
+GitHubリポジトリにプッシュされたコードに対して `terraform init` コマンドを実行する。
 
 **＊実装例＊**
 
@@ -380,9 +380,9 @@ terraform -chdir=./"${ENV}" init \
   -backend-config="encrypt=true"
 ```
 
-#### ▼ `terraform_plan.sh`ファイル
+#### ▼ `terraform_plan.sh` ファイル
 
-特定のAWSアカウントに対して`terraform plan`コマンドを実行する。
+特定のAWSアカウントに対して `terraform plan` コマンドを実行する。
 
 **＊実装例＊**
 
@@ -400,9 +400,9 @@ terraform -chdir=./"${ENV}" plan \
   -parallelism=30
 ```
 
-#### ▼ `terraform_validate.sh`ファイル
+#### ▼ `terraform_validate.sh` ファイル
 
-GitHubリポジトリにプッシュされたコードに対して`terraform validate`コマンドを実行する。
+GitHubリポジトリにプッシュされたコードに対して `terraform validate` コマンドを実行する。
 
 **＊実装例＊**
 

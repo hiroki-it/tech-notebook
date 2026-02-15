@@ -17,7 +17,7 @@ description: Goプラグイン＠Protocol Bufferコンパイラーの知見を�
 
 ### Protocol BufferコンパイラーGoプラグインとは
 
-サービス定義ファイル (`proto`ファイル) から`pb.go`ファイルをコンパイルできる。
+サービス定義ファイル (`proto` ファイル) から `pb.go` ファイルをコンパイルできる。
 
 ```bash
 $ go install google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
@@ -29,12 +29,12 @@ $ go install google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
 
 ### Protocol BufferとGoの対応関係
 
-`pb.go`ファイルをコンパイルした場合、以下の対応関係になる。
+`pb.go` ファイルをコンパイルした場合、以下の対応関係になる。
 
-| Protocol Buffer         | Go (`pb.go`ファイル) |
+| Protocol Buffer         | Go (`pb.go` ファイル) |
 | ----------------------- | -------------------- |
 | `service`               | `interface`          |
-| `rpc`関数の引数と返却値 | `struct`             |
+| `rpc` 関数の引数と返却値 | `struct`             |
 
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#%E3%82%B3%E3%83%BC%E3%83%89%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%81%AE%E4%BB%95%E6%A7%98
 > - https://grpc.io/docs/languages/go/generated-code/
@@ -46,7 +46,7 @@ $ go install google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
 
 ### option
 
-サービス定義ファイル (`proto`ファイル) からコンパイルした`pb.go`ファイルの`package`名を設定する。
+サービス定義ファイル (`proto` ファイル) からコンパイルした `pb.go` ファイルの `package` 名を設定する。
 
 ```protobuf
 option go_package = "github.com/hiroki-hasegawa/foo-repository/src/foo-service";

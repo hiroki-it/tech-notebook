@@ -32,7 +32,7 @@ ArgoCDの仕様上、一部のツール (Helmfile、helmプラグイン、argocd
 
 すなわち、これらのrepo-serverはこれらのツールを実行できる。
 
-`/usr/local/bin`ディレクトリ配下でバイナリを確認できる。
+`/usr/local/bin` ディレクトリ配下でバイナリを確認できる。
 
 ```bash
 argocd@repo-server:/usr/local/bin] $ ls -la /usr/local/bin
@@ -71,9 +71,9 @@ $ curl -s https://raw.githubusercontent.com/argoproj/argo-cd/<タグ>/hack/tool-
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L58-L62
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/tool-versions.sh
 
-`tool-version.sh`ファイルで定義した変数は、`install.sh`ファイルで出力されている。
+`tool-version.sh` ファイルで定義した変数は、`install.sh` ファイルで出力されている。
 
-Dockerfile上で`install.sh`ファイルを実行し、ツールをインストールしている。
+Dockerfile上で `install.sh` ファイルを実行し、ツールをインストールしている。
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L31-L32
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/install.sh#L26
@@ -186,7 +186,7 @@ spec:
       emptyDir: {}
 ```
 
-Volumeへのマウントが成功していれば、Pod内のサイドカーコンテナの`/usr/local/bin`ディレクトリで、バイナリファイルを確認できる。
+Volumeへのマウントが成功していれば、Pod内のサイドカーコンテナの `/usr/local/bin` ディレクトリで、バイナリファイルを確認できる。
 
 ```bash
 # サイドカーのVolume
@@ -205,16 +205,16 @@ argocd@cmp-server:/usr/local/bin] $ ls -la
 
 #### ▼ サイドカーを配置
 
-プラグインを実行するサイドカー (`cmp-server`コンテナ) を配置する。
+プラグインを実行するサイドカー (`cmp-server` コンテナ) を配置する。
 
-repo-serverは、VolumeのUnixドメインソケットを経由して、`cmp-server`コンテナのプラグインの実行をコールする。
+repo-serverは、VolumeのUnixドメインソケットを経由して、`cmp-server` コンテナのプラグインの実行をコールする。
 
 ArgoCD公式ではサイドカーのベースイメージが用意されていない。
 
 サイドカーで使用するベースイメージをArgoCDのコンテナイメージとするか、その他の軽量イメージ (例：alpine、busybox、ubuntuなど) とするかを選ぶことができ、いくつかのツール (
 例：Helm、Kustomize、Ks、Jsonnetなど) が組み込まれていないため、インストールする必要がある。
 
-このとき、事前準備として`argocd`コマンドをコピーするためのInitContainerが必要である。
+このとき、事前準備として `argocd` コマンドをコピーするためのInitContainerが必要である。
 
 ```yaml
 apiVersion: v1
@@ -309,7 +309,7 @@ spec:
       emptyDir: {}
 ```
 
-`argocd-cmp-server`コマンドは、実行に成功するとVolumeにUnixドメインソケットファイルを作成する。
+`argocd-cmp-server` コマンドは、実行に成功するとVolumeにUnixドメインソケットファイルを作成する。
 
 ```bash
 $ kubectl logs argocd-repo-server -c foo-plugin-cmp-server
@@ -322,7 +322,7 @@ $ kubectl exec -it argocd-repo-server -c foo-plugin-cmp-server \
 foo-plugin.sock
 ```
 
-なお、`plugin.yaml`ファイルと別のディレクトリに配置したい場合は、`argocd-cmp-server`コマンドの`--config-dir-path`オプションを使用する (`plugin.yaml`
+なお、`plugin.yaml` ファイルと別のディレクトリに配置したい場合は、`argocd-cmp-server` コマンドの `--config-dir-path` オプションを使用する (`plugin.yaml`
 ファイルは、これ以外の名前を設定できない)。
 
 ```bash
@@ -358,11 +358,11 @@ ArgoCDの公式の仕様で、サイドカーは単一のプラグインしか�
 
 #### ▼ argocd-cmp-cmでマニフェスト作成時の追加処理を定義
 
-argocd-cmp-cm配下で、ConfigManagementPluginを`plugin.yaml`ファイルとして管理する。
+argocd-cmp-cm配下で、ConfigManagementPluginを `plugin.yaml` ファイルとして管理する。
 
 ConfigManagementPluginで、マニフェスト作成時の追加処理を設定する。
 
-argocd-cmp-cmの`.configManagementPlugins`キーで設定することは非推奨である。
+argocd-cmp-cmの `.configManagementPlugins` キーで設定することは非推奨である。
 
 ```yaml
 apiVersion: v1
@@ -404,7 +404,7 @@ data:
 
 これらの処理は、ArgoCDのリポジトリのポーリングと同時に実行されるため、何らかのエラーがあると、ポーリングのエラーとして扱われる。
 
-Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`ARGOCD_ENV_<環境変数名>`で出力される。
+Applicationの `.spec.source.plugin.env` キーで設定した環境変数が、`ARGOCD_ENV_<環境変数名>` で出力される。
 
 なお、ConfigManagementPluginはカスタムリソースではないため、CRDは不要である。
 
@@ -413,7 +413,7 @@ Applicationの`.spec.source.plugin.env`キーで設定した環境変数が、`A
 
 #### ▼ Applicationでのプラグインを使用
 
-Applicationの`.spec.plugin.name`キーで、`.configManagementPlugins`キーで設定した独自のプラグイン名を設定する。
+Applicationの `.spec.plugin.name` キーで、`.configManagementPlugins` キーで設定した独自のプラグイン名を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -503,9 +503,9 @@ repo-serverはHelmfileを実行できず、サイドカーが必要である。
 
 Helmfileを使用できるように、Helmfileをインストールする。
 
-ArgoCDとHelmfileを連携すれば、`helmfile`コマンドを宣言的に実行しつつ、実行を自動化できる。
+ArgoCDとHelmfileを連携すれば、`helmfile` コマンドを宣言的に実行しつつ、実行を自動化できる。
 
-`helm`コマンドを宣言的に実行するのであれば、`.spec.source.helm`キーを使用すれば十分ではあるが、`helmfile`を使用すればHelmfileの機能 (例：複数の`values`
+`helm` コマンドを宣言的に実行するのであれば、`.spec.source.helm` キーを使用すれば十分ではあるが、`helmfile` を使用すればHelmfileの機能 (例：複数の `values`
 ファイルを参照するなど) も活用できる。
 
 **＊実装例＊**
@@ -633,7 +633,7 @@ spec:
 
 #### ▼ helmfileの処理の定義
 
-`helmfile template`コマンドを実行することにより、マニフェストを作成する。
+`helmfile template` コマンドを実行することにより、マニフェストを作成する。
 
 ```yaml
 apiVersion: v1
@@ -833,7 +833,7 @@ spec:
 
 <br>
 
-## 04-02. `.spec.plugin`キー配下で使用する場合
+## 04-02. `.spec.plugin` キー配下で使用する場合
 
 ### セットアップ
 
@@ -841,7 +841,7 @@ spec:
 
 helmプラグインの処理の定義する。
 
-ここでは、`helm secrets template`コマンドでマニフェストを作成し、また変数を復号する。
+ここでは、`helm secrets template` コマンドでマニフェストを作成し、また変数を復号する。
 
 新しいhelm-secretsはjkroepke製であり、古いものはzendesk製である。
 
@@ -883,7 +883,7 @@ data:
             fi
 ```
 
-特に、zendesk製のhelm-secretsでは、`helm secrets template`コマンドの出力内容の末尾に`decrypted`の文字が出力されるため、`| sed '$d'`が必要になる。
+特に、zendesk製のhelm-secretsでは、`helm secrets template` コマンドの出力内容の末尾に `decrypted` の文字が出力されるため、`| sed '$d'` が必要になる。
 
 ```yaml
 apiVersion: v1
@@ -958,13 +958,13 @@ spec:
 
 <br>
 
-## 04-03. `.spec.source.helm`キー配下で使用する場合
+## 04-03. `.spec.source.helm` キー配下で使用する場合
 
 ### クラウドプロバイダー上の暗号化キーを使用する場合
 
 #### ▼ ServiceAccountの作成
 
-`repo-server`コンテを持つPodに紐付けるServiceAccountを作成する。
+`repo-server` コンテを持つPodに紐付けるServiceAccountを作成する。
 
 ServiceAccountにはクラウドプロバイダーの認可スコープ (例：AWS IAMロール) を紐付け、暗号化キーを使用可能にする。
 
@@ -984,7 +984,7 @@ automountServiceAccountToken: true
 
 #### ▼ helm-secretsの使用
 
-ポーリングしているリポジトリのルート直下に、以下のような`.sops.yaml`ファイルが配置されているとしている。
+ポーリングしているリポジトリのルート直下に、以下のような `.sops.yaml` ファイルが配置されているとしている。
 
 ```yaml
 ---
@@ -993,7 +993,7 @@ creation_rules:
     encrypted_regex: "^secureJsonData$"
 ```
 
-helm-secretsプラグインを使用するために、`.spec.source.helm.valueFiles`キー配下で`secrets://<secretsファイル>`を設定する。
+helm-secretsプラグインを使用するために、`.spec.source.helm.valueFiles` キー配下で `secrets://<secretsファイル>` を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1102,7 +1102,7 @@ data:
 
 ### プラグインの使用
 
-Applicationの`.spec.kustomize`キーで、使用するKustomizeのバージョンを指定する。
+Applicationの `.spec.kustomize` キーで、使用するKustomizeのバージョンを指定する。
 
 各Applicationで異なるバージョンのKustomizeを指定できる。
 
@@ -1127,7 +1127,7 @@ spec:
 
 ### KSOPSの実行方法
 
-repo-serverはKSOPSを実行できる (`kustomize`コマンドで`--enable-alpha-plugins`オプションを有効化するだけのため) ため、これのサイドカーは不要である。
+repo-serverはKSOPSを実行できる (`kustomize` コマンドで `--enable-alpha-plugins` オプションを有効化するだけのため) ため、これのサイドカーは不要である。
 
 <br>
 
@@ -1250,7 +1250,7 @@ data:
 
 ### プラグインの使用
 
-Applicationの`.spec.kustomize`キーで、使用するKustomizeのバージョンを指定する。
+Applicationの `.spec.kustomize` キーで、使用するKustomizeのバージョンを指定する。
 
 各Applicationで異なるバージョンのKustomizeを指定できる。
 
@@ -1291,7 +1291,7 @@ Vaultを使用できるように、Vaultをインストールする。
 
 #### ▼ vaultの処理の定義
 
-`helm template`コマンドでマニフェストを作成し、またVaultで変数を復号する。
+`helm template` コマンドでマニフェストを作成し、またVaultで変数を復号する。
 
 ```yaml
 apiVersion: v1

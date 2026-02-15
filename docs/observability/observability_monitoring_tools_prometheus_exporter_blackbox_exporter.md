@@ -347,7 +347,7 @@ probe_success
 
 | メトリクス      | メトリクスの種類 | 説明                                                               | PromQL例                                                                                              |
 | --------------- | ---------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| `probe_success` | Gauge            | 監視対象の状態を表す。`1`であれば稼働中、`0`であれば停止中である。 | `sum((probe_success{namespace="foo-namespace"})) / count((probe_success{namespace="foo-namespace"}))` |
+| `probe_success` | Gauge            | 監視対象の状態を表す。`1` であれば稼働中、`0` であれば停止中である。 | `sum((probe_success{namespace="foo-namespace"})) / count((probe_success{namespace="foo-namespace"}))` |
 
 > - https://qiita.com/mmorita44/items/8eca5e6fae9fd40807ce#%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95
 

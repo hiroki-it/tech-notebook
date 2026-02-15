@@ -19,9 +19,9 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 #### ▼ --verbosity
 
-ログレベルを指定し、`skaffold`コマンドを実行する。
+ログレベルを指定し、`skaffold` コマンドを実行する。
 
-デフォルトは`warn`である。
+デフォルトは `warn` である。
 
 ```bash
 $ skaffold <任意のパラメーター> --verbosity=debug
@@ -45,7 +45,7 @@ $ skaffold build
 
 #### ▼ --cache-artifacts
 
-キャッシュを無効化し、`build`コマンドを実行する。
+キャッシュを無効化し、`build` コマンドを実行する。
 
 ```bash
 $ skaffold build --cache-artifacts=false
@@ -57,7 +57,7 @@ $ skaffold build --cache-artifacts=false
 
 #### ▼ dev
 
-アプリケーションのコードを監視し、変更が検出された時に、コンテナイメージの再ビルド/プッシュ/デプロイを実行する。
+アプリケーションのコードを監視し、変更が検出されたときに、コンテナイメージの再ビルド/プッシュ/デプロイを実行する。
 
 また、ポートフォワーディングを実行する。
 
@@ -67,7 +67,7 @@ $ skaffold dev
 
 #### ▼ --trigger
 
-一定間隔でコードの変更を監視しつつ、`dev`コマンドを実行する。
+一定間隔でコードの変更を監視しつつ、`dev` コマンドを実行する。
 
 ```bash
 $ skaffold dev --trigger=polling
@@ -75,7 +75,7 @@ $ skaffold dev --trigger=polling
 
 #### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず、また事後処理で全てのコンテナイメージを削除しつつ、`dev`コマンドを実行する。
+イメージをキャッシュせず、また事後処理で全てのコンテナイメージを削除しつつ、`dev` コマンドを実行する。
 
 ```bash
 $ skaffold dev --no-prune=false --cache-artifacts=false
@@ -83,7 +83,7 @@ $ skaffold dev --no-prune=false --cache-artifacts=false
 
 #### ▼ --port-forward
 
-ポートフォワーディングを実行しつつ、`dev`コマンドを実行する。
+ポートフォワーディングを実行しつつ、`dev` コマンドを実行する。
 
 ```bash
 $ skaffold dev --port-forward
@@ -103,7 +103,7 @@ $ skaffold run
 
 #### ▼ force
 
-リソースを強制的にデプロイしつつ、`skaffold run`コマンドを実行する。
+リソースを強制的にデプロイしつつ、`skaffold run` コマンドを実行する。
 
 ```bash
 $ skaffold run --force
@@ -111,7 +111,7 @@ $ skaffold run --force
 
 #### ▼ --no-prune、--cache-artifacts
 
-イメージをキャッシュせず、また事後処理で全てのコンテナイメージを削除しつつ、`skaffold run`コマンドを実行する。
+イメージをキャッシュせず、また事後処理で全てのコンテナイメージを削除しつつ、`skaffold run` コマンドを実行する。
 
 ```bash
 $ skaffold run --no-prune=false --cache-artifacts=false
@@ -119,7 +119,7 @@ $ skaffold run --no-prune=false --cache-artifacts=false
 
 #### ▼ --tail
 
-フォアグラウンドで`skaffold run`コマンドを実行する。
+フォアグラウンドで `skaffold run` コマンドを実行する。
 
 ```bash
 $ skaffold run --tail
@@ -127,7 +127,7 @@ $ skaffold run --tail
 
 #### ▼ --port-forward
 
-ポートフォワーディングを実行しつつ、`skaffold run`コマンドを実行する。
+ポートフォワーディングを実行しつつ、`skaffold run` コマンドを実行する。
 
 ```bash
 $ skaffold run --port-forward

@@ -51,7 +51,7 @@ Istiodコントロールプレーンは、Deployment、Service、MutatingWebhook
 
 Deployment配下のPodは、Istiodコントロールプレーンの実体である。
 
-Pod内では`discovery`コンテナが稼働している。
+Pod内では `discovery` コンテナが稼働している。
 
 ```yaml
 apiVersion: apps/v1
@@ -120,7 +120,7 @@ spec:
 
 > - https://github.com/istio/istio/blob/1.14.3/pilot/pkg/bootstrap/server.go#L412-L476
 
-Dockerfileとしては、最後に`pilot-discovery`コマンドでIstioコントロールプレーンを実行している。
+Dockerfileとしては、最後に `pilot-discovery` コマンドでIstioコントロールプレーンを実行している。
 
 ```dockerfile
 ENTRYPOINT ["/usr/local/bin/pilot-discovery"]
@@ -129,7 +129,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-discovery"]
 > - https://github.com/istio/istio/blob/1.24.2/pilot/docker/Dockerfile.pilot
 > - https://zenn.dev/link/comments/e8a978a00c6325
 
-そのため、Istioコントロールプレーンを起動する`pilot-discovery`コマンドの実体は、GitHubの`pilot-discovery`ディレクトリ配下の`main.go`ファイルで実行されるGoのバイナリファイルである。
+そのため、Istioコントロールプレーンを起動する `pilot-discovery` コマンドの実体は、GitHubの `pilot-discovery` ディレクトリ配下の `main.go` ファイルで実行されるGoのバイナリファイルである。
 
 > - https://github.com/istio/istio/blob/1.14.3/pilot/cmd/pilot-discovery/main.go
 
@@ -216,7 +216,7 @@ spec:
 
 Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。
 
-`.webhooks.failurePolicy`キーで設定している通り、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。
+`.webhooks.failurePolicy` キーで設定しているとおり、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。
 
 そのため、Istioが起動に失敗し続けると、サイドカーコンテナのインジェクションを有効しているPodがいつまでも作成されないことになる。
 
@@ -261,11 +261,11 @@ webhooks:
 
 <br>
 
-## 02. `discovery`コンテナ
+## 02. `discovery` コンテナ
 
-### `discovery`コンテナの仕組み
+### `discovery` コンテナの仕組み
 
-Istio (`v1.1`) の`discovery`コンテナは、Config Ingestionレイヤー、Core Data Modelレイヤー、Proxy Servingレイヤー、インメモリストレージ、といった要素からなる。
+Istio (`v1.1`) の `discovery` コンテナは、Config Ingestionレイヤー、Core Data Modelレイヤー、Proxy Servingレイヤー、インメモリストレージ、といった要素からなる。
 
 ![istio_control-plane_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_architecture.png)
 
@@ -427,11 +427,11 @@ tcp6       0      0 :::15012                :::*                    LISTEN      
 tcp6       0      0 :::15014                :::*                    LISTEN      1/pilot-discovery
 ```
 
-### `8080`番
+### `8080` 番
 
-`discovery`コンテナの`8080`番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
+`discovery` コンテナの `8080` 番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。
 
-`discovery`コンテナの`15014`番ポートにポートフォワーディングしながら、別に`go tool pprof`コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
+`discovery` コンテナの `15014` 番ポートにポートフォワーディングしながら、別に `go tool pprof` コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。
 
 ```bash
 # ポートフォワーディングを実行する。
@@ -451,9 +451,9 @@ $ curl http://127.0.0.1:8080/ui/flamegraph?si=alloc_objects
 
 <br>
 
-### `9876`番
+### `9876` 番
 
-`discovery`コンテナの`9876`番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。
+`discovery` コンテナの `9876` 番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。
 
 ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。
 
@@ -462,11 +462,11 @@ ControlZダッシュボードでは、istiodコントロールプレーンの設
 
 <br>
 
-### `15010`番
+### `15010` 番
 
 ![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_service-discovery.png)
 
-`discovery`コンテナの`15010`番ポートでは、istio-proxyからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、`discovery`コンテナ内のプロセスに渡す。
+`discovery` コンテナの `15010` 番ポートでは、istio-proxyからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、`discovery` コンテナ内のプロセスに渡す。
 
 コールの内容に応じて、他のサービス (Pod、Node)の宛先情報を含むレスポンスを返信する。
 
@@ -478,7 +478,7 @@ istio-proxyはこれを受信し、pilot-agentがEnvoyの宛先情報設定を�
 
 Istiodコントロールプレーンは、サービスレジストリ (例：etcd、consul catalog、nocos、cloud foundry) に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言 (ServiceEntry、WorkloadEntry) から、他のサービス (Pod、Node) の宛先情報を取得する。
 
-`discovery`コンテナは、取得した宛先情報を自身に保管する。
+`discovery` コンテナは、取得した宛先情報を自身に保管する。
 
 > - https://juejin.cn/post/7028572651421433892
 > - https://www.zhaohuabing.com/post/2019-02-18-pilot-service-registry-code-analysis/
@@ -488,9 +488,9 @@ Istiodコントロールプレーンは、サービスレジストリ (例：etc
 
 <br>
 
-### `15012`番
+### `15012` 番
 
-`discovery`コンテナの`15012`番ポートでは、マイクロサービス間で相互TLS認証によるHTTPSプロトコルを使用する場合、istio-proxyからのサーバー証明書に関するリクエストを待ち受け、`discovery`コンテナ内のプロセスに渡す。
+`discovery` コンテナの `15012` 番ポートでは、マイクロサービス間で相互TLS認証によるHTTPSプロトコルを使用する場合、istio-proxyからのサーバー証明書に関するリクエストを待ち受け、`discovery` コンテナ内のプロセスに渡す。
 
 リクエストの内容に応じて、サーバー証明書と秘密鍵を含むレスポンスを返信する。
 
@@ -504,9 +504,9 @@ istio-proxyはこれを受信し、pilot-agentはEnvoyにこれらを紐付け�
 
 <br>
 
-### `15014`番
+### `15014` 番
 
-コンテナの`15014`番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、`discovery`コンテナ内のプロセスに渡す。
+コンテナの `15014` 番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、`discovery` コンテナ内のプロセスに渡す。
 
 リクエストの内容に応じて、データポイントを含むレスポンスを返信する。
 
@@ -523,9 +523,9 @@ $ curl http://127.0.0.1:15014/debug
 
 <br>
 
-### `15017`番
+### `15017` 番
 
-`discovery`コンテナの`15017`番ポートでは、Istioの`istiod-<リビジョン>`というServiceからのポートフォワーディングを待ち受け、`discovery`コンテナ内のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。
+`discovery` コンテナの `15017` 番ポートでは、Istioの `istiod-<リビジョン>` というServiceからのポートフォワーディングを待ち受け、`discovery` コンテナ内のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。
 
 <br>
 
@@ -533,9 +533,9 @@ $ curl http://127.0.0.1:15014/debug
 
 ### 実行オプションの渡し方
 
-`discovery`コンテナの起動時に引数として渡す。
+`discovery` コンテナの起動時に引数として渡す。
 
-Podであれば、`.spec.containers[*].args`オプションを使用する。
+Podであれば、`.spec.containers[*].args` オプションを使用する。
 
 ```yaml
 apiVersion: v1
@@ -612,7 +612,7 @@ $ pilot-discovery discovery --log_as_json
 
 Prometheusによるデータポイント収集のポート番号を設定する。
 
-`:15014`を設定する。
+`:15014` を設定する。
 
 ```bash
 $ pilot-discovery discovery --monitoringAddr :15014

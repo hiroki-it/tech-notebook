@@ -74,7 +74,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 | メモリ最大サイズ | `650`KB                                    | `40`MB                                       |
 | 依存関係         | 標準プラグインではパッケージに依存しない。 | 標準プラグインで一定数のRuby gemに依存する。 |
 | 性能             | 高                                         | 高                                           |
-| プラグイン数     | `70`個                                     | `1000`個以上                                 |
+| プラグイン数     | `70` 個                                     | `1000` 個以上                                 |
 
 <br>
 
@@ -126,7 +126,7 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 フォワーダーアグリゲーターパターンは、フォワーダー、アグリゲーター、といったコンポーネントから構成される。
 
-ログの送信元では、フォワーダー (FluentBit/Fluentd) は`L7`ロードバランサーを介してログを収集する。
+ログの送信元では、フォワーダー (FluentBit/Fluentd) は `L7` ロードバランサーを介してログを収集する。
 
 さらに、フォワーダーは別のFluentBit/Fluentd (アグリゲーター) にログを送信する。
 
@@ -139,9 +139,9 @@ FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ
 
 #### ▼ フォワーダーアグリゲーターパターンの実装例
 
-`L7`ロードバランサーはIngress Controller、アグリゲーターはDeploymentなどで実装できる。
+`L7` ロードバランサーはIngress Controller、アグリゲーターはDeploymentなどで実装できる。
 
-FluentBit/Fluentd以外で言うと、Nginxで実装されたGrafana Loki Gatewayは`L7`ロードバランサーである。
+FluentBit/Fluentd以外で言うと、Nginxで実装されたGrafana Loki Gatewayは `L7` ロードバランサーである。
 
 Grafana Loki Gatewayは、Cluster内のGrafana Alloyからログを受信し、Grafana Lokiに送信する。
 

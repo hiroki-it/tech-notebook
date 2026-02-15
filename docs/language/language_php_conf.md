@@ -13,19 +13,19 @@ description: 設定＠PHPの知見を記録しています。
 
 <br>
 
-## 01. `php.ini`ファイル
+## 01. `php.ini` ファイル
 
-### `php.ini`ファイルとは
+### `php.ini` ファイルとは
 
 PHPの起動時の値を設定する。
 
-`php.ini`ファイルは、`/usr/local/etc/php`ディレクトリ配下に配置されている。
+`php.ini` ファイルは、`/usr/local/etc/php` ディレクトリ配下に配置されている。
 
-配置された任意の`ini`ファイルに実装された設定値が、ユーザー定義のカスタム値として読み込まれる。
+配置された任意の `ini` ファイルに実装された設定値が、ユーザー定義のカスタム値として読み込まれる。
 
 また、それ以外の設定値はデフォルト値となる。
 
-設定ファイルを切り分ける場合、`/usr/local/etc/php/conf.d`ディレクトリ配下に`custom.php.ini`ファイルの名前で配置する。
+設定ファイルを切り分ける場合、`/usr/local/etc/php/conf.d` ディレクトリ配下に `custom.php.ini` ファイルの名前で配置する。
 
 ```bash
 $ php --ini
@@ -44,11 +44,11 @@ Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcma
 
 ### 本番/開発環境共通
 
-PHPでは、`/usr/local/etc/php`ディレクトリには`php.ini-development`ファイルと`php.ini-production`ファイルが最初から配置されている。
+PHPでは、`/usr/local/etc/php` ディレクトリには `php.ini-development` ファイルと `php.ini-production` ファイルが最初から配置されている。
 
-これをコピーして設定値を変更し、読み込まれるようにファイル名を`php.ini`に変えて配置する (これ以外のファイル名でｊは読み込まれない) 。
+これをコピーして設定値を変更し、読み込まれるようにファイル名を `php.ini` に変えて配置する (これ以外のファイル名でｊは読み込まれない) 。
 
-代わりに、最小限の設定値のみを変更した`php.ini`ファイルを自身で作成し、同じく配置しても良い。
+代わりに、最小限の設定値のみを変更した `php.ini` ファイルを自身で作成し、同じく配置しても良い。
 
 ```bash
 $ ls -la /usr/local/etc/php
@@ -65,7 +65,7 @@ drwxr-xr-x 1 root root  4096 Dec 17 15:21 conf.d
 
 ### 開発環境用
 
-あらかじめ用意されている`php.ini-development`ファイルを参考に設定する。
+あらかじめ用意されている `php.ini-development` ファイルを参考に設定する。
 
 元の値をコメントアウトで示す。
 
@@ -120,7 +120,7 @@ mbstring.language = Japanese
 
 ### 本番環境用
 
-あらかじめ用意されている`php.ini-production`ファイルを参考に設定する。
+あらかじめ用意されている `php.ini-production` ファイルを参考に設定する。
 
 元の値をコメントアウトで示す。
 

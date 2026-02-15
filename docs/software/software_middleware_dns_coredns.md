@@ -73,7 +73,7 @@ CoreDNSに対する問い合わせを受信し、CoreDNSへルーティングす
 
 #### ▼ coredns-configmap
 
-ConfigMapの`.Corefile`キーに、`Corefile`ファイルの設定値を定義する。
+ConfigMapの `.Corefile` キーに、`Corefile` ファイルの設定値を定義する。
 
 **＊実装例＊**
 
@@ -104,9 +104,9 @@ data:
 
 CoreDNSは、kube-apiserverから必要なKubernetesリソース (Service、Endpoints) を取得する。
 
-Podのスケジューリング時に、kubeletはPod内のコンテナの`/etc/resolv.conf`ファイルに 権威DNSサーバー (CoreDNSのService) のIPアドレスを設定する。
+Podのスケジューリング時に、kubeletはPod内のコンテナの `/etc/resolv.conf` ファイルに 権威DNSサーバー (CoreDNSのService) のIPアドレスを設定する。
 
-Pod内のコンテナは、自身の`/etc/resolv.conf`ファイルを使用して、CoreDNSのServiceにリクエストを送信する。
+Pod内のコンテナは、自身の `/etc/resolv.conf` ファイルを使用して、CoreDNSのServiceにリクエストを送信する。
 
 また、CoreDNSから、宛先のPodに紐づくServiceのIPアドレスを正引きする。
 
@@ -153,7 +153,7 @@ Clusterネットワーク内の全てのServiceに完全修飾ドメイン名が
 
 DNSレコードタイプごとに、完全修飾ドメイン名が異なる。
 
-#### ▼ `A/AAAA`レコードの場合
+#### ▼ `A/AAAA` レコードの場合
 
 対応する完全修飾ドメイン名は、『`<Service名>.<Namespace名>.svc.cluster.local`』である。
 
@@ -170,11 +170,11 @@ DNSレコードタイプごとに、完全修飾ドメイン名が異なる。
 > - https://eng-blog.iij.ad.jp/archives/9998
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
 
-#### ▼ `SRV`レコードの場合
+#### ▼ `SRV` レコードの場合
 
 対応する完全修飾ドメイン名は、『`_<ポート名>._<プロトコル>.<Service名>.<Namespace名>.svc.cluster.local`』である。
 
-Serviceの`.spec.ports.name`キー数だけ、完全修飾ドメイン名が作成される。
+Serviceの `.spec.ports.name` キー数だけ、完全修飾ドメイン名が作成される。
 
 > - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
@@ -185,11 +185,11 @@ Serviceの`.spec.ports.name`キー数だけ、完全修飾ドメイン名が作�
 
 #### ▼ Pod内からServiceに対する正引き名前解決
 
-Pod内のコンテナから宛先のServiceに対して、`nslookup`コマンドの正引きする。
+Pod内のコンテナから宛先のServiceに対して、`nslookup` コマンドの正引きする。
 
-Serviceに`.metadata.name`キーが設定されている場合、Serviceの完全修飾ドメイン名は、`.metadata.name`キーの値になる。
+Serviceに `.metadata.name` キーが設定されている場合、Serviceの完全修飾ドメイン名は、`.metadata.name` キーの値になる。
 
-完全修飾ドメイン名の設定を要求された時は、設定ミスを防げるため、`.metadata.name`キーの値よりも完全修飾ドメイン名の方が推奨である。
+完全修飾ドメイン名の設定を要求されたときは、設定ミスを防げるため、`.metadata.name` キーの値よりも完全修飾ドメイン名の方が推奨である。
 
 ```bash
 # Pod内のコンテナに接続する。
@@ -243,7 +243,7 @@ coredns-*****   1/1     Running   0          3h53m   10.244.0.2   minikube   <no
 
 `(3)`
 
-: ここで、Node内に接続する。Serviceの完全修飾ドメイン名 (ここでは`nginx-service.default.svc.cluster.local`) をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。
+: ここで、Node内に接続する。Serviceの完全修飾ドメイン名 (ここでは `nginx-service.default.svc.cluster.local`) をCoreDNSに正引きする。すると、ServiceのIPアドレスを取得できる。
 
 ```bash
 # Node内に接続する。
@@ -270,7 +270,7 @@ $ kubectl get service <Service名> -o yaml | grep targetPort:
 
 `(2)`
 
-: Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、`.spec.containers[*].ports`キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
+: Serviceがルーティング先のPodにて、コンテナが待ち受けるポート番号を確認する。注意点として、`.spec.containers[*].ports` キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。
 
 ```bash
 # 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する
@@ -308,7 +308,7 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 
 ### DNSレコードタイプ別の完全修飾ドメイン名
 
-#### ▼ `A/AAAA`レコードの場合
+#### ▼ `A/AAAA` レコードの場合
 
 対応する完全修飾ドメイン名は、『`<PodのIPアドレス>.<Namespace名>.pod.cluster.local`』である。
 
@@ -320,7 +320,7 @@ Serviceの名前解決を介さずに、特定のPodのインスタンスに対�
 
 Kubernetesでは、PodのIPアドレスを固定できない。
 
-そのため、IPアドレスを固定したアプリケーションは、Kubernetes Cluster上で稼働させるのではなく、サーバー上でコンテナあるいはプロセスとして稼働させた方が良い。
+そのため、IPアドレスを固定したアプリケーションは、Kubernetes Cluster上で稼働させるのではなく、サーバー上でコンテナあるいはプロセスとして稼働させたほうが良い。
 
 ただし、一部のCNIを使用すれば、IPアドレスを固定することはできる。
 

@@ -136,7 +136,7 @@ repolist: 34,344
 
 CentOS公式リポジトリはパッケージのバージョンが古いことがある。
 
-そこで、`--enablerepo`オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ (RPM、EPEL、Remi) から、パッケージをインストールできる。
+そこで、`--enablerepo` オプションを使用すると、CentOS公式リポジトリではなく、最新バージョンを扱う外部リポジトリ (RPM、EPEL、Remi) から、パッケージをインストールできる。
 
 外部リポジトリ間で依存関係にあるため、両方のリポジトリをインストールする必要がある。
 
@@ -146,7 +146,7 @@ CentOS公式リポジトリはパッケージのバージョンが古いこと�
 
 `(1)`
 
-: CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、`/etc/yu.repos.d`ディレクトリ配下に配置される。
+: CentOSのEPELリポジトリをインストール。インストール時の設定ファイルは、`/etc/yu.repos.d` ディレクトリ配下に配置される。
 
 ```bash
 # 全てのバージョン
@@ -168,7 +168,7 @@ $ yum install -y epel-release
 
 `(2)`
 
-: CentOSのRemiリポジトリをインストール。RemiバージョンはCentOSバージョンを要確認。インストール時の設定ファイルは、`/etc/yu.repos.d`ディレクトリ配下に配置される。
+: CentOSのRemiリポジトリをインストール。RemiバージョンはCentOSバージョンを要確認。インストール時の設定ファイルは、`/etc/yu.repos.d` ディレクトリ配下に配置される。
 
 ```bash
 # CentOS7系の場合
@@ -234,7 +234,7 @@ $ dnf module enable php:remi-7.4
 
 `(5)`
 
-: remiリポジトリを指定して、php、php-mbstring、php-mcryptをインストールする。Remiリポジトリを経由してインストールしたソフトウェアは`/opt/remi/*`に配置される。
+: remiリポジトリを指定して、php、php-mbstring、php-mcryptをインストールする。Remiリポジトリを経由してインストールしたソフトウェアは `/opt/remi/*` に配置される。
 
 ```bash
 # CentOS7の場合
@@ -249,7 +249,7 @@ $ dnf install -y php php-mbstring php-mcrypt
 
 `(6)`
 
-: 再インストールする時は、reinstallとすること。
+: 再インストールするときは、reinstallとすること。
 
 ```bash
 # CentOS7の場合

@@ -254,7 +254,7 @@ severity:
 
 コマンドの実行結果に色をつける。
 
-CIによっては、実行時に色がなくなってしまうが、`always`を有効化すると色がつくようになる。
+CIによっては、実行時に色がなくなってしまうが、`always` を有効化すると色がつくようになる。
 
 ```bash
 $ golangci-lint linters --color always

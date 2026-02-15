@@ -17,7 +17,7 @@ description: コマンド＠Containerdの知見を記録しています。
 
 ### pods
 
-KubernetesのNode内で`crictl`コマンドを実行している場合に、Node内で稼働するPodを取得する。
+KubernetesのNode内で `crictl` コマンドを実行している場合に、Node内で稼働するPodを取得する。
 
 > - https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-pods
 
@@ -47,7 +47,7 @@ CONTAINER   IMAGE   CREATED        STATE       NAME              ATTEMPT        
 
 ## 02. ctr
 
-見にくいため、`crictl`コマンドを使用する。
+見にくいため、`crictl` コマンドを使用する。
 
 > - https://repl.info/archives/2894/
 

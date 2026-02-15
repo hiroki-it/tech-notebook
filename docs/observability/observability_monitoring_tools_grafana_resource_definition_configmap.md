@@ -17,7 +17,7 @@ description: ConfigMap系＠Grafanaの知見を記録しています。
 
 ### grafana-datasource-cmとは
 
-Grafanaの`datasource.yaml`ファイルを管理する。
+Grafanaの `datasource.yaml` ファイルを管理する。
 
 <br>
 
@@ -76,7 +76,7 @@ Grafanaのデータソースを設定する。
 
 Prometheusの場合、ビルトインのプラグインを使用できる。
 
-GrafanaのデフォルトのデータソースはPrometheusとしておく (`isDefault`キーが`true`) とよい。
+GrafanaのデフォルトのデータソースはPrometheusとしておく (`isDefault` キーが `true`) とよい。
 
 ```yaml
 apiVersion: v1
@@ -107,11 +107,11 @@ data:
 
 #### ▼ VictoriaMetricsの場合
 
-VictoriaMetricsの場合、ビルトインの`prometheus`タイプを使用できる。
+VictoriaMetricsの場合、ビルトインの `prometheus` タイプを使用できる。
 
 VictoriaMetricsからメトリクスの元になるデータポイントを収集するために、PromQLを実行する必要がある。
 
-VictoriaMetricsがClusterの外部にあり、プロキシが前段にある場合は、`access`キーを`proxy`とする。
+VictoriaMetricsがClusterの外部にあり、プロキシが前段にある場合は、`access` キーを `proxy` とする。
 
 ```yaml
 apiVersion: v1
@@ -136,7 +136,7 @@ data:
 
 #### ▼ AWS CloudWatchの場合
 
-AWS CloudWatchの場合、`cloudwatch`タイプを指定する。
+AWS CloudWatchの場合、`cloudwatch` タイプを指定する。
 
 AWS CloudWatch-APIからメトリクスの元になるデータポイントを収集するために、自前のクエリを送信する必要がある。
 
@@ -162,15 +162,15 @@ data:
 
 #### ▼ Grafana Loki
 
-Grafana Lokiの場合、`loki`タイプを指定する。
+Grafana Lokiの場合、`loki` タイプを指定する。
 
-トレースIDのUIにリダイレクトできるように、`derivedFields`キーを設定する。
+トレースIDのUIにリダイレクトできるように、`derivedFields` キーを設定する。
 
-`matcherRegex`キーの正規表現 (例：`"trace_id":\s*"([^"]+)"` (trace_idがネストされた場所にあっても検知できるようにする) 、`trace_id=(\\w+)`など) でトレースIDを抽出する。
+`matcherRegex` キーの正規表現 (例：`"trace_id":\s*"([^"]+)"` (trace_idがネストされた場所にあっても検知できるようにする) 、`trace_id=(\\w+)` など) でトレースIDを抽出する。
 
-`url`キーに`$${__value.raw}`を設定すると、抽出したトレースIDをURLに出力できる。
+`url` キーに `$${__value.raw}` を設定すると、抽出したトレースIDをURLに出力できる。
 
-`datasourceUid`キーでは、他に登録しているデータソースを設定する。
+`datasourceUid` キーでは、他に登録しているデータソースを設定する。
 
 ```yaml
 apiVersion: v1
@@ -208,7 +208,7 @@ data:
 
 #### ▼ Grafana Tempo
 
-Grafana Tempoの場合、`tempo`タイプを指定する。
+Grafana Tempoの場合、`tempo` タイプを指定する。
 
 ```yaml
 apiVersion: v1
@@ -276,7 +276,7 @@ data:
 
 ## 02. grafana-ini-cm
 
-Grafanaの`grafana.ini`ファイルを管理する。
+Grafanaの `grafana.ini` ファイルを管理する。
 
 > - https://github.com/grafana/grafana/blob/main/conf/defaults.ini
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#configuration-file-location
@@ -290,11 +290,11 @@ Grafanaの`grafana.ini`ファイルを管理する。
 
 ユーザー名とパスワード無しでログインできるようにする。
 
-`login_cookie_name`もデフォルト (`grafana_session`) 以外に変更する必要がある。
+`login_cookie_name` もデフォルト (`grafana_session`) 以外に変更する必要がある。
 
-anonymousユーザーは、デフォルトで`Viewer`ロールを持つ。
+anonymousユーザーは、デフォルトで `Viewer` ロールを持つ。
 
-`Admin`ロールにすれば、ログイン不要で全員が操作できるようになる。
+`Admin` ロールにすれば、ログイン不要で全員が操作できるようになる。
 
 ```yaml
 apiVersion: v1
@@ -597,7 +597,7 @@ data:
 
 リモートからダッシュボードをダウンロードするスクリプトを定義する。
 
-必ず`dashboardproviders.yaml`ファイルも合わせて必要である。
+必ず `dashboardproviders.yaml` ファイルも合わせて必要である。
 
 URLの指定の方法として、以下がある。
 
@@ -722,7 +722,7 @@ data:
 
 ### grafana-provider-cmとは
 
-Grafanaの`provider.yaml`ファイルを管理する。
+Grafanaの `provider.yaml` ファイルを管理する。
 
 ダッシュボードのフォルダを定義できる。
 
@@ -760,9 +760,9 @@ data:
 
 ### grafana-dashboard-cmとは
 
-Grafanaの`dashboard.json`ファイルを管理する。
+Grafanaの `dashboard.json` ファイルを管理する。
 
-ファイルサイズが大きくなってしまうため、一つのConfigMapで一つの`dashboard.json`ファイルを管理する方が良い。
+ファイルサイズが大きくなってしまうため、1つのConfigMapで一つの `dashboard.json` ファイルを管理するほうが良い。
 
 これをGrafanaのコンテナにマウントする。
 
@@ -818,7 +818,7 @@ spec:
           readOnly: "true"
 ```
 
-サイドカーがConfigMapを検知できるように、`metadata.labels`キーにデフォルトで`grafana_dashboard: "1"`を設定する必要がある。
+サイドカーがConfigMapを検知できるように、`metadata.labels` キーにデフォルトで `grafana_dashboard: "1"` を設定する必要がある。
 
 言い方を変えれば、`grafana_dashboard: "1"キーを持つConfigMapのみをダッシュボードの設定として読み込ませられる。
 
@@ -846,7 +846,7 @@ data:
 
 #### ▼ grafanaチャートの場合
 
-grafanaチャートでは、`values`ファイルの`dashboards.label`キーや`dashboards.labelValue`キーを使用して、サイドカーが検知するConfigMapを設定できる。
+grafanaチャートでは、`values` ファイルの `dashboards.label` キーや `dashboards.labelValue` キーを使用して、サイドカーが検知するConfigMapを設定できる。
 
 ```yaml
 # valuesファイル
@@ -889,7 +889,7 @@ data:
 
 kube-prometheus-stackチャートでは、prometheusのチャートの他、grafanaチャートなどに依存している。
 
-kube-prometheus-stackチャートの`values`ファイルでは、サイドカー用の`grafana_dashboard`キーに`1`が割り当てられている。
+kube-prometheus-stackチャートの `values` ファイルでは、サイドカー用の `grafana_dashboard` キーに `1` が割り当てられている。
 
 ```yaml
 # valuesファイル
@@ -916,7 +916,7 @@ kube-prometheus-stackチャートの`values`ファイルでは、サイドカー
 
 > - https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
 
-そのため、kube-prometheus-stackチャートを用いる場合は`grafana_dashboard`キーの値が`1`のConfigMapのみがダッシュボードの設定として読み込まれる。
+そのため、kube-prometheus-stackチャートを用いる場合は `grafana_dashboard` キーの値が `1` のConfigMapのみがダッシュボードの設定として読み込まれる。
 
 マニフェストから作成したダッシュボードは、GUIからは削除できないようになっている。
 

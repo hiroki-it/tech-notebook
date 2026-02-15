@@ -65,9 +65,9 @@ spec:
 
 デプロイ手法を設定する。
 
-大前提として、そもそもArgoCDは`kubectl apply`コマンドでリソースを作成しているだけなため、デプロイ手法は、Deploymentの`.spec.strategy`キーや、DaemonSetとStatefulSetの`.spec.updateStrategy`キーの設定値に依存する。
+大前提として、そもそもArgoCDは `kubectl apply` コマンドでリソースを作成しているだけなため、デプロイ手法は、Deploymentの `.spec.strategy` キーや、DaemonSetとStatefulSetの `.spec.updateStrategy` キーの設定値に依存する。
 
-ArgoCDの`strategy`オプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。
+ArgoCDの `strategy` オプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。
 
 #### ▼ blueGreen
 
@@ -78,7 +78,7 @@ ArgoCDの`strategy`オプションを使用することにより、これらのK
 | 設定項目                | 説明                                                                                                                                                     |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `activeService`         | 現環境へのルーティングに使用するServiceを設定する。                                                                                                      |
-| `autoPromotionEnabled`  | 現環境から新環境への自動切り替えを有効化するか否かを設定する。もし無効化した場合、`autoPromotionSeconds`の秒数だけ切り替えを待機する。                   |
+| `autoPromotionEnabled`  | 現環境から新環境への自動切り替えを有効化するか否かを設定する。もし無効化した場合、`autoPromotionSeconds` の秒数だけ切り替えを待機する。                   |
 | `autoPromotionSeconds`  | 現環境から新環境への切り替えを手動で実行する場合、切り替えを待機する最大秒数を設定する。最大秒数が経過すると、自動的に切り替わってしまうことに注意する。 |
 | `previewReplicaCount`   | 新環境のPod数を設定する。                                                                                                                                |
 | `previewService`        | 新環境へのルーティングに使用するServiceを設定する。                                                                                                      |
@@ -158,7 +158,7 @@ spec:
 
 ### .spec.template
 
-Deploymentの`spec.template`キーと同じである。
+Deploymentの `spec.template` キーと同じである。
 
 Rolloutで管理したいPodを定義する。
 

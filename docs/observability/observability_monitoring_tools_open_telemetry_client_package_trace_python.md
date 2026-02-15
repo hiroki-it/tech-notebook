@@ -83,7 +83,7 @@ tracer = trace.get_tracer(__name__)
 > - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L1-L79
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
 
-ここでは、`requests`パッケージでリクエストを送信するため、`RequestsInstrumentor`関数による初期化も必要である。
+ここでは、`requests` パッケージでリクエストを送信するため、`RequestsInstrumentor` 関数による初期化も必要である。
 
 ```python
 import requests
@@ -107,7 +107,7 @@ print(response.text, flush=True)
 
 なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
 
-ここでは、Flaskでリクエストを受信するため、`FlaskInstrumentor`関数でスパンを処理している。
+ここでは、Flaskでリクエストを受信するため、`FlaskInstrumentor` 関数でスパンを処理している。
 
 ```python
 from opentelemetry.instrumentation.flask import FlaskInstrumentor

@@ -81,9 +81,9 @@ message Person {
 
 ### package
 
-`pb`ファイルに自動的に定義するパッケージ名を設定する。
+`pb` ファイルに自動的に定義するパッケージ名を設定する。
 
-例えばGoの場合、`pb.go`ファイルでパッケージ名を自動的に定義する。
+例えばGoの場合、`pb.go` ファイルでパッケージ名を自動的に定義する。
 
 ```protobuf
 package foo;
@@ -113,7 +113,7 @@ service GreetingService {
 
 Protocol Bufferコンパイラーのバージョンを設定する。
 
-Protocol Bufferコンパイラーは、`proto`ファイルから`pb`ファイルを自動的に作成する。
+Protocol Bufferコンパイラーは、`proto` ファイルから `pb` ファイルを自動的に作成する。
 
 ```protobuf
 syntax = "proto3";

@@ -17,7 +17,7 @@ description: GitLab CI＠CIツールの知見を記録しています。
 
 ### アーキテクチャ
 
-GitLab Runnerは、GitLabリポジトリの`gitlab-ci.yml`ファイルをHTTPSで参照し、定義したパイプラインを実行する。
+GitLab Runnerは、GitLabリポジトリの `gitlab-ci.yml` ファイルをHTTPSで参照し、定義したパイプラインを実行する。
 
 ![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab-ci_architecture.png)
 
@@ -30,7 +30,7 @@ GitLab Runnerは、GitLabリポジトリの`gitlab-ci.yml`ファイルをHTTPS�
 
 #### ▼ GitLab Runnerとは
 
-GitLab CIの`gitlab-ci.yml`ファイルで定義したパイプラインを実行する。
+GitLab CIの `gitlab-ci.yml` ファイルで定義したパイプラインを実行する。
 
 > - https://docs.gitlab.com/runner/
 
@@ -156,7 +156,7 @@ foo_job:
 
 現在のパイプラインを発火させたイベント名 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。
 
-タグの付与時にパイプラインを発火させる場合、`CI_COMMIT_TAG`変数を使用する。
+タグの付与時にパイプラインを発火させる場合、`CI_COMMIT_TAG` 変数を使用する。
 
 ```yaml
 foo_job:
@@ -216,7 +216,7 @@ GitLab CIのJobの設定ファイルを、中央集中的なリポジトリで�
 
 GitLab CIでは、定義したJobは自動的に実行される。
 
-一方で`.` (ドット) をつけることで、使用を明示的に宣言しない限り実行できない『隠しJob』として定義できる。
+一方で `.` (ドット) をつけることで、使用を明示的に宣言しない限り実行できない『隠しJob』として定義できる。
 
 また、子リポジトリで上書きできる変数を親リポジトリに設定しておく。
 
@@ -321,7 +321,7 @@ baz_job:
 
 ヒアドキュメントを使用して、CIの実行コンテナでファイルを自動的に作成し、これを配布する。
 
-`artifacts`キーを使用して、後続のJobでも設定ファイルを使用できるようにしている。
+`artifacts` キーを使用して、後続のJobでも設定ファイルを使用できるようにしている。
 
 ````yaml
 variables:
@@ -414,7 +414,7 @@ variables:
 
 Job内で使用する変数を設定する。
 
-値をダブルクオートかシングルクオートで囲わないと、`.gitlab-ci.yml`ファイル自体で予期せぬ構文エラーになる。
+値をダブルクオートかシングルクオートで囲わないと、`.gitlab-ci.yml` ファイル自体で予期せぬ構文エラーになる。
 
 ```yaml
 variables:
@@ -427,7 +427,7 @@ variables:
 
 #### ▼ ファイルの切り分け
 
-可能であれば、`variables`キーを`variables.yml`ファイルとして切り分け、これを読み込むようにする。
+可能であれば、`variables` キーを `variables.yml` ファイルとして切り分け、これを読み込むようにする。
 
 可読性が高くなる。
 
@@ -451,7 +451,7 @@ foo_job:
 
 #### ▼ 空文字の出力
 
-空文字を設定したい場合、`variables`キーに設定しても空文字として出力されない。
+空文字を設定したい場合、`variables` キーに設定しても空文字として出力されない。
 
 ```yaml
 # variablesで空文字を設定する
@@ -479,7 +479,7 @@ foo_job:
 
 変数でリストを定義できる。
 
-これを使用して、単一のJob内で`for`を実行できる。
+これを使用して、単一のJob内で `for` を実行できる。
 
 ```yaml
 foo_job:
@@ -560,7 +560,7 @@ workflow:
 
 ### allow_failure
 
-#### ▼ `0`以外のすべての終了コードの場合
+#### ▼ `0` 以外のすべての終了コードの場合
 
 ```yaml
 stages:
@@ -594,7 +594,7 @@ foo_job:
   allow_failure: "true"
 ```
 
-#### ▼ `0`以外の特定の終了コードの場合
+#### ▼ `0` 以外の特定の終了コードの場合
 
 ```yaml
 foo_job:
@@ -618,9 +618,9 @@ foo_job:
 
 GitLabでは、以前のステージのJobのファイルを後続のJobにデフォルトで継承できる (GitLabのバージョンが古いとこの機能がない場合がある) 。
 
-しかし、`needs`でJob間に依存関係を定義している場合、`artifacts`を使用しても、`needs`で指定しているJob以外のファイルを継承できない。
+しかし、`needs` でJob間に依存関係を定義している場合、`artifacts` を使用しても、`needs` で指定しているJob以外のファイルを継承できない。
 
-`needs`で指定したJobの`artifacts`のみを継承できる。
+`needs` で指定したJobの `artifacts` のみを継承できる。
 
 ```yaml
 stages:
@@ -669,7 +669,7 @@ qux_job:
 
 GitLabでは、以前のステージのJobのファイルを後続のJobにデフォルトで継承できる。
 
-そのため、`artifacts`は不要である。
+そのため、`artifacts` は不要である。
 
 ```yaml
 # ビルドステージ
@@ -756,9 +756,9 @@ bar_job:
 
 #### ▼ dependencies
 
-通常、`dependencies`を指定せずに`artifacts`を使用した場合、全てのJobとファイルを継承する。
+通常、`dependencies` を指定せずに `artifacts` を使用した場合、全てのJobとファイルを継承する。
 
-`dependencies`を設定すれば、`artifacts`が設定された特定のJobを指定し、そのJobのみをファイルを継承する。
+`dependencies` を設定すれば、`artifacts` が設定された特定のJobを指定し、そのJobのみをファイルを継承する。
 
 ```yaml
 stages:
@@ -819,7 +819,7 @@ GitLab上にコンテナイメージのキャッシュを作成する。
 
 CIでは、コンテナイメージのプルの頻度が高まるため、イメージレジストリ (例：DockerHub) によってはプル数の制限にひっかかってしまう。
 
-イメージレジストリのパスのプレフィクスとして`CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX` (依存プロキシ) をつけると、コンテナイメージがGitLabのDependency Proxyを経由するようになる。
+イメージレジストリのパスのプレフィクスとして `CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX` (依存プロキシ) をつけると、コンテナイメージがGitLabのDependency Proxyを経由するようになる。
 
 キャッシュは、リポジトリの親グループの『`https://<URL>/<親グループ>/-/dependency_proxy`』という設定ページで確認できる。
 
@@ -978,7 +978,7 @@ baz_job:
 
 Jobの発火条件を設定する。
 
-複数の条件 (複数の`if`キー、`if`キーと`changes`キーの組み合わせ) を並べた場合、上から順番に条件を検証していくため、OR条件になる。
+複数の条件 (複数の `if` キー、`if` キーと `changes` キーの組み合わせ) を並べた場合、上から順番に条件を検証していくため、OR条件になる。
 
 #### ▼ if
 
@@ -986,7 +986,7 @@ Jobの発火条件を設定する。
 
 ブランチ名やタグを使用した発火を定義できる。
 
-イベントの種類が設定された`CI_PIPELINE_SOURCE`変数を使用できる。
+イベントの種類が設定された `CI_PIPELINE_SOURCE` 変数を使用できる。
 
 ```yaml
 check_tag:
@@ -1057,7 +1057,7 @@ foo_job:
 
 #### ▼ 複数のコンテナを同時に起動するため
 
-Jobでアプリコンテナを動かし、DBコンテナを別に起動しておく場合、もう一つコンテナが必要になる。
+Jobでアプリコンテナを動かし、DBコンテナを別に起動しておく場合、もう1つコンテナが必要になる。
 
 これを回避するために使用する。
 
@@ -1162,7 +1162,7 @@ Jobが発火した場合、特定のアクションを実施する。
 
 **＊例＊**
 
-モノレポでGitLabCIを採用している場合、 親の`.gitlab-ci.yml`ファイルでディレクトリ配下の変更を検知し、子の`.gitlab-ci.yml`ファイルを読み込む (`include`) ようにする。
+モノレポでGitLabCIを採用している場合、 親の `.gitlab-ci.yml` ファイルでディレクトリ配下の変更を検知し、子の `.gitlab-ci.yml` ファイルを読み込む (`include`) ようにする。
 
 ```yaml
 # 親の.gitlab-ci.yml
@@ -1238,7 +1238,7 @@ foo_job:
 
 特定の条件の場合、Jobを実行しない。
 
-なお、`when: never`のみの定義は意味がない。
+なお、`when: never` のみの定義は意味がない。
 
 ```yaml
 baz_job:
@@ -1260,7 +1260,7 @@ baz_job:
 
 ### 別ファイル
 
-`include`キーを使用する。
+`include` キーを使用する。
 
 <br>
 
@@ -1291,11 +1291,11 @@ go_mod:
 
 > - https://docs.gitlab.com/ci/yaml/yaml_optimization/#anchors
 
-#### ▼ `before_script`キーの隠しJob化
+#### ▼ `before_script` キーの隠しJob化
 
-`before_script`キーを隠しJob化することで、共通のスクリプトとして使用できる。
+`before_script` キーを隠しJob化することで、共通のスクリプトとして使用できる。
 
-ただし、呼び出す側で別の`before_script`キーがあると、上書きしてしまう。
+ただし、呼び出す側で別の `before_script` キーがあると、上書きしてしまう。
 
 ```yaml
 # GitLabの他のリポジトリからモジュールをプルするために、資格情報をセットアップする

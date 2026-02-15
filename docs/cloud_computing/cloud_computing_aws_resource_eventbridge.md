@@ -69,7 +69,7 @@ AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能�
 
 **＊実装例＊**
 
-AWS Amplifyの指定したIDのアプリケーションが、`AWS Amplify Deployment Status Change`のイベントを送信し、これの`jobStatus`が`SUCCEED`/`FAILED`だった場合、これを送信する。
+AWS Amplifyの指定したIDのアプリケーションが、`AWS Amplify Deployment Status Change` のイベントを送信し、これの `jobStatus` が `SUCCEED`/`FAILED` だった場合、これを送信する。
 
 ```yaml
 {
@@ -116,7 +116,7 @@ exports.handler = async (event) => {
 };
 ```
 
-対象のAWSリソースで任意のイベントが発生した時に、AWS EventBridgeからAWS Lambdaに送信するように設定する。
+対象のAWSリソースで任意のイベントが発生したときに、AWS EventBridgeからAWS Lambdaに送信するように設定する。
 
 ```yaml
 {"source": "aws.amplify"}
@@ -124,7 +124,7 @@ exports.handler = async (event) => {
 
 AWSリソースで意図的にイベントを起こし、AWS Lambdaのロググループから内容を確認する。
 
-`detail`キーにイベントが割り当てられている。
+`detail` キーにイベントが割り当てられている。
 
 ```yaml
 {
@@ -159,7 +159,7 @@ AWSリソースで意図的にイベントを起こし、AWS Lambdaのロググ�
 
 イベントのJSONの値を変数として出力できる。
 
-`event`キーをドルマークとして、ドットで繋いでアクセスする。
+`event` キーをドルマークとして、ドットで繋いでアクセスする。
 
 **＊実装例＊**
 
@@ -194,9 +194,9 @@ AWS Amplifyで発生したイベントのJSONを変数として取り出す。
 
 JSONのキー名が変数名として動作する。
 
-`$`でJSONのルートのキーを指定して、一旦変数を取り出す。
+`$` でJSONのルートのキーを指定して、いったん変数を取り出す。
 
-ここでは、`detail`キーを指定する。
+ここでは、`detail` キーを指定する。
 
 ```yaml
 {
@@ -210,7 +210,7 @@ JSONのキー名が変数名として動作する。
 
 その後入力テンプレートにて、送信するJSONを定義する。例えばここでは、Slackに送信するJSONに出力する。
 
-出力する時は、入力パスの変数名を『`<>`』で囲う。
+出力するときは、入力パスの変数名を『`<>`』で囲う。
 
 Slackに送信するメッセージの作成ツールは、以下のリンクを参考にせよ。
 

@@ -30,7 +30,7 @@ Control Towerは、AWS Organizations、IdentityCenter (AWS SSOの後継)、Accou
 
 AWS OrganizationsのCreateAccount-APIをコールして、AWSアカウントを作成する。
 
-さらにAWS Organizationsは、このAWSアカウントを作成する時に、AWSアカウント内にIAMロールを作成する。
+さらにAWS Organizationsは、このAWSアカウントを作成するときに、AWSアカウント内にIAMロールを作成する。
 
 既存のアカウントをControl Towerに移行する場合、既存のアカウントで作成されたIAMユーザーとIAMグループが不要になるため、これらを削除する必要がある。
 

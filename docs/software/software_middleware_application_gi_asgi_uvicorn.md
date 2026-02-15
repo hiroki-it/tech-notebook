@@ -27,9 +27,9 @@ ASDIプロトコルを使用したアプリケーション系ミドルウェア�
 
 #### ▼ uvicornコマンドを使用する場合
 
-アプリケーションのエントリーポイントを`uvicorn`コマンドで指定する。
+アプリケーションのエントリーポイントを `uvicorn` コマンドで指定する。
 
-開発のしやすさから、開発環境ではUvicornを直接的に実行し、その時に`reload`オプションを使用した方が良い。
+開発のしやすさから、開発環境ではUvicornを直接的に実行し、その時に `reload` オプションを使用したほうが良い。
 
 > - https://www.uvicorn.org/deployment/#running-from-the-command-line
 
@@ -41,11 +41,11 @@ FROM python:3.10-slim
 CMD ["uvicorn", "main:app", "--reload", "--port", "8000"]
 ```
 
-#### ▼ uvicornパッケージの`run`関数を使用する場合
+#### ▼ uvicornパッケージの `run` 関数を使用する場合
 
-アプリケーションのエントリーポイントを`python`コマンドで直接的に指定する場合、Uvicornを実行できるように、uvicornパッケージの`run`関数をエントリーポイントで実行する。
+アプリケーションのエントリーポイントを `python` コマンドで直接的に指定する場合、Uvicornを実行できるように、uvicornパッケージの `run` 関数をエントリーポイントで実行する。
 
-ただし、他の`.py`ファイルからエントリーポイントを読み込んだ場合 (`from main import app`) に、Uvicornを再実行する必要はないため、『`__name__ == "__main__"`』内にこれを実行する。
+ただし、他の `.py` ファイルからエントリーポイントを読み込んだ場合 (`from main import app`) に、Uvicornを再実行する必要はないため、『`__name__ == "__main__"`』内にこれを実行する。
 
 ```bash
 $ python main.py
@@ -74,9 +74,9 @@ if __name__ == "__main__":
 
 ![uvicorn_with-gunicorn](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uvicorn_with-gunicorn.png)
 
-性能上の理由で、本番環境ではGunicornを使用してUvicornのプロセスを管理し、プロセスを間接的に実行した方が良い。
+性能上の理由で、本番環境ではGunicornを使用してUvicornのプロセスを管理し、プロセスを間接的に実行したほうが良い。
 
-`w`オプションを使用して、プロセスの並列数を設定できる。
+`w` オプションを使用して、プロセスの並列数を設定できる。
 
 > - https://www.uvicorn.org/#running-with-gunicorn
 > - https://www.uvicorn.org/deployment/#gunicorn
@@ -102,13 +102,13 @@ $ pip3 install uvicorn[standard]
 
 ## 03. uvicornコマンド
 
-ルートディレクトリにエントリーポイントのファイルを配置している場合は、`<モジュール名>.<インスタンス名>`となる。
+ルートディレクトリにエントリーポイントのファイルを配置している場合は、`<モジュール名>.<インスタンス名>` となる。
 
 ```bash
 $ uvicorn main:app
 ```
 
-もし、サブディレクトリ配下にこのファイルを配置している場合は、`<ディレクトリ名>.<モジュール名>.<インスタンス名>`となる。
+もし、サブディレクトリ配下にこのファイルを配置している場合は、`<ディレクトリ名>.<モジュール名>.<インスタンス名>` となる。
 
 ```bash
 $ uvicorn src.main:app

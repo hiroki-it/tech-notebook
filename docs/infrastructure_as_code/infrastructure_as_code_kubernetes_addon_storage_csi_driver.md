@@ -25,7 +25,7 @@ StorageClassに合わせてPersistentVolumeを自動的に作成する。
 
 ### HostPath CSI
 
-`.spec.hostPath`キーの設定されたPersistentVolumeを自動的に作成する。
+`.spec.hostPath` キーの設定されたPersistentVolumeを自動的に作成する。
 
 ストレージCSIドライバーといいながら外部ストレージを使用しておらず、基本的には開発環境のモックとして使用する。
 

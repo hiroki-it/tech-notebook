@@ -17,9 +17,9 @@ description: TypeScriptの知見を記録しています。
 
 静的型付けのフロントエンド言語である。
 
-`tsconfig.json`ファイルに基づいて、TypeScriptファイルをコンパイルし、JavaScriptファイルを作成する。
+`tsconfig.json` ファイルに基づいて、TypeScriptファイルをコンパイルし、JavaScriptファイルを作成する。
 
-拡張子として、`ts`と`tsx` (TypeScript内にJSXを実装できる) を使用できる。
+拡張子として、`ts` と `tsx` (TypeScript内にJSXを実装できる) を使用できる。
 
 > - https://ugo.tokyo/ts-config/#outline__1
 
@@ -491,7 +491,7 @@ interface Error {
 
 #### ▼ 独自のErrorオブジェクト型
 
-ステータスコードに応じたエラーを継承すると、`try-catch`で扱いやすくなる。
+ステータスコードに応じたエラーを継承すると、`try-catch` で扱いやすくなる。
 
 基本的には、ビルトインのErrorオブジェクトを継承する。
 
@@ -521,7 +521,7 @@ class FooError extends Error {
 
 独自のErrorオブジェクトでは、必ずしも、Errorオブジェクトを継承する必要はない。
 
-例えば、任意のErrorオブジェクトと実行時間や開始時間をプロパティにもつ`FailedResult`クラスがある。
+例えば、任意のErrorオブジェクトと実行時間や開始時間をプロパティにもつ `FailedResult` クラスがある。
 
 独自のErrorオブジェクトのプロパティに実行時間や開始時間を入れればいいと考えるかもしれないが、外部ツールの任意のErrorオブジェクトには外からこれらを設定できないため、整合性が合わなくなる。
 
@@ -568,7 +568,7 @@ export class FailedResult {
 
 #### ▼ unknown
 
-`unknown`を使用した場合、それ以降の処理では型を無視して処理する。
+`unknown` を使用した場合、それ以降の処理では型を無視して処理する。
 
 ```typescript
 function foo(): string | unknown {
@@ -593,7 +593,7 @@ function foo(): string | unknown {
 
 #### ▼ any
 
-`any`を使用した場合、それ以降の処理では型を無視して処理する。
+`any` を使用した場合、それ以降の処理では型を無視して処理する。
 
 ```typescript
 function foo(): string | any {
@@ -654,7 +654,7 @@ let isProgrammer: boolean = true;
 
 > - https://typescript-jp.gitbook.io/deep-dive/type-system/type-assertion
 
-#### ▼ `as`構文
+#### ▼ `as` 構文
 
 指定した型に上書きする。
 
@@ -676,11 +676,11 @@ const strLength: number = (<string>value).length;
 
 > - https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9
 
-#### ▼ 非`null`アサーション (`!`)
+#### ▼ 非 `null` アサーション (`!`)
 
-`null`を含まない型に上書きする。
+`null` を含まない型に上書きする。
 
-例えば、変数の型が`<任意の型> | null`である場合に、`<任意の型>`に上書きする。
+例えば、変数の型が `<任意の型> | null` である場合に、`<任意の型>` に上書きする。
 
 ```typescript
 // string型またはnullを許容する
@@ -711,7 +711,7 @@ function foo(value: string | null) {
 
 ### 型ガード
 
-複数の型を許容している場合に、`if`文を使用して型を絞り込むこと。
+複数の型を許容している場合に、`if` 文を使用して型を絞り込むこと。
 
 より寛容な型 (`any`) ほど、型ガードのパターンが増える。
 
@@ -734,9 +734,9 @@ function foo(value: string | number) {
 
 #### ▼ プロパティで複数の型を許容
 
-`name`プロパティは`string`型と`undefined`型を許容している。
+`name` プロパティは `string` 型と `undefined` 型を許容している。
 
-`undefined`型の方が網羅範囲が大きいため、実質`undefined`型として扱われる。
+`undefined` 型の方が網羅範囲が大きいため、実質 `undefined` 型として扱われる。
 
 ```typescript
 type User = {
@@ -750,9 +750,9 @@ const user2: User = {id: "abc123", name: "Bob"};
 
 #### ▼ オブジェクト全体で複数の型を用意
 
-`name`プロパティが`string`型のUserと、`undefined`型のUserWithoutNameを別々に定義している。
+`name` プロパティが `string` 型のUserと、`undefined` 型のUserWithoutNameを別々に定義している。
 
-`undefined`型の方が網羅範囲が大きいため、実質`undefined`型として扱われる。
+`undefined` 型の方が網羅範囲が大きいため、実質 `undefined` 型として扱われる。
 
 ```typescript
 type User = {
@@ -903,12 +903,12 @@ interface Foo {
 
 #### ▼ 言語の実行環境
 
-- `export`コマンドで出力する
+- `export` コマンドで出力する
 - コンテナの環境変数として出力する
 
 #### ▼ dotenvパッケージ
 
-`dotenv`パッケージ
+`dotenv` パッケージ
 
 なお、依存パッケージが増えてしまうため、代替の方法があるならそちらの方が良い。
 
@@ -958,7 +958,7 @@ import {logger} from "./logger";
 
 #### ▼ 型と関数が混在
 
-型と関数が混在する場合、いくつかの記法（型と関数で`import`を分けるなど）があるが、次の実装方法が一番良い。
+型と関数が混在する場合、いくつかの記法（型と関数で `import` を分けるなど）があるが、次の実装方法が一番良い。
 
 ```typescript
 import {
@@ -1020,7 +1020,7 @@ export {logger} from "./logger";
 
 各ディレクトリのエントリポイントとして使える。
 
-`index.ts`ファイルで`export`しておくと、コールする側がディレクトリ単位でインポートできるようになる。
+`index.ts` ファイルで `export` しておくと、コールする側がディレクトリ単位でインポートできるようになる。
 
 ```typescript
 // utils/index.ts

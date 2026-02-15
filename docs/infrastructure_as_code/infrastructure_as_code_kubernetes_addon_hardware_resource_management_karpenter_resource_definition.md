@@ -21,7 +21,7 @@ NodePool内のNodeに対して、AWS固有の仕様を設定する。
 
 ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。
 
-Terraformの`aws_launch_template`ブロックと競合する。
+Terraformの `aws_launch_template` ブロックと競合する。
 
 > - https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
@@ -439,7 +439,7 @@ spec:
 
 複数のProvisionerがある場合に、このProvisionerの優先順位の高さを設定する。
 
-デフォルトでは、重みが`0`である。
+デフォルトでは、重みが `0` である。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -482,7 +482,7 @@ spec:
 
 ### kubelet
 
-kubeletの`KubeletConfiguration`オプションにパラメーターを渡す。
+kubeletの `KubeletConfiguration` オプションにパラメーターを渡す。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -885,13 +885,13 @@ data:
 
 <br>
 
-## 05. Podの`.metadata.annotations`キー
+## 05. Podの `.metadata.annotations` キー
 
 ### karpenter.sh/do-not-disrupt
 
 長時間実行するPodの場合、完了前にKarpenterがNodeを終了しないようにする必要がある。
 
-`karpenter.sh/do-not-disrupt`キーを設定すると、Podの終了を待機できる。
+`karpenter.sh/do-not-disrupt` キーを設定すると、Podの終了を待機できる。
 
 ```yaml
 apiVersion: apps/v1

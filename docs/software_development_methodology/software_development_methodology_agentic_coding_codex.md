@@ -29,7 +29,7 @@ $ codex --dangerously-bypass-approvals-and-sandbox
 
 ## 02. config.toml
 
-`~/.codex/config.toml`に設定を実装する。
+`~/.codex/config.toml` に設定を実装する。
 
 ```toml
 # 思考過程の出力を非表示にする

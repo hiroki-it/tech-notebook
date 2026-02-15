@@ -13,13 +13,13 @@ description: 設定ファイル＠Kanikoの知見を記録しています。
 
 <br>
 
-## 01. `config.json`ファイル
+## 01. `config.json` ファイル
 
-### `config.json`ファイルとは
+### `config.json` ファイルとは
 
 Kanikoのオプションを設定する。
 
-`/kaniko/.docker`ディレクトリに配置する。
+`/kaniko/.docker` ディレクトリに配置する。
 
 <br>
 

@@ -17,7 +17,7 @@ description: HTTP認証＠認証の知見を記録しています。
 
 HTTPリクエストの中で認証を行う認証スキームのこと。
 
-リクエストの`Authorization`ヘッダーとレスポンスの`WWW-Authenticate`ヘッダーで認証スキームを指定する。
+リクエストの `Authorization` ヘッダーとレスポンスの `WWW-Authenticate` ヘッダーで認証スキームを指定する。
 
 認証スキームの種類には、『ベーシック認証』、『ダイジェスト認証』、『Bearer認証』などがある。
 

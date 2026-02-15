@@ -56,7 +56,7 @@ Active Recordパターンで実装されている。
 
 #### ▼ Eloquentモデルの継承
 
-Eloquentモデルを継承したクラスは、`INSERT`文や`UPDATE`文などのデータアクセスロジックを使用できるようになる。
+Eloquentモデルを継承したクラスは、`INSERT` 文や `UPDATE` 文などのデータアクセスロジックを使用できるようになる。
 
 **＊実装例＊**
 
@@ -75,11 +75,11 @@ class Foo extends Model
 
 #### ▼ テーブルの定義
 
-テーブルを定義するため、`table`プロパティにテーブル名を割り当てる。
+テーブルを定義するため、`table` プロパティにテーブル名を割り当てる。
 
-ただし、`table`プロパティにテーブル名を代入する必要はない。
+ただし、`table` プロパティにテーブル名を代入する必要はない。
 
-Eloquentがクラス名の複数形をテーブル名と見なし、これをスネークケースにした文字列を`table`プロパティに自動的に代入する。
+Eloquentがクラス名の複数形をテーブル名と見なし、これをスネークケースにした文字列を `table` プロパティに自動的に代入する。
 
 また、テーブル名を自前で命名したい場合は、代入によるOverrideを行っても良い。
 
@@ -105,11 +105,11 @@ class Foo extends Model
 
 ER図における各テーブルのリレーションシップを元に、モデル間の関連性を定義する。
 
-`hasOne`関数、`hasMany`関数、`belongsTo`関数を使用して表す。
+`hasOne` 関数、`hasMany` 関数、`belongsTo` 関数を使用して表す。
 
 **＊実装例＊**
 
-Departmentモデルで、`hasMany`関数を使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。
+Departmentモデルで、`hasMany` 関数を使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。
 
 ```php
 <?php
@@ -138,7 +138,7 @@ class Department extends Model
 }
 ```
 
-また、Employeesモデルでは、`belongsTo`関数を使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。
+また、Employeesモデルでは、`belongsTo` 関数を使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。
 
 ```php
 <?php
@@ -167,7 +167,7 @@ class Employee extends Model
 }
 ```
 
-リレーションを基にJOIN句のSQLを発行するために、Departmentモデル (親) の`hasMany`関数を実行する。
+リレーションを基にJOIN句のSQLを発行するために、Departmentモデル (親) の `hasMany` 関数を実行する。
 
 これにより、DepartmentモデルのIDに紐付くEmployeesモデル (子) を配列で参照できる。
 
@@ -187,9 +187,9 @@ $employees = $department->employees()
 
 #### ▼ 主キーカラムの定義
 
-Eloquentは、`primaryKey`プロパティの値を主キーのカラム名と見なす。
+Eloquentは、`primaryKey` プロパティの値を主キーのカラム名と見なす。
 
-`keyType`プロパティで主キーのデータ型、また`incrementing`プロパティで主キーの自動増分を有効化するか否かを設定できる。
+`keyType` プロパティで主キーのデータ型、また `incrementing` プロパティで主キーの自動増分を有効化するか否かを設定できる。
 
 **＊実装例＊**
 
@@ -221,7 +221,7 @@ class Foo extends Model
 
 #### ▼ TIMESTAMP型カラムの定義
 
-Eloquentは、`timestamps`プロパティの値が`true`の時に、Eloquentモデルに紐付くテーブルの`created_at`カラムと`updated_at`カラムを自動的に更新する。
+Eloquentは、`timestamps` プロパティの値が `true` の時に、Eloquentモデルに紐付くテーブルの `created_at` カラムと `updated_at` カラムを自動的に更新する。
 
 また、TIMESTAMP型カラム名を自前で命名したい場合は、代入によるOverideを行っても良い。
 
@@ -248,7 +248,7 @@ class Foo extends Model
 
 #### ▼ TIMESTAMP型カラム読み出し時のデータ型変換
 
-DBからタイムスタンプ型カラムを読み出すと同時に、CarbonのDateTimeクラスに変換したい場合、`data`プロパティにて、カラム名を設定する。
+DBからタイムスタンプ型カラムを読み出すと同時に、CarbonのDateTimeクラスに変換したい場合、`data` プロパティにて、カラム名を設定する。
 
 **＊実装例＊**
 
@@ -276,7 +276,7 @@ class User extends Model
 
 #### ▼ カラムデフォルト値の定義
 
-特定のカラムのデフォルト値を設定したい場合、`attributes`プロパティにて、カラム名と値を定義する。
+特定のカラムのデフォルト値を設定したい場合、`attributes` プロパティにて、カラム名と値を定義する。
 
 **＊実装例＊**
 
@@ -302,7 +302,7 @@ class Foo extends Model
 
 #### ▼ 変更できる/できないカラムの定義
 
-変更できるカラム名を`fillable`プロパティを使用して定義する。
+変更できるカラム名を `fillable` プロパティを使用して定義する。
 
 カラムが増えるたびに、実装する必要がある。
 
@@ -328,7 +328,7 @@ class Foo extends Model
 }
 ```
 
-もしくは、変更できないカラム名を`guarded`プロパティで定義する。
+もしくは、変更できないカラム名を `guarded` プロパティで定義する。
 
 これらのいずれかの設定は、Eloquentモデルで必須である。
 
@@ -362,7 +362,7 @@ Laravelでは、プロパティを定義しなくても、Eloquentモデルか�
 
 しかし、この機能はプロパティがpublicアクセスである必要があるため、オブジェクト機能のメリットを享受できない。
 
-そのため、こを使用せずに、`constructor`関数を使用したコンストラクタインジェクション、またはセッターインジェクションを使用するようにする。
+そのため、こを使用せずに、`constructor` 関数を使用したコンストラクタインジェクション、またはセッターインジェクションを使用するようにする。
 
 **＊実装例＊**
 
@@ -396,7 +396,7 @@ class Foo extends Model
 
 #### ▼ ゲッター
 
-Laravelでは、`getFooBarAttribute`という名前の関数を、`foo_bar`という名前でコールできる。
+Laravelでは、`getFooBarAttribute` という名前の関数を、`foo_bar` という名前でコールできる。
 
 一見、プロパティをコールしているように見えるため、注意が必要である。
 
@@ -490,9 +490,9 @@ JSONをPHPのオブジェクト型に変換 (デシリアライズ) する。
 
 ### フィルタリング
 
-#### ▼ `filter`関数
+#### ▼ `filter` 関数
 
-コールバック関数の返却値が`true`であった要素を全て抽出する。
+コールバック関数の返り値が `true` であった要素を全て抽出する。
 
 **＊実装例＊**
 
@@ -509,7 +509,7 @@ $filtered->all();
 // [3, 4]
 ```
 
-補足として、複数の条件を設定したい時は、早期リターンを使用する必要がある。
+補足として、複数の条件を設定したいときは、早期リターンを使用する必要がある。
 
 **＊実装例＊**
 
@@ -532,9 +532,9 @@ $filtered->all();
 // [3, 4, "yes"]
 ```
 
-#### ▼ `first`関数
+#### ▼ `first` 関数
 
-コールバック関数の返却値が`true`であった最初の要素のみを抽出する。
+コールバック関数の返り値が `true` であった最初の要素のみを抽出する。
 
 **＊実装例＊**
 
@@ -553,17 +553,17 @@ $filtered = $collection->first(function ($value, $key) {
 
 ## 03-02. EloquentモデルとビルダーによるCRUD
 
-### CRUD関数の返却値型と返却値
+### CRUD関数の返り値型と返却値
 
 #### ▼ CRUD関数を持つクラス
 
 Eloquentモデルを継承すると、以下のクラスから関数をコールできるようになる。
 
-Eloquentモデルにはより上位の関数が定義されていないことがあり、もし定義されていないものがコールされた場合、`__callStatic`関数 (静的コールによる) や`__call`関数 (非静的コールによる) が代わりにコールされ、より上位クラスの関数をコールできる。
+Eloquentモデルにはより上位の関数が定義されていないことがあり、もし定義されていないものがコールされた場合、`__callStatic` 関数 (静的コールによる) や `__call` 関数 (非静的コールによる) が代わりにコールされ、より上位クラスの関数をコールできる。
 
 どちらの方法でコールしても同じである。
 
-| クラス               | 名前空間                                          | `__call`関数を経由してコールできるクラス              |
+| クラス               | 名前空間                                          | `__call` 関数を経由してコールできるクラス              |
 | :------------------- | :------------------------------------------------ | :---------------------------------------------------- |
 | Queryビルダー        | `Illuminate\Database\Query\Builder`               | なし                                                  |
 | Eloquentビルダー     | `Illuminate\Database\Eloquent\Builder`            | Queryビルダー、                                       |
@@ -575,7 +575,7 @@ Eloquentモデルにはより上位の関数が定義されていないことが
 
 #### ▼ Eloquentビルダー
 
-Eloquentビルダーが持つcrudを実行する関数の返却値型と返却値は以下の通りである。
+Eloquentビルダーが持つcrudを実行する関数の返り値型と返却値は以下の通りである。
 
 その他の関数については、以下のリンクを参考にせよ。
 
@@ -590,7 +590,7 @@ Eloquentビルダーが持つcrudを実行する関数の返却値型と返却�
 
 #### ▼ Eloquentモデル
 
-Eloquentモデルが持つcrudを実行する関数の返却値型と返却値は以下の通りである。
+Eloquentモデルが持つcrudを実行する関数の返り値型と返却値は以下の通りである。
 
 その他の関数については、以下のリンクを参考にせよ。
 
@@ -606,19 +606,19 @@ Eloquentモデルが持つcrudを実行する関数の返却値型と返却値�
 
 ### CREATE
 
-#### ▼ `create`関数
+#### ▼ `create` 関数
 
 INSERT文を実行する。
 
-Eloquentモデルには`create`関数がないため、代わりにEloquentビルダーが持つ`create`関数がコールされる。
+Eloquentモデルには `create` 関数がないため、代わりにEloquentビルダーが持つ `create` 関数がコールされる。
 
-`create`関数に挿入先のカラムと値を渡し、これを実行する。
+`create` 関数に挿入先のカラムと値を渡し、これを実行する。
 
-別の方法として、Eloquentビルダーの`fill`関数で挿入先のカラムと値を設定し、`save`関数を実行しても良い。
+別の方法として、Eloquentビルダーの `fill` 関数で挿入先のカラムと値を設定し、`save` 関数を実行しても良い。
 
-`save`関数は`UPDATE`処理も実行できるが、`fill`関数でID値を割り当てない場合は、`CREATE`処理が実行される。
+`save` 関数は `UPDATE` 処理も実行できるが、`fill` 関数でID値を割り当てない場合は、`CREATE` 処理が実行される。
 
-`create`関数または`save`関数による`CREATE`処理では、レコードの挿入後に、`lastInsertId`関数に相当する処理が実行される。
+`create` 関数または `save` 関数による `CREATE` 処理では、レコードの挿入後に、`lastInsertId` 関数に相当する処理が実行される。
 
 これにより、挿入されたレコードのプライマリーキーが取得され、EloquentモデルのID値のプロパティに保持される。
 
@@ -658,7 +658,7 @@ class FooController extends Controller
 }
 ```
 
-Eloquentモデルには`fillable`プロパティを設定しておく。
+Eloquentモデルには `fillable` プロパティを設定しておく。
 
 ```php
 <?php
@@ -684,17 +684,17 @@ class FooDTO extends Model
 
 ### READ
 
-#### ▼ `all`関数
+#### ▼ `all` 関数
 
 レコードを全て取得するSELECT句を発行する。
 
-MySQLを含むDBエンジンでは、取得結果に標準の並び順が存在しないため、プライマリーキーの昇順で取得したい場合は、`orderBy`関数を使用して、明示的に並び替えるようにする。
+MySQLを含むDBエンジンでは、取得結果に標準の並び順が存在しないため、プライマリーキーの昇順で取得したい場合は、`orderBy` 関数を使用して、明示的に並び替えるようにする。
 
-Eloquentモデルには`all`関数がないため、代わりにEloquentビルダーが持つ`all`関数がコールされる。
+Eloquentモデルには `all` 関数がないため、代わりにEloquentビルダーが持つ `all` 関数がコールされる。
 
 全てのプライマリーキーのCollection型を配列型として返却する。
 
-`toArray`関数で配列型に再帰的に変換できる。
+`toArray` 関数で配列型に再帰的に変換できる。
 
 **＊実装例＊**
 
@@ -725,15 +725,15 @@ class FooController extends Controller
 > - https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
 > - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-models
 
-#### ▼ `find`関数
+#### ▼ `find` 関数
 
 レコードを1つ取得するSELECT句を発行する。
 
-Eloquentモデルには`find`関数がないため、代わりにEloquentビルダーが持つ`find`関数がコールされる。
+Eloquentモデルには `find` 関数がないため、代わりにEloquentビルダーが持つ `find` 関数がコールされる。
 
 引数としてプライマリーキーを渡した場合、指定したプライマリーキーを持つEloquentモデルを返却する。
 
-`toArray`関数で配列型に変換できる。
+`toArray` 関数で配列型に変換できる。
 
 **＊実装例＊**
 
@@ -764,15 +764,15 @@ class FooController extends Controller
 > - https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
 > - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
 
-#### ▼ `first`関数
+#### ▼ `first` 関数
 
 取得されたコレクション型データの1つ目の要素の値を取得する。
 
-ユニーク制約の課せられたカラムを`where`関数の対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは1つである。
+ユニーク制約の課せられたカラムを `where` 関数の対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは1つである。
 
 foreachを使用してコレクションからEloquentモデルを取り出しても良いが、無駄が多い。
 
-そこで、`first`関数を使用して、Eloquentモデルを直接的に取得する。
+そこで、`first` 関数を使用して、Eloquentモデルを直接的に取得する。
 
 **＊実装例＊**
 
@@ -800,9 +800,9 @@ class FooController extends Controller
 }
 ```
 
-#### ▼ `limit`関数、`offset`関数
+#### ▼ `limit` 関数、`offset` 関数
 
-指定した`offset`値以降のレコードを全て取得するSELECT句を発行する。
+指定した `offset` 値以降のレコードを全て取得するSELECT句を発行する。
 
 これにより、ページネーションで、1ページ当たりのレコード数 (`limit`) と、次のページの開始レコード (`offset`) を定義できる。
 
@@ -839,13 +839,13 @@ class FooController extends Controller
 
 > - https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
-#### ▼ `orderBy`関数
+#### ▼ `orderBy` 関数
 
 指定したカラムの昇順/降順でレコードを並び替えるSELECT句を発行する。
 
-並び替えた結果を取得するためには、`get`関数を使用する。
+並び替えた結果を取得するためには、`get` 関数を使用する。
 
-プライマリーキーの昇順で取得する場合、`all`関数ではなく、`orderBy`関数を使用して、プライマリーキーの昇順を明示的に設定する。
+プライマリーキーの昇順で取得する場合、`all` 関数ではなく、`orderBy` 関数を使用して、プライマリーキーの昇順を明示的に設定する。
 
 **＊実装例＊**
 
@@ -886,7 +886,7 @@ class FooController extends Controller
 
 > - https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
 
-#### ▼ `sortBy`関数
+#### ▼ `sortBy` 関数
 
 指定したカラムの昇順でレコードを並び替えるSELECT句を発行する。
 
@@ -917,7 +917,7 @@ class FooController extends Controller
 
 > - https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
 
-#### ▼ `sortByDesc`関数
+#### ▼ `sortByDesc` 関数
 
 指定したカラムの降順でレコードを並び替えるSELECT句を発行する。
 
@@ -946,13 +946,13 @@ class FooController extends Controller
 
 > - https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
 
-#### ▼ `with`関数
+#### ▼ `with` 関数
 
 親テーブルにアクセスして全てのデータを取得し、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する。
 
 この仕組みをEagerロードという。
 
-Eloquentモデルには`with`関数がないため、代わりにEloquentビルダーが持つ`with`関数がコールされる。
+Eloquentモデルには `with` 関数がないため、代わりにEloquentビルダーが持つ `with` 関数がコールされる。
 
 テーブル間に一対多 (親子) のリレーションシップがある場合に使用する。
 
@@ -960,7 +960,7 @@ N+1問題を防げる。
 
 > - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
 
-ただし、`with`関数に他の関数をチェーンしてしまうと、Eagerロードの後にSQLを発行されてしまうため、Eagerロードの恩恵を得られなくなることに注意する。
+ただし、`with` 関数に他の関数をチェーンしてしまうと、Eagerロードの後にSQLを発行されてしまうため、Eagerロードの恩恵を得られなくなることに注意する。
 
 > - https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F
 
@@ -968,7 +968,7 @@ N+1問題を防げる。
 
 コントローラーにて、Department (親) と、これに紐付くEmployee (子) を読み出す。
 
-これらのモデルの間では、`hasMany`関数と`belongsTo`関数を使用して、テーブルにおける一対多のリレーションを定義しておく。
+これらのモデルの間では、`hasMany` 関数と `belongsTo` 関数を使用して、テーブルにおける一対多のリレーションを定義しておく。
 
 ```php
 <?php
@@ -1070,13 +1070,13 @@ class Employee extends Model
 
 ### UPDATE
 
-#### ▼ `save`関数
+#### ▼ `save` 関数
 
 UPDATE文を実行する。
 
-Eloquentビルダーの`fill`関数で挿入先のカラムと値を設定し、`save`関数を実行する。
+Eloquentビルダーの `fill` 関数で挿入先のカラムと値を設定し、`save` 関数を実行する。
 
-`save`関数は`CREATE`処理も実行できるが、`fill`関数でID値を割り当てた場合は、`UPDATE`処理が実行される。
+`save` 関数は `CREATE` 処理も実行できるが、`fill` 関数でID値を割り当てた場合は、`UPDATE` 処理が実行される。
 
 **＊実装例＊**
 
@@ -1109,7 +1109,7 @@ class FooController extends Controller
 }
 ```
 
-Eloquentモデルには`fillable`プロパティを設定しておく。
+Eloquentモデルには `fillable` プロパティを設定しておく。
 
 ```php
 <?php
@@ -1135,25 +1135,25 @@ class FooDTO extends Model
 
 ### DELETE
 
-#### ▼ `destroy`/`delete`関数 (物理削除)
+#### ▼ `destroy`/`delete` 関数 (物理削除)
 
 DELETE文を実行する。
 
-Eloquentモデルの`destroy`/`delete`関数を使用する。
+Eloquentモデルの `destroy`/`delete` 関数を使用する。
 
-手順として、Eloquentビルダーの`find`関数で削除先のModelを検索する。
+手順として、Eloquentビルダーの `find` 関数で削除先のModelを検索する。
 
-返却されたEloquentビルダーの`destroy`/`delete`関数をコールし、自身を削除する。
+返却されたEloquentビルダーの `destroy`/`delete` 関数をコールし、自身を削除する。
 
 #### ▼ SoftDeletesの有効化 (論理削除)
 
 削除フラグを更新するUPDATE文を実行する。
 
-Eloquentモデルの`destroy`/`delete`関数を使用する。
+Eloquentモデルの `destroy`/`delete` 関数を使用する。
 
 手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。
 
-DBマイグレーション時に追加される`delete_at`カラムをSQLで取得する時に、DataTimeクラスに変換できるようにしておく。
+DBマイグレーション時に追加される `delete_at` カラムをSQLで取得するときに、DataTimeクラスに変換できるようにしておく。
 
 **＊実装例＊**
 
@@ -1183,9 +1183,9 @@ class FooDTO extends Model
 }
 ```
 
-DBマイグレーションファイルにて`softDeletes`関数を使用すると、削除フラグとして`deleted_at`カラムが追加されるようになる。
+DBマイグレーションファイルにて `softDeletes` 関数を使用すると、削除フラグとして `deleted_at` カラムが追加されるようになる。
 
-`deleted_at`カラムのデフォルト値は`NULL`である。
+`deleted_at` カラムのデフォルト値は `NULL` である。
 
 ```php
 <?php
@@ -1227,11 +1227,11 @@ class CreateFooTable extends Migration
 }
 ```
 
-上記の状態で、同様に`destroy`/`delete`関数を使用して、自身を削除する。
+上記の状態で、同様に `destroy`/`delete` 関数を使用して、自身を削除する。
 
-物理削除ではなく、`deleled_at`カラムが更新されるようになる。
+物理削除ではなく、`deleled_at` カラムが更新されるようになる。
 
-`find`関数は、`deleled_at`カラムが`NULL`でないレコードを読み出さないため、論理削除を実現できる。
+`find` 関数は、`deleled_at` カラムが `NULL` でないレコードを読み出さないため、論理削除を実現できる。
 
 <br>
 
@@ -1331,7 +1331,7 @@ final class FooDTO extends Model
 
 ### CREATE
 
-#### ▼ `create`関数
+#### ▼ `create` 関数
 
 **＊実装例＊**
 
@@ -1405,7 +1405,7 @@ class FooDTO extends Model
 
 ### READ
 
-#### ▼ `find`関数
+#### ▼ `find` 関数
 
 **＊実装例＊**
 
@@ -1451,7 +1451,7 @@ class FooRepository extends Repository implements DomainFooRepository
 }
 ```
 
-#### ▼ `all`関数
+#### ▼ `all` 関数
 
 **＊実装例＊**
 
@@ -1499,13 +1499,13 @@ class FooRepository extends Repository implements DomainFooRepository
 }
 ```
 
-#### ▼ `with`関数
+#### ▼ `with` 関数
 
 <br>
 
 ### UPDATE
 
-#### ▼ `save`関数
+#### ▼ `save` 関数
 
 **＊実装例＊**
 
@@ -1572,7 +1572,7 @@ class FooDTO extends Model
 
 ### DELETE
 
-#### ▼ `destroy`/`delete`関数
+#### ▼ `destroy`/`delete` 関数
 
 **＊実装例＊**
 

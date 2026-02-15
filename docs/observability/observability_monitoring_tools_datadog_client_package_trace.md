@@ -21,7 +21,7 @@ description: クライアントパッケージ＠分散トレースの知見を�
 
 採用しているミドルウェアごとに、インストール方法が異なる。
 
-サーバーを冗長化している場合、全てのサーバーに共通した設定のエージェントを組み込めるという点で、IaCツールを使用した方が良い。
+サーバーを冗長化している場合、全てのサーバーに共通した設定のエージェントを組み込めるという点で、IaCツールを使用したほうが良い。
 
 ```bash
 # GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。
@@ -34,7 +34,7 @@ $ dpkg -i datadog-php-tracer_0.69_amd64.deb
 $ rm datadog-php-tracer.deb
 ```
 
-また、PHP-FPMに環境変数を渡せるように、`www`プールに関する設定ファイルを配置し、PHP-FPMを再起動する。
+また、PHP-FPMに環境変数を渡せるように、`www` プールに関する設定ファイルを配置し、PHP-FPMを再起動する。
 
 ```ini
 # /etc/php-fpm.d/dd-trace.confファイル
@@ -70,7 +70,7 @@ env[DD_VERSION] = '<バージョンタグ>'
 
 アプリコンテナのDockerfileにて、PHP用のクライアントパッケージをインストールする。
 
-また、コンテナの環境変数として、`DD_SERVICE`、`DD_ENV`、`DD_VERSION`を渡す。
+また、コンテナの環境変数として、`DD_SERVICE`、`DD_ENV`、`DD_VERSION` を渡す。
 
 ```dockerfile
 ENV DD_TRACE_VERSION=0.63.0
@@ -87,7 +87,7 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
 
 #### ▼ インストールの動作確認
 
-パッケージが正しく読み込まれているか否かは、`php --ri=ddtrace`コマンドまたは`phpinfo`関数の結果から確認できる。
+パッケージがまさしく読み込まれているか否かは、`php --ri=ddtrace` コマンドまたは `phpinfo` 関数の結果から確認できる。
 
 ```bash
 # 成功の場合
@@ -112,7 +112,7 @@ Extension 'ddtrace' not present.
 
 #### ▼ パラメーターの動作確認
 
-パラメーターがパッケージに渡されたか否かは、`DATADOG TRACER CONFIGURATION`の項目で確認できる。
+パラメーターがパッケージに渡されたか否かは、`DATADOG TRACER CONFIGURATION` の項目で確認できる。
 
 ```bash
 $ php --ri=ddtrace
@@ -185,9 +185,9 @@ datadogコンテナが分散トレースを受信している場合は、受信�
 
 TypeScriptやモジュールバンドルを採用している場合、パッケージの読み出し処理が巻き上げられ、意図しない読み出しの順番になってしまうことがある。
 
-対策として、`dd-trace`パッケージの`init`関数の実行を別ファイルに分割し、これをエントリーポイント (`nuxt.config.js`ファイル) の先頭で読み込むようにする。
+対策として、`dd-trace` パッケージの `init` 関数の実行を別ファイルに分割し、これをエントリーポイント (`nuxt.config.js` ファイル) の先頭で読み込むようにする。
 
-また、フレームワークよりも先に読み込むことになるため、`.env`ファイル参照を使用できない。
+また、フレームワークよりも先に読み込むことになるため、`.env` ファイル参照を使用できない。
 
 そこで、環境変数はインフラ側で設定する。
 
@@ -222,7 +222,7 @@ import { Configuration } from '@nuxt/types'
 
 #### ▼ 起動ログの確認
 
-パッケージの起動ログは、`init`関数の`startupLogs`オプションを有効化すると確認できる。
+パッケージの起動ログは、`init` 関数の `startupLogs` オプションを有効化すると確認できる。
 
 ```bash
 DATADOG TRACER CONFIGURATION -
@@ -390,7 +390,7 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
 事前処理としてスパンの作成などを行うInterceptorを使用する。
 
-`otelgrpc`パッケージのラッパーである`dd-trace-go.v1`パッケージが持っている。
+`otelgrpc` パッケージのラッパーである `dd-trace-go.v1` パッケージが持っている。
 
 各関数でスパンの作成を実行する必要がなくなる。
 

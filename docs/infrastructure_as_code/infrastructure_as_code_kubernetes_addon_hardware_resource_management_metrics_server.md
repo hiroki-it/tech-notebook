@@ -19,7 +19,7 @@ description: metrics-server＠ハードウェアリソース管理系の知見�
 
 metrics-serverは、拡張APIサーバー、ローカルストレージ、スクレイパー、といったコンポーネントから構成される。
 
-PodとNodeのメトリクスの元になるデータポイントを収集し、`kubectl top`コマンドでこれを取得できる。
+PodとNodeのメトリクスの元になるデータポイントを収集し、`kubectl top` コマンドでこれを取得できる。
 
 また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。
 
@@ -29,7 +29,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 `(1)`
 
-: クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) がmetrics-serverのAPIからメトリクスを参照しようとする。
+: クライアント (`kubectl top` コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) がmetrics-serverのAPIからメトリクスを参照しようとする。
 
 `(2)`
 
@@ -55,7 +55,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 #### ▼ 拡張APIサーバーとは
 
-拡張APIサーバーは、ServiceとAPIServiceを介して、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスの元になるデータポイントを含むレスポンスを返信する。
+拡張APIサーバーは、ServiceとAPIServiceを介して、クライアント (`kubectl top` コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスの元になるデータポイントを含むレスポンスを返信する。
 
 データポイントはローカルストレージに保管している。
 
@@ -66,7 +66,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 ### ローカルストレージ
 
-ローカルストレージは、クライアント (`kubectl top`コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスの元になるデータポイントを保管する。
+ローカルストレージは、クライアント (`kubectl top` コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスの元になるデータポイントを保管する。
 
 <br>
 
@@ -74,7 +74,7 @@ KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) の�
 
 スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスの元になるデータポイントを定期的に収集し、ローカルストレージに保管する。
 
-kubeletのデーモンはデータポイント収集用エンドポイント (例：`/metrics/resource`、`/stats`など) を持ち、これがスクレイパーの収集対象になる。
+kubeletのデーモンはデータポイント収集用エンドポイント (例：`/metrics/resource`、`/stats` など) を持ち、これがスクレイパーの収集対象になる。
 
 そのため、PodやNodeにデータポイント収集用エンドポイント (例：`/metrics`) を設ける必要はない。
 
@@ -184,7 +184,7 @@ spec:
 
 <br>
 
-## 02. `kubectl top`コマンド
+## 02. `kubectl top` コマンド
 
 ### node
 
@@ -210,7 +210,7 @@ baz-node   352m         4%     9430Mi          33%
 
 #### ▼ デバッグ
 
-metrics-serverが正しく動作していない場合、Nodeのハードウェアリソースの消費量が`<unknown>`になる。
+metrics-serverが正しく動作していない場合、Nodeのハードウェアリソースの消費量が `<unknown>` になる。
 
 ```bash
 $ kubectl top node
@@ -254,7 +254,7 @@ foo-pod   istio-proxy     5m           85Mi
 
 #### ▼ デバッグ
 
-metrics-serverが正しく動作していない場合、Podのハードウェアリソースの消費量が`<unknown>`になる。
+metrics-serverが正しく動作していない場合、Podのハードウェアリソースの消費量が `<unknown>` になる。
 
 ```bash
 $ kubectl top pod
@@ -305,7 +305,7 @@ HorizontalPodAutoscalerを使用するためには、metrics-serverも別途イ�
 
 #### ▼ デバッグ
 
-Deployment配下のPodで、`.spec.containers[*]resources`キーに要求量を設定すると、HorizontalPodAutoscalerが要求量に対する使用量 (Target列) を取得できるようになる。
+Deployment配下のPodで、`.spec.containers[*]resources` キーに要求量を設定すると、HorizontalPodAutoscalerが要求量に対する使用量 (Target列) を取得できるようになる。
 
 一方でこれを取得できていない場合、設定が無いか、metrics-serverが正しく動作していない可能性がある。
 
@@ -322,9 +322,9 @@ baz        baz-deployment   Deployment/baz-deployment   <unknown>/80%   1       
 
 #### ▼ レプリカ数との衝突
 
-最初、Deploymentの`spec.replicas`キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの`.spec.minReplicas`キーが優先される。
+最初、Deploymentの `spec.replicas` キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの `.spec.minReplicas` キーが優先される。
 
-この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの`spec.replicas`キーの設定を削除しておくことが推奨である。
+この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの `spec.replicas` キーの設定を削除しておくことが推奨である。
 
 > - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling
 > - https://stackoverflow.com/a/66431624/12771072
@@ -352,8 +352,8 @@ Podの垂直スケーリングを実行する。
 
 | 方法                             | 説明                                                                                                                            |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| マニフェストの新しい設定値の追加 | マニフェストに、垂直スケーリング時のルールに関する設定値 (例：`.spec.containers[*].resources[*].resizePolicy`キー) を追加する。 |
-| eBPFによるインプレース変更       | ハードウェアリソースの不足が検知された時に、eBPFを使用して、Podのマニフェストを変更するJSONPatch処理をフックする。              |
+| マニフェストの新しい設定値の追加 | マニフェストに、垂直スケーリング時のルールに関する設定値 (例：`.spec.containers[*].resources[*].resizePolicy` キー) を追加する。 |
+| eBPFによるインプレース変更       | ハードウェアリソースの不足が検知されたときに、eBPFを使用して、Podのマニフェストを変更するJSONPatch処理をフックする。              |
 
 > - https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12>
 > - https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet>

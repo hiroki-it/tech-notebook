@@ -68,7 +68,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/polaris --
 
 <br>
 
-## 02. `config.yaml`ファイル
+## 02. `config.yaml` ファイル
 
 ### checks
 
@@ -106,9 +106,9 @@ checks:
 
 #### ▼ 重要度レベルの変更
 
-polarisの実行時に、重要度が`danger`以上のルールを検証するようにしたとする。
+polarisの実行時に、重要度が `danger` 以上のルールを検証するようにしたとする。
 
-重要度がデフォルトで`warning`のルールは検証しなくなるため、検証したいルールは`danger`に格上げする
+重要度がデフォルトで `warning` のルールは検証しなくなるため、検証したいルールは `danger` に格上げする
 
 ```yaml
 checks:
@@ -151,7 +151,7 @@ checks:
 
 #### ▼ 設定し忘れの検証
 
-DaemonSet配下のPodでは、`.spec.priorityClassName`キーや`.spec.affinity`キーを設定しておく方が良いが、これを設定し忘れてしまう可能性がある。
+DaemonSet配下のPodでは、`.spec.priorityClassName` キーや `.spec.affinity` キーを設定しておくほうが良いが、これを設定し忘れてしまう可能性がある。
 
 こういった場合、カスタムルールが役立つ。
 
@@ -397,7 +397,7 @@ $ polaris audit --audit-path manifest.yaml --format pretty
 $ polaris audit --audit-path manifest.yaml --only-show-failed-tests
 ```
 
-カスタムルールに違反があった場合、`--only-show-failed-tests`オプションを有効化していると、ルール違反が無視されて結果に表示されない不具合がある可能性がある。
+カスタムルールに違反があった場合、`--only-show-failed-tests` オプションを有効化していると、ルール違反が無視されて結果に表示されない不具合がある可能性がある。
 
 ```bash
 $ polaris audit --audit-path manifest.yaml
@@ -447,7 +447,7 @@ $ polaris audit --helm-chart ./chart --helm-values ./chart/values.yaml
 
 #### ▼ --set-exit-code-on-danger
 
-dangerレベルのルール違反が検出された場合、終了コード`3`を出力する。
+dangerレベルのルール違反が検出された場合、終了コード `3` を出力する。
 
 ```bash
 $ polaris audit --audit-path manifest.yaml --severity danger --set-exit-code-on-danger

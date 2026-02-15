@@ -63,7 +63,7 @@ const createUser = (id: UserId, name: string, email: string): User | Error => {
 
 値オブジェクトとは異なり、IDで等価性検証ができる。
 
-「〇〇は既に存在しています」のエラーで役立つ。
+「〇〇はすでに存在しています」のエラーで役立つ。
 
 ```typescript
 export type UserId = string;

@@ -17,13 +17,13 @@ description: Terratest＠ユニットテストの知見を記録しています�
 
 ### 整形
 
-- `terraform fmt`コマンド
+- `terraform fmt` コマンド
 
 <br>
 
 ### 静的解析
 
-- `terraform validate`コマンド
+- `terraform validate` コマンド
 
 <br>
 
@@ -31,7 +31,7 @@ description: Terratest＠ユニットテストの知見を記録しています�
 
 AWSリソースを単体コンポーネントと捉えて、ユニットテストを実施する。
 
-- `terraform test`コマンド
+- `terraform test` コマンド
 - Terratest
 - Goss
 - Serverspec

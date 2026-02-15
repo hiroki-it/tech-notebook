@@ -25,9 +25,9 @@ description: パッケージ＠Flaskの知見を記録しています。
 
 #### ▼ 全体
 
-特にKubernetes内では、`api_base_url`と`authorize_url`のドメインに、外部から接続できるKeycloakのドメインを設定する。
+特にKubernetes内では、`api_base_url` と `authorize_url` のドメインに、外部から接続できるKeycloakのドメインを設定する。
 
-一方で、`access_token_url`と`jwks_uri`はKubernetes内部からのみ接続できるように、Serviceのドメインとする。
+一方で、`access_token_url` と `jwks_uri` はKubernetes内部からのみ接続できるように、Serviceのドメインとする。
 
 ```python
 from authlib.integrations.flask_client import OAuth
@@ -68,17 +68,17 @@ print(oauth.<IDプロバイダー名>.api_base_url)
 
 ### ログイン
 
-#### ▼ アクセストークンを`Authorization`ヘッダーで運搬する場合
+#### ▼ アクセストークンを `Authorization` ヘッダーで運搬する場合
 
 フロントエンドアプリケーションがCSRの場合に採用できる。
 
-PythonでCSRのアプリケーションを実現できないため、`Authorization`ヘッダーの運搬は実装できない。
+PythonでCSRのアプリケーションを実現できないため、`Authorization` ヘッダーの運搬は実装できない。
 
-#### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
+#### ▼ アクセストークンを `Cookie` ヘッダーで運搬する場合
 
 フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。
 
-CSRまたはSSRのアプリケーションは、`Cookie`ヘッダーを介してブラウザのCookieにアクセストークンを保存できる。
+CSRまたはSSRのアプリケーションは、`Cookie` ヘッダーを介してブラウザのCookieにアクセストークンを保存できる。
 
 ```python
 from flask import url_for, redirect
@@ -117,13 +117,13 @@ def callback():
 
 ### ログアウト
 
-#### ▼ アクセストークンを`Authorization`ヘッダーで運搬する場合
+#### ▼ アクセストークンを `Authorization` ヘッダーで運搬する場合
 
 フロントエンドアプリケーションがCSRの場合に採用できる。
 
-PythonでCSRのアプリケーションを実現できないため、`Authorization`ヘッダーの運搬は実装できない。
+PythonでCSRのアプリケーションを実現できないため、`Authorization` ヘッダーの運搬は実装できない。
 
-#### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
+#### ▼ アクセストークンを `Cookie` ヘッダーで運搬する場合
 
 ```python
 from flask import url_for, redirect
@@ -146,13 +146,13 @@ def logout():
 
 ### 資格情報の失効
 
-#### ▼ アクセストークンを`Authorization`ヘッダーで運搬する場合
+#### ▼ アクセストークンを `Authorization` ヘッダーで運搬する場合
 
 フロントエンドアプリケーションがCSRの場合に採用できる。
 
-PythonでCSRのアプリケーションを実現できないため、`Authorization`ヘッダーの運搬は実装できない。
+PythonでCSRのアプリケーションを実現できないため、`Authorization` ヘッダーの運搬は実装できない。
 
-#### ▼ アクセストークンを`Cookie`ヘッダーで運搬する場合
+#### ▼ アクセストークンを `Cookie` ヘッダーで運搬する場合
 
 ```python
 from flask import url_for, redirect

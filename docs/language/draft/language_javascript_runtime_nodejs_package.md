@@ -21,7 +21,7 @@ description: パッケージ＠Node.jsの知見を記録しています。
 
 Node.jsのロガーである。
 
-Node.jsのロガーは通常バックエンドでしか使用できないが、Pino内の`pino/browser`モジュールはブラウザで使用できる。
+Node.jsのロガーは通常バックエンドでしか使用できないが、Pino内の `pino/browser` モジュールはブラウザで使用できる。
 
 #### ▼ ログ構造
 
@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
 });
 ```
 
-ログレベル（info、error）は数値になっており、`info`や`error`などをの文字列を出力する場合、次のように実装する。
+ログレベル（info、error）は数値になっており、`info` や `error` などをの文字列を出力する場合、次のように実装する。
 
 ```javascript
 import pino from "pino";

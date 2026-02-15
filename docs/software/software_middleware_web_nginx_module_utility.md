@@ -187,7 +187,7 @@ $ make -j2
 $ make install
 ```
 
-`otel_ngx_module`は動的モジュールであるため、`nginx.conf`ファイルでモジュールをインポートする必要がある。
+`otel_ngx_module` は動的モジュールであるため、`nginx.conf` ファイルでモジュールをインポートする必要がある。
 
 ```nginx
 load_module modules/otel_ngx_module.so;
@@ -203,7 +203,7 @@ load_module modules/otel_ngx_module.so;
 
 #### ▼ opentelemetry_config
 
-モジュールの`toml`ファイルを設定する。
+モジュールの `toml` ファイルを設定する。
 
 ```nginx
 http {

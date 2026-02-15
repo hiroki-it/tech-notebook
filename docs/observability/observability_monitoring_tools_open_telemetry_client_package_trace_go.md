@@ -1173,11 +1173,11 @@ func child(ctx *gin.Context) {
 
 #### ▼ ログへのID出力
 
-`trace.Span`から取得できるトレースIDはW3C Trace Context仕様である。
+`trace.Span` から取得できるトレースIDはW3C Trace Context仕様である。
 
 そのため、もしX-Ray形式の各種IDを使用したい場合 (例：ログにX-Ray形式IDを出力したい)、変換処理が必要である。
 
-ここでは、元のW3C Trace Context仕様から指定した位置の文字列を抽出し、`1-***-***`というIDを作成している。
+ここでは、元のW3C Trace Context仕様から指定した位置の文字列を抽出し、`1-***-***` というIDを作成している。
 
 ```go
 func getXrayTraceID(span trace.Span) string {
@@ -1507,7 +1507,7 @@ func (s *server) parent(ctx context.Context) {
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/client/main.go#L100-L112
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 
-注意点として、直近では`WithStatsHandler`関数の使用が推奨になっている。
+注意点として、直近では `WithStatsHandler` 関数の使用が推奨になっている。
 
 ```go
 package main
@@ -1610,7 +1610,7 @@ func main() {
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-注意点として、直近では`WithStatsHandler`関数の使用が推奨になっている。
+注意点として、直近では `WithStatsHandler` 関数の使用が推奨になっている。
 
 ```go
 package main
@@ -1814,7 +1814,7 @@ func main() {
 
 ## 05. 分散トレースとログの紐付け
 
-分散トレースとログを紐づけるために、ログのフィールドに`trace_id`キーや`span_id`キーを追加する。
+分散トレースとログを紐づけるために、ログのフィールドに `trace_id` キーや `span_id` キーを追加する。
 
 監視バックエンドによっては、W3C Trace Context仕様以外の仕様でトレースコンテキストを表示する場合があるため、その場合はIDを事前に変換しておく。
 

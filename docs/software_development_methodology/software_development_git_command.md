@@ -71,13 +71,13 @@ $ git clone https://github.com/<組織名>/<GitHubリポジトリ名>.git
 
 ユーザー名とパスワードの入力は、ターミナルに手動で入力する方法と、自動的に入力する方法がある。
 
-後者の場合、`1`個目にURLに設定する方法がある。
+後者の場合、`1` 個目にURLに設定する方法がある。
 
 ```bash
 $ git clone https://<ユーザー名>:<パスワード>@github.com/<組織名>/<GitHubリポジトリ名>.git
 ```
 
-もう`1`個の方法として、`~/.netrc`ファイルに定義しておく。
+もう `1` 個の方法として、`~/.netrc` ファイルに定義しておく。
 
 ```bash
 machine github.com
@@ -164,13 +164,13 @@ $ git clone --depth 1 https://github.com/hiroki-hasegawa/foo-repository.git
 
 ### --`<影響範囲>` --list
 
-指定した影響範囲で適用されている設定値を取得する。`--local`で設定されていない項目は、`--global`の設定値が適用される。
+指定した影響範囲で適用されている設定値を取得する。`--local` で設定されていない項目は、`--global` の設定値が適用される。
 
 ```bash
 $ git config --local --list
 ```
 
-Macでは、`1`個のマシンで`2`個のGitHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。
+Macでは、`1` 個のマシンで `2` 個のGitHubアカウントを使用する場合、キーチェーンという機能で設定が必要になる。
 
 > - https://sy-base.com/myrobotics/others/git-push_403error/
 
@@ -180,7 +180,7 @@ Macでは、`1`個のマシンで`2`個のGitHubアカウントを使用する�
 
 AuthorとCommitterの名前を設定する。
 
-`local`が一番最後に上書きされ、適用される。
+`local` が一番最後に上書きされ、適用される。
 
 ```bash
 $ git config --local user.name "hiroki.hasegawa"
@@ -192,7 +192,7 @@ $ git config --local user.name "hiroki.hasegawa"
 
 AuthorとCommitterのメールアドレスを設定する。
 
-`local`が一番最後に上書きされ、適用される。
+`local` が一番最後に上書きされ、適用される。
 
 ```bash
 $ git config --local user.email "example@gmail.com"
@@ -218,7 +218,7 @@ Date:   Sat Sep 12 00:00:00 2020 +0900
 
 改行コードを、特定のタイミングで自動変換するように設定する。
 
-`input`としておくのが良い。
+`input` としておくのが良い。
 
 ```bash
 $ git config --global core.autocrlf <値>
@@ -266,7 +266,7 @@ GitHubとSSH公開鍵認証を実行するために、秘密鍵と公開鍵は�
 
 `(1)`
 
-: `ssh-keygen`コマンドで、秘密鍵と公開鍵のセットを作成する。
+: `ssh-keygen` コマンドで、秘密鍵と公開鍵のセットを作成する。
 
 ```bash
 # 鍵を保管するディレクトリに移動
@@ -295,7 +295,7 @@ $ clip < ~/.ssh/github/<鍵名>.pub
 
 `(3)`
 
-: コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目 ( https://github.com/settings/ssh ) にペーストする。`ssh`コマンドで接続を確認する。
+: コピーした公開鍵を、GitHubアカウント設定画面のSSHの項目 ( https://github.com/settings/ssh ) にペーストする。`ssh` コマンドで接続を確認する。
 
 ```bash
 $ ssh -T <接続名>
@@ -311,9 +311,9 @@ Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provi
 
 ### global ignore
 
-`gitignore`ファイルとして、`~/.config/git/ignore`ファイルを作成する。
+`gitignore` ファイルとして、`~/.config/git/ignore` ファイルを作成する。
 
-この`gitignore`ファイルで指定したファイルは、グローバルにバージョン管理から無視される。
+この `gitignore` ファイルで指定したファイルは、グローバルにバージョン管理から無視される。
 
 ```ignore
 # IDEA
@@ -371,11 +371,11 @@ remote.origin.url=git@github.com:<組織名またはgitユーザー名>/<GitHub�
 
 プライベートリポジトリのURLを変更し、プッシュ/プル可能にする。
 
-`config`ファイルに記述されたユーザー名と接続名を設定する。
+`config` ファイルに記述されたユーザー名と接続名を設定する。
 
-`1`個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。
+`1` 個のマシンで複数のGitHubアカウントを使用している場合、設定が必須である。
 
-プロジェクトをクローンした時、SSH URLはデフォルトで『`git@github.com:<組織名またはgitユーザー名>/<プロジェクト名>.git`』となっている。
+プロジェクトをクローンしたとき、SSH URLはデフォルトで『`git@github.com:<組織名またはgitユーザー名>/<プロジェクト名>.git`』となっている。
 
 使用頻度の高いアカウントで所有するリポジトリでは、SSH URLを変更することが手間なので接続名を『`github.com`』としておく。
 
@@ -459,9 +459,9 @@ and the repository exists.
 
 リポジトリ内の特定のディレクトリで他のリポジトリをリモート参照可能にする。
 
-フォークと似た仕組みであり、`git submodule update`コマンドを実行しないと、サブモジュールの更新を取り込めない。
+フォークと似た仕組みであり、`git submodule update` コマンドを実行しないと、サブモジュールの更新を取り込めない。
 
-また、`git clone`コマンドの実行時には`--recursive`オプションを有効化しないと、サブモジュールも合わせてクローンできない。
+また、`git clone` コマンドの実行時には `--recursive` オプションを有効化しないと、サブモジュールも合わせてクローンできない。
 
 そのため、更新頻度の高いリポジトリをサブモジュールにすると、取り込む作業が大変になる。
 
@@ -478,7 +478,7 @@ and the repository exists.
 $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-module.git ./modules/foo-sub-module
 ```
 
-コマンドを実行すると、`.gitmodules`ファイルが作成される。
+コマンドを実行すると、`.gitmodules` ファイルが作成される。
 
 ```init
 [submodule "modules/foo-sub-module"]
@@ -545,7 +545,7 @@ $ git branch --delete --remote origin/<ローカルブランチ名>
 
 `(1)`
 
-: まず、`branch --all`で作業中のローカルブランチとリモート追跡ブランチを取得する。
+: まず、`branch --all` で作業中のローカルブランチとリモート追跡ブランチを取得する。
 
 ```bash
 $ git branch --all
@@ -557,7 +557,7 @@ $ git branch --all
 
 `(2)`
 
-: `remotes/origin/2019/Symfony_Nyumon/main`を削除する。
+: `remotes/origin/2019/Symfony_Nyumon/main` を削除する。
 
 ```bash
 $ git branch -d -r origin/2019/Symfony_Nyumon/main
@@ -567,7 +567,7 @@ Deleted remote-tracking branch origin/2019/Symfony_Nyumon/main (was 18a31b5).
 
 `(3)`
 
-: 再び、`branch --all`で削除されたことを確認。
+: 再び、`branch --all` で削除されたことを確認。
 
 ```bash
 $ git branch --all
@@ -609,11 +609,11 @@ $ git cherry-pick 1d0ddeb9e52
 
 プルリクエストのマージによるマージコミットを指定すると、そのプルリクエストで変更されたファイルのみがコミットの内容として取得できる。
 
-これにより、`develop`ブランチ上の必要な変更のみをリリースできる。
+これにより、`develop` ブランチ上の必要な変更のみをリリースできる。
 
-ただし、マージコミットを指定する時は`-m`オプションを有効化しないとエラーになってしまうことに注意する。
+ただし、マージコミットを指定するときは `-m` オプションを有効化しないとエラーになってしまうことに注意する。
 
-また、マージコミットには`2`個の親がおり、マージ先の基点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである。
+また、マージコミットには `2` 個の親がおり、マージ先の基点ブランチで変更されたファイルが被るコミットと作業ブランチの最後のコミットである。
 
 前者は1番、また後者は2番となっており、1番を選択すること。
 
@@ -648,9 +648,9 @@ $ git merge release
 
 結果に応じた終了コードをを出力する。
 
-空文字を`true`として判定する。
+空文字を `true` として判定する。
 
-`too many arguments`のエラーにならないように、ダブルクオーテーションをつける。
+`too many arguments` のエラーにならないように、ダブルクオーテーションをつける。
 
 ```bash
 DIFF=$(git diff origin/main --name-only --relative ./...)
@@ -664,7 +664,7 @@ fi
 echo "差分あり";
 ```
 
-空文字でないことを`true`として判定することもできる。
+空文字でないことを `true` として判定することもできる。
 
 ダブルクオーテーションをつける。
 
@@ -704,7 +704,7 @@ esac
 
 ### stashとは
 
-ファイルが、『インデックス』 (=`add`) あるいは『HEAD』 (=コミット) に存在している状態で、異なるローカルブランチを`checkout`しようとすると、以下のエラーが出る。
+ファイルが、『インデックス』 (=`add`) あるいは『HEAD』 (=コミット) に存在している状態で、異なるローカルブランチを `checkout` しようとすると、以下のエラーが出る。
 
 ```bash
 $ git checkout 2019/Symfony2_Ny
@@ -717,13 +717,13 @@ Please commit your changes or stash them before you switch branches.
 Aborting
 ```
 
-この場合、一度`stash`を行い、『インデックス』 (=`add`) あるいは『HEAD』 (=コミット) を横に配置しておく必要がある。
+この場合、一度 `stash` を行い、『インデックス』 (=`add`) あるいは『HEAD』 (=コミット) を横に配置しておく必要がある。
 
 ### --include-untracked
 
 トラッキングされていないファイルも含めて、全てのファイルを退避させる。
 
-`git status`をしたところ、修正ファイルが`3`個、トラックされていないファイルが`1`個ある。
+`git status` をしたところ、修正ファイルが `3` 個、トラックされていないファイルが `1` 個ある。
 
 ```bash
 $ git status
@@ -747,7 +747,7 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-これを、`stash -u`する
+これを、`stash -u` する
 
 ```bash
 $ git stash -u
@@ -759,7 +759,7 @@ Saved working directory and index state WIP on 2019/foo-repository/feature/6: 64
 
 ### -- <パス>
 
-特定のディレクトリやファイルのみ`stash`できる。
+特定のディレクトリやファイルのみ `stash` できる。
 
 ```bash
 git stash -- ./
@@ -835,7 +835,7 @@ addステージやcommitステージにファイルが存在しているか否�
 
 ### --porcelain
 
-`git status`コマンドを他のコマンドに入力できる形式で出力する。
+`git status` コマンドを他のコマンドに入力できる形式で出力する。
 
 CIの自動化で使用することが多い。
 
@@ -884,7 +884,7 @@ git push origin HEAD
 
 コミットメッセージは、打ち消すコミットと同じものになる。
 
-リリース後に元に戻したい時に役立つ。
+リリース後に元に戻したいときに役立つ。
 
 ```bash
 $ git revert <コミットID> --no-edit
@@ -961,9 +961,9 @@ $ git reset --soft <コミットID>
 
 ### --mixed <コミットID>
 
-作業中のローカルブランチで、インデックス (=`add`後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
+作業中のローカルブランチで、インデックス (=`add` 後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
 
-`add`とコミットを取り消したい場合はこれ。
+`add` とコミットを取り消したい場合はこれ。
 
 ```bash
 $ git reset --mixed <コミットID>
@@ -973,7 +973,7 @@ $ git reset --mixed <コミットID>
 
 ### --hard <コミットID> (ブランチ)
 
-作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) 、インデックス (=`add`後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
+作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) 、インデックス (=`add` 後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
 
 <font color="red">**ワークツリー (=ディレクトリ) 内のファイルの状態も戻ってしまうため、取り扱い注意！！**</font>
 
@@ -993,7 +993,7 @@ $ git reset --hard <ブランチ名>
 
 `(1)`
 
-: まず、`log `コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
+: まず、`log ` コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
 
 ```bash
 $ git log
@@ -1028,7 +1028,7 @@ $ git reset --soft f81c813a1ead9a968c109671e6d83934debcab2e
 
 `(3)`
 
-: `log `コマンドで、正しく変更されているか確認。
+: `log ` コマンドで、正しく変更されているか確認。
 
 ```bash
 $ git log
@@ -1042,7 +1042,7 @@ Date:   Wed Mar 20 20:54:34 2019 +0900
 
 `(4)`
 
-: `push --force`でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
+: `push --force` でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
 <font color="red">**『強制的にプッシュした』というログも、リモート側には残らない。**</font>
 
 ```bash
@@ -1073,7 +1073,7 @@ $ git reset --hard origin/<ブランチ名>
 
 リモートブランチにプッシュした後は使用してはならず、他のコマンドを使用する。
 
-処理結果が`git merge`コマンドと似ているが、`git rebase`コマンドはマージコミットを作らず、ない。
+処理結果が `git merge` コマンドと似ているが、`git rebase` コマンドはマージコミットを作らず、ない。
 
 > - https://zenn.dev/tana0102/articles/475d8952933af6#git-rebase%E3%81%AE%E5%9F%BA%E6%9C%AC
 > - https://zenn.dev/tana0102/articles/475d8952933af6#git-merge%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84
@@ -1088,7 +1088,7 @@ $ git reset --hard origin/<ブランチ名>
 
 `(1)`
 
-: まず、`log `コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
+: まず、`log ` コマンドで、作業中のローカルブランチにおけるコミットIDを確認。
 
 ```bash
 $ git log
@@ -1127,7 +1127,7 @@ $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 pick b1b5c0f add #0 *****
 ```
 
-『挿入モード』に変更し、この１行の`pick`を`edit`に変更。
+『挿入モード』に変更し、この１行の `pick` を `edit` に変更。
 
 その後、
 
@@ -1147,7 +1147,7 @@ pick b1b5c0f add #0 *****
 
 `(3)`
 
-: `git commit --amend`に`-m`オプションを付けて、メッセージを変更する。
+: `git commit --amend` に `-m` オプションを付けて、メッセージを変更する。
 
 ```bash
 $ git commit --amend -m="<変更後のメッセージ>"
@@ -1155,7 +1155,7 @@ $ git commit --amend -m="<変更後のメッセージ>"
 
 `(4)`
 
-: `git rebase --continue`コマンドを実行することにより、変更を反映させる。
+: `git rebase --continue` コマンドを実行することにより、変更を反映させる。
 
 ```bash
 $ git rebase --continue
@@ -1165,7 +1165,7 @@ Successfully rebased and updated refs/heads/develop.
 
 `(5)`
 
-: プッシュしようとすると、`![rejected] develop -> develop (non-fast-forward)`とエラーが出るため、
+: プッシュしようとすると、`![rejected] develop -> develop (non-fast-forward)` とエラーが出るため、
 
 ```bash
 $ git merge <ブランチ名> --allow-unrelated-histories
@@ -1177,7 +1177,7 @@ $ git merge <ブランチ名> --allow-unrelated-histories
 
 `(1)`
 
-: ハッシュ値を指定して、`git rebase`コマンドを実行する。
+: ハッシュ値を指定して、`git rebase` コマンドを実行する。
 
 ```bash
 $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
@@ -1185,7 +1185,7 @@ $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
 
 `(2)`
 
-: `git commit --amend`コマンドに`--reset-author`オプションを付けて、configで設定した名前をAuthor名とCommitter名に適用する。
+: `git commit --amend` コマンドに `--reset-author` オプションを付けて、configで設定した名前をAuthor名とCommitter名に適用する。
 
 ```bash
 $ git commit --amend --reset-author
@@ -1193,7 +1193,7 @@ $ git commit --amend --reset-author
 
 `(3)`
 
-: `git rebase --continue`コマンドを実行し、変更を反映させる。
+: `git rebase --continue` コマンドを実行し、変更を反映させる。
 
 ```bash
 $ git rebase --continue
@@ -1249,7 +1249,7 @@ pick b1b5c0f add #0 *****
 
 `(2)`
 
-: `pick b1b5c0f add #0 *****`の行を削除して保管し、タブを閉じ、エディタ上で『Ctrl+C』を押す。
+: `pick b1b5c0f add #0 *****` の行を削除して保管し、タブを閉じ、エディタ上で『Ctrl+C』を押す。
 
 ```bash
 :qa!
@@ -1274,9 +1274,9 @@ Could not apply 37bee65... update #0 README.mdに本レポジトリのタイト�
 
 ### --abort
 
-やりかけの`rebase`を取り消し。
+やりかけの `rebase` を取り消し。
 
-作業中のローカルブランチにおける`(main|REBASE-i)`が、` (main)`に変更されていることからも確認可能。
+作業中のローカルブランチにおける `(main|REBASE-i)` が、` (main)` に変更されていることからも確認可能。
 
 ```bash
 hiroki.hasegawa@PC /var/www/foo (main)

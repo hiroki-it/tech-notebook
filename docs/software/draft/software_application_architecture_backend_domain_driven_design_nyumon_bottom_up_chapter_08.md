@@ -110,6 +110,6 @@ export class UserApplicationService implements IUserApplicationService {
 
 #### ▼ パターンを使用しない
 
-インターフェースの実装を動的に切り替える必要がなければ、パターンを使用しない方が良い。
+インターフェースの実装を動的に切り替える必要がなければ、パターンを使用しないほうが良い。
 
 <br>

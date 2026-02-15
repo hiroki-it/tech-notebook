@@ -27,7 +27,7 @@ Promtailは非推奨で、Grafana Alloyへの移行が推奨になった。
 
 Promtailのログの送信先を設定する。
 
-Grafana Lokiの場合、`/loki/api/v1/push`パスを設定する。
+Grafana Lokiの場合、`/loki/api/v1/push` パスを設定する。
 
 ```yaml
 clients:

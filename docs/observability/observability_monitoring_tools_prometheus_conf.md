@@ -15,13 +15,13 @@ description: 設定ファイル＠Prometheus
 
 ## 01. Prometheus
 
-### `prometheus.yml`ファイルによる設定
+### `prometheus.yml` ファイルによる設定
 
-#### ▼ `prometheus.yml`ファイルとは
+#### ▼ `prometheus.yml` ファイルとは
 
 Prometheusを設定する。
 
-`/etc/prometheus`ディレクトリ配下におく。
+`/etc/prometheus` ディレクトリ配下におく。
 
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/
 
@@ -55,7 +55,7 @@ global:
 
 #### ▼ external_labels
 
-Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信する時に、これに付与するラベルを設定する。
+Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信するときに、これに付与するラベルを設定する。
 
 ```yaml
 global:
@@ -149,7 +149,7 @@ groups:
 
 **＊実装例＊**
 
-サーバー証明書の有効期限のタイムスタンプと現在の時刻を比較し、`7`日以内であればアラートを作成する。
+サーバー証明書の有効期限のタイムスタンプと現在の時刻を比較し、`7` 日以内であればアラートを作成する。
 
 ```yaml
 groups:
@@ -197,7 +197,7 @@ scrape_configs:
 
 > - https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
 
-`labels`キーを使用して、メトリクスにフィルタリング用ラベルを追加できる。
+`labels` キーを使用して、メトリクスにフィルタリング用ラベルを追加できる。
 
 ```yaml
 scrape_configs:
@@ -287,7 +287,7 @@ global:
 
 アラートのルーティング先の名前を設定する。
 
-`receiver`キーは別の`receivers`キー配下で設定し、これを呼び出す。
+`receiver` キーは別の `receivers` キー配下で設定し、これを呼び出す。
 
 ```yaml
 route:

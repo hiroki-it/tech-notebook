@@ -102,7 +102,7 @@ Delta FIFOキューからKubernetesリソースの実体を取得する。
 
 `(2)`
 
-: カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンドなど) でetcd上に永続化したとする。
+: カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply` コマンド、`kubectl edit` コマンドなど) でetcd上に永続化したとする。
 
 `(3)`
 
@@ -114,7 +114,7 @@ Delta FIFOキューからKubernetesリソースの実体を取得する。
 
 注意点として、CRDを削除するとkube-controllerはカスタムリソースを削除する。
 
-この時CRDを改めて作成しても、kube-controllerはカスタムリソースを自動的に作成しない。
+この時CRDをあらためて作成しても、kube-controllerはカスタムリソースを自動的に作成しない。
 
 kube-controllerに不具合があると、etcd上のCRDの通りにカスタムリソースが作成されない。
 
@@ -129,7 +129,7 @@ kube-controller-managerは、NodeにあるCustom Controllerを反復的に実行
 
 これにより、カスタムリソースはCRDの宣言通りに定期的に修復される (reconciliationループ) 。
 
-ただし、Custom Controller自体はkube-apiserverクライアント (例：`kubectl`クライアント、Kubernetesリソースなど) が作成する必要がある。
+ただし、Custom Controller自体はkube-apiserverクライアント (例：`kubectl` クライアント、Kubernetesリソースなど) が作成する必要がある。
 
 <br>
 
@@ -177,13 +177,13 @@ Custom Controllerとして動作する。
 
 Custom Controllerと同様に、実体はDeploymentやStatefulSet配下のPodであることが多い。
 
-Operatorがいる状況で、カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply`コマンド、`kubectl edit`コマンドなど) でetcd上に永続化したとする。
+Operatorがいる状況で、カスタムリソースとCRDのマニフェストを何らかの方法 (例：`kubectl apply` コマンド、`kubectl edit` コマンドなど) でetcd上に永続化したとする。
 
 するとOperatorは、operatorはetcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。
 
 反対に、CRDを削除すると、Operatorはカスタムリソースを削除する。
 
-この時CRDを改めて作成しても、Operatorはカスタムリソースを自動的に作成しない。
+この時CRDをあらためて作成しても、Operatorはカスタムリソースを自動的に作成しない。
 
 Operatorに不具合があると、etcd上のCRDの通りにカスタムリソースが作成されない。
 

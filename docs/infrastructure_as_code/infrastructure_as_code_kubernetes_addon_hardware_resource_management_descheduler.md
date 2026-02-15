@@ -49,7 +49,7 @@ Nodeのハードウェアリソースの消費量が動的に高まった場合�
 
 他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが回復したとしても、Podが元のNodeに戻ることはない。
 
-`kubectl rollout restart`コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。
+`kubectl rollout restart` コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。
 
 deschedulerをCronJobとして定期的に起動させ、Podを自動的に退避させる。
 
@@ -75,7 +75,7 @@ deschedulerは、Job (descheduler) 、ConfigMapなどのマニフェストから
 
 Deschedulerの実行頻度が高すぎると可用性が低下するため、システムの特徴に合わせて実行頻度を設定する。
 
-例えば、深夜帯に利用者が少なくなるのであれば、毎日深夜に`1`回だけ実行する。
+例えば、深夜帯に利用者が少なくなるのであれば、毎日深夜に `1` 回だけ実行する。
 
 ```yaml
 apiVersion: batch/v1
@@ -249,9 +249,9 @@ strategies:
 
 #### ▼ RemoveFailed
 
-`Failed`ステータスなPodはそのままでは削除されない。
+`Failed` ステータスなPodはそのままでは削除されない。
 
-そのため、`Failed`ステータスなPodがある場合は、このPodをNodeから削除する。
+そのため、`Failed` ステータスなPodがある場合は、このPodをNodeから削除する。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -293,7 +293,7 @@ strategies:
 
 #### ▼ RemovePodsViolatingNodeAffinity
 
-`.spec.nodeAffinity`キーの設定に違反しているPodがある場合に、このPodをNodeから退避させる。
+`.spec.nodeAffinity` キーの設定に違反しているPodがある場合に、このPodをNodeから退避させる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1
@@ -307,7 +307,7 @@ strategies:
 
 #### ▼ RemovePodsViolatingInterPodAntiAffinity
 
-`.spec.affinity.podAffinity`キーの設定に違反しているPodがある場合に、このPodをNodeから退避させる。
+`.spec.affinity.podAffinity` キーの設定に違反しているPodがある場合に、このPodをNodeから退避させる。
 
 ```yaml
 apiVersion: descheduler/v1alpha1

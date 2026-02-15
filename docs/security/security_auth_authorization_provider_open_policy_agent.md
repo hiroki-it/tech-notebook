@@ -17,7 +17,7 @@ description: Open Policy Agent＠認可プロバイダーの知見を記録し�
 
 ### アーキテクチャ
 
-Open Policy Agentは、Open Policy Agent、`rego`ファイル、DB、といったコンポーネントから構成される。
+Open Policy Agentは、Open Policy Agent、`rego` ファイル、DB、といったコンポーネントから構成される。
 
 ![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png)
 
@@ -28,7 +28,7 @@ Open Policy Agentは、Open Policy Agent、`rego`ファイル、DB、といっ�
 
 ### Open Policy Agent
 
-Open Policy Agentは、`rego`ファイルのロジックに基づいて、boolean値を返却する。
+Open Policy Agentは、`rego` ファイルのロジックに基づいて、boolean値を返す。
 
 返却されたboolean値を使用して、クライアント側 (例：アプリケーション、kube-apiserver) で認可スコープ内の処理を実行する。
 
@@ -38,7 +38,7 @@ Open Policy Agentは、`rego`ファイルのロジックに基づいて、boolea
 
 <br>
 
-### `rego`ファイル
+### `rego` ファイル
 
 認可スコープのロジックを定義する。
 
@@ -46,7 +46,7 @@ Open Policy Agentは、`rego`ファイルのロジックに基づいて、boolea
 
 ### DB
 
-資格情報を`json`形式、認可スコープ定義を`rego`形式で、保管する。
+資格情報を `json` 形式、認可スコープ定義を `rego` 形式で、保管する。
 
 <br>
 
@@ -58,7 +58,7 @@ Open Policy Agentは、`rego`ファイルのロジックに基づいて、boolea
 
 アプリケーションの認可スコープ定義の責務を認可マイクロサービスとして切り分ける。
 
-アプリケーションはOpen Policy Agentにリクエストを送信し、Open Policy Agentは認可スコープに応じてboolean値を返却する。
+アプリケーションはOpen Policy Agentにリクエストを送信し、Open Policy Agentは認可スコープに応じてboolean値を返す。
 
 返却されたboolean値を使用して、アプリケーションは認可スコープ内の処理を実行する。
 
@@ -66,7 +66,7 @@ Open Policy Agentは、`rego`ファイルのロジックに基づいて、boolea
 
 `(1)`
 
-: 資格情報を`json`形式で作成する。
+: 資格情報を `json` 形式で作成する。
 
      ここでは、各アカウントが一般社員または管理職のいずれかであるかを定義している。
 
@@ -93,7 +93,7 @@ $ curl \
 
 `(3)`
 
-: 認可スコープ定義のロジックを`rego`形式で作成する。
+: 認可スコープ定義のロジックを `rego` 形式で作成する。
 
 > - https://thinkit.co.jp/article/17511
 
@@ -124,7 +124,7 @@ allow {
 
 `(4)`
 
-: アプリケーションは、Open Policy Agentに`rego`ファイルを送信し、認可スコープ定義をDBに作成する。
+: アプリケーションは、Open Policy Agentに `rego` ファイルを送信し、認可スコープ定義をDBに作成する。
 
 ```bash
 $ curl \
@@ -138,7 +138,7 @@ $ curl \
 
 `(5)`
 
-: 認可スコープを取得するためのリクエストを`json`形式で作成する。
+: 認可スコープを取得するためのリクエストを `json` 形式で作成する。
 
      実際は、aliceというアカウントがデータを参照できるかどうかを取得するために、アプリケーションがリクエストを作成する。
 
@@ -198,7 +198,7 @@ kube-apiserverのvalidating-admissionステップ時に、Gatekeeperのwebhook�
 
 Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、ValidatingWebhookConfigurationでValidatingWebhookアドオンを設定する。
 
-`.webhooks.failurePolicy`キーで設定している通り、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。
+`.webhooks.failurePolicy` キーで設定しているとおり、webhookサーバーのコールに失敗した場合は、無視してkube-apiserverの処理を続ける。
 
 そのため、Gatekeeperが起動に失敗しても、Podが中止されることはない。
 

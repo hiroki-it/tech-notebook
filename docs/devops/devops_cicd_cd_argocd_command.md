@@ -45,7 +45,7 @@ ArgoCDのApplicationを削除する。
 
 #### ▼ --cascade
 
-`--cascade`オプションを有効化すると、ArgoCDのApplication自体と、Application配下のKubernetesリソースの両方を連鎖的に削除できる。
+`--cascade` オプションを有効化すると、ArgoCDのApplication自体と、Application配下のKubernetesリソースの両方を連鎖的に削除できる。
 
 ```bash
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=true
@@ -60,7 +60,7 @@ $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 > - https://argo-cd.readthedocs.io/en/stable/faq/
 > - https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
 
-代わりに、`kubectl`コマンドを使用して ArgoCDのApplicationを削除しても良い。
+代わりに、`kubectl` コマンドを使用して ArgoCDのApplicationを削除しても良い。
 
 ```bash
 $ kubectl delete app <ArgoCDのアプリケーション名>
@@ -162,7 +162,7 @@ $ argocd cluster add <デプロイ先のClusterのARN>
 
 #### ▼ --name
 
-ダッシュボードでCluster名を使用してフィルタリングする時に、その表示名を設定する。
+ダッシュボードでCluster名を使用してフィルタリングするときに、その表示名を設定する。
 
 ```bash
 $ argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボード上でのClusterの表示名>

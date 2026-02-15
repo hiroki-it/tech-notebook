@@ -23,11 +23,11 @@ Anthos Clusterのアップグレード時、データプレーンのワーカー
 
 <br>
 
-### `bmctl`コマンドのセットアップ
+### `bmctl` コマンドのセットアップ
 
 `(1)`
 
-: `bmctl`コマンドをインストールする。Anthos GKE Clusterと`bmctl`コマンドのバージョンには対応関係がある。
+: `bmctl` コマンドをインストールする。Anthos GKE Clusterと `bmctl` コマンドのバージョンには対応関係がある。
 
 ```bash
 $ gsutil cp gs://anthos-baremetal-release/bmctl/1.13.2/linux-amd64/bmctl bmctl-1.12.0
@@ -54,15 +54,15 @@ spec:
 
 | Anthos GKE Clusterのバージョン | Kubernetesのバージョン |
 | ------------------------------ | ---------------------- |
-| ` 1.11`系                      | `v1.22.8-gke`          |
-| `1.12`系                       | `v1.23.5-gke`          |
+| ` 1.11` 系                      | `v1.22.8-gke`          |
+| `1.12` 系                       | `v1.23.5-gke`          |
 | ...                            | ...                    |
 
 > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
 `(3)`
 
-: `docker`プロセスが稼働しているかを確認する。Anthosのアップグレードの仕組みの中でKindが使われている。
+: `docker` プロセスが稼働しているかを確認する。Anthosのアップグレードの仕組みの中でKindが使われている。
 
      ワークステーション (仮想サーバー) 上でKindを起動し、Kindを使用してAnthos K8s in Dockerを検証する。
 
@@ -78,7 +78,7 @@ $ systemctl status docker
 
 `(4)`
 
-: `bmctl`コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。
+: `bmctl` コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。
 
      また、ログの出力先が表示されるため、このログを`tail`コマンドで確認する。
 
@@ -97,7 +97,7 @@ $ ~/baremetal/bmctl upgrade cluster \
 
 `(5)`
 
-: ログの出力先が表示されるので、`tail`コマンドで確認する。
+: ログの出力先が表示されるので、`tail` コマンドで確認する。
 
 ```bash
 $ tail -f ~/baremetal/<ログの出力先>
@@ -163,25 +163,25 @@ $ kubectl get deployment -A
 
 Anthos Service Meshのドキュメントを確認すると、Istioをカナリア方式でアップグレードしている。
 
-Istioのカナリア方式のアップグレードでは、新しいistio-proxyをインジェクションする方法として、`istio.io/rev`キーのリビジョンを書き換える方法と、MutatingWebhookConfigurationのエイリアスの紐付けを変更する方法がある。
+Istioのカナリア方式のアップグレードでは、新しいistio-proxyをインジェクションする方法として、`istio.io/rev` キーのリビジョンを書き換える方法と、MutatingWebhookConfigurationのエイリアスの紐付けを変更する方法がある。
 
 Anthos Service Meshのアップグレードでは、何らかの事情でこれらの両方の手順が混じっており、Istioとは方法が若干異なっている。
 
 <br>
 
-### `asmcli`コマンドのセットアップ
+### `asmcli` コマンドのセットアップ
 
-`asmcli`コマンドでは、そのバージョンに応じて、アップグレード先のASMのバージョンがハードコーディングされている。
+`asmcli` コマンドでは、そのバージョンに応じて、アップグレード先のASMのバージョンがハードコーディングされている。
 
-この時、ASMのマイナーバージョンを固定できず、`asmcli`コマンドのインストールのタイミングによってはより新しいパッチバージョンが指定されている。
+この時、ASMのマイナーバージョンを固定できず、`asmcli` コマンドのインストールのタイミングによってはより新しいパッチバージョンが指定されている。
 
-そのため、各実行環境のアップグレードのたびに`asmcli`コマンドをインストールすると、より後に実施した実行環境の方で新しいパッチバージョンのASMをデプロイすることになってしまう。
+そのため、各実行環境のアップグレードのたびに `asmcli` コマンドをインストールすると、より後に実施した実行環境の方で新しいパッチバージョンのASMをデプロイすることになってしまう。
 
-そこで、`asmcli`コマンドはバージョン管理した方が良い。
+そこで、`asmcli` コマンドはバージョン管理したほうが良い。
 
 `(1)`
 
-: `asmcli`コマンドをインストールする。アップグレード先のバージョン系の指定するようにする。
+: `asmcli` コマンドをインストールする。アップグレード先のバージョン系の指定するようにする。
 
 ```bash
 $ curl https://storage.googleapis.com/csm-artifacts/asm/asmcli_1.15 > asmcli
@@ -190,7 +190,7 @@ $ chmod a+x asmcli
 
 `(2)`
 
-: `asmcli`コマンドが指定している`POINT`値と`REV`値を確認する。
+: `asmcli` コマンドが指定している `POINT` 値と `REV` 値を確認する。
 
 ```bash
 $ grep -e 'MAJOR=' -e 'MINOR=' -e 'POINT=' -e 'REV=' asmcli
@@ -221,7 +221,7 @@ $ mv asmcli asmcli_1140-0
 
 `(4)`
 
-: 今、現在のIstioのリビジョンが`1130-0`だとする。
+: 今、現在のIstioのリビジョンが `1130-0` だとする。
 
 ```bash
 # Deployment
@@ -307,11 +307,11 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 > - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview
 > - https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
 
-#### ▼ Namespaceの`.metadata.labels`キーを付け替える。
+#### ▼ Namespaceの `.metadata.labels` キーを付け替える。
 
 `(7)`
 
-: カナリア方式のため、Istiodコントロールプレーンの新バージョンの`istio.io/rev`キーの値を取得する。
+: カナリア方式のため、Istiodコントロールプレーンの新バージョンの `istio.io/rev` キーの値を取得する。
 
 ```bash
 $ kubectl get pod -n istio-system -l istio.io/rev
@@ -325,7 +325,7 @@ istiod-asm-1140-0    1/1     Running   0          27s   asm-1140-0
 
 `(8)`
 
-: `istio.io/rev`キーが設定されている全てのNamespaceを確認する。
+: `istio.io/rev` キーが設定されている全てのNamespaceを確認する。
 
 ```bash
 $ kubectl get namespace ingress -L istio.io/rev
@@ -364,7 +364,7 @@ metadata:
 
 `(9)`
 
-: Istioの`istio.io/rev`キーを使用して、特定のNamespaceの`istio-injection`キーを上書きする。
+: Istioの `istio.io/rev` キーを使用して、特定のNamespaceの `istio-injection` キーを上書きする。
 
      多くの場合、istio-proxyはIstio Ingress GatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
 
@@ -507,7 +507,7 @@ spec:
 
 `(16)`
 
-: MutatingWebhookConfigurationの`.metadata.labels`キーにて、エイリアスに紐づく現在のリビジョンを確認する。
+: MutatingWebhookConfigurationの `.metadata.labels` キーにて、エイリアスに紐づく現在のリビジョンを確認する。
 
 ```bash
 # アップグレード前に、istiocltコマンドで確認
@@ -541,7 +541,7 @@ $ ./output/asm-1.14/istioctl tag set default --revision asm-1140-0 --overwrite
 
 `(18)`
 
-: MutatingWebhookConfigurationの`.metadata.labels`キーにて、エイリアスに紐づくリビジョンを変更できたことを確認する。
+: MutatingWebhookConfigurationの `.metadata.labels` キーにて、エイリアスに紐づくリビジョンを変更できたことを確認する。
 
 ```bash
 # アップグレード前に、istiocltコマンドで確認してみる。

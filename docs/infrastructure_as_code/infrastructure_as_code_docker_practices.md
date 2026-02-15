@@ -50,15 +50,15 @@ description: プラクティス集＠Dockerの知見を記録しています。
 
 <br>
 
-### `PID=1`問題に対処する
+### `PID=1` 問題に対処する
 
 #### ▼ サーバーのプロセス
 
-サーバーの場合、`init`プロセスが`PID=1`として稼働している。
+サーバーの場合、`init` プロセスが `PID=1` として稼働している。
 
 ![container_pid_1_problem_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_1.png)
 
-`init`プロセスは、配下のいずれかの親プロセスを終了したとする。
+`init` プロセスは、配下のいずれかの親プロセスを終了したとする。
 
 ![container_pid_1_problem_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_2.png)
 
@@ -68,7 +68,7 @@ description: プラクティス集＠Dockerの知見を記録しています。
 
 #### ▼ コンテナのプロセス
 
-コンテナの場合、ホスト上の`init`プロセスが`PID=1`として動いており、またコンテナのアプリやミドルウェアのプロセスも`PID=1`として稼働している。
+コンテナの場合、ホスト上の `init` プロセスが `PID=1` として動いており、またコンテナのアプリやミドルウェアのプロセスも `PID=1` として稼働している。
 
 ![host_container_pid_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/host_container_pid_1.png)
 
@@ -85,9 +85,9 @@ description: プラクティス集＠Dockerの知見を記録しています。
 
 ここでは、フレームワークではなく、フルスクラッチなJavaScriptを取り上げる。
 
-`tini`の子プロセスを実行する。
+`tini` の子プロセスを実行する。
 
-これにより、アプリやミドルウェアのプロセスを`PID=1`で動かさないようにできる。
+これにより、アプリやミドルウェアのプロセスを `PID=1` で動かさないようにできる。
 
 ```dockerfile
 FROM node:16-alpine3.15
@@ -117,17 +117,17 @@ CMD ["node", "index.js"]
 
 ### コンテナ終了時にプロセスをGraceful Shutdownを実行できるようにする
 
-コンテナの終了時、コンテナランタイムはコンテナに`SIGTERM`を送信する。
+コンテナの終了時、コンテナランタイムはコンテナに `SIGTERM` を送信する。
 
-その後、`SIGKILL`を送信し、プロセスを終了させる。
+その後、`SIGKILL` を送信し、プロセスを終了させる。
 
-そのため、`SIGTERM`を受信した段階でリクエストを受信しなくなるように、プロセスを設定しておく。
+そのため、`SIGTERM` を受信した段階でリクエストを受信しなくなるように、プロセスを設定しておく。
 
-多くのツールが`SIGTERM`でGraceful Shutdownを実行するように設計されているため、特に対処不要である。
+多くのツールが `SIGTERM` でGraceful Shutdownを実行するように設計されているため、特に対処不要である。
 
-ただし、`SIGTERM`以外でGraceful Shutdownを実行するツールがあるため、その場合はDockerfileの`STOPSIGNAL`処理を使用してシグナルを上書きするとよい。
+ただし、`SIGTERM` 以外でGraceful Shutdownを実行するツールがあるため、その場合はDockerfileの `STOPSIGNAL` 処理を使用してシグナルを上書きするとよい。
 
-例えば、Nginxは`SIGQUIT`でGracefulShut Downする仕様のため、`STOPSIGNAL`処理で`SIGQUIT`を定義しておく。
+例えば、Nginxは `SIGQUIT` でGracefulShut Downする仕様のため、`STOPSIGNAL` 処理で `SIGQUIT` を定義しておく。
 
 ```dockerfile
 FROM alpine
@@ -182,23 +182,23 @@ ENTRYPOINT ["/app"]
 
 そこで、接続するユーザーにroot権限を付与しないようにする。
 
-#### ▼ `sudo`コマンドを実行させない
+#### ▼ `sudo` コマンドを実行させない
 
-root権限を付与しないために、コンテナ内で`sudo`コマンドを実行できないようにするべきである。
+root権限を付与しないために、コンテナ内で `sudo` コマンドを実行できないようにするべきである。
 
-ただし、多くのコンテナイメージで`sudo`コマンドを実行するためのパッケージは基本インストールされていないため、`sudo`コマンドを実行しようとするとエラーになる。
+ただし、多くのコンテナイメージで `sudo` コマンドを実行するためのパッケージは基本インストールされていないため、`sudo` コマンドを実行しようとするとエラーになる。
 
 > - https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker
 
-どうしても`sudo`コマンドを実行したい場合は、gosuパッケージを使用する。
+どうしても `sudo` コマンドを実行したい場合は、gosuパッケージを使用する。
 
 > - https://docs.docker.com/develop/develop-images/instructions/#user
 
-gosuパッケージの代わりに、`sudo`パッケージをインストールし、作成したユーザーにroot権限を割り当てる方法もある。
+gosuパッケージの代わりに、`sudo` パッケージをインストールし、作成したユーザーにroot権限を割り当てる方法もある。
 
 > - https://stackoverflow.com/a/25908200
 
-gosuパッケージの代わりに、`docker`コマンドの`-u`オプションを使用し、実行ユーザーにroot権限で付与する方法もある。
+gosuパッケージの代わりに、`docker` コマンドの `-u` オプションを使用し、実行ユーザーにroot権限で付与する方法もある。
 
 > - https://stackoverflow.com/a/49529946
 
@@ -229,9 +229,9 @@ Docker in Dockerは、特権モードが必要になり、安全性に問題が�
 
 ### コンテナイメージを署名する
 
-コンテナイメージをビルドインのコマンド (例：`docker trust`コマンド) やコンテナイメージ署名ツール (例：Cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。
+コンテナイメージをビルドインのコマンド (例：`docker trust` コマンド) やコンテナイメージ署名ツール (例：Cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。
 
-`docker trust`コマンドの内部では、Notary Notationが使用されている。
+`docker trust` コマンドの内部では、Notary Notationが使用されている。
 
 > - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
 > - https://codezine.jp/article/detail/15119
@@ -240,7 +240,7 @@ Docker in Dockerは、特権モードが必要になり、安全性に問題が�
 
 ### 本番環境ではバインドマウントを使用しない
 
-バインドマウントは、コンテナのファイルシステムを介してホストにアクセスできてしまうため、本番環境では非推奨にした方がよい。
+バインドマウントは、コンテナのファイルシステムを介してホストにアクセスできてしまうため、本番環境では非推奨にしたほうがよい。
 
 代わりに、ボリュームマウントやCOPYでファイルをコンテナイメージに詰め込むようにすることになる。
 
@@ -250,7 +250,7 @@ Docker in Dockerは、特権モードが必要になり、安全性に問題が�
 
 ## 03. イメージタグにlatestを設定しない
 
-### `latest`タグを指定しない方が良い理由
+### `latest` タグを指定しないほうが良い理由
 
 イメージタグにlatestを設定すると、誤ったバージョンのイメージタグを選択してしまい、障害が起こりかねない。
 
@@ -287,11 +287,11 @@ Docker in Dockerは、特権モードが必要になり、安全性に問題が�
 
 > - https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu
 
-例えば、`MacBook 2020`にはIntel、また`MacBook 2021 (M1 Mac)`にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。
+例えば、`MacBook 2020` にはIntel、また `MacBook 2021 (M1 Mac)` にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。
 
 ただし、コンテナイメージがホストのCPUアーキテクチャをサポートしているか否かを開発者が気にする必要はない。
 
-`docker pull`時、ホストのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。
+`docker pull` 時、ホストのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。
 
 コンテナの現在のCPUアーキテクチャは、以下のいずれかの方法で確認できる。
 
@@ -323,11 +323,11 @@ arm64
 
 ### 不要なファイルを含めない
 
-#### ▼ `.dockerignore`ファイル
+#### ▼ `.dockerignore` ファイル
 
 イメージのビルド時に無視するファイルを設定する。
 
-開発環境のみで使用するファイル、`.gitignore`ファイル、`README`ファイルなどはコンテナの稼働には不要である。
+開発環境のみで使用するファイル、`.gitignore` ファイル、`README` ファイルなどはコンテナの稼働には不要である。
 
 ```ignore
 .env.example
@@ -369,7 +369,7 @@ RUN dnf upgrade -y \
 | ---------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------------- | -------------------------------- |
 | distribution型         | `scratch`                                             | パッケージを何もインストールしていない。                                                                                                             | 無             | 無                   | 無                               |
 |                        | `alpine`                                              | 最小限のパッケージのみをインストールしている。                                                                                                       | Alpine Linux   | 有                   | apk                              |
-|                        | `slim`                                                | 最もオススメの接尾辞。使用頻度の高いパッケージのみをインストールしている。                                                                           | イメージによる | 有                   | イメージによる                   |
+|                        | `slim`                                                | もっともオススメの接尾辞。使用頻度の高いパッケージのみをインストールしている。                                                                           | イメージによる | 有                   | イメージによる                   |
 |                        | `bookworm`、`bullseye`、`stretch`、`buster`、`jessie` | Debianのバージョン (Debian-12、Debian-11、Debian-10、Debian-9、Debian-8) を表している。執筆時点 (2024/11/14) で `bookworm` がDebian-12で最新である。 | Debian         | 有                   | Debian系 (dpkg、apt-get、apt)    |
 |                        | 接尾辞なし                                            | 使用頻度の高いパッケージのみでなく、小さいパッケージもインストールしている。                                                                         | イメージによる | 有                   | イメージによる                   |
 | distroless型           | 接尾辞なし                                            | 最小限のパッケージのみをインストールしている。                                                                                                       | イメージによる | 有 (非常に少ない)    | イメージによる                   |
@@ -451,9 +451,9 @@ EXPOSE 80
 
 イメージレイヤー数が多くなると、コンテナイメージが大きくなる。
 
-Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与える時は、『`&&`』で1つにまとめてしまう方が良い。
+Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与えるときは、『`&&`』で1つにまとめてしまうほうが良い。
 
-例えば、以下のような時、`RUN`処理ごとにレイヤーが増える。
+例えば、以下のようなとき、`RUN` 処理ごとにレイヤーが増える。
 
 ```dockerfile
 RUN yum -y install httpd
@@ -463,9 +463,9 @@ RUN yum -y install php-pear
 RUN rm -Rf /var/cache/yum
 ```
 
-#### ▼ `&&`を使用する
+#### ▼ `&&` を使用する
 
-`&&`を使い、イメージのレイヤー数を減らせる。
+`&&` を使い、イメージのレイヤー数を減らせる。
 
 イメージレイヤーが少なくなり、コンテナイメージを軽量化できる。
 
@@ -520,7 +520,7 @@ EOF
 
 `(3)`
 
-: Dockerfileで、2つ目の`FROM`処理を宣言する。
+: Dockerfileで、2つ目の `FROM` 処理を宣言する。
 
 `(4)`
 
@@ -619,11 +619,11 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 <br>
 
-### `ADD`処理よりも`COPY`処理を使用する
+### `ADD` 処理よりも `COPY` 処理を使用する
 
-`ADD`処理は`COPY`処理とは異なり、インターネットからファイルをダウンロードして解凍した上で、コピーする。
+`ADD` 処理は `COPY` 処理とは異なり、インターネットからファイルをダウンロードして解凍したうえで、コピーする。
 
-解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、`COPY`処理が推奨である。
+解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、`COPY` 処理が推奨である。
 
 > - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy
 
@@ -688,7 +688,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 
 DockerHub以外のイメージレジストリを使って、レートリミットを回避してもよい。
 
-`crane`コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。
+`crane` コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。
 
 > - https://medium.com/@spurin/copying-container-images-between-container-registries-e7b734abc701
 > - https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md
@@ -699,7 +699,7 @@ DockerHub以外のイメージレジストリを使って、レートリミッ�
 
 #### ▼ Dockerfileの文法違反テスト
 
-Dockerのビルトインのコマンド (例：`docker build`コマンド) を使用する。
+Dockerのビルトインのコマンド (例：`docker build` コマンド) を使用する。
 
 Dockerfileの文法違反を検証する。
 
@@ -713,13 +713,13 @@ Dockerfileの文法違反を検証する。
 
 報告されたCVEに基づいて、Dockerfileの実装方法の実装や使用パッケージに起因するコンテナイメージの脆弱性を検証する。
 
-補足として、イメージスキャン (例：trivy) は既にビルドされたコンテナイメージを検証するため、ここには含めない。
+補足として、イメージスキャン (例：trivy) はすでにビルドされたコンテナイメージを検証するため、ここには含めない。
 
 #### ▼ コンテナストラクチャテスト
 
 ビルド後のコンテナの構造を検証するツール (例：container-structure-test) を使用する。
 
-ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の`ENTRYPOINT`が正しく動作するかなど) が存在するかを検証する。
+ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の `ENTRYPOINT` がまさしく動作するかなど) が存在するかを検証する。
 
 > - https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF
 

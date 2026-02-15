@@ -17,7 +17,7 @@ description: JavaScript＠Keycloakクライアントの知見を記録してい�
 
 KeycloakクライアントになりうるJavaScriptパッケージにはいくつかある。
 
-ここでは、`keycloak-js`パッケージについて記載する。
+ここでは、`keycloak-js` パッケージについて記載する。
 
 - keycloak-js (Keycloak専用)
 - oidc-client
@@ -36,7 +36,7 @@ KeycloakクライアントになりうるJavaScriptパッケージにはいく�
 
 次回認証時は、任意の場所 (例：SessionStorage、LocalStorage、Cookie) に保管している資格情報をリクエストに設定する。
 
-例えば、アクセストークンを`Authorization`ヘッダーで運搬する場合はSessionStorageやLocalStorageから取得し、`Cookie`ヘッダーの場合はCookieから取得する。
+例えば、アクセストークンを `Authorization` ヘッダーで運搬する場合はSessionStorageやLocalStorageから取得し、`Cookie` ヘッダーの場合はCookieから取得する。
 
 ```javascript
 import Keycloak from "keycloak-js";

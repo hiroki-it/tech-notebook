@@ -37,7 +37,7 @@ Kubernetes Clusterを作成する。
 
 #### ▼ --config
 
-`kind-config.yaml`ファイルを指定して、`kind`コマンドを実行する。
+`kind-config.yaml` ファイルを指定して、`kind` コマンドを実行する。
 
 ```bash
 $ kind create cluster --config kind-config.yaml
@@ -68,7 +68,7 @@ $ kind create cluster --image kindest/node:v1.28.0
 
 処理ログの出力レベルを設定する。
 
-数字が大きいほど、出力レベルが低い。(`9`はInfo)
+数字が大きいほど、出力レベルが低い。(`9` はInfo)
 
 ```bash
 $ kind create cluster -v 9 --name foo-cluster
@@ -80,7 +80,7 @@ NodeのReady状態の待機時間を設定する。
 
 これを設定しないと、NodeがReady状態になるのを待たずに、コマンド処理が終了になってしまう。
 
-デフォルトだと`0`秒であり、コントロールプレーンNodeとワーカーNodeが一台ずつで`2`分半かかる。
+デフォルトだと `0` 秒であり、コントロールプレーンNodeとワーカーNodeが一台ずつで `2` 分半かかる。
 
 ```bash
 $ kind create cluster --wait 3m
@@ -95,7 +95,7 @@ $ kind create cluster --wait 3m
 
 Kubernetes Clusterを削除する。
 
-CIの実行コンテナでKubernetes Clusterを作成する場合、コンテナが残らないように、`kind delete cluster`コマンドを実行する。
+CIの実行コンテナでKubernetes Clusterを作成する場合、コンテナが残らないように、`kind delete cluster` コマンドを実行する。
 
 ```bash
 $ kind delete cluster --name foo-cluster

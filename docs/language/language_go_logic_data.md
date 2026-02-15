@@ -17,7 +17,7 @@ description: データ＠Goの知見を記録しています。
 
 ### データ型のゼロ値
 
-データ型には、値が代入されていない時、ゼロ値が代入されている。
+データ型には、値が代入されていないとき、ゼロ値が代入されている。
 
 つまり、変数に値を設定しない限り、変数のデフォルト値はゼロ値になる。
 
@@ -101,7 +101,7 @@ type MyAppWriter io.Writer
 
 プリミティブ型の変数を定義すると、データ型のバイト数に応じて、空いているメモリ領域に、変数が割り当てられる。
 
-`1`個のメモリアドレス当たり`1`バイトに相当する。
+`1` 個のメモリアドレス当たり `1` バイトに相当する。
 
 ![basic-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/basic-variable_memory.png)
 
@@ -178,7 +178,7 @@ type Person struct {
 
 小文字の『`type`』は予約語のため使用不可である。
 
-大文字の`Type`は可能。
+大文字の `Type` は可能。
 
 ```go
 type Person struct {
@@ -246,11 +246,11 @@ func main() {
 }
 ```
 
-`3`個目に、`new`関数とデータ代入による初期化がある。
+`3` 個目に、`new` 関数とデータ代入による初期化がある。
 
-`new`関数は、データが代入されていない構造体を作成するため、リテラル表記時でも表現できる。
+`new` 関数は、データが代入されていない構造体を作成するため、リテラル表記時でも表現できる。
 
-`new`関数は、構造体以外のデータ型でも使用できる。
+`new` 関数は、構造体以外のデータ型でも使用できる。
 
 ポインタ型の構造体を返却する。
 
@@ -507,7 +507,7 @@ func main() {
 
 ### JSONと構造体のマッピング
 
-構造体とJSONの間でパースを実行する時、構造体の各フィールドと、JSONのキー名を、マッピングしておける。
+構造体とJSONの間でパースを実行するとき、構造体の各フィールドと、JSONのキー名を、マッピングしておける。
 
 **＊実装例＊**
 
@@ -669,7 +669,7 @@ func main() {
 
 配列型の変数を定義すると、空いているメモリ領域に、配列がまとまって割り当てられる。
 
-`1`個のメモリアドレス当たり`1`バイトに相当する。
+`1` 個のメモリアドレス当たり `1` バイトに相当する。
 
 ![array-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/array-variable_memory.png)
 
@@ -1011,7 +1011,7 @@ func main() {
 
 インターフェース型により、任意の型とする。
 
-インターフェースのエイリアスである`any`型でもよい。
+インターフェースのエイリアスである `any` 型でもよい。
 
 ```go
 package main
@@ -1071,7 +1071,7 @@ func main() {
 
 ```
 
-または、`make`関数を使用してmapを作成もできる。
+または、`make` 関数を使用してmapを作成もできる。
 
 ```go
 package main
@@ -1180,7 +1180,7 @@ func main() {
 
 **＊実装例＊**
 
-InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に`Eat`関数、`Sleep`関数、`Mating`関数の処理を委譲する。
+InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に `Eat` 関数、`Sleep` 関数、`Mating` 関数の処理を委譲する。
 
 ```go
 package main
@@ -1321,7 +1321,7 @@ Insect does not implement Animal (missing Eat method)
 
 さまざまな値をインターフェース型として定義できる。
 
-エイリアスとして、`any`型でも定義できる。
+エイリアスとして、`any` 型でも定義できる。
 
 また、他の型に変換もできる。
 
@@ -1422,7 +1422,7 @@ type error interface {
 
 ### stringインターフェース
 
-構造体に`String`関数を定義しておくと、Print系関数に構造体を渡した時に、これが実行される。
+構造体に `String` 関数を定義しておくと、Print系関数に構造体を渡したときに、これが実行される。
 
 **＊実装例＊**
 

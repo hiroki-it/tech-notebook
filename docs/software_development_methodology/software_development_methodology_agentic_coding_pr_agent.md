@@ -87,9 +87,9 @@ pr_agent:
 
 ### Webhookを使用したCI発火
 
-PR上で`/<コマンド>`を実行することで、Webhookを介してPR-Agentを実行できる。
+PR上で `/<コマンド>` を実行することで、Webhookを介してPR-Agentを実行できる。
 
-プッシュのたびにPR-Agentを実行させるとレビューへの修正負荷が高いため、PR-Agentの発火はWebhookで制御した方が良い。
+プッシュのたびにPR-Agentを実行させるとレビューへの修正負荷が高いため、PR-Agentの発火はWebhookで制御したほうが良い。
 
 <br>
 

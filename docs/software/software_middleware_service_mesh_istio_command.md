@@ -35,7 +35,7 @@ $ cd /Users/hiroki.hasegawa/projects
 
 `(2)`
 
-: `istioctl`コマンドをインストールする。
+: `istioctl` コマンドをインストールする。
 
 ```bash
 $ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
@@ -43,7 +43,7 @@ $ curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.12.1 - sh
 
 `(3)`
 
-: `istioctl`コマンドへのパスを環境変数に登録する。
+: `istioctl` コマンドへのパスを環境変数に登録する。
 
 ```bash
 $ cd istio-1.12.1
@@ -60,7 +60,7 @@ $ export PATH=$PWD/bin:$PATH
 
 Istioの機能のセットを提供する。
 
-実際には設定済みのIstioOperatorであり、`istioctl`コマンドのインストール時に`manifests`ディレクトリ以下に配置される。
+実際には設定済みのIstioOperatorであり、`istioctl` コマンドのインストール時に `manifests` ディレクトリ以下に配置される。
 
 > - https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
@@ -108,7 +108,7 @@ Info [IST0118] (Service default/foo-service) Port name (port: 80, targetPort: 80
 
 ### -n
 
-Namespaceを指定しつつ、`analyze`コマンドを実行する。
+Namespaceを指定しつつ、`analyze` コマンドを実行する。
 
 ```bash
 $ istioctl analyze -n <Namespace名>
@@ -178,7 +178,7 @@ $ istioctl install -y --set profile=demo
 
 #### ▼ `revision` (基本的に必須)
 
-インストールされるKubernetesリソース名や、`.metadata.labels.istio.io/rev`キーにリビジョンをつけて、Istioをインストールする。
+インストールされるKubernetesリソース名や、`.metadata.labels.istio.io/rev` キーにリビジョンをつけて、Istioをインストールする。
 
 バージョンは、ケバブケースで設定する必要がある。
 
@@ -186,7 +186,7 @@ $ istioctl install -y --set profile=demo
 $ istioctl install -y --set revision=1-10-0
 ```
 
-カナリアアップグレード時に使用するが、このオプションを使用しないとKubernetesリソース名にリビジョンがつかないため、インストール時にも使用した方が良い。
+カナリアアップグレード時に使用するが、このオプションを使用しないとKubernetesリソース名にリビジョンがつかないため、インストール時にも使用したほうが良い。
 
 ```bash
 # revisionオプションを使用しない場合
@@ -200,9 +200,9 @@ istio-revision-tag-default        4          15s
 istio-sidecar-injector            4          23s
 ```
 
-インストールするIstioは`istioctl`コマンドのバージョンで決まるため、`revision`キーのリビジョンと実際にインストールするIstioのバージョンは無関係である。
+インストールするIstioは `istioctl` コマンドのバージョンで決まるため、`revision` キーのリビジョンと実際にインストールするIstioのバージョンは無関係である。
 
-執筆時点 (2023/02/23) で、`istioctl`コマンドを使用してエイリアスを設定する方法はなく、自動的に`default`になってしまう。
+執筆時点 (2023/02/23) で、`istioctl` コマンドを使用してエイリアスを設定する方法はなく、自動的に `default` になってしまう。
 
 ```bash
 $ kubectl get mutatingwebhookconfiguration
@@ -261,7 +261,7 @@ horizontalpodautoscaler.autoscaling/istiod-1-10-0          Deployment/istiod-1-1
 
 istio-proxyを手動でインジェクションする。
 
-代わりに、`enabled`値が割り当てられた`.metadata.labels,istio-injection`キーをNamespaceに付与しても良い。
+代わりに、`enabled` 値が割り当てられた `.metadata.labels,istio-injection` キーをNamespaceに付与しても良い。
 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection
@@ -296,7 +296,7 @@ $ istioctl manifest diff <変更前マニフェストへのパス> <変更後マ
 
 ### init
 
-IstioOperatorを`istio-system`に作成する。
+IstioOperatorを `istio-system` に作成する。
 
 ```bash
 $ istioctl operator init
@@ -363,7 +363,7 @@ $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名>
 
 出力形式を指定する。
 
-`jq`コマンドや`yq`コマンドと組み合わせた方が良い。
+`jq` コマンドや `yq` コマンドと組み合わせたほうが良い。
 
 ```bash
 # 返信されたYAMLから、1番目の項目だけ取得する。
@@ -482,7 +482,7 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-cluster
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#supported-service-discovery-types
 
-`yaml`形式で取得すれば、より詳細な設定値を確認できる。
+`yaml` 形式で取得すれば、より詳細な設定値を確認できる。
 
 ```yaml
 $ istioctl proxy-config cluster foo-pod \
@@ -564,7 +564,7 @@ unix://./etc/istio/proxy/XDS                         HEALTHY     OK             
 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-endpoint
 
-`yaml`形式で取得すれば、より詳細な設定値を確認できる。
+`yaml` 形式で取得すれば、より詳細な設定値を確認できる。
 
 ```yaml
 $ istioctl proxy-config endpoints foo-pod \
@@ -693,7 +693,7 @@ NAME                         DOMAINS                                     MATCH  
 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-route
 
-`yaml`形式で取得すれば、より詳細な設定値を確認できる。
+`yaml` 形式で取得すれば、より詳細な設定値を確認できる。
 
 ```yaml
 $ istioctl proxy-config routes foo-pod \
@@ -845,11 +845,11 @@ $ istioctl x precheck
 
 ### tagとは
 
-Namespaceの`.metadata.labels.istio.io/rev`キーの値を書き換えずにアップグレードできるように、`.metadata.labels.istio.io/rev`キーにエイリアスタグを設定する。
+Namespaceの `.metadata.labels.istio.io/rev` キーの値を書き換えずにアップグレードできるように、`.metadata.labels.istio.io/rev` キーにエイリアスタグを設定する。
 
-エイリアスは、`default`や`stable`をよく使用するが、実際はなんでよい。
+エイリアスは、`default` や `stable` をよく使用するが、実際はなんでよい。
 
-具体的には、MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) を操作する。
+具体的には、MutatingWebhookConfigurationの `.metadata.labels` キーにあるエイリアス (`istio.io/tag` キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev` キーの値) を操作する。
 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag
 > - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
@@ -861,7 +861,7 @@ Namespaceの`.metadata.labels.istio.io/rev`キーの値を書き換えずにア�
 
 #### ▼ generateとは
 
-MutatingWebhookConfigurationの`.metadata.labels`キーに、エイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) を作成する。
+MutatingWebhookConfigurationの `.metadata.labels` キーに、エイリアス (`istio.io/tag` キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev` キーの値) を作成する。
 
 ```bash
 $ istioctl tag generate <エイリアス> --revision <エイリアスの実体>
@@ -869,13 +869,13 @@ $ istioctl tag generate <エイリアス> --revision <エイリアスの実体>
 
 **＊例＊**
 
-`default`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) として`1-10-0`を設定する。
+`default` というエイリアス (`istio.io/tag` キーの値) を作成し、エイリアスの実体 (`.metadata.labels.istio.io/rev` キーの値) として `1-10-0` を設定する。
 
 ```bash
 $ istioctl tag generate default --revision 1-10-0
 ```
 
-`default`というエイリアス (`istio.io/tag`キーの値) を作成し、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) として`1-0-1`を設定する。
+`default` というエイリアス (`istio.io/tag` キーの値) を作成し、エイリアスの実体 (`.metadata.labels.istio.io/rev` キーの値) として `1-0-1` を設定する。
 
 ```bash
 $ istioctl tag generate default --revision 1-0-1
@@ -889,7 +889,7 @@ $ istioctl tag generate default --revision 1-0-1
 
 #### ▼ listとは
 
-MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev`キーの値) を取得する。
+MutatingWebhookConfigurationの `.metadata.labels` キーにあるエイリアス (`istio.io/tag` キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev` キーの値) を取得する。
 
 カナリアアップグレード前に、現在のバージョンのエイリアスとリビジョン (現在のIstioのバージョンタグ) を確認するために使用する。
 
@@ -918,7 +918,7 @@ istio.io/tag: default
 
 #### ▼ setとは
 
-MutatingWebhookConfigurationの`.metadata.labels`キーにある既存のエイリアス (`istio.io/tag`キーの値) に実体 (`.metadata.labels.istio.io/rev`キーの値) を設定する。
+MutatingWebhookConfigurationの `.metadata.labels` キーにある既存のエイリアス (`istio.io/tag` キーの値) に実体 (`.metadata.labels.istio.io/rev` キーの値) を設定する。
 
 カナリアアップグレード用のMutatingWebhookConfigurationを新しく作成するためや、既存のMutatingWebhookConfigurationにある現在のバージョンのエイリアスの実体を変更するために使用する。
 
@@ -932,7 +932,7 @@ $ istioctl tag set <エイリアス> --revision <エイリアスの実体> --ove
 
 `(1)`
 
-: 現在のバージョンのエイリアス (`istio.io/tag`キーの値) が`default`、またバージョン (`.metadata.labels.istio.io/rev`キーの値) が`v1.10.0`とする。
+: 現在のバージョンのエイリアス (`istio.io/tag` キーの値) が `default`、またバージョン (`.metadata.labels.istio.io/rev` キーの値) が `v1.10.0` とする。
 
 ```bash
 $ istioctl tag list
@@ -943,7 +943,7 @@ default   1-10-0      app
 
 `(2)`
 
-: `default`タグを持つMutatingWebhookConfigurationを確認する。
+: `default` タグを持つMutatingWebhookConfigurationを確認する。
 
 ```bash
 # MutatingWebhookConfiguration
@@ -994,7 +994,7 @@ istio-revision-tag-default          1          7m56s # 現在のリビジョン 
 
 `(3)`
 
-: エイリアス (`istio.io/tag`キーの値) を指定して、リビジョンを書き換える。
+: エイリアス (`istio.io/tag` キーの値) を指定して、リビジョンを書き換える。
 
      これにより、`istio-revision-tag-default`の`default`タグの値が変更される。
 
@@ -1014,7 +1014,7 @@ istio-revision-tag-default          1          7m56s # 現在のリビジョン 
 
 `(4)`
 
-: また、`istioctl tag list`コマンドでも、リビジョンが`v1.10.0`になったことを確認できる。
+: また、`istioctl tag list` コマンドでも、リビジョンが `v1.10.0` になったことを確認できる。
 
 ```bash
 $ istioctl tag list

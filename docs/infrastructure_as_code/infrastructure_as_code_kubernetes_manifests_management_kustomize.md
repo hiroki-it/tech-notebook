@@ -13,17 +13,17 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 <br>
 
-## 01. `bases`ディレクトリ
+## 01. `bases` ディレクトリ
 
-### `kustomize.yaml`ファイル
+### `kustomize.yaml` ファイル
 
-#### ▼ `kustomize.yaml`ファイルとは
+#### ▼ `kustomize.yaml` ファイルとは
 
-`base`ディレクトリ配下にあるファイルの処理方法を設定する。
+`base` ディレクトリ配下にあるファイルの処理方法を設定する。
 
-`kubectl`コマンドで`-k`オプションを有効化すると、`kustomize.yaml`ファイルを使用できる。
+`kubectl` コマンドで `-k` オプションを有効化すると、`kustomize.yaml` ファイルを使用できる。
 
-`kustomize.yaml`ファイルのあるディレクトリを指定する。
+`kustomize.yaml` ファイルのあるディレクトリを指定する。
 
 #### ▼ resources
 
@@ -53,11 +53,11 @@ resources:
 
 <br>
 
-### `resources`ディレクトリ
+### `resources` ディレクトリ
 
 #### ▼ `リソース定義ファイル`
 
-後の`overlays`ディレクトリの元になるリソース定義を設定する。
+後の `overlays` ディレクトリの元になるリソース定義を設定する。
 
 **＊実装例＊**
 
@@ -97,11 +97,11 @@ spec:
 
 ## 02. overlaysディレクトリ
 
-### `kustomize.yaml`ファイル
+### `kustomize.yaml` ファイル
 
-#### ▼ `kustomize.yaml`ファイルとは
+#### ▼ `kustomize.yaml` ファイルとは
 
-`overlays`ディレクトリ配下にあるファイルの処理方法を設定する。
+`overlays` ディレクトリ配下にあるファイルの処理方法を設定する。
 
 > - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
 > - https://qiita.com/Morix1500/items/d08a09b6c6e43efa191d
@@ -124,17 +124,17 @@ patches:
 
 <br>
 
-### `patches`ディレクトリ
+### `patches` ディレクトリ
 
 #### ▼ `差分リソース定義ファイル`
 
-`base`ディレクトリ配下のリソース定義ファイルとの差分の実装を設定する。
+`base` ディレクトリ配下のリソース定義ファイルとの差分の実装を設定する。
 
 **＊実装例＊**
 
 ここでは、Deploymentの差分を設定する。
 
-`.spec.replicas`キー以下は`base`ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
+`.spec.replicas` キー以下は `base` ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
 
 ```yaml
 apiVersion: apps/v1
@@ -147,7 +147,7 @@ spec:
 
 ここでは、Deploymentの差分を設定する。
 
-`.spec.template.spec.containers[*].resources`キー以下は`base`ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
+`.spec.template.spec.containers[*].resources` キー以下は `base` ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
 
 ```yaml
 apiVersion: apps/v1
@@ -197,7 +197,7 @@ $ export KUSTOMIZE_PLUGIN_HOME=$XDG_CONFIG_HOME/kustomize/plugin
 
 環境変数の値に応じて、ディレクトリは変わる。
 
-デフォルトでは、`$XDG_CONFIG_HOME/kustomize/plugin`ディレクトリ配下にプラグインをおく必要がある。
+デフォルトでは、`$XDG_CONFIG_HOME/kustomize/plugin` ディレクトリ配下にプラグインをおく必要がある。
 
 ```bash
 $ ls $XDG_CONFIG_HOME/kustomize/plugin

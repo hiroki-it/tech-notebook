@@ -27,7 +27,7 @@ description: レンダリングロジック＠JavaScriptを記録しています
 
 #### ▼ clearIntervalとは
 
-`setInterval`関数によって定期実行中の関数を停止する関数を返却する。
+`setInterval` 関数によって定期実行中の関数を停止する関数を返却する。
 
 ```javascript
 function setIntervalFunction(
@@ -80,7 +80,7 @@ await new Promise((resolve) => {
 
 指定した秒数ごとに処理を実行する。
 
-`clearInterval`関数の返却値の関数で処理を停止できる。
+`clearInterval` 関数の返り値の関数で処理を停止できる。
 
 ```javascript
 function setIntervalFunction(

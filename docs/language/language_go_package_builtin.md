@@ -21,7 +21,7 @@ description: ビルトインパッケージ@Goの知見を記録しています�
 
 ## bytes
 
-### `Buffer`関数
+### `Buffer` 関数
 
 渡された文字列を結合し、標準出力に出力する。
 
@@ -83,7 +83,7 @@ type Context interface {
 
 どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
 
-`WithValue`関数でキー名はユーザー定義型を使用しているはずなので、取得する時もこれをキー名と指定する。
+`WithValue` 関数でキー名はユーザー定義型を使用しているはずなので、取得するときもこれをキー名と指定する。
 
 もちろん、ユーザー定義型以外でキー名を指定しても、キー名は不一致になる。
 
@@ -174,7 +174,7 @@ should not use built-in type string as key for value; define your own type to av
 
 コンテキストにタイムアウト時間を設定する。
 
-リクエスト／レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded`のエラーを返却する。
+リクエスト／レスポンスを宛先に送信できず、タイムアウトになった場合、`context deadline exceeded` のエラーを返却する。
 
 タイムアウト時間を設定しない場合、タイムアウトはせず、無限に待機する。
 
@@ -475,7 +475,7 @@ type Context struct {
 
 ## encoding/json
 
-### `Marshal`関数
+### `Marshal` 関数
 
 構造体をJSONに変換する。
 
@@ -520,9 +520,9 @@ func main() {
 
 この時、構造体のフィールドはパブリックにする必要がある。
 
-しかし、`MarshalJSON`関数を構造体に定義すると、`Marshal`関数の代わりにこれがコールするようになる。
+しかし、`MarshalJSON` 関数を構造体に定義すると、`Marshal` 関数の代わりにこれがコールするようになる。
 
-構造体にゲッターを用意して、`MarshalJSON`関数でパブリックな構造体を作成すると、プライベートな構造体に対しても`Marshal`関数を使用できるようになる。
+構造体にゲッターを用意して、`MarshalJSON` 関数でパブリックな構造体を作成すると、プライベートな構造体に対しても `Marshal` 関数を使用できるようになる。
 
 ```go
 package main
@@ -575,19 +575,19 @@ func main() {
 
 <br>
 
-### `Unmarshal`関数
+### `Unmarshal` 関数
 
 JSONを構造体に変換する。
 
 リクエストの受信によく使われる。
 
-リクエストのメッセージボディにはバイト型データが割り当てられているため、`Unmarshal`関数の第一引数はバイト型になる。
+リクエストのメッセージボディにはバイト型データが割り当てられているため、`Unmarshal` 関数の第一引数はバイト型になる。
 
 また、第二引数として、変換後の構造体のメモリアドレスを渡すことにより、第一引数がその構造体に変換される。
 
 内部的には、そのメモリアドレスに割り当てられている変数を書き換えている。
 
-`Unmarshal`関数に渡す構造体のフィールドはパブリックが必要であるが、`Marshal`関数と同様にして、`UnMarshalJSON`関数を構造体に定義すれば、代わりにこれをコールできる。
+`Unmarshal` 関数に渡す構造体のフィールドはパブリックが必要であるが、`Marshal` 関数と同様にして、`UnMarshalJSON` 関数を構造体に定義すれば、代わりにこれをコールできる。
 
 > - https://golang.org/pkg/encoding/json/#Unmarshal
 
@@ -627,15 +627,15 @@ func main() {
 
 <br>
 
-### `RawMessage`関数
+### `RawMessage` 関数
 
-JSONから構造体にパースするために`Unmarshal`関数を実行した時に、部分的にパースせずにJSONのまま取得できる。
+JSONから構造体にパースするために `Unmarshal` 関数を実行したときに、部分的にパースせずにJSONのまま取得できる。
 
 **＊実装例＊**
 
 CloudWatchはさまざまなイベントを処理するため、一部のJSON構造が動的に変化する。
 
-そのため、`RawMessage`関数が使用されている。
+そのため、`RawMessage` 関数が使用されている。
 
 ```go
 package events
@@ -677,7 +677,7 @@ func HandleRequest(event events.CloudWatchEvent) (string) {
 
 <br>
 
-### `Indent`関数
+### `Indent` 関数
 
 渡されたJSONにインデントを挿入する。
 
@@ -805,7 +805,7 @@ func main() {
 }
 ```
 
-`help`オプションで確認できる。
+`help` オプションで確認できる。
 
 ```bash
 $ go run main.go --help
@@ -822,7 +822,7 @@ Usage of main.go:
 
 ### fmtとは
 
-標準エラー出力に出力する`log`パッケージとは異なり、標準出力に設定したメッセージを出力する。
+標準エラー出力に出力する `log` パッケージとは異なり、標準出力に設定したメッセージを出力する。
 
 > - https://zenn.dev/link/comments/0247de9ed6c174
 
@@ -830,7 +830,7 @@ Usage of main.go:
 
 ### 接頭接尾辞無し関数
 
-接頭接尾辞の無い関数 (例：`Print`関数、`Sprint`関数、`Fprint`関数など) が所属する。
+接頭接尾辞の無い関数 (例：`Print` 関数、`Sprint` 関数、`Fprint` 関数など) が所属する。
 
 複数の引数をスペースを挟んで繋ぐ。
 
@@ -894,11 +894,11 @@ func main() {
 
 <br>
 
-### 接頭辞`S`関数
+### 接頭辞 `S` 関数
 
-接頭辞に`S`のある関数 (例：`Sprint`関数、`Sprintf`関数、`Sprintln`関数など) が所属する。
+接頭辞に `S` のある関数 (例：`Sprint` 関数、`Sprintf` 関数、`Sprintln` 関数など) が所属する。
 
-接頭辞が`F`や`P`の関数とは異なり、処理結果を標準出力に出力せずに返却する。
+接頭辞が `F` や `P` の関数とは異なり、処理結果を標準出力に出力せずに返却する。
 
 標準出力に出力できる他の関数の引数として渡す必要がある。
 
@@ -921,9 +921,9 @@ func main() {
 
 <br>
 
-### 接尾辞`ln`関数
+### 接尾辞 `ln` 関数
 
-接尾辞に`ln`のある関数 (例：`Println`関数、`Fprintln`関数、`Sprintln`関数など) が所属する。
+接尾辞に `ln` のある関数 (例：`Println` 関数、`Fprintln` 関数、`Sprintln` 関数など) が所属する。
 
 複数の引数をスペースを挟んで繋ぎ、最後に改行を挿入して結合する。
 
@@ -950,7 +950,7 @@ func main() {
 
 <br>
 
-### 接尾辞`f`関数
+### 接尾辞 `f` 関数
 
 渡された引数を、事前に定義したフォーマットにも基づいて結合する。
 
@@ -1044,13 +1044,13 @@ func main() {
 
 ### hexとは
 
-値を`16`進数にエンコード/デコードする。
+値を `16` 進数にエンコード/デコードする。
 
 <br>
 
 ### EncodeToString
 
-値を`16`進数にエンコードする。
+値を `16` 進数にエンコードする。
 
 ```go
 package main
@@ -1078,7 +1078,7 @@ func main() {
 
 ### logとは
 
-標準出力に出力する`fmt`パッケージとは異なり、標準エラー出力に設定したメッセージを出力する。
+標準出力に出力する `fmt` パッケージとは異なり、標準エラー出力に設定したメッセージを出力する。
 
 Goにはデフォルトで、ロギング用パッケージが用意されている。
 
@@ -1087,7 +1087,7 @@ Goにはデフォルトで、ロギング用パッケージが用意されてい
 
 <br>
 
-### 接尾辞`Print`関数
+### 接尾辞 `Print` 関数
 
 渡された値を標準出力に出力する。
 
@@ -1099,7 +1099,7 @@ Goにはデフォルトで、ロギング用パッケージが用意されてい
 log.Print("〇〇 succeeded")
 ```
 
-渡された`error`インターフェースを標準出力に出力する。
+渡された `error` インターフェースを標準出力に出力する。
 
 ```go
 if err != nil {
@@ -1109,15 +1109,15 @@ if err != nil {
 
 <br>
 
-### 接尾辞`Fatal`関数
+### 接尾辞 `Fatal` 関数
 
-渡された値を標準出力に出力し、`os.Exit(1)`を実行して、ステータス `1` で処理を完了する。
+渡された値を標準出力に出力し、`os.Exit(1)` を実行して、ステータス `1` で処理を完了する。
 
-ただ、この仕様がわかりにくいため、`os.Exit(1)`と`log.Printf`関数を別々に実行した方が良い。
+ただ、この仕様がわかりにくいため、`os.Exit(1)` と `log.Printf` 関数を別々に実行したほうが良い。
 
 **＊実装例＊**
 
-渡された`error`インターフェースを標準出力に出力する。
+渡された `error` インターフェースを標準出力に出力する。
 
 ```go
 if err != nil {
@@ -1126,9 +1126,9 @@ if err != nil {
 }
 ```
 
-注意点として、 接尾辞`Fatal`関数はプロセスを中断させるため、先に宣言した`defer`関数を実行できなくなってしまう。
+注意点として、 接尾辞 `Fatal` 関数はプロセスを中断させるため、先に宣言した `defer` 関数を実行できなくなってしまう。
 
-そのため、接尾辞`Fatal`関数は必ず最後に実行する。
+そのため、接尾辞 `Fatal` 関数は必ず最後に実行する。
 
 ```go
 // 接尾辞Fatal関数を最後に実行しておらず、ダメな実装例
@@ -1165,19 +1165,19 @@ func main() {
 
 <br>
 
-### 接尾辞`Panic`関数
+### 接尾辞 `Panic` 関数
 
-渡された値を標準出力に出力し、予期せぬエラーが起きたと見なして`panic`関数を実行する。
+渡された値を標準出力に出力し、予期せぬエラーが起きたと見なして `panic` 関数を実行する。
 
-補足として、`panic`関数によって、エラーメッセージ出力、スタックトレース出力、処理停止が行われる。
+補足として、`panic` 関数によって、エラーメッセージ出力、スタックトレース出力、処理停止が行われる。
 
-ただし、`panic`ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である (ビルド失敗の原因がわからずに時間を溶かした経験あり) 。
+ただし、`panic` ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である (ビルド失敗の原因がわからずに時間を溶かした経験あり) 。
 
 > - https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
 
 **＊実装例＊**
 
-渡された`error`インターフェースを標準出力に出力する。
+渡された `error` インターフェースを標準出力に出力する。
 
 ```go
 if err != nil {
@@ -1196,7 +1196,7 @@ HTTPクライアントまたはWebサーバを提供する。
 
 そのため、GoではNginxやApacheが不要である。
 
-ただし、GoによるWebサーバーは機能が不十分である、そのため、NginxやApacheをWebサーバとして、GoをAppサーバとして使用した方が良い。
+ただし、GoによるWebサーバーは機能が不十分である、そのため、NginxやApacheをWebサーバとして、GoをAppサーバとして使用したほうが良い。
 
 > - https://golang.org/pkg/net/http/#pkg-index
 > - https://stackoverflow.com/questions/17776584/what-are-the-benefits-of-using-nginx-in-front-of-a-webserver-for-go
@@ -1253,9 +1253,9 @@ func main(w http.ResponseWriter, r *http.Request)  {
 
 #### ▼ Handler
 
-`ServeHTTP`関数の実装を強制するインターフェースである。
+`ServeHTTP` 関数の実装を強制するインターフェースである。
 
-`ServeHTTP`関数は、`ResponseWriter`と`Request`を引数に持つ必要がある。
+`ServeHTTP` 関数は、`ResponseWriter` と `Request` を引数に持つ必要がある。
 
 ```go
 type Handler interface {
@@ -1273,7 +1273,7 @@ Handlerの実装である。
 type HandlerFunc func(ResponseWriter, *Request)
 ```
 
-`Handler`の実装は、`HandlerFunc`に型変換できる。
+`Handler` の実装は、`HandlerFunc` に型変換できる。
 
 ```go
 func FooMiddleware() func(http.Handler) http.Handler {
@@ -1368,7 +1368,7 @@ func main() {
 
 #### ▼ リカバー系
 
-HTTPリクエストの処理で起こったパニックを、`Internal Server Error`として処理する。
+HTTPリクエストの処理で起こったパニックを、`Internal Server Error` として処理する。
 
 ```go
 package main
@@ -1417,7 +1417,7 @@ func main() {
 
 <br>
 
-### `Get`関数
+### `Get` 関数
 
 **＊実装例＊**
 
@@ -1445,7 +1445,7 @@ func main() {
 
 <br>
 
-### `Post`関数
+### `Post` 関数
 
 **＊実装例＊**
 
@@ -1496,7 +1496,7 @@ func main() {
 
 <br>
 
-### `NewRequest`関数
+### `NewRequest` 関数
 
 **＊実装例＊**
 
@@ -1563,13 +1563,13 @@ func main() {
 
 <br>
 
-### `ListenAndServe`関数
+### `ListenAndServe` 関数
 
 サーバを起動する。
 
 第一引数にサーバーのURL、第二引数にServeMux関数 (マルチプレクサ関数) を渡す。
 
-第二引数に`nil`を渡した場合、デフォルト引数として`http.DefaultServeMux`が渡される。
+第二引数に `nil` を渡した場合、デフォルト引数として `http.DefaultServeMux` が渡される。
 
 **＊実装例＊**
 
@@ -1596,11 +1596,11 @@ func main() {
 
 <br>
 
-### `NewServeMux`関数
+### `NewServeMux` 関数
 
-サーバーを起動する`ListenAndServe`関数に対して、自身で定義したServeMux関数を渡す場合、`NewServeMux`関数を使用する必要がある。
+サーバーを起動する `ListenAndServe` 関数に対して、自身で定義したServeMux関数を渡す場合、`NewServeMux` 関数を使用する必要がある。
 
-これの`HandleFunc`関数に対してルーティングと関数を定義する。
+これの `HandleFunc` 関数に対してルーティングと関数を定義する。
 
 **＊実装例＊**
 
@@ -1693,7 +1693,7 @@ func main() {
 
 ## os
 
-### `Open`関数
+### `Open` 関数
 
 ファイルをReadOnly状態にする。
 
@@ -1720,7 +1720,7 @@ func main() {
 
 ## reflect
 
-### `TypeOf`関数、`ValueOf`関数
+### `TypeOf` 関数、`ValueOf` 関数
 
 構造体からフィールド情報を取得する。
 
@@ -1822,7 +1822,7 @@ func main() {
 
 ## strings
 
-### `Builder`関数
+### `Builder` 関数
 
 渡された文字列を結合し、標準出力に出力する。
 

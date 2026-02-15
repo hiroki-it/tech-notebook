@@ -83,7 +83,7 @@ $ pyenv which python
 
 すべてのディレクトリで使用するRubyのバージョンを設定する。
 
-`~/.rbenv/version`ファイルにバージョンを書き込む。
+`~/.rbenv/version` ファイルにバージョンを書き込む。
 
 ```bash
 $ rbenv global <バージョン>
@@ -95,7 +95,7 @@ $ rbenv global <バージョン>
 
 実行したディレクトリ配下で使用するRubyのバージョンを設定する。
 
-`./.ruby-version`ファイルにバージョンを書き込む。
+`./.ruby-version` ファイルにバージョンを書き込む。
 
 ```bash
 $ rbenv local <バージョン>

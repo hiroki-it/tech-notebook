@@ -19,9 +19,9 @@ description: Go＠gRPCクライアントパッケージの知見を記録して�
 
 #### ▼ Protocol Bufferコンパイラー
 
-`proto`ファイルをコンパイルするために、Protocol Bufferコンパイラーをインストールする。
+`proto` ファイルをコンパイルするために、Protocol Bufferコンパイラーをインストールする。
 
-マイクロサービス別にリポジトリがある場合、各リポジトリで同じバージョンの`protoc`コマンドを使用できるように、パッケージ管理ツールを使用した方がよい。
+マイクロサービス別にリポジトリがある場合、各リポジトリで同じバージョンの `protoc` コマンドを使用できるように、パッケージ管理ツールを使用したほうがよい。
 
 ```bash
 $ asdf plugin list all | grep protoc
@@ -37,9 +37,9 @@ $ asdf install protoc
 
 #### ▼ Protocol BufferコンパイラーGoプラグイン
 
-サービス定義ファイル (`proto`ファイル) から`pb.go`ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
+サービス定義ファイル (`proto` ファイル) から `pb.go` ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
 
-ただし、執筆時点 (2024/07/15) では、 `protoc-gen-go`モジュールに移行するべきである。
+ただし、執筆時点 (2024/07/15) では、 `protoc-gen-go` モジュールに移行するべきである。
 
 ```bash
 $ go install google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
@@ -55,9 +55,9 @@ protoc-gen-go <バージョン>
 
 #### ▼ Protocol BufferコンパイラーGo-gRPCプラグイン
 
-サービス定義ファイル (`proto`ファイル) からgRPC対応の`pb.go`ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
+サービス定義ファイル (`proto` ファイル) からgRPC対応の `pb.go` ファイルをコンパイルするために、Protocol Bufferコンパイラーのプラグインをインストールする。
 
-`protoc-gen-go`の移行先のモジュールである。
+`protoc-gen-go` の移行先のモジュールである。
 
 ```bash
 $ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@HEAD
@@ -75,9 +75,9 @@ protoc-gen-go-grpc <バージョン>
 
 各種ツールをGoアプリにダウンロードしても良いが、専用コンテナとして切り分けるとよい。
 
-サービス定義ファイル (`proto`ファイル) から`pb.go`ファイルを作成したくなったら、このコンテナを実行する。
+サービス定義ファイル (`proto` ファイル) から `pb.go` ファイルを作成したくなったら、このコンテナを実行する。
 
-`docker-compose.yml`ファイルは以下の通りである。
+`docker-compose.yml` ファイルは以下の通りである。
 
 ```yaml
 services:
@@ -90,7 +90,7 @@ services:
       - .:/
 ```
 
-`Dockerfile`ファイルは以下の通りである。
+`Dockerfile` ファイルは以下の通りである。
 
 ```dockerfile
 FROM golang:<Goアプリと同じバージョン>
@@ -105,9 +105,9 @@ COPY . /
 CMD ["/protocol_buffer_compiler.sh"]
 ```
 
-`protocol_buffer_compiler.sh`ファイルは以下の通りである。
+`protocol_buffer_compiler.sh` ファイルは以下の通りである。
 
-バックアップも兼ねて、`pb.go`ファイルを作業日付ごとに作成する。
+バックアップも兼ねて、`pb.go` ファイルを作業日付ごとに作成する。
 
 ```bash
 #!/bin/sh
@@ -132,23 +132,23 @@ protoc \
 
 ### gRPCクライアントとgRPCサーバーの両方
 
-#### ▼ `proto`ファイル (サービス定義ファイル) とは
+#### ▼ `proto` ファイル (サービス定義ファイル) とは
 
-gRPCクライアントとgRPCサーバーの両方で、サービス定義ファイル (`proto`ファイル) を作成する。
+gRPCクライアントとgRPCサーバーの両方で、サービス定義ファイル (`proto` ファイル) を作成する。
 
-例えば、`message`はJSONに代わるスキーマを表し、`service`はgRPCにおけるAPI仕様を表す。
+例えば、`message` はJSONに代わるスキーマを表し、`service` はgRPCにおけるAPI仕様を表す。
 
-サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから`pb.go`ファイルをコンパイルする。
+サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから `pb.go` ファイルをコンパイルする。
 
 > - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 > - https://engineering.mercari.com/blog/entry/2019-05-31-040000/
 > - https://docs.wantedly.dev/fields/the-system/apis#protofairu
 
-#### ▼ `pb.go`ファイルとは
+#### ▼ `pb.go` ファイルとは
 
-gRPCクライアントとgRPCサーバーの両方で、`proto`ファイルから`pb.go`ファイルをコンパイルする。
+gRPCクライアントとgRPCサーバーの両方で、`proto` ファイルから `pb.go` ファイルをコンパイルする。
 
-`protoc`コマンドを使用して、`pb.go`ファイルを作成する。
+`protoc` コマンドを使用して、`pb.go` ファイルを作成する。
 
 このファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための実装が定義されており、開発者はそのまま使用すれば良い。
 
@@ -167,7 +167,7 @@ $ protoc -I=. --go_out=. --go-grpc_out=. *.proto
 
 gRPCにおけるAPI仕様書である。
 
-仕様の実装である`proto`ファイルを使用して、RPC-API仕様書を作成できる。
+仕様の実装である `proto` ファイルを使用して、RPC-API仕様書を作成できる。
 
 ```bash
 $ protoc --doc_out=. --doc_opt=html,index.html *.proto
@@ -270,7 +270,7 @@ func main() {
 
 #### ▼ 既製のインターセプター (`UnaryClientInterceptor`)
 
-gRPCでは、単項RPCを送信するクライアント側のミドルウェアパターンは`UnaryClientInterceptor`という名前で定義されている。
+gRPCでは、単項RPCを送信するクライアント側のミドルウェアパターンは `UnaryClientInterceptor` という名前で定義されている。
 
 ```go
 type UnaryClientInterceptor func(
@@ -284,13 +284,13 @@ type UnaryClientInterceptor func(
     ) error
 ```
 
-この関数は、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
+この関数は、リクエストでエラーが起こった場合に、内部的に `SetStatus` 関数を実行する。
 
 エラー時に、Spanステータスとエラーメッセージをスパンに設定してくれる。
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L107
 
-これをgRPCサーバーとの接続作成時に、`WithChainUnaryInterceptor`関数に渡す。
+これをgRPCサーバーとの接続作成時に、`WithChainUnaryInterceptor` 関数に渡す。
 
 ```go
 package main
@@ -362,7 +362,7 @@ func UnaryClientInterceptor(
 }
 ```
 
-ユーザー定義のオプションを渡したい場合は、`grpc.UnaryClientInterceptor`型を返却する関数とする。
+ユーザー定義のオプションを渡したい場合は、`grpc.UnaryClientInterceptor` 型を返却する関数とする。
 
 ```go
 package intercetor
@@ -404,7 +404,7 @@ func UnaryClientInterceptor(opts ...fooOption) grpc.UnaryClientInterceptor {
 
 ##### ▼ 既製のインターセプター (`StreamClientInterceptor`)
 
-gRPCでは、ストリーミングRPCを送信するクライアント側のミドルウェアパターンは、`StreamClientInterceptor`という名前にすることが定められている。
+gRPCでは、ストリーミングRPCを送信するクライアント側のミドルウェアパターンは、`StreamClientInterceptor` という名前にすることが定められている。
 
 ```go
 type StreamClientInterceptor func(
@@ -417,13 +417,13 @@ type StreamClientInterceptor func(
 ) (ClientStream, error)
 ```
 
-この関数は、リクエストでエラーが起こった場合に、内部的に`SetStatus`関数を実行する。
+この関数は、リクエストでエラーが起こった場合に、内部的に `SetStatus` 関数を実行する。
 
 エラー時に、Spanステータスとエラーメッセージをスパンに設定してくれる。
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L257
 
-これをgRPCサーバーとの接続作成時に、`WithChainStreamInterceptor`関数に渡す。
+これをgRPCサーバーとの接続作成時に、`WithChainStreamInterceptor` 関数に渡す。
 
 ```go
 package main
@@ -498,7 +498,7 @@ type wrapClientStream struct {
 }
 ```
 
-ユーザー定義のオプションを渡したい場合は、`grpc.StreamClientInterceptor`型を返却する関数とする。
+ユーザー定義のオプションを渡したい場合は、`grpc.StreamClientInterceptor` 型を返却する関数とする。
 
 ```go
 package intercetor
@@ -563,7 +563,7 @@ gRPCでは、ミドルウェアパターンとして、インターセプター�
 
 #### ▼ リカバー系
 
-gRPCの処理で起こったパニックを、`Internal Server Error`として処理する。
+gRPCの処理で起こったパニックを、`Internal Server Error` として処理する。
 
 ```go
 package main
@@ -601,9 +601,9 @@ func main() {
 
 分散トレースの作成を無視する場合を設定する。
 
-例えば、フィルター系の`HealthCheck`関数はgRPCのヘルスチェックパス (`/grpc.health.v1.Health/Check`) のプレフィクス (`/grpc.health.v1.Health`) を返却する。
+例えば、フィルター系の `HealthCheck` 関数はgRPCのヘルスチェックパス (`/grpc.health.v1.Health/Check`) のプレフィクス (`/grpc.health.v1.Health`) を返却する。
 
-これを`WithInterceptorFilter`関数に渡すと、ヘルスチェックのパスで分散トレースの作成を無効化できる。
+これを `WithInterceptorFilter` 関数に渡すと、ヘルスチェックのパスで分散トレースの作成を無効化できる。
 
 ```go
 package main
@@ -644,7 +644,7 @@ func main() {
 
 #### ▼ 既製のインターセプター (`UnaryServerInterceptor`)
 
-gRPCでは、単項RPCを受信するサーバー側のミドルウェアパターンは、`UnaryServerInterceptor`という名前にすることが定められている。
+gRPCでは、単項RPCを受信するサーバー側のミドルウェアパターンは、`UnaryServerInterceptor` という名前にすることが定められている。
 
 ```go
 type UnaryServerInterceptor func(
@@ -688,7 +688,7 @@ func UnaryServerInterceptor(
 }
 ```
 
-ユーザー定義のオプションを渡したい場合は、`grpc.UnaryServerInterceptor`型を返却する関数とする。
+ユーザー定義のオプションを渡したい場合は、`grpc.UnaryServerInterceptor` 型を返却する関数とする。
 
 ```go
 package interceptor
@@ -728,7 +728,7 @@ func UnaryServerInterceptor(opts ...fooOption) grpc.UnaryServerInterceptor {
 
 #### ▼ 既製のインターセプター (`StreamServerInterceptor`)
 
-gRPCでは、ストリーミングRPCを受信するサーバー側のミドルウェアパターンは`StreamServerInterceptor`という名前にすることが定められている。
+gRPCでは、ストリーミングRPCを受信するサーバー側のミドルウェアパターンは `StreamServerInterceptor` という名前にすることが定められている。
 
 ```go
 type StreamServerInterceptor func(
@@ -770,7 +770,7 @@ func StreamServerInterceptor(
 }
 ```
 
-ユーザー定義のオプションを渡したい場合は、`grpc.StreamServerInterceptor`型を返却する関数とする。
+ユーザー定義のオプションを渡したい場合は、`grpc.StreamServerInterceptor` 型を返却する関数とする。
 
 ```go
 package interceptor
@@ -871,9 +871,9 @@ func main() {
 
 gRPCサーバーでは、リクエスト／レスポンスの送受信前のミドルウェアパターンとして、インターセプターを実行できる。
 
-非`Chain`関数であれば単一のインターセプター、一方で`Chain`関数であれば複数のインターセプターを渡せる。
+非 `Chain` 関数であれば単一のインターセプター、一方で `Chain` 関数であれば複数のインターセプターを渡せる。
 
-執筆時点 (202309/16) で、パッケージの`v1`は非推奨で、`v2`が推奨である。
+執筆時点 (202309/16) で、パッケージの `v1` は非推奨で、`v2` が推奨である。
 
 ```go
 package main
@@ -943,7 +943,7 @@ func main() {
 
 ### ヘルスチェックサーバー
 
-`grpc_health_v1`パッケージの`RegisterHealthServer`関数を使用して、gRPCサーバーをヘルスチェックサーバーとして登録する。
+`grpc_health_v1` パッケージの `RegisterHealthServer` 関数を使用して、gRPCサーバーをヘルスチェックサーバーとして登録する。
 
 ```go
 package main
@@ -1057,7 +1057,7 @@ func main() {
 
 gRPCクライアントでは、リクエスト／レスポンスの送受信前のミドルウェアとして、インターセプターを実行できる。
 
-非`Chain`関数であれば単一のインターセプター、一方で`Chain`関数であれば複数のインターセプターを渡せる。
+非 `Chain` 関数であれば単一のインターセプター、一方で `Chain` 関数であれば複数のインターセプターを渡せる。
 
 #### ▼ ストリーミングRPCの場合
 
@@ -1096,7 +1096,7 @@ func main() {
 
 ## 06. gRPCサーバーとクライアントの両方の実装例
 
-### `proto`ファイル
+### `proto` ファイル
 
 クライアントからのコールで返信する構造体や関数を定義する。
 
@@ -1131,13 +1131,13 @@ service FooService {
 
 <br>
 
-### `pb.go`ファイル
+### `pb.go` ファイル
 
-事前に用意した`proto`ファイルを使用して、`pb.go`ファイルをコンパイルする。
+事前に用意した `proto` ファイルを使用して、`pb.go` ファイルをコンパイルする。
 
-`pb.go`ファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
+`pb.go` ファイルには、gRPCクライアントとgRPCサーバーの両方が参照するための構造体や関数が定義されており、ユーザーはこのファイルをそのまま使用すれば良い。
 
-`proto`コマンドを実行し、以下のような`pb.go`ファイルをコンパイルできる。
+`proto` コマンドを実行し、以下のような `pb.go` ファイルをコンパイルできる。
 
 ```bash
 # foo.protoファイルから、gRPCに対応するfoo.pb.goファイルをコンパイルする。
@@ -1162,7 +1162,7 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 // 〜 中略 〜
 ```
 
-補足として、`pb.go`ファイルには、gRPCサーバーとして登録するための`Register<ファイル名>ServiceServer`関数が定義される。
+補足として、`pb.go` ファイルには、gRPCサーバーとして登録するための `Register<ファイル名>ServiceServer` 関数が定義される。
 
 > - https://christina04.hatenablog.com/entry/protoc-usage
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
@@ -1266,9 +1266,9 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 > - https://pkg.go.dev/google.golang.org/grpc/metadata#FromIncomingContext
 
-内部的には`mdIncomingKey`というコンテキストキー名を指定している。
+内部的には `mdIncomingKey` というコンテキストキー名を指定している。
 
-このキー名は、`NewIncomingContext`関数がメタデータ付きのコンテキスト作成時に設定する。
+このキー名は、`NewIncomingContext` 関数がメタデータ付きのコンテキスト作成時に設定する。
 
 ```go
 func ValueFromIncomingContext(ctx context.Context, key string) []string {
@@ -1317,9 +1317,9 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 > - https://pkg.go.dev/google.golang.org/grpc/metadata#FromOutgoingContext
 
-内部的には`mdIncomingKey`というコンテキストキー名を指定している。
+内部的には `mdIncomingKey` というコンテキストキー名を指定している。
 
-このキー名は、`NewOutgoingContext`関数がメタデータ付きのコンテキスト作成時に設定する。
+このキー名は、`NewOutgoingContext` 関数がメタデータ付きのコンテキスト作成時に設定する。
 
 ```go
 func ValueFromIncomingContext(ctx context.Context, key string) []string {
@@ -1398,7 +1398,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-空のメタデータを作成する場合は、`MD`構造体を初期化しても良い。
+空のメタデータを作成する場合は、`MD` 構造体を初期化しても良い。
 
 ```go
 package main
@@ -1425,7 +1425,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 リクエスト受信用のコンテキストにメタデータを設定する。
 
-コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は`AppendToOutgoingContext`関数を使用する。
+コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は `AppendToOutgoingContext` 関数を使用する。
 
 ```go
 package main
@@ -1459,7 +1459,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 リクエスト送信用のコンテキストにメタデータを設定する。
 
-コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は`AppendToOutgoingContext`関数を使用する。
+コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は `AppendToOutgoingContext` 関数を使用する。
 
 ```go
 package main

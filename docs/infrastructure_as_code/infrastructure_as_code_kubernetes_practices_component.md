@@ -19,7 +19,7 @@ description: プラクティス集＠Kubernetesコンポーネントの知見を
 
 #### ▼ 冗長化
 
-コントロールプレーンNodeは`3`~`7`台を作成し、Etcdの可用性を担保する。
+コントロールプレーンNodeは `3`~`7` 台を作成し、Etcdの可用性を担保する。
 
 > - https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/
 > - https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/
@@ -90,7 +90,7 @@ LivenessProbeヘルスチェックは、コンテナで障害が起こるとコ�
 
 #### ▼ プロセスの実行ユーザーに認可スコープを設定する
 
-Podの `.spec.securityContext`キーを使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。
+Podの `.spec.securityContext` キーを使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。
 
 > - https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 > - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18

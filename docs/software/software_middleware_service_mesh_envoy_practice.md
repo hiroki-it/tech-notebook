@@ -13,9 +13,9 @@ description: プラクティス@Envoyの知見を記録しています。
 
 <br>
 
-## 01. `dial tcp lookup timeout`を解決する
+## 01. `dial tcp lookup timeout` を解決する
 
-### `dial tcp lookup timeout`とは
+### `dial tcp lookup timeout` とは
 
 EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
@@ -34,11 +34,11 @@ EnvoyがCoreDNSとの通信に失敗している可能性がある。
 
 <br>
 
-## 02. `upstream request timeout`を解決する
+## 02. `upstream request timeout` を解決する
 
-### `upstream request timeout`とは
+### `upstream request timeout` とは
 
-Gateway Timeout (`504`ステータス) である。
+Gateway Timeout (`504` ステータス) である。
 
 Envoyからアップストリーム (宛先) への送信処理エラーである。
 
@@ -104,11 +104,11 @@ Envoy
 
 <br>
 
-## 03. `upstream response timeout`を解決する
+## 03. `upstream response timeout` を解決する
 
-### `upstream response timeout`とは
+### `upstream response timeout` とは
 
-Gateway Timeout (`504`ステータス) である。
+Gateway Timeout (`504` ステータス) である。
 
 Envoyからアップストリーム (宛先) への送信処理エラーである。
 
@@ -168,11 +168,11 @@ Envoy
 
 <br>
 
-## 04. `downstream_remote_disconnect`を解決する
+## 04. `downstream_remote_disconnect` を解決する
 
-### `downstream_remote_disconnect`とは
+### `downstream_remote_disconnect` とは
 
-Gateway Timeout (`504`ステータス) である。
+Gateway Timeout (`504` ステータス) である。
 
 Envoyのダウンストリーム (送信元) の返信処理エラーである。
 
@@ -194,7 +194,7 @@ Envoy
 
 マイクロサービスからのリクエストがタイムアウトになっている。
 
-マイクロサービスからDBへのトランザクションで問題が起こると、Envoyで`downstream_remote_disconnect`が出ることがある。
+マイクロサービスからDBへのトランザクションで問題が起こると、Envoyで `downstream_remote_disconnect` が出ることがある。
 
 #### ▼ Envoyへのインバウンド通信の場合
 

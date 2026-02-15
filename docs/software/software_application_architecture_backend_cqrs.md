@@ -29,7 +29,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 ソフトウェアに部分的に組み込める。
 
-`N+1`問題にも対処できる。
+`N+1` 問題にも対処できる。
 
 > - https://vaadin.com/learn/tutorials/ddd/tactical_domain_driven_design
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
@@ -58,7 +58,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 #### ▼ Commandとは
 
-`CREATE`処理、`UPDATE`処理、`DELETE`処理を実行する処理フローのこと。
+`CREATE` 処理、`UPDATE` 処理、`DELETE` 処理を実行する処理フローのこと。
 
 今回、クリーンアーキテクチャを前提としてCQRSを説明する。
 
@@ -78,7 +78,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 `(4)`
 
-: ユースケース層のインターラクターにて、リクエストモデルから作成した時に使用したドメインモデルを使用して、レスポンスモデルを作成する。レスポンスモデルをインタフェース層のコントローラーに渡す。
+: ユースケース層のインターラクターにて、リクエストモデルから作成したときに使用したドメインモデルを使用して、レスポンスモデルを作成する。レスポンスモデルをインタフェース層のコントローラーに渡す。
 
 `(5)`
 

@@ -73,7 +73,7 @@ export class UserRepository implements IUserRepository {
 
 次の例では、UserApplicationServiceはUserRepository（実装リポジトリ）に依存している。
 
-この状態では、UserApplicationServiceの処理を実行する時に、DBが必要になってしまう。
+この状態では、UserApplicationServiceの処理を実行するときに、DBが必要になってしまう。
 
 リスト7.3：UserApplicationServiceの依存関係に着目
 
@@ -197,7 +197,7 @@ export class UserApplicationService {
 }
 ```
 
-次の例のように、実環境で動かす時に実装リポジトリを呼び出すように書き換えないといけない
+次の例のように、実環境で動かすときに実装リポジトリを呼び出すように書き換えないといけない
 
 リスト7.6：プロダクション用のリポジトリに差し替える
 
@@ -464,7 +464,7 @@ export class UserApplicationService {
 
 次に、IoCコンテナパターンを実装したIoCコンテナオブジェクトを説明する。
 
-IoCコンテナオブジェクトは、オブジェクトを指定すると、依存関係をよしなに解決した上でインスタンスを返却してくれる。
+IoCコンテナオブジェクトは、オブジェクトを指定すると、依存関係をよしなに解決したうえでインスタンスを返却してくれる。
 
 IoCコンテナオブジェクトでインスタンスを作成し、これをコンストラクタに渡す。
 

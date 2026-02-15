@@ -107,7 +107,7 @@ $ vcluster create foo-cluster \
 
 #### ▼ -f
 
-使用する`values`ファイルを指定する。
+使用する `values` ファイルを指定する。
 
 ```bash
 $ vcluster create foo-cluster \
@@ -150,7 +150,7 @@ $ vcluster create foo-cluster \
 
 仮想Clusterにポートフォワーディングを実行する。
 
-これを実行している間、仮想Clusterに対して`kubectl`コマンドを実行できるようになる。
+これを実行している間、仮想Clusterに対して `kubectl` コマンドを実行できるようになる。
 
 ```bash
 $ vcluster connect <Cluster名> \

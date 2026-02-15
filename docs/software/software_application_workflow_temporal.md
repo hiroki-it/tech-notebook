@@ -56,7 +56,7 @@ Temporalサーバーで処理中に障害が起こった場合でも、ワーク
 
 #### ▼ PostgreSQLの場合
 
-主に、`temporal`DBと`temporal_visibility`を使用する。
+主に、`temporal`DBと `temporal_visibility` を使用する。
 
 ```bash
 $ psql -U temporal -h temporal-postgresql -p 5432 -d temporal
@@ -106,7 +106,7 @@ temporal=# \dt
 
 #### ▼ MySQLの場合
 
-主に、`temporal`DBと`temporal_visibility`を使用する。
+主に、`temporal`DBと `temporal_visibility` を使用する。
 
 > - https://github.com/temporalio/temporal/blob/main/schema/mysql/v8/temporal/schema.sql
 > - https://github.com/temporalio/temporal/blob/main/schema/postgresql/v12/visibility/schema.sql
@@ -476,7 +476,7 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 
 ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。
 
-その後、それまでにコールされた`defer`関数を実行し補償トランザクションを実行する。
+その後、それまでにコールされた `defer` 関数を実行し補償トランザクションを実行する。
 
 ```go
 package saga

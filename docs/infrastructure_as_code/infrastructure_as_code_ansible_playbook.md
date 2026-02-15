@@ -19,15 +19,15 @@ description: Playbook＠Ansibleの知見を記録しています。
 
 サーバーのセットアップ処理を設定する。
 
-処理を`roles`ディレクトリに切り分けても良い。
+処理を `roles` ディレクトリに切り分けても良い。
 
-切り分ける場合、`roles`ディレクトリを作業ディレクトリとし、相対パスでファイルを指定することになる。
+切り分ける場合、`roles` ディレクトリを作業ディレクトリとし、相対パスでファイルを指定することになる。
 
 **＊実装例＊**
 
 Appサーバー、DBサーバー、Webサーバーをセットアップする。
 
-各コンポーネントは`roles`ディレクトリに切り分けている。
+各コンポーネントは `roles` ディレクトリに切り分けている。
 
 ```yaml
 # roleファイル
@@ -91,7 +91,7 @@ repository/
 
 特定の機能に関するタスクが設定されたファイルを配置する。
 
-`playbook.yml`ファイルを切り分けるために使用する。
+`playbook.yml` ファイルを切り分けるために使用する。
 
 > - https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
 
@@ -99,7 +99,7 @@ repository/
 
 taskファイルの後続処理が設定されたhandlerファイルを配置する。
 
-taskファイルの`notify`オプションで指定できる。
+taskファイルの `notify` オプションで指定できる。
 
 ```yaml
 # handlerファイル
@@ -169,13 +169,13 @@ PHP製のアプリケーションが稼働するAppサーバーをセットア�
 
 #### ▼ templateディレクトリ
 
-アップロードファイルの鋳型となる`j2`ファイルを配置する。
+アップロードファイルの鋳型となる `j2` ファイルを配置する。
 
 鋳型に変数を出力できる。
 
 **＊実装例＊**
 
-`php.ini`ファイルの鋳型として、`php.ini.j2`ファイルを配置する。
+`php.ini` ファイルの鋳型として、`php.ini.j2` ファイルを配置する。
 
 ```ini
 ; Start a new pool named 'www'.
@@ -194,9 +194,9 @@ PHP製のアプリケーションが稼働するAppサーバーをセットア�
 
 複数の管理対象ノードで使用する変数に関するファイルやディレクトリを配置する。
 
-`inventories`ディレクトリと同じ階層に配置し、加えて`inventory`ファイルで設定したグループ名やホスト名と同じ名前にする必要がある。
+`inventories` ディレクトリと同じ階層に配置し、加えて `inventory` ファイルで設定したグループ名やホスト名と同じ名前にする必要がある。
 
-自動的に読み込まれ、`playbook`ファイルや`inventory`ファイルで出力できる。
+自動的に読み込まれ、`playbook` ファイルや `inventory` ファイルで出力できる。
 
 > - https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
 
@@ -218,7 +218,7 @@ ports:
   - 443/tcp
 ```
 
-ポート番号のリストを`playbook`ファイルで出力する
+ポート番号のリストを `playbook` ファイルで出力する
 
 > - https://bftnagoya.hateblo.jp/entry/2021/03/12/101207
 
@@ -258,7 +258,7 @@ ports:
 
 管理対象ノードの情報を設定する。
 
-Ansibleの実行時に、`-i`オプションでディレクトリを指定する。
+Ansibleの実行時に、`-i` オプションでディレクトリを指定する。
 
 > - https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
 
@@ -270,9 +270,9 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 
 管理対象ノードを設定する。
 
-複数の拡張子 (`ini`形式、`yml`形式、`json`形式) で定義でき、`ansible-inventory`コマンドで`ini`形式から他の形式に変換できる。
+複数の拡張子 (`ini` 形式、`yml` 形式、`json` 形式) で定義でき、`ansible-inventory` コマンドで `ini` 形式から他の形式に変換できる。
 
-ただし、`ini`形式の場合は拡張子をつけない方が良い。実行環境 (本番/ステージング) 別にファイルを切り分けると良い。
+ただし、`ini` 形式の場合は拡張子をつけないほうが良い。実行環境 (本番/ステージング) 別にファイルを切り分けると良い。
 
 また、サーバーを冗長化している場合は、これも別々に定義しておく。
 
@@ -284,7 +284,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 
 **＊実装例＊**
 
-もし`yml`形式の場合は以下の通りとなる。
+もし `yml` 形式の場合は以下の通りとなる。
 
 ```yaml
 # inventoryファイル
@@ -351,7 +351,7 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 
 **＊実装例＊**
 
-もし`ini`形式の場合は以下の通りとなる。
+もし `ini` 形式の場合は以下の通りとなる。
 
 ```ini
 # inventoryファイル
@@ -491,7 +491,7 @@ taskセクションの後に実行するセットアップ処理を設定する�
 
 プレイをroot権限 (sudo権限) で実行するか否かを設定する。
 
-root以外であれば、`become_user`キーを設定する。
+root以外であれば、`become_user` キーを設定する。
 
 ```yaml
 - become: yes
@@ -528,7 +528,7 @@ root以外であれば、`become_user`キーを設定する。
 
 管理対象ノードで、パッケージをaptリポジトリからインストールする。
 
-任意のバージョンのパッケージをインストールする場合は、`name`キーにそれを指定し、`state`キーの値は`present`とする。
+任意のバージョンのパッケージをインストールする場合は、`name` キーにそれを指定し、`state` キーの値は `present` とする。
 
 **＊実装例＊**
 
@@ -594,7 +594,7 @@ root以外であれば、`become_user`キーを設定する。
 
 #### ▼ バージョン指定
 
-任意のバージョンのパッケージをインストールする場合は、`name`キーにそれを指定し、`state`キーの値は`present`とする。
+任意のバージョンのパッケージをインストールする場合は、`name` キーにそれを指定し、`state` キーの値は `present` とする。
 
 **＊実装例＊**
 
@@ -704,7 +704,7 @@ SELinuxを無効化する。
 
 **＊実装例＊**
 
-管理対象ノードで`chown`コマンドを実行することにより、ファイルの所有権を設定する。
+管理対象ノードで `chown` コマンドを実行することにより、ファイルの所有権を設定する。
 
 ```yaml
 - name: Update foo-binary permission
@@ -720,7 +720,7 @@ SELinuxを無効化する。
 
 #### ▼ ansible.builtin.get_urlとは
 
-管理対象ノードで`curl`コマンドを実行する。
+管理対象ノードで `curl` コマンドを実行する。
 
 > - https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url
 
@@ -737,7 +737,7 @@ SELinuxを無効化する。
 
 #### ▼ ansible.builtin.serviceとは
 
-管理対象ノードで`service`コマンドの実行を設定する。
+管理対象ノードで `service` コマンドの実行を設定する。
 
 > - https://docs.ansible.com/ansible/2.9/modules/service_module.html
 
@@ -789,7 +789,7 @@ SELinuxを無効化する。
 
 #### ▼ ansible.builtin.systemdとは
 
-管理対象ノードで`systemctl`コマンドの実行を設定する。
+管理対象ノードで `systemctl` コマンドの実行を設定する。
 
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
 
@@ -836,7 +836,7 @@ SELinuxを無効化する。
 
 #### ▼ ansible.builtin.templateとは
 
-テンプレート (`.j2`ファイル) から作成したファイルを管理対象ノードのディレクトリに配置する。
+テンプレート (`.j2` ファイル) から作成したファイルを管理対象ノードのディレクトリに配置する。
 
 **＊実装例＊**
 
@@ -853,7 +853,7 @@ SELinuxを無効化する。
 
 #### ▼ ansible.builtin.unarchiveとは
 
-コントロールノードまたは管理対象ノードで`tar`コマンドを実行することにより、圧縮ファイルを解凍する。
+コントロールノードまたは管理対象ノードで `tar` コマンドを実行することにより、圧縮ファイルを解凍する。
 
 **＊実装例＊**
 
@@ -898,7 +898,7 @@ SELinuxを無効化する。
 
 管理対象ノードで、パッケージをyumリポジトリからインストールする。
 
-代わりに`ansible.builtin.dnf`モジュールを使うと良い。
+代わりに `ansible.builtin.dnf` モジュールを使うと良い。
 
 <br>
 
@@ -908,16 +908,16 @@ SELinuxを無効化する。
 
 管理対象ノードに設定された環境変数を出力する。
 
-`gather_facts`オプションを有効化する必要がある。
+`gather_facts` オプションを有効化する必要がある。
 
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 > - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
 
 **＊実装例＊**
 
-管理対象ノードの環境変数の`FOO`を出力する。
+管理対象ノードの環境変数の `FOO` を出力する。
 
-`gather_facts`オプションを有効化しておく。
+`gather_facts` オプションを有効化しておく。
 
 ```yaml
 - gather_facts: yes
@@ -957,7 +957,7 @@ task内で出力できる環境変数を設定する。
 
 プレイで使用する設定値を変数として設定する。
 
-設定した変数は、`ansible.builtin.template`オプションを使用して`j2`ファイルに出力できる。
+設定した変数は、`ansible.builtin.template` オプションを使用して `j2` ファイルに出力できる。
 
 > - https://blog.katsubemakito.net/ansible/ansible-1st-4
 > - https://ksaito11.hatenablog.com/entry/2018/10/24/232929
@@ -994,7 +994,7 @@ task内で出力できる環境変数を設定する。
 
 **＊実装例＊**
 
-コントロールノードの環境変数の`FOO`を出力する。
+コントロールノードの環境変数の `FOO` を出力する。
 
 ```yaml
 - name: Upload foo.conf

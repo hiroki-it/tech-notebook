@@ -45,7 +45,7 @@ Goのソースコードに変更があれば、ホットリロードし、コン
 
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
 
-ポインタ型からstring型に変換する`ToString`関数や、反対にstring型からポインタ型に変換する`String`関数をよく使用する。
+ポインタ型からstring型に変換する `ToString` 関数や、反対にstring型からポインタ型に変換する `String` 関数をよく使用する。
 
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString
@@ -255,9 +255,9 @@ func main() {
 
 ### godocs
 
-`GOROOT`変数配下のパッケージのドキュメントを自動的に作成する。
+`GOROOT` 変数配下のパッケージのドキュメントを自動的に作成する。
 
-似たものとして、ターミナル上にドキュメントを表示する`go doc`コマンドがある。
+似たものとして、ターミナル上にドキュメントを表示する `go doc` コマンドがある。
 
 > - https://www.linkedin.com/pulse/how-generate-documentation-from-code-golang-alex-guidi/
 
@@ -267,7 +267,7 @@ func main() {
 
 ポート番号を設定する。
 
-デフォルトは`6060`番である。
+デフォルトは `6060` 番である。
 
 ```bash
 $ godoc -http=:8080
@@ -281,7 +281,7 @@ $ godoc -http=:8080
 
 ### CI上で実行する
 
-CI上で`gomarkdoc`コマンドを実行する。
+CI上で `gomarkdoc` コマンドを実行する。
 
 差分があれば、CIを失敗させる。
 
@@ -319,7 +319,7 @@ go_doc:
 
 ディレクトリ名を再帰的に出力する。
 
-`./...`を指定すれば、再帰的にドキュメントを作成できる。
+`./...` を指定すれば、再帰的にドキュメントを作成できる。
 
 ```bash
 $ gomarkdoc ./... -o {{.Dir}}/DOCUMENT.md
@@ -329,7 +329,7 @@ $ gomarkdoc ./... -o {{.Dir}}/DOCUMENT.md
 
 ### --config
 
-設定ファイルを指定して、`gomarkdoc`コマンドを実行する。
+設定ファイルを指定して、`gomarkdoc` コマンドを実行する。
 
 ```yaml
 # .gomarkdoc.ymlファイル
@@ -402,7 +402,7 @@ Goのコールグラフを作成する。
 
 ブラウザ上で確認できる。
 
-`main`関数のあるファイルパスを指定する必要がある。
+`main` 関数のあるファイルパスを指定する必要がある。
 
 ```bash
 # main関数のあるファイル
@@ -411,7 +411,7 @@ $ cd app
 $ go-callvis .
 ```
 
-もし`main`関数がないと、エラーになる。
+もし `main` 関数がないと、エラーになる。
 
 ```bash
 $ go-callvis .
@@ -453,7 +453,7 @@ $ go-callvis -nointer
 
 グラフの囲い線を設定する。
 
-デフォルトの囲い線は、`pkg`である。
+デフォルトの囲い線は、`pkg` である。
 
 ```bash
 $ go-callvis -group pkg,type ./
@@ -467,9 +467,9 @@ gRPCに関するミドルウェアパターン (例：認証、ロギング、�
 
 なお、gRPCはリモートプロシージャーコールであるため、ミドルウェアパターンにルーティングは含まれない。
 
-`v1`系と`v2`系があり、関数の引数の設定方法が異なる。
+`v1` 系と `v2` 系があり、関数の引数の設定方法が異なる。
 
-これを`Chain`関数に渡せば、gRPCでさまざまなインターセプターを簡単に実行できる。
+これを `Chain` 関数に渡せば、gRPCでさまざまなインターセプターを簡単に実行できる。
 
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
@@ -501,7 +501,7 @@ HTTPで受信したリクエストをgRPCに変換して送信する。
 
 grpc-gatewayでは、デフォルトでは、HTTPヘッダーの独自ヘッダーをgRPCのメタデータに変換せずに破棄してしまう。
 
-特定の条件の時に`true`を返却する`match`関数を定義し、これを`runtime.WithIncomingHeaderMatcher`関数に渡す。
+特定の条件の時に `true` を返却する `match` 関数を定義し、これを `runtime.WithIncomingHeaderMatcher` 関数に渡す。
 
 ```go
 package main
@@ -556,9 +556,9 @@ GoでgRPCを扱えるようにする。
 
 #### ▼ Dial
 
-`DialContext`関数のラッパーであり、新しいコンテキストでgRPCサーバーとの接続を作成する。
+`DialContext` 関数のラッパーであり、新しいコンテキストでgRPCサーバーとの接続を作成する。
 
-執筆時点 (2024/04/06) で`Dial`関数は非推奨であり、`NewClient`関数が推奨である。
+執筆時点 (2024/04/06) で `Dial` 関数は非推奨であり、`NewClient` 関数が推奨である。
 
 ```go
 func Dial(target string, opts ...DialOption) (*ClientConn, error) {
@@ -572,7 +572,7 @@ func Dial(target string, opts ...DialOption) (*ClientConn, error) {
 
 既存コンテキストを使用して、gRPCサーバーとの接続を作成する。
 
-執筆時点 (2024/04/06) で`DialContext`関数は非推奨であり、`NewClient`関数が推奨である。
+執筆時点 (2024/04/06) で `DialContext` 関数は非推奨であり、`NewClient` 関数が推奨である。
 
 ```go
 package main
@@ -698,9 +698,9 @@ func main() {
 
 #### ▼ Start
 
-通常、OpenTelemetryのミドルウェアを実行すると、アプリケーションの最初の関数 (主に`main`関数) で自動的にスパンを作成する。
+通常、OpenTelemetryのミドルウェアを実行すると、アプリケーションの最初の関数 (主に `main` 関数) で自動的にスパンを作成する。
 
-Tracerの`Start`関数を使用すると、これの子スパンを手動で作成することができ、最初の関数の内部でコールされた別の関数の処理時間を計測できるようになる。
+Tracerの `Start` 関数を使用すると、これの子スパンを手動で作成でき、最初の関数の内部でコールされた別の関数の処理時間を計測できるようになる。
 
 ```go
 package main
@@ -823,13 +823,13 @@ OpenTelemetryのPropagation
 
 HTTPヘッダーをCarrierとして使用できるようにする。
 
-`TextMapCarrier`インターフェースの実装である。
+`TextMapCarrier` インターフェースの実装である。
 
 ```go
 type HeaderCarrier http.Header
 ```
 
-`Header`関数を`HeaderCarrier`に変換することで、HTTPヘッダーをCarrierとして使用する。
+`Header` 関数を `HeaderCarrier` に変換することで、HTTPヘッダーをCarrierとして使用する。
 
 ```go
 package middleware
@@ -859,7 +859,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 
 > - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier
 
-Ginでも同様にして、HTTPヘッダーを`HeaderCarrier`に渡す。
+Ginでも同様にして、HTTPヘッダーを `HeaderCarrier` に渡す。
 
 ```go
 package middleware
@@ -901,7 +901,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 複数のPropagatorを持つ。
 
-`Fields`関数でPropagator名を取得できる。
+`Fields` 関数でPropagator名を取得できる。
 
 ```go
 package main
@@ -957,9 +957,9 @@ OpenTelemetryのTracerProviderを作成する。
 
 ### ContextWithSpanContext
 
-`SpanContext`を既存コンテキストに設定する。
+`SpanContext` を既存コンテキストに設定する。
 
-コンテキストの持つデッドラインやキャンセルは不要で、`SpanContext`のみを引き継ぐ場合に使える。
+コンテキストの持つデッドラインやキャンセルは不要で、`SpanContext` のみを引き継ぐ場合に使える。
 
 ```go
 package server
@@ -992,9 +992,9 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### IsRecording
 
-現在の関数のスパンを開始後であれば、`true`になる。
+現在の関数のスパンを開始後であれば、`true` になる。
 
-現在の関数でスパンを開始していない場合は、`false`になる。
+現在の関数でスパンを開始していない場合は、`false` になる。
 
 ```go
 package main
@@ -1037,9 +1037,9 @@ func foo()  {
 
 エラーのイベントを現在のスパンに設定する。
 
-内部的には、`AddEvent`関数に`exception`イベントを渡している。
+内部的には、`AddEvent` 関数に `exception` イベントを渡している。
 
-`IsRecording`関数が`false`の場合 (現在の関数でスパンを開始していない場合) は、使用できない。
+`IsRecording` 関数が `false` の場合 (現在の関数でスパンを開始していない場合) は、使用できない。
 
 ただし、イベントの記録はログでやるべきであり、分散トレースとエラーイベントのログを紐付けさえすれば、分散トレース側にエラーイベントの情報を持たせる必要がない。
 
@@ -1091,7 +1091,7 @@ func fooHandler(ctx context.Context) {
 
 ステータス (`Unset`、`OK`、`Error`) とエラーメッセージを現在のスパンに設定する。
 
-`IsRecording`関数が`false`の場合 (現在の関数でスパンを開始していない場合) は、使用できない。
+`IsRecording` 関数が `false` の場合 (現在の関数でスパンを開始していない場合) は、使用できない。
 
 ```go
 package server
@@ -1158,7 +1158,7 @@ type SpanContext struct {
 
 ### SpanContextFromContext
 
-既存コンテキストから`SpanContext`のみを取得する。
+既存コンテキストから `SpanContext` のみを取得する。
 
 現在の関数でスパンを作成していない場合は、上の階層のスパンを取得できる。
 
@@ -1191,7 +1191,7 @@ func fooHandler(ctx context.Context) {
 }
 ```
 
-コンテキストの持つデッドラインやキャンセルは不要で、`SpanContext`のみを引き継ぐ場合に使える。
+コンテキストの持つデッドラインやキャンセルは不要で、`SpanContext` のみを引き継ぐ場合に使える。
 
 ```go
 package server
@@ -1301,17 +1301,17 @@ func fooHandler(ginCtx *gin.Context) {
 
 受信したリクエストのCarrier (HTTPヘッダー) からGinコンテキスト (`gin.Context`) を自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にGinコンテキスト (`gin.Context`) を自動的に注入 (Inject) する。
 
-また、事前のミドルウェアパターンとしてスパンを自動的に作成する (事後のミドルウェアパターンには`otelhttp`パッケージを使用する) 。
+また、事前のミドルウェアパターンとしてスパンを自動的に作成する (事後のミドルウェアパターンには `otelhttp` パッケージを使用する) 。
 
 各関数で事前にスパンを作成する必要がなくなる。
 
-`otelgin`パッケージを使用しない場合、これらを自前で実装する必要がある。
+`otelgin` パッケージを使用しない場合、これらを自前で実装する必要がある。
 
 <br>
 
 ### Middleware
 
-リクエスト受信時のミドルウェアパターンとして`otelgin`パッケージを設定する。
+リクエスト受信時のミドルウェアパターンとして `otelgin` パッケージを設定する。
 
 ```go
 package main
@@ -1347,7 +1347,7 @@ func main() {
 
 各永続化関数でスパンを作成したり、SQLステートメントを設定する必要がなくなる。
 
-`otelgorm`パッケージを使用しない場合、これらを自前で実装する必要がある。
+`otelgorm` パッケージを使用しない場合、これらを自前で実装する必要がある。
 
 ```go
 func (p *otelPlugin) before(spanName string) gormHookFunc {
@@ -1431,7 +1431,7 @@ func (p *otelPlugin) after() gormHookFunc {
 
 ### NewPlugin
 
-クエリ実行前のミドルウェアパターンとして`otelgin`パッケージを設定する。
+クエリ実行前のミドルウェアパターンとして `otelgin` パッケージを設定する。
 
 ```go
 package db
@@ -1472,7 +1472,7 @@ func NewDb()  {
 
 各関数で事前/事後にスパンを作成する必要がなくなる。
 
-`otelgrpc`パッケージを使用しない場合、これらを自前で実装する必要がある。
+`otelgrpc` パッケージを使用しない場合、これらを自前で実装する必要がある。
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
 > - https://blog.cybozu.io/entry/2023/04/12/170000
@@ -1485,7 +1485,7 @@ func NewDb()  {
 
 gRPCのメタデータをCarrierとして使用できるようにする。
 
-`TextMapCarrier`インターフェースの実装である。
+`TextMapCarrier` インターフェースの実装である。
 
 プライベートな構造体であり、クライアント側とサーバー側のインターセプター内で使用するようになっている。
 
@@ -1503,13 +1503,13 @@ type metadataSupplier struct {
 
 #### ▼ ClientInterceptor系関数
 
-gRPCリクエスト送信時のインターセプター処理として`otelgrpc`パッケージを設定する。
+gRPCリクエスト送信時のインターセプター処理として `otelgrpc` パッケージを設定する。
 
-抽出時のメタデータは、`mdOutgoingKey`キーと`rawMD{md: <メタデータ>}`で登録される。
+抽出時のメタデータは、`mdOutgoingKey` キーと `rawMD{md: <メタデータ>}` で登録される。
 
-そのため、ユーザー定義のメタデータは`mdOutgoingKey`キーで登録できるOutgoingContext系関数で設定する必要がある。
+そのため、ユーザー定義のメタデータは `mdOutgoingKey` キーで登録できるOutgoingContext系関数で設定する必要がある。
 
-執筆時点 (2024/03/31) でClientInterceptor系関数は非推奨であり、`NewClientHandler`関数が推奨である。
+執筆時点 (2024/03/31) でClientInterceptor系関数は非推奨であり、`NewClientHandler` 関数が推奨である。
 
 ```go
 package main
@@ -1604,13 +1604,13 @@ func main() {
 
 #### ▼ ServerInterceptor系関数
 
-gRPCリクエスト受信時のインターセプター処理として`otelgrpc`パッケージを設定する。
+gRPCリクエスト受信時のインターセプター処理として `otelgrpc` パッケージを設定する。
 
-抽出時のメタデータは`mdIncomingKey`キーと`rawMD{md: <メタデータ>}`で登録される。
+抽出時のメタデータは `mdIncomingKey` キーと `rawMD{md: <メタデータ>}` で登録される。
 
-そのため、ユーザー定義のメタデータは`mdIncomingKey`キーで登録できるOutgoingContext系関数で設定する必要がある。
+そのため、ユーザー定義のメタデータは `mdIncomingKey` キーで登録できるOutgoingContext系関数で設定する必要がある。
 
-執筆時点 (2024/03/31) でServerInterceptor系関数は非推奨であり、`NewServerHandler`関数が推奨である。
+執筆時点 (2024/03/31) でServerInterceptor系関数は非推奨であり、`NewServerHandler` 関数が推奨である。
 
 ```go
 func extract(ctx context.Context, propagators propagation.TextMapPropagator) context.Context {
@@ -1783,7 +1783,7 @@ gRPCの場合、リモートプロシージャーコールなため、スパン�
 
 各関数で事前/事後にスパンを作成する必要がなくなる。
 
-`otelhttp`パッケージを使用しない場合、これらを自前で実装する必要がある。
+`otelhttp` パッケージを使用しない場合、これらを自前で実装する必要がある。
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
 > - https://blog.cybozu.io/entry/2023/04/12/170000
@@ -1796,7 +1796,7 @@ gRPCの場合、リモートプロシージャーコールなため、スパン�
 
 #### ▼ NewTransport
 
-リクエスト送信時のミドルウェアパターンとして`otelhttp`パッケージを設定する。
+リクエスト送信時のミドルウェアパターンとして `otelhttp` パッケージを設定する。
 
 ```go
 package main
@@ -1830,7 +1830,7 @@ func main() {
 
 #### ▼ NewHandler
 
-リクエスト受信時のミドルウェアパターンとして`otelhttp`パッケージを設定する。
+リクエスト受信時のミドルウェアパターンとして `otelhttp` パッケージを設定する。
 
 ```go
 package main
@@ -1958,7 +1958,7 @@ func SetSpanNameFormatter(next http.Handler) http.Handler {
 
 OTLP形式でテレメトリーを送信するExporterを作成する。
 
-これは、gRPCによるHTTPSプロトコルで監視バックエンド (デフォルトでは`https://127.0.0.1:4317`) に送信する。
+これは、gRPCによるHTTPSプロトコルで監視バックエンド (デフォルトでは `https://127.0.0.1:4317`) に送信する。
 
 OpenTelemetry Collectorを使用している場合、ReceiverのgRPC用のエンドポイントに合わせる。
 
@@ -1972,7 +1972,7 @@ OpenTelemetry Collectorを使用している場合、ReceiverのgRPC用のエン
 
 OTLP形式でテレメトリーを送信するExporterを作成する。
 
-これは、HTTPプロトコルで監視バックエンド (デフォルトでは`https://127.0.0.1:4318/v1/traces`) に送信する。
+これは、HTTPプロトコルで監視バックエンド (デフォルトでは `https://127.0.0.1:4318/v1/traces`) に送信する。
 
 OpenTelemetry Collectorを使用している場合、ReceiverのHTTP用のエンドポイントに合わせる。
 
@@ -2057,7 +2057,7 @@ Carrierのインターフェースである。
 
 さまざまな計装ツールのCarrierがこのインターフェースの実装になっている。
 
-`otel/propagation`パッケージには、HTTPヘッダーをCarrierとして使用するための`TextMapCarrier`インターフェースの実装がある。
+`otel/propagation` パッケージには、HTTPヘッダーをCarrierとして使用するための `TextMapCarrier` インターフェースの実装がある。
 
 > - https://qiita.com/behiron/items/cc02e77ed41103f4a195
 > - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier
@@ -2082,11 +2082,11 @@ Propagatorを複数持つ。
 
 ### NewTextMapPropagator
 
-`ote/propagation`パッケージの`NewCompositeTextMapPropagator`のラッパーであり、Composite Propagatorを作成する。
+`ote/propagation` パッケージの `NewCompositeTextMapPropagator` のラッパーであり、Composite Propagatorを作成する。
 
 デフォルトでは、W3C Trace ContextとBaggageのComposite Propagatorになる。
 
-また、`OTEL_PROPAGATORS`変数 (`tracecontext`、`baggage`、`b3`、`b3multi`、`jaeger`、`xray`、`ottrace`、`none`) でPropagator名をリスト形式 (`tracecontext,baggage,xray`) で指定していれば、上書きできる。
+また、`OTEL_PROPAGATORS` 変数 (`tracecontext`、`baggage`、`b3`、`b3multi`、`jaeger`、`xray`、`ottrace`、`none`) でPropagator名をリスト形式 (`tracecontext,baggage,xray`) で指定していれば、上書きできる。
 
 ```go
 package main
@@ -2335,7 +2335,7 @@ func main() {
 
 ZapのLoggerのラッパーである。
 
-#### ▼ `w`系
+#### ▼ `w` 系
 
 構造化ログを作成する。
 

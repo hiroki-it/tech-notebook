@@ -53,7 +53,7 @@ spec:
             pathType: Prefix
 ```
 
-するとExternalDNSアドオンは、Ingressの`.spec.rules[*].host`キーに応じて、AWS Route53にAレコードとTXTレコードを作成する。
+するとExternalDNSアドオンは、Ingressの `.spec.rules[*].host` キーに応じて、AWS Route53にAレコードとTXTレコードを作成する。
 
 ```bash
 $ kubectl logs external-dns -n kube-system | grep example.com
@@ -62,7 +62,7 @@ time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com A
 time="2023-02-28T10:09:30Z" level=info msg="Desired change: CREATE example.com TXT [Id: /hostedzone/*****]"
 ```
 
-なお、Ingressのアノテーションに`external-dns.alpha.kubernetes.io/hostname: <ホスト名>`を明示的に指定しても良い。
+なお、Ingressのアノテーションに `external-dns.alpha.kubernetes.io/hostname: <ホスト名>` を明示的に指定しても良い。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -145,7 +145,7 @@ spec:
 > - https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/ANS_Group_SafeDNS/#manifest-for-clusters-with-rbac-enabled
 > - https://qiita.com/nakamasato/items/8215b7b86add58f77810
 
-この時、`--annotation-filter`オプションを使用すると、条件に合致するアノテーションを持つIngressやServiceを、ExternalDNSの検知から除外する。
+この時、`--annotation-filter` オプションを使用すると、条件に合致するアノテーションを持つIngressやServiceを、ExternalDNSの検知から除外する。
 
 ```yaml
 apiVersion: v1

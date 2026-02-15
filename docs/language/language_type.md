@@ -17,7 +17,7 @@ description: 言語の種類＠言語を記録しています。
 
 ### プログラミングパラダイムとは
 
-プログラミングを行う時の様式のこと。
+プログラミングを行うときの様式のこと。
 
 ![プログラミング言語と設計手法の歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プログラミング言語と設計手法の歴史.png)
 

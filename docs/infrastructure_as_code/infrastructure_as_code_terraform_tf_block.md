@@ -13,25 +13,25 @@ description: ブロック＠Terraformの知見を記録しています。
 
 <br>
 
-## 01. `resource`ブロック
+## 01. `resource` ブロック
 
-### `resource`ブロックとは
+### `resource` ブロックとは
 
 ルートモジュール/チャイルドモジュールにて、クラウドプロバイダーのAPIに対してリクエストを送信し、クラウドインフラを作成する。
 
 <br>
 
-### `resource`タイプ
+### `resource` タイプ
 
 操作されるリソースの種類のこと。
 
-リソースとTerraformの`resource`タイプはおおよそ一致している。
+リソースとTerraformの `resource` タイプはおおよそ一致している。
 
 > - https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
 
 <br>
 
-### `resource`ブロックの実装方法
+### `resource` ブロックの実装方法
 
 #### ▼ AWSの場合
 
@@ -51,15 +51,15 @@ resource "aws_lb" "this" {
 
 <br>
 
-## 02. `data`ブロック
+## 02. `data` ブロック
 
-### `data`ブロックとは
+### `data` ブロックとは
 
 クラウドプロバイダーのAPIに対してリクエストを送信し、クラウドインフラに関するデータを取得する。
 
 <br>
 
-### `data`ブロックの実装方法
+### `data` ブロックの実装方法
 
 #### ▼ AWSの場合
 
@@ -78,7 +78,7 @@ data "aws_ecs_task_definition" "this" {
 
 **＊実装例＊**
 
-AMIを検索した上で、AWSから特定のAMIを取得する。
+AMIを検索したうえで、AWSから特定のAMIを取得する。
 
 ```terraform
 # ---------------------------------------------
@@ -119,11 +119,11 @@ data "aws_ami" "bastion" {
 
 <br>
 
-## 03. `output`ブロック
+## 03. `output` ブロック
 
-### `output`ブロックとは
+### `output` ブロックとは
 
-可読性の観点から、`resource`ブロック一括で出力するのではなく、`resource`ブロックの特定の`attribute`値を出力するようにした方が良い。
+可読性の観点から、`resource` ブロック一括で出力するのではなく、`resource` ブロックの特定の `attribute` 値を出力するようにしたほうが良い。
 
 > - https://www.terraform.io/language/values/outputs#output-values
 > - https://www.terraform.io/language/state/remote-state-data#root-outputs-only
@@ -132,9 +132,9 @@ data "aws_ami" "bastion" {
 
 ### 循環参照エラー (`Error: Cycle`)
 
-`output`ブロックで値を出力するモジュールは、コール元に依存することになる。
+`output` ブロックで値を出力するモジュールは、コール元に依存することになる。
 
-コール元も`output`ブロックを出力するモジュールを使用する場合、相互依存するために循環参照エラーが発生する。
+コール元も `output` ブロックを出力するモジュールを使用する場合、相互依存するために循環参照エラーが発生する。
 
 循環参照エラーは、ローカルモジュール / 自前リモートモジュール内で公式リモートモジュールを使用する場合に起こる。
 
@@ -146,7 +146,7 @@ data "aws_ami" "bastion" {
 
 #### ▼ ルートモジュール内で使用する場合
 
-ルートモジュールが持つ値を、`data`ブロックの`terraform_remote_state`リソースを使用して、異なるバックエンドに出力する。
+ルートモジュールが持つ値を、`data` ブロックの `terraform_remote_state` リソースを使用して、異なるバックエンドに出力する。
 
 この場合、ルートモジュールがコール元に依存することになる。
 
@@ -159,7 +159,7 @@ repository/
 
 **＊実装例＊**
 
-ルートモジュール内で`output`ブロックを使用したとする。
+ルートモジュール内で `output` ブロックを使用したとする。
 
 ```terraform
 # @ルートモジュール
@@ -175,7 +175,7 @@ output "alb_zone_id" {
 }
 ```
 
-任意の場所で、`data`ブロックの`terraform_remote_state`から`output`ブロックを使用できる。
+任意の場所で、`data` ブロックの `terraform_remote_state` から `output` ブロックを使用できる。
 
 ```terraform
 # ---------------------------------------------
@@ -214,11 +214,11 @@ resource "bar" "this" {
 
 #### ▼ ローカルモジュール内で使用する場合
 
-ローカルモジュール内の`resource`ブロックが持つ値を、ルートモジュールに出力する。
+ローカルモジュール内の `resource` ブロックが持つ値を、ルートモジュールに出力する。
 
 この場合、ローカルモジュールがコール元に依存することになる。
 
-可読性の観点から、`resource`ブロック一括で出力するのではなく、`resource`ブロックの特定の`attribute`値を出力するようにした方が良い。
+可読性の観点から、`resource` ブロック一括で出力するのではなく、`resource` ブロックの特定の `attribute` 値を出力するようにしたほうが良い。
 
 ```yaml
 repository/
@@ -232,7 +232,7 @@ repository/
 
 **＊実装例＊**
 
-ローカルモジュール内で`output`ブロックを使用したとする。
+ローカルモジュール内で `output` ブロックを使用したとする。
 
 ```terraform
 # @ローカルモジュール
@@ -249,7 +249,7 @@ output "elb_service_account_arn" {
 }
 ```
 
-ルートモジュールの`module`ブロックでローカルモジュールをコールし、`output`ブロックを渡せる。
+ルートモジュールの `module` ブロックでローカルモジュールをコールし、`output` ブロックを渡せる。
 
 ```terraform
 # @ルートモジュール
@@ -269,7 +269,7 @@ resource "foo" "this" {
 
 #### ▼ リモートモジュール内で使用する場合
 
-リモートモジュールの`resource`ブロックや、リモートモジュール内ローカルモジュールが持つ値を、コール先のルートモジュールに出力する。
+リモートモジュールの `resource` ブロックや、リモートモジュール内ローカルモジュールが持つ値を、コール先のルートモジュールに出力する。
 
 この場合、リモートモジュールがコール元に依存することになる。
 
@@ -298,7 +298,7 @@ output "bastion_ec2_instance_id" {
 }
 ```
 
-ルートモジュールの`module`ブロックでリモートモジュールをコールし、`output`ブロックを渡せる。
+ルートモジュールの `module` ブロックでリモートモジュールをコールし、`output` ブロックを渡せる。
 
 ```terraform
 # @ルートモジュール
@@ -318,21 +318,21 @@ resource "foo" "this" {
 
 <br>
 
-### `output`ブロックのデータ型
+### `output` ブロックのデータ型
 
-#### ▼ `count`引数を使用した場合の注意点
+#### ▼ `count` 引数を使用した場合の注意点
 
-`resource`ブロックの作成に`count`引数を使用した場合、その`resource`ブロックはlist型として扱われる。
+`resource` ブロックの作成に `count` 引数を使用した場合、その `resource` ブロックはlist型として扱われる。
 
-そのため、`output`ブロックではキー名を指定して出力できる。
+そのため、`output` ブロックではキー名を指定して出力できる。
 
-補足として、`for_each`引数で作成した`resource`ブロックはアスタリスクでインデックス名を指定できないため、注意。
+補足として、`for_each` 引数で作成した `resource` ブロックはアスタリスクでインデックス名を指定できないため、注意。
 
 **＊実装例＊**
 
 例として、VPCのサブネットを示す。
 
-ここでは、パブリックサブネット、applicationサブネット、datastoreサブネットを`count`引数で作成したとする。
+ここでは、パブリックサブネット、applicationサブネット、datastoreサブネットを `count` 引数で作成したとする。
 
 ```terraform
 # ---------------------------------------------
@@ -360,7 +360,7 @@ resource "aws_subnet" "private_datastore" {
 }
 ```
 
-#### ▼ list型`output`ブロック
+#### ▼ list型 `output` ブロック
 
 インデックスキーをアスタリスクを指定した場合、list型になる。
 
@@ -381,9 +381,9 @@ output "private_datastore_subnet_ids" {
 }
 ```
 
-#### ▼ スカラー型`output`ブロック
+#### ▼ スカラー型 `output` ブロック
 
-インデックスキー (`0`番目) を指定した場合、スカラー型になる。
+インデックスキー (`0` 番目) を指定した場合、スカラー型になる。
 
 ```terraform
 # ---------------------------------------------
@@ -404,15 +404,15 @@ output "private_datastore_subnet_ids" {
 
 <br>
 
-## 04. `local`ブロック
+## 04. `local` ブロック
 
-### `local`ブロックとは
+### `local` ブロックとは
 
 通常変数であり、定義されたローカル/リモートモジュール内にのみスコープを持つ。
 
 ルートモジュールとローカル/リモートモジュールが異なるリポジトリで管理されている場合に有効である。
 
-これらが同じリポジトリにある場合は、環境変数を使用した方が可読性が高くなる。
+これらが同じリポジトリにある場合は、環境変数を使用したほうが可読性が高くなる。
 
 ```terraform
 locals {
@@ -445,11 +445,11 @@ locals {
 
 <br>
 
-## 05. `variable`ブロック
+## 05. `variable` ブロック
 
-### `variable`ブロックとは
+### `variable` ブロックとは
 
-`.tfvars`ファイル、`module`ブロック、`resource`ブロック、で使用する変数に関して、データ型やデフォルト値を定義する。
+`.tfvars` ファイル、`module` ブロック、`resource` ブロック、で使用する変数に関して、データ型やデフォルト値を定義する。
 
 <br>
 
@@ -537,11 +537,11 @@ variable "waf_blocked_user_agents" {
 
 有効な値を設定してしまうと可読性が悪くなる。
 
-そのため、無効値 (例：boolean型であれば`false`、string型であれば空文字、list型であれば空配列など) を設定する。
+そのため、無効値 (例：boolean型であれば `false`、string型であれば空文字、list型であれば空配列など) を設定する。
 
 **＊実装例＊**
 
-`module`ブロックや`resource`ブロック内で、`count`引数を使用して条件分岐を定義した場合に、そのフラグ値となるboolean値をデフォルト値として定義すると良い。
+`module` ブロックや `resource` ブロック内で、`count` 引数を使用して条件分岐を定義した場合に、そのフラグ値となるboolean値をデフォルト値として定義すると良い。
 
 ```terraform
 variable "enable_provision" {
@@ -557,25 +557,25 @@ variable "enable_provision" {
 
 ### メタ引数とは
 
-全ての`resource`ブロックで使用できるオプションのこと。
+全ての `resource` ブロックで使用できるオプションのこと。
 
 <br>
 
-### `depends_on`引数
+### `depends_on` 引数
 
-#### ▼ `depends_on`引数とは
+#### ▼ `depends_on` 引数とは
 
-`resource`ブロック間の依存関係を明示的に定義する。
+`resource` ブロック間の依存関係を明示的に定義する。
 
-Terraformでは、基本的に`resource`ブロック間の依存関係が暗黙的に定義されている。
+Terraformでは、基本的に `resource` ブロック間の依存関係が暗黙的に定義されている。
 
-しかし、複数の`resource`ブロックが関わると、`resource`ブロックを適切な順番で作成できない場合があるため、そういった時に使用する。
+しかし、複数の `resource` ブロックが関わると、`resource` ブロックを適切な順番で作成できない場合があるため、そういった時に使用する。
 
 #### ▼ ALB target group vs. ALB、ECS
 
 例として、ALB target groupを示す。
 
-ALB Target groupとALBの`resource`ブロックを適切な順番で作成できないため、ECSの作成時にエラーが起こる。
+ALB Target groupとALBの `resource` ブロックを適切な順番で作成できないため、ECSの作成時にエラーが起こる。
 
 ALBの後にALB target groupを作成する必要がある。
 
@@ -611,7 +611,7 @@ resource "aws_lb_target_group" "this" {
 
 例として、AWS NAT Gatewayを示す。
 
-AWS NAT Gateway、Internet Gatewayの`resource`ブロックを適切な順番で作成できない。
+AWS NAT Gateway、Internet Gatewayの `resource` ブロックを適切な順番で作成できない。
 
 そのため、Internet Gatewayの作成後に、AWS NAT Gatewayを作成するように定義する必要がある。
 
@@ -720,13 +720,13 @@ resource "aws_s3_bucket_policy" "foo" {
 
 <br>
 
-### `count`引数
+### `count` 引数
 
-#### ▼ `count`引数とは
+#### ▼ `count` 引数とは
 
-指定した数だけ、`resource`ブロックの作成を繰り返す。
+指定した数だけ、`resource` ブロックの作成を繰り返す。
 
-`count.index`オプションでインデックス数を展開する。
+`count.index` オプションでインデックス数を展開する。
 
 **＊実装例＊**
 
@@ -748,7 +748,7 @@ resource "aws_instance" "server" {
 
 #### ▼ 作成の有無の条件分岐
 
-特定の実行環境でリソースの作成の有無を切り替えたい場合、`.terraform.tfvars`ファイルからフラグ値を渡し、これがあるかないかを`count`引数で判定し、条件分岐を実現する。
+特定の実行環境でリソースの作成の有無を切り替えたい場合、`.terraform.tfvars` ファイルからフラグ値を渡し、これがあるかないかを `count` 引数で判定し、条件分岐を実現する。
 
 フラグ値を渡さない場合は、デフォルト値を渡すようにする。
 
@@ -786,7 +786,7 @@ resource "aws_instance" "server" {
 }
 ```
 
-注意点として、`count`関数を使用すると、他のブロック (例：`resource`ブロック、`output`ブロック) で設定値にアクセスする時にインデックス番号`0`を指定する必要がある。
+注意点として、`count` 関数を使用すると、他のブロック (例：`resource` ブロック、`output` ブロック) で設定値にアクセスするときにインデックス番号 `0` を指定する必要がある。
 
 ```terraform
 resource "foo" "server" {
@@ -831,11 +831,11 @@ resource "aws_instance" "server" {
 }
 ```
 
-#### ▼ `count`関数で作成されなかった`resource`ブロックを検知
+#### ▼ `count` 関数で作成されなかった `resource` ブロックを検知
 
-`count`関数で作成したブロックを他のブロックで使用する場合、それを検知できるようにする必要がある。
+`count` 関数で作成したブロックを他のブロックで使用する場合、それを検知できるようにする必要がある。
 
-`count`関数で作成されたリソースが存在するかどうかは、`length`関数で検知できる。
+`count` 関数で作成されたリソースが存在するかどうかは、`length` 関数で検知できる。
 
 ```terraform
 resource "aws_kms_key" "foo" {
@@ -878,11 +878,11 @@ resource "aws_kms_replica_key" "foo" {
 
 > - https://stackoverflow.com/questions/71484962/conditional-creation-of-parent-child-resources/71490413#71490413
 
-#### ▼ `count`関数で作成されなかった`output`ブロックは`null`
+#### ▼ `count` 関数で作成されなかった `output` ブロックは `null`
 
-`count`関数で作成されたリソースに対してのみ`output`ブロックで値を出力し、もしリソースがなければ`null`や空文字 (`""`) を出力するようにする。
+`count` 関数で作成されたリソースに対してのみ `output` ブロックで値を出力し、もしリソースがなければ `null` や空文字 (`""`) を出力するようにする。
 
-補足として、`count`関数の結果の検知には、`length`関数を使用する。
+補足として、`count` 関数の結果の検知には、`length` 関数を使用する。
 
 ```terraform
 output "foo_kms_key_arn" {
@@ -896,13 +896,13 @@ output "foo_kms_key_arn" {
 
 <br>
 
-### `for_each`引数
+### `for_each` 引数
 
-#### ▼ `for_each`引数とは
+#### ▼ `for_each` 引数とは
 
-事前に`for_each`引数に格納したmap型の`key`の数だけ、`resource`ブロックを繰り返し実行する。
+事前に `for_each` 引数に格納したmap型の `key` の数だけ、`resource` ブロックを繰り返し実行する。
 
-繰り返し処理を実行する時に、`count`引数とは違い、要素名を指定して出力できる。
+繰り返し処理を実行するときに、`count` 引数とは違い、要素名を指定して出力できる。
 
 **＊実装例＊**
 
@@ -942,15 +942,15 @@ resource "aws_subnet" "public" {
 
 #### ▼ 冗長化されたAZにおける設定
 
-冗長化されたAZで共通のルートテーブルを作成する場合、そこで、`for_each`引数を使用すると、少ない実装で作成できる。
+冗長化されたAZで共通のルートテーブルを作成する場合、そこで、`for_each` 引数を使用すると、少ない実装で作成できる。
 
-`for_each`引数で作成された`resource`ブロックは`terraform apply`コマンド実行中にmap構造として扱われ、`resource`ブロック名の下層にキー名で`resource`ブロックが並ぶ構造になっている。
+`for_each` 引数で作成された `resource` ブロックは `terraform apply` コマンド実行中にmap構造として扱われ、`resource` ブロック名の下層にキー名で `resource` ブロックが並ぶ構造になっている。
 
 これを参照するために、『`<resourceタイプ>.<resourceブロック名>[each.key].<attribute>`』とする。
 
 **＊実装例＊**
 
-パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付くAWS NAT Gatewayの設定が冗長化されたAZで共通の場合、`for_each`引数で作成する。
+パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付くAWS NAT Gatewayの設定が冗長化されたAZで共通の場合、`for_each` 引数で作成する。
 
 ```terraform
 # ---------------------------------------------
@@ -1028,9 +1028,9 @@ resource "aws_nat_gateway" "this" {
 }
 ```
 
-#### ▼ 単一値で`output`ブロック
+#### ▼ 単一値で `output` ブロック
 
-`resource`ブロックの作成に`for_each`引数を使用した場合、その`resource`ブロックはmap型として扱われる。
+`resource` ブロックの作成に `for_each` 引数を使用した場合、その `resource` ブロックはmap型として扱われる。
 
 そのため、キー名を指定して出力できる。
 
@@ -1054,7 +1054,7 @@ output "public_c_subnet_id" {
 }
 ```
 
-#### ▼ map型で`output`ブロック
+#### ▼ map型で `output` ブロック
 
 **＊実装例＊**
 
@@ -1112,9 +1112,9 @@ resource "aws_lb" "this" {
 
 <br>
 
-### `dynamic`引数
+### `dynamic` 引数
 
-#### ▼ `dynamic`引数とは
+#### ▼ `dynamic` 引数とは
 
 指定したブロックを繰り返し作成する。
 
@@ -1126,7 +1126,7 @@ resource "aws_lb" "this" {
 
 map型のキー名と値の両方を設定値として使用する。
 
-例として、RDSパラメーターグループの`parameter`ブロックを、map型通常変数を使用して繰り返し作成する。
+例として、RDSパラメーターグループの `parameter` ブロックを、map型通常変数を使用して繰り返し作成する。
 
 ```terraform
 # ---------------------------------------------
@@ -1211,7 +1211,7 @@ resource "aws_security_group" "ec2" {
 
 **＊実装例＊**
 
-例として、WAFの正規表現パターンセットの`regular_expression`ブロックを、list型通常変数を使用して繰り返し作成する。
+例として、WAFの正規表現パターンセットの `regular_expression` ブロックを、list型通常変数を使用して繰り返し作成する。
 
 ```terraform
 # ---------------------------------------------
@@ -1247,21 +1247,21 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 <br>
 
-### `lifecycle`引数
+### `lifecycle` 引数
 
-#### ▼ `lifecycle`引数とは
+#### ▼ `lifecycle` 引数とは
 
-`resource`ブロックの作成、更新、そして削除のプロセスをカスタマイズする。
+`resource` ブロックの作成、更新、そして削除のプロセスをカスタマイズする。
 
 #### ▼ create_before_destroy
 
-`resource`ブロックを新しく作成した後に削除するように、変更できる。
+`resource` ブロックを新しく作成した後に削除するように、変更できる。
 
-通常時、Terraformの処理順序として、`resource`ブロックの削除後に作成が行われる。
+通常時、Terraformの処理順序として、`resource` ブロックの削除後に作成が行われる。
 
 しかし、他のリソースと依存関係が存在する場合、先に削除が行われることによって、他のリソースに影響が出てしまう。
 
-これに対処するために、先に新しい`resource`ブロックを作成し、紐付けし直してから、削除する必要がある。
+これに対処するために、先に新しい `resource` ブロックを作成し、紐付けし直してから、削除する必要がある。
 
 **＊実装例＊**
 
@@ -1350,11 +1350,11 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 #### ▼ ignore_changes
 
-実インフラのみで発生した`resource`ブロックの作成・更新・削除を無視し、`tfstate`ファイルに反映しないようにする。
+実インフラのみで発生した `resource` ブロックの作成・更新・削除を無視し、`tfstate` ファイルに反映しないようにする。
 
-これにより、`ignore_changes`引数を定義したタイミング以降、実インフラと`tfstate`ファイルに差分があっても、`tfstate`ファイルの値が更新されなくなる。
+これにより、`ignore_changes` 引数を定義したタイミング以降、実インフラと `tfstate` ファイルに差分があっても、`tfstate` ファイルの値が更新されなくなる。
 
-ただし、リソースによっては`ignore_changes`引数を使えないものがある (例：SSMパラメーターストア) 。
+ただし、リソースによっては `ignore_changes` 引数を使えないものがある (例：SSMパラメーターストア) 。
 
 **＊実装例＊**
 
@@ -1408,7 +1408,7 @@ resource "aws_elasticache_replication_group" "redis" {
 
 **＊実装例＊**
 
-使用例はすくないが、補足として`resource`ブロック全体を無視する場合は`all`値を設定する。
+使用例はすくないが、補足として `resource` ブロック全体を無視する場合は `all` 値を設定する。
 
 ```terraform
 resource "aws_foo" "foo" {
@@ -1425,9 +1425,9 @@ resource "aws_foo" "foo" {
 
 <br>
 
-### `regexall`引数
+### `regexall` 引数
 
-#### ▼ `regexall`引数とは
+#### ▼ `regexall` 引数とは
 
 正規表現ルールに基づいて、文字列の中から文字を抽出する。
 
@@ -1478,9 +1478,9 @@ resource "aws_security_group" "ec2" {
 
 ## 07. tpl形式の切り出しと読み出し
 
-### `templatefile`関数
+### `templatefile` 関数
 
-#### ▼ `templatefile`関数とは
+#### ▼ `templatefile` 関数とは
 
 第一引数でポリシーが定義されたファイルを読み出し、第二引数でファイルに変数を渡す。
 
@@ -1506,7 +1506,7 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
-バケットポリシーを定義するtpl形式ファイルでは、string型の場合は`"${}"`で、integer型の場合は`${}`で変数を展開する。
+バケットポリシーを定義するtpl形式ファイルでは、string型の場合は `"${}"` で、integer型の場合は `${}` で変数を展開する。
 
 ここで拡張子をjsonにしてしまうと、integer型の出力をjsonの構文エラーとして扱われてしまう。
 
@@ -1529,9 +1529,9 @@ resource "aws_s3_bucket_policy" "alb" {
 
 | 変数                  | 値                                                          | 例                     |
 | --------------------- | ----------------------------------------------------------- | ---------------------- |
-| `path.module`         | `path`式が実行された`.tf`ファイルがあるディレクトリのパス。 | `/project/module/foo/` |
-| `path.root`           | `terraform`コマンドの作業ディレクトリのパス                 | `/var/www/`            |
-| `path.root`           | `module`ディレクトリのルートパス                            | `/project/module/`     |
+| `path.module`         | `path` 式が実行された `.tf` ファイルがあるディレクトリのパス。 | `/project/module/foo/` |
+| `path.root`           | `terraform` コマンドの作業ディレクトリのパス                 | `/var/www/`            |
+| `path.root`           | `module` ディレクトリのルートパス                            | `/project/module/`     |
 | `terraform.workplace` | 現在使用しているワークスペース名                            | `prd`                  |
 
 > - https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
@@ -1564,13 +1564,13 @@ AWS ECSタスク定義のうち、コンテナを定義する部分のこと。
 
 integer型を通常変数として渡せるように、拡張子をjsonではなくtplとするのが良い。
 
-`image`キーでは、ECRイメージのURLを設定する。
+`image` キーでは、ECRイメージのURLを設定する。
 
 バージョンタグは任意で指定でき、もし指定しない場合は、『`latest`』という名前のタグが自動的に割り当てられる。
 
-バージョンタグにハッシュ値が割り当てられている場合、Terraformでは時系列で最新のタグ名を取得する方法がないため、`secrets`キーでは、パラメーターストアの値を参照できる。
+バージョンタグにハッシュ値が割り当てられている場合、Terraformでは時系列で最新のタグ名を取得する方法がないため、`secrets` キーでは、パラメーターストアの値を参照できる。
 
-ログ分割の目印を設定する`awslogs-datetime-format`キーでは、タイムスタンプを表す`\\[%Y-%m-%d %H:%M:%S\\]`を設定すると良い。
+ログ分割の目印を設定する `awslogs-datetime-format` キーでは、タイムスタンプを表す `\\[%Y-%m-%d %H:%M:%S\\]` を設定すると良い。
 
 これにより、同じ時間に発生したログを1つのログとしてまとめられるため、スタックトレースが見やすくなる。
 
@@ -1632,9 +1632,9 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
 
 ### 関数を使用できるブロック
 
-Terraformでは、`variables`ブロックには定数を設定する必要があるため、関数は`variables`ブロックで使用できない。
+Terraformでは、`variables` ブロックには定数を設定する必要があるため、関数は `variables` ブロックで使用できない。
 
-`variables`ブロックの値を一度`locals`ブロックで加工する必要がある。
+`variables` ブロックの値を一度 `locals` ブロックで加工する必要がある。
 
 > - https://github.com/hashicorp/terraform/issues/17229#issuecomment-361352965
 

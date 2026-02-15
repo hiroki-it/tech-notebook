@@ -35,9 +35,9 @@ version: 2.1
 
 | パラメーター名      | 参照範囲                                                             | 値を設定する場所 |
 | ------------------- | -------------------------------------------------------------------- | ---------------- |
-| command parameters  | `command`キー内で定義する。定義した`command`キー内のみで定義できる。 | `workflows`      |
-| job parameters      | `jobs`キー内で定義する。定義した`jobs`キー内のみで参照できる。       | `workflows`      |
-| executors parameter | `executors`内で定義する。定義した`executos`内のみで参照できる。      | `job`            |
+| command parameters  | `command` キー内で定義する。定義した `command` キー内のみで定義できる。 | `workflows`      |
+| job parameters      | `jobs` キー内で定義する。定義した `jobs` キー内のみで参照できる。       | `workflows`      |
+| executors parameter | `executors` 内で定義する。定義した `executos` 内のみで参照できる。      | `job`            |
 | pipeline parameters | トップレベルで定義する。リポジトリ内のみで参照できる。               | `workflows`      |
 
 <br>
@@ -46,7 +46,7 @@ version: 2.1
 
 #### ▼ 値の出力方法
 
-引数名を使用して、`parameters`から値を出力する。
+引数名を使用して、`parameters` から値を出力する。
 
 ```yaml
 << parameters.foo >>
@@ -56,7 +56,7 @@ version: 2.1
 
 定義できるデータ型は、job parameterと同じ。
 
-定義した`command`キー内のみで定義できる。
+定義した `command` キー内のみで定義できる。
 
 ```yaml
 version: 2.1
@@ -80,7 +80,7 @@ commands:
 
 #### ▼ 値の出力方法
 
-引数名を使用して、`parameters`から値を出力する。
+引数名を使用して、`parameters` から値を出力する。
 
 ```yaml
 << parameters.foo >>
@@ -88,9 +88,9 @@ commands:
 
 #### ▼ デフォルト値について
 
-引数が与えられなかった場合に適用される`default`を設定できる。
+引数が与えられなかった場合に適用される `default` を設定できる。
 
-`default`を設定しない場合、引数が必須と見なされる。
+`default` を設定しない場合、引数が必須と見なされる。
 
 ```yaml
 version: 2.1
@@ -108,9 +108,9 @@ commands:
 
 #### ▼ string型
 
-引数として、任意の文字列を渡したい時に使用する。
+引数として、任意の文字列を渡したいときに使用する。
 
-`workflows`にて、値を設定する。
+`workflows` にて、値を設定する。
 
 **＊実装例＊**
 
@@ -148,11 +148,11 @@ workflows:
 
 #### ▼ boolean型
 
-多くの場合、引数がTrueの場合のみ、特定の`steps`キーを実行したい時に使用する。
+多くの場合、引数がTrueの場合のみ、特定の `steps` キーを実行したいときに使用する。
 
-`job`で定義した後、`workflows`にて値を設定する。
+`job` で定義した後、`workflows` にて値を設定する。
 
-`workflows`にて、値を設定する。
+`workflows` にて、値を設定する。
 
 **＊実装例＊**
 
@@ -190,9 +190,9 @@ workflows:
 
 #### ▼ enum型
 
-引数として、特定の文字列や整数のみを渡したい時に使用する。
+引数として、特定の文字列や整数のみを渡したいときに使用する。
 
-`workflows`にて、値を設定する。
+`workflows` にて、値を設定する。
 
 **＊実装例＊**
 
@@ -229,7 +229,7 @@ workflows:
 
 #### ▼ 値の出力方法
 
-引数名を使用して、`parameters`から値を出力する。
+引数名を使用して、`parameters` から値を出力する。
 
 ```
 << parameters.foo >>
@@ -237,9 +237,9 @@ workflows:
 
 #### ▼ job parametersを参照
 
-引数として、任意の文字列を`executors`に渡したい時に使用する。
+引数として、任意の文字列を `executors` に渡したいときに使用する。
 
-他のparametersとは異なり、`job`にて、値を設定する。
+他のparametersとは異なり、`job` にて、値を設定する。
 
 ```yaml
 version: 2.1
@@ -272,7 +272,7 @@ jobs:
 
 公式リファレンスには載っていないため、方法としては非推奨。
 
-`parameter`を渡したい`executor`を使いまわしたい時に使用する。
+`parameter` を渡したい `executor` を使いまわしたいときに使用する。
 
 ```yaml
 version: 2.1
@@ -325,7 +325,7 @@ workflows:
 
 #### ▼ 値の出力方法
 
-引数名を使用して、`pipeline.parameters`から値を出力する。
+引数名を使用して、`pipeline.parameters` から値を出力する。
 
 ```
 << pipeline.parameters.foo >>
@@ -379,9 +379,9 @@ workflows:
 
 #### ▼ jobsとは
 
-複数の`job`を定義する。
+複数の `job` を定義する。
 
-workflowsを使用しない場合は、少なくとも`1`個の`job`には`build`という名前を使用しなければならない。
+workflowsを使用しない場合は、少なくとも `1` 個の `job` には `build` という名前を使用しなければならない。
 
 #### ▼ jobの粒度
 
@@ -407,11 +407,11 @@ jobを実行する仮想環境を選択できる。
 
 これを選択したうえで、コンテナイメージのビルド (Docker composeを含む) を実行する場合、Docker in Docker問題 (実行環境コンテナの中でコンテナを作成するという入れ子構造) になる。
 
-これは非推奨のため、`setup_remote_docker`を使用して、実行環境コンテナとは別の環境で`jobs`キーを実行する必要がある。
+これは非推奨のため、`setup_remote_docker` を使用して、実行環境コンテナとは別の環境で `jobs` キーを実行する必要がある。
 
-また、`docker`コマンドがプリインストールされていないイメージであった場合、`setup_remote_docker`を有効化すると、これを使用できるようになる。
+また、`docker` コマンドがプリインストールされていないイメージであった場合、`setup_remote_docker` を有効化すると、これを使用できるようになる。
 
-`machine`タイプを選択した場合、`setup_remote_docker`は不要である。
+`machine` タイプを選択した場合、`setup_remote_docker` は不要である。
 
 ただし、ボリュームマウントを使用できなくなるので注意する。
 
@@ -506,7 +506,7 @@ jobs:
 
 if文を定義する。
 
-`when`キーでは条件がtrueの場合、また`unless`キーではfalseの場合に実行する`steps`キーを定義する。
+`when` キーでは条件がtrueの場合、また `unless` キーではfalseの場合に実行する `steps` キーを定義する。
 
 **＊実装例＊**
 
@@ -548,21 +548,21 @@ workflows:
 
 Workflow間で使いまわせるキャッシュを作成する。
 
-`resource_class`キーによる実行環境のスペック設定と同様にして、ビルドの完了までの速さを改善できる。
+`resource_class` キーによる実行環境のスペック設定と同様にして、ビルドの完了までの速さを改善できる。
 
-これを使用しない場合、例えば、CircleCIコンテナで`composer install`コマンドを実行することにより、毎回のworkflowで同じパッケージがインストールされる。
+これを使用しない場合、例えば、CircleCIコンテナで `composer install` コマンドを実行することにより、毎回のworkflowで同じパッケージがインストールされる。
 
 しかし、workflowのたびに、パッケージをインストールするのは非効率である。
 
-そこで、`composer.json`ファイルの実装が変更されない限り、前回のworkflowのビルド時、vendorディレクトリ配下に配置されたアーティファクトを再利用する。
+そこで、`composer.json` ファイルの実装が変更されない限り、前回のworkflowのビルド時、vendorディレクトリ配下に配置されたアーティファクトを再利用する。
 
-この能力は、複数のworkflowの間のみでなく、`1`個のworkflowの中でも利用できる。
+この能力は、複数のworkflowの間のみでなく、`1` 個のworkflowの中でも利用できる。
 
 > - https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
 **＊実装例＊**
 
-Composerを使用してパッケージをインストールする時、前回の結果を再利用する。
+Composerを使用してパッケージをインストールするとき、前回の結果を再利用する。
 
 ```yaml
 version: 2.1
@@ -589,7 +589,7 @@ jobs:
 
 **＊実装例＊**
 
-yarnを使用してパッケージをインストールする時、前回の結果を再利用する。
+yarnを使用してパッケージをインストールするとき、前回の結果を再利用する。
 
 ```yaml
 version: 2.1
@@ -622,7 +622,7 @@ jobs:
             yarn test
 ```
 
-ただし、この能力はcommandsで共通化した方が可読性が良い。
+ただし、この能力はcommandsで共通化したほうが可読性が良い。
 
 **＊実装例＊**
 
@@ -662,7 +662,7 @@ jobs:
 
 ![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/workflow_workspace_cache.png)
 
-CircleCIでは、jobごとに異なる仮想環境を作成するため、他の`jobs`キーで使用された一時ファイルを再利用したい場合、これを使用する。
+CircleCIでは、jobごとに異なる仮想環境を作成するため、他の `jobs` キーで使用された一時ファイルを再利用したい場合、これを使用する。
 
 **＊実装例＊**
 
@@ -715,7 +715,7 @@ jobs:
 
 ### commandsとは
 
-設定を部品化し、異なる`jobs`キーで`steps`キーとして繰り返し利用できる。
+設定を部品化し、異なる `jobs` キーで `steps` キーとして繰り返し利用できる。
 
 <br>
 
@@ -756,7 +756,7 @@ jobs:
 
 #### ▼ executorsとは
 
-実行環境に関する設定を部品化し、異なる`jobs`キーで繰り返し利用できる。
+実行環境に関する設定を部品化し、異なる `jobs` キーで繰り返し利用できる。
 
 <br>
 
@@ -853,9 +853,9 @@ workflows:
 
 #### ▼ pre-steps、post-steps
 
-事前に`jobs`キーに定義する必要はない。
+事前に `jobs` キーに定義する必要はない。
 
-`workspace`キーで、コールされる`jobs`キーの引数として設定することにより、その`jobs`キー内の最初と最後に、`steps`キーを追加できる。
+`workspace` キーで、コールされる `jobs` キーの引数として設定することにより、その `jobs` キー内の最初と最後に、`steps` キーを追加できる。
 
 **＊実装例＊**
 
@@ -921,7 +921,7 @@ workflows:
 
 #### ▼ filtersとは
 
-コミットされた時に`jobs`キーが発火するブランチ名、あるいは発火しないブランチ名を設定する。
+コミットされたときに `jobs` キーが発火するブランチ名、あるいは発火しないブランチ名を設定する。
 
 正規表現で実装する必要がある。
 
@@ -962,7 +962,7 @@ workflows:
 
 タグをつけたコミットに対して発火する。
 
-`ignore`キーで全てのブランチを指定することにより、マージによる発火を防げる。
+`ignore` キーで全てのブランチを指定することにより、マージによる発火を防げる。
 
 ```yaml
 workflows:
@@ -1001,7 +1001,7 @@ workflows:
 
 環境変数は基本的にシェルの実行時のみ使用でき、CircleCIのオプション値としては出力できない。
 
-ただし、`docker`キーだけは例外的に出力できる。
+ただし、`docker` キーだけは例外的に出力できる。
 
 ```yaml
 # 出力できない
@@ -1016,9 +1016,9 @@ working_directory: /go/src/github.com/$ORGNAME/$REPONAME
 
 | 参照レベル | 方法                                | 説明                                                                                                                          |
 | ---------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Bash       | `export`、`source`キー、`$BASH_ENV` | `run`キーにおける`command`キー内のシェルのみで参照できる。ただし、`$BASH_ENV`を使用すれば、異なる`commands`間で値を共有可能。 |
-| Container  | `environment`キー                   | `jobs`キー内の特定のコンテナのシェルのみで参照できる。                                                                        |
-| Job        | `environment`キー                   | `jobs`キー内のシェルのみで参照できる。                                                                                        |
+| Bash       | `export`、`source` キー、`$BASH_ENV` | `run` キーにおける `command` キー内のシェルのみで参照できる。ただし、`$BASH_ENV` を使用すれば、異なる `commands` 間で値を共有可能。 |
+| Container  | `environment` キー                   | `jobs` キー内の特定のコンテナのシェルのみで参照できる。                                                                        |
+| Job        | `environment` キー                   | `jobs` キー内のシェルのみで参照できる。                                                                                        |
 | Project    | Environment Variables能力           | リポジトリ内のシェルのみ参照できる。                                                                                          |
 | Global     | Contexts能力                        | 異なるリポジトリ間のシェルで参照できる。                                                                                      |
 
@@ -1026,7 +1026,7 @@ working_directory: /go/src/github.com/$ORGNAME/$REPONAME
 
 Linuxにおける環境変数の出力方法と同様である。
 
-また、文字列の中に値を出力する変数展開の場合、`${}`を使用する。
+また、文字列の中に値を出力する変数展開の場合、`${}` を使用する。
 
 ```yaml
 # 変数展開の場合
@@ -1039,9 +1039,9 @@ steps:
         echo "This is "${FOO}""
 ```
 
-#### ▼ `.env`ファイルの安全なコピー方法
+#### ▼ `.env` ファイルの安全なコピー方法
 
-アプリケーションの`.env`ファイルをCircleCI内で使用したい時は、あらかじめエンコードされた環境変数をProject変数として管理しておき、CircleCI内でデコードするようにすれば、envファイルを安全にコピーできる。
+アプリケーションの `.env` ファイルをCircleCI内で使用したいときは、あらかじめエンコードされた環境変数をProject変数として管理しておき、CircleCI内でデコードするようにすれば、envファイルを安全にコピーできる。
 
 ```bash
 $ cat .env | base64
@@ -1078,11 +1078,11 @@ jobs:
 
 #### ▼ commandキーによる設定
 
-一番参照範囲が小さく、`run`キーにおける同じ`command`キー内のみで参照できる。
+一番参照範囲が小さく、`run` キーにおける同じ `command` キー内のみで参照できる。
 
-`command`キー内で使用する環境変数を定義するためには、『`$BASH_ENV`』に`export`コマンドを格納する必要がある。
+`command` キー内で使用する環境変数を定義するためには、『`$BASH_ENV`』に `export` コマンドを格納する必要がある。
 
-定義したものを使用するためには、『`$BASH_ENV`』を`source`キーで読み込む必要があるために注意する。
+定義したものを使用するためには、『`$BASH_ENV`』を `source` キーで読み込む必要があるために注意する。
 
 > - https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
 
@@ -1109,9 +1109,9 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-CircleCIでは`run`キーを実行する時に『`$BASH_ENV`』が`source`キーで自動的に読み込まれるようになっている。
+CircleCIでは `run` キーを実行するときに『`$BASH_ENV`』が `source` キーで自動的に読み込まれるようになっている。
 
-そのため、『`$BASH_ENV`』は複数の`run`キー間』で共有できる。
+そのため、『`$BASH_ENV`』は複数の `run` キー間』で共有できる。
 
 ただし、Alpine Linuxでは、この共有を使用できないため注意する (かなりたくさんある) 。
 
@@ -1201,9 +1201,9 @@ EOF
 
 ### Containerレベル
 
-Bashレベルより参照範囲が大きく、`jobs`キー内のみで参照できる。
+Bashレベルより参照範囲が大きく、`jobs` キー内のみで参照できる。
 
-`environment`キーを`image`キーと同じ階層で定義する。
+`environment` キーを `image` キーと同じ階層で定義する。
 
 ```yaml
 version: 2.1
@@ -1243,7 +1243,7 @@ Contextsを使用する。
 
 #### ▼ dockerタイプの場合
 
-自分でdocker-composeをインストールする必要がある。実行環境としてのコンテナと、ビルドしたコンテナが入れ子にならないように、`setup_remote_docker`を実行する必要がある。ただし、ボリュームマウントを使用できなくなるので注意する。
+自分でdocker-composeをインストールする必要がある。実行環境としてのコンテナと、ビルドしたコンテナが入れ子にならないように、`setup_remote_docker` を実行する必要がある。ただし、ボリュームマウントを使用できなくなるので注意する。
 
 ```yaml
 version: 2.1
@@ -1298,7 +1298,7 @@ Docker Composeは、コンテナの作成の順番を制御できるものの、
 
 LaravelコンテナとMySQLコンテナの場合を示す。
 
-コンテナ内に対してコマンドを実行する時のディレクトリは、Dockerfileの`WORKDIR`によって決まるので注意する。
+コンテナ内に対してコマンドを実行するときのディレクトリは、Dockerfileの `WORKDIR` によって決まるので注意する。
 
 ```yaml
 version: 2.1
@@ -1394,7 +1394,7 @@ CircleCIでコンテナイメージをビルドした後、各イメージレイ
 
 #### ▼ 使用例
 
-machineタイプで使用する場合、machineキーの下で`docker_layer_caching`を使用する。
+machineタイプで使用する場合、machineキーの下で `docker_layer_caching` を使用する。
 
 **＊実装例＊**
 
@@ -1429,7 +1429,7 @@ jobs:
             docker-compose up --build -d
 ```
 
-dockerタイプで使用する場合、dockerキーの下で`docker_layer_caching`を使用する。
+dockerタイプで使用する場合、dockerキーの下で `docker_layer_caching` を使用する。
 
 **＊実装例＊**
 

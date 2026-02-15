@@ -21,7 +21,7 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 <br>
 
-### `requirements.txt`ファイル
+### `requirements.txt` ファイル
 
 要件とするパッケージのバージョンを指定する。
 
@@ -35,9 +35,9 @@ flask-json==0.4.0
 
 <br>
 
-### `pip.conf`ファイル
+### `pip.conf` ファイル
 
-`pip`コマンドのオプションを設定する。
+`pip` コマンドのオプションを設定する。
 
 ```ini
 [global]
@@ -113,7 +113,7 @@ $ pip3 install <パッケージ名>
 
 pip自身を含む、指定したパッケージをアップグレードする。
 
-アップグレード後は、`pip3 check`コマンドで依存関係が正しいかを確認し、`pip3 freeze`コマンドで要件ファイルも更新する必要がある。
+アップグレード後は、`pip3 check` コマンドで依存関係が正しいかを確認し、`pip3 freeze` コマンドで要件ファイルも更新する必要がある。
 
 ```bash
 $ pip3 install --upgrade <パッケージ名>
@@ -263,7 +263,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 指定したパッケージをアンインストールする。
 
-キャッシュが残っているので、`pip3 cache remove`コマンドで指定したパッケージのキャッシュも削除しておく。
+キャッシュが残っているので、`pip3 cache remove` コマンドで指定したパッケージのキャッシュも削除しておく。
 
 ```bash
 $ pip3 uninstall -y <パッケージ名>
@@ -271,9 +271,9 @@ $ pip3 uninstall -y <パッケージ名>
 $ pip3 cache remove <パッケージ名>
 ```
 
-`uninstall.txt`ファイルを元にパッケージをアンインストールもできる。
+`uninstall.txt` ファイルを元にパッケージをアンインストールもできる。
 
-キャッシュが残っているので、`pip3 cache purge`コマンドでキャッシュも全て削除しておく。
+キャッシュが残っているので、`pip3 cache purge` コマンドでキャッシュも全て削除しておく。
 
 ```bash
 $ pip3 uninstall -y -r uninstall.txt
@@ -293,11 +293,11 @@ $ pip3 cache purge
 
 <br>
 
-### `requirements.in`ファイル
+### `requirements.in` ファイル
 
-`requirements.txt`ファイルの元になるファイル。
+`requirements.txt` ファイルの元になるファイル。
 
-記法は`requirements.txt`ファイルと同じである。
+記法は `requirements.txt` ファイルと同じである。
 
 ```requirements
 flask==3.0.2
@@ -307,7 +307,7 @@ flask-json==0.4.0
 ...
 ```
 
-`pip-compile`コマンドを実行すると、`requirements.txt`ファイルを作成できる。
+`pip-compile` コマンドを実行すると、`requirements.txt` ファイルを作成できる。
 
 ```requirements
 #

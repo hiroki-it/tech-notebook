@@ -84,7 +84,7 @@ type User {
 
 **＊例＊**
 
-ここでは、前述のQuery処理のAPIスキーマで定義した`GetUser`関数を使用すると仮定する。
+ここでは、前述のQuery処理のAPIスキーマで定義した `GetUser` 関数を使用すると仮定する。
 
 ```graphql
 query GetUser {
@@ -155,7 +155,7 @@ input UserCreateInput {
 
 **＊例＊**
 
-ここでは、前述のMutation処理のAPIスキーマで定義した`CreateUser`関数を実行すると仮定する。
+ここでは、前述のMutation処理のAPIスキーマで定義した `CreateUser` 関数を実行すると仮定する。
 
 ```graphql
 mutation CreateUser {
@@ -165,7 +165,7 @@ mutation CreateUser {
 }
 ```
 
-クライアント側で`CreateUser`関数を実行する。
+クライアント側で `CreateUser` 関数を実行する。
 
 ```bash
 $ curl \

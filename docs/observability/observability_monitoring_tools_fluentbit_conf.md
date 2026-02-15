@@ -48,7 +48,7 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
 
 Log_Level値でFluentBitのログレベルを制御できる。
 
-`debug`を割り当てると、FluentBitのログがより詳細になり、各セクションの設定値を確認できるようになる。
+`debug` を割り当てると、FluentBitのログがより詳細になり、各セクションの設定値を確認できるようになる。
 
 **＊実行ログ例＊**
 
@@ -100,7 +100,7 @@ Fluent Bit v1.8.6
 
 プラグインを使用して、ログのインプット方法を設定する。
 
-コマンドの`-i`オプションでINPUT名を指定し、実行もできる。
+コマンドの `-i` オプションでINPUT名を指定し、実行もできる。
 
 ```bash
 Inputs
@@ -319,9 +319,9 @@ systemdのログを収集する。
 
 指定したパスに継続的にアウトプットされるログファイルを順次結合し、パイプラインにインプットする。
 
-あらかじめ、FluentBitコンテナ内にログファイルを配置する必要があり、`Path`でこれを指定する。
+あらかじめ、FluentBitコンテナ内にログファイルを配置する必要があり、`Path` でこれを指定する。
 
-`v1.8`を境にオプションが変わっていることに注意する。
+`v1.8` を境にオプションが変わっていることに注意する。
 
 #### ▼ セットアップ
 
@@ -452,7 +452,7 @@ INPUTセクションでcriプラグインを読み込む。
 
 例えば、以下のような非構造化ログがあったとする。
 
-criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキー>`を認識する。
+criプラグインは、`<timeキー> <streamキー> <logtagキー> <messageキー>` を認識する。
 
 ```bash
 2021-12-17T08:03:23.918838346+09:00 stderr F 2021/12/17 08:03:23 [INFO] start worker processes
@@ -644,7 +644,7 @@ FILTERセクションで、modifyプラグインを定義する。
     multiline.parser      laravel
 ```
 
-コマンドの`-f`オプションでFILTER名を指定し、実行もできる。
+コマンドの `-f` オプションでFILTER名を指定し、実行もできる。
 
 ```bash
 Filters
@@ -844,7 +844,7 @@ SELECTステートメントの結果を使用して、データストリーム�
 
 **＊実装例＊**
 
-タグが`*-bar-*` (ワイルドカード指定) であるログのうち、`container_name`キーの値が`qux`であるもののみをフィルタリングし、これの`log`キーを抽出する。
+タグが `*-bar-*` (ワイルドカード指定) であるログのうち、`container_name` キーの値が `qux` であるもののみをフィルタリングし、これの `log` キーを抽出する。
 
 ```bash
 SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
@@ -924,7 +924,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
     storage.type  filesystem
 ```
 
-指定した場所に`cpu.0`ディレクトリや`tail.0`ディレクトリが作成され、`.flb`ファイルとしてバッファリングが実行される。
+指定した場所に `cpu.0` ディレクトリや `tail.0` ディレクトリが作成され、`.flb` ファイルとしてバッファリングが実行される。
 
 ```bash
 $ ls -ls /var/log/fluent-bit/cpu.0
@@ -955,7 +955,7 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 
 設定できるアウトプット先の種類については、以下のリンクを参考にせよ。
 
-コマンドの`-o`オプションでOUTPUT名を指定し、実行もできる。
+コマンドの `-o` オプションでOUTPUT名を指定し、実行もできる。
 
 ![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_output.png)
 
@@ -1031,7 +1031,7 @@ AWSから提供される他の全てのFluentBitイメージを束ねたベー�
 
 ログをAWS CloudWatch Logsにルーティングする。
 
-元々、『cloudwatchプラグイン』という名前だった。
+もともと、『cloudwatchプラグイン』という名前だった。
 
 > - https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4
 
@@ -1077,11 +1077,11 @@ cloudwatch_logsプラグインがプリインストールされているベー�
 
 AWS CloudWatch Logsに送信されるデータはJSON型である。
 
-`log`キーにログが割り当てられている。
+`log` キーにログが割り当てられている。
 
 特定のキーの値のみをAWS CloudWatch Logsに送信する場合、log_keyオプションでキー名を設定する。
 
-例えば、`log`キーのみを送信する場合、『`log`』と設定する。
+例えば、`log` キーのみを送信する場合、『`log`』と設定する。
 
 ```yaml
 {

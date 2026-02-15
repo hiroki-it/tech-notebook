@@ -15,11 +15,11 @@ description: Helmfile＠Helmの知見を記録しています。
 
 ## 01. Helmfileの仕組み
 
-`helm`コマンドを宣言的に実行できる。
+`helm` コマンドを宣言的に実行できる。
 
-ただし、ArgoCDのApplicationの`.spec.source.helm`キーでも`helm`コマンドを宣言的に実行しつつ、実行を自動化できる。
+ただし、ArgoCDのApplicationの `.spec.source.helm` キーでも `helm` コマンドを宣言的に実行しつつ、実行を自動化できる。
 
-そのため、できるだけArgoCDを使用した方が良い。
+そのため、できるだけArgoCDを使用したほうが良い。
 
 <br>
 
@@ -31,7 +31,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 マイクロサービスをチャートの単位とみなし、マイクロサービスごとに別にディレクトリを作成する。
 
-各マイクロサービスのディレクトリには、`helmfile.d`ディレクトリを置き、ここにHelmリリース単位の`helmfile.yaml`ファイルを配置する。
+各マイクロサービスのディレクトリには、`helmfile.d` ディレクトリを置き、ここにHelmリリース単位の `helmfile.yaml` ファイルを配置する。
 
 ```yaml
 repository/
@@ -52,11 +52,11 @@ repository/
 
 ## 03. helmfile.dファイル
 
-### `helmfile.yaml`ファイルとは
+### `helmfile.yaml` ファイルとは
 
-`helm`コマンドを宣言的に定義する。
+`helm` コマンドを宣言的に定義する。
 
-チャートをインストールする時、ほとんどのチャートで以下のコマンドを実行することになる。
+チャートをインストールするとき、ほとんどのチャートで以下のコマンドを実行することになる。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> <URL>
@@ -68,7 +68,7 @@ $ kubectl create namespace <Namespace名>
 $ helm install <Helmリリース名> <チャートリポジトリ名>/<チャート名> -n <Namespace名> --version <バージョンタグ>
 ```
 
-これを`helmfile.yaml`ファイルで定義すると、以下のようになる。
+これを `helmfile.yaml` ファイルで定義すると、以下のようになる。
 
 ```yaml
 repositories:
@@ -82,7 +82,7 @@ releases:
     version: <バージョンタグ>
 ```
 
-補足として、`helmfile.yaml`ファイル内でもHelmの関数を使用できる。
+補足として、`helmfile.yaml` ファイル内でもHelmの関数を使用できる。
 
 ```yaml
 environments:
@@ -113,7 +113,7 @@ releases:
 
 #### ▼ `.Environment.Name`
 
-`helmfile`コマンドの`-e`オプションに渡した値は、`helmfile.yaml`ファイル内の`.Environment.Name`に出力できる。
+`helmfile` コマンドの `-e` オプションに渡した値は、`helmfile.yaml` ファイル内の `.Environment.Name` に出力できる。
 
 ```bash
 $ helmfile -e prd -f helmfile.yaml apply
@@ -125,7 +125,7 @@ $ helmfile -e prd -f helmfile.yaml apply
 
 #### ▼ `.Values`
 
-`helmfile`コマンドの`--set`オプションに渡した値は、`helmfile.yaml`ファイル内の`.Values`に出力できる。
+`helmfile` コマンドの `--set` オプションに渡した値は、`helmfile.yaml` ファイル内の `.Values` に出力できる。
 
 ```bash
 $ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
@@ -141,13 +141,13 @@ $ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
 
 #### ▼ environments
 
-`helmfile`コマンド時に`helmfile.yaml`ファイル内に環境名を渡せる。
+`helmfile` コマンド時に `helmfile.yaml` ファイル内に環境名を渡せる。
 
 > - https://helmfile.readthedocs.io/en/latest/#environment-values
 
 #### ▼ 実行環境名を渡したいだけの場合
 
-実行環境名を渡したいだけの場合、`environments`キー配下のキー自体を`{{ .Environment.Name }}`のように変数化する。
+実行環境名を渡したいだけの場合、`environments` キー配下のキー自体を `{{ .Environment.Name }}` のように変数化する。
 
 ```yaml
 environments:
@@ -176,7 +176,7 @@ $ helmfile -e prd apply
 
 #### ▼ 実行環境名を渡す以外こともやりたい場合
 
-実行環境名を渡す以外こともやりたい場合、`environments`キー配下のキー自体に実行環境名を設定する。
+実行環境名を渡す以外こともやりたい場合、`environments` キー配下のキー自体に実行環境名を設定する。
 
 あまりユースケースがないかもしれない。
 
@@ -212,7 +212,7 @@ $ helmfile -e prd apply
 
 ### helmfiles
 
-`helmfile`コマンド時に`-f`オプションを省略できるように、`helmfile`ファイルを宣言的に指定する。
+`helmfile` コマンド時に `-f` オプションを省略できるように、`helmfile` ファイルを宣言的に指定する。
 
 ```yaml
 helmfiles:
@@ -229,7 +229,7 @@ helmfiles:
 
 #### ▼ atomic
 
-`helmfile apply`コマンドが正常に完了しなかった場合に、自動的にロールバックする。
+`helmfile apply` コマンドが正常に完了しなかった場合に、自動的にロールバックする。
 
 ただし、Helmfileの自動作成機能でNamespaceは削除されずそのまま残る。
 
@@ -249,11 +249,11 @@ releases:
 
 #### ▼ createNamespace
 
-`helm install`コマンド時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
+`helm install` コマンド時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
 
-デフォルト値は`true`になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。
+デフォルト値は `true` になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。
 
-ただし、Namespaceので出どころがわからなくなるため、Helmfileの`createNamespace`オプションは無効化し、Namespaceのマニフェストを定義しておく方が良い。
+ただし、Namespaceので出どころがわからなくなるため、Helmfileの `createNamespace` オプションは無効化し、Namespaceのマニフェストを定義しておくほうが良い。
 
 ```yaml
 releases:
@@ -264,7 +264,7 @@ releases:
 
 依存先のチャートを設定する。
 
-公式チャートに追加してマニフェストを作成したい場合、`values`ファイルの`extraTemplates`キーや`extraTemplates`キーを使用することになる。
+公式チャートに追加してマニフェストを作成したい場合、`values` ファイルの `extraTemplates` キーや `extraTemplates` キーを使用することになる。
 
 しかし、公式チャートでこれらを用意していないことがある。
 
@@ -281,7 +281,7 @@ releases:
         version: 1.0.0
 ```
 
-依存先チャートで`values`ファイルの指定はいらないが、extraチャート側でデフォルト値を設定しておく必要がある
+依存先チャートで `values` ファイルの指定はいらないが、extraチャート側でデフォルト値を設定しておく必要がある
 
 ```yaml
 # extraチャートのデフォルト値
@@ -290,7 +290,7 @@ foo: ""
 bar: ""
 ```
 
-また、依存対象のサブチャートのリポジトリを`helm repo add`するために、`repositories`キーが必要がある。
+また、依存対象のサブチャートのリポジトリを `helm repo add` するために、`repositories` キーが必要がある。
 
 ```yaml
 repositories:
@@ -330,9 +330,9 @@ releases:
 
 #### ▼ set
 
-Helmの実行時に出力する`values`の値を設定する。
+Helmの実行時に出力する `values` の値を設定する。
 
-キー名にドットを含む場合、`\`でエスケープする必要がある。
+キー名にドットを含む場合、`\` でエスケープする必要がある。
 
 ```yaml
 releases:
@@ -389,9 +389,9 @@ releases:
 
 #### ▼ values
 
-Helmの実行時に使用する上書き用の`values`ファイルを設定する。
+Helmの実行時に使用する上書き用の `values` ファイルを設定する。
 
-チャート内に置いた`values`ファイルを指定する必要はない。
+チャート内に置いた `values` ファイルを指定する必要はない。
 
 ```yaml
 releases:
@@ -411,7 +411,7 @@ repository/
 └── baz/ # bazサービス
 ```
 
-もし`{{ .Environment.Name }}`を使用したい場合は、`environments`キーの方でvaluesファイルを読み込ませるようにする。
+もし `{{ .Environment.Name }}` を使用したい場合は、`environments` キーの方でvaluesファイルを読み込ませるようにする。
 
 ```yaml
 environments:
@@ -437,7 +437,7 @@ releases:
 
 #### ▼ name
 
-チャートリポジトリ名を設定する。ここで設定したリポジトリ名は、`releases[*].chart`キーでも使用する。
+チャートリポジトリ名を設定する。ここで設定したリポジトリ名は、`releases[*].chart` キーでも使用する。
 
 ```yaml
 repositories:
@@ -526,7 +526,7 @@ secrets:
 
 #### ▼ 同じチャートを異なるNamespaceでデプロイ
 
-`release`キー配下に同じチャートを宣言すれば、同じチャートを異なるNamespaceにデプロイできる。
+`release` キー配下に同じチャートを宣言すれば、同じチャートを異なるNamespaceにデプロイできる。
 
 ```yaml
 releases:
@@ -671,7 +671,7 @@ data:
 
 #### ▼ 空行を挿入したくない
 
-空行を挿入したくない場合、パイプの後にそのまま`readFile`関数を定義する。
+空行を挿入したくない場合、パイプの後にそのまま `readFile` 関数を定義する。
 
 ```yaml
 apiVersion: v1
@@ -694,11 +694,11 @@ data:
 
 #### ▼ JSONファイルを読み込める
 
-Helmには`.Files.Get`関数や`.Files.Glob`関数がある。
+Helmには `.Files.Get` 関数や `.Files.Glob` 関数がある。
 
 これらの関数でJSONファイルを読み込もうとすると、 (なぜか) エラーになる。
 
-Helmfileの`readFile`関数ではエラーが起こらない。
+Helmfileの `readFile` 関数ではエラーが起こらない。
 
 ```yaml
 apiVersion: v1
@@ -715,19 +715,19 @@ data:
 
 ### values.gotmplファイルとは
 
-Helmでは`values`ファイルをテンプレート化できないが、Helmfileではこれが可能である。
+Helmでは `values` ファイルをテンプレート化できないが、Helmfileではこれが可能である。
 
-`values`ファイルに、Helmfileの変数や他の`values`ファイルの値を出力する。
+`values` ファイルに、Helmfileの変数や他の `values` ファイルの値を出力する。
 
-特に、公式チャートに実行環境別の`values`ファイルを渡したい場合に役立つ。
+特に、公式チャートに実行環境別の `values` ファイルを渡したい場合に役立つ。
 
 <br>
 
 ### helmfileでの指定
 
-Helmfileでは、`environments`キーの後に`releases`キーが読み込まれる。
+Helmfileでは、`environments` キーの後に `releases` キーが読み込まれる。
 
-そのため、`values.yaml.gotmpl`ファイルに値を渡すための`values`ファイルは、Helmfileの`environments`キー配下で読み込まなければならない。
+そのため、`values.yaml.gotmpl` ファイルに値を渡すための `values` ファイルは、Helmfileの `environments` キー配下で読み込まなければならない。
 
 ```yaml
 environments:
@@ -757,7 +757,7 @@ releases:
 
 ### 共通valuesファイルとの使い分け
 
-`common-values.yaml.gotmpl`ファイルを使用する代わりに、共有の`values`ファイルを使用する方法もある。
+`common-values.yaml.gotmpl` ファイルを使用する代わりに、共有の `values` ファイルを使用する方法もある。
 
 ```yaml
 environments:

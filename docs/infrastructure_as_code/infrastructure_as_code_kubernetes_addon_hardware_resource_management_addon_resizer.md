@@ -75,7 +75,7 @@ spec:
 
 以下のようなConfigMapを作成する。
 
-`addonmanager.kubernetes.io/mode`キーに`EnsureExists`を設定しないと、addon-managerがデフォルト値に上書きしてしまう。
+`addonmanager.kubernetes.io/mode` キーに `EnsureExists` を設定しないと、addon-managerがデフォルト値に上書きしてしまう。
 
 ```yaml
 apiVersion: v1

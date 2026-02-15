@@ -112,13 +112,13 @@ Kubernetesのセキュリティ上の理由から、デフォルトではPod内�
 
 ## 05. ネットワークレイヤー
 
-### Ingress Controller由来の`L7`ロードバランサーの場合
+### Ingress Controller由来の `L7` ロードバランサーの場合
 
-Ingress Controllerの場合、`L7`ロードバランサーをプロビジョニングする。
+Ingress Controllerの場合、`L7` ロードバランサーをプロビジョニングする。
 
-Ingress Controllerによる`L7`ロードバランサーは、受信した通信をServiceにルーティングする。
+Ingress Controllerによる `L7` ロードバランサーは、受信した通信をServiceにルーティングする。
 
-Serviceは`L4`ロードバランサーとして、インバウンド通信をPodにルーティングする。
+Serviceは `L4` ロードバランサーとして、インバウンド通信をPodにルーティングする。
 
 ![kubernetes_network_l4-l7](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png)
 
@@ -126,9 +126,9 @@ Serviceは`L4`ロードバランサーとして、インバウンド通信をPod
 
 <br>
 
-### LoadBalancer Service由来の`L4`ロードバランサーの場合
+### LoadBalancer Service由来の `L4` ロードバランサーの場合
 
-LoadBalancer Serviceの場合、`L4`ロードバランサーをプロビジョニングする。
+LoadBalancer Serviceの場合、`L4` ロードバランサーをプロビジョニングする。
 
 <br>
 
@@ -236,9 +236,9 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 Kubernetesに採用できる権威DNSサーバー (kube-dns、CoreDNS、HashiCorp Consulなど) は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。
 
-Podのスケジューリング時に、kubeletはPod内のコンテナの`/etc/resolv.conf`ファイルに権威DNSサーバーのIPアドレスを設定する。
+Podのスケジューリング時に、kubeletはPod内のコンテナの `/etc/resolv.conf` ファイルに権威DNSサーバーのIPアドレスを設定する。
 
-Pod内のコンテナは、自身の`/etc/resolv.conf`ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーから宛先PodのIPアドレスを正引きする。
+Pod内のコンテナは、自身の `/etc/resolv.conf` ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーから宛先PodのIPアドレスを正引きする。
 
 レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにリクエストを送信する。
 
@@ -266,9 +266,9 @@ options ndots:5
 
 ドット数が多ければ多いほど、ローカルドメインから網羅的に名前解決を実施するため、ハードウェアリソースの消費が高くなる。
 
-例えば、`ndots:5`としたPodが`example.com`を名前解決する場合、ドット数は`5`になる。
+例えば、`ndots:5` としたPodが `example.com` を名前解決する場合、ドット数は `5` になる。
 
-そのため、最初は`example.com.default.svc.cluster.local.`から名前解決を始め、`example.com.`で終わる。
+そのため、最初は `example.com.default.svc.cluster.local.` から名前解決を始め、`example.com.` で終わる。
 
 `(1)`
 
@@ -299,11 +299,11 @@ options ndots:5
 
 ### Podのアウトバウンド通信のデバッグ
 
-#### ▼ `kubectl run`コマンド
+#### ▼ `kubectl run` コマンド
 
-`kubectl exec`コマンドが運用的に禁止されているような状況がある。
+`kubectl exec` コマンドが運用的に禁止されているような状況がある。
 
-そのような状況下で、シングルNodeの場合は、`kubectl run`コマンドで、`--rm`オプションを有効化し、Clusterネットワーク内に`curl`コマンドによる検証用のPodを一時的に新規作成する。
+そのような状況下で、シングルNodeの場合は、`kubectl run` コマンドで、`--rm` オプションを有効化し、Clusterネットワーク内に `curl` コマンドによる検証用のPodを一時的に新規作成する。
 
 ```bash
 # シングルNodeの場合
@@ -328,15 +328,15 @@ $ kubectl run \
 [root@<Pod名>:~] $ mtr <Serviceの完全修飾ドメイン名やIPアドレス>
 ```
 
-#### ▼ `kubectl debug node`コマンド
+#### ▼ `kubectl debug node` コマンド
 
 マルチNodeの場合は、指定したNode上でPodを作成できない。
 
 (たぶん) 名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。
 
-そのため、代わりに`kubectl debug`コマンドを使用する。
+そのため、代わりに `kubectl debug` コマンドを使用する。
 
-ただし、`kubectl debug`コマンドで作成されたPodは、使用後に手動で削除する必要がある。
+ただし、`kubectl debug` コマンドで作成されたPodは、使用後に手動で削除する必要がある。
 
 ```bash
 # マルチNodeの場合
@@ -364,11 +364,11 @@ $ kubectl delete -n default node-debugger-*****
 
 デバッグ用Podを起動しておく方法もある。
 
-`curl`コマンド専用イメージを使用する場合、コンテナ起動後に`curl`コマンドを実行し、すぐに終了してしまう。
+`curl` コマンド専用イメージを使用する場合、コンテナ起動後に `curl` コマンドを実行し、すぐに終了してしまう。
 
 そのため、CrashLoopBackOffになってしまう。
 
-これを防ぐために、`sleep infinity`コマンドを実行し、ずっとスリープするようにしておく。
+これを防ぐために、`sleep infinity` コマンドを実行し、ずっとスリープするようにしておく。
 
 ```yaml
 apiVersion: apps/v1

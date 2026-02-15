@@ -40,7 +40,7 @@ PrismaClientは、クエリエンジンに切断リクエストを送信する�
 
 ### アップグレード
 
-`@prisma/client`パッケージと`prisma`パッケージの両方をアップグレードする必要がある。
+`@prisma/client` パッケージと `prisma` パッケージの両方をアップグレードする必要がある。
 
 ```bash
 $ yarn upgrade @prisma/client@<バージョン>
@@ -106,7 +106,7 @@ $ prisma migrate deploy
 
 初期の状態まで、全てロールバックする。
 
-`--force`オプションで警告を無視できる。
+`--force` オプションで警告を無視できる。
 
 ```bash
 $ prisma migrate reset --force
@@ -144,7 +144,7 @@ DROP TABLE `UserDetail`;
 
 ローカルマシン用の初期データを挿入する。
 
-`seed.ts`ファイルにある`seed`関数を実行する。
+`seed.ts` ファイルにある `seed` 関数を実行する。
 
 ```bash
 $ yarn prisma db seed
@@ -162,7 +162,7 @@ DB情報を設定する。
 
 #### ▼ url
 
-プロトコル名として、`mysql`や`postgresql`を設定できる。
+プロトコル名として、`mysql` や `postgresql` を設定できる。
 
 ```javascript
 datasource db {
@@ -368,7 +368,7 @@ main()
 
 ### Seedとは
 
-`yarn prisma db`コマンドでDBに挿入できる初期データである。
+`yarn prisma db` コマンドでDBに挿入できる初期データである。
 
 開発環境、CI環境のユニットテストやE2Eテスト、ステージング環境の動作確認で使用できる。
 
@@ -472,7 +472,7 @@ Prisma Client がDBに対してトランザクションを実行しエラーが�
 
 > - https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror
 
-#### ▼ インフラストラクチャレイヤーで`try-catch`を実行する
+#### ▼ インフラストラクチャレイヤーで `try-catch` を実行する
 
 ```typescript
 // ユースケースレイヤー
@@ -529,7 +529,7 @@ class UserUseCase {
 }
 ```
 
-#### ▼ インフラストラクチャレイヤーより上位のレイヤーで`try-catch`を実行する
+#### ▼ インフラストラクチャレイヤーより上位のレイヤーで `try-catch` を実行する
 
 ```typescript
 // インフラストラクチャレイヤー

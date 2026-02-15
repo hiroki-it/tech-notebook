@@ -23,15 +23,15 @@ description: HAProxy＠ロードバランサー系ミドルウェアの知見を
 
 ## 02. ユースケース
 
-### `L4`/`L7`ロードバランサーのミドルウェアとして
+### `L4`/`L7` ロードバランサーのミドルウェアとして
 
-#### ▼ `L7`ロードバランサーの場合
+#### ▼ `L7` ロードバランサーの場合
 
 記入中...
 
-#### ▼ `L4`ロードバランサーの場合
+#### ▼ `L4` ロードバランサーの場合
 
-`L4`ロードバランサーとして使用できる。
+`L4` ロードバランサーとして使用できる。
 
 ![haproxy_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/haproxy_architecture.png)
 

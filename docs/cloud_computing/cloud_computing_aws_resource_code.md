@@ -41,7 +41,7 @@ CodeCommitは、他のコード管理サービスで代用できる。
 
 ## 02. CodeBuild
 
-### `buildspec.yml`ファイル
+### `buildspec.yml` ファイル
 
 #### ▼ AWS ECSの場合
 
@@ -56,7 +56,7 @@ AWS ECSのために、CodeBuildの設定を実行する。
 
 コンテナをビルドする場合を示す。
 
-コミットのハッシュ値でコンテナイメージをプッシュしたい場合、CodeBuildの設計上、`latest`タグもプッシュしておいた方が良い。
+コミットのハッシュ値でコンテナイメージをプッシュしたい場合、CodeBuildの設計上、`latest` タグもプッシュしておいたほうが良い。
 
 ```yaml
 version: 0.2
@@ -165,11 +165,11 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 ### ローリングアップデート
 
-#### ▼ `imagedefinitions.json`ファイル
+#### ▼ `imagedefinitions.json` ファイル
 
 新しいリビジョンのAWS ECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。
 
-リポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにした方が良い。
+リポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにしたほうが良い。
 
 ```yaml
 [
@@ -229,11 +229,11 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 > - https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1
 
-#### ▼ `appspec.yml`ファイル
+#### ▼ `appspec.yml` ファイル
 
 ルートディレクトリの直下に配置しておく。仕様として、複数のコンテナをデプロイできない。
 
-AWS ECSタスク定義名を`<TASK_DEFINITION>`とすると、`taskdef.json`ファイルの値を元にして、新しいAWS ECSタスク定義が自動的に代入される。
+AWS ECSタスク定義名を `<TASK_DEFINITION>` とすると、`taskdef.json` ファイルの値を元にして、新しいAWS ECSタスク定義が自動的に代入される。
 
 ```yaml
 version: 0.0
@@ -254,22 +254,22 @@ Resources:
 
 > - https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
 
-#### ▼ `imageDetail.json`ファイル
+#### ▼ `imageDetail.json` ファイル
 
-新バージョンタグを含むイメージリポジトリURLを、`taskdef.json`ファイルの `<IMAGE1_NAME>`に代入するために必要である。
+新バージョンタグを含むイメージリポジトリURLを、`taskdef.json` ファイルの `<IMAGE1_NAME>` に代入するために必要である。
 
-これはリポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにした方が良い。
+これはリポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにしたほうが良い。
 
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
 
-#### ▼ `taskdef.json`ファイル
+#### ▼ `taskdef.json` ファイル
 
 デプロイされるAWS ECSタスク定義を実装し、ルートディレクトリの直下に配置する。
 
-CodeDeployは、CodeBuildから渡された`imageDetail.json`ファイルを検知し、AWS ECRからコンテナイメージを取得する。
+CodeDeployは、CodeBuildから渡された `imageDetail.json` ファイルを検知し、AWS ECRからコンテナイメージを取得する。
 
-この時、`taskdef.json`ファイルのコンテナイメージ名を`<IMAGE1_NAME>`としておくと、`imageDetail.json`ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。
+この時、`taskdef.json` ファイルのコンテナイメージ名を `<IMAGE1_NAME>` としておくと、`imageDetail.json` ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。
 
 ```yaml
 {

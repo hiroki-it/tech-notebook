@@ -71,7 +71,7 @@ TCP接続のたびに、送信元と宛先間でTCPスリーウェイハンド�
 
 ### ECONNRESET (Connection reset by peer)
 
-`Connection reset by peer`ともいう。
+`Connection reset by peer` ともいう。
 
 TCP接続中に宛先のプロセスが終了し、接続を強制的に切断したとする。
 

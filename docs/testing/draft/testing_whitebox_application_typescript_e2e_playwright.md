@@ -45,7 +45,7 @@ $ pip install pytest-playwright
 
 ## 02. 設定ファイル
 
-`playwright.config.ts`ファイルに設定する。
+`playwright.config.ts` ファイルに設定する。
 
 > - https://zenn.dev/cloud_ace/articles/5024fa2fefcb9f#playwright-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 

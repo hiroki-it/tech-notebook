@@ -34,7 +34,7 @@ Laravelがデフォルトで持たないドライバーとプロバイダーを�
 
 > - https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
 
-APIガードの認証で使用するトークンをJWTに変更したい時には、以下のパッケージがおすすめ。
+APIガードの認証で使用するトークンをJWTに変更したいときには、以下のパッケージがおすすめ。
 
 > - https://github.com/tymondesigns/jwt-auth
 
@@ -51,7 +51,7 @@ APIガードの認証で使用するトークンをJWTに変更したい時に�
 
 ドライバーの種類に応じて、AuthManagerクラスがGuardインターフェースの実装クラスを返却する。
 
-`auth.php`ファイルにて、例えばtokenドライバーを選択した場合は、TokenGuardクラスが返却される。
+`auth.php` ファイルにて、例えばtokenドライバーを選択した場合は、TokenGuardクラスが返却される。
 
 ```php
 <?php
@@ -109,11 +109,11 @@ sessionドライバーを選択する。
 
 #### ▼ 全てのユーザーが同一権限を持つ場合
 
-SessionGuardクラスの`attempt`関数をコールしてパスワードをハッシュ化し、DBのハッシュ値と照合する。
+SessionGuardクラスの `attempt` 関数をコールしてパスワードをハッシュ化し、DBのハッシュ値と照合する。
 
 認証が成功すると、認証セッションを開始する。
 
-`redirect`関数で、認証後の初期ページにリダイレクトする。
+`redirect` 関数で、認証後の初期ページにリダイレクトする。
 
 > - https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
 
@@ -222,7 +222,7 @@ return [
 
 ```
 
-Authファサードの`guard`関数を使用して、ガードに応じた認証を実行する。
+Authファサードの `guard` 関数を使用して、ガードに応じた認証を実行する。
 
 これにより、同じ認証後ページにリダイレクトした後に、ユーザーのEloquentモデルに応じた処理を実行できるようになる。
 
@@ -265,7 +265,7 @@ final class AuthenticationController
 
 ### 認証済みか否かの判定
 
-#### ▼ `user`関数
+#### ▼ `user` 関数
 
 現在のセッションにおけるユーザーが認証済みであれば、ユーザーのEloquentモデルを取得する。
 
@@ -277,13 +277,13 @@ final class AuthenticationController
 $user = auth()->user();
 ```
 
-#### ▼ `check`関数
+#### ▼ `check` 関数
 
-現在のセッションにおけるユーザーが認証済みであれば、`true`を返却する。
+現在のセッションにおけるユーザーが認証済みであれば、`true` を返却する。
 
 **＊実装例＊**
 
-認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている (例：ログアウトしない) 限り、認証処理を改めて実行する必要はない。
+認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている (例：ログアウトしない) 限り、認証処理をあらためて実行する必要はない。
 
 そのために、BeforeMiddlewareを使用して、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。
 
@@ -440,7 +440,7 @@ class AuthServiceProvider extends ServiceProvider
 
 ルーティング時にDBレコードレベルの認可スコープを定義する。
 
-AuthorizeMiddlewareのエイリアスはデフォルト値は`can`であり、Kernelクラスに定義されている。
+AuthorizeMiddlewareのエイリアスはデフォルト値は `can` であり、Kernelクラスに定義されている。
 
 第一引数にPolicyクラスの関数名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。
 
@@ -448,7 +448,7 @@ AuthorizeMiddlewareのエイリアスはデフォルト値は`can`であり、Ke
 
 インスタンスを渡す場合は、暗黙のモデル結合を使用する必要がある。
 
-認可に失敗した場合、`403`ステータスを含むレスポンスを返信する。
+認可に失敗した場合、`403` ステータスを含むレスポンスを返信する。
 
 **＊実装例＊**
 
@@ -473,15 +473,15 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
 
-#### ▼ `authorization`関数による認可
+#### ▼ `authorization` 関数による認可
 
 コントローラー実行時にDBレコードレベルの認可スコープを定義する。
 
-基底コントローラーを継承したコントローラーでは`authorization`関数をコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内か否かを検証する。
+基底コントローラーを継承したコントローラーでは `authorization` 関数をコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内か否かを検証する。
 
 第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。
 
-認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で`403`レスポンスする。
+認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で `403` レスポンスする。
 
 **＊実装例＊**
 
@@ -530,17 +530,17 @@ class FooController extends Controller
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
 > - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
-#### ▼ `can`関数による認可
+#### ▼ `can` 関数による認可
 
 コントローラー実行時にDBレコードレベルの認可スコープを定義する。
 
-現在認証されているユーザーのインスタンスから`can`関数をコールできる。
+現在認証されているユーザーのインスタンスから `can` 関数をコールできる。
 
 第二引数として、ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す。
 
 DBアクセスが、そのアカウントの認可スコープの範囲内か否かを検証する。
 
-認可に失敗した場合に`false`を返却するため、その後は自前で`403`レスポンスする。
+認可に失敗した場合に `false` を返却するため、その後は自前で `403` レスポンスする。
 
 **＊実装例＊**
 
@@ -639,11 +639,11 @@ DBマイグレーション後、以下のテーブルを作成する。
 | oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する。                                                                                                                                                 |
 | oauth_clients                 | Passportで使用している付与タイプを管理する。                                                                                                                                                     |
 | oauth_personal_access_clients | パーソナルアクセストークンタイプの情報を管理する。                                                                                                                                               |
-| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れた時に、再作成をリクエストするために使用する。<br>- https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
+| oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れたときに、再作成をリクエストするために使用する。<br>- https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
 
 #### ▼ トークンを作成
 
-コマンド実行により、`/storage/oauth`キー、Personal Access Client、Password Grant Clientを作成する。
+コマンド実行により、`/storage/oauth` キー、Personal Access Client、Password Grant Clientを作成する。
 
 ```bash
 $ php artisan passport:install
@@ -663,7 +663,7 @@ Client secret: *****
 | `1` | `NULL`  | `Laravel Personal Access Client` | `*****` | ... |
 | `2` | `NULL`  | `Laravel Password Grant Client`  | `*****` | ... |
 
-代わりに、`/storage/oauth`キー、Personal Access Client、Password Grant Clientを個別に作成しても良い。
+代わりに、`/storage/oauth` キー、Personal Access Client、Password Grant Clientを個別に作成しても良い。
 
 ```bash
 # oauthキーを作成
@@ -705,7 +705,7 @@ OAuthに関して、以下のトークン付与タイプを実装できる。
 
 `(1)`
 
-: `guards`キーにて、認証方式を設定する。ここでは、`api`を設定する。
+: `guards` キーにて、認証方式を設定する。ここでは、`api` を設定する。
 
 ```php
 return [
@@ -723,7 +723,7 @@ return [
 
 `(2)`
 
-: OAuth (認証フェーズ + 認可フェーズ) を実行するために、`auth.php`ファイルで、`driver`キーにpassportドライバを設定する。また、`provider`キーで、`users`を設定する。
+: OAuth (認証フェーズ + 認可フェーズ) を実行するために、`auth.php` ファイルで、`driver` キーにpassportドライバを設定する。また、`provider` キーで、`users` を設定する。
 
 **＊実装例＊**
 
@@ -751,7 +751,7 @@ return [
 
 `(3)`
 
-: `auth.php`ファイルにて、`driver`キーにeloquentドライバを設定する。
+: `auth.php` ファイルにて、`driver` キーにeloquentドライバを設定する。
 
      また、`model`キーで資格情報テーブルに対応するEloquentのEloquentモデルを設定する。
 
@@ -783,7 +783,7 @@ return [
 
 `(4)`
 
-: Userへのルーティング時に、`middleware`関数による認証ガードを実行する。
+: Userへのルーティング時に、`middleware` 関数による認証ガードを実行する。
 
      これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
 
@@ -818,7 +818,7 @@ class User extends Authenticatable
 
 `(6)`
 
-: Passportの`routes`関数をコールする。
+: Passportの `routes` 関数をコールする。
 
      これにより、Passportの認証フェーズに関わる全てのルーティング (`/oauth/xxx`) が有効になる。
 
