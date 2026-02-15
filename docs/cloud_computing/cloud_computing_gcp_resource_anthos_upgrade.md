@@ -382,7 +382,7 @@ $ kubectl label ns app istio.io/rev=asm-1140-0 istio-injection- --overwrite
 
 `(10)`
 
-: 新しいラベルに変更できたことに変更できたことを確認する。
+: 新しいラベルに変更できたことを確認する。
 
 ```bash
 $ kubectl get namespace -L istio.io/rev

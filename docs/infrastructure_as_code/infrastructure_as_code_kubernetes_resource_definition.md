@@ -571,7 +571,7 @@ spec:
 
 #### ▼ startingDeadlineSeconds
 
-JobがCronのスケジュール通りに実行されなかった場合に、実行の遅れを何秒まで許容するかを設定する。
+JobがCronのスケジュール通りに実行されなかった場合、実行の遅れを何秒まで許容するかを設定する。
 
 指定した秒数を過ぎると、実行を失敗とみなす。
 
@@ -864,7 +864,7 @@ spec:
 
 `.spec.strategy.rollingUpdate.maxSurge` キーにより、`10` 個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計 `20` 個ある) 。
 
-`.spec.strategy.rollingUpdate.maxUnavailable` キーにより、`0` 個が停止している状態にならないようにする (停止するPodがない)。
+`.spec.strategy.rollingUpdate.maxUnavailable` キーにより、`0` 個が停止している状態を避ける (停止するPodがない)。
 
 また、Podの停止数がレプリカ数を下回らないようになる。
 
@@ -875,7 +875,7 @@ spec:
 
 #### ▼ ブルーグリーン方式 (絶対値の場合)
 
-もし `.spec.strategy.rollingUpdate.maxSurge` キーを `10`、また `.spec.strategy.rollingUpdate.maxUnavailable` キーを `0` とすると仮定する。
+もし `.spec.strategy.rollingUpdate.maxSurge` キーを `10`、また `.spec.strategy.rollingUpdate.maxUnavailable` キーを `0` と仮定する。
 
 ```yaml
 apiVersion: apps/v1
@@ -907,7 +907,7 @@ spec:
 
 `.spec.strategy.rollingUpdate.maxSurge` キーにより、`10` 個の新しいPodを並行的に作成する (つまり、デプロイ時に新旧Podが合計 `20` 個ある)。
 
-`.spec.strategy.rollingUpdate.maxUnavailable` キーにより、`0` 個が停止している状態にならないようにする (停止するPodがない)。
+`.spec.strategy.rollingUpdate.maxUnavailable` キーにより、`0` 個が停止している状態を避ける (停止するPodがない)。
 
 また、Podの停止数がレプリカ数を下回らないようになる。
 
@@ -923,7 +923,7 @@ Deploymentで維持管理するPodテンプレートを設定する。
 
 設定項目はPodと同じである。
 
-Deployment自体の `.metadata.labels` キーを更新した場合はPodは再作成しないが、`.spec.template` キー配下の `.metadata.labels` キーの場合は、Podの再作成となる。
+Deployment自体の `.metadata.labels` キーを更新した場合、Podは再作成しない。しかし、`.spec.template` キー配下の `.metadata.labels` キーの場合、Podは再作成する。
 
 > - https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
 
@@ -2162,7 +2162,7 @@ spec:
 
 #### ▼ localとは
 
-Node上にストレージ上にボリュームを作成する。
+Node上のストレージにボリュームを作成する。
 
 `.spec.nodeAffinity` キーの設定が必須であり、Nodeを明示的に指定できる。
 
@@ -2544,9 +2544,9 @@ spec:
 
 #### ▼ preferredDuringSchedulingIgnoredDuringExecution (ソフト)
 
-条件に合致するNodeに優先的にPodをスケジューリングさせる。
+条件に合致するNodeを優先してPodをスケジューリングさせる。
 
-もし条件に合致するNodeがない場合でも、それを許容し、条件に合致しないNodeにPodをスケジューリングさせる。
+もし条件に合致するNodeがない場合でも、それを許容する。その上で、条件に合致しないNodeへPodをスケジューリングさせる。
 
 条件に合致しないNodeの探索で重みづけルールを設定できる。
 
@@ -2771,7 +2771,7 @@ N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node a
 
 Pod内で起動するコンテナを設定する。
 
-PodをDeploymentやReplicaSetに紐付けずに使用することは非推奨である。
+PodをDeploymentやReplicaSetに紐付けず、単体で使用することは非推奨である。
 
 > - https://kubernetes.io/docs/concepts/configuration/overview/#naked-pods-vs-replicasets-deployments-and-jobs
 
@@ -2925,7 +2925,7 @@ Node全体のハードウェアリソースを分母として、Pod内のコン�
 
 この時kube-schedulerは、コンテナの `resource` キーの値に基づいて、どのNodeにPodを作成するかを決めている。
 
-同じPod内に `resources` キーが設定されたコンテナが複数ある場合、下限/上限必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づくことになる。
+同じPod内に `resources` キーを設定したコンテナが複数ある場合、下限/上限の必要サイズを満たしているか否かの判定は、同じPod内のコンテナの要求サイズの合計値に基づく。
 
 | キー名     | 説明                                             | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -3139,7 +3139,7 @@ spec:
 
 kubeletがヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。
 
-注意点として、LivenessProbeヘルスチェックの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
+注意点として、LivenessProbeヘルスチェックの間隔が短すぎると、kubeletに必要以上の負荷がかかる。
 
 `terminationGracePeriodSeconds` に関しては、`.spec.terminationGracePeriodSeconds` キーでPod単位での待機時間を設定できる。
 
@@ -3512,9 +3512,9 @@ spec:
   terminationGracePeriodSeconds: 30
 ```
 
-コンテナが起動してもトラフィックを処理できるようになるまでに時間がかかる場合 (例：Javaのウォームアップ完了まで。Nginxの最初の設定ファイル読み込み完了まで。MySQLの最初の接続受信準備完了まで。) や問題の起きたコンテナにトラフィックを流さないようにする場合に役立つ。
+コンテナが起動してもトラフィックを処理できるようになるまで時間がかかる場合や、問題の起きたコンテナへトラフィックを流さない場合に役立つ。例えば、Javaのウォームアップ完了まで、Nginxの最初の設定ファイル読み込み完了まで、MySQLの最初の接続受信準備完了までなどである。
 
-注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上に負荷がかかる。
+注意点として、ReadinessProbeの間隔が短すぎると、kubeletに必要以上の負荷がかかる。
 
 そのため、`READY` は `0` で、`STATUS` は `Running` になる。
 
@@ -3784,7 +3784,7 @@ PodのVolume内のディレクトリをコンテナにマウントする。
 
 PodのVolume内のサブディレクトリを指定し、マウント可能にする。
 
-これを指定しない場合。Volumeのルートディレクトリ配下をコンテナにマウントすることになる。
+これを指定しない場合、Volumeのルートディレクトリ配下をコンテナへマウントすることになる。
 
 ```yaml
 apiVersion: v1
@@ -4120,7 +4120,7 @@ Pod内のコンテナのライフサイクルの再起動ポリシーを設定�
 
 #### ▼ Always
 
-コンテナが停止した場合、これが正常 (終了ステータス `0`) か異常 (終了ステータス `1`) か否かに関わらず、常にコンテナを再起動する。
+コンテナが停止した場合、これが正常 (終了ステータス `0`) か異常 (終了ステータス `1`) かを問わず、常にコンテナを再起動する。
 
 ```yaml
 apiVersion: v1
@@ -4322,7 +4322,7 @@ spec:
 
 #### ▼ コンテナが複数個ある場合
 
-Pod内にアプリ以外にコンテナ (istio-proxyなど) がある場合、全てのコンテナの終了プロセスの時間を考慮する必要がある。
+Pod内にアプリ以外のコンテナ (istio-proxyなど) がある場合、全てのコンテナの終了プロセスの時間を考慮する必要がある。
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
@@ -4345,7 +4345,7 @@ TaintsとTolerationsを使用すると、指定した条件に合致するPod以
 
 以下の方法で設定する。
 
-事前にNodeにTaintを設定しておく。
+事前にNodeへTaintを設定しておく。
 
 ```bash
 # 非マネージドの場合
@@ -4378,7 +4378,7 @@ spec:
 
 `.spec.affinity` キーとは反対の条件である。
 
-デフォルトでは、Podは以下のNodeの `metadata.labels` キーを条件として、kube-schedulerは該当の値を持たないNodeにPodにスケジューリングさせる。
+デフォルトでは、PodはNodeの `metadata.labels` キーを条件としてスケジューリングされる。そのため、kube-schedulerは該当の値を持たないNodeにPodをスケジューリングさせる。
 
 > - https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/#taint-based-evictions
 
@@ -5474,7 +5474,7 @@ data:
 
 ServiceのIPアドレスを固定する。
 
-Serviceに紐づくPodを外部に直接公開したい場合 (例：POP/IMAPコンテナ) に役立つ。
+Serviceに紐づくPodを外部へ直接公開したい場合 (例：POP/IMAPコンテナ) に役立つ。
 
 ```yaml
 apiVersion: v1
@@ -5660,11 +5660,11 @@ spec:
 
 #### ▼ targetPort
 
-受信した通信をPodにフォワーディングするときに、いずれのポート番号を指定するか否かを設定する。
+受信した通信をPodへフォワーディングするとき、いずれのポート番号を指定するか否かを設定する。
 
-Pod内で最初にインバウンド通信を受信するコンテナの `containerPort` の番号に合わせるようにする。
+Pod内で最初にインバウンド通信を受信するコンテナの `containerPort` の番号に合わせる。
 
-デフォルトでは、`.spec.ports.port` キーと同じに値になる。
+デフォルトでは、`.spec.ports.port` キーと同じ値になる。
 
 **＊実装例＊**
 
