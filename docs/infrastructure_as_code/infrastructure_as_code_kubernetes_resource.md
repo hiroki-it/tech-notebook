@@ -788,7 +788,7 @@ Ingress Controllerの実体として使用するツールを指定する。
 
 Ingress Controllerは、`L7` ロードバランサーとしてPodに通信をルーティングする。
 
-Node外から通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。
+Node外から通信を受信し、Ingressに定義されたルールに応じて単一/複数のServiceにルーティングする。
 
 クラウドプロバイダー (例：AWS) では、Ingress Controller状況下でIngressを作成すると、Ingressの設定値に応じた `L7` ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。
 
@@ -825,7 +825,7 @@ DaemonSetやJobで使用する例は少ないが、Podさえあれば全てのWo
 
 `L4` ロードバランサーとして、Serviceに対する通信を、Cluster-IPを経由してPodにルーティングする。
 
-Cluster-IPはServiceの `.spec.clusterIP` キーで指定しない限りランダムで決まり、Podの `/etc/resolv.conf ` ファイルに記載されている。
+Cluster-IPはServiceの `.spec.clusterIP` キーで指定しない限りランダムで決まり、Podの `/etc/resolv.conf` ファイルに記載されている。
 
 Pod内に複数のコンテナがある場合、各コンテナに同じ内容の `/etc/resolv.conf ` ファイルが配置される。
 
@@ -1018,7 +1018,7 @@ Cluster内DNS名とCluster外CNAMEレコードを対応づけ、Serviceに対す
 
 例えば、`foo-db-service` というExternalName Serviceを作成したとする。
 
-この場合、`foo-db-service.default.svc.cluster.local` を指定すると、指定したCNAMEレコードに問い合わせるようになる。
+この場合、`foo-db-service.default.svc.cluster.local` を指定すると、指定したCNAMEレコードに問い合わせる。
 
 マイクロサービスが外部のドメインに直接リクエストを送信できるが、これをServiceのドメインに抽象化できる。
 
@@ -1381,7 +1381,7 @@ drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
 
 `(3)`
 
-: `df` コマンドで、ストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。 PersistentVolumeに対してデータサイズが大きすぎることがわかる。
+: `df` コマンドでストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。PersistentVolumeに対してデータサイズが大きすぎることがわかる。
 
 ```bash
 $ df -h /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/prometheus-db/

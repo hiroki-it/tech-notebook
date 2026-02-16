@@ -202,7 +202,7 @@ bar-node   2917m        82%    16455Mi         57%
 baz-node   352m         4%     9430Mi          33%
 ```
 
-また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して、拡張APIサーバーからNodeやPodのメトリクスを取得し、Podのオートスケーリングする。
+また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して拡張APIサーバーからNodeやPodのメトリクスを取得する。そして、Podをオートスケーリングする。
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
 

@@ -83,7 +83,7 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
 
 > - https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
 
-また、StorageClassを定義する必要があるが、これはTerraformでもマニフェストでもどちらでもよい。
+また、StorageClassを定義する必要があるが、Terraformかマニフェストでよい。
 
 ```terraform
 # KubernetesのStorageClassをTerraformで作成する。

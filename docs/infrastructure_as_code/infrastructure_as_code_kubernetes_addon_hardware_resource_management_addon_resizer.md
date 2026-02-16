@@ -23,7 +23,7 @@ addon-resizerは、サイドカーコンテナとして稼働し、指定した�
 
 特に、NodeでDaemonSetとして稼働するテレメトリー収集系のコンテナ (例：metrics-server、kube-state-metrics、heaper) では、Node内のコンテナが増えるほどハードウェアリソースの要求量が増える。
 
-コンテナの増加に合わせて要求量を動的に変更できるように、addon-resizerを使用する。
+コンテナの増加に合わせて要求量を動的に変更できるよう、addon-resizerを使用する。
 
 > - https://github.com/kubernetes/autoscaler/tree/master/addon-resizer>
 > - https://github.com/kubernetes/autoscaler/tree/master/addon-resizer/deploy

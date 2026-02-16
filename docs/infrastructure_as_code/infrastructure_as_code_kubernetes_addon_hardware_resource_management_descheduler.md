@@ -45,9 +45,9 @@ $ kubectl get events -n foo
 
 ### kube-schedulerだけでは足りない理由
 
-Nodeのハードウェアリソースの消費量が動的に高まった場合に、kube-schedulerは不適切なNodeからPodを退避し、別のNodeにこれを再スケジューリングさせられない。
+Nodeのハードウェアリソースの消費量が動的に高まった場合、kube-schedulerは不適切なNodeからPodを退避し、別のNodeへ再スケジューリングできない。
 
-他にNodeが障害が起こり、他のNodeにPodが退避した場合に、その後Nodeが回復したとしても、Podが元のNodeに戻ることはない。
+他のNodeで障害が起こり、別のNodeにPodが退避した場合、その後Nodeが回復したとしても、Podが元のNodeに戻ることはない。
 
 `kubectl rollout restart` コマンドを実行しても良いが、deschedulerを使用すればこれを自動化できる。
 
@@ -249,7 +249,7 @@ strategies:
 
 #### ▼ RemoveFailed
 
-`Failed` ステータスなPodはそのままでは削除されない。
+`Failed` ステータスなPodは、そのままでは削除されない。
 
 そのため、`Failed` ステータスなPodがある場合は、このPodをNodeから削除する。
 

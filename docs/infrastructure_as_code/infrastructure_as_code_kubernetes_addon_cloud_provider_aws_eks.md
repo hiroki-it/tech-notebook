@@ -122,7 +122,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-vpc-cn
 
 EKSの各Node上で、`kube-dns` という名前のDeploymentとして稼働する。
 
-同じCluster内の全てのPodの名前解決を行う。
+同じCluster内の全てのPodの名前解決をする。
 
 AWS CoreDNSがAWS EKS Cluster内に無い場合、外部のツール (例：SSOのIDプロバイダーなど) を名前解決できなくなるため、必須である。
 

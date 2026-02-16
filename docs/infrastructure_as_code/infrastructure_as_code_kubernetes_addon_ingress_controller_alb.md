@@ -23,7 +23,7 @@ aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検�
 
 その後、TargetGroupBindingの設定値を経由して、ALBのターゲットグループとIngressを紐付ける。
 
-これらにより、Cluster外からのリクエストをPodにルーティングできるようにする。
+これらにより、Cluster外からのリクエストをPodへルーティングできるようにする。
 
 ![aws_load_balancer_controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png)
 
@@ -42,7 +42,7 @@ AWS Load Balancer Controllerは、以下の仕組みでターゲットグルー�
 
 1. 対象のClusterのサブネット内にEC2 Nodeが起動状態に移行すると、AWS Load Balancer Controllerはそれを検知する。
 2. 検知したEC2 Nodeをターゲットグループに追加する。
-3. EC2 Nodeが正常になれば、Nodeにルーティングできるようになる。
+3. EC2 Nodeが正常になれば、Nodeへルーティングできるようになる。
 
 #### ▼ ドレイン処理の流れ
 

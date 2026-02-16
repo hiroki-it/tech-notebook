@@ -71,7 +71,7 @@ S3などの実インフラで管理する場合、資格情報を設定する必
 
 デフォルト値は `local` である。
 
-通常変数を使用できず、ハードコーディングする必要があるため、もし値を動的に変更したい場合は、ローカルマシンでは `providers.tf` ファイルの `backend` オプションを参照し、CDの中で `terraform init` コマンドのオプションを使用して値を渡すようにする。
+通常は変数を使用できず、ハードコーディングする必要がある。そのため、値を動的に変更したい場合は、ローカルマシンでは `providers.tf` ファイルの `backend` オプションを参照し、CDの中で `terraform init` コマンドのオプションを使用して値を渡すようにする。
 
 > - https://www.terraform.io/language/settings/backends/s3
 
@@ -596,7 +596,7 @@ $ terraform plan -var-file=foo.tfvars
 
 実行ファイルに入力したい環境変数を定義する。
 
-『`terraform.tfvars`』という名前にすると、`terraform` コマンドの実行時に自動的に読み込まれる。
+`terraform.tfvars` という名前にすると、`terraform` コマンドの実行時に自動的に読み込まれる。
 
 ```bash
 # ファイルを指定しなくとも読み込まれる

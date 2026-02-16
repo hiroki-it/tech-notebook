@@ -21,7 +21,7 @@ description: リソース定義＠AWS Load Balancer Controllerの知見を記録
 
 Ingressで `alb` のIngressClassを指定する必要がある。
 
-AWS Load Balancer Controllerは、Ingressの `.metadata.annotations` キーと `.spec.rules` キーに設定に応じて、AWS ALBを自動的にプロビジョニングする。
+AWS Load Balancer Controllerは、Ingressの `.metadata.annotations` キーと `.spec.rules` キーの設定に応じて、AWS ALBを自動的にプロビジョニングする。
 
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
