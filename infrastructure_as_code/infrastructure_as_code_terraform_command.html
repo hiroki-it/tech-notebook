@@ -34812,7 +34812,7 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <p>すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、<code>tfstate</code> ファイルにその状態を書き込む。</p>
 <p>もし、Terraform管理外の実インフラがない場合は、<code>No changes.</code> になる。</p>
 <p>具体的は、<code>terraform plan</code> コマンドで出力される <code>Note: Objects have changed outside of Terraform</code> の内容を指す。</p>
-<p>ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) を処理することはできず、代わりに <code>terraform import</code> コマンドの実行が必要になる。</p>
+<p>ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) は処理できない。代わりに <code>terraform import</code> コマンドの実行が必要になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span>-refresh-only
 
 Apply<span class="w"> </span>complete!<span class="w"> </span>Resources:<span class="w"> </span><span class="m">0</span><span class="w"> </span>added,<span class="w"> </span><span class="m">0</span><span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>destroyed.
@@ -34965,7 +34965,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">
 </ul>
 </blockquote>
 <h4 id="_2">▼ 問題が起こる場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p><code>terraform init</code> コマンドで以下のようなエラーが起こる場合がある。</p>
+<p><code>terraform init</code> コマンドで以下のようなエラーが発生する場合もある。</p>
 <div class="highlight"><pre><span></span><code>│<span class="w"> </span>Error:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>query<span class="w"> </span>available<span class="w"> </span>provider<span class="w"> </span>packages
 │
 │<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>retrieve<span class="w"> </span>the<span class="w"> </span>list<span class="w"> </span>of<span class="w"> </span>available<span class="w"> </span>versions<span class="w"> </span><span class="k">for</span><span class="w"> </span>provider<span class="w"> </span>hashicorp/aws:<span class="w"> </span>the<span class="w"> </span>previously-selected<span class="w"> </span>version<span class="w"> </span>&lt;バージョン&gt;<span class="w"> </span>is<span class="w"> </span>no<span class="w"> </span>longer<span class="w"> </span>available
@@ -35335,7 +35335,7 @@ Plan:<span class="w"> </span><span class="m">0</span><span class="w"> </span>to<
 <h4 id="state_1">▼ stateとは<a class="headerlink" href="#state_1" title="Permanent link">&para;</a></h4>
 <p><code>tfstate</code> ファイルを操作する。</p>
 <h4 id="list">▼ list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
-<p><code>tfstate</code> ファイルで定義されている <code>resource</code> ブロック (<code>tfstate</code> ファイル上では <code>managed</code> モード) の一覧を取得する。<code>terraform apply</code> コマンドで <code>-target</code> オプションを使用する前にアドレスを確認したい場合や、<code>terraform apply</code> コマンドの実行に失敗したときに <code>tfstate</code> ファイルと実インフラにどのような差分があるかを確認する場合に使用する。</p>
+<p><code>tfstate</code> ファイルで定義されている <code>resource</code> ブロック (<code>tfstate</code> ファイル上では <code>managed</code> モード) の一覧を取得する。<code>terraform apply</code> コマンドで <code>-target</code> オプションを使用する前のアドレス確認や、<code>terraform apply</code> コマンドの実行失敗時に <code>tfstate</code> ファイルと実インフラにどのような差分があるかの確認に使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/">https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/</a></li>
@@ -35520,7 +35520,7 @@ Plan:<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<
 <p><br></p>
 <h3 id="validate">validate<a class="headerlink" href="#validate" title="Permanent link">&para;</a></h3>
 <h4 id="validate_1">▼ validateとは<a class="headerlink" href="#validate_1" title="Permanent link">&para;</a></h4>
-<p>設定ファイルの検証を行う。</p>
+<p>設定ファイルを検証する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>validate
 
 Success!<span class="w"> </span>The<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>valid.
@@ -35532,7 +35532,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">
 <h2 id="02-tfstate">02. 実インフラの全ての設定値を <code>tfstate</code> ファイルに取り込む<a class="headerlink" href="#02-tfstate" title="Permanent link">&para;</a></h2>
 <h3 id="import_2"><code>import</code> について<a class="headerlink" href="#import_2" title="Permanent link">&para;</a></h3>
 <p>実インフラの全ての設定値を <code>tfstate</code> ファイルに取り込む場合、これの設定値を <code>resource</code> ブロックの設定値として <code>tfstate</code> ファイルに書き込み、Terraformの管理下におく必要がある (<code>tfstate</code> ファイル上では、<code>resource</code> ブロックは <code>managed</code> モードという表記になる) 。</p>
-<p>この時、<code>terraform import</code> コマンドを実行するか、コンソール画面から一度削除したうえで <code>terraform apply</code> コマンドを実行する方法がある (前者が推奨) 。</p>
+<p>この時、<code>terraform import</code> コマンドを実行する方法と、コンソール画面から一度削除したうえで <code>terraform apply</code> コマンドを実行する方法がある (前者を推奨) 。</p>
 <p>執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを <code>1</code> 個ずつ指定して、<code>tfstate</code> ファイルに書き込んでいく必要がある。</p>
 <p>似た目的で使用する <code>terraform apply -refresh-only</code> コマンドは実インフラの一部の設定値が対象であるが、<code>import</code> は実インフラの全ての設定値が対象である。</p>
 <blockquote>
@@ -35760,9 +35760,9 @@ No<span class="w"> </span>changes.<span class="w"> </span>Infrastructure<span cl
 <h3 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h3>
 <h4 id="import-resource">▼ importできない <code>resource</code> タイプ<a class="headerlink" href="#import-resource" title="Permanent link">&para;</a></h4>
 <p><code>resource</code> ブロック間の紐付けに特化したような <code>resource</code> ブロックは、<code>terraform import</code> コマンドに対応していないものが多い (AWSであれば、<code>aws_acm_certificate_validation</code>、<code>aws_lb_target_group_attachment</code> など) 。</p>
-<p>その場合、<code>tfstate</code> ファイルと実インフラの差分を解消できない。</p>
+<p>その場合、<code>tfstate</code> ファイルと実インフラの差分を解消できないことがある。</p>
 <p>ただし、こういった非対応の <code>resource</code> ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の <code>resource</code> ブロックであることが多い。</p>
-<p>そのため、実際に <code>terraform apply</code> コマンドを実行してみても、実インフラに影響が起こらない可能性がある。</p>
+<p>そのため、実際に <code>terraform apply</code> コマンドを実行してみても、実インフラに影響が出ない場合もある。</p>
 <h4 id="import_7">▼ importを行わなかった場合のエラー<a class="headerlink" href="#import_7" title="Permanent link">&para;</a></h4>
 <p>もし <code>terraform import</code> コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになってしまう。</p>
 <p>(エラー例1)</p>
@@ -35774,12 +35774,12 @@ No<span class="w"> </span>changes.<span class="w"> </span>Infrastructure<span cl
 <p><br></p>
 <h2 id="03-tfstate">03. 実インフラの一部の設定値を <code>tfstate</code> ファイルに取り込む<a class="headerlink" href="#03-tfstate" title="Permanent link">&para;</a></h2>
 <h3 id="terraform-apply-refresh-only"><code>terraform apply -refresh-only</code> コマンドについて<a class="headerlink" href="#terraform-apply-refresh-only" title="Permanent link">&para;</a></h3>
-<p>実インフラから実インフラの一部の設定値を <code>tfstate</code> ファイルに取り込む場合、以下の方法が便利である。</p>
+<p>実インフラから実インフラの一部の設定値を <code>tfstate</code> ファイルに取り込む場合、以下の方法が便利だ。</p>
 <p>似た目的で使用する <code>import</code> は実インフラの全ての設定値が対象であるが、<code>terraform apply -refresh-only</code> コマンドは実インフラの一部の設定値が対象である。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>先にコンソール画面に設定値を変更する。</p>
+<p>先にコンソール画面で設定値を変更する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -35816,7 +35816,7 @@ No<span class="w"> </span>changes.<span class="w"> </span>Infrastructure<span cl
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:01:20 JST">2026-02-16</span>
   </span>
 
     
