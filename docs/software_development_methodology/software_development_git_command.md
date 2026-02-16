@@ -436,7 +436,7 @@ Host gitlab.com
     User git
     Port 22
     HostName gitlab.com
-    IdentityFile <秘密へのパス> # GitHubとは別の鍵を作成した方が良い。
+    IdentityFile <秘密へのパス> # GitHubとは別の鍵を作成したほうが良い。
 ```
 
 リポジトリに対してコミットをプッシュし、エラーが出た場合、異なる接続名が選択されている場合は、URLの『接続名』の部分が正しく設定されているか否かを確認する。

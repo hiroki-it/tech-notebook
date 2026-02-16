@@ -58,7 +58,7 @@ description: AWS EFS＠AWSリソースの知見を記録しています。
 
 残高は、`BurstCreditBalance` メトリクスから確認できる。
 
-このメトリクスが常に減少し続けている場合はプロビジョニングモードの方がより適切である。
+このメトリクスが常に減少し続けている場合はプロビジョニングモードのほうがより適切である。
 
 > - https://docs.aws.amazon.com/efs/latest/ug/performance.html#using-throughputmode
 

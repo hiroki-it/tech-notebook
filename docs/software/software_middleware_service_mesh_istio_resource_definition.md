@@ -21,7 +21,7 @@ description: リソース定義＠Istioの知見を記録しています。
 
 チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
-チャートは、`istioctl` コマンドインストール時に `manifests` ディレクトリ以下に同梱される。
+チャートは、`istioctl` コマンドインストール時、`manifests` ディレクトリ以下に同梱される。
 
 ```bash
 # IstioOperatorのdemoをインストールし、リソースを作成する
@@ -95,7 +95,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/base -n is
 $ helm install <Helmリリース名> <チャートリポジトリ名>/istiod -n istio-system --version <バージョンタグ>
 ```
 
-IngressGatewayのインストールは必須ではない。
+IngressGatewayのインストールは必須でない。
 
 ```bash
 # IngressGatewayのみ
@@ -447,7 +447,7 @@ kind: DestinationRule
 metadata:
   name: foo-destination-rule
 spec:
-  host: foo-service.default.svc.cluster.local # Service名でも良いが完全修飾ドメイン名の方が良い。
+  host: foo-service.default.svc.cluster.local # Service名でも良いが完全修飾ドメイン名のほうが良い。
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
@@ -516,7 +516,7 @@ spec:
 
 デフォルトでは上限がない。
 
-`2` 以上であればTCP KeepAliveを実施し、`1` とする場合はTCP KeepAliveは無効になる。
+`2` 以上であればTCP KeepAliveを実施する。`1` とする場合はTCP KeepAliveを無効にする。
 
 また、サーキットブレイカーを開始するための外れ値の閾値になる。
 
@@ -2615,7 +2615,7 @@ spec:
 
 コンフィグストレージに登録する宛先のドメイン名を設定する。
 
-部分的にワイルドカード (`*`) を使用できるが、全てのドメインを許可 (ワイルドカードのみ) することはできない。
+部分的にワイルドカード (`*`) を使用できるが、全てのドメインを許可 (ワイルドカードのみ) できない。
 
 **＊実装例＊**
 
@@ -3296,7 +3296,7 @@ spec:
 
 ### .spec.http
 
-HTTP/1.1、HTTP/2 (例：gRPC、GraphQLなど) のプロトコルによる通信をDestinationRuleに紐づくPodにルーティングする。
+HTTP/1.1、HTTP/2 (例：gRPC、GraphQLなど) のプロトコルによる通信をDestinationRuleに紐づくPodへルーティングする。
 
 `.spec.tcp` キーや `.spec.tls` キーとは異なり、マイクロサービスがHTTPプロトコルで通信を送受信し、istio-proxy間で相互TLS認証を実施する場合、これを使用する。
 
@@ -3310,7 +3310,7 @@ HTTP/1.1、HTTP/2 (例：gRPC、GraphQLなど) のプロトコルによる通信
 
 ブラウザではデフォルトでCORSが有効になっており、正しいリクエストがCORSを突破できるように対処する必要がある。
 
-多くの場合、バックエンドアプリケーションにCORSに対処することが多いが、istio-proxyで対処できる。
+多くの場合、バックエンドアプリケーションでCORSに対処することが多いが、istio-proxyで対処できる。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#CorsPolicy
 
@@ -3674,7 +3674,7 @@ VirtualServiceを起点としたPodのカナリアリリースで使用する。
 
 紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。
 
-DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodにルーティングする。
+DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodへルーティングする。
 
 **＊実装例＊**
 
@@ -3800,7 +3800,7 @@ spec:
 
 #### ▼ tcpとは
 
-`.spec.http` キーや `.spec.tls` キーとは異なり、TCPプロトコルや独自プロトコル (例：MySQLなど) による通信をDestinationRuleに紐づくPodにルーティングする。
+`.spec.http` キーや `.spec.tls` キーとは異なり、TCPプロトコルや独自プロトコル (例：MySQLなど) による通信をDestinationRuleに紐づくPodへルーティングする。
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
 
@@ -3907,7 +3907,7 @@ spec:
 
 #### ▼ tlsとは
 
-`.spec.http` キーや `.spec.tcp` キーとは異なり、HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。
+`.spec.http` キーや `.spec.tcp` キーとは異なり、HTTPSプロトコルの通信をDestinationRuleに紐づくPodへルーティングする。
 
 マイクロサービスがHTTPSプロトコルで通信を送受信し、istio-proxy間で相互TLS認証を実施する場合、これを使用する。
 

@@ -405,7 +405,7 @@ const measureFunctionExecutionTime = async <T>(
   fn: () => Promise<T>,
 ): Promise<{result: T; executionTime: number; startAtTimestamp: string}> => {
   // 計測開始
-  // 計測にはperformance.now()の方が適切であるが、ISO形式に変換してタイムスタンプを取得する必要があるため、これに対応するDate.now()を使用する
+  // 計測にはperformance.now()のほうが適切であるが、ISO形式に変換してタイムスタンプを取得する必要があるため、これに対応するDate.now()を使用する
   const startAt = Date.now();
 
   const result = await fn();
@@ -691,7 +691,7 @@ function foo(value: string | null) {
 }
 ```
 
-ただ、型ガードしてもよく、こちらの方が明示的である。ただ、実装量が増えてしまうところがデメリットである。
+ただ、型ガードしてもよく、こちらのほうが明示的である。ただ、実装量が増えてしまうところがデメリットである。
 
 ```typescript
 // string型またはnullを許容する
@@ -736,7 +736,7 @@ function foo(value: string | number) {
 
 `name` プロパティは `string` 型と `undefined` 型を許容している。
 
-`undefined` 型の方が網羅範囲が大きいため、実質 `undefined` 型として扱われる。
+`undefined` 型のほうが網羅範囲が大きいため、実質 `undefined` 型として扱われる。
 
 ```typescript
 type User = {
@@ -752,7 +752,7 @@ const user2: User = {id: "abc123", name: "Bob"};
 
 `name` プロパティが `string` 型のUserと、`undefined` 型のUserWithoutNameを別々に定義している。
 
-`undefined` 型の方が網羅範囲が大きいため、実質 `undefined` 型として扱われる。
+`undefined` 型のほうが網羅範囲が大きいため、実質 `undefined` 型として扱われる。
 
 ```typescript
 type User = {
@@ -775,7 +775,7 @@ const user2: UserWithoutName = {id: 1, name: undefined};
 
 ### 比較
 
-typeエイリアス宣言の方が型としての強制力が高い。
+typeエイリアス宣言のほうが型としての強制力が高い。
 
 また、interface宣言はオブジェクト指向の文脈でメソッドの仕様を持たせることが多く、型の文脈では適さない（と個人的に思っている）
 
@@ -910,7 +910,7 @@ interface Foo {
 
 `dotenv` パッケージ
 
-なお、依存パッケージが増えてしまうため、代替の方法があるならそちらの方が良い。
+なお、依存パッケージが増えてしまうため、代替の方法があるならそちらのほうが良い。
 
 ```typescript
 import dotenv from "dotenv";

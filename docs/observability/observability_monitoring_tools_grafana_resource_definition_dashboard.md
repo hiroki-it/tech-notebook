@@ -523,7 +523,7 @@ IstioのPodからデータポイントを収集する。
 
 ダッシュボードのURLを設定する。
 
-ダッシュボードのURLがハッシュ値になってしまうため、英語の方がいい。
+ダッシュボードのURLがハッシュ値になってしまうため、英語のほうがいい。
 
 ```yaml
 {"title": "foo dashboard"}
@@ -817,7 +817,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
               },
             "refresh": 2,
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使った方が良いかもしれない。
+            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             # アルファベットの昇順にする。
@@ -858,7 +858,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
               },
             "refresh": 2,
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使った方が良いかもしれない。
+            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -898,7 +898,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
               },
             "refresh": 2,
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使った方が良いかもしれない。
+            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -938,7 +938,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
               },
             "refresh": 2,
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使った方が良いかもしれない。
+            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -978,7 +978,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
               },
             "refresh": 2,
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使った方が良いかもしれない。
+            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -1045,7 +1045,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
               },
             "refresh": 2,
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使った方が良いかもしれない。
+            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -1086,7 +1086,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
               },
             "refresh": 2,
             # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使った方が良いかもしれない。
+            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,

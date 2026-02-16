@@ -119,7 +119,7 @@ module "s3_foo" {
 | ETag                            | コンテンツの一意な識別子。クライアントサイドキャッシュの検証に使用される。                                       | 全てのコンテンツにデフォルトで設定されている。 |
 | Cache-Control                   | Expiresと同様に、ブラウザにおけるキャッシュの有効期限を設定する。                                                | 全てのコンテンツにデフォルトで設定されている。 |
 | Content-Type                    | コンテンツのMIMEタイプを設定する。                                                                               | 全てのコンテンツにデフォルトで設定されている。 |
-| Expires                         | Cache-Controlと同様に、ブラウザにおけるキャッシュの有効期限を設定する。ただし、Cache-Controlの方が優先度が高い。 |                                                |
+| Expires                         | Cache-Controlと同様に、ブラウザにおけるキャッシュの有効期限を設定する。ただし、Cache-Controlのほうが優先度が高い。 |                                                |
 | Content-Disposition             |                                                                                                                  |                                                |
 | Content-Encoding                |                                                                                                                  |                                                |
 | x-amz-website-redirect-location | コンテンツのリダイレクト先を設定する。                                                                           |                                                |

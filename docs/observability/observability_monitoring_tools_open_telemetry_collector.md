@@ -141,7 +141,7 @@ module "iam_assumable_role_with_opentelemetry_collector" {
   role_policy_arns              = aws_iam_policy.opentelemetry_collector.arn
 
   # OpenTelemetry CollectorのPodのServiceAccount名
-  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い
   oidc_fully_qualified_subjects = [
     "system:serviceaccount:opentelemetry:opentelemetry-collector"
   ]

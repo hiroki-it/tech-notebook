@@ -219,7 +219,7 @@ AWS ECS Service Connectを使用する。
 
 もしAWS NAT Gatewayを配置したとする。
 
-この場合、VPCエンドポイントよりもAWS NAT Gatewayの方が高く、AWSリソースに対する通信でもAWS NAT Gatewayを通過するため、高額料金を請求されてしまう。
+この場合、VPCエンドポイントよりもAWS NAT Gatewayのほうが高く、AWSリソースに対する通信でもAWS NAT Gatewayを通過するため、高額料金を請求されてしまう。
 
 ![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_nat-gateway.png)
 
@@ -683,7 +683,7 @@ CodeDeployを使用してデプロイする。
 
 プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatch Logs、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。
 
-AWS NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストの方が優先される。
+AWS NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストのほうが優先される。
 
 そのため、AWS NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。
 

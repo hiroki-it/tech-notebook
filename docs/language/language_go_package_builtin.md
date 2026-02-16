@@ -1155,7 +1155,7 @@ func main() {
 
 	if err != nil {
 		// ここでFatal関数を実行すると、defer宣言したshutdown関数を実行できない
-        // 代わりに、Printf関数を実行した方が良い
+        // 代わりに、Printf関数を実行したほうが良い
 		log.Fatalf("server error: %v", err)
 	}
 }

@@ -37,7 +37,7 @@ module "iam_assumable_role_with_oidc_grafana_tempo" {
   role_policy_arns              = aws_iam_policy.grafana_tempo.arn
 
   # Grafana LokirのPodのServiceAccount名
-  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い
   oidc_fully_qualified_subjects = [
     "system:serviceaccount:grafana-tempo:grafana-tempo"
   ]

@@ -74,7 +74,7 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
   ]
 
   # AWS EBS CSI ControllerのPodのServiceAccount名
-  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い
   oidc_fully_qualified_subjects = [
     "system:serviceaccount:kube-system:foo-ebs-csi-controller"
   ]
@@ -134,7 +134,7 @@ IRSAにより、ServiceAccountを介してPodとAWS IAMロールが紐づく。
 
 Helmを使用する。
 
-KubernetesよりもAWSに依存している要素が多いため、Terraformによるセットアップの方が個人的にはおすすめである。
+KubernetesよりもAWSに依存している要素が多いため、Terraformによるセットアップのほうが個人的にはおすすめである。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.io/aws-ebs-csi-driver

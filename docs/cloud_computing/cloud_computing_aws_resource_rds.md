@@ -40,7 +40,7 @@ description: AWS RDS＠AWSリソース
 
 #### ▼ 機能の違い
 
-RDBがAWS AuroraかAWS RDSかで機能に差があり、AWS Auroraの方が耐障害性や可用性が高い。
+RDBがAWS AuroraかAWS RDSかで機能に差があり、AWS Auroraのほうが耐障害性や可用性が高い。
 
 ただし、その分費用が高いことに注意する。
 

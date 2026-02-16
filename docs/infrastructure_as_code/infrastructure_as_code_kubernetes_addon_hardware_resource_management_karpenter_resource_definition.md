@@ -643,7 +643,7 @@ spec:
       requirements:
         - key: kubernetes.io/arch
           operator: In
-          # ARM製よりAMD製に対応したベースイメージの方が多いので、AMD製を指定する
+          # ARM製よりAMD製に対応したベースイメージのほうが多いので、AMD製を指定する
           values:
             - amd64
         - key: karpenter.k8s.aws/instance-family

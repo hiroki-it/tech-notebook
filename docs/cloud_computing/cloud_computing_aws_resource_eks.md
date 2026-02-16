@@ -350,7 +350,7 @@ module "iam_assumable_role_with_oidc_argocd_access_entry_service" {
   provider_url                  = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
 
   # ArgoCDのPodのServiceAccount名
-  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い
   oidc_fully_qualified_subjects = [
     # argocd applicaton-controller
     "system:serviceaccount:argocd:foo-argocd-application-controller",

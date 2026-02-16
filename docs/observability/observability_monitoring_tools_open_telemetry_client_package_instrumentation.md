@@ -69,7 +69,7 @@ $ opentelemetry-instrument python app.py
 
 コンパイル言語 (実行前にコンパイルする言語) の場合、エージェント (例：Javaエージェント、eBPFなど) による自動計装が適する。
 
-eBPFによるコンパイル言語の自動計装の方が、手動計装よりもリクエスト処理のパフォーマンスが高くなる。
+eBPFによるコンパイル言語の自動計装のほうが、手動計装よりもリクエスト処理のパフォーマンスが高くなる。
 
 > - https://odigos.io/blog/ebpf-instrumentation-faster-than-manual
 

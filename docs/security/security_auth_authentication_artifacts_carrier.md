@@ -120,7 +120,7 @@ cookie: sessionid=<セッションID>
 
 CSRFトークンと組み合わせるとさらに良くなる。
 
-なお、APIではリクエストの送受信時に `Cookie` ヘッダーよりも `Authorization` ヘッダーの方が扱いやすいため、`Authorization` ヘッダーでアクセストークンを運搬することになる。
+なお、APIではリクエストの送受信時に `Cookie` ヘッダーよりも `Authorization` ヘッダーのほうが扱いやすいため、`Authorization` ヘッダーでアクセストークンを運搬することになる。
 
 また、スマホアプリも `Cookie` ヘッダーより `Authorization` ヘッダーがいいらしい。
 
@@ -164,7 +164,7 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 その代わり、ブラウザの設定によって、ブラウザのWebストレージで保管できる (Chromeでは、LocalStorageあるいはSessionStorage) 。
 
-なお、APIではリクエストの送受信時に `Cookie` ヘッダーよりも `Authorization` ヘッダーの方が扱いやすいため、`Authorization` ヘッダーでアクセストークンを運搬することになる。
+なお、APIではリクエストの送受信時に `Cookie` ヘッダーよりも `Authorization` ヘッダーのほうが扱いやすいため、`Authorization` ヘッダーでアクセストークンを運搬することになる。
 
 また、スマホアプリも `Cookie` ヘッダーより `Authorization` ヘッダーがいいらしい。
 

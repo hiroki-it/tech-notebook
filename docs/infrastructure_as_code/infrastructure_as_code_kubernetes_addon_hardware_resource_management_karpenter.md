@@ -367,7 +367,7 @@ module "iam_assumable_role_with_oidc_karpenter_controller" {
   role_policy_arns              = aws_iam_policy.karpenter_controller.arn
 
   # Karpenter ControllerのPodのServiceAccount名
-  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い
   oidc_fully_qualified_subjects = [
     "system:serviceaccount:karpenter:karpenter"
   ]
@@ -550,7 +550,7 @@ module "eks_iam_karpenter_controller" {
   irsa_use_name_prefix = false
 
   # Karpenter ControllerのPodのServiceAccount名
-  # ServiceAccountは、Terraformではなく、マニフェストで定義した方が良い
+  # ServiceAccountは、Terraformではなく、マニフェストで定義したほうが良い
   irsa_namespace_service_accounts = [
     "karpenter:karpenter"
   ]
