@@ -127,7 +127,7 @@ ClientSideApplyでは、クライアント側（例：kubectl、ArgoCDのapplica
 | ---- | --------------- | ------------------------------------------- |
 | 主体 | kube-apiserver  | kubectl、ArgoCDのapplication-controllerなど |
 
-特に、ServerSideApplyはkube-apiserverがよしなにマニフェストの最終状態を決めることがあり、マニフェストファイルと実体が異なる場合がある。
+特に、ServerSideApplyではkube-apiserverがよしなにマニフェストの最終状態を決めることもある。そのため、マニフェストファイルと実体が異なる場合もある。
 
 一方でServerSideApplyでは、kube-apiserver側でマニフェストを変更する。
 
@@ -831,7 +831,7 @@ $ kubectl get pod -A -o jsonpath="{.items[*].spec.containers[*].image}" \
 
 指定したKubernetesリソースの情報でユーザー定義のカラムで取得する。
 
-カスタムリソースの情報をいい感じに取得するときに役立つ。
+カスタムリソースの情報をいい感じに取得する際、役立つ。
 
 **＊例＊**
 
@@ -1065,7 +1065,7 @@ $ kubectl get istiooperator \
 
 指定したリソースの詳細な情報を取得する。
 
-Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
+Nodeが複数ある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。
 
 **＊例＊**
 
@@ -1441,7 +1441,7 @@ Deployment、DaemonSet、StatefulSet、でコピーされたPodを操作する�
 
 配下のPodを再作成する。
 
-PodのVolume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後に、Podに再び読み込ませるために役立つ。
+PodのVolume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後、Podへ再び読み込ませるために役立つ。
 
 **＊例＊**
 
@@ -1505,7 +1505,7 @@ Podを直接的に指定する場合と、他のKubernetesリソース (例：Se
 
 この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する (例えば、Kialiを確認すると、Ingress Controllerを経由していないことがわかる) 。
 
-開発環境にて、Serviceを介さずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。
+開発環境にて、Serviceを介さずに直接的にPodへリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナへTCP/IP接続したい場合に使用する。
 
 ```bash
 # Podを直接的に指定する場合

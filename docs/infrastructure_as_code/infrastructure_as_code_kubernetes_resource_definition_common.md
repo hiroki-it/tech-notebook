@@ -19,9 +19,9 @@ description: 共通項目＠リソース定義の知見を記録しています�
 
 APIグループのバージョンを設定する。
 
-kube-apiserverをアップグレードすると、APIグループの特定のバージョンが廃止されることがある。
+kube-apiserverをアップグレードすると、APIグループの特定のバージョンが廃止されることもある。
 
-もし、そのバージョンを指定したマニフェストを `kubectl apply` コマンドやclient-goパッケージで送信しようとすると、マニフェストのKubernetesリソースを作成できずにエラーになってしまう。
+もし、そのバージョンを指定したマニフェストを `kubectl apply` コマンドやclient-goパッケージ経由で送信しようとすると、Kubernetesリソースを作成できず、エラーになってしまう。
 
 ```yaml
 apiVersion: v1
@@ -76,7 +76,7 @@ kube-apiserverが、前回の `kubectl apply` コマンドで適用したマニ�
 
 `kubectl edit` コマンドでマニフェストを変更してしまうと、`.metadata.annotations.kubectl.kubernetes.io/last-applied-configuration` キーが変更されない。
 
-そのため、次回の `kubectl apply` コマンドが失敗することがある。
+そのため、次回の `kubectl apply` コマンドが失敗することもある。
 
 また、`kubectl apply` したいマニフェストが多すぎると、JSONが大きすぎて、`kubectl apply` に失敗することがある。
 
@@ -127,7 +127,7 @@ IngressがClusterネットワーク内に1つしか存在しない場合、Ingre
 
 Ingressが新しく作成された場合、このIngressClassの設定値が使用されるようになる。
 
-複数のIngressClassをデフォルトに設定しないようにする。
+IngressClassを複数デフォルトとして設定しないようにする。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -577,7 +577,7 @@ kube-controllerが設定してくれるため、開発者が設定する必要�
 
 また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。
 
-`.metadata.generation` キーよりも `.status.observedGeneration` キーの方が世代数が小さい場合、kube-controllerやCustom ControllerがKubernetesリソースを検出できていない不具合を表す。
+`.metadata.generation` キーよりも `.status.observedGeneration` キーの世代数が小さい場合、kube-controllerやCustom ControllerがKubernetesリソースを検出できていない不具合を表す。
 
 ```yaml
 apiVersion: apps/v1
