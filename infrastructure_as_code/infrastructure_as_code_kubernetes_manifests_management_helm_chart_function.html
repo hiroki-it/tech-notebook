@@ -35080,7 +35080,7 @@
 <p><br></p>
 <h2 id="01">01. 変数<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">予約された変数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>デプロイツール内 (例：ArgoCD、Flux) でHelmを使用する場合、そのツールの実行環境に応じたバージョン値になる。</p>
+<p>デプロイツール内 (例：ArgoCD、Flux) でHelmを使用する場合、そのツールの実行環境によってバージョン値が変わる。</p>
 <table>
 <thead>
 <tr>
@@ -35326,7 +35326,7 @@
 <h3 id="template">template<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
 <h4 id="template_1">▼ templateとは<a class="headerlink" href="#template_1" title="Permanent link">&para;</a></h4>
 <p><code>define</code> 関数で定義したテンプレートをそのまま出力する。</p>
-<p><code>template</code> 関数では出力内容を変数に格納できないため、これが可能な <code>include</code> 関数が推奨である。</p>
+<p><code>template</code> 関数では出力内容を変数に格納できない。そのため、変数に格納できる <code>include</code> 関数が推奨である。</p>
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function">https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function</a></li>
@@ -35384,7 +35384,7 @@
 <h3 id="default">default<a class="headerlink" href="#default" title="Permanent link">&para;</a></h3>
 <h4 id="default_1">▼ defaultとは<a class="headerlink" href="#default_1" title="Permanent link">&para;</a></h4>
 <p>出力された値が空文字 (<code>""</code>) や <code>false</code> の場合に、それを上書きしてデフォルト値として出力する。</p>
-<p>キー自体は存在しなければならず、省略することはできないことに注意する。</p>
+<p>キー自体は存在しなければならず、省略できないことに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">.Values.foo | default &quot;foo&quot;</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <blockquote>
@@ -35478,10 +35478,10 @@
 <h3 id="_12"><code>$</code> (ドル)<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ ドルとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>出力時に、<code>yaml</code> ファイルのルートを明示的に出力する。</p>
-<p>アクションの中でアクションで、<code>yaml</code> ファイルのルートにリクエストしたい場合に役立つ。</p>
+<p>アクションの中で、<code>yaml</code> ファイルのルートへリクエストしたい場合に役立つ。</p>
 <p><strong>＊実装例＊</strong></p>
 <p><code>range</code> 関数を使用すると、<code>yaml</code> ファイルへのアクセスのルートが変わってしまう。</p>
-<p>ルートを明示することにより、<code>range</code> 関数内でも <code>yaml</code> ファイルの正しいルートにリクエストを送信できるようなる。</p>
+<p>ルートを明示することにより、<code>range</code> 関数内でも <code>yaml</code> ファイルの正しいルートにリクエストを送信できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる</span>
 <span class="p p-Indicator">{{</span><span class="nv">- range $.Values.foo.namespaces</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="nn">---</span>
@@ -36093,7 +36093,7 @@
 <h2 id="13">13. ファイル系<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
 <h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h3>
 <p>ファイルから内容を取得する。</p>
-<p><code>.Files.Get</code> 関数でファイルで取得できる。</p>
+<p><code>.Files.Get</code> 関数でファイルから取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる</span>
 <span class="p p-Indicator">{{</span><span class="nv">- range $file</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">$_</span><span class="w"> </span><span class="p p-Indicator">:</span><span class="nv">= .Files.Glob &quot;dashboards/*.json&quot;</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="nn">---</span>
@@ -36154,7 +36154,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:20:32 JST">2026-02-16</span>
   </span>
 
     

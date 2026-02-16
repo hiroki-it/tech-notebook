@@ -34249,8 +34249,8 @@
 <h2 id="01-apiversion">01. apiVersion<a class="headerlink" href="#01-apiversion" title="Permanent link">&para;</a></h2>
 <h3 id="apiversion">apiVersionとは<a class="headerlink" href="#apiversion" title="Permanent link">&para;</a></h3>
 <p>APIグループのバージョンを設定する。</p>
-<p>kube-apiserverをアップグレードすると、APIグループの特定のバージョンが廃止されることがある。</p>
-<p>もし、そのバージョンを指定したマニフェストを <code>kubectl apply</code> コマンドやclient-goパッケージで送信しようとすると、マニフェストのKubernetesリソースを作成できずにエラーになってしまう。</p>
+<p>kube-apiserverをアップグレードすると、APIグループの特定のバージョンが廃止されることもある。</p>
+<p>もし、そのバージョンを指定したマニフェストを <code>kubectl apply</code> コマンドやclient-goパッケージ経由で送信しようとすると、Kubernetesリソースを作成できず、エラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 </code></pre></div>
 <blockquote>
@@ -34291,7 +34291,7 @@
 <p>kube-apiserverが、前回の <code>kubectl apply</code> コマンドで適用したマニフェストの設定値をJSONで割り当てる。</p>
 <p><code>kubectl apply</code> コマンドの削除処理時に、kube-apiserverは送信されたマニフェストと <code>.metadata.annotations.kubectl.kubernetes.io/last-applied-configuration</code> キーを比較し、削除すべき部分を決定する。</p>
 <p><code>kubectl edit</code> コマンドでマニフェストを変更してしまうと、<code>.metadata.annotations.kubectl.kubernetes.io/last-applied-configuration</code> キーが変更されない。</p>
-<p>そのため、次回の <code>kubectl apply</code> コマンドが失敗することがある。</p>
+<p>そのため、次回の <code>kubectl apply</code> コマンドが失敗することもある。</p>
 <p>また、<code>kubectl apply</code> したいマニフェストが多すぎると、JSONが大きすぎて、<code>kubectl apply</code> に失敗することがある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -34343,7 +34343,7 @@
 <h4 id="ingressclasskubernetesiois-default-class">▼ ingressclass.kubernetes.io/is-default-class<a class="headerlink" href="#ingressclasskubernetesiois-default-class" title="Permanent link">&para;</a></h4>
 <p>IngressがClusterネットワーク内に1つしか存在しない場合、IngressClassに設定することにより、デフォルトとする。</p>
 <p>Ingressが新しく作成された場合、このIngressClassの設定値が使用されるようになる。</p>
-<p>複数のIngressClassをデフォルトに設定しないようにする。</p>
+<p>IngressClassを複数デフォルトとして設定しないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34862,7 +34862,7 @@
 <p>kube-controllerやCustom ControllerがKubernetesリソースの状態を管理している場合に、これらが検知した <code>.metadata.generation</code> キーの値を設定する。</p>
 <p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
 <p>また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。</p>
-<p><code>.metadata.generation</code> キーよりも <code>.status.observedGeneration</code> キーの方が世代数が小さい場合、kube-controllerやCustom ControllerがKubernetesリソースを検出できていない不具合を表す。</p>
+<p><code>.metadata.generation</code> キーよりも <code>.status.observedGeneration</code> キーの世代数が小さい場合、kube-controllerやCustom ControllerがKubernetesリソースを検出できていない不具合を表す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -34899,7 +34899,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:20:32 JST">2026-02-16</span>
   </span>
 
     

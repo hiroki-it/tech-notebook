@@ -33501,7 +33501,7 @@
 </blockquote>
 <h4 id="node">▼ コントロールプレーンNodeでダウンタイムを発生させない<a class="headerlink" href="#node" title="Permanent link">&para;</a></h4>
 <p>コントロールプレーンNodeでダウンタイムが発生すると、Nodeコンポーネントが正常に稼働しなくなる。</p>
-<p>これにより、システム全体でダウンタイムが発生する可能性がある。</p>
+<p>これにより、システム全体がダウンタイムになる可能性がある。</p>
 <p>ただし、コントロールプレーンNodeの、kube-controller-manager、kube-scheduler、ではダウンタイムが発生することは許容する。</p>
 <blockquote>
 <ul>
@@ -33517,7 +33517,7 @@
 </ul>
 </blockquote>
 <h4 id="api">▼ 廃止されるAPIグループのバージョンを確認する<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
-<p>アップグレードに伴い、kube-apiserverでAPIグループのバージョンが廃止されることがある。</p>
+<p>アップグレードに伴い、kube-apiserverでAPIグループのバージョンが廃止されることもある。</p>
 <p>これにより、マニフェストでAPIグループのバージョンを宣言できなくなってしまうため、確認が必要である。</p>
 <p>静的解析ツール (例：pluto、kubepug) を使用すると検出しやすい。</p>
 <blockquote>
@@ -33526,7 +33526,7 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ 監視ツールで廃止されるメトリクスやクエリロジックを確認する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>アップグレードに伴い、監視系リソース (例：Prometheus、Grafana) でメトリクス名やクエリロジックが廃止されることがある。</p>
+<p>アップグレードに伴い、監視系リソース (例：Prometheus、Grafana) でメトリクス名やクエリロジックが廃止されることもある。</p>
 <p>これにより、メトリクスの元になるデータポイントを収集できなくなってしまうため、確認が必要である。</p>
 <blockquote>
 <ul>
@@ -33557,8 +33557,8 @@
 </blockquote>
 <h4 id="_6">▼ インプレース方式<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>コントロールプレーンNodeのkube-apiserverのアップグレード時間がダウンタイムに相当する。</p>
-<p>ただし、コントロールプレーンNodeがマネージドなクラウドプロバイダーのいくつか (例：AWS) では、kube-apiserverでダウンタイムの発生しないアップグレードを手法を採用している。</p>
-<p>このアップグレードでは、コントロールプレーンNodeはインプレース方式でアップグレードしてもダウンタイムが発生しないことが保証されている (ワーカーNodeではダウンタイムが発生してしまう) 。</p>
+<p>ただし、コントロールプレーンNodeがマネージドなクラウドプロバイダーのいくつか (例：AWS) では、kube-apiserverでダウンタイムの発生しないアップグレード手法を採用している。</p>
+<p>このアップグレードでは、コントロールプレーンNodeはインプレース方式でアップグレードしても、ダウンタイムは発生しないことが保証される。ワーカーNodeはダウンタイムが発生する可能性もある。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades</a></li>
@@ -33721,7 +33721,7 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>動作が問題なければ、社外を含む全ユーザーのアクセスのルーティング先を新Clusterに変更する。新Clusterから旧Clusterにロールバックする場合に備えて、旧Clusterは削除せずに残しておく。</p>
+<p>動作が問題なければ、社外を含む全ユーザーのアクセスのルーティング先を新Clusterに変更する。新Clusterから旧Clusterへロールバックする場合に備えて、旧Clusterは削除せずに残しておく。</p>
 </dd>
 </dl>
 <blockquote>
@@ -33775,7 +33775,7 @@ ip-*****.ap-northeast-1.compute.internal<span class="w">   </span>NotReady,Sched
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:20:32 JST">2026-02-16</span>
   </span>
 
     

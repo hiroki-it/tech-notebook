@@ -35319,7 +35319,7 @@ pod/foo-pod<span class="w"> </span>configured
 </tr>
 </tbody>
 </table>
-<p>特に、ServerSideApplyはkube-apiserverがよしなにマニフェストの最終状態を決めることがあり、マニフェストファイルと実体が異なる場合がある。</p>
+<p>特に、ServerSideApplyではkube-apiserverがよしなにマニフェストの最終状態を決めることもある。そのため、マニフェストファイルと実体が異なる場合もある。</p>
 <p>一方でServerSideApplyでは、kube-apiserver側でマニフェストを変更する。</p>
 <p>ClientSideApplyでは、クライアント側の制約により <code>metadata.annotations</code> キーのサイズ制限でエラーになる。</p>
 <p>そういった場合は、ServerSideApplyで解決できる。</p>
@@ -35828,7 +35828,7 @@ bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">    
 </code></pre></div>
 <h4 id="-o-custom-columns">▼ -o custom-columns<a class="headerlink" href="#-o-custom-columns" title="Permanent link">&para;</a></h4>
 <p>指定したKubernetesリソースの情報でユーザー定義のカラムで取得する。</p>
-<p>カスタムリソースの情報をいい感じに取得するときに役立つ。</p>
+<p>カスタムリソースの情報をいい感じに取得する際、役立つ。</p>
 <p><strong>＊例＊</strong></p>
 <p>Serviceの指定した情報をユーザー定義のカラムで取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span><span class="se">\</span>
@@ -36019,7 +36019,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <h4 id="-o-wide">▼ -o wide<a class="headerlink" href="#-o-wide" title="Permanent link">&para;</a></h4>
 <p>指定したリソースの詳細な情報を取得する。</p>
-<p>Nodeが複数がある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。</p>
+<p>Nodeが複数ある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。</p>
 <p><strong>＊例＊</strong></p>
 <p>Podの詳細な情報を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>wide
@@ -36257,7 +36257,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <h4 id="restart">▼ restart<a class="headerlink" href="#restart" title="Permanent link">&para;</a></h4>
 <p>配下のPodを再作成する。</p>
-<p>PodのVolume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後に、Podに再び読み込ませるために役立つ。</p>
+<p>PodのVolume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後、Podへ再び読み込ませるために役立つ。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Deployment配下のPodを再作成する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>deployment<span class="w"> </span>foo-deployment<span class="w"> </span>-n<span class="w"> </span>foo-namespace
@@ -36305,7 +36305,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> 
 <p>ポートフォワーディングを実行し、ホストのポートからPodにリクエストを送信できるようにする。</p>
 <p>Podを直接的に指定する場合と、他のKubernetesリソース (例：Service、Deployment) の情報を使用して、Podを指定する方法がある。</p>
 <p>この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する (例えば、Kialiを確認すると、Ingress Controllerを経由していないことがわかる) 。</p>
-<p>開発環境にて、Serviceを介さずに直接的にPodにリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナにTCP/IP接続したい場合に使用する。</p>
+<p>開発環境にて、Serviceを介さずに直接的にPodへリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナへTCP/IP接続したい場合に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podを直接的に指定する場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>pod/&lt;Pod名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Podのポート番号&gt;
 
@@ -36540,7 +36540,7 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 19:16:23 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:20:32 JST">2026-02-16</span>
   </span>
 
     

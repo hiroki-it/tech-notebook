@@ -34171,7 +34171,7 @@
 <p>画面上からの変更であると、ヒューマンエラーが起こってしまう。</p>
 <p>コード化すれば、これが減る。</p>
 <h4 id="_5">▼ 再利用や冗長化が簡単<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>複数のアプリケーションのために、同様の設定で同様のインフラを作成する場合や、1つのアプリケーションのために、インフラを冗長化する場合、いくつも手動で作成する必要があり、労力がかかる。</p>
+<p>複数のアプリケーションのために、同様の設定で同様のインフラを作成する場合がある。また、1つのアプリケーションのためにインフラを冗長化する場合もある。いずれも手動で作成する必要があり、労力がかかる。</p>
 <p>コード化すれば、これが楽になる。</p>
 <h4 id="_6">▼ 過去の変更が記録に残る<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>画面上からの変更であると、過去の変更履歴が残らない。</p>
@@ -34180,7 +34180,7 @@
 <h3 id="_7">デメリット<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 変更のスピードが落ちる<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>変更時に、画面上からの操作であればすぐに終了する変更であるのにも関わらず、コード化により、変更までに時間がかかる。</p>
-<p>そのため、例えばAWSとすると、運用時に変更頻度が高いインフラ (例：API Gateway (VPCリンクを含む) 、IAMユーザ (紐付けるロールやポリシーを含む) ) はコード化せず、あえて画面上から作成する。</p>
+<p>そのため、例えばAWSの場合、運用時に変更頻度が高いインフラ (例：API Gateway (VPCリンクを含む) 、IAMユーザ (紐付けるロールやポリシーを含む) ) はコード化せず、あえて画面上から作成する。</p>
 <h4 id="_9">▼ クラウドプロバイダーの機能追加に追従しにくい<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>クラウドプロバイダーは日々をオプションを追加している。</p>
 <p>画面上からの操作であればすぐにオプションを使用できるが、コード化により、ツールのバージョンをアップグレードしなければ、こを使用できない。</p>
@@ -34294,7 +34294,7 @@
 <h3 id="_26">クラウドインフラ系<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <h4 id="_27">▼ クラウドインフラプロビジョニング<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <p>プロビジョニングにより、クラウドインフラのインフラ (ハードウェア、OS、そしてミドルウェア) を作成する。</p>
-<p>ただし、OSとミドルウェアのプロビジョニングは得意ではなく、サーバー系やコンテナ系のツールと組み合わせることがある。</p>
+<p>ただし、OSとミドルウェアのプロビジョニングが得意ではない。そのため、サーバー系やコンテナ系のツールを併用することがある。</p>
 <ul>
 <li>AWS CloudFormation</li>
 <li>Azure Resource Manager</li>
@@ -34345,14 +34345,14 @@
 <h3 id="_36">コンテナオーケストレーションの種類<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <h4 id="_37">▼ 単一ホストの場合<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
 <p>単一ホスト上のコンテナが対象である。</p>
-<p>異なるDockerfileを基に、コンテナイメージのビルド、コンテナレイヤーの作成、コンテナの作成、コンテナの起動を実行できる。</p>
+<p>異なるDockerfileを基に、コンテナイメージのビルド、コンテナレイヤーの作成、コンテナの作成、コンテナの起動ができる。</p>
 <ul>
 <li>Docker</li>
 <li>Docker Compose</li>
 </ul>
 <h4 id="_38">▼ 複数ホストの場合<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <p>複数ホスト上のコンテナが対象である。</p>
-<p>どのホスト上のdockerデーモンに対して、どのコンテナに関する操作を行うのかを選択的に命令できる。</p>
+<p>どのホスト上のdockerデーモンに対して、どのコンテナに関する操作をするのかを選択的に命令できる。</p>
 <ul>
 <li>Docker Swarm</li>
 <li>Kubernetes</li>
@@ -34421,7 +34421,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年7月4日 16:17:17 JST">2025-07-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:20:32 JST">2026-02-16</span>
   </span>
 
     
