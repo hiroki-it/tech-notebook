@@ -34705,8 +34705,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="error-cycle">循環参照エラー (<code>Error: Cycle</code>)<a class="headerlink" href="#error-cycle" title="Permanent link">&para;</a></h3>
-<p><code>output</code> ブロックで値を出力するモジュールは、コール元に依存することになる。</p>
-<p>コール元も <code>output</code> ブロックを出力するモジュールを使用する場合、相互依存するために循環参照エラーが発生する。</p>
+<p><code>output</code> ブロックで値を出力するモジュールは、コール元に依存する。</p>
+<p>コール元も <code>output</code> ブロックを出力するモジュールを使用する場合、相互依存するため循環参照エラーが発生する。</p>
 <p>循環参照エラーは、ローカルモジュール / 自前リモートモジュール内で公式リモートモジュールを使用する場合に起こる。</p>
 <blockquote>
 <ul>
@@ -34717,7 +34717,7 @@
 <h3 id="_2">ユースケースの種類<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ ルートモジュール内で使用する場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>ルートモジュールが持つ値を、<code>data</code> ブロックの <code>terraform_remote_state</code> リソースを使用して、異なるバックエンドに出力する。</p>
-<p>この場合、ルートモジュールがコール元に依存することになる。</p>
+<p>この場合、ルートモジュールがコール元に依存する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── main.tf</span><span class="w"> </span><span class="c1"># ルートモジュール</span>
 <span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
@@ -34776,7 +34776,7 @@
 </blockquote>
 <h4 id="_4">▼ ローカルモジュール内で使用する場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>ローカルモジュール内の <code>resource</code> ブロックが持つ値を、ルートモジュールに出力する。</p>
-<p>この場合、ローカルモジュールがコール元に依存することになる。</p>
+<p>この場合、ローカルモジュールがコール元に依存する。</p>
 <p>可読性の観点から、<code>resource</code> ブロック一括で出力するのではなく、<code>resource</code> ブロックの特定の <code>attribute</code> 値を出力するようにしたほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
@@ -34821,7 +34821,7 @@
 </blockquote>
 <h4 id="_5">▼ リモートモジュール内で使用する場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>リモートモジュールの <code>resource</code> ブロックや、リモートモジュール内ローカルモジュールが持つ値を、コール先のルートモジュールに出力する。</p>
-<p>この場合、リモートモジュールがコール元に依存することになる。</p>
+<p>この場合、リモートモジュールがコール元に依存する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── main.tf</span><span class="w"> </span><span class="c1"># リモートモジュール</span>
 <span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
@@ -34933,7 +34933,7 @@
 <h3 id="local"><code>local</code> ブロックとは<a class="headerlink" href="#local" title="Permanent link">&para;</a></h3>
 <p>通常変数であり、定義されたローカル/リモートモジュール内にのみスコープを持つ。</p>
 <p>ルートモジュールとローカル/リモートモジュールが異なるリポジトリで管理されている場合に有効である。</p>
-<p>これらが同じリポジトリにある場合は、環境変数を使用したほうが可読性が高くなる。</p>
+<p>これらが同じリポジトリにある場合は、環境変数を使用したほうが読みやすい。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">locals</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;FOO&quot;</span>
 <span class="p">}</span>
@@ -35237,7 +35237,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>注意点として、<code>count</code> 関数を使用すると、他のブロック (例：<code>resource</code> ブロック、<code>output</code> ブロック) で設定値にアクセスするときにインデックス番号 <code>0</code> を指定する必要がある。</p>
+<p>注意点として、<code>count</code> 関数を使用すると、他のブロック (例：<code>resource</code> ブロック、<code>output</code> ブロック) で設定値にアクセスするときはインデックス番号 <code>0</code> を指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;foo&quot;</span><span class="w"> </span><span class="nv">&quot;server&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_instance.server[0].ami</span>
 <span class="p">}</span>
@@ -35334,7 +35334,7 @@
 <p><br></p>
 <h3 id="for_each"><code>for_each</code> 引数<a class="headerlink" href="#for_each" title="Permanent link">&para;</a></h3>
 <h4 id="for_each_1">▼ <code>for_each</code> 引数とは<a class="headerlink" href="#for_each_1" title="Permanent link">&para;</a></h4>
-<p>事前に <code>for_each</code> 引数に格納したmap型の <code>key</code> の数だけ、<code>resource</code> ブロックを繰り返し実行する。</p>
+<p>あらかじめ <code>for_each</code> 引数に格納したmap型の <code>key</code> の数だけ、<code>resource</code> ブロックを繰り返し実行する。</p>
 <p>繰り返し処理を実行するときに、<code>count</code> 引数とは違い、要素名を指定して出力できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>例として、subnetを繰り返し作成する。</p>
@@ -35631,10 +35631,10 @@
 <p><code>resource</code> ブロックを新しく作成した後に削除するように、変更できる。</p>
 <p>通常時、Terraformの処理順序として、<code>resource</code> ブロックの削除後に作成が行われる。</p>
 <p>しかし、他のリソースと依存関係が存在する場合、先に削除が行われることによって、他のリソースに影響が出てしまう。</p>
-<p>これに対処するために、先に新しい <code>resource</code> ブロックを作成し、紐付けし直してから、削除する必要がある。</p>
+<p>これに対処するため、先に新しい <code>resource</code> ブロックを作成し、紐付けし直してから削除する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>例として、AWS Certificate Managerのサーバー証明書を示す。</p>
-<p>AWS Certificate Managerのサーバー証明書は、ALBやCloudFrontに紐付いており、新しい証明書に紐付け直した後に、既存のものを削除する必要がある。</p>
+<p>AWS Certificate Managerのサーバー証明書は、ALBやCloudFrontに紐付いている。新しい証明書に紐付け直した後、既存のものを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For foo domain</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35650,7 +35650,7 @@
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>例として、RDSのクラスターパラメーターグループとサブネットグループを示す。</p>
-<p>クラスターパラメーターグループとサブネットグループは、DBクラスターに紐付いており、新しいクラスターパラメーターグループに紐付け直した後に、既存のものを削除する必要がある。</p>
+<p>クラスターパラメーターグループとサブネットグループは、DBクラスターに紐付いている。新しいクラスターパラメーターグループに紐付け直した後、既存のものを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># AWS RDS Cluster Parameter Group</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35677,7 +35677,7 @@
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>例として、Redisのパラメーターグループとサブネットグループを示す。</p>
-<p>ラメータグループとサブネットグループは、RDSに紐付いており、新しいパラメーターグループとサブネットグループに紐付け直した後に、既存のものを削除する必要がある。</p>
+<p>パラメーターグループとサブネットグループは、RDSに紐付いている。新しいパラメーターグループとサブネットグループに紐付け直した後、既存のものを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># AWS Redis Parameter Group</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35703,7 +35703,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="ignore_changes">▼ ignore_changes<a class="headerlink" href="#ignore_changes" title="Permanent link">&para;</a></h4>
-<p>実インフラのみで発生した <code>resource</code> ブロックの作成・更新・削除を無視し、<code>tfstate</code> ファイルに反映しないようにする。</p>
+<p>実インフラのみで発生した <code>resource</code> ブロックの作成・更新・削除を無視し、<code>tfstate</code> ファイルへ反映しないようにする。</p>
 <p>これにより、<code>ignore_changes</code> 引数を定義したタイミング以降、実インフラと <code>tfstate</code> ファイルに差分があっても、<code>tfstate</code> ファイルの値が更新されなくなる。</p>
 <p>ただし、リソースによっては <code>ignore_changes</code> 引数を使えないものがある (例：SSMパラメーターストア) 。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35987,7 +35987,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 16:41:20 JST">2026-02-16</span>
   </span>
 
     
