@@ -123,7 +123,7 @@ services:
 
 ### `command`
 
-コンテナの起動時に最初に実行するコマンドを設定する。
+コンテナの起動時、最初に実行するコマンドを設定する。
 
 Dockerfileを必要とせず、ベンダーが提供するイメージをそのまま使用するような場合に役立つ。
 
@@ -160,7 +160,7 @@ services:
 
 ### `depends_on`
 
-サービスを実行する順番を設定する。
+サービスを起動する順番を設定する。
 
 **＊実装例＊**
 
@@ -320,7 +320,7 @@ services:
 
 **＊実装例＊**
 
-コンテナに割り当てられるプライベートIPアドレスに、指定したホスト名をマッピングする。
+コンテナに割り当てられるプライベートIPアドレスへ、指定したホスト名をマッピングする。
 
 マッピングは、`/etc/hosts` ファイルに書き込まれる。
 
@@ -389,7 +389,7 @@ services:
 
 コンテナで作成されたログをFluentdコンテナにフォワーディングする。
 
-ログのフォワーディング元よりも先に起動するようにしておく必要がある。
+ログのフォワーディング元よりも先に起動する必要がある。
 
 > - https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml
 
@@ -559,7 +559,7 @@ services:
 
 ### `stdin_open`
 
-`docker compose` コマンドの裏側で実行される `docker run` コマンドで、`i` オプションを有効化するか否かを設定する。
+`docker compose` コマンドの裏側では、`docker run` コマンドが実行される。`i` オプションを有効化するか否かを設定する。
 
 **＊実装例＊**
 
@@ -573,9 +573,9 @@ services:
 
 ### `tty`
 
-`docker compose` コマンドの裏側で実行される `docker run` コマンドで、`t` オプションを有効化するか否かを設定する。
+`docker compose` コマンドの裏側では、`docker run` コマンドが実行される。`t` オプションを有効化するか否かを設定する。
 
-疑似ターミナルを割り当てるによって、`exit` の後もバックグラウンドでコンテナを起動させ続けられる。
+疑似ターミナルを割り当てることで、`exit` の後もバックグラウンドでコンテナを起動させ続けられる。
 
 **＊実装例＊**
 
@@ -589,7 +589,7 @@ services:
 
 ### `user`
 
-`docker compose` コマンドの裏側で実行される `docker run` コマンドで、`u` オプションを有効化するか否かを設定する。
+`docker compose` コマンドの裏側では、`docker run` コマンドが実行される。`u` オプションを有効化するか否かを設定する。
 
 コンテナの実行ユーザーのユーザーIDとグループIDを設定する。
 
@@ -827,7 +827,7 @@ networks:
     external: true
 ```
 
-(4) 各コンテナは `http://localhost:<コンテナごとのポート番号>` で相互に接続できるようになる。
+(4) 各コンテナは `http://localhost:<コンテナごとのポート番号>` で相互接続できるようになる。
 
 > - https://docs.docker.com/compose/compose-file/compose-file-v2/#external-1
 > - https://nishinatoshiharu.com/external-docker-network/
@@ -938,7 +938,7 @@ initdb
 └── bar.sql
 ```
 
-このSQLでは、`test` というDBを作成し、ユーザーが `test`DBに接続できるようにする。
+このSQLでは、`test` というDBを作成し、ユーザーが `test`DBへ接続できるようにする。
 
 ```mysql
 CREATE DATABASE IF NOT EXISTS `test` COLLATE 'utf8mb4_general_ci' CHARACTER SET 'utf8mb4';

@@ -35,7 +35,7 @@ Karpenter Controllerは、KarpenterのCustom Controllerとして、カスタム�
 
 この時、AWS Load Balancer Controllerも使用していると、Clusterのサブネット内にAWS EC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。
 
-なお、NodePool配下のAWS EC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はAWS EC2 Nodeの作成後に削除するようになっている。
+なお、NodePool配下のAWS EC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はAWS EC2 Node作成後に削除する。
 
 ![karpenter_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
 
@@ -61,7 +61,7 @@ cluster-autoscalerのNodeのスケールアウト後に、kube-schedulerがNode�
 
 ### disruption-controller
 
-Karpenterは、Nodeで特定のイベントを検知すると、これが実際に起こる前にNodeを自身で中断する。
+Karpenterは、Nodeで特定のイベントを検知すると、Nodeを中断する。
 
 - Nodeのスポット中断警告イベント
 - Nodeのヘルスステータス
@@ -163,7 +163,7 @@ kube-schedulerから情報を取得し、新しいPodをNode上にスケジュ�
 
 より低コストになるようにAWS EC2 Nodeを統合する。
 
-以下のような条件の場合に、統合を発動する。
+以下のような条件の場合、統合を発動する。
 
 - AWS EC2 NodeにPodがおらず、これを削除できる
 - Podが特定のAWS EC2 Nodeに偏っており、Podが少ないNodeから多いNodeに再スケジューリングさせても、Podを問題なく動かせる。
@@ -171,10 +171,10 @@ kube-schedulerから情報を取得し、新しいPodをNode上にスケジュ�
 
 反対に、以下のような条件の場合には統合しない。
 
-- Controllerが不明なPodがいる
-- Podの退避を拒否するPodDisruptionBudget (例：`disruptionsAllowed=0`) があり、統合を実行してしまうとPodDisruptionBudgetに違反する。
+- Controllerが不明なPod
+- Podの退避を拒否するPodDisruptionBudget (例：`disruptionsAllowed=0`) があり、統合するとPodDisruptionBudgetに違反する。
 - Podの `metadata.annotations` キー配下に `karpenter.sh/do-not-evict` キーがある。
-- PodにAffinityがあり、統合を実行してしまうとAffinityに違反する。
+- PodにAffinityがあり、統合するとAffinityに違反する。
 
 > - https://karpenter.sh/preview/concepts/disruption/#automated-methods
 > - https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation
@@ -240,7 +240,7 @@ Karpenterは、マネージドNodeグループの有無に関係なく、Nodeを
 
 マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のAWS EC2のAWS EC2フリートAPIを動的にコールする。
 
-ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるために、マネージドNodeグループ管理下のNodeを意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。
+ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるため、マネージドNodeグループ管理下のNodeを意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。
 
 > - https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features
 > - https://karpenter.sh/preview/getting-started/migrating-from-cas/#remove-cas
@@ -263,7 +263,7 @@ Karpenterでは、作成されるNodeのスペックを事前に指定する必�
 
 #### ▼ cluster-autoscalerのいいところ
 
-cluster-autoscalerはクラウドプロバイダーによらずに使用できるが、Karpenterは執筆時点 (2023/02/26) では、AWS上でしか使用できない。
+cluster-autoscalerはクラウドプロバイダーによらず使用できるが、Karpenterは執筆時点 (2023/02/26) ではAWS上でしか使用できない。
 
 そのため、クラウドプロバイダーのオートスケーリング (例：AWS EC2 Auto Scalingグループ) に関するAPIをコールすることになり、その機能がオートスケーリングに関するAPIに依存する。
 

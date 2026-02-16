@@ -87,7 +87,7 @@ $ export TF_CLI_ARGS_apply="--parallelism=50"
 
 具体的は、`terraform plan` コマンドで出力される `Note: Objects have changed outside of Terraform` の内容を指す。
 
-ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) を処理することはできず、代わりに `terraform import` コマンドの実行が必要になる。
+ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) は処理できない。代わりに `terraform import` コマンドの実行が必要になる。
 
 ```bash
 $ terraform apply -refresh-only
@@ -288,7 +288,7 @@ $ terraform init -upgrade
 
 #### ▼ 問題が起こる場合
 
-`terraform init` コマンドで以下のようなエラーが起こる場合がある。
+`terraform init` コマンドで以下のようなエラーが発生する場合もある。
 
 ```bash
 │ Error: Failed to query available provider packages
@@ -732,7 +732,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 #### ▼ list
 
-`tfstate` ファイルで定義されている `resource` ブロック (`tfstate` ファイル上では `managed` モード) の一覧を取得する。`terraform apply` コマンドで `-target` オプションを使用する前にアドレスを確認したい場合や、`terraform apply` コマンドの実行に失敗したときに `tfstate` ファイルと実インフラにどのような差分があるかを確認する場合に使用する。
+`tfstate` ファイルで定義されている `resource` ブロック (`tfstate` ファイル上では `managed` モード) の一覧を取得する。`terraform apply` コマンドで `-target` オプションを使用する前のアドレス確認や、`terraform apply` コマンドの実行失敗時に `tfstate` ファイルと実インフラにどのような差分があるかの確認に使用する。
 
 > - https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 
@@ -956,7 +956,7 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 
 #### ▼ validateとは
 
-設定ファイルの検証を行う。
+設定ファイルを検証する。
 
 ```bash
 $ terraform validate
@@ -977,7 +977,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 実インフラの全ての設定値を `tfstate` ファイルに取り込む場合、これの設定値を `resource` ブロックの設定値として `tfstate` ファイルに書き込み、Terraformの管理下におく必要がある (`tfstate` ファイル上では、`resource` ブロックは `managed` モードという表記になる) 。
 
-この時、`terraform import` コマンドを実行するか、コンソール画面から一度削除したうえで `terraform apply` コマンドを実行する方法がある (前者が推奨) 。
+この時、`terraform import` コマンドを実行する方法と、コンソール画面から一度削除したうえで `terraform apply` コマンドを実行する方法がある (前者を推奨) 。
 
 執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを `1` 個ずつ指定して、`tfstate` ファイルに書き込んでいく必要がある。
 
@@ -1241,11 +1241,11 @@ No changes. Infrastructure is up-to-date.
 
 `resource` ブロック間の紐付けに特化したような `resource` ブロックは、`terraform import` コマンドに対応していないものが多い (AWSであれば、`aws_acm_certificate_validation`、`aws_lb_target_group_attachment` など) 。
 
-その場合、`tfstate` ファイルと実インフラの差分を解消できない。
+その場合、`tfstate` ファイルと実インフラの差分を解消できないことがある。
 
 ただし、こういった非対応の `resource` ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の `resource` ブロックであることが多い。
 
-そのため、実際に `terraform apply` コマンドを実行してみても、実インフラに影響が起こらない可能性がある。
+そのため、実際に `terraform apply` コマンドを実行してみても、実インフラに影響が出ない場合もある。
 
 #### ▼ importを行わなかった場合のエラー
 
@@ -1269,13 +1269,13 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 ### `terraform apply -refresh-only` コマンドについて
 
-実インフラから実インフラの一部の設定値を `tfstate` ファイルに取り込む場合、以下の方法が便利である。
+実インフラから実インフラの一部の設定値を `tfstate` ファイルに取り込む場合、以下の方法が便利だ。
 
 似た目的で使用する `import` は実インフラの全ての設定値が対象であるが、`terraform apply -refresh-only` コマンドは実インフラの一部の設定値が対象である。
 
 `(1)`
 
-: 先にコンソール画面に設定値を変更する。
+: 先にコンソール画面で設定値を変更する。
 
 `(2)`
 
