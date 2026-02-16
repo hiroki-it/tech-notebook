@@ -357,7 +357,7 @@ RDBMSまたはアプリケーションによる `UPDATE` 処理競合問題を�
 
 ロックが解除されるまでトランザクションは待機状態になる。
 
-アプリケーションやRDBMSでは、トランザクションにロック待機時間を設定しておき (例：prismaの `maxWait` 値、MySQLの `innodb_lock_wait_timeout` 値) 、これを超過した場合にエラーになるようにする。
+アプリケーションやRDBMSでは、トランザクションのロック待機時間を設定しておく (例：prismaの `maxWait` 値、MySQLの `innodb_lock_wait_timeout` 値) 。そして、これを超過した場合はエラーになるようにする。
 
 > - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
 > - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
@@ -521,7 +521,7 @@ PHPのORMであるDoctrineのロック機能については、以下のリンク
 
 ![db_point-in-time-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_point-in-time-recovery.png)
 
-特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は `mysqldump` コマンドの出力) 、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) を使用し、DBを任意の時点の状態に戻す。
+特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は `mysqldump` コマンドの出力) と、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) を使用する。そして、DBを任意の時点の状態に戻す。
 
 トランザクションの前後の状態に戻すロールバック/ロールフォワードとは異なり、DBを任意の時点の状態に戻せる。
 
@@ -533,7 +533,7 @@ PHPのORMであるDoctrineのロック機能については、以下のリンク
 
 #### ▼ ツール
 
-ポイントインタイムリカバリーの時、開発者がベースバックアップ作成、リカバリー、古い差分バックアップの削除などの作業を行っても良い。
+ポイントインタイムリカバリーの時、開発者がベースバックアップ作成、リカバリー、古い差分バックアップの削除などの作業をしても良い。
 
 ただし、煩雑な手順になるため自動化ツールを使用したほうが良い。
 

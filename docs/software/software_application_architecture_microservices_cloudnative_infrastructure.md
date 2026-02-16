@@ -110,7 +110,7 @@ flowchart LR
 
 VPC CNIアドオンは、kubeletやAWS ENIと連携し、マイクロサービスPodをAWS EKSクラスター内のネットワークに参加させます。
 
-kube-proxyはNode内のiptablesを更新し、AWS EKSクラスター内で各ツールがトラフィック管理を実行できるようにします。
+kube-proxyはNode内のiptablesを更新し、AWS EKSクラスター内で各ツールがトラフィック管理できるようにする。
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio.png)
 
@@ -124,7 +124,7 @@ kube-proxyはNode内のiptablesを更新し、AWS EKSクラスター内で各ツ
 
 ### IstioによるL4/L7トラフィック管理
 
-Istioは、指定したNamespaceに属するPodにサービスメッシュの機能を提供します。
+Istioは、指定したNamespaceに属するPodへサービスメッシュの機能を提供する。
 
 管理下のPodにistio-proxyを挿入します。
 
@@ -203,7 +203,7 @@ flowchart LR
 
 ロードバランサーを境界として、公開先のネットワークを制限します。
 
-Istioは、指定したNamespaceに属するPodにサービスメッシュの機能を提供します。
+Istioは、指定したNamespaceに属するPodへサービスメッシュの機能を提供する。
 
 サービスメッシュ内には、ユーザーに公開するコンテナと、SWEやSREerにだけ公開するコンテナがあります。
 
@@ -291,7 +291,7 @@ flowchart LR
 
 ### AWSとIstioによる証明書管理
 
-Istioは、指定したNamespaceに属するPodにサービスメッシュの機能を提供します。
+Istioは、指定したNamespaceに属するPodへサービスメッシュの機能を提供する。
 
 管理下のPodにistio-proxyを挿入します。
 

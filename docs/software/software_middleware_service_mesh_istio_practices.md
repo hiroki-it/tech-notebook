@@ -39,13 +39,13 @@ description: プラクティス集＠Istioの知見を記録しています。
 
 そのため、Pod当たりのハードウェアリソースの消費量が増えてしまう。
 
-テレメトリーを収集する必要のないPod (例：監視を責務に持つPod) は、サイドカーモードに登録しないようにする。
+テレメトリーを収集する必要のないPod (例：監視を責務に持つPod) は、サイドカーモードへ登録しないようにする。
 
 #### ▼ Job配下のPod
 
-Job配下のPodにistio-proxyを挿入した場合、Pod内のコンテナが終了してもistio-proxyが終了せず、Pod自体が削除されない問題がある。
+Job配下のPodにistio-proxyを挿入した場合、Pod内のコンテナが終了してもistio-proxyが終了せず、Pod自体が削除されない問題もある。
 
-Job配下のPodは、サイドカーモードに登録しないようにする。
+Job配下のPodは、サイドカーモードへ登録しないようにする。
 
 どうしてもサービスメッシュに登録したい場合は、Pod内のコンテナで、istio-proxyの『`localhost:15020/quitquitquit`』をコールするようなシェルスクリプトを実行する。
 
@@ -122,7 +122,7 @@ Pod
 
 一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成される。
 
-そのため、このロードバランサーからLoadBalancer Serviceにルーティングできるようにする。
+そのため、このロードバランサーからLoadBalancer Serviceへルーティングできるようにする。
 
 LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。
 

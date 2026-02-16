@@ -101,7 +101,7 @@ data:
 
 ### istio-<リビジョン>とは
 
-Istiodコントロールプレーン (`discovery` コンテナ) のため、全てのistio-proxyにグローバルに設定する変数を管理する。
+Istiodコントロールプレーン (`discovery` コンテナ) のため、全てのistio-proxyへグローバルに設定する変数を管理する。
 
 ```yaml
 apiVersion: v1
@@ -293,7 +293,7 @@ data:
 
 istio-proxyのアウトバウンド通信時リトライ条件は以下である。
 
-宛先に通信が届いておらず、リトライすると問題が解決する可能性があるステータスコードは、リトライしてもよい。
+宛先に通信が届いておらず、リトライすれば問題が解決する可能性があるステータスコードは、リトライしてもよい。
 
 - リトライすると解決する可能性がある
 - リクエストを繰り返しても状態が変わらずに冪等性がある (二重処理にならない) がある
@@ -1475,7 +1475,7 @@ Podの `.metadata.annotations.proxy.istio.io/config.drainDuration` キーで起�
 
 **＊実装例＊**
 
-Envoyプロセスの接続のドレイン処理前に `5` 秒間に待機し、`downstream_cx_active` メトリクスが0になるまでドレイン処理を続ける。
+Envoyプロセスの接続のドレイン処理前に `5` 秒間待機し、`downstream_cx_active` メトリクスが0になるまでドレイン処理を続ける。
 
 ```yaml
 apiVersion: v1
@@ -1554,7 +1554,7 @@ data:
           - authorization
 ```
 
-AuthorizationPolicyで、認可処理をOAuth2 Proxyに委譲できるようになる。
+AuthorizationPolicyで、認可処理をOAuth2 Proxyへ委譲できるようになる。
 
 ```yaml
 apiVersion: security.istio.io/v1

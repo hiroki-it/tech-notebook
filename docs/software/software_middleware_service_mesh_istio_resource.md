@@ -288,7 +288,7 @@ Clusterネットワーク内から通信を受信し、フィルタリングし�
 
 Istio Egress Gatewayを使用しない場合、サービスメッシュ外への通信を監視できるようになり、またサイドカーを通過せずにサービスメッシュ外へ通信できてしまう。
 
-しかし、Istio Egress Gatewayを使わないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまい、システムの安全性が低くなる。
+しかし、Istio Egress Gatewayを使わないと、マイクロサービスからistio-proxyコンテナを経由せず、外部システムに直接HTTPSリクエストを送信できるようになってしまう。このため、システムの安全性が低くなる。
 
 他に、サービスメッシュ外への特定の通信を識別できるようになるメリットもある。
 
@@ -364,7 +364,7 @@ Istio Ingress Gateway (厳密に言うとGateway) は、独自プロトコル (�
 
 #### ▼ ロードバランサーで使用する場合
 
-VirtualServiceは、Istio Ingress Gatewayの一部として、受信した `L4`/`L7` 通信をJWTトークンleに紐づくPodにルーティングする。
+VirtualServiceは、Istio Ingress Gatewayの一部として、受信した `L4`/`L7` 通信をJWTトークンleに紐づくPodへルーティングする。
 
 ![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
 
@@ -838,11 +838,11 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 ServiceEntryは、クラスター外のドメイン名などを登録する。
 
-Istio`v1.3` より前は、ConfigMapでデフォルトで `REGISTRY_ONLY` になっていたため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。
+Istio`v1.3` より前は、ConfigMapのデフォルトが `REGISTRY_ONLY` になっていた。このため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部と通信できなかった。
 
 しかし、`v1.3` 以降、ServiceEntryでマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。
 
-ただし、登録しない限り、マイクロサービスを個別に認識することはできず、すべて `PassthroughCluster` として扱う。
+ただし、登録しない限り、マイクロサービスを個別に認識できず、すべて `PassthroughCluster` として扱う。
 
 類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。
 
@@ -884,7 +884,7 @@ Sidecarを使用すると、指定した設定以外の通信を除去し、特�
 
 ServiceEntryには、Istio Egress Gatewayが必須ではない。
 
-ただし、Istio Egress Gatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう。
+ただし、Istio Egress Gatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せず、外部システムに直接HTTPSリクエストを送信できるようになってしまう。
 
 そのため、システムの安全性が低くなる。
 

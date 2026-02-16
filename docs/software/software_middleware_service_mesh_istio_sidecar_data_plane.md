@@ -218,7 +218,7 @@ istio-proxyは、マイクロサービスのあるPodのみでなく、Istio Ing
 
 Istioのサービスメッシュ外のネットワークからのインバウンド通信では、Istio Ingress Gateway内のistio-proxyにて、Pod等の宛先情報に基づいて、ルーティングを実行している。
 
-一方で、マイクロサービスを持つPod間通信では、Pod内のistio-proxyに登録されたものに基づいて、Pod間で直接的に通信している。
+一方で、マイクロサービスを持つPod間通信では、Pod内のistio-proxyに登録されたものに基づき、Pod間で直接的に通信している。
 
 仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが `2` 個ある構成になってしまうことに注意する。
 
@@ -236,7 +236,7 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 ただし、以下のいずれかで不要になる。
 
 - 通常のistio-proxyの場合
-  - `holdApplicationUntilProxyStarts` キーを `true` にし (`.spec.containers[*].lifecycle.postStart.exec.command` キーに対応)
+  - `holdApplicationUntilProxyStarts` キーを `true` にする (`.spec.containers[*].lifecycle.postStart.exec.command` キーに対応)
   - `EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数を `true` に設定する (`.spec.containers[*].lifecycle.preStop.exec.command` キーに対応)
 - InitContainerによるistio-proxyを使用する場合 (両方に対応)
 
@@ -336,7 +336,7 @@ spec:
 
 `istio-init` コンテナの代替案として、istio-cniが提供されている。
 
-もしistio-cniを使用する場合は、`istio-init` コンテナが不要になる代わりに、`istio-validation` コンテナが必要になる。
+もしistio-cniを使用する場合は、`istio-init` コンテナが不要になる。その代わり、`istio-validation` コンテナが必要になる。
 
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 > - https://www.redhat.com/architect/istio-CNI-plugin
@@ -435,7 +435,7 @@ func (a *ADSC) Run() error {
 
 > - https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446
 
-`handleRecv` 関数内で、Envoyの各処理コンポーネントを整理し、最後に `XDSUpdates` チャネルに値を送信している。
+`handleRecv` 関数内で、Envoyの各処理コンポーネントを整理し、最後に `XDSUpdates` チャネルへ値を送信している。
 
 ```go
 func (a *ADSC) handleRecv() {
