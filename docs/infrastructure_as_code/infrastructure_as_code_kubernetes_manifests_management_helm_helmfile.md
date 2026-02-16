@@ -141,7 +141,7 @@ $ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
 
 #### ▼ environments
 
-`helmfile` コマンド時に `helmfile.yaml` ファイル内に環境名を渡せる。
+`helmfile` コマンドの実行時に、`helmfile.yaml` ファイルへ環境名を渡せる。
 
 > - https://helmfile.readthedocs.io/en/latest/#environment-values
 
@@ -290,7 +290,7 @@ foo: ""
 bar: ""
 ```
 
-また、依存対象のサブチャートのリポジトリを `helm repo add` するために、`repositories` キーが必要がある。
+また、依存対象のサブチャートのリポジトリを `helm repo add` するため、`repositories` キーが必要になる。
 
 ```yaml
 repositories:
@@ -648,7 +648,7 @@ spec:
 
 テキストファイルを相対パスで読み込み、レンダリングする。
 
-readFile関数の前で改行する、１行目に空行が入ったり、関数処理時に発生した不要な文字 (体験談：`2`) が混入することに注意する。
+readFile関数の前で改行する、1行目に空行が入ったり、関数処理時に発生した不要な文字 (体験談：`2`) が混入したりすることに注意する。
 
 ```yaml
 apiVersion: v1

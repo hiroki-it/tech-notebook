@@ -917,7 +917,7 @@ LoadBalancerを一時的に作成し、LoadBalancer Serviceに自動的に紐付
 
 紐付けられたLoadBalancer Serviceには『External Endpoints (`http://127.0.0.1:80`) 』が割り当てられ、ここからLoadBalancer Serviceにリクエストを送信できるようになる。
 
-Node外からPodに通信できるようになる。`minikube ssh` コマンドでNodeに接続しつつ、公開されたServiceにリクエストを送信できる。
+Node外からPodへ通信できるようになる。`minikube ssh` コマンドでNodeに接続しつつ、公開されたServiceへリクエストを送信できる。
 
 **＊例＊**
 

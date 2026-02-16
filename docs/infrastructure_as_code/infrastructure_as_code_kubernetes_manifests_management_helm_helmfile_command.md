@@ -93,7 +93,7 @@ $ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
 
 `helmfile sync` コマンドとは異なり、Helmリリース間に差分がないと、リビジョンは更新されない。
 
-注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。
+注意点として、Helmの使用と同様に、CRDのマニフェストは作成できるが変更できない。
 
 ```bash
 $ helmfile -e prd apply
@@ -230,7 +230,7 @@ $ HELM_DIFF_COLOR=true helmfile -e prd diff
 
 #### ▼ grepとの組み合わせ
 
-マニフェストの差分が多すぎる場合、先にどのリソースに変更があるのかを把握したほうがよい。
+マニフェストの差分が多すぎる場合、先にどのリソースへ変更があるのかを把握したほうがよい。
 
 `grep` コマンドを使用して、差分のあるリソースやファイルを確認しておく。
 
@@ -262,7 +262,7 @@ Source: project/manifests/persistent-volume.yaml
 
 `helmfile apply` コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョンを更新する。
 
-注意点として、Helmの使用と同様にして、CRDのマニフェストは作成はできるが変更はできない。
+注意点として、Helmの使用と同様に、CRDのマニフェストは作成できるが変更できない。
 
 ```bash
 $ helmfile -e prd sync

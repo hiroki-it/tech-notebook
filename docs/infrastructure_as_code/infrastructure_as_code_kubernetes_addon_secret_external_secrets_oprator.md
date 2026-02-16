@@ -38,9 +38,9 @@ external-secrets-controllerは、プロバイダー (例：AWS、Google Cloud、
 
 その後、取得した変数をSecretのデータとして注入する。
 
-Secretを作成せずにPod内コンテナにマウントするSecretsストアCSIドライバーと比較して、Kubernetesとプロバイダーがより疎結合になる。
+Secretを作成せずにPod内コンテナへマウントするSecretsストアCSIドライバーと比較して、Kubernetesとプロバイダーがより疎結合になる。
 
-一方で、同様にSecretのデータとして注入するhelm-secrets/vault-helmと比較して、関係するコンポーネントが増えるため脆弱性が高まる。
+一方で、同様にSecretのデータとして注入するhelm-secrets/vault-helmと比較して、関係するコンポーネントが増える。そのため、脆弱性が高まる。
 
 <br>
 

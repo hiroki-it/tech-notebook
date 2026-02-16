@@ -57,7 +57,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-drive
 
 SecretsストアCSIドライバーによって、PodではSecretを介さずに、プロバイダーから変数を直接的にマウントする。
 
-別途、Podに紐づくServiceAccountに、プロバイダーのSecretへの認可スコープを付与する必要がある。
+別途、Podに紐づくServiceAccountへ、プロバイダーのSecretへの認可スコープを付与する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -100,7 +100,7 @@ spec:
 
 Namespaceを設定する。
 
-Secretのマウント対象となるPodと同じNamespaceにする必要がある。
+Secretのマウント対象となるPodと、同じNamespaceにする必要がある。
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1

@@ -47,13 +47,13 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 ### Nodeグループとは
 
-KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義することはできない。
+KubernetesにはNodeグループというリソースがなく、グループを宣言的に定義できない。
 
 ただ、クラウドプロバイダーのサーバーオートスケーリング機能 (例：AWS EC2のAuto Scalingグループ) を使用して、Nodeグループ (例：AWS EKS Nodeグループ) を実現できる。
 
 複数のNodeに同じ設定値 (`.metadata.labels` キー、CPU、メモリなど) をもたせ、冗長化できるようになる。
 
-マイクロサービスごとにNodeに必要な非機能要件（性能、耐障害性、ネットワークセグメント）が異なる場合、Nodeグループを定義するとよい。
+マイクロサービスごとに、Nodeに必要な非機能要件（性能、耐障害性、ネットワークセグメント）が異なる場合、Nodeグループを定義するとよい。
 
 ただし、その分金銭コストはかかる。
 
@@ -183,7 +183,7 @@ iptable方式の場合、kube-proxyはiptablesにPodのIPアドレスを追加/�
 
 ターゲットには、Serviceのルーティング先となるPod (異なるワーカーNode上にある場合もある) の宛先情報が登録されている。
 
-`source` 列に含まれるIPアドレスを持つパケットのみでルールが適用され、各ルールに対応するPodに送信する場合、宛先IPアドレスを `destination` 列のIPアドレスに変換する。
+`source` 列に含まれるIPアドレスを持つパケットのみでルールが適用される。各ルールに対応するPodへ送信する場合は、宛先IPアドレスを `destination` 列のIPアドレスに変換する。
 
 ```bash
 $ iptables -L -n KUBE-SERVICES -t nat --line-number

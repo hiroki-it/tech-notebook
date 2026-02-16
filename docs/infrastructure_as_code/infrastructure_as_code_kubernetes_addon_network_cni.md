@@ -61,7 +61,7 @@ PodをNode内のClusterネットワークに参加させると、異なるNode�
 
 ### オーバーレイモードとは
 
-オーバーレイモードは、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外のCNIはiptables、Cilium CNIはCilium) 、Nodeのネットワークインターフェース (`eth`) 、といったコンポーネントから構成される。
+オーバーレイモードは、複数のコンポーネントから構成される。例えば、Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) がある。また、NATルーター (Cilium以外のCNIはiptables、Cilium CNIはCilium) と、Nodeのネットワークインターフェース (`eth`) がある。
 
 オーバーレイネットワークを使用して、Clusterネットワークを作成し、異なるNode上のPod間を接続する。
 
@@ -103,7 +103,7 @@ Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネッ�
 
 #### ▼ 異なるNode上のPod間通信
 
-Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) 、NATルーター (Cilium以外はiptables、Cilium) 、Nodeのネットワークインターフェース (`eth`) を使用して、異なるNode上のPod間でパケットを送受信する。
+Podのネットワークインターフェース (`eth`) 、Nodeの仮想ネットワークインターフェース (`veth`) 、Nodeのブリッジ (`cni`) を使用する。また、NATルーター (Cilium以外はiptables、Cilium) とNodeのネットワークインターフェース (`eth`) を使用する。そして、異なるNode上のPod間でパケットを送受信する。
 
 ![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
 

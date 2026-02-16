@@ -596,7 +596,7 @@ $ terraform plan -var-file=foo.tfvars
 
 実行ファイルに入力したい環境変数を定義する。
 
-`terraform.tfvars` という名前にすると、`terraform` コマンドの実行時に自動的に読み込まれる。
+`terraform.tfvars` という名前であれば、`terraform` コマンドの実行時は自動的に読み込まれる。
 
 ```bash
 # ファイルを指定しなくとも読み込まれる

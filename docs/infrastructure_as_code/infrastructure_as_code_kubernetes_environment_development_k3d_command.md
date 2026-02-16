@@ -95,7 +95,7 @@ $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --servers 2
 
 ホストマシンのファイルをK3d Clusterにマウントする。
 
-`config.yaml` ファイルや `registries.yaml` ファイルをK3D Cluster内に配置するときに役立つ。
+`config.yaml` ファイルや `registries.yaml` ファイルをK3D Cluster内へ配置するときに役立つ。
 
 ```bash
 $ k3d cluster create foo-cluster --volume "registries.yaml:/etc/rancher/k3s/registries.yaml

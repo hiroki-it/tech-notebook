@@ -364,11 +364,11 @@ fullnameOverride: foo
 
 もし、`fullnameOverride` オプションを設定していた場合、Kubernetesリソース名は『`＜fullnameOverrideオプションの値＞`』になる。
 
-補足としてチャートごとに、Kubernetesリソース名の前後に特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) がつくことがある。
+補足として、チャートごとにKubernetesリソース名の前後へ特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) が付く場合もある。
 
 `nameOverride` オプションとは独立している。
 
-そのため、`nameOverride` オプションでチャートをインストールした後に `fullnameOverride` オプションに移行したい場合、`nameOverride` オプションによるチャートを一度アンインストールする必要がある。
+そのため、`nameOverride` オプションでチャートをインストールした後に `fullnameOverride` オプションへ移行したい場合、`nameOverride` オプションによるチャートを一度アンインストールする必要がある。
 
 しかし、そのまま `fullnameOverride` オプションに移行してしまうと、`nameOverride` オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。
 
@@ -461,9 +461,9 @@ nameOverride: foo
 
 もし、`nameOverride` オプションを設定していた場合、Kubernetesリソース名は『`＜Helmリリース名＞-＜nameOverrideオプションの値＞`』になる。
 
-補足としてチャートごとに、Kubernetesリソース名の前後に特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) がつくことがある。
+補足として、チャートごとにKubernetesリソース名の前後へ特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) が付く場合もある。
 
-`fullnameOverride` オプションとは独立しており、`fullnameOverride` オプションでチャートをインストールした後に `nameOverride` オプションに移行したい場合、`fullnameOverride` オプションによるチャートを一度アンインストールする必要がある。
+`fullnameOverride` オプションとは独立しており、`fullnameOverride` オプションでチャートをインストールした後に `nameOverride` オプションへ移行したい場合、`fullnameOverride` オプションによるチャートを一度アンインストールする必要がある。
 
 しかし、そのまま `nameOverride` オプションに移行してしまうと、`fullnameOverride` オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。
 

@@ -82,7 +82,7 @@ Ciliumエージェント上ではEnvoyプロセスが動いている。
 
 なお、Ciliumサービスメッシュは前提としてCilium CNIを必要とする。
 
-そのため、Istioのように、既存のKubernetesのネットワークを残したままサービスメッシュを導入することはできない。
+そのため、Istioのように、既存のKubernetesのネットワークを残したままサービスメッシュを導入できない。
 
 > - https://docs.cilium.io/en/stable/network/servicemesh/
 > - https://caddi.tech/archives/3864

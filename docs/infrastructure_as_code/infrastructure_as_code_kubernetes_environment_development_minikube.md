@@ -460,7 +460,7 @@ $ minikube addons enable ingress
 
 Nginx Ingress Controllerを含むIngress Controllerは、Hostヘッダーにドメインが割り当てられたリクエストを受信し、NodeのIPアドレスを返却する。
 
-これをMinikube上で再現するために名前解決するために、ingress-dnsアドオンを有効化する。
+これをMinikube上で再現するため、ingress-dnsアドオンを有効化して名前解決できるようにする。
 
 ```bash
 $ minikube addons enable ingress-dns
