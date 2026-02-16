@@ -79,9 +79,9 @@ flowchart LR
 
 ## Microservice chassisパターン
 
-アプリケーションの中でも非機能に近いロジックは、マイクロサービスに依らずに、同じような実装になりがちです。
+アプリケーションの中でも非機能に近いロジックは、マイクロサービスに依らず、同じような実装になりがちである。
 
-各マイクロサービスに横断に提供できるように、共有リポジトリに切り分けましょう。
+各マイクロサービスへ横断的に提供できるよう、共有リポジトリに切り分ける。
 
 [Microservices Pattern: Pattern: Microservice chassis](https://microservices.io/patterns/microservice-chassis.html)
 
@@ -756,13 +756,13 @@ Service instance per containerパターンで、AWS ECSを使用して、マイ�
 
 AWS ECSは、AWS EKSよりもアプリ領域とインフラ領域の責務がより曖昧になります。
 
-アプリ領域とインフラ領域が分業が進んでいない組織では、責務の境界が曖昧でも問題は起こりにくいです。
+アプリ領域とインフラ領域で分業が進んでいない組織では、責務の境界が曖昧でも問題は起こりにくい。
 
 その一方で、組織が大きくなるほどAWS ECSの管理者がボトルネックになります。
 
 例えば、AWS ECSを管理しているのがインフラチームである一方で、アプリチームもAWS ECSにコンテナを設定しないといけないです。
 
-この時、管理者のインフラチームに依頼することになるのですが、インフラチームが手一杯であれば、スピード感が落ちます。
+この時、管理者のインフラチームに依頼することになる。しかし、インフラチームが手一杯であれば、スピード感が落ちる。
 
 マイクロサービスアーキテクチャは組織が大きくなるほど価値を発揮するはずなのに、これでは逆に辛くなっています。
 
@@ -772,7 +772,7 @@ AWS ECSは、AWS EKSよりもアプリ領域とインフラ領域の責務がよ
 
 Serverless platformsパターンで、AWS Lambdaを使用して、マイクロサービスアーキテクチャを動かします。
 
-この場合、マイクロサービスをAWS Lambdaに対応させることになります。
+この場合、マイクロサービスはAWS Lambdaに対応することになる。
 
 ![aws-lambda_microservices.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/aws-lambda_microservices.png)
 
@@ -860,7 +860,7 @@ Nodeの作成には、マシンイメージとしてAMIを採用します。
 
 KarpenterとAWSマネージドNodeグループNodeグループを採用し、Nodeを管理します。
 
-なぜ、複数の方法を採用するかというと、Nodeを管理するKarpenterは、自身以外の方法で管理するNode上で稼働させなければならないためです。
+複数の方法を採用する理由は、Nodeを管理するKarpenterを、自身以外の方法で管理するNode上で稼働させなければならないためである。
 
 ここでは、KarpenterのPodをAWSマネージドNodeグループNodeグループによるNode上に、アプリ領域のPodをKarpenterによるNode上に稼働させます。
 
@@ -933,7 +933,7 @@ flowchart LR
 
 ### ユニットテスト
 
-ユニットテストは、マイクロサービスアーキテクチャの文脈であってもなくても同じです。
+ユニットテストは、マイクロサービスアーキテクチャの文脈でも、同じである。
 
 > 💡 余裕があったら書くぜ！
 

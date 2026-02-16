@@ -93,7 +93,7 @@ Istioのドキュメントでは、以下のハードウェアリソースを消
 
 **例**
 
-istio-proxyをインジェクションすることにより、 Podあたりで以下のハードウェアリソースが増える調査結果が出ている。
+istio-proxyをインジェクションすることにより、Podあたりで以下のハードウェアリソースが増える調査結果が出ている。
 
 - CPU：0.0002 vCPU 〜0.0003 vCPU
 - メモリ：40 Mi 〜 50 Mi
@@ -204,7 +204,7 @@ L3/L4/L7に対応している。
 
 `istio-init` コンテナは、`istio-iptables` コマンドを実行し、iptablesのルールを書き換える。
 
-これにより、送信元Podから宛先Podに直接通信できるようになる。
+これにより、送信元Podから宛先Podへ直接通信できるようになる。
 
 > - https://medium.com/@bikramgupta/tracing-network-path-in-istio-538335b5bb4f
 
@@ -264,7 +264,7 @@ Istio `v1.3` 以降で、デフォルトで全てのサービスメッシュ外�
 
 ServiceEntryを使用すれば、名前をつけられる。
 
-注意点として、`REGISTRY_ONLY` モードを有効化すると、ServiceEntryで登録された宛先以外へのサービスメッシュ外への全通信が `BlackHoleCluster` 扱いになってしまう
+注意点として、`REGISTRY_ONLY` モードを有効化すると、ServiceEntryで登録された宛先以外のサービスメッシュ外への全通信が `BlackHoleCluster` 扱いになってしまう。
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 > - https://dev.to/hsatac/howto-find-egress-traffic-destination-in-istio-service-mesh-4l61
@@ -352,7 +352,7 @@ Pod間通信時、正しい送信元Envoyの通信であることを認証する
 
 JWTによるBearer認証を実施し、送信元Podの通信を認証する。
 
-この場合、認証フェーズをIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) に委譲することになる。
+この場合、認証フェーズをIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) へ委譲することになる。
 
 JWTトークンの取得方法として、例えば以下の方法がある。
 
@@ -687,7 +687,7 @@ istio-proxyは、マイクロサービスへのアクセスログ (インバウ�
 
 アクセスログにデフォルトで役立つ値が出力される。
 
-ログ収集ツール (例：FluentBit、Fluentdなど) をDaemonSetパターンやサイドカーモードで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドに送信できるようにする必要がある。
+ログ収集ツール (例：FluentBit、Fluentdなど) をDaemonSetパターンやサイドカーモードで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドへ送信できるようにする必要がある。
 
 ```yaml
 # istio-proxyコンテナのアクセスログ
@@ -762,7 +762,7 @@ istio-proxyは、スパンを作成する。
 
 istio-proxyは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collectorなど) に送信する。
 
-マイクロサービスからスパンを送信する場合であっても、istio-proxyを経由し、分散トレース収集ツールに送信することになる。
+マイクロサービスからスパンを送信する場合であっても、istio-proxyを経由し、分散トレース収集ツールへ送信することになる。
 
 分散トレース収集ツールをサービスメッシュに登録 (VirtualServiceやServiceEntryを作成) しないと、マイクロサービスやistio-proxyは分散トレース収集ツールを名前解決できない。
 
