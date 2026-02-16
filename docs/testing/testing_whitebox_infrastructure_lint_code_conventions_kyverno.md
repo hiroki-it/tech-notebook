@@ -21,11 +21,11 @@ description: Kyverno＠コード規約違反の知見を記録しています。
 
 Kyvernoは、admission-controllersアドオン、webhookサーバー、Controllerなどのコンポーネトから構成されている。
 
-ほかの静的解析ツール (例：kubeconform、pluto) やAWS EKSのアップグレードインサイトとは異なり、kube-apiserverにマニフェストが送信された後に静的解析を実行する。
+ほかの静的解析ツール (例：kubeconform、pluto) やAWS EKSのアップグレードインサイトとは異なり、kube-apiserverにマニフェストが送信された後に静的解析する。
 
 kube-apiserverのmutating-admissionステップとvalidating-admissionステップでKyvernoのwebhookサーバーにWebhookが送信される。
 
-送信されたマニフェストの宣言が事前に設定されたルールに則っているかを検証し、もし則っていなければマニフェストの宣言を変更する。
+送信されたマニフェストの宣言が、事前に設定されたルールどおりであるかを検証する。もし違反していれば、マニフェストの宣言を変更する。
 
 ```yaml
 クライアント # kubeconform、pluto で検証

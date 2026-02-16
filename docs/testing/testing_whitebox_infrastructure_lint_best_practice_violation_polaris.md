@@ -56,7 +56,7 @@ $ brew install FairwindsOps/tap/polaris
 
 #### ▼ Admission Controller
 
-Admission Controllerとして、実際にデプロイされたマニフェストに対して静的解析を実行する。
+Admission Controllerとして、実際にデプロイされたマニフェストに対して静的解析する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://charts.fairwinds.com/stable
@@ -397,7 +397,7 @@ $ polaris audit --audit-path manifest.yaml --format pretty
 $ polaris audit --audit-path manifest.yaml --only-show-failed-tests
 ```
 
-カスタムルールに違反があった場合、`--only-show-failed-tests` オプションを有効化していると、ルール違反が無視されて結果に表示されない不具合がある可能性がある。
+カスタムルールに違反があった場合、`--only-show-failed-tests` オプションを有効化していると、ルール違反が無視されて結果に表示されない可能性がある。
 
 ```bash
 $ polaris audit --audit-path manifest.yaml

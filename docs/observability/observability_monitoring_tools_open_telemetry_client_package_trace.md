@@ -1441,8 +1441,8 @@ func NewTracerProvider() {
 
 ### パッケージ
 
-| 項目 | 必要なパッケージ                                                 |
-| ---- | ---------------------------------------------------------------- |
+| 項目 | 必要なパッケージ                                                  |
+| ---- | ----------------------------------------------------------------- |
 | Go   | `go.opentelemetry.io/otel/sdk/trace` パッケージからコールできる。 |
 
 <br>
@@ -1474,7 +1474,7 @@ Tail-based方式の場合、前提としてアプリケーションで全ての�
 | `AlwaysOn`           | 全てのスパンをサンプリングする。本番環境で注意して使用する (非推奨というわけではない)。 |
 | `AlwaysOff`          | スパンをサンプリングしない。                                                            |
 | `TraceIdRationBased` | 指定した割合でスパンをランダムにサンプリングする。                                      |
-| `ParentBased`        | 親スパンの設定を継承する。`TraceIdRationBased` と組み合わせて使用することが多い。        |
+| `ParentBased`        | 親スパンの設定を継承する。`TraceIdRationBased` と組み合わせて使用することが多い。       |
 
 > - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
 > - https://zenn.dev/ishii1648/articles/167e199bab5396
@@ -1523,7 +1523,7 @@ OpenTelemetryの仕様では、あるべき環境変数が決まっている。
 | `OTEL_LOGS_EXPORTER`       | ログのExporter名を設定する。                                                                                                      |
 | `OTEL_METRICS_EXPORTER`    | メトリクスのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`prometheus`、`none`、から設定できる。         |
 | `OTEL_PROPAGATORS`         | トレースコンテキスト仕様を設定する。                                                                                              |
-| `OTEL_SERVICE_NAME`        | Resourceの `service.name` を設定する。                                                                                              |
+| `OTEL_SERVICE_NAME`        | Resourceの `service.name` を設定する。                                                                                            |
 | `OTEL_RESOURCE_ATTRIBUTES` | Resourceの任意の属性を設定する。キーバリュー式 (`key1=value1,key2=value2`) で設定できる。                                         |
 | `OTEL_TRACES_EXPORTER`     | 分散トレースのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`jaeger`、`zipkin`、`none`、から設定できる。 |
 | `OTEL_TRACES_SAMPLER`      | 使用するSamplerを設定する。                                                                                                       |

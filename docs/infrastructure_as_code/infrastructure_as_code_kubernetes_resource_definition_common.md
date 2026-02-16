@@ -167,9 +167,9 @@ PersistentVolumeClaimに関する情報を設定する。
 
 kube-controllerが設定してくれるため、開発者が設定する必要はない。
 
-| キー                                       | 値の例                                                                                                             | 説明                                                                                                                                                                                                                                      |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `volume.kubernetes.io/storage-provisioner` | `ebs.csi.aws.com` (AWS EBS CSIドライバー)、`kubernetes.io/aws-ebs` (非推奨)、`k8s.io/minikube-hostpath` (Minikube) | PersistentVolumeClaimに紐づくPersistentVolumeを作成したツールを設定する。                                                                                                                                                                 |
+| キー                                       | 値の例                                                                                                             | 説明                                                                                                                                                                                                                                       |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `volume.kubernetes.io/storage-provisioner` | `ebs.csi.aws.com` (AWS EBS CSIドライバー)、`kubernetes.io/aws-ebs` (非推奨)、`k8s.io/minikube-hostpath` (Minikube) | PersistentVolumeClaimに紐づくPersistentVolumeを作成したツールを設定する。                                                                                                                                                                  |
 | `volume.kubernetes.io/selected-node`       | `ip-*-*-*-*.ap-northeast-1.compute.internal`                                                                       | PersistentVolumeClaimに紐づくPersistentVolumeが配置されているNode名を設定する。正しいNode名を指定しないと、`N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector` というエラーになってしまう。 |
 
 <br>
@@ -261,13 +261,13 @@ Kubernetes上で稼働するコンテナの情報を設定する。
 | キー                           | 値の例                      | 説明                                                                       |
 | ------------------------------ | --------------------------- | -------------------------------------------------------------------------- |
 | `app.kubernetes.io/app`        | `foo`、`foo-service`        | マイクロサービス名を設定する。                                             |
-| `app.kubernetes.io/component`  | `app`、`database`           | K8sリソースをシステムの要素と捉えたときに、その役割名を設定する。            |
+| `app.kubernetes.io/component`  | `app`、`database`           | K8sリソースをシステムの要素と捉えたときに、その役割名を設定する。          |
 | `app.kubernetes.io/created-by` | `kube-controller-manager`   | このKubernetesリソースを作成したリソースやユーザーを設定する。             |
 | `app.kubernetes.io/env`        | `prd`、`stg`、`tes`、`dev`  | アプリケーションの実行環境名を設定する。                                   |
 | `app.kubernetes.io/instance`   | `mysql-12345`               | アプリケーションのインスタンス名を設定する。                               |
 | `app.kubernetes.io/managed-by` | `helm`、`foo-operator`      | K8sリソースの管理ツール名を設定する。                                      |
 | `app.kubernetes.io/name`       | `foo-service`、`prometheus` | アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。 |
-| `app.kubernetes.io/part-of`    | `bar`                       | K8sリソースをシステムの要素と捉えたときに、その親のシステム名を設定する。    |
+| `app.kubernetes.io/part-of`    | `bar`                       | K8sリソースをシステムの要素と捉えたときに、その親のシステム名を設定する。  |
 | `app.kubernetes.io/type`       | `host` (PVのマウント対象)   | リソースの設定方法の種類名を設定する。                                     |
 | `app.kubernetes.io/version`    | `5.7.21`                    | K8sリソースのリリースバージョン名を設定する。                              |
 

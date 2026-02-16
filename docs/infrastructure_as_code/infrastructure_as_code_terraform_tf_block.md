@@ -1527,12 +1527,12 @@ resource "aws_s3_bucket_policy" "alb" {
 
 #### ▼ path式
 
-| 変数                  | 値                                                          | 例                     |
-| --------------------- | ----------------------------------------------------------- | ---------------------- |
+| 変数                  | 値                                                             | 例                     |
+| --------------------- | -------------------------------------------------------------- | ---------------------- |
 | `path.module`         | `path` 式が実行された `.tf` ファイルがあるディレクトリのパス。 | `/project/module/foo/` |
-| `path.root`           | `terraform` コマンドの作業ディレクトリのパス                 | `/var/www/`            |
-| `path.root`           | `module` ディレクトリのルートパス                            | `/project/module/`     |
-| `terraform.workplace` | 現在使用しているワークスペース名                            | `prd`                  |
+| `path.root`           | `terraform` コマンドの作業ディレクトリのパス                   | `/var/www/`            |
+| `path.root`           | `module` ディレクトリのルートパス                              | `/project/module/`     |
+| `terraform.workplace` | 現在使用しているワークスペース名                               | `prd`                  |
 
 > - https://www.terraform.io/language/expressions/references#filesystem-and-workspace-info
 

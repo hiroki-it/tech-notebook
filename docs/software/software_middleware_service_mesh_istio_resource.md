@@ -1303,7 +1303,7 @@ data:
 
 | 環境変数                                         | 対応する設定 (実験段階)                                                                |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors` を有効化してもよい。                 |
+| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors` を有効化してもよい。                |
 | `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、istio-proxyの代わりにKubernetesのInit Container |
 | `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                                                        |
 | `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                                                        |

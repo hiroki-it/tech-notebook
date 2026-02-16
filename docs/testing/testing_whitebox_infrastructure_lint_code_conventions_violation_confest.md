@@ -49,7 +49,7 @@ $ brew install conftest
 
 #### ▼ deny
 
-コード規約に違反した場合に、終了コード `1` を出力する。
+コード規約に違反した場合は、終了コード `1` を出力する。
 
 ```erlang
 package main
@@ -68,7 +68,7 @@ deny[msg] {
 
 #### ▼ violation
 
-コード規約に違反した場合に、終了コード `0` を出力する。
+コード規約に違反した場合は、終了コード `0` を出力する。
 
 ```erlang
 package main

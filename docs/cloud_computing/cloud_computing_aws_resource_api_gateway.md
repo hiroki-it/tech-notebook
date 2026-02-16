@@ -46,7 +46,7 @@ AWS API Gatewayは、メソッドリクエスト、統合リクエスト、統�
 | 使用サイズプラン          | 有料サービスとしてAPIを公開し、料金体系に応じてリクエストサイズを制限するために使用する。APIキーにリクエスト量のレートを設定する。 | 有料サービスとして使用しないAPIの場合は、レートを設定する必要はない。                                                                                                   |
 | APIキー                   | APIキー認証を設定する。                                                                                                            | ・その他の認証の方法として、以下がある。<br>https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-control-access-to-api.html                          |
 | クライアント証明書        | サーバー証明書をAWS API Gatewayに割り当てる。                                                                                      | APIが、AWS API Gatewayからルーティングされたリクエストであること識別できるようになる。                                                                                  |
-| AWS CloudWatch Logsの設定 | AWS API GatewayがAWS CloudWatch Logsにリクエストを送信できるよう、ロールを設定する。                                               | `1` 個のAWSアカウントにつき、`1` 個のロールを設定すれば良い。                                                                                                             |
+| AWS CloudWatch Logsの設定 | AWS API GatewayがAWS CloudWatch Logsにリクエストを送信できるよう、ロールを設定する。                                               | `1` 個のAWSアカウントにつき、`1` 個のロールを設定すれば良い。                                                                                                           |
 
 <br>
 

@@ -21,23 +21,23 @@ description: 認証／認可＠Laravelの知見を記録しています。
 
 大まかな処理フローは以下の通りである。
 
-|     | 用語                                                    | 説明                                                                                                          |
-| --- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| 1   | リクエストを受信する。                                  |                                                                                                               |
-| 2   | `index.php` ファイル                                     | エントリーポイントから処理が開始する。                                                                        |
-| 3   | Autoload                                                | `autoload.php` ファイルにて、パッケージを自動的にロードする。                                                  |
-| 4   | Load App                                                | `bootstrap/app.php` ファイルにて、ServiceContainer (`Illuminate\Foundation\Application.php`) を実行する。      |
-| 5   | Http Kernel                                             | Kernelを実行する。                                                                                            |
+|     | 用語                                                    | 説明                                                                                                              |
+| --- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| 1   | リクエストを受信する。                                  |                                                                                                                   |
+| 2   | `index.php` ファイル                                    | エントリーポイントから処理が開始する。                                                                            |
+| 3   | Autoload                                                | `autoload.php` ファイルにて、パッケージを自動的にロードする。                                                     |
+| 4   | Load App                                                | `bootstrap/app.php` ファイルにて、ServiceContainer (`Illuminate\Foundation\Application.php`) を実行する。         |
+| 5   | Http Kernel                                             | Kernelを実行する。                                                                                                |
 | 6   | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの `register` 関数や `boot` 関数を実行する。これにより、ServiceContainerにクラスがバインドされる。 |
-| 7   | Middleware                                              | BeforeMiddlewareを実行する。                                                                                  |
-| 8   | ・Dispatch by Router<br>・Routes Match                  | `web.php` ファイル、`app.php` ファイルなどのルーティング定義を元に、Routerが実行する。                          |
-| 9   | FormRequest                                             | バリデーションを実行する。                                                                                    |
-| 10  | Controller                                              | Controllerを起点として、DBにまで処理が走る。                                                                  |
-| 11  | Resource                                                | DBから読み込んだコレクション型データを配列型データに変換する。                                                |
-| 12  | Response                                                | Responseを実行する。配列型データをJSON型データに変換する。                                                    |
-| 13  | Terminate Middleware                                    | AfterMiddlewareが実行される。                                                                                 |
-| 14  | View                                                    | `blade.php` ファイルを基に静的ファイルを作成する。                                                             |
-| 15  | レスポンスを返信する。                                  |                                                                                                               |
+| 7   | Middleware                                              | BeforeMiddlewareを実行する。                                                                                      |
+| 8   | ・Dispatch by Router<br>・Routes Match                  | `web.php` ファイル、`app.php` ファイルなどのルーティング定義を元に、Routerが実行する。                            |
+| 9   | FormRequest                                             | バリデーションを実行する。                                                                                        |
+| 10  | Controller                                              | Controllerを起点として、DBにまで処理が走る。                                                                      |
+| 11  | Resource                                                | DBから読み込んだコレクション型データを配列型データに変換する。                                                    |
+| 12  | Response                                                | Responseを実行する。配列型データをJSON型データに変換する。                                                        |
+| 13  | Terminate Middleware                                    | AfterMiddlewareが実行される。                                                                                     |
+| 14  | View                                                    | `blade.php` ファイルを基に静的ファイルを作成する。                                                                |
+| 15  | レスポンスを返信する。                                  |                                                                                                                   |
 
 > - https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
 
@@ -4526,12 +4526,12 @@ class DatabaseSeeder extends Seeder
 
 #### ▼ ServiceProviderの用途
 
-| 用途の種類                                           | 説明                                                                                                    |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| AppServiceProvider                                   | ・ServiceContainerへのクラスのバインド (登録) <br>・ServiceContainerからのインスタンスのリゾルブ (作成) |
-| MacroServiceProvider                                 | ServiceContainerへの関数のバインド (登録)                                                               |
+| 用途の種類                                            | 説明                                                                                                    |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| AppServiceProvider                                    | ・ServiceContainerへのクラスのバインド (登録) <br>・ServiceContainerからのインスタンスのリゾルブ (作成) |
+| MacroServiceProvider                                  | ServiceContainerへの関数のバインド (登録)                                                               |
 | RouteServiceProvider<br>(`app.php`、`web.php` も使用) | ルーティングとコントローラーの対応関係の定義                                                            |
-| EventServiceProvider                                 | EventListenerとEventhandler関数の対応関係の定義                                                         |
+| EventServiceProvider                                  | EventListenerとEventhandler関数の対応関係の定義                                                         |
 
 #### ▼ ServiceProviderのコール
 
@@ -5196,14 +5196,14 @@ FormRequestクラスの `session` 関数はStoreクラスを返却する。
 
 このクラスの関数を使用して、セッションを操作できる。
 
-| 関数名   | 説明                                                                                               |
-| -------- | -------------------------------------------------------------------------------------------------- |
-| `get`    | セッションデータのキー名を指定して、`1` 個の値を取得する。                                          |
-| `all`    | セッションデータの全ての値を取得する。                                                             |
-| `forget` | セッションデータのキー名を指定して、値を取得する。キー名を配列で渡して、複数を削除することも可能。 |
-| `flush`  | セッションデータの全ての値を取得する。                                                             |
-| `pull`   | セッションデータのキー名を指定して、`1` 個の値を取得し、取得後に削除する。                          |
-| `has`    | セッションデータのキー名を指定して、値が存在しているかを検証する。`null` は `false` として判定する。  |
+| 関数名   | 説明                                                                                                 |
+| -------- | ---------------------------------------------------------------------------------------------------- |
+| `get`    | セッションデータのキー名を指定して、`1` 個の値を取得する。                                           |
+| `all`    | セッションデータの全ての値を取得する。                                                               |
+| `forget` | セッションデータのキー名を指定して、値を取得する。キー名を配列で渡して、複数を削除することも可能。   |
+| `flush`  | セッションデータの全ての値を取得する。                                                               |
+| `pull`   | セッションデータのキー名を指定して、`1` 個の値を取得し、取得後に削除する。                           |
+| `has`    | セッションデータのキー名を指定して、値が存在しているかを検証する。`null` は `false` として判定する。 |
 
 > - https://laravel.com/api/8.x/Illuminate/Session/Store.html
 
