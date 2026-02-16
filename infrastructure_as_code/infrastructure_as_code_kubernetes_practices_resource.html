@@ -37296,7 +37296,7 @@
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-%E3%81%A8%E3%81%AF">https://qiita.com/ysakashita/items/17dd055484f4a878f1b7#ephemeral-volume-とは</a>
-)&gt; - <a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></li>
+  )&gt; - <a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/</a></li>
 </ul>
 </blockquote>
 <p>Podのリソース要求やリソース制限に <code>ephemeral-storage</code> のフィールドを追加して、利用するディスク容量を制限できる。</p>
@@ -37676,7 +37676,7 @@ options<span class="w"> </span>ndots:5
 <p><code>.spec.containers[*].resources</code> キーを使用すれば、コンテナのハードウェアリソース要求量の上限下限値を設定できる。</p>
 <p>なお、コンテナの特性に合わせて、上限下限値を設定すると良い。</p>
 <h4 id="guaranteed-qos">▼ ハードウェアリソースを恒常的に要求する場合はGuaranteed QoSにする<a class="headerlink" href="#guaranteed-qos" title="Permanent link">&para;</a></h4>
-<p>ハードウェアリソースを恒常的に要求するコンテナ (例：アプリ) では、Guaranteed QoSにする。</p>
+<p>ハードウェアリソースを恒常的に要求し、継続的に稼働させたいコンテナ (例：アプリ) では、Guaranteed QoSにする。</p>
 <p>Guaranteed QoSでは、上限 (<code>.spec.containers[*].resources.limits</code>) = 下限 (<code>.spec.containers[*].resources.requests</code>) のように、CPUとメモリを設定する。</p>
 <p>上限 (<code>.spec.containers[*].resources.limits</code>) と下限 (<code>.spec.containers[*].resources.requests</code>) の設定の両方または一方を省略すると、自動的にGuaranteedになる。</p>
 <p>コンテナが一定量のハードウェアリソースを要求し続けたとしても、無制限 (Nodeの空きリソース分) にハードウェアリソースを提供し、要求に耐えられるようにする。</p>
@@ -37688,7 +37688,8 @@ options<span class="w"> </span>ndots:5
 </ul>
 </blockquote>
 <h4 id="burstableqos">▼ ハードウェアリソースを瞬間的に要求する場合はBurstableなQoSにする<a class="headerlink" href="#burstableqos" title="Permanent link">&para;</a></h4>
-<p>ハードウェアリソースを瞬間的に要求するコンテナ (例：バッチ、起動時に特にハードウェアを要求するJVM) では、BurstableなQoSにする。</p>
+<p>ハードウェアリソースを瞬間的に要求し、一時的に稼働させたいコンテナ (例：バッチ、起動時に特にハードウェアを要求するJVM)
+では、BurstableなQoSにする。</p>
 <p>Guaranteed QoSでは、上限 (<code>.spec.containers[*].resources.limits</code>) &gt; 下限 (<code>.spec.containers[*].resources.requests</code>) のように、CPUとメモリを設定する。</p>
 <p>上限 (<code>.spec.containers[*].resources.limits</code>) を設定しないと上限が無制限になるため、下限 (<code>.spec.containers[*].resources.requests</code>) のみを設定した場合もBurstableである。</p>
 <p>コンテナがハードウェアリソース要求量が瞬間的に上昇させても、これに耐えられるようにする。</p>
@@ -38743,7 +38744,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 19:16:23 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
   </span>
 
     
