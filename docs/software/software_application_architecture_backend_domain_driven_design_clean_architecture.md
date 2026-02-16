@@ -2757,7 +2757,7 @@ class DogComboFactory
 
 ドメインイベントが発生した場合、それに紐付く処理を実行する。
 
-フレームワークの機能に依存することになるため、実装の詳細をインフラストラクチャ層へ置く。
+フレームワークの機能に依存するため、実装の詳細をインフラストラクチャ層へ置く。
 
 > - https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them
 > - https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01
