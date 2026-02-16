@@ -70,7 +70,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 `(2)`
 
-: ストレージサイズをOSに適用するために、OSを再起動する。
+: ストレージサイズをOSに適用するため、OSを再起動する。
 
 `(3)`
 
@@ -176,7 +176,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 1つの領域を複数に見せかけられる。
 
-`/dev` ディレクトリ配下にストレージに紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
+`/dev` ディレクトリ配下にストレージへ紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/partition_volume.png)
 
@@ -205,7 +205,7 @@ Linuxでは、パーティションとマウントポイントは `df` コマン
 
 Linuxの場合、`/dev/xvda1` をルートディレクトリにマウントしていることがある。
 
-`Filesystem` 列にパーティション、`Mounted on` 列にパーティションに対応するマウントポイントが表示される。
+`Filesystem` 列にパーティション、`Mounted on` 列にパーティションへ対応するマウントポイントが表示される。
 
 ```bash
 $ df
