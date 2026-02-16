@@ -1,17 +1,17 @@
 # Requirements for core
 jinja2==3.1.6
-markdown==3.10
+markdown==3.10.2
 mkdocs==1.6.1
-mkdocs-material==9.7.0
+mkdocs-material==9.7.1
 mkdocs-material-extensions==1.3.1
 pygments==2.19.2
-pymdown-extensions==10.17.1
+pymdown-extensions==10.21
 
 # Requirements for plugins
-babel==2.17.0
+babel==2.18.0
 mdx_truly_sane_lists==1.3
 mkdocs-exclude-search==0.6.6
 mkdocs-git-authors-plugin==0.10.0
 mkdocs-git-committers-plugin-2==2.5.0
-mkdocs-git-revision-date-localized-plugin==1.5.0
+mkdocs-git-revision-date-localized-plugin==1.5.1
 mkdocs-redirects==1.2.2
