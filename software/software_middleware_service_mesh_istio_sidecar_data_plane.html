@@ -34271,7 +34271,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </code></pre></div>
 <p>istio-proxyは、マイクロサービスのあるPodのみでなく、Istio Ingress GatewayのPod内にも存在している。</p>
 <p>Istioのサービスメッシュ外のネットワークからのインバウンド通信では、Istio Ingress Gateway内のistio-proxyにて、Pod等の宛先情報に基づいて、ルーティングを実行している。</p>
-<p>一方で、マイクロサービスを持つPod間通信では、Pod内のistio-proxyに登録されたものに基づいて、Pod間で直接的に通信している。</p>
+<p>一方で、マイクロサービスを持つPod間通信では、Pod内のistio-proxyへ登録されたものに基づき、Pod間で直接通信している。</p>
 <p>仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが <code>2</code> 個ある構成になってしまうことに注意する。</p>
 <blockquote>
 <ul>
@@ -34287,8 +34287,8 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <p>ただし、以下のいずれかで不要になる。</p>
 <ul>
 <li>通常のistio-proxyの場合<ul>
-<li><code>holdApplicationUntilProxyStarts</code> キーを <code>true</code> にし (<code>.spec.containers[*].lifecycle.postStart.exec.command</code> キーに対応)</li>
-<li><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> 変数を <code>true</code> に設定する (<code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーに対応)</li>
+<li><code>holdApplicationUntilProxyStarts</code> キーを <code>true</code> にする (<code>.spec.containers[*].lifecycle.postStart.exec.command</code> キーへ対応)</li>
+<li><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> 変数を <code>true</code> に設定する (<code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーへ対応)</li>
 </ul>
 </li>
 <li>InitContainerによるistio-proxyを使用する場合 (両方に対応)</li>
@@ -34376,7 +34376,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <p><code>istio-init</code> コンテナはistio-iptablesをPodに適用する権限を持っている。</p>
 <p>しかし、Linuxのiptablesを操作するためにはroot権限が必要になるため、脆弱性が指摘されている (同様にして、ユーザーが <code>iptables</code> コマンドを実行するときも <code>sudo</code> 権限が必要である) 。</p>
 <p><code>istio-init</code> コンテナの代替案として、istio-cniが提供されている。</p>
-<p>もしistio-cniを使用する場合は、<code>istio-init</code> コンテナが不要になる代わりに、<code>istio-validation</code> コンテナが必要になる。</p>
+<p>もしistio-cniを使用する場合は、<code>istio-init</code> コンテナが不要になる。その代わり、<code>istio-validation</code> コンテナが必要になる。</p>
 <blockquote>
 <ul>
 <li><a href="https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/">https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/</a></li>
@@ -34472,7 +34472,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <li><a href="https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446">https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446</a></li>
 </ul>
 </blockquote>
-<p><code>handleRecv</code> 関数内で、Envoyの各処理コンポーネントを整理し、最後に <code>XDSUpdates</code> チャネルに値を送信している。</p>
+<p><code>handleRecv</code> 関数内で、Envoyの各処理コンポーネントを整理し、最後に <code>XDSUpdates</code> チャネルへ値を送信している。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="nx">ADSC</span><span class="p">)</span><span class="w"> </span><span class="nx">handleRecv</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">for</span><span class="p">{</span>
@@ -34785,7 +34785,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:51:01 JST">2026-02-16</span>
   </span>
 
     

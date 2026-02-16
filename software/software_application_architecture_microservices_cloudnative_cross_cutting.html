@@ -32751,8 +32751,8 @@
 <p>共有化したロジックをホストマシンのエージェントやカーネル機能として提供します。</p>
 <p><a href="https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14">https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14</a></p>
 <h2 id="microservice-chassis">Microservice chassisパターン<a class="headerlink" href="#microservice-chassis" title="Permanent link">&para;</a></h2>
-<p>アプリケーションの中でも非機能に近いロジックは、マイクロサービスに依らずに、同じような実装になりがちです。</p>
-<p>各マイクロサービスに横断に提供できるように、共有リポジトリに切り分けましょう。</p>
+<p>アプリケーションの中でも非機能に近いロジックは、マイクロサービスに依らず、同じような実装になりがちである。</p>
+<p>各マイクロサービスへ横断的に提供できるよう、共有リポジトリに切り分ける。</p>
 <p><a href="https://microservices.io/patterns/microservice-chassis.html">Microservices Pattern: Pattern: Microservice chassis</a></p>
 <h3 id="_5">ロギングツール<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>ロギングツールのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
@@ -33329,15 +33329,15 @@ end
 <p><a href="https://d1.awsstatic.com/events/Summits/reinvent2022/CON311-R_Best-practices-for-deploying-microservices-on-Amazon-ECS.pdf#page=12">d1.awsstatic.com</a></p>
 <h3 id="_22">マイクロサービスアーキテクチャとの相性<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p>AWS ECSは、AWS EKSよりもアプリ領域とインフラ領域の責務がより曖昧になります。</p>
-<p>アプリ領域とインフラ領域が分業が進んでいない組織では、責務の境界が曖昧でも問題は起こりにくいです。</p>
+<p>アプリ領域とインフラ領域で分業が進んでいない組織では、責務の境界が曖昧でも問題は起こりにくい。</p>
 <p>その一方で、組織が大きくなるほどAWS ECSの管理者がボトルネックになります。</p>
 <p>例えば、AWS ECSを管理しているのがインフラチームである一方で、アプリチームもAWS ECSにコンテナを設定しないといけないです。</p>
-<p>この時、管理者のインフラチームに依頼することになるのですが、インフラチームが手一杯であれば、スピード感が落ちます。</p>
+<p>この時、管理者のインフラチームに依頼する。しかし、インフラチームが手一杯であれば、スピード感が落ちる。</p>
 <p>マイクロサービスアーキテクチャは組織が大きくなるほど価値を発揮するはずなのに、これでは逆に辛くなっています。</p>
 <p>ただ、AWS EKSに至るまでの過渡的なシステムとして、AWS ECSを採用することはアリと考えています。</p>
 <h2 id="aws-lambda">AWS Lambda<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h2>
 <p>Serverless platformsパターンで、AWS Lambdaを使用して、マイクロサービスアーキテクチャを動かします。</p>
-<p>この場合、マイクロサービスをAWS Lambdaに対応させることになります。</p>
+<p>この場合、マイクロサービスはAWS Lambdaへ対応することになる。</p>
 <p><img alt="aws-lambda_microservices.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/aws-lambda_microservices.png" /></p>
 <p><a href="https://medium.com/aws-serverless-microservices-with-patterns-best/using-aws-lambda-as-a-microservice-dd7d7296c74a">Using AWS Lambda as a Microservice</a></p>
 <h3 id="_23">マイクロサービスアーキテクチャとの相性<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
@@ -33418,7 +33418,7 @@ end
 </blockquote>
 <h2 id="karpenterawsnodenode">KarpenterとAWSマネージドNodeグループNodeグループの組み合わせ<a class="headerlink" href="#karpenterawsnodenode" title="Permanent link">&para;</a></h2>
 <p>KarpenterとAWSマネージドNodeグループNodeグループを採用し、Nodeを管理します。</p>
-<p>なぜ、複数の方法を採用するかというと、Nodeを管理するKarpenterは、自身以外の方法で管理するNode上で稼働させなければならないためです。</p>
+<p>複数の方法を採用する理由は、Nodeを管理するKarpenterを、自身以外の方法で管理するNode上で稼働させる必要がある。これは、Karpenterが自身以外の方法で管理するNode上で稼働するためだ。</p>
 <p>ここでは、KarpenterのPodをAWSマネージドNodeグループNodeグループによるNode上に、アプリ領域のPodをKarpenterによるNode上に稼働させます。</p>
 <p>KarpenterとAWSマネージドNodeグループNodeグループの間では、機能が異なります。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Nodeのスケーリング.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Nodeのスケーリング.drawio_(1).png" /></p>
@@ -33523,7 +33523,7 @@ end
 </code></pre>
 <h2 id="_26">ホワイトボックス<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
 <h3 id="_27">ユニットテスト<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<p>ユニットテストは、マイクロサービスアーキテクチャの文脈であってもなくても同じです。</p>
+<p>ユニットテストは、マイクロサービスアーキテクチャの文脈でも、同じである。</p>
 <blockquote>
 <p>💡 余裕があったら書くぜ！</p>
 </blockquote>
@@ -33576,7 +33576,7 @@ end
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:51:01 JST">2026-02-16</span>
   </span>
 
     

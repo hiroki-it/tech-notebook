@@ -35108,7 +35108,7 @@
 </ul>
 </blockquote>
 <p><strong>例</strong></p>
-<p>istio-proxyをインジェクションすることにより、 Podあたりで以下のハードウェアリソースが増える調査結果が出ている。</p>
+<p>istio-proxyをインジェクションすることにより、Podあたりで以下のハードウェアリソースが増える調査結果が出ている。</p>
 <ul>
 <li>CPU：0.0002 vCPU 〜0.0003 vCPU</li>
 <li>メモリ：40 Mi 〜 50 Mi</li>
@@ -35312,7 +35312,7 @@
 <h3 id="kube-proxy">サービスメッシュ内ではkube-proxyは不要<a class="headerlink" href="#kube-proxy" title="Permanent link">&para;</a></h3>
 <p>実は、サービスメッシュ内のPod間通信では、kube-proxyは使用しない。</p>
 <p><code>istio-init</code> コンテナは、<code>istio-iptables</code> コマンドを実行し、iptablesのルールを書き換える。</p>
-<p>これにより、送信元Podから宛先Podに直接通信できるようになる。</p>
+<p>これにより、送信元Podから宛先Podへ直接通信できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/@bikramgupta/tracing-network-path-in-istio-538335b5bb4f">https://medium.com/@bikramgupta/tracing-network-path-in-istio-538335b5bb4f</a></li>
@@ -35364,7 +35364,7 @@
 <p>定義されていないが通信が許可されているサービスメッシュ外の送信元 (<code>InPassthroughCluster</code>) ／宛先 (<code>OutboundPassthroughCluster</code>) のこと。</p>
 <p>Istio <code>v1.3</code> 以降で、デフォルトで全てのサービスメッシュ外へのリクエストのポリシーが <code>ALLOW_ANY</code> となり、<code>PassthroughCluster</code> として扱うようになった。</p>
 <p>ServiceEntryを使用すれば、名前をつけられる。</p>
-<p>注意点として、<code>REGISTRY_ONLY</code> モードを有効化すると、ServiceEntryで登録された宛先以外へのサービスメッシュ外への全通信が <code>BlackHoleCluster</code> 扱いになってしまう</p>
+<p>注意点として、<code>REGISTRY_ONLY</code> モードを有効化すると、ServiceEntryで登録された宛先以外のサービスメッシュ外への全通信が <code>BlackHoleCluster</code> 扱いになってしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://istiobyexample.dev/monitoring-egress-traffic/">https://istiobyexample.dev/monitoring-egress-traffic/</a></li>
@@ -35456,7 +35456,7 @@
 </blockquote>
 <h4 id="jwtbearer-id">▼ JWTによるBearer認証 (IDプロバイダーに認証フェーズを委譲)<a class="headerlink" href="#jwtbearer-id" title="Permanent link">&para;</a></h4>
 <p>JWTによるBearer認証を実施し、送信元Podの通信を認証する。</p>
-<p>この場合、認証フェーズをIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) に委譲することになる。</p>
+<p>この場合、認証フェーズをIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) へ委譲することになる。</p>
 <p>JWTトークンの取得方法として、例えば以下の方法がある。</p>
 <ul>
 <li>送信元PodがIDプロバイダーからJWTを直接取得する。</li>
@@ -35863,7 +35863,7 @@
 <h4 id="_41">▼ ログの出力<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
 <p>istio-proxyは、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。</p>
 <p>アクセスログにデフォルトで役立つ値が出力される。</p>
-<p>ログ収集ツール (例：FluentBit、Fluentdなど) をDaemonSetパターンやサイドカーモードで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドに送信できるようにする必要がある。</p>
+<p>ログ収集ツール (例：FluentBit、Fluentdなど) をDaemonSetパターンやサイドカーモードで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドへ送信できるようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># istio-proxyコンテナのアクセスログ</span>
 <span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># 相互TLS認証の場合の宛先コンテナ名</span>
@@ -35948,7 +35948,7 @@
 <p>マイクロサービス間でスパンが持つコンテキストを伝播しないため、コンテキストを伝播させる実装が必要になる。</p>
 <h4 id="_45">▼ スパンの送信<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
 <p>istio-proxyは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collectorなど) に送信する。</p>
-<p>マイクロサービスからスパンを送信する場合であっても、istio-proxyを経由し、分散トレース収集ツールに送信することになる。</p>
+<p>マイクロサービスからスパンを送信する場合であっても、istio-proxyを経由し、分散トレース収集ツールへ送信することになる。</p>
 <p>分散トレース収集ツールをサービスメッシュに登録 (VirtualServiceやServiceEntryを作成) しないと、マイクロサービスやistio-proxyは分散トレース収集ツールを名前解決できない。</p>
 <p>Envoyでは宛先としてサポートしていても、istio-proxyでは使用できない場合がある。(例：X-Rayデーモン)</p>
 <blockquote>
@@ -36190,7 +36190,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:24:35 JST">2026-02-16</span>
   </span>
 
     

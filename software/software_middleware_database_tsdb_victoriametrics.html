@@ -33716,7 +33716,7 @@
 <p>エンドポイントとしてロードバランサーがあり、書き込みエンドポイントを指定すれば、vminsertを経由して、vmstorage (ブロックストレージ) にメトリクスを書き込める。</p>
 <p>また読み出しエンドポイントを指定すれば、vmselectを経由して、vmstorageからメトリクスを読み込める。</p>
 <p>補足として、PrometheusがリモートストレージとしてVictoriaMetricsを使用するとき、Grafanaのようにリアルタイムにデータを取得し続けることはできない。</p>
-<p>代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得することはできる。</p>
+<p>代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得できる。</p>
 <p><img alt="victoria-metrics_remote-storage_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_remote-storage_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -33730,7 +33730,7 @@
 <p>また、アラートの通知のためにalertmanager、可視化のためにGrafanaが必要である。</p>
 <p>vm-agentがプル型でメトリクスの元になるデータポイントを収集し、vmstorageに保管する。</p>
 <p>vm-alertは、vmstorageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。</p>
-<p>VictoriaMetricsを監視バックエンドかつ監視フロントエンドとして使用する場合はPrometheusは不要になる。</p>
+<p>VictoriaMetricsを監視バックエンドかつ監視フロントエンドとして使用する場合、Prometheusは不要になる。</p>
 <p>各コンポーネントがメモリを使用するため、</p>
 <p><img alt="victoria-metrics_monitoring_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_monitoring_architecture.png" /></p>
 <blockquote>
@@ -33966,7 +33966,7 @@
 </tbody>
 </table>
 <p>増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。</p>
-<p>これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。</p>
+<p>これは、Prometheusの仕様として、一定の割合でVictoriaMetricsへ送信するようになっているためである。</p>
 <p>もし、データの保管日数が <code>10</code> 日分という非機能的な品質であれば、vmstorageは常に過去 <code>10</code> 日分のデータを保管している必要がある。</p>
 <p>そのため、以下の数式で <code>10</code> 日分のサイズを算出できる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">増加量の合計</span><span class="p">)</span>
@@ -34057,7 +34057,7 @@ $<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 19:01:42 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:51:01 JST">2026-02-16</span>
   </span>
 
     

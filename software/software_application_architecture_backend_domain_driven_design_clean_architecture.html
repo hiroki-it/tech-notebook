@@ -36243,7 +36243,7 @@
 <h2 id="01">01. アーキテクチャ概要<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h4 id="_3">▼ 思想<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>ドメイン駆動設計が適する機能的アプリケーションのみでなく、あらゆる種類 (例：非機能的アプリケーションなど) のソフトウェアに適用できる。</p>
-<p>クリーンアーキテクチャ原著の序文にて、著者は『私は、今まで色々な種類のシステムを作ってきたが、どのシステムもアーキテクチャもルールは同じだった。</p>
+<p>クリーンアーキテクチャ原著の序文にて、著者は「私は今まで色々な種類のシステムを作ってきたが、どのシステムでもアーキテクチャのルールは同じだった」と述べている。</p>
 <p>異なるシステムでも同じルールを共有する必要がある』というようなことを述べている。</p>
 <blockquote>
 <ul>
@@ -36260,7 +36260,7 @@
 <h4 id="_5">▼ 各パターンの分類<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>オブジェクト指向型と手続き型のマルチパラダイム言語の場合、アプリケーションをクラスまたは関数で実装できる。</p>
 <p>クリーンアーキテクチャはオブジェクト指向設計が前提にあるため、各レイヤーのパターンをクラスとして実装することが多い。</p>
-<p>ただし、クラスとして実装するとインスタンス化の手間があり、関数として実装しても、アーキテクチャの思想に反することがない場合がある (特に外側のレイヤー) 。</p>
+<p>ただし、クラスとして実装するとインスタンス化の手間がある。関数として実装しても、アーキテクチャの思想に反しない場合がある (特に外側のレイヤー) 。</p>
 <p>アーキテクチャのレイヤー別にこれを整理した。</p>
 <table>
 <thead>
@@ -36531,7 +36531,7 @@
 <h3 id="_10">プレゼンター<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ プレゼンターとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>バックエンドがテンプレートエンジンを持つフレームワークの時に、バックエンドからフロントエンドのロジックを分離するために使用する。</p>
-<p>一方で、フロントエンド領域とバックエンド領域を完全に分離し、バックエンドがJSON型データを返信するAPIとして動作する場合や、フロントエンドにテンプレートエンジンを組み込む場合は、プレゼンターを使用しない。</p>
+<p>一方で、フロントエンド領域とバックエンド領域を完全に分離する場合がある。例えば、バックエンドがJSON型データを返信するAPIとして動作する場合や、フロントエンドにテンプレートエンジンを組み込む場合は、プレゼンターを使用しない。</p>
 <p>補足として、アウトプットバウンダリはプレゼンターのインターフェースのため、プレゼンターを使用しなければ、アウトプットバウンダリも使用しない。</p>
 <blockquote>
 <ul>
@@ -36855,11 +36855,11 @@
 <p>上位レイヤーのプレゼンターのインターフェースのこと。</p>
 <p>インターラクターは、レスポンスモデルではなく。</p>
 <p>アウトプットバウンダリをインターフェース層に出力する。</p>
-<p>ただし、アプリケーションをAPIとして使用する場合は、プレゼンターとアウトプットバウンダリが不要になり、これに伴い、インターラクターはレスポンスモデルを返却する。</p>
+<p>ただし、アプリケーションをAPIとして使用する場合は、プレゼンターとアウトプットバウンダリが不要になる。そのため、インターラクターはレスポンスモデルを返却する。</p>
 <p><br></p>
 <h3 id="_24">リクエストモデル (インプットデータ)<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="_25">▼ リクエストモデルとは<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
-<p>インターフェース層のコントローラーから入力されるリクエストパラメーターをユースケース層に入力するときに、その入力構造を定義する。</p>
+<p>インターフェース層のコントローラーから入力されるリクエストパラメーターを、ユースケース層に入力するときの入力構造を定義する。</p>
 <p>インターラクターの関数ごとにリクエストモデルを用意すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -36891,7 +36891,7 @@
 <p><br></p>
 <h3 id="_26">レスポンスモデル (アウトプットデータ)<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <h4 id="_27">▼ レスポンスモデルとは<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>ユースケース層のインターラクターから出力されるドメインモデルをインターフェース層に出力するときに、その出力構造を定義する。</p>
+<p>ユースケース層のインターラクターから出力されるドメインモデルを、インターフェース層に出力するときの出力構造を定義する。</p>
 <p>インターラクターの関数ごとにレスポンスモデルを用意すると良い。</p>
 <p>またコントローラーにて、フレームワーク依存のJSONレスポンス関数にレスポンスモデルを渡せるよう、クラス自身の構造を変換する関数を持たせると良い。</p>
 <p>もし、クラス自身を渡して問題ないJSONレスポンス関数であれば、これは不要である。</p>
@@ -37717,7 +37717,7 @@
 </code></pre></div>
 <h4 id="php">▼ 複合主キーへの対応 (PHPでは不要)<a class="headerlink" href="#php" title="Permanent link">&para;</a></h4>
 <p>以降の説明はJavaについて適用されるため、PHPでは不要である。</p>
-<p>複合主キーを持つオブジェクトに対応するために、主キーとなるほうのオブジェクト側に、<code>equals</code> 関数と <code>hash</code> 関数を定義する。</p>
+<p>複合主キーを持つオブジェクトに対応するため、主キーとなるほうのオブジェクト側に <code>equals</code> 関数と <code>hash</code> 関数を定義する。</p>
 <p>これにより、言語標準搭載の <code>equals</code> 関数と <code>hash</code> 関数をオーバーライドし、異なるセッションに渡ってオブジェクトを比較できるようにする。</p>
 <p>これらを定義しないと、オーバーライドされずに標準搭載の関数が使用される。</p>
 <p>標準搭載の関数では、異なるセッションに渡ったオブジェクトの比較では、必ず異なるオブジェクトであると判定してしまう。</p>
@@ -37800,7 +37800,7 @@
 <h4 id="_66">▼ 識別不可能とは<a class="headerlink" href="#_66" title="Permanent link">&para;</a></h4>
 <p>一意に識別できるデータをもたず、対象のユビキタス言語に関するデータと関数を持つ</p>
 <h4 id="_67">▼ 金額<a class="headerlink" href="#_67" title="Permanent link">&para;</a></h4>
-<p>金額データの計算をInteractor内処理やエンティティ内関数で実行するのではなく、金額計算を実行する値オブジェクトの関数として分割する。</p>
+<p>金額データの計算をInteractor内処理やエンティティ内関数で行うのではなく、金額計算をする値オブジェクトの関数として分割する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -37882,7 +37882,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_68">▼ 所要時間<a class="headerlink" href="#_68" title="Permanent link">&para;</a></h4>
-<p>所要時間データの計算をInteractorクラス内処理やエンティティ内関数で実行するのではなく、所要時間計算を実行する値オブジェクトの関数として分割する。</p>
+<p>所要時間データの計算をInteractorクラス内処理やエンティティ内関数で行うのではなく、所要時間計算をする値オブジェクトの関数として分割する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -38186,7 +38186,7 @@
 <p>そのため、値オブジェクトにプロパティ値を返すだけのゲッターが量産され、ファイルの見通しが悪くなってしまう。</p>
 <p>そこで、例えばPHPでは、マジック関数の <code>__get</code> 関数を使用して、ゲッターの実装を省略できる。</p>
 <p>全ての値オブジェクトの基底クラスに、『コールされたゲッターがクラス内に存在していなければ、動的にプロパティにアクセスして返却する』処理を持った <code>__get</code> 関数を定義しておく。</p>
-<p>すると、マジック関数のオーバーライド機能により、自身で定義した <code>__get</code> 関数が代わりにコールするようになり、ゲッターを定義する必要がなくなる。</p>
+<p>すると、マジック関数のオーバーライド機能により、自身で定義した <code>__get</code> 関数が代わりにコールされる。そのため、ゲッターを定義する必要がなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -38244,7 +38244,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_76">交換可能性<a class="headerlink" href="#_76" title="Permanent link">&para;</a></h3>
-<p>オブジェクトが新しくインスタンス化された場合、以前に同一オブジェクトから作成されたインスタンスから新しく置き換える必要がある。</p>
+<p>オブジェクトが新しくインスタンス化された場合、以前に同一オブジェクトから作成されたインスタンスを新しいものに置き換える必要がある。</p>
 <p><br></p>
 <h3 id="_77">属性による等価性<a class="headerlink" href="#_77" title="Permanent link">&para;</a></h3>
 <h4 id="_78">▼ 属性による等価性検証とは<a class="headerlink" href="#_78" title="Permanent link">&para;</a></h4>
@@ -38360,7 +38360,7 @@
 </code></pre></div>
 <p>全ての値オブジェクトに等価性の検証関数を持たせると可読性が低い。</p>
 <p>そこで、継承元の抽象クラスの値オブジェクトに定義すると良い。</p>
-<p>その時は、保持している属性を反復的に検証できるように実装すると良い。</p>
+<p>その時は、保持している属性を反復的に検証できるよう実装するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain</span><span class="p">;</span>
@@ -38690,7 +38690,7 @@
 </code></pre></div>
 <h4 id="db-createupdatedelete">▼ DBに対する書き込み責務 (Create、Update、Delete)<a class="headerlink" href="#db-createupdatedelete" title="Permanent link">&para;</a></h4>
 <p><img alt="ドメイン駆動設計_リポジトリ_データ更新" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ更新.png" /></p>
-<p>DBに対する書き込み操作を実行する。</p>
+<p>DBに対する書き込み操作をする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -38818,7 +38818,7 @@
 </blockquote>
 <h4 id="db-read">▼ DBに対する読み出し責務 (Read)<a class="headerlink" href="#db-read" title="Permanent link">&para;</a></h4>
 <p><img alt="ドメイン駆動設計_リポジトリ_データ取得" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ取得.jpg" /></p>
-<p>DBに対する書き込み操作を実行する。</p>
+<p>DBに対する書き込み操作をする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -38914,7 +38914,7 @@
 <p><br></p>
 <h3 id="_91">ファクトリ<a class="headerlink" href="#_91" title="Permanent link">&para;</a></h3>
 <h4 id="_92">▼ ファクトリとは<a class="headerlink" href="#_92" title="Permanent link">&para;</a></h4>
-<p>責務として、新たな集約の作成や、既存の集約の再作成を実行する。</p>
+<p>責務として、新たな集約の作成や、既存の集約の再作成をする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -38977,7 +38977,7 @@
 <h4 id="_98">▼ イベントリスナーとは<a class="headerlink" href="#_98" title="Permanent link">&para;</a></h4>
 <p>『イベントハンドラー』ともいう。</p>
 <p>ドメインイベントが発生した場合、それに紐付く処理を実行する。</p>
-<p>フレームワークの機能に依存することになるため、実装の詳細をインフラストラクチャ層におく。</p>
+<p>フレームワークの機能に依存することになるため、実装の詳細をインフラストラクチャ層へ置く。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them">https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them</a></li>
@@ -39018,7 +39018,7 @@
 <h2 id="06">06. アーキテクチャにおけるレイヤー別の例外スロー<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_106">スローされた例外の扱い<a class="headerlink" href="#_106" title="Permanent link">&para;</a></h3>
 <p>各レイヤーでは例外をスローするだけに留まり、スローされた例外を対処する責務は、より上位レイヤーに持たせる。</p>
-<p>より上位レイヤーでは、そのレイヤーに合った例外に詰め替えて、これをスローする。</p>
+<p>より上位レイヤーでは、そのレイヤーに合った例外へ詰め替えてスローする。</p>
 <p>最終的には、インターフェース層まで持ち上げ、画面上のポップアップで警告文としてこれを表示する。</p>
 <p><br></p>
 <h3 id="_107">インターフェース層<a class="headerlink" href="#_107" title="Permanent link">&para;</a></h3>
@@ -39072,7 +39072,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:24:35 JST">2026-02-16</span>
   </span>
 
     

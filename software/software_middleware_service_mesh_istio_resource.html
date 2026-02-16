@@ -34746,7 +34746,7 @@
 <p>Istio Egress Gatewayは、サービスメッシュ外宛ての通信をロードバランシングする <code>L4</code>/<code>L7</code> ロードバランサーを作成する。</p>
 <p>Clusterネットワーク内から通信を受信し、フィルタリングした後、Cluster外 (例：外部マイクロサービス、外部サービスのAPI、データベース、メッセージキューなど) にルーティングする。</p>
 <p>Istio Egress Gatewayを使用しない場合、サービスメッシュ外への通信を監視できるようになり、またサイドカーを通過せずにサービスメッシュ外へ通信できてしまう。</p>
-<p>しかし、Istio Egress Gatewayを使わないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまい、システムの安全性が低くなる。</p>
+<p>しかし、Istio Egress Gatewayを使わないと、マイクロサービスからistio-proxyコンテナを経由せず、外部システムに直接HTTPSリクエストを送信できるようになってしまう。このため、システムの安全性が低くなる。</p>
 <p>他に、サービスメッシュ外への特定の通信を識別できるようになるメリットもある。</p>
 <blockquote>
 <ul>
@@ -34807,7 +34807,7 @@
 <h2 id="03-virtualservice">03. VirtualService<a class="headerlink" href="#03-virtualservice" title="Permanent link">&para;</a></h2>
 <h3 id="virtualservice">VirtualServiceとは<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>VirtualServiceは、Istio Ingress Gatewayの一部として、受信した <code>L4</code>/<code>L7</code> 通信をJWTトークンleに紐づくPodにルーティングする。</p>
+<p>VirtualServiceは、Istio Ingress Gatewayの一部として、受信した <code>L4</code>/<code>L7</code> 通信をJWTトークンleに紐づくPodへルーティングする。</p>
 <p><img alt="istio_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png" /></p>
 <blockquote>
 <ul>
@@ -35242,9 +35242,9 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <h2 id="05-serviceentry">05. ServiceEntry<a class="headerlink" href="#05-serviceentry" title="Permanent link">&para;</a></h2>
 <h3 id="serviceentry">ServiceEntryとは<a class="headerlink" href="#serviceentry" title="Permanent link">&para;</a></h3>
 <p>ServiceEntryは、クラスター外のドメイン名などを登録する。</p>
-<p>Istio<code>v1.3</code> より前は、ConfigMapでデフォルトで <code>REGISTRY_ONLY</code> になっていたため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部とは通信できなかった。</p>
+<p>Istio<code>v1.3</code> より前は、ConfigMapのデフォルトが <code>REGISTRY_ONLY</code> になっていた。このため、ServiceEntryでマイクロサービスを登録しない限り、サービスメッシュ外部と通信できなかった。</p>
 <p>しかし、<code>v1.3</code> 以降、ServiceEntryでマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。</p>
-<p>ただし、登録しない限り、マイクロサービスを個別に認識することはできず、すべて <code>PassthroughCluster</code> として扱う。</p>
+<p>ただし、登録しない限り、マイクロサービスを個別に認識できず、すべて <code>PassthroughCluster</code> として扱う。</p>
 <p>類似するExternalName Serviceでも同じことを実現できるが、Istioの機能を使用できない。</p>
 <p><img alt="istio_service-entry" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png" /></p>
 <blockquote>
@@ -35278,7 +35278,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <h3 id="serviceentry_1">ServiceEntryと同時に必要なリソース<a class="headerlink" href="#serviceentry_1" title="Permanent link">&para;</a></h3>
 <h4 id="istio-egress-gateway_1">▼ Istio Egress Gateway<a class="headerlink" href="#istio-egress-gateway_1" title="Permanent link">&para;</a></h4>
 <p>ServiceEntryには、Istio Egress Gatewayが必須ではない。</p>
-<p>ただし、Istio Egress Gatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せずに外部システムに直接HTTPSリクエストを送信できるようになってしまう。</p>
+<p>ただし、Istio Egress Gatewayを使用しないと、マイクロサービスからistio-proxyコンテナを経由せず、外部システムに直接HTTPSリクエストを送信できるようになってしまう。</p>
 <p>そのため、システムの安全性が低くなる。</p>
 <blockquote>
 <ul>
@@ -35736,7 +35736,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:41:46 JST">2026-02-16</span>
   </span>
 
     

@@ -35130,7 +35130,7 @@
 <span class="w">  </span><span class="nx">fn</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">,</span>
 <span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="p">{</span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="kt">T</span><span class="p">;</span><span class="w"> </span><span class="nx">executionTime</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="nx">startAtTimestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">}</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 計測開始</span>
-<span class="w">  </span><span class="c1">// 計測にはperformance.now()の方が適切であるが、ISO形式に変換してタイムスタンプを取得する必要があるため、これに対応するDate.now()を使用する</span>
+<span class="w">  </span><span class="c1">// 計測にはperformance.now()のほうが適切であるが、ISO形式に変換してタイムスタンプを取得する必要があるため、これに対応するDate.now()を使用する</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">startAt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
 
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fn</span><span class="p">();</span>
@@ -35380,7 +35380,7 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">stringNotNull</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ただ、型ガードしてもよく、こちらの方が明示的である。ただ、実装量が増えてしまうところがデメリットである。</p>
+<p>ただ、型ガードしてもよく、こちらのほうが明示的である。ただ、実装量が増えてしまうところがデメリットである。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// string型またはnullを許容する</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -35415,7 +35415,7 @@
 <h3 id="_32">複数の型<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <h4 id="_33">▼ プロパティで複数の型を許容<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
 <p><code>name</code> プロパティは <code>string</code> 型と <code>undefined</code> 型を許容している。</p>
-<p><code>undefined</code> 型の方が網羅範囲が大きいため、実質 <code>undefined</code> 型として扱われる。</p>
+<p><code>undefined</code> 型のほうが網羅範囲が大きいため、実質 <code>undefined</code> 型として扱われる。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
@@ -35426,7 +35426,7 @@
 </code></pre></div>
 <h4 id="_34">▼ オブジェクト全体で複数の型を用意<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <p><code>name</code> プロパティが <code>string</code> 型のUserと、<code>undefined</code> 型のUserWithoutNameを別々に定義している。</p>
-<p><code>undefined</code> 型の方が網羅範囲が大きいため、実質 <code>undefined</code> 型として扱われる。</p>
+<p><code>undefined</code> 型のほうが網羅範囲が大きいため、実質 <code>undefined</code> 型として扱われる。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
@@ -35443,7 +35443,7 @@
 <p><br></p>
 <h2 id="04">04. 独自の型宣言<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_35">比較<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
-<p>typeエイリアス宣言の方が型としての強制力が高い。</p>
+<p>typeエイリアス宣言のほうが型としての強制力が高い。</p>
 <p>また、interface宣言はオブジェクト指向の文脈でメソッドの仕様を持たせることが多く、型の文脈では適さない（と個人的に思っている）</p>
 <table>
 <thead>
@@ -35577,7 +35577,7 @@
 </ul>
 <h4 id="dotenv">▼ dotenvパッケージ<a class="headerlink" href="#dotenv" title="Permanent link">&para;</a></h4>
 <p><code>dotenv</code> パッケージ</p>
-<p>なお、依存パッケージが増えてしまうため、代替の方法があるならそちらの方が良い。</p>
+<p>なお、依存パッケージが増えてしまうため、代替の方法があるならそちらのほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">dotenv</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;dotenv&quot;</span><span class="p">;</span>
 
 <span class="c1">// .envファイルを読み込む</span>
@@ -35703,7 +35703,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:08:25 JST">2026-02-16</span>
   </span>
 
     

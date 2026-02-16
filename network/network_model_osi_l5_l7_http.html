@@ -35718,7 +35718,7 @@
 <h3 id="cookiecookie">Cookie、Cookie情報 (キー名/値)<a class="headerlink" href="#cookiecookie" title="Permanent link">&para;</a></h3>
 <h4 id="cookiecookie_1">▼ Cookie、Cookie情報とは<a class="headerlink" href="#cookiecookie_1" title="Permanent link">&para;</a></h4>
 <p>クライアントからの次回のリクエスト時でも、Cookie情報 (キー名/値のセット) を使用して、同一クライアントと認識できる仕組みをCookieという。</p>
-<p>HTTPはステートレスなプロトコルであるが、Cookie情報により擬似的にステートフルな通信を行える。</p>
+<p>HTTPはステートレスなプロトコルであるが、Cookie情報により擬似的にステートフルな通信できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.engilaboo.com/definitely-understand-cookie-session/">https://www.engilaboo.com/definitely-understand-cookie-session/</a></li>
@@ -35833,7 +35833,7 @@
 <p><img alt="session-id_page-transition" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id_page-transition.png" /></p>
 <p>特定のサイトを訪問してから、離脱するまでの一連のユーザー操作を『セッション』という。</p>
 <p>この時、セッションIDを使用すると、セッションの各クライアント側を同一クライアントとして識別できる。</p>
-<p>HTTPはステートレスなプロトコルであるが、セッションIDにより擬似的にステートフルな通信を行える。</p>
+<p>HTTPはステートレスなプロトコルであるが、セッションIDにより擬似的にステートフルな通信できる。</p>
 <p>例えばセッションIDにより、ログイン後にページ遷移を行っても、ログイン情報を保持でき、同一ユーザーからのリクエストとして認識できる。</p>
 <p>セッションIDはCookie情報の1つであり、<code>Cookie</code> ヘッダーと <code>Set-Cookie</code> ヘッダーに割り当てて送受信される。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエストヘッダーの場合</span>
@@ -35983,7 +35983,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 </blockquote>
 <h4 id="_23">▼ 動的方式<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p>宛先の負荷をリアルタイムに考慮して、ロードバランシングする。</p>
-<p>静的方式よりもこちらの方が良い。</p>
+<p>静的方式よりもこちらのほうが良い。</p>
 <ul>
 <li>最小接続数 (最小未処理接続数、Least Connection)</li>
 <li>重み付き接続数</li>
@@ -36025,7 +36025,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:51:01 JST">2026-02-16</span>
   </span>
 
     

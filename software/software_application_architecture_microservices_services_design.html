@@ -33447,8 +33447,8 @@
 <h4 id="_4">▼ マイクロサービスとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p><img alt="anti-corruption-layer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anti-corruption-layer.png" /></p>
 <p>マイクロサービスアーキテクチャにおける分散システム状のバックエンドのコンポーネントのこと。</p>
-<p>特定のマイクロサービスが他のマイクロサービスに侵食され、マイクロサービスの凝集度が低くならないようにするために、ACL：Anti Corruption Layer (腐食防止レイヤー) を設ける必要がある。</p>
-<p>腐食防止レイヤーは、異なるコンテキストから受信したデータを、そのマイクロサービスのコンテキストにあったデータ形式に変換する責務を持つ。</p>
+<p>特定のマイクロサービスが他のマイクロサービスに侵食され、マイクロサービスの凝集度が低くならないようにするため、ACL：Anti Corruption Layer (腐食防止レイヤー) を設ける必要がある。</p>
+<p>腐食防止レイヤーは、異なるコンテキストから受信したデータを、そのマイクロサービスのコンテキストに合ったデータ形式へ変換する責務を持つ。</p>
 <p>CQRSでは、これはプロセスマネージャパターンとして知られている。</p>
 <p>一方でSagaパターンとも呼ばれるが、分散トランザクションでも同じ用語があるため、混乱を避けるためにプロセスマネージャパターンとする。</p>
 <blockquote>
@@ -33463,7 +33463,7 @@
 <p>この時、ドメイン駆動設計のアーキテクチャを基に実装できる。</p>
 <p><strong>＊例＊</strong></p>
 <p>ECサイトがあり、これの商品販売ドメインを販売サブドメインと配送サブドメインに分割できるとする。</p>
-<p>この時、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストをマイクロサービスの粒度となり、オニオンアーキテクチャのアプリケーション間で同期通信/非同期通信を実行する。</p>
+<p>この時、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストがマイクロサービスの粒度となる。オニオンアーキテクチャのアプリケーション間で同期通信/非同期通信をする。</p>
 <p><img alt="microservices-architecture_onion-architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices-architecture_onion-architecture.png" /></p>
 <blockquote>
 <ul>
@@ -33596,7 +33596,7 @@
 <p>ただ、境界づけられたコンテキストは他のコンテキストとは異なるルートエンティティを持つため、リポジトリも完全に独立しているはずである。</p>
 <p>そのため、異なる境界づけられたコンテキストのマイクロサービスが、同じリポジトリを共有することは起こらないはずである。</p>
 <p>逆に言うと、複数のマイクロサービスがリポジトリを共有している場合、それらのマイクロサービスは同じコンテキストに属しており、分割する必要がないということになる。</p>
-<p>これらのことから、この分割パターンはあまり良くない (出典は俺) 。</p>
+<p>これらのことから、この分割パターンはあまり良くない (出典は俺)。</p>
 <p><br></p>
 
 
@@ -33618,7 +33618,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:41:46 JST">2026-02-16</span>
   </span>
 
     

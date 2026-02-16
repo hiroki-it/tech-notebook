@@ -37736,7 +37736,7 @@
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ チャートとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
-<p>チャートは、<code>istioctl</code> コマンドインストール時に <code>manifests</code> ディレクトリ以下に同梱される。</p>
+<p>チャートは、<code>istioctl</code> コマンドインストール時、<code>manifests</code> ディレクトリ以下に同梱される。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># IstioOperatorのdemoをインストールし、リソースを作成する</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>install<span class="w"> </span>--set<span class="w"> </span><span class="nv">profile</span><span class="o">=</span>demo<span class="w"> </span><span class="nv">revision</span><span class="o">=</span><span class="m">1</span>-10-0
 
@@ -37796,7 +37796,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="c1"># istiodチャート</span>
 $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/istiod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
-<p>IngressGatewayのインストールは必須ではない。</p>
+<p>IngressGatewayのインストールは必須でない。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># IngressGatewayのみ</span>
 <span class="c1"># gatewayチャート</span>
 $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/gateway<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
@@ -38086,7 +38086,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-destination-rule</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.default.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良いが完全修飾ドメイン名の方が良い。</span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.default.svc.cluster.local</span><span class="w"> </span><span class="c1"># Service名でも良いが完全修飾ドメイン名のほうが良い。</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -38143,7 +38143,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="connectionpoolhttpmaxrequestsperconnection">▼ connectionPool.http.maxRequestsPerConnection<a class="headerlink" href="#connectionpoolhttpmaxrequestsperconnection" title="Permanent link">&para;</a></h4>
 <p>1つのTCP接続で許可されるHTTP1.1とHTTP/2プロトコルのリクエストの最大数を設定する。</p>
 <p>デフォルトでは上限がない。</p>
-<p><code>2</code> 以上であればTCP KeepAliveを実施し、<code>1</code> とする場合はTCP KeepAliveは無効になる。</p>
+<p><code>2</code> 以上であればTCP KeepAliveを実施する。<code>1</code> とする場合はTCP KeepAliveを無効にする。</p>
 <p>また、サーキットブレイカーを開始するための外れ値の閾値になる。</p>
 <p>上限を超過した場合、Podへのルーティングが停止し、何らかの意図したエラーを返信する (サーキットブレイカー) 。</p>
 <p>HTTP/2の場合は、TCP上で単一または複数のストリームを確立し、ストリーム内で単一または複数のリクエスト／レスポンスを並行的に送受信する。</p>
@@ -39956,7 +39956,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="spechosts">.spec.hosts<a class="headerlink" href="#spechosts" title="Permanent link">&para;</a></h3>
 <h4 id="hosts">▼ hostsとは<a class="headerlink" href="#hosts" title="Permanent link">&para;</a></h4>
 <p>コンフィグストレージに登録する宛先のドメイン名を設定する。</p>
-<p>部分的にワイルドカード (<code>*</code>) を使用できるが、全てのドメインを許可 (ワイルドカードのみ) することはできない。</p>
+<p>部分的にワイルドカード (<code>*</code>) を使用できるが、全てのドメインを許可 (ワイルドカードのみ) できない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
@@ -40527,7 +40527,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="spechttp">.spec.http<a class="headerlink" href="#spechttp" title="Permanent link">&para;</a></h3>
-<p>HTTP/1.1、HTTP/2 (例：gRPC、GraphQLなど) のプロトコルによる通信をDestinationRuleに紐づくPodにルーティングする。</p>
+<p>HTTP/1.1、HTTP/2 (例：gRPC、GraphQLなど) のプロトコルによる通信をDestinationRuleに紐づくPodへルーティングする。</p>
 <p><code>.spec.tcp</code> キーや <code>.spec.tls</code> キーとは異なり、マイクロサービスがHTTPプロトコルで通信を送受信し、istio-proxy間で相互TLS認証を実施する場合、これを使用する。</p>
 <blockquote>
 <ul>
@@ -40538,7 +40538,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="spechttpcorspolicy">.spec.http.corsPolicy<a class="headerlink" href="#spechttpcorspolicy" title="Permanent link">&para;</a></h3>
 <h4 id="corspolicy">▼ corsPolicyとは<a class="headerlink" href="#corspolicy" title="Permanent link">&para;</a></h4>
 <p>ブラウザではデフォルトでCORSが有効になっており、正しいリクエストがCORSを突破できるように対処する必要がある。</p>
-<p>多くの場合、バックエンドアプリケーションにCORSに対処することが多いが、istio-proxyで対処できる。</p>
+<p>多くの場合、バックエンドアプリケーションでCORSに対処することが多いが、istio-proxyで対処できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#CorsPolicy">https://istio.io/latest/docs/reference/config/networking/virtual-service/#CorsPolicy</a></li>
@@ -40850,7 +40850,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><img alt="istio_virtual-service_destination-rule_subset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png" /></p>
 <p>VirtualServiceを起点としたPodのカナリアリリースで使用する。</p>
 <p>紐付けたいDestinationRuleのサブセット名と同じ名前を設定する。</p>
-<p>DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodにルーティングする。</p>
+<p>DestinationRuleで受信した通信を、DestinationRuleのサブセットに紐づくPodへルーティングする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -40962,7 +40962,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="spectcp">.spec.tcp<a class="headerlink" href="#spectcp" title="Permanent link">&para;</a></h3>
 <h4 id="tcp">▼ tcpとは<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
-<p><code>.spec.http</code> キーや <code>.spec.tls</code> キーとは異なり、TCPプロトコルや独自プロトコル (例：MySQLなど) による通信をDestinationRuleに紐づくPodにルーティングする。</p>
+<p><code>.spec.http</code> キーや <code>.spec.tls</code> キーとは異なり、TCPプロトコルや独自プロトコル (例：MySQLなど) による通信をDestinationRuleに紐づくPodへルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute">https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute</a></li>
@@ -41049,7 +41049,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="spectls">.spec.tls<a class="headerlink" href="#spectls" title="Permanent link">&para;</a></h3>
 <h4 id="tls_1">▼ tlsとは<a class="headerlink" href="#tls_1" title="Permanent link">&para;</a></h4>
-<p><code>.spec.http</code> キーや <code>.spec.tcp</code> キーとは異なり、HTTPSプロトコルの通信をDestinationRuleに紐づくPodにルーティングする。</p>
+<p><code>.spec.http</code> キーや <code>.spec.tcp</code> キーとは異なり、HTTPSプロトコルの通信をDestinationRuleに紐づくPodへルーティングする。</p>
 <p>マイクロサービスがHTTPSプロトコルで通信を送受信し、istio-proxy間で相互TLS認証を実施する場合、これを使用する。</p>
 <p>他に、マイクロサービスがHTTPSリクエストを送信し、Istio Egress Gatewayでこれをそのまま通過させる (<code>PASSTHROUGH</code>) 場合も必要になる。</p>
 <blockquote>
@@ -41131,7 +41131,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:57:28 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:08:25 JST">2026-02-16</span>
   </span>
 
     
