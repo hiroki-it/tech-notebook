@@ -762,7 +762,7 @@ AWS ECSは、AWS EKSよりもアプリ領域とインフラ領域の責務がよ
 
 例えば、AWS ECSを管理しているのがインフラチームである一方で、アプリチームもAWS ECSにコンテナを設定しないといけないです。
 
-この時、管理者のインフラチームに依頼することになる。しかし、インフラチームが手一杯であれば、スピード感が落ちる。
+この時、管理者のインフラチームに依頼する。しかし、インフラチームが手一杯であれば、スピード感が落ちる。
 
 マイクロサービスアーキテクチャは組織が大きくなるほど価値を発揮するはずなのに、これでは逆に辛くなっています。
 
@@ -772,7 +772,7 @@ AWS ECSは、AWS EKSよりもアプリ領域とインフラ領域の責務がよ
 
 Serverless platformsパターンで、AWS Lambdaを使用して、マイクロサービスアーキテクチャを動かします。
 
-この場合、マイクロサービスはAWS Lambdaに対応することになる。
+この場合、マイクロサービスはAWS Lambdaへ対応することになる。
 
 ![aws-lambda_microservices.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/aws-lambda_microservices.png)
 
@@ -860,7 +860,7 @@ Nodeの作成には、マシンイメージとしてAMIを採用します。
 
 KarpenterとAWSマネージドNodeグループNodeグループを採用し、Nodeを管理します。
 
-複数の方法を採用する理由は、Nodeを管理するKarpenterを、自身以外の方法で管理するNode上で稼働させなければならないためである。
+複数の方法を採用する理由は、Nodeを管理するKarpenterを、自身以外の方法で管理するNode上で稼働させる必要がある。これは、Karpenterが自身以外の方法で管理するNode上で稼働するためだ。
 
 ここでは、KarpenterのPodをAWSマネージドNodeグループNodeグループによるNode上に、アプリ領域のPodをKarpenterによるNode上に稼働させます。
 

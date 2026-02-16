@@ -17,7 +17,7 @@ description: メタデータ＠Istioの知見を記録しています。
 
 ### istio-injection
 
-指定したNamespaceに所属するPod内にistio-proxyを自動的にインジェクションするか否かを設定する。
+指定したNamespaceに所属するPod内へ、istio-proxyを自動的にインジェクションするか否かを設定する。
 
 `.metadata.labels.istio.io/rev` キーとはコンフリクトを発生させるため、どちらかしか使えない (`.metadata.labels.istio-injection` キーの値が `disabled` の場合は共存できる) 。
 
@@ -60,7 +60,7 @@ metadata:
 
 #### ▼ サイドカーモードの場合
 
-指定したNamespaceに所属するPod内にistio-proxyを自動的にインジェクションするか否かを設定する。
+指定したNamespaceに所属するPod内へ、istio-proxyを自動的にインジェクションするか否かを設定する。
 
 また、サイドカーモードのカナリアアップグレードにも使用できる。
 
@@ -436,7 +436,7 @@ spec:
 
 ### sidecar.istio.io/excludeInboundPorts、sidecar.istio.io/excludeOutboundPorts
 
-特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptablesがistio-proxyにリダイレクトしないようにする。
+特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptablesがistio-proxyへリダイレクトしないようにする。
 
 例えば、Pod間でレプリケーション通信をする場合 (例：Keycloakクラスター、Redisクラスターなど) 、istio-proxyを経由する必要はない。
 

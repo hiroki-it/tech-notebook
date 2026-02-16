@@ -218,7 +218,7 @@ istio-proxyは、マイクロサービスのあるPodのみでなく、Istio Ing
 
 Istioのサービスメッシュ外のネットワークからのインバウンド通信では、Istio Ingress Gateway内のistio-proxyにて、Pod等の宛先情報に基づいて、ルーティングを実行している。
 
-一方で、マイクロサービスを持つPod間通信では、Pod内のistio-proxyに登録されたものに基づき、Pod間で直接的に通信している。
+一方で、マイクロサービスを持つPod間通信では、Pod内のistio-proxyへ登録されたものに基づき、Pod間で直接通信している。
 
 仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが `2` 個ある構成になってしまうことに注意する。
 
@@ -236,8 +236,8 @@ Istioのサービスメッシュ外のネットワークからのインバウン
 ただし、以下のいずれかで不要になる。
 
 - 通常のistio-proxyの場合
-  - `holdApplicationUntilProxyStarts` キーを `true` にする (`.spec.containers[*].lifecycle.postStart.exec.command` キーに対応)
-  - `EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数を `true` に設定する (`.spec.containers[*].lifecycle.preStop.exec.command` キーに対応)
+  - `holdApplicationUntilProxyStarts` キーを `true` にする (`.spec.containers[*].lifecycle.postStart.exec.command` キーへ対応)
+  - `EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数を `true` に設定する (`.spec.containers[*].lifecycle.preStop.exec.command` キーへ対応)
 - InitContainerによるistio-proxyを使用する場合 (両方に対応)
 
 ```yaml

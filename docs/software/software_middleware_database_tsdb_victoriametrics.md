@@ -29,7 +29,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 補足として、PrometheusがリモートストレージとしてVictoriaMetricsを使用するとき、Grafanaのようにリアルタイムにデータを取得し続けることはできない。
 
-代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得することはできる。
+代わりに、PrometheusのダッシュボードでPromQLを実行し、読み出しエンドポイントからその都度データを取得できる。
 
 ![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_remote-storage_architecture.png)
 
@@ -47,7 +47,7 @@ vm-agentがプル型でメトリクスの元になるデータポイントを収
 
 vm-alertは、vmstorageに対してMetricsQLを定期的に実行し、条件に合致したエラーイベントからアラートを作成する。
 
-VictoriaMetricsを監視バックエンドかつ監視フロントエンドとして使用する場合はPrometheusは不要になる。
+VictoriaMetricsを監視バックエンドかつ監視フロントエンドとして使用する場合、Prometheusは不要になる。
 
 各コンポーネントがメモリを使用するため、
 
@@ -272,7 +272,7 @@ vmstorageの `/var/lib/victoriametrics` ディレクトリ配下の増加量 (�
 
 増加率の推移をグラフ化すると、データが一定の割合で増加していることがわかるはずである。
 
-これは、Prometheusの仕様として、一定の割合でVictoriaMetricsに送信するようになっているためである。
+これは、Prometheusの仕様として、一定の割合でVictoriaMetricsへ送信するようになっているためである。
 
 もし、データの保管日数が `10` 日分という非機能的な品質であれば、vmstorageは常に過去 `10` 日分のデータを保管している必要がある。
 

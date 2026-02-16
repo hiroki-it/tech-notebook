@@ -95,7 +95,7 @@ WAN内では、各LANはグローバルIPアドレスで識別されている。
 
 WANを経由したプライベートな通信時、パケットの送信元と宛先が決まっており、特定のユーザーがアクセス回線を占有する。
 
-他のLANから閉じられた専用のアクセス回線であり、特定のLAN間のみでパケット通信を実行する。
+他のLANから閉じられた専用のアクセス回線であり、特定のLAN間のみでパケット通信する。
 
 他のWANよりも、安定した通信速度で安全に通信できる。
 
@@ -107,7 +107,7 @@ WANを経由したプライベートな通信時、パケットの送信元と�
 
 ただし、特定のユーザーのパケットがアクセス回線を通過している間、他のユーザーはアクセス回線を使用できない。
 
-少数対少数でパケット通信を実行するため、送信時、送信者と受信者の宛先情報は不要である。
+少数対少数でパケット通信するため、送信時、送信者と受信者の宛先情報は不要である。
 
 ![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_circuit-switching-system.png)
 
@@ -120,7 +120,7 @@ WANを経由したプライベートな通信時、パケットの送信元と�
 
 複数のユーザーでアクセス回線を同時に使用できる。
 
-対多数でパケット通信を実行するため、送信時、送信者と受信者の宛先情報が必要になる。
+対多数でパケット通信するため、送信時、送信者と受信者の宛先情報が必要になる。
 
 ![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_packet-switching-system.png)
 

@@ -353,7 +353,7 @@ VPN接続されると、自宅PCからのTCPスリーウェイハンドシェイ
 
 ![vpn_between_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_between_network.png)
 
-異なるネットワーク間で安全な通信を実行するための仕組み。
+異なるネットワーク間で安全な通信するための仕組み。
 
 異なるネットワーク内の特定のアプリケーションにのみと通信できるリモートデスクトッププロトコルよりも、広範囲に通信できる。
 
