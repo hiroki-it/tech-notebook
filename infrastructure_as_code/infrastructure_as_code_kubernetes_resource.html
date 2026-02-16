@@ -37221,7 +37221,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <h3 id="ingress-controller">Ingress Controller<a class="headerlink" href="#ingress-controller" title="Permanent link">&para;</a></h3>
 <h4 id="ingress-controller_1">▼ Ingress Controllerとは<a class="headerlink" href="#ingress-controller_1" title="Permanent link">&para;</a></h4>
 <p>Ingress Controllerは、<code>L7</code> ロードバランサーとしてPodに通信をルーティングする。</p>
-<p>Node外から通信を受信し、Ingressに定義されたルールに応じて、単一/複数のServiceにルーティングする。</p>
+<p>Node外から通信を受信し、Ingressに定義されたルールに応じて単一/複数のServiceにルーティングする。</p>
 <p>クラウドプロバイダー (例：AWS) では、Ingress Controller状況下でIngressを作成すると、Ingressの設定値に応じた <code>L7</code> ロードバランサー (例：AWS ALBとAWSターゲットグループ) を自動的にプロビジョニングする。</p>
 <p>ただし、クラウドプロバイダーによっては、Ingress ControllerとClusterIP Serviceを中継するカスタムリソース (例：AWS TargetGroupBindingsなど) を提供している場合がある。</p>
 <p>この場合、クラウドプロバイダーのリソースとKubernetesが疎結合になり、責務の境界を明確化できる。</p>
@@ -37407,7 +37407,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <h4 id="externalname-service">▼ ExternalName Service<a class="headerlink" href="#externalname-service" title="Permanent link">&para;</a></h4>
 <p>Cluster内DNS名とCluster外CNAMEレコードを対応づけ、Serviceに対する通信を対象にルーティングする。</p>
 <p>例えば、<code>foo-db-service</code> というExternalName Serviceを作成したとする。</p>
-<p>この場合、<code>foo-db-service.default.svc.cluster.local</code> を指定すると、指定したCNAMEレコードに問い合わせるようになる。</p>
+<p>この場合、<code>foo-db-service.default.svc.cluster.local</code> を指定すると、指定したCNAMEレコードに問い合わせる。</p>
 <p>マイクロサービスが外部のドメインに直接リクエストを送信できるが、これをServiceのドメインに抽象化できる。</p>
 <p><img alt="kubernetes_externalname-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png" /></p>
 <blockquote>
@@ -37800,7 +37800,7 @@ drwxrwsr-x<span class="w">  </span><span class="m">2</span><span class="w"> </sp
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>df</code> コマンドで、ストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。 PersistentVolumeに対してデータサイズが大きすぎることがわかる。</p>
+<p><code>df</code> コマンドでストレージの使用率を確認する。Nodeにマウントされているデータサイズを確認すると、197Gとなっている。PersistentVolumeに対してデータサイズが大きすぎることがわかる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-h<span class="w"> </span>/var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/prometheus-db/
@@ -38282,7 +38282,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:44:29 JST">2026-02-16</span>
   </span>
 
     
