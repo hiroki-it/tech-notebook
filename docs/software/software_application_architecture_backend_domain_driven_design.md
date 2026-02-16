@@ -299,9 +299,9 @@ ECサイトを運営するアスクルの例。
 
 > - https://next-engine.net/ec-blog/order-flow/
 
-#### ▼ 例：本を販売するECサイト
+#### ▼ 例：書籍ECサイト
 
-本を販売するECサイトの例。
+書籍ECサイトの例。
 
 コアドメインとサブドメインに基づいたユビキタス言語と境界づけられたコンテキストを以下に示す。
 
@@ -325,6 +325,44 @@ ECサイトを運営するアスクルの例。
 ![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
 
 > - https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
+
+書籍モデルの実装例は次のとおりである。
+
+```typescript
+/** カタログコンテキストの書籍モデル */
+class Book {
+  constructor(
+    /** 書籍の一意の識別子 */
+    public isbn: string,
+    /** 書籍のタイトル */
+    public title: string,
+    /** 書籍の著者 */
+    public author: string,
+    /** 書籍の説明 */
+    public description: string,
+    /** 書籍の販売価格 */
+    public price: number,
+  ) {}
+}
+```
+
+```typescript
+/** 在庫コンテキストの書籍モデル */
+class Book {
+  constructor(
+    /** 書籍の一意の識別子 */
+    public isbn: string,
+    /** 書籍のタイトル */
+    public title: string,
+    /** 書籍の在庫数 */
+    public quantityAvailable: number,
+    /** 保管場所 */
+    public location: string,
+    /** 書籍の在庫ステータス */
+    public status: "IN_STOCK" | "OUT_OF_STOCK",
+  ) {}
+}
+```
 
 #### ▼ 例：完全個室ジムを運営するハコジム
 
