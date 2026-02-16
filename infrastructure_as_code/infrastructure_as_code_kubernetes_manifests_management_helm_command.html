@@ -35225,7 +35225,7 @@ NAME<span class="w">                 </span>URL
 </code></pre></div>
 <h4 id="update">▼ update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
 <p>事前に <code>helm repo add</code> コマンドで追加しておいたチャートリポジトリの情報を更新する。</p>
-<p>チャートを特定のバージョンにアップグレードする前にリポジトリの情報を更新しておく必要がある。</p>
+<p>チャートを特定のバージョンへアップグレードする前に、リポジトリの情報を更新しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update<span class="w"> </span>&lt;チャートリポジトリ名&gt;
 
 Hang<span class="w"> </span>tight<span class="w"> </span><span class="k">while</span><span class="w"> </span>we<span class="w"> </span>grab<span class="w"> </span>the<span class="w"> </span>latest<span class="w"> </span>from<span class="w"> </span>your<span class="w"> </span>chart<span class="w"> </span>repositories...
@@ -35294,7 +35294,7 @@ version:<span class="w"> </span>&lt;バージョンタグ&gt;
 <h3 id="template">template<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
 <h4 id="template_1">▼ templateとは<a class="headerlink" href="#template_1" title="Permanent link">&para;</a></h4>
 <p>Kubernetesに作成されるリソースのマニフェストを出力する。</p>
-<p><code>yaml</code> ファイルにリダイレクトするようにすると良い。</p>
+<p><code>yaml</code> ファイルへリダイレクトするとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># チャート名をreleasesとしている場合</span>
 $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>releases.yaml
 </code></pre></div>
@@ -35309,7 +35309,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>CI上でマニフェストの静的解析を実行したい場合に、CIの実行環境に暗号化キーの使用許可を付与する必要はない。</p>
+<p>CI上でマニフェストの静的解析をしたい場合、CIの実行環境へ暗号化キーの使用許可を付与する必要はない。</p>
 <p><code>helm template</code> コマンドに暗号化されたYAMLファイルをそのまま渡すと、暗号化ツール (例：SOPS) を介さない。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 暗号化ツールを使用せずにSecretを作成する</span>
 $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>&lt;暗号化されたYAMLファイル&gt;<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>&lt;出力先ファイル&gt;
@@ -35441,7 +35441,7 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:55:08 JST">2026-02-16</span>
   </span>
 
     
