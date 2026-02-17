@@ -34901,7 +34901,7 @@
 <p><br></p>
 <h3 id="association">Association (関連)<a class="headerlink" href="#association" title="Permanent link">&para;</a></h3>
 <h4 id="association_1">▼ Associationとは<a class="headerlink" href="#association_1" title="Permanent link">&para;</a></h4>
-<p>クラスＡがクラスＢを状態として保持する関係性のこと。</p>
+<p>クラスAがクラスBを状態として保持する関係性のこと。</p>
 <p>引数型/返却値型として使用する『依存』とは区別する。</p>
 <h4 id="association_2">▼ Associationの種類<a class="headerlink" href="#association_2" title="Permanent link">&para;</a></h4>
 <p>保持される側のクラスのインスタンスが、状態として保持する側のクラスによって作成されるか否かによって、『Aggregation』または『Composition』に分類できる。</p>
@@ -35142,7 +35142,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>営業部・開発部・総務部があり、それぞれが異なる仕事を実行する</p>
+<p>営業部・開発部・総務部があり、それぞれが異なる仕事を担当する</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -35421,7 +35421,7 @@
 <h3 id="trait">Trait<a class="headerlink" href="#trait" title="Permanent link">&para;</a></h3>
 <h4 id="trait_1">▼ Traitとは<a class="headerlink" href="#trait_1" title="Permanent link">&para;</a></h4>
 <p><img alt="Trait" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Trait.png" /></p>
-<p>再利用したい関数や状態を部品化し、利用したいときにクラスに取り込む。</p>
+<p>再利用したい関数や状態を部品化し、必要に応じてクラスに取り込む。</p>
 <p>Traitを使用するときは、クラス内でTraitをuse宣言する。</p>
 <p>Trait自体は不完全なクラスであり、インスタンス化できない。</p>
 <p>また、親クラスでトレイトを読み込むと、子クラスでもトレイトを使用できる。</p>
@@ -35649,7 +35649,7 @@
 <h3 id="dependency">Dependency (依存)<a class="headerlink" href="#dependency" title="Permanent link">&para;</a></h3>
 <h4 id="dependency_1">▼ Dependencyとは<a class="headerlink" href="#dependency_1" title="Permanent link">&para;</a></h4>
 <p><img alt="引数型または返却値型として使用する関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png" /></p>
-<p>クラスＡがクラスＢを引数型/返却値型として使用する関係性のこと。</p>
+<p>クラスAがクラスBを引数型/返却値型として使用する関係性のこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency">https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency</a></li>
@@ -35885,16 +35885,16 @@
 <p><br></p>
 <h3 id="dip_2">DIPを満たす実装<a class="headerlink" href="#dip_2" title="Permanent link">&para;</a></h3>
 <h4 id="dip_3">▼ DIPを満たさない実装の場合 (従来)<a class="headerlink" href="#dip_3" title="Permanent link">&para;</a></h4>
-<p>より上位レイヤーのコール処理を配置し、より下位レイヤーでコールされる側の定義を実行する。</p>
-<p>これによって、上位レイヤーのクラスが、下位レイヤーのクラスに依存する関係性になる。</p>
+<p>より上位レイヤーにコール処理を配置し、下位レイヤーでコールされる側を定義する。</p>
+<p>これによって、上位レイヤーのクラスは下位レイヤーのクラスへ依存する関係性になる。</p>
 <p><img alt="DIPに基づかない設計の場合" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づかない設計の場合.png" /></p>
 <h4 id="dip_4">▼ DIPを満たす実装の場合<a class="headerlink" href="#dip_4" title="Permanent link">&para;</a></h4>
 <p>インターフェース (または抽象クラス) で抽象関数を記述することによって、実装クラスでの実装が強制される。</p>
 <p>つまり、実装クラスは抽象クラスに依存している。</p>
 <p>より上位レイヤーにインターフェースを配置することによって、下位レイヤーのクラスが上位レイヤーのクラスに依存しているような逆転関係を作られる (原則２)。</p>
 <p>原則２でいう依存は、引数型/返却値型として使用する関係性の文脈でいう『依存』ではないことに注意する。</p>
-<p>また、実装クラスをインターフェースをエイリアスとしてコールでききるようにすると、実装クラスに依存するレイヤーは代わりにインターフェースに依存することになる。</p>
-<p>よって、全てのレイヤーがインターフェースに依存するようになる (原則１)。</p>
+<p>また、実装クラスをインターフェースのエイリアスとしてコールできるようにすると、実装クラスに依存するレイヤーは代わりにインターフェースへ依存することになる。</p>
+<p>よって、全てのレイヤーがインターフェースに依存する (原則1)。</p>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze">https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze</a></li>
@@ -35917,7 +35917,7 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>２と３により、インフラストラクチャ層とユースケース層の両方が、ドメイン層のインターフェース (抽象クラス) に依存することになる。これは、原則１を満たす。</p>
+<p>2と3により、インフラストラクチャ層とユースケース層の両方は、ドメイン層のインターフェース (抽象クラス) に依存する。これは原則1を満たす。</p>
 </dd>
 </dl>
 <p><img alt="ドメイン駆動設計_逆転依存性の原則" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_依存性逆転の原則.jpg" /></p>
@@ -36061,7 +36061,7 @@
 <p><br></p>
 <h3 id="_33">低結合と高凝集<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <p>各モジュールは、結合度が低く、凝集度が高いほど良い。</p>
-<p>例として、以下の画像では、道具モジュールを、キッチン引き出しモジュールとガレージ工具箱モジュールに分け、各クラスの結合度を低く、凝集度を高くするように対応している。</p>
+<p>例として、以下の画像では、道具モジュールをキッチン引き出しモジュールとガレージ工具箱モジュールに分けている。これにより、各クラスの結合度を低くし、凝集度を高くできる。</p>
 <p><img alt="低結合度高凝集度" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/低結合度高凝集度.png" /></p>
 <p><br></p>
 
@@ -36084,7 +36084,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 15:29:43 JST">2026-02-17</span>
   </span>
 
     

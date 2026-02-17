@@ -39223,7 +39223,7 @@
 <span class="p">];</span>
 </code></pre></div>
 <h4 id="_8">▼ 複数のエンドポイント<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>複数のエンドポイントがある場合、書き込み処理と読み出し処理をそれ専用のエンドポイントに向けるようにする。</p>
+<p>複数のエンドポイントがある場合、書き込み処理と読み出し処理は専用のエンドポイントに向ける。</p>
 <p>例えば、AWS RDSを採用している場合、プライマリーインスタンスに向け、また読み出し処理をリードレプリカに向けることにより、負荷を分散できる。</p>
 <p>この場合、環境変数に <code>2</code> 個のインスタンスのエンドポイントを実装する必要がある。</p>
 <blockquote>
@@ -39235,7 +39235,7 @@
 <span class="nv">DB_HOST_READ</span><span class="o">=</span>&lt;リードレプリカのエンドポイント&gt;
 </code></pre></div>
 <p>注意点として、スティッキーセッションを使用するために <code>sticky</code> キーを有効化しておくと良い。</p>
-<p>プライマリーインスタンスにおけるデータ更新がリードレプリカに同期される前に、リードレプリカに対して読み出し処理が起こるような場合、これを防げる。</p>
+<p>プライマリーインスタンスのデータ更新がリードレプリカへ同期される前に読み出し処理が起こる場合でも、これを防げる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -39330,9 +39330,9 @@
 </blockquote>
 <h4 id="eloquentcrud">▼ EloquentモデルのCRUDイベント<a class="headerlink" href="#eloquentcrud" title="Permanent link">&para;</a></h4>
 <p>Eloquentモデルでは、DBアクセスに関する関数の実行開始や終了の処理タイミングをイベントクラスに紐付けられる。</p>
-<p>紐付けるために、プロパティで定義するか、あるいは各タイミングで実行される無名関数でイベントを発生させる必要がある。</p>
+<p>紐付けは、プロパティで定義するか、各タイミングで実行される無名関数を使ってイベントを発生させる必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>プロパティにて、<code>CREATE</code> 処理と <code>DELETE</code> 処理に独自イベントクラスに紐付ける。</p>
+<p>プロパティにて、<code>CREATE</code> 処理と <code>DELETE</code> 処理を独自イベントクラスに紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
@@ -39361,7 +39361,7 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>無名関数にて、<code>CREATE</code> 処理に独自イベントクラスに紐付ける。</p>
+<p>無名関数にて、<code>CREATE</code> 処理を独自イベントクラスに紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
@@ -39525,7 +39525,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Model更新イベントが発火してコールするリスナーを定義する。</p>
-<p><code>create_by</code> カラムまたは <code>updated_by</code> カラムを指定した更新者名に更新可能にする。</p>
+<p><code>create_by</code> カラムまたは <code>updated_by</code> カラムに、指定した更新者名を設定できるようにする。</p>
 <p>注意点として、イベントとリスナーの対応関係は、EventServiceProviderで登録する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -39769,7 +39769,7 @@
 <h4 id="facade_3">▼ Facadeの静的プロキシを使用する場合<a class="headerlink" href="#facade_3" title="Permanent link">&para;</a></h4>
 <p>静的関数の記法でコールできる。</p>
 <p>ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition (合成) 』の依存関係を生じさせてしまう。</p>
-<p>例えば、Facadeの中でも、<code>Route</code> のような、代替するよりもFacadeを使用したほうが断然便利である部分以外は、使用しないほうが良い。</p>
+<p>例えば、Facadeの中でも <code>Route</code> のように、代替するよりFacadeを使ったほうが便利な部分以外は、使用しないほうが良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>Facadeとして使用したいクラスを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -39800,7 +39800,7 @@
 <span class="nv">$result</span> <span class="o">=</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">method</span><span class="p">();</span>
 </code></pre></div>
 <h4 id="facade_4">▼ Facadeを使用したほうが良い場合<a class="headerlink" href="#facade_4" title="Permanent link">&para;</a></h4>
-<p>Facadeがトレイトの代わりになる場合、Facadeを使用することにより、責務がドメインモデルに集中せずにすむ。</p>
+<p>Facadeがトレイトの代わりになる場合、Facadeを使用すると責務がドメインモデルへ集中せずに済む。</p>
 <p><strong>＊例＊</strong></p>
 <p>NotifiableトレイトをUserクラスで使用せずに、Notificationファサードによるオンデマンド通知を使用することにより、Userクラスが通知処理の責務を持たずに済む。</p>
 <h4 id="facade_5">▼ 標準登録されたFacadeクラスの種類<a class="headerlink" href="#facade_5" title="Permanent link">&para;</a></h4>
@@ -40059,7 +40059,7 @@
 <p>引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。</p>
 <p>例外が発生しなかった場合、無名関数の返り値が、そのまま <code>transaction</code> 関数の返り値になる。</p>
 <p>加えて <code>transaction</code> 関数の返り値を返すようにすれば、無名関数の返り値をそのまま使用できる。</p>
-<p>補足として、トランザクション処理は必須ではなく、使用するとアプリケーションがDBを操作するために要する時間が増えるため、使用しなくても良い。</p>
+<p>補足として、トランザクション処理は必須でない。使用するとDB操作に要する時間が増えるため、不要なら使用しなくても構わない。</p>
 <p>参考リンクによると、MongoDBに対してトランザクション処理を実行する/行わない場合を比較して、処理時間が17%弱長くなったとのこと。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -41121,7 +41121,7 @@
 
 <span class="p">];</span>
 </code></pre></div>
-<p>注意点として、言語設定を行わない場合、デフォルトでは <code>/resources/lang/en/validation.php</code> ファイルをバリデーションメッセージとして参照するため、<code>app.php</code> ファイルで言語を変更することと、日本語翻訳 <code>validation.php</code> ファイルが必要である。</p>
+<p>注意点として、言語設定をしない場合、デフォルトでは <code>/resources/lang/en/validation.php</code> をバリデーションメッセージとして参照する。そのため、<code>app.php</code> で言語を変更することと、日本語翻訳 <code>validation.php</code> が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -41676,7 +41676,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_48">バリデーション<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
-<p>Requestではなく、FormRequestを使用したほうがバリデーションがおすすめである。</p>
+<p>Requestではなく、FormRequestを使用したほうがバリデーションにおすすめである。</p>
 <div class="highlight"><pre><span></span><code><span class="x">namespace App\Http\Controllers;</span>
 
 <span class="x">use Illuminate\Http\Request;</span>
@@ -42487,7 +42487,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="nx">Notification</span><span class="o">::</span><span class="na">send</span><span class="p">(</span><span class="nv">$users</span><span class="p">,</span> <span class="k">new</span> <span class="nx">FooNotification</span><span class="p">());</span>
 </code></pre></div>
 <h4 id="_59">▼ オンデマンド通知<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h4>
-<p>オンデマンド通知を使用すると、通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる。</p>
+<p>オンデマンド通知を使用すると、通知対象となるモデルはNotificableトレイトに依存せず、通知できる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nx">Notification</span><span class="o">::</span><span class="na">route</span><span class="p">(</span><span class="s1">&#39;mail&#39;</span><span class="p">,</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">email_address</span><span class="p">)</span>
@@ -42508,7 +42508,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p>EloquentモデルをJSON型データとしてレスポンスするときに、いったん、配列データに変換する必要がある。</p>
 <h4 id="eloquent">▼ 単一のEloquentモデルの配列化<a class="headerlink" href="#eloquent" title="Permanent link">&para;</a></h4>
 <p>単一のEloquentモデルを配列に変換する。</p>
-<p>Resourceクラスの <code>toArray</code> 関数にて、<code>this</code> 変数は自身ではなく、Resourceクラス名につくEloquentモデル名になる。</p>
+<p>Resourceクラスの <code>toArray</code> 関数では、<code>this</code> 変数は自身ではない。Resourceクラス名につくEloquentモデル名を指す。</p>
 <p>また、<code>this</code> 変数からゲッターを経由せずに直接的にプロパティにアクセスできる。</p>
 <p>Controllerにて、ResourceクラスにEloquentモデルを渡すようにする。</p>
 <p>LaravelはレスポンスのJSON型データを作成するために、まず <code>toArray</code> 関数により配列化し、加えてこれをJSON型データに変換する。</p>
@@ -42695,7 +42695,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <li><a href="https://readouble.com/laravel/8.x/ja/csrf.html">https://readouble.com/laravel/8.x/ja/csrf.html</a></li>
 </ul>
 </blockquote>
-<p>Bladeを使用しない場合、セッション開始時のレスポンスの <code>Set-Cookie</code> にCSRFトークンが割り当てられるため、これを取り出して <code>X-CSRF-TOKEN</code> ヘッダーや <code>X-XSRF-TOKEN</code> ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。</p>
+<p>Bladeを使用しない場合、セッション開始時のレスポンスの <code>Set-Cookie</code> にCSRFトークンが割り当てられるため、これを取り出して <code>X-CSRF-TOKEN</code> ヘッダーや <code>X-XSRF-TOKEN</code> ヘッダーに割り当てる。CSRFトークンはリクエストのたびに変わり、次のリクエストで使用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token">https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token</a></li>
@@ -43004,7 +43004,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h4 id="_66">▼ 単一のクラスをバインド/リゾルブ<a class="headerlink" href="#_66" title="Permanent link">&para;</a></h4>
 <p>AppSeriveProviderにて、ServiceContainerにクラスをバインドすることによって、ServiceContainerがインスタンスをリゾルブできるようになる。</p>
 <p>これにより、関数の引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。</p>
-<p>Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するのみでインスタンスを作成するため、以下の実装を実行する必要はない。</p>
+<p>Laravelでは、クラスはServiceContainerに自動的にバインドされている。そのため、引数でクラスを指定するだけでインスタンスを作成でき、以下の実装は不要である。</p>
 <p>ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。</p>
 <blockquote>
 <ul>
@@ -43156,7 +43156,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_68">▼ インターフェースをバインドし、実装クラスをリゾルブ<a class="headerlink" href="#_68" title="Permanent link">&para;</a></h4>
-<p>Laravelではクラスが自動的にバインドされ、これのインスタンスがリゾルブされる、しかし、バインドされたクラスとは別のクラスのインスタンスをリゾルブしたい場合は、ServiceProviderにそれを定義すれば、自動的なバインドを上書きできる。</p>
+<p>Laravelではクラスが自動的にバインドされ、そのインスタンスがリゾルブされる。ただし、バインド済みのクラスとは別のクラスをリゾルブしたい場合は、ServiceProviderに定義すれば、自動的なバインドを上書きできる。</p>
 <p>これを使用して、インターフェースをバインドし、実装クラスをリゾルブ可能にする。</p>
 <p>この方法は、上位レイヤーが抽象に依存することが必要な場面 (例：依存性逆転の原則) で役立つ。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -43392,7 +43392,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </code></pre></div>
 <h4 id="_70">▼ リクエスト数制限<a class="headerlink" href="#_70" title="Permanent link">&para;</a></h4>
 <p><code>1</code> 分間当たりに許容するリクエスト数とその制限名を <code>configureRateLimiting</code> 関数で定義する。</p>
-<p>加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエストの上限数を適用させる、もし制限を超えた場合、<code>configureRateLimiting</code> 関数によって、<code>429</code> ステータスでレスポンスが返信される。</p>
+<p>加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト上限数を適用させる。もし制限を超えた場合、<code>configureRateLimiting</code> 関数によって <code>429</code> ステータスでレスポンスが返信される。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting">https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting</a></li>
@@ -43611,7 +43611,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p>全てを追うことは難しいため、StartSessionクラスの <code>handle</code> 関数が実行されるところから始めるものとする。</p>
 <p>ここで、<code>handleStatefulRequest</code> 関数の中の <code>startSession</code> 関数が実行される。</p>
 <p>これにより、Storeクラスの <code>start</code> 関数、<code>loadSession</code> 関数、<code>readFromHandler</code> 関数が実行され、<code>SessionHandlerInterface</code> の実装クラスの <code>read</code> 関数が実行される。</p>
-<p><code>read</code> 関数は、<code>storage/framework/sessions</code> にあるセッションデータに書き込まれたセッションを読み出し、<code>attribute</code> プロパティに格納する。</p>
+<p><code>read</code> 関数は、<code>storage/framework/sessions</code> にあるセッションデータからセッションを読み出し、<code>attribute</code> プロパティに格納する。</p>
 <p>Sessionクラスの関数は、<code>attribute</code> プロパティを使用して、セッションを操作する。</p>
 <p>最終的に,<code>handleStatefulRequest</code> では、<code>saveSession</code> 関数の中の <code>save</code> 関数が実行され、セッションデータに新しい値が書き込まれる。</p>
 <blockquote>
@@ -43880,7 +43880,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 15:29:43 JST">2026-02-17</span>
   </span>
 
     

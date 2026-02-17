@@ -35200,7 +35200,7 @@
 <h3 id="configure">configure<a class="headerlink" href="#configure" title="Permanent link">&para;</a></h3>
 <h4 id="configure_1">▼ configure<a class="headerlink" href="#configure_1" title="Permanent link">&para;</a></h4>
 <p>資格情報を設定する。</p>
-<p>OSによって、資格情報ファイルが配置される場所が異なる。</p>
+<p>OSによって、資格情報ファイルの配置場所が異なる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure
 </code></pre></div>
 <h4 id="-profile">▼ --profile<a class="headerlink" href="#-profile" title="Permanent link">&para;</a></h4>
@@ -35497,7 +35497,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <h4 id="get-metric-statistics">▼ get-metric-statistics<a class="headerlink" href="#get-metric-statistics" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>全てのロググループに対して、一日当たりの収集サイズを <code>start-time</code> から <code>end-time</code> の間で取得する。</p>
-<p><code>--dimensions</code> オプションを使用して、特定のディメンション (ロググループ) に対して集計を実行もできる (ただし、やってみたけどうまくいかず) 。</p>
+<p><code>--dimensions</code> オプションを使用して、特定のディメンション (ロググループ) を対象に集計できる (ただし、やってみたけどうまくいかず) 。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>cloudwatch<span class="w"> </span>get-metric-statistics<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--namespace<span class="w"> </span>AWS/Logs<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--metric-name<span class="w"> </span>IncomingBy***<span class="w"> </span><span class="se">\</span>
@@ -35525,7 +35525,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <h3 id="aws-ec2">AWS EC2<a class="headerlink" href="#aws-ec2" title="Permanent link">&para;</a></h3>
 <h4 id="describe-instances">▼ describe-instances<a class="headerlink" href="#describe-instances" title="Permanent link">&para;</a></h4>
 <p>AWS EC2の情報を取得する。</p>
-<p>ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS EC2のインスタンスIDを取得したい場合に役立つ。</p>
+<p>ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続する場合、AWS EC2のインスタンスIDを取得したいときに役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:Name,Values=&lt;AWS EC2名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;Reservations[].Instances[].InstanceId&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -35581,7 +35581,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <h3 id="aws-rdsaws-aurora">AWS RDS、AWS Aurora<a class="headerlink" href="#aws-rdsaws-aurora" title="Permanent link">&para;</a></h3>
 <h4 id="describe-db-clusters">▼ describe-db-clusters<a class="headerlink" href="#describe-db-clusters" title="Permanent link">&para;</a></h4>
 <p>AWS EC2の情報を取得する。</p>
-<p>ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS Auroraのクラスター名を取得したい場合に役立つ。</p>
+<p>ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続する場合、AWS Auroraのクラスター名を取得したいときに役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-clusters<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--db-cluster-identifier<span class="w"> </span>&lt;AWS<span class="w"> </span>Auroraのクラスター名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;DBClusters[0].ReaderEndpoint&quot;</span><span class="w"> </span>--output<span class="w"> </span>text
@@ -35663,7 +35663,7 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 <h3 id="aws-secrets-manager">AWS Secrets Manager<a class="headerlink" href="#aws-secrets-manager" title="Permanent link">&para;</a></h3>
 <h4 id="get-secret-value">▼ get-secret-value<a class="headerlink" href="#get-secret-value" title="Permanent link">&para;</a></h4>
 <p>特定のSecretに格納されている文字列を取得する。</p>
-<p>ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS Auroraのユーザー名とパスワードを取得したい場合に役立つ。</p>
+<p>ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続する場合、AWS Auroraのユーザー名とパスワードを取得したいときに役立つ。</p>
 <p>注意点として、出力した文字列はダブルクオーテーションで囲われている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># こちらより、後述の --output=text の使用がおすすめである</span>
 $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w"> </span>get-secret-value<span class="w"> </span><span class="se">\</span>
@@ -35718,7 +35718,7 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 <span class="w">    </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--registration-limit<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
-<p>発行したIDとコードは、<code>amazon-ssm-agent</code> コマンドの実行時に必要になる。</p>
+<p>発行したIDとコードは、<code>amazon-ssm-agent</code> コマンドの実行時に必要となる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>amazon-ssm-agent<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-register<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-id<span class="w"> </span><span class="s2">&quot;&lt;ID&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -35873,7 +35873,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:57:28 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 15:29:43 JST">2026-02-17</span>
   </span>
 
     
