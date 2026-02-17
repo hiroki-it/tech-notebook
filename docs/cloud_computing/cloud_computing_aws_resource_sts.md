@@ -180,7 +180,7 @@ export AWS_DEFAULT_REGION="ap-northeast-1"
 EOF
 ```
 
-環境変数に登録する代わりに、AWSの資格情報ファイルを作成しても良い。
+環境変数に登録する代わりとして、AWSの資格情報ファイルを作成しても良い。
 
 ```bash
 #!/bin/bash

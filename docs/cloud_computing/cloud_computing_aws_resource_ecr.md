@@ -101,7 +101,7 @@ AWS ECRのコンテナイメージの有効期間を定義できる。
 
 Dockerのベストプラクティスに則り、タグ名に `latest` を使用しないようにする。
 
-代わりに、コンテナイメージのバージョンごとに異なるタグ名になるようハッシュ値 (例：GitHubのコミットID) を使用する。
+代わりに、コンテナイメージのバージョンごとに異なるタグ名となるように、ハッシュ値 (例：GitHubのコミットID) を使用する。
 
 > - https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
 

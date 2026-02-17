@@ -237,7 +237,7 @@ workflows:
 
 #### ▼ job parametersを参照
 
-引数として、任意の文字列を `executors` に渡したいときに使用する。
+引数として、任意の文字列を `executors` へ渡したいときに使用する。
 
 他のparametersとは異なり、`job` にて、値を設定する。
 
@@ -622,7 +622,7 @@ jobs:
             yarn test
 ```
 
-ただし、この能力はcommandsで共通化したほうが可読性が良い。
+ただし、この能力はcommandsで共通化すると可読性が良い。
 
 **＊実装例＊**
 
@@ -853,7 +853,7 @@ workflows:
 
 #### ▼ pre-steps、post-steps
 
-事前に `jobs` キーに定義する必要はない。
+事前に `jobs` キーへ定義する必要はない。
 
 `workspace` キーで、コールされる `jobs` キーの引数として設定することにより、その `jobs` キー内の最初と最後に、`steps` キーを追加できる。
 
@@ -1109,7 +1109,7 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-CircleCIでは `run` キーを実行するときに『`$BASH_ENV`』が `source` キーで自動的に読み込まれるようになっている。
+CircleCIでは `run` キーを実行すると、『`$BASH_ENV`』が自動的に読み込まれる。
 
 そのため、『`$BASH_ENV`』は複数の `run` キー間』で共有できる。
 

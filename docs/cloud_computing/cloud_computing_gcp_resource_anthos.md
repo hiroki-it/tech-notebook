@@ -108,7 +108,7 @@ cluster-operatorは、kube-apiserverを経由して、etcdにwatchイベント�
 
 Google Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを経由して、Google Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。
 
-Google Anthos GKE Clusterが、Google Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorは、これらのAPIを経由してGoogle Anthos GKE Cluster上のkubeletをコールすることになる。
+Google Anthos GKE ClusterがGoogle Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorがこれらのAPIを経由して、Google Anthos GKE Cluster上のkubeletをコールすることになる。
 
 またkube-controller-managerはcluster-operatorを反復的に実行する。
 

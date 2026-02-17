@@ -81,7 +81,7 @@ RDS (AWS Aurora、AWS RDS) の性能に関するメトリクスの元になる�
 
 AWS ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。
 
-Containerインサイトのメトリクスは、『`ContainerInsights`』という名前空間で一括でクエリでき、『`ClusterName`』などのディメンションでデータポイントをフィルタリングできる。
+Containerインサイトのメトリクスは、『`ContainerInsights`』という名前空間を使って一括でクエリできる。また、『`ClusterName`』などのディメンションを使用して、データポイントをフィルタリングできる。
 
 #### ▼ AWS Lambdaインサイト
 

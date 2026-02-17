@@ -169,7 +169,7 @@ AWS VPCエンドポイントを使用しない場合、プライベートサブ�
 
 ### AWS VPCエンドポイントとAWS NAT Gatewayの料金比較
 
-AWS NAT Gatewayの代わりに、AWS VPCエンドポイントを使用すると、料金が少しだけ安くなり、また、AWS VPC外AWSリソースとの通信がより安全になる。
+AWS NAT Gatewayの代わりにAWS VPCエンドポイントを使用すると、料金が少しだけ安くなる。また、AWS VPC外AWSリソースとの通信がより安全になる。
 
 <br>
 

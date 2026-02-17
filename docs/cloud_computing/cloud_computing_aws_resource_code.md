@@ -169,7 +169,7 @@ CodeDeployとCodeDeployエージェントは通信し、CodeDeployエージェ�
 
 新しいリビジョンのAWS ECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。
 
-リポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにしたほうが良い。
+リポジトリへ事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにしたほうが良い。
 
 ```yaml
 [
@@ -256,9 +256,9 @@ Resources:
 
 #### ▼ `imageDetail.json` ファイル
 
-新バージョンタグを含むイメージリポジトリURLを、`taskdef.json` ファイルの `<IMAGE1_NAME>` に代入するために必要である。
+新バージョンタグを含むイメージリポジトリURLを、`taskdef.json` ファイルの `<IMAGE1_NAME>` へ代入するために必要である。
 
-これはリポジトリに事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにしたほうが良い。
+これはリポジトリへ事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにしたほうが良い。
 
 > - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen
 > - https://ngyuki.hatenablog.com/entry/2021/04/07/043415

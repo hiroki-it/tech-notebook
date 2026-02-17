@@ -38,7 +38,7 @@ description: Backup＠AWSの知見を記録しています。
 
 ![backup_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/backup_multi-region.png)
 
-リージョンの何らかのAWSリソースで障害が発生し、データが失われる可能性がある。
+リージョン内のAWSリソースで障害が発生すると、データが失われる可能性もある。
 
 そこで、メインリージョンとは別に、障害用のDRリージョンを用意しておく。
 

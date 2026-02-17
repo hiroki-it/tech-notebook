@@ -324,7 +324,7 @@ data:
 
 プリンシパルAWS IAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、より簡単にセットアップできる。
 
-プリンシパルAWS IAMロールに紐づくPodがAWS EKSに接続するときに、アクセスエントリーがこれを中継する。
+プリンシパルAWS IAMロールに紐づくPodがAWS EKSへ接続するとき、アクセスエントリーがこれを中継する。
 
 Kubernetesリソースの認可スコープをIRSAで制御し、この仕組みの中で、アクセスエントリーはアクセスエントリーポリシーをAWS IAMロールに動的に紐づける。
 
@@ -864,7 +864,7 @@ data:
 
 Podをプライベートサブネットに配置した場合、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatch Logs、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。
 
-この時、クライアント側Podの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。
+この時、クライアント側Podの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスとなる。
 
 以下のようなエラーでPodが起動しない場合、Podが何らかの理由でコンテナイメージをプルできない可能性がある。
 
@@ -1047,7 +1047,7 @@ AWS Auto Scalingグループの機能を使用すれば、AWS EC2ワーカーNod
 
 同じNodeグループのAWS EC2ワーカーNodeの定期アクションを設定する。
 
-AWS EKSのテスト環境の請求料金を節約するために、昼間に通常の個数にスケールアウトし、夜間に `0` 個にスケールインするようにすれば、ワーカーNodeを夜間だけ停止させられる。
+AWS EKSのテスト環境の請求料金を節約するため、昼間に通常の個数へスケールアウトし、夜間に `0` 個へスケールインするようにすれば、ワーカーNodeを夜間だけ停止させられる。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
 > - https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
@@ -1086,7 +1086,7 @@ Nodeグループ (マネージドNodeグループ、セルフマネージドNode
 
 設定後、AWS Auto Scalingグループは希望数で設定したNode数を維持する (Karpenterのドキュメントでは、これを『静的』と表現している)。
 
-希望数の他に最大数と最小数を設定できるが、これらは実際は機能しない。
+希望数の他にも最大数と最小数を設定できるが、これらは実際には機能しない。
 
 もし負荷の状況に応じてスケーリングしたい場合、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenterなど) を使用しないと、最大数と最小数の設定に応じたスケーリングを実施してくれない。
 
@@ -1401,7 +1401,7 @@ KubeletConfigurationの `--shutdown-grace-period` オプション (`shutdownGrac
 
 ワーカーNodeの停止を `6` 分だけ待機し、その後に停止を始める。
 
-`6` 分のうち後半 `2` 分を重要なPodのために停止に割り当てる。
+`6` 分のうち後半 `2` 分を、重要なPodの停止に割り当てる。
 
 ```bash
 #!/bin/bash
@@ -1439,7 +1439,7 @@ sudo systemctl restart systemd-logind
 > - https://blog.skouf.com/posts/enabling-graceful-node-shutdown-on-eks-in-kubernetes-1-21/
 > - https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown
 
-`Failed` ステータスなPodはそのままでは削除できない。
+`Failed` ステータスのPodは、そのままでは削除できない。
 
 そのため、`Failed` ステータスなPodを自動で削除してくれるツール (例：descheduler) や、以下のような削除コマンドを持つCronJobを作成するとよい。
 

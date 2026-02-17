@@ -38,7 +38,7 @@ Webサイトのクラウドインフラの実行環境ごとに作成したほ�
 
 グローバルサービスは、物理サーバーが世界中にあり、これらの間ではパブリックネットワークが作成されている。
 
-そのため、特定のリージョンに依存せずに、全てのリージョンと連携できる。
+そのため、特定のリージョンに依存せず、全てのリージョンと連携できる。
 
 ![edge-location](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/edge-location.png)
 

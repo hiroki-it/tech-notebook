@@ -33,7 +33,7 @@ description: Kinesis＠AWSリソースの知見を記録しています。
 
 より非マネージにストリーミングしたい場合は、ストリーミングツール (例：Apache Kafka) を使用する。
 
-Kinesisを使用せずに、リアルタイム処理のストリーミングデータを直接的に送信しても良いが、通信頻度が瞬間的に増加することなく定常的に送信できる。
+Kinesisを使用せずに、リアルタイム処理のストリーミングデータを直接送信しても良い。ただ、通信頻度が瞬間的に増加することなく、定常的に送信できる。
 
 > - https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html
 > - https://techtarget.itmedia.co.jp/tt/news/2103/27/news02.html
