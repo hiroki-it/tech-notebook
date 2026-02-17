@@ -89,7 +89,7 @@ Envoyは、ホットリロード処理によって通信を切断することな
 
 各XDS-APIから宛先情報を取得しても良いが、ADS-APIで一括して取得することできる。
 
-もしADS-APIで一括して取得しない場合、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまう。このため、Envoyの処理コンポーネント間で宛先情報のバージョンの競合が起こることがある。
+もしADS-APIで一括して取得しない場合、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまう。このため、Envoyの処理コンポーネント間で宛先情報のバージョン競合が発生する可能性もある。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#aggregated-xds-ads
@@ -243,7 +243,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 インバウンド通信／アウトバウンド通信であっても、同じである。
 
-インバウンド通信の場合はリスナーはIngressリスナーとして、アウトバウンド通信の場合はEgressリスナーとして、同じ構成の処理を辿る。
+インバウンド通信ではIngressリスナー、アウトバウンド通信ではEgressリスナーとして、同じ構成の処理を辿る。
 
 > - https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/
 > - https://s3.us.cloud-object-storage.appdomain.cloud/developer/series/os-academy-istio-2020/nl/zh/static/4-WASM.pdf#page=10

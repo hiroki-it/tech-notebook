@@ -214,7 +214,7 @@ spec:
 
 #### ▼ istio-revision-tag-default
 
-Podの作成/更新時にwebhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。
+Podの作成/更新時、webhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。
 
 `.webhooks.failurePolicy` キーで設定しているとおり、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。
 
@@ -572,7 +572,7 @@ $ pilot-discovery discovery --clusterRegistriesNamespace istio-system
 
 #### ▼ keepaliveMaxServerConnectionAge
 
-istio-proxyからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、その接続をタイムアウトにするか否か) を設定する。
+istio-proxyからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、接続をタイムアウトにするかどうか) を設定する。
 
 ```bash
 $ pilot-discovery discovery --keepaliveMaxServerConnectionAge 30m

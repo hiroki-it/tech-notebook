@@ -21,7 +21,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
 
-プロファイルは、設定済みのIstioOperatorのチャートであり、`istioctl` コマンドインストール時に `manifests` ディレクトリ以下に同梱される。
+プロファイルは、設定済みのIstioOperatorのチャートであり、`istioctl` コマンドインストール時、`manifests` ディレクトリ以下に同梱される。
 
 `(1)`
 

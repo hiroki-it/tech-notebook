@@ -60,7 +60,7 @@ $ export PATH=$PWD/bin:$PATH
 
 Istioの機能のセットを提供する。
 
-実際には設定済みのIstioOperatorであり、`istioctl` コマンドのインストール時に `manifests` ディレクトリ以下に配置される。
+実際には設定済みのIstioOperatorであり、`istioctl` コマンドのインストール時、`manifests` ディレクトリ以下に配置される。
 
 > - https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 

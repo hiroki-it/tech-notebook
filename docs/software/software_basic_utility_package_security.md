@@ -145,7 +145,7 @@ $ sops -e ./values/foo-values.yaml -k $SOPS_KMS_ARN
 
 `yaml` ファイルや `json` ファイルの値の部分を復号する。
 
-標準出力に出力されるため、ファイルに書き出すようにすると良い。
+標準出力に出力されるため、ファイルへ書き出すようにすると良い。
 
 ```bash
 $ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号された.yamlファイル/.jsonファイル>
@@ -159,11 +159,11 @@ $ sops -d ./secrets/foo-secrets.yaml > ./values/foo-values.yaml
 
 #### ▼ -e
 
-外部の暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGPなど) に基づいて、`yaml` ファイルや `json` ファイルの値の部分を暗号化する。
+外部の暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGPなど) に基づき、`yaml` ファイルや `json` ファイルの値の部分を暗号化する。
 
 環境変数や `.sops.yaml` ファイルで暗号化ルールを定義しておく必要がある。
 
-標準出力に出力されるため、ファイルに書き出すようにすると良い。
+標準出力に出力されるため、ファイルへ書き出すようにすると良い。
 
 ```bash
 # AWS KMSを暗号化キーとして使用する。

@@ -194,7 +194,7 @@ Envoy
 
 マイクロサービスからのリクエストがタイムアウトになっている。
 
-マイクロサービスからDBへのトランザクションで問題が起こると、Envoyで `downstream_remote_disconnect` が出る場合がある。
+マイクロサービスからDBへのトランザクションで問題が起こると、Envoyで `downstream_remote_disconnect` が出る可能性もある。
 
 #### ▼ Envoyへのインバウンド通信の場合
 

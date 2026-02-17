@@ -860,7 +860,7 @@ Nodeの作成には、マシンイメージとしてAMIを採用します。
 
 KarpenterとAWSマネージドNodeグループNodeグループを採用し、Nodeを管理します。
 
-複数の方法を採用する理由は、Nodeを管理するKarpenterを、自身以外の方法で管理するNode上で稼働させる必要があるためだ。
+複数の方法を採用する理由は、Nodeを管理するKarpenterを、自身以外の方法で管理しているNode上で稼働させる必要があるためだ。
 
 ここでは、KarpenterのPodをAWSマネージドNodeグループNodeグループによるNode上に、アプリ領域のPodをKarpenterによるNode上に稼働させます。
 

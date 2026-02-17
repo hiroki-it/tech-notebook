@@ -125,7 +125,7 @@ log_directory = /var/lib/pgsql
 
 ログローテーションによって、ログファイルを分割して保管しておく。
 
-`log_directory` オプションで設定したディレクトリ配下で、PostgreSQLは、ログローテーションされたログファイルを配置する。
+`log_directory` オプションで設定したディレクトリ配下に、PostgreSQLはログローテーションされたログファイルを配置する。
 
 ```bash
 $ ls -la /var/lib/pgsql
