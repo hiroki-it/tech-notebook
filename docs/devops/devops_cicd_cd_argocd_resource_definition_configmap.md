@@ -139,7 +139,7 @@ ConfigMapやSecretのファイル変更に合わせてチェックサム値を�
 
 #### ▼ RootのApplication名の重複
 
-単一のKubernetes ClusterでNamespacedスコープのArgoCDを構築しているとき、RootのApplicationを `default` というAppProjectに配置すると、この問題が起こる可能性がある。
+単一のKubernetes ClusterでNamespacedスコープのArgoCDを構築しているとき、RootのApplicationを `default` というAppProjectへ配置すると、この問題が起こりうる。
 
 `default` のAppProjectに所属したApplicationは、Namespacedスコープのapplication-controllerであって、他のNamespaceも見てしまうようである。
 
@@ -322,7 +322,7 @@ spec:
 
 #### ▼ oidc.configとは
 
-OIDCを使用して、ArgoCDにログインできるようにする。
+OIDCを使用して、ArgoCDへログインできるようにする。
 
 #### ▼ 委譲先Webサイトに直接的に接続する場合
 

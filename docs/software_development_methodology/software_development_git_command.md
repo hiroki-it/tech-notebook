@@ -884,7 +884,7 @@ git push origin HEAD
 
 コミットメッセージは、打ち消すコミットと同じものになる。
 
-リリース後に戻したいときに役立つ。
+リリース後の復旧時に役立つ。
 
 ```bash
 $ git revert <コミットID> --no-edit
@@ -1243,7 +1243,7 @@ $ git rebase --onto <派生元にしたいローカルブランチ名> <誤っ�
 $ git rebase --interactive --root
 ```
 
-そうすると、最初の履歴が記述されたタブが表示される。
+そうすると、最初の履歴が記述されたタブを表示する。
 
 ```bash
 pick b1b5c0f add #0 *****
