@@ -355,7 +355,7 @@ Datadogに送信されたログのメッセージから値を抽出し、構造�
 
 パイプラインのルールに当てはまらなかったされなかったログは、そのまま流入する。
 
-属性ごとにファセットに対応しており、各ファセットの値判定ルールを基に、ログコンソール画面に表示される。
+属性ごとにファセットが対応しており、各ファセットの値判定ルールを基にして、ログコンソール画面に表示される。
 
 <br>
 
@@ -907,7 +907,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 これに対して、ユーザーエージェントパーサーのルールを定義する。
 
-`http.useragent` 属性の値を分解し、`useragent_details` 属性に振り分けるようにする。
+`http.useragent` 属性の値を分解し、`useragent_details` 属性へ振り分けるようにする。
 
 これにより、構造化ログの各属性に値が割り当てられる。
 
@@ -1108,7 +1108,7 @@ autoFilledRule3 ...
 
 例えば、受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの `message` 属性に割り当てられる。
 
-一方で、構造化ログであった場合は `message` 属性は使用されない。
+一方で、構造化ログであった場合、`message` 属性は使用されない。
 
 > - https://docs.datadoghq.com/logs/log_configuration/pipelines/?tab=source#preprocessing
 

@@ -87,7 +87,7 @@ data:
 
 ### HelmテンプレートによるConfigMap作成
 
-ダッシュボードはJSONファイルとして管理し、これをConfigMapのテンプレートに出力するようにすると、管理しやすい。
+ダッシュボードはJSONファイルとして管理し、ConfigMapテンプレートへ出力すると、管理しやすい。
 
 ただ出力時にHelm起因のエラーが多発するため、自分はこれを不採用とした。
 
@@ -252,7 +252,7 @@ Istio関連のコミュニティダッシュボードを使用する場合は、
 {"gnetId": 1}
 ```
 
-また、コミュニティダッシュボードのバージョンは、`description` セクションから確認できる (コミュニティダッシュボードによってはバージョンの記載がないものがある)。
+また、コミュニティダッシュボードのバージョンは `description` セクションから確認できる。
 
 ```yaml
 {"description": "Foo Dashboard version 1.0.0"}
@@ -350,7 +350,7 @@ data:
 
 kubernetes-mixinsはGrafanaダッシュボードを公開している。
 
-kubernetes-mixinsのレコーディングルールが定義済みであることが前提になっている。
+kubernetes-mixinsのレコーディングルールが定義済みであることを前提にしている。
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets
 > - https://monitoring.mixins.dev
@@ -533,7 +533,7 @@ IstioのPodからデータポイントを収集する。
 
 ### tags
 
-他の何らかのチャート (例：kube-prometheus-stack) を使用した場合に、ダッシュボードが作成されることがある。
+他の何らかのチャート (例：kube-prometheus-stack) を使用した場合、ダッシュボードを作成することがある。
 
 これと区別できるように、本リポジトリのダッシュボードには `<リポジトリ名>.git` やリポジトリURLというタグをつけると良い。
 
@@ -555,7 +555,7 @@ IstioのPodからデータポイントを収集する。
 
 ダッシュボード名とそのバージョンを設定する。
 
-コミュニティダッシュボードによってはバージョンの記載がないものがある。
+コミュニティダッシュボードによっては、バージョン表記がない。
 
 ```yaml
 {"description": "Foo Dashboard version 1.0.0"}
@@ -1104,7 +1104,7 @@ PromQLのラベル変数に値を挿入し、メトリクスをフィルタリ�
 > - https://stackoverflow.com/questions/64889312/is-there-a-way-to-get-the-cluster-name-of-kubernetes-in-grafana-variables-with-p
 > - https://qiita.com/prodigy413/items/c0c2304e1bc28f644526
 
-その上で `panel` セクションで `cluser` ラベルを定義すると、 メトリクスを `cluster` ラベルでフィルタリングできるようになる。
+その上で `panel` セクションに `cluster` ラベルを定義すると、メトリクスを `cluster` ラベルでフィルタリングできるようになる。
 
 ```yaml
 {

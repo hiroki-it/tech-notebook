@@ -217,7 +217,9 @@ func main() {
 }
 ```
 
-マイクロサービスで使用するConfigMapにて、分散トレースの有効化を実行環境別に切り替えられるようにするとよい。
+マイクロサービスで使用するConfigMapを使い、分散トレースの有効化を切り替える。
+
+有効化の切り替えは実行環境別に設定するとよい。
 
 ```yaml
 kind: ConfigMap
@@ -488,7 +490,7 @@ Spanに紐づく処理の成否を表す。
 
 スパンに対応する処理を成功したと強制的にみなすことを表す。
 
-成功以外にしたくない場合に使用する。
+成功以外としない場合に使用する。
 
 > - https://opentelemetry.io/docs/concepts/signals/traces/#span-status
 
@@ -800,7 +802,7 @@ func main() {
 
 ### 未送信スパンの送信
 
-処理の失敗時にSpan Processor内に未送信なスパンがある場合、これを送信し切ってしまうほうが良い。
+処理の失敗時にSpan Processor内へ未送信のスパンが残っている場合、これを送信し切ってしまうほうが良い。
 
 ```go
 func InitTracerProvider(serviceName string) (*sdktrace.TracerProvider, func(), error) {

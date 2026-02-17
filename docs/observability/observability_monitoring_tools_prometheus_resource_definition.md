@@ -712,7 +712,7 @@ record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
 
 kubernetes-mixinsでは、アラートルールとレコーディングルールのレシピが公開されている。
 
-kubernetes-mixinsはGrafanaダッシュボードも公開しており、kubernetes-mixinsのレコーディングルールが定義済みであることが前提になっている。
+kubernetes-mixinsはGrafanaダッシュボードも公開しており、kubernetes-mixinsのレコーディングルールが定義済みであることを前提にしている。
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets
 > - https://monitoring.mixins.dev

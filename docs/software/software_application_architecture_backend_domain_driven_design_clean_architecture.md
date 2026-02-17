@@ -138,6 +138,8 @@ SSOの場合を選んだユーザーの場合、IDプロバイダーから取得
 
 インターフェース層のバリデーションでは、データの必須や書式を検証する。
 
+#### ▼ APIにおける入力値のバリデーション
+
 **＊実装例＊**
 
 日時データのフォーマットを検証する。
@@ -169,6 +171,28 @@ class FormatValidator
 
         return true;
     }
+}
+```
+
+#### ▼ UIおける入力値のバリデーション
+
+記入中...
+
+#### ▼ クエリストリングにバリデーションは必要かどうか
+
+受信したURLクエリストリングの形式が誤っていた場合、デフォルト値で処理するように実装するとよい。
+
+```php
+<?php
+
+namespace App\Interface\Foo\Validators;
+
+// Validationのパッケージ
+use Respect\Validation\Validator;
+
+class UrlValidator
+{
+
 }
 ```
 

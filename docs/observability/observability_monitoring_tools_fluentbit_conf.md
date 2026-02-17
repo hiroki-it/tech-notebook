@@ -589,7 +589,7 @@ FILTERセクションで、modifyプラグインを定義する。
 
 #### ▼ modifyプラグインとは
 
-ログが構造化ログの場合、キーや値の追加/コピー/変更/削除を実行する。
+ログが構造化ログの場合、キーや値を追加/コピー/変更/削除する。
 
 #### ▼ セットアップ
 
@@ -623,7 +623,7 @@ FILTERセクションで、modifyプラグインを定義する。
 
 結合ルールは、MULTILINE_PARSERの設定ファイルに定義し、これをSERVICEで読み込む必要がある。
 
-ただし、本番環境ではログが複数行にならないようにアプリケーション側で実装を行い、ログを収集して可視化する段階でフィルタリングできれば問題ない、という考え方もある。
+ただし、本番環境ではログが複数行にならないようにアプリケーション側で実装し、ログを収集して可視化する段階でフィルタリングできれば問題ない、という考え方もある。
 
 > - https://qiita.com/roundrop@github/items/8989b7f29d70f618e503
 
@@ -739,7 +739,7 @@ FluentBitは、内部的にはruby製関数を使用して正規表現を検証�
 
 #### ▼ stdoutプラグインとは
 
-マッチしたログを、OUTPUTを経ずにそのまま標準出力に出力する。
+マッチしたログを、OUTPUTを経ずに標準出力へそのまま出力する。
 
 FILTERまでのパイプラインが正しく動作しているかのデバッグとして役立つ。
 
@@ -869,7 +869,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ### BUFFERとは
 
-ログを蓄え、またこれを順番にROUTINGに渡す。
+ログを蓄え、これを順番にROUTINGへ渡す。
 
 ![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_buffer.png)
 

@@ -19,7 +19,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 マイクロサービスから収集したスパンのセットのこと。
 
-スパンをトレースIDで紐付けることによって、`1` 個のリクエストで発生したマイクロサービスを横断する処理を、一繋ぎに表現できるようになる。
+スパンをトレースIDで紐付けると、`1` 個のリクエストで発生したマイクロサービスを横断する処理を一繋ぎで表現できるようになる。
 
 ![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace.png)
 
@@ -121,7 +121,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 ロードバランサー (例：Istio Ingress Gateway、AWS ALB) やAPIゲートウェイ (例：AWS API Gateway) が最初にトレースコンテキストを作成する。
 
-これらは、トレースコンテキストがIDが持っているかを検証する。
+これらは、トレースコンテキストがIDを持っているかを検証する。
 
 もしIDがなければ、スパンにIDを新しく割り当てる。
 

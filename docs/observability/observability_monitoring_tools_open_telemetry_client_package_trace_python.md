@@ -105,7 +105,7 @@ print(response.text, flush=True)
 
 親スパンを作成する。
 
-なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
+なお、親スパンと子スパンでスパン作成の実装方法は変わらない。
 
 ここでは、Flaskでリクエストを受信するため、`FlaskInstrumentor` 関数でスパンを処理している。
 
@@ -140,7 +140,7 @@ def hello_world():
 
 Carrierにトレースコンテキストを注入し、また子スパンを作成する。
 
-なお、親スパンであっても子スパンであっても、スパン作成の実装方法は同じである。
+なお、親スパンと子スパンでスパン作成の実装方法は変わらない。
 
 ```python
 from opentelemetry.instrumentation.flask import FlaskInstrumentor

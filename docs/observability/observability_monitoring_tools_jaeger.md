@@ -17,7 +17,14 @@ description: Jaeger＠監視ツールの知見を記録しています。
 
 ### アーキテクチャ
 
-Jaegerは、jaegerクライアントパッケージ (執筆時点2022/07/16で、otelクライアントパッケージの使用が推奨) 、jaegerエージェント、Jaeger Collector、ローカルストレージまたはリモートストレージ、jaegerクエリ、ダッシュボード (UI) 、といったコンポーネントから構成されている。
+Jaegerは複数のコンポーネントから構成されている。
+
+- jaegerクライアントパッケージ (執筆時点2022/07/16で、otelクライアントパッケージの使用が推奨)
+- jaegerエージェント
+- Jaeger Collector
+- ローカルストレージまたはリモートストレージ
+- jaegerクエリ
+- ダッシュボード (UI)
 
 ![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jaeger_architecture.png)
 
