@@ -180,7 +180,7 @@ SELECT * from USER where USER_NAME = 'foo' and PASSWORD = 'aaa' or '1' ='1'
 
 WebアプリによるHTML出力のエスケープ処理の欠陥を悪用し、利用者のWebブラウザで悪意のあるスクリプトを実行させる手法。
 
-悪意のある第三者が正常なサイトに事前にスクリプトを埋め込み、これを実行してしまったユーザーの情報を盗む。
+悪意のある第三者が正常なサイトへ事前にスクリプトを埋め込む。これを実行してしまったユーザーの情報を盗む。
 
 ![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cross-cite-scripting.png)
 
@@ -253,7 +253,7 @@ Brute-forceは力ずくの意味。IDを固定して、パスワードを総当�
 
 #### ▼ ソーシャルエンジニアリングとは
 
-技術的な手法ではなく、物理的な手法 (例：盗み見、盗み聞き、なりすまし、詐欺など) によってパスワードを取得し、アクセスする手法。
+技術的な手法ではなく、物理的な手法 (例：盗み見、盗み聞き、なりすまし、詐欺など) によってパスワードを取得する。これによりアクセスする手法である。
 
 ![ソーシャルエンジニアリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ソーシャルエンジニアリング.png)
 

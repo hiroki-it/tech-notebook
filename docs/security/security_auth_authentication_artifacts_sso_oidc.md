@@ -171,7 +171,7 @@ OAuthの認可コードフローと仕組みが似ており、アクセストー
 
 #### ▼ 認可リクエスト送信
 
-アプリからKeycloakに宛に認可リクエストを送信する。
+アプリからKeycloak宛に認可リクエストを送信する。
 
 ```bash
 $ curl http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/auth?response_type=code&client_id=rp1&redirect_uri=http://<アプリケーションのドメイン>/oidc&scope=openid
