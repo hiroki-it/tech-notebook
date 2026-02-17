@@ -34949,7 +34949,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;組織名&gt;/&lt;GitHubリポジトリ名&gt;.git
 </code></pre></div>
 <p>ユーザー名とパスワードの入力は、ターミナルに手動で入力する方法と、自動的に入力する方法がある。</p>
-<p>後者の場合、<code>1</code> 個目にURLに設定する方法がある。</p>
+<p>後者の場合、1つ目の方法としてURLに設定する方法がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://&lt;ユーザー名&gt;:&lt;パスワード&gt;@github.com/&lt;組織名&gt;/&lt;GitHubリポジトリ名&gt;.git
 </code></pre></div>
 <p>もう <code>1</code> 個の方法として、<code>~/.netrc</code> ファイルに定義しておく。</p>
@@ -35584,7 +35584,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
 <h3 id="id-no-edit"><code>&lt;コミットID&gt;</code> --no-edit<a class="headerlink" href="#id-no-edit" title="Permanent link">&para;</a></h3>
 <p>指定したコミットのみを打ち消す新しいコミットを作成する。</p>
 <p>コミットメッセージは、打ち消すコミットと同じものになる。</p>
-<p>リリース後に元に戻したいときに役立つ。</p>
+<p>リリース後に戻したいときに役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </span>&lt;コミットID&gt;<span class="w"> </span>--no-edit
 </code></pre></div>
 <p><br></p>
@@ -35633,7 +35633,8 @@ $<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </spa
 </code></pre></div>
 <p><br></p>
 <h3 id="-hard-id">--hard &lt;コミットID&gt; (ブランチ)<a class="headerlink" href="#-hard-id" title="Permanent link">&para;</a></h3>
-<p>作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) 、インデックス (=<code>add</code> 後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。</p>
+<p>作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) を指定の履歴まで戻す。</p>
+<p>また、インデックス (=<code>add</code> 後) とHEAD (=コミット後) も戻し、それ以降を削除する。</p>
 <p><font color="red"><strong>ワークツリー (=ディレクトリ) 内のファイルの状態も戻ってしまうため、取り扱い注意！！</strong></font></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>&lt;コミットID&gt;
 </code></pre></div>
@@ -35858,7 +35859,7 @@ git<span class="w"> </span>filter-branch<span class="w"> </span>-f<span class="w
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--interactive<span class="w"> </span>--root
 </code></pre></div>
-<p>とすると、最初の履歴が記述されたタブが表示される</p>
+<p>そうすると、最初の履歴が記述されたタブが表示される。</p>
 <div class="highlight"><pre><span></span><code>pick<span class="w"> </span>b1b5c0f<span class="w"> </span>add<span class="w"> </span><span class="c1">#0 *****</span>
 </code></pre></div>
 <dl>
@@ -36013,7 +36014,7 @@ $<span class="w"> </span>git<span class="w"> </span>gc<span class="w"> </span>--
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:08:25 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 18:30:00 JST">2026-02-17</span>
   </span>
 
     
