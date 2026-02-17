@@ -34392,7 +34392,7 @@ Checking<span class="w"> </span>https<span class="w"> </span>connectivity<span c
 <p><br></p>
 <h3 id="install">install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h3>
 <h4 id="install_1">▼ installとは<a class="headerlink" href="#install_1" title="Permanent link">&para;</a></h4>
-<p>事前に <code>composer.json</code> ファイルに書き込まれたパッケージを、<code>composer.lock</code> ファイルに書き込まれたバージョンでインストールする。</p>
+<p><code>composer.json</code> ファイルに書き込まれたパッケージを、<code>composer.lock</code> ファイルに書き込まれたバージョンでインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>install
 </code></pre></div>
 <blockquote>
@@ -34464,16 +34464,16 @@ $<span class="w"> </span>composer<span class="w"> </span>install<span class="w">
 </code></pre></div>
 <p><br></p>
 <h3 id="scripts_1">scripts<a class="headerlink" href="#scripts_1" title="Permanent link">&para;</a></h3>
-<p>事前に設定された <code>scripts</code> プロパティに設定されたスクリプトを実行する。</p>
+<p>設定された <code>scripts</code> プロパティのスクリプトを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>&lt;スクリプト名&gt;
 </code></pre></div>
 <p><br></p>
 <h3 id="update">update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
 <h4 id="update_1">▼ updateとは<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
-<p>事前に <code>composer.json</code> ファイルに書き込まれたパッケージを最新のバージョンでインストールし、<code>composer.lock</code> ファイルを書き換える。</p>
+<p><code>composer.json</code> ファイルに書き込まれたパッケージを最新のバージョンでインストールし、<code>composer.lock</code> ファイルを書き換える。</p>
 <p><code>composer.lock</code> ファイルに全てのパッケージ情報を書き込むため、リポジトリの利用者がインストールするパッケージにも影響を与える。</p>
 <p>パッケージ内でエラーが発生したら、<code>composer update</code> コマンドによるパッケージの更新が原因だと考えたほうが良い。</p>
-<p>いずれかのパッケージで新バージョンがリリースされたが、これに不具合があった可能性が高い。</p>
+<p>いずれかのパッケージで新バージョンをリリースした。ただし、このリリースは不具合が含まれていた可能性が高い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 必要なパッケージをcomposer.jsonファイルに追加した上で実行する。</span>
 $<span class="w"> </span>composer<span class="w"> </span>update
 </code></pre></div>
@@ -34501,11 +34501,11 @@ $<span class="w"> </span>composer<span class="w"> </span>update
 <p><br></p>
 <h2 id="03">03. バージョンアップの手順<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_6">事前確認の重要性<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>バージョン更新により、アプリケーションやこれに関係する他のアプリケーションに影響が起こる可能性がある。</p>
+<p>バージョン更新により、アプリケーションや関連する他のアプリケーションに影響が出る場合もある。</p>
 <p>そのため、想定外の影響が起こらないように、マニュアルやリリースノートにて、バージョン間の差異を全て確認しておく必要がある。</p>
 <p><br></p>
 <h3 id="_7">バージョン間の互換性を確認<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>破壊的変更のためにバージョン間で互換性が全くなく、旧バージョンと新バージョンで使用方法やオプションが異なる可能性がある。</p>
+<p>破壊的変更のためにバージョン間で互換性が全くない。旧バージョンと新バージョンで使用方法やオプションが変わる場合もある。</p>
 <p>一方で、互換性があるものの、大きな変更がなされている可能性がある。</p>
 <p><br></p>
 <h3 id="_8">追加、廃止、非推奨を確認<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
@@ -34517,7 +34517,7 @@ $<span class="w"> </span>composer<span class="w"> </span>update
 <p>予約語を自身が使用しているとバッティングしてエラーになってしまう。</p>
 <p><br></p>
 <h3 id="_10">アプリケーションの修正作業の考慮<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>バージョンアップに伴ってコードの修正が必要なことがわかった場合、バージョンアップの手順自体に修正作業を組み込む必要がある。</p>
+<p>バージョンアップに伴ってコードの修正が必要だとわかった場合、バージョンアップ手順へ修正作業を組み込む必要がある。</p>
 <p><br></p>
 <h3 id="_11">メンテナンスページの表示<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>バージョンアップによりダウンタイムが発生する場合、その間はメンテナンスページを表示する必要がある。</p>
@@ -34555,7 +34555,7 @@ $<span class="w"> </span>composer<span class="w"> </span>update
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:51:16 JST">2026-02-17</span>
   </span>
 
     

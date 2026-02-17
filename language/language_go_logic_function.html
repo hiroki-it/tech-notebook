@@ -36967,7 +36967,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 </code></pre></div>
 <h4 id="_30">▼ 再宣言<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p>基本的には、同じスコープ内で既存の変数を再宣言できない。</p>
-<p>ただし、複数の変数を宣言するときに、いずれかに新しい変数の宣言が含まれていれば、既存の変数を宣言したとしても、代入のみが実行される。</p>
+<p>ただし、複数の変数を宣言するときは注意する。いずれかに新しい変数の宣言が含まれていれば、既存の変数を宣言したとしても代入のみが実行される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -37704,7 +37704,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h4 id="waitgroup">▼ WaitGroupとの使い分け<a class="headerlink" href="#waitgroup" title="Permanent link">&para;</a></h4>
 <p>channelを使用すると、異なるGoroutine間で値を送受信できる。</p>
 <p>そのため、Goroutineの処理結果を使用したい場合は、WaitGroupではなくchannelを使用するほうが良い。</p>
-<p>一方で、channelでは <code>select</code> 関数が必要になり、処理が複雑になることに注意する。</p>
+<p>一方で、channelでは <code>select</code> 関数が必要になって、処理が複雑になる点は注意する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/mikankitten/articles/6344d71f4f4920#channel-vs-waitgroup">https://zenn.dev/mikankitten/articles/6344d71f4f4920#channel-vs-waitgroup</a></li>
@@ -37803,7 +37803,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 </ul>
 </blockquote>
 <h4 id="go_2">▼ Goには例外が無い<a class="headerlink" href="#go_2" title="Permanent link">&para;</a></h4>
-<p>例えばPHPでは、エラーをキャッチし、ソフトウェア開発者にわかる言葉に変換した例外としてスローする。</p>
+<p>例えばPHPでは、エラーをキャッチし、ソフトウェア開発者がわかる言葉へ変換した例外としてスローする。</p>
 <p>Goには例外クラスに相当するものが無い。</p>
 <p>その代わり、エラーそのものが <code>error</code> インターフェースに保持されており、これを <code>1</code> 個の値として扱える。</p>
 <p>後続の処理で発生した <code>error</code> インターフェースを、そのまま先行の処理に返却する。</p>
@@ -37965,7 +37965,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <h3 id="xerrors">xerrorsパッケージ<a class="headerlink" href="#xerrors" title="Permanent link">&para;</a></h3>
 <h4 id="xerrors_1">▼ xerrorsパッケージとは<a class="headerlink" href="#xerrors_1" title="Permanent link">&para;</a></h4>
 <p>標準のerrorsパッケージには、エラーにスタックトレース情報が含まれていない。</p>
-<p>xerrorsパッケージによって作成される <code>error</code> インターフェースには、<code>error</code> インターフェースが返却された行数がスタックトレースとして含まれている。</p>
+<p>xerrorsパッケージによって作成される <code>error</code> インターフェースには、返却された行数がスタックトレースとして含まれている。</p>
 <h4 id="new_1">▼ <code>New</code> 関数によるトレース付与<a class="headerlink" href="#new_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -38073,7 +38073,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <p><br></p>
 <h3 id="_62">事前/事後処理<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h3>
 <h4 id="_63">▼ 環境変数の出入力<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h4>
-<p>アプリケーション外 (例：ConfigMap、<code>.env</code> ファイルなど) で環境変数を管理している場合、これをテスト時に事前に出入力する必要がある。</p>
+<p>アプリケーション外 (例：ConfigMap、<code>.env</code> ファイルなど) で環境変数を管理している場合、これをテスト時は事前に出入力する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;os&quot;</span>
@@ -38150,7 +38150,7 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:48:36 JST">2026-02-17</span>
   </span>
 
     

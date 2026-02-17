@@ -36638,7 +36638,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h3 id="_7">設定<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="http">▼ 独自HTTPヘッダーを保持する<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>grpc-gatewayでは、デフォルトでは、HTTPヘッダーの独自ヘッダーをgRPCのメタデータに変換せずに破棄してしまう。</p>
+<p>grpc-gatewayでは、デフォルトでは、HTTPヘッダーの独自ヘッダーをgRPCのメタデータに変換せず破棄してしまう。</p>
 <p>特定の条件の時に <code>true</code> を返却する <code>match</code> 関数を定義し、これを <code>runtime.WithIncomingHeaderMatcher</code> 関数に渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -37280,7 +37280,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </blockquote>
 <p><br></p>
 <h3 id="spanfromcontext">SpanFromContext<a class="headerlink" href="#spanfromcontext" title="Permanent link">&para;</a></h3>
-<p>スパンIDから既存コンテキストからスパンを取得する。</p>
+<p>スパンIDから既存コンテキスト内のスパンを取得する。</p>
 <p>現在の関数でスパンを作成していない場合は、上の階層のスパンを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
@@ -37531,7 +37531,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <h4 id="clientinterceptor">▼ ClientInterceptor系関数<a class="headerlink" href="#clientinterceptor" title="Permanent link">&para;</a></h4>
 <p>gRPCリクエスト送信時のインターセプター処理として <code>otelgrpc</code> パッケージを設定する。</p>
 <p>抽出時のメタデータは、<code>mdOutgoingKey</code> キーと <code>rawMD{md: &lt;メタデータ&gt;}</code> で登録される。</p>
-<p>そのため、ユーザー定義のメタデータは <code>mdOutgoingKey</code> キーで登録できるOutgoingContext系関数で設定する必要がある。</p>
+<p>そのため、ユーザー定義のメタデータは <code>mdOutgoingKey</code> キーで登録できる OutgoingContext 系関数を使って設定する必要がある。</p>
 <p>執筆時点 (2024/03/31) でClientInterceptor系関数は非推奨であり、<code>NewClientHandler</code> 関数が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -37619,7 +37619,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <h4 id="serverinterceptor">▼ ServerInterceptor系関数<a class="headerlink" href="#serverinterceptor" title="Permanent link">&para;</a></h4>
 <p>gRPCリクエスト受信時のインターセプター処理として <code>otelgrpc</code> パッケージを設定する。</p>
 <p>抽出時のメタデータは <code>mdIncomingKey</code> キーと <code>rawMD{md: &lt;メタデータ&gt;}</code> で登録される。</p>
-<p>そのため、ユーザー定義のメタデータは <code>mdIncomingKey</code> キーで登録できるOutgoingContext系関数で設定する必要がある。</p>
+<p>そのため、ユーザー定義のメタデータは <code>mdIncomingKey</code> キーで登録できる IncomingContext 系関数を使って設定する必要がある。</p>
 <p>執筆時点 (2024/03/31) でServerInterceptor系関数は非推奨であり、<code>NewServerHandler</code> 関数が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">extract</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">propagators</span><span class="w"> </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TextMapPropagator</span><span class="p">)</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">{</span>
 
@@ -38376,7 +38376,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:48:36 JST">2026-02-17</span>
   </span>
 
     

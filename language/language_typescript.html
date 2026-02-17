@@ -35075,7 +35075,7 @@
 <h4 id="_19">▼ 型変数（ジェネリクス）<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>安全なany型ともいえる。</p>
 <p>型変数では、定義した時点で型が決まっていない。</p>
-<p>コール時に型変数に任意の型を推論で代入し、それに合わせた引数型と返却型の関数を定義できる。</p>
+<p>コール時に型変数へ任意の型を推論で代入し、それに合わせた引数型と返却型の関数を定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 最初の&lt;T&gt;    型変数を定義</span>
 <span class="c1">// (value: T)  引数型で型変数を使用</span>
 <span class="c1">// : T         返却値型で型変数を使用</span>
@@ -35233,7 +35233,7 @@
 <p>独自のErrorオブジェクトでは、必ずしも、Errorオブジェクトを継承する必要はない。</p>
 <p>例えば、任意のErrorオブジェクトと実行時間や開始時間をプロパティにもつ <code>FailedResult</code> クラスがある。</p>
 <p>独自のErrorオブジェクトのプロパティに実行時間や開始時間を入れればいいと考えるかもしれないが、外部ツールの任意のErrorオブジェクトには外からこれらを設定できないため、整合性が合わなくなる。</p>
-<p>その一方で、Errorオブジェクトのプロパティに実行時間や開始時間を入れれば、任意のErrorオブジェクトに対応できるようになる。</p>
+<p>一方で、Errorオブジェクトのプロパティへ実行時間や開始時間を入れれば、任意のErrorオブジェクトへ対応できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FailedResult</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// resultプロパティにはErrorオブジェクトが入る</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_result</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">;</span>
@@ -35380,7 +35380,7 @@
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">stringNotNull</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ただ、型ガードしてもよく、こちらのほうが明示的である。ただ、実装量が増えてしまうところがデメリットである。</p>
+<p>ただし、型ガードしてもよい。こちらのほうが明示的だが、実装量が増えてしまう点がデメリットである。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// string型またはnullを許容する</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">(</span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -35415,7 +35415,7 @@
 <h3 id="_32">複数の型<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <h4 id="_33">▼ プロパティで複数の型を許容<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
 <p><code>name</code> プロパティは <code>string</code> 型と <code>undefined</code> 型を許容している。</p>
-<p><code>undefined</code> 型のほうが網羅範囲が大きいため、実質 <code>undefined</code> 型として扱われる。</p>
+<p><code>undefined</code> 型のほうが網羅範囲は広い。結果的に <code>undefined</code> 型として扱われる。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">undefined</span><span class="p">;</span>
@@ -35426,7 +35426,7 @@
 </code></pre></div>
 <h4 id="_34">▼ オブジェクト全体で複数の型を用意<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <p><code>name</code> プロパティが <code>string</code> 型のUserと、<code>undefined</code> 型のUserWithoutNameを別々に定義している。</p>
-<p><code>undefined</code> 型のほうが網羅範囲が大きいため、実質 <code>undefined</code> 型として扱われる。</p>
+<p><code>undefined</code> 型のほうが網羅範囲は広い。結果的に <code>undefined</code> 型として扱われる。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
@@ -35669,7 +35669,7 @@
 <span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./logger&quot;</span><span class="p">;</span>
 <span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./errorHandler&quot;</span><span class="p">;</span>
 </code></pre></div>
-<p>アスタリスクで一括でエクスポートしてもよい。</p>
+<p>アスタリスクで一括エクスポートしてもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// utils/index.ts</span>
 <span class="k">export</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./logger&quot;</span><span class="p">;</span>
 <span class="k">export</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./errorHandler&quot;</span><span class="p">;</span>
@@ -35703,7 +35703,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:08:25 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:48:36 JST">2026-02-17</span>
   </span>
 
     

@@ -34171,7 +34171,7 @@
 
 <span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 宣言と代入</span>
 </code></pre></div>
-<p>これは、スコープの範囲内で宣言と代入を実行した変数で、宣言処理がスコープの最初に行ったことになるという仕様のためである。</p>
+<p>これは、スコープの範囲内で宣言と代入した変数で、宣言処理はスコープの最初で行ったことになるという仕様のためである。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 内部的には、最初に宣言処理したことになる</span>
 <span class="c1">// var foo</span>
 
@@ -34195,7 +34195,7 @@
 <span class="p">};</span>
 </code></pre></div>
 <h4 id="var_1">▼ <code>var</code> 使用時の対策<a class="headerlink" href="#var_1" title="Permanent link">&para;</a></h4>
-<p>意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初に実行するようにする。</p>
+<p>意図しない挙動を防ぐため、変数の宣言と代入はスコープの最初で行うようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// スコープの最初に宣言する。</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span><span class="w"> </span><span class="c1">// foo</span>
@@ -34354,7 +34354,7 @@
 <span class="x">// baz</span>
 </code></pre></div>
 <h4 id="foreach">▼ <code>forEach</code> 関数を使用した代替法<a class="headerlink" href="#foreach" title="Permanent link">&para;</a></h4>
-<p>反復処理のループを <code>continue</code> でスキップと同じ動作を、配列を処理する関数のコールバック関数で早期リターンで実現できる。</p>
+<p>反復処理のループを <code>continue</code> でスキップと同じ動作を、配列を処理する関数のコールバック関数の早期リターンで実現できる。</p>
 <p><code>continue</code> を使用するより、こちらのほうが良い。</p>
 <blockquote>
 <ul>
@@ -34407,7 +34407,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:08:25 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:51:16 JST">2026-02-17</span>
   </span>
 
     

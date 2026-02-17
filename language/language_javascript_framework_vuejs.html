@@ -34368,11 +34368,11 @@
 <h4 id="v-onchange">▼ <code>v-on:change="&lt;イベントハンドラ関数&gt;"</code><a class="headerlink" href="#v-onchange" title="Permanent link">&para;</a></h4>
 <p>Viewで <code>input</code> タグや <code>select</code> タグで、値の入力後にマウスフォーカスがタグから外れた時点で発火し、ViewModelでバインディングされたイベントハンドラ関数をコールする</p>
 <h4 id="v-oninput">▼ <code>v-on:input="&lt;イベントハンドラ関数&gt;"</code><a class="headerlink" href="#v-oninput" title="Permanent link">&para;</a></h4>
-<p>Viewで <code>input</code> タグで、一文字でも値が入力された時点で発火し、ViewModelバインディングされたイベントハンドラ関数をコールする。<code>v-on:change</code> とは、イベントが発火するタイミングが異なるため、共存できる。</p>
+<p>View の <code>input</code> タグでは、一文字でも値が入力された時点で発火し、ViewModelバインディングされたイベントハンドラ関数をコールする。<code>v-on:change</code> とは、イベントが発火するタイミングは異なるため、共存できる。</p>
 <p><br></p>
 <h3 id="_4">条件付きレンダリング<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="v-showv-if">▼ <code>v-show</code>/<code>v-if</code> とは<a class="headerlink" href="#v-showv-if" title="Permanent link">&para;</a></h4>
-<p>条件分岐を実行するタグであり、<code>v-show</code> または <code>v-if</code> を使用して、プロパティ名を指定する。親テンプレートから渡された <code>props</code> 内のプロパティ名が持つ値が <code>TRUE</code> の時に表示し、<code>FALSE</code> の時に非表示にする。もし頻繁に表示と非表示の切り替えを実行するようなら、<code>v-if</code> のほうが、描画コストが重たくなるリスクが高くなるため、<code>v-show</code> 推奨である。</p>
+<p>条件分岐するタグであり、<code>v-show</code> または <code>v-if</code> を使用して、プロパティ名を指定する。親テンプレートから渡す <code>props</code> 内のプロパティ名の値が <code>TRUE</code> の場合は表示し、<code>FALSE</code> のときは非表示にする。もし頻繁に表示と非表示の切り替えを実行するようなら、<code>v-if</code> のほうが、描画コストが重たくなるリスクは高くなるため、<code>v-show</code> 推奨である。</p>
 <table>
 <thead>
 <tr>
@@ -34530,7 +34530,7 @@
 <p>Vueインスタンスの作成前に実行される。</p>
 <p><strong>＊検証例＊</strong></p>
 <p>beforeCreateフックの動作を検証する。</p>
-<p><code>data</code> オプションは、Vueインスタンス作成後に有効になるため、beforeCreateフックでコールできず、<code>undefined</code> になる。</p>
+<p><code>data</code> オプションは、Vueインスタンス作成後に有効化される。beforeCreate フックでは参照できない。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>{{ name }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
@@ -34754,7 +34754,7 @@ undefined
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:08:25 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:48:36 JST">2026-02-17</span>
   </span>
 
     

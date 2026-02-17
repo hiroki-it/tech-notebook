@@ -33103,7 +33103,7 @@
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>結果的に、OS (制御プログラム？) に依存せずに、命令を実行できる (C言語) 。</p>
+<p>結果的に、OS (制御プログラム？) へ依存せず、命令できる (C言語) 。</p>
 </dd>
 </dl>
 <blockquote>
@@ -33122,7 +33122,7 @@
 <li>JVM内のクラスローダーはクラスファイル (<code>.class</code> ファイル) をJVM内に取得する。</li>
 <li>JVM内のJITコンパイラは実行中関数のみを機械語に翻訳する。</li>
 </ul>
-<p>アプリケーションをユーザーに公開する前に、本番環境と同じデータを使ってアプリケーションを実行して上記を済ませておくとよい (ウォームアップ) 。</p>
+<p>アプリケーションをユーザーに公開する前は、本番環境と同じデータを使ってアプリケーションを実行して上記を済ませておくとよい (ウォームアップ) 。</p>
 <p>これにより、パフォーマンスが高い状態でユーザーにアプリケーションを公開できる。</p>
 <p>ウォームアップを済ませたつもりでいて、実は完全に済んでいない場合に備えて、スロースタートな負荷分散も採用すると良い。</p>
 <p><img alt="java_compile" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png" /></p>
@@ -33154,7 +33154,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">メモリ消費<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>JavaのJVMではOOMキラーが起こることがある。</p>
+<p>JavaのJVMでは、OOMキラーが起こる場合もある。</p>
 <p>JVMは以下でメモリを消費するため、これら全てを合計したメモリサイズ以上を割り当てる必要がある。</p>
 <ul>
 <li>ヒープサイズ</li>
@@ -33200,7 +33200,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:48:36 JST">2026-02-17</span>
   </span>
 
     

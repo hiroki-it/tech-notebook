@@ -33967,7 +33967,7 @@
 <p><br></p>
 <h3 id="bindjson">BindJSON<a class="headerlink" href="#bindjson" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 処理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p><code>Content-Type</code> ヘッダーのMIMEタイプが <code>application/json</code> であることが前提である。</p>
+<p><code>Content-Type</code> ヘッダーのMIMEタイプは <code>application/json</code> であることが前提である。</p>
 <p>リクエストからJSON型データを取得し、構造体に紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Id</span><span class="w">   </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:&quot;id&quot;   binding:&quot;required&quot;`</span>
@@ -34145,8 +34145,8 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ 注意点<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>データ型を変換した値を <code>Set</code> 関数で保管しないようにすることによりある。</p>
-<p><code>Set</code> 関数後に <code>Get</code> 関数で取得される値は、元のデータ型に関係なくインターフェース型に変換されてしまう。</p>
+<p>データ型を変換した値を <code>Set</code> 関数で保管しないようにする。</p>
+<p><code>Set</code> 関数後に <code>Get</code> 関数で取得される値は、元のデータ型と関係なくインターフェース型に変換されてしまう。</p>
 <p>そのため、例えば、タイプID型として値を保管したとしても、<code>Get</code> 関数で得られたインターフェース型データをあらためて変換しないといけなくなってしまう。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middlewares</span>
@@ -34229,7 +34229,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="httphandler-httphandlerfunc-ginhandlerfunc">▼ <code>http.Handler</code> や <code>http.HandlerFunc</code> から <code>gin.HandlerFunc</code> への変換<a class="headerlink" href="#httphandler-httphandlerfunc-ginhandlerfunc" title="Permanent link">&para;</a></h4>
-<p><code>gin.HandlerFunc</code> 関数を引数にとるパッケージに <code>http.Handler</code> 関数や <code>http.HandlerFunc</code> 関数を渡すことができる。</p>
+<p><code>gin.HandlerFunc</code> を引数にとるパッケージには、<code>http.Handler</code> や <code>http.HandlerFunc</code> を渡せる。</p>
 <p><code>WrapH</code> 関数や <code>WrapF</code> 関数を使用すると、<code>http.Handler</code> や <code>http.HandlerFunc</code> から <code>gin.HandlerFunc</code> に変換できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -34265,7 +34265,7 @@
 </ul>
 </blockquote>
 <h4 id="ginhandlerfunc-httphandler">▼ <code>gin.HandlerFunc</code> から <code>http.Handler</code> への変換<a class="headerlink" href="#ginhandlerfunc-httphandler" title="Permanent link">&para;</a></h4>
-<p><code>http.Handler</code> 関数を引数にとるパッケージに <code>gin.HandlerFunc</code> 関数を渡すことは諦めたほうがいい。</p>
+<p><code>http.Handler</code> を引数にとるパッケージへ <code>gin.HandlerFunc</code> を渡すことは諦めたほうがよい。</p>
 <p><code>gin.HandlerFunc</code> 関数は <code>http.Handler</code> のラッパーである。</p>
 <p>そのため、<code>http.Handler</code> 関数から <code>gin.HandlerFunc</code> 関数への変換は簡単にできるが、その逆は <code>gin.HandlerFunc</code> 関数から値を取り出さないといけず、難しい。</p>
 <p><br></p>
@@ -34316,7 +34316,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:48:36 JST">2026-02-17</span>
   </span>
 
     
