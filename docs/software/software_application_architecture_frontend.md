@@ -109,9 +109,9 @@ Nuxt.jsとAtomic Designのレイヤーは以下の様に対応する。
 
 #### ▼ iframeタグ
 
-ページにコンポーネントに対応する `iframe` タグを組み込む。
+ページへコンポーネントに対応する `iframe` タグを組み込む。
 
-各 `iframe` タグが表示したいコンポーネントのURLを `src` タグで指定する
+各 `iframe` タグが表示したいコンポーネントのURLを `src` タグで指定する。
 
 > - https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaIframes
 
