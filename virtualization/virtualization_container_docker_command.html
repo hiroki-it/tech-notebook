@@ -34646,12 +34646,12 @@ $<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </s
 </blockquote>
 <h4 id="bake">▼ bake<a class="headerlink" href="#bake" title="Permanent link">&para;</a></h4>
 <p>複数のコンテナイメージを並列的にビルドする。</p>
-<p><code>--push</code> オプションで、ビルド後にコンテナレジストリにプッシュできる。</p>
+<p><code>--push</code> オプションを使用すると、ビルド後にコンテナレジストリへプッシュできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>bake<span class="w"> </span>--push
 </code></pre></div>
 <h4 id="build_1">▼ build<a class="headerlink" href="#build_1" title="Permanent link">&para;</a></h4>
 <p>コンテナイメージをビルドする。</p>
-<p><code>--push</code> オプションで、ビルド後にコンテナレジストリにプッシュできる。</p>
+<p><code>--push</code> オプションを使用すると、ビルド後にコンテナレジストリへプッシュできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--push
 </code></pre></div>
 <p><code>--platform</code> オプションで、任意のCPUアーキテクチャに対応するコンテナイメージをビルドできる。</p>
@@ -34937,7 +34937,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <span class="c1"># デタッチドモードによる起動。バックグラウンドで起動する。</span>
 $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
 </code></pre></div>
-<p>コンテナの起動時に、<code>bash</code> プロセスを実行すると以下のようなエラーが出ることがある。</p>
+<p>コンテナの起動時に <code>bash</code> プロセスを実行すると、以下のようなエラーが発生する。</p>
 <p>その場合は、<code>shell</code> プロセスを実行する。</p>
 <div class="highlight"><pre><span></span><code>docker:<span class="w"> </span>Error<span class="w"> </span>response<span class="w"> </span>from<span class="w"> </span>daemon:<span class="w"> </span>OCI<span class="w"> </span>runtime<span class="w"> </span>create<span class="w"> </span>failed:<span class="w"> </span>container_linux.go:370:<span class="w"> </span>starting<span class="w"> </span>container<span class="w"> </span>process<span class="w"> </span>caused:<span class="w"> </span>exec:<span class="w"> </span><span class="s2">&quot;/bin/bash&quot;</span>:<span class="w"> </span>stat<span class="w"> </span>/bin/bash:<span class="w"> </span>no<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory:<span class="w"> </span>unknown.
 </code></pre></div>
@@ -35086,7 +35086,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 18:50:03 JST">2026-02-17</span>
   </span>
 
     
