@@ -94,7 +94,9 @@ $ git remote set-url --push upstream no_push
 
 公式リポジトリ基点ブランチからフォークリポジトリに差分を取り込む。
 
-この時、マージコミットを作らないようにするに、`git rebase` コマンドを使用する。
+この時、マージコミットを作らないようにする。
+
+そのため、`git rebase` コマンドを使用する。
 
 ```bash
 $ git fetch upstream

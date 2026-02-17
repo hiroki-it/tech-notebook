@@ -15,8 +15,10 @@ description: Dagger＠CIツールの知見を記録しています。
 
 ## Daggerとは
 
-DaggerでCI/CDパイプラインの設定ファイルを実装し、これをCIツール上で実行する。
+DaggerでCI/CDパイプラインの設定ファイルを実装し、CIツール上で実行する。
 
-CIツール上ではDaggerをインストールするのみでよく、CIツールに依存せずにCI/CDパイプラインを実装できる。
+CIツール上ではDaggerをインストールするのみでよい。
+
+これにより、CIツールへ依存せずにCI/CDパイプラインを実装できる。
 
 > - https://zenn.dev/ymtdzzz/articles/43488f08209e8b

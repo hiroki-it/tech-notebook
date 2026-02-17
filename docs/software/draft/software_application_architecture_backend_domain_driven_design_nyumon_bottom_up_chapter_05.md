@@ -213,7 +213,7 @@ export const save = async (
 
 #### ▼ よろしくない実装（リポジトリにUpdate〇〇をいっぱいかく）
 
-Userオブジェクトに実装するべき振る舞いのビジネスロジックを、永続化の役割をもつRepositoryに実装することになってしまう
+Userオブジェクトに実装するべき振る舞いのビジネスロジックを、永続化の役割を持つRepositoryへ実装することになってしまう。
 
 ```typescript
 type UserRepositoryInterface = {
