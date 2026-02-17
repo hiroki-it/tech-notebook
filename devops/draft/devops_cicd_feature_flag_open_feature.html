@@ -10,7 +10,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="OpenFeature＠フィーチャーフラグの知見を記録しています。">
+        <meta name="description" content="OpenFeature＠機能フラグの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -29,7 +29,7 @@
     
     
       
-        <title>【IT技術の知見】OpenFeature＠フィーチャーフラグ - 俺の技術ノート</title>
+        <title>【IT技術の知見】OpenFeature＠機能フラグ - 俺の技術ノート</title>
       
     
     
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】OpenFeature＠フィーチャーフラグ
+              【IT技術の知見】OpenFeature＠機能フラグ
             
           </span>
         </div>
@@ -32669,13 +32669,69 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-go" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. Go
+        01. 機能フラグクライアント
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="01. 機能フラグクライアント">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Go
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02. 機能フラグサービス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 機能フラグサービス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unleash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        unleash
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flagd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        flagd
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -32707,7 +32763,7 @@
   
 
 
-<h1 id="openfeature">OpenFeature＠フィーチャーフラグ<a class="headerlink" href="#openfeature" title="Permanent link">&para;</a></h1>
+<h1 id="openfeature">OpenFeature＠機能フラグ<a class="headerlink" href="#openfeature" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -32716,7 +32772,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-go">01. Go<a class="headerlink" href="#01-go" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. 機能フラグクライアント<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h3 id="go">Go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -32731,7 +32788,7 @@
 
 <span class="w">    </span><span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">openfeature</span><span class="p">.</span><span class="nx">NewClient</span><span class="p">(</span><span class="s">&quot;app&quot;</span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// フィーチャーフラグ返信プロキシから、フラグのboolean値を取得する</span>
+<span class="w">    </span><span class="c1">// 機能フラグサービスから、フラグのboolean値を取得する</span>
 <span class="w">    </span><span class="nx">v2Enabled</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">BooleanValue</span><span class="p">(</span>
 <span class="w">        </span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span>
 <span class="w">        </span><span class="s">&quot;v2_enabled&quot;</span><span class="p">,</span>
@@ -32739,7 +32796,7 @@
 <span class="w">        </span><span class="nx">openfeature</span><span class="p">.</span><span class="nx">EvaluationContext</span><span class="p">{},</span>
 <span class="w">    </span><span class="p">)</span>
 
-<span class="w">    </span><span class="c1">// フィーチャーフラグが有効な場合</span>
+<span class="w">    </span><span class="c1">// 機能フラグが有効な場合</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">v2Enabled</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;v2 is enabled&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
@@ -32749,6 +32806,20 @@
 <ul>
 <li><a href="https://openfeature.dev/docs/reference/technologies/server/go">https://openfeature.dev/docs/reference/technologies/server/go</a></li>
 <li><a href="https://gofeatureflag.org/docs/relay_proxy">https://gofeatureflag.org/docs/relay_proxy</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02">02. 機能フラグサービス<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="unleash">unleash<a class="headerlink" href="#unleash" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://docs.getunleash.io/get-started/unleash-overview">https://docs.getunleash.io/get-started/unleash-overview</a></li>
+</ul>
+</blockquote>
+<h3 id="flagd">flagd<a class="headerlink" href="#flagd" title="Permanent link">&para;</a></h3>
+<blockquote>
+<ul>
+<li><a href="https://flagd.dev/architecture/#rpc-evaluation">https://flagd.dev/architecture/#rpc-evaluation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -32772,7 +32843,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年9月7日 23:30:23 JST">2024-09-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 21:21:34 JST">2026-02-17</span>
   </span>
 
     
