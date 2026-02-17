@@ -94,7 +94,7 @@ export const createFullName = (
   return Object.freeze({firstName: first, lastName: last});
 };
 
-// 等価性検証
+// 等価性バリデーション
 export const equalsFullName = (a: FullName, b: FullName): boolean => {
   return a.firstName === b.firstName && a.lastName === b.lastName;
 };
@@ -136,7 +136,7 @@ export const createFullName = (
   return Object.freeze({firstName: first, lastName: last});
 };
 
-// 等価性検証
+// 等価性バリデーション
 export const equalsFullName = (a: FullName, b: FullName): boolean => {
   return a.firstName === b.firstName && a.lastName === b.lastName;
 };
@@ -192,7 +192,7 @@ export const getDisplayName = (fullName: FullName): string => {
   return `${fullName.lastName} ${fullName.firstName}`;
 };
 
-// 等価性検証
+// 等価性バリデーション
 export const equalsFullName = (a: FullName, b: FullName): boolean => {
   return a.firstName === b.firstName && a.lastName === b.lastName;
 };
@@ -257,7 +257,7 @@ export const createFullName = (
   return Object.freeze({firstName: first, lastName: last});
 };
 
-// 等価性検証
+// 等価性バリデーション
 export const equalsFullName = (a: FullName, b: FullName): boolean => {
   return a.firstName === b.firstName && a.lastName === b.lastName;
 };

@@ -59,9 +59,9 @@ const createUser = (id: UserId, name: string, email: string): User | Error => {
 
 <br>
 
-### IDで等価性検証できる
+### IDで等価性バリデーションできる
 
-値オブジェクトとは異なり、IDで等価性検証ができる。
+値オブジェクトとは異なり、IDで等価性バリデーションができる。
 
 「〇はすでに存在しています」のエラーで役立つ。
 
