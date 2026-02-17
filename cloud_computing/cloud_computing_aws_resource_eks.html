@@ -36217,7 +36217,7 @@
 <h4 id="_11">▼ 概要<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>プリンシパルAWS IAMロールとアクセスエントリーを使用することにより、Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の認可スコープを制御する。</p>
 <p>プリンシパルAWS IAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、より簡単にセットアップできる。</p>
-<p>プリンシパルAWS IAMロールに紐づくPodがAWS EKSに接続するときに、アクセスエントリーがこれを中継する。</p>
+<p>プリンシパルAWS IAMロールに紐づくPodがAWS EKSへ接続するとき、アクセスエントリーがこれを中継する。</p>
 <p>Kubernetesリソースの認可スコープをIRSAで制御し、この仕組みの中で、アクセスエントリーはアクセスエントリーポリシーをAWS IAMロールに動的に紐づける。</p>
 <h4 id="kubectl-argocd">▼ <code>kubectl</code> クライアント (例：開発者、ArgoCDなど)<a class="headerlink" href="#kubectl-argocd" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># AWS EKS Clusterのkubectlクライアントとなる別のAWS EKS Cluster</span>
@@ -36762,7 +36762,7 @@
 </code></pre></div>
 <h4 id="aws-vpcaws">▼ AWS VPC外の他のAWSリソースへのリクエスト<a class="headerlink" href="#aws-vpcaws" title="Permanent link">&para;</a></h4>
 <p>Podをプライベートサブネットに配置した場合、パブリックネットワークやAWS VPC外にあるAWSリソース (AWS ECR、AWS S3、AWS Systems Manager、AWS CloudWatch Logs、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAWS VPCエンドポイントを配置する必要がある。</p>
-<p>この時、クライアント側Podの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスになる。</p>
+<p>この時、クライアント側Podの送信元IPアドレスは、AWS NAT GatewayまたはAWS VPCエンドポイントに紐づくIPアドレスとなる。</p>
 <p>以下のようなエラーでPodが起動しない場合、Podが何らかの理由でコンテナイメージをプルできない可能性がある。</p>
 <p>また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。</p>
 <div class="highlight"><pre><span></span><code>Pod<span class="w"> </span>provisioning<span class="w"> </span>timed<span class="w"> </span>out<span class="w"> </span><span class="o">(</span>will<span class="w"> </span>retry<span class="o">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>pod
@@ -37012,7 +37012,7 @@
 </blockquote>
 <h4 id="node_6">▼ Nodeグループの定期アクション<a class="headerlink" href="#node_6" title="Permanent link">&para;</a></h4>
 <p>同じNodeグループのAWS EC2ワーカーNodeの定期アクションを設定する。</p>
-<p>AWS EKSのテスト環境の請求料金を節約するために、昼間に通常の個数にスケールアウトし、夜間に <code>0</code> 個にスケールインするようにすれば、ワーカーNodeを夜間だけ停止させられる。</p>
+<p>AWS EKSのテスト環境の請求料金を節約するため、昼間に通常の個数へスケールアウトし、夜間に <code>0</code> 個へスケールインするようにすれば、ワーカーNodeを夜間だけ停止させられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html</a></li>
@@ -37048,7 +37048,7 @@
 <h3 id="node_8">Node数の変更<a class="headerlink" href="#node_8" title="Permanent link">&para;</a></h3>
 <p>Nodeグループ (マネージドNodeグループ、セルフマネージドNodeグループ) では、希望数を変更することで現在のNode数を変更できる。</p>
 <p>設定後、AWS Auto Scalingグループは希望数で設定したNode数を維持する (Karpenterのドキュメントでは、これを『静的』と表現している)。</p>
-<p>希望数の他に最大数と最小数を設定できるが、これらは実際は機能しない。</p>
+<p>希望数の他にも最大数と最小数を設定できるが、これらは実際には機能しない。</p>
 <p>もし負荷の状況に応じてスケーリングしたい場合、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenterなど) を使用しないと、最大数と最小数の設定に応じたスケーリングを実施してくれない。</p>
 <blockquote>
 <ul>
@@ -37372,7 +37372,7 @@
 <p>注意点として、この時間が長すぎると、ワーカーNodeの停止の全体時間が長くなるため、結果的にローリングアップグレードでNodeの所要時間も長くなってしまう。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ワーカーNodeの停止を <code>6</code> 分だけ待機し、その後に停止を始める。</p>
-<p><code>6</code> 分のうち後半 <code>2</code> 分を重要なPodのために停止に割り当てる。</p>
+<p><code>6</code> 分のうち後半 <code>2</code> 分を、重要なPodの停止に割り当てる。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># ユーザーデータファイル</span>
@@ -37410,7 +37410,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <li><a href="https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown">https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown</a></li>
 </ul>
 </blockquote>
-<p><code>Failed</code> ステータスなPodはそのままでは削除できない。</p>
+<p><code>Failed</code> ステータスのPodは、そのままでは削除できない。</p>
 <p>そのため、<code>Failed</code> ステータスなPodを自動で削除してくれるツール (例：descheduler) や、以下のような削除コマンドを持つCronJobを作成するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>ns<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>namespace<span class="w"> </span>-o<span class="w"> </span>name<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span>/<span class="w"> </span>-f<span class="w"> </span><span class="m">2</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$ns</span>
@@ -37828,7 +37828,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:08:25 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:02:15 JST">2026-02-17</span>
   </span>
 
     

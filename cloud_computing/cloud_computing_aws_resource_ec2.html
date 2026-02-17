@@ -35255,7 +35255,7 @@
 <p><br></p>
 <h3 id="_4">ダウンタイム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ダウンタイムの発生条件<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>以下の条件の時にAWS EC2にダウンタイムが発生する。</p>
+<p>以下の条件の時、AWS EC2にダウンタイムが発生する。</p>
 <p>AWS EC2を冗長化している場合は、ユーザーに影響を与えずに対処できる。</p>
 <p>ダウンタイムが発生するほうのインスタンスを事前にALBのターゲットグループから解除しておき、停止したインスタンスが起動した後に、ターゲットグループに再登録する。</p>
 <table>
@@ -35538,7 +35538,7 @@
 <p>加えて、このブロックデバイスが、マウントポイントになるディレクトリ紐づいている。</p>
 <p>つまりAWS EC2が作成されると、ボリューム内に保管したファイルは、ブロックデバイスを経由して、マウントポイントのディレクトリ内に作成される。</p>
 <p>また反対に、マウント先ディレクトリ内に保管したファイルは、ルートデバイスボリューム内に保管される。</p>
-<p>複数のルートボリュームを紐付ける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリにマウントするようにしておく。</p>
+<p>複数のルートボリュームを紐付ける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリへマウントするようにしておく。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html</a></li>
@@ -35624,7 +35624,7 @@
 <p><br></p>
 <h3 id="_13">キーペア<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ フィンガープリント値<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>ローカルマシンに配置されている秘密鍵が、該当するAWS EC2に配置されている公開鍵とペアなのか否か、フィンガープリント値を照合して確認する方法</p>
+<p>ローカルマシンに配置されている秘密鍵が、該当するAWS EC2に配置されている公開鍵とペアなのか否かを、フィンガープリント値を照合して確認する方法</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>openssl<span class="w"> </span>pkcs8<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-in<span class="w"> </span>&lt;秘密鍵名&gt;.pem<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-inform<span class="w"> </span>PEM<span class="w"> </span><span class="se">\</span>
@@ -35639,7 +35639,7 @@
 <p>AWS EC2の起動時に任意のコマンドを実行できるようにする。</p>
 <h4 id="_17">▼ 実行タイミング<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>ユーザーデータの実行タイミングは、<code>cloud-config.service</code> ファイルで設定している。</p>
-<p>ネットワークがオンラインになった後に実行する。</p>
+<p>ネットワークがオンラインになった後、実行する。</p>
 <p>つまり、AWS EC2のプロセスに関する設定 (systemdなど) の後に、ユーザーデータを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># /usr/lib/systemd/system/cloud-config.serviceファイル</span>
 
@@ -35703,7 +35703,7 @@
 <p><br></p>
 <h3 id="aws-ami_2">AWS AMIの作成<a class="headerlink" href="#aws-ami_2" title="Permanent link">&para;</a></h3>
 <p>AMIの作成時に再起動が基本的に必要になる。</p>
-<p>これを無効にできるが、データが欠損する恐れがある。</p>
+<p>これは無効にできる。ただし、データが欠損する恐れもある。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/mechamogera/items/60a23cf5a52f8ebd8417">https://qiita.com/mechamogera/items/60a23cf5a52f8ebd8417</a></li>
@@ -36110,7 +36110,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </blockquote>
 <h4 id="_27">▼ デタッチ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <p>起動中のAWS EC2からボリュームをアタッチする場合、<code>unmount</code> コマンドを実行する。</p>
-<p><code>target is busy</code> というエラーが出る場合があり、プロセスを停止する必要があるため、手順が煩雑になる。</p>
+<p><code>target is busy</code> というエラーにより失敗する場合がある。その際はプロセスを停止しなければならない。結果として手順は複雑になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>umount<span class="w"> </span>-d<span class="w"> </span>/dev/nvme1n1
 </code></pre></div>
 <p>代わりに、AWS EC2を停止したうえでボリュームをデタッチすると、コマンドを手動で実行する必要がなく簡単である。</p>
@@ -36420,7 +36420,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:02:15 JST">2026-02-17</span>
   </span>
 
     

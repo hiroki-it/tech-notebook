@@ -34481,7 +34481,7 @@
 <p><br></p>
 <h3 id="aws-ecs_1">AWS ECSサービス<a class="headerlink" href="#aws-ecs_1" title="Permanent link">&para;</a></h3>
 <p>AWS ECSタスクの管理グループ単位のこと。</p>
-<p>AWS ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否の管理を実行する。</p>
+<p>AWS ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否を管理する。</p>
 <p>マイクロサービスは、AWS ECSサービスを単位として作成する。</p>
 <blockquote>
 <ul>
@@ -34596,7 +34596,7 @@
 <p>タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。</p>
 <p>Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる (推測ではあるが、FargateとしてのEC2にlocalhostインターフェースが紐付けられる) 。</p>
 <p>これにより、コンテナ間でパケットを送受信するとき (例：NginxコンテナからPHP-FPMコンテナへのルーティング) は、通信元コンテナにて、通信先のアドレスを『localhost (<code>127.0.0.1</code>) 』で指定すれば良い。</p>
-<p>また、awsvpcモードの独自の仕組みとして、同じAWS ECSタスク内であれば、互いにコンテナポートを開放せずとも、通信を待ち受けるポートを指定するのみで、コンテナ間でパケットを送受信できる。</p>
+<p>また、awsvpcモードの独自の仕組みとして、同じAWS ECSタスク内であれば、互いにコンテナポートを開放せずともパケットを送受信できる。通信を待ち受けるポートを指定するだけでよい。</p>
 <p>例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが <code>9000</code> 番ポートでリクエストを受信し、加えてコンテナが <code>9000</code> 番ポートを開放する必要がある。</p>
 <p>しかし、awsvpcモードではコンテナポートを開放する必要はない。</p>
 <p><img alt="network-mode_awsvpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_awsvpc.png" /></p>
@@ -35479,7 +35479,7 @@ aws<span class="w"> </span>ecs<span class="w"> </span>execute-command<span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:08:25 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:02:15 JST">2026-02-17</span>
   </span>
 
     
