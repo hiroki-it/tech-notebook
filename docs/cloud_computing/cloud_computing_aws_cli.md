@@ -21,7 +21,7 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 資格情報を設定する。
 
-OSによって、資格情報ファイルが配置される場所が異なる。
+OSによって、資格情報ファイルの配置場所が異なる。
 
 ```bash
 $ aws configure
@@ -465,7 +465,7 @@ $ aws cloudwatch set-alarm-state \
 
 全てのロググループに対して、一日当たりの収集サイズを `start-time` から `end-time` の間で取得する。
 
-`--dimensions` オプションを使用して、特定のディメンション (ロググループ) に対して集計を実行もできる (ただし、やってみたけどうまくいかず) 。
+`--dimensions` オプションを使用して、特定のディメンション (ロググループ) を対象に集計できる (ただし、やってみたけどうまくいかず) 。
 
 ```bash
 $ aws cloudwatch get-metric-statistics \
@@ -503,7 +503,7 @@ $ aws deploy register-on-premises-instance \
 
 AWS EC2の情報を取得する。
 
-ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS EC2のインスタンスIDを取得したい場合に役立つ。
+ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続する場合、AWS EC2のインスタンスIDを取得したいときに役立つ。
 
 ```bash
 $ aws ec2 describe-instances \
@@ -588,7 +588,7 @@ $ aws resourcegroupstaggingapi get-resources \
 
 AWS EC2の情報を取得する。
 
-ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS Auroraのクラスター名を取得したい場合に役立つ。
+ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続する場合、AWS Auroraのクラスター名を取得したいときに役立つ。
 
 ```bash
 $ aws rds describe-db-clusters \
@@ -711,7 +711,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 特定のSecretに格納されている文字列を取得する。
 
-ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続するために、AWS Auroraのユーザー名とパスワードを取得したい場合に役立つ。
+ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続する場合、AWS Auroraのユーザー名とパスワードを取得したいときに役立つ。
 
 注意点として、出力した文字列はダブルクオーテーションで囲われている。
 
@@ -785,7 +785,7 @@ $ aws ssm create-activation \
     --registration-limit 2
 ```
 
-発行したIDとコードは、`amazon-ssm-agent` コマンドの実行時に必要になる。
+発行したIDとコードは、`amazon-ssm-agent` コマンドの実行時に必要となる。
 
 ```bash
 $ amazon-ssm-agent \

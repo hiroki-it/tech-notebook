@@ -27,7 +27,7 @@ description: クラス＠PHPの知見を記録しています。
 
 #### ▼ Associationとは
 
-クラスＡがクラスＢを状態として保持する関係性のこと。
+クラスAがクラスBを状態として保持する関係性のこと。
 
 引数型/返却値型として使用する『依存』とは区別する。
 
@@ -330,7 +330,7 @@ class GoodsWithTax extends Goods
 
 `(2)`
 
-: 営業部・開発部・総務部があり、それぞれが異なる仕事を実行する
+: 営業部・開発部・総務部があり、それぞれが異なる仕事を担当する
 
 `(3)`
 
@@ -625,7 +625,7 @@ class SubFoo extends Foo
 
 ![Trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Trait.png)
 
-再利用したい関数や状態を部品化し、利用したいときにクラスに取り込む。
+再利用したい関数や状態を部品化し、必要に応じてクラスに取り込む。
 
 Traitを使用するときは、クラス内でTraitをuse宣言する。
 
@@ -914,7 +914,7 @@ class Bar
 
 ![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png)
 
-クラスＡがクラスＢを引数型/返却値型として使用する関係性のこと。
+クラスAがクラスBを引数型/返却値型として使用する関係性のこと。
 
 > - https://stackoverflow.com/questions/1230889/difference-between-association-and-dependency
 > - https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection
@@ -1232,9 +1232,9 @@ $sample = new Sample($container);
 
 #### ▼ DIPを満たさない実装の場合 (従来)
 
-より上位レイヤーのコール処理を配置し、より下位レイヤーでコールされる側の定義を実行する。
+より上位レイヤーにコール処理を配置し、下位レイヤーでコールされる側を定義する。
 
-これによって、上位レイヤーのクラスが、下位レイヤーのクラスに依存する関係性になる。
+これによって、上位レイヤーのクラスは下位レイヤーのクラスへ依存する関係性になる。
 
 ![DIPに基づかない設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づかない設計の場合.png)
 
@@ -1248,9 +1248,9 @@ $sample = new Sample($container);
 
 原則２でいう依存は、引数型/返却値型として使用する関係性の文脈でいう『依存』ではないことに注意する。
 
-また、実装クラスをインターフェースをエイリアスとしてコールでききるようにすると、実装クラスに依存するレイヤーは代わりにインターフェースに依存することになる。
+また、実装クラスをインターフェースのエイリアスとしてコールできるようにすると、実装クラスに依存するレイヤーは代わりにインターフェースへ依存することになる。
 
-よって、全てのレイヤーがインターフェースに依存するようになる (原則１)。
+よって、全てのレイヤーがインターフェースに依存する (原則1)。
 
 > - https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
 
@@ -1272,7 +1272,7 @@ $sample = new Sample($container);
 
 `(4)`
 
-: ２と３により、インフラストラクチャ層とユースケース層の両方が、ドメイン層のインターフェース (抽象クラス) に依存することになる。これは、原則１を満たす。
+: 2と3により、インフラストラクチャ層とユースケース層の両方は、ドメイン層のインターフェース (抽象クラス) に依存する。これは原則1を満たす。
 
 ![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
 
@@ -1474,7 +1474,7 @@ LCOM4は、クラスの各関数内で、保持する全てのデータにアク
 
 各モジュールは、結合度が低く、凝集度が高いほど良い。
 
-例として、以下の画像では、道具モジュールを、キッチン引き出しモジュールとガレージ工具箱モジュールに分け、各クラスの結合度を低く、凝集度を高くするように対応している。
+例として、以下の画像では、道具モジュールをキッチン引き出しモジュールとガレージ工具箱モジュールに分けている。これにより、各クラスの結合度を低くし、凝集度を高くできる。
 
 ![低結合度高凝集度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/低結合度高凝集度.png)
 

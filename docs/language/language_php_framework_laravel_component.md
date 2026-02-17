@@ -288,7 +288,7 @@ return [
 
 #### ▼ 複数のエンドポイント
 
-複数のエンドポイントがある場合、書き込み処理と読み出し処理をそれ専用のエンドポイントに向けるようにする。
+複数のエンドポイントがある場合、書き込み処理と読み出し処理は専用のエンドポイントに向ける。
 
 例えば、AWS RDSを採用している場合、プライマリーインスタンスに向け、また読み出し処理をリードレプリカに向けることにより、負荷を分散できる。
 
@@ -303,7 +303,7 @@ DB_HOST_READ=<リードレプリカのエンドポイント>
 
 注意点として、スティッキーセッションを使用するために `sticky` キーを有効化しておくと良い。
 
-プライマリーインスタンスにおけるデータ更新がリードレプリカに同期される前に、リードレプリカに対して読み出し処理が起こるような場合、これを防げる。
+プライマリーインスタンスのデータ更新がリードレプリカへ同期される前に読み出し処理が起こる場合でも、これを防げる。
 
 ```php
 <?php
@@ -416,11 +416,11 @@ event(new UserCreatedEvent($user));
 
 Eloquentモデルでは、DBアクセスに関する関数の実行開始や終了の処理タイミングをイベントクラスに紐付けられる。
 
-紐付けるために、プロパティで定義するか、あるいは各タイミングで実行される無名関数でイベントを発生させる必要がある。
+紐付けは、プロパティで定義するか、各タイミングで実行される無名関数を使ってイベントを発生させる必要がある。
 
 **＊実装例＊**
 
-プロパティにて、`CREATE` 処理と `DELETE` 処理に独自イベントクラスに紐付ける。
+プロパティにて、`CREATE` 処理と `DELETE` 処理を独自イベントクラスに紐付ける。
 
 ```php
 <?php
@@ -450,7 +450,7 @@ class User extends Authenticatable
 
 **＊実装例＊**
 
-無名関数にて、`CREATE` 処理に独自イベントクラスに紐付ける。
+無名関数にて、`CREATE` 処理を独自イベントクラスに紐付ける。
 
 ```php
 <?php
@@ -649,7 +649,7 @@ class UpdatedModelEvent
 
 Model更新イベントが発火してコールするリスナーを定義する。
 
-`create_by` カラムまたは `updated_by` カラムを指定した更新者名に更新可能にする。
+`create_by` カラムまたは `updated_by` カラムに、指定した更新者名を設定できるようにする。
 
 注意点として、イベントとリスナーの対応関係は、EventServiceProviderで登録する。
 
@@ -931,7 +931,7 @@ $foo->method();
 
 ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition (合成) 』の依存関係を生じさせてしまう。
 
-例えば、Facadeの中でも、`Route` のような、代替するよりもFacadeを使用したほうが断然便利である部分以外は、使用しないほうが良い。
+例えば、Facadeの中でも `Route` のように、代替するよりFacadeを使ったほうが便利な部分以外は、使用しないほうが良い。
 
 **＊実装例＊**
 
@@ -974,7 +974,7 @@ $result = Foo::method();
 
 #### ▼ Facadeを使用したほうが良い場合
 
-Facadeがトレイトの代わりになる場合、Facadeを使用することにより、責務がドメインモデルに集中せずにすむ。
+Facadeがトレイトの代わりになる場合、Facadeを使用すると責務がドメインモデルへ集中せずに済む。
 
 **＊例＊**
 
@@ -1068,7 +1068,7 @@ Active Recordのロジックを持たないため、Repositoryパターンのロ
 
 加えて `transaction` 関数の返り値を返すようにすれば、無名関数の返り値をそのまま使用できる。
 
-補足として、トランザクション処理は必須ではなく、使用するとアプリケーションがDBを操作するために要する時間が増えるため、使用しなくても良い。
+補足として、トランザクション処理は必須でない。使用するとDB操作に要する時間が増えるため、不要なら使用しなくても構わない。
 
 参考リンクによると、MongoDBに対してトランザクション処理を実行する/行わない場合を比較して、処理時間が17%弱長くなったとのこと。
 
@@ -2389,7 +2389,7 @@ return [
 ];
 ```
 
-注意点として、言語設定を行わない場合、デフォルトでは `/resources/lang/en/validation.php` ファイルをバリデーションメッセージとして参照するため、`app.php` ファイルで言語を変更することと、日本語翻訳 `validation.php` ファイルが必要である。
+注意点として、言語設定をしない場合、デフォルトでは `/resources/lang/en/validation.php` をバリデーションメッセージとして参照する。そのため、`app.php` で言語を変更することと、日本語翻訳 `validation.php` が必要である。
 
 ```php
 <?php
@@ -3024,7 +3024,7 @@ class FooController extends Controller
 
 ### バリデーション
 
-Requestではなく、FormRequestを使用したほうがバリデーションがおすすめである。
+Requestではなく、FormRequestを使用したほうがバリデーションにおすすめである。
 
 ```php
 namespace App\Http\Controllers;
@@ -4005,7 +4005,7 @@ Notification::send($users, new FooNotification());
 
 #### ▼ オンデマンド通知
 
-オンデマンド通知を使用すると、通知対象となるモデルがNotificableトレイトに依存せずに通知を実行できる。
+オンデマンド通知を使用すると、通知対象となるモデルはNotificableトレイトに依存せず、通知できる。
 
 ```php
 <?php
@@ -4033,7 +4033,7 @@ EloquentモデルをJSON型データとしてレスポンスするときに、�
 
 単一のEloquentモデルを配列に変換する。
 
-Resourceクラスの `toArray` 関数にて、`this` 変数は自身ではなく、Resourceクラス名につくEloquentモデル名になる。
+Resourceクラスの `toArray` 関数では、`this` 変数は自身ではない。Resourceクラス名につくEloquentモデル名を指す。
 
 また、`this` 変数からゲッターを経由せずに直接的にプロパティにアクセスできる。
 
@@ -4272,7 +4272,7 @@ Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグ
 
 > - https://readouble.com/laravel/8.x/ja/csrf.html
 
-Bladeを使用しない場合、セッション開始時のレスポンスの `Set-Cookie` にCSRFトークンが割り当てられるため、これを取り出して `X-CSRF-TOKEN` ヘッダーや `X-XSRF-TOKEN` ヘッダーに割り当てるようにする。リクエストのたびに異なるCSRFトークンがレスポンスされ、これを次のリクエストで使用する必要がある。
+Bladeを使用しない場合、セッション開始時のレスポンスの `Set-Cookie` にCSRFトークンが割り当てられるため、これを取り出して `X-CSRF-TOKEN` ヘッダーや `X-XSRF-TOKEN` ヘッダーに割り当てる。CSRFトークンはリクエストのたびに変わり、次のリクエストで使用する必要がある。
 
 > - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token
 > - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
@@ -4604,7 +4604,7 @@ AppSeriveProviderにて、ServiceContainerにクラスをバインドするこ�
 
 これにより、関数の引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。
 
-Laravelでは、クラスはServiceContainerに自動的にバインドされており、引数でクラスを指定するのみでインスタンスを作成するため、以下の実装を実行する必要はない。
+Laravelでは、クラスはServiceContainerに自動的にバインドされている。そのため、引数でクラスを指定するだけでインスタンスを作成でき、以下の実装は不要である。
 
 ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
 
@@ -4775,7 +4775,7 @@ class FoosServiceProvider extends ServiceProvider
 
 #### ▼ インターフェースをバインドし、実装クラスをリゾルブ
 
-Laravelではクラスが自動的にバインドされ、これのインスタンスがリゾルブされる、しかし、バインドされたクラスとは別のクラスのインスタンスをリゾルブしたい場合は、ServiceProviderにそれを定義すれば、自動的なバインドを上書きできる。
+Laravelではクラスが自動的にバインドされ、そのインスタンスがリゾルブされる。ただし、バインド済みのクラスとは別のクラスをリゾルブしたい場合は、ServiceProviderに定義すれば、自動的なバインドを上書きできる。
 
 これを使用して、インターフェースをバインドし、実装クラスをリゾルブ可能にする。
 
@@ -5043,7 +5043,7 @@ class RouteServiceProvider extends ServiceProvider
 
 `1` 分間当たりに許容するリクエスト数とその制限名を `configureRateLimiting` 関数で定義する。
 
-加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエストの上限数を適用させる、もし制限を超えた場合、`configureRateLimiting` 関数によって、`429` ステータスでレスポンスが返信される。
+加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト上限数を適用させる。もし制限を超えた場合、`configureRateLimiting` 関数によって `429` ステータスでレスポンスが返信される。
 
 > - https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
 
@@ -5258,7 +5258,7 @@ class FooController extends Controller
 
 これにより、Storeクラスの `start` 関数、`loadSession` 関数、`readFromHandler` 関数が実行され、`SessionHandlerInterface` の実装クラスの `read` 関数が実行される。
 
-`read` 関数は、`storage/framework/sessions` にあるセッションデータに書き込まれたセッションを読み出し、`attribute` プロパティに格納する。
+`read` 関数は、`storage/framework/sessions` にあるセッションデータからセッションを読み出し、`attribute` プロパティに格納する。
 
 Sessionクラスの関数は、`attribute` プロパティを使用して、セッションを操作する。
 
