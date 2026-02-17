@@ -34070,7 +34070,8 @@
 <p><br></p>
 <h3 id="_11">技術ツール例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>GitOpsでは、CDツールで実施する手順が多いため、多機能かつユーザーフレンドリーなツールが良い。</p>
-<p>執筆時点 (2022/11/09) ではどのようなユースケースでも、OSSの開発が活発なArgoCDが良いかも。</p>
+<p>執筆時点 (2022/11/09) では、どのようなユースケースでもArgoCDがよいかもしれない。</p>
+<p>特にOSSの開発が活発である。</p>
 <ul>
 <li>ArgoCD</li>
 <li>Flux</li>
@@ -34082,7 +34083,9 @@
 <h3 id="ci_2">相性の良いCIツール<a class="headerlink" href="#ci_2" title="Permanent link">&para;</a></h3>
 <p>CIOpsでなくGitOpsを採用する場合、アプリはマイクロサービスアーキテクチャを採用しているはずである。</p>
 <p>GitOpsでは、CIツールで実施する手順が少ないため、基本的にいずれのツールを使用しても問題ない。</p>
-<p>ただし、リポジトリの分割戦略にポリレポ (マイクロサービスごとにリポジトリを用意する) を採用している場合、リポジトリで同じ設定ファイルを横展開するよりも、CIツールの設定ファイルの共有部分は特定のリポジトリで中央集中的に管理し、他のリポジトリでこれを読み込むようにしたほうが楽である。</p>
+<p>ただし、リポジトリの分割戦略としてポリレポ (マイクロサービスごとにリポジトリを用意する) を採用している場合がある。</p>
+<p>この場合、リポジトリで同じ設定ファイルを横展開するよりも、CIツールの設定ファイルの共有部分は特定のリポジトリで中央集中的に管理するとよい。</p>
+<p>他のリポジトリでこれを読み込むようにすると、管理が楽になる。</p>
 <p>外部リポジトリに置いた設定ファイルをリモート参照できるような機能を持つCIツール (例：GitLab CI) であれば、ポリレポ戦略と相性が良い。</p>
 <p><br></p>
 <h3 id="cicd_3">CI/CDパイプラインのステップ<a class="headerlink" href="#cicd_3" title="Permanent link">&para;</a></h3>
@@ -34124,7 +34127,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 19:24:15 JST">2026-02-17</span>
   </span>
 
     

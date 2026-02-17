@@ -32863,9 +32863,10 @@
 </blockquote>
 <p><br></p>
 <h2 id="71">7.1 技術要素への依存がもたらすもの<a class="headerlink" href="#71" title="Permanent link">&para;</a></h2>
-<p>オブジェクトAやBは、中核にあるオブジェクトCに依存しているとする。</p>
+<p>オブジェクトAやBは、中核にあるオブジェクトCへ依存しているとする。</p>
 <p>オブジェクトCを変更すると、オブジェクトAやBに影響する。</p>
-<p>積み木に例えると、重要なブロック（依存されるオブジェクト）を抜き出すと、上にあるブロック（依存するオブジェクト）は崩れてしまう。</p>
+<p>積み木に例えると、重要なブロック（依存されるオブジェクト）を抜き出す。</p>
+<p>すると、上にあるブロック（依存するオブジェクト）は崩れてしまう。</p>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-01.png" /></p>
 <p><br></p>
 <h2 id="72">7.2 依存とは<a class="headerlink" href="#72" title="Permanent link">&para;</a></h2>
@@ -33202,8 +33203,10 @@ UserApplicationServiceの中では、依存先のUserRepositoryがすでに準�
 <p>次に、IoCコンテナパターンを実装したIoCコンテナオブジェクトを説明する。</p>
 <p>IoCコンテナオブジェクトは、オブジェクトを指定すると、依存関係をよしなに解決したうえでインスタンスを返却してくれる。</p>
 <p>IoCコンテナオブジェクトでインスタンスを作成し、これをコンストラクタに渡す。</p>
-<p>ServiceLocatorオブジェクトでは、オブジェクトの呼び出しを動的に切り替えるため、ビルドの段階ではエラーにならない</p>
-<p>一方で、IoCコンテナオブジェクトではUserApplicationServiceのコンストラクタにIUserRepositoryを渡すように実装しないといけないため、ビルド時にエラーになってくれる。</p>
+<p>ServiceLocatorオブジェクトでは、オブジェクトの呼び出しを動的に切り替える。</p>
+<p>そのため、ビルドの段階ではエラーにならない。</p>
+<p>一方で、IoCコンテナオブジェクトではUserApplicationServiceのコンストラクタにIUserRepositoryを渡すように実装しないといけない。</p>
+<p>そのため、ビルド時はエラーになってくれる。</p>
 <p>リスト7.17：IoCコンテナを利用して依存関係を解決させる</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// IoCコンテナオブジェクト</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">serviceCollection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ServiceCollection</span><span class="p">();</span>
@@ -33357,7 +33360,7 @@ ServiceLocatorオブジェクトからインスタンスを取り出せないた
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 19:24:15 JST">2026-02-17</span>
   </span>
 
     
