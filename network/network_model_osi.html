@@ -33071,7 +33071,16 @@
 <p>ネットワークで使用されているプロトコルを <code>7</code> 階層に分類したモデルこと。</p>
 <p><br></p>
 <h3 id="_2">種類<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>OSI参照モデルは、物理層 (<code>L1</code>) 、データリンク層 (<code>L2</code>) 、ネットワーク層 (<code>L3</code>) 、トランスポート層 (<code>L4</code>) 、セッション層 (<code>L5</code>) 、プレゼンテーション層 (<code>L6</code>) 、アプリケーション層 (<code>L7</code>) 、から構成される。</p>
+<p>OSI参照モデルは、次の <code>7</code> 階層から構成される。</p>
+<ul>
+<li>物理層 (<code>L1</code>)</li>
+<li>データリンク層 (<code>L2</code>)</li>
+<li>ネットワーク層 (<code>L3</code>)</li>
+<li>トランスポート層 (<code>L4</code>)</li>
+<li>セッション層 (<code>L5</code>)</li>
+<li>プレゼンテーション層 (<code>L6</code>)</li>
+<li>アプリケーション層 (<code>L7</code>)</li>
+</ul>
 <p><img alt="OSI参照モデル" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSI参照モデル.png" /></p>
 <blockquote>
 <ul>
@@ -33114,8 +33123,11 @@
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>ルーターはOSIネットワーク層に属するため、より上層に一度戻ることになる。</p>
+<p>ルーターはOSIネットワーク層に属する。</p>
 </dd>
+</dl>
+<p>そのため、パケットはより上層へ一度戻ることになる。</p>
+<dl>
 <dt><code>(6)</code></dt>
 <dd>
 <p>パブリックネットワークを経て、宛先のプライベートネットワークのルーターに到達する。</p>
@@ -33141,7 +33153,8 @@
 <p><br></p>
 <h2 id="03">03. パケット<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_5">パケットとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>パケットは、パケットペイロード (IPヘッダー、トランスポートヘッダー、アプリケーションデータ、からなる) 、ヘッダー情報、から構成される。</p>
+<p>パケットは、パケットペイロードとヘッダー情報から構成される。</p>
+<p>パケットペイロードは、IPヘッダー、トランスポートヘッダー、アプリケーションデータからなる。</p>
 <p><img alt="パケットの構造" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットの構造.jpg" /></p>
 <blockquote>
 <ul>
@@ -33191,7 +33204,7 @@
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
-<p>物理層にて (<code>L1</code>) にて、<code>L1</code> ヘッダーが追加される。</p>
+<p>物理層 (<code>L1</code>) にて、<code>L1</code> ヘッダーが追加される。</p>
 </dd>
 <dt><code>(8)</code></dt>
 <dd>
@@ -33226,7 +33239,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 18:07:27 JST">2026-02-17</span>
   </span>
 
     

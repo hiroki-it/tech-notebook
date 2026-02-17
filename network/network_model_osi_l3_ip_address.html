@@ -33864,7 +33864,7 @@
 <th style="text-align: center;">クラス</th>
 <th>ネットワーク部のオクテット</th>
 <th>ホスト部のオクテット</th>
-<th style="text-align: center;">二進数で見たとき (n：ネ、h：ホ)</th>
+<th style="text-align: center;">二進数で見たとき (N：ネ、H：ホ)</th>
 <th>IPアドレスのパターン数 (最大パソコン数)</th>
 <th style="text-align: center;">備考</th>
 </tr>
@@ -34095,9 +34095,10 @@
 <p><br></p>
 <h2 id="02-url">02. URL、メールアドレス<a class="headerlink" href="#02-url" title="Permanent link">&para;</a></h2>
 <h3 id="url">URL、メールアドレスとは<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
-<p>ネットワーク内での位置情報であるIPアドレスに紐づき、ネットワーク上のIPアドレスの場所を人間にわかる識別子にしたもの。</p>
+<p>ネットワーク内での位置情報であるIPアドレスに紐づく。</p>
+<p>また、ネットワーク上のIPアドレスの場所を人間がわかる識別子にしたものでもある。</p>
 <p>よくあるメールアドレスは次のとおり。</p>
-<p>外国人も使用する場合、世界的により馴染みがある <code>.com</code> がよい。</p>
+<p>外国人も使用する場合は、世界的に馴染みのある <code>.com</code> がよい。</p>
 <ul>
 <li>&lt;サービス名&gt;.com</li>
 <li>mail.&lt;サービス名&gt;.com</li>
@@ -34191,7 +34192,7 @@
 <h3 id="_16">名前解決の要素<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="etchosts">▼ <code>/etc/hosts</code> ファイル<a class="headerlink" href="#etchosts" title="Permanent link">&para;</a></h4>
 <p>ドメイン名とIPアドレスのマッピングを管理する。</p>
-<p>名前解決でDNSサーバに問い合わせる前に参照される。</p>
+<p>DNSサーバへの問い合わせ前に参照する。</p>
 <p>もし <code>/etc/hosts</code> ファイルで名前解決が行われた場合は、DNSサーバは使用されない。</p>
 <p>WebサーバーのIPアドレスがDNSサーバーに登録されていないとき、またはDNSサーバーが不具合の時に、DNSサーバーの代わりとして使用する。</p>
 <p><strong>＊例＊</strong></p>
@@ -34208,9 +34209,9 @@
 </blockquote>
 <h4 id="etcresolvconf">▼ <code>/etc/resolv.conf</code> ファイル<a class="headerlink" href="#etcresolvconf" title="Permanent link">&para;</a></h4>
 <p>名前解決に使用するDNSサーバーのIPアドレスや、問い合わせで使用するドメイン名の後に付与する文字列を定義する。</p>
-<p>名前解決では、まず最初に、<code>/etc/resolv.conf</code> ファイルに定義されたDNSサーバに問い合わせる。</p>
+<p>名前解決では、<code>/etc/resolv.conf</code> ファイルに定義されたDNSサーバへ最初に問い合わせる。</p>
 <p><strong>＊例＊</strong></p>
-<p>もし、<code>example</code> というドメイン名で問い合わせを行った場合、実際には <code>example.foo</code> が使用される。</p>
+<p>もし、<code>example</code> というドメイン名で問い合わせした場合、実際には <code>example.foo</code> が使用される。</p>
 <p>また、この問い合わせに失敗した場合は、<code>search</code> 値が左から順に使用される。</p>
 <div class="highlight"><pre><span></span><code>nameserver<span class="w">  </span>*.*.*.*
 domain<span class="w">      </span>foo<span class="w"> </span><span class="c1"># ドメイン名の後に付与する文字列</span>
@@ -34239,7 +34240,7 @@ search<span class="w">      </span>bar<span class="w">   </span>baz<span class="
 <li>ドメインを取得できていなければ、本番環境のドメインレジストリのでドメイン (<code>***.com</code>) を取得する</li>
 <li>開発環境 (<code>dev.***.com</code>) とテスト環境 (<code>tes.***.com</code>) のドメインレジストラで、サブドメインを登録する</li>
 <li>本番環境のドメイン (<code>***.com</code>) をドメインレジストラに登録する</li>
-<li>サブドメインの名前解決を開発環境やテスト環境に委譲するために、本番環境のドメインレジストラにNSレコードを追加する</li>
+<li>サブドメインの名前解決を開発環境やテスト環境に委譲するため、本番環境のドメインレジストラにNSレコードを追加する</li>
 </ol>
 <h4 id="dns-dns">▼ DNSサーバー (ネームサーバー、権威DNSサーバー)<a class="headerlink" href="#dns-dns" title="Permanent link">&para;</a></h4>
 <p>『ネームサーバー』『権威DNSサーバー』ともいう。</p>
@@ -34263,12 +34264,12 @@ search<span class="w">      </span>bar<span class="w">   </span>baz<span class="
 <dt><code>(1)</code></dt>
 <dd>
 <p>クライアントPCは、<code>www.example.com</code> にマッピングされるIPアドレスのキャッシュを検索する。</p>
-<p>キャッシュが無ければ、クライアントPCはドメイン名をキャッシュDNSサーバーに問い合わせる。</p>
+<p>キャッシュが無ければ、クライアントPCはキャッシュDNSサーバーにドメイン名を問い合わせる。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
 <p>キャッシュDNSサーバーは、IPアドレスのキャッシュを検索する。</p>
-<p>キャッシュが無ければ、キャッシュDNSサーバーはドメイン名をドメインレジストラにあるDNSサーバーに問い合わせる。</p>
+<p>キャッシュが無ければ、キャッシュDNSサーバーはドメインレジストラにあるDNSサーバーにドメイン名を問い合わせる。</p>
 </dd>
 <dt><code>(3)-(9)</code></dt>
 <dd>
@@ -34302,7 +34303,7 @@ search<span class="w">      </span>bar<span class="w">   </span>baz<span class="
 </dd>
 <dt><code>(11)</code></dt>
 <dd>
-<p>クライアントPCは、返却されたIPアドレスを基にWebページにリクエストを送信する。</p>
+<p>クライアントPCは、返却されたIPアドレスを基にして、Webページにリクエストを送信する。</p>
 </dd>
 </dl>
 <blockquote>
@@ -34332,7 +34333,7 @@ search<span class="w">      </span>bar<span class="w">   </span>baz<span class="
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 18:07:27 JST">2026-02-17</span>
   </span>
 
     
