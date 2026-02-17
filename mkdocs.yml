@@ -375,7 +375,7 @@ nav:
           - ■ ロジック:
               - データ: language/language_go_logic_data.md
               - 関数: language/language_go_logic_function.md
-              - 検証ロジック: language/language_go_logic_validation.md
+              - バリデーションロジック: language/language_go_logic_validation.md
           - ■ フレームワーク:
               - Gin: language/language_go_framework_gin.md
           - ■ パッケージ:
@@ -388,11 +388,11 @@ nav:
               - プロトタイプ: language/language_javascript_prototype_based.md
               - 関数/データ: language/language_javascript_prototype_based_function_data.md
           - ■ ロジック:
-              - 検証ロジック: language/language_javascript_logic_validation.md
-              - 非同期処理ロジック: language/language_javascript_logic_asynchronous_process.md
-              - デバッグ: language/language_javascript_logic_debug.md
-              - 認証: language/language_javascript_logic_authentication.md
-              - レンダリング: language/language_javascript_logic_browser_rendering.md
+                - バリデーションロジック: language/language_javascript_logic_validation.md
+                - 非同期処理ロジック: language/language_javascript_logic_asynchronous_process.md
+                - デバッグ: language/language_javascript_logic_debug.md
+                - 認証: language/language_javascript_logic_authentication.md
+                - レンダリング: language/language_javascript_logic_browser_rendering.md
           - ■ フレームワーク:
               - Nuxt.js: language/language_javascript_framework_nuxtjs.md
               - ■ Vue.js:
@@ -419,11 +419,11 @@ nav:
               - 関数/データ: language/language_php_class_based_function_data.md
               - データ構造: language/language_php_class_based_data_structure.md
           - ■ ロジック:
-              - 検証ロジック: language/language_php_logic_validation.md
-              - エラーとエラーハンドリング: language/language_php_logic_error_and_error_handling.md
-              - 反復ロジック: language/language_php_logic_iteration.md
-              - アルゴリズム: language/language_php_logic_algorithm.md
-              - デバッグ: language/language_php_logic_debug.md
+                - バリデーションロジック: language/language_php_logic_validation.md
+                - エラーとエラーハンドリング: language/language_php_logic_error_and_error_handling.md
+                - 反復ロジック: language/language_php_logic_iteration.md
+                - アルゴリズム: language/language_php_logic_algorithm.md
+                - デバッグ: language/language_php_logic_debug.md
           - ■ フレームワーク:
               - ■ Laravel:
                   - コンポーネント: language/language_php_framework_laravel_component.md
@@ -940,14 +940,14 @@ nav:
           - Codex: software_development_methodology/software_development_methodology_agentic_coding_codex.md
           - PR Agent: software_development_methodology/software_development_methodology_agentic_coding_pr_agent.md
           - ■ AIドキュメント:
-              - AIドキュメント (プロダクトコンテキスト) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_context.md
-              - AIドキュメント (パッケージ選定) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_application_package_selection.md
-              - AIドキュメント (API定義書) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.md
-              - AIドキュメント (DB設計) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_database.md
-              - AIドキュメント (ユニットテスト設計) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.md
-              - AIドキュメント (システムの調査と実装) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_and_implementation.md
-              - AIドキュメント (巨大システムの調査) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_large_system.md
-              - AIドキュメント (レビュー) : software_development_methodology/software_development_methodology_agentic_coding_ai_document_review.md
+                - AIドキュメント (プロダクトコンテキスト): software_development_methodology/software_development_methodology_agentic_coding_ai_document_context.md
+                - AIドキュメント (パッケージ選定): software_development_methodology/software_development_methodology_agentic_coding_ai_document_application_package_selection.md
+                - AIドキュメント (API定義書): software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.md
+                - AIドキュメント (DB設計): software_development_methodology/software_development_methodology_agentic_coding_ai_document_database.md
+                - AIドキュメント (ユニットテスト設計): software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.md
+                - AIドキュメント (システムの調査と実装): software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_and_implementation.md
+                - AIドキュメント (巨大システムの調査): software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_large_system.md
+                - AIドキュメント (レビュー): software_development_methodology/software_development_methodology_agentic_coding_ai_document_review.md
       - 組織論: software_development_methodology/software_development_organization.md
       - OSSコントリビューション: software_development_methodology/software_development_oss_contribution.md
       - テクノロジーマネージメント: software_development_methodology/software_development_technology_management.md
