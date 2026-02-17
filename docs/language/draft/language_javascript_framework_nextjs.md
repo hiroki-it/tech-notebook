@@ -25,7 +25,7 @@ Reactパッケージを使用したフレームワークである。
 
 #### ▼ CSRモード
 
-以下の時にCSRモードになり、SPAをレンダリングする。
+以下の場合はCSRモードになり、SPAをレンダリングする。
 
 - ファイルの先頭に `"use client"` を指定している。
 
@@ -77,7 +77,7 @@ export default CsrPage;
 
 #### ▼ SSRモード
 
-以下の時にSSRモードになる。
+以下の場合はSSRモードになる。
 
 - `fetch` 関数の第二引数に、`{ cache: "no-store" }` を指定している
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
@@ -141,7 +141,7 @@ Route (app)                              Size     First Load JS
 
 #### ▼ SSGモード
 
-以下の時にSSGモードになる。
+以下の場合はSSGモードになる。
 
 - `fetch` 関数の第二引数に、`{ cache: "force-cache" }` を指定しているか、または何も指定していない
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
@@ -203,7 +203,7 @@ Route (app)                              Size     First Load JS
 
 #### ▼ ISRモード
 
-以下の時にISRモードになる。
+以下の場合はISRモードになる。
 
 - `fetch` 関数の第二引数に、`{ next: { revalidate: <任意の値> } }` を指定している
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない

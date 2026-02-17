@@ -38,7 +38,9 @@ namespaceでは、カーネルを分離できるため、カーネルの要素 (
 
 #### ▼ ベースイメージ
 
-ベースイメージは、実行OSによらずに一貫してビルドできるため、配布できる。
+ベースイメージは、実行OSに依存せず一貫してビルドできる。
+
+そのため、配布できる。
 
 各イメージレジストリ (例：DockerHub、AWS ECR、Google Container Registry、Artifactory、Harborなど) には、カスタマイズするうえでのベースとなるベースイメージが提供されている。
 
@@ -82,7 +84,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITEなど) の全て持つユーザーで実行したコンテナのこと。
 
-例えば、特権コンテナの実行ユーザーはルートファイルシステムにある `/proc` に書き込みする権限を持つ。
+例えば、特権コンテナの実行ユーザーは、ルートファイルシステム上の `/proc` へ書き込む権限を持つ。
 
 /proc配下にはNodeへのアクセスを中継するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。
 
@@ -196,7 +198,7 @@ SysV IPCオブジェクト、POSIXメッセージキューを分離する。
 
 各コンテナが独立したPIDを持てるようになる。
 
-逆に言うと、同じPID namespaceに属するプロセスはPIDは同じになる。
+逆に言うと、同じPID namespaceに属するプロセスのPIDは同じになる。
 
 > - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5
 
