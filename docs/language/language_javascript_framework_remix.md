@@ -410,7 +410,7 @@ CSRモードとSSGモードは厳密な区分ではなく、Remix独自の擬似
 │   │   ├── decorator/      # 認証などの補助的なreactコンポーネント
 │   │   ├── forms/          # 入力フォームreactコンポーネント
 │   │   ├── layouts/        # 画面レイアウトreactコンポーネント
-│   │   └── validators/     # 入力フォームの検証ロジック
+  │   │   └── validators/     # 入力フォームのバリデーションロジック
 │   │
 │   ├── constants/          # フロントエンド／バックエンドで使用するグローバルな値
 │   ├── entry.client.tsx

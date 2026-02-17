@@ -47,7 +47,7 @@ hide:
 
   > - ##### [データ](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_data.html)
   > - ##### [関数](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_function.html)
-  > - ##### [︎検証ロジック](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_validation.html)
+  > - ##### [︎バリデーションロジック](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_validation.html)
 
 - #### <u>フレームワーク</u>
 
@@ -76,7 +76,7 @@ hide:
 
 - #### <u>ロジック</u>
 
-  > - ##### [︎検証ロジック](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_validation.html)
+  > - ##### [︎バリデーションロジック](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_validation.html)
   > - ##### [︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_asynchronous_process.html)
   > - ##### [︎デバッグ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_debug.html)
   > - ##### [認証](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_authentication.html)
@@ -123,7 +123,7 @@ hide:
 
 - #### <u>ロジック</u>
 
-  > - ##### [︎検証ロジック](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html)
+  > - ##### [︎バリデーションロジック](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html)
   > - ##### [︎エラーとエラーハンドリング](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html)
   > - ##### [︎反復ロジック](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html)
   > - ##### [︎アルゴリズム](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html)
