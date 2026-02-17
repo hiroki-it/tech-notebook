@@ -156,8 +156,6 @@ class FormatValidator
 {
     /**
      * 日時データのフォーマットを検証する
-
-
      */
     public function validateFormat($dateTime)
     {
@@ -193,6 +191,28 @@ use Respect\Validation\Validator;
 class UrlValidator
 {
 
+    /**
+     * URLクエリストリングの値を検証し、不正ならデフォルト値を返す。
+     */
+    public function validateFormat($value, $validator)
+    {
+        // 例：ページングやソートのURLクエリストリングを想定する。
+        // - page: 1始まり
+        // - limit: 1〜100
+        // - sort: created_at の昇順/降順
+        $defaultValues = [
+            'page'  => 1,
+            'limit' => 20,
+            'sort'  => 'created_at_desc',
+        ];
+
+        // クエリストリングが不正ならデフォルト値を使用する
+        if (!$validator->validate($value)) {
+            return $defaultValue;
+        }
+
+        return $value;
+    }
 }
 ```
 
