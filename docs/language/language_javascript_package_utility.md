@@ -352,7 +352,7 @@ JavaScriptのソースコードに変更があれば、Node.js上のプロセス
 
 ### ts-nodeとは
 
-Node.js上で、TypeScriptをJavaScriptにコンパイルせずにそのまま実行する。
+Node.js上で、TypeScriptをJavaScriptへコンパイルせずそのまま実行する。
 
 > - https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
 
