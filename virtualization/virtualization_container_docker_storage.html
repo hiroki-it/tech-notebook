@@ -33446,7 +33446,8 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <h2 id="05-copy-nfs">05. バインドマウント、ボリュームマウント、<code>COPY</code> 処理、NFS<a class="headerlink" href="#05-copy-nfs" title="Permanent link">&para;</a></h2>
 <h3 id="_8">脆弱性の比較<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>本番環境で、ホストからコンテナにバインドマウントを実行できる。</p>
-<p>しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側のマウントに関係ないファイルへもアクセスできてしまう (例：<code>cd</code> コマンドによって、ホスト側のマウントに関係ないディレクトリにアクセスできてしまう) 。</p>
+<p>しかしバインドマウントでは、ホスト側のコードが隔離されておらず、コンテナ側のコードからホスト側の関係ないファイルへもアクセスできてしまう。</p>
+<p>例えば <code>cd</code> コマンドによって、ホスト側のマウントと関係ないディレクトリにアクセスできてしまう。</p>
 <p>一方でボリュームマウント (<code>VOLUME</code> 処理) では、ホスト側のコードはdockerエリア内に隔離されており、ホストの他のファイルからは切り離されている。</p>
 <p>これにより、マウントに関係のないファイルへはアクセスできないようになっている。</p>
 <p>そのため、バインドマウントより安全である。</p>
@@ -33459,7 +33460,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="_9">本番環境での使いやすさの比較<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>脆弱性の観点から、本番環境ではボリュームマウント (<code>VOLUME</code> 処理) や <code>COPY</code> 処理を使用して、アプリケーションをコンテナイメージに組み込むようにする。</p>
+<p>脆弱性の観点から、本番環境ではボリュームマウント (<code>VOLUME</code> 処理) や <code>COPY</code> 処理を使用し、アプリケーションをコンテナイメージへ組み込む。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments">https://docs.docker.com/develop/dev-best-practices/#differences-in-development-and-production-environments</a></li>
@@ -33526,7 +33527,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:08:25 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 19:04:20 JST">2026-02-17</span>
   </span>
 
     
