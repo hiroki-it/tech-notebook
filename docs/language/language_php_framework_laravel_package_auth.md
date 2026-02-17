@@ -224,7 +224,7 @@ return [
 
 Authファサードの `guard` 関数を使用して、ガードに応じた認証する。
 
-これにより、同じ認証後ページにリダイレクトした後に、ユーザーのEloquentモデルに応じた処理を実行できるようになる。
+これにより、同じ認証後ページへリダイレクトした後、ユーザーの Eloquent モデルに応じた処理を実行できるようになる。
 
 ```php
 <?php
@@ -440,7 +440,7 @@ class AuthServiceProvider extends ServiceProvider
 
 ルーティング時にDBレコードレベルの認可スコープを定義する。
 
-AuthorizeMiddlewareのエイリアスはデフォルト値は `can` であり、Kernelクラスに定義されている。
+AuthorizeMiddlewareのエイリアスのデフォルト値は `can` であり、Kernelクラスに定義されている。
 
 第一引数にPolicyクラスの関数名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。
 
@@ -481,7 +481,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。
 
-認可に失敗した場合にAuthorizationExceptionを投げるため、その後は自前で `403` レスポンスする。
+認可に失敗した場合は AuthorizationException を投げる。その後は自前で `403` レスポンスする。
 
 **＊実装例＊**
 
@@ -540,7 +540,7 @@ class FooController extends Controller
 
 DBアクセスが、そのアカウントの認可スコープの範囲内か否かを検証する。
 
-認可に失敗した場合に `false` を返却するため、その後は自前で `403` レスポンスする。
+認可に失敗した場合は `false` を返却する。その後は自前で `403` レスポンスする。
 
 **＊実装例＊**
 

@@ -340,7 +340,7 @@ console.log(await asyncFn());
 
 型変数では、定義した時点で型が決まっていない。
 
-コール時に型変数に任意の型を推論で代入し、それに合わせた引数型と返却型の関数を定義できる。
+コール時に型変数へ任意の型を推論で代入し、それに合わせた引数型と返却型の関数を定義できる。
 
 ```typescript
 // 最初の<T>    型変数を定義
@@ -525,7 +525,7 @@ class FooError extends Error {
 
 独自のErrorオブジェクトのプロパティに実行時間や開始時間を入れればいいと考えるかもしれないが、外部ツールの任意のErrorオブジェクトには外からこれらを設定できないため、整合性が合わなくなる。
 
-その一方で、Errorオブジェクトのプロパティに実行時間や開始時間を入れれば、任意のErrorオブジェクトに対応できるようになる。
+一方で、Errorオブジェクトのプロパティへ実行時間や開始時間を入れれば、任意のErrorオブジェクトへ対応できるようになる。
 
 ```typescript
 export class FailedResult {
@@ -691,7 +691,7 @@ function foo(value: string | null) {
 }
 ```
 
-ただ、型ガードしてもよく、こちらのほうが明示的である。ただ、実装量が増えてしまうところがデメリットである。
+ただし、型ガードしてもよい。こちらのほうが明示的だが、実装量が増えてしまう点がデメリットである。
 
 ```typescript
 // string型またはnullを許容する
@@ -736,7 +736,7 @@ function foo(value: string | number) {
 
 `name` プロパティは `string` 型と `undefined` 型を許容している。
 
-`undefined` 型のほうが網羅範囲が大きいため、実質 `undefined` 型として扱われる。
+`undefined` 型のほうが網羅範囲は広い。結果的に `undefined` 型として扱われる。
 
 ```typescript
 type User = {
@@ -752,7 +752,7 @@ const user2: User = {id: "abc123", name: "Bob"};
 
 `name` プロパティが `string` 型のUserと、`undefined` 型のUserWithoutNameを別々に定義している。
 
-`undefined` 型のほうが網羅範囲が大きいため、実質 `undefined` 型として扱われる。
+`undefined` 型のほうが網羅範囲は広い。結果的に `undefined` 型として扱われる。
 
 ```typescript
 type User = {
@@ -1028,7 +1028,7 @@ export {logger} from "./logger";
 export {logger} from "./errorHandler";
 ```
 
-アスタリスクで一括でエクスポートしてもよい。
+アスタリスクで一括エクスポートしてもよい。
 
 ```typescript
 // utils/index.ts

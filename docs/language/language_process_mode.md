@@ -87,7 +87,7 @@ func main() {
 
 プロセスでシングルスレッドになっている場合、複数の処理を『独立的』に実行すること。
 
-開始も終了もバラバラであるが、処理の実行が重複する場合がある。
+開始と終了はバラバラであり、処理の実行が重複する場合もある。
 
 > - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
 > - https://hobik-site.blogspot.com/2018/03/cpu.html
@@ -135,7 +135,7 @@ Web Workerを使用する。
 
 Goroutinesを使用する。
 
-ただし、実行環境によっては並列処理にならずに、並行処理になってしまうことがある。
+ただし、実行環境によっては並列処理ではなく、並行処理になってしまうことがある。
 
 それが理由か否かはわからないが、Goのドキュメントでは、Goroutinesは `concurrency` の項目に記載されている。
 

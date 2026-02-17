@@ -360,7 +360,7 @@ class Foo extends Model
 
 Laravelでは、プロパティを定義しなくても、Eloquentモデルからプロパティをコールすれば、処理の度に動的にプロパティを定義できる。
 
-しかし、この機能はプロパティがpublicアクセスである必要があるため、オブジェクト機能のメリットを享受できない。
+しかし、この機能のプロパティは public アクセスである必要があるため、オブジェクト機能のメリットを享受できない。
 
 そのため、こを使用せずに、`constructor` 関数を使用したコンストラクタインジェクション、またはセッターインジェクションを使用するようにする。
 
@@ -610,7 +610,7 @@ Eloquentモデルが持つcrudを実行する関数の返り値型と返却値�
 
 INSERT文を実行する。
 
-Eloquentモデルには `create` 関数がないため、代わりにEloquentビルダーが持つ `create` 関数がコールされる。
+Eloquentモデルには `create` 関数がない。代わりに、 Eloquentビルダーが持つ `create` 関数をコールする。
 
 `create` 関数に挿入先のカラムと値を渡し、これを実行する。
 
@@ -690,7 +690,7 @@ class FooDTO extends Model
 
 MySQLを含むDBエンジンでは、取得結果に標準の並び順が存在しないため、プライマリーキーの昇順で取得したい場合は、`orderBy` 関数を使用して、明示的に並び替えるようにする。
 
-Eloquentモデルには `all` 関数がないため、代わりにEloquentビルダーが持つ `all` 関数がコールされる。
+Eloquentモデルには `all` 関数がない。代わりに、 Eloquentビルダーが持つ `all` 関数をコールする。
 
 全てのプライマリーキーのCollection型を配列型として返却する。
 
@@ -729,7 +729,7 @@ class FooController extends Controller
 
 レコードを1つ取得するSELECT句を発行する。
 
-Eloquentモデルには `find` 関数がないため、代わりにEloquentビルダーが持つ `find` 関数がコールされる。
+Eloquentモデルには `find` 関数がない。代わりに、 Eloquentビルダーが持つ `find` 関数をコールする。
 
 引数としてプライマリーキーを渡した場合、指定したプライマリーキーを持つEloquentモデルを返却する。
 
@@ -952,7 +952,7 @@ class FooController extends Controller
 
 この仕組みをEagerロードという。
 
-Eloquentモデルには `with` 関数がないため、代わりにEloquentビルダーが持つ `with` 関数がコールされる。
+Eloquentモデルには `with` 関数がない。代わりに、 Eloquentビルダーが持つ `with` 関数をコールする。
 
 テーブル間に一対多 (親子) のリレーションシップがある場合に使用する。
 
@@ -1153,7 +1153,7 @@ Eloquentモデルの `destroy`/`delete` 関数を使用する。
 
 手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。
 
-DBマイグレーション時に追加される `delete_at` カラムをSQLで取得するときに、DataTimeクラスに変換できるようにしておく。
+DBマイグレーション時に追加される `delete_at` カラムを SQL で取得するときは、DataTime クラスへ変換できるようにしておく。
 
 **＊実装例＊**
 

@@ -254,7 +254,7 @@ remixコンポーネント内で `console.log` 関数を実行すると、ブラ
 
 また、レスポンスのデータをremixコンポーネントに渡す。
 
-componentを同じファイルに実装する以外に、`.server` ディレクトリに切り分ける方法もある。
+componentを同じファイルへ実装する以外に、`.server` ディレクトリへ切り分ける方法もある。
 
 ```jsx
 import type { ActionFunctionArgs } from "@remix-run/node";
@@ -384,7 +384,7 @@ Infrastructure層
 
 Remixでは、SSRモード、CSRモード、SSGモードがある。
 
-CSRモードとSSGモードは厳密ではなく、Remix独自の擬似的なモードである。
+CSRモードとSSGモードは厳密な区分ではなく、Remix独自の擬似的なモードである。
 
 それぞれのモードで、`entry.server.tsx` ファイルと `entry.client.tsx` ファイルが関与する。
 
@@ -468,7 +468,7 @@ CSRモードとSSGモードは厳密ではなく、Remix独自の擬似的なモ
 
 `handleRequest` という名前であることが多いが、どんな名前でもよい。
 
-`default` エクスポート関数を複数定義することはできない。
+`default` エクスポート関数は複数定義できない。
 
 > - https://remix.run/docs/en/main/file-conventions/entry.server#entryserver
 
@@ -768,13 +768,13 @@ app/routes-hybrid-files/
 
 Remixの仕様ではディレクトリ構造やファイル名がエンドポイントに影響してしまう。
 
-エンドポイントを崩さずに `routes` にサブディレクトリを作る場合、ファイル名を部分的に変えないといけず、エンドポイントが一目ではわかりにくくなる。
+エンドポイントを崩さず `routes` にサブディレクトリを作る場合、ファイル名を部分的に変える必要があり、エンドポイントが一目ではわかりにくくなる。
 
 現在の状態であれば、ファイルは多くて辛いが、エンドポイントがファイル名から一目でわかる。
 
 よって、ひとまず現在のままとする。
 
-(Remixは、規模が大きくなると routes がしんどくなる問題がありそう...)
+(Remixは規模が大きくなると、routes に辛さが出そう...)
 
 > Remixはとても小さなサイトや個人のブログだけを想定しているのですか？Remixは全般的に好きだけど、フラットルートを使うようになったことで、正直Remixが使いづらくなった。
 >

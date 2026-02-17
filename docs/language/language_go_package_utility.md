@@ -499,7 +499,7 @@ HTTPで受信したリクエストをgRPCに変換して送信する。
 
 #### ▼ 独自HTTPヘッダーを保持する
 
-grpc-gatewayでは、デフォルトでは、HTTPヘッダーの独自ヘッダーをgRPCのメタデータに変換せずに破棄してしまう。
+grpc-gatewayでは、デフォルトでは、HTTPヘッダーの独自ヘッダーをgRPCのメタデータに変換せず破棄してしまう。
 
 特定の条件の時に `true` を返却する `match` 関数を定義し、これを `runtime.WithIncomingHeaderMatcher` 関数に渡す。
 
@@ -1224,7 +1224,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### SpanFromContext
 
-スパンIDから既存コンテキストからスパンを取得する。
+スパンIDから既存コンテキスト内のスパンを取得する。
 
 現在の関数でスパンを作成していない場合は、上の階層のスパンを取得できる。
 
@@ -1507,7 +1507,7 @@ gRPCリクエスト送信時のインターセプター処理として `otelgrpc
 
 抽出時のメタデータは、`mdOutgoingKey` キーと `rawMD{md: <メタデータ>}` で登録される。
 
-そのため、ユーザー定義のメタデータは `mdOutgoingKey` キーで登録できるOutgoingContext系関数で設定する必要がある。
+そのため、ユーザー定義のメタデータは `mdOutgoingKey` キーで登録できる OutgoingContext 系関数を使って設定する必要がある。
 
 執筆時点 (2024/03/31) でClientInterceptor系関数は非推奨であり、`NewClientHandler` 関数が推奨である。
 
@@ -1608,7 +1608,7 @@ gRPCリクエスト受信時のインターセプター処理として `otelgrpc
 
 抽出時のメタデータは `mdIncomingKey` キーと `rawMD{md: <メタデータ>}` で登録される。
 
-そのため、ユーザー定義のメタデータは `mdIncomingKey` キーで登録できるOutgoingContext系関数で設定する必要がある。
+そのため、ユーザー定義のメタデータは `mdIncomingKey` キーで登録できる IncomingContext 系関数を使って設定する必要がある。
 
 執筆時点 (2024/03/31) でServerInterceptor系関数は非推奨であり、`NewServerHandler` 関数が推奨である。
 

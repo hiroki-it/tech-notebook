@@ -56,7 +56,7 @@ $ go build -o $HOME/go/bin
 $ go build -o $HOME/go/bin ./cmd
 ```
 
-補足として、事前のインストールに失敗に、ビルド対象が存在していないと以下のようなエラーになってしまう。
+補足として、事前のインストールに失敗し、ビルド対象が存在していないと以下のようなエラーになってしまう。
 
 ```bash
 package foo is not in GOROOT (/usr/local/go/src/foo)
@@ -453,13 +453,13 @@ all modules verified
 
 インポートしたモジュールの依存先モジュールをダウンロードしたが、依存先モジュール内にモジュールがないことを表す。
 
-`// indiret` で自動的に指定しているモジュールが新すぎる可能性がある。
+`// indirect` で自動的に指定しているモジュールは、新しすぎる可能性がある。
 
-この場合、`// indiret` のモジュールを手動で変更する。
+この場合、`// indirect` のモジュールを手動で変更する。
 
 **＊例＊**
 
-`// indiret` で指定した依存先モジュール (`go.module.io/foo-dependency`) のバージョンが `1.27` になっている。
+`// indirect` で指定した依存先モジュール (`go.module.io/foo-dependency`) のバージョンが `1.27` になっている。
 
 しかし、`go.module.io/foo-dependency` (`1.27`) には、`bar` モジュールがないためエラーになっている。
 

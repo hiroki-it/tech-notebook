@@ -103,7 +103,7 @@ Content-TypeヘッダーのMIMEタイプに応じて、バインド関数をコ�
 
 #### ▼ 処理
 
-`Content-Type` ヘッダーのMIMEタイプが `application/json` であることが前提である。
+`Content-Type` ヘッダーのMIMEタイプは `application/json` であることが前提である。
 
 リクエストからJSON型データを取得し、構造体に紐付ける。
 
@@ -324,9 +324,9 @@ func printRequestHeaderList(ginCtx *gin.Context) {
 
 #### ▼ 注意点
 
-データ型を変換した値を `Set` 関数で保管しないようにすることによりある。
+データ型を変換した値を `Set` 関数で保管しないようにする。
 
-`Set` 関数後に `Get` 関数で取得される値は、元のデータ型に関係なくインターフェース型に変換されてしまう。
+`Set` 関数後に `Get` 関数で取得される値は、元のデータ型と関係なくインターフェース型に変換されてしまう。
 
 そのため、例えば、タイプID型として値を保管したとしても、`Get` 関数で得られたインターフェース型データをあらためて変換しないといけなくなってしまう。
 
@@ -433,7 +433,7 @@ func FooMiddleware() gin.HandlerFunc {
 
 #### ▼ `http.Handler` や `http.HandlerFunc` から `gin.HandlerFunc` への変換
 
-`gin.HandlerFunc` 関数を引数にとるパッケージに `http.Handler` 関数や `http.HandlerFunc` 関数を渡すことができる。
+`gin.HandlerFunc` を引数にとるパッケージには、`http.Handler` や `http.HandlerFunc` を渡せる。
 
 `WrapH` 関数や `WrapF` 関数を使用すると、`http.Handler` や `http.HandlerFunc` から `gin.HandlerFunc` に変換できる。
 
@@ -471,7 +471,7 @@ func BazMiddleware(next http.Handler) http.HandlerFunc {
 
 #### ▼ `gin.HandlerFunc` から `http.Handler` への変換
 
-`http.Handler` 関数を引数にとるパッケージに `gin.HandlerFunc` 関数を渡すことは諦めたほうがいい。
+`http.Handler` を引数にとるパッケージへ `gin.HandlerFunc` を渡すことは諦めたほうがよい。
 
 `gin.HandlerFunc` 関数は `http.Handler` のラッパーである。
 

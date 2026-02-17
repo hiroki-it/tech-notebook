@@ -394,7 +394,7 @@ DOMのインターフェースについては、以下のリンクを参考に�
 
 ![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree.png)
 
-同時に、CSSパーサーは、headタグにあるlinkタグを基にサーバーにリクエストを送信する。
+同時に、CSSパーサーは、head タグにある link タグを基にサーバーへリクエストを送信する。
 
 レスポンスされた `.css` ファイルに対してDownloading処理を行った後、オブジェクトをノードとして、CSSOMツリーを作成する。
 
@@ -406,7 +406,7 @@ DOMのインターフェースについては、以下のリンクを参考に�
 
 #### ▼ 構造解析の流れ
 
-レンダリングエンジンは、最初に出現するルート要素を根 (ルート) 、またすべての要素や属性を、そこから延びる枝葉として意味づけ、レンダリングツリーを作成する。
+レンダリングエンジンは、最初に出現するルート要素を根 (ルート) として扱う。さらに、すべての要素や属性を、そこから延びる枝葉として意味づける。これにより、レンダリングツリーを作成する。
 
 **＊例＊**
 
@@ -440,7 +440,7 @@ JavaScriptのインタプリタのこと。
 
 JavaScriptエンジンは、レンダリングエンジンから `html` ファイルに組み込まれたJavaScriptのコードを受け取る。
 
-JavaScriptエンジンは、これを機械語に翻訳し、ハードウェアに対して、命令を実行する。
+JavaScriptエンジンは、これを機械語に翻訳し、ハードウェアに対して命令する。
 
 ![JavaScriptEngine](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png)
 

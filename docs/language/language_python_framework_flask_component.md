@@ -195,7 +195,7 @@ if __name__ == '__main__':
 
 代わりに、uWSGIやgunicornを使用して、エントリーポイントの関数を直接的にコールする。
 
-本番環境と開発環境を同様にするために、本番環境のみでなく開発環境でもコマンドを使用しないようにしても良い。
+本番環境と開発環境を同様にしたい場合、本番環境だけでなく開発環境でもコマンドを使用しないようにしてもよい。
 
 > - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/deploy.html
 > - https://serip39.hatenablog.com/entry/2020/07/06/070000

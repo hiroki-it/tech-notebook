@@ -46,7 +46,7 @@ Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcma
 
 PHPでは、`/usr/local/etc/php` ディレクトリには `php.ini-development` ファイルと `php.ini-production` ファイルが最初から配置されている。
 
-これをコピーして設定値を変更し、読み込まれるようにファイル名を `php.ini` に変えて配置する (これ以外のファイル名でｊは読み込まれない) 。
+これをコピーして設定値を変更し、読み込まれるようにファイル名を `php.ini` に変えて配置する (これ以外のファイル名では読み込まれない) 。
 
 代わりに、最小限の設定値のみを変更した `php.ini` ファイルを自身で作成し、同じく配置しても良い。
 
