@@ -33292,7 +33292,7 @@
 <p><br></p>
 <h3 id="_5">動作確認方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="developer">▼ ブラウザのdeveloperツール<a class="headerlink" href="#developer" title="Permanent link">&para;</a></h4>
-<p>ブラウザのdeveloperツールで、グローバルサイトタグが非同期通信を実行しているか否かを確認する。</p>
+<p>ブラウザのdeveloperツールで、グローバルサイトタグが非同期通信しているかどうかを確認する。</p>
 <p>Chromeであれば、networkタブにて、<code>www.google-analytics.com/collect</code> に対するリクエストを探す。</p>
 <p>これが <code>200</code> 系ステータスになっていれば、正しく動作していると見なせる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://www.google-analytics.com/g/collect</span>
@@ -33413,9 +33413,10 @@
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>『<code>対象をランディングページとするセッション数の割合 + コンバージョン数の割合</code>』とすることにより、対象以外からの訪問も含めた、対象の全セッション数を導ける。例えば、対象をランディングページとするセッション数の割合が <code>60</code>%であり、コンバージョン数の割合が <code>5</code>%であれば、対象以外からの訪問も含めて、全セッションのうちで <code>65</code>% (<code>60 + 5</code>) が対象のセッション数に相当するとわかる。</p>
+<p>『<code>対象をランディングページとするセッション数の割合 + コンバージョン数の割合</code>』とすることにより、対象以外からの訪問も含めた対象の全セッション数を導ける。</p>
 </dd>
 </dl>
+<p>例えば、対象をランディングページとするセッション数の割合が <code>60</code>%であり、コンバージョン数の割合が <code>5</code>%であれば、全セッションのうち <code>65</code>% (<code>60 + 5</code>) が対象のセッション数に相当するとわかる。</p>
 <p><br></p>
 <h3 id="_9">増加率<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p><img alt="increase-rate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/increase-rate.png" /></p>
@@ -33458,7 +33459,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 17:23:55 JST">2026-02-17</span>
   </span>
 
     
