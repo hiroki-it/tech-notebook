@@ -34804,7 +34804,7 @@
 <h3 id="_21">補償トランザクション<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ 補償トランザクションとは<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>ローカルトランザクションを元に戻すトランザクションを逆順に実行し、Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと。</p>
-<p>マイクロサービスアーキテクチャでは、トランザクションの通常のロールバック機能を使用した場合、処理に失敗したマイクロサービスだけがロールバックする。このため、それ以前のマイクロサービスではロールバックが起こらない問題がある。</p>
+<p>マイクロサービスアーキテクチャでは、トランザクションの通常のロールバック機能を使用した場合、処理に失敗したマイクロサービスのみロールバックする。その結果、それ以前のマイクロサービスではロールバックが起こらない可能性もある。</p>
 <p>いずれかのマイクロサービスのローカルトランザクションが失敗した場合、まずそのマイクロサービスは自身のトランザクションをロールバックする。</p>
 <p>その後、それまでのローカルトランザクションを擬似的にロールバックするトランザクションを逆順で実行する。</p>
 <h4 id="_23">▼ 設計例<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
@@ -35416,7 +35416,7 @@
 <p><br></p>
 <h2 id="07">07. クエリパターン<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="api-composition">API Composition<a class="headerlink" href="#api-composition" title="Permanent link">&para;</a></h3>
-<p>複数のマイクロサービスにまたがるread処理が必要な場合がある。</p>
+<p>複数のマイクロサービスにまたがるread処理が必要になることがある。</p>
 <p>API Compositionサービスは、クライアントからのリクエストを受信し、複数のマイクロサービスに連鎖的にリクエストをルーティングする。</p>
 <p>メモリ上で取得結果を結合し、クライアントにレスポンスする。</p>
 <blockquote>
@@ -35446,7 +35446,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:41:46 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
   </span>
 
     
