@@ -354,9 +354,9 @@ AWS ECRのように資格情報に有効期限がある場合は、資格情報�
 
 ArgoCDがプライベートリポジトリをポーリングするときに必要な資格情報を設定する。
 
-argocd-repoとは異なり、`1` 個の資格情報で複数にリポジトリにリクエストを送信できるようにする。
+argocd-repoとは異なり、`1` 個の資格情報で複数のリポジトリへリクエストを送信できるようにする。
 
-ポーリングする複数のリポジトリが全て `1` 個のマニフェストレジストリ内にある場合に、`1` 個の資格情報で全てのマニフェストリポジトリをポーリングできる。
+ポーリングする複数のリポジトリが全て `1` 個のマニフェストレジストリ内にある場合、`1` 個の資格情報で全てのマニフェストリポジトリをポーリングできる。
 
 なお、パブリックリポジトリの場合は、argocd-repo-creds自体が不要である。
 
@@ -750,7 +750,7 @@ AWS EKSアクセスエントリーを使用する場合、`argocd cluster add` �
 
 まず、argocd-serverとapplication-controllerのPodのServiceAccountにIRSA用IAMプリンシパルロールを紐づける。
 
-プリンシパルIAMロールに紐づくPodがAWS EKSに接続するときに、アクセスエントリーがこれを中継して動的にIAMポリシーを設定する。
+プリンシパルIAMロールに紐づくPodがAWS EKSに接続するとき、アクセスエントリーがこれを中継して動的にIAMポリシーを設定する。
 
 ![argocd_access-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_access-entry.png)
 

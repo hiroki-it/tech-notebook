@@ -15,7 +15,7 @@ description: Node.js＠JavaScriptランタイムの知見を記録していま�
 
 ## 01. Node.jsとは
 
-JavaScriptをクライアント側で実行する場合、ブラウザ (例：Chrome)を実行環境として使用できる。
+JavaScriptをクライアント側で実行する場合、ブラウザ (例：Chrome) を実行環境として使用できる。
 
 一方で、サーバー側で実行する場合に、Node.jsを実行環境として使用する必要がある。
 
@@ -30,7 +30,7 @@ JavaScriptをクライアント側で実行する場合、ブラウザ (例：Ch
 
 ### ハードウェアリソース
 
-cgroup v2を使用した、コンテナのハードウェアリソースの割り当てを決定している。
+cgroup v2を使用し、コンテナのハードウェアリソースの割り当てを決定している。
 
 > - https://www.reddit.com/r/node/comments/1c29sge/comment/kzh8zw4/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
@@ -38,9 +38,9 @@ cgroup v2を使用した、コンテナのハードウェアリソースの割�
 
 ### 性能の違い
 
-JavaScriptやTypeScriptは、ブラウザよりもNode.jsで実行したほうが性能が高い。
+JavaScriptやTypeScriptは、ブラウザよりもNode.jsで実行したほうが高性能である。
 
-つまり、フロントエンドの処理をバックエンドに寄せることで、処理の性能が向上する可能性がある。
+つまり、フロントエンドの処理をバックエンドに寄せることで、性能向上の可能性がある。
 
 | 比較項目    | ブラウザ（例：Chrome）                       | Node.js                            |
 | ----------- | -------------------------------------------- | ---------------------------------- |
