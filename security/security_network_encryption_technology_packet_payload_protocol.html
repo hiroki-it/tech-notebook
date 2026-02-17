@@ -33965,7 +33965,7 @@
 <p><br></p>
 <h3 id="_4">改竄 (アプリケーションデータの書き換え) を防ぐため<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>『署名』や『ハッシュ関数』によって実現される。</p>
-<p>署名とハッシュ関数を使用して、相手に送ったアプリケーションデータと相手が受け取ったアプリケーションデータが同じか否かを確認することによって、アプリケーションデータの改竄を防ぐ。</p>
+<p>署名とハッシュ関数を使用して、送信したアプリケーションデータと受信したアプリケーションデータが同じか否かを確認することによって、アプリケーションデータの改竄を防ぐ。</p>
 <p><img alt="情報漏洩_改竄_なりすまし" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/情報漏洩_改竄_なりすまし_2.png" /></p>
 <blockquote>
 <ul>
@@ -34017,7 +34017,7 @@
 <h4 id="ssh">▼ SSHとは<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
 <p><img alt="ssh_public-key-authentication" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh_public-key-authentication.png" /></p>
 <p>公開鍵暗号方式に基づく暗号化プロトコル。</p>
-<p>公開鍵暗号方式と、公開鍵認証方式やパスワード認証方式の技術を使用して、インターネットを経由して、サーバーのリモート通信/操作を実行する。</p>
+<p>公開鍵暗号方式と、公開鍵認証方式やパスワード認証方式の技術を使用して、インターネットを経由し、サーバーのリモート通信/操作を実施する。</p>
 <p>物理Webサーバーであっても、Webサーバーであっても、SSH公開鍵認証によるリモート通信/操作の仕組みは同じである。</p>
 <table>
 <thead>
@@ -34106,7 +34106,7 @@
 <h4 id="_9">▼ リモートデスクトップとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><img alt="encryption_protocol_remote-desktop" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_remote-desktop.png" /></p>
 <p>ゲートウェイマシン上で稼働するブラウザを経由して、異なるネットワーク内のWebアプリと通信する。</p>
-<p>送信元マシンから宛先マシン上Webアプリケーションに対してコピーアンドペーストができない場合がある。</p>
+<p>送信元マシンから宛先マシン上Webアプリケーションに対してコピーアンドペーストできない場合がある。</p>
 <p>その場合、ローカルマシンのコピーを一度リモート先にあるメモ帳などにペーストし、これをあらためてコピーアンドペーストすると良い。</p>
 <table>
 <thead>
@@ -34151,7 +34151,7 @@
 </blockquote>
 <h4 id="_10">▼ 他の暗号化プロトコルとの組み合わせ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>ゲートウェイマシンとさえ通信できれば、該当のアプリケーションと通信できてしまうため、ゲートウェイマシン自体へのリクエストでも暗号化プロトコル (例：VPN) を使用したほうがよい。</p>
-<p>例えば、VPNで許可されたユーザーのみがゲートウェイマシンに通信できるようにしておく。</p>
+<p>例えば、VPNで許可されたユーザーのみがゲートウェイマシンへ通信できるようにしておく。</p>
 <blockquote>
 <ul>
 <li><a href="https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2">https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2</a></li>
@@ -34162,7 +34162,7 @@
 <h3 id="ssltlssecure-sockets-layertransport-layer-security">SSL/TLS：Secure Sockets Layer／Transport Layer Security<a class="headerlink" href="#ssltlssecure-sockets-layertransport-layer-security" title="Permanent link">&para;</a></h3>
 <h4 id="ssltls">▼ SSL/TLSとは<a class="headerlink" href="#ssltls" title="Permanent link">&para;</a></h4>
 <p>ハイブリッド暗号方式に基づく暗号化プロトコル。</p>
-<p>SSL/TLSを使用した通信では、通信にTLSライブラリ (例：OpenSSL、BoringSSL、LibreSSLなど) で証明書を作成し、認証方式に応じた場所に証明書を設定する必要がある。</p>
+<p>SSL/TLSを使用した通信では、TLSライブラリ (例：OpenSSL、BoringSSL、LibreSSLなど) で証明書を作成し、認証方式に応じた場所へ証明書を設定する必要がある。</p>
 <p>トランスポート層で、パケットペイロード内のアプリケーションデータの暗号化を担う。</p>
 <p>パケットペイロード全体を暗号化したい場合は、IPSecを使用する必要がある。</p>
 <p><img alt="encryption_protocol_ssh-tls" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_ssh-tls.png" /></p>
@@ -34176,7 +34176,7 @@
 <p>従来のSSL/TLSでは、宛先のサーバーに単一のサーバー証明書しか配置できなかった。</p>
 <p>仮想ホストを使用してサーバーに複数のドメインを設定していても、サーバー証明書は1つになってしまう。</p>
 <p>各ドメインを異なるユーザーが使用するようなシステム (例：レンタルサーバー) では、ユーザーのドメインごとにSSL/TLSを分離できない。</p>
-<p>これに対処するために、SNIを使用する。</p>
+<p>これに対処するため、SNIを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.idcf.jp/rentalserver/user-support/knowledge/ssl/sni.html">https://www.idcf.jp/rentalserver/user-support/knowledge/ssl/sni.html</a></li>
@@ -34186,9 +34186,9 @@
 <h4 id="l5l7">▼ <code>L5</code>〜<code>L7</code> のプロトコルの暗号化<a class="headerlink" href="#l5l7" title="Permanent link">&para;</a></h4>
 <p><code>L5</code>〜<code>L7</code> のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) を暗号化する。</p>
 <p>『<code>S</code>』 (例：SMTPS) や『<code>over TLS/SSL</code>』 (例：HTTP over TLS/SSL、SMTP over TLS/SSL) をつけて表記する。</p>
-<p>暗号化プロトコルを使用する場合、<code>L6</code> にて <code>L7</code> のアプリケーションデータを暗号化/復号かする。</p>
+<p>暗号化プロトコルを使用する場合、<code>L6</code> にて <code>L7</code> のアプリケーションデータを暗号化/復号する。</p>
 <p><strong>＊例＊</strong></p>
-<p>Chromeでは、HTTPSリクエストの使用時にサーバー証明書に不備がある (例：自己署名サーバー証明書を使用している) と、以下のような警告が表示される。</p>
+<p>Chromeでは、HTTPSリクエストの使用時にサーバー証明書の不備 (例：自己署名サーバー証明書を使用している場合) があると、以下のような警告が表示される。</p>
 <p><img alt="SSL接続に不備がある場合の警告" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg" /></p>
 <blockquote>
 <ul>
@@ -34212,7 +34212,7 @@
 <h4 id="_13">▼ クライアント認証<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>SSL/TLSプロトコルで暗号化するために、VPNツール (例：Zscaler) が中間認証局として機能し、署名したクライアント証明書 (おそらくリーフ証明書と呼ぶ) を発行する。</p>
 <p>このクライアント証明書をVPNのクライアント側 (例：開発PC) に設定する必要がある。</p>
-<p>また、もしクライアント側で仮想環境を作成したい場合、仮想環境がクライアント証明書が信頼できるように、設定する必要がある。</p>
+<p>また、もしクライアント側で仮想環境を作成したい場合、仮想環境内でクライアント証明書を信頼できるように設定する必要がある。</p>
 <p><strong>＊設定例＊</strong></p>
 <p>Dockerであればプロキシ設定を実施するか、Dockerfileにルート証明書を組み込む必要がある。</p>
 <p><img alt="vpn_certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png" /></p>
@@ -34327,7 +34327,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:51:01 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 17:48:53 JST">2026-02-17</span>
   </span>
 
     

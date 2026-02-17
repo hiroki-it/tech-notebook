@@ -34287,8 +34287,8 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="_20">クライアント証明書<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <p>リクエストの送信元に配置する証明書である。</p>
-<p>サーバー証明書をサーバー側に配置したうえで、クライアント証明書を持つクライアントのみがHTTPSリクエストでサーバー側に通信できるようにする。</p>
-<p>ペアになる秘密鍵もクライアント側に配置することになるため、クライアント側にはクライアント証明書と秘密鍵の両方を配置することになる。</p>
+<p>サーバー証明書をサーバー側へ配置したうえで、クライアント証明書を持つクライアントだけがHTTPSリクエストでサーバー側へ通信できるようにする。</p>
+<p>ペアになる秘密鍵もクライアント側に配置する。そのため、クライアント側にはクライアント証明書と秘密鍵の両方を配置する。</p>
 <p><img alt="client-certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client-certificate.png" /></p>
 <blockquote>
 <ul>
@@ -34357,7 +34357,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </ul>
 <h2 id="02-06-ca">02-06. CA証明書の配置<a class="headerlink" href="#02-06-ca" title="Permanent link">&para;</a></h2>
 <h3 id="ca-ca">自己署名CA証明書 (オレオレCA証明書) の作成<a class="headerlink" href="#ca-ca" title="Permanent link">&para;</a></h3>
-<p>サーバーやクライアント自身が自己署名する方法があるが、別に自己署名したルート認証局を作成する方法もある。</p>
+<p>サーバーやクライアント自身で自己署名する方法がある。一方で、自己署名したルート認証局を別途作成する方法もある。</p>
 <p>自己署名したオレオレのルート認証局で署名して、オレオレのサーバー証明書やクライアント証明書を作成できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>openssl<span class="w"> </span>x509<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-days<span class="w"> </span><span class="m">3650</span><span class="w"> </span><span class="se">\</span>
@@ -34755,7 +34755,7 @@ Email<span class="w"> </span>Address<span class="w"> </span><span class="o">[]</
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:57:28 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 17:48:53 JST">2026-02-17</span>
   </span>
 
     
