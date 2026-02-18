@@ -198,6 +198,7 @@ nav:
           - リクエスト／レスポンス方式: software/software_application_communication_style_request_response.md
           - パブリッシュ／サブスクライブ方式: software/software_application_communication_style_publish_subscribe.md
           - ストリーミング方式: software/software_application_communication_style_streaming.md
+          - データ共有方式: software/software_application_communication_style_sharing_data.md
       - ■ API:
           - ■ RESTful-API:
               - RESTful-API: software/software_application_api_restful.md
