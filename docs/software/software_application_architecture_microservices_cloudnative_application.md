@@ -562,7 +562,7 @@ flowchart LR
 
 [Microservices Pattern: Pattern: Messaging](https://microservices.io/patterns/communication-style/messaging)
 
-## 共有データ経由方式
+## 共有データ交換方式
 
 送信元マイクロサービスは作成したデータをストレージに保管します。
 
