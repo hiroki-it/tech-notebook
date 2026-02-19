@@ -32,7 +32,7 @@ func main() {
 
 	client := openfeature.NewClient("app")
 
-	// 機能フラグサービスから、フラグのboolean値を取得する
+	// 機能フラグサービス (例：unleash、flagdなど) から、フラグのboolean値を取得する
 	v2Enabled, _ := client.BooleanValue(
 		context.Background(),
 		"v2_enabled",

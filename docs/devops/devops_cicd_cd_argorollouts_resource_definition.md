@@ -99,6 +99,8 @@ spec:
       previewReplicaCount: 1
       autoPromotionEnabled: "true"
       scaleDownDelaySeconds: 30
+  template:
+  # ここでDeploymentと同じような設定を実装する
 ```
 
 > - https://argoproj.github.io/argo-rollouts/features/bluegreen/
@@ -127,15 +129,20 @@ spec:
     canary:
       steps:
         - setWeight: 25
+        - setWeight: 75
         - pause:
             duration: 10
+  template:
+  # ここでDeploymentと同じような設定を実装する
 ```
 
 > - https://argoproj.github.io/argo-rollouts/features/canary/
 > - https://argoproj.github.io/argo-rollouts/concepts/#canary
 > - https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
 
-サービスメッシュツールでは手動カナリアリリースを実装できるが、これと連携し、サービスメッシュツールで自動カナリアリリースを実現できる。
+サービスメッシュツールでは手動カナリアリリースを実装できる。
+
+これと連携し、サービスメッシュツール（例：Istio）で自動カナリアリリースを実現できる。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
