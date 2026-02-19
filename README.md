@@ -35,10 +35,10 @@
 $ mise install
 ```
 
-2. NodeでYarnをインストールする
+2. miseでYarnをインストールする
 
 ```bash
-$ npm install -g yarn
+$ mise use -g npm:yarn
 ```
 
 3. PIPでpythonのパッケージをインストールする
