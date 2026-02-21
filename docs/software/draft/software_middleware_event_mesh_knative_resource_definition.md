@@ -13,19 +13,40 @@ description: リソース定義＠Knativeの知見を記録しています。
 
 <br>
 
+## 01. ApiServerSource
+
+```yaml
+apiVersion: sources.knative.dev/v1
+kind: ApiServerSource
+metadata:
+  name: main-api-server-source
+spec:
+  serviceAccountName: api-server-source-sa
+  mode: Resource
+  resources:
+    - apiVersion: v1
+      kind: Event
+  sink:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: cloudevents-raw-endpoint
+      namespace: dora-cloudevents
+```
+
 ## 01. Service
 
 ```yaml
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: helloworld-go
+  name: foo-go
   namespace: default
 spec:
   template:
     spec:
       containers:
-        - image: ghcr.io/knative/helloworld-go:latest
+        - image: ghcr.io/knative/foo-go:latest
           env:
             - name: TARGET
               value: "Go Sample v1"
