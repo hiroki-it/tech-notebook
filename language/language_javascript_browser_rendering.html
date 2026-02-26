@@ -11718,7 +11718,7 @@
   <a href="#scrollresize" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ scrollイベントとresizeイベントに基づく読み出し
+        ▼ scrollイベントとresizeイベントに基づく遅延読み出し
       
     </span>
   </a>
@@ -11729,7 +11729,7 @@
   <a href="#intersection-observer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Intersection Observerによる要素の交差率に基づく読み出し
+        ▼ Intersection Observerの仕組みに基づく遅延読み出し
       
     </span>
   </a>
@@ -34010,7 +34010,7 @@
   <a href="#scrollresize" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ scrollイベントとresizeイベントに基づく読み出し
+        ▼ scrollイベントとresizeイベントに基づく遅延読み出し
       
     </span>
   </a>
@@ -34021,7 +34021,7 @@
   <a href="#intersection-observer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Intersection Observerによる要素の交差率に基づく読み出し
+        ▼ Intersection Observerの仕組みに基づく遅延読み出し
       
     </span>
   </a>
@@ -34848,10 +34848,11 @@
 <p>条件に合致した要素を随時読み込む。</p>
 <p>条件の指定方法には、<code>scroll</code>/<code>resize</code> イベントに基づく方法と、Intersection Observerによる要素の交差率に基づく方法がある。</p>
 <p>画像ファイルの遅延読み出しでは、読み出し前にダミー画像を表示させておき、遅延読み出し時にダミー画像パスを本来の画像パスに上書きする。</p>
-<h4 id="scrollresize">▼ scrollイベントとresizeイベントに基づく読み出し<a class="headerlink" href="#scrollresize" title="Permanent link">&para;</a></h4>
+<h4 id="scrollresize">▼ scrollイベントとresizeイベントに基づく遅延読み出し<a class="headerlink" href="#scrollresize" title="Permanent link">&para;</a></h4>
 <p>scrollイベントとresizeイベントを監視し、これらのイベントの発火をトリガーにして、画面内に新しく追加された要素を随時読み込む。</p>
-<h4 id="intersection-observer">▼ Intersection Observerによる要素の交差率に基づく読み出し<a class="headerlink" href="#intersection-observer" title="Permanent link">&para;</a></h4>
-<p>Intersection Observerによる要素の交差率を監視し、指定の交差率を超えた要素を随時読み込む。</p>
+<h4 id="intersection-observer">▼ Intersection Observerの仕組みに基づく遅延読み出し<a class="headerlink" href="#intersection-observer" title="Permanent link">&para;</a></h4>
+<p>Intersection Observerの仕組みでは、特定のHTML要素を指定し、これがほかの要素とどのくらい交差しているかを非同期に検知できる。</p>
+<p>指定の交差率を超えて、初めてその要素を読み込む。</p>
 <p>例えば、交差率の閾値を『<code>0.5</code>』と設定すると、ターゲットエレメントの交差率が『<code>0.5</code>』を超えた要素を随時読み込む。</p>
 <p><img alt="intersection-observer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/intersection-observer.png" /></p>
 <p><strong>＊実装例＊</strong></p>
@@ -34903,8 +34904,8 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="c1">// ref.current 要素を取得できない場合</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">element</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ref</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">element</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">targetElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ref</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">targetElement</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -34919,7 +34920,7 @@
 <span class="w">      </span><span class="p">{</span><span class="nx">rootMargin</span><span class="p">}</span>
 <span class="w">    </span><span class="p">);</span>
 
-<span class="w">    </span><span class="nx">intersectionObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">intersectionObserver</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="nx">targetElement</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">intersectionObserver</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
 <span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">rootMargin</span><span class="p">,</span><span class="w"> </span><span class="nx">shouldRender</span><span class="p">]);</span>
 
@@ -34938,6 +34939,13 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">/&gt;</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://www.telerik.com/blogs/intersection-observer-api-makes-lazy-loading-a-snap">https://www.telerik.com/blogs/intersection-observer-api-makes-lazy-loading-a-snap</a></li>
+<li><a href="https://velog.io/@katanazero86/Intersection-Observer-API">https://velog.io/@katanazero86/Intersection-Observer-API</a></li>
+<li><a href="https://ics.media/entry/190902/">https://ics.media/entry/190902/</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="eager-loading">Eager Loading<a class="headerlink" href="#eager-loading" title="Permanent link">&para;</a></h3>
 <h4 id="eager-loading_1">▼ Eager Loadingとは<a class="headerlink" href="#eager-loading_1" title="Permanent link">&para;</a></h4>
@@ -35157,7 +35165,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月26日 12:09:31 JST">2026-02-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月26日 12:28:08 JST">2026-02-26</span>
   </span>
 
     
