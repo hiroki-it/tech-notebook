@@ -305,13 +305,15 @@ Downloading処理の優先順位を上げるように宣言する。
 
 画像ファイルの遅延読み出しでは、読み出し前にダミー画像を表示させておき、遅延読み出し時にダミー画像パスを本来の画像パスに上書きする。
 
-#### ▼ scrollイベントとresizeイベントに基づく読み出し
+#### ▼ scrollイベントとresizeイベントに基づく遅延読み出し
 
 scrollイベントとresizeイベントを監視し、これらのイベントの発火をトリガーにして、画面内に新しく追加された要素を随時読み込む。
 
-#### ▼ Intersection Observerによる要素の交差率に基づく読み出し
+#### ▼ Intersection Observerの仕組みに基づく遅延読み出し
 
-Intersection Observerによる要素の交差率を監視し、指定の交差率を超えた要素を随時読み込む。
+Intersection Observerの仕組みでは、特定のHTML要素を指定し、これがほかの要素とどのくらい交差しているかを非同期に検知できる。
+
+指定の交差率を超えて、初めてその要素を読み込む。
 
 例えば、交差率の閾値を『`0.5`』と設定すると、ターゲットエレメントの交差率が『`0.5`』を超えた要素を随時読み込む。
 
@@ -368,8 +370,8 @@ JSX.Element
     }
 
     // ref.current 要素を取得できない場合
-    const element = ref.current;
-    if (!element) {
+    const targetElement = ref.current;
+    if (!targetElement) {
       return;
     }
 
@@ -384,7 +386,7 @@ JSX.Element
       {rootMargin}
     );
 
-    intersectionObserver.observe(element);
+    intersectionObserver.observe(targetElement);
     return () => intersectionObserver.disconnect();
   }, [rootMargin, shouldRender]);
 
@@ -405,6 +407,10 @@ JSX.Element
   }
 />
 ```
+
+> - https://www.telerik.com/blogs/intersection-observer-api-makes-lazy-loading-a-snap
+> - https://velog.io/@katanazero86/Intersection-Observer-API
+> - https://ics.media/entry/190902/
 
 <br>
 
