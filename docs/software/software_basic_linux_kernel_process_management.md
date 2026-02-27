@@ -200,15 +200,15 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 例えば、Node.jsは次のようにシングルスレッドでプログラムを実行する。
 
-```yaml
-プログラムを実行するプロセス
+```text
+プログラムを実行する親プロセス
 ├─ メインスレッド # アプリケーション全体の処理を実行する
 │  ├─ 処理（HTTPリクエスト処理）
 │  ├─ 処理（トランザクション処理）
 │  └─ 処理（計算処理）
 │
 └─ スレッドプール # I/O処理のみをバックグラウンドで並列処理する
-└─ スレッド（ファイルI/O処理）
+   └─ スレッド（ファイルI/O処理）
 ```
 
 #### ▼ Go
@@ -217,8 +217,8 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 スレッド数はCPUのコア数に応じて増える。
 
-```yaml
-プログラムを実行するプロセス
+```text
+プログラムを実行する親プロセス
 ├─ スレッド
 │  └─ プロセッサ
 │     ├─ Goroutine-1（HTTPリクエスト処理）
@@ -230,9 +230,41 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 │     └─ Goroutine-2（ファイルI/O処理）
 │
 └─ スレッド
-└─ プロセッサ
-├─ Goroutine-1（HTTPリクエスト処理）
-└─ Goroutine-2（計算処理）
+   └─ プロセッサ
+      ├─ Goroutine-1（HTTPリクエスト処理）
+      └─ Goroutine-2（計算処理）
+```
+
+#### ▼ Go上でNode.jsを実行する
+
+Go上でNode.jsを実行する場合、goroutineがnode.jsを実行すると、親プロセス上にある子プロセスにdenoプロセスが立ちあがる。
+
+```text
+プログラムを実行する親プロセス
+├─ スレッド
+│  └─ goroutines
+│     ├─ goroutine #1
+│     │  └─ Node.js実行（例: exec/spawn）
+│     │
+│     ├─ goroutine #2
+│     │  └─ Node.js実行（例: exec/spawn）
+│     │
+│     ├─ ...
+│     │
+│     └─ goroutine #N
+│        └─ Node.js実行（例: exec/spawn）
+│
+└─ 子プロセス
+   ├─ Node.jsプロセス #1
+   │  └─ スレッド
+   │
+   ├─ Node.jsプロセス #2
+   │  └─ スレッド
+   │
+   ├─ ...
+   │
+   └─ Node.jsプロセス #n
+      └─ スレッド
 ```
 
 <br>
