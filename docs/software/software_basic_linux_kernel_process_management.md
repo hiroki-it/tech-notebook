@@ -239,7 +239,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 #### ▼ Go上でNode.jsを実行する
 
-Go上でNode.jsを実行する場合、goroutineがnode.jsを実行すると、親プロセス上にある子プロセスにdenoプロセスが立ちあがる。
+Go上でNode.jsを実行する場合、goroutineがnode.jsを実行すると、親プロセス上にある子プロセスとしてdenoプロセスが立ちあがる。
 
 ```text
 プログラムを実行する親プロセス
