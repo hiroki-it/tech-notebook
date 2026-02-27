@@ -54,6 +54,8 @@ hide:
 
 - #### [CI/CD](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cicd.html)
 
+- #### [データ処理ワークフロー](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_data_processing_workflow.html)
+
 - #### <u>マイクロサービス</u>
 
   > - ##### [マイクロサービス設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_design.html)

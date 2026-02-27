@@ -180,6 +180,7 @@ nav:
           - クラウドネイティブ技術を使用したマイクロサービスアーキテクチャの設計例: software/software_application_architecture_microservices_cloudnative.md
           - API Gateway: software/software_application_architecture_microservices_api_gateway.md
           - CI/CD: software/software_application_architecture_microservices_cicd.md
+          - データ処理ワークフロー: software/software_application_architecture_microservices_services_data_processing_workflow.md
           - ■ マイクロサービス:
               - マイクロサービス設計: software/software_application_architecture_microservices_services_design.md
               - マイクロサービス間通信: software/software_application_architecture_microservices_services_connection.md
