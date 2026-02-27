@@ -37498,7 +37498,7 @@
 <p><br></p>
 <h2 id="_27">コンテナ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
 <h3 id="_28">ヘルスチェックを設定する<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<p>!<a href="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png">https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png</a></p>
+<p><img alt="kubernetes_probe" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png" /></p>
 <p>kubeletは、コンテナをヘルスチェック (例：StartupProbe ➡️ LivenessProbe／ReadinessProbe) し、障害を防ぐ。</p>
 <p>LivenessProbeヘルスチェックとReadinessProbeヘルスチェックの間に順番はなく、独立して実行される。</p>
 <p>言語やフレームワークによってはStartupProbe用のエンドポイントが提供されていない場合があり、ReadinessProbeヘルスチェック用のエンドポイントをStartupProbeヘルスチェックの対象として代用する。</p>
@@ -37569,7 +37569,7 @@
 </ul>
 <p>なお、<code>.spec.terminationGracePeriodSeconds</code> の秒数が長すぎるとPodの終了に時間がかかりすぎるようになり、Podの更新やClusterのアップグレードの時間にも影響が出る。</p>
 <p>長くとも <code>120</code> 秒以内にするとよい。</p>
-<p>!<a href="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png">https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png</a></p>
+<p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown">https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown</a></li>
@@ -38805,7 +38805,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 16:41:20 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月27日 19:26:43 JST">2026-02-27</span>
   </span>
 
     
