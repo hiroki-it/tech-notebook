@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kaniko
-description: Kanikoの知見を記録しています。
+title: 【IT技術の知見】Kaniko＠Docker
+description: Kaniko＠Dockerの知見を記録しています。
 ---
 
-# Kaniko
+# Kaniko＠Docker
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Kanikoの知見を記録しています。
 
 ## 01. Kanikoとは
 
-コンテナ内でコンテナイメージをビルドする。
+コンテナ内でコンテナイメージのビルドをエミュレートする。
 
 これにより、Docker in Dockerの問題を回避できる。
 
