@@ -2335,9 +2335,7 @@ class DogOrder
 
 データをセットで扱う必要があるエンティティのまとまりのこと。
 
-依存関係の観点からみた集約については、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
 
 <br>
 

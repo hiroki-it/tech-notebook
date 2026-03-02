@@ -778,7 +778,19 @@ CQRSと相性が良い。
 
 #### ▼ モデリングフレームワーク
 
-- イベントストーミング
+業務フローやその中でドメインイベントを見つけるための方法として、イベントストーミングがある。
+
+ただ、イベントソーシングパターンだけでなく、ステートソーシングパターンでも使える。
+
+議論の中で発生したドメインイベントを線で結ぶ。
+
+![event-storming_domain-event.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/event-storming_domain-event.png)
+
+画面ごとにドメインイベントをつなげ、フロントエンドやバックエンドの機能ロジックを設計していく。
+
+![event-storming_domain-event.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/event-storming_domain-event.png)
+
+> https://www.amazon.co.jp/dp/483998820X
 
 #### ▼ テーブル構造
 
