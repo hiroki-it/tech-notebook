@@ -61,7 +61,7 @@ flowchart LR
 
 Dockerやクラウドが広まって以降、プレゼンテーション・ドメイン分離やAPI Gateway配置のアーキテクチャスタイルを採用することが、当然のようになってきた印象です。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio (2).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio (2).png).png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio (2).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-関連するアーキテクチャスタイル.drawio (2).png)
 
 以下の表で、各アーキテクチャスタイルの責務と結合度に関して概説しました。
 
@@ -442,7 +442,7 @@ flowchart LR
 - クライアントサイド暗号化のためのS3マネージド暗号化キー (図では省略)
 - Kubernetesリポジトリ内のSOPS (図では省略)
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png).png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png)
 
 # 08-02. 永続データ管理
 
@@ -568,7 +568,7 @@ flowchart LR
 
 宛先マイクロサービスはストレージをポーリングし、新しいデータが追加され次第、ストレージからこれを読み込みます。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png).png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png)
 
 ## 振り返り
 

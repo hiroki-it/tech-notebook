@@ -127,7 +127,7 @@ CD設定のコードは、マイクロサービス間で統一するために、
 
 ArgoCDを採用している場合、ArgoCDのルートApplicationをプラットフォームリポジトリ、各チームの親Applicationを共有リポジトに配置します。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png).png)
+![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png)
 
 ### RPC-API開発ツール
 

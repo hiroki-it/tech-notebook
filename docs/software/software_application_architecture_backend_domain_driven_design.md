@@ -786,7 +786,7 @@ CQRSと相性が良い。
 
 ![event-storming_domain-event.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/event-storming_domain-event.png)
 
-画面ごとにドメインイベントをつなげ、フロントエンドやバックエンドの機能ロジックを設計していく。
+Figmaなどのツールを使用して、画面ごとにドメインイベントをつなげ、フロントエンドやバックエンドの機能ロジックを設計していく。
 
 ![event-storming_domain-event.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/event-storming_domain-event.png)
 
