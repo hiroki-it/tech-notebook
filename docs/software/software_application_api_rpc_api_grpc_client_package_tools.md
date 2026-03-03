@@ -21,6 +21,8 @@ description: クライアントツール＠gRPCクライアントパッケージ
 
 gRPCサーバーのテストに使える。
 
+> - https://github.com/ktr0731/evans
+
 <br>
 
 ### セットアップ

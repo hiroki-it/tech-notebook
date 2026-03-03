@@ -237,24 +237,24 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
       └─ Goroutine-2（計算処理）
 ```
 
-#### ▼ Go上でNode.jsを実行する
+#### ▼ Go上でNode.js環境を実行する
 
-Go上でNode.jsを実行する場合、goroutineがnode.jsを実行すると、親プロセス上にある子プロセスとしてdenoプロセスが立ちあがる。
+Goでは、goroutineがNode.js環境を実行すると、親プロセス上にある子プロセスとしてdenoプロセスが立ちあがる。
 
 ```text
 プログラムを実行する親プロセス
 ├─ スレッド
 │  └─ goroutines
 │     ├─ goroutine #1
-│     │  └─ Node.js実行（例: exec/spawn）
+│     │  └─ Node.js環境を実行（例: exec/spawn）
 │     │
 │     ├─ goroutine #2
-│     │  └─ Node.js実行（例: exec/spawn）
+│     │  └─ Node.js環境を実行（例: exec/spawn）
 │     │
 │     ├─ ...
 │     │
 │     └─ goroutine #N
-│        └─ Node.js実行（例: exec/spawn）
+│        └─ Node.js環境を実行（例: exec/spawn）
 │
 └─ 子プロセス
    ├─ Node.jsプロセス #1

@@ -293,7 +293,9 @@ Route (app)                              Size     First Load JS
 
 記入中...
 
-#### ▼ APIルートモード
+#### ▼ APIルートモード（Route Handlerモード）
+
+『Route Handlerモード』ともいう。
 
 `app/api/foo` ディレクトリに `route.ts` ファイルをおくと、`app/api/` がエンドポイントのAPIルートモードになる。
 
@@ -307,6 +309,16 @@ export default (_: NextApiRequest, res: NextApiResponse) => {
   res.status(200).json({ok: true});
 };
 ```
+
+<br>
+
+### ランタイム
+
+#### ▼ Node.jsランタイム
+
+JavaScriptまたはTypeScriptをNode.js
+
+#### ▼ Edgeランタイム
 
 <br>
 
