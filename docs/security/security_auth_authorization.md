@@ -38,18 +38,18 @@ description: 認可＠認証／認可の知見を記録しています。
 
 ### エンドポイントの分割
 
-管理者ロールとそれ以外のロールを定義する場合を考える。
+テナントが存在するアプリケーションで、テナント横断的な管理者ロールとそれ以外のロールを定義する場合を考える。
 
 管理者ロールでは操作できるデータが横断的になる。
 
 管理者ロールとそれ以外の認可ロジックを一緒にすると複雑になるため、管理者エンドポイントを別に定義しつつ、管理者用の認可ロジックは切り分けることが適切である。
 
-|        | 管理者ロール                                | それ以外のロール                |
-| ------ | ------------------------------------------- | ------------------------------- |
-| GET    | ・`/admin/orders`<br>・`/admin/orders/{id}` | ・`/orders`<br>・`/orders/{id}` |
-| POST   | `/admin/orders`                             | `/orders`                       |
-| PUT    | `/admin/orders/{id}`                        | `/orders/{id}`                  |
-| DELETE | `/admin/orders/{id}`                        | `/orders/{id}`                  |
+|        | テナント横断的な管理者ロール                                                            | 各テナントのロール              |
+| ------ | --------------------------------------------------------------------------------------- | ------------------------------- |
+| GET    | ・`/admin/organizations/{orgId}/orders`<br>・`/admin/organizations/{orgId}/orders/{id}` | ・`/orders`<br>・`/orders/{id}` |
+| POST   | `/admin/organizations/{orgId}/orders`                                                   | `/orders`                       |
+| PUT    | `/admin/organizations/{orgId}/orders/{id}`                                              | `/orders/{id}`                  |
+| DELETE | `/admin/organizations/{orgId}/orders/{id}`                                              | `/orders/{id}`                  |
 
 <br>
 
