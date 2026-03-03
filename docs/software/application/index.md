@@ -104,6 +104,7 @@ hide:
   > - ##### [︎gRPC](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc.html)
   > - ##### <u>クライアントパッケージ</u>
   >   > - ##### [Go](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc_client_package_go.html)
+      >   > - ##### [クライアントツール](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc_client_package_tools.html)
 
 - #### <u>GraphQL-API</u>
 

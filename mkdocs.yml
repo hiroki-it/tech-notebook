@@ -209,6 +209,7 @@ nav:
               - gRPC: software/software_application_api_rpc_api_grpc.md
               - ■ クライアントパッケージ:
                   - Go: software/software_application_api_rpc_api_grpc_client_package_go.md
+                  - クライアントツール: software/software_application_api_rpc_api_grpc_client_package_tools.md
           - ■ GraphQL-API:
               - GraphQL: software/software_application_api_graphql_api_graphql.md
       - ■ ワークフロー:
