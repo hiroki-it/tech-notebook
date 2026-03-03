@@ -32929,10 +32929,49 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#api" class="md-nav__link">
+  <a href="#apiroute-handler" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ APIルートモード
+        ▼ APIルートモード（Route Handlerモード）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ランタイム
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ランタイム">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Node.jsランタイム
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Edgeランタイム
       
     </span>
   </a>
@@ -32962,7 +33001,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         言語の実行環境
@@ -32973,7 +33012,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         プレフィクス
@@ -32996,7 +33035,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 仕組み
@@ -33107,7 +33146,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ディレクトリ
@@ -33118,7 +33157,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 動的ルート
@@ -33134,7 +33173,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         ヘルスチェック
@@ -33438,7 +33477,8 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <p>記入中...</p>
 <h4 id="ssg_1">▼ SSGモード<a class="headerlink" href="#ssg_1" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
-<h4 id="api">▼ APIルートモード<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
+<h4 id="apiroute-handler">▼ APIルートモード（Route Handlerモード）<a class="headerlink" href="#apiroute-handler" title="Permanent link">&para;</a></h4>
+<p>『Route Handlerモード』ともいう。</p>
 <p><code>app/api/foo</code> ディレクトリに <code>route.ts</code> ファイルをおくと、<code>app/api/</code> がエンドポイントのAPIルートモードになる。</p>
 <p>APIルートモードとほかのモード（CSR、SSR、SSG）はディレクトリを分けて共存させられるため、1つのアプリケーションでフロントエンドアプリケーションとBFFを兼ねることができる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// app/api/foo/route.tsファイル</span>
@@ -33449,14 +33489,19 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <span class="p">};</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="_4">ランタイム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="nodejs">▼ Node.jsランタイム<a class="headerlink" href="#nodejs" title="Permanent link">&para;</a></h4>
+<p>JavaScriptまたはTypeScriptをNode.js</p>
+<h4 id="edge">▼ Edgeランタイム<a class="headerlink" href="#edge" title="Permanent link">&para;</a></h4>
+<p><br></p>
 <h2 id="03">03. 環境変数<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_4">言語の実行環境<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_5">言語の実行環境<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>export</code> コマンドで出力する</li>
 <li>コンテナの環境変数として出力する</li>
 </ul>
 <p><br></p>
-<h3 id="_5">プレフィクス<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">プレフィクス<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -33495,7 +33540,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 </table>
 <p><br></p>
 <h3 id="env"><code>.env</code> ファイル<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ 仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h4 id="_7">▼ 仕組み<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><code>.env</code> ファイルを自動的に読み込み、また名前に応じて処理が変わる。</p>
 <p>dotenvパッケージは不要である。</p>
 <h4 id="env_1">▼ <code>.env</code> ファイル<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h4>
@@ -33538,7 +33583,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <p><br></p>
 <h2 id="04">04. ルーティング<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="uiapi">UIとAPI<a class="headerlink" href="#uiapi" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ ディレクトリ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ ディレクトリ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>Next.jsでは、ブラウザルーティングとAPIエンドポイントを区別している。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── layout.tsx</span><span class="w">                  </span><span class="c1"># 共通レイアウトであり、全ページに適用される</span>
@@ -33553,7 +33598,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <span class="l l-Scalar l-Scalar-Plain">│       └── [id]/</span><span class="w">               </span><span class="c1"># 動的ルート（例：/api/posts/123）</span>
 <span class="l l-Scalar l-Scalar-Plain">│           └── route.ts</span><span class="w">        </span><span class="c1"># example.com/api/posts/:id</span>
 </code></pre></div>
-<h4 id="_8">▼ 動的ルート<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ 動的ルート<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>ルーティングにおけるパスパラメーターの値を事前に定義せず、処理の中で決定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">NextRequest</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;next/server&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">z</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;zod&quot;</span><span class="p">;</span>
@@ -33586,7 +33631,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_9">ヘルスチェック<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_10">ヘルスチェック<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── api/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   └── healthz</span>
@@ -33618,7 +33663,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 18:50:03 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月3日 19:58:49 JST">2026-03-03</span>
   </span>
 
     

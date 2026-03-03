@@ -8584,7 +8584,7 @@
   <a href="#gonodejs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Go上でNode.jsを実行する
+        ▼ Go上でNode.js環境を実行する
       
     </span>
   </a>
@@ -33575,7 +33575,7 @@
   <a href="#gonodejs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Go上でNode.jsを実行する
+        ▼ Go上でNode.js環境を実行する
       
     </span>
   </a>
@@ -34046,21 +34046,21 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
       ├─ Goroutine-1（HTTPリクエスト処理）
       └─ Goroutine-2（計算処理）
 </code></pre></div>
-<h4 id="gonodejs">▼ Go上でNode.jsを実行する<a class="headerlink" href="#gonodejs" title="Permanent link">&para;</a></h4>
-<p>Go上でNode.jsを実行する場合、goroutineがnode.jsを実行すると、親プロセス上にある子プロセスとしてdenoプロセスが立ちあがる。</p>
+<h4 id="gonodejs">▼ Go上でNode.js環境を実行する<a class="headerlink" href="#gonodejs" title="Permanent link">&para;</a></h4>
+<p>Goでは、goroutineがNode.js環境を実行すると、親プロセス上にある子プロセスとしてdenoプロセスが立ちあがる。</p>
 <div class="highlight"><pre><span></span><code>プログラムを実行する親プロセス
 ├─ スレッド
 │  └─ goroutines
 │     ├─ goroutine #1
-│     │  └─ Node.js実行（例: exec/spawn）
+│     │  └─ Node.js環境を実行（例: exec/spawn）
 │     │
 │     ├─ goroutine #2
-│     │  └─ Node.js実行（例: exec/spawn）
+│     │  └─ Node.js環境を実行（例: exec/spawn）
 │     │
 │     ├─ ...
 │     │
 │     └─ goroutine #N
-│        └─ Node.js実行（例: exec/spawn）
+│        └─ Node.js環境を実行（例: exec/spawn）
 │
 └─ 子プロセス
    ├─ Node.jsプロセス #1
@@ -34153,7 +34153,7 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月27日 19:26:43 JST">2026-02-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月3日 19:58:49 JST">2026-03-03</span>
   </span>
 
     
