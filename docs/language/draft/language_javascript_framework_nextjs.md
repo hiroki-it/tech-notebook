@@ -480,3 +480,55 @@ export function GET() {
 ```
 
 <br>
+
+## 05. ミドルウェア
+
+### 認証処理
+
+```typescript
+import {auth} from "@/lib/auth";
+import logger from "@/lib/logger";
+
+export default auth((req) => {
+  const startTime = Date.now();
+  const isLoggedIn = !!req.auth;
+  const {pathname} = req.nextUrl;
+
+  const publicRoutes = ["/login"];
+  const isPublicRoute = publicRoutes.some((route) =>
+    pathname.startsWith(route),
+  );
+
+  let response;
+
+  if (!isLoggedIn && !isPublicRoute) {
+    const loginUrl = new URL("/login", req.nextUrl.origin);
+    loginUrl.searchParams.set("callbackUrl", pathname);
+    response = Response.redirect(loginUrl);
+  } else if (isLoggedIn && pathname === "/login") {
+    response = Response.redirect(new URL("/profile", req.nextUrl.origin));
+  }
+
+  const duration = Date.now() - startTime;
+
+  logger.info(
+    {
+      type: "accelog",
+      method: req.method,
+      path: pathname,
+      statusCode: response?.status || 200,
+      duration,
+      userId: req.auth?.user?.userId,
+    },
+    "HTTP request",
+  );
+
+  return response;
+});
+
+export const config = {
+  matcher: ["/((?!auth|health|_next/static|_next/image|favicon.ico).*)"],
+};
+```
+
+<br>
