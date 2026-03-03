@@ -316,9 +316,25 @@ export default (_: NextApiRequest, res: NextApiResponse) => {
 
 #### ▼ Node.jsランタイム
 
-JavaScriptまたはTypeScriptをNode.js
+JavaScriptまたはTypeScriptをNode.js上で稼働させる。
+
+Next.jsの多くのコンポーネントがNode.jsランタイムである。
+
+> - https://nextjs.org/docs/app/api-reference/file-conventions/proxy
 
 #### ▼ Edgeランタイム
+
+JavaScriptまたはTypeScriptをエッジ（例：Cloudflare、AWS CloudFront、Fastlyなど）
+
+Next.jsでは、`export const runtime = 'edge'`を宣言すると、Edgeランタイムで動かせる。
+
+```typescript
+export const runtime = 'edge'
+
+...
+```
+
+> - https://nextjs.org/docs/app/api-reference/edge
 
 <br>
 
