@@ -33188,6 +33188,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05. ミドルウェア
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05. ミドルウェア">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        認証処理
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -33660,6 +33688,53 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
+<h2 id="05">05. ミドルウェア<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_11">認証処理<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">auth</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/lib/auth&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="nx">logger</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@/lib/logger&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">auth</span><span class="p">((</span><span class="nx">req</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">startTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!!</span><span class="nx">req</span><span class="p">.</span><span class="nx">auth</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">pathname</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">nextUrl</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">publicRoutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/login&quot;</span><span class="p">];</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">isPublicRoute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">publicRoutes</span><span class="p">.</span><span class="nx">some</span><span class="p">((</span><span class="nx">route</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">    </span><span class="nx">pathname</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="nx">route</span><span class="p">),</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">isPublicRoute</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">loginUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="s2">&quot;/login&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">nextUrl</span><span class="p">.</span><span class="nx">origin</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">loginUrl</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;callbackUrl&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">pathname</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Response</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="nx">loginUrl</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isLoggedIn</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">pathname</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;/login&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Response</span><span class="p">.</span><span class="nx">redirect</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">URL</span><span class="p">(</span><span class="s2">&quot;/profile&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">nextUrl</span><span class="p">.</span><span class="nx">origin</span><span class="p">));</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">startTime</span><span class="p">;</span>
+
+<span class="w">  </span><span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;accelog&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">req.method</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">path</span><span class="o">:</span><span class="w"> </span><span class="kt">pathname</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">response?.status</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">duration</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="kt">req.auth?.user?.userId</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;HTTP request&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">matcher</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/((?!auth|health|_next/static|_next/image|favicon.ico).*)&quot;</span><span class="p">],</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
 
 
 
@@ -33680,7 +33755,7 @@ Route<span class="w"> </span><span class="o">(</span>app<span class="o">)</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月3日 20:21:25 JST">2026-03-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月3日 20:36:15 JST">2026-03-03</span>
   </span>
 
     
