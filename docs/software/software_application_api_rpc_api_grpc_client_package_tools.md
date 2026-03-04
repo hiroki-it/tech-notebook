@@ -43,7 +43,7 @@ gRPCサーバーのリフレクション機能を使用する。
 $ evans \
     -r \
     -p 50051 \
-    --host localhost cli user.v1.UserService.GetUser '{ "user_id":"1" }'
+    --host localhost cli call user.v1.UserService.GetUser '{ "user_id":"1" }'
 ```
 
 <br>
@@ -55,8 +55,26 @@ $ evans \
 ```bash
 $ evans \
     --proto ./proto/user/v1/user_service.proto \
-    --path ./proto -p 50051 \
-    --host localhost cli user.v1.UserService.GetUser '{ "user_id":"1" }'
+    --path ./proto \
+    --port 50051 \
+    --host localhost \
+    cli call user.v1.UserService.GetUser '{ "user_id":"1" }'
+```
+
+### --header
+
+メタデータを設定し、gRPCサーバーにリクエストを送信する。
+
+アクセストークンが必要な場合に役立つ。
+
+```bash
+$ evans \
+    --proto ./proto/user/v1/user_service.proto \
+    --path ./proto \
+    --port 50051 \
+    --header token=*****
+    --host localhost \
+    cli call user.v1.UserService.GetUser '{ "user_id":"1" }'
 ```
 
 <br>
