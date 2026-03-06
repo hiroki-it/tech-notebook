@@ -1288,19 +1288,22 @@ resource "aws_acm_certificate" "foo" {
 
 例として、RDSのクラスターパラメーターグループとサブネットグループを示す。
 
-クラスターパラメーターグループとサブネットグループは、DBクラスターに紐付いている。新しいクラスターパラメーターグループに紐付け直した後、既存のものを削除する必要がある。
+RDSのアップグレード時、パラメーターグループは再作成する必要がある。
+
+このときに既存のパラメーターグループと同名だと衝突してしまうため、パラメーターグループの名前やリソース名にはファミリー名をつけるといよい。
 
 ```terraform
 # ---------------------------------------------
 # AWS RDS Cluster Parameter Group
 # ---------------------------------------------
-resource "aws_rds_cluster_parameter_group" "this" {
+resource "aws_rds_cluster_parameter_group" "aurora_mysql80" {
+
+  name = "foo-aurora-mysql80"
+
+  family = "aurora-mysql8.0"
 
   ...
 
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 # ---------------------------------------------
@@ -1310,9 +1313,6 @@ resource "aws_db_subnet_group" "this" {
 
   ...
 
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 ```
 
@@ -1320,19 +1320,22 @@ resource "aws_db_subnet_group" "this" {
 
 例として、Redisのパラメーターグループとサブネットグループを示す。
 
-パラメーターグループとサブネットグループは、RDSに紐付いている。新しいパラメーターグループとサブネットグループに紐付け直した後、既存のものを削除する必要がある。
+RDSのアップグレード時、パラメーターグループは再作成する必要がある。
+
+このときに既存のパラメーターグループと同名だと衝突してしまうため、パラメーターグループの名前やリソース名にはファミリー名をつけるといよい。
 
 ```terraform
 # ---------------------------------------------
 # AWS Redis Parameter Group
 # ---------------------------------------------
-resource "aws_elasticache_parameter_group" "redis" {
+resource "aws_elasticache_parameter_group" "redis_28" {
+
+  name = "foo-redis28"
+
+  family = "redis2.8"
 
   ...
 
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 # ---------------------------------------------
@@ -1342,9 +1345,6 @@ resource "aws_elasticache_subnet_group" "redis" {
 
   ...
 
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 ```
 
