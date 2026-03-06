@@ -35770,17 +35770,19 @@
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>例として、RDSのクラスターパラメーターグループとサブネットグループを示す。</p>
-<p>クラスターパラメーターグループとサブネットグループは、DBクラスターに紐付いている。新しいクラスターパラメーターグループに紐付け直した後、既存のものを削除する必要がある。</p>
+<p>RDSのアップグレード時、パラメーターグループは再作成する必要がある。</p>
+<p>このときに既存のパラメーターグループと同名だと衝突してしまうため、パラメーターグループの名前やリソース名にはファミリー名をつけるといよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># AWS RDS Cluster Parameter Group</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster_parameter_group&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_rds_cluster_parameter_group&quot;</span><span class="w"> </span><span class="nv">&quot;aurora_mysql80&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-aurora-mysql80&quot;</span>
+
+<span class="w">  </span><span class="na">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;aurora-mysql8.0&quot;</span>
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">create_before_destroy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1"># ---------------------------------------------</span>
@@ -35790,24 +35792,23 @@
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">create_before_destroy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
 <p>例として、Redisのパラメーターグループとサブネットグループを示す。</p>
-<p>パラメーターグループとサブネットグループは、RDSに紐付いている。新しいパラメーターグループとサブネットグループに紐付け直した後、既存のものを削除する必要がある。</p>
+<p>RDSのアップグレード時、パラメーターグループは再作成する必要がある。</p>
+<p>このときに既存のパラメーターグループと同名だと衝突してしまうため、パラメーターグループの名前やリソース名にはファミリー名をつけるといよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># AWS Redis Parameter Group</span>
 <span class="c1"># ---------------------------------------------</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_elasticache_parameter_group&quot;</span><span class="w"> </span><span class="nv">&quot;redis&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_elasticache_parameter_group&quot;</span><span class="w"> </span><span class="nv">&quot;redis_28&quot;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-redis28&quot;</span>
+
+<span class="w">  </span><span class="na">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;redis2.8&quot;</span>
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">create_before_destroy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1"># ---------------------------------------------</span>
@@ -35817,9 +35818,6 @@
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="w">  </span><span class="nb">lifecycle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">create_before_destroy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="ignore_changes">▼ ignore_changes<a class="headerlink" href="#ignore_changes" title="Permanent link">&para;</a></h4>
@@ -36107,7 +36105,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 16:41:20 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月6日 14:38:51 JST">2026-03-06</span>
   </span>
 
     

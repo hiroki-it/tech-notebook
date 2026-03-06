@@ -33522,31 +33522,28 @@
 </ul>
 </li>
 <li>保守性の観点<ul>
-<li>バックエンド（すべての領域）、フロントエンド（Presener、Validators、ViewModelの領域のみ）の観点</li>
-<li>try-catchが適切に使用されており、またcatchしたエラーの型に応じて、適切なハンドリングを実装できているか。</li>
-<li>早期リターンを使用できているか。</li>
-<li>関数や変数へのロジック切り分けは汎用性や意味づけが必要な場合のみ実施するべきで、必要以上に実施していないか。</li>
-<li>引数の型を定義しているか。返却値の型は過剰なので不要である。</li>
-<li>関数名から引数の意味合いを把握しやすいか。<ul>
-<li><code>AggregateFooByTag</code> や <code>FilterFooByTag</code> であれば、引数は <code>Foo</code> と <code>Tag</code> であるはず。</li>
-</ul>
-</li>
-<li>起こる可能性が 低いエッジケースを考慮できているか。ただし、気にしすぎと我々が判断した場合、エッジケースには対処しない。</li>
-<li>APIを実装する場合、バリデーションがあるか</li>
-<li>型推論が可能な言語では、型定義は必要最低限で問題ない。最低限の型定義になっているか。</li>
-<li>既存の関数を使用すれば少ないロジックで済むのに、それを使用せずに再発明してしまっていないか</li>
-<li>コードの変更行ができるだけ少なくなるように提案する。そのために、各関数の凝集度が高くなるように、必要に応じて既存の関数と新しい関数を統合する。ただし、凝集度が低くなるようであれば、必ずしも既存の関数と新しい関数を統合する必要はない。</li>
-<li>使用する文字列値、数値、配列を定数として切り分けられているか<ul>
-<li>カラーコード：<code>{info:"#10B981",error:"#EF4444"}</code></li>
-<li>ソートバイモード：<code>name</code>、<code>type</code></li>
-<li>ソートオーダーモード：<code>asc</code>、<code>desc</code></li>
-<li>フィルターモード：<code>OR</code>、<code>AND</code></li>
-<li>UI閲覧モード：<code>group</code>、<code>list</code>、<code>panel</code></li>
-<li>なんらかのタグ名：<code>タグ名なし</code></li>
-<li>レスポンスコード：<code>200</code>、<code>404</code></li>
-<li>時間範囲：<code>{id:"1d",value:1,label:"前日"}}</code></li>
-</ul>
-</li>
+<li>バックエンド（すべての領域）、フロントエンド（Presener、Validators、ViewModelの領域のみ）の観点
+     - try-catchが適切に使用されており、またcatchしたエラーの型に応じて、適切なハンドリングを実装できているか。
+     - 早期リターンを使用できているか。
+     - 関数や変数へのロジック切り分けは汎用性や意味づけが必要な場合のみ実施するべきで、必要以上に実施していないか。
+     - 引数の型を定義しているか。返却値の型は過剰なので不要である。
+     - 関数名から引数の意味合いを把握しやすいか。
+         - <code>AggregateFooByTag</code> や <code>FilterFooByTag</code> であれば、引数は <code>Foo</code> と <code>Tag</code> であるはず。
+     - 起こる可能性が 低いエッジケースを考慮できているか。ただし、気にしすぎと我々が判断した場合、エッジケースには対処しない。
+     - APIを実装する場合、バリデーションがあるか
+     - 型推論が可能な言語では、型定義は必要最低限で問題ない。最低限の型定義になっているか。
+     - 既存の関数を使用すれば少ないロジックで済むのに、それを使用せずに再発明してしまっていないか
+     -
+     コードの変更行ができるだけ少なくなるように提案する。そのために、各関数の凝集度が高くなるように、必要に応じて既存の関数と新しい関数を統合する。ただし、凝集度が低くなるようであれば、必ずしも既存の関数と新しい関数を統合する必要はない。
+     - 使用する文字列値、数値、配列を定数として切り分けられているか
+         - カラーコード：<code>{info:"#10B981",error:"#EF4444"}</code>
+         - ソートバイモード：<code>name</code>、<code>type</code>
+         - ソートオーダーモード：<code>asc</code>、<code>desc</code>
+         - フィルターモード：<code>OR</code>、<code>AND</code>
+         - UI閲覧モード：<code>group</code>、<code>list</code>、<code>panel</code>
+         - なんらかのタグ名：<code>タグ名なし</code>
+         - レスポンスコード：<code>200</code>、<code>404</code>
+         - 時間範囲：<code>{id:"1d",value:1,label:"前日"}}</code></li>
 <li>フロントエンド（View）の観点<ul>
 <li>ViewModelから取得したデータを適切にUIに展開できているか</li>
 <li>変更したUIは特定のユースケース時のみ表示されるようになっているか</li>
@@ -33637,7 +33634,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月27日 19:26:43 JST">2026-02-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月6日 14:38:51 JST">2026-03-06</span>
   </span>
 
     
