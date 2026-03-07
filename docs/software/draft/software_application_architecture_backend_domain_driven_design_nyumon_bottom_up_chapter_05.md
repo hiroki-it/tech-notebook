@@ -108,9 +108,9 @@ const createUserRepositoryInMemory = (): UserRepositoryInterface => {
 
 #### ▼ DTOとは
 
-ORMのDBモデルをエンティティそのままに使用する場合、ドメイン層がインフラストラクチャ層に依存してしまう。
+ORMモデルをエンティティそのままに使用する場合、ドメイン層がインフラストラクチャ層に依存してしまう。
 
-エンティティとORMのDBモデルを分離し、ORMのDBモデルをエンティティに詰め替える必要がある
+エンティティとORMモデルを分離し、ORMモデルをエンティティに詰め替える必要がある
 
 別の方法として、リポジトリでDTOに相当するロジックを実装してもよい。
 
@@ -139,7 +139,7 @@ export const findById = async (
     throw new Error("User not found");
   }
 
-  // 取得時はORMのDBモデルをエンティティに変換する
+  // 取得時はORMモデルをエンティティに変換する
   return new User(UserId.from(record.id), new UserName(record.name));
 };
 
@@ -152,7 +152,7 @@ export const save = async (
     name: user.name.toString(),
   };
 
-  // 保存時はエンティティをORMのDBモデルに変換する
+  // 保存時はエンティティをORMモデルに変換する
   await userRepositoryDI.prisma.user.upsert({
     where: {id: record.id},
     create: {id: record.id, name: record.name},
@@ -186,7 +186,7 @@ export const findById = async (
     throw new Error("User not found");
   }
 
-  // 取得時はORMのDBモデルをエンティティに変換する
+  // 取得時はORMモデルをエンティティに変換する
   return UserDTO.toDomain({
     id: record.id,
     name: record.name,
@@ -197,7 +197,7 @@ export const save = async (
   userRepositoryDI: UserRepositoryDI,
   user: User,
 ): Promise<void> => {
-  // 保存時はエンティティをORMのDBモデルに変換する
+  // 保存時はエンティティをORMモデルに変換する
   const record = UserDTO.toRecord(user);
   await userRepositoryDI.prisma.user.upsert({
     where: {id: record.id},
