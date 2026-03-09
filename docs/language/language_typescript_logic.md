@@ -243,12 +243,12 @@ greet(user);
 
 ## 04. 返却値
 
-### 返却値の型
+### 返却値型
 
 TypeScriptでは、 `return` の型のみを指定すれば良い。
 
 ```typescript
-// Error型は返却値の型に指定しなくても良い
+// Error型は返却値型に指定しなくても良い
 function foo(): string {
   try {
     // 何らかの処理
@@ -298,7 +298,7 @@ foo();
 どんな型でも返却できる。
 
 ```typescript
-// string型のみを指定し、Error型は返却値の型に指定しなくても良い
+// string型のみを指定し、Error型は返却値型に指定しなくても良い
 function foo(): string {
   try {
     // 何らかの処理

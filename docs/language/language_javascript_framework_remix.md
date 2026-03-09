@@ -1081,7 +1081,7 @@ export async function createUser({
   name: User["name"];
   email: User["email"];
   role: User["role"];
-  // prismaのスキーマを使用して、返却値の型を指定する
+  // prismaのスキーマを使用して、返却値型を指定する
 }): Promise<User> {
   return prisma.user.create({
     data: {name, email, role},
@@ -1103,7 +1103,7 @@ export async function getUserById({
 }: {
   // prismaのスキーマを使用して、引数の型を指定する
   id: User["id"];
-  // prismaのスキーマを使用して、返却値の型を指定する
+  // prismaのスキーマを使用して、返却値型を指定する
 }): Promise<User | null> {
   return prisma.user.findUnique({
     where: {id},
@@ -1138,7 +1138,7 @@ export async function updateUser({
   name?: User["name"];
   email?: User["email"];
   role?: User["role"];
-  // prismaのスキーマを使用して、返却値の型を指定する
+  // prismaのスキーマを使用して、返却値型を指定する
 }): Promise<User> {
   return prisma.user.update({
     where: {id},
@@ -1165,7 +1165,7 @@ export async function deleteUser({
 }: {
   // prismaのスキーマを使用して、引数の型を指定する
   id: User["id"];
-  // prismaのスキーマを使用して、返却値の型を指定する
+  // prismaのスキーマを使用して、返却値型を指定する
 }): Promise<User> {
   return prisma.user.delete({
     where: {id},

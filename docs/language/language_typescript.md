@@ -986,7 +986,7 @@ useEffect(() => {
     let Component = (module as any).default;
 
     // 検証したところ、動的importで出力されるreactコンポーネントの型や構造はビルド方法（yarn dev、yarn build）や実行環境（ローカルPC、CI、AWS）ごとに異なっている模様
-    // 例えば、ローカルPCでyarn buildした場合と、yarn buildの結果をAWSにデプロイした場合の間で、動的importの返却値の型や構造が異なる
+    // 例えば、ローカルPCでyarn buildした場合と、yarn buildの結果をAWSにデプロイした場合の間で、動的importの返却値型や構造が異なる
     // そこで、動的importの返却値に含まれるfunction型のComponentを確実に使用できるように、型と構造を検証する
 
     // Componentの構造に関する対処
