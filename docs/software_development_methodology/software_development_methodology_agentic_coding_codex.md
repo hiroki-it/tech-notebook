@@ -79,3 +79,28 @@ osascript -e "display notification \"$SAFE_MESSAGE\" with title \"Codexの作業
 > - https://blog.lai.so/codex-rs-intro/
 
 <br>
+
+## 03. MCPサーバー
+
+### MCPサーバーとは
+
+MCPサーバー（実体はプロセス）を通じて、外部のAPIからCodexのコンテキストを取得する。
+
+<br>
+
+### Confluenceの場合
+
+```toml
+[mcp_servers.confluence]
+startup_timeout_sec = 60
+
+command = "uv"
+
+args = ["run", "--native-tls", "mcp-atlassian", "--confluence-url=https://confluence.foo.com"]
+
+env.REQUESTS_CA_BUNDLE = "<必要であれば、リモートワークのプロキシの証明書>"
+
+env.CONFLUENCE_PERSONAL_TOKEN = "<Confluenceで発行したパーソナルアクセストークン>"
+```
+
+<br>
