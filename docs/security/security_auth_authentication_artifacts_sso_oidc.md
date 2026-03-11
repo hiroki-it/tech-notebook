@@ -181,7 +181,7 @@ $ curl http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-conne
 
 #### ▼ 認可レスポンス受信
 
-認可レスポンスを受信し、アプリに対してリダイレクトを送信する。
+Keycloakは認可レスポンスを受信し、アプリに対してリダイレクトを送信する。
 
 ```bash
 $ curl http://<アプリケーションのドメイン>/oidc?session_state= ... &code=<認証コード>
