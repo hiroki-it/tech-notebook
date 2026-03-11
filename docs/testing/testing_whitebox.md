@@ -306,7 +306,25 @@ $ curl http://httpbin.local/get
 
 <br>
 
-## 03-05. 網羅率
+## 03-05. DB接続処理のモック
+
+### ローカルのモックDBサーバー
+
+#### ▼ mysql
+
+```yaml
+services:
+  httpbin:
+    container_name: mysql
+    hostname: mysql.local
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+```
+
+<br>
+
+## 03-06. 網羅率
 
 ### 網羅率とは
 
@@ -404,7 +422,7 @@ AとBは、『1』または『0』になり得るとする。
 
 <br>
 
-## 03-06. 循環的複雑度
+## 03-07. 循環的複雑度
 
 ### 循環的複雑度とは
 
