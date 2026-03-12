@@ -788,6 +788,8 @@ export default function AuthCommon() {
 
 #### ▼ サブディレクトリ
 
+Remix v1ではサブディレクトリにわけることができる。
+
 以下によると、Remix v2 はデフォルトでは routes にサブディレクトリを作れない。
 
 - https://github.com/remix-run/remix/discussions/8473#discussioncomment-8084973

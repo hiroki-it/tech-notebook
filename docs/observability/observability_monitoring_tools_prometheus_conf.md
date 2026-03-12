@@ -301,6 +301,13 @@ route:
       severity: critical
 ```
 
+もし特定の実行環境 (例：開発環境) でアラートを無効にしておきたい場合、nullを設定すると良い。
+
+```yaml
+route:
+  - receiver: "null"
+```
+
 > - https://prometheus.io/docs/alerting/latest/configuration/#route
 
 #### ▼ match
