@@ -2261,6 +2261,75 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 **＊実装例＊**
 
+特定のパスのみAWSManagedRulesSQLiRuleSetの対象から除外する。
+
+```terraform
+resource "aws_wafv2_web_acl" "api_gateway" {
+
+  rule {
+    name     = "block-sql-injection"
+    priority = 0
+
+    statement {
+
+      # マネージドルールを使用する。
+      managed_rule_group_statement {
+        vendor_name = "AWS"
+        name        = "AWSManagedRulesSQLiRuleSet"
+
+        # "/callback" へのリクエストはパラメーターが複雑であるため、
+        # AWSManagedRulesSQLiRuleSetがSQLインジェクションと誤検知してしまうことがある。
+        # 誤検知を回避するため、"/callback" だけは検査しない。
+        scope_down_statement {
+          not_statement {
+            statement {
+              byte_match_statement {
+                positional_constraint = "EXACTLY"
+                search_string         = "/callback"
+
+                field_to_match {
+                  uri_path {}
+                }
+
+                text_transformation {
+                  priority = 0
+                  type     = "NONE"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    override_action {
+      count {}
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "APIGatewayWAFBlockSQLInjectionRule"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  default_action {
+    allow {}
+  }
+
+  visibility_config {
+    cloudwatch_metrics_enabled = true
+    metric_name                = "APIGatewayWAFRules"
+    sampled_requests_enabled   = true
+  }
+
+  ...
+
+}
+```
+
+**＊実装例＊**
+
 ALB用のWAFに、APIキーまたはBearerトークンをOR条件ルールを設定する。
 
 あくまで例としてで、本来であれば、異なるルールとしたほうが良い。
