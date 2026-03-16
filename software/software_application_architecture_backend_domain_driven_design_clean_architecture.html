@@ -37688,6 +37688,7 @@
 <p>そこで、こういった処理をSpecificationオブジェクトとして切り分けておく。</p>
 <h4 id="_50">▼ ビジネスルールのバリデーション<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
 <p>エンティティから切り分けたビジネスルールバリデーションオブジェクトとして実装する。</p>
+<p>バリデーションを実装できるパッケージが世の中にあるが、ビジネスロジックは外部に依存しない方がいいため、言語のそのままのロジックで実装すると良い。</p>
 <p>複数のエンティティをまたぐビジネスルールのバリデーションはSpecificationパターンに切り分けるのがよい。</p>
 <p>boolean値関数 (<code>isFoo</code> 関数) のように、仕様を満たしているかを調べる処理する。</p>
 <ul>
@@ -38071,8 +38072,19 @@
 <p><br></p>
 <h2 id="04-04">04-04. 値オブジェクト<a class="headerlink" href="#04-04" title="Permanent link">&para;</a></h2>
 <h3 id="_65">値オブジェクトとは<a class="headerlink" href="#_65" title="Permanent link">&para;</a></h3>
+<p>ドメイン上で意味合いをもち、またプリミティブ（例：文字列、数値など）の型で表現されるオブジェクトである。</p>
 <p>責務として、ビジネスルールや制約の定義を持ち、エンティティと区別される。</p>
 <p>金額、数字、電話番号、文字列、日付、氏名、色などのユビキタス言語に関する状態を持つ一方で、一意で識別できるデータ (例：<code>id</code> データ) を持たない。</p>
+<p>よくある値オブジェクトは次のとおりである。</p>
+<ul>
+<li>FullName：苗字や名前と関連処理（例：表示形式、氏名作成など）を状態・振る舞いとして表現</li>
+<li>Money：金額や通貨単位と関連処理（例：四則演算、不正検証など）を状態・振る舞いとして表現</li>
+<li>UserId：ユーザーIDと関連処理（例：IDの出力など）を状態・振る舞いとして表現</li>
+<li>Email：メールアドレスと関連処理（例：構文検証など）を状態・振る舞いとして表現</li>
+<li>Address：住所と関連処理（例：表示形式、構文検証など）を状態・振る舞いとして表現</li>
+<li>PhoneNumber：電話番号と関連処理（例：構文検証、国番号抽出など）を状態・振る舞いとして表現</li>
+</ul>
+<p>すべてのプリミティブを値オブジェクトにするとコード量が増えてしまうため、どこまでを値オブジェクトにするのか判断が必要である。</p>
 <p><img alt="ドメイン駆動設計_バリューオブジェクト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_バリューオブジェクト.jpg" /></p>
 <p><br></p>
 <h3 id="_66">識別不可能<a class="headerlink" href="#_66" title="Permanent link">&para;</a></h3>
@@ -39348,7 +39360,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月4日 21:09:42 JST">2026-03-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月16日 14:10:31 JST">2026-03-16</span>
   </span>
 
     
