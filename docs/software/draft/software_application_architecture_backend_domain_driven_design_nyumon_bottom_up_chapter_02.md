@@ -89,7 +89,7 @@ export const createFullName = (
   first: string,
   last: string,
 ): FullName | Error => {
-  // 引数を強制する
+  // ビジネスロジックのバリデーション
   if (!first || !last) return new Error("氏名は必須です");
   return Object.freeze({firstName: first, lastName: last});
 };
@@ -131,7 +131,7 @@ export const createFullName = (
   first: string,
   last: string,
 ): FullName | Error => {
-  // 引数を強制する
+  // ビジネスロジックのバリデーション
   if (!first || !last) return new Error("氏名は必須です");
   return Object.freeze({firstName: first, lastName: last});
 };
@@ -182,7 +182,7 @@ export const createFullName = (
   first: string,
   last: string,
 ): FullName | Error => {
-  // 引数を強制する
+  // ビジネスロジックのバリデーション
   if (!first || !last) return new Error("氏名は必須です");
   return Object.freeze({firstName: first, lastName: last});
 };
@@ -252,7 +252,7 @@ export const createFullName = (
   first: string,
   last: string,
 ): FullName | Error => {
-  // 引数を強制する
+  // ビジネスロジックのバリデーション
   if (!first || !last) return new Error("氏名は必須です");
   return Object.freeze({firstName: first, lastName: last});
 };
@@ -304,12 +304,12 @@ export const getDisplayName = (fullName: FullName): string => {
 
 ドメインの種類に限らず、値オブジェクトとして扱いよう。
 
-- FullName
-- Money
-- UserId
-- Email
-- Address
-- PhoneNumber
+- FullName：苗字や名前と関連処理（例：表示形式、氏名作成など）を状態・振る舞いとして表現
+- Money：金額や通貨単位と関連処理（例：四則演算、不正検証など）を状態・振る舞いとして表現
+- UserId：ユーザーIDと関連処理（例：IDの出力など）を状態・振る舞いとして表現
+- Email：メールアドレスと関連処理（例：構文検証など）を状態・振る舞いとして表現
+- Address：住所と関連処理（例：表示形式、構文検証など）を状態・振る舞いとして表現
+- PhoneNumber：電話番号と関連処理（例：構文検証、国番号抽出など）を状態・振る舞いとして表現
 
 <br>
 
