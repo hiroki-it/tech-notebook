@@ -50,42 +50,58 @@ description: SES＠AWSリソースの知見を記録しています。
 ## 03. セットアップ (Terraformの場合)
 
 ```terraform
-resource "aws_ses_configuration_set" "foo" {
-  name = "foo"
+resource "aws_sesv2_configuration_set" "foo" {
+  configuration_set_name = "foo"
 
   delivery_options {
-    tls_policy = "Require"
+    tls_policy = "REQUIRE"
   }
 
-  reputation_metrics_enabled = true
-  sending_enabled            = true
+  reputation_options {
+    reputation_metrics_enabled = true
+  }
+
+  sending_options {
+    sending_enabled = true
+  }
 }
 
-# SESのイベントをCloudWatchに送信する
-resource "aws_ses_event_destination" "cloudwatch_foo" {
-  name                   = "foo-cloudwatch"
-  configuration_set_name = aws_ses_configuration_set.foo.name
-  enabled                = true
-  matching_types         = [
-    # SESから外部メールサーバーへの送信に失敗した場合
-    "bounce",
-    # SESへの送信に失敗した場合
-    "reject"
-  ]
+resource "aws_sesv2_configuration_set_event_destination" "cloudwatch_foo" {
+  configuration_set_name = aws_sesv2_configuration_set.foo.configuration_set_name
+  event_destination_name = "foo"
 
-  cloudwatch_destination {
-    default_value  = "default"
-    dimension_name = "ses:configuration-set"
-    value_source   = "messageTag"
+  # SESのイベントをCloudWatchに送信する
+  event_destination {
+    cloud_watch_destination {
+      dimension_configuration {
+        default_dimension_value = "default"
+        dimension_name          = "ses:configuration-set"
+        dimension_value_source  = "MESSAGE_TAG"
+      }
+    }
+
+    enabled = true
+    matching_event_types = [
+      # SESから外部メールサーバーへの送信に失敗した場合
+      "BOUNCE",
+      # SESへの送信に失敗した場合
+      "REJECT",
+    ]
   }
+}
+
+resource "aws_sesv2_email_identity" "foo" {
+  email_identity         = var.ses_foo_domain_identity
+  configuration_set_name = aws_sesv2_configuration_set.foo.configuration_set_name
 }
 
 resource "aws_ses_domain_identity" "foo" {
-  domain = "example.com"
+  domain = aws_sesv2_email_identity.foo.email_identity
 }
 
+# Route53のDKIMレコードで使用するためのドメイン
 resource "aws_ses_domain_dkim" "foo" {
-  domain = aws_ses_domain_identity.foo.domain
+  domain = aws_sesv2_email_identity.foo.email_identity
 }
 
 # TXTレコード
@@ -153,19 +169,37 @@ Sandboxモードでは以下の制限がかかっており。
 
 <br>
 
-## 05. 配信イベント
+## 05. メール送信イベントと通知
 
-### 配信
+### イベントの種類
+
+#### ▼ 送信
 
 SMTPサーバー側が受信を受諾したイベントである。
 
-### バウンス
+#### ▼ バウンス
 
 SMTPサーバー側が受信を失敗したイベントである。
 
-### 苦情
+#### ▼ 苦情
 
 受信側がメールアドレスを迷惑メール報告したイベントである。
+
+<br>
+
+### 通知
+
+#### ▼ フィードバック通知
+
+IDにフィードバック通知を紐づける。
+
+イベントが発生したら、SNSにイベントを転送する。
+
+#### ▼ 設定セットによるイベント通知
+
+IDに設定セットを紐づける。
+
+イベントが発生したら、CloudWatchでメトリクスとして集約し、SNSにイベントを転送する。
 
 <br>
 
