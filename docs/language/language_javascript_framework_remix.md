@@ -983,7 +983,21 @@ export default function SomeParent() {
 
 <br>
 
-## 09. Cookieを使用した認証
+## 09. hook
+
+### revalidator
+
+指定した間隔でloaderを再実行する。
+
+リアルタイム更新で役立つ。
+
+loaderを再実行するからといって、ページをリロードしているわけではない。
+
+> - https://reactrouter.com/api/hooks/useRevalidator
+
+<br>
+
+## 10. Cookieを使用した認証
 
 ### LocalStorageやSessionStorageではなくCookie
 
@@ -1044,7 +1058,7 @@ export const memorySessionStorage = createFileSessionStorage({
 
 <br>
 
-## 10. モデル
+## 11. モデル
 
 ### prismaによるスキーマ
 
@@ -1177,7 +1191,7 @@ export async function deleteUser({
 
 <br>
 
-## 11. エラー
+## 12. エラー
 
 ### バックエンド
 
