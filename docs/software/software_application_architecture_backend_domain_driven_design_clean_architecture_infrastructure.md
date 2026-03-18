@@ -370,7 +370,7 @@ class DogToyRepository
 
 <br>
 
-## ファクトリ
+## 03. ファクトリ
 
 ### ファクトリとは
 
@@ -419,7 +419,7 @@ class DogComboFactory
 
 <br>
 
-## Web API
+## 04. Web API
 
 ### Web APIとは
 
@@ -427,7 +427,7 @@ class DogComboFactory
 
 <br>
 
-## ミドルウェア
+## 05. ミドルウェア
 
 ### ミドルウェア処理とは
 
@@ -439,7 +439,7 @@ class DogComboFactory
 
 <br>
 
-## キュー操作処理
+## 06. キュー操作処理
 
 ### キュー操作処理とは
 
@@ -449,7 +449,7 @@ class DogComboFactory
 
 <br>
 
-## イベントリスナー (イベントハンドラー)
+## 07. イベントリスナー (イベントハンドラー)
 
 ### イベントリスナーとは
 
@@ -472,7 +472,7 @@ class DogComboFactory
 
 <br>
 
-## インフラサービス
+## 08. インフラサービス
 
 ### インフラサービスとは
 
