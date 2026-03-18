@@ -1,0 +1,452 @@
+
+## 03. ユースケース層
+
+### ユースケース層とは
+
+ドメイン層にあるドメインモデルやビジネスルールを組み合わせ、ユースケースを実行する。
+
+<br>
+
+### 処理フロー
+
+インターフェース層からユースケース層までの処理の流れを以下に示す。
+
+![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master//images/clean-architecture_flow.png)
+
+> - http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
+
+<br>
+
+### インターラクター
+
+#### ▼ インターラクターとは
+
+入力/出力の処理時で、責務を以下の様に分類できる。
+
+ユースケースごとに異なるInteractorクラスを定義する方法と、全てのユースケースを責務として持つInteractorクラスを定義する方法がある。
+
+また、Interactorインターフェースを用意して、インターフェース層のコントローラーはこれを経由して、実装Interactorクラスの関数をコールする。
+
+| 入力時/出力時 | 責務                                                                                                                                                           | 補足                                                                                                                     |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| 入力          | インターフェース層のコントローラーから入力されるリクエストパラメーターを、ソフトウェア上のルール (ユースケース) と照らし合わせてバリデーションを実行する。     | データの値がシステム上あり得ないか否かを検証する。ビジネス上あり得ない値か否かはドメイン層に仕様パターンとして実装する。 |
+|               | ドメイン層の関数を組み合わせて、ユーザーの要求に対するソフトウェアの振舞 (ユースケース) を具現化する。                                                         |                                                                                                                          |
+|               | インターフェース層のコントローラーから入力されるリクエストパラメーターを、ドメイン層のインターフェースリポジトリに渡せるドメインモデルに変換する。             |                                                                                                                          |
+| 出力          | ドメイン層のインターフェースリポジトリから出力されるドメインモデルをレスポンスモデルに変換し、インターフェース層のコントローラーに出力する。                   | バックエンドをAPIとして使用する場合、プレゼンターは不要である。                                                          |
+|               | ドメイン層のインターフェースリポジトリから出力されるドメインモデルをレスポンスモデルを経てプレゼンターに変換し、インターフェース層のコントローラーに出力する。 | バックエンドでテンプレートエンジンを使用してHTMLを作成する場合、プレゼンターが必要である。                               |
+
+#### ▼ ユースケースと関数名
+
+インターラクターでは、ドメイン層を組み合わせてソフトウェアの振舞 (ユースケース) を具現化する。
+
+そのため、関数名はユースケースを適切に表現した自由な英単語を使用する。
+
+フレームワークのLaravelの基本的な関数名 (`index`、`store`、`create`、`show`、`update`) が参考になる。
+
+`CREATE` 処理と `UPDATE` 処理をSAVE処理としてまとめても良い。
+
+| 関数名                  | 引数型                                | 返却値型                                | 処理内容                                                                                                                                                               |
+| ----------------------- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `indexFoo`              | `indexFooRequest`                     | `indexFooResponse`                      |                                                                                                                                                                        |
+| `showFoo`               | `showFooRequest`                      | `showFooResponse`                       |                                                                                                                                                                        |
+| `createFoo`             | `createFooRequest`                    | `createFooResponse`                     |                                                                                                                                                                        |
+| `updateFoo`             | `updateFooRequest`                    | `updateFooResponse`                     |                                                                                                                                                                        |
+| `saveFoo` (`upsertFoo`) | `saveFooRequest` (`upsertFooRequest`) | `saveFooResponse` (`upsertFooResponse`) | リポジトリのfind関数をコールして重複確認を実行し、その結果に応じてcreate関数またはupdate関数をコールする。`<br>`https://github.com/little-hands/ddd-q-and-a/issues/241 |
+| `deleteFoo`             | `deleteFooRequest`                    | `deleteFooResponse`                     |                                                                                                                                                                        |
+
+#### ▼ ユースケース図
+
+ユースケース図については、以下のリンクを参考にせよ。
+
+**＊実装例＊**
+
+バックエンドをAPIとして使用する場合、プレゼンターは不要となる。
+
+この場合を以下に示す。
+
+```php
+<?php
+
+namespace App\ユースケース層\Foo\Interactors;
+
+/**
+ * Foo作成インターラクタークラス
+ * ※ユースケースごとにクラスを定義する方法
+ */
+class FooCreateInteractor
+{
+    /**
+     * @var FooRepository
+     */
+    private FooRepository $fooRepository;
+
+    /**
+     * @param FooRepository $fooRepository
+     */
+    public function __constructor(FooRepository $fooRepository)
+    {
+        $this->fooRepository = $fooRepository;
+    }
+
+    /**
+     * @param CreateFooRequest $createFooRequest
+     * @return CreateFooResponse
+     */
+    public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
+    {
+        $foo = $this->fooRepository->create(
+            new Bar($createFooRequest->bar),
+            new Baz($createFooRequest->baz)
+        );
+
+        // 何らかの処理
+    }
+}
+```
+
+```php
+<?php
+
+namespace App\ユースケース層\Foo\Interactors;
+
+/**
+ * Fooインターラクタークラス
+ * ※CURD全てのユースケースを、1個のクラスを定義する方法
+ */
+class FooInteractor
+{
+    /**
+     * @var FooRepository
+     */
+    private FooRepository $fooRepository;
+
+    /**
+     * @param FooRepository $fooRepository
+     */
+    public function __constructor(FooRepository $fooRepository)
+    {
+        $this->fooRepository = $fooRepository;
+    }
+
+    /**
+     * @param CreateFooRequest $createFooRequest
+     * @return CreateFooResponse
+     */
+    public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
+    {
+        $foo = $this->fooRepository->create(
+            new Bar($createFooRequest->bar),
+            new Baz($createFooRequest->baz)
+        );
+
+        // 何らかの処理
+    }
+
+    /**
+     * @param GetFooRequest $getFooRequest
+     * @return GetFooResponse
+     */
+    public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
+    {
+        $foo = $this->fooRepository->findById(
+            new FooId($getFooRequest->id)
+        );
+
+        // 何らかの処理
+    }
+
+    /**
+     * @param UpdateFooRequest $updateFooRequest
+     * @return UpdateFooResponse
+     */
+    public function updateFoo(UpdateFooRequest $updateFooRequest): UpdateFooResponse
+    {
+        $foo = $this->fooRepository->update(
+            new FooId($updateFooRequest->id),
+            new Bar($updateFooRequest->bar),
+            new Baz($updateFooRequest->baz)
+        );
+
+        // 何らかの処理
+    }
+
+    /**
+     * @param DeleteFooRequest $deleteFooRequest
+     * @return DeleteFooResponse
+     */
+    public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
+    {
+        $foo = $this->fooRepository->delete(
+            new FooId($deleteFooRequest->id)
+        );
+
+        // 何らかの処理
+    }
+}
+```
+
+> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html
+
+<br>
+
+### インプットバウンダリ
+
+#### ▼ インプットバウンダリとは
+
+インターラクターのインターフェースのこと。
+
+上位レイヤーにあるコントローラーは、インターラクターインタフェースに依存する。
+
+**＊実装例＊**
+
+```php
+<?php
+
+namespace App\ユースケース層\Foo\InputBoundaries;
+
+/**
+ * Fooインターラクターインターフェース
+ */
+interface FooInteractorInterface
+{
+    /**
+     * @param CreateFooRequest $createFooRequest
+     * @return CreateFooResponse
+     */
+    public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
+
+    /**
+     * @param GetFooRequest $getFooRequest
+     * @return GetFooResponse
+     */
+    public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
+
+    /**
+     * @param UpdateFooRequest $updateFooRequest
+     * @return UpdateFooResponse
+     */
+    public function updateFoo(UpdateFooRequest $updateFooRequest): UpdateFooResponse
+
+    /**
+     * @param DeleteFooRequest $deleteFooRequest
+     * @return DeleteFooResponse
+     */
+    public function deleteFoo(DeleteFooRequest $deleteFooRequest): DeleteFooResponse
+}
+```
+
+<br>
+
+### アウトプットバウンダリ
+
+#### ▼ アウトプットバウンダリとは
+
+上位レイヤーのプレゼンターのインターフェースのこと。
+
+インターラクターは、レスポンスモデルではなく。
+
+アウトプットバウンダリをインターフェース層に出力する。
+
+ただし、アプリケーションをAPIとして使用する場合は、プレゼンターとアウトプットバウンダリが不要になる。そのため、インターラクターはレスポンスモデルを返却する。
+
+<br>
+
+### リクエストモデル (インプットデータ)
+
+#### ▼ リクエストモデルとは
+
+インターフェース層のコントローラーから入力されるリクエストパラメーターを、ユースケース層に入力するときの入力構造を定義する。
+
+インターラクターの関数ごとにリクエストモデルを用意すると良い。
+
+```php
+<?php
+
+namespace App\Interface\Foo\Requests;
+
+class FooCreateRequest
+{
+    /**
+     * @var int
+     */
+    private int $fooId;
+
+    /**
+     * @var string
+     */
+    private string $fooName;
+
+    /**
+     * @param int    $fooId
+     * @param string $fooName
+     */
+    public function __construct(int $fooId, string $fooName)
+    {
+        $this->fooId = $fooId;
+        $this->fooName = $fooName;
+    }
+}
+```
+
+<br>
+
+### レスポンスモデル (アウトプットデータ)
+
+#### ▼ レスポンスモデルとは
+
+ユースケース層のインターラクターから出力されるドメインモデルを、インターフェース層に出力するときの出力構造を定義する。
+
+インターラクターの関数ごとにレスポンスモデルを用意すると良い。
+
+またコントローラーにて、フレームワーク依存のJSONレスポンス関数にレスポンスモデルを渡せるよう、クラス自身の構造を変換する関数を持たせると良い。
+
+もし、クラス自身を渡して問題ないJSONレスポンス関数であれば、これは不要である。
+
+**＊実装例＊**
+
+ユースケース層のindex関数に対応するレスポンスモデル。
+
+JSONレスポンス関数が配列構造を引数に受け付けるため、これに渡せるよう、自身を配列構造に変換する関数を持たせる。
+
+```php
+<?php
+
+namespace App\Interface\Foo\Responses;
+
+class FooIndexResponse
+{
+    /**
+     * @var array
+     */
+    private array $foos;
+
+    /**
+     * @param array $foos
+     */
+    public function __construct(array $foos)
+    {
+        $this->foos = $foos;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            "foos" => $this->foos
+        ];
+    }
+}
+```
+
+ユースケース層のcreate関数に対応するレスポンスモデル。
+
+```php
+<?php
+
+namespace App\Interface\Foo\Responses;
+
+class FooCreateResponse
+{
+    /**
+     * @var int
+     */
+    private int $fooId;
+
+    /**
+     * @var string
+     */
+    private string $fooName;
+
+    /**
+     * @param int    $fooId
+     * @param string $fooName
+     */
+    public function __construct(int $fooId, string $fooName)
+    {
+        $this->fooId = $fooId;
+        $this->fooName = $fooName;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            "id" => $this->fooId,
+            "name" => $this->fooName
+        ];
+    }
+}
+```
+
+<br>
+
+### アプリケーションサービス
+
+#### ▼ アプリケーションサービスとは
+
+ユースケース層で、他のオブジェクトを対象とした汎用的な振舞ロジックを切り分けたもの。
+
+アプリケーションサービスは、他のオブジェクトにロジックを関数として提供するのみで、自身の状態を変化させる関数は持たせないようにする。
+
+補足として、『サービス』の概念は全てのレイヤーに存在する。
+
+特定の機能を提供するアプリケーションをサービスとみなして連携すれば、マイクロサービスアーキテクチャにもなる。
+
+#### ▼ 通知処理
+
+**＊実装例＊**
+
+エンティティへの通知処理をアプリケーションサービスとして切り分ける。
+
+```php
+<?php
+
+namespace App\ユースケース層\Foo\Services\Notify;
+
+class NotifyFooService
+{
+    /**
+     * @var Message
+     */
+    private $message;
+
+    /**
+     * @param Message $message
+     */
+    public function __construct(Message $message)
+    {
+        $this->message = $message;
+    }
+
+    public function notify()
+    {
+        // SlackのAPIにメッセージを送信する処理
+    }
+}
+```
+
+これを、ユースケース層でコールする。
+
+```php
+<?php
+
+namespace App\ユースケース層\Foo\Services;
+
+use App\Service\SlackNotification;
+
+class FooInteractor
+{
+    public function foo()
+    {
+        $message = new Message(/* メッセージに関するデータを渡す */)
+        $notifyFooService = new NotifyFooService($message)
+        $notifyFooService->notify();
+    }
+}
+```
+
+<br>
