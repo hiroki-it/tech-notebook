@@ -29,7 +29,9 @@ hide:
 
 - #### [︎ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
 
-- #### [︎クリーンアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)
+- #### <u>︎クリーンアーキテクチャ</u>
+
+  > - ##### [︎クリーンアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)
 
 - #### [︎CQRS](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_cqrs.html)
 
