@@ -1714,4 +1714,3 @@ class DogOrder
 > - https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/インフラストラクチャ層-persistence-layer-design#define-one-repository-per-aggregate
 
 <br>
-
