@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="６章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
+        <meta name="description" content="４章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_06.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_domain_service.html">
       
       
       
@@ -29,7 +29,7 @@
     
     
       
-        <title>【IT技術の知見】６章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
+        <title>【IT技術の知見】４章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
       
     
     
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#6" class="md-skip">
+        <a href="#4" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】６章＠ドメイン駆動設計入門ボトムアップ
+              【IT技術の知見】４章＠ドメイン駆動設計入門ボトムアップ
             
           </span>
         </div>
@@ -1444,6 +1444,70 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ クリーンアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ クリーンアーキテクチャ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
         
@@ -1461,6 +1525,126 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インターフェース層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_usecase.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユースケース層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_domain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ドメイン層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_infrastructure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インフラストラクチャ層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -32781,7 +32965,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        サンプルコード
+        はじめに
       
     </span>
   </a>
@@ -32792,7 +32976,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        はじめに
+        サンプルコード
       
     </span>
   </a>
@@ -32800,10 +32984,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#61" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.1 アプリケーションサービスとは
+        01. ドメインサービスとは
       
     </span>
   </a>
@@ -32811,10 +32995,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#62" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.2 アプリケーションサービスの実装方法（関数型）
+        02. ドメインサービスの実装方法（関数型）
       
     </span>
   </a>
@@ -32822,10 +33006,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#63" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6.3 アプリケーションサービスで実装するべきロジックの見つけ方
+        03. ドメインサービスで実装するべきロジックの見つけ方
       
     </span>
   </a>
@@ -32860,15 +33044,8 @@
   
 
 
-<h1 id="6">６章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#6" title="Permanent link">&para;</a></h1>
-<h2 id="_1">サンプルコード<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<blockquote>
-<ul>
-<li><a href="https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter6">https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter6</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h1 id="4">４章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#4" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
 <ul>
@@ -32876,52 +33053,52 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="61">6.1 アプリケーションサービスとは<a class="headerlink" href="#61" title="Permanent link">&para;</a></h2>
-<p>アプリケーションサービスとは、ドメインオブジェクト（エンティティや値オブジェクト）を使用してユースケースを実現するオブジェクトである。</p>
-<p>作成したドメインオブジェクトをインターフェース層に返却する。</p>
+<h2 id="_2">サンプルコード<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<blockquote>
+<ul>
+<li><a href="https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter4">https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter4</a></li>
+</ul>
+</blockquote>
 <p><br></p>
-<h2 id="62">6.2 アプリケーションサービスの実装方法（関数型）<a class="headerlink" href="#62" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepository</span><span class="p">;</span>
+<h2 id="01">01. ドメインサービスとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>自身の状態を持たず、ドメインのふるまいを切り分けたオブジェクトである。</p>
+<p>エンティティや値オブジェクトに記述すると不自然なふるまいを扱う。</p>
+<p><br></p>
+<h2 id="02">02. ドメインサービスの実装方法（関数型）<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">;</span>
 <span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">RegisterUserInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">registerUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="kt">RegisterUserInput</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Result</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createUserName</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createEmail</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">email</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">email</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="ne">Error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findByEmail</span><span class="p">(</span><span class="nx">email</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">exists</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Email already registered&quot;</span><span class="p">));</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createUser</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">ok</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">createUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="p">.</span><span class="nx">trim</span><span class="p">())</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;ユーザーIDは必須です。&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">name</span><span class="p">.</span><span class="nx">trim</span><span class="p">())</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;ユーザー名は必須です。&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">};</span>
 <span class="p">};</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">,</span><span class="w"> </span><span class="nx">UserName</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./user&quot;</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserExistenceServiceDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">existsByName</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">userExistenceServiceDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserExistenceServiceDI</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">userExistenceServiceDI</span><span class="p">.</span><span class="nx">existsByName</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">  </span><span class="p">};</span>
+</code></pre></div>
 <p><br></p>
-<h2 id="63">6.3 アプリケーションサービスで実装するべきロジックの見つけ方<a class="headerlink" href="#63" title="Permanent link">&para;</a></h2>
-<p>ユーザーや外部クライアントから要求を受け、ユースケースを表現するロジックはアプリケーションサービスに適する。</p>
+<h2 id="03">03. ドメインサービスで実装するべきロジックの見つけ方<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<ul>
+<li>エンティティや値オブジェクトに自然に属さない処理</li>
+<li>1つのエンティティに責務を押し付けると不自然な汎用的な処理</li>
+<li>「〜を確認する」「〜を判断する」といった問いかけ的な振る舞い</li>
+<li>複数のエンティティや値オブジェクトの関係を調整する処理</li>
+</ul>
 <p><br></p>
 
 
@@ -32943,7 +33120,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月11日 18:05:54 JST">2026-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2025年10月8日 14:22:04 JST">2025-10-08</span>
   </span>
 
     

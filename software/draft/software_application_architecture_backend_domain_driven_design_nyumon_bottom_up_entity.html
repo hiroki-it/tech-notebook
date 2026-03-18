@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="５章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
+        <meta name="description" content="３章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_05.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_entity.html">
       
       
       
@@ -29,7 +29,7 @@
     
     
       
-        <title>【IT技術の知見】５章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
+        <title>【IT技術の知見】３章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
       
     
     
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5" class="md-skip">
+        <a href="#3" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】５章＠ドメイン駆動設計入門ボトムアップ
+              【IT技術の知見】３章＠ドメイン駆動設計入門ボトムアップ
             
           </span>
         </div>
@@ -1444,6 +1444,70 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ クリーンアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ クリーンアーキテクチャ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
         
@@ -1461,6 +1525,126 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インターフェース層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_usecase.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユースケース層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_domain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ドメイン層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_infrastructure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インフラストラクチャ層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -32803,7 +32987,7 @@
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. リポジトリとは
+        01. エンティティとは
       
     </span>
   </a>
@@ -32814,19 +32998,41 @@
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. リポジトリの実装方法（関数型）
+        02. エンティティの実装方法（関数型）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. リポジトリの実装方法（関数型）">
+    <nav class="md-nav" aria-label="02. エンティティの実装方法（関数型）">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        識別子 (ID) を持つ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDで等価性バリデーションできる
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        インターフェースリポジトリ
+        処理の中で状態が変化する
       
     </span>
   </a>
@@ -32837,110 +33043,10 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        実装リポジトリ
+        ライフサイクル
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        インメモリリポジトリ
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dto" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DTO
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DTO">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#dto_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ DTOとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dto_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ DTOを使用しない場合
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dto_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ DTOを使用する場合
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        注意点
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="注意点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ よろしくない実装（リポジトリにUpdate〇〇をいっぱいかく）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#save" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ より良い実装（リポジトリにSaveを書く）
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -32953,10 +33059,38 @@
   <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. リポジトリで実装するべきロジックの見つけ方
+        03. エンティティで実装するべきロジックの見つけ方
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="03. エンティティで実装するべきロジックの見つけ方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRUD系関数の対象
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        業務フローの中にある
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -32988,7 +33122,7 @@
   
 
 
-<h1 id="5">５章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#5" title="Permanent link">&para;</a></h1>
+<h1 id="3">３章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -33000,202 +33134,103 @@
 <h2 id="_2">サンプルコード<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
-<li><a href="https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter5">https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter5</a></li>
+<li><a href="https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter3">https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter3</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. リポジトリとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>リポジトリとは、ドメインオブジェクト（エンティティや値オブジェクト）を外部（DB、サードパティAPI）から取得し、またこれに永続化するロジックをもつオブジェクトである。</p>
-<p><br></p>
-<h2 id="02">02. リポジトリの実装方法（関数型）<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="_3">インターフェースリポジトリ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">findById</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">save</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_4">実装リポジトリ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Pool</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;mysql2/promise&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/user&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userId&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserName</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userName&quot;</span><span class="p">;</span>
-
-<span class="c1">// 依存性注入</span>
-<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="nx">pool</span><span class="o">:</span><span class="w"> </span><span class="kt">Pool</span><span class="p">;</span>
-<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">findById</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`SELECT id, name FROM users WHERE id = ? LIMIT 1`</span><span class="p">;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">rows</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="nx">id</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
-<span class="w">  </span><span class="p">]);</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">rows</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span><span class="p">[])[</span><span class="mf">0</span><span class="p">];</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">row</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;User not found&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="nx">UserId</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">row</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="nx">row</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
-<span class="p">};</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">save</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span>
-<span class="sb">    INSERT INTO users (id, name)</span>
-<span class="sb">    VALUES (?, ?)</span>
-<span class="sb">    ON DUPLICATE KEY UPDATE</span>
-<span class="sb">      name = VALUES(name)</span>
-<span class="sb">  `</span><span class="p">;</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="nx">sql</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">toString</span><span class="p">(),</span>
-<span class="w">  </span><span class="p">]);</span>
-<span class="p">};</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_5">インメモリリポジトリ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">createUserRepositoryInMemory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="o">&lt;</span><span class="nx">UserId</span><span class="p">,</span><span class="w"> </span><span class="nx">User</span><span class="o">&gt;</span><span class="p">();</span>
-
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">findById</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">store</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="o">??</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">user</span><span class="p">);</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">  </span><span class="p">};</span>
-<span class="p">};</span>
-</code></pre></div>
-<h3 id="dto">DTO<a class="headerlink" href="#dto" title="Permanent link">&para;</a></h3>
-<h4 id="dto_1">▼ DTOとは<a class="headerlink" href="#dto_1" title="Permanent link">&para;</a></h4>
-<p>ORMモデルをエンティティそのままに使用する場合、ドメイン層がインフラストラクチャ層に依存してしまう。</p>
-<p>エンティティとORMモデルを分離し、ORMモデルをエンティティに詰め替える必要がある</p>
-<p>別の方法として、リポジトリでDTOに相当するロジックを実装してもよい。</p>
-<h4 id="dto_2">▼ DTOを使用しない場合<a class="headerlink" href="#dto_2" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/user&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userId&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserName</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userName&quot;</span><span class="p">;</span>
-
-<span class="c1">// 依存性注入</span>
-<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">;</span>
-<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">findById</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">id</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">},</span>
-<span class="w">  </span><span class="p">});</span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;User not found&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1">// 取得時はORMモデルをエンティティに変換する</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="nx">UserId</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nx">record</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="nx">record</span><span class="p">.</span><span class="nx">name</span><span class="p">));</span>
-<span class="p">};</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">save</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">user.id</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">user.name.toString</span><span class="p">(),</span>
-<span class="w">  </span><span class="p">};</span>
-
-<span class="w">  </span><span class="c1">// 保存時はエンティティをORMモデルに変換する</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">upsert</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">record.id</span><span class="p">},</span>
-<span class="w">    </span><span class="nx">create</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">record.id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">record.name</span><span class="p">},</span>
-<span class="w">    </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">record.name</span><span class="p">},</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">};</span>
-</code></pre></div>
-<h4 id="dto_3">▼ DTOを使用する場合<a class="headerlink" href="#dto_3" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
-
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/user&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userId&quot;</span><span class="p">;</span>
-<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">UserName</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/userName&quot;</span><span class="p">;</span>
-
-<span class="c1">// 依存性注入</span>
-<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryDI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Readonly</span><span class="o">&lt;</span><span class="p">{</span>
-<span class="w">  </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">;</span>
-<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">findById</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">id</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">unknown</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kt">string</span><span class="p">},</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">record</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;User not found&quot;</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1">// 取得時はORMモデルをエンティティに変換する</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">UserDTO</span><span class="p">.</span><span class="nx">toDomain</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">record.id</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">record.name</span><span class="p">,</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">};</span>
-
-<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">save</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="nx">userRepositoryDI</span><span class="o">:</span><span class="w"> </span><span class="kt">UserRepositoryDI</span><span class="p">,</span>
-<span class="w">  </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span>
-<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 保存時はエンティティをORMモデルに変換する</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">record</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">UserDTO</span><span class="p">.</span><span class="nx">toRecord</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepositoryDI</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">upsert</span><span class="p">({</span>
-<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">record.id</span><span class="p">},</span>
-<span class="w">    </span><span class="nx">create</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">record.id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">record.name</span><span class="p">},</span>
-<span class="w">    </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">record.name</span><span class="p">},</span>
-<span class="w">  </span><span class="p">});</span>
-<span class="p">};</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="_6">注意点<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="update">▼ よろしくない実装（リポジトリにUpdate〇〇をいっぱいかく）<a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
-<p>Userオブジェクトに実装するべき振る舞いのビジネスロジックを、永続化の役割を持つRepositoryへ実装することになってしまう。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">findbyId</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">updateName</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">updateName</span><span class="p">(</span><span class="nx">getName</span><span class="p">(</span><span class="nx">user</span><span class="p">));</span><span class="w"> </span><span class="c1">// リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう</span>
-</code></pre></div>
-<h4 id="save">▼ より良い実装（リポジトリにSaveを書く）<a class="headerlink" href="#save" title="Permanent link">&para;</a></h4>
-<p>Userオブジェクトが振る舞いのビジネスロジックをもち、Repositoryは永続化ロジックをもつので、責務を区別できている</p>
-<p>責務さえ区別できていれば、名前はSaveやStore、それこそUpdateでもよい</p>
-<div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">findById</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">save</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">updatedUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">changeName</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">newName</span><span class="p">);</span><span class="w"> </span><span class="c1">// ユーザーオブジェクトが自分でユーザー名の状態を変更する</span>
-<span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">updatedUser</span><span class="p">);</span><span class="w"> </span><span class="c1">// リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="03">03. リポジトリで実装するべきロジックの見つけ方<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. エンティティとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<p>ドメイン上で意味をもち、同一性（識別子によって区別される性質）をもつオブジェクトがある。</p>
+<p>これをモデリングし、ドメインオブジェクトとして実装したものをエンティティという。</p>
 <ul>
-<li>DBに関するロジック（例：DB操作、ファイル操作）</li>
-<li>外部APIに関するロジック（例：HTTPハンドラー）</li>
+<li>User：ユーザーIDと関連処理（例：氏名変更、メールアドレス変更など）を状態・振る舞いとして表現</li>
+<li>Order：注文IDと関連処理（例：商品追加、合計金額計算など）を状態・振る舞いとして表現</li>
+<li>Product：商品IDと関連処理（例：在庫更新、価格変更など）を状態・振る舞いとして表現</li>
+<li>Project：プロジェクトIDと関連処理（例：進捗更新、メンバー追加など）を状態・振る舞いとして表現</li>
+<li>Payment：決済IDと関連処理（例：支払い完了、返金処理など）を状態・振る舞いとして表現</li>
+<li>MonitoringAlert：アラートIDと関連処理（例：通知送信、ステータス変更など）を状態・振る舞いとして表現</li>
 </ul>
+<p><br></p>
+<h2 id="02">02. エンティティの実装方法（関数型）<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="id">識別子 (ID) を持つ<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
+<p>同じデータをもっていても、IDが異なれば別のエンティティである。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">createUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;IDとメールは必須です&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">({</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="id_1">IDで等価性バリデーションできる<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h3>
+<p>値オブジェクトとは異なり、IDで等価性バリデーションができる。</p>
+<p>「〇はすでに存在しています」のエラーで役立つ。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">equalsUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_3">処理の中で状態が変化する<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>処理の中で状態が更新されてもIDは変わらず、オブジェクトとしての等価性は保たれる。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 処理の途中で状態を変更できる</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">changeUserName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span><span class="w"> </span><span class="nx">newName</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">({...</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">newName</span><span class="p">});</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_4">ライフサイクル<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>作成から削除までのライフサイクルがある。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">UserId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">&lt;</span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 削除</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">createUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">name</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="nx">email</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;全ての値は必須です&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">freeze</span><span class="p">({</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">});</span>
+<span class="p">};</span>
+
+<span class="c1">// 作成</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">deleteUser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. エンティティで実装するべきロジックの見つけ方<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="crud">CRUD系関数の対象<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h3>
+<p>CRUD系関数（<code>create</code>、<code>find</code>、<code>update</code>、<code>delete</code>）の対象となるオブジェクトはエンティティの可能性がある。</p>
+<p><br></p>
+<h3 id="_5">業務フローの中にある<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>入庫 → 検査 → 販売 → 返品 というような業務フローの中で処理される。</p>
 <p><br></p>
 
 
@@ -33217,7 +33252,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月7日 15:34:02 JST">2026-03-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 18:30:00 JST">2026-02-17</span>
   </span>
 
     

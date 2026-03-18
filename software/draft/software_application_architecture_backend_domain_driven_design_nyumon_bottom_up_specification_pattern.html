@@ -10,13 +10,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="12章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
+        <meta name="description" content="13章＠ドメイン駆動設計入門ボトムアップの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_chapter_12.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/draft/software_application_architecture_backend_domain_driven_design_nyumon_bottom_up_specification_pattern.html">
       
       
       
@@ -29,7 +29,7 @@
     
     
       
-        <title>【IT技術の知見】12章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
+        <title>【IT技術の知見】13章＠ドメイン駆動設計入門ボトムアップ - 俺の技術ノート</title>
       
     
     
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#12" class="md-skip">
+        <a href="#13" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】12章＠ドメイン駆動設計入門ボトムアップ
+              【IT技術の知見】13章＠ドメイン駆動設計入門ボトムアップ
             
           </span>
         </div>
@@ -1444,6 +1444,70 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ クリーンアーキテクチャ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ クリーンアーキテクチャ
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
         
@@ -1461,6 +1525,126 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_interface.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インターフェース層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_usecase.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユースケース層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_domain.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ドメイン層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software_application_architecture_backend_domain_driven_design_clean_architecture_infrastructure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    インフラストラクチャ層
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -32800,22 +32984,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#121" class="md-nav__link">
+  <a href="#01-specification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        12.1 集約とは
+        01. Specificationパターンとは
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="12.1 集約とは">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02. 使用方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 使用方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1211" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        12.1.1 集約の基本的構造
+        仕様条件オブジェクトとして
       
     </span>
   </a>
@@ -32823,21 +33018,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1212" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        12.1.2 オブジェクトの操作に関する基本的な原則
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#1213" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12.1.3 内部データを隠蔽するために
+        クエリ検索条件オブジェクトとして
       
     </span>
   </a>
@@ -32846,67 +33030,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#122" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12.2 集約をどう区切るか
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="12.2 集約をどう区切るか">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1221-id" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12.2.1 IDによるコンポジション
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#123" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12.3 集約の大きさと操作の単位
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#124" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12.4 言葉との齟齬を消す
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#125" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12.5 まとめ
-      
-    </span>
-  </a>
   
 </li>
       
@@ -32938,7 +33061,7 @@
   
 
 
-<h1 id="12">12章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#12" title="Permanent link">&para;</a></h1>
+<h1 id="13">13章＠ドメイン駆動設計入門ボトムアップ<a class="headerlink" href="#13" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -32950,521 +33073,110 @@
 <h2 id="_2">サンプルコード<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <blockquote>
 <ul>
-<li><a href="https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter12">https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter12</a></li>
+<li><a href="https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter13">https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter13</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="121">12.1 集約とは<a class="headerlink" href="#121" title="Permanent link">&para;</a></h2>
-<p>集約は、「ほかとの境界をもつ同種のドメインオブジェクトのグループ」のこと。</p>
-<p>集約には、次の概念がある。</p>
-<table>
-<thead>
-<tr>
-<th>概念</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>集約</td>
-<td>ドメインオブジェクトのグループ</td>
-</tr>
-<tr>
-<td>境界</td>
-<td>それぞれの集約を区別する境目</td>
-</tr>
-<tr>
-<td>集約ルート</td>
-<td>境界内の親ドメインオブジェクトに相当するルート</td>
-</tr>
-</tbody>
-</table>
-<h3 id="1211">12.1.1 集約の基本的構造<a class="headerlink" href="#1211" title="Permanent link">&para;</a></h3>
-<p>ユーザー集約を例に挙げて、集約の概念を説明すると次のとおり。</p>
-<ul>
-<li>集約：青塗り</li>
-<li>境界：枠</li>
-<li>集約ルート：Userオブジェクト</li>
-</ul>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-01.png" /></p>
-<p>集約内のドメインオブジェクトは集約ルートを通じてのみ操作できる。</p>
-<div class="highlight"><pre><span></span><code>“親のオブジェクトを通じて、親が所有する子のオブジェクトを操作するべき”
-というプラクティスを『デメテルの法則』という。
-</code></pre></div>
-<p>例えば、ユーザー集約とUser集約ルートを考えてみる。</p>
-<p>UserNameの状態を変更するときは、UserにUserNameを渡さないといけない。</p>
-<p>これにより、ユーザー名のない不正なユーザーの作成を防げる。</p>
-<p>リスト12.1：ユーザ名の変更は User オブジェクトに依頼する</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 誤った方法</span>
-<span class="c1">// これをできないように実装するべき</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">();</span>
-<span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userName</span><span class="p">;</span>
+<h2 id="01-specification">01. Specificationパターンとは<a class="headerlink" href="#01-specification" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. 使用方法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="_3">仕様条件オブジェクトとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>エンティティから切り分けたビジネスルール条件オブジェクトとして実装する。</p>
+<p>複数のエンティティをまたぐビジネスルールの検証はSpecificationパターンに切り分けるのがよい。</p>
+<p>単一のエンティティに関する単一のビジネスルールの場合は、Specificationパターンとして切り分けずに、そのエンティティにboolean値関数 (<code>isFoo</code> 関数) をもたせる。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleFullSpecification</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="c1">// 正しい方法</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">userName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="s2">&quot;NewName&quot;</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="s2">&quot;OldName&quot;</span><span class="p">));</span>
-</code></pre></div>
-<p>次に、サークル集約とCircle集約ルートを考えてみる。</p>
-<p>CircleとUserは異なる集約に属し、それぞれが集約ルートである。</p>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-02" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-02.png" /></p>
-<p>このとき、ユーザーを作成し、メンバーとして所属させるようなユースケースを考える。</p>
-<p>Membersを作成したいとき、次のような処理はダメである。</p>
-<p>なぜなら、サークル集約内のドメインオブジェクトの操作はCircle集約ルートが実施しないといけない</p>
-<p>CircleがMembersを作成しないといけないはずが、Circle内のMembersを直接操作し、Membersを作成してしまっているためである。</p>
-<p>リスト12.2：第 11 章で登場したサークルにメンバーを追加するコード</p>
-<div class="highlight"><pre><span></span><code><span class="nx">circle</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">member</span><span class="p">);</span>
-</code></pre></div>
-<p>次のようにCircleがMembersを作成するべきである。</p>
-<p>ここでは、MembersはUserの配列としている。</p>
-<p>リスト12.3：メンバーを追加するコードをエンティティに追加</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">;</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">;</span>
-<span class="w">  </span><span class="c1">// MembersはUserの配列</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">isSatisfiedBy</span><span class="p">(</span><span class="nx">circle</span><span class="o">:</span><span class="w"> </span><span class="kt">Circle</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">boolean</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">members</span><span class="p">);</span>
 
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">,</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">owner</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span><span class="w"> </span><span class="c1">// ここ</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">premiumUserNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">users</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">isPremium</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
 
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">join</span><span class="p">(</span><span class="nx">member</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">member</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;ArgumentNullException: member&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">29</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleFullException</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">member</span><span class="p">);</span><span class="w"> </span><span class="c1">// ここ</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">circleUpperLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">premiumUserNumber</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">30</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">50</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">circle</span><span class="p">.</span><span class="nx">countMembers</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">circleUpperLimit</span><span class="p">;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>次のようにCircleを通じてMembersを作成する。</p>
-<p>これは『デメテルの法則』を満たしている。</p>
-<p>リスト12.4：メンバー追加のために Circle の関数を呼び出す</p>
-<div class="highlight"><pre><span></span><code><span class="nx">circle</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
-</code></pre></div>
-<p>一方で、MembersというUser配列を定義しない方法もある。</p>
-<p>この方法は誤っているわけではない。</p>
-<p>ただ、Membersを介さずにCircleがUserを直接操作できてしまうため、サークル集約とユーザー集約の境界が曖昧になってしまう。</p>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-03" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-03.png" /></p>
-<p>リスト12.5：データストアを直接操作してコレクションを生成する</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">();</span>
-
-<span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">getMembers</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="p">&lt;</span><span class="nt">User</span><span class="err">[]</span><span class="p">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Membersを介さずにCircleがUserを直接操作できてしまう</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">circle</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">([</span>
-<span class="w">      </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">circle</span><span class="p">.</span><span class="nx">findUnique</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">this.id.value</span><span class="p">},</span>
-<span class="w">        </span><span class="nx">include</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nx">circleMembers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">include</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">      </span><span class="p">}),</span>
-<span class="w">    </span><span class="p">]);</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">circle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`Circle not found: </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">value</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">circle</span><span class="p">.</span><span class="nx">circleMembers</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span>
-<span class="w">      </span><span class="p">(</span><span class="nx">cm</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">UserId</span><span class="p">(</span><span class="nx">cm</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">),</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="nx">cm</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">name</span><span class="p">)),</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="1212">12.1.2 オブジェクトの操作に関する基本的な原則<a class="headerlink" href="#1212" title="Permanent link">&para;</a></h3>
-<p>次はデメテルの法則に違反する実装である。</p>
-<p>CircleがMembersの数を検証しないといけないはずが、Circle内のMembersを直接操作し、Membersの数を検証してしまっているためである。</p>
-<p>リスト12.6：メンバーを追加する際の上限チェックを行うコード</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">count</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">29</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleFullException</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>次のisFull関数のように、CircleがMembersの数を検証するべきである。</p>
-<p>リスト12.7：デメテルの法則にしたがい、オブジェクトへふるまいを追加する</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">;</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1">// CircleがMembersの数を検証するべきである</span>
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">isFull</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">29</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">join</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;ArgumentNullException: user&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isFull</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleFullException</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>次のようにCircleを通じてMembersの数を検証する。</p>
-<p>これは『デメテルの法則』を満たしている。</p>
-<p>リスト12.8：リスト12.7 の IsFull 関数を利用して上限チェックを行う</p>
-<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">isFull</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleFullException</span><span class="p">(</span><span class="nx">circleId</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>上限数の仕様が変われば、次のように 29 から 49 に変更する。</p>
-<p>リスト12.9：上限数の変更</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1">// 上限数の仕様が変わったので、49に変更するような場面もある</span>
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">isFull</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">49</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="1213">12.1.3 内部データを隠蔽するために<a class="headerlink" href="#1213" title="Permanent link">&para;</a></h3>
-<p>オブジェクトのプロパティはプライベートにしたほうが良い。</p>
-<p>ただ、プライベートにすると、永続化するときにオブジェクトからデータを取り出せなくなってしまう。</p>
-<p>リスト12.10：リポジトリの永続化処理</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">EFUserRepository</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="p">&lt;</span><span class="nt">void</span><span class="p">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">userDataModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// データを永続化したいが、idやnameがプライベートだとここで取り出せずにエラーになってしまう</span>
-<span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">user.id.value</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">user.name.value</span><span class="p">,</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">([</span>
-<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">userDataModel</span><span class="p">,</span>
-<span class="w">      </span><span class="p">}),</span>
-<span class="w">    </span><span class="p">]);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>これの対処方法として、データモデル（DTOともいう）を使用するのがよい。</p>
-<p>まずは、データモデルインターフェースを定義する。</p>
-<p>例えば、IUserNotificationとする。</p>
-<p>リスト12.11：通知のためのインターフェース</p>
-<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">IUserNotification</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">id</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">name</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>次に、実装データモデルを定義する。</p>
-<p>実装データモデルでは、ドメインオブジェクトをデータモデルに変換する</p>
-<p>リスト12.12：リスト12.11 を実装した通知オブジェクト</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">UserDataModelBuilder</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IUserNotification</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// ドメインオブジェクトをプロパティに設定する</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">id</span><span class="o">!:</span><span class="w"> </span><span class="nx">UserId</span><span class="p">;</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name</span><span class="o">!:</span><span class="w"> </span><span class="nx">UserName</span><span class="p">;</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">id</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">name</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="c1">// ドメインオブジェクトをデータモデルに変換する</span>
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">build</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">UserDataModel</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserDataModel</span><span class="p">({</span>
-<span class="w">      </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">this.id.value</span><span class="p">,</span>
-<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">this.name.value</span><span class="p">,</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>ドメインオブジェクトには、ドメインオブジェクトを実装データモデルに渡す処理を持たせる。</p>
-<p>リスト12.13：通知オブジェクトを受け取る関数を追加する</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">;</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">notify</span><span class="p">(</span><span class="nx">note</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserNotification</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// ドメインオブジェクトを実装データモデルに渡す</span>
-<span class="w">    </span><span class="nx">note</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">note</span><span class="p">.</span><span class="nx">name</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>実装データモデルをORMに渡すと、ORMは実装データモデルのプロパティに設定されたドメインオブジェクトを読み取り、データを永続化する。</p>
-<p>結果、ドメインオブジェクトや実装データモデルのプロパティをプライベートにしたままで、データを永続化できた。</p>
-<p>リスト12.14：通知オブジェクトを利用してデータモデルを取得する</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">EFUserRepository</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">save</span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="p">&lt;</span><span class="nt">void</span><span class="p">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">userDataModelBuilder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserDataModelBuilder</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">user</span><span class="p">.</span><span class="nx">notify</span><span class="p">(</span><span class="nx">userDataModelBuilder</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">userDataModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">userDataModelBuilder</span><span class="p">.</span><span class="nx">build</span><span class="p">();</span>
-
-<span class="w">    </span><span class="c1">// 実装データモデルをORMに渡す</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">([</span>
-<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">userDataModel.id</span><span class="p">,</span>
-<span class="w">          </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">userDataModel.name</span><span class="p">,</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">      </span><span class="p">}),</span>
-<span class="w">    </span><span class="p">]);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>ちなみに、Scalaにはこれを少ない実装で解決できる便利機能がある。</p>
-<p>それは、特定のオブジェクトにだけ、プライベートプロパティの参照を許可する機能である。</p>
-<p>つぎのように実装すると、IUserRepository型のオブジェクト（つまり、IUserRepositoryそのものと実装UserRepository）にだけプライベートプロパティの参照を許可できる。</p>
-<p>そのため、先ほどのデータモデルのような仲介役が不要になる。</p>
-<p>リスト12.15：よりきめ細やかなアクセス制御（Scala）</p>
-<div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="p">(</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="p">[</span><span class="nc">IUserRepository</span><span class="p">]</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">UserId</span><span class="p">,</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="p">[</span><span class="nc">IUserRepository</span><span class="p">]</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nc">UserName</span>
-<span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="122">12.2 集約をどう区切るか<a class="headerlink" href="#122" title="Permanent link">&para;</a></h2>
-<p>データ変更の単位は、集約の単位に合わせるべきである。</p>
-<p>データ変更の単位を集約の単位を合わせないとどのような問題が起こるかを見ていく。</p>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-04" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-04.png" /></p>
-<p>次の実装では、CircleがMembers内のUserの名前を変更しようとしている。</p>
-<p>Circleでは、UserをMembers配列で保持することで、CircleからUserを操作できる。</p>
-<p>リスト12.16：サークル集約を通じてユーザ集約のふるまいを呼び出す</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">changeMemberName</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">find</span><span class="p">((</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">x</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">equals</span><span class="p">(</span><span class="nx">id</span><span class="p">));</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">target</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">target</span><span class="p">.</span><span class="nx">changeName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>CircleRepositoryでUserを永続化しようとしている。</p>
-<p>一見問題なさそうに見える。</p>
-<p>しかし、実のところUserRepositoryにも同じようなコードがあり、保存先のテーブルが衝突してしまっている。</p>
-<p>つまり、CircleRepositoryがサークル集約を超えてユーザー集約に関する責務も持ってしまったため、衝突してしまったということになる。</p>
-<p>リスト12.18：サークル集約越しに操作されたユーザ集約に対する変更をサポートする</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">CircleRepository</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">ICircleRepository</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">save</span><span class="p">(</span><span class="nx">circle</span><span class="o">:</span><span class="w"> </span><span class="kt">Circle</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="p">&lt;</span><span class="nt">void</span><span class="p">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">([</span>
-<span class="w">      </span><span class="c1">// Userを永続化</span>
-<span class="w">      </span><span class="p">...</span><span class="nx">circle</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
-<span class="w">          </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">user.id.value</span><span class="p">},</span>
-<span class="w">          </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">user.name.value</span><span class="p">,</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">        </span><span class="p">}),</span>
-<span class="w">      </span><span class="p">),</span>
-<span class="w">      </span><span class="c1">// Circleを永続化</span>
-<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">circle</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
-<span class="w">        </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">circle.id.value</span><span class="p">},</span>
-<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">circle.name.value</span><span class="p">,</span>
-<span class="w">          </span><span class="nx">ownerId</span><span class="o">:</span><span class="w"> </span><span class="kt">circle.owner</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">circle.owner.id.value</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="p">,</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">      </span><span class="p">}),</span>
-<span class="w">    </span><span class="p">]);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="1221-id">12.2.1 IDによるコンポジション<a class="headerlink" href="#1221-id" title="Permanent link">&para;</a></h3>
-<p>これまでのCircleは、UserをMembers配列で保持することで、Userを操作していた。</p>
-<p>これをやめ、Membersを作成したい場合は、CircleRepositoryだけでなくUserRepositoryも呼ばなければいけないように実装してみる。</p>
-<p>まずは、CircleのMembers配列の中身をUserではなくUserIdに変更する。</p>
-<p>これにより、事前にUserRepositoryを実行してUserを作成したうえで、CircleはそのUserのUserIdを使用するようになる。</p>
-<p>リスト12.19：識別子をインスタンスの代わりとして保持する</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">;</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleName</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// UserではなくUserIdを配列で保持する</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">[];</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleName</span><span class="p">,</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">members</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">getName</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">CircleName</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">getMembers</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">UserId</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[...</span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">];</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>UserIdを使用するようにしたメリットはほかにもある。</p>
-<p>サークル名を変更するような永続化でUserは不要であり、CircleがUserを保持していると、メモリ領域を多く圧迫してしまう。</p>
-<p>一方で、CircleがUserIdを保持するのであれば、Userを保持するよりはマシで、メモリ領域の少ない圧迫で済む。</p>
-<p>リスト12.20：サークルの名前を変更する処理</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleFactory</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleFactory</span><span class="p">,</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleRepository</span><span class="p">,</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleService</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleService</span><span class="p">,</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">,</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">,</span>
 <span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">update</span><span class="p">(</span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleUpdateCommand</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="p">&lt;</span><span class="nt">void</span><span class="p">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleId</span><span class="p">(</span><span class="nx">command</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">join</span><span class="p">(</span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleJoinCommand</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">circleId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleId</span><span class="p">(</span><span class="nx">command</span><span class="p">.</span><span class="nx">circleId</span><span class="p">);</span>
 
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">circleRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">circle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleNotFoundException</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">circleRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">circleId</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">users</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">members</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// サークルに所属しているプレミアムユーザの人数により上限が変わる</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">premiumUserNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">users</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">user</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">user</span><span class="p">.</span><span class="nx">isPremium</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">circleUpperLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">premiumUserNumber</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">10</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">30</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">50</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">countMembers</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">circleUpperLimit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleFullException</span><span class="p">(</span><span class="nx">circleId</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">command</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">command</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">undefined</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleName</span><span class="p">(</span><span class="nx">command</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">circle</span><span class="p">.</span><span class="nx">changeName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">memberId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserId</span><span class="p">(</span><span class="nx">command</span><span class="p">.</span><span class="nx">userId</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">memberId</span><span class="p">);</span>
 
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">circleService</span><span class="p">.</span><span class="nx">exists</span><span class="p">(</span><span class="nx">circle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CanNotRegisterCircleException</span><span class="p">(</span>
-<span class="w">          </span><span class="nx">circle</span><span class="p">,</span>
-<span class="w">          </span><span class="s2">&quot;サークルは既に存在しています。&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="p">);</span>
-<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">member</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserNotFoundException</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">memberId</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ユーザが見つかりませんでした。&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">prisma</span><span class="p">.</span><span class="nx">$transaction</span><span class="p">([</span><span class="k">this</span><span class="p">.</span><span class="nx">circleRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">circle</span><span class="p">)]);</span>
+<span class="w">    </span><span class="nx">circle</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">member</span><span class="p">);</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">circleRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">circle</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>コラム</strong></p>
-<p>これまでの話の中で、プロパティはパブリックではなくプライベートを使用するべきであるような話の流れであった。</p>
-<p>ただ、Id（識別子）はビジネスルールには属さない。</p>
-<p>また、パブリックのほうが便利である。</p>
-<p>そのため、パブリックでもよい。</p>
-<p>リスト12.21：識別子をゲッターで公開する</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleName</span><span class="p">;</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">[];</span>
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">;</span>
+<h3 id="_4">クエリ検索条件オブジェクトとして<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>リポジトリの引数に渡すクエリ検索条件オブジェクトとして実装する。</p>
+<p>Criteriaパターンと呼ぶこともある。</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleRecommendSpecification</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">executeDateTime</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">isSatisfiedBy</span><span class="p">(</span><span class="nx">circle</span><span class="o">:</span><span class="w"> </span><span class="kt">Circle</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">countMembers</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">oneMonthAgo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">executeDateTime</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">oneMonthAgo</span><span class="p">.</span><span class="nx">setMonth</span><span class="p">(</span><span class="nx">oneMonthAgo</span><span class="p">.</span><span class="nx">getMonth</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">circle</span><span class="p">.</span><span class="nx">created</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">oneMonthAgo</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleName</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">[],</span>
-<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;ArgumentNullException: id&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;ArgumentNullException: name&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">owner</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;ArgumentNullException: owner&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">members</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;ArgumentNullException: members&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleFactory</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleFactory</span><span class="p">,</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleRepository</span><span class="p">,</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleService</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleService</span><span class="p">,</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">userRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IUserRepository</span><span class="p">,</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">now</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">id</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">owner</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">members</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">getRecommend</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">request</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleGetRecommendRequest</span><span class="p">,</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">CircleGetRecommendResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">circleRecommendSpecification</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleRecommendSpecification</span><span class="p">(</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">now</span><span class="p">,</span>
+<span class="w">    </span><span class="p">);</span>
 
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">notify</span><span class="p">(</span><span class="nx">note</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleNotification</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">note</span><span class="p">.</span><span class="nx">id</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">note</span><span class="p">.</span><span class="nx">name</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">note</span><span class="p">.</span><span class="nx">owner</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">owner</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">note</span><span class="p">.</span><span class="nx">members</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// リポジトリに仕様を引き渡して抽出（フィルタリング）</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">recommendCircles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">circleRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">circleRecommendSpecification</span><span class="p">)</span>
+<span class="w">    </span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleGetRecommendResult</span><span class="p">(</span><span class="nx">recommendCircles</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="123">12.3 集約の大きさと操作の単位<a class="headerlink" href="#123" title="Permanent link">&para;</a></h2>
-<p>集約の粒度は大きくならないように気を付ける。</p>
-<p>大きいほど、単一のトランザクションの対象になるレコードが増えるため、レコードロックの範囲が大きくなる。</p>
-<div class="highlight"><pre><span></span><code>テーブル内のロックの範囲はいくつか種類があるが、筆者は言及していなかったため、ここではレコードロックとした
-</code></pre></div>
-<p><strong>コラム</strong></p>
-<p>なんらかの事情で、Repositoryによる永続化の対象が複数の集約にどうしてもまたがってしまう場合、結果整合性で辻褄合わせしてもよい。</p>
-<p>例えば、Cron処理で一日1回データベースを検査し、不整合のあるデータを書き換えてしまう。</p>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-05" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-05.png" /></p>
-<h2 id="124">12.4 言葉との齟齬を消す<a class="headerlink" href="#124" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>前章の「ビジネスルールの漏れだし」の続き？
-</code></pre></div>
-<p>isFull関数は、『サークルに所属するユーザの最大数はサークルのオーナーとなるユーザを含めて30名まで』というビジネスルールを表現したものである。</p>
-<p>ロジックは間違っていないが、<code>29</code> と比較しており、ビジネスルールの誤解を招きやすく可読性が低い。</p>
-<p>リスト12.22：30 ではなく 29 が現れている</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">;</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">owner</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">members</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">isFull</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">29</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>そこで、countMembers関数を用意し、<code>30</code> と比較することで、可読性を高くするべきである。</p>
-<p>リスト12.23：サークルのオーナーとメンバーの定義</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">;</span>
-<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
-
-<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">,</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">owner</span><span class="p">;</span>
-<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">members</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">isFull</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">countMembers</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="nx">countMembers</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="125">12.5 まとめ<a class="headerlink" href="#125" title="Permanent link">&para;</a></h2>
-<p>集約は機械的に決められるものではなく、集約とドメインは相互につながっており、境界線を引くのは難しい。</p>
-<p>境界線を引いて集約を見つけることは、ドメインをとらえ、そこにある変更の単位を導き出し、最適解を目指す作業である。</p>
+<p><br></p>
 
 
 
@@ -33485,7 +33197,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 19:24:15 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     
