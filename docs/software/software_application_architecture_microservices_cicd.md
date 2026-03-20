@@ -31,29 +31,43 @@ command: |
 ### updatecli
 
 ```yaml
-name: Update Helm values image with commit hash
+name: Update image tag on values.yaml
 
+# 共通処理
 scms:
-  default:
-    kind: git
+  setup:
+    kind: github
     spec:
       branch: main
 
+# 変更内容の値
 sources:
-  commitHash:
-    name: Commit hash
+  imageTag:
     kind: shell
     spec:
-      command: git rev-parse --short HEAD
+      command: echo "{{ env "CI_COMMIT_TAG" }}"
 
+# 変更対象
 targets:
-  ValuesImage:
-    name: Update values.yaml
+  helmValues:
+    name: Update image tag on values.yaml
     kind: yaml
+    scmid: setup
     spec:
       file: ./values.yaml
-      key: image
-    sourceid: commitHash
+      key: $.image.tag
+    sourceid: imageTag
+
+# プルリクエストの内容
+actions:
+  default:
+    kind: github/mergerequest
+    scmid: setup
+    spec:
+      automerge: false
+      description: |
+        values.yamlのイメージタグを `{{ env "CI_COMMIT_TAG" }}` に更新しました
+      title: "Update image tag to {{ env "CI_COMMIT_TAG" }} on values.yaml"
 ```
 
 > - https://github.com/updatecli/updatecli
