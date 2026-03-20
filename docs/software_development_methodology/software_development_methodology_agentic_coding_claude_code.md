@@ -74,12 +74,29 @@ $ claude --allow-dangerously-skip-permissions
 ### ディレクトリ
 
 ```text
-.codex/
+~/.claude/
 └── skills
-    ├── agents/ # スキルで呼び出すエージェントを定義する
-    ├── references/ # スキルで呼び出す参考情報を定義する
-    ├── scripts/ # スキルで呼び出すスクリプトを実装する
-    └── SKILL.md # スキルを定義する
+    └── create-foo
+        ├── agents/ # スキルで呼び出すエージェントを定義する
+        ├── references/ # スキルで呼び出す参考情報を定義する
+        ├── scripts/ # スキルで呼び出すスクリプトを実装する
+        └── SKILL.md # スキルを定義する
+```
+
+<br>
+
+### スキル登録
+
+執筆時点では、特定のプロジェクトだけでスキルを読み込ませるような方法はない。
+
+ただ、スキルを`~/.claude/skills`で一括管理するわけにもいかない。
+
+そこで、各プロジェクトにスキルを置き、`~/.claude/skills`ではシンボリックリンクのみを置く。
+
+```text
+~/.claude/
+└── skills
+    └── create-foo # シンボリックリンク
 ```
 
 <br>
