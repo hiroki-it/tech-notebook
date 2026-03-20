@@ -326,7 +326,7 @@ Next.jsの多くのコンポーネントがNode.jsランタイムである。
 
 JavaScriptまたはTypeScriptをエッジ（例：Cloudflare、AWS CloudFront、Fastlyなど）
 
-Next.jsでは、`export const runtime = 'edge'`を宣言すると、Edgeランタイムで動かせる。
+Next.jsでは、`export const runtime = 'edge'` を宣言すると、Edgeランタイムで動かせる。
 
 ```typescript
 export const runtime = 'edge'

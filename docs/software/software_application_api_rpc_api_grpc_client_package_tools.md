@@ -37,7 +37,7 @@ $ go install github.com/ktr0731/evans@latest
 
 gRPCサーバーのリフレクション機能を使用する。
 
-`proto`ファイルの定義をgRPCサーバーに問い合わせ、これを使用してgRPCサーバーにリクエストを送信する。
+`proto` ファイルの定義をgRPCサーバーに問い合わせ、これを使用してgRPCサーバーにリクエストを送信する。
 
 ```bash
 $ evans \
@@ -50,7 +50,7 @@ $ evans \
 
 ### --proto
 
-`proto`ファイルの定義を手動で渡し、これを使用してgRPCサーバーにリクエストを送信する。
+`proto` ファイルの定義を手動で渡し、これを使用してgRPCサーバーにリクエストを送信する。
 
 ```bash
 $ evans \
