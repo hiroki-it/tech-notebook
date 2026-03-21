@@ -12,10 +12,11 @@ hide:
 - #### [︎開発手法論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology.html)
 - #### <u>エージェンティックコーディング</u>
 
-  > - ##### [Codex](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_codex.html)
   > - ##### <u>Claude Code</u>
   >   > - ##### [Claude Code](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_claude_code.html)
-  >   > - ##### [スキル](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_claude_code_skills.html)
+  > - ##### <u>Codex</u>
+  >   > - ##### [Codex](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_codex.html)
+  >   > - ##### [スキル](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_codex_skills.html)
   > - ##### [PR Agent](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_pr_agent.html)
   > - ##### <u>AIドキュメント</u>
   >   > - ##### [AIドキュメント (プロダクトコンテキスト) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_context.html)
