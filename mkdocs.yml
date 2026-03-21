@@ -947,8 +947,9 @@ nav:
       - ■ エージェンティックコーディング:
           - ■ Claude Code:
               - Claude Code: software_development_methodology/software_development_methodology_agentic_coding_claude_code.md
-              - スキル: software_development_methodology/software_development_methodology_agentic_coding_claude_code_skills.md
-          - Codex: software_development_methodology/software_development_methodology_agentic_coding_codex.md
+          - ■ Codex:
+              - Codex: software_development_methodology/software_development_methodology_agentic_coding_codex.md
+              - スキル: software_development_methodology/software_development_methodology_agentic_coding_codex_skills.md
           - PR Agent: software_development_methodology/software_development_methodology_agentic_coding_pr_agent.md
           - ■ AIドキュメント:
               - AIドキュメント (プロダクトコンテキスト): software_development_methodology/software_development_methodology_agentic_coding_ai_document_context.md
