@@ -35,12 +35,12 @@ $ codex --dangerously-bypass-approvals-and-sandbox
 # 思考過程の出力を非表示にする
 hide_agent_reasoning = true
 
-model="gpt-5.1"
+model="gpt-5.2"
 
 model_provider="<プロバイダー名>"
 
-# (これも？) 思考過程の出力を非表示にする
-model_reasoning_effort = "none"
+# 思考にかける時間
+model_reasoning_effort = "low"
 
 # ネットワークへの接続を有効化する
 network_access = true
@@ -50,6 +50,12 @@ notify = ["bash", "/Users/hiroki.hasegawa/.codex/notify_macos.sh"]
 
 # インターネット検索を有効化する
 web_search_request = true
+
+# 承認なしで進める
+approval_policy = "never"
+
+# すべての操作を許可する
+sandbox_mode = "danger-full-access"
 
 [model_providers.lite_llm]
 base_url="<APIのURL>"
