@@ -52,7 +52,7 @@ func main() {
 	// 生成にDBを使う
 	g.UseDB(db)
 
-	// userテーブルのスキーマからORMモデルやCRUDのような実装を自動作成する
+	// userテーブルのスキーマからORMのデータモデルやCRUDのような実装を自動作成する
 	user := g.GenerateModel("users")
 
 	// Queryに登録して自動作成する
