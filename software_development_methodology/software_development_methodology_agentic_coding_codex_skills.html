@@ -33409,16 +33409,18 @@ name: design-application-architecture-for-new-feature
 
 <span class="gu">## このスキルの使い方</span>
 
-ユーザーがフロントエンドとバックエンドの両方を含む新機能のアーキテクチャ設計を依頼したら、以下の手順で進める。
+これは新機能のアーキテクチャ設計の手順を明文化したスキルである。
+
+ユーザーがフロントエンドとバックエンドの両方を含む新機能のアーキテクチャ設計を依頼したら、`./.claude/rules/application-architecture-design.md` の規約を参考にしながら、以下の手順で進める。
 
 このスキルはレイヤー、ファイル、関数だけを設計するものであり、具体的な実装は機能要件や非機能要件に応じて調整する必要がある。
 
-<span class="gu">### 全体像</span>
+<span class="gu">### 1. 全体像</span>
 
 <span class="k">1.</span>  <span class="sb">`./.codex/rules/application-architecture-design.md`</span> から、レイヤードアーキテクチャにおけるフロントエンドとバックエンドの各層がどのディレクトリに相当するのかを確認する。
 <span class="k">2.</span>  まずはフロントエンドの設計に進む。
 
-<span class="gu">### フロントエンドの設計</span>
+<span class="gu">### 2. フロントエンドの設計</span>
 
 <span class="gu">#### プレゼンテーション層</span>
 
@@ -33432,7 +33434,7 @@ name: design-application-architecture-for-new-feature
 <span class="k">6.</span> フロントエンドにバリデーションが必要であれば、`./app/presentation/component/validators`ディレクトリに`&lt;バリデーションの対象名&gt;Validator.ts`を作成する。ここにバリデーションをロジックを実装する。
 <span class="k">7.</span> バックエンドの設計に進む。
 
-<span class="gu">### バックエンドの設計</span>
+<span class="gu">### 3. バックエンドの設計</span>
 
 <span class="gu">#### プレゼンテーション層</span>
 
@@ -33449,10 +33451,9 @@ name: design-application-architecture-for-new-feature
 <span class="w">   </span><span class="k">-</span><span class="w"> </span>作成系：`registerXxx`
 <span class="w">   </span><span class="k">-</span><span class="w"> </span>更新系：`changeXxx`
 <span class="w">   </span><span class="k">-</span><span class="w"> </span>削除系：`deleteXxx`
-<span class="k">3.</span> <span class="sb">`./app/presentation/routes`</span>ディレクトリにある閲覧系ユースケースに対応したuiルートを確認する。このuiルートの`loader`で、`ui&lt;機能名&gt;Usecase.ts`にある閲覧系
-<span class="k">4.</span> ユースケースの関数を呼び出す。
-<span class="k">5.</span> <span class="sb">`./app/presentation/routes`</span>ディレクトリにある登録・更新・削除系ユースケースに対応したuiルートを確認する。このuiルートの`action`で、`ui&lt;機能名&gt;Usecase.ts`にある登録・更新・削除系ユースケースの関数を呼び出す。
-<span class="k">6.</span> ドメイン層の設計に進む。
+<span class="k">3.</span> <span class="sb">`./app/presentation/routes`</span>ディレクトリにある閲覧系ユースケースに対応したuiルートを確認する。このuiルートの`loader`で、`ui&lt;機能名&gt;Usecase.ts`にある閲覧系ユースケースの関数を呼び出す。
+<span class="k">4.</span> <span class="sb">`./app/presentation/routes`</span>ディレクトリにある登録・更新・削除系ユースケースに対応したuiルートを確認する。このuiルートの`action`で、`ui&lt;機能名&gt;Usecase.ts`にある登録・更新・削除系ユースケースの関数を呼び出す。
+<span class="k">5.</span> ドメイン層の設計に進む。
 
 <span class="gu">#### ドメイン層</span>
 
@@ -33465,18 +33466,26 @@ name: design-application-architecture-for-new-feature
 <span class="gu">#### インフラストラクチャ層</span>
 
 <span class="k">1.</span> バックエンドの機能要件の入力を求め、この内容に基づいてドメイン層とインフラストラクチャ層を後述の番号で設計していく。
-<span class="k">2.</span> 新しいORMのDBモデルが必要であれば、`./prisma/schema.prisma`にDBモデルを実装する。
-<span class="k">3.</span> <span class="sb">`./app/infrastructure/models`</span>ディレクトリに`&lt;DBモデル名&gt;.server.ts`を作成する。ここに登録・更新・削除系ユースケースに応じたCRUD関数を実装する。
+<span class="k">2.</span> 新しいORMのデータモデルが必要であれば、`./prisma/schema.prisma`にデータモデルを実装する。
+<span class="k">3.</span> <span class="sb">`./app/infrastructure/models`</span>ディレクトリに`&lt;データモデル名&gt;.server.ts`を作成する。ここに登録・更新・削除系ユースケースに応じたCRUD関数を実装する。
 <span class="w">   </span><span class="k">-</span><span class="w"> </span>READ系：`getXxx`
 <span class="w">   </span><span class="k">-</span><span class="w"> </span>CREATE系：`createXxx`
 <span class="w">   </span><span class="k">-</span><span class="w"> </span>UPDATE系：`updateXxx`
 <span class="w">   </span><span class="k">-</span><span class="w"> </span>DELETE系：`deleteXxx`
 <span class="w">   </span><span class="k">-</span><span class="w"> </span>なんらかの理由でCREATEとUPDATEをかねたい場合：`saveXxx`
-<span class="k">4.</span> <span class="sb">`./app/usecases`</span>ディレクトリにある`ui&lt;機能名&gt;Usecase.ts`を確認する。各ユースケースの関数で、`&lt;DBモデル名&gt;.server.ts`にあるCRUD関数を呼び出す。
+<span class="k">4.</span> <span class="sb">`./app/usecases`</span>ディレクトリにある`ui&lt;機能名&gt;Usecase.ts`を確認する。各ユースケースの関数で、`&lt;データモデル名&gt;.server.ts`にあるCRUD関数を呼び出す。
 
-<span class="gu">### セルフレビュー</span>
+<span class="gu">### 4. セルフレビュー</span>
 
 成果物が <span class="sb">`./.codex/rules/application-architecture-design.md`</span> に記載の規約に準拠しているかを確認する。準拠していなければ修正する。
+
+<span class="gu">### 5. ドキュメント化</span>
+
+<span class="sb">`./docs/&lt;機能名&gt;/`</span> のディレクトリを新しく作成し、ここに今回のアーキテクチャ設計を解説するドキュメントを記載する。
+
+<span class="k">-</span><span class="w"> </span>レイヤー間の依存関係の図
+<span class="k">-</span><span class="w"> </span>新しく追加するファイルを置くディレクトリのツリー
+<span class="k">-</span><span class="w"> </span>新しく追加する関数の役割、引数、返却値
 </code></pre></div>
 <p><br></p>
 <h2 id="02-textlint">02. textlint<a class="headerlink" href="#02-textlint" title="Permanent link">&para;</a></h2>
@@ -33524,7 +33533,7 @@ textlintで error が <span class="gs">**0件**</span> になるまで、手順 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月20日 15:44:26 JST">2026-03-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月23日 15:42:08 JST">2026-03-23</span>
   </span>
 
     
