@@ -189,6 +189,8 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
+      # botユーザーの資格情報を設定する
+      # botユーザーがPR上にコメントなどを送信できるようになる
       - name: Git config
         run: |
           git config --local user.email "example@gmail.com"
