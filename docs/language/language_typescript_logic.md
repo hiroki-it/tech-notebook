@@ -611,7 +611,7 @@ type UserResponse = {
 };
 
 async function getUserNames(
-  // パフォーマンス: 複数ユーザーIDをまとめて取得することで、N+1問題を回避
+  // 性能: 複数ユーザーIDをまとめて取得することで、N+1問題を回避
   userIds: string[],
   // テストビリティ: 依存性注入により、モックに差し替えできるようにする
   di: DI,
@@ -639,8 +639,8 @@ async function getUserNames(
             Authorization: `Bearer ${await di.jwtProvider()}`,
             "Content-Type": "application/json",
           },
-          // パフォーマンス: 複数ユーザーIDをまとめて取得することで、N+1問題を回避
-          // パフォーマンス: 必要なフィールドのみ取得してデータ転送量を最小化
+          // 性能: 複数ユーザーIDをまとめて取得することで、N+1問題を回避
+          // 性能: 必要なフィールドのみ取得してデータ転送量を最小化
           body: JSON.stringify({ids: userIds, fields: ["id", "name"]}),
           signal: controller.signal,
         },
