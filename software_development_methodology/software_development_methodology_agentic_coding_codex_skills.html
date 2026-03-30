@@ -33469,10 +33469,10 @@ name: design-application-architecture-for-new-feature
 
 <span class="k">1.</span> バックエンドの機能要件の入力を求め、この内容に基づいてユースケース層を後述の番号で設計していく。
 <span class="k">2.</span> <span class="sb">`./app/usecases`</span>ディレクトリに`ui&lt;機能名&gt;Usecase.ts`を作成し、機能要件のユースケース（閲覧、登録、更新、削除）に応じた関数を実装する。
-<span class="w">   </span><span class="k">-</span><span class="w"> </span>閲覧系：`getXxx`、`listXxx`、`searchXxx`など
-<span class="w">   </span><span class="k">-</span><span class="w"> </span>作成系：`registerXxx`
-<span class="w">   </span><span class="k">-</span><span class="w"> </span>更新系：`changeXxx`
-<span class="w">   </span><span class="k">-</span><span class="w"> </span>削除系：`deleteXxx`
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>閲覧系：いくつかの`getXxx`（単一ドメインオブジェクト）、いくつかの`listXxx`（複数ドメインオブジェクト）、`searchXxx`など
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>作成系：`registerXxx`（単一ドメインオブジェクト）
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>更新系：`changeXxx`（単一ドメインオブジェクト）
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>削除系：`deleteXxx`（単一ドメインオブジェクト）
 <span class="k">3.</span> <span class="sb">`./app/presentation/routes`</span>ディレクトリにある閲覧系ユースケースに対応したuiルートを確認する。このuiルートの`loader`で、`ui&lt;機能名&gt;Usecase.ts`にある閲覧系ユースケースの関数を呼び出す。
 <span class="k">4.</span> <span class="sb">`./app/presentation/routes`</span>ディレクトリにある登録・更新・削除系ユースケースに対応したuiルートを確認する。このuiルートの`action`で、`ui&lt;機能名&gt;Usecase.ts`にある登録・更新・削除系ユースケースの関数を呼び出す。
 <span class="k">5.</span> ドメイン層の設計に進む。
@@ -33702,7 +33702,7 @@ textlintで error が <span class="gs">**0件**</span> になるまで、手順 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月26日 16:12:18 JST">2026-03-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月30日 21:04:19 JST">2026-03-30</span>
   </span>
 
     
