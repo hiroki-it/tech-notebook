@@ -55,16 +55,14 @@ description: ユースケース層＠クリーンアーキテクチャの知見�
 
 そのため、関数名はユースケースを適切に表現した自由な英単語を使用する。
 
-フレームワークのLaravelの基本的な関数名 (`index`、`store`、`create`、`show`、`update`) が参考になる。
-
 `CREATE` 処理と `UPDATE` 処理をSAVE処理としてまとめても良い。
 
 | 関数名                  | 引数型                                | 返却値型                                | 処理内容                                                                                                                                                               |
 | ----------------------- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `indexFoo`              | `indexFooRequest`                     | `indexFooResponse`                      |                                                                                                                                                                        |
-| `showFoo`               | `showFooRequest`                      | `showFooResponse`                       |                                                                                                                                                                        |
-| `createFoo`             | `createFooRequest`                    | `createFooResponse`                     |                                                                                                                                                                        |
-| `updateFoo`             | `updateFooRequest`                    | `updateFooResponse`                     |                                                                                                                                                                        |
+| `getFoo`                | `getFooRequest`                       | `getFooResponse`                        |                                                                                                                                                                        |
+| `registerFoo`           | `registerFooRequest`                  | `registerFooResponse`                   |                                                                                                                                                                        |
+| `listFoos`              | `listFoosRequest`                     | `listFoosResponse`                      |                                                                                                                                                                        |
+| `changeFoo`             | `changeFooRequest`                    | `changeFooResponse`                     |                                                                                                                                                                        |
 | `saveFoo` (`upsertFoo`) | `saveFooRequest` (`upsertFooRequest`) | `saveFooResponse` (`upsertFooResponse`) | リポジトリのfind関数をコールして重複確認を実行し、その結果に応じてcreate関数またはupdate関数をコールする。`<br>`https://github.com/little-hands/ddd-q-and-a/issues/241 |
 | `deleteFoo`             | `deleteFooRequest`                    | `deleteFooResponse`                     |                                                                                                                                                                        |
 
@@ -103,14 +101,14 @@ class FooCreateInteractor
     }
 
     /**
-     * @param CreateFooRequest $createFooRequest
-     * @return CreateFooResponse
+     * @param RegisterFooRequest $registerFooRequest
+     * @return RegisterFooResponse
      */
-    public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
+    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
     {
         $foo = $this->fooRepository->create(
-            new Bar($createFooRequest->bar),
-            new Baz($createFooRequest->baz)
+            new Bar($registerFooRequest->bar),
+            new Baz($registerFooRequest->baz)
         );
 
         // 何らかの処理
@@ -143,14 +141,14 @@ class FooInteractor
     }
 
     /**
-     * @param CreateFooRequest $createFooRequest
-     * @return CreateFooResponse
+     * @param RegisterFooRequest $registerFooRequest
+     * @return RegisterFooResponse
      */
-    public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
+    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
     {
         $foo = $this->fooRepository->create(
-            new Bar($createFooRequest->bar),
-            new Baz($createFooRequest->baz)
+            new Bar($registerFooRequest->bar),
+            new Baz($registerFooRequest->baz)
         );
 
         // 何らかの処理
@@ -170,15 +168,15 @@ class FooInteractor
     }
 
     /**
-     * @param UpdateFooRequest $updateFooRequest
-     * @return UpdateFooResponse
+     * @param ChangeFooRequest $changeFooRequest
+     * @return ChangeFooResponse
      */
-    public function updateFoo(UpdateFooRequest $updateFooRequest): UpdateFooResponse
+    public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse
     {
         $foo = $this->fooRepository->update(
-            new FooId($updateFooRequest->id),
-            new Bar($updateFooRequest->bar),
-            new Baz($updateFooRequest->baz)
+            new FooId($changeFooRequest->id),
+            new Bar($changeFooRequest->bar),
+            new Baz($changeFooRequest->baz)
         );
 
         // 何らかの処理
@@ -224,10 +222,10 @@ namespace App\ユースケース層\Foo\InputBoundaries;
 interface FooInteractorInterface
 {
     /**
-     * @param CreateFooRequest $createFooRequest
-     * @return CreateFooResponse
+     * @param RegisterFooRequest $registerFooRequest
+     * @return RegisterFooResponse
      */
-    public function createFoo(CreateFooRequest $createFooRequest): CreateFooResponse
+    public function registerFoo(RegisterFooRequest $registerFooRequest): RegisterFooResponse
 
     /**
      * @param GetFooRequest $getFooRequest
@@ -236,10 +234,10 @@ interface FooInteractorInterface
     public function getFoo(GetFooRequest $getFooRequest): GetFooResponse
 
     /**
-     * @param UpdateFooRequest $updateFooRequest
-     * @return UpdateFooResponse
+     * @param ChangeFooRequest $changeFooRequest
+     * @return ChangeFooResponse
      */
-    public function updateFoo(UpdateFooRequest $updateFooRequest): UpdateFooResponse
+    public function changeFoo(ChangeFooRequest $changeFooRequest): ChangeFooResponse
 
     /**
      * @param DeleteFooRequest $deleteFooRequest
