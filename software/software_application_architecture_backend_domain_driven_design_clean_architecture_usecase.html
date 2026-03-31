@@ -33871,44 +33871,44 @@
 <tbody>
 <tr>
 <td>閲覧系 (単一)</td>
-<td><code>getFoo</code>関数</td>
-<td><code>getFooRequest</code>オブジェクト</td>
-<td><code>getFooResponse</code>オブジェクト、 <code>null</code></td>
+<td><code>getFoo</code> 関数</td>
+<td><code>getFooRequest</code> オブジェクト</td>
+<td><code>getFooResponse</code> オブジェクト、 <code>null</code></td>
 <td>リポジトリの <code>findOne</code> 関数をコールし、ドメインオブジェクトを取得する。</td>
 </tr>
 <tr>
 <td>閲覧系 (複数)</td>
-<td><code>listFoos</code>関数</td>
-<td><code>listFoosRequest</code>オブジェクト</td>
-<td>空配列を含む <code>listFoosResponse</code>オブジェクト</td>
+<td><code>listFoos</code> 関数</td>
+<td><code>listFoosRequest</code> オブジェクト</td>
+<td>空配列を含む <code>listFoosResponse</code> オブジェクト</td>
 <td>リポジトリの <code>findAll</code> 関数をコールし、ドメインオブジェクトを取得する。</td>
 </tr>
 <tr>
 <td>登録系</td>
-<td><code>registerFoo</code>関数</td>
-<td><code>registerFooRequest</code>オブジェクト</td>
-<td><code>registerFooResponse</code>オブジェクト、 <code>Exception</code>オブジェクト</td>
+<td><code>registerFoo</code> 関数</td>
+<td><code>registerFooRequest</code> オブジェクト</td>
+<td><code>registerFooResponse</code> オブジェクト、 <code>Exception</code> オブジェクト</td>
 <td>リポジトリの <code>findOne</code> 関数をコールし、重複確認を実施する。その結果に応じて、リポジトリの <code>create</code> 関数をコールし、ドメインオブジェクトを新規登録する。</td>
 </tr>
 <tr>
 <td>変更系</td>
-<td><code>changeFoo</code>関数</td>
-<td><code>changeFooRequest</code>オブジェクト</td>
-<td><code>changeFooResponse</code>オブジェクト、<code>Exception</code>オブジェクト</td>
+<td><code>changeFoo</code> 関数</td>
+<td><code>changeFooRequest</code> オブジェクト</td>
+<td><code>changeFooResponse</code> オブジェクト、<code>Exception</code> オブジェクト</td>
 <td>リポジトリの <code>findOne</code> 関数し、存在確認を実施する。その結果に応じて、 <code>update</code> 関数をコールし、既存のドメインオブジェクトを更新する。</td>
 </tr>
 <tr>
 <td>登録かつ変更系</td>
-<td><code>saveFoo</code>関数 (<code>upsertFoo</code>関数)</td>
-<td><code>saveFooRequest</code>オブジェクト (<code>upsertFooRequest</code>オブジェクト)</td>
-<td><code>saveFooResponse</code>オブジェクト (<code>upsertFooResponse</code>オブジェクト) 、<code>Exception</code>オブジェクト</td>
+<td><code>saveFoo</code> 関数 (<code>upsertFoo</code> 関数)</td>
+<td><code>saveFooRequest</code> オブジェクト (<code>upsertFooRequest</code> オブジェクト)</td>
+<td><code>saveFooResponse</code> オブジェクト (<code>upsertFooResponse</code> オブジェクト) 、<code>Exception</code> オブジェクト</td>
 <td>リポジトリの <code>findOne</code> 関数をコールし、存在確認を実施する。その結果に応じて、 <code>create</code> 関数または <code>update</code> 関数を実行する。<code>&lt;br&gt;</code><a href="https://github.com/little-hands/ddd-q-and-a/issues/241">https://github.com/little-hands/ddd-q-and-a/issues/241</a></td>
 </tr>
 <tr>
 <td>削除系</td>
-<td><code>deleteFoo</code>関数</td>
-<td><code>deleteFooRequest</code>オブジェクト</td>
-<td><code>deleteFooResponse</code>オブジェクト、 <code>Exception</code>オブジェクト</td>
+<td><code>deleteFoo</code> 関数</td>
+<td><code>deleteFooRequest</code> オブジェクト</td>
+<td><code>deleteFooResponse</code> オブジェクト、 <code>Exception</code> オブジェクト</td>
 <td>リポジトリの <code>findOne</code> 関数を実行し、存在確認を実施する。その結果に応じて、 <code>delete</code> 関数をコールし、既存のドメインオブジェクトを削除する。</td>
 </tr>
 </tbody>
@@ -34271,7 +34271,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月30日 22:09:58 JST">2026-03-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月31日 15:51:22 JST">2026-03-31</span>
   </span>
 
     
