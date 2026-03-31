@@ -118,6 +118,16 @@ final class プレゼンテーション層Exception extends Exception
 }
 ```
 
+| 例外名の例        | 説明                 |
+| ----------------- | -------------------- |
+| BadRequestError   | リクエスト形式が不正 |
+| UnauthorizedError | 認証されていない     |
+| ForbiddenError    | 認可されていない     |
+
+#### ▼ ハンドリング
+
+ユースケース層の処理を`try-catch`で囲い、スローされたユースケース例外をエラーレスポンスにして返信する。
+
 <br>
 
 ### ユースケース層
@@ -130,6 +140,17 @@ final class InteractorException extends Exception
 
 }
 ```
+
+| 例外名の例            | 説明                             |
+| --------------------- | -------------------------------- |
+| FooNotFoundError      | 対象 Foo が存在しない            |
+| FooAlreadyExistsError | 同名 Foo が既に存在する          |
+| FooQuotaExceededError | Foo 作成上限を超えている         |
+| FooUpdateFailedError  | Foo 更新系ユースケースが失敗した |
+
+#### ▼ ハンドリング
+
+ドメイン層の処理を`try-catch`で囲い、スローされたドメイン例外をユースケース例外にして返却する。
 
 <br>
 
@@ -144,6 +165,10 @@ final class DomainException extends Exception
 }
 ```
 
+| 例外名の例          | 説明                                 |
+| ------------------- | ------------------------------------ |
+| InvalidFooNameError | Foo 名がドメインルールに違反している |
+
 <br>
 
 ### インフラストラクチャ層
@@ -156,3 +181,17 @@ final class インフラストラクチャ層Exception extends Exception
 
 }
 ```
+
+| 例外名の例                | 説明                               |
+| ------------------------- | ---------------------------------- |
+| RepositoryNotFoundError   | 永続化層で対象データが見つからない |
+| UniqueConstraintError     | 一意制約違反                       |
+| ForeignKeyConstraintError | 外部キー制約違反                   |
+| DatabaseConnectionError   | DB 接続失敗                        |
+| QueryTimeoutError         | クエリがタイムアウトした           |
+
+#### ▼ ハンドリング
+
+トランザクションの処理を`try-catch`で囲い、スローされたインフラストラクチャ例外をドメイン例外にして返却する。
+
+<br>
