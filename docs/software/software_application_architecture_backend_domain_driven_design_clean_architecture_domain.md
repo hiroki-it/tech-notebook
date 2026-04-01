@@ -1714,3 +1714,20 @@ class DogOrder
 > - https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/インフラストラクチャ層-persistence-layer-design#define-one-repository-per-aggregate
 
 <br>
+
+## 06. ルートエンティティ、エンティティ、値オブジェクトの見分け方
+
+次の観点で見分けられる。
+
+- ルートエンティティ
+  - 識別子をもつ
+  - 内包するエンティティや値オブジェクトを含む集約全体の状態を変更できる
+  - ルートエンティティはそれぞれ独立して変更できる
+- エンティティ
+  - 識別子をもつ
+  - 集約の外部から直接変更することはできず、通常はルートエンティティ経由で集約の状態を変更する
+- 値オブジェクト
+  - 識別子をもたない
+  - ドメインルール上でのプリミティブ値や性質を表す
+
+<br>
