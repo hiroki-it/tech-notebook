@@ -358,11 +358,11 @@ AWSリソースごとに専用のオプションがある。
 
 #### ▼ --filter
 
-AWS SES、AWS Cost Explorerなど
+Amazon SES、AWS Cost Explorerなど
 
 #### ▼ --filters
 
-AWS EC2、AWS AutoScaling、AWS RDSなど
+Amazon EC2、AWS AutoScaling、Amazon RDSなど
 
 ```bash
 # 特定のタグ値のデータのみを取得する。『tag:』のつけ忘れに注意する。
@@ -427,7 +427,7 @@ $ aws ec2 describe-instances \
 
 <br>
 
-### AWS CloudWatch
+### Amazon CloudWatch
 
 #### ▼ describe-alarms
 
@@ -441,7 +441,7 @@ $ aws cloudwatch describe-alarms --alarm-names <アラーム名>
 
 **＊例＊**
 
-AWS CloudWatchアラームの状態を変更する。
+Amazon CloudWatchアラームの状態を変更する。
 
 アラームをテストできる。
 
@@ -497,13 +497,13 @@ $ aws deploy register-on-premises-instance \
 
 <br>
 
-### AWS EC2
+### Amazon EC2
 
 #### ▼ describe-instances
 
-AWS EC2の情報を取得する。
+Amazon EC2の情報を取得する。
 
-ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続する場合、AWS EC2のインスタンスIDを取得したいときに役立つ。
+ローカルPCから踏み台サーバー (Amazon EC2) を経由してAmazon Auroraに接続する場合、Amazon EC2のインスタンスIDを取得したいときに役立つ。
 
 ```bash
 $ aws ec2 describe-instances \
@@ -514,7 +514,7 @@ $ aws ec2 describe-instances \
 
 <br>
 
-### AWS ECR
+### Amazon ECR
 
 #### ▼ get-login-password
 
@@ -530,11 +530,11 @@ $ aws ecr get-login-password --region ap-northeast-1
 
 <br>
 
-### AWS EKS
+### Amazon EKS
 
 #### ▼ update-addon
 
-コンフリクトでAWS EKSアドオンの設定を更新できない場合に、変更できるようにする。
+コンフリクトでAmazon EKSアドオンの設定を更新できない場合に、変更できるようにする。
 
 ```bash
 $ aws eks update-addon --cluster-name foo-cluster \
@@ -582,13 +582,13 @@ $ aws resourcegroupstaggingapi get-resources \
 
 <br>
 
-### AWS RDS、AWS Aurora
+### Amazon RDS、Amazon Aurora
 
 #### ▼ describe-db-clusters
 
-AWS EC2の情報を取得する。
+Amazon EC2の情報を取得する。
 
-ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続する場合、AWS Auroraのクラスター名を取得したいときに役立つ。
+ローカルPCから踏み台サーバー (Amazon EC2) を経由してAmazon Auroraに接続する場合、Amazon Auroraのクラスター名を取得したいときに役立つ。
 
 ```bash
 $ aws rds describe-db-clusters \
@@ -598,7 +598,7 @@ $ aws rds describe-db-clusters \
 
 <br>
 
-### AWS S3
+### Amazon S3
 
 #### ▼ ls
 
@@ -659,7 +659,7 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
 
 <br>
 
-### AWS SQS
+### Amazon SQS
 
 #### ▼ get-queue-url
 
@@ -711,7 +711,7 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 特定のSecretに格納されている文字列を取得する。
 
-ローカルPCから踏み台サーバー (AWS EC2) を経由してAWS Auroraに接続する場合、AWS Auroraのユーザー名とパスワードを取得したいときに役立つ。
+ローカルPCから踏み台サーバー (Amazon EC2) を経由してAmazon Auroraに接続する場合、Amazon Auroraのユーザー名とパスワードを取得したいときに役立つ。
 
 注意点として、出力した文字列はダブルクオーテーションで囲われている。
 

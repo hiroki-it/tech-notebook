@@ -347,7 +347,7 @@ spec:
 
 NodePool内のNodeに対して、クラウドプロバイダーに依らない仕様を設定する。
 
-EC2 Nodeのグループ (例：AWS EKS Nodeグループ、Google Cloud Nodeプールなど) に合わせて、複数作成すると良い。
+EC2 Nodeのグループ (例：Amazon EKS Nodeグループ、Google Cloud Nodeプールなど) に合わせて、複数作成すると良い。
 
 ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。
 
@@ -725,9 +725,9 @@ spec:
 
 ### aws.interruptionQueueName
 
-割り込み処理を有効化する場合に、AWS SQSの名前を設定する。
+割り込み処理を有効化する場合に、Amazon SQSの名前を設定する。
 
-別途、AWS SQSを作成し、KarpenterにAWS SQSへの権限を付与しておく必要がある。
+別途、Amazon SQSを作成し、KarpenterにAmazon SQSへの権限を付与しておく必要がある。
 
 ```yaml
 apiVersion: v1
@@ -762,7 +762,7 @@ data:
 
 ### aws.clusterEndpoint
 
-AWS EKS Clusterのkube-apiserverのURLを設定する。
+Amazon EKS Clusterのkube-apiserverのURLを設定する。
 
 ```yaml
 apiVersion: v1

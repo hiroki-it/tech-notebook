@@ -91,7 +91,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 `tfstate` ファイルを複数人が同時に変更するような競合を防ぐために、`terraform apply` コマンドの処理中に `tfstate` ファイルはロックされる。
 
-ロックの状態は、`state.lock` ファイルやクラウドプロバイダーのストレージ (例：AWS DynamoDB、AWS S3) に記載する。
+ロックの状態は、`state.lock` ファイルやクラウドプロバイダーのストレージ (例：AWS DynamoDB、Amazon S3) に記載する。
 
 `terraform apply` コマンドが完了すれば、ロックは解除される。
 

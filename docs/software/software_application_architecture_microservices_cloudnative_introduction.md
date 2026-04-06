@@ -128,28 +128,28 @@ CNCFでは、ツールを以下で分類しています。
 
 本記事で登場するツールの一部を例として紹介しました。
 
-| 分類                                   | 例                                                                             |
-| -------------------------------------- | ------------------------------------------------------------------------------ |
-| アプリケーション定義とイメージビルド   | Docker Compose、Helm、OpenAPI                                                  |
-| 継続的インテグレーションとデリバリー   | ArgoCD (CD)、GitHub Actions (CI)                                               |
-| DB                                     | AWS Aurora                                                                     |
-| ストリーミングとメッセージング         | 今回は言及しません                                                             |
-| スケジューリングとオーケストレーション | AWS EKS                                                                        |
-| サービスメッシュ                       | Istio🐬                                                                        |
-| リモートプロシージャーコール           | gRPC                                                                           |
-| サービスプロキシ                       | Envoy                                                                          |
-| API Gateway                            | 今回はサービスプロキシのNginxで代替                                            |
-| 調整とサービスディスカバリー           | CoreDNS                                                                        |
-| クラウドネイティブネットワーク         | AWS VPC CNI                                                                    |
-| コンテナランタイム                     | Containerd                                                                     |
-| セキュリティとコンプライアンス         | Keycloak、OAuth2 Proxy                                                         |
-| コンテナレジストリ                     | AWS ECR                                                                        |
-| 自動化と設定                           | Terraform                                                                      |
-| キー管理                               | AWS KMS                                                                        |
-| 可観測性                               | AWS CloudWatch、Fluentd / FluentBit、Grafana、Kiali、OpenTelemetry、Prometheus |
-| カオスエンジニアリング                 | 今回は言及しません                                                             |
-| 継続的最適化                           | 今回は言及しません                                                             |
-| 機能フラグ                             | 今回は言及しません                                                             |
+| 分類                                   | 例                                                                                |
+| -------------------------------------- | --------------------------------------------------------------------------------- |
+| アプリケーション定義とイメージビルド   | Docker Compose、Helm、OpenAPI                                                     |
+| 継続的インテグレーションとデリバリー   | ArgoCD (CD)、GitHub Actions (CI)                                                  |
+| DB                                     | Amazon Aurora                                                                     |
+| ストリーミングとメッセージング         | 今回は言及しません                                                                |
+| スケジューリングとオーケストレーション | Amazon EKS                                                                        |
+| サービスメッシュ                       | Istio🐬                                                                           |
+| リモートプロシージャーコール           | gRPC                                                                              |
+| サービスプロキシ                       | Envoy                                                                             |
+| API Gateway                            | 今回はサービスプロキシのNginxで代替                                               |
+| 調整とサービスディスカバリー           | CoreDNS                                                                           |
+| クラウドネイティブネットワーク         | Amazon VPC CNI                                                                    |
+| コンテナランタイム                     | Containerd                                                                        |
+| セキュリティとコンプライアンス         | Keycloak、OAuth2 Proxy                                                            |
+| コンテナレジストリ                     | Amazon ECR                                                                        |
+| 自動化と設定                           | Terraform                                                                         |
+| キー管理                               | AWS KMS                                                                           |
+| 可観測性                               | Amazon CloudWatch、Fluentd / FluentBit、Grafana、Kiali、OpenTelemetry、Prometheus |
+| カオスエンジニアリング                 | 今回は言及しません                                                                |
+| 継続的最適化                           | 今回は言及しません                                                                |
+| 機能フラグ                             | 今回は言及しません                                                                |
 
 [CNCF Landscape](https://landscape.cncf.io/)
 
@@ -238,7 +238,7 @@ flowchart LR
 | IaC                          | Helm、Kubernetes、Terraform                                         |
 | L7ロードバランサー           | AWS ALB                                                             |
 | L7/L4ロードバランサー        | Istio EgressGateway、Istio IngressGateway、Nginx Ingress Controller |
-| コンテナオーケストレーション | AWS EKS                                                             |
+| コンテナオーケストレーション | Amazon EKS                                                          |
 | コンテナランタイム           | Containerd                                                          |
 | サービスメッシュ             | Istio🐬                                                             |
 | CI/CD                        | ArgoCD、GitHub Actions                                              |
@@ -263,7 +263,7 @@ flowchart LR
 | L7ロードバランサー           | AWS ALB                                                                          |
 | L7/L4ロードバランサー        | Istio EgressGateway、Istio IngressGateway                                        |
 | IDプロバイダー               | Google、Keycloak                                                                 |
-| コンテナオーケストレーション | AWS EKS                                                                          |
+| コンテナオーケストレーション | Amazon EKS                                                                       |
 | コンテナランタイム           | Containerd                                                                       |
 | サービスメッシュ             | Istio🐬                                                                          |
 | DB                           | Aurora MySQL                                                                     |

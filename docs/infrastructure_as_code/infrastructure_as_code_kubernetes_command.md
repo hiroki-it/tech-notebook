@@ -208,7 +208,7 @@ $ kubectl config use-context minikube
 $ kubectl config use-context docker-desktop
 ```
 
-宛先をAWS EKS Clusterのkube-apiserverに変更する。
+宛先をAmazon EKS Clusterのkube-apiserverに変更する。
 
 ```bash
 $ kubectl config use-context <ClusterのARN>
@@ -1191,7 +1191,7 @@ $ kubectl get <Kubernetesリソースの種類> -L <metadata.labelsキー>
 
 **＊例＊**
 
-AWS EKSにて、Nodeグループの種類を確認するため、`eks.amazonaws.com/nodegroup` キーを取得する。
+Amazon EKSにて、Nodeグループの種類を確認するため、`eks.amazonaws.com/nodegroup` キーを取得する。
 
 ```bash
 $ kubectl get node -L eks.amazonaws.com/nodegroup

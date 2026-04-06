@@ -15,7 +15,7 @@ description: リソース定義＠Crossplaneの知見を記録しています。
 
 ## 01. AWS
 
-### AWS RDS
+### Amazon RDS
 
 #### ▼ カスタムリソース一覧
 
@@ -51,13 +51,13 @@ spec:
 
 <br>
 
-### AWS S3
+### Amazon S3
 
 #### ▼ カスタムリソース一覧
 
 > - https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.17.0
 
-#### ▼ AWS S3バケット
+#### ▼ Amazon S3バケット
 
 ```yaml
 apiVersion: s3.aws.crossplane.io/v1beta1

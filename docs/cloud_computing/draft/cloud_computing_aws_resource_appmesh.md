@@ -15,7 +15,7 @@ description: App Mesh＠AWSの知見を記録しています。
 
 ## 01. App Meshとは
 
-非推奨となり、AWS VPC LatticeやAWS ECS Service Connectへの移行が推奨である。
+非推奨となり、Amazon VPC LatticeやAmazon ECS Service Connectへの移行が推奨である。
 
 クラウドサービスメッシュとして機能する。
 

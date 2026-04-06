@@ -71,7 +71,7 @@ $ vcluster create <Cluster名> \
 
 #### ▼ Helmの場合
 
-AWS EKS上で仮想Clusterを作成する。
+Amazon EKS上で仮想Clusterを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://charts.loft.sh

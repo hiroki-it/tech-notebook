@@ -365,7 +365,7 @@ users:
 
 ユーザーの資格情報を設定する。
 
-AWS EKSのように、資格情報を動的に取得するようにしても良い。
+Amazon EKSのように、資格情報を動的に取得するようにしても良い。
 
 ```yaml
 
@@ -551,7 +551,7 @@ spec:
 
 なお、タイムゾーンはKubernetes Clusterの設定による。
 
-例えば、AWS EKS ClusterはUTCで時間を管理しているため、9時間分ずらす必要がある。
+例えば、Amazon EKS ClusterはUTCで時間を管理しているため、9時間分ずらす必要がある。
 
 ```yaml
 apiVersion: io.k8s.api.batch.v1
@@ -1694,9 +1694,9 @@ spec:
 
 記入中...
 
-#### ▼ AWS VPC Latticeの場合
+#### ▼ Amazon VPC Latticeの場合
 
-AWS VPC Latticeをプロビジョニングする。
+Amazon VPC Latticeをプロビジョニングする。
 
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1
@@ -2794,7 +2794,7 @@ spec:
         - containerPort: 8080
 ```
 
-AWS ECRからコンテナイメージをプルする場合は、以下の通りである。
+Amazon ECRからコンテナイメージをプルする場合は、以下の通りである。
 
 ```yaml
 apiVersion: v1
@@ -6024,7 +6024,7 @@ spec:
 
 マウント後、トークンの文字列はコンテナの `/var/run/secrets/kubernetes.io/serviceaccount/token` ファイルに記載されている。
 
-もし、AWS EKSを使用している場合、加えて `/var/run/secrets/eks.amazonaws.com/serviceaccount/token` ファイルにもトークンの文字列が記載されている。
+もし、Amazon EKSを使用している場合、加えて `/var/run/secrets/eks.amazonaws.com/serviceaccount/token` ファイルにもトークンの文字列が記載されている。
 
 ```yaml
 [root@<foo-pod:/] $ cat /var/run/secrets/kubernetes.io/serviceaccount/token | base64 -d; echo

@@ -101,7 +101,7 @@ GitOpsを採用できないため、CIOpsになる。
 
 まず最初に、コントロールプレーンNodeをアップグレードする。
 
-必要であれば、コントロールプレーンNodeのアドオン (例：AWS CoreDNS、AWS kube-proxy、AWS VPC CNI) を別々にアップグレードする。
+必要であれば、コントロールプレーンNodeのアドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNI) を別々にアップグレードする。
 
 > - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeeks/
 > - https://www.eksworkshop.com/intermediate/320_eks_upgrades/upgradeaddons/
@@ -214,9 +214,9 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 クラウドプロバイダー (例：AWS、Google Cloud) ではローリング方式をサポートしている。
 
-クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) では、新旧Nodeグループを作成することにより、Nodeを入れ替える。
+クラウドプロバイダーのNodeグループ (例：Amazon EKS Nodeグループ) では、新旧Nodeグループを作成することにより、Nodeを入れ替える。
 
-例えばAWS EC2のAuto Scalingグループであれば、アップグレードを開始するとEC2AutoScalingに新旧の起動テンプレートが紐づく。
+例えばAmazon EC2のAuto Scalingグループであれば、アップグレードを開始するとEC2AutoScalingに新旧の起動テンプレートが紐づく。
 
 新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。
 

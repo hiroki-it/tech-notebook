@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS EKS＠リソース定義
-description: AWS EKS＠リソース定義の知見を記録しています。
+title: 【IT技術の知見】Amazon EKS＠リソース定義
+description: Amazon EKS＠リソース定義の知見を記録しています。
 ---
 
-# AWS EKS＠リソース定義
+# Amazon EKS＠リソース定義
 
 ## はじめに
 

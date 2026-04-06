@@ -74,7 +74,7 @@ $ notation sign <イメージ名>
 
 **＊実行例＊**
 
-AWS Signerにある署名プロファイルを使用し、AWS ECR上でのコンテナイメージを署名する。
+AWS Signerにある署名プロファイルを使用し、Amazon ECR上でのコンテナイメージを署名する。
 
 ```bash
 $ notation sign <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest \
@@ -94,7 +94,7 @@ $ notation verify <イメージ名>
 
 **＊実行例＊**
 
-AWS Signerにある署名プロファイルを使用し、AWS ECR上でのコンテナイメージの署名を検証する。
+AWS Signerにある署名プロファイルを使用し、Amazon ECR上でのコンテナイメージの署名を検証する。
 
 ```bash
 $ notation verify <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest

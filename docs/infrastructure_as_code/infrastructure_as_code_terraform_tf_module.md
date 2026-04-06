@@ -222,7 +222,7 @@ provider "google" {
 
 **＊実装例＊**
 
-PagerDutyの状態をAWS S3バケットで管理する場合。
+PagerDutyの状態をAmazon S3バケットで管理する場合。
 
 ```terraform
 terraform {
@@ -463,7 +463,7 @@ module "alb_foo" {
 
 リモートモジュールをコールし、オプションを設定する。
 
-外部リポジトリとしては、GitHub、Terraformレジストリ、AWS S3、Google Cloud Storageなどを指定できる。
+外部リポジトリとしては、GitHub、Terraformレジストリ、Amazon S3、Google Cloud Storageなどを指定できる。
 
 リポジトリの認証時にベーシック認証やSSH公開鍵認証で接続できるが、鍵の登録が不要なベーシック認証のほうが簡単である。
 

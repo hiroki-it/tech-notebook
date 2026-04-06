@@ -161,7 +161,7 @@ AWS Route53 ---> AWS Load Balancer Controller ---> APIゲートウェイ (例：
 
 #### ▼ クラウドプロバイダーのマネージドサービスを使用する場合
 
-クラウドプロバイダー (例：AWS、Google Cloud) が提供するAPIゲートウェイ (例：AWS API Gateway、Google API Gateway) を使用する。
+クラウドプロバイダー (例：AWS、Google Cloud) が提供するAPIゲートウェイ (例：Amazon API Gateway、Google API Gateway) を使用する。
 
 この場合、Kubernetesクラスターの外にAPIゲートウェイを配置することになる。
 

@@ -65,7 +65,7 @@ resource "aws_lb" "this" {
 
 **＊実装例＊**
 
-例として、AWS ECSタスク定義名を指定して、AWSから
+例として、Amazon ECSタスク定義名を指定して、AWSから
 
 ```terraform
 # ---------------------------------------------
@@ -677,9 +677,9 @@ resource "aws_nat_gateway" "this" {
 }
 ```
 
-#### ▼ AWS S3バケットポリシー vs. パブリックアクセスブロックポリシー
+#### ▼ Amazon S3バケットポリシー vs. パブリックアクセスブロックポリシー
 
-例として、AWS S3を示す。
+例として、Amazon S3を示す。
 
 バケットポリシーとパブリックアクセスブロックポリシーを同時に作成できないため、作成のタイミングが重ならないようにする必要がある。
 
@@ -1360,7 +1360,7 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 例として、ECSを示す。
 
-ECSでは、AWS AutoScalingによってAWS ECSタスク数が増加する。
+ECSでは、AWS AutoScalingによってAmazon ECSタスク数が増加する。
 
 そのため、これらを無視する必要がある。
 
@@ -1488,7 +1488,7 @@ resource "aws_security_group" "ec2" {
 
 **＊実装例＊**
 
-例として、AWS S3を示す。
+例として、Amazon S3を示す。
 
 ```terraform
 # ---------------------------------------------
@@ -1546,7 +1546,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 #### ▼ containerDefinitionsとは
 
-AWS ECSタスク定義のうち、コンテナを定義する部分のこと。
+Amazon ECSタスク定義のうち、コンテナを定義する部分のこと。
 
 **＊実装例＊**
 

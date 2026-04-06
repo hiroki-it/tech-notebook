@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS OpenTelemetry Collector Operator＠AWS EKSアドオン
-description: AWS OpenTelemetry Collector Operator＠AWS EKSアドオンの知見を記録しています。
+title: 【IT技術の知見】AWS OpenTelemetry Collector Operator＠Amazon EKSアドオン
+description: AWS OpenTelemetry Collector Operator＠Amazon EKSアドオンの知見を記録しています。
 ---
 
-# AWS OpenTelemetry Collector Operator＠AWS EKSアドオン
+# AWS OpenTelemetry Collector Operator＠Amazon EKSアドオン
 
 ## はじめに
 

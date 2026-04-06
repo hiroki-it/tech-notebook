@@ -87,7 +87,7 @@ Pod
 
 もしAWS CLBを作成したい場合は、AWS Load Balancer Controllerを使用しない。
 
-LoadBalancer Serviceを作成すると、AWS EKS内のcloud-controller-managerがAWS CLBを自動的にプロビジョニングする。
+LoadBalancer Serviceを作成すると、Amazon EKS内のcloud-controller-managerがAWS CLBを自動的にプロビジョニングする。
 
 <br>
 
@@ -109,7 +109,7 @@ Ingressで作成するAWS ALBをパブリックサブネットで作成する場
 
 一方で、プライベートサブネットで作成する場合、`kubernetes.io/role/internal-elb` というタグ (値は `1` または空文字) をプライベートサブネットに設定する。
 
-またパブリックサブネットまたはプライベートサブネットのいずれであっても `kubernetes.io/cluster/<AWS EKS Clusterの名前>` (値は、複数のAWS EKS Clusterで共有するサブネットの場合は `shared`、単一のAWS EKS Clusterの場合は `owned` とする) を設定する。
+またパブリックサブネットまたはプライベートサブネットのいずれであっても `kubernetes.io/cluster/<Amazon EKS Clusterの名前>` (値は、複数のAmazon EKS Clusterで共有するサブネットの場合は `shared`、単一のAmazon EKS Clusterの場合は `owned` とする) を設定する。
 
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
@@ -213,9 +213,9 @@ $ aws iam create-policy \
 
 `(3)`
 
-: AWS EKS ClusterをOIDCプロバイダーとして使用する。
+: Amazon EKS ClusterをOIDCプロバイダーとして使用する。
 
-     これにより、AWS EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
+     これにより、Amazon EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。
 
 ```bash
 $ eksctl utils associate-iam-oidc-provider \

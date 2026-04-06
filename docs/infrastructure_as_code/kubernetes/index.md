@@ -44,7 +44,7 @@ hide:
 
   > - ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html)
   > - ##### [共通項目](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.html)
-  > - ##### [AWS EKS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_aws_eks.html)
+  > - ##### [Amazon EKS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_aws_eks.html)
 
 <br>
 

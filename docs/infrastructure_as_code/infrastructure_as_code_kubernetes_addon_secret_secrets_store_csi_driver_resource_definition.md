@@ -31,9 +31,9 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/secrets-st
 
 > - https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 
-#### ▼ AWS EKS専用のチャートとして
+#### ▼ Amazon EKS専用のチャートとして
 
-AWS EKSでSecretsストアCSIドライバーを簡単にセットアップするために、それ専用のチャートを使用する。
+Amazon EKSでSecretsストアCSIドライバーを簡単にセットアップするために、それ専用のチャートを使用する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
@@ -43,7 +43,7 @@ $ helm repo update
 $ helm install <Helmリリース名> <チャートリポジトリ名>/secrets-store-csi-driver -n kube-system --version <バージョンタグ>
 ```
 
-また、AWS EKSのために必要なマニフェストをインストールする。
+また、Amazon EKSのために必要なマニフェストをインストールする。
 
 ```bash
 $ kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml

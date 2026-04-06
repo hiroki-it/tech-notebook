@@ -144,7 +144,7 @@ exports.handler = (event, context, callback) => {
 
 #### ▼ テストとデバッグ
 
-AWS Lambdaで関数を作成すると、AWS CloudWatch Logsのロググループに、『`/aws/lambda/<関数名>`』というグループが自動的に作成される。AWS Lambdaの関数内で発生したエラーや `console.log` 関数のログはここに出力されるため、都度確認すること。
+AWS Lambdaで関数を作成すると、Amazon CloudWatch Logsのロググループに、『`/aws/lambda/<関数名>`』というグループが自動的に作成される。AWS Lambdaの関数内で発生したエラーや `console.log` 関数のログはここに出力されるため、都度確認すること。
 
 #### ▼ ベストプラクティス
 
@@ -235,7 +235,7 @@ func main() {
 }
 ```
 
-#### ▼ AWS CloudWatchイベントの場合
+#### ▼ Amazon CloudWatchイベントの場合
 
 ```go
 package main
@@ -260,7 +260,7 @@ func main() {
 }
 ```
 
-#### ▼ AWS API Gatewayイベントの場合
+#### ▼ Amazon API Gatewayイベントの場合
 
 ```go
 package main
@@ -359,7 +359,7 @@ func main() {
 
 標準パッケージの `fmt`、または任意のロギングパッケージを使用して、標準出力/標準エラー出力に出力する。
 
-AWS CloudWatch Logsにてこれを確認する。
+Amazon CloudWatch Logsにてこれを確認する。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html
 
@@ -367,7 +367,7 @@ AWS CloudWatch Logsにてこれを確認する。
 
 ## 02-02. 関数例
 
-### AWS Amplify ➡️ AWS EventBridge ➡️ AWS Lambda ➡️ Slack-API
+### AWS Amplify ➡️ Amazon EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
 > - https://github.com/hiroki-it/notify-slack-of-amplify-events
 
@@ -434,11 +434,11 @@ exports.handler = async (event) => {
 
 ## 03-02. 関数例
 
-### AWS Amplify ➡️ AWS EventBridge ➡️ AWS Lambda ➡️ Slack-API
+### AWS Amplify ➡️ Amazon EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
 **＊実装例＊**
 
-AWS AmplifyのイベントをAWS EventBridgeでキャッチし、これをAWS Lambdaにフォワーディングする。AWS Lambdaでは、メッセージを構成し、Slack-APIに送信する。
+AWS AmplifyのイベントをAmazon EventBridgeでキャッチし、これをAWS Lambdaにフォワーディングする。AWS Lambdaでは、メッセージを構成し、Slack-APIに送信する。
 
 ```javascript
 "use strict";
@@ -656,13 +656,13 @@ const postMessageToSlack = (message) => {
 
 <br>
 
-### AWS API Gateway ➡️ AWS Lambda ➡️ AWS S3
+### Amazon API Gateway ➡️ AWS Lambda ➡️ Amazon S3
 
 **＊実装例＊**
 
-AWS API Gatewayでリクエストを受信し、それに応じて特定のデータをAWS S3に保管する。
+Amazon API Gatewayでリクエストを受信し、それに応じて特定のデータをAmazon S3に保管する。
 
-AWS LambdaがAWS S3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『`LambdaExecute`』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。
+AWS LambdaがAmazon S3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『`LambdaExecute`』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。
 
 ```javascript
 "use strict";
@@ -715,7 +715,7 @@ exports.handler = (event, context, callback) => {
 
 <br>
 
-### AWS CloudFront ➡️ AWS Lambda@Edge ➡️ AWS S3
+### Amazon CloudFront ➡️ AWS Lambda@Edge ➡️ Amazon S3
 
 ![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png)
 
@@ -865,7 +865,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 ## 04-02. 関数例
 
-### AWS Lambda ➡️ AWS RDS
+### AWS Lambda ➡️ Amazon RDS
 
 #### ▼ 自動起動
 

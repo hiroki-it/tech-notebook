@@ -1011,7 +1011,7 @@ task内で出力できる環境変数を設定する。
 
 ### amazon.aws.ec2_ami
 
-AWS EC2を作成する。
+Amazon EC2を作成する。
 
 これはTerraformでも代替できる。
 

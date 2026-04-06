@@ -69,7 +69,7 @@ $ helm plugin install https://github.com/databus23/helm-diff --version 1.0.0
 
 ## 03. helm-s3
 
-AWS S3をチャートリポジトリとして使用するために、チャートの圧縮ファイルをAWS S3に送信する。
+Amazon S3をチャートリポジトリとして使用するために、チャートの圧縮ファイルをAmazon S3に送信する。
 
 > - https://github.com/hypnoglow/helm-s3
 

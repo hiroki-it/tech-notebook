@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ElastiCache＠AWSリソース
-description: ElastiCache＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon ElastiCache＠AWSリソース
+description: Amazon ElastiCache＠AWSリソースの知見を記録しています。
 ---
 
-# ElastiCache＠AWSリソース
+# Amazon ElastiCache＠AWSリソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: ElastiCache＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. ElastiCacheとは
+## 01. Amazon ElastiCacheとは
 
 アプリケーションの代わりに、セッション、クエリキャッシュ、分散ロックなどを管理する。
 
@@ -24,9 +24,9 @@ RedisとMemcachedがある。
 
 <br>
 
-## 02. ElastiCache for Redis
+## 02. Amazon ElastiCache for Redis
 
-### ElastiCache for Redisとは
+### Amazon ElastiCache for Redisとは
 
 記入中...
 
@@ -88,7 +88,7 @@ Redisノードのグループであり、処理の実行単位でもある。
 
 同じRedisシャード内にあるRedisノード間では、セッションやクエリキャッシュが同期される。
 
-一方で、AWS AuroraのDBクラスターはこれに相当する概念である。
+一方で、Amazon AuroraのDBクラスターはこれに相当する概念である。
 
 > - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
 
@@ -108,15 +108,15 @@ Redisノードのグループであり、処理の実行単位でもある。
 
 アプリケーションがセッションIDを管理する代わりに、セッションIDを管理する。
 
-冗長化されたそれぞれのアプリケーションは、ユーザーのログイン後に、ElastiCacheから共通のセッションIDを取得する。
+冗長化されたそれぞれのアプリケーションは、ユーザーのログイン後に、Amazon ElastiCacheから共通のセッションIDを取得する。
 
-![ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ElastiCacheのセッション管理機能.png)
+![Amazon ElastiCacheのセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon ElastiCacheのセッション管理機能.png)
 
-#### ▼ ElastiCacheを使用しない場合
+#### ▼ Amazon ElastiCacheを使用しない場合
 
 アプリケーションが特にコンテナの場合、アプリでセッションデータを管理してしまうと、該当のセッションを持ったコンテナが他のコンテナにセッションデータを引き継げず、スケールイン/スケールアウトしてしまう。
 
-一方で、ElastiCacheに管理を切り分けることにより、コンテナがスケールイン/スケールアウトしても、ログイン状態を維持できるようになる。
+一方で、Amazon ElastiCacheに管理を切り分けることにより、コンテナがスケールイン/スケールアウトしても、ログイン状態を維持できるようになる。
 
 <br>
 
@@ -124,9 +124,9 @@ Redisノードのグループであり、処理の実行単位でもある。
 
 #### ▼ クエリキャッシュ管理機能とは
 
-AWS RDSに対するSQLと読み出されたデータを、キャッシュとして管理する。
+Amazon RDSに対するSQLと読み出されたデータを、キャッシュとして管理する。
 
-DB側でのクエリキャッシュはパフォーマンス上の問題から廃止になっており、DBからクエリキャッシュ機能を切り分けたElastiCacheが必要になる。
+DB側でのクエリキャッシュはパフォーマンス上の問題から廃止になっており、DBからクエリキャッシュ機能を切り分けたAmazon ElastiCacheが必要になる。
 
 ![クエリCache管理機能_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クエリCache管理機能_1.png)
 
@@ -137,7 +137,7 @@ DB側でのクエリキャッシュはパフォーマンス上の問題から廃
 
 `(1)`
 
-: アプリケーションは、AWS RDSの前に、Redisに対してSQLを実行する。
+: アプリケーションは、Amazon RDSの前に、Redisに対してSQLを実行する。
 
 ```mysql
 SELECT * FROM users;
@@ -149,7 +149,7 @@ SELECT * FROM users;
 
 `(3)`
 
-: アプリケーションはAWS RDSに対してSQLを実行する。
+: アプリケーションはAmazon RDSに対してSQLを実行する。
 
 `(4)`
 
@@ -179,7 +179,7 @@ SELECT * FROM users;
 
 `(6)`
 
-: 次回、アプリケーションは、AWS RDSの前に、Redisに対してSQLを実行する。
+: 次回、アプリケーションは、Amazon RDSの前に、Redisに対してSQLを実行する。
 
 ```mysql
 SELECT * FROM users;

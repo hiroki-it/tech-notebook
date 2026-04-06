@@ -30,7 +30,7 @@ description: Grafana Mimir＠Grafanaの知見を記録しています。
 
 ### オブジェクトストレージ
 
-- AWS S3
+- Amazon S3
 - MinIO
 
 <br>

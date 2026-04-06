@@ -215,7 +215,7 @@ $ docker compose logs -f <サービス名>
 
 クラウドインフラの削除をプロビジョニングする。
 
-コンテキストがAWSの場合は、AWS ECSクラスターとその中身を削除する。
+コンテキストがAWSの場合は、Amazon ECSクラスターとその中身を削除する。
 
 > - https://github.com/docker/compose-cli
 
@@ -225,7 +225,7 @@ $ docker compose logs -f <サービス名>
 
 クラウドインフラの作成をプロビジョニングする。
 
-コンテキストがAWSの場合は、AWS ECSクラスターとその中身を作成する。
+コンテキストがAWSの場合は、Amazon ECSクラスターとその中身を作成する。
 
 > - https://github.com/docker/compose-cli
 

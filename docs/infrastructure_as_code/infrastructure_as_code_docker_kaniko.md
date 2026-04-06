@@ -34,7 +34,7 @@ description: Kaniko＠Dockerの知見を記録しています。
 
 ## 02. Pod上で実行する場合
 
-### AWS ECR
+### Amazon ECR
 
 ```yaml
 apiVersion: v1
@@ -94,7 +94,7 @@ build:
 
 <br>
 
-### AWS ECR
+### Amazon ECR
 
 AWSの資格情報は、あらかじめGitLab CIの変数 (`AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY`) に設定しておく。
 

@@ -914,7 +914,7 @@ ClusterIP Service (実体はNodePort Service)
 Pod
 ```
 
-NodeのNICの宛先情報は、Nodeの作成方法 (例：AWS EC2、Google Cloud GCE、VMWare) に応じて、確認方法が異なる。
+NodeのNICの宛先情報は、Nodeの作成方法 (例：Amazon EC2、Google Cloud GCE、VMWare) に応じて、確認方法が異なる。
 
 Serviceのポート番号と紐づくNodeのNICのポート番号はデフォルトではランダムであるため、NodeのNICのポート番号を固定する必要がある。
 
@@ -1363,7 +1363,7 @@ foo-prometheus-pvc   Bound    pvc-*****   200Gi      RWO            gp3-encrypte
 
 `(2)`
 
-: Node内 (AWS EKSのEC2ワーカーNodeの場合) で、Podに紐づくPersistentVolumeがマウントされているディレクトリを確認する。
+: Node内 (Amazon EKSのEC2ワーカーNodeの場合) で、Podに紐づくPersistentVolumeがマウントされているディレクトリを確認する。
 
 ```bash
 $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/<リージョン>/vol-*****/prometheus-db/
