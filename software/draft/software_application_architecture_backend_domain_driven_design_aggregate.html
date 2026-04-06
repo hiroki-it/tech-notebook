@@ -33185,7 +33185,7 @@
   <a href="#11-2-2-id" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11-2-2 集約間は識別子（たとえばエンティティのID）でコールする
+        11-2-2 集約間は識別子（たとえばエンティティのIDオブジェクト）でコールする
       
     </span>
   </a>
@@ -33422,7 +33422,7 @@
 <p>状態の整合性を守る範囲が広くなると、操作するオブジェクトが増えて処理やDBの性能問題が起こったり、ほかの集約と範囲が重なってDBで競合する可能性があるため、集約をできるだけ小さく保つ必要がある。</p>
 <h4 id="_2">▼ 集約をどこで区切るか<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <ul>
-<li>集約がどんなビジネスルールを扱っているのか、というモデリングに戻って考える。オブジェクトの状態の整合性を保つ必要があるかどうかで集約の境界を決めるべきである。例えば『<code>Book</code> 集約と <code>Review</code> 集約は関連しているから同じ集約にする』という考え方は誤りである。重要なのは、<code>Book</code> 集約と <code>Review</code> 集約の状態について一貫性を保つ必要があるかどうかである。レビューの追加や更新は、書籍の基本情報の更新とは独立して行われるため、異なる集約として判断できる。</li>
+<li>集約がどんなドメインルールを扱っているのか、というモデリングに戻って考える。オブジェクトの状態の整合性を保つ必要があるかどうかで集約の境界を決めるべきである。例えば『<code>Book</code> 集約と <code>Review</code> 集約は関連しているから同じ集約にする』という考え方は誤りである。重要なのは、<code>Book</code> 集約と <code>Review</code> 集約の状態について一貫性を保つ必要があるかどうかである。レビューの追加や更新は、書籍の基本情報の更新とは独立して行われるため、異なる集約として判断できる。</li>
 <li>集約を操作するときに一部のオブジェクトが大量に含まれる場合、そのオブジェクトを異なる集約として切り分ける。<ul>
 <li>ドメインモデリングではなく、性能問題を起点として集約を設計</li>
 </ul>
@@ -33432,10 +33432,11 @@
 </ul>
 </li>
 </ul>
-<h3 id="11-2-2-id">11-2-2 集約間は識別子（たとえばエンティティのID）でコールする<a class="headerlink" href="#11-2-2-id" title="Permanent link">&para;</a></h3>
+<h3 id="11-2-2-id">11-2-2 集約間は識別子（たとえばエンティティのIDオブジェクト）でコールする<a class="headerlink" href="#11-2-2-id" title="Permanent link">&para;</a></h3>
 <p>集約が他の集約を直接コールし、さらにその内部状態を直接変更する例である。</p>
 <p>この実装では、<code>Book</code> 集約が <code>Review</code> 集約のメソッドを直接コールしている。</p>
 <p>これでは <code>Review</code> 集約側が守るべき整合性の範囲を <code>Book</code> 集約が侵食してしまい、集約の結合度が高くなってしまう。</p>
+<p>識別子はドメインルールには属さないため、ドメインルール上の識別子（例：書籍のISBN）はエンティティの識別子にしない方がいい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
@@ -33815,7 +33816,7 @@
 </code></pre></div>
 <h2 id="11-4">11-4 集約のテスト<a class="headerlink" href="#11-4" title="Permanent link">&para;</a></h2>
 <h3 id="11-4-1">11-4-1 集約テストの役割<a class="headerlink" href="#11-4-1" title="Permanent link">&para;</a></h3>
-<p>集約のテストでは、状態を正常に変更できるか、ビジネスルールに違反する操作を正常にバリデーションできるか、そしてドメインイベントなどの副作用が適切に発生するかをユニットテストする。</p>
+<p>集約のテストでは、状態を正常に変更できるか、ドメインルールに違反する操作を正常にバリデーションできるか、そしてドメインイベントなどの副作用が適切に発生するかをユニットテストする。</p>
 <h3 id="11-4-2-review">11-4-2 Review集約のテスト<a class="headerlink" href="#11-4-2-review" title="Permanent link">&para;</a></h3>
 <p>サンプルコードでは、次のコマンドでユニットテストを実行できる。</p>
 <div class="highlight"><pre><span></span><code>npx<span class="w"> </span>jest<span class="w"> </span>src/Domain/models/Review/Review.test.ts
@@ -34167,7 +34168,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月25日 22:16:01 JST">2026-03-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 14:56:10 JST">2026-04-06</span>
   </span>
 
     
