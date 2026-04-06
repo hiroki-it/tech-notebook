@@ -160,7 +160,7 @@ SELECT * FROM users;
 : アプリケーションはRedisにデータを登録する。
 
 ```bash
-# ElastiCacheには、SQLの実行結果がまだ保管されていない
+# Amazon ElastiCacheには、SQLの実行結果がまだ保管されていない
 
 *** no cache ***
 {"id"=>"1", "name"=>"alice"}
@@ -190,7 +190,7 @@ SELECT * FROM users;
 : Redisは、SQLをキーにしてデータを特定し、アプリケーションに返却する。
 
 ```bash
-# ElastiCacheには、SQLの実行結果が既に保管されている
+# Amazon ElastiCacheには、SQLの実行結果が既に保管されている
 
 *** cache hit ***
 {"id"=>"1", "name"=>"alice"}

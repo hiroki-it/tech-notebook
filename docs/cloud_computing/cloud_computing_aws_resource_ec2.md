@@ -831,7 +831,7 @@ ENIにElastic IPアドレスが紐付けられる。
 
 ENIに紐付けられたパブリックIPアドレスを、AWS NAT Gatewayに割り当てる。
 
-#### ▼ RDS
+#### ▼ Amazon RDS
 
 記入中...
 

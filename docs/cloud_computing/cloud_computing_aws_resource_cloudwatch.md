@@ -722,7 +722,7 @@ $ tail -f /opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
 
 ### AWS IAMロール
 
-#### ▼ EC2の場合
+#### ▼ Amazon EC2の場合
 
 EC2でcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたAWS IAMロールをEC2に紐付ける必要がある。
 

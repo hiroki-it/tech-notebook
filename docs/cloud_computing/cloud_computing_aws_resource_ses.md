@@ -99,7 +99,7 @@ resource "aws_ses_domain_identity" "foo" {
   domain = aws_sesv2_email_identity.foo.email_identity
 }
 
-# Route53のDKIMレコードで使用するためのドメイン
+# Amazon Route 53のDKIMレコードで使用するためのドメイン
 resource "aws_ses_domain_dkim" "foo" {
   domain = aws_sesv2_email_identity.foo.email_identity
 }
