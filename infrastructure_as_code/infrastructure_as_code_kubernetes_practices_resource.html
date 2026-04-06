@@ -37127,7 +37127,7 @@
 <thead>
 <tr>
 <th></th>
-<th>AWS EKS</th>
+<th>Amazon EKS</th>
 <th>Google Cloud GKE</th>
 </tr>
 </thead>
@@ -37179,16 +37179,16 @@
 <tr>
 <td>説明</td>
 <td>新しくNodeは作成せずに、既存のNode内のK8sコンポーネントをそのままアップグレードする。既存のNodeを一定台数ごとに更新を実行するため、更新中はクラスタ全体のノードのキャパシティが少なくなる点に注意する。また、既存のNodeをアップデートしてしまうため、切り戻しが難しい点を認識しておく。</td>
-<td>アップグレード時に、Nodeグループに紐づくNodeテンプレートを更新し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、Nodeを入れ替える。クラウドプロバイダー (例：AWS、GCP) ではローリング方式をサポートしている場合がある。例えばAWS EC2のAuto Scalingグループは、アップグレードを開始すると、新旧の起動テンプレートを更新する。新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。GKE の場合は maxSurge と maxUnavailableを指定し、その設定に応じてローリングアップデートを実行する。</td>
+<td>アップグレード時に、Nodeグループに紐づくNodeテンプレートを更新し、旧Nodeグループ内のワーカーNodeを順にドレインしていくことにより、Nodeを入れ替える。クラウドプロバイダー (例：AWS、GCP) ではローリング方式をサポートしている場合がある。例えばAmazon EC2のAuto Scalingグループは、アップグレードを開始すると、新旧の起動テンプレートを更新する。新旧の起動テンプレート配下のEC2 Nodeを段階的に入れ替えることにより、ローリングアップグレードを実現する。GKE の場合は maxSurge と maxUnavailableを指定し、その設定に応じてローリングアップデートを実行する。</td>
 <td>現K8sバージョンのNodeグループ (ブルー) を残したまま、新K8sバージョンのNodeグループ (グリーン) を作成する。ブルーのNodeグループをcordonし、Cluster Autoscalerなどのスケール対象からも外す。ブルーのNodeグループからグリーンのNodeグループにPodを移動する。ノードに対してdrainを実行したり、アプリケーションを再デプロイするなど、Podを移動する方法は複数ある。新Nodeグループで起動したPodにトラフィックが流れることで、開発者はコンテナの動作を確認する。問題なければ、現行Nodeグループを削除する。一方で、もし新Nodeグループで問題あれば、現Nodeグループをそのまま使用する。GKEにはNodeグループB/G方式をhttps://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies?hl=ja#cluster-autoscaler-blue-greenがある。</td>
 <td>現K8sバージョンのCluster (ブルー) を残したまま、新K8sバージョンのCluster (グリーン) を作成する。開発者は、新Cluster上のコンテナの動作を確認する。問題なければ、DNSやロードバランサーの振り分け先を新Clusterに切り替える。一方で、もし新Clusterで問題あれば、現Clusterをそのまま使用する。</td>
 </tr>
 <tr>
 <td>採用可能なオーケストレーター(2023/10時点)</td>
 <td>kubeadm</td>
-<td>AWS EKS、Google GKE</td>
-<td>AWS EKS、Google GKE</td>
-<td>AWS EKS、Google GKE</td>
+<td>Amazon EKS、Google GKE</td>
+<td>Amazon EKS、Google GKE</td>
+<td>Amazon EKS、Google GKE</td>
 </tr>
 <tr>
 <td>金銭コスト</td>
@@ -38090,7 +38090,7 @@ options<span class="w"> </span>ndots:5
 <p><br></p>
 <h3 id="node_3">Nodeに永続データを持たせない<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h3>
 <p>StatefulSetを使用してNodeに永続データを持たせた場合、Nodeの障害が永続データにも影響を与えかねない。</p>
-<p>そこで、Nodeに永続データを持たせずに、外部のサーバー (例：AWS RDS、MySQL) を使用する。</p>
+<p>そこで、Nodeに永続データを持たせずに、外部のサーバー (例：Amazon RDS、MySQL) を使用する。</p>
 <p><br></p>
 <h3 id="_31">コンテナにセッションデータを持たせない<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <p>StatefulSetを使用してコンテナにセッションデータを持たせた場合、以下が起こると、コンテナが入れ替わってコンテナ上のセッションデータを削除してしまう。</p>
@@ -38102,7 +38102,7 @@ options<span class="w"> </span>ndots:5
 <li>…</li>
 </ul>
 <p>セッションデータがなくなると、セッションを途中で維持できなくなってしまう。</p>
-<p>そこで、コンテナにセッションデータを持たせずに、外部のセッションストレージツール (例：AWS ElastiCache、Redis) を使用する。</p>
+<p>そこで、コンテナにセッションデータを持たせずに、外部のセッションストレージツール (例：Amazon ElastiCache、Redis) を使用する。</p>
 <p>コンテナが入れ替わっても、セッションストレージツールからセッションデータを取得できるようにする。</p>
 <blockquote>
 <ul>
@@ -38761,7 +38761,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>非推奨apiVersion検出</td>
-<td>AWS EKSアップグレードインサイト</td>
+<td>Amazon EKSアップグレードインサイト</td>
 <td><a href="https://docs.aws.amazon.com/eks/latest/best-practices/cluster-upgrades.html">https://docs.aws.amazon.com/eks/latest/best-practices/cluster-upgrades.html</a></td>
 <td>指定したKubernetesのバージョンに基づいて、マニフェストの非推奨apiVersionを検証する。</td>
 <td></td>
@@ -39017,7 +39017,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>ツール</td>
-<td>実Cluster管理ツール (AWS EKS、Google Cloud GKE、Azure AKE、Kubeadmなど)</td>
+<td>実Cluster管理ツール (Amazon EKS、Google Cloud GKE、Azure AKE、Kubeadmなど)</td>
 <td>仮想Cluster管理ツール (Kcp、tensile-kube、vcluster、VirtualClusterなど)</td>
 <td>Namespaceを増やすだけなのでツール不要</td>
 <td>ArgoCDのAppProject、CapsuleのTenant、kioskのAccount、KubeZooのTenantなど</td>
@@ -39063,7 +39063,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <tr>
 <td><a href="http://app.kubernetes.io/managed-by">http://app.kubernetes.io/managed-by</a></td>
 <td>K8sリソースの管理ツール名を設定する。</td>
-<td>helm、foo-operator、EKS (AWS EKSアドオンなど)</td>
+<td>helm、foo-operator、EKS (Amazon EKSアドオンなど)</td>
 </tr>
 <tr>
 <td>…</td>
@@ -39207,7 +39207,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月26日 13:16:32 JST">2026-03-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     

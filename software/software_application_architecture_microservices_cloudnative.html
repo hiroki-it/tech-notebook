@@ -35041,13 +35041,13 @@
 <p>図8. BFFの配置例</p>
 <p><img alt="08" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/08.png" /></p>
 <p><br></p>
-<p>図8でAWS EKS上でのBFFの設計例を示します。</p>
+<p>図8でAmazon EKS上でのBFFの設計例を示します。</p>
 <p>マイクロサービスアーキテクチャのAPIゲートウェイ領域には、図7と同様にクライアント別のNginxを配置します。</p>
 <p>もしNginxでBFFとしての要件を満たせなくとも、Istioと組み合わせることにより足りない機能を補完できます。</p>
 <p>なお、Istioの提供するIstio Ingress GatewayとIstio Egress Gatewayはメッシュゲートウェイと呼ばれ、APIゲートウェイと似た名前をもちます。</p>
 <p>ただ、APIゲートウェイとは異なる役割を持ちます *42 。</p>
 <p><br></p>
-<p>図9. AWS EKS上でのBFFの設計例</p>
+<p>図9. Amazon EKS上でのBFFの設計例</p>
 <p><img alt="09" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/09.png" /></p>
 <p><br></p>
 <hr />
@@ -35141,7 +35141,7 @@
 <td>・REST (パッケージ) <br>・Remote Procedure Call (gRPC)</td>
 <td>・Streaming &amp; Messaging (CloudEvents、RabbitMQ)</td>
 <td></td>
-<td>・Cloud Native Storage (AWS S3) <br>・Database (AWS Aurora MySQL)</td>
+<td>・Cloud Native Storage (Amazon S3) <br>・Database (Amazon Aurora MySQL)</td>
 </tr>
 </tbody>
 </table>
@@ -35153,7 +35153,7 @@
 <p>図12. マイクロサービス間のリクエスト／レスポンス方式による通信の様子</p>
 <p><img alt="12" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/12.png" /></p>
 <p><br></p>
-<p>図12で、AWS EKS上でのリクエスト／レスポンス方式の設計例を示します。</p>
+<p>図12で、Amazon EKS上でのリクエスト／レスポンス方式の設計例を示します。</p>
 <p>ここではKubernetes Podをマイクロサービスとして表しており、関連する他のKubernetesリソースを省略しています。</p>
 <p>リクエスト／レスポンス方式のクライアントとサーバーとして、HTTP/1.1でテキスト (JSON、XML) を送受信するパッケージやRemote
 Procedure Call分野のツールを使用できます。</p>
@@ -35163,7 +35163,7 @@ Procedure Call分野のツールを使用できます。</p>
 <p>フロントエンドのRESTfulクライアントはBFFのNginxのRESTfulサーバーと通信します。</p>
 <p>NgincはgRPCサーバーまたはRESTfulサーバーと通信し、もしgRPCサーバーと通信する場合は専用のモジュールが必要です *46 。</p>
 <p><br></p>
-<p>図13. AWS EKS上でのリクエスト／レスポンス方式の設計例</p>
+<p>図13. Amazon EKS上でのリクエスト／レスポンス方式の設計例</p>
 <p><img alt="13" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/13.png" /></p>
 <p><br></p>
 <hr />
@@ -35421,7 +35421,7 @@ Messaging分野のツールを使用できます。</p>
 </tbody>
 </table>
 <p><br>
-図21で、AWS EKS上でのオーケストレーションベースSagaの設計例を示します。</p>
+図21で、Amazon EKS上でのオーケストレーションベースSagaの設計例を示します。</p>
 <p>オーケストレーションベースSagaとして、Automation &amp; Configuration分野のツールを使用できます。</p>
 <p>オーケストレーションベースSagaのデザインパターンには、Sagaオーケストレーターがメッセージ中継システムを介して各マイクロサービスと通信するパターンと、これらの間でメッセージ中継システムなしに通信するパターンがあります *59 。</p>
 <p>例えば、Temporalはメッセージ中継システムのあるオーケストレーションベースSagaとして動作します <em>53 </em>54 。</p>
@@ -35435,7 +35435,7 @@ Messaging分野のツールを使用できます。</p>
 <p>なお、より良いオーケストレーションベースSagaにはステータスチェッカーが必要になるでしょう。</p>
 <p>ステータスチェッカーはトランザクションIDを使用してワークフローの進捗度を取得し、これをクライアントに返却します <em>56 </em>57 。</p>
 <p><br></p>
-<p>図22. AWS EKS上でのオーケストレーションベースSagaの設計例</p>
+<p>図22. Amazon EKS上でのオーケストレーションベースSagaの設計例</p>
 <p><img alt="22" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/22.png" /></p>
 <p><br></p>
 <hr />
@@ -35501,7 +35501,7 @@ Messaging分野のツールを使用できます。</p>
 </tbody>
 </table>
 <p><br>
-図23で、AWS EKS上でのOIDC認可コードフローの設計例を示します。</p>
+図23で、Amazon EKS上でのOIDC認可コードフローの設計例を示します。</p>
 <p>IDプロバイダーとしてSecurity &amp; Compliance分野のツールを使用できます。</p>
 <p>例えば、KeycloakはIDプロバイダーとしてアカウントデータを永続化し、アカウントを証明するアクセストークンを発行します。</p>
 <p>またKeycloakは検証エンドポイントを公開し、受信したリクエストのAuthorizationヘッダーにあるアクセストークンの署名を検証します *66 。</p>
@@ -35509,7 +35509,7 @@ Messaging分野のツールを使用できます。</p>
 <p>Istioの場合、Istioリソースを定義することにより無効なアカウントからのリクエストをサイドカーコンテナで阻止 (401や403レスポンスを返信) できます *67 。</p>
 <p>このようにKeycloakとIstioを組み合わせることにより、マイクロサービスアーキテクチャでOIDC認可コードフローを実現できます。</p>
 <p><br></p>
-<p>図24. AWS EKS上でのOIDC認可コードフローの設計例</p>
+<p>図24. Amazon EKS上でのOIDC認可コードフローの設計例</p>
 <p><img alt="24" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/24.png" /></p>
 <p><br></p>
 <hr />
@@ -35597,12 +35597,12 @@ Messaging分野のツールを使用できます。</p>
 
 </div>
 
-<p>図26で、AWS EKS上でデータ管理の設計例を示します。</p>
-<p>例えば、AWS Aurora MySQLは永続データを管理し、AWS KMSでデータを暗号化できます。</p>
-<p>AWS S3は静的ファイルを管理し、暗号化にAWS S3マネージド暗号化キーなどを使用できます。</p>
+<p>図26で、Amazon EKS上でデータ管理の設計例を示します。</p>
+<p>例えば、Amazon Aurora MySQLは永続データを管理し、AWS KMSでデータを暗号化できます。</p>
+<p>Amazon S3は静的ファイルを管理し、暗号化にAmazon S3マネージド暗号化キーなどを使用できます。</p>
 <p>Kubernetes NodeにアタッチされたAWS EBSやKubernetes Volumeは揮発性データを管理し、AWS EBS上のデータの暗号化にAWS KMSを使用できます。</p>
 <p><br></p>
-<p>図27. AWS EKS上でのデータ管理の設計例</p>
+<p>図27. Amazon EKS上でのデータ管理の設計例</p>
 <p><img alt="27" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/27.png" /></p>
 <p><br></p>
 <p><br></p>
@@ -35649,22 +35649,22 @@ Messaging分野のツールを使用できます。</p>
 </tr>
 <tr>
 <td>技術例</td>
-<td>・Database (AWS Aurora MySQL)</td>
+<td>・Database (Amazon Aurora MySQL)</td>
 <td>同上</td>
 </tr>
 </tbody>
 </table>
 <p><br>
-図28で、AWS EKS上でAWS EKS上でのDB per serviceの設計例を示します。</p>
+図28で、Amazon EKS上でAmazon EKS上でのDB per serviceの設計例を示します。</p>
 <p>データベースとしてはDatabase分野のツールを使用できます。</p>
-<p>例えば、マネージドなAWS Aurora MySQLはMySQL互換であるため、アプリケーションはMySQLのSQLの実装を変更する必要がありません。</p>
-<p>また、AWS Aurora MySQLは高い耐障害性や性能を提供します *69 。</p>
+<p>例えば、マネージドなAmazon Aurora MySQLはMySQL互換であるため、アプリケーションはMySQLのSQLの実装を変更する必要がありません。</p>
+<p>また、Amazon Aurora MySQLは高い耐障害性や性能を提供します *69 。</p>
 <p>データベースの文脈にはスキーマという概念があり、MySQLではこれがデータベースに相当します。</p>
 <p>つまり、DBスキーマを分割することになります *70 。</p>
-<p>例えば、AWS Aurora MySQLであれば、マイクロサービス単位でDBスキーマを定義します。</p>
-<p>ほかの方法としてマイクロサービス単位でAWS Aurora MySQLクラスターを作成してもよいですが、クラウドの金銭的コスト面から私は好みではありません。</p>
+<p>例えば、Amazon Aurora MySQLであれば、マイクロサービス単位でDBスキーマを定義します。</p>
+<p>ほかの方法としてマイクロサービス単位でAmazon Aurora MySQLクラスターを作成してもよいですが、クラウドの金銭的コスト面から私は好みではありません。</p>
 <p><br></p>
-<p>図29. AWS EKS上でのDB per serviceの設計例</p>
+<p>図29. Amazon EKS上でのDB per serviceの設計例</p>
 <p><img alt="29" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/29.png" /></p>
 <p><br></p>
 <hr />
@@ -35755,15 +35755,15 @@ Messaging分野のツールを使用できます。</p>
 </tbody>
 </table>
 <p><br></p>
-<p>図31で、AWS EKS上でのExternalized configurationの設計例を示します。</p>
+<p>図31で、Amazon EKS上でのExternalized configurationの設計例を示します。</p>
 <p>設定管理先と暗号化キーはKubernetes標準機能、Security &amp; Compliance、Key Management分野のツールを使用できます。</p>
 <p>例えば、Kubernetes ConfigMapやSecretはマイクロサービスに外部から環境変数やファイルなどの設定を動的に組み込みます *71 。</p>
 <p>この時、SOPSを使用することによりHelmのマニフェスト展開前に、Secretの元データを暗号化して管理できます *72 。</p>
 <p>AWS Secrets Managerはクラウドリソースなどに外部から設定を動的に組み込みます。</p>
-<p>AWS Aurora MySQLを使用する場合、データベースに関する機密情報はAWS Secrets Managerで管理することをお奨めます。</p>
+<p>Amazon Aurora MySQLを使用する場合、データベースに関する機密情報はAWS Secrets Managerで管理することをお奨めます。</p>
 <p>Kubernetes ConfigMap、Secret、AWS Secrets Managerの暗号化キーは管理の簡単さ観点から、オープンソースよりもマネージドサービスの技術を使用することをお奨めます。</p>
 <p><br></p>
-<p>図32. AWS EKS上でのExternalized configurationの設計例</p>
+<p>図32. Amazon EKS上でのExternalized configurationの設計例</p>
 <p><img alt="32" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/32.png" /></p>
 <p><br></p>
 <hr />
@@ -35825,7 +35825,7 @@ Messaging分野のツールを使用できます。</p>
 </tbody>
 </table>
 <p><br>
-図33で、AWS EKS上でのサイドカーサービスメッシュの設計例を示します。</p>
+図33で、Amazon EKS上でのサイドカーサービスメッシュの設計例を示します。</p>
 <p>サービスメッシュとしてService Mesh分野のツールを使用できます。</p>
 <p>例えば、コントロールプレーンとデータプレーンからなるIstioは、Envoyの設定を抽象化することによりサービスメッシュを実現します *75 。</p>
 <p>IstioのサイドカーサービスメッシュではIstioはデータプレーンにサービスメッシュゲートウェイ (Istio Ingress GatewayとIstio Egress Gateway) を配置し、またマイクロサービス内にサイドカーコンテナ (istio-proxy) をインジェクションします。</p>
@@ -35836,7 +35836,7 @@ Messaging分野のツールを使用できます。</p>
 <p>Istioにより、マイクロサービスとしてのKubernetes Podは他のPodと直接通信できるようになります。</p>
 <p>一方で、Istioを使用しない場合、Kubernetes PodはKubernetes Serviceを介して他のPodと通信します。</p>
 <p><br></p>
-<p>図34. AWS EKS上でのサイドカーサービスメッシュの設計例</p>
+<p>図34. Amazon EKS上でのサイドカーサービスメッシュの設計例</p>
 <p><img alt="34" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/34.png" /></p>
 <p><br></p>
 <hr />
@@ -35871,18 +35871,18 @@ Messaging分野のツールを使用できます。</p>
 <h3 id="101-l3">10.1 L3管理方法<a class="headerlink" href="#101-l3" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスのインスタンス間が通信するためには、各マイクロサービスのインスタンスに対するIPアドレスの割当と解放を管理する必要があります。</p>
 <p>これはCloud Native Network分野の技術で代替できます。</p>
-<p>図35で、AWS EKS上でL3管理の設計例を示します。</p>
-<p>例えば、AWSであればAWS VPCがL3 (ネットワーク層) を提供します *77 。</p>
-<p>また、マネージドなAWS VPC CNIアドオンはkubelet、ENI、AWS EKSコントロールプレーンと連携し、AWS VPC上にクラスターネットワークを作成します。</p>
-<p>これはAWS EKSクラスター内のIPアドレスを制御し、マイクロサービスがAWS EKSのクラスターネットワークへ参加できるようにする *78 。</p>
+<p>図35で、Amazon EKS上でL3管理の設計例を示します。</p>
+<p>例えば、AWSであればAmazon VPCがL3 (ネットワーク層) を提供します *77 。</p>
+<p>また、マネージドなAmazon VPC CNIアドオンはkubelet、ENI、Amazon EKSコントロールプレーンと連携し、Amazon VPC上にクラスターネットワークを作成します。</p>
+<p>これはAmazon EKSクラスター内のIPアドレスを制御し、マイクロサービスがAmazon EKSのクラスターネットワークへ参加できるようにする *78 。</p>
 <p><br></p>
-<p>図36. AWS EKS上でのL3管理の設計例</p>
+<p>図36. Amazon EKS上でのL3管理の設計例</p>
 <p><img alt="36" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/36.png" /></p>
 <p><br></p>
 <hr />
 <p>注釈</p>
 <p>*78 ほかに例えば、L2を作成するCNIがあり、CNIによって提供する層はさまざまです。</p>
-<p>いずれのプラットフォーム (補章であれば、AWS EKS) を選ぶかによって、適切なCNIが異なります。</p>
+<p>いずれのプラットフォーム (補章であれば、Amazon EKS) を選ぶかによって、適切なCNIが異なります。</p>
 <p>*79 Amazon VPC CNI - EKS Best Practices Guides. (n.d.). <a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></p>
 <p><br></p>
 <h3 id="102-l4l7">10.2 L4/L7トラフィック管理方法<a class="headerlink" href="#102-l4l7" title="Permanent link">&para;</a></h3>
@@ -35961,30 +35961,30 @@ Messaging分野のツールを使用できます。</p>
 </tbody>
 </table>
 <p><br>
-図38で、AWS EKS上でのサービスメッシュ内のL4/L7トラフィック管理の設計例を示します。</p>
+図38で、Amazon EKS上でのサービスメッシュ内のL4/L7トラフィック管理の設計例を示します。</p>
 <p>サービスメッシュ内ではL4/L7ロードバランサーとしてService Mesh分野のツールを使用できます。</p>
 <p>例えば、Istioによるサイドカーコンテナはサービスメッシュ内のKubernetesリソースやIstioリソースの情報に基づいて、サーバーサイドサービス検出を実施します *79 。</p>
-<p>IstioコントロールプレーンはAWS EKSコントロールプレーンからサービス検出に必要なリソースの情報を収集し、インメモリで保管します。</p>
+<p>IstioコントロールプレーンはAmazon EKSコントロールプレーンからサービス検出に必要なリソースの情報を収集し、インメモリで保管します。</p>
 <p><br></p>
-<p>図39. AWS EKS上でのサービスメッシュ内のL4/L7トラフィック管</p>
+<p>図39. Amazon EKS上でのサービスメッシュ内のL4/L7トラフィック管</p>
 <p><img alt="39" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/39.png" /></p>
 <p><br></p>
-<p>図39で、AWS EKS上でのサービスメッシュ外のL7トラフィック管理の設計例を示します。</p>
+<p>図39で、Amazon EKS上でのサービスメッシュ外のL7トラフィック管理の設計例を示します。</p>
 <p>サービスメッシュ外では、L7ロードバランサーとしてKubernetes標準機能とCoordination &amp; Service Discovery分野のツールを使用できます。</p>
 <p>例えば、CoreDNSはKubernetes Serviceとkube-proxyと連携し、サーバーサイドサービス検出を実施します <em>73 </em>74 。</p>
 <p>送信元Podは、宛先Podへのリクエスト前にCoreDNSから宛先Podのドメインを正引きします。</p>
-<p>この時、AWS EKSを使用する場合、マネージドなAWS kube-proxyアドオンとAWS CoreDNSアドオンを使用できます。</p>
+<p>この時、Amazon EKSを使用する場合、マネージドなAWS kube-proxyアドオンとAWS CoreDNSアドオンを使用できます。</p>
 <p><br></p>
-<p>図40. AWS EKS上でのサービスメッシュ外のL7トラフィック管理の設計例</p>
+<p>図40. Amazon EKS上でのサービスメッシュ外のL7トラフィック管理の設計例</p>
 <p><img alt="40" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/40.png" /></p>
 <p><br></p>
-<p>図40で、AWS EKS上でのサービスメッシュ外のL4トラフィック管理の設計例を示します。</p>
+<p>図40で、Amazon EKS上でのサービスメッシュ外のL4トラフィック管理の設計例を示します。</p>
 <p>L4ロードバランサーとしてKubernetes標準機能を使用できます。</p>
 <p>例えば、Kubernetes Serviceとkube-proxyはデフォルトでiptablesと連携し、クライアントサイドサービス検出を実施します *82 。</p>
 <p>kube-proxyは新しいPodのIPアドレスをiptablesに追加し、またKubernetes Serviceはiptablesに基づいてリクエストをPodにロードバランシングします。</p>
 <p>前述のとおり、AWSはマネージドなkube-proxyアドオンを提供します。</p>
 <p><br></p>
-<p>図41. AWS EKS上でのサービスメッシュ外のL4トラフィック管理の設計例</p>
+<p>図41. Amazon EKS上でのサービスメッシュ外のL4トラフィック管理の設計例</p>
 <p><img alt="41" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/41.png" /></p>
 <p><br></p>
 <p>宛先登録にはセルフ登録とサードパーティー登録があります。</p>
@@ -35992,7 +35992,7 @@ Messaging分野のツールを使用できます。</p>
 <p>表16で、宛先登録パターンとクラウドネイティブ技術の関連性を整理します。</p>
 <p>サービスレジストリとして、Coordination &amp; Service Discovery分野のツールを使用できます。</p>
 <p>例えば、Kubernetes上のさまざまなサービスレジストラーは収集した宛先情報をEtcdに保管します。</p>
-<p>AWS EKSを使用する場合、Etcdはマネージドなコントロールプレーン上にあります *83 。</p>
+<p>Amazon EKSを使用する場合、Etcdはマネージドなコントロールプレーン上にあります *83 。</p>
 <p><br></p>
 <p>表16. 宛先登録とクラウドネイティブ技術の関連性</p>
 <table>
@@ -36144,7 +36144,7 @@ Messaging分野のツールを使用できます。</p>
 </tbody>
 </table>
 <p><br>
-図43で、AWS EKS上での証明書管理の設計例を示します。</p>
+図43で、Amazon EKS上での証明書管理の設計例を示します。</p>
 <p>マイクロサービスのサイドカーコンテナの証明書管理にはService Mesh分野のツールを使用できます。</p>
 <p>例えば、Istioは署名済みの証明書をサイドカーコンテナに組み込み、定期的にこれを更新します *86 。</p>
 <p>Istioコントロールプレーンは自己を署名し、ルート認証局としてサイドカーコンテナのクライアント／サーバー証明書を署名します。</p>
@@ -36154,7 +36154,7 @@ Messaging分野のツールを使用できます。</p>
 <p>クラウドリソースの証明書管理にはSecurity &amp; Compliance分野のツールを使用できます。</p>
 <p>例えば、AWS Certificate Managerは中間認証局のAmazon CAからサーバー証明書を取得し、AWSリソースへの組み込みと定期更新を管理します。</p>
 <p><br></p>
-<p>図44. AWS EKS上での証明書管理の設計例</p>
+<p>図44. Amazon EKS上での証明書管理の設計例</p>
 <p><img alt="44" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/44.png" /></p>
 <p><br></p>
 <hr />
@@ -36193,7 +36193,7 @@ Messaging分野のツールを使用できます。</p>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 14:56:10 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     

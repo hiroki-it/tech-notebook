@@ -10,7 +10,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="AWS Route53＠AWSリソース">
+        <meta name="description" content="Amazon Route 53＠AWSリソース">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -33,7 +33,7 @@
     
     
       
-        <title>【IT技術の知見】AWS Route53＠AWSリソース - 俺の技術ノート</title>
+        <title>【IT技術の知見】Amazon Route 53＠AWSリソース - 俺の技術ノート</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-route53aws" class="md-skip">
+        <a href="#amazon-route-53aws" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -166,7 +166,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】AWS Route53＠AWSリソース
+              【IT技術の知見】Amazon Route 53＠AWSリソース
             
           </span>
         </div>
@@ -19355,10 +19355,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-route53" class="md-nav__link">
+  <a href="#01-amazon-route-53" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. AWS Route53とは
+        01. Amazon Route 53とは
       
     </span>
   </a>
@@ -19555,10 +19555,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-aws-route53-dns" class="md-nav__link">
+  <a href="#03-amazon-route-53-dns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03 AWS Route53 + DNSサーバーによる名前解決の仕組み
+        03 Amazon Route 53 + DNSサーバーによる名前解決の仕組み
       
     </span>
   </a>
@@ -33411,10 +33411,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-route53" class="md-nav__link">
+  <a href="#01-amazon-route-53" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. AWS Route53とは
+        01. Amazon Route 53とは
       
     </span>
   </a>
@@ -33611,10 +33611,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#03-aws-route53-dns" class="md-nav__link">
+  <a href="#03-amazon-route-53-dns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03 AWS Route53 + DNSサーバーによる名前解決の仕組み
+        03 Amazon Route 53 + DNSサーバーによる名前解決の仕組み
       
     </span>
   </a>
@@ -33725,7 +33725,7 @@
   
 
 
-<h1 id="aws-route53aws">AWS Route53＠AWSリソース<a class="headerlink" href="#aws-route53aws" title="Permanent link">&para;</a></h1>
+<h1 id="amazon-route-53aws">Amazon Route 53＠AWSリソース<a class="headerlink" href="#amazon-route-53aws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -33734,7 +33734,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-aws-route53">01. AWS Route53とは<a class="headerlink" href="#01-aws-route53" title="Permanent link">&para;</a></h2>
+<h2 id="01-amazon-route-53">01. Amazon Route 53とは<a class="headerlink" href="#01-amazon-route-53" title="Permanent link">&para;</a></h2>
 <p>クラウドDNSサーバーとして働く。</p>
 <p>リクエストされたドメイン名とEC2のグローバルIPアドレスをマッピングしている。</p>
 <p>名前の由来は、名前解決時に <code>53</code> 番ポートを使用するためである。</p>
@@ -33840,41 +33840,41 @@
 </tr>
 <tr>
 <td></td>
-<td>AWS EC2</td>
+<td>Amazon EC2</td>
 <td><code>ec2-&lt;パブリックIPをハイフン区切りにしたもの&gt;.ap-northeast-1.compute.amazonaws.com</code></td>
 </tr>
 <tr>
 <td>ドメイン名</td>
-<td>AWS CloudFront</td>
+<td>Amazon CloudFront</td>
 <td><code>&lt;発行されたランダム文字列&gt;.cloudfront.net</code></td>
 </tr>
 <tr>
 <td>エンドポイント名</td>
-<td>AWS Aurora</td>
+<td>Amazon Aurora</td>
 <td><code>&lt;DBクラスター名&gt;&lt;ランダムな文字列&gt;.ap-northeast-1.rds.amazonaws.com.</code></td>
 </tr>
 <tr>
 <td></td>
-<td>AWS RDS</td>
+<td>Amazon RDS</td>
 <td><code>&lt;DBインスタンス名&gt;&lt;ランダムな文字列&gt;.ap-northeast-1.rds.amazonaws.com.</code></td>
 </tr>
 <tr>
 <td></td>
-<td>AWS S3</td>
+<td>Amazon S3</td>
 <td><code>&lt;バケット名&gt;.ap-northeast-1.amazonaws.com</code></td>
 </tr>
 </tbody>
 </table>
 <h4 id="aws">▼ AWS以外でドメインを購入した場合<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
 <p>ドメイン名の名前解決は、ドメインを購入したドメインレジストラで行われる。</p>
-<p>そのため、AWS以外 (例：お名前ドットコム) でドメインを購入した場合、AWS Route53のNSレコード値を、ドメインを実際に購入したサービスのドメインレジストラに登録する必要がある。</p>
-<p>これにより、ドメインレジストラに対してIPアドレスの問い合わせがあった場合、AWS Route53のNSレコード値がDNSサーバーへレスポンスされるようになる。</p>
-<p>DNSサーバーがAWS Route53に問い合わせると、AWS Route53はDNSサーバーとして動作し、アプリケーションのIPアドレスをレスポンスする。</p>
-<p>一方で逆も同様で、AWS以外のシステムのドメインをAWS Route53で購入した場合、そのシステムのNSレコードをAWS Route53へ登録することになる。</p>
+<p>そのため、AWS以外 (例：お名前ドットコム) でドメインを購入した場合、Amazon Route 53のNSレコード値を、ドメインを実際に購入したサービスのドメインレジストラに登録する必要がある。</p>
+<p>これにより、ドメインレジストラに対してIPアドレスの問い合わせがあった場合、Amazon Route 53のNSレコード値がDNSサーバーへレスポンスされるようになる。</p>
+<p>DNSサーバーがAmazon Route 53に問い合わせると、Amazon Route 53はDNSサーバーとして動作し、アプリケーションのIPアドレスをレスポンスする。</p>
+<p>一方で逆も同様で、AWS以外のシステムのドメインをAmazon Route 53で購入した場合、そのシステムのNSレコードをAmazon Route 53へ登録することになる。</p>
 <h4 id="dns_3">▼ DNSキャッシュ<a class="headerlink" href="#dns_3" title="Permanent link">&para;</a></h4>
 <p>ルートサーバーは世界に13機しか存在しておらず、現実的には、世界中の名前解決の全てのリクエストを処理できない。</p>
 <p>そこで、IPアドレスとドメイン名の関係をキャッシュするプロキシサーバー (キャッシュDNSサーバー) が使用されている。</p>
-<p>基本的には、プロキシサーバーとDNSサーバーは区別されるが、AWS Route53はプロキシサーバーとDNSサーバーの能力を両立している。</p>
+<p>基本的には、プロキシサーバーとDNSサーバーは区別されるが、Amazon Route 53はプロキシサーバーとDNSサーバーの能力を両立している。</p>
 <p><br></p>
 <h3 id="_3">リゾルバー<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ リゾルバーとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
@@ -33936,8 +33936,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="03-aws-route53-dns">03 AWS Route53 + DNSサーバーによる名前解決の仕組み<a class="headerlink" href="#03-aws-route53-dns" title="Permanent link">&para;</a></h2>
-<p><img alt="AWS Route53を含む名前解決の仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Route53を含む名前解決の仕組み.png" /></p>
+<h2 id="03-amazon-route-53-dns">03 Amazon Route 53 + DNSサーバーによる名前解決の仕組み<a class="headerlink" href="#03-amazon-route-53-dns" title="Permanent link">&para;</a></h2>
+<p><img alt="Amazon Route 53を含む名前解決の仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Route53を含む名前解決の仕組み.png" /></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -33949,14 +33949,14 @@
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>AWS Route53は、IPアドレスのキャッシュを検索する。キャッシュが無ければ、AWS Route53はIPアドレスを検索する。また、キャッシュDNSサーバーにこれを返却する。</p>
+<p>Amazon Route 53は、IPアドレスのキャッシュを検索する。キャッシュが無ければ、Amazon Route 53はIPアドレスを検索する。また、キャッシュDNSサーバーにこれを返却する。</p>
 </dd>
 </dl>
 <table>
 <thead>
 <tr>
 <th style="text-align: center;">ドメイン名</th>
-<th style="text-align: center;">AWS Route53による変換</th>
+<th style="text-align: center;">Amazon Route 53による変換</th>
 <th style="text-align: center;">IPアドレス</th>
 </tr>
 </thead>
@@ -34003,7 +34003,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:02:15 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     

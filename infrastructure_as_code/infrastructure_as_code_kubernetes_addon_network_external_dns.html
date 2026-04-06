@@ -33688,7 +33688,7 @@
 <p><br></p>
 <h2 id="01-externaldns">01. ExternalDNSアドオンの仕組み<a class="headerlink" href="#01-externaldns" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>ExternalDNS Controllerは、ネットワークからのリクエストにDNSレコードを必要とするKubernetesリソース (例：Ingress、Serviceなど) の設定値に応じて、DNSプロバイダー (例：AWS Route53) にDNSレコードを自動的に作成する。</p>
+<p>ExternalDNS Controllerは、ネットワークからのリクエストにDNSレコードを必要とするKubernetesリソース (例：Ingress、Serviceなど) の設定値に応じて、DNSプロバイダー (例：Amazon Route 53) にDNSレコードを自動的に作成する。</p>
 <p>Ingress Controller (例：aws-load-balancer-controller、glb-controller) と合わせて使用し、パブリックネットワークからのリクエストをArgoCDのダッシュボード (argocd-server) へルーティング可能にする。</p>
 <p><img alt="external-dns_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png" /></p>
 <blockquote>
@@ -33719,7 +33719,7 @@
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">            </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefix</span>
 </code></pre></div>
-<p>するとExternalDNSアドオンは、Ingressの <code>.spec.rules[*].host</code> キーに応じて、AWS Route53にAレコードとTXTレコードを作成する。</p>
+<p>するとExternalDNSアドオンは、Ingressの <code>.spec.rules[*].host</code> キーに応じて、Amazon Route 53にAレコードとTXTレコードを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>external-dns<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>example.com
 
 <span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2023-02-28T10:09:30Z&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;Desired change: CREATE example.com A [Id: /hostedzone/*****]&quot;</span>
@@ -33831,7 +33831,7 @@
 <p><br></p>
 <h3 id="serviceaccountclusterrole">ServiceAccount、ClusterRole<a class="headerlink" href="#serviceaccountclusterrole" title="Permanent link">&para;</a></h3>
 <h4 id="external-dns_1">▼ external-dns<a class="headerlink" href="#external-dns_1" title="Permanent link">&para;</a></h4>
-<p>ExternalDNS ControllerがDNSプロバイダー (例：AWS Route53) にリクエストを送信できるように、ExternalDNS ControllerにはClusterRoleに基づく認可スコープを持つ。</p>
+<p>ExternalDNS ControllerがDNSプロバイダー (例：Amazon Route 53) にリクエストを送信できるように、ExternalDNS ControllerにはClusterRoleに基づく認可スコープを持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33967,7 +33967,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:08:25 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     

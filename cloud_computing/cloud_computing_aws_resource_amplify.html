@@ -33772,7 +33772,7 @@
 <p>SSGの場合、静的ファイルをデプロイしさえすれば、アプリケーションとしての要件が全て整う。</p>
 <p>CSRの場合、サーバーレスのバックエンドを自動作成してくれ、フロントエンドをデプロイしさえすれば、要件が全て整う。</p>
 <p>これのAWSリソースはCloudFormationによって作成されるが、AWS Amplify経由でしか設定を変更できず、各AWSリリースのコンソール画面を見ても、非表示になっている。</p>
-<p>ただし、AWS Route53の設定は表示されており、AWS Amplifyが追加したDNSレコードをユーザーが編集できるようになっている。</p>
+<p>ただし、Amazon Route 53の設定は表示されており、AWS Amplifyが追加したDNSレコードをユーザーが編集できるようになっている。</p>
 <table>
 <thead>
 <tr>
@@ -33783,11 +33783,11 @@
 <tbody>
 <tr>
 <td>静的サイトホスティング</td>
-<td>AWS CloudFront、AWS S3</td>
+<td>Amazon CloudFront、Amazon S3</td>
 </tr>
 <tr>
 <td>GraphQLによるリクエスト</td>
-<td>AWS S3</td>
+<td>Amazon S3</td>
 </tr>
 </tbody>
 </table>
@@ -33809,7 +33809,7 @@
 </tr>
 <tr>
 <td>RESTful-API、GraphQL-API</td>
-<td>AWS API Gateway、AppSync</td>
+<td>Amazon API Gateway、AppSync</td>
 <td>インフラストラクチャ層</td>
 </tr>
 <tr>
@@ -33849,7 +33849,7 @@
 </tr>
 <tr>
 <td>ファイル保管</td>
-<td>AWS S3</td>
+<td>Amazon S3</td>
 </tr>
 </tbody>
 </table>
@@ -33954,7 +33954,7 @@ $<span class="w"> </span>amplify<span class="w"> </span>publish
 <p>バージョン管理リポジトリのルートに <code>amplify.yml</code> ファイルを配置する。</p>
 <p>Next.jsではSSG/SSRの両モードでビルド＆デプロイできる。</p>
 <p><code>package.json</code> ファイルで使用される <code>next</code> コマンドに応じて、SSGまたはSSRのいずれかのインフラが作成され、デプロイされる。</p>
-<p>SSGの場合、裏側ではAWS S3、AWS CloudFront、AWS Route53などが作成され、静的ホスティングが実行される。</p>
+<p>SSGの場合、裏側ではAmazon S3、Amazon CloudFront、Amazon Route 53などが作成され、静的ホスティングが実行される。</p>
 <p>SSRの場合、フロントエンドのみでなくバックエンドの実行環境が必要になるため、AWS LambdaやCogniteを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 
@@ -34058,7 +34058,7 @@ $<span class="w"> </span>amplify<span class="w"> </span>publish
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:02:15 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     

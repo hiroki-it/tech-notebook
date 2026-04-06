@@ -18709,10 +18709,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-ecs" class="md-nav__link">
+  <a href="#amazon-ecs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ AWS ECSの場合
+        ▼ Amazon ECSの場合
       
     </span>
   </a>
@@ -18864,15 +18864,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-03-codedeploy-aws-ecs" class="md-nav__link">
+  <a href="#04-03-codedeploy-amazon-ecs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        04-03. CodeDeploy (AWS ECSの場合)
+        04-03. CodeDeploy (Amazon ECSの場合)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-03. CodeDeploy (AWS ECSの場合)">
+    <nav class="md-nav" aria-label="04-03. CodeDeploy (Amazon ECSの場合)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33732,10 +33732,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-ecs" class="md-nav__link">
+  <a href="#amazon-ecs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ AWS ECSの場合
+        ▼ Amazon ECSの場合
       
     </span>
   </a>
@@ -33887,15 +33887,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#04-03-codedeploy-aws-ecs" class="md-nav__link">
+  <a href="#04-03-codedeploy-amazon-ecs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        04-03. CodeDeploy (AWS ECSの場合)
+        04-03. CodeDeploy (Amazon ECSの場合)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="04-03. CodeDeploy (AWS ECSの場合)">
+    <nav class="md-nav" aria-label="04-03. CodeDeploy (Amazon ECSの場合)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -34187,8 +34187,8 @@
 <p><br></p>
 <h2 id="02-codebuild">02. CodeBuild<a class="headerlink" href="#02-codebuild" title="Permanent link">&para;</a></h2>
 <h3 id="buildspecyml"><code>buildspec.yml</code> ファイル<a class="headerlink" href="#buildspecyml" title="Permanent link">&para;</a></h3>
-<h4 id="aws-ecs">▼ AWS ECSの場合<a class="headerlink" href="#aws-ecs" title="Permanent link">&para;</a></h4>
-<p>AWS ECSのために、CodeBuildの設定する。</p>
+<h4 id="amazon-ecs">▼ Amazon ECSの場合<a class="headerlink" href="#amazon-ecs" title="Permanent link">&para;</a></h4>
+<p>Amazon ECSのために、CodeBuildの設定する。</p>
 <p>ルートディレクトリの直下に配置しておく。</p>
 <blockquote>
 <ul>
@@ -34287,7 +34287,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-03-codedeploy-aws-ecs">04-03. CodeDeploy (AWS ECSの場合)<a class="headerlink" href="#04-03-codedeploy-aws-ecs" title="Permanent link">&para;</a></h2>
+<h2 id="04-03-codedeploy-amazon-ecs">04-03. CodeDeploy (Amazon ECSの場合)<a class="headerlink" href="#04-03-codedeploy-amazon-ecs" title="Permanent link">&para;</a></h2>
 <h3 id="_8">利用できるデプロイメント手法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>ローリングアップデート、ブルー/グリーンデプロイメントを利用できる。</p>
 <blockquote>
@@ -34298,7 +34298,7 @@
 <p><br></p>
 <h3 id="_9">ローリングアップデート<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="imagedefinitionsjson">▼ <code>imagedefinitions.json</code> ファイル<a class="headerlink" href="#imagedefinitionsjson" title="Permanent link">&para;</a></h4>
-<p>新しいリビジョンのAWS ECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。</p>
+<p>新しいリビジョンのAmazon ECSタスク定義を作成するために、新しいコンテナ名とイメージリポジトリURLを定義する。</p>
 <p>リポジトリへ事前に配置するのではなく、CI/CDパイプライン上で動的に作成するようにしたほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
@@ -34321,11 +34321,11 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>AWS ECRのコンテナイメージを更新</p>
+<p>Amazon ECRのコンテナイメージを更新</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>AWS ECSタスク定義の新しいリビジョンを作成。</p>
+<p>Amazon ECSタスク定義の新しいリビジョンを作成。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -34333,7 +34333,7 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>AWS CodeDeployによって、AWS ECSタスク定義を基に、現環境 (Prodブルー) のAWS ECSタスクとは別に、新環境 (Testグリーン) が作成される。</p>
+<p>AWS CodeDeployによって、Amazon ECSタスク定義を基に、現環境 (Prodブルー) のAmazon ECSタスクとは別に、新環境 (Testグリーン) が作成される。</p>
 <p>ロードバランサーの接続先を、現環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。</p>
 </dd>
 <dt><code>(5)</code></dt>
@@ -34360,7 +34360,7 @@
 </blockquote>
 <h4 id="appspecyml">▼ <code>appspec.yml</code> ファイル<a class="headerlink" href="#appspecyml" title="Permanent link">&para;</a></h4>
 <p>ルートディレクトリの直下に配置しておく。仕様として、複数のコンテナをデプロイできない。</p>
-<p>AWS ECSタスク定義名を <code>&lt;TASK_DEFINITION&gt;</code> とすると、<code>taskdef.json</code> ファイルの値を元にして、新しいAWS ECSタスク定義が自動的に代入される。</p>
+<p>Amazon ECSタスク定義名を <code>&lt;TASK_DEFINITION&gt;</code> とすると、<code>taskdef.json</code> ファイルの値を元にして、新しいAmazon ECSタスク定義が自動的に代入される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
 
 <span class="nt">Resources</span><span class="p">:</span>
@@ -34391,8 +34391,8 @@
 </ul>
 </blockquote>
 <h4 id="taskdefjson">▼ <code>taskdef.json</code> ファイル<a class="headerlink" href="#taskdefjson" title="Permanent link">&para;</a></h4>
-<p>デプロイされるAWS ECSタスク定義を実装し、ルートディレクトリの直下に配置する。</p>
-<p>CodeDeployは、CodeBuildから渡された <code>imageDetail.json</code> ファイルを検知し、AWS ECRからコンテナイメージを取得する。</p>
+<p>デプロイされるAmazon ECSタスク定義を実装し、ルートディレクトリの直下に配置する。</p>
+<p>CodeDeployは、CodeBuildから渡された <code>imageDetail.json</code> ファイルを検知し、Amazon ECRからコンテナイメージを取得する。</p>
 <p>この時、<code>taskdef.json</code> ファイルのコンテナイメージ名を <code>&lt;IMAGE1_NAME&gt;</code> としておくと、<code>imageDetail.json</code> ファイルの値を元にして、新バージョンタグを含むイメージリポジトリURLが自動的に代入される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;family&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">ECSタスク定義名&gt;&quot;</span><span class="p p-Indicator">,</span>
@@ -34489,7 +34489,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:02:15 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     

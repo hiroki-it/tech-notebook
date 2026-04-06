@@ -33205,8 +33205,8 @@
 <h1 id="15-02">15-02. トラフィック管理方法<a class="headerlink" href="#15-02" title="Permanent link">&para;</a></h1>
 <h2 id="l3">L3<a class="headerlink" href="#l3" title="Permanent link">&para;</a></h2>
 <h3 id="vpc-cnikube-proxyip">VPC CNIアドオンやkube-proxyによるIPアドレス管理方法<a class="headerlink" href="#vpc-cnikube-proxyip" title="Permanent link">&para;</a></h3>
-<p>VPC CNIアドオンは、kubeletやAWS ENIと連携し、マイクロサービスPodをAWS EKSクラスター内のネットワークに参加させます。</p>
-<p>kube-proxyはNode内のiptablesを更新し、AWS EKSクラスター内で各ツールがトラフィック管理できるようにする。</p>
+<p>VPC CNIアドオンは、kubeletやAWS ENIと連携し、マイクロサービスPodをAmazon EKSクラスター内のネットワークに参加させます。</p>
+<p>kube-proxyはNode内のiptablesを更新し、Amazon EKSクラスター内で各ツールがトラフィック管理できるようにする。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio.png" /></p>
 <table>
 <thead>
@@ -33222,11 +33222,11 @@
 </tr>
 <tr>
 <td>AWS kube-proxy アドオン</td>
-<td>kube-proxyはNode内のiptablesを更新し、AWS EKSクラスター内で L4トラフィックを管理できるようにする。Node内のiptableに対して、PodのIPアドレスを追加 / 削除リクエストを送信する。AWSマネージドPodとして稼働する。</td>
+<td>kube-proxyはNode内のiptablesを更新し、Amazon EKSクラスター内で L4トラフィックを管理できるようにする。Node内のiptableに対して、PodのIPアドレスを追加 / 削除リクエストを送信する。AWSマネージドPodとして稼働する。</td>
 </tr>
 <tr>
-<td>AWS VPC CNIアドオン</td>
-<td>NodeにアタッチされたENIに対して、IPアドレスの取得 / 解放リクエストを送信する。また、新しいPodに対して、IPアドレスの割当 / 解放リクエストを送信する。必要に応じて、新しいENIのアタッチをAWS EKSコントロールプレーンにリクエストする。AWSマネージドPodとして稼働する。</td>
+<td>Amazon VPC CNIアドオン</td>
+<td>NodeにアタッチされたENIに対して、IPアドレスの取得 / 解放リクエストを送信する。また、新しいPodに対して、IPアドレスの割当 / 解放リクエストを送信する。必要に応じて、新しいENIのアタッチをAmazon EKSコントロールプレーンにリクエストする。AWSマネージドPodとして稼働する。</td>
 </tr>
 </tbody>
 </table>
@@ -33246,7 +33246,7 @@
 <tbody>
 <tr>
 <td>AWS ALB</td>
-<td>AWS EKSクラスター外の通信をCluster内のNodePort ServiceにL7ロードバランシングする。</td>
+<td>Amazon EKSクラスター外の通信をCluster内のNodePort ServiceにL7ロードバランシングする。</td>
 </tr>
 <tr>
 <td>Istioコントロールプレーン</td>
@@ -33254,7 +33254,7 @@
 </tr>
 <tr>
 <td>Istioデータプレーン (istio-proxy)</td>
-<td>ダウンストリームのistio-proxyからのリクエストをアップストリームにL7ロードバランシングする。また、　アップストリームがAWS EKSクラスター外の場合は、プロトコルに応じたロードバランシングになる。プロトコルがMySQLの場合はL4ロードバランシングになる。</td>
+<td>ダウンストリームのistio-proxyからのリクエストをアップストリームにL7ロードバランシングする。また、　アップストリームがAmazon EKSクラスター外の場合は、プロトコルに応じたロードバランシングになる。プロトコルがMySQLの場合はL4ロードバランシングになる。</td>
 </tr>
 <tr>
 <td>NodePort Service</td>
@@ -33308,7 +33308,7 @@
 <tbody>
 <tr>
 <td>AWS ALB</td>
-<td>AWS EKSクラスター外の通信をCluster内のNodePort ServiceにL7ロードバランシングする。</td>
+<td>Amazon EKSクラスター外の通信をCluster内のNodePort ServiceにL7ロードバランシングする。</td>
 </tr>
 <tr>
 <td>AWS CoreDNSアドオン</td>
@@ -33340,14 +33340,14 @@
 </tr>
 <tr>
 <td>kubelet</td>
-<td>Node内でデーモンプロセスとして稼働し、AWS EKSコントロールプレーンからPod作成 / 削除リクエストを受信する。新しいPodをCluster Networkに参加させるために、AWS VPC CNIにリクエストを送信する。</td>
+<td>Node内でデーモンプロセスとして稼働し、Amazon EKSコントロールプレーンからPod作成 / 削除リクエストを受信する。新しいPodをCluster Networkに参加させるために、Amazon VPC CNIにリクエストを送信する。</td>
 </tr>
 </tbody>
 </table>
 <h1 id="16">16. 公開先ネットワーク制限<a class="headerlink" href="#16" title="Permanent link">&para;</a></h1>
-<p>フロントエンドは、AWS EKSクラスターの外に公開します。</p>
+<p>フロントエンドは、Amazon EKSクラスターの外に公開します。</p>
 <p>ただし、社内ユーザーに公開すべきフロントエンドと、社内のSWEやSREerにだけ公開するものがあります。</p>
-<p>AWS EKSクラスターの入り口で、リクエストを検査し、これらを制御しなければなりません。</p>
+<p>Amazon EKSクラスターの入り口で、リクエストを検査し、これらを制御しなければなりません。</p>
 <pre class="mermaid"><code>flowchart LR
 
   公開先ネットワーク制限 ---- 公開先ネットワーク制限の基点((" "))
@@ -33381,7 +33381,7 @@
 <td>IPアドレスを検査するAWS WAFを紐付ける。SWEやSREerだけがリクエストを送信できるようにする。</td>
 </tr>
 <tr>
-<td>AWS Route53</td>
+<td>Amazon Route 53</td>
 <td>ドメインに合わせて、社外公開用または社内公開用のAWS ALBのいずれかに振り分ける。</td>
 </tr>
 <tr>
@@ -33431,10 +33431,10 @@
 </tr>
 <tr>
 <td>AWS CoreDNSアドオン</td>
-<td>ツールによっては、連携のために、他のツールのAWS EKSクラスター内ドメインを設定しなければならない。</td>
+<td>ツールによっては、連携のために、他のツールのAmazon EKSクラスター内ドメインを設定しなければならない。</td>
 </tr>
 <tr>
-<td>AWS Route53</td>
+<td>Amazon Route 53</td>
 <td>社内公開用のAWS ALBに振り分ける。</td>
 </tr>
 <tr>
@@ -33443,11 +33443,11 @@
 </tr>
 <tr>
 <td>NAT Gateway</td>
-<td>ツールによっては、ダッシュボード間の連携のために、他のツールのAWS EKSクラスター外公開ドメインを設定しなければならない。送信元IPアドレスを固定するために、NAT Gatewayを経由させる。</td>
+<td>ツールによっては、ダッシュボード間の連携のために、他のツールのAmazon EKSクラスター外公開ドメインを設定しなければならない。送信元IPアドレスを固定するために、NAT Gatewayを経由させる。</td>
 </tr>
 <tr>
 <td>Nginx Ingress Controller</td>
-<td>宛先とするServiceを決定する。AWS EKSクラスター外のからのリクエストは、Hostヘッダーにドメインを持つ。Nginx Ingress Controllerでこれを判定する。</td>
+<td>宛先とするServiceを決定する。Amazon EKSクラスター外のからのリクエストは、Hostヘッダーにドメインを持つ。Nginx Ingress Controllerでこれを判定する。</td>
 </tr>
 <tr>
 <td>OAuth2 Proxy2</td>
@@ -33502,11 +33502,11 @@
 </tr>
 <tr>
 <td>AWS ALB</td>
-<td>AWS Certificate Managerの管理するSSL証明書を、AWS ALBに紐づける。ユーザーがAWS EKSクラスターにリクエストを送信するときに、通常のTLSを実行できるようになる。なお、ここでSSL/TLS終端とし、アップストリームのIstio IngressGatewayでSSL/TLSを再開する。</td>
+<td>AWS Certificate Managerの管理するSSL証明書を、AWS ALBに紐づける。ユーザーがAmazon EKSクラスターにリクエストを送信するときに、通常のTLSを実行できるようになる。なお、ここでSSL/TLS終端とし、アップストリームのIstio IngressGatewayでSSL/TLSを再開する。</td>
 </tr>
 <tr>
-<td>AWS Aurora</td>
-<td>SSL証明書をAWS Auroraに紐づける。マイクロサービスがAWS Auroraにトランザクションを実行するときに、通常のTLSを実行できるようになる。</td>
+<td>Amazon Aurora</td>
+<td>SSL証明書をAmazon Auroraに紐づける。マイクロサービスがAmazon Auroraにトランザクションを実行するときに、通常のTLSを実行できるようになる。</td>
 </tr>
 <tr>
 <td>AWS Certificate Manager</td>
@@ -33583,10 +33583,10 @@
 <p>ここでは、集中ロギングを採用します。</p>
 <h2 id="fluentd-fluentbit">Fluentd / FluentBitによるログ収集<a class="headerlink" href="#fluentd-fluentbit" title="Permanent link">&para;</a></h2>
 <p>集中ロギングを実現するツールには、Fluentd / FluentBitがあります。</p>
-<p>Fluentd / FluentBitを使用して、AWS EKSクラスター内で作成されるログを収集します。</p>
+<p>Fluentd / FluentBitを使用して、Amazon EKSクラスター内で作成されるログを収集します。</p>
 <p>Fluentd / FluentBitの配置方法には、エージェントパターン (DaemonSet型、サイドカー型) 、フォワーダーアグリゲーターパターンがあります。</p>
 <p>ここでは、DaemonSet型のエージェントパターンを設定します。</p>
-<p>一方で、AWS EKSコントロールプレーンのログは、そのままAWS CloudWatch Logsに送信できます。</p>
+<p>一方で、Amazon EKSコントロールプレーンのログは、そのままAmazon CloudWatch Logsに送信できます。</p>
 <p><a href="https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/">Common Architecture Patterns with Fluentd and Fluent Bit</a></p>
 <p>ここでは、以下のログが登場します。</p>
 <ul>
@@ -33608,16 +33608,16 @@
 <td>コンテナランタイムは、コンテナの標準出力または標準エラー出力したログの実体をAWS EBSボリュームの <code>/var/log/pods</code> ディレクトリに出力する。また、<code>/var/log/container</code> ディレクトリに各コンテナのログのシンボリックリンクがある。</td>
 </tr>
 <tr>
-<td>AWS CloudWatch Logs</td>
-<td>AWS EKSクラスター内のログを収集し、また保管する。</td>
+<td>Amazon CloudWatch Logs</td>
+<td>Amazon EKSクラスター内のログを収集し、また保管する。</td>
 </tr>
 <tr>
-<td>AWS EKSコントロールプレーン</td>
-<td>AWS EKSコントロールプレーンは、コントロールプレーンコンポーネントのログをAWS CloudWatch Logsに出力する。</td>
+<td>Amazon EKSコントロールプレーン</td>
+<td>Amazon EKSコントロールプレーンは、コントロールプレーンコンポーネントのログをAmazon CloudWatch Logsに出力する。</td>
 </tr>
 <tr>
 <td>Fluentd / FluentBit</td>
-<td>DaemonSet型のエージェントパターンを採用し、DaemonSetとして各Nodeに稼働させる。<code>/var/log/container</code> ディレクトリに各コンテナのログのシンボリックリンクがある。INPUTセクションでこのディレクトリを指定し、ログを収集する。今回の例では、istio-proxyのアクセスログとアプリケーションの実行ログを収集するとする。OUTPUTセクションで、ログの宛先にAWS CloudWatch Logsを設定する。</td>
+<td>DaemonSet型のエージェントパターンを採用し、DaemonSetとして各Nodeに稼働させる。<code>/var/log/container</code> ディレクトリに各コンテナのログのシンボリックリンクがある。INPUTセクションでこのディレクトリを指定し、ログを収集する。今回の例では、istio-proxyのアクセスログとアプリケーションの実行ログを収集するとする。OUTPUTセクションで、ログの宛先にAmazon CloudWatch Logsを設定する。</td>
 </tr>
 <tr>
 <td>Istioコントロールプレーン</td>
@@ -33641,7 +33641,7 @@
 </tr>
 <tr>
 <td>SWE / SREer</td>
-<td>AWS CloudWatch Logsのログインサイト機能で、ログを分析可視化する。AWS CloudWatch Logsのログイベントをメトリクス化すれば、監視できるようになる。</td>
+<td>Amazon CloudWatch Logsのログインサイト機能で、ログを分析可視化する。Amazon CloudWatch Logsのログイベントをメトリクス化すれば、監視できるようになる。</td>
 </tr>
 <tr>
 <td>アプリ</td>
@@ -33667,7 +33667,7 @@
 <li>Kubernetesコンポーネント (kubelet、kube-proxyなど)</li>
 <li>その他のツール (CoreDNS、Karpenterなど)</li>
 </ul>
-<p>Prometheus Serverを使用して、AWS EKSクラスター内で作成されるメトリクスを収集します。</p>
+<p>Prometheus Serverを使用して、Amazon EKSクラスター内で作成されるメトリクスを収集します。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-メトリクス.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9.drawio.png" /></p>
 <table>
 <thead>
@@ -33679,7 +33679,7 @@
 <tbody>
 <tr>
 <td>CloudWatch Metrics</td>
-<td>AWSリソース系メトリクスを収集し、また保管する。AWS EKSクラスター内から収集できるメトリクスの種類は少なく、代わりに、Prometheus Serverに収集してもらうほうが、セットアップが楽である。</td>
+<td>AWSリソース系メトリクスを収集し、また保管する。Amazon EKSクラスター内から収集できるメトリクスの種類は少なく、代わりに、Prometheus Serverに収集してもらうほうが、セットアップが楽である。</td>
 </tr>
 <tr>
 <td>Grafana</td>
@@ -33723,7 +33723,7 @@
 </tr>
 <tr>
 <td>Prometheus Server</td>
-<td>ServiceMonitorを介して、AWS EKSクラスター内の様々なメトリクスを収集する。また、VictroriaMetricsにメトリクスを永続化する。AWS EKSクラスター外から収集できるメトリクスの種類は少なく、代わりに、CloudWatch Metricsに収集してもらうほうが、セットアップが楽である。</td>
+<td>ServiceMonitorを介して、Amazon EKSクラスター内の様々なメトリクスを収集する。また、VictroriaMetricsにメトリクスを永続化する。Amazon EKSクラスター外から収集できるメトリクスの種類は少なく、代わりに、CloudWatch Metricsに収集してもらうほうが、セットアップが楽である。</td>
 </tr>
 <tr>
 <td>Prometheus Node Exporter</td>
@@ -33735,7 +33735,7 @@
 </tr>
 <tr>
 <td>SWE / SREer</td>
-<td>AWS CloudWatch Metricsでメトリクスを監視する。</td>
+<td>Amazon CloudWatch Metricsでメトリクスを監視する。</td>
 </tr>
 <tr>
 <td>VictoriaMetrics</td>
@@ -33757,7 +33757,7 @@
 <li>アプリケーションの作成するスパン</li>
 <li>istio-proxyの作成するスパン</li>
 </ul>
-<p>OpenTelemetry Collectorを介して、AWS EKSクラスター内のスパンをAWS X-Rayに送信します。</p>
+<p>OpenTelemetry Collectorを介して、Amazon EKSクラスター内のスパンをAWS X-Rayに送信します。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トレース.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9.drawio.png" /></p>
 <table>
 <thead>
@@ -33819,24 +33819,24 @@
 <td>Prpmetheusが送信したアラートをインシデント管理ツールに転送する。</td>
 </tr>
 <tr>
-<td>AWS CloudWatch Alarm</td>
-<td>AWS CloudWatch Logsによるログメトリクスやその他のAWS系メトリクスが、期間中に統計量の閾値を超過したとする。この場合に、超過を検知してアラートイベントを発火する。</td>
+<td>Amazon CloudWatch Alarm</td>
+<td>Amazon CloudWatch Logsによるログメトリクスやその他のAWS系メトリクスが、期間中に統計量の閾値を超過したとする。この場合に、超過を検知してアラートイベントを発火する。</td>
 </tr>
 <tr>
-<td>AWS CloudWatch Logs</td>
+<td>Amazon CloudWatch Logs</td>
 <td>ログを可視化分析し、保管する。メトリクスフィルターを使用して、フィルターパターンに合致したログの発生をデータポイントとして処理する。これを統計し、ログメトリクスとして扱える。</td>
 </tr>
 <tr>
-<td>AWS CloudWatch Metrics</td>
+<td>Amazon CloudWatch Metrics</td>
 <td>AWS系メトリクスを収集する。</td>
 </tr>
 <tr>
-<td>AWS SNS</td>
-<td>AWS CloudWatch Alarmがパブリッシュしたアラートをインシデント管理ツールに転送する。</td>
+<td>Amazon SNS</td>
+<td>Amazon CloudWatch Alarmがパブリッシュしたアラートをインシデント管理ツールに転送する。</td>
 </tr>
 <tr>
 <td>Fluentd / FluentBit</td>
-<td>AWS EKSクラスター内のログを収集し、AWS CloudWatch Logsに送信する。</td>
+<td>Amazon EKSクラスター内のログを収集し、Amazon CloudWatch Logsに送信する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Alertmanager)</td>
@@ -33848,7 +33848,7 @@
 </tr>
 <tr>
 <td>Prometheus Server</td>
-<td>AWS EKSクラスター内からメトリクスを収集する。メトリクスがPrometheusRuleで設定した統計の閾値を超過すると、Alertmanagerにアラートを送信する。</td>
+<td>Amazon EKSクラスター内からメトリクスを収集する。メトリクスがPrometheusRuleで設定した統計の閾値を超過すると、Alertmanagerにアラートを送信する。</td>
 </tr>
 <tr>
 <td>インシデント管理ツール (Slack、Incident.io)</td>
@@ -33864,8 +33864,8 @@
 <p>ここで、もう一度、マイクロサービスアーキテクチャを概説します。</p>
 <p>インシデント発生から対処に関係する以下を組み込んでいます。</p>
 <ul>
-<li>AWS CloudWatch</li>
-<li>AWS SNS</li>
+<li>Amazon CloudWatch</li>
+<li>Amazon SNS</li>
 <li>Prometheus (Alertmanagerを含む)</li>
 <li>インシデント管理ツール</li>
 </ul>
@@ -33892,7 +33892,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:41:46 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     

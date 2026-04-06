@@ -33810,7 +33810,7 @@
 <p><br></p>
 <h2 id="01-cluster-autoscaler">01. cluster-autoscaler<a class="headerlink" href="#01-cluster-autoscaler" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>cluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) のAPIをコールし、Nodeの自動水平スケーリングを実行する。</p>
+<p>cluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：Amazon EKS Nodeグループ) のAPIをコールし、Nodeの自動水平スケーリングを実行する。</p>
 <p>cluster-autoscalerを使用しない場合、クラウドプロバイダーのNode数は固定である。</p>
 <p>自動水平スケーリングの条件を何にするかに応じて、アーキテクチャが異なる。</p>
 <p>コントロールプレーンNodeに配置することが推奨である。</p>
@@ -33837,7 +33837,7 @@
 </ul>
 </blockquote>
 <h4 id="kubernetes">▼ Kubernetes以外のメトリクスを条件すると仮定する場合<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
-<p>Kubernetes以外のメトリクス (例：AWS CloudWatch、Google Cloud Monitoring) を条件とする場合は、metrics-serverは不要である。</p>
+<p>Kubernetes以外のメトリクス (例：Amazon CloudWatch、Google Cloud Monitoring) を条件とする場合は、metrics-serverは不要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#%E5%A4%96%E9%83%A8%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%A6%E3%81%AE%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpacloudwatchclusterautoscaler">https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#%E5%A4%96%E9%83%A8%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%A6%E3%81%AE%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpacloudwatchclusterautoscaler</a></li>
@@ -33845,8 +33845,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="karpenter">Karpenterとの違い<a class="headerlink" href="#karpenter" title="Permanent link">&para;</a></h3>
-<p>Karpenterは、EC2のグループ (例：AWS EC2フリート) に関するAPIをコールする。</p>
-<p>一方でcluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：AWS EKS Nodeグループ) に関するAPIをコールする。</p>
+<p>Karpenterは、EC2のグループ (例：Amazon EC2フリート) に関するAPIをコールする。</p>
+<p>一方でcluster-autoscalerは、クラウドプロバイダーのNodeグループ (例：Amazon EKS Nodeグループ) に関するAPIをコールする。</p>
 <p><img alt="karpenter_vs_cluster-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
 <blockquote>
 <ul>
@@ -33964,7 +33964,7 @@
 <tbody>
 <tr>
 <td>cluster-autoscaler</td>
-<td><code>k8s.io/cluster-autoscaler/&lt;AWS EKS Cluster名&gt;</code></td>
+<td><code>k8s.io/cluster-autoscaler/&lt;Amazon EKS Cluster名&gt;</code></td>
 <td><code>owned</code></td>
 <td>cluster-autoscalerを使用する場合、cluster-autoscalerがEC2ワーカーNodeを検出するために必要である。<br>- <a href="https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html">https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html</a></td>
 </tr>
@@ -34071,7 +34071,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:55:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     
