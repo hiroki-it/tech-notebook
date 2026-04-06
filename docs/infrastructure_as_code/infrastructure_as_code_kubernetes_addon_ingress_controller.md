@@ -62,7 +62,7 @@ Ingress Controllerには種類があり、 Controllerごとに作成するリバ
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-AWS Route53
+Amazon Route 53
 ⬇⬆️︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB
@@ -80,7 +80,7 @@ Pod
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-AWS Route53
+Amazon Route 53
 ⬇⬆️︎
   # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS ALB

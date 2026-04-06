@@ -885,7 +885,7 @@ Pod
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-AWS Route53
+Amazon Route 53
 ⬇⬆️︎
 # L7ロードバランサー
 AWS ALB
@@ -993,7 +993,7 @@ External-IPはNode外から宛先IPアドレスとして指定できる。
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-AWS Route53
+Amazon Route 53
 ⬇⬆️︎
 # L4ロードバランサー
 LoadBalancer ServiceによるAWS NLB

@@ -672,7 +672,7 @@ import aws from "aws-sdk";
 const s3 = new aws.S3();
 
 exports.handler = (event, context, callback) => {
-  // AWS API Gatewayとのプロキシ統合を意識したJSON構造にする。
+  // Amazon API Gatewayとのプロキシ統合を意識したJSON構造にする。
   // レスポンスの初期値
   const response = {
     statusCode: null,
@@ -891,7 +891,7 @@ def lambda_handler(event, context):
 
         return {
             'statusCode': 200,
-            'body': json.dumps("AWS RDS instance start operation successfully")
+            'body': json.dumps("Amazon RDS instance start operation successfully")
         }
 
     except Exception as e:
@@ -926,7 +926,7 @@ def lambda_handler(event, context):
 
         return {
             'statusCode': 200,
-            'body': json.dumps("AWS RDS instance stop operation successfully")
+            'body': json.dumps("Amazon RDS instance stop operation successfully")
         }
 
     except Exception as e:

@@ -1574,7 +1574,7 @@ $ helm template . -f foo-values.yaml \
 ↓
 kube-apiserver # コード規約違反テスト（Kyverno、Gatekeeper）
 ↓
-etcd # 非推奨apiVersion検出（kube-no-trouble、AWS EKS Upgrade Insight）
+etcd # 非推奨apiVersion検出（kube-no-trouble、Amazon EKS upgrade insights）
 ```
 
 <br>

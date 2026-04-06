@@ -507,7 +507,7 @@ Amazon EC2の情報を取得する。
 
 ```bash
 $ aws ec2 describe-instances \
-    --filters "Name=tag:Name,Values=<AWS EC2名>" \
+    --filters "Name=tag:Name,Values=<Amazon EC2名>" \
     --query "Reservations[].Instances[].InstanceId" \
     --output text
 ```
@@ -592,7 +592,7 @@ Amazon EC2の情報を取得する。
 
 ```bash
 $ aws rds describe-db-clusters \
-    --db-cluster-identifier <AWS Auroraのクラスター名> \
+    --db-cluster-identifier <Amazon Auroraのクラスター名> \
     --query "DBClusters[0].ReaderEndpoint" --output text
 ```
 

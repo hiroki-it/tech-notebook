@@ -33,7 +33,7 @@ description: FireLens＠AWSリソースの知見を記録しています。
 
 ```yaml
 # 本来、改行はないが、わかりやすいように改行している。
-# <コンテナ名>-firelens-<AWS ECSタスクID>
+# <コンテナ名>-firelens-<Amazon ECSタスクID>
 [0] foo-firelens-*****: [
     *****,
     {
@@ -146,7 +146,7 @@ log_routerという名前以外を設定できないことに注意する。
         # ログドライバー
         "logDriver": "awslogs",
         "options": {
-            # FireLensコンテナ自体がAWS CloudWatch Logsにログアウトプット
+            # FireLensコンテナ自体がAmazon CloudWatch Logsにログアウトプット
             "awslogs-group": "<ログストリーム名>",
             "awslogs-region": "ap-northeast-1",
             "awslogs-stream-prefix": "<ログストリームの接頭辞>",
@@ -159,7 +159,7 @@ log_routerという名前以外を設定できないことに注意する。
             "config-file-type": "file",
             # 設定上書きのため読み出し
             "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf",
-            # AWS ECSの情報をFireLensコンテナに送信するか否か
+            # Amazon ECSの情報をFireLensコンテナに送信するか否か
             "enable-ecs-log-metadata": "true",
           },
       },

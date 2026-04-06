@@ -156,7 +156,7 @@ spec:
         resources:
           - name: storage-bucket
             base:
-              # AWS S3
+              # Amazon S3
               apiVersion: s3.aws.upbound.io/v1beta1
               kind: Bucket
               spec:
@@ -223,7 +223,7 @@ kind: Provider
 metadata:
   name: provider-aws-s3
 spec:
-  # AWS S3
+  # Amazon S3
   # @see https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.13.0
   package: xpkg.upbound.io/upbound/provider-aws-s3:v1.13.0
 ```
@@ -234,7 +234,7 @@ kind: Provider
 metadata:
   name: provider-aws-rds
 spec:
-  # AWS RDS
+  # Amazon RDS
   # @see https://marketplace.upbound.io/providers/upbound/provider-aws-rds/v1.17.0
   package: xpkg.upbound.io/upbound/provider-aws-rds:v1.17.0
 ```

@@ -305,7 +305,7 @@ Amazon CloudFrontのビューワーリクエスト、オリジンリクエスト
 
 各トリガーのeventオブジェクトへのマッピングは、リンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/AmazonAmazon CloudFront/latest/DeveloperGuide/lambda-event-structure.html
+> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
 
 <br>
 

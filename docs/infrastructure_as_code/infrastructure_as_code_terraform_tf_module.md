@@ -94,7 +94,7 @@ terraform {
 
 terraform {
 
-  # AWS S3で管理するように設定
+  # Amazon S3で管理するように設定
   backend "s3" {
     # バケット名
     bucket                  = "prd-foo-tfstate-bucket"
@@ -395,7 +395,7 @@ module "route53_foo" {
 # @ルートモジュール
 
 # ---------------------------------------------
-# AWS Route53
+# Amazon Route 53
 # ---------------------------------------------
 resource "aws_acm_certificate" "example" {
   # CloudFrontの仕様のため、us-east-1リージョンでサーバー証明書を作成します。

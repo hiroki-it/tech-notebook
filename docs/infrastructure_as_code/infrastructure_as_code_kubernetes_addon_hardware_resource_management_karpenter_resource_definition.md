@@ -269,7 +269,7 @@ spec:
     karpenter.sh/nodepool: foo-nodepool
     karpenter.k8s.aws/ec2nodeclass: foo-node-class
     karpenter.k8s.aws/cluster: foo-cluster
-    # AWS EKSにとってはセルフマネージドNodeになるため、KarpenterはセルフマネージドNodeとして認識されるようにタグを挿入してくれる
+    # Amazon EKSにとってはセルフマネージドNodeになるため、KarpenterはセルフマネージドNodeとして認識されるようにタグを挿入してくれる
     kubernetes.io/cluster/foo-cluster: owned
 ```
 

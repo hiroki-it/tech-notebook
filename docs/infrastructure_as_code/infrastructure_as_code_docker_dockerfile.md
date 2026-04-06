@@ -425,10 +425,10 @@ CIパイプライン上でコンテナイメージをビルドしていると、
 `crane` コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。
 
 ```bash
-# AWS ECRにログインする
+# Amazon ECRにログインする
 $ crane auth login --username AWS --password-stdin <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
 
-# DockerHubからAWS ECRにコンテナイメージをコピーする例
+# DockerHubからAmazon ECRにコンテナイメージをコピーする例
 $ crane copy nginx:<バージョン> *****.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:<バージョン>
 ```
 

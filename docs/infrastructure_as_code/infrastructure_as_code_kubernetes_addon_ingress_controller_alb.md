@@ -65,7 +65,7 @@ AWS Load Balancer Controllerを使用する場合は、NodePort Serviceのポー
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-AWS Route53
+Amazon Route 53
 ⬇⬆️︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB
@@ -133,7 +133,7 @@ module "iam_assumable_role_with_oidc_aws_load_balancer_controller" {
   create_role                   = true
   role_name                     = "foo-aws-load-balancer-controller"
 
-  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー

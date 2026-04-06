@@ -528,7 +528,7 @@ $ mkfs -t <ファイルシステムのタイプ> <パーティションのデバ
 # xfsタイプの場合
 $ mkfs -t xfs /dev/sda5
 
-# AWS EC2の追加ボリュームに/dev/xvdbというファイルシステムを作成する
+# Amazon EC2の追加ボリュームに/dev/xvdbというファイルシステムを作成する
 $ mkfs -t xfs /dev/xvdb
 ```
 

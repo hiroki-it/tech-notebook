@@ -87,7 +87,7 @@ metadata:
   namespace: descheduler
 spec:
   # 毎日 00:00 (JST) にdeschedulerを実行する
-  # AWS EKSはUTCでタイムゾーンを設定しているため、9時間分ずらす必要がある
+  # Amazon EKSはUTCでタイムゾーンを設定しているため、9時間分ずらす必要がある
   schedule: "0 15 * * *"
 
   # その他の例

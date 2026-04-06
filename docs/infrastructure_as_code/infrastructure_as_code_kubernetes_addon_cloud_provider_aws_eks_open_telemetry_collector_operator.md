@@ -52,7 +52,7 @@ EKSアドオンは、OpenTelemetry Collector Operatorをデプロイする。
 Terraformの `aws_eks_addon` でEKSアドオンをインストールし、OpenTelemetry CollectorのOperatorに関するKubernetesリソースを作成する。
 
 ```terraform
-# AWS EKSアドオンをインストールする。
+# Amazon EKSアドオンをインストールする。
 resource "aws_eks_addon" "adot" {
 
   cluster_name                = data.aws_eks_cluster.cluster.name

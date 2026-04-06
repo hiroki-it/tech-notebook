@@ -596,7 +596,7 @@ $ chmod +x max-pods-calculator.sh
 # --cni-prefix-delegation-enabledオプションを有効化した上でPod最大数を計算する
 $ ./max-pods-calculator.sh \
     --instance-type <インスタンスタイプ> \
-    --cni-version <AWS VPC CNIのバージョン> \
+    --cni-version <Amazon VPC CNIのバージョン> \
     --cni-prefix-delegation-enabled
 ```
 

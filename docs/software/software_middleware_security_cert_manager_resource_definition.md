@@ -317,7 +317,7 @@ spec:
   acme:
     solvers:
       - dns01:
-          # AWS Route53を委譲先とする。
+          # Amazon Route 53を委譲先とする。
           route53:
             region: ap-northeast-1
             accessKeyID: <AWSアカウントID>

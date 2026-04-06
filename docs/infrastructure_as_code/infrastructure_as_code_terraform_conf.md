@@ -98,7 +98,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 ロックされている間、他のユーザーは一連の `terraform` コマンドを実行できなくなる。
 
 ```terraform
-# AWS S3による状態ロックを使用する場合
+# Amazon S3による状態ロックを使用する場合
 terraform {
 
   backend "s3" {

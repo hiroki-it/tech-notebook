@@ -126,9 +126,9 @@ spec:
         # DNSレコード追加のために検知するKubernetesリソースを設定する
         - --source=service
         - --source=ingress
-        # DNSレコード追加対象のDNSゾーン (例：AWS Route53のホストゾーン) を設定する
+        # DNSレコード追加対象のDNSゾーン (例：Amazon Route 53のホストゾーン) を設定する
         - --domain-filter=example.com
-        # Ingressからルールを削除した場合に、対応するAWSリソース (AWS ALBリスナールール、AWS Route53 DNSレコード) も削除する
+        # Ingressからルールを削除した場合に、対応するAWSリソース (AWS ALBリスナールール、Amazon Route 53 DNSレコード) も削除する
         - --policy=sync
         - --provider=aws
         - --txt-owner-id=external-dns
@@ -263,7 +263,7 @@ module "iam_assumable_role_with_oidc_external_dns" {
   create_role                   = true
   role_name                     = "foo-external-dns"
 
-  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー

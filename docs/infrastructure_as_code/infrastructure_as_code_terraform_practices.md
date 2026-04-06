@@ -127,7 +127,7 @@ repository/
     │   │   └── functions/
     │   │       └── foo_function/ # スクリプトのディレクトリ
     │   │
-    │   └── rds/        # AWS RDS
+    │   └── rds/        # Amazon RDS
     │
     └── waf/ # WAF
         ├── alb/         # ALB
@@ -207,7 +207,7 @@ repository/
 ```yaml
 repository/
 └── modules/ # ローカルモジュール
-    └── eks/ # AWS EKS
+    └── eks/ # Amazon EKS
         ├── auto_scaling/ # AutoScaling
         │   ├── main.tf
         │   ├── outputs.tf
@@ -890,7 +890,7 @@ crash.*.log
      以降のプロビジョニングで、`tfstate`ファイル上はダミー値のままになる。
 
 ```terraform
-# AWS RDSの場合
+# Amazon RDSの場合
 resource "aws_rds_cluster" "this" {
 
   # 実際の値はAWS Secrets Managerから参照する。
@@ -1152,7 +1152,7 @@ ALB
 EC2
 ⬇️⬆️
 ⬇️⬆️
-AWS RDS
+Amazon RDS
 ```
 
 といった構成のインフラがあったときに、AWSリソース単体の細かい設定値まではテストせずに、以下の観点で結合テストを実施する。
@@ -1170,7 +1170,7 @@ ALB
 EC2
 ⬇️⬆️
 ⬇️⬆️
-AWS RDS
+Amazon RDS
 ```
 
 > - https://www.infracloud.io/blogs/testing-iac-terratest/

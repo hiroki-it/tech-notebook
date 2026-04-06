@@ -291,7 +291,7 @@ output "alb_zone_id" {
 }
 
 # ---------------------------------------------
-# AWS EC2
+# Amazon EC2
 # ---------------------------------------------
 output "bastion_ec2_instance_id" {
   value = aws_instance.bastion.id
@@ -366,7 +366,7 @@ resource "aws_subnet" "private_datastore" {
 
 ```terraform
 # ---------------------------------------------
-# AWS VPC
+# Amazon VPC
 # ---------------------------------------------
 output "public_subnet_ids" {
   value = aws_subnet.public[*].id # IDのリスト型
@@ -387,7 +387,7 @@ output "private_datastore_subnet_ids" {
 
 ```terraform
 # ---------------------------------------------
-# AWS VPC
+# Amazon VPC
 # ---------------------------------------------
 output "public_subnet_ids" {
   value = aws_subnet.public[0].id # IDの文字列
@@ -617,7 +617,7 @@ AWS NAT Gateway、Internet Gatewayの `resource` ブロックを適切な順番�
 
 ```terraform
 # ---------------------------------------------
-# AWS EC2
+# Amazon EC2
 # ---------------------------------------------
 resource "aws_instance" "bastion" {
   ami                         = "*****"
@@ -685,7 +685,7 @@ resource "aws_nat_gateway" "this" {
 
 ```terraform
 # ---------------------------------------------
-# AWS S3
+# Amazon S3
 # ---------------------------------------------
 
 # foo bucket
@@ -772,7 +772,7 @@ variable "enable_provision" {
 
 ```terraform
 # ---------------------------------------------
-# AWS EC2
+# Amazon EC2
 # ---------------------------------------------
 resource "aws_instance" "server" {
   count = var.enable_provision ? 1 : 0
@@ -813,7 +813,7 @@ variable "env" {
 
 ```terraform
 # ---------------------------------------------
-# AWS EC2
+# Amazon EC2
 # ---------------------------------------------
 resource "aws_instance" "server" {
   # テスト環境とステージング環境以外でプロビジョニングする
@@ -1043,7 +1043,7 @@ vpc_availability_zones = { a = "a", c = "c" }
 
 ```terraform
 # ---------------------------------------------
-# AWS VPC
+# Amazon VPC
 # ---------------------------------------------
 output "public_a_subnet_id" {
   value = aws_subnet.public[var.vpc_availability_zones.a].id
@@ -1067,7 +1067,7 @@ vpc_availability_zones = { a = "a", c = "c" }
 
 ```terraform
 # ---------------------------------------------
-# AWS VPC
+# Amazon VPC
 # ---------------------------------------------
 output "public_subnet_ids" {
   value = {
@@ -1150,7 +1150,7 @@ rds_parameter_group_values = {
 
 ```terraform
 # ---------------------------------------------
-# AWS RDS Cluster Parameter Group
+# Amazon RDS Cluster Parameter Group
 # ---------------------------------------------
 resource "aws_rds_cluster_parameter_group" "this" {
   name        = "prd-foo-cluster-pg"
@@ -1294,7 +1294,7 @@ RDSのアップグレード時、パラメーターグループは再作成す�
 
 ```terraform
 # ---------------------------------------------
-# AWS RDS Cluster Parameter Group
+# Amazon RDS Cluster Parameter Group
 # ---------------------------------------------
 resource "aws_rds_cluster_parameter_group" "aurora_mysql80" {
 
@@ -1307,7 +1307,7 @@ resource "aws_rds_cluster_parameter_group" "aurora_mysql80" {
 }
 
 # ---------------------------------------------
-# AWS RDS Subnet Group
+# Amazon RDS Subnet Group
 # ---------------------------------------------
 resource "aws_db_subnet_group" "this" {
 
@@ -1366,7 +1366,7 @@ ECSでは、AWS AutoScalingによってAmazon ECSタスク数が増加する。
 
 ```terraform
 # ---------------------------------------------
-# AWS ECS Service
+# Amazon ECS Service
 # ---------------------------------------------
 resource "aws_ecs_service" "this" {
 
@@ -1374,7 +1374,7 @@ resource "aws_ecs_service" "this" {
 
   lifecycle {
     ignore_changes = [
-      # AWS AutoScalingによるAWS ECSタスク数の増減を無視。
+      # AWS AutoScalingによるAmazon ECSタスク数の増減を無視。
       desired_count,
     ]
   }
@@ -1492,7 +1492,7 @@ resource "aws_security_group" "ec2" {
 
 ```terraform
 # ---------------------------------------------
-# AWS S3 bucket policy
+# Amazon S3 bucket policy
 # ---------------------------------------------
 resource "aws_s3_bucket_policy" "alb" {
   bucket = aws_s3_bucket.alb_logs.id
@@ -1586,10 +1586,10 @@ integer型を通常変数として渡せるように、拡張子をjsonではな
     "essential": "true",
     "portMappings": [
         {
-          # AWS ECSのコンテナのポート番号
+          # Amazon ECSのコンテナのポート番号
           "containerPort":
             80
-            # AWS ECSのホストのポート番号 ,
+            # Amazon ECSのホストのポート番号 ,
           "hostPort": 80,
           "protocol": "tcp",
         },

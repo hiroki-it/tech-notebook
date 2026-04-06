@@ -38,7 +38,7 @@ Terraformを使用する。
 Terraformの `aws_eks_addon` でEKSアドオンをインストールし、AWS EBS CSIドライバーに関するKubernetesリソースを作成する。
 
 ```terraform
-# AWS EKSアドオンをインストールする。
+# Amazon EKSアドオンをインストールする。
 resource "aws_eks_addon" "aws_ebs_csi_driver" {
 
   cluster_name                = data.aws_eks_cluster.cluster.name
@@ -64,8 +64,8 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
   create_role                   = true
   role_name                     = "foo-ebs-csi-driver"
 
-  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
-  # ArgoCDは、デプロイ専用のAWS EKS Cluster上で稼働している
+  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # ArgoCDは、デプロイ専用のAmazon EKS Cluster上で稼働している
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー

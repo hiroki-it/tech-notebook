@@ -102,7 +102,7 @@ NodePort Serviceを選ぶ場合、Nodeの送信元に開発者がロードバラ
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-AWS Route53
+Amazon Route 53
 ⬇⬆️︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS ALB
@@ -142,7 +142,7 @@ Ingressにて、`alb.ingress.kubernetes.io/target-type` キー値を `ip` とす
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-AWS Route53
+Amazon Route 53
 ⬇⬆️︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB
@@ -248,7 +248,7 @@ LoadBalancer Serviceを使用する場合、以下のようなネットワーク
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-AWS Route53
+Amazon Route 53
 ⬇⬆️︎
 # L4ロードバランサー
 LoadBalancer Service (Istio Ingress Gateway) によるAWS NLB
@@ -300,7 +300,7 @@ Pod
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-AWS Route53
+Amazon Route 53
 ⬇⬆️︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS ALB
@@ -329,7 +329,7 @@ Ingressにて、`alb.ingress.kubernetes.io/target-type` キー値を `ip` とす
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-AWS Route53
+Amazon Route 53
 ⬇⬆️︎
 # L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB

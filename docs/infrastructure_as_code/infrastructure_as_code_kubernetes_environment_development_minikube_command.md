@@ -288,7 +288,7 @@ Client Version: version.Info{
 Server Version: version.Info{
   Major:"1",
   Minor:"22",
-  GitVersion:"v1.22.3", # AWS EKSであれば、『v1.22.10-eks-84b4fe6』になっている。
+  GitVersion:"v1.22.3", # Amazon EKSであれば、『v1.22.10-eks-84b4fe6』になっている。
   GitCommit:"*****",
   GitTreeState:"clean",
   BuildDate:"2021-11-17T15:41:42Z",

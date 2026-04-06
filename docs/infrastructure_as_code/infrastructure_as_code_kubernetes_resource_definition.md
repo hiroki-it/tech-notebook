@@ -6010,7 +6010,7 @@ spec:
                     apiVersion: v1
                     fieldPath: metadata.namespace
                   path: namespace
-    # AWS EKSを使用している場合、AWS-APIへのリクエストに必要なトークンも設定される
+    # Amazon EKSを使用している場合、AWS-APIへのリクエストに必要なトークンも設定される
     - name: aws-iam-token
       projected:
         defaultMode: 420
@@ -6034,7 +6034,7 @@ spec:
   "kid":"*****"
 }
 
-# AWS EKSを使用している場合
+# Amazon EKSを使用している場合
 [root@<foo-pod:/] $ cat /var/run/secrets/eks.amazonaws.com/serviceaccount/token | base64 -d; echo
 
 {

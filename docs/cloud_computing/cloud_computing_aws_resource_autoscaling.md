@@ -81,21 +81,21 @@ resource "aws_autoscaling_group" "foo" {
   tag {
     key                 = "Name"
     value               = "foo-instance"
-    # オートスケーリングで起動したAWS EC2にタグを伝搬する
+    # オートスケーリングで起動したAmazon EC2にタグを伝搬する
     propagate_at_launch = true
   }
 
   tag {
     key                 = "Service"
     value               = "foo"
-    # オートスケーリングで起動したAWS EC2にタグを伝搬する
+    # オートスケーリングで起動したAmazon EC2にタグを伝搬する
     propagate_at_launch = true
   }
 
   tag {
     key                 = "Env"
     value               = "prd"
-    # オートスケーリングで起動したAWS EC2にタグを伝搬する
+    # オートスケーリングで起動したAmazon EC2にタグを伝搬する
     propagate_at_launch = true
   }
 }

@@ -1429,7 +1429,7 @@ metadata:
   name: aws-aurora-endpoint
 spec:
   hosts:
-    - <AWS AuroraのDBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
+    - <Amazon AuroraのDBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
   ports:
     - name: cluster-endpoint
       number: 3306
@@ -1442,7 +1442,7 @@ metadata:
   name: aws-aurora-endpoint
 spec:
   hosts:
-    - <AWS AuroraのDBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com
+    - <Amazon AuroraのDBクラスター名>.cluster-ro-<id>.ap-northeast-1.rds.amazonaws.com
   ports:
     - name: reader-endpoint
       number: 3306

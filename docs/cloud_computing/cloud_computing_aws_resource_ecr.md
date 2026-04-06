@@ -114,13 +114,13 @@ Amazon ECRへのアクセスの認可スコープを設定する。
 AWS IAMポリシーよりも強い。
 
 ```yaml
-# 中央集権的にコンテナイメージを提供するAWS ECR
+# 中央集権的にコンテナイメージを提供するAmazon ECR
 {"Version": "2008-10-17", "Statement": [
       {
         "Sid": "AllowAccessFromMultipleAccount",
         "Effect": "Allow",
         "Principal": {
-            # AWS ECRに接続できる他のAWSアカウント
+            # Amazon ECRに接続できる他のAWSアカウント
             "AWS": ["arn:aws:iam::*****:root"],
           },
         # 操作の認可スコープ

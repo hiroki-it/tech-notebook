@@ -61,8 +61,8 @@ paths:
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメーター
           # パスパラメーター間のマッピングであれば、integration.request.path.userId: method.request.path.userId
           # 他パラメーターからボディへのマッピングであれば、integration.request.header.userId: method.request.body.userId
-        connectionType: VPC_LINK # AWS VPCリンクを使用
-        connectionId: <AWS VPCリンクID> # AWS VPCリンクのID
+        connectionType: VPC_LINK # Amazon VPCリンクを使用
+        connectionId: <Amazon VPCリンクID> # Amazon VPCリンクのID
         passthroughBehavior: when_no_match # プロキシ統合の場合は設定の変更不可で固定
         type: http_proxy # プロキシ統合を使用
         responses: # プロキシ統合の場合は設定の変更不可で固定
@@ -87,7 +87,7 @@ paths:
           application/json: '{"body" : $input.json("$")}'
         passthroughBehavior: when_no_templates # 統合リクエストのマッピングテンプレートのパススルー条件を選択
         connectionType: VPC_LINK
-        connectionId: <AWS VPCリンクID>
+        connectionId: <Amazon VPCリンクID>
         type: http # 非プロキシ統合
         responses: # 統合レスポンスを設定
           200:
@@ -325,7 +325,7 @@ paths:
           integration.request.header.X-API-Key: "'*****'"
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメーター
         connectionType: VPC_LINK
-        connectionId: <AWS VPCリンクID>
+        connectionId: <Amazon VPCリンクID>
         type: http_proxy
         passthroughBehavior: when_no_match
         responses:
@@ -388,7 +388,7 @@ paths:
         requestParameters:
           integration.request.header.X-API-Key: "'*****'"
         connectionType: VPC_LINK
-        connectionId: <AWS VPCリンクID>
+        connectionId: <Amazon VPCリンクID>
         type: http_proxy
         passthroughBehavior: when_no_match
         responses:
@@ -468,7 +468,7 @@ paths:
           integration.request.header.X-API-Key: "'*****'"
           integration.request.path.userId: method.request.path.userId
         connectionType: VPC_LINK
-        connectionId: <AWS VPCリンクID>
+        connectionId: <Amazon VPCリンクID>
         type: http_proxy
         passthroughBehavior: when_no_match
         responses:
@@ -544,7 +544,7 @@ paths:
           integration.request.header.X-API-Key: "'*****'"
           integration.request.path.userId: method.request.path.userId
         connectionType: VPC_LINK
-        connectionId: <AWS VPCリンクID>
+        connectionId: <Amazon VPCリンクID>
         type: http_proxy
         passthroughBehavior: when_no_match
         responses:
@@ -723,7 +723,7 @@ paths:
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメーター
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
-        connectionId: <AWS VPCリンクID>
+        connectionId: <Amazon VPCリンクID>
         type: http
         responses:
           200:
@@ -794,7 +794,7 @@ paths:
           application/json: '{"body" : $input.json("$")}'
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
-        connectionId: <AWS VPCリンクID>
+        connectionId: <Amazon VPCリンクID>
         type: http
         responses:
           200:
@@ -881,7 +881,7 @@ paths:
           integration.request.path.userId: method.request.path.userId
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
-        connectionId: <AWS VPCリンクID>
+        connectionId: <Amazon VPCリンクID>
         type: http
         responses:
           200:
@@ -965,7 +965,7 @@ paths:
           integration.request.path.userId: method.request.path.userId
         passthroughBehavior: when_no_templates
         connectionType: VPC_LINK
-        connectionId: <AWS VPCリンクID>
+        connectionId: <Amazon VPCリンクID>
         type: http
         responses:
           200:
