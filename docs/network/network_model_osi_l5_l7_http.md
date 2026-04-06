@@ -194,7 +194,7 @@ Referer: https://foo.co.jp/
 GET https://example.com/bar-form.php?text1=a&text2=b
 ---
 # 送信元IPアドレス
-# ※ リバースプロキシサーバー (AWS ALBやAWS CloudFrontなども含む) を経由している場合、それら全てのIPアドレスも順に設定される
+# ※ リバースプロキシサーバー (AWS ALBやAmazon CloudFrontなども含む) を経由している場合、それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 ```
 
@@ -390,7 +390,7 @@ text=a&text2=b
 POST https://example.com/bar-form.php
 ---
 # 送信元IPアドレス
-# ※ リバースプロキシサーバー (AWS ALBやAWS CloudFrontなども含む) を経由している場合、それら全てのIPアドレスも順に設定される
+# ※ リバースプロキシサーバー (AWS ALBやAmazon CloudFrontなども含む) を経由している場合、それら全てのIPアドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 ---
 # ボディ (SSLによって暗号化される)
@@ -481,9 +481,9 @@ X-Content-Type-Options:	nosniff
 Vary: Accept-Encoding,User-Agent,Content-Type,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent
 Strict-Transport-Security: max-age=*****; includeSubDomains; preload
 X-Frame-Options: SAMEORIGIN
-# AWS CloudFrontのキャッシュにヒットしたか否か
+# Amazon CloudFrontのキャッシュにヒットしたか否か
 X-Cache: Miss from cloudfront
-Via: 1.1 <発行されたランダム文字列>.cloudfront.net (AWS CloudFront)
+Via: 1.1 <発行されたランダム文字列>.cloudfront.net (Amazon CloudFront)
 X-Amz-Cf-Pop: SEA19-C2
 X-Amz-Cf-Id: *****==
 # 言語のバージョン (※ php.ini にて、expose_php = Off と設定することにより非表示にできる)

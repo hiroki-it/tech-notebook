@@ -91,11 +91,11 @@ AWSリソースを操作するために使用する。
 
 **＊実装例＊**
 
-AWS CloudFrontに保管されているキャッシュを削除する。
+Amazon CloudFrontに保管されているキャッシュを削除する。
 
-フロントエンドアプリケーションをデプロイしたとしても、送信元のAWS CloudFrontに保管されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。
+フロントエンドアプリケーションをデプロイしたとしても、送信元のAmazon CloudFrontに保管されているキャッシュを削除しない限り、キャッシュがHitしたユーザーには過去のファイルがレスポンスされてしまう。
 
-そのため、S3へのデプロイ後に、AWS CloudFrontのキャッシュを削除する必要がある。
+そのため、S3へのデプロイ後に、Amazon CloudFrontのキャッシュを削除する必要がある。
 
 ```yaml
 version: 2.1
@@ -104,7 +104,7 @@ orbs:
   aws-cli: circleci/aws-cli@1.3.1
 
 jobs:
-  # AWS CloudFrontのキャッシュを削除する
+  # Amazon CloudFrontのキャッシュを削除する
   cloudfront_create_invalidation:
     docker:
       - image: cimg/python:3.9-node
@@ -232,14 +232,14 @@ jobs:
 
 #### ▼ deploy-update-service (ローリングアップデート使用時)
 
-ECRイメージを使用して、新しいリビジョンのAWS ECSタスク定義を作成し、加えてこれを使用してコンテナをデプロイする。
+ECRイメージを使用して、新しいリビジョンのAmazon ECSタスク定義を作成し、加えてこれを使用してコンテナをデプロイする。
 
-| 設定値                         | 説明                                                                                             |                                                                                                                                                                                                                                              |
-| ------------------------------ | ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `container-image-name-updates` | コンテナ定義のコンテナ名とバージョンタグを上書きする。                                           | イメージはCircleCIのハッシュ値でタグ付けしているので必須。                                                                                                                                                                                   |
-| `verify-revision-is-deployed`  | ローリングアップデートのAWS ECSタスクがAWS ECSタスク定義の必要数に合致したかを継続的に監視する。 | 例えば、AWS ECSタスクが『`Running` フェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のAWS ECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はAWS ECSタスクの必要数に合致しないため、検知できる。 |
-| `max-poll-attempts`            | ポーリングの最大試行回数を設定する。`poll-interval` と掛け合わせて、そう実行時間を定義できる。   | 総実行時間を延長するとき、間隔秒数はできるだけ短いほうが無駄な実行時間が発生しないため、最大回数を増やす。                                                                                                                                   |
-| `poll-interval`                | 試行の間隔秒数を設定する。`max-poll-attempts` と掛け合わせて、そう実行時間を定義できる。         |                                                                                                                                                                                                                                              |
+| 設定値                         | 説明                                                                                                   |                                                                                                                                                                                                                                                       |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `container-image-name-updates` | コンテナ定義のコンテナ名とバージョンタグを上書きする。                                                 | イメージはCircleCIのハッシュ値でタグ付けしているので必須。                                                                                                                                                                                            |
+| `verify-revision-is-deployed`  | ローリングアップデートのAmazon ECSタスクがAmazon ECSタスク定義の必要数に合致したかを継続的に監視する。 | 例えば、Amazon ECSタスクが『`Running` フェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のAmazon ECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はAmazon ECSタスクの必要数に合致しないため、検知できる。 |
+| `max-poll-attempts`            | ポーリングの最大試行回数を設定する。`poll-interval` と掛け合わせて、そう実行時間を定義できる。         | 総実行時間を延長するとき、間隔秒数はできるだけ短いほうが無駄な実行時間が発生しないため、最大回数を増やす。                                                                                                                                            |
+| `poll-interval`                | 試行の間隔秒数を設定する。`max-poll-attempts` と掛け合わせて、そう実行時間を定義できる。               |                                                                                                                                                                                                                                                       |
 
 オプションを使用して、`max-poll-attempts` (ポーリングの最大試行回数) と `poll-interval` (試行の間隔秒数) で、ポーリングの総実行時間を定義できる。
 
@@ -257,15 +257,15 @@ orbs:
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_rolling_update
-    # AWS ECSタスク定義名を指定
+    # Amazon ECSタスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
-    # AWS ECSクラスター名を指定
+    # Amazon ECSクラスター名を指定
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
     # コンテナ定義のコンテナ名とバージョンタグを上書き。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # AWS ECSタスク定義に基づくAWS ECSタスク数の監視
+    # Amazon ECSタスク定義に基づくAmazon ECSタスク数の監視
     verify-revision-is-deployed: "true"
     # 監視の試行回数
     max-poll-attempts: 30
@@ -296,7 +296,7 @@ workflows:
 
 #### ▼ deploy-update-service (ブルー/グリーンデプロイメント使用時)
 
-AWS ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのAWS ECSタスク定義を指定し、AWS ECSサービスを更新する。
+Amazon ECSタスク定義を更新する。加えて、ブルー/グリーンデプロイメントがそのAmazon ECSタスク定義を指定し、Amazon ECSサービスを更新する。
 
 ローリングアップデートと同様にして、`verify-revision-is-deployed` オプションを使用できる。
 
@@ -312,9 +312,9 @@ orbs:
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_code_deploy
-    # AWS ECSタスク定義名を指定
+    # Amazon ECSタスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
-    # AWS ECSクラスター名を指定
+    # Amazon ECSクラスター名を指定
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
@@ -326,7 +326,7 @@ jobs:
     codedeploy-load-balanced-container-port: 80
     # コンテナ名とバージョンタグを指定。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # AWS ECSサービス更新後のAWS ECSタスク監視
+    # Amazon ECSサービス更新後のAmazon ECSタスク監視
     verify-revision-is-deployed: "true"
 
 workflows:
@@ -353,17 +353,17 @@ workflows:
 
 #### ▼ run-task
 
-現在起動中のAWS ECSタスクとは別に、新しいAWS ECSタスクを一時的に起動する。
+現在起動中のAmazon ECSタスクとは別に、新しいAmazon ECSタスクを一時的に起動する。
 
-起動時に、`overrides` オプションを使用して、指定したAWS ECSタスク定義のコンテナ設定を上書きできる。
+起動時に、`overrides` オプションを使用して、指定したAmazon ECSタスク定義のコンテナ設定を上書きできる。
 
 正規表現で設定する必要があり、加えてJSONでは『`\`』を『`\\`』にエスケープしなければならない。
 
-コマンドが実行された後に、AWS ECSタスクは自動的にStopped状態になる。
+コマンドが実行された後に、Amazon ECSタスクは自動的にStopped状態になる。
 
 **＊実装例＊**
 
-例えば、DBマイグレーションを実行するためのAWS ECSタスクを起動する。
+例えば、DBマイグレーションを実行するためのAmazon ECSタスクを起動する。
 
 `overrides` オプションでコンテナ定義のコマンドを上書きする。
 
@@ -384,11 +384,11 @@ jobs:
     launch-type: FARGATE
     subnet-ids: $AWS_SUBNET_IDS
     security-group-ids: $AWS_SECURITY_GROUPS
-    # AWS ECSタスク定義名。最新リビジョンが自動補完される。
+    # Amazon ECSタスク定義名。最新リビジョンが自動補完される。
     task-definition: "${SERVICE}-ecs-task-definition"
     # php artisan migrate --force || php artisan migrate:rollback --force
     # DBマイグレーションが失敗したら、1つ前までの履歴までロールバックを実行する (マイグレーションファイル数に関係なく、1つ前の履歴に戻せばよい)
-    # AWS ECSタスク起動時にDBマイグレーションのコマンドを実行するように、Laravelコンテナのcommandキーを上書き
+    # Amazon ECSタスク起動時にDBマイグレーションのコマンドを実行するように、Laravelコンテナのcommandキーを上書き
     # DBマイグレーションの確認画面を表示しないために、forceオプションをつける
     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"bash\\\", \\\"-c\\\", \\\"php artisan migrate --force || php artisan migrate:rollback --force\\\"]}]}"
 
@@ -450,7 +450,7 @@ jobs:
     bundle-key: foo-bundle
     deployment-config: CodeDeployDefault.ECSAllAtOnce
     deployment-group: "${SERVICE}-deployment-group"
-    # AWS ECSにリクエストを送信できるCodeDeployサービスロール
+    # Amazon ECSにリクエストを送信できるCodeDeployサービスロール
     service-role-arn: $CODE_DEPLOY_ROLE_FOR_ECS
 
 workflows:

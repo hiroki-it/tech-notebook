@@ -133,9 +133,9 @@ prometheus_tsdb_compaction_chunk_samples_sum
 
 ## 02-02. 外部から収集したデータポイント
 
-### AWS EKSから収集したデータポイント
+### Amazon EKSから収集したデータポイント
 
-AWS EKSで利用できるAPI名を表す。
+Amazon EKSで利用できるAPI名を表す。
 
 ```bash
 aggregator_unavailable_apiservice{job="apiserver", name="<API名>"}

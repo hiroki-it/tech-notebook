@@ -48,8 +48,8 @@ module "iam_assumable_role_with_oidc_argocd_repo_server" {
   create_role = true
   role_name   = "foo-argocd-reposerver"
 
-  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
-  # ArgoCDは外部のAWS EKS Clusterで稼働している
+  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # ArgoCDは外部のAmazon EKS Clusterで稼働している
   provider_url = replace(module.eks_argocd.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー
@@ -980,11 +980,11 @@ spec:
 リポジトリ (マニフェストリポジトリ、チャートリポジトリ、OCIリポジトリ) の変更をポーリングし、これらからプルしたマニフェストで
 `kubectl apply` コマンドを実行。
 
-| リポジトリの種類                                                           | 管理方法                                 | マニフェストのapply方法                                                                                                           |
-| -------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| マニフェストリポジトリ (例：GitHub内のリポジトリ)                          | マニフェストそのまま                     | ArgoCDで直接的に `kubectl apply` コマンドを実行する。                                                                             |
-| チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ、AWS S3) | チャートアーカイブ (`.tgz` 形式ファイル) | Helmを使用して、ArgoCDで間接的に `kubectl apply` コマンドを実行する。パラメーターに応じて、内部的に `helm` コマンドが実行される。 |
-| OCIリポジトリ (例：ECR内のリポジトリ)                                      | チャートアーカイブ (`.tgz` 形式ファイル) | Helmを使用して、ArgoCDで間接的に `kubectl apply` コマンドを実行する。パラメーターに応じて、内部的に `helm` コマンドが実行される。 |
+| リポジトリの種類                                                              | 管理方法                                 | マニフェストのapply方法                                                                                                           |
+| ----------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| マニフェストリポジトリ (例：GitHub内のリポジトリ)                             | マニフェストそのまま                     | ArgoCDで直接的に `kubectl apply` コマンドを実行する。                                                                             |
+| チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ、Amazon S3) | チャートアーカイブ (`.tgz` 形式ファイル) | Helmを使用して、ArgoCDで間接的に `kubectl apply` コマンドを実行する。パラメーターに応じて、内部的に `helm` コマンドが実行される。 |
+| OCIリポジトリ (例：ECR内のリポジトリ)                                         | チャートアーカイブ (`.tgz` 形式ファイル) | Helmを使用して、ArgoCDで間接的に `kubectl apply` コマンドを実行する。パラメーターに応じて、内部的に `helm` コマンドが実行される。 |
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
 
@@ -1333,7 +1333,7 @@ spec:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 > - https://cloud.redhat.com/blog/continuous-delivery-with-helm-and-argo-cd
 
-AWS S3をチャートリポジトリとして指定できる。
+Amazon S3をチャートリポジトリとして指定できる。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1343,7 +1343,7 @@ metadata:
   namespace: argocd
 spec:
   source:
-    # 例えば、AWS S3をチャートリポジトリとして扱う。
+    # 例えば、Amazon S3をチャートリポジトリとして扱う。
     repoURL: https://foo-bucket.s3.ap-northeast-1.amazonaws.com
 ```
 
@@ -1554,7 +1554,7 @@ spec:
 ```
 
 ```yaml
-# AWS EKSの場合
+# Amazon EKSの場合
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -1562,7 +1562,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    # 外部のAWS EKS Clusterのkube-apiserverのエンドポイントを指定する。
+    # 外部のAmazon EKS Clusterのkube-apiserverのエンドポイントを指定する。
     server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 

@@ -25,19 +25,19 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 プッシュ型の場合、メトリクスを送信できるエージェントが必要である。
 
-|                                                                    |        AWS CloudWatchベース         |     Datadogベース     |      Istioベース<br>連携しない状態      |        Istioベース<br>ビルトインPrometheusと連携した状態         |   OpenTelemetryベース   |   Prometheusベース    |
-| :----------------------------------------------------------------: | :---------------------------------: | :-------------------: | :-------------------------------------: | :--------------------------------------------------------------: | :---------------------: | :-------------------: |
-|              メトリクスの元になるデータポイントの作成              |       cloudwatchエージェント        |  datadogエージェント  | Envoyによるリクエスト系メトリクスの作成 |             Envoyによるリクエスト系メトリクスの作成              | クライアントパッケージ  |       Exporter        |
-|                                 ⬇️                                 |                 ⬇️                  |          ⬇️           |                   ⬇️                    |                                ⬇️                                |           ⬇️            |          ⬇️           |
-| メトリクスの元になるデータポイントを収集<br>プル型またはプッシュ型 |       cloudwatchエージェント        |  datadogエージェント  |  Istiodコントロールプレーンによる収集   |               Istiodコントロールプレーンによる収集               | OpenTelemetry Collector |       Exporter        |
-|                                 ⬇️                                 |                 ⬇️                  |          ⬇️           |                   ⬇️                    |                                ⬇️                                |           ⬇️            |          ⬇️           |
-|     監視バックエンドによるビルトインローカルストレージへの保管     |       AWS CloudWatch Metrics        | Datadogダッシュボード |                    -                    | Istiodコントロールプレーンを経由したprometheusサーバーによる収集 |            -            |  prometheusサーバー   |
-|                                 ⬇️                                 |                 ⬇️                  |          ⬇️           |                   ⬇️                    |                                ⬇️                                |           ⬇️            |          ⬇️           |
-|                   監視フロントエンドによる可視化                   |       AWS CloudWatch Metrics        | Datadogダッシュボード |                    -                    |                      Grafanaダッシュボード                       |            -            | Grafanaダッシュボード |
-|                                 ⬇️                                 |                 ⬇️                  |          ⬇️           |                   ⬇️                    |                                ⬇️                                |           ⬇️            |          ⬇️           |
-|                        分析とレポートの作成                        | AWS CloudWatch Contributor Insights | Datadogダッシュボード |                    -                    |                                -                                 |            -            |           -           |
-|                                 ⬇️                                 |                 ⬇️                  |          ⬇️           |                   ⬇️                    |                                ⬇️                                |           ⬇️            |          ⬇️           |
-|                           アラートの作成                           |       AWS CloudWatchアラーム        | Datadogダッシュボード |                    -                    |                        prometheusサーバー                        |            -            |  prometheusサーバー   |
+|                                                                    |        Amazon CloudWatchベース         |     Datadogベース     |      Istioベース<br>連携しない状態      |        Istioベース<br>ビルトインPrometheusと連携した状態         |   OpenTelemetryベース   |   Prometheusベース    |
+| :----------------------------------------------------------------: | :------------------------------------: | :-------------------: | :-------------------------------------: | :--------------------------------------------------------------: | :---------------------: | :-------------------: |
+|              メトリクスの元になるデータポイントの作成              |         cloudwatchエージェント         |  datadogエージェント  | Envoyによるリクエスト系メトリクスの作成 |             Envoyによるリクエスト系メトリクスの作成              | クライアントパッケージ  |       Exporter        |
+|                                 ⬇️                                 |                   ⬇️                   |          ⬇️           |                   ⬇️                    |                                ⬇️                                |           ⬇️            |          ⬇️           |
+| メトリクスの元になるデータポイントを収集<br>プル型またはプッシュ型 |         cloudwatchエージェント         |  datadogエージェント  |  Istiodコントロールプレーンによる収集   |               Istiodコントロールプレーンによる収集               | OpenTelemetry Collector |       Exporter        |
+|                                 ⬇️                                 |                   ⬇️                   |          ⬇️           |                   ⬇️                    |                                ⬇️                                |           ⬇️            |          ⬇️           |
+|     監視バックエンドによるビルトインローカルストレージへの保管     |       Amazon CloudWatch Metrics        | Datadogダッシュボード |                    -                    | Istiodコントロールプレーンを経由したprometheusサーバーによる収集 |            -            |  prometheusサーバー   |
+|                                 ⬇️                                 |                   ⬇️                   |          ⬇️           |                   ⬇️                    |                                ⬇️                                |           ⬇️            |          ⬇️           |
+|                   監視フロントエンドによる可視化                   |       Amazon CloudWatch Metrics        | Datadogダッシュボード |                    -                    |                      Grafanaダッシュボード                       |            -            | Grafanaダッシュボード |
+|                                 ⬇️                                 |                   ⬇️                   |          ⬇️           |                   ⬇️                    |                                ⬇️                                |           ⬇️            |          ⬇️           |
+|                        分析とレポートの作成                        | Amazon CloudWatch Contributor Insights | Datadogダッシュボード |                    -                    |                                -                                 |            -            |           -           |
+|                                 ⬇️                                 |                   ⬇️                   |          ⬇️           |                   ⬇️                    |                                ⬇️                                |           ⬇️            |          ⬇️           |
+|                           アラートの作成                           |       Amazon CloudWatchアラーム        | Datadogダッシュボード |                    -                    |                        prometheusサーバー                        |            -            |  prometheusサーバー   |
 
 > - https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
 > - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6
@@ -45,19 +45,19 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 #### ▼ 組み合わせの例
 
-|                                                                      |    AWS CloudWatchベース    |     Datadogベース     |                        Istioベース                        |   Prometheusベース    |
-| -------------------------------------------------------------------- | :------------------------: | :-------------------: | :-------------------------------------------------------: | :-------------------: |
-| メトリクスの元になるデータポイントの作成                             | AWS CloudWatchエージェント |  datadogエージェント  | Exporter<br>+ <br>Envoyによるリクエスト系メトリクスの作成 |       Exporter        |
-| ⬇️                                                                   |             ⬇️             |          ⬇️           |                            ⬇️                             |          ⬇️           |
-| メトリクスの元になるデータポイントを収集<br>(プル型またはプッシュ型) | AWS CloudWatchエージェント |  datadogエージェント  |  Exporter<br>+ <br>Istiodコントロールプレーンによる収集   |       Exporter        |
-| ⬇️                                                                   |             ⬇️             |          ⬇️           |                            ⬇️                             |          ⬇️           |
-| 監視バックエンドによるビルトインローカルストレージへの保管           |   AWS CloudWatch Metrics   | Datadogダッシュボード |                    prometheusサーバー                     |  prometheusサーバー   |
-| ⬇️                                                                   |             ⬇️             |          ⬇️           |                            ⬇️                             |          ⬇️           |
-| 監視フロントエンドによる可視化                                       |   AWS CloudWatch Metrics   | Datadogダッシュボード |                   Grafanaダッシュボード                   | Grafanaダッシュボード |
-| ⬇️                                                                   |             ⬇️             |          ⬇️           |                            ⬇️                             |          ⬇️           |
-| 分析とレポートの作成                                                 |   AWS CloudWatch Metrics   | Datadogダッシュボード |                             -                             |           -           |
-| ⬇️                                                                   |             ⬇️             |          ⬇️           |                            ⬇️                             |          ⬇️           |
-| アラートの作成                                                       |   AWS CloudWatchアラーム   | Datadogダッシュボード |                    prometheusサーバー                     |  prometheusサーバー   |
+|                                                                      |    Amazon CloudWatchベース    |     Datadogベース     |                        Istioベース                        |   Prometheusベース    |
+| -------------------------------------------------------------------- | :---------------------------: | :-------------------: | :-------------------------------------------------------: | :-------------------: |
+| メトリクスの元になるデータポイントの作成                             | Amazon CloudWatchエージェント |  datadogエージェント  | Exporter<br>+ <br>Envoyによるリクエスト系メトリクスの作成 |       Exporter        |
+| ⬇️                                                                   |              ⬇️               |          ⬇️           |                            ⬇️                             |          ⬇️           |
+| メトリクスの元になるデータポイントを収集<br>(プル型またはプッシュ型) | Amazon CloudWatchエージェント |  datadogエージェント  |  Exporter<br>+ <br>Istiodコントロールプレーンによる収集   |       Exporter        |
+| ⬇️                                                                   |              ⬇️               |          ⬇️           |                            ⬇️                             |          ⬇️           |
+| 監視バックエンドによるビルトインローカルストレージへの保管           |   Amazon CloudWatch Metrics   | Datadogダッシュボード |                    prometheusサーバー                     |  prometheusサーバー   |
+| ⬇️                                                                   |              ⬇️               |          ⬇️           |                            ⬇️                             |          ⬇️           |
+| 監視フロントエンドによる可視化                                       |   Amazon CloudWatch Metrics   | Datadogダッシュボード |                   Grafanaダッシュボード                   | Grafanaダッシュボード |
+| ⬇️                                                                   |              ⬇️               |          ⬇️           |                            ⬇️                             |          ⬇️           |
+| 分析とレポートの作成                                                 |   Amazon CloudWatch Metrics   | Datadogダッシュボード |                             -                             |           -           |
+| ⬇️                                                                   |              ⬇️               |          ⬇️           |                            ⬇️                             |          ⬇️           |
+| アラートの作成                                                       |   Amazon CloudWatchアラーム   | Datadogダッシュボード |                    prometheusサーバー                     |  prometheusサーバー   |
 
 <br>
 
@@ -69,20 +69,20 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 いずれもプッシュ型でログを収集し、ログを監視バックエンドに送信できるエージェントが必要である。
 
-|                                                            |         AWS CloudWatchベース          |     Elasticsearchベース     | Fluentd／Fluentbit<br>ベース | Grafana Lokiベース | Istioベース<br>(連携しない状態) | Istioベース<br>(ビルトインOpenTelemetryと連携した状態) |    OpenTelemetryベース    |
-| ---------------------------------------------------------- | :-----------------------------------: | :-------------------------: | :--------------------------: | :----------------: | :-----------------------------: | :----------------------------------------------------: | :-----------------------: |
-| 実行ログの作成                                             |                   -                   |              -              |              -               |         -          |                -                |                           -                            |             -             |
-| アクセスログの作成                                         |                   -                   |              -              |              -               |         -          |  (Envoyによるアクセスログ作成)  |             (Envoyによるアクセスログ作成)              |             -             |
-| ⬇️                                                         |                  ⬇️                   |             ⬇️              |              ⬇️              |         ⬇️         |               ⬇️                |                           ⬇️                           |            ⬇️             |
-| ログの収集<br>(いずれもプッシュ型による送信方式)           |       (cloudwatchエージェント)        |         (Logstach)          |      Fluentd／Fluentbit      |  (Grafana Alloy)   |                -                |       (EnvoyからOpenTelemetry Collectorへの送信)       | (OpenTelemetry Collector) |
-| ⬇️                                                         |                  ⬇️                   |             ⬇️              |              ⬇️              |         ⬇️         |               ⬇️                |                           ⬇️                           |            ⬇️             |
-| 監視バックエンドによるビルトインローカルストレージへの保管 |         (AWS CloudWatch Logs)         |              -              |              -               |      (BoltDB)      |                -                |                           -                            |             -             |
-| ⬇️                                                         |                  ⬇️                   |             ⬇️              |              ⬇️              |         ⬇️         |               ⬇️                |                           -                            |            ⬇️             |
-| 監視フロントエンドによる可視化                             |  (AWS CloudWatch Logsダッシュボード)  | Elasticsearchダッシュボード |              -               |         -          |                -                |                           -                            |             -             |
-| ⬇️                                                         |                  ⬇️                   |             ⬇️              |              ⬇️              |
-| 分析とレポートの作成                                       | (AWS CloudWatch Contributor Insights) |              -              |              -               |         -          |                -                |                           -                            |             -             |
-| ⬇️                                                         |                  ⬇️                   |             ⬇️              |              ⬇️              |         ⬇️         |               ⬇️                |                           ⬇️                           |            ⬇️             |
-| アラートの作成                                             |       (AWS CloudWatchアラーム)        |              -              |              -               |         -          |                -                |                           -                            |             -             |
+|                                                            |         Amazon CloudWatchベース          |     Elasticsearchベース     | Fluentd／Fluentbit<br>ベース | Grafana Lokiベース | Istioベース<br>(連携しない状態) | Istioベース<br>(ビルトインOpenTelemetryと連携した状態) |    OpenTelemetryベース    |
+| ---------------------------------------------------------- | :--------------------------------------: | :-------------------------: | :--------------------------: | :----------------: | :-----------------------------: | :----------------------------------------------------: | :-----------------------: |
+| 実行ログの作成                                             |                    -                     |              -              |              -               |         -          |                -                |                           -                            |             -             |
+| アクセスログの作成                                         |                    -                     |              -              |              -               |         -          |  (Envoyによるアクセスログ作成)  |             (Envoyによるアクセスログ作成)              |             -             |
+| ⬇️                                                         |                    ⬇️                    |             ⬇️              |              ⬇️              |         ⬇️         |               ⬇️                |                           ⬇️                           |            ⬇️             |
+| ログの収集<br>(いずれもプッシュ型による送信方式)           |         (cloudwatchエージェント)         |         (Logstach)          |      Fluentd／Fluentbit      |  (Grafana Alloy)   |                -                |       (EnvoyからOpenTelemetry Collectorへの送信)       | (OpenTelemetry Collector) |
+| ⬇️                                                         |                    ⬇️                    |             ⬇️              |              ⬇️              |         ⬇️         |               ⬇️                |                           ⬇️                           |            ⬇️             |
+| 監視バックエンドによるビルトインローカルストレージへの保管 |         (Amazon CloudWatch Logs)         |              -              |              -               |      (BoltDB)      |                -                |                           -                            |             -             |
+| ⬇️                                                         |                    ⬇️                    |             ⬇️              |              ⬇️              |         ⬇️         |               ⬇️                |                           -                            |            ⬇️             |
+| 監視フロントエンドによる可視化                             |  (Amazon CloudWatch Logsダッシュボード)  | Elasticsearchダッシュボード |              -               |         -          |                -                |                           -                            |             -             |
+| ⬇️                                                         |                    ⬇️                    |             ⬇️              |              ⬇️              |
+| 分析とレポートの作成                                       | (Amazon CloudWatch Contributor Insights) |              -              |              -               |         -          |                -                |                           -                            |             -             |
+| ⬇️                                                         |                    ⬇️                    |             ⬇️              |              ⬇️              |         ⬇️         |               ⬇️                |                           ⬇️                           |            ⬇️             |
+| アラートの作成                                             |       (Amazon CloudWatchアラーム)        |              -              |              -               |         -          |                -                |                           -                            |             -             |
 
 > - https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
 > - https://qiita.com/kazookie/items/eef3071a0667cb4d5136
@@ -91,20 +91,20 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 #### ▼ 組み合わせの例
 
-|                                                            |       AWS CloudWatchベース        |     Datadogベース     |                       Istioベース                       |   Prometheusベース    |
-| ---------------------------------------------------------- | :-------------------------------: | :-------------------: | :-----------------------------------------------------: | :-------------------: |
-| 実行ログの作成                                             |                 -                 |           -           |                            -                            |           -           |
-| アクセスログの作成                                         |                 -                 |           -           |               Envoyによるアクセスログ作成               |           -           |
-| ⬇️                                                         |                ⬇️                 |          ⬇️           |                           ⬇️                            |          ⬇️           |
-| ログの収集<br>(いずれもプッシュ型による送信方式)           |       Fluentd<br>Fluentbit        | Fluentd<br>Fluentbit  | Fluentd<br>Fluentbit<br>(OpenTelemetry Collectorでも可) |     Grafana Alloy     |
-| ⬇️                                                         |                ⬇️                 |          ⬇️           |                           ⬇️                            |          ⬇️           |
-| 監視バックエンドによるビルトインローカルストレージへの保管 |        AWS CloudWatch Logs        | Datadogダッシュボード |                      Grafana Loki                       |     Grafana Loki      |
-| ⬇️                                                         |                ⬇️                 |          ⬇️           |                           ⬇️                            |          ⬇️           |
-| 監視フロントエンドによる可視化                             | AWS CloudWatch Logsダッシュボード | Datadogダッシュボード |                  Grafanaダッシュボード                  | Grafanaダッシュボード |
-| ⬇️                                                         |                ⬇️                 |          ⬇️           |                           ⬇️                            |
-| 分析とレポートの作成                                       |   AWS CloudWatch Logsインサイト   | Datadogダッシュボード |                  Grafanaダッシュボード                  | Grafanaダッシュボード |
-| ⬇️                                                         |                ⬇️                 |          ⬇️           |                           ⬇️                            |          ⬇️           |
-| アラートの作成                                             |      AWS CloudWatchアラーム       | Datadogダッシュボード |                   prometheusサーバー                    |  prometheusサーバー   |
+|                                                            |       Amazon CloudWatchベース        |     Datadogベース     |                       Istioベース                       |   Prometheusベース    |
+| ---------------------------------------------------------- | :----------------------------------: | :-------------------: | :-----------------------------------------------------: | :-------------------: |
+| 実行ログの作成                                             |                  -                   |           -           |                            -                            |           -           |
+| アクセスログの作成                                         |                  -                   |           -           |               Envoyによるアクセスログ作成               |           -           |
+| ⬇️                                                         |                  ⬇️                  |          ⬇️           |                           ⬇️                            |          ⬇️           |
+| ログの収集<br>(いずれもプッシュ型による送信方式)           |         Fluentd<br>Fluentbit         | Fluentd<br>Fluentbit  | Fluentd<br>Fluentbit<br>(OpenTelemetry Collectorでも可) |     Grafana Alloy     |
+| ⬇️                                                         |                  ⬇️                  |          ⬇️           |                           ⬇️                            |          ⬇️           |
+| 監視バックエンドによるビルトインローカルストレージへの保管 |        Amazon CloudWatch Logs        | Datadogダッシュボード |                      Grafana Loki                       |     Grafana Loki      |
+| ⬇️                                                         |                  ⬇️                  |          ⬇️           |                           ⬇️                            |          ⬇️           |
+| 監視フロントエンドによる可視化                             | Amazon CloudWatch Logsダッシュボード | Datadogダッシュボード |                  Grafanaダッシュボード                  | Grafanaダッシュボード |
+| ⬇️                                                         |                  ⬇️                  |          ⬇️           |                           ⬇️                            |
+| 分析とレポートの作成                                       |   Amazon CloudWatch Logsインサイト   | Datadogダッシュボード |                  Grafanaダッシュボード                  | Grafanaダッシュボード |
+| ⬇️                                                         |                  ⬇️                  |          ⬇️           |                           ⬇️                            |          ⬇️           |
+| アラートの作成                                             |      Amazon CloudWatchアラーム       | Datadogダッシュボード |                   prometheusサーバー                    |  prometheusサーバー   |
 
 <br>
 
@@ -163,9 +163,9 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 各種ツールで、テレメトリーを保管しておく場所 (データソース) に制限がある。
 
-| アクション                         |                  AWS CloudWatch                   |         Datadog         |              Grafana               |
+| アクション                         |                 Amazon CloudWatch                 |         Datadog         |              Grafana               |
 | ---------------------------------- | :-----------------------------------------------: | :---------------------: | :--------------------------------: |
-| ログと分散トレース間の紐付け       |        (ログはAWS CloudWatch Logsに要保管)        | (ログはDatadogに要保管) | (ログの保管ツールの種類に制限あり) |
+| ログと分散トレース間の紐付け       |      (ログはAmazon CloudWatch Logsに要保管)       | (ログはDatadogに要保管) | (ログの保管ツールの種類に制限あり) |
 | メトリクスと分散トレース間の紐付け | (一部の言語のx-rayクライアントパッケージのみ対応) | (ログはDatadogに要保管) | (ログの保管ツールの種類に制限あり) |
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#03

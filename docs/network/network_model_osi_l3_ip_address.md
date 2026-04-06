@@ -229,9 +229,9 @@ URLは『`プロトコル + 完全修飾ドメイン名 + パス`』から、メ
 
 サブ-サブドメインでネットワークするためには、以下の作業が必要である。
 
-1. サブ-サブドメインの親サブドメインを取得する。 (例：AWS Route53ホストゾーン)
+1. サブ-サブドメインの親サブドメインを取得する。 (例：Amazon Route 53ホストゾーン)
 2. サブドメインのワイルドカード証明書 (例：AWS Certificate Manager) を取得する。ドットで区切られたサブ-サブドメインを1つのサブドメインのように扱う (例：`sub.sub.example.com`、`sub.example.com` を両方ともサブドメインとして扱う) 。
-3. 親サブドメインのDNSレコードにサブ-サブドメインを登録する。 (例：AWS Route53 DNSレコード)
+3. 親サブドメインのDNSレコードにサブ-サブドメインを登録する。 (例：Amazon Route 53 DNSレコード)
 
 > - https://stackoverflow.com/a/57680951
 > - https://www.reddit.com/r/aws/comments/12yo2dp/can_route53_handle_multiple_subdomains_with/
@@ -332,7 +332,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 #### ▼ ドメイン
 
-ドメインレジストラ (例：AWS Route53、Google Cloud DNS、お名前ドットコム) によって管理される。
+ドメインレジストラ (例：Amazon Route 53、Google Cloud DNS、お名前ドットコム) によって管理される。
 
 > - https://www.value-domain.com/media/registry-registrar/
 > - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-
@@ -353,7 +353,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 『ネームサーバー』『権威DNSサーバー』ともいう。
 
-ドメインレジストラがドメインと合わせてDNSサーバーも管理することが多いが、DNSサーバーの管理を外部のDNSプロバイダーに委任できる (例：お名前ドットコムをドメインレジストラ、AWS Route53をDNSプロバイダーとする) 。
+ドメインレジストラがドメインと合わせてDNSサーバーも管理することが多いが、DNSサーバーの管理を外部のDNSプロバイダーに委任できる (例：お名前ドットコムをドメインレジストラ、Amazon Route 53をDNSプロバイダーとする) 。
 
 ドメイン名とIPアドレスのマッピングを管理する。
 
@@ -368,7 +368,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 基本的には、キャッシュDNSサーバーとDNSサーバーは区別される。
 
-ただし、AWS Route53のように、キャッシュDNSサーバーとDNSサーバーの処理を実行できるものもある。
+ただし、Amazon Route 53のように、キャッシュDNSサーバーとDNSサーバーの処理を実行できるものもある。
 
 <br>
 

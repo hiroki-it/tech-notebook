@@ -134,11 +134,11 @@ data:
 
 > - https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
 
-#### ▼ AWS CloudWatchの場合
+#### ▼ Amazon CloudWatchの場合
 
-AWS CloudWatchの場合、`cloudwatch` タイプを指定する。
+Amazon CloudWatchの場合、`cloudwatch` タイプを指定する。
 
-AWS CloudWatch-APIからメトリクスの元になるデータポイントを収集するために、自前のクエリを送信する必要がある。
+Amazon CloudWatch-APIからメトリクスの元になるデータポイントを収集するために、自前のクエリを送信する必要がある。
 
 ```yaml
 apiVersion: v1

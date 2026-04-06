@@ -135,7 +135,7 @@ DevOpsのCI/CDパイプラインを導入することによりこれを実装す
 
 ### 技術ツール例
 
-- AWS ECS、AWS EKS)
+- Amazon ECS、Amazon EKS)
 - Kubernetes
 
 <br>

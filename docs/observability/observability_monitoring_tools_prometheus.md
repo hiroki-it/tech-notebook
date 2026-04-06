@@ -291,7 +291,7 @@ Prometheusのアラートを受信し、特定の条件下で通知する。
 Alertmanagerのデータを永続化する。
 
 ```bash
-# Node内 (AWS EKSのEC2ワーカーNodeの場合)
+# Node内 (Amazon EKSのEC2ワーカーNodeの場合)
 $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/alertmanager-db/
 ```
 

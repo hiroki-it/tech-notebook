@@ -30,7 +30,7 @@ module "iam_assumable_role_with_oidc_grafana_tempo" {
   create_role                   = true
   role_name                     = "foo-grafana-tempo"
 
-  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー
@@ -49,7 +49,7 @@ resource "aws_iam_role_policy" "grafana_tempo" {
   name = "grafana-tempo"
   role = aws_iam_role.grafana_tempo.id
 
-  # AWS S3をトレースのオブジェクトストレージとして使用する
+  # Amazon S3をトレースのオブジェクトストレージとして使用する
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [

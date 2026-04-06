@@ -339,7 +339,7 @@ data:
   enableOCI: "true"
 ```
 
-AWS ECRのように資格情報に有効期限がある場合は、資格情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
+Amazon ECRのように資格情報に有効期限がある場合は、資格情報を定期的に書き換えられるようにする。例えば、aws-ecr-credentialチャートを使用する。
 
 > - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 > - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
@@ -592,13 +592,13 @@ ArgoCDのapplication-controllerは、`cluster-<エンドポイントURL>` とい
 
 ### awsAuthConfig
 
-#### ▼ AWS EKSの場合
+#### ▼ Amazon EKSの場合
 
-AWS EKSの場合、
+Amazon EKSの場合、
 
 **例**
 
-デプロイ先のClusterがAWS EKSの場合は、以下のようなSecretが作成される。
+デプロイ先のClusterがAmazon EKSの場合は、以下のようなSecretが作成される。
 
 ```yaml
 apiVersion: v1
@@ -654,7 +654,7 @@ data:
 
 ## 06-02. セットアップ
 
-### AWS EKS Clusterの場合
+### Amazon EKS Clusterの場合
 
 #### ▼ 手順
 
@@ -746,11 +746,11 @@ cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been config
 
 #### ▼ プリンシパルIAMロールとアクセスエントリー
 
-AWS EKSアクセスエントリーを使用する場合、`argocd cluster add` コマンドは不要になる。
+Amazon EKSアクセスエントリーを使用する場合、`argocd cluster add` コマンドは不要になる。
 
 まず、argocd-serverとapplication-controllerのPodのServiceAccountにIRSA用IAMプリンシパルロールを紐づける。
 
-プリンシパルIAMロールに紐づくPodがAWS EKSに接続するとき、アクセスエントリーがこれを中継して動的にIAMポリシーを設定する。
+プリンシパルIAMロールに紐づくPodがAmazon EKSに接続するとき、アクセスエントリーがこれを中継して動的にIAMポリシーを設定する。
 
 ![argocd_access-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_access-entry.png)
 

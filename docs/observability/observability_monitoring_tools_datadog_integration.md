@@ -116,7 +116,7 @@ AWSリソースが作成したメトリクス/ログ/分散トレースをDatado
 
 `(3)`
 
-: ログを収集できるように、LambdaのトリガーとしてAWS CloudWatch LogsやAWS S3を設定する。
+: ログを収集できるように、LambdaのトリガーとしてAmazon CloudWatch LogsやAmazon S3を設定する。
 
      トリガーとして設定せずに自動的にも収集できるが、自動認識されるログの種類が少ないので、手動で設定したほうが良い。
 
@@ -126,13 +126,13 @@ AWSリソースが作成したメトリクス/ログ/分散トレースをDatado
 
 : トリガーとするAWSリソースの命名によって、ログの `service` 属性の値が変わる。
 
-     例えば、AWS CloudWatch Logsのロググループ名が『`api-gateway-*****`』から始まる場合、`service`属性の値は`apigateway`になる。
+     例えば、Amazon CloudWatch Logsのロググループ名が『`api-gateway-*****`』から始まる場合、`service`属性の値は`apigateway`になる。
 
 <br>
 
 ### 料金
 
-AWS EC2、AWS ECS、Lambdaで料金が発生し、それ以外のAWSリソースは無料である。
+Amazon EC2、Amazon ECS、Lambdaで料金が発生し、それ以外のAWSリソースは無料である。
 
 > - https://docs.datadoghq.com/account_management/billing/aws/
 

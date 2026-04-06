@@ -35,7 +35,7 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 <br>
 
-## 02. Processエージェント (AWS ECS Fargateの場合)
+## 02. Processエージェント (Amazon ECS Fargateの場合)
 
 ### Processエージェントとは
 

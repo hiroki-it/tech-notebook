@@ -324,7 +324,7 @@ Next.jsの多くのコンポーネントがNode.jsランタイムである。
 
 #### ▼ Edgeランタイム
 
-JavaScriptまたはTypeScriptをエッジ（例：Cloudflare、AWS CloudFront、Fastlyなど）
+JavaScriptまたはTypeScriptをエッジ（例：Cloudflare、Amazon CloudFront、Fastlyなど）
 
 Next.jsでは、`export const runtime = 'edge'` を宣言すると、Edgeランタイムで動かせる。
 

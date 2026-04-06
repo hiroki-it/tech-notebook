@@ -33,9 +33,9 @@ $ helm install <Helmリリース名> <リポジトリ名>/fluent-bit -n fluent -
 
 > - https://github.com/fluent/helm-charts/tree/main/charts/fluent-bit
 
-#### ▼ AWS EKS専用のチャートとして
+#### ▼ Amazon EKS専用のチャートとして
 
-AWS EKSでFluentBitを簡単にセットアップするために、それ専用のチャートを使用する。
+Amazon EKSでFluentBitを簡単にセットアップするために、それ専用のチャートを使用する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts

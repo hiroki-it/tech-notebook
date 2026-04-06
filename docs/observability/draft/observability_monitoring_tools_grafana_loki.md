@@ -28,7 +28,7 @@ module "iam_assumable_role_with_oidc_grafana_loki" {
   create_role                   = true
   role_name                     = "foo-grafana-loki"
 
-  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
+  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
 
   # AWS IAMロールに紐付けるIAMポリシー
@@ -47,7 +47,7 @@ resource "aws_iam_role_policy" "grafana_loki" {
   name = "grafana-loki"
   role = aws_iam_role.grafana_loki.id
 
-  # AWS S3をログのオブジェクトストレージとして使用する
+  # Amazon S3をログのオブジェクトストレージとして使用する
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [

@@ -1642,7 +1642,7 @@ func main() {
 
 ## 04. メッセージキューを経由する場合
 
-### AWS SQSの場合
+### Amazon SQSの場合
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
@@ -1691,7 +1691,7 @@ func NewTracerProvider() {
 
 	queueURL := urlResult.QueueUrl
 
-	// AWS SQSにメッセージを送信する
+	// Amazon SQSにメッセージを送信する
 	_, err := svc.SendMessageWithContext(
 		// 現在のトレースコンテキストを注入する
 		ctx,
@@ -1783,7 +1783,7 @@ func main() {
 
 	queueURL := urlResult.QueueUrl
 
-	// AWS SQSからメッセージを受信する
+	// Amazon SQSからメッセージを受信する
 	msgResult, err := svc.ReceiveMessageWithContext(
 		// トレースコンテキストを抽出する
 		ctx,

@@ -187,12 +187,12 @@ storage:
 
 #### ▼ s3
 
-AWS S3をオブジェクトストレージとして使用し、資格情報やエンドポイントを設定する。
+Amazon S3をオブジェクトストレージとして使用し、資格情報やエンドポイントを設定する。
 
 ```yaml
 storage:
   trace:
-    # AWS S3代替のMinIOを使用している場合
+    # Amazon S3代替のMinIOを使用している場合
     s3:
       access_key: root
       bucket: grafana-tempo
@@ -204,7 +204,7 @@ storage:
 ```yaml
 storage:
   trace:
-    # AWS S3使用している場合
+    # Amazon S3使用している場合
     s3:
       bucket: grafana-tempo
       endpoint: s3.ap-northeast-1.amazonaws.com

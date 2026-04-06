@@ -124,7 +124,7 @@ common:
         chunks: grafana-loki-chunks
         ruler: grafana-loki-ruler
         admin: grafana-loki-admin
-      # AWS S3を使用する場合
+      # Amazon S3を使用する場合
       region: ap-northeast-1
 ```
 

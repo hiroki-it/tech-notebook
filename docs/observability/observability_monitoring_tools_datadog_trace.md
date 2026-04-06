@@ -35,7 +35,7 @@ description: 分散トレース＠Datadogの知見を記録しています。
 
 <br>
 
-## 02. トレースエージェント (AWS ECS Fargateの場合)
+## 02. トレースエージェント (Amazon ECS Fargateの場合)
 
 ### トレースエージェントとは
 
