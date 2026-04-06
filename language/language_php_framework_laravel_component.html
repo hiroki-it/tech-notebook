@@ -26444,7 +26444,7 @@
   <span class="md-ellipsis">
     
   
-    AWS EKS
+    Amazon EKS
   
 
     
@@ -29740,7 +29740,7 @@
   <span class="md-ellipsis">
     
   
-    ■ AWS EKS系
+    ■ Amazon EKS系
   
 
     
@@ -29756,7 +29756,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ■ AWS EKS系
+    ■ Amazon EKS系
   
 
           </label>
@@ -29776,7 +29776,7 @@
   <span class="md-ellipsis">
     
   
-    AWS EKSアドオン
+    Amazon EKSアドオン
   
 
     
@@ -29832,7 +29832,7 @@
   <span class="md-ellipsis">
     
   
-    AWS VPC CNI
+    Amazon VPC CNI
   
 
     
@@ -39686,7 +39686,7 @@
 </code></pre></div>
 <h4 id="_8">▼ 複数のエンドポイント<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>複数のエンドポイントがある場合、書き込み処理と読み出し処理は専用のエンドポイントに向ける。</p>
-<p>例えば、AWS RDSを採用している場合、プライマリーインスタンスに向け、また読み出し処理をリードレプリカに向けることにより、負荷を分散できる。</p>
+<p>例えば、Amazon RDSを採用している場合、プライマリーインスタンスに向け、また読み出し処理をリードレプリカに向けることにより、負荷を分散できる。</p>
 <p>この場合、環境変数に <code>2</code> 個のインスタンスのエンドポイントを実装する必要がある。</p>
 <blockquote>
 <ul>
@@ -40095,7 +40095,7 @@
 <p>Laravelはスローされる例外のメッセージをスタックトレースで作成する。</p>
 <p>また、Laravel内部で例外キャッチと新たな例外の投げ直しが行われるため、<code>[previous exception]</code> によって例外が結合される。</p>
 <p>スタックトレースには機密性の高い情報が含まれるため、クライアントへの異常系レスポンスのエラーメッセージには割り当てずに、ロギングだけしておく。</p>
-<p>エラーが複数行にまたがるため、AWS CloudWatchやFluentBitなどのログ収集ツールでは、各行を繋げて扱えるように設定が必要である。</p>
+<p>エラーが複数行にまたがるため、Amazon CloudWatchやFluentBitなどのログ収集ツールでは、各行を繋げて扱えるように設定が必要である。</p>
 <p>補足として、ログの詳細度は <code>APP_DEBUG</code> 環境変数で制御できる。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2021</span>-09-00<span class="w"> </span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span>local.ERROR:<span class="w"> </span>*****<span class="w"> </span><span class="o">(</span>エラーメッセージ<span class="o">)</span>
 <span class="o">[</span>stacktrace<span class="o">]</span>
@@ -40894,9 +40894,9 @@
 <p>ファイルをS3バケット内のディレクトリ配下に保管する。</p>
 <p>環境変数を <code>.env</code> ファイルに実装する必要がある。</p>
 <p><code>filesystems.php</code> ファイルから、指定された設定が選択される。</p>
-<p>AWSアカウントの資格情報を環境変数として設定するか、またはS3アクセスポリシーをAWS EC2やAWS ECSタスクに付与することにより、S3にリクエストを送信できるようになる。</p>
+<p>AWSアカウントの資格情報を環境変数として設定するか、またはS3アクセスポリシーをAmazon EC2やAmazon ECSタスクに付与することにより、S3にリクエストを送信できるようになる。</p>
 <p>事前に、<code>filesystems.php</code> ファイルに設定が必要である。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># S3アクセスポリシーをAWS EC2やAWS ECSタスクに付与しても良い</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># S3アクセスポリシーをAmazon EC2やAmazon ECSタスクに付与しても良い</span>
 <span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>&lt;アクセスキーID&gt;
 <span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>&lt;シークレットアクセスキー&gt;
 <span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>ap-northeast-1
@@ -42831,7 +42831,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p>Laravelがデフォルトで用意しているチャンネル以外に送信したい場合、ユーザー定義の受信チャンネルを定義する。</p>
 <p>これは、Notificationクラスの <code>via</code> 関数で使用される。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>AWS SNSを受信チャンネルとする。</p>
+<p>Amazon SNSを受信チャンネルとする。</p>
 <p>AWSから配布されているパッケージが必要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>require<span class="w"> </span>aws/aws-sdk-php-laravel
 </code></pre></div>
@@ -42862,7 +42862,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
         <span class="k">try</span> <span class="p">{</span>
             <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$notification</span><span class="o">-&gt;</span><span class="na">toSms</span><span class="p">(</span><span class="nv">$notifiable</span><span class="p">);</span>
 
-            <span class="c1">// AWS SNSにメッセージを送信します。</span>
+            <span class="c1">// Amazon SNSにメッセージを送信します。</span>
             <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">awsSnsClient</span><span class="o">-&gt;</span><span class="na">publish</span><span class="p">([</span>
                 <span class="s2">&quot;Message&quot;</span>     <span class="o">=&gt;</span> <span class="nv">$message</span><span class="p">,</span>
                 <span class="s2">&quot;PhoneNumber&quot;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">toE164nizeInJapan</span><span class="p">(</span>
@@ -44342,7 +44342,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 15:29:43 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
   </span>
 
     

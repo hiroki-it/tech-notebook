@@ -24974,7 +24974,7 @@
   <span class="md-ellipsis">
     
   
-    AWS EKS
+    Amazon EKS
   
 
     
@@ -28270,7 +28270,7 @@
   <span class="md-ellipsis">
     
   
-    ■ AWS EKS系
+    ■ Amazon EKS系
   
 
     
@@ -28286,7 +28286,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ■ AWS EKS系
+    ■ Amazon EKS系
   
 
           </label>
@@ -28306,7 +28306,7 @@
   <span class="md-ellipsis">
     
   
-    AWS EKSアドオン
+    Amazon EKSアドオン
   
 
     
@@ -28362,7 +28362,7 @@
   <span class="md-ellipsis">
     
   
-    AWS VPC CNI
+    Amazon VPC CNI
   
 
     
@@ -36537,8 +36537,8 @@
 <p>新しいAMIを作成する場合、AMI名を変更し、AMIを再作成する。</p>
 <p>Amazon EC2の名前に、<code>&lt;バックアップするAmazon EC2のID&gt;</code> をつけることでわかりやすくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_ami_from_instance&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-instance-&lt;バックアップするAWS EC2のID&gt;&quot;</span>
-<span class="w">  </span><span class="na">source_instance_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バックアップするAWS EC2のID&gt;&quot;</span>
+<span class="w">  </span><span class="na">name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-instance-&lt;バックアップするAmazon EC2のID&gt;&quot;</span>
+<span class="w">  </span><span class="na">source_instance_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バックアップするAmazon EC2のID&gt;&quot;</span>
 
 <span class="c1">  # インスタンスを再起動せずにAMIを作成するとデータが欠損することがあるため、再起動する</span>
 <span class="w">  </span><span class="na">snapshot_without_reboot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
@@ -36749,7 +36749,7 @@
 
 <span class="w">  </span><span class="p">...</span>
 
-<span class="c1">  # オリジン (ここではAWS S3としている)</span>
+<span class="c1">  # オリジン (ここではAmazon S3としている)</span>
 <span class="w">  </span><span class="nb">origin</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="na">domain_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.s3_bucket_regional_domain_name</span>
 <span class="w">    </span><span class="na">origin_id</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;S3-${var.s3_bucket_id}&quot;</span>
@@ -37805,10 +37805,10 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>ALBがバケットにログを書き込めるように、『ELBのサービスアカウントID』を許可する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># AWS S3 bucket policy</span>
+<span class="c1"># Amazon S3 bucket policy</span>
 <span class="c1"># ---------------------------------------------</span>
 
-<span class="c1"># AWS S3にバケットポリシーを紐付けします。</span>
+<span class="c1"># Amazon S3にバケットポリシーを紐付けします。</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_s3_bucket_policy&quot;</span><span class="w"> </span><span class="nv">&quot;alb&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_s3_bucket.alb_logs.id</span>
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">templatefile</span><span class="p">(</span>
@@ -37842,10 +37842,10 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>ALBがバケットにログを書き込めるように、『<code>delivery.logs.amazonaws.com</code>』からのリクエストを許可する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
-<span class="c1"># AWS S3 bucket policy</span>
+<span class="c1"># Amazon S3 bucket policy</span>
 <span class="c1"># ---------------------------------------------</span>
 
-<span class="c1"># AWS S3にバケットポリシーを紐付けします。</span>
+<span class="c1"># Amazon S3にバケットポリシーを紐付けします。</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_s3_bucket_policy&quot;</span><span class="w"> </span><span class="nv">&quot;nlb&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_s3_bucket.nlb_logs.id</span>
 <span class="w">  </span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">templatefile</span><span class="p">(</span>
@@ -38829,7 +38829,7 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
   </span>
 
     

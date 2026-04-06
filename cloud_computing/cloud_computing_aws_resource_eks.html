@@ -24962,7 +24962,7 @@
   <span class="md-ellipsis">
     
   
-    AWS EKS
+    Amazon EKS
   
 
     
@@ -28258,7 +28258,7 @@
   <span class="md-ellipsis">
     
   
-    ■ AWS EKS系
+    ■ Amazon EKS系
   
 
     
@@ -28274,7 +28274,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ■ AWS EKS系
+    ■ Amazon EKS系
   
 
           </label>
@@ -28294,7 +28294,7 @@
   <span class="md-ellipsis">
     
   
-    AWS EKSアドオン
+    Amazon EKSアドオン
   
 
     
@@ -28350,7 +28350,7 @@
   <span class="md-ellipsis">
     
   
-    AWS VPC CNI
+    Amazon VPC CNI
   
 
     
@@ -36499,10 +36499,10 @@
 <span class="c1">  # kube-apiserverにパブリックリクエストできるか否か</span>
 <span class="w">  </span><span class="na">cluster_endpoint_public_access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 
-<span class="c1">  # AWS EKS Clusterのkube-apiserverにリクエストを送信できるCIDR</span>
+<span class="c1">  # Amazon EKS Clusterのkube-apiserverにリクエストを送信できるCIDR</span>
 <span class="w">  </span><span class="na">cluster_endpoint_public_access_cidrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*.*.*.*/32&quot;, &quot;*.*.*.*/32&quot;, &quot;*.*.*.*/32&quot;</span><span class="p">]</span>
 
-<span class="c1">  # AWS CloudWatch Logsに送信するログの種類</span>
+<span class="c1">  # Amazon CloudWatch Logsに送信するログの種類</span>
 <span class="w">  </span><span class="na">cluster_enabled_log_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;api&quot;, &quot;audit&quot;, &quot;authenticator&quot;, &quot;controllerManager&quot;, &quot;scheduler&quot;</span><span class="p">,]</span>
 
 <span class="c1">  # ログの保管期間</span>
@@ -36520,13 +36520,13 @@
 <span class="c1">  # ワーカーNodeのセキュリティグループを作成するか否か</span>
 <span class="w">  </span><span class="na">worker_create_security_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
-<span class="c1">  # AWS VPCのID</span>
+<span class="c1">  # Amazon VPCのID</span>
 <span class="w">  </span><span class="na">vpc_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;vpc-*****&quot;</span>
 
 <span class="c1">  # サブネットのID</span>
 <span class="w">  </span><span class="na">subnets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;subnet-*****&quot;, &quot;subnet-*****&quot;, &quot;subnet-*****&quot;</span><span class="p">]</span>
 
-<span class="c1">  # AWS EKSアドオン</span>
+<span class="c1">  # Amazon EKSアドオン</span>
 <span class="w">  </span><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nb">coredns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -36542,7 +36542,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="c1">  # AWS EKSマネージドグループ</span>
+<span class="c1">  # Amazon EKSマネージドグループ</span>
 <span class="w">  </span><span class="nb">eks_managed_node_groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nb">foo-group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="na">instance_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;m5.large&quot;</span><span class="p">]</span>
@@ -36651,7 +36651,7 @@
 <span class="l l-Scalar l-Scalar-Plain">↓</span>
 <span class="l l-Scalar l-Scalar-Plain">kube-apiserver</span>
 <span class="l l-Scalar l-Scalar-Plain">↓</span>
-<span class="l l-Scalar l-Scalar-Plain">etcd</span><span class="w"> </span><span class="c1"># AWS EKSアップグレードインサイトで検証</span>
+<span class="l l-Scalar l-Scalar-Plain">etcd</span><span class="w"> </span><span class="c1"># Amazon EKSアップグレードインサイトで検証</span>
 </code></pre></div>
 <blockquote>
 <ul>
@@ -36738,10 +36738,10 @@
 <p>プリンシパルAWS IAMロールに紐づくPodがAmazon EKSへ接続するとき、アクセスエントリーがこれを中継する。</p>
 <p>Kubernetesリソースの認可スコープをIRSAで制御し、この仕組みの中で、アクセスエントリーはアクセスエントリーポリシーをAWS IAMロールに動的に紐づける。</p>
 <h4 id="kubectl-argocd">▼ <code>kubectl</code> クライアント (例：開発者、ArgoCDなど)<a class="headerlink" href="#kubectl-argocd" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># AWS EKS Clusterのkubectlクライアントとなる別のAWS EKS Cluster</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Amazon EKS Clusterのkubectlクライアントとなる別のAmazon EKS Cluster</span>
 
 <span class="c1"># ArgoCDのPodにスイッチロールの権限を持たせるためのAWS IAMロール</span>
-<span class="c1"># 対象のAWS EKS Clusterに接続するためのAWS IAMロールにスイッチロールできる</span>
+<span class="c1"># 対象のAmazon EKS Clusterに接続するためのAWS IAMロールにスイッチロールできる</span>
 <span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_argocd_access_entry_service&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
@@ -36752,8 +36752,8 @@
 <span class="w">  </span><span class="na">create_role</span><span class="w">                   </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="w">  </span><span class="na">role_name</span><span class="w">                     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-argocd-access-entry-service&quot;</span>
 
-<span class="c1">  # AWS EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
-<span class="c1">  # ArgoCDは外部のAWS EKS Clusterで稼働している</span>
+<span class="c1">  # Amazon EKS ClusterのOIDCプロバイダーURLからhttpsプロトコルを除いたもの</span>
+<span class="c1">  # ArgoCDは外部のAmazon EKS Clusterで稼働している</span>
 <span class="w">  </span><span class="na">provider_url</span><span class="w">                  </span><span class="o">=</span><span class="w"> </span><span class="nf">replace</span><span class="p">(</span><span class="nv">module.eks_argocd.cluster_oidc_issuer_url</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;https://&quot;, &quot;&quot;</span><span class="p">)</span>
 
 <span class="c1">  # ArgoCDのPodのServiceAccount名</span>
@@ -36767,8 +36767,8 @@
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="c1"># 対象のAWS EKS Clusterに接続するためのAWS IAMロール</span>
-<span class="c1"># 対象のAWS EKS Clusterでアクセスエントリーを設定する必要がある</span>
+<span class="c1"># 対象のAmazon EKS Clusterに接続するためのAWS IAMロール</span>
+<span class="c1"># 対象のAmazon EKS Clusterでアクセスエントリーを設定する必要がある</span>
 <span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_argocd_access_entry_cluster&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">source</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role&quot;</span>
@@ -36800,10 +36800,10 @@
 <span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">awsAuthConfig:</span>
 <span class="w">      </span><span class="no">clusterName&quot;: &quot;&lt;クラスター名&gt;&quot;,</span>
-<span class="w">      </span><span class="no">roleARN: &quot;&lt;対象のAWS EKS ClusterにアクセスするためのAWS IAMロールARN&gt;&quot;</span>
+<span class="w">      </span><span class="no">roleARN: &quot;&lt;対象のAmazon EKS ClusterにアクセスするためのAWS IAMロールARN&gt;&quot;</span>
 <span class="w">    </span><span class="no">tlsClientConfig:</span>
 <span class="w">      </span><span class="no">insecure: false,</span>
-<span class="w">      </span><span class="no">caData: &quot;&lt;AWS EKS Clusterのサーバー証明書をbase64方式エンコードした値&gt;&quot;</span>
+<span class="w">      </span><span class="no">caData: &quot;&lt;Amazon EKS Clusterのサーバー証明書をbase64方式エンコードした値&gt;&quot;</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;クラスター名&gt;&quot;</span>
 <span class="w">  </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://*****.gr7.ap-northeast-1.eks.amazonaws.com&quot;</span>
 </code></pre></div>
@@ -36815,9 +36815,9 @@
 </ul>
 </blockquote>
 <h4 id="_12">▼ 宛先<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># 宛先のAWS EKS Clusterの設定</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 宛先のAmazon EKS Clusterの設定</span>
 
-<span class="c1"># 対象のAWS EKS Clusterでアクセスエントリーを設定する</span>
+<span class="c1"># 対象のAmazon EKS Clusterでアクセスエントリーを設定する</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_access_entry&quot;</span><span class="w"> </span><span class="nv">&quot;argocd&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_cluster.foo_argocd.name</span>
@@ -37024,7 +37024,7 @@
 <span class="w">                    </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="w">                    </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metadata.namespace</span>
 <span class="w">                  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace</span>
-<span class="w">    </span><span class="c1"># AWS EKSを使用している場合、AWS-APIへのリクエストに必要なトークンも設定される</span>
+<span class="w">    </span><span class="c1"># Amazon EKSを使用している場合、AWS-APIへのリクエストに必要なトークンも設定される</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-iam-token</span>
 <span class="w">      </span><span class="nt">projected</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">defaultMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">420</span>
@@ -37056,7 +37056,7 @@
 <span class="w">        </span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">        </span><span class="s">&quot;Principal&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">          </span><span class="p p-Indicator">{</span>
-<span class="w">            </span><span class="s">&quot;Federated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:oidc-provider/&lt;AWS</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOIDCプロバイダーURL&gt;&quot;</span><span class="p p-Indicator">,</span>
+<span class="w">            </span><span class="s">&quot;Federated&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;arn:aws:iam::&lt;AWSアカウントID&gt;:oidc-provider/&lt;Amazon</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOIDCプロバイダーURL&gt;&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
 <span class="w">        </span><span class="c1"># AssumeRoleWithWebIdentityを使用する</span>
 <span class="w">        </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;sts:AssumeRoleWithWebIdentity&quot;</span><span class="p p-Indicator">,</span>
@@ -37064,7 +37064,7 @@
 <span class="w">            </span><span class="c1"># 完全一致</span>
 <span class="w">            </span><span class="s">&quot;StringEquals&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">              </span><span class="p p-Indicator">{</span>
-<span class="w">                </span><span class="s">&quot;&lt;AWS</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOIDCプロバイダーURL&gt;:sub&quot;</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="s">&quot;&lt;Amazon</span><span class="nv"> </span><span class="s">EKS</span><span class="nv"> </span><span class="s">ClusterのOIDCプロバイダーURL&gt;:sub&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">                  </span><span class="p p-Indicator">[</span><span class="s">&quot;system:serviceaccount:&lt;Namespac名&gt;:&lt;ServiceAccount名&gt;&quot;</span><span class="p p-Indicator">],</span>
 <span class="w">              </span><span class="p p-Indicator">},</span>
 <span class="w">          </span><span class="p p-Indicator">},</span>
@@ -37470,7 +37470,7 @@
 <p>Amazon EC2ワーカーNodeが、自身の所属するClusterにリクエストを送信できるように、Amazon EC2ワーカーNodeに <code>AmazonEKSWorkerNodePolicy</code> を付与する必要がある。</p>
 <p>Amazon EC2ワーカーNode内のPodがAmazon ECRからコンテナイメージをプルできるように、Amazon EC2ワーカーNodeに <code>AmazonEC2ContainerRegistryReadOnly</code> を付与する必要がある。</p>
 <p>これにより、PodのコンテナごとにAWSの資格情報をマウントする必要がなくなる。</p>
-<p><code>aws-node</code> のPodがAWSのネットワーク系のAPIにリクエストを送信できるように、IRSA用のServiceAccountに <code>AmazonAmazon EKS_CNI_Policy</code> (IPv4の場合) または <code>AmazonEKS_CNI_IPv6_Policy</code> (IPv6の場合) を付与する必要がある。</p>
+<p><code>aws-node</code> のPodがAWSのネットワーク系のAPIにリクエストを送信できるように、IRSA用のServiceAccountに <code>AmazonEKS_CNI_Policy</code> (IPv4の場合) または <code>AmazonEKS_CNI_IPv6_Policy</code> (IPv6の場合) を付与する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html">https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html</a></li>
@@ -38063,9 +38063,9 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <span class="w">    </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-instance&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 
-<span class="c1">  # AutoScalingのタグに kubernetes.io/cluster/&lt;AWS EKS Cluster名&gt; をつける必要がある</span>
+<span class="c1">  # AutoScalingのタグに kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt; をつける必要がある</span>
 <span class="w">  </span><span class="nb">tag</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">key</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;kubernetes.io/cluster/&lt;AWS EKS Cluster名&gt;&quot;</span>
+<span class="w">    </span><span class="na">key</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt;&quot;</span>
 <span class="w">    </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;owned&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 
@@ -38368,7 +38368,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
   </span>
 
     
