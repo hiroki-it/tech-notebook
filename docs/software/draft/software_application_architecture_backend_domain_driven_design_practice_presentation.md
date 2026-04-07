@@ -130,7 +130,7 @@ const invalid = (res: Response) =>
   res.status(400).json({ok: false, message: "Invalid request"});
 ```
 
-#### ▼ 推薦書籍取得API
+#### ▼ 推薦書籍取得API（中核ユースケースに対応）
 
 `CatalogService/src/Presentation/Express/index.ts` の推薦書籍取得APIの実装である。
 
@@ -289,6 +289,29 @@ app.delete("/review/:reviewId", async (req, res) => {
 
 『外部』のCLI（ここでは `curl`）からHTTPリクエストを送信し、APIがレスポンスを返信することを確認する。
 
+#### ▼ 推薦書籍取得API（中核ユースケースに対応）
+
+推薦書籍取得APIで推薦書籍を取得する。
+
+```bash
+$ curl http://localhost:3000/book/9784814400737/recommendations
+```
+
+推薦書籍取得APIは、以下のように推薦書籍情報を `200` レスポンスで返信する。
+
+```json
+{
+  "ok": true,
+  "recommendedBooks": {
+    "sourceBookId": "9784814400737",
+    "recommendedBooks": [
+      " 実践ドメイン駆動設計 ",
+      " エリック・エヴァンスのドメイン駆動設計 "
+    ]
+  }
+}
+```
+
 #### ▼ 書籍登録API
 
 書籍登録APIで書籍を登録する。
@@ -342,29 +365,6 @@ $ curl \
     "name": " 山田太郎 ",
     "rating": 5,
     "comment": " 素晴らしい本でした。『実践ドメイン駆動設計』を先に読むことを推奨します。"
-  }
-}
-```
-
-#### ▼ 推薦書籍取得API
-
-推薦書籍取得APIで推薦書籍を取得する。
-
-```bash
-$ curl http://localhost:3000/book/9784814400737/recommendations
-```
-
-推薦書籍取得APIは、以下のように推薦書籍情報を `200` レスポンスで返信する。
-
-```json
-{
-  "ok": true,
-  "recommendedBooks": {
-    "sourceBookId": "9784814400737",
-    "recommendedBooks": [
-      " 実践ドメイン駆動設計 ",
-      " エリック・エヴァンスのドメイン駆動設計 "
-    ]
   }
 }
 ```
