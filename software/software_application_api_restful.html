@@ -34268,58 +34268,59 @@
 <thead>
 <tr>
 <th>HTTPメソッド</th>
-<th>エンドポイント</th>
 <th>ユースケース</th>
+<th>エンドポイント</th>
 <th>メソッド名の例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>GET</td>
+<td>複数の閲覧系 (全データのインデックス取得、条件に基づくデータの取得)</td>
 <td><code>https://example.com/users</code></td>
-<td>・全データのインデックス取得<br>・条件に基づくデータの取得</td>
-<td>index</td>
+<td>list</td>
 </tr>
 <tr>
 <td></td>
+<td>単一の閲覧系 (IDに基づくデータの取得)</td>
 <td><code>https://example.com/users/{id}</code></td>
-<td>IDに基づくデータの取得</td>
-<td>show</td>
+<td>get</td>
 </tr>
 <tr>
 <td>POST</td>
+<td>登録系 (データの作成、PDFの作成、ファイルデータの送信、ログイン/ログアウト)</td>
 <td><code>https://example.com/users</code></td>
-<td>・データの作成<br>・PDFの作成<br>・ファイルデータの送信<br>・ログイン/ログアウト</td>
-<td>create、store</td>
+<td>register</td>
 </tr>
 <tr>
 <td>PUT</td>
+<td>更新系 (データの更新)</td>
 <td><code>https://example.com/users/{id}</code></td>
-<td>データの更新 (置換)</td>
-<td>update</td>
+<td>change</td>
 </tr>
 <tr>
 <td>DELETE</td>
+<td>削除系 (データの削除)</td>
 <td><code>https://example.com/users/{id}</code></td>
-<td>データの削除</td>
-<td>delete、destroy</td>
+<td>delete</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <ul>
 <li><a href="https://noumenon-th.net/programming/2020/01/30/laravel-crud/">https://noumenon-th.net/programming/2020/01/30/laravel-crud/</a></li>
+<li><a href="https://cloud.google.com/discover/what-is-rest-api?hl=ja">https://cloud.google.com/discover/what-is-rest-api?hl=ja</a></li>
 </ul>
 </blockquote>
-<p>POSTリクエストとPUT送信の重要な違いについてまとめる。</p>
-<p>データを作成するユースケースの時はPOSTリクエスト、または更新するときはPUT送信を使用する。</p>
+<p>POSTリクエストとPUTリクエストの重要な違いについてまとめる。</p>
+<p>データを作成するユースケースの時はPOSTリクエスト、または更新するときはPUTリクエストを使用する。</p>
 <p>ただしもっと正確には、ユースケースが『作成』or『更新』ではなく、『非冪等』or『冪等』で判断したほうが良い。</p>
 <table>
 <thead>
 <tr>
 <th></th>
 <th>POSTリクエスト</th>
-<th>PUT送信</th>
+<th>PUTリクエスト</th>
 </tr>
 </thead>
 <tbody>
@@ -34684,7 +34685,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 20:13:12 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月8日 13:39:10 JST">2026-04-08</span>
   </span>
 
     
