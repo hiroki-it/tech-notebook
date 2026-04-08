@@ -132,11 +132,42 @@ const invalid = (res: Response) =>
   res.status(400).json({ok: false, message: "Invalid request"});
 ```
 
+#### ▼ 書籍登録API
+
+`CatalogService/src/Presentation/Express/index.ts` の書籍登録APIの実装である。
+
+```typescript
+// POST
+app.post("/book", async (req, res) => {
+  // 例外処理
+  try {
+    // リクエストの受信
+    const {isbn, title, author, price} = req.body;
+
+    // 受信データのバリデーション
+    if (!isStr(isbn) || !isStr(title) || !isStr(author) || !isNum(price)) {
+      return invalid(res);
+    }
+
+    // アプリケーション層（ユースケース層）へ受信データを入力し、また処理結果の出力を取得
+    const service = new RegisterBookService(bookRepository, transactionManager);
+    const command: RegisterBookCommand = {isbn, title, author, price};
+    const book = await service.execute(command);
+
+    // レスポンスの返信
+    res.status(201).json({ok: true, book});
+  } catch {
+    res.status(500).json({ok: false});
+  }
+});
+```
+
 #### ▼ 推薦書籍取得API（中核ユースケースに対応）
 
 `CatalogService/src/Presentation/Express/index.ts` の推薦書籍取得APIの実装である。
 
 ```typescript
+// GET
 app.get("/book/:isbn/recommendations", async (req, res) => {
   // 例外処理
   try {
@@ -164,40 +195,12 @@ app.get("/book/:isbn/recommendations", async (req, res) => {
 });
 ```
 
-#### ▼ 書籍登録API
-
-`CatalogService/src/Presentation/Express/index.ts` の書籍登録APIの実装である。
-
-```typescript
-app.post("/book", async (req, res) => {
-  // 例外処理
-  try {
-    // リクエストの受信
-    const {isbn, title, author, price} = req.body;
-
-    // 受信データのバリデーション
-    if (!isStr(isbn) || !isStr(title) || !isStr(author) || !isNum(price)) {
-      return invalid(res);
-    }
-
-    // アプリケーション層（ユースケース層）へ受信データを入力し、また処理結果の出力を取得
-    const service = new RegisterBookService(bookRepository, transactionManager);
-    const command: RegisterBookCommand = {isbn, title, author, price};
-    const book = await service.execute(command);
-
-    // レスポンスの返信
-    res.status(201).json({ok: true, book});
-  } catch {
-    res.status(500).json({ok: false});
-  }
-});
-```
-
 #### ▼ レビュー登録API
 
 `CatalogService/src/Presentation/Express/index.ts` のレビュー登録APIの実装である。
 
 ```typescript
+// POST
 app.post("/book/:isbn/review", async (req, res) => {
   // 例外処理
   try {
@@ -231,6 +234,7 @@ app.post("/book/:isbn/review", async (req, res) => {
 `CatalogService/src/Presentation/Express/index.ts` のレビュー編集APIの実装である。
 
 ```typescript
+// PUT
 app.put("/review/:reviewId", async (req, res) => {
   // 例外処理
   try {
@@ -262,6 +266,7 @@ app.put("/review/:reviewId", async (req, res) => {
 `CatalogService/src/Presentation/Express/index.ts` のレビュー削除APIの実装である。
 
 ```typescript
+// DELETE
 app.delete("/review/:reviewId", async (req, res) => {
   // 例外処理
   try {
@@ -291,29 +296,6 @@ app.delete("/review/:reviewId", async (req, res) => {
 
 『外部』のCLI（ここでは `curl`）からHTTPリクエストを送信し、APIがレスポンスを返信することを確認する。
 
-#### ▼ 推薦書籍取得API（中核ユースケースに対応）
-
-推薦書籍取得APIで推薦書籍を取得する。
-
-```bash
-$ curl http://localhost:3000/book/9784814400737/recommendations
-```
-
-推薦書籍取得APIは、以下のように推薦書籍情報を `200` レスポンスで返信する。
-
-```json
-{
-  "ok": true,
-  "recommendedBooks": {
-    "sourceBookId": "9784814400737",
-    "recommendedBooks": [
-      " 実践ドメイン駆動設計 ",
-      " エリック・エヴァンスのドメイン駆動設計 "
-    ]
-  }
-}
-```
-
 #### ▼ 書籍登録API
 
 書籍登録APIで書籍を登録する。
@@ -329,6 +311,7 @@ $ curl \
 書籍登録APIは、以下のように書籍情報を `201` レスポンスで返信する。
 
 ```json
+// 201レスポンス
 {
   "ok": true,
   "book": {
@@ -339,6 +322,30 @@ $ curl \
       "amount": 3960,
       "currency": "JPY"
     }
+  }
+}
+```
+
+#### ▼ 推薦書籍取得API（中核ユースケースに対応）
+
+推薦書籍取得APIで推薦書籍を取得する。
+
+```bash
+$ curl http://localhost:3000/book/9784814400737/recommendations
+```
+
+推薦書籍取得APIは、以下のように推薦書籍情報を `200` レスポンスで返信する。
+
+```json
+// 200レスポンス
+{
+  "ok": true,
+  "recommendedBooks": {
+    "sourceBookId": "9784814400737",
+    "recommendedBooks": [
+      " 実践ドメイン駆動設計 ",
+      " エリック・エヴァンスのドメイン駆動設計 "
+    ]
   }
 }
 ```
@@ -358,6 +365,7 @@ $ curl \
 レビュー登録APIは、以下のようにレビュー情報を `201` レスポンスで返信する。
 
 ```json
+// 201レスポンス
 {
   "ok": true,
   "review": {
@@ -386,6 +394,7 @@ $ curl \
 レビュー編集APIは、以下のように更新後のレビュー情報を `200` レスポンスで返信する。
 
 ```json
+// 200レスポンス
 {
   "ok": true,
   "review": {
