@@ -830,7 +830,7 @@ spec:
 
 > - https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/
 
-#### ▼ ブルーグリーン方式 (パーセントの場合)
+#### ▼ ブルー/グリーン方式 (パーセントの場合)
 
 もし `.spec.strategy.rollingUpdate.maxSurge` キーを `100`%、また `.spec.strategy.rollingUpdate.maxUnavailable` キーを `0`%とすると仮定する。
 
@@ -873,7 +873,7 @@ spec:
 > - https://kakakakakku.hatenablog.com/entry/2021/09/06/173014
 > - https://qiita.com/mochizuki875/items/239c0e93c30f720e687e#rollingupdate
 
-#### ▼ ブルーグリーン方式 (絶対値の場合)
+#### ▼ ブルー/グリーン方式 (絶対値の場合)
 
 もし `.spec.strategy.rollingUpdate.maxSurge` キーを `10`、また `.spec.strategy.rollingUpdate.maxUnavailable` キーを `0` と仮定する。
 
