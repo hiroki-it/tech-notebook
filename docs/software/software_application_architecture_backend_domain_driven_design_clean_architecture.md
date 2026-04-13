@@ -211,3 +211,96 @@ final class インフラストラクチャ層Exception extends Exception
 トランザクションの処理を `try-catch` で囲い、スローされたインフラストラクチャ例外をドメイン例外にして返却する。
 
 <br>
+
+## 03. 仕組みにする
+
+### 静的解析
+
+レイヤー間の依存関係の方向を静的解析で制御する。
+
+例えば、`eslint-plugin-import`プラグインの`import/norestricted-paths`というルールが役立つ。
+
+```typescript
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
+import * as importPlugin from "eslint-plugin-import";
+
+export default tseslint.config(
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+
+  {
+    files: ["**/*.ts"],
+    plugins: {
+      import: importPlugin,
+    },
+    settings: {
+      "import/resolver": {
+        typescript: {},
+      },
+    },
+    rules: {
+
+(略)
+
+      "import/no-restricted-paths": [
+        "error",
+        {
+          zones: [
+            {
+              // 依存禁止のパス
+              // アプリケーション層に依存してはいけない
+              from: "./src/Application/**/*",
+              // 対象のファイル
+              target: "./src/Domain/**/!(*.spec.ts|*.test.ts)",
+              message:
+                "Domain層でApplication層をimportしてはいけません。",
+            },
+            {
+              // 依存禁止のパス
+              // プレゼンテーション層に依存してはいけない
+              from: "./src/Presentation/**/*",
+              // 対象のファイル
+              target: "./src/Domain/**/!(*.spec.ts|*.test.ts)",
+              message:
+                "Domain層でPresentation層をimportしてはいけません。",
+            },
+            {
+              // 依存禁止のパス
+              // インフラストラクチャ層に依存してはいけない
+              from: "./src/Infrastructure/**/*!(test).ts",
+              // 対象のファイル
+              target: "./src/Domain/**/!(*.spec.ts|*.test.ts)",
+              message:
+                "Domain層でInfrastructure層をimportしてはいけません。",
+            },
+
+            {
+              // 依存禁止のパス
+              // プレゼンテーション層に依存してはいけない
+              from: "./src/Presentation/**/*",
+              // 対象のファイル
+              target: "./src/Application/**/!(*.spec.ts|*.test.ts)",
+              message:
+                "Application層でPresentation層をimportしてはいけません。",
+            },
+            {
+              // 依存禁止のパス
+              // インフラストラクチャ層に依存してはいけない
+              from: "./src/Infrastructure/**/*",
+              // 対象のファイル
+              target: "./src/Application/**/!(*.spec.ts|*.test.ts)",
+              message:
+                "Application層でInfrastructure層をimportしてはいけません。",
+            },
+          ],
+        },
+      ],
+    },
+  }
+);
+```
+
+> - https://zenn.dev/sqer/articles/35d56d9850efb2
+
+<br>
