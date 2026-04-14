@@ -504,9 +504,12 @@ class FooError extends Error {
   constructor(message: string, code: number) {
     // message変数はErrorオブジェクトに渡す
     super(message);
+
     // 親のErrorオブジェクトのプロパティに設定
     this.name = "FooError";
     this._code = code;
+
+    Object.setPrototypeOf(this, new.target.prototype);
   }
 
   get name() {

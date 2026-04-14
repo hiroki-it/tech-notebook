@@ -594,8 +594,11 @@ class FooError extends Error {
   constructor(message: string, code: number) {
     // message変数はErrorオブジェクトに渡す
     super(message);
+
     this._name = "FooError";
     this._code = code;
+
+    Object.setPrototypeOf(this, new.target.prototype);
   }
 }
 ```
@@ -630,7 +633,7 @@ describe("fetchUser", () => {
       // Errorを投げない場合、想定外なのでテストを失敗させる
       expect.fail("should thrown an error");
     } catch (error) {
-      if (!(error instanceof FooError)) {
+      if (!(error instanceof Error && error.name === "FooError")) {
         // FooErrorではない場合、想定外なのでテストを失敗させる
         expect.fail("should throw FooError");
       }
