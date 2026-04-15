@@ -633,7 +633,7 @@ describe("fetchUser", () => {
       // Errorを投げない場合、想定外なのでテストを失敗させる
       expect.fail("should thrown an error");
     } catch (error) {
-      if (!(error instanceof Error && error.name === "FooError")) {
+      if (!(error instanceof FooError)) {
         // FooErrorではない場合、想定外なのでテストを失敗させる
         expect.fail("should throw FooError");
       }

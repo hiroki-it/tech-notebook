@@ -96,7 +96,7 @@ export class UserApplicationService implements IUserApplicationService {
 
 <br>
 
-### DIの方法
+### 依存性逆転の実装方法
 
 #### ▼ IoCコンテナパターン
 

@@ -684,13 +684,12 @@ async function getUserNames(
       // 可観測性: メトリクス
       di.metrics.increment("user_fetch_error", {
         status:
-          error instanceof Response ||
-          (error instanceof Error && error.name === "RetryFailedError")
+          error instanceof Response || error instanceof RetryFailedError
             ? error.status
             : undefined,
       });
 
-      if (error instanceof Error && error.name === "RetryFailedError") {
+      if (error instanceof RetryFailedError) {
         return {ok: false, error: error.errorType};
       }
 
