@@ -83,7 +83,59 @@ repository/
 
 <br>
 
-## 02. ディレクトリ構成規約
+## 02. チャートの種類
+
+### マイクロサービス用
+
+記入中...
+
+<br>
+
+### インフラ用
+
+記入中...
+
+<br>
+
+### 共有
+
+#### ▼ Namespaceチャート
+
+NamespaceをデプロイするためのHelmチャートを作成する。
+
+```yaml
+{{- range $namespace := .Values.namespaces }}
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ $namespace.name }}
+  {{- if $namespace.labels }}
+  labels:
+    {{- range $key, $value := $namespace.labels }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+```
+
+```yaml
+# valuesファイル
+namespaces:
+  - name: fluentbit
+  - name: grafana
+  - name: ingress-nginx
+  - name: istio-ingress
+    labels:
+      istio.io/rev: stable
+  - name: istio-system
+  - name: prometheus
+  - name: applications
+    labels:
+      istio.io/rev: stable
+```
+
+## 03. ディレクトリ構成規約
 
 ### 通常
 
@@ -193,7 +245,7 @@ service: ...
 
 <br>
 
-## 03. コード規約
+## 04. コード規約
 
 ### Helmチャートの粒度
 
@@ -252,7 +304,7 @@ data:
 
 <br>
 
-## 04. 開発環境
+## 05. 開発環境
 
 ### helmコマンドのセットアップ
 
@@ -286,7 +338,7 @@ $ asdf install
 
 <br>
 
-## 05. チャートのアップグレード
+## 06. チャートのアップグレード
 
 ### チャートのアップグレードとは
 
@@ -394,7 +446,7 @@ Helmは、デプロイ済みのリリースをCluster内でSecretのデータと
 
 <br>
 
-## 06. CIパイプライン
+## 07. CIパイプライン
 
 ### 仕様書自動作成
 
@@ -581,7 +633,7 @@ GitHub Actionsであれば、CI上にCluster構築するActionが提供されて
 
 > - https://camunda.com/blog/2022/03/test/
 
-## 06-02. CDパイプライン
+## 08. CDパイプライン
 
 ### デプロイ
 
@@ -609,7 +661,7 @@ Kubernetesのプラクティスになるため、ここでは省略する。
 
 <br>
 
-## 06-03. 事後処理
+## 09. 事後処理
 
 ### デプロイの通知
 
