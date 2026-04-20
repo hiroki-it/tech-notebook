@@ -68,7 +68,10 @@ gatling {
 : gatlingのバイナリを実行する。
 
 ```bash
-$ bin/gatling.sh
+# Dusers (Simulation に渡す仮想ユーザー数) ：5人
+# DrampUpDuration (Simulation に渡すスロースタート期間) ：20秒かけてユーザー数を増やす
+# DconstantDuration (Simulation に渡す維持期間) ：120秒間、仮想ユーザー5人を維持する
+$ gatling -Dusers=5 -DrampUpDuration=20 -DconstantDuration=120
 
 GATLING_HOME is set to /Users/hoguchi/gatling-charts-highcharts-bundle-3.3.1
 
@@ -81,7 +84,11 @@ Choose a simulation number:
      [5] computerdatabase.advanced.AdvancedSimulationStep05
 ```
 
+`-Dusers`、`-DrampUpDuration`、`-DconstantDuration` は Gatling 固有の標準オプションではない。Simulation 側でこれらの Java system properties を参照する実装がある場合に有効である。
+
 > - https://qiita.com/hogucc/items/e213a93f5b3a3cd3c96f
+> - https://docs.gatling.io/guides/optimize-scripts/passing-parameters/
+> - https://docs.gatling.io/concepts/configuration/
 
 <br>
 
