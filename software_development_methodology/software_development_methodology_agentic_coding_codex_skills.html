@@ -32256,12 +32256,23 @@
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. アプリケーションアーキテクチャ設計
+        01. 要件定義
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. アプリケーションアーキテクチャ設計">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02. アプリケーションアーキテクチャ設計
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. アプリケーションアーキテクチャ設計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -32277,17 +32288,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        02. UI設計
-      
-    </span>
-  </a>
   
 </li>
       
@@ -33253,12 +33253,23 @@
   <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. アプリケーションアーキテクチャ設計
+        01. 要件定義
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. アプリケーションアーキテクチャ設計">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02. アプリケーションアーキテクチャ設計
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. アプリケーションアーキテクチャ設計">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33274,17 +33285,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        02. UI設計
-      
-    </span>
-  </a>
   
 </li>
       
@@ -33420,7 +33420,65 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01">01. アプリケーションアーキテクチャ設計<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. 要件定義<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>---
+name: define-requirements-with-working-mock
+<span class="gu">description: 動くモックを使って要件定義を進め、機能要件を固める</span>
+<span class="gu">---</span>
+
+<span class="gh"># 要件定義</span>
+
+<span class="gu">## このスキルの使い方</span>
+
+要件定義を、文章だけでなく動くモックを使って進めるためのスキルである。
+
+<span class="gu">## 手順</span>
+
+<span class="gu">### 1. 対象範囲の確認</span>
+
+<span class="k">-</span><span class="w"> </span>ユーザーに、対象業務、利用者、対象画面、未確定事項を確認する。
+<span class="k">-</span><span class="w"> </span>画面要件が曖昧でも、最初の数画面を作る前提で進める。
+<span class="k">-</span><span class="w"> </span>このスキルでは機能要件を対象とし、非機能要件の深掘りは扱わない。
+
+<span class="gu">### 2. 動くモックの作成</span>
+
+<span class="k">-</span><span class="w"> </span>主要な利用シナリオを表せる画面からモック化する。
+<span class="k">-</span><span class="w"> </span>モックは画像ではなく、クリック、入力、画面遷移を確認できる形で作る。
+<span class="k">-</span><span class="w"> </span>見た目の作り込みより、要件の抜け漏れを見つけやすいことを優先する。
+
+<span class="gu">### 3. 単一ファイルでの共有</span>
+
+<span class="k">-</span><span class="w"> </span>可能な限り、一つの HTML に複数画面をまとめる。例えば、一覧、詳細、登録を同一ファイルに置き、表示切り替えで疑似遷移を表現する。
+
+<span class="gu">### 4. レビューと要件整理</span>
+
+<span class="k">-</span><span class="w"> </span>打ち合わせではモックを操作しながらコメントを受ける。
+<span class="k">-</span><span class="w"> </span>直せる内容はその場で直し、指摘は画面単位ではなく業務シナリオ単位でも整理する。
+
+<span class="gu">### 5. 機能要件の抽出</span>
+
+<span class="k">-</span><span class="w"> </span>モックから、利用者が実現したい操作を機能要件として抽出する。
+<span class="k">-</span><span class="w"> </span>機能要件は、表示項目、入力項目、操作、画面遷移、入力チェック、エラー表示の観点で整理する。
+<span class="k">-</span><span class="w"> </span>実装方式には広げず、利用者が期待する振る舞いとして記述する。
+
+<span class="gu">### 6. 出力</span>
+
+<span class="k">-</span><span class="w"> </span>成果物として、モックと対応づいた機能要件一覧を出力する。
+<span class="k">-</span><span class="w"> </span>未確定事項は機能要件に含めず、確認事項として分離する。
+
+<span class="gu">### 7. 完了条件</span>
+
+<span class="k">-</span><span class="w"> </span>利用者が主要シナリオをモック上で確認できる。
+<span class="k">-</span><span class="w"> </span>主要な機能要件が抽出され、対応する画面やシナリオを追跡できる。
+<span class="k">-</span><span class="w"> </span>未確定事項が機能要件と分離されている。
+
+<span class="gu">### 8. スキルの後に</span>
+
+<span class="k">-</span><span class="w"> </span>機能要件に基づいて、ユースケース図やドメインオブジェクト図を作成する。
+</code></pre></div>
+<p>参考：<a href="https://zenn.dev/nttdata_tech/articles/8a010aff542625#4.1-%E8%A6%81%E4%BB%B6%E5%AE%9A%E7%BE%A9">https://zenn.dev/nttdata_tech/articles/8a010aff542625#4.1-%E8%A6%81%E4%BB%B6%E5%AE%9A%E7%BE%A9</a></p>
+<p><br></p>
+<h2 id="02">02. アプリケーションアーキテクチャ設計<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="remix">Remixの場合<a class="headerlink" href="#remix" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>---
 name: design-application-architecture-for-new-feature
@@ -33547,71 +33605,72 @@ name: design-application-architecture-for-new-feature
 <span class="s">   ApiRegister -. &lt;&lt; include &gt;&gt; .-&gt; BarValidator</span>
 <span class="s">   ApiChange -. &lt;&lt; include &gt;&gt; .-&gt; BarValidator</span>
 <span class="sb">```</span>
-
-<span class="k">3.</span> <span class="sb">`./docs/&lt;機能名&gt;/`</span>のディレクトリに新機能全体のコンポーネント図を`component-diagram.mmd`の名前で作成する。次はその例である。
-
-<span class="sb">```mermaid</span>
-<span class="s">flowchart LR</span>
-
-<span class="s">   UiClient[UIクライアント]</span>
-<span class="s">   ApiClient[APIクライアント]</span>
-
-<span class="s">  subgraph presentation[プレゼンテーション層]</span>
-<span class="s">    UiFooRoute[foos.$foo.new.tsx]</span>
-<span class="s">    ApiFooRoute[api.v1.foos.$foo.ts]</span>
-<span class="s">  end</span>
-
-<span class="s">  subgraph Usecase[ユースケース層]</span>
-<span class="s">    subgraph UiFooUsecase[UiFooUsecase]</span>
-<span class="s">      UiRegisterFoo[&quot;registerFoo()&quot;]</span>
-<span class="s">    end</span>
-<span class="s">    subgraph ApiFooUsecase[ApiFooUsecase]</span>
-<span class="s">      ApiRegisterFoo[&quot;registerFoo()&quot;]</span>
-<span class="s">    end</span>
-<span class="s">  end</span>
-
-<span class="s">  subgraph Domain[ドメイン層]</span>
-<span class="s">    Entity[&quot;Entity&quot;]</span>
-<span class="s">  end</span>
-
-<span class="s">  subgraph Infrastructure[インフラストラクチャ層]</span>
-<span class="s">    subgraph Model[Models]</span>
-<span class="s">      CreateFoo[&quot;createFoo()&quot;]</span>
-<span class="s">    end</span>
-<span class="s">  end</span>
-
-<span class="s">  Database[(データベース)]</span>
-
-<span class="s">  UiClient --&gt; UiFooRoute</span>
-<span class="s">  UiFooRoute --&gt; UiRegisterFoo</span>
-<span class="s">  UiRegisterFoo --&gt; Entity</span>
-<span class="s">  Entity ---&gt; CreateFoo</span>
-<span class="s">  CreateFoo --&gt; Database</span>
-
-<span class="s">  ApiClient --&gt; ApiFooRoute</span>
-<span class="s">  ApiFooRoute --&gt; ApiRegisterFoo</span>
-<span class="s">  ApiRegisterFoo --&gt; Entity</span>
-<span class="s">  Entity ---&gt; CreateFoo</span>
-<span class="s">  CreateFoo --&gt; Database</span>
-<span class="sb">```</span>
 </code></pre></div>
-<p><br></p>
-<h2 id="02-ui">02. UI設計<a class="headerlink" href="#02-ui" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>---
+<ol>
+<li><code>./docs/&lt;機能名&gt;/</code>のディレクトリに新機能全体のコンポーネント図を<code>component-diagram.mmd</code>の名前で作成する。次はその例である。</li>
+</ol>
+<pre class="mermaid"><code>flowchart LR
+
+   UiClient[UIクライアント]
+   ApiClient[APIクライアント]
+
+  subgraph presentation[プレゼンテーション層]
+    UiFooRoute[foos.$foo.new.tsx]
+    ApiFooRoute[api.v1.foos.$foo.ts]
+  end
+
+  subgraph Usecase[ユースケース層]
+    subgraph UiFooUsecase[UiFooUsecase]
+      UiRegisterFoo["registerFoo()"]
+    end
+    subgraph ApiFooUsecase[ApiFooUsecase]
+      ApiRegisterFoo["registerFoo()"]
+    end
+  end
+
+  subgraph Domain[ドメイン層]
+    Entity["Entity"]
+  end
+
+  subgraph Infrastructure[インフラストラクチャ層]
+    subgraph Model[Models]
+      CreateFoo["createFoo()"]
+    end
+  end
+
+  Database[(データベース)]
+
+  UiClient --&gt; UiFooRoute
+  UiFooRoute --&gt; UiRegisterFoo
+  UiRegisterFoo --&gt; Entity
+  Entity ---&gt; CreateFoo
+  CreateFoo --&gt; Database
+
+  ApiClient --&gt; ApiFooRoute
+  ApiFooRoute --&gt; ApiRegisterFoo
+  ApiRegisterFoo --&gt; Entity
+  Entity ---&gt; CreateFoo
+  CreateFoo --&gt; Database</code></pre>
+<div class="highlight"><pre><span></span><code>&lt;br&gt;
+
+## 02. UI設計
+
+```markdown
+---
 name: design-ui
-<span class="gu">description: 機能要件に応じたUI設計する</span>
-<span class="gu">---</span>
+description: 機能要件に応じたUI設計する
+---
 
-<span class="gh"># UI設計スキル</span>
+# UI設計スキル
 
-<span class="gu">## このスキルの使い方</span>
+## このスキルの使い方
 
 これはUI設計の手順を明文化したスキルである。
 
-<span class="gu">## 手順</span>
+## 手順
 
-<span class="k">1.</span> UI定義書を読み込む
-<span class="k">2.</span> 一枚のHTMLでUIのモックを実装する
+1. UI定義書を読み込む
+2. 一枚のHTMLでUIのモックを実装する
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="gh"># UI定義書</span>
 
@@ -33702,7 +33761,7 @@ textlintで error が <span class="gs">**0件**</span> になるまで、手順 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月30日 21:04:19 JST">2026-03-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月20日 14:25:16 JST">2026-04-20</span>
   </span>
 
     
