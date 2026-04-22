@@ -33493,10 +33493,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-recommendedbook" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ アプローチ2: 事前集計された推薦書籍モデル
+        ▼ アプローチ2: 事前集計されたRecommendedBookモデル
       
     </span>
   </a>
@@ -33659,7 +33659,7 @@
 <th>投稿者名</th>
 <th>評価</th>
 <th>コメント</th>
-<th>抽出された推薦書籍</th>
+<th>抽出されたRecommendedBook</th>
 </tr>
 </thead>
 <tbody>
@@ -33717,10 +33717,10 @@
 </table>
 <p>イベント履歴があると、各時点の状態を再構築できる。</p>
 <ul>
-<li>2023-01-01 時点: 評価 4、推薦書籍なし</li>
-<li>2023-01-03 時点: 評価 4、推薦書籍なし</li>
-<li>2023-01-05 時点: 評価 4、推薦書籍 <code>["HTML/CSS 入門", "JavaScript 基礎"]</code></li>
-<li>2023-01-07 時点: 評価 5、推薦書籍 <code>["HTML/CSS 入門", "JavaScript 基礎"]</code></li>
+<li>2023-01-01 時点: 評価 4、RecommendedBookなし</li>
+<li>2023-01-03 時点: 評価 4、RecommendedBookなし</li>
+<li>2023-01-05 時点: 評価 4、RecommendedBook <code>["HTML/CSS 入門", "JavaScript 基礎"]</code></li>
+<li>2023-01-07 時点: 評価 5、RecommendedBook <code>["HTML/CSS 入門", "JavaScript 基礎"]</code></li>
 </ul>
 <p>現在状態だけでなく、変化の過程にも価値がある。</p>
 <h3 id="21-2-3-git">21-2-3 Git のコミット履歴の例<a class="headerlink" href="#21-2-3-git" title="Permanent link">&para;</a></h3>
@@ -33751,6 +33751,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>イベントソーシングでは、状態を直接保存せず、イベントを順次適用して状態を再構築する必要がある。</p>
 <p>各イベント種別ごとに状態変更ロジックが必要になり、スキーマ変更時には過去イベントとの互換性維持も課題になる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
+
 <span class="kd">function</span><span class="w"> </span><span class="nx">replay</span><span class="p">(</span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="kt">DomainEvent</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nx">ReviewState</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ReviewState</span><span class="p">.</span><span class="nx">initial</span><span class="p">();</span>
 
@@ -33775,15 +33776,14 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 </code></pre></div>
 <h3 id="21-4-2">21-4-2 クエリの複雑性とパフォーマンスの問題<a class="headerlink" href="#21-4-2" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングでは現在状態を得るために、関連イベントを順次適用する必要がある。</p>
-<p>複数集約を横断する検索や集計では負荷が大きくなる。</p>
-<p>書籍では、人気書籍に1万件のレビューがあり、各レビューに平均3〜4件のイベントがある例を挙げている。</p>
-<p>この問題は、後述するCQRSによって緩和できる。</p>
+<p>複数集約を横断する処理では負荷が大きくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
+
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">findTop3RecommendedBooks</span><span class="p">(</span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reviewIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">reviewLocator</span><span class="p">.</span><span class="nx">findByBookId</span><span class="p">(</span><span class="nx">bookId</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// 対象書籍に紐づく全Reviewをたどり、それぞれのイベントを読み出して再構築している。</span>
-<span class="w">  </span><span class="c1">// 横断検索や集計では、この処理コストが大きくなりやすい。</span>
+<span class="w">  </span><span class="c1">// 対象Bookに紐づく全Reviewをたどり、それぞれのイベントを読み出して再構築している。</span>
+<span class="w">  </span><span class="c1">// 複数集約を横断する処理では、この処理コストが大きくなりやすい。</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reviews</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">reviewIds</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">reviewId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
@@ -33805,8 +33805,8 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>レビューは、編集や評価変更を含む履歴そのものに意味があり、イベントソーシングが価値を発揮しやすい。</p>
 <h3 id="21-5-1">21-5-1 多様な状態導出による価値創出<a class="headerlink" href="#21-5-1" title="Permanent link">&para;</a></h3>
 <p>蓄積されたイベント履歴から、後から定義した新しい観点や指標で状態を再構築し分析できる。</p>
-<p>書籍では「レビューの信頼性スコア」を例に、設計時に存在しなかった分析軸でも過去に遡って検証できる点を説明している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
+
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">calculateTrustScoreAt</span><span class="p">(</span>
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewId</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">at</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">,</span>
@@ -33829,38 +33829,8 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <li>レビュー品質管理や不正検出</li>
 </ul>
 <p>この監査性は、レビューの信頼性が重要なプラットフォームで価値を持つ。</p>
-<table>
-<thead>
-<tr>
-<th>順番</th>
-<th>イベント</th>
-<th>わかること</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td><code>ReviewCreated</code></td>
-<td>誰がレビューを作成したか</td>
-</tr>
-<tr>
-<td>2</td>
-<td><code>ReviewCommentEdited</code></td>
-<td>いつコメントを変更したか</td>
-</tr>
-<tr>
-<td>3</td>
-<td><code>ReviewRatingChanged</code></td>
-<td>いつ評価を変更したか</td>
-</tr>
-<tr>
-<td>4</td>
-<td><code>ReviewDeleted</code></td>
-<td>いつ削除したか</td>
-</tr>
-</tbody>
-</table>
 <div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
+
 <span class="kr">type</span><span class="w"> </span><span class="nx">AuditLog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">eventType</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
@@ -33869,8 +33839,11 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="p">};</span>
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getAuditTrail</span><span class="p">(</span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">AuditLog</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 作成・編集・削除の履歴をイベントとして保持しているため、</span>
-<span class="w">  </span><span class="c1">// 誰がいつ何を変更したかを追跡できる。</span>
+<span class="w">  </span><span class="c1">// 作成・編集・削除の履歴をイベントとして保持しているため、誰がいつ何を変更したかを追跡できる。</span>
+<span class="w">  </span><span class="c1">// ReviewCreated：誰がレビューを作成したか</span>
+<span class="w">  </span><span class="c1">// ReviewCommentEdited：いつコメントを変更したか</span>
+<span class="w">  </span><span class="c1">// ReviewRatingChanged：いつ評価を変更したか</span>
+<span class="w">  </span><span class="c1">// ReviewDeleted：いつ削除したか</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -33895,7 +33868,6 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>たとえば1000件のイベントがある集約で、800件目時点のスナップショットがあれば、残り200件だけを適用すればよい。</p>
 <p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1.png" /></p>
 <h3 id="21-7-2">21-7-2 スナップショットの作成タイミング<a class="headerlink" href="#21-7-2" title="Permanent link">&para;</a></h3>
-<p>書籍では、スナップショット作成タイミングとして次の戦略を挙げている。</p>
 <table>
 <thead>
 <tr>
@@ -33932,7 +33904,6 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <h2 id="21-8">21-8 多様な状態導出とビジネス価値の創出<a class="headerlink" href="#21-8" title="Permanent link">&para;</a></h2>
 <h3 id="21-8-1">21-8-1 イベントソーシングの実装課題<a class="headerlink" href="#21-8-1" title="Permanent link">&para;</a></h3>
 <p>イベント履歴だけでは、横断的な読み取り要求をうまく扱えない。</p>
-<p>書籍では、<code>BookRecommendationDomainService</code> を例に課題を説明している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 現在の実装（ステートソーシング）</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">BookRecommendationDomainService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">reviewRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IReviewRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
@@ -33949,7 +33920,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="w">    </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">maxCount</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span>
 <span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 信頼できるレビューを取得して推薦書籍を集計</span>
+<span class="w">    </span><span class="c1">// 信頼できるレビューを取得してRecommendedBookを集計</span>
 <span class="w">    </span><span class="c1">// ...</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -33977,13 +33948,13 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="p">}</span>
 </code></pre></div>
 <p>BookID ごとにレビュー情報を保持するモデルである。</p>
-<h4 id="2">▼ アプローチ2: 事前集計された推薦書籍モデル<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<h4 id="2-recommendedbook">▼ アプローチ2: 事前集計されたRecommendedBookモデル<a class="headerlink" href="#2-recommendedbook" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">BookRecommendationQueryModel</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">recommendedBooks</span><span class="o">:</span><span class="w"> </span><span class="kt">readonly</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>推薦書籍の集計結果を事前に保持するモデルである。</p>
+<p>RecommendedBookの集計結果を事前に保持するモデルである。</p>
 <h3 id="21-8-5">21-8-5 イベントからクエリモデルを構築する仕組み<a class="headerlink" href="#21-8-5" title="Permanent link">&para;</a></h3>
 <p>イベントストアへの追加を契機にクエリモデルを更新する。</p>
 <ol>
@@ -34020,7 +33991,6 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <li>同一テーブルで管理すれば実装はシンプルになるが、責務が混在する</li>
 <li>分離すれば責務は明確になるが、実装と運用の複雑性が増す</li>
 </ul>
-<p>書籍では、まず同一テーブルで実装し、パフォーマンスや運用上の課題が明確になった時点で分離を検討する段階的なアプローチが現実的だと説明している。</p>
 
 
 
@@ -34041,7 +34011,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 19:24:45 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 19:31:52 JST">2026-04-22</span>
   </span>
 
     
