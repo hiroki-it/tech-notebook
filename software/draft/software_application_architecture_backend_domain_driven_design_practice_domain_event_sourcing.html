@@ -33605,6 +33605,14 @@
 </ul>
 </blockquote>
 <p><br></p>
+<div class="highlight"><pre><span></span><code>1. イベントソーシングの定義
+2. ステートソーシングとイベントソーシングの違い
+3. ステートソーシングの課題
+4. イベントソーシングの課題と使用場面
+5. レビュー機能をイベントソーシングで設計してみる
+6. イベントソーシングの課題をスナップショット処理で解決
+7. イベントソーシングの課題をCQRSパターンで解決
+</code></pre></div>
 <h2 id="21-1">21-1 イベントソーシングとは<a class="headerlink" href="#21-1" title="Permanent link">&para;</a></h2>
 <p>イベントソーシングとは、現在の状態ではなく、状態変化を引き起こしたイベントの連続を保存する手法である。</p>
 <ul>
@@ -33617,12 +33625,12 @@
 <p>ステートベース（≒ ステートソーシング）とイベントベース（≒ イベントソーシング）の違いは、以下のとおりである。</p>
 <ol>
 <li>ステートソーシング<ul>
-<li>現在の状態のみを保存する</li>
+<li>現在の状態のみを保存する設計パターン</li>
 <li>状態を更新すると、前の状態が最新の状態で上書きされ、前の状態は失われる</li>
 </ul>
 </li>
 <li>イベントソーシング<ul>
-<li>状態の変更を表すイベントを保存する</li>
+<li>状態の変更を表すイベントを保存する設計パターン</li>
 <li>初期状態にイベントを順番に適用することで現在の状態を導出する</li>
 </ul>
 </li>
@@ -33643,11 +33651,11 @@
 </thead>
 <tbody>
 <tr>
-<td>REV001</td>
-<td>B001</td>
-<td>山田太郎</td>
-<td>5</td>
-<td>実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします</td>
+<td><code>REV001</code></td>
+<td><code>B001</code></td>
+<td><code>山田太郎</code></td>
+<td><code>5</code></td>
+<td><code>実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします</code></td>
 <td><code>["HTML/CSS 入門", "JavaScript 基礎"]</code></td>
 </tr>
 </tbody>
@@ -33665,32 +33673,32 @@
 </thead>
 <tbody>
 <tr>
-<td>E001</td>
-<td>REV001</td>
-<td>ReviewCreated</td>
-<td>評価:4, コメント: 実践的な内容で良かったです</td>
-<td>2023-01-01</td>
+<td><code>E001</code></td>
+<td><code>REV001</code></td>
+<td><code>ReviewCreated</code></td>
+<td><code>評価:4, コメント: 実践的な内容で良かったです</code></td>
+<td><code>2023-01-01</code></td>
 </tr>
 <tr>
-<td>E002</td>
-<td>REV001</td>
-<td>ReviewCommentEdited</td>
-<td>コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも</td>
-<td>2023-01-03</td>
+<td><code>E002</code></td>
+<td><code>REV001</code></td>
+<td><code>ReviewCommentEdited</code></td>
+<td><code>コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも</code></td>
+<td><code>2023-01-03</code></td>
 </tr>
 <tr>
-<td>E003</td>
-<td>REV001</td>
-<td>ReviewCommentEdited</td>
-<td>コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします</td>
-<td>2023-01-05</td>
+<td><code>E003</code></td>
+<td><code>REV001</code></td>
+<td><code>ReviewCommentEdited</code></td>
+<td><code>コメント: 実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします</code></td>
+<td><code>2023-01-05</code></td>
 </tr>
 <tr>
-<td>E004</td>
-<td>REV001</td>
-<td>ReviewRatingChanged</td>
-<td>評価:5</td>
-<td>2023-01-07</td>
+<td><code>E004</code></td>
+<td><code>REV001</code></td>
+<td><code>ReviewRatingChanged</code></td>
+<td><code>評価:5</code></td>
+<td><code>2023-01-07</code></td>
 </tr>
 </tbody>
 </table>
@@ -33703,6 +33711,7 @@
 </ul>
 <p>現在状態だけでなく、変化の過程にも価値がある。</p>
 <h3 id="21-2-3-git">21-2-3 Git のコミット履歴の例<a class="headerlink" href="#21-2-3-git" title="Permanent link">&para;</a></h3>
+<p>イベントソーシングの例として、Gitがある。</p>
 <p>Gitでは、ファイルの最新状態だけではなく、変更履歴と変更意図をコミットとして保持する。</p>
 <div class="highlight"><pre><span></span><code>commit 87a56139b3a4f2e5d8e6d9b5b7a5a4c3
 Author: Tom Johnson &lt;tom@example.com&gt;
@@ -33716,7 +33725,6 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
     ログイン機能を追加
 </code></pre></div>
-<p>イベントソーシングも同様に、変更履歴をデータとして扱う。</p>
 <h2 id="21-3">21-3 現状の課題：データの二重管理<a class="headerlink" href="#21-3" title="Permanent link">&para;</a></h2>
 <p>前章のOutboxパターンには、次の課題がある。</p>
 <ul>
@@ -33731,18 +33739,21 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>各イベント種別ごとに状態変更ロジックが必要になり、スキーマ変更時には過去イベントとの互換性維持も課題になる。</p>
 <h3 id="21-4-2">21-4-2 クエリの複雑性とパフォーマンスの問題<a class="headerlink" href="#21-4-2" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングでは現在状態を得るために、関連イベントを順次適用する必要がある。</p>
-<p>複数集約を横断する検索や集計では負荷が大きくなる。書籍では、人気書籍に1万件のレビューがあり、各レビューに平均3〜4件のイベントがある例を挙げている。</p>
+<p>複数集約を横断する検索や集計では負荷が大きくなる。</p>
+<p>書籍では、人気書籍に1万件のレビューがあり、各レビューに平均3〜4件のイベントがある例を挙げている。</p>
 <p>この問題は、後述するCQRSによって緩和できる。</p>
 <h3 id="21-4-3">21-4-3 開発チームの学習コスト<a class="headerlink" href="#21-4-3" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングは、従来のCRUD中心の開発と発想が大きく異なる。</p>
 <p>イベント設計、状態再構築、イベントスキーマ管理など、新しい概念の理解が必要であり、学習コストが高い。</p>
 <h3 id="21-4-4">21-4-4 適用判断の重要性<a class="headerlink" href="#21-4-4" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングは、すべてのシステムに適用する前提の技術ではない。</p>
-<p>システム要件、チームスキル、運用体制を踏まえて採用判断する。まずは従来方式で構築し、必要時に移行を検討する段階的アプローチが現実的である。</p>
+<p>システム要件、チームスキル、運用体制を踏まえて採用判断する。</p>
+<p>まずは従来方式で構築し、必要時に移行を検討する段階的アプローチが現実的である。</p>
 <h2 id="21-5">21-5 レビュー集約でのイベントソーシング適用<a class="headerlink" href="#21-5" title="Permanent link">&para;</a></h2>
 <p>レビューは、編集や評価変更を含む履歴そのものに意味があり、イベントソーシングが価値を発揮しやすい。</p>
 <h3 id="21-5-1">21-5-1 多様な状態導出による価値創出<a class="headerlink" href="#21-5-1" title="Permanent link">&para;</a></h3>
-<p>蓄積されたイベント履歴から、後から定義した新しい観点や指標で状態を再構築し分析できる。書籍では「レビューの信頼性スコア」を例に、設計時に存在しなかった分析軸でも過去に遡って検証できる点を説明している。</p>
+<p>蓄積されたイベント履歴から、後から定義した新しい観点や指標で状態を再構築し分析できる。</p>
+<p>書籍では「レビューの信頼性スコア」を例に、設計時に存在しなかった分析軸でも過去に遡って検証できる点を説明している。</p>
 <h3 id="21-5-2">21-5-2 変更の透明性と監査性の確保<a class="headerlink" href="#21-5-2" title="Permanent link">&para;</a></h3>
 <p>レビュー編集や削除も含めて、起きた事実をすべて記録するため、誰がいつ何を変更したかの履歴が残る。</p>
 <p>これは次のような価値を持つ。</p>
@@ -33766,7 +33777,8 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 </ol>
 <p>全面導入ではなく、小さく試しながら判断する。</p>
 <h3 id="21-6-3">21-6-3 成功への現実的なアプローチ<a class="headerlink" href="#21-6-3" title="Permanent link">&para;</a></h3>
-<p>導入初期は、ビジネス的に重要で技術的に比較的シンプルな集約から始める。従来方式とのハイブリッドアプローチも有効である。</p>
+<p>導入初期は、ビジネス的に重要で技術的に比較的シンプルな集約から始める。</p>
+<p>従来方式とのハイブリッドアプローチも有効である。</p>
 <h2 id="21-7">21-7 パフォーマンスとスケーラビリティ<a class="headerlink" href="#21-7" title="Permanent link">&para;</a></h2>
 <h3 id="21-7-1">21-7-1 スナップショットの基本概念<a class="headerlink" href="#21-7-1" title="Permanent link">&para;</a></h3>
 <p>スナップショットとは、特定時点の集約状態を保存したものである。</p>
@@ -33802,12 +33814,15 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 </table>
 <p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2.png" /></p>
 <h3 id="21-7-3">21-7-3 イベント数ベースのスナップショット作成例<a class="headerlink" href="#21-7-3" title="Permanent link">&para;</a></h3>
-<p>イベント数が100件を超えた場合の作成フローを図で説明している。ポイントは、イベント保存とスナップショット保存をトランザクションで扱うことである。</p>
+<p>イベント数が100件を超えた場合の作成フローを図で説明している。</p>
+<p>ポイントは、イベント保存とスナップショット保存をトランザクションで扱うことである。</p>
 <h3 id="21-7-4">21-7-4 スナップショットの導入検討<a class="headerlink" href="#21-7-4" title="Permanent link">&para;</a></h3>
-<p>スナップショットは技術的最適化である。最初から導入せず、性能要件を満たせない場合に検討する。</p>
+<p>スナップショットは技術的最適化である。</p>
+<p>最初から導入せず、性能要件を満たせない場合に検討する。</p>
 <h2 id="21-8">21-8 多様な状態導出とビジネス価値の創出<a class="headerlink" href="#21-8" title="Permanent link">&para;</a></h2>
 <h3 id="21-8-1">21-8-1 イベントソーシングの実装課題<a class="headerlink" href="#21-8-1" title="Permanent link">&para;</a></h3>
-<p>イベント履歴だけでは、横断的な読み取り要求をうまく扱えない。書籍では、<code>BookRecommendationDomainService</code> を例に課題を説明している。</p>
+<p>イベント履歴だけでは、横断的な読み取り要求をうまく扱えない。</p>
+<p>書籍では、<code>BookRecommendationDomainService</code> を例に課題を説明している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 現在の実装（ステートソーシング）</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">BookRecommendationDomainService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="nx">reviewRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">IReviewRepository</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
@@ -33831,9 +33846,11 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 </code></pre></div>
 <p>イベントストアは通常、集約 ID をキーに保存するため、<code>findAllByBookId()</code> のような横断検索は苦手である。</p>
 <h3 id="21-8-2">21-8-2 書き込みと読み取りの異なる要求<a class="headerlink" href="#21-8-2" title="Permanent link">&para;</a></h3>
-<p>書き込み側は単一集約の正確な状態変更記録に、読み取り側は横断検索や集計に最適化したい。このズレを解決するのがクエリモデルである。</p>
+<p>書き込み側は単一集約の正確な状態変更記録に、読み取り側は横断検索や集計に最適化したい。</p>
+<p>このズレを解決するのがクエリモデルである。</p>
 <h3 id="21-8-3-cqrs">21-8-3 CQRS<a class="headerlink" href="#21-8-3-cqrs" title="Permanent link">&para;</a></h3>
-<p>CQRSは、書き込みと読み取りの責務を分離するパターンである。イベントソーシングと組み合わせると、整合性を維持しつつ、後から新しいクエリモデルを構築できる。</p>
+<p>CQRSは、書き込みと読み取りの責務を分離するパターンである。</p>
+<p>イベントソーシングと組み合わせると、整合性を維持しつつ、後から新しいクエリモデルを構築できる。</p>
 <h3 id="21-8-4-bookrecommendation">21-8-4 BookRecommendation のためのクエリモデル設計<a class="headerlink" href="#21-8-4-bookrecommendation" title="Permanent link">&para;</a></h3>
 <p>BookRecommendation のためのクエリモデル設計例として、2つのアプローチを示している。</p>
 <h4 id="1-bookid">▼ アプローチ1: BookIDごとのレビューリストモデル<a class="headerlink" href="#1-bookid" title="Permanent link">&para;</a></h4>
@@ -33868,7 +33885,8 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>第18章のイベント駆動アーキテクチャのサブスクライバーの仕組みを活用できる。</p>
 <p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-8-5" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-8-5.png" /></p>
 <h3 id="21-8-6">21-8-6 クエリサイドのデータストアの選択<a class="headerlink" href="#21-8-6" title="Permanent link">&para;</a></h3>
-<p>クエリサイドのデータストアは、用途に応じて選べる。代表例は次のとおりである。</p>
+<p>クエリサイドのデータストアは、用途に応じて選べる。
+代表例は次のとおりである。</p>
 <ul>
 <li>RDBMS: 関係性の強いデータ、SQL による柔軟な検索や集計に向く</li>
 <li>Elasticsearch: 全文検索や複雑検索に向く</li>
@@ -33921,7 +33939,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 16:31:51 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 18:59:32 JST">2026-04-22</span>
   </span>
 
     
