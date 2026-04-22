@@ -236,7 +236,7 @@ async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
 
 ### 21-4-4 適用判断の重要性
 
-まずはステートソーシングで設計し、必要に応じてイベントソーシングに移行する。
+まずはステートソーシングで設計し、必要に応じてイベントソーシングに導入する。
 
 ```typescript
 // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
@@ -259,7 +259,7 @@ const review: Review = {
 ```
 
 ```typescript
-// 移行したくなったら、イベントソーシングでReviewEventモデルを設計、置き換えていく
+// イベントソーシングを導入したくなったら、イベントソーシングでReviewEventモデルを設計、置き換えていく
 type ReviewEvent =
   | {
       type: "ReviewCreated";
@@ -318,15 +318,21 @@ const reviewEvents: ReviewEvent[] = [
 ```typescript
 // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
+// 新しい機能として、信頼性スコア関数を追加できる
 async function calculateTrustScoreAt(
   reviewId: ReviewId,
   at: Date,
 ): Promise<number> {
-  // 過去時点までのイベントを再生すれば、当時は存在しなかった指標でも後から計算できる
   const events = await eventStore.findUntil(reviewId, at);
   const review = replay(events);
 
-  return review.calculateTrustScore();
+  let score = 100;
+
+  if (review.commentEditCount >= 3) score -= 20;
+  if (review.ratingChangeCount >= 2) score -= 30;
+  if (review.comment.length < 20) score -= 10;
+
+  return score;
 }
 ```
 
@@ -349,14 +355,11 @@ async function calculateTrustScoreAt(
 
 ### 21-6-2 段階的な意思決定プロセス
 
-書籍では、次の段階的プロセスを推奨している。
+イベントソーシングを段階的に導入する。
 
 1. イベントストーミングでドメインイベントを洗い出す
 2. 価値が高いと判断した集約で小規模に試す
-3. 技術的実現可能性とビジネス価値を検証する
-4. 投資対効果を評価する
-
-全面導入ではなく、小さく試しながら判断する。
+3. 投資対効果を評価する
 
 ### 21-6-3 成功への現実的なアプローチ
 
