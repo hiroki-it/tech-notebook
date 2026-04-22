@@ -2847,56 +2847,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#outbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Outboxパターン
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Outboxパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#outbox_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Outboxパターンとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#polling-publisher" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Polling publisherパターンとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#transaction-log-tailing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Transaction log tailingパターンとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -3103,6 +3053,56 @@
     <span class="md-ellipsis">
       
         API Composition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-outbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08. Outboxパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. Outboxパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#outbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outboxパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polling-publisher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polling publisherパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-log-tailing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transaction log tailingパターンとは
       
     </span>
   </a>
@@ -34580,56 +34580,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#outbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Outboxパターン
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Outboxパターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#outbox_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Outboxパターンとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#polling-publisher" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Polling publisherパターンとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#transaction-log-tailing" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Transaction log tailingパターンとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -34836,6 +34786,56 @@
     <span class="md-ellipsis">
       
         API Composition
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08-outbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08. Outboxパターン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. Outboxパターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#outbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outboxパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polling-publisher" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polling publisherパターンとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transaction-log-tailing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transaction log tailingパターンとは
       
     </span>
   </a>
@@ -35717,73 +35717,6 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="outbox">Outboxパターン<a class="headerlink" href="#outbox" title="Permanent link">&para;</a></h3>
-<h4 id="outbox_1">▼ Outboxパターンとは<a class="headerlink" href="#outbox_1" title="Permanent link">&para;</a></h4>
-<p>Outboxパターンでは、Sagaログテーブルに加えて、Outboxテーブルを作成する。</p>
-<p>メッセージリレイを使用して、OutboxテーブルのイベントをSagaオーケストレーターのクライアントやマイクロサービスに通知する。</p>
-<table>
-<thead>
-<tr>
-<th>Id</th>
-<th>AggregateType</th>
-<th>AggregateId</th>
-<th>Type</th>
-<th>Payload</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ec6e</td>
-<td>Order</td>
-<td>123</td>
-<td>OrderCreated</td>
-<td><code>{"id": 123, ...}</code></td>
-</tr>
-<tr>
-<td>8af8</td>
-<td>Order</td>
-<td>456</td>
-<td>OrderDetailCanceled</td>
-<td><code>{"id": 456, ...}</code></td>
-</tr>
-<tr>
-<td>890b</td>
-<td>Customer</td>
-<td>789</td>
-<td>InvoiceCreated</td>
-<td><code>{"id": 789, ...}</code></td>
-</tr>
-</tbody>
-</table>
-<p><img alt="saga-pattern_orchestrator_outbox-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://microservices.io/patterns/data/transactional-outbox.html">https://microservices.io/patterns/data/transactional-outbox.html</a></li>
-<li><a href="https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B">https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B</a></li>
-<li><a href="https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/</a></li>
-</ul>
-</blockquote>
-<h4 id="polling-publisher">▼ Polling publisherパターンとは<a class="headerlink" href="#polling-publisher" title="Permanent link">&para;</a></h4>
-<p>DBのイベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントを検知する。</p>
-<p>また、検知したイベントをメッセージブローカー (例：Apache Kafka、RabbitMQなど) にパブリッシュする。</p>
-<p>Sagaオーケストレーターのクライアントやマイクロサービス側では、これをポーリングする。</p>
-<p><img alt="saga-pattern_orchestrator_outbox-pattern_polling-publisher" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/</a></li>
-<li><a href="https://microservices.io/patterns/data/polling-publisher.html">https://microservices.io/patterns/data/polling-publisher.html</a></li>
-<li><a href="https://github.com/debezium/debezium-examples/tree/main/saga">https://github.com/debezium/debezium-examples/tree/main/saga</a></li>
-<li><a href="https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10">https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10</a></li>
-</ul>
-</blockquote>
-<h4 id="transaction-log-tailing">▼ Transaction log tailingパターンとは<a class="headerlink" href="#transaction-log-tailing" title="Permanent link">&para;</a></h4>
-<p>トランザクションログ (例：MySQLバイナリログ、PostgreSQL WALなど) を追跡する。</p>
-<blockquote>
-<ul>
-<li><a href="https://microservices.io/patterns/data/transaction-log-tailing.html">https://microservices.io/patterns/data/transaction-log-tailing.html</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 <h2 id="05-03-choreography-saga">05-03. Choreography (コレオグラフィ) ベースのSagaパターン<a class="headerlink" href="#05-03-choreography-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_7">コレオグラフィベースのSagaパターンとは<a class="headerlink" href="#saga_7" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスは、自身のローカルトランザクションを完了させた後に、次のマイクロサービスをコールする。</p>
@@ -35889,6 +35822,92 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="08-outbox">08. Outboxパターン<a class="headerlink" href="#08-outbox" title="Permanent link">&para;</a></h2>
+<h3 id="outbox">Outboxパターンとは<a class="headerlink" href="#outbox" title="Permanent link">&para;</a></h3>
+<p>マイクロサービスアーキテクチャにおいて、永続化処理とパブリッシュ処理が必要な場合に使える設計パターンである。</p>
+<p>通信元マイクロサービスが永続化処理の結果をメッセージブローカーにパブリッシュしたい場合に、パブリッシュ処理をメッセージリレージョブに切り分け、通信元には永続化処理だけをもたせる。</p>
+<p>Outboxパターンでは、Sagaログテーブルに加えて、Outboxテーブルを作成する。</p>
+<p>メッセージリレージョブはOutboxテーブルのイベントを定期的にクエリし、メッセージブローカーにパブリッシュする。</p>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>AggregateType</th>
+<th>AggregateId</th>
+<th>Type</th>
+<th>Payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ec6e</td>
+<td>Order</td>
+<td>123</td>
+<td>OrderCreated</td>
+<td><code>{"id": 123, ...}</code></td>
+</tr>
+<tr>
+<td>8af8</td>
+<td>Order</td>
+<td>456</td>
+<td>OrderDetailCanceled</td>
+<td><code>{"id": 456, ...}</code></td>
+</tr>
+<tr>
+<td>890b</td>
+<td>Customer</td>
+<td>789</td>
+<td>InvoiceCreated</td>
+<td><code>{"id": 789, ...}</code></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="saga-pattern_orchestrator_outbox-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://microservices.io/patterns/data/transactional-outbox.html">https://microservices.io/patterns/data/transactional-outbox.html</a></li>
+<li><a href="https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B">https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B</a></li>
+<li><a href="https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/</a></li>
+</ul>
+</blockquote>
+<p><strong>＊実装例＊</strong></p>
+<p>カタログコンテキストサービスが永続化処理の結果をメッセージブローカーにパブリッシュしたい場合に、次の設計パターンがある。</p>
+<ul>
+<li>Outboxパターンを使わない<ul>
+<li>カタログコンテキストは永続化処理とパブリッシュ処理の両方を持つ</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Outboxパターンを使う<ul>
+<li>パブリッシュ処理をメッセージリレージョブに切り分け、カタログコンテキストには永続化処理だけをもたせる。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="saga-pattern_orchestrator_outbox-pattern_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_example.png" /></p>
+<p><br></p>
+<h3 id="polling-publisher">Polling publisherパターンとは<a class="headerlink" href="#polling-publisher" title="Permanent link">&para;</a></h3>
+<p>DBのイベントチェッカー (例：Debezium) を使用して、Outboxテーブルのイベントを検知する。</p>
+<p>また、検知したイベントをメッセージブローカー (例：Apache Kafka、RabbitMQなど) にパブリッシュする。</p>
+<p>Sagaオーケストレーターのクライアントやマイクロサービス側では、これをポーリングする。</p>
+<p><img alt="saga-pattern_orchestrator_outbox-pattern_polling-publisher" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/">https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/</a></li>
+<li><a href="https://microservices.io/patterns/data/polling-publisher.html">https://microservices.io/patterns/data/polling-publisher.html</a></li>
+<li><a href="https://github.com/debezium/debezium-examples/tree/main/saga">https://github.com/debezium/debezium-examples/tree/main/saga</a></li>
+<li><a href="https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10">https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="transaction-log-tailing">Transaction log tailingパターンとは<a class="headerlink" href="#transaction-log-tailing" title="Permanent link">&para;</a></h3>
+<p>トランザクションログ (例：MySQLバイナリログ、PostgreSQL WALなど) を追跡する。</p>
+<blockquote>
+<ul>
+<li><a href="https://microservices.io/patterns/data/transaction-log-tailing.html">https://microservices.io/patterns/data/transaction-log-tailing.html</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -35909,7 +35928,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 14:24:40 JST">2026-04-22</span>
   </span>
 
     
