@@ -189,7 +189,7 @@ AWSリソースにはAWS Certificate Managerのサーバー証明書を紐づけ
 
 | パターン<br>(Amazon Route 53には必ず配置)                                                                                        | SSL/TLS終端<br>(HTTPSプロトコルの最終地点) |
 | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Managerのサーバー証明書) ➡️︎ Service / Pod                          | AWS ALB                                    |
+| Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Managerのサーバー証明書) ➡️︎ Service / Pod                           | AWS ALB                                    |
 | Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Managerのサーバー証明書) ➡️ Service / Pod                           | Ingress Controller                         |
 | Amazon Route 53 ➡️ Load Balancer Controller (AWS Certificate Managerのサーバー証明書) ➡️ Service / Pod (AWS以外のサーバー証明書) | Pod                                        |
 

@@ -383,11 +383,11 @@ Amazon EC2、Amazon ECS、Amazon EKS、AWS Lambda間を接続する。
 | 通信できるAmazon VPC数                               |          一対一          |               一対一<br>一対多               | 一対一<br>一対多<br>多対多 |                                       一対一<br>一対多<br>多対多                                       |
 | 通信できるIPアドレスの種類                           |        IPv4、IPv6        |                     IPv4                     |         IPv4、IPv6         |                                               IPv4、IPv6                                               |
 | 通信できるリソース                                   |         制限なし         | NLBで `L4` ルーティングできるAWSリソースのみ |          制限なし          | ALBで `L7` ルーティングできるAWSリソースのみ<br>(例：EC2、IPアドレス、AWS Lambda、KubernetesのPodなど) |
-| CIDRブロックがAmazon VPC間で被ることによる通信の可否 |            ×︎            |                      ⭕                      |             ×︎             |                                                   ⭕                                                   |
+| CIDRブロックがAmazon VPC間で被ることによる通信の可否 |            ×︎             |                      ⭕                      |             ×︎              |                                                   ⭕                                                   |
 | クロスアカウント                                     |            ⭕            |                      ⭕                      |             ⭕             |                                                   ⭕                                                   |
-| クロスリージョン                                     |            ⭕            |                      ×︎                      |             ⭕             |                                                   ⭕                                                   |
+| クロスリージョン                                     |            ⭕            |                      ×︎                       |             ⭕             |                                                   ⭕                                                   |
 | Amazon VPC間                                         |            ⭕            |                      ⭕                      |             ⭕             |                                                   ⭕                                                   |
-| Amazon VPC-オンプレミス間                            |            ×︎            |                      ×︎                      |             ⭕             |                                                   ×︎                                                   |
+| Amazon VPC-オンプレミス間                            |            ×︎             |                      ×︎                       |             ⭕             |                                                   ×︎                                                    |
 
 <br>
 
