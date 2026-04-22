@@ -33665,7 +33665,7 @@
 </table>
 <div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
 
-<span class="kr">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">ReviewAggregate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
@@ -33673,7 +33673,7 @@
 <span class="p">};</span>
 
 <span class="c1">// ステートソーシングに基づいてモデリング</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">review</span><span class="o">:</span><span class="w"> </span><span class="kt">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reviewAggregate</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewAggregate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
@@ -33794,7 +33794,7 @@
 </tr>
 </tbody>
 </table>
-<p>イベント履歴があると、各時点の状態を再構築できる。</p>
+<p>イベント履歴があると、各時点の状態を取得できる。</p>
 <ul>
 <li>2023-01-01 時点: 評価 4、RecommendedBookなし</li>
 <li>2023-01-03 時点: 評価 4、RecommendedBookなし</li>
@@ -33827,13 +33827,17 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>イベントソーシングでは、ドメインイベントを唯一の情報源にすることで、この二重管理を避ける。</p>
 <h2 id="21-4">21-4 イベントソーシングのデメリットと課題<a class="headerlink" href="#21-4" title="Permanent link">&para;</a></h2>
 <h3 id="21-4-1">21-4-1 実装の複雑性<a class="headerlink" href="#21-4-1" title="Permanent link">&para;</a></h3>
-<p>イベントソーシングでは、各イベント種別ごとに状態変更ロジックが必要になり、実装が複雑になっていく。</p>
+<p>イベントソーシングでは、各イベント種別ごとに状態変更ロジックが必要である。</p>
+<p>また、オブジェクトの最新の状態を取得するときに、保存された過去イベントをすべて取得しないといけない。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
-<span class="kd">function</span><span class="w"> </span><span class="nx">replay</span><span class="p">(</span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="kt">DomainEvent</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nx">ReviewState</span><span class="w"> </span><span class="p">{</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getReviewAggregate</span><span class="p">(</span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ReviewState</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// オブジェクトの最新の状態を得るには、そのReview集約に紐づくイベントをすべて取得する必要がある</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
+
 <span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ReviewState</span><span class="p">.</span><span class="nx">initial</span><span class="p">();</span>
 
-<span class="w">  </span><span class="c1">// すべてのイベントを順番に適用しないと現在状態を復元できず、イベント種別が増えるほどこの分岐も増えていく</span>
+<span class="w">  </span><span class="c1">// 取得したイベントを古い順に適用してオブジェクトの最新の状態を取得する必要があり、イベント種別が増えるほどこの分岐も増えていく</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">events</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="kr">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="o">:</span>
@@ -33858,7 +33862,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">findTop3RecommendedBooks</span><span class="p">(</span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reviewIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">reviewLocator</span><span class="p">.</span><span class="nx">findByBookId</span><span class="p">(</span><span class="nx">bookId</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// 対象Bookに紐づく全Reviewをたどってそれぞれのイベントを読み出して再構築しているため、異なる集約を横断する処理ではコストが大きくなりやすい</span>
+<span class="w">  </span><span class="c1">// 対象Bookに紐づく全Reviewをたどってそれぞれのイベントを読み出し、各オブジェクトの最新の状態を取得しているため、異なる集約を横断する処理ではコストが大きくなりやすい</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reviews</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">reviewIds</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">reviewId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
@@ -33886,7 +33890,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <td>イベント設計</td>
 </tr>
 <tr>
-<td><strong>状態復元方式</strong></td>
+<td><strong>状態再構築方式</strong></td>
 <td>状態読取</td>
 <td>状態再構築</td>
 </tr>
@@ -33901,15 +33905,15 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>まずはステートソーシングで設計し、必要に応じてイベントソーシングに導入する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
-<span class="kr">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">ReviewAggregate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="c1">// まずは　ステートソーシングでReviewモデルで設計する</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">review</span><span class="o">:</span><span class="w"> </span><span class="kt">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// まずはステートソーシングでReview集約を設計する</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reviewAggregate</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewAggregate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
@@ -33917,7 +33921,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="w">    </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします&quot;</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1">// イベントソーシングを導入したくなったら、イベントソーシングでReviewEventモデルを設計、置き換えていく</span>
+<div class="highlight"><pre><span></span><code><span class="c1">// イベントソーシングを導入したくなったら、Review集約をイベント列で表現する</span>
 <span class="kr">type</span><span class="w"> </span><span class="nx">ReviewEvent</span><span class="w"> </span><span class="o">=</span>
 <span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="p">;</span>
@@ -33968,7 +33972,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 </code></pre></div>
 <h2 id="21-5">21-5 レビュー集約でのイベントソーシング適用<a class="headerlink" href="#21-5" title="Permanent link">&para;</a></h2>
 <h3 id="21-5-1">21-5-1 多様な状態導出による価値創出<a class="headerlink" href="#21-5-1" title="Permanent link">&para;</a></h3>
-<p>蓄積されたイベント履歴から、後から定義した新しい観点や指標で状態を再構築し分析できる。</p>
+<p>蓄積されたイベント履歴から、後から定義した新しい観点や指標で状態を取得し分析できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
 <span class="c1">// 新しい機能として、信頼性スコア関数を追加できる</span>
@@ -34039,6 +34043,45 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <h2 id="21-6">21-6 イベントソーシング適用の戦略的判断<a class="headerlink" href="#21-6" title="Permanent link">&para;</a></h2>
 <h3 id="21-6-1">21-6-1 問題の本質を見極める<a class="headerlink" href="#21-6-1" title="Permanent link">&para;</a></h3>
 <p>「データの履歴が欲しい」だけで採用せず、単純な変更ログで十分なのか、任意時点の完全な状態再現が必要なのかを見極める。</p>
+<p>例えば、次のような変更ログテーブル設計ではイベントソーシングを使用していない。</p>
+<table>
+<thead>
+<tr>
+<th>log_id</th>
+<th>review_id</th>
+<th>action</th>
+<th>operator_id</th>
+<th>occurred_at</th>
+<th>changed_fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LOG001</code></td>
+<td><code>REV001</code></td>
+<td><code>CREATE</code></td>
+<td><code>USER001</code></td>
+<td><code>2023-01-01 10:00:00</code></td>
+<td><code>{"rating": 4, "comment": "実践的な内容で良かったです"}</code></td>
+</tr>
+<tr>
+<td><code>LOG002</code></td>
+<td><code>REV001</code></td>
+<td><code>UPDATE</code></td>
+<td><code>USER001</code></td>
+<td><code>2023-01-03 12:00:00</code></td>
+<td><code>{"comment": "実践的な内容で良かったです。ただし初心者には少し難しいかも"}</code></td>
+</tr>
+<tr>
+<td><code>LOG003</code></td>
+<td><code>REV001</code></td>
+<td><code>UPDATE</code></td>
+<td><code>USER001</code></td>
+<td><code>2023-01-05 09:30:00</code></td>
+<td><code>{"rating": 5}</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="21-6-2">21-6-2 段階的な意思決定プロセス<a class="headerlink" href="#21-6-2" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングを段階的に導入する。</p>
 <ol>
@@ -34051,16 +34094,24 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>従来方式とのハイブリッドアプローチも有効である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
-<span class="kd">const</span><span class="w"> </span><span class="nx">adoptionPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">  </span><span class="p">{</span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Review&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">strategy</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;event-sourcing&quot;</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Book&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">strategy</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;state-based&quot;</span><span class="p">},</span>
-<span class="w">  </span><span class="p">{</span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Publisher&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">strategy</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;state-based&quot;</span><span class="p">},</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">AggregatePersistencePolicy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">persistence</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;state-based&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">&quot;event-sourcing&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// 同じシステム内で、集約ごとに保存方式を使い分ける</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">aggregatePolicies</span><span class="o">:</span><span class="w"> </span><span class="kt">AggregatePersistencePolicy</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="c1">// Review集約は履歴の価値が高いためイベントソーシングを採用</span>
+<span class="w">  </span><span class="p">{</span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Review集約&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">persistence</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;event-sourcing&quot;</span><span class="p">},</span>
+
+<span class="w">  </span><span class="c1">// Book集約は現在状態を扱えれば十分なためステートソーシングを採用</span>
+<span class="w">  </span><span class="p">{</span><span class="nx">aggregate</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Book集約&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">persistence</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;state-based&quot;</span><span class="p">},</span>
 <span class="p">];</span>
 </code></pre></div>
 <h2 id="21-7">21-7 パフォーマンスとスケーラビリティ<a class="headerlink" href="#21-7" title="Permanent link">&para;</a></h2>
 <h3 id="21-7-1">21-7-1 スナップショットの基本概念<a class="headerlink" href="#21-7-1" title="Permanent link">&para;</a></h3>
 <p>スナップショットとは、特定時点の集約状態を保存したものである。</p>
-<p>たとえば1000件のイベントがある集約で、800件目時点のスナップショットがあれば、残り200件だけを適用すればよい。</p>
+<p>たとえば1000件のイベントがある集約でも、あらかじめ800件目時点のスナップショットを保存しておけば、オブジェクトの最新の状態を取得する際には残り200件だけを適用すればよい。</p>
 <p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1.png" /></p>
 <h3 id="21-7-2">21-7-2 スナップショットの作成タイミング<a class="headerlink" href="#21-7-2" title="Permanent link">&para;</a></h3>
 <table>
@@ -34089,10 +34140,9 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 </tr>
 </tbody>
 </table>
-<p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2.png" /></p>
 <h3 id="21-7-3">21-7-3 イベント数ベースのスナップショット作成例<a class="headerlink" href="#21-7-3" title="Permanent link">&para;</a></h3>
-<p>イベント数が100件を超えた場合の作成フローを図で説明している。</p>
-<p>ポイントは、イベント保存とスナップショット保存をトランザクションで扱うことである。</p>
+<p>イベント保存とスナップショット保存をトランザクションで扱う。</p>
+<p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2.png" /></p>
 <h3 id="21-7-4">21-7-4 スナップショットの導入検討<a class="headerlink" href="#21-7-4" title="Permanent link">&para;</a></h3>
 <p>スナップショットは技術的最適化である。</p>
 <p>最初から導入せず、性能要件を満たせない場合に検討する。</p>
@@ -34129,10 +34179,13 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>イベントストアは通常、集約 ID をキーに保存するため、<code>findAllByBookId()</code> のような横断検索は苦手である。</p>
 <h3 id="21-8-2">21-8-2 書き込みと読み取りの異なる要求<a class="headerlink" href="#21-8-2" title="Permanent link">&para;</a></h3>
 <p>書き込み側は単一集約の正確な状態変更記録に、読み取り側は横断検索や集計に最適化したい。</p>
 <p>このズレを解決するのがクエリモデルである。</p>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">BookReviewsQueryModel</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// プロパティ</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="21-8-3-cqrs">21-8-3 CQRS<a class="headerlink" href="#21-8-3-cqrs" title="Permanent link">&para;</a></h3>
 <p>CQRSは、書き込みと読み取りの責務を分離するパターンである。</p>
 <p>イベントソーシングと組み合わせると、整合性を維持しつつ、後から新しいクエリモデルを構築できる。</p>
@@ -34159,14 +34212,12 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="21-8-5">21-8-5 イベントからクエリモデルを構築する仕組み<a class="headerlink" href="#21-8-5" title="Permanent link">&para;</a></h3>
-<p>イベントストアへの追加を契機にクエリモデルを更新する。</p>
 <ol>
 <li>イベントストアに新しいイベントが追加される</li>
 <li>変更通知を受け取る</li>
 <li>イベントから必要情報を抽出する</li>
 <li>クエリモデルを更新する</li>
 </ol>
-<p>第18章のイベント駆動アーキテクチャのサブスクライバーの仕組みを活用できる。</p>
 <p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-8-5" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-8-5.png" /></p>
 <h3 id="21-8-6">21-8-6 クエリサイドのデータストアの選択<a class="headerlink" href="#21-8-6" title="Permanent link">&para;</a></h3>
 <p>クエリサイドのデータストアは、用途に応じて選べる。
@@ -34223,7 +34274,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 20:13:49 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 20:43:01 JST">2026-04-22</span>
   </span>
 
     
