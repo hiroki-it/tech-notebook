@@ -177,13 +177,13 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 イベントソーシングでは、各イベント種別ごとに状態変更ロジックが必要である。
 
-また、オブジェクトの最新の状態を取得するときに、保存された過去イベントをすべて取得しないといけない。
+また、イベントソーシングではReview集約の現在状態そのものは保存せず、起きた出来事の履歴を保存するため、オブジェクトの最新の状態を得るには、その履歴を順番にたどる必要がある。
 
 ```typescript
 // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
 async function getReviewAggregate(reviewId: ReviewId): Promise<ReviewState> {
-  // オブジェクトの最新の状態を得るには、そのReview集約に紐づくイベントをすべて取得する必要がある
+  // オブジェクトの最新の状態を得るには、そのReview集約に紐づく過去の履歴をすべてたどる必要がある
   const events = await eventStore.findByAggregateId(reviewId);
 
   let state = ReviewState.initial();
@@ -402,9 +402,11 @@ const aggregatePolicies: AggregatePersistencePolicy[] = [
 
 ### 21-7-1 スナップショットの基本概念
 
+前述した『オブジェクトの最新の状態を取得するために過去の履歴をすべてたどらないといけない』という課題はスナップショット処理で解決できる。
+
 スナップショットとは、特定時点の集約状態を保存したものである。
 
-たとえば1000件のイベントがある集約でも、あらかじめ800件目時点のスナップショットを保存しておけば、オブジェクトの最新の状態を取得する際には残り200件だけを適用すればよい。
+たとえば1000件のイベントがある集約でも、あらかじめ800件目時点の状態を保存しておけば、オブジェクトの最新の状態を取得する際には残り200件の履歴だけを適用すればよい。
 
 ![software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1.png)
 
