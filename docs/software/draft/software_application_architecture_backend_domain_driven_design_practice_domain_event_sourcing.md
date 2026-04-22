@@ -238,12 +238,75 @@ async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
 
 まずはステートソーシングで設計し、必要に応じてイベントソーシングに移行する。
 
-```mermaid
-flowchart LR
-  A[まずはステートソーシングで設計] --> B{追加要件が出たか}
-  B -->|No| C[そのまま継続]
-  B -->|Yes| D[イベントソーシングへの移行を検討]
-  D --> E[任意時点の再現や再分析が必要]
+```typescript
+// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+type Review = {
+  reviewId: string;
+  bookId: string;
+  rating: number;
+  comment: string;
+};
+
+// まずは　ステートソーシングでReviewモデルで設計する
+const review: Review = {
+  reviewId: "REV001",
+  bookId: "B001",
+  rating: 5,
+  comment:
+    "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+};
+```
+
+```typescript
+// 移行したくなったら、イベントソーシングでReviewEventモデルを設計、置き換えていく
+type ReviewEvent =
+  | {
+      type: "ReviewCreated";
+      payload: {
+        reviewId: string;
+        bookId: string;
+        rating: number;
+        comment: string;
+      };
+    }
+  | {type: "ReviewCommentEdited"; payload: {comment: string}}
+  | {type: "ReviewRatingChanged"; payload: {rating: number}};
+
+const reviewEvents: ReviewEvent[] = [
+  {
+    // 初回作成時点の状態をイベントとして残す
+    type: "ReviewCreated",
+    payload: {
+      reviewId: "REV001",
+      bookId: "B001",
+      rating: 4,
+      comment: "実践的な内容で良かったです",
+    },
+  },
+  {
+    // コメント変更を上書きではなくイベントとして追加する
+    type: "ReviewCommentEdited",
+    payload: {
+      comment: "実践的な内容で良かったです。ただし初心者には少し難しいかも",
+    },
+  },
+  {
+    // さらにコメント変更をイベントとして追加する
+    type: "ReviewCommentEdited",
+    payload: {
+      comment:
+        "実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします",
+    },
+  },
+  {
+    // 評価変更もイベントとして追加する
+    type: "ReviewRatingChanged",
+    payload: {
+      rating: 5,
+    },
+  },
+];
 ```
 
 ## 21-5 レビュー集約でのイベントソーシング適用
