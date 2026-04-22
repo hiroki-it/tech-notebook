@@ -33636,19 +33636,98 @@
 <h2 id="21-2">21-2 イベントソーシングの本質<a class="headerlink" href="#21-2" title="Permanent link">&para;</a></h2>
 <h3 id="21-2-1">21-2-1 ステートベースとイベントベースの比較<a class="headerlink" href="#21-2-1" title="Permanent link">&para;</a></h3>
 <p>ステートベース（≒ ステートソーシング）とイベントベース（≒ イベントソーシング）の違いは、以下のとおりである。</p>
-<ol>
-<li>ステートソーシング<ul>
-<li>現在の状態のみを保存する設計パターン</li>
-<li>状態を更新すると、前の状態が最新の状態で上書きされ、前の状態は失われる</li>
-</ul>
-</li>
-<li>イベントソーシング<ul>
-<li>状態の変更を表すイベントを保存する設計パターン</li>
-<li>初期状態にイベントを順番に適用することで現在の状態を導出する</li>
-</ul>
-</li>
-</ol>
 <p>イベントソーシングでは、イベントを真のデータとして扱う。</p>
+<table>
+<thead>
+<tr>
+<th>観点</th>
+<th>ステートベース</th>
+<th>イベントベース</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>保存対象</strong></td>
+<td>現在の状態</td>
+<td>状態の変更を表すイベント</td>
+</tr>
+<tr>
+<td><strong>更新時の扱い</strong></td>
+<td>前の状態は上書きされる</td>
+<td>イベントが追記される</td>
+</tr>
+<tr>
+<td><strong>現在状態の取得</strong></td>
+<td>保存済みの状態をそのまま読む</td>
+<td>イベントを順番に適用して導出する</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
+
+<span class="kr">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// ステートソーシングに基づいてモデリング</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">review</span><span class="o">:</span><span class="w"> </span><span class="kt">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">comment</span><span class="o">:</span>
+<span class="w">    </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
+
+<span class="kr">type</span><span class="w"> </span><span class="nx">ReviewEvent</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">}}</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewRatingChanged&quot;</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">}};</span>
+
+<span class="c1">// イベントソーシングに基づいてモデリング</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reviewEvents</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewEvent</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;実践的な内容で良かったです&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">comment</span><span class="o">:</span>
+<span class="w">        </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewRatingChanged&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">];</span>
+</code></pre></div>
 <h3 id="21-2-2-vs">21-2-2 レビューの例（現在の状態 vs イベントの記録）<a class="headerlink" href="#21-2-2-vs" title="Permanent link">&para;</a></h3>
 <p>ステートソーシングでは、レビューの現在状態だけを保存する。</p>
 <table>
@@ -33748,14 +33827,13 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>イベントソーシングでは、ドメインイベントを唯一の情報源にすることで、この二重管理を避ける。</p>
 <h2 id="21-4">21-4 イベントソーシングのデメリットと課題<a class="headerlink" href="#21-4" title="Permanent link">&para;</a></h2>
 <h3 id="21-4-1">21-4-1 実装の複雑性<a class="headerlink" href="#21-4-1" title="Permanent link">&para;</a></h3>
-<p>イベントソーシングでは、状態を直接保存せず、イベントを順次適用して状態を再構築する必要がある。</p>
-<p>各イベント種別ごとに状態変更ロジックが必要になり、スキーマ変更時には過去イベントとの互換性維持も課題になる。</p>
+<p>イベントソーシングでは、各イベント種別ごとに状態変更ロジックが必要になり、実装が複雑になっていく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
 <span class="kd">function</span><span class="w"> </span><span class="nx">replay</span><span class="p">(</span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="kt">DomainEvent</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nx">ReviewState</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ReviewState</span><span class="p">.</span><span class="nx">initial</span><span class="p">();</span>
 
-<span class="w">  </span><span class="c1">// すべてのイベントを順番に適用しないと現在状態を復元できず、イベント種別が増えるほどこの分岐も増えていく。</span>
+<span class="w">  </span><span class="c1">// すべてのイベントを順番に適用しないと現在状態を復元できず、イベント種別が増えるほどこの分岐も増えていく</span>
 <span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">events</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="kr">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="o">:</span>
@@ -33774,14 +33852,13 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="21-4-2">21-4-2 クエリの複雑性とパフォーマンスの問題<a class="headerlink" href="#21-4-2" title="Permanent link">&para;</a></h3>
-<p>イベントソーシングでは現在状態を得るために、関連イベントを順次適用する必要がある。</p>
-<p>異なる集約を横断する処理では負荷が大きくなる。</p>
+<p>イベントソーシングでが、異なる集約を横断する処理では負荷が大きくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">findTop3RecommendedBooks</span><span class="p">(</span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reviewIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">reviewLocator</span><span class="p">.</span><span class="nx">findByBookId</span><span class="p">(</span><span class="nx">bookId</span><span class="p">);</span>
 
-<span class="w">  </span><span class="c1">// 対象Bookに紐づく全Reviewをたどってそれぞれのイベントを読み出して再構築しているため、異なる集約を横断する処理ではコストが大きくなりやすい。</span>
+<span class="w">  </span><span class="c1">// 対象Bookに紐づく全Reviewをたどってそれぞれのイベントを読み出して再構築しているため、異なる集約を横断する処理ではコストが大きくなりやすい</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reviews</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
 <span class="w">    </span><span class="nx">reviewIds</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">reviewId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
@@ -33793,8 +33870,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="21-4-3">21-4-3 開発チームの学習コスト<a class="headerlink" href="#21-4-3" title="Permanent link">&para;</a></h3>
-<p>イベントソーシングは、従来のCRUD中心の開発と発想が大きく異なる。</p>
-<p>イベント設計、状態再構築、イベントスキーマ管理など、新しい概念の理解が必要であり、学習コストが高い。</p>
+<p>イベントソーシングは、新しい概念（例：イベント設計、状態再構築、イベントスキーマ管理など）の理解が必要であり、学習コストが高い。</p>
 <table>
 <thead>
 <tr>
@@ -33805,24 +33881,19 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 </thead>
 <tbody>
 <tr>
-<td>保存対象</td>
-<td>現在の状態</td>
-<td>状態変化を表すイベント</td>
+<td><strong>設計対象</strong></td>
+<td>状態設計</td>
+<td>イベント設計</td>
 </tr>
 <tr>
-<td>状態取得</td>
-<td>保存済みの現在状態をそのまま読む</td>
-<td>イベントを順番に適用して再構築する</td>
+<td><strong>状態復元方式</strong></td>
+<td>状態読取</td>
+<td>状態再構築</td>
 </tr>
 <tr>
-<td>設計の主眼</td>
-<td>テーブル設計、更新処理</td>
-<td>イベント設計、再構築処理</td>
-</tr>
-<tr>
-<td>追加で考えること</td>
-<td>そこまで多くない</td>
-<td>スキーマ互換、イベント履歴、読み取りモデル</td>
+<td><strong>スキーマ管理</strong></td>
+<td>状態スキーマ管理</td>
+<td>イベントスキーマ管理</td>
 </tr>
 </tbody>
 </table>
@@ -33837,10 +33908,16 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="w">  </span><span class="nx">needsPointInTimeRestore</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">needsFutureReanalysis</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
 <span class="p">})</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 変更履歴を残したいだけなら、変更ログや監査ログで足りることが多い</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">needsOnlyChangeLog</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 任意時点の状態再現が必要なら、イベントソーシングの価値が高い</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">needsPointInTimeRestore</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 将来の新しい観点で再分析したいなら、イベント履歴を残す価値が高い</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">needsFutureReanalysis</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 
+<span class="w">  </span><span class="c1">// どれにも当てはまらないなら、まずは従来方式を選ぶ</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -33854,7 +33931,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewId</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">at</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">,</span>
 <span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 過去時点までのイベントを再生すれば、当時は存在しなかった指標でも後から計算できる。</span>
+<span class="w">  </span><span class="c1">// 過去時点までのイベントを再生すれば、当時は存在しなかった指標でも後から計算できる</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findUntil</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">,</span><span class="w"> </span><span class="nx">at</span><span class="p">);</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">replay</span><span class="p">(</span><span class="nx">events</span><span class="p">);</span>
 
@@ -33870,15 +33947,20 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="w">  </span><span class="nx">eventType</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">occurredAt</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">operatorId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getAuditTrail</span><span class="p">(</span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">AuditLog</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 作成・編集・削除の履歴をイベントとして保持しているため、誰がいつ何を変更したかを追跡できる</span>
-<span class="w">  </span><span class="c1">// ReviewCreated：誰がレビューを作成したか</span>
-<span class="w">  </span><span class="c1">// ReviewCommentEdited：いつコメントを変更したか</span>
-<span class="w">  </span><span class="c1">// ReviewRatingChanged：いつ評価を変更したか</span>
-<span class="w">  </span><span class="c1">// ReviewDeleted：いつ削除したか</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// eventTypeで何の操作か、occurredAtでいつか、operatorIdで誰か、payloadで何を変更したかを残す</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">events</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">    </span><span class="nx">reviewId</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">eventType</span><span class="o">:</span><span class="w"> </span><span class="kt">event.type</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">occurredAt</span><span class="o">:</span><span class="w"> </span><span class="kt">event.occurredAt</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">operatorId</span><span class="o">:</span><span class="w"> </span><span class="kt">event.operatorId</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="kt">event.payload</span><span class="p">,</span>
+<span class="w">  </span><span class="p">}));</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="21-6">21-6 イベントソーシング適用の戦略的判断<a class="headerlink" href="#21-6" title="Permanent link">&para;</a></h2>
@@ -34070,7 +34152,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 19:41:20 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 19:56:53 JST">2026-04-22</span>
   </span>
 
     
