@@ -37,14 +37,7 @@
       },
       "ja-space-around-link": false
     },
-    "@textlint-ja/textlint-rule-preset-ai-writing": {
-      "ai-tech-writing-guideline": {
-        "disableConsistencyGuidance": true,
-        "disableClarityGuidance": true,
-        "disableRedundancyGuidance": true,
-        "enableDocumentAnalysis": true
-      }
-    },
+    "@textlint-ja/textlint-rule-preset-ai-writing": true,
     "textlint-rule-ja-overlooked-typo": true,
     "textlint-rule-ja-hiraku": true
   }
