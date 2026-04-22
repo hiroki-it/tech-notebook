@@ -330,27 +330,31 @@ spec:
 
 ![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-cni.png)
 
-`istio-init` コンテナはistio-iptablesをPodに適用する権限を持っている。
+`istio-init` コンテナは、Podのネットワーク名前空間内で `istio-iptables` を実行し、iptablesルールを設定する。
 
-しかし、Linuxのiptablesを操作するためにはroot権限が必要になるため、脆弱性が指摘されている (同様にして、ユーザーが `iptables` コマンドを実行するときも `sudo` 権限が必要である) 。
+しかし、iptablesの操作には特権 (例：`CAP_NET_ADMIN`) が必要になりやすく、Podごとに特権 initContainer を持ち込む構成は攻撃面を広げるため、避けたいケースがある。
 
 `istio-init` コンテナの代替案として、istio-cniが提供されている。
 
-もしistio-cniを使用する場合は、`istio-init` コンテナが不要になる。その代わり、`istio-validation` コンテナが必要になる。
+istio-cniを使用する場合、iptablesの設定はノード上のistio-cni (DaemonSet) が実施するため、通常は `istio-init` コンテナが不要になる。
+
+その代わり、iptablesの設定完了を待つために `istio-validation` (initContainer) が挿入されることがある (race condition対策) 。
 
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 > - https://www.redhat.com/architect/istio-CNI-plugin
+> - https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
 > - https://en.wikipedia.org/wiki/Iptables
 
 #### ▼ istio-cniとは
 
 各Node上で、istio-cniは `istio-cni-node` という名前のDaemonSetとして稼働する。
 
-istio-cniは、バイナリと設定をNode上のファイルシステムにコピーする。
+istio-cniは、CNIプラグインのバイナリと設定をNode上のファイルシステムに配置する。
 
-コンテナランタイムはこれをコピーし、Pod内のiptablesに適用する。
+KubernetesのPod作成時に、CNIの仕組みを介してPodのネットワーク名前空間に対してiptables設定する。
 
 > - https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration
+> - https://istio.io/latest/docs/setup/additional-setup/cni/
 
 #### ▼ `istio-validation` コンテナ
 
