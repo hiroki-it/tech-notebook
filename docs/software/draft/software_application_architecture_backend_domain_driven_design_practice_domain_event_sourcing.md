@@ -117,8 +117,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 function replay(events: DomainEvent[]): ReviewState {
   let state = ReviewState.initial();
 
-  // すべてのイベントを順番に適用しないと現在状態を復元できない。
-  // イベント種別が増えるほど、この分岐も増えていく。
+  // すべてのイベントを順番に適用しないと現在状態を復元できず、イベント種別が増えるほどこの分岐も増えていく。
   for (const event of events) {
     switch (event.type) {
       case "ReviewCreated":
@@ -141,7 +140,7 @@ function replay(events: DomainEvent[]): ReviewState {
 
 イベントソーシングでは現在状態を得るために、関連イベントを順次適用する必要がある。
 
-複数集約を横断する処理では負荷が大きくなる。
+異なる集約を横断する処理では負荷が大きくなる。
 
 ```typescript
 // 解説を補足するために長谷川で追加
@@ -149,8 +148,7 @@ function replay(events: DomainEvent[]): ReviewState {
 async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
   const reviewIds = await reviewLocator.findByBookId(bookId);
 
-  // 対象Bookに紐づく全Reviewをたどり、それぞれのイベントを読み出して再構築している。
-  // 複数集約を横断する処理では、この処理コストが大きくなりやすい。
+  // 対象Bookに紐づく全Reviewをたどってそれぞれのイベントを読み出して再構築しているため、異なる集約を横断する処理ではコストが大きくなりやすい。
   const reviews = await Promise.all(
     reviewIds.map(async (reviewId) => {
       const events = await eventStore.findByAggregateId(reviewId);
@@ -191,8 +189,7 @@ async function calculateTrustScoreAt(
   reviewId: ReviewId,
   at: Date,
 ): Promise<number> {
-  // 過去時点までのイベントを再生すれば、
-  // 当時は存在しなかった指標でも後から計算できる。
+  // 過去時点までのイベントを再生すれば、当時は存在しなかった指標でも後から計算できる。
   const events = await eventStore.findUntil(reviewId, at);
   const review = replay(events);
 
@@ -203,15 +200,6 @@ async function calculateTrustScoreAt(
 ### 21-5-2 変更の透明性と監査性の確保
 
 レビュー編集や削除も含めて、起きた事実をすべて記録するため、誰がいつ何を変更したかの履歴が残る。
-
-これは次のような価値を持つ。
-
-- レビュー改ざんや不正操作の追跡
-- トラブル時の客観的証拠の提示
-- 法的要件への対応
-- レビュー品質管理や不正検出
-
-この監査性は、レビューの信頼性が重要なプラットフォームで価値を持つ。
 
 ```typescript
 // 解説を補足するために長谷川で追加
@@ -224,7 +212,7 @@ type AuditLog = {
 };
 
 async function getAuditTrail(reviewId: string): Promise<AuditLog[]> {
-  // 作成・編集・削除の履歴をイベントとして保持しているため、誰がいつ何を変更したかを追跡できる。
+  // 作成・編集・削除の履歴をイベントとして保持しているため、誰がいつ何を変更したかを追跡できる
   // ReviewCreated：誰がレビューを作成したか
   // ReviewCommentEdited：いつコメントを変更したか
   // ReviewRatingChanged：いつ評価を変更したか
@@ -362,8 +350,6 @@ interface BookRecommendationQueryModel {
   readonly recommendedBooks: readonly string[];
 }
 ```
-
-RecommendedBookの集計結果を事前に保持するモデルである。
 
 ### 21-8-5 イベントからクエリモデルを構築する仕組み
 
