@@ -177,7 +177,9 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 イベントソーシングでは、各イベント種別ごとに状態変更ロジックが必要である。
 
-また、イベントソーシングではReview集約の現在状態そのものは保存せず、起きた出来事の履歴を保存するため、オブジェクトの最新の状態を得るには、その履歴を順番にたどる必要がある。
+また、イベントソーシングではReview集約の現在状態そのものは保存せず、起きた出来事の履歴を保存する。
+
+そのため、オブジェクトの最新の状態を得るにはその履歴を順番にたどる必要があり、履歴数が多くなるほど性能問題に影響する。
 
 ```typescript
 // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
@@ -402,7 +404,9 @@ const aggregatePolicies: AggregatePersistencePolicy[] = [
 
 ### 21-7-1 スナップショットの基本概念
 
-前述した『オブジェクトの最新の状態を取得するために過去の履歴をすべてたどらないといけない』という課題はスナップショット処理で解決できる。
+イベントソーシングではオブジェクトの現在の状態を保存していないため、最新の状態を取得する際に過去の履歴をたどる必要があり、これは性能問題につながる可能性がある。
+
+この課題はスナップショット処理で緩和できる。
 
 スナップショットとは、特定時点の集約状態を保存したものである。
 
@@ -421,15 +425,11 @@ const aggregatePolicies: AggregatePersistencePolicy[] = [
 
 ### 21-7-3 イベント数ベースのスナップショット作成例
 
-イベント保存とスナップショット保存をトランザクションで扱う。
-
 ![software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2.png)
 
 ### 21-7-4 スナップショットの導入検討
 
-スナップショットは技術的最適化である。
-
-最初から導入せず、性能要件を満たせない場合に検討する。
+イベントソーシングの課題よって性能に問題が起こった後から、スナップショットの導入を検討する。
 
 ```typescript
 // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
@@ -487,15 +487,18 @@ interface BookReviewsQueryModel {
 
 CQRSは、書き込みと読み取りの責務を分離するパターンである。
 
+イベントソーシングではオブジェクトの現在の状態を保存していないため、最新の状態を取得する際に過去の履歴をたどる必要があり、これは性能問題につながる可能性がある。
+
+この課題は、CQRSによって読み取り側のデータ構造を分けることで緩和できる。
+
 イベントソーシングと組み合わせると、整合性を維持しつつ、後から新しいクエリモデルを構築できる。
 
 ### 21-8-4 BookRecommendation のためのクエリモデル設計
 
-BookRecommendation のためのクエリモデル設計例として、2つのアプローチを示している。
-
-#### ▼ アプローチ1: BookIDごとのレビューリストモデル
+BookRecommendationを取得するためのクエリモデル設計例として、2つの方法がある
 
 ```typescript
+// 方法1: BookIDごとのレビューリストモデル
 interface BookReviewsQueryModel {
   readonly bookId: string;
   readonly reviews: readonly {
@@ -509,11 +512,8 @@ interface BookReviewsQueryModel {
 }
 ```
 
-BookID ごとにレビュー情報を保持するモデルである。
-
-#### ▼ アプローチ2: 事前集計されたRecommendedBookモデル
-
 ```typescript
+// 方法2: 事前集計されたRecommendedBookモデル
 interface BookRecommendationQueryModel {
   readonly bookId: string;
   readonly recommendedBooks: readonly string[];
@@ -531,8 +531,7 @@ interface BookRecommendationQueryModel {
 
 ### 21-8-6 クエリサイドのデータストアの選択
 
-クエリサイドのデータストアは、用途に応じて選べる。
-代表例は次のとおりである。
+CQRSで使用できるデータストアは次のとおりである。
 
 - RDBMS: 関係性の強いデータ、SQL による柔軟な検索や集計に向く
 - Elasticsearch: 全文検索や複雑検索に向く
@@ -540,16 +539,34 @@ interface BookRecommendationQueryModel {
 
 ### 21-8-7 CQRS による結果整合性
 
-CQRSでは、コマンドサイドとクエリサイドの間に時間差が生じるため、結果整合性を採用する。
+CQRSでは、コマンドサイドとクエリサイドの間に時間差が生じるため、結果整合性を採用する必要がある。
 
 ```typescript
 // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
-async function handleReviewCreated(event: DomainEvent): Promise<void> {
-  await queryModelUpdater.apply(event);
+async function addReview(command: AddReviewCommand): Promise<void> {
+  // コマンドサイドではイベントストアにレビュー作成イベントを書き込む
+  await eventStore.append({
+    type: "ReviewCreated",
+    aggregateId: command.reviewId,
+    payload: {
+      bookId: command.bookId,
+      rating: command.rating,
+      comment: command.comment,
+    },
+  });
+}
 
-  // コマンド処理完了直後は、クエリモデルがまだ古い可能性がある
-  // そのため読み取り側では短い遅延を許容する
+async function updateBookReviewsQueryModel(event: DomainEvent): Promise<void> {
+  // この更新はコマンド処理とは別タイミングで行われるため、この間はクエリモデルがまだ古い可能性がある
+  // ここでコマンドサイドとクエリサイドの間に結果整合性が生じる
+  // クエリサイドでは、後からイベントを受け取って読み取り用データを更新する
+  await bookReviewsQueryModelRepository.addReview({
+    bookId: event.payload.bookId,
+    reviewId: event.aggregateId,
+    rating: event.payload.rating,
+    comment: event.payload.comment,
+  });
 }
 ```
 
@@ -559,11 +576,9 @@ https://github.com/yamachan0625/hands-on-ddd-introduction/blob/main/chapter-21/i
 
 ## 21-10 まとめ
 
-- 状態をイベントの連続として管理する
-- 起きた事実を記録し、その記録から状態を導出する
-- 任意時点の状態を再現し、後から新しい観点で分析できる
-- 横断的な読み取り要件には CQRS の組み合わせが有効である
-- 採用は技術トレンドではなく、ビジネス価値で判断する
+イベントソーシングは、状態をイベントの連続として管理し、起きた事実の記録から状態を導出することで、任意時点の状態を扱ったり、後から新しい観点で分析したりできる手法である。
+
+また、横断的な読み取り要件にはCQRSとの組み合わせが有効である一方で、採用は技術トレンドではなくビジネス価値で判断する必要がある。
 
 ## Column Outbox テーブルとイベントストアの設計判断
 
