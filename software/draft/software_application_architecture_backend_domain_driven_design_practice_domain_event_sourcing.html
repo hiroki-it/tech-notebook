@@ -33870,7 +33870,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="21-4-3">21-4-3 開発チームの学習コスト<a class="headerlink" href="#21-4-3" title="Permanent link">&para;</a></h3>
-<p>イベントソーシングは、新しい概念（例：イベント設計、状態再構築、イベントスキーマ管理など）の理解が必要であり、学習コストが高い。</p>
+<p>イベントソーシングは、新しい概念（イベント設計、状態再構築、イベントスキーマ管理など）の理解が必要であり、学習コストが高い。</p>
 <table>
 <thead>
 <tr>
@@ -33898,31 +33898,75 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 </tbody>
 </table>
 <h3 id="21-4-4">21-4-4 適用判断の重要性<a class="headerlink" href="#21-4-4" title="Permanent link">&para;</a></h3>
-<p>イベントソーシングは、すべてのシステムに適用する前提の技術ではない。</p>
-<p>システム要件、チームスキル、運用体制を踏まえて採用判断する。</p>
-<p>まずは従来方式で構築し、必要時に移行を検討する段階的アプローチが現実的である。</p>
+<p>まずはステートソーシングで設計し、必要に応じてイベントソーシングに移行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
-<span class="kd">function</span><span class="w"> </span><span class="nx">shouldUseEventSourcing</span><span class="p">(</span><span class="nx">input</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">needsOnlyChangeLog</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">needsPointInTimeRestore</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">needsFutureReanalysis</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
-<span class="p">})</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 変更履歴を残したいだけなら、変更ログや監査ログで足りることが多い</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">needsOnlyChangeLog</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class="w">  </span><span class="c1">// 任意時点の状態再現が必要なら、イベントソーシングの価値が高い</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">needsPointInTimeRestore</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="c1">// まずは　ステートソーシングでReviewモデルで設計する</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">review</span><span class="o">:</span><span class="w"> </span><span class="kt">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">comment</span><span class="o">:</span>
+<span class="w">    </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">// 移行したくなったら、イベントソーシングでReviewEventモデルを設計、置き換えていく</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">ReviewEvent</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">}}</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="p">{</span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewRatingChanged&quot;</span><span class="p">;</span><span class="w"> </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">}};</span>
 
-<span class="w">  </span><span class="c1">// 将来の新しい観点で再分析したいなら、イベント履歴を残す価値が高い</span>
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">needsFutureReanalysis</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-
-<span class="w">  </span><span class="c1">// どれにも当てはまらないなら、まずは従来方式を選ぶ</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">reviewEvents</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewEvent</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 初回作成時点の状態をイベントとして残す</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;実践的な内容で良かったです&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// コメント変更を上書きではなくイベントとして追加する</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// さらにコメント変更をイベントとして追加する</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">comment</span><span class="o">:</span>
+<span class="w">        </span><span class="s2">&quot;実践的な内容で良かったです。ただし初心者には少し難しいかも。『HTML/CSS 入門』『JavaScript 基礎』を読んでから読むことをおすすめします&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 評価変更もイベントとして追加する</span>
+<span class="w">    </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;ReviewRatingChanged&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">];</span>
 </code></pre></div>
 <h2 id="21-5">21-5 レビュー集約でのイベントソーシング適用<a class="headerlink" href="#21-5" title="Permanent link">&para;</a></h2>
-<p>レビューは、編集や評価変更を含む履歴そのものに意味があり、イベントソーシングが価値を発揮しやすい。</p>
 <h3 id="21-5-1">21-5-1 多様な状態導出による価値創出<a class="headerlink" href="#21-5-1" title="Permanent link">&para;</a></h3>
 <p>蓄積されたイベント履歴から、後から定義した新しい観点や指標で状態を再構築し分析できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
@@ -33940,29 +33984,52 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 </code></pre></div>
 <h3 id="21-5-2">21-5-2 変更の透明性と監査性の確保<a class="headerlink" href="#21-5-2" title="Permanent link">&para;</a></h3>
 <p>レビュー編集や削除も含めて、起きた事実をすべて記録するため、誰がいつ何を変更したかの履歴が残る。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
-
-<span class="kr">type</span><span class="w"> </span><span class="nx">AuditLog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">eventType</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">occurredAt</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">operatorId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
-<span class="w">  </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">unknown</span><span class="o">&gt;</span><span class="p">;</span>
-<span class="p">};</span>
-
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getAuditTrail</span><span class="p">(</span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">AuditLog</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// eventTypeで何の操作か、occurredAtでいつか、operatorIdで誰か、payloadで何を変更したかを残す</span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">events</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
-<span class="w">    </span><span class="nx">reviewId</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">eventType</span><span class="o">:</span><span class="w"> </span><span class="kt">event.type</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">occurredAt</span><span class="o">:</span><span class="w"> </span><span class="kt">event.occurredAt</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">operatorId</span><span class="o">:</span><span class="w"> </span><span class="kt">event.operatorId</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">payload</span><span class="o">:</span><span class="w"> </span><span class="kt">event.payload</span><span class="p">,</span>
-<span class="w">  </span><span class="p">}));</span>
-<span class="p">}</span>
-</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>EventId</th>
+<th>ReviewId</th>
+<th>EventType</th>
+<th>OperatorId</th>
+<th>OccurredAt</th>
+<th>Payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EVT001</code></td>
+<td><code>REV001</code></td>
+<td><code>ReviewCreated</code></td>
+<td><code>USER001</code></td>
+<td><code>2023-01-01 10:00:00</code></td>
+<td><code>{"rating": 4, "comment": "実践的な内容で良かったです"}</code></td>
+</tr>
+<tr>
+<td><code>EVT002</code></td>
+<td><code>REV001</code></td>
+<td><code>ReviewCommentEdited</code></td>
+<td><code>USER001</code></td>
+<td><code>2023-01-03 12:00:00</code></td>
+<td><code>{"comment": "実践的な内容で良かったです。ただし初心者には少し難しいかも"}</code></td>
+</tr>
+<tr>
+<td><code>EVT003</code></td>
+<td><code>REV001</code></td>
+<td><code>ReviewRatingChanged</code></td>
+<td><code>USER001</code></td>
+<td><code>2023-01-05 09:30:00</code></td>
+<td><code>{"rating": 5}</code></td>
+</tr>
+<tr>
+<td><code>EVT004</code></td>
+<td><code>REV001</code></td>
+<td><code>ReviewDeleted</code></td>
+<td><code>ADMIN001</code></td>
+<td><code>2023-01-07 15:00:00</code></td>
+<td><code>{"reason": "policy violation"}</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="21-6">21-6 イベントソーシング適用の戦略的判断<a class="headerlink" href="#21-6" title="Permanent link">&para;</a></h2>
 <h3 id="21-6-1">21-6-1 問題の本質を見極める<a class="headerlink" href="#21-6-1" title="Permanent link">&para;</a></h3>
 <p>「データの履歴が欲しい」だけで採用せず、単純な変更ログで十分なのか、任意時点の完全な状態再現が必要なのかを見極める。</p>
@@ -34152,7 +34219,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 19:56:53 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 20:05:48 JST">2026-04-22</span>
   </span>
 
     
