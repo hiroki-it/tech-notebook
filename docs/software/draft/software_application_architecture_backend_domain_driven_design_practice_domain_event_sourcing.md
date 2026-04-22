@@ -112,7 +112,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 各イベント種別ごとに状態変更ロジックが必要になり、スキーマ変更時には過去イベントとの互換性維持も課題になる。
 
 ```typescript
-// 解説を補足するために長谷川で追加
+// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
 function replay(events: DomainEvent[]): ReviewState {
   let state = ReviewState.initial();
@@ -143,7 +143,7 @@ function replay(events: DomainEvent[]): ReviewState {
 異なる集約を横断する処理では負荷が大きくなる。
 
 ```typescript
-// 解説を補足するために長谷川で追加
+// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
 async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
   const reviewIds = await reviewLocator.findByBookId(bookId);
@@ -166,6 +166,13 @@ async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
 
 イベント設計、状態再構築、イベントスキーマ管理など、新しい概念の理解が必要であり、学習コストが高い。
 
+| 観点             | ステートソーシング               | イベントソーシング                         |
+| ---------------- | -------------------------------- | ------------------------------------------ |
+| 保存対象         | 現在の状態                       | 状態変化を表すイベント                     |
+| 状態取得         | 保存済みの現在状態をそのまま読む | イベントを順番に適用して再構築する         |
+| 設計の主眼       | テーブル設計、更新処理           | イベント設計、再構築処理                   |
+| 追加で考えること | そこまで多くない                 | スキーマ互換、イベント履歴、読み取りモデル |
+
 ### 21-4-4 適用判断の重要性
 
 イベントソーシングは、すべてのシステムに適用する前提の技術ではない。
@@ -173,6 +180,22 @@ async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
 システム要件、チームスキル、運用体制を踏まえて採用判断する。
 
 まずは従来方式で構築し、必要時に移行を検討する段階的アプローチが現実的である。
+
+```typescript
+// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+function shouldUseEventSourcing(input: {
+  needsOnlyChangeLog: boolean;
+  needsPointInTimeRestore: boolean;
+  needsFutureReanalysis: boolean;
+}): boolean {
+  if (input.needsOnlyChangeLog) return false;
+  if (input.needsPointInTimeRestore) return true;
+  if (input.needsFutureReanalysis) return true;
+
+  return false;
+}
+```
 
 ## 21-5 レビュー集約でのイベントソーシング適用
 
@@ -183,7 +206,7 @@ async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
 蓄積されたイベント履歴から、後から定義した新しい観点や指標で状態を再構築し分析できる。
 
 ```typescript
-// 解説を補足するために長谷川で追加
+// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
 async function calculateTrustScoreAt(
   reviewId: ReviewId,
@@ -202,7 +225,7 @@ async function calculateTrustScoreAt(
 レビュー編集や削除も含めて、起きた事実をすべて記録するため、誰がいつ何を変更したかの履歴が残る。
 
 ```typescript
-// 解説を補足するために長谷川で追加
+// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
 type AuditLog = {
   reviewId: string;
@@ -244,6 +267,16 @@ async function getAuditTrail(reviewId: string): Promise<AuditLog[]> {
 
 従来方式とのハイブリッドアプローチも有効である。
 
+```typescript
+// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+const adoptionPlan = [
+  {aggregate: "Review", strategy: "event-sourcing"},
+  {aggregate: "Book", strategy: "state-based"},
+  {aggregate: "Publisher", strategy: "state-based"},
+];
+```
+
 ## 21-7 パフォーマンスとスケーラビリティ
 
 ### 21-7-1 スナップショットの基本概念
@@ -276,6 +309,17 @@ async function getAuditTrail(reviewId: string): Promise<AuditLog[]> {
 スナップショットは技術的最適化である。
 
 最初から導入せず、性能要件を満たせない場合に検討する。
+
+```typescript
+// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+function needsSnapshot(metrics: {
+  replayLatencyMs: number;
+  eventCount: number;
+}): boolean {
+  return metrics.replayLatencyMs > 200 || metrics.eventCount > 1000;
+}
+```
 
 ## 21-8 多様な状態導出とビジネス価値の創出
 
@@ -376,6 +420,17 @@ interface BookRecommendationQueryModel {
 ### 21-8-7 CQRS による結果整合性
 
 CQRSでは、コマンドサイドとクエリサイドの間に時間差が生じるため、結果整合性を採用する。
+
+```typescript
+// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
+
+async function handleReviewCreated(event: DomainEvent): Promise<void> {
+  await queryModelUpdater.apply(event);
+
+  // コマンド処理完了直後は、クエリモデルがまだ古い可能性がある
+  // そのため読み取り側では短い遅延を許容する
+}
+```
 
 ## 21-9 実装の詳細
 
