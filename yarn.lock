@@ -164,6 +164,15 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
+"@textlint-ja/textlint-rule-preset-ai-writing@^1.6.3":
+  version "1.6.3"
+  resolved "https://registry.npmjs.org/@textlint-ja/textlint-rule-preset-ai-writing/-/textlint-rule-preset-ai-writing-1.6.3.tgz#0ec71a6848af54559e011b9bf6506134c5b1f333"
+  integrity sha512-QQxO3sK6mGQyPS753jZ2zIy0EgAQHqiJ3oadnwV/hs5sOZn2WOqHWNAnjwEXLYiFNvI53zVMTiabL31cJPigiw==
+  dependencies:
+    "@textlint/regexp-string-matcher" "^2.0.2"
+    kuromojin "^3.0.1"
+    textlint-util-to-string "^3.3.4"
+
 "@textlint-rule/textlint-rule-no-invalid-control-character@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@textlint-rule/textlint-rule-no-invalid-control-character/-/textlint-rule-no-invalid-control-character-3.0.0.tgz#9d9da5daaddf2beba1e6eee83cab0a42084ae9a0"
@@ -1789,7 +1798,7 @@ kuromojin@^2.1.1:
   dependencies:
     kuromoji "0.1.1"
 
-kuromojin@^3.0.0:
+kuromojin@^3.0.0, kuromojin@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/kuromojin/-/kuromojin-3.0.1.tgz#ccb563274fe2dadda42b83d28f2e290a9be54c95"
   integrity sha512-E4rLmbTid8ZGH8Fw421UXvfgCe0IXGFKhUw/IosBVW6ootxVGKGbtb0UPQAvPswgsXX/8UuPiE+amz1NN11Uzg==
@@ -2866,6 +2875,14 @@ textlint-rule-ja-hiragana-keishikimeishi@^1.1.0:
     kuromojin "^2.1.1"
     morpheme-match-all "^1.1.0"
 
+textlint-rule-ja-hiraku@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/textlint-rule-ja-hiraku/-/textlint-rule-ja-hiraku-1.2.0.tgz#fba114320db72979376ac68df17cf055eda886ff"
+  integrity sha512-s8mEHa+fry4V57SmK+HfGtp70NsuOtsJN6KtVlz7aqQBAYfvD+DejAl/UqHeIOKTrUTdpa7dB4QHoLf+VCdrSg==
+  dependencies:
+    kuromojin "^3.0.0"
+    morpheme-match-textlint "^2.0.6"
+
 textlint-rule-ja-nakaguro-or-halfwidth-space-between-katakana@^2.4.3:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/textlint-rule-ja-nakaguro-or-halfwidth-space-between-katakana/-/textlint-rule-ja-nakaguro-or-halfwidth-space-between-katakana-2.4.3.tgz#ad2ad0fd9ce7dd3dd5ec71fed9958f0f4f29070d"
@@ -2935,6 +2952,14 @@ textlint-rule-ja-no-weak-phrase@^2.0.0:
     kuromojin "^3.0.0"
     morpheme-match "^2.0.4"
     morpheme-match-all "^2.0.5"
+
+textlint-rule-ja-overlooked-typo@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/textlint-rule-ja-overlooked-typo/-/textlint-rule-ja-overlooked-typo-0.0.1.tgz#365f575bc8d2441358cc65e4e5d7b33c2c522ade"
+  integrity sha512-eOs7E17h/PwsJ3sNRNf4mG1kZ2EZo3n9HL1kD4WMP5t5vnMNntjeQcc9JuVf9ITwVqKpWiQlEtLqHs046NVQMg==
+  dependencies:
+    "@textlint/regexp-string-matcher" "^2.0.2"
+    match-index "^1.0.3"
 
 textlint-rule-ja-space-after-exclamation@^2.4.2:
   version "2.4.2"
