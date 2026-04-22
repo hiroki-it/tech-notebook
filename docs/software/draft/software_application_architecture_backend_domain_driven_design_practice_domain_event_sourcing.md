@@ -226,7 +226,7 @@ async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
 
 ### 21-4-3 開発チームの学習コスト
 
-イベントソーシングは、新しい概念（例：イベント設計、状態再構築、イベントスキーマ管理など）の理解が必要であり、学習コストが高い。
+イベントソーシングは、新しい概念（イベント設計、状態再構築、イベントスキーマ管理など）の理解が必要であり、学習コストが高い。
 
 | 観点             | ステートソーシング | イベントソーシング   |
 | ---------------- | ------------------ | -------------------- |
@@ -236,37 +236,17 @@ async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
 
 ### 21-4-4 適用判断の重要性
 
-イベントソーシングは、すべてのシステムに適用する前提の技術ではない。
+まずはステートソーシングで設計し、必要に応じてイベントソーシングに移行する。
 
-システム要件、チームスキル、運用体制を踏まえて採用判断する。
-
-まずは従来方式で構築し、必要時に移行を検討する段階的アプローチが現実的である。
-
-```typescript
-// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
-
-function shouldUseEventSourcing(input: {
-  needsOnlyChangeLog: boolean;
-  needsPointInTimeRestore: boolean;
-  needsFutureReanalysis: boolean;
-}): boolean {
-  // 変更履歴を残したいだけなら、変更ログや監査ログで足りることが多い
-  if (input.needsOnlyChangeLog) return false;
-
-  // 任意時点の状態再現が必要なら、イベントソーシングの価値が高い
-  if (input.needsPointInTimeRestore) return true;
-
-  // 将来の新しい観点で再分析したいなら、イベント履歴を残す価値が高い
-  if (input.needsFutureReanalysis) return true;
-
-  // どれにも当てはまらないなら、まずは従来方式を選ぶ
-  return false;
-}
+```mermaid
+flowchart LR
+  A[まずはステートソーシングで設計] --> B{追加要件が出たか}
+  B -->|No| C[そのまま継続]
+  B -->|Yes| D[イベントソーシングへの移行を検討]
+  D --> E[任意時点の再現や再分析が必要]
 ```
 
 ## 21-5 レビュー集約でのイベントソーシング適用
-
-レビューは、編集や評価変更を含む履歴そのものに意味があり、イベントソーシングが価値を発揮しやすい。
 
 ### 21-5-1 多様な状態導出による価値創出
 
@@ -291,30 +271,12 @@ async function calculateTrustScoreAt(
 
 レビュー編集や削除も含めて、起きた事実をすべて記録するため、誰がいつ何を変更したかの履歴が残る。
 
-```typescript
-// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
-
-type AuditLog = {
-  reviewId: string;
-  eventType: string;
-  occurredAt: Date;
-  operatorId: string;
-  payload: Record<string, unknown>;
-};
-
-async function getAuditTrail(reviewId: string): Promise<AuditLog[]> {
-  const events = await eventStore.findByAggregateId(reviewId);
-
-  // eventTypeで何の操作か、occurredAtでいつか、operatorIdで誰か、payloadで何を変更したかを残す
-  return events.map((event) => ({
-    reviewId,
-    eventType: event.type,
-    occurredAt: event.occurredAt,
-    operatorId: event.operatorId,
-    payload: event.payload,
-  }));
-}
-```
+| EventId  | ReviewId | EventType             | OperatorId | OccurredAt            | Payload                                                                     |
+| -------- | -------- | --------------------- | ---------- | --------------------- | --------------------------------------------------------------------------- |
+| `EVT001` | `REV001` | `ReviewCreated`       | `USER001`  | `2023-01-01 10:00:00` | `{"rating": 4, "comment": "実践的な内容で良かったです"}`                    |
+| `EVT002` | `REV001` | `ReviewCommentEdited` | `USER001`  | `2023-01-03 12:00:00` | `{"comment": "実践的な内容で良かったです。ただし初心者には少し難しいかも"}` |
+| `EVT003` | `REV001` | `ReviewRatingChanged` | `USER001`  | `2023-01-05 09:30:00` | `{"rating": 5}`                                                             |
+| `EVT004` | `REV001` | `ReviewDeleted`       | `ADMIN001` | `2023-01-07 15:00:00` | `{"reason": "policy violation"}`                                            |
 
 ## 21-6 イベントソーシング適用の戦略的判断
 
