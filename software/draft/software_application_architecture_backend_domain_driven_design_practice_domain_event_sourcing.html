@@ -33131,6 +33131,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        概要
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#21-1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -33605,14 +33616,16 @@
 </ul>
 </blockquote>
 <p><br></p>
-<div class="highlight"><pre><span></span><code>1. イベントソーシングの定義
-2. ステートソーシングとイベントソーシングの違い
-3. ステートソーシングの課題
-4. イベントソーシングの課題と使用場面
-5. レビュー機能をイベントソーシングで設計してみる
-6. イベントソーシングの課題をスナップショット処理で解決
-7. イベントソーシングの課題をCQRSパターンで解決
-</code></pre></div>
+<h2 id="_2">概要<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>21-1. イベントソーシングの定義</li>
+<li>21-2. ステートソーシングとイベントソーシングの違い</li>
+<li>21-3. ステートソーシングの課題</li>
+<li>21-4. イベントソーシングの課題と使用場面</li>
+<li>21-5. レビュー機能をイベントソーシングで設計してみる</li>
+<li>21-7. イベントソーシングの課題をスナップショット処理で解決</li>
+<li>21-8. イベントソーシングの課題をCQRSパターンで解決</li>
+</ul>
 <h2 id="21-1">21-1 イベントソーシングとは<a class="headerlink" href="#21-1" title="Permanent link">&para;</a></h2>
 <p>イベントソーシングとは、現在の状態ではなく、状態変化を引き起こしたイベントの連続を保存する手法である。</p>
 <ul>
@@ -33737,11 +33750,50 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <h3 id="21-4-1">21-4-1 実装の複雑性<a class="headerlink" href="#21-4-1" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングでは、状態を直接保存せず、イベントを順次適用して状態を再構築する必要がある。</p>
 <p>各イベント種別ごとに状態変更ロジックが必要になり、スキーマ変更時には過去イベントとの互換性維持も課題になる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">replay</span><span class="p">(</span><span class="nx">events</span><span class="o">:</span><span class="w"> </span><span class="kt">DomainEvent</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nx">ReviewState</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">ReviewState</span><span class="p">.</span><span class="nx">initial</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// すべてのイベントを順番に適用しないと現在状態を復元できない。</span>
+<span class="w">  </span><span class="c1">// イベント種別が増えるほど、この分岐も増えていく。</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">event</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">events</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="kr">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;ReviewCreated&quot;</span><span class="o">:</span>
+<span class="w">        </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;ReviewCommentEdited&quot;</span><span class="o">:</span>
+<span class="w">        </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">editComment</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">comment</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;ReviewRatingChanged&quot;</span><span class="o">:</span>
+<span class="w">        </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">changeRating</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">rating</span><span class="p">);</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">state</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="21-4-2">21-4-2 クエリの複雑性とパフォーマンスの問題<a class="headerlink" href="#21-4-2" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングでは現在状態を得るために、関連イベントを順次適用する必要がある。</p>
 <p>複数集約を横断する検索や集計では負荷が大きくなる。</p>
 <p>書籍では、人気書籍に1万件のレビューがあり、各レビューに平均3〜4件のイベントがある例を挙げている。</p>
 <p>この問題は、後述するCQRSによって緩和できる。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">findTop3RecommendedBooks</span><span class="p">(</span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reviewIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">reviewLocator</span><span class="p">.</span><span class="nx">findByBookId</span><span class="p">(</span><span class="nx">bookId</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 対象書籍に紐づく全Reviewをたどり、それぞれのイベントを読み出して再構築している。</span>
+<span class="w">  </span><span class="c1">// 横断検索や集計では、この処理コストが大きくなりやすい。</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">reviews</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">reviewIds</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">reviewId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">replay</span><span class="p">(</span><span class="nx">events</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}),</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">aggregateRecommendedBooks</span><span class="p">(</span><span class="nx">reviews</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="21-4-3">21-4-3 開発チームの学習コスト<a class="headerlink" href="#21-4-3" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングは、従来のCRUD中心の開発と発想が大きく異なる。</p>
 <p>イベント設計、状態再構築、イベントスキーマ管理など、新しい概念の理解が必要であり、学習コストが高い。</p>
@@ -33754,6 +33806,19 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <h3 id="21-5-1">21-5-1 多様な状態導出による価値創出<a class="headerlink" href="#21-5-1" title="Permanent link">&para;</a></h3>
 <p>蓄積されたイベント履歴から、後から定義した新しい観点や指標で状態を再構築し分析できる。</p>
 <p>書籍では「レビューの信頼性スコア」を例に、設計時に存在しなかった分析軸でも過去に遡って検証できる点を説明している。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">calculateTrustScoreAt</span><span class="p">(</span>
+<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewId</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">at</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">,</span>
+<span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 過去時点までのイベントを再生すれば、</span>
+<span class="w">  </span><span class="c1">// 当時は存在しなかった指標でも後から計算できる。</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findUntil</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">,</span><span class="w"> </span><span class="nx">at</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">replay</span><span class="p">(</span><span class="nx">events</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">review</span><span class="p">.</span><span class="nx">calculateTrustScore</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="21-5-2">21-5-2 変更の透明性と監査性の確保<a class="headerlink" href="#21-5-2" title="Permanent link">&para;</a></h3>
 <p>レビュー編集や削除も含めて、起きた事実をすべて記録するため、誰がいつ何を変更したかの履歴が残る。</p>
 <p>これは次のような価値を持つ。</p>
@@ -33764,6 +33829,51 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <li>レビュー品質管理や不正検出</li>
 </ul>
 <p>この監査性は、レビューの信頼性が重要なプラットフォームで価値を持つ。</p>
+<table>
+<thead>
+<tr>
+<th>順番</th>
+<th>イベント</th>
+<th>わかること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ReviewCreated</code></td>
+<td>誰がレビューを作成したか</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>ReviewCommentEdited</code></td>
+<td>いつコメントを変更したか</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>ReviewRatingChanged</code></td>
+<td>いつ評価を変更したか</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>ReviewDeleted</code></td>
+<td>いつ削除したか</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">AuditLog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">eventType</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">occurredAt</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">operatorId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getAuditTrail</span><span class="p">(</span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">AuditLog</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 作成・編集・削除の履歴をイベントとして保持しているため、</span>
+<span class="w">  </span><span class="c1">// 誰がいつ何を変更したかを追跡できる。</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="21-6">21-6 イベントソーシング適用の戦略的判断<a class="headerlink" href="#21-6" title="Permanent link">&para;</a></h2>
 <h3 id="21-6-1">21-6-1 問題の本質を見極める<a class="headerlink" href="#21-6-1" title="Permanent link">&para;</a></h3>
 <p>「データの履歴が欲しい」だけで採用せず、単純な変更ログで十分なのか、任意時点の完全な状態再現が必要なのかを見極める。</p>
@@ -33895,15 +34005,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <h3 id="21-8-7-cqrs">21-8-7 CQRS による結果整合性<a class="headerlink" href="#21-8-7-cqrs" title="Permanent link">&para;</a></h3>
 <p>CQRSでは、コマンドサイドとクエリサイドの間に時間差が生じるため、結果整合性を採用する。</p>
 <h2 id="21-9">21-9 実装の詳細<a class="headerlink" href="#21-9" title="Permanent link">&para;</a></h2>
-<p>イベントソーシングの基本実装の詳細は、特典GitHubで扱うとしている。</p>
-<ol>
-<li><code>Review</code> 集約のイベントソーシングへの移行</li>
-<li><code>Review</code> 集約のテスト修正</li>
-<li>イベントストアリポジトリの修正</li>
-<li><code>Review</code> アプリケーションサービスの修正</li>
-<li>動作確認</li>
-</ol>
-<p>スナップショットとCQRSは、本章では概念理解に留める。</p>
+<p><a href="https://github.com/yamachan0625/hands-on-ddd-introduction/blob/main/chapter-21/impl.md">https://github.com/yamachan0625/hands-on-ddd-introduction/blob/main/chapter-21/impl.md</a> を参照すること。</p>
 <h2 id="21-10">21-10 まとめ<a class="headerlink" href="#21-10" title="Permanent link">&para;</a></h2>
 <ul>
 <li>状態をイベントの連続として管理する</li>
@@ -33939,7 +34041,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 18:59:32 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 19:24:45 JST">2026-04-22</span>
   </span>
 
     
