@@ -550,7 +550,7 @@ async function addReview(command: AddReviewCommand): Promise<void> {
   // コマンドサイドではイベントストアにレビュー作成イベントを書き込む
   await eventStore.append({
     type: "ReviewCreated",
-    aggregateId: command.reviewId,
+    id: command.reviewId,
     payload: {
       bookId: command.bookId,
       rating: command.rating,
@@ -565,7 +565,7 @@ async function updateBookReviewsQueryModel(event: DomainEvent): Promise<void> {
   // クエリサイドでは、後からイベントを受け取って読み取り用データを更新する
   await bookReviewsQueryModelRepository.addReview({
     bookId: event.payload.bookId,
-    reviewId: event.aggregateId,
+    reviewId: event.id,
     rating: event.payload.rating,
     comment: event.payload.comment,
   });

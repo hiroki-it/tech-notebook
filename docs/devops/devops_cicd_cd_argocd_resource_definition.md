@@ -1513,6 +1513,28 @@ apply先のKubernetesを設定する。
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
 
+#### ▼ name
+
+apply先のKubernetes Cluster名を設定する。
+
+ArgoCDに登録済みのClusterを、`server` キーのURLではなく論理名で指定したい場合（例：EKSをブルー／グリーンアップグレードしたい）に利用する。
+
+論理名は、`argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボード上でのClusterの表示名>`で登録したものである。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: foo-application
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: foo-namespace
+```
+
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+
 #### ▼ namespace
 
 apply先のNamespaceを設定する。
@@ -1565,6 +1587,8 @@ spec:
     # 外部のAmazon EKS Clusterのkube-apiserverのエンドポイントを指定する。
     server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
+
+> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
 
 <br>
 
