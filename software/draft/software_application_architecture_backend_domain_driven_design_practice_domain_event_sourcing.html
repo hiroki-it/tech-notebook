@@ -33637,7 +33637,7 @@
 </table>
 <div class="highlight"><pre><span></span><code><span class="c1">// 解説を補足するために長谷川で追加</span>
 
-<span class="kr">type</span><span class="w"> </span><span class="nx">ReviewAggregate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
@@ -33645,7 +33645,7 @@
 <span class="p">};</span>
 
 <span class="c1">// ステートソーシングに基づいてモデリング</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">reviewAggregate</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewAggregate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">review</span><span class="o">:</span><span class="w"> </span><span class="kt">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
@@ -33804,7 +33804,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>そのため、オブジェクトの最新の状態を得るにはその履歴を順番にたどる必要があり、履歴数が多くなるほど性能問題に影響する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getReviewAggregate</span><span class="p">(</span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ReviewState</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getReview</span><span class="p">(</span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ReviewState</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// オブジェクトの最新の状態を得るには、そのReview集約に紐づく過去の履歴をすべてたどる必要がある</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">eventStore</span><span class="p">.</span><span class="nx">findByAggregateId</span><span class="p">(</span><span class="nx">reviewId</span><span class="p">);</span>
 
@@ -33879,7 +33879,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>任意時点の状態再現や後からの再分析が必要になった場合は、イベントソーシングの導入を検討する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
-<span class="kr">type</span><span class="w"> </span><span class="nx">ReviewAggregate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
@@ -33887,7 +33887,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="p">};</span>
 
 <span class="c1">// まずはステートソーシングでReview集約を設計する</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">reviewAggregate</span><span class="o">:</span><span class="w"> </span><span class="kt">ReviewAggregate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">review</span><span class="o">:</span><span class="w"> </span><span class="kt">Review</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">reviewId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;REV001&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;B001&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">rating</span><span class="o">:</span><span class="w"> </span><span class="kt">5</span><span class="p">,</span>
@@ -34262,7 +34262,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 21:19:15 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月27日 13:53:39 JST">2026-04-27</span>
   </span>
 
     
