@@ -29187,6 +29187,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#namespace_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -35021,6 +35032,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#namespace_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -36896,6 +36918,25 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml</a></li>
 </ul>
 </blockquote>
+<h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
+<p>apply先のKubernetes Cluster名を設定する。</p>
+<p>ArgoCDに登録済みのClusterを、<code>server</code> キーのURLではなく論理名で指定したい場合（例：EKSをブルー／グリーンアップグレードしたい）に利用する。</p>
+<p>論理名は、<code>argocd cluster add &lt;デプロイ先のClusterのARN&gt; --name &lt;ダッシュボード上でのClusterの表示名&gt;</code>で登録したものである。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-application</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">in-cluster</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-namespace</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications">https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications</a></li>
+</ul>
+</blockquote>
 <h4 id="namespace_1">▼ namespace<a class="headerlink" href="#namespace_1" title="Permanent link">&para;</a></h4>
 <p>apply先のNamespaceを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
@@ -36939,6 +36980,11 @@ ID<span class="w">  </span>DATE<span class="w">                           </span
 <span class="w">    </span><span class="c1"># 外部のAmazon EKS Clusterのkube-apiserverのエンドポイントを指定する。</span>
 <span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://*****.gr7.ap-northeast-1.eks.amazonaws.com</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications">https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="specsyncpolicy">.spec.syncPolicy<a class="headerlink" href="#specsyncpolicy" title="Permanent link">&para;</a></h3>
 <h4 id="syncpolicy">▼ syncPolicyとは<a class="headerlink" href="#syncpolicy" title="Permanent link">&para;</a></h4>
@@ -37316,7 +37362,7 @@ spec:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月27日 16:20:17 JST">2026-04-27</span>
   </span>
 
     
