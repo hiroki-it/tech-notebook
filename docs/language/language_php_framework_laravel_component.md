@@ -1726,7 +1726,7 @@ class FooController extends Controller
 
 <br>
 
-### `auth` ヘルパー
+### `auth()` ヘルパー
 
 #### ▼ AuthManagerインスタンスの返却
 
@@ -1743,7 +1743,7 @@ $auth = auth();
 
 <br>
 
-### `config` ヘルパー
+### `config()` ヘルパー
 
 #### ▼ 環境変数ファイルの読み出し
 
@@ -1790,7 +1790,7 @@ return [
 
 <br>
 
-### `bcrypt` ヘルパー
+### `bcrypt()` ヘルパー
 
 > - https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt
 
@@ -1802,7 +1802,7 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 <br>
 
-### `redirect` ヘルパー
+### `redirect()` ヘルパー
 
 > - https://blog.capilano-fw.com/?p=566
 
@@ -1903,7 +1903,7 @@ class FooController extends Controller
 
 <br>
 
-### `route` ヘルパー
+### `route()` ヘルパー
 
 #### ▼ ルートエイリアスを基にURL作成
 
@@ -1926,7 +1926,7 @@ $url = route('foos_index');
 
 ### `path` 系ヘルパー
 
-#### ▼ `base_path` ヘルパー
+#### ▼ `base_path()` ヘルパー
 
 引数を設定しない場合、projectルートディレクトリの絶対パスを作成する。
 
@@ -1942,7 +1942,7 @@ $path = base_path();
 $path = base_path("vendor/bin");
 ```
 
-#### ▼ `public_path` ヘルパー
+#### ▼ `public_path()` ヘルパー
 
 引数を設定しない場合、publicディレクトリの絶対パスを作成する。
 
@@ -1958,7 +1958,7 @@ $path = public_path();
 $path = public_path("css/app.css");
 ```
 
-#### ▼ `storage_path` ヘルパー
+#### ▼ `storage_path()` ヘルパー
 
 引数を設定しない場合、storageディレクトリの絶対パスを作成する。
 
@@ -1976,7 +1976,7 @@ $path = storage_path("app/file.txt");
 
 <br>
 
-### `url` ヘルパー
+### `url()` ヘルパー
 
 #### ▼ パスを基にURL作成
 

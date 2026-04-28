@@ -396,7 +396,7 @@ class Foo extends Model
 
 #### ▼ ゲッター
 
-Laravelでは、`getFooBarAttribute` という名前の関数を、`foo_bar` という名前でコールできる。
+Laravelでは、`getFooBarAttribute()` という名前の関数を、`foo_bar` という名前でコールできる。
 
 一見、プロパティをコールしているように見えるため、注意が必要である。
 

@@ -143,25 +143,25 @@ module.exports = new Vuex.Store({
 
 #### ▼ `computed: {}`
 
-イベントハンドラ関数として、`mapGetters` ヘルパーと `mapState` ヘルパーを設定する。
+イベントハンドラ関数として、`mapGetters()` ヘルパーと `mapState()` ヘルパーを設定する。
 
 #### ▼ `methods: {}`
 
-イベントハンドラ関数として、`mapMutations` ヘルパーと `mapActions` ヘルパーを設定する。
+イベントハンドラ関数として、`mapMutations()` ヘルパーと `mapActions()` ヘルパーを設定する。
 
-#### ▼ `mapGetters` ヘルパー
+#### ▼ `mapGetters()` ヘルパー
 
 コンポーネントの `computed:{}` に、`Vuex.Store()` 関数の `getters: {}` をマッピングし、コール可能にする。
 
-#### ▼ `mapState` ヘルパー
+#### ▼ `mapState()` ヘルパー
 
 コンポーネントの `computed:{}` に、`Vuex.Store()` 関数の `state: {}` をマッピングし、コール可能にする。
 
-#### ▼ `mapMutations` ヘルパー
+#### ▼ `mapMutations()` ヘルパー
 
 コンポーネントの `methods: {}` に、Vuex.Store`関数の`mutations: {}```をマッピングし、コール可能にする。
 
-#### ▼ `mapActions` ヘルパー
+#### ▼ `mapActions()` ヘルパー
 
 コンポーネントの `methods: {}` に、`Vuex.Store()` 関数の `actions:{}` をマッピングし、コール可能にする。
 

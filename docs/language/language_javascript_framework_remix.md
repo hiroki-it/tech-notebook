@@ -416,7 +416,7 @@ CSRモードとSSGモードは厳密な区分ではなく、Remix独自の擬似
 │   │   ├── forms          # フォームコンポーネント
 │   │   ├── layouts        # レイアウトコンポーネント
 │   │   └── validators     # UI入力値バリデーション
-│   ├── constants          # グローバルな値
+│   ├── constants          # さまざまなグローバルな値
 │   ├── entry.client.tsx
 │   ├── entry.server.tsx
 │   ├── database           # データベースへの接続処理のロジック
@@ -449,7 +449,7 @@ CSRモードとSSGモードは厳密な区分ではなく、Remix独自の擬似
 export const loader = wrapLoader(async ({authenticatedUser, request}) => {
   // 中略
   // バックエンド領域のプレゼンテーション層に相当
-  // 下書き系／閲覧系ユースケースのページング処理のロジック
+  // 下書き系 (UI特有のユースケースで、APIでは不要) ・閲覧系ユースケースのページング処理のロジック
   // 中略
 });
 
@@ -472,9 +472,9 @@ export default function FooComponent() {
 
 #### ▼ `usecases` ディレクトリについて
 
-`usecases` ディレクトリには、`routes` ディレクトリの閲覧・作成・更新・削除系ユースケースの種類に応じて呼び出すためのユースケース処理を置く。
+`usecases` ディレクトリには、`routes` ディレクトリの下書き・閲覧・作成・更新・削除系ユースケースの種類に応じて呼び出すためのユースケース処理を置く。
 
-- 下書き系：`getDraftXxx`、
+- 下書き系：`getDraftXxx` (UI特有のユースケースで、APIでは不要)
 - 閲覧系：`getXxx`、`listXxx`、`searchXxx` など
 - 作成系：`registerXxx`
 - 更新系：`changeXxx`

@@ -393,7 +393,7 @@ print_r($a);
 
 ### 判定関数
 
-#### ▼ `is_scalar`
+#### ▼ `is_scalar()`
 
 スカラー型 (bool、float、int、string) を判定する。
 
