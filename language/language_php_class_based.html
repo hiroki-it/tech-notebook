@@ -12284,19 +12284,19 @@
   <a href="#require_once" class="md-nav__link">
     <span class="md-ellipsis">
       
-        require_once 関数による、クラス、非クラスの関数の読み出し
+        require_once() 関数による、クラス、非クラスの関数の読み出し
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="require_once 関数による、クラス、非クラスの関数の読み出し">
+    <nav class="md-nav" aria-label="require_once() 関数による、クラス、非クラスの関数の読み出し">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#require_once_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ require_once 関数とは
+        ▼ require_once() 関数とは
       
     </span>
   </a>
@@ -34637,19 +34637,19 @@
   <a href="#require_once" class="md-nav__link">
     <span class="md-ellipsis">
       
-        require_once 関数による、クラス、非クラスの関数の読み出し
+        require_once() 関数による、クラス、非クラスの関数の読み出し
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="require_once 関数による、クラス、非クラスの関数の読み出し">
+    <nav class="md-nav" aria-label="require_once() 関数による、クラス、非クラスの関数の読み出し">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#require_once_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ require_once 関数とは
+        ▼ require_once() 関数とは
       
     </span>
   </a>
@@ -35794,7 +35794,7 @@
 <td style="text-align: left;">✕</td>
 </tr>
 <tr>
-<td><strong><code>construct</code> 関数 の定義</strong></td>
+<td><strong><code>construct()</code> 関数 の定義</strong></td>
 <td style="text-align: left;">⭕️</td>
 <td style="text-align: left;">⭕️</td>
 <td style="text-align: left;">✕</td>
@@ -35970,12 +35970,12 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-04">02-04. 外部ファイルの読み出し<a class="headerlink" href="#02-04" title="Permanent link">&para;</a></h2>
-<h3 id="require_once"><code>require_once</code> 関数による、クラス、非クラスの関数の読み出し<a class="headerlink" href="#require_once" title="Permanent link">&para;</a></h3>
-<h4 id="require_once_1">▼ <code>require_once</code> 関数とは<a class="headerlink" href="#require_once_1" title="Permanent link">&para;</a></h4>
+<h3 id="require_once"><code>require_once()</code> 関数による、クラス、非クラスの関数の読み出し<a class="headerlink" href="#require_once" title="Permanent link">&para;</a></h3>
+<h4 id="require_once_1">▼ <code>require_once()</code> 関数とは<a class="headerlink" href="#require_once_1" title="Permanent link">&para;</a></h4>
 <p>外部ファイルとして定義したクラス、非クラスの関数を一度だけ読み込める。</p>
 <p>動的な値は持たず、静的に読み込むことに注意。</p>
 <p>ただし、チームの各エンジニアが好きなものを読み込んでいたら、スパゲッティコードになりかねない。</p>
-<p>そこで、チームでの開発では、記述ルールを設けて、<code>require_once</code> 関数で読み込んで良いものを決めておくと良い。</p>
+<p>そこで、チームでの開発では、記述ルールを設けて、<code>require_once()</code> 関数で読み込んで良いものを決めておくと良い。</p>
 <h4 id="_12">▼ クラスから関数をコール<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -36040,7 +36040,7 @@
 <p>動的な値は持たず、静的に読み込むことに注意。</p>
 <p>ただし、チームの各エンジニアが好きなものを読み込んでいたら、スパゲッティコードになりかねない。</p>
 <p>そこで、チームでの開発では、記述ルールを設けて、<code>use</code> で読み込んで良いものを決めておくと良い。</p>
-<p>注意点として、composerのオートロードを使用しない場合、<code>require</code> 関数と <code>use</code> の両方が必要である。</p>
+<p>注意点として、composerのオートロードを使用しない場合、<code>require()</code> 関数と <code>use</code> の両方が必要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html">https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html</a></li>
@@ -36153,13 +36153,13 @@
 </ul>
 </blockquote>
 <h4 id="_18">▼ コンストラクタインジェクションとは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>関数の特に、<code>construct</code> 関数 の引数として、サプライヤー側のインスタンスを注入する。</p>
+<p>関数の特に、<code>construct()</code> 関数 の引数として、サプライヤー側のインスタンスを注入する。</p>
 <p>サプライヤー側を状態として保持させ、Aggregationの関係性を作られる。</p>
-<p>コンストラクタインジェクションのみが、<code>construct</code> 関数 によって、インスタンス作成のために依存関係の要件を強制できる。</p>
+<p>コンストラクタインジェクションのみが、<code>construct()</code> 関数 によって、インスタンス作成のために依存関係の要件を強制できる。</p>
 <p>また、セッターを完全になくした場合、インスタンス作成後にオブジェクトの状態を変更できなくなる。</p>
 <p>そのため、ビジネス上ありえないオブジェクトを作成できなくなり、インジェクションの中で、ソフトウェアの安全性の観点でもっとも優れている。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>依存先のSupplierクラスを、<code>construct</code> 関数の引数として、Clientクラスに注入する。</p>
+<p>依存先のSupplierクラスを、<code>construct()</code> 関数の引数として、Clientクラスに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$supplier</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Supplier</span><span class="p">();</span>
@@ -36168,7 +36168,7 @@
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="nv">$supplier</span><span class="p">);</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>依存先のUserNameクラスを、<code>construct</code> 関数の引数として、Userクラスに注入する。</p>
+<p>依存先のUserNameクラスを、<code>construct()</code> 関数の引数として、Userクラスに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\User\Entity</span><span class="p">;</span>
@@ -36546,7 +36546,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 15:29:43 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

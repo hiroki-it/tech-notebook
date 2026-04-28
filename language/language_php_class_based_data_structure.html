@@ -12000,7 +12000,7 @@
   <a href="#php-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ PHPの list 関数とは何なのか
+        ▼ PHPの list() 関数とは何なのか
       
     </span>
   </a>
@@ -33928,7 +33928,7 @@
   <a href="#php-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ PHPの list 関数とは何なのか
+        ▼ PHPの list() 関数とは何なのか
       
     </span>
   </a>
@@ -34671,8 +34671,8 @@
 <h3 id="linkedlist">LinkedList型<a class="headerlink" href="#linkedlist" title="Permanent link">&para;</a></h3>
 <p>PHPで使用することは個人的にはないデータ格納様式。</p>
 <p>詳しくは、JavaにおけるLinkedList型を参考にせよ。</p>
-<h4 id="php-list">▼ PHPの <code>list</code> 関数とは何なのか<a class="headerlink" href="#php-list" title="Permanent link">&para;</a></h4>
-<p>PHPの <code>list</code> 関数は、List型とは意味合いが異なる。</p>
+<h4 id="php-list">▼ PHPの <code>list()</code> 関数とは何なのか<a class="headerlink" href="#php-list" title="Permanent link">&para;</a></h4>
+<p>PHPの <code>list()</code> 関数は、List型とは意味合いが異なる。</p>
 <p>配列の個々の要素を変数に格納したい場合、List型を使用しなければ、冗長ではあるが、以下の様に実装する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -34684,7 +34684,7 @@
 
 <span class="k">echo</span> <span class="nv">$a</span><span class="o">.</span><span class="nv">$i</span><span class="o">.</span><span class="nv">$u</span><span class="p">;</span> <span class="c1">// あいう</span>
 </code></pre></div>
-<p>しかし、以下の様に、<code>list</code> 関数を使用することによって、複数の変数への格納を１行で実装できる。</p>
+<p>しかし、以下の様に、<code>list()</code> 関数を使用することによって、複数の変数への格納を１行で実装できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -34699,7 +34699,7 @@
 <p><img alt="Queue2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue2.gif" /></p>
 <p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
 <p><img alt="Queue3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue3.gif" /></p>
-<p>PHPでは、<code>array_push</code> 関数と <code>array_shift</code> 関数を組み合わせることにより、実装できる。</p>
+<p>PHPでは、<code>array_push()</code> 関数と <code>array_shift()</code> 関数を組み合わせることにより、実装できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">);</span>
@@ -34738,7 +34738,7 @@
 <p><img alt="メッセージキュー" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メッセージキュー.jpg" /></p>
 <p><br></p>
 <h3 id="stack">Stack型<a class="headerlink" href="#stack" title="Permanent link">&para;</a></h3>
-<p>PHPでは、<code>array_push</code> 関数と <code>array_pop</code> 関数で実装可能。</p>
+<p>PHPでは、<code>array_push()</code> 関数と <code>array_pop()</code> 関数で実装可能。</p>
 <p><img alt="Stack1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack1.gif" /></p>
 <p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
 <p><img alt="Stack2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack2.gif" /></p>
@@ -35015,7 +35015,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

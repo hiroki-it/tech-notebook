@@ -34377,7 +34377,7 @@
 <p><br></p>
 <h3 id="request">Request<a class="headerlink" href="#request" title="Permanent link">&para;</a></h3>
 <p>処理中のコンテキスト (例：デッドライン、キャンセルなど) を持つ。</p>
-<p>処理中のコンテキストは、<code>gin.Context.Request.Context</code> 関数で取得できる。</p>
+<p>処理中のコンテキストは、<code>gin.Context.Request.Context()</code> 関数で取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Context</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Request</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span>
 <span class="p">}</span>
@@ -34448,7 +34448,7 @@
 <p><br></p>
 <h3 id="get">Get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 処理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>同じリクエストにて <code>Set</code> 関数でセットされたmap型データから、インターフェース型で値を取得する。</p>
+<p>同じリクエストにて <code>Set()</code> 関数でセットされたmap型データから、インターフェース型で値を取得する。</p>
 <p>値が存在しない場合は、第二返却値で <code>false</code> を返却する。</p>
 <blockquote>
 <ul>
@@ -34511,7 +34511,7 @@
 <p><br></p>
 <h3 id="mustget">MustGet<a class="headerlink" href="#mustget" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 処理<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>同じリクエストにて <code>Set</code> 関数でセットされたmap型データから、インターフェース型で値を取得する。</p>
+<p>同じリクエストにて <code>Set()</code> 関数でセットされたmap型データから、インターフェース型で値を取得する。</p>
 <p>値が存在しない場合は、ランタイムエラーとなる。</p>
 <blockquote>
 <ul>
@@ -34596,7 +34596,7 @@
 <h3 id="param">Param<a class="headerlink" href="#param" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 処理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>クエリパラメーターからデータを取得する。</p>
-<p>この後、構造体に紐付ける場合は、<code>BindQuery</code> 関数を使用したほうが良い。</p>
+<p>この後、構造体に紐付ける場合は、<code>BindQuery()</code> 関数を使用したほうが良い。</p>
 <p><br></p>
 <h3 id="set">Set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 処理<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
@@ -34607,9 +34607,9 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ 注意点<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>データ型を変換した値を <code>Set</code> 関数で保管しないようにする。</p>
-<p><code>Set</code> 関数後に <code>Get</code> 関数で取得される値は、元のデータ型と関係なくインターフェース型に変換されてしまう。</p>
-<p>そのため、例えば、タイプID型として値を保管したとしても、<code>Get</code> 関数で得られたインターフェース型データをあらためて変換しないといけなくなってしまう。</p>
+<p>データ型を変換した値を <code>Set()</code> 関数で保管しないようにする。</p>
+<p><code>Set()</code> 関数後に <code>Get()</code> 関数で取得される値は、元のデータ型と関係なくインターフェース型に変換されてしまう。</p>
+<p>そのため、例えば、タイプID型として値を保管したとしても、<code>Get()</code> 関数で得られたインターフェース型データをあらためて変換しないといけなくなってしまう。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middlewares</span>
 
@@ -34670,7 +34670,7 @@
 <h3 id="use">Use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
 <h4 id="use_1">▼ Useとは<a class="headerlink" href="#use_1" title="Permanent link">&para;</a></h4>
 <p>ユーザー定義のミドルウェアを使用する。</p>
-<p><code>gin.HandlerFunc</code> 関数というGin固有のデータ型が必要である。</p>
+<p><code>gin.HandlerFunc()</code> 関数というGin固有のデータ型が必要である。</p>
 <p>ミドルウェアは、<code>Use</code> した順番で実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -34692,7 +34692,7 @@
 </code></pre></div>
 <h4 id="httphandler-httphandlerfunc-ginhandlerfunc">▼ <code>http.Handler</code> や <code>http.HandlerFunc</code> から <code>gin.HandlerFunc</code> への変換<a class="headerlink" href="#httphandler-httphandlerfunc-ginhandlerfunc" title="Permanent link">&para;</a></h4>
 <p><code>gin.HandlerFunc</code> を引数にとるパッケージには、<code>http.Handler</code> や <code>http.HandlerFunc</code> を渡せる。</p>
-<p><code>WrapH</code> 関数や <code>WrapF</code> 関数を使用すると、<code>http.Handler</code> や <code>http.HandlerFunc</code> から <code>gin.HandlerFunc</code> に変換できる。</p>
+<p><code>WrapH()</code> 関数や <code>WrapF()</code> 関数を使用すると、<code>http.Handler</code> や <code>http.HandlerFunc</code> から <code>gin.HandlerFunc</code> に変換できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -34728,8 +34728,8 @@
 </blockquote>
 <h4 id="ginhandlerfunc-httphandler">▼ <code>gin.HandlerFunc</code> から <code>http.Handler</code> への変換<a class="headerlink" href="#ginhandlerfunc-httphandler" title="Permanent link">&para;</a></h4>
 <p><code>http.Handler</code> を引数にとるパッケージへ <code>gin.HandlerFunc</code> を渡すことは諦めたほうがよい。</p>
-<p><code>gin.HandlerFunc</code> 関数は <code>http.Handler</code> のラッパーである。</p>
-<p>そのため、<code>http.Handler</code> 関数から <code>gin.HandlerFunc</code> 関数への変換は簡単にできるが、その逆は <code>gin.HandlerFunc</code> 関数から値を取り出さないといけず、難しい。</p>
+<p><code>gin.HandlerFunc()</code> 関数は <code>http.Handler</code> のラッパーである。</p>
+<p>そのため、<code>http.Handler()</code> 関数から <code>gin.HandlerFunc()</code> 関数への変換は簡単にできるが、その逆は <code>gin.HandlerFunc()</code> 関数から値を取り出さないといけず、難しい。</p>
 <p><br></p>
 <h2 id="util">Util<a class="headerlink" href="#util" title="Permanent link">&para;</a></h2>
 <h3 id="h">H<a class="headerlink" href="#h" title="Permanent link">&para;</a></h3>
@@ -34778,7 +34778,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:48:36 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

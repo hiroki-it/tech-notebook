@@ -35466,7 +35466,7 @@
 <h3 id="tracerprovider">TracerProviderとは<a class="headerlink" href="#tracerprovider" title="Permanent link">&para;</a></h3>
 <p>OpenTelemetryをセットアップし、スパンを作成する機能を提供する。</p>
 <p>Goなら、<code>go.opentelemetry.io/otel/sdk</code> パッケージからコールできる。</p>
-<p><code>NewTracerProvider</code> 関数に分散トレースのオプションを渡す。</p>
+<p><code>NewTracerProvider()</code> 関数に分散トレースのオプションを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -35686,7 +35686,7 @@
 <h4 id="nooptracerprovider">▼ NoopTracerProviderを使用する<a class="headerlink" href="#nooptracerprovider" title="Permanent link">&para;</a></h4>
 <p>TracerProviderのデフォルト値である。</p>
 <p>多くの言語で、TracerProviderのインターフェースの実装である。</p>
-<p>また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK固有の一部の関数 (<code>ForceFlush</code> 関数) がある場合は使用できない。</p>
+<p>また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK固有の一部の関数 (<code>ForceFlush()</code> 関数) がある場合は使用できない。</p>
 <p>Go (<code>v1.20</code>) から <code>go.opentelemetry.io/otel/trace/noop</code> に移動したため、アップグレード時はパッケージを変更する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">TracerProvider</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="o">...</span>
@@ -35705,7 +35705,7 @@
 </blockquote>
 <h4 id="sampler">▼ Samplerを無効化する<a class="headerlink" href="#sampler" title="Permanent link">&para;</a></h4>
 <p>開発環境では、分散トレースを実施したくない。</p>
-<p><code>NeverSample</code> 関数を使用し、スパンの作成を無効化するとよい。</p>
+<p><code>NeverSample()</code> 関数を使用し、スパンの作成を無効化するとよい。</p>
 <p>TracerProviderの初期化処理はそのままで、スパンの作成のみを無効化できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
@@ -36390,7 +36390,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_8">スパン宛先の設定<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>Goの場合、<code>WithEndpoint</code> 関数を使用して、スパンの宛先 (例：<code>127.0.0.1:4317</code>、<code>opentelemetry-collector.foo-namespace.svc.cluster.local:4317</code> など) を設定する。</p>
+<p>Goの場合、<code>WithEndpoint()</code> 関数を使用して、スパンの宛先 (例：<code>127.0.0.1:4317</code>、<code>opentelemetry-collector.foo-namespace.svc.cluster.local:4317</code> など) を設定する。</p>
 <p><br></p>
 <h3 id="_9">エラー時の事後処理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 未送信スパンの送信<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
@@ -36537,7 +36537,7 @@
 <h4 id="batch-span-processor">▼ Batch Span Processor<a class="headerlink" href="#batch-span-processor" title="Permanent link">&para;</a></h4>
 <p>テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくしたうえでExporterに渡す。</p>
 <p>Exporterがまとめてスパンを送信できるようになるため、スパンの送信でスループットを高められる。</p>
-<p>Goの場合、<code>BatchSpanProcessor</code> 関数を使用する。</p>
+<p>Goの場合、<code>BatchSpanProcessor()</code> 関数を使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor">https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor</a></li>
@@ -36685,7 +36685,7 @@
 <p><br></p>
 <h3 id="_15">トレースコンテキスト仕様の設定<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>いずれのトレースコンテキスト仕様を使用するかをクライアント側とサーバー側の両方で設定する必要がある。</p>
-<p>例えばGoの場合、<code>SetTextMapPropagator</code> 関数を使用してトレースコンテキスト仕様を設定する。</p>
+<p>例えばGoの場合、<code>SetTextMapPropagator()</code> 関数を使用してトレースコンテキスト仕様を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// クライアント側マイクロサービス</span>
 <span class="c1">// 前のマイクロサービスにとってはサーバー側にもなる</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -37019,7 +37019,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 17:23:55 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

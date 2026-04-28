@@ -35314,7 +35314,7 @@
 <p><br></p>
 <h3 id="_4">ローダー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ローダーとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>ローダーは、<code>loader</code> 関数として定義できる。</p>
+<p>ローダーは、<code>loader()</code> 関数として定義できる。</p>
 <p>レンダリング前にAPIからデータを取得し、またブラウザ操作に応じてアクションからデータを取得する。</p>
 <p>各エンドポイントごとに定義できる。</p>
 <p>DBにクエリを送信し、データを取得できる。</p>
@@ -35351,7 +35351,7 @@
 </ul>
 </blockquote>
 <h4 id="_6">▼ ロギング<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>ローダー内で <code>console.log</code> 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。</p>
+<p>ローダー内で <code>console.log()</code> 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。</p>
 <h4 id="useloaderdata">▼ useLoaderData<a class="headerlink" href="#useloaderdata" title="Permanent link">&para;</a></h4>
 <p>ローダーで取得したデータを出力できる。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35441,7 +35441,7 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ ロギング<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>remixコンポーネント内で <code>console.log</code> 関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。</p>
+<p>remixコンポーネント内で <code>console.log()</code> 関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。</p>
 <h4 id="remix_3">▼ アクションではなくremixコンポーネントに実装するべき処理<a class="headerlink" href="#remix_3" title="Permanent link">&para;</a></h4>
 <p>バックエンドのデータを変更する必要がないような外部API通信処理は、アクションではなくremixコンポーネントに実装するべきである。</p>
 <p><br></p>
@@ -35517,7 +35517,7 @@
 </ul>
 </blockquote>
 <h4 id="_10">▼ ロギング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>アクション内で <code>console.log</code> 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。</p>
+<p>アクション内で <code>console.log()</code> 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。</p>
 <p><br></p>
 <h2 id="03">03. アーキテクチャ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="remixmvc">Remix独自のMVCアーキテクチャ<a class="headerlink" href="#remixmvc" title="Permanent link">&para;</a></h3>
@@ -35697,7 +35697,7 @@
 </blockquote>
 <h4 id="handledatarequest">▼ handleDataRequest<a class="headerlink" href="#handledatarequest" title="Permanent link">&para;</a></h4>
 <p>Remixの内部で実行され、JSONデータを作成し、Remixのフロントエンド処理に渡す。</p>
-<p><code>useLoaderData</code> 関数や <code>useFetcher().data</code> 関数で取得できる。</p>
+<p><code>useLoaderData()</code> 関数や <code>useFetcher().data</code> 関数で取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleDataRequest</span><span class="p">(</span><span class="nx">response</span><span class="o">:</span><span class="w"> </span><span class="nx">Response</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="nx">LoaderFunctionArgs</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">ActionFunctionArgs</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">response</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;X-Custom-Header&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">);</span>
@@ -36382,7 +36382,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月26日 16:12:18 JST">2026-03-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     
