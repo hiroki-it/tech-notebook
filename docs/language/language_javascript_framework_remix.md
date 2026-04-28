@@ -449,7 +449,7 @@ CSRモードとSSGモードは厳密な区分ではなく、Remix独自の擬似
 export const loader = wrapLoader(async ({authenticatedUser, request}) => {
   // 中略
   // バックエンド領域のプレゼンテーション層に相当
-  // 閲覧系ユースケースのページング処理のロジック
+  // 下書き系／閲覧系ユースケースのページング処理のロジック
   // 中略
 });
 
@@ -457,7 +457,7 @@ export const loader = wrapLoader(async ({authenticatedUser, request}) => {
 export const action = wrapAction(async ({request, authUser}) => {
   // 中略
   // バックエンド領域のプレゼンテーション層に相当
-  // 作成・更新・削除系ユースケースのページング処理のロジック
+  // 登録・更新・削除系ユースケースのページング処理のロジック
   // 中略
 });
 
@@ -474,6 +474,7 @@ export default function FooComponent() {
 
 `usecases` ディレクトリには、`routes` ディレクトリの閲覧・作成・更新・削除系ユースケースの種類に応じて呼び出すためのユースケース処理を置く。
 
+- 下書き系：`getDraftXxx`、
 - 閲覧系：`getXxx`、`listXxx`、`searchXxx` など
 - 作成系：`registerXxx`
 - 更新系：`changeXxx`

@@ -154,6 +154,7 @@ final class InteractorException extends Exception
 | `FooQuotaExceededError`  | Fooドメインオブジェクトの登録上限を超えている |
 | `FooChangeFailedError`   | 更新系ユースケースが失敗した                  |
 | `FooRegisterFailedError` | 登録系ユースケースが失敗した                  |
+| `FooGetDraftFailedError` | 下書き系ユースケースが失敗した                |
 | `FooGetFailedError`      | 閲覧系ユースケースが失敗した                  |
 | `FooDeleteFailedError`   | 削除系ユースケースが失敗した                  |
 
