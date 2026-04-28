@@ -79,7 +79,7 @@ export default CsrPage;
 
 以下の場合はSSRモードになる。
 
-- `fetch` 関数の第二引数に、`{ cache: "no-store" }` を指定している
+- `fetch()` 関数の第二引数に、`{ cache: "no-store" }` を指定している
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
 
 ```jsx
@@ -143,7 +143,7 @@ Route (app)                              Size     First Load JS
 
 以下の場合はSSGモードになる。
 
-- `fetch` 関数の第二引数に、`{ cache: "force-cache" }` を指定しているか、または何も指定していない
+- `fetch()` 関数の第二引数に、`{ cache: "force-cache" }` を指定しているか、または何も指定していない
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
 
 ```jsx
@@ -205,7 +205,7 @@ Route (app)                              Size     First Load JS
 
 以下の場合はISRモードになる。
 
-- `fetch` 関数の第二引数に、`{ next: { revalidate: <任意の値> } }` を指定している
+- `fetch()` 関数の第二引数に、`{ next: { revalidate: <任意の値> } }` を指定している
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
 
 ```jsx

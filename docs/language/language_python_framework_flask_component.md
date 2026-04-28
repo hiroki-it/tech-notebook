@@ -38,9 +38,9 @@ app = Flask(__name__)
 
 <br>
 
-### `route` 関数
+### `route()` 関数
 
-#### ▼ `route` 関数
+#### ▼ `route()` 関数
 
 Flaskクラスにエンドポイントを追加する。
 
@@ -59,9 +59,9 @@ PREFIX_FOO = "foo"
 
 <br>
 
-### `run` 関数
+### `run()` 関数
 
-#### ▼ `run` 関数とは
+#### ▼ `run()` 関数とは
 
 設定されたルーティングを元に、WerkzeugによるWebサーバーを起動する。
 
@@ -174,9 +174,9 @@ def create_app():
 
 #### ▼ エントリーポイント
 
-プロジェクトのルートディレクトリに、`create_app` 関数を実行するエントリーポイント (例：`main.py` ファイル) を配置する。
+プロジェクトのルートディレクトリに、`create_app()` 関数を実行するエントリーポイント (例：`main.py` ファイル) を配置する。
 
-名前空間を判定する条件分の外で `create_app` 関数を実行しないと、uwsgiがapp変数を見つけられない。
+名前空間を判定する条件分の外で `create_app()` 関数を実行しないと、uwsgiがapp変数を見つけられない。
 
 ```python
 from src import create_app
@@ -191,7 +191,7 @@ if __name__ == '__main__':
 
 #### ▼ 開発環境と本番環境の違い
 
-本番環境では、アプリケーションの実行に `run` 関数と `flask run` コマンドを使用しないようにする。
+本番環境では、アプリケーションの実行に `run()` 関数と `flask run` コマンドを使用しないようにする。
 
 代わりに、uWSGIやgunicornを使用して、エントリーポイントの関数を直接的にコールする。
 
@@ -305,7 +305,7 @@ session['username'] = request.form['username']
 username = session['username']
 ```
 
-`session.get` 関数でも取得でき、デフォルト値を設定できる。
+`session.get()` 関数でも取得でき、デフォルト値を設定できる。
 
 ```python
 from flask import Flask, session

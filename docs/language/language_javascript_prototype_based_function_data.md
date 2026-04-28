@@ -293,7 +293,7 @@ console.log(foo); // foo
 
 巻き上げは、`var` を使用して変数を宣言したときや、関数で発生し得る。
 
-確認のため `console.log` 関数を実行した場合、`foo` を宣言していないため、『x is not defined 』エラーになりそうである。
+確認のため `console.log()` 関数を実行した場合、`foo` を宣言していないため、『x is not defined 』エラーになりそうである。
 
 しかし実際は、宣言がすでに済んでおり、`foo` に値が代入されていないことを示す『undefined』となる。
 
@@ -410,7 +410,7 @@ console.log(baz); // 3
 
 順序を保ったまま配列を走査し、値を取得する。
 
-オブジェクトに対して `entires` 関数を使用して、一度配列に変換すれば、オブジェクトでも `for  of` を使用できる。
+オブジェクトに対して `entires()` 関数を使用して、一度配列に変換すれば、オブジェクトでも `for  of` を使用できる。
 
 `for  in` を使用するより、こちらを使用したほうが良い。
 
@@ -428,7 +428,7 @@ for (const value of array) {
 // baz
 ```
 
-配列の `entires` 関数を使用すれば、インデックス番号を取得もできる。
+配列の `entires()` 関数を使用すれば、インデックス番号を取得もできる。
 
 ```javascript
 const array = ["foo", "bar", "baz"];
@@ -444,7 +444,7 @@ for (const [key, value] of array.entries()) {
 
 #### ▼ オブジェクトの場合
 
-オブジェクトに対して `entires` 関数を実行し、一度連想配列に変換すれば、オブジェクトでも `for ... of` を使用できる。
+オブジェクトに対して `entires()` 関数を実行し、一度連想配列に変換すれば、オブジェクトでも `for ... of` を使用できる。
 
 ```javascript
 const object = {
@@ -551,7 +551,7 @@ for (const [key, value] of array.entries()) {
 // baz
 ```
 
-#### ▼ `forEach` 関数を使用した代替法
+#### ▼ `forEach()` 関数を使用した代替法
 
 反復処理のループを `continue` でスキップと同じ動作を、配列を処理する関数のコールバック関数の早期リターンで実現できる。
 
@@ -559,11 +559,11 @@ for (const [key, value] of array.entries()) {
 
 > - https://www.deep-rain.com/programming/javascript/778#continue
 
-PHPにも、`forEach` 関数と同様に配列に対してコールバック関数を適用する関数 (`find`、`fliter`、`map`、`reduce`、`some`) があり、用途に合わせて使い分ける。
+PHPにも、`forEach()` 関数と同様に配列に対してコールバック関数を適用する関数 (`find`、`fliter`、`map`、`reduce`、`some`) があり、用途に合わせて使い分ける。
 
 > - https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
 
-補足としてPHPにも、`forEach` 関数と同じような使い方をする `array_walk` 関数がある。
+補足としてPHPにも、`forEach()` 関数と同じような使い方をする `array_walk()` 関数がある。
 
 > - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html
 

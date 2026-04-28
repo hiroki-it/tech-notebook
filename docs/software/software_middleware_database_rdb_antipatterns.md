@@ -104,7 +104,7 @@ select * from `employees` where `department_id` = 3
 
 データアクセス時にIN句やJOIN句を使用すると、N+1問題を解消できる。
 
-Laravelでは `with` 関数を使用すると内部的には、親テーブルへのSQLと、IN句を使用したSQLが発行され、最終的に2回で済む。
+Laravelでは `with()` 関数を使用すると内部的には、親テーブルへのSQLと、IN句を使用したSQLが発行され、最終的に2回で済む。
 
 ```php
 <?php
@@ -152,7 +152,7 @@ for (const u of users) {
 
 #### ▼ 問題がある実装（２）
 
-`map` 関数を使用した反復処理でも、もちろんN+1問題が起こる。
+`map()` 関数を使用した反復処理でも、もちろんN+1問題が起こる。
 
 ```typescript
 import type {User} from "@prisma/client";

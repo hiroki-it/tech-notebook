@@ -1507,7 +1507,7 @@ func (s *server) parent(ctx context.Context) {
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/client/main.go#L100-L112
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 
-注意点として、直近では `WithStatsHandler` 関数の使用が推奨になっている。
+注意点として、直近では `WithStatsHandler()` 関数の使用が推奨になっている。
 
 ```go
 package main
@@ -1610,7 +1610,7 @@ func main() {
 > - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
 > - https://blog.cybozu.io/entry/2023/04/12/170000
 
-注意点として、直近では `WithStatsHandler` 関数の使用が推奨になっている。
+注意点として、直近では `WithStatsHandler()` 関数の使用が推奨になっている。
 
 ```go
 package main

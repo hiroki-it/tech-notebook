@@ -476,7 +476,7 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 
 ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。
 
-その後、それまでにコールされた `defer` 関数を実行し補償トランザクションを実行する。
+その後、それまでにコールされた `defer()` 関数を実行し補償トランザクションを実行する。
 
 ```go
 package saga

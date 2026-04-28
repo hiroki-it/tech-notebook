@@ -284,13 +284,13 @@ type UnaryClientInterceptor func(
     ) error
 ```
 
-この関数は、リクエストでエラーが起こった場合に、内部的に `SetStatus` 関数を実行する。
+この関数は、リクエストでエラーが起こった場合に、内部的に `SetStatus()` 関数を実行する。
 
 エラー時に、Spanステータスとエラーメッセージをスパンに設定してくれる。
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L107
 
-これをgRPCサーバーとの接続作成時に、`WithChainUnaryInterceptor` 関数に渡す。
+これをgRPCサーバーとの接続作成時に、`WithChainUnaryInterceptor()` 関数に渡す。
 
 ```go
 package main
@@ -417,13 +417,13 @@ type StreamClientInterceptor func(
 ) (ClientStream, error)
 ```
 
-この関数は、リクエストでエラーが起こった場合に、内部的に `SetStatus` 関数を実行する。
+この関数は、リクエストでエラーが起こった場合に、内部的に `SetStatus()` 関数を実行する。
 
 エラー時に、Spanステータスとエラーメッセージをスパンに設定してくれる。
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L257
 
-これをgRPCサーバーとの接続作成時に、`WithChainStreamInterceptor` 関数に渡す。
+これをgRPCサーバーとの接続作成時に、`WithChainStreamInterceptor()` 関数に渡す。
 
 ```go
 package main
@@ -601,9 +601,9 @@ func main() {
 
 分散トレースの作成を無視する場合を設定する。
 
-例えば、フィルター系の `HealthCheck` 関数はgRPCのヘルスチェックパス (`/grpc.health.v1.Health/Check`) のプレフィクス (`/grpc.health.v1.Health`) を返却する。
+例えば、フィルター系の `HealthCheck()` 関数はgRPCのヘルスチェックパス (`/grpc.health.v1.Health/Check`) のプレフィクス (`/grpc.health.v1.Health`) を返却する。
 
-これを `WithInterceptorFilter` 関数に渡すと、ヘルスチェックのパスで分散トレースの作成を無効化できる。
+これを `WithInterceptorFilter()` 関数に渡すと、ヘルスチェックのパスで分散トレースの作成を無効化できる。
 
 ```go
 package main
@@ -871,7 +871,7 @@ func main() {
 
 gRPCサーバーでは、リクエスト／レスポンスの送受信前のミドルウェアパターンとして、インターセプターを実行できる。
 
-非 `Chain` 関数であれば単一のインターセプター、一方で `Chain` 関数であれば複数のインターセプターを渡せる。
+非 `Chain()` 関数であれば単一のインターセプター、一方で `Chain()` 関数であれば複数のインターセプターを渡せる。
 
 執筆時点 (202309/16) で、パッケージの `v1` は非推奨で、`v2` が推奨である。
 
@@ -943,7 +943,7 @@ func main() {
 
 ### ヘルスチェックサーバー
 
-`grpc_health_v1` パッケージの `RegisterHealthServer` 関数を使用して、gRPCサーバーをヘルスチェックサーバーとして登録する。
+`grpc_health_v1` パッケージの `RegisterHealthServer()` 関数を使用して、gRPCサーバーをヘルスチェックサーバーとして登録する。
 
 ```go
 package main
@@ -1057,7 +1057,7 @@ func main() {
 
 gRPCクライアントでは、リクエスト／レスポンスの送受信前のミドルウェアとして、インターセプターを実行できる。
 
-非 `Chain` 関数であれば単一のインターセプター、一方で `Chain` 関数であれば複数のインターセプターを渡せる。
+非 `Chain()` 関数であれば単一のインターセプター、一方で `Chain()` 関数であれば複数のインターセプターを渡せる。
 
 #### ▼ ストリーミングRPCの場合
 
@@ -1268,7 +1268,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 内部的には `mdIncomingKey` というコンテキストキー名を指定している。
 
-このキー名は、`NewIncomingContext` 関数がメタデータ付きのコンテキスト作成時に設定する。
+このキー名は、`NewIncomingContext()` 関数がメタデータ付きのコンテキスト作成時に設定する。
 
 ```go
 func ValueFromIncomingContext(ctx context.Context, key string) []string {
@@ -1319,7 +1319,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 内部的には `mdIncomingKey` というコンテキストキー名を指定している。
 
-このキー名は、`NewOutgoingContext` 関数がメタデータ付きのコンテキスト作成時に設定する。
+このキー名は、`NewOutgoingContext()` 関数がメタデータ付きのコンテキスト作成時に設定する。
 
 ```go
 func ValueFromIncomingContext(ctx context.Context, key string) []string {
@@ -1425,7 +1425,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 リクエスト受信用のコンテキストにメタデータを設定する。
 
-コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は `AppendToOutgoingContext` 関数を使用する。
+コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は `AppendToOutgoingContext()` 関数を使用する。
 
 ```go
 package main
@@ -1459,7 +1459,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 リクエスト送信用のコンテキストにメタデータを設定する。
 
-コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は `AppendToOutgoingContext` 関数を使用する。
+コンテキストにメタデータがすでにある場合は置換するため、もしメタデータにキーを追加したい場合は `AppendToOutgoingContext()` 関数を使用する。
 
 ```go
 package main

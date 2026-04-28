@@ -432,7 +432,7 @@ fields @timestamp, @message, @logStream
 
 閾値以上の実行時間のスロークエリを実行時間の昇順で取得する。
 
-`parse` 関数でQuery_timeの値を抽出している。
+`parse()` 関数でQuery_timeの値を抽出している。
 
 ```sql
 fields @timestamp, @message

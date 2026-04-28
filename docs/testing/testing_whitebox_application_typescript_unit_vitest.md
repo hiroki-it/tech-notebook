@@ -23,7 +23,7 @@ description: Vitest＠JavaScriptユニットテストの知見を記録してい
 
 ### テストスイートの設計
 
-`describe` 関数を使用して、テストスイートを定義できる。
+`describe()` 関数を使用して、テストスイートを定義できる。
 
 テストスイートは階層的に定義でき、最大２階層まではあってもよい。
 
@@ -128,7 +128,7 @@ describe("<パブリックな関数名>", () => {
 
 #### ▼ テストケースの命名
 
-`test` 関数と `it` 関数は、振る舞いの主語（濁した主語）としての `it` または `test` として見ることができる。
+`test()` 関数と `it()` 関数は、振る舞いの主語（濁した主語）としての `it` または `test` として見ることができる。
 
 つぎのように命名すると、`it` または `test` がテストケース名の主語になって、振る舞いに着目してる感がでる。
 
@@ -143,9 +143,9 @@ describe("<テストスイート>", () => {
 
 #### ▼ 事前処理と事後処理
 
-`afterEach` 関数はモックの削除のために必須である。
+`afterEach()` 関数はモックの削除のために必須である。
 
-`beforeEach` 関数はユニットテストの外に影響がある処理（例：DB接続、ファイル操作、DOM操作、グローバル変数の変更）が必要な場合に使用する。
+`beforeEach()` 関数はユニットテストの外に影響がある処理（例：DB接続、ファイル操作、DOM操作、グローバル変数の変更）が必要な場合に使用する。
 
 ```typescript
 import {describe, it, expect, beforeEach, afterEach} from "vitest";
@@ -667,7 +667,7 @@ export async function fetchUser(id: string): Promise<User> {
 
 #### ▼ テストコード
 
-`toBeDefined` 関数と `toBeUndefined` 関数を使用し、オプショナル型を事前に検証したうえで、値を検証するとよい。
+`toBeDefined()` 関数と `toBeUndefined()` 関数を使用し、オプショナル型を事前に検証したうえで、値を検証するとよい。
 
 また、プロパティがある場合をテストするときには、非nullアサーションが必要である。
 
@@ -847,7 +847,7 @@ export function runTask(num: number): string {
 
 #### ▼ テストコード
 
-プライベート関数に仮の返却値を返却させるために、`spyOn` 関数を使用している。
+プライベート関数に仮の返却値を返却させるために、`spyOn()` 関数を使用している。
 
 ```typescript
 import {describe, test, expect, vi} from "vitest";
@@ -880,7 +880,7 @@ describe("runTask", () => {
 
 #### ▼ テスト対象の関数
 
-`axios` 関数のようなクライアントではなく、独自のクライアントクラスがあるとする。
+`axios()` 関数のようなクライアントではなく、独自のクライアントクラスがあるとする。
 
 ```typescript
 // httpClient.ts

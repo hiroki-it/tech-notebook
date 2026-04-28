@@ -671,7 +671,7 @@ data:
 
 #### ▼ 空行を挿入したくない
 
-空行を挿入したくない場合、パイプの後にそのまま `readFile` 関数を定義する。
+空行を挿入したくない場合、パイプの後にそのまま `readFile()` 関数を定義する。
 
 ```yaml
 apiVersion: v1
@@ -698,7 +698,7 @@ Helmには `.Files.Get` 関数や `.Files.Glob` 関数がある。
 
 これらの関数でJSONファイルを読み込もうとすると、 (なぜか) エラーになる。
 
-Helmfileの `readFile` 関数ではエラーが起こらない。
+Helmfileの `readFile()` 関数ではエラーが起こらない。
 
 ```yaml
 apiVersion: v1

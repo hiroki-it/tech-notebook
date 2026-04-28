@@ -786,7 +786,7 @@ resource "aws_instance" "server" {
 }
 ```
 
-注意点として、`count` 関数を使用すると、他のブロック (例：`resource` ブロック、`output` ブロック) で設定値にアクセスするときはインデックス番号 `0` を指定する必要がある。
+注意点として、`count()` 関数を使用すると、他のブロック (例：`resource` ブロック、`output` ブロック) で設定値にアクセスするときはインデックス番号 `0` を指定する必要がある。
 
 ```terraform
 resource "foo" "server" {
@@ -831,11 +831,11 @@ resource "aws_instance" "server" {
 }
 ```
 
-#### ▼ `count` 関数で作成されなかった `resource` ブロックを検知
+#### ▼ `count()` 関数で作成されなかった `resource` ブロックを検知
 
-`count` 関数で作成したブロックを他のブロックで使用する場合、それを検知できるようにする必要がある。
+`count()` 関数で作成したブロックを他のブロックで使用する場合、それを検知できるようにする必要がある。
 
-`count` 関数で作成されたリソースが存在するかどうかは、`length` 関数で検知できる。
+`count()` 関数で作成されたリソースが存在するかどうかは、`length()` 関数で検知できる。
 
 ```terraform
 resource "aws_kms_key" "foo" {
@@ -878,11 +878,11 @@ resource "aws_kms_replica_key" "foo" {
 
 > - https://stackoverflow.com/questions/71484962/conditional-creation-of-parent-child-resources/71490413#71490413
 
-#### ▼ `count` 関数で作成されなかった `output` ブロックは `null`
+#### ▼ `count()` 関数で作成されなかった `output` ブロックは `null`
 
-`count` 関数で作成されたリソースに対してのみ `output` ブロックで値を出力し、もしリソースがなければ `null` や空文字 (`""`) を出力するようにする。
+`count()` 関数で作成されたリソースに対してのみ `output` ブロックで値を出力し、もしリソースがなければ `null` や空文字 (`""`) を出力するようにする。
 
-補足として、`count` 関数の結果の検知には、`length` 関数を使用する。
+補足として、`count()` 関数の結果の検知には、`length()` 関数を使用する。
 
 ```terraform
 output "foo_kms_key_arn" {
@@ -1478,9 +1478,9 @@ resource "aws_security_group" "ec2" {
 
 ## 07. tpl形式の切り出しと読み出し
 
-### `templatefile` 関数
+### `templatefile()` 関数
 
-#### ▼ `templatefile` 関数とは
+#### ▼ `templatefile()` 関数とは
 
 第一引数でポリシーが定義されたファイルを読み出し、第二引数でファイルに変数を渡す。
 

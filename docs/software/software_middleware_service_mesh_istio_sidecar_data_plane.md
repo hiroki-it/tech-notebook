@@ -439,7 +439,7 @@ func (a *ADSC) Run() error {
 
 > - https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446
 
-`handleRecv` 関数内で、Envoyの各処理コンポーネントを整理し、最後に `XDSUpdates` チャネルへ値を送信している。
+`handleRecv()` 関数内で、Envoyの各処理コンポーネントを整理し、最後に `XDSUpdates` チャネルへ値を送信している。
 
 ```go
 func (a *ADSC) handleRecv() {
@@ -505,7 +505,7 @@ func (a *ADSC) handleRecv() {
 
 #### ▼ ADSクライアントとしての `istioctl` コマンドの実装
 
-`Run` 関数によるXDS-APIとの通信は、`istioctl` コマンドでも使用されている。
+`Run()` 関数によるXDS-APIとの通信は、`istioctl` コマンドでも使用されている。
 
 ```go
 func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount string, opts clioptions.CentralControlPlaneOptions, grpcOpts []grpc.DialOption,) (*discovery.DiscoveryResponse, error) {

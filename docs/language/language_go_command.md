@@ -30,7 +30,7 @@ description: コマンド＠Goの知見を記録しています。
 $ go build ./cmd
 ```
 
-もし、ビルドのエラー時に終了ステータスのみが返却され、原因が不明の場合、`panic` 関数が原因を握りつぶしている可能性を考える。
+もし、ビルドのエラー時に終了ステータスのみが返却され、原因が不明の場合、`panic()` 関数が原因を握りつぶしている可能性を考える。
 
 ```bash
 exit status 2. Docker build ran into internal error. Please retry. If this keeps happening, please open an issue..
@@ -618,7 +618,7 @@ module github.com/hiroki-hasegawa/foo-repository/local-pkg
 go 1.16
 ```
 
-この場合、パブリックリポジトリ上での自身のリポジトリからインポートせずに、`replace` 関数を使用してインポートする必要がある。
+この場合、パブリックリポジトリ上での自身のリポジトリからインポートせずに、`replace()` 関数を使用してインポートする必要がある。
 
 自前共有の全モジュールでモジュール名を置換する必要はなく、プロジェクトのルートパスについてのみ定義すれば良い。
 

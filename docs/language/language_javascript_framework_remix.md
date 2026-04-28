@@ -97,7 +97,7 @@ SSRのため、サーバーレンダリングとしている。
 
 #### ▼ ローダーとは
 
-ローダーは、`loader` 関数として定義できる。
+ローダーは、`loader()` 関数として定義できる。
 
 レンダリング前にAPIからデータを取得し、またブラウザ操作に応じてアクションからデータを取得する。
 
@@ -140,7 +140,7 @@ export const loader = async () => {
 
 #### ▼ ロギング
 
-ローダー内で `console.log` 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。
+ローダー内で `console.log()` 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。
 
 #### ▼ useLoaderData
 
@@ -238,7 +238,7 @@ export default function Posts() {
 
 #### ▼ ロギング
 
-remixコンポーネント内で `console.log` 関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。
+remixコンポーネント内で `console.log()` 関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。
 
 #### ▼ アクションではなくremixコンポーネントに実装するべき処理
 
@@ -323,7 +323,7 @@ export async function action({request}: ActionFunctionArgs) {
 
 #### ▼ ロギング
 
-アクション内で `console.log` 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。
+アクション内で `console.log()` 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。
 
 <br>
 
@@ -529,7 +529,7 @@ export default function FooComponent() {
 
 Remixの内部で実行され、JSONデータを作成し、Remixのフロントエンド処理に渡す。
 
-`useLoaderData` 関数や `useFetcher().data` 関数で取得できる。
+`useLoaderData()` 関数や `useFetcher().data` 関数で取得できる。
 
 ```jsx
 export function handleDataRequest(response: Response, {request, params, context}: LoaderFunctionArgs | ActionFunctionArgs

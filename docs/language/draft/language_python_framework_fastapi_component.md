@@ -36,7 +36,7 @@ app = FastAPI()
 
 FastAPIクラスに非同期処理を実行するエンドポイントを追加する。
 
-FastAPIインスタンスに登録するためには、`include_router` 関数にAPIRouterインスタンスを渡す必要がある。
+FastAPIインスタンスに登録するためには、`include_router()` 関数にAPIRouterインスタンスを渡す必要がある。
 
 また、DBのセッションを開始するために、DBオブジェクトを注入する必要がある。
 

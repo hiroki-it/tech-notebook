@@ -109,11 +109,11 @@ sessionドライバーを選択する。
 
 #### ▼ 全てのユーザーが同一権限を持つ場合
 
-SessionGuardクラスの `attempt` 関数をコールしてパスワードをハッシュ化し、DBのハッシュ値と照合する。
+SessionGuardクラスの `attempt()` 関数をコールしてパスワードをハッシュ化し、DBのハッシュ値と照合する。
 
 認証が成功すると、認証セッションを開始する。
 
-`redirect` 関数で、認証後の初期ページにリダイレクトする。
+`redirect()` 関数で、認証後の初期ページにリダイレクトする。
 
 > - https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
 
@@ -222,7 +222,7 @@ return [
 
 ```
 
-Authファサードの `guard` 関数を使用して、ガードに応じた認証する。
+Authファサードの `guard()` 関数を使用して、ガードに応じた認証する。
 
 これにより、同じ認証後ページへリダイレクトした後、ユーザーの Eloquent モデルに応じた処理を実行できるようになる。
 
@@ -265,7 +265,7 @@ final class AuthenticationController
 
 ### 認証済みか否かの判定
 
-#### ▼ `user` 関数
+#### ▼ `user()` 関数
 
 現在のセッションにおけるユーザーが認証済みであれば、ユーザーのEloquentモデルを取得する。
 
@@ -277,7 +277,7 @@ final class AuthenticationController
 $user = auth()->user();
 ```
 
-#### ▼ `check` 関数
+#### ▼ `check()` 関数
 
 現在のセッションにおけるユーザーが認証済みであれば、`true` を返却する。
 
@@ -473,11 +473,11 @@ Route::group(['middleware' => ['auth:web']], function () {
 
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
 
-#### ▼ `authorization` 関数による認可
+#### ▼ `authorization()` 関数による認可
 
 コントローラー実行時にDBレコードレベルの認可スコープを定義する。
 
-基底コントローラーを継承したコントローラーでは `authorization` 関数をコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内か否かを検証する。
+基底コントローラーを継承したコントローラーでは `authorization()` 関数をコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内か否かを検証する。
 
 第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。
 
@@ -530,11 +530,11 @@ class FooController extends Controller
 > - https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
 > - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
 
-#### ▼ `can` 関数による認可
+#### ▼ `can()` 関数による認可
 
 コントローラー実行時にDBレコードレベルの認可スコープを定義する。
 
-現在認証されているユーザーのインスタンスから `can` 関数をコールできる。
+現在認証されているユーザーのインスタンスから `can()` 関数をコールできる。
 
 第二引数として、ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す。
 
@@ -783,7 +783,7 @@ return [
 
 `(4)`
 
-: Userへのルーティング時に、`middleware` 関数による認証ガードを実行する。
+: Userへのルーティング時に、`middleware()` 関数による認証ガードを実行する。
 
      これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
 
@@ -818,7 +818,7 @@ class User extends Authenticatable
 
 `(6)`
 
-: Passportの `routes` 関数をコールする。
+: Passportの `routes()` 関数をコールする。
 
      これにより、Passportの認証フェーズに関わる全てのルーティング (`/oauth/xxx`) が有効になる。
 

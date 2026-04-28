@@ -144,7 +144,7 @@ DROP TABLE `UserDetail`;
 
 ローカルマシン用の初期データを挿入する。
 
-`seed.ts` ファイルにある `seed` 関数を実行する。
+`seed.ts` ファイルにある `seed()` 関数を実行する。
 
 ```bash
 $ yarn prisma db seed

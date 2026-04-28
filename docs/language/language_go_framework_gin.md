@@ -43,7 +43,7 @@ type Context struct {
 
 処理中のコンテキスト (例：デッドライン、キャンセルなど) を持つ。
 
-処理中のコンテキストは、`gin.Context.Request.Context` 関数で取得できる。
+処理中のコンテキストは、`gin.Context.Request.Context()` 関数で取得できる。
 
 ```go
 type Context struct {
@@ -130,7 +130,7 @@ type User struct {
 
 #### ▼ 処理
 
-同じリクエストにて `Set` 関数でセットされたmap型データから、インターフェース型で値を取得する。
+同じリクエストにて `Set()` 関数でセットされたmap型データから、インターフェース型で値を取得する。
 
 値が存在しない場合は、第二返却値で `false` を返却する。
 
@@ -211,7 +211,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 #### ▼ 処理
 
-同じリクエストにて `Set` 関数でセットされたmap型データから、インターフェース型で値を取得する。
+同じリクエストにて `Set()` 関数でセットされたmap型データから、インターフェース型で値を取得する。
 
 値が存在しない場合は、ランタイムエラーとなる。
 
@@ -310,7 +310,7 @@ func printRequestHeaderList(ginCtx *gin.Context) {
 
 クエリパラメーターからデータを取得する。
 
-この後、構造体に紐付ける場合は、`BindQuery` 関数を使用したほうが良い。
+この後、構造体に紐付ける場合は、`BindQuery()` 関数を使用したほうが良い。
 
 <br>
 
@@ -324,11 +324,11 @@ func printRequestHeaderList(ginCtx *gin.Context) {
 
 #### ▼ 注意点
 
-データ型を変換した値を `Set` 関数で保管しないようにする。
+データ型を変換した値を `Set()` 関数で保管しないようにする。
 
-`Set` 関数後に `Get` 関数で取得される値は、元のデータ型と関係なくインターフェース型に変換されてしまう。
+`Set()` 関数後に `Get()` 関数で取得される値は、元のデータ型と関係なくインターフェース型に変換されてしまう。
 
-そのため、例えば、タイプID型として値を保管したとしても、`Get` 関数で得られたインターフェース型データをあらためて変換しないといけなくなってしまう。
+そのため、例えば、タイプID型として値を保管したとしても、`Get()` 関数で得られたインターフェース型データをあらためて変換しないといけなくなってしまう。
 
 **＊実装例＊**
 
@@ -407,7 +407,7 @@ router := gin.New()
 
 ユーザー定義のミドルウェアを使用する。
 
-`gin.HandlerFunc` 関数というGin固有のデータ型が必要である。
+`gin.HandlerFunc()` 関数というGin固有のデータ型が必要である。
 
 ミドルウェアは、`Use` した順番で実行する。
 
@@ -435,7 +435,7 @@ func FooMiddleware() gin.HandlerFunc {
 
 `gin.HandlerFunc` を引数にとるパッケージには、`http.Handler` や `http.HandlerFunc` を渡せる。
 
-`WrapH` 関数や `WrapF` 関数を使用すると、`http.Handler` や `http.HandlerFunc` から `gin.HandlerFunc` に変換できる。
+`WrapH()` 関数や `WrapF()` 関数を使用すると、`http.Handler` や `http.HandlerFunc` から `gin.HandlerFunc` に変換できる。
 
 ```go
 package main
@@ -473,9 +473,9 @@ func BazMiddleware(next http.Handler) http.HandlerFunc {
 
 `http.Handler` を引数にとるパッケージへ `gin.HandlerFunc` を渡すことは諦めたほうがよい。
 
-`gin.HandlerFunc` 関数は `http.Handler` のラッパーである。
+`gin.HandlerFunc()` 関数は `http.Handler` のラッパーである。
 
-そのため、`http.Handler` 関数から `gin.HandlerFunc` 関数への変換は簡単にできるが、その逆は `gin.HandlerFunc` 関数から値を取り出さないといけず、難しい。
+そのため、`http.Handler()` 関数から `gin.HandlerFunc()` 関数への変換は簡単にできるが、その逆は `gin.HandlerFunc()` 関数から値を取り出さないといけず、難しい。
 
 <br>
 
