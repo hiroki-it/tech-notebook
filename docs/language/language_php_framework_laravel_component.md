@@ -1808,13 +1808,13 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 <br>
 
-### `response` ヘルパー
+### `response()` ヘルパー
 
 #### ▼ JSON型データを含むレスポンス
 
 返却されるResponseFactoryクラスの `json()` 関数にレンダリングしたいJSON型データを設定する。
 
-`response` ヘルパーは初期値として `200` ステータスが設定されているが、`view()` 関数や `setStatusCode()` 関数を使用して、明示的に設定しても良い。
+`response()` ヘルパーは初期値として `200` ステータスが設定されているが、`view()` 関数や `setStatusCode()` 関数を使用して、明示的に設定しても良い。
 
 > - https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
 
@@ -1849,7 +1849,7 @@ class FooController extends Controller
 
 また、Viewクラスの `header()` 関数にHTTPヘッダー値を設定する。
 
-`response` ヘルパーは初期値として `200` ステータスが設定されているが、`view()` 関数や `setStatusCode()` 関数を使用して、明示的に設定しても良い。
+`response()` ヘルパーは初期値として `200` ステータスが設定されているが、`view()` 関数や `setStatusCode()` 関数を使用して、明示的に設定しても良い。
 
 **＊実装例＊**
 

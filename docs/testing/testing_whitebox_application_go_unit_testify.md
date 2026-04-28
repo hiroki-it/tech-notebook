@@ -99,7 +99,7 @@ type MockUserInterface struct {
 // モック構造体に紐づける仮の関数
 func (m *MockUserInterface) Get(id int) (*model.User, error) {
 
-	// On関数で設定された値を受け取る
+	// On()関数で設定された値を受け取る
 	arguments := m.Called(id)
 
 	// 本物の関数を同じ返却値にする
@@ -112,8 +112,8 @@ func TestUser_UserName(t *testing.T) {
 
     mockUser := new(user.MockUserInterface)
 
-	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
-	// 引数と返却値のデータ型は、仮のGet関数と一致させる
+	// Get()関数内部のCalled()関数に、仮の処理 (ここでは引数と返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGet()関数と一致させる
     mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
     u := &User{
@@ -175,7 +175,7 @@ type MockUserInterface struct {
 // Mock構造体に紐づける仮の関数
 func (m *MockUserInterface) Get(id int) (*model.User, error) {
 
-	// On関数で設定された値を受け取る
+	// On()関数で設定された値を受け取る
 	arguments := m.Called(id)
 
 	// 本物の関数を同じ返却値にする
@@ -188,8 +188,8 @@ func TestUser_UserName(t *testing.T) {
 
 	mockUser := new(user.MockUserInterface)
 
-	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
-	// 引数と返却値のデータ型は、仮のGet関数と一致させる
+	// Get()関数内部のCalled()関数に、仮の処理 (ここでは引数と返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGet()関数と一致させる
 	mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
 	u := &User{
@@ -229,7 +229,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 	optFns ...func(*aws_amplify.Options)
 	) (*aws_amplify.GetBranchOutput, error) {
 
-	// On関数で設定された値を受け取る
+	// On()関数で設定された値を受け取る
 	arguments := m.Called(ctx, params, optFns)
 
 	// 本物の関数を同じ返却値にする
@@ -276,7 +276,7 @@ type MockedUser struct {
 // Mock構造体に紐づける仮の関数
 func (m *MockedUser) GetAge() int {
 
-	// On関数で設定された値を受け取る
+	// On()関数で設定された値を受け取る
 	args := m.Called()
 
 	return args.Int(0)
@@ -286,8 +286,8 @@ func Test_Mock(t *testing.T) {
 
 	mockUser := new(MockedUser)
 
-	// GetAge関数内部のCalled関数に、仮の処理 (ここでは返却値) を設定する
-	// 引数と返却値のデータ型は、仮のGetAge関数と一致させる
+	// GetAge()関数内部のCalled()関数に、仮の処理 (ここでは返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGetAge()関数と一致させる
 	mockUser.On("GetAge").Return(20)
 
 	// テストを実施する
@@ -338,7 +338,7 @@ type MockedUser struct {
 // Mock構造体に紐づける仮の関数
 func (m *MockedUser) GetAge() int {
 
-	// On関数で設定された値を受け取る
+	// On()関数で設定された値を受け取る
 	args := m.Called()
 
 	return args.Int(0)
@@ -348,8 +348,8 @@ func Test_Mock(t *testing.T) {
 
 	mockUser := new(MockedUser)
 
-	// GetAge関数内部のCalled関数に、仮の処理 (ここでは返却値) を設定する
-	// 引数と返却値のデータ型は、仮のGetAge関数と一致させる
+	// GetAge()関数内部のCalled()関数に、仮の処理 (ここでは返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGetAge()関数と一致させる
 	mockUser.On("GetAge").Return(20)
 
 	// テストを実施する
@@ -357,7 +357,7 @@ func Test_Mock(t *testing.T) {
 
 	// 期待値と実際値を比較する
 	mockUser.AssertExpectations(t)
-	mockUser.AssertExpectations(t, "GetAge", 1)	// GetAge関数をコールした回数を検証する
+	mockUser.AssertExpectations(t, "GetAge", 1)	// GetAge()関数をコールした回数を検証する
 	assert.True(t, result)
 }
 ```
@@ -419,7 +419,7 @@ type MockUserInterface struct {
 // Mock構造体に紐づける仮の関数
 func (m *MockUserInterface) Get(id int) (*model.User, error) {
 
-	// On関数で設定された値を受け取る
+	// On()関数で設定された値を受け取る
 	arguments := m.Called(id)
 
 	// 本物の関数を同じ返却値にする
@@ -432,8 +432,8 @@ func TestUser_UserName(t *testing.T) {
 
 	mockUser := new(user.MockUserInterface)
 
-	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
-	// 引数と返却値のデータ型は、仮のGet関数と一致させる
+	// Get()関数内部のCalled()関数に、仮の処理 (ここでは引数と返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGet()関数と一致させる
 	mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
 	u := &User{
@@ -471,7 +471,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 	optFns ...func(*aws_amplify.Options)
 	) (*aws_amplify.GetBranchOutput, error) {
 
-	// On関数で設定された値を受け取る
+	// On()関数で設定された値を受け取る
 	arguments := m.Called(ctx, params, optFns)
 
 	// 本物の関数を同じ返却値にする
@@ -528,7 +528,7 @@ type MockUserInterface struct {
 // Mock構造体に紐づける仮の関数
 func (m *MockUserInterface) Get(id int) (*model.User, error) {
 
-	// On関数で設定された値を受け取る
+	// On()関数で設定された値を受け取る
 	arguments := m.Called(id)
 
 	// 本物の関数を同じ返却値にする
@@ -541,8 +541,8 @@ func TestUser_UserName(t *testing.T) {
 
 	mockUser := new(user.MockUserInterface)
 
-	// Get関数内部のCalled関数に、仮の処理 (ここでは引数と返却値) を設定する
-	// 引数と返却値のデータ型は、仮のGet関数と一致させる
+	// Get()関数内部のCalled()関数に、仮の処理 (ここでは引数と返却値) を設定する
+	// 引数と返却値のデータ型は、仮のGet()関数と一致させる
 	mockUser.On("Get", testUser.ID).Return(testUser, nil)
 
 	u := &User{
@@ -580,7 +580,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 	optFns ...func(*aws_amplify.Options)
 	) (*aws_amplify.GetBranchOutput, error) {
 
-	// On関数で設定された値を受け取る
+	// On()関数で設定された値を受け取る
 	arguments := m.Called(ctx, params, optFns)
 
 	// 本物の関数を同じ返却値にする

@@ -95,7 +95,7 @@ class FooTest extends TestCase
         // 上層クラスに対して、下層クラスのモックのインジェクションを実行する
         $foo = new Foo($mockFooRepository);
 
-        // 上層クラスの内部にある下層モックのfind関数をコールする
+        // 上層クラスの内部にある下層モックのfind()関数をコールする
         $foo->getUser($fooId)
 
         // 上層のクラスが、下層モックにパラメーターを渡し、関数を実行したことを検証する。
