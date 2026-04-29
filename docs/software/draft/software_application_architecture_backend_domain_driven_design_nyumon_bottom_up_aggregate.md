@@ -596,11 +596,13 @@ class Circle {
 テーブル内のロックの範囲はいくつか種類があるが、筆者は言及していなかったため、ここではレコードロックとした
 ```
 
-トランザクション境界と集約は一致させるとよく、一致させることで適切な排他制御になる。
+### 12.3.1 トランザクション範囲の定義 (長谷川が追加したセクション)
 
-例えば、`READ`処理と`CREATE`処理の両方が必要な更新系ユースケースでは、`READ`処理と`CREATE`処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。
+トランザクション範囲はユースケース層で定義すると良い。
 
-そのため、ユースケース層でトランザクション境界を定義し、定義したトランザクション境界内でリポジトリを呼び出す。
+例えば、`READ`処理と`UPDATE`処理の両方が必要な更新系ユースケースでは、`READ`処理と`UPDATE`処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。
+
+そのため、ユースケース層でトランザクション範囲を定義し、定義したトランザクション範囲内でリポジトリを呼び出す。
 
 ```tsx
 class CircleApplicationService {
@@ -616,6 +618,7 @@ class CircleApplicationService {
       const circleRepository = new CircleRepository(tx);
       const userRepository = new UserRepository(tx);
 
+      // READ処理
       const circle = await circleRepository.find(
         new CircleId(command.circleId),
       );
@@ -627,6 +630,7 @@ class CircleApplicationService {
 
       circle.join(user);
 
+      // UPDATE処理
       await circleRepository.save(circle);
     });
   }
