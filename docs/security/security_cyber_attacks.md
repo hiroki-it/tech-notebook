@@ -162,7 +162,7 @@ SELECT * from USER where USER_NAME = '{user_name}' and PASSWORD = '{password}'
 - ユーザー名：`foo`
 - パスワード： `aaa' or '1' ='1`
 
-これにより、以下のSQLを実行することになる。
+これにより、以下のRead処理を実行することになる。
 
 ```mysql
 SELECT * from USER where USER_NAME = 'foo' and PASSWORD = 'aaa' or '1' ='1'

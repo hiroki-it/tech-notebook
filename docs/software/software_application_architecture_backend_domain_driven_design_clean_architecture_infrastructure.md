@@ -143,11 +143,11 @@ interface FooRepository extends Repository
 }
 ```
 
-### DBに対する書き込み責務 (Create、Update、Delete)
+### DBに対する書き込み責務 (CREATE／UPDATE／DELETE)
 
 ![ドメイン駆動設計_リポジトリ_データ更新](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ更新.png)
 
-DBに対する書き込み操作をする。
+DBに対する書き込み操作をする。各メソッドではトランザクションを実行し、その中でCREATE／UPDATE／DELETEを実施する。
 
 `(1)`
 
@@ -360,7 +360,7 @@ class DogToyRepository
         ->where("dog_toy.is_deleted", FlagConstant::IS_OFF)
         ->getQuery();
 
-        // SQLを実行する。
+        // Read処理を実行する。
         $entities = $query->getResult();
 
         $dogToys = [];

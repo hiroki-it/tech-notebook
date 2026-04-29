@@ -160,7 +160,7 @@ $data[] = $staff_name;
 $data[] = $staff_pass;
 
 
-// SQLを実行
+// Write処理を実行
 $stmt->execute($data);
 
 

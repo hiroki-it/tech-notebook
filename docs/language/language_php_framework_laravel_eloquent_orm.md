@@ -248,7 +248,7 @@ class Foo extends Model
 
 #### ▼ TIMESTAMP型カラム読み出し時のデータ型変換
 
-DBからタイムスタンプ型カラムを読み出すと同時に、CarbonのDateTimeクラスに変換したい場合、`data` プロパティにて、カラム名を設定する。
+DBからタイムスタンプ型カラムのRead処理を実行すると同時に、CarbonのDateTimeクラスに変換したい場合、`data` プロパティにて、カラム名を設定する。
 
 **＊実装例＊**
 

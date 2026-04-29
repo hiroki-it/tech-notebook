@@ -116,7 +116,7 @@ $ prisma migrate reset --force
 
 #### ▼ rollback
 
-prismaには、rollbackのコマンドがなく、ロールバック用のSQLを実行する必要がある。
+prismaには、rollbackのコマンドがなく、ロールバック用のWrite処理を実行する必要がある。
 
 ```bash
 $ prisma migrate diff \

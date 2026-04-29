@@ -114,7 +114,7 @@ try{
 
     // トランザクションを開始する。
     $db->beginTransaction();
-    // いくつかのSQLが実行される。※もし失敗した場合、ERRMODE_EXCEPTIONを実行。
+    // いくつかのWrite処理を実行する。※もし失敗した場合、ERRMODE_EXCEPTIONを実行。
     $db->exec("INSERT INTO movie(title, price) VALUES("ハリポタ", 2000)")
     $db->exec("INSERT INTO movie(title, price) VALUES("シスター", 2000)")
 
