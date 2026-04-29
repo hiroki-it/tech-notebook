@@ -34095,7 +34095,7 @@
 <p>制御が反転しているため、Temporalサーバーはユーザーが何かを実装する必要はない。</p>
 <h4 id="temporal_5">▼ アクティビティ定義用のTemporalワーカー<a class="headerlink" href="#temporal_5" title="Permanent link">&para;</a></h4>
 <p>アクティビティ定義用のTemporalワーカーは、ワークフロー定義を登録する。</p>
-<p>また、実際にローカルトランザクションを実行する。</p>
+<p>また、実際にローカルトランザクション処理を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -34282,8 +34282,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">補償トランザクション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。</p>
-<p>その後、それまでにコールされた <code>defer()</code> 関数を実行し補償トランザクションを実行する。</p>
+<p>ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクション処理をロールバックする。</p>
+<p>その後、それまでにコールされた <code>defer()</code> 関数を実行し補償トランザクション処理を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -34324,8 +34324,8 @@
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// ローカルトランザクション</span>
-<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクションをロールバックする</span>
-<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
+<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクション処理をロールバックする</span>
+<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクション処理を元に戻す補償トランザクション処理を実行する</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Deposit</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
@@ -34343,8 +34343,8 @@
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// ローカルトランザクション</span>
-<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクションをロールバックする</span>
-<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
+<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクション処理をロールバックする</span>
+<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクション処理を元に戻す補償トランザクション処理を実行する</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">StepWithError</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
@@ -34407,7 +34407,7 @@ sequenceDiagram
 <p><br></p>
 <h2 id="03">03. 実装<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="getworkflow">GetWorkflow<a class="headerlink" href="#getworkflow" title="Permanent link">&para;</a></h3>
-<p>Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクションを実行するマイクロサービスに相当する。</p>
+<p>Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクション処理を実行するマイクロサービスに相当する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -34465,7 +34465,7 @@ sequenceDiagram
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 21:54:05 JST">2026-04-29</span>
   </span>
 
     

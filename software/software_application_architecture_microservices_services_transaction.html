@@ -2340,7 +2340,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ローカルトランザクションを実装できるパターン
+        ▼ ローカルトランザクション処理を実装できるパターン
       
     </span>
   </a>
@@ -2379,7 +2379,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ グローバルトランザクションを実装できるパターン
+        ▼ グローバルトランザクション処理を実装できるパターン
       
     </span>
   </a>
@@ -34090,7 +34090,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ローカルトランザクションを実装できるパターン
+        ▼ ローカルトランザクション処理を実装できるパターン
       
     </span>
   </a>
@@ -34129,7 +34129,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ グローバルトランザクションを実装できるパターン
+        ▼ グローバルトランザクション処理を実装できるパターン
       
     </span>
   </a>
@@ -35010,16 +35010,16 @@
 <h4 id="_4">▼ ローカルトランザクションとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p><code>1</code> 個のトランザクション処理によって、<code>1</code> 個のマイクロサービスのDBやスキーマ (MySQLの文脈ではスキーマがDBに相当) を操作する。</p>
 <p>推奨される。</p>
-<p>マイクロサービスアーキテクチャでローカルトランザクションを使用する場合、これを連続的に実行する仕組みが必要になる。</p>
-<p>また、これらの各DBに対する各トランザクションを紐付けられるように、トランザクションにID (例：UUID) を割り当てる必要がある。</p>
+<p>マイクロサービスアーキテクチャでローカルトランザクション処理を使用する場合、これを連続的に実行する仕組みが必要になる。</p>
+<p>また、これらの各DBに対する各トランザクション処理を紐付けられるように、トランザクションにID (例：UUID) を割り当てる必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html">https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html</a></li>
 <li><a href="https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2">https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2</a></li>
 </ul>
 </blockquote>
-<h4 id="_5">▼ ローカルトランザクションを実装できるパターン<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>ローカルトランザクションを連鎖させる必要がある場合、Sagaパターン (オーケストレーションベース、コレグラフィベース、並列パイプラインベース) も採用する必要がある。</p>
+<h4 id="_5">▼ ローカルトランザクション処理を実装できるパターン<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>ローカルトランザクション処理を連鎖させる必要がある場合、Sagaパターン (オーケストレーションベース、コレグラフィベース、並列パイプラインベース) も採用する必要がある。</p>
 <p>一方で、連鎖させる必要がない場合は特に名前がないが、便宜上『連鎖不要のローカルトランザクション』とする。</p>
 <blockquote>
 <ul>
@@ -35039,8 +35039,8 @@
 <li><a href="https://thinkit.co.jp/article/14639?page=0%2C1">https://thinkit.co.jp/article/14639?page=0%2C1</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ グローバルトランザクションを実装できるパターン<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>グローバルトランザクションを実装できるパターンとして、二相コミット (２フェーズコミット) がある。</p>
+<h4 id="_8">▼ グローバルトランザクション処理を実装できるパターン<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>グローバルトランザクション処理を実装できるパターンとして、二相コミット (２フェーズコミット) がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/">https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/</a></li>
@@ -35089,7 +35089,7 @@
 <h3 id="saga">Sagaパターンとは<a class="headerlink" href="#saga" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスの永続化の間に依存関係がある場合 (例：受注データの永続化には、配送データや決済データの永続化の結果が必要) に、これらのマイクロサービスの永続化を調整する必要がある。</p>
 <p>Sagaオーケストレーターにコールされるマイクロサービスへ、永続化とロールバックに関するAPIを実装する。</p>
-<p>Sagaオーケストレーターは、これらのマイクロサービスをコールし、ローカルトランザクションを連続的に実行する。</p>
+<p>Sagaオーケストレーターは、これらのマイクロサービスをコールし、ローカルトランザクション処理を連続的に実行する。</p>
 <p><img alt="saga-pattern_usecase" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_usecase.png" /></p>
 <blockquote>
 <ul>
@@ -35139,8 +35139,8 @@
 <p><strong>＊実装例＊</strong></p>
 <p>Sagaオーケストレーターと、これをコールする別のマイクロサービスを配置する。</p>
 <p>Sagaオーケストレーターは、各ローカルトランザクションの成否を表すSagaログをDBで管理する。</p>
-<p>Sagaオーケストレーターは、Orderサービス (<code>T1</code>) 、Inventoryサービス (<code>T2</code>) 、Paymentサービス (<code>T3</code>) のローカルトランザクションを連続して実行する。</p>
-<p>例えば、Paymentサービスのローカルトランザクション (<code>T3</code>) が失敗した場合、OrderサービスとPaymentサービスのローカルトランザクションをロールバックする補償トランザクション (<code>C1</code>、<code>C2</code>) を実行する。</p>
+<p>Sagaオーケストレーターは、Orderサービス (<code>T1</code>) 、Inventoryサービス (<code>T2</code>) 、Paymentサービス (<code>T3</code>) のローカルトランザクション処理を連続して実行する。</p>
+<p>例えば、Paymentサービスのローカルトランザクション (<code>T3</code>) が失敗した場合、OrderサービスとPaymentサービスのローカルトランザクション処理をロールバックする補償トランザクション (<code>C1</code>、<code>C2</code>) を実行する。</p>
 <p><img alt="saga-pattern_orchestrator" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator.png" /></p>
 <blockquote>
 <ul>
@@ -35169,9 +35169,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="saga_2">Sagaオーケストレーター<a class="headerlink" href="#saga_2" title="Permanent link">&para;</a></h3>
-<p>Sagaオーケストレーターは、Sagaオーケストレーターのワーカー（マイクロサービス）を調整し、ローカルトランザクションを連鎖的に実行する。</p>
-<p>また、ローカルトランザクションの進捗度 (Sagaログ) をDBに都度記録し、Sagaログからいずれのローカルトランザクションを実行し終えたかを判断する。</p>
-<p>途中で失敗した場合、失敗以前のローカルトランザクションの結果を元に戻す補償トランザクションを実行する。</p>
+<p>Sagaオーケストレーターは、Sagaオーケストレーターのワーカー（マイクロサービス）を調整し、ローカルトランザクション処理を連鎖的に実行する。</p>
+<p>また、ローカルトランザクションの進捗度 (Sagaログ) をDBに都度記録し、Sagaログからいずれのローカルトランザクション処理を実行し終えたかを判断する。</p>
+<p>途中で失敗した場合、失敗以前のローカルトランザクションの結果を元に戻す補償トランザクション処理を実行する。</p>
 <p><br></p>
 <h3 id="saga_3">Sagaオーケストレーターのストレージ<a class="headerlink" href="#saga_3" title="Permanent link">&para;</a></h3>
 <h4 id="_16">▼ インメモリ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
@@ -35276,7 +35276,7 @@
 <h4 id="_18">▼ メッセージキューを経由しないポイントツーポイントの場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>メッセージブローカー (例：Apache Kafka、RabbitMQなど) を経由しないオーケストレーションベースのSagaパターンを実装する。</p>
 <p>メッセージブローカーを経由するよりも、Sagaオーケストレーターと各ワーカーの間の結合度が高まってしまうが、Sagaオーケストレーターの実装が簡単になる。</p>
-<p>ローカルトランザクションの進捗度に応じて、次のローカルトラザクションや補償トランザクションを実行する。</p>
+<p>ローカルトランザクションの進捗度に応じて、次のローカルトラザクションや補償トランザクション処理を実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748">https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748</a></li>
@@ -35299,14 +35299,14 @@
 <p><br></p>
 <h3 id="_21">補償トランザクション<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ 補償トランザクションとは<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>ローカルトランザクションを元に戻すトランザクションを逆順に実行し、Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと。</p>
+<p>ローカルトランザクション処理を元に戻すトランザクション処理を逆順に実行し、Sagaパターンによるトランザクションの結果を元に戻す仕組みのこと。</p>
 <p>マイクロサービスアーキテクチャでは、トランザクションの通常のロールバック機能を使用した場合、処理に失敗したマイクロサービスのみロールバックする。その結果、それ以前のマイクロサービスではロールバックが起こらない可能性もある。</p>
-<p>いずれかのマイクロサービスのローカルトランザクションが失敗した場合、まずそのマイクロサービスは自身のトランザクションをロールバックする。</p>
-<p>その後、それまでのローカルトランザクションを擬似的にロールバックするトランザクションを逆順で実行する。</p>
+<p>いずれかのマイクロサービスのローカルトランザクションが失敗した場合、まずそのマイクロサービスは自身のトランザクション処理をロールバックする。</p>
+<p>その後、それまでのローカルトランザクション処理を擬似的にロールバックするトランザクション処理を逆順で実行する。</p>
 <h4 id="_23">▼ 設計例<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p>受注に関するトランザクションが異なるマイクロサービスにまたがる例。</p>
 <p><img alt="saga-pattern_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_example.png" /></p>
-<p>補償トランザクションによって、各ローカルトランザクションを元に戻す逆順のトランザクションを実行する。</p>
+<p>補償トランザクションによって、各ローカルトランザクション処理を元に戻す逆順のトランザクション処理を実行する。</p>
 <p><img alt="saga-pattern_compensating_transaction_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png" /></p>
 <blockquote>
 <ul>
@@ -35315,8 +35315,8 @@
 </blockquote>
 <h4 id="go-defer">▼ 実装例 (Goの <code>defer()</code> 関数)<a class="headerlink" href="#go-defer" title="Permanent link">&para;</a></h4>
 <p>この例では、Goの <code>defer()</code> 関数で補償トランザクションの仕組みを実装している。</p>
-<p>ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。</p>
-<p>その後、それまでにコールされた <code>defer()</code> 関数を実行し補償トランザクションを実行する。</p>
+<p>ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクション処理をロールバックする。</p>
+<p>その後、それまでにコールされた <code>defer()</code> 関数を実行し補償トランザクション処理を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">saga</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35357,8 +35357,8 @@
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// ローカルトランザクション</span>
-<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクションをロールバックする</span>
-<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
+<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクション処理をロールバックする</span>
+<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクション処理を元に戻す補償トランザクション処理を実行する</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">Deposit</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
@@ -35376,8 +35376,8 @@
 <span class="w">    </span><span class="p">}()</span>
 
 <span class="w">    </span><span class="c1">// ローカルトランザクション</span>
-<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクションをロールバックする</span>
-<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する</span>
+<span class="w">    </span><span class="c1">// 失敗した場合、まずは自身のトランザクション処理をロールバックする</span>
+<span class="w">    </span><span class="c1">// その後、前のdefer関数を実行し、前のローカルトランザクション処理を元に戻す補償トランザクション処理を実行する</span>
 <span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">workflow</span><span class="p">.</span><span class="nx">ExecuteActivity</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">StepWithError</span><span class="p">,</span><span class="w"> </span><span class="nx">transferDetails</span><span class="p">).</span><span class="nx">Get</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
@@ -35393,7 +35393,7 @@
 </blockquote>
 <h4 id="goslice">▼ 実装例 (Goのslice)<a class="headerlink" href="#goslice" title="Permanent link">&para;</a></h4>
 <p>この例では、Goのsliceで補償トランザクションの仕組みを実装している。</p>
-<p>スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。</p>
+<p>スライス内のローカルトランザクション処理を順番に実行し、どこかで失敗した場合は逆順に補償トランザクション処理を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35401,10 +35401,10 @@
 <span class="w">    </span><span class="s">&quot;errors&quot;</span>
 <span class="p">)</span>
 
-<span class="c1">// ローカルトランザクションを表Cookieす関数型</span>
+<span class="c1">// ローカルトランザクション処理を表Cookieす関数型</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">LocalTransaction</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span>
 
-<span class="c1">// 補償トランザクションを表す関数型</span>
+<span class="c1">// 補償トランザクション処理を表す関数型</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">CompensatingAction</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span>
 
 <span class="c1">// Sagaオーケストレーターの各ステップを表す構造体</span>
@@ -35418,13 +35418,13 @@
 <span class="w">    </span><span class="nx">Steps</span><span class="w"> </span><span class="p">[]</span><span class="nx">SagaStep</span><span class="w"> </span><span class="c1">// 複数のSagaStepから成る</span>
 <span class="p">}</span>
 
-<span class="c1">// ローカルトランザクションと補償トランザクションを実行する関数</span>
+<span class="c1">// ローカルトランザクションと補償トランザクション処理を実行する関数</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Saga</span><span class="p">)</span><span class="w"> </span><span class="nx">Execute</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">step</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// ローカルトランザクションを順番に実行する</span>
+<span class="w">        </span><span class="c1">// ローカルトランザクション処理を順番に実行する</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">step</span><span class="p">.</span><span class="nx">Transaction</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 失敗した場合は、補償トランザクションを逆順で実行する</span>
+<span class="w">            </span><span class="c1">// 失敗した場合は、補償トランザクション処理を逆順で実行する</span>
 <span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">--</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Steps</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">Compensate</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="c1">// 補償トランザクションが失敗した場合はエラーメッセージを返す</span>
@@ -35482,7 +35482,7 @@
 </blockquote>
 <h4 id="typescript">▼ 実装例 (TypeScriptの配列)<a class="headerlink" href="#typescript" title="Permanent link">&para;</a></h4>
 <p>この例では、AzureのDurable Functionにて、TypeScriptの配列で補償トランザクションの仕組みを実装している。</p>
-<p>スライス内のローカルトランザクションを順番に実行し、どこかで失敗した場合は逆順に補償トランザクションを実行する。</p>
+<p>スライス内のローカルトランザクション処理を順番に実行し、どこかで失敗した場合は逆順に補償トランザクション処理を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">df</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Task</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;durable-functions/lib/src/classes&quot;</span><span class="p">;</span>
 
@@ -35509,7 +35509,7 @@
 
 <span class="c1">// Sagaオーケストレーター</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">saga</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">df</span><span class="p">.</span><span class="nx">orchestrator</span><span class="p">(</span><span class="kd">function</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// 補償トランザクションを格納する配列</span>
+<span class="w">  </span><span class="c1">// 補償トランザクション処理を格納する配列</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">compensatingTransactions</span><span class="o">:</span><span class="w"> </span><span class="kt">Task</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
 
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -35546,7 +35546,7 @@
 <span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;The process has succeeded.&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="p">};</span>
 <span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 例外発生時に補償トランザクションをまとめて実行する</span>
+<span class="w">    </span><span class="c1">// 例外発生時に補償トランザクション処理をまとめて実行する</span>
 <span class="w">    </span><span class="k">yield</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">df</span><span class="p">.</span><span class="nx">Task</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">compensatingTransactions</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 例外がAPIError型の場合、そのまま返す</span>
@@ -35753,7 +35753,7 @@
 <p><br></p>
 <h2 id="05-03-choreography-saga">05-03. Choreography (コレオグラフィ) ベースのSagaパターン<a class="headerlink" href="#05-03-choreography-saga" title="Permanent link">&para;</a></h2>
 <h3 id="saga_7">コレオグラフィベースのSagaパターンとは<a class="headerlink" href="#saga_7" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスは、自身のローカルトランザクションを完了させた後に、次のマイクロサービスをコールする。</p>
+<p>マイクロサービスは、自身のローカルトランザクション処理を完了させた後に、次のマイクロサービスをコールする。</p>
 <p>各マイクロサービス間の通信方式は、パブリッシュ／サブスクライブ方式にする必要がある。</p>
 <p>そのために、マイクロサービス間にメッセージ中継システムを配置する。</p>
 <p><img alt="choreography" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png" /></p>
@@ -35833,8 +35833,8 @@
 <h2 id="06-tcc">06. TCCパターン<a class="headerlink" href="#06-tcc" title="Permanent link">&para;</a></h2>
 <h3 id="tcc">TCCパターンとは<a class="headerlink" href="#tcc" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスに各処理フェーズ (Try、Confirm、Cancel) を実行するAPIを実装し、APIを順に実行する。</p>
-<p>Tryフェーズでは、ローカルトランザクションを開始する。</p>
-<p>Confirmフェーズでは、ローカルトランザクションをコミットする。</p>
+<p>Tryフェーズでは、ローカルトランザクション処理を開始する。</p>
+<p>Confirmフェーズでは、ローカルトランザクション処理をコミットする。</p>
 <p>Cancelフェーズでは、以前のフェーズで問題が合った場合、ロールバックを実施する。</p>
 <blockquote>
 <ul>
@@ -35967,7 +35967,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 21:54:05 JST">2026-04-29</span>
   </span>
 
     
