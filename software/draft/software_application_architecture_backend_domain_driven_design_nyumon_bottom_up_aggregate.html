@@ -33228,6 +33228,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="12.3 集約の大きさと操作の単位">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1231" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3.1 トランザクション範囲の定義 (長谷川が追加したセクション)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -33753,9 +33770,10 @@
 <p>大きいほど、単一のトランザクションの対象になるレコードが増えるため、レコードロックの範囲が大きくなる。</p>
 <div class="highlight"><pre><span></span><code>テーブル内のロックの範囲はいくつか種類があるが、筆者は言及していなかったため、ここではレコードロックとした
 </code></pre></div>
-<p>トランザクション境界と集約は一致させるとよく、一致させることで適切な排他制御になる。</p>
-<p>例えば、<code>READ</code>処理と<code>CREATE</code>処理の両方が必要な更新系ユースケースでは、<code>READ</code>処理と<code>CREATE</code>処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。</p>
-<p>そのため、ユースケース層でトランザクション境界を定義し、定義したトランザクション境界内でリポジトリを呼び出す。</p>
+<h3 id="1231">12.3.1 トランザクション範囲の定義 (長谷川が追加したセクション)<a class="headerlink" href="#1231" title="Permanent link">&para;</a></h3>
+<p>トランザクション範囲はユースケース層で定義すると良い。</p>
+<p>例えば、<code>READ</code>処理と<code>UPDATE</code>処理の両方が必要な更新系ユースケースでは、<code>READ</code>処理と<code>UPDATE</code>処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。</p>
+<p>そのため、ユースケース層でトランザクション範囲を定義し、定義したトランザクション範囲内でリポジトリを呼び出す。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">,</span>
@@ -33769,6 +33787,7 @@
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">circleRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleRepository</span><span class="p">(</span><span class="nx">tx</span><span class="p">);</span>
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">userRepository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserRepository</span><span class="p">(</span><span class="nx">tx</span><span class="p">);</span>
 
+<span class="w">      </span><span class="c1">// READ処理</span>
 <span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">circle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">circleRepository</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span>
 <span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleId</span><span class="p">(</span><span class="nx">command</span><span class="p">.</span><span class="nx">circleId</span><span class="p">),</span>
 <span class="w">      </span><span class="p">);</span>
@@ -33780,6 +33799,7 @@
 
 <span class="w">      </span><span class="nx">circle</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
 
+<span class="w">      </span><span class="c1">// UPDATE処理</span>
 <span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">circleRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">circle</span><span class="p">);</span>
 <span class="w">    </span><span class="p">});</span>
 <span class="w">  </span><span class="p">}</span>
@@ -33857,7 +33877,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 21:04:00 JST">2026-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 21:50:31 JST">2026-04-29</span>
   </span>
 
     
