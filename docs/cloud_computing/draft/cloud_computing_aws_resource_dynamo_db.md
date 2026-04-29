@@ -55,7 +55,7 @@ module "dynamodb_user" {
 
 ## 03. ユースケース
 
-### CREATE処理
+### `CREATE`処理
 
 ここでは、auth-userサービスがトークンをAWS DynamoDBに保存するとする。
 

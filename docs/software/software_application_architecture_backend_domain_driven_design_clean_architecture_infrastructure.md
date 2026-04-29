@@ -165,36 +165,9 @@ DBに対する書き込み操作をする。各メソッドではトランザク
 
 : ルートエンティティをレコードとしてDBに挿入する。
 
-```php
-<?php
-
-namespace App\Infrastructure\Foo\Repositories;
-
-use App\Domain\Foo\Entities\Foo;
-use Illuminate\Support\Facades\DB;
-
-/**
- * Fooリポジトリ
- */
-class FooRepository
-{
-    /**
-     * ドメインモデルを作成する
-     */
-    public function create(Foo $foo): void
-    {
-        DB::transaction(function () use ($foo): void {
-
-          // 一連のDB操作
-
-        });
-    }
-}
-```
-
 **＊実装例＊**
 
-`CREATE` 処理のため、Laravelの `DB::transaction()` 関数でトランザクションを開始し、その中で `insert()` 関数を実行する。
+`CREATE` 処理のため、Laravelの `insert()` 関数を実行する。
 
 ```php
 <?php
@@ -214,21 +187,19 @@ class DogToyRepository
      */
     public function create(DogToy $dogToy): void
     {
-        DB::transaction(function () use ($dogToy): void {
-            DB::table("dog_toy_table")->insert([
-                // ルートエンティティの要素をカラム値として設定する。
-                // IDは自動増分
-                "name"  => $dogToy->getName()->value(),
-                "type"  => $dogToy->getType()->value(),
-                "price" => $dogToy->getPriceVO()->value(),
-                "color" => $dogToy->getColorVO()->value(),
-            ]);
-        });
+        DB::table("dog_toy_table")->insert([
+            // ルートエンティティの要素をカラム値として設定する。
+            // IDは自動増分
+            "name"  => $dogToy->getName()->value(),
+            "type"  => $dogToy->getType()->value(),
+            "price" => $dogToy->getPriceVO()->value(),
+            "color" => $dogToy->getColorVO()->value(),
+        ]);
     }
 }
 ```
 
-`UPDATE` 処理のため、Laravelの `DB::transaction()` 関数でトランザクションを開始し、その中で `update()` 関数を実行する。
+`UPDATE` 処理のため、Laravelの `update()` 関数を実行する。
 
 ```php
 <?php
@@ -248,22 +219,20 @@ class DogToyRepository
      */
     public function update(DogToy $dogToy): void
     {
-        DB::transaction(function () use ($dogToy): void {
-            DB::table("dog_toy_table")
-                // ルートエンティティの要素をカラム値として設定する。
-                ->where("id", $dogToy->getId()->value())
-                ->update([
-                    "name"  => $dogToy->getName()->value(),
-                    "type"  => $dogToy->getType()->value(),
-                    "price" => $dogToy->getPriceVO()->value(),
-                    "color" => $dogToy->getColorVO()->value(),
-                ]);
-        });
+        DB::table("dog_toy_table")
+            // ルートエンティティの要素をカラム値として設定する。
+            ->where("id", $dogToy->getId()->value())
+            ->update([
+                "name"  => $dogToy->getName()->value(),
+                "type"  => $dogToy->getType()->value(),
+                "price" => $dogToy->getPriceVO()->value(),
+                "color" => $dogToy->getColorVO()->value(),
+            ]);
     }
 }
 ```
 
-`DELETE` 処理 (論理削除) のため、Laravelの `DB::transaction()` 関数でトランザクションを開始し、その中で `update()` 関数を実行する。
+`DELETE` 処理 (論理削除) のため、Laravelの `update()` 関数を実行する。
 
 ```php
 <?php
@@ -284,14 +253,12 @@ class DogToyRepository
      */
     public function delete(ToyId $toyId): void
     {
-        DB::transaction(function () use ($toyId): void {
-            DB::table("dog_toy_table")
-                // 論理削除
-                ->where("id", $toyId->value())
-                ->update([
-                    "is_deleted" => FlagConstant::IS_ON,
-                ]);
-        });
+        DB::table("dog_toy_table")
+            // 論理削除
+            ->where("id", $toyId->value())
+            ->update([
+                "is_deleted" => FlagConstant::IS_ON,
+            ]);
     }
 }
 ```

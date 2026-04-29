@@ -270,9 +270,9 @@ func CreateFoo(db *gorm.DB) error {
 
 <br>
 
-### CREATE処理
+### `CREATE`処理
 
-#### ▼ CREATE処理とは
+#### ▼ `CREATE`処理とは
 
 gormモデルのフィールドに設定された値を元に、レコードを作成する。
 
@@ -294,9 +294,9 @@ result.RowsAffected
 
 <br>
 
-### READ処理
+### `READ`処理
 
-#### ▼ READ理とは
+#### ▼ `READ`処理とは
 
 gormモデルに対応するレコードを読み出す。
 
@@ -336,9 +336,9 @@ db.Find(&users, []int{1,2,3})
 
 <br>
 
-### UPDATE処理
+### `UPDATE`処理
 
-#### ▼ UPDATEとは
+#### ▼ `UPDATE`処理とは
 
 gormモデルのフィールドに設定された値を元に、レコードを変更する。
 
