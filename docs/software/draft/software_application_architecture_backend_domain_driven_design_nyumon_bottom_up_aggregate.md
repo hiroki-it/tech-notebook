@@ -613,7 +613,7 @@ class CircleApplicationService {
   ) {}
 
   public async join(command: CircleJoinCommand): Promise<void> {
-    // トランザクションを実行
+    // トランザクション処理を実行
     await this.prisma.$transaction(async (tx) => {
       const circleRepository = new CircleRepository(tx);
       const userRepository = new UserRepository(tx);

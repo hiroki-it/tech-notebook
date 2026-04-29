@@ -285,7 +285,7 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 
 アクティビティ定義用のTemporalワーカーは、ワークフロー定義を登録する。
 
-また、実際にローカルトランザクションを実行する。
+また、実際にローカルトランザクション処理を実行する。
 
 ```go
 package main
@@ -474,9 +474,9 @@ func YourWorkflowDefinition(ctx workflow.Context, param YourWorkflowParam) (*You
 
 ### 補償トランザクション
 
-ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクションをロールバックする。
+ローカルトランザクションで失敗した場合は、まずそのマイクロサービスが自身のトランザクション処理をロールバックする。
 
-その後、それまでにコールされた `defer()` 関数を実行し補償トランザクションを実行する。
+その後、それまでにコールされた `defer()` 関数を実行し補償トランザクション処理を実行する。
 
 ```go
 package saga
@@ -519,8 +519,8 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 	}()
 
 	// ローカルトランザクション
-	// 失敗した場合、まずは自身のトランザクションをロールバックする
-	// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	// 失敗した場合、まずは自身のトランザクション処理をロールバックする
+	// その後、前のdefer関数を実行し、前のローカルトランザクション処理を元に戻す補償トランザクション処理を実行する
 	err = workflow.ExecuteActivity(ctx, Deposit, transferDetails).Get(ctx, nil)
 	if err != nil {
 		return err
@@ -538,8 +538,8 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 	}()
 
 	// ローカルトランザクション
-	// 失敗した場合、まずは自身のトランザクションをロールバックする
-	// その後、前のdefer関数を実行し、前のローカルトランザクションを元に戻す補償トランザクションを実行する
+	// 失敗した場合、まずは自身のトランザクション処理をロールバックする
+	// その後、前のdefer関数を実行し、前のローカルトランザクション処理を元に戻す補償トランザクション処理を実行する
 	err = workflow.ExecuteActivity(ctx, StepWithError, transferDetails).Get(ctx, nil)
 	if err != nil {
 		return err
@@ -606,7 +606,7 @@ sequenceDiagram
 
 ### GetWorkflow
 
-Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクションを実行するマイクロサービスに相当する。
+Temporalワーカー (アクティビティを持つマイクロサービス) は、実際にローカルトランザクション処理を実行するマイクロサービスに相当する。
 
 ```go
 package main

@@ -102,7 +102,7 @@ class FooController():
      def __init__(self, db: Session = Depends(get_db)):
          self.db = db
 
-     # 作成トランザクションを実行します。
+     # 作成トランザクション処理を実行します。
      # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data
      def createFoo(self):
 
