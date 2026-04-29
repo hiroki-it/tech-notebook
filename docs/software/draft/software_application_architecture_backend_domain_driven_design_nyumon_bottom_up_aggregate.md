@@ -152,18 +152,16 @@ class Circle {
 
   public async getMembers(): Promise<User[]> {
     // Membersを介さずにCircleがUserを直接操作できてしまう
-    const [circle] = await prisma.$transaction([
-      prisma.circle.findUnique({
-        where: {id: this.id.value},
-        include: {
-          circleMembers: {
-            include: {
-              user: true,
-            },
+    const circle = await prisma.circle.findUnique({
+      where: {id: this.id.value},
+      include: {
+        circleMembers: {
+          include: {
+            user: true,
           },
         },
-      }),
-    ]);
+      },
+    });
 
     if (!circle) {
       throw new Error(`Circle not found: ${this.id.value}`);
@@ -271,11 +269,9 @@ class EFUserRepository implements IUserRepository {
       name: user.name.value,
     };
 
-    await this.prisma.$transaction([
-      this.prisma.user.create({
-        data: userDataModel,
-      }),
-    ]);
+    await this.prisma.user.create({
+      data: userDataModel,
+    });
   }
 }
 ```
@@ -364,14 +360,12 @@ class EFUserRepository implements IUserRepository {
     const userDataModel = userDataModelBuilder.build();
 
     // 実装データモデルをORMに渡す
-    await this.prisma.$transaction([
-      this.prisma.user.create({
-        data: {
-          id: userDataModel.id,
-          name: userDataModel.name,
-        },
-      }),
-    ]);
+    await this.prisma.user.create({
+      data: {
+        id: userDataModel.id,
+        name: userDataModel.name,
+      },
+    });
   }
 }
 ```
@@ -440,25 +434,24 @@ class CircleRepository implements ICircleRepository {
   constructor(private readonly prisma: PrismaClient) {}
 
   public async save(circle: Circle): Promise<void> {
-    await this.prisma.$transaction([
-      // Userを永続化
-      ...circle.members.map((user) =>
-        this.prisma.user.update({
-          where: {id: user.id.value},
-          data: {
-            name: user.name.value,
-          },
-        }),
-      ),
-      // Circleを永続化
-      this.prisma.circle.update({
-        where: {id: circle.id.value},
+    // Userを永続化
+    for (const user of circle.members) {
+      await this.prisma.user.update({
+        where: {id: user.id.value},
         data: {
-          name: circle.name.value,
-          ownerId: circle.owner ? circle.owner.id.value : null,
+          name: user.name.value,
         },
-      }),
-    ]);
+      });
+    }
+
+    // Circleを永続化
+    await this.prisma.circle.update({
+      where: {id: circle.id.value},
+      data: {
+        name: circle.name.value,
+        ownerId: circle.owner ? circle.owner.id.value : null,
+      },
+    });
   }
 }
 ```
@@ -535,7 +528,7 @@ class CircleApplicationService {
       }
     }
 
-    await this.prisma.$transaction([this.circleRepository.save(circle)]);
+    await this.circleRepository.save(circle);
   }
 }
 ```
@@ -602,6 +595,45 @@ class Circle {
 ```
 テーブル内のロックの範囲はいくつか種類があるが、筆者は言及していなかったため、ここではレコードロックとした
 ```
+
+トランザクション境界と集約は一致させるとよく、一致させることで適切な排他制御になる。
+
+例えば、`READ`処理と`CREATE`処理の両方が必要な更新系ユースケースでは、`READ`処理と`CREATE`処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。
+
+そのため、ユースケース層でトランザクション境界を定義し、定義したトランザクション境界内でリポジトリを呼び出す。
+
+```tsx
+class CircleApplicationService {
+  constructor(
+    private readonly prisma: PrismaClient,
+    private readonly circleRepository: ICircleRepository,
+    private readonly userRepository: IUserRepository,
+  ) {}
+
+  public async join(command: CircleJoinCommand): Promise<void> {
+    // トランザクションを実行
+    await this.prisma.$transaction(async (tx) => {
+      const circleRepository = new CircleRepository(tx);
+      const userRepository = new UserRepository(tx);
+
+      const circle = await circleRepository.find(
+        new CircleId(command.circleId),
+      );
+      const user = await userRepository.find(new UserId(command.userId));
+
+      if (!circle || !user) {
+        throw new Error("Circle or User not found.");
+      }
+
+      circle.join(user);
+
+      await circleRepository.save(circle);
+    });
+  }
+}
+```
+
+> - https://tech.yappli.io/entry/ddd_usecase
 
 **コラム**
 

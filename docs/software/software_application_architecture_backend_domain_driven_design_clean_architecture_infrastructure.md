@@ -147,7 +147,7 @@ interface FooRepository extends Repository
 
 ![ドメイン駆動設計_リポジトリ_データ更新](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ更新.png)
 
-DBに対する書き込み操作をする。各メソッドではトランザクションを実行し、その中でCREATE／UPDATE／DELETEを実施する。
+DBに対する書き込み操作をする。
 
 `(1)`
 
