@@ -1635,8 +1635,8 @@ namespace App\Domain\Foo\Entities;
 
 use App\Domain\Entity;
 use App\Domain\Id;
-use App\Domain\Foo\Entities\DogToy;
-use App\Domain\Foo\Entities\DogFood;
+use App\Domain\Dog\Entities\DogToy;
+use App\Domain\Dog\Entities\DogFood;
 
 /**
  * 犬用注文エンティティ

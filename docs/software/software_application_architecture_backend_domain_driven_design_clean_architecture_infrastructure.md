@@ -165,17 +165,44 @@ DBに対する書き込み操作をする。
 
 : ルートエンティティをレコードとしてDBに挿入する。
 
+```php
+<?php
+
+namespace App\Infrastructure\Foo\Repositories;
+
+use App\Domain\Foo\Entities\Foo;
+use Illuminate\Support\Facades\DB;
+
+/**
+ * Fooリポジトリ
+ */
+class FooRepository
+{
+    /**
+     * ドメインモデルを作成する
+     */
+    public function create(Foo $foo): void
+    {
+        DB::transaction(function () use ($foo): void {
+
+          // 一連のDB操作
+
+        });
+    }
+}
+```
+
 **＊実装例＊**
 
-`CREATE` 処理のため、DoctrineのQueryBuilderクラスの `insert()`関数を実行する。
+`CREATE` 処理のため、Laravelの `DB::transaction()` 関数でトランザクションを開始し、その中で `insert()` 関数を実行する。
 
 ```php
 <?php
 
-namespace App\インフラストラクチャ層\Foo\Repositories;
+namespace App\Infrastructure\Foo\Repositories;
 
-use App\Domain\Foo\Entities\DogToy;
-use Doctrine\DBAL\Query\QueryBuilder;
+use App\Domain\Dog\Entities\DogToy;
+use Illuminate\Support\Facades\DB;
 
 /**
  * 犬用おもちゃリポジトリ
@@ -185,34 +212,31 @@ class DogToyRepository
     /**
      * ドメインモデルを作成する
      */
-    public function create(DogToy $dogToy): DogToy
+    public function create(DogToy $dogToy): void
     {
-        // クエリビルダー作成
-        $query = $this->createQueryBuilder();
-
-        // SQLを定義する。
-        $query->insert("dog_toy_table")
-            ->values([
+        DB::transaction(function () use ($dogToy): void {
+            DB::table("dog_toy_table")->insert([
                 // ルートエンティティの要素をカラム値として設定する。
                 // IDは自動増分
                 "name"  => $dogToy->getName()->value(),
                 "type"  => $dogToy->getType()->value(),
                 "price" => $dogToy->getPriceVO()->value(),
                 "color" => $dogToy->getColorVO()->value(),
-        ]);
+            ]);
+        });
     }
 }
 ```
 
-`UPDATE` 処理のため、DoctrineのQueryBuilderクラスの `update()`関数を実行する。
+`UPDATE` 処理のため、Laravelの `DB::transaction()` 関数でトランザクションを開始し、その中で `update()` 関数を実行する。
 
 ```php
 <?php
 
-namespace App\インフラストラクチャ層\Foo\Repositories;
+namespace App\Infrastructure\Foo\Repositories;
 
-use App\Domain\Foo\Entities\DogToy;
-use Doctrine\DBAL\Query\QueryBuilder;
+use App\Domain\Dog\Entities\DogToy;
+use Illuminate\Support\Facades\DB;
 
 /**
  * 犬用おもちゃリポジトリ
@@ -222,35 +246,33 @@ class DogToyRepository
     /**
      * ドメインモデルを更新する
      */
-    public function update(DogToy $dogToy): DogToy
+    public function update(DogToy $dogToy): void
     {
-        // クエリビルダー作成
-        $query = $this->createQueryBuilder();
-
-        // SQLを定義する。
-        $query->update("dog_toy_table", "dog_toy")
-            // ルートエンティティの要素をカラム値として設定する。
-            ->set("dog_toy.name", $dogToy->getName()->value())
-            ->set("dog_toy.type", $dogToy->getType()->value())
-            ->set("dog_toy.price", $dogToy->getPriceVO()->value())
-            ->set("dog_toy.color", $dogToy->getColorVO()->value())
-            ->where("dog_toy.id", $dogToy->getId()->value();
-
-        return $query->getResult();
+        DB::transaction(function () use ($dogToy): void {
+            DB::table("dog_toy_table")
+                // ルートエンティティの要素をカラム値として設定する。
+                ->where("id", $dogToy->getId()->value())
+                ->update([
+                    "name"  => $dogToy->getName()->value(),
+                    "type"  => $dogToy->getType()->value(),
+                    "price" => $dogToy->getPriceVO()->value(),
+                    "color" => $dogToy->getColorVO()->value(),
+                ]);
+        });
     }
 }
 ```
 
-`DELETE` 処理 (論理削除) のため、DoctrineのQueryBuilderクラスの `update()`関数を実行する。
+`DELETE` 処理 (論理削除) のため、Laravelの `DB::transaction()` 関数でトランザクションを開始し、その中で `update()` 関数を実行する。
 
 ```php
 <?php
 
-namespace App\インフラストラクチャ層\Foo\Repositories;
+namespace App\Infrastructure\Foo\Repositories;
 
 use App\Constants\FlagConstant;
-use App\Domain\Entities\DogToy;
-use Doctrine\DBAL\Query\QueryBuilder;
+use App\Domain\Foo\Ids\ToyId;
+use Illuminate\Support\Facades\DB;
 
 /**
  * 犬用おもちゃリポジトリ
@@ -260,18 +282,16 @@ class DogToyRepository
     /**
      * ドメインモデルを削除する
      */
-    public function delete(ToyId $toyId): bool
+    public function delete(ToyId $toyId): void
     {
-        // クエリビルダー作成
-        $query = $this->createQueryBuilder();
-
-        // SQLを定義する。
-        $query->update("dog_toy_table", "dog_toy")
-            // 論理削除
-            ->set("dog_toy.is_deleted", FlagConstant::IS_ON)
-            ->where("dog_toy.id", $dogToy->getId()->value();
-
-        return $query->getResult();
+        DB::transaction(function () use ($toyId): void {
+            DB::table("dog_toy_table")
+                // 論理削除
+                ->where("id", $toyId->value())
+                ->update([
+                    "is_deleted" => FlagConstant::IS_ON,
+                ]);
+        });
     }
 }
 ```
@@ -308,10 +328,10 @@ DBに対する書き込み操作をする。
 ```php
 <?php
 
-namespace App\インフラストラクチャ層\Foo\Repositories;
+namespace App\Infrastructure\Foo\Repositories;
 
 use App\Constants\FlagConstant;
-use App\Domain\Foo\Entities\DogToy;
+use App\Domain\Dog\Entities\DogToy;
 use Doctrine\DBAL\Query\QueryBuilder;
 
 /**
@@ -373,6 +393,8 @@ class DogToyRepository
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 > - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
 
+<br>
+
 ### テストリポジトリ
 
 ホワイトボックスのテスト時に、実装リポジトリを静的な値を返信するインメモリなリポジトリに差し替えると、DBを使用せずにホワイトボックステストを実施できる。
@@ -392,9 +414,9 @@ class DogToyRepository
 ```php
 <?php
 
-namespace App\インフラストラクチャ層\Foo\Factories;
+namespace App\Infrastructure\Foo\Factories;
 
-use App\Domain\Foo\Entities\DogToy;
+use App\Domain\Dog\Entities\DogToy;
 use App\Domain\Foo\Entities\DogFood;
 use App\Domain\Foo\Entities\DogCombo;
 
