@@ -1723,7 +1723,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ユースケースと関数名
+        呼び出せるリポジトリの種類
       
     </span>
   </a>
@@ -1732,6 +1732,17 @@
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ユースケースと関数名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         トランザクション処理の定義
@@ -1759,7 +1770,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         インプットバウンダリとは
@@ -1787,7 +1798,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         アウトプットバウンダリとは
@@ -1815,7 +1826,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         リクエストモデルとは
@@ -1843,7 +1854,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         レスポンスモデルとは
@@ -1871,7 +1882,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         アプリケーションサービスとは
@@ -1882,7 +1893,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         通知処理
@@ -33527,7 +33538,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ユースケースと関数名
+        呼び出せるリポジトリの種類
       
     </span>
   </a>
@@ -33536,6 +33547,17 @@
         
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ユースケースと関数名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         トランザクション処理の定義
@@ -33563,7 +33585,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         インプットバウンダリとは
@@ -33591,7 +33613,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         アウトプットバウンダリとは
@@ -33619,7 +33641,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         リクエストモデルとは
@@ -33647,7 +33669,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         レスポンスモデルとは
@@ -33675,7 +33697,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         アプリケーションサービスとは
@@ -33686,7 +33708,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         通知処理
@@ -33880,7 +33902,22 @@
 <h3 id="_6">インターラクターの粒度<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>操作するルートエンティティの単位でインターラクターを実装する。</p>
 <p><br></p>
-<h3 id="_7">ユースケースと関数名<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_7">呼び出せるリポジトリの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>同じ境界づけられたコンテキストに属しているルートエンティティであれば、ユースケース層がそれぞれのルートエンティティに対応するリポジトリを操作することは許される。</p>
+<p>例えば、親子関係にあるルートエンティティの場合（親：Bookルートエンティティ、Reviewルートエンティティ）を考える。</p>
+<p>BookルートエンティティとReviewルートエンティティの間でユースケースが異なると仮定する。</p>
+<p>Reviewルートエンティティの操作のためにBookルートエンティティが必要な場合、ReviewユースケースがBookリポジトリをコールする必要がある。</p>
+<p>BookルートエンティティとReviewルートエンティティは親子関係にあり、同じ境界づけられたコンテキストに属している。</p>
+<p>そのため、ReviewユースケースがBookリポジトリをコールしてもよい。</p>
+<p>一方で、異なる境界づけられたコンテキストに属しているルートエンティティの場合、ユースケースはそれを操作するリポジトリをコールしてはいけない。</p>
+<blockquote>
+<ul>
+<li><a href="https://stackoverflow.com/questions/76036673/can-a-usecase-have-repositories-from-different-domains-as-dependencies-followin">https://stackoverflow.com/questions/76036673/can-a-usecase-have-repositories-from-different-domains-as-dependencies-followin</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-domain-driven-design?utm_source=openai#domain-and-application-services">https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-domain-driven-design?utm_source=openai#domain-and-application-services</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_8">ユースケースと関数名<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>インターラクターでは、ドメイン層を組み合わせてソフトウェアの振舞 (ユースケース) を具現化する。</p>
 <p>そのため、関数名はユースケースを適切に表現した自由な英単語を使用する。</p>
 <p><code>CREATE</code> 処理と <code>UPDATE</code> 処理をSAVE処理としてまとめても良い。</p>
@@ -33947,7 +33984,7 @@
 </tbody>
 </table>
 <p><br></p>
-<h3 id="_8">トランザクション処理の定義<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_9">トランザクション処理の定義<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>トランザクション処理はユースケース層で定義すると良い。</p>
 <p>例えば、<code>READ</code>処理と<code>UPDATE</code>処理の両方が必要な更新系ユースケースでは、<code>READ</code>処理と<code>UPDATE</code>処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。</p>
 <p>そのため、ユースケース層でトランザクション処理を定義し、定義したトランザクション範囲内でリポジトリを呼び出す。</p>
@@ -34137,7 +34174,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. インプットバウンダリ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_9">インプットバウンダリとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="_10">インプットバウンダリとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>インターラクターのインターフェースのこと。</p>
 <p>上位レイヤーにあるコントローラーは、インターラクターインタフェースに依存する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -34177,14 +34214,14 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="04">04. アウトプットバウンダリ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_10">アウトプットバウンダリとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="_11">アウトプットバウンダリとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>上位レイヤーのプレゼンターのインターフェースのこと。</p>
 <p>インターラクターは、レスポンスモデルではなく。</p>
 <p>アウトプットバウンダリをインターフェース層に出力する。</p>
 <p>ただし、アプリケーションをAPIとして使用する場合は、プレゼンターとアウトプットバウンダリが不要になる。そのため、インターラクターはレスポンスモデルを返却する。</p>
 <p><br></p>
 <h2 id="05">05. リクエストモデル (インプットデータ)<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<h3 id="_11">リクエストモデルとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h3 id="_12">リクエストモデルとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>インターフェース層のコントローラーから入力されるリクエストパラメーターを、ユースケース層に入力するときの入力構造を定義する。</p>
 <p>インターラクターの関数ごとにリクエストモデルを用意すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -34216,7 +34253,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="06">06. レスポンスモデル (アウトプットデータ)<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
-<h3 id="_12">レスポンスモデルとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h3 id="_13">レスポンスモデルとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>ユースケース層のインターラクターから出力されるドメインモデルを、インターフェース層に出力するときの出力構造を定義する。</p>
 <p>インターラクターの関数ごとにレスポンスモデルを用意すると良い。</p>
 <p>またコントローラーにて、フレームワーク依存のJSONレスポンス関数にレスポンスモデルを渡せるよう、クラス自身の構造を変換する関数を持たせると良い。</p>
@@ -34295,13 +34332,13 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="07">07. アプリケーションサービス<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<h3 id="_13">アプリケーションサービスとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_14">アプリケーションサービスとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p>ユースケース層で、他のオブジェクトを対象とした汎用的な振舞ロジックを切り分けたもの。</p>
 <p>アプリケーションサービスは、他のオブジェクトにロジックを関数として提供するのみで、自身の状態を変化させる関数は持たせないようにする。</p>
 <p>補足として、『サービス』の概念は全てのレイヤーに存在する。</p>
 <p>特定の機能を提供するアプリケーションをサービスとみなして連携すれば、マイクロサービスアーキテクチャにもなる。</p>
 <p><br></p>
-<h3 id="_14">通知処理<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_15">通知処理<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <p>エンティティへの通知処理をアプリケーションサービスとして切り分ける。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -34367,7 +34404,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月30日 12:58:29 JST">2026-04-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月18日 20:50:18 JST">2026-05-18</span>
   </span>
 
     
