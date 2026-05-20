@@ -143,6 +143,10 @@ final class InteractorException extends Exception
 }
 ```
 
+```typescript
+
+```
+
 #### ▼ 例外の種類
 
 ユースケースの処理に失敗した例外である。
@@ -175,6 +179,21 @@ final class DomainException extends Exception
 }
 ```
 
+```typescript
+export class InvalidFooNameError extends Error {
+  readonly fooName: string;
+
+  constructor(fooName: string) {
+    super();
+
+    Object.setPrototypeOf(this, new.target.prototype);
+
+    this.name = "InvalidFooNameError";
+    this._code = 400;
+  }
+}
+```
+
 #### ▼ 例外の種類
 
 ドメインルールに違反した例外である。
@@ -194,6 +213,10 @@ final class インフラストラクチャ層Exception extends Exception
 {
 
 }
+```
+
+```typescript
+
 ```
 
 #### ▼ 例外の種類

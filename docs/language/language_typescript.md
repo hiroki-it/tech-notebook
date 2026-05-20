@@ -501,23 +501,35 @@ class FooError extends Error {
   private readonly _name: string;
   private readonly _code: number;
 
+  constructor() {
+    super();
+
+    Object.setPrototypeOf(this, new.target.prototype);
+
+    // 親のErrorオブジェクトのプロパティに設定
+    this.name = "FooError";
+    this._code = 400;
+  }
+}
+```
+
+プロパティをErrorオブジェクトの外から渡す場合は、次のとおりで実装する。
+
+```typescript
+// Errorオブジェクトを継承した独自のErrorオブジェクト
+class FooError extends Error {
+  private readonly _name: string;
+  private readonly _code: number;
+
   constructor(message: string, code: number) {
     // message変数はErrorオブジェクトに渡す
     super(message);
 
+    Object.setPrototypeOf(this, new.target.prototype);
+
     // 親のErrorオブジェクトのプロパティに設定
     this.name = "FooError";
     this._code = code;
-
-    Object.setPrototypeOf(this, new.target.prototype);
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  get code() {
-    return this._code;
   }
 }
 ```

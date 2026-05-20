@@ -595,10 +595,10 @@ class FooError extends Error {
     // message変数はErrorオブジェクトに渡す
     super(message);
 
+    Object.setPrototypeOf(this, new.target.prototype);
+
     this._name = "FooError";
     this._code = code;
-
-    Object.setPrototypeOf(this, new.target.prototype);
   }
 }
 ```
