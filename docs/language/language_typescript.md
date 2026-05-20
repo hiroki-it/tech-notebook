@@ -502,7 +502,7 @@ class FooError extends Error {
   private readonly _code: number;
 
   constructor() {
-    super();
+    super(`Fooでエラーがあります`);
 
     Object.setPrototypeOf(this, new.target.prototype);
 
@@ -528,7 +528,7 @@ class FooError extends Error {
     Object.setPrototypeOf(this, new.target.prototype);
 
     // 親のErrorオブジェクトのプロパティに設定
-    this.name = "FooError";
+    this._name = "FooError";
     this._code = code;
   }
 }

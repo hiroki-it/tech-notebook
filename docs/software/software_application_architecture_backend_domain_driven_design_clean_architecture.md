@@ -180,16 +180,19 @@ final class DomainException extends Exception
 ```
 
 ```typescript
-export class InvalidFooNameError extends Error {
-  readonly fooName: string;
+export class FooNameLengthExceededError extends Error {
+  private readonly _name: string;
+  private readonly _code: number;
+  private readonly _maxLength: number;
 
   constructor(fooName: string) {
-    super();
+    super(`Foo名は20文字以内にしてください: ${fooName}`);
 
     Object.setPrototypeOf(this, new.target.prototype);
 
-    this.name = "InvalidFooNameError";
+    this._name = "FooNameLengthExceededError";
     this._code = 400;
+    this._maxLength = 20;
   }
 }
 ```
@@ -198,9 +201,9 @@ export class InvalidFooNameError extends Error {
 
 ドメインルールに違反した例外である。
 
-| 例外名の例            | 説明                                 |
-| --------------------- | ------------------------------------ |
-| `InvalidFooNameError` | Foo 名がドメインルールに違反している |
+| 例外名の例                   | 説明                                     |
+| ---------------------------- | ---------------------------------------- |
+| `FooNameLengthExceededError` | Foo 名が許可された最大文字数を超えている |
 
 <br>
 
