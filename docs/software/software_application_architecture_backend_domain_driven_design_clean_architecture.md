@@ -190,31 +190,32 @@ export class FooNotFoundError extends Error {
 ```typescript
 export class FooNameLengthExceededError extends Error {
   private readonly _name: string;
-  private readonly _code: number;
   private readonly _maxLength: number;
 
   constructor(fooName: string) {
+    // エラーメッセージ
     super(`Foo名は20文字以内にしてください`);
 
     Object.setPrototypeOf(this, new.target.prototype);
 
+    // エラー名
     this._name = "FooNameLengthExceededError";
-    this._code = 400;
+    // ドメインルール
     this._maxLength = 20;
   }
 }
 
 export class FooNameRequiredError extends Error {
   private readonly _name: string;
-  private readonly _code: number;
 
   constructor() {
+    // エラーメッセージ
     super("Foo名は必須です");
 
     Object.setPrototypeOf(this, new.target.prototype);
 
+    // エラー名
     this._name = "FooNameRequiredError";
-    this._code = 400;
   }
 }
 ```
