@@ -130,17 +130,12 @@ import (
 	"testing"
 )
 
-/**
- * foo関数をテストする
- */
-func TestFoo(t *testing.T) {
+// 正常系
+func TestFoo_ShouldReturnSuccess(t *testing.T) {
 
 	// ファイルを読み込む。
 	expected_foo_succeed_status, _ := ioutil.ReadFile("../testdata/expected/foo_succeed_status.json")
 	data_foo_succeed_status, _ := ioutil.ReadFile("../testdata/data/foo_succeed_status.json")
-
-	expected_foo_failed_status, _ := ioutil.ReadFile("../testdata/expected/foo_succeed_status.json")
-	data_foo_failed_status, _ := ioutil.ReadFile("../testdata/data/foo_succeed_status.json")
 
 	// テストケース
 	cases := []struct {
@@ -157,6 +152,36 @@ func TestFoo(t *testing.T) {
 			expected: expected_foo_succeed_status,
 			data:     data_foo_succeed_status,
 		},
+	}
+
+	// テストケースを反復で処理する。
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+
+			// foo関数を実行し、実際値を作成する。
+
+			// 期待値と実際値を比較する。
+			assert.JSONEq(t, tt.expected, actual)
+		})
+	}
+}
+
+// 異常系
+func TestFoo_ShouldThrowError(t *testing.T) {
+
+	// ファイルを読み込む。
+	expected_foo_failed_status, _ := ioutil.ReadFile("../testdata/expected/foo_succeed_status.json")
+	data_foo_failed_status, _ := ioutil.ReadFile("../testdata/data/foo_succeed_status.json")
+
+	// テストケース
+	cases := []struct {
+		// テストケース名
+		name string
+		// 期待値
+		expected string
+		// 初期データ
+		data []byte
+	}{
 		{
 			// 異常系テストケース
 			name:     "TestFoo_FailedStatus_ReturnOk",
