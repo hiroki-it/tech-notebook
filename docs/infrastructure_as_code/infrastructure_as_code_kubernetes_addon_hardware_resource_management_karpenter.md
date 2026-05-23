@@ -579,6 +579,15 @@ module "eks_iam_karpenter_controller" {
 
 ## 04. トラブルシューティング
 
+### ローカル環境での検証
+
+ローカル環境でKarpenterを検証できる。
+
+> - https://kwok.sigs.k8s.io/docs/examples/scalability/scale-using-karpenter/
+> - https://github.com/kubernetes-sigs/karpenter/tree/main/kwok
+
+<br>
+
 ### メモリをGuaranteed QoSにする
 
 Podの特に `resources` キーで、上限 (`.spec.containers[*].resources.limits`) が設定されていないと、使用量がバーストする。
@@ -588,6 +597,8 @@ Podの特に `resources` キーで、上限 (`.spec.containers[*].resources.limi
 Podのメモリで上限 (`.spec.containers[*].resources.limits`) = 下限 (`.spec.containers[*].resources.requests`) のように設定する (Guaranteed QoS) と、OOMキラーを避けられる。
 
 > - https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
+
+<br>
 
 ### スポットインスタンスの場合はインスタンスタイプを幅広く設定する
 
