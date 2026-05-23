@@ -847,7 +847,7 @@ export function runTask(num: number): string {
 
 #### ▼ テストコード
 
-プライベート関数に仮の返却値を返却させるために、`spyOn()` 関数を使用している。
+プライベート関数をモンキーパッチし、仮の返却値を返却させるように内部実装を差し替えるために、`spyOn()` 関数を使用している。
 
 ```typescript
 import {describe, test, expect, vi} from "vitest";
@@ -856,7 +856,7 @@ import * as utils from "./utils";
 
 describe("runTask", () => {
   test("should call doInternalWork internally", () => {
-    // spyOn関数を使用し、プライベート関数に仮の返却値を返却させる
+    // spyOn関数を使用してプライベート関数をモンキーパッチし、仮の返却値を返却させるように内部実装を差し替える
     const spy = vi.spyOn(utils, "doInternalWork").mockReturnValueOnce(999);
 
     // runTask関数を実行する

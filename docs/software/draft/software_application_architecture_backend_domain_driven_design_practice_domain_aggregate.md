@@ -610,7 +610,7 @@ describe("Review", () => {
         comment,
       );
 
-      // 関数に仮の返却値を返却させる
+      // プライベート関数をモンキーパッチし、仮の返却値を返却させるように内部実装を差し替える
       jest.spyOn(review.rating, "getQualityFactor").mockReturnValue(0.75);
       jest.spyOn(review.comment!, "getQualityFactor").mockReturnValue(0.3);
 
@@ -626,7 +626,7 @@ describe("Review", () => {
     it("コメントなしの場合、評価の品質のみで信頼性を判断する", () => {
       const review = Review.create(reviewIdentity, bookId, name, rating);
 
-      // 関数に仮の返却値を返却させる
+      // プライベート関数をモンキーパッチし、仮の返却値を返却させるように内部実装を差し替える
       jest.spyOn(review.rating, "getQualityFactor").mockReturnValue(0.5);
 
       // 評価の品質係数が0.5なので、閾値0.6に対して信頼できないと判定されるはず

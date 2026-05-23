@@ -484,4 +484,260 @@ func TestFoo_ShouldReturnError_WhenSomethingFailed(t *testing.T) {
 
 <br>
 
-### モック
+### モンキーパッチを使えない
+
+#### ▼ Goのモックの特徴
+
+Goは、PHP・JavaScript・Python・TypeScriptのようにランタイムでプライベート関数の内部実装を差し替える（モンキーパッチ）ことができない。
+
+そのため、テスト時には次のいずれかの方法を使用する
+
+- 実際の処理を使用し、差し替えしない
+- 該当箇所をインターフェースにし、インターフェースを介してモック構造体に差し替える
+
+Goでは、基本的に『実際の処理を使用し、差し替えしない』方法を使用する。
+
+#### ▼ HTTPサーバー（`httptest.NewServer`）
+
+外部HTTPサーバーへのリクエストをテストする場合、`httptest.NewServer`で実際のHTTPサーバーを起動し、自身に対してリクエストを送信する。
+
+```go
+package test
+
+import (
+    "net/http"
+    "net/http/httptest"
+    "testing"
+)
+
+// 正常系
+func TestClient_ShouldReturnSuccess_WhenRequestSucceeds(t *testing.T) {
+    // 期待値
+    type Expected struct {
+        status string
+    }
+
+    // テストケース
+    testCases := []struct {
+        // テストケース名
+        name string
+        // 期待値
+        expected Expected
+    }{
+        {
+            name: "リクエストが成功した場合、ステータスがokであるはず",
+            expected: Expected{
+                status: "ok",
+            },
+        },
+    }
+
+    for _, tt := range testCases {
+        t.Run(tt.name, func(t *testing.T) {
+			// Goではモンキーパッチができないため、HTTPクライアントの内部実装を書き換え、仮の値を返却させることができない
+			// そのため、実際のHTTPサーバーを起動し、HTTPリクエストを自身に対して送信する
+            httpServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+                w.WriteHeader(http.StatusOK)
+                _, _ = w.Write([]byte(`{"status":"ok"}`))
+            }))
+            defer httpServer.Close()
+
+            // httpServer.URL を使用してリクエストを送信する
+            result, err := myClient.Get(httpServer.URL)
+
+            // エラーが返却された場合、想定外の挙動なのでテストを失敗させる
+            if err != nil {
+                t.Fatalf("should return no error, got %v", err)
+            }
+
+            // 実際値が期待値どおりであることを検証する
+            if result.Status != tt.expected.status {
+                t.Errorf("should return %s, got %s", tt.expected.status, result.Status)
+            }
+        })
+    }
+}
+```
+
+> - https://medium.com/zus-health/mocking-outbound-http-requests-in-go-youre-probably-doing-it-wrong-60373a38d2aa
+
+#### ▼ ファイルシステム（`t.TempDir`）
+
+ファイル操作をテストする場合、`t.TempDir()`でテスト用の一時ディレクトリを作成し、実際のファイルを操作する。
+
+```go
+package test
+
+import (
+    "os"
+    "path/filepath"
+    "testing"
+)
+
+// 正常系
+func TestWriter_ShouldReturnSuccess_WhenFileWriteSucceeds(t *testing.T) {
+    // 入力値
+    type Input struct {
+        content string
+    }
+
+    // 期待値
+    type Expected struct {
+        content string
+    }
+
+    // テストケース
+    testCases := []struct {
+        // テストケース名
+        name string
+        // 入力値
+        input Input
+        // 期待値
+        expected Expected
+    }{
+        {
+            name: "ファイルに書き込んだ場合、内容が保存されるはず",
+            input: Input{
+                content: "hello",
+            },
+            expected: Expected{
+                content: "hello",
+            },
+        },
+    }
+
+    for _, tt := range testCases {
+        t.Run(tt.name, func(t *testing.T) {
+
+			// Goではモンキーパッチができないため、os.CreateTempの内部実装をモックに差し替え、仮のファイルを返却させることできない
+			// そのため、TMPDIRを存在しないパスに設定し、ファイル作成を失敗させる
+            tmpDir := t.TempDir()
+            filePath := filepath.Join(tmpDir, "test.txt")
+
+			// ファイルに書き込む
+            err := writeFile(filePath, tt.input.content)
+
+            // エラーが返却された場合、想定外の挙動なのでテストを失敗させる
+            if err != nil {
+                t.Fatalf("should return no error, got %v", err)
+            }
+
+            content, _ := os.ReadFile(filePath)
+
+            // 実際値が期待値どおりであることを検証する
+            if string(content) != tt.expected.content {
+                t.Errorf("should return %s, got %s", tt.expected.content, string(content))
+            }
+        })
+    }
+}
+```
+
+#### ▼ ファイルシステム異常系（`t.Setenv`）
+
+ファイル書き込み失敗をテストする場合、`t.Setenv`で`TMPDIR`を存在しないパスに設定し、`os.CreateTemp`が失敗させる。
+
+```go
+package test
+
+import (
+    "os"
+    "testing"
+)
+
+// 異常系
+func TestWriter_ShouldReturnError_WhenFileWriteFailed(t *testing.T) {
+    // 期待値
+    type Expected struct {
+        hasError bool
+    }
+
+    // テストケース
+    testCases := []struct {
+        // テストケース名
+        name string
+        // 期待値
+        expected Expected
+    }{
+        {
+            name: "TMPDIRが無効な場合、エラーを返却するはず",
+            expected: Expected{
+                hasError: true,
+            },
+        },
+    }
+
+    for _, tt := range testCases {
+        t.Run(tt.name, func(t *testing.T) {
+            // Goではモンキーパッチができないため、os.CreateTempの内部実装をモックに差し替え、仮のファイルを返却させることができない
+            // そのため、TMPDIRを存在しないパスに設定し、ファイル作成を失敗させる
+            t.Setenv("TMPDIR", "/invalid")
+
+            _, err := os.CreateTemp("", "test")
+
+            // 実際値が期待値どおりであることを検証する
+            if (err != nil) != tt.expected.hasError {
+                t.Errorf("should return error=%v, got %v", tt.expected.hasError, err)
+            }
+        })
+    }
+}
+```
+
+#### ▼ 環境変数（`t.Setenv`）
+
+環境変数を使用する処理をテストする場合、`t.Setenv`で環境変数を設定し、テスト終了時に自動で元の値に復元できることを検証する。
+
+```go
+package test
+
+import "testing"
+
+// 正常系
+func TestConfig_ShouldReturnSuccess_WhenEnvVarExists(t *testing.T) {
+    // 入力値
+    type Input struct {
+        envValue string
+    }
+
+    // 期待値
+    type Expected struct {
+        apiURL string
+    }
+
+    // テストケース
+    testCases := []struct {
+        // テストケース名
+        name string
+        // 入力値
+        input Input
+        // 期待値
+        expected Expected
+    }{
+        {
+            name: "環境変数が設定されている場合、設定値を返却するはず",
+            input: Input{
+                envValue: "http://localhost:8080",
+            },
+            expected: Expected{
+                apiURL: "http://localhost:8080",
+            },
+        },
+    }
+
+    for _, tt := range testCases {
+        t.Run(tt.name, func(t *testing.T) {
+            // Goではモンキーパッチができないため、os.Getenvの内部実装をモックに差し替え、仮の値を返却させることができない
+            // そのため、t.Setenvで環境変数を設定し、テスト終了時に自動で元の値に復元する
+            t.Setenv("API_URL", tt.input.envValue)
+
+            config := loadConfig()
+
+            // 実際値が期待値どおりであることを検証する
+            if config.APIURL != tt.expected.apiURL {
+                t.Errorf("should return %s, got %s", tt.expected.apiURL, config.APIURL)
+            }
+        })
+    }
+}
+```
