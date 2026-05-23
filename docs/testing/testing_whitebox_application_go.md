@@ -126,7 +126,7 @@ import (
 )
 
 // 正常系
-func TestFoo_ShouldReturnSuccess(t *testing.T) {
+func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 	expected := 1
 	actual := foo()
 
@@ -147,7 +147,7 @@ import (
 )
 
 // 正常系
-func TestFoo_ShouldReturnSuccess(t *testing.T) {
+func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 	// 入力値
 	type Input struct {
 		status string
@@ -168,7 +168,7 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 		expected Expected
 	}{
 		{
-			name: "正常なステータスの場合、OKを返す",
+			name: "TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds",
 			input: Input{
 				status: "succeed",
 			},
@@ -207,7 +207,7 @@ import (
 )
 
 // 正常系
-func TestFoo_ShouldReturnSuccess(t *testing.T) {
+func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 	expected := 1
 	actual := foo()
 
@@ -230,7 +230,7 @@ import (
 )
 
 // 正常系
-func TestFoo_ShouldReturnSuccess(t *testing.T) {
+func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 	expected := 1
 	actual := foo()
 
@@ -251,7 +251,7 @@ package test
 import "testing"
 
 // 正常系
-func TestFoo_ShouldReturnSuccess(t *testing.T) {
+func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 
 	// 入力値
 	type Input struct {
@@ -274,7 +274,7 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 	}{
 		{
 			// 正常系テストケース
-			name: "正常なステータスの場合、OKを返す",
+			name: "TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds",
 			expected: Expected{
 				status: "ok",
 			},
@@ -304,7 +304,7 @@ import (
 )
 
 // 正常系
-func TestFoo_ShouldReturnSuccess(t *testing.T) {
+func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 
 	// 入力値
 	input_foo_succeed_status, _ := ioutil.ReadFile("../testdata/data/foo_succeed_status.json")
@@ -323,7 +323,7 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 	}{
 		{
             // 正常系テストケース
-			name:     "正常なステータスの場合、OKを返す",
+			name:     "TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds",
 			expected: expected_foo_succeed_status,
 			input:    input_foo_succeed_status,
 		},
@@ -346,13 +346,15 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 
 `<テストケース名>` は、`〇〇の場合に~するはず`という意味で、 `<助動詞><動詞>...When...` にする。
 
+つまり、`<テストスイート名>_<助動詞><動詞>...When...`のようになる。
+
 ```go
 package test
 
 import "testing"
 
 // 正常系
-func TestFoo_ShouldReturnSuccess(t *testing.T) {
+func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 
 }
 ```
@@ -363,7 +365,7 @@ package test
 import "testing"
 
 // 異常系
-func TestFoo_ShouldThrowError(t *testing.T) {
+func TestFoo_ShouldReturnError_WhenSomethingFailed(t *testing.T) {
 
 }
 ```
@@ -376,7 +378,7 @@ package test
 import "testing"
 
 // 正常系
-func TestFoo_ShouldReturnSuccess(t *testing.T) {
+func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 	// 入力値
 	type Input struct {
 		status string
@@ -398,7 +400,7 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 	}{
 		{
 			// 正常系テストケース
-			name: "正常なステータスの場合、OKを返す",
+			name: "TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds",
 			expected: Expected{
 				status: "ok",
 			},
@@ -432,7 +434,7 @@ package test
 import "testing"
 
 // 異常系
-func TestFoo_ShouldThrowError(t *testing.T) {
+func TestFoo_ShouldReturnError_WhenSomethingFailed(t *testing.T) {
 	// 入力値
 	type Input struct {
 		status string
@@ -454,7 +456,7 @@ func TestFoo_ShouldThrowError(t *testing.T) {
 	}{
 		{
 			// 異常系テストケース
-			name: "異常なステータスの場合、エラーを返す",
+			name: "TestFoo_ShouldReturnError_WhenSomethingFailed",
 			expected: Expected{
 				status: "error",
 			},
@@ -481,3 +483,5 @@ func TestFoo_ShouldThrowError(t *testing.T) {
 ```
 
 <br>
+
+### モック
