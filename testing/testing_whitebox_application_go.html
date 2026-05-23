@@ -14217,12 +14217,12 @@
   <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       
-        モンキーパッチを使えない
+        外部依存のテスト
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="モンキーパッチを使えない">
+    <nav class="md-nav" aria-label="外部依存のテスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -14252,28 +14252,6 @@
     <span class="md-ellipsis">
       
         ▼ ファイルシステム（t.TempDir）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tsetenv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ファイルシステム異常系（t.Setenv）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tsetenv_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 環境変数（t.Setenv）
       
     </span>
   </a>
@@ -33994,12 +33972,12 @@
   <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       
-        モンキーパッチを使えない
+        外部依存のテスト
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="モンキーパッチを使えない">
+    <nav class="md-nav" aria-label="外部依存のテスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -34029,28 +34007,6 @@
     <span class="md-ellipsis">
       
         ▼ ファイルシステム（t.TempDir）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tsetenv" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ファイルシステム異常系（t.Setenv）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tsetenv_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 環境変数（t.Setenv）
       
     </span>
   </a>
@@ -34682,17 +34638,17 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_27">モンキーパッチを使えない<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<h3 id="_27">外部依存のテスト<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="go_1">▼ Goのモックの特徴<a class="headerlink" href="#go_1" title="Permanent link">&para;</a></h4>
 <p>Goは、PHP・JavaScript・Python・TypeScriptのようにランタイムでプライベート関数の内部実装を差し替える（モンキーパッチ）ことができない。</p>
-<p>そのため、テスト時には次のいずれかの方法を使用する</p>
+<p>そのため、外部依存のテスト時には次のいずれかの方法を使用する</p>
 <ul>
 <li>実際の処理を使用し、差し替えしない</li>
 <li>該当箇所をインターフェースにし、インターフェースを介してモック構造体に差し替える</li>
 </ul>
 <p>Goでは、基本的に『実際の処理を使用し、差し替えしない』方法を使用する。</p>
 <h4 id="httphttptestnewserver">▼ HTTPサーバー（<code>httptest.NewServer</code>）<a class="headerlink" href="#httphttptestnewserver" title="Permanent link">&para;</a></h4>
-<p>外部HTTPサーバーへのリクエストをテストする場合、<code>httptest.NewServer</code>で実際のHTTPサーバーを起動し、自身に対してリクエストを送信する。</p>
+<p>外部のHTTPサーバーへのリクエストをテストする場合、<code>httptest.NewServer</code>で実際のHTTPサーバーを起動し、自身に対してリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -34755,7 +34711,7 @@
 </ul>
 </blockquote>
 <h4 id="ttempdir">▼ ファイルシステム（<code>t.TempDir</code>）<a class="headerlink" href="#ttempdir" title="Permanent link">&para;</a></h4>
-<p>ファイル操作をテストする場合、<code>t.TempDir()</code>でテスト用の一時ディレクトリを作成し、実際のファイルを操作する。</p>
+<p>外部ストレージのファイル操作をテストする場合、<code>t.TempDir()</code>でテスト用の一時ディレクトリを作成し、実際のファイルを操作する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -34798,9 +34754,8 @@
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">tt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">testCases</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nx">t</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">tt</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">            </span><span class="c1">// Goではモンキーパッチができないため、os.CreateTempの内部実装をモックに差し替え、仮のファイルを返却させることできない</span>
-<span class="w">            </span><span class="c1">// そのため、TMPDIRを存在しないパスに設定し、ファイル作成を失敗させる</span>
+<span class="w">            </span><span class="c1">// Goではモンキーパッチができないため、ファイルシステムの内部実装をモックに差し替え、仮のファイルを返却させることができない</span>
+<span class="w">            </span><span class="c1">// そのため、実際のファイルを作成し、ファイルを操作させる</span>
 <span class="w">            </span><span class="nx">tmpDir</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">t</span><span class="p">.</span><span class="nx">TempDir</span><span class="p">()</span>
 <span class="w">            </span><span class="nx">filePath</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">tmpDir</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;test.txt&quot;</span><span class="p">)</span>
 
@@ -34817,107 +34772,6 @@
 <span class="w">            </span><span class="c1">// 実際値が期待値どおりであることを検証する</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">tt</span><span class="p">.</span><span class="nx">expected</span><span class="p">.</span><span class="nx">content</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;should return %s, got %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">tt</span><span class="p">.</span><span class="nx">expected</span><span class="p">.</span><span class="nx">content</span><span class="p">,</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nx">content</span><span class="p">))</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">})</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="tsetenv">▼ ファイルシステム異常系（<code>t.Setenv</code>）<a class="headerlink" href="#tsetenv" title="Permanent link">&para;</a></h4>
-<p>ファイル書き込み失敗をテストする場合、<code>t.Setenv</code>で<code>TMPDIR</code>を存在しないパスに設定し、<code>os.CreateTemp</code>が失敗させる。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="s">&quot;os&quot;</span>
-<span class="w">    </span><span class="s">&quot;testing&quot;</span>
-<span class="p">)</span>
-
-<span class="c1">// 異常系</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">TestWriter_ShouldReturnError_WhenFileWriteFailed</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 期待値</span>
-<span class="w">    </span><span class="kd">type</span><span class="w"> </span><span class="nx">Expected</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">hasError</span><span class="w"> </span><span class="kt">bool</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// テストケース</span>
-<span class="w">    </span><span class="nx">testCases</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// テストケース名</span>
-<span class="w">        </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">        </span><span class="c1">// 期待値</span>
-<span class="w">        </span><span class="nx">expected</span><span class="w"> </span><span class="nx">Expected</span>
-<span class="w">    </span><span class="p">}{</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;TMPDIRが無効な場合、エラーを返却するはず&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">expected</span><span class="p">:</span><span class="w"> </span><span class="nx">Expected</span><span class="p">{</span>
-<span class="w">                </span><span class="nx">hasError</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">tt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">testCases</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">t</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">tt</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// Goではモンキーパッチができないため、os.CreateTempの内部実装をモックに差し替え、仮のファイルを返却させることができない</span>
-<span class="w">            </span><span class="c1">// そのため、TMPDIRを存在しないパスに設定し、ファイル作成を失敗させる</span>
-<span class="w">            </span><span class="nx">t</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;TMPDIR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/invalid&quot;</span><span class="p">)</span>
-
-<span class="w">            </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">CreateTemp</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p">)</span>
-
-<span class="w">            </span><span class="c1">// 実際値が期待値どおりであることを検証する</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">tt</span><span class="p">.</span><span class="nx">expected</span><span class="p">.</span><span class="nx">hasError</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;should return error=%v, got %v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">tt</span><span class="p">.</span><span class="nx">expected</span><span class="p">.</span><span class="nx">hasError</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">)</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">})</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="tsetenv_1">▼ 環境変数（<code>t.Setenv</code>）<a class="headerlink" href="#tsetenv_1" title="Permanent link">&para;</a></h4>
-<p>環境変数を使用する処理をテストする場合、<code>t.Setenv</code>で環境変数を設定し、テスト終了時に自動で元の値に復元できることを検証する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="s">&quot;testing&quot;</span>
-
-<span class="c1">// 正常系</span>
-<span class="kd">func</span><span class="w"> </span><span class="nx">TestConfig_ShouldReturnSuccess_WhenEnvVarExists</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// 入力値</span>
-<span class="w">    </span><span class="kd">type</span><span class="w"> </span><span class="nx">Input</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">envValue</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// 期待値</span>
-<span class="w">    </span><span class="kd">type</span><span class="w"> </span><span class="nx">Expected</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">apiURL</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// テストケース</span>
-<span class="w">    </span><span class="nx">testCases</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">[]</span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// テストケース名</span>
-<span class="w">        </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
-<span class="w">        </span><span class="c1">// 入力値</span>
-<span class="w">        </span><span class="nx">input</span><span class="w"> </span><span class="nx">Input</span>
-<span class="w">        </span><span class="c1">// 期待値</span>
-<span class="w">        </span><span class="nx">expected</span><span class="w"> </span><span class="nx">Expected</span>
-<span class="w">    </span><span class="p">}{</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;環境変数が設定されている場合、設定値を返却するはず&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">input</span><span class="p">:</span><span class="w"> </span><span class="nx">Input</span><span class="p">{</span>
-<span class="w">                </span><span class="nx">envValue</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nx">expected</span><span class="p">:</span><span class="w"> </span><span class="nx">Expected</span><span class="p">{</span>
-<span class="w">                </span><span class="nx">apiURL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://localhost:8080&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">tt</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">testCases</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">t</span><span class="p">.</span><span class="nx">Run</span><span class="p">(</span><span class="nx">tt</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">t</span><span class="w"> </span><span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// Goではモンキーパッチができないため、os.Getenvの内部実装をモックに差し替え、仮の値を返却させることができない</span>
-<span class="w">            </span><span class="c1">// そのため、t.Setenvで環境変数を設定し、テスト終了時に自動で元の値に復元する</span>
-<span class="w">            </span><span class="nx">t</span><span class="p">.</span><span class="nx">Setenv</span><span class="p">(</span><span class="s">&quot;API_URL&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">tt</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">envValue</span><span class="p">)</span>
-
-<span class="w">            </span><span class="nx">config</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">loadConfig</span><span class="p">()</span>
-
-<span class="w">            </span><span class="c1">// 実際値が期待値どおりであることを検証する</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">APIURL</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">tt</span><span class="p">.</span><span class="nx">expected</span><span class="p">.</span><span class="nx">apiURL</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">t</span><span class="p">.</span><span class="nx">Errorf</span><span class="p">(</span><span class="s">&quot;should return %s, got %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">tt</span><span class="p">.</span><span class="nx">expected</span><span class="p">.</span><span class="nx">apiURL</span><span class="p">,</span><span class="w"> </span><span class="nx">config</span><span class="p">.</span><span class="nx">APIURL</span><span class="p">)</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">})</span>
 <span class="w">    </span><span class="p">}</span>
@@ -34943,7 +34797,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月23日 20:17:49 JST">2026-05-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月23日 20:34:21 JST">2026-05-23</span>
   </span>
 
     
