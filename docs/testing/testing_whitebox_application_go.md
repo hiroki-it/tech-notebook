@@ -148,12 +148,39 @@ import (
 
 // 正常系
 func TestFoo_ShouldReturnSuccess(t *testing.T) {
-	expected := 1
-	actual := foo()
+	type Input struct {
+		status string
+	}
 
-	// 実際値が期待値どおりであることを検証する
-	if actual != expected {
-		t.Errorf("should return %d, got %d", expected, actual)
+	type Expected struct {
+		status string
+	}
+
+	testCases := []struct {
+		name     string
+		input    Input
+		expected Expected
+	}{
+		{
+			name: "正常なステータスの場合、OKを返す",
+			input: Input{
+				status: "succeed",
+			},
+			expected: Expected{
+				status: "ok",
+			},
+		},
+	}
+
+	for _, tt := range testCases {
+		t.Run(tt.name, func(t *testing.T) {
+			actual := foo(tt.input.status)
+
+			// 実際値が期待値どおりであることを検証する
+			if actual != tt.expected.status {
+				t.Errorf("should return %s, got %s", tt.expected.status, actual)
+			}
+		})
 	}
 }
 ```
@@ -219,7 +246,7 @@ import "testing"
 
 // 正常系
 func TestFoo_ShouldReturnSuccess(t *testing.T) {
-	
+
 	// 入力値
 	type Input struct {
 		status string
@@ -273,10 +300,10 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 
 	// 入力値
 	input_foo_succeed_status, _ := ioutil.ReadFile("../testdata/data/foo_succeed_status.json")
-	
+
 	// 期待値
 	expected_foo_succeed_status, _ := ioutil.ReadFile("../testdata/expected/foo_succeed_status.json")
-	
+
 	// テストケース
 	cases := []struct {
 		// テストケース名
