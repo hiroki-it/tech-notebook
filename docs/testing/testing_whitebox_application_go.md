@@ -173,37 +173,44 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 ```go
 package test
 
-import (
-	"io/ioutil"
-	"testing"
-)
+import "testing"
 
 // 正常系
 func TestFoo_ShouldReturnSuccess(t *testing.T) {
+	
+	// 入力値
+	type Input struct {
+		status string
+	}
 
-	// ファイルを読み込む。
-	expected_foo_succeed_status, _ := ioutil.ReadFile("../testdata/expected/foo_succeed_status.json")
-	input_foo_succeed_status, _ := ioutil.ReadFile("../testdata/data/foo_succeed_status.json")
+	// 期待値
+	type Expected struct {
+		status string
+	}
 
 	// テストケース
-	cases := []struct {
+	testCases := []struct {
 		// テストケース名
 		name string
+		// 入力値
+		input Input
 		// 期待値
-		expected string
-		// 初期データ
-		input []byte
+		expected Expected
 	}{
 		{
-            // 正常系テストケース
-			name:     "正常なステータスの場合、OKを返す",
-			expected: expected_foo_succeed_status,
-			input:     input_foo_succeed_status,
+			// 正常系テストケース
+			name: "正常なステータスの場合、OKを返す",
+			expected: Expected{
+				status: "ok",
+			},
+			input: Input{
+				status: "succeed",
+			},
 		},
 	}
 
 	// テストケースを反復で検証する
-	for _, tt := range cases {
+	for _, tt := range testCases {
 		// 実際値が期待値どおりであることを検証する
 	}
 }
@@ -222,17 +229,19 @@ import (
 // 正常系
 func TestFoo_ShouldReturnSuccess(t *testing.T) {
 
-	// ファイルを読み込む。
-	expected_foo_succeed_status, _ := ioutil.ReadFile("../testdata/expected/foo_succeed_status.json")
+	// 入力値
 	input_foo_succeed_status, _ := ioutil.ReadFile("../testdata/data/foo_succeed_status.json")
-
+	
+	// 期待値
+	expected_foo_succeed_status, _ := ioutil.ReadFile("../testdata/expected/foo_succeed_status.json")
+	
 	// テストケース
 	cases := []struct {
 		// テストケース名
 		name string
 		// 期待値
 		expected string
-		// 初期データ
+		// 入力値
 		input []byte
 	}{
 		{
@@ -277,7 +286,7 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 		name string
 		// 期待値
 		expected string
-		// 初期データ
+		// 入力値
 		input []byte
 	}{
 		{
@@ -324,7 +333,7 @@ func TestFoo_ShouldThrowError(t *testing.T) {
 		name string
 		// 期待値
 		expected string
-		// 初期データ
+		// 入力値
 		input []byte
 	}{
 		{
