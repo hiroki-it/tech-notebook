@@ -196,7 +196,7 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 	}{
 		{
             // 正常系テストケース
-			name:     "TestFoo_SucceedStatus_ReturnOk",
+			name:     "正常なステータスの場合、OKを返す",
 			expected: expected_foo_succeed_status,
 			input:     input_foo_succeed_status,
 		},
@@ -237,7 +237,7 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 	}{
 		{
             // 正常系テストケース
-			name:     "TestFoo_SucceedStatus_ReturnOk",
+			name:     "正常なステータスの場合、OKを返す",
 			expected: expected_foo_succeed_status,
 			input:     input_foo_succeed_status,
 		},
@@ -282,7 +282,7 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 	}{
 		{
             // 正常系テストケース
-			name:     "TestFoo_SucceedStatus_ReturnOk",
+			name:     "正常なステータスの場合、OKを返す",
 			expected: expected_foo_succeed_status,
 			input:     input_foo_succeed_status,
 		},
@@ -329,7 +329,7 @@ func TestFoo_ShouldThrowError(t *testing.T) {
 	}{
 		{
 			// 異常系テストケース
-			name:     "TestFoo_FailedStatus_ReturnOk",
+			name:     "異常なステータスの場合、エラーを返す",
 			expected: expected_foo_failed_status,
 			input:     input_foo_failed_status,
 		},
