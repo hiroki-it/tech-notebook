@@ -325,7 +325,7 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
             // 正常系テストケース
 			name:     "正常なステータスの場合、OKを返す",
 			expected: expected_foo_succeed_status,
-			input:     input_foo_succeed_status,
+			input:    input_foo_succeed_status,
 		},
 	}
 
@@ -339,6 +339,34 @@ func TestFoo_ShouldReturnSuccess(t *testing.T) {
 <br>
 
 ### テストケース
+
+#### ▼ テストケース名
+
+ユニットテストの命名規則は、Goで一般的な方法（`<テストスイート名>_<テストケース名>`）にする。
+
+`<テストケース名>` は、`〇〇の場合に~するはず`という意味で、 `<助動詞><動詞>...When...` にする。
+
+```go
+package test
+
+import "testing"
+
+// 正常系
+func TestFoo_ShouldReturnSuccess(t *testing.T) {
+
+}
+```
+
+```go
+package test
+
+import "testing"
+
+// 異常系
+func TestFoo_ShouldThrowError(t *testing.T) {
+
+}
+```
 
 #### ▼ 正常系
 
