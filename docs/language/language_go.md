@@ -308,10 +308,14 @@ import "<パッケージ名>"
 
 ### func
 
-詳しくは、関数を参考にせよ。
+パブリック関数をファイルの上部で定義する。
 
 ```go
-func foo() {
+func NewFoo() {
+
+}
+
+func doSomething() {
 
 }
 ```
@@ -553,6 +557,34 @@ func main() {
 <br>
 
 ## 07. その他のお作法
+
+### 関数の返却値を意図的に無視
+
+関数の返却値を使用しない場合、意図的に無視することを伝える場合、`_`を使用する。
+
+```go
+package main
+
+import "os"
+
+func readConfig() error {
+	file, err := os.Open("config.yaml")
+	if err != nil {
+		return err
+	}
+
+	defer func() {
+
+		// 返却値をあえて書かない方法もある
+		// file.Close()
+
+		// 関数の終了時にファイルを閉じる。Closeのエラーを処理しない場合は _ に代入する
+		_ = file.Close()
+	}()
+
+	return nil
+}
+```
 
 ### コメントの書式
 
