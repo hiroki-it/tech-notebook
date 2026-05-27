@@ -180,6 +180,10 @@ SLA (顧客との合意) に基づいたSLOとは区別したい。
 
 マイクロサービスアーキテクチャの場合、モックマイクロサービスを用意する。
 
+![microservices_blackbox-test_external-api-mock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_blackbox-test_external-api-mock.png)
+
+> - https://semaphore.io/blog/test-microservices
+
 <br>
 
 ## 03-02. ロードテスト (負荷テスト)
