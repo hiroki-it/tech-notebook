@@ -406,6 +406,7 @@ func httpRequest(ctx context.Context) error {
 		return err
 	}
 
+    // レスポンスを操作した後、レスポンスボディを必ず閉じる
 	defer res.Body.Close()
 
 	return nil
@@ -499,6 +500,7 @@ func httpRequest(ctx context.Context) error {
 		return err
 	}
 
+    // レスポンスを操作した後、レスポンスボディを必ず閉じる
 	defer res.Body.Close()
 
 	return nil

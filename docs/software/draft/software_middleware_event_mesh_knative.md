@@ -68,6 +68,7 @@ func Handle(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 
     body, err := ioutil.ReadAll(r.Body)
 
+    // レスポンスを操作した後、レスポンスボディを必ず閉じる
     defer w.Body.Close()
 
     if err != nil {

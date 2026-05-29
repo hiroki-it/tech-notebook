@@ -300,6 +300,7 @@ func main() {
 		return
 	}
 
+    // レスポンスを操作した後、レスポンスボディを必ず閉じる
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
@@ -1431,9 +1432,10 @@ import (
 )
 
 func main() {
-	response, err := http.Get("https://example/api.com")
+	res, err := http.Get("https://example/api.com")
 
-	defer response.Body.Close()
+    // レスポンスを操作した後、レスポンスボディを必ず閉じる
+	defer res.Body.Close()
 
 	if err != nil {
 		log.Printf("Failed to do something: %v", err)
@@ -1478,13 +1480,14 @@ func main() {
 
 	byteJson, err := json.Marshal(user)
 
-	response, err := http.Post(
+	res, err := http.Post(
 		"http://foo-api.com",      // URL
 		"application/json",        // Content-Type
 		bytes.NewBuffer(byteJson), // メッセージボディ
 	)
 
-	defer response.Body.Close()
+    // レスポンスを操作した後、レスポンスボディを必ず閉じる
+	defer res.Body.Close()
 
 	if err != nil {
 		log.Printf("Failed to do something: %v", err)
@@ -1545,9 +1548,10 @@ func main() {
 	client := &http.Client{}
 
 	// リクエストを送信する。
-	response, err := client.Do(request)
+	res, err := client.Do(request)
 
-	defer response.Body.Close()
+    // レスポンスを操作した後、レスポンスボディを必ず閉じる
+	defer res.Body.Close()
 
 	if err != nil || response.StatusCode != 200 {
 		log.Printf("Failed to do something: %v", err)

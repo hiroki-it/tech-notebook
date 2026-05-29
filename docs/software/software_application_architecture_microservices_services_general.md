@@ -120,6 +120,7 @@ func SetupMetrics(ctx context.Context) func() {
 
 	return func() {
 		tctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+        // タイムアウト時間経過後に処理を中断する
 		defer cancel()
 		if err := metricServer.Shutdown(tctx); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			slog.Warn(fmt.Sprintf("failed to shutdown metric server: %v", err))
