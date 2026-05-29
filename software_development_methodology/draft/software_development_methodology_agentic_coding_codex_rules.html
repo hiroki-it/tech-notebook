@@ -33158,34 +33158,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ドメインオブジェクト
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ドメインオブジェクト">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        種類
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -33249,18 +33221,18 @@
 <span class="sb">```mermaid</span>
 <span class="s">flowchart LR</span>
 <span class="s">  subgraph core[&quot;コアドメイン&quot;]</span>
-<span class="s">    foo(&quot;Foo&quot;)</span>
-<span class="s">    bar(&quot;Bar&quot;)</span>
+<span class="s">    foo[&quot;Foo&quot;]</span>
+<span class="s">    bar[&quot;Bar&quot;]</span>
 <span class="s">  end</span>
 
 <span class="s">  subgraph supporting[&quot;支援サブドメイン&quot;]</span>
-<span class="s">    notification(&quot;通知&quot;)</span>
+<span class="s">    notification[&quot;通知&quot;]</span>
 <span class="s">  end</span>
 
 <span class="s">  subgraph generic[&quot;汎用サブドメイン&quot;]</span>
-<span class="s">    userManagement(&quot;ユーザー管理&quot;)</span>
-<span class="s">    authorization(&quot;認可&quot;)</span>
-<span class="s">    authentication(&quot;認証&quot;)</span>
+<span class="s">    userManagement[&quot;ユーザー管理&quot;]</span>
+<span class="s">    authorization[&quot;認可&quot;]</span>
+<span class="s">    authentication[&quot;認証&quot;]</span>
 <span class="s">  end</span>
 
 <span class="s">  foo --&gt; usageManagement</span>
@@ -33269,106 +33241,46 @@
 <span class="s">  userManagement --&gt; authentication</span>
 <span class="s">  userManagement --&gt; authorization</span>
 <span class="s">  userManagement --&gt; foo</span>
-<span class="s">  userManagement --&gt; usageManagement</span>
 <span class="s">  authorization --&gt; authentication</span>
 <span class="sb">```</span>
-</code></pre></div>
-<h2 id="_2">ドメインオブジェクト<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>プロダクトで使用されているドメインオブジェクト（ルートエンティティ、エンティティ、値オブジェクト）を一覧化し、分類する。</p>
-<p><code>prisma/schema.prisma</code>に定義されたORMのデータモデルをドメインオブジェクト相当として考える。</p>
-<h3 id="_3">種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>次の基準でドメインオブジェクトの種類に分類する。</p>
-<p>また、ドメインオブジェクトがどの境界づけられたコンテキストに属するかに分類する。</p>
-<ul>
-<li>ルートエンティティ<ul>
-<li>識別子をもつ</li>
-<li>内包するエンティティや値オブジェクトを含む集約全体の状態を変更できる</li>
-<li>ユースケースは、異なる境界づけられたコンテキストに属するルートエンティティの状態を同時に変更できない</li>
-</ul>
-</li>
-<li>エンティティ<ul>
-<li>識別子をもつ</li>
-<li>集約の外部から直接変更することはできず、通常はルートエンティティ経由で集約の状態を変更する</li>
-</ul>
-</li>
-<li>値オブジェクト<ul>
-<li>識別子をもたない</li>
-<li>ドメインルール上でのプリミティブ値や性質を表す</li>
-</ul>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>名前</th>
-<th>オブジェクトの種類</th>
-<th>属する境界づけられたコンテキストの種類</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Auth</td>
-<td>エンティティ</td>
-<td>認証</td>
-</tr>
-<tr>
-<td>Foo</td>
-<td>ルートエンティティ</td>
-<td>Foo</td>
-</tr>
-<tr>
-<td>Foo1</td>
-<td>エンティティ</td>
-<td>Foo</td>
-</tr>
-<tr>
-<td>Foo2</td>
-<td>エンティティ</td>
-<td>Foo</td>
-</tr>
-<tr>
-<td>Foo3</td>
-<td>値オブジェクト</td>
-<td>Foo</td>
-</tr>
-<tr>
-<td>Organization</td>
-<td>ルートエンティティ</td>
-<td>ユーザー管理</td>
-</tr>
-<tr>
-<td>OrganizationToken</td>
-<td>エンティティ</td>
-<td>ユーザー管理</td>
-</tr>
-<tr>
-<td>Policy</td>
-<td>ルートエンティティ</td>
-<td>認可</td>
-</tr>
-<tr>
-<td>Role</td>
-<td>ルートエンティティ</td>
-<td>認可</td>
-</tr>
-<tr>
-<td>RolePolicy</td>
-<td>エンティティ</td>
-<td>認可</td>
-</tr>
-<tr>
-<td>Session</td>
-<td>エンティティ</td>
-<td>認証</td>
-</tr>
-<tr>
-<td>User</td>
-<td>ルートエンティティ</td>
-<td>ユーザー管理</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code>
+
+<span class="gu">## ドメインオブジェクト</span>
+
+プロダクトで使用されているドメインオブジェクト（ルートエンティティ、エンティティ、値オブジェクト）を一覧化し、分類する。
+
+<span class="sb">`prisma/schema.prisma`</span>に定義されたORMのデータモデルをドメインオブジェクト相当として考える。
+
+<span class="gu">### 種類</span>
+
+次の基準でドメインオブジェクトの種類に分類する。
+
+また、ドメインオブジェクトがどの境界づけられたコンテキストに属するかに分類する。
+
+<span class="k">-</span><span class="w"> </span>ルートエンティティ
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>識別子をもつ
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>内包するエンティティや値オブジェクトを含む集約全体の状態を変更できる
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>ユースケースは、異なる境界づけられたコンテキストに属するルートエンティティの状態を同時に変更できない
+<span class="k">-</span><span class="w"> </span>エンティティ
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>識別子をもつ
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>集約の外部から直接変更することはできず、通常はルートエンティティ経由で集約の状態を変更する
+<span class="k">-</span><span class="w"> </span>値オブジェクト
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>識別子をもたない
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>ドメインルール上でのプリミティブ値や性質を表す
+
+| 名前              | オブジェクトの種類 | 属する境界づけられたコンテキストの種類 |
+| ----------------- | ------------------ | -------------------------------------- |
+| Auth              | エンティティ       | 認証                                   |
+| Foo               | ルートエンティティ | Foo                                    |
+| Foo1              | エンティティ       | Foo                                    |
+| Foo2              | エンティティ       | Foo                                    |
+| Foo3              | 値オブジェクト     | Foo                                    |
+| Organization      | ルートエンティティ | ユーザー管理                           |
+| OrganizationToken | エンティティ       | ユーザー管理                           |
+| Policy            | ルートエンティティ | 認可                                   |
+| Role              | ルートエンティティ | 認可                                   |
+| RolePolicy        | エンティティ       | 認可                                   |
+| Session           | エンティティ       | 認証                                   |
+| User              | ルートエンティティ | ユーザー管理                           |
 </code></pre></div>
 
 
@@ -33390,7 +33302,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月29日 17:06:18 JST">2026-05-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月29日 18:56:34 JST">2026-05-29</span>
   </span>
 
     
