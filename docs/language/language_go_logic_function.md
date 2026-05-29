@@ -1112,7 +1112,7 @@ func Invoke(ctx context.Context) error {
 
 	// Goroutineを宣言して並行化
 	go func() {
-		// 時間のかかる処理
+		// 時間のかかる処理（例：HTTPリクエスト、ポーリング、DB操作、ファイル操作、計算、暗号化、圧縮解凍など）
 		wg.Wait()
 		// Goroutineを終了する
         close(done)
@@ -1834,7 +1834,7 @@ func main() {
 
 #### ▼ 反復処理や長時間処理と相性がいい
 
-反復処理 (`for` 文) や長時間処理 (例：ポーリング) と相性がいい。
+反復処理 (`for` 文) や時間のかかる処理（例：HTTPリクエスト、ポーリング、DB操作、ファイル操作、計算、暗号化、圧縮解凍など） と相性がいい。
 
 ```go
 package main
