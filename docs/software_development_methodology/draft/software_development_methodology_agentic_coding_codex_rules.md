@@ -17,7 +17,7 @@ description: ルール＠Codexの知見を記録しています。
 
 ### Remixの場合
 
-`````markdown
+````markdown
 # ドメイン設計
 
 ## 境界づけられたコンテキスト
@@ -42,18 +42,18 @@ description: ルール＠Codexの知見を記録しています。
 ```mermaid
 flowchart LR
   subgraph core["コアドメイン"]
-    foo("Foo")
-    bar("Bar")
+    foo["Foo"]
+    bar["Bar"]
   end
 
   subgraph supporting["支援サブドメイン"]
-    notification("通知")
+    notification["通知"]
   end
 
   subgraph generic["汎用サブドメイン"]
-    userManagement("ユーザー管理")
-    authorization("認可")
-    authentication("認証")
+    userManagement["ユーザー管理"]
+    authorization["認可"]
+    authentication["認証"]
   end
 
   foo --> usageManagement
@@ -62,10 +62,8 @@ flowchart LR
   userManagement --> authentication
   userManagement --> authorization
   userManagement --> foo
-  userManagement --> usageManagement
   authorization --> authentication
 ```
-`````
 
 ## ドメインオブジェクト
 
@@ -104,7 +102,4 @@ flowchart LR
 | RolePolicy        | エンティティ       | 認可                                   |
 | Session           | エンティティ       | 認証                                   |
 | User              | ルートエンティティ | ユーザー管理                           |
-
-```
-
-```
+````

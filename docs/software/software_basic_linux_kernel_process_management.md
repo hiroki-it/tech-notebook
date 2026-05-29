@@ -223,18 +223,18 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 プログラムを実行する親プロセス
 ├─ スレッド
 │  └─ プロセッサ
-│     ├─ Goroutine-1（HTTPリクエスト処理）
-│     └─ Goroutine-3（トランザクション処理）
+│     ├─ goroutine #1（HTTPリクエスト処理）
+│     └─ goroutine #3（トランザクション処理）
 │
 ├─ スレッド
 │  └─ プロセッサ
-│     ├─ Goroutine-1（HTTPリクエスト処理）
-│     └─ Goroutine-2（ファイルI/O処理）
+│     ├─ goroutine #1（HTTPリクエスト処理）
+│     └─ goroutine #2（ファイルI/O処理）
 │
 └─ スレッド
    └─ プロセッサ
-      ├─ Goroutine-1（HTTPリクエスト処理）
-      └─ Goroutine-2（計算処理）
+      ├─ goroutine #1（HTTPリクエスト処理）
+      └─ goroutine #2（計算処理）
 ```
 
 #### ▼ Go上でNode.js環境を実行する
