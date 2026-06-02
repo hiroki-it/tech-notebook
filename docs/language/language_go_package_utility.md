@@ -2241,6 +2241,65 @@ func main() {
 
 <br>
 
+## viper
+
+### 使わない場合
+
+環境変数の取得、型変換、エラーハンドリングが必要である。
+
+```go
+package main
+
+import (
+	"os"
+	"strconv"
+)
+
+func main() {
+
+	// 中略
+
+	// 環境変数の取得
+	portStr := os.Getenv("PORT")
+	// 型変換
+	port, err := strconv.Atoi(portStr)
+	// エラーハンドリング
+	if err != nil {
+		port = 8080
+	}
+
+	// 中略
+
+}
+```
+
+### 使う場合
+
+型変換とエラーハンドリングが不要になる。
+
+```go
+package main
+
+import (
+	"github.com/spf13/viper"
+)
+
+func main() {
+
+	// 中略
+
+	// 環境変数の読み込みを有効化
+	viper.AutomaticEnv()
+
+	// 環境変数の取得と型変換
+	port := viper.GetInt("port")
+
+	// 中略
+}
+```
+
+<br>
+
 ## zap
 
 ### Logger
