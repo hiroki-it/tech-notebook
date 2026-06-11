@@ -1847,7 +1847,7 @@
   <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 送金ドメイン
+        ▼ 個人間送金ドメイン
       
     </span>
   </a>
@@ -34370,7 +34370,7 @@
   <a href="#_26" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 送金ドメイン
+        ▼ 個人間送金ドメイン
       
     </span>
   </a>
@@ -35437,7 +35437,24 @@
 <li><a href="https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22">https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22</a></li>
 </ul>
 </blockquote>
-<h4 id="_26">▼ 送金ドメイン<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<h4 id="_26">▼ 個人間送金ドメイン<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>個人間送金業務の担当者が変わる境目を見つけ、それを境界づけられたコンテキストにする。</p>
+<div class="highlight"><pre><span></span><code>ユーザー：利用者の登録、本人確認、利用停止を扱う。
+↓
+口座：送金元口座や受取口座の登録、有効性確認を扱う。
+↓
+支払依頼：受取人から送金人への請求や支払依頼を扱う。
+↓
+送金取引：送金依頼の作成、送金実行、送金ステータス更新を扱う。
+↓
+送金精算：送金結果を集計し、参加金融機関間の受け払い金額を確定する。
+↓
+送金照合：自システムの送金記録と外部データを突き合わせ、差分を確認する。
+↓
+レポーティング：送金履歴、送金明細、精算結果、照合結果を出力する。
+↓
+送金取引管理ポータル：管理者が送金取引を照会し、例外対応や再処理を行う。
+</code></pre></div>
 <p><strong>＊表＊</strong></p>
 <table>
 <thead>
@@ -35450,25 +35467,25 @@
 </thead>
 <tbody>
 <tr>
-<td>送金受付</td>
+<td>送金取引</td>
 <td>remittance</td>
 <td>送金</td>
 <td>Remittance（送金）、RemittanceHistories（送金履歴）、RemittanceStatuses（送金ステータス）</td>
 </tr>
 <tr>
-<td>送金受付</td>
+<td>請求</td>
 <td>payment</td>
 <td>請求</td>
 <td>Payment（請求）、TransactionHistory（取引履歴）</td>
 </tr>
 <tr>
-<td>口座管理</td>
-<td>account</td>
-<td>口座</td>
+<td>銀行口座</td>
+<td>BankAccount</td>
+<td>銀行口座</td>
 <td>BankAccount（銀行口座）</td>
 </tr>
 <tr>
-<td>ユーザー管理</td>
+<td>ユーザー</td>
 <td>user</td>
 <td>ユーザー</td>
 <td>User（ユーザー）</td>
@@ -35480,20 +35497,39 @@
 <td>Settlement（精算）</td>
 </tr>
 <tr>
+<td>送金照合</td>
+<td>reconciliation</td>
+<td>照合</td>
+<td>Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分）</td>
+</tr>
+<tr>
 <td>レポーティング</td>
 <td>reporting</td>
 <td>レポーティング</td>
 <td>RemittanceHistory（送金履歴）、RemittanceDetailFile（送金明細ファイル）</td>
 </tr>
 <tr>
-<td>送金管理</td>
+<td>送金取引管理ポータル</td>
 <td>web-portal</td>
-<td>送金管理</td>
+<td>送金取引管理</td>
 <td>webポータルのフロントエンドアプリケーション</td>
 </tr>
 </tbody>
 </table>
 <h4 id="qr">▼ QR決済ドメイン<a class="headerlink" href="#qr" title="Permanent link">&para;</a></h4>
+<p>QR決済業務の担当者が変わる境目を見つけ、それを境界づけられたコンテキストにする。</p>
+<div class="highlight"><pre><span></span><code>ユーザー：利用者の登録、本人確認、利用停止を扱う。
+↓
+加盟店契約：加盟店との契約、利用可能な決済手段、精算条件を扱う。
+↓
+QR決済取引：QRコードを使った決済要求、決済実行、取引ステータス更新を扱う。
+↓
+QR決済精算：QR決済結果を集計し、加盟店への支払額や手数料を確定する。
+↓
+QR決済照合：自システムの取引記録と決済事業者や外部ファイルを突き合わせ、差分を確認する。
+↓
+QR決済取引管理ポータル：管理者がQR決済取引を照会し、例外対応や再処理を行う。
+</code></pre></div>
 <p><strong>＊表＊</strong></p>
 <table>
 <thead>
@@ -35506,16 +35542,16 @@
 </thead>
 <tbody>
 <tr>
-<td>取引受付</td>
+<td>QR決済取引</td>
 <td>transaction</td>
 <td>取引</td>
 <td>Transaction（取引）</td>
 </tr>
 <tr>
-<td>加盟店管理</td>
+<td>加盟店契約</td>
 <td>merchant</td>
 <td>契約</td>
-<td>Merchant（契約）</td>
+<td>MerchantContract（加盟店契約）、Merchant（加盟店）</td>
 </tr>
 <tr>
 <td>精算</td>
@@ -35524,9 +35560,21 @@
 <td>Payment（清算）</td>
 </tr>
 <tr>
-<td>取引管理</td>
+<td>ユーザー</td>
+<td>user</td>
+<td>ユーザー</td>
+<td>User（ユーザー）</td>
+</tr>
+<tr>
+<td>QR決済照合</td>
+<td>reconciliation</td>
+<td>照合</td>
+<td>Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分）</td>
+</tr>
+<tr>
+<td>QR決済取引管理ポータル</td>
 <td>web-portal</td>
-<td>取引管理</td>
+<td>QR決済取引管理</td>
 <td>webポータルのフロントエンドアプリケーション</td>
 </tr>
 </tbody>
@@ -36094,7 +36142,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月11日 15:30:12 JST">2026-06-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月11日 16:29:16 JST">2026-06-11</span>
   </span>
 
     
