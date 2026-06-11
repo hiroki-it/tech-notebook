@@ -306,10 +306,10 @@ Figmaなどのツールを使用して、画面ごとにドメインイベント
 
 **＊表＊**
 
-| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
-| -------------- | ------------------ | -------------------------------- |
-|                |                    |                                  |
-|                |                    |                                  |
+| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名 | 集約内のエンティティ |
+| ---------------------------- | ------------------ | ------ | -------------------- |
+|                              |                    |        |                      |
+|                              |                    |        |                      |
 
 > - https://next-engine.net/ec-blog/order-flow/
 
@@ -331,10 +331,10 @@ Figmaなどのツールを使用して、画面ごとにドメインイベント
 
 **＊表＊**
 
-| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
-| -------------- | ------------------ | -------------------------------- |
-|                |                    |                                  |
-|                |                    |                                  |
+| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名 | 集約内のエンティティ |
+| ---------------------------- | ------------------ | ------ | -------------------- |
+|                              |                    |        |                      |
+|                              |                    |        |                      |
 
 ![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
 
@@ -388,10 +388,10 @@ class Book {
 
 **＊表＊**
 
-| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
-| -------------- | ------------------ | -------------------------------- |
-|                |                    |                                  |
-|                |                    |                                  |
+| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名 | 集約内のエンティティ |
+| ---------------------------- | ------------------ | ------ | -------------------- |
+|                              |                    |        |                      |
+|                              |                    |        |                      |
 
 ![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_bounded-context.png)
 
@@ -410,10 +410,10 @@ class Book {
 
 **＊表＊**
 
-| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ |
-| -------------- | ------------------ | -------------------------------- |
-|                |                    |                                  |
-|                |                    |                                  |
+| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名 | 集約内のエンティティ |
+| ---------------------------- | ------------------ | ------ | -------------------- |
+|                              |                    |        |                      |
+|                              |                    |        |                      |
 
 ![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
 
@@ -430,29 +430,29 @@ class Book {
 
 > - https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
 
-#### ▼ 送金系
+#### ▼ 送金ドメイン
 
 **＊表＊**
 
-| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ                                                          |
-| -------------- | ------------------ | ----------------------------------------------------------------------------------------- |
-| 送金           | remittance         | Remittance（送金）、RemittanceHistories（送金履歴）、RemittanceStatuses（送金ステータス） |
-| 請求           | payment            | Payment（請求）、TransactionHistory（取引履歴）                                           |
-| 口座           | account            | BankAccount（銀行口座）                                                                   |
-| 精算           | settlement         | Settlement（精算）                                                                        |
-| レポーティング | reporting          | RemittanceHistory（送金履歴）、RemittanceDetailFile（送金明細ファイル）                   |
-| 送金管理       | web-portal         | webポータルのフロントエンドアプリケーション                                               |
+| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名         | 集約内のエンティティ                                                                      |
+| ---------------------------- | ------------------ | -------------- | ----------------------------------------------------------------------------------------- |
+|                              | remittance         | 送金           | Remittance（送金）、RemittanceHistories（送金履歴）、RemittanceStatuses（送金ステータス） |
+|                              | payment            | 請求           | Payment（請求）、TransactionHistory（取引履歴）                                           |
+|                              | account            | 口座           | BankAccount（銀行口座）                                                                   |
+|                              | settlement         | 精算           | Settlement（精算）                                                                        |
+|                              | reporting          | レポーティング | RemittanceHistory（送金履歴）、RemittanceDetailFile（送金明細ファイル）                   |
+|                              | web-portal         | 送金管理       | webポータルのフロントエンドアプリケーション                                               |
 
-#### ▼ QR決済系
+#### ▼ QR決済ドメイン
 
 **＊表＊**
 
-| ユビキタス言語 | マイクロサービス名 | マイクロサービス内のエンティティ            |
-| -------------- | ------------------ | ------------------------------------------- |
-| 取引           | transaction        | Transaction（取引）                         |
-| 契約           | merchant           | Merchant（契約）                            |
-| 精算           | payment            | Payment（清算）                             |
-| 取引管理       | web-portal         | webポータルのフロントエンドアプリケーション |
+| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名   | 集約内のエンティティ                        |
+| ---------------------------- | ------------------ | -------- | ------------------------------------------- |
+|                              | transaction        | 取引     | Transaction（取引）                         |
+|                              | merchant           | 契約     | Merchant（契約）                            |
+|                              | payment            | 精算     | Payment（清算）                             |
+|                              | web-portal         | 取引管理 | webポータルのフロントエンドアプリケーション |
 
 <br>
 
