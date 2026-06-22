@@ -206,10 +206,105 @@ DBからレコードの一覧を取得する場合、ページング（取得数
 
 ### 実装例（TypeScript）
 
+#### ▼ 解決方法
+
 ```typescript
+const page = 1;
+const limit = 50;
+
 const users = await prisma.user.findMany({
   where: {teamId},
+  skip: (page - 1) * limit,
+  take: limit,
+  orderBy: {createdAt: "desc"},
 });
+```
+
+<br>
+
+## 05. 検索するレコード数をむやみに増やす
+
+### 問題
+
+集計結果を一覧で表示するような機能では、テナント内のデータを横断的に取得する必要がある。
+
+しかし、必要なデータを大量にRead処理で取得し、これをその都度集計すると、負荷もかかるし、処理時間も長くなる。
+
+<br>
+
+### 実装例（TypeScript）
+
+#### ▼ 問題がある実装
+
+```typescript
+const events = await prisma.event.findMany({
+  where: {
+    tenantId,
+    occurredAt: {
+      gte: startAt,
+      lt: endAt,
+    },
+  },
+});
+
+const eventCount = events.length;
+```
+
+#### ▼ 解決方法
+
+高負荷の処理をバッチマイクロサービスに分割する。
+
+バックエンドでは、バッチマイクロサービスと共有のテーブルか、事前に集計されたデータを取得する。
+
+バッチマイクロサービスでは、共有の集計テーブルに集計結果を書き込む。
+
+```typescript
+await prisma.eventHourlySummary.upsert({
+  where: {
+    tenantId_hour: {
+      tenantId,
+      hour: startAt,
+    },
+  },
+  update: {
+    count: eventCount,
+  },
+  create: {
+    tenantId,
+    hour: startAt,
+    count: eventCount,
+  },
+});
+```
+
+```prisma
+// EventHourlySummaryテーブル
+model EventHourlySummary {
+  tenantId String
+  hour     DateTime
+  count    Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@id([tenantId, hour])
+  @@map("event_hourly_summaries")
+}
+```
+
+バックエンドでは、共有の集計テーブルから集計結果を取得する。
+
+```typescript
+const eventSummary = await prisma.eventHourlySummary.findUnique({
+  where: {
+    tenantId_hour: {
+      tenantId,
+      hour: startAt,
+    },
+  },
+});
+
+const eventCount = eventSummary?.count ?? 0;
 ```
 
 <br>

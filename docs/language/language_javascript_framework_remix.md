@@ -927,6 +927,8 @@ export const loader = async () => {
 };
 ```
 
+> - https://remix-docs-ja.techtalk.jp/utils/defer
+
 <br>
 
 ## 08. 状態管理
