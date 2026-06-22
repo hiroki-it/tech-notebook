@@ -33802,8 +33802,8 @@
 <p><br></p>
 <h3 id="_2">初期化<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 全体<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>特にKubernetes内では、<code>api_base_url</code> と <code>authorize_url</code> のドメインに、外部から接続できるKeycloakのドメインを設定する。</p>
-<p>一方で、<code>access_token_url</code> と <code>jwks_uri</code> はKubernetes内部からのみ接続できるように、Serviceのドメインとする。</p>
+<p>特に Kubernetes 内では、<code>api_base_url</code> と <code>authorize_url</code> のドメインに、外部から接続できる Keycloak のドメインを設定する。</p>
+<p>一方で、<code>access_token_url</code> と <code>jwks_uri</code> は Kubernetes 内部からのみ接続できるように、Service のドメインとする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">authlib.integrations.flask_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">OAuth</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -33825,7 +33825,7 @@
     <span class="n">jwks_uri</span><span class="o">=</span><span class="s2">&quot;http://keycloak-http.keycloak.svc.cluster.local:8080/realms/dev/protocol/openid-connect/certs&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>IDプロバイダー名を指定し、ここで設定した変数を取得できる。</p>
+<p>ID プロバイダー名を指定し、ここで設定した変数を取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># http://&lt;KeycloakのAPIのドメイン&gt;/</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">oauth</span><span class="o">.&lt;</span><span class="n">IDプロバイダー名</span><span class="o">&gt;.</span><span class="n">api_base_url</span><span class="p">)</span>
 </code></pre></div>
@@ -33840,11 +33840,11 @@
 <p><br></p>
 <h3 id="_4">ログイン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="authorization">▼ アクセストークンを <code>Authorization</code> ヘッダーで運搬する場合<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h4>
-<p>フロントエンドアプリケーションがCSRの場合に採用できる。</p>
-<p>PythonでCSRのアプリケーションを実現できないため、<code>Authorization</code> ヘッダーの運搬は実装できない。</p>
+<p>フロントエンドアプリケーションが CSR の場合に採用できる。</p>
+<p>Python で CSR のアプリケーションを実現できないため、<code>Authorization</code> ヘッダーの運搬は実装できない。</p>
 <h4 id="cookie">▼ アクセストークンを <code>Cookie</code> ヘッダーで運搬する場合<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h4>
-<p>フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。</p>
-<p>CSRまたはSSRのアプリケーションは、<code>Cookie</code> ヘッダーを介してブラウザのCookieにアクセストークンを保存できる。</p>
+<p>フロントエンドアプリケーションが CSR または SSR の場合に採用できる。</p>
+<p>CSR または SSR のアプリケーションは、<code>Cookie</code> ヘッダーを介してブラウザの Cookie にアクセストークンを保存できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/login&#39;</span><span class="p">)</span>
@@ -33882,8 +33882,8 @@
 <p><br></p>
 <h3 id="_5">ログアウト<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="authorization_1">▼ アクセストークンを <code>Authorization</code> ヘッダーで運搬する場合<a class="headerlink" href="#authorization_1" title="Permanent link">&para;</a></h4>
-<p>フロントエンドアプリケーションがCSRの場合に採用できる。</p>
-<p>PythonでCSRのアプリケーションを実現できないため、<code>Authorization</code> ヘッダーの運搬は実装できない。</p>
+<p>フロントエンドアプリケーションが CSR の場合に採用できる。</p>
+<p>Python で CSR のアプリケーションを実現できないため、<code>Authorization</code> ヘッダーの運搬は実装できない。</p>
 <h4 id="cookie_1">▼ アクセストークンを <code>Cookie</code> ヘッダーで運搬する場合<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span>
 
@@ -33906,8 +33906,8 @@
 <p><br></p>
 <h3 id="_6">資格情報の失効<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="authorization_2">▼ アクセストークンを <code>Authorization</code> ヘッダーで運搬する場合<a class="headerlink" href="#authorization_2" title="Permanent link">&para;</a></h4>
-<p>フロントエンドアプリケーションがCSRの場合に採用できる。</p>
-<p>PythonでCSRのアプリケーションを実現できないため、<code>Authorization</code> ヘッダーの運搬は実装できない。</p>
+<p>フロントエンドアプリケーションが CSR の場合に採用できる。</p>
+<p>Python で CSR のアプリケーションを実現できないため、<code>Authorization</code> ヘッダーの運搬は実装できない。</p>
 <h4 id="cookie_2">▼ アクセストークンを <code>Cookie</code> ヘッダーで運搬する場合<a class="headerlink" href="#cookie_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">flask</span><span class="w"> </span><span class="kn">import</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span>
 
@@ -33971,7 +33971,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="client_secretsjson">client_secrets.json<a class="headerlink" href="#client_secretsjson" title="Permanent link">&para;</a></h3>
-<p>資格情報をJSONファイルで定義する。</p>
+<p>資格情報を JSON ファイルで定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;web&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -34012,7 +34012,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     

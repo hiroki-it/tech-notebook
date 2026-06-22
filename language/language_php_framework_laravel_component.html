@@ -12891,7 +12891,7 @@
   <a href="#facade_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Facadeを使用したほうが良い場合
+        ▼ Facadeを使用したほうがよい場合
       
     </span>
   </a>
@@ -15047,7 +15047,7 @@
   <a href="#_69" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 全てのルーティングへの処理
+        ▼ すべてのルーティングへの処理
       
     </span>
   </a>
@@ -36819,7 +36819,7 @@
   <a href="#facade_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Facadeを使用したほうが良い場合
+        ▼ Facadeを使用したほうがよい場合
       
     </span>
   </a>
@@ -38975,7 +38975,7 @@
   <a href="#_69" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 全てのルーティングへの処理
+        ▼ すべてのルーティングへの処理
       
     </span>
   </a>
@@ -39507,9 +39507,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">コンポーネントのコード<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Laravelの各コンポーネントには、似たような名前の関数が多く内蔵されている。</p>
+<p>Laravel の各コンポーネントには、似たような名前の関数が多く内蔵されている。</p>
 <p>そのため、同様の能力を実現するために、各々が異なる関数を使用しがちになる。</p>
-<p>その時、各関数がブラックボックスにならないように、処理の違いをコードから確認する必要がある。</p>
+<p>そのとき、各関数がブラックボックスにならないように、処理の違いをコードから確認する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://laravel.com/api/8.x/Illuminate.html">https://laravel.com/api/8.x/Illuminate.html</a></li>
@@ -39574,7 +39574,7 @@
 <p><br></p>
 <h2 id="04-console">04. Console<a class="headerlink" href="#04-console" title="Permanent link">&para;</a></h2>
 <h3 id="command">Command<a class="headerlink" href="#command" title="Permanent link">&para;</a></h3>
-<p>artisanコマンドで実行できるコマンド処理を定義する。</p>
+<p>artisan コマンドで実行できるコマンド処理を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -39612,7 +39612,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>定義したCommandクラスは、以下の様に実行できる。</p>
+<p>定義した Command クラスは、以下のように実行できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>command:do-foo
 </code></pre></div>
 <blockquote>
@@ -39676,7 +39676,7 @@
 <p><br></p>
 <h3 id="_6">エンドポイントに応じた設定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 単一のエンドポイント<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>単一のエンドポイントしかない場合、<code>DB_HOST</code> を1つだけ設定する。</p>
+<p>単一のエンドポイントしかない場合、<code>DB_HOST</code> を 1 つだけ設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -39716,7 +39716,7 @@
 </code></pre></div>
 <h4 id="_8">▼ 複数のエンドポイント<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>複数のエンドポイントがある場合、書き込み処理と読み出し処理は専用のエンドポイントに向ける。</p>
-<p>例えば、Amazon RDSを採用している場合、プライマリーインスタンスに向け、また読み出し処理をリードレプリカに向けることにより、負荷を分散できる。</p>
+<p>例えば、Amazon RDS を採用している場合、プライマリーインスタンスに向け、また読み出し処理をリードレプリカに向けることにより、負荷を分散できる。</p>
 <p>この場合、環境変数に <code>2</code> 個のインスタンスのエンドポイントを実装する必要がある。</p>
 <blockquote>
 <ul>
@@ -39726,7 +39726,7 @@
 <div class="highlight"><pre><span></span><code><span class="nv">DB_HOST_PRIMARY</span><span class="o">=</span>&lt;プライマリーインスタンスのエンドポイント&gt;
 <span class="nv">DB_HOST_READ</span><span class="o">=</span>&lt;リードレプリカのエンドポイント&gt;
 </code></pre></div>
-<p>注意点として、スティッキーセッションを使用するために <code>sticky</code> キーを有効化しておくと良い。</p>
+<p>注意点として、スティッキーセッションを使用するために <code>sticky</code> キーを有効化しておくとよい。</p>
 <p>プライマリーインスタンスのデータ更新がリードレプリカへ同期される前に読み出し処理が起こる場合でも、これを防げる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -39821,7 +39821,7 @@
 </ul>
 </blockquote>
 <h4 id="eloquentcrud">▼ EloquentモデルのCRUDイベント<a class="headerlink" href="#eloquentcrud" title="Permanent link">&para;</a></h4>
-<p>Eloquentモデルでは、DBアクセスに関する関数の実行開始や終了の処理タイミングをイベントクラスに紐付けられる。</p>
+<p>Eloquent モデルでは、DB アクセスに関する関数の実行開始や終了の処理タイミングをイベントクラスに紐付けられる。</p>
 <p>紐付けは、プロパティで定義するか、各タイミングで実行される無名関数を使ってイベントを発生させる必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>プロパティにて、<code>CREATE</code> 処理と <code>DELETE</code> 処理を独自イベントクラスに紐付ける。</p>
@@ -39878,7 +39878,7 @@
 <h4 id="listener_1">▼ Listenerとは<a class="headerlink" href="#listener_1" title="Permanent link">&para;</a></h4>
 <p>イベントが発生したときに、これに紐付いてコールするオブジェクトのこと。</p>
 <h4 id="_11">▼ 構成<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Listenerクラスがコールされたときに実行する処理を <code>handle()</code> 関数に定義する。</p>
+<p>Listener クラスがコールされたときに実行する処理を <code>handle()</code> 関数に定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ユーザーが作成されたときに、メールアドレスにメッセージを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -39908,7 +39908,7 @@
 <span class="nx">event</span><span class="p">(</span><span class="k">new</span> <span class="nx">UserCreatedEvent</span><span class="p">(</span><span class="nv">$user</span><span class="p">));</span>
 </code></pre></div>
 <h4 id="_12">▼ イベントとリスナーの紐付け<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>EventServiceProviderクラスにて、Eventクラスに紐付ける1つ以上のListenerクラスを設定する。</p>
+<p>EventServiceProvider クラスにて、Event クラスに紐付ける 1 つ以上の Listener クラスを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -39943,13 +39943,13 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="eloquentcrud_1">▼ 任意のEloquentモデルCRUDイベントの検知<a class="headerlink" href="#eloquentcrud_1" title="Permanent link">&para;</a></h4>
-<p>Laravelの多くのコンポーネントに、<code>boot()</code> 関数が定義されている。</p>
-<p>Eloquentモデルでは、インスタンス作成時に <code>boot()</code> 関数がコールされ、これによりに <code>bootTraits()</code> 関数が実行される。</p>
-<p>Traitに <code>boot+&lt;クラス名&gt;</code> という名前の静的関数が定義されていると、<code>bootTraits()</code> 関数はこれをコールする。</p>
-<p><code>bootTraits()</code> 関数の中でEloquentモデルのイベントを発生させることにより、全てのEloquentモデルのイベントを一括で発火させられる。</p>
+<p>Laravel の多くのコンポーネントに、<code>boot()</code> 関数が定義されている。</p>
+<p>Eloquent モデルでは、インスタンス作成時に <code>boot()</code> 関数がコールされ、これによりに <code>bootTraits()</code> 関数が実行される。</p>
+<p>Trait に <code>boot+&lt;クラス名&gt;</code> という名前の静的関数が定義されていると、<code>bootTraits()</code> 関数はこれをコールする。</p>
+<p><code>bootTraits()</code> 関数のなかで Eloquent モデルのイベントを発生させることにより、すべての Eloquent モデルのイベントを一括で発火させられる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>あらかじめTraitを定義する。</p>
-<p><code>saved()</code> 関数にEloquentモデルの更新イベントを登録可能にする。</p>
+<p>あらかじめ Trait を定義する。</p>
+<p><code>saved()</code> 関数に Eloquent モデルの更新イベントを登録可能にする。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Models\Traits</span><span class="p">;</span>
@@ -40016,9 +40016,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Model更新イベントが発火してコールするリスナーを定義する。</p>
+<p>Model 更新イベントが発火してコールするリスナーを定義する。</p>
 <p><code>create_by</code> カラムまたは <code>updated_by</code> カラムに、指定した更新者名を設定できるようにする。</p>
-<p>注意点として、イベントとリスナーの対応関係は、EventServiceProviderで登録する。</p>
+<p>注意点として、イベントとリスナーの対応関係は、EventServiceProvider で登録する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Listeners</span><span class="p">;</span>
@@ -40069,7 +40069,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>実行者名は、定数として管理しておくと良い。</p>
+<p>実行者名は、定数として管理しておくとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Constants</span><span class="p">;</span>
@@ -40104,7 +40104,7 @@
 <h2 id="07-exception">07. Exception<a class="headerlink" href="#07-exception" title="Permanent link">&para;</a></h2>
 <h3 id="laravel_1">Laravelにおけるエラーハンドリング<a class="headerlink" href="#laravel_1" title="Permanent link">&para;</a></h3>
 <p>エラーハンドリングは <code>4</code> 個のステップからなる。</p>
-<p>LaravelではデフォルトでHandlerクラスが全てのステップをカバーしている。</p>
+<p>Laravel ではデフォルトで Handler クラスがすべてのステップをカバーしている。</p>
 <p>また加えて、異常系レスポンスを自動的に返信してくれる。</p>
 <p>エラーハンドリングのステップのうち、エラー検出については言及しないこととする。</p>
 <blockquote>
@@ -40122,10 +40122,10 @@
 </ul>
 </blockquote>
 <h4 id="_15">▼ スタックトレース<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>Laravelはスローされる例外のメッセージをスタックトレースで作成する。</p>
-<p>また、Laravel内部で例外キャッチと新たな例外の投げ直しが行われるため、<code>[previous exception]</code> によって例外が結合される。</p>
+<p>Laravel はスローされる例外のメッセージをスタックトレースで作成する。</p>
+<p>また、Laravel 内部で例外キャッチと新たな例外の投げ直しが行われるため、<code>[previous exception]</code> によって例外が結合される。</p>
 <p>スタックトレースには機密性の高い情報が含まれるため、クライアントへの異常系レスポンスのエラーメッセージには割り当てずに、ロギングだけしておく。</p>
-<p>エラーが複数行にまたがるため、Amazon CloudWatchやFluentBitなどのログ収集ツールでは、各行を繋げて扱えるように設定が必要である。</p>
+<p>エラーが複数行にまたがるため、Amazon CloudWatch や FluentBit などのログ収集ツールでは、各行を繋げて扱えるように設定が必要である。</p>
 <p>補足として、ログの詳細度は <code>APP_DEBUG</code> 環境変数で制御できる。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2021</span>-09-00<span class="w"> </span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span>local.ERROR:<span class="w"> </span>*****<span class="w"> </span><span class="o">(</span>エラーメッセージ<span class="o">)</span>
 <span class="o">[</span>stacktrace<span class="o">]</span>
@@ -40175,7 +40175,7 @@
 <p><br></p>
 <h3 id="_16">ロギング<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="report">▼ <code>report()</code> 関数<a class="headerlink" href="#report" title="Permanent link">&para;</a></h4>
-<p>Laravel内部でキャッチされた例外を基に、ロギングを実行する。</p>
+<p>Laravel 内部でキャッチされた例外を基に、ロギングを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Exceptions</span><span class="p">;</span>
@@ -40206,9 +40206,9 @@
 <p><br></p>
 <h3 id="_17">異常系レスポンスの返信<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="render">▼ <code>render()</code> 関数<a class="headerlink" href="#render" title="Permanent link">&para;</a></h4>
-<p>Laravel内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。</p>
+<p>Laravel 内部でキャッチされた例外を基に、異常系レスポンスを自動的に返信する。</p>
 <p>異常系レスポンスの返信処理もこれに追加できるが、異常系レスポンス間が密結合になるため、できるだけいじらない。</p>
-<p>代わりに、各コントローラーにtry-catchと異常系レスポンスの返信処理を実装する。</p>
+<p>代わりに、各コントローラーに try-catch と異常系レスポンスの返信処理を実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Exceptions</span><span class="p">;</span>
@@ -40235,10 +40235,10 @@
 <h2 id="08-facade">08. Facade<a class="headerlink" href="#08-facade" title="Permanent link">&para;</a></h2>
 <h3 id="facade">Facade<a class="headerlink" href="#facade" title="Permanent link">&para;</a></h3>
 <h4 id="facade_1">▼ Facadeとは<a class="headerlink" href="#facade_1" title="Permanent link">&para;</a></h4>
-<p>Facadeに登録されたクラス (Facadeクラス) とServiceContainerを繋ぐ静的プロキシとして働く。</p>
+<p>Facade に登録されたクラス (Facade クラス) と ServiceContainer を繋ぐ静的プロキシとして働く。</p>
 <p>関数をコールできるようになる。</p>
 <h4 id="facade_2">▼ Facadeを使用しない場合<a class="headerlink" href="#facade_2" title="Permanent link">&para;</a></h4>
-<p>new演算子でインスタンスを作成する。</p>
+<p>new 演算子でインスタンスを作成する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -40260,10 +40260,10 @@
 </code></pre></div>
 <h4 id="facade_3">▼ Facadeの静的プロキシを使用する場合<a class="headerlink" href="#facade_3" title="Permanent link">&para;</a></h4>
 <p>静的関数の記法でコールできる。</p>
-<p>ただし、自作クラスをFacadeを使用してインスタンス化すると、スパゲッティな『Composition (合成) 』の依存関係を生じさせてしまう。</p>
-<p>例えば、Facadeの中でも <code>Route</code> のように、代替するよりFacadeを使ったほうが便利な部分以外は、使用しないほうが良い。</p>
+<p>ただし、自作クラスを Facade を使用してインスタンス化すると、スパゲッティな『Composition (合成) 』の依存関係を生じさせてしまう。</p>
+<p>例えば、Facade のなかでも <code>Route</code> のように、代替するより Facade を使ったほうが便利な部分以外は、使用しないほうがよい。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Facadeとして使用したいクラスを定義する。</p>
+<p>Facade として使用したいクラスを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
@@ -40291,12 +40291,12 @@
 <span class="c1">// Facade利用</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nx">Foo</span><span class="o">::</span><span class="na">method</span><span class="p">();</span>
 </code></pre></div>
-<h4 id="facade_4">▼ Facadeを使用したほうが良い場合<a class="headerlink" href="#facade_4" title="Permanent link">&para;</a></h4>
-<p>Facadeがトレイトの代わりになる場合、Facadeを使用すると責務がドメインモデルへ集中せずに済む。</p>
+<h4 id="facade_4">▼ Facadeを使用したほうがよい場合<a class="headerlink" href="#facade_4" title="Permanent link">&para;</a></h4>
+<p>Facade がトレイトの代わりになる場合、Facade を使用すると責務がドメインモデルへ集中せずに済む。</p>
 <p><strong>＊例＊</strong></p>
-<p>NotifiableトレイトをUserクラスで使用せずに、Notificationファサードによるオンデマンド通知を使用することにより、Userクラスが通知処理の責務を持たずに済む。</p>
+<p>Notifiable トレイトを User クラスで使用せずに、Notification ファサードによるオンデマンド通知を使用することにより、User クラスが通知処理の責務を持たずに済む。</p>
 <h4 id="facade_5">▼ 標準登録されたFacadeクラスの種類<a class="headerlink" href="#facade_5" title="Permanent link">&para;</a></h4>
-<p>以下のクラスは、デフォルトで登録されているFacadeである。</p>
+<p>以下のクラスは、デフォルトで登録されている Facade である。</p>
 <table>
 <thead>
 <tr>
@@ -40537,22 +40537,22 @@
 <h3 id="auth">Authファサード<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h3>
 <h4 id="auth_1">▼ Authファサードとは<a class="headerlink" href="#auth_1" title="Permanent link">&para;</a></h4>
 <p>認証に関する処理を提供する。</p>
-<p>Laravelからあらかじめ提供されている認証を使用しない場合、Authファサードを使用して、認証ロジックを実装できる。</p>
+<p>Laravel からあらかじめ提供されている認証を使用しない場合、Auth ファサードを使用して、認証ロジックを実装できる。</p>
 <p><br></p>
 <h3 id="db_1">DBファサード<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
 <h4 id="db_2">▼ DBファサードとは<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h4>
-<p>DBの操作処理を提供する。</p>
-<p>Eloquentの代わりに、DBファサードを使用しても良い。</p>
-<p>Active Recordのロジックを持たないため、Repositoryパターンのロジックとして使用できる。</p>
+<p>DB の操作処理を提供する。</p>
+<p>Eloquent の代わりに、DB ファサードを使用してもよい。</p>
+<p>Active Record のロジックを持たないため、Repository パターンのロジックとして使用できる。</p>
 <h4 id="transaction">▼ <code>transaction()</code> 関数<a class="headerlink" href="#transaction" title="Permanent link">&para;</a></h4>
 <p>複数のクエリ処理を実行するトランザクション処理を定義する。</p>
 <p>トランザクション内に含まれる一連の処理（トランザクション開始、コミット、ロールバック）を管理してくれる。</p>
-<p>基本的には、<code>transaction()</code> 関数を使用してトランザクション処理を実行すれば良い。</p>
+<p>基本的には、<code>transaction()</code> 関数を使用してトランザクション処理を実行すればよい。</p>
 <p>引数として渡した無名関数が例外を返却した場合、ロールバックを自動的に実行する。</p>
 <p>例外が発生しなかった場合、無名関数の返り値が、そのまま <code>transaction()</code> 関数の返り値になる。</p>
 <p>加えて <code>transaction()</code> 関数の返り値を返すようにすれば、無名関数の返り値をそのまま使用できる。</p>
-<p>補足として、トランザクション処理は必須でない。使用するとDB操作に要する時間が増えるため、不要なら使用しなくても構わない。</p>
-<p>参考リンクによると、MongoDBに対してトランザクション処理を実行する/行わない場合を比較して、処理時間が17%弱長くなったとのこと。</p>
+<p>補足として、トランザクション処理は必須でない。使用すると DB 操作に要する時間が増えるため、不要なら使用しなくても構わない。</p>
+<p>参考リンクによると、MongoDB に対してトランザクション処理を実行する/行わない場合を比較して、処理時間が 17%弱長くなったとのこと。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -40658,12 +40658,12 @@
 <h4 id="route_1">▼ Routeファサードとは<a class="headerlink" href="#route_1" title="Permanent link">&para;</a></h4>
 <p>ルーティング処理を提供する。</p>
 <h4 id="_18">▼ ヘルスチェックへの対応<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>AWS ALBやGlobal Acceleratorから『<code>/healthcheck</code>』に対してヘルスチェックを設定したうえで、<code>200</code> ステータスを含むレスポンスを返信する。</p>
-<p>Nginxでヘルスチェックの返信を実装もできるが、アプリケーションの死活管理としては、Laravelに返信を実装するほうが適切である。</p>
-<p>RouteServiceProviderも参照せよ。</p>
+<p>AWS ALB や Global Accelerator から『<code>/healthcheck</code>』に対してヘルスチェックを設定したうえで、<code>200</code> ステータスを含むレスポンスを返信する。</p>
+<p>Nginx でヘルスチェックの返信を実装もできるが、アプリケーションの死活管理としては、Laravel に返信を実装するほうが適切である。</p>
+<p>RouteServiceProvider も参照せよ。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>以下のような構成があるとする。</p>
-<p>Webサーバーではヘルスチェックエンドポイントを設けず、Appサーバー側にヘルスエンドポイント (例：<code>/healthcheck</code>) を設ける。</p>
+<p>Web サーバーではヘルスチェックエンドポイントを設けず、App サーバー側にヘルスエンドポイント (例：<code>/healthcheck</code>) を設ける。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ロードバランサー</span><span class="w"> </span><span class="c1"># /healthcheckにヘルスチェックを送信する</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
@@ -40680,10 +40680,10 @@
 <span class="p">});</span>
 </code></pre></div>
 <h4 id="middleware">▼ <code>middleware()</code> 関数<a class="headerlink" href="#middleware" title="Permanent link">&para;</a></h4>
-<p>コントローラーへのルーティング時に実行するMiddlewareクラスを設定する。</p>
-<p>引数として、<code>App\Http\Kernel.php</code> ファイルで定義されたMiddlewareクラスのエイリアスを設定する。</p>
+<p>コントローラーへのルーティング時に実行する Middleware クラスを設定する。</p>
+<p>引数として、<code>App\Http\Kernel.php</code> ファイルで定義された Middleware クラスのエイリアスを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>認証方法としてWebガードを使用する場合、<code>auth</code> エイリアスを設定する。</p>
+<p>認証方法として Web ガードを使用する場合、<code>auth</code> エイリアスを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">App\Http\Controllers\Foo\FooController</span><span class="p">;</span>
@@ -40720,7 +40720,7 @@
 
 <span class="p">}</span>
 </code></pre></div>
-<p>一方で、認証方法としてAPIガードを使用する場合、<code>auth:api</code> エイリアスを設定する。</p>
+<p>一方で、認証方法として API ガードを使用する場合、<code>auth:api</code> エイリアスを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// authエイリアスのMiddlewareクラスが使用される。</span>
@@ -40746,9 +40746,9 @@
 </code></pre></div>
 <h4 id="where-pattern">▼ <code>where()</code> 関数、<code>pattern()</code> 関数<a class="headerlink" href="#where-pattern" title="Permanent link">&para;</a></h4>
 <p>パスパラメーターに対するバリデーションルールを正規表現で定義し、加えて実行する。</p>
-<p>RouteServiceProviderの <code>boot()</code> 関数にて、<code>pattern()</code> 関数で制約を設定することによって、ルーティング時にwhereを使用する必要がなくなる。</p>
+<p>RouteServiceProvider の <code>boot()</code> 関数にて、<code>pattern()</code> 関数で制約を設定することによって、ルーティング時に where を使用する必要がなくなる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>userIdの形式を『0〜9が1つ以上』に設定している。</p>
+<p>userId の形式を『0〜9 が 1 つ以上』に設定している。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">App\Http\Controllers\Foo\FooController</span><span class="p">;</span>
@@ -40765,7 +40765,7 @@
         <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s2">&quot;fooId&quot;</span><span class="p">,</span> <span class="s2">&quot;[0-9]+&quot;</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>または、RouteServiceProviderクラスに <code>pattern()</code> 関数を定義すると、各エンドポイントに対する正規表現を一括で実行できる。</p>
+<p>または、RouteServiceProvider クラスに <code>pattern()</code> 関数を定義すると、各エンドポイントに対する正規表現を一括で実行できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints">https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints</a></li>
@@ -40847,7 +40847,7 @@
 <span class="x">];</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>Storageファサードの <code>disk()</code> 関数を使用してlocalディスクを指定する。</p>
+<p>Storage ファサードの <code>disk()</code> 関数を使用して local ディスクを指定する。</p>
 <p><code>file.txt</code> ファイルを <code>storage/app/file.txt</code> として保管する。</p>
 <div class="highlight"><pre><span></span><code><span class="x">Storage::disk(&quot;local&quot;)-&gt;put(&quot;file.txt&quot;, &quot;file.txt&quot;);</span>
 </code></pre></div>
@@ -40881,7 +40881,7 @@
 <span class="x">];</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>Storageファサードの <code>disk()</code> 関数を使用してpublicディスクを指定する。</p>
+<p>Storage ファサードの <code>disk()</code> 関数を使用して public ディスクを指定する。</p>
 <p>また、<code>file.txt</code> ファイルを <code>storage/app/public/file.txt</code> として保管する。</p>
 <div class="highlight"><pre><span></span><code><span class="x">Storage::disk(&quot;s3&quot;)-&gt;put(&quot;file.txt&quot;, &quot;file.txt&quot;);</span>
 </code></pre></div>
@@ -40921,10 +40921,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_21">▼ クラウドストレージの場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>ファイルをS3バケット内のディレクトリ配下に保管する。</p>
+<p>ファイルを S3 バケット内のディレクトリ配下に保管する。</p>
 <p>環境変数を <code>.env</code> ファイルに実装する必要がある。</p>
 <p><code>filesystems.php</code> ファイルから、指定された設定が選択される。</p>
-<p>AWSアカウントの資格情報を環境変数として設定するか、またはS3アクセスポリシーをAmazon EC2やAmazon ECSタスクに付与することにより、S3にリクエストを送信できるようになる。</p>
+<p>AWS アカウントの資格情報を環境変数として設定するか、または S3 アクセスポリシーを Amazon EC2 や Amazon ECS タスクに付与することにより、S3 にリクエストを送信できるようになる。</p>
 <p>事前に、<code>filesystems.php</code> ファイルに設定が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># S3アクセスポリシーをAmazon EC2やAmazon ECSタスクに付与しても良い</span>
 <span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>&lt;アクセスキーID&gt;
@@ -40957,8 +40957,8 @@
 <span class="x">];</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>Storageファサードの <code>disk()</code> 関数を使用してs3ディスクを指定する。</p>
-<p>また、<code>file.txt</code> ファイルをS3バケットのルートに <code>file.txt</code> として保管する。</p>
+<p>Storage ファサードの <code>disk()</code> 関数を使用して s3 ディスクを指定する。</p>
+<p>また、<code>file.txt</code> ファイルを S3 バケットのルートに <code>file.txt</code> として保管する。</p>
 <div class="highlight"><pre><span></span><code><span class="x">Storage::disk(&quot;s3&quot;)-&gt;put(&quot;file.txt&quot;, &quot;file.txt&quot;);</span>
 </code></pre></div>
 <p>他の実装方法として、環境変数を使用して、<code>filesytems.php</code> ファイルでデフォルトディスクを <code>s3</code> に変更すると、<code>put()</code> 関数を直接的に使用できる。</p>
@@ -40970,11 +40970,11 @@
 <h3 id="validator">Validatorファサード<a class="headerlink" href="#validator" title="Permanent link">&para;</a></h3>
 <h4 id="validator_1">▼ Validatorファサードとは<a class="headerlink" href="#validator_1" title="Permanent link">&para;</a></h4>
 <p>バリデーション処理を提供する。</p>
-<p>FormRequestクラスの <code>validated()</code> 関数や <code>validate()</code> 関数の代わりに、Validatorファサードを使用しても良い。</p>
+<p>FormRequest クラスの <code>validated()</code> 関数や <code>validate()</code> 関数の代わりに、Validator ファサードを使用してもよい。</p>
 <h4 id="validatorfails">▼ Validatorクラス、<code>fails()</code> 関数<a class="headerlink" href="#validatorfails" title="Permanent link">&para;</a></h4>
-<p>Validateファサードの <code>make()</code> 関数を使用して、ルールを定義する。</p>
-<p>この時、第一引数で、バリデーションを実行するリクエストデータを渡す。</p>
-<p>ルールに反すると、1つ目のルール名 (例：<code>required</code>) に基づき、<code>validation.php</code> ファイルから対応するエラーメッセージを自動的に選択する。</p>
+<p>Validate ファサードの <code>make()</code> 関数を使用して、ルールを定義する。</p>
+<p>このとき、第一引数で、バリデーションを実行するリクエストデータを渡す。</p>
+<p>ルールに反すると、1 つ目のルール名 (例：<code>required</code>) に基づき、<code>validation.php</code> ファイルから対応するエラーメッセージを自動的に選択する。</p>
 <p>次に、<code>fails()</code> 関数を使用して、バリデーションでエラーが発生した場合の処理を定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -41013,8 +41013,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="validate">▼ <code>validate()</code> 関数<a class="headerlink" href="#validate" title="Permanent link">&para;</a></h4>
-<p>Validatorクラスの <code>validate()</code> 関数を使用すると、FormRequestクラスの <code>validate()</code> 関数と同様の処理が実行される。</p>
-<p>バリデーションでエラーが発生した場合、Handlerクラスの <code>invalid()</code> 関数がコールされ、元のWebページにリダイレクトされる。</p>
+<p>Validator クラスの <code>validate()</code> 関数を使用すると、FormRequest クラスの <code>validate()</code> 関数と同様の処理が実行される。</p>
+<p>バリデーションでエラーが発生した場合、Handler クラスの <code>invalid()</code> 関数がコールされ、元の Web ページにリダイレクトされる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
@@ -41055,8 +41055,8 @@
 <h2 id="08-02">08-02. よく使用するグローバルヘルパー関数<a class="headerlink" href="#08-02" title="Permanent link">&para;</a></h2>
 <h3 id="_22">ヘルパー関数<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <h4 id="_23">▼ ヘルパー関数とは<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>グローバルにコールできるLaravel専用の関数のこと。</p>
-<p>基本的には、ヘルパー関数で実行される処理は、Facadeの内部で実行されるものと同じである。</p>
+<p>グローバルにコールできる Laravel 専用の関数のこと。</p>
+<p>基本的には、ヘルパー関数で実行される処理は、Facade の内部で実行されるものと同じである。</p>
 <p>どちらを使用するかは好みである。</p>
 <blockquote>
 <ul>
@@ -41073,7 +41073,7 @@
 <p><br></p>
 <h3 id="auth_2"><code>auth()</code> ヘルパー<a class="headerlink" href="#auth_2" title="Permanent link">&para;</a></h3>
 <h4 id="authmanager">▼ AuthManagerインスタンスの返却<a class="headerlink" href="#authmanager" title="Permanent link">&para;</a></h4>
-<p>認証処理を持つAuthManagerクラスのインスタンスを返却する。</p>
+<p>認証処理を持つ AuthManager クラスのインスタンスを返却する。</p>
 <blockquote>
 <ul>
 <li><a href="https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html">https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html</a></li>
@@ -41095,8 +41095,8 @@
 <span class="nv">$value</span> <span class="o">=</span> <span class="nx">config</span><span class="p">(</span><span class="s2">&quot;app.timezone&quot;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="_26">▼ 独自環境変数ファイルの作成と読み出し<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>任意の名前のphp形式ファイルを <code>config</code> ディレクトリ配下に作成しておく。</p>
-<p>これは、configヘルパーで読み込める。</p>
+<p>任意の名前の php 形式ファイルを <code>config</code> ディレクトリ配下に作成しておく。</p>
+<p>これは、config ヘルパーで読み込める。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -41136,8 +41136,8 @@
 <p><br></p>
 <h3 id="response"><code>response()</code> ヘルパー<a class="headerlink" href="#response" title="Permanent link">&para;</a></h3>
 <h4 id="json">▼ JSON型データを含むレスポンス<a class="headerlink" href="#json" title="Permanent link">&para;</a></h4>
-<p>返却されるResponseFactoryクラスの <code>json()</code> 関数にレンダリングしたいJSON型データを設定する。</p>
-<p><code>response()</code> ヘルパーは初期値として <code>200</code> ステータスが設定されているが、<code>view()</code> 関数や <code>setStatusCode()</code> 関数を使用して、明示的に設定しても良い。</p>
+<p>返却される ResponseFactory クラスの <code>json()</code> 関数にレンダリングしたい JSON 型データを設定する。</p>
+<p><code>response()</code> ヘルパーは初期値として <code>200</code> ステータスが設定されているが、<code>view()</code> 関数や <code>setStatusCode()</code> 関数を使用して、明示的に設定してもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php">https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php</a></li>
@@ -41166,9 +41166,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="view">▼ Viewテンプレートのレスポンス<a class="headerlink" href="#view" title="Permanent link">&para;</a></h4>
-<p>返却されるResponseFactoryクラスの <code>view()</code> 関数に、レンダリングしたいデータ (テンプレート、array型データ、ステータスコードなど) を設定する。</p>
-<p>また、Viewクラスの <code>header()</code> 関数にHTTPヘッダー値を設定する。</p>
-<p><code>response()</code> ヘルパーは初期値として <code>200</code> ステータスが設定されているが、<code>view()</code> 関数や <code>setStatusCode()</code> 関数を使用して、明示的に設定しても良い。</p>
+<p>返却される ResponseFactory クラスの <code>view()</code> 関数に、レンダリングしたいデータ (テンプレート、array 型データ、ステータスコードなど) を設定する。</p>
+<p>また、View クラスの <code>header()</code> 関数に HTTP ヘッダー値を設定する。</p>
+<p><code>response()</code> ヘルパーは初期値として <code>200</code> ステータスが設定されているが、<code>view()</code> 関数や <code>setStatusCode()</code> 関数を使用して、明示的に設定してもよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -41217,7 +41217,7 @@
 <p><br></p>
 <h3 id="route_2"><code>route()</code> ヘルパー<a class="headerlink" href="#route_2" title="Permanent link">&para;</a></h3>
 <h4 id="url">▼ ルートエイリアスを基にURL作成<a class="headerlink" href="#url" title="Permanent link">&para;</a></h4>
-<p>ルートにエイリアスがついている場合、エイリアスに応じてURLを作成する。</p>
+<p>ルートにエイリアスがついている場合、エイリアスに応じて URL を作成する。</p>
 <p>ドメインは自動的に補完される。</p>
 <blockquote>
 <ul>
@@ -41234,8 +41234,8 @@
 <p><br></p>
 <h3 id="path"><code>path</code> 系ヘルパー<a class="headerlink" href="#path" title="Permanent link">&para;</a></h3>
 <h4 id="base_path">▼ <code>base_path()</code> ヘルパー<a class="headerlink" href="#base_path" title="Permanent link">&para;</a></h4>
-<p>引数を設定しない場合、projectルートディレクトリの絶対パスを作成する。</p>
-<p>また、projectルートディレクトリからの相対パスを引数として、絶対パスを作成する。</p>
+<p>引数を設定しない場合、project ルートディレクトリの絶対パスを作成する。</p>
+<p>また、project ルートディレクトリからの相対パスを引数として、絶対パスを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// /var/www/project</span>
@@ -41245,8 +41245,8 @@
 <span class="nv">$path</span> <span class="o">=</span> <span class="nx">base_path</span><span class="p">(</span><span class="s2">&quot;vendor/bin&quot;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="public_path">▼ <code>public_path()</code> ヘルパー<a class="headerlink" href="#public_path" title="Permanent link">&para;</a></h4>
-<p>引数を設定しない場合、publicディレクトリの絶対パスを作成する。</p>
-<p>また、publicディレクトリからの相対パスを引数として、絶対パスを作成する。</p>
+<p>引数を設定しない場合、public ディレクトリの絶対パスを作成する。</p>
+<p>また、public ディレクトリからの相対パスを引数として、絶対パスを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// /var/www/project/public</span>
@@ -41256,8 +41256,8 @@
 <span class="nv">$path</span> <span class="o">=</span> <span class="nx">public_path</span><span class="p">(</span><span class="s2">&quot;css/app.css&quot;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="storage_path">▼ <code>storage_path()</code> ヘルパー<a class="headerlink" href="#storage_path" title="Permanent link">&para;</a></h4>
-<p>引数を設定しない場合、storageディレクトリの絶対パスを作成する。</p>
-<p>まあ、storageディレクトリからの相対パスを引数として、絶対パスを作成する。</p>
+<p>引数を設定しない場合、storage ディレクトリの絶対パスを作成する。</p>
+<p>まあ、storage ディレクトリからの相対パスを引数として、絶対パスを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// /var/www/project/storage</span>
@@ -41269,7 +41269,7 @@
 <p><br></p>
 <h3 id="url_1"><code>url()</code> ヘルパー<a class="headerlink" href="#url_1" title="Permanent link">&para;</a></h3>
 <h4 id="url_2">▼ パスを基にURL作成<a class="headerlink" href="#url_2" title="Permanent link">&para;</a></h4>
-<p>指定したパスに応じてURLを作成する。</p>
+<p>指定したパスに応じて URL を作成する。</p>
 <p>ドメインは自動的に補完される。</p>
 <blockquote>
 <ul>
@@ -41285,9 +41285,9 @@
 <h2 id="09-factory">09. Factory<a class="headerlink" href="#09-factory" title="Permanent link">&para;</a></h2>
 <h3 id="_27">初期値レコードの定義<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="faker">▼ Fakerによるランダム値作成<a class="headerlink" href="#faker" title="Permanent link">&para;</a></h4>
-<p>Fakerは、レコードの値をランダムに作成する。</p>
-<p>Farkerクラスは、プロパティにランダムなデータを保持している。</p>
-<p>このプロパティを特に、Formattersという。</p>
+<p>Faker は、レコードの値をランダムに作成する。</p>
+<p>Farker クラスは、プロパティにランダムなデータを保持している。</p>
+<p>このプロパティを特に、Formatters という。</p>
 <blockquote>
 <ul>
 <li><a href="https://fwhy.github.io/faker-docs/">https://fwhy.github.io/faker-docs/</a></li>
@@ -41325,7 +41325,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="hasfactory">▼ HasFactoryトレイト<a class="headerlink" href="#hasfactory" title="Permanent link">&para;</a></h4>
-<p>Factoryに対応するEloquentモデルで使用する必要がある。</p>
+<p>Factory に対応する Eloquent モデルで使用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories">https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories</a></li>
@@ -41339,9 +41339,9 @@
 <p><br></p>
 <h3 id="_28">初期データの量産<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <h4 id="factoryseed">▼ FactoryによるSeedの初期データ量産<a class="headerlink" href="#factoryseed" title="Permanent link">&para;</a></h4>
-<p>Factoryにおける定義を基にして、指定した数だけSeedの初期データを量産する。</p>
+<p>Factory における定義を基にして、指定した数だけ Seed の初期データを量産する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>FooSeederを定義し、<code>50</code> 個のダミーユーザーデータを量産する。</p>
+<p>FooSeeder を定義し、<code>50</code> 個のダミーユーザーデータを量産する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">App\Models\Foo</span><span class="p">;</span>
@@ -41360,7 +41360,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>また、BarSeederを定義し、<code>50</code> 個のダミーユーザーデータを量産する。</p>
+<p>また、BarSeeder を定義し、<code>50</code> 個のダミーユーザーデータを量産する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">App\Models\Bar</span><span class="p">;</span>
@@ -41379,7 +41379,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>DatabaseSeederにて、全てのSeederをまとめて実行する。</p>
+<p>DatabaseSeeder にて、すべての Seeder をまとめて実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Illuminate\Database\Seeder</span><span class="p">;</span>
@@ -41424,10 +41424,10 @@
 <h2 id="10-02-httpformrequest">10-02. HTTP｜FormRequest<a class="headerlink" href="#10-02-httpformrequest" title="Permanent link">&para;</a></h2>
 <h3 id="_29">クエリパラメーター/メッセージボディのバリデーション<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <h4 id="_30">▼ ルール定義 ＆ バリデーション手動実行<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
-<p>同じくFormRequestクラスの <code>validate()</code> 関数を使用して、ルールを定義し、加えてバリデーションを実行する。</p>
+<p>同じく FormRequest クラスの <code>validate()</code> 関数を使用して、ルールを定義し、加えてバリデーションを実行する。</p>
 <p><code>validated()</code> 関数と間違わないように注意する。</p>
-<p>ルールに反すると、1つ目のルール名 (例：<code>required</code>) に基づき、<code>validation.php</code> ファイルから対応するエラーメッセージを自動的に選択する。</p>
-<p>バリデーションでエラーが発生した場合、Handlerクラスの <code>invalid()</code> 関数がコールされ、元のWebページにリダイレクトされる。</p>
+<p>ルールに反すると、1 つ目のルール名 (例：<code>required</code>) に基づき、<code>validation.php</code> ファイルから対応するエラーメッセージを自動的に選択する。</p>
+<p>バリデーションでエラーが発生した場合、Handler クラスの <code>invalid()</code> 関数がコールされ、元の Web ページにリダイレクトされる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -41503,11 +41503,11 @@
 </ul>
 </blockquote>
 <h4 id="_31">▼ ルール定義 &amp; バリデーション自動実行<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
-<p>Controllerで、FormRequestクラスを引数に指定すると、コントローラーの関数をコールする前にバリデーションを自動的に実行する。</p>
-<p>そのため、コントローラーの中ではバリデーションを実行する必要はない。</p>
-<p>代わりに、ルールをFormRequestクラスの <code>rule()</code> 関数に定義する必要がある。</p>
-<p>FormRequestクラスの <code>validated()</code> 関数を使用して、バリデーション済みのデータを取得できる。</p>
-<p>バリデーションでエラーが発生した場合、Handlerクラスの <code>invalid()</code> 関数がコールされ、元のWebページにリダイレクトされる。</p>
+<p>Controller で、FormRequest クラスを引数に指定すると、コントローラーの関数をコールする前にバリデーションを自動的に実行する。</p>
+<p>そのため、コントローラーのなかではバリデーションを実行する必要はない。</p>
+<p>代わりに、ルールを FormRequest クラスの <code>rule()</code> 関数に定義する必要がある。</p>
+<p>FormRequest クラスの <code>validated()</code> 関数を使用して、バリデーション済みのデータを取得できる。</p>
+<p>バリデーションでエラーが発生した場合、Handler クラスの <code>invalid()</code> 関数がコールされ、元の Web ページにリダイレクトされる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -41542,8 +41542,8 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>FormRequestクラスの <code>rules()</code> 関数を使用して、ルールを定義する。</p>
-<p>ルールに反すると、1つ目のルール名 (例：<code>required</code>) に基づき、<code>validation.php</code> ファイルから対応するエラーメッセージを自動的に選択する。</p>
+<p>FormRequest クラスの <code>rules()</code> 関数を使用して、ルールを定義する。</p>
+<p>ルールに反すると、1 つ目のルール名 (例：<code>required</code>) に基づき、<code>validation.php</code> ファイルから対応するエラーメッセージを自動的に選択する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -41576,7 +41576,7 @@
 <p><br></p>
 <h3 id="_32">パスパラメーターのバリデーション<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <h4 id="_33">▼ ルールの定義 ＆ バリデーション自動実行<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
-<p>Routeファサードの <code>pattern()</code> 関数または <code>where()</code> 関数で定義する。</p>
+<p>Route ファサードの <code>pattern()</code> 関数または <code>where()</code> 関数で定義する。</p>
 <p><br></p>
 <h3 id="_34">エラーメッセージ<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
 <h4 id="_35">▼ 標準のエラーメッセージ<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
@@ -41632,8 +41632,8 @@
 </ul>
 </blockquote>
 <h4 id="_36">▼ 画面上でのエラーメッセージ出力<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
-<p>バリデーションでエラーがあった場合、Handlerクラスの <code>invalid()</code> 関数がコールされ、MessageBagクラスがViewに渡される。</p>
-<p>選択されたバリデーションメッセージが配列型でMessageBagクラスに格納されている。</p>
+<p>バリデーションでエラーがあった場合、Handler クラスの <code>invalid()</code> 関数がコールされ、MessageBag クラスが View に渡される。</p>
+<p>選択されたバリデーションメッセージが配列型で MessageBag クラスに格納されている。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">(</span>
 <span class="l l-Scalar l-Scalar-Plain">[title] =&gt; Array</span>
 <span class="l l-Scalar l-Scalar-Plain">(</span>
@@ -41693,7 +41693,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>テーブルにカラム数が多い場合は、Where句をつけることにより、特定のカラムのみ検証もできる。</p>
+<p>テーブルにカラム数が多い場合は、Where 句をつけることにより、特定のカラムのみ検証もできる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Requests</span><span class="p">;</span>
@@ -41751,10 +41751,10 @@
 </ul>
 </blockquote>
 <h4 id="_37">▼ 自前ルール/メッセージ<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
-<p>自前ルールを定義する場合は、Ruleクラスを継承したクラスを用意し、<code>rule()</code> 関数の中でインスタンスを作成する。</p>
-<p>自前Ruleクラスでは、<code>passes()</code> 関数でルールを定義する。</p>
+<p>自前ルールを定義する場合は、Rule クラスを継承したクラスを用意し、<code>rule()</code> 関数のなかでインスタンスを作成する。</p>
+<p>自前 Rule クラスでは、<code>passes()</code> 関数でルールを定義する。</p>
 <p>また、<code>messages()</code> 関数でバリデーションメッセージを定義する。</p>
-<p><code>validation.php</code> ファイルでメッセージを定義し、これを参照しても良い。</p>
+<p><code>validation.php</code> ファイルでメッセージを定義し、これを参照してもよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -41820,7 +41820,7 @@
 <p><br></p>
 <h3 id="_38">セッション<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
 <h4 id="_39">▼ セッション変数の取得<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
-<p>FormRequestクラスの <code>session()</code> 関数を使用して、セッション変数を取得する。</p>
+<p>FormRequest クラスの <code>session()</code> 関数を使用して、セッション変数を取得する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -41841,7 +41841,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>全てのセッション変数を取得もできる。</p>
+<p>すべてのセッション変数を取得もできる。</p>
 <div class="highlight"><pre><span></span><code><span class="x">$session = $request-&gt;session()-&gt;all();</span>
 </code></pre></div>
 <h4 id="_40">▼ フラッシュデータの設定<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
@@ -41852,7 +41852,7 @@
 <p><br></p>
 <h3 id="_41">認証<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h3>
 <h4 id="authorize">▼ <code>authorize()</code> 関数<a class="headerlink" href="#authorize" title="Permanent link">&para;</a></h4>
-<p>ユーザーがリソースに対してCRUDを実行する権限を持っているかを、コントローラーの関数を実行する前に、判定する。</p>
+<p>ユーザーがリソースに対して CRUD を実行する権限を持っているかを、コントローラーの関数を実行する前に、判定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="x">/**</span>
 <span class="x"> * ユーザーがこのリクエストの権限を持っているかを判断する</span>
@@ -41867,13 +41867,13 @@
 <span class="x">}</span>
 </code></pre></div>
 <h4 id="auth_3">▼ Authファサード<a class="headerlink" href="#auth_3" title="Permanent link">&para;</a></h4>
-<p>ノート内の『Authファサード』の項目を参照せよ。</p>
+<p>ノート内の『Auth ファサード』の項目を参照せよ。</p>
 <p><br></p>
 <h2 id="10-03-httpmiddleware">10-03. HTTP｜Middleware<a class="headerlink" href="#10-03-httpmiddleware" title="Permanent link">&para;</a></h2>
 <h3 id="middleware-mediator">Middleware (Mediator)<a class="headerlink" href="#middleware-mediator" title="Permanent link">&para;</a></h3>
 <h4 id="_42">▼ ミドルウェアパターンとは<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
 <p>『メディエイターパターン』ともいう。</p>
-<p>コントローラーの処理前に実行するBeforeMiddleと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。</p>
+<p>コントローラーの処理前に実行する BeforeMiddle と、コントローラーとビューの処理後に実行する AfterMiddleware がある。</p>
 <p><img alt="design-pattern_middleware" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png" /></p>
 <blockquote>
 <ul>
@@ -41883,7 +41883,7 @@
 </blockquote>
 <h4 id="beforemiddlewareware">▼ BeforeMiddlewareware<a class="headerlink" href="#beforemiddlewareware" title="Permanent link">&para;</a></h4>
 <p>コントローラーの処理前に実行する処理を設定できる。</p>
-<p>一連の処理を終えた後、FormRequestクラスを、次のMiddlewareクラスやControllerクラスに渡す必要がある。</p>
+<p>一連の処理を終えた後、FormRequest クラスを、次の Middleware クラスや Controller クラスに渡す必要がある。</p>
 <p>これらのクラスはクロージャー (無名関数) として、<code>next</code> 変数に格納されている。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -41909,7 +41909,7 @@
 </code></pre></div>
 <h4 id="aftermiddleware">▼ AfterMiddleware<a class="headerlink" href="#aftermiddleware" title="Permanent link">&para;</a></h4>
 <p>コントローラーとビューの処理後に実行する処理を設定できる。</p>
-<p>あらかじめ、FormRequestクラスを、前のMiddlewareクラスやControllerクラスから受け取る必要がある。</p>
+<p>あらかじめ、FormRequest クラスを、前の Middleware クラスや Controller クラスから受け取る必要がある。</p>
 <p>これらのクラスはクロージャー (無名関数) として、<code>next</code> 変数に格納されている。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -41938,7 +41938,7 @@
 <p><br></p>
 <h3 id="middleware_1">標準のMiddleware<a class="headerlink" href="#middleware_1" title="Permanent link">&para;</a></h3>
 <h4 id="encryptcookies">▼ EncryptCookies<a class="headerlink" href="#encryptcookies" title="Permanent link">&para;</a></h4>
-<p>レスポンス時に、<code>Cookie</code> ヘッダーの全ての値を暗号化する。</p>
+<p>レスポンス時に、<code>Cookie</code> ヘッダーのすべての値を暗号化する。</p>
 <p>暗号化したくない場合は、<code>Cookie</code> ヘッダーのキー名を <code>except</code> プロパティに設定する。</p>
 <blockquote>
 <ul>
@@ -41952,17 +41952,17 @@
 <li><a href="https://qiita.com/wim/items/b1db5202cce6b38bc47b">https://qiita.com/wim/items/b1db5202cce6b38bc47b</a></li>
 </ul>
 </blockquote>
-<p>また、同一セッションで一意なCSRFトークンを作成する。</p>
-<p>CSRFトークンによるCSRFの防御については、以下のリンクを参考にせよ。</p>
+<p>また、同一セッションで一意な CSRF トークンを作成する。</p>
+<p>CSRF トークンによる CSRF の防御については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html">https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html</a></li>
 </ul>
 </blockquote>
 <h4 id="verifycsrftoken">▼ VerifyCsrfToken<a class="headerlink" href="#verifycsrftoken" title="Permanent link">&para;</a></h4>
-<p>セッションデータに書かれたCSRFトークンと、リクエストボディに割り当てられたトークンを比較する。</p>
+<p>セッションデータに書かれた CSRF トークンと、リクエストボディに割り当てられたトークンを比較する。</p>
 <p>セッションデータは <code>storage/framework/sessions</code> ディレクトリ配下に配置されている。</p>
-<p>一般的に、CSRFトークンは <code>Cookie</code> ヘッダーに割り当てることもできるが、Laravelではリクエストボディを使用する必要がある。</p>
+<p>一般的に、CSRF トークンは <code>Cookie</code> ヘッダーに割り当てることもできるが、Laravel ではリクエストボディを使用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests">https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests</a></li>
@@ -41971,7 +41971,7 @@
 <p><br></p>
 <h3 id="_43">コール方法のカスタマイズ<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
 <h4 id="kernel">▼ Kernel<a class="headerlink" href="#kernel" title="Permanent link">&para;</a></h4>
-<p>Middlewareクラスをコールするときの方法をカスタマイズできる。</p>
+<p>Middleware クラスをコールするときの方法をカスタマイズできる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -42139,7 +42139,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>代わりに、コントローラーの第二引数にパスパラメーター名を記述することにより、パスパラメーターの値を取得しても良い。</p>
+<p>代わりに、コントローラーの第二引数にパスパラメーター名を記述することにより、パスパラメーターの値を取得してもよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -42168,7 +42168,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_48">バリデーション<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
-<p>Requestではなく、FormRequestを使用したほうがバリデーションにおすすめである。</p>
+<p>Request ではなく、FormRequest を使用したほうがバリデーションにおすすめである。</p>
 <div class="highlight"><pre><span></span><code><span class="x">namespace App\Http\Controllers;</span>
 
 <span class="x">use Illuminate\Http\Request;</span>
@@ -42205,14 +42205,14 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nv">LOG_CHANNEL</span><span class="o">=</span>&lt;オプション名&gt;
 </code></pre></div>
-<p>注意点として、<code>storage</code> ディレクトリ配下にログファイルを作成するようなログチャンネルを設定した場合、phpがこのディレクトリへの認可スコープを持たない。</p>
+<p>注意点として、<code>storage</code> ディレクトリ配下にログファイルを作成するようなログチャンネルを設定した場合、php がこのディレクトリへの認可スコープを持たない。</p>
 <p>そのため、リクエストできるようにする必要がある。</p>
-<p>権限を変更したファイルは差分としてGitに認識されるため、これを共有すればチーム内で権限変更を共有できる。</p>
+<p>権限を変更したファイルは差分として Git に認識されるため、これを共有すればチーム内で権限変更を共有できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Failed to open stream: Permission denied</span>
 $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">777</span><span class="w"> </span>/var/www/foo/storage
 </code></pre></div>
 <h4 id="php-fpm">▼ PHP-FPMのログについて<a class="headerlink" href="#php-fpm" title="Permanent link">&para;</a></h4>
-<p>LaravelとPHP-FPMのプロセスはそれぞれ独立しているため、Laravelのログの出力先を変更しても、PHP-FPMのログの出力先は変更されない。</p>
+<p>Laravel と PHP-FPM のプロセスはそれぞれ独立しているため、Laravel のログの出力先を変更しても、PHP-FPM のログの出力先は変更されない。</p>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html">https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html</a></li>
@@ -42242,7 +42242,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">];</span>
 </code></pre></div>
 <h4 id="single">▼ <code>single</code> キー<a class="headerlink" href="#single" title="Permanent link">&para;</a></h4>
-<p>全てのログを <code>/storage/logs/laravel.log</code> ファイルに対して出力する。</p>
+<p>すべてのログを <code>/storage/logs/laravel.log</code> ファイルに対して出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -42264,7 +42264,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">];</span>
 </code></pre></div>
 <h4 id="daily">▼ <code>daily</code> キー<a class="headerlink" href="#daily" title="Permanent link">&para;</a></h4>
-<p>全てのログを <code>/storage/logs/laravel-&lt;日付&gt;.log</code> ファイルに対して出力する。</p>
+<p>すべてのログを <code>/storage/logs/laravel-&lt;日付&gt;.log</code> ファイルに対して出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="x">return [</span>
 
 <span class="x">    ...</span>
@@ -42286,9 +42286,9 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="x">];</span>
 </code></pre></div>
 <h4 id="stderr">▼ <code>stderr</code> キー<a class="headerlink" href="#stderr" title="Permanent link">&para;</a></h4>
-<p>全てのログを標準エラー出力に対して出力する。</p>
-<p>Docker上でLaravelを稼働させる場合は、作成されるログファイルでコンテナのサイズが肥大化することを防ぐために、これを選択する。</p>
-<p>注意点として、自前カスタマイズとして、<code>stream</code> キーをstdout変更すれば、標準出力にログを出力もできる。</p>
+<p>すべてのログを標準エラー出力に対して出力する。</p>
+<p>Docker 上で Laravel を稼働させる場合は、作成されるログファイルでコンテナのサイズが肥大化することを防ぐために、これを選択する。</p>
+<p>注意点として、自前カスタマイズとして、<code>stream</code> キーを stdout 変更すれば、標準出力にログを出力もできる。</p>
 <div class="highlight"><pre><span></span><code><span class="x">return [</span>
 
 <span class="x">    ...</span>
@@ -42314,9 +42314,9 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h4 id="error">▼ <code>error()</code> 関数<a class="headerlink" href="#error" title="Permanent link">&para;</a></h4>
 <p>エラーメッセージを定義するとき、<code>sprintf()</code> 関数を使用すると便利である。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>外部のAPIに対してリクエストを送信し、データを取得する。</p>
-<p>取得したJSON型データを、クライアントにレスポンスする。</p>
-<p>この時、リクエスト処理のために、Guzzleパッケージを使用している。</p>
+<p>外部の API に対してリクエストを送信し、データを取得する。</p>
+<p>取得した JSON 型データを、クライアントにレスポンスする。</p>
+<p>このとき、リクエスト処理のために、Guzzle パッケージを使用している。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
@@ -42386,8 +42386,8 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h2 id="12-migration">12. Migration<a class="headerlink" href="#12-migration" title="Permanent link">&para;</a></h2>
 <h3 id="_52">テーブルの作成/削除<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h3>
 <h4 id="up-down">▼ <code>up()</code> 関数、<code>down()</code> 関数<a class="headerlink" href="#up-down" title="Permanent link">&para;</a></h4>
-<p>コマンドによるDBマイグレーション時にコールする。</p>
-<p><code>up()</code> 関数でテーブル、カラム、インデックスのCREATEを実行する。</p>
+<p>コマンドによる DB マイグレーション時にコールする。</p>
+<p><code>up()</code> 関数でテーブル、カラム、インデックスの CREATE を実行する。</p>
 <p><code>down()</code> 関数で <code>up()</code> 関数の結果をロールバックする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -42430,7 +42430,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h4 id="_54">▼ なし<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h4>
 <p>指定したカラムを追加する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>カラムを追加するためだけにDBマイグレーションファイルを作成する。</p>
+<p>カラムを追加するためだけに DB マイグレーションファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:migration<span class="w"> </span>add_column<span class="w"> </span>--table<span class="o">=</span>foos
 </code></pre></div>
 <p>追加したいカラムのみを定義する。</p>
@@ -42453,14 +42453,14 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>DBマイグレーションを実行すると、指定したテーブルのカラムが追加される。</p>
-<p>実行後は、作成したDBマイグレーションファイルを削除する。</p>
+<p>DB マイグレーションを実行すると、指定したテーブルのカラムが追加される。</p>
+<p>実行後は、作成した DB マイグレーションファイルを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate
 </code></pre></div>
 <h4 id="renamecolumn">▼ <code>renameColumn()</code> 関数<a class="headerlink" href="#renamecolumn" title="Permanent link">&para;</a></h4>
 <p>指定したカラムの名前を変更する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>カラム名を変更するためだけにDBマイグレーションファイルを作成する。</p>
+<p>カラム名を変更するためだけに DB マイグレーションファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:migration<span class="w"> </span>rename_column<span class="w"> </span>--table<span class="o">=</span>foos
 </code></pre></div>
 <p>テーブルのカラム名を定義し、<code>renameColumn()</code> 関数をコールする。</p>
@@ -42495,14 +42495,14 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>DBマイグレーションを実行すると、指定したテーブルのカラム名が変更される。</p>
-<p>実行後は、作成したDBマイグレーションファイルを削除する。</p>
+<p>DB マイグレーションを実行すると、指定したテーブルのカラム名が変更される。</p>
+<p>実行後は、作成した DB マイグレーションファイルを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate
 </code></pre></div>
 <h4 id="change">▼ <code>change()</code> 関数<a class="headerlink" href="#change" title="Permanent link">&para;</a></h4>
 <p>指定したカラムのデータ型を変更する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>データ型を変更するためだけにDBマイグレーションファイルを作成する。</p>
+<p>データ型を変更するためだけに DB マイグレーションファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:migration<span class="w"> </span>change_column_data_type<span class="w"> </span>--table<span class="o">=</span>foos
 </code></pre></div>
 <p>テーブルのカラムのデータ型を定義し、<code>change()</code> 関数をコールする。</p>
@@ -42537,14 +42537,14 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>DBマイグレーションを実行すると、指定したテーブルのカラムのデータ型が変更される。</p>
-<p>実行後は、作成したDBマイグレーションファイルを削除する。</p>
+<p>DB マイグレーションを実行すると、指定したテーブルのカラムのデータ型が変更される。</p>
+<p>実行後は、作成した DB マイグレーションファイルを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate
 </code></pre></div>
 <h4 id="dropcolumn">▼ <code>dropColumn()</code> 関数<a class="headerlink" href="#dropcolumn" title="Permanent link">&para;</a></h4>
 <p>指定したカラムを削除する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>カラムを削除するためだけにDBマイグレーションファイルを作成する。</p>
+<p>カラムを削除するためだけに DB マイグレーションファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:migration<span class="w"> </span>drop_column<span class="w"> </span>--table<span class="o">=</span>foos
 </code></pre></div>
 <p>削除するカラムを <code>dropColumn()</code> 関数で指定する。</p>
@@ -42578,16 +42578,16 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>DBマイグレーションを実行すると、指定したテーブルのカラムが追加される。</p>
-<p>実行後は、作成したDBマイグレーションファイルを削除する。</p>
+<p>DB マイグレーションを実行すると、指定したテーブルのカラムが追加される。</p>
+<p>実行後は、作成した DB マイグレーションファイルを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate
 </code></pre></div>
 <p><br></p>
 <h3 id="_55">よく使用するカラムタイプ<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h3>
 <h4 id="bigincrements">▼ <code>bigIncrements()</code> 関数<a class="headerlink" href="#bigincrements" title="Permanent link">&para;</a></h4>
-<p>自動増分ありのinteger型カラムを作成する。</p>
-<p>プライマリーキーとするIDカラムのために使用する。</p>
-<p>自動増分のカラムは <code>1</code> 個のテーブルに1つしか定義できず、他のIDカラムは <code>unsignedBigInteger()</code> 関数を使用して定義する。</p>
+<p>自動増分ありの integer 型カラムを作成する。</p>
+<p>プライマリーキーとする ID カラムのために使用する。</p>
+<p>自動増分のカラムは <code>1</code> 個のテーブルに 1 つしか定義できず、他の ID カラムは <code>unsignedBigInteger()</code> 関数を使用して定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="x">Schema::create(&quot;foos&quot;, function (Blueprint $table) {</span>
 
@@ -42605,8 +42605,8 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </ul>
 </blockquote>
 <h4 id="unsignedbiginteger">▼ <code>unsignedBigInteger()</code> 関数<a class="headerlink" href="#unsignedbiginteger" title="Permanent link">&para;</a></h4>
-<p>自動増分なしのinteger型カラムを作成する。</p>
-<p>プライマリーキーではないIDカラムのために使用する。</p>
+<p>自動増分なしの integer 型カラムを作成する。</p>
+<p>プライマリーキーではない ID カラムのために使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="x">Schema::create(&quot;foos&quot;, function (Blueprint $table) {</span>
 
 <span class="x">    ...</span>
@@ -42624,7 +42624,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </ul>
 </blockquote>
 <h4 id="string">▼ <code>string()</code> 関数<a class="headerlink" href="#string" title="Permanent link">&para;</a></h4>
-<p>VARCHAR型カラムを作成する。</p>
+<p>VARCHAR 型カラムを作成する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="x">Schema::create(&quot;foos&quot;, function (Blueprint $table) {</span>
 
@@ -42637,7 +42637,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="x">});</span>
 </code></pre></div>
 <h4 id="timestamp">▼ <code>timestamp()</code> 関数<a class="headerlink" href="#timestamp" title="Permanent link">&para;</a></h4>
-<p>TIMESTAMP型カラムを作成する。</p>
+<p>TIMESTAMP 型カラムを作成する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="x">Schema::create(&quot;foos&quot;, function (Blueprint $table) {</span>
 
@@ -42657,9 +42657,9 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h4 id="notification">▼ Notification<a class="headerlink" href="#notification" title="Permanent link">&para;</a></h4>
 <p>通知内容を定義する。</p>
 <p><code>via()</code> 関数で受信チャンネルを定義する。</p>
-<p>この時、Laravelがデフォルトで用意しているチャンネル (Mail、SMS、Slackチャンネル、Databaseチャンネル) 以外に送信したい場合、Channelクラスを定義する必要がある。</p>
+<p>このとき、Laravel がデフォルトで用意しているチャンネル (Mail、SMS、Slack チャンネル、Database チャンネル) 以外に送信したい場合、Channel クラスを定義する必要がある。</p>
 <p>複数の値を設定した場合は、それぞれに通信が送信される。</p>
-<p><code>toMail()</code> 関数、<code>toSms()</code> 関数、<code>toSlack()</code> 関数、<code>toArray()</code> 関数を使用して、Laravelの標準のチャンネルに渡す通知内容を定義できる。</p>
+<p><code>toMail()</code> 関数、<code>toSms()</code> 関数、<code>toSlack()</code> 関数、<code>toArray()</code> 関数を使用して、Laravel の標準のチャンネルに渡す通知内容を定義できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -42711,7 +42711,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="e">▼ Eメール通知内容の定義<a class="headerlink" href="#e" title="Permanent link">&para;</a></h4>
-<p>MailMessageクラスの関数を使用して、Eメール通知の内容を作成する。</p>
+<p>MailMessage クラスの関数を使用して、E メール通知の内容を作成する。</p>
 <p><code>markdown()</code> 関数を使用することにより、マークダウン形式で定義できる。</p>
 <blockquote>
 <ul>
@@ -42813,7 +42813,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </ul>
 </blockquote>
 <h4 id="db_3">▼ DB通知内容の定義<a class="headerlink" href="#db_3" title="Permanent link">&para;</a></h4>
-<p>配列でDBに保管する内容を定義する。</p>
+<p>配列で DB に保管する内容を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Notifications</span><span class="p">;</span>
@@ -42858,11 +42858,11 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p><br></p>
 <h3 id="_57">受信チャンネル (通知方法)<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h3>
 <h4 id="channel">▼ Channel<a class="headerlink" href="#channel" title="Permanent link">&para;</a></h4>
-<p>Laravelがデフォルトで用意しているチャンネル以外に送信したい場合、ユーザー定義の受信チャンネルを定義する。</p>
-<p>これは、Notificationクラスの <code>via()</code> 関数で使用される。</p>
+<p>Laravel がデフォルトで用意しているチャンネル以外に送信したい場合、ユーザー定義の受信チャンネルを定義する。</p>
+<p>これは、Notification クラスの <code>via()</code> 関数で使用される。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Amazon SNSを受信チャンネルとする。</p>
-<p>AWSから配布されているパッケージが必要である。</p>
+<p>Amazon SNS を受信チャンネルとする。</p>
+<p>AWS から配布されているパッケージが必要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>require<span class="w"> </span>aws/aws-sdk-php-laravel
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -42928,7 +42928,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h3 id="_58">通知対象モデル<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h3>
 <h4 id="notifiable-notify">▼ Notifiableトレイトの <code>notify()</code> 関数<a class="headerlink" href="#notifiable-notify" title="Permanent link">&para;</a></h4>
 <p>通知対象となるモデルを定義する。</p>
-<p>Notifiableトレイトを継承する。</p>
+<p>Notifiable トレイトを継承する。</p>
 <p>これにより、<code>notify()</code> 関数を使用できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -42947,7 +42947,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <li><a href="https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html">https://laravel.com/api/8.x/Illuminate/Notifications/Notifiable.html</a></li>
 </ul>
 </blockquote>
-<p>通知先のクラスから <code>notify()</code> 関数をコールし、任意のNotificationクラスを渡す。</p>
+<p>通知先のクラスから <code>notify()</code> 関数をコールし、任意の Notification クラスを渡す。</p>
 <p>これにより、通知処理が実行される。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -42960,7 +42960,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </blockquote>
 <h4 id="notification_1">▼ Notificationファサード<a class="headerlink" href="#notification_1" title="Permanent link">&para;</a></h4>
 <p>通知対象となるモデルを定義する。</p>
-<p>Notifiableトレイトを継承する。</p>
+<p>Notifiable トレイトを継承する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App</span><span class="p">;</span>
@@ -42973,13 +42973,13 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="k">use</span> <span class="nx">Notifiable</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Notificationファサードに通知先のモデルと通知クラスを渡す。</p>
+<p>Notification ファサードに通知先のモデルと通知クラスを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nx">Notification</span><span class="o">::</span><span class="na">send</span><span class="p">(</span><span class="nv">$users</span><span class="p">,</span> <span class="k">new</span> <span class="nx">FooNotification</span><span class="p">());</span>
 </code></pre></div>
 <h4 id="_59">▼ オンデマンド通知<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h4>
-<p>オンデマンド通知を使用すると、通知対象となるモデルはNotificableトレイトに依存せず、通知できる。</p>
+<p>オンデマンド通知を使用すると、通知対象となるモデルは Notificable トレイトに依存せず、通知できる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nx">Notification</span><span class="o">::</span><span class="na">route</span><span class="p">(</span><span class="s1">&#39;mail&#39;</span><span class="p">,</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">email_address</span><span class="p">)</span>
@@ -42997,15 +42997,15 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h2 id="14-resource">14. Resource<a class="headerlink" href="#14-resource" title="Permanent link">&para;</a></h2>
 <h3 id="_60">レスポンスデータ作成前のデータ型変換<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h3>
 <h4 id="_61">▼ データ型変換の必要性<a class="headerlink" href="#_61" title="Permanent link">&para;</a></h4>
-<p>EloquentモデルをJSON型データとしてレスポンスするときに、いったん、配列データに変換する必要がある。</p>
+<p>Eloquent モデルを JSON 型データとしてレスポンスするときに、いったん、配列データに変換する必要がある。</p>
 <h4 id="eloquent">▼ 単一のEloquentモデルの配列化<a class="headerlink" href="#eloquent" title="Permanent link">&para;</a></h4>
-<p>単一のEloquentモデルを配列に変換する。</p>
-<p>Resourceクラスの <code>toArray()</code> 関数では、<code>this</code> 変数は自身ではない。Resourceクラス名につくEloquentモデル名を指す。</p>
+<p>単一の Eloquent モデルを配列に変換する。</p>
+<p>Resource クラスの <code>toArray()</code> 関数では、<code>this</code> 変数は自身ではない。Resource クラス名につく Eloquent モデル名を指す。</p>
 <p>また、<code>this</code> 変数からゲッターを経由せずに直接的にプロパティにアクセスできる。</p>
-<p>Controllerにて、ResourceクラスにEloquentモデルを渡すようにする。</p>
-<p>LaravelはレスポンスのJSON型データを作成するために、まず <code>toArray()</code> 関数により配列化し、加えてこれをJSON型データに変換する。</p>
+<p>Controller にて、Resource クラスに Eloquent モデルを渡すようにする。</p>
+<p>Laravel はレスポンスの JSON 型データを作成するために、まず <code>toArray()</code> 関数により配列化し、加えてこれを JSON 型データに変換する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Fooクラスからデータを取り出し、配列化する。</p>
+<p>Foo クラスからデータを取り出し、配列化する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Resources</span><span class="p">;</span>
@@ -43057,16 +43057,16 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="eloquent-collection">▼ 複数のEloquentモデル (Collection型) の配列化<a class="headerlink" href="#eloquent-collection" title="Permanent link">&para;</a></h4>
-<p>複数のEloquentモデル (Collection型) を配列に変換する。</p>
+<p>複数の Eloquent モデル (Collection 型) を配列に変換する。</p>
 <div class="highlight"><pre><span></span><code><span class="x">// ここに実装例</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="15-routing">15. Routing<a class="headerlink" href="#15-routing" title="Permanent link">&para;</a></h2>
 <h3 id="apiphp"><code>api.php</code> ファイル<a class="headerlink" href="#apiphp" title="Permanent link">&para;</a></h3>
 <h4 id="middleware_2">▼ Middlewareの適用<a class="headerlink" href="#middleware_2" title="Permanent link">&para;</a></h4>
-<p>APIのエンドポイントとして働くルーティング処理を実装する。</p>
-<p>実装したルーティング処理時には、Kernelクラスの <code>middlewareGroups</code> プロパティの <code>api</code> キーで設定したミドルウェアが実行される。</p>
-<p>APIのエンドポイントは外部公開する必要があるため、<code>web</code> キーと比較して、セキュリティのためのミドルウェアが設定されていない。</p>
+<p>API のエンドポイントとして働くルーティング処理を実装する。</p>
+<p>実装したルーティング処理時には、Kernel クラスの <code>middlewareGroups</code> プロパティの <code>api</code> キーで設定したミドルウェアが実行される。</p>
+<p>API のエンドポイントは外部公開する必要があるため、<code>web</code> キーと比較して、セキュリティのためのミドルウェアが設定されていない。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http</span><span class="p">;</span>
@@ -43099,10 +43099,10 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p><br></p>
 <h3 id="webphp"><code>web.php</code> ファイル<a class="headerlink" href="#webphp" title="Permanent link">&para;</a></h3>
 <h4 id="middleware_3">▼ Middlewareの適用<a class="headerlink" href="#middleware_3" title="Permanent link">&para;</a></h4>
-<p>API以外のルーティング処理を実装する。</p>
-<p>実装したルーティング処理時には、Kernelクラスの <code>middlewareGroups</code> プロパティの <code>web</code> キーで設定したミドルウェアが実行される。</p>
-<p>API以外のルーティングは外部公開する必要がないため、<code>api</code> キーと比較して、セキュリティのためのミドルウェアが多く設定されている。</p>
-<p>例えば、CSRF対策のためのVerifyCsrfTokenクラスがある。</p>
+<p>API 以外のルーティング処理を実装する。</p>
+<p>実装したルーティング処理時には、Kernel クラスの <code>middlewareGroups</code> プロパティの <code>web</code> キーで設定したミドルウェアが実行される。</p>
+<p>API 以外のルーティングは外部公開する必要がないため、<code>api</code> キーと比較して、セキュリティのためのミドルウェアが多く設定されている。</p>
+<p>例えば、CSRF 対策のための VerifyCsrfToken クラスがある。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http</span><span class="p">;</span>
@@ -43137,11 +43137,11 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </code></pre></div>
 <p><br></p>
 <h3 id="guestphp"><code>guest.php</code> ファイル<a class="headerlink" href="#guestphp" title="Permanent link">&para;</a></h3>
-<p>ヘルスチェックなど、API認証が不要なルーティング処理を実装する。</p>
+<p>ヘルスチェックなど、API 認証が不要なルーティング処理を実装する。</p>
 <p><br></p>
 <h3 id="_62">暗黙のモデル結合<a class="headerlink" href="#_62" title="Permanent link">&para;</a></h3>
 <h4 id="_63">▼ コントローラー使用時<a class="headerlink" href="#_63" title="Permanent link">&para;</a></h4>
-<p>ルーティング時に使用するパラメーター名とコントローラーの関数の引数型と変数名が同じであり、かつパラメーターに数値が割り当てられた場合、その数値をIDとするEloquentモデルが自動的にインジェクションされる。</p>
+<p>ルーティング時に使用するパラメーター名とコントローラーの関数の引数型と変数名が同じであり、かつパラメーターに数値が割り当てられた場合、その数値を ID とする Eloquent モデルが自動的にインジェクションされる。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding">https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding</a></li>
@@ -43155,7 +43155,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </code></pre></div>
 <p>かつ、コントローラーの関数の引数型/変数名を <code>User</code>/<code>$user</code> とする。</p>
 <p>または。</p>
-<p>この時、『<code>/users/1</code>』に対してリクエストを送信すると、ユーザーIDが <code>1</code> のユーザーがDBから読み出され、コントローラーにインジェクションされる。</p>
+<p>このとき、『<code>/users/1</code>』に対してリクエストを送信すると、ユーザーID が <code>1</code> のユーザーが DB から読み出され、コントローラーにインジェクションされる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
@@ -43178,8 +43178,8 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h2 id="16-security">16. Security<a class="headerlink" href="#16-security" title="Permanent link">&para;</a></h2>
 <h3 id="csrf">CSRF対策<a class="headerlink" href="#csrf" title="Permanent link">&para;</a></h3>
 <h4 id="_64">▼ アプリケーション側の対応<a class="headerlink" href="#_64" title="Permanent link">&para;</a></h4>
-<p>セッション開始時にCSRFトークンを作成する。</p>
-<p>Bladeを使用してサーバ側のCSRFトークンを取り出し、inputタグのhidden属性にCSRFトークンを割り当て送信する。</p>
+<p>セッション開始時に CSRF トークンを作成する。</p>
+<p>Blade を使用してサーバ側の CSRF トークンを取り出し、input タグの hidden 属性に CSRF トークンを割り当て送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;POST&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;/profile&quot;</span><span class="p">&gt;</span>@csrf ...<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
 </code></pre></div>
 <blockquote>
@@ -43187,7 +43187,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <li><a href="https://readouble.com/laravel/8.x/ja/csrf.html">https://readouble.com/laravel/8.x/ja/csrf.html</a></li>
 </ul>
 </blockquote>
-<p>Bladeを使用しない場合、セッション開始時のレスポンスの <code>Set-Cookie</code> にCSRFトークンが割り当てられるため、これを取り出して <code>X-CSRF-TOKEN</code> ヘッダーや <code>X-XSRF-TOKEN</code> ヘッダーに割り当てる。CSRFトークンはリクエストのたびに変わり、次のリクエストで使用する必要がある。</p>
+<p>Blade を使用しない場合、セッション開始時のレスポンスの <code>Set-Cookie</code> に CSRF トークンが割り当てられるため、これを取り出して <code>X-CSRF-TOKEN</code> ヘッダーや <code>X-XSRF-TOKEN</code> ヘッダーに割り当てる。CSRF トークンはリクエストのたびに変わり、次のリクエストで使用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token">https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token</a></li>
@@ -43196,8 +43196,8 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </ul>
 </blockquote>
 <h4 id="http">▼ HTTPクライアントツール側の対応<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>PostmanなどのHTTPクライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信されるCSRFトークを扱えない。</p>
-<p>そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRFトークンをPostmanの環境変数に保管するようなスクリプトを設定しておくと良い。</p>
+<p>Postman などの HTTP クライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信される CSRF トークを扱えない。</p>
+<p>そこで、各リクエストで事前にルートパスのエンドポイントをコールし、CSRF トークンを Postman の環境変数に保管するようなスクリプトを設定しておくとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">pm</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
 <span class="p">}</span>
@@ -43229,7 +43229,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h2 id="17-seeder">17. Seeder<a class="headerlink" href="#17-seeder" title="Permanent link">&para;</a></h2>
 <h3 id="_65">初期データの定義<a class="headerlink" href="#_65" title="Permanent link">&para;</a></h3>
 <h4 id="db_4">▼ DBファサードによる定義<a class="headerlink" href="#db_4" title="Permanent link">&para;</a></h4>
-<p>DBファサードを使用して、初期データを定義する。</p>
+<p>DB ファサードを使用して、初期データを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Illuminate\Database\Seeder</span><span class="p">;</span>
@@ -43283,7 +43283,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>実行者名は、定数として管理しておくと良い。</p>
+<p>実行者名は、定数として管理しておくとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Constants</span><span class="p">;</span>
@@ -43310,10 +43310,10 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="csv">▼ CSVファイルによる定義<a class="headerlink" href="#csv" title="Permanent link">&para;</a></h4>
-<p>CSVファイルを使用して、初期データを定義する。</p>
-<p>DBファサードを使用するよりも。</p>
+<p>CSV ファイルを使用して、初期データを定義する。</p>
+<p>DB ファサードを使用するよりも。</p>
 <p>大サイズのデータを定義しやすい。</p>
-<p>この時、<code>LOAD DATA LOCAL INFILE</code> 文を使用すると、高速で処理できる。</p>
+<p>このとき、<code>LOAD DATA LOCAL INFILE</code> 文を使用すると、高速で処理できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://i-407.com/blog/tech/n3/">https://i-407.com/blog/tech/n3/</a></li>
@@ -43369,7 +43369,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </code></pre></div>
 <p><br></p>
 <h3 id="seeder">Seederの実行<a class="headerlink" href="#seeder" title="Permanent link">&para;</a></h3>
-<p>DatabaseSeederにて、全てのSeederをまとめて実行する。</p>
+<p>DatabaseSeeder にて、すべての Seeder をまとめて実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Illuminate\Database\Seeder</span><span class="p">;</span>
@@ -43440,8 +43440,8 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </tbody>
 </table>
 <h4 id="serviceprovider_2">▼ ServiceProviderのコール<a class="headerlink" href="#serviceprovider_2" title="Permanent link">&para;</a></h4>
-<p>クラスの名前空間を、<code>config/app.php</code> ファイルの <code>providers</code> 配列に登録すると、アプリケーションの起動時にServiceProviderをコールできる。</p>
-<p>そのため、ServiceContainerへのクラスのバインドが自動的に完了する。</p>
+<p>クラスの名前空間を、<code>config/app.php</code> ファイルの <code>providers</code> 配列に登録すると、アプリケーションの起動時に ServiceProvider をコールできる。</p>
+<p>そのため、ServiceContainer へのクラスのバインドが自動的に完了する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -43494,9 +43494,9 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p><br></p>
 <h3 id="appserviceprovider">AppServiceProvider<a class="headerlink" href="#appserviceprovider" title="Permanent link">&para;</a></h3>
 <h4 id="_66">▼ 単一のクラスをバインド/リゾルブ<a class="headerlink" href="#_66" title="Permanent link">&para;</a></h4>
-<p>AppSeriveProviderにて、ServiceContainerにクラスをバインドすることによって、ServiceContainerがインスタンスをリゾルブできるようになる。</p>
+<p>AppSeriveProvider にて、ServiceContainer にクラスをバインドすることによって、ServiceContainer がインスタンスをリゾルブできるようになる。</p>
 <p>これにより、関数の引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。</p>
-<p>Laravelでは、クラスはServiceContainerに自動的にバインドされている。そのため、引数でクラスを指定するだけでインスタンスを作成でき、以下の実装は不要である。</p>
+<p>Laravel では、クラスは ServiceContainer に自動的にバインドされている。そのため、引数でクラスを指定するだけでインスタンスを作成でき、以下の実装は不要である。</p>
 <p>ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。</p>
 <blockquote>
 <ul>
@@ -43505,7 +43505,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
 <p>バインドする。</p>
-<p>注意点として、Laravelでは不要である。</p>
+<p>注意点として、Laravel では不要である。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
@@ -43648,7 +43648,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_68">▼ インターフェースをバインドし、実装クラスをリゾルブ<a class="headerlink" href="#_68" title="Permanent link">&para;</a></h4>
-<p>Laravelではクラスが自動的にバインドされ、そのインスタンスがリゾルブされる。ただし、バインド済みのクラスとは別のクラスをリゾルブしたい場合は、ServiceProviderに定義すれば、自動的なバインドを上書きできる。</p>
+<p>Laravel ではクラスが自動的にバインドされ、そのインスタンスがリゾルブされる。ただし、バインド済みのクラスとは別のクラスをリゾルブしたい場合は、ServiceProvider に定義すれば、自動的なバインドを上書きできる。</p>
 <p>これを使用して、インターフェースをバインドし、実装クラスをリゾルブ可能にする。</p>
 <p>この方法は、上位レイヤーが抽象に依存することが必要な場面 (例：依存性逆転の原則) で役立つ。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -43722,11 +43722,11 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">method</span><span class="p">();</span>
 </code></pre></div>
 <h4 id="register-boot">▼ <code>register()</code> 関数と <code>boot()</code> 関数の違い<a class="headerlink" href="#register-boot" title="Permanent link">&para;</a></h4>
-<p>Laravelのライフサイクルで、ServiceContainerへのクラスのバインドの時には、まずServiceProviderの <code>register()</code> 関数が実行され、その後に <code>boot()</code> 関数が実行される。</p>
-<p>そのため、ServiceProviderが他のServiceProviderをコールするような処理を実装したいとき、これは <code>boot()</code> 関数に実装することが適している。</p>
+<p>Laravel のライフサイクルで、ServiceContainer へのクラスのバインドのときには、まず ServiceProvider の <code>register()</code> 関数が実行され、その後に <code>boot()</code> 関数が実行される。</p>
+<p>そのため、ServiceProvider が他の ServiceProvider をコールするような処理を実装したいとき、これは <code>boot()</code> 関数に実装することが適している。</p>
 <p><br></p>
 <h3 id="migrationmacroserviceprovider">MigrationMacroServiceProvider<a class="headerlink" href="#migrationmacroserviceprovider" title="Permanent link">&para;</a></h3>
-<p>複数のテーブルに共通のカラムを作成するDBマイグレーション処理を提供する。</p>
+<p>複数のテーブルに共通のカラムを作成する DB マイグレーション処理を提供する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -43780,7 +43780,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>DBマイグレーションファイルにて、定義した <code>systemColumn()</code> 関数をコールする。</p>
+<p>DB マイグレーションファイルにて、定義した <code>systemColumn()</code> 関数をコールする。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Illuminate\Database\Migrations\Migration</span><span class="p">;</span>
@@ -43821,7 +43821,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>最後に、<code>app.php</code> ファイルにて、MigrationMacroServiceProviderを新しく読み込む。</p>
+<p>最後に、<code>app.php</code> ファイルにて、MigrationMacroServiceProvider を新しく読み込む。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -43839,9 +43839,9 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </code></pre></div>
 <p><br></p>
 <h3 id="routeserviceprovider">RouteServiceProvider<a class="headerlink" href="#routeserviceprovider" title="Permanent link">&para;</a></h3>
-<h4 id="_69">▼ 全てのルーティングへの処理<a class="headerlink" href="#_69" title="Permanent link">&para;</a></h4>
+<h4 id="_69">▼ すべてのルーティングへの処理<a class="headerlink" href="#_69" title="Permanent link">&para;</a></h4>
 <p>ルーティングの設定ファイルをコールする。</p>
-<p>また、全てのルーティングに適用する処理を定義する。</p>
+<p>また、すべてのルーティングに適用する処理を定義する。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints">https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints</a></li>
@@ -43884,7 +43884,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </code></pre></div>
 <h4 id="_70">▼ リクエスト数制限<a class="headerlink" href="#_70" title="Permanent link">&para;</a></h4>
 <p><code>1</code> 分間当たりに許容するリクエスト数とその制限名を <code>configureRateLimiting()</code> 関数で定義する。</p>
-<p>加えて、Throttleミドルウェアに制限名を渡し、指定したルートにリクエスト上限数を適用させる。もし制限を超えた場合、<code>configureRateLimiting()</code> 関数によって <code>429</code> ステータスでレスポンスが返信される。</p>
+<p>加えて、Throttle ミドルウェアに制限名を渡し、指定したルートにリクエスト上限数を適用させる。もし制限を超えた場合、<code>configureRateLimiting()</code> 関数によって <code>429</code> ステータスでレスポンスが返信される。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting">https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting</a></li>
@@ -43934,8 +43934,8 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p><br></p>
 <h3 id="eventserviceprovider">EventServiceProvider<a class="headerlink" href="#eventserviceprovider" title="Permanent link">&para;</a></h3>
 <h4 id="eventlistener">▼ EventとListenerの登録<a class="headerlink" href="#eventlistener" title="Permanent link">&para;</a></h4>
-<p>EventとListenerの対応関係を定義する。</p>
-<p>注意点として、Eventを発火させてListenerを実行する方法は、Eventコンポーネントを参考にせよ。</p>
+<p>Event と Listener の対応関係を定義する。</p>
+<p>注意点として、Event を発火させて Listener を実行する方法は、Event コンポーネントを参考にせよ。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
@@ -44018,7 +44018,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">];</span>
 </code></pre></div>
 <h4 id="_73">▼ よく使用する操作関数<a class="headerlink" href="#_73" title="Permanent link">&para;</a></h4>
-<p>FormRequestクラスの <code>session()</code> 関数はStoreクラスを返却する。</p>
+<p>FormRequest クラスの <code>session()</code> 関数は Store クラスを返却する。</p>
 <p>このクラスの関数を使用して、セッションを操作できる。</p>
 <table>
 <thead>
@@ -44034,7 +44034,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </tr>
 <tr>
 <td><code>all</code></td>
-<td>セッションデータの全ての値を取得する。</td>
+<td>セッションデータのすべての値を取得する。</td>
 </tr>
 <tr>
 <td><code>forget</code></td>
@@ -44042,7 +44042,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </tr>
 <tr>
 <td><code>flush</code></td>
-<td>セッションデータの全ての値を取得する。</td>
+<td>セッションデータのすべての値を取得する。</td>
 </tr>
 <tr>
 <td><code>pull</code></td>
@@ -44100,12 +44100,12 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="store">▼ セッションデータがStoreクラスに至るまで<a class="headerlink" href="#store" title="Permanent link">&para;</a></h4>
-<p>全てを追うことは難しいため、StartSessionクラスの <code>handle()</code> 関数が実行されるところから始めるものとする。</p>
-<p>ここで、<code>handleStatefulRequest()</code> 関数の中の <code>startSession()</code> 関数が実行される。</p>
-<p>これにより、Storeクラスの <code>start()</code> 関数、<code>loadSession()</code> 関数、<code>readFromHandler()</code> 関数が実行され、<code>SessionHandlerInterface</code> の実装クラスの <code>read()</code> 関数が実行される。</p>
+<p>すべてを追うことは難しいため、StartSession クラスの <code>handle()</code> 関数が実行されるところから始めるものとする。</p>
+<p>ここで、<code>handleStatefulRequest()</code> 関数のなかの <code>startSession()</code> 関数が実行される。</p>
+<p>これにより、Store クラスの <code>start()</code> 関数、<code>loadSession()</code> 関数、<code>readFromHandler()</code> 関数が実行され、<code>SessionHandlerInterface</code> の実装クラスの <code>read()</code> 関数が実行される。</p>
 <p><code>read()</code> 関数は、<code>storage/framework/sessions</code> にあるセッションデータからセッションを読み出し、<code>attribute</code> プロパティに格納する。</p>
-<p>Sessionクラスの関数は、<code>attribute</code> プロパティを使用して、セッションを操作する。</p>
-<p>最終的に,<code>handleStatefulRequest</code> では、<code>saveSession()</code> 関数の中の <code>save()</code> 関数が実行され、セッションデータに新しい値が書き込まれる。</p>
+<p>Session クラスの関数は、<code>attribute</code> プロパティを使用して、セッションを操作する。</p>
+<p>最終的に,<code>handleStatefulRequest</code> では、<code>saveSession()</code> 関数のなかの <code>save()</code> 関数が実行され、セッションデータに新しい値が書き込まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_handle">https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_handle</a></li>
@@ -44124,7 +44124,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h2 id="20-views">20. Views<a class="headerlink" href="#20-views" title="Permanent link">&para;</a></h2>
 <h3 id="_74">データの出力<a class="headerlink" href="#_74" title="Permanent link">&para;</a></h3>
 <h4 id="_75">▼ データの出力<a class="headerlink" href="#_75" title="Permanent link">&para;</a></h4>
-<p>Controllerクラスから返却されたデータは、<code>{{ 変数名 }}</code> で取得できる。</p>
+<p>Controller クラスから返却されたデータは、<code>{{ 変数名 }}</code> で取得できる。</p>
 <p>`</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -44134,15 +44134,15 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4 id="_76">▼ バリデーションメッセージの出力<a class="headerlink" href="#_76" title="Permanent link">&para;</a></h4>
-<p>バリデーションでエラーが発生した場合、バリデーションでエラーがあった場合、Handlerクラスの <code>invalid()</code> 関数がコールされ、MessageBagクラスがViewに渡される。</p>
-<p>MessageBagクラスは、Blade上で <code>errors</code> 変数に格納されており、各関数をコールしてエラーメッセージを出力できる。</p>
+<p>バリデーションでエラーが発生した場合、バリデーションでエラーがあった場合、Handler クラスの <code>invalid()</code> 関数がコールされ、MessageBag クラスが View に渡される。</p>
+<p>MessageBag クラスは、Blade 上で <code>errors</code> 変数に格納されており、各関数をコールしてエラーメッセージを出力できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html">https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>MessageBagクラスの <code>all()</code> 関数で、全てのエラーメッセージを出力する。</p>
+<p>MessageBag クラスの <code>all()</code> 関数で、すべてのエラーメッセージを出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- /resources/views/foo/create.blade.php --&gt;</span>
 
 <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>ポスト作成<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
@@ -44174,8 +44174,8 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <h4 id="include">▼ <code>@include</code> (サブビュー)<a class="headerlink" href="#include" title="Permanent link">&para;</a></h4>
 <p>読み込んだファイル全体を出力する。</p>
 <p>読み込むファイルに対して、変数を渡すこともできる。</p>
-<p><code>@extentds</code> との使い分けとして、親子関係のないテンプレートの間で使用するのが良い。</p>
-<p>両者は、PHPでいう <code>extends</code> (クラスチェーン) と <code>require</code> (単なる読み出し) の関係に近い。</p>
+<p><code>@extentds</code> との使い分けとして、親子関係のないテンプレートの間で使用するのがよい。</p>
+<p>両者は、PHP でいう <code>extends</code> (クラスチェーン) と <code>require</code> (単なる読み出し) の関係に近い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
   @include(&quot;shared.errors&quot;)
@@ -44185,7 +44185,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <p><br></p>
 <h3 id="_78">要素の継承<a class="headerlink" href="#_78" title="Permanent link">&para;</a></h3>
 <h4 id="yieldextendssectionendsection">▼ <code>@yield</code>、<code>@extends</code>、<code>@section</code>、<code>@endsection</code><a class="headerlink" href="#yieldextendssectionendsection" title="Permanent link">&para;</a></h4>
-<p>子テンプレートのレンダリング時に、子テンプレートで新しく定義したHTMLの要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、<code>@yield("foo")</code> を定義する。</p>
+<p>子テンプレートのレンダリング時に、子テンプレートで新しく定義した HTML の要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、<code>@yield("foo")</code> を定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 親テンプレート --&gt;</span>
 
@@ -44209,7 +44209,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>子テンプレートのレンダリング時に、yieldに出力される要素<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 @endsection
 </code></pre></div>
-<p>補足として、子テンプレートは、レンダリング時に以下の様に出力される。</p>
+<p>補足として、子テンプレートは、レンダリング時に以下のように出力される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 子テンプレート --&gt;</span>
 
@@ -44226,7 +44226,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4 id="sectionshowextendsparent">▼ <code>@section</code>、<code>@show</code>、<code>@extends</code>、<code>@parent</code><a class="headerlink" href="#sectionshowextendsparent" title="Permanent link">&para;</a></h4>
-<p>子テンプレートのレンダリング時に、親テンプレートと子テンプレートそれぞれで新しく定義したHTMLの要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、<code>@section</code>-<code>@show</code> で要素を定義する。</p>
+<p>子テンプレートのレンダリング時に、親テンプレートと子テンプレートそれぞれで新しく定義した HTML の要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、<code>@section</code>-<code>@show</code> で要素を定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 親テンプレート --&gt;</span>
 
@@ -44253,7 +44253,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>子テンレプートのサイドバーに追加される要素<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 @endsection
 </code></pre></div>
-<p>補足として、子テンプレートは、レンダリング時に以下の様に出力される。</p>
+<p>補足として、子テンプレートは、レンダリング時に以下のように出力される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- 子テンプレート --&gt;</span>
 
@@ -44372,7 +44372,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 21:54:05 JST">2026-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     

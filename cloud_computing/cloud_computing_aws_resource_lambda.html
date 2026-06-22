@@ -34493,7 +34493,7 @@
 <p>コンソール画面の AWS Lambda に相当する。</p>
 <h4 id="_5">▼ 関数の実行環境<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>AWS Lambda は、API (ランタイム API、ログ API、拡張 API) と実行環境から構成されている。</p>
-<p>関数は実行環境に存在し、ランタイム API を経由して、AWS Lambda によって実行される。</p>
+<p>関数は実行環境に存在し、AWS Lambda がランタイム API を経由して関数を実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle">https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle</a>&gt;</li>
@@ -34508,7 +34508,7 @@
 <p><img alt="lambda-execution-environment-life-cycle" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-lifecycle.png" /></p>
 <h4 id="init">▼ Initフェーズ<a class="headerlink" href="#init" title="Permanent link">&para;</a></h4>
 <p>AWS Lambda が発火する。</p>
-<p>実行環境が作成され、関数を実行するための準備が行われる。</p>
+<p>AWS Lambda は実行環境を作成し、関数を実行するための準備をする。</p>
 <h4 id="invoke">▼ Invokeフェーズ<a class="headerlink" href="#invoke" title="Permanent link">&para;</a></h4>
 <p>AWS Lambda は関数を実行する。</p>
 <p>実行環境側のランタイムは、API を経由して AWS Lambda から関数に引数を渡す。</p>
@@ -34781,7 +34781,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     

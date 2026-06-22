@@ -34646,7 +34646,7 @@
 <p><br></p>
 <h2 id="01">01. データ構造の実装方法<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>ハードウェアが処理を行うときに、データの集合を効率的に扱うためのデータ格納形式をデータ構造という。</p>
-<p>データ構造のPHPによる実装方法を以下に示す。</p>
+<p>データ構造の PHP による実装方法を以下に示す。</p>
 <h3 id="_2">配列型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>同じデータ型のデータを並べたデータ格納様式のこと。</p>
 <h4 id="_3">▼ インデックス配列<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
@@ -34659,8 +34659,8 @@
 <span class="l l-Scalar l-Scalar-Plain">)</span>
 </code></pre></div>
 <h4 id="_4">▼ 多次元配列<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>配列の中に配列を持つ配列型のこと。</p>
-<p>配列の入れ子構造が２段の場合、『2次元配列』と呼ぶ。</p>
+<p>配列のなかに配列を持つ配列型のこと。</p>
+<p>配列の入れ子構造が２段の場合、『2 次元配列』と呼ぶ。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">(</span>
 <span class="l l-Scalar l-Scalar-Plain">[0] =&gt; Array</span>
 <span class="l l-Scalar l-Scalar-Plain">(</span>
@@ -34679,7 +34679,7 @@
 </code></pre></div>
 <h4 id="_5">▼ 連想配列<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>キー名 (赤、緑、黄、果物、野菜) ごとに値が格納された配列型のこと。</p>
-<p>下の例は、2次元配列かつ連想配列である。</p>
+<p>下の例は、2 次元配列かつ連想配列である。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Array</span>
 <span class="l l-Scalar l-Scalar-Plain">(</span>
 <span class="l l-Scalar l-Scalar-Plain">[赤] =&gt; Array</span>
@@ -34699,11 +34699,11 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="linkedlist">LinkedList型<a class="headerlink" href="#linkedlist" title="Permanent link">&para;</a></h3>
-<p>PHPで使用することは個人的にはないデータ格納様式。</p>
-<p>詳しくは、JavaにおけるLinkedList型を参考にせよ。</p>
+<p>PHP で使用することは個人的にはないデータ格納様式。</p>
+<p>詳しくは、Java における LinkedList 型を参考にせよ。</p>
 <h4 id="php-list">▼ PHPの <code>list()</code> 関数とは何なのか<a class="headerlink" href="#php-list" title="Permanent link">&para;</a></h4>
-<p>PHPの <code>list()</code> 関数は、List型とは意味合いが異なる。</p>
-<p>配列の個々の要素を変数に格納したい場合、List型を使用しなければ、冗長ではあるが、以下の様に実装する必要がある。</p>
+<p>PHP の <code>list()</code> 関数は、List 型とは意味合いが異なる。</p>
+<p>配列の個々の要素を変数に格納したい場合、List 型を使用しなければ、冗長ではあるが、以下のように実装する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -34714,7 +34714,7 @@
 
 <span class="k">echo</span> <span class="nv">$a</span><span class="o">.</span><span class="nv">$i</span><span class="o">.</span><span class="nv">$u</span><span class="p">;</span> <span class="c1">// あいう</span>
 </code></pre></div>
-<p>しかし、以下の様に、<code>list()</code> 関数を使用することによって、複数の変数への格納を１行で実装できる。</p>
+<p>しかし、以下のように、<code>list()</code> 関数を使用することによって、複数の変数への格納を１行で実装できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -34729,7 +34729,7 @@
 <p><img alt="Queue2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue2.gif" /></p>
 <p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
 <p><img alt="Queue3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue3.gif" /></p>
-<p>PHPでは、<code>array_push()</code> 関数と <code>array_shift()</code> 関数を組み合わせることにより、実装できる。</p>
+<p>PHP では、<code>array_push()</code> 関数と <code>array_shift()</code> 関数を組み合わせることにより、実装できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">);</span>
@@ -34768,7 +34768,7 @@
 <p><img alt="メッセージキュー" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メッセージキュー.jpg" /></p>
 <p><br></p>
 <h3 id="stack">Stack型<a class="headerlink" href="#stack" title="Permanent link">&para;</a></h3>
-<p>PHPでは、<code>array_push()</code> 関数と <code>array_pop()</code> 関数で実装可能。</p>
+<p>PHP では、<code>array_push()</code> 関数と <code>array_pop()</code> 関数で実装可能。</p>
 <p><img alt="Stack1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack1.gif" /></p>
 <p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
 <p><img alt="Stack2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack2.gif" /></p>
@@ -34791,14 +34791,14 @@
 <p><img alt=". " src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ヒープ4.gif" /></p>
 <p><br></p>
 <h2 id="01-02-java">01-02. Javaにおけるデータ構造の実装方法<a class="headerlink" href="#01-02-java" title="Permanent link">&para;</a></h2>
-<p>データ構造のJavaによる実装方法を以下に示す。</p>
+<p>データ構造の Java による実装方法を以下に示す。</p>
 <h3 id="_10">配列型<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="arraylist">▼ ArrayList<a class="headerlink" href="#arraylist" title="Permanent link">&para;</a></h4>
-<p>ArrayListクラスによって実装される配列型。</p>
-<p>PHPのインデックス配列に相当する。</p>
+<p>ArrayList クラスによって実装される配列型。</p>
+<p>PHP のインデックス配列に相当する。</p>
 <h4 id="hashmap">▼ HashMap<a class="headerlink" href="#hashmap" title="Permanent link">&para;</a></h4>
-<p>HashMapクラスによって実装される配列型。</p>
-<p>PHPの連想配列に相当する。</p>
+<p>HashMap クラスによって実装される配列型。</p>
+<p>PHP の連想配列に相当する。</p>
 <p><br></p>
 <h3 id="_11">連結リスト型<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>値をポインタによって順序通り並べたデータ格納形式のこと。</p>
@@ -34934,7 +34934,7 @@
 <h3 id="_22">その他のデータ型<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <h4 id="date">▼ date<a class="headerlink" href="#date" title="Permanent link">&para;</a></h4>
 <p>厳密にはデータ型ではないが、便宜上、データ型とする。</p>
-<p>タイムスタンプとは、協定世界時(UTC)を基準にした1970年1月1日の0時0分0秒からの経過秒数を表したもの。</p>
+<p>タイムスタンプとは、協定世界時(UTC)を基準にした 1970 年 1 月 1 日の 0 時 0 分 0 秒からの経過秒数を表したもの。</p>
 <table>
 <thead>
 <tr>
@@ -35045,7 +35045,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 22:23:35 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     

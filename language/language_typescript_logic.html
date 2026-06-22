@@ -13826,7 +13826,7 @@
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 良い例
+        ▼ よい例
       
     </span>
   </a>
@@ -34282,7 +34282,7 @@
   <a href="#_24" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 良い例
+        ▼ よい例
       
     </span>
   </a>
@@ -34397,7 +34397,7 @@
 <h2 id="01">01. 実装スタイル<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">オブジェクト指向型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>振る舞いは内部に状態を持つ。</p>
-<p>副作用はあってもなくともよい（同じ入力の時に、出力は同じでも異なってもよい）。</p>
+<p>副作用はあってもなくともよい（同じ入力のときに、出力は同じでも異なってもよい）。</p>
 <p>状態・振る舞いが結合している。</p>
 <p>ほかの型と共存できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
@@ -34572,7 +34572,7 @@
 <p><br></p>
 <h2 id="04">04. 返却値<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_11">返却値型<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>TypeScriptでは、 <code>return</code> の型のみを指定すれば良い。</p>
+<p>TypeScript では、 <code>return</code> の型のみを指定すればよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Error型は返却値型に指定しなくても良い</span>
 <span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -34631,8 +34631,8 @@
 <p><br></p>
 <h2 id="05">05. エラーハンドリング<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_13">エラーハンドリングとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>Typescriptでは <code>throw</code> は、Errorオブジェクトだけでなく、どんな型でも返却できる。</p>
-<p>ちなみに、よくある型はErrorオブジェクト型、object型、string型である。</p>
+<p>Typescript では <code>throw</code> は、Error オブジェクトだけでなく、どんな型でも返却できる。</p>
+<p>ちなみに、よくある型は Error オブジェクト型、object 型、string 型である。</p>
 <p>これを <code>catch</code> する場合、さまざまな型を考慮する必要がある。</p>
 <p><br></p>
 <h3 id="catch">まずは緩い型で <code>catch</code> する<a class="headerlink" href="#catch" title="Permanent link">&para;</a></h3>
@@ -34687,7 +34687,7 @@
 <p><br></p>
 <h3 id="catch_1"><code>catch</code> した型に応じた処理<a class="headerlink" href="#catch_1" title="Permanent link">&para;</a></h3>
 <h4 id="catch_2">▼ <code>catch</code> した型に応じた処理とは<a class="headerlink" href="#catch_2" title="Permanent link">&para;</a></h4>
-<p>TypeScriptの <code>try-catch</code> で捕捉したエラーの型に応じて処理を実行し分ける場合、<code>catch</code> ブロックを複数書くのではなく、<code>if</code> 文を使用する必要がある。</p>
+<p>TypeScript の <code>try-catch</code> で捕捉したエラーの型に応じて処理を実行し分ける場合、<code>catch</code> ブロックを複数書くのではなく、<code>if</code> 文を使用する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">axios</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">AxiosError</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;axios&quot;</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchUser</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34713,7 +34713,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_14">▼ エラーメッセージの取得<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>TypeScriptでは、エラーの構造がさまざまある。</p>
+<p>TypeScript では、エラーの構造がさまざまある。</p>
 <p>型安全のために、これらを条件分岐で処置する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Remixの場合</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Response</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
@@ -34838,7 +34838,7 @@
 <p><br></p>
 <h2 id="07">07. 条件式<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="_19">二項演算子<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<p>与えられた変数の値がfalsyだった場合に、値を設定する。</p>
+<p>与えられた変数の値が falsy だった場合に、値を設定する。</p>
 <p>デフォルト値を設定する場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// &quot;&quot;、0、null、undefined、falseなど</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">enableFoo</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">;</span>
@@ -34971,7 +34971,7 @@
 <p>線形探索とは、配列などを先頭から順に走査し、特定の要素を抽出する処理である。</p>
 <p>ループ内で線形探索すると処理量が多くなるため、<code>Set()</code> 関数や <code>Map()</code> 関数で事前準備しておく。</p>
 <h4 id="_23">▼ 悪い例<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>ループの中で線形探索の関数 (<code>some</code>、<code>includes</code>、<code>find</code>) を実行してしまっている。</p>
+<p>ループのなかで線形探索の関数 (<code>some</code>、<code>includes</code>、<code>find</code>) を実行してしまっている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// ループ</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">inputKey</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">inputKeys</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ループ内で線形探索処理を実行してしまっている</span>
@@ -34981,7 +34981,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="_24">▼ 良い例<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<h4 id="_24">▼ よい例<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">item</span><span class="p">.</span><span class="nx">key</span><span class="p">);</span>
 
 <span class="c1">// Set関数を使用した事前準備</span>
@@ -35033,7 +35033,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     

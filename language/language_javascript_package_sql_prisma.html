@@ -34205,13 +34205,13 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-prisma">01. Prismaの仕組み<a class="headerlink" href="#01-prisma" title="Permanent link">&para;</a></h2>
-<p>PrismaClient (JavaScriptパッケージ) は、クエリエンジン (バイナリ) に接続リクエストを送信する。</p>
-<p>クエリエンジンは接続プールを作成し、プール内の接続を使用してDBに接続する。</p>
+<p>PrismaClient (JavaScript パッケージ) は、クエリエンジン (バイナリ) に接続リクエストを送信する。</p>
+<p>クエリエンジンは接続プールを作成し、プール内の接続を使用して DB に接続する。</p>
 <p>接続が維持されている間、これを再利用して複数のクエリを実行する。</p>
-<p>PrismaClientは、クエリエンジンに切断リクエストを送信する。</p>
-<p>クエリエンジンは、DBとの接続を破棄する。</p>
-<p>もし接続プール上の接続が全て使用されてしまった場合、いずれかの接続が解放されるまで待機する必要がある。</p>
-<p>この時に、送信されたリクエストは待機キューで解放を待つ。</p>
+<p>PrismaClient は、クエリエンジンに切断リクエストを送信する。</p>
+<p>クエリエンジンは、DB との接続を破棄する。</p>
+<p>もし接続プール上の接続がすべて使用されてしまった場合、いずれかの接続が解放されるまで待機する必要がある。</p>
+<p>このときに、送信されたリクエストは待機キューで解放を待つ。</p>
 <p><img alt="architecture_prisma" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_prisma.png" /></p>
 <blockquote>
 <ul>
@@ -34235,8 +34235,8 @@ $<span class="w"> </span>yarn<span class="w"> </span>upgrade<span class="w"> </s
 <p><br></p>
 <h2 id="02_1">02. コマンド<a class="headerlink" href="#02_1" title="Permanent link">&para;</a></h2>
 <h3 id="generate">generate<a class="headerlink" href="#generate" title="Permanent link">&para;</a></h3>
-<p>Prismaスキーマからクライアントを作成する。</p>
-<p>クライアントを使用して、DBに接続できる。</p>
+<p>Prisma スキーマからクライアントを作成する。</p>
+<p>クライアントを使用して、DB に接続できる。</p>
 <p>マイグレーションや初期データを挿入前に必要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>prisma<span class="w"> </span>generate
 
@@ -34254,14 +34254,14 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 <p><br></p>
 <h3 id="migrate">migrate<a class="headerlink" href="#migrate" title="Permanent link">&para;</a></h3>
 <h4 id="dev">▼ dev<a class="headerlink" href="#dev" title="Permanent link">&para;</a></h4>
-<p>ローカルマシン用のマイグレーションを実行し、また差分を埋めるSQLファイルを発行する。</p>
+<p>ローカルマシン用のマイグレーションを実行し、また差分を埋める SQL ファイルを発行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>prisma<span class="w"> </span>migrate<span class="w"> </span>dev
 </code></pre></div>
-<p>マイグレーションを実行せず、差分を埋めるSQLファイルのみを発行する。</p>
+<p>マイグレーションを実行せず、差分を埋める SQL ファイルのみを発行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>prisma<span class="w"> </span>migrate<span class="w"> </span>dev<span class="w"> </span>--create-only
 </code></pre></div>
 <h4 id="deploy">▼ deploy<a class="headerlink" href="#deploy" title="Permanent link">&para;</a></h4>
-<p>本番環境用のマイグレーションを実行し、また差分を埋めるSQLファイルを発行する。</p>
+<p>本番環境用のマイグレーションを実行し、また差分を埋める SQL ファイルを発行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>prisma<span class="w"> </span>migrate<span class="w"> </span>deploy
 </code></pre></div>
 <blockquote>
@@ -34270,7 +34270,7 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="reset">▼ reset<a class="headerlink" href="#reset" title="Permanent link">&para;</a></h4>
-<p>初期の状態まで、全てロールバックする。</p>
+<p>初期の状態まで、すべてロールバックする。</p>
 <p><code>--force</code> オプションで警告を無視できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>prisma<span class="w"> </span>migrate<span class="w"> </span>reset<span class="w"> </span>--force
 </code></pre></div>
@@ -34280,7 +34280,7 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="rollback">▼ rollback<a class="headerlink" href="#rollback" title="Permanent link">&para;</a></h4>
-<p>prismaには、rollbackのコマンドがなく、ロールバック用のWrite処理を実行する必要がある。</p>
+<p>prisma には、rollback のコマンドがなく、ロールバック用の Write 処理を実行する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>prisma<span class="w"> </span>migrate<span class="w"> </span>diff<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--from-schema-datamodel<span class="w"> </span>prisma/schema.prisma<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--to-schema-datasource<span class="w"> </span>prisma/schema.prisma<span class="w"> </span><span class="se">\</span>
@@ -34309,7 +34309,7 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 <h2 id="03">03. スキーマ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="datasource">datasource<a class="headerlink" href="#datasource" title="Permanent link">&para;</a></h3>
 <h4 id="datasource_1">▼ datasourceとは<a class="headerlink" href="#datasource_1" title="Permanent link">&para;</a></h4>
-<p>DB情報を設定する。</p>
+<p>DB 情報を設定する。</p>
 <h4 id="url">▼ url<a class="headerlink" href="#url" title="Permanent link">&para;</a></h4>
 <p>プロトコル名として、<code>mysql</code> や <code>postgresql</code> を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">datasource</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="p">{</span>
@@ -34318,7 +34318,7 @@ const<span class="w"> </span><span class="nv">prisma</span><span class="w"> </sp
 <span class="w">  </span><span class="nx">url</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;プロトコル名&gt;://&lt;DBユーザー&gt;:&lt;DBパスワード&gt;@&lt;DBホスト&gt;:&lt;ポート番号&gt;/&lt;DB名&gt;?schema=public&amp;connection_limit=30&amp;pool_timeout=60&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>注意点として、Prismaの仕様で、DBパスワードに特殊記号が含まれている場合にはURLエンコードする必要がある。</p>
+<p>注意点として、Prisma の仕様で、DB パスワードに特殊記号が含まれている場合には URL エンコードする必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nv">urldecode</span><span class="o">=</span><span class="s1">&#39;python3 -c &quot;import sys, urllib.parse as ul; \</span>
 <span class="s1">    print(ul.unquote_plus(sys.argv[1]))&quot;&#39;</span>
 
@@ -34338,7 +34338,7 @@ q+werty%3D%2F%3B
 </ul>
 </blockquote>
 <h4 id="url_1">▼ urlパラメーター<a class="headerlink" href="#url_1" title="Permanent link">&para;</a></h4>
-<p>URLのパラメーターとして、以下などを設定できる。</p>
+<p>URL のパラメーターとして、以下などを設定できる。</p>
 <ul>
 <li>コネションプールの接続上限数 (<code>connection_limit</code>)</li>
 <li>接続プール内の接続が解放されるまでキューで待機する時間 (<code>pool_timeout</code>)</li>
@@ -34500,10 +34500,10 @@ q+werty%3D%2F%3B
 <p><br></p>
 <h2 id="05-seed">05. Seed<a class="headerlink" href="#05-seed" title="Permanent link">&para;</a></h2>
 <h3 id="seed_1">Seedとは<a class="headerlink" href="#seed_1" title="Permanent link">&para;</a></h3>
-<p><code>yarn prisma db</code> コマンドでDBに挿入できる初期データである。</p>
-<p>開発環境、CI環境のユニットテストやE2Eテスト、ステージング環境の動作確認で使用できる。</p>
+<p><code>yarn prisma db</code> コマンドで DB に挿入できる初期データである。</p>
+<p>開発環境、CI 環境のユニットテストや E2E テスト、ステージング環境の動作確認で使用できる。</p>
 <p>本番環境では基本的に使用しない。</p>
-<p>ただし、roleテーブルのようなレコードが今後滅多に増えず、変わらないテーブルであれば、テーブルの初期構築時にレコードを楽して用意するために使用することはある。</p>
+<p>ただし、role テーブルのようなレコードが今後滅多に増えず、変わらないテーブルであれば、テーブルの初期構築時にレコードを楽して用意するために使用することはある。</p>
 <p><br></p>
 <h3 id="seedts">seed.ts<a class="headerlink" href="#seedts" title="Permanent link">&para;</a></h3>
 <p>初期データの定義と挿入を実装する。</p>
@@ -34561,7 +34561,7 @@ q+werty%3D%2F%3B
 <p><br></p>
 <h2 id="06">06. エラー<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="prisma">Prisma<a class="headerlink" href="#prisma" title="Permanent link">&para;</a></h3>
-<p>Prismaは、トランザクションが何らかの理由で失敗した場合に、固有のエラーを返却する。</p>
+<p>Prisma は、トランザクションが何らかの理由で失敗した場合に、固有のエラーを返却する。</p>
 <p>エラーをキャッチし、開発者向けの例外としてスローする必要がある。</p>
 <p>また、より上のレイヤーに伝播し、ユーザーインターフェースのレイヤーでは、ユーザー向けのエラーメッセージとして吸収する。</p>
 <p><br></p>
@@ -34581,8 +34581,8 @@ q+werty%3D%2F%3B
 <p><br></p>
 <h3 id="prismaclientknownrequesterror">PrismaClientKnownRequestError<a class="headerlink" href="#prismaclientknownrequesterror" title="Permanent link">&para;</a></h3>
 <h4 id="prismaclientknownrequesterror_1">▼ PrismaClientKnownRequestErrorとは<a class="headerlink" href="#prismaclientknownrequesterror_1" title="Permanent link">&para;</a></h4>
-<p>Prisma Client がDBに対してトランザクション処理を実行しエラーが発生したとする。</p>
-<p>それが想定内の何らかのエラーの場合は、PrismaClientKnownRequestErrorに含まれる。</p>
+<p>Prisma Client が DB に対してトランザクション処理を実行しエラーが発生したとする。</p>
+<p>それが想定内の何らかのエラーの場合は、PrismaClientKnownRequestError に含まれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror">https://www.prisma.io/docs/orm/reference/error-reference#prismaclientknownrequesterror</a></li>
@@ -34733,7 +34733,7 @@ q+werty%3D%2F%3B
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 21:54:05 JST">2026-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     

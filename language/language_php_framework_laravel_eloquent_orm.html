@@ -34861,9 +34861,9 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-eloquent-orm">01. Eloquent ORMとは<a class="headerlink" href="#01-eloquent-orm" title="Permanent link">&para;</a></h2>
-<p>Laravelに組み込まれているORM。</p>
-<p>Active Recordパターンで実装されている。</p>
-<p>内部にはPDOが使用されており、Laravelクエリビルダーよりも抽象度が高い。</p>
+<p>Laravel に組み込まれている ORM。</p>
+<p>Active Record パターンで実装されている。</p>
+<p>内部には PDO が使用されており、Laravel クエリビルダーよりも抽象度が高い。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/eloquent.html">https://readouble.com/laravel/8.x/ja/eloquent.html</a></li>
@@ -34891,7 +34891,7 @@
 <tr>
 <td>保守性</td>
 <td>テーブル間のリレーションが、そのままモデル間の依存関係になるため、モデル間の依存関係を考える必要がなく、開発が早い。そのため、ビジネスロジックが複雑でないアプリケーションの開発に適している。</td>
-<td>・反対に、モデル間の依存関係によってテーブル間のリレーションが決まる。そのため、複雑な業務ロジックでモデル間が複雑な依存関係を持つと、テーブル間のリレーションも複雑になっていってしまう。<br>・モデルに対応するテーブルに関して、必要なカラムのみでなく、全てのカラムから取得するため、アプリに余分な負荷がかかる。</td>
+<td>・反対に、モデル間の依存関係によってテーブル間のリレーションが決まる。そのため、複雑な業務ロジックでモデル間が複雑な依存関係を持つと、テーブル間のリレーションも複雑になっていってしまう。<br>・モデルに対応するテーブルに関して、必要なカラムのみでなく、すべてのカラムから取得するため、アプリに余分な負荷がかかる。</td>
 </tr>
 <tr>
 <td>拡張性</td>
@@ -34909,7 +34909,7 @@
 <h2 id="03-eloquent">03. Eloquentモデル<a class="headerlink" href="#03-eloquent" title="Permanent link">&para;</a></h2>
 <h3 id="eloquent">テーブル設計に基づくEloquentモデル<a class="headerlink" href="#eloquent" title="Permanent link">&para;</a></h3>
 <h4 id="eloquent_1">▼ Eloquentモデルの継承<a class="headerlink" href="#eloquent_1" title="Permanent link">&para;</a></h4>
-<p>Eloquentモデルを継承したクラスは、<code>INSERT</code> 文や <code>UPDATE</code> 文などのデータアクセスロジックを使用できるようになる。</p>
+<p>Eloquent モデルを継承したクラスは、<code>INSERT</code> 文や <code>UPDATE</code> 文などのデータアクセスロジックを使用できるようになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -34925,8 +34925,8 @@
 <h4 id="_3">▼ テーブルの定義<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>テーブルを定義するため、<code>table</code> プロパティにテーブル名を割り当てる。</p>
 <p>ただし、<code>table</code> プロパティにテーブル名を代入する必要はない。</p>
-<p>Eloquentがクラス名の複数形をテーブル名と見なし、これをスネークケースにした文字列を <code>table</code> プロパティに自動的に代入する。</p>
-<p>また、テーブル名を自前で命名したい場合は、代入によるOverrideを行っても良い。</p>
+<p>Eloquent がクラス名の複数形をテーブル名と見なし、これをスネークケースにした文字列を <code>table</code> プロパティに自動的に代入する。</p>
+<p>また、テーブル名を自前で命名したい場合は、代入による Override を行ってもよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -34943,10 +34943,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_4">▼ テーブル間リレーションシップの定義<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>ER図における各テーブルのリレーションシップを元に、モデル間の関連性を定義する。</p>
+<p>ER 図における各テーブルのリレーションシップを元に、モデル間の関連性を定義する。</p>
 <p><code>hasOne()</code> 関数、<code>hasMany()</code> 関数、<code>belongsTo()</code> 関数を使用して表す。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Departmentモデルで、<code>hasMany()</code> 関数を使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。</p>
+<p>Department モデルで、<code>hasMany()</code> 関数を使用して、Department モデル (親) と Employees モデル (子) のテーブル関係を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
@@ -34972,7 +34972,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>また、Employeesモデルでは、<code>belongsTo()</code> 関数を使用して、Departmentモデル (親) とEmployeesモデル (子) のテーブル関係を定義する。</p>
+<p>また、Employees モデルでは、<code>belongsTo()</code> 関数を使用して、Department モデル (親) と Employees モデル (子) のテーブル関係を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
@@ -34998,8 +34998,8 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>リレーションを基にJOIN句のSQLを発行するために、Departmentモデル (親) の <code>hasMany()</code> 関数を実行する。</p>
-<p>これにより、DepartmentモデルのIDに紐付くEmployeesモデル (子) を配列で参照できる。</p>
+<p>リレーションを基に JOIN 句の SQL を発行するために、Department モデル (親) の <code>hasMany()</code> 関数を実行する。</p>
+<p>これにより、Department モデルの ID に紐付く Employees モデル (子) を配列で参照できる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// Departmentオブジェクトを取得</span>
@@ -35016,7 +35016,7 @@
 </ul>
 </blockquote>
 <h4 id="_5">▼ 主キーカラムの定義<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Eloquentは、<code>primaryKey</code> プロパティの値を主キーのカラム名と見なす。</p>
+<p>Eloquent は、<code>primaryKey</code> プロパティの値を主キーのカラム名と見なす。</p>
 <p><code>keyType</code> プロパティで主キーのデータ型、また <code>incrementing</code> プロパティで主キーの自動増分を有効化するか否かを設定できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -35044,8 +35044,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="timestamp">▼ TIMESTAMP型カラムの定義<a class="headerlink" href="#timestamp" title="Permanent link">&para;</a></h4>
-<p>Eloquentは、<code>timestamps</code> プロパティの値が <code>true</code> の時に、Eloquentモデルに紐付くテーブルの <code>created_at</code> カラムと <code>updated_at</code> カラムを自動的に更新する。</p>
-<p>また、TIMESTAMP型カラム名を自前で命名したい場合は、代入によるOverideを行っても良い。</p>
+<p>Eloquent は、<code>timestamps</code> プロパティの値が <code>true</code> のときに、Eloquent モデルに紐付くテーブルの <code>created_at</code> カラムと <code>updated_at</code> カラムを自動的に更新する。</p>
+<p>また、TIMESTAMP 型カラム名を自前で命名したい場合は、代入による Overide を行ってもよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35065,7 +35065,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="timestamp_1">▼ TIMESTAMP型カラム読み出し時のデータ型変換<a class="headerlink" href="#timestamp_1" title="Permanent link">&para;</a></h4>
-<p>DBからタイムスタンプ型カラムのRead処理を実行すると同時に、CarbonのDateTimeクラスに変換したい場合、<code>data</code> プロパティにて、カラム名を設定する。</p>
+<p>DB からタイムスタンプ型カラムの Read 処理を実行すると同時に、Carbon の DateTime クラスに変換したい場合、<code>data</code> プロパティにて、カラム名を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35131,7 +35131,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>もしくは、変更できないカラム名を <code>guarded</code> プロパティで定義する。</p>
-<p>これらのいずれかの設定は、Eloquentモデルで必須である。</p>
+<p>これらのいずれかの設定は、Eloquent モデルで必須である。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
@@ -35153,7 +35153,7 @@
 <p><br></p>
 <h3 id="_8">使用に注意する機能<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ セッター<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>Laravelでは、プロパティを定義しなくても、Eloquentモデルからプロパティをコールすれば、処理の度に動的にプロパティを定義できる。</p>
+<p>Laravel では、プロパティを定義しなくても、Eloquent モデルからプロパティをコールすれば、処理のたびに動的にプロパティを定義できる。</p>
 <p>しかし、この機能のプロパティは public アクセスである必要があるため、オブジェクト機能のメリットを享受できない。</p>
 <p>そのため、こを使用せずに、<code>constructor()</code> 関数を使用したコンストラクタインジェクション、またはセッターインジェクションを使用するようにする。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35184,7 +35184,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_10">▼ ゲッター<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>Laravelでは、<code>getFooBarAttribute()</code> という名前の関数を、<code>foo_bar</code> という名前でコールできる。</p>
+<p>Laravel では、<code>getFooBarAttribute()</code> という名前の関数を、<code>foo_bar</code> という名前でコールできる。</p>
 <p>一見、プロパティをコールしているように見えるため、注意が必要である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -35223,7 +35223,7 @@
 <p><br></p>
 <h3 id="_11">データ型変換<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ シリアライズ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>PHPのオブジェクト型をJSONに変換 (シリアライズ) する。</p>
+<p>PHP のオブジェクト型を JSON に変換 (シリアライズ) する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35249,14 +35249,14 @@
 <span class="k">return</span> <span class="nv">$users</span><span class="o">-&gt;</span><span class="na">toArray</span><span class="p">();</span>
 </code></pre></div>
 <h4 id="_13">▼ デシリアライズ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>JSONをPHPのオブジェクト型に変換 (デシリアライズ) する。</p>
+<p>JSON を PHP のオブジェクト型に変換 (デシリアライズ) する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="x">実装中...</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_14">フィルタリング<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="filter">▼ <code>filter()</code> 関数<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h4>
-<p>コールバック関数の返り値が <code>true</code> であった要素を全て抽出する。</p>
+<p>コールバック関数の返り値が <code>true</code> であった要素をすべて抽出する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="x">$collection = collect([1, 2, 3, 4]);</span>
 
@@ -35304,8 +35304,8 @@
 <h2 id="03-02-eloquentcrud">03-02. EloquentモデルとビルダーによるCRUD<a class="headerlink" href="#03-02-eloquentcrud" title="Permanent link">&para;</a></h2>
 <h3 id="crud">CRUD関数の返り値型と返却値<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h3>
 <h4 id="crud_1">▼ CRUD関数を持つクラス<a class="headerlink" href="#crud_1" title="Permanent link">&para;</a></h4>
-<p>Eloquentモデルを継承すると、以下のクラスから関数をコールできるようになる。</p>
-<p>Eloquentモデルにはより上位の関数が定義されていないことがあり、もし定義されていないものがコールされた場合、<code>__callStatic()</code> 関数 (静的コールによる) や <code>__call()</code> 関数 (非静的コールによる) が代わりにコールされ、より上位クラスの関数をコールできる。</p>
+<p>Eloquent モデルを継承すると、以下のクラスから関数をコールできるようになる。</p>
+<p>Eloquent モデルにはより上位の関数が定義されていないことがあり、もし定義されていないものがコールされた場合、<code>__callStatic()</code> 関数 (静的コールによる) や <code>__call()</code> 関数 (非静的コールによる) が代わりにコールされ、より上位クラスの関数をコールできる。</p>
 <p>どちらの方法でコールしても同じである。</p>
 <table>
 <thead>
@@ -35345,7 +35345,7 @@
 </ul>
 </blockquote>
 <h4 id="eloquent_2">▼ Eloquentビルダー<a class="headerlink" href="#eloquent_2" title="Permanent link">&para;</a></h4>
-<p>Eloquentビルダーが持つcrudを実行する関数の返り値型と返却値は以下の通りである。</p>
+<p>Eloquent ビルダーが持つ crud を実行する関数の返り値型と返却値は以下の通りである。</p>
 <p>その他の関数については、以下のリンクを参考にせよ。</p>
 <table>
 <thead>
@@ -35389,7 +35389,7 @@
 </ul>
 </blockquote>
 <h4 id="eloquent_3">▼ Eloquentモデル<a class="headerlink" href="#eloquent_3" title="Permanent link">&para;</a></h4>
-<p>Eloquentモデルが持つcrudを実行する関数の返り値型と返却値は以下の通りである。</p>
+<p>Eloquent モデルが持つ crud を実行する関数の返り値型と返却値は以下の通りである。</p>
 <p>その他の関数については、以下のリンクを参考にせよ。</p>
 <table>
 <thead>
@@ -35429,13 +35429,13 @@
 <p><br></p>
 <h3 id="create">CREATE<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
 <h4 id="create_1">▼ <code>create()</code> 関数<a class="headerlink" href="#create_1" title="Permanent link">&para;</a></h4>
-<p>INSERT文を実行する。</p>
-<p>Eloquentモデルには <code>create()</code> 関数がない。代わりに、 Eloquentビルダーが持つ <code>create()</code> 関数をコールする。</p>
+<p>INSERT 文を実行する。</p>
+<p>Eloquent モデルには <code>create()</code> 関数がない。代わりに、 Eloquent ビルダーが持つ <code>create()</code> 関数をコールする。</p>
 <p><code>create()</code> 関数に挿入先のカラムと値を渡し、これを実行する。</p>
-<p>別の方法として、Eloquentビルダーの <code>fill()</code> 関数で挿入先のカラムと値を設定し、<code>save()</code> 関数を実行しても良い。</p>
-<p><code>save()</code> 関数は <code>UPDATE</code> 処理も実行できるが、<code>fill()</code> 関数でID値を割り当てない場合は、<code>CREATE</code> 処理が実行される。</p>
+<p>別の方法として、Eloquent ビルダーの <code>fill()</code> 関数で挿入先のカラムと値を設定し、<code>save()</code> 関数を実行してもよい。</p>
+<p><code>save()</code> 関数は <code>UPDATE</code> 処理も実行できるが、<code>fill()</code> 関数で ID 値を割り当てない場合は、<code>CREATE</code> 処理が実行される。</p>
 <p><code>create()</code> 関数または <code>save()</code> 関数による <code>CREATE</code> 処理では、レコードの挿入後に、<code>lastInsertId()</code> 関数に相当する処理が実行される。</p>
-<p>これにより、挿入されたレコードのプライマリーキーが取得され、EloquentモデルのID値のプロパティに保持される。</p>
+<p>これにより、挿入されたレコードのプライマリーキーが取得され、Eloquent モデルの ID 値のプロパティに保持される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35469,7 +35469,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Eloquentモデルには <code>fillable</code> プロパティを設定しておく。</p>
+<p>Eloquent モデルには <code>fillable</code> プロパティを設定しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
@@ -35494,10 +35494,10 @@
 <p><br></p>
 <h3 id="read">READ<a class="headerlink" href="#read" title="Permanent link">&para;</a></h3>
 <h4 id="all">▼ <code>all()</code> 関数<a class="headerlink" href="#all" title="Permanent link">&para;</a></h4>
-<p>レコードを全て取得するSELECT句を発行する。</p>
-<p>MySQLを含むDBエンジンでは、取得結果に標準の並び順が存在しないため、プライマリーキーの昇順で取得したい場合は、<code>orderBy()</code> 関数を使用して、明示的に並び替えるようにする。</p>
-<p>Eloquentモデルには <code>all()</code> 関数がない。代わりに、 Eloquentビルダーが持つ <code>all()</code> 関数をコールする。</p>
-<p>全てのプライマリーキーのCollection型を配列型として返却する。</p>
+<p>レコードをすべて取得する SELECT 句を発行する。</p>
+<p>MySQL を含む DB エンジンでは、取得結果に標準の並び順が存在しないため、プライマリーキーの昇順で取得したい場合は、<code>orderBy()</code> 関数を使用して、明示的に並び替えるようにする。</p>
+<p>Eloquent モデルには <code>all()</code> 関数がない。代わりに、 Eloquent ビルダーが持つ <code>all()</code> 関数をコールする。</p>
+<p>すべてのプライマリーキーの Collection 型を配列型として返却する。</p>
 <p><code>toArray()</code> 関数で配列型に再帰的に変換できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -35529,9 +35529,9 @@
 </ul>
 </blockquote>
 <h4 id="find">▼ <code>find()</code> 関数<a class="headerlink" href="#find" title="Permanent link">&para;</a></h4>
-<p>レコードを1つ取得するSELECT句を発行する。</p>
-<p>Eloquentモデルには <code>find()</code> 関数がない。代わりに、 Eloquentビルダーが持つ <code>find()</code> 関数をコールする。</p>
-<p>引数としてプライマリーキーを渡した場合、指定したプライマリーキーを持つEloquentモデルを返却する。</p>
+<p>レコードを 1 つ取得する SELECT 句を発行する。</p>
+<p>Eloquent モデルには <code>find()</code> 関数がない。代わりに、 Eloquent ビルダーが持つ <code>find()</code> 関数をコールする。</p>
+<p>引数としてプライマリーキーを渡した場合、指定したプライマリーキーを持つ Eloquent モデルを返却する。</p>
 <p><code>toArray()</code> 関数で配列型に変換できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -35563,10 +35563,10 @@
 </ul>
 </blockquote>
 <h4 id="first_1">▼ <code>first()</code> 関数<a class="headerlink" href="#first_1" title="Permanent link">&para;</a></h4>
-<p>取得されたコレクション型データの1つ目の要素の値を取得する。</p>
-<p>ユニーク制約の課せられたカラムを <code>where()</code> 関数の対象とする場合、コレクションとして取得されるが、コレクションが持つEloquentモデルは1つである。</p>
-<p>foreachを使用してコレクションからEloquentモデルを取り出しても良いが、無駄が多い。</p>
-<p>そこで、<code>first()</code> 関数を使用して、Eloquentモデルを直接的に取得する。</p>
+<p>取得されたコレクション型データの 1 つ目の要素の値を取得する。</p>
+<p>ユニーク制約の課せられたカラムを <code>where()</code> 関数の対象とする場合、コレクションとして取得されるが、コレクションが持つ Eloquent モデルは 1 つである。</p>
+<p>foreach を使用してコレクションから Eloquent モデルを取り出してもよいが、無駄が多い。</p>
+<p>そこで、<code>first()</code> 関数を使用して、Eloquent モデルを直接的に取得する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35591,9 +35591,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="limit-offset">▼ <code>limit()</code> 関数、<code>offset()</code> 関数<a class="headerlink" href="#limit-offset" title="Permanent link">&para;</a></h4>
-<p>指定した <code>offset</code> 値以降のレコードを全て取得するSELECT句を発行する。</p>
-<p>これにより、ページネーションで、1ページ当たりのレコード数 (<code>limit</code>) と、次のページの開始レコード (<code>offset</code>) を定義できる。</p>
-<p>これらのパラメーターはクエリパラメーターとして渡すと良い。</p>
+<p>指定した <code>offset</code> 値以降のレコードをすべて取得する SELECT 句を発行する。</p>
+<p>これにより、ページネーションで、1 ページ当たりのレコード数 (<code>limit</code>) と、次のページの開始レコード (<code>offset</code>) を定義できる。</p>
+<p>これらのパラメーターはクエリパラメーターとして渡すとよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35626,7 +35626,7 @@
 </ul>
 </blockquote>
 <h4 id="orderby">▼ <code>orderBy()</code> 関数<a class="headerlink" href="#orderby" title="Permanent link">&para;</a></h4>
-<p>指定したカラムの昇順/降順でレコードを並び替えるSELECT句を発行する。</p>
+<p>指定したカラムの昇順/降順でレコードを並び替える SELECT 句を発行する。</p>
 <p>並び替えた結果を取得するためには、<code>get()</code> 関数を使用する。</p>
 <p>プライマリーキーの昇順で取得する場合、<code>all()</code> 関数ではなく、<code>orderBy()</code> 関数を使用して、プライマリーキーの昇順を明示的に設定する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35669,7 +35669,7 @@
 </ul>
 </blockquote>
 <h4 id="sortby">▼ <code>sortBy()</code> 関数<a class="headerlink" href="#sortby" title="Permanent link">&para;</a></h4>
-<p>指定したカラムの昇順でレコードを並び替えるSELECT句を発行する。</p>
+<p>指定したカラムの昇順でレコードを並び替える SELECT 句を発行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35698,7 +35698,7 @@
 </ul>
 </blockquote>
 <h4 id="sortbydesc">▼ <code>sortByDesc()</code> 関数<a class="headerlink" href="#sortbydesc" title="Permanent link">&para;</a></h4>
-<p>指定したカラムの降順でレコードを並び替えるSELECT句を発行する。</p>
+<p>指定したカラムの降順でレコードを並び替える SELECT 句を発行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
@@ -35726,24 +35726,24 @@
 </ul>
 </blockquote>
 <h4 id="with">▼ <code>with()</code> 関数<a class="headerlink" href="#with" title="Permanent link">&para;</a></h4>
-<p>親テーブルにアクセスして全てのデータを取得し、親テーブルのEloquentモデルのプロパティに子テーブルのレコードを保持する。</p>
-<p>この仕組みをEagerロードという。</p>
-<p>Eloquentモデルには <code>with()</code> 関数がない。代わりに、 Eloquentビルダーが持つ <code>with()</code> 関数をコールする。</p>
+<p>親テーブルにアクセスしてすべてのデータを取得し、親テーブルの Eloquent モデルのプロパティに子テーブルのレコードを保持する。</p>
+<p>この仕組みを Eager ロードという。</p>
+<p>Eloquent モデルには <code>with()</code> 関数がない。代わりに、 Eloquent ビルダーが持つ <code>with()</code> 関数をコールする。</p>
 <p>テーブル間に一対多 (親子) のリレーションシップがある場合に使用する。</p>
-<p>N+1問題を防げる。</p>
+<p>N+1 問題を防げる。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading">https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading</a></li>
 </ul>
 </blockquote>
-<p>ただし、<code>with()</code> 関数に他の関数をチェーンしてしまうと、Eagerロードの後にSQLを発行されてしまうため、Eagerロードの恩恵を得られなくなることに注意する。</p>
+<p>ただし、<code>with()</code> 関数に他の関数をチェーンしてしまうと、Eager ロードの後に SQL を発行されてしまうため、Eager ロードの恩恵を得られなくなることに注意する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F">https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>コントローラーにて、Department (親) と、これに紐付くEmployee (子) を読み出す。</p>
+<p>コントローラーにて、Department (親) と、これに紐付く Employee (子) を読み出す。</p>
 <p>これらのモデルの間では、<code>hasMany()</code> 関数と <code>belongsTo()</code> 関数を使用して、テーブルにおける一対多のリレーションを定義しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35771,7 +35771,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Department (親) に、departmentsテーブルとemployeesテーブルの間に、一対多の関係を定義する。</p>
+<p>Department (親) に、departments テーブルと employees テーブルの間に、一対多の関係を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Models\Department</span><span class="p">;</span>
@@ -35836,9 +35836,9 @@
 <p><br></p>
 <h3 id="update">UPDATE<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
 <h4 id="save">▼ <code>save()</code> 関数<a class="headerlink" href="#save" title="Permanent link">&para;</a></h4>
-<p>UPDATE文を実行する。</p>
-<p>Eloquentビルダーの <code>fill()</code> 関数で挿入先のカラムと値を設定し、<code>save()</code> 関数を実行する。</p>
-<p><code>save()</code> 関数は <code>CREATE</code> 処理も実行できるが、<code>fill()</code> 関数でID値を割り当てた場合は、<code>UPDATE</code> 処理が実行される。</p>
+<p>UPDATE 文を実行する。</p>
+<p>Eloquent ビルダーの <code>fill()</code> 関数で挿入先のカラムと値を設定し、<code>save()</code> 関数を実行する。</p>
+<p><code>save()</code> 関数は <code>CREATE</code> 処理も実行できるが、<code>fill()</code> 関数で ID 値を割り当てた場合は、<code>UPDATE</code> 処理が実行される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35867,7 +35867,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Eloquentモデルには <code>fillable</code> プロパティを設定しておく。</p>
+<p>Eloquent モデルには <code>fillable</code> プロパティを設定しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
@@ -35892,15 +35892,15 @@
 <p><br></p>
 <h3 id="delete">DELETE<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h3>
 <h4 id="destroydelete">▼ <code>destroy</code>/<code>delete()</code> 関数 (物理削除)<a class="headerlink" href="#destroydelete" title="Permanent link">&para;</a></h4>
-<p>DELETE文を実行する。</p>
-<p>Eloquentモデルの <code>destroy</code>/<code>delete()</code> 関数を使用する。</p>
-<p>手順として、Eloquentビルダーの <code>find()</code> 関数で削除先のModelを検索する。</p>
-<p>返却されたEloquentビルダーの <code>destroy</code>/<code>delete()</code> 関数をコールし、自身を削除する。</p>
+<p>DELETE 文を実行する。</p>
+<p>Eloquent モデルの <code>destroy</code>/<code>delete()</code> 関数を使用する。</p>
+<p>手順として、Eloquent ビルダーの <code>find()</code> 関数で削除先の Model を検索する。</p>
+<p>返却された Eloquent ビルダーの <code>destroy</code>/<code>delete()</code> 関数をコールし、自身を削除する。</p>
 <h4 id="softdeletes">▼ SoftDeletesの有効化 (論理削除)<a class="headerlink" href="#softdeletes" title="Permanent link">&para;</a></h4>
-<p>削除フラグを更新するUPDATE文を実行する。</p>
-<p>Eloquentモデルの <code>destroy</code>/<code>delete()</code> 関数を使用する。</p>
-<p>手順として、テーブルに対応するModelにて、SoftDeletesのTraitを読み込む。</p>
-<p>DBマイグレーション時に追加される <code>delete_at</code> カラムを SQL で取得するときは、DataTime クラスへ変換できるようにしておく。</p>
+<p>削除フラグを更新する UPDATE 文を実行する。</p>
+<p>Eloquent モデルの <code>destroy</code>/<code>delete()</code> 関数を使用する。</p>
+<p>手順として、テーブルに対応する Model にて、SoftDeletes の Trait を読み込む。</p>
+<p>DB マイグレーション時に追加される <code>delete_at</code> カラムを SQL で取得するときは、DataTime クラスへ変換できるようにしておく。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35926,7 +35926,7 @@
     <span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>DBマイグレーションファイルにて <code>softDeletes()</code> 関数を使用すると、削除フラグとして <code>deleted_at</code> カラムが追加されるようになる。</p>
+<p>DB マイグレーションファイルにて <code>softDeletes()</code> 関数を使用すると、削除フラグとして <code>deleted_at</code> カラムが追加されるようになる。</p>
 <p><code>deleted_at</code> カラムのデフォルト値は <code>NULL</code> である。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35972,9 +35972,9 @@
 <p><br></p>
 <h2 id="04-laravel">04. Laravelへのリポジトリパターン導入<a class="headerlink" href="#04-laravel" title="Permanent link">&para;</a></h2>
 <h3 id="_15">背景<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>LaravelはActive Recordパターンを採用しており、これはビジネスロジックが複雑でないアプリに適している。</p>
-<p>ただし、ビジネスロジックが複雑なアプリに対しても、Laravelを使用したい場面がある。</p>
-<p>その場合、Laravelにリポジトリパターンを導入することが選択肢の1つになる。</p>
+<p>Laravel は Active Record パターンを採用しており、これはビジネスロジックが複雑でないアプリに適している。</p>
+<p>ただし、ビジネスロジックが複雑なアプリに対しても、Laravel を使用したい場面がある。</p>
+<p>その場合、Laravel にリポジトリパターンを導入することが選択肢の 1 つになる。</p>
 <p>リポジトリパターンについては、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
@@ -35984,10 +35984,10 @@
 <p><br></p>
 <h3 id="_16">工夫<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="dto">▼ DTOクラスの導入<a class="headerlink" href="#dto" title="Permanent link">&para;</a></h4>
-<p>ビジネスロジック用ドメインモデルと、Eloquentモデルを継承した詰め替えモデル (例：DTOクラス) を用意する。</p>
+<p>ビジネスロジック用ドメインモデルと、Eloquent モデルを継承した詰め替えモデル (例：DTO クラス) を用意する。</p>
 <p>詰め替えモデルをドメインモデルに変換する処理を関数として切り分けておくと便利である。</p>
-<p>ドメインモデルとDTOクラスの間でデータを詰め替えるようにすると、DTOクラスがドメインモデルとDBの間でレコードのやり取りを中継し、これらを疎結合にしてくれる。</p>
-<p>そのため、Repositoryパターンを実現できる。</p>
+<p>ドメインモデルと DTO クラスの間でデータを詰め替えるようにすると、DTO クラスがドメインモデルと DB の間でレコードのやり取りを中継し、これらを疎結合にしてくれる。</p>
+<p>そのため、Repository パターンを実現できる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
@@ -36351,7 +36351,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 20:03:06 JST">2026-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     

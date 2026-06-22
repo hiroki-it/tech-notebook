@@ -36807,7 +36807,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="air-verseair">air-verse/air<a class="headerlink" href="#air-verseair" title="Permanent link">&para;</a></h2>
-<p>Goのソースコードに変更があれば、ホットリロードし、コンパイルし直す。</p>
+<p>Go のソースコードに変更があれば、ホットリロードし、コンパイルし直す。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/air-verse/air">https://github.com/air-verse/air</a></li>
@@ -36838,7 +36838,7 @@
 <li><a href="https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions">https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions</a></li>
 </ul>
 </blockquote>
-<p>ポインタ型からstring型に変換する <code>ToString()</code> 関数や、反対にstring型からポインタ型に変換する <code>String()</code> 関数をよく使用する。</p>
+<p>ポインタ型から string 型に変換する <code>ToString()</code> 関数や、反対に string 型からポインタ型に変換する <code>String()</code> 関数をよく使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String">https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String</a></li>
@@ -36855,7 +36855,7 @@
 <p><br></p>
 <h2 id="spf13cobra">spf13/cobra<a class="headerlink" href="#spf13cobra" title="Permanent link">&para;</a></h2>
 <h3 id="cobra">cobraとは<a class="headerlink" href="#cobra" title="Permanent link">&para;</a></h3>
-<p>Goのコマンドラインツールを作成するツールである。</p>
+<p>Go のコマンドラインツールを作成するツールである。</p>
 <p><br></p>
 <h3 id="_2">作り方<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ ディレクトリ構成<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
@@ -36904,7 +36904,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="foogo">▼ foo.go<a class="headerlink" href="#foogo" title="Permanent link">&para;</a></h4>
-<p>fooコマンド自体を実装する。</p>
+<p>foo コマンド自体を実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// foo.goファイル</span>
 <span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
 
@@ -36936,7 +36936,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="foo_dogo">▼ foo_do.go<a class="headerlink" href="#foo_dogo" title="Permanent link">&para;</a></h4>
-<p>fooコマンドのサブコマンドを実装する。</p>
+<p>foo コマンドのサブコマンドを実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// foo_do.goファイル</span>
 <span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
 
@@ -37042,8 +37042,8 @@ $<span class="w"> </span>foo<span class="w"> </span><span class="k">do</span><sp
 <p><br></p>
 <h2 id="princjefgomarkdoc">princjef/gomarkdoc<a class="headerlink" href="#princjefgomarkdoc" title="Permanent link">&para;</a></h2>
 <h3 id="ci">CI上で実行する<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h3>
-<p>CI上で <code>gomarkdoc</code> コマンドを実行する。</p>
-<p>差分があれば、CIを失敗させる。</p>
+<p>CI 上で <code>gomarkdoc</code> コマンドを実行する。</p>
+<p>差分があれば、CI を失敗させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">GO_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.19.13&quot;</span>
 
@@ -37129,7 +37129,7 @@ $<span class="w"> </span>foo<span class="w"> </span><span class="k">do</span><sp
 <p><br></p>
 <h2 id="ondrajzgo-callvis">ondrajz/go-callvis<a class="headerlink" href="#ondrajzgo-callvis" title="Permanent link">&para;</a></h2>
 <h3 id="go-callvis">go-callvisとは<a class="headerlink" href="#go-callvis" title="Permanent link">&para;</a></h3>
-<p>Goのコールグラフを作成する。</p>
+<p>Go のコールグラフを作成する。</p>
 <p>ブラウザ上で確認できる。</p>
 <p><code>main()</code> 関数のあるファイルパスを指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># main関数のあるファイル</span>
@@ -37151,7 +37151,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </blockquote>
 <p><br></p>
 <h3 id="-nostd">-nostd<a class="headerlink" href="#-nostd" title="Permanent link">&para;</a></h3>
-<p>Goのビルトインパッケージは除いてグラフ化する。</p>
+<p>Go のビルトインパッケージは除いてグラフ化する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go-callvis<span class="w"> </span>-nostd
 </code></pre></div>
 <blockquote>
@@ -37177,10 +37177,10 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </code></pre></div>
 <p><br></p>
 <h2 id="grpc-ecosystemgo-grpc-middleware">grpc-ecosystem/go-grpc-middleware<a class="headerlink" href="#grpc-ecosystemgo-grpc-middleware" title="Permanent link">&para;</a></h2>
-<p>gRPCに関するミドルウェアパターン (例：認証、ロギング、メトリクス、分散トレーシングなど) を持つ。</p>
-<p>なお、gRPCはリモートプロシージャーコールであるため、ミドルウェアパターンにルーティングは含まれない。</p>
+<p>gRPC に関するミドルウェアパターン (例：認証、ロギング、メトリクス、分散トレーシングなど) を持つ。</p>
+<p>なお、gRPC はリモートプロシージャーコールであるため、ミドルウェアパターンにルーティングは含まれない。</p>
 <p><code>v1</code> 系と <code>v2</code> 系があり、関数の引数の設定方法が異なる。</p>
-<p>これを <code>Chain()</code> 関数に渡せば、gRPCでさまざまなインターセプターを簡単に実行できる。</p>
+<p>これを <code>Chain()</code> 関数に渡せば、gRPC でさまざまなインターセプターを簡単に実行できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors">https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors</a></li>
@@ -37189,7 +37189,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </blockquote>
 <p><br></p>
 <h2 id="go-gormopentelemetry">go-gorm/opentelemetry<a class="headerlink" href="#go-gormopentelemetry" title="Permanent link">&para;</a></h2>
-<p>SQLの発行時に、SQLを属性に持つスパンを自動的に作成する。</p>
+<p>SQL の発行時に、SQL を属性に持つスパンを自動的に作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/go-gorm/opentelemetry">https://github.com/go-gorm/opentelemetry</a></li>
@@ -37198,7 +37198,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="grpc-ecosystemgrpc-gateway">grpc-ecosystem/grpc-gateway<a class="headerlink" href="#grpc-ecosystemgrpc-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="grpc-gateway">grpc-gatewayとは<a class="headerlink" href="#grpc-gateway" title="Permanent link">&para;</a></h3>
-<p>HTTPで受信したリクエストをgRPCに変換して送信する。</p>
+<p>HTTP で受信したリクエストを gRPC に変換して送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/grpc-ecosystem/grpc-gateway">https://github.com/grpc-ecosystem/grpc-gateway</a></li>
@@ -37208,8 +37208,8 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h3 id="_7">設定<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="http">▼ 独自HTTPヘッダーを保持する<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>grpc-gatewayでは、デフォルトでは、HTTPヘッダーの独自ヘッダーをgRPCのメタデータに変換せず破棄してしまう。</p>
-<p>特定の条件の時に <code>true</code> を返却する <code>match()</code> 関数を定義し、これを <code>runtime.WithIncomingHeaderMatcher()</code> 関数に渡す。</p>
+<p>grpc-gateway では、デフォルトでは、HTTP ヘッダーの独自ヘッダーを gRPC のメタデータに変換せず破棄してしまう。</p>
+<p>特定の条件のときに <code>true</code> を返却する <code>match()</code> 関数を定義し、これを <code>runtime.WithIncomingHeaderMatcher()</code> 関数に渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37251,7 +37251,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="grpcgrpc-go">grpc/grpc-go<a class="headerlink" href="#grpcgrpc-go" title="Permanent link">&para;</a></h2>
 <h3 id="grpc-go">grpc-goとは<a class="headerlink" href="#grpc-go" title="Permanent link">&para;</a></h3>
-<p>GoでgRPCを扱えるようにする。</p>
+<p>Go で gRPC を扱えるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/grpc/grpc-go">https://github.com/grpc/grpc-go</a></li>
@@ -37260,7 +37260,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h3 id="_8">クライアント側<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="dial">▼ Dial<a class="headerlink" href="#dial" title="Permanent link">&para;</a></h4>
-<p><code>DialContext()</code> 関数のラッパーであり、新しいコンテキストでgRPCサーバーとの接続を作成する。</p>
+<p><code>DialContext()</code> 関数のラッパーであり、新しいコンテキストで gRPC サーバーとの接続を作成する。</p>
 <p>執筆時点 (2024/04/06) で <code>Dial()</code> 関数は非推奨であり、<code>NewClient()</code> 関数が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">Dial</span><span class="p">(</span><span class="nx">target</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="o">...</span><span class="nx">DialOption</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">ClientConn</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">DialContext</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">Background</span><span class="p">(),</span><span class="w"> </span><span class="nx">target</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="o">...</span><span class="p">)</span>
@@ -37272,7 +37272,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </ul>
 </blockquote>
 <h4 id="dialcontext">▼ DialContext<a class="headerlink" href="#dialcontext" title="Permanent link">&para;</a></h4>
-<p>既存コンテキストを使用して、gRPCサーバーとの接続を作成する。</p>
+<p>既存コンテキストを使用して、gRPC サーバーとの接続を作成する。</p>
 <p>執筆時点 (2024/04/06) で <code>DialContext()</code> 関数は非推奨であり、<code>NewClient()</code> 関数が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -37331,7 +37331,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="withtransportcredentials">▼ WithTransportCredentials<a class="headerlink" href="#withtransportcredentials" title="Permanent link">&para;</a></h4>
-<p>gRPCサーバーへの通信でサーバー認証を実施するかどうかを設定する。</p>
+<p>gRPC サーバーへの通信でサーバー認証を実施するかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37358,7 +37358,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h3 id="_9">サーバー側<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="newserver">▼ NewServer<a class="headerlink" href="#newserver" title="Permanent link">&para;</a></h4>
-<p>既存コンテキストを使用して、gRPCサーバーとの接続を作成する。</p>
+<p>既存コンテキストを使用して、gRPC サーバーとの接続を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37379,10 +37379,10 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <h2 id="otel">otel<a class="headerlink" href="#otel" title="Permanent link">&para;</a></h2>
 <h3 id="tracer">Tracer<a class="headerlink" href="#tracer" title="Permanent link">&para;</a></h3>
 <h4 id="tracer_1">▼ Tracerとは<a class="headerlink" href="#tracer_1" title="Permanent link">&para;</a></h4>
-<p>スパンを作成するためのTracerを作成する。</p>
+<p>スパンを作成するための Tracer を作成する。</p>
 <h4 id="start">▼ Start<a class="headerlink" href="#start" title="Permanent link">&para;</a></h4>
-<p>通常、OpenTelemetryのミドルウェアを実行すると、アプリケーションの最初の関数 (主に <code>main()</code> 関数) で自動的にスパンを作成する。</p>
-<p>Tracerの <code>Start()</code> 関数を使用すると、これの子スパンを手動で作成でき、最初の関数の内部でコールされた別の関数の処理時間を計測できるようになる。</p>
+<p>通常、OpenTelemetry のミドルウェアを実行すると、アプリケーションの最初の関数 (主に <code>main()</code> 関数) で自動的にスパンを作成する。</p>
+<p>Tracer の <code>Start()</code> 関数を使用すると、これの子スパンを手動で作成でき、最初の関数の内部でコールされた別の関数の処理時間を計測できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37417,9 +37417,9 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </code></pre></div>
 <h3 id="gettextmappropagator">GetTextMapPropagator<a class="headerlink" href="#gettextmappropagator" title="Permanent link">&para;</a></h3>
 <h4 id="gettextmappropagator_1">▼ GetTextMapPropagatorとは<a class="headerlink" href="#gettextmappropagator_1" title="Permanent link">&para;</a></h4>
-<p>設定したPropagatorを取得する。</p>
+<p>設定した Propagator を取得する。</p>
 <h4 id="extract">▼ Extract<a class="headerlink" href="#extract" title="Permanent link">&para;</a></h4>
-<p>リクエストの宛先で、Carrierからトレースコンテキストを抽出する。</p>
+<p>リクエストの宛先で、Carrier からトレースコンテキストを抽出する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37452,7 +37452,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </ul>
 </blockquote>
 <h4 id="inject">▼ Inject<a class="headerlink" href="#inject" title="Permanent link">&para;</a></h4>
-<p>クライアント側で、トレースコンテキストをCarrierに注入する。</p>
+<p>クライアント側で、トレースコンテキストを Carrier に注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37486,14 +37486,14 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="otelpropagation">otel/propagation<a class="headerlink" href="#otelpropagation" title="Permanent link">&para;</a></h2>
 <h3 id="otelpropagation_1">otel/propagationとは<a class="headerlink" href="#otelpropagation_1" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetryのPropagation</p>
+<p>OpenTelemetry の Propagation</p>
 <p><br></p>
 <h3 id="headercarrier">HeaderCarrier<a class="headerlink" href="#headercarrier" title="Permanent link">&para;</a></h3>
-<p>HTTPヘッダーをCarrierとして使用できるようにする。</p>
+<p>HTTP ヘッダーを Carrier として使用できるようにする。</p>
 <p><code>TextMapCarrier</code> インターフェースの実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">HeaderCarrier</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Header</span>
 </code></pre></div>
-<p><code>Header()</code> 関数を <code>HeaderCarrier</code> に変換することで、HTTPヘッダーをCarrierとして使用する。</p>
+<p><code>Header()</code> 関数を <code>HeaderCarrier</code> に変換することで、HTTP ヘッダーを Carrier として使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37523,7 +37523,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier">https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier</a></li>
 </ul>
 </blockquote>
-<p>Ginでも同様にして、HTTPヘッダーを <code>HeaderCarrier</code> に渡す。</p>
+<p>Gin でも同様にして、HTTP ヘッダーを <code>HeaderCarrier</code> に渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37550,7 +37550,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </code></pre></div>
 <p><br></p>
 <h3 id="newcompositetextmappropagator">NewCompositeTextMapPropagator<a class="headerlink" href="#newcompositetextmappropagator" title="Permanent link">&para;</a></h3>
-<p>渡された複数のPropagatorからなるComposite Propagatorを作成する。</p>
+<p>渡された複数の Propagator からなる Composite Propagator を作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/propagation#NewCompositeTextMapPropagator">https://pkg.go.dev/go.opentelemetry.io/otel/propagation#NewCompositeTextMapPropagator</a></li>
@@ -37558,8 +37558,8 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </blockquote>
 <p><br></p>
 <h3 id="textmappropagator">TextMapPropagator<a class="headerlink" href="#textmappropagator" title="Permanent link">&para;</a></h3>
-<p>複数のPropagatorを持つ。</p>
-<p><code>Fields()</code> 関数でPropagator名を取得できる。</p>
+<p>複数の Propagator を持つ。</p>
+<p><code>Fields()</code> 関数で Propagator 名を取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37598,7 +37598,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="otelsdk">otel/sdk<a class="headerlink" href="#otelsdk" title="Permanent link">&para;</a></h2>
 <h3 id="otelsdk_1">otel/sdkとは<a class="headerlink" href="#otelsdk_1" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetryのTracerProviderを作成する。</p>
+<p>OpenTelemetry の TracerProvider を作成する。</p>
 <p><br></p>
 <h2 id="oteltrace">otel/trace<a class="headerlink" href="#oteltrace" title="Permanent link">&para;</a></h2>
 <h3 id="oteltrace_1">otel/traceとは<a class="headerlink" href="#oteltrace_1" title="Permanent link">&para;</a></h3>
@@ -37850,7 +37850,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </blockquote>
 <p><br></p>
 <h3 id="spanfromcontext">SpanFromContext<a class="headerlink" href="#spanfromcontext" title="Permanent link">&para;</a></h3>
-<p>スパンIDから既存コンテキスト内のスパンを取得する。</p>
+<p>スパン ID から既存コンテキスト内のスパンを取得する。</p>
 <p>現在の関数でスパンを作成していない場合は、上の階層のスパンを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
@@ -37886,7 +37886,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </blockquote>
 <p><br></p>
 <h3 id="start_1">Start<a class="headerlink" href="#start_1" title="Permanent link">&para;</a></h3>
-<p>新しいスパンIDでスパンを作成する。</p>
+<p>新しいスパン ID でスパンを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">server</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37919,7 +37919,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="open-telemetryopentelemetry-go-contribotelgin">open-telemetry/opentelemetry-go-contrib/otelgin<a class="headerlink" href="#open-telemetryopentelemetry-go-contribotelgin" title="Permanent link">&para;</a></h2>
 <h3 id="otelgin">otelginとは<a class="headerlink" href="#otelgin" title="Permanent link">&para;</a></h3>
-<p>受信したリクエストのCarrier (HTTPヘッダー) からGinコンテキスト (<code>gin.Context</code>) を自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にGinコンテキスト (<code>gin.Context</code>) を自動的に注入 (Inject) する。</p>
+<p>受信したリクエストの Carrier (HTTP ヘッダー) から Gin コンテキスト (<code>gin.Context</code>) を自動的に抽出 (Extract) しつつ、送信するリクエストの Carrier (HTTP ヘッダー) に Gin コンテキスト (<code>gin.Context</code>) を自動的に注入 (Inject) する。</p>
 <p>また、事前のミドルウェアパターンとしてスパンを自動的に作成する (事後のミドルウェアパターンには <code>otelhttp</code> パッケージを使用する) 。</p>
 <p>各関数で事前にスパンを作成する必要がなくなる。</p>
 <p><code>otelgin</code> パッケージを使用しない場合、これらを自前で実装する必要がある。</p>
@@ -37954,8 +37954,8 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="uptraceopentelemetry-go-extraotelgorm">uptrace/opentelemetry-go-extra/otelgorm<a class="headerlink" href="#uptraceopentelemetry-go-extraotelgorm" title="Permanent link">&para;</a></h2>
 <h3 id="otelgorm">otelgormとは<a class="headerlink" href="#otelgorm" title="Permanent link">&para;</a></h3>
-<p>クエリ実行前のミドルウェアパターンとしてスパンを自動的に作成し、事後にはこのスパンにSQLステートメント (<code>gorm.Create</code>、<code>gorm.Query</code>、<code>gorm.Delete</code>、<code>gorm.Update</code>、<code>gorm.Row</code>、<code>gorm.Raw</code>) を自動的に設定する。</p>
-<p>各永続化関数でスパンを作成したり、SQLステートメントを設定する必要がなくなる。</p>
+<p>クエリ実行前のミドルウェアパターンとしてスパンを自動的に作成し、事後にはこのスパンに SQL ステートメント (<code>gorm.Create</code>、<code>gorm.Query</code>、<code>gorm.Delete</code>、<code>gorm.Update</code>、<code>gorm.Row</code>、<code>gorm.Raw</code>) を自動的に設定する。</p>
+<p>各永続化関数でスパンを作成したり、SQL ステートメントを設定する必要がなくなる。</p>
 <p><code>otelgorm</code> パッケージを使用しない場合、これらを自前で実装する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">otelPlugin</span><span class="p">)</span><span class="w"> </span><span class="nx">before</span><span class="p">(</span><span class="nx">spanName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="nx">gormHookFunc</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">tx</span><span class="w"> </span><span class="o">*</span><span class="nx">gorm</span><span class="p">.</span><span class="nx">DB</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -38070,7 +38070,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="open-telemetryopentelemetry-go-contribotelgrpc">open-telemetry/opentelemetry-go-contrib/otelgrpc<a class="headerlink" href="#open-telemetryopentelemetry-go-contribotelgrpc" title="Permanent link">&para;</a></h2>
 <h3 id="otelgrpc">otelgrpcとは<a class="headerlink" href="#otelgrpc" title="Permanent link">&para;</a></h3>
-<p>受信したリクエストのCarrier (メタデータ) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (メタデータ) にコンテキストを自動的に注入 (Inject) する。</p>
+<p>受信したリクエストの Carrier (メタデータ) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストの Carrier (メタデータ) にコンテキストを自動的に注入 (Inject) する。</p>
 <p>また、事前/事後のミドルウェアパターンとしてスパンを自動的に作成する。</p>
 <p>各関数で事前/事後にスパンを作成する必要がなくなる。</p>
 <p><code>otelgrpc</code> パッケージを使用しない場合、これらを自前で実装する必要がある。</p>
@@ -38084,7 +38084,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </blockquote>
 <p><br></p>
 <h3 id="metadatasupplier">metadataSupplier<a class="headerlink" href="#metadatasupplier" title="Permanent link">&para;</a></h3>
-<p>gRPCのメタデータをCarrierとして使用できるようにする。</p>
+<p>gRPC のメタデータを Carrier として使用できるようにする。</p>
 <p><code>TextMapCarrier</code> インターフェースの実装である。</p>
 <p>プライベートな構造体であり、クライアント側とサーバー側のインターセプター内で使用するようになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">metadataSupplier</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -38099,10 +38099,10 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h3 id="_10">クライアント側<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="clientinterceptor">▼ ClientInterceptor系関数<a class="headerlink" href="#clientinterceptor" title="Permanent link">&para;</a></h4>
-<p>gRPCリクエスト送信時のインターセプター処理として <code>otelgrpc</code> パッケージを設定する。</p>
+<p>gRPC リクエスト送信時のインターセプター処理として <code>otelgrpc</code> パッケージを設定する。</p>
 <p>抽出時のメタデータは、<code>mdOutgoingKey</code> キーと <code>rawMD{md: &lt;メタデータ&gt;}</code> で登録される。</p>
 <p>そのため、ユーザー定義のメタデータは <code>mdOutgoingKey</code> キーで登録できる OutgoingContext 系関数を使って設定する必要がある。</p>
-<p>執筆時点 (2024/03/31) でClientInterceptor系関数は非推奨であり、<code>NewClientHandler()</code> 関数が推奨である。</p>
+<p>執筆時点 (2024/03/31) で ClientInterceptor 系関数は非推奨であり、<code>NewClientHandler()</code> 関数が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -38160,7 +38160,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </ul>
 </blockquote>
 <h4 id="newclienthandler">▼ NewClientHandler<a class="headerlink" href="#newclienthandler" title="Permanent link">&para;</a></h4>
-<p>執筆時点 (2024/03/31) でClientInterceptor系関数は非推奨になっており、これの移行先である。</p>
+<p>執筆時点 (2024/03/31) で ClientInterceptor 系関数は非推奨になっており、これの移行先である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -38187,10 +38187,10 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h3 id="_11">サーバー側<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="serverinterceptor">▼ ServerInterceptor系関数<a class="headerlink" href="#serverinterceptor" title="Permanent link">&para;</a></h4>
-<p>gRPCリクエスト受信時のインターセプター処理として <code>otelgrpc</code> パッケージを設定する。</p>
+<p>gRPC リクエスト受信時のインターセプター処理として <code>otelgrpc</code> パッケージを設定する。</p>
 <p>抽出時のメタデータは <code>mdIncomingKey</code> キーと <code>rawMD{md: &lt;メタデータ&gt;}</code> で登録される。</p>
 <p>そのため、ユーザー定義のメタデータは <code>mdIncomingKey</code> キーで登録できる IncomingContext 系関数を使って設定する必要がある。</p>
-<p>執筆時点 (2024/03/31) でServerInterceptor系関数は非推奨であり、<code>NewServerHandler()</code> 関数が推奨である。</p>
+<p>執筆時点 (2024/03/31) で ServerInterceptor 系関数は非推奨であり、<code>NewServerHandler()</code> 関数が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">extract</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">propagators</span><span class="w"> </span><span class="nx">propagation</span><span class="p">.</span><span class="nx">TextMapPropagator</span><span class="p">)</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// コンテキストにメタデータがあれば取得する</span>
@@ -38217,7 +38217,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </ul>
 </blockquote>
 <h4 id="newserverhandler">▼ NewServerHandler<a class="headerlink" href="#newserverhandler" title="Permanent link">&para;</a></h4>
-<p>執筆時点 (2024/03/31) でServerInterceptor系関数は非推奨になっており、これの移行先である。</p>
+<p>執筆時点 (2024/03/31) で ServerInterceptor 系関数は非推奨になっており、これの移行先である。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -38334,12 +38334,12 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="withspannameformatter">▼ WithSpanNameFormatter (オプションなし)<a class="headerlink" href="#withspannameformatter" title="Permanent link">&para;</a></h4>
-<p>gRPCにこのオプションはない。</p>
-<p>gRPCの場合、リモートプロシージャーコールなため、スパン名は関数名とするとよい。</p>
+<p>gRPC にこのオプションはない。</p>
+<p>gRPC の場合、リモートプロシージャーコールなため、スパン名は関数名とするとよい。</p>
 <p><br></p>
 <h2 id="open-telemetryopentelemetry-go-contribotelhttp">open-telemetry/opentelemetry-go-contrib/otelhttp<a class="headerlink" href="#open-telemetryopentelemetry-go-contribotelhttp" title="Permanent link">&para;</a></h2>
 <h3 id="otelhttp">otelhttpとは<a class="headerlink" href="#otelhttp" title="Permanent link">&para;</a></h3>
-<p>受信したリクエストのCarrier (HTTPヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストのCarrier (HTTPヘッダー) にコンテキストを自動的に注入 (Inject) する。</p>
+<p>受信したリクエストの Carrier (HTTP ヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストの Carrier (HTTP ヘッダー) にコンテキストを自動的に注入 (Inject) する。</p>
 <p>また、事前/事後のミドルウェアパターンとしてスパンを自動的に作成する。</p>
 <p>各関数で事前/事後にスパンを作成する必要がなくなる。</p>
 <p><code>otelhttp</code> パッケージを使用しない場合、これらを自前で実装する必要がある。</p>
@@ -38472,7 +38472,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </blockquote>
 <h4 id="withspannameformatter_1">▼ WithSpanNameFormatter<a class="headerlink" href="#withspannameformatter_1" title="Permanent link">&para;</a></h4>
 <p>スパン名を生成する関数を設定する。</p>
-<p>HTTPリクエストの場合、スパン名はURLにするとよい。</p>
+<p>HTTP リクエストの場合、スパン名は URL にするとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">http</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -38502,9 +38502,9 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="otlptracegrpc">otlptracegrpc<a class="headerlink" href="#otlptracegrpc" title="Permanent link">&para;</a></h2>
 <h3 id="otlptracegrpc_1">otlptracegrpcとは<a class="headerlink" href="#otlptracegrpc_1" title="Permanent link">&para;</a></h3>
-<p>OTLP形式でテレメトリーを送信するExporterを作成する。</p>
-<p>これは、gRPCによるHTTPSプロトコルで監視バックエンド (デフォルトでは <code>https://127.0.0.1:4317</code>) に送信する。</p>
-<p>OpenTelemetry Collectorを使用している場合、ReceiverのgRPC用のエンドポイントに合わせる。</p>
+<p>OTLP 形式でテレメトリーを送信する Exporter を作成する。</p>
+<p>これは、gRPC による HTTPS プロトコルで監視バックエンド (デフォルトでは <code>https://127.0.0.1:4317</code>) に送信する。</p>
+<p>OpenTelemetry Collector を使用している場合、Receiver の gRPC 用のエンドポイントに合わせる。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc">https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</a></li>
@@ -38513,9 +38513,9 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="otlptracehttp">otlptracehttp<a class="headerlink" href="#otlptracehttp" title="Permanent link">&para;</a></h2>
 <h3 id="otlptracehttp_1">otlptracehttpとは<a class="headerlink" href="#otlptracehttp_1" title="Permanent link">&para;</a></h3>
-<p>OTLP形式でテレメトリーを送信するExporterを作成する。</p>
-<p>これは、HTTPプロトコルで監視バックエンド (デフォルトでは <code>https://127.0.0.1:4318/v1/traces</code>) に送信する。</p>
-<p>OpenTelemetry Collectorを使用している場合、ReceiverのHTTP用のエンドポイントに合わせる。</p>
+<p>OTLP 形式でテレメトリーを送信する Exporter を作成する。</p>
+<p>これは、HTTP プロトコルで監視バックエンド (デフォルトでは <code>https://127.0.0.1:4318/v1/traces</code>) に送信する。</p>
+<p>OpenTelemetry Collector を使用している場合、Receiver の HTTP 用のエンドポイントに合わせる。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp">https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp</a></li>
@@ -38524,8 +38524,8 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="googlesqlcommenter">google/sqlcommenter<a class="headerlink" href="#googlesqlcommenter" title="Permanent link">&para;</a></h2>
 <h3 id="sqlcommenter">sqlcommenterとは<a class="headerlink" href="#sqlcommenter" title="Permanent link">&para;</a></h3>
-<p>gormで発行したSQLにスパンの情報をコメントアウトとして付与する。</p>
-<p>コメントアウトであるため、SQLの動作には影響がない。</p>
+<p>gorm で発行した SQL にスパンの情報をコメントアウトとして付与する。</p>
+<p>コメントアウトであるため、SQL の動作には影響がない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="s">&quot;database/sql&quot;</span>
 
@@ -38584,9 +38584,9 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h2 id="propagator">propagator<a class="headerlink" href="#propagator" title="Permanent link">&para;</a></h2>
 <h3 id="textmapcarrier">TextMapCarrier<a class="headerlink" href="#textmapcarrier" title="Permanent link">&para;</a></h3>
-<p>Carrierのインターフェースである。</p>
-<p>さまざまな計装ツールのCarrierがこのインターフェースの実装になっている。</p>
-<p><code>otel/propagation</code> パッケージには、HTTPヘッダーをCarrierとして使用するための <code>TextMapCarrier</code> インターフェースの実装がある。</p>
+<p>Carrier のインターフェースである。</p>
+<p>さまざまな計装ツールの Carrier がこのインターフェースの実装になっている。</p>
+<p><code>otel/propagation</code> パッケージには、HTTP ヘッダーを Carrier として使用するための <code>TextMapCarrier</code> インターフェースの実装がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/behiron/items/cc02e77ed41103f4a195">https://qiita.com/behiron/items/cc02e77ed41103f4a195</a></li>
@@ -38596,7 +38596,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h3 id="textmappropagator_1">TextMapPropagator<a class="headerlink" href="#textmappropagator_1" title="Permanent link">&para;</a></h3>
 <h4 id="textmappropagator_2">▼ TextMapPropagatorとは<a class="headerlink" href="#textmappropagator_2" title="Permanent link">&para;</a></h4>
-<p>Propagatorを複数持つ。</p>
+<p>Propagator を複数持つ。</p>
 <p><br></p>
 <h2 id="propagatorautoprop">propagator/autoprop<a class="headerlink" href="#propagatorautoprop" title="Permanent link">&para;</a></h2>
 <h3 id="propagatorautoprop_1">propagator/autopropとは<a class="headerlink" href="#propagatorautoprop_1" title="Permanent link">&para;</a></h3>
@@ -38607,9 +38607,9 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 </blockquote>
 <p><br></p>
 <h3 id="newtextmappropagator">NewTextMapPropagator<a class="headerlink" href="#newtextmappropagator" title="Permanent link">&para;</a></h3>
-<p><code>ote/propagation</code> パッケージの <code>NewCompositeTextMapPropagator</code> のラッパーであり、Composite Propagatorを作成する。</p>
-<p>デフォルトでは、W3C Trace ContextとBaggageのComposite Propagatorになる。</p>
-<p>また、<code>OTEL_PROPAGATORS</code> 変数 (<code>tracecontext</code>、<code>baggage</code>、<code>b3</code>、<code>b3multi</code>、<code>jaeger</code>、<code>xray</code>、<code>ottrace</code>、<code>none</code>) でPropagator名をリスト形式 (<code>tracecontext,baggage,xray</code>) で指定していれば、上書きできる。</p>
+<p><code>ote/propagation</code> パッケージの <code>NewCompositeTextMapPropagator</code> のラッパーであり、Composite Propagator を作成する。</p>
+<p>デフォルトでは、W3C Trace Context と Baggage の Composite Propagator になる。</p>
+<p>また、<code>OTEL_PROPAGATORS</code> 変数 (<code>tracecontext</code>、<code>baggage</code>、<code>b3</code>、<code>b3multi</code>、<code>jaeger</code>、<code>xray</code>、<code>ottrace</code>、<code>none</code>) で Propagator 名をリスト形式 (<code>tracecontext,baggage,xray</code>) で指定していれば、上書きできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -38804,7 +38804,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <h2 id="uber-gozap">uber-go/zap<a class="headerlink" href="#uber-gozap" title="Permanent link">&para;</a></h2>
 <h3 id="logger">Logger<a class="headerlink" href="#logger" title="Permanent link">&para;</a></h3>
 <h4 id="sync">▼ Sync<a class="headerlink" href="#sync" title="Permanent link">&para;</a></h4>
-<p>プロセスの終了時に、バッファーに保管されているログを全てフラッシュする。</p>
+<p>プロセスの終了時に、バッファーに保管されているログをすべてフラッシュする。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -38884,7 +38884,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
 <p><br></p>
 <h3 id="sugaredlogger">SugaredLogger<a class="headerlink" href="#sugaredlogger" title="Permanent link">&para;</a></h3>
 <h4 id="sugaredlogger_1">▼ SugaredLoggerとは<a class="headerlink" href="#sugaredlogger_1" title="Permanent link">&para;</a></h4>
-<p>ZapのLoggerのラッパーである。</p>
+<p>Zap の Logger のラッパーである。</p>
 <h4 id="w">▼ <code>w</code> 系<a class="headerlink" href="#w" title="Permanent link">&para;</a></h4>
 <p>構造化ログを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -38995,7 +38995,7 @@ no<span class="w"> </span>main<span class="w"> </span>packages
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月2日 15:57:52 JST">2026-06-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     

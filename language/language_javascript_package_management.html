@@ -34946,7 +34946,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="bug">▼ bug<a class="headerlink" href="#bug" title="Permanent link">&para;</a></h4>
-<p>不具合の報告先のURLを設定する。</p>
+<p>不具合の報告先の URL を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;bugs&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;url&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://github.com/hiroki-hasegawa/foo/issues&quot;</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <blockquote>
@@ -34956,7 +34956,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <h4 id="dependencies">▼ dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h4>
 <p>本番環境と開発環境で依存するパッケージ名を設定する。</p>
-<p>NPMに登録されていないパッケージは、『<code>git+&lt;GitHubリポジトリURL&gt;</code>』を指定する。</p>
+<p>NPM に登録されていないパッケージは、『<code>git+&lt;GitHubリポジトリURL&gt;</code>』を指定する。</p>
 <p><code>npm install</code> コマンドの実行時に <code>--production</code> オプションを有効化すると、<code>dependencies</code> キーが使用される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;dependencies&quot;</span><span class="p p-Indicator">:</span>
@@ -35018,7 +35018,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;engines&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;node&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;npm&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;1.0.0&quot;</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <h4 id="homepage">▼ homepage<a class="headerlink" href="#homepage" title="Permanent link">&para;</a></h4>
-<p>パッケージを説明するWebサイトのリンクを設定する。</p>
+<p>パッケージを説明する Web サイトのリンクを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage">https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage</a></li>
@@ -35036,8 +35036,8 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;main&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;index.js&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
-<p>npmパッケージ名を設定する。</p>
-<p>全てのnpmパッケージの中で、一意の名前である必要がある。</p>
+<p>npm パッケージ名を設定する。</p>
+<p>すべての npm パッケージのなかで、一意の名前である必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
@@ -35076,7 +35076,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <p><br></p>
 <h3 id="packagelock"><code>package.lock</code> ファイル<a class="headerlink" href="#packagelock" title="Permanent link">&para;</a></h3>
-<p>Composerの <code>composer.lock</code> ファイルに相当する。</p>
+<p>Composer の <code>composer.lock</code> ファイルに相当する。</p>
 <p><br></p>
 <h2 id="01-02-npm">01-02. npmコマンド<a class="headerlink" href="#01-02-npm" title="Permanent link">&para;</a></h2>
 <h3 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
@@ -35125,7 +35125,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="update">update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
 <h4 id="update_1">▼ updateとは<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
-<p>全てのパッケージのバージョンを、<code>package.json</code> ファイルの範囲内でアップグレードする。</p>
+<p>すべてのパッケージのバージョンを、<code>package.json</code> ファイルの範囲内でアップグレードする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>update
 </code></pre></div>
 <p><br></p>
@@ -35135,8 +35135,8 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>&lt;エイリアス&gt;
 </code></pre></div>
 <p>あらかじめ、任意のエイリアスを <code>scripts</code> キー下に定義する。</p>
-<p>エイリアスの中で、実行するコマンドのセットを定義する。</p>
-<p>補足として、実行するコマンドの中で、再び <code>npm run</code> コマンドも定義できる。</p>
+<p>エイリアスのなかで、実行するコマンドのセットを定義する。</p>
+<p>補足として、実行するコマンドのなかで、再び <code>npm run</code> コマンドも定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># コマンド</span>
 <span class="w">  </span><span class="s">&quot;scripts&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
@@ -35177,10 +35177,10 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <p><br></p>
 <h3 id="packagejson_2"><code>package.json</code> ファイル<a class="headerlink" href="#packagejson_2" title="Permanent link">&para;</a></h3>
-<p>Npmと同じ。</p>
+<p>Npm と同じ。</p>
 <p><br></p>
 <h3 id="yarnlock"><code>yarn.lock</code> ファイル<a class="headerlink" href="#yarnlock" title="Permanent link">&para;</a></h3>
-<p>Composerの <code>composer.lock</code> ファイルに相当する。</p>
+<p>Composer の <code>composer.lock</code> ファイルに相当する。</p>
 <p><br></p>
 <h2 id="02-02-yarn">02-02. yarnコマンド<a class="headerlink" href="#02-02-yarn" title="Permanent link">&para;</a></h2>
 <h3 id="add">add<a class="headerlink" href="#add" title="Permanent link">&para;</a></h3>
@@ -35218,7 +35218,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
 <p>本番環境用アプリケーションをビルドする。</p>
-<p><code>package.json</code> ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら <code>next build</code> コマンド) を実行している。</p>
+<p><code>package.json</code> ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.js なら <code>next build</code> コマンド) を実行している。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>build
 </code></pre></div>
 <p><br></p>
@@ -35254,7 +35254,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="dev">dev<a class="headerlink" href="#dev" title="Permanent link">&para;</a></h3>
 <p>開発環境用アプリケーションを起動する。</p>
-<p><code>package.json</code> ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら <code>next dev</code> コマンド) を実行している。</p>
+<p><code>package.json</code> ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.js なら <code>next dev</code> コマンド) を実行している。</p>
 <p><br></p>
 <h3 id="lint">lint<a class="headerlink" href="#lint" title="Permanent link">&para;</a></h3>
 <p>静的解析する。</p>
@@ -35279,14 +35279,14 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="start">start<a class="headerlink" href="#start" title="Permanent link">&para;</a></h3>
 <p>ビルド済みの本番環境用アプリケーションを起動する。</p>
-<p><code>package.json</code> ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.jsなら <code>next start</code> コマンド) を実行している。</p>
+<p><code>package.json</code> ファイルに定義があり、実際にはフレームワークの起動コマンド (例：Next.js なら <code>next start</code> コマンド) を実行している。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>build
 </code></pre></div>
 <p><br></p>
 <h3 id="upgrade">upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h3>
 <h4 id="upgrade_1">▼ upgradeとは<a class="headerlink" href="#upgrade_1" title="Permanent link">&para;</a></h4>
 <p>指定したパッケージを <code>package.json</code> ファイルの範囲内でアップグレードする。</p>
-<p>パッケージ数が少ないプロジェクトではキャレット表記で積極的にアップグレードし、規模が大きくなるほどチルダ表記で慎重にアップグレードすると良い。</p>
+<p>パッケージ数が少ないプロジェクトではキャレット表記で積極的にアップグレードし、規模が大きくなるほどチルダ表記で慎重にアップグレードするとよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>upgrade<span class="w"> </span>&lt;パッケージ名&gt;@&lt;バージョンタグ&gt;
 
 <span class="c1"># キャレット表記</span>
@@ -35301,7 +35301,7 @@ $<span class="w"> </span>yarn<span class="w"> </span>upgrade<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="latest">▼ latest<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h4>
-<p>全てのパッケージを、<code>package.json</code> ファイルを無視して最新までアップグレードする。</p>
+<p>すべてのパッケージを、<code>package.json</code> ファイルを無視して最新までアップグレードする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>yarn<span class="w"> </span>upgrade<span class="w"> </span>--latest
 </code></pre></div>
 <blockquote>
@@ -35313,8 +35313,8 @@ $<span class="w"> </span>yarn<span class="w"> </span>upgrade<span class="w"> </s
 <h2 id="03">03. モジュールバンドル<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_4">モジュールバンドルとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 読み込むパッケージをまとめる<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p><code>js</code> ファイルを読み込むscriptタグを1つにまとめる。</p>
-<p><code>html</code> ファイルがブラウザにレンダリングされると、JavaScriptのファイルに対するリクエスト数が減るため、Webページの読み出しが早くなる。</p>
+<p><code>js</code> ファイルを読み込む script タグを 1 つにまとめる。</p>
+<p><code>html</code> ファイルがブラウザにレンダリングされると、JavaScript のファイルに対するリクエスト数が減るため、Web ページの読み出しが早くなる。</p>
 <p><strong>＊例＊</strong></p>
 <p>以下のような <code>html</code> ファイルがあるとする。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
@@ -35329,7 +35329,7 @@ $<span class="w"> </span>yarn<span class="w"> </span>upgrade<span class="w"> </s
   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>モジュールバンドルは、scriptタグでのパッケージの読み出しをまとめる。</p>
+<p>モジュールバンドルは、script タグでのパッケージの読み出しをまとめる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
@@ -35368,7 +35368,7 @@ $<span class="w"> </span>yarn<span class="w"> </span>upgrade<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:51:16 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     

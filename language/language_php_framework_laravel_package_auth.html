@@ -12551,7 +12551,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 全てのユーザーが同一権限を持つ場合
+        ▼ すべてのユーザーが同一権限を持つ場合
       
     </span>
   </a>
@@ -34127,7 +34127,7 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 全てのユーザーが同一権限を持つ場合
+        ▼ すべてのユーザーが同一権限を持つ場合
       
     </span>
   </a>
@@ -34902,13 +34902,13 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ カスタムガード<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>Laravelがデフォルトで持たないドライバーとプロバイダーを持つガードを定義する。</p>
+<p>Laravel がデフォルトで持たないドライバーとプロバイダーを持つガードを定義する。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards">https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards</a></li>
 </ul>
 </blockquote>
-<p>APIガードの認証で使用するトークンをJWTに変更したいときには、以下のパッケージがおすすめ。</p>
+<p>API ガードの認証で使用するトークンを JWT に変更したいときには、以下のパッケージがおすすめ。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/tymondesigns/jwt-auth">https://github.com/tymondesigns/jwt-auth</a></li>
@@ -34941,8 +34941,8 @@
 </tr>
 </tbody>
 </table>
-<p>ドライバーの種類に応じて、AuthManagerクラスがGuardインターフェースの実装クラスを返却する。</p>
-<p><code>auth.php</code> ファイルにて、例えばtokenドライバーを選択した場合は、TokenGuardクラスが返却される。</p>
+<p>ドライバーの種類に応じて、AuthManager クラスが Guard インターフェースの実装クラスを返却する。</p>
+<p><code>auth.php</code> ファイルにて、例えば token ドライバーを選択した場合は、TokenGuard クラスが返却される。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -34973,7 +34973,7 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ ルーティングの保護<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>BeforeMiddlewareで認証済みのユーザーか否かを検証し、もし未認証の場合は、ログインページにリダイレクトさせる。</p>
+<p>BeforeMiddleware で認証済みのユーザーか否かを検証し、もし未認証の場合は、ログインページにリダイレクトさせる。</p>
 <p>これにより、未認証のユーザーがコントローラーを実行することを防ぐ。</p>
 <blockquote>
 <ul>
@@ -34983,7 +34983,7 @@
 <p><br></p>
 <h3 id="_8">プロバイダ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ プロバイダとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>アカウントデータをDBから読み込むオブジェクトを定義する。</p>
+<p>アカウントデータを DB から読み込むオブジェクトを定義する。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/authentication.html#introduction">https://readouble.com/laravel/8.x/ja/authentication.html#introduction</a></li>
@@ -34992,9 +34992,9 @@
 <p><br></p>
 <h3 id="_10">フォーム認証<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="session">▼ sessionドライバー<a class="headerlink" href="#session" title="Permanent link">&para;</a></h4>
-<p>sessionドライバーを選択する。</p>
-<h4 id="_11">▼ 全てのユーザーが同一権限を持つ場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>SessionGuardクラスの <code>attempt()</code> 関数をコールしてパスワードをハッシュ化し、DBのハッシュ値と照合する。</p>
+<p>session ドライバーを選択する。</p>
+<h4 id="_11">▼ すべてのユーザーが同一権限を持つ場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>SessionGuard クラスの <code>attempt()</code> 関数をコールしてパスワードをハッシュ化し、DB のハッシュ値と照合する。</p>
 <p>認証が成功すると、認証セッションを開始する。</p>
 <p><code>redirect()</code> 関数で、認証後の初期ページにリダイレクトする。</p>
 <blockquote>
@@ -35033,7 +35033,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>認証後のページはRouteServiceProviderクラスで定義しておく。</p>
+<p>認証後のページは RouteServiceProvider クラスで定義しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Providers</span><span class="p">;</span>
@@ -35047,14 +35047,14 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_12">▼ 一部のユーザーが異なる権限を持つ場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>ユーザーごとに認証方法を区別しつつ、同じ認証後のWebページにリダイレクトさせられる。</p>
+<p>ユーザーごとに認証方法を区別しつつ、同じ認証後の Web ページにリダイレクトさせられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.capilano-fw.com/?p=8159">https://blog.capilano-fw.com/?p=8159</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>権限の異なるユーザーに応じたガード、またガードに紐付けるEloquentモデルをプロバイダを定義しておく。</p>
+<p>権限の異なるユーザーに応じたガード、またガードに紐付ける Eloquent モデルをプロバイダを定義しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -35098,7 +35098,7 @@
     <span class="p">],</span>
 <span class="p">];</span>
 </code></pre></div>
-<p>Authファサードの <code>guard()</code> 関数を使用して、ガードに応じた認証する。</p>
+<p>Auth ファサードの <code>guard()</code> 関数を使用して、ガードに応じた認証する。</p>
 <p>これにより、同じ認証後ページへリダイレクトした後、ユーザーの Eloquent モデルに応じた処理を実行できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35136,7 +35136,7 @@
 <p><br></p>
 <h3 id="_13">認証済みか否かの判定<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="user">▼ <code>user()</code> 関数<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
-<p>現在のセッションにおけるユーザーが認証済みであれば、ユーザーのEloquentモデルを取得する。</p>
+<p>現在のセッションにおけるユーザーが認証済みであれば、ユーザーの Eloquent モデルを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// Illuminate\Contracts\Auth\Guard</span>
@@ -35147,7 +35147,7 @@
 <p>現在のセッションにおけるユーザーが認証済みであれば、<code>true</code> を返却する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている (例：ログアウトしない) 限り、認証処理をあらためて実行する必要はない。</p>
-<p>そのために、BeforeMiddlewareを使用して、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。</p>
+<p>そのために、BeforeMiddleware を使用して、認証済みのユーザーからのリクエストを認証済みページにリダイレクトさせる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Middleware\Auth</span><span class="p">;</span>
@@ -35184,15 +35184,15 @@
 <h2 id="02">02. 認可<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_14">ゲート<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ ゲートとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>Eloquentモデルレベルの認可スコープを定義する。</p>
-<p>指定したEloquentモデルに紐付く全てのDBレコードにアクセスできなくなる。</p>
+<p>Eloquent モデルレベルの認可スコープを定義する。</p>
+<p>指定した Eloquent モデルに紐付くすべての DB レコードにアクセスできなくなる。</p>
 <p><br></p>
 <h3 id="_16">ポリシー<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ ポリシーとは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>DBレコードレベルの認可スコープを定義する。</p>
-<p>Eloquentモデルに紐付く特定のレコードにアクセスできなくなる。</p>
-<p>Policyクラスの関数によって、リクエスト中の認証済みユーザーが自動的にインジェクションされる。</p>
-<p>EloquentモデルとPolicyクラスの紐付けはAuthServiceProviderクラスで定義する</p>
+<p>DB レコードレベルの認可スコープを定義する。</p>
+<p>Eloquent モデルに紐付く特定のレコードにアクセスできなくなる。</p>
+<p>Policy クラスの関数によって、リクエスト中の認証済みユーザーが自動的にインジェクションされる。</p>
+<p>Eloquent モデルと Policy クラスの紐付けは AuthServiceProvider クラスで定義する</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97">https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97</a></li>
@@ -35282,9 +35282,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="authorizemiddleware">▼ AuthorizeMiddlewareによる認可<a class="headerlink" href="#authorizemiddleware" title="Permanent link">&para;</a></h4>
-<p>ルーティング時にDBレコードレベルの認可スコープを定義する。</p>
-<p>AuthorizeMiddlewareのエイリアスのデフォルト値は <code>can</code> であり、Kernelクラスに定義されている。</p>
-<p>第一引数にPolicyクラスの関数名、第二引数に関連するEloquentモデルのクラスの名前空間またはそのインスタンスを渡す。</p>
+<p>ルーティング時に DB レコードレベルの認可スコープを定義する。</p>
+<p>AuthorizeMiddleware のエイリアスのデフォルト値は <code>can</code> であり、Kernel クラスに定義されている。</p>
+<p>第一引数に Policy クラスの関数名、第二引数に関連する Eloquent モデルのクラスの名前空間またはそのインスタンスを渡す。</p>
 <p>名前空間を渡す場合は、これをハードコーディングせず、関数で名前空間を取得して文字列と結合する。</p>
 <p>インスタンスを渡す場合は、暗黙のモデル結合を使用する必要がある。</p>
 <p>認可に失敗した場合、<code>403</code> ステータスを含むレスポンスを返信する。</p>
@@ -35312,12 +35312,12 @@
 </ul>
 </blockquote>
 <h4 id="authorization">▼ <code>authorization()</code> 関数による認可<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h4>
-<p>コントローラー実行時にDBレコードレベルの認可スコープを定義する。</p>
-<p>基底コントローラーを継承したコントローラーでは <code>authorization()</code> 関数をコールでき、現在認証されているユーザーのDBアクセスが認可スコープの範囲内か否かを検証する。</p>
+<p>コントローラー実行時に DB レコードレベルの認可スコープを定義する。</p>
+<p>基底コントローラーを継承したコントローラーでは <code>authorization()</code> 関数をコールでき、現在認証されているユーザーの DB アクセスが認可スコープの範囲内か否かを検証する。</p>
 <p>第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。</p>
 <p>認可に失敗した場合は AuthorizationException を投げる。その後は自前で <code>403</code> レスポンスする。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ユーザーが該当IDのFooモデルを更新する権限があるか否かを検証する。</p>
+<p>ユーザーが該当 ID の Foo モデルを更新する権限があるか否かを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
@@ -35363,13 +35363,13 @@
 </ul>
 </blockquote>
 <h4 id="can">▼ <code>can()</code> 関数による認可<a class="headerlink" href="#can" title="Permanent link">&para;</a></h4>
-<p>コントローラー実行時にDBレコードレベルの認可スコープを定義する。</p>
+<p>コントローラー実行時に DB レコードレベルの認可スコープを定義する。</p>
 <p>現在認証されているユーザーのインスタンスから <code>can()</code> 関数をコールできる。</p>
 <p>第二引数として、ポリシーに紐付くクラス名前空間またはそのクラスのインスタンスを渡す。</p>
-<p>DBアクセスが、そのアカウントの認可スコープの範囲内か否かを検証する。</p>
+<p>DB アクセスが、そのアカウントの認可スコープの範囲内か否かを検証する。</p>
 <p>認可に失敗した場合は <code>false</code> を返却する。その後は自前で <code>403</code> レスポンスする。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ユーザーがFooモデルを作成する権限があるか否かを検証する。</p>
+<p>ユーザーが Foo モデルを作成する権限があるか否かを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
@@ -35414,11 +35414,11 @@
 <p><br></p>
 <h2 id="03-passport">03. Passportパッケージ<a class="headerlink" href="#03-passport" title="Permanent link">&para;</a></h2>
 <h3 id="passport">Passportパッケージとは<a class="headerlink" href="#passport" title="Permanent link">&para;</a></h3>
-<p>OAuthを実装できる。</p>
+<p>OAuth を実装できる。</p>
 <p><br></p>
 <h3 id="_18">セットアップ<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ インストール<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>Composerでインストールする必要がある。</p>
+<p>Composer でインストールする必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>require<span class="w"> </span>laravel/passport
 </code></pre></div>
 <blockquote>
@@ -35427,7 +35427,7 @@
 </ul>
 </blockquote>
 <h4 id="oauth">▼ OAuthのトークン管理テーブルを作成<a class="headerlink" href="#oauth" title="Permanent link">&para;</a></h4>
-<p>事前に、Passportの管理テーブルを作成する必要があるため、DBマイグレーションを実行する。</p>
+<p>事前に、Passport の管理テーブルを作成する必要があるため、DB マイグレーションを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate
 
 Migrating:<span class="w"> </span>2014_10_12_000000_create_users_table
@@ -35445,7 +35445,7 @@ Migrated:<span class="w">  </span>2016_06_01_000004_create_oauth_clients_table<s
 Migrating:<span class="w"> </span>2016_06_01_000005_create_oauth_personal_access_clients_table
 Migrated:<span class="w">  </span>2016_06_01_000005_create_oauth_personal_access_clients_table
 </code></pre></div>
-<p>DBマイグレーション後、以下のテーブルを作成する。</p>
+<p>DB マイグレーション後、以下のテーブルを作成する。</p>
 <table>
 <thead>
 <tr>
@@ -35456,7 +35456,7 @@ Migrated:<span class="w">  </span>2016_06_01_000005_create_oauth_personal_access
 <tbody>
 <tr>
 <td>oauth_access_tokens</td>
-<td>全てのアクセストークンを管理する。</td>
+<td>すべてのアクセストークンを管理する。</td>
 </tr>
 <tr>
 <td>oauth_auth_codes</td>
@@ -35477,7 +35477,7 @@ Migrated:<span class="w">  </span>2016_06_01_000005_create_oauth_personal_access
 </tbody>
 </table>
 <h4 id="_20">▼ トークンを作成<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>コマンド実行により、<code>/storage/oauth</code> キー、Personal Access Client、Password Grant Clientを作成する。</p>
+<p>コマンド実行により、<code>/storage/oauth</code> キー、Personal Access Client、Password Grant Client を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:install
 
 Personal<span class="w"> </span>access<span class="w"> </span>client<span class="w"> </span>created<span class="w"> </span>successfully.
@@ -35487,7 +35487,7 @@ Password<span class="w"> </span>grant<span class="w"> </span>client<span class="
 Client<span class="w"> </span>ID:<span class="w"> </span><span class="m">2</span>
 Client<span class="w"> </span>secret:<span class="w"> </span>*****
 </code></pre></div>
-<p>これにより、例えばoauth_clientsテーブルでは以下を作成する。</p>
+<p>これにより、例えば oauth_clients テーブルでは以下を作成する。</p>
 <table>
 <thead>
 <tr>
@@ -35515,7 +35515,7 @@ Client<span class="w"> </span>secret:<span class="w"> </span>*****
 </tr>
 </tbody>
 </table>
-<p>代わりに、<code>/storage/oauth</code> キー、Personal Access Client、Password Grant Clientを個別に作成しても良い。</p>
+<p>代わりに、<code>/storage/oauth</code> キー、Personal Access Client、Password Grant Client を個別に作成してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># oauthキーを作成</span>
 $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:keys
 
@@ -35528,7 +35528,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <p><br></p>
 <h3 id="oauth_1">実装できるOAuthの種類<a class="headerlink" href="#oauth_1" title="Permanent link">&para;</a></h3>
 <h4 id="oauth_2">▼ OAuth<a class="headerlink" href="#oauth_2" title="Permanent link">&para;</a></h4>
-<p>OAuthに関して、以下のトークン付与タイプを実装できる。</p>
+<p>OAuth に関して、以下のトークン付与タイプを実装できる。</p>
 <table>
 <thead>
 <tr>
@@ -35587,7 +35587,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>OAuth (認証フェーズ + 認可フェーズ) を実行するために、<code>auth.php</code> ファイルで、<code>driver</code> キーにpassportドライバを設定する。また、<code>provider</code> キーで、<code>users</code> を設定する。</p>
+<p>OAuth (認証フェーズ + 認可フェーズ) を実行するために、<code>auth.php</code> ファイルで、<code>driver</code> キーに passport ドライバを設定する。また、<code>provider</code> キーで、<code>users</code> を設定する。</p>
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
@@ -35614,7 +35614,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>auth.php</code> ファイルにて、<code>driver</code> キーにeloquentドライバを設定する。</p>
+<p><code>auth.php</code> ファイルにて、<code>driver</code> キーに eloquent ドライバを設定する。</p>
 <p>また、<code>model</code>キーで資格情報テーブルに対応するEloquentのEloquentモデルを設定する。</p>
 <p>ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに資格情報が格納されることになる。</p>
 <p>もしDBファサードのクエリビルダーを使用したい場合は、<code>database</code>ドライバを設定する。</p>
@@ -35643,7 +35643,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>Userへのルーティング時に、<code>middleware()</code> 関数による認証ガードを実行する。</p>
+<p>User へのルーティング時に、<code>middleware()</code> 関数による認証ガードを実行する。</p>
 <p>これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。</p>
 </dd>
 </dl>
@@ -35653,7 +35653,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>認証ガードを行ったEloquentモデルに対して、HasAPIToken、NotifiableのTraitをコールする。</p>
+<p>認証ガードを行った Eloquent モデルに対して、HasAPIToken、Notifiable の Trait をコールする。</p>
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
@@ -35675,7 +35675,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>Passportの <code>routes()</code> 関数をコールする。</p>
+<p>Passport の <code>routes()</code> 関数をコールする。</p>
 <p>これにより、Passportの認証フェーズに関わる全てのルーティング (<code>/oauth/xxx</code>) が有効になる。</p>
 <p>また、リフレッシュトークンを含むアクセストークンを発行できるようになる。</p>
 </dd>
@@ -35735,7 +35735,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>アクセストークンを含むJSON型データを受信する。</p>
+<p>アクセストークンを含む JSON 型データを受信する。</p>
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
@@ -35814,7 +35814,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>作成したユーザーに、クライアントIDを付与する。</p>
+<p>作成したユーザーに、クライアント ID を付与する。</p>
 <p>IDプロバイダーでクライアントIDを事前に発行しておく。</p>
 </dd>
 </dl>
@@ -35835,7 +35835,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>LaravelにクライアントIDを含むリクエストを送信すると、Laravelはアクセストークンをレスポンスする。</p>
+<p>Laravel にクライアント ID を含むリクエストを送信すると、Laravel はアクセストークンをレスポンスする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -35856,8 +35856,8 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <p><br></p>
 <h2 id="03-02-sanctum">03-02. Sanctumパッケージ<a class="headerlink" href="#03-02-sanctum" title="Permanent link">&para;</a></h2>
 <h3 id="sanctum">Sanctumパッケージとは<a class="headerlink" href="#sanctum" title="Permanent link">&para;</a></h3>
-<p>APIキー認証とフォーム認証機能の認証処理のみを提供する。</p>
-<p>ルーティングとDBアクセスに関する処理は提供しない。</p>
+<p>API キー認証とフォーム認証機能の認証処理のみを提供する。</p>
+<p>ルーティングと DB アクセスに関する処理は提供しない。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/sanctum.html">https://readouble.com/laravel/8.x/ja/sanctum.html</a></li>
@@ -35870,7 +35870,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 </code></pre></div>
 <p><br></p>
 <h3 id="api_1">APIキー認証<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h3>
-<p>フロントエンド (外部のアプリケーションを含む) は任意とし、APIのみを実装する場合、使用が適している。</p>
+<p>フロントエンド (外部のアプリケーションを含む) は任意とし、API のみを実装する場合、使用が適している。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication">https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication</a></li>
@@ -35880,7 +35880,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 </blockquote>
 <p><br></p>
 <h3 id="spa">SPA認証<a class="headerlink" href="#spa" title="Permanent link">&para;</a></h3>
-<p>フロントエンドにファーストパーティのSPA (自社のSPA) を使用して、バックエンドのAPIを実装する場合、使用が適している。</p>
+<p>フロントエンドにファーストパーティの SPA (自社の SPA) を使用して、バックエンドの API を実装する場合、使用が適している。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication">https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication</a></li>
@@ -35891,7 +35891,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <p><br></p>
 <h2 id="03-03-fortify">03-03. Fortifyパッケージ<a class="headerlink" href="#03-03-fortify" title="Permanent link">&para;</a></h2>
 <h3 id="fortify">Fortifyパッケージとは<a class="headerlink" href="#fortify" title="Permanent link">&para;</a></h3>
-<p>Laravelが持つ全ての認証機能のバックエンド処理を提供する。</p>
+<p>Laravel が持つすべての認証機能のバックエンド処理を提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/fortify.html">https://readouble.com/laravel/8.x/ja/fortify.html</a></li>
@@ -35901,7 +35901,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <p><br></p>
 <h2 id="03-04-breeze">03-04. Breezeパッケージ<a class="headerlink" href="#03-04-breeze" title="Permanent link">&para;</a></h2>
 <h3 id="breeze">Breezeパッケージとは<a class="headerlink" href="#breeze" title="Permanent link">&para;</a></h3>
-<p>Laravelが持つ全ての認証機能のバックエンド (認証+ルーティング+DBアクセス) 処理と、これに対応するフロントエンド処理を提供する。</p>
+<p>Laravel が持つすべての認証機能のバックエンド (認証+ルーティング+DB アクセス) 処理と、これに対応するフロントエンド処理を提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze">https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze</a></li>
@@ -35921,13 +35921,13 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 </code></pre></div>
 <h4 id="_30">▼ 認証処理ファイルの自動作成<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p>認証処理に関連するクラスを自動作成できる。</p>
-<p>Bladeに組み合わせるJavaScriptを選択できる。</p>
+<p>Blade に組み合わせる JavaScript を選択できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>breeze:install
 </code></pre></div>
 <p><br></p>
 <h2 id="03-05-ui-laravel-7">03-05. UIパッケージ (Laravel 7系以前)<a class="headerlink" href="#03-05-ui-laravel-7" title="Permanent link">&para;</a></h2>
 <h3 id="ui">UIパッケージとは<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
-<p>Laravelが持つ全ての認証機能のバックエンド (認証+ルーティング+DBアクセス) 処理と、これに対応するフロントエンド処理を提供する。</p>
+<p>Laravel が持つすべての認証機能のバックエンド (認証+ルーティング+DB アクセス) 処理と、これに対応するフロントエンド処理を提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/7.x/ja/authentication.html">https://readouble.com/laravel/7.x/ja/authentication.html</a></li>
@@ -35941,7 +35941,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 </code></pre></div>
 <h4 id="_33">▼ 認証処理ファイルの自動作成<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
 <p>認証処理に関連するクラスを自動作成できる。</p>
-<p>Bladeに組み合わせるJavaScriptを選択できる。</p>
+<p>Blade に組み合わせる JavaScript を選択できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Vue.jsを使用する場合。</span>
 $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>ui<span class="w"> </span>vue<span class="w"> </span>--auth
 
@@ -35972,7 +35972,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     

@@ -34642,7 +34642,7 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 </ul>
 </blockquote>
 <h4 id="config">▼ config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h4>
-<p>Composerのコマンドのオプションのデフォルト値を設定する。</p>
+<p>Composer のコマンドのオプションのデフォルト値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 
 <span class="w">    </span><span class="nv">...</span>
@@ -34664,7 +34664,7 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 </blockquote>
 <h4 id="require">▼ require<a class="headerlink" href="#require" title="Permanent link">&para;</a></h4>
 <p>インストールされるパッケージとバージョンを設定する。</p>
-<p>パッケージ数が少ないプロジェクトではキャレット表記で積極的にアップグレードし、規模が大きくなるほどチルダ表記で慎重にアップグレードすると良い。</p>
+<p>パッケージ数が少ないプロジェクトではキャレット表記で積極的にアップグレードし、規模が大きくなるほどチルダ表記で慎重にアップグレードするとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># キャレット表記</span>
 <span class="c1"># メジャーバージョンはそのままで、マイナーバージョンとパッチバージョンを自動でアップグレードする</span>
 <span class="o">{</span>
@@ -34762,8 +34762,8 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 </ul>
 </blockquote>
 <h4 id="version">▼ version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h4>
-<p>Composerのバージョンを設定する。</p>
-<p>インストールされているcomposerと齟齬がないようにする。</p>
+<p>Composer のバージョンを設定する。</p>
+<p>インストールされている composer と齟齬がないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">    </span><span class="nv">...</span>
 
@@ -34787,8 +34787,8 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 <p><br></p>
 <h3 id="autoloadphp"><code>autoload.php</code> ファイル<a class="headerlink" href="#autoloadphp" title="Permanent link">&para;</a></h3>
 <h4 id="autoloadphp_1">▼ <code>autoload.php</code> ファイルとは<a class="headerlink" href="#autoloadphp_1" title="Permanent link">&para;</a></h4>
-<p>プロジェクト内の全てのphpファイルを名前空間に対応づけ、<code>require()</code> 関数を使用せずに名前空間のみでパッケージを読み込めるようにする。</p>
-<p>エントリーポイント (<code>index.php</code> ファイル) あるいは <code>bootstrap.php</code> ファイルで、<code>autoload.php</code> ファイルを読み込むようにすると良い。</p>
+<p>プロジェクト内のすべての php ファイルを名前空間に対応づけ、<code>require()</code> 関数を使用せずに名前空間のみでパッケージを読み込めるようにする。</p>
+<p>エントリーポイント (<code>index.php</code> ファイル) あるいは <code>bootstrap.php</code> ファイルで、<code>autoload.php</code> ファイルを読み込むようにするとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="c1"># エントリーポイント</span>
 
@@ -34816,7 +34816,7 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 <span class="p">);</span>
 </code></pre></div>
 <h4 id="_4">▼ 確認方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>登録済みのphpファイルと名前空間の対応関係は、<code>php</code> コマンドで確認すると良い。</p>
+<p>登録済みの php ファイルと名前空間の対応関係は、<code>php</code> コマンドで確認するとよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;</span>
 <span class="s1">    $autoloader = require &quot;vendor/autoload.php&quot;;</span>
 <span class="s1">    echo json_encode($autoloader-&gt;getPrefixesPsr4(), JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);</span>
@@ -34833,7 +34833,7 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 <p>パッケージがすでに組み込まれたプロジェクトを作成する。</p>
 <p>プロジェクトを <code>git clone</code> コマンドを実行することにより、プロジェクト内で <code>composer install</code> コマンドを実行することと同じである。</p>
 <p>新しいディレクトリを作成しつつ、プロジェクトのファイルを展開もできるが、カレントディレクトリ配下にそのまま展開したほうが便利である。</p>
-<p>補足として、ファイルが1つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。</p>
+<p>補足として、ファイルが 1 つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># カレントディレクトリ配下にプロジェクトを作成する。</span>
 $<span class="w"> </span>composer<span class="w"> </span>create-project<span class="w"> </span>--prefer-dist<span class="w"> </span>laravel/lumen<span class="w"> </span>.
 </code></pre></div>
@@ -34844,7 +34844,7 @@ $<span class="w"> </span>composer<span class="w"> </span>create-project<span cla
 </blockquote>
 <p><br></p>
 <h3 id="diagnose">diagnose<a class="headerlink" href="#diagnose" title="Permanent link">&para;</a></h3>
-<p>Composerを使用するための準備が揃っているかを検証する。</p>
+<p>Composer を使用するための準備が揃っているかを検証する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>diagnose
 
 You<span class="w"> </span>are<span class="w"> </span>running<span class="w"> </span>Composer<span class="w"> </span>with<span class="w"> </span>SSL/TLS<span class="w"> </span>protection<span class="w"> </span>disabled.
@@ -34860,10 +34860,10 @@ Checking<span class="w"> </span>https<span class="w"> </span>connectivity<span c
 <p>事前に設定された <code>autoload</code> プロパティを基に、クラスの名前空間とパスの対応関係を登録する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>dump-autoload
 </code></pre></div>
-<p>存在するクラスが見つからないエラーに悩まされたときは、クラスが登録されていない可能性があるため、<code>dump-autoload</code> を実行すると良い。</p>
+<p>存在するクラスが見つからないエラーに悩まされたときは、クラスが登録されていない可能性があるため、<code>dump-autoload</code> を実行するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span>Exception<span class="w"> </span>:<span class="w"> </span>Target<span class="w"> </span>class<span class="w"> </span><span class="o">[</span>FooClass<span class="o">]</span><span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist.
 </code></pre></div>
-<p>また、<code>autoload</code> プロパティに登録されているパスが誤っていないかも確認したほうが良い。</p>
+<p>また、<code>autoload</code> プロパティに登録されているパスが誤っていないかも確認したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;autoload&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;psr-4&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{}}}</span>
 </code></pre></div>
 <blockquote>
@@ -34898,17 +34898,17 @@ Checking<span class="w"> </span>https<span class="w"> </span>connectivity<span c
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>install<span class="w"> </span>-vvv
 </code></pre></div>
 <h4 id="-no-dev">▼ --no-dev<a class="headerlink" href="#-no-dev" title="Permanent link">&para;</a></h4>
-<p>require-devタグ内のパッケージは除いてインストール</p>
+<p>require-dev タグ内のパッケージは除いてインストール</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>install<span class="w"> </span>--no-dev
 </code></pre></div>
 <h4 id="-prefer-dist">▼ --prefer-dist<a class="headerlink" href="#-prefer-dist" title="Permanent link">&para;</a></h4>
-<p>Composerの配布サイトからインストールする。<code>prefer-source</code> オプションを使用するよりも高速でインストールできる。</p>
-<p>デフォルトでdistを使用するため、実際は宣言しなくても問題ない。</p>
+<p>Composer の配布サイトからインストールする。<code>prefer-source</code> オプションを使用するよりも高速でインストールできる。</p>
+<p>デフォルトで dist を使用するため、実際は宣言しなくても問題ない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>install<span class="w"> </span>--prefer-dist
 </code></pre></div>
 <h4 id="-prefer-source">▼ --prefer-source<a class="headerlink" href="#-prefer-source" title="Permanent link">&para;</a></h4>
-<p>GitHubのComposerリポジトリからインストールする。</p>
-<p>Composerの開発者用である。</p>
+<p>GitHub の Composer リポジトリからインストールする。</p>
+<p>Composer の開発者用である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>install<span class="w"> </span>--prefer-source
 </code></pre></div>
 <p><br></p>
@@ -34922,8 +34922,8 @@ Checking<span class="w"> </span>https<span class="w"> </span>connectivity<span c
 </blockquote>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>reinstall<span class="w"> </span>&lt;パッケージ名&gt;
 </code></pre></div>
-<p>再インストールで問題を解決できなければ、全てのパッケージを再インストールすると良い。</p>
-<p>composerキャッシュと <code>vendor</code> ディレクトリを削除し、<code>composer install</code> コマンドを実行する。</p>
+<p>再インストールで問題を解決できなければ、すべてのパッケージを再インストールするとよい。</p>
+<p>composer キャッシュと <code>vendor</code> ディレクトリを削除し、<code>composer install</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>clearcache
 $<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>vendor
 $<span class="w"> </span>composer<span class="w"> </span>install<span class="w"> </span>-vvv
@@ -34945,7 +34945,7 @@ $<span class="w"> </span>composer<span class="w"> </span>install<span class="w">
 <h4 id="require_2">▼ requireとは<a class="headerlink" href="#require_2" title="Permanent link">&para;</a></h4>
 <p>パッケージ名を <code>composer.json</code> ファイルと <code>composer.lock</code> ファイルの両方に書き込み、インストールする。</p>
 <p>または、パッケージのアップグレード/ダウングレードする場合、パッケージのバージョンを書き換える。</p>
-<p>コマンドを使用せずに自分で実装しても良い。</p>
+<p>コマンドを使用せずに自分で実装してもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://getcomposer.org/doc/03-cli.md#require">https://getcomposer.org/doc/03-cli.md#require</a></li>
@@ -34963,8 +34963,8 @@ $<span class="w"> </span>composer<span class="w"> </span>install<span class="w">
 <h3 id="update">update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
 <h4 id="update_1">▼ updateとは<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
 <p><code>composer.json</code> ファイルに書き込まれたパッケージを最新のバージョンでインストールし、<code>composer.lock</code> ファイルを書き換える。</p>
-<p><code>composer.lock</code> ファイルに全てのパッケージ情報を書き込むため、リポジトリの利用者がインストールするパッケージにも影響を与える。</p>
-<p>パッケージ内でエラーが発生したら、<code>composer update</code> コマンドによるパッケージの更新が原因だと考えたほうが良い。</p>
+<p><code>composer.lock</code> ファイルにすべてのパッケージ情報を書き込むため、リポジトリの利用者がインストールするパッケージにも影響を与える。</p>
+<p>パッケージ内でエラーが発生したら、<code>composer update</code> コマンドによるパッケージの更新が原因だと考えたほうがよい。</p>
 <p>いずれかのパッケージで新バージョンをリリースした。ただし、このリリースは不具合が含まれていた可能性が高い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 必要なパッケージをcomposer.jsonファイルに追加した上で実行する。</span>
 $<span class="w"> </span>composer<span class="w"> </span>update
@@ -34982,10 +34982,10 @@ $<span class="w"> </span>composer<span class="w"> </span>update
 <p><br></p>
 <h3 id="_5">環境変数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="composer_memory_limit">▼ <code>COMPOSER_MEMORY_LIMIT</code><a class="headerlink" href="#composer_memory_limit" title="Permanent link">&para;</a></h4>
-<p>Composerのコマンドの実行時のメモリ上限を設定する。</p>
+<p>Composer のコマンドの実行時のメモリ上限を設定する。</p>
 <p>メモリ上限を無しにして、コマンドを実行できる。</p>
-<p>phpバイナリファイルを使用する。</p>
-<p>コンテナ内で実行する場合、設定画面からコンテナのCPUやメモリを増設もできる。</p>
+<p>php バイナリファイルを使用する。</p>
+<p>コンテナ内で実行する場合、設定画面からコンテナの CPU やメモリを増設もできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">COMPOSER_MEMORY_LIMIT</span><span class="o">=</span>-1<span class="w"> </span>composer<span class="w"> </span>install<span class="w"> </span>--prefer-dist<span class="w"> </span>-vvv
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nv">COMPOSER_MEMORY_LIMIT</span><span class="o">=</span>-1<span class="w"> </span>composer<span class="w"> </span>update<span class="w"> </span>-vvv
@@ -34993,8 +34993,8 @@ $<span class="w"> </span>composer<span class="w"> </span>update
 <p><br></p>
 <h2 id="03">03. バージョンアップの手順<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_6">事前確認の重要性<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>バージョン更新により、アプリケーションや関連する他のアプリケーションに影響が出る場合もある。</p>
-<p>そのため、想定外の影響が起こらないように、マニュアルやリリースノートにて、バージョン間の差異を全て確認しておく必要がある。</p>
+<p>バージョン更新により、アプリケーションや関連するほかのアプリケーションに影響が出る場合もある。</p>
+<p>そのため、想定外の影響が起こらないように、マニュアルやリリースノートにて、バージョン間の差異をすべて確認しておく必要がある。</p>
 <p><br></p>
 <h3 id="_7">バージョン間の互換性を確認<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>破壊的変更のためにバージョン間で互換性が全くない。旧バージョンと新バージョンで使用方法やオプションが変わる場合もある。</p>
@@ -35013,7 +35013,7 @@ $<span class="w"> </span>composer<span class="w"> </span>update
 <p><br></p>
 <h3 id="_11">メンテナンスページの表示<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>バージョンアップによりダウンタイムが発生する場合、その間はメンテナンスページを表示する必要がある。</p>
-<p>例えば、AWS ALBにはメンテナンスページを表示するための機能がある。</p>
+<p>例えば、AWS ALB にはメンテナンスページを表示するための機能がある。</p>
 <p>ダウンタイム中にシステムでリクエストを受信しないことで、負荷をかけない目的もある。</p>
 <p><br></p>
 <h3 id="_12">更新作業をリハーサル<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
@@ -35047,7 +35047,7 @@ $<span class="w"> </span>composer<span class="w"> </span>update
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
   </span>
 
     
