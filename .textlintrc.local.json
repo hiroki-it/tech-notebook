@@ -1,6 +1,5 @@
 {
   "plugins": {},
-  "filters": {},
   "rules": {
     "textlint-rule-ja-hiragana-fukushi": true,
     "textlint-rule-ja-hiragana-hojodoushi": true,
@@ -16,19 +15,21 @@
         ]
       },
       "max-comma": false,
+      "sentence-length": false,
       "ja-no-mixed-period": false,
       "ja-no-weak-phrase": false,
       "max-kanji-continuous-len": false,
       "no-mix-dearu-desumasu": false,
       "no-exclamation-question-mark": false,
-      "no-hankaku-kana": false,
-      "sentence-length": false
+      "no-hankaku-kana": false
     },
     "textlint-rule-preset-ja-spacing": {
       "ja-nakaguro-or-halfwidth-space-between-katakana": false,
       "ja-no-space-around-parentheses": false,
       "ja-no-space-between-full-width": false,
-      "ja-space-between-half-and-full-width": false,
+      "ja-space-between-half-and-full-width": {
+        "space": "always"
+      },
       "ja-space-after-exclamation": true,
       "ja-space-after-question": true,
       "ja-space-around-code": {
@@ -37,7 +38,7 @@
       },
       "ja-space-around-link": false
     },
-    "@textlint-ja/textlint-rule-preset-ai-writing": true,
+    "@textlint-ja/textlint-rule-preset-ai-writing": false,
     "textlint-rule-ja-overlooked-typo": true,
     "textlint-rule-ja-hiraku": true
   }
