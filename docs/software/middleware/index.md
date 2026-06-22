@@ -72,6 +72,8 @@ hide:
 
 - #### [アンチパターン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_antipatterns.html)
 
+- #### [ER図](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_er.html)
+
 <br>
 
 ### <u>接続プールプロキシ系</u>
