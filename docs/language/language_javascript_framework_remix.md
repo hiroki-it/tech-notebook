@@ -482,7 +482,7 @@ CSRモードとSSGモードは厳密な区分ではなく、Remix独自の擬似
 │   ├── entry.client.tsx
 │   ├── entry.server.tsx
 │   ├── database           # データベースへの接続処理のロジック
-│   ├── models             # ORMのDBモデル、ORMを使用したRead処理やWrite処理のロジック
+│   ├── models             # ORMモデル、ORMを使用したRead処理やWrite処理のロジック
 │   ├── root.tsx
 │   ├── routes             # APIルーティングまたはページング処理、状態管理、UIレンダリング、CSSスタイリング、API入力値バリデーションに関するロジック
 │   ├── styles             # CSSやTailwindなど

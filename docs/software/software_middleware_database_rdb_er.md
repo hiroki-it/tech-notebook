@@ -7,7 +7,7 @@ description: ER図＠RDBの知見を記録しています。
 
 ## マルチテナントの場合
 
-マルチテナントでは、Tenantモデルをデータ分離の境界として扱う。
+マルチテナントでは、`Tenant` モデルをデータ分離の境界として扱う。
 
 
 
@@ -32,31 +32,32 @@ flowchart TB
   Role --> Policy
 ```
 
-Tenantモデルを境界として見ると、WorkspaceモデルやFooモデル、BarモデルはTenantモデルの内側にある。
+`Tenant` モデルを境界として見ると、`Workspace` モデルや`Foo` モデル、`Bar` モデルは`Tenant` モデルの内側にある。
 
 
 
-UserモデルやWorkspaceモデルなどのテナント配下のテーブルは `tenantId` を持つ。
+`User` モデルや`Workspace` モデルなどのテナント配下のテーブルは `tenantId` を持つ。
 
-これにより、認可後のRead処理をTenant単位で絞り込める。
+これにより、認可後のRead処理を`Tenant` 単位で絞り込める。
 
-Workspaceモデル配下のデータも `tenantId` を含むキーで親子関係を表す。
+`Workspace` モデル配下のデータも `tenantId` を含むキーで親子関係を表す。
 
-RoleモデルとPolicyモデルはUserモデルやTenantTokenモデルに紐づけ、画面操作やAPI操作の権限を表現する。
+`Role` モデルと`Policy` モデルは`User` モデルや`TenantToken` モデルに紐づけ、画面操作やAPI操作の権限を表現する。
 
+`RolePolicy` のような中間モデルを用意すると、モデル間を多対多で紐付けられる。
 
 | モデル | 役割                                     |
 | --- |----------------------------------------|
 | `Tenant` | マルチテナントにおけるデータ分離の単位                    |
-| `User` | Tenantに所属する利用者。Roleを通じて操作権限を持つ         |
-| `TenantToken` | Tenantに紐づくAPIアクセス用のトークン。Userと同様にRoleを持つ |
-| `Role` | UserやTenantTokenに割り当てる権限のまとまり          |
+| `User` | `Tenant` に所属する利用者。`Role` を通じて操作権限を持つ         |
+| `TenantToken` | `Tenant` に紐づくAPIアクセス用のトークン。`User` と同様に`Role` を持つ |
+| `Role` | `User` や`TenantToken` に割り当てる権限のまとまり          |
 | `Policy` | 画面やAPIに対する操作可否を表すルール                   |
-| `RolePolicy` | RoleとPolicyを多対多で紐づける中間モデル              |
-| `Workspace` | Tenant配下で業務データをまとめる作業領域                |
-| `Quota` | Tenantごとの利用上限                          |
-| `Foo` | Workspace配下に作成される業務データの例1              |
-| `Bar` | Workspace配下に作成される業務データの例2              |
+| `RolePolicy` | `Role` と`Policy` を多対多で紐づける中間モデル              |
+| `Workspace` | `Tenant` 配下で業務データをまとめる作業領域                |
+| `Quota` | `Tenant` ごとの利用上限                          |
+| `Foo` | `Workspace` 配下に作成される業務データの例1              |
+| `Bar` | `Workspace` 配下に作成される業務データの例2              |
 
 
 ```mermaid
