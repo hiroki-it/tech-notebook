@@ -34295,10 +34295,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">ユースケース<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Vagrantfileを使用して、プロバイダーとプロビジョナーを操作し、仮想環境を作成する。</p>
-<p>Vagrantfile自体をプロビジョナーとして使用もできる。</p>
+<p>Vagrantfile を使用して、プロバイダーとプロビジョナーを操作し、仮想環境を作成する。</p>
+<p>Vagrantfile 自体をプロビジョナーとして使用もできる。</p>
 <p>プロビジョニングによりサーバー (物理サーバー、仮想サーバー) とコンテナを作成できる。</p>
-<p>ただし、Vagrantは仮想サーバーの作成のために使用することが多い。</p>
+<p>ただし、Vagrant は仮想サーバーの作成のために使用することが多い。</p>
 <p><img alt="vagrant_provider_provisioner" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vagrant_provider_provisioner.png" /></p>
 <blockquote>
 <ul>
@@ -34397,11 +34397,11 @@
 <h3 id="vagrantfile">Vagrantfile<a class="headerlink" href="#vagrantfile" title="Permanent link">&para;</a></h3>
 <p>プロバイダーとプロビジョナーの一連の操作内容を設定する。</p>
 <p>チームメンバーが別々に仮想環境を作成する場合、プロバイダーとプロビジョナーの処理によって作られる仮想サーバーの環境に、違いが生じてしまう。</p>
-<p>Vagrantfileにプロバイダーとプロビジョナーの操作を設定しておけば、チームメンバーが同じソフトウェアの下で、仮想サーバーを作成し、ソフトウェアをインストールできる。</p>
+<p>Vagrantfile にプロバイダーとプロビジョナーの操作を設定しておけば、チームメンバーが同じソフトウェアの下で、仮想サーバーを作成し、ソフトウェアをインストールできる。</p>
 <p><br></p>
 <h2 id="02-vagrantconfigure">02. Vagrant.configure<a class="headerlink" href="#02-vagrantconfigure" title="Permanent link">&para;</a></h2>
 <h3 id="vagrantconfigure">Vagrant.configureとは<a class="headerlink" href="#vagrantconfigure" title="Permanent link">&para;</a></h3>
-<p>Vagrantfileのバージョンを設定する。</p>
+<p>Vagrantfile のバージョンを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.vagrantup.com/docs/vagrantfile/version">https://www.vagrantup.com/docs/vagrantfile/version</a></li>
@@ -34420,7 +34420,7 @@
 <p><br></p>
 <h3 id="configvmbox">config.vm.box<a class="headerlink" href="#configvmbox" title="Permanent link">&para;</a></h3>
 <h4 id="box">▼ boxとは<a class="headerlink" href="#box" title="Permanent link">&para;</a></h4>
-<p>仮想環境のベースとするVirtualBoxのボックス名を設定する。</p>
+<p>仮想環境のベースとする VirtualBox のボックス名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
@@ -34457,7 +34457,7 @@
 <p><br></p>
 <h3 id="configvmbox_check_update">config.vm.box_check_update<a class="headerlink" href="#configvmbox_check_update" title="Permanent link">&para;</a></h3>
 <h4 id="box_check_update">▼ box_check_updateとは<a class="headerlink" href="#box_check_update" title="Permanent link">&para;</a></h4>
-<p>Vagrantの更新通知を設定する。</p>
+<p>Vagrant の更新通知を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_check_update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">false</span>
@@ -34499,10 +34499,10 @@
 </ul>
 </blockquote>
 <h4 id="private_network">▼ private_network<a class="headerlink" href="#private_network" title="Permanent link">&para;</a></h4>
-<p>仮想環境にプライベートIPアドレスを設定する。</p>
+<p>仮想環境にプライベート IP アドレスを設定する。</p>
 <p>ローカルホスト以外で接続できるようになる。</p>
-<p>また、同じプライベートネットワーク内の他の仮想環境とのみ、通信できるようになる。</p>
-<p>他の仮想環境とIPアドレスが重複しないようにする必要がある。</p>
+<p>また、同じプライベートネットワーク内のほかの仮想環境とのみ、通信できるようになる。</p>
+<p>他の仮想環境と IP アドレスが重複しないようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="c1"># ローカルホストではなく、192.168.33.10 で接続できるようにする</span>
@@ -34565,7 +34565,7 @@
 </ul>
 </blockquote>
 <h4 id="shell">▼ shell<a class="headerlink" href="#shell" title="Permanent link">&para;</a></h4>
-<p>shellを使用して、仮想環境のプロビジョニングを実行する。もしVagrantがサポートしていないプロビジョニングツールを使用する場合は、これ自体をインストールしておく必要がある。シェルが複数行に渡る場合は、Rubyのヒアドキュメント形式 (<code>&lt;&lt;-</code>) を使用すると良い。</p>
+<p>shell を使用して、仮想環境のプロビジョニングを実行する。もし Vagrant がサポートしていないプロビジョニングツールを使用する場合は、これ自体をインストールしておく必要がある。シェルが複数行に渡る場合は、Ruby のヒアドキュメント形式 (<code>&lt;&lt;-</code>) を使用するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">provision</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">inline</span><span class="p">:</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="dl">SHELL</span>
@@ -34583,7 +34583,7 @@
 </ul>
 </blockquote>
 <h4 id="ansible">▼ ansible<a class="headerlink" href="#ansible" title="Permanent link">&para;</a></h4>
-<p>ホスト側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。</p>
+<p>ホスト側に Ansible をインストールし、加えて仮想環境のプロビジョニングを実行する。</p>
 <p>開発環境ではこのオプションを使用することは非推奨で、<code>ansible_local</code> オプションを使用することが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
@@ -34600,7 +34600,7 @@
 </ul>
 </blockquote>
 <h4 id="ansible_local">▼ ansible_local<a class="headerlink" href="#ansible_local" title="Permanent link">&para;</a></h4>
-<p>仮想環境側にAnsibleをインストールし、加えて仮想環境のプロビジョニングを実行する。</p>
+<p>仮想環境側に Ansible をインストールし、加えて仮想環境のプロビジョニングを実行する。</p>
 <p>注意点としては、開発環境ではコントロールノードと管理対象ノードが同じサーバー (仮想環境) になるため、コントロールノードは自分で自分を指定してプロビジョニングを実行することになる。</p>
 <p>開発環境ではこのオプションを使用することが推奨されており、<code>ansible</code> オプションを使用することが非推奨とされている。</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
@@ -34612,7 +34612,7 @@
 
 <span class="k">end</span>
 </code></pre></div>
-<p>ただし、Vagrantからではなく、Ansibleを直接的に操作したい場合は、shellオプションでAnsibleをインストールする必要がある。</p>
+<p>ただし、Vagrant からではなく、Ansible を直接的に操作したい場合は、shell オプションで Ansible をインストールする必要がある。</p>
 <p>こちらが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
@@ -34649,8 +34649,8 @@
 </blockquote>
 <h4 id="type">▼ type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h4>
 <p>マウント方法を設定する。</p>
-<p>デフォルト値は、VirtualBox共有ディレクトリである。</p>
-<p>その他、NFS、RSync、SMBを設定できる。</p>
+<p>デフォルト値は、VirtualBox 共有ディレクトリである。</p>
+<p>その他、NFS、RSync、SMB を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="no">Vagrant</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
 <span class="w">  </span><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">synced_folder</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/var/www/foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">type</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;nfs&quot;</span>
@@ -34662,15 +34662,15 @@
 <li><a href="https://www.vagrantup.com/docs/synced-folders/basic_usage#type">https://www.vagrantup.com/docs/synced-folders/basic_usage#type</a></li>
 </ul>
 </blockquote>
-<p>ホストと仮想環境間のファイルのIOPSによって、性能に差がある。</p>
-<p>以下のリンクで、ロードテストを実施したところ、『<code>RSync &gt; SMB &gt; VirtualBox共有ディレクトリ</code>』の順で性能が良かった。</p>
+<p>ホストと仮想環境間のファイルの IOPS によって、性能に差がある。</p>
+<p>以下のリンクで、ロードテストを実施したところ、『<code>RSync &gt; SMB &gt; VirtualBox共有ディレクトリ</code>』の順で性能がよかった。</p>
 <blockquote>
 <ul>
 <li><a href="http://tech.respect-pal.jp/vagrant-synced_folder-type/">http://tech.respect-pal.jp/vagrant-synced_folder-type/</a></li>
 </ul>
 </blockquote>
 <p>また、『<code>RSync &gt; NFS</code>』『<code>NFS &gt; SMB</code>』である。</p>
-<p>これらから、おおよそ『<code>RSync &gt; NFS &gt; SMB &gt; VirtualBox共有ディレクトリ</code>』の順で性能が良くなると考えておけばよい。</p>
+<p>これらから、おおよそ『<code>RSync &gt; NFS &gt; SMB &gt; VirtualBox共有ディレクトリ</code>』の順で性能がよくなると考えておけばよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs">https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs</a></li>
@@ -34698,7 +34698,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

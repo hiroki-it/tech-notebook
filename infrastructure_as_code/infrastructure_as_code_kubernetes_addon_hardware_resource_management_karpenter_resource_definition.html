@@ -34554,9 +34554,9 @@
 <p><br></p>
 <h2 id="01-ec2nodeclass">01. EC2NodeClass<a class="headerlink" href="#01-ec2nodeclass" title="Permanent link">&para;</a></h2>
 <h3 id="ec2nodeclass">EC2NodeClassとは<a class="headerlink" href="#ec2nodeclass" title="Permanent link">&para;</a></h3>
-<p>NodePool内のNodeに対して、AWS固有の仕様を設定する。</p>
-<p>ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。</p>
-<p>Terraformの <code>aws_launch_template</code> ブロックと競合する。</p>
+<p>NodePool 内の Node に対して、AWS 固有の仕様を設定する。</p>
+<p>Cluster スコープな Kubernetes リソースであるため、Namespace は設定できない。</p>
+<p>Terraform の <code>aws_launch_template</code> ブロックと競合する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048">https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048</a></li>
@@ -34565,7 +34565,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="amifamily">amiFamily<a class="headerlink" href="#amifamily" title="Permanent link">&para;</a></h3>
-<p>AWS AMIの種類を設定する。</p>
+<p>AWS AMI の種類を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34576,9 +34576,9 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="amiselectorterms">amiSelectorTerms<a class="headerlink" href="#amiselectorterms" title="Permanent link">&para;</a></h3>
-<p>EC2 NodeのAMIを設定する。</p>
-<p>AMIのバージョンを固定したい場合に役立つ。</p>
-<p>設定しない場合、Karpenterは最適化AMIを自動的に選択する。</p>
+<p>EC2 Node の AMI を設定する。</p>
+<p>AMI のバージョンを固定したい場合に役立つ。</p>
+<p>設定しない場合、Karpenter は最適化 AMI を自動的に選択する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34595,8 +34595,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="blockdevicemappings">blockDeviceMappings<a class="headerlink" href="#blockdevicemappings" title="Permanent link">&para;</a></h3>
-<p>プロビジョニングするEC2 Nodeのブロックデバイスを設定する。</p>
-<p><code>100</code>Gi以上のルートボリュームのデバイスパス (<code>/dev/xvda</code>) を設定しないと、ボリューム不足でNodeをプロビジョニングできず、エラーになってしまう。</p>
+<p>プロビジョニングする EC2 Node のブロックデバイスを設定する。</p>
+<p><code>100</code>Gi 以上のルートボリュームのデバイスパス (<code>/dev/xvda</code>) を設定しないと、ボリューム不足で Node をプロビジョニングできず、エラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34617,7 +34617,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="detailedmonitoring">detailedMonitoring<a class="headerlink" href="#detailedmonitoring" title="Permanent link">&para;</a></h3>
-<p>EC2 NodeのCloudWatchによる監視を設定する。</p>
+<p>EC2 Node の CloudWatch による監視を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/nodeclasses/">https://karpenter.sh/preview/concepts/nodeclasses/</a></li>
@@ -34625,7 +34625,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="metadataoptions">metadataOptions<a class="headerlink" href="#metadataoptions" title="Permanent link">&para;</a></h3>
-<p>EC2 Nodeのメタデータへのアクセスを制御する。</p>
+<p>EC2 Node のメタデータへのアクセスを制御する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34645,8 +34645,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="instanceprofile">instanceProfile<a class="headerlink" href="#instanceprofile" title="Permanent link">&para;</a></h3>
-<p>IAMロールの代わりに使用するIAMインスタンスプロファイル名を設定する。</p>
-<p>プライベートなEKS Cluster (アウトバウンド通信を禁止している) の場合、IAMロールの代わりにIAMインスタンスプロファイルを使用する。</p>
+<p>IAM ロールの代わりに使用する IAM インスタンスプロファイル名を設定する。</p>
+<p>プライベートな EKS Cluster (アウトバウンド通信を禁止している) の場合、IAM ロールの代わりに IAM インスタンスプロファイルを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34661,8 +34661,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="role">role<a class="headerlink" href="#role" title="Permanent link">&para;</a></h3>
-<p>IAMプロファイル名の代わりに使用するIAMロールを設定する。</p>
-<p>プライベートなEKS Cluster (アウトバウンド通信を禁止している) の場合、IAMロールの代わりにIAMインスタンスプロファイルを使用する。</p>
+<p>IAM プロファイル名の代わりに使用する IAM ロールを設定する。</p>
+<p>プライベートな EKS Cluster (アウトバウンド通信を禁止している) の場合、IAM ロールの代わりに IAM インスタンスプロファイルを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34672,7 +34672,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="securitygroupselectorterms">securityGroupSelectorTerms<a class="headerlink" href="#securitygroupselectorterms" title="Permanent link">&para;</a></h3>
-<p>EC2 Nodeに紐づけるセキュリティグループを動的に検出するために、クラスターセキュリティグループのリソースを設定する。</p>
+<p>EC2 Node に紐づけるセキュリティグループを動的に検出するために、クラスターセキュリティグループのリソースを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34689,7 +34689,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="subnetselectorterms">subnetSelectorTerms<a class="headerlink" href="#subnetselectorterms" title="Permanent link">&para;</a></h3>
-<p>EC2 Nodeをプロビジョニングするサブネットを動的に検出するために、サブネットのリソースを設定する。</p>
+<p>EC2 Node をプロビジョニングするサブネットを動的に検出するために、サブネットのリソースを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34707,7 +34707,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="status">status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h3>
-<p>karpenter-controllerがEC2 Nodeを作成するために取得した情報を自動的に設定する。</p>
+<p>karpenter-controller が EC2 Node を作成するために取得した情報を自動的に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34748,10 +34748,10 @@
 <p><br></p>
 <h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
 <h4 id="tags_1">▼ tags<a class="headerlink" href="#tags_1" title="Permanent link">&para;</a></h4>
-<p>NodePool配下のEC2 Node、またこれに紐づくAWSリソース (例：EBSボリュームなど) に挿入するタグを設定する。</p>
-<p>なお、NodePool配下のEC2 Nodeは起動テンプレートから作成する。ただし、起動テンプレート自体はEC2 Nodeの作成後に削除される。</p>
+<p>NodePool 配下の EC2 Node、またこれに紐づく AWS リソース (例：EBS ボリュームなど) に挿入するタグを設定する。</p>
+<p>なお、NodePool 配下の EC2 Node は起動テンプレートから作成する。ただし、起動テンプレート自体は EC2 Node の作成後に削除される。</p>
 <h4 id="_2">▼ デフォルトのタグ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>KarpenterがEC2 Nodeにデフォルトで挿入するタグは上書きしないように、設定しない。</p>
+<p>Karpenter が EC2 Node にデフォルトで挿入するタグは上書きしないように、設定しない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34780,7 +34780,7 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ ユーザー定義のタグ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>EC2 Nodeに挿入するユーザー定義のタグを設定できる。</p>
+<p>EC2 Node に挿入するユーザー定義のタグを設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC2NodeClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34799,7 +34799,7 @@
 </ul>
 </blockquote>
 <h4 id="irsaiam">▼ IRSA用IAMロールの条件と一致させる<a class="headerlink" href="#irsaiam" title="Permanent link">&para;</a></h4>
-<p>ここで挿入するタグと、AWS IAMポリシーの条件で指定するタグと一致させる必要がある。</p>
+<p>ここで挿入するタグと、AWS IAM ポリシーの条件で指定するタグと一致させる必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 
@@ -34824,7 +34824,7 @@
 <span class="w">  </span><span class="p p-Indicator">]</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>もちろん、Karpenter以外の方法 (例：Terraformなど) で挿入したタグを使用しても良い。</p>
+<p>もちろん、Karpenter 以外の方法 (例：Terraform など) で挿入したタグを使用してもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/karpenter/issues/1488#issuecomment-1096972053">https://github.com/aws/karpenter/issues/1488#issuecomment-1096972053</a></li>
@@ -34832,7 +34832,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="userdata">userData<a class="headerlink" href="#userdata" title="Permanent link">&para;</a></h3>
-<p>プロビジョニングするEC2 Nodeのユーザーデータを設定する。</p>
+<p>プロビジョニングする EC2 Node のユーザーデータを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/nodeclasses/">https://karpenter.sh/preview/concepts/nodeclasses/</a></li>
@@ -34841,9 +34841,9 @@
 <p><br></p>
 <h2 id="02-nodepool">02. NodePool<a class="headerlink" href="#02-nodepool" title="Permanent link">&para;</a></h2>
 <h3 id="nodepool">NodePoolとは<a class="headerlink" href="#nodepool" title="Permanent link">&para;</a></h3>
-<p>NodePool内のNodeに対して、クラウドプロバイダーに依らない仕様を設定する。</p>
-<p>EC2 Nodeのグループ (例：Amazon EKS Nodeグループ、Google Cloud Nodeプールなど) に合わせて、複数作成すると良い。</p>
-<p>ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。</p>
+<p>NodePool 内の Node に対して、クラウドプロバイダーに依らない仕様を設定する。</p>
+<p>EC2 Node のグループ (例：Amazon EKS Node グループ、Google Cloud Node プールなど) に合わせて、複数作成するとよい。</p>
+<p>Cluster スコープな Kubernetes リソースであるため、Namespace は設定できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/nodepools/">https://karpenter.sh/preview/concepts/nodepools/</a></li>
@@ -34852,7 +34852,7 @@
 <p><br></p>
 <h3 id="disruption">disruption<a class="headerlink" href="#disruption" title="Permanent link">&para;</a></h3>
 <h4 id="consolidationpolicy">▼ consolidationPolicy<a class="headerlink" href="#consolidationpolicy" title="Permanent link">&para;</a></h4>
-<p>Node統合の条件を設定する。</p>
+<p>Node 統合の条件を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34868,7 +34868,7 @@
 </ul>
 </blockquote>
 <h4 id="consolidateafter">▼ consolidateAfter<a class="headerlink" href="#consolidateafter" title="Permanent link">&para;</a></h4>
-<p>EC2 NodeからPodが全て退避した後にEC2 Nodeを削除するまでの待機時間を設定する。</p>
+<p>EC2 Node から Pod がすべて退避した後に EC2 Node を削除するまでの待機時間を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34884,8 +34884,8 @@
 </ul>
 </blockquote>
 <h4 id="expireafter">▼ expireAfter<a class="headerlink" href="#expireafter" title="Permanent link">&para;</a></h4>
-<p>EC2 Nodeを削除し、再作成するまでの期間を設定する。</p>
-<p>EC2 Nodeを定期的に再作成することにより、最適なスペックを再設定するため、脆弱性抑制やコスト削減につながる。</p>
+<p>EC2 Node を削除し、再作成するまでの期間を設定する。</p>
+<p>EC2 Node を定期的に再作成することにより、最適なスペックを再設定するため、脆弱性抑制やコスト削減につながる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34902,8 +34902,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="limits">limits<a class="headerlink" href="#limits" title="Permanent link">&para;</a></h3>
-<p>プロビジョニングするEC2 Nodeが持つハードウェアリソース (CPU、メモリ) の上限を設定する。</p>
-<p>Karpenter配下のEC2 Nodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。</p>
+<p>プロビジョニングする EC2 Node が持つハードウェアリソース (CPU、メモリ) の上限を設定する。</p>
+<p>Karpenter 配下の EC2 Node のハードウェアリソースがこれを超過した場合に、既存の Node を削除しないと、新しいものをプロビジョニングできない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34922,7 +34922,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="weight">weight<a class="headerlink" href="#weight" title="Permanent link">&para;</a></h3>
-<p>複数のProvisionerがある場合に、このProvisionerの優先順位の高さを設定する。</p>
+<p>複数の Provisioner がある場合に、この Provisioner の優先順位の高さを設定する。</p>
 <p>デフォルトでは、重みが <code>0</code> である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
@@ -34940,7 +34940,7 @@
 <p><br></p>
 <h2 id="02-02-templatemetadata">02-02. .template.metadata<a class="headerlink" href="#02-02-templatemetadata" title="Permanent link">&para;</a></h2>
 <h3 id="annotations">annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h3>
-<p>EC2 Nodeに付与するアノテーションを設定する。</p>
+<p>EC2 Node に付与するアノテーションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34960,7 +34960,7 @@
 <p><br></p>
 <h2 id="02-03-templatespec">02-03. .template.spec<a class="headerlink" href="#02-03-templatespec" title="Permanent link">&para;</a></h2>
 <h3 id="kubelet">kubelet<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h3>
-<p>kubeletの <code>KubeletConfiguration</code> オプションにパラメーターを渡す。</p>
+<p>kubelet の <code>KubeletConfiguration</code> オプションにパラメーターを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35007,7 +35007,7 @@
 </blockquote>
 <p><br></p>
 <h4 id="labels">▼ labels<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h4>
-<p>EC2 Nodeに付与するラベルを設定する。</p>
+<p>EC2 Node に付与するラベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35028,7 +35028,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="nodeclassref">nodeClassRef<a class="headerlink" href="#nodeclassref" title="Permanent link">&para;</a></h3>
-<p>Provisionerで使用するEC2 NodeClass名を設定する。</p>
+<p>Provisioner で使用する EC2 NodeClass 名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35048,8 +35048,8 @@
 <p><br></p>
 <h3 id="requirements">requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h3>
 <h4 id="requirements_1">▼ requirementsとは<a class="headerlink" href="#requirements_1" title="Permanent link">&para;</a></h4>
-<p>プロビジョニングするEC2 Nodeのハードウェアリソースを制限する。</p>
-<p>制限しなかった項目は、Karpenterがよしなに設定値を選ぶ。</p>
+<p>プロビジョニングする EC2 Node のハードウェアリソースを制限する。</p>
+<p>制限しなかった項目は、Karpenter がよしなに設定値を選ぶ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.sh/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NodePool</span>
@@ -35187,8 +35187,8 @@
 <p><br></p>
 <h2 id="03-configmap">03. グローバル設定用ConfigMap<a class="headerlink" href="#03-configmap" title="Permanent link">&para;</a></h2>
 <h3 id="awsinterruptionqueuename">aws.interruptionQueueName<a class="headerlink" href="#awsinterruptionqueuename" title="Permanent link">&para;</a></h3>
-<p>割り込み処理を有効化する場合に、Amazon SQSの名前を設定する。</p>
-<p>別途、Amazon SQSを作成し、KarpenterにAmazon SQSへの権限を付与しておく必要がある。</p>
+<p>割り込み処理を有効化する場合に、Amazon SQS の名前を設定する。</p>
+<p>別途、Amazon SQS を作成し、Karpenter に Amazon SQS への権限を付与しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35220,7 +35220,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="awsclusterendpoint">aws.clusterEndpoint<a class="headerlink" href="#awsclusterendpoint" title="Permanent link">&para;</a></h3>
-<p>Amazon EKS Clusterのkube-apiserverのURLを設定する。</p>
+<p>Amazon EKS Cluster の kube-apiserver の URL を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35268,7 +35268,7 @@
 <h2 id="04-configmap">04. ロギング設定用のConfigMap<a class="headerlink" href="#04-configmap" title="Permanent link">&para;</a></h2>
 <h3 id="zap-logger-config">zap-logger-config<a class="headerlink" href="#zap-logger-config" title="Permanent link">&para;</a></h3>
 <p>ロギングを設定する。</p>
-<p>zapパッケージを使用しているため、設定値の種類はzapパッケージのものである。</p>
+<p>zap パッケージを使用しているため、設定値の種類は zap パッケージのものである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35328,8 +35328,8 @@
 <p><br></p>
 <h2 id="05-pod-metadataannotations">05. Podの <code>.metadata.annotations</code> キー<a class="headerlink" href="#05-pod-metadataannotations" title="Permanent link">&para;</a></h2>
 <h3 id="karpentershdo-not-disrupt">karpenter.sh/do-not-disrupt<a class="headerlink" href="#karpentershdo-not-disrupt" title="Permanent link">&para;</a></h3>
-<p>長時間実行するPodの場合、完了前にKarpenterがNodeを終了しないようにする必要がある。</p>
-<p><code>karpenter.sh/do-not-disrupt</code> キーを設定すると、Podの終了を待機できる。</p>
+<p>長時間実行する Pod の場合、完了前に Karpenter が Node を終了しないようにする必要がある。</p>
+<p><code>karpenter.sh/do-not-disrupt</code> キーを設定すると、Pod の終了を待機できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -35365,7 +35365,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

@@ -34773,8 +34773,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-configmap">01. 専用ConfigMap<a class="headerlink" href="#01-configmap" title="Permanent link">&para;</a></h2>
-<p>ArgoCDの各コンポーネントの機密でない変数やファイルを管理する。</p>
-<p>ConfigMapでは、<code>.metadata.labels</code> キー配下に、必ず <code>app.kubernetes.io/part-of: argocd</code> キーを割り当てる必要がある。</p>
+<p>ArgoCD の各コンポーネントの機密でない変数やファイルを管理する。</p>
+<p>ConfigMap では、<code>.metadata.labels</code> キー配下に、必ず <code>app.kubernetes.io/part-of: argocd</code> キーを割り当てる必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration">https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration</a></li>
@@ -34783,7 +34783,7 @@
 <p><br></p>
 <h2 id="02-argocd-cm">02. argocd-cm (必須)<a class="headerlink" href="#02-argocd-cm" title="Permanent link">&para;</a></h2>
 <h3 id="argocd-cm">argocd-cmとは<a class="headerlink" href="#argocd-cm" title="Permanent link">&para;</a></h3>
-<p>ArgoCDの各コンポーネントで共通する値を設定する。</p>
+<p>ArgoCD の各コンポーネントで共通する値を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cm.yaml">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cm.yaml</a></li>
@@ -34792,10 +34792,10 @@
 <p><br></p>
 <h3 id="exec">exec<a class="headerlink" href="#exec" title="Permanent link">&para;</a></h3>
 <h4 id="exec_1">▼ execとは<a class="headerlink" href="#exec_1" title="Permanent link">&para;</a></h4>
-<p>ArgoCDのExec機能を設定する。</p>
+<p>ArgoCD の Exec 機能を設定する。</p>
 <h4 id="execenabled">▼ exec.enabled<a class="headerlink" href="#execenabled" title="Permanent link">&para;</a></h4>
-<p>Exec機能を有効化する。</p>
-<p><code>kubectl exec</code> コマンドのようにして、ArgoCDのダッシュボード上からコンテナにログインできる。</p>
+<p>Exec 機能を有効化する。</p>
+<p><code>kubectl exec</code> コマンドのようにして、ArgoCD のダッシュボード上からコンテナにログインできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34806,7 +34806,7 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">exec.enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
-<p>argocd-serverに紐づけるClusterRoleでは、Podの <code>exec</code> リソースと <code>create</code> アクションを許可する必要がある。</p>
+<p>argocd-server に紐づける ClusterRole では、Pod の <code>exec</code> リソースと <code>create</code> アクションを許可する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34829,7 +34829,7 @@
 </ul>
 </blockquote>
 <h4 id="execenabled_1">▼ exec.enabled<a class="headerlink" href="#execenabled_1" title="Permanent link">&para;</a></h4>
-<p>全てのコンテナにExecできるわけではなく、ArgoCDがサポートしているシェルでログインできるコンテナにのみ、Execが可能である。</p>
+<p>すべてのコンテナに Exec できるわけではなく、ArgoCD がサポートしているシェルでログインできるコンテナにのみ、Exec が可能である。</p>
 <p>ログイン時に使用できるシェルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -34849,8 +34849,8 @@
 <p><br></p>
 <h3 id="applicationinstancelabelkey">application.instanceLabelKey<a class="headerlink" href="#applicationinstancelabelkey" title="Permanent link">&para;</a></h3>
 <h4 id="applicationinstancelabelkey_1">▼ application.instanceLabelKeyとは<a class="headerlink" href="#applicationinstancelabelkey_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetesリソースや子Applicationが親Applicationを識別するためのラベルのキー名を設定する。</p>
-<p>デフォルトは <code>app.kubernetes.io/instance</code> キーであり、コンフリクトしやすいキー名なため、変更したほうが良い。</p>
+<p>Kubernetes リソースや子 Application が親 Application を識別するためのラベルのキー名を設定する。</p>
+<p>デフォルトは <code>app.kubernetes.io/instance</code> キーであり、コンフリクトしやすいキー名なため、変更したほうがよい。</p>
 <p>ラベルのキー名は <code>1</code> 個しか設定できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -34868,20 +34868,20 @@
 </ul>
 </blockquote>
 <h4 id="_2">▼ ラベル挿入のタイミング<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p><code>argocd.argoproj.io/instance</code> ラベルの挿入は、application-controllerが実行する。</p>
-<p>そのため挿入のタイミングは、マニフェスト作成のタイミングではなく、Syncの直前である。</p>
-<p>ConfigMapやSecretのファイル変更に合わせてチェックサム値を更新するようなロジックがチャートあったとしても、repo-serverがマニフェスト作成時に <code>argocd.argoproj.io/instance</code> ラベルを挿入するわけではないので、チェックサム値は変更にならない。</p>
-<p>なお、CRDには挿入しない仕様になっている。</p>
+<p><code>argocd.argoproj.io/instance</code> ラベルの挿入は、application-controller が実行する。</p>
+<p>そのため挿入のタイミングは、マニフェスト作成のタイミングではなく、Sync の直前である。</p>
+<p>ConfigMap や Secret のファイル変更に合わせてチェックサム値を更新するようなロジックがチャートあったとしても、repo-server がマニフェスト作成時に <code>argocd.argoproj.io/instance</code> ラベルを挿入するわけではないので、チェックサム値は変更にならない。</p>
+<p>なお、CRD には挿入しない仕様になっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/controller/sync.go#L246">https://github.com/argoproj/argo-cd/blob/v2.6.0/controller/sync.go#L246</a></li>
 </ul>
 </blockquote>
 <h4 id="rootapplication">▼ RootのApplication名の重複<a class="headerlink" href="#rootapplication" title="Permanent link">&para;</a></h4>
-<p>単一のKubernetes ClusterでNamespacedスコープのArgoCDを構築しているとき、RootのApplicationを <code>default</code> というAppProjectへ配置すると、この問題が起こりうる。</p>
-<p><code>default</code> のAppProjectに所属したApplicationは、Namespacedスコープのapplication-controllerであって、他のNamespaceも見てしまうようである。</p>
-<p>RootのApplication名が重複している場合、たとえNamespaceが異なっていても、Namespace間でRootのApplicationを共有してしまう。</p>
-<p>ちなみに、ClusterスコープのArgoCDに限り、<code>.spec.sourceNamespaces</code> キーを使用して、この重複を許可できる。</p>
+<p>単一の Kubernetes Cluster で Namespaced スコープの ArgoCD を構築しているとき、Root の Application を <code>default</code> という AppProject へ配置すると、この問題が起こりうる。</p>
+<p><code>default</code> の AppProject に所属した Application は、Namespaced スコープの application-controller であって、他の Namespace も見てしまうようである。</p>
+<p>Root の Application 名が重複している場合、たとえ Namespace が異なっていても、Namespace 間で Root の Application を共有してしまう。</p>
+<p>ちなみに、Cluster スコープの ArgoCD に限り、<code>.spec.sourceNamespaces</code> キーを使用して、この重複を許可できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/issues/9420">https://github.com/argoproj/argo-cd/issues/9420</a></li>
@@ -34892,7 +34892,7 @@
 <p><br></p>
 <h3 id="applicationresourcetrackingmethod">application.resourceTrackingMethod<a class="headerlink" href="#applicationresourcetrackingmethod" title="Permanent link">&para;</a></h3>
 <h4 id="applicationresourcetrackingmethod_1">▼ application.resourceTrackingMethodとは<a class="headerlink" href="#applicationresourcetrackingmethod_1" title="Permanent link">&para;</a></h4>
-<p>トラッキングIDを有効化する。</p>
+<p>トラッキング ID を有効化する。</p>
 <ul>
 <li><code>label</code> (<code>argocd.argoproj.io/instance</code> ラベルを指す)</li>
 <li><code>annotation+label</code></li>
@@ -34917,8 +34917,8 @@
 <p><br></p>
 <h3 id="globalprojects">globalProjects<a class="headerlink" href="#globalprojects" title="Permanent link">&para;</a></h3>
 <h4 id="globalprojects_1">▼ globalProjectsとは<a class="headerlink" href="#globalprojects_1" title="Permanent link">&para;</a></h4>
-<p>グローバルスコープを持つ親AppProjectと、これの設定値を継承させる子AppProjectを指定する。</p>
-<p><code>labelSelector</code> キーで、子Projectの条件を設定する。</p>
+<p>グローバルスコープを持つ親 AppProject と、これの設定値を継承させる子 AppProject を指定する。</p>
+<p><code>labelSelector</code> キーで、子 Project の条件を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34951,8 +34951,8 @@
 <p><br></p>
 <h3 id="kustomizebuildoptions">kustomize.buildOptions<a class="headerlink" href="#kustomizebuildoptions" title="Permanent link">&para;</a></h3>
 <h4 id="kustomizebuildoptions_1">▼ kustomize.buildOptionsとは<a class="headerlink" href="#kustomizebuildoptions_1" title="Permanent link">&para;</a></h4>
-<p>Kustomizeの実行時に、コマンドに渡すオプションを設定する。</p>
-<p>特に、Kustomizeのプラグイン (例：KSOPSなど) を使用する場合、<code>--enable-alpha-plugins</code> オプションと <code>--enable-exec</code> オプションを有効化する必要がある。</p>
+<p>Kustomize の実行時に、コマンドに渡すオプションを設定する。</p>
+<p>特に、Kustomize のプラグイン (例：KSOPS など) を使用する場合、<code>--enable-alpha-plugins</code> オプションと <code>--enable-exec</code> オプションを有効化する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34983,8 +34983,8 @@
 <p><br></p>
 <h3 id="kustomizepath">kustomize.path.&lt;バージョン&gt;<a class="headerlink" href="#kustomizepath" title="Permanent link">&para;</a></h3>
 <h4 id="kustomizepath_1">▼ kustomize.path.&lt;バージョン&gt;とは<a class="headerlink" href="#kustomizepath_1" title="Permanent link">&para;</a></h4>
-<p>デフォルトのKustomizeのバージョン以外のものも使用したい場合、そののバージョンと、バイナリファイルの置き場所を設定する。</p>
-<p>ArgoCDで1つのバージョンのKustomizeしか使用しない場合、<code>kustomize.path.&lt;バージョン&gt;</code> で <code>/usr/local/bin/kustomize</code> を指定する。</p>
+<p>デフォルトの Kustomize のバージョン以外のものも使用したい場合、そののバージョンと、バイナリファイルの置き場所を設定する。</p>
+<p>ArgoCD で 1 つのバージョンの Kustomize しか使用しない場合、<code>kustomize.path.&lt;バージョン&gt;</code> で <code>/usr/local/bin/kustomize</code> を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34995,7 +34995,7 @@
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">kustomize.path.v1.0.0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/kustomize</span>
 </code></pre></div>
-<p>複数のバージョンのKustomizeを使用できる。</p>
+<p>複数のバージョンの Kustomize を使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35008,8 +35008,8 @@
 <span class="w">  </span><span class="nt">kustomize.path.v2.0.0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/kustomize_2_0_0</span>
 </code></pre></div>
 <h4 id="applicationkustomize">▼ 各ApplicationでKustomizeを使用する<a class="headerlink" href="#applicationkustomize" title="Permanent link">&para;</a></h4>
-<p>Applicationの <code>.spec.kustomize.version</code> キーで、使用するKustomizeのバージョンを指定する。</p>
-<p>各Applicationで異なるバージョンのKustomizeを指定できる。</p>
+<p>Application の <code>.spec.kustomize.version</code> キーで、使用する Kustomize のバージョンを指定する。</p>
+<p>各 Application で異なるバージョンの Kustomize を指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35030,11 +35030,11 @@
 <p><br></p>
 <h3 id="oidcconfig">oidc.config<a class="headerlink" href="#oidcconfig" title="Permanent link">&para;</a></h3>
 <h4 id="oidcconfig_1">▼ oidc.configとは<a class="headerlink" href="#oidcconfig_1" title="Permanent link">&para;</a></h4>
-<p>OIDCを使用して、ArgoCDへログインできるようにする。</p>
+<p>OIDC を使用して、ArgoCD へログインできるようにする。</p>
 <h4 id="web">▼ 委譲先Webサイトに直接的に接続する場合<a class="headerlink" href="#web" title="Permanent link">&para;</a></h4>
-<p>ArgoCDから認証フェーズの委譲先のIDプロバイダーに情報を直接的に接続する。</p>
-<p>OIDCのIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) が発行したクライアントIDやクライアントシークレットを設定する。</p>
-<p>ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数のSecretが必要になる。</p>
+<p>ArgoCD から認証フェーズの委譲先の ID プロバイダーに情報を直接的に接続する。</p>
+<p>OIDC の ID プロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) が発行したクライアント ID やクライアントシークレットを設定する。</p>
+<p>ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数の Secret が必要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35067,8 +35067,8 @@
 </ul>
 </blockquote>
 <h4 id="dexweb">▼ Dexを介して委譲先Webサイトに接続する場合<a class="headerlink" href="#dexweb" title="Permanent link">&para;</a></h4>
-<p>ArgoCDから認証フェーズの委譲先のIDプロバイダーに直接的に接続するのではなく、ハブとしてのDexを使用する。</p>
-<p>Dexは <code>dex-server</code> コンテナとして稼働させる。</p>
+<p>ArgoCD から認証フェーズの委譲先の ID プロバイダーに直接的に接続するのではなく、ハブとしての Dex を使用する。</p>
+<p>Dex は <code>dex-server</code> コンテナとして稼働させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35103,7 +35103,7 @@
 <p><br></p>
 <h3 id="repositories">repositories<a class="headerlink" href="#repositories" title="Permanent link">&para;</a></h3>
 <h4 id="repositories_1">▼ repositoriesとは<a class="headerlink" href="#repositories_1" title="Permanent link">&para;</a></h4>
-<p>ConfigMapでリポジトリのURLを管理する方法は、将来的に廃止される予定である。</p>
+<p>ConfigMap でリポジトリの URL を管理する方法は、将来的に廃止される予定である。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour">https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour</a></li>
@@ -35112,7 +35112,7 @@
 <p><br></p>
 <h3 id="resourcecustomizationsignoredifferencesall">resource.customizations.ignoreDifferences.all<a class="headerlink" href="#resourcecustomizationsignoredifferencesall" title="Permanent link">&para;</a></h3>
 <h4 id="resourcecustomizationsignoredifferencesall_1">▼ resource.customizations.ignoreDifferences.allとは<a class="headerlink" href="#resourcecustomizationsignoredifferencesall_1" title="Permanent link">&para;</a></h4>
-<p>ArgoCD全体で <code>.spec.ignoreDifferences</code> キーと同じ機能を有効化する。</p>
+<p>ArgoCD 全体で <code>.spec.ignoreDifferences</code> キーと同じ機能を有効化する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35137,7 +35137,7 @@
 <p><br></p>
 <h2 id="03-argocd-cmd-params-cm">03. argocd-cmd-params-cm<a class="headerlink" href="#03-argocd-cmd-params-cm" title="Permanent link">&para;</a></h2>
 <h3 id="argocd-cmd-params-cm">argocd-cmd-params-cmとは<a class="headerlink" href="#argocd-cmd-params-cm" title="Permanent link">&para;</a></h3>
-<p>ArgoCDの各コンポーネント (application-controller、dex-server、redis-server、repo-server) の起動コマンドに渡すオプションを設定する。</p>
+<p>ArgoCD の各コンポーネント (application-controller、dex-server、redis-server、repo-server) の起動コマンドに渡すオプションを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cmd-params-cm.yaml">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cmd-params-cm.yaml</a></li>
@@ -35165,7 +35165,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="application-controller">application-controller<a class="headerlink" href="#application-controller" title="Permanent link">&para;</a></h3>
-<p>application-controllerの起動コマンドのオプションを設定する。</p>
+<p>application-controller の起動コマンドのオプションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35184,7 +35184,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="redis-server">redis-server<a class="headerlink" href="#redis-server" title="Permanent link">&para;</a></h3>
-<p>redis-serverの起動コマンドのオプションを設定する。</p>
+<p>redis-server の起動コマンドのオプションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35195,7 +35195,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="repo-server">repo-server<a class="headerlink" href="#repo-server" title="Permanent link">&para;</a></h3>
-<p>repo-serverの起動コマンドのオプションを設定する。</p>
+<p>repo-server の起動コマンドのオプションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35209,7 +35209,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="argocd-server">argocd-server<a class="headerlink" href="#argocd-server" title="Permanent link">&para;</a></h3>
-<p>argocd-serverの起動コマンドのオプションを設定する。</p>
+<p>argocd-server の起動コマンドのオプションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35232,7 +35232,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="04-argocd-rbac-cm">04. argocd-rbac-cm<a class="headerlink" href="#04-argocd-rbac-cm" title="Permanent link">&para;</a></h2>
-<p>ArgoCDを構成するKubernetesリソースにリクエストを送信するための認可スコープを紐付ける。</p>
+<p>ArgoCD を構成する Kubernetes リソースにリクエストを送信するための認可スコープを紐付ける。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-rbac-cm.yaml">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-rbac-cm.yaml</a></li>
@@ -35242,7 +35242,7 @@
 <p><br></p>
 <h3 id="_4">認可スコープの設定<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 記法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Casbinの記法を使用して、ロールと認可スコープを定義しつつ、これをグループ名に紐付ける。</p>
+<p>Casbin の記法を使用して、ロールと認可スコープを定義しつつ、これをグループ名に紐付ける。</p>
 <p><code>readonly</code> と <code>admin</code> というロールは、デフォルトで定義済みである。</p>
 <table>
 <thead>
@@ -35276,13 +35276,13 @@
 </blockquote>
 <p><br></p>
 <h3 id="argocd">ArgoCDで認証する場合<a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h3>
-<p>ロールに付与するポリシーの認可スコープは、AppProject単位にするとよい。</p>
-<p>AppProjectに所属するArgoCD系リソースのみへのアクセスを許可すれば、結果として特定のClusterへのデプロイのみを許可したことになる。</p>
+<p>ロールに付与するポリシーの認可スコープは、AppProject 単位にするとよい。</p>
+<p>AppProject に所属する ArgoCD 系リソースのみへのアクセスを許可すれば、結果として特定の Cluster へのデプロイのみを許可したことになる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>管理チーム (<code>app</code>、<code>infra</code>) 単位でAppProjectを作成したうえで、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。</p>
-<p>これにより、その管理チームに所属するエンジニアしかSyncできなくなる。</p>
+<p>管理チーム (<code>app</code>、<code>infra</code>) 単位で AppProject を作成したうえで、AppProject に所属する ArgoCD 系リソースのみに認可スコープを持つロールを定義する。</p>
+<p>これにより、その管理チームに所属するエンジニアしか Sync できなくなる。</p>
 <ul>
-<li><code>app</code> ロールに、<code>app</code> のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ</li>
+<li><code>app</code> ロールに、<code>app</code> の AppProject に所属する ArgoCD 系リソースのみを操作できる認可スコープ</li>
 <li><code>infra</code> ロールに、<code>infra</code> のみを操作できる認可スコープ</li>
 <li><code>maintainer</code> ロールに、<code>app</code> と <code>infra</code> の両方を操作できる認可スコープ</li>
 <li>認証グループに該当する認可ロールがなければ、<code>readonly</code> になる。</li>
@@ -35318,9 +35318,9 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>実行環境 (<code>dev</code>、<code>prd</code>) 別にAppProjectを作成したうえで、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。</p>
+<p>実行環境 (<code>dev</code>、<code>prd</code>) 別に AppProject を作成したうえで、AppProject に所属する ArgoCD 系リソースのみに認可スコープを持つロールを定義する。</p>
 <ul>
-<li><code>developer</code> ロールに、開発環境のAppProject内に所属するArgoCD系リソースのみを操作できる認可スコープ</li>
+<li><code>developer</code> ロールに、開発環境の AppProject 内に所属する ArgoCD 系リソースのみを操作できる認可スコープ</li>
 <li><code>maintainer</code> ロールに、開発環境と本番環境の両方を操作できる認可スコープ</li>
 <li>認証グループに該当する認可ロールがなければ、<code>readonly</code> になる。</li>
 </ul>
@@ -35346,12 +35346,12 @@
 <p><br></p>
 <h3 id="argocdid-sso">ArgoCDの認証をIDプロバイダーに委譲する場合 (SSOの場合)<a class="headerlink" href="#argocdid-sso" title="Permanent link">&para;</a></h3>
 <h4 id="id">▼ IDプロバイダーのチームに紐付ける場合<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
-<p>IDプロバイダーに委譲する場合、グループ名はIDプロバイダーで認証されたものにする必要がある。</p>
+<p>ID プロバイダーに委譲する場合、グループ名は ID プロバイダーで認証されたものにする必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>IDプロバイダー側で、チームによる認証グループがすでに存在しているとする。</p>
+<p>ID プロバイダー側で、チームによる認証グループがすでに存在しているとする。</p>
 <p>以下のように、ロールと認可スコープを紐付ける。</p>
 <ul>
-<li><code>app</code> ロールに、<code>app</code> のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ</li>
+<li><code>app</code> ロールに、<code>app</code> の AppProject に所属する ArgoCD 系リソースのみを操作できる認可スコープ</li>
 <li><code>infra</code> ロールに、<code>infra</code> のみを操作できる認可スコープ</li>
 <li><code>maintainer</code> ロールに、<code>app</code> と <code>infra</code> の両方を操作できる認可スコープ</li>
 <li>認証グループに該当する認可ロールがなければ、<code>readonly</code> になる。</li>
@@ -35378,11 +35378,11 @@
 <span class="w">  </span><span class="nt">scopes</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[groups]&quot;</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>IDプロバイダー側で、チームによる認証グループがすでに存在しているとする。</p>
-<p>実行環境 (<code>dev-*</code>、<code>prd-*</code>) 別にAppProjectを作成したうえで、AppProjectに所属するArgoCD系リソースのみに認可スコープを持つロールを定義する。</p>
+<p>ID プロバイダー側で、チームによる認証グループがすでに存在しているとする。</p>
+<p>実行環境 (<code>dev-*</code>、<code>prd-*</code>) 別に AppProject を作成したうえで、AppProject に所属する ArgoCD 系リソースのみに認可スコープを持つロールを定義する。</p>
 <p>以下のように、ロールと認可スコープを紐付ける。</p>
 <ul>
-<li><code>app</code> ロールに、<code>dev-app</code> のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ</li>
+<li><code>app</code> ロールに、<code>dev-app</code> の AppProject に所属する ArgoCD 系リソースのみを操作できる認可スコープ</li>
 <li><code>infra</code> ロールに、<code>dev-infra</code> のみを操作できる認可スコープ</li>
 <li><code>maintainer</code> ロールに、<code>dev-app</code> と <code>dev-infra</code> の両方を操作できる認可スコープ</li>
 <li>認証グループに該当する認可ロールがなければ、<code>readonly</code> になる。</li>
@@ -35416,10 +35416,10 @@
 </ul>
 </blockquote>
 <h4 id="id_1">▼ IDプロバイダーのメールアドレスに紐付ける場合<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h4>
-<p>IDプロバイダー側で、メールアドレスによる認証グループがすでに存在しているとする。</p>
+<p>ID プロバイダー側で、メールアドレスによる認証グループがすでに存在しているとする。</p>
 <p>以下のように、ロールと認可スコープを紐付ける。</p>
 <ul>
-<li><code>app</code> ロールに、<code>app</code> のAppProjectに所属するArgoCD系リソースのみを操作できる認可スコープ</li>
+<li><code>app</code> ロールに、<code>app</code> の AppProject に所属する ArgoCD 系リソースのみを操作できる認可スコープ</li>
 <li><code>infra</code> ロールに、<code>infra</code> のみを操作できる認可スコープ</li>
 <li><code>maintainer</code> ロールに、<code>app</code> と <code>infra</code> の両方を操作できる認可スコープ</li>
 <li>認証グループに該当する認可ロールがなければ、<code>readonly</code> になる。</li>
@@ -35454,10 +35454,10 @@
 <p><br></p>
 <h2 id="05-configmap">05. サーバー証明書系ConfigMap<a class="headerlink" href="#05-configmap" title="Permanent link">&para;</a></h2>
 <h3 id="configmap_1">サーバー証明書系ConfigMapとは<a class="headerlink" href="#configmap_1" title="Permanent link">&para;</a></h3>
-<p>argocd-server、repo-server、dex-server、はHTTPSリクエストを受信できる。</p>
-<p>これらのコンポーネントにHTTPSリクエストを送信する場合、ConfigMap上のサーバー証明書をクライアント側のコンテナにマウントする必要がある。</p>
-<p>反対にHTTPリクエストを送信する場合は、このConfigMapが不要である。</p>
-<p>ConfigMap上のサーバー証明書の代わりに、ArgoCD外のサーバー証明書 (例：Cert Manager) を使用しても良い。</p>
+<p>argocd-server、repo-server、dex-server、は HTTPS リクエストを受信できる。</p>
+<p>これらのコンポーネントに HTTPS リクエストを送信する場合、ConfigMap 上のサーバー証明書をクライアント側のコンテナにマウントする必要がある。</p>
+<p>反対に HTTP リクエストを送信する場合は、この ConfigMap が不要である。</p>
+<p>ConfigMap 上のサーバー証明書の代わりに、ArgoCD 外のサーバー証明書 (例：Cert Manager) を使用してもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration">https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration</a></li>
@@ -35465,8 +35465,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="argocd-dex-server-tls">argocd-dex-server-tls<a class="headerlink" href="#argocd-dex-server-tls" title="Permanent link">&para;</a></h3>
-<p>argocd-serverはdex-serverに対してHTTPSリクエストを送信する。</p>
-<p>このConfigMapは、そのためのサーバー証明書を管理する。</p>
+<p>argocd-server は dex-server に対して HTTPS リクエストを送信する。</p>
+<p>この ConfigMap は、そのためのサーバー証明書を管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-inbound-tls-for-argocd-dex-server">https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-inbound-tls-for-argocd-dex-server</a></li>
@@ -35474,8 +35474,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="argocd-repo-server-tls">argocd-repo-server-tls<a class="headerlink" href="#argocd-repo-server-tls" title="Permanent link">&para;</a></h3>
-<p>application-controller、argocd-server、はrepo-serverに対してHTTPSリクエストを送信する。</p>
-<p>このConfigMapは、そのためのサーバー証明書を管理する。</p>
+<p>application-controller、argocd-server、は repo-server に対して HTTPS リクエストを送信する。</p>
+<p>この ConfigMap は、そのためのサーバー証明書を管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components">https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components</a></li>
@@ -35483,8 +35483,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="argocd-server-tls">argocd-server-tls<a class="headerlink" href="#argocd-server-tls" title="Permanent link">&para;</a></h3>
-<p>クライアントはargocd-serverに対してHTTPSリクエストを送信する。</p>
-<p>このConfigMapは、そのためのサーバー証明書を管理する。</p>
+<p>クライアントは argocd-server に対して HTTPS リクエストを送信する。</p>
+<p>この ConfigMap は、そのためのサーバー証明書を管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-for-argocd-server">https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-for-argocd-server</a></li>
@@ -35492,9 +35492,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="argocd-tls-certs-cm">argocd-tls-certs-cm<a class="headerlink" href="#argocd-tls-certs-cm" title="Permanent link">&para;</a></h3>
-<p>ArgoCDは、ArgoCDの外 (特にリポジトリ) にHTTPSリクエストを送信する。</p>
-<p>ArgoCDでは、コンテナイメージの <code>/etc/ssl</code> ディレクトリにデフォルトのサーバー証明書が配置されているが、ユーザー定義のサーバー証明書を使用したい場合がある。</p>
-<p>このConfigMapは、そのためのユーザー定義のサーバー証明書を管理する。</p>
+<p>ArgoCD は、ArgoCD の外 (特にリポジトリ) に HTTPS リクエストを送信する。</p>
+<p>ArgoCD では、コンテナイメージの <code>/etc/ssl</code> ディレクトリにデフォルトのサーバー証明書が配置されているが、ユーザー定義のサーバー証明書を使用したい場合がある。</p>
+<p>この ConfigMap は、そのためのユーザー定義のサーバー証明書を管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca">https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca</a></li>
@@ -35503,8 +35503,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="06-argocd-ssh-known-hosts-cm">06. argocd-ssh-known-hosts-cm<a class="headerlink" href="#06-argocd-ssh-known-hosts-cm" title="Permanent link">&para;</a></h2>
-<p>SSH公開鍵認証でリポジトリに接続してポーリングする場合、argocd-serverで必要な <code>known_hosts</code> ファイルを設定する。</p>
-<p><code>known_hosts</code> ファイルには、SSHプロコトルに必要なホスト名や秘密鍵を設定する。</p>
+<p>SSH 公開鍵認証でリポジトリに接続してポーリングする場合、argocd-server で必要な <code>known_hosts</code> ファイルを設定する。</p>
+<p><code>known_hosts</code> ファイルには、SSH プロコトルに必要なホスト名や秘密鍵を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35533,8 +35533,8 @@
 <h2 id="07">07. 環境変数<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="application-controller_1">application-controller<a class="headerlink" href="#application-controller_1" title="Permanent link">&para;</a></h3>
 <h4 id="argocd_controller_replicas">▼ ARGOCD_CONTROLLER_REPLICAS<a class="headerlink" href="#argocd_controller_replicas" title="Permanent link">&para;</a></h4>
-<p>application-controllerのレプリカ数を設定する。</p>
-<p>これを設定しないと、application-controllerを冗長化しても、処理が片方のレプリカに偏ってしまう。</p>
+<p>application-controller のレプリカ数を設定する。</p>
+<p>これを設定しないと、application-controller を冗長化しても、処理が片方のレプリカに偏ってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35552,8 +35552,8 @@
 <p><br></p>
 <h3 id="argocd-server_1">argocd-server<a class="headerlink" href="#argocd-server_1" title="Permanent link">&para;</a></h3>
 <h4 id="argocd_api_server_replicas">▼ ARGOCD_API_SERVER_REPLICAS<a class="headerlink" href="#argocd_api_server_replicas" title="Permanent link">&para;</a></h4>
-<p>argocd-serverのレプリカ数を設定する。</p>
-<p>これを設定しないと、argocd-serverを冗長化しても、処理が片方のレプリカに偏ってしまう。</p>
+<p>argocd-server のレプリカ数を設定する。</p>
+<p>これを設定しないと、argocd-server を冗長化しても、処理が片方のレプリカに偏ってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35589,7 +35589,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 19:04:20 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

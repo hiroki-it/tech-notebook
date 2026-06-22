@@ -35277,10 +35277,10 @@
 <h2 id="01-playbook">01. playbookファイル<a class="headerlink" href="#01-playbook" title="Permanent link">&para;</a></h2>
 <h3 id="playbook">playbookファイルとは<a class="headerlink" href="#playbook" title="Permanent link">&para;</a></h3>
 <p>サーバーのセットアップ処理を設定する。</p>
-<p>処理を <code>roles</code> ディレクトリに切り分けても良い。</p>
+<p>処理を <code>roles</code> ディレクトリに切り分けてもよい。</p>
 <p>切り分ける場合、<code>roles</code> ディレクトリを作業ディレクトリとし、相対パスでファイルを指定することになる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Appサーバー、DBサーバー、Webサーバーをセットアップする。</p>
+<p>App サーバー、DB サーバー、Web サーバーをセットアップする。</p>
 <p>各コンポーネントは <code>roles</code> ディレクトリに切り分けている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># roleファイル</span>
 <span class="c1"># Appサーバー</span>
@@ -35345,8 +35345,8 @@
 </ul>
 </blockquote>
 <h4 id="handlers">▼ handlersディレクトリ<a class="headerlink" href="#handlers" title="Permanent link">&para;</a></h4>
-<p>taskファイルの後続処理が設定されたhandlerファイルを配置する。</p>
-<p>taskファイルの <code>notify</code> オプションで指定できる。</p>
+<p>task ファイルの後続処理が設定された handler ファイルを配置する。</p>
+<p>task ファイルの <code>notify</code> オプションで指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># handlerファイル</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Restart php-fpm</span>
 <span class="w">  </span><span class="nt">service</span><span class="p">:</span>
@@ -35363,9 +35363,9 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">restart_php-fpm</span>
 </code></pre></div>
 <h4 id="task">▼ taskディレクトリ<a class="headerlink" href="#task" title="Permanent link">&para;</a></h4>
-<p>playbookファイルから切り分けたセットアップ処理が設定されたtaskファイルを配置する。</p>
+<p>playbook ファイルから切り分けたセットアップ処理が設定された task ファイルを配置する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>PHP製のアプリケーションが稼働するAppサーバーをセットアップする。</p>
+<p>PHP 製のアプリケーションが稼働する App サーバーをセットアップする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># taskファイル</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install software-properties-common</span>
 <span class="w">  </span><span class="nt">ansible.builtin.apt</span><span class="p">:</span>
@@ -35471,7 +35471,7 @@
 <h3 id="inventories">inventoriesディレクトリ<a class="headerlink" href="#inventories" title="Permanent link">&para;</a></h3>
 <h4 id="inventories_1">▼ inventoriesディレクトリとは<a class="headerlink" href="#inventories_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードの情報を設定する。</p>
-<p>Ansibleの実行時に、<code>-i</code> オプションでディレクトリを指定する。</p>
+<p>Ansible の実行時に、<code>-i</code> オプションでディレクトリを指定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge">https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge</a></li>
@@ -35482,7 +35482,7 @@
 <h4 id="inventory">▼ inventoryファイル<a class="headerlink" href="#inventory" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードを設定する。</p>
 <p>複数の拡張子 (<code>ini</code> 形式、<code>yml</code> 形式、<code>json</code> 形式) で定義でき、<code>ansible-inventory</code> コマンドで <code>ini</code> 形式から他の形式に変換できる。</p>
-<p>ただし、<code>ini</code> 形式の場合は拡張子をつけないほうが良い。実行環境 (本番/ステージング) 別にファイルを切り分けると良い。</p>
+<p>ただし、<code>ini</code> 形式の場合は拡張子をつけないほうがよい。実行環境 (本番/ステージング) 別にファイルを切り分けるとよい。</p>
 <p>また、サーバーを冗長化している場合は、これも別々に定義しておく。</p>
 <p>プロビジョニングの実行対象はロードバランサーから一時的に切り離すようにすることにより、プロビジョニングに伴ってインシデントが起こっても、ユーザーへの影響を防げる。</p>
 <blockquote>
@@ -35640,7 +35640,7 @@
 <p><br></p>
 <h2 id="02-roleshandlers">02. /roles/handlersセクション<a class="headerlink" href="#02-roleshandlers" title="Permanent link">&para;</a></h2>
 <h3 id="handlers_1">handlersセクションとは<a class="headerlink" href="#handlers_1" title="Permanent link">&para;</a></h3>
-<p>taskセクションの後に実行するセットアップ処理を設定する。</p>
+<p>task セクションの後に実行するセットアップ処理を設定する。</p>
 <p><br></p>
 <h2 id="02-02-rolestargets">02-02. /roles/targetsセクション<a class="headerlink" href="#02-02-rolestargets" title="Permanent link">&para;</a></h2>
 <h3 id="targets">targetsセクションとは<a class="headerlink" href="#targets" title="Permanent link">&para;</a></h3>
@@ -35666,8 +35666,8 @@
 <p><br></p>
 <h3 id="become">become<a class="headerlink" href="#become" title="Permanent link">&para;</a></h3>
 <h4 id="become_1">▼ becomeとは<a class="headerlink" href="#become_1" title="Permanent link">&para;</a></h4>
-<p>プレイをroot権限 (sudo権限) で実行するか否かを設定する。</p>
-<p>root以外であれば、<code>become_user</code> キーを設定する。</p>
+<p>プレイを root 権限 (sudo 権限) で実行するか否かを設定する。</p>
+<p>root 以外であれば、<code>become_user</code> キーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yes</span>
 <span class="w">  </span><span class="nt">become_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-user</span>
 </code></pre></div>
@@ -35689,7 +35689,7 @@
 <p><br></p>
 <h3 id="ansiblebuiltinapt">ansible.builtin.apt<a class="headerlink" href="#ansiblebuiltinapt" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinapt_1">▼ ansible.builtin.aptとは<a class="headerlink" href="#ansiblebuiltinapt_1" title="Permanent link">&para;</a></h4>
-<p>管理対象ノードで、パッケージをaptリポジトリからインストールする。</p>
+<p>管理対象ノードで、パッケージを apt リポジトリからインストールする。</p>
 <p>任意のバージョンのパッケージをインストールする場合は、<code>name</code> キーにそれを指定し、<code>state</code> キーの値は <code>present</code> とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># nginxをインストールします。</span>
@@ -35707,7 +35707,7 @@
 <p><br></p>
 <h3 id="ansiblebuiltindnf">ansible.builtin.dnf<a class="headerlink" href="#ansiblebuiltindnf" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltindnf_1">▼ ansible.builtin.dnfとは<a class="headerlink" href="#ansiblebuiltindnf_1" title="Permanent link">&para;</a></h4>
-<p>管理対象ノードで、パッケージをdnfリポジトリからインストールする。</p>
+<p>管理対象ノードで、パッケージを dnf リポジトリからインストールする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># cloudwatchエージェントをインストールする。</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install amazon-cloudwatch-agent</span>
@@ -35772,7 +35772,7 @@
 <h4 id="ansiblebuiltinlineinfile_1">▼ ansible.builtin.lineinfileとは<a class="headerlink" href="#ansiblebuiltinlineinfile_1" title="Permanent link">&para;</a></h4>
 <p>管理対象ノードにあるファイルを行単位で編集する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>SELinuxを無効化する。</p>
+<p>SELinux を無効化する。</p>
 <blockquote>
 <ul>
 <li><a href="https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook">https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook</a></li>
@@ -36001,8 +36001,8 @@
 <p><br></p>
 <h3 id="ansiblebuiltinyum">ansible.builtin.yum<a class="headerlink" href="#ansiblebuiltinyum" title="Permanent link">&para;</a></h3>
 <h4 id="ansiblebuiltinyum_1">▼ ansible.builtin.yumとは<a class="headerlink" href="#ansiblebuiltinyum_1" title="Permanent link">&para;</a></h4>
-<p>管理対象ノードで、パッケージをyumリポジトリからインストールする。</p>
-<p>代わりに <code>ansible.builtin.dnf</code> モジュールを使うと良い。</p>
+<p>管理対象ノードで、パッケージを yum リポジトリからインストールする。</p>
+<p>代わりに <code>ansible.builtin.dnf</code> モジュールを使うとよい。</p>
 <p><br></p>
 <h3 id="ansible_env">ansible_env<a class="headerlink" href="#ansible_env" title="Permanent link">&para;</a></h3>
 <h4 id="ansible_env_1">▼ ansible_envとは<a class="headerlink" href="#ansible_env_1" title="Permanent link">&para;</a></h4>
@@ -36025,7 +36025,7 @@
 <p><br></p>
 <h3 id="environment">environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h3>
 <h4 id="environment_1">▼ environmentとは<a class="headerlink" href="#environment_1" title="Permanent link">&para;</a></h4>
-<p>task内で出力できる環境変数を設定する。</p>
+<p>task 内で出力できる環境変数を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html">https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html</a></li>
@@ -36085,8 +36085,8 @@
 <p><br></p>
 <h2 id="03-aws">03. AWS<a class="headerlink" href="#03-aws" title="Permanent link">&para;</a></h2>
 <h3 id="amazonawsec2_ami">amazon.aws.ec2_ami<a class="headerlink" href="#amazonawsec2_ami" title="Permanent link">&para;</a></h3>
-<p>Amazon EC2を作成する。</p>
-<p>これはTerraformでも代替できる。</p>
+<p>Amazon EC2 を作成する。</p>
+<p>これは Terraform でも代替できる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic AMI Creation</span>
 <span class="w">  </span><span class="nt">amazon.aws.ec2_ami</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">instance_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">i-xxxxxx</span>
@@ -36134,7 +36134,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

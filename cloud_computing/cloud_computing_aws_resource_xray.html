@@ -34795,17 +34795,17 @@
 <h2 id="01-x-ray">01. X-Rayとは<a class="headerlink" href="#01-x-ray" title="Permanent link">&para;</a></h2>
 <h3 id="_2">仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>分散トレースの監視バックエンドかつ監視フロントエンドとして機能する。</p>
-<p>計装したアプリからX-Rayデーモン (EC2、Amazon ECS) またはOpenTelemetry Collector (Amazon EKS) にスパンを送信し、X-Rayで分散トレースを監視できるようになる。</p>
-<p>サービスメッシュツール (例：Amazon VPC Lattice、Istio) によって、X-RayデーモンまたはOpenTelemetry Collectorのいずれに送信すれば良いのかが異なる。</p>
+<p>計装したアプリから X-Ray デーモン (EC2、Amazon ECS) または OpenTelemetry Collector (Amazon EKS) にスパンを送信し、X-Ray で分散トレースを監視できるようになる。</p>
+<p>サービスメッシュツール (例：Amazon VPC Lattice、Istio) によって、X-Ray デーモンまたは OpenTelemetry Collector のいずれに送信すればよいのかが異なる。</p>
 <p><br></p>
 <h3 id="_3">計装パッケージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
-<li>X-Ray SDK (X-Rayデーモンに送る場合)</li>
-<li>OpenTelemetryクライアント (OpenTelemetry Collectorに送る場合)</li>
+<li>X-Ray SDK (X-Ray デーモンに送る場合)</li>
+<li>OpenTelemetry クライアント (OpenTelemetry Collector に送る場合)</li>
 </ul>
 <p><br></p>
 <h3 id="x-ray">X-Rayデーモン<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h3>
-<p>EC2であればデーモンプロセスとして、Amazon ECSであればサイドカーとして稼働させる。</p>
+<p>EC2 であればデーモンプロセスとして、Amazon ECS であればサイドカーとして稼働させる。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/re-introduction-2022-x-ray/">https://dev.classmethod.jp/articles/re-introduction-2022-x-ray/</a></li>
@@ -34813,7 +34813,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="opentelemetry-collector">OpenTelemetry Collector<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h3>
-<p>Amazon EKSでDamonSetとして稼働させる。</p>
+<p>Amazon EKS で DamonSet として稼働させる。</p>
 <p>執筆時点 (2024/02/28) ではサイドカーはサポートしていない。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ (コンソールの場合)<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -34906,7 +34906,7 @@
 <div class="highlight"><pre><span></span><code>http.url<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://example.com/foo&quot;</span>
 </code></pre></div>
 <h4 id="_9">▼ 時間<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>レスポンス時間でトレースIDをフィルタリングする。</p>
+<p>レスポンス時間でトレース ID をフィルタリングする。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># レスポンス時間が5秒以上のスパン</span>
 responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w"> </span><span class="m">5</span>
@@ -34920,7 +34920,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </ul>
 </blockquote>
 <h4 id="http">▼ HTTPヘッダー<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>HTTPヘッダー値でトレースIDをフィルタリングする。</p>
+<p>HTTP ヘッダー値でトレース ID をフィルタリングする。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>http.status<span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="m">200</span>
 </code></pre></div>
@@ -34932,11 +34932,11 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </ul>
 </blockquote>
 <h4 id="aws">▼ AWSリソース<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
-<p>AWSリソース名でトレースIDをフィルタリングする。</p>
+<p>AWS リソース名でトレース ID をフィルタリングする。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>service<span class="o">(</span><span class="s2">&quot;&lt;AWSリソース名&gt;&quot;</span><span class="o">)</span>
 </code></pre></div>
-<p>タイプを指定することで、異なるタイプの同名のAWSリソースを区別できる。</p>
+<p>タイプを指定することで、異なるタイプの同名の AWS リソースを区別できる。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>service<span class="o">(</span>id<span class="o">(</span>name:<span class="w"> </span><span class="s2">&quot;&lt;AWSリソース名&gt;&quot;</span>,<span class="w"> </span>type:<span class="w"> </span><span class="s2">&quot;AWS::EC2::Instance&quot;</span><span class="o">))</span>
 </code></pre></div>
@@ -34946,7 +34946,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </ul>
 </blockquote>
 <h4 id="aws_1">▼ 送信元/宛先のAWSリソース<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h4>
-<p>送信元と宛先のAWSリソース名でトレースIDをフィルタリングする。</p>
+<p>送信元と宛先の AWS リソース名でトレース ID をフィルタリングする。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>edge<span class="o">(</span><span class="s2">&quot;&lt;送信元AWSリソース名&gt;&quot;</span>,<span class="w"> </span><span class="s2">&quot;&lt;宛先AWSリソース名&gt;&quot;</span><span class="o">)</span>
 </code></pre></div>
@@ -34956,12 +34956,12 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </ul>
 </blockquote>
 <h4 id="_10">▼ アノテーション<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>ユーザー定義のラベルでトレースIDをフィルタリングする。</p>
+<p>ユーザー定義のラベルでトレース ID をフィルタリングする。</p>
 <p><strong>＊実行例＊</strong></p>
-<p>アノテーション値でトレースIDをフィルタリングする。</p>
+<p>アノテーション値でトレース ID をフィルタリングする。</p>
 <div class="highlight"><pre><span></span><code>annotation.otel_resource_component<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;コンポーネント名&gt;&quot;</span>
 </code></pre></div>
-<p>各言語のSDKの関数でラベルを設定できる。</p>
+<p>各言語の SDK の関数でラベルを設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Goの場合</span>
 <span class="nx">xray</span><span class="p">.</span><span class="nx">AddAnnotation</span><span class="p">(</span><span class="s">&quot;component&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span>
 </code></pre></div>
@@ -34978,13 +34978,13 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 <p><br></p>
 <h3 id="_11">テレメトリー間の連携<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-cloudwatch-logs">▼ Amazon CloudWatch Logsとの連携<a class="headerlink" href="#amazon-cloudwatch-logs" title="Permanent link">&para;</a></h4>
-<p>あらかじめ、分散トレースに紐づくログがあるロググループ名を設定し、またログにはX-Ray仕様のトレースIDを出力しておく必要がある。</p>
+<p>あらかじめ、分散トレースに紐づくログがあるロググループ名を設定し、またログには X-Ray 仕様のトレース ID を出力しておく必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/k6s4i53rx/articles/69ef65b84dd799#%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95">https://zenn.dev/k6s4i53rx/articles/69ef65b84dd799#%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95</a></li>
 </ul>
 </blockquote>
-<p>X-Rayの画面では、分散トレースのトレースIDに応じて、以下のようなログクエリをロググループに自動発行する。</p>
+<p>X-Ray の画面では、分散トレースのトレース ID に応じて、以下のようなログクエリをロググループに自動発行する。</p>
 <p>これにより、分散トレースとログを紐づけられる。</p>
 <div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="n">log</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
 <span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="ss">&quot;&lt;ログに付与したX-RayトレースID&gt;&quot;</span>
@@ -35056,8 +35056,8 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 <p><br></p>
 <h3 id="id">ID系<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
 <h4 id="id_1">▼ <code>id</code><a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h4>
-<p>セグメントIDを持つ。</p>
-<p>W3C Trace Context仕様のルートスパンのIDに相当する。</p>
+<p>セグメント ID を持つ。</p>
+<p>W3C Trace Context 仕様のルートスパンの ID に相当する。</p>
 <h4 id="trace_id">▼ <code>trace_id</code> キー<a class="headerlink" href="#trace_id" title="Permanent link">&para;</a></h4>
 <p>セグメントとサブセグメントを紐づける。</p>
 <p><code>&lt;バージョン&gt;-&lt;ルートセグメントのタイプスタンプ&gt;-&lt;サブセグメントごとのユニークID&gt;</code> からなる。</p>
@@ -35068,13 +35068,13 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </ul>
 </blockquote>
 <h4 id="parent_id">▼ <code>parent_id</code> キー<a class="headerlink" href="#parent_id" title="Permanent link">&para;</a></h4>
-<p>親のサブセグメントIDを持つ。</p>
-<p>W3C Trace Context仕様のスパンのIDに相当する。</p>
+<p>親のサブセグメント ID を持つ。</p>
+<p>W3C Trace Context 仕様のスパンの ID に相当する。</p>
 <p><br></p>
 <h3 id="_15">サブセグメント系<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="subsegments">▼ <code>subsegments</code> キー<a class="headerlink" href="#subsegments" title="Permanent link">&para;</a></h4>
 <p>サグセグメントの情報を持つ。</p>
-<p>例えば、サブセグメントIDであれば <code>&lt;サブセグメントごとのユニークID&gt;</code> になる。</p>
+<p>例えば、サブセグメント ID であれば <code>&lt;サブセグメントごとのユニークID&gt;</code> になる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;subsegments&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
@@ -35106,7 +35106,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 <p><br></p>
 <h3 id="_16">リクエスト系<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="http_1">▼ <code>http</code> キー<a class="headerlink" href="#http_1" title="Permanent link">&para;</a></h4>
-<p>スパンのHTTPリクエストの情報を持つ。</p>
+<p>スパンの HTTP リクエストの情報を持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;http&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -35123,7 +35123,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 <p><br></p>
 <h3 id="aws_2">AWSリソース系<a class="headerlink" href="#aws_2" title="Permanent link">&para;</a></h3>
 <h4 id="aws_3">▼ <code>aws</code> キー<a class="headerlink" href="#aws_3" title="Permanent link">&para;</a></h4>
-<p>スパンの作成元のAWSリソース情報を持つ。</p>
+<p>スパンの作成元の AWS リソース情報を持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># AWSリソース情報</span>
 <span class="w">  </span><span class="s">&quot;aws&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
@@ -35174,7 +35174,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 </blockquote>
 <p><br></p>
 <h3 id="sql">SQL<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスが実行したSQLの情報を持つ。</p>
+<p>マイクロサービスが実行した SQL の情報を持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;sql&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -35515,8 +35515,8 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
 <p><br></p>
 <h2 id="06-aws-lambda">06. AWS Lambdaの場合<a class="headerlink" href="#06-aws-lambda" title="Permanent link">&para;</a></h2>
 <h3 id="_26">初期化<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
-<p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
-<p>X-Rayのパッケージを初期化する。</p>
+<p>ここでは、フレームワークなしで Go アプリケーションを作成しているとする。</p>
+<p>X-Ray のパッケージを初期化する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35675,7 +35675,7 @@ responsetime<span class="w"> </span>&gt;<span class="o">=</span><span class="w">
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

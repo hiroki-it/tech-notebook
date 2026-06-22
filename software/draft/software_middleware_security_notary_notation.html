@@ -33272,7 +33272,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>notation<span class="w"> </span>policy<span class="w"> </span>import<span class="w"> </span>&lt;信頼ポリシー名&gt;
 </code></pre></div>
 <p><strong>＊実行例＊</strong></p>
-<p>AWS Signerを使用するために、信頼ポリシーを読み込む。</p>
+<p>AWS Signer を使用するために、信頼ポリシーを読み込む。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>notation<span class="w"> </span>policy<span class="w"> </span>import<span class="w"> </span>aws/signer_policy.json
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -33303,7 +33303,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>notation<span class="w"> </span>sign<span class="w"> </span>&lt;イメージ名&gt;
 </code></pre></div>
 <p><strong>＊実行例＊</strong></p>
-<p>AWS Signerにある署名プロファイルを使用し、Amazon ECR上でのコンテナイメージを署名する。</p>
+<p>AWS Signer にある署名プロファイルを使用し、Amazon ECR 上でのコンテナイメージを署名する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>notation<span class="w"> </span>sign<span class="w"> </span>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--plugin<span class="w"> </span><span class="s2">&quot;com.amazonaws.signer.notation.plugin&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--id<span class="w"> </span>arn:aws:signer:ap-northeast:&lt;AWSアカウントID&gt;:/signing-profiles/&lt;署名プロファイル名&gt;
@@ -33314,7 +33314,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>notation<span class="w"> </span>verify<span class="w"> </span>&lt;イメージ名&gt;
 </code></pre></div>
 <p><strong>＊実行例＊</strong></p>
-<p>AWS Signerにある署名プロファイルを使用し、Amazon ECR上でのコンテナイメージの署名を検証する。</p>
+<p>AWS Signer にある署名プロファイルを使用し、Amazon ECR 上でのコンテナイメージの署名を検証する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>notation<span class="w"> </span>verify<span class="w"> </span>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest
 </code></pre></div>
 <p><br></p>
@@ -33338,7 +33338,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

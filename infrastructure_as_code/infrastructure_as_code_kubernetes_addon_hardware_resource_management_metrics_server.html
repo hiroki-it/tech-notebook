@@ -34028,27 +34028,27 @@
 <p><br></p>
 <h2 id="01-metrics-server">01. metrics-serverの仕組み<a class="headerlink" href="#01-metrics-server" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>metrics-serverは、拡張APIサーバー、ローカルストレージ、スクレイパー、といったコンポーネントから構成される。</p>
-<p>PodとNodeのメトリクスの元になるデータポイントを収集し、<code>kubectl top</code> コマンドでこれを取得できる。</p>
-<p>また必須ではないが、HorizontalPodAutoscalerとVerticalPodAutoscalerを作成すれば、Podの自動水平スケーリングや自動垂直スケーリングを実行できる。</p>
-<p>KubernetesのNodeとPod (それ以外のKubernetesリソースは対象外) のメトリクスの元になるデータポイントを収集しつつ、収集したデータポイントを拡張APIサーバーで公開する。</p>
-<p>似た名前のツールにkube-metrics-serverがあるが、こちらはExporterとして稼働する。</p>
+<p>metrics-server は、拡張 API サーバー、ローカルストレージ、スクレイパー、といったコンポーネントから構成される。</p>
+<p>Pod と Node のメトリクスの元になるデータポイントを収集し、<code>kubectl top</code> コマンドでこれを取得できる。</p>
+<p>また必須ではないが、HorizontalPodAutoscaler と VerticalPodAutoscaler を作成すれば、Pod の自動水平スケーリングや自動垂直スケーリングを実行できる。</p>
+<p>Kubernetes の Node と Pod (それ以外の Kubernetes リソースは対象外) のメトリクスの元になるデータポイントを収集しつつ、収集したデータポイントを拡張 API サーバーで公開する。</p>
+<p>似た名前のツールに kube-metrics-server があるが、こちらは Exporter として稼働する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>クライアント (<code>kubectl top</code> コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) がmetrics-serverのAPIからメトリクスを参照しようとする。</p>
+<p>クライアント (<code>kubectl top</code> コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) が metrics-server の API からメトリクスを参照しようとする。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>クライアントは、kube-apiserverにリクエストが送信する。</p>
+<p>クライアントは、kube-apiserver にリクエストが送信する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>kube-apiserverは、metrics-serverのプロキシ (APIService) にリクストをフォワーディングする。</p>
+<p>kube-apiserver は、metrics-server のプロキシ (APIService) にリクストをフォワーディングする。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>APIServiceは、クライアントにメトリクスを返信する。</p>
+<p>APIService は、クライアントにメトリクスを返信する。</p>
 </dd>
 </dl>
 <p><img alt="kubernetes_metrics-server" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png" /></p>
@@ -34062,7 +34062,7 @@
 <p><br></p>
 <h3 id="api">拡張APIサーバー<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <h4 id="api_1">▼ 拡張APIサーバーとは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
-<p>拡張APIサーバーは、ServiceとAPIServiceを介して、クライアント (<code>kubectl top</code> コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスの元になるデータポイントを含むレスポンスを返信する。</p>
+<p>拡張 API サーバーは、Service と APIService を介して、クライアント (<code>kubectl top</code> コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスの元になるデータポイントを含むレスポンスを返信する。</p>
 <p>データポイントはローカルストレージに保管している。</p>
 <blockquote>
 <ul>
@@ -34072,12 +34072,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">ローカルストレージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>ローカルストレージは、クライアント (<code>kubectl top</code> コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっているPodやNodeのメトリクスの元になるデータポイントを保管する。</p>
+<p>ローカルストレージは、クライアント (<code>kubectl top</code> コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) 宛先となっている Pod や Node のメトリクスの元になるデータポイントを保管する。</p>
 <p><br></p>
 <h3 id="_4">スクレイパー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>スクレイパーは、kubeletのデーモンからPodやNodeからメトリクスの元になるデータポイントを定期的に収集し、ローカルストレージに保管する。</p>
-<p>kubeletのデーモンはデータポイント収集用エンドポイント (例：<code>/metrics/resource</code>、<code>/stats</code> など) を持ち、これがスクレイパーの収集対象になる。</p>
-<p>そのため、PodやNodeにデータポイント収集用エンドポイント (例：<code>/metrics</code>) を設ける必要はない。</p>
+<p>スクレイパーは、kubelet のデーモンから Pod や Node からメトリクスの元になるデータポイントを定期的に収集し、ローカルストレージに保管する。</p>
+<p>kubelet のデーモンはデータポイント収集用エンドポイント (例：<code>/metrics/resource</code>、<code>/stats</code> など) を持ち、これがスクレイパーの収集対象になる。</p>
+<p>そのため、Pod や Node にデータポイント収集用エンドポイント (例：<code>/metrics</code>) を設ける必要はない。</p>
 <p><img alt="metrics-server_scraper" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png" /></p>
 <blockquote>
 <ul>
@@ -34183,7 +34183,7 @@
 <h2 id="02-kubectl-top">02. <code>kubectl top</code> コマンド<a class="headerlink" href="#02-kubectl-top" title="Permanent link">&para;</a></h2>
 <h3 id="node">node<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="node_1">▼ nodeとは<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h4>
-<p>Nodeのハードウェアリソースの消費量を取得する。</p>
+<p>Node のハードウェアリソースの消費量を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Nodeのメトリクスを取得</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>node
 
@@ -34192,7 +34192,7 @@ foo-node<span class="w">   </span>174m<span class="w">         </span><span clas
 bar-node<span class="w">   </span>2917m<span class="w">        </span><span class="m">82</span>%<span class="w">    </span>16455Mi<span class="w">         </span><span class="m">57</span>%
 baz-node<span class="w">   </span>352m<span class="w">         </span><span class="m">4</span>%<span class="w">     </span>9430Mi<span class="w">          </span><span class="m">33</span>%
 </code></pre></div>
-<p>また、クライアントがHorizontalPodAutoscalerやVerticalPodAutoscalerの場合は、kube-apiserverを介して拡張APIサーバーからNodeやPodのメトリクスを取得する。そして、Podをオートスケーリングする。</p>
+<p>また、クライアントが HorizontalPodAutoscaler や VerticalPodAutoscaler の場合は、kube-apiserver を介して拡張 API サーバーから Node や Pod のメトリクスを取得する。そして、Pod をオートスケーリングする。</p>
 <p><img alt="horizontal-pod-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png" /></p>
 <blockquote>
 <ul>
@@ -34200,7 +34200,7 @@ baz-node<span class="w">   </span>352m<span class="w">         </span><span clas
 </ul>
 </blockquote>
 <h4 id="_5">▼ デバッグ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>metrics-serverが正しく動作していない場合、Nodeのハードウェアリソースの消費量が <code>&lt;unknown&gt;</code> になる。</p>
+<p>metrics-server が正しく動作していない場合、Node のハードウェアリソースの消費量が <code>&lt;unknown&gt;</code> になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>node
 
 NAME<span class="w">      </span>CPU<span class="o">(</span>cores<span class="o">)</span><span class="w">  </span>CPU%<span class="w">       </span>MEMORY<span class="o">(</span>bytes<span class="o">)</span><span class="w">  </span>MEMORY%
@@ -34216,15 +34216,15 @@ node-2<span class="w">    </span>&lt;unknown&gt;<span class="w">   </span>&lt;un
 <p><br></p>
 <h3 id="pod">pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
 <h4 id="pod_1">▼ podとは<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
-<p>Podのハードウェアリソースの消費量を取得する。</p>
+<p>Pod のハードウェアリソースの消費量を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
 NAME<span class="w">      </span>CPU<span class="o">(</span>cores<span class="o">)</span><span class="w">   </span>MEMORY<span class="o">(</span>bytes<span class="o">)</span>
 foo-pod<span class="w">   </span>5m<span class="w">           </span>104Mi
 </code></pre></div>
 <h4 id="-containers">▼ --containers<a class="headerlink" href="#-containers" title="Permanent link">&para;</a></h4>
-<p>Podのコンテナに関して、ハードウェアリソースの消費量を取得する。</p>
-<p>コンテナのKubernetesリソース使用量を足した値が、Pod内で使用するリソース消費量になる。</p>
+<p>Pod のコンテナに関して、ハードウェアリソースの消費量を取得する。</p>
+<p>コンテナの Kubernetes リソース使用量を足した値が、Pod 内で使用するリソース消費量になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>pod<span class="w"> </span>--container<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 
 POD<span class="w">       </span>NAME<span class="w">            </span>CPU<span class="o">(</span>cores<span class="o">)</span><span class="w">   </span>MEMORY<span class="o">(</span>bytes<span class="o">)</span>
@@ -34232,7 +34232,7 @@ foo-pod<span class="w">   </span>foo-container<span class="w">   </span>1m<span 
 foo-pod<span class="w">   </span>istio-proxy<span class="w">     </span>5m<span class="w">           </span>85Mi
 </code></pre></div>
 <h4 id="_6">▼ デバッグ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>metrics-serverが正しく動作していない場合、Podのハードウェアリソースの消費量が <code>&lt;unknown&gt;</code> になる。</p>
+<p>metrics-server が正しく動作していない場合、Pod のハードウェアリソースの消費量が <code>&lt;unknown&gt;</code> になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>top<span class="w"> </span>pod
 
 NAME<span class="w">       </span>CPU<span class="o">(</span>cores<span class="o">)</span><span class="w">  </span>CPU%<span class="w">       </span>MEMORY<span class="o">(</span>bytes<span class="o">)</span><span class="w">  </span>MEMORY%
@@ -34247,10 +34247,10 @@ foo-pod<span class="w">    </span>&lt;unknown&gt;<span class="w">   </span>&lt;u
 <h2 id="03-pod">03. Podの自動水平スケーリング/自動垂直スケーリング<a class="headerlink" href="#03-pod" title="Permanent link">&para;</a></h2>
 <h3 id="horizontalpodautoscaler">HorizontalPodAutoscaler<a class="headerlink" href="#horizontalpodautoscaler" title="Permanent link">&para;</a></h3>
 <h4 id="horizontalpodautoscaler_1">▼ HorizontalPodAutoscalerとは<a class="headerlink" href="#horizontalpodautoscaler_1" title="Permanent link">&para;</a></h4>
-<p>Deployment、StatefulSet、ReplicaSetの単位でPodの自動水平スケーリングを実行する。</p>
-<p>metrics-serverから取得したPodに関するメトリクス値とターゲット値を比較し、kubeletを介して、Podをスケールアウト/スケールインさせる。</p>
+<p>Deployment、StatefulSet、ReplicaSet の単位で Pod の自動水平スケーリングを実行する。</p>
+<p>metrics-server から取得した Pod に関するメトリクス値とターゲット値を比較し、kubelet を介して、Pod をスケールアウト/スケールインさせる。</p>
 <p>設定されたターゲットを超過しているようであればスケールアウトし、反対に下回っていればスケールインする。</p>
-<p>HorizontalPodAutoscalerを使用するためには、metrics-serverも別途インストールしておく必要がある。</p>
+<p>HorizontalPodAutoscaler を使用するためには、metrics-server も別途インストールしておく必要がある。</p>
 <p><img alt="horizontal-pod-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png" /></p>
 <blockquote>
 <ul>
@@ -34259,21 +34259,21 @@ foo-pod<span class="w">    </span>&lt;unknown&gt;<span class="w">   </span>&lt;u
 </ul>
 </blockquote>
 <h4 id="pod_2">▼ 最大Pod数の求め方<a class="headerlink" href="#pod_2" title="Permanent link">&para;</a></h4>
-<p>オートスケーリング時の現在のPod数は、次の計算式で算出される。</p>
+<p>オートスケーリング時の現在の Pod 数は、次の計算式で算出される。</p>
 <p>算出結果に基づいて、スケールアウト/スケールインが実行される。</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">必要な最大</span><span class="n">Pod</span><span class="err">数</span><span class="p">)</span>
 <span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="err">現在の</span><span class="n">Pod</span><span class="err">数</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">(</span><span class="err">現在の</span><span class="n">Pod</span><span class="err">の</span><span class="n">CPU</span><span class="err">平均使用率</span><span class="p">)</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="p">(</span><span class="err">現在の</span><span class="n">Pod</span><span class="err">の</span><span class="n">CPU</span><span class="err">使用率のターゲット値</span><span class="p">)</span>
 </code></pre></div>
 <p>例えば、『<code>現在のPod数 = 5</code>』『<code>現在のPodのCPU平均使用率 = 90</code>』『<code>現在のPodのCPU使用率のターゲット値 = 70</code>』だとすると、『<code>必要な最大Pod数 = 7</code>』となる。</p>
-<p>算出結果と比較して、現在のPod数不足しているため、スケールアウトが実行される。</p>
+<p>算出結果と比較して、現在の Pod 数不足しているため、スケールアウトが実行される。</p>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14">https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=14</a>&gt;</li>
 </ul>
 </blockquote>
 <h4 id="_7">▼ デバッグ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Deployment配下のPodで、<code>.spec.containers[*]resources</code> キーに要求量を設定すると、HorizontalPodAutoscalerが要求量に対する使用量 (Target列) を取得できるようになる。</p>
-<p>一方でこれを取得できていない場合、設定が無いか、metrics-serverが正しく動作していない可能性がある。</p>
+<p>Deployment 配下の Pod で、<code>.spec.containers[*]resources</code> キーに要求量を設定すると、HorizontalPodAutoscaler が要求量に対する使用量 (Target 列) を取得できるようになる。</p>
+<p>一方でこれを取得できていない場合、設定がないか、metrics-server が正しく動作していない可能性がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>hpa<span class="w"> </span>-A
 
 NAMESPACE<span class="w">  </span>NAME<span class="w">             </span>REFERENCE<span class="w">                   </span>TARGETS<span class="w">         </span>MINPODS<span class="w">   </span>MAXPODS<span class="w">   </span>REPLICAS<span class="w">   </span>AGE
@@ -34287,8 +34287,8 @@ baz<span class="w">        </span>baz-deployment<span class="w">   </span>Deploy
 </ul>
 </blockquote>
 <h4 id="_8">▼ レプリカ数との衝突<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>最初、Deploymentの <code>spec.replicas</code> キーに合わせてPodが作成され、次にHorizontalPodAutoscalerの <code>.spec.minReplicas</code> キーが優先される。</p>
-<p>この挙動は混乱につながるため、HorizontalPodAutoscalerを使用する場合、Deploymentの <code>spec.replicas</code> キーの設定を削除しておくことが推奨である。</p>
+<p>最初、Deployment の <code>spec.replicas</code> キーに合わせて Pod が作成され、次に HorizontalPodAutoscaler の <code>.spec.minReplicas</code> キーが優先される。</p>
+<p>この挙動は混乱につながるため、HorizontalPodAutoscaler を使用する場合、Deployment の <code>spec.replicas</code> キーの設定を削除しておくことが推奨である。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling">https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling</a></li>
@@ -34296,11 +34296,11 @@ baz<span class="w">        </span>baz-deployment<span class="w">   </span>Deploy
 </ul>
 </blockquote>
 <h4 id="pod_3">▼ メトリクスでのPodの増減<a class="headerlink" href="#pod_3" title="Permanent link">&para;</a></h4>
-<p>メトリクス上では、既存のPodが削除されて、新しいPodが作成されていることを確認できる。</p>
+<p>メトリクス上では、既存の Pod が削除されて、新しい Pod が作成されていることを確認できる。</p>
 <p><br></p>
 <h3 id="verticalpodautoscaler">VerticalPodAutoscaler<a class="headerlink" href="#verticalpodautoscaler" title="Permanent link">&para;</a></h3>
 <h4 id="verticalpodautoscaler_1">▼ VerticalPodAutoscalerとは<a class="headerlink" href="#verticalpodautoscaler_1" title="Permanent link">&para;</a></h4>
-<p>Podの垂直スケーリングを実行する。</p>
+<p>Pod の垂直スケーリングを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://ccvanishing.hateblo.jp/entry/2018/10/02/203205">https://ccvanishing.hateblo.jp/entry/2018/10/02/203205</a>&gt;</li>
@@ -34308,7 +34308,7 @@ baz<span class="w">        </span>baz-deployment<span class="w">   </span>Deploy
 </ul>
 </blockquote>
 <h4 id="pod_4">▼ Podの再作成のない垂直スケーリング<a class="headerlink" href="#pod_4" title="Permanent link">&para;</a></h4>
-<p>執筆時点 (2022/12/31) の仕様では、Podを垂直スケーリングする場合に、Podの再作成が必要になる。</p>
+<p>執筆時点 (2022/12/31) の仕様では、Pod を垂直スケーリングする場合に、Pod の再作成が必要になる。</p>
 <p>これを解決するために、いくつかの方法が提案されている。</p>
 <table>
 <thead>
@@ -34356,7 +34356,7 @@ baz<span class="w">        </span>baz-deployment<span class="w">   </span>Deploy
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:44:29 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

@@ -35519,7 +35519,7 @@
 <ul>
 <li>デプロイ頻度</li>
 <li>設定変更頻度</li>
-<li>istio-proxy数</li>
+<li>istio-proxy 数</li>
 <li>サービスメッシュのスコープ</li>
 <li>コントロールプレーンの冗長化数</li>
 </ul>
@@ -35532,10 +35532,10 @@
 <p><br></p>
 <h3 id="_3">データプレーンの性能設計<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="cpu_1">▼ CPUを消費する処理<a class="headerlink" href="#cpu_1" title="Permanent link">&para;</a></h4>
-<p>メモリと同じように、以下の情報によって、データプレーンで必要なCPUが変わる。</p>
+<p>メモリと同じように、以下の情報によって、データプレーンで必要な CPU が変わる。</p>
 <ul>
-<li>istio-proxy内のEnvoyプロセスのスレッド数。スレッドが多くなるほど、これに紐づくCPUが必要になる。</li>
-<li>istio-proxy内のEnvoyプロセスが作成するテレメトリー (ログ、メトリクス、分散トレース) のデータサイズ</li>
+<li>istio-proxy 内の Envoy プロセスのスレッド数。スレッドが多くなるほど、これに紐づく CPU が必要になる。</li>
+<li>istio-proxy 内の Envoy プロセスが作成するテレメトリー (ログ、メトリクス、分散トレース) のデータサイズ</li>
 <li>リクエストやレスポンスのデータサイズ</li>
 <li>送信元の接続数</li>
 <li>など...</li>
@@ -35546,17 +35546,17 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ メモリを消費する処理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>CPUと同じように、以下の情報によって、データプレーンで必要なメモリが変わる。</p>
+<p>CPU と同じように、以下の情報によって、データプレーンで必要なメモリが変わる。</p>
 <ul>
-<li>istio-proxy内のEnvoyプロセスのスレッド数。スレッドが多くなるほど、これに紐づくCPUが必要になる。</li>
-<li>istio-proxy内のEnvoyプロセスが作成するテレメトリー (ログ、メトリクス、分散トレース) のデータサイズ</li>
+<li>istio-proxy 内の Envoy プロセスのスレッド数。スレッドが多くなるほど、これに紐づく CPU が必要になる。</li>
+<li>istio-proxy 内の Envoy プロセスが作成するテレメトリー (ログ、メトリクス、分散トレース) のデータサイズ</li>
 <li>リクエストやレスポンスのデータサイズ</li>
 <li>送信元の接続数</li>
 <li>など...</li>
 </ul>
 <p>特に以下でメモリが必要になる。</p>
 <ul>
-<li>istio-proxy内のEnvoyプロセスが持つ宛先情報量</li>
+<li>istio-proxy 内の Envoy プロセスが持つ宛先情報量</li>
 </ul>
 <blockquote>
 <ul>
@@ -35566,8 +35566,8 @@
 <h4 id="_5">▼ サービスメッシュ有無による違い<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>サービスメッシュ有無によって、ハードウェアリソース消費量に違いがある。</p>
 <p><strong>例</strong></p>
-<p>Istioのドキュメントでは、以下のハードウェアリソースを消費することが記載されている。</p>
-<p>1000 rps/sの場合である。</p>
+<p>Istio のドキュメントでは、以下のハードウェアリソースを消費することが記載されている。</p>
+<p>1000 rps/s の場合である。</p>
 <table>
 <thead>
 <tr>
@@ -35600,7 +35600,7 @@
 </ul>
 </blockquote>
 <p><strong>例</strong></p>
-<p>istio-proxyをインジェクションすると、Podあたりで以下のハードウェアリソースが増える調査結果も出ている。</p>
+<p>istio-proxy をインジェクションすると、Pod あたりで以下のハードウェアリソースが増える調査結果も出ている。</p>
 <ul>
 <li>CPU：0.0002 vCPU 〜0.0003 vCPU</li>
 <li>メモリ：40 Mi 〜 50 Mi</li>
@@ -35712,9 +35712,9 @@
 <h4 id="_7">▼ レイテンシーを大きくする処理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>以下により、レイテンシーは大きくなる。</p>
 <ul>
-<li>istio-proxy、waypoint-proxyのコンテナ、ztunnelのコンテナの経由</li>
-<li>AuthorizationPolicyによるアクセストークンの検証</li>
-<li>PeerAuthenticationによる相互TLS認証</li>
+<li>istio-proxy、waypoint-proxy のコンテナ、ztunnel のコンテナの経由</li>
+<li>AuthorizationPolicy によるアクセストークンの検証</li>
+<li>PeerAuthentication による相互 TLS 認証</li>
 </ul>
 <blockquote>
 <ul>
@@ -35757,7 +35757,7 @@
 <h2 id="02">02. サイドカーモード<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio_1">Istioのサイドカーモードとは<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h3>
 <p>サイドカーモードは、サイドカープロキシ型のサービスメッシュを実装したものである。</p>
-<p>各PodにサイドカーとしてEnvoyを稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。</p>
+<p>各 Pod にサイドカーとして Envoy を稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。</p>
 <blockquote>
 <ul>
 <li><a href="https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management">https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management</a></li>
@@ -35769,7 +35769,7 @@
 <h2 id="03">03. アンビエントモード (サイドカーレスパターン)<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_10">アンビエントモードとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>アンビエントモードは、サイドカーレスパターンのサービスメッシュを実装したものである。</p>
-<p>各Node上にエージェントとしてEnvoyを稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。</p>
+<p>各 Node 上にエージェントとして Envoy を稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.csdn.net/cr7258/article/details/126870859">https://blog.csdn.net/cr7258/article/details/126870859</a></li>
@@ -35779,8 +35779,8 @@
 <p><br></p>
 <h2 id="03_1">03. トラフィック管理<a class="headerlink" href="#03_1" title="Permanent link">&para;</a></h2>
 <h3 id="_11">ネットワークレイヤー<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>L3/L4/L7に対応している。</p>
-<p>ただし、Ciliumサービスメッシュとは異なり、L3の設定をユーザーは変更できない。</p>
+<p>L3/L4/L7 に対応している。</p>
+<p>ただし、Cilium サービスメッシュとは異なり、L3 の設定をユーザーは変更できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/blog/2024/ambient-vs-cilium/">https://istio.io/latest/blog/2024/ambient-vs-cilium/</a></li>
@@ -35788,8 +35788,8 @@
 </blockquote>
 <h3 id="_12">パケット処理の仕組み<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <ol>
-<li>istio-proxyにて、リスナーでリクエストを受信する。</li>
-<li>EnvoyFilterがあれば、これをリスナーフィルターとしてEnvoyに適用する。</li>
+<li>istio-proxy にて、リスナーでリクエストを受信する。</li>
+<li>EnvoyFilter があれば、これをリスナーフィルターとして Envoy に適用する。</li>
 <li>ルートでリクエストを受け取る。</li>
 <li>クラスターでリクエストを受け取る。</li>
 <li>クラスター配下のエンドポイントにリクエストを送信する。</li>
@@ -35802,9 +35802,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="kube-proxy">サービスメッシュ内ではkube-proxyは不要<a class="headerlink" href="#kube-proxy" title="Permanent link">&para;</a></h3>
-<p>実は、サービスメッシュ内のPod間通信では、kube-proxyは使用しない。</p>
-<p><code>istio-init</code> コンテナは、<code>istio-iptables</code> コマンドを実行し、iptablesのルールを書き換える。</p>
-<p>これにより、送信元Podから宛先Podへ直接通信できるようになる。</p>
+<p>実は、サービスメッシュ内の Pod 間通信では、kube-proxy は使用しない。</p>
+<p><code>istio-init</code> コンテナは、<code>istio-iptables</code> コマンドを実行し、iptables のルールを書き換える。</p>
+<p>これにより、送信元 Pod から宛先 Pod へ直接通信できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/@bikramgupta/tracing-network-path-in-istio-538335b5bb4f">https://medium.com/@bikramgupta/tracing-network-path-in-istio-538335b5bb4f</a></li>
@@ -35814,7 +35814,7 @@
 <h2 id="03-02">03-02. サービスメッシュ外へのリクエスト送信<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_13">安全な通信方式<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ 任意の外部システムに送信できるようにする<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>サービスメッシュ内のマイクロサービスから、istio-proxy (マイクロサービスのサイドカーとIstio Egress Gatewayの両方) を経由して、任意の外部システムにリクエストを送信できるようにする。</p>
+<p>サービスメッシュ内のマイクロサービスから、istio-proxy (マイクロサービスのサイドカーと Istio Egress Gateway の両方) を経由して、任意の外部システムにリクエストを送信できるようにする。</p>
 <p>外部システムは識別できない。</p>
 <blockquote>
 <ul>
@@ -35823,7 +35823,7 @@
 </ul>
 </blockquote>
 <h4 id="_15">▼ 登録した外部システムに送信できるようにする<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>サービスメッシュ内のマイクロサービスから、istio-proxy (マイクロサービスのサイドカーとIstio Egress Gatewayの両方) を経由して、ServiceEntryで登録した外部システムにリクエストを送信できるようにする。</p>
+<p>サービスメッシュ内のマイクロサービスから、istio-proxy (マイクロサービスのサイドカーと Istio Egress Gateway の両方) を経由して、ServiceEntry で登録した外部システムにリクエストを送信できるようにする。</p>
 <p>外部システムを識別できる。</p>
 <blockquote>
 <ul>
@@ -35843,7 +35843,7 @@
 </ul>
 </blockquote>
 <h4 id="istio-proxy">▼ istio-proxyを経由せずに送信できるようにする<a class="headerlink" href="#istio-proxy" title="Permanent link">&para;</a></h4>
-<p>サービスメッシュ内のマイクロサービスから、istio-proxyを経由せずに、外部システムにリクエストを送信できるようにする。</p>
+<p>サービスメッシュ内のマイクロサービスから、istio-proxy を経由せずに、外部システムにリクエストを送信できるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened">https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened</a></li>
@@ -35854,9 +35854,9 @@
 <h3 id="_18">外部システムの種類<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="passthroughcluster">▼ <code>PassthroughCluster</code><a class="headerlink" href="#passthroughcluster" title="Permanent link">&para;</a></h4>
 <p>定義されていないが通信が許可されているサービスメッシュ外の送信元 (<code>InPassthroughCluster</code>) ／宛先 (<code>OutboundPassthroughCluster</code>) のこと。</p>
-<p>Istio <code>v1.3</code> 以降で、デフォルトで全てのサービスメッシュ外へのリクエストのポリシーが <code>ALLOW_ANY</code> となり、<code>PassthroughCluster</code> として扱うようになった。</p>
-<p>ServiceEntryを使用すれば、名前をつけられる。</p>
-<p>注意点として、<code>REGISTRY_ONLY</code> モードを有効化すると、ServiceEntryで登録された宛先以外のサービスメッシュ外への全通信が <code>BlackHoleCluster</code> 扱いになってしまう。</p>
+<p>Istio <code>v1.3</code> 以降で、デフォルトですべてのサービスメッシュ外へのリクエストのポリシーが <code>ALLOW_ANY</code> となり、<code>PassthroughCluster</code> として扱うようになった。</p>
+<p>ServiceEntry を使用すれば、名前をつけられる。</p>
+<p>注意点として、<code>REGISTRY_ONLY</code> モードを有効化すると、ServiceEntry で登録された宛先以外のサービスメッシュ外への全通信が <code>BlackHoleCluster</code> 扱いになってしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://istiobyexample.dev/monitoring-egress-traffic/">https://istiobyexample.dev/monitoring-egress-traffic/</a></li>
@@ -35865,7 +35865,7 @@
 </ul>
 </blockquote>
 <h4 id="blackholecluster">▼ <code>BlackHoleCluster</code><a class="headerlink" href="#blackholecluster" title="Permanent link">&para;</a></h4>
-<p>IPアドレスを指定して送信できない宛先のこと。</p>
+<p>IP アドレスを指定して送信できない宛先のこと。</p>
 <p>基本的に、サービスメッシュ外へのリクエストは失敗し、<code>502</code> ステータスになる (<code>502 Bad Gateway</code>)。</p>
 <blockquote>
 <ul>
@@ -35903,18 +35903,18 @@
 </tbody>
 </table>
 <h4 id="_22">▼ サーキットブレイカー<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>istio-proxyでサーキットブレイカーを実現する。</p>
+<p>istio-proxy でサーキットブレイカーを実現する。</p>
 <p>ただし、サーキットブレイカー後のフォールバックは <code>istoi-proxy</code> コンテナでは実装できず、マイクロサービスで実装する必要がある。</p>
-<p>istio-proxyは、送信可能な宛先がなくなると <code>503</code> レスポンスを返信する。</p>
-<p>Envoyは以下の機能を持っている。</p>
+<p>istio-proxy は、送信可能な宛先がなくなると <code>503</code> レスポンスを返信する。</p>
+<p>Envoy は以下の機能を持っている。</p>
 <ul>
-<li>Envoyでは、接続プールの上限を条件として、サーキットブレイカーを発動する</li>
-<li>Envoyでは、ステータスコードの外れ値を条件として、ロードバランシングで異常なホストを排除する</li>
+<li>Envoy では、接続プールの上限を条件として、サーキットブレイカーを発動する</li>
+<li>Envoy では、ステータスコードの外れ値を条件として、ロードバランシングで異常なホストを排除する</li>
 </ul>
-<p>Istioでは、外れ値の排除率を <code>100</code>%とすることで、ステータスコードもサーキットブレイカーの条件にできる。</p>
+<p>Istio では、外れ値の排除率を <code>100</code>%とすることで、ステータスコードもサーキットブレイカーの条件にできる。</p>
 <ul>
-<li>Istioでは、接続プールの上限を条件として、サーキットブレイカーを発動する</li>
-<li>Istioでは、ステータスコードの外れ値を条件を <code>100</code>%とすることにより、サーキットブレイカーを発動する</li>
+<li>Istio では、接続プールの上限を条件として、サーキットブレイカーを発動する</li>
+<li>Istio では、ステータスコードの外れ値を条件を <code>100</code>%とすることにより、サーキットブレイカーを発動する</li>
 </ul>
 <blockquote>
 <ul>
@@ -35927,12 +35927,12 @@
 <p><br></p>
 <h3 id="_23">ヘルスチェック<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <h4 id="_24">▼ アクティブヘルスチェック<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p>istio-proxyは、マイクロサービスに対するkubeletのヘルスチェックを受信し、マイクロサービスに転送する。</p>
+<p>istio-proxy は、マイクロサービスに対する kubelet のヘルスチェックを受信し、マイクロサービスに転送する。</p>
 <p><br></p>
 <h2 id="05">05. 通信の認証/認可<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_25">通信の認証<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="_26">▼ 仕組み<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>Pod間通信時、正しい送信元Envoyの通信であることを認証する。</p>
+<p>Pod 間通信時、正しい送信元 Envoy の通信であることを認証する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/concepts/security/#authentication-architecture">https://istio.io/latest/docs/concepts/security/#authentication-architecture</a></li>
@@ -35940,19 +35940,19 @@
 </ul>
 </blockquote>
 <h4 id="tls">▼ 相互TLS認証<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h4>
-<p>相互TLS認証を実施し、送信元Podの通信を認証する。</p>
+<p>相互 TLS 認証を実施し、送信元 Pod の通信を認証する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/concepts/security/#authentication">https://istio.io/latest/docs/concepts/security/#authentication</a></li>
 </ul>
 </blockquote>
 <h4 id="jwtbearer-id">▼ JWTによるBearer認証 (IDプロバイダーに認証フェーズを委譲)<a class="headerlink" href="#jwtbearer-id" title="Permanent link">&para;</a></h4>
-<p>JWTによるBearer認証を実施し、送信元Podの通信を認証する。</p>
-<p>この場合、認証フェーズをIDプロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) へ委譲することになる。</p>
-<p>JWTトークンの取得方法として、例えば以下の方法がある。</p>
+<p>JWT による Bearer 認証を実施し、送信元 Pod の通信を認証する。</p>
+<p>この場合、認証フェーズを ID プロバイダー (例：Auth0、AWS Cognito、GitHub、Google Cloud Auth、Keycloak、Zitadel) へ委譲することになる。</p>
+<p>JWT トークンの取得方法として、例えば以下の方法がある。</p>
 <ul>
-<li>送信元PodがIDプロバイダーからJWTを直接取得する。</li>
-<li>送信元/宛先の間に認証プロキシ (例：OAuth2 Proxy、Dexなど) を配置し、認証プロキシでIDプロバイダーからJWTを取得する。</li>
+<li>送信元 Pod が ID プロバイダーから JWT を直接取得する。</li>
+<li>送信元/宛先の間に認証プロキシ (例：OAuth2 Proxy、Dex など) を配置し、認証プロキシで ID プロバイダーから JWT を取得する。</li>
 </ul>
 <blockquote>
 <ul>
@@ -35960,11 +35960,11 @@
 </ul>
 </blockquote>
 <h4 id="_27">▼ マイクロサービスの認証について<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>マイクロサービス側の認証については、Istioの管理外である。</p>
+<p>マイクロサービス側の認証については、Istio の管理外である。</p>
 <p><br></p>
 <h3 id="_28">通信の認可<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <h4 id="_29">▼ 仕組み<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
-<p>Pod間通信時、AuthorizationPolicyを使用して、スコープに含まれる認証済みEnvoyの通信のみを認可する。</p>
+<p>Pod 間通信時、AuthorizationPolicy を使用して、スコープに含まれる認証済み Envoy の通信のみを認可する。</p>
 <p><img alt="istio_authorization-policy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_authorization-policy.png" /></p>
 <blockquote>
 <ul>
@@ -35974,14 +35974,14 @@
 </ul>
 </blockquote>
 <h4 id="_30">▼ 通信の認可の委譲<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
-<p>AuthorizationPolicyで認可プロバイダー (例：Keycloak、Open Policy Agent) を指定し、認可フェーズを委譲できる。</p>
+<p>AuthorizationPolicy で認可プロバイダー (例：Keycloak、Open Policy Agent) を指定し、認可フェーズを委譲できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3">https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3</a></li>
 </ul>
 </blockquote>
 <h4 id="_31">▼ マイクロサービスの認可について<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
-<p>マイクロサービス側の認可については、Istioの管理外である。</p>
+<p>マイクロサービス側の認可については、Istio の管理外である。</p>
 <p><br></p>
 <h2 id="06">06. パケットのアプリケーションデータの暗号化<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <p>記入中...</p>
@@ -35989,15 +35989,15 @@
 <h2 id="06-02">06-02. 証明書の発行<a class="headerlink" href="#06-02" title="Permanent link">&para;</a></h2>
 <h3 id="_32">クライアント証明書／サーバー証明書発行<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <h4 id="istiod-discovery">▼ Istiodコントロールプレーン (<code>discovery</code> コンテナ) をルート認証局として使用する場合<a class="headerlink" href="#istiod-discovery" title="Permanent link">&para;</a></h4>
-<p>デフォルトでは、Istiodコントロールプレーンがルート認証局として働く。</p>
+<p>デフォルトでは、Istiod コントロールプレーンがルート認証局として働く。</p>
 <p>クライアント証明書／サーバー証明書を提供しつつ、これを定期的に自動更新する。</p>
 <ol>
-<li>Istiodコントロールプレーンは、<code>istio-ca-secret</code> (Secret) を自己署名する。</li>
-<li>Istiodコントロールプレーンは、istio-proxyから送信された秘密鍵と証明書署名要求で署名済みのクライアント証明書／サーバー証明書を作成する。特に設定しなければ、istio-proxyのpilot-agentプロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。</li>
-<li>istio-proxyからのリクエストに応じて、IstiodのSDS-APIがクライアント証明書／サーバー証明書をistio-proxyに配布する。</li>
-<li>Istiodコントロールプレーンは、CA証明書を持つ <code>istio-ca-root-cert</code> (ConfigMap) を自動的に作成する。これは、istio-proxyにマウントされ、証明書を検証するために使用する。</li>
-<li>istio-proxy間で相互TLS認証できるようになる。</li>
-<li>証明書が失効すると、istio-proxyの証明書が自動的に差し代わる。Podの再起動は不要である。</li>
+<li>Istiod コントロールプレーンは、<code>istio-ca-secret</code> (Secret) を自己署名する。</li>
+<li>Istiod コントロールプレーンは、istio-proxy から送信された秘密鍵と証明書署名要求で署名済みのクライアント証明書／サーバー証明書を作成する。特に設定しなければ、istio-proxy の pilot-agent プロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。</li>
+<li>istio-proxy からのリクエストに応じて、Istiod の SDS-API がクライアント証明書／サーバー証明書を istio-proxy に配布する。</li>
+<li>Istiod コントロールプレーンは、CA 証明書を持つ <code>istio-ca-root-cert</code> (ConfigMap) を自動的に作成する。これは、istio-proxy にマウントされ、証明書を検証するために使用する。</li>
+<li>istio-proxy 間で相互 TLS 認証できるようになる。</li>
+<li>証明書が失効すると、istio-proxy の証明書が自動的に差し代わる。Pod の再起動は不要である。</li>
 </ol>
 <p><img alt="istio_istio-ca-root-cert" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png" /></p>
 <blockquote>
@@ -36010,11 +36010,11 @@
 </ul>
 </blockquote>
 <h4 id="_33">▼ 外部ツールをルート認証局として使用する場合<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
-<p>Istiodコントロールプレーン (<code>discovery</code> コンテナ) を中間認証局として使用し、ルート認証局をIstio以外に委譲できる。</p>
-<p>外部のルート認証局は、istio-proxyから送信された秘密鍵と証明書署名要求で署名済みのサーバー証明書を作成する。</p>
+<p>Istiod コントロールプレーン (<code>discovery</code> コンテナ) を中間認証局として使用し、ルート認証局を Istio 以外に委譲できる。</p>
+<p>外部のルート認証局は、istio-proxy から送信された秘密鍵と証明書署名要求で署名済みのサーバー証明書を作成する。</p>
 <ul>
-<li>CertManager (ルート認証局、署名済み証明書の発行、マウント用Secretへの証明書埋め込み、自動ローテーション)</li>
-<li>HashiCorp Vault (ルート認証局) + CertManager (署名済み証明書の発行、マウント用Secretへの証明書埋め込み、自動ローテーション)</li>
+<li>CertManager (ルート認証局、署名済み証明書の発行、マウント用 Secret への証明書埋め込み、自動ローテーション)</li>
+<li>HashiCorp Vault (ルート認証局) + CertManager (署名済み証明書の発行、マウント用 Secret への証明書埋め込み、自動ローテーション)</li>
 </ul>
 <blockquote>
 <ul>
@@ -36027,7 +36027,7 @@
 <h2 id="06-03">06-03. 証明書の認証方式<a class="headerlink" href="#06-03" title="Permanent link">&para;</a></h2>
 <h3 id="tls_1">相互TLS認証<a class="headerlink" href="#tls_1" title="Permanent link">&para;</a></h3>
 <h4 id="tls_2">▼ 相互TLS認証とは<a class="headerlink" href="#tls_2" title="Permanent link">&para;</a></h4>
-<p>相互TLS認証を実施し、<code>L7</code> のアプリケーションデータを暗号化/復号する。</p>
+<p>相互 TLS 認証を実施し、<code>L7</code> のアプリケーションデータを暗号化/復号する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/concepts/security/#authentication-architecture">https://istio.io/latest/docs/concepts/security/#authentication-architecture</a></li>
@@ -36048,13 +36048,13 @@
 </ul>
 </blockquote>
 <h4 id="tls_3">▼ TLSタイムアウト<a class="headerlink" href="#tls_3" title="Permanent link">&para;</a></h4>
-<p>アウトバウンド通信、istio-proxyは宛先にHTTPSリクエストを送信する。</p>
-<p>この時、実際はタイムアウト時間を超過していても、<code>TLS handshake timeout</code> というエラーなってしまう。</p>
+<p>アウトバウンド通信、istio-proxy は宛先に HTTPS リクエストを送信する。</p>
+<p>このとき、実際はタイムアウト時間を超過していても、<code>TLS handshake timeout</code> というエラーなってしまう。</p>
 <p><br></p>
 <h2 id="07">07. テレメトリーの作成<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="oss">他のOSSとの連携<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h3>
-<p>istio-proxyは、テレメトリーを作成する。</p>
-<p>各監視ツールは、プル型 (ツールがIstiodから収集) やプッシュ型 (Istiodがツールに送信) でこのテレメトリーを収集する。</p>
+<p>istio-proxy は、テレメトリーを作成する。</p>
+<p>各監視ツールは、プル型 (ツールが Istiod から収集) やプッシュ型 (Istiod がツールに送信) でこのテレメトリーを収集する。</p>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=17">https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=17</a></li>
@@ -36063,9 +36063,9 @@
 <p><br></p>
 <h2 id="07-02">07-02. メトリクス<a class="headerlink" href="#07-02" title="Permanent link">&para;</a></h2>
 <h3 id="_35">メトリクスの作成と送信<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
-<p>istio-proxyはメトリクスの元になるデータポイントを作成し、Istiodコントロールプレーン (<code>discovery</code> コンテナ) に送信する。</p>
-<p>Prometheusは、<code>discovery</code> コンテナの <code>/stats/prometheus</code> エンドポイント (<code>15090</code> 番ポート) からメトリクスの元になるデータポイントを収集する。</p>
-<p>なお、istio-proxyにも <code>/stats/prometheus</code> エンドポイントはある。</p>
+<p>istio-proxy はメトリクスの元になるデータポイントを作成し、Istiod コントロールプレーン (<code>discovery</code> コンテナ) に送信する。</p>
+<p>Prometheus は、<code>discovery</code> コンテナの <code>/stats/prometheus</code> エンドポイント (<code>15090</code> 番ポート) からメトリクスの元になるデータポイントを収集する。</p>
+<p>なお、istio-proxy にも <code>/stats/prometheus</code> エンドポイントはある。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/">https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/</a></li>
@@ -36075,7 +36075,7 @@
 <p><br></p>
 <h3 id="_36">セットアップ<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <h4 id="prometheus">▼ Prometheusの設定ファイル<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
-<p>Prometheusの設定ファイルとして定義できる。</p>
+<p>Prometheus の設定ファイルとして定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">scrape_configs</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Istiodの監視</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istiod</span>
@@ -36107,7 +36107,7 @@
 </ul>
 </blockquote>
 <h4 id="_37">▼ カスタムリソースの場合<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
-<p>Prometheusが <code>discovery</code> コンテナからデータポイントを取得するためには、<code>discovery</code> コンテナのPodを監視するためのServiceMonitorが必要である。</p>
+<p>Prometheus が <code>discovery</code> コンテナからデータポイントを取得するためには、<code>discovery</code> コンテナの Pod を監視するための ServiceMonitor が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36130,7 +36130,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-monitoring</span>
 <span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
 </code></pre></div>
-<p>また、istio-proxyの監視には、PodMonitorが必要である。</p>
+<p>また、istio-proxy の監視には、PodMonitor が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36209,7 +36209,7 @@
 </tbody>
 </table>
 <h4 id="istio-proxy_1">▼ istio-proxyに関するメトリクス<a class="headerlink" href="#istio-proxy_1" title="Permanent link">&para;</a></h4>
-<p>Prometheus上でメトリクスをクエリすると、Istiodコントロールプレーン (<code>discovery</code> コンテナ) から収集したデータポイントを取得できる。</p>
+<p>Prometheus 上でメトリクスをクエリすると、Istiod コントロールプレーン (<code>discovery</code> コンテナ) から収集したデータポイントを取得できる。</p>
 <table>
 <thead>
 <tr>
@@ -36241,9 +36241,9 @@
 </tr>
 </tbody>
 </table>
-<p>| <code>istio_request_duration_milliseconds_sum</code> | カウント | istio-proxyが起動以降の全てのリクエスト期間の合計 |
-| <code>envoy_cluster_upstream_rq_retry</code> | カウント | istio-proxyの他のPodへのリクエストに関するリトライ数を表す。 |
-| <code>envoy_cluster_upstream_rq_retry_success</code> | カウント | istio-proxyが他のPodへのリクエストに関するリトライ成功数を表す。 |
+<p>| <code>istio_request_duration_milliseconds_sum</code> | カウント | istio-proxy が起動以降のすべてのリクエスト期間の合計 |
+| <code>envoy_cluster_upstream_rq_retry</code> | カウント | istio-proxy のほかの Pod へのリクエストに関するリトライ数を表す。 |
+| <code>envoy_cluster_upstream_rq_retry_success</code> | カウント | istio-proxy が他の Pod へのリクエストに関するリトライ成功数を表す。 |
 | <code>envoy_cluster_upstream_rq_retry_backoff_expotential</code> | カウント | 記入中... |
 | <code>envoy_cluster_upstream_rq_retry_limit_exceeded</code> | カウント | 記入中... |</p>
 <blockquote>
@@ -36254,10 +36254,10 @@
 </ul>
 </blockquote>
 <h4 id="_39">▼ メトリクスのラベル<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
-<p>メトリクスをフィルタリングできるように、Istioでは任意のメトリクスにデフォルトでラベルがついている。</p>
-<p>送信元と宛先を表すメトリクスがあり、Kialiと組み合わせることにより、リクエストの送信元Podを特定できる。</p>
-<p>Istioを使わないと送信元IPアドレスで特定する必要があるが、プロキシによって書き換えられてしまうため、実際はかなり無理がある。</p>
-<p>Istio Ingress Gatewayを経由せずにサービスメッシュ外からインバウンド通信 (例えば、Prometheusやkubeletの <code>/metrics</code> スクレイピング) がくると、ラベル値が <code>unknown</code> になってしまう。</p>
+<p>メトリクスをフィルタリングできるように、Istio では任意のメトリクスにデフォルトでラベルがついている。</p>
+<p>送信元と宛先を表すメトリクスがあり、Kiali と組み合わせることにより、リクエストの送信元 Pod を特定できる。</p>
+<p>Istio を使わないと送信元 IP アドレスで特定する必要があるが、プロキシによって書き換えられてしまうため、実際はかなり無理がある。</p>
+<p>Istio Ingress Gateway を経由せずにサービスメッシュ外からインバウンド通信 (例えば、Prometheus や kubelet の <code>/metrics</code> スクレイピング) がくると、ラベル値が <code>unknown</code> になってしまう。</p>
 <table>
 <thead>
 <tr>
@@ -36353,9 +36353,9 @@
 <h2 id="07-03">07-03. ログ (アクセスログのみ)<a class="headerlink" href="#07-03" title="Permanent link">&para;</a></h2>
 <h3 id="_40">ログの監視<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
 <h4 id="_41">▼ ログの出力<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
-<p>istio-proxyは、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。</p>
+<p>istio-proxy は、マイクロサービスへのアクセスログ (インバウンド通信とアウトバウンド通信の両方) を作成し、標準出力に出力する。</p>
 <p>アクセスログにデフォルトで役立つ値が出力される。</p>
-<p>ログ収集ツール (例：FluentBit、Fluentdなど) をDaemonSetパターンやサイドカーモードで配置し、NodeやPod内コンテナの標準出力に出力されたログを監視バックエンドへ送信できるようにする必要がある。</p>
+<p>ログ収集ツール (例：FluentBit、Fluentd など) を DaemonSet パターンやサイドカーモードで配置し、Node や Pod 内コンテナの標準出力に出力されたログを監視バックエンドへ送信できるようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># istio-proxyコンテナのアクセスログ</span>
 <span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># 相互TLS認証の場合の宛先コンテナ名</span>
@@ -36397,7 +36397,7 @@
 </ul>
 </blockquote>
 <h4 id="_42">▼ ログの送信<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
-<p>istio-proxyは、アクセスログをログ収集ツール (例：OpenTelemetry Collector) に送信する。</p>
+<p>istio-proxy は、アクセスログをログ収集ツール (例：OpenTelemetry Collector) に送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/observability/logs/otel-provider/">https://istio.io/latest/docs/tasks/observability/logs/otel-provider/</a></li>
@@ -36408,7 +36408,7 @@
 <h3 id="_43">分散トレースの監視<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
 <h4 id="_44">▼ スパンの作成<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
 <p><img alt="istio_distributed_tracing" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_distributed_tracing.png" /></p>
-<p>istio-proxyは、スパンを作成する。</p>
+<p>istio-proxy は、スパンを作成する。</p>
 <p>スパンの作成場所としては、いくつか種類がある。</p>
 <table>
 <thead>
@@ -36439,10 +36439,10 @@
 <p>スパンの作成場所が多いほど、各コンテナの処理時間が細分化された分散トレースを収集できる。</p>
 <p>マイクロサービス間でスパンが持つコンテキストを伝播しないため、コンテキストを伝播させる実装が必要になる。</p>
 <h4 id="_45">▼ スパンの送信<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
-<p>istio-proxyは、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collectorなど) に送信する。</p>
-<p>マイクロサービスからスパンを送信する場合であっても、istio-proxyを経由し、分散トレース収集ツールへ送信することになる。</p>
-<p>分散トレース収集ツールをサービスメッシュに登録 (VirtualServiceやServiceEntryを作成) しないと、マイクロサービスやistio-proxyは分散トレース収集ツールを名前解決できない。</p>
-<p>Envoyでは宛先としてサポートしていても、istio-proxyでは使用できない場合がある。(例：X-Rayデーモン)</p>
+<p>istio-proxy は、スパンを分散トレース収集ツール (例：Jaeger Collector、OpenTelemetry Collector など) に送信する。</p>
+<p>マイクロサービスからスパンを送信する場合であっても、istio-proxy を経由し、分散トレース収集ツールへ送信することになる。</p>
+<p>分散トレース収集ツールをサービスメッシュに登録 (VirtualService や ServiceEntry を作成) しないと、マイクロサービスや istio-proxy は分散トレース収集ツールを名前解決できない。</p>
+<p>Envoy では宛先としてサポートしていても、istio-proxy では使用できない場合がある。(例：X-Ray デーモン)</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/">https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/</a></li>
@@ -36454,7 +36454,7 @@
 <p><br></p>
 <h3 id="_46">スパン名<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h3>
 <h4 id="envoyfilter">▼ EnvoyFilterの場合<a class="headerlink" href="#envoyfilter" title="Permanent link">&para;</a></h4>
-<p>Istioの設定では、EnvoyFilterを使用しないとデフォルトのスパン名を変更できない。</p>
+<p>Istio の設定では、EnvoyFilter を使用しないとデフォルトのスパン名を変更できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36469,8 +36469,8 @@
 <span class="w">            </span><span class="nt">operation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;スパン名&gt;</span>
 </code></pre></div>
 <h4 id="opentelemetry-collector">▼ OpenTelemetry Collectorの場合<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h4>
-<p>Istioの代わりに、OpenTelemetry Collectorでスパン名を変更できる。</p>
-<p>あらかじめ、Telemetryで <code>http.url.path</code> という属性を設定しておく。</p>
+<p>Istio の代わりに、OpenTelemetry Collector でスパン名を変更できる。</p>
+<p>あらかじめ、Telemetry で <code>http.url.path</code> という属性を設定しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Telemetry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36487,7 +36487,7 @@
 <span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">:path</span>
 <span class="w">            </span><span class="nt">defaultValue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unknown</span>
 </code></pre></div>
-<p>spanprocessorを使用して、スパン名を変更する。</p>
+<p>spanprocessor を使用して、スパン名を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># OpenTelemetry Collectorの設定ファイル</span>
 <span class="nt">config</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">processors</span><span class="p">:</span>
@@ -36517,7 +36517,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_47">属性<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
-<p>istio-proxyコンテナは、デフォルトで以下のようなスパンを作成する。</p>
+<p>istio-proxy コンテナは、デフォルトで以下のようなスパンを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;batches&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
@@ -36682,7 +36682,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 21:19:15 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

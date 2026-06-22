@@ -34482,8 +34482,8 @@
 <p><br></p>
 <h2 id="01">01. サイドカーモードのコントロールプレーン<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>サイドカーモードのIstiodコントロールプレーンは、istiod-serviceを介して、各種ポート番号でistio-proxyからのリモートプロシージャーコールを待ち受ける。</p>
-<p>語尾の『<code>d</code>』は、デーモンの意味であるが、Istiodコントロールプレーンの実体は、Deploymentである。</p>
+<p>サイドカーモードの Istiod コントロールプレーンは、istiod-service を介して、各種ポート番号で istio-proxy からのリモートプロシージャーコールを待ち受ける。</p>
+<p>語尾の『<code>d</code>』は、デーモンの意味であるが、Istiod コントロールプレーンの実体は、Deployment である。</p>
 <p><img alt="istio_control-plane_ports" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_ports.png" /></p>
 <blockquote>
 <ul>
@@ -34498,13 +34498,13 @@
 <p><br></p>
 <h2 id="01-02">01-02. マニフェスト<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">マニフェストの種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Istiodコントロールプレーンは、Deployment、Service、MutatingWebhookConfigurationなどのマニフェストから構成される。</p>
+<p>Istiod コントロールプレーンは、Deployment、Service、MutatingWebhookConfiguration などのマニフェストから構成される。</p>
 <p><br></p>
 <h3 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h3>
 <h4 id="istiod">▼ istiod<a class="headerlink" href="#istiod" title="Permanent link">&para;</a></h4>
-<p>コントロールプレーンのPodの可用性を高めるため、これを冗長化する。</p>
-<p>Deployment配下のPodは、Istiodコントロールプレーンの実体である。</p>
-<p>Pod内では <code>discovery</code> コンテナが稼働している。</p>
+<p>コントロールプレーンの Pod の可用性を高めるため、これを冗長化する。</p>
+<p>Deployment 配下の Pod は、Istiod コントロールプレーンの実体である。</p>
+<p>Pod 内では <code>discovery</code> コンテナが稼働している。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34573,7 +34573,7 @@
 <li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/pkg/bootstrap/server.go#L412-L476">https://github.com/istio/istio/blob/1.14.3/pilot/pkg/bootstrap/server.go#L412-L476</a></li>
 </ul>
 </blockquote>
-<p>Dockerfileとしては、最後に <code>pilot-discovery</code> コマンドでIstioコントロールプレーンを実行している。</p>
+<p>Dockerfile としては、最後に <code>pilot-discovery</code> コマンドで Istio コントロールプレーンを実行している。</p>
 <div class="highlight"><pre><span></span><code><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/local/bin/pilot-discovery&quot;</span><span class="p">]</span>
 </code></pre></div>
 <blockquote>
@@ -34582,7 +34582,7 @@
 <li><a href="https://zenn.dev/link/comments/e8a978a00c6325">https://zenn.dev/link/comments/e8a978a00c6325</a></li>
 </ul>
 </blockquote>
-<p>そのため、Istioコントロールプレーンを起動する <code>pilot-discovery</code> コマンドの実体は、GitHubの <code>pilot-discovery</code> ディレクトリ配下の <code>main.go</code> ファイルで実行されるGoのバイナリファイルである。</p>
+<p>そのため、Istio コントロールプレーンを起動する <code>pilot-discovery</code> コマンドの実体は、GitHub の <code>pilot-discovery</code> ディレクトリ配下の <code>main.go</code> ファイルで実行される Go のバイナリファイルである。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/cmd/pilot-discovery/main.go">https://github.com/istio/istio/blob/1.14.3/pilot/cmd/pilot-discovery/main.go</a></li>
@@ -34590,7 +34590,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="horizontalpodautoscaler">HorizontalPodAutoscaler<a class="headerlink" href="#horizontalpodautoscaler" title="Permanent link">&para;</a></h3>
-<p>Deployment配下のPodには、HorizontalPodAutoscalerが設定されている。</p>
+<p>Deployment 配下の Pod には、HorizontalPodAutoscaler が設定されている。</p>
 <p>コントロールプレーンの可用性を高められる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">autoscaling/v2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler</span>
@@ -34613,7 +34613,7 @@
 <p><br></p>
 <h3 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
 <h4 id="istiod_1">▼ istiod<a class="headerlink" href="#istiod_1" title="Permanent link">&para;</a></h4>
-<p>istio-proxyからのリクエストを、Istiodコントロールプレーン (Deployment配下のPod) にポートフォワーディングする。</p>
+<p>istio-proxy からのリクエストを、Istiod コントロールプレーン (Deployment 配下の Pod) にポートフォワーディングする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34654,9 +34654,9 @@
 <p><br></p>
 <h3 id="mutatingwebhookconfiguration">MutatingWebhookConfiguration<a class="headerlink" href="#mutatingwebhookconfiguration" title="Permanent link">&para;</a></h3>
 <h4 id="istio-revision-tag-default">▼ istio-revision-tag-default<a class="headerlink" href="#istio-revision-tag-default" title="Permanent link">&para;</a></h4>
-<p>Podの作成/更新時、webhookサーバーにリクエストを送信できるように、MutatingWebhookConfigurationでMutatingAdmissionWebhookプラグインを設定する。</p>
-<p><code>.webhooks.failurePolicy</code> キーで設定しているとおり、webhookサーバーのコールに失敗した場合は、Podの作成のためのkube-apiserverのコール自体がエラーとなる。</p>
-<p>そのため、Istioが起動に失敗し続けると、サイドカーコンテナのインジェクションを有効しているPodがいつまでも作成されないことになる。</p>
+<p>Pod の作成/更新時、webhook サーバーにリクエストを送信できるように、MutatingWebhookConfiguration で MutatingAdmissionWebhook プラグインを設定する。</p>
+<p><code>.webhooks.failurePolicy</code> キーで設定しているとおり、webhook サーバーのコールに失敗した場合は、Pod の作成のための kube-apiserver のコール自体がエラーとなる。</p>
+<p>そのため、Istio が起動に失敗し続けると、サイドカーコンテナのインジェクションを有効している Pod がいつまでも作成されないことになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MutatingWebhookConfiguration</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34697,7 +34697,7 @@
 <p><br></p>
 <h2 id="02-discovery">02. <code>discovery</code> コンテナ<a class="headerlink" href="#02-discovery" title="Permanent link">&para;</a></h2>
 <h3 id="discovery"><code>discovery</code> コンテナの仕組み<a class="headerlink" href="#discovery" title="Permanent link">&para;</a></h3>
-<p>Istio (<code>v1.1</code>) の <code>discovery</code> コンテナは、Config Ingestionレイヤー、Core Data Modelレイヤー、Proxy Servingレイヤー、インメモリストレージ、といった要素からなる。</p>
+<p>Istio (<code>v1.1</code>) の <code>discovery</code> コンテナは、Config Ingestion レイヤー、Core Data Model レイヤー、Proxy Serving レイヤー、インメモリストレージ、といった要素からなる。</p>
 <p><img alt="istio_control-plane_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -34708,7 +34708,7 @@
 <p><br></p>
 <h3 id="config-ingestion">Config Ingestionレイヤー<a class="headerlink" href="#config-ingestion" title="Permanent link">&para;</a></h3>
 <h4 id="config-ingestion_1">▼ Config Ingestionレイヤーとは<a class="headerlink" href="#config-ingestion_1" title="Permanent link">&para;</a></h4>
-<p>Clusterで作成されたIstioリソースの状態を取得する。</p>
+<p>Cluster で作成された Istio リソースの状態を取得する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/master/architecture/networking/pilot.md">https://github.com/istio/istio/blob/master/architecture/networking/pilot.md</a></li>
@@ -34717,7 +34717,7 @@
 <p><br></p>
 <h3 id="config-translation">Config translationレイヤー<a class="headerlink" href="#config-translation" title="Permanent link">&para;</a></h3>
 <h4 id="config-translation_1">▼ Config translationレイヤーとは<a class="headerlink" href="#config-translation_1" title="Permanent link">&para;</a></h4>
-<p>取得したカスタムリソースの状態をEnvoyの設定値に変換する。</p>
+<p>取得したカスタムリソースの状態を Envoy の設定値に変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.20.0/architecture/networking/pilot.md">https://github.com/istio/istio/blob/1.20.0/architecture/networking/pilot.md</a></li>
@@ -34726,7 +34726,7 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ リスナーの場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>IstioリソースをEnvoyのリスナーに変換する。</p>
+<p>Istio リソースを Envoy のリスナーに変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/lds.go#L92-L105">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/lds.go#L92-L105</a></li>
@@ -34735,7 +34735,7 @@
 </ul>
 </blockquote>
 <h4 id="_5">▼ ルートの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>IstioリソースをEnvoyのルートに変換する。</p>
+<p>Istio リソースを Envoy のルートに変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/rds.go#L62-L68">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/rds.go#L62-L68</a></li>
@@ -34744,7 +34744,7 @@
 </ul>
 </blockquote>
 <h4 id="_6">▼ クラスターの場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>IstioリソースをEnvoyのクラスターに変換する。</p>
+<p>Istio リソースを Envoy のクラスターに変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/cds.go#L75-L81">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/cds.go#L75-L81</a></li>
@@ -34753,7 +34753,7 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ エンドポイントの場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>IstioリソースをEnvoyのエンドポイントに変換する。</p>
+<p>Istio リソースを Envoy のエンドポイントに変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L118-L124">https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/eds.go#L118-L124</a></li>
@@ -34763,7 +34763,7 @@
 <p><br></p>
 <h3 id="config-serving">Config servingレイヤー<a class="headerlink" href="#config-serving" title="Permanent link">&para;</a></h3>
 <h4 id="config-serving_1">▼ Config servingレイヤーとは<a class="headerlink" href="#config-serving_1" title="Permanent link">&para;</a></h4>
-<p>Envoyの設定値に基づいて、istio-proxyをPodに提供する。</p>
+<p>Envoy の設定値に基づいて、istio-proxy を Pod に提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1">https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1</a></li>
@@ -34772,7 +34772,7 @@
 </ul>
 </blockquote>
 <h4 id="xds-api">▼ XDS-API<a class="headerlink" href="#xds-api" title="Permanent link">&para;</a></h4>
-<p>pilot-agentを介して、Envoyとの間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。</p>
+<p>pilot-agent を介して、Envoy との間で定期的にリモートプロシージャーコールを双方向で実行し、宛先情報を送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloudnative.to/blog/istio-pilot-3/">https://cloudnative.to/blog/istio-pilot-3/</a></li>
@@ -34832,7 +34832,7 @@
 <li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L190-L233">https://github.com/istio/istio/blob/1.14.3/pilot/pkg/xds/ads.go#L190-L233</a></li>
 </ul>
 </blockquote>
-<p>実装が移行途中のため、xds-proxyにも、Envoyからのリモートプロシージャーコールを処理する同名の関数がある。</p>
+<p>実装が移行途中のため、xds-proxy にも、Envoy からのリモートプロシージャーコールを処理する同名の関数がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.14.3/pkg/istio-agent/xds_proxy.go#L299-L306">https://github.com/istio/istio/blob/1.14.3/pkg/istio-agent/xds_proxy.go#L299-L306</a></li>
@@ -34858,7 +34858,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </code></pre></div>
 <h3 id="8080"><code>8080</code> 番<a class="headerlink" href="#8080" title="Permanent link">&para;</a></h3>
 <p><code>discovery</code> コンテナの <code>8080</code> 番ポートでは、コントロールプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。</p>
-<p><code>discovery</code> コンテナの <code>15014</code> 番ポートにポートフォワーディングしながら、別に <code>go tool pprof</code> コマンドを実行することにより、Istioを実装するパッケージのリソース使用量を可視化できる。</p>
+<p><code>discovery</code> コンテナの <code>15014</code> 番ポートにポートフォワーディングしながら、別に <code>go tool pprof</code> コマンドを実行することにより、Istio を実装するパッケージのリソース使用量を可視化できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ポートフォワーディングを実行する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/istiod-&lt;リビジョン&gt;<span class="w"> </span><span class="m">15014</span><span class="w"> </span>-n<span class="w"> </span>istio-system
 
@@ -34878,8 +34878,8 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080/ui/fl
 </blockquote>
 <p><br></p>
 <h3 id="9876"><code>9876</code> 番<a class="headerlink" href="#9876" title="Permanent link">&para;</a></h3>
-<p><code>discovery</code> コンテナの <code>9876</code> 番ポートでは、ControlZダッシュボードに対するリクエストを待ち受ける。</p>
-<p>ControlZダッシュボードでは、istiodコントロールプレーンの設定値を変更できる。</p>
+<p><code>discovery</code> コンテナの <code>9876</code> 番ポートでは、ControlZ ダッシュボードに対するリクエストを待ち受ける。</p>
+<p>ControlZ ダッシュボードでは、istiod コントロールプレーンの設定値を変更できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/diagnostic-tools/controlz/">https://istio.io/latest/docs/ops/diagnostic-tools/controlz/</a></li>
@@ -34889,16 +34889,16 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080/ui/fl
 <p><br></p>
 <h3 id="15010"><code>15010</code> 番<a class="headerlink" href="#15010" title="Permanent link">&para;</a></h3>
 <p><img alt="istio_control-plane_service-discovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_service-discovery.png" /></p>
-<p><code>discovery</code> コンテナの <code>15010</code> 番ポートでは、istio-proxyからのxDSサーバーに対するリモートプロシージャーコールを待ち受け、<code>discovery</code> コンテナ内のプロセスに渡す。</p>
+<p><code>discovery</code> コンテナの <code>15010</code> 番ポートでは、istio-proxy からの xDS サーバーに対するリモートプロシージャーコールを待ち受け、<code>discovery</code> コンテナ内のプロセスに渡す。</p>
 <p>コールの内容に応じて、他のサービス (Pod、Node)の宛先情報を含むレスポンスを返信する。</p>
-<p>istio-proxyはこれを受信し、pilot-agentがEnvoyの宛先情報設定を動的に変更する (サービス検出) 。</p>
+<p>istio-proxy はこれを受信し、pilot-agent が Envoy の宛先情報設定を動的に変更する (サービス検出) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/">https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/</a></li>
 </ul>
 </blockquote>
 <p><img alt="istio_service-registry" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-registry.png" /></p>
-<p>Istiodコントロールプレーンは、サービスレジストリ (例：etcd、consul catalog、nocos、cloud foundry) に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言 (ServiceEntry、WorkloadEntry) から、他のサービス (Pod、Node) の宛先情報を取得する。</p>
+<p>Istiod コントロールプレーンは、サービスレジストリ (例：etcd、consul catalog、nocos、cloud foundry) に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言 (ServiceEntry、WorkloadEntry) から、他のサービス (Pod、Node) の宛先情報を取得する。</p>
 <p><code>discovery</code> コンテナは、取得した宛先情報を自身に保管する。</p>
 <blockquote>
 <ul>
@@ -34911,10 +34911,10 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080/ui/fl
 </blockquote>
 <p><br></p>
 <h3 id="15012"><code>15012</code> 番<a class="headerlink" href="#15012" title="Permanent link">&para;</a></h3>
-<p><code>discovery</code> コンテナの <code>15012</code> 番ポートでは、マイクロサービス間で相互TLS認証によるHTTPSプロトコルを使用する場合、istio-proxyからのサーバー証明書に関するリクエストを待ち受け、<code>discovery</code> コンテナ内のプロセスに渡す。</p>
+<p><code>discovery</code> コンテナの <code>15012</code> 番ポートでは、マイクロサービス間で相互 TLS 認証による HTTPS プロトコルを使用する場合、istio-proxy からのサーバー証明書に関するリクエストを待ち受け、<code>discovery</code> コンテナ内のプロセスに渡す。</p>
 <p>リクエストの内容に応じて、サーバー証明書と秘密鍵を含むレスポンスを返信する。</p>
-<p>istio-proxyはこれを受信し、pilot-agentはEnvoyにこれらを紐付ける。</p>
-<p>また、サーバー証明書の有効期限が切れれば、istio-proxyからのリクエストに応じて、新しいサーバー証明書と秘密鍵を作成する。</p>
+<p>istio-proxy はこれを受信し、pilot-agent は Envoy にこれらを紐付ける。</p>
+<p>また、サーバー証明書の有効期限が切れれば、istio-proxy からのリクエストに応じて、新しいサーバー証明書と秘密鍵を作成する。</p>
 <p><img alt="istio_control-plane_certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_certificate.png" /></p>
 <blockquote>
 <ul>
@@ -34923,7 +34923,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080/ui/fl
 </blockquote>
 <p><br></p>
 <h3 id="15014"><code>15014</code> 番<a class="headerlink" href="#15014" title="Permanent link">&para;</a></h3>
-<p>コンテナの <code>15014</code> 番ポートでは、Istiodコントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、<code>discovery</code> コンテナ内のプロセスに渡す。</p>
+<p>コンテナの <code>15014</code> 番ポートでは、Istiod コントロールプレーンのメトリクスを監視するツールからのリクエストを待ち受け、<code>discovery</code> コンテナ内のプロセスに渡す。</p>
 <p>リクエストの内容に応じて、データポイントを含むレスポンスを返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ポートフォワーディングを実行する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/istiod-&lt;リビジョン&gt;<span class="w"> </span><span class="m">15014</span><span class="w"> </span>-n<span class="w"> </span>istio-system
@@ -34939,12 +34939,12 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
 </blockquote>
 <p><br></p>
 <h3 id="15017"><code>15017</code> 番<a class="headerlink" href="#15017" title="Permanent link">&para;</a></h3>
-<p><code>discovery</code> コンテナの <code>15017</code> 番ポートでは、Istioの <code>istiod-&lt;リビジョン&gt;</code> というServiceからのポートフォワーディングを待ち受け、<code>discovery</code> コンテナ内のプロセスに渡す。AdmissionReviewを含むレスポンスを返信する。</p>
+<p><code>discovery</code> コンテナの <code>15017</code> 番ポートでは、Istio の <code>istiod-&lt;リビジョン&gt;</code> という Service からのポートフォワーディングを待ち受け、<code>discovery</code> コンテナ内のプロセスに渡す。AdmissionReview を含むレスポンスを返信する。</p>
 <p><br></p>
 <h2 id="03-pilot-discovery">03. pilot-discoveryコマンド<a class="headerlink" href="#03-pilot-discovery" title="Permanent link">&para;</a></h2>
 <h3 id="_10">実行オプションの渡し方<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p><code>discovery</code> コンテナの起動時に引数として渡す。</p>
-<p>Podであれば、<code>.spec.containers[*].args</code> オプションを使用する。</p>
+<p>Pod であれば、<code>.spec.containers[*].args</code> オプションを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34965,7 +34965,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
 <p><br></p>
 <h3 id="discovery_1">discovery<a class="headerlink" href="#discovery_1" title="Permanent link">&para;</a></h3>
 <h4 id="clusterregistriesnamespace">▼ clusterRegistriesNamespace<a class="headerlink" href="#clusterregistriesnamespace" title="Permanent link">&para;</a></h4>
-<p>IstioのConfigMap (<code>istio-mesh-cm</code>) のあるNamespaceを設定する。</p>
+<p>Istio の ConfigMap (<code>istio-mesh-cm</code>) のある Namespace を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--clusterRegistriesNamespace<span class="w"> </span>istio-system
 </code></pre></div>
 <blockquote>
@@ -34974,7 +34974,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
 </ul>
 </blockquote>
 <h4 id="keepalivemaxserverconnectionage">▼ keepaliveMaxServerConnectionAge<a class="headerlink" href="#keepalivemaxserverconnectionage" title="Permanent link">&para;</a></h4>
-<p>istio-proxyからのgRPCリクエスト受信時のKeepalive (クライアントの状態に応じて、接続をタイムアウトにするかどうか) を設定する。</p>
+<p>istio-proxy からの gRPC リクエスト受信時の Keepalive (クライアントの状態に応じて、接続をタイムアウトにするかどうか) を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--keepaliveMaxServerConnectionAge<span class="w"> </span>30m
 </code></pre></div>
 <blockquote>
@@ -34991,8 +34991,8 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
 </ul>
 </blockquote>
 <h4 id="log_as_json">▼ log_as_json<a class="headerlink" href="#log_as_json" title="Permanent link">&para;</a></h4>
-<p>Istioの各コンポーネントの実行ログを構造化する。</p>
-<p>istio-proxyコンテナのアクセスログではない。</p>
+<p>Istio の各コンポーネントの実行ログを構造化する。</p>
+<p>istio-proxy コンテナのアクセスログではない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--log_as_json
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -35004,7 +35004,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="monitoringaddr">▼ monitoringAddr<a class="headerlink" href="#monitoringaddr" title="Permanent link">&para;</a></h4>
-<p>Prometheusによるデータポイント収集のポート番号を設定する。</p>
+<p>Prometheus によるデータポイント収集のポート番号を設定する。</p>
 <p><code>:15014</code> を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-discovery<span class="w"> </span>discovery<span class="w"> </span>--monitoringAddr<span class="w"> </span>:15014
 </code></pre></div>
@@ -35042,7 +35042,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15014/debu
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

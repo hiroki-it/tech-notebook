@@ -33953,7 +33953,7 @@
 <p>後の <code>overlays</code> ディレクトリの元になるリソース定義を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>元になるリソース定義を設定する。</p>
-<p>ここでは、Deploymentを設定する。</p>
+<p>ここでは、Deployment を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34010,7 +34010,7 @@
 <h4 id="_3">▼ <code>差分リソース定義ファイル</code><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p><code>base</code> ディレクトリ配下のリソース定義ファイルとの差分の実装を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ここでは、Deploymentの差分を設定する。</p>
+<p>ここでは、Deployment の差分を設定する。</p>
 <p><code>.spec.replicas</code> キー以下は <code>base</code> ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -34019,7 +34019,7 @@
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
-<p>ここでは、Deploymentの差分を設定する。</p>
+<p>ここでは、Deployment の差分を設定する。</p>
 <p><code>.spec.template.spec.containers[*].resources</code> キー以下は <code>base</code> ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -34037,9 +34037,9 @@
 <p><br></p>
 <h2 id="03">03. プラグイン<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_4">プラグインとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>Kustomizeのプラグインには、GeneratorとTransformerの種類がある。</p>
+<p>Kustomize のプラグインには、Generator と Transformer の種類がある。</p>
 <p>Generator (例：SecretGenerator、ConfigMapGenerator) のプラグインは、マニフェストを作成する。</p>
-<p>一歩でTransformerは、マニフェストを部分的に書き換える。</p>
+<p>一歩で Transformer は、マニフェストを部分的に書き換える。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes-sigs/kustomize/blob/master/examples/configureBuiltinPlugin.md">https://github.com/kubernetes-sigs/kustomize/blob/master/examples/configureBuiltinPlugin.md</a></li>
@@ -34064,8 +34064,8 @@ viaduct.ai/v1/ksops/ksops
 <p><br></p>
 <h3 id="ksops">KSOPS<a class="headerlink" href="#ksops" title="Permanent link">&para;</a></h3>
 <h4 id="ksops_1">▼ KSOPSとは<a class="headerlink" href="#ksops_1" title="Permanent link">&para;</a></h4>
-<p>SOPSを使用して、復号したデータをSecretにデータを注入する。</p>
-<p>SOPSで使用できる暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGPなど) をKSOPSでも使用できる。</p>
+<p>SOPS を使用して、復号したデータを Secret にデータを注入する。</p>
+<p>SOPS で使用できる暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGP など) を KSOPS でも使用できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/viaduct-ai/kustomize-sops/blob/v3.0.0/README.md#argo-cd-helm-chart-with-custom-tooling">https://github.com/viaduct-ai/kustomize-sops/blob/v3.0.0/README.md#argo-cd-helm-chart-with-custom-tooling</a></li>
@@ -34074,8 +34074,8 @@ viaduct.ai/v1/ksops/ksops
 </ul>
 </blockquote>
 <h4 id="_8">▼ セットアップ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>シェルスクリプトを使用して、KSOPSに関するバイナリーをインストールする。</p>
-<p>SOPSは内蔵されており、不要である。</p>
+<p>シェルスクリプトを使用して、KSOPS に関するバイナリーをインストールする。</p>
+<p>SOPS は内蔵されており、不要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>https://raw.githubusercontent.com/viaduct-ai/kustomize-sops/master/scripts/install-ksops-archive.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
 </code></pre></div>
 <blockquote>
@@ -34085,9 +34085,9 @@ viaduct.ai/v1/ksops/ksops
 </blockquote>
 <p><br></p>
 <h3 id="helm">Helmとの比較<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h3>
-<p>なお、どのような要件でもHelmを推奨する。</p>
-<p>Kustomizeは、変数や条件分岐の柔軟性が低いため、マニフェストが増えるにつれて共通化が大変になる。</p>
-<p>一方で、Helmは柔軟性が高く、共通化しやすい。</p>
+<p>なお、どのような要件でも Helm を推奨する。</p>
+<p>Kustomize は、変数や条件分岐の柔軟性が低いため、マニフェストが増えるにつれて共通化が大変になる。</p>
+<p>一方で、Helm は柔軟性が高く、共通化しやすい。</p>
 <p><br></p>
 
 
@@ -34109,7 +34109,7 @@ viaduct.ai/v1/ksops/ksops
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

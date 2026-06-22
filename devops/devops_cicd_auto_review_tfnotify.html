@@ -33503,23 +33503,23 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-tfnotify">01. tfnotifyとは<a class="headerlink" href="#01-tfnotify" title="Permanent link">&para;</a></h2>
-<p><code>terraform</code> コマンドの処理結果を、レビューコメントとしてGitHubにPOSTリクエストを送信する。</p>
-<p>URLや送信内容を設定ファイルで定義する。</p>
-<p>CircleCIで利用する場合は、ダウンロードしたtfnotifyのバイナリファイルを実行する。</p>
-<p>環境別にtfnotifyを配置しておくと良い。</p>
+<p><code>terraform</code> コマンドの処理結果を、レビューコメントとして GitHub に POST リクエストを送信する。</p>
+<p>URL や送信内容を設定ファイルで定義する。</p>
+<p>CircleCI で利用する場合は、ダウンロードした tfnotify のバイナリファイルを実行する。</p>
+<p>環境別に tfnotify を配置しておくとよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/mercari/tfnotify/releases/tag/v0.7.0">https://github.com/mercari/tfnotify/releases/tag/v0.7.0</a></li>
 </ul>
 </blockquote>
-<p>tfnotifyをより強化したtfcmtというツールがある。</p>
+<p>tfnotify をより強化した tfcmt というツールがある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/suzuki-shunsuke/tfcmt">https://github.com/suzuki-shunsuke/tfcmt</a></li>
 </ul>
 </blockquote>
-<p>tfnotifyとtfcmtは、GitHubのAPIのみサポートしている。</p>
-<p>GitLabの場合はtfcmt-gitlabを使用するとよい。</p>
+<p>tfnotify と tfcmt は、GitHub の API のみサポートしている。</p>
+<p>GitLab の場合は tfcmt-gitlab を使用するとよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/hirosassa/tfcmt-gitlab">https://github.com/hirosassa/tfcmt-gitlab</a></li>
@@ -33528,7 +33528,7 @@
 <p><br></p>
 <h2 id="02">02. コマンド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="-config">--config<a class="headerlink" href="#-config" title="Permanent link">&para;</a></h3>
-<p>設定ファイルを使用して、tfnotifyを実行する。</p>
+<p>設定ファイルを使用して、tfnotify を実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -33552,14 +33552,14 @@ terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2
 <p><br></p>
 <h2 id="03-tfnotifyyml">03. <code>tfnotify.yml</code> ファイル<a class="headerlink" href="#03-tfnotifyyml" title="Permanent link">&para;</a></h2>
 <h3 id="ci">ci<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h3>
-<p>使用するCIツールを設定する。</p>
+<p>使用する CI ツールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># https://github.com/mercari/tfnotify</span>
 <span class="nn">---</span>
 <span class="nt">ci</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="notifier">notifier<a class="headerlink" href="#notifier" title="Permanent link">&para;</a></h3>
-<p>リポジトリに通知をPOSTリクエストできるように、資格情報を設定する。</p>
+<p>リポジトリに通知を POST リクエストできるように、資格情報を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># https://github.com/mercari/tfnotify</span>
 <span class="nn">---</span>
 <span class="nt">notifier</span><span class="p">:</span>
@@ -33623,7 +33623,7 @@ terraform<span class="w"> </span>-chdir<span class="o">=</span>./<span class="s2
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 19:24:15 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

@@ -34884,9 +34884,9 @@
 <h3 id="_2">コントロールプレーン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ コントロールプレーンとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>コンテナオーケストレーションを実行する環境を提供する。</p>
-<p>データプレーンのVPC外に存在している。</p>
+<p>データプレーンの VPC 外に存在している。</p>
 <h4 id="_4">▼ コントロールプレーンの仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>Amazon ECSのコントロールプレーンは、開発者や他のAWSリソースからのリクエストを待ち受けるAPI、データプレーンを管理するコンポーネント、からなる。</p>
+<p>Amazon ECS のコントロールプレーンは、開発者や他の AWS リソースからのリクエストを待ち受ける API、データプレーンを管理するコンポーネント、からなる。</p>
 <p><img alt="ecs_control-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane.png" /></p>
 <blockquote>
 <ul>
@@ -34895,8 +34895,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">データプレーン<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>単一のホスト (Amazon EC2、AWS Fargate) のOS上でコンテナオーケストレーションを実行する。</p>
-<p>『<code>on EC2</code>』『<code>on Fargate</code>』という呼び方は、データプレーンがAmazon ECSの実行環境 (<code>on environment</code>) の意味合いを持つからである。</p>
+<p>単一のホスト (Amazon EC2、AWS Fargate) の OS 上でコンテナオーケストレーションを実行する。</p>
+<p>『<code>on EC2</code>』『<code>on Fargate</code>』という呼び方は、データプレーンが Amazon ECS の実行環境 (<code>on environment</code>) の意味合いを持つからである。</p>
 <p><br></p>
 <h3 id="amazon-eks">Amazon EKSとの機能比較<a class="headerlink" href="#amazon-eks" title="Permanent link">&para;</a></h3>
 <table>
@@ -34963,7 +34963,7 @@
 <p><br></p>
 <h2 id="03">03. データプレーンのコンポーネント<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-ecs">Amazon ECSクラスター<a class="headerlink" href="#amazon-ecs" title="Permanent link">&para;</a></h3>
-<p>Amazon ECSサービスの管理グループ単位のこと。</p>
+<p>Amazon ECS サービスの管理グループ単位のこと。</p>
 <p><img alt="ecs_cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_cluster.png" /></p>
 <blockquote>
 <ul>
@@ -34972,9 +34972,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="amazon-ecs_1">Amazon ECSサービス<a class="headerlink" href="#amazon-ecs_1" title="Permanent link">&para;</a></h3>
-<p>Amazon ECSタスクの管理グループ単位のこと。</p>
-<p>Amazon ECSタスクへのロードバランシング、タスクの数の維持管理や、リリースの成否を管理する。</p>
-<p>マイクロサービスは、Amazon ECSサービスを単位として作成する。</p>
+<p>Amazon ECS タスクの管理グループ単位のこと。</p>
+<p>Amazon ECS タスクへのロードバランシング、タスクの数の維持管理や、リリースの成否を管理する。</p>
+<p>マイクロサービスは、Amazon ECS サービスを単位として作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/service_definition_parameters.html">https://docs.aws.amazon.com/AmazonECS/latest/userguide/service_definition_parameters.html</a></li>
@@ -34984,11 +34984,11 @@
 <h3 id="amazon-ecs_2">Amazon ECSタスク<a class="headerlink" href="#amazon-ecs_2" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-ecs_3">▼ Amazon ECSタスク<a class="headerlink" href="#amazon-ecs_3" title="Permanent link">&para;</a></h4>
 <p>コンテナインスタンスの管理グループ単位のこと。</p>
-<p>Amazon ECSタスク定義を基に作成される。</p>
+<p>Amazon ECS タスク定義を基に作成される。</p>
 <p><img alt="ecs_task" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task.png" /></p>
 <h4 id="amazon-ecs_4">▼ Amazon ECSコンテナエージェント<a class="headerlink" href="#amazon-ecs_4" title="Permanent link">&para;</a></h4>
-<p>Amazon ECSタスク実行ロールを使用して、Amazon ECSタスクのライフサイクルを管理する。</p>
-<p>Fargateの場合、Amazon ECSコンテナエージェントがプリインストールされている。</p>
+<p>Amazon ECS タスク実行ロールを使用して、Amazon ECS タスクのライフサイクルを管理する。</p>
+<p>Fargate の場合、Amazon ECS コンテナエージェントがプリインストールされている。</p>
 <p><img alt="ecs_task-execution-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png" /></p>
 <blockquote>
 <ul>
@@ -34997,13 +34997,13 @@
 </ul>
 </blockquote>
 <h4 id="amazon-ecs_5">▼ Amazon ECSタスク定義<a class="headerlink" href="#amazon-ecs_5" title="Permanent link">&para;</a></h4>
-<p>Amazon ECSタスクをどのような設定値を基に作成するかを設定できる。</p>
-<p>Amazon ECSタスク定義は、バージョンを示す『リビジョンナンバー』で番号づけされる。</p>
-<p>Amazon ECSタスク定義を削除するには、全てのリビジョンのAmazon ECSタスク定義を登録解除する必要がある。</p>
+<p>Amazon ECS タスクをどのような設定値を基に作成するかを設定できる。</p>
+<p>Amazon ECS タスク定義は、バージョンを示す『リビジョンナンバー』で番号づけされる。</p>
+<p>Amazon ECS タスク定義を削除するには、すべてのリビジョンの Amazon ECS タスク定義を登録解除する必要がある。</p>
 <h4 id="amazon-ecs_6">▼ Amazon ECSタスクのライフサイクルフェーズ<a class="headerlink" href="#amazon-ecs_6" title="Permanent link">&para;</a></h4>
 <p><img alt="ecs_task_lifecycle_phase" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task_lifecycle_phase.png" /></p>
-<p>Amazon ECSタスクのライフサイクルにはフェーズがある。</p>
-<p>Amazon ECSタスクは、必須コンテナ異常停止時、デプロイ、オートスケーリング、手動操作、の時にフェーズを持つ。</p>
+<p>Amazon ECS タスクのライフサイクルにはフェーズがある。</p>
+<p>Amazon ECS タスクは、必須コンテナ異常停止時、デプロイ、オートスケーリング、手動操作、のときにフェーズを持つ。</p>
 <table>
 <thead>
 <tr>
@@ -35025,12 +35025,12 @@
 </tr>
 <tr>
 <td>Activating</td>
-<td>Amazon ECSタスク内の全てのコンテナの起動が完了したが、Amazon ECSタスク全体のセットアップは完了していない。</td>
+<td>Amazon ECSタスク内のすべてのコンテナの起動が完了したが、Amazon ECSタスク全体のセットアップは完了していない。</td>
 <td></td>
 </tr>
 <tr>
 <td>Running</td>
-<td>Amazon ECSタスク内の全てのコンテナの起動とAmazon ECSタスク全体の準備が完了し、実行中である。</td>
+<td>Amazon ECSタスク内のすべてのコンテナの起動とAmazon ECSタスク全体の準備が完了し、実行中である。</td>
 <td>コンテナの起動が完了すれば <code>Running</code> フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、<code>Running</code> フェーズであっても使用できないことに注意する。</td>
 </tr>
 <tr>
@@ -35066,8 +35066,8 @@
 <h4 id="none">▼ noneモード<a class="headerlink" href="#none" title="Permanent link">&para;</a></h4>
 <p>外部ネットワークが無く、タスクと外と通信できない。</p>
 <h4 id="host">▼ hostモード<a class="headerlink" href="#host" title="Permanent link">&para;</a></h4>
-<p>EC2のみで使用できる。</p>
-<p>Dockerのhostネットワークに相当する。</p>
+<p>EC2 のみで使用できる。</p>
+<p>Docker の host ネットワークに相当する。</p>
 <p><img alt="network-mode_host-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_host-mode.png" /></p>
 <blockquote>
 <ul>
@@ -35075,8 +35075,8 @@
 </ul>
 </blockquote>
 <h4 id="bridge">▼ bridgeモード<a class="headerlink" href="#bridge" title="Permanent link">&para;</a></h4>
-<p>EC2のみで使用できる。</p>
-<p>Dockerのbridgeネットワークに相当する。</p>
+<p>EC2 のみで使用できる。</p>
+<p>Docker の bridge ネットワークに相当する。</p>
 <p><img alt="network-mode_host-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_host-mode.png" /></p>
 <blockquote>
 <ul>
@@ -35084,13 +35084,13 @@
 </ul>
 </blockquote>
 <h4 id="awsvpc">▼ awsvpcモード<a class="headerlink" href="#awsvpc" title="Permanent link">&para;</a></h4>
-<p>FargateとEC2の両方で使用できるawsの独自ネットワークモード。</p>
-<p>タスクはElastic Networkインターフェースと紐付けられ、コンテナではなくタスク単位でプライベートIPアドレスが割り当てられる。</p>
-<p>Fargateの場合、同じタスクに属するコンテナ間は、localhostインターフェイスというENI経由で通信できるようになる (推測ではあるが、FargateとしてのEC2にlocalhostインターフェースが紐付けられる) 。</p>
-<p>これにより、コンテナ間でパケットを送受信するとき (例：NginxコンテナからPHP-FPMコンテナへのルーティング) は、通信元コンテナにて、通信先のアドレスを『localhost (<code>127.0.0.1</code>) 』で指定すれば良い。</p>
-<p>また、awsvpcモードの独自の仕組みとして、同じAmazon ECSタスク内であれば、互いにコンテナポートを開放せずともパケットを送受信できる。通信を待ち受けるポートを指定するだけでよい。</p>
-<p>例えば、NginxコンテナからPHP-FPMコンテナにリクエストをルーティングするためには、PHP-FPMプロセスが <code>9000</code> 番ポートでリクエストを受信し、加えてコンテナが <code>9000</code> 番ポートを開放する必要がある。</p>
-<p>しかし、awsvpcモードではコンテナポートを開放する必要はない。</p>
+<p>Fargate と EC2 の両方で使用できる aws の独自ネットワークモード。</p>
+<p>タスクは Elastic Network インターフェースと紐付けられ、コンテナではなくタスク単位でプライベート IP アドレスが割り当てられる。</p>
+<p>Fargate の場合、同じタスクに属するコンテナ間は、localhost インターフェイスという ENI 経由で通信できるようになる (推測ではあるが、Fargate としての EC2 に localhost インターフェースが紐付けられる) 。</p>
+<p>これにより、コンテナ間でパケットを送受信するとき (例：Nginx コンテナから PHP-FPM コンテナへのルーティング) は、通信元コンテナにて、通信先のアドレスを『localhost (<code>127.0.0.1</code>) 』で指定すればよい。</p>
+<p>また、awsvpc モードの独自の仕組みとして、同じ Amazon ECS タスク内であれば、互いにコンテナポートを開放せずともパケットを送受信できる。通信を待ち受けるポートを指定するだけでよい。</p>
+<p>例えば、Nginx コンテナから PHP-FPM コンテナにリクエストをルーティングするためには、PHP-FPM プロセスが <code>9000</code> 番ポートでリクエストを受信し、加えてコンテナが <code>9000</code> 番ポートを開放する必要がある。</p>
+<p>しかし、awsvpc モードではコンテナポートを開放する必要はない。</p>
 <p><img alt="network-mode_awsvpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_awsvpc.png" /></p>
 <blockquote>
 <ul>
@@ -35100,7 +35100,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="amazon-ecs_8">Amazon ECSサービス間の通信<a class="headerlink" href="#amazon-ecs_8" title="Permanent link">&para;</a></h3>
-<p>Amazon ECS Service Connectを使用する。</p>
+<p>Amazon ECS Service Connect を使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/cadp/articles/ecs-service-mesh-compare">https://zenn.dev/cadp/articles/ecs-service-mesh-compare</a></li>
@@ -35109,22 +35109,22 @@
 <p><br></p>
 <h3 id="amazon-ecs_9">Amazon ECSタスクからのアウトバウンド<a class="headerlink" href="#amazon-ecs_9" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ プライベートサブネット内のデータプレーンの配置<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークやVCP外のAWSリソースにリクエストを送信するために、AWS NAT GatewayやVPCエンドポイントが必要になる。</p>
+<p>プライベートサブネット内にデータプレーンを配置した場合、パブリックネットワークや VCP 外の AWS リソースにリクエストを送信するために、AWS NAT Gateway や VPC エンドポイントが必要になる。</p>
 <p>パブリックサブネットに配置すればこれらは不要となるが、パブリックサブネットよりもプライベートサブネットにデータプレーンを配置するほうが望ましい。</p>
 <h4 id="_7">▼ パブリックネットワークに対する通信<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してリクエストを送信するためには、AWS NAT Gatewayを配置する必要がある。</p>
+<p>データプレーンをプライベートサブネットに配置した場合、パブリックネットワークに対してリクエストを送信するためには、AWS NAT Gateway を配置する必要がある。</p>
 <h4 id="amazon-vpcaws">▼ Amazon VPC外のAWSリソースに対する通信<a class="headerlink" href="#amazon-vpcaws" title="Permanent link">&para;</a></h4>
-<p>データプレーンをプライベートサブネットに配置した場合、VPC外にあるAWSリソース (例：コントロールプレーン、Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayあるいはVPCエンドポイントを配置する必要がある。</p>
-<p>もしAWS NAT Gatewayを配置したとする。</p>
-<p>この場合、VPCエンドポイントよりもAWS NAT Gatewayのほうが高く、AWSリソースに対する通信でもAWS NAT Gatewayを通過するため、高額料金を請求されてしまう。</p>
+<p>データプレーンをプライベートサブネットに配置した場合、VPC 外にある AWS リソース (例：コントロールプレーン、Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) に対してリクエストを送信するためには、AWS NAT Gateway あるいは VPC エンドポイントを配置する必要がある。</p>
+<p>もし AWS NAT Gateway を配置したとする。</p>
+<p>この場合、VPC エンドポイントよりも AWS NAT Gateway のほうが高く、AWS リソースに対する通信でも AWS NAT Gateway を通過するため、高額料金を請求されてしまう。</p>
 <p><img alt="ecs_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_nat-gateway.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint">https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint</a></li>
 </ul>
 </blockquote>
-<p>代わりに、VPCエンドポイントを配置する。</p>
-<p>より低額でデータプレーンがVPC外のAWSリソースのリクエストできるようになる。</p>
+<p>代わりに、VPC エンドポイントを配置する。</p>
+<p>より低額でデータプレーンが VPC 外の AWS リソースのリクエストできるようになる。</p>
 <p><img alt="ecs_control-plane_vpc-endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane_vpc-endpoint.png" /></p>
 <blockquote>
 <ul>
@@ -35135,8 +35135,8 @@
 <h2 id="03-03">03-03. セキュリティ<a class="headerlink" href="#03-03" title="Permanent link">&para;</a></h2>
 <h3 id="_8">ロール<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ サービスロール<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>Amazon ECSサービスがAmazon ECSタスクを操作するために必要なロールである。</p>
-<p>サービスリンクロールに含まれ、Amazon ECSの作成時に自動的に紐付けられる。</p>
+<p>Amazon ECS サービスが Amazon ECS タスクを操作するために必要なロールである。</p>
+<p>サービスリンクロールに含まれ、Amazon ECS の作成時に自動的に紐付けられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/ecs_fargate_iamrole/">https://dev.classmethod.jp/articles/ecs_fargate_iamrole/</a></li>
@@ -35144,8 +35144,8 @@
 </ul>
 </blockquote>
 <h4 id="_10">▼ コンテナインスタンスロール<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>コンテナのホストが他のAWSリソースにリクエストを送信するために必要なロールである。</p>
-<p>Fargateの場合、不要である。</p>
+<p>コンテナのホストが他の AWS リソースにリクエストを送信するために必要なロールである。</p>
+<p>Fargate の場合、不要である。</p>
 <p><img alt="ecs_container-instance-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_container-instance-role.png" /></p>
 <blockquote>
 <ul>
@@ -35154,8 +35154,8 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ タスクロール<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Amazon ECSタスク内のコンテナのアプリケーションが、他のAWSリソースにリクエストを送信するために必要なロールである。</p>
-<p>アプリケーションにAmazon S3やAWS Systems Managerへの認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。</p>
+<p>Amazon ECS タスク内のコンテナのアプリケーションが、他の AWS リソースにリクエストを送信するために必要なロールである。</p>
+<p>アプリケーションに Amazon S3 や AWS Systems Manager への認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。</p>
 <p><img alt="ecs_task-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-role.png" /></p>
 <blockquote>
 <ul>
@@ -35164,7 +35164,7 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>アプリケーションからAmazon CloudWatch Logsにログを送信するために、Amazon ECSタスクロールにカスタマー管理ポリシーを紐付ける。</p>
+<p>アプリケーションから Amazon CloudWatch Logs にログを送信するために、Amazon ECS タスクロールにカスタマー管理ポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -35178,7 +35178,7 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>パラメーターストアから変数を取得するために、Amazon ECSタスクロールにインラインポリシーを紐付ける。</p>
+<p>パラメーターストアから変数を取得するために、Amazon ECS タスクロールにインラインポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -35187,10 +35187,10 @@
 </code></pre></div>
 <h4 id="_12">▼ タスク実行ロール<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p><img alt="ecs_task-execution-role" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png" /></p>
-<p>Amazon ECSタスク内のAmazon ECSコンテナエージェントが、他のAWSリソースにリクエストを送信するために必要なロールのこと。</p>
-<p>AWS管理ポリシーである『<code>AmazonECSTaskExecutionRolePolicy</code>』が紐付けられたロールを、タスクに紐付ける必要がある。</p>
-<p>このポリシーには、Amazon ECRへの認可スコープの他、Amazon CloudWatch Logsにログを作成するための認可スコープが設定されている。</p>
-<p>Amazon ECSタスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。</p>
+<p>Amazon ECS タスク内の Amazon ECS コンテナエージェントが、他の AWS リソースにリクエストを送信するために必要なロールのこと。</p>
+<p>AWS 管理ポリシーである『<code>AmazonECSTaskExecutionRolePolicy</code>』が紐付けられたロールを、タスクに紐付ける必要がある。</p>
+<p>このポリシーには、Amazon ECR への認可スコープのほか、Amazon CloudWatch Logs にログを作成するための認可スコープが設定されている。</p>
+<p>Amazon ECS タスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -35212,7 +35212,7 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>datadogエージェントがAmazon ECSクラスターやコンテナにリクエストを送信できるように、Amazon ECSタスク実行ロールにカスタマー管理ポリシーを紐付ける。</p>
+<p>datadog エージェントが Amazon ECS クラスターやコンテナにリクエストを送信できるように、Amazon ECS タスク実行ロールにカスタマー管理ポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -35240,7 +35240,7 @@
 <h2 id="03-04">03-04. 監視<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
 <h3 id="_13">ログ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="awslogs">▼ awslogsドライバー<a class="headerlink" href="#awslogs" title="Permanent link">&para;</a></h4>
-<p>標準出力/標準エラー出力に出力されたログをCloudWatch-APIに送信する。</p>
+<p>標準出力/標準エラー出力に出力されたログを CloudWatch-API に送信する。</p>
 <table>
 <thead>
 <tr>
@@ -35281,17 +35281,17 @@
 <p><br></p>
 <h2 id="04-on-amazon-ec2">04. on Amazon EC2<a class="headerlink" href="#04-on-amazon-ec2" title="Permanent link">&para;</a></h2>
 <h3 id="on-amazon-ec2">on Amazon EC2とは<a class="headerlink" href="#on-amazon-ec2" title="Permanent link">&para;</a></h3>
-<p>EC2をホストとして、コンテナを作成する。</p>
+<p>EC2 をホストとして、コンテナを作成する。</p>
 <p><br></p>
 <h3 id="amazon-ec2ami">Amazon EC2の最適化AMI<a class="headerlink" href="#amazon-ec2ami" title="Permanent link">&para;</a></h3>
-<p>任意のEC2を使用できるが、AWSが用意している最適化AMIを選んだほうが良い。</p>
-<p>このAMIには、EC2がAmazon ECSと連携するために必要なソフトウェアがプリインストールされており、EC2をセットアップする手間が省ける。</p>
+<p>任意の EC2 を使用できるが、AWS が用意している最適化 AMI を選んだほうがよい。</p>
+<p>この AMI には、EC2 が Amazon ECS と連携するために必要なソフトウェアがプリインストールされており、EC2 をセットアップする手間が省ける。</p>
 <table>
 <thead>
 <tr>
 <th>AMI名</th>
 <th>説明</th>
-<th>特に相性の良いアプリ</th>
+<th>特に相性のよいアプリ</th>
 </tr>
 </thead>
 <tbody>
@@ -35307,7 +35307,7 @@
 </tr>
 <tr>
 <td>Amazon ECS最適化 Amazon Linux</td>
-<td>Amazon ECSのための標準的なEC2を作成できる。非推奨であり、Amazon Linux 2を使用したほうが良い。</td>
+<td>Amazon ECSのための標準的なEC2を作成できる。非推奨であり、Amazon Linux 2を使用したほうがよい。</td>
 <td></td>
 </tr>
 <tr>
@@ -35334,7 +35334,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_14">タスク配置戦略<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>Amazon ECSタスクをAmazon ECSクラスターに配置するときのアルゴリズムを選択できる。</p>
+<p>Amazon ECS タスクを Amazon ECS クラスターに配置するときのアルゴリズムを選択できる。</p>
 <table>
 <thead>
 <tr>
@@ -35360,8 +35360,8 @@
 <p><br></p>
 <h2 id="05-on-fargate">05. on Fargate<a class="headerlink" href="#05-on-fargate" title="Permanent link">&para;</a></h2>
 <h3 id="on-fargate">on Fargateとは<a class="headerlink" href="#on-fargate" title="Permanent link">&para;</a></h3>
-<p>Fargateをホストとして、コンテナを作成する。</p>
-<p>Fargateの実体はEC2である (ドキュメントに記載がないが、AWSサポートに確認済み) 。</p>
+<p>Fargate をホストとして、コンテナを作成する。</p>
+<p>Fargate の実体は EC2 である (ドキュメントに記載がないが、AWS サポートに確認済み) 。</p>
 <p><img alt="fargate_data-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_data-plane.png" /></p>
 <blockquote>
 <ul>
@@ -35496,12 +35496,12 @@
 <tr>
 <td>タスクメモリ</td>
 <td>Amazon ECSタスク当たりのコンテナの合計メモリサイズを設定する。</td>
-<td>Amazon ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定したほうが良い。</td>
+<td>Amazon ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定したほうがよい。</td>
 </tr>
 <tr>
 <td>タスクCPU</td>
 <td>Amazon ECSタスク当たりのコンテナの合計CPUサイズを設定する。</td>
-<td>・Amazon ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定したほうが良い。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。</td>
+<td>・Amazon ECSタスク内のコンテナに割り振ることを想定し、やや多めにメモリを設定したほうがよい。<br>・CPUごとに使用できるメモリサイズに違いがあり、大きなCPUほど小さなメモリを使用できない。</td>
 </tr>
 <tr>
 <td>コンテナ定義</td>
@@ -35531,7 +35531,7 @@
 </tbody>
 </table>
 <h4 id="_16">▼ コンテナ定義<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>Amazon ECSタスク内のコンテナ1つに対して、環境を設定する。</p>
+<p>Amazon ECS タスク内のコンテナ 1 つに対して、環境を設定する。</p>
 <table>
 <thead>
 <tr>
@@ -35648,18 +35648,18 @@
 <p><br></p>
 <h2 id="05-03-amazon-ecs">05-03. Amazon ECSタスク<a class="headerlink" href="#05-03-amazon-ecs" title="Permanent link">&para;</a></h2>
 <h3 id="_17">サイドカー<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスのコンテナからログを収集する場合に、AWS以外 (Google Cloud Logging) に送信するのであればサイドカーパターンでログルーター (EC2ならFluentBit、FargateならFireLens) を採用しないといけない。</p>
-<p>Amazon ECSサービスを増えるたびにサイドカーの横展開していく。</p>
+<p>マイクロサービスのコンテナからログを収集する場合に、AWS 以外 (Google Cloud Logging) に送信するのであればサイドカーパターンでログルーター (EC2 なら FluentBit、Fargate なら FireLens) を採用しないといけない。</p>
+<p>Amazon ECS サービスを増えるたびにサイドカーの横展開していく。</p>
 <p><br></p>
 <h3 id="ip">IPアドレス<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-ecsip">▼ Amazon ECSタスクのIPアドレス<a class="headerlink" href="#amazon-ecsip" title="Permanent link">&para;</a></h4>
-<p>Amazon ECSタスクごとに異なるプライベートIPが割り当てられる。</p>
-<p>このIPアドレスに対して、ALBはルーティングを実行する。</p>
+<p>Amazon ECS タスクごとに異なるプライベート IP が割り当てられる。</p>
+<p>この IP アドレスに対して、ALB はルーティングを実行する。</p>
 <h4 id="fargateip">▼ FargateのIPアドレス<a class="headerlink" href="#fargateip" title="Permanent link">&para;</a></h4>
-<p>Fargateは動的パブリックIPアドレス (Fargateの再作成後に変化するIPアドレス) を持ち、固定パブリックIPアドレスであるElastic IPアドレスを設定できない。</p>
-<p>リクエストの先にある外部サービスが、セキュリティ上で静的なIPアドレスを要求する場合、リクエスト (パブリックネットワーク向き通信) 時に送信元パケットに付加されるIPアドレスが動的になり、リクエストできなくなってしまう。</p>
-<p>そこで、Fargateのリクエストが、Elastic IPアドレスを持つAWS NAT Gatewayを経由する (Fargateは、パブリックサブネットとプライベートサブネットのどちらに配置しても良い) 。</p>
-<p>これによって、AWS NAT GatewayのElastic IPアドレスが送信元パケットに付加されるため、Fargateの送信元IPアドレスを見かけ上静的に扱えるようになる。</p>
+<p>Fargate は動的パブリック IP アドレス (Fargate の再作成後に変化する IP アドレス) を持ち、固定パブリック IP アドレスである Elastic IP アドレスを設定できない。</p>
+<p>リクエストの先にある外部サービスが、セキュリティ上で静的な IP アドレスを要求する場合、リクエスト (パブリックネットワーク向き通信) 時に送信元パケットに付加される IP アドレスが動的になり、リクエストできなくなってしまう。</p>
+<p>そこで、Fargate のリクエストが、Elastic IP アドレスを持つ AWS NAT Gateway を経由する (Fargate は、パブリックサブネットとプライベートサブネットのどちらに配置してもよい) 。</p>
+<p>これによって、AWS NAT Gateway の Elastic IP アドレスが送信元パケットに付加されるため、Fargate の送信元 IP アドレスを見かけ上静的に扱えるようになる。</p>
 <p><img alt="NatGatewayを経由したFargateから外部サービスへのリクエスト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NatGatewayを経由したFargateから外部サービスへのリクエスト.png" /></p>
 <blockquote>
 <ul>
@@ -35669,13 +35669,13 @@
 <p><br></p>
 <h3 id="amazon-ecs_12">Amazon ECSタスクの一時起動<a class="headerlink" href="#amazon-ecs_12" title="Permanent link">&para;</a></h3>
 <h4 id="db">▼ DBマイグレーション<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
-<p>現在起動中のAmazon ECSタスクとは別に、新しいタスクを一時的に起動する。</p>
-<p>CI/CDパイプライン上で実行する以外に、ローカルマシンから手動で実行する場合もある。</p>
-<p>起動時に、<code>overrides</code> オプションを使用して、指定したAmazon ECSタスク定義のコンテナ設定を上書きできる。</p>
-<p>正規表現で設定する必要があり、加えてJSONでは『<code>\</code>』を『<code>\\</code>』にエスケープしなければならない。</p>
-<p>コマンドが実行された後に、タスクは自動的にStopped状態になる。</p>
+<p>現在起動中の Amazon ECS タスクとは別に、新しいタスクを一時的に起動する。</p>
+<p>CI/CD パイプライン上で実行する以外に、ローカルマシンから手動で実行する場合もある。</p>
+<p>起動時に、<code>overrides</code> オプションを使用して、指定した Amazon ECS タスク定義のコンテナ設定を上書きできる。</p>
+<p>正規表現で設定する必要があり、加えて JSON では『<code>\</code>』を『<code>\\</code>』にエスケープしなければならない。</p>
+<p>コマンドが実行された後に、タスクは自動的に Stopped 状態になる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>LaravelのSeederコマンドやロールバックコマンドを、ローカルマシンから実行する。</p>
+<p>Laravel の Seeder コマンドやロールバックコマンドを、ローカルマシンから実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nb">set</span><span class="w"> </span>-x
@@ -35720,7 +35720,7 @@
 <span class="s2">echo exitStatus </span><span class="si">${</span><span class="nv">EXIT_STATUS</span><span class="si">}</span>
 <span class="s2">exit </span><span class="si">${</span><span class="nv">EXIT_STATUS</span><span class="si">}</span>
 </code></pre></div>
-<p>注意点として、実行IAMユーザーを作成し、Amazon ECSタスクを起動できる必要最低限の認可スコープを紐付ける。</p>
+<p>注意点として、実行 IAM ユーザーを作成し、Amazon ECS タスクを起動できる必要最低限の認可スコープを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -35759,11 +35759,11 @@
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Amazon ECSは、既存タスクを稼働中のまま、新タスクを最高合計数いっぱいまで作成する。</p>
+<p>Amazon ECS は、既存タスクを稼働中のまま、新タスクを最高合計数いっぱいまで作成する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>Amazon ECSは、待機時間後にALB/NLBによる新タスクに対するヘルスチェックの結果を確認する。ヘルスチェックが成功していれば、既存タスクを停止する。ただし、最小ヘルス率によるタスクの最低合計数が保たれる。</p>
+<p>Amazon ECS は、待機時間後に ALB/NLB による新タスクに対するヘルスチェックの結果を確認する。ヘルスチェックが成功していれば、既存タスクを停止する。ただし、最小ヘルス率によるタスクの最低合計数が保たれる。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -35771,7 +35771,7 @@
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>全ての既存タスクが新タスクに置き換わる。</p>
+<p>すべての既存タスクが新タスクに置き換わる。</p>
 </dd>
 </dl>
 <p><img alt="rolling-update" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rolling-update.png" /></p>
@@ -35781,7 +35781,7 @@
 </ul>
 </blockquote>
 <h4 id="_19">▼ ブルー/グリーンデプロイメント<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>CodeDeployを使用してデプロイする。</p>
+<p>CodeDeploy を使用してデプロイする。</p>
 <p><br></p>
 <h3 id="fargateamazon-vpcaws">プライベートサブネット内のFargateからAmazon VPC外のAWSリソースへのアクセス<a class="headerlink" href="#fargateamazon-vpcaws" title="Permanent link">&para;</a></h3>
 <p><img alt="ecs_vpc-endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_vpc-endpoint.png" /></p>
@@ -35827,10 +35827,10 @@
 </tr>
 </tbody>
 </table>
-<p>プライベートサブネット内のFargateからVPC外のAWSリソース (例：コントロールプレーン、Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDBなど) にリクエストを送信する場合、専用のVPCエンドポイントを設ける必要がある。</p>
-<p>AWS NAT GatewayとVPCエンドポイントの両方を作成している場合、ルートテーブルでは、VPCエンドポイントへのリクエストのほうが優先される。</p>
-<p>そのため、AWS NAT Gatewayがある状態でVPCエンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。</p>
-<p>注意点として、パブリックネットワークにリクエストを送信する場合は、VPCエンドポイントのみでなくAWS NAT Gatewayも作成する必要がある。</p>
+<p>プライベートサブネット内の Fargate から VPC 外の AWS リソース (例：コントロールプレーン、Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) にリクエストを送信する場合、専用の VPC エンドポイントを設ける必要がある。</p>
+<p>AWS NAT Gateway と VPC エンドポイントの両方を作成している場合、ルートテーブルでは、VPC エンドポイントへのリクエストのほうが優先される。</p>
+<p>そのため、AWS NAT Gateway がある状態で VPC エンドポイントを作成すると、接続先が自動的に変わってしまうことに注意する。</p>
+<p>注意点として、パブリックネットワークにリクエストを送信する場合は、VPC エンドポイントのみでなく AWS NAT Gateway も作成する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec">https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec</a></li>
@@ -35842,21 +35842,21 @@
 <h3 id="fargate">Fargate上のコンテナへの接続<a class="headerlink" href="#fargate" title="Permanent link">&para;</a></h3>
 <h4 id="aws-ssm-session-manageramazon-ecs-exec">▼ AWS SSM Session Managerを使用したAmazon ECS Exec<a class="headerlink" href="#aws-ssm-session-manageramazon-ecs-exec" title="Permanent link">&para;</a></h4>
 <p><img alt="fargate_ecs-exec" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_ecs-exec.png" /></p>
-<p>AWS SSM Session Managerを使用してAmazon ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。</p>
-<p>AWS Systems Managerを使用してコンテナに接続する場合、コンテナのホストにsystems-managerエージェントをインストールしておく必要がある。</p>
-<p>ただし、AWS FargateとしてのAmazon EC2には、systems-managerエージェントがプリインストールされているため、これは不要である。</p>
+<p>AWS SSM Session Manager を使用して Amazon ECS タスク内のコンテナに接続し、コンテナのログインシェルを起動する。</p>
+<p>AWS Systems Manager を使用してコンテナに接続する場合、コンテナのホストに systems-manager エージェントをインストールしておく必要がある。</p>
+<p>ただし、AWS Fargate としての Amazon EC2 には、systems-manager エージェントがプリインストールされているため、これは不要である。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Amazon ECSサービスで、ECS-Execオプションを有効化する。</p>
+<p>Amazon ECS サービスで、ECS-Exec オプションを有効化する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Amazon VPCエンドポイントにて、ssmmessagesエンドポイントを作成する。</p>
+<p>Amazon VPC エンドポイントにて、ssmmessages エンドポイントを作成する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Amazon ECSタスク実行ロールにIAMポリシーを付与する。</p>
+<p>Amazon ECS タスク実行ロールに IAM ポリシーを付与する。</p>
 <p>これにより、Amazon ECSタスクがAWS SSM Session Managerにリクエストを送信できるようになる。</p>
 </dd>
 </dl>
@@ -35881,7 +35881,7 @@
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>Amazon ECS Execの実行ユーザーに、IAMポリシーを付与する。</p>
+<p>Amazon ECS Exec の実行ユーザーに、IAM ポリシーを付与する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -35903,7 +35903,7 @@
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>事前の設定がなされているか否かをecs-exec-checkerスクリプトを実行して確認する。</p>
+<p>事前の設定がなされているか否かを ecs-exec-checker スクリプトを実行して確認する。</p>
 </dd>
 </dl>
 <blockquote>
@@ -35921,7 +35921,7 @@ bash<span class="w"> </span>&lt;<span class="o">(</span>curl<span class="w"> </s
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>Amazon ECSタスク内のコンテナに接続し、コンテナのログインシェルを起動する。bashを実行するときに、『<code>/bin/bash</code>』や『<code>/bin/sh</code>』で指定すると、binより上のパスもAmazon ECSに送信されてしまう。</p>
+<p>Amazon ECS タスク内のコンテナに接続し、コンテナのログインシェルを起動する。bash を実行するときに、『<code>/bin/bash</code>』や『<code>/bin/sh</code>』で指定すると、bin より上のパスも Amazon ECS に送信されてしまう。</p>
 <p>例えば、Windowsなら『<code>C:/Program Files/Git/usr/bin/bash</code>』を送信する。</p>
 <p>これはCloudTrailでExecuteCommandイベントとして確認できる。</p>
 <p>Amazon ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。</p>
@@ -35971,7 +35971,7 @@ aws<span class="w"> </span>ecs<span class="w"> </span>execute-command<span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

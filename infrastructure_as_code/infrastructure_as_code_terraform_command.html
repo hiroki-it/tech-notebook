@@ -22910,12 +22910,12 @@
   <a href="#02-tfstate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. 実インフラの全ての設定値を tfstate ファイルに取り込む
+        02. 実インフラのすべての設定値を tfstate ファイルに取り込む
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. 実インフラの全ての設定値を tfstate ファイルに取り込む">
+    <nav class="md-nav" aria-label="02. 実インフラのすべての設定値を tfstate ファイルに取り込む">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -34927,12 +34927,12 @@
   <a href="#02-tfstate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. 実インフラの全ての設定値を tfstate ファイルに取り込む
+        02. 実インフラのすべての設定値を tfstate ファイルに取り込む
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. 実インフラの全ての設定値を tfstate ファイルに取り込む">
+    <nav class="md-nav" aria-label="02. 実インフラのすべての設定値を tfstate ファイルに取り込む">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -35286,12 +35286,12 @@ $<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> 
 <h4 id="-parallelism">▼ -parallelism<a class="headerlink" href="#-parallelism" title="Permanent link">&para;</a></h4>
 <p>並列処理数を設定できる。</p>
 <p>デフォルト値は <code>10</code> である。</p>
-<p>クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を <code>5</code> ほどに小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。</p>
+<p>クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を <code>5</code> ほどに小さくし、コマンドの API のコールがレートリミットを超過しないようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-parallelism<span class="o">=</span><span class="m">30</span>
 </code></pre></div>
-<p>オプションで毎回設定するのが大変なため、環境変数で設定しても良い。</p>
+<p>オプションで毎回設定するのが大変なため、環境変数で設定してもよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">TF_CLI_ARGS_plan</span><span class="o">=</span><span class="s2">&quot;--parallelism=50&quot;</span>
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">TF_CLI_ARGS_apply</span><span class="o">=</span><span class="s2">&quot;--parallelism=50&quot;</span>
 </code></pre></div>
@@ -35301,10 +35301,10 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 </ul>
 </blockquote>
 <h4 id="-refresh-only">▼ -refresh-only<a class="headerlink" href="#-refresh-only" title="Permanent link">&para;</a></h4>
-<p>すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、<code>tfstate</code> ファイルにその状態を書き込む。</p>
-<p>もし、Terraform管理外の実インフラがない場合は、<code>No changes.</code> になる。</p>
+<p>すでに管理対象になっている実インフラが、Terraform の管理外から変更された場合、実インフラの状態はそのままに、<code>tfstate</code> ファイルにその状態を書き込む。</p>
+<p>もし、Terraform 管理外の実インフラがない場合は、<code>No changes.</code> になる。</p>
 <p>具体的は、<code>terraform plan</code> コマンドで出力される <code>Note: Objects have changed outside of Terraform</code> の内容を指す。</p>
-<p>ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) は処理できない。代わりに <code>terraform import</code> コマンドの実行が必要になる。</p>
+<p>ただし、そもそも Terraform で管理されていない実インフラ (create 処理判定されるもの) は処理できない。代わりに <code>terraform import</code> コマンドの実行が必要になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span>-refresh-only
 
 Apply<span class="w"> </span>complete!<span class="w"> </span>Resources:<span class="w"> </span><span class="m">0</span><span class="w"> </span>added,<span class="w"> </span><span class="m">0</span><span class="w"> </span>changed,<span class="w"> </span><span class="m">0</span><span class="w"> </span>destroyed.
@@ -35405,7 +35405,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">
 <h4 id="-backendtrue-backend-config">▼ -backend=true, -backend-config<a class="headerlink" href="#-backendtrue-backend-config" title="Permanent link">&para;</a></h4>
 <p>指定したバックエンドにある <code>tfstate</code> ファイルを使用して、ローカルマシンの <code>.terraform</code> ディレクトリを初期化する。</p>
 <p>また、<code>terraform plan</code> コマンドや <code>terraform apply</code> コマンドの向き先を別のバックエンドに切り替える。</p>
-<p>バックエンドの代わりに、<code>terraform</code> ブロック内の <code>backend</code> オプションで指定しても良い。</p>
+<p>バックエンドの代わりに、<code>terraform</code> ブロック内の <code>backend</code> オプションで指定してもよい。</p>
 <p>ただし、<code>terraform setting</code> ブロック内では通常変数を使用できないため、こちらのオプションが推奨である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-backend<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
@@ -35419,7 +35419,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">
 <span class="w">    </span>-backend-config<span class="o">=</span><span class="s2">&quot;encrypt=true&quot;</span>
 </code></pre></div>
 <h4 id="-reconfigure">▼ -reconfigure<a class="headerlink" href="#-reconfigure" title="Permanent link">&para;</a></h4>
-<p>初期化のための <code>terraform init</code> コマンドの時、今現在で設定しているバックエンドにある <code>tfstate</code> ファイルをそのまま使用する。</p>
+<p>初期化のための <code>terraform init</code> コマンドのとき、今現在で設定しているバックエンドにある <code>tfstate</code> ファイルをそのまま使用する。</p>
 <p><code>--migrate-state</code> オプションとは異なり、元のバックエンドが異なる場合、元のバックエンドの <code>tfstate</code> ファイルはそのまま保持される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>./foo/backend.tfvars
 </code></pre></div>
@@ -35429,14 +35429,14 @@ $<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">
 <li><a href="https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/">https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/</a></li>
 </ul>
 </blockquote>
-<p>また、開発時に一時的にlocalをバックエンドとして使用する場合にも役立つ。</p>
+<p>また、開発時に一時的に local をバックエンドとして使用する場合にも役立つ。</p>
 <blockquote>
 <ul>
 <li><a href="https://repl.info/archives/1435/">https://repl.info/archives/1435/</a></li>
 </ul>
 </blockquote>
 <h4 id="-migrate-state">▼ --migrate-state<a class="headerlink" href="#-migrate-state" title="Permanent link">&para;</a></h4>
-<p>初期化のための <code>terraform init</code> コマンドの時、この時、元のバックエンドにある <code>tfstate</code> ファイルをコピーし、指定したバックエンドに移行する。</p>
+<p>初期化のための <code>terraform init</code> コマンドのとき、このとき、元のバックエンドにある <code>tfstate</code> ファイルをコピーし、指定したバックエンドに移行する。</p>
 <p>元のバックエンドの <code>tfstate</code> ファイルを削除するか否かを選択できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>--migrate-state<span class="w"> </span>-backend-config<span class="o">=</span>./foo/backend.tfvars
 </code></pre></div>
@@ -35517,7 +35517,7 @@ main.tf
 <h4 id="graph_1">▼ graphとは<a class="headerlink" href="#graph_1" title="Permanent link">&para;</a></h4>
 <p><code>tfstate</code> ファイルに基づいて、リソース間の依存関係をグラフ化する。</p>
 <p>これにより、どの <code>resource</code> ブロックが他のどの <code>resource</code> ブロックを使用しているかがわかる。</p>
-<p>Graphvizのダウンロードが必要である。</p>
+<p>Graphviz のダウンロードが必要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>graphviz
 
 $<span class="w"> </span>terraform<span class="w"> </span>graph<span class="w"> </span><span class="p">|</span><span class="w"> </span>dot<span class="w"> </span>-Tpng<span class="w"> </span>&gt;<span class="w"> </span>graph.png
@@ -35528,7 +35528,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>graph<span class="w"> 
 </ul>
 </blockquote>
 <h4 id="-draw-cycles">▼ -draw-cycles<a class="headerlink" href="#-draw-cycles" title="Permanent link">&para;</a></h4>
-<p>グラフの中で循環参照の矢印を色付きで表示する。</p>
+<p>グラフのなかで循環参照の矢印を色付きで表示する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>graph<span class="w"> </span>-draw-cycles<span class="w"> </span><span class="p">|</span><span class="w"> </span>dot<span class="w"> </span>-Tpng<span class="w"> </span>&gt;<span class="w"> </span>graph.png
 </code></pre></div>
 <blockquote>
@@ -35650,7 +35650,7 @@ configuration<span class="w"> </span>and<span class="w"> </span>real<span class=
 actions<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>performed.
 </code></pre></div>
 <h4 id="-target_1">▼ -target<a class="headerlink" href="#-target_1" title="Permanent link">&para;</a></h4>
-<p>特定の <code>resource</code> ブロックを使用して、<code>terraform plan</code> コマンドを実行する。<code>terraform plan</code> コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使用できる。<code>-target</code> オプションで指定するアドレスは、<code>terraform plan</code> コマンド自身の出力結果や、<code>terraform state list</code> コマンドで確認できる。</p>
+<p>特定の <code>resource</code> ブロックを使用して、<code>terraform plan</code> コマンドを実行する。<code>terraform plan</code> コマンドの最初の RefreshingState フェーズを実行するブロックも絞り込めるため、特定のブロック RefreshingState フェーズでバグがある場合の回避策にも使用できる。<code>-target</code> オプションで指定するアドレスは、<code>terraform plan</code> コマンド自身の出力結果や、<code>terraform state list</code> コマンドで確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/">https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/</a></li>
@@ -35665,8 +35665,8 @@ actions<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-target<span class="o">=</span><span class="s1">&#39;module.&lt;moduleブロック名&gt;.&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;&#39;</span>
 </code></pre></div>
-<p>指定方法は、全てのブロックを対象とした <code>terraform plan</code> コマンドが参考になる。</p>
-<p><code>grep</code> コマンドを使用してresourceタイプ名や <code>module</code> ブロック名で抽出すると、指定方法がわかる。</p>
+<p>指定方法は、すべてのブロックを対象とした <code>terraform plan</code> コマンドが参考になる。</p>
+<p><code>grep</code> コマンドを使用して resource タイプ名や <code>module</code> ブロック名で抽出すると、指定方法がわかる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># resourceブロックの指定方法を調べる。</span>
 $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;resourceタイプ&gt;
 
@@ -35706,7 +35706,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> <
 <h4 id="-parallelism_1">▼ -parallelism<a class="headerlink" href="#-parallelism_1" title="Permanent link">&para;</a></h4>
 <p>並列処理数を設定できる。</p>
 <p>デフォルト値は <code>10</code> である。</p>
-<p>クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。</p>
+<p>クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を小さくし、コマンドの API のコールがレートリミットを超過しないようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-parallelism<span class="o">=</span><span class="m">30</span>
@@ -35729,10 +35729,10 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> <
 -/+<span class="w"> </span>destroy<span class="w"> </span>and<span class="w"> </span><span class="k">then</span><span class="w"> </span>create<span class="w"> </span>replacement
 </code></pre></div>
 <p>前半部分と後半部分に区別されている。</p>
-<p>前半部分は、Terraform管理外の方法 (画面上、他ツール) による実インフラの変更について、その変更前後を検出する。</p>
-<p>また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。</p>
-<p>検出のため、applyによって変更される実インフラを表しているわけではない。</p>
-<p>そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるかを表している。</p>
+<p>前半部分は、Terraform 管理外の方法 (画面上、他ツール) による実インフラの変更について、その変更前後を検出する。</p>
+<p>また、クラウドプロバイダーの新機能に伴う新しい API の追加も検出される。</p>
+<p>検出のため、apply によって変更される実インフラを表しているわけではない。</p>
+<p>そして後半部分は、Terraform のコードの変更によって、実インフラがどのように変更されるかを表している。</p>
 <p>結果の最後に表示される対象の <code>resource</code> ブロックの数を確認しても、前半部分の <code>resource</code> ブロックは含まれていないことがわかる。</p>
 <div class="highlight"><pre><span></span><code>Note:<span class="w"> </span>Objects<span class="w"> </span>have<span class="w"> </span>changed<span class="w"> </span>outside<span class="w"> </span>of<span class="w"> </span>Terraform
 
@@ -35800,7 +35800,7 @@ Plan:<span class="w"> </span><span class="m">0</span><span class="w"> </span>to<
 <h4 id="provider_1">▼ providerとは<a class="headerlink" href="#provider_1" title="Permanent link">&para;</a></h4>
 <p><code>terraform.lock.hcl</code> ファイルを作成する。</p>
 <p><strong>＊例＊</strong></p>
-<p>CPUアーキテクチャ (例：Intel、AMD、ARM) を設定しつつ、<code>terraform.lock.hcl</code> ファイルを作成する。</p>
+<p>CPU アーキテクチャ (例：Intel、AMD、ARM) を設定しつつ、<code>terraform.lock.hcl</code> ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>providers<span class="w"> </span>lock<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-platform<span class="o">=</span>darwin_amd64<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-platform<span class="o">=</span>darwin_arm64<span class="w"> </span><span class="se">\</span>
@@ -35859,7 +35859,7 @@ module.vpc_module.aws_vpc.vpc
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>pull<span class="w"> </span>&gt;<span class="w"> </span>&lt;tfstateファイル名&gt;
 </code></pre></div>
 <h4 id="rm">▼ rm<a class="headerlink" href="#rm" title="Permanent link">&para;</a></h4>
-<p><code>tfstate</code> ファイルから状態を削除し、Terraformの管理外にする。</p>
+<p><code>tfstate</code> ファイルから状態を削除し、Terraform の管理外にする。</p>
 <p><code>count</code> 引数や <code>for_each</code> 引数を使用している場合は、シングルクオーテーションで囲う必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 関数を使用せずに定義されている場合</span>
 $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>--dry-run<span class="w"> </span>aws_instance.bastion
@@ -36021,12 +36021,12 @@ Success!<span class="w"> </span>The<span class="w"> </span>configuration<span cl
 $<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">=</span>&lt;ルートモジュールのディレクトリへの相対パス&gt;<span class="w"> </span>validate
 </code></pre></div>
 <p><br></p>
-<h2 id="02-tfstate">02. 実インフラの全ての設定値を <code>tfstate</code> ファイルに取り込む<a class="headerlink" href="#02-tfstate" title="Permanent link">&para;</a></h2>
+<h2 id="02-tfstate">02. 実インフラのすべての設定値を <code>tfstate</code> ファイルに取り込む<a class="headerlink" href="#02-tfstate" title="Permanent link">&para;</a></h2>
 <h3 id="import_2"><code>import</code> について<a class="headerlink" href="#import_2" title="Permanent link">&para;</a></h3>
-<p>実インフラの全ての設定値を <code>tfstate</code> ファイルに取り込む場合、これの設定値を <code>resource</code> ブロックの設定値として <code>tfstate</code> ファイルに書き込み、Terraformの管理下におく必要がある (<code>tfstate</code> ファイル上では、<code>resource</code> ブロックは <code>managed</code> モードという表記になる) 。</p>
-<p>この時、<code>terraform import</code> コマンドを実行する方法と、コンソール画面から一度削除したうえで <code>terraform apply</code> コマンドを実行する方法がある (前者を推奨) 。</p>
+<p>実インフラのすべての設定値を <code>tfstate</code> ファイルに取り込む場合、これの設定値を <code>resource</code> ブロックの設定値として <code>tfstate</code> ファイルに書き込み、Terraform の管理下におく必要がある (<code>tfstate</code> ファイル上では、<code>resource</code> ブロックは <code>managed</code> モードという表記になる) 。</p>
+<p>このとき、<code>terraform import</code> コマンドを実行する方法と、コンソール画面から一度削除したうえで <code>terraform apply</code> コマンドを実行する方法がある (前者を推奨) 。</p>
 <p>執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを <code>1</code> 個ずつ指定して、<code>tfstate</code> ファイルに書き込んでいく必要がある。</p>
-<p>似た目的で使用する <code>terraform apply -refresh-only</code> コマンドは実インフラの一部の設定値が対象であるが、<code>import</code> は実インフラの全ての設定値が対象である。</p>
+<p>似た目的で使用する <code>terraform apply -refresh-only</code> コマンドは実インフラの一部の設定値が対象であるが、<code>import</code> は実インフラのすべての設定値が対象である。</p>
 <blockquote>
 <ul>
 <li><a href="https://dtan4.hatenablog.com/entry/2016/08/18/010652">https://dtan4.hatenablog.com/entry/2016/08/18/010652</a></li>
@@ -36251,23 +36251,23 @@ No<span class="w"> </span>changes.<span class="w"> </span>Infrastructure<span cl
 <p><br></p>
 <h3 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h3>
 <h4 id="import-resource">▼ importできない <code>resource</code> タイプ<a class="headerlink" href="#import-resource" title="Permanent link">&para;</a></h4>
-<p><code>resource</code> ブロック間の紐付けに特化したような <code>resource</code> ブロックは、<code>terraform import</code> コマンドに対応していないものが多い (AWSであれば、<code>aws_acm_certificate_validation</code>、<code>aws_lb_target_group_attachment</code> など) 。</p>
+<p><code>resource</code> ブロック間の紐付けに特化したような <code>resource</code> ブロックは、<code>terraform import</code> コマンドに対応していないものが多い (AWS であれば、<code>aws_acm_certificate_validation</code>、<code>aws_lb_target_group_attachment</code> など) 。</p>
 <p>その場合、<code>tfstate</code> ファイルと実インフラの差分を解消できないことがある。</p>
-<p>ただし、こういった非対応の <code>resource</code> ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の <code>resource</code> ブロックであることが多い。</p>
+<p>ただし、こういった非対応の <code>resource</code> ブロックは、クラウドプロバイダーにはインフラリソースが存在しない Terraform 特有の <code>resource</code> ブロックであることが多い。</p>
 <p>そのため、実際に <code>terraform apply</code> コマンドを実行してみても、実インフラに影響が出ない場合もある。</p>
 <h4 id="import_7">▼ importを行わなかった場合のエラー<a class="headerlink" href="#import_7" title="Permanent link">&para;</a></h4>
 <p>もし <code>terraform import</code> コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになってしまう。</p>
-<p>(エラー例1)</p>
+<p>(エラー例 1)</p>
 <div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>InvalidParameterException:<span class="w"> </span>Creation<span class="w"> </span>of<span class="w"> </span>service<span class="w"> </span>was<span class="w"> </span>not<span class="w"> </span>idempotent.
 </code></pre></div>
-<p>(エラー例2)</p>
+<p>(エラー例 2)</p>
 <div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>error<span class="w"> </span>creating<span class="w"> </span>ECR<span class="w"> </span>repository:<span class="w"> </span>RepositoryAlreadyExistsException:<span class="w"> </span>The<span class="w"> </span>repository<span class="w"> </span>with<span class="w"> </span>name<span class="w"> </span><span class="s1">&#39;f&#39;</span><span class="w"> </span>already<span class="w"> </span>exists<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>registry<span class="w"> </span>with<span class="w"> </span>id<span class="w"> </span><span class="s1">&#39;*****&#39;</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03-tfstate">03. 実インフラの一部の設定値を <code>tfstate</code> ファイルに取り込む<a class="headerlink" href="#03-tfstate" title="Permanent link">&para;</a></h2>
 <h3 id="terraform-apply-refresh-only"><code>terraform apply -refresh-only</code> コマンドについて<a class="headerlink" href="#terraform-apply-refresh-only" title="Permanent link">&para;</a></h3>
 <p>実インフラから実インフラの一部の設定値を <code>tfstate</code> ファイルに取り込む場合、以下の方法が便利だ。</p>
-<p>似た目的で使用する <code>import</code> は実インフラの全ての設定値が対象であるが、<code>terraform apply -refresh-only</code> コマンドは実インフラの一部の設定値が対象である。</p>
+<p>似た目的で使用する <code>import</code> は実インフラのすべての設定値が対象であるが、<code>terraform apply -refresh-only</code> コマンドは実インフラの一部の設定値が対象である。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -36308,7 +36308,7 @@ No<span class="w"> </span>changes.<span class="w"> </span>Infrastructure<span cl
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:01:20 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

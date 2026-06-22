@@ -33724,7 +33724,7 @@
 <p><br></p>
 <h2 id="01-amazon-ecr">01. Amazon ECR<a class="headerlink" href="#01-amazon-ecr" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-ecr">Amazon ECRとは<a class="headerlink" href="#amazon-ecr" title="Permanent link">&para;</a></h3>
-<p>コンテナイメージやhelmチャートを管理できる。</p>
+<p>コンテナイメージや helm チャートを管理できる。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -33766,7 +33766,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Amazon ECRにログインする。</p>
+<p>Amazon ECR にログインする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
@@ -33786,7 +33786,7 @@ $<span class="w"> </span>docker<span class="w"> </span>tag<span class="w"> </spa
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Amazon ECRにコンテナイメージをプッシュする。</p>
+<p>Amazon ECR にコンテナイメージをプッシュする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># docker push &lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest</span>
@@ -33807,7 +33807,7 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
 <p><br></p>
 <h3 id="_6">ライフサイクル<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ライフサイクルポリシー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Amazon ECRのコンテナイメージの有効期間を定義できる。</p>
+<p>Amazon ECR のコンテナイメージの有効期間を定義できる。</p>
 <table>
 <thead>
 <tr>
@@ -33820,7 +33820,7 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
 <tr>
 <td>ルールの優先順位</td>
 <td>数字で、ルールの優先度を設定できる。</td>
-<td>数字が小さいほど、優先度は高くなる。数字は連続している必要はなく、例えば、<code>10</code>、<code>20</code>、<code>90</code> のように設定しても良い。</td>
+<td>数字が小さいほど、優先度は高くなる。数字は連続している必要はなく、例えば、<code>10</code>、<code>20</code>、<code>90</code> のように設定してもよい。</td>
 </tr>
 <tr>
 <td>イメージのステータス</td>
@@ -33842,8 +33842,8 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
 <p><br></p>
 <h3 id="_8">バージョンタグ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ タグ名のベストプラクティス<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>Dockerのベストプラクティスに則り、タグ名に <code>latest</code> を使用しないようにする。</p>
-<p>代わりに、コンテナイメージのバージョンごとに異なるタグ名となるように、ハッシュ値 (例：GitHubのコミットID) を使用する。</p>
+<p>Docker のベストプラクティスに則り、タグ名に <code>latest</code> を使用しないようにする。</p>
+<p>代わりに、コンテナイメージのバージョンごとに異なるタグ名となるように、ハッシュ値 (例：GitHub のコミット ID) を使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/">https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/</a></li>
@@ -33851,8 +33851,8 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
 </blockquote>
 <p><br></p>
 <h3 id="_10">パーミッション<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>Amazon ECRへのアクセスの認可スコープを設定する。</p>
-<p>AWS IAMポリシーよりも強い。</p>
+<p>Amazon ECR へのアクセスの認可スコープを設定する。</p>
+<p>AWS IAM ポリシーよりも強い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 中央集権的にコンテナイメージを提供するAmazon ECR</span>
 <span class="p p-Indicator">{</span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2008-10-17&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
@@ -33876,8 +33876,8 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
 </code></pre></div>
 <p><br></p>
 <h3 id="_11">プルスルーキャッシュリポジトリ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>特に、DockerHubはレートリミットがあるため、DockerHub上のリポジトリをプライベートリポジトリで管理しておくほうが良い。</p>
-<p>この時、プルスルーキャッシュリポジトリはコピーをプライベートリポジトリに自動的にプルしてくれる。</p>
+<p>特に、DockerHub はレートリミットがあるため、DockerHub 上のリポジトリをプライベートリポジトリで管理しておくほうがよい。</p>
+<p>このとき、プルスルーキャッシュリポジトリはコピーをプライベートリポジトリに自動的にプルしてくれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/ecr-pull-through-cache-repositories/">https://dev.classmethod.jp/articles/ecr-pull-through-cache-repositories/</a></li>
@@ -33904,7 +33904,7 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

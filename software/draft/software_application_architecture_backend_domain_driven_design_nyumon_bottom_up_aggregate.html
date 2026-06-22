@@ -33373,17 +33373,17 @@
 <ul>
 <li>集約：青塗り</li>
 <li>境界：枠</li>
-<li>集約ルート：Userオブジェクト</li>
+<li>集約ルート：User オブジェクト</li>
 </ul>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-01.png" /></p>
 <p>集約内のドメインオブジェクトは集約ルートを通じてのみ操作できる。</p>
 <div class="highlight"><pre><span></span><code>“親のオブジェクトを通じて、親が所有する子のオブジェクトを操作するべき”
 というプラクティスを『デメテルの法則』という。
 </code></pre></div>
-<p>例えば、ユーザー集約とUser集約ルートを考えてみる。</p>
-<p>UserNameの状態を変更するときは、UserにUserNameを渡さないといけない。</p>
+<p>例えば、ユーザー集約と User 集約ルートを考えてみる。</p>
+<p>UserName の状態を変更するときは、User に UserName を渡さないといけない。</p>
 <p>これにより、ユーザー名のない不正なユーザーの作成を防げる。</p>
-<p>リスト12.1：ユーザ名の変更は User オブジェクトに依頼する</p>
+<p>リスト 12.1：ユーザ名の変更は User オブジェクトに依頼する</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 誤った方法</span>
 <span class="c1">// これをできないように実装するべき</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">();</span>
@@ -33393,19 +33393,19 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">userName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="s2">&quot;NewName&quot;</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">User</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">(</span><span class="s2">&quot;OldName&quot;</span><span class="p">));</span>
 </code></pre></div>
-<p>次に、サークル集約とCircle集約ルートを考えてみる。</p>
-<p>CircleとUserは異なる集約に属し、それぞれが集約ルートである。</p>
+<p>次に、サークル集約と Circle 集約ルートを考えてみる。</p>
+<p>Circle と User は異なる集約に属し、それぞれが集約ルートである。</p>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-02" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-02.png" /></p>
 <p>このとき、ユーザーを作成し、メンバーとして所属させるようなユースケースを考える。</p>
-<p>Membersを作成したいとき、次のような処理はダメである。</p>
-<p>なぜなら、サークル集約内のドメインオブジェクトの操作はCircle集約ルートが実施しないといけない</p>
-<p>CircleがMembersを作成しないといけないはずが、Circle内のMembersを直接操作し、Membersを作成してしまっているためである。</p>
-<p>リスト12.2：第 11 章で登場したサークルにメンバーを追加するコード</p>
+<p>Members を作成したいとき、次のような処理はダメである。</p>
+<p>なぜなら、サークル集約内のドメインオブジェクトの操作は Circle 集約ルートが実施しないといけない</p>
+<p>Circle が Members を作成しないといけないはずが、Circle 内の Members を直接操作し、Members を作成してしまっているためである。</p>
+<p>リスト 12.2：第 11 章で登場したサークルにメンバーを追加するコード</p>
 <div class="highlight"><pre><span></span><code><span class="nx">circle</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">member</span><span class="p">);</span>
 </code></pre></div>
-<p>次のようにCircleがMembersを作成するべきである。</p>
-<p>ここでは、MembersはUserの配列としている。</p>
-<p>リスト12.3：メンバーを追加するコードをエンティティに追加</p>
+<p>次のように Circle が Members を作成するべきである。</p>
+<p>ここでは、Members は User の配列としている。</p>
+<p>リスト 12.3：メンバーを追加するコードをエンティティに追加</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">;</span>
@@ -33429,16 +33429,16 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>次のようにCircleを通じてMembersを作成する。</p>
+<p>次のように Circle を通じて Members を作成する。</p>
 <p>これは『デメテルの法則』を満たしている。</p>
-<p>リスト12.4：メンバー追加のために Circle の関数を呼び出す</p>
+<p>リスト 12.4：メンバー追加のために Circle の関数を呼び出す</p>
 <div class="highlight"><pre><span></span><code><span class="nx">circle</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">user</span><span class="p">);</span>
 </code></pre></div>
-<p>一方で、MembersというUser配列を定義しない方法もある。</p>
+<p>一方で、Members という User 配列を定義しない方法もある。</p>
 <p>この方法は誤っているわけではない。</p>
-<p>ただ、Membersを介さずにCircleがUserを直接操作できてしまうため、サークル集約とユーザー集約の境界が曖昧になってしまう。</p>
+<p>ただ、Members を介さずに Circle が User を直接操作できてしまうため、サークル集約とユーザー集約の境界が曖昧になってしまう。</p>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-03" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-03.png" /></p>
-<p>リスト12.5：データストアを直接操作してコレクションを生成する</p>
+<p>リスト 12.5：データストアを直接操作してコレクションを生成する</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">prisma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PrismaClient</span><span class="p">();</span>
@@ -33475,14 +33475,14 @@
 </code></pre></div>
 <h3 id="1212">12.1.2 オブジェクトの操作に関する基本的な原則<a class="headerlink" href="#1212" title="Permanent link">&para;</a></h3>
 <p>次はデメテルの法則に違反する実装である。</p>
-<p>CircleがMembersの数を検証しないといけないはずが、Circle内のMembersを直接操作し、Membersの数を検証してしまっているためである。</p>
-<p>リスト12.6：メンバーを追加する際の上限チェックを行うコード</p>
+<p>Circle が Members の数を検証しないといけないはずが、Circle 内の Members を直接操作し、Members の数を検証してしまっているためである。</p>
+<p>リスト 12.6：メンバーを追加する際の上限チェックを行うコード</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">count</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">29</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleFullException</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>次のisFull関数のように、CircleがMembersの数を検証するべきである。</p>
-<p>リスト12.7：デメテルの法則にしたがい、オブジェクトへふるまいを追加する</p>
+<p>次の isFull 関数のように、Circle が Members の数を検証するべきである。</p>
+<p>リスト 12.7：デメテルの法則にしたがい、オブジェクトへふるまいを追加する</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
@@ -33508,15 +33508,15 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>次のようにCircleを通じてMembersの数を検証する。</p>
+<p>次のように Circle を通じて Members の数を検証する。</p>
 <p>これは『デメテルの法則』を満たしている。</p>
-<p>リスト12.8：リスト12.7 の IsFull 関数を利用して上限チェックを行う</p>
+<p>リスト 12.8：リスト 12.7 の IsFull 関数を利用して上限チェックを行う</p>
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">circle</span><span class="p">.</span><span class="nx">isFull</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CircleFullException</span><span class="p">(</span><span class="nx">circleId</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>上限数の仕様が変われば、次のように 29 から 49 に変更する。</p>
-<p>リスト12.9：上限数の変更</p>
+<p>リスト 12.9：上限数の変更</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
 
@@ -33531,9 +33531,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="1213">12.1.3 内部データを隠蔽するために<a class="headerlink" href="#1213" title="Permanent link">&para;</a></h3>
-<p>オブジェクトのプロパティはプライベートにしたほうが良い。</p>
+<p>オブジェクトのプロパティはプライベートにしたほうがよい。</p>
 <p>ただ、プライベートにすると、永続化するときにオブジェクトからデータを取り出せなくなってしまう。</p>
-<p>リスト12.10：リポジトリの永続化処理</p>
+<p>リスト 12.10：リポジトリの永続化処理</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">EFUserRepository</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
@@ -33550,10 +33550,10 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>これの対処方法として、データモデル（DTOともいう）を使用するのがよい。</p>
+<p>これの対処方法として、データモデル（DTO ともいう）を使用するのがよい。</p>
 <p>まずは、データモデルインターフェースを定義する。</p>
-<p>例えば、IUserNotificationとする。</p>
-<p>リスト12.11：通知のためのインターフェース</p>
+<p>例えば、IUserNotification とする。</p>
+<p>リスト 12.11：通知のためのインターフェース</p>
 <div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">IUserNotification</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">name</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
@@ -33561,7 +33561,7 @@
 </code></pre></div>
 <p>次に、実装データモデルを定義する。</p>
 <p>実装データモデルでは、ドメインオブジェクトをデータモデルに変換する</p>
-<p>リスト12.12：リスト12.11 を実装した通知オブジェクト</p>
+<p>リスト 12.12：リスト 12.11 を実装した通知オブジェクト</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">UserDataModelBuilder</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IUserNotification</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// ドメインオブジェクトをプロパティに設定する</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">id</span><span class="o">!:</span><span class="w"> </span><span class="nx">UserId</span><span class="p">;</span>
@@ -33585,7 +33585,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>ドメインオブジェクトには、ドメインオブジェクトを実装データモデルに渡す処理を持たせる。</p>
-<p>リスト12.13：通知オブジェクトを受け取る関数を追加する</p>
+<p>リスト 12.13：通知オブジェクトを受け取る関数を追加する</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">;</span>
@@ -33602,9 +33602,9 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>実装データモデルをORMに渡すと、ORMは実装データモデルのプロパティに設定されたドメインオブジェクトを読み取り、データを永続化する。</p>
+<p>実装データモデルを ORM に渡すと、ORM は実装データモデルのプロパティに設定されたドメインオブジェクトを読み取り、データを永続化する。</p>
 <p>結果、ドメインオブジェクトや実装データモデルのプロパティをプライベートにしたままで、データを永続化できた。</p>
-<p>リスト12.14：通知オブジェクトを利用してデータモデルを取得する</p>
+<p>リスト 12.14：通知オブジェクトを利用してデータモデルを取得する</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">EFUserRepository</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">IUserRepository</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
@@ -33624,11 +33624,11 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ちなみに、Scalaにはこれを少ない実装で解決できる便利機能がある。</p>
+<p>ちなみに、Scala にはこれを少ない実装で解決できる便利機能がある。</p>
 <p>それは、特定のオブジェクトにだけ、プライベートプロパティの参照を許可する機能である。</p>
-<p>つぎのように実装すると、IUserRepository型のオブジェクト（つまり、IUserRepositoryそのものと実装UserRepository）にだけプライベートプロパティの参照を許可できる。</p>
+<p>つぎのように実装すると、IUserRepository 型のオブジェクト（つまり、IUserRepository そのものと実装 UserRepository）にだけプライベートプロパティの参照を許可できる。</p>
 <p>そのため、先ほどのデータモデルのような仲介役が不要になる。</p>
-<p>リスト12.15：よりきめ細やかなアクセス制御（Scala）</p>
+<p>リスト 12.15：よりきめ細やかなアクセス制御（Scala）</p>
 <div class="highlight"><pre><span></span><code><span class="n">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="w"> </span><span class="p">(</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="p">[</span><span class="nc">IUserRepository</span><span class="p">]</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="nc">UserId</span><span class="p">,</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="p">[</span><span class="nc">IUserRepository</span><span class="p">]</span><span class="w"> </span><span class="kd">val</span><span class="w"> </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nc">UserName</span>
@@ -33639,9 +33639,9 @@
 <p>データ変更の単位は、集約の単位に合わせるべきである。</p>
 <p>データ変更の単位を集約の単位を合わせないとどのような問題が起こるかを見ていく。</p>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-04" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-04.png" /></p>
-<p>次の実装では、CircleがMembers内のUserの名前を変更しようとしている。</p>
-<p>Circleでは、UserをMembers配列で保持することで、CircleからUserを操作できる。</p>
-<p>リスト12.16：サークル集約を通じてユーザ集約のふるまいを呼び出す</p>
+<p>次の実装では、Circle が Members 内の User の名前を変更しようとしている。</p>
+<p>Circle では、User を Members 配列で保持することで、Circle から User を操作できる。</p>
+<p>リスト 12.16：サークル集約を通じてユーザ集約のふるまいを呼び出す</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
 
@@ -33657,11 +33657,11 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>CircleRepositoryでUserを永続化しようとしている。</p>
+<p>CircleRepository で User を永続化しようとしている。</p>
 <p>一見問題なさそうに見える。</p>
-<p>しかし、実のところUserRepositoryにも同じようなコードがあり、保存先のテーブルが衝突してしまっている。</p>
-<p>つまり、CircleRepositoryがサークル集約を超えてユーザー集約に関する責務も持ってしまったため、衝突してしまったということになる。</p>
-<p>リスト12.18：サークル集約越しに操作されたユーザ集約に対する変更をサポートする</p>
+<p>しかし、実のところ UserRepository にも同じようなコードがあり、保存先のテーブルが衝突してしまっている。</p>
+<p>つまり、CircleRepository がサークル集約を超えてユーザー集約に関する責務も持ってしまったため、衝突してしまったということになる。</p>
+<p>リスト 12.18：サークル集約越しに操作されたユーザ集約に対する変更をサポートする</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">CircleRepository</span><span class="w"> </span><span class="k">implements</span><span class="w"> </span><span class="nx">ICircleRepository</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">prisma</span><span class="o">:</span><span class="w"> </span><span class="kt">PrismaClient</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 
@@ -33688,11 +33688,11 @@
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="1221-id">12.2.1 IDによるコンポジション<a class="headerlink" href="#1221-id" title="Permanent link">&para;</a></h3>
-<p>これまでのCircleは、UserをMembers配列で保持することで、Userを操作していた。</p>
-<p>これをやめ、Membersを作成したい場合は、CircleRepositoryだけでなくUserRepositoryも呼ばなければいけないように実装してみる。</p>
-<p>まずは、CircleのMembers配列の中身をUserではなくUserIdに変更する。</p>
-<p>これにより、事前にUserRepositoryを実行してUserを作成したうえで、CircleはそのUserのUserIdを使用するようになる。</p>
-<p>リスト12.19：識別子をインスタンスの代わりとして保持する</p>
+<p>これまでの Circle は、User を Members 配列で保持することで、User を操作していた。</p>
+<p>これをやめ、Members を作成したい場合は、CircleRepository だけでなく UserRepository も呼ばなければいけないように実装してみる。</p>
+<p>まずは、Circle の Members 配列の中身を User ではなく UserId に変更する。</p>
+<p>これにより、事前に UserRepository を実行して User を作成したうえで、Circle はその User の UserId を使用するようになる。</p>
+<p>リスト 12.19：識別子をインスタンスの代わりとして保持する</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleId</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleName</span><span class="p">;</span>
@@ -33715,10 +33715,10 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>UserIdを使用するようにしたメリットはほかにもある。</p>
-<p>サークル名を変更するような永続化でUserは不要であり、CircleがUserを保持していると、メモリ領域を多く圧迫してしまう。</p>
-<p>一方で、CircleがUserIdを保持するのであれば、Userを保持するよりはマシで、メモリ領域の少ない圧迫で済む。</p>
-<p>リスト12.20：サークルの名前を変更する処理</p>
+<p>UserId を使用するようにしたメリットはほかにもある。</p>
+<p>サークル名を変更するような永続化で User は不要であり、Circle が User を保持していると、メモリ領域を多く圧迫してしまう。</p>
+<p>一方で、Circle が UserId を保持するのであれば、User を保持するよりはマシで、メモリ領域の少ない圧迫で済む。</p>
+<p>リスト 12.20：サークルの名前を変更する処理</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">circleRepository</span><span class="o">:</span><span class="w"> </span><span class="kt">ICircleRepository</span><span class="p">,</span>
@@ -33751,11 +33751,11 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>コラム</strong></p>
-<p>これまでの話の中で、プロパティはパブリックではなくプライベートを使用するべきであるような話の流れであった。</p>
-<p>識別子にはドメインルールを持たせないほうが良いため、ドメインルール上の識別子（例：書籍のISBN）はエンティティの識別子にしないほうがいい。</p>
+<p>これまでの話のなかで、プロパティはパブリックではなくプライベートを使用するべきであるような話の流れであった。</p>
+<p>識別子にはドメインルールを持たせないほうがよいため、ドメインルール上の識別子（例：書籍の ISBN）はエンティティの識別子にしないほうがいい。</p>
 <p>また、パブリックのほうが便利である。</p>
 <p>そのため、パブリックでもよい。</p>
-<p>リスト12.21：識別子をゲッターで公開する</p>
+<p>リスト 12.21：識別子をゲッターで公開する</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">CircleName</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">;</span>
@@ -33801,8 +33801,8 @@
 <div class="highlight"><pre><span></span><code>テーブル内のロックの範囲はいくつか種類があるが、筆者は言及していなかったため、ここではレコードロックとした
 </code></pre></div>
 <h3 id="1231">12.3.1 トランザクション範囲の定義 (長谷川が追加したセクション)<a class="headerlink" href="#1231" title="Permanent link">&para;</a></h3>
-<p>トランザクション処理はユースケース層で定義すると良い。</p>
-<p>例えば、<code>READ</code>処理と<code>UPDATE</code>処理の両方が必要な更新系ユースケースでは、<code>READ</code>処理と<code>UPDATE</code>処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。</p>
+<p>トランザクション処理はユースケース層で定義するとよい。</p>
+<p>例えば、<code>READ</code> 処理と <code>UPDATE</code> 処理の両方が必要な更新系ユースケースでは、<code>READ</code> 処理と <code>UPDATE</code> 処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。</p>
 <p>そのため、ユースケース層でトランザクション処理を定義し、定義したトランザクション範囲内でリポジトリを呼び出す。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">CircleApplicationService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
@@ -33841,15 +33841,15 @@
 </ul>
 </blockquote>
 <p><strong>コラム</strong></p>
-<p>なんらかの事情で、Repositoryによる永続化の対象が複数の集約にどうしてもまたがってしまう場合、結果整合性で辻褄合わせしてもよい。</p>
-<p>例えば、Cron処理で一日1回データベースを検査し、不整合のあるデータを書き換えてしまう。</p>
+<p>なんらかの事情で、Repository による永続化の対象が複数の集約にどうしてもまたがってしまう場合、結果整合性で辻褄合わせしてもよい。</p>
+<p>例えば、Cron 処理で一日 1 回データベースを検査し、不整合のあるデータを書き換えてしまう。</p>
 <p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-05" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-05.png" /></p>
 <h2 id="124">12.4 言葉との齟齬を消す<a class="headerlink" href="#124" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>前章の「ドメインルールの漏れだし」の続き？
 </code></pre></div>
-<p>isFull関数は、『サークルに所属するユーザの最大数はサークルのオーナーとなるユーザを含めて30名まで』というドメインルールを表現したものである。</p>
+<p>isFull 関数は、『サークルに所属するユーザの最大数はサークルのオーナーとなるユーザを含めて 30 名まで』というドメインルールを表現したものである。</p>
 <p>ロジックは間違っていないが、<code>29</code> と比較しており、ドメインルールの誤解を招きやすく可読性が低い。</p>
-<p>リスト12.22：30 ではなく 29 が現れている</p>
+<p>リスト 12.22：30 ではなく 29 が現れている</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
@@ -33864,8 +33864,8 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>そこで、countMembers関数を用意し、<code>30</code> と比較することで、可読性を高くするべきである。</p>
-<p>リスト12.23：サークルのオーナーとメンバーの定義</p>
+<p>そこで、countMembers 関数を用意し、<code>30</code> と比較することで、可読性を高くするべきである。</p>
+<p>リスト 12.23：サークルのオーナーとメンバーの定義</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">members</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">[];</span>
@@ -33907,7 +33907,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 22:04:18 JST">2026-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

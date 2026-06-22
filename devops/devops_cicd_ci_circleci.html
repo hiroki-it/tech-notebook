@@ -33651,15 +33651,15 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>リポジトリへプッシュすると、CIツールがGitHubからブランチの状態を取得する。</p>
+<p>リポジトリへプッシュすると、CI ツールが GitHub からブランチの状態を取得する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>CIツールによって、CIパイプラインが実行される。</p>
+<p>CI ツールによって、CI パイプラインが実行される。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>CIOpsを採用している場合に、CDパイプラインも実行される。</p>
+<p>CIOps を採用している場合に、CD パイプラインも実行される。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -33671,9 +33671,9 @@
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="webhook">▼ Webhook<a class="headerlink" href="#webhook" title="Permanent link">&para;</a></h4>
-<p>CircleCIの鍵をGitHubに登録すると、リポジトリに対するプッシュによって、CircleCIをフック (プッシュフック) できるようになる。</p>
+<p>CircleCI の鍵を GitHub に登録すると、リポジトリに対するプッシュによって、CircleCI をフック (プッシュフック) できるようになる。</p>
 <p>鍵のうちでデプロイキーを使用することが推奨である。</p>
-<p>注意点として、デプロイキーを追加するには、GitHubアカウントにAdmin権限が必要である。</p>
+<p>注意点として、デプロイキーを追加するには、GitHub アカウントに Admin 権限が必要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://circleci.com/docs/2.0/gh-bb-integration/">https://circleci.com/docs/2.0/gh-bb-integration/</a></li>
@@ -33681,7 +33681,7 @@
 </blockquote>
 <h4 id="_3">▼ デバッグの事前準備<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>デバッグでは行数がわからない仕様になっている。</p>
-<p>そこで、workflowのjobのどこで失敗しているのかを特定するために、検証しないjobをコメントアウトしておく。</p>
+<p>そこで、workflow の job のどこで失敗しているのかを特定するために、検証しない job をコメントアウトしておく。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">workflows</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># build以外を実行しないことにより、buildのみを検証できる。</span>
 <span class="w">  </span><span class="nt">build-test-and-deploy</span><span class="p">:</span>
@@ -33710,8 +33710,8 @@
 </code></pre></div>
 <h4 id="_6">▼ ローカルテスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>コマンドにより、テストに必要なコンテナイメージをプルし、コンテナを作成する。</p>
-<p>続いて、コンテナ内でCircleCIを実行する。</p>
-<p>バージョン2.1以降では、事前に、設定ファイルの処理を展開しておく必要がある。</p>
+<p>続いて、コンテナ内で CircleCI を実行する。</p>
+<p>バージョン 2.1 以降では、事前に、設定ファイルの処理を展開しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># バージョン2.1の設定ファイルの処理を展開する。</span>
 $<span class="w"> </span>circleci<span class="w"> </span>config<span class="w"> </span>process<span class="w"> </span>.circleci/config.yml<span class="w"> </span>&gt;<span class="w"> </span>.circleci/process.yml
 
@@ -33722,7 +33722,7 @@ $<span class="w"> </span>circleci<span class="w"> </span><span class="nb">local<
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>CircleCI用に鍵を作成しても良いが、ここではGitHubの鍵をそのまま使用することとする。</p>
+<p>CircleCI 用に鍵を作成してもよいが、ここでは GitHub の鍵をそのまま使用することとする。</p>
 <p>GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。</p>
 <p>この時、他の連携サービスと区別しやすいように、ホスト名を<code>github</code>とする。</p>
 </dd>
@@ -33732,7 +33732,7 @@ $<span class="w"> </span>circleci<span class="w"> </span><span class="nb">local<
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>CircleCIの <code>Enable SSH</code> ステップに表示された <code>ssh</code> コマンドをコピーし、CircleCIコンテナにSSH公開鍵認証する。</p>
+<p>CircleCI の <code>Enable SSH</code> ステップに表示された <code>ssh</code> コマンドをコピーし、CircleCI コンテナに SSH 公開鍵認証する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>&lt;CircleCIから提示されたコマンドをコピペ&gt;<span class="w"> </span>-i<span class="w"> </span>~/.ssh/github/&lt;秘密鍵名&gt;
@@ -33750,7 +33750,7 @@ $<span class="w"> </span>circleci<span class="w"> </span><span class="nb">local<
 </ul>
 </blockquote>
 <h4 id="ssh">▼ SSHキー<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
-<p>SSHキーを作成する必要がある。</p>
+<p>SSH キーを作成する必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -33795,7 +33795,7 @@ $<span class="w"> </span>circleci<span class="w"> </span><span class="nb">local<
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 19:01:42 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

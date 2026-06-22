@@ -34596,14 +34596,14 @@
 <p><br></p>
 <h2 id="01">01. プラグイン<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">プラグインとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>ArgoCDで任意のツールを使用する。</p>
-<p>ArgoCDの仕様上、一部のツール (Helmfile、helmプラグイン、argocd-vault-pluginなど) はサイドカーでプラグインとして実行する必要がある。</p>
-<p>そのため、これらのツールを使用せずSecretにデータを注入する場合、プラグインは採用しなくともよい。</p>
+<p>ArgoCD で任意のツールを使用する。</p>
+<p>ArgoCD の仕様上、一部のツール (Helmfile、helm プラグイン、argocd-vault-plugin など) はサイドカーでプラグインとして実行する必要がある。</p>
+<p>そのため、これらのツールを使用せず Secret にデータを注入する場合、プラグインは採用しなくともよい。</p>
 <p><br></p>
 <h3 id="_4">デフォルトツール<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnetなど)
-をApplicationのオプションとして実行できるようになっている。</p>
-<p>すなわち、これらのrepo-serverはこれらのツールを実行できる。</p>
+<p>執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet など)
+を Application のオプションとして実行できるようになっている。</p>
+<p>すなわち、これらの repo-server はこれらのツールを実行できる。</p>
 <p><code>/usr/local/bin</code> ディレクトリ配下でバイナリを確認できる。</p>
 <div class="highlight"><pre><span></span><code>argocd@repo-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/usr/local/bin
 
@@ -34644,7 +34644,7 @@ lrwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 </ul>
 </blockquote>
 <p><code>tool-version.sh</code> ファイルで定義した変数は、<code>install.sh</code> ファイルで出力されている。</p>
-<p>Dockerfile上で <code>install.sh</code> ファイルを実行し、ツールをインストールしている。</p>
+<p>Dockerfile 上で <code>install.sh</code> ファイルを実行し、ツールをインストールしている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L31-L32">https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L31-L32</a></li>
@@ -34654,7 +34654,7 @@ lrwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 <p><br></p>
 <h3 id="_5">セットアップ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="initcontainer">▼ InitContainerで連携先ツールをインストール<a class="headerlink" href="#initcontainer" title="Permanent link">&para;</a></h4>
-<p>連携先ツールをインストールするInitContainersを配置する。</p>
+<p>連携先ツールをインストールする InitContainers を配置する。</p>
 <p>代わりに、ユーザー定義のコンテナイメージをあらかじめ作成しておいてもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -34752,7 +34752,7 @@ lrwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
-<p>Volumeへのマウントが成功していれば、Pod内のサイドカーコンテナの <code>/usr/local/bin</code> ディレクトリで、バイナリファイルを確認できる。</p>
+<p>Volume へのマウントが成功していれば、Pod 内のサイドカーコンテナの <code>/usr/local/bin</code> ディレクトリで、バイナリファイルを確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># サイドカーのVolume</span>
 argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la
 
@@ -34768,11 +34768,11 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 </code></pre></div>
 <h4 id="_6">▼ サイドカーを配置<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>プラグインを実行するサイドカー (<code>cmp-server</code> コンテナ) を配置する。</p>
-<p>repo-serverは、VolumeのUnixドメインソケットを経由して、<code>cmp-server</code> コンテナのプラグインの実行をコールする。</p>
-<p>ArgoCD公式ではサイドカーのベースイメージが用意されていない。</p>
-<p>サイドカーで使用するベースイメージをArgoCDのコンテナイメージとするか、その他の軽量イメージ (例：alpine、busybox、ubuntuなど) とするかを選ぶことができ、いくつかのツール (
-例：Helm、Kustomize、Ks、Jsonnetなど) が組み込まれていないため、インストールする必要がある。</p>
-<p>このとき、事前準備として <code>argocd</code> コマンドをコピーするためのInitContainerが必要である。</p>
+<p>repo-server は、Volume の Unix ドメインソケットを経由して、<code>cmp-server</code> コンテナのプラグインの実行をコールする。</p>
+<p>ArgoCD 公式ではサイドカーのベースイメージが用意されていない。</p>
+<p>サイドカーで使用するベースイメージを ArgoCD のコンテナイメージとするか、その他の軽量イメージ (例：alpine、busybox、ubuntu など) とするかを選ぶことができ、いくつかのツール (
+例：Helm、Kustomize、Ks、Jsonnet など) が組み込まれていないため、インストールする必要がある。</p>
+<p>このとき、事前準備として <code>argocd</code> コマンドをコピーするための InitContainer が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34864,7 +34864,7 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmp</span>
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
-<p><code>argocd-cmp-server</code> コマンドは、実行に成功するとVolumeにUnixドメインソケットファイルを作成する。</p>
+<p><code>argocd-cmp-server</code> コマンドは、実行に成功すると Volume に Unix ドメインソケットファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>argocd-repo-server<span class="w"> </span>-c<span class="w"> </span>foo-plugin-cmp-server
 
 <span class="nv">time</span><span class="o">=</span><span class="s2">&quot;2023-04-17T12:35:39Z&quot;</span><span class="w"> </span><span class="nv">level</span><span class="o">=</span>info<span class="w"> </span><span class="nv">msg</span><span class="o">=</span><span class="s2">&quot;argocd-cmp-server v2.6.7+5bcd846 serving on /home/argocd/cmp-server/plugins/foo-plugin.sock&quot;</span>
@@ -34900,18 +34900,18 @@ Flags:
 <li><a href="https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation">https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation</a></li>
 </ul>
 </blockquote>
-<p>ArgoCDの公式の仕様で、サイドカーは単一のプラグインしか実行できない。</p>
+<p>ArgoCD の公式の仕様で、サイドカーは単一のプラグインしか実行できない。</p>
 <p>そのため、プラグインごとにサイドカーを作成する必要がある。</p>
-<p>もし、部分的に重複するプラグイン (例：純粋なhelm-secrets、helm-secretsを使用するHelmfile) をArgoCDが使用する場合、それぞれのサイドカーにバイナリ (例：一方にはhelm-secrets、もう一方にはHelmfileとhelm-secrets) を用意する必要がある。</p>
+<p>もし、部分的に重複するプラグイン (例：純粋な helm-secrets、helm-secrets を使用する Helmfile) を ArgoCD が使用する場合、それぞれのサイドカーにバイナリ (例：一方には helm-secrets、もう一方には Helmfile と helm-secrets) を用意する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/discussions/12278#discussioncomment-5338514">https://github.com/argoproj/argo-cd/discussions/12278#discussioncomment-5338514</a></li>
 </ul>
 </blockquote>
 <h4 id="argocd-cmp-cm">▼ argocd-cmp-cmでマニフェスト作成時の追加処理を定義<a class="headerlink" href="#argocd-cmp-cm" title="Permanent link">&para;</a></h4>
-<p>argocd-cmp-cm配下で、ConfigManagementPluginを <code>plugin.yaml</code> ファイルとして管理する。</p>
-<p>ConfigManagementPluginで、マニフェスト作成時の追加処理を設定する。</p>
-<p>argocd-cmp-cmの <code>.configManagementPlugins</code> キーで設定することは非推奨である。</p>
+<p>argocd-cmp-cm 配下で、ConfigManagementPlugin を <code>plugin.yaml</code> ファイルとして管理する。</p>
+<p>ConfigManagementPlugin で、マニフェスト作成時の追加処理を設定する。</p>
+<p>argocd-cmp-cm の <code>.configManagementPlugins</code> キーで設定することは非推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34948,9 +34948,9 @@ Flags:
 <span class="w">  </span><span class="nt">bar-plugin.yaml</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">...</span>
 </code></pre></div>
-<p>これらの処理は、ArgoCDのリポジトリのポーリングと同時に実行されるため、何らかのエラーがあると、ポーリングのエラーとして扱われる。</p>
-<p>Applicationの <code>.spec.source.plugin.env</code> キーで設定した環境変数が、<code>ARGOCD_ENV_&lt;環境変数名&gt;</code> で出力される。</p>
-<p>なお、ConfigManagementPluginはカスタムリソースではないため、CRDは不要である。</p>
+<p>これらの処理は、ArgoCD のリポジトリのポーリングと同時に実行されるため、何らかのエラーがあると、ポーリングのエラーとして扱われる。</p>
+<p>Application の <code>.spec.source.plugin.env</code> キーで設定した環境変数が、<code>ARGOCD_ENV_&lt;環境変数名&gt;</code> で出力される。</p>
+<p>なお、ConfigManagementPlugin はカスタムリソースではないため、CRD は不要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin">https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin</a></li>
@@ -34958,7 +34958,7 @@ Flags:
 </ul>
 </blockquote>
 <h4 id="application">▼ Applicationでのプラグインを使用<a class="headerlink" href="#application" title="Permanent link">&para;</a></h4>
-<p>Applicationの <code>.spec.plugin.name</code> キーで、<code>.configManagementPlugins</code> キーで設定した独自のプラグイン名を設定する。</p>
+<p>Application の <code>.spec.plugin.name</code> キーで、<code>.configManagementPlugins</code> キーで設定した独自のプラグイン名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34974,11 +34974,11 @@ Flags:
 </code></pre></div>
 <p><br></p>
 <h2 id="02-helm">02. Helmとの連携<a class="headerlink" href="#02-helm" title="Permanent link">&para;</a></h2>
-<p>repo-serverはHelmを実行できるため、これのサイドカーは不要である。</p>
-<p>デフォルトでArgoCDにインストールされているHelmの推奨バージョン以外を使用したい場合、KustomizeをInitContainerでインストールする必要がある。</p>
-<p>Helmを使用できるように、Helmをインストールする。</p>
+<p>repo-server は Helm を実行できるため、これのサイドカーは不要である。</p>
+<p>デフォルトで ArgoCD にインストールされている Helm の推奨バージョン以外を使用したい場合、Kustomize を InitContainer でインストールする必要がある。</p>
+<p>Helm を使用できるように、Helm をインストールする。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ここでは軽量のInitContainerを定義し、起動時にHelmをインストールする。</p>
+<p>ここでは軽量の InitContainer を定義し、起動時に Helm をインストールする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35023,16 +35023,16 @@ Flags:
 <p><br></p>
 <h2 id="03-helmfile">03. Helmfileとの連携<a class="headerlink" href="#03-helmfile" title="Permanent link">&para;</a></h2>
 <h3 id="helmfile">Helmfileの実行方法<a class="headerlink" href="#helmfile" title="Permanent link">&para;</a></h3>
-<p>repo-serverはHelmfileを実行できず、サイドカーが必要である。</p>
+<p>repo-server は Helmfile を実行できず、サイドカーが必要である。</p>
 <p><br></p>
 <h3 id="_7">セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="helmfile_1">▼ Helmfileのインストール<a class="headerlink" href="#helmfile_1" title="Permanent link">&para;</a></h4>
-<p>Helmfileを使用できるように、Helmfileをインストールする。</p>
-<p>ArgoCDとHelmfileを連携すれば、<code>helmfile</code> コマンドを宣言的に実行しつつ、実行を自動化できる。</p>
-<p><code>helm</code> コマンドを宣言的に実行するのであれば、<code>.spec.source.helm</code> キーを使用すれば十分ではあるが、<code>helmfile</code> を使用すればHelmfileの機能 (例：複数の <code>values</code>
+<p>Helmfile を使用できるように、Helmfile をインストールする。</p>
+<p>ArgoCD と Helmfile を連携すれば、<code>helmfile</code> コマンドを宣言的に実行しつつ、実行を自動化できる。</p>
+<p><code>helm</code> コマンドを宣言的に実行するのであれば、<code>.spec.source.helm</code> キーを使用すれば十分ではあるが、<code>helmfile</code> を使用すれば Helmfile の機能 (例：複数の <code>values</code>
 ファイルを参照するなど) も活用できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ここでは軽量のInitContainerを定義し、起動時にHelmfileをインストールする。</p>
+<p>ここでは軽量の InitContainer を定義し、起動時に Helmfile をインストールする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35193,7 +35193,7 @@ Flags:
 </blockquote>
 <p><br></p>
 <h3 id="_8">プラグインの使用<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>Applicationでプラグイン名を指定する。</p>
+<p>Application でプラグイン名を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35219,13 +35219,13 @@ Flags:
 <p><br></p>
 <h2 id="04-helm">04. helmプラグインとの連携<a class="headerlink" href="#04-helm" title="Permanent link">&para;</a></h2>
 <h3 id="helm">helmプラグインの実行方法<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h3>
-<p>repo-serverはhelmプラグインを実行できず、サイドカーが必要である。</p>
+<p>repo-server は helm プラグインを実行できず、サイドカーが必要である。</p>
 <p><br></p>
 <h3 id="_9">セットアップ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="helm_1">▼ helmプラグインのインストール<a class="headerlink" href="#helm_1" title="Permanent link">&para;</a></h4>
-<p>helmプラグインを使用できるように、helmプラグインをインストールする。</p>
+<p>helm プラグインを使用できるように、helm プラグインをインストールする。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ここでは軽量のInitContainerを定義し、起動時にhelmプラグインのhelm-secretsをインストールする。</p>
+<p>ここでは軽量の InitContainer を定義し、起動時に helm プラグインの helm-secrets をインストールする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35345,9 +35345,9 @@ Flags:
 <h2 id="04-02-specplugin">04-02. <code>.spec.plugin</code> キー配下で使用する場合<a class="headerlink" href="#04-02-specplugin" title="Permanent link">&para;</a></h2>
 <h3 id="_10">セットアップ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="helm_2">▼ helmプラグインの処理の定義<a class="headerlink" href="#helm_2" title="Permanent link">&para;</a></h4>
-<p>helmプラグインの処理の定義する。</p>
+<p>helm プラグインの処理の定義する。</p>
 <p>ここでは、<code>helm secrets template</code> コマンドでマニフェストを作成し、また変数を復号する。</p>
-<p>新しいhelm-secretsはjkroepke製であり、古いものはzendesk製である。</p>
+<p>新しい helm-secrets は jkroepke 製であり、古いものは zendesk 製である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35384,7 +35384,7 @@ Flags:
 <span class="w">              </span><span class="no">helm secrets template $ARGOCD_ENV_HELM_RELEASE_NAME . -n $ARGOCD_APP_NAMESPACE -f $ARGOCD_ENV_SOPS_SECRETS_FILE -f $ARGOCD_ENV_VALUES_FILE;</span>
 <span class="w">            </span><span class="no">fi</span>
 </code></pre></div>
-<p>特に、zendesk製のhelm-secretsでは、<code>helm secrets template</code> コマンドの出力内容の末尾に <code>decrypted</code> の文字が出力されるため、<code>| sed '$d'</code> が必要になる。</p>
+<p>特に、zendesk 製の helm-secrets では、<code>helm secrets template</code> コマンドの出力内容の末尾に <code>decrypted</code> の文字が出力されるため、<code>| sed '$d'</code> が必要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35429,7 +35429,7 @@ Flags:
 </blockquote>
 <p><br></p>
 <h3 id="_11">プラグインの使用<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>Applicationでプラグイン名を指定する。</p>
+<p>Application でプラグイン名を指定する。</p>
 <p>また、必要な環境変数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
@@ -35455,8 +35455,8 @@ Flags:
 <h2 id="04-03-specsourcehelm">04-03. <code>.spec.source.helm</code> キー配下で使用する場合<a class="headerlink" href="#04-03-specsourcehelm" title="Permanent link">&para;</a></h2>
 <h3 id="_12">クラウドプロバイダー上の暗号化キーを使用する場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="serviceaccount">▼ ServiceAccountの作成<a class="headerlink" href="#serviceaccount" title="Permanent link">&para;</a></h4>
-<p><code>repo-server</code> コンテを持つPodに紐付けるServiceAccountを作成する。</p>
-<p>ServiceAccountにはクラウドプロバイダーの認可スコープ (例：AWS IAMロール) を紐付け、暗号化キーを使用可能にする。</p>
+<p><code>repo-server</code> コンテを持つ Pod に紐付ける ServiceAccount を作成する。</p>
+<p>ServiceAccount にはクラウドプロバイダーの認可スコープ (例：AWS IAM ロール) を紐付け、暗号化キーを使用可能にする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35479,7 +35479,7 @@ Flags:
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS KMSのARN&gt;</span>
 <span class="w">    </span><span class="nt">encrypted_regex</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;^secureJsonData$&quot;</span>
 </code></pre></div>
-<p>helm-secretsプラグインを使用するために、<code>.spec.source.helm.valueFiles</code> キー配下で <code>secrets://&lt;secretsファイル&gt;</code> を設定する。</p>
+<p>helm-secrets プラグインを使用するために、<code>.spec.source.helm.valueFiles</code> キー配下で <code>secrets://&lt;secretsファイル&gt;</code> を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35503,13 +35503,13 @@ Flags:
 <p><br></p>
 <h2 id="05-kustomize">05. Kustomize<a class="headerlink" href="#05-kustomize" title="Permanent link">&para;</a></h2>
 <h3 id="kustomize">Kustomizeの実行方法<a class="headerlink" href="#kustomize" title="Permanent link">&para;</a></h3>
-<p>repo-serverはKustomizeを実行できるため、これのサイドカーは不要である。</p>
+<p>repo-server は Kustomize を実行できるため、これのサイドカーは不要である。</p>
 <h3 id="_13">セットアップ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="kustomize_1">▼ Kustomizeのインストール<a class="headerlink" href="#kustomize_1" title="Permanent link">&para;</a></h4>
-<p>デフォルトでArgoCDにインストールされているKustomizeの推奨バージョン以外を使用したい場合、KustomizeをInitContainerでインストールする必要がある。</p>
-<p>Kustomizeを使用できるように、Kustomizeをインストールする。</p>
+<p>デフォルトで ArgoCD にインストールされている Kustomize の推奨バージョン以外を使用したい場合、Kustomize を InitContainer でインストールする必要がある。</p>
+<p>Kustomize を使用できるように、Kustomize をインストールする。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ここでは軽量のInitContainerを定義し、起動時にKustomizeをインストールする。</p>
+<p>ここでは軽量の InitContainer を定義し、起動時に Kustomize をインストールする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35556,7 +35556,7 @@ Flags:
 <span class="w">      </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
 <h4 id="_14">▼ オプションの有効化<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>Kustomizeを使用するために、Kustomizeの起動時にオプションが必要である。</p>
+<p>Kustomize を使用するために、Kustomize の起動時にオプションが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35573,8 +35573,8 @@ Flags:
 </blockquote>
 <p><br></p>
 <h3 id="_15">プラグインの使用<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>Applicationの <code>.spec.kustomize</code> キーで、使用するKustomizeのバージョンを指定する。</p>
-<p>各Applicationで異なるバージョンのKustomizeを指定できる。</p>
+<p>Application の <code>.spec.kustomize</code> キーで、使用する Kustomize のバージョンを指定する。</p>
+<p>各 Application で異なるバージョンの Kustomize を指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35591,22 +35591,22 @@ Flags:
 <p><br></p>
 <h2 id="06-ksops">06. KSOPS<a class="headerlink" href="#06-ksops" title="Permanent link">&para;</a></h2>
 <h3 id="ksops">KSOPSの実行方法<a class="headerlink" href="#ksops" title="Permanent link">&para;</a></h3>
-<p>repo-serverはKSOPSを実行できる (<code>kustomize</code> コマンドで <code>--enable-alpha-plugins</code> オプションを有効化するだけのため) ため、これのサイドカーは不要である。</p>
+<p>repo-server は KSOPS を実行できる (<code>kustomize</code> コマンドで <code>--enable-alpha-plugins</code> オプションを有効化するだけのため) ため、これのサイドカーは不要である。</p>
 <p><br></p>
 <h3 id="_16">セットアップ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="ksops_1">▼ KSOPSのインストール<a class="headerlink" href="#ksops_1" title="Permanent link">&para;</a></h4>
-<p>KSOPSを使用できるように、KSOPSをインストールする。</p>
-<p>KSOPSはコンテナイメージがあるため、軽量のInitContainerを用意するのではなく、KSOPSのコンテナイメージを使用する。</p>
-<p>このコンテナイメージには、SOPSのGoバイナリが内蔵されている。</p>
-<p>ArgoCDのビルトインのKustomizeのバージョンの場合、Kustomizeをインストールする必要はない。</p>
+<p>KSOPS を使用できるように、KSOPS をインストールする。</p>
+<p>KSOPS はコンテナイメージがあるため、軽量の InitContainer を用意するのではなく、KSOPS のコンテナイメージを使用する。</p>
+<p>このコンテナイメージには、SOPS の Go バイナリが内蔵されている。</p>
+<p>ArgoCD のビルトインの Kustomize のバージョンの場合、Kustomize をインストールする必要はない。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/viaduct-ai/kustomize-sops/blob/v4.2.1/Makefile#L29-L30">https://github.com/viaduct-ai/kustomize-sops/blob/v4.2.1/Makefile#L29-L30</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>ArgoCDのKustomize系オプションを活用するために、KSOPSはサイドカーで実行しない。</p>
-<p>ここでは軽量のInitContainerを定義し、起動時にKSOPSをインストールする。</p>
+<p>ArgoCD の Kustomize 系オプションを活用するために、KSOPS はサイドカーで実行しない。</p>
+<p>ここでは軽量の InitContainer を定義し、起動時に KSOPS をインストールする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35687,7 +35687,7 @@ Flags:
 </blockquote>
 <p><br></p>
 <h4 id="_17">▼ オプションの有効化<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>KSOPSを使用するために、Kustomizeの起動時にオプションが必要である。</p>
+<p>KSOPS を使用するために、Kustomize の起動時にオプションが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35704,8 +35704,8 @@ Flags:
 </ul>
 </blockquote>
 <h3 id="_18">プラグインの使用<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>Applicationの <code>.spec.kustomize</code> キーで、使用するKustomizeのバージョンを指定する。</p>
-<p>各Applicationで異なるバージョンのKustomizeを指定できる。</p>
+<p>Application の <code>.spec.kustomize</code> キーで、使用する Kustomize のバージョンを指定する。</p>
+<p>各 Application で異なるバージョンの Kustomize を指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35726,11 +35726,11 @@ Flags:
 <p><br></p>
 <h2 id="07-vault">07. Vaultとの連携<a class="headerlink" href="#07-vault" title="Permanent link">&para;</a></h2>
 <h3 id="vault">Vaultの実行方法<a class="headerlink" href="#vault" title="Permanent link">&para;</a></h3>
-<p>repo-serverはVaultを実行できず、サイドカーが必要である。</p>
+<p>repo-server は Vault を実行できず、サイドカーが必要である。</p>
 <p><br></p>
 <h3 id="_19">セットアップ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="vault_1">▼ Vaultのインストール<a class="headerlink" href="#vault_1" title="Permanent link">&para;</a></h4>
-<p>Vaultを使用できるように、Vaultをインストールする。</p>
+<p>Vault を使用できるように、Vault をインストールする。</p>
 <blockquote>
 <ul>
 <li><a href="https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd">https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd</a></li>
@@ -35738,7 +35738,7 @@ Flags:
 </ul>
 </blockquote>
 <h4 id="vault_2">▼ vaultの処理の定義<a class="headerlink" href="#vault_2" title="Permanent link">&para;</a></h4>
-<p><code>helm template</code> コマンドでマニフェストを作成し、またVaultで変数を復号する。</p>
+<p><code>helm template</code> コマンドでマニフェストを作成し、また Vault で変数を復号する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35777,7 +35777,7 @@ Flags:
 </blockquote>
 <p><br></p>
 <h3 id="_20">プラグインの使用<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<p>Applicationでプラグイン名を指定する。</p>
+<p>Application でプラグイン名を指定する。</p>
 <p>また、必要な環境変数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
@@ -35802,8 +35802,8 @@ Flags:
 </blockquote>
 <p><br></p>
 <h2 id="08">08. サーバー証明書<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
-<p>マニフェストを復号するツールとクラウド暗号化キーを使用している場合、暗号化キーがHTTPSを要求することがある。</p>
-<p>この時、サーバー証明書をサイドカーに設定する必要がある。</p>
+<p>マニフェストを復号するツールとクラウド暗号化キーを使用している場合、暗号化キーが HTTPS を要求することがある。</p>
+<p>このとき、サーバー証明書をサイドカーに設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35837,7 +35837,7 @@ Flags:
 </code></pre></div>
 <p><br></p>
 <h2 id="09">09. 環境変数<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
-<p>ArgoCDと連携したツールでは、コマンドで以下の環境変数を使用できる。</p>
+<p>ArgoCD と連携したツールでは、コマンドで以下の環境変数を使用できる。</p>
 <table>
 <thead>
 <tr>
@@ -35905,7 +35905,7 @@ Flags:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 19:24:15 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

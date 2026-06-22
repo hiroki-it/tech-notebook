@@ -33846,14 +33846,14 @@
 <p><br></p>
 <h2 id="01-kubernetes">01. Kubernetesのアップグレード (ベアメタル環境の場合)<a class="headerlink" href="#01-kubernetes" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アップグレードの仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Anthos Clusterのアップグレード時、データプレーンのワーカーNodeをローリングアップグレードする。</p>
-<p>ベアメタルのため、ワーカーNodeを再作成することはなく、コントロールプレーンコンポーネント (例：kube-apiserverなど) とワーカーNodeコンポーネント (例：kubeletなど) をそのままアップグレードしていく。</p>
+<p>Anthos Cluster のアップグレード時、データプレーンのワーカーNode をローリングアップグレードする。</p>
+<p>ベアメタルのため、ワーカーNode を再作成することはなく、コントロールプレーンコンポーネント (例：kube-apiserver など) とワーカーNode コンポーネント (例：kubelet など) をそのままアップグレードしていく。</p>
 <p><br></p>
 <h3 id="bmctl"><code>bmctl</code> コマンドのセットアップ<a class="headerlink" href="#bmctl" title="Permanent link">&para;</a></h3>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p><code>bmctl</code> コマンドをインストールする。Anthos GKE Clusterと <code>bmctl</code> コマンドのバージョンには対応関係がある。</p>
+<p><code>bmctl</code> コマンドをインストールする。Anthos GKE Cluster と <code>bmctl</code> コマンドのバージョンには対応関係がある。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span>gs://anthos-baremetal-release/bmctl/1.13.2/linux-amd64/bmctl<span class="w"> </span>bmctl-1.12.0
@@ -33862,7 +33862,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Anthos GKE Clusterの現在のバージョンを確認する。</p>
+<p>Anthos GKE Cluster の現在のバージョンを確認する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl get cluster -A -o yaml</span>
@@ -33875,7 +33875,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">anthosBareMetalVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.12.0</span><span class="w"> </span><span class="c1"># 現在のバージョン</span>
 </code></pre></div>
-<p>また、Anthos GKE ClusterのバージョンとKubernetesのバージョンの対応関係を確認する。</p>
+<p>また、Anthos GKE Cluster のバージョンと Kubernetes のバージョンの対応関係を確認する。</p>
 <table>
 <thead>
 <tr>
@@ -33906,7 +33906,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>docker</code> プロセスが稼働しているかを確認する。Anthosのアップグレードの仕組みの中でKindが使われている。</p>
+<p><code>docker</code> プロセスが稼働しているかを確認する。Anthos のアップグレードの仕組みのなかで Kind が使われている。</p>
 <p>ワークステーション (仮想サーバー) 上でKindを起動し、Kindを使用してAnthos K8s in Dockerを検証する。</p>
 <p>Kindによる検証のために、dockerが必要である。dockerプロセスのデーモンが正常なことを確認する。</p>
 </dd>
@@ -33918,7 +33918,7 @@ $<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p><code>bmctl</code> コマンドを使用して、Anthos GKE Clusterをローリング方式でアップグレードする。</p>
+<p><code>bmctl</code> コマンドを使用して、Anthos GKE Cluster をローリング方式でアップグレードする。</p>
 <p>また、ログの出力先が表示されるため、このログを<code>tail</code>コマンドで確認する。</p>
 </dd>
 </dl>
@@ -33973,7 +33973,7 @@ $<span class="w"> </span>~/baremetal/bmctl<span class="w"> </span>upgrade<span c
 <dl>
 <dt><code>(8)</code></dt>
 <dd>
-<p>各NodeのKubernetesのバージョンが新しくなったことを確認する</p>
+<p>各 Node の Kubernetes のバージョンが新しくなったことを確認する</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>-o<span class="w"> </span>wide
@@ -33986,7 +33986,7 @@ $<span class="w"> </span>~/baremetal/bmctl<span class="w"> </span>upgrade<span c
 <dl>
 <dt><code>(9)</code></dt>
 <dd>
-<p>Crash、Terminating、ErrorなどのPodがいないかを確認する。</p>
+<p>Crash、Terminating、Error などの Pod がいないかを確認する。</p>
 <p>また、Podの作成が始まらないと、<code>kubectl get pod</code>コマンドにPod自体が表示されない。</p>
 <p>そのため、<code>kubectl get deployment</code>で、Podの管理リソース (例：Deployment) の全てのPodが<code>Ready</code>コンディションかどうかを確認しておく。</p>
 </dd>
@@ -33998,15 +33998,15 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h2 id="02-istio">02. Istioのアップグレード (オンプレミス環境、ベアメタル環境、他のクラウドプロバイダーの場合)<a class="headerlink" href="#02-istio" title="Permanent link">&para;</a></h2>
 <h3 id="_5">注意!!!!<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>Anthos Service Meshのドキュメントを確認すると、Istioをカナリア方式でアップグレードしている。</p>
-<p>Istioのカナリア方式のアップグレードでは、新しいistio-proxyをインジェクションする方法として、<code>istio.io/rev</code> キーのリビジョンを書き換える方法と、MutatingWebhookConfigurationのエイリアスの紐付けを変更する方法がある。</p>
-<p>Anthos Service Meshのアップグレードでは、何らかの事情でこれらの両方の手順が混じっており、Istioとは方法が若干異なっている。</p>
+<p>Anthos Service Mesh のドキュメントを確認すると、Istio をカナリア方式でアップグレードしている。</p>
+<p>Istio のカナリア方式のアップグレードでは、新しい istio-proxy をインジェクションする方法として、<code>istio.io/rev</code> キーのリビジョンを書き換える方法と、MutatingWebhookConfiguration のエイリアスの紐付けを変更する方法がある。</p>
+<p>Anthos Service Mesh のアップグレードでは、何らかの事情でこれらの両方の手順が混じっており、Istio とは方法が若干異なっている。</p>
 <p><br></p>
 <h3 id="asmcli"><code>asmcli</code> コマンドのセットアップ<a class="headerlink" href="#asmcli" title="Permanent link">&para;</a></h3>
-<p><code>asmcli</code> コマンドでは、そのバージョンに応じて、アップグレード先のASMのバージョンがハードコーディングされている。</p>
-<p>この時、ASMのマイナーバージョンを固定できず、<code>asmcli</code> コマンドのインストールのタイミングによってはより新しいパッチバージョンが指定されている。</p>
-<p>そのため、各実行環境のアップグレードのたびに <code>asmcli</code> コマンドをインストールすると、より後に実施した実行環境の方で新しいパッチバージョンのASMをデプロイすることになってしまう。</p>
-<p>そこで、<code>asmcli</code> コマンドはバージョン管理したほうが良い。</p>
+<p><code>asmcli</code> コマンドでは、そのバージョンに応じて、アップグレード先の ASM のバージョンがハードコーディングされている。</p>
+<p>このとき、ASM のマイナーバージョンを固定できず、<code>asmcli</code> コマンドのインストールのタイミングによってはより新しいパッチバージョンが指定されている。</p>
+<p>そのため、各実行環境のアップグレードのたびに <code>asmcli</code> コマンドをインストールすると、より後に実施した実行環境のほうで新しいパッチバージョンの ASM をデプロイすることになってしまう。</p>
+<p>そこで、<code>asmcli</code> コマンドはバージョン管理したほうがよい。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -34050,7 +34050,7 @@ $<span class="w"> </span>mv<span class="w"> </span>asmcli<span class="w"> </span
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>今、現在のIstioのリビジョンが <code>1130-0</code> だとする。</p>
+<p>今、現在の Istio のリビジョンが <code>1130-0</code> だとする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Deployment</span>
@@ -34077,7 +34077,7 @@ istio-revision-tag-default<span class="w">             </span><span class="m">1<
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>新しいIstiodコントロールプレーンをインストールする。</p>
+<p>新しい Istiod コントロールプレーンをインストールする。</p>
 <p>事前にバージョン管理している<code>asmcli</code>コマンドを使用して、<code>asmcli</code>コマンドを使用して、旧バージョンを残しつつ、新バージョンのIstiodコントロールプレーンをデプロイする。</p>
 </dd>
 </dl>
@@ -34104,7 +34104,7 @@ istio-revision-tag-default<span class="w">             </span><span class="m">1<
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>Istiodコントロールプレーンがデプロイされたことを確認する。</p>
+<p>Istiod コントロールプレーンがデプロイされたことを確認する。</p>
 <p>補足として、<code>asmcli</code>コマンドでは、最新のパッチバージョンがインストールするため、狙ったバージョンをインストールできない可能性がある。</p>
 </dd>
 </dl>
@@ -34142,7 +34142,7 @@ istio-revision-tag-default<span class="w">             </span><span class="m">1<
 <dl>
 <dt><code>(7)</code></dt>
 <dd>
-<p>カナリア方式のため、Istiodコントロールプレーンの新バージョンの <code>istio.io/rev</code> キーの値を取得する。</p>
+<p>カナリア方式のため、Istiod コントロールプレーンの新バージョンの <code>istio.io/rev</code> キーの値を取得する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>-l<span class="w"> </span>istio.io/rev
@@ -34156,7 +34156,7 @@ istiod-asm-1140-0<span class="w">    </span><span class="m">1</span>/1<span clas
 <dl>
 <dt><code>(8)</code></dt>
 <dd>
-<p><code>istio.io/rev</code> キーが設定されている全てのNamespaceを確認する。</p>
+<p><code>istio.io/rev</code> キーが設定されているすべての Namespace を確認する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespace<span class="w"> </span>ingress<span class="w"> </span>-L<span class="w"> </span>istio.io/rev
@@ -34189,7 +34189,7 @@ app<span class="w">    </span>Active<span class="w">    </span>2d18h<span class=
 <dl>
 <dt><code>(9)</code></dt>
 <dd>
-<p>Istioの <code>istio.io/rev</code> キーを使用して、特定のNamespaceの <code>istio-injection</code> キーを上書きする。</p>
+<p>Istio の <code>istio.io/rev</code> キーを使用して、特定の Namespace の <code>istio-injection</code> キーを上書きする。</p>
 <p>多くの場合、istio-proxyはIstio Ingress GatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。</p>
 <p>これらのキーはコンフリクトを発生させるため、どちらか一方しか使用できず、Anthosでは<code>istio.io/rev</code>キーを推奨している。</p>
 <p>もしGitOpsツール (例：ArgoCD、Flux) でNamespaceを管理している場合は、<code>kubectl label</code>コマンドの代わりに、GitHub上でリビジョンを変更することになる。</p>
@@ -34219,7 +34219,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </
 <dl>
 <dt><code>(11)</code></dt>
 <dd>
-<p>Istio Ingress GatewayのPodを再作成し、新バージョンのistio-proxyを自動的にインジェクションする。</p>
+<p>Istio Ingress Gateway の Pod を再作成し、新バージョンの istio-proxy を自動的にインジェクションする。</p>
 <p>カナリア方式のため、webhook-serviceがそのままで新しいistio-proxyをインジェクションできる。</p>
 </dd>
 </dl>
@@ -34228,7 +34228,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>label<span class="w"> </
 <dl>
 <dt><code>(12)</code></dt>
 <dd>
-<p>新バージョンのistio-proxyがインジェクションされたことを、イメージタグから確認する。</p>
+<p>新バージョンの istio-proxy がインジェクションされたことを、イメージタグから確認する。</p>
 <p>代わりに、<code>istioctl proxy-status</code>コマンドでも良い。</p>
 </dd>
 </dl>
@@ -34248,7 +34248,7 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-status
 <dl>
 <dt><code>(13)</code></dt>
 <dd>
-<p>アプリケーションのPodを再作成し、新バージョンのistio-proxyを自動的にインジェクションする。</p>
+<p>アプリケーションの Pod を再作成し、新バージョンの istio-proxy を自動的にインジェクションする。</p>
 <p>カナリア方式のため、webhook-serviceがそのままで新しいistio-proxyをインジェクションできる。</p>
 </dd>
 </dl>
@@ -34257,7 +34257,7 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-status
 <dl>
 <dt><code>(14)</code></dt>
 <dd>
-<p>新バージョンのistio-proxyがインジェクションされたことを、イメージタグから確認する。</p>
+<p>新バージョンの istio-proxy がインジェクションされたことを、イメージタグから確認する。</p>
 <p>代わりに、<code>istioctl proxy-status</code>コマンドでも良い。</p>
 </dd>
 </dl>
@@ -34283,7 +34283,7 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-status
 <dl>
 <dt><code>(15)</code></dt>
 <dd>
-<p>Istioのvalidating-admission時を経由するService更新する。</p>
+<p>Istio の validating-admission 時を経由する Service 更新する。</p>
 <p>ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。</p>
 </dd>
 </dl>
@@ -34327,7 +34327,7 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-status
 <dl>
 <dt><code>(16)</code></dt>
 <dd>
-<p>MutatingWebhookConfigurationの <code>.metadata.labels</code> キーにて、エイリアスに紐づく現在のリビジョンを確認する。</p>
+<p>MutatingWebhookConfiguration の <code>.metadata.labels</code> キーにて、エイリアスに紐づく現在のリビジョンを確認する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># アップグレード前に、istiocltコマンドで確認</span>
@@ -34346,7 +34346,7 @@ istio.io/tag:<span class="w"> </span>default
 <dl>
 <dt><code>(17)</code></dt>
 <dd>
-<p>Istioのmutating-admissionを設定するMutatingWebhookConfigurationのラベル値を変更する。</p>
+<p>Istio の mutating-admission を設定する MutatingWebhookConfiguration のラベル値を変更する。</p>
 <p>MutatingWebhookConfigurationの<code>.metadata.labels</code>キーにあるエイリアス (<code>istio.io/tag</code>キーの値) の実体 (<code>istio.io/rev</code>キーの値) が旧バージョンのままなため、新バージョンに変更する。</p>
 <p><code>istioctl</code>コマンドは、<code>asmcli</code>コマンドの<code>--output_dir</code>オプションで指定したディレクトリにある。</p>
 </dd>
@@ -34357,7 +34357,7 @@ $<span class="w"> </span>./output/asm-1.14/istioctl<span class="w"> </span>tag<s
 <dl>
 <dt><code>(18)</code></dt>
 <dd>
-<p>MutatingWebhookConfigurationの <code>.metadata.labels</code> キーにて、エイリアスに紐づくリビジョンを変更できたことを確認する。</p>
+<p>MutatingWebhookConfiguration の <code>.metadata.labels</code> キーにて、エイリアスに紐づくリビジョンを変更できたことを確認する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># アップグレード前に、istiocltコマンドで確認してみる。</span>
@@ -34377,7 +34377,7 @@ istio.io/tag:<span class="w"> </span>default
 <dl>
 <dt><code>(19)</code></dt>
 <dd>
-<p>旧バージョンのIstiodコントロールプレーン (実体は、Service、Deployment、HorizontalPodAutoscaler、PodDisruptionBudget) を削除する。</p>
+<p>旧バージョンの Istiod コントロールプレーン (実体は、Service、Deployment、HorizontalPodAutoscaler、PodDisruptionBudget) を削除する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>istio-system
@@ -34393,7 +34393,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <dl>
 <dt><code>(20)</code></dt>
 <dd>
-<p>旧バージョンのValidatingWebhookConfigurationを削除する。</p>
+<p>旧バージョンの ValidatingWebhookConfiguration を削除する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>validatingwebhookconfiguration<span class="w"> </span>-n<span class="w"> </span>istio-system
@@ -34408,7 +34408,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <dl>
 <dt><code>(21)</code></dt>
 <dd>
-<p>旧バージョンのIstioOperatorを削除する。</p>
+<p>旧バージョンの IstioOperator を削除する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>IstioOperator<span class="w"> </span>-n<span class="w"> </span>istio-system
@@ -34425,7 +34425,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <dl>
 <dt><code>(22)</code></dt>
 <dd>
-<p>全てのPodが正常に稼働していることを確認する。</p>
+<p>すべての Pod が正常に稼働していることを確認する。</p>
 <p>また、Podの作成が始まらないと、<code>kubectl get pod</code>コマンドにPod自体が表示されない。</p>
 <p>そのため、<code>kubectl get deployment</code>で、Podの管理リソース (例：Deployment) の全てのPodが<code>Ready</code>コンディションかどうかを確認しておく。</p>
 </dd>
@@ -34434,7 +34434,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <p><br></p>
 <h2 id="03-nodeos">03. NodeのOSのアップグレード (ベアメタル環境の場合)<a class="headerlink" href="#03-nodeos" title="Permanent link">&para;</a></h2>
-<p>ベアメタル環境の場合、Google CloudはNodeのOSのバージョンを管理してくれず、Google Cloud外でアップグレードする必要がある。</p>
+<p>ベアメタル環境の場合、Google Cloud は Node の OS のバージョンを管理してくれず、Google Cloud 外でアップグレードする必要がある。</p>
 <p><br></p>
 
 
@@ -34456,7 +34456,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

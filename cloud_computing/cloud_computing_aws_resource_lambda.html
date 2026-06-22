@@ -34387,7 +34387,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-aws-lambda">01. AWS Lambdaとは<a class="headerlink" href="#01-aws-lambda" title="Permanent link">&para;</a></h2>
-<p>他のAWSリソースのイベントによって駆動する関数を管理できる。</p>
+<p>他の AWS リソースのイベントによって駆動する関数を管理できる。</p>
 <p><img alt="サーバーレスアーキテクチャとは" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/サーバーレスアーキテクチャとは.png" /></p>
 <blockquote>
 <ul>
@@ -34434,7 +34434,7 @@
 </tr>
 <tr>
 <td>実行ロール</td>
-<td>AWS Lambda内の関数が実行される時に必要なポリシーを持つロールを設定する。</td>
+<td>AWS Lambda内の関数が実行されるときに必要なポリシーを持つロールを設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -34490,10 +34490,10 @@
 <h3 id="aws-lambda">AWS Lambdaと関数の関係性<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h3>
 <p><img alt="lambda-execution-environment-api-flow" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-api-flow.png" /></p>
 <h4 id="aws-lambda_1">▼ AWS Lambdaサービス<a class="headerlink" href="#aws-lambda_1" title="Permanent link">&para;</a></h4>
-<p>コンソール画面のAWS Lambdaに相当する。</p>
+<p>コンソール画面の AWS Lambda に相当する。</p>
 <h4 id="_5">▼ 関数の実行環境<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>AWS Lambdaは、API (ランタイムAPI、ログAPI、拡張API) と実行環境から構成されている。</p>
-<p>関数は実行環境に存在し、ランタイムAPIを経由して、AWS Lambdaによって実行される。</p>
+<p>AWS Lambda は、API (ランタイム API、ログ API、拡張 API) と実行環境から構成されている。</p>
+<p>関数は実行環境に存在し、ランタイム API を経由して、AWS Lambda によって実行される。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle">https://docs.aws.amazon.com/lambda/latest/dg/runtimes-extensions-api.html#runtimes-extensions-api-lifecycle</a>&gt;</li>
@@ -34507,14 +34507,14 @@
 </blockquote>
 <p><img alt="lambda-execution-environment-life-cycle" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-lifecycle.png" /></p>
 <h4 id="init">▼ Initフェーズ<a class="headerlink" href="#init" title="Permanent link">&para;</a></h4>
-<p>AWS Lambdaが発火する。</p>
+<p>AWS Lambda が発火する。</p>
 <p>実行環境が作成され、関数を実行するための準備が行われる。</p>
 <h4 id="invoke">▼ Invokeフェーズ<a class="headerlink" href="#invoke" title="Permanent link">&para;</a></h4>
-<p>AWS Lambdaは関数を実行する。</p>
-<p>実行環境側のランタイムは、APIを経由してAWS Lambdaから関数に引数を渡す。</p>
-<p>また関数の実行後に、APIを経由して返却値をAWS Lambdaに渡す。</p>
+<p>AWS Lambda は関数を実行する。</p>
+<p>実行環境側のランタイムは、API を経由して AWS Lambda から関数に引数を渡す。</p>
+<p>また関数の実行後に、API を経由して返却値を AWS Lambda に渡す。</p>
 <h4 id="shutdown">▼ Shutdownフェーズ<a class="headerlink" href="#shutdown" title="Permanent link">&para;</a></h4>
-<p>一定期間、Invokeフェーズにおける関数実行が行われなかった場合、AWS Lambdaはランタイムを完了し、実行環境を削除する。</p>
+<p>一定期間、Invoke フェーズにおける関数実行が行われなかった場合、AWS Lambda はランタイムを完了し、実行環境を削除する。</p>
 <p><br></p>
 <h3 id="aws-lambda-on-docker">AWS Lambda関数 on Docker<a class="headerlink" href="#aws-lambda-on-docker" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ ベースイメージの準備<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
@@ -34524,22 +34524,22 @@
 </ul>
 </blockquote>
 <h4 id="ricruntime-interface-clients">▼ RIC：Runtime Interface Clients<a class="headerlink" href="#ricruntime-interface-clients" title="Permanent link">&para;</a></h4>
-<p>通常のランタイムはコンテナ内関数と通信できないため、ランタイムの代わりにRICを使用してコンテナ内関数と通信する。</p>
-<p>言語別にRICパッケージが用意されている。</p>
+<p>通常のランタイムはコンテナ内関数と通信できないため、ランタイムの代わりに RIC を使用してコンテナ内関数と通信する。</p>
+<p>言語別に RIC パッケージが用意されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client">https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client</a>&gt;</li>
 </ul>
 </blockquote>
 <h4 id="rieruntime-interface-emulator">▼ RIE：Runtime Interface Emulator<a class="headerlink" href="#rieruntime-interface-emulator" title="Permanent link">&para;</a></h4>
-<p>開発環境のコンテナで、擬似的にAWS Lambda関数を再現する。</p>
-<p>全ての言語で共通のRIEパッケージが用意されている。</p>
+<p>開発環境のコンテナで、擬似的に AWS Lambda 関数を再現する。</p>
+<p>すべての言語で共通の RIE パッケージが用意されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/aws-lambda-runtime-interface-emulator">https://github.com/aws/aws-lambda-runtime-interface-emulator</a>&gt;</li>
 </ul>
 </blockquote>
-<p>RIEであっても、稼働させるためにAWSの資格情報 (アクセスキーID、シークレットアクセスキー、リージョン) が必要なため、環境変数や資格情報ファイルを使用して、AWS Lambdaにこれらの値を出力する。</p>
+<p>RIE であっても、稼働させるために AWS の資格情報 (アクセスキーID、シークレットアクセスキー、リージョン) が必要なため、環境変数や資格情報ファイルを使用して、AWS Lambda にこれらの値を出力する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env">https://docs.aws.amazon.com/lambda/latest/dg/images-test.html#images-test-env</a>&gt;</li>
@@ -34589,11 +34589,11 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <p><br></p>
 <h3 id="_7">同時実行<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 同時実行の予約<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>AWS Lambdaは、関数の実行中に再びリクエストを受信すると、関数のインスタンスを新しく作成する。</p>
+<p>AWS Lambda は、関数の実行中に再びリクエストを受信すると、関数のインスタンスを新しく作成する。</p>
 <p>そして、各関数インスタンスを使用して、並行的にリクエストに応じる。</p>
-<p>デフォルトでは、関数の種類がいくつあっても、AWSアカウント当たり、合計で <code>1000</code> 個までしかスケーリングして同時実行できない。</p>
+<p>デフォルトでは、関数の種類がいくつあっても、AWS アカウント当たり、合計で <code>1000</code> 個までしかスケーリングして同時実行できない。</p>
 <p>関数ごとに同時実行数の使用枠を割り当てるためには、同時実行の予約を設定する必要がある。</p>
-<p>同時実行の予約数を <code>0</code> 個とした場合、AWS Lambdaがスケーリングしなくなる。</p>
+<p>同時実行の予約数を <code>0</code> 個とした場合、AWS Lambda がスケーリングしなくなる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved">https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved</a>&gt;</li>
@@ -34603,16 +34603,16 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <p><br></p>
 <h3 id="amazon-vpcamazon-vpc">Amazon VPC外/Amazon VPC内<a class="headerlink" href="#amazon-vpcamazon-vpc" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-vpc">▼ Amazon VPC外への配置<a class="headerlink" href="#amazon-vpc" title="Permanent link">&para;</a></h4>
-<p>AWS LambdaはデフォルトではAmazon VPC外に配置される。</p>
-<p>この場合、AWS LambdaにENIが紐付けられ、ENIに割り当てられたIPアドレスがAWS Lambdaに適用される。</p>
-<p>AWS Lambdaの実行時にENIは再作成されるため、実行ごとにIPアドレスは変化するが、一定時間内の再実行であればENIは再利用されるため、前回の実行時と同じIPアドレスになることもある。</p>
+<p>AWS Lambda はデフォルトでは Amazon VPC 外に配置される。</p>
+<p>この場合、AWS Lambda に ENI が紐付けられ、ENI に割り当てられた IP アドレスが AWS Lambda に適用される。</p>
+<p>AWS Lambda の実行時に ENI は再作成されるため、実行ごとに IP アドレスは変化するが、一定時間内の再実行であれば ENI は再利用されるため、前回の実行時と同じ IP アドレスになることもある。</p>
 <h4 id="amazon-vpc_1">▼ Amazon VPC内への配置<a class="headerlink" href="#amazon-vpc_1" title="Permanent link">&para;</a></h4>
-<p>AWS LambdaをAmazon VPC内に配置するように設定する。</p>
-<p>Amazon VPC内に配置したAWS LambdaにはパブリックIPアドレスが割り当てられないため、アウトバウンド通信するためには、NAT Gatewayを配置する必要がある。</p>
+<p>AWS Lambda を Amazon VPC 内に配置するように設定する。</p>
+<p>Amazon VPC 内に配置した AWS Lambda にはパブリック IP アドレスが割り当てられないため、アウトバウンド通信するためには、NAT Gateway を配置する必要がある。</p>
 <p><br></p>
 <h3 id="_9">ポリシー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 実行のための最低限のポリシー<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>AWS Lambdaを実行するためには、デプロイされた関数を使用する認可スコープが必要である。</p>
+<p>AWS Lambda を実行するためには、デプロイされた関数を使用する認可スコープが必要である。</p>
 <p>そのため、関数を取得するためのステートメントを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
@@ -34630,7 +34630,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <h3 id="_11">データベース<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <ul>
 <li>AWS DynamoDB</li>
-<li>Amazon RDSプロキシとAmazon RDS</li>
+<li>Amazon RDS プロキシと Amazon RDS</li>
 </ul>
 <blockquote>
 <ul>
@@ -34643,7 +34643,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <p>デプロイを行わずに、関数のコードを直接的に修正し、『Deploy』ボタンでデプロイする。</p>
 <h4 id="amazon-s3-zip">▼ Amazon S3における <code>.zip</code> ファイル<a class="headerlink" href="#amazon-s3-zip" title="Permanent link">&para;</a></h4>
 <p>ビルド後のコードを <code>.zip</code> ファイルにしてアップロードする。</p>
-<p>ローカルマシンまたはS3からアップロードできる。</p>
+<p>ローカルマシンまたは S3 からアップロードできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip">https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip</a>&gt;</li>
@@ -34652,7 +34652,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <h4 id="amazon-ecr">▼ Amazon ECRにおけるイメージ<a class="headerlink" href="#amazon-ecr" title="Permanent link">&para;</a></h4>
 <p>コンテナイメージの関数のみで有効である。</p>
 <p>ビルド後のコードをコンテナイメージしてアップロードする。</p>
-<p>Amazon ECRからアップロードできる。</p>
+<p>Amazon ECR からアップロードできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images">https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-images</a>&gt;</li>
@@ -34661,14 +34661,14 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <p><br></p>
 <h2 id="02-aws-lambdaedge">02. AWS Lambda@Edge<a class="headerlink" href="#02-aws-lambdaedge" title="Permanent link">&para;</a></h2>
 <h3 id="aws-lambdaedge">AWS Lambda@Edgeとは<a class="headerlink" href="#aws-lambdaedge" title="Permanent link">&para;</a></h3>
-<p>Amazon CloudFrontに統合されたAWS Lambdaを、特別にAWS Lambda@Edgeという。</p>
+<p>Amazon CloudFront に統合された AWS Lambda を、特別に AWS Lambda@Edge という。</p>
 <p><br></p>
 <h2 id="02-02">02-02. セットアップ<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="_14">コンソール画面の場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ トリガーの種類<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p><img alt="lambda-edge" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge.png" /></p>
-<p>Amazon CloudFrontのビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンスをトリガーとする。</p>
-<p>エッジロケーションのAmazon CloudFrontに、AWS Lambdaのレプリカを作成する。</p>
+<p>Amazon CloudFront のビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンスをトリガーとする。</p>
+<p>エッジロケーションの Amazon CloudFront に、AWS Lambda のレプリカを作成する。</p>
 <table>
 <thead>
 <tr>
@@ -34696,7 +34696,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 </tbody>
 </table>
 <h4 id="event">▼ 各トリガーのeventオブジェクトへのマッピング<a class="headerlink" href="#event" title="Permanent link">&para;</a></h4>
-<p>各トリガーのeventオブジェクトへのマッピングは、リンクを参考にせよ。</p>
+<p>各トリガーの event オブジェクトへのマッピングは、リンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html">https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html</a></li>
@@ -34705,7 +34705,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <p><br></p>
 <h3 id="_16">ポリシー<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ 実行のための最低限のポリシー<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>AWS Lambda@Edgeを実行するためには、最低限、以下の認可スコープが必要である。</p>
+<p>AWS Lambda@Edge を実行するためには、最低限、以下の認可スコープが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -34731,8 +34731,8 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <p><br></p>
 <h2 id="03-aws-lambda-web-adapter">03. AWS Lambda Web Adapter<a class="headerlink" href="#03-aws-lambda-web-adapter" title="Permanent link">&para;</a></h2>
 <h3 id="aws-lambda-web-adapter">AWS Lambda Web Adapterとは<a class="headerlink" href="#aws-lambda-web-adapter" title="Permanent link">&para;</a></h3>
-<p>AWS Lambdaの拡張機能である。</p>
-<p>通常のAWS Lambdaでは動かせないフレームワーク (例：Express.js、Next.js、SprintBoot、ASP.NET、Laravelなど) のアプリを動かせるようにする。</p>
+<p>AWS Lambda の拡張機能である。</p>
+<p>通常の AWS Lambda では動かせないフレームワーク (例：Express.js、Next.js、SprintBoot、ASP.NET、Laravel など) のアプリを動かせるようにする。</p>
 <p>アプリケーションのプロセスの前段でリクエストを変換し、アプリケーションがリクエストを処理できるようにする。</p>
 <p><img alt="lambda-web-adapter" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-web-adapter.png" /></p>
 <blockquote>
@@ -34781,7 +34781,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:53:56 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

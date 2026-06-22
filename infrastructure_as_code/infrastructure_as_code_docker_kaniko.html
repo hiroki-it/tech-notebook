@@ -33530,11 +33530,11 @@
 <p><br></p>
 <h2 id="01-kaniko">01. Kanikoとは<a class="headerlink" href="#01-kaniko" title="Permanent link">&para;</a></h2>
 <p>コンテナ内でコンテナイメージのビルドをエミュレートする。</p>
-<p>これにより、Docker in Dockerの問題を回避できる。</p>
-<p>また、Kubernetes Cluster内でコンテナイメージをビルドできるようになる。</p>
+<p>これにより、Docker in Docker の問題を回避できる。</p>
+<p>また、Kubernetes Cluster 内でコンテナイメージをビルドできるようになる。</p>
 <p>レイヤー単位でコンテナイメージのキャッシュを作成できる。</p>
-<p>そのため、都度、コンテナイメージをビルドしなくて良くなる。</p>
-<p>2026/02/28時点でサポートが停止しており、BuildKitなどの代替ツールに移行したほうが良い。</p>
+<p>そのため、都度、コンテナイメージをビルドしなくてよくなる。</p>
+<p>2026/02/28 時点でサポートが停止しており、BuildKit などの代替ツールに移行したほうがよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/chimame/items/7cf8356b7fb55c0990f9#%E3%81%AA%E3%82%93%E3%81%A7%E4%BD%BF%E3%81%86%E3%81%AE">https://qiita.com/chimame/items/7cf8356b7fb55c0990f9#%E3%81%AA%E3%82%93%E3%81%A7%E4%BD%BF%E3%81%86%E3%81%AE</a></li>
@@ -33574,7 +33574,7 @@
 <p><br></p>
 <h2 id="03-gitlab">03. GitLab上で実行する場合<a class="headerlink" href="#03-gitlab" title="Permanent link">&para;</a></h2>
 <h3 id="dockerhub">DockerHub<a class="headerlink" href="#dockerhub" title="Permanent link">&para;</a></h3>
-<p>DockerHubの資格情報は、エンコードしたうえで、あらかじめGitLab CIの変数 (<code>DOCKERHUB_TOKEN</code>) に設定しておく。</p>
+<p>DockerHub の資格情報は、エンコードしたうえで、あらかじめ GitLab CI の変数 (<code>DOCKERHUB_TOKEN</code>) に設定しておく。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span>USER:PASSWORD<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64
 
 *****
@@ -33598,7 +33598,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="amazon-ecr_1">Amazon ECR<a class="headerlink" href="#amazon-ecr_1" title="Permanent link">&para;</a></h3>
-<p>AWSの資格情報は、あらかじめGitLab CIの変数 (<code>AWS_ACCESS_KEY_ID</code>、<code>AWS_SECRET_ACCESS_KEY</code>) に設定しておく。</p>
+<p>AWS の資格情報は、あらかじめ GitLab CI の変数 (<code>AWS_ACCESS_KEY_ID</code>、<code>AWS_SECRET_ACCESS_KEY</code>) に設定しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">build</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
@@ -33617,7 +33617,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="google-container-registry">Google Container Registry<a class="headerlink" href="#google-container-registry" title="Permanent link">&para;</a></h3>
-<p>Google Cloudの資格情報ファイルは、あらかじめGitLab CIの変数 (<code>GOOGLE_APPLICATION_CREDENTIALS</code>) に設定しておく。</p>
+<p>Google Cloud の資格情報ファイルは、あらかじめ GitLab CI の変数 (<code>GOOGLE_APPLICATION_CREDENTIALS</code>) に設定しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">build</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
@@ -33657,7 +33657,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

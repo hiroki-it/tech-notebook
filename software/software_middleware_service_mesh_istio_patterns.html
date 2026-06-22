@@ -34026,12 +34026,12 @@
 <p>記入中...</p>
 <p><br></p>
 <h2 id="02-istiod">02. Istiodコントロールプレーン数<a class="headerlink" href="#02-istiod" title="Permanent link">&para;</a></h2>
-<p>Istiodコントロールプレーン数に関するパターンである。</p>
+<p>Istiod コントロールプレーン数に関するパターンである。</p>
 <p><br></p>
 <h2 id="02-02-istiod">02-02. 単一Istiodコントロールプレーン<a class="headerlink" href="#02-02-istiod" title="Permanent link">&para;</a></h2>
 <h3 id="istiod">単一Istiodコントロールプレーンとは<a class="headerlink" href="#istiod" title="Permanent link">&para;</a></h3>
-<p>複数Kubernetes Clusterのネットワークを横断的に管理するIstiodコントロールプレーンを作成する。</p>
-<p>Istiodコントロールプレーンを持つプライマリCluster、サービスメッシュに参加するClusterのリモートCluster、からなる。</p>
+<p>複数 Kubernetes Cluster のネットワークを横断的に管理する Istiod コントロールプレーンを作成する。</p>
+<p>Istiod コントロールプレーンを持つプライマリ Cluster、サービスメッシュに参加する Cluster のリモート Cluster、からなる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models">https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models</a></li>
@@ -34040,7 +34040,7 @@
 <p><br></p>
 <h2 id="02-03-istiod">02-03. 複数Istiodコントロールプレーン<a class="headerlink" href="#02-03-istiod" title="Permanent link">&para;</a></h2>
 <h3 id="istiod_1">複数Istiodコントロールプレーンとは<a class="headerlink" href="#istiod_1" title="Permanent link">&para;</a></h3>
-<p>Kubernetes ClusterごとにIstiodコントロールプレーンを作成する。</p>
+<p>Kubernetes Cluster ごとに Istiod コントロールプレーンを作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models">https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models</a></li>
@@ -34049,8 +34049,8 @@
 <p><br></p>
 <h3 id="istiod_2">異なるIstiodコントロールプレーン間のデータプレーン共有<a class="headerlink" href="#istiod_2" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ 同じプライベートネットワーク内の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>異なるClusterが同じプライベートネットワーク内に所属している場合、ClusterのコントロールプレーンNode間でデータプレーンを管理し合う。</p>
-<p>これにより、この時、IngressGatewayを使用せずに、異なるClusterのコンテナが直接的に通信できる。</p>
+<p>異なる Cluster が同じプライベートネットワーク内に所属している場合、Cluster のコントロールプレーン Node 間でデータプレーンを管理し合う。</p>
+<p>これにより、このとき、IngressGateway を使用せずに、異なる Cluster のコンテナが直接的に通信できる。</p>
 <p><img alt="istio_multi-service-mesh_cluster_same-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_same-network.png" /></p>
 <blockquote>
 <ul>
@@ -34058,8 +34058,8 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ 異なるプライベートネットワーク内の場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>異なるClusterが異なるプライベートネットワーク内に所属している場合、ClusterのコントロールプレーンNode間でデータプレーンを管理し合う。</p>
-<p>これにより、この時、IngressGatewayを経由して、異なるClusterのコンテナが間接的に通信できる。</p>
+<p>異なる Cluster が異なるプライベートネットワーク内に所属している場合、Cluster のコントロールプレーン Node 間でデータプレーンを管理し合う。</p>
+<p>これにより、このとき、IngressGateway を経由して、異なる Cluster のコンテナが間接的に通信できる。</p>
 <p><img alt="istio_multi-service-mesh_cluster_difficult-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_difficult-network.png" /></p>
 <blockquote>
 <ul>
@@ -34069,10 +34069,10 @@
 <p><br></p>
 <h2 id="03">03. プライマリー／リモートクラスター構成<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_4">プライマリー／リモートクラスター構成<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>Istioコントロールプレーンとデータプレーンを異なるクラスターにデプロイする。</p>
+<p>Istio コントロールプレーンとデータプレーンを異なるクラスターにデプロイする。</p>
 <p><br></p>
 <h3 id="istiod_3">シングルIstiod<a class="headerlink" href="#istiod_3" title="Permanent link">&para;</a></h3>
-<p>プライマリークラスターにIstioコントロールプレーンとIstio Ingress GatewayやIstio Egress Gatewayを配置し、リモートクラスターにはデータプレーンを配置する。</p>
+<p>プライマリークラスターに Istio コントロールプレーンと Istio Ingress Gateway や Istio Egress Gateway を配置し、リモートクラスターにはデータプレーンを配置する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/setup/install/external-controlplane/">https://istio.io/latest/docs/setup/install/external-controlplane/</a></li>
@@ -34080,7 +34080,7 @@
 </ul>
 </blockquote>
 <h3 id="istiod_4">マルチIstiod<a class="headerlink" href="#istiod_4" title="Permanent link">&para;</a></h3>
-<p>プライマリークラスターに親Istioコントロールプレーンを配置し、リモートクラスターには子Istioコントロールプレーンとデータプレーンを配置する。</p>
+<p>プライマリークラスターに親 Istio コントロールプレーンを配置し、リモートクラスターには子 Istio コントロールプレーンとデータプレーンを配置する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/wiki/External-Istiod-single-cluster-steps">https://github.com/istio/istio/wiki/External-Istiod-single-cluster-steps</a></li>
@@ -34089,9 +34089,9 @@
 <p><br></p>
 <h3 id="_5">データプレーンが仮想サーバーの場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ 同じプライベートネットワーク内の場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>仮想サーバーがコントロールプレーンNodeと同じプライベートネットワーク内に所属している場合、仮想サーバー上のコンテナをサービスメッシュに参加させる。</p>
-<p>コントロールプレーン側ではWorkloadGroupの作成、仮想サーバー側ではistioデーモンプロセスの実行が必要である。</p>
-<p>この時、IngressGatewayを使用せずに、Kubernetes上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。</p>
+<p>仮想サーバーがコントロールプレーン Node と同じプライベートネットワーク内に所属している場合、仮想サーバー上のコンテナをサービスメッシュに参加させる。</p>
+<p>コントロールプレーン側では WorkloadGroup の作成、仮想サーバー側では istio デーモンプロセスの実行が必要である。</p>
+<p>このとき、IngressGateway を使用せずに、Kubernetes 上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。</p>
 <p><img alt="istio_multi-service-mesh_vm_same-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_same-network.png" /></p>
 <blockquote>
 <ul>
@@ -34100,9 +34100,9 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ 異なるプライベートネットワーク内の場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>仮想サーバーがコントロールプレーンNodeと異なるプライベートネットワーク内に所属している場合、仮想サーバー上のコンテナをサービスメッシュに参加させる。</p>
-<p>コントロールプレーン側ではWorkloadGroupの作成、仮想サーバー側ではistioデーモンプロセスの実行が必要である。</p>
-<p>この時、IngressGatewayを経由して、Kubernetes上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。</p>
+<p>仮想サーバーがコントロールプレーン Node と異なるプライベートネットワーク内に所属している場合、仮想サーバー上のコンテナをサービスメッシュに参加させる。</p>
+<p>コントロールプレーン側では WorkloadGroup の作成、仮想サーバー側では istio デーモンプロセスの実行が必要である。</p>
+<p>このとき、IngressGateway を経由して、Kubernetes 上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。</p>
 <p><img alt="istio_multi-service-mesh_vm_difficult-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_difficult-network.png" /></p>
 <blockquote>
 <ul>
@@ -34112,8 +34112,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="kubernetes">データプレーンが非Kubernetesのコンテナの場合<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
-<p>クラウド上のコンテナ (例：Amazon ECS) がコントロールプレーンNodeと同じプライベートネットワーク内に所属している場合、クラウド上のコンテナをサービスメッシュに参加させる。</p>
-<p>コントロールプレーン側では〇 (Amazon ECSを認識するためのリソースが必要なはずだが、調査してもわからず...) の作成、クラウド上のコンテナのホストマシンではztunnelデーモンあるいはztunnelコンテナの実行が必要である。</p>
+<p>クラウド上のコンテナ (例：Amazon ECS) がコントロールプレーン Node と同じプライベートネットワーク内に所属している場合、クラウド上のコンテナをサービスメッシュに参加させる。</p>
+<p>コントロールプレーン側では〇 (Amazon ECS を認識するためのリソースが必要なはずだが、調査してもわからず...) の作成、クラウド上のコンテナのホストマシンでは ztunnel デーモンあるいは ztunnel コンテナの実行が必要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/containers/transforming-istio-into-an-enterprise-ready-service-mesh-for-amazon-ecs/">https://aws.amazon.com/blogs/containers/transforming-istio-into-an-enterprise-ready-service-mesh-for-amazon-ecs/</a></li>
@@ -34131,8 +34131,8 @@
 <p><br></p>
 <h2 id="05">05. テナント分離<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="namespace">Namespaceテナント<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
-<p>Istioのサービスメッシュは、管理下の複数のNamespaceをテナントとして分離する。</p>
-<p>Namespace as-a-Serviceとして提供する。</p>
+<p>Istio のサービスメッシュは、管理下の複数の Namespace をテナントとして分離する。</p>
+<p>Namespace as-a-Service として提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/deployment/deployment-models/#namespace-tenancy">https://istio.io/latest/docs/ops/deployment/deployment-models/#namespace-tenancy</a></li>
@@ -34140,8 +34140,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="cluster">Clusterテナント<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h3>
-<p>Istioのサービスメッシュは、管理下の複数Kubernetes Clusterをテナントとして分離する。</p>
-<p>Clusters as-a-Serviceとして提供する。</p>
+<p>Istio のサービスメッシュは、管理下の複数 Kubernetes Cluster をテナントとして分離する。</p>
+<p>Clusters as-a-Service として提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/deployment/deployment-models/#cluster-tenancy">https://istio.io/latest/docs/ops/deployment/deployment-models/#cluster-tenancy</a></li>
@@ -34149,8 +34149,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_10">メッシュテナント<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>Istioのサービスメッシュは、管理下の単一のKubernetes Clusterをテナントとして分離する。</p>
-<p>各Kubernetes Clusterのサービスメッシュは独立しているが、互いに通信できる。</p>
+<p>Istio のサービスメッシュは、管理下の単一の Kubernetes Cluster をテナントとして分離する。</p>
+<p>各 Kubernetes Cluster のサービスメッシュは独立しているが、互いに通信できる。</p>
 <p>メッシュテナントを採用すると、複数メッシュパターンになる。</p>
 <blockquote>
 <ul>
@@ -34179,7 +34179,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

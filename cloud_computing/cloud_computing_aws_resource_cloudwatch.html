@@ -34848,11 +34848,11 @@
 <p><br></p>
 <h2 id="01-amazon-cloudwatch-metrics">01. Amazon CloudWatch Metrics<a class="headerlink" href="#01-amazon-cloudwatch-metrics" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-cloudwatch-metrics">Amazon CloudWatch Metricsとは<a class="headerlink" href="#amazon-cloudwatch-metrics" title="Permanent link">&para;</a></h3>
-<p>AWSリソースで発生したメトリクスの元になるデータポイントを収集する。</p>
+<p>AWS リソースで発生したメトリクスの元になるデータポイントを収集する。</p>
 <p><br></p>
 <h3 id="_2">メトリクスの集約<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ メトリクスの集約とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Amazon CloudWatchは、データポイントからメトリクスの元になるデータポイントを作成しつつ、特定のグループ (例：ディメンション、名前空間) に集約できる。</p>
+<p>Amazon CloudWatch は、データポイントからメトリクスの元になるデータポイントを作成しつつ、特定のグループ (例：ディメンション、名前空間) に集約できる。</p>
 <p><img alt="metrics_namespace_dimension" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png" /></p>
 <blockquote>
 <ul>
@@ -34886,7 +34886,7 @@
 </ul>
 </blockquote>
 <h4 id="_5">▼ 集約の確認方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Amazon CloudWatch Metrics上では、各集約を以下の様に確認できる。</p>
+<p>Amazon CloudWatch Metrics 上では、各集約を以下のように確認できる。</p>
 <p><img alt="cloudwatch_namespace_metric_dimension" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudwatch_namespace_metric_dimension.png" /></p>
 <blockquote>
 <ul>
@@ -34909,17 +34909,17 @@
 </ul>
 </blockquote>
 <h4 id="container">▼ Containerインサイト<a class="headerlink" href="#container" title="Permanent link">&para;</a></h4>
-<p>コンテナに関するAWSリソース (例：Amazon ECSクラスター、Amazon ECSサービス、Amazon ECSタスク、Amazon ECSコンテナ、EKS Cluster) の性能に関するメトリクスの元になるデータポイントを収集する。</p>
+<p>コンテナに関する AWS リソース (例：Amazon ECS クラスター、Amazon ECS サービス、Amazon ECS タスク、Amazon ECS コンテナ、EKS Cluster) の性能に関するメトリクスの元になるデータポイントを収集する。</p>
 <p>作成したメトリクスを特定の集約 (例：各コンテナ) で扱えるになる。</p>
 <p>また、コンテナ間の繋がりをコンテナマップで視覚化できるようになる。</p>
-<p>Amazon ECS、EKSのアカウント設定でContainerインサイトを有効化する必要がある。</p>
-<p>Containerインサイトのメトリクスは、『<code>ContainerInsights</code>』という名前空間を使って一括でクエリできる。また、『<code>ClusterName</code>』などのディメンションを使用して、データポイントをフィルタリングできる。</p>
+<p>Amazon ECS、EKS のアカウント設定で Container インサイトを有効化する必要がある。</p>
+<p>Container インサイトのメトリクスは、『<code>ContainerInsights</code>』という名前空間を使って一括でクエリできる。また、『<code>ClusterName</code>』などのディメンションを使用して、データポイントをフィルタリングできる。</p>
 <h4 id="aws-lambda">▼ AWS Lambdaインサイト<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h4>
-<p>AWS Lambdaの性能に関するメトリクスの元になるデータポイントを収集する。</p>
+<p>AWS Lambda の性能に関するメトリクスの元になるデータポイントを収集する。</p>
 <p><br></p>
 <h3 id="_9">埋め込みメトリクスフォーマット<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>Amazon CloudWatch Logs上で構造化ログのログイベントを自動的に集約し、Amazon CloudWatch Metrics上でカスタムメトリクスを生成してくれる。</p>
-<p>Amazon CloudWatch Logsに送る構造化ログには、<code>metrics</code> オブジェクトを定義する必要がある。</p>
+<p>Amazon CloudWatch Logs 上で構造化ログのログイベントを自動的に集約し、Amazon CloudWatch Metrics 上でカスタムメトリクスを生成してくれる。</p>
+<p>Amazon CloudWatch Logs に送る構造化ログには、<code>metrics</code> オブジェクトを定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 構造化ログ</span>
 <span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;message&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;hello</span><span class="nv"> </span><span class="s">world&quot;</span>
@@ -34999,7 +34999,7 @@
 <h2 id="02-amazon-cloudwatch-logs">02. Amazon CloudWatch Logs<a class="headerlink" href="#02-amazon-cloudwatch-logs" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-cloudwatch-logs">Amazon CloudWatch Logsとは<a class="headerlink" href="#amazon-cloudwatch-logs" title="Permanent link">&para;</a></h3>
 <p>クラウドログサーバーとして働く。</p>
-<p>AWSリソースで作成されたログを収集できる。</p>
+<p>AWS リソースで作成されたログを収集できる。</p>
 <p><br></p>
 <h2 id="02-02">02-02. セットアップ<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="_10">コンソール画面の場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
@@ -35016,7 +35016,7 @@
 <tr>
 <td>ロググループ</td>
 <td>ログストリームをグループ化して収集するか否かを設定する。</td>
-<td>基本的に、ログファイルはグループ化せずに、<code>1</code> 個のロググループには <code>1</code> 個のログストリームしか含まれないようにする。マイクロサービスアーキテクチャでは、全てのマイクロサービスを同じロググループで定義するとよい。</td>
+<td>基本的に、ログファイルはグループ化せずに、<code>1</code> 個のロググループには <code>1</code> 個のログストリームしか含まれないようにする。マイクロサービスアーキテクチャでは、すべてのマイクロサービスを同じロググループで定義するとよい。</td>
 </tr>
 <tr>
 <td>メトリクスフィルター</td>
@@ -35050,7 +35050,7 @@
 <p><strong>＊例＊</strong></p>
 <p>次のログを検出する。</p>
 <ul>
-<li>OR条件</li>
+<li>OR 条件</li>
 <li>大文字小文字を網羅</li>
 <li>『<code>&lt;ログレベル&gt;:</code>』が含まれる</li>
 </ul>
@@ -35060,7 +35060,7 @@
 <p><strong>＊例＊</strong></p>
 <p>次のログを検出する。</p>
 <ul>
-<li>OR条件</li>
+<li>OR 条件</li>
 <li>namespace が <code>foo</code> または <code>bar</code></li>
 <li>大文字小文字を網羅</li>
 <li>『<code>&lt;ログレベル&gt; message</code>』が含まれる</li>
@@ -35070,8 +35070,8 @@
 <p><strong>＊例＊</strong></p>
 <p>次のログを検出する。</p>
 <ul>
-<li>OR条件</li>
-<li>JSONログ</li>
+<li>OR 条件</li>
+<li>JSON ログ</li>
 <li>大文字小文字を網羅</li>
 <li>『<code>&lt;ログレベル&gt;</code>』が含まれる</li>
 </ul>
@@ -35084,8 +35084,8 @@
 <li>『<code>ERROR:</code>』が含まれる</li>
 <li>『<code>MethodNotAllowedHttpException</code>』が含まれない</li>
 </ul>
-<p>OR条件と除外条件を組み合わせようとすると、OR条件が認識されずに除外条件だけが適用されてしまう。</p>
-<p>そのため、ここではOR条件を使用していない。</p>
+<p>OR 条件と除外条件を組み合わせようとすると、OR 条件が認識されずに除外条件だけが適用されてしまう。</p>
+<p>そのため、ここでは OR 条件を使用していない。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;ERROR:&quot;</span><span class="w"> </span>-MethodNotAllowedHttpException
 </code></pre></div>
 <blockquote>
@@ -35097,11 +35097,11 @@
 <h3 id="amazon-cloudwatch-logs_1">Amazon CloudWatch Logsエージェント (非推奨)<a class="headerlink" href="#amazon-cloudwatch-logs_1" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-cloudwatch-logs_2">▼ Amazon CloudWatch Logsエージェントとは<a class="headerlink" href="#amazon-cloudwatch-logs_2" title="Permanent link">&para;</a></h4>
 <p>インスタンス内で稼働するデーモンのこと。</p>
-<p>インスタンス内のデータを収集し、Amazon CloudWatch Logsに対して送信する。</p>
-<p>執筆時点 (2020/10/05) では非推奨で、cloudwatchエージェントへの設定の移行が推奨である。</p>
+<p>インスタンス内のデータを収集し、Amazon CloudWatch Logs に対して送信する。</p>
+<p>執筆時点 (2020/10/05) では非推奨で、cloudwatch エージェントへの設定の移行が推奨である。</p>
 <h4 id="varawslogsetcawslogsconf">▼ <code>/var/awslogs/etc/awslogs.conf</code> ファイル<a class="headerlink" href="#varawslogsetcawslogsconf" title="Permanent link">&para;</a></h4>
-<p>Amazon CloudWatch Logsエージェントを設定する。</p>
-<p>OS、ミドルウェア、アプリケーションに分類して設定すると良い。</p>
+<p>Amazon CloudWatch Logs エージェントを設定する。</p>
+<p>OS、ミドルウェア、アプリケーションに分類して設定するとよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ------------------------------------------</span>
 <span class="c1"># Amazon CloudWatch Logs (CentOS)</span>
@@ -35204,7 +35204,7 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 <h4 id="_17">▼ クエリ例<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>汎用的なクエリを示す。</p>
 <p><strong>＊例＊</strong></p>
-<p><code>@message</code> で、小文字と大文字を区別せずにErrorを含むログを検索する。</p>
+<p><code>@message</code> で、小文字と大文字を区別せずに Error を含むログを検索する。</p>
 <div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
 <span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?</span><span class="n">i</span><span class="p">)(</span><span class="n">Error</span><span class="p">)</span><span class="o">/</span>
 <span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="n">stderr</span><span class="p">)</span><span class="o">/</span>
@@ -35225,7 +35225,7 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 <span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p><code>@message</code> フィールドに <code>like</code> を使用して、小文字と大文字を区別せずにWarningまたはErrorを含むログを検索する。</p>
+<p><code>@message</code> フィールドに <code>like</code> を使用して、小文字と大文字を区別せずに Warning または Error を含むログを検索する。</p>
 <div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
 <span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?</span><span class="n">i</span><span class="p">)(</span><span class="n">Warning</span><span class="o">|</span><span class="n">Error</span><span class="p">)</span><span class="o">/</span>
 <span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
@@ -35237,7 +35237,7 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>JSONがネストになっている場合、<code>filter</code> では <code>.</code> (ドット) でつなぐ。</p>
+<p>JSON がネストになっている場合、<code>filter</code> では <code>.</code> (ドット) でつなぐ。</p>
 <p>ここでは <code>foo-app</code> コンテナを集計している。</p>
 <div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
 <span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="n">kubernetes</span><span class="p">.</span><span class="n">container_name</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="n">foo</span><span class="o">-</span><span class="n">app</span><span class="p">)</span><span class="o">/</span>
@@ -35259,7 +35259,7 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 </blockquote>
 <p><strong>＊例＊</strong></p>
 <p>閾値以上の実行時間のスロークエリを実行時間の昇順で取得する。</p>
-<p><code>parse()</code> 関数でQuery_timeの値を抽出している。</p>
+<p><code>parse()</code> 関数で Query_time の値を抽出している。</p>
 <div class="highlight"><pre><span></span><code><span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
 <span class="o">|</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="o">/</span><span class="n">Query_time</span><span class="p">:</span><span class="err">\</span><span class="n">s</span><span class="o">*</span><span class="p">(</span><span class="o">?&lt;</span><span class="n">Query_time</span><span class="o">&gt;</span><span class="p">[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="o">?</span><span class="p">:</span><span class="err">\</span><span class="p">.[</span><span class="mi">0</span><span class="o">-</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="p">)</span><span class="o">?</span><span class="p">)</span><span class="err">\</span><span class="n">s</span><span class="o">*</span><span class="p">[</span><span class="err">\</span><span class="n">s</span><span class="err">\</span><span class="n">S</span><span class="p">]</span><span class="o">*?</span><span class="p">;</span><span class="o">/</span>
 <span class="o">|</span><span class="w"> </span><span class="n">display</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="n">Query_time</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span>
@@ -35269,11 +35269,11 @@ $<span class="w"> </span>service<span class="w"> </span>awslogs<span class="w"> 
 <p><br></p>
 <h2 id="02-02-cloudwatch">02-02. cloudwatchエージェント<a class="headerlink" href="#02-02-cloudwatch" title="Permanent link">&para;</a></h2>
 <h3 id="cloudwatch">cloudwatchエージェントとは<a class="headerlink" href="#cloudwatch" title="Permanent link">&para;</a></h3>
-<p>インスタンス系AWSリソース (EC2、Amazon ECS、EKS、AWS Lambda) 内で稼働するデーモンのこと。</p>
-<p>インスタンス内のメトリクスの元になるデータポイントやログを収集し、Amazon CloudWatchに送信する。</p>
-<p>多くの場合、インスタンス系リソースは基本的なメトリクスの元になるデータポイントを収集するが、一部のメトリクス (例：EC2のメモリ使用率やディスク使用率) やログそのものを収集しない。</p>
-<p>cloudwatchエージェントを使用することにより、カスタムメトリクスの元になるデータポイントやログを収集できるようにする。</p>
-<p>プロセスは、デーモン化しておくと良い。</p>
+<p>インスタンス系 AWS リソース (EC2、Amazon ECS、EKS、AWS Lambda) 内で稼働するデーモンのこと。</p>
+<p>インスタンス内のメトリクスの元になるデータポイントやログを収集し、Amazon CloudWatch に送信する。</p>
+<p>多くの場合、インスタンス系リソースは基本的なメトリクスの元になるデータポイントを収集するが、一部のメトリクス (例：EC2 のメモリ使用率やディスク使用率) やログそのものを収集しない。</p>
+<p>cloudwatch エージェントを使用することにより、カスタムメトリクスの元になるデータポイントやログを収集できるようにする。</p>
+<p>プロセスは、デーモン化しておくとよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>list-unit-files<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>amazon-cloudwatch-agent
 
 $<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>amazon-cloudwatch-agent
@@ -35341,30 +35341,30 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="amazon-cloudwatch-agentjson"><code>amazon-cloudwatch-agent.json</code> ファイル<a class="headerlink" href="#amazon-cloudwatch-agentjson" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-cloudwatch-agentjson_1">▼ <code>amazon-cloudwatch-agent.json</code> ファイルとは<a class="headerlink" href="#amazon-cloudwatch-agentjson_1" title="Permanent link">&para;</a></h4>
-<p>cloudwatchエージェントのオプションを設定する。セットアップ方法ごとに、設定後、<code>amazon-cloudwatch-agent-ctl</code> コマンドで設定ファイルを読み込ませる。</p>
-<p>全てのセクションを設定する必要はなく、<code>logs</code> セクションまたは <code>metrics</code> セクションのいずれかのみを設定でもよい (例：cloudwatchエージェントを使用してAmazon CloudWatchにログファイルを送信するのみであれば、<code>log</code> セッションのみ) 。</p>
-<p>注意点として、cloudwatchエージェントは、起動後に <code>amazon-cloudwatch-agent.json</code> ファイルを <code>/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_amazon-cloudwatch-agent.json</code> ファイルとして移動してしまい、元々の <code>amazon-cloudwatch-agent.json</code> ファイルは無くなってしまう。</p>
+<p>cloudwatch エージェントのオプションを設定する。セットアップ方法ごとに、設定後、<code>amazon-cloudwatch-agent-ctl</code> コマンドで設定ファイルを読み込ませる。</p>
+<p>すべてのセクションを設定する必要はなく、<code>logs</code> セクションまたは <code>metrics</code> セクションのいずれかのみを設定でもよい (例：cloudwatch エージェントを使用して Amazon CloudWatch にログファイルを送信するのみであれば、<code>log</code> セッションのみ) 。</p>
+<p>注意点として、cloudwatch エージェントは、起動後に <code>amazon-cloudwatch-agent.json</code> ファイルを <code>/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_amazon-cloudwatch-agent.json</code> ファイルとして移動してしまい、元々の <code>amazon-cloudwatch-agent.json</code> ファイルは無くなってしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local">https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local</a></li>
 </ul>
 </blockquote>
 <h4 id="amazon-cloudwatch-agent-ctl">▼ <code>amazon-cloudwatch-agent-ctl</code> コマンド<a class="headerlink" href="#amazon-cloudwatch-agent-ctl" title="Permanent link">&para;</a></h4>
-<p><code>amazon-cloudwatch-agent-ctl</code> コマンドを使用して、設定ファイルを読み込みつつ、cloudwatchエージェントを起動できる。</p>
+<p><code>amazon-cloudwatch-agent-ctl</code> コマンドを使用して、設定ファイルを読み込みつつ、cloudwatch エージェントを起動できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-Amazon">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-Amazon</a> CloudWatch-Agent-commandline-fleet.html</li>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>設定ファイルを読み込み、EC2上のcloudwatchエージェントを起動/再起動する。</p>
+<p>設定ファイルを読み込み、EC2 上の cloudwatch エージェントを起動/再起動する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-a<span class="w"> </span>fetch-config<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-m<span class="w"> </span>ec2<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-c<span class="w"> </span>file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-s
 </code></pre></div>
-<p>cloudwatchエージェントをデーモンとして起動するためのユニットファイルが、自動的に作成される。</p>
+<p>cloudwatch エージェントをデーモンとして起動するためのユニットファイルが、自動的に作成される。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
 <span class="na">Description</span><span class="o">=</span><span class="s">Amazon CloudWatch Agent</span>
 <span class="na">After</span><span class="o">=</span><span class="s">network.target</span>
@@ -35386,7 +35386,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <span class="w">    </span>-a<span class="w"> </span>status
 </code></pre></div>
 <h4 id="agent">▼ <code>agent</code> セクション<a class="headerlink" href="#agent" title="Permanent link">&para;</a></h4>
-<p>cloudwatchエージェント全体を設定する。</p>
+<p>cloudwatch エージェント全体を設定する。</p>
 <p>ウィザードを使用した場合、このセクションの設定はスキップされる。</p>
 <p>実装しなかった場合、デフォルト値が適用される。</p>
 <blockquote>
@@ -35404,7 +35404,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <span class="w">    </span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <h4 id="metrics">▼ <code>metrics</code> セクション<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
-<p>AWSリソースが標準で収集しないカスタムメトリクスの元になるデータポイントの収集について設定する。</p>
+<p>AWS リソースが標準で収集しないカスタムメトリクスの元になるデータポイントの収集について設定する。</p>
 <p>ウィザードを使用した場合、このセクションの設定はスキップされる。</p>
 <p>実装しなかった場合、何も設定されない。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -35505,24 +35505,24 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="_22">ログ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-cloudwatch-agentlog">▼ <code>amazon-cloudwatch-agent.log</code> ファイル<a class="headerlink" href="#amazon-cloudwatch-agentlog" title="Permanent link">&para;</a></h4>
-<p>cloudwatchエージェントのプロセスに関するログを出力する。</p>
+<p>cloudwatch エージェントのプロセスに関するログを出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
 </code></pre></div>
 <h4 id="configuration-validationlog">▼ <code>configuration-validation.log</code> ファイル<a class="headerlink" href="#configuration-validationlog" title="Permanent link">&para;</a></h4>
-<p>cloudwatchエージェントの設定ファイルの構文チェックに関するログを出力する。</p>
+<p>cloudwatch エージェントの設定ファイルの構文チェックに関するログを出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/opt/aws/amazon-cloudwatch-agent/logs/configuration-validation.log
 </code></pre></div>
 <p><br></p>
 <h3 id="aws-iam">AWS IAMロール<a class="headerlink" href="#aws-iam" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-ec2">▼ Amazon EC2の場合<a class="headerlink" href="#amazon-ec2" title="Permanent link">&para;</a></h4>
-<p>EC2でcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたAWS IAMロールをEC2に紐付ける必要がある。</p>
+<p>EC2 で cloudwatch エージェントを稼働させる場合、CloudWatchAgentServerPolicy が付与された AWS IAM ロールを EC2 に紐付ける必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html</a></li>
 </ul>
 </blockquote>
 <h4 id="aws">▼ AWS以外のサーバーの場合<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
-<p>AWS以外 (オンプレミス、他のクラウドプロバイダー) のサーバーでcloudwatchエージェントを稼働させる場合、CloudWatchAgentServerPolicyが付与されたAWS IAMロールをcloudwatchエージェント用のAWS IAMユーザーに紐付ける必要がある。</p>
+<p>AWS 以外 (オンプレミス、他のクラウドプロバイダー) のサーバーで cloudwatch エージェントを稼働させる場合、CloudWatchAgentServerPolicy が付与された AWS IAM ロールを cloudwatch エージェント用の AWS IAM ユーザーに紐付ける必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html</a></li>
@@ -35615,7 +35615,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月21日 21:05:55 JST">2026-05-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

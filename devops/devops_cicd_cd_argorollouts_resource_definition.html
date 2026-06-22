@@ -33630,12 +33630,12 @@
 <p><br></p>
 <h2 id="01-rollout">01. Rollout<a class="headerlink" href="#01-rollout" title="Permanent link">&para;</a></h2>
 <h3 id="rollout">Rolloutとは<a class="headerlink" href="#rollout" title="Permanent link">&para;</a></h3>
-<p>KubernetesのDeploymentに代わって、Podのライフサイクルを管理する。</p>
-<p>Deploymentよりも複雑な手法でPodをデプロイできる。</p>
+<p>Kubernetes の Deployment に代わって、Pod のライフサイクルを管理する。</p>
+<p>Deployment よりも複雑な手法で Pod をデプロイできる。</p>
 <p><br></p>
 <h3 id="specanalysis">.spec.analysis<a class="headerlink" href="#specanalysis" title="Permanent link">&para;</a></h3>
 <h4 id="analysis">▼ analysisとは<a class="headerlink" href="#analysis" title="Permanent link">&para;</a></h4>
-<p>Progressive Deliveryを使用する場合、詳細を設定する。</p>
+<p>Progressive Delivery を使用する場合、詳細を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml">https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml</a></li>
@@ -33665,11 +33665,11 @@
 <h3 id="specstrategy">.spec.strategy<a class="headerlink" href="#specstrategy" title="Permanent link">&para;</a></h3>
 <h4 id="strategy">▼ strategyとは<a class="headerlink" href="#strategy" title="Permanent link">&para;</a></h4>
 <p>デプロイ手法を設定する。</p>
-<p>大前提として、そもそもArgoCDは <code>kubectl apply</code> コマンドでリソースを作成しているだけなため、デプロイ手法は、Deploymentの <code>.spec.strategy</code> キーや、DaemonSetとStatefulSetの <code>.spec.updateStrategy</code> キーの設定値に依存する。</p>
-<p>ArgoCDの <code>strategy</code> オプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。</p>
+<p>大前提として、そもそも ArgoCD は <code>kubectl apply</code> コマンドでリソースを作成しているだけなため、デプロイ手法は、Deployment の <code>.spec.strategy</code> キーや、DaemonSet と StatefulSet の <code>.spec.updateStrategy</code> キーの設定値に依存する。</p>
+<p>ArgoCD の <code>strategy</code> オプションを使用することにより、これらの Kubernetes リソース自体を冗長化し、より安全に apply を行える。</p>
 <h4 id="bluegreen">▼ blueGreen<a class="headerlink" href="#bluegreen" title="Permanent link">&para;</a></h4>
 <p><img alt="argocd_blue-green-deployment" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_blue-green-deployment.png" /></p>
-<p>ブルー/グリーンデプロイメントを使用して、新しいPodをデプロイする。</p>
+<p>ブルー/グリーンデプロイメントを使用して、新しい Pod をデプロイする。</p>
 <table>
 <thead>
 <tr>
@@ -33730,7 +33730,7 @@
 </blockquote>
 <h4 id="canary">▼ canary<a class="headerlink" href="#canary" title="Permanent link">&para;</a></h4>
 <p><img alt="argocd_canary-release" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_canary-release.png" /></p>
-<p>カナリアリリースを使用して、新しいPodをデプロイする。</p>
+<p>カナリアリリースを使用して、新しい Pod をデプロイする。</p>
 <table>
 <thead>
 <tr>
@@ -33791,8 +33791,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="spectemplate">.spec.template<a class="headerlink" href="#spectemplate" title="Permanent link">&para;</a></h3>
-<p>Deploymentの <code>spec.template</code> キーと同じである。</p>
-<p>Rolloutで管理したいPodを定義する。</p>
+<p>Deployment の <code>spec.template</code> キーと同じである。</p>
+<p>Rollout で管理したい Pod を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Rollout</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33822,7 +33822,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月19日 15:41:44 JST">2026-02-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

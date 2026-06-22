@@ -35117,9 +35117,9 @@
 <h2 id="01-ngx_http_auth_request_module">01. ngx_http_auth_request_module<a class="headerlink" href="#01-ngx_http_auth_request_module" title="Permanent link">&para;</a></h2>
 <h3 id="_2">ディレクティブ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="auth_request">▼ auth_request<a class="headerlink" href="#auth_request" title="Permanent link">&para;</a></h4>
-<p>認可リクエストのURLのパスを設定する。</p>
-<p>Nginxは、認可レスポンスのステータスコードが <code>200</code> であれば認証成功、<code>401</code> ステータスまたは <code>403</code> ステータスであれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。</p>
-<p>なお、有料版の <code>ngx_http_auth_jwt_module</code> モジュールであれば、認可サーバーにJWT取得のための認可リクエストを直接的に送信できる。</p>
+<p>認可リクエストの URL のパスを設定する。</p>
+<p>Nginx は、認可レスポンスのステータスコードが <code>200</code> であれば認証成功、<code>401</code> ステータスまたは <code>403</code> ステータスであれば認証失敗とし、アプリケーションへのリクエストを許可/拒否する。</p>
+<p>なお、有料版の <code>ngx_http_auth_jwt_module</code> モジュールであれば、認可サーバーに JWT 取得のための認可リクエストを直接的に送信できる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1"># 認証が必要なパス</span>
@@ -35154,7 +35154,7 @@
 <h2 id="02-ngx_http_core_module">02. ngx_http_core_module<a class="headerlink" href="#02-ngx_http_core_module" title="Permanent link">&para;</a></h2>
 <h3 id="http">httpブロック<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
 <h4 id="http_1">▼ httpブロック<a class="headerlink" href="#http_1" title="Permanent link">&para;</a></h4>
-<p>全てのHTTPリクエストのインバウンド通信に共通する処理を設定する。</p>
+<p>すべての HTTP リクエストのインバウンド通信に共通する処理を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># Nginxのバージョンを表示するか否か</span>
 <span class="w">    </span><span class="kn">server_tokens</span><span class="w">      </span><span class="no">off</span><span class="p">;</span>
@@ -35190,7 +35190,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>構造化ログの場合は、以下の通りとする。</p>
-<p>ここでは、JSONの設計規則に則って、キー名をローワーキャメルケースにしている。</p>
+<p>ここでは、JSON の設計規則に則って、キー名をローワーキャメルケースにしている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">log_format</span><span class="w">         </span><span class="s">main</span><span class="w">         </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
@@ -35226,7 +35226,7 @@
 <span class="err">}</span>
 </code></pre></div>
 <p><strong>＊実行例＊</strong></p>
-<p>正規表現を使用して、W3C Trace Context仕様のトレースIDをX-Ray仕様に変換する。</p>
+<p>正規表現を使用して、W3C Trace Context 仕様のトレース ID を X-Ray 仕様に変換する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">log_format</span><span class="w"> </span><span class="s">main</span><span class="w"> </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
@@ -35252,7 +35252,7 @@
 <h3 id="location">locationブロック<a class="headerlink" href="#location" title="Permanent link">&para;</a></h3>
 <p>特定のパスのインバウンド通信に関する処理を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>各設定の優先順位に沿った以下の順番で実装したほうが良い。</p>
+<p>各設定の優先順位に沿った以下の順番で実装したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 1. ドキュメントルートを指定したインバウンド通信の場合</span>
 <span class="k">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 
@@ -35358,9 +35358,9 @@
 <p><br></p>
 <h3 id="_3">ディレクティブ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="default_type">▼ default_type<a class="headerlink" href="#default_type" title="Permanent link">&para;</a></h4>
-<p><code>Content-Type</code> ヘッダー値が <code>mime.types</code> ファイルにないMIME typeであった場合、適用するMIME typeを設定する。</p>
+<p><code>Content-Type</code> ヘッダー値が <code>mime.types</code> ファイルにない MIME type であった場合、適用する MIME type を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>任意のMIME type (指定なし) のインバウンド通信を処理する。</p>
+<p>任意の MIME type (指定なし) のインバウンド通信を処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">default_type</span><span class="w"> </span><span class="s">application/octet-stream</span>
 </code></pre></div>
 <blockquote>
@@ -35383,9 +35383,9 @@
 </ul>
 </blockquote>
 <h4 id="sendfile">▼ sendfile<a class="headerlink" href="#sendfile" title="Permanent link">&para;</a></h4>
-<p>クライアントへのレスポンス時に、ファイル送信のためにLinuxのsendfileシステムコールを使用するか否かを設定する。</p>
-<p>ファイル返信処理をOS内で実行するため、処理が速くなる。</p>
-<p>使用しない場合、Nginxがレスポンス時に自身でファイル返信処理を実行する。</p>
+<p>クライアントへのレスポンス時に、ファイル送信のために Linux の sendfile システムコールを使用するか否かを設定する。</p>
+<p>ファイル返信処理を OS 内で実行するため、処理が速くなる。</p>
+<p>使用しない場合、Nginx がレスポンス時に自身でファイル返信処理を実行する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">sendfile</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 </code></pre></div>
@@ -35399,11 +35399,11 @@
 <p>補足として <code>Host</code> ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">server_name</span><span class="w"> </span><span class="s">example.com</span><span class="p">;</span>
 </code></pre></div>
-<p>パブリックIPアドレスを直接的に記述しても良い。</p>
+<p>パブリック IP アドレスを直接的に記述してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="k">server_name</span><span class="w"> </span><span class="mi">192</span><span class="s">.168.0.0</span><span class="p">;</span>
 </code></pre></div>
-<p>注意点として、同じIPアドレスからのインバウンド通信のみを受信する場合は、インバウンド通信の <code>Host</code> ヘッダー値は常に <code>127.0.0.1</code> (<code>127.0.0.1</code>) であるため、<code>127.0.0.1</code> を設定できる。</p>
-<p><code>127.0.0.1</code> としても良いが、<code>127.0.0.1</code> のIPアドレスが <code>127.0.0.1</code> でない場合も考慮して、<code>127.0.0.1</code> としたほうが良い。</p>
+<p>注意点として、同じ IP アドレスからのインバウンド通信のみを受信する場合は、インバウンド通信の <code>Host</code> ヘッダー値は常に <code>127.0.0.1</code> (<code>127.0.0.1</code>) であるため、<code>127.0.0.1</code> を設定できる。</p>
+<p><code>127.0.0.1</code> としてもよいが、<code>127.0.0.1</code> の IP アドレスが <code>127.0.0.1</code> でない場合も考慮して、<code>127.0.0.1</code> としたほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="k">server_name</span><span class="w"> </span><span class="mi">127</span><span class="s">.0.0.1</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -35412,7 +35412,7 @@
 </ul>
 </blockquote>
 <h4 id="ssl">▼ ssl<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h4>
-<p>HTTPSプロトコルを受信する場合、SSL/TLSプロトコルを有効化する必要がある。</p>
+<p>HTTPS プロトコルを受信する場合、SSL/TLS プロトコルを有効化する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">ssl</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 </code></pre></div>
@@ -35422,22 +35422,22 @@
 </ul>
 </blockquote>
 <h4 id="ssl_certificate">▼ ssl_certificate<a class="headerlink" href="#ssl_certificate" title="Permanent link">&para;</a></h4>
-<p>HTTPSプロトコルを受信する場合、サーバー証明書のパスを設定する。</p>
+<p>HTTPS プロトコルを受信する場合、サーバー証明書のパスを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">ssl_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.crt</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="ssl_certificate_key">▼ ssl_certificate_key<a class="headerlink" href="#ssl_certificate_key" title="Permanent link">&para;</a></h4>
-<p>HTTPSプロトコルを受信する場合、サーバー証明書と対になる秘密鍵へのパスを設定する。</p>
+<p>HTTPS プロトコルを受信する場合、サーバー証明書と対になる秘密鍵へのパスを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.key</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="ssl_client_certificate">▼ ssl_client_certificate<a class="headerlink" href="#ssl_client_certificate" title="Permanent link">&para;</a></h4>
-<p>HTTPSプロトコルを受信する場合、クライアント証明書のパスを設定する。</p>
+<p>HTTPS プロトコルを受信する場合、クライアント証明書のパスを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">ssl_client_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/client.crt</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="tcp_nopush">▼ tcp_nopush<a class="headerlink" href="#tcp_nopush" title="Permanent link">&para;</a></h4>
-<p>上述のLinuxの <code>sendfile</code> システムコールを使用する場合に適用できる。</p>
+<p>上述の Linux の <code>sendfile</code> システムコールを使用する場合に適用できる。</p>
 <p>クライアントへのレスポンス時、ヘッダーとファイルを <code>1</code> 個のパケットにまとめて返信するか否かを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">tcp_nopush</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
@@ -35446,10 +35446,10 @@
 <p>指定されたパスのファイルを順に探してアクセスする。</p>
 <p>また、最後のパラメーターで内部リダイレクトする。</p>
 <p>最後のパラメーターでは、異なるパスまたはステータスコードを指定できる。</p>
-<p>もし、nginxとアプリケーションを異なる仮想環境で稼働させている場合、<code>try_files</code> ディレクティブがファイル探索の対象とする場所は、あくまでnginxの稼働する仮想環境内となることに注意する。</p>
-<p>内部リダイレクトによって、nginx内でリクエストが再処理される。</p>
-<p>異なるパスに内部リダイレクトしていた場合は、パスに合ったlocationブロックであらためて処理される。</p>
-<p>内部リダイレクトは、URLを書き換えてリダイレクトせずに処理を続行する『リライト』とは異なることに注意する。</p>
+<p>もし、nginx とアプリケーションを異なる仮想環境で稼働させている場合、<code>try_files</code> ディレクティブがファイル探索の対象とする場所は、あくまで nginx の稼働する仮想環境内となることに注意する。</p>
+<p>内部リダイレクトによって、nginx 内でリクエストが再処理される。</p>
+<p>異なるパスに内部リダイレクトしていた場合は、パスに合った location ブロックであらためて処理される。</p>
+<p>内部リダイレクトは、URL を書き換えてリダイレクトせずに処理を続行する『リライト』とは異なることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">try_files</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">...</span><span class="w"> </span><span class="s">uri</span><span class="p">;</span>
 <span class="p">}</span>
@@ -35482,9 +35482,9 @@
 <p><br></p>
 <h3 id="_4">ヘルスチェックの受信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="nginx_1">▼ nginxによるレスポンス<a class="headerlink" href="#nginx_1" title="Permanent link">&para;</a></h4>
-<p>Webサーバーのみヘルスチェックを受信する。</p>
+<p>Web サーバーのみヘルスチェックを受信する。</p>
 <p>ヘルスチェック用の <code>server</code> ブロックで、<code>gif</code> ファイルを含むレスポンスを返信するように <code>location</code> ブロックを定義する。</p>
-<p>Nginxでアクセスログを出力する必要はないため、<code>location</code> ブロックでは <code>access_log</code> を無効化する。</p>
+<p>Nginx でアクセスログを出力する必要はないため、<code>location</code> ブロックでは <code>access_log</code> を無効化する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w">      </span><span class="s">default_server</span><span class="p">;</span>
@@ -35500,9 +35500,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_5">▼ アプリケーションによるレスポンス<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Webサーバーとアプリケーションの両方でヘルスチェックを受信する。</p>
-<p>アプリケーション側に <code>200</code> ステータスを含むレスポンスを返信するエンドポイントを実装したうえで、ヘルスチェック用の <code>server</code> ブロックでWebサーバーにルーティングするように <code>location</code> ブロックを定義する。</p>
-<p>Nginxでアクセスログを出力する必要はないため、<code>location</code> ブロックでは <code>access_log</code> を無効化する。</p>
+<p>Web サーバーとアプリケーションの両方でヘルスチェックを受信する。</p>
+<p>アプリケーション側に <code>200</code> ステータスを含むレスポンスを返信するエンドポイントを実装したうえで、ヘルスチェック用の <code>server</code> ブロックで Web サーバーにルーティングするように <code>location</code> ブロックを定義する。</p>
+<p>Nginx でアクセスログを出力する必要はないため、<code>location</code> ブロックでは <code>access_log</code> を無効化する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w">      </span><span class="s">default_server</span><span class="p">;</span>
@@ -35520,7 +35520,7 @@
 <h2 id="03-ngx_http_index_module">03. ngx_http_index_module<a class="headerlink" href="#03-ngx_http_index_module" title="Permanent link">&para;</a></h2>
 <h3 id="_6">ディレクティブ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="index">▼ index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h4>
-<p>リクエストのURLがトレイリングスラッシュで終了する全ての場合、指定されたファイルをURLの末尾に追加する。</p>
+<p>リクエストの URL がトレイリングスラッシュで終了するすべての場合、指定されたファイルを URL の末尾に追加する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">index</span><span class="w"> </span><span class="s">index.php</span><span class="p">;</span>
 </code></pre></div>
@@ -35549,8 +35549,8 @@
 <h4 id="upstream">▼ upstream<a class="headerlink" href="#upstream" title="Permanent link">&para;</a></h4>
 <p>ロードバランシング先を設定する。</p>
 <p>デフォルトでは、加重ラウンドロビン方式を基に通信をルーティングする。</p>
-<p>注意点としては、このままでは宛先がスケーリングしたときにIPアドレスを動的に取得できない。</p>
-<p>そのため、<code>resolver</code> ディレクティブ、<code>upstream</code> ディレクティブ、UNIXドメインソケットを使用する必要がある。(ちょっと複雑すぎる...)</p>
+<p>注意点としては、このままでは宛先がスケーリングしたときに IP アドレスを動的に取得できない。</p>
+<p>そのため、<code>resolver</code> ディレクティブ、<code>upstream</code> ディレクティブ、UNIX ドメインソケットを使用する必要がある。(ちょっと複雑すぎる...)</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">upstream</span><span class="w"> </span><span class="s">foo_servers</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">192.168.0.1</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
@@ -35569,7 +35569,7 @@
 <h2 id="06-ngx_http_fast_cgi_module">06. ngx_http_fast_cgi_module<a class="headerlink" href="#06-ngx_http_fast_cgi_module" title="Permanent link">&para;</a></h2>
 <h3 id="_9">ディレクティブ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="fastcgi_params">▼ fastcgi_params<a class="headerlink" href="#fastcgi_params" title="Permanent link">&para;</a></h4>
-<p>FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先で使用する変数とその値を設定する。</p>
+<p>FastCGI プロトコルでインバウンド通信をルーティングする場合、ルーティング先で使用する変数とその値を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
 </code></pre></div>
@@ -35579,7 +35579,7 @@
 </ul>
 </blockquote>
 <h4 id="fastcgi_pass">▼ fastcgi_pass<a class="headerlink" href="#fastcgi_pass" title="Permanent link">&para;</a></h4>
-<p>FastCGIプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。</p>
+<p>FastCGI プロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">fastcgi_pass</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
 </code></pre></div>
@@ -35613,8 +35613,8 @@
 <h2 id="08-ngx_http_grpc_module">08. ngx_http_grpc_module<a class="headerlink" href="#08-ngx_http_grpc_module" title="Permanent link">&para;</a></h2>
 <h3 id="_11">ディレクティブ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_pass">▼ grpc_pass<a class="headerlink" href="#grpc_pass" title="Permanent link">&para;</a></h4>
-<p>gRPCによるHTTPリクエストの宛先を設定する。</p>
-<p>HTTP/2 (例：gRPC、GraphQLなど) を有効化する必要がある。</p>
+<p>gRPC による HTTP リクエストの宛先を設定する。</p>
+<p>HTTP/2 (例：gRPC、GraphQL など) を有効化する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">grpc_pass</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
 </code></pre></div>
@@ -35639,7 +35639,7 @@
 <h2 id="09-ngx_http_proxy_module">09. ngx_http_proxy_module<a class="headerlink" href="#09-ngx_http_proxy_module" title="Permanent link">&para;</a></h2>
 <h3 id="_12">ディレクティブ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="proxy_pass">▼ proxy_pass<a class="headerlink" href="#proxy_pass" title="Permanent link">&para;</a></h4>
-<p>HTTPプロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。</p>
+<p>HTTP プロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:80</span><span class="p">;</span>
 </code></pre></div>
@@ -35676,8 +35676,8 @@ Reading:<span class="w"> </span><span class="m">0</span><span class="w"> </span>
 <p><br></p>
 <h2 id="11-ngx_otel_module">11. ngx_otel_module<a class="headerlink" href="#11-ngx_otel_module" title="Permanent link">&para;</a></h2>
 <h3 id="ngx_otel_module">ngx_otel_moduleとは<a class="headerlink" href="#ngx_otel_module" title="Permanent link">&para;</a></h3>
-<p>Nginxコミュニティ製のモジュールであり、NginxをOpenTelemetryで計装できるようにする。</p>
-<p>執筆時点 (2024/03/10) では、セットアップの簡単さやパフォーマンスでOpenTelemetry製の <code>otel_ngx_module</code> に勝っているらしい。</p>
+<p>Nginx コミュニティ製のモジュールであり、Nginx を OpenTelemetry で計装できるようにする。</p>
+<p>執筆時点 (2024/03/10) では、セットアップの簡単さやパフォーマンスで OpenTelemetry 製の <code>otel_ngx_module</code> に勝っているらしい。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/nginxinc/nginx-otel?tab=readme-ov-file">https://github.com/nginxinc/nginx-otel?tab=readme-ov-file</a></li>
@@ -35688,7 +35688,7 @@ Reading:<span class="w"> </span><span class="m">0</span><span class="w"> </span>
 <h3 id="_14">セットアップ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ 未ビルドの場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>モジュールをインポートする前に、ビルドする必要がある。</p>
-<p>なお、gRPCのビルドは <code>30</code> 分ほどかかるため、gRPCを含むビルド済みのモジュールをインストールしたほうが良い。</p>
+<p>なお、gRPC のビルドは <code>30</code> 分ほどかかるため、gRPC を含むビルド済みのモジュールをインストールしたほうがよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginxinc/nginx-otel.git
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>nginx-otel
 $<span class="w"> </span>mkdir<span class="w"> </span>build
@@ -35705,7 +35705,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
 <li><a href="https://github.com/nginxinc/nginx-otel">https://github.com/nginxinc/nginx-otel</a></li>
 </ul>
 </blockquote>
-<p>その他、alpineはMercurialからインストールすると良い。</p>
+<p>その他、alpine は Mercurial からインストールするとよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://hg.nginx.org/pkg-oss/file/tip/alpine">https://hg.nginx.org/pkg-oss/file/tip/alpine</a></li>
@@ -35726,7 +35726,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <li><a href="https://nginx.org/packages/mainline/alpine/">https://nginx.org/packages/mainline/alpine/</a></li>
 </ul>
 </blockquote>
-<p>Alpineの場合は、執筆時点 (2024/03/13) でalpineリポジトリに <code>ngx_otel_module</code> がなく、Nginxのalpineリポジトリにパッケージがある。</p>
+<p>Alpine の場合は、執筆時点 (2024/03/13) で alpine リポジトリに <code>ngx_otel_module</code> がなく、Nginx の alpine リポジトリにパッケージがある。</p>
 <p><code>apk</code> コマンドはそのまま使用すると常に最新をインストールしてしまう。</p>
 <p>そこで、<code>wget</code> コマンドで一度ファイルを取得し、<code>apk</code> コマンドでそのファイルからモジュールをインストールする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># nginxのalpineリポジトリから</span>
@@ -35742,8 +35742,8 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 <p><br></p>
 <h3 id="_17">ディレクティブ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="otel_exporter">▼ otel_exporter<a class="headerlink" href="#otel_exporter" title="Permanent link">&para;</a></h4>
-<p>Exporterを設定する。</p>
-<p>執筆時点 (2024/03/14) 時点では、gRPC用のエンドポイントしかありません。</p>
+<p>Exporter を設定する。</p>
+<p>執筆時点 (2024/03/14) 時点では、gRPC 用のエンドポイントしかありません。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">otel_exporter</span><span class="w"> </span><span class="p">{</span>
@@ -35791,7 +35791,7 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 </blockquote>
 <h4 id="otel_span_name">▼ otel_span_name<a class="headerlink" href="#otel_span_name" title="Permanent link">&para;</a></h4>
 <p>スパン名を設定する。</p>
-<p>デフォルトでは、リクエストのLocation値がスパン名になる。</p>
+<p>デフォルトでは、リクエストの Location 値がスパン名になる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
@@ -35824,8 +35824,8 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 <p><br></p>
 <h3 id="_18">変数<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="otel_trace_id">▼ <code>$otel_trace_id</code><a class="headerlink" href="#otel_trace_id" title="Permanent link">&para;</a></h4>
-<p>トレースIDが割り当てられている。</p>
-<p>ログにトレースIDを埋め込む場合に使用できる。</p>
+<p>トレース ID が割り当てられている。</p>
+<p>ログにトレース ID を埋め込む場合に使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">log_format</span><span class="w"> </span><span class="s">main</span><span class="w"> </span><span class="s">escape=json</span><span class="w"> </span><span class="s">&#39;</span><span class="p">{</span><span class="kn">&#39;</span>
 <span class="w">    </span><span class="s">&#39;&quot;TraceId&quot;:</span><span class="w"> </span><span class="s">&quot;</span><span class="nv">$otel_trace_id&quot;&#39;</span>
@@ -35838,14 +35838,14 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 </ul>
 </blockquote>
 <h4 id="otel_span_id">▼ <code>$otel_span_id</code><a class="headerlink" href="#otel_span_id" title="Permanent link">&para;</a></h4>
-<p>現在のスパンIDが割り当てられている。</p>
+<p>現在のスパン ID が割り当てられている。</p>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/ngx_otel_module.html#variables">https://nginx.org/en/docs/ngx_otel_module.html#variables</a></li>
 </ul>
 </blockquote>
 <h4 id="otel_parent_id">▼ <code>$otel_parent_id</code><a class="headerlink" href="#otel_parent_id" title="Permanent link">&para;</a></h4>
-<p>親スパンのスパンIDが割り当てられている。</p>
+<p>親スパンのスパン ID が割り当てられている。</p>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/ngx_otel_module.html#variables">https://nginx.org/en/docs/ngx_otel_module.html#variables</a></li>
@@ -35853,7 +35853,7 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
 </blockquote>
 <h4 id="otel_parent_sampled">▼ <code>$otel_parent_sampled</code><a class="headerlink" href="#otel_parent_sampled" title="Permanent link">&para;</a></h4>
 <p>受信したリクエストに親スパンが存在する場合、<code>1</code> になる。</p>
-<p>Parent Basedなサンプリングを実行できる。</p>
+<p>Parent Based なサンプリングを実行できる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">otel_trace</span><span class="w"> </span><span class="nv">$otel_parent_sampled</span><span class="p">;</span>
 <span class="p">}</span>
@@ -35884,7 +35884,7 @@ $<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>-
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

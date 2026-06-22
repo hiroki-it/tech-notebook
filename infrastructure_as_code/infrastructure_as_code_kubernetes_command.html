@@ -35751,8 +35751,8 @@
 <h2 id="01-kubectl">01. kubectlコマンド<a class="headerlink" href="#01-kubectl" title="Permanent link">&para;</a></h2>
 <h3 id="_2">セットアップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="kubeconfig">▼ <code>kubeconfig</code> ファイル<a class="headerlink" href="#kubeconfig" title="Permanent link">&para;</a></h4>
-<p><code>~/.kube/config</code> 配下にあり、Clusterの資格情報が定義されている。</p>
-<p><code>kubectl</code> コマンドは、<code>kubeconfig</code> ファイル上のClusterの資格情報を基に、kube-apiserverにリクエストを送信する。</p>
+<p><code>~/.kube/config</code> 配下にあり、Cluster の資格情報が定義されている。</p>
+<p><code>kubectl</code> コマンドは、<code>kubeconfig</code> ファイル上の Cluster の資格情報を基に、kube-apiserver にリクエストを送信する。</p>
 <h4 id="config-kubeconfig">▼ configシンボリックリンク、--kubeconfig<a class="headerlink" href="#config-kubeconfig" title="Permanent link">&para;</a></h4>
 <p>ユーザーが、<code>config</code> ファイルを任意のディレクトリで管理する場合、シンボリックリンクを作成する。</p>
 <p>または、コマンドの実行時に <code>config</code> ファイルを明示的に指定する。</p>
@@ -35771,7 +35771,7 @@ $<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/et
 <p><br></p>
 <h3 id="annotate">annotate<a class="headerlink" href="#annotate" title="Permanent link">&para;</a></h3>
 <h4 id="annotate_1">▼ annotateとは<a class="headerlink" href="#annotate_1" title="Permanent link">&para;</a></h4>
-<p>指定したKubernetesリソースのアノテーションを操作する。</p>
+<p>指定した Kubernetes リソースのアノテーションを操作する。</p>
 <h4 id="-overwrite">▼ --overwrite<a class="headerlink" href="#-overwrite" title="Permanent link">&para;</a></h4>
 <p>指定したアノテーションを書き換える。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>--overwrite<span class="w"> </span>pod<span class="w"> </span>foo-pod<span class="w"> </span>&lt;キー名&gt;<span class="o">=</span>&lt;値&gt;<span class="w"> </span>-n<span class="w"> </span>foo-namespace
@@ -35785,14 +35785,14 @@ $<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/et
 <h3 id="apply">apply<a class="headerlink" href="#apply" title="Permanent link">&para;</a></h3>
 <h4 id="apply_1">▼ applyとは<a class="headerlink" href="#apply_1" title="Permanent link">&para;</a></h4>
 <p>同じ識別子 (名前) のリソースが存在しない場合は、リソースを作成し、存在する場合はマニフェストの差分を更新する。</p>
-<p>全ての項目を更新できるわけでない。</p>
+<p>すべての項目を更新できるわけでない。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply</a></li>
 </ul>
 </blockquote>
 <h4 id="-f-r">▼ -f -R<a class="headerlink" href="#-f-r" title="Permanent link">&para;</a></h4>
-<p>kube-apiserverに送信するマニフェストを指定する。<code>-R</code> オプションでディレクトリ内のファイルを再帰的に指定もできる。</p>
+<p>kube-apiserver に送信するマニフェストを指定する。<code>-R</code> オプションでディレクトリ内のファイルを再帰的に指定もできる。</p>
 <p><strong>＊例＊</strong></p>
 <p>マニフェストを指定し、<code>kubectl apply</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リソースを作成する。</span>
@@ -35811,12 +35811,12 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 pod/foo-pod<span class="w"> </span>configured
 </code></pre></div>
 <h4 id="-server-side">▼ --server-side<a class="headerlink" href="#-server-side" title="Permanent link">&para;</a></h4>
-<p>ServerSideApplyを実行する。</p>
+<p>ServerSideApply を実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="w"> </span>-f<span class="w"> </span>manifests.yaml
 </code></pre></div>
-<p>ServerSideApplyではない通常のApplyは、ClientSideApplyという。</p>
-<p>ServerSideApplyとClientSideApplyの間で、マニフェストの最終的な状態を決める主体が異なる。</p>
-<p>ClientSideApplyでは、クライアント側（例：kubectl、ArgoCDのapplication-controllerなど）がkube-apiserverからマニフェストの実体を取得し、クライアントを変更してからkube-apiserverに送信する。</p>
+<p>ServerSideApply ではない通常の Apply は、ClientSideApply という。</p>
+<p>ServerSideApply と ClientSideApply の間で、マニフェストの最終的な状態を決める主体が異なる。</p>
+<p>ClientSideApply では、クライアント側（例：kubectl、ArgoCD の application-controller など）が kube-apiserver からマニフェストの実体を取得し、クライアントを変更してから kube-apiserver に送信する。</p>
 <table>
 <thead>
 <tr>
@@ -35833,10 +35833,10 @@ pod/foo-pod<span class="w"> </span>configured
 </tr>
 </tbody>
 </table>
-<p>特に、ServerSideApplyではkube-apiserverがよしなにマニフェストの最終状態を決めることもある。そのため、マニフェストファイルと実体が異なる場合もある。</p>
-<p>一方でServerSideApplyでは、kube-apiserver側でマニフェストを変更する。</p>
-<p>ClientSideApplyでは、クライアント側の制約により <code>metadata.annotations</code> キーのサイズ制限でエラーになる。</p>
-<p>そういった場合は、ServerSideApplyで解決できる。</p>
+<p>特に、ServerSideApply では kube-apiserver がよしなにマニフェストの最終状態を決めることもある。そのため、マニフェストファイルと実体が異なる場合もある。</p>
+<p>一方で ServerSideApply では、kube-apiserver 側でマニフェストを変更する。</p>
+<p>ClientSideApply では、クライアント側の制約により <code>metadata.annotations</code> キーのサイズ制限でエラーになる。</p>
+<p>そういった場合は、ServerSideApply で解決できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/using-api/server-side-apply/#using-server-side-apply-in-a-controller">https://kubernetes.io/docs/reference/using-api/server-side-apply/#using-server-side-apply-in-a-controller</a></li>
@@ -35847,7 +35847,7 @@ pod/foo-pod<span class="w"> </span>configured
 <p><br></p>
 <h3 id="cluster-info">cluster-info<a class="headerlink" href="#cluster-info" title="Permanent link">&para;</a></h3>
 <h4 id="cluster-info_1">▼ cluster-infoとは<a class="headerlink" href="#cluster-info_1" title="Permanent link">&para;</a></h4>
-<p>コントロールプレーンNodeの情報を取得する。</p>
+<p>コントロールプレーン Node の情報を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>cluster-info
 
 Kubernetes<span class="w"> </span>control<span class="w"> </span>plane<span class="w"> </span>is<span class="w"> </span>running<span class="w"> </span>at<span class="w"> </span>https://*.*.*.*:443
@@ -35869,7 +35869,7 @@ Metrics-server<span class="w"> </span>is<span class="w"> </span>running<span cla
 </ul>
 </blockquote>
 <h4 id="current-context">▼ current-context<a class="headerlink" href="#current-context" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code> コマンドの宛先になっているkube-apiserverを取得する。</p>
+<p><code>kubectl</code> コマンドの宛先になっている kube-apiserver を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>current-context
 
 minikube
@@ -35884,15 +35884,15 @@ CURRENT<span class="w">   </span>NAME<span class="w">             </span>CLUSTER
 ...
 </code></pre></div>
 <h4 id="use-context">▼ use-context<a class="headerlink" href="#use-context" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code> コマンドの向き先を、指定したKubernetesの実行環境のkube-apiserverに変更する。</p>
+<p><code>kubectl</code> コマンドの向き先を、指定した Kubernetes の実行環境の kube-apiserver に変更する。</p>
 <p><strong>＊例＊</strong></p>
-<p>宛先をMinikubeのkube-apiserverに変更する。</p>
+<p>宛先を Minikube の kube-apiserver に変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>minikube
 </code></pre></div>
-<p>宛先をDocker for Desktopのkube-apiserverに変更する。</p>
+<p>宛先を Docker for Desktop の kube-apiserver に変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>docker-desktop
 </code></pre></div>
-<p>宛先をAmazon EKS Clusterのkube-apiserverに変更する。</p>
+<p>宛先を Amazon EKS Cluster の kube-apiserver に変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>&lt;ClusterのARN&gt;
 </code></pre></div>
 <h4 id="view">▼ view<a class="headerlink" href="#view" title="Permanent link">&para;</a></h4>
@@ -35957,8 +35957,8 @@ users:
 <p><br></p>
 <h3 id="cordon">cordon<a class="headerlink" href="#cordon" title="Permanent link">&para;</a></h3>
 <h4 id="cordon_1">▼ cordonとは<a class="headerlink" href="#cordon_1" title="Permanent link">&para;</a></h4>
-<p>指定したNodeにこれ以上Podをスケジューリングできないようにする (<code>SchedulingDisabled</code> 状態) 。</p>
-<p><code>kubectl drain</code> コマンドとは異なり、Podを退避させることはない。</p>
+<p>指定した Node にこれ以上 Pod をスケジューリングできないようにする (<code>SchedulingDisabled</code> 状態) 。</p>
+<p><code>kubectl drain</code> コマンドとは異なり、Pod を退避させることはない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>cordon<span class="w"> </span>&lt;Node名&gt;
 </code></pre></div>
 <blockquote>
@@ -35969,7 +35969,7 @@ users:
 <p><br></p>
 <h3 id="cp">cp<a class="headerlink" href="#cp" title="Permanent link">&para;</a></h3>
 <h4 id="cp_1">▼ cpとは<a class="headerlink" href="#cp_1" title="Permanent link">&para;</a></h4>
-<p>ホストPCのファイルまたはディレクトリを指定したPod内のコンテナにコピーする。</p>
+<p>ホスト PC のファイルまたはディレクトリを指定した Pod 内のコンテナにコピーする。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp</a></li>
@@ -35985,8 +35985,8 @@ users:
 <h4 id="create_1">▼ createとは<a class="headerlink" href="#create_1" title="Permanent link">&para;</a></h4>
 <p>さまざまなリソースを作成する。</p>
 <p><code>kubectl expose</code> コマンドと <code>kubectl run</code> コマンドで作成できるリソースを含むさまざまなものを作成できるが、オプションが少ない。</p>
-<p>そのため、<code>-f</code> オプションで、マニフェストを指定したほうが良い。</p>
-<p>同じ識別子 (リソース名) のKubernetesリソースが存在する場合は重複エラーになってしまう。</p>
+<p>そのため、<code>-f</code> オプションで、マニフェストを指定したほうがよい。</p>
+<p>同じ識別子 (リソース名) の Kubernetes リソースが存在する場合は重複エラーになってしまう。</p>
 <p><strong>＊例＊</strong></p>
 <p>マニフェストを指定し、<code>kubectl create</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>./kubernetes/foo-pod.yaml
@@ -36003,14 +36003,14 @@ service/foo-service<span class="w"> </span>created
 </ul>
 </blockquote>
 <h4 id="deployment">▼ deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h4>
-<p>Pod数を維持管理するReplicaSetを作成する。</p>
-<p>Podを終了するためには、Deployment自体を削除しなければならない。</p>
+<p>Pod 数を維持管理する ReplicaSet を作成する。</p>
+<p>Pod を終了するためには、Deployment 自体を削除しなければならない。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>-f<span class="w"> </span>./kubernetes/foo-deployment.yaml
 </code></pre></div>
 <h4 id="secret-docker-registry">▼ secret docker-registry<a class="headerlink" href="#secret-docker-registry" title="Permanent link">&para;</a></h4>
-<p>イメージレジストリの資格情報を持つSecretを作成する。</p>
-<p>Podと同じNamespaceに所属する必要があるため、作成時にNamespaceの指定を忘れないようにする。</p>
+<p>イメージレジストリの資格情報を持つ Secret を作成する。</p>
+<p>Pod と同じ Namespace に所属する必要があるため、作成時に Namespace の指定を忘れないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># DockerHubの場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>docker-registry<span class="w"> </span>foo-secret<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--docker-server<span class="o">=</span>http://bar.example.com<span class="w"> </span><span class="se">\</span>
@@ -36026,19 +36026,19 @@ $<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="secret-generic">▼ secret generic<a class="headerlink" href="#secret-generic" title="Permanent link">&para;</a></h4>
-<p>Secretを作成する。</p>
+<p>Secret を作成する。</p>
 <p><strong>＊例＊</strong></p>
-<p>指定した <code>.env</code> ファイルからSecretを作成する。</p>
+<p>指定した <code>.env</code> ファイルから Secret を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>foo-secret<span class="w"> </span>--from-env-file<span class="o">=</span>./foo/.env
 
 secret/foo-secret<span class="w"> </span>created
 </code></pre></div>
-<p>指定した <code>.env</code> ファイル以外からSecretを作成する。</p>
+<p>指定した <code>.env</code> ファイル以外から Secret を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>foo-secret<span class="w"> </span>--from-file<span class="o">=</span>./foo/values.txt
 
 secret/foo-secret<span class="w"> </span>created
 </code></pre></div>
-<p>キー名と値からSecretを作成する。</p>
+<p>キー名と値から Secret を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>foo-secret<span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">username</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="w"> </span>--from-literal<span class="o">=</span><span class="nv">password</span><span class="o">=</span><span class="s2">&quot;baz&quot;</span>
 
 secret/foo-secret<span class="w"> </span>created
@@ -36050,7 +36050,7 @@ secret/foo-secret<span class="w"> </span>created
 </ul>
 </blockquote>
 <h4 id="secret-tls">▼ secret tls<a class="headerlink" href="#secret-tls" title="Permanent link">&para;</a></h4>
-<p>サーバー証明書を持つSecretを作成する。</p>
+<p>サーバー証明書を持つ Secret を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>tls<span class="w"> </span>tls-secret<span class="w"> </span>--cert<span class="o">=</span>/etc/ssl/certs/foo.crt<span class="w"> </span>--key<span class="o">=</span>./foo.key
 </code></pre></div>
 <blockquote>
@@ -36061,12 +36061,12 @@ secret/foo-secret<span class="w"> </span>created
 <p><br></p>
 <h3 id="delete">delete<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h3>
 <h4 id="delete_1">▼ deleteとは<a class="headerlink" href="#delete_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetesリソースを削除する。</p>
+<p>Kubernetes リソースを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>&lt;Kubernetesリソース&gt;<span class="w"> </span>&lt;Kubernetesリソース名&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>Podを終了する。</p>
-<p>Podの場合、オプションの無い <code>kubectl delete</code> コマンドがGraceful Shutdownとなる。</p>
+<p>Pod を終了する。</p>
+<p>Pod の場合、オプションのない <code>kubectl delete</code> コマンドが Graceful Shutdown となる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>foo-pod
 </code></pre></div>
 <blockquote>
@@ -36075,13 +36075,13 @@ secret/foo-secret<span class="w"> </span>created
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>指定した名前のPodを全て削除する。</p>
+<p>指定した名前の Pod をすべて削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>--no-headers<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s2">&quot;:metadata.name&quot;</span><span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;&lt;指定した名前&gt;&#39;</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="k">)</span>
 </code></pre></div>
 <h4 id="-force">▼ --force<a class="headerlink" href="#-force" title="Permanent link">&para;</a></h4>
-<p>Podを強制的に削除する。</p>
-<p>特に、<code>Terminating</code> フェーズのまま削除されないPodに対して有効である。</p>
+<p>Pod を強制的に削除する。</p>
+<p>特に、<code>Terminating</code> フェーズのまま削除されない Pod に対して有効である。</p>
 <p>合わせて <code>--grace-period</code> オプションを有効化することにより、即時に削除できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>&lt;TerminatingステータスのままのPod名&gt;<span class="w"> </span>--force<span class="w"> </span>--grace-period<span class="o">=</span><span class="m">0</span>
 </code></pre></div>
@@ -36099,7 +36099,7 @@ secret/foo-secret<span class="w"> </span>created
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node
 </code></pre></div>
-<p><code>grep</code> コマンドを使用して、PodをスケジューリングさせているNodeを取得する。</p>
+<p><code>grep</code> コマンドを使用して、Pod をスケジューリングさせている Node を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Node:
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
@@ -36122,7 +36122,7 @@ PolicyRule:
 </blockquote>
 <h4 id="-a">▼ -A<a class="headerlink" href="#-a" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>全てのNodeの詳細な情報を取得する。</p>
+<p>すべての Node の詳細な情報を取得する。</p>
 <p><code>grep</code> コマンドを使用し、必要な情報のみを確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>-A<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>Name<span class="w"> </span>-e<span class="w"> </span>cpu
 
@@ -36145,15 +36145,15 @@ Name:<span class="w">               </span>baz-node
 <p>既存のマニフェストと、指定したマニフェストの差分を表示する。</p>
 <h4 id="-f">▼ -f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
 <p>ファイルを指定して、差分を表示する。</p>
-<p>CRDをHelmの管理外で作成する場合に役立つ。</p>
+<p>CRD を Helm の管理外で作成する場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="s2">&quot;https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.15/manifests/crds/application-crd.yaml&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>-
 </code></pre></div>
 <p><br></p>
 <h3 id="drain">drain<a class="headerlink" href="#drain" title="Permanent link">&para;</a></h3>
 <h4 id="drain_1">▼ drainとは<a class="headerlink" href="#drain_1" title="Permanent link">&para;</a></h4>
-<p>Nodeにこれ以上Podをスケジューリングできないようにし (<code>SchedulingDisabled</code> 状態) 、また既存のPodを退避させる。</p>
-<p>Nodeが他に存在すれば、そのNode上でPodをスケジューリングさせる。</p>
+<p>Node にこれ以上 Pod をスケジューリングできないようにし (<code>SchedulingDisabled</code> 状態) 、また既存の Pod を退避させる。</p>
+<p>Node が他に存在すれば、その Node 上で Pod をスケジューリングさせる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>drain<span class="w"> </span>&lt;Node名&gt;
 </code></pre></div>
 <p><img alt="kubernetes_drain_node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_drain_node.png" /></p>
@@ -36169,7 +36169,7 @@ Name:<span class="w">               </span>baz-node
 <h3 id="edit">edit<a class="headerlink" href="#edit" title="Permanent link">&para;</a></h3>
 <h4 id="edit_1">▼ editとは<a class="headerlink" href="#edit_1" title="Permanent link">&para;</a></h4>
 <p>マニフェストの設定値を直接的に変更する。</p>
-<p>ただし、Podの設定値は直接的に変更できず、代わりにDeploymentやStatefulSet上での設定値を変更する必要がある。</p>
+<p>ただし、Pod の設定値は直接的に変更できず、代わりに Deployment や StatefulSet 上での設定値を変更する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>edit<span class="w"> </span>&lt;リソースの種類&gt;<span class="w"> </span>&lt;Pod以外のKubernetesリソース名&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>edit<span class="w"> </span>deployment<span class="w"> </span>foo-deployment
@@ -36184,8 +36184,8 @@ Name:<span class="w">               </span>baz-node
 <p><br></p>
 <h3 id="exec">exec<a class="headerlink" href="#exec" title="Permanent link">&para;</a></h3>
 <h4 id="exec_1">▼ execとは<a class="headerlink" href="#exec_1" title="Permanent link">&para;</a></h4>
-<p>指定したPod内のコンテナのシェルを実行し、コンテナにログインする。</p>
-<p>注意点として、シェルのないコンテナ (distroless型など) はそもそもシェルを実行できないため、ログインもできない。</p>
+<p>指定した Pod 内のコンテナのシェルを実行し、コンテナにログインする。</p>
+<p>注意点として、シェルのないコンテナ (distroless 型など) はそもそもシェルを実行できないため、ログインもできない。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec</a></li>
@@ -36199,7 +36199,7 @@ Name:<span class="w">               </span>baz-node
 <span class="o">[</span>root@&lt;Pod名&gt;<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la
 </code></pre></div>
 <p>コンテナを指定しない場合は、デフォルトのコンテナが選択される。</p>
-<p>Podの <code>.metadata.labels</code> キーではなく、Pod名であることに注意する。</p>
+<p>Pod の <code>.metadata.labels</code> キーではなく、Pod 名であることに注意する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
 Defaulted<span class="w"> </span>container<span class="w"> </span><span class="s2">&quot;foo-container&quot;</span><span class="w"> </span>out<span class="w"> </span>of:<span class="w"> </span>foo-container,<span class="w"> </span>bar-container
@@ -36207,7 +36207,7 @@ Defaulted<span class="w"> </span>container<span class="w"> </span><span class="s
 <p><br></p>
 <h3 id="expose">expose<a class="headerlink" href="#expose" title="Permanent link">&para;</a></h3>
 <h4 id="expose_1">▼ exposeとは<a class="headerlink" href="#expose_1" title="Permanent link">&para;</a></h4>
-<p>Serviceを作成する。</p>
+<p>Service を作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose</a></li>
@@ -36216,19 +36216,19 @@ Defaulted<span class="w"> </span>container<span class="w"> </span><span class="s
 </blockquote>
 <h4 id="-type-port-target-port">▼ --type、--port、--target-port<a class="headerlink" href="#-type-port-target-port" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>ClusterIP Serviceを作成する。</p>
+<p>ClusterIP Service を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>expose<span class="w"> </span>&lt;Service名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--type<span class="o">=</span>ClusterIP<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--port<span class="o">=</span>&lt;受信ポート番号&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--target-port<span class="o">=</span>&lt;フォワーディング先ポート番号&gt;
 </code></pre></div>
-<p>NodePort Serviceを作成する。</p>
+<p>NodePort Service を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>expose<span class="w"> </span>&lt;Service名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--type<span class="o">=</span>NodePort<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--port<span class="o">=</span>&lt;受信ポート番号&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--target-port<span class="o">=</span>&lt;フォワーディング先ポート番号&gt;
 </code></pre></div>
-<p>LoadBalancer Serviceを作成する。</p>
+<p>LoadBalancer Service を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>expose<span class="w"> </span>&lt;Service名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--type<span class="o">=</span>LoadBalancer<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--port<span class="o">=</span>&lt;受信ポート番号&gt;<span class="w"> </span><span class="se">\</span>
@@ -36245,7 +36245,7 @@ Defaulted<span class="w"> </span>container<span class="w"> </span><span class="s
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>特定のNamespaceの全てのKubernetesリソースを取得する。</p>
+<p>特定の Namespace のすべての Kubernetes リソースを取得する。</p>
 <blockquote>
 <ul>
 <li><a href="https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/">https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/</a></li>
@@ -36254,7 +36254,7 @@ Defaulted<span class="w"> </span>container<span class="w"> </span><span class="s
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>kubectl<span class="w"> </span>api-resources<span class="w"> </span>--namespaced<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--verbs<span class="o">=</span>list<span class="w"> </span>-o<span class="w"> </span>name<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/,$//&#39;</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-n<span class="w"> </span>foo-namespace
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>全てのNodeの情報を取得する。</p>
+<p>すべての Node の情報を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node
 
 NAME<span class="w">      </span>STATUS<span class="w">   </span>ROLES<span class="w">                  </span>AGE<span class="w">   </span>VERSION
@@ -36264,7 +36264,7 @@ baz-node<span class="w">  </span>Ready<span class="w">    </span>worker<span cla
 <span class="c1"># qux-node  Ready    control-plane,master   12h   v1.22.0 # セルフマネージドなコントロールプレーンNodeを使用する場合はこれも表示される</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>指定したPodの情報を取得する。</p>
+<p>指定した Pod の情報を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod
 
 NAME<span class="w">       </span>READY<span class="w">   </span>STATUS<span class="w">             </span>RESTARTS<span class="w">   </span>AGE
@@ -36272,7 +36272,7 @@ foo-pod<span class="w">    </span><span class="m">0</span>/2<span class="w">    
 bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">            </span><span class="m">0</span><span class="w">          </span>5m01s
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>指定したServiceの情報を取得する。</p>
+<p>指定した Service の情報を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service
 
 NAME<span class="w">           </span>TYPE<span class="w">        </span>CLUSTER-IP<span class="w">     </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">   </span>AGE
@@ -36280,7 +36280,7 @@ foo-service<span class="w">    </span>ClusterIP<span class="w">   </span>*.*.*.*
 kubernetes<span class="w">     </span>ClusterIP<span class="w">   </span>*.*.*.*<span class="w">        </span>&lt;none&gt;<span class="w">        </span><span class="m">443</span>/TCP<span class="w">   </span>12h
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p><code>grep</code> コマンドを使用して、<code>Running</code> フェーズのPodのみを取得する。</p>
+<p><code>grep</code> コマンドを使用して、<code>Running</code> フェーズの Pod のみを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>NAME<span class="w"> </span>-e<span class="w"> </span>Running
 
 NAME<span class="w">       </span>READY<span class="w">   </span>STATUS<span class="w">             </span>RESTARTS<span class="w">   </span>AGE
@@ -36288,7 +36288,7 @@ bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">    
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
 <p><code>wc</code> コマンドで出力内容の行数を数える。</p>
-<p>これにより、Podの個数を確認できる。</p>
+<p>これにより、Pod の個数を確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/61634879">https://stackoverflow.com/a/61634879</a></li>
@@ -36299,17 +36299,17 @@ bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">    
 <span class="m">20</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>各Nodeで作成できるPodの上限数を確認する。</p>
+<p>各 Node で作成できる Pod の上限数を確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="o">=</span>custom-columns<span class="o">=</span>NODE:.metadata.name,MAX_PODS:.status.allocatable.pods,CAPACITY_PODS:.status.capacity.pods,INSTANCE_TYPE:.metadata.labels.<span class="s2">&quot;node\.kubernetes\.io/instance-type&quot;</span>
 </code></pre></div>
-<p>さらに、各Nodeで稼働中のPod数を確認する。</p>
+<p>さらに、各 Node で稼働中の Pod 数を確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="k">for</span><span class="w"> </span>node<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{if (NR!=1) {print $1}}&#39;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="k">do</span><span class="w"> </span>echo<span class="s2">&quot;&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Checking </span><span class="si">${</span><span class="nv">node</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span><span class="si">${</span><span class="nv">node</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Non-terminated&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>ArgoCDのApplicationから、<code>argocd app diff</code> コマンドで反復的に差分を確認する。</p>
+<p>ArgoCD の Application から、<code>argocd app diff</code> コマンドで反復的に差分を確認する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="nv">application</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span>-A<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>foo<span class="w"> </span><span class="k">)</span>
@@ -36328,23 +36328,23 @@ bar-pod<span class="w">    </span><span class="m">2</span>/2<span class="w">    
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>yq<span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s1">&#39;.items[] | select(.spec.destination.namespace == &quot;foo&quot;)&#39;</span>
 </code></pre></div>
 <h4 id="-a_1">▼ -A<a class="headerlink" href="#-a_1" title="Permanent link">&para;</a></h4>
-<p>指定したKubernetesリソースをNamespaceに関係なく取得する。</p>
+<p>指定した Kubernetes リソースを Namespace に関係なく取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-A
 </code></pre></div>
-<p><code>grep</code> コマンドを使用して、特定のNodeのみを取得する。</p>
+<p><code>grep</code> コマンドを使用して、特定の Node のみを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>NAMESPACE<span class="w"> </span>-e<span class="w"> </span>&lt;Node名&gt;
 </code></pre></div>
-<p>全てのPodのイメージをアルファベット順で取得する。</p>
+<p>すべての Pod のイメージをアルファベット順で取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-A<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[*].spec.containers[*].image}&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;[[:space:]]&#39;</span><span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
 </code></pre></div>
 <h4 id="-o-custom-columns">▼ -o custom-columns<a class="headerlink" href="#-o-custom-columns" title="Permanent link">&para;</a></h4>
-<p>指定したKubernetesリソースの情報でユーザー定義のカラムで取得する。</p>
+<p>指定した Kubernetes リソースの情報でユーザー定義のカラムで取得する。</p>
 <p>カスタムリソースの情報をいい感じに取得する際、役立つ。</p>
 <p><strong>＊例＊</strong></p>
-<p>Serviceの指定した情報をユーザー定義のカラムで取得する。</p>
+<p>Service の指定した情報をユーザー定義のカラムで取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s1">&#39;NAME:.metadata.name,IP:.spec.clusterIP,PORT:.spec.ports[*].targetPort&#39;</span>
@@ -36365,7 +36365,7 @@ kubernetes-dashboard<span class="w">   </span><span class="m">10</span>.0.0.250<
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>Applicationの指定した情報をユーザー定義のカラムを取得する。</p>
+<p>Application の指定した情報をユーザー定義のカラムを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>application<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="s2">&quot;NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status&quot;</span>
@@ -36478,9 +36478,9 @@ md2confl<span class="w"> </span>merged.md<span class="w"> </span>&gt;<span class
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span>NAME:.metadata.name,ANNOTATIONS:.metadata.annotations
 </code></pre></div>
 <h4 id="-o-custom-columns-file">▼ -o custom-columns-file<a class="headerlink" href="#-o-custom-columns-file" title="Permanent link">&para;</a></h4>
-<p>事前に定義したユーザー定義のカラムに基づいて、Kubernetesリソースを取得する。</p>
+<p>事前に定義したユーザー定義のカラムに基づいて、Kubernetes リソースを取得する。</p>
 <p><strong>＊例＊</strong></p>
-<p>Applicationの指定した情報をユーザー定義のカラムを取得する。</p>
+<p>Application の指定した情報をユーザー定義のカラムを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>columns-file
 NAME:metadata.name,PROJECT:spec.project,STATUS:status.sync.status
 
@@ -36500,15 +36500,15 @@ baz-application<span class="w">    </span>baz-project<span class="w">    </span>
 </ul>
 </blockquote>
 <h4 id="-o-jsonpath">▼ -o jsonpath<a class="headerlink" href="#-o-jsonpath" title="Permanent link">&para;</a></h4>
-<p>指定したKubernetesリソースの特定の設定を出力する。</p>
+<p>指定した Kubernetes リソースの特定の設定を出力する。</p>
 <p><strong>＊例＊</strong></p>
-<p><code>L4</code> ロードバランサーのIPアドレスを取得する。</p>
+<p><code>L4</code> ロードバランサーの IP アドレスを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>istio-ingressgateway<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>istio-system<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.loadBalancer.ingress[0].ip}&quot;</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>Pod内のコンテナを取得する。</p>
+<p>Pod 内のコンテナを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 特定のPodを対象とする。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
@@ -36520,22 +36520,22 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[*].spec.containers[*].name}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/ /\n/g&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>Podの現在のIPアドレスを取得する。</p>
+<p>Pod の現在の IP アドレスを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.podIP}&quot;</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>IstioOperatorに定義したIstioのバージョンを取得する。</p>
+<p>IstioOperator に定義した Istio のバージョンを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>istiooperator<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>istio-system<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.metadata.labels.operator\.istio\.io\/version}&quot;</span>
 </code></pre></div>
 <h4 id="-o-wide">▼ -o wide<a class="headerlink" href="#-o-wide" title="Permanent link">&para;</a></h4>
 <p>指定したリソースの詳細な情報を取得する。</p>
-<p>Nodeが複数ある場合、Nodeに渡ってKubernetesリソースの情報を確認できるところがよい。</p>
+<p>Node が複数ある場合、Node に渡って Kubernetes リソースの情報を確認できるところがよい。</p>
 <p><strong>＊例＊</strong></p>
-<p>Podの詳細な情報を取得する。</p>
+<p>Pod の詳細な情報を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>wide
 
 NAMESPACE<span class="w">   </span>NAME<span class="w">        </span>READY<span class="w">   </span>STATUS<span class="w">        </span>RESTARTS<span class="w">   </span>AGE<span class="w">   </span>IP<span class="w">          </span>NODE<span class="w">       </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
@@ -36544,20 +36544,20 @@ bar<span class="w">         </span>bar-pod<span class="w">     </span><span clas
 baz<span class="w">         </span>baz-pod<span class="w">     </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">       </span><span class="m">0</span><span class="w">          </span>16d<span class="w">   </span>*.*.*.*<span class="w">     </span>bar-node<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p><code>grep</code> コマンドを使用して、特定のPodのみを取得する。</p>
+<p><code>grep</code> コマンドを使用して、特定の Pod のみを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>NAMESPACE<span class="w"> </span>-e<span class="w"> </span>foo
 
 NAMESPACE<span class="w">   </span>NAME<span class="w">        </span>READY<span class="w">   </span>STATUS<span class="w">        </span>RESTARTS<span class="w">   </span>AGE<span class="w">   </span>IP<span class="w">          </span>NODE<span class="w">       </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
 foo<span class="w">         </span>foo-pod<span class="w">     </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">       </span><span class="m">0</span><span class="w">          </span>16d<span class="w">   </span>*.*.*.*<span class="w">     </span>foo-node<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
 </code></pre></div>
-<p><code>grep</code> コマンドを使用して、特定のServiceのみを取得する。</p>
+<p><code>grep</code> コマンドを使用して、特定の Service のみを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span>NAMESPACE<span class="w"> </span>-e<span class="w"> </span>foo
 
 NAMESPACE<span class="w">   </span>NAME<span class="w">         </span>TYPE<span class="w">        </span>CLUSTER-IP<span class="w">   </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">       </span>AGE<span class="w">   </span>SELECTOR
 foo<span class="w">         </span>foo-service<span class="w">  </span>NodePort<span class="w">    </span>*.*.*.*<span class="w">      </span>&lt;none&gt;<span class="w">        </span><span class="m">443</span>:443/TCP<span class="w">   </span>2d<span class="w">    </span>app.kubernetes.io/instance<span class="o">=</span>prd-foo-app
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>Nodeの詳細な情報を取得する。</p>
+<p>Node の詳細な情報を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>-o<span class="w"> </span>wide
 
 NAME<span class="w">       </span>STATUS<span class="w">   </span>ROLES<span class="w">                  </span>AGE<span class="w">   </span>VERSION<span class="w">   </span>INTERNAL-IP<span class="w">     </span>EXTERNAL-IP<span class="w">   </span>OS-IMAGE<span class="w">         </span>KERNEL-VERSION<span class="w">       </span>CONTAINER-RUNTIME
@@ -36567,9 +36567,9 @@ baz-node<span class="w">   </span>Ready<span class="w">    </span>worker<span cl
 <span class="c1"># qux-node   Ready    control-plane,master   17h   v1.22.0   *.*.*.*         &lt;none&gt;        Amazon Linux 2   1.0.0.amzn2.x86_64   containerd://1.0.0 # セルフマネージドなコントロールプレーンNodeを使用する場合</span>
 </code></pre></div>
 <h4 id="-o-yaml">▼ -o yaml<a class="headerlink" href="#-o-yaml" title="Permanent link">&para;</a></h4>
-<p>指定したKubernetesリソースの設定を取得し、<code>yaml</code> 形式で出力する。</p>
+<p>指定した Kubernetes リソースの設定を取得し、<code>yaml</code> 形式で出力する。</p>
 <p><strong>＊例＊</strong></p>
-<p>指定したSecretを <code>yaml</code> 形式で取得する。</p>
+<p>指定した Secret を <code>yaml</code> 形式で取得する。</p>
 <p>正規表現と同様に、一部の文字列ではエスケープする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl get secret &lt;Secret名&gt; -o yaml</span>
 <span class="nn">---</span>
@@ -36587,31 +36587,31 @@ baz-node<span class="w">   </span>Ready<span class="w">    </span>worker<span cl
 <span class="w">  </span><span class="nt">BAZ</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
 </code></pre></div>
 <h4 id="-l">▼ -l<a class="headerlink" href="#-l" title="Permanent link">&para;</a></h4>
-<p>特定の <code>.metadata.labels</code> キーと値を持つKubernetesリソースを取得する。</p>
-<p>大文字の <code>-L</code> オプションとは異なり、特定のラベルの値を持つKubernetesリソースを絞り込める。</p>
+<p>特定の <code>.metadata.labels</code> キーと値を持つ Kubernetes リソースを取得する。</p>
+<p>大文字の <code>-L</code> オプションとは異なり、特定のラベルの値を持つ Kubernetes リソースを絞り込める。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>&lt;キー&gt;<span class="o">=</span>&lt;値&gt;
 </code></pre></div>
-<p>複数の <code>.metadata.labels</code> キーをAND条件で指定できる。</p>
+<p>複数の <code>.metadata.labels</code> キーを AND 条件で指定できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>&lt;キー&gt;<span class="o">=</span>&lt;値&gt;,&lt;キー&gt;<span class="o">=</span>&lt;値&gt;
 </code></pre></div>
-<p><code>.metadata.labels</code> キーの値をOR条件で指定できる。</p>
+<p><code>.metadata.labels</code> キーの値を OR 条件で指定できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>&lt;キー&gt;<span class="o">=</span>&lt;値&gt;,&lt;キー&gt;<span class="o">=</span>&lt;値&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span><span class="s1">&#39;&lt;キー&gt; in (&lt;値&gt;,&lt;値&gt;)&#39;</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p><code>.metadata.labels.topology.kubernetes.io/zone</code> キーの値が <code>ap-northeast-1a</code> であるNodeを取得する。</p>
+<p><code>.metadata.labels.topology.kubernetes.io/zone</code> キーの値が <code>ap-northeast-1a</code> である Node を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>-l<span class="w"> </span>topology.kubernetes.io/zone<span class="o">=</span>ap-northeast-1a
 </code></pre></div>
 <h4 id="-l_1">▼ -L<a class="headerlink" href="#-l_1" title="Permanent link">&para;</a></h4>
-<p>特定の <code>.metadata.labels</code> キーを持つKubernetesリソースを取得し、<code>kubectl get</code> コマンドの結果に新しい列として追加する。</p>
-<p>小文字の <code>-l</code> オプションとは異なり、特定のラベルを持つKubernetesリソースを一覧で表示する。</p>
+<p>特定の <code>.metadata.labels</code> キーを持つ Kubernetes リソースを取得し、<code>kubectl get</code> コマンドの結果に新しい列として追加する。</p>
+<p>小文字の <code>-l</code> オプションとは異なり、特定のラベルを持つ Kubernetes リソースを一覧で表示する。</p>
 <p>該当のキーがない場合は、空欄で表示される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>&lt;Kubernetesリソースの種類&gt;<span class="w"> </span>-L<span class="w"> </span>&lt;metadata.labelsキー&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>Amazon EKSにて、Nodeグループの種類を確認するため、<code>eks.amazonaws.com/nodegroup</code> キーを取得する。</p>
+<p>Amazon EKS にて、Node グループの種類を確認するため、<code>eks.amazonaws.com/nodegroup</code> キーを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>-L<span class="w"> </span>eks.amazonaws.com/nodegroup
 
 NAME<span class="w">        </span>STATUS<span class="w">   </span>ROLES<span class="w">    </span>AGE<span class="w">    </span>VERSION<span class="w">       </span>NODEGROUP
@@ -36622,7 +36622,7 @@ qux-node<span class="w">    </span>Ready<span class="w">    </span>&lt;none&gt;<
 ...
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>Nodeが作成されたAWSリージョンを確認するため、<code>topology.kubernetes.io/zone</code> キーを取得する。</p>
+<p>Node が作成された AWS リージョンを確認するため、<code>topology.kubernetes.io/zone</code> キーを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>node<span class="w"> </span>-L<span class="w"> </span>topology.kubernetes.io/zone
 
 NAME<span class="w">       </span>STATUS<span class="w">   </span>ROLES<span class="w">    </span>AGE<span class="w">     </span>VERSION<span class="w">   </span>ZONE
@@ -36631,7 +36631,7 @@ bar-node<span class="w">   </span>Ready<span class="w">    </span>&lt;none&gt;<s
 baz-node<span class="w">   </span>Ready<span class="w">    </span>&lt;none&gt;<span class="w">   </span>18h<span class="w">     </span>v1.22.0<span class="w">   </span>ap-northeast-1d
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>istioのコンテナインジェクションが有効されているNamespaceを確認するため、<code>.metadata.labels.istio.io/rev</code> キーを取得する。</p>
+<p>istio のコンテナインジェクションが有効されている Namespace を確認するため、<code>.metadata.labels.istio.io/rev</code> キーを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespace<span class="w"> </span>-L<span class="w"> </span>istio.io/rev
 
 NAME<span class="w">                   </span>STATUS<span class="w">   </span>AGE<span class="w">     </span>REV
@@ -36640,8 +36640,8 @@ bar-namespace<span class="w">          </span>Active<span class="w">   </span>14
 baz-namespace<span class="w">          </span>Active<span class="w">   </span>145d<span class="w">           </span><span class="c1"># 同上</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>特定のKubernetesリソースがどのように管理されているかを取得する。</p>
-<p>公式のHelmチャートでは、Deployment、Daemonset、StatefulSetがタグを持つことが多い。</p>
+<p>特定の Kubernetes リソースがどのように管理されているかを取得する。</p>
+<p>公式の Helm チャートでは、Deployment、Daemonset、StatefulSet がタグを持つことが多い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># argocd.argoproj.io/instance：ArgoCDのApplication名</span>
 <span class="c1"># app.kubernetes.io/managed-by：テンプレート管理のツール名</span>
 <span class="c1"># helm.sh/chart：テンプレート管理ツールがHelmの場合に、チャート名</span>
@@ -36653,23 +36653,23 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">    </span>-L<span class="w"> </span>release
 </code></pre></div>
 <h4 id="-selector">▼ --selector<a class="headerlink" href="#-selector" title="Permanent link">&para;</a></h4>
-<p>指定した <code>.spec.selector</code> キーを持つDeploymentを取得する。</p>
+<p>指定した <code>.spec.selector</code> キーを持つ Deployment を取得する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>--selector&lt;キー&gt;<span class="o">=</span>&lt;値&gt;
 </code></pre></div>
 <h4 id="-show-labels">▼ --show-labels<a class="headerlink" href="#-show-labels" title="Permanent link">&para;</a></h4>
-<p>指定したKubernetesリソースの <code>.metadata.labels</code> キーの値を表示する。</p>
+<p>指定した Kubernetes リソースの <code>.metadata.labels</code> キーの値を表示する。</p>
 <p><strong>＊例＊</strong></p>
-<p>全てのKubernetesリソースの <code>.metadata.labels</code> キーの値を表示する。</p>
+<p>すべての Kubernetes リソースの <code>.metadata.labels</code> キーの値を表示する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-A<span class="w"> </span>--show-labels
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>全てのKubernetesリソースの中から、ArgoCDで管理していないものの <code>.metadata.labels</code> キーの値を表示する。</p>
+<p>すべての Kubernetes リソースのなかから、ArgoCD で管理していないものの <code>.metadata.labels</code> キーの値を表示する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-A<span class="w"> </span>--show-labels<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;argocd.argoproj.io/instance&quot;</span>
 </code></pre></div>
 <h4 id="-watch-w">▼ --watch (-w)<a class="headerlink" href="#-watch-w" title="Permanent link">&para;</a></h4>
-<p>指定したPodの情報 (フェーズ、ステータスなど) を継続的に取得し、情報に変更があれば出力を追記していく。</p>
-<p>別ツールで時間のかかるKubernetesリソースを作成しながら、<code>--watch</code> オプションを使用すると、作成状況を確認できる。</p>
+<p>指定した Pod の情報 (フェーズ、ステータスなど) を継続的に取得し、情報に変更があれば出力を追記していく。</p>
+<p>別ツールで時間のかかる Kubernetes リソースを作成しながら、<code>--watch</code> オプションを使用すると、作成状況を確認できる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-w
 </code></pre></div>
@@ -36714,14 +36714,14 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="-c">▼ -c<a class="headerlink" href="#-c" title="Permanent link">&para;</a></h4>
-<p>Pod名とコンテナ名を指定し、コンテナのログを取得する。</p>
+<p>Pod 名とコンテナ名を指定し、コンテナのログを取得する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>&lt;Namespace名&gt;<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
 
 <span class="o">[</span>ERROR<span class="o">]</span><span class="w"> </span>*****
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>Namespace名、Pod名、コンテナ名を指定し、kube-proxyのログを確認する。</p>
+<p>Namespace 名、Pod 名、コンテナ名を指定し、kube-proxy のログを確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>kube-proxy<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
 </code></pre></div>
 <h4 id="-f_1">▼ -f<a class="headerlink" href="#-f_1" title="Permanent link">&para;</a></h4>
@@ -36747,7 +36747,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="replace">replace<a class="headerlink" href="#replace" title="Permanent link">&para;</a></h3>
 <h4 id="replace_1">▼ replaceとは<a class="headerlink" href="#replace_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetesリソースを安全に削除し、別のマニフェストで再作成する。</p>
+<p>Kubernetes リソースを安全に削除し、別のマニフェストで再作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>replace<span class="w"> </span>-f<span class="w"> </span>foo.yaml
 </code></pre></div>
 <blockquote>
@@ -36756,13 +36756,13 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="-force_1">▼ --force<a class="headerlink" href="#-force_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetesリソースを強制的に削除し、別のマニフェストで再作成する。</p>
+<p>Kubernetes リソースを強制的に削除し、別のマニフェストで再作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>replace<span class="w"> </span>--force<span class="w"> </span>-f<span class="w"> </span>foo.yaml
 </code></pre></div>
 <p><br></p>
 <h3 id="rollout">rollout<a class="headerlink" href="#rollout" title="Permanent link">&para;</a></h3>
 <h4 id="rollout_1">▼ rolloutとは<a class="headerlink" href="#rollout_1" title="Permanent link">&para;</a></h4>
-<p>Deployment、DaemonSet、StatefulSet、でコピーされたPodを操作する。</p>
+<p>Deployment、DaemonSet、StatefulSet、でコピーされた Pod を操作する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout">https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout</a></li>
@@ -36770,8 +36770,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="restart">▼ restart<a class="headerlink" href="#restart" title="Permanent link">&para;</a></h4>
-<p>配下のPodを再作成する。</p>
-<p>PodのVolume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後、Podへ再び読み込ませるために役立つ。</p>
+<p>配下の Pod を再作成する。</p>
+<p>Pod の Volume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後、Pod へ再び読み込ませるために役立つ。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Deployment配下のPodを再作成する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>deployment<span class="w"> </span>foo-deployment<span class="w"> </span>-n<span class="w"> </span>foo-namespace
@@ -36800,11 +36800,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> 
 </ul>
 </blockquote>
 <h4 id="cronjob">▼ cronjob<a class="headerlink" href="#cronjob" title="Permanent link">&para;</a></h4>
-<p>CronJobのバッチを一時無効にする。</p>
+<p>CronJob のバッチを一時無効にする。</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>patch<span class="w"> </span>cronjobs<span class="w"> </span>foo-batch<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;spec&quot; : {&quot;suspend&quot; : true }}&#39;</span>
 </code></pre></div>
 <h4 id="pv">▼ pv<a class="headerlink" href="#pv" title="Permanent link">&para;</a></h4>
-<p>PersistentVolumeの設定値を変更する。</p>
+<p>PersistentVolume の設定値を変更する。</p>
 <p><strong>＊例＊</strong></p>
 <p>削除されないボリュームを削除する。</p>
 <blockquote>
@@ -36820,10 +36820,10 @@ $<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> 
 <p><br></p>
 <h3 id="port-forward">port-forward<a class="headerlink" href="#port-forward" title="Permanent link">&para;</a></h3>
 <h4 id="port-forward_1">▼ port-forwardとは<a class="headerlink" href="#port-forward_1" title="Permanent link">&para;</a></h4>
-<p>ポートフォワーディングを実行し、ホストのポートからPodにリクエストを送信できるようにする。</p>
-<p>Podを直接的に指定する場合と、他のKubernetesリソース (例：Service、Deployment) の情報を使用して、Podを指定する方法がある。</p>
-<p>この時、通信自体は他のKubernetesリソースを経由しているわけではないことに注意する (例えば、Kialiを確認すると、Ingress Controllerを経由していないことがわかる) 。</p>
-<p>開発環境にて、Serviceを介さずに直接的にPodへリクエストを送信したい場合や、SQLクライアントを使用してPod内のDBコンテナへTCP/IP接続したい場合に使用する。</p>
+<p>ポートフォワーディングを実行し、ホストのポートから Pod にリクエストを送信できるようにする。</p>
+<p>Pod を直接的に指定する場合と、他の Kubernetes リソース (例：Service、Deployment) の情報を使用して、Pod を指定する方法がある。</p>
+<p>このとき、通信自体は他の Kubernetes リソースを経由しているわけではないことに注意する (例えば、Kiali を確認すると、Ingress Controller を経由していないことがわかる) 。</p>
+<p>開発環境にて、Service を介さずに直接的に Pod へリクエストを送信したい場合や、SQL クライアントを使用して Pod 内の DB コンテナへ TCP/IP 接続したい場合に使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podを直接的に指定する場合</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>pod/&lt;Pod名&gt;<span class="w"> </span>&lt;ホストポート番号&gt;:&lt;Podのポート番号&gt;
 
@@ -36841,7 +36841,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:&lt;ホス
 </ul>
 </blockquote>
 <h4 id="_6">▼ 複数のポートをフォワーディングする<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>同じPodやServiceで複数のポートが公開されている場合、同時にポートフォワーディングできる。</p>
+<p>同じ Pod や Service で複数のポートが公開されている場合、同時にポートフォワーディングできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span><span class="m">9090</span>:9090
 
 Forwarding<span class="w"> </span>from<span class="w"> </span><span class="m">127</span>.0.0.1:8080<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">8080</span>
@@ -36856,7 +36856,7 @@ Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[<
 <li><a href="https://github.com/derailed/k9s/issues/779#issue-642826402">https://github.com/derailed/k9s/issues/779#issue-642826402</a></li>
 </ul>
 </blockquote>
-<p>異なるPodやServiceの場合、<code>&amp;</code> (1つだけ) でつなぐと、同時にポートフォワーディングできる。</p>
+<p>異なる Pod や Service の場合、<code>&amp;</code> (1 つだけ) でつなぐと、同時にポートフォワーディングできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span><span class="m">8443</span>:8443<span class="w"> </span><span class="p">&amp;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;Service名&gt;<span class="w"> </span><span class="m">9090</span>:9090
@@ -36876,8 +36876,8 @@ Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[<
 <p><br></p>
 <h3 id="proxy">proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h3>
 <h4 id="proxy_1">▼ proxyとは<a class="headerlink" href="#proxy_1" title="Permanent link">&para;</a></h4>
-<p>kube-apiserverの送信元にフォワード/リバースプロキシサーバーとして動作するリソースを作成する。</p>
-<p>kube-proxyとは異なるリソースであることに注意する。</p>
+<p>kube-apiserver の送信元にフォワード/リバースプロキシサーバーとして動作するリソースを作成する。</p>
+<p>kube-proxy とは異なるリソースであることに注意する。</p>
 <h4 id="-address-accept-hosts">▼ --address、--accept-hosts<a class="headerlink" href="#-address-accept-hosts" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>proxy<span class="w"> </span>--address<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--accept-hosts<span class="o">=</span><span class="s1">&#39;.*&#39;</span>
@@ -36892,7 +36892,7 @@ Starting<span class="w"> </span>to<span class="w"> </span>serve<span class="w"> 
 <p><br></p>
 <h3 id="run">run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
 <h4 id="run_1">▼ runとは<a class="headerlink" href="#run_1" title="Permanent link">&para;</a></h4>
-<p>Deployment、Pod、Jobを作成する。</p>
+<p>Deployment、Pod、Job を作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908">https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908</a></li>
@@ -36900,19 +36900,19 @@ Starting<span class="w"> </span>to<span class="w"> </span>serve<span class="w"> 
 </blockquote>
 <h4 id="-restart-image-port">▼ --restart、--image、--port<a class="headerlink" href="#-restart-image-port" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>もし <code>--restart</code> オプションが <code>Always</code> なら、Deploymentを作成する。</p>
+<p>もし <code>--restart</code> オプションが <code>Always</code> なら、Deployment を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>&lt;Deployment名&gt;<span class="w"> </span>--restart<span class="o">=</span>Always<span class="w"> </span>--image<span class="o">=</span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--port<span class="o">=</span>&lt;ポート番号&gt;
 </code></pre></div>
-<p>もし <code>--restart</code> オプションが <code>Never</code> なら、Podを作成する。</p>
+<p>もし <code>--restart</code> オプションが <code>Never</code> なら、Pod を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>--restart<span class="o">=</span>Never<span class="w"> </span>--image<span class="o">=</span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--port<span class="o">=</span>&lt;ポート番号&gt;
 </code></pre></div>
-<p>もし <code>--restart</code> オプションが <code>OnFailure</code> なら、Jobを作成する。</p>
+<p>もし <code>--restart</code> オプションが <code>OnFailure</code> なら、Job を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>&lt;Job名&gt;<span class="w"> </span>--restart<span class="o">=</span>OnFailure<span class="w"> </span>--image<span class="o">=</span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--port<span class="o">=</span>&lt;ポート番号&gt;
 </code></pre></div>
 <h3 id="taint">taint<a class="headerlink" href="#taint" title="Permanent link">&para;</a></h3>
 <h4 id="taint_1">▼ taintとは<a class="headerlink" href="#taint_1" title="Permanent link">&para;</a></h4>
-<p>NodeにTaintを付与する。</p>
-<p>エフェクトごとに、Tolerationが付与されたPodのスケジューリング方法が異なる。</p>
+<p>Node に Taint を付与する。</p>
+<p>エフェクトごとに、Toleration が付与された Pod のスケジューリング方法が異なる。</p>
 <table>
 <thead>
 <tr>
@@ -36936,10 +36936,10 @@ Starting<span class="w"> </span>to<span class="w"> </span>serve<span class="w"> 
 </tbody>
 </table>
 <p><strong>＊例＊</strong></p>
-<p>NodeにTaint (<code>app=batch:NoSchedule</code>) を付与する。</p>
+<p>Node に Taint (<code>app=batch:NoSchedule</code>) を付与する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span><span class="nv">app</span><span class="o">=</span>batch:NoSchedule
 </code></pre></div>
-<p>これにより、以下の <code>.spec.tolerations</code> キーが付与されたPodしかスケジューリングさせられない。</p>
+<p>これにより、以下の <code>.spec.tolerations</code> キーが付与された Pod しかスケジューリングさせられない。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B">https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B</a></li>
@@ -36963,11 +36963,11 @@ Starting<span class="w"> </span>to<span class="w"> </span>serve<span class="w"> 
 <span class="w">      </span><span class="nt">effect</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NoSchedule</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>コントロールプレーンNodeとして扱うTaintを付与する。</p>
+<p>コントロールプレーン Node として扱う Taint を付与する。</p>
 <p>キー名のみ指定し、値は指定していない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span>node-role.kubernetes.io/master:NoSchedule
 </code></pre></div>
-<p>これにより、以下の <code>.spec.tolerations</code> キーが付与されたPodしかスケジューリングさせられない。</p>
+<p>これにより、以下の <code>.spec.tolerations</code> キーが付与された Pod しかスケジューリングさせられない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36990,7 +36990,7 @@ Starting<span class="w"> </span>to<span class="w"> </span>serve<span class="w"> 
 </ul>
 </blockquote>
 <h4 id="-">▼ <code>-</code> (ラベル値のハイフン)<a class="headerlink" href="#-" title="Permanent link">&para;</a></h4>
-<p>指定したNodeからTaintを削除する。</p>
+<p>指定した Node から Taint を削除する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span><span class="nv">app</span><span class="o">=</span>batch:NoSchedule-
 </code></pre></div>
@@ -37001,8 +37001,8 @@ Starting<span class="w"> </span>to<span class="w"> </span>serve<span class="w"> 
 </blockquote>
 <p><br></p>
 <h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
-<p>kubectlとKubernetesのバージョンをそれぞれ取得する。</p>
-<p>両方のバージョンに差があっても、1つ以内のマイナーバージョンであれば許容範囲である。</p>
+<p>kubectl と Kubernetes のバージョンをそれぞれ取得する。</p>
+<p>両方のバージョンに差があっても、1 つ以内のマイナーバージョンであれば許容範囲である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>version
 
 <span class="c1"># kubectlコマンドのバージョン</span>
@@ -37058,7 +37058,7 @@ Server<span class="w"> </span>Version:<span class="w"> </span>version.Info<span 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月27日 12:07:29 JST">2026-05-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

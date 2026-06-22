@@ -3481,7 +3481,7 @@
   <a href="#textcsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ text/csv形式
+        ▼ text/csv 形式
       
     </span>
   </a>
@@ -34111,7 +34111,7 @@
   <a href="#textcsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ text/csv形式
+        ▼ text/csv 形式
       
     </span>
   </a>
@@ -34263,19 +34263,19 @@
 <h2 id="01-restrestful">01. RESTとRESTfulとは<a class="headerlink" href="#01-restrestful" title="Permanent link">&para;</a></h2>
 <h3 id="rest">REST<a class="headerlink" href="#rest" title="Permanent link">&para;</a></h3>
 <h4 id="rest_1">▼ RESTとは<a class="headerlink" href="#rest_1" title="Permanent link">&para;</a></h4>
-<p>分散型アプリケーションを連携させるのに適したアーキテクチャスタイルをRESTという。</p>
-<p>RESTは、以下の特徴を持つ。</p>
+<p>分散型アプリケーションを連携させるのに適したアーキテクチャスタイルを REST という。</p>
+<p>REST は、以下の特徴を持つ。</p>
 <p><img alt="REST" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/REST.jpg" /></p>
 <h4 id="restfulrestful-api">▼ RESTfulとRESTful-APIとは<a class="headerlink" href="#restfulrestful-api" title="Permanent link">&para;</a></h4>
-<p>RESTに基づいた設計をRESTfulという。</p>
-<p>RESTful設計が使用されたWebAPIをRESTful-APIという。</p>
-<p>例えば、RESTful-APIの場合、DBにおけるUserInfoのCRUDに対して、<code>1</code> 個の『/UserInfo』というURIを対応づけている。</p>
+<p>REST に基づいた設計を RESTful という。</p>
+<p>RESTful 設計が使用された WebAPI を RESTful-API という。</p>
+<p>例えば、RESTful-API の場合、DB における UserInfo の CRUD に対して、<code>1</code> 個の『/UserInfo』という URI を対応づけている。</p>
 <p><img alt="RESTfulAPI" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/RESTfulAPI.png" /></p>
 <p><br></p>
 <h3 id="rest4">RESTの４原則<a class="headerlink" href="#rest4" title="Permanent link">&para;</a></h3>
 <h4 id="stateless">▼ Statelessであること<a class="headerlink" href="#stateless" title="Permanent link">&para;</a></h4>
 <p>クライアントに対してレスポンスを返信した後に、クライアントの情報を保持せずに破棄する仕組みのこと。</p>
-<p>擬似的にステートフルな通信をするときは、キャッシュ、Cookie、セッションIDを使用して、クライアントの情報を保持する。</p>
+<p>擬似的にステートフルな通信をするときは、キャッシュ、Cookie、セッション ID を使用して、クライアントの情報を保持する。</p>
 <table>
 <thead>
 <tr>
@@ -34297,15 +34297,15 @@
 <h4 id="connectability">▼ Connectabilityであること<a class="headerlink" href="#connectability" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="uniform-interface">▼ Uniform Interfaceであること<a class="headerlink" href="#uniform-interface" title="Permanent link">&para;</a></h4>
-<p>HTTPリクエストを、『リソースに対する操作』とらえ、リクエストにHTTPメソッドを対応づけるようにする。</p>
+<p>HTTP リクエストを、『リソースに対する操作』とらえ、リクエストに HTTP メソッドを対応づけるようにする。</p>
 <h4 id="addressability">▼ Addressabilityであること<a class="headerlink" href="#addressability" title="Permanent link">&para;</a></h4>
 <p>エンドポイントによって、特定のリソースを操作できること。</p>
 <p><br></p>
 <h2 id="02">02. エンドポイント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">エンドポイントとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>特定のリソースを操作するための固有のURIのこと。</p>
+<p>特定のリソースを操作するための固有の URI のこと。</p>
 <p><code>&lt;IPアドレス、ドメイン&gt;:&lt;ポート番号&gt;</code> から構成される。</p>
-<p>エンドポイント は、リソース1つごと、あるいはまとまりごとに割り振られる。</p>
+<p>エンドポイント は、リソース 1 つごと、あるいはまとまりごとに割り振られる。</p>
 <blockquote>
 <ul>
 <li><a href="https://apidog.com/jp/blog/api-endpoint-and-its-testing/#%E2%91%A1api%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">https://apidog.com/jp/blog/api-endpoint-and-its-testing/#%E2%91%A1api%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC</a></li>
@@ -34313,15 +34313,15 @@
 </blockquote>
 <p><br></p>
 <h3 id="http">HTTPメソッド、エンドポイント、ユースケースの関係<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
-<p>RESTfulAPIでは、全てのHTTPメソッドの内、主に以下の <code>4</code> 個を使用して、データ処理の方法をリクエストする。</p>
+<p>RESTfulAPI では、すべての HTTP メソッドのうち、主に以下の <code>4</code> 個を使用して、データ処理の方法をリクエストする。</p>
 <ul>
-<li>GET：閲覧系API</li>
-<li>POST：登録系API</li>
-<li>PUT：更新系API</li>
-<li>DELETE：削除系API</li>
+<li>GET：閲覧系 API</li>
+<li>POST：登録系 API</li>
+<li>PUT：更新系 API</li>
+<li>DELETE：削除系 API</li>
 </ul>
-<p>それぞれが、APIのユースケースに対応する。</p>
-<p>ユースケースごとのメソッド名については、Laravelを参考にする。</p>
+<p>それぞれが、API のユースケースに対応する。</p>
+<p>ユースケースごとのメソッド名については、Laravel を参考にする。</p>
 <table>
 <thead>
 <tr>
@@ -34370,9 +34370,9 @@
 <li><a href="https://cloud.google.com/discover/what-is-rest-api?hl=ja">https://cloud.google.com/discover/what-is-rest-api?hl=ja</a></li>
 </ul>
 </blockquote>
-<p>POSTリクエストとPUTリクエストの重要な違いについてまとめる。</p>
-<p>データを作成するユースケースの時はPOSTリクエスト、または更新するときはPUTリクエストを使用する。</p>
-<p>ただしもっと正確には、ユースケースが『作成』or『更新』ではなく、『非冪等』or『冪等』で判断したほうが良い。</p>
+<p>POST リクエストと PUT リクエストの重要な違いについてまとめる。</p>
+<p>データを作成するユースケースのときは POST リクエスト、または更新するときは PUT リクエストを使用する。</p>
+<p>ただしもっと正確には、ユースケースが『作成』or『更新』ではなく、『非冪等』or『冪等』で判断したほうがよい。</p>
 <table>
 <thead>
 <tr>
@@ -34403,8 +34403,8 @@
 <p><br></p>
 <h3 id="_3">エンドポイントの命名<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 動詞を使用しないこと<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>すでにHTTPメソッド自体に動詞の意味合いが含まれるため、エンドポイントに動詞を含めないようにする。</p>
-<p>この時、操作するリソース名がわかりやすいような名詞を使用する。</p>
+<p>すでに HTTP メソッド自体に動詞の意味合いが含まれるため、エンドポイントに動詞を含めないようにする。</p>
+<p>このとき、操作するリソース名がわかりやすいような名詞を使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad">https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad</a></li>
@@ -34421,7 +34421,7 @@
 <p><strong>＊悪い実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/show-user/12345</span>
 </code></pre></div>
-<p><strong>＊良い実装例＊</strong></p>
+<p><strong>＊よい実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/foo</span>
@@ -34437,15 +34437,15 @@
 <p>ここで、<code>service</code>、<code>api</code>、といったキーワードは、なくても問題ない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/service/api/users/12345</span>
 </code></pre></div>
-<p><strong>＊良い実装例＊</strong></p>
+<p><strong>＊よい実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345</span>
 </code></pre></div>
 <h4 id="_6">▼ 略称を使用しないこと<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p><strong>＊悪い実装例＊</strong></p>
-<p>ここで、Usersを意味する『<code>u</code>』といった略称は、当時の設計者しかわからないため、不要である。</p>
+<p>ここで、Users を意味する『<code>u</code>』といった略称は、当時の設計者しかわからないため、不要である。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/u/12345</span>
 </code></pre></div>
-<p><strong>＊良い実装例＊</strong></p>
+<p><strong>＊よい実装例＊</strong></p>
 <p>略称を使わずに、『users』とする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345</span>
 </code></pre></div>
@@ -34453,14 +34453,14 @@
 <p><strong>＊悪い実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/Users/12345</span>
 </code></pre></div>
-<p><strong>＊良い実装例＊</strong></p>
+<p><strong>＊よい実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345</span>
 </code></pre></div>
 <h4 id="_8">▼ ケバブケースを使用すること<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p><strong>＊悪い実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users_id/12345</span>
 </code></pre></div>
-<p><strong>＊良い実装例＊</strong></p>
+<p><strong>＊よい実装例＊</strong></p>
 <p>スネークケースやキャメケースを使わずに、ケバブケースを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users-id/12345</span>
 </code></pre></div>
@@ -34469,24 +34469,24 @@
 </code></pre></div>
 <h4 id="_9">▼ 複数形を使用すること<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><strong>＊悪い実装例＊</strong></p>
-<p>Usersという集合の中に、Idが存在しているため、単数形は使用しない。</p>
+<p>Users という集合のなかに、Id が存在しているため、単数形は使用しない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/user/12345</span>
 </code></pre></div>
-<p><strong>＊良い実装例＊</strong></p>
+<p><strong>＊よい実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345</span>
 </code></pre></div>
 <h4 id="uri">▼ システムの設計方法がバレないURIにすること<a class="headerlink" href="#uri" title="Permanent link">&para;</a></h4>
 <p><strong>＊悪い実装例＊</strong></p>
 <p>悪意のあるユーザーに、脆弱性を狙われる可能性があるため、ソフトウェアの設計方法がばれないアーキテクチャにすること。</p>
-<p>ミドルウェアにCGIプログラムが使用されていることや、phpを使用していることがばれてしまう。</p>
+<p>ミドルウェアに CGI プログラムが使用されていることや、php を使用していることがばれてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/cgi-bin/get_users.php</span>
 </code></pre></div>
-<p><strong>＊良い実装例＊</strong></p>
+<p><strong>＊よい実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345</span>
 </code></pre></div>
 <h4 id="http_1">▼ HTTPメソッドの名前を使用しないこと<a class="headerlink" href="#http_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊悪い実装例＊</strong></p>
-<p>メソッドから、処理の目的はわかるため、URIに対応する動詞名を実装する必要はない。</p>
+<p>メソッドから、処理の目的はわかるため、URI に対応する動詞名を実装する必要はない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/get/12345</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/users/create/12345</span>
@@ -34495,7 +34495,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">DELETE https://example.com/users/delete/12345</span>
 </code></pre></div>
-<p><strong>＊良い実装例＊</strong></p>
+<p><strong>＊よい実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/{id}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/users</span>
@@ -34510,21 +34510,21 @@
 <p>ただし、利便上、使用する場合もある。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/v2/users/12345</span>
 </code></pre></div>
-<p><strong>＊良い実装例＊</strong></p>
+<p><strong>＊よい実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345</span>
 </code></pre></div>
-<p>URLにバージョンを表記しない代わりに、リクエストヘッダーの <code>X-api-Version</code> にバージョン情報を格納する方法がより良い。</p>
+<p>URL にバージョンを表記しない代わりに、リクエストヘッダーの <code>X-api-Version</code> にバージョン情報を格納する方法がよりよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">X-Api-Version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
 <h4 id="http_2">▼ 異なるHTTPメソッドの間でルールを統一すること<a class="headerlink" href="#http_2" title="Permanent link">&para;</a></h4>
 <p><strong>＊悪い実装例＊</strong></p>
-<p>GETリクエストとPOSTリクエストの間で、IDパラメーターのHTTPメソッドが統一されていない。</p>
+<p>GET リクエストと POST リクエストの間で、ID パラメーターの HTTP メソッドが統一されていない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/?id=12345</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/users/12345/messages</span>
 </code></pre></div>
-<p><strong>＊良い実装例＊</strong></p>
-<p>以下の様に、異なるHTTPメソッドの間でも統一する。</p>
+<p><strong>＊よい実装例＊</strong></p>
+<p>以下のように、異なる HTTP メソッドの間でも統一する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/users/12345/messages</span>
@@ -34532,7 +34532,7 @@
 <p><br></p>
 <h3 id="_11">エンドポイントのパラメーター<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ パス、クエリストリングへの割り当て<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>URIの構造のうち、パスまたはクエリストリングにパラメーターを割り当てて送信する。</p>
+<p>URI の構造のうち、パスまたはクエリストリングにパラメーターを割り当てて送信する。</p>
 <p>それぞれ、パスパラメーターまたはクエリパラメーターという。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com:80/users/777?text1=a&amp;text2=b</span>
 </code></pre></div>
@@ -34591,7 +34591,7 @@
 </tbody>
 </table>
 <h4 id="_14">▼ メッセージボディへの割り当て<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>JSON型データ内に定義し、メッセージボディにパラメーターを割り当てて送信する。</p>
+<p>JSON 型データ内に定義し、メッセージボディにパラメーターを割り当てて送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com</span>
 <span class="nn">---</span>
 <span class="c1"># ボディ</span>
@@ -34600,7 +34600,7 @@
 <h4 id="_15">▼ リクエストヘッダーへの割り当て<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>リクエストヘッダーにパラメーターを割り当てて送信する。</p>
 <p>送信時のヘッダー名は大文字・小文字のどちらでも問題ない。ただし、内部的に小文字に変換されるため、小文字が推奨である。</p>
-<p>APIキーのヘッダー名の頭文字に『<code>X</code>』を付けるのは、自前ヘッダーの頭文字に『<code>X</code>』を付ける慣習があったためである。</p>
+<p>API キーのヘッダー名の頭文字に『<code>X</code>』を付けるのは、自前ヘッダーの頭文字に『<code>X</code>』を付ける慣習があったためである。</p>
 <p>ただし、現在は非推奨である。</p>
 <blockquote>
 <ul>
@@ -34618,8 +34618,8 @@
 <h2 id="03">03. レスポンス<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_16">正常系レスポンスの場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="postput">▼ POST/PUTでは処理後データをレスポンス<a class="headerlink" href="#postput" title="Permanent link">&para;</a></h4>
-<p>POST/PUTメソッドでは、処理後のデータを200レスポンスとして返信する。</p>
-<p>もし処理後のデータを返信しない場合、あらためてGETリクエストを送信する必要があり、余分なAPIコールが必要になってしまう。</p>
+<p>POST/PUT メソッドでは、処理後のデータを 200 レスポンスとして返信する。</p>
+<p>もし処理後のデータを返信しない場合、あらためて GET リクエストを送信する必要があり、余分な API コールが必要になってしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3">https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3</a></li>
@@ -34627,8 +34627,8 @@
 </ul>
 </blockquote>
 <h4 id="delete">▼ DELETEではメッセージのみをレスポンス<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h4>
-<p>DELETEメソッドでは、メッセージのみを200レスポンスとして返信する。</p>
-<p>空ボディ204レスポンスとして返信しても良い。</p>
+<p>DELETE メソッドでは、メッセージのみを 200 レスポンスとして返信する。</p>
+<p>空ボディ 204 レスポンスとして返信してもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/25970523/restful-what-should-a-delete-response-body-contain/50792918">https://stackoverflow.com/questions/25970523/restful-what-should-a-delete-response-body-contain/50792918</a></li>
@@ -34640,7 +34640,7 @@
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Taro</span><span class="nv"> </span><span class="s">Yamada&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="_18">▼ フラットなデータ構造にすること<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>JSONの場合、階層構造にすると、データサイズが増えてしまう。</p>
+<p>JSON の場合、階層構造にすると、データサイズが増えてしまう。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Taro</span><span class="nv"> </span><span class="s">Yamada&quot;</span><span class="p p-Indicator">,</span>
@@ -34663,7 +34663,7 @@
 <span class="w">  </span><span class="s">&quot;subjects&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;math&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>代わりに、<code>Content-Type</code> ヘッダーに『<code>application/hal+json</code>』『<code>application/vnd.api+json</code>』『<code>application/vnd.collection+json</code>』といったよりJSONベースの強い制約のフォーマットを利用しても良い。</p>
+<p>代わりに、<code>Content-Type</code> ヘッダーに『<code>application/hal+json</code>』『<code>application/vnd.api+json</code>』『<code>application/vnd.collection+json</code>』といったより JSON ベースの強い制約のフォーマットを利用してもよい。</p>
 <h4 id="_19">▼ 日付データの形式に気をつけること<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>RFC3339 (W3C-DTF) 形式でオブジェクトデータに含めて送受信すること。</p>
 <p><strong>＊例＊</strong></p>
@@ -34673,10 +34673,10 @@
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00</span>
 </code></pre></div>
-<h4 id="textcsv">▼ <code>text/csv</code>形式<a class="headerlink" href="#textcsv" title="Permanent link">&para;</a></h4>
-<p>CSVファイルダウンロード機能では、データをCSVファイルとし、<code>Content-Type</code>は<code>text/csv; charset=utf-8</code>にする。</p>
-<p><code>Content-Disposition</code>は<code>attachment; filename="slo_report.csv"</code>にする。</p>
-<p>これにより、ファイルレスポンスの受信と同時にCSVファイルをダウンロードできる。</p>
+<h4 id="textcsv">▼ <code>text/csv</code> 形式<a class="headerlink" href="#textcsv" title="Permanent link">&para;</a></h4>
+<p>CSV ファイルダウンロード機能では、データを CSV ファイルとし、<code>Content-Type</code> は <code>text/csv; charset=utf-8</code> にする。</p>
+<p><code>Content-Disposition</code> は <code>attachment; filename="slo_report.csv"</code> にする。</p>
+<p>これにより、ファイルレスポンスの受信と同時に CSV ファイルをダウンロードできる。</p>
 <p><br></p>
 <h3 id="_20">異常系レスポンスの場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <table>
@@ -34747,7 +34747,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 19:34:37 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

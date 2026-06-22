@@ -35361,7 +35361,7 @@
 <h2 id="01-02">01-02. ディレクトリ構成規約<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_5">ディレクトリ/ファイルの構成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ マイクロサービス別<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>マイクロサービス別にディレクトリを作成し、Kubernetesリソースごとに異なるマニフェストを定義する。</p>
+<p>マイクロサービス別にディレクトリを作成し、Kubernetes リソースごとに異なるマニフェストを定義する。</p>
 <p><code>kubectl</code> コマンドの実行時にマニフェストの送信の順番を制御しにくいデメリットがある。</p>
 <blockquote>
 <ul>
@@ -35378,7 +35378,7 @@
 <span class="l l-Scalar l-Scalar-Plain">├── bar/</span><span class="w"> </span><span class="c1"># barサービス</span>
 <span class="l l-Scalar l-Scalar-Plain">└── baz/</span><span class="w"> </span><span class="c1"># bazサービス</span>
 </code></pre></div>
-<p>加えて、実行環境やコンポーネント (app、db) 別に分割しても良い。</p>
+<p>加えて、実行環境やコンポーネント (app、db) 別に分割してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── foo/</span><span class="w"> </span><span class="c1"># fooサービス</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── tes</span><span class="w"> </span><span class="c1"># テスト環境</span>
@@ -35406,7 +35406,7 @@
 </code></pre></div>
 <h4 id="_7">▼ ディレクトリ無し<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>ディレクトリを作成しない。</p>
-<p>代わりに、マイクロサービス別にマニフェストを定義し、関連する全てのKubernetesリソースをこの中で定義する。</p>
+<p>代わりに、マイクロサービス別にマニフェストを定義し、関連するすべての Kubernetes リソースをこのなかで定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo.yaml</span><span class="w"> </span><span class="c1"># fooサービス (Deployment、Service、PersistentVolume、...)</span>
 <span class="l l-Scalar l-Scalar-Plain">├── bar.yaml</span><span class="w"> </span><span class="c1"># barサービス</span>
@@ -35501,10 +35501,10 @@
 <p><br></p>
 <h3 id="_11">マニフェストのファイル名<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ 重複しない場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>ファイル名は、Kubernetesリソース名 (例：<code>deployment.yaml</code> ファイル) と同じにする。</p>
+<p>ファイル名は、Kubernetes リソース名 (例：<code>deployment.yaml</code> ファイル) と同じにする。</p>
 <p>基本的にはこれを使用する。</p>
 <p>ケバブケースとする。</p>
-<p>GitHubの公式チャートを見ると、命名方法が参考になる。</p>
+<p>GitHub の公式チャートを見ると、命名方法が参考になる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── deployment.yaml</span>
 <span class="l l-Scalar l-Scalar-Plain">├── service.yaml</span>
@@ -35512,7 +35512,7 @@
 <span class="l l-Scalar l-Scalar-Plain">└── persistent-volume-claim.yaml</span>
 </code></pre></div>
 <h4 id="_13">▼ ファイル名重複する場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p><code>1</code> 個のディレクトリ内でKubernetesリソースが重複する場合、Kubernetesリソース名をつけることができない。</p>
+<p><code>1</code> 個のディレクトリ内で Kubernetes リソースが重複する場合、Kubernetes リソース名をつけることができない。</p>
 <p>その場合、<code>app.kubernetes.io</code> キーの値 (例：<code>&lt;マイクロサービス名&gt;</code> または <code>&lt;マイクロサービス名&gt;-&lt;Kubernetesリソース名&gt;</code>) と同じにする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 全てApplication</span>
 <span class="c1"># 各Applicationは、fooマイクロサービス、barマイクロサービス、bazマイクロサービス、にデプロイする。</span>
@@ -35530,8 +35530,8 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_14">拡張子<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>Kubernetesに関する開発プロジェクトを確認すると、そのほとんとで、<code>yaml</code> ファイルの拡張子を <code>yml</code> ではなく <code>yaml</code> に統一している。</p>
-<p>そこで、Kubernetesや関連技術 (Istio、Helm、Skaffold、Envoyなど) の <code>yaml</code> ファイルの拡張子を <code>yaml</code> で統一する。</p>
+<p>Kubernetes に関する開発プロジェクトを確認すると、そのほとんとで、<code>yaml</code> ファイルの拡張子を <code>yml</code> ではなく <code>yaml</code> に統一している。</p>
+<p>そこで、Kubernetes や関連技術 (Istio、Helm、Skaffold、Envoy など) の <code>yaml</code> ファイルの拡張子を <code>yaml</code> で統一する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo/</span><span class="w"> </span><span class="c1"># fooサービス</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── deployment.yaml</span>
@@ -35544,12 +35544,12 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_15">マニフェストの粒度<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p><code>1</code> 個のマニフェストに、<code>1</code> 個のKubernetesリソースを定義する。</p>
+<p><code>1</code> 個のマニフェストに、<code>1</code> 個の Kubernetes リソースを定義する。</p>
 <p><br></p>
 <h2 id="03">03. 実行環境<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_16">開発環境<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="kubernetes_1">▼ Kubernetesの実行環境<a class="headerlink" href="#kubernetes_1" title="Permanent link">&para;</a></h4>
-<p>開発環境でKubernetesリソースの機能追加を検証するツールの例を記載する。</p>
+<p>開発環境で Kubernetes リソースの機能追加を検証するツールの例を記載する。</p>
 <table>
 <thead>
 <tr>
@@ -35579,7 +35579,7 @@
 <td>コンテナランタイム</td>
 <td>docker、containerd、cri-o</td>
 <td>docker</td>
-<td>containerd (ホストOSのdockerコンテナを作成し、この中にcontainerdコンテナを作成する)</td>
+<td>containerd (ホストOSのdockerコンテナを作成し、このなかにcontainerdコンテナを作成する)</td>
 <td>docker、containerd</td>
 </tr>
 <tr>
@@ -35640,12 +35640,12 @@
 <p><br></p>
 <h3 id="_17">テスト環境、ステージング環境、本番環境<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="kubernetes_2">▼ Kubernetesの実行環境<a class="headerlink" href="#kubernetes_2" title="Permanent link">&para;</a></h4>
-<p>開発環境で検証後、Kubernetesリソースの機能追加を検証するツールの例を記載する。</p>
+<p>開発環境で検証後、Kubernetes リソースの機能追加を検証するツールの例を記載する。</p>
 <table>
 <thead>
 <tr>
 <th></th>
-<th>全て自前</th>
+<th>すべて自前</th>
 <th>オンプレ</th>
 <th>クラウド</th>
 </tr>
@@ -35653,7 +35653,7 @@
 <tbody>
 <tr>
 <td>Kuberbetesオーケストレーションツール</td>
-<td>全て自前なため、自由にカスタマイズできる。</td>
+<td>すべて自前なため、自由にカスタマイズできる。</td>
 <td>Kubeadm、Rancher、Kops、Kubespray、ベアメタル (例；EKS Anywhere、Anthos on Baremetal)など</td>
 <td>Amazon EKS、Google Cloud GKEなど</td>
 </tr>
@@ -35665,7 +35665,7 @@
 </tr>
 <tr>
 <td>メリット</td>
-<td>全て自前なため、自由にカスタマイズできる。</td>
+<td>すべて自前なため、自由にカスタマイズできる。</td>
 <td>カスタマイズ性が高い。</td>
 <td>マネージドであるため、ユーザーがKubernetesのワーカーNodeを管理するコストが低い。執筆時点 (2022年3月) では、Kubernetesの本番環境として、ベタープラクティスである。</td>
 </tr>
@@ -35701,15 +35701,15 @@
 </tbody>
 </table>
 <h4 id="_18">▼ 実行環境の分割<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>Clusterの複数の実行環境 (<code>dev-*</code>、<code>stg-*</code>、<code>prd-*</code>) を用意したい場合、個人的にはその分Clusterを増やすようにする。</p>
-<p>実行環境が <code>5</code> 個や <code>10</code> 個となってくると、Clusterの分だけアップグレードやSync漏れ (手動の場合) が発生するため、運用コストが高くなるというデメリットはある。</p>
-<p>一方で、Namespaceを実行環境の粒度とすると、上記のデメリットは少ない。しかし、Namespaceのプレフィクスに実行環境名を付与することになり、名前が長くなってしまう。</p>
+<p>Cluster の複数の実行環境 (<code>dev-*</code>、<code>stg-*</code>、<code>prd-*</code>) を用意したい場合、個人的にはその分 Cluster を増やすようにする。</p>
+<p>実行環境が <code>5</code> 個や <code>10</code> 個となってくると、Cluster の分だけアップグレードや Sync 漏れ (手動の場合) が発生するため、運用コストが高くなるというデメリットはある。</p>
+<p>一方で、Namespace を実行環境の粒度とすると、上記のデメリットは少ない。しかし、Namespace のプレフィクスに実行環境名を付与することになり、名前が長くなってしまう。</p>
 <p>これらを比較して、より自身に合った方法を選ぶ。</p>
 <p><br></p>
 <h2 id="04">04. バージョンの互換性<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="kube-apiserver">kube-apiserver<a class="headerlink" href="#kube-apiserver" title="Permanent link">&para;</a></h3>
 <h4 id="kube-apiserver_1">▼ kube-apiserverが冗長化されている場合<a class="headerlink" href="#kube-apiserver_1" title="Permanent link">&para;</a></h4>
-<p>冗長化されたkube-apiserverのバージョン差は、前方の <code>1</code> 個のマイナーバージョン以内に収める必要がある。</p>
+<p>冗長化された kube-apiserver のバージョン差は、前方の <code>1</code> 個のマイナーバージョン以内に収める必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/releases/version-skew-policy/#kube-apiserver">https://kubernetes.io/releases/version-skew-policy/#kube-apiserver</a></li>
@@ -35718,7 +35718,7 @@
 <p><br></p>
 <h3 id="kubectl">kubectl<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h3>
 <h4 id="kube-apiserver_2">▼ kube-apiserverの場合<a class="headerlink" href="#kube-apiserver_2" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code> コマンドとkube-apiserverのバージョン差は、前方/後方の <code>1</code> 個のマイナーバージョン以内に収める必要がある。</p>
+<p><code>kubectl</code> コマンドと kube-apiserver のバージョン差は、前方/後方の <code>1</code> 個のマイナーバージョン以内に収める必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/releases/version-skew-policy/#kubectl">https://kubernetes.io/releases/version-skew-policy/#kubectl</a></li>
@@ -35727,9 +35727,9 @@
 <p><br></p>
 <h2 id="06-cidr">06. CIDRブロックの設計<a class="headerlink" href="#06-cidr" title="Permanent link">&para;</a></h2>
 <h3 id="node">ワーカーNodeの場合<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
-<p>Kubernetesでは、稼働する可能性のあるPod数から、ワーカーNodeのCIDRブロックを算出すると良い。</p>
-<p>アプリケーションのPodがスケーリングすることや、カスタムリソース (例：Istio、Linkerd) を導入することも考慮して、尤もらしいIPアドレス数を算出できる。</p>
-<p>削除されるPodと作成されるPodのIPアドレスを変える (IPアドレスの再利用を防ぐ) ため、Podの最大数の <code>2</code> 倍のIPアドレスを持つCIDRブロックを設定するとよい。</p>
+<p>Kubernetes では、稼働する可能性のある Pod 数から、ワーカーNode の CIDR ブロックを算出するとよい。</p>
+<p>アプリケーションの Pod がスケーリングすることや、カスタムリソース (例：Istio、Linkerd) を導入することも考慮して、尤もらしい IP アドレス数を算出できる。</p>
+<p>削除される Pod と作成される Pod の IP アドレスを変える (IP アドレスの再利用を防ぐ) ため、Pod の最大数の <code>2</code> 倍の IP アドレスを持つ CIDR ブロックを設定するとよい。</p>
 <table>
 <thead>
 <tr>
@@ -35778,11 +35778,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="_19">サブネットの場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<p>Amazon EKSでの目安であるが、サブネットごとに <code>/19</code> や <code>/20</code> なるように設計するのが、個人的にはおすすめ。</p>
+<p>Amazon EKS での目安であるが、サブネットごとに <code>/19</code> や <code>/20</code> なるように設計するのが、個人的にはおすすめ。</p>
 <p><br></p>
 <h2 id="07">07. 監視ポリシー<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="_20">メトリクスエンドポイント<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<p>Kubernetesの以下のコンポーネントが、メトリクスエンドポイント (<code>/metrics</code>) を持つ。</p>
+<p>Kubernetes の以下のコンポーネントが、メトリクスエンドポイント (<code>/metrics</code>) を持つ。</p>
 <ul>
 <li>kube-controller-manager</li>
 <li>kube-proxy</li>
@@ -35800,7 +35800,7 @@
 <h3 id="_21">ハードウェアリソース系<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ ハードウェアリソース系<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>ハードウェアリソースの性能指標に関するメトリクスである。</p>
-<p>収集ツールとして、Node Exporterがある。</p>
+<p>収集ツールとして、Node Exporter がある。</p>
 <h4 id="cluster">▼ Cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -35880,7 +35880,7 @@
 <h3 id="_24">ネットワーク系<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="_25">▼ ネットワーク系<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p>ネットワークの性能指標に関するメトリクスである。</p>
-<p>収集ツールとして、kuebeletに内蔵されたcAdvisorがある。</p>
+<p>収集ツールとして、kuebelet に内蔵された cAdvisor がある。</p>
 <table>
 <thead>
 <tr>
@@ -35914,9 +35914,9 @@
 <h3 id="_26">状態系<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <h4 id="_27">▼ 状態系<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <p>状態に関するメトリクスである。</p>
-<p>収集ツールとして、kube-state-metricsがある。</p>
+<p>収集ツールとして、kube-state-metrics がある。</p>
 <h4 id="cluster_1">▼ Cluster<a class="headerlink" href="#cluster_1" title="Permanent link">&para;</a></h4>
-<p>Clusterをディメンションとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>Cluster をディメンションとしたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -35948,7 +35948,7 @@
 </blockquote>
 <p><br></p>
 <h4 id="pod_1">▼ Pod<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
-<p>Pod全体をディメンションとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>Pod 全体をディメンションとしたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -36003,7 +36003,7 @@
 <h2 id="08">08. デバッグ<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <h3 id="_29">便利なイメージ<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <h4 id="deployment">▼ Deployment系<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h4>
-<p>DeploymentがまさしくPodを作成できない場合、それだけでHelloWorldのアプリケーションを起動できるイメージがある。</p>
+<p>Deployment がまさしく Pod を作成できない場合、それだけで HelloWorld のアプリケーションを起動できるイメージがある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36081,7 +36081,7 @@
 <h4 id="_34">▼ 結合テスト<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <p>テスト環境に対して <code>kubectl apply</code> コマンドを実行することにより、追加/変更を含む複数のマニフェストを組み合わせた結合テストを実施する。</p>
 <h4 id="_35">▼ システムテスト<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して <code>kubectl apply</code> コマンドを実行することにより、既存機能/追加/変更を含む全てのチャートを組み合わせたシステムテストを実施する。</p>
+<p>テスト環境に対して <code>kubectl apply</code> コマンドを実行することにより、既存機能/追加/変更を含むすべてのチャートを組み合わせたシステムテストを実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://camunda.com/blog/2022/03/test/">https://camunda.com/blog/2022/03/test/</a></li>
@@ -36091,8 +36091,8 @@
 <h2 id="09-02-cd">09-02. CDパイプライン<a class="headerlink" href="#09-02-cd" title="Permanent link">&para;</a></h2>
 <h3 id="_36">マニフェストのホワイトボックステスト<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <h4 id="_37">▼ 静的解析<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
-<p>GitOpsの場合、CIパイプライン上だけでなく、CDパイプライン上でもホワイトボックステストを実施できる。</p>
-<p>ただし、kube-apiserverのvalidating-admissionステップ時にこれを実施する必要がある。</p>
+<p>GitOps の場合、CI パイプライン上だけでなく、CD パイプライン上でもホワイトボックステストを実施できる。</p>
+<p>ただし、kube-apiserver の validating-admission ステップ時にこれを実施する必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -36112,25 +36112,25 @@
 <p><br></p>
 <h3 id="_38">デプロイ<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
 <h4 id="_39">▼ デプロイとは<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
-<p>本番環境に対して、ローカルマシンまたはCDツールを使用して、マニフェストをデプロイする。</p>
+<p>本番環境に対して、ローカルマシンまたは CD ツールを使用して、マニフェストをデプロイする。</p>
 <h4 id="_40">▼ インプレースデプロイメント (非推奨)<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
-<p>KubernetesのDeploymentのReplace戦略を採用する。非推奨である。ダウンタイムが発生する。</p>
+<p>Kubernetes の Deployment の Replace 戦略を採用する。非推奨である。ダウンタイムが発生する。</p>
 <blockquote>
 <ul>
 <li><a href="https://amateur-engineer-blog.com/kubernetes-recreate/#toc2">https://amateur-engineer-blog.com/kubernetes-recreate/#toc2</a></li>
 </ul>
 </blockquote>
 <h4 id="_41">▼ ローリングアップデート (推奨)<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
-<p>KubernetesのDeploymentのRollingUpdate戦略を採用する。</p>
+<p>Kubernetes の Deployment の RollingUpdate 戦略を採用する。</p>
 <h4 id="bg">▼ BGデプロイメント (推奨)<a class="headerlink" href="#bg" title="Permanent link">&para;</a></h4>
-<p>Kubernetes自体はブルー/グリーンデプロイメントの能力を持たない。CDツール (例：Argo Rollouts) のBGデプロイメント機能を採用する。</p>
+<p>Kubernetes 自体はブルー/グリーンデプロイメントの能力を持たない。CD ツール (例：Argo Rollouts) の BG デプロイメント機能を採用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argoproj.github.io/argo-rollouts/concepts/#blue-green">https://argoproj.github.io/argo-rollouts/concepts/#blue-green</a></li>
 </ul>
 </blockquote>
 <h4 id="_42">▼ カナリアリリース (推奨)<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
-<p>Kubernetes自体はカナリアリリースの能力を持たない。CDツール (例：Argo Rollouts) やサービスメッシュツール (例：Istio、Linkerdなど) のカナリアリリース機能を採用する。</p>
+<p>Kubernetes 自体はカナリアリリースの能力を持たない。CD ツール (例：Argo Rollouts) やサービスメッシュツール (例：Istio、Linkerd など) のカナリアリリース機能を採用する。</p>
 <p>注意点として、サービスメッシュツールであると、重み付けの段階的な変更が手動になってしまう。</p>
 <blockquote>
 <ul>
@@ -36138,7 +36138,7 @@
 </ul>
 </blockquote>
 <h4 id="progressive-delivery">▼ Progressive Delivery (推奨)<a class="headerlink" href="#progressive-delivery" title="Permanent link">&para;</a></h4>
-<p>Kubernetes自体はProgressive Deliveryの能力を持たない。CDツール (例：Argo Rollouts) のProgressive Delivery機能を採用する。</p>
+<p>Kubernetes 自体は Progressive Delivery の能力を持たない。CD ツール (例：Argo Rollouts) の Progressive Delivery 機能を採用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery">https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery</a></li>
@@ -36181,9 +36181,9 @@
 <h2 id="09-03">09-03. 事後処理<a class="headerlink" href="#09-03" title="Permanent link">&para;</a></h2>
 <h3 id="_44">デプロイの通知<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
 <h4 id="kubernetes_3">▼ Kubernetesを使用する場合<a class="headerlink" href="#kubernetes_3" title="Permanent link">&para;</a></h4>
-<p>Kubernetesには通知能力がなく、手動で知らせる必要がある。</p>
+<p>Kubernetes には通知能力がなく、手動で知らせる必要がある。</p>
 <h4 id="kubernetes_4">▼ Kubernetes以外を使用する場合<a class="headerlink" href="#kubernetes_4" title="Permanent link">&para;</a></h4>
-<p>CDツールの通知機能 (例：ArgoCD Notification) を使用して、CDパイプラインの結果が通知されるようにする。</p>
+<p>CD ツールの通知機能 (例：ArgoCD Notification) を使用して、CD パイプラインの結果が通知されるようにする。</p>
 <p>通知があることと品質を高めることは直接的には関係ないが、開発者の作業効率が上がるため、間接的に品質を高めることにつながる。</p>
 <p><br></p>
 
@@ -36206,7 +36206,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

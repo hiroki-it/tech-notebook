@@ -34388,7 +34388,7 @@
 <p><br></p>
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">少ないコントロールプレーン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>クラウドプロバイダーでIstioを稼働させる場合、各AZや各リージョンにコントロールプレーンを <code>1</code> 個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。</p>
+<p>クラウドプロバイダーで Istio を稼働させる場合、各 AZ や各リージョンにコントロールプレーンを <code>1</code> 個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters">https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters</a></li>
@@ -34396,7 +34396,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">冗長化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>コントロールプレーンの可用性を高めるために、コントロールプレーンを異なるAZに冗長化させる。</p>
+<p>コントロールプレーンの可用性を高めるために、コントロールプレーンを異なる AZ に冗長化させる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones">https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones</a></li>
@@ -34405,13 +34405,13 @@
 <p><br></p>
 <h3 id="pod">サービスメッシュに登録しないPodの選定 (サイドカーモードの場合)<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
 <h4 id="pod_1">▼ 監視系のPod<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
-<p>サイドカーモードに登録するPodが増えると、その分istio-proxyが増える。</p>
-<p>そのため、Pod当たりのハードウェアリソースの消費量が増えてしまう。</p>
-<p>テレメトリーを収集する必要のないPod (例：監視を責務に持つPod) は、サイドカーモードへ登録しないようにする。</p>
+<p>サイドカーモードに登録する Pod が増えると、その分 istio-proxy が増える。</p>
+<p>そのため、Pod 当たりのハードウェアリソースの消費量が増えてしまう。</p>
+<p>テレメトリーを収集する必要のない Pod (例：監視を責務に持つ Pod) は、サイドカーモードへ登録しないようにする。</p>
 <h4 id="jobpod">▼ Job配下のPod<a class="headerlink" href="#jobpod" title="Permanent link">&para;</a></h4>
-<p>Job配下のPodにistio-proxyを挿入した場合、Pod内のコンテナが終了してもistio-proxyが終了せず、Pod自体が削除されない問題もある。</p>
-<p>Job配下のPodは、サイドカーモードへ登録しないようにする。</p>
-<p>どうしてもサービスメッシュに登録したい場合は、Pod内のコンテナで、istio-proxyの『<code>localhost:15020/quitquitquit</code>』をコールするようなシェルスクリプトを実行する。</p>
+<p>Job 配下の Pod に istio-proxy を挿入した場合、Pod 内のコンテナが終了しても istio-proxy が終了せず、Pod 自体が削除されない問題もある。</p>
+<p>Job 配下の Pod は、サイドカーモードへ登録しないようにする。</p>
+<p>どうしてもサービスメッシュに登録したい場合は、Pod 内のコンテナで、istio-proxy の『<code>localhost:15020/quitquitquit</code>』をコールするようなシェルスクリプトを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34449,15 +34449,15 @@
 <h2 id="02">02. トラフィック管理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ingress-gateway">Istio Ingress Gatewayに関して<a class="headerlink" href="#istio-ingress-gateway" title="Permanent link">&para;</a></h3>
 <h4 id="istiodnamespace">▼ Istiodコントロールプレーンとは異なるNamespaceにおく<a class="headerlink" href="#istiodnamespace" title="Permanent link">&para;</a></h4>
-<p>セキュリティ上の理由から、Istio Ingress GatewayとIstiodコントロールプレーンは異なるNamespaceにおくほうが良い。</p>
+<p>セキュリティ上の理由から、Istio Ingress Gateway と Istiod コントロールプレーンは異なる Namespace におくほうがよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway">https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway</a></li>
 </ul>
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Serviceを選ぶ<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
-<p>Istio Ingress Gatewayでは、内部的に作成されるServiceのタイプ (NodePort Service、ClusterIP Service、LoadBalancer Service) を選べる。</p>
-<p>NodePort Serviceを選ぶ場合、Nodeの送信元に開発者がロードバランサーを作成し、NodePort Serviceにインバウンド通信をルーティングできるようにする。</p>
+<p>Istio Ingress Gateway では、内部的に作成される Service のタイプ (NodePort Service、ClusterIP Service、LoadBalancer Service) を選べる。</p>
+<p>NodePort Service を選ぶ場合、Node の送信元に開発者がロードバランサーを作成し、NodePort Service にインバウンド通信をルーティングできるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Amazon Route 53</span>
@@ -34477,11 +34477,11 @@
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 </code></pre></div>
-<p>一方で、LoadBalancer Serviceを選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成される。</p>
-<p>そのため、このロードバランサーからLoadBalancer Serviceへルーティングできるようにする。</p>
-<p>LoadBalancer Serviceでは、クラウドプロバイダーのリソースとKubernetesリソースの責務の境界が曖昧になってしまうため、NodePort Serviceを選ぶようにする。</p>
-<p>補足として、デフォルトではIstio Ingress Gatewayの内部ではLoadBalancer Serviceを作成されてしまう。</p>
-<p>NodePort Serviceを選ぶためには、Istio Ingress Gatewayではなく、IstioOperatorやistioチャート上でServiceのタイプを設定し、Istio Ingress Gatewayを作成する必要がある。</p>
+<p>一方で、LoadBalancer Service を選ぶ場合、クラウドプロバイダーのロードバランサーが自動的に作成される。</p>
+<p>そのため、このロードバランサーから LoadBalancer Service へルーティングできるようにする。</p>
+<p>LoadBalancer Service では、クラウドプロバイダーのリソースと Kubernetes リソースの責務の境界が曖昧になってしまうため、NodePort Service を選ぶようにする。</p>
+<p>補足として、デフォルトでは Istio Ingress Gateway の内部では LoadBalancer Service を作成されてしまう。</p>
+<p>NodePort Service を選ぶためには、Istio Ingress Gateway ではなく、IstioOperator や istio チャート上で Service のタイプを設定し、Istio Ingress Gateway を作成する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/issues/28310#issuecomment-733079966">https://github.com/istio/istio/issues/28310#issuecomment-733079966</a></li>
@@ -34489,8 +34489,8 @@
 </ul>
 </blockquote>
 <h4 id="clusterip-service-aws-load-balancer-controller">▼ ClusterIP Serviceを選ぶ (AWS Load Balancer Controllerを使用する場合のみ)<a class="headerlink" href="#clusterip-service-aws-load-balancer-controller" title="Permanent link">&para;</a></h4>
-<p>AWS Load Balancer Controllerを使用する場合、Istio Ingress GatewayでClusterIP Serviceを使用できる。</p>
-<p>Ingressにて、<code>alb.ingress.kubernetes.io/target-type</code> キー値を <code>ip</code> とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。</p>
+<p>AWS Load Balancer Controller を使用する場合、Istio Ingress Gateway で ClusterIP Service を使用できる。</p>
+<p>Ingress にて、<code>alb.ingress.kubernetes.io/target-type</code> キー値を <code>ip</code> とすると、AWS Load Balancer Controller は Pod にリクエストを直接的に L7 ロードバランシングする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Amazon Route 53</span>
@@ -34516,11 +34516,11 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ マイクロサービスごとに作成する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>単一障害点になることを防ぐために、<code>1</code> 個のIstio Ingress Gatewayで全てのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。</p>
+<p>単一障害点になることを防ぐために、<code>1</code> 個の Istio Ingress Gateway ですべてのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。</p>
 <p><br></p>
 <h3 id="1">サブセット名を <code>1</code> 個にする<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p>Istioリソースで設定するサブセット名は <code>1</code> 個だけにする。</p>
-<p>これにより、Istio Ingress Gatewayで受信した通信を、特定のバージョンのPodにルーティングできる。</p>
+<p>Istio リソースで設定するサブセット名は <code>1</code> 個だけにする。</p>
+<p>これにより、Istio Ingress Gateway で受信した通信を、特定のバージョンの Pod にルーティングできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34543,8 +34543,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="istio_1">Istioリソースのリクエスト可能な範囲を限定する<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h3>
-<p>Istioリソースの <code>.spec.exportTo</code> キーでは『<code>.</code> (ドット) 』を設定する。</p>
-<p>これにより、同じNamespaceからしかリクエストを受信できないようにする。</p>
+<p>Istio リソースの <code>.spec.exportTo</code> キーでは『<code>.</code> (ドット) 』を設定する。</p>
+<p>これにより、同じ Namespace からしかリクエストを受信できないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34568,10 +34568,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="destinationrule">DestinationRuleを最初に更新する<a class="headerlink" href="#destinationrule" title="Permanent link">&para;</a></h3>
-<p>新しいサブセットを追加する場合、DestinationRuleを最初に更新する。</p>
+<p>新しいサブセットを追加する場合、DestinationRule を最初に更新する。</p>
 <p>これにより、ダウンタイムなしでサブセットを追加できる。</p>
-<p>DestinationRuleを更新する前に新しいサブセットを持つVirtualServiceを更新してしまうと、VirtualServiceは新しいサブセットを持つDestinationRuleを見つけられず、<code>503</code> レスポンスを返信してしまう。</p>
-<p>DestinationRuleを最初に更新し、正常に完了することを待機した後に、VirtualServiceを更新する。</p>
+<p>DestinationRule を更新する前に新しいサブセットを持つ VirtualService を更新してしまうと、VirtualService は新しいサブセットを持つ DestinationRule を見つけられず、<code>503</code> レスポンスを返信してしまう。</p>
+<p>DestinationRule を最初に更新し、正常に完了することを待機した後に、VirtualService を更新する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes">https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes</a></li>
@@ -34580,7 +34580,7 @@
 <p><br></p>
 <h2 id="02-02">02-02. 通信ルーティングのパターン<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="loadbalancer-service">LoadBalancer Serviceの場合<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h3>
-<p>LoadBalancer Serviceを使用する場合、以下のようなネットワーク経路がある。</p>
+<p>LoadBalancer Service を使用する場合、以下のようなネットワーク経路がある。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
@@ -34601,7 +34601,7 @@
 <p><br></p>
 <h3 id="nodeport-service_1">NodePort Serviceの場合<a class="headerlink" href="#nodeport-service_1" title="Permanent link">&para;</a></h3>
 <h4 id="l7">▼ <code>L7</code> ロードバランサーがない場合<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h4>
-<p>NodeのNICの宛先情報は、Node外から宛先IPアドレスとして指定できるため、インバウンド通信にIngressを必要としない。</p>
+<p>Node の NIC の宛先情報は、Node 外から宛先 IP アドレスとして指定できるため、インバウンド通信に Ingress を必要としない。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
@@ -34619,7 +34619,7 @@
 </code></pre></div>
 <h4 id="l7_1">▼ <code>L7</code> ロードバランサーがある場合<a class="headerlink" href="#l7_1" title="Permanent link">&para;</a></h4>
 <p>パブリックプロバイダーのロードバランサー (例：AWS ALB) を別に配置する。</p>
-<p>単一のL7ロードバランサーを作成し、複数のL4ロードバランサーに振り分けるとよい。</p>
+<p>単一の L7 ロードバランサーを作成し、複数の L4 ロードバランサーに振り分けるとよい。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
@@ -34642,8 +34642,8 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="clusterip-service">ClusterIP Serviceの場合<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h3>
-<p>AWS Load Balancer Controllerを使用する場合、Istio Ingress GatewayでClusterIP Serviceを使用できる。</p>
-<p>Ingressにて、<code>alb.ingress.kubernetes.io/target-type</code> キー値を <code>ip</code> とすると、AWS Load Balancer ControllerはPodにリクエストを直接的にL7ロードバランシングする。</p>
+<p>AWS Load Balancer Controller を使用する場合、Istio Ingress Gateway で ClusterIP Service を使用できる。</p>
+<p>Ingress にて、<code>alb.ingress.kubernetes.io/target-type</code> キー値を <code>ip</code> とすると、AWS Load Balancer Controller は Pod にリクエストを直接的に L7 ロードバランシングする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Amazon Route 53</span>
@@ -34672,7 +34672,7 @@
 <h2 id="03">03. アップグレード<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_5">設計規約<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ サポート期間<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>Istioでは、マイナーバージョンごとのアップグレードを推奨しており、またマイナーバージョンのサポートが半年ごとに終了する。</p>
+<p>Istio では、マイナーバージョンごとのアップグレードを推奨しており、またマイナーバージョンのサポートが半年ごとに終了する。</p>
 <p>実質的に半年ごとにアップグレード工数が発生する。</p>
 <blockquote>
 <ul>
@@ -34680,7 +34680,7 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ マイナーバージョン単位でアップグレード<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Istioの開発プロジェクトでは、マイナーバージョンを <code>1</code> 個ずつ新しくするアップグレードしか検証していない。</p>
+<p>Istio の開発プロジェクトでは、マイナーバージョンを <code>1</code> 個ずつ新しくするアップグレードしか検証していない。</p>
 <p>そのため、マイナーバージョンを <code>2</code> 個以上跨いだアップグレードを推奨していない。</p>
 <blockquote>
 <ul>
@@ -34689,16 +34689,16 @@
 </ul>
 </blockquote>
 <h4 id="istiod">▼ Istiodコントロールプレーンでダウンタイムを発生させない<a class="headerlink" href="#istiod" title="Permanent link">&para;</a></h4>
-<p>Istiodコントロールプレーンでダウンタイムが発生すると、istio-proxy内のpilot-agentが最新の宛先情報を取得できなくなる。</p>
+<p>Istiod コントロールプレーンでダウンタイムが発生すると、istio-proxy 内の pilot-agent が最新の宛先情報を取得できなくなる。</p>
 <p>そのため、古いバージョンのマイクロサービスの宛先情報を使用してしまう。</p>
-<p>Istiodコントロールプレーンをカナリアアップグレードを採用する。</p>
+<p>Istiod コントロールプレーンをカナリアアップグレードを採用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://thenewstack.io/upgrading-istio-without-downtime/">https://thenewstack.io/upgrading-istio-without-downtime/</a></li>
 </ul>
 </blockquote>
 <h4 id="istio-ingress-gateway_1">▼ Istio Ingress Gatewayでダウンタイムを発生させない<a class="headerlink" href="#istio-ingress-gateway_1" title="Permanent link">&para;</a></h4>
-<p>Istio Ingress Gatewayでダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。</p>
+<p>Istio Ingress Gateway でダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://thenewstack.io/upgrading-istio-without-downtime/">https://thenewstack.io/upgrading-istio-without-downtime/</a></li>
@@ -34707,12 +34707,12 @@
 <p><br></p>
 <h3 id="_8">インプレース方式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ インプレース方式とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>既存のIstiodコントロールプレーンとIstio Ingress Gatewayの両方をインプレース方式でアップグレードする。</p>
+<p>既存の Istiod コントロールプレーンと Istio Ingress Gateway の両方をインプレース方式でアップグレードする。</p>
 <h4 id="_10">▼ 手順<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>CRDを更新する。</p>
+<p>CRD を更新する。</p>
 <p>必要なCRDのマニフェストは、リポジトリで確認する必要がある。</p>
 </dd>
 </dl>
@@ -34723,7 +34723,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>IstiodコントロールプレーンとIstio Ingress Gatewayの両方をインプレース方式でアップグレードする。</p>
+<p>Istiod コントロールプレーンと Istio Ingress Gateway の両方をインプレース方式でアップグレードする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>install
@@ -34731,7 +34731,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>データプレーンのistio-proxyを再インジェクションする。</p>
+<p>データプレーンの istio-proxy を再インジェクションする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>deployment<span class="w"> </span>app-deployment<span class="w"> </span>-n<span class="w"> </span>app
@@ -34759,7 +34759,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>HelmではCRDを管理しないようにし、<code>kubectl</code> コマンドでこれを作成する。</p>
+<p>Helm では CRD を管理しないようにし、<code>kubectl</code> コマンドでこれを作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/istio/istio/1.15.3/manifests/charts/base/crds/crd-all.gen.yaml
@@ -34767,7 +34767,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>istiodチャートを使用して、古いバージョンのMutatingWebhookConfigurationのみを削除する。</p>
+<p>istiod チャートを使用して、古いバージョンの MutatingWebhookConfiguration のみを削除する。</p>
 <p>この時、既存のリリースは古いリリースとして扱う。</p>
 </dd>
 </dl>
@@ -34776,7 +34776,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>istiodチャートを使用して、新しいバージョンのMutatingWebhookConfigurationを作成しつつ、Istiodコントロールプレーンに関するKubernetesリソースを変更する。</p>
+<p>istiod チャートを使用して、新しいバージョンの MutatingWebhookConfiguration を作成しつつ、Istiod コントロールプレーンに関する Kubernetes リソースを変更する。</p>
 <p>この時、リリースを新しく命名する。</p>
 </dd>
 </dl>
@@ -34785,15 +34785,15 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>特定のNamespaceをアップグレードする。</p>
+<p>特定の Namespace をアップグレードする。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>動作確認し、問題なければ、残りのNamespaceもアップグレードする。</p>
+<p>動作確認し、問題なければ、残りの Namespace もアップグレードする。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>istiodチャートを使用して、古いリリースで作成したIstiodコントロールプレーンに関するKubernetesリソースを削除する。</p>
+<p>istiod チャートを使用して、古いリリースで作成した Istiod コントロールプレーンに関する Kubernetes リソースを削除する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;古いバージョンのリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/istiod<span class="w"> </span>-n<span class="w"> </span>istio-system<span class="w"> </span>--version<span class="w"> </span>&lt;古いバージョン&gt;<span class="w"> </span>--set<span class="w"> </span><span class="nv">revisionTags</span><span class="o">=</span>null
@@ -34801,7 +34801,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <dl>
 <dt><code>(7)</code></dt>
 <dd>
-<p>istio-baseを使用して、Istioに関するCRDを変更する。</p>
+<p>istio-base を使用して、Istio に関する CRD を変更する。</p>
 <p>この時、リリースを新しく命名する。</p>
 </dd>
 </dl>
@@ -34810,7 +34810,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <dl>
 <dt><code>(8)</code></dt>
 <dd>
-<p>gatewayチャートを使用して、Istio Ingress Gatewayに関するKubernetesリソースを変更する。</p>
+<p>gateway チャートを使用して、Istio Ingress Gateway に関する Kubernetes リソースを変更する。</p>
 <p>この時、リリースを新しく命名する。</p>
 </dd>
 </dl>
@@ -34829,7 +34829,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <h2 id="05-ci">05. CI<a class="headerlink" href="#05-ci" title="Permanent link">&para;</a></h2>
 <h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h3>
 <h4 id="gitlab-ciyml">▼ <code>.gitlab-ci.yml</code> ファイル<a class="headerlink" href="#gitlab-ciyml" title="Permanent link">&para;</a></h4>
-<p>CI上でClusterを作成し、Istioをデプロイする。</p>
+<p>CI 上で Cluster を作成し、Istio をデプロイする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ブランチ名に応じて、CIで使用する実行環境名を切り替える</span>
 <span class="nt">workflow</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
@@ -35000,7 +35000,7 @@ istioctl<span class="w"> </span>version
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

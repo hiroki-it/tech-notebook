@@ -33587,7 +33587,7 @@
 <h2 id="01-kustomize">01. <code>kustomize</code> コマンド<a class="headerlink" href="#01-kustomize" title="Permanent link">&para;</a></h2>
 <h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
 <h4 id="build_1">▼ buildとは<a class="headerlink" href="#build_1" title="Permanent link">&para;</a></h4>
-<p>Kustomizeの設定ファイルに基づいて、マニフェストを作成する。</p>
+<p>Kustomize の設定ファイルに基づいて、マニフェストを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kustomize<span class="w"> </span>build
 </code></pre></div>
 <p><code>kusomize build</code> コマンドの結果をデプロイする場合、パイプで <code>kubectl apply</code> コマンドに渡す。</p>
@@ -33606,7 +33606,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kustomize<span class="w"> </span>build<span class="w"> </span>--enable-alpha-plugins<span class="w"> </span>./kustomize/overlay
 </code></pre></div>
 <h4 id="-enable-helm">▼ --enable-helm<a class="headerlink" href="#-enable-helm" title="Permanent link">&para;</a></h4>
-<p>Kustomizeを使用して、Helmを実行できるようにする。</p>
+<p>Kustomize を使用して、Helm を実行できるようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kustomize<span class="w"> </span>build<span class="w"> </span>--enable-helm<span class="w"> </span>./chart
 </code></pre></div>
 <h4 id="-output">▼ --output<a class="headerlink" href="#-output" title="Permanent link">&para;</a></h4>
@@ -33627,7 +33627,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 <li><a href="https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file">https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file</a></li>
 </ul>
 </blockquote>
-<p>リモートにある <code>kustomize.yaml</code> ファイルを使用する場合も、同じく <code>kustomize.yaml</code> ファイルのあるディレクトリのURLを指定する。</p>
+<p>リモートにある <code>kustomize.yaml</code> ファイルを使用する場合も、同じく <code>kustomize.yaml</code> ファイルのあるディレクトリの URL を指定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;&lt;リポジトリのURL&gt;/&lt;kustomize.yamlファイルのあるディレクトリ&gt;?ref=&lt;タグ&gt;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>kustomize.diff
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;&lt;リポジトリのURL&gt;/&lt;kustomize.yamlファイルのあるディレクトリ&gt;?ref=&lt;タグ&gt;&quot;</span>
@@ -33638,12 +33638,12 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 </ul>
 </blockquote>
 <p><strong>＊実行例＊</strong></p>
-<p>例えば、argocd-cdチャートの <code>5.28.0</code> を使用する場合、これはArgoCDの <code>2.6.7</code> に対応しているため、以下の値で作成/変更する。</p>
+<p>例えば、argocd-cd チャートの <code>5.28.0</code> を使用する場合、これは ArgoCD の <code>2.6.7</code> に対応しているため、以下の値で作成/変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7&quot;</span>
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7&quot;</span>
 </code></pre></div>
-<p>例えば、aws-load-balancer-controllerチャートの <code>1.5.2</code> を使用する場合、これはaws-load-balancer-controllerの <code>2.5.1</code> に対応しているため、以下の値で作成/変更する。</p>
+<p>例えば、aws-load-balancer-controller チャートの <code>1.5.2</code> を使用する場合、これは aws-load-balancer-controller の <code>2.5.1</code> に対応しているため、以下の値で作成/変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>diff<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1&quot;</span>
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1&quot;</span>
@@ -33679,7 +33679,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

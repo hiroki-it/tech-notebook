@@ -35214,8 +35214,8 @@
 <p><br></p>
 <h2 id="02">02. 設定ファイルの種類<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="httpdconf"><code>httpd.conf</code> ファイル<a class="headerlink" href="#httpdconf" title="Permanent link">&para;</a></h3>
-<p>Apacheの主要な設定ファイル。</p>
-<p>Includeディレクティブを使用すれば、任意の名前で設定ファイルを追加できる。</p>
+<p>Apache の主要な設定ファイル。</p>
+<p>Include ディレクティブを使用すれば、任意の名前で設定ファイルを追加できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/2.4/ja/configuring.html#main">https://httpd.apache.org/docs/2.4/ja/configuring.html#main</a></li>
@@ -35224,8 +35224,8 @@
 <p><br></p>
 <h3 id="htaccess"><code>.htaccess</code> ファイル<a class="headerlink" href="#htaccess" title="Permanent link">&para;</a></h3>
 <h4 id="htaccess_1">▼ <code>.htaccess</code> ファイルとは<a class="headerlink" href="#htaccess_1" title="Permanent link">&para;</a></h4>
-<p>基本的に、<code>httpd.conf</code> ファイルで全ての能力を設定できる。</p>
-<p>ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアでApacheの設定を定義したい場合、<code>.htaccess</code> ファイルを使用する。</p>
+<p>基本的に、<code>httpd.conf</code> ファイルですべての能力を設定できる。</p>
+<p>ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアで Apache の設定を定義したい場合、<code>.htaccess</code> ファイルを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess">https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess</a></li>
@@ -35233,7 +35233,7 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ ルートディレクトリに置いた場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>全てのファイルに対して、ディレクティブが適用される。</p>
+<p>すべてのファイルに対して、ディレクティブが適用される。</p>
 <p><img alt="htaccess影響範囲" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/htaccess影響範囲.png" /></p>
 <blockquote>
 <ul>
@@ -35255,19 +35255,19 @@
 <p>他の設定ディレクティブで、相対パスが設定されている場合に適用される。</p>
 <p>そのルートディレクトリを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>通常であれば、etcディレクトリ配下にconfファイルが配置される。</p>
+<p>通常であれば、etc ディレクトリ配下に conf ファイルが配置される。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">ServerRoot</span><span class="w"> </span><span class="sx">/etc/httpd</span>
 </code></pre></div>
-<p>CentOSのEPELリポジトリ経由でインストールした場合、Apacheのインストール後に、optディレクトリ配下にconfファイルが配置される。</p>
+<p>CentOS の EPEL リポジトリ経由でインストールした場合、Apache のインストール後に、opt ディレクトリ配下に conf ファイルが配置される。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">ServerRoot</span><span class="w"> </span><span class="sx">/opt/rh/httpd24/root/etc/httpd</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="virtualhost">VirtualHost<a class="headerlink" href="#virtualhost" title="Permanent link">&para;</a></h3>
 <h4 id="virtualhost_1">▼ VirtualHostとは<a class="headerlink" href="#virtualhost_1" title="Permanent link">&para;</a></h4>
 <p>ディレクティブを囲うディレクティブの一種。</p>
-<p>特定のホスト名やIPアドレスにリクエストがあったときに実行するディレクティブを設定する。</p>
-<p>Apacheの稼働するサーバーが、複数のドメインを仮想的に持ち、リクエストの <code>Host</code> ヘッダー値で合致した条件に応じて分岐できる。</p>
-<p>複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、<code>Host</code> ヘッダー値がいずれのServerName値と一致するかで決まる。</p>
+<p>特定のホスト名や IP アドレスにリクエストがあったときに実行するディレクティブを設定する。</p>
+<p>Apache の稼働するサーバーが、複数のドメインを仮想的に持ち、リクエストの <code>Host</code> ヘッダー値で合致した条件に応じて分岐できる。</p>
+<p>複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、<code>Host</code> ヘッダー値がいずれの ServerName 値と一致するかで決まる。</p>
 <blockquote>
 <ul>
 <li><a href="https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html">https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html</a></li>
@@ -35288,9 +35288,9 @@
 <span class="nt">&lt;/VirtualHost&gt;</span>
 </code></pre></div>
 <h4 id="ipvirtualhost">▼ IPベースVirtualHost<a class="headerlink" href="#ipvirtualhost" title="Permanent link">&para;</a></h4>
-<p>各ドメインに異なるIPアドレスを割り振る仮想ホスト。</p>
+<p>各ドメインに異なる IP アドレスを割り振る仮想ホスト。</p>
 <h4 id="virtualhost_2">▼ 名前ベースVirtualHost<a class="headerlink" href="#virtualhost_2" title="Permanent link">&para;</a></h4>
-<p>全てのドメインに同じIPアドレスを割り振る仮想ホスト。</p>
+<p>すべてのドメインに同じ IP アドレスを割り振る仮想ホスト。</p>
 <p><br></p>
 <h3 id="documentroot">DocumentRoot<a class="headerlink" href="#documentroot" title="Permanent link">&para;</a></h3>
 <h4 id="documentroot_1">▼ DocumentRootとは<a class="headerlink" href="#documentroot_1" title="Permanent link">&para;</a></h4>
@@ -35302,7 +35302,7 @@
 <span class="w">    </span><span class="nb">ServerName</span><span class="w"> </span>example.com
 <span class="nt">&lt;/VirtualHost&gt;</span>
 </code></pre></div>
-<p>index.html以外の名前をエントリーポイントにする場合、ファイル名を指定する必要がある。</p>
+<p>index.html 以外の名前をエントリーポイントにする場合、ファイル名を指定する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;VirtualHost</span><span class="w"> </span><span class="s">*:80</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nb">DocumentRoot</span><span class="w"> </span><span class="sx">/var/www/foo</span>:/start-up.html
@@ -35323,21 +35323,21 @@
 <p><br></p>
 <h3 id="usergroup">User、Group<a class="headerlink" href="#usergroup" title="Permanent link">&para;</a></h3>
 <h4 id="user">▼ Userとは<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
-<p>httpdプロセスのユーザー名を設定する。</p>
-<p>httpdプロセスによって作成されたファイルの所有者名は、このディレクティブで定義したものになる。</p>
+<p>httpd プロセスのユーザー名を設定する。</p>
+<p>httpd プロセスによって作成されたファイルの所有者名は、このディレクティブで定義したものになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">User</span><span class="w"> </span>apache
 </code></pre></div>
 <h4 id="group">▼ Groupとは<a class="headerlink" href="#group" title="Permanent link">&para;</a></h4>
-<p>httpdプロセスのグループ名を設定する。</p>
-<p>httpdプロセスによって作成されたファイルのグループ名は、このディレクティブで定義したものになる。</p>
+<p>httpd プロセスのグループ名を設定する。</p>
+<p>httpd プロセスによって作成されたファイルのグループ名は、このディレクティブで定義したものになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">Group</span><span class="w"> </span>apache
 </code></pre></div>
 <p><br></p>
 <h3 id="keepalivemaxkeepaliverequestskeepalivetimeout">KeepAlive、MaxKeepAliveRequests、KeepAliveTimeout<a class="headerlink" href="#keepalivemaxkeepaliverequestskeepalivetimeout" title="Permanent link">&para;</a></h3>
 <h4 id="keepalive">▼ KeepAlive<a class="headerlink" href="#keepalive" title="Permanent link">&para;</a></h4>
-<p>TCP KeepAliveを有効化する。</p>
+<p>TCP KeepAlive を有効化する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">KeepAlive</span><span class="w"> </span><span class="k">On</span>
 </code></pre></div>
@@ -35347,13 +35347,13 @@
 </ul>
 </blockquote>
 <h4 id="keepalivetimeout">▼ KeepAliveTimeout<a class="headerlink" href="#keepalivetimeout" title="Permanent link">&para;</a></h4>
-<p>セッションIDを付与中のクライアントで、再びリクエストを送信するまでに何秒間経過したら、セッションIDを破棄するかを設定する。</p>
+<p>セッション ID を付与中のクライアントで、再びリクエストを送信するまでに何秒間経過したら、セッション ID を破棄するかを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c"># KeepAliveがOnの時のみ</span>
 <span class="nb">KeepAliveTimeout</span><span class="w"> </span><span class="m">5</span>
 </code></pre></div>
 <h4 id="maxkeepaliverequests">▼ MaxKeepAliveRequests<a class="headerlink" href="#maxkeepaliverequests" title="Permanent link">&para;</a></h4>
-<p>セッションIDを付与中のクライアントで、リクエストのファイルの最大数を設定する。</p>
+<p>セッション ID を付与中のクライアントで、リクエストのファイルの最大数を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c"># KeepAliveがOnの時のみ</span>
 <span class="nb">MaxKeepAliveRequests</span><span class="w"> </span><span class="m">1000</span>
@@ -35364,8 +35364,8 @@
 <h4 id="loadmodule_1">▼ LoadModule<a class="headerlink" href="#loadmodule_1" title="Permanent link">&para;</a></h4>
 <p>モジュールを読み出し、設定ディレクティブを宣言できるようにする。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>相対パスを指定し、ServerRootを適用させる。</p>
-<p>これにより、httpdディレクトリのmodulesディレクトリが参照される。</p>
+<p>相対パスを指定し、ServerRoot を適用させる。</p>
+<p>これにより、httpd ディレクトリの modules ディレクトリが参照される。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># ServerRoot が /opt/rh/httpd24/root/etc/httpd だとする。</span>
 <span class="nb">LoadModule</span><span class="w"> </span>dir_module<span class="w"> </span>modules/mod_dir.so
 </code></pre></div>
@@ -35373,7 +35373,7 @@
 <h2 id="03-03-mod_dir">03-03. mod_dirにおける設定ディレクティブ<a class="headerlink" href="#03-03-mod_dir" title="Permanent link">&para;</a></h2>
 <h3 id="directoryindex">DirectoryIndex<a class="headerlink" href="#directoryindex" title="Permanent link">&para;</a></h3>
 <h4 id="directoryindex_1">▼ DirectoryIndexとは<a class="headerlink" href="#directoryindex_1" title="Permanent link">&para;</a></h4>
-<p>Directoryディレクティブによってリクエストされたディレクトリのインデックスファイルをレスポンスする。</p>
+<p>Directory ディレクティブによってリクエストされたディレクトリのインデックスファイルをレスポンスする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;Directory</span><span class="w"> </span><span class="s">&quot;/var/www/foo&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span><span class="nb">DirectoryIndex</span><span class="w"> </span>index.html<span class="w"> </span>index.php
@@ -35396,17 +35396,17 @@
 <span class="nt">&lt;/Directory&gt;</span>
 </code></pre></div>
 <h4 id="all">▼ All<a class="headerlink" href="#all" title="Permanent link">&para;</a></h4>
-<p>別に用意した <code>.htaccess</code> ファイルにて、実装できるディレクティブを全て有効化する。</p>
+<p>別に用意した <code>.htaccess</code> ファイルにて、実装できるディレクティブをすべて有効化する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">All</span>
 </code></pre></div>
 <h4 id="none">▼ None<a class="headerlink" href="#none" title="Permanent link">&para;</a></h4>
-<p>別に用意した <code>.htaccess</code> ファイルにて、実装できるディレクティブを全て無効化する。</p>
+<p>別に用意した <code>.htaccess</code> ファイルにて、実装できるディレクティブをすべて無効化する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">AllowOverride</span><span class="w"> </span><span class="k">None</span>
 </code></pre></div>
 <h4 id="indexes">▼ Indexes<a class="headerlink" href="#indexes" title="Permanent link">&para;</a></h4>
-<p>別に用意した <code>.htaccess</code> ファイルにて、DirectoryIndexディレクティブを有効化するか否かを設定する。</p>
+<p>別に用意した <code>.htaccess</code> ファイルにて、DirectoryIndex ディレクティブを有効化するか否かを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">AllowOverride</span><span class="w"> </span>Indexes
 </code></pre></div>
@@ -35435,7 +35435,7 @@
 <div class="highlight"><pre><span></span><code><span class="nb">RewriteRule</span><span class="w"> </span>URL書換＆ルーティングの記述
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>リクエストをHTTPSプロトコルに変換して、リダイレクトする。</p>
+<p>リクエストを HTTPS プロトコルに変換して、リダイレクトする。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">RewriteRule</span><span class="w"> </span>^(.*)?$<span class="w"> </span>https://%{HTTP_HOST}$1<span class="w"> </span>[R=301,L]
 </code></pre></div>
 <p><br></p>
@@ -35547,15 +35547,15 @@
 <h2 id="03-07-mod_ssl">03-07. mod_sslにおける設定ディレクティブ<a class="headerlink" href="#03-07-mod_ssl" title="Permanent link">&para;</a></h2>
 <h3 id="sslcertificatefile">SSLCertificateFile<a class="headerlink" href="#sslcertificatefile" title="Permanent link">&para;</a></h3>
 <h4 id="sslcertificatefile_1">▼ SSLCertificateFileとは<a class="headerlink" href="#sslcertificatefile_1" title="Permanent link">&para;</a></h4>
-<p>PKIにおける公開鍵の検証に必要なサーバー証明書のディレクトリを設定する。</p>
-<p>本番環境ではAWS Certificate Managerの証明書を使用することが多いため、基本的な用途としては、ローカル開発での自己署名サーバー証明書の読み出しのために使用する。</p>
+<p>PKI における公開鍵の検証に必要なサーバー証明書のディレクトリを設定する。</p>
+<p>本番環境では AWS Certificate Manager の証明書を使用することが多いため、基本的な用途としては、ローカル開発での自己署名サーバー証明書の読み出しのために使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">SSLCertificateFile</span><span class="w"> </span><span class="sx">/etc/httpd/conf.d/server.crt</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="sslcertificatekeyfile">SSLCertificateKeyFile<a class="headerlink" href="#sslcertificatekeyfile" title="Permanent link">&para;</a></h3>
 <h4 id="sslcertificatekeyfile_1">▼ SSLCertificateKeyFileとは<a class="headerlink" href="#sslcertificatekeyfile_1" title="Permanent link">&para;</a></h4>
-<p>PKIにおける公開鍵の検証に必要な秘密鍵のディレクトリを設定する。</p>
+<p>PKI における公開鍵の検証に必要な秘密鍵のディレクトリを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">SSLCertificateKeyFile</span><span class="w"> </span><span class="sx">/etc/httpd/conf.d/server.key</span>
 </code></pre></div>
@@ -35566,7 +35566,7 @@
 <p>レスポンスヘッダーを設定する。</p>
 <p><code>set</code>、<code>append</code>、<code>add</code>、<code>unset</code>、<code>echo</code> オプションを設定できる。</p>
 <p>デフォルトでは <code>2xx</code> と <code>3xx</code> のステータスコードのみで設定が適用される。</p>
-<p>オプションとして、<code>always</code> を設定することにより、全てのステータスコードでヘッダーを設定する。</p>
+<p>オプションとして、<code>always</code> を設定することにより、すべてのステータスコードでヘッダーを設定する。</p>
 <h4 id="set">▼ set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
 <p>レスポンスヘッダーを追加する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35575,7 +35575,7 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nb">Header</span><span class="w"> </span>set<span class="w"> </span>Referrer-Policy<span class="w"> </span><span class="s2">&quot;no-referrer-when-downgrade&quot;</span><span class="w"> </span>always
 </code></pre></div>
-<p>補足として、Chrome85以降の <code>Referrer-Policy</code> ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。</p>
+<p>補足として、Chrome85 以降の <code>Referrer-Policy</code> ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.chromestatus.com/feature/6251880185331712">https://www.chromestatus.com/feature/6251880185331712</a></li>
@@ -35610,7 +35610,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

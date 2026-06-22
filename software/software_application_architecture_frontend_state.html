@@ -33603,7 +33603,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. 状態管理とは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>UIレンダリングに必要なデータを保持し、またユーザー操作や通信処理結果に応じて非同期に変更すること。</p>
+<p>UI レンダリングに必要なデータを保持し、またユーザー操作や通信処理結果に応じて非同期に変更すること。</p>
 <table>
 <thead>
 <tr>
@@ -33633,17 +33633,17 @@
 <p><br></p>
 <h2 id="02">02. 状態管理するべきデータ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">選択途中の絞り込み条件<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>UIで次を設定している間、そのデータをバックエンドに送信することなく、フロントエンド上で管理する。</p>
-<p>また、管理されたデータに応じたUIを表示する。</p>
+<p>UI で次を設定している間、そのデータをバックエンドに送信することなく、フロントエンド上で管理する。</p>
+<p>また、管理されたデータに応じた UI を表示する。</p>
 <ul>
 <li>絞り込み項目の設定</li>
 <li>並び替え項目と昇順／降順の設定</li>
-<li>OR条件とAND条件の設定</li>
+<li>OR 条件と AND 条件の設定</li>
 </ul>
 <p>最終的に決定ボタンが押されたタイミングで状態をバックエンドに送信する。</p>
 <h3 id="_4">カーソルをあてている表示項目<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>UIで次のように操作している間、カーソルを当てている表示項目のデータをフロントエンド上でのみ管理する。</p>
-<p>また、管理されたデータに応じたUIを表示する。</p>
+<p>UI で次のように操作している間、カーソルを当てている表示項目のデータをフロントエンド上でのみ管理する。</p>
+<p>また、管理されたデータに応じた UI を表示する。</p>
 <ul>
 <li>グラフや表の値にカーソルをあてる</li>
 <li>カレンダーの日付にカーソルをあてる</li>
@@ -33654,7 +33654,7 @@
 <h3 id="mvp">MVPアーキテクチャとは<a class="headerlink" href="#mvp" title="Permanent link">&para;</a></h3>
 <p>以下の要素が該当のロジックをもつ。</p>
 <ul>
-<li>View：UIレンダリングロジック、CSSスタイリングロジック</li>
+<li>View：UI レンダリングロジック、CSS スタイリングロジック</li>
 <li>Presenter：状態管理ロジック</li>
 <li>Model：機能モデル</li>
 </ul>
@@ -33663,17 +33663,17 @@
 <h3 id="mvvm">MVVMアーキテクチャとは<a class="headerlink" href="#mvvm" title="Permanent link">&para;</a></h3>
 <p>以下の要素が該当のロジックをもつ。</p>
 <ul>
-<li>View：UIレンダリングロジック、CSSスタイリングロジック</li>
+<li>View：UI レンダリングロジック、CSS スタイリングロジック</li>
 <li>ViewModel：状態管理ロジック</li>
 <li>Model：機能モデル</li>
 </ul>
-<p>ViewとModelの間にViewModelを配置し、ViewとViewModelの間で双方向にデータをやり取り (双方向データバインディング) する。</p>
-<p>これによって、ViewとModelの間を疎結合にする。</p>
-<p>Vue.jsでは、意識せずにMVVMアーキテクチャで実装できるようになっている。</p>
+<p>View と Model の間に ViewModel を配置し、View と ViewModel の間で双方向にデータをやり取り (双方向データバインディング) する。</p>
+<p>これによって、View と Model の間を疎結合にする。</p>
+<p>Vue.js では、意識せずに MVVM アーキテクチャで実装できるようになっている。</p>
 <p><img alt="一般的なMVVMアーキテクチャ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png" /></p>
 <p><br></p>
 <h3 id="_5">状態管理との関係性<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>以下の状態管理を使用している場合、MVVMアーキテクチャで構築することになる。</p>
+<p>以下の状態管理を使用している場合、MVVM アーキテクチャで構築することになる。</p>
 <ul>
 <li>CSR</li>
 </ul>
@@ -33709,7 +33709,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 19:34:37 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

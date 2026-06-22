@@ -35145,11 +35145,11 @@
 <h2 id="01-envoy">01. Envoyの仕組み<a class="headerlink" href="#01-envoy" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><img alt="envoy_structure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_structure.png" /></p>
-<p>Envoyは、コントロールプレーンに相当するxDSサーバーと、データプレーンに相当するプロキシコンテナから構成される。</p>
-<p>Envoyには静的/動的な設定がある。</p>
-<p>静的な設定は、Envoyの起動時に適用される。</p>
-<p>一方で動的な設定は、xDSサーバーによってEnvoyの実行時に初めて適用される。</p>
-<p>Envoyは、xDSサーバーとの間で、リモートプロシージャーコールを双方向で起動時/定期的に実行し、取得した宛先情報を自身に登録する。</p>
+<p>Envoy は、コントロールプレーンに相当する xDS サーバーと、データプレーンに相当するプロキシコンテナから構成される。</p>
+<p>Envoy には静的/動的な設定がある。</p>
+<p>静的な設定は、Envoy の起動時に適用される。</p>
+<p>一方で動的な設定は、xDS サーバーによって Envoy の実行時に初めて適用される。</p>
+<p>Envoy は、xDS サーバーとの間で、リモートプロシージャーコールを双方向で起動時/定期的に実行し、取得した宛先情報を自身に登録する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e">https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e</a></li>
@@ -35160,9 +35160,9 @@
 <p><br></p>
 <h3 id="grace-process">Grace Process<a class="headerlink" href="#grace-process" title="Permanent link">&para;</a></h3>
 <h4 id="graceful-restart">▼ Graceful Restart (ホットリロード)<a class="headerlink" href="#graceful-restart" title="Permanent link">&para;</a></h4>
-<p>Envoyは、ホットリロード処理によって通信を切断することなく、コントロールプレーンから取得した動的な設定を自動的に再読み込みできる。</p>
+<p>Envoy は、ホットリロード処理によって通信を切断することなく、コントロールプレーンから取得した動的な設定を自動的に再読み込みできる。</p>
 <p>現在のプロセス (プライマリプロセス) を残したまま、新しいプロセス (セカンダリプロセス) を起動し、通信を段階的に移行する。</p>
-<p>ちなみに、ApacheやNginxはリロード機能を持つが、自動でリロードするホットリロードの機能はない。</p>
+<p>ちなみに、Apache や Nginx はリロード機能を持つが、自動でリロードするホットリロードの機能はない。</p>
 <p><img alt="envoy_hot-reload" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png" /></p>
 <blockquote>
 <ul>
@@ -35174,7 +35174,7 @@
 <p><br></p>
 <h3 id="_3">ダブルプロキシ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>コントロールプレーンを持たないリバースプロキシの場合、通信の送信元と宛先にいるリバースプロキシは独立している。</p>
-<p>一方で、マイクロサービスにおけるEnvoyでは、Envoyのコントロールプレーンが通信の送信元と宛先の両方のリバースプロキシを一緒に管理する。</p>
+<p>一方で、マイクロサービスにおける Envoy では、Envoy のコントロールプレーンが通信の送信元と宛先の両方のリバースプロキシを一緒に管理する。</p>
 <p>このようなリバースプロキシの配置方法をダブルプロキシといい、サイドカーパターンとして機能する。</p>
 <blockquote>
 <ul>
@@ -35186,20 +35186,20 @@
 <p><br></p>
 <h2 id="02">02. コントロールプレーン<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_4">コントロールプレーンとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>コントロールプレーンは、データプレーンのEnvoyを管理する。サービス検出のためのAPI (XDS-API) を持つ。</p>
+<p>コントロールプレーンは、データプレーンの Envoy を管理する。サービス検出のための API (XDS-API) を持つ。</p>
 <p><br></p>
 <h3 id="xds-api">XDS-API<a class="headerlink" href="#xds-api" title="Permanent link">&para;</a></h3>
 <h4 id="xds-api_1">▼ XDS-APIとは<a class="headerlink" href="#xds-api_1" title="Permanent link">&para;</a></h4>
-<p>コントロールプレーンのXDS-APIは、Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返信するAPIを持つサーバー。主要なサーバーの一覧を示す。</p>
+<p>コントロールプレーンの XDS-API は、Envoy からリモートプロシージャーコールを受信し、通信の宛先情報を返信する API を持つサーバー。主要なサーバーの一覧を示す。</p>
 <blockquote>
 <ul>
 <li><a href="https://skyao.io/learning-envoy/xds/">https://skyao.io/learning-envoy/xds/</a></li>
 </ul>
 </blockquote>
 <h4 id="ads-apiaggregated-xds">▼ ADS-API：Aggregated XDS<a class="headerlink" href="#ads-apiaggregated-xds" title="Permanent link">&para;</a></h4>
-<p>単一のエンドポイントを提供し、適切な順番で各XDS-APIから宛先情報を取得できる。</p>
-<p>各XDS-APIから宛先情報を取得しても良いが、ADS-APIで一括して取得することできる。</p>
-<p>もしADS-APIで一括して取得しない場合、各XDS-APIから取得できる宛先情報のバージョンがバラバラになってしまう。このため、Envoyの処理コンポーネント間で宛先情報のバージョン競合が発生する可能性もある。</p>
+<p>単一のエンドポイントを提供し、適切な順番で各 XDS-API から宛先情報を取得できる。</p>
+<p>各 XDS-API から宛先情報を取得してもよいが、ADS-API で一括して取得することできる。</p>
+<p>もし ADS-API で一括して取得しない場合、各 XDS-API から取得できる宛先情報のバージョンがバラバラになってしまう。このため、Envoy の処理コンポーネント間で宛先情報のバージョン競合が発生する可能性もある。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service">https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service</a></li>
@@ -35211,7 +35211,7 @@
 </blockquote>
 <h4 id="cds-apicluster-discovery-service">▼ CDS-API：Cluster Discovery Service<a class="headerlink" href="#cds-apicluster-discovery-service" title="Permanent link">&para;</a></h4>
 <p>単一のエンドポイントを提供し、クラスターを取得できる。</p>
-<p>Envoyの実行時に、ルーティング先のClusterの設定を動的に検出可能にする。</p>
+<p>Envoy の実行時に、ルーティング先の Cluster の設定を動的に検出可能にする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#cds">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#cds</a></li>
@@ -35220,7 +35220,7 @@
 </blockquote>
 <h4 id="eds-apiendpoint-discovery-service">▼ EDS-API：Endpoint Discovery Service<a class="headerlink" href="#eds-apiendpoint-discovery-service" title="Permanent link">&para;</a></h4>
 <p>単一のエンドポイントを提供し、エンドポイントを取得できる。</p>
-<p>Envoyの実行時に、ルーティング先のClusterに含まれるメンバーを動的に検出可能にする。</p>
+<p>Envoy の実行時に、ルーティング先の Cluster に含まれるメンバーを動的に検出可能にする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#eds">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#eds</a></li>
@@ -35229,7 +35229,7 @@
 </blockquote>
 <h4 id="lds-apilistener-discovery-service">▼ LDS-API：Listener Discovery Service<a class="headerlink" href="#lds-apilistener-discovery-service" title="Permanent link">&para;</a></h4>
 <p>単一のエンドポイントを提供し、リスナーを取得できる。</p>
-<p>Envoyの実行時に、リスナーの設定を動的に検出可能にする。</p>
+<p>Envoy の実行時に、リスナーの設定を動的に検出可能にする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#lds">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#lds</a></li>
@@ -35238,7 +35238,7 @@
 </blockquote>
 <h4 id="rds-apiroute-discovery-service">▼ RDS-API：Route Discovery Service<a class="headerlink" href="#rds-apiroute-discovery-service" title="Permanent link">&para;</a></h4>
 <p>単一のエンドポイントを提供し、ルートを取得できる。</p>
-<p>Envoyの実行時に、ルーティングの設定を動的に検出可能にする。</p>
+<p>Envoy の実行時に、ルーティングの設定を動的に検出可能にする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#rds">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#rds</a></li>
@@ -35247,7 +35247,7 @@
 </blockquote>
 <h4 id="sds-apisecret-discovery-service">▼ SDS-API：Secret Discovery Service<a class="headerlink" href="#sds-apisecret-discovery-service" title="Permanent link">&para;</a></h4>
 <p>単一のエンドポイントを提供し、証明書を取得できる。</p>
-<p>Envoyの実行時に、リスナーの暗号化の設定を動的に検出可能にする。</p>
+<p>Envoy の実行時に、リスナーの暗号化の設定を動的に検出可能にする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#sds">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#sds</a></li>
@@ -35257,14 +35257,14 @@
 <p><br></p>
 <h3 id="xds-api_2">XDS-APIのエンドポイント<a class="headerlink" href="#xds-api_2" title="Permanent link">&para;</a></h3>
 <h4 id="xds-api_3">▼ XDS-APIのエンドポイントとは<a class="headerlink" href="#xds-api_3" title="Permanent link">&para;</a></h4>
-<p>コントロールプレーンのXDS-APIにはエンドポイントがある。Envoyからリモートプロシージャーコールを受信し、通信の宛先情報を返信する。</p>
+<p>コントロールプレーンの XDS-API にはエンドポイントがある。Envoy からリモートプロシージャーコールを受信し、通信の宛先情報を返信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints">https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints</a></li>
 </ul>
 </blockquote>
 <h4 id="_5">▼ 実装<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Envoyを使用するサービス検出ツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに <code>go-control-plane</code> パッケージが使用されている。</p>
+<p>Envoy を使用するサービス検出ツールのいくつか (例：Istio、Linkerd) では、コントロールプレーンに <code>go-control-plane</code> パッケージが使用されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/resource/v3/resource.go#L34-L43">https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/resource/v3/resource.go#L34-L43</a></li>
@@ -35334,7 +35334,7 @@
 <h3 id="_6">データプレーンとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ データプレーンの仕組み<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><img alt="envoy_data-plane_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_data-plane_architecture.png" /></p>
-<p>データプレーンでは、Envoyが稼働し、通信を宛先にルーティングする。</p>
+<p>データプレーンでは、Envoy が稼働し、通信を宛先にルーティングする。</p>
 <p>データプレーンの処理は、コンポーネント (リスナー、ルート、クラスター、エンドポイント) から構成される。</p>
 <blockquote>
 <ul>
@@ -35344,7 +35344,7 @@
 </blockquote>
 <h4 id="_8">▼ インバウンド通信／アウトバウンド通信 の場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>インバウンド通信／アウトバウンド通信であっても、同じである。</p>
-<p>インバウンド通信ではIngressリスナー、アウトバウンド通信ではEgressリスナーとして、同じ構成の処理を辿る。</p>
+<p>インバウンド通信では Ingress リスナー、アウトバウンド通信では Egress リスナーとして、同じ構成の処理を辿る。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/">https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/</a></li>
@@ -35353,8 +35353,8 @@
 </ul>
 </blockquote>
 <h4 id="_9">▼ 宛先/送信元<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>アップストリームは、Envoyのレスポンスの宛先を表す。</p>
-<p>ダウンストリームは、Envoyのレスポンスの送信元を表す。</p>
+<p>アップストリームは、Envoy のレスポンスの宛先を表す。</p>
+<p>ダウンストリームは、Envoy のレスポンスの送信元を表す。</p>
 <blockquote>
 <ul>
 <li><a href="https://hinawatts.medium.com/timeout-settings-in-envoy-proxy-a368f3006933">https://hinawatts.medium.com/timeout-settings-in-envoy-proxy-a368f3006933</a></li>
@@ -35362,8 +35362,8 @@
 </ul>
 </blockquote>
 <h4 id="xds-api_4">▼ XDS-APIとの通信の仕組み<a class="headerlink" href="#xds-api_4" title="Permanent link">&para;</a></h4>
-<p>Envoyは、XDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。</p>
-<p>Envoyが組み込まれたサービスメッシュツール (例：Istio、Linkerd) では、Envoyのコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。</p>
+<p>Envoy は、XDS-API にリモートプロシージャーコールを単方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。</p>
+<p>Envoy が組み込まれたサービスメッシュツール (例：Istio、Linkerd) では、Envoy のコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions">https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions</a></li>
@@ -35373,25 +35373,25 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Envoyは、起動時にリスナーとクラスターをXDS-APIから取得する。</p>
+<p>Envoy は、起動時にリスナーとクラスターを XDS-API から取得する。</p>
 <p>取得した宛先情報を自身に設定する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Envoyは、リスナーに紐付ける必要のあるルートを特定する。</p>
+<p>Envoy は、リスナーに紐付ける必要のあるルートを特定する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Envoyは、クラスターに紐付ける必要のあるエンドポイントを特定する。</p>
+<p>Envoy は、クラスターに紐付ける必要のあるエンドポイントを特定する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>Envoyは、ルートとエンドポイントをXDS-APIから取得する。</p>
+<p>Envoy は、ルートとエンドポイントを XDS-API から取得する。</p>
 <p>取得した宛先情報を自身に設定する。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>Envoyは、リスナーとクラスターをXDS-APIから定期的に取得する。</p>
+<p>Envoy は、リスナーとクラスターを XDS-API から定期的に取得する。</p>
 <p>取得した宛先情報を自身に設定する。</p>
 </dd>
 </dl>
@@ -35428,14 +35428,14 @@
 <p><br></p>
 <h2 id="03-02">03-02. リスナー<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_12">リスナーとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>リスナーでは、Envoyに対する通信をIPアドレスとポートで待ち受ける。</p>
+<p>リスナーでは、Envoy に対する通信を IP アドレスとポートで待ち受ける。</p>
 <p><br></p>
 <h3 id="_13">仮想リスナー<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
 <h3 id="_14">リスナー登録<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ 静的なリスナー登録<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p><code>envoy.yaml</code> ファイルにて、<code>listeners</code> キーを設定することにより、Envoyに静的にリスナーを静的に設定できる。</p>
+<p><code>envoy.yaml</code> ファイルにて、<code>listeners</code> キーを設定することにより、Envoy に静的にリスナーを静的に設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># リスナーのリスト</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
@@ -35531,8 +35531,8 @@
 </ul>
 </blockquote>
 <h4 id="_16">▼ 動的なリスナー登録<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>Envoyは、起動時にコントロールプレーンのLDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のリスナーを取得する。</p>
-<p>また、Envoyは宛先のリスナーを自身に動的に設定する。</p>
+<p>Envoy は、起動時にコントロールプレーンの LDS-API にリモートプロシージャーコールを単方向/双方向で実行し、宛先のリスナーを取得する。</p>
+<p>また、Envoy は宛先のリスナーを自身に動的に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">...</span>
 
 <span class="c1">// リモートプロシージャーコール</span>
@@ -35564,8 +35564,8 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>Istioを使用して、<code>envoy</code> コンテナを稼働させるとする。</p>
-<p>Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。</p>
+<p>Istio を使用して、<code>envoy</code> コンテナを稼働させるとする。</p>
+<p>Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。</span>
 <span class="c1"># 仮想アウトバウンドリスナー</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.0.1_50001</span>
@@ -35680,8 +35680,8 @@
 <p><br></p>
 <h2 id="03-03">03-03. フィルター<a class="headerlink" href="#03-03" title="Permanent link">&para;</a></h2>
 <h3 id="_17">フィルターの機能別種類<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>各フィルターは、ReadFilterとWriteFilterに分類できる。</p>
-<p>執筆時点 (2024/01/21) では、HTTPリクエストの処理に関するフィルターは全てReadFilterである。</p>
+<p>各フィルターは、ReadFilter と WriteFilter に分類できる。</p>
+<p>執筆時点 (2024/01/21) では、HTTP リクエストの処理に関するフィルターはすべて ReadFilter である。</p>
 <blockquote>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/464828801">https://zhuanlan.zhihu.com/p/464828801</a></li>
@@ -35698,7 +35698,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_19">ネットワークフィルター<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<p>TCPプロトコルの処理や後続のHTTPフィルターの管理を実施する。</p>
+<p>TCP プロトコルの処理や後続の HTTP フィルターの管理を実施する。</p>
 <p>主要なネットワークフィルターとして、<code>network.http_connection_manager</code> や <code>network.tcp_proxy</code> がある。</p>
 <blockquote>
 <ul>
@@ -35708,8 +35708,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="http">HTTPフィルター<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
-<p>HTTPリクエストの処理を実施する。</p>
-<p>主要なHTTPフィルターとして、<code>http.router</code> や <code>http.grpc_web</code> がある。</p>
+<p>HTTP リクエストの処理を実施する。</p>
+<p>主要な HTTP フィルターとして、<code>http.router</code> や <code>http.grpc_web</code> がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_filters">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_filters</a></li>
@@ -35737,7 +35737,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="mysql-mysql_proxy">MySQLフィルター (<code>mysql_proxy</code>)<a class="headerlink" href="#mysql-mysql_proxy" title="Permanent link">&para;</a></h3>
-<p>MySQLプロトコル内のSQLを解析、メトリクスとして収集する。</p>
+<p>MySQL プロトコル内の SQL を解析、メトリクスとして収集する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/mysql">https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/mysql</a></li>
@@ -35748,7 +35748,7 @@
 <h2 id="03-04">03-04. ルート<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
 <h3 id="_20">ルートとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <p>リスナーのサブセットである。</p>
-<p>ルートでは、リスナーで処理した通信を受け取り、特定のクラスターのIPアドレスとポートにルーティングする。</p>
+<p>ルートでは、リスナーで処理した通信を受け取り、特定のクラスターの IP アドレスとポートにルーティングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010">https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010</a></li>
@@ -35765,8 +35765,8 @@
 </ul>
 </blockquote>
 <h4 id="_23">▼ 動的なルート登録<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>Envoyは、起動時にコントロールプレーンのRDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のルートを取得する。</p>
-<p>また、Envoyは宛先のルートを自身に動的に設定する。</p>
+<p>Envoy は、起動時にコントロールプレーンの RDS-API にリモートプロシージャーコールを単方向/双方向で実行し、宛先のルートを取得する。</p>
+<p>また、Envoy は宛先のルートを自身に動的に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">...</span>
 
 <span class="c1">// リモートプロシージャーコール</span>
@@ -35798,8 +35798,8 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>Istioを使用して、<code>envoy</code> コンテナを稼働させるとする。</p>
-<p>Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。</p>
+<p>Istio を使用して、<code>envoy</code> コンテナを稼働させるとする。</p>
+<p>Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50001&quot;</span>
 <span class="w">  </span><span class="nt">virtualHosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service.foo-namespace.svc.cluster.local:50001</span>
@@ -35893,11 +35893,11 @@
 <p><br></p>
 <h2 id="03-05">03-05. クラスター<a class="headerlink" href="#03-05" title="Permanent link">&para;</a></h2>
 <h3 id="_24">クラスターとは<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<p>クラスターでは、ルートからルーティングされた通信を受け取り、いずれかのエンドポイントのIPアドレスとポートにロードバランシングする。</p>
+<p>クラスターでは、ルートからルーティングされた通信を受け取り、いずれかのエンドポイントの IP アドレスとポートにロードバランシングする。</p>
 <p><br></p>
 <h3 id="_25">クラスター登録<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="_26">▼ クラスターの静的な登録<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p><code>envoy.yaml</code> ファイルにて、<code>clusters</code> キーを設定することにより、Envoyに静的にクラスターを静的に設定できる。</p>
+<p><code>envoy.yaml</code> ファイルにて、<code>clusters</code> キーを設定することにより、Envoy に静的にクラスターを静的に設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># クラスターのリスト</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
@@ -35975,8 +35975,8 @@
 </ul>
 </blockquote>
 <h4 id="_27">▼ クラスターの動的な登録<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>Envoyは、起動時にコントロールプレーンのCDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のクラスターを取得する。</p>
-<p>また、Envoyは宛先のクラスター設定を自身に動的に設定する。</p>
+<p>Envoy は、起動時にコントロールプレーンの CDS-API にリモートプロシージャーコールを単方向/双方向で実行し、宛先のクラスターを取得する。</p>
+<p>また、Envoy は宛先のクラスター設定を自身に動的に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">...</span>
 
 <span class="c1">// リモートプロシージャーコール</span>
@@ -36008,8 +36008,8 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>Istioを使用して、<code>envoy</code> コンテナを稼働させるとする。</p>
-<p>Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。</p>
+<p>Istio を使用して、<code>envoy</code> コンテナを稼働させるとする。</p>
+<p>Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。</span>
 <span class="c1"># クラスター (ここではKubernetesのService)</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local</span>
@@ -36097,7 +36097,7 @@
 <h2 id="03-06">03-06. エンドポイント<a class="headerlink" href="#03-06" title="Permanent link">&para;</a></h2>
 <h3 id="_31">エンドポイントとは<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <p>クラスターのサブセットである。</p>
-<p>エンドポイントでは、クラスターでロードバランシングされた通信を受け取り、IPアドレスとポート番号を指定して、宛先に送信する。</p>
+<p>エンドポイントでは、クラスターでロードバランシングされた通信を受け取り、IP アドレスとポート番号を指定して、宛先に送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010">https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010</a></li>
@@ -36114,8 +36114,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_33">エンドポイントの動的な登録<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
-<p>Envoyは、起動時にコントロールプレーンのEDS-APIにリモートプロシージャーコールを単方向/双方向で実行し、宛先のエンドポイントを取得する。</p>
-<p>また、Envoyはルートに宛先のエンドポイント設定を自身に動的に設定する。</p>
+<p>Envoy は、起動時にコントロールプレーンの EDS-API にリモートプロシージャーコールを単方向/双方向で実行し、宛先のエンドポイントを取得する。</p>
+<p>また、Envoy はルートに宛先のエンドポイント設定を自身に動的に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">...</span>
 
 <span class="c1">// リモートプロシージャーコール</span>
@@ -36148,7 +36148,7 @@
 <p><br></p>
 <h2 id="04">04. スレッド<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_34">マルチスレッドモデル<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
-<p>Envoyはマルチスレッドでパケットを処理する。</p>
+<p>Envoy はマルチスレッドでパケットを処理する。</p>
 <p>メモリ上のプロセスで、メインスレッド、ワーカースレッド、ファイルフラッシュスレッドを持つ。</p>
 <p>これらのスレッドは、そのプロセスに割り当てられているアドレスを共有する。</p>
 <blockquote>
@@ -36163,10 +36163,10 @@
 <p>メモリ上のプロセス内で以下の処理を担う。</p>
 <ul>
 <li>サーバー/コンテナの起動/停止</li>
-<li>XDS-APIに関する処理</li>
+<li>XDS-API に関する処理</li>
 <li>ランタイム</li>
 <li>統計情報のフラッシュ</li>
-<li>Envoyのプロセスのさまざまな処理 (ホットリロードなど)</li>
+<li>Envoy のプロセスのさまざまな処理 (ホットリロードなど)</li>
 </ul>
 <blockquote>
 <ul>
@@ -36200,9 +36200,9 @@
 <h2 id="05">05. ユースケース<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_40">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
 <h4 id="ingress">▼ 外からインバウンド通信から待ち受ける (Ingressリスナー／インバウンドリスナー)<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h4>
-<p>Envoyは、リバースプロキシとして、外部 (例：ロードバランサー、他のEnvoy) からインバウンド通信を待ち受ける。</p>
-<p>この時、Envoyは <code>http://localhost:&lt;ポート番号&gt;</code> で待ち受け、一方で外部が指定するURLも <code>http://localhost:&lt;ポート番号&gt;</code> である。</p>
-<p>サービスメッシュ外や他のPodからリクエストを受信するために使用する。</p>
+<p>Envoy は、リバースプロキシとして、外部 (例：ロードバランサー、他の Envoy) からインバウンド通信を待ち受ける。</p>
+<p>このとき、Envoy は <code>http://localhost:&lt;ポート番号&gt;</code> で待ち受け、一方で外部が指定する URL も <code>http://localhost:&lt;ポート番号&gt;</code> である。</p>
+<p>サービスメッシュ外や他の Pod からリクエストを受信するために使用する。</p>
 <p><img alt="envoy_ingress-listener" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png" /></p>
 <blockquote>
 <ul>
@@ -36213,9 +36213,9 @@
 </ul>
 </blockquote>
 <h4 id="egress">▼ ローカルホストにあるマイクロサービスから待ち受ける (Egressリスナー／アウトバウンドリスナー)<a class="headerlink" href="#egress" title="Permanent link">&para;</a></h4>
-<p>Envoyは、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。</p>
-<p>この時、Envoyは <code>http://0.0.0.0:&lt;ポート番号&gt;</code> で待ち受け、一方でローカルホストにあるマイクロサービスが指定するURLは <code>http://&lt;マイクロサービスのホスト&gt;:&lt;ポート番号&gt;</code> である。</p>
-<p>サービスメッシュ外や他のPodにリクエストを送信するために使用する。</p>
+<p>Envoy は、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。</p>
+<p>このとき、Envoy は <code>http://0.0.0.0:&lt;ポート番号&gt;</code> で待ち受け、一方でローカルホストにあるマイクロサービスが指定する URL は <code>http://&lt;マイクロサービスのホスト&gt;:&lt;ポート番号&gt;</code> である。</p>
+<p>サービスメッシュ外や他の Pod にリクエストを送信するために使用する。</p>
 <p><img alt="envoy_egress-listener" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png" /></p>
 <blockquote>
 <ul>
@@ -36226,14 +36226,14 @@
 </ul>
 </blockquote>
 <h4 id="_41">▼ ローカルホスト外にあるマイクロサービスに送信する<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
-<p>Envoyは、リバースプロキシとして、ローカルホスト外にあるマイクロサービスへ通信を送信する。</p>
+<p>Envoy は、リバースプロキシとして、ローカルホスト外にあるマイクロサービスへ通信を送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️</span><span class="w"> </span><span class="c1"># HTTP/TCPプロトコル</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️</span>
 <span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span>
 </code></pre></div>
-<p>なお、Envoyは一部のプロトコル (例：FastCGIプロトコル) をサポートしていない。</p>
+<p>なお、Envoy は一部のプロトコル (例：FastCGI プロトコル) をサポートしていない。</p>
 <p>その場合、そのプロトコルに対応可能なリバースプロキシ (例：Nginx、Apache) を配置する必要があり、二重のリバースプロキシになる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️</span>
@@ -36254,8 +36254,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="l4l7"><code>L4</code>/<code>L7</code> ロードバランサーのミドルウェアとして<a class="headerlink" href="#l4l7" title="Permanent link">&para;</a></h3>
-<p>Envoyの文脈では、ロードバランサーとしての使い方を『フロントプロキシ』『エッジプロキシ』とも呼んでいる。</p>
-<p>Istio Ingress GatewayでEnvoyを使用するユースケースは、これに属する。</p>
+<p>Envoy の文脈では、ロードバランサーとしての使い方を『フロントプロキシ』『エッジプロキシ』とも呼んでいる。</p>
+<p>Istio Ingress Gateway で Envoy を使用するユースケースは、これに属する。</p>
 <p><img alt="envoy_loadbalancer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_loadbalancer.png" /></p>
 <blockquote>
 <ul>
@@ -36285,7 +36285,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

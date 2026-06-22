@@ -34106,7 +34106,7 @@
 <li>サービスアカウント</li>
 <li>グループ</li>
 <li>ドメイン</li>
-<li>KubernetesのServiceAccount</li>
+<li>Kubernetes の ServiceAccount</li>
 </ul>
 <blockquote>
 <ul>
@@ -34128,8 +34128,8 @@
 <p><br></p>
 <h2 id="01-03">01-03. サービスアカウント<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="_8">サービスアカウントとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>GoogleCloudリソース自体のアカウントである。</p>
-<p>サービスアカウントを実際のGoogle Cloudリソースや外部リソース (例：AWSリソース、ログ収集ツールなど) に紐づけるためには、サービスアカウントの資格情報ファイルをこれに持たせる必要がある。</p>
+<p>GoogleCloud リソース自体のアカウントである。</p>
+<p>サービスアカウントを実際の Google Cloud リソースや外部リソース (例：AWS リソース、ログ収集ツールなど) に紐づけるためには、サービスアカウントの資格情報ファイルをこれに持たせる必要がある。</p>
 <p><br></p>
 <h3 id="_9">サービスアカウントキー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>サービスアカウントの資格情報である。</p>
@@ -34238,9 +34238,9 @@
 <p><br></p>
 <h2 id="05-workload-identity">05. Workload Identity<a class="headerlink" href="#05-workload-identity" title="Permanent link">&para;</a></h2>
 <h3 id="workload-identity">Workload Identityとは<a class="headerlink" href="#workload-identity" title="Permanent link">&para;</a></h3>
-<p>GoogleCloud外リソース (例：AWS、Azure、Kubernetesなど) からGoogleCloudリソースのAPIにリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、APIにリクエストを送信できるようにする仕組みのこと。</p>
-<p>従来は、サービスアカウントのサービスアカウントキーをGoogleCloud外リソースを持たせる仕組みであった。</p>
-<p>一方で、Workload Identityではサービスアカウントキーの代わりにトークンを使用する。</p>
+<p>GoogleCloud 外リソース (例：AWS、Azure、Kubernetes など) から GoogleCloud リソースの API にリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、API にリクエストを送信できるようにする仕組みのこと。</p>
+<p>従来は、サービスアカウントのサービスアカウントキーを GoogleCloud 外リソースを持たせる仕組みであった。</p>
+<p>一方で、Workload Identity ではサービスアカウントキーの代わりにトークンを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation">https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation</a></li>
@@ -34250,14 +34250,14 @@
 <h3 id="workload-identity_1">Workload Identityの仕組み<a class="headerlink" href="#workload-identity_1" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ アーキテクチャ<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <ol>
-<li>GoogleCloud以外で認証する。</li>
+<li>GoogleCloud 以外で認証する。</li>
 <li>認証が成功する。</li>
-<li>資格情報をGoogleCloud STSに送信する。</li>
-<li>Workload Identityプールにて、資格情報を検証する。</li>
+<li>資格情報を GoogleCloud STS に送信する。</li>
+<li>Workload Identity プールにて、資格情報を検証する。</li>
 <li>検証が成功し、一時的なトークンを発行する。</li>
-<li>GoogleCloud以外リソースにトークンを送信する。</li>
-<li>GoogleCloud以外リソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。</li>
-<li>GoogleCloudリソースのAPIにリクエストを送信できるようになる。</li>
+<li>GoogleCloud 以外リソースにトークンを送信する。</li>
+<li>GoogleCloud 以外リソースは、トークンを使用して GoogleCloud リソースのサービスアカウントに紐づく。</li>
+<li>GoogleCloud リソースの API にリクエストを送信できるようになる。</li>
 </ol>
 <p><img alt="google-cloud_workload-identity" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png" /></p>
 <blockquote>
@@ -34267,15 +34267,15 @@
 </ul>
 </blockquote>
 <h4 id="workload-identity_2">▼ Workload Identityプール<a class="headerlink" href="#workload-identity_2" title="Permanent link">&para;</a></h4>
-<p>GoogleCloud外リソースのグループを設定する。</p>
-<p>例えば、AWS側でOpenTelemetry Collectorを使用する場合、Workload Identityプールは <code>opentelemetry-collector</code> とする。</p>
+<p>GoogleCloud 外リソースのグループを設定する。</p>
+<p>例えば、AWS 側で OpenTelemetry Collector を使用する場合、Workload Identity プールは <code>opentelemetry-collector</code> とする。</p>
 <h4 id="_18">▼ プロバイダー<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>各GoogleCloud外リソースを設定する。</p>
-<p>外部リソースの種類ごとに単位 (例：AWSであればAWSアカウントごと) が異なる。</p>
-<p>例えば、AWS側の本番環境でOpenTelemetry Collectorを使用する場合、Workload Identityプールは <code>prd-opentelemetry-collector</code> とする。</p>
+<p>各 GoogleCloud 外リソースを設定する。</p>
+<p>外部リソースの種類ごとに単位 (例：AWS であれば AWS アカウントごと) が異なる。</p>
+<p>例えば、AWS 側の本番環境で OpenTelemetry Collector を使用する場合、Workload Identity プールは <code>prd-opentelemetry-collector</code> とする。</p>
 <h4 id="_19">▼ アクセス許可<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>プロバイダーに応じた権限を設定する。</p>
-<p>例えば、プロバイダーがAWSであれば <code>aws_role</code> でIAMロールの委譲用のARN (<code>arn:aws:sts:&lt;新しいアカウントID&gt;:assumed-role/&lt;IAMロール名&gt;</code>) を設定し、IAMロールにサービスアカウントを紐づけられる。</p>
+<p>例えば、プロバイダーが AWS であれば <code>aws_role</code> で IAM ロールの委譲用の ARN (<code>arn:aws:sts:&lt;新しいアカウントID&gt;:assumed-role/&lt;IAMロール名&gt;</code>) を設定し、IAM ロールにサービスアカウントを紐づけられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2">https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2</a></li>
@@ -34283,9 +34283,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="google-cloudaws">Google CloudとAWSの連携の場合<a class="headerlink" href="#google-cloudaws" title="Permanent link">&para;</a></h3>
-<p>AWS IAMロール名とこれに紐づけるサービスアカウント名をWorkload Identityに設定する。</p>
-<p>このIAMロールは、通常のIAMロールだけでなく、IRSA用IAMロールでもよい (設定は複雑になるが) 。</p>
-<p>AWS IAMロールを経由して、サービスアカウントを使用できるようになる。</p>
+<p>AWS IAM ロール名とこれに紐づけるサービスアカウント名を Workload Identity に設定する。</p>
+<p>この IAM ロールは、通常の IAM ロールだけでなく、IRSA 用 IAM ロールでもよい (設定は複雑になるが) 。</p>
+<p>AWS IAM ロールを経由して、サービスアカウントを使用できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2">https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2</a></li>
@@ -34314,7 +34314,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 19:01:42 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

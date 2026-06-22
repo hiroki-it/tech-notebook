@@ -35650,7 +35650,7 @@
 <p><br></p>
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>かなり大変なため、DockerfileやIstio経由でインストールすることが推奨。</p>
+<p>かなり大変なため、Dockerfile や Istio 経由でインストールすることが推奨。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/start/install">https://www.envoyproxy.io/docs/envoy/latest/start/install</a></li>
@@ -35659,7 +35659,7 @@
 <p><br></p>
 <h3 id="_3">手動セットアップの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="dockerfile">▼ Dockerfile<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h4>
-<p>Dockerfileにて、自前の <code>/etc/envoy/envoy.yaml</code> ファイルを組み込む。</p>
+<p>Dockerfile にて、自前の <code>/etc/envoy/envoy.yaml</code> ファイルを組み込む。</p>
 <p>拡張子は、<code>yml</code> ではなく、<code>yaml</code> とする。</p>
 <blockquote>
 <ul>
@@ -35673,7 +35673,7 @@
 <p><br></p>
 <h3 id="_4">自動セットアップの場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="istio">▼ Istio<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
-<p>Istioは、Envoyをベースとしたリバースプロキシを自動的に挿入する。この場合、<code>/etc/istio/proxy/envoy-rev0.json</code> ファイルを設定ファイルとして扱う。</p>
+<p>Istio は、Envoy をベースとしたリバースプロキシを自動的に挿入する。この場合、<code>/etc/istio/proxy/envoy-rev0.json</code> ファイルを設定ファイルとして扱う。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/deployment/architecture/#envoy">https://istio.io/latest/docs/ops/deployment/architecture/#envoy</a></li>
@@ -35684,15 +35684,15 @@
 <h3 id="_5">設定ファイルに関する補足情報<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ ドキュメントの探し方<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>執筆時点 (2022/11/16) では、設定ファイルのドキュメントの記載が不十分である。</p>
-<p>設定ファイルのYAMLファイルのデータ型や階層は、APIの <code>json</code> 形式と同じ構成になっている。</p>
-<p>そのため、設定ファイルのドキュメントで探す代わりに、APIのドキュメントを確認したほうが良い。</p>
+<p>設定ファイルの YAML ファイルのデータ型や階層は、API の <code>json</code> 形式と同じ構成になっている。</p>
+<p>そのため、設定ファイルのドキュメントで探す代わりに、API のドキュメントを確認したほうがよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/api">https://www.envoyproxy.io/docs/envoy/latest/api-v3/api</a></li>
 </ul>
 </blockquote>
 <h4 id="_7">▼ 設計規約について<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Envoyでは、YAMLファイルのキー名がスネークケースになっている。</p>
+<p>Envoy では、YAML ファイルのキー名がスネークケースになっている。</p>
 <p>一方で、サービスメッシュツール (例：Istio、Linkerd) では、ローワーキャメルケースを使用している。</p>
 <blockquote>
 <ul>
@@ -35711,7 +35711,7 @@
 <p><br></p>
 <h3 id="access_log_path">access_log_path<a class="headerlink" href="#access_log_path" title="Permanent link">&para;</a></h3>
 <h4 id="access_log_path_1">▼ access_log_pathとは<a class="headerlink" href="#access_log_path_1" title="Permanent link">&para;</a></h4>
-<p>Envoyのアクセスログの出力先を設定する。</p>
+<p>Envoy のアクセスログの出力先を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">admin</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">access_log_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/null</span>
@@ -35731,8 +35731,8 @@
 <span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 </code></pre></div>
 <h4 id="address_1">▼ address<a class="headerlink" href="#address_1" title="Permanent link">&para;</a></h4>
-<p>受信したパケットのうちで、宛先IPアドレスでフィルタリング可能にする。</p>
-<p>『<code>0.0.0.0</code>』とすると、任意の宛先IPアドレスを指定するパケットをフィルタリングできるようになる。</p>
+<p>受信したパケットのうちで、宛先 IP アドレスでフィルタリング可能にする。</p>
+<p>『<code>0.0.0.0</code>』とすると、任意の宛先 IP アドレスを指定するパケットをフィルタリングできるようになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">admin</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span>
@@ -35779,8 +35779,8 @@
 <span class="w">          </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 </code></pre></div>
 <h4 id="address_3">▼ address<a class="headerlink" href="#address_3" title="Permanent link">&para;</a></h4>
-<p>受信したパケットのうちで、宛先IPアドレスでフィルタリング可能にする。</p>
-<p>『<code>0.0.0.0</code>』とすると、任意の宛先IPアドレスを指定するパケットをフィルタリングできるようになる。</p>
+<p>受信したパケットのうちで、宛先 IP アドレスでフィルタリング可能にする。</p>
+<p>『<code>0.0.0.0</code>』とすると、任意の宛先 IP アドレスを指定するパケットをフィルタリングできるようになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
@@ -35815,7 +35815,7 @@
 </ul>
 </blockquote>
 <h4 id="typed_configaccess_log">▼ typed_config.access_log<a class="headerlink" href="#typed_configaccess_log" title="Permanent link">&para;</a></h4>
-<p>Envoyのアクセスログの出力方法を設定する。</p>
+<p>Envoy のアクセスログの出力方法を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>標準出力に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
@@ -35867,8 +35867,8 @@
 <h4 id="typed_configtype">▼ typed_config.@type<a class="headerlink" href="#typed_configtype" title="Permanent link">&para;</a></h4>
 <p>使用する拡張機能名を (例：フィルターなど) 設定する。</p>
 <p>拡張機能名を指定することにより、その拡張機能の設定を定義できるようになる。</p>
-<p>これは、Envoyではなく、gRPCの機能の由来している。</p>
-<p>RPCでは、JSON内のデータのデータ型を指定するために使用する。</p>
+<p>これは、Envoy ではなく、gRPC の機能の由来している。</p>
+<p>RPC では、JSON 内のデータのデータ型を指定するために使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration">https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration</a></li>
@@ -35877,7 +35877,7 @@
 </blockquote>
 <h4 id="networktcp_proxy">▼ <code>network.tcp_proxy</code><a class="headerlink" href="#networktcp_proxy" title="Permanent link">&para;</a></h4>
 <p><code>network.tcp_proxy</code> はデフォルトで有効になっているネットワークフィルターである。</p>
-<p>Envoyが <code>L4</code> プロトコルを処理できるようになる。</p>
+<p>Envoy が <code>L4</code> プロトコルを処理できるようになる。</p>
 <p><code>network.http_connection_manager</code> とは異なり、ルートではなくクラスターに処理を繋ぐ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
@@ -35899,7 +35899,7 @@
 </blockquote>
 <h4 id="networkhttp_connection_manager">▼ <code>network.http_connection_manager</code><a class="headerlink" href="#networkhttp_connection_manager" title="Permanent link">&para;</a></h4>
 <p><code>network.http_connection_manager</code> はデフォルトで有効になっているネットワークフィルターである。</p>
-<p>Envoyが <code>L7</code> プロトコルを処理できるようになる。</p>
+<p>Envoy が <code>L7</code> プロトコルを処理できるようになる。</p>
 <p><code>network.tcp_proxy</code> とは異なり、ルートに処理を繋ぐ。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
@@ -35921,7 +35921,7 @@
 </ul>
 </blockquote>
 <h4 id="httprouter">▼ <code>http.router</code><a class="headerlink" href="#httprouter" title="Permanent link">&para;</a></h4>
-<p><code>http.router</code> はデフォルトで有効になっているHTTPフィルターである。</p>
+<p><code>http.router</code> はデフォルトで有効になっている HTTP フィルターである。</p>
 <p><code>typed_config.route_config</code> を使用できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
@@ -35951,9 +35951,9 @@
 </ul>
 </blockquote>
 <h4 id="httpgrpc_web">▼ <code>http.grpc_web</code><a class="headerlink" href="#httpgrpc_web" title="Permanent link">&para;</a></h4>
-<p><code>http.grpc_web</code> はデフォルトで有効になっているHTTPフィルターである。</p>
-<p>受信したHTTP/1.1をHTTP/2 (例：gRPC、GraphQLなど) やHTTP/3に変換し、gRPCサーバーに送信する。</p>
-<p>また、gRPCサーバーからのHTTP/2のレスポンスをHTTP/1.1に変換する。</p>
+<p><code>http.grpc_web</code> はデフォルトで有効になっている HTTP フィルターである。</p>
+<p>受信した HTTP/1.1 を HTTP/2 (例：gRPC、GraphQL など) や HTTP/3 に変換し、gRPC サーバーに送信する。</p>
+<p>また、gRPC サーバーからの HTTP/2 のレスポンスを HTTP/1.1 に変換する。</p>
 <p><code>http.grpc_http1_bridge</code> の後継でもある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
@@ -35989,7 +35989,7 @@
 <p>特定のルーティング先に関する処理を設定する。</p>
 <h4 id="virtual_hosts">▼ <code>virtual_hosts</code><a class="headerlink" href="#virtual_hosts" title="Permanent link">&para;</a></h4>
 <p>仮想ホスト名を設定する。</p>
-<p>Envoyが、複数のドメインを仮想的に持ち、<code>Host</code> ヘッダー値で合致した条件に応じて分岐できる。</p>
+<p>Envoy が、複数のドメインを仮想的に持ち、<code>Host</code> ヘッダー値で合致した条件に応じて分岐できる。</p>
 <p>特に <code>domains</code> キーには、受信する通信の <code>Host</code> ヘッダー値を設定する。</p>
 <p>補足として <code>Host</code> ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -36077,10 +36077,10 @@
 <li><a href="https://github.com/envoyproxy/envoy/pull/13018">https://github.com/envoyproxy/envoy/pull/13018</a></li>
 </ul>
 </blockquote>
-<p>Envoyは、gRPCのストリーミングのタイムアウト時間を適切に処理できておらず、<code>max_grpc_timeout</code> は非推奨となった。</p>
-<p>gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を <code>grpc-timeout</code> ヘッダーに設定する。</p>
-<p>一方でEnvoyは、gRPCクライアントからのリクエストの終了後にタイムアウト時間を開始し、<code>grpc-timeout</code> ヘッダーとは別にタイムアウト時間を管理する。</p>
-<p>これにより、クライアント側が想定しているタイムアウト時間よりも短い時間でEnvoyがタイムアウト時間を迎える可能性がある。</p>
+<p>Envoy は、gRPC のストリーミングのタイムアウト時間を適切に処理できておらず、<code>max_grpc_timeout</code> は非推奨となった。</p>
+<p>gRPC は、TCP 接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を <code>grpc-timeout</code> ヘッダーに設定する。</p>
+<p>一方で Envoy は、gRPC クライアントからのリクエストの終了後にタイムアウト時間を開始し、<code>grpc-timeout</code> ヘッダーとは別にタイムアウト時間を管理する。</p>
+<p>これにより、クライアント側が想定しているタイムアウト時間よりも短い時間で Envoy がタイムアウト時間を迎える可能性がある。</p>
 <p>例えば、以下の図ではクライアント側で <code>25</code> 秒のタイムアウト時間を設定したと仮定している。</p>
 <!-- prettier-ignore-start -->
 
@@ -36107,9 +36107,9 @@
     envoy (client)--&gt;&gt;foo: 0.25経過&lt;br&gt;grpc-timeout: 残0s</code></pre>
 <!-- prettier-ignore-end -->
 
-<p>上記図の状況で、gRPCサーバーでタイムアウト時間を超過した場合、適切にエラーを処理できないことがある。</p>
-<p>例えば、以下のようにgRPCサーバーからのレスポンスよりも先に、gRPCクライアント側のEnvoyは通信を切断してしまうことがある。</p>
-<p>そのため、gRPCクライアントにて、ステータスコードを <code>DeadlineExceeded</code> ではなく、<code>Unavailable</code> としてしまう。</p>
+<p>上記図の状況で、gRPC サーバーでタイムアウト時間を超過した場合、適切にエラーを処理できないことがある。</p>
+<p>例えば、以下のように gRPC サーバーからのレスポンスよりも先に、gRPC クライアント側の Envoy は通信を切断してしまうことがある。</p>
+<p>そのため、gRPC クライアントにて、ステータスコードを <code>DeadlineExceeded</code> ではなく、<code>Unavailable</code> としてしまう。</p>
 <!-- prettier-ignore-start -->
 
 <pre class="mermaid"><code>sequenceDiagram
@@ -36157,7 +36157,7 @@
 <li><a href="https://github.com/istio/istio/pull/45234#discussion_r1213965308">https://github.com/istio/istio/pull/45234#discussion_r1213965308</a></li>
 </ul>
 </blockquote>
-<p>しかし、移行先の <code>max_stream_duration</code> にもgRPCによるHTTPレスポンスの返信とタイムアウト時間超過による通信切断のタイミングに問題がある。</p>
+<p>しかし、移行先の <code>max_stream_duration</code> にも gRPC による HTTP レスポンスの返信とタイムアウト時間超過による通信切断のタイミングに問題がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/envoy/issues/16129">https://github.com/envoyproxy/envoy/issues/16129</a></li>
@@ -36250,7 +36250,7 @@
 <p><br></p>
 <h3 id="load_assignment">load_assignment<a class="headerlink" href="#load_assignment" title="Permanent link">&para;</a></h3>
 <h4 id="endpoints">▼ endpoints<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h4>
-<p>ルーティング先のIPアドレスとポート番号のリストを設定する。</p>
+<p>ルーティング先の IP アドレスとポート番号のリストを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router">https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router</a></li>
@@ -36301,7 +36301,7 @@
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">envoy.transport_sockets.tls</span>
 </code></pre></div>
 <h4 id="typed_config">▼ typed_config<a class="headerlink" href="#typed_config" title="Permanent link">&para;</a></h4>
-<p>HTTPSリクエストを送受信する場合に、証明書を設定する。</p>
+<p>HTTPS リクエストを送受信する場合に、証明書を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>サービスメッシュツールを使用せずに、<code>envoy</code> コンテナを直接的に稼働させるとする。</p>
 <p>また、静的な値を設定したとする。</p>
@@ -36366,7 +36366,7 @@
 <span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">E0:F3:C8:CE:5E:2E:A3:05:F0:70:1F:F5:12:E3:6E:2E:97:92:82:84:A2:28:BC:F7:73:32:D3:39:30:A1:B6:FD</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>サービスメッシュツールを使用せずに、<code>envoy</code> コンテナを直接的に稼働させるとする。また、コントロールプレーンのSDS-APIから取得した動的な値を設定したとする。</p>
+<p>サービスメッシュツールを使用せずに、<code>envoy</code> コンテナを直接的に稼働させるとする。また、コントロールプレーンの SDS-API から取得した動的な値を設定したとする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server">https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server</a></li>
@@ -36376,7 +36376,7 @@
 <h3 id="type">type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
 <h4 id="type_1">▼ typeとは<a class="headerlink" href="#type_1" title="Permanent link">&para;</a></h4>
 <p>サービス検出の種類を設定する。</p>
-<p>ルーティング先のアドレスをIPアドレスではなくドメイン名で指定する場合、必須である。</p>
+<p>ルーティング先のアドレスを IP アドレスではなくドメイン名で指定する場合、必須である。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types">https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types</a></li>
@@ -36408,7 +36408,7 @@
 <span class="w">          </span><span class="nt">connect_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
 </code></pre></div>
 <h4 id="http2_protocol_options">▼ http2_protocol_options<a class="headerlink" href="#http2_protocol_options" title="Permanent link">&para;</a></h4>
-<p>HTTP/2 (例：gRPC、GraphQLなど) について設定する。</p>
+<p>HTTP/2 (例：gRPC、GraphQL など) について設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">typed_extension_protocol_options</span><span class="p">:</span>
@@ -36444,17 +36444,17 @@
 <p><br></p>
 <h3 id="ads_config">ads_config<a class="headerlink" href="#ads_config" title="Permanent link">&para;</a></h3>
 <h4 id="ads_config_1">▼ ads_configとは<a class="headerlink" href="#ads_config_1" title="Permanent link">&para;</a></h4>
-<p>ADS-APIに関して設定する。</p>
-<p>EnvoyがADS-APIにリクエストを送信するように設定できる。</p>
+<p>ADS-API に関して設定する。</p>
+<p>Envoy が ADS-API にリクエストを送信するように設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service">https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service</a></li>
 </ul>
 </blockquote>
 <h4 id="grpc_services">▼ grpc_services<a class="headerlink" href="#grpc_services" title="Permanent link">&para;</a></h4>
-<p>ADS-APIとして使用するクラスター名を設定する。</p>
-<p>クラスターとはgRPCを使用してパケットを送受信する。</p>
-<p>ADS-APIの宛先情報は、<code>static_resources.clusters</code> キー配下で設定しておく。</p>
+<p>ADS-API として使用するクラスター名を設定する。</p>
+<p>クラスターとは gRPC を使用してパケットを送受信する。</p>
+<p>ADS-API の宛先情報は、<code>static_resources.clusters</code> キー配下で設定しておく。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc">https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc</a></li>
@@ -36518,8 +36518,8 @@
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>Istioを使用して、<code>envoy</code> コンテナを稼働させるとする。</p>
-<p>Kubernetesでは、YAMLファイルのキー名の設計規約がローワーキャメルケースであることに注意する。</p>
+<p>Istio を使用して、<code>envoy</code> コンテナを稼働させるとする。</p>
+<p>Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamicResources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">adsConfig</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">apiType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grpc</span>
@@ -36562,9 +36562,9 @@
 <p><br></p>
 <h3 id="cds_config">cds_config<a class="headerlink" href="#cds_config" title="Permanent link">&para;</a></h3>
 <h4 id="cds_config_1">▼ cds_configとは<a class="headerlink" href="#cds_config_1" title="Permanent link">&para;</a></h4>
-<p>CDS-APIに関して設定する。</p>
+<p>CDS-API に関して設定する。</p>
 <h4 id="path">▼ path<a class="headerlink" href="#path" title="Permanent link">&para;</a></h4>
-<p><code>cds.yaml</code> ファイル (CDS-APIから取得した動的な宛先情報が設定されたファイル) を読み込む。</p>
+<p><code>cds.yaml</code> ファイル (CDS-API から取得した動的な宛先情報が設定されたファイル) を読み込む。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamic_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">cds_config</span><span class="p">:</span>
@@ -36573,9 +36573,9 @@
 <p><br></p>
 <h3 id="lds_config">lds_config<a class="headerlink" href="#lds_config" title="Permanent link">&para;</a></h3>
 <h4 id="lds_config_1">▼ lds_configとは<a class="headerlink" href="#lds_config_1" title="Permanent link">&para;</a></h4>
-<p>LDS-APIに関して設定する。</p>
+<p>LDS-API に関して設定する。</p>
 <h4 id="path_1">▼ path<a class="headerlink" href="#path_1" title="Permanent link">&para;</a></h4>
-<p><code>lds.yaml</code> ファイル (LDS-APIから取得した動的な宛先情報が設定されたファイル) を読み込む。</p>
+<p><code>lds.yaml</code> ファイル (LDS-API から取得した動的な宛先情報が設定されたファイル) を読み込む。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamic_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">lds_config</span><span class="p">:</span>
@@ -36625,7 +36625,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

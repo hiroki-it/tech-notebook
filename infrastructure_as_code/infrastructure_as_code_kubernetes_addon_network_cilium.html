@@ -33594,7 +33594,7 @@
 <p><br></p>
 <h2 id="01-cilium">01. Ciliumの仕組み<a class="headerlink" href="#01-cilium" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Ciliumは、Ciliumエージェント、Cilium CNI、から構成される。</p>
+<p>Cilium は、Cilium エージェント、Cilium CNI、から構成される。</p>
 <blockquote>
 <ul>
 <li><a href="https://caddi.tech/archives/3864">https://caddi.tech/archives/3864</a></li>
@@ -33604,8 +33604,8 @@
 <h3 id="cilium_1">Ciliumエージェント<a class="headerlink" href="#cilium_1" title="Permanent link">&para;</a></h3>
 <h4 id="cilium_2">▼ Ciliumエージェントとは<a class="headerlink" href="#cilium_2" title="Permanent link">&para;</a></h4>
 <p>コンテナ上のプロセスは、コンテナのカーネルに対してシステムコールを実行する。</p>
-<p>Ciliumエージェントは、システムコールのイベントが発生したときにeBPFを実行し、Ciliumの処理をフックする。</p>
-<p>これにより、Ciliumはシステムコールのテレメトリーを収集できる。</p>
+<p>Cilium エージェントは、システムコールのイベントが発生したときに eBPF を実行し、Cilium の処理をフックする。</p>
+<p>これにより、Cilium はシステムコールのテレメトリーを収集できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.publickey1.jp/blog/22/grafanaciliumebpfciliumgrafana.html">https://www.publickey1.jp/blog/22/grafanaciliumebpfciliumgrafana.html</a></li>
@@ -33615,22 +33615,22 @@
 <p><br></p>
 <h3 id="cilium-cni">Cilium CNI<a class="headerlink" href="#cilium-cni" title="Permanent link">&para;</a></h3>
 <h4 id="cilium-cni_1">▼ Cilium CNIとは<a class="headerlink" href="#cilium-cni_1" title="Permanent link">&para;</a></h4>
-<p>KubernetesのデフォルトのCNIと衝突するため、これを無効化する必要がある。</p>
-<p>デフォルトのCNIを無効化すると、このCNIとkube-proxyがCilium CNIに置き換わる。</p>
+<p>Kubernetes のデフォルトの CNI と衝突するため、これを無効化する必要がある。</p>
+<p>デフォルトの CNI を無効化すると、この CNI と kube-proxy が Cilium CNI に置き換わる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/">https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/</a></li>
 </ul>
 </blockquote>
 <h4 id="istio">▼ Istioとの連携<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
-<p>Cilium CNIとistio-proxyを組み合わせて、トラフィックを制御する。</p>
-<p>Ciliumのサービスメッシュ機能は、あくまでCiliumの中で一機能としてでしかない。</p>
-<p>そのため、IstioとCilium CNIであれば連携できる。</p>
+<p>Cilium CNI と istio-proxy を組み合わせて、トラフィックを制御する。</p>
+<p>Cilium のサービスメッシュ機能は、あくまで Cilium のなかで一機能としてでしかない。</p>
+<p>そのため、Istio と Cilium CNI であれば連携できる。</p>
 <ul>
-<li>Istio + kube-proxy + 従来のCNI</li>
+<li>Istio + kube-proxy + 従来の CNI</li>
 <li>Istio + Cilium CNI</li>
-<li>Ciliumサービスメッシュ + Cilium CNI</li>
-<li>Ciliumサービスメッシュ + Istio (CiliumサービスメッシュとIstioが部分的に競合するので、どちらかのサービスメッシュで設定の無効化が必要) + Cilium CNI</li>
+<li>Cilium サービスメッシュ + Cilium CNI</li>
+<li>Cilium サービスメッシュ + Istio (Cilium サービスメッシュと Istio が部分的に競合するので、どちらかのサービスメッシュで設定の無効化が必要) + Cilium CNI</li>
 </ul>
 <blockquote>
 <ul>
@@ -33638,7 +33638,7 @@
 <li><a href="https://www.reddit.com/r/kubernetes/comments/1cygujm/comment/l5lf7ua/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">https://www.reddit.com/r/kubernetes/comments/1cygujm/comment/l5lf7ua/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button</a></li>
 </ul>
 </blockquote>
-<p>IstioとCiliumサービスメッシュの間で競合する機能 (例えば、L7のトラフィック管理) については、以下の箇所に対処方法がある。</p>
+<p>Istio と Cilium サービスメッシュの間で競合する機能 (例えば、L7 のトラフィック管理) については、以下の箇所に対処方法がある。</p>
 <p>しかし、全体としてかなり複雑な設定になりそうです</p>
 <blockquote>
 <ul>
@@ -33648,10 +33648,10 @@
 <p><br></p>
 <h2 id="02-cilium">02. Ciliumサービスメッシュ<a class="headerlink" href="#02-cilium" title="Permanent link">&para;</a></h2>
 <h3 id="cilium_3">Ciliumサービスメッシュの仕組み<a class="headerlink" href="#cilium_3" title="Permanent link">&para;</a></h3>
-<p>Ciliumエージェント上ではEnvoyプロセスが動いている。</p>
-<p>マイクロサービス間の通信時には、eBPFではなくEnvoyを使用する。</p>
-<p>なお、Ciliumサービスメッシュは前提としてCilium CNIを必要とする。</p>
-<p>そのため、Istioのように、既存のKubernetesのネットワークを残したままサービスメッシュを導入できない。</p>
+<p>Cilium エージェント上では Envoy プロセスが動いている。</p>
+<p>マイクロサービス間の通信時には、eBPF ではなく Envoy を使用する。</p>
+<p>なお、Cilium サービスメッシュは前提として Cilium CNI を必要とする。</p>
+<p>そのため、Istio のように、既存の Kubernetes のネットワークを残したままサービスメッシュを導入できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.cilium.io/en/stable/network/servicemesh/">https://docs.cilium.io/en/stable/network/servicemesh/</a></li>
@@ -33660,7 +33660,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">パケットのアプリケーションデータの暗号化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Node上のPod間の通信をIPSecやWireGuardで暗号化する。</p>
+<p>Node 上の Pod 間の通信を IPSec や WireGuard で暗号化する。</p>
 <p><img alt="cilium-service-mesh_tls" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cilium-service-mesh_tls.png" /></p>
 <blockquote>
 <ul>
@@ -33688,7 +33688,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:55:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

@@ -33626,7 +33626,7 @@
 <li>21-4. イベントソーシングの課題と使用場面</li>
 <li>21-5. レビュー機能をイベントソーシングで設計してみる</li>
 <li>21-7. イベントソーシングの課題をスナップショット処理で解決</li>
-<li>21-8. イベントソーシングの課題をCQRSパターンで解決</li>
+<li>21-8. イベントソーシングの課題を CQRS パターンで解決</li>
 </ul>
 <h2 id="21-1">21-1 イベントソーシングとは<a class="headerlink" href="#21-1" title="Permanent link">&para;</a></h2>
 <p>イベントソーシングとは、現在の状態ではなく、状態変化を引き起こしたイベントの連続を保存する手法である。</p>
@@ -33798,15 +33798,15 @@
 </table>
 <p>イベント履歴があると、各時点の状態を取得できる。</p>
 <ul>
-<li>2023-01-01 時点: 評価 4、RecommendedBookなし</li>
-<li>2023-01-03 時点: 評価 4、RecommendedBookなし</li>
+<li>2023-01-01 時点: 評価 4、RecommendedBook なし</li>
+<li>2023-01-03 時点: 評価 4、RecommendedBook なし</li>
 <li>2023-01-05 時点: 評価 4、RecommendedBook <code>["HTML/CSS 入門", "JavaScript 基礎"]</code></li>
 <li>2023-01-07 時点: 評価 5、RecommendedBook <code>["HTML/CSS 入門", "JavaScript 基礎"]</code></li>
 </ul>
 <p>現在状態だけでなく、変化の過程にも価値がある。</p>
 <h3 id="21-2-3-git">21-2-3 Git のコミット履歴の例<a class="headerlink" href="#21-2-3-git" title="Permanent link">&para;</a></h3>
-<p>イベントソーシングの例として、Gitがある。</p>
-<p>Gitでは、ファイルの最新状態だけではなく、変更履歴と変更意図をコミットとして保持する。</p>
+<p>イベントソーシングの例として、Git がある。</p>
+<p>Git では、ファイルの最新状態だけではなく、変更履歴と変更意図をコミットとして保持する。</p>
 <div class="highlight"><pre><span></span><code>commit 87a56139b3a4f2e5d8e6d9b5b7a5a4c3
 Author: Tom Johnson &lt;tom@example.com&gt;
 Date:   Mon Jan 4 14:23:45 2023 +0900
@@ -33820,17 +33820,17 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
     ログイン機能を追加
 </code></pre></div>
 <h2 id="21-3">21-3 現状の課題：データの二重管理<a class="headerlink" href="#21-3" title="Permanent link">&para;</a></h2>
-<p>前章のOutboxパターンには、次の課題がある。</p>
+<p>前章の Outbox パターンには、次の課題がある。</p>
 <ul>
 <li>集約の状態とドメインイベントの両方を永続化する必要がある</li>
 <li>ビジネスデータの保存とドメインイベント保存で同じ情報を二重管理する</li>
-<li>2種類のデータストアを管理する必要があり、開発と運用が複雑になる</li>
+<li>2 種類のデータストアを管理する必要があり、開発と運用が複雑になる</li>
 </ul>
 <p>イベントソーシングでは、ドメインイベントを唯一の情報源にすることで、この二重管理を避ける。</p>
 <h2 id="21-4">21-4 イベントソーシングのデメリットと課題<a class="headerlink" href="#21-4" title="Permanent link">&para;</a></h2>
 <h3 id="21-4-1">21-4-1 実装の複雑性<a class="headerlink" href="#21-4-1" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングでは、各イベント種別ごとに状態変更ロジックが必要である。</p>
-<p>また、イベントソーシングではReview集約の現在状態そのものは保存せず、起きた出来事の履歴を保存する。</p>
+<p>また、イベントソーシングでは Review 集約の現在状態そのものは保存せず、起きた出来事の履歴を保存する。</p>
 <p>そのため、オブジェクトの最新の状態を得るにはその履歴を順番にたどる必要があり、履歴数が多くなるほど性能問題に影響する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
@@ -34117,7 +34117,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <p>イベントソーシングではオブジェクトの現在の状態を保存していないため、最新の状態を取得する際に過去の履歴をたどる必要があり、これは性能問題につながる可能性がある。</p>
 <p>この課題はスナップショット処理で緩和できる。</p>
 <p>スナップショットとは、特定時点の集約状態を保存したものである。</p>
-<p>たとえば1000件のイベントがある集約でも、あらかじめ800件目時点の状態を保存しておけば、オブジェクトの最新の状態を取得する際には残り200件の履歴だけを適用すればよい。</p>
+<p>たとえば 1000 件のイベントがある集約でも、あらかじめ 800 件目時点の状態を保存しておけば、オブジェクトの最新の状態を取得する際には残り 200 件の履歴だけを適用すればよい。</p>
 <p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1.png" /></p>
 <h3 id="21-7-2">21-7-2 スナップショットの作成タイミング<a class="headerlink" href="#21-7-2" title="Permanent link">&para;</a></h3>
 <table>
@@ -34191,12 +34191,12 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="21-8-3-cqrs">21-8-3 CQRS<a class="headerlink" href="#21-8-3-cqrs" title="Permanent link">&para;</a></h3>
-<p>CQRSは、書き込みと読み取りの責務を分離するパターンである。</p>
+<p>CQRS は、書き込みと読み取りの責務を分離するパターンである。</p>
 <p>イベントソーシングではオブジェクトの現在の状態を保存していないため、最新の状態を取得する際に過去の履歴をたどる必要があり、これは性能問題につながる可能性がある。</p>
-<p>この課題は、CQRSによって読み取り側のデータ構造を分けることで緩和できる。</p>
+<p>この課題は、CQRS によって読み取り側のデータ構造を分けることで緩和できる。</p>
 <p>イベントソーシングと組み合わせると、整合性を維持しつつ、後から新しいクエリモデルを構築できる。</p>
 <h3 id="21-8-4-bookrecommendation">21-8-4 BookRecommendation のためのクエリモデル設計<a class="headerlink" href="#21-8-4-bookrecommendation" title="Permanent link">&para;</a></h3>
-<p>BookRecommendationを取得するためのクエリモデル設計例として、2つの方法がある</p>
+<p>BookRecommendation を取得するためのクエリモデル設計例として、2 つの方法がある</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 方法1: BookIDごとのレビューリストモデル</span>
 <span class="kd">interface</span><span class="w"> </span><span class="nx">BookReviewsQueryModel</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
@@ -34225,14 +34225,14 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 </ol>
 <p><img alt="software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-8-5" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-8-5.png" /></p>
 <h3 id="21-8-6">21-8-6 クエリサイドのデータストアの選択<a class="headerlink" href="#21-8-6" title="Permanent link">&para;</a></h3>
-<p>CQRSで使用できるデータストアは次のとおりである。</p>
+<p>CQRS で使用できるデータストアは次のとおりである。</p>
 <ul>
 <li>RDBMS: 関係性の強いデータ、SQL による柔軟な検索や集計に向く</li>
 <li>Elasticsearch: 全文検索や複雑検索に向く</li>
 <li>MongoDB: スキーマ変更が多い場合や柔軟なデータ構造に向く</li>
 </ul>
 <h3 id="21-8-7-cqrs">21-8-7 CQRS による結果整合性<a class="headerlink" href="#21-8-7-cqrs" title="Permanent link">&para;</a></h3>
-<p>CQRSでは、コマンドサイドとクエリサイドの間に時間差が生じるため、結果整合性を採用する必要がある。</p>
+<p>CQRS では、コマンドサイドとクエリサイドの間に時間差が生じるため、結果整合性を採用する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加</span>
 
 <span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">addReview</span><span class="p">(</span><span class="nx">command</span><span class="o">:</span><span class="w"> </span><span class="kt">AddReviewCommand</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -34265,7 +34265,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 <h2 id="21-10">21-10 まとめ<a class="headerlink" href="#21-10" title="Permanent link">&para;</a></h2>
 <p>イベントソーシングは、状態をイベントの連続として管理する手法である。
 起きた事実の記録から状態を導出することで、任意時点の状態を扱ったり、後から新しい観点で分析したりできる。</p>
-<p>また、横断的な読み取り要件にはCQRSとの組み合わせが有効である一方で、採用は技術トレンドではなくビジネス価値で判断する必要がある。</p>
+<p>また、横断的な読み取り要件には CQRS との組み合わせが有効である一方で、採用は技術トレンドではなくビジネス価値で判断する必要がある。</p>
 <h2 id="column-outbox">Column Outbox テーブルとイベントストアの設計判断<a class="headerlink" href="#column-outbox" title="Permanent link">&para;</a></h2>
 <p>設計上の論点は、Outbox テーブルとイベントストアを同一管理するか、分離するかである。</p>
 <ul>
@@ -34292,7 +34292,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月27日 16:20:17 JST">2026-04-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

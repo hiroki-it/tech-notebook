@@ -34052,11 +34052,11 @@
 <p>認証をリクエストするドメイン名を設定する。</p>
 <p><br></p>
 <h3 id="_3">検証の方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>DNS検証かEメール検証かを設定する。</p>
+<p>DNS 検証か E メール検証かを設定する。</p>
 <p><br></p>
 <h2 id="03">03. 認証局<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="aws">AWS認証局とは<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
-<p>認証局であるATSによって認証済みのサーバー証明書を管理できる。</p>
+<p>認証局である ATS によって認証済みのサーバー証明書を管理できる。</p>
 <table>
 <thead>
 <tr>
@@ -34106,9 +34106,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="dns">DNS検証<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h3>
-<p>CMによってAmazon Route 53へ自動作成されるCNAMEレコード値を使用して、ドメインの所有者であることを証明する。</p>
-<p>証明書が失効しそうになったとき、CNAMEレコード値が照合され、CMが証明書を再発行してくれる。</p>
-<p>注意点として、ドメインをAWS以外 (例：お名前ドットコム) で購入している場合は、NSレコード値を購入先のサービスのドメインレジストラに手作業で登録する必要があることに注意する。</p>
+<p>CM によって Amazon Route 53 へ自動作成される CNAME レコード値を使用して、ドメインの所有者であることを証明する。</p>
+<p>証明書が失効しそうになったとき、CNAME レコード値が照合され、CM が証明書を再発行してくれる。</p>
+<p>注意点として、ドメインを AWS 以外 (例：お名前ドットコム) で購入している場合は、NS レコード値を購入先のサービスのドメインレジストラに手作業で登録する必要があることに注意する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html">https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html</a></li>
@@ -34117,7 +34117,7 @@
 </blockquote>
 <h3 id="e">Eメール検証<a class="headerlink" href="#e" title="Permanent link">&para;</a></h3>
 <p>ドメインの所有者にメールを送信し、これを承認することにより所有者であることを証明する。</p>
-<p>ドメインをAWS以外 (例：お名前ドットコム) で購入している場合は、そちらで設定したメールアドレス宛に確認メールを送信する。</p>
+<p>ドメインを AWS 以外 (例：お名前ドットコム) で購入している場合は、そちらで設定したメールアドレス宛に確認メールを送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html">https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html</a></li>
@@ -34127,7 +34127,7 @@
 <h2 id="05">05. サーバー証明書<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_7">セキュリティポリシー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>許可するプロトコルを定義したルールこと。</p>
-<p>SSL/TLSプロトコルを許可しており、対応できるバージョンが異なるため、ブラウザがそのバージョンのSSL/TLSプロトコルを使用できるかを認識しておく必要がある。</p>
+<p>SSL/TLS プロトコルを許可しており、対応できるバージョンが異なるため、ブラウザがそのバージョンの SSL/TLS プロトコルを使用できるかを認識しておく必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -34160,8 +34160,8 @@
 </table>
 <p><br></p>
 <h3 id="_8">サーバー証明書の種類<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>DNS検証またはEメール検証によって、ドメインの所有者であることが証明されると、発行される。</p>
-<p>サーバー証明書は、PKIによる公開鍵検証に使用される。</p>
+<p>DNS 検証または E メール検証によって、ドメインの所有者であることが証明されると、発行される。</p>
+<p>サーバー証明書は、PKI による公開鍵検証に使用される。</p>
 <table>
 <thead>
 <tr>
@@ -34179,14 +34179,14 @@
 <p><br></p>
 <h3 id="_9">サーバー証明書の変更<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ サーバー証明書の確認<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>Chromeを例に挙げると、サーバー証明書はURLの鍵マークから確認できる。</p>
+<p>Chrome を例に挙げると、サーバー証明書は URL の鍵マークから確認できる。</p>
 <p><strong>＊例＊</strong></p>
-<p>CircleCIのサイトは、サーバー証明書のためにAWS Certificate Managerを使用している。</p>
+<p>CircleCI のサイトは、サーバー証明書のために AWS Certificate Manager を使用している。</p>
 <p><img alt="ssl_certificate_chrome" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl_certificate_chrome.png" /></p>
 <h4 id="_11">▼ ダウンタイム<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>AWS ALBではサーバー証明書の変更でダウンタイムは発生しない。</p>
+<p>AWS ALB ではサーバー証明書の変更でダウンタイムは発生しない。</p>
 <p>既存のセッションを維持 (調査していないが、スティッキーセッションの仕組み？) しつつ、新しいサーバー証明書が適用される。</p>
-<p>Amazon CloudFrontは謎...</p>
+<p>Amazon CloudFront は謎...</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.typepad.com/sajp/2014/04/elb-ssl.html">https://aws.typepad.com/sajp/2014/04/elb-ssl.html</a></li>
@@ -34196,11 +34196,11 @@
 <h2 id="05-02">05-02. サーバー証明書の配置場所パターン<a class="headerlink" href="#05-02" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-ec2amazon-ecsamazon-eks">Amazon EC2/Amazon ECS/Amazon EKSの送信元<a class="headerlink" href="#amazon-ec2amazon-ecsamazon-eks" title="Permanent link">&para;</a></h3>
 <h4 id="ssltls">▼ SSL/TLS終端<a class="headerlink" href="#ssltls" title="Permanent link">&para;</a></h4>
-<p>HTTPSによるSSLプロトコルを受け付けるネットワークの最終地点のことを、SSL/TLS終端という。</p>
-<p>サーバー証明書の配置場所は、SSL/TLS終端をどこにするかで決める。</p>
-<p>AWSの使用上、AWS Certificate Managerのサーバー証明書を配置できないAWSリソースに対しては、外部のサーバー証明書を手に入れて配置する。</p>
+<p>HTTPS による SSL プロトコルを受け付けるネットワークの最終地点のことを、SSL/TLS 終端という。</p>
+<p>サーバー証明書の配置場所は、SSL/TLS 終端をどこにするかで決める。</p>
+<p>AWS の使用上、AWS Certificate Manager のサーバー証明書を配置できない AWS リソースに対しては、外部のサーバー証明書を手に入れて配置する。</p>
 <p>トレードオフとして、アプリケーションデータの暗号化処理は通信速度が低下させる。</p>
-<p>そのため、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワークなど) の境界をSSL/TLS終端とすることが多い。</p>
+<p>そのため、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワークなど) の境界を SSL/TLS 終端とすることが多い。</p>
 <blockquote>
 <ul>
 <li><a href="https://serverfault.com/a/1126428">https://serverfault.com/a/1126428</a></li>
@@ -34208,8 +34208,8 @@
 </ul>
 </blockquote>
 <h4 id="amazon-route-53-aws-albnlb">▼ Amazon Route 53 ➡️ AWS ALB、NLB、の場合<a class="headerlink" href="#amazon-route-53-aws-albnlb" title="Permanent link">&para;</a></h4>
-<p>AWS ALBでSSL/TLS終端とする場合、Amazon EC2/Amazon ECS/Amazon EKSにサーバー証明書は不要である。</p>
-<p>Amazon EC2/Amazon ECS/Amazon EKSでSSL/TLS終端とする場合、Amazon EC2/Amazon ECS/Amazon EKSにAWS以外で作成したサーバー証明書を配置する。</p>
+<p>AWS ALB で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS にサーバー証明書は不要である。</p>
+<p>Amazon EC2/Amazon ECS/Amazon EKS で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS に AWS 以外で作成したサーバー証明書を配置する。</p>
 <table>
 <thead>
 <tr>
@@ -34242,7 +34242,7 @@
 </ul>
 </blockquote>
 <h4 id="amazon-route-53-load-balancer-controller">▼ Amazon Route 53 ➡️ Load Balancer Controller由来) の場合<a class="headerlink" href="#amazon-route-53-load-balancer-controller" title="Permanent link">&para;</a></h4>
-<p>AWSリソースにはAWS Certificate Managerのサーバー証明書を紐づけられるが、KubernetesリソースにはAWS以外のサーバー証明書 (Let’s Encrypt、Cert Manager、Istio) しか紐づけられない。</p>
+<p>AWS リソースには AWS Certificate Manager のサーバー証明書を紐づけられるが、Kubernetes リソースには AWS 以外のサーバー証明書 (Let’s Encrypt、Cert Manager、Istio) しか紐づけられない。</p>
 <table>
 <thead>
 <tr>
@@ -34272,9 +34272,9 @@
 </ul>
 </blockquote>
 <h4 id="amazon-route-53-amazon-cloudfront">▼ Amazon Route 53 ➡️ Amazon CloudFrontの場合<a class="headerlink" href="#amazon-route-53-amazon-cloudfront" title="Permanent link">&para;</a></h4>
-<p>Amazon CloudFrontからAWS ALBにHTTPSリクエストを送信する場合、それぞれにサーバー証明書を配置する必要がある。</p>
-<p>ただ、Amazon CloudFrontはバージニア北部で、またAWS ALBは東京リージョンで証明書を作成する必要がある。</p>
-<p>Amazon CloudFrontに送信されたHTTPSリクエストをAWS ALBへルーティングするために、両方に紐付ける証明書で承認するドメインは一致させる必要がある。</p>
+<p>Amazon CloudFront から AWS ALB に HTTPS リクエストを送信する場合、それぞれにサーバー証明書を配置する必要がある。</p>
+<p>ただ、Amazon CloudFront はバージニア北部で、また AWS ALB は東京リージョンで証明書を作成する必要がある。</p>
+<p>Amazon CloudFront に送信された HTTPS リクエストを AWS ALB へルーティングするために、両方に紐付ける証明書で承認するドメインは一致させる必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -34298,8 +34298,8 @@
 </tbody>
 </table>
 <h4 id="amazon-route-53-amazon-ec2amazon-ecsamazon-eksaws-lightsail">▼ Amazon Route 53 ➡️ Amazon EC2/Amazon ECS/Amazon EKS、AWS Lightsail、の場合<a class="headerlink" href="#amazon-route-53-amazon-ec2amazon-ecsamazon-eksaws-lightsail" title="Permanent link">&para;</a></h4>
-<p>Amazon Route 53でSSL/TLS終端とする場合、Amazon EC2/Amazon ECS/Amazon EKSにサーバー証明書は不要である。</p>
-<p>Amazon EC2/Amazon ECS/Amazon EKSでSSL/TLS終端とする場合、Amazon EC2/Amazon ECS/Amazon EKSにAWS以外で作成したサーバー証明書を配置する。</p>
+<p>Amazon Route 53 で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS にサーバー証明書は不要である。</p>
+<p>Amazon EC2/Amazon ECS/Amazon EKS で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS に AWS 以外で作成したサーバー証明書を配置する。</p>
 <table>
 <thead>
 <tr>
@@ -34329,8 +34329,8 @@
 <p><br></p>
 <h3 id="amazon-ec2amazon-ecsamazon-eks_1">Amazon EC2/Amazon ECS/Amazon EKSの後段<a class="headerlink" href="#amazon-ec2amazon-ecsamazon-eks_1" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-aurora">▼ Amazon Aurora<a class="headerlink" href="#amazon-aurora" title="Permanent link">&para;</a></h4>
-<p>Amazon Aurora RDSにサーバー証明書を紐づける。</p>
-<p>Amazon EC2/Amazon ECS/Amazon EKSからAmazon Aurora RDSへのアプリケーションデータを暗号化できる。</p>
+<p>Amazon Aurora RDS にサーバー証明書を紐づける。</p>
+<p>Amazon EC2/Amazon ECS/Amazon EKS から Amazon Aurora RDS へのアプリケーションデータを暗号化できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html</a></li>
@@ -34357,7 +34357,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 21:19:15 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

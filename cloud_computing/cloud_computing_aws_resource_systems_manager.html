@@ -33687,8 +33687,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. チェンジカレンダー<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>他のAWSリソース (例：SMオートメーション、Amazon EventBridgeなど) を定期的に実行するCronとして使用する。</p>
-<p>定期的に実行するAWSリソースで、他のAWSリソース (EC2、RDS) の起動処理と停止処理を定義すれば、夜間だけ停止させられる。</p>
+<p>他の AWS リソース (例：SM オートメーション、Amazon EventBridge など) を定期的に実行する Cron として使用する。</p>
+<p>定期的に実行する AWS リソースで、他の AWS リソース (EC2、RDS) の起動処理と停止処理を定義すれば、夜間だけ停止させられる。</p>
 <div class="highlight"><pre><span></span><code>チェンジカレンダー
 ⬇⬆️︎
 オートメーション、Amazon EventBridge (カレンダー取得処理、対象リソースの開始停止処理を定義)
@@ -33704,13 +33704,13 @@ EC2、RDS
 <p><br></p>
 <h2 id="02">02. チェンジマネージャー<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">チェンジマネージャーとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>AWSリソースの設定変更に承認フローを設ける。</p>
+<p>AWS リソースの設定変更に承認フローを設ける。</p>
 <p>事前にランブックを作成する必要がある。</p>
-<p>IaCのように柔軟なプロビジョニングを実行するというより、決まりきったプロビジョニング (例：AWS上で稼働するロードテストツールの実行からレポート作成まで) を実行するのに向いている。</p>
+<p>IaC のように柔軟なプロビジョニングを実行するというより、決まりきったプロビジョニング (例：AWS 上で稼働するロードテストツールの実行からレポート作成まで) を実行するのに向いている。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ランブックを作成する。AWSがあらかじめ用意してくれているものを使用もできる。</p>
+<p>ランブックを作成する。AWS があらかじめ用意してくれているものを使用もできる。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -33730,15 +33730,15 @@ EC2、RDS
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>変更リクエストに基づいて、AWSリソースを変更する処理が自動的に実行される。</p>
+<p>変更リクエストに基づいて、AWS リソースを変更する処理が自動的に実行される。</p>
 <p>これは、即時実行するこもスケジューリングもできる。</p>
 </dd>
 </dl>
 <p><br></p>
 <h3 id="_3">ランブック (ドキュメント)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>AWSリソースを変更するためには『ランブック (ドキュメント) 』を事前に作成する必要がある。</p>
-<p>ランブックでは、AWSリソースの変更箇所を定義する。</p>
-<p>ランブックには、AWSがあらかじめ用意してくれるものとユーザー定義のものがある。</p>
+<p>AWS リソースを変更するためには『ランブック (ドキュメント) 』を事前に作成する必要がある。</p>
+<p>ランブックでは、AWS リソースの変更箇所を定義する。</p>
+<p>ランブックには、AWS があらかじめ用意してくれるものとユーザー定義のものがある。</p>
 <table>
 <thead>
 <tr>
@@ -33789,9 +33789,9 @@ EC2、RDS
 <h2 id="03">03. パラメーターストア<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_6">パラメーターストアとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>変数やファイルをキーバリュー型で永続化する。</p>
-<p>永続化されている間は暗号化されており、復号したうえで、変数やファイルとして対象のAWSリソースに出力する。</p>
-<p>Kubernetesのシークレットの概念が取り入れられている。</p>
-<p>パラメーターのタイプは全て『SecureString』としたほうが良い。</p>
+<p>永続化されている間は暗号化されており、復号したうえで、変数やファイルとして対象の AWS リソースに出力する。</p>
+<p>Kubernetes のシークレットの概念が取り入れられている。</p>
+<p>パラメーターのタイプはすべて『SecureString』としたほうがよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae">https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae</a></li>
@@ -33799,10 +33799,10 @@ EC2、RDS
 </blockquote>
 <p><br></p>
 <h3 id="_7">変数の暗号化と復号<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>AWS KMSの暗号化キーを使用すると、パラメーターストアに永続化される変数を暗号化/復号できる。</p>
-<p>パラメーターストア上で変数は暗号化されており、EC2 (Amazon ECSやAmazon EKSのコンテナのホストを含む) で参照するときに復号される。</p>
-<p>セキュリティ上の理由で、本来はできないSecretのバージョン管理が、AWS KMSで暗号化することにより、可能になる。</p>
-<p>たとえ同じ文字列を暗号化する場合でも、その時のタイムスタンプなどさまざまな要素で暗号化されるため、毎回異なるハッシュ値に暗号化される。</p>
+<p>AWS KMS の暗号化キーを使用すると、パラメーターストアに永続化される変数を暗号化/復号できる。</p>
+<p>パラメーターストア上で変数は暗号化されており、EC2 (Amazon ECS や Amazon EKS のコンテナのホストを含む) で参照するときに復号される。</p>
+<p>セキュリティ上の理由で、本来はできない Secret のバージョン管理が、AWS KMS で暗号化することにより、可能になる。</p>
+<p>たとえ同じ文字列を暗号化する場合でも、そのときのタイムスタンプなどさまざまな要素で暗号化されるため、毎回異なるハッシュ値に暗号化される。</p>
 <p><img alt="parameter-store_kms" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/parameter-store_kms.png" /></p>
 <blockquote>
 <ul>
@@ -33813,13 +33813,13 @@ EC2、RDS
 </blockquote>
 <p><br></p>
 <h3 id="_8">命名規則<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>SMパラメーター名は、『<code>/&lt;リソース名&gt;/&lt;変数名&gt;</code>』とすると、わかりやすい。</p>
+<p>SM パラメーター名は、『<code>/&lt;リソース名&gt;/&lt;変数名&gt;</code>』とすると、わかりやすい。</p>
 <p><br></p>
 <h2 id="04-aws-ssm-session-manager">04. AWS SSM Session Manager<a class="headerlink" href="#04-aws-ssm-session-manager" title="Permanent link">&para;</a></h2>
 <h3 id="aws-ssm-session-manager">AWS SSM Session Managerとは<a class="headerlink" href="#aws-ssm-session-manager" title="Permanent link">&para;</a></h3>
-<p>EC2 (Amazon ECSやAmazon EKSのコンテナのホストを含む) へ通信できるようにする。</p>
-<p>SSH公開鍵認証とは異なり、Internet Gateway経由ではなく、ssmmessagesエンドポイント経由でインスタンスへリクエストを送信できる。</p>
-<p>接続したいインスタンスにsystems-managerエージェントをインストールする必要がある。</p>
+<p>EC2 (Amazon ECS や Amazon EKS のコンテナのホストを含む) へ通信できるようにする。</p>
+<p>SSH 公開鍵認証とは異なり、Internet Gateway 経由ではなく、ssmmessages エンドポイント経由でインスタンスへリクエストを送信できる。</p>
+<p>接続したいインスタンスに systems-manager エージェントをインストールする必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features">https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features</a></li>
@@ -33828,7 +33828,7 @@ EC2、RDS
 </blockquote>
 <p><br></p>
 <h3 id="aws">AWSセッション<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
-<p>TLS、Sigv4、AWS KMSを使用して暗号化された接続のこと。</p>
+<p>TLS、Sigv4、AWS KMS を使用して暗号化された接続のこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session">https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session</a></li>
@@ -33836,9 +33836,9 @@ EC2、RDS
 </blockquote>
 <p><br></p>
 <h3 id="aws_1">同時AWSセッションの上限数<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
-<p>同時AWSセッションの上限数は2つまである。</p>
+<p>同時 AWS セッションの上限数は 2 つまである。</p>
 <p>以下のようなエラーが出たときは、セッション途中のユーザーが他にいるか、過去のセッションを完了できていない可能性がある。</p>
-<p>AWS SSM Session Managerで既存のセッションを完了できる。</p>
+<p>AWS SSM Session Manager で既存のセッションを完了できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Amazon ECS Execの場合</span>
 An<span class="w"> </span>error<span class="w"> </span>occurred<span class="w"> </span><span class="o">(</span>ClientException<span class="o">)</span><span class="w"> </span>when<span class="w"> </span>calling<span class="w"> </span>the<span class="w"> </span>ExecuteCommand<span class="w"> </span>operation:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>start<span class="w"> </span>new<span class="w"> </span>execute<span class="w"> </span>sessions<span class="w"> </span>because<span class="w"> </span>the<span class="w"> </span>maximum<span class="w"> </span>session<span class="w"> </span>limit<span class="w"> </span>of<span class="w"> </span><span class="m">2</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>reached.
 </code></pre></div>
@@ -33863,7 +33863,7 @@ An<span class="w"> </span>error<span class="w"> </span>occurred<span class="w"> 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月14日 14:43:37 JST">2026-04-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

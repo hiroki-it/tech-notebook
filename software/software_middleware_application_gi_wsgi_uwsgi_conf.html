@@ -33925,7 +33925,7 @@
 <h2 id="02">02. 設定ファイルの種類<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="uwsgiini"><code>uwsgi.ini</code> ファイル<a class="headerlink" href="#uwsgiini" title="Permanent link">&para;</a></h3>
 <h4 id="uwsgiini_1">▼ <code>uwsgi.ini</code> ファイルとは<a class="headerlink" href="#uwsgiini_1" title="Permanent link">&para;</a></h4>
-<p>uWSGIの起動時の値を設定する。</p>
+<p>uWSGI の起動時の値を設定する。</p>
 <p><code>json</code> 形式や <code>xml</code> 形式でも問題ない。</p>
 <blockquote>
 <ul>
@@ -33984,7 +33984,7 @@ spawned<span class="w"> </span>uWSGI<span class="w"> </span>http<span class="w">
 <p><br></p>
 <h2 id="04-uwsgi">04. uwsgiセクション<a class="headerlink" href="#04-uwsgi" title="Permanent link">&para;</a></h2>
 <h3 id="uwsgi_1">uwsgiセクションとは<a class="headerlink" href="#uwsgi_1" title="Permanent link">&para;</a></h3>
-<p>uWSGIの <code>uwsgi</code> プロセスのプールを設定する。</p>
+<p>uWSGI の <code>uwsgi</code> プロセスのプールを設定する。</p>
 <p><br></p>
 <h3 id="callable">callable<a class="headerlink" href="#callable" title="Permanent link">&para;</a></h3>
 <p>アプリケーションのインスタンスの変数名を設定する。</p>
@@ -34011,7 +34011,7 @@ spawned<span class="w"> </span>uWSGI<span class="w"> </span>http<span class="w">
 </blockquote>
 <p><br></p>
 <h3 id="chmod-socket">chmod-socket<a class="headerlink" href="#chmod-socket" title="Permanent link">&para;</a></h3>
-<p>Unixドメインソケットファイルの権限を設定する。</p>
+<p>Unix ドメインソケットファイルの権限を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[uwsgi]</span>
 <span class="na">chmod-socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">666</span>
 </code></pre></div>
@@ -34032,8 +34032,8 @@ spawned<span class="w"> </span>uWSGI<span class="w"> </span>http<span class="w">
 </blockquote>
 <p><br></p>
 <h3 id="http">http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
-<p>HTTPリクエストを使用する場合、受信する通信のIPアドレスと、インバウンド通信を待ち受けるポート番号を設定する。</p>
-<p>Pythonアプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。</p>
+<p>HTTP リクエストを使用する場合、受信する通信の IP アドレスと、インバウンド通信を待ち受けるポート番号を設定する。</p>
+<p>Python アプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[uwsgi]</span>
 <span class="na">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0:5000</span>
 </code></pre></div>
@@ -34066,7 +34066,7 @@ spawned<span class="w"> </span>uWSGI<span class="w"> </span>http<span class="w">
 </blockquote>
 <p><br></p>
 <h3 id="modulewsgi">module、wsgi<a class="headerlink" href="#modulewsgi" title="Permanent link">&para;</a></h3>
-<p>Pythonでアプリケーションファクトリーパターンを採用している場合、エントリーポイントのディレクトリ名とファクトリー関数名を設定する。</p>
+<p>Python でアプリケーションファクトリーパターンを採用している場合、エントリーポイントのディレクトリ名とファクトリー関数名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[uwsgi]</span>
 <span class="na">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">src:create_app()</span>
 </code></pre></div>
@@ -34108,8 +34108,8 @@ spawned<span class="w"> </span>uWSGI<span class="w"> </span>http<span class="w">
 </blockquote>
 <p><br></p>
 <h3 id="socket">socket<a class="headerlink" href="#socket" title="Permanent link">&para;</a></h3>
-<p>Unixドメインソケットを使用する場合、ソケットファイルの作成場所と、インバウンド通信を待ち受けるポート番号を設定する。</p>
-<p>Pythonアプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。</p>
+<p>Unix ドメインソケットを使用する場合、ソケットファイルの作成場所と、インバウンド通信を待ち受けるポート番号を設定する。</p>
+<p>Python アプリケーションをフレームワークで開発している場合は、フレームワークのデフォルトのポート番号を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[uwsgi]</span>
 <span class="na">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/etc/uwsgi/uwsgi.sock:5000</span>
 </code></pre></div>
@@ -34121,7 +34121,7 @@ spawned<span class="w"> </span>uWSGI<span class="w"> </span>http<span class="w">
 </blockquote>
 <p><br></p>
 <h3 id="vacuum">vacuum<a class="headerlink" href="#vacuum" title="Permanent link">&para;</a></h3>
-<p>uwsgiプロセス終了時にソケットファイルを削除するか否かを設定する。</p>
+<p>uwsgi プロセス終了時にソケットファイルを削除するか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[uwsgi]</span>
 <span class="na">vacuum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
 </code></pre></div>
@@ -34163,7 +34163,7 @@ spawned<span class="w"> </span>uWSGI<span class="w"> </span>http<span class="w">
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     

@@ -34154,7 +34154,7 @@
 <p><br></p>
 <h2 id="01-dial-tcp-lookup-timeout">01. <code>dial tcp lookup timeout</code> を解決する<a class="headerlink" href="#01-dial-tcp-lookup-timeout" title="Permanent link">&para;</a></h2>
 <h3 id="dial-tcp-lookup-timeout"><code>dial tcp lookup timeout</code> とは<a class="headerlink" href="#dial-tcp-lookup-timeout" title="Permanent link">&para;</a></h3>
-<p>EnvoyがCoreDNSとの通信に失敗している可能性がある。</p>
+<p>Envoy が CoreDNS との通信に失敗している可能性がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://christina04.hatenablog.com/entry/istio-and-envoy-errors">https://christina04.hatenablog.com/entry/istio-and-envoy-errors</a></li>
@@ -34164,22 +34164,22 @@
 <h3 id="_2">解決方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>以下が原因である可能性もある。</p>
 <ul>
-<li>CoreDNSが停止している。</li>
-<li>CoreDNSへのリクエスト経路のネットワークパフォーマンスが低い</li>
+<li>CoreDNS が停止している。</li>
+<li>CoreDNS へのリクエスト経路のネットワークパフォーマンスが低い</li>
 </ul>
 <p>これらを解決する。</p>
 <p><br></p>
 <h2 id="02-upstream-request-timeout">02. <code>upstream request timeout</code> を解決する<a class="headerlink" href="#02-upstream-request-timeout" title="Permanent link">&para;</a></h2>
 <h3 id="upstream-request-timeout"><code>upstream request timeout</code> とは<a class="headerlink" href="#upstream-request-timeout" title="Permanent link">&para;</a></h3>
 <p>Gateway Timeout (<code>504</code> ステータス) である。</p>
-<p>Envoyからアップストリーム (宛先) への送信処理エラーである。</p>
-<p>Envoyからのリクエスト処理が、リスナーからルートへのタイムアウト時間を超過し、宛先にリクエストを送信できなかったことを表している。</p>
+<p>Envoy からアップストリーム (宛先) への送信処理エラーである。</p>
+<p>Envoy からのリクエスト処理が、リスナーからルートへのタイムアウト時間を超過し、宛先にリクエストを送信できなかったことを表している。</p>
 <p>アウトバウンド通信またはインバウンド通信の違いで、宛先に当たる箇所が異なる。</p>
 <p><br></p>
 <h3 id="_3">宛先に当たる箇所<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="envoy_1">▼ Envoyからのアウトバウンド通信の場合<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
-<p>Envoyからのアウトバウンド通信の場合、Envoyの宛先は他のEnvoyや外部システムである。</p>
-<p>Envoyから他のEnvoyや外部システムへのリクエストでタイムアウトになっている。</p>
+<p>Envoy からのアウトバウンド通信の場合、Envoy の宛先は他の Envoy や外部システムである。</p>
+<p>Envoy から他の Envoy や外部システムへのリクエストでタイムアウトになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
@@ -34194,8 +34194,8 @@
 </ul>
 </blockquote>
 <h4 id="envoy_2">▼ Envoyへのインバウンド通信の場合<a class="headerlink" href="#envoy_2" title="Permanent link">&para;</a></h4>
-<p>Envoyへのインバウンド通信の場合、Envoyの宛先はマイクロサービスである。</p>
-<p>Envoyからマイクロサービスへのリクエストがタイムアウトになっている。</p>
+<p>Envoy へのインバウンド通信の場合、Envoy の宛先はマイクロサービスである。</p>
+<p>Envoy からマイクロサービスへのリクエストがタイムアウトになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
@@ -34213,7 +34213,7 @@
 <h3 id="_4">解決方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>以下が原因である可能性もある。</p>
 <ul>
-<li>宛先 (アウトバウンド通信の場合はEnvoy、インバウンド通信の場合はマイクロサービス) がハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
+<li>宛先 (アウトバウンド通信の場合は Envoy、インバウンド通信の場合はマイクロサービス) がハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
 <li>タイムアウト時間が短すぎる</li>
 <li>ネットワークに問題がある。</li>
 <li>処理に時間がかかりすぎている。</li>
@@ -34223,14 +34223,14 @@
 <h2 id="03-upstream-response-timeout">03. <code>upstream response timeout</code> を解決する<a class="headerlink" href="#03-upstream-response-timeout" title="Permanent link">&para;</a></h2>
 <h3 id="upstream-response-timeout"><code>upstream response timeout</code> とは<a class="headerlink" href="#upstream-response-timeout" title="Permanent link">&para;</a></h3>
 <p>Gateway Timeout (<code>504</code> ステータス) である。</p>
-<p>Envoyからアップストリーム (宛先) への送信処理エラーである。</p>
-<p>しかし、宛先からのレスポンス処理がタイムアウト時間を超過し、Envoyが宛先からレスポンスを受信できなかったことを表している。</p>
+<p>Envoy からアップストリーム (宛先) への送信処理エラーである。</p>
+<p>しかし、宛先からのレスポンス処理がタイムアウト時間を超過し、Envoy が宛先からレスポンスを受信できなかったことを表している。</p>
 <p>アウトバウンド通信またはインバウンド通信の違いで、いずれが原因かが異なる。</p>
 <p><br></p>
 <h3 id="_5">宛先に当たる箇所<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="envoy_3">▼ Envoyからのアウトバウンド通信の場合<a class="headerlink" href="#envoy_3" title="Permanent link">&para;</a></h4>
-<p>アウトバウンド通信の場合、Envoyの宛先は他のEnvoyや外部システムがである。</p>
-<p>他のEnvoyや外部システムからのレスポンス処理がタイムアウトになっている。</p>
+<p>アウトバウンド通信の場合、Envoy の宛先は他の Envoy や外部システムがである。</p>
+<p>他の Envoy や外部システムからのレスポンス処理がタイムアウトになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
@@ -34243,7 +34243,7 @@
 </ul>
 </blockquote>
 <h4 id="envoy_4">▼ Envoyへのインバウンド通信の場合<a class="headerlink" href="#envoy_4" title="Permanent link">&para;</a></h4>
-<p>インバウンド通信の場合、Envoyの宛先はマイクロサービスである。</p>
+<p>インバウンド通信の場合、Envoy の宛先はマイクロサービスである。</p>
 <p>マイクロサービスからのレスポンス処理がタイムアウトになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇️</span>
@@ -34260,7 +34260,7 @@
 <h3 id="_6">解決方法<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>以下が原因である可能性もある。</p>
 <ul>
-<li>宛先 (アウトバウンド通信の場合はEnvoy、インバウンド通信の場合はマイクロサービス) がハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
+<li>宛先 (アウトバウンド通信の場合は Envoy、インバウンド通信の場合はマイクロサービス) がハードウェアリソース不足や高負荷状態にあり、処理し切れなかった</li>
 <li>タイムアウト時間が短すぎる</li>
 <li>ネットワークに問題がある。</li>
 <li>処理に時間がかかりすぎている。</li>
@@ -34270,11 +34270,11 @@
 <h2 id="04-downstream_remote_disconnect">04. <code>downstream_remote_disconnect</code> を解決する<a class="headerlink" href="#04-downstream_remote_disconnect" title="Permanent link">&para;</a></h2>
 <h3 id="downstream_remote_disconnect"><code>downstream_remote_disconnect</code> とは<a class="headerlink" href="#downstream_remote_disconnect" title="Permanent link">&para;</a></h3>
 <p>Gateway Timeout (<code>504</code> ステータス) である。</p>
-<p>Envoyのダウンストリーム (送信元) の返信処理エラーである。</p>
+<p>Envoy のダウンストリーム (送信元) の返信処理エラーである。</p>
 <p><br></p>
 <h3 id="_7">送信元に当たる箇所<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="envoy_5">▼ Envoyからのアウトバウンド通信の場合<a class="headerlink" href="#envoy_5" title="Permanent link">&para;</a></h4>
-<p>Envoyからのアウトバウンド通信の場合、Envoyの送信元はマイクロサービスである。</p>
+<p>Envoy からのアウトバウンド通信の場合、Envoy の送信元はマイクロサービスである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
@@ -34282,21 +34282,21 @@
 <span class="nn">...</span><span class="w"> </span><span class="c1"># 宛先</span>
 </code></pre></div>
 <p>マイクロサービスからのリクエストがタイムアウトになっている。</p>
-<p>マイクロサービスからDBへのトランザクションで問題が起こると、Envoyで <code>downstream_remote_disconnect</code> が出る可能性もある。</p>
+<p>マイクロサービスから DB へのトランザクションで問題が起こると、Envoy で <code>downstream_remote_disconnect</code> が出る可能性もある。</p>
 <h4 id="envoy_6">▼ Envoyへのインバウンド通信の場合<a class="headerlink" href="#envoy_6" title="Permanent link">&para;</a></h4>
-<p>Envoyへのインバウンド通信の場合、Envoyの送信元はブラウザやEnvoyである。</p>
+<p>Envoy へのインバウンド通信の場合、Envoy の送信元はブラウザや Envoy である。</p>
 <div class="highlight"><pre><span></span><code><span class="nn">...</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">Envoy</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇️</span>
 <span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 宛先</span>
 </code></pre></div>
-<p>ブラウザやEnvoyからのリクエストがタイムアウトになっている。</p>
+<p>ブラウザや Envoy からのリクエストがタイムアウトになっている。</p>
 <p><br></p>
 <h3 id="_8">解決方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>以下が原因である可能性もある。</p>
 <ul>
-<li>送信元 (アウトバウンド通信の場合はマイクロサービス、インバウンド通信の場合はブラウザやEnvoy) が通信を切断した。</li>
+<li>送信元 (アウトバウンド通信の場合はマイクロサービス、インバウンド通信の場合はブラウザや Envoy) が通信を切断した。</li>
 <li>タイムアウト時間が短すぎる</li>
 <li>ネットワークに問題がある。</li>
 </ul>
@@ -34313,10 +34313,10 @@
 <p><br></p>
 <h3 id="2-envoyenvoy">2. 宛先Envoyから送信元Envoyへのレスポンスヘッダー<a class="headerlink" href="#2-envoyenvoy" title="Permanent link">&para;</a></h3>
 <h4 id="envoyenvoy">▼ 宛先Envoyから送信元Envoyへのレスポンスヘッダーとは<a class="headerlink" href="#envoyenvoy" title="Permanent link">&para;</a></h4>
-<p>送信元Envoyのアウトバウンド通信時に、宛先Envoyから送信元ENvoyへのレスポンスに設定されたヘッダーである。</p>
+<p>送信元 Envoy のアウトバウンド通信時に、宛先 Envoy から送信元 ENvoy へのレスポンスに設定されたヘッダーである。</p>
 <h4 id="x-envoy-immediate-health-check-fail">▼ x-envoy-immediate-health-check-fail<a class="headerlink" href="#x-envoy-immediate-health-check-fail" title="Permanent link">&para;</a></h4>
 <p>宛先でヘルスチェックに失敗していることを表す。</p>
-<p>送信元Envoyは、このEnvoyをロードバランシングの宛先から外す。</p>
+<p>送信元 Envoy は、この Envoy をロードバランシングの宛先から外す。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-immediate-health-check-fail">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-immediate-health-check-fail</a></li>
@@ -34325,16 +34325,16 @@
 <p><br></p>
 <h3 id="3-envoy">3. 送信元Envoyからアプリへのレスポンスヘッダー<a class="headerlink" href="#3-envoy" title="Permanent link">&para;</a></h3>
 <h4 id="envoy_7">▼ 送信元Envoyからアプリへのレスポンスヘッダーとは<a class="headerlink" href="#envoy_7" title="Permanent link">&para;</a></h4>
-<p>送信元Envoyのアウトバウンド通信時に、送信元Envoyからアプリへのレスポンスに設定されたヘッダーである。</p>
+<p>送信元 Envoy のアウトバウンド通信時に、送信元 Envoy からアプリへのレスポンスに設定されたヘッダーである。</p>
 <h4 id="x-envoy-upstream-service-time">▼ x-envoy-upstream-service-time<a class="headerlink" href="#x-envoy-upstream-service-time" title="Permanent link">&para;</a></h4>
-<p>宛先マイクロサービスの処理時間と宛先Envoyからのレスポンスタイムの合計時間を表す。</p>
+<p>宛先マイクロサービスの処理時間と宛先 Envoy からのレスポンスタイムの合計時間を表す。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-upstream-service-time">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-upstream-service-time</a></li>
 </ul>
 </blockquote>
 <h4 id="x-envoy-overloaded">▼ x-envoy-overloaded<a class="headerlink" href="#x-envoy-overloaded" title="Permanent link">&para;</a></h4>
-<p>送信元Envoyのアウトバウンド通信時に、サーキットブレイカーまたはメンテナンスモードによってリクエストが遮断されたことを表す。</p>
+<p>送信元 Envoy のアウトバウンド通信時に、サーキットブレイカーまたはメンテナンスモードによってリクエストが遮断されたことを表す。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-overloaded">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-overloaded</a></li>
@@ -34342,7 +34342,7 @@
 </ul>
 </blockquote>
 <h4 id="x-envoy-loadl-overloaded">▼ x-envoy-loadl-overloaded<a class="headerlink" href="#x-envoy-loadl-overloaded" title="Permanent link">&para;</a></h4>
-<p>送信元Envoyのインバウンド通信時に、サーキットブレイカーによってリクエストが遮断されたことを表す。</p>
+<p>送信元 Envoy のインバウンド通信時に、サーキットブレイカーによってリクエストが遮断されたことを表す。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#x-envoy-local-overloaded">https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#x-envoy-local-overloaded</a></li>
@@ -34370,7 +34370,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
   </span>
 
     
