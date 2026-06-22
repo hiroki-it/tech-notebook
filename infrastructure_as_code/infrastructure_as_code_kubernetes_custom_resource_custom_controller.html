@@ -34171,13 +34171,13 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-custom-controller">01. Custom Controllerとは<a class="headerlink" href="#01-custom-controller" title="Permanent link">&para;</a></h2>
-<p>カスタムリソースのための kube-controller に相当する。</p>
-<p>ただし、kube-controller とは異なり Node 上で稼働する。</p>
-<p>実体は Deployment や StatefulSet 配下の Pod であることが多い。</p>
+<p>カスタムリソースのためのkube-controllerに相当する。</p>
+<p>ただし、kube-controllerとは異なりNode上で稼働する。</p>
+<p>実体はDeploymentやStatefulSet配下のPodであることが多い。</p>
 <p><br></p>
 <h2 id="02-custom-controller">02. Custom Controllerの仕組み<a class="headerlink" href="#02-custom-controller" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Custom Controller は、client-go コンポーネントと custom-controller コンポーネントから構成される。</p>
+<p>Custom Controllerは、client-goコンポーネントとcustom-controllerコンポーネントから構成される。</p>
 <p><img alt="kubernetes_custome-controller_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png" /></p>
 <p><br></p>
 <h3 id="client-go">client-goコンポーネント<a class="headerlink" href="#client-go" title="Permanent link">&para;</a></h3>
@@ -34190,8 +34190,8 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ リフレクター<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>kube-apiserver から Kubernetes リソースのマニフェストの変更を検知する。</p>
-<p>また、変更内容に応じて作成した Kubernetes リソースの実体を Delta FIFO キューに格納する。</p>
+<p>kube-apiserverからKubernetesリソースのマニフェストの変更を検知する。</p>
+<p>また、変更内容に応じて作成したKubernetesリソースの実体をDelta FIFOキューに格納する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/reflector.go">https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/reflector.go</a></li>
@@ -34199,15 +34199,15 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ インフォーマー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>Delta FIFO キューから Kubernetes リソースの実体を取得する。</p>
-<p>また、取得した実体をインデクサーを介して保管し、Kubernetes リソースの種類に応じてリソースイベントハンドラーをコールする。</p>
+<p>Delta FIFOキューからKubernetesリソースの実体を取得する。</p>
+<p>また、取得した実体をインデクサーを介して保管し、Kubernetesリソースの種類に応じてリソースイベントハンドラーをコールする。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes/client-go/tree/v12.0.0/informers">https://github.com/kubernetes/client-go/tree/v12.0.0/informers</a></li>
 </ul>
 </blockquote>
 <h4 id="_5">▼ インデクサー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>キャッシュとして、Kubernetes リソースの実体を Node のメモリ上に保管する。</p>
+<p>キャッシュとして、Kubernetesリソースの実体をNodeのメモリ上に保管する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/store.go">https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/store.go</a></li>
@@ -34217,7 +34217,7 @@
 <h3 id="custom-controller_1">custom-controllerコンポーネント<a class="headerlink" href="#custom-controller_1" title="Permanent link">&para;</a></h3>
 <h4 id="custom-controller_2">▼ custom-controllerコンポーネントとは<a class="headerlink" href="#custom-controller_2" title="Permanent link">&para;</a></h4>
 <p>リソースイベントハンドラー、ワークキュー、アイテム処理、から構成される。</p>
-<p>これらを組み合わせて、Reconciliation を実行する。</p>
+<p>これらを組み合わせて、Reconciliationを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components">https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components</a></li>
@@ -34240,22 +34240,22 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Custom Controller は、kube-apiserver を介して、etcd に watch イベントを送信している。</p>
+<p>Custom Controllerは、kube-apiserverを介して、etcdにwatchイベントを送信している。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>カスタムリソースと CRD のマニフェストを何らかの方法 (例：<code>kubectl apply</code> コマンド、<code>kubectl edit</code> コマンドなど) で etcd 上に永続化したとする。</p>
+<p>カスタムリソースとCRDのマニフェストを何らかの方法 (例：<code>kubectl apply</code> コマンド、<code>kubectl edit</code> コマンドなど) でetcd上に永続化したとする。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Custom Controller は、etcd 上でカスタムリソースと CRD のマニフェストを検知し、実際にカスタムリソースを作成/変更する。</p>
+<p>Custom Controllerは、etcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。</p>
 </dd>
 </dl>
-<p>クライアントからのマニフェストの作成/変更は、etcd 上のマニフェストの設定値を変更しているのみで、実際のカスタムリソースを作成/変更しているわけではないことに注意する。</p>
-<p>その他、etcd 上のカスタムリソースに応じて、外部サービスの API (例：証明書の Fastly) をコールする。そして、カスタムリソースとペアになるもの (例：Fastly の証明書) も作成できる。</p>
-<p>注意点として、CRD を削除すると kube-controller はカスタムリソースを削除する。</p>
-<p>このとき CRD をあらためて作成しても、kube-controller はカスタムリソースを自動的に作成しない。</p>
-<p>kube-controller に不具合があると、etcd 上の CRD の通りにカスタムリソースが作成されない。</p>
+<p>クライアントからのマニフェストの作成/変更は、etcd上のマニフェストの設定値を変更しているのみで、実際のカスタムリソースを作成/変更しているわけではないことに注意する。</p>
+<p>その他、etcd上のカスタムリソースに応じて、外部サービスのAPI (例：証明書のFastly) をコールする。そして、カスタムリソースとペアになるもの (例：Fastlyの証明書) も作成できる。</p>
+<p>注意点として、CRDを削除するとkube-controllerはカスタムリソースを削除する。</p>
+<p>この時CRDをあらためて作成しても、kube-controllerはカスタムリソースを自動的に作成しない。</p>
+<p>kube-controllerに不具合があると、etcd上のCRDの通りにカスタムリソースが作成されない。</p>
 <blockquote>
 <ul>
 <li><a href="https://youtu.be/pw8AVOJQ5uw?t=1372">https://youtu.be/pw8AVOJQ5uw?t=1372</a></li>
@@ -34264,14 +34264,14 @@
 </blockquote>
 <p><br></p>
 <h3 id="reconciliation">reconciliationループ<a class="headerlink" href="#reconciliation" title="Permanent link">&para;</a></h3>
-<p>kube-controller-manager は、Node にある Custom Controller を反復的に実行する。</p>
-<p>これにより、カスタムリソースは CRD の宣言通りに定期的に修復される (reconciliation ループ) 。</p>
-<p>ただし、Custom Controller 自体は kube-apiserver クライアント (例：<code>kubectl</code> クライアント、Kubernetes リソースなど) が作成する必要がある。</p>
+<p>kube-controller-managerは、NodeにあるCustom Controllerを反復的に実行する。</p>
+<p>これにより、カスタムリソースはCRDの宣言通りに定期的に修復される (reconciliationループ) 。</p>
+<p>ただし、Custom Controller自体はkube-apiserverクライアント (例：<code>kubectl</code> クライアント、Kubernetesリソースなど) が作成する必要がある。</p>
 <p><br></p>
 <h2 id="04">04. セットアップ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_9">実装パターン<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 自前で実装する場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>Custom Controller を自前で実装する。</p>
+<p>Custom Controllerを自前で実装する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events">https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events</a></li>
@@ -34287,7 +34287,7 @@
 <p><br></p>
 <h2 id="05-operator">05. Operatorパターン<a class="headerlink" href="#05-operator" title="Permanent link">&para;</a></h2>
 <h3 id="operator">Operatorパターンとは<a class="headerlink" href="#operator" title="Permanent link">&para;</a></h3>
-<p>Custom Controller を内蔵し、特定のカスタムリソースをセットアップする責務を持つ。</p>
+<p>Custom Controllerを内蔵し、特定のカスタムリソースをセットアップする責務を持つ。</p>
 <blockquote>
 <ul>
 <li><a href="https://zoetrope.github.io/kubebuilder-training/">https://zoetrope.github.io/kubebuilder-training/</a></li>
@@ -34296,7 +34296,7 @@
 <p><br></p>
 <h3 id="operator_1">Operatorパターンの仕組み<a class="headerlink" href="#operator_1" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ アーキテクチャ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Operator パターンは、カスタムリソース、Custom Controller の Operator、認可スコープ付与リソース、といったコンポーネントから構成されている。</p>
+<p>Operatorパターンは、カスタムリソース、Custom ControllerのOperator、認可スコープ付与リソース、といったコンポーネントから構成されている。</p>
 <p><img alt="kubernetes_operator_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -34305,14 +34305,14 @@
 </ul>
 </blockquote>
 <h4 id="operator_2">▼ Operator<a class="headerlink" href="#operator_2" title="Permanent link">&para;</a></h4>
-<p>Custom Controller として動作する。</p>
-<p>Custom Controller と同様に、実体は Deployment や StatefulSet 配下の Pod であることが多い。</p>
-<p>Operator がいる状況で、カスタムリソースと CRD のマニフェストを何らかの方法 (例：<code>kubectl apply</code> コマンド、<code>kubectl edit</code> コマンドなど) で etcd 上に永続化したとする。</p>
-<p>すると Operator は、operator は etcd 上でカスタムリソースと CRD のマニフェストを検知し、実際にカスタムリソースを作成/変更する。</p>
-<p>反対に、CRD を削除すると、Operator はカスタムリソースを削除する。</p>
-<p>このとき CRD をあらためて作成しても、Operator はカスタムリソースを自動的に作成しない。</p>
-<p>Operator に不具合があると、etcd 上の CRD の通りにカスタムリソースが作成されない。</p>
-<p>Operator は関連するすべての CRD を要求し、たとえその CRD に対応するカスタムリソースを作成しないとしても、CRD だけは永続化しておく必要がある。(例：Prometheus 系の CRD をすべて作成しないと、PrometheusOperator がエラーになる)</p>
+<p>Custom Controllerとして動作する。</p>
+<p>Custom Controllerと同様に、実体はDeploymentやStatefulSet配下のPodであることが多い。</p>
+<p>Operatorがいる状況で、カスタムリソースとCRDのマニフェストを何らかの方法 (例：<code>kubectl apply</code> コマンド、<code>kubectl edit</code> コマンドなど) でetcd上に永続化したとする。</p>
+<p>するとOperatorは、operatorはetcd上でカスタムリソースとCRDのマニフェストを検知し、実際にカスタムリソースを作成/変更する。</p>
+<p>反対に、CRDを削除すると、Operatorはカスタムリソースを削除する。</p>
+<p>この時CRDをあらためて作成しても、Operatorはカスタムリソースを自動的に作成しない。</p>
+<p>Operatorに不具合があると、etcd上のCRDの通りにカスタムリソースが作成されない。</p>
+<p>Operatorは関連する全てのCRDを要求し、たとえそのCRDに対応するカスタムリソースを作成しないとしても、CRDだけは永続化しておく必要がある。(例：Prometheus系のCRDを全て作成しないと、PrometheusOperatorがエラーになる)</p>
 <p><img alt="kubernetes_operator-controller" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator-controller.png" /></p>
 <blockquote>
 <ul>
@@ -34323,7 +34323,7 @@
 </ul>
 </blockquote>
 <h4 id="_12">▼ 認可スコープ付与リソース<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>Operator が kube-apiserver にリクエストを送信できるように、Operator に認可スコープを付与する。</p>
+<p>Operatorがkube-apiserverにリクエストを送信できるように、Operatorに認可スコープを付与する。</p>
 <blockquote>
 <ul>
 <li><a href="https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work">https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work</a></li>
@@ -34331,7 +34331,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="operator_3">Operatorパターンの例<a class="headerlink" href="#operator_3" title="Permanent link">&para;</a></h3>
-<p>OperatorHub で公開されている。</p>
+<p>OperatorHubで公開されている。</p>
 <ul>
 <li>ArgoCDOperator</li>
 <li>IstioOperator</li>
@@ -34350,16 +34350,16 @@
 <p><br></p>
 <h3 id="operatorframework">OperatorFramework<a class="headerlink" href="#operatorframework" title="Permanent link">&para;</a></h3>
 <h4 id="operatorframework_1">▼ OperatorFrameworkとは<a class="headerlink" href="#operatorframework_1" title="Permanent link">&para;</a></h4>
-<p>Operator を開発するためのフレームワークのこと。</p>
+<p>Operatorを開発するためのフレームワークのこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes">https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes</a></li>
 </ul>
 </blockquote>
 <h4 id="operator-sdk">▼ Operator SDK<a class="headerlink" href="#operator-sdk" title="Permanent link">&para;</a></h4>
-<p>Operator を、開発、テスト、リリース、ために必要なツールを提供する。</p>
+<p>Operatorを、開発、テスト、リリース、ために必要なツールを提供する。</p>
 <h4 id="operator-lifecycle-manager">▼ Operator Lifecycle Manager<a class="headerlink" href="#operator-lifecycle-manager" title="Permanent link">&para;</a></h4>
-<p>Operator の、作成、削除を管理する。</p>
+<p>Operatorの、作成、削除を管理する。</p>
 <h4 id="operator-metering">▼ Operator Metering<a class="headerlink" href="#operator-metering" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
@@ -34383,7 +34383,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:55:08 JST">2026-02-16</span>
   </span>
 
     

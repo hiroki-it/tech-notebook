@@ -34151,9 +34151,9 @@
 <h2 id="01">01. プロセス<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">プロセスとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>プログラムは、メモリ上のアドレス空間の区画に割り当てられている。</p>
-<p>このときのプログラム自体を『プロセス』という。</p>
+<p>この時のプログラム自体を『プロセス』という。</p>
 <p>プロセスの代わりに『タスク』ということもある。</p>
-<p>プロセスとして割り当てられたプログラムは CPU に参照され、CPU のコア上で処理が実行される。</p>
+<p>プロセスとして割り当てられたプログラムはCPUに参照され、CPUのコア上で処理が実行される。</p>
 <p>何かのプロセスを正しく終了できないと、メモリ上に不要なプロセスが溜まっていき、メモリ使用率が高くなってしまう。</p>
 <blockquote>
 <ul>
@@ -34162,7 +34162,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">デーモン (常駐プログラム)<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>OS が稼働している間、メモリ上のアドレス空間の区画に恒常的に割り当てられているプロセスを、特に『デーモン (常駐プログラム) 』という。</p>
+<p>OSが稼働している間、メモリ上のアドレス空間の区画に恒常的に割り当てられているプロセスを、特に『デーモン (常駐プログラム) 』という。</p>
 <blockquote>
 <ul>
 <li><a href="https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3.html">https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3.html</a></li>
@@ -34227,7 +34227,7 @@
 <h4 id="_9">▼ 親/子プロセスとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>プロセスが新しいプロセスを作成する場合、プロセス間には親子関係がある。</p>
 <p>例えば、ターミナルの親プロセスは <code>shell</code> プロセスや <code>bash</code> プロセスであり、任意のユーティリティを実行すると、これの子プロセスを作成することになる。</p>
-<p>プロセス ID が <code>1</code> のプロセスが、すべてのプロセスの親である。</p>
+<p>プロセスIDが <code>1</code> のプロセスが、全てのプロセスの親である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># MacOSの場合</span>
 $<span class="w"> </span>ps<span class="w"> </span>-p<span class="w"> </span><span class="m">1</span>
 
@@ -34249,7 +34249,7 @@ PID<span class="w">  </span>TTY<span class="w">  </span>TIME<span class="w">    
 <p>単一のメモリ上で、単一のプロセスがアドレスに割り当てられる仕組みのこと。</p>
 <h4 id="_13">▼ マルチプロセシング<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>単一のメモリ上で、複数のプロセスがアドレスに割り当てられる仕組みのこと。</p>
-<p>優先度の低いプロセスから CPU を切り離し、優先度の高いプロセスに CPU を割り当てる、といった仕組みを持つ。</p>
+<p>優先度の低いプロセスからCPUを切り離し、優先度の高いプロセスにCPUを割り当てる、といった仕組みを持つ。</p>
 <p>現代のハードウェアのほとんどがマルチプロセシングの機能を持つ。</p>
 <p><img alt="process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/process.png" /></p>
 <blockquote>
@@ -34261,7 +34261,7 @@ PID<span class="w">  </span>TTY<span class="w">  </span>TIME<span class="w">    
 <p><br></p>
 <h3 id="oomout-of-memory-killer">OOMキラー：Out Of Memory Killer<a class="headerlink" href="#oomout-of-memory-killer" title="Permanent link">&para;</a></h3>
 <h4 id="oom">▼ OOMキラーとは<a class="headerlink" href="#oom" title="Permanent link">&para;</a></h4>
-<p>物理メモリ、ストレージ上のスワップ領域などプロセスが使用可能なすべての区画を使用し、プロセスを新しく割り当てる区画がなくなってしまった場合に実行される。</p>
+<p>物理メモリ、ストレージ上のスワップ領域などプロセスが使用可能な全ての区画を使用し、プロセスを新しく割り当てる区画がなくなってしまった場合に実行される。</p>
 <p>現在割り当てられているプロセスのうち、もっとも使用領域の大きいプロセスを強制的に終了する。</p>
 <blockquote>
 <ul>
@@ -34269,7 +34269,7 @@ PID<span class="w">  </span>TTY<span class="w">  </span>TIME<span class="w">    
 </ul>
 </blockquote>
 <h4 id="_14">▼ 確認方法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>もし OOM キラーが実行された場合は、<code>/var/log/messages</code> ファイルにログが出力される。</p>
+<p>もしOOMキラーが実行された場合は、<code>/var/log/messages</code> ファイルにログが出力される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/var/log/messages<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Kill
 
 Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">00</span>:00:00<span class="w"> </span>localhost<span class="w"> </span>kernel:<span class="w"> </span>Out<span class="w"> </span>of<span class="w"> </span>memory:<span class="w"> </span>Kill<span class="w"> </span>process<span class="w"> </span><span class="m">17143</span><span class="w"> </span><span class="o">(</span>java<span class="o">)</span><span class="w"> </span>score<span class="w"> </span><span class="m">468</span><span class="w"> </span>or<span class="w"> </span>sacrifice<span class="w"> </span>child
@@ -34283,8 +34283,8 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 <p><br></p>
 <h2 id="02">02. スレッド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_15">スレッド (プロセスの処理実行単位) とは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>メモリ上ではプログラムがプロセスとして割り当てられており、プログラムは CPU のコア上で実行される。</p>
-<p>プロセス内には、CPU のコアと紐づく処理実行が複数個ある。</p>
+<p>メモリ上ではプログラムがプロセスとして割り当てられており、プログラムはCPUのコア上で実行される。</p>
+<p>プロセス内には、CPUのコアと紐づく処理実行が複数個ある。</p>
 <p>この処理実行単位を『スレッド』という。</p>
 <p><img alt="thread" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/thread.png" /></p>
 <blockquote>
@@ -34387,7 +34387,7 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 </tbody>
 </table>
 <h4 id="nodejs">▼ Node.js<a class="headerlink" href="#nodejs" title="Permanent link">&para;</a></h4>
-<p>例えば、Node.js は次のようにシングルスレッドでプログラムを実行する。</p>
+<p>例えば、Node.jsは次のようにシングルスレッドでプログラムを実行する。</p>
 <div class="highlight"><pre><span></span><code>プログラムを実行する親プロセス
 ├─ メインスレッド # アプリケーション全体の処理を実行する
 │  ├─ 処理（HTTPリクエスト処理 #1）
@@ -34400,8 +34400,8 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
    └─ スレッド（ファイルI/O処理）
 </code></pre></div>
 <h4 id="go">▼ Go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h4>
-<p>例えば、Go は次のようにマルチスレッドでプログラムを実行する。</p>
-<p>スレッド数は CPU のコア数に応じて増える。</p>
+<p>例えば、Goは次のようにマルチスレッドでプログラムを実行する。</p>
+<p>スレッド数はCPUのコア数に応じて増える。</p>
 <div class="highlight"><pre><span></span><code>プログラムを実行する親プロセス
 ├─ スレッド
 │  └─ プロセッサ
@@ -34419,7 +34419,7 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
       └─ goroutine #2（計算処理）
 </code></pre></div>
 <h4 id="gonodejs">▼ Go上でNode.js環境を実行する<a class="headerlink" href="#gonodejs" title="Permanent link">&para;</a></h4>
-<p>Go では、goroutine が Node.js 環境を実行すると、親プロセス上にある子プロセスとして deno プロセスが立ちあがる。</p>
+<p>Goでは、goroutineがNode.js環境を実行すると、親プロセス上にある子プロセスとしてdenoプロセスが立ちあがる。</p>
 <div class="highlight"><pre><span></span><code>プログラムを実行する親プロセス
 ├─ スレッド
 │  └─ goroutines
@@ -34449,7 +34449,7 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 <p><br></p>
 <h3 id="_21">マルチスレッドについて<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ 通常のマルチスレッド<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>CPU のコアは、メモリ上のプロセス内にある単一のスレッドが紐付く。</p>
+<p>CPUのコアは、メモリ上のプロセス内にある単一のスレッドが紐付く。</p>
 <p><img alt="multithreading" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multithreading.png" /></p>
 <blockquote>
 <ul>
@@ -34457,7 +34457,7 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 </ul>
 </blockquote>
 <h4 id="_23">▼ 同時マルチスレッド<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>CPU のコアは、メモリ上のプロセス内にある複数のスレッドと紐付く。</p>
+<p>CPUのコアは、メモリ上のプロセス内にある複数のスレッドと紐付く。</p>
 <p><img alt="simultaneous-multithreading" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/simultaneous-multithreading.png" /></p>
 <blockquote>
 <ul>
@@ -34467,42 +34467,42 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
 <p><br></p>
 <h2 id="03-cpu">03. CPU上のプロセス管理方式<a class="headerlink" href="#03-cpu" title="Permanent link">&para;</a></h2>
 <h3 id="_24">優先順方式<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<p>各プロセスに優先度を設定し、優先度の高いプロセスから順に、CPU をプロセスに割り当てる。</p>
+<p>各プロセスに優先度を設定し、優先度の高いプロセスから順に、CPUをプロセスに割り当てる。</p>
 <p><strong>＊例＊</strong></p>
 <p>作成されたプロセスの到着時刻と処理時間は以下のとおりである。</p>
-<p>CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとする。</p>
+<p>CPUのプロセスへの割り当ては、『20秒』ごとに起こるとする。</p>
 <p><img alt="優先順方式_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_1.png" /></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>プロセス A が <code>0</code> 秒に待ち行列へ登録される。</p>
+<p>プロセスAが <code>0</code> 秒に待ち行列へ登録される。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>20</code> 秒間、プロセス A は実行状態へ割り当てられる。</p>
+<p><code>20</code> 秒間、プロセスAは実行状態へ割り当てられる。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>20</code> 秒時点で、プロセス A は実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセス B へ CPU を割り当てる。</p>
+<p><code>20</code> 秒時点で、プロセスAは実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセスBへCPUを割り当てる。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p><code>40</code> 秒時点で、プロセス C は実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセス A へ CPU を割り当てる。</p>
+<p><code>40</code> 秒時点で、プロセスCは実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセスAへCPUを割り当てる。</p>
 </dd>
 </dl>
 <p><img alt="優先順方式_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_2.png" /></p>
 <p><br></p>
 <h3 id="_25">到着順方式<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<p>待ち行列に登録されたプロセスから順に、CPU をプロセスに割り当てる。</p>
+<p>待ち行列に登録されたプロセスから順に、CPUをプロセスに割り当てる。</p>
 <p><img alt="到着順方式_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/到着順方式_1.png" /></p>
 <p><strong>＊例＊</strong></p>
-<p>以下のように、プロセスが CPU に割り当てられていく。</p>
+<p>以下の様に、プロセスがCPUに割り当てられていく。</p>
 <p><img alt="到着順方式_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/到着順方式_2.png" /></p>
 <p><br></p>
 <h3 id="_26">ラウンドロビン方式<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p>ラウンドロビンは、『総当たり』の意味。</p>
 <p>一定時間 (タイムクウォンタム) ごとに、実行状態にあるプロセスが強制的に待ち行列に登録される。</p>
-<p>交代するように、CPU をプロセスに割り当てる。</p>
+<p>交代するように、CPUをプロセスに割り当てる。</p>
 <p><img alt="ラウンドロビン方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ラウンドロビン方式.png" /></p>
 <p><br></p>
 
@@ -34525,7 +34525,7 @@ Jan<span class="w">  </span><span class="m">1</span><span class="w"> </span><spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月29日 18:56:34 JST">2026-05-29</span>
   </span>
 
     

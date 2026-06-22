@@ -33710,9 +33710,9 @@
 <p><br></p>
 <h2 id="01-graphql">01. GraphQLの仕組み<a class="headerlink" href="#01-graphql" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>GraphQL は、GraphQL-API の GraphQL サーバー、GraphQL クライアント、から構成される。</p>
-<p>従来の RESTful-API を使用した場合、バックエンドのエンドポイントが増えるたびに、フロントエンドが指定すべきエンドポイントも増えていく。</p>
-<p>一方で、GraphQL-API を使用した場合、単一のエンドポイントを GraphQL で指定すれば、GraphQL-API が適切な宛先にルーティングしてくれる。</p>
+<p>GraphQLは、GraphQL-APIのGraphQLサーバー、GraphQLクライアント、から構成される。</p>
+<p>従来のRESTful-APIを使用した場合、バックエンドのエンドポイントが増えるたびに、フロントエンドが指定すべきエンドポイントも増えていく。</p>
+<p>一方で、GraphQL-APIを使用した場合、単一のエンドポイントをGraphQLで指定すれば、GraphQL-APIが適切な宛先にルーティングしてくれる。</p>
 <p><img alt="graphql-api" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/graphql-api.png" /></p>
 <blockquote>
 <ul>
@@ -33722,7 +33722,7 @@
 <p><br></p>
 <h3 id="graphql">GraphQLサーバー<a class="headerlink" href="#graphql" title="Permanent link">&para;</a></h3>
 <h4 id="api">▼ APIスキーマ<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
-<p>GraphQL-API が受信する CRUD のデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。</p>
+<p>GraphQL-APIが受信するCRUDのデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E8%A8%AD%E8%A8%88">https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E8%A8%AD%E8%A8%88</a></li>
@@ -33732,7 +33732,7 @@
 <p><br></p>
 <h3 id="graphql_1">GraphQLクライアント<a class="headerlink" href="#graphql_1" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ クエリ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>GraphQL-API に送信する CRUD の実際のデータを定義したもの。</p>
+<p>GraphQL-APIに送信するCRUDの実際のデータを定義したもの。</p>
 <blockquote>
 <ul>
 <li><a href="https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#graphql-%E3%81%AE%E5%95%8F%E5%90%88%E3%81%9B%E8%A8%80%E8%AA%9E">https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#graphql-%E3%81%AE%E5%95%8F%E5%90%88%E3%81%9B%E8%A8%80%E8%AA%9E</a></li>
@@ -33743,7 +33743,7 @@
 <h3 id="query">Query<a class="headerlink" href="#query" title="Permanent link">&para;</a></h3>
 <h4 id="api_1">▼ APIスキーマ (サーバー側)<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>ここでは、Query 処理を受信するための API スキーマを定義したとする。</p>
+<p>ここでは、Query処理を受信するためのAPIスキーマを定義したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># ルート型</span>
 <span class="k">type</span><span class="w"> </span><span class="err">Query</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nl">user</span><span class="p">:</span><span class="w"> </span><span class="n">User</span><span class="err">!</span>
@@ -33769,7 +33769,7 @@
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>ここでは、前述の Query 処理の API スキーマで定義した <code>GetUser()</code> 関数を使用すると仮定する。</p>
+<p>ここでは、前述のQuery処理のAPIスキーマで定義した <code>GetUser()</code> 関数を使用すると仮定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">query</span><span class="w"> </span><span class="nf">GetUser</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">user</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">id</span>
@@ -33801,7 +33801,7 @@
 <h3 id="mutation">Mutation<a class="headerlink" href="#mutation" title="Permanent link">&para;</a></h3>
 <h4 id="api_2">▼ APIスキーマ (サーバー側)<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>ここでは、Mutation 処理を受信するための API スキーマを定義したとする。</p>
+<p>ここでは、Mutation処理を受信するためのAPIスキーマを定義したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># ルート型</span>
 <span class="k">type</span><span class="w"> </span><span class="err">Mutation</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">createUser</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="no">UserCreateInput</span><span class="err">!</span><span class="p">)</span><span class="err">:</span><span class="w"> </span><span class="n">User</span><span class="err">!</span>
@@ -33834,7 +33834,7 @@
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>ここでは、前述の Mutation 処理の API スキーマで定義した <code>CreateUser()</code> 関数を実行すると仮定する。</p>
+<p>ここでは、前述のMutation処理のAPIスキーマで定義した <code>CreateUser()</code> 関数を実行すると仮定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">mutation</span><span class="w"> </span><span class="nf">CreateUser</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">createUser</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example@gmail.com&quot;</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">name</span>
@@ -33883,7 +33883,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

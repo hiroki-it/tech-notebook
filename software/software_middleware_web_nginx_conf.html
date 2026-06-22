@@ -34123,7 +34123,7 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="apt">▼ aptリポジトリから<a class="headerlink" href="#apt" title="Permanent link">&para;</a></h4>
-<p>nginx を <code>apt-get</code> コマンドでインストールすると、旧バージョンが指定されるため、<code>apt</code> コマンドを使用する。</p>
+<p>nginxを <code>apt-get</code> コマンドでインストールすると、旧バージョンが指定されるため、<code>apt</code> コマンドを使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nginx
 </code></pre></div>
 <blockquote>
@@ -34141,7 +34141,7 @@
 <h4 id="confdconf">▼ <code>.../conf.d/*.conf</code> ファイルとは<a class="headerlink" href="#confdconf" title="Permanent link">&para;</a></h4>
 <p>デフォルトの設定が定義されているいくつかのファイル。</p>
 <p>基本的には読み込むようにする。</p>
-<p>ただし、nginx.conf ファイルの設定が上書きされてしまわないかを注意する。</p>
+<p>ただし、nginx.confファイルの設定が上書きされてしまわないかを注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">include</span><span class="w"> </span><span class="n">/etc/nginx/conf.d/*.conf</span>;
 </code></pre></div>
 <p><br></p>
@@ -34153,19 +34153,19 @@
 <p><br></p>
 <h3 id="etcnginxmimetypes"><code>/etc/nginx/mime.types</code> ファイル<a class="headerlink" href="#etcnginxmimetypes" title="Permanent link">&para;</a></h3>
 <h4 id="mimetypes">▼ <code>mime.types</code> ファイルとは<a class="headerlink" href="#mimetypes" title="Permanent link">&para;</a></h4>
-<p>リクエストの Content-Type の MIME タイプとファイル拡張子の間の対応関係が定義されているファイル。</p>
+<p>リクエストのContent-TypeのMIMEタイプとファイル拡張子の間の対応関係が定義されているファイル。</p>
 <div class="highlight"><pre><span></span><code><span class="k">include</span><span class="w"> </span><span class="n">/etc/nginx/mime.types</span>;
 </code></pre></div>
 <p><br></p>
 <h3 id="etcnginxfastcgi_params"><code>/etc/nginx/fastcgi_params</code> ファイル<a class="headerlink" href="#etcnginxfastcgi_params" title="Permanent link">&para;</a></h3>
 <h4 id="fastcgi_params">▼ <code>fastcgi_params</code> ファイルとは<a class="headerlink" href="#fastcgi_params" title="Permanent link">&para;</a></h4>
-<p>FastCGI プロトコルでルーティングする場合に使用する。</p>
+<p>FastCGIプロトコルでルーティングする場合に使用する。</p>
 <p>アプリケーションで使用できる変数を定義する。</p>
 <p><code>nginx.conf</code> ファイルによって読み込まれる。</p>
-<p>OS やそのバージョンによって、変数のデフォルト値が異なることもある。</p>
+<p>OSやそのバージョンによって、変数のデフォルト値が異なることもある。</p>
 <p>実際にインバウンド通信のルーティング先に接続し、上書き設定が必要なものと不要なものを判断する必要がある。</p>
 <h4 id="debian">▼ Debian系の場合<a class="headerlink" href="#debian" title="Permanent link">&para;</a></h4>
-<p>Debian10 の設定ファイルを以下に示す。</p>
+<p>Debian10の設定ファイルを以下に示す。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">#-------------------------------------------------------</span>
 <span class="c1"># OSによって、fastcgi_paramsファイルの必要な設定が異なる</span>
@@ -34248,7 +34248,7 @@
 </ul>
 </blockquote>
 <h4 id="load_module">▼ load_module<a class="headerlink" href="#load_module" title="Permanent link">&para;</a></h4>
-<p>Nginx では、ビルド時にモジュール (<code>so</code> ファイル) をバイナリを組み込むが、すでにビルド済みのモジュールを実行時に読み込める。</p>
+<p>Nginxでは、ビルド時にモジュール (<code>so</code> ファイル) をバイナリを組み込むが、すでにビルド済みのモジュールを実行時に読み込める。</p>
 <p>デフォルトでは、モジュールは <code>modules</code> ディレクトリにある。</p>
 <div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">modules/&lt;動的モジュール名&gt;</span><span class="p">;</span>
 </code></pre></div>
@@ -34262,7 +34262,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">pid</span><span class="w"> </span><span class="s">logs/nginx.pid</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="worker_connections">▼ worker_connections<a class="headerlink" href="#worker_connections" title="Permanent link">&para;</a></h4>
-<p>worker プロセスが同時に処理できる接続の最大数を設定する。</p>
+<p>workerプロセスが同時に処理できる接続の最大数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">worker_connections</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -34279,7 +34279,7 @@
 <p><br></p>
 <h2 id="04">04. 変数<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="request_uri"><code>$request_uri</code><a class="headerlink" href="#request_uri" title="Permanent link">&para;</a></h3>
-<p>受信したリクエストの HTTP メソッドと URL が割り当てられている。</p>
+<p>受信したリクエストのHTTPメソッドとURLが割り当てられている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">GET</span><span class="w"> </span><span class="s">http://_:80/foo</span>
 </code></pre></div>
 <blockquote>
@@ -34290,7 +34290,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="uri"><code>$uri</code><a class="headerlink" href="#uri" title="Permanent link">&para;</a></h3>
-<p>受信したリクエストの URL パスが割り当てられている。</p>
+<p>受信したリクエストのURLパスが割り当てられている。</p>
 <blockquote>
 <ul>
 <li><a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#var_uri">https://nginx.org/en/docs/http/ngx_http_core_module.html#var_uri</a></li>
@@ -34318,7 +34318,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
   </span>
 
     

@@ -33712,22 +33712,22 @@
 <h3 id="_2">ビジネス成果の監視<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ ビジネス成果の監視とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>ビジネス成果メトリクスを監視する。</p>
-<p>例えば、BI ツール (例：Redash、Metabase、Google Cloud Looker など) を採用し、DB から読み込んだデータ (例：取引履歴) をメトリクスとする。</p>
+<p>例えば、BIツール (例：Redash、Metabase、Google Cloud Lookerなど) を採用し、DBから読み込んだデータ (例：取引履歴) をメトリクスとする。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html">https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html</a></li>
 </ul>
 </blockquote>
 <h4 id="devops">▼ DevOps成果<a class="headerlink" href="#devops" title="Permanent link">&para;</a></h4>
-<p>以下のメトリクスを DevOps 成果の指標として、QuickSight で監視する。</p>
-<p>Code 三兄弟のデータポイントを収集し、メトリクスとして分析している。</p>
+<p>以下のメトリクスをDevOps成果の指標として、QuickSightで監視する。</p>
+<p>Code三兄弟のデータポイントを収集し、メトリクスとして分析している。</p>
 <ul>
 <li>リポジトリ別コード変更量 (コミッター、コード変更数)</li>
-<li>アプリケーション別の MTTR</li>
+<li>アプリケーション別のMTTR</li>
 <li>変更失敗率 (デプロイの失敗頻度)</li>
-<li>CI の状態 (失敗、成功、実施頻度)</li>
-<li>CD の状態 (失敗、成功、実施頻度)</li>
-<li>CI/CD 全体の状態 (失敗、成功、実施頻度)</li>
+<li>CIの状態 (失敗、成功、実施頻度)</li>
+<li>CDの状態 (失敗、成功、実施頻度)</li>
+<li>CI/CD全体の状態 (失敗、成功、実施頻度)</li>
 </ul>
 <blockquote>
 <ul>
@@ -33765,7 +33765,7 @@
 </tbody>
 </table>
 <h4 id="aws-alb">▼ AWS ALB<a class="headerlink" href="#aws-alb" title="Permanent link">&para;</a></h4>
-<p>名前空間を AWS ALB としたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>名前空間をAWS ALBとしたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -33838,7 +33838,7 @@
 </ul>
 </blockquote>
 <h4 id="amazon-api-gateway">▼ Amazon API Gateway<a class="headerlink" href="#amazon-api-gateway" title="Permanent link">&para;</a></h4>
-<p>名前空間を Amazon API Gateway としたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>名前空間をAmazon API Gatewayとしたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -33881,7 +33881,7 @@
 </ul>
 </blockquote>
 <h4 id="amazon-ec2">▼ Amazon EC2<a class="headerlink" href="#amazon-ec2" title="Permanent link">&para;</a></h4>
-<p>名前空間を EC2 としたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>名前空間をEC2としたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -33924,15 +33924,15 @@
 </ul>
 </blockquote>
 <p>似たメトリクスに <code>StatusCheckFailed_System</code> や <code>StatusCheckFailed_Instance</code> がある。</p>
-<p>これらは AWS 側が原因のメトリクスであるため、ユーザーが監視する必要はない。</p>
+<p>これらはAWS側が原因のメトリクスであるため、ユーザーが監視する必要はない。</p>
 <blockquote>
 <ul>
 <li><a href="https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html">https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html</a></li>
 </ul>
 </blockquote>
 <h4 id="amazon-ecs">▼ Amazon ECS<a class="headerlink" href="#amazon-ecs" title="Permanent link">&para;</a></h4>
-<p>名前空間を Amazon ECS クラスターまたは Amazon ECS サービスとしたメトリクスの監視ポリシーは以下の通りである。</p>
-<p>ClusterName ディメンションと ServiceName ディメンションを使用して、Amazon ECS クラスターと Amazon ECS サービスに関するメトリクスを区別できる。</p>
+<p>名前空間をAmazon ECSクラスターまたはAmazon ECSサービスとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>ClusterNameディメンションとServiceNameディメンションを使用して、Amazon ECSクラスターとAmazon ECSサービスに関するメトリクスを区別できる。</p>
 <table>
 <thead>
 <tr>
@@ -33973,7 +33973,7 @@
 </ul>
 </blockquote>
 <h4 id="amazon-elasticache-redis">▼ Amazon ElastiCache Redis<a class="headerlink" href="#amazon-elasticache-redis" title="Permanent link">&para;</a></h4>
-<p>名前空間を Amazon ElastiCache Redis としたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>名前空間をAmazon ElastiCache Redisとしたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -34021,7 +34021,7 @@
 </ul>
 </blockquote>
 <h4 id="amazon-aurora">▼ Amazon Aurora<a class="headerlink" href="#amazon-aurora" title="Permanent link">&para;</a></h4>
-<p>名前空間を Amazon Aurora としたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>名前空間をAmazon Auroraとしたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -34104,8 +34104,8 @@
 </ul>
 </blockquote>
 <h4 id="amazon-rds">▼ Amazon RDS<a class="headerlink" href="#amazon-rds" title="Permanent link">&para;</a></h4>
-<p>名前空間を Amazon RDS としたメトリクスの監視ポリシーは以下の通りである。</p>
-<p>Amazon RDS のコンソール画面にも同じメトリクスが表示されるが、単位が MByte であり、Amazon CloudWatch Metrics と異なることに注意する。</p>
+<p>名前空間をAmazon RDSとしたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>Amazon RDSのコンソール画面にも同じメトリクスが表示されるが、単位がMByteであり、Amazon CloudWatch Metricsと異なることに注意する。</p>
 <table>
 <thead>
 <tr>
@@ -34146,7 +34146,7 @@
 </ul>
 </blockquote>
 <h4 id="amazon-s3">▼ Amazon S3<a class="headerlink" href="#amazon-s3" title="Permanent link">&para;</a></h4>
-<p>名前空間を Amazon S3 としたメトリクスの監視ポリシーは以下の通りである。</p>
+<p>名前空間をAmazon S3としたメトリクスの監視ポリシーは以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -34186,7 +34186,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     

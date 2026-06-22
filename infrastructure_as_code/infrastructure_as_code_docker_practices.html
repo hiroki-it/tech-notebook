@@ -21693,7 +21693,7 @@
   <a href="#latest" class="md-nav__link">
     <span class="md-ellipsis">
       
-        latest タグを指定しないほうがよい理由
+        latest タグを指定しないほうが良い理由
       
     </span>
   </a>
@@ -34168,7 +34168,7 @@
   <a href="#latest" class="md-nav__link">
     <span class="md-ellipsis">
       
-        latest タグを指定しないほうがよい理由
+        latest タグを指定しないほうが良い理由
       
     </span>
   </a>
@@ -34733,14 +34733,14 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ 分割方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>アプリケーションを稼働させるには、最低限、Web サーバーミドルウェア、アプリ、DBMS が必要である。</p>
+<p>アプリケーションを稼働させるには、最低限、Webサーバーミドルウェア、アプリ、DBMSが必要である。</p>
 <p>これらのプロセスは、同じコンテナに共存させることなく、各コンテナで稼働させ、ネットワークで接続する。</p>
 <p><img alt="プロセス単位のコンテナ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロセス単位のコンテナ.png" /></p>
 <h4 id="_5">▼ コンテナのプロセスの関係<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>コンテナでは、起点となる init プロセスがなく、コンテナの起動コマンドが最初の親プロセスになる。</p>
+<p>コンテナでは、起点となるinitプロセスがなく、コンテナの起動コマンドが最初の親プロセスになる。</p>
 <p>この親プロセスは、子プロセスを実行する。</p>
 <p><img alt="container_processes" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_processes.png" /></p>
-<p>なお、1 コンテナに 2 つのプロセスがあると、コンテナの終了処理 (SIGTERM) を実行する場合の終了順序を考えないといけない。</p>
+<p>なお、1コンテナに2つのプロセスがあると、コンテナの終了処理 (SIGTERM) を実行する場合の終了順序を考えないといけない。</p>
 <p>プロセス管理ツール (例：systemd、supervisor) を使用すると、終了順序を考えやすくなる。</p>
 <blockquote>
 <ul>
@@ -34769,7 +34769,7 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ 対処方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>ここでは、フレームワークではなく、フルスクラッチな JavaScript を取り上げる。</p>
+<p>ここでは、フレームワークではなく、フルスクラッチなJavaScriptを取り上げる。</p>
 <p><code>tini</code> の子プロセスを実行する。</p>
 <p>これにより、アプリやミドルウェアのプロセスを <code>PID=1</code> で動かさないようにできる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:16-alpine3.15</span>
@@ -34802,9 +34802,9 @@
 <p>コンテナの終了時、コンテナランタイムはコンテナに <code>SIGTERM</code> を送信する。</p>
 <p>その後、<code>SIGKILL</code> を送信し、プロセスを終了させる。</p>
 <p>そのため、<code>SIGTERM</code> を受信した段階でリクエストを受信しなくなるように、プロセスを設定しておく。</p>
-<p>多くのツールが <code>SIGTERM</code> で Graceful Shutdown を実行するように設計されているため、特に対処不要である。</p>
-<p>ただし、<code>SIGTERM</code> 以外で Graceful Shutdown を実行するツールがあるため、その場合は Dockerfile の <code>STOPSIGNAL</code> 処理を使用してシグナルを上書きするとよい。</p>
-<p>例えば、Nginx は <code>SIGQUIT</code> で GracefulShut Down する仕様のため、<code>STOPSIGNAL</code> 処理で <code>SIGQUIT</code> を定義しておく。</p>
+<p>多くのツールが <code>SIGTERM</code> でGraceful Shutdownを実行するように設計されているため、特に対処不要である。</p>
+<p>ただし、<code>SIGTERM</code> 以外でGraceful Shutdownを実行するツールがあるため、その場合はDockerfileの <code>STOPSIGNAL</code> 処理を使用してシグナルを上書きするとよい。</p>
+<p>例えば、Nginxは <code>SIGQUIT</code> でGracefulShut Downする仕様のため、<code>STOPSIGNAL</code> 処理で <code>SIGQUIT</code> を定義しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine</span>
 
 ...
@@ -34824,7 +34824,7 @@
 <p><br></p>
 <h2 id="02">02. 脆弱性に対処する<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_9">実行ユーザーを非特権化する<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>コンテナのプロセスの実行ユーザーに Root 権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、すべてのファイルが操作されうる。</p>
+<p>コンテナのプロセスの実行ユーザーにRoot権限の認可スコープを付与すると、もし実行ユーザーが乗っ取られた場合に、全てのファイルが操作されうる。</p>
 <p>これを防ぐために、コンテナのプロセスの実行ユーザーを別途作成し、これに非特権な認可スコープを付与する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">alpine:3.12</span>
 
@@ -34848,29 +34848,29 @@
 <p><br></p>
 <h3 id="root">ユーザーにroot権限を付与しない<a class="headerlink" href="#root" title="Permanent link">&para;</a></h3>
 <h4 id="root_1">▼ root権限を付与しない理由<a class="headerlink" href="#root_1" title="Permanent link">&para;</a></h4>
-<p>悪意のあるユーザーがコンテナに接続した場合、root 権限を与えてしまうと、悪意のある操作をされてしまう。</p>
-<p>そこで、接続するユーザーに root 権限を付与しないようにする。</p>
+<p>悪意のあるユーザーがコンテナに接続した場合、root権限を与えてしまうと、悪意のある操作をされてしまう。</p>
+<p>そこで、接続するユーザーにroot権限を付与しないようにする。</p>
 <h4 id="sudo">▼ <code>sudo</code> コマンドを実行させない<a class="headerlink" href="#sudo" title="Permanent link">&para;</a></h4>
-<p>root 権限を付与しないために、コンテナ内で <code>sudo</code> コマンドを実行できないようにするべきである。</p>
+<p>root権限を付与しないために、コンテナ内で <code>sudo</code> コマンドを実行できないようにするべきである。</p>
 <p>ただし、多くのコンテナイメージで <code>sudo</code> コマンドを実行するためのパッケージは基本インストールされていないため、<code>sudo</code> コマンドを実行しようとするとエラーになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker">https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker</a></li>
 </ul>
 </blockquote>
-<p>どうしても <code>sudo</code> コマンドを実行したい場合は、gosu パッケージを使用する。</p>
+<p>どうしても <code>sudo</code> コマンドを実行したい場合は、gosuパッケージを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/develop/develop-images/instructions/#user">https://docs.docker.com/develop/develop-images/instructions/#user</a></li>
 </ul>
 </blockquote>
-<p>gosu パッケージの代わりに、<code>sudo</code> パッケージをインストールし、作成したユーザーに root 権限を割り当てる方法もある。</p>
+<p>gosuパッケージの代わりに、<code>sudo</code> パッケージをインストールし、作成したユーザーにroot権限を割り当てる方法もある。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/25908200">https://stackoverflow.com/a/25908200</a></li>
 </ul>
 </blockquote>
-<p>gosu パッケージの代わりに、<code>docker</code> コマンドの <code>-u</code> オプションを使用し、実行ユーザーに root 権限で付与する方法もある。</p>
+<p>gosuパッケージの代わりに、<code>docker</code> コマンドの <code>-u</code> オプションを使用し、実行ユーザーにroot権限で付与する方法もある。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/49529946">https://stackoverflow.com/a/49529946</a></li>
@@ -34886,10 +34886,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="docker-in-docker">Docker in Dockerの脆弱性に対処する<a class="headerlink" href="#docker-in-docker" title="Permanent link">&para;</a></h3>
-<p>コンテナのなかでコンテナを作成するという入れ子構造のこと。</p>
+<p>コンテナの中でコンテナを作成するという入れ子構造のこと。</p>
 <p>中へのコンテナが外へのコンテナのアクセス権限が必要である。</p>
-<p>Docker in Docker は、特権モードが必要になり、安全性に問題がある。</p>
-<p>一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Docker を回避できるようになっている。</p>
+<p>Docker in Dockerは、特権モードが必要になり、安全性に問題がある。</p>
+<p>一部のコンテナイメージビルドツール (例：Kaniko) では、Docker in Dockerを回避できるようになっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/">https://www.howtogeek.com/devops/how-and-why-to-run-docker-inside-docker/</a></li>
@@ -34899,7 +34899,7 @@
 <p><br></p>
 <h3 id="_11">コンテナイメージを署名する<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>コンテナイメージをビルドインのコマンド (例：<code>docker trust</code> コマンド) やコンテナイメージ署名ツール (例：Cosign) を使用して、信頼された (ログイン済みの) イメージリポジトリから信頼されたコンテナイメージをプルできるようにする。</p>
-<p><code>docker trust</code> コマンドの内部では、Notary Notation が使用されている。</p>
+<p><code>docker trust</code> コマンドの内部では、Notary Notationが使用されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust">https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust</a></li>
@@ -34909,7 +34909,7 @@
 <p><br></p>
 <h3 id="_12">本番環境ではバインドマウントを使用しない<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>バインドマウントは、コンテナのファイルシステムを介してホストにアクセスできてしまうため、本番環境では非推奨にしたほうがよい。</p>
-<p>その代わり、ボリュームマウントや COPY でファイルをコンテナイメージへ詰め込むことになる。</p>
+<p>その代わり、ボリュームマウントやCOPYでファイルをコンテナイメージへ詰め込むことになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952">https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952</a></li>
@@ -34917,10 +34917,10 @@
 </blockquote>
 <p><br></p>
 <h2 id="03-latest">03. イメージタグにlatestを設定しない<a class="headerlink" href="#03-latest" title="Permanent link">&para;</a></h2>
-<h3 id="latest"><code>latest</code> タグを指定しないほうがよい理由<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h3>
-<p>イメージタグに latest を設定すると、誤ったバージョンのイメージタグを選択してしまい、障害が起こりかねない。</p>
+<h3 id="latest"><code>latest</code> タグを指定しないほうが良い理由<a class="headerlink" href="#latest" title="Permanent link">&para;</a></h3>
+<p>イメージタグにlatestを設定すると、誤ったバージョンのイメージタグを選択してしまい、障害が起こりかねない。</p>
 <p>そこで、イメージはセマンティックバージョニングでタグ付けし、コンテナでは特定のバージョンをプルように設定する。</p>
-<p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定できるが、Docker がホストの CPU アーキテクチャに基づいてよしなに選んでくれるので、ダイジェスト値は指定しない。</p>
+<p>なお、各コンテナイメージのアーキテクチャに割り当てられたダイジェスト値を指定できるが、DockerがホストのCPUアーキテクチャに基づいてよしなに選んでくれるので、ダイジェスト値は指定しない。</p>
 <p><br></p>
 <h3 id="_13">タグの種類<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>イメージのタグには種類があり、追跡できるバージョンアップが異なる。</p>
@@ -34957,7 +34957,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="cpu">CPUアーキテクチャの種類<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
-<p>コンテナはすべてのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるホストの CPU アーキテクチャ (例：Intel、AMD、ARM) がある。</p>
+<p>コンテナは全てのマシンで稼働できるわけではなく、コンテナイメージごとに対応できるホストのCPUアーキテクチャ (例：Intel、AMD、ARM) がある。</p>
 <table>
 <thead>
 <tr>
@@ -34989,10 +34989,10 @@
 <li><a href="https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu">https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu</a></li>
 </ul>
 </blockquote>
-<p>例えば、<code>MacBook 2020</code> には Intel、また <code>MacBook 2021 (M1 Mac)</code> には ARM ベースの独自 CPU が搭載されているため、ARM に対応したコンテナイメージを選択する必要がある。</p>
-<p>ただし、コンテナイメージがホストの CPU アーキテクチャをサポートしているか否かを開発者が気にする必要はない。</p>
-<p><code>docker pull</code> 時、ホストの CPU アーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。</p>
-<p>コンテナの現在の CPU アーキテクチャは、以下のいずれかの方法で確認できる。</p>
+<p>例えば、<code>MacBook 2020</code> にはIntel、また <code>MacBook 2021 (M1 Mac)</code> にはARMベースの独自CPUが搭載されているため、ARMに対応したコンテナイメージを選択する必要がある。</p>
+<p>ただし、コンテナイメージがホストのCPUアーキテクチャをサポートしているか否かを開発者が気にする必要はない。</p>
+<p><code>docker pull</code> 時、ホストのCPUアーキテクチャに対応したコンテナイメージが自動的に選択されるようになっている。</p>
+<p>コンテナの現在のCPUアーキテクチャは、以下のいずれかの方法で確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;コンテナ名&gt;
 
 <span class="o">{</span>
@@ -35030,7 +35030,7 @@ README.md
 </ul>
 </blockquote>
 <h4 id="_15">▼ キャッシュを削除する<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>Unix ユーティリティをインストールするとキャッシュが残る。</p>
+<p>Unixユーティリティをインストールするとキャッシュが残る。</p>
 <p>キャッシュが使用されることはないため、削除してしまう。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
@@ -35122,15 +35122,15 @@ README.md
 </ul>
 </blockquote>
 <h4 id="os">▼ できる限りOSイメージをベースとしない<a class="headerlink" href="#os" title="Permanent link">&para;</a></h4>
-<p>OS ベンダーが提供するベースイメージを使用すると、不要なバイナリファイルが含まれてしまう。</p>
-<p>原則として、1 つのコンテナで 1 つのプロセスしか実行せず、OS 全体のシステムは不要なため、OS イメージをベースとしないようにする。</p>
+<p>OSベンダーが提供するベースイメージを使用すると、不要なバイナリファイルが含まれてしまう。</p>
+<p>原則として、1つのコンテナで1つのプロセスしか実行せず、OS全体のシステムは不要なため、OSイメージをベースとしないようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#build-the-smallest-image-possible">https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#build-the-smallest-image-possible</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>以下は CentOS をベースイメージに使っており、よくない例である。</p>
+<p>以下はCentOSをベースイメージに使っており、よくない例である。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># CentOSイメージを、コンテナにインストール</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
 
@@ -35159,7 +35159,7 @@ README.md
 <span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>composer:&lt;バージョン&gt;<span class="w"> </span>/usr/bin/composer<span class="w"> </span>/usr/bin/composer
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>以下は CentOS をベースイメージに使っており、よくない例である。</p>
+<p>以下はCentOSをベースイメージに使っており、よくない例である。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># CentOSイメージを、コンテナにインストール</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
 
@@ -35181,7 +35181,7 @@ README.md
 <h3 id="_18">イメージレイヤー数を削減する<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ イメージレイヤーの増え方<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>イメージレイヤー数が多くなると、コンテナイメージが大きくなる。</p>
-<p>Dockerfile の各命令によって、コンテナイメージレイヤーが 1 つ増えてしまうため、同じ命令に異なるパラメーターを与えるときは、『<code>&amp;&amp;</code>』で 1 つにまとめてしまうほうがよい。</p>
+<p>Dockerfileの各命令によって、コンテナイメージレイヤーが1つ増えてしまうため、同じ命令に異なるパラメーターを与えるときは、『<code>&amp;&amp;</code>』で1つにまとめてしまうほうが良い。</p>
 <p>例えば、以下のようなとき、<code>RUN</code> 処理ごとにレイヤーが増える。</p>
 <div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>httpd
 <span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>php
@@ -35195,7 +35195,7 @@ README.md
 <div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>httpd<span class="w"> </span>php<span class="w"> </span>php-mbstring<span class="w"> </span>php-pear<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-Rf<span class="w"> </span>/var/cache/dnf
 </code></pre></div>
-<p>あるいは、これは以下のようにも書ける。</p>
+<p>あるいは、これは以下の様にも書ける。</p>
 <div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>httpd<span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>php<span class="w"> </span><span class="se">\</span>
@@ -35224,12 +35224,12 @@ EOF
 <p><br></p>
 <h3 id="_22">マルチステージビルドを採用する<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <h4 id="_23">▼ マルチステージビルドとは<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>1 つの Dockerfile 内に複数の独立したステージを定義する。</p>
+<p>1つのDockerfile内に複数の独立したステージを定義する。</p>
 <p>以下の手順で作成する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>シングルステージビルドに成功する Dockerfile を作成する。</p>
+<p>シングルステージビルドに成功するDockerfileを作成する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -35237,15 +35237,15 @@ EOF
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Dockerfile で、2 つ目の <code>FROM</code> 処理を宣言する。</p>
+<p>Dockerfileで、2つ目の <code>FROM</code> 処理を宣言する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>1 つ目のステージで、バイナリファイルをコンパイルするのみで終了させる。</p>
+<p>1つ目のステージで、バイナリファイルをコンパイルするのみで終了させる。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>2 つ目のステージで、Unix ユーティリティをインストールする。</p>
+<p>2つ目のステージで、Unixユーティリティをインストールする。</p>
 <p>また、バイナリファイルを1つ目のステージからコピーする。</p>
 </dd>
 </dl>
@@ -35328,7 +35328,7 @@ EOF
 <p><br></p>
 <h3 id="add-copy"><code>ADD</code> 処理よりも <code>COPY</code> 処理を使用する<a class="headerlink" href="#add-copy" title="Permanent link">&para;</a></h3>
 <p><code>ADD</code> 処理は <code>COPY</code> 処理とは異なり、インターネットからファイルをダウンロードして解凍したうえで、コピーする。</p>
-<p>解凍によって意図しないファイルが Dockerfile に組み込まれる可能性があるため、<code>COPY</code> 処理が推奨である。</p>
+<p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code> 処理が推奨である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy</a></li>
@@ -35359,7 +35359,7 @@ EOF
 </tr>
 <tr>
 <td>世代数</td>
-<td>イメージストリを残しておく世代数 (例：5) をポリシーとして決めておくとよい。世代数を超えた場合、古いイメージレジストリから削除していく。</td>
+<td>イメージストリを残しておく世代数 (例：5) をポリシーとして決めておくと良い。世代数を超えた場合、古いイメージレジストリから削除していく。</td>
 </tr>
 </tbody>
 </table>
@@ -35403,9 +35403,9 @@ EOF
 </ul>
 <p><br></p>
 <h3 id="_28">イメージレジストリのレートリミットに対処する<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
-<p>ビルド時にイメージのプルが頻発すると、DockerHub のレートリミット上限にすぐ達してしまう。</p>
+<p>ビルド時にイメージのプルが頻発すると、DockerHubのレートリミット上限にすぐ達してしまう。</p>
 <p>そのため、イメージのキャッシュが有効である。</p>
-<p>DockerHub 以外のイメージレジストリを使って、レートリミットを回避してもよい。</p>
+<p>DockerHub以外のイメージレジストリを使って、レートリミットを回避してもよい。</p>
 <p><code>crane</code> コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。</p>
 <blockquote>
 <ul>
@@ -35416,13 +35416,13 @@ EOF
 <p><br></p>
 <h3 id="_29">静的解析を実施する<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <h4 id="dockerfile">▼ Dockerfileの文法違反テスト<a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h4>
-<p>Docker のビルトインのコマンド (例：<code>docker build</code> コマンド) を使用する。</p>
-<p>Dockerfile の文法違反を検証する。</p>
+<p>Dockerのビルトインのコマンド (例：<code>docker build</code> コマンド) を使用する。</p>
+<p>Dockerfileの文法違反を検証する。</p>
 <h4 id="dockerfile_1">▼ Dockerfileのベストプラクティス違反テスト<a class="headerlink" href="#dockerfile_1" title="Permanent link">&para;</a></h4>
-<p>外部のベストプラクティス違反テストツール (例：hadolint) を使用する。Dockerfile のベストプラクティス違反を検証する。</p>
+<p>外部のベストプラクティス違反テストツール (例：hadolint) を使用する。Dockerfileのベストプラクティス違反を検証する。</p>
 <h4 id="dockerfile_2">▼ Dockerfileの脆弱性診断<a class="headerlink" href="#dockerfile_2" title="Permanent link">&para;</a></h4>
 <p>外部の脆弱性診断ツール (例：hadolint) を使用する。</p>
-<p>報告された CVE に基づいて、Dockerfile の実装方法の実装や使用パッケージに起因するコンテナイメージの脆弱性を検証する。</p>
+<p>報告されたCVEに基づいて、Dockerfileの実装方法の実装や使用パッケージに起因するコンテナイメージの脆弱性を検証する。</p>
 <p>補足として、イメージスキャン (例：trivy) はすでにビルドされたコンテナイメージを検証するため、ここには含めない。</p>
 <h4 id="_30">▼ コンテナストラクチャテスト<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p>ビルド後のコンテナの構造を検証するツール (例：container-structure-test) を使用する。</p>
@@ -35493,7 +35493,7 @@ EOF
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:20:32 JST">2026-02-16</span>
   </span>
 
     

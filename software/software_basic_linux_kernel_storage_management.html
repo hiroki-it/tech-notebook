@@ -34378,8 +34378,8 @@
 <h3 id="_2">ストレージとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ ファイルストレージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>データをディレクトリ単位に分割し、保管する。</p>
-<p>プロトコル (例：NFS、SMB など) ごとに保管の仕組みが異なる。</p>
-<p>ファイルストレージとして、ローカルファイルストレージ (例：ローカルドライブ) とクラウドファイルストレージ (例：Google ドライブ、AWS EFS など) がある。</p>
+<p>プロトコル (例：NFS、SMBなど) ごとに保管の仕組みが異なる。</p>
+<p>ファイルストレージとして、ローカルファイルストレージ (例：ローカルドライブ) とクラウドファイルストレージ (例：Googleドライブ、AWS EFSなど) がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://massive.io/file-transfer/file-storage-vs-object-storage/#file-storage">https://massive.io/file-transfer/file-storage-vs-object-storage/#file-storage</a></li>
@@ -34397,7 +34397,7 @@
 </blockquote>
 <h4 id="_5">▼ ブロックストレージ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>一意な識別子を付与したデータをブロック単位に分割し、保管する。</p>
-<p>ブロックストレージとして、特定の DB (例：RDB、TSDB など) やボリューム (例：AWS EBS) がある。</p>
+<p>ブロックストレージとして、特定のDB (例：RDB、TSDBなど) やボリューム (例：AWS EBS) がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://massive.io/file-transfer/file-storage-vs-object-storage/#block-storage">https://massive.io/file-transfer/file-storage-vs-object-storage/#block-storage</a></li>
@@ -34406,7 +34406,7 @@
 </blockquote>
 <h4 id="_6">▼ キーバリューストレージ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>キーとバリューの形式で分割し、保管する。</p>
-<p>キーバリューストレージとして、特定の DB (例：NoSQL) がある。</p>
+<p>キーバリューストレージとして、特定のDB (例：NoSQL) がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.techtarget.com/searchstorage/feature/NVMe-key-value-storage-vs-block-and-object-storage">https://www.techtarget.com/searchstorage/feature/NVMe-key-value-storage-vs-block-and-object-storage</a></li>
@@ -34424,11 +34424,11 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ストレージのサイズを現状から <code>100</code>GB まで拡張する。</p>
+<p>ストレージのサイズを現状から <code>100</code>GBまで拡張する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>ストレージサイズを OS に適用するため、OS を再起動する。</p>
+<p>ストレージサイズをOSに適用するため、OSを再起動する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -34525,7 +34525,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <h3 id="_9">パーティション、物理ボリューム<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ パーティション、物理ボリューム、とは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>ストレージ上の仮想的な仕切りを『パーティション』、また仕切られた領域を『物理ボリューム』という。</p>
-<p>1 つの領域を複数に見せかけられる。</p>
+<p>1つの領域を複数に見せかけられる。</p>
 <p><code>/dev</code> ディレクトリ配下にストレージへ紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。</p>
 <p><img alt="partition_volume" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/partition_volume.png" /></p>
 <blockquote>
@@ -34546,9 +34546,9 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <p><br></p>
 <h3 id="_13">パーティション、マウントポイントの確認方法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="linux_1">▼ Linuxの場合<a class="headerlink" href="#linux_1" title="Permanent link">&para;</a></h4>
-<p>Linux では、パーティションとマウントポイントは <code>df</code> コマンドで確認できる。</p>
+<p>Linuxでは、パーティションとマウントポイントは <code>df</code> コマンドで確認できる。</p>
 <p><strong>＊例＊</strong></p>
-<p>Linux の場合、<code>/dev/xvda1</code> をルートディレクトリにマウントしていることがある。</p>
+<p>Linuxの場合、<code>/dev/xvda1</code> をルートディレクトリにマウントしていることがある。</p>
 <p><code>Filesystem</code> 列にパーティション、<code>Mounted on</code> 列にパーティションへ対応するマウントポイントが表示される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df
 
@@ -34558,7 +34558,7 @@ Filesystem<span class="w">     </span>Size<span class="w">   </span>Used<span cl
 /dev/nvme1n1<span class="w">   </span>200G<span class="w">   </span>161G<span class="w">    </span>40G<span class="w">   </span><span class="m">81</span>%<span class="w">   </span>/var/lib
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>特に CentOS の場合、<code>/dev/mapper/rhel-root</code> をルートディレクトリにマウントしていることがある。</p>
+<p>特にCentOSの場合、<code>/dev/mapper/rhel-root</code> をルートディレクトリにマウントしていることがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
 
 Filesystem<span class="w">            </span>Type<span class="w">       </span>Size<span class="w">  </span>Used<span class="w">  </span>Avail<span class="w">  </span>Use%<span class="w">  </span>Mounted<span class="w"> </span>on
@@ -34577,21 +34577,21 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 </ul>
 </blockquote>
 <h4 id="windows">▼ Windowsの場合<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h4>
-<p>Windows では、C ドライブと D ドライブがパーティションに相当する。</p>
+<p>Windowsでは、CドライブとDドライブがパーティションに相当する。</p>
 <blockquote>
 <ul>
 <li><a href="http://www.miloweb.net/partition.html">http://www.miloweb.net/partition.html</a></li>
 </ul>
 </blockquote>
 <h4 id="macos">▼ MacOSの場合<a class="headerlink" href="#macos" title="Permanent link">&para;</a></h4>
-<p>MacOS では、<code>diskutil</code> コマンドを実行することにより、パーティションとマウントポイントを確認できる。</p>
+<p>MacOSでは、<code>diskutil</code> コマンドを実行することにより、パーティションとマウントポイントを確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280">https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280</a></li>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>ストレージに紐づく <code>2</code> 個のデバイスファイルが表示され、<code>disk0</code> ファイル は 2 つ、また <code>disk1</code> ファイルは 6 つのパーティションで区切られていることが確認できる。マウントポイントは、<code>IDENTIFIER</code> 列で表示される (例：パーティションのデバイスファイル名が <code>/dev/disk0</code> なら、マウントポイントは <code>/dev/disk0&lt;IDENTIFIER名&gt;</code> になる) 。</p>
+<p>ストレージに紐づく <code>2</code> 個のデバイスファイルが表示され、<code>disk0</code> ファイル は2つ、また <code>disk1</code> ファイルは6つのパーティションで区切られていることが確認できる。マウントポイントは、<code>IDENTIFIER</code> 列で表示される (例：パーティションのデバイスファイル名が <code>/dev/disk0</code> なら、マウントポイントは <code>/dev/disk0&lt;IDENTIFIER名&gt;</code> になる) 。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>diskutil<span class="w"> </span>list
 
 <span class="c1"># ストレージ：disk0</span>
@@ -34627,7 +34627,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <h3 id="_15">論理ボリュームの確認方法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="linux_2">▼ Linuxの場合<a class="headerlink" href="#linux_2" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>Linux では論理ボリュームは、<code>lvdisplay</code> コマンドで確認できる。</p>
+<p>Linuxでは論理ボリュームは、<code>lvdisplay</code> コマンドで確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lvdisplay
 
 <span class="w">  </span>---<span class="w"> </span>Logical<span class="w"> </span>volume<span class="w"> </span>---
@@ -34666,7 +34666,7 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <p><br></p>
 <h2 id="04">04. デバイスファイル<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_16">デバイスファイルとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>Linux カーネルが入出力装置や標準入出力を操作できるように、これらのインターフェースをファイルとして扱ったもの。</p>
+<p>Linuxカーネルが入出力装置や標準入出力を操作できるように、これらのインターフェースをファイルとして扱ったもの。</p>
 <p><code>/dev</code> ディレクトリ配下に配置されている。</p>
 <p>各ファイルには具体的な入出力装置を示す番号 (メジャー番号、マイナー番号) が割り当てられている。</p>
 <p>デバイスファイルを操作すると、入出力装置や標準入出力に対してその操作が実行される。</p>
@@ -34680,8 +34680,8 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <h3 id="_17">デバイスファイルの確認方法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="linux_3">▼ Linuxの場合<a class="headerlink" href="#linux_3" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>Linux のデバイスファイルは <code>/dev</code> ディレクトリ配下にある。</p>
-<p>Docker のデバイスファイルを確認すると、以下のデバイスファイルがある。</p>
+<p>Linuxのデバイスファイルは <code>/dev</code> ディレクトリ配下にある。</p>
+<p>Dockerのデバイスファイルを確認すると、以下のデバイスファイルがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/dev
 
 crw-------<span class="w">  </span>acpi_thermal_rel<span class="w">      </span><span class="c1"># CPU温度</span>
@@ -34815,7 +34815,7 @@ crw-rw-rw-<span class="w">  </span>zero<span class="w">                  </span>
 </ul>
 </blockquote>
 <h4 id="_21">▼ 擬似デバイス<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>デバイスファイルのなかで、実際の装置に対応していないデバイスファイル。</p>
+<p>デバイスファイルの中で、実際の装置に対応していないデバイスファイル。</p>
 <p>標準入出力 (<code>/dev/stdin</code>、<code>/dev/stdout</code>) や破棄 (<code>/dev/null</code>) などがある。</p>
 <blockquote>
 <ul>
@@ -34867,14 +34867,14 @@ $<span class="w"> </span>mke2fs<span class="w"> </span>-t<span class="w"> </span
 <h2 id="05-02">05-02. ファイル共有システム<a class="headerlink" href="#05-02" title="Permanent link">&para;</a></h2>
 <h3 id="_24">ファイル共有システムの種類<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="nfsnetwork-file-system">▼ NFS：Network File System<a class="headerlink" href="#nfsnetwork-file-system" title="Permanent link">&para;</a></h4>
-<p>NFS サーバーに配置されたファイルを、他のサーバー (NFS クライアント) にマウントできる。</p>
+<p>NFSサーバーに配置されたファイルを、他のサーバー (NFSクライアント) にマウントできる。</p>
 <p><br></p>
 <h3 id="_25">セットアップ<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="nfs">▼ NFSの場合<a class="headerlink" href="#nfs" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ホスト側の MacOS にて、<code>/etc/exports</code> ファイルにマウントオプションを設定する。また、<code>/etc/exports</code> ファイルを検証する。</p>
+<p>ホスト側のMacOSにて、<code>/etc/exports</code> ファイルにマウントオプションを設定する。また、<code>/etc/exports</code> ファイルを検証する。</p>
 </dd>
 </dl>
 <blockquote>
@@ -34897,7 +34897,7 @@ $<span class="w"> </span>nfsd<span class="w"> </span>checkexports
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>MacOS に NFS サーバーを起動する。</p>
+<p>MacOSにNFSサーバーを起動する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># nfsdプロセスを起動する</span>
@@ -34912,7 +34912,7 @@ Exports<span class="w"> </span>list<span class="w"> </span>on<span class="w"> </
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>NFS クライアントにて、必要なパッケージをインストールする。</p>
+<p>NFSクライアントにて、必要なパッケージをインストールする。</p>
 </dd>
 </dl>
 <blockquote>
@@ -34926,7 +34926,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>NFS クライアントにて、マウントを実行する。</p>
+<p>NFSクライアントにて、マウントを実行する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span><span class="se">\</span>
@@ -34954,7 +34954,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
   </span>
 
     

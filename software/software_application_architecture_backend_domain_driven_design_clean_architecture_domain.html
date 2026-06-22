@@ -35012,15 +35012,15 @@
 <p><br></p>
 <h3 id="_8">ドメインイベント<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ ドメインイベントとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>ドメイン層のなかで、ビジネス的な『出来事』をモデリングしたもの。</p>
+<p>ドメイン層の中で、ビジネス的な『出来事』をモデリングしたもの。</p>
 <p>エンティティや値オブジェクトは『物』をモデリングするため、着眼点が異なる。</p>
-<p>エンティティデザインパターンの 1 つである『パブリッシュ／サブスクライブ方式』の概念を使用して、ドメインイベントとイベントリスナー (イベントハンドラー) の関連を表す。</p>
+<p>エンティティデザインパターンの1つである『パブリッシュ／サブスクライブ方式』の概念を使用して、ドメインイベントとイベントリスナー (イベントハンドラー) の関連を表す。</p>
 <p><br></p>
 <h3 id="_10">区分オブジェクト<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 区分オブジェクトとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>区分オブジェクトは概念的な呼び名で、実際は、標準的なパッケージとして利用できる enum 型のクラスに相当する。</p>
-<p>一意に識別する必要がないユビキタス言語のなかでも、特に『区分』や『種類』などは、値オブジェクトとしてではなく、enum 型のクラスとしてモデリング/実装する。</p>
-<p>ただし、類似するパターンとして値オブジェクトのディレクトリ内に配置してもよい。</p>
+<p>区分オブジェクトは概念的な呼び名で、実際は、標準的なパッケージとして利用できるenum型のクラスに相当する。</p>
+<p>一意に識別する必要がないユビキタス言語の中でも、特に『区分』や『種類』などは、値オブジェクトとしてではなく、enum型のクラスとしてモデリング/実装する。</p>
+<p>ただし、類似するパターンとして値オブジェクトのディレクトリ内に配置しても良い。</p>
 <h4 id="_12">▼ 色<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -35235,8 +35235,8 @@
 <h4 id="_16">▼ ドメインサービスとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>特定の集約内において、ドメイン層のエンティティに持たせるとやや不自然で、他のドメインオブジェクトを対象とした汎用的な振舞ロジックを切り分けたもの。</p>
 <p>ドメインサービスは、他のドメインオブジェクトにロジックを関数として提供するのみで、自身の状態を変化させる関数は持たせないようにする。</p>
-<p>すべての関数を <code>1</code> 個のドメインサービスにまとめて管理するよりも、動作の種類ごとに分けて管理したほうがよい。</p>
-<p>このとき、エンティティのビジネスロジックがドメインサービスに実装されすぎないように注意する。</p>
+<p>全ての関数を <code>1</code> 個のドメインサービスにまとめて管理するよりも、動作の種類ごとに分けて管理したほうが良い。</p>
+<p>この時、エンティティのビジネスロジックがドメインサービスに実装されすぎないように注意する。</p>
 <p>補足として、ドメイン層でリポジトリを使用することを嫌って、ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない。</p>
 <blockquote>
 <ul>
@@ -35246,8 +35246,8 @@
 </ul>
 </blockquote>
 <h4 id="_17">▼ 重複確認<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>ドメイン層のリポジトリを使用して、該当の名前のエンティティが DB に存在するか否かを検証する。</p>
-<p>ドメインサービスではなく、アプリケーションサービスとして定義してもよい。</p>
+<p>ドメイン層のリポジトリを使用して、該当の名前のエンティティがDBに存在するか否かを検証する。</p>
+<p>ドメインサービスではなく、アプリケーションサービスとして定義しても良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35293,9 +35293,9 @@
 </ul>
 </blockquote>
 <h4 id="_18">▼ 認可<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>ドメイン層のリポジトリを使用して、該当の ID のエンティティに対してアクセスできるかを検証する。</p>
+<p>ドメイン層のリポジトリを使用して、該当のIDのエンティティに対してアクセスできるかを検証する。</p>
 <p>認可処理はドメインと結びつきが強いので、ドメイン層に実装する。</p>
-<p>あるいはドメインサービスではなく、アプリケーションサービスとして定義してもよい。</p>
+<p>あるいはドメインサービスではなく、アプリケーションサービスとして定義しても良い。</p>
 <table>
 <thead>
 <tr>
@@ -35384,18 +35384,18 @@
 <p>デザインパターンの一種。</p>
 <p>責務として、ドメインルール検証、クエリ検索条件を持つ。</p>
 <p>これらをエンティティや値オブジェクトの関数内部に持たせた場合、肥大化の原因となり、また埋もれてしまうため、可読性と保守性が悪い。</p>
-<p>そこで、こういった処理を Specification オブジェクトとして切り分けておく。</p>
+<p>そこで、こういった処理をSpecificationオブジェクトとして切り分けておく。</p>
 <h4 id="_21">▼ ドメインルールのバリデーション<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>エンティティから切り分けたドメインルールバリデーションオブジェクトとして実装する。</p>
-<p>バリデーションを実装できるパッケージが世の中にあるが、ビジネスロジックは外部に依存しないほうがいいため、言語のそのままのロジックで実装するとよい。</p>
-<p>複数のエンティティをまたぐドメインルールのバリデーションは Specification パターンに切り分けるのがよい。</p>
-<p>boolean 値関数 (<code>isFoo()</code> 関数) のように、仕様を満たしているかを調べる処理する。</p>
+<p>バリデーションを実装できるパッケージが世の中にあるが、ビジネスロジックは外部に依存しないほうがいいため、言語のそのままのロジックで実装すると良い。</p>
+<p>複数のエンティティをまたぐドメインルールのバリデーションはSpecificationパターンに切り分けるのがよい。</p>
+<p>boolean値関数 (<code>isFoo()</code> 関数) のように、仕様を満たしているかを調べる処理する。</p>
 <ul>
 <li>単一のエンティティを引数として、複数を要求を満たしているか</li>
 <li>複数のエンティティを引数として、仕様を満たしているか</li>
 <li>何らかの処理のために用意できているか</li>
 </ul>
-<p>単一のエンティティに関する単一のドメインルールの場合は、Specification パターンとして切り分けずに、そのエンティティに boolean 値関数 (<code>isFoo()</code> 関数) をもたせる。</p>
+<p>単一のエンティティに関する単一のドメインルールの場合は、Specificationパターンとして切り分けずに、そのエンティティにboolean値関数 (<code>isFoo()</code> 関数) をもたせる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35421,9 +35421,9 @@
 </code></pre></div>
 <h4 id="_22">▼ クエリ検索条件<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>リポジトリの引数に渡すクエリ検索条件オブジェクトとして実装する。</p>
-<p>Specification パターンを検索条件オブジェクトとして使った場合に、Criteria パターンと呼ぶこともある。</p>
+<p>Specificationパターンを検索条件オブジェクトとして使った場合に、Criteriaパターンと呼ぶこともある。</p>
 <p>ユースケースに対応する検索条件をオブジェクトに閉じ込めるとよい。</p>
-<p>ドメインルールのバリデーションを実行する Specification クラスと区別するために、Criteria オブジェクトという名前としても使用される。</p>
+<p>ドメインルールのバリデーションを実行するSpecificationクラスと区別するために、Criteriaオブジェクトという名前としても使用される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35548,14 +35548,14 @@
 <h2 id="03">03. エンティティ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_28">エンティティとは<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <p>責務として、ドメインルールや制約の定義を持ち、値オブジェクトとは区別される。</p>
-<p>エンティティの責務をデザインパターンに切り分けてもよい。</p>
+<p>エンティティの責務をデザインパターンに切り分けても良い。</p>
 <p>一意で識別できるデータ (例：<code>id</code> データ) を持つ</p>
 <p><img alt="ドメイン駆動設計_エンティティ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_エンティティ.jpg" /></p>
 <p><br></p>
 <h3 id="_29">識別可能<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <h4 id="_30">▼ 識別可能とは<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
-<p>オブジェクトが識別子 (例：DB のオートインクリメント ID、UUID など) を持ち、他のオブジェクトと同じ属性をもっていても、区別される。</p>
-<p>この識別子は、DB のオートインクリメント ID に対応している。</p>
+<p>オブジェクトが識別子 (例：DBのオートインクリメントID、UUIDなど) を持ち、他のオブジェクトと同じ属性をもっていても、区別される。</p>
+<p>この識別子は、DBのオートインクリメントIDに対応している。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\Foo\Entities</span><span class="p">;</span>
@@ -35646,20 +35646,20 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_31">▼ エンティティの識別子として適するもの<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
-<p>エンティティの識別子にはドメインルールを持たせないほうがよいため、システムで使用する ID が適する。</p>
+<p>エンティティの識別子にはドメインルールを持たせないほうが良いため、システムで使用するIDが適する。</p>
 <ul>
-<li>DB のオートインクリメント ID</li>
-<li>UUID など</li>
+<li>DBのオートインクリメントID</li>
+<li>UUIDなど</li>
 </ul>
-<p>例えば、ドメインルール上の識別子（例：書籍の ISBN、配達物の追跡番号）はエンティティの識別子にしないほうがいい。</p>
+<p>例えば、ドメインルール上の識別子（例：書籍のISBN、配達物の追跡番号）はエンティティの識別子にしないほうがいい。</p>
 <p><br></p>
 <h3 id="_32">識別子による等価性バリデーション<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <h4 id="_33">▼ 識別子による等価性バリデーションとは<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
 <p>等価性バリデーション用の <code>equals()</code> 関数を持つ。</p>
 <p>保持する識別子が、対象のエンティティと同じ場合、同じものと見なされる。</p>
 <h4 id="_34">▼ 等価性の検証方法<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
-<p>すべてのエンティティに等価性のバリデーション関数を持たせると可読性が低い。</p>
-<p>そこで、すべてのエンティティに等価性バリデーション用の <code>equals()</code> 関数を持たせることをやめ、継承元の抽象クラスのエンティティにこれを定義するとよい。</p>
+<p>全てのエンティティに等価性のバリデーション関数を持たせると可読性が低い。</p>
+<p>そこで、全てのエンティティに等価性バリデーション用の <code>equals()</code> 関数を持たせることをやめ、継承元の抽象クラスのエンティティにこれを定義すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain</span><span class="p">;</span>
@@ -35702,13 +35702,13 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="php">▼ 複合主キーへの対応 (PHPでは不要)<a class="headerlink" href="#php" title="Permanent link">&para;</a></h4>
-<p>以降の説明は Java について適用されるため、PHP では不要である。</p>
+<p>以降の説明はJavaについて適用されるため、PHPでは不要である。</p>
 <p>複合主キーを持つオブジェクトに対応するため、主キーとなるほうのオブジェクト側に <code>equals()</code> 関数と <code>hash()</code> 関数を定義する。</p>
 <p>これにより、言語標準搭載の <code>equals()</code> 関数と <code>hash()</code> 関数をオーバーライドし、異なるセッションに渡ってオブジェクトを比較できるようにする。</p>
 <p>これらを定義しないと、オーバーライドされずに標準搭載の関数が使用される。</p>
 <p>標準搭載の関数では、異なるセッションに渡ったオブジェクトの比較では、必ず異なるオブジェクトであると判定してしまう。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>PHP では不要であるが、参考までに、PHP で実装した。</p>
+<p>PHPでは不要であるが、参考までに、PHPで実装した。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain</span><span class="p">;</span>
@@ -35771,7 +35771,7 @@
 <p><br></p>
 <h3 id="_35">データの可変性/不変性<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
 <h4 id="_36">▼ 可変性/不変性の実現方法 (ミュータブル/イミュータブル)<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
-<p>エンティティのデータは可変/不変データのいずれであってもよい。</p>
+<p>エンティティのデータは可変/不変データのいずれであっても良い。</p>
 <p>ただし、そもそもオブジェクトは不変であるほうが望ましいため、可変的なデータは最小限にする。</p>
 <p>変化させても問題ないプロパティに対してはセッターを定義し、不変的なデータに対してはコンストラクタインジェクションのみを許可する。</p>
 <p>もちろん、セッター内ではドメインルールのバリデーションを実行する。</p>
@@ -35785,7 +35785,7 @@
 <ul>
 <li>FullName：苗字や名前と関連処理（例：表示形式、氏名作成など）を状態・振る舞いとして表現</li>
 <li>Money：金額や通貨単位と関連処理（例：四則演算、不正検証など）を状態・振る舞いとして表現</li>
-<li>UserId：ユーザーID と関連処理（例：ID の出力など）を状態・振る舞いとして表現</li>
+<li>UserId：ユーザーIDと関連処理（例：IDの出力など）を状態・振る舞いとして表現</li>
 <li>Email：メールアドレスと関連処理（例：構文検証など）を状態・振る舞いとして表現</li>
 <li>Address：住所と関連処理（例：表示形式、構文検証など）を状態・振る舞いとして表現</li>
 <li>PhoneNumber：電話番号と関連処理（例：構文検証、国番号抽出など）を状態・振る舞いとして表現</li>
@@ -35797,7 +35797,7 @@
 <h4 id="_39">▼ 識別不可能とは<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
 <p>一意に識別できるデータをもたず、対象のユビキタス言語に関するデータと関数を持つ</p>
 <h4 id="_40">▼ 金額<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
-<p>金額データの計算を Interactor 内処理やエンティティ内関数で行うのではなく、金額計算をする値オブジェクトの関数として分割する。</p>
+<p>金額データの計算をInteractor内処理やエンティティ内関数で行うのではなく、金額計算をする値オブジェクトの関数として分割する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -35879,7 +35879,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_41">▼ 所要時間<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
-<p>所要時間データの計算を Interactor クラス内処理やエンティティ内関数で行うのではなく、所要時間計算をする値オブジェクトの関数として分割する。</p>
+<p>所要時間データの計算をInteractorクラス内処理やエンティティ内関数で行うのではなく、所要時間計算をする値オブジェクトの関数として分割する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -36159,8 +36159,8 @@
 </code></pre></div>
 <h4 id="_46">▼ セッターでは不変的にならない理由<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>Test01 クラスインスタンスの <code>$property01</code> データに値を設定するためには、インスタンスからセッターをコールする。</p>
-<p>セッターは何度でも呼び出せ、そのたびにデータの値を上書きできてしまう。</p>
+<p>Test01クラスインスタンスの <code>$property01</code> データに値を設定するためには、インスタンスからセッターをコールする。</p>
+<p>セッターは何度でも呼び出せ、その度にデータの値を上書きできてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$test01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test01</span><span class="p">;</span>
@@ -36169,7 +36169,7 @@
 
 <span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;新しいデータ01の値&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>Test02 クラスインスタンスの <code>$property02</code> データに値を設定するためには、インスタンスを作り直さなければならない。</p>
+<p>Test02クラスインスタンスの <code>$property02</code> データに値を設定するためには、インスタンスを作り直さなければならない。</p>
 <p>つまり、以前に作ったインスタンスの <code>$property02</code> の値は上書きできない。</p>
 <p>セッターを持たせずに、<code>construct()</code> 関数のみを持たせれば、不変的なオブジェクトとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -36181,8 +36181,8 @@
 <h4 id="_47">▼ 過剰なゲッターへの対処法<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
 <p>不変的なデータはゲッターを使用しなければアクセスできない。</p>
 <p>そのため、値オブジェクトにプロパティ値を返すだけのゲッターが量産され、ファイルの見通しが悪くなってしまう。</p>
-<p>そこで、例えば PHP では、マジック関数の <code>__get()</code> 関数を使用して、ゲッターの実装を省略できる。</p>
-<p>すべての値オブジェクトの基底クラスに、『コールされたゲッターがクラス内に存在していなければ、動的にプロパティにアクセスして返却する』処理を持った <code>__get()</code> 関数を定義しておく。</p>
+<p>そこで、例えばPHPでは、マジック関数の <code>__get()</code> 関数を使用して、ゲッターの実装を省略できる。</p>
+<p>全ての値オブジェクトの基底クラスに、『コールされたゲッターがクラス内に存在していなければ、動的にプロパティにアクセスして返却する』処理を持った <code>__get()</code> 関数を定義しておく。</p>
 <p>すると、マジック関数のオーバーライド機能により、自身で定義した <code>__get()</code> 関数が代わりにコールされる。そのため、ゲッターを定義する必要がなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -36246,10 +36246,10 @@
 <h3 id="_50">属性による等価性<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
 <h4 id="_51">▼ 属性による等価性バリデーションとは<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
 <p>等価性を検証する関数を持つ。</p>
-<p>保持するすべての属性が、対象の値オブジェクトと同じ場合、同じものと見なされる。</p>
+<p>保持する全ての属性が、対象の値オブジェクトと同じ場合、同じものと見なされる。</p>
 <h4 id="_52">▼ 等価性の検証方法<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>属性を 1 つだけ保持する場合、<code>1</code> 個の属性のみを検証すればよいため、以下の通りとなる。</p>
+<p>属性を1つだけ保持する場合、<code>1</code> 個の属性のみを検証すれば良いため、以下の通りとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
@@ -36295,7 +36295,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>属性を複数保持する値オブジェクトの場合、すべての属性を検証する必要があるため、以下の通りとなる。</p>
+<p>属性を複数保持する値オブジェクトの場合、全ての属性を検証する必要があるため、以下の通りとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\Foo\ValueObjects</span><span class="p">;</span>
@@ -36355,9 +36355,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>すべての値オブジェクトに等価性のバリデーション関数を持たせると可読性が低い。</p>
-<p>そこで、継承元の抽象クラスの値オブジェクトに定義するとよい。</p>
-<p>そのときは、保持している属性を反復的に検証できるよう実装するとよい。</p>
+<p>全ての値オブジェクトに等価性のバリデーション関数を持たせると可読性が低い。</p>
+<p>そこで、継承元の抽象クラスの値オブジェクトに定義すると良い。</p>
+<p>その時は、保持している属性を反復的に検証できるよう実装するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain</span><span class="p">;</span>
@@ -36393,9 +36393,9 @@
 <h3 id="_53">ルートエンティティ<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h3>
 <h4 id="_54">▼ ルートエンティティとは<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h4>
 <p><img alt="ドメイン駆動設計_集約関係" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_集約関係.jpg" /></p>
-<p>エンティティや値オブジェクトからなる集約のなかで、最終的にユースケース層へレスポンスされる集約を、『ルートエンティティ』という。</p>
+<p>エンティティや値オブジェクトからなる集約の中で、最終的にユースケース層へレスポンスされる集約を、『ルートエンティティ』という。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>EC サイトであれは、業務フローに沿って、以下のルートエンティティがある。</p>
+<p>ECサイトであれは、業務フローに沿って、以下のルートエンティティがある。</p>
 <ul>
 <li>受注管理部門の受注ルートエンティティ</li>
 <li>出荷管理部門の出荷ルートエンティティ</li>
@@ -36483,8 +36483,8 @@
 <p>ドメインエキスパートが業務を語る際に登場するユビキタス言語の名詞は、境界づけられたコンテキストを横断して移動するルートエンティティである可能性がある。</p>
 <h4 id="_58">▼ トランザクションとの関係性<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h4>
 <p>インフラストラクチャ層のリポジトリでは、レコードの書き込み/読み出しをルートエンティティ単位で実行する。</p>
-<p>ルートエンティティを定義づけるときの注意点として、集約の単位が大き過ぎると、一部分のエンティティのみトランザクションの対象とすればよい処理であるのにも関わらず、ルートエンティティ全体まで対象としなければならなくなる。</p>
-<p>そのため、ビジネスロジックとしてのまとまりと、トランザクションとしてのまとまりの両方から、ルートエンティティの単位を定義づけるとよい。</p>
+<p>ルートエンティティを定義づけるときの注意点として、集約の単位が大き過ぎると、一部分のエンティティのみトランザクションの対象とすれば良い処理であるのにも関わらず、ルートエンティティ全体まで対象としなければならなくなる。</p>
+<p>そのため、ビジネスロジックとしてのまとまりと、トランザクションとしてのまとまりの両方から、ルートエンティティの単位を定義づけると良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1">https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1</a></li>
@@ -36534,7 +36534,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 19:16:21 JST">2026-04-29</span>
   </span>
 
     

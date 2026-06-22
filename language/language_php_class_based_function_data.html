@@ -36273,7 +36273,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_8">▼ 関数型の場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>オブジェクトのすべてのデータが <code>public</code> であるなら、オブジェクト指向における隠蔽のメリットは、特にないかもしれない。</p>
+<p>オブジェクトの全てのデータが <code>public</code> であるなら、オブジェクト指向における隠蔽のメリットは、特にないかもしれない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -36376,7 +36376,7 @@
 <h3 id="static">static<a class="headerlink" href="#static" title="Permanent link">&para;</a></h3>
 <h4 id="static_1">▼ <code>static</code> とは<a class="headerlink" href="#static_1" title="Permanent link">&para;</a></h4>
 <p>別ファイルでの関数の呼び出しにはインスタンス化が必要である。</p>
-<p>しかし、static 修飾子をつけることにより、インスタンス化しなくともコールできる。</p>
+<p>しかし、static修飾子をつけることにより、インスタンス化しなくともコールできる。</p>
 <p>状態は使用せず (静的) 、引数の値のみを使用して処理を実行する関数に対して使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -36407,7 +36407,7 @@
 <p><br></p>
 <h3 id="_16">値を取得するアクセサ関数の実装<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="getter">▼ Getter<a class="headerlink" href="#getter" title="Permanent link">&para;</a></h4>
-<p>Getter では、状態を取得するのみではなく、何かしらの処理を加えたうえで取得すること。</p>
+<p>Getterでは、状態を取得するのみではなく、何かしらの処理を加えたうえで取得すること。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -36446,7 +36446,7 @@
 </code></pre></div>
 <h4 id="__construct">▼ マジック関数の <code>__construct()</code> 関数<a class="headerlink" href="#__construct" title="Permanent link">&para;</a></h4>
 <p>マジック関数の <code>__construct()</code> 関数を持たせることにより、このデータを持っていなければならないとい制約を明示できる。</p>
-<p>Setter を持たせずに、<code>__construct()</code> 関数のみを持たせれば、ValueObject のような、『イミュータブル』なオブジェクトを実現できる。</p>
+<p>Setterを持たせずに、<code>__construct()</code> 関数のみを持たせれば、ValueObjectのような、『イミュータブル』なオブジェクトを実現できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -36462,8 +36462,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_18">▼ 『ミュータブル』と『イミュータブル』を実現できる理由<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>Test01 クラスインスタンスの <code>$property01</code> に値を設定するためには、インスタンスから Setter をコールする。</p>
-<p>Setter は何度でも呼び出せ、そのたびにデータの値を上書きできる。</p>
+<p>Test01クラスインスタンスの <code>$property01</code> に値を設定するためには、インスタンスからSetterをコールする。</p>
+<p>Setterは何度でも呼び出せ、その度にデータの値を上書きできる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Test01</span>
@@ -36477,9 +36477,9 @@
 
 <span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;新しいデータ01の値&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>一方で、Test02 クラスインスタンスの <code>$property02</code> に値を設定するためには、インスタンスを作り直さなければならない。</p>
+<p>一方で、Test02クラスインスタンスの <code>$property02</code> に値を設定するためには、インスタンスを作り直さなければならない。</p>
 <p>つまり、以前に作ったインスタンスの <code>$property02</code> の値は上書きできない。</p>
-<p>Setter を持たせずに、<code>__construct()</code> 関数のみを持たせれば、『イミュータブル』なクラスとなる。</p>
+<p>Setterを持たせずに、<code>__construct()</code> 関数のみを持たせれば、『イミュータブル』なクラスとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Test02</span>
@@ -36491,14 +36491,14 @@
 
 <span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;新しいデータ02の値&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>Entity は、ミュータブルであるため、Setter と <code>__construct()</code> 関数の両方を持てる。</p>
-<p>ValueObject は、イミュータブルのため、<code>__construct()</code> 関数しか持てる。</p>
+<p>Entityは、ミュータブルであるため、Setterと <code>__construct()</code> 関数の両方を持てる。</p>
+<p>ValueObjectは、イミュータブルのため、<code>__construct()</code> 関数しか持てる。</p>
 <p><br></p>
 <h3 id="getter_1">マジック関数 (Getter系)<a class="headerlink" href="#getter_1" title="Permanent link">&para;</a></h3>
 <p>オブジェクトに対して特定の操作が行われたときに自動的にコールされる特殊な関数のこと。</p>
 <p>自動的に呼び出される仕組みは謎。</p>
-<p>共通の処理を実行する Getter (例：値を取得するだけの Getter など) を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。</p>
-<p>PHP には最初からマジック関数は組み込まれているが、自身で実装した場合、オーバーライドされてコールされる。</p>
+<p>共通の処理を実行するGetter (例：値を取得するだけのGetterなど) を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。</p>
+<p>PHPには最初からマジック関数は組み込まれているが、自身で実装した場合、オーバーライドされてコールされる。</p>
 <h4 id="__get">▼ <code>__get()</code> 関数<a class="headerlink" href="#__get" title="Permanent link">&para;</a></h4>
 <p>定義されていないデータや、アクセス権のない状態を取得しようとしたとき、代わりに呼び出される。</p>
 <p>関数は定義しているが、データは定義していないような状況で使用する。</p>
@@ -36532,8 +36532,8 @@
 <h3 id="setter_1">マジック関数 (Setter系)<a class="headerlink" href="#setter_1" title="Permanent link">&para;</a></h3>
 <p>定義されていない静的関数や、アクセス権のない静的関数を取得しようとしたとき、代わりに呼び出される。</p>
 <p>自動的にコールされる仕組みは謎。</p>
-<p>共通の処理を実行する Setter (例：値を設定するだけの Setter など) を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。</p>
-<p>PHP には最初からマジック関数は組み込まれているが、自身で実装した場合、オーバーライドされて呼び出される。</p>
+<p>共通の処理を実行するSetter (例：値を設定するだけのSetterなど) を無闇に増やしたくない場合に使用することにより、コード量の肥大化を防げる。</p>
+<p>PHPには最初からマジック関数は組み込まれているが、自身で実装した場合、オーバーライドされて呼び出される。</p>
 <h4 id="__set">▼ <code>__set()</code> 関数<a class="headerlink" href="#__set" title="Permanent link">&para;</a></h4>
 <p>定義されていないデータや、アクセス権のないデータに値を設定しようとしたとき、代わりにコールされる。</p>
 <p>オブジェクトの不変性を実現するために使用される。</p>
@@ -36572,7 +36572,7 @@
 <h4 id="__construct_1">▼ マジック関数の <code>__construct()</code> 関数<a class="headerlink" href="#__construct_1" title="Permanent link">&para;</a></h4>
 <p>インスタンス化時に自動的に呼び出される関数。</p>
 <p>インスタンス化時に実行したい処理を記述できる。</p>
-<p>Setter を持たせずに、<code>__construct()</code> 関数のみで値を設定すれば、ValueObject のような、『イミュータブル』なオブジェクトを実現できる。</p>
+<p>Setterを持たせずに、<code>__construct()</code> 関数のみで値を設定すれば、ValueObjectのような、『イミュータブル』なオブジェクトを実現できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -36590,8 +36590,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_19">▼ 『ミュータブル』と『イミュータブル』を実現できる理由】<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>Test01 クラスインスタンスの <code>$property01</code> に値を設定するためには、インスタンスから Setter をコールする。</p>
-<p>Setter は何度でもコールでき、そのたびにデータの値を上書きできる。</p>
+<p>Test01クラスインスタンスの <code>$property01</code> に値を設定するためには、インスタンスからSetterをコールする。</p>
+<p>Setterは何度でもコールでき、その度にデータの値を上書きできる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$test01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test01</span><span class="p">;</span>
@@ -36600,9 +36600,9 @@
 
 <span class="nv">$test01</span><span class="o">-&gt;</span><span class="na">setProperty01</span><span class="p">(</span><span class="s2">&quot;新しいデータ01の値&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>一方で、Test02 クラスインスタンスの <code>$property02</code> に値を設定するためには、インスタンスを作り直さなければならない。</p>
+<p>一方で、Test02クラスインスタンスの <code>$property02</code> に値を設定するためには、インスタンスを作り直さなければならない。</p>
 <p>つまり、以前に作ったインスタンスの <code>$property02</code> の値は上書きできない。</p>
-<p>Setter を持たせずに、<code>__construct()</code> 関数のみを持たせれば、『イミュータブル』なオブジェクトとなる。</p>
+<p>Setterを持たせずに、<code>__construct()</code> 関数のみを持たせれば、『イミュータブル』なオブジェクトとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$test02</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Test02</span><span class="p">(</span><span class="s2">&quot;データ02の値&quot;</span><span class="p">);</span>
@@ -36641,7 +36641,7 @@
 <p><br></p>
 <h3 id="_21">インスタンスの作成関数<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="static-self">▼ <code>static()</code> 関数 と <code>self()</code> 関数の違い<a class="headerlink" href="#static-self" title="Permanent link">&para;</a></h4>
-<p>どちらも、new 演算子と組み合わせて、自身のインスタンスを返却する関数であるが、作成の対象になるクラスが異なる。</p>
+<p>どちらも、new演算子と組み合わせて、自身のインスタンスを返却する関数であるが、作成の対象になるクラスが異なる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">A</span>
@@ -36668,7 +36668,7 @@
 </code></pre></div>
 <p>以下の通り、<code>self()</code> 関数は定義したクラスをインスタンス化する。</p>
 <p>一方で、<code>static()</code> 関数はコールされたクラスをインスタンス化する。</p>
-<p>自身のインスタンス化処理が継承される場合は、<code>static()</code> 関数を使用したほうがよい。</p>
+<p>自身のインスタンス化処理が継承される場合は、<code>static()</code> 関数を使用したほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="nb">get_class</span><span class="p">(</span><span class="nx">B</span><span class="o">::</span><span class="na">get_self</span><span class="p">());</span>   <span class="c1">// 継承元のクラスA</span>
@@ -36680,8 +36680,8 @@
 <p><br></p>
 <h3 id="_22">関数のコール<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <h4 id="_23">▼ 関数チェーン<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>以下のような、オブジェクト A を最外層とした関係が存在しているとする。</p>
-<p>【オブジェクト A (オブジェクト B を状態に持つ) 】</p>
+<p>以下のような、オブジェクトAを最外層とした関係が存在しているとする。</p>
+<p>【オブジェクトA (オブジェクトBを状態に持つ) 】</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Obj_A</span>
@@ -36695,7 +36695,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>【オブジェクト B (オブジェクト C を状態に持つ) 】</p>
+<p>【オブジェクトB (オブジェクトCを状態に持つ) 】</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Obj_B</span>
@@ -36709,7 +36709,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>【オブジェクト C (オブジェクト D を状態に持つ) 】</p>
+<p>【オブジェクトC (オブジェクトDを状態に持つ) 】</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Obj_C</span>
@@ -36723,7 +36723,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>以下のように、返却値のオブジェクトを使用して、より深い層に連続してアクセスしていく場合…</p>
+<p>以下の様に、返却値のオブジェクトを使用して、より深い層に連続してアクセスしていく場合…</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$ObjA</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Obj_A</span><span class="p">;</span>
@@ -36734,7 +36734,7 @@
 
 <span class="nv">$ObjD</span> <span class="o">=</span> <span class="nv">$ObjC</span><span class="o">-&gt;</span><span class="na">objD</span><span class="p">();</span>
 </code></pre></div>
-<p>以下のように、関数チェーンという書き方が可能。</p>
+<p>以下の様に、関数チェーンという書き方が可能。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$D</span> <span class="o">=</span> <span class="nx">objB</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">objC</span><span class="p">();</span>
@@ -36744,7 +36744,7 @@
 <h4 id="recursive-call">▼ Recursive call：再帰的プログラム<a class="headerlink" href="#recursive-call" title="Permanent link">&para;</a></h4>
 <p>自プログラムから自身をコールし、実行できるプログラムのこと。</p>
 <p><strong>＊例＊</strong></p>
-<p>ある関数 <code>f</code> の定義のなかに <code>f</code> 自身を呼び出している箇所がある。</p>
+<p>ある関数 <code>f</code> の定義の中に <code>f</code> 自身を呼び出している箇所がある。</p>
 <p><img alt="再帰的" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再帰的.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <p>以下のリンクも参考にせよ。</p>
@@ -36760,7 +36760,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Pivot より小さい数を前方、大きい数を後方に分割する。</p>
+<p>Pivotより小さい数を前方、大きい数を後方に分割する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -36880,7 +36880,7 @@
 <p>関数がコールされた場所に値を返却した後、その処理が終了する。</p>
 <h4 id="yield">▼ <code>yield</code><a class="headerlink" href="#yield" title="Permanent link">&para;</a></h4>
 <p>関数がコールされた場所に値を返却した後、そこで終了せず、<code>yield</code> の次の処理が続く。</p>
-<p>返却値は、array 型である。</p>
+<p>返却値は、array型である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -36912,7 +36912,7 @@
 <p><br></p>
 <h3 id="dispatcher">Dispatcher<a class="headerlink" href="#dispatcher" title="Permanent link">&para;</a></h3>
 <h4 id="dispatcher_1">▼ Dispatcherとは<a class="headerlink" href="#dispatcher_1" title="Permanent link">&para;</a></h4>
-<p>特定の名前と関数を紐付け、名前を渡すことにより、関数をコールするオブジェクトを Dispatcher という。</p>
+<p>特定の名前と関数を紐付け、名前を渡すことにより、関数をコールするオブジェクトをDispatcherという。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">Dispatcher</span>
@@ -37320,14 +37320,14 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_38">▼ 区分値<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
-<p>区分名（<code>A_TYPE</code>、<code>B_TYPE</code>、<code>C_TYPE</code>）を integer 型の定数として扱う。</p>
-<p>DB レコード区分名をそのまま保存してもよいが、区分名が変わったときにアプリケーションの実装だけでなく DB レコードを変更するのが大変である。</p>
-<p>その一方で、DB は区分名ではなく区分値として管理しておけば、DB レコードを変更せず、アプリケーションだけを変更すればよい。</p>
+<p>区分名（<code>A_TYPE</code>、<code>B_TYPE</code>、<code>C_TYPE</code>）をinteger型の定数として扱う。</p>
+<p>DBレコード区分名をそのまま保存してもよいが、区分名が変わったときにアプリケーションの実装だけでなくDBレコードを変更するのが大変である。</p>
+<p>その一方で、DBは区分名ではなく区分値として管理しておけば、DBレコードを変更せず、アプリケーションだけを変更すればよい。</p>
 <h4 id="_39">▼ 数値計算、数値比較<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
 <p>計算処理や数値比較処理では、可読性の観点から、できるだけ数値を直書きしない。</p>
 <p>数値に意味合いを持たせ、定数として扱うと可読性が高くなる。</p>
 <h4 id="url">▼ URL<a class="headerlink" href="#url" title="Permanent link">&para;</a></h4>
-<p>URL を文字列を定数として扱う。</p>
+<p>URLを文字列を定数として扱う。</p>
 <p><br></p>
 <h3 id="_40">場面に応じた命名<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
 <table>
@@ -37412,10 +37412,10 @@
 <p><br></p>
 <h2 id="04">04. 変数<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_42">変数展開<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h3>
-<p>文字列のなかで、変数の中身を取り出すことを『変数展開』と呼ぶ。</p>
-<p>※Paiza で検証済み。</p>
+<p>文字列の中で、変数の中身を取り出すことを『変数展開』と呼ぶ。</p>
+<p>※Paizaで検証済み。</p>
 <h4 id="_43">▼ シングルクオーテーションによる変数展開<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
-<p>シングルクオーテーションの中身はすべて文字列として認識され、変数は展開されない。</p>
+<p>シングルクオーテーションの中身は全て文字列として認識され、変数は展開されない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -37425,7 +37425,7 @@
 <span class="k">echo</span> <span class="s1">&#39;これは$fruitです。&#39;</span><span class="p">;</span> <span class="c1">// これは、$fruitです。</span>
 </code></pre></div>
 <h4 id="_44">▼ シングルクオーテーションと波括弧による変数展開<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
-<p>シングルクオーテーションの中身はすべて文字列として認識され、変数は展開されない。</p>
+<p>シングルクオーテーションの中身は全て文字列として認識され、変数は展開されない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -37465,7 +37465,7 @@
 <span class="nv">$result</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$value</span><span class="p">;</span> <span class="c1">// 値の入れ物を参照先として代入</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>変数の <code>$b</code> には、<code>$a</code> の参照によって 10 が格納される。</p>
+<p>変数の <code>$b</code> には、<code>$a</code> の参照によって10が格納される。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -37483,7 +37483,7 @@
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span> <span class="c1">// 1をコピーして代入</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>変数の <code>$b</code> には、<code>$a</code> の１行目の格納によって 2 が格納される。</p>
+<p>変数の <code>$b</code> には、<code>$a</code> の１行目の格納によって2が格納される。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$a</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
@@ -37498,10 +37498,10 @@
 <h2 id="05">05. ビルトインラッパー関数<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_50">入出力ストリームへのアクセス<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
 <h4 id="_51">▼ 入出力ストリームとは<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
-<p>一度にすべてのデータを入出力するのではなく、少しずつ入出力する処理のこと。</p>
+<p>一度に全てのデータを入出力するのではなく、少しずつ入出力する処理のこと。</p>
 <h4 id="phpstdin">▼ php://stdin<a class="headerlink" href="#phpstdin" title="Permanent link">&para;</a></h4>
 <p>stdin：standard in (標準入力) を意味する。</p>
-<p>PHP のプロセスが、標準入力に対して、読み出し処理を送信できるようになる。</p>
+<p>PHPのプロセスが、標準入力に対して、読み出し処理を送信できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// ログを読み出す</span>
@@ -37509,7 +37509,7 @@
 </code></pre></div>
 <h4 id="phpstdout">▼ php://stdout<a class="headerlink" href="#phpstdout" title="Permanent link">&para;</a></h4>
 <p>stdout：standard out (標準出力) を意味する。</p>
-<p>PHP のプロセスが、標準出力に対して、書き込み処理を送信できるようになる。</p>
+<p>PHPのプロセスが、標準出力に対して、書き込み処理を送信できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// ログを書き込む</span>
@@ -37518,7 +37518,7 @@
 </code></pre></div>
 <h4 id="phpstderr">▼ php://stderr<a class="headerlink" href="#phpstderr" title="Permanent link">&para;</a></h4>
 <p>stderr：standard error (標準出力エラー) を意味する。</p>
-<p>PHP のプロセスが、標準エラー出力に対して、書き込み処理を送信できるようになる。</p>
+<p>PHPのプロセスが、標準エラー出力に対して、書き込み処理を送信できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// エラーログを書き込む</span>
@@ -37565,7 +37565,7 @@
 </code></pre></div>
 <h4 id="_56">▼ アルファベット<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>『<code>a</code> から <code>z</code> のいずれか』または『A から Z のいずれか』のアルファベットを意味する。</p>
+<p>『<code>a</code> から <code>z</code> のいずれか』または『AからZのいずれか』のアルファベットを意味する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nv">$var</span> <span class="o">=</span> <span class="s2">&quot;aAbBcC&quot;</span><span class="p">;</span>
@@ -37692,7 +37692,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

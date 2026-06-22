@@ -34407,12 +34407,12 @@
 <p><br></p>
 <h3 id="aws-lambda">AWS Lambdaハンドラ関数<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h3>
 <h4 id="async-handlers">▼ 非同期ハンドラ関数 (Async handlers)<a class="headerlink" href="#async-handlers" title="Permanent link">&para;</a></h4>
-<p>AWS Lambda はハンドラ関数を非同期関数としてコールし、引数のオブジェクト (event) に値をわたす。</p>
-<p>ハンドラ関数の初期名は <code>handler()</code> 関数であるが別名でもよい。</p>
-<p><code>return</code> または <code>throw</code> を使用して、AWS Lambda のコール元にレスポンスを返信する。</p>
-<p>レスポンスとして、Promise オブジェクトを送信もできる。</p>
+<p>AWS Lambdaはハンドラ関数を非同期関数としてコールし、引数のオブジェクト (event) に値をわたす。</p>
+<p>ハンドラ関数の初期名は <code>handler()</code> 関数であるが別名でも良い。</p>
+<p><code>return</code> または <code>throw</code> を使用して、AWS Lambdaのコール元にレスポンスを返信する。</p>
+<p>レスポンスとして、Promiseオブジェクトを送信もできる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>JavaScript の場合を示す。</p>
+<p>JavaScriptの場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
@@ -34448,10 +34448,10 @@
 </ul>
 </blockquote>
 <h4 id="non-async-handlers">▼ 同期ハンドラ関数 (Non-async handlers)<a class="headerlink" href="#non-async-handlers" title="Permanent link">&para;</a></h4>
-<p>AWS Lambda はハンドラ関数を同期関数としてコールし、引数 (event オブジェクト、context オブジェクト、callback 関数) に値をわたす。</p>
+<p>AWS Lambdaはハンドラ関数を同期関数としてコールし、引数 (eventオブジェクト、contextオブジェクト、callback関数) に値をわたす。</p>
 <p>このオブジェクトには関数とプロパティを持つ。</p>
-<p>ハンドラ関数の初期名は <code>handler()</code> であるが別名でもよい。</p>
-<p><code>callback()</code> 関数を使用して、AWS Lambda のコール元に Promise オブジェクトのレスポンスを返信する。</p>
+<p>ハンドラ関数の初期名は <code>handler()</code> であるが別名でも良い。</p>
+<p><code>callback()</code> 関数を使用して、AWS Lambdaのコール元にPromiseオブジェクトのレスポンスを返信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync">https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync</a></li>
@@ -34459,7 +34459,7 @@
 </blockquote>
 <p>(※『Non』が翻訳をおかしくしているため、英語版を推奨)</p>
 <p><strong>＊実装例＊</strong></p>
-<p>JavaScript の場合を示す。</p>
+<p>JavaScriptの場合を示す。</p>
 <p>レスポンスを返信するには、<code>done()</code> 関数、<code>succeed()</code> 関数、<code>callback()</code> 関数が必要である。</p>
 <p>また、処理を終える場合は <code>return</code> で返却する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">,</span><span class="w"> </span><span class="nx">callback</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -34514,13 +34514,13 @@
 </tr>
 <tr>
 <td>callback関数</td>
-<td>代入されている関数の実体は不明である。すべての処理が終了するまで実行が待機され、AWS Lambdaのコール元にレスポンスを返信する。</td>
+<td>代入されている関数の実体は不明である。全ての処理が終了するまで実行が待機され、AWS Lambdaのコール元にレスポンスを返信する。</td>
 <td>・<a href="https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html">https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html</a></td>
 </tr>
 </tbody>
 </table>
 <h4 id="_4">▼ テストとデバッグ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>AWS Lambda で関数を作成すると、Amazon CloudWatch Logs のロググループに、『<code>/aws/lambda/&lt;関数名&gt;</code>』というグループが自動的に作成される。AWS Lambda の関数内で発生したエラーや <code>console.log()</code> 関数のログはここに出力されるため、都度確認すること。</p>
+<p>AWS Lambdaで関数を作成すると、Amazon CloudWatch Logsのロググループに、『<code>/aws/lambda/&lt;関数名&gt;</code>』というグループが自動的に作成される。AWS Lambdaの関数内で発生したエラーや <code>console.log()</code> 関数のログはここに出力されるため、都度確認すること。</p>
 <h4 id="_5">▼ ベストプラクティス<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
@@ -34531,16 +34531,16 @@
 <h2 id="02-go">02. Goによる実装<a class="headerlink" href="#02-go" title="Permanent link">&para;</a></h2>
 <h3 id="aws-lambda-go">aws-lambda-go<a class="headerlink" href="#aws-lambda-go" title="Permanent link">&para;</a></h3>
 <h4 id="aws-lambda-go_1">▼ aws-lambda-goとは<a class="headerlink" href="#aws-lambda-go_1" title="Permanent link">&para;</a></h4>
-<p>Go を使用して、AWS Lambda-API に対してリクエストを送信し、AWS リソースを操作できる。</p>
+<p>Goを使用して、AWS Lambda-APIに対してリクエストを送信し、AWSリソースを操作できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html">https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html</a></li>
 </ul>
 </blockquote>
 <h4 id="start">▼ <code>Start()</code> 関数<a class="headerlink" href="#start" title="Permanent link">&para;</a></h4>
-<p>Lambda のエントリーポイント関数を実行するための関数。</p>
-<p><code>Start()</code> 関数に渡すパラメーターには、必ず 1 つでも <code>error</code> インターフェースの実装が含まれている必要がある。</p>
-<p>もし含まれていない場合は、AWS Lambda で内部エラーが起こる。</p>
+<p>Lambdaのエントリーポイント関数を実行するための関数。</p>
+<p><code>Start()</code> 関数に渡すパラメーターには、必ず1つでも <code>error</code> インターフェースの実装が含まれている必要がある。</p>
+<p>もし含まれていない場合は、AWS Lambdaで内部エラーが起こる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -34569,7 +34569,7 @@
 </ul>
 </blockquote>
 <h4 id="_6">▼ パラメータ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>context オブジェクトと event オブジェクトをパラメーターとして使用できる。</p>
+<p>contextオブジェクトとeventオブジェクトをパラメーターとして使用できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/golang-context.html">https://docs.aws.amazon.com/lambda/latest/dg/golang-context.html</a></li>
@@ -34658,21 +34658,21 @@
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements">https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_ResponseElements</a></li>
 </ul>
 </blockquote>
-<p>文字列を返却すると、AWS Lambda はその文字列をそのまま返信する。</p>
-<p>また、JSON をレスポンスもできる。</p>
+<p>文字列を返却すると、AWS Lambdaはその文字列をそのまま返信する。</p>
+<p>また、JSONをレスポンスもできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html#golang-handler-structs">https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html#golang-handler-structs</a></li>
 </ul>
 </blockquote>
 <h4 id="_10">▼ 異常系<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>AWS Lambda のエラーレスポンスのステータスコードについては以下のリンクを参考にせよ。</p>
+<p>AWS Lambdaのエラーレスポンスのステータスコードについては以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors">https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_Errors</a></li>
 </ul>
 </blockquote>
-<p>エラーレスポンスのメッセージボディには以下の JSON が割り当てられる。</p>
+<p>エラーレスポンスのメッセージボディには以下のJSONが割り当てられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction">https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction</a></li>
@@ -34680,7 +34680,7 @@
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;errorMessage&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;エラーメッセージ&gt;&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;errorType&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;&lt;エラータイプ&gt;&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>errors パッケージの <code>New()</code> 関数を使用すると、内部で発生したエラーメッセージをオーバーライドできる。</p>
+<p>errorsパッケージの <code>New()</code> 関数を使用すると、内部で発生したエラーメッセージをオーバーライドできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -34738,7 +34738,7 @@
 </table>
 <h4 id="_13">▼ ログの出力方法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>標準パッケージの <code>fmt</code>、または任意のロギングパッケージを使用して、標準出力/標準エラー出力に出力する。</p>
-<p>Amazon CloudWatch Logs にてこれを確認する。</p>
+<p>Amazon CloudWatch Logsにてこれを確認する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html">https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html</a></li>
@@ -34755,9 +34755,9 @@
 <p><br></p>
 <h2 id="03-javascript">03. JavaScriptによる実装<a class="headerlink" href="#03-javascript" title="Permanent link">&para;</a></h2>
 <h3 id="_14">デフォルトで使用できるパッケージ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>以下のパッケージでは、npm を使用する必要はない。</p>
+<p>以下のパッケージでは、npmを使用する必要はない。</p>
 <p>パッケージから提供されるパッケージの関数のほとんどが非同期処理として実装されている。</p>
-<p>もし後続の処理で非同期処理の結果を使用したい場合、非同期処理の状態を Promise オブジェクトで管理する必要がある。</p>
+<p>もし後続の処理で非同期処理の結果を使用したい場合、非同期処理の状態をPromiseオブジェクトで管理する必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -34788,8 +34788,8 @@
 <h3 id="_15">非同期処理の成否の管理<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="javascript">▼ JavaScriptの標準パッケージの場合<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h4>
 <h4 id="aws-sdkjs">▼ aws-sdk.jsの場合<a class="headerlink" href="#aws-sdkjs" title="Permanent link">&para;</a></h4>
-<p>各 AWS オブジェクトの関数の後に、<code>promise()</code> 関数をチェーンできる。</p>
-<p>これにより、各関数の非同期処理の成否を Promise オブジェクトで管理できるようになる。</p>
+<p>各AWSオブジェクトの関数の後に、<code>promise()</code> 関数をチェーンできる。</p>
+<p>これにより、各関数の非同期処理の成否をPromiseオブジェクトで管理できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
 
 <span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;aws-sdk&quot;</span><span class="p">;</span>
@@ -34823,7 +34823,7 @@
 <h2 id="03-02">03-02. 関数例<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="aws-amplify-amazon-eventbridge-aws-lambda-slack-api_1">AWS Amplify ➡️ Amazon EventBridge ➡️ AWS Lambda ➡️ Slack-API<a class="headerlink" href="#aws-amplify-amazon-eventbridge-aws-lambda-slack-api_1" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
-<p>AWS Amplify のイベントを Amazon EventBridge でキャッチし、これを AWS Lambda にフォワーディングする。AWS Lambda では、メッセージを構成し、Slack-API に送信する。</p>
+<p>AWS AmplifyのイベントをAmazon EventBridgeでキャッチし、これをAWS Lambdaにフォワーディングする。AWS Lambdaでは、メッセージを構成し、Slack-APIに送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
 
 <span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;aws-sdk&quot;</span>
@@ -35042,8 +35042,8 @@
 <p><br></p>
 <h3 id="amazon-api-gateway-aws-lambda-amazon-s3">Amazon API Gateway ➡️ AWS Lambda ➡️ Amazon S3<a class="headerlink" href="#amazon-api-gateway-aws-lambda-amazon-s3" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
-<p>Amazon API Gateway でリクエストを受信し、それに応じて特定のデータを Amazon S3 に保管する。</p>
-<p>AWS Lambda が Amazon S3 に対してアクションを実行できるように、事前に、AWS 管理ポリシーの『<code>LambdaExecute</code>』が紐付けられたロールを AWS Lambda に紐付けしておく必要がある。</p>
+<p>Amazon API Gatewayでリクエストを受信し、それに応じて特定のデータをAmazon S3に保管する。</p>
+<p>AWS LambdaがAmazon S3に対してアクションを実行できるように、事前に、AWS管理ポリシーの『<code>LambdaExecute</code>』が紐付けられたロールをAWS Lambdaに紐付けしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
 
 <span class="k">import</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;aws-sdk&quot;</span><span class="p">;</span>
@@ -35095,7 +35095,7 @@
 <h3 id="amazon-cloudfront-aws-lambdaedge-amazon-s3">Amazon CloudFront ➡️ AWS Lambda@Edge ➡️ Amazon S3<a class="headerlink" href="#amazon-cloudfront-aws-lambdaedge-amazon-s3" title="Permanent link">&para;</a></h3>
 <p><img alt="lambda-edge_dynamic-origin" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png" /></p>
 <p><strong>＊実装例＊</strong></p>
-<p>event オブジェクトの <code>domainName</code> と <code>host.value</code> に代入されたバケットのドメイン名によって、フォワーディング先のバケットが決まる。</p>
+<p>eventオブジェクトの <code>domainName</code> と <code>host.value</code> に代入されたバケットのドメイン名によって、フォワーディング先のバケットが決まる。</p>
 <p>そのため、この値を切り替えれば動的オリジンを実現できる。</p>
 <p>注意点として、各バケットには同じオリジンアクセスアイデンティティを設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">&quot;use strict&quot;</span><span class="p">;</span>
@@ -35151,7 +35151,7 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">spBucket</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>オリジンリクエストは、以下の event オブジェクトの JSON 型データにマッピングされている。</p>
+<p>オリジンリクエストは、以下のeventオブジェクトのJSON型データにマッピングされている。</p>
 <p>注意点として、一部のキーは省略している。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Records&quot;</span><span class="p p-Indicator">:</span>
@@ -35312,7 +35312,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 22:07:09 JST">2026-04-28</span>
   </span>
 
     

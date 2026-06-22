@@ -33569,10 +33569,10 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-ingress-controller">01. Ingress Controllerとは<a class="headerlink" href="#01-ingress-controller" title="Permanent link">&para;</a></h2>
-<p>Ingress Controller は、kube-controller のように単一/複数の Ingress に watch イベントを送信する、</p>
-<p>これのルールに応じたリバースプロキシやロードバランサー (Ingress Controller の種類による) を作成し、Node 外からの受信した通信を Service にルーティングする。</p>
-<p>注意点として、Ingress Controller が Service にルーティングするのであって、Ingress はあくまでルーティングのルールを定義しているだけである。</p>
-<p>Kubernetes の周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD など) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与した Ingress を作成することになる。</p>
+<p>Ingress Controllerは、kube-controllerのように単一/複数のIngressにwatchイベントを送信する、</p>
+<p>これのルールに応じたリバースプロキシやロードバランサー (Ingress Controllerの種類による) を作成し、Node外からの受信した通信をServiceにルーティングする。</p>
+<p>注意点として、Ingress ControllerがServiceにルーティングするのであって、Ingressはあくまでルーティングのルールを定義しているだけである。</p>
+<p>Kubernetesの周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCDなど) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与したIngressを作成することになる。</p>
 <p><img alt="kubernetes_ingress-controller" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png" /></p>
 <blockquote>
 <ul>
@@ -33586,7 +33586,7 @@
 <p><br></p>
 <h2 id="02-ingress-controller">02. 外部Ingress Controllerの使用<a class="headerlink" href="#02-ingress-controller" title="Permanent link">&para;</a></h2>
 <h3 id="ingress-controller">外部Ingress Controllerの種類<a class="headerlink" href="#ingress-controller" title="Permanent link">&para;</a></h3>
-<p>Ingress Controller には種類があり、 Controller ごとに作成するリバースプロキシやロードバランサーが異なる。</p>
+<p>Ingress Controllerには種類があり、 Controllerごとに作成するリバースプロキシやロードバランサーが異なる。</p>
 <table>
 <thead>
 <tr>
@@ -33688,12 +33688,12 @@
 <p><br></p>
 <h2 id="03">03. 機能<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="ingress">Ingressの検知<a class="headerlink" href="#ingress" title="Permanent link">&para;</a></h3>
-<p>Ingress に定義したルーティングのルールを検知する。</p>
-<p>Kubernetes Cluster に単一の Ingress Controller を作成するとよい。</p>
-<p>また、各 Namespace 用に定義した Ingress を使用して、各 Namespace の Service にルーティングするとよい。</p>
+<p>Ingressに定義したルーティングのルールを検知する。</p>
+<p>Kubernetes Clusterに単一のIngress Controllerを作成するとよい。</p>
+<p>また、各Namespace用に定義したIngressを使用して、各NamespaceのServiceにルーティングするとよい。</p>
 <p><br></p>
 <h3 id="_2">インバウンド通信とアウトバウンド通信<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Ingress Controller は、名前では Ingress となっているが Egress (アウトバウンド通信) も扱う。</p>
+<p>Ingress Controllerは、名前ではIngressとなっているがEgress (アウトバウンド通信) も扱う。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.f5.com/ja_jp/company/blog/nginx/guide-to-choosing-ingress-controller-part-1-identify-requirements">https://www.f5.com/ja_jp/company/blog/nginx/guide-to-choosing-ingress-controller-part-1-identify-requirements</a></li>
@@ -33701,11 +33701,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="ingress_1">Ingressの設定値のバリデーション<a class="headerlink" href="#ingress_1" title="Permanent link">&para;</a></h3>
-<p>Ingress Controller は、『<code>***-controller-admission</code>』という Service で webhook サーバーを公開している。</p>
-<p>この webhook サーバーは、新しく追加された Ingress の設定値のバリデーションを実行する。</p>
-<p>これにより、不正な Ingress が稼働することを防止できる。</p>
-<p>この webhook サーバーの登録時、まず『<code>***-create</code>』という Job 配下の Pod が、有効期限の長いサーバー証明書を持つ Secret を作成する。</p>
-<p>その後、『<code>***-patch</code>』という Job 配下の Pod が、ValidatingWebhookConfiguration にこのサーバー証明書を設定し、webhook サーバーにサーバー証明書が割り当てられる。</p>
+<p>Ingress Controllerは、『<code>***-controller-admission</code>』というServiceでwebhookサーバーを公開している。</p>
+<p>このwebhookサーバーは、新しく追加されたIngressの設定値のバリデーションを実行する。</p>
+<p>これにより、不正なIngressが稼働することを防止できる。</p>
+<p>このwebhookサーバーの登録時、まず『<code>***-create</code>』というJob配下のPodが、有効期限の長いサーバー証明書を持つSecretを作成する。</p>
+<p>その後、『<code>***-patch</code>』というJob配下のPodが、ValidatingWebhookConfigurationにこのサーバー証明書を設定し、webhookサーバーにサーバー証明書が割り当てられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.github.io/ingress-nginx/how-it-works/#avoiding-outage-from-wrong-configuration">https://kubernetes.github.io/ingress-nginx/how-it-works/#avoiding-outage-from-wrong-configuration</a></li>
@@ -33715,7 +33715,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">サーバー証明書の割り当て<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Ingress Controller は、Secret に設定されたサーバー証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。</p>
+<p>Ingress Controllerは、Secretに設定されたサーバー証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。</p>
 <p><img alt="kubernetes_ingress-controller_certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png" /></p>
 <blockquote>
 <ul>
@@ -33744,7 +33744,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
   </span>
 
     

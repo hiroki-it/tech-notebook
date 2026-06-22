@@ -34374,11 +34374,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="exponential-backoff-and-jitter">Exponential Backoff and Jitter<a class="headerlink" href="#exponential-backoff-and-jitter" title="Permanent link">&para;</a></h3>
-<p>リトライの間隔を指数関数的に遅らせる（1 秒、2 秒、4 秒）方法である。</p>
+<p>リトライの間隔を指数関数的に遅らせる（1秒、2秒、4秒）方法である。</p>
 <p><br></p>
 <h2 id="04">04. タイムアウトパターン<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_7">タイムアウトパターンとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>タイムアウトは、時間のかかる処理（例：<code>for</code> 文、HTTP リクエスト、ループ、ポーリング、DB 操作、ファイル操作、計算、暗号化、圧縮解凍など）に制限時間を設けるデザインパターンである。</p>
+<p>タイムアウトは、時間のかかる処理（例：<code>for</code>文、HTTPリクエスト、ループ、ポーリング、DB操作、ファイル操作、計算、暗号化、圧縮解凍など）に制限時間を設けるデザインパターンである。</p>
 <p>これにより、時間のかかる処理がハードウェアリソースを使用し続けることを防ぎ、他の処理にハードウェアリソースを譲る。</p>
 <blockquote>
 <ul>
@@ -34437,7 +34437,7 @@
 <h4 id="connection-timeout">▼ 接続タイムアウト (Connection timeout)<a class="headerlink" href="#connection-timeout" title="Permanent link">&para;</a></h4>
 <p>『オープンタイムアウト (Open timeout) 』ともいう</p>
 <p>スリーウェイハンドシェイクの確立を試みてから、接続の確立が成功／失敗するまでの最大待機時間である。</p>
-<p>TCP 接続の確立中、メモリ上で送信データが保持されており、占有されてしまっている。</p>
+<p>TCP接続の確立中、メモリ上で送信データが保持されており、占有されてしまっている。</p>
 <p>これを解放する必要がある。</p>
 <blockquote>
 <ul>
@@ -34446,23 +34446,23 @@
 </ul>
 </blockquote>
 <h4 id="read-timeout">▼ 読み取りタイムアウト (Read timeout)<a class="headerlink" href="#read-timeout" title="Permanent link">&para;</a></h4>
-<p>通信処理において、TCP 接続が確立した後、宛先へリクエストが到達してから、レスポンスの返信を待機するまでの最大待機時間である。</p>
+<p>通信処理において、TCP接続が確立した後、宛先へリクエストが到達してから、レスポンスの返信を待機するまでの最大待機時間である。</p>
 <p>これの場合、サーバーにリクエストを送信できており、サーバーがレスポンスを返信できない状態にある。</p>
-<p>HTTP リクエストのステータスコードでは、Gateway Timeout (<code>504</code>) が相当する。</p>
+<p>HTTPリクエストのステータスコードでは、Gateway Timeout (<code>504</code>) が相当する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%83%AA%E3%83%BC%E3%83%89%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88">https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%83%AA%E3%83%BC%E3%83%89%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88</a></li>
 </ul>
 </blockquote>
 <h4 id="session-timeout">▼ セッションタイムアウト (Session timeout)<a class="headerlink" href="#session-timeout" title="Permanent link">&para;</a></h4>
-<p>通信処理において、L7 のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3 など) による認証後に、無通信状態 (パケットの送受信がない状態) や経過時間を猶予する最大時間である。</p>
+<p>通信処理において、L7のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) による認証後に、無通信状態 (パケットの送受信がない状態) や経過時間を猶予する最大時間である。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88">https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88</a></li>
 </ul>
 </blockquote>
 <h4 id="idle-timeout">▼ アイドルタイムアウト (Idle timeout)<a class="headerlink" href="#idle-timeout" title="Permanent link">&para;</a></h4>
-<p>スリーウェイハンドシェイクの TCP 接続中に無通信状態 (パケットの送受信がない状態) を猶予する最大時間である。</p>
+<p>スリーウェイハンドシェイクのTCP接続中に無通信状態 (パケットの送受信がない状態) を猶予する最大時間である。</p>
 <p>マイクロサービスアーキテクチャでは、後方のマイクロサービスに対するアイドルタイムアウトほど時間を短くする (処理タイムアウトと逆の設計) 。</p>
 <blockquote>
 <ul>
@@ -34472,7 +34472,7 @@
 <p><br></p>
 <h2 id="05">05. サーキットブレイカーパターン<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_13">サーキットブレイカーパターンとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>サーキットブレイカーは、レスポンスを対象とした外れ値 (例：500 系ステータスコード率、Gateway 系ステータス率、接続プール上限) が閾値を超過した場合に、宛先を指定した期間だけ排除 (Eject) し、回復を待機するデザインパターンである。</p>
+<p>サーキットブレイカーは、レスポンスを対象とした外れ値 (例：500系ステータスコード率、Gateway系ステータス率、接続プール上限) が閾値を超過した場合に、宛先を指定した期間だけ排除 (Eject) し、回復を待機するデザインパターンである。</p>
 <p>マイクロサービス間の通信方式がリクエスト／レスポンス方式の場合に、リクエストの場合には連鎖的な障害 (カスケード障害) が起こるため、これに対処する必要がある。</p>
 <p>宛先マイクロサービスからのレスポンスに外れ値の閾値を設定しておく。</p>
 <p>運用中にこれを超過すると、送信元マイクロサービスはタイムアウトになるまで処理を待機する。</p>
@@ -34486,7 +34486,7 @@
 <li>障害が回復次第、</li>
 <li>を再開する。</li>
 </ol>
-<p>blast-radius を最小限にできる。</p>
+<p>blast-radiusを最小限にできる。</p>
 <p><img alt="circuit-breaker" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png" /></p>
 <blockquote>
 <ul>
@@ -34497,7 +34497,7 @@
 <p><br></p>
 <h2 id="06">06. フォールバックパターン<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_15">フォールバックパターンとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>フォールバックパターンは、エラーハンドリングの方法の 1 つである。</p>
+<p>フォールバックパターンは、エラーハンドリングの方法の1つである。</p>
 <p>リトライの失敗やサーキットブレイカーで宛先マイクロサービスからデータを取得できなかった場合に、代わりにデータを返信するデザインパターンである。</p>
 <p><br></p>
 <h3 id="_16">具体例<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
@@ -34542,7 +34542,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="10">10. キャッシュパターン<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
-<p>頻繁に使用するデータや処理結果をマイクロサービスのメモリに保存し、他のマイクロサービスや DB への接続を最小限に抑える。</p>
+<p>頻繁に使用するデータや処理結果をマイクロサービスのメモリに保存し、他のマイクロサービスやDBへの接続を最小限に抑える。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns">https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns</a></li>
@@ -34555,7 +34555,7 @@
 <p><br></p>
 <h3 id="_18">エラーハンドリングの意義<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="db">▼ DBにとって<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
-<p>DB 更新系の処理の途中にエラーが発生すると、DB が中途半端な更新状態になってしまう。</p>
+<p>DB更新系の処理の途中にエラーが発生すると、DBが中途半端な更新状態になってしまう。</p>
 <p>そのため、関数コールしたクラスでエラーを検出し、これをきっかけにロールバック処理を実行する必要がある。</p>
 <p>注意点として、下層クラスのエラーの内容自体は握りつぶさずに、スタックトレースとして関数コールしたクラスでロギングしておく。</p>
 <h4 id="_19">▼ ソフトウェア開発者にとって<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
@@ -34565,8 +34565,8 @@
 <h4 id="_20">▼ ユーザーにとって<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>エラーが画面上に返却されたとしても、ユーザーにとっては何が起きているのかわからない。</p>
 <p>また、エラーを関数コールしたクラスで検出し、例外としてスローしたとしても、ソフトウェア開発者にとっては理解できる。しかし、ユーザーにとっては理解できない。</p>
-<p>そのため、例外スローを別の識別子 (例：boolean 値) に変えて関数コールしたクラスに持ち上げ、最終的には、これをポップアップなどでわかりやすく通知する必要がある。</p>
-<p>これらは、サーバーサイドの try-catch-finally 文や、フロントエンドのポップアップ処理で実現する。</p>
+<p>そのため、例外スローを別の識別子 (例：boolean値) に変えて関数コールしたクラスに持ち上げ、最終的には、これをポップアップなどでわかりやすく通知する必要がある。</p>
+<p>これらは、サーバーサイドのtry-catch-finally文や、フロントエンドのポップアップ処理で実現する。</p>
 <p>注意点として、子クラスのエラー自体は握りつぶさずに、スタックトレースとして関数コールしたクラスでロギングしておく。</p>
 <p><br></p>
 <h3 id="_21">エラーハンドリングのステップ<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
@@ -34628,7 +34628,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月29日 19:12:12 JST">2026-05-29</span>
   </span>
 
     

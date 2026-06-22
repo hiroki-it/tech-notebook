@@ -34059,7 +34059,7 @@
 <p>デザインパターンの一種。</p>
 <p>一例として、以下の関数を持つ。</p>
 <p>具体的な実装については、インターフェースリポジトリの実装を参考にせよ。</p>
-<p><code>CREATE</code> 処理と <code>UPDATE</code> 処理を SAVE 処理としてまとめてもよい。</p>
+<p><code>CREATE</code> 処理と <code>UPDATE</code> 処理をSAVE処理としてまとめても良い。</p>
 <table>
 <thead>
 <tr>
@@ -34080,13 +34080,13 @@
 <td><code>findAll()</code></td>
 <td>なし</td>
 <td>ドメインモデル型を持つ配列</td>
-<td>すべてのドメインモデルを取得する。</td>
+<td>全てのドメインモデルを取得する。</td>
 </tr>
 <tr>
 <td><code>findAllByCriteria()</code></td>
 <td>Criteria型</td>
 <td>ドメインモデル型を持つ配列</td>
-<td>条件に合致したすべてのドメインモデルを取得する。</td>
+<td>条件に合致した全てのドメインモデルを取得する。</td>
 </tr>
 <tr>
 <td><code>findWith&lt;異なる境界づけられたコンテキストにあるほかの集約名&gt;()</code></td>
@@ -34159,10 +34159,10 @@
 <tr>
 <td>Repository</td>
 <td>ドメイン駆動</td>
-<td>・弱い <code>&lt;br&gt;</code>・手順としてドメインモデルの依存関係の設計が先にあり、テーブル間の関係性は自由である。<code>1</code> 個のドメインモデルが複数のテーブルを参照してもよい。</td>
+<td>・弱い <code>&lt;br&gt;</code>・手順としてドメインモデルの依存関係の設計が先にあり、テーブル間の関係性は自由である。<code>1</code> 個のドメインモデルが複数のテーブルを参照しても良い。</td>
 <td></td>
 <td>ビジネスロジックが複雑なアプリケーション</td>
-<td>DB、RDBMS、NoSQL、なんでもでもよい。</td>
+<td>DB、RDBMS、NoSQL、なんでもでも良い。</td>
 </tr>
 <tr>
 <td>なし</td>
@@ -34180,10 +34180,10 @@
 <p><br></p>
 <h3 id="_6">実装リポジトリ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>リポジトリパターンを使用する。</p>
-<p>責務として、DB に対してデータの書き込み/読み出しのトランザクション処理を実行する。</p>
+<p>責務として、DBに対してデータの書き込み/読み出しのトランザクション処理を実行する。</p>
 <p>トランザクションはルートエンティティを単位として定義する必要があるため、リポジトリも同じくルートエンティティを単位として定義づけることになる。</p>
 <p>そのため、引数の型はルートエンティティのドメインモデル型になる。</p>
-<p>リポジトリではルートエンティティを意識して実装する必要がある一方で、DB のどのテーブルにデータが存在しているかを問わない。</p>
+<p>リポジトリではルートエンティティを意識して実装する必要がある一方で、DBのどのテーブルにデータが存在しているかを問わない。</p>
 <p>これにより、ルートエンティティとテーブルを別々に設計できる。</p>
 <blockquote>
 <ul>
@@ -34247,11 +34247,11 @@
 </code></pre></div>
 <h3 id="db-createupdatedelete">DBに対する書き込み責務 (CREATE／UPDATE／DELETE)<a class="headerlink" href="#db-createupdatedelete" title="Permanent link">&para;</a></h3>
 <p><img alt="ドメイン駆動設計_リポジトリ_データ更新" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ更新.png" /></p>
-<p>DB に対する書き込み操作をする。</p>
+<p>DBに対する書き込み操作をする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>GET/POST によって、ユースケース層から値を送信する。</p>
+<p>GET/POSTによって、ユースケース層から値を送信する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -34263,11 +34263,11 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>ルートエンティティをレコードとして DB に挿入する。</p>
+<p>ルートエンティティをレコードとしてDBに挿入する。</p>
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<p><code>CREATE</code> 処理のため、Laravel の <code>insert()</code> 関数を実行する。</p>
+<p><code>CREATE</code> 処理のため、Laravelの <code>insert()</code> 関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
@@ -34296,7 +34296,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>UPDATE</code> 処理のため、Laravel の <code>update()</code> 関数を実行する。</p>
+<p><code>UPDATE</code> 処理のため、Laravelの <code>update()</code> 関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
@@ -34326,7 +34326,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>DELETE</code> 処理 (論理削除) のため、Laravel の <code>update()</code> 関数を実行する。</p>
+<p><code>DELETE</code> 処理 (論理削除) のため、Laravelの <code>update()</code> 関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
@@ -34362,7 +34362,7 @@
 </blockquote>
 <h3 id="db-read">DBに対する読み出し責務 (Read)<a class="headerlink" href="#db-read" title="Permanent link">&para;</a></h3>
 <p><img alt="ドメイン駆動設計_リポジトリ_データ取得" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ取得.jpg" /></p>
-<p>DB に対する書き込み操作をする。</p>
+<p>DBに対する書き込み操作をする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -34370,7 +34370,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>DB からレコードを読み込む。</p>
+<p>DBからレコードを読み込む。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -34382,7 +34382,7 @@
 </dd>
 </dl>
 <p><strong>＊実装例＊</strong></p>
-<p><code>READ</code> 処理のため、Doctrine の QueryBuilder クラスの <code>select()</code> 関数を実行する。</p>
+<p><code>READ</code> 処理のため、DoctrineのQueryBuilderクラスの <code>select()</code>関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Infrastructure\Foo\Repositories</span><span class="p">;</span>
@@ -34454,8 +34454,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_8">テストリポジトリ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>ホワイトボックスのテスト時に、実装リポジトリを静的な値を返信するインメモリなリポジトリに差し替えると、DB を使用せずにホワイトボックステストを実施できる。</p>
-<p>ただ、ホワイトボックステスト時には、DB コンテナなどの一時的な DB を使用すれば、実装リポジトリをそのまま使用できる。</p>
+<p>ホワイトボックスのテスト時に、実装リポジトリを静的な値を返信するインメモリなリポジトリに差し替えると、DBを使用せずにホワイトボックステストを実施できる。</p>
+<p>ただ、ホワイトボックステスト時には、DBコンテナなどの一時的なDBを使用すれば、実装リポジトリをそのまま使用できる。</p>
 <p><br></p>
 <h2 id="03">03. ファクトリ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_9">ファクトリとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -34505,7 +34505,7 @@
 <p><br></p>
 <h2 id="05">05. ミドルウェア<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_10">ミドルウェア処理とは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>コントローラーの処理前に実行する BeforeMiddleware と、コントローラーとビューの処理後に実行する AfterMiddleware がある。</p>
+<p>コントローラーの処理前に実行するBeforeMiddlewareと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。</p>
 <p><img alt="design-pattern_middleware" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/design-pattern_middleware.png" /></p>
 <blockquote>
 <ul>
@@ -34540,7 +34540,7 @@
 <p><br></p>
 <h2 id="08">08. インフラサービス<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <h3 id="_14">インフラサービスとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>インフラストラクチャ層のなかで、汎用的なロジックが切り分けられたもの。</p>
+<p>インフラストラクチャ層の中で、汎用的なロジックが切り分けられたもの。</p>
 <p>実装リポジトリと同様にして、ドメイン層にストラクチャサービスのインターフェースを設け、依存性逆転の原則を満たせるようにする。</p>
 <h3 id="_15">ロギング<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h3 id="_16">ファイル出力<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
@@ -34553,7 +34553,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_18">その他<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>gRPC の <code>proto</code> ファイルはインフラストラクチャ層に配置するとよい。</p>
+<p>gRPCの <code>proto</code> ファイルはインフラストラクチャ層に配置すると良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/62703733">https://stackoverflow.com/a/62703733</a></li>
@@ -34580,7 +34580,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月18日 20:50:18 JST">2026-05-18</span>
   </span>
 
     

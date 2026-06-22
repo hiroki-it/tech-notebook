@@ -35044,7 +35044,7 @@
 <p><br></p>
 <h2 id="01-github-actions">01. GitHub Actionsの仕組み<a class="headerlink" href="#01-github-actions" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>GitHub Actions Runner は、GitHub リポジトリの設定ファイルを HTTPS で参照し、定義したパイプラインを実行する。</p>
+<p>GitHub Actions Runnerは、GitHubリポジトリの設定ファイルをHTTPSで参照し、定義したパイプラインを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.devops.dev/a-deep-dive-into-devops-6-85f199efc3f8">https://blog.devops.dev/a-deep-dive-into-devops-6-85f199efc3f8</a></li>
@@ -35053,14 +35053,14 @@
 <p><br></p>
 <h3 id="github-actions-runner">GitHub Actions Runner<a class="headerlink" href="#github-actions-runner" title="Permanent link">&para;</a></h3>
 <h4 id="github-actions-runner_1">▼ GitHub Actions Runnerとは<a class="headerlink" href="#github-actions-runner_1" title="Permanent link">&para;</a></h4>
-<p>GitHub Actions の設定ファイルで定義したパイプラインを実行する。</p>
+<p>GitHub Actionsの設定ファイルで定義したパイプラインを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/actions/runner">https://github.com/actions/runner</a></li>
 </ul>
 </blockquote>
 <h4 id="self-hosted-runner">▼ Self hosted Runner<a class="headerlink" href="#self-hosted-runner" title="Permanent link">&para;</a></h4>
-<p>GitHub Actions のパイプラインをサーバー (例：オンプレサーバー、Amazon EC2 など) 上で実行する。</p>
+<p>GitHub Actionsのパイプラインをサーバー (例：オンプレサーバー、Amazon EC2など) 上で実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://fintan.jp/page/4177/">https://fintan.jp/page/4177/</a></li>
@@ -35071,7 +35071,7 @@
 <p>記入中...</p>
 <p><br></p>
 <h3 id="github-apps">GitHub Apps<a class="headerlink" href="#github-apps" title="Permanent link">&para;</a></h3>
-<p>GitHub とは別の実行環境 (例：AWS Lambda) で稼働し、GitHub の API をコールする。</p>
+<p>GitHubとは別の実行環境 (例：AWS Lambda) で稼働し、GitHubのAPIをコールする。</p>
 <p><img alt="github_apps" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/github_apps.png" /></p>
 <blockquote>
 <ul>
@@ -35081,8 +35081,8 @@
 <p><br></p>
 <h3 id="_4">ビルトインの静的解析<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 脆弱性診断<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>CodeQL を使用して、ソースコードの脆弱性を検証できる。</p>
-<p>CodeQL 以外の脆弱性診断ツールを使用するよりも、GitHub と連携しやすい。</p>
+<p>CodeQLを使用して、ソースコードの脆弱性を検証できる。</p>
+<p>CodeQL以外の脆弱性診断ツールを使用するよりも、GitHubと連携しやすい。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.github.com/ja/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql">https://docs.github.com/ja/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning-with-codeql</a></li>
@@ -35100,7 +35100,7 @@
 <p><br></p>
 <h2 id="03-name">03. name<a class="headerlink" href="#03-name" title="Permanent link">&para;</a></h2>
 <h3 id="name">nameとは<a class="headerlink" href="#name" title="Permanent link">&para;</a></h3>
-<p>Workflow 名を設定する。</p>
+<p>Workflow名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <p><br></p>
@@ -35116,16 +35116,16 @@
 <p><br></p>
 <h2 id="04-jobs">04. jobs<a class="headerlink" href="#04-jobs" title="Permanent link">&para;</a></h2>
 <h3 id="jobs">jobsとは<a class="headerlink" href="#jobs" title="Permanent link">&para;</a></h3>
-<p>Workflow の具体的な処理を設定する。</p>
+<p>Workflowの具体的な処理を設定する。</p>
 <p><br></p>
 <h3 id="runs-on">runs-on<a class="headerlink" href="#runs-on" title="Permanent link">&para;</a></h3>
-<p>GitHub Actions の実行環境を設定する。</p>
+<p>GitHub Actionsの実行環境を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
 </code></pre></div>
 <h4 id="_7">▼ インストール済みソフトウェア<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>使用する OS に応じて、いくつかの汎用的なソフトウェアがプリインストールされている。</p>
+<p>使用するOSに応じて、いくつかの汎用的なソフトウェアがプリインストールされている。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.github.com/ja/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software">https://docs.github.com/ja/actions/using-github-hosted-runners/about-github-hosted-runners#preinstalled-software</a></li>
@@ -35188,7 +35188,7 @@
 <span class="w">          </span><span class="no">git config pull.rebase false</span>
 </code></pre></div>
 <h4 id="uses">▼ uses<a class="headerlink" href="#uses" title="Permanent link">&para;</a></h4>
-<p>使用する Actions を設定する。</p>
+<p>使用するActionsを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35202,7 +35202,7 @@
 </ul>
 </blockquote>
 <h4 id="with">▼ with<a class="headerlink" href="#with" title="Permanent link">&para;</a></h4>
-<p>Actions に設定できるパラメーターをわたす。</p>
+<p>Actionsに設定できるパラメーターをわたす。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35313,7 +35313,7 @@
 <div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>Can<span class="s1">&#39;t find &#39;</span>action.yml<span class="s1">&#39;, &#39;</span>action.yaml<span class="err">&#39;</span><span class="w"> </span>...
 </code></pre></div>
 <h4 id="secrets">▼ Secretsは使用不可<a class="headerlink" href="#secrets" title="Permanent link">&para;</a></h4>
-<p>composite では、Secrets を使用できない。</p>
+<p>compositeでは、Secretsを使用できない。</p>
 <p>そのため、<code>input</code> キーのパラメーターとして渡す必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
@@ -35379,7 +35379,7 @@
 <p>定義した <code>workflow</code> (<code>yaml</code> ファイル) 内のみで参照できる。</p>
 <h4 id="env">▼ env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
 <p>環境変数を定義する。</p>
-<p>Secret の値を設定できない。</p>
+<p>Secretの値を設定できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">env</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">FOO</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">  </span><span class="nt">BAR</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
@@ -35461,12 +35461,12 @@
 <p><br></p>
 <h2 id="07-02-secret">07-02. Secret変数<a class="headerlink" href="#07-02-secret" title="Permanent link">&para;</a></h2>
 <h3 id="secret">Secret変数とは<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h3>
-<p>環境変数と同様にして GitHub Actions 内で使用できる。</p>
+<p>環境変数と同様にしてGitHub Actions内で使用できる。</p>
 <p>また、<code>add-mask</code> コマンドと同様のマスキングが最初から実行されている。</p>
 <p><br></p>
 <h3 id="_10">マスキング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ スコープ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>以降のすべての処理でマスキングが実行される。</p>
+<p>以降の全ての処理でマスキングが実行される。</p>
 <p>もちろん、<code>inputs</code> キーで渡した値にもマスキングが維持される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
@@ -35529,7 +35529,7 @@
 <p><br></p>
 <h3 id="_13">変数のスコープレベル<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="project-repository-secrets">▼ Projectレベル (Repository Secrets)<a class="headerlink" href="#project-repository-secrets" title="Permanent link">&para;</a></h4>
-<p>リポジトリの設定の Secrets 項目に変数名と値を登録する。</p>
+<p>リポジトリの設定のSecrets項目に変数名と値を登録する。</p>
 <p>プロジェクト内、すなわちリポジトリ内で参照できる。</p>
 <p>出力された変数の値は、以降の処理でマスキングされる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
@@ -35546,11 +35546,11 @@
 </ul>
 </blockquote>
 <h4 id="action-environment-secrets">▼ Actionレベル (Environment Secrets)<a class="headerlink" href="#action-environment-secrets" title="Permanent link">&para;</a></h4>
-<p>リポジトリの設定の Environment 項目に変数名と値を登録する。</p>
-<p>リポジトリ内の GitHub Actions のみで参照できる。</p>
+<p>リポジトリの設定のEnvironment項目に変数名と値を登録する。</p>
+<p>リポジトリ内のGitHub Actionsのみで参照できる。</p>
 <p>また、シェルスクリプト内で環境変数を出力するためにも必要である。</p>
 <p>出力された変数の値は、以降の処理でマスキングされる。</p>
-<p>Project レベルとは異なり、<code>env</code> キーに明示的に環境変数を渡す必要がある。</p>
+<p>Projectレベルとは異なり、<code>env</code> キーに明示的に環境変数を渡す必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35652,7 +35652,7 @@
 <p><br></p>
 <h3 id="set-output">set-output<a class="headerlink" href="#set-output" title="Permanent link">&para;</a></h3>
 <h4 id="set-output_1">▼ set-outputとは<a class="headerlink" href="#set-output_1" title="Permanent link">&para;</a></h4>
-<p>GitHub Actions のユーザー定義のパラメーターを入力する。</p>
+<p>GitHub Actionsのユーザー定義のパラメーターを入力する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35704,7 +35704,7 @@
 <li><a href="https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps">https://stackoverflow.com/questions/57819539/github-actions-how-to-share-a-calculated-value-between-job-steps</a></li>
 </ul>
 </blockquote>
-<p>Secrets や <code>add-mask</code> コマンドでマスキングされた値も共有でき、またマスキングを維持できる。</p>
+<p>Secretsや <code>add-mask</code> コマンドでマスキングされた値も共有でき、またマスキングを維持できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35748,7 +35748,7 @@
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">echo &quot;${{ needs.foo.outputs.FOO }}&quot;</span>
 </code></pre></div>
-<p>ただし異なる <code>job</code> では、Secrets や <code>add-mask</code> コマンドでマスキングされた値は共有できず、空になってしまう。</p>
+<p>ただし異なる <code>job</code> では、Secretsや <code>add-mask</code> コマンドでマスキングされた値は共有できず、空になってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
@@ -35801,7 +35801,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
   </span>
 
     

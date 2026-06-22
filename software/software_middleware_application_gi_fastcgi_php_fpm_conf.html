@@ -34517,9 +34517,9 @@
 <h2 id="02-docker">02. 設定ファイルの種類 (※ Dockerの場合)<a class="headerlink" href="#02-docker" title="Permanent link">&para;</a></h2>
 <h3 id="usrlocaletcphp-fpmconf"><code>/usr/local/etc/php-fpm.conf</code> ファイル<a class="headerlink" href="#usrlocaletcphp-fpmconf" title="Permanent link">&para;</a></h3>
 <h4 id="php-fpmconf">▼ <code>php-fpm.conf</code> ファイルとは<a class="headerlink" href="#php-fpmconf" title="Permanent link">&para;</a></h4>
-<p>PHP-FPM のすべてのプロセスを設定する。</p>
+<p>PHP-FPMの全てのプロセスを設定する。</p>
 <p>設定ファイルを切り分ける場合、<code>/etc/php-fpm.d</code> ディレクトリ配下に <code>&lt;実行ユーザー名&gt;.conf</code> ファイルの名前で配置する。</p>
-<p>PHP-FPM の仕様として、異なる <code>.conf</code> ファイルで同じプールの同じオプションを設定した場合は、後ろにくる名前のファイルの設定が優先されるようになっている。</p>
+<p>PHP-FPMの仕様として、異なる <code>.conf</code> ファイルで同じプールの同じオプションを設定した場合は、後ろにくる名前のファイルの設定が優先されるようになっている。</p>
 <p>そのため、同じプールの設定を異なる <code>.conf</code> ファイルに分割する場合、同じオプションを設定しないように注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">;;;;;;;;;;;;;;;;;;;;;</span>
 <span class="c1">; FPM Configuration ;</span>
@@ -34568,10 +34568,10 @@
 <p><br></p>
 <h3 id="usrlocaletcphp-fpmdwwwconf"><code>/usr/local/etc/php-fpm.d/www.conf</code> ファイル<a class="headerlink" href="#usrlocaletcphp-fpmdwwwconf" title="Permanent link">&para;</a></h3>
 <h4 id="wwwconf">▼ <code>www.conf</code> ファイルとは<a class="headerlink" href="#wwwconf" title="Permanent link">&para;</a></h4>
-<p>PHP-FPM の <code>www</code> プロセスのプールを設定する。</p>
+<p>PHP-FPMの <code>www</code> プロセスのプールを設定する。</p>
 <p><code>www.conf</code> ファイルは、<code>/usr/local/etc/php-fpm.d</code> ディレクトリ配下に配置されている。</p>
 <p><code>php.ini</code> ファイルによって読み込まれ、<code>php.ini</code> ファイルよりも優先されるので、設定項目が重複している場合は、こちらを変更する。</p>
-<p>Nginx から PHP-FPM にインバウンド通信をルーティングする場合、Nginx の設定ファイル (<code>/etc/nginx/nginx.conf</code> ファイル) と PHP-FPM の設定ファイル (<code>/usr/local/etc/php-fpm.d/www.conf</code> ファイル) の両方で、プロセスのユーザー名を『<code>www-data</code>』とする必要がある。</p>
+<p>NginxからPHP-FPMにインバウンド通信をルーティングする場合、Nginxの設定ファイル (<code>/etc/nginx/nginx.conf</code> ファイル) とPHP-FPMの設定ファイル (<code>/usr/local/etc/php-fpm.d/www.conf</code> ファイル) の両方で、プロセスのユーザー名を『<code>www-data</code>』とする必要がある。</p>
 <p>補足として、『<code>www-data</code>』は <code>apache</code> プロセスのユーザー名のデフォルト値である。</p>
 <blockquote>
 <ul>
@@ -34580,8 +34580,8 @@
 </ul>
 </blockquote>
 <h4 id="zz-dockerconf">▼ <code>zz-docker.conf</code> ファイルについて<a class="headerlink" href="#zz-dockerconf" title="Permanent link">&para;</a></h4>
-<p>PHP-FPM のベースイメージには <code>zz-docker.conf</code> ファイルが組み込まれており、このファイルには PHP-FPM の一部の設定が実装されている。</p>
-<p>PHP-FPM の仕様では、同じプールに同じオプションを設定した場合は、名前が後ろに来るファイルの設定が優先されるため、デフォルトのベースイメージでは <code>zz-docker.conf</code> ファイルの設定が最優先になっている。</p>
+<p>PHP-FPMのベースイメージには <code>zz-docker.conf</code> ファイルが組み込まれており、このファイルにはPHP-FPMの一部の設定が実装されている。</p>
+<p>PHP-FPMの仕様では、同じプールに同じオプションを設定した場合は、名前が後ろに来るファイルの設定が優先されるため、デフォルトのベースイメージでは <code>zz-docker.conf</code> ファイルの設定が最優先になっている。</p>
 <p>このファイルに後勝ちできるように、ホストでは <code>www.conf</code> ファイルとして定義しておき、コンテナ側にコピーするときは <code>zzz-www.conf</code> ファイルとする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">COPY</span><span class="w"> </span>./php-fpm.d/www.conf<span class="w"> </span>/usr/local/etc/php-fpm.d/zzz-www.conf
 </code></pre></div>
@@ -34594,7 +34594,7 @@
 <p><br></p>
 <h3 id="usrlocaletcphp-fpmddockerconf"><code>/usr/local/etc/php-fpm.d/docker.conf</code> ファイル<a class="headerlink" href="#usrlocaletcphp-fpmddockerconf" title="Permanent link">&para;</a></h3>
 <h4 id="dockerconf">▼ <code>docker.conf</code> ファイルとは<a class="headerlink" href="#dockerconf" title="Permanent link">&para;</a></h4>
-<p>PHP-FPM をコンテナで稼働させるために必要な項目を設定する。ファイルは、<code>/usr/local/etc/php-fpm.d</code> ディレクトリ配下に配置されている。</p>
+<p>PHP-FPMをコンテナで稼働させるために必要な項目を設定する。ファイルは、<code>/usr/local/etc/php-fpm.d</code> ディレクトリ配下に配置されている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[global]</span>
 <span class="c1">; /dev/stderr (標準エラー出力) へのシンボリックリンクになっている。</span>
 <span class="na">error_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/proc/self/fd/2</span>
@@ -34622,14 +34622,14 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="pid">pid<a class="headerlink" href="#pid" title="Permanent link">&para;</a></h3>
-<p>PID の出力先のファイルを設定する。</p>
+<p>PIDの出力先のファイルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[global]</span>
 <span class="na">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/run/php-fpm/php-fpm.pid</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="04-www">04. wwwセクション<a class="headerlink" href="#04-www" title="Permanent link">&para;</a></h2>
 <h3 id="www">wwwセクションとは<a class="headerlink" href="#www" title="Permanent link">&para;</a></h3>
-<p>PHP-FPM の <code>www</code> プロセスのプールを設定する。</p>
+<p>PHP-FPMの <code>www</code> プロセスのプールを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.php.net/manual/ja/install.fpm.configuration.php">https://www.php.net/manual/ja/install.fpm.configuration.php</a></li>
@@ -34638,7 +34638,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="clear_env">clear_env<a class="headerlink" href="#clear_env" title="Permanent link">&para;</a></h3>
-<p>デフォルトでは、環境変数の衝突や悪意ある注入を防ぐために、最初にプール内の環境変数をすべて削除している。</p>
+<p>デフォルトでは、環境変数の衝突や悪意ある注入を防ぐために、最初にプール内の環境変数を全て削除している。</p>
 <p>これにより、設定ファイルに環境変数を出力できないようになっている。</p>
 <p>この最初の削除処理を無効化する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[www]</span>
@@ -34652,7 +34652,7 @@
 <p><br></p>
 <h3 id="env">env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
 <p>プロセスのプール内に出力する環境変数を設定する。</p>
-<p>この環境変数は PHP のプロセスで定義された環境変数ではないため、<code>php</code> コマンドを直接的に実行しても確認できないことに注意する。</p>
+<p>この環境変数はPHPのプロセスで定義された環境変数ではないため、<code>php</code> コマンドを直接的に実行しても確認できないことに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[www]</span>
 <span class="na">env[FOO]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">foo</span>
 </code></pre></div>
@@ -34666,7 +34666,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="listen">listen<a class="headerlink" href="#listen" title="Permanent link">&para;</a></h3>
-<p>作成された Unix ドメインソケットファイルの場所を設定する。</p>
+<p>作成されたUnixドメインソケットファイルの場所を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[www]</span>
 <span class="na">listen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/var/run/php-fpm/php-fpm.sock</span>
 </code></pre></div>
@@ -34679,7 +34679,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="listenallowed_clients">listen.allowed_clients<a class="headerlink" href="#listenallowed_clients" title="Permanent link">&para;</a></h3>
-<p>受信する通信の IP アドレスを設定する。</p>
+<p>受信する通信のIPアドレスを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[www]</span>
 <span class="na">listen.allowed_clients</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span>
 </code></pre></div>
@@ -34704,9 +34704,9 @@
 <p><br></p>
 <h3 id="php_admin_flag">php_admin_flag<a class="headerlink" href="#php_admin_flag" title="Permanent link">&para;</a></h3>
 <h4 id="php_admin_flag_1">▼ php_admin_flagとは<a class="headerlink" href="#php_admin_flag_1" title="Permanent link">&para;</a></h4>
-<p>Apache のみで使用できる。</p>
-<p>PHP の <code>ini</code> ファイルで設定された boolean 値のオプションを上書きし、他から上書きされないようにする。</p>
-<p>すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。</p>
+<p>Apacheのみで使用できる。</p>
+<p>PHPの <code>ini</code> ファイルで設定されたboolean値のオプションを上書きし、他から上書きされないようにする。</p>
+<p>全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。</p>
 <blockquote>
 <ul>
 <li><a href="https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag">https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag</a></li>
@@ -34720,9 +34720,9 @@
 <p><br></p>
 <h3 id="php_admin_value">php_admin_value<a class="headerlink" href="#php_admin_value" title="Permanent link">&para;</a></h3>
 <h4 id="php_admin_value_1">▼ php_admin_valueとは<a class="headerlink" href="#php_admin_value_1" title="Permanent link">&para;</a></h4>
-<p>Apache のみで使用できる。</p>
-<p>PHP の <code>ini</code> ファイルで設定された boolean 値以外のオプションを上書きし、他から上書きされないようにする。</p>
-<p>すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。</p>
+<p>Apacheのみで使用できる。</p>
+<p>PHPの <code>ini</code> ファイルで設定されたboolean値以外のオプションを上書きし、他から上書きされないようにする。</p>
+<p>全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。</p>
 <blockquote>
 <ul>
 <li><a href="https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value">https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value</a></li>
@@ -34730,15 +34730,15 @@
 </ul>
 </blockquote>
 <h4 id="php_admin_valueerror_log">▼ php_admin_value[error_log]<a class="headerlink" href="#php_admin_valueerror_log" title="Permanent link">&para;</a></h4>
-<p>エラーログの出力先を設定する。開発環境ではエラーログファイル (<code>/var/log/php-fpm/www-error.log</code>) に出力し、本番環境では標準エラー出力に出力するとよい。</p>
+<p>エラーログの出力先を設定する。開発環境ではエラーログファイル (<code>/var/log/php-fpm/www-error.log</code>) に出力し、本番環境では標準エラー出力に出力すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[www]</span>
 <span class="na">php_admin_value[error_log]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/dev/stderr</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="php_flag">php_flag<a class="headerlink" href="#php_flag" title="Permanent link">&para;</a></h3>
 <h4 id="php_flag_1">▼ php_flagとは<a class="headerlink" href="#php_flag_1" title="Permanent link">&para;</a></h4>
-<p>PHP の <code>ini</code> ファイルで設定された boolean 値のオプションを上書きする。</p>
-<p>すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。</p>
+<p>PHPの <code>ini</code> ファイルで設定されたboolean値のオプションを上書きする。</p>
+<p>全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。</p>
 <blockquote>
 <ul>
 <li><a href="https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag">https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag</a></li>
@@ -34746,15 +34746,15 @@
 </ul>
 </blockquote>
 <h4 id="php_valuedisplay_errors">▼ php_value[display_errors]<a class="headerlink" href="#php_valuedisplay_errors" title="Permanent link">&para;</a></h4>
-<p>Web ページ上にエラーを表示するか否かを設定する。</p>
+<p>Webページ上にエラーを表示するか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[www]</span>
 <span class="na">php_flag[display_errors]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">off</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="php_value">php_value<a class="headerlink" href="#php_value" title="Permanent link">&para;</a></h3>
 <h4 id="php_value_1">▼ php_valueとは<a class="headerlink" href="#php_value_1" title="Permanent link">&para;</a></h4>
-<p>PHP の <code>ini</code> ファイルで設定された boolean 値以外のオプションを上書きする。</p>
-<p>すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。</p>
+<p>PHPの <code>ini</code> ファイルで設定されたboolean値以外のオプションを上書きする。</p>
+<p>全てのオプションを上書きできるわけでなく、オプションごとの変更モードによる。</p>
 <blockquote>
 <ul>
 <li><a href="https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value">https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value</a></li>
@@ -34764,7 +34764,7 @@
 <h4 id="php_valuesessionsave_handler">▼ php_value[session.save_handler]<a class="headerlink" href="#php_valuesessionsave_handler" title="Permanent link">&para;</a></h4>
 <p>セッションデータの保管形式を設定する。</p>
 <p>デフォルト値は <code>files</code> 形式でサーバー内に保管する。</p>
-<p><code>redis</code> レコード形式でセッション DB (例：PHP Redis、ElastiCache Redis など) に保管するように設定もできる。</p>
+<p><code>redis</code> レコード形式でセッションDB (例：PHP Redis、ElastiCache Redisなど) に保管するように設定もできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://zapanet.info/blog/item/3364">https://zapanet.info/blog/item/3364</a></li>
@@ -34775,7 +34775,7 @@
 </code></pre></div>
 <h4 id="php_valuesessionsave_path">▼ php_value[session.save_path]<a class="headerlink" href="#php_valuesessionsave_path" title="Permanent link">&para;</a></h4>
 <p>セッションデータの保管場所のディレクトリを設定する。</p>
-<p>保管形式に <code>redis</code> を設定した場合には、Redis のエンドポイントを設定できる。</p>
+<p>保管形式に <code>redis</code> を設定した場合には、Redisのエンドポイントを設定できる。</p>
 <p>デフォルト値は <code>/var/lib/php/session</code> ディレクトリである。</p>
 <blockquote>
 <ul>
@@ -34837,7 +34837,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="pmstart_servers">pm.start_servers<a class="headerlink" href="#pmstart_servers" title="Permanent link">&para;</a></h3>
-<p>PHP-FPM 起動時の子プロセス数を設定する。</p>
+<p>PHP-FPM起動時の子プロセス数を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://life.iua.jp/?p=230">https://life.iua.jp/?p=230</a></li>
@@ -34879,7 +34879,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
   </span>
 
     

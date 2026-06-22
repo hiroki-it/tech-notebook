@@ -27878,12 +27878,12 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        類似するほかのデプロイ手法
+        類似する他のデプロイ手法
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="類似するほかのデプロイ手法">
+    <nav class="md-nav" aria-label="類似する他のデプロイ手法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33829,12 +33829,12 @@
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        類似するほかのデプロイ手法
+        類似する他のデプロイ手法
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="類似するほかのデプロイ手法">
+    <nav class="md-nav" aria-label="類似する他のデプロイ手法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -34134,7 +34134,7 @@
 <h3 id="_3">デプロイが自動化されていること<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>アプリケーションのデプロイまでの各ステップ (ビルド、ホワイトボックステスト、デプロイ) を自動化する。</p>
 <p>これにより、デプロイがより簡単になり、ヒューマンエラーを防げる。</p>
-<p>DevOps の CI/CD パイプラインを導入することによりこれを実装する。</p>
+<p>DevOpsのCI/CDパイプラインを導入することによりこれを実装する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.atlassian.com/ja/agile/software-development/release">https://www.atlassian.com/ja/agile/software-development/release</a></li>
@@ -34154,7 +34154,7 @@
 <h3 id="_5">デプロイ内容がわかるようにしておく<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>デプロイ内容がわかるように、タスクやプルリクエストに対するリンクを明記しておく。</p>
 <p>これにより、デプロイ時の予期せぬ問題を即解決できる。</p>
-<p>デプロイノートや PRR モデルを導入することによりこれを実装する。</p>
+<p>デプロイノートやPRRモデルを導入することによりこれを実装する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.atlassian.com/ja/agile/software-development/release">https://www.atlassian.com/ja/agile/software-development/release</a></li>
@@ -34164,7 +34164,7 @@
 <p><br></p>
 <h2 id="02">02. インプレースデプロイメント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">インプレースデプロイメントとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>最初に旧アプリケーションを停止し、サーバーの OS とミドルウェアの構成はそのままで、アプリケーションのみを上書きする。</p>
+<p>最初に旧アプリケーションを停止し、サーバーのOSとミドルウェアの構成はそのままで、アプリケーションのみを上書きする。</p>
 <p>その後、アプリケーションを再起動する。</p>
 <blockquote>
 <ul>
@@ -34175,7 +34175,7 @@
 <p><br></p>
 <h3 id="_7">ダウンタイムの有無<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>旧アプリケーションの停止から新アプリケーションの再起動まで、に相当する時間のダウンタイムが発生する。</p>
-<p>ただし、CodeDeploy のようにロードバランサ－を使用し、現環境と新環境のルーティングを切り替えるようにすると、ダウンタイムを防げる。</p>
+<p>ただし、CodeDeployの様にロードバランサ－を使用し、現環境と新環境のルーティングを切り替えるようにすると、ダウンタイムを防げる。</p>
 <blockquote>
 <ul>
 <li><a href="https://garafu.blogspot.com/2018/11/release-strategy.html">https://garafu.blogspot.com/2018/11/release-strategy.html</a></li>
@@ -34203,16 +34203,16 @@
 <p>特にアプリケーションが冗長化されている場合に使用するデプロイ手法。</p>
 <p>現環境と新環境のインスタンスの合計数を維持しながら、新環境インスタンスを段階的にデプロイする。</p>
 <p>ヘルスチェックなどで新環境インスタンスの起動完了を確認する。</p>
-<p>確認できれば、社外を含むすべてのアクセスのルーティング先を、新環境インスタンスに自動的に切り替えていく。</p>
+<p>確認できれば、社外を含む全てのアクセスのルーティング先を、新環境インスタンスに自動的に切り替えていく。</p>
 <p>リクエストできる新環境インスタンスを増やしながら、現環境インスタンスを少しずつ削除していく。</p>
-<p>このとき、マネージドなデプロイツールを使用すると、ルーティング先の切り替え作業がより簡単になる。</p>
+<p>この時、マネージドなデプロイツールを使用すると、ルーティング先の切り替え作業がより簡単になる。</p>
 <blockquote>
 <ul>
 <li><a href="https://webapp.io/blog/what-are-rolling-deployments/">https://webapp.io/blog/what-are-rolling-deployments/</a></li>
 <li><a href="https://www.designet.co.jp/ossinfo/kubernetes/update/">https://www.designet.co.jp/ossinfo/kubernetes/update/</a></li>
 </ul>
 </blockquote>
-<p>補足として、Kubernetes のアップグレード手法のインプレースアップグレードも、ローリングアップデートに所属する。</p>
+<p>補足として、Kubernetesのアップグレード手法のインプレースアップグレードも、ローリングアップデートに所属する。</p>
 <blockquote>
 <ul>
 <li><a href="https://logmi.jp/tech/articles/323033">https://logmi.jp/tech/articles/323033</a></li>
@@ -34241,7 +34241,7 @@
 <p><br></p>
 <h2 id="04">04. ブルー/グリーンデプロイメント<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_13">ブルー/グリーンデプロイメントとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p><code>2</code> 個の環境に名前をつけるときに、優劣の印象がないように色が選ばれ、色のなかでも無難な青と緑になった。</p>
+<p><code>2</code> 個の環境に名前をつけるときに、優劣の印象がないように色が選ばれ、色の中でも無難な青と緑になった。</p>
 <p>『ブルー/グリーン』という言葉は、これに由来している。</p>
 <blockquote>
 <ul>
@@ -34253,7 +34253,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>現環境 (Prod ブルー) を残したまま、新環境 (Test グリーン) をデプロイする。</p>
+<p>現環境 (Prodブルー) を残したまま、新環境 (Testグリーン) をデプロイする。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -34261,11 +34261,11 @@
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>新環境の動作に問題が起こらなければ、社外を含むすべてのアクセスのルーティング先を、新環境に手動で切り替える。</p>
+<p>新環境の動作に問題が起こらなければ、社外を含む全てのアクセスのルーティング先を、新環境に手動で切り替える。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>新環境への切り替えが完了した後に備える。</p>
+<p>新環境への切り替えが完全に完了した後に備える。</p>
 </dd>
 </dl>
 <p>新環境から現環境にロールバックする場合、現環境は削除せずに残しておく。</p>
@@ -34281,7 +34281,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_14">類似するほかのデプロイ手法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_14">類似する他のデプロイ手法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ ローリングアップデートとの違い<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>ローリングアップデートとは異なり、開発者のタイミングでルーティング先を新環境に切り替えられるため、フロントエンド領域とバックエンド領域が異なるアプリとして稼働している場合、これらのデプロイを同時に完了できる。</p>
 <p>また、特定の動作が正常か否かをリリース作業前に確認できる。</p>
@@ -34309,7 +34309,7 @@
 <h3 id="_19">カナリアリリースとは<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>昔、炭鉱内に一酸化炭素があるか否かを判断するために、炭鉱労働者が自身よりも先に死ぬカナリアを一緒に持ち歩いた。</p>
 <p>『カナリア』という言葉は、これに由来している。</p>
-<p>現環境と新環境を用意したうえで、一部のユーザー (由来のカナリアに相当) の手を借りて新環境を実地的にテストし (例：該当のエラーメトリクスが基準値を満たすか) 、新環境に問題が起こらなければすべてのユーザーを新環境にルーティングする。</p>
+<p>現環境と新環境を用意したうえで、一部のユーザー (由来のカナリアに相当) の手を借りて新環境を実地的にテストし (例：該当のエラーメトリクスが基準値を満たすか) 、新環境に問題が起こらなければ全てのユーザーを新環境にルーティングする。</p>
 <p>システムのユーザーがバグに寛容でないと採用できないリリース手法である。</p>
 <blockquote>
 <ul>
@@ -34353,7 +34353,7 @@
 <p><br></p>
 <h3 id="_23">技術ツール例<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <ul>
-<li>AWS (API Gateway、Route53 や AWS ALB による重み付けルーティング)</li>
+<li>AWS (API Gateway、Route53やAWS ALBによる重み付けルーティング)</li>
 <li>ArgoCD</li>
 </ul>
 <p><br></p>
@@ -34372,7 +34372,7 @@
 <p><br></p>
 <h2 id="07">07. ダークローンチ<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="_27">ダークローンチ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<p>すべての一般ユーザーがルーティングされるデプロイ手法 (例：カナリアリリース以外) と組み合わせる。</p>
+<p>全ての一般ユーザーがルーティングされるデプロイ手法 (例：カナリアリリース以外) と組み合わせる。</p>
 <p>ただし、機能をこっそりリリースしておく。</p>
 <p>を使用したいユーザーだけがトグルなどで有効化できるようにしておき、本番環境で実地的に検証する (例：該当のエラーメトリクスが基準値を満たすか) 。</p>
 <blockquote>
@@ -34402,7 +34402,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
   </span>
 
     

@@ -34976,8 +34976,8 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <h2 id="03-chartyaml">03. <code>Chart.yaml</code> ファイル<a class="headerlink" href="#03-chartyaml" title="Permanent link">&para;</a></h2>
 <h3 id="apiversion_2">apiVersion<a class="headerlink" href="#apiversion_2" title="Permanent link">&para;</a></h3>
 <h4 id="apiversion_3">▼ apiVersionとは<a class="headerlink" href="#apiversion_3" title="Permanent link">&para;</a></h4>
-<p>Helm のバージョンを設定する。</p>
-<p><code>.apiVersion</code> キーの <code>v1</code> は Helm の <code>v2</code> に対応しており、<code>v2</code> は <code>v3</code> をサポートしている。</p>
+<p>Helmのバージョンを設定する。</p>
+<p><code>.apiVersion</code> キーの <code>v1</code> はHelmの <code>v2</code> に対応しており、<code>v2</code> は <code>v3</code> をサポートしている。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2</span>
 </code></pre></div>
 <blockquote>
@@ -34989,8 +34989,8 @@ $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </s
 <p><br></p>
 <h3 id="appversion">appVersion<a class="headerlink" href="#appversion" title="Permanent link">&para;</a></h3>
 <h4 id="appversion_1">▼ appVersionとは<a class="headerlink" href="#appversion_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetes 上で稼働するアプリケーションの Helm リリースバージョンを設定する。</p>
-<p>Helm リリースバージョンは、GitHub の Helm リリースタグで管理したほうがよく、<code>appVersion</code> キーの値は特に変更しなくてもよい。</p>
+<p>Kubernetes上で稼働するアプリケーションのHelmリリースバージョンを設定する。</p>
+<p>Helmリリースバージョンは、GitHubのHelmリリースタグで管理したほうがよく、<code>appVersion</code> キーの値は特に変更しなくても良い。</p>
 <p>公式チャートでは、チャート内で使用しているコンテナイメージのタグが <code>appVersion</code> キーに設定されている。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">appVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
 </code></pre></div>
@@ -35062,7 +35062,7 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 </blockquote>
 <p><br></p>
 <h3 id="kubeversion">kubeVersion<a class="headerlink" href="#kubeversion" title="Permanent link">&para;</a></h3>
-<p>チャート内のマニフェストが最低限対応可能な kube-apiserver のバージョンを設定する。</p>
+<p>チャート内のマニフェストが最低限対応可能なkube-apiserverのバージョンを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kubeVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&gt;=1.22.0-0&quot;</span>
 </code></pre></div>
 <p><br></p>
@@ -35077,7 +35077,7 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 <p><br></p>
 <h3 id="name">name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h3>
 <h4 id="name_1">▼ nameとは<a class="headerlink" href="#name_1" title="Permanent link">&para;</a></h4>
-<p>Helm で作成される Kubernetes リソースの接頭辞を設定する。</p>
+<p>Helmで作成されるKubernetesリソースの接頭辞を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://helm.sh/docs/topics/charts/#the-chartyaml-file">https://helm.sh/docs/topics/charts/#the-chartyaml-file</a></li>
@@ -35090,7 +35090,7 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 <h4 id="type_1">▼ typeとは<a class="headerlink" href="#type_1" title="Permanent link">&para;</a></h4>
 <p>チャートのタイプを設定する。</p>
 <h4 id="application">▼ application<a class="headerlink" href="#application" title="Permanent link">&para;</a></h4>
-<p>Kubernetes リソースを含むチャートであることを表す。</p>
+<p>Kubernetesリソースを含むチャートであることを表す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">application</span>
 </code></pre></div>
 <blockquote>
@@ -35099,7 +35099,7 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 </ul>
 </blockquote>
 <h4 id="library">▼ library<a class="headerlink" href="#library" title="Permanent link">&para;</a></h4>
-<p>Kubernetes リソースを含まず、関数のみを含むチャートであることを表す。</p>
+<p>Kubernetesリソースを含まず、関数のみを含むチャートであることを表す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">library</span>
 </code></pre></div>
 <blockquote>
@@ -35110,7 +35110,7 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 <p><br></p>
 <h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
 <h4 id="version_1">▼ versionとは<a class="headerlink" href="#version_1" title="Permanent link">&para;</a></h4>
-<p>チャートアーカイブ (<code>.tgz</code> 形式ファイル) の Helm リリースバージョンを設定する。</p>
+<p>チャートアーカイブ (<code>.tgz</code> 形式ファイル) のHelmリリースバージョンを設定する。</p>
 <p><code>template</code> ディレクトリ配下のファイルを変更した場合に更新する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span>
 </code></pre></div>
@@ -35166,7 +35166,7 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 </ul>
 </blockquote>
 <h4 id="affinity">▼ affinity<a class="headerlink" href="#affinity" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.template.spec.affinity</code> キーに値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.template.spec.affinity</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">affinity</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">nodeAffinity</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">requiredDuringSchedulingIgnoredDuringExecution</span><span class="p">:</span>
@@ -35178,45 +35178,45 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
 <h4 id="crdinstall">▼ crd.install<a class="headerlink" href="#crdinstall" title="Permanent link">&para;</a></h4>
-<p>同じチャート内で CRD とカスタムリソースを含んでいる場合に、CRD の作成はスキップする。</p>
-<p>この場合、CRD を <code>kubectl apply</code> コマンドで作成することになる。</p>
-<p>CRD は Cluster 内に <code>1</code> 個あれば十分であるが、Cluster に複数の Helm リリースをインストールする場合、<code>meta.helm.sh</code> キーでお互いがコンフリクトを起こしてしまう。</p>
-<p>そのため、CRD のみ Helm の管理外に配置するという必要がある。</p>
+<p>同じチャート内でCRDとカスタムリソースを含んでいる場合に、CRDの作成はスキップする。</p>
+<p>この場合、CRDを <code>kubectl apply</code> コマンドで作成することになる。</p>
+<p>CRDはCluster内に <code>1</code> 個あれば十分であるが、Clusterに複数のHelmリリースをインストールする場合、<code>meta.helm.sh</code> キーでお互いがコンフリクトを起こしてしまう。</p>
+<p>そのため、CRDのみHelmの管理外に配置するという必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">crds</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">install</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <h4 id="fullnameoverride">▼ fullnameOverride<a class="headerlink" href="#fullnameoverride" title="Permanent link">&para;</a></h4>
-<p>デフォルトでは、チャートのインストールによって作成される Kubernetes リソース名は、『<code>＜Helmリリース名＞-＜Chart名＞</code>』になる。</p>
+<p>デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『<code>＜Helmリリース名＞-＜Chart名＞</code>』になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
-<p>もし、<code>fullnameOverride</code> オプションを設定していた場合、Kubernetes リソース名は『<code>＜fullnameOverrideオプションの値＞</code>』になる。</p>
-<p>補足として、チャートごとに Kubernetes リソース名の前後へ特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) が付く場合もある。</p>
+<p>もし、<code>fullnameOverride</code> オプションを設定していた場合、Kubernetesリソース名は『<code>＜fullnameOverrideオプションの値＞</code>』になる。</p>
+<p>補足として、チャートごとにKubernetesリソース名の前後へ特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) が付く場合もある。</p>
 <p><code>nameOverride</code> オプションとは独立している。</p>
 <p>そのため、<code>nameOverride</code> オプションでチャートをインストールした後に <code>fullnameOverride</code> オプションへ移行したい場合、<code>nameOverride</code> オプションによるチャートを一度アンインストールする必要がある。</p>
-<p>しかし、そのまま <code>fullnameOverride</code> オプションに移行してしまうと、<code>nameOverride</code> オプション時の Kubernetes リソースが残骸として残ってしまう可能性がある。</p>
+<p>しかし、そのまま <code>fullnameOverride</code> オプションに移行してしまうと、<code>nameOverride</code> オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。</p>
 <h4 id="imagepullpolicy">▼ image.pullPolicy<a class="headerlink" href="#imagepullpolicy" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.template.spec.containers[*].imagePullPolicy</code> キーに値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.template.spec.containers[*].imagePullPolicy</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">image</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
 </code></pre></div>
 <h4 id="imagerepository">▼ image.repository<a class="headerlink" href="#imagerepository" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.template.spec.containers[*].image</code> キーのリポジトリ名部分に値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.template.spec.containers[*].image</code> キーのリポジトリ名部分に値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">image</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-repository</span>
 </code></pre></div>
 <h4 id="imagetag">▼ image.tag<a class="headerlink" href="#imagetag" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.template.spec.containers[*].image</code> キーのタグ値部分に値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.template.spec.containers[*].image</code> キーのタグ値部分に値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">image</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.0.0</span>
 </code></pre></div>
-<p>チャートのバージョンとコンテナイメージのバージョンには対応関係があり、基本的にはチャートの <code>values</code> ファイルで定義されているデフォルトの <code>image.tag</code> キー値を使用したほうがよい。</p>
+<p>チャートのバージョンとコンテナイメージのバージョンには対応関係があり、基本的にはチャートの <code>values</code> ファイルで定義されているデフォルトの <code>image.tag</code> キー値を使用したほうが良い。</p>
 <p>ただ、コンテナイメージを自前のイメージリポジトリで管理している場合は、デフォルトの <code>image.tag</code> キー値を参照してバージョンを確認し、揃えるようにする。</p>
 <h4 id="imagepullsecrets">▼ imagePullSecrets<a class="headerlink" href="#imagepullsecrets" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.template.spec.imagePullSecrets</code> キーに値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.template.spec.imagePullSecrets</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-repository-credentials-secret</span>
 </code></pre></div>
 <h4 id="ingressannotations">▼ ingress.annotations<a class="headerlink" href="#ingressannotations" title="Permanent link">&para;</a></h4>
-<p>チャート内の Ingress の <code>.metadata.annotations</code> オプションに値を設定する。</p>
+<p>チャート内のIngressの <code>.metadata.annotations</code> オプションに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">annotations: kubernetes.io/ingress.class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-ingress-class</span>
 </code></pre></div>
@@ -35224,15 +35224,15 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 <div class="highlight"><pre><span></span><code><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p>Ingress の作成を有効化する。</p>
+<p>Ingressの作成を有効化する。</p>
 <h4 id="ingresshosts">▼ ingress.hosts<a class="headerlink" href="#ingresshosts" title="Permanent link">&para;</a></h4>
-<p>チャート内の Ingress の <code>.spec.rules</code> キーに値を設定する。</p>
+<p>チャート内のIngressの <code>.spec.rules</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.com</span>
 </code></pre></div>
 <h4 id="ingresstls">▼ ingress.tls<a class="headerlink" href="#ingresstls" title="Permanent link">&para;</a></h4>
-<p>チャート内の Ingress の <code>.spec.tls</code> キーに値を設定する。</p>
+<p>チャート内のIngressの <code>.spec.tls</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tls</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span>
@@ -35242,60 +35242,60 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
 <h4 id="nameoverride">▼ nameOverride<a class="headerlink" href="#nameoverride" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">nameOverride</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
-<p>デフォルトでは、チャートによって作成される Kubernetes リソース名は、『<code>＜Helmリリース名＞-＜Chart名＞</code>』になる。</p>
-<p>もし、<code>nameOverride</code> オプションを設定していた場合、Kubernetes リソース名は『<code>＜Helmリリース名＞-＜nameOverrideオプションの値＞</code>』になる。</p>
-<p>補足として、チャートごとに Kubernetes リソース名の前後へ特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) が付く場合もある。</p>
+<p>デフォルトでは、チャートによって作成されるKubernetesリソース名は、『<code>＜Helmリリース名＞-＜Chart名＞</code>』になる。</p>
+<p>もし、<code>nameOverride</code> オプションを設定していた場合、Kubernetesリソース名は『<code>＜Helmリリース名＞-＜nameOverrideオプションの値＞</code>』になる。</p>
+<p>補足として、チャートごとにKubernetesリソース名の前後へ特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) が付く場合もある。</p>
 <p><code>fullnameOverride</code> オプションとは独立しており、<code>fullnameOverride</code> オプションでチャートをインストールした後に <code>nameOverride</code> オプションへ移行したい場合、<code>fullnameOverride</code> オプションによるチャートを一度アンインストールする必要がある。</p>
-<p>しかし、そのまま <code>nameOverride</code> オプションに移行してしまうと、<code>fullnameOverride</code> オプション時の Kubernetes リソースが残骸として残ってしまう可能性がある。</p>
+<p>しかし、そのまま <code>nameOverride</code> オプションに移行してしまうと、<code>fullnameOverride</code> オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。</p>
 <h4 id="nodeselector">▼ nodeSelector<a class="headerlink" href="#nodeselector" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.template.spec.nodeSelector</code> キーに値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.template.spec.nodeSelector</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">nodeSelector</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">node.kubernetes.io/nodetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 </code></pre></div>
 <h4 id="podsecuritycontext">▼ podSecurityContext<a class="headerlink" href="#podsecuritycontext" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.template.spec.securityContext</code> キーに値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.template.spec.securityContext</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">securityContext</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">allowPrivilegeEscalation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <h4 id="replicacount">▼ replicaCount<a class="headerlink" href="#replicacount" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.replicas</code> キーに値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.replicas</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 <h4 id="resources">▼ resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.template.spec.containers[*].resources</code> オプションに値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.template.spec.containers[*].resources</code> オプションに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50m</span>
 <span class="w">  </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400Mi</span>
 </code></pre></div>
 <h4 id="securitycontext">▼ securityContext<a class="headerlink" href="#securitycontext" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.template.spec.containers[*].securityContext</code> オプションに値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.template.spec.containers[*].securityContext</code> オプションに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">securityContext</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="w">  </span><span class="nt">fsGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000</span>
 </code></pre></div>
 <h4 id="serviceaccountcreate">▼ serviceAccount.create<a class="headerlink" href="#serviceaccountcreate" title="Permanent link">&para;</a></h4>
-<p>ServiceAccount の作成を有効化する。</p>
+<p>ServiceAccountの作成を有効化する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">serviceAccount</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <h4 id="serviceaccountannotations">▼ serviceAccount.annotations<a class="headerlink" href="#serviceaccountannotations" title="Permanent link">&para;</a></h4>
-<p>チャート内の ServiceAccount の <code>.metadata.annotations</code> オプションに値を設定する。</p>
+<p>チャート内のServiceAccountの <code>.metadata.annotations</code> オプションに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">serviceAccount</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">eks.amazonaws.com/role-arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;IAMロールのARN&gt;</span>
 </code></pre></div>
 <h4 id="servicetype">▼ service.type<a class="headerlink" href="#servicetype" title="Permanent link">&para;</a></h4>
-<p>チャート内の Service の <code>.spec.type</code> キーに値を設定する。</p>
+<p>チャート内のServiceの <code>.spec.type</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
 </code></pre></div>
 <h4 id="serviceport">▼ service.port<a class="headerlink" href="#serviceport" title="Permanent link">&para;</a></h4>
-<p>チャート内の Service の <code>.spec.ports.port</code> キーに値を設定する。</p>
+<p>チャート内のServiceの <code>.spec.ports.port</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 </code></pre></div>
 <h4 id="tolerations">▼ tolerations<a class="headerlink" href="#tolerations" title="Permanent link">&para;</a></h4>
-<p>チャート内の Deployment の <code>.spec.template.spec.tolerations</code> キーに値を設定する。</p>
+<p>チャート内のDeploymentの <code>.spec.template.spec.tolerations</code> キーに値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">tolerations</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exists</span>
@@ -35349,7 +35349,7 @@ $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:55:08 JST">2026-02-16</span>
   </span>
 
     

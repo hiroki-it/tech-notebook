@@ -34037,8 +34037,8 @@
 <h2 id="02">02. 永続データ管理の分割方法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="shared-db">Shared DBパターン<a class="headerlink" href="#shared-db" title="Permanent link">&para;</a></h3>
 <h4 id="shared-db_1">▼ Shared DBパターンとは<a class="headerlink" href="#shared-db_1" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービスで共有する DB を <code>1</code> 個だけ用意する。</p>
-<p>この場合、単一の DB 上で、DB スキーマやテーブルをマイクロサービスごとに作成する必要がある。</p>
+<p>各マイクロサービスで共有するDBを <code>1</code> 個だけ用意する。</p>
+<p>この場合、単一のDB上で、DBスキーマやテーブルをマイクロサービスごとに作成する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2">https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2</a></li>
@@ -34046,7 +34046,7 @@
 </ul>
 </blockquote>
 <h4 id="db">▼ マイクロサービス別のDBスキーマ<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
-<p>Shared DB の場合に、マイクロサービス別に DB スキーマを作成する。</p>
+<p>Shared DBの場合に、マイクロサービス別にDBスキーマを作成する。</p>
 <p><img alt="microservices_share-db_diff-table" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-table.png" /></p>
 <blockquote>
 <ul>
@@ -34054,7 +34054,7 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ マイクロサービス別のテーブル<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Shared DB の場合に、マイクロサービス別にテーブルを作成する。</p>
+<p>Shared DBの場合に、マイクロサービス別にテーブルを作成する。</p>
 <p><img alt="microservices_share-db_diff-scheme" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-scheme.png" /></p>
 <blockquote>
 <ul>
@@ -34064,7 +34064,7 @@
 <p><br></p>
 <h3 id="db-per-service-database-per-service">DB per serviceパターン (Database per service)<a class="headerlink" href="#db-per-service-database-per-service" title="Permanent link">&para;</a></h3>
 <h4 id="db-per-service">▼ DB per serviceパターンとは<a class="headerlink" href="#db-per-service" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービスで個別に DB を用意する。</p>
+<p>各マイクロサービスで個別にDBを用意する。</p>
 <p>ローカルトランザクションや分散トランザクション処理を実施する必要がある。</p>
 <p><img alt="microservices_diff-db" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_diff-db.png" /></p>
 <blockquote>
@@ -34075,7 +34075,7 @@
 </blockquote>
 <h4 id="_4">▼ 境界づけられたコンテキスト分割とも相性がいい<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>マイクロサービスを境界づけられたコンテキスト単位で分割した場合に、マイクロサービスごとに異なる集約エンティティを持つため、永続化のデータ単位を分割できる。</p>
-<p>これにより、各マイクロサービスが異なる DB を持っていても、トランザクションは異なるはずである。</p>
+<p>これにより、各マイクロサービスが異なるDBを持っていても、トランザクションは異なるはずである。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/1098100131">https://www.amazon.co.jp/dp/1098100131</a></li>
@@ -34105,18 +34105,18 @@
 <p><br></p>
 <h2 id="02-02-ddldcldml">02-02. DDL、DCL、DMLの管理<a class="headerlink" href="#02-02-ddldcldml" title="Permanent link">&para;</a></h2>
 <h3 id="ddl">DDLの密結合パターン<a class="headerlink" href="#ddl" title="Permanent link">&para;</a></h3>
-<p>DB per Service パターンと相性がいい。</p>
-<p>マイクロサービスアーキテクチャで ORM を使用する場合に、ORM で DDL（DB スキーマ定義、テーブル定義）、DCL（トランザクション制御）と DML（レコード操作）を実装する。</p>
-<p>DDL はマイクロサービスに統合し、ORM で DDL を実装する。</p>
+<p>DB per Serviceパターンと相性がいい。</p>
+<p>マイクロサービスアーキテクチャでORMを使用する場合に、ORMでDDL（DBスキーマ定義、テーブル定義）、DCL（トランザクション制御）とDML（レコード操作）を実装する。</p>
+<p>DDLはマイクロサービスに統合し、ORMでDDLを実装する。</p>
 <p>これにより、管理しやすくなる。</p>
-<p>一方で、マイクロサービスは自身の DDL で管理したテーブルにしか接続できない。</p>
+<p>一方で、マイクロサービスは自身のDDLで管理したテーブルにしか接続できない。</p>
 <p><br></p>
 <h3 id="ddl_1">DDLの疎結合パターン<a class="headerlink" href="#ddl_1" title="Permanent link">&para;</a></h3>
-<p>Shared DB パターンと DB per Service パターンの両方と相性がよく、Shared DB パターンと DB per service パターンが共存している場合にも適する。</p>
-<p>マイクロサービスアーキテクチャで ORM を使用する場合に、ORM で DDL（DB スキーマ定義、テーブル定義）を実装せず、ORM は DCL（トランザクション制御）と DML（レコード操作）で実装する。</p>
-<p>DDL はマイクロサービスから切り離し、DDL 専用のツール（例：TypeScript 製の atlas、Go 製の golang-migrate）を使用する。</p>
-<p>マイクロサービスの開発言語と DDL ツールを合わせる必要はないが、合わせると認知負荷が小さい (例：Go 製のマイクロサービスであれば、golang-migrate)</p>
-<p>これにより、ORM は自身の ORM のデータモデルからクエリを呼び出すことで、ORM のデータモデルに対応したテーブルを自由に接続し、操作できるようになる。</p>
+<p>Shared DBパターンとDB per Serviceパターンの両方と相性がよく、Shared DBパターンとDB per serviceパターンが共存している場合にも適する。</p>
+<p>マイクロサービスアーキテクチャでORMを使用する場合に、ORMでDDL（DBスキーマ定義、テーブル定義）を実装せず、ORMはDCL（トランザクション制御）とDML（レコード操作）で実装する。</p>
+<p>DDLはマイクロサービスから切り離し、DDL専用のツール（例：TypeScript製のatlas、Go製のgolang-migrate）を使用する。</p>
+<p>マイクロサービスの開発言語とDDLツールを合わせる必要はないが、合わせると認知負荷が小さい (例：Go製のマイクロサービスであれば、golang-migrate)</p>
+<p>これにより、ORMは自身のORMのデータモデルからクエリを呼び出すことで、ORMのデータモデルに対応したテーブルを自由に接続し、操作できるようになる。</p>
 <p>一方で、管理が大変になる</p>
 <blockquote>
 <ul>
@@ -34126,7 +34126,7 @@
 <p><br></p>
 <h2 id="02-03">02-03. 永続データの種類に合わせたストレージ<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
 <h3 id="polyglot-persistence">Polyglot Persistenceパターン<a class="headerlink" href="#polyglot-persistence" title="Permanent link">&para;</a></h3>
-<p>キーバリューDB、ドキュメント DB、RDB、グラフ DB を異なるデータベースで管理する。</p>
+<p>キーバリューDB、ドキュメントDB、RDB、グラフDBを異なるデータベースで管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence">https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence</a></li>
@@ -34134,7 +34134,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="multi-model-db">Multi-model DBパターン<a class="headerlink" href="#multi-model-db" title="Permanent link">&para;</a></h3>
-<p>キーバリューDB、ドキュメント DB、RDB、グラフ DB を同じデータベースで管理する。</p>
+<p>キーバリューDB、ドキュメントDB、RDB、グラフDBを同じデータベースで管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence">https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence</a></li>
@@ -34155,8 +34155,8 @@
 <p>各マイクロサービスで個別にオブジェクトストレージを用意する。</p>
 <p><br></p>
 <h3 id="shared-storagestorage-per-service">Shared StorageパターンとStorage per serviceパターンの共存<a class="headerlink" href="#shared-storagestorage-per-service" title="Permanent link">&para;</a></h3>
-<p>基本的には、Storage per service パターンが推奨である。</p>
-<p>オブジェクトストレージをマイクロサービス単位で作成すると粒度が細かすぎる場合、いくつかのマイクロサービスでは Shared DB パターンとするとよい。</p>
+<p>基本的には、Storage per serviceパターンが推奨である。</p>
+<p>オブジェクトストレージをマイクロサービス単位で作成すると粒度が細かすぎる場合、いくつかのマイクロサービスではShared DBパターンとするとよい。</p>
 <p><br></p>
 <h2 id="05">05. 分析用加工済データの分割方法<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <p>記入中...</p>
@@ -34184,7 +34184,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 21:54:05 JST">2026-04-29</span>
   </span>
 
     

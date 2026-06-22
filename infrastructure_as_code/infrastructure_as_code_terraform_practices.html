@@ -22899,7 +22899,7 @@
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ リソースに種類がない場合
+        ▼ リソースに種類が無い場合
       
     </span>
   </a>
@@ -22949,7 +22949,7 @@
   <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ リソースに種類がない場合
+        ▼ リソースに種類が無い場合
       
     </span>
   </a>
@@ -23656,7 +23656,7 @@
   <a href="#terraform-apply" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ terraform applyは自動化しなくてもよい
+        ▼ terraform applyは自動化しなくても良い
       
     </span>
   </a>
@@ -34844,7 +34844,7 @@
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ リソースに種類がない場合
+        ▼ リソースに種類が無い場合
       
     </span>
   </a>
@@ -34894,7 +34894,7 @@
   <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ リソースに種類がない場合
+        ▼ リソースに種類が無い場合
       
     </span>
   </a>
@@ -35601,7 +35601,7 @@
   <a href="#terraform-apply" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ terraform applyは自動化しなくてもよい
+        ▼ terraform applyは自動化しなくても良い
       
     </span>
   </a>
@@ -35932,7 +35932,7 @@
 </code></pre></div>
 <h4 id="_4">▼ リモートモジュールを使用する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>アプリケーションとは異なるリポジトリにて、<code>.tf</code> ファイルを配置しつつ、ルートモジュールとモジュールは異なるリポジトリ内で管理する。</p>
-<p>ルートモジュールでリモートモジュールのリポジトリの URL を指定し、参照する。</p>
+<p>ルートモジュールでリモートモジュールのリポジトリのURLを指定し、参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── main.tf</span><span class="w"> </span><span class="c1"># ルートモジュール (リポジトリのURLを指定し、リモートモジュールを読み込む)</span>
 <span class="l l-Scalar l-Scalar-Plain">├── variables.tf</span>
@@ -36020,8 +36020,8 @@
 <span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── us-east-1/</span><span class="w">      </span><span class="c1"># バージニアリージョン</span>
 </code></pre></div>
 <h4 id="_11">▼ 共通セット別<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>WAF で使用する IP パターンセットと正規表現パターンセットには、CloudFront タイプと Regional タイプがある。</p>
-<p>Regional タイプは、同じリージョンの異なるクラウドプロバイダーのリソース間で共有できるため、共通セットとしてディレクトリ分割する。</p>
+<p>WAFで使用するIPパターンセットと正規表現パターンセットには、CloudFrontタイプとRegionalタイプがある。</p>
+<p>Regionalタイプは、同じリージョンの異なるクラウドプロバイダーのリソース間で共有できるため、共通セットとしてディレクトリ分割する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── waf/</span><span class="w"> </span><span class="c1"># WAF</span>
@@ -36040,7 +36040,7 @@
 <span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">└── prd/</span>
 </code></pre></div>
 <h4 id="_12">▼ リソースのセットアップ別<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>リソースをセットアップするうえで異なる種類のリソースが必要になる場合、それらの <code>resource</code> ブロックを 1 つにまとめて管理する。</p>
+<p>リソースをセットアップするうえで異なる種類のリソースが必要になる場合、それらの <code>resource</code> ブロックを1つにまとめて管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── eks/</span><span class="w"> </span><span class="c1"># Amazon EKS</span>
@@ -36077,9 +36077,9 @@
 <p><br></p>
 <h3 id="_13">その他<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="policies">▼ policiesディレクトリ<a class="headerlink" href="#policies" title="Permanent link">&para;</a></h4>
-<p>ポリシーのために <code>json</code> 形式を定義する場合、Terraform のコードにハードコーディングせず、切り分けるようにする。</p>
+<p>ポリシーのために <code>json</code> 形式を定義する場合、Terraformのコードにハードコーディングせず、切り分けるようにする。</p>
 <p>また、『カスタマー管理ポリシー』『インラインポリシー』『信頼ポリシー』も区別し、ディレクトリを分割している。</p>
-<p>注意点として、<code>templatefile()</code> 関数でこれを読み込むとき、<code>bash</code> ファイルではなく、tpl ファイルとして定義しておく必要があるため、注意する。</p>
+<p>注意点として、<code>templatefile()</code> 関数でこれを読み込むとき、<code>bash</code> ファイルではなく、tplファイルとして定義しておく必要があるため、注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── ecr/</span><span class="w"> </span><span class="c1"># ECR</span>
@@ -36115,7 +36115,7 @@
 </ul>
 </blockquote>
 <h4 id="ops">▼ opsディレクトリ<a class="headerlink" href="#ops" title="Permanent link">&para;</a></h4>
-<p>CI/CD パイプライン上の <code>terraform</code> コマンドの実行で必要なシェルスクリプトは、<code>ops</code> ディレクトリで管理する。</p>
+<p>CI/CDパイプライン上の <code>terraform</code> コマンドの実行で必要なシェルスクリプトは、<code>ops</code> ディレクトリで管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── .circleci/</span><span class="w"> </span><span class="c1"># CIツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tektonなど) の設定ファイル</span>
 <span class="l l-Scalar l-Scalar-Plain">└── ops/</span><span class="w"> </span><span class="c1"># TerraformのCI/CDの自動化シェルスクリプト</span>
@@ -36124,7 +36124,7 @@
 <h2 id="04">04. 命名規則と並び順<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_14">環境変数 (通常変数も同じ)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ 対象リソースに合わせる命名<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>複数のリソースで共有する場合 (将来的にそうなる可能性も含めて) は、Global に配置し、グローバルな名前を付ける。</p>
+<p>複数のリソースで共有する場合 (将来的にそうなる可能性も含めて) は、Globalに配置し、グローバルな名前を付ける。</p>
 <p>クラウドプロバイダーのリソースのアルファベット順に環境変数を並べる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Global</span>
@@ -36150,15 +36150,15 @@
 <span class="err">&lt;使用するクラウドプロバイダーのリソースの名前&gt;_&lt;種類名&gt;_&lt;オプション名&gt;</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="err">****</span>
 </code></pre></div>
 <h4 id="listmap">▼ list型、map型の命名<a class="headerlink" href="#listmap" title="Permanent link">&para;</a></h4>
-<p>複数の値を持つ list 型や map 型の環境変数であれば複数形で命名する。</p>
-<p>一方で、string 型など値が <code>1</code> 個しかなければ単数形とする。</p>
+<p>複数の値を持つlist型やmap型の環境変数であれば複数形で命名する。</p>
+<p>一方で、string型など値が <code>1</code> 個しかなければ単数形とする。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables">https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、VPC を示す。</p>
+<p>例として、VPCを示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
 <span class="c1"># ---------------------------------------------</span>
@@ -36171,7 +36171,7 @@
 <span class="nb">vpc_subnet_public_cidrs</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*/27&quot;, c = &quot;*.*.*.*/27&quot;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <h4 id="boolean">▼ boolean型の命名<a class="headerlink" href="#boolean" title="Permanent link">&para;</a></h4>
-<p><code>count</code> 引数による条件分岐でリソースの作成の有無を切り替えている場合、<code>enable_***</code> という名前の boolean 型環境変数を用意する。</p>
+<p><code>count</code> 引数による条件分岐でリソースの作成の有無を切り替えている場合、<code>enable_***</code> という名前のboolean型環境変数を用意する。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables">https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables</a></li>
@@ -36207,7 +36207,7 @@
 <p>リソース名で、リソースタイプを繰り返さないようにする。</p>
 <p>もし種類がある場合、リソース名でその種類を表す。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、VPC を示す。</p>
+<p>例として、VPCを示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Resource VPC ルートテーブル</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36234,9 +36234,9 @@
 
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="_18">▼ リソースに種類がない場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<h4 id="_18">▼ リソースに種類が無い場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>リソースタイプに、<code>1</code> 個のリソースしか種類が存在しない場合、<code>this</code> で命名する。</p>
-<p><code>this</code> と命名された resource で、後から種類が増える場合は、既存の <code>this</code> は後からリファクタリングするとして、新規リソースには種類名を名付ける。</p>
+<p><code>this</code> と命名されたresourceで、後から種類が増える場合は、既存の <code>this</code> は後からリファクタリングするとして、新規リソースには種類名を名付ける。</p>
 <p>ただし、リファクタリングすることが大変なため、非推奨である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
@@ -36248,7 +36248,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_19">▼ 接頭辞、接尾辞の場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>Lambda 以外では、作成されるクラウドプロバイダーのリソースの名前は以下の通りとする。</p>
+<p>Lambda以外では、作成されるクラウドプロバイダーのリソースの名前は以下の通りとする。</p>
 <ul>
 <li>ケバブケース</li>
 <li><code>&lt;接頭辞&gt;-&lt;種類&gt;-&lt;接尾辞&gt;</code> とする。</li>
@@ -36256,11 +36256,11 @@
 <li>接尾辞は、クラウドプロバイダーのリソース名とする。</li>
 </ul>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、CloudWatch を示す。</p>
+<p>例として、CloudWatchを示す。</p>
 <ul>
 <li>接尾辞は、 <code>&lt;実行環境&gt;-&lt;サービス名&gt;</code></li>
 <li>種類は、alb-httpcode-4xx-count</li>
-<li>クラウドプロバイダーのリソース名は、CloudWatchAlarm を省略して Alarm</li>
+<li>クラウドプロバイダーのリソース名は、CloudWatchAlarmを省略してAlarm</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_cloudwatch_metric_alarm&quot;</span><span class="w"> </span><span class="nv">&quot;alb_httpcode_target_4xx_count&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -36268,14 +36268,14 @@
 
 <span class="p">}</span>
 </code></pre></div>
-<p>Lambda では Lambda 関数が稼働する。</p>
-<p>接尾辞に function とつけることは冗長と判断したため、関数名のみで命名する。</p>
+<p>LambdaではLambda関数が稼働する。</p>
+<p>接尾辞にfunctionとつけることは冗長と判断したため、関数名のみで命名する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、Lambda をしめす。</p>
+<p>例として、Lambdaをしめす。</p>
 <ul>
 <li>接尾辞は、 <code>&lt;実行環境&gt;-&lt;サービス名&gt;</code></li>
 <li>種類は、echo-helloworld</li>
-<li>クラウドプロバイダーのリソース名の lambda は省略する。</li>
+<li>クラウドプロバイダーのリソース名のlambdaは省略する。</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_lambda_function&quot;</span><span class="w"> </span><span class="nv">&quot;echo_helloworld&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -36286,16 +36286,16 @@
 <p><br></p>
 <h3 id="output"><code>output</code> ブロック<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ リソースに種類がある場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>『<code>&lt;リソース名&gt;_&lt;リソースタイプ&gt;_&lt;attribute名&gt;</code>』で命名する。可読性の観点から、リソース一括ではなく、具体的な attribute を出力する。</p>
+<p>『<code>&lt;リソース名&gt;_&lt;リソースタイプ&gt;_&lt;attribute名&gt;</code>』で命名する。可読性の観点から、リソース一括ではなく、具体的なattributeを出力する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、CloudWatch を示す。</p>
-<p>リソース名は <code>ecs_container_nginx</code>、リソースタイプは <code>aws_cloudwatch_log_group</code>、attribute は <code>name</code> オプションである。</p>
+<p>例として、CloudWatchを示す。</p>
+<p>リソース名は <code>ecs_container_nginx</code>、リソースタイプは <code>aws_cloudwatch_log_group</code>、attributeは <code>name</code> オプションである。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;ecs_container_nginx_cloudwatch_log_group_name&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_cloudwatch_log_group.ecs_container_nginx.name</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、IAM Role を示す。</p>
+<p>例として、IAM Roleを示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Output IAM Role</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36311,10 +36311,10 @@
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_role.rds_enhanced_monitoring.arn</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="_21">▼ リソースに種類がない場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>リソース名が <code>this</code> である場合、<code>output</code> ブロック名ではこれを省略してもよい。</p>
+<h4 id="_21">▼ リソースに種類が無い場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<p>リソース名が <code>this</code> である場合、<code>output</code> ブロック名ではこれを省略しても良い。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、ALB を示す。</p>
+<p>例として、ALBを示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Output ALB</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36331,7 +36331,7 @@
 <p>この場合は、省略を許容する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ルール通りに名付けると、『<code>laravel_ecr_repository_repository_url</code>』という <code>output</code> ブロック名になってしまう。</p>
-<p>repository が 2 回繰り返されることになるため、<code>1</code> 個省略している。</p>
+<p>repositoryが2回繰り返されることになるため、<code>1</code> 個省略している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Output ECR</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36365,7 +36365,7 @@
 <h2 id="04-02">04-02. 並び順<a class="headerlink" href="#04-02" title="Permanent link">&para;</a></h2>
 <h3 id="_23">環境変数<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <h4 id="_24">▼ 並び順<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p>Global な環境変数を先頭に配置し、その他のクラウドプロバイダーのリソース固有の環境変数はアルファベット順に変数を並べる。</p>
+<p>Globalな環境変数を先頭に配置し、その他のクラウドプロバイダーのリソース固有の環境変数はアルファベット順に変数を並べる。</p>
 <p><br></p>
 <h3 id="module_1"><code>module</code> ブロック<a class="headerlink" href="#module_1" title="Permanent link">&para;</a></h3>
 <h4 id="_25">▼ 並び順<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
@@ -36404,7 +36404,7 @@
 <p>最初に <code>count</code> 引数や <code>for_each</code> 引数を設定し改行する。</p>
 <p>その後、各リソース別の設定を行間を空けずに記述する (順番のルールはなし) 。</p>
 <p>最後に共通の設定として、<code>tags</code>、<code>depends_on</code>、<code>lifecycle</code> の順で配置する。</p>
-<p>ただし実際、これらのすべての設定が必要なリソースはない。</p>
+<p>ただし実際、これらの全ての設定が必要なリソースはない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># EXAMPLE</span>
@@ -36443,9 +36443,9 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:/var/infra</span>
 <span class="w">    </span><span class="nt">working_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/infra</span>
 </code></pre></div>
-<p>go のバイナリファイルを実行するためには、<code>docker-compose run</code> コマンドの実行する必要がある。</p>
+<p>goのバイナリファイルを実行するためには、<code>docker-compose run</code> コマンドの実行する必要がある。</p>
 <p>ただし、実行のたびにコンテナが増えてしまうため、<code>--rm</code> を使用する。</p>
-<p>また、毎度コマンドを実行することが面倒なため、Makefile でまとめてしまう。</p>
+<p>また、毎度コマンドを実行することが面倒なため、Makefileでまとめてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># NOTE:</span>
 <span class="c"># ローカルマシンにて、以下の形式でコマンドを実行できます。</span>
 <span class="c"># make &lt;ターゲット名&gt; env=&lt;環境ディレクトリ名&gt;</span>
@@ -36468,7 +36468,7 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># .tool-versionsファイル</span>
 terraform<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
-<p>asdf パッケージを使用して、<code>terraform</code> コマンドをインストールする。</p>
+<p>asdfパッケージを使用して、<code>terraform</code> コマンドをインストールする。</p>
 <p><code>.tool-versions</code> ファイルに定義されたバージョンがインストールされる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>asdf<span class="w"> </span>plugin<span class="w"> </span>list<span class="w"> </span>all<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>terraform
 
@@ -36481,8 +36481,8 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 </code></pre></div>
 <p><br></p>
 <h3 id="_27">開発方法<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<p>前提として、バックエンドに S3 を使用しているものとする。</p>
-<p>Makefile のコマンドを実行する前に、<code>provider.tf</code> ファイルの <code>backend</code> オプションを、『s3』から『local』に変更する。</p>
+<p>前提として、バックエンドにS3を使用しているものとする。</p>
+<p>Makefileのコマンドを実行する前に、<code>provider.tf</code> ファイルの <code>backend</code> オプションを、『s3』から『local』に変更する。</p>
 <blockquote>
 <ul>
 <li><a href="https://repl.info/archives/1435/">https://repl.info/archives/1435/</a></li>
@@ -36494,8 +36494,8 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>GitHub リポジトリにこの変更をプッシュしないように気を付ける必要がある。</p>
-<p>ただし、バックエンドに <code>s3</code> を指定する <code>terraform init</code> コマンドを CI のステップを設けておけば、<code>provider.tf</code> ファイルで <code>local</code> の指定していことがエラーになってしまうような仕組みを作れる。</p>
+<p>GitHubリポジトリにこの変更をプッシュしないように気を付ける必要がある。</p>
+<p>ただし、バックエンドに <code>s3</code> を指定する <code>terraform init</code> コマンドをCIのステップを設けておけば、<code>provider.tf</code> ファイルで <code>local</code> の指定していことがエラーになってしまうような仕組みを作れる。</p>
 <p>もし間違えてコミットしてしまった場合は、元に戻すように再コミットすればよい。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -36513,7 +36513,7 @@ The<span class="w"> </span>backend<span class="w"> </span>configuration<span cla
 </code></pre></div>
 <p><br></p>
 <h3 id="gitignore"><code>.gitignore</code><a class="headerlink" href="#gitignore" title="Permanent link">&para;</a></h3>
-<p>Terraform を開発するうえでバージョン管理するべきではないファイルを <code>.gitignore</code> ファイルに記載する。</p>
+<p>Terraformを開発するうえでバージョン管理するべきではないファイルを <code>.gitignore</code> ファイルに記載する。</p>
 <div class="highlight"><pre><span></span><code>**/.terraform/*
 *.tfstate
 *.tfstate.*
@@ -36568,8 +36568,8 @@ crash.*.log
 </table>
 <h4 id="tfstate">▼ <code>tfstate</code> ファイルへの書き込みを防ぐ<a class="headerlink" href="#tfstate" title="Permanent link">&para;</a></h4>
 <p>機密な変数を <code>ignore_changes</code> 引数を使用して、<code>tfstate</code> ファイルへの書き込みを防ぐ。</p>
-<p>そのうえで、特定の方法 (例：SOPS、kubesec、AWS Secrets Manager) で実際の値を管理し、これを <code>data</code> ブロックで参照する。</p>
-<p>ただし、リソースによっては <code>ignore_changes</code> 引数を使えないものがある (例：SSM パラメーターストア) 。</p>
+<p>その上で、特定の方法 (例：SOPS、kubesec、AWS Secrets Manager) で実際の値を管理し、これを <code>data</code> ブロックで参照する。</p>
+<p>ただし、リソースによっては <code>ignore_changes</code> 引数を使えないものがある (例：SSMパラメーターストア) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets">https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets</a></li>
@@ -36584,7 +36584,7 @@ crash.*.log
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>実際の値を AWS Secrets Manager や Amazon RDS のコンソール画面から設定する。</p>
+<p>実際の値をAWS Secrets ManagerやAmazon RDSのコンソール画面から設定する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -36633,15 +36633,15 @@ crash.*.log
 <h3 id="_29">設計規約<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <h4 id="1-terraform-terraform-apply"><code>(1)</code> 現在のTerraformのバージョンで <code>terraform apply</code> コマンドを実行<a class="headerlink" href="#1-terraform-terraform-apply" title="Permanent link">&para;</a></h4>
 <p>アップグレードと同時に新しいクラウドプロバイダーのリソースをデプロイせずに、アップグレードのみに専念する。</p>
-<p>そのために、現在の Terraform のバージョンで <code>terraform apply</code> コマンドを実行することにより、差分がないようにしておく。</p>
+<p>そのために、現在のTerraformのバージョンで <code>terraform apply</code> コマンドを実行することにより、差分が無いようにしておく。</p>
 <h4 id="2"><code>(2)</code> アップグレード以外の作業を済ませておく<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>低いバージョンの Terraform に対して、より高いバージョンはデプロイできる。</p>
-<p>しかし、高いバージョンの Terraform に対して、より低いバージョンをデプロイできない。</p>
-<p>そのため、アップグレードしてしまうと、それ以外の Terraform バージョンの異なる作業に影響が出る。</p>
+<p>低いバージョンのTerraformに対して、より高いバージョンはデプロイできる。</p>
+<p>しかし、高いバージョンのTerraformに対して、より低いバージョンをデプロイできない。</p>
+<p>そのため、アップグレードしてしまうと、それ以外のTerraformバージョンの異なる作業に影響が出る。</p>
 <h4 id="3"><code>(3)</code> マイナーバージョン単位でアップグレード<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<p>Terraform では、マイナーバージョン単位でアップグレードを実行することが推奨である。</p>
+<p>Terraformでは、マイナーバージョン単位でアップグレードを実行することが推奨である。</p>
 <p>そのため、現在のバージョンと最新バージョンがどんなに離れていても、必ず <code>1</code> 個ずつマイナーバージョンをアップグレードするように気をつける。</p>
-<p>このとき、次のマイナーバージョンの『最新』までアップグレードしてしまって問題ない (例：現在のバージョンが <code>v0.13.0</code> であれば、<code>0.14</code> 系の最新にアップグレード) 。</p>
+<p>この時、次のマイナーバージョンの『最新』までアップグレードしてしまって問題ない (例：現在のバージョンが <code>v0.13.0</code> であれば、<code>0.14</code> 系の最新にアップグレード) 。</p>
 <p>また、アップグレードの都度、リリースする。</p>
 <blockquote>
 <ul>
@@ -36653,9 +36653,9 @@ crash.*.log
 <p>警告/エラーを解決できるように、記法やオプション値を修正する。</p>
 <p>場合によっては <code>tfstate</code> ファイルの差分として表示されているのみで、実インフラとの差分ではない場合もあるため、<code>terraform plan</code> コマンド時に差分があったとしても、実インフラに影響がなければ問題ない。</p>
 <h4 id="5-terraform"><code>(5)</code> プロバイダーをアップグレードしたい場合はTerraformもアップグレード<a class="headerlink" href="#5-terraform" title="Permanent link">&para;</a></h4>
-<p>Terraform とプロバイダーのバージョンは独立して管理されている。</p>
-<p>プロバイダーは Terraform が土台になって稼働するため、もしプロバイダーをアップグレードしたい場合は、Terraform もアップグレードする。</p>
-<p>一方で、Terraform をアップグレードしたい場合は、必ずしもプロバイダーをアップグレードする必要はない。</p>
+<p>Terraformとプロバイダーのバージョンは独立して管理されている。</p>
+<p>プロバイダーはTerraformが土台になって稼働するため、もしプロバイダーをアップグレードしたい場合は、Terraformもアップグレードする。</p>
+<p>一方で、Terraformをアップグレードしたい場合は、必ずしもプロバイダーをアップグレードする必要はない。</p>
 <p>アップグレードガイドについては、以下のリンクを参考せよ。</p>
 <blockquote>
 <ul>
@@ -36664,17 +36664,17 @@ crash.*.log
 </ul>
 </blockquote>
 <h4 id="6-terraform"><code>(6)</code> Terraformとプロバイダーのアップグレードは別々にリリース<a class="headerlink" href="#6-terraform" title="Permanent link">&para;</a></h4>
-<p>プロバイダーをアップグレードしたい場合は Terraform もアップグレードすることになる。</p>
-<p>この場合、できるだけリリースは分けたほうがよい。</p>
-<p>Terraform またはプロバイダーのアップグレードを別々にリリースすれば、リリース時にインシデントが発生したときに、どちらが原因なのかを明確化できる。</p>
+<p>プロバイダーをアップグレードしたい場合はTerraformもアップグレードすることになる。</p>
+<p>この場合、できるだけリリースは分けたほうが良い。</p>
+<p>Terraformまたはプロバイダーのアップグレードを別々にリリースすれば、リリース時にインシデントが発生したときに、どちらが原因なのかを明確化できる。</p>
 <p>反対に、一緒にリリースしてしまうとどちらが原因なのかわかりにくくなってしまう。</p>
 <p><br></p>
 <h3 id="_30">新バージョンの自動検出<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
-<p>外部のツール (例：renovate) を使用して、プロバイダーや Terraform の新バージョンを自動的に検出する。</p>
+<p>外部のツール (例：renovate) を使用して、プロバイダーやTerraformの新バージョンを自動的に検出する。</p>
 <p><br></p>
 <h2 id="08-ci">08. CIパイプライン<a class="headerlink" href="#08-ci" title="Permanent link">&para;</a></h2>
 <h3 id="_31">仕様書自動作成<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
-<p>terraform-docs を使用して、<code>variable</code> ブロック、<code>output</code> ブロック、<code>module</code> ブロックなどの仕様書を作成する。</p>
+<p>terraform-docsを使用して、<code>variable</code> ブロック、<code>output</code> ブロック、<code>module</code> ブロックなどの仕様書を作成する。</p>
 <p>作成した仕様書を自動コミットできるようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform-docs<span class="w"> </span>markdown<span class="w"> </span>.<span class="w"> </span>--output-file<span class="o">=</span>README.md
 </code></pre></div>
@@ -36712,7 +36712,7 @@ crash.*.log
 <p><br></p>
 <h3 id="_32">各ブロックのホワイトボックステスト<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <h4 id="_33">▼ 整形<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
-<p>Terraform の整形コマンド (<code>terraform fmt</code> コマンド) を使用して、ソースコードを整形する。</p>
+<p>Terraformの整形コマンド (<code>terraform fmt</code> コマンド) を使用して、ソースコードを整形する。</p>
 <h4 id="_34">▼ 静的解析<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -36725,7 +36725,7 @@ crash.*.log
 <tbody>
 <tr>
 <td>Terraformの文法違反テスト</td>
-<td>Terraformの静的解析コマンド (<code>terraform validate</code> コマンド) を使用する。機能追加/変更を含むブロックの文法違反を検証する。代わりに、外部の静的解析ツール (例：tflint) を使用してもよい。</td>
+<td>Terraformの静的解析コマンド (<code>terraform validate</code> コマンド) を使用する。機能追加/変更を含むブロックの文法違反を検証する。代わりに、外部の静的解析ツール (例：tflint) を使用しても良い。</td>
 <td></td>
 </tr>
 <tr>
@@ -36751,8 +36751,8 @@ crash.*.log
 </blockquote>
 <h4 id="_36">▼ ユニットテスト<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
 <p>テスト環境に対して <code>terraform apply</code> コマンドを実行することにより、機能追加/変更を含むブロックが単体でまさしく動作するか否かを検証する。</p>
-<p>代わりに、外部のテストツール (例：Terratest) を使用してもよい。</p>
-<p>このとき、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずによい。</p>
+<p>代わりに、外部のテストツール (例：Terratest) を使用しても良い。</p>
+<p>この時、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずに良い。</p>
 <p>また、確認後にリソースを <code>terraform apply -destroy</code> コマンドで削除する。</p>
 <p>残骸のリソースが残るかもしれない。そのため、テスト環境のリソースもツール (例：cloud-nuke) で削除する。</p>
 <blockquote>
@@ -36766,8 +36766,8 @@ crash.*.log
 <p>ただし、クラウドプロバイダーが用意するエンドポイントは多すぎる。膨大な機能テストになる。</p>
 <h4 id="_38">▼ 結合テスト<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <p>テスト環境に対して <code>terraform apply</code> コマンドを実行することにより、機能追加/変更を含む複数のブロックを組み合わせた結合テストを実施する。</p>
-<p>代わりに、外部のテストツール (例：Terratest) を使用してもよい。</p>
-<p>このとき、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずによい。</p>
+<p>代わりに、外部のテストツール (例：Terratest) を使用しても良い。</p>
+<p>この時、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずに良い。</p>
 <p>また、確認後にリソースを <code>terraform apply -destroy</code> コマンドで削除する。</p>
 <p>残骸のリソースが残るかもしれない。そのため、テスト環境のリソースもツール (例：cloud-nuke) で削除する。</p>
 <blockquote>
@@ -36778,16 +36778,16 @@ crash.*.log
 <p><br></p>
 <h3 id="_39">ホワイトボックステスト結果の通知<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
 <h4 id="terraform_2">▼ Terraformを使用する場合<a class="headerlink" href="#terraform_2" title="Permanent link">&para;</a></h4>
-<p>Terraform には通知能力がなく、手動で知らせる必要がある。</p>
+<p>Terraformには通知能力がなく、手動で知らせる必要がある。</p>
 <p>そこで、<code>terraform plan</code> コマンドの結果をクリップボードに出力し、これをプルリクに貼り付ける。</p>
-<p><code>grep</code> コマンドを使用して、差分の表記部分のみを取得するとよい。</p>
+<p><code>grep</code> コマンドを使用して、差分の表記部分のみを取得すると良い。</p>
 <p>これを確認し、差分が正しいかをレビューする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="o">=</span>foo.tfvars<span class="w"> </span>-no-color<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">1000</span><span class="w"> </span><span class="s1">&#39;Terraform will perform the following actions&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>pbcopy
 </code></pre></div>
 <h4 id="terraform_3">▼ Terraform以外を使用する場合<a class="headerlink" href="#terraform_3" title="Permanent link">&para;</a></h4>
-<p>通知ツール (例：tfnotify、tfcmt) を使用して、GitHub 上に <code>terraform plan</code> コマンドの結果が通知されるようにする。</p>
+<p>通知ツール (例：tfnotify、tfcmt) を使用して、GitHub上に <code>terraform plan</code> コマンドの結果が通知されるようにする。</p>
 <p>これを確認し、差分が正しいかをレビューする。</p>
 <p><br></p>
 <h3 id="_40">各ブロックのブラックボックステスト<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
@@ -36802,10 +36802,10 @@ crash.*.log
 <span class="l l-Scalar l-Scalar-Plain">⬇️⬆️</span>
 <span class="l l-Scalar l-Scalar-Plain">Amazon RDS</span>
 </code></pre></div>
-<p>といった構成のインフラがあったときに、AWS リソース単体の細かい設定値まではテストせずに、以下の観点で結合テストを実施する。</p>
+<p>といった構成のインフラがあったときに、AWSリソース単体の細かい設定値まではテストせずに、以下の観点で結合テストを実施する。</p>
 <ul>
-<li>AWS リソース間の疎通がうまくいくか</li>
-<li>ALB にリクエストを飛ばして Amazon RDS が期待値を返すか</li>
+<li>AWSリソース間の疎通がうまくいくか</li>
+<li>ALBにリクエストを飛ばしてAmazon RDSが期待値を返すか</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">リクエストを送信</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇️⬆️</span>
@@ -36824,9 +36824,9 @@ crash.*.log
 </ul>
 </blockquote>
 <h4 id="_42">▼ システムテスト<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
-<p>ステージング環境に対して <code>terraform apply</code> コマンドを実行することにより、既存機能/追加/変更を含むすべてのブロックを組み合わせたシステムテストを実施する。</p>
+<p>ステージング環境に対して <code>terraform apply</code> コマンドを実行することにより、既存機能/追加/変更を含む全てのブロックを組み合わせたシステムテストを実施する。</p>
 <h4 id="_43">▼ 擬似的システムテスト<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
-<p>クラウドプロバイダーのモック (例：LocalStack) を使用して、擬似的なシステムテストを実施してもよい。</p>
+<p>クラウドプロバイダーのモック (例：LocalStack) を使用して、擬似的なシステムテストを実施しても良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.localstack.cloud/ci/">https://docs.localstack.cloud/ci/</a></li>
@@ -36836,7 +36836,7 @@ crash.*.log
 <h2 id="08-02-cd">08-02. CDパイプライン<a class="headerlink" href="#08-02-cd" title="Permanent link">&para;</a></h2>
 <h3 id="_44">レビュー<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
 <h4 id="_45">▼ コンソール画面にログイン<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
-<p>ただコードを眺めているより、レビュー対象がコンソール画面のどこに相当するのかも並行して確認したほうが、Terraform を理解しやすい。</p>
+<p>ただコードを眺めているより、レビュー対象がコンソール画面のどこに相当するのかも並行して確認したほうが、Terraformを理解しやすい。</p>
 <p>コンソール画面にログインする。</p>
 <h4 id="_46">▼ クラウドプロバイダーのドキュメントや技術記事を確認<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
 <p>コンソール画面の相当する設定箇所がわかったところで、設定値が正しいか否かを確認する。</p>
@@ -36846,13 +36846,13 @@ crash.*.log
 <li>技術記事</li>
 </ul>
 <h4 id="terraform_4">▼ Terraformのドキュメントや技術記事を確認<a class="headerlink" href="#terraform_4" title="Permanent link">&para;</a></h4>
-<p>AWS を作成する場合、Terraform の AWS プロバイダーを使用している。</p>
+<p>AWSを作成する場合、TerraformのAWSプロバイダーを使用している。</p>
 <p>以下を確認する。</p>
 <ul>
-<li>Terraform の AWS プロバイダーのドキュメント：<a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">https://registry.terraform.io/providers/hashicorp/aws/latest/docs</a></li>
+<li>TerraformのAWSプロバイダーのドキュメント：<a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">https://registry.terraform.io/providers/hashicorp/aws/latest/docs</a></li>
 <li>技術記事</li>
 </ul>
-<p>注意点として、AWS プロバイダーのバージョンを確認し、リファレンスの閲覧バージョンを切り替える必要がある。</p>
+<p>注意点として、AWSプロバイダーのバージョンを確認し、リファレンスの閲覧バージョンを切り替える必要がある。</p>
 <p>以下の点でレビューする。</p>
 <ul>
 <li>プロジェクトの設計規約に即しているか</li>
@@ -36864,22 +36864,22 @@ crash.*.log
 <p>他に優先度が高い対応やリリースの粒度が大きすぎる場合は、同時にリリースしないようにする。<code>develop</code> ブランチへのマージを見送る。</p>
 <p><br></p>
 <h3 id="_47">デプロイ<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
-<h4 id="terraform-apply">▼ terraform applyは自動化しなくてもよい<a class="headerlink" href="#terraform-apply" title="Permanent link">&para;</a></h4>
-<p><code>terraform apply</code> コマンドで問題が起こった場合に、CD パイプラインで自動化していると、回復手順が複雑になってしまう。</p>
-<p>そのため、少なくとも <code>terraform apply</code> コマンドは手動でもよい。</p>
+<h4 id="terraform-apply">▼ terraform applyは自動化しなくても良い<a class="headerlink" href="#terraform-apply" title="Permanent link">&para;</a></h4>
+<p><code>terraform apply</code> コマンドで問題が起こった場合に、CDパイプラインで自動化していると、回復手順が複雑になってしまう。</p>
+<p>そのため、少なくとも <code>terraform apply</code> コマンドは手動でも良い。</p>
 <h4 id="1">▼ 大原則：プルリクエストを <code>1</code> 個ずつリリース<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <p>基本的には、プルリクエストを <code>1</code> 個ずつリリースする。</p>
-<p>ただし、軽微な update 処理が実行されるプルリクエストであれば、まとめてリリースしてもよい。</p>
+<p>ただし、軽微なupdate処理が実行されるプルリクエストであれば、まとめてリリースしても良い。</p>
 <p>もしリリース時に問題が発生した場合、インフラのバージョンをロールバックする必要がある。</p>
-<p>経験則で、create 処理や destroy 処理よりも update 処理のほうがエラーは少ない。そのため、ロールバックにもたつきにくい。</p>
-<p>プルリクエストを複数まとめてリリースすると、create 処理や destroy 処理が実行されるロールバックに失敗する可能性が高くなる。</p>
+<p>経験則で、create処理やdestroy処理よりもupdate処理のほうがエラーは少ない。そのため、ロールバックにもたつきにくい。</p>
+<p>プルリクエストを複数まとめてリリースすると、create処理やdestroy処理が実行されるロールバックに失敗する可能性が高くなる。</p>
 <h4 id="_48">▼ 既存のリソースに対して、新しいリソースを紐付ける場合<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
 <p>既存のリソースに対して、新しいリソースを紐付ける場合、新しいリソースの作成と紐付けを別々にリリースする。</p>
-<p>ロールバックでもたつきにくく、また Terraform で問題が発生したとしても変更点が紐付けだけなため、原因を追究しやすい。</p>
+<p>ロールバックでもたつきにくく、またTerraformで問題が発生したとしても変更点が紐付けだけなため、原因を追究しやすい。</p>
 <h4 id="terraform_5">▼ Terraformとプロバイダーの両方をアップグレードする場合<a class="headerlink" href="#terraform_5" title="Permanent link">&para;</a></h4>
-<p>Terraform とプロバイダーを別々にリリースする。</p>
+<p>Terraformとプロバイダーを別々にリリースする。</p>
 <h4 id="db">▼ DBインスタンスの設定変更でダウンタイムが発生する場合<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
-<p>DB インスタンスの設定変更でダウンタイムが発生する場合、それぞれの DB インスタンスに対する変更を別々にリリースする。</p>
+<p>DBインスタンスの設定変更でダウンタイムが発生する場合、それぞれのDBインスタンスに対する変更を別々にリリースする。</p>
 <p>また、リリース順序は以下の通りとする。</p>
 <p>プライマリーインスタンスのリリース時にフェールオーバーが発生するため、ダウンタイムを短縮できる。</p>
 <dl>
@@ -36892,8 +36892,8 @@ crash.*.log
 <p>プライマリーインスタンスの変更をリリースする。リリース時にフェールオーバーを発生し、現プライマリーインスタンスはリードレプリカに降格する。また、前のリリースですでに更新されたリードレプリカがプライマリーインスタンスに昇格する。新しいリードレプリカがアップグレードされる間、代わりに新しいプライマリーインスタンスが動作する。</p>
 </dd>
 </dl>
-<p>ダウンタイムが発生する DB インスタンスの設定項目は以下のリンクを参考にせよ。</p>
-<p>Amazon RDS の項目として書かれており、Aurora ではないが、おおよそ同じなため参考にしている。</p>
+<p>ダウンタイムが発生するDBインスタンスの設定項目は以下のリンクを参考にせよ。</p>
+<p>Amazon RDSの項目として書かれており、Auroraではないが、おおよそ同じなため参考にしている。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings</a></li>
@@ -36902,21 +36902,21 @@ crash.*.log
 <p><br></p>
 <h3 id="_49">ロールバック<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h3>
 <h4 id="terraform_6">▼ Terraformを使用する場合<a class="headerlink" href="#terraform_6" title="Permanent link">&para;</a></h4>
-<p>Terraform には、クラウドインフラのバージョンのロールバック機能がなく、手動でロールバックする必要がある。</p>
+<p>Terraformには、クラウドインフラのバージョンのロールバック機能がなく、手動でロールバックする必要がある。</p>
 <p>そこで、過去のリリースタグを <code>terraform apply</code> コマンドでデプロイすることにより、バージョンをロールバックする。</p>
-<p>今回のリリースの create 処理が少ないほど <code>terraform apply</code> コマンドで destroy 処理が少なく、反対に destroy 処理が少ないほど create 処理が少なくなる。</p>
-<p>もしリリース時に問題が発生した場合、インフラのバージョンをロールバックする必要がある。経験則として、create 処理や destroy 処理よりも update 処理のほうがエラーは少ない。そのため、ロールバックにもたつきにくい。</p>
-<p>そのため、再実行時にどのくらいの create 処理や destroy 処理が実行されるかを考慮し、過去のリリースタグを <code>terraform apply</code> コマンドでデプロイするか否かを判断する。</p>
+<p>今回のリリースのcreate処理が少ないほど <code>terraform apply</code> コマンドでdestroy処理が少なく、反対にdestroy処理が少ないほどcreate処理が少なくなる。</p>
+<p>もしリリース時に問題が発生した場合、インフラのバージョンをロールバックする必要がある。経験則として、create処理やdestroy処理よりもupdate処理のほうがエラーは少ない。そのため、ロールバックにもたつきにくい。</p>
+<p>そのため、再実行時にどのくらいのcreate処理やdestroy処理が実行されるかを考慮し、過去のリリースタグを <code>terraform apply</code> コマンドでデプロイするか否かを判断する。</p>
 <h4 id="terraform_7">▼ Terraform以外を使用する場合<a class="headerlink" href="#terraform_7" title="Permanent link">&para;</a></h4>
-<p>CD パイプラインがない場合と同じである。</p>
+<p>CDパイプラインがない場合と同じである。</p>
 <p><br></p>
 <h2 id="08-03">08-03. 事後処理<a class="headerlink" href="#08-03" title="Permanent link">&para;</a></h2>
 <h3 id="_50">デプロイの通知<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
 <h4 id="terraform_8">▼ Terraformを使用する場合<a class="headerlink" href="#terraform_8" title="Permanent link">&para;</a></h4>
-<p>Terraform には通知能力がなく、手動で知らせる必要がある。</p>
+<p>Terraformには通知能力がなく、手動で知らせる必要がある。</p>
 <p><code>terraform apply</code> コマンドの結果をクリップボードに出力し、これをリリースチケットに貼り付ける。</p>
 <h4 id="terraform_9">▼ Terraform以外を使用する場合<a class="headerlink" href="#terraform_9" title="Permanent link">&para;</a></h4>
-<p>通知ツール (例：tfnotify、tfcmt) を使用して、GitHub 上に <code>terraform apply</code> コマンドの結果が通知されるようにする。</p>
+<p>通知ツール (例：tfnotify、tfcmt) を使用して、GitHub上に <code>terraform apply</code> コマンドの結果が通知されるようにする。</p>
 <p><br></p>
 
 
@@ -36938,7 +36938,7 @@ crash.*.log
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

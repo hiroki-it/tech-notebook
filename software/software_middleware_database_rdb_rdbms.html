@@ -34310,7 +34310,7 @@
 </table>
 <p><br></p>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>RDBMS は、リレーショナルエンジン、DB エンジン (ストレージエンジン) 、から構成される。</p>
+<p>RDBMSは、リレーショナルエンジン、DBエンジン (ストレージエンジン) 、から構成される。</p>
 <p><img alt="DB管理システムの仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DB管理システムの仕組み.png" /></p>
 <blockquote>
 <ul>
@@ -34331,7 +34331,7 @@
 <h3 id="db">DBエンジン (ストレージエンジン)<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <h4 id="db_1">▼ DBエンジンとは<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h4>
 <p>『ストレージエンジン』ともいう。</p>
-<p>RDBMS が DB に対してデータの CRUD の処理を行うために必要なソフトウェアのこと。</p>
+<p>RDBMSがDBに対してデータのCRUDの処理を行うために必要なソフトウェアのこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/">https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/</a></li>
@@ -34340,7 +34340,7 @@
 </ul>
 </blockquote>
 <h4 id="db_2">▼ DBエンジンの種類<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h4>
-<p>RDMS (例：MySQL、PostgreSQL など) によって、対応する DB エンジンが異なる。</p>
+<p>RDMS (例：MySQL、PostgreSQLなど) によって、対応するDBエンジンが異なる。</p>
 <ul>
 <li>InnoDB</li>
 <li>Memory</li>
@@ -34350,11 +34350,11 @@
 <h3 id="rdb-db">RDB (関係DB)<a class="headerlink" href="#rdb-db" title="Permanent link">&para;</a></h3>
 <h4 id="rdb">▼ RDBとは<a class="headerlink" href="#rdb" title="Permanent link">&para;</a></h4>
 <p>データ同士がテーブル状に関係を持つデータ格納形式で構成されるのこと。</p>
-<p>NoSQL とは異なり、データはストレージに保管する。</p>
+<p>NoSQLとは異なり、データはストレージに保管する。</p>
 <h4 id="db_3">▼ DBスキーマ<a class="headerlink" href="#db_3" title="Permanent link">&para;</a></h4>
-<p>DB を論理的に分割する名前空間のこと。</p>
+<p>DBを論理的に分割する名前空間のこと。</p>
 <p>名前空間内には、テーブル、インデックス、ビュー、ストアドプロシージャなどが所属する。</p>
-<p>MySQL には B スキーマがなく、DB そのものが DB スキーマに相当する。</p>
+<p>MySQLにはBスキーマがなく、DBそのものがDBスキーマに相当する。</p>
 <h4 id="db_4">▼ DBテーブル<a class="headerlink" href="#db_4" title="Permanent link">&para;</a></h4>
 <p>行列からなるデータのセットのこと。</p>
 <h4 id="db_5">▼ DBカラム<a class="headerlink" href="#db_5" title="Permanent link">&para;</a></h4>
@@ -34363,8 +34363,8 @@
 <p>テーブルの行データのこと。</p>
 <p><br></p>
 <h3 id="db_7">オンディスクDB<a class="headerlink" href="#db_7" title="Permanent link">&para;</a></h3>
-<p>RDB は、ストレージにデータを保存する。</p>
-<p>ストレージ (例：HDD、SSD) 上にデータを保管する DB を、メモリ上に保管することと比較して、オンディスク DB という。</p>
+<p>RDBは、ストレージにデータを保存する。</p>
+<p>ストレージ (例：HDD、SSD) 上にデータを保管するDBを、メモリ上に保管することと比較して、オンディスクDBという。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage">https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage</a></li>
@@ -34374,9 +34374,9 @@
 <p><br></p>
 <h3 id="db_8">DBパーティション<a class="headerlink" href="#db_8" title="Permanent link">&para;</a></h3>
 <h4 id="db_9">▼ DBパーティションとは<a class="headerlink" href="#db_9" title="Permanent link">&para;</a></h4>
-<p>DB のテーブルを分割して管理する。</p>
-<p>性能の向上のために、DB パーティションを作成する。</p>
-<p>分割しても、DBMS クライアントからは単一のテーブルとして扱える。</p>
+<p>DBのテーブルを分割して管理する。</p>
+<p>性能の向上のために、DBパーティションを作成する。</p>
+<p>分割しても、DBMSクライアントからは単一のテーブルとして扱える。</p>
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/it/article/COLUMN/20090512/329853/">https://xtech.nikkei.com/it/article/COLUMN/20090512/329853/</a></li>
@@ -34402,30 +34402,30 @@
 <h3 id="db_10">DBインデックス<a class="headerlink" href="#db_10" title="Permanent link">&para;</a></h3>
 <h4 id="db_11">▼ DBインデックスとは<a class="headerlink" href="#db_11" title="Permanent link">&para;</a></h4>
 <p>テーブルから特定のカラムのみを抜き出し、検索しやすいように並び替え、名前を付けて保管しておいたもの。</p>
-<p>性能の向上のために、DB インデックを作成しておく。</p>
-<p>DB インデックスとして保管したカラムから特定のレコードを直接的に取得できる。</p>
-<p>そのため、SQL の実行時間がカラム数に依存しなくなる。</p>
-<p>DB インデックスを使用しない場合、SQL の実行時にすべてカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。</p>
+<p>性能の向上のために、DBインデックを作成しておく。</p>
+<p>DBインデックスとして保管したカラムから特定のレコードを直接的に取得できる。</p>
+<p>そのため、SQLの実行時間がカラム数に依存しなくなる。</p>
+<p>DBインデックスを使用しない場合、SQLの実行時に全てカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/towtow/items/4089dad004b7c25985e3">https://qiita.com/towtow/items/4089dad004b7c25985e3</a></li>
 </ul>
 </blockquote>
 <h4 id="db_12">▼ クラスターDBインデックス（自動作成）<a class="headerlink" href="#db_12" title="Permanent link">&para;</a></h4>
-<p>プライマリーキーあるいはユニークキーのカラムを基準にして、テーブルのカラムを並び替えた DB インデックスのこと。</p>
-<p>DB エンジンが自動で作成してくれる。</p>
+<p>プライマリーキーあるいはユニークキーのカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。</p>
+<p>DBエンジンが自動で作成してくれる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
 <span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="db_13">▼ セカンダリーDBインデックス（手動作成が必要）<a class="headerlink" href="#db_13" title="Permanent link">&para;</a></h4>
-<p>プライマリーキーあるいはユニークキーではないカラムを基準にして、テーブルのカラムを並び替えた DB インデックスのこと。</p>
+<p>プライマリーキーあるいはユニークキーではないカラムを基準にして、テーブルのカラムを並び替えたDBインデックスのこと。</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
 <span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">foo_column</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="db_14">▼ 複合DBインデックス<a class="headerlink" href="#db_14" title="Permanent link">&para;</a></h4>
-<p>複数のカラムを基準にして、テーブルを並び替えた DB インデックスのこと。</p>
+<p>複数のカラムを基準にして、テーブルを並び替えたDBインデックスのこと。</p>
 <p>対象としたカラムごとに異なる値のレコード数が計測され、この数が少ない (一意の値の多い) カラムが検出される。</p>
-<p>そして、カラムのレコードの昇順で並び替えられ、DB インデックスとして保管される。</p>
+<p>そして、カラムのレコードの昇順で並び替えられ、DBインデックスとして保管される。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/towtow/items/4089dad004b7c25985e3">https://qiita.com/towtow/items/4089dad004b7c25985e3</a></li>
@@ -34435,7 +34435,7 @@
 <span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="n">foo_column</span><span class="p">,</span><span class="w"> </span><span class="n">bar_column</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>以下のような <code>foo</code> テーブルがあり、<code>name</code> カラムと <code>address</code> カラムを基準に並び替えた <code>foo_index</code> という複合 DB インデックス名を作成する。</p>
+<p>以下のような <code>foo</code> テーブルがあり、<code>name</code> カラムと <code>address</code> カラムを基準に並び替えた <code>foo_index</code> という複合DBインデックス名を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">foo_index</span>
 <span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">foo_table</span><span class="w"> </span><span class="p">(</span><span class="k">name</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p">)</span>
 </code></pre></div>
@@ -34481,7 +34481,7 @@
 </tr>
 </tbody>
 </table>
-<p>各カラムで値の異なるレコード数が計測され、<code>name</code> カラムは <code>address</code> カラムよりも一意のレコードが多いため、<code>name</code> カラムの昇順 (アルファベット順) に並び替えられ、DB インデックスとして保管される。</p>
+<p>各カラムで値の異なるレコード数が計測され、<code>name</code> カラムは <code>address</code> カラムよりも一意のレコードが多いため、<code>name</code> カラムの昇順 (アルファベット順) に並び替えられ、DBインデックスとして保管される。</p>
 <table>
 <thead>
 <tr>
@@ -34525,30 +34525,30 @@
 </tbody>
 </table>
 <h4 id="db_15">▼ DBインデックスのカラム変更<a class="headerlink" href="#db_15" title="Permanent link">&para;</a></h4>
-<p>DB インデックスのカラム変更によって、DB インデックスの削除と追加が起こる。</p>
-<p>次のように DB インデックスの追加と削除を別にすれば、負荷を少しでも抑えられる。</p>
+<p>DBインデックスのカラム変更によって、DBインデックスの削除と追加が起こる。</p>
+<p>次のようにDBインデックスの追加と削除を別にすれば、負荷を少しでも抑えられる。</p>
 <p><strong>実行例</strong></p>
-<p>これは SQL を使用した例である。</p>
+<p>これはSQLを使用した例である。</p>
 <ol>
-<li>新しい DB インデックスを追加するリリース &lt;--- ここで中程度の負荷</li>
+<li>新しいDBインデックスを追加するリリース &lt;--- ここで中程度の負荷</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_user_org_name_updated</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">User</span><span class="w"> </span><span class="p">(</span><span class="n">organization_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_name</span><span class="p">,</span><span class="w"> </span><span class="n">updated_at</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="k">status</span><span class="p">);</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_user_updated_org</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">User</span><span class="w"> </span><span class="p">(</span><span class="n">updated_at</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">organization_id</span><span class="p">,</span><span class="w"> </span><span class="k">status</span><span class="p">);</span>
 </code></pre></div>
 <ol>
 <li>
-<p>一日くらい新旧の DB インデックスを共存させる</p>
+<p>一日くらい新旧のDBインデックスを共存させる</p>
 </li>
 <li>
-<p>古い DB インデックスを削除するリリース &lt;--- ここで小程度の負荷</p>
+<p>古いDBインデックスを削除するリリース &lt;--- ここで小程度の負荷</p>
 </li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_user_org_name_created</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">User</span><span class="p">;</span>
 <span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_user_created_org</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">User</span><span class="p">;</span>
 </code></pre></div>
 <p><strong>実行例</strong></p>
-<p>これは ORM を使用した例である。</p>
-<p>ORM を使用する場合、より簡単にカラムを変更できる。</p>
+<p>これはORMを使用した例である。</p>
+<p>ORMを使用する場合、より簡単にカラムを変更できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">model</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">user_id</span><span class="w">         </span><span class="nb">String</span><span class="w">   </span><span class="kd">@id</span><span class="w"> </span><span class="kd">@default</span><span class="p">(</span><span class="nx">cuid</span><span class="p">())</span><span class="w"> </span><span class="kd">@db</span><span class="p">.</span><span class="nx">VarChar</span><span class="p">(</span><span class="mf">127</span><span class="p">)</span>
 <span class="w">    </span><span class="nx">organization_id</span><span class="w"> </span><span class="nb">String</span><span class="w">   </span><span class="kd">@db</span><span class="p">.</span><span class="nx">VarChar</span><span class="p">(</span><span class="mf">127</span><span class="p">)</span>
@@ -34571,7 +34571,7 @@
 <h2 id="04-rdbms">04. RDBMSクライアント<a class="headerlink" href="#04-rdbms" title="Permanent link">&para;</a></h2>
 <h3 id="_6">クエリ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ クエリとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>RDBMS の種類に応じたクエリが必要になる。</p>
+<p>RDBMSの種類に応じたクエリが必要になる。</p>
 <h4 id="_8">▼ クエリパッケージ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>クエリの実装の抽象度に応じて、パッケージがある。</p>
 <table>
@@ -34604,17 +34604,17 @@
 <p><br></p>
 <h3 id="db_16">DB接続<a class="headerlink" href="#db_16" title="Permanent link">&para;</a></h3>
 <h4 id="db_17">▼ DB接続とは<a class="headerlink" href="#db_17" title="Permanent link">&para;</a></h4>
-<p>アプリから RDBMS へのクエリ送信時の通信のこと。</p>
-<p>TCP/IP プロトコルを使用する。</p>
+<p>アプリからRDBMSへのクエリ送信時の通信のこと。</p>
+<p>TCP/IPプロトコルを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Database_connection">https://en.wikipedia.org/wiki/Database_connection</a></li>
 </ul>
 </blockquote>
 <h4 id="db_18">▼ DBセッション<a class="headerlink" href="#db_18" title="Permanent link">&para;</a></h4>
-<p>ログインに成功した DB 接続のこと。</p>
+<p>ログインに成功したDB接続のこと。</p>
 <p>セッションを確立できると、クエリを送信できるようになる。</p>
-<p>1 つのセッション中では、1 つのトランザクション (複数のクエリからなる) を実行する。</p>
+<p>1つのセッション中では、1つのトランザクション (複数のクエリからなる) を実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/8800971/12771072">https://stackoverflow.com/a/8800971/12771072</a></li>
@@ -34622,12 +34622,12 @@
 </ul>
 </blockquote>
 <h4 id="_9">▼ 接続プロキシ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>アプリケーションと DB の間に、接続プールプロキシ (例：ProxySQL、PgBouncer など) を配置する。</p>
+<p>アプリケーションとDBの間に、接続プールプロキシ (例：ProxySQL、PgBouncerなど) を配置する。</p>
 <p>これにより、アプリケーションサーバーの接続プールの処理を接続プロキシに委譲する。</p>
 <p>注意点として、プリペアードステートメントでは既存の接続を再利用する必要があるが、接続プロキシでは別の接続を使用してしまうことがある。</p>
 <p>そのため、接続プロキシの採用時には、プリペアードステートメントを使用できない。</p>
 <h4 id="_10">▼ 接続プール<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>アプリから DB へのクエリ送信時に新しく作成した接続を、非アクティブ状態として保持しておき、以降のクエリ送信時に再利用する。</p>
+<p>アプリからDBへのクエリ送信時に新しく作成した接続を、非アクティブ状態として保持しておき、以降のクエリ送信時に再利用する。</p>
 <p>一定回数再利用されたり、一定期間使用されていない接続は削除される。</p>
 <p><img alt="db_connection-pool" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_connection-pool.png" /></p>
 <blockquote>
@@ -34637,8 +34637,8 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ 接続プールに対する待機キュー<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>もし接続プール上の接続がすべて使用されてしまった場合、いずれかの接続が解放されるまで待機する必要がある。</p>
-<p>このときに、送信されたリクエストは待機キューで解放を待つ。</p>
+<p>もし接続プール上の接続が全て使用されてしまった場合、いずれかの接続が解放されるまで待機する必要がある。</p>
+<p>この時に、送信されたリクエストは待機キューで解放を待つ。</p>
 <blockquote>
 <ul>
 <li><a href="https://itpfdoc.hitachi.co.jp/manuals/3020/30203m0360/EM030358.HTM">https://itpfdoc.hitachi.co.jp/manuals/3020/30203m0360/EM030358.HTM</a></li>
@@ -34673,7 +34673,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
   </span>
 
     

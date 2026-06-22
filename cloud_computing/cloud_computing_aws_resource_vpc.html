@@ -34716,10 +34716,10 @@
 <p><br></p>
 <h2 id="01-amazon-vpcvirtual-private-cloud">01. Amazon VPCとは：Virtual Private Cloud<a class="headerlink" href="#01-amazon-vpcvirtual-private-cloud" title="Permanent link">&para;</a></h2>
 <p>クラウドプライベートネットワークとして働く。</p>
-<p>プライベート IP アドレスが割り当てられた、Amazon VPC と呼ばれるプライベートネットワーク (<code>L3</code>) を仮想的に作成できる。</p>
-<p>異なる AZ に渡って EC2 を立ちあげることによって、クラウドサーバーをデュアル化できる。</p>
-<p>EKS の場合、Amazon VPC (<code>L3</code>) 上に Amazon VPC CNI を配置することにより、クラスターネットワークを作成できる。</p>
-<p><img alt="Amazon VPC が提供できるネットワークの範囲" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC が提供できるネットワークの範囲.png" /></p>
+<p>プライベートIPアドレスが割り当てられた、Amazon VPCと呼ばれるプライベートネットワーク (<code>L3</code>) を仮想的に作成できる。</p>
+<p>異なるAZに渡ってEC2を立ち上げることによって、クラウドサーバーをデュアル化できる。</p>
+<p>EKSの場合、Amazon VPC (<code>L3</code>) 上にAmazon VPC CNIを配置することにより、クラスターネットワークを作成できる。</p>
+<p><img alt="Amazon VPCが提供できるネットワークの範囲" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPCが提供できるネットワークの範囲.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf">https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf</a></li>
@@ -34770,8 +34770,8 @@
 </ul>
 </blockquote>
 <h4 id="dns">▼ DNS名の割り当て<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h4>
-<p>Amazon VPC 内で作成されたインスタンスにはパブリック IP アドレスが自動的に割り当てられるが、IP アドレスにマッピングされた DNS 名を持たない。</p>
-<p><code>enableDnsHostnames</code> オプションと <code>enableDnsSupport</code> オプションと有効化すると、インスタンスに DNS 名が割り当てられるようになる。</p>
+<p>Amazon VPC内で作成されたインスタンスにはパブリックIPアドレスが自動的に割り当てられるが、IPアドレスにマッピングされたDNS名を持たない。</p>
+<p><code>enableDnsHostnames</code> オプションと <code>enableDnsSupport</code> オプションと有効化すると、インスタンスにDNS名が割り当てられるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support">https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support</a></li>
@@ -34804,11 +34804,11 @@
 <p><br></p>
 <h3 id="_3">サブネットの種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ パブリックサブネットとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>LAN 内の非武装地帯に相当する。</p>
+<p>LAN内の非武装地帯に相当する。</p>
 <h4 id="_5">▼ プライベートサブネットとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>LAN 内の内部ネットワークに相当する。</p>
-<p>サブネット外からのインバンド通信を受け付けないようするために、ALB のルーティング先にサブネットを設定しないようにすれば、そのサブネットはプライベートサブネットとして動作する。</p>
-<p>ただし、サブネット内からサブネット外へのリクエストは許可しても問題なく、その場合はルートテーブルに AWS NAT Gateway を設定する必要がある。</p>
+<p>LAN内の内部ネットワークに相当する。</p>
+<p>サブネット外からのインバンド通信を受け付けないようするために、ALBのルーティング先にサブネットを設定しないようにすれば、そのサブネットはプライベートサブネットとして動作する。</p>
+<p>ただし、サブネット内からサブネット外へのリクエストは許可しても問題なく、その場合はルートテーブルにAWS NAT Gatewayを設定する必要がある。</p>
 <p><img alt="public-subnet_private-subnet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-subnet_private-subnet.png" /></p>
 <p><br></p>
 <h2 id="03-network-aclnetwork-access-control-list">03. Network ACL：Network Access Control List<a class="headerlink" href="#03-network-aclnetwork-access-control-list" title="Permanent link">&para;</a></h2>
@@ -34821,7 +34821,7 @@
 <h3 id="acl">ACLルール<a class="headerlink" href="#acl" title="Permanent link">&para;</a></h3>
 <p>ルールは上から順に適用される。</p>
 <p>例えば、ルールが以下だったとする。</p>
-<p>ルール <code>100</code> が最初に適用され、サブネットへの全送信元 IP アドレス (<code>0.0.0.0/0</code>) を許可していることになる。</p>
+<p>ルール <code>100</code> が最初に適用され、サブネットへの全送信元IPアドレス (<code>0.0.0.0/0</code>) を許可していることになる。</p>
 <table>
 <thead>
 <tr>
@@ -34887,7 +34887,7 @@
 <h3 id="_6">ルートテーブルとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>クラウドルーターのマッピングテーブルとして働く。</p>
 <p>サブネットに紐付けることにより、サブネット内からサブネット外に出るリクエストのルーティングを制御する。</p>
-<p>注意点として、Network ACL よりも後に評価される。</p>
+<p>注意点として、Network ACLよりも後に評価される。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/Amazon">https://docs.aws.amazon.com/vpc/latest/userguide/Amazon</a> VPC_Route_Tables.html#RouteTables</li>
@@ -34910,26 +34910,26 @@
 <p><br></p>
 <h3 id="_7">ルートテーブルの種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ メインルートテーブル<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>Amazon VPC の作成時に自動的に作成される。</p>
+<p>Amazon VPCの作成時に自動的に作成される。</p>
 <p>どのルートテーブルにも紐付けられていないサブネットのルーティングを設定する。</p>
 <h4 id="_9">▼ カスタムルートテーブル<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>特定のサブネットのルーティングを設定する。</p>
 <p><br></p>
 <h2 id="05-amazon-vpc">05. Amazon VPCエンドポイント<a class="headerlink" href="#05-amazon-vpc" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-vpc_1">Amazon VPCエンドポイントとは<a class="headerlink" href="#amazon-vpc_1" title="Permanent link">&para;</a></h3>
-<p>Amazon VPC のプライベートサブネット内のリソースが、Amazon VPC 外 (例：Amazon VPC 外 AWS リソース、他の Amazon VPC、AWS マーケットプレイスの外部サービス) に対して、リクエストを実行できるようにする。</p>
-<p>Gateway 型と Interface 型がある。</p>
-<p>Amazon VPC エンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet Gateway と AWS NAT Gateway を使用する必要がある。</p>
-<p><img alt="Amazon VPC エンドポイント" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC エンドポイント.png" /></p>
+<p>Amazon VPCのプライベートサブネット内のリソースが、Amazon VPC外 (例：Amazon VPC外AWSリソース、他のAmazon VPC、AWSマーケットプレイスの外部サービス) に対して、リクエストを実行できるようにする。</p>
+<p>Gateway型とInterface型がある。</p>
+<p>Amazon VPCエンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet GatewayとAWS NAT Gatewayを使用する必要がある。</p>
+<p><img alt="Amazon VPCエンドポイント" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPCエンドポイント.png" /></p>
 <p><br></p>
 <h3 id="amazon-vpcaws-nat-gateway">Amazon VPCエンドポイントとAWS NAT Gatewayの料金比較<a class="headerlink" href="#amazon-vpcaws-nat-gateway" title="Permanent link">&para;</a></h3>
-<p>AWS NAT Gateway の代わりに Amazon VPC エンドポイントを使用すると、料金が少しだけ安くなる。また、Amazon VPC 外 AWS リソースとの通信がより安全になる。</p>
+<p>AWS NAT Gatewayの代わりにAmazon VPCエンドポイントを使用すると、料金が少しだけ安くなる。また、Amazon VPC外AWSリソースとの通信がより安全になる。</p>
 <p><br></p>
 <h3 id="_10">エンドポイントタイプ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="interface">▼ Interface型<a class="headerlink" href="#interface" title="Permanent link">&para;</a></h4>
 <p>サービス名としては、『プライベートリンク』ともいう。</p>
-<p>実体はプライベート IP アドレスを持つ ENI であり、ENI が AWS リソースからリクエストを受信する。</p>
-<p>もし、このプライベート IP アドレスにプライベート DNS を紐付ける場合は、Amazon VPC の <code>enableDnsHostnames</code> オプションと <code>enableDnsSupport</code> オプションを有効化する必要がある。</p>
+<p>実体はプライベートIPアドレスを持つENIであり、ENIがAWSリソースからリクエストを受信する。</p>
+<p>もし、このプライベートIPアドレスにプライベートDNSを紐付ける場合は、Amazon VPCの <code>enableDnsHostnames</code> オプションと <code>enableDnsSupport</code> オプションを有効化する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support">https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support</a></li>
@@ -34937,12 +34937,12 @@
 </ul>
 </blockquote>
 <p><strong>＊リソース例＊</strong></p>
-<p>Amazon S3、DynamoDB 以外のすべてのリソース</p>
+<p>Amazon S3、DynamoDB以外の全てのリソース</p>
 <h4 id="gateway">▼ Gateway型<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h4>
 <p>ルートテーブルにおける定義に従う。</p>
-<p>実体は Amazon VPC エンドポイントであり、Amazon VPC エンドポイントが AWS リソースからリクエストを受信する。</p>
+<p>実体はAmazon VPCエンドポイントであり、Amazon VPCエンドポイントがAWSリソースからリクエストを受信する。</p>
 <p><strong>＊リソース例＊</strong></p>
-<p>Amazon S3、DynamoDB のみ</p>
+<p>Amazon S3、DynamoDBのみ</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-gateway.html">https://docs.aws.amazon.com/vpc/latest/privatelink/vpce-gateway.html</a></li>
@@ -34952,9 +34952,9 @@
 <p><br></p>
 <h2 id="06-internet-gateway">06. Internet Gateway<a class="headerlink" href="#06-internet-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="internet-gateway">Internet Gatewayとは<a class="headerlink" href="#internet-gateway" title="Permanent link">&para;</a></h3>
-<p>NAT 処理 (DNAT、SNAT) を実行し、パブリック IP アドレス (Amazon VPC 外の IP アドレス) とプライベート IP アドレス (Amazon VPC 内の IP アドレス) を相互変換する。</p>
-<p><code>1</code> 個のパブリック IP に対して、<code>1</code> 個のプライベート IP を紐付けられる。</p>
-<p>つまり、Amazon VPC 内の複数のインスタンスからのリクエストを、複数のパブリック IP アドレスで送信する。</p>
+<p>NAT処理 (DNAT、SNAT) を実行し、パブリックIPアドレス (Amazon VPC外のIPアドレス) とプライベートIPアドレス (Amazon VPC内のIPアドレス) を相互変換する。</p>
+<p><code>1</code> 個のパブリックIPに対して、<code>1</code> 個のプライベートIPを紐付けられる。</p>
+<p>つまり、Amazon VPC内の複数のインスタンスからのリクエストを、複数のパブリックIPアドレスで送信する。</p>
 <p><img alt="internet-gateway_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png" /></p>
 <blockquote>
 <ul>
@@ -34965,9 +34965,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="dnat">DNAT処理<a class="headerlink" href="#dnat" title="Permanent link">&para;</a></h3>
-<p>Internet Gateway の DNAT 処理では、Amazon VPC 外からリクエストを受信し、これの送信元 IP アドレスをプライベート IP アドレスに変換する。</p>
-<p>AWS NAT Gateway からのリクエストであれば、送信元 IP アドレスを AWS NAT Gateway の Elastic IP アドレスに変換する。</p>
-<p>一方で、宛先 IP アドレスや宛先ポート番号は変換しない。</p>
+<p>Internet GatewayのDNAT処理では、Amazon VPC外からリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。</p>
+<p>AWS NAT Gatewayからのリクエストであれば、送信元IPアドレスをAWS NAT GatewayのElastic IPアドレスに変換する。</p>
+<p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
 <blockquote>
 <ul>
 <li><a href="https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/">https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/</a></li>
@@ -34975,8 +34975,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="snat">SNAT処理<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h3>
-<p>Internet Gateway の SNAT 処理では、Amazon VPC 内からリクエストを受信し、これの送信元 IP アドレスをパブリック IP アドレスに変換する。</p>
-<p>一方で、宛先 IP アドレスや宛先ポート番号は変換しない。</p>
+<p>Internet GatewayのSNAT処理では、Amazon VPC内からリクエストを受信し、これの送信元IPアドレスをパブリックIPアドレスに変換する。</p>
+<p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
 <p><img alt="internet-gateway_nat-gateway_snat" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png" /></p>
 <blockquote>
 <ul>
@@ -34986,12 +34986,12 @@
 <p><br></p>
 <h2 id="06-02-aws-nat-gateway">06-02. AWS NAT Gateway<a class="headerlink" href="#06-02-aws-nat-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="aws-nat-gateway">AWS NAT Gatewayとは<a class="headerlink" href="#aws-nat-gateway" title="Permanent link">&para;</a></h3>
-<p>SNAT 処理 (SNAT 処理のみで、DNAT 処理は持たない) を実行し、受信したリクエストの送信元 IP アドレスをプライベート IP アドレス (Amazon VPC 内の IP アドレス) に変換する。</p>
-<p>また、Internet Gateway を使用して、このプライベート IP アドレスをパブリック IP アドレスに変換する。</p>
-<p><code>1</code> 個のパブリック IP に対して、複数のプライベート IP を紐付けられる。</p>
-<p>このときのパブリック IP は、Elastic IP である。</p>
-<p>つまり、Amazon VPC 内の複数のインスタンスからのリクエストを、<code>1</code> 個のパブリック IP アドレスで送信する。</p>
-<p>そのため、送信元はこのパブリック IP アドレスになる。</p>
+<p>SNAT処理 (SNAT処理のみで、DNAT処理は持たない) を実行し、受信したリクエストの送信元IPアドレスをプライベートIPアドレス (Amazon VPC内のIPアドレス) に変換する。</p>
+<p>また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。</p>
+<p><code>1</code> 個のパブリックIPに対して、複数のプライベートIPを紐付けられる。</p>
+<p>この時のパブリックIPは、Elastic IPである。</p>
+<p>つまり、Amazon VPC内の複数のインスタンスからのリクエストを、<code>1</code> 個のパブリックIPアドレスで送信する。</p>
+<p>そのため、送信元はこのパブリックIPアドレスになる。</p>
 <p><img alt="internet-gateway_nat-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png" /></p>
 <blockquote>
 <ul>
@@ -35002,9 +35002,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="snat_1">SNAT処理<a class="headerlink" href="#snat_1" title="Permanent link">&para;</a></h3>
-<p>AWS NAT Gateway の SNAT 処理では、プライベートサブネットからリクエストを受信し、これの送信元 IP アドレスをプライベート IP アドレスに変換する。</p>
-<p>また、Internet Gateway を使用して、このプライベート IP アドレスをパブリック IP アドレスに変換する。</p>
-<p>一方で、宛先 IP アドレスや宛先ポート番号は変換しない。</p>
+<p>AWS NAT GatewayのSNAT処理では、プライベートサブネットからリクエストを受信し、これの送信元IPアドレスをプライベートIPアドレスに変換する。</p>
+<p>また、Internet Gatewayを使用して、このプライベートIPアドレスをパブリックIPアドレスに変換する。</p>
+<p>一方で、宛先IPアドレスや宛先ポート番号は変換しない。</p>
 <p><img alt="internet-gateway_nat-gateway_snat" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png" /></p>
 <blockquote>
 <ul>
@@ -35014,7 +35014,7 @@
 <p><br></p>
 <h2 id="06-03-nat-amazon-ec2">06-03. NAT Amazon EC2インスタンス<a class="headerlink" href="#06-03-nat-amazon-ec2" title="Permanent link">&para;</a></h2>
 <h3 id="nat-amazon-ec2">NAT Amazon EC2インスタンスとは<a class="headerlink" href="#nat-amazon-ec2" title="Permanent link">&para;</a></h3>
-<p>専用の AMI から作成した EC2 で、NAT 処理 (SNAT 処理のみで、DNAT 処理は持たない) を持つ。</p>
+<p>専用のAMIから作成したEC2で、NAT処理 (SNAT処理のみで、DNAT処理は持たない) を持つ。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html">https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html</a></li>
@@ -35024,12 +35024,12 @@
 <p><br></p>
 <h2 id="07-amazon-vpcamazon-vpc-">07. Amazon VPC間、Amazon VPC-オンプレミス間の通信<a class="headerlink" href="#07-amazon-vpcamazon-vpc-" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-vpc_2">Amazon VPCピアリング接続<a class="headerlink" href="#amazon-vpc_2" title="Permanent link">&para;</a></h3>
-<p>異なる Amazon VPC のネットワークを接続する。</p>
-<p><img alt="Amazon VPC ピアリング接続" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC ピアリング接続.png" /></p>
+<p>異なるAmazon VPCのネットワークを接続する。</p>
+<p><img alt="Amazon VPCピアリング接続" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPCピアリング接続.png" /></p>
 <h4 id="amazon-vpc_3">▼ Amazon VPCピアリング接続とは<a class="headerlink" href="#amazon-vpc_3" title="Permanent link">&para;</a></h4>
-<p>『一対一』の関係で、『異なる Amazon VPC 間』の双方向通信を可能にする。</p>
+<p>『一対一』の関係で、『異なるAmazon VPC間』の双方向通信を可能にする。</p>
 <h4 id="amazon-vpc_4">▼ Amazon VPCピアリング接続の可否<a class="headerlink" href="#amazon-vpc_4" title="Permanent link">&para;</a></h4>
-<p>Amazon VPC に複数の IPv4 CIDR ブロック ブロックがあり、1 つでも 同じ CIDR ブロック ブロックがある場合は、Amazon VPC ピアリング接続はできない。</p>
+<p>Amazon VPCに複数の IPv4 CIDRブロック ブロックがあり、1つでも 同じCIDRブロック ブロックがある場合は、Amazon VPC ピアリング接続はできない。</p>
 <table>
 <thead>
 <tr>
@@ -35043,7 +35043,7 @@
 <tr>
 <td>同じ/異なる</td>
 <td>同じ/異なる</td>
-<td>すべて異なる</td>
+<td>全て異なる</td>
 <td>⭕️</td>
 </tr>
 <tr>
@@ -35054,23 +35054,23 @@
 </tr>
 </tbody>
 </table>
-<p><img alt="Amazon VPC ピアリング接続不可の場合-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC ピアリング接続不可の場合-1.png" /></p>
-<p>たとえ、IPv6 が異なっていても、同様である。</p>
-<p><img alt="Amazon VPC ピアリング接続不可の場合-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC ピアリング接続不可の場合-2.png" /></p>
+<p><img alt="Amazon VPCピアリング接続不可の場合-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPCピアリング接続不可の場合-1.png" /></p>
+<p>たとえ、IPv6が異なっていても、同様である。</p>
+<p><img alt="Amazon VPCピアリング接続不可の場合-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPCピアリング接続不可の場合-2.png" /></p>
 <p><br></p>
 <h3 id="amazon-vpc_5">Amazon VPCエンドポイントサービス<a class="headerlink" href="#amazon-vpc_5" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-vpc_6">▼ Amazon VPCエンドポイントサービスとは<a class="headerlink" href="#amazon-vpc_6" title="Permanent link">&para;</a></h4>
-<p>Amazon VPC エンドポイントとは異なる能力なので注意する。</p>
-<p>Interface 型の Amazon VPC エンドポイント (プライベートリンク) を NLB に紐付けることにより、『一対多』の関係で、『異なる Amazon VPC 間』の双方向通信を可能にする。</p>
+<p>Amazon VPCエンドポイントとは異なる能力なので注意する。</p>
+<p>Interface型のAmazon VPCエンドポイント (プライベートリンク) をNLBに紐付けることにより、『一対多』の関係で、『異なるAmazon VPC間』の双方向通信を可能にする。</p>
 <p>エンドポイントのサービス名は、『<code>com.amazonaws.vpce.ap-northeast-1.vpce-svc-*****</code>』になる。</p>
-<p>Amazon API Gateway の Amazon VPC リンクは、Amazon VPC エンドポイントサービスに相当する。</p>
+<p>Amazon API GatewayのAmazon VPCリンクは、Amazon VPCエンドポイントサービスに相当する。</p>
 <p><img alt="vpc-endpoint-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-endpoint-service.png" /></p>
 <p><br></p>
 <h3 id="transit-gateway">Transit Gateway<a class="headerlink" href="#transit-gateway" title="Permanent link">&para;</a></h3>
 <h4 id="transit-gateway_1">▼ Transit Gatewayとは<a class="headerlink" href="#transit-gateway_1" title="Permanent link">&para;</a></h4>
-<p>『多対多』の関係で、『異なる Amazon VPC 間』や『Amazon VPC と Direct Connect 間』の双方向通信を可能にする。</p>
+<p>『多対多』の関係で、『異なるAmazon VPC間』や『Amazon VPCとDirect Connect間』の双方向通信を可能にする。</p>
 <p>クラウドルーターとして働く。</p>
-<p>Direct Connect がオンプレミスとの通信機能を持つため、Transit Gateway と Direct Connect を組み合わせれば、Amazon VPC とオンプレミスを接続できる。</p>
+<p>Direct Connectがオンプレミスとの通信機能を持つため、Transit GatewayとDirect Connectを組み合わせれば、Amazon VPCとオンプレミスを接続できる。</p>
 <p><img alt="transit-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transit-gateway.png" /></p>
 <blockquote>
 <ul>
@@ -35079,7 +35079,7 @@
 </ul>
 </blockquote>
 <h4 id="aws">▼ AWS間<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
-<p>AWS 間の通信の場合、アプリケーションデータを自動的に暗号化する。</p>
+<p>AWS間の通信の場合、アプリケーションデータを自動的に暗号化する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html">https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html</a></li>
@@ -35087,7 +35087,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="amazon-vpc-lattice">Amazon VPC Lattice<a class="headerlink" href="#amazon-vpc-lattice" title="Permanent link">&para;</a></h3>
-<p>Amazon EC2、Amazon ECS、Amazon EKS、AWS Lambda 間を接続する。</p>
+<p>Amazon EC2、Amazon ECS、Amazon EKS、AWS Lambda間を接続する。</p>
 <p><img alt="vpc-lattice" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-lattice.png" /></p>
 <blockquote>
 <ul>
@@ -35169,7 +35169,7 @@
 </table>
 <p><br></p>
 <h2 id="08-amazon-vpc">08. Amazon VPCフローログ<a class="headerlink" href="#08-amazon-vpc" title="Permanent link">&para;</a></h2>
-<p>Amazon VPC 内の ENI を通過するパケットをキャプチャできる。</p>
+<p>Amazon VPC内のENIを通過するパケットをキャプチャできる。</p>
 <div class="highlight"><pre><span></span><code>version<span class="w"> </span>account-id<span class="w">       </span>interface-id<span class="w">  </span>srcaddr<span class="w">           </span>dstaddr<span class="w">         </span>srcport<span class="w">         </span>dstport<span class="w">        </span>protocol<span class="w">   </span>packets<span class="w">    </span>bytes<span class="w">     </span>start<span class="w">            </span>end<span class="w">               </span>action<span class="w"> </span>log-status
 <span class="m">2</span><span class="w">       </span>&lt;AWSアカウントID&gt;<span class="w">  </span>eni-&lt;ENIのID&gt;<span class="w">  </span>&lt;送信元IPアドレス&gt;<span class="w">  </span>&lt;宛先IPアドレス&gt;<span class="w"> </span>&lt;送信元ポート番号&gt;<span class="w"> </span>&lt;宛先ポート番号&gt;<span class="w"> </span>&lt;プロトコル&gt;<span class="w"> </span>&lt;パケット数&gt;<span class="w"> </span>&lt;バイト数&gt;<span class="w"> </span>&lt;開始タイムスタンプ&gt;<span class="w"> </span>&lt;終了タイムスタンプ&gt;<span class="w"> </span>ACCEPT<span class="w"> </span>OK
 ...
@@ -35184,26 +35184,26 @@
 <h2 id="09">09. セキュリティグループ<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
 <h3 id="_12">セキュリティグループとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>アプリケーションのクラウドパケットフィルタリング型ファイアウォール (<code>L2</code>～<code>L4</code> を防御) として働く。</p>
-<p>リクエスト (プライベートネットワーク向き通信) では、プロトコルや受信元 IP アドレスを設定できる。</p>
+<p>リクエスト (プライベートネットワーク向き通信) では、プロトコルや受信元IPアドレスを設定できる。</p>
 <p>また、リクエスト (パブリックネットワーク向き通信) では、プロトコルや宛先プロトコルを設定できる。</p>
 <p><br></p>
 <h2 id="09-02">09-02. セットアップ<a class="headerlink" href="#09-02" title="Permanent link">&para;</a></h2>
 <h3 id="_13">コンソール画面の場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>リクエストを許可するルールとアウトバウンドルールを設定できる。</p>
-<p>特定のセキュリティグループに紐付けられている AWS リソースを見つけたい場合は、ENI でセキュリティグループの ID を検索する。</p>
-<p>インスタンス ID や説明文から、いずれの AWS リソースが紐づいているか否かを確認する。</p>
+<p>特定のセキュリティグループに紐付けられているAWSリソースを見つけたい場合は、ENIでセキュリティグループのIDを検索する。</p>
+<p>インスタンスIDや説明文から、いずれのAWSリソースが紐づいているか否かを確認する。</p>
 <p><br></p>
 <h3 id="ip_1">送信元IPアドレスの指定<a class="headerlink" href="#ip_1" title="Permanent link">&para;</a></h3>
 <h4 id="id">▼ セキュリティグループIDの紐付け<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
-<p>許可する送信元 IP アドレスにセキュリティグループ ID を設定した場合、そのセキュリティグループが紐付けられている ENI と、この ENI に紐付けられたリソースからのトラフィックを許可できる。</p>
-<p>リソースの IP アドレスが動的に変化する場合、有効な方法である。</p>
+<p>許可する送信元IPアドレスにセキュリティグループIDを設定した場合、そのセキュリティグループが紐付けられているENIと、このENIに紐付けられたリソースからのトラフィックを許可できる。</p>
+<p>リソースのIPアドレスが動的に変化する場合、有効な方法である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/Amazon">https://docs.aws.amazon.com/vpc/latest/userguide/Amazon</a> VPC_SecurityGroups.html#DefaultSecurityGroup</li>
 </ul>
 </blockquote>
 <h4 id="_14">▼ 自己参照<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>許可する送信元 IP アドレスに、自分自身のセキュリティグループ ID を設定した場合、同じセキュリティグループが紐付けられている同士で通信できるようになる。</p>
+<p>許可する送信元IPアドレスに、自分自身のセキュリティグループIDを設定した場合、同じセキュリティグループが紐付けられている同士で通信できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/51565372/self-referencing-aws-security-groups">https://stackoverflow.com/questions/51565372/self-referencing-aws-security-groups</a></li>
@@ -35230,7 +35230,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 21:19:15 JST">2026-04-22</span>
   </span>
 
     

@@ -33913,14 +33913,14 @@
 <h2 id="01">01. デバッグのプラクティス<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="var_dump"><code>var_dump()</code> 関数でデータの中身を確認<a class="headerlink" href="#var_dump" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ 基本形<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>ブラウザの『デベロッパーツール＞Network＞出力先ページの Preview タブまたは Response タブ』で確認できる。</p>
+<p>ブラウザの『デベロッパーツール＞Network＞出力先ページのPreviewタブまたはResponseタブ』で確認できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$var</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="_3">▼ 例外処理との組み合わせ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>ブラウザのデベロッパーツール＞Network＞出力先ページの Preview タブで例外エラー画面が表示される。</p>
+<p>ブラウザのデベロッパーツール＞Network＞出力先ページのPreviewタブで例外エラー画面が表示される。</p>
 <p>エラー画面の上部で、<code>var_dump($var)</code> の結果を確認できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -33981,7 +33981,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>pecl<span class="w"> </span>install<span class="w"> </span>xdebug-2.2.7
 </code></pre></div>
 <h4 id="2-xdebug">2. Xdebugの設定<a class="headerlink" href="#2-xdebug" title="Permanent link">&para;</a></h4>
-<p>Xdebug のあるローカル仮想環境から見て、PhpStrom ビルトイン仮想環境を接続先と見なす。</p>
+<p>Xdebugのあるローカル仮想環境から見て、PhpStromビルトイン仮想環境を接続先と見なす。</p>
 <div class="highlight"><pre><span></span><code><span class="na">zend_extension</span><span class="o">=</span><span class="s">/usr/lib64/php/modules/xdebug.so</span>
 
 <span class="na">xdebug.default_enable</span><span class="o">=</span><span class="s">1</span>
@@ -34013,16 +34013,16 @@
 <p>エディタは仮想サーバーを作成し、<code>9000</code> 番ポートを開放する。</p>
 <h4 id="2">2. エディタからデバッガーエンジンに対するリクエスト<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <p>デバッガーエンジン (Xdebug) は <code>80</code> 番ポートを開放する。</p>
-<p>エディタ仮想環境はこれに対して、セッション開始のリクエストを HTTP プロトコルで送信する。</p>
+<p>エディタ仮想環境はこれに対して、セッション開始のリクエストをHTTPプロトコルで送信する。</p>
 <h4 id="3_1">3. デバッガーエンジンから仮想環境に対するリクエスト<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
 <p>デバッガーエンジン (Xdebug) はセッションを開始し、エディタ仮想環境の <code>9000</code> 番ポートに対して、レスポンスを返信する。</p>
 <h4 id="4-breakpoint">4. Breakpointの設定<a class="headerlink" href="#4-breakpoint" title="Permanent link">&para;</a></h4>
-<p>エディタ仮想環境は、デバッガーエンジンに対して、Breakpoint を設定するリクエストを送信する。</p>
+<p>エディタ仮想環境は、デバッガーエンジンに対して、Breakpointを設定するリクエストを送信する。</p>
 <h4 id="5-dbgdebugger">5. DBGプロトコル：Debuggerプロトコルによる相互通信の確立<a class="headerlink" href="#5-dbgdebugger" title="Permanent link">&para;</a></h4>
-<p>DBG プロトコルを使用して、エディタ仮想環境とデバッガーエンジンの間の相互通信を確立する。</p>
+<p>DBGプロトコルを使用して、エディタ仮想環境とデバッガーエンジンの間の相互通信を確立する。</p>
 <h4 id="6">6. 相互通信の実行<a class="headerlink" href="#6" title="Permanent link">&para;</a></h4>
 <p>エディタは、デバッガーエンジンに対してコードを送信する。</p>
-<p>デバッガーエンジンは、Breakpoint までの各変数の中身を解析し、エディタ仮想環境に返信する。</p>
+<p>デバッガーエンジンは、Breakpointまでの各変数の中身を解析し、エディタ仮想環境に返信する。</p>
 <p><img alt="Xdebug仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Xdebug仕組み.png" /></p>
 <p><br></p>
 
@@ -34045,7 +34045,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

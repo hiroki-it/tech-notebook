@@ -33796,7 +33796,7 @@
 <h3 id="_2">キー名のケース<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ ローワーキャメルケース<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>高頻度で使用されている。</p>
-<p>例えば、Kubernetes ではローワーキャメルケースに統一されている。</p>
+<p>例えば、Kubernetesではローワーキャメルケースに統一されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects">https://kubernetes.io/docs/contribute/style/style-guide/#use-upper-camel-case-for-api-objects</a></li>
@@ -33806,7 +33806,7 @@
 </code></pre></div>
 <h4 id="_4">▼ スネークケース<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>中頻度で使用されている。</p>
-<p>例えば、Envoy ではスネークケースに統一されている。</p>
+<p>例えば、Envoyではスネークケースに統一されている。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_bar_baz</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </code></pre></div>
 <blockquote>
@@ -33835,7 +33835,7 @@
 <h3 id="_8">改行<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ <code>|</code> (パイプ)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>改行を改行のまま処理する。</p>
-<p>また、最終行の改行までをすべて使用する。</p>
+<p>また、最終行の改行までを全て使用する。</p>
 <p>コマンドを繋ぐ <code>&amp;&amp;</code> や <code>;</code> は不要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">  </span><span class="no">echo foo</span>
@@ -33851,7 +33851,7 @@
 </blockquote>
 <h4 id="_10">▼ <code>|+</code> (パイプ、プラス)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>改行を改行のまま処理する。</p>
-<p>また、最終行の改行のみでなく、それ以降の改行をすべて使用する。</p>
+<p>また、最終行の改行のみでなく、それ以降の改行を全て使用する。</p>
 <p>コマンドを繋ぐ <code>&amp;&amp;</code> や <code>;</code> は不要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|+</span>
 <span class="w">  </span><span class="no">echo foo</span>
@@ -33883,7 +33883,7 @@
 </blockquote>
 <h4 id="_11">▼ <code>&gt;</code> (大なり)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>改行をスペースに変換して処理する。</p>
-<p>また、最終行の改行までをすべて使用する。</p>
+<p>また、最終行の改行までを全て使用する。</p>
 <p>改行した異なるコマンドが、スペースを挟んで繋がってしまうため、<code>&amp;&amp;</code> や <code>;</code> で繋ぐ必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
 <span class="w">  </span><span class="no">echo foo &amp;&amp;</span>
@@ -33909,7 +33909,7 @@
 </blockquote>
 <h4 id="_12">▼ <code>&gt;+</code> (大なり、プラス)<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>改行をスペースに変換して処理する。</p>
-<p>また、最終行の改行のみでなく、それ以降の改行をすべて使用する。</p>
+<p>また、最終行の改行のみでなく、それ以降の改行を全て使用する。</p>
 <p>値が長くなる場合に便利である。</p>
 <p>改行した異なるコマンドが、スペースを挟んで繋がってしまうため、<code>&amp;&amp;</code> や <code>;</code> で繋ぐ必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;+</span>
@@ -33962,7 +33962,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:57:28 JST">2026-02-15</span>
   </span>
 
     

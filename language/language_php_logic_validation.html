@@ -33947,10 +33947,10 @@
 <h2 id="01">01. バリデーション<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">バリデーションの必要性の有無<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 不要な場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>DB から読み込んだ後に直接的に表示する値の場合、DB で Null にならないように制約をかけられる。</p>
+<p>DBから読み込んだ後に直接的に表示する値の場合、DBでNullにならないように制約をかけられる。</p>
 <p>そのため、値が想定通りの状態になっているかをあらためてバリデーションする必要はない。</p>
 <h4 id="_4">▼ 必要な場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>DB からの値を直接的に表示する場合と異なり、新しく作られる値を使用する場合、その値が想定外の状態になっている可能性がある。</p>
+<p>DBからの値を直接的に表示する場合と異なり、新しく作られる値を使用する場合、その値が想定外の状態になっている可能性がある。</p>
 <p>そのため、値が想定通りの状態になっているかをバリデーションする必要がある。</p>
 <p><br></p>
 <h3 id="_5">バリデーションパターンとバリデーション関数の対応<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
@@ -34279,7 +34279,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="ifreturn">▼ ifとreturnを使用した早期リターン<a class="headerlink" href="#ifreturn" title="Permanent link">&para;</a></h4>
-<p>各 if 文で <code>return</code> を使用することにより、<code>if</code> が入れ子状になることを防げる。</p>
+<p>各if文で <code>return</code> を使用することにより、<code>if</code> が入れ子状になることを防げる。</p>
 <p>これを、早期リターンともいう。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -34315,7 +34315,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="switch-case-break_1">▼ switch-case-breakを使用した早期リターン<a class="headerlink" href="#switch-case-break_1" title="Permanent link">&para;</a></h4>
-<p>if 文の代わりに、<code>switch-case-break</code> によって、実装に、『◯◯の場合に切り換える』という意味合いを持たせられる。</p>
+<p>if文の代わりに、<code>switch-case-break</code> によって、実装に、『◯◯の場合に切り換える』という意味合いを持たせられる。</p>
 <p>ここでは、関数に実装することを想定して、<code>break</code> ではなく <code>return</code> を使用している。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -34348,7 +34348,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_9">▼ ガード節を使用した早期リターン<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>早期リターンの if 文の波括弧を省略した記法を、ガード節という。</p>
+<p>早期リターンのif文の波括弧を省略した記法を、ガード節という。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -34442,7 +34442,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 18:28:20 JST">2026-02-17</span>
   </span>
 
     

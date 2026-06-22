@@ -34032,7 +34032,7 @@
 <p><br></p>
 <h2 id="01-json">01. JSONとは<a class="headerlink" href="#01-json" title="Permanent link">&para;</a></h2>
 <p>異なる言語間やサーバー間で変換できるデータ記述型言語である。</p>
-<p>元は JavaScript から生まれた。</p>
+<p>元はJavaScriptから生まれた。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.json.org/json-en.html">https://www.json.org/json-en.html</a></li>
@@ -34041,7 +34041,7 @@
 <p><br></p>
 <h2 id="02">02. 文法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">キー名<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>JSON のキー名はローワーキャメルケースにする。</p>
+<p>JSONのキー名はローワーキャメルケースにする。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;propertyName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;propertyValue&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
@@ -34059,9 +34059,9 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_5">コメントアウト<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>JSON にはコメントアウトを定義できない。</p>
+<p>JSONにはコメントアウトを定義できない。</p>
 <p>代わりに、<code>_comment</code> キーを定義する。</p>
-<p>アプリ側で、JSON の <code>_comment</code> キーを無視するような処理を実装する。</p>
+<p>アプリ側で、JSONの <code>_comment</code> キーを無視するような処理を実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;_comment&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;金額&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;account&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">200</span><span class="p p-Indicator">,</span>
@@ -34080,15 +34080,15 @@
 <p><br></p>
 <h2 id="03">03. 相互パース (シリアライズ + デシリアライズ)<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_6">フロントエンドアプリケーションの文脈<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>フロントエンドに JavaScript を使用しているとする。</p>
-<p>JavaScript のオブジェクト型を JSON に変換する処理はシリアライズである。</p>
-<p>反対に、JSON を JavaScript のオブジェクト型に変換する処理はデシリアライズである。</p>
+<p>フロントエンドにJavaScriptを使用しているとする。</p>
+<p>JavaScriptのオブジェクト型をJSONに変換する処理はシリアライズである。</p>
+<p>反対に、JSONをJavaScriptのオブジェクト型に変換する処理はデシリアライズである。</p>
 <p><img alt="シリアライズとデシリアライズ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シリアライズとデシリアライズ.png" /></p>
 <p><br></p>
 <h3 id="_7">バックエンドアプリケーションの文脈<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>バックエンドに PHP を使用しているとする。</p>
-<p>JSON を PHP のオブジェクト型に変換する処理はデシリアライズである。</p>
-<p>反対に、PHP のオブジェクト型を JSON に変換する処理はシリアライズである。</p>
+<p>バックエンドにPHPを使用しているとする。</p>
+<p>JSONをPHPのオブジェクト型に変換する処理はデシリアライズである。</p>
+<p>反対に、PHPのオブジェクト型をJSONに変換する処理はシリアライズである。</p>
 <p><img alt="シリアライズとデシリアライズ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シリアライズとデシリアライズ.png" /></p>
 <p><br></p>
 <h2 id="04">04. オブジェクトデータ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
@@ -34140,7 +34140,7 @@
 <span class="nx">json</span><span class="p">[</span><span class="s2">&quot;prefecture&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Tokyo&quot;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="_10">▼ キーの並び順<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>キーはアルファベット順に並べるとよい。</p>
+<p>キーはアルファベット順に並べると良い。</p>
 <p>以下のサイトで並び替えられる。</p>
 <blockquote>
 <ul>
@@ -34150,7 +34150,7 @@
 <p><br></p>
 <h3 id="_11">フロントエンドの場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ 定義方法<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>キーはクオーテーションで囲う必要がない。</p>
+<p>キーはクオーテーションで囲う必要が無い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">account</span><span class="o">:</span><span class="w"> </span><span class="mf">200</span><span class="p">,</span>
@@ -34189,7 +34189,7 @@
 <h2 id="05">05. オブジェクトデータの変換<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_15">フロントエンドの場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="jsjson">▼ シリアライズ：JS型からJSON<a class="headerlink" href="#jsjson" title="Permanent link">&para;</a></h4>
-<p>JS 型オブジェクトから JSON への変換には、<code>JSON.stringfy()</code> 関数を使用する。</p>
+<p>JS型オブジェクトからJSONへの変換には、<code>JSON.stringfy()</code> 関数を使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">fruit</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;banana&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;apple&quot;</span><span class="p">],</span>
@@ -34203,8 +34203,8 @@
 <span class="c1">// {&quot;fruit&quot;:[&quot;banana&quot;,&quot;apple&quot;],&quot;account&quot;:200}</span>
 </code></pre></div>
 <h4 id="jsonjs">▼ デシリアライズ：JSONからJS型<a class="headerlink" href="#jsonjs" title="Permanent link">&para;</a></h4>
-<p>JSON から JS 型オブジェクトへの変換には、<code>JSON.parse()</code> 関数を使用する。</p>
-<p>レスポンスされた JSON はエスケープされていることに注意する。</p>
+<p>JSONからJS型オブジェクトへの変換には、<code>JSON.parse()</code> 関数を使用する。</p>
+<p>レスポンスされたJSONはエスケープされていることに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">escapedJson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{&quot;fruit&quot;:[&quot;banana&quot;,&quot;apple&quot;],&quot;account&quot;:200}&#39;</span><span class="p">;</span>
 
@@ -34262,10 +34262,10 @@
 <p><br></p>
 <h3 id="_17">バックエンドの場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="jsonphp">▼ デシリアライズ：JSONからPHP型<a class="headerlink" href="#jsonphp" title="Permanent link">&para;</a></h4>
-<p>JSON から PHP 型オブジェクトの変換には。</p>
+<p>JSONからPHP型オブジェクトの変換には。</p>
 <p><code>json_decode()</code> 関数を使用する。</p>
-<p>第二引数が <code>false</code> の場合、object 形式オブジェクトに変換する。</p>
-<p>リクエストで送信する JSON はエスケープする必要があることに注意する。</p>
+<p>第二引数が <code>false</code> の場合、object形式オブジェクトに変換する。</p>
+<p>リクエストで送信するJSONはエスケープする必要があることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="c1">// リクエストで取得したJSON</span>
@@ -34341,7 +34341,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

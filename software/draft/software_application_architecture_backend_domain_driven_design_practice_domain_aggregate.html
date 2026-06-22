@@ -33429,8 +33429,8 @@
 <p>集約とは、関連するオブジェクト群（エンティティ、値オブジェクト）のグループである。</p>
 <p>※ 集約オブジェクトはルートエンティティ（書籍には出てきていない言葉）ともいう。</p>
 <p>『集約に含まれるエンティティや値オブジェクトの状態を変更するためには、集約を操作しなければならない』という実装にすることで、集約がオブジェクト群の状態の整合性を守る範囲になる。</p>
-<p>まず『本に関するものを全部 <code>Book</code> 集約（≒ Book ルートエンティティ）に入れてしまう』設計の問題を通して、集約境界の考え方を説明する。</p>
-<p>この実装は一見わかりやすく見えるが、<code>Book</code> 集約、<code>Review</code> 集約、<code>Publisher</code> 集約、<code>Stock</code> 集約という異なる集約を 1 つの集約に押し込めている。</p>
+<p>まず『本に関するものを全部 <code>Book</code> 集約（≒ Bookルートエンティティ）に入れてしまう』設計の問題を通して、集約境界の考え方を説明する。</p>
+<p>この実装は一見わかりやすく見えるが、<code>Book</code> 集約、<code>Review</code> 集約、<code>Publisher</code> 集約、<code>Stock</code> 集約という異なる集約を1つの集約に押し込めている。</p>
 <p>その結果、集約が大きくなり、状態の整合性を守る範囲が広くなってしまっている。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
@@ -33449,7 +33449,7 @@
 </code></pre></div>
 <h2 id="11-2">11-2 集約の設計上の指針<a class="headerlink" href="#11-2" title="Permanent link">&para;</a></h2>
 <h3 id="11-2-1">11-2-1 集約は小さくする<a class="headerlink" href="#11-2-1" title="Permanent link">&para;</a></h3>
-<p>状態の整合性を守る範囲が広くなると、操作するオブジェクトが増えて処理や DB の性能問題が起こったり、ほかの集約と範囲が重なって DB で競合する可能性があるため、集約をできるだけ小さく保つ必要がある。</p>
+<p>状態の整合性を守る範囲が広くなると、操作するオブジェクトが増えて処理やDBの性能問題が起こったり、ほかの集約と範囲が重なってDBで競合する可能性があるため、集約をできるだけ小さく保つ必要がある。</p>
 <h4 id="_2">▼ 集約をどこで区切るか<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <ul>
 <li>集約がどんなドメインルールを扱っているのか、というモデリングに戻って考える。オブジェクトの状態の整合性を保つ必要があるかどうかで集約の境界を決めるべきである。例えば『<code>Book</code> 集約と <code>Review</code> 集約は関連しているから同じ集約にする』という考え方は誤りである。重要なのは、<code>Book</code> 集約と <code>Review</code> 集約の状態について一貫性を保つ必要があるかどうかである。レビューの追加や更新は、書籍の基本情報の更新とは独立して行われるため、異なる集約として判断できる。</li>
@@ -33466,7 +33466,7 @@
 <p>集約が他の集約を直接コールし、さらにその内部状態を直接変更する例である。</p>
 <p>この実装では、<code>Book</code> 集約が <code>Review</code> 集約のメソッドを直接コールしている。</p>
 <p>これでは <code>Review</code> 集約側が守るべき整合性の範囲を <code>Book</code> 集約が侵食してしまい、集約の結合度が高くなってしまう。</p>
-<p>識別子にはドメインルールを持たせないほうがよいため、ドメインルール上の識別子（例：書籍の ISBN）はエンティティの識別子にしないほうがいい。</p>
+<p>識別子にはドメインルールを持たせないほうが良いため、ドメインルール上の識別子（例：書籍のISBN）はエンティティの識別子にしないほうがいい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// アンチパターン: 集約が他の集約を直接コールする</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
@@ -33484,7 +33484,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>Review</code> 集約が <code>Book</code> 集約そのものを保持するのではなく、BookId を保持する例が次の実装である。</p>
+<p><code>Review</code> 集約が <code>Book</code> 集約そのものを保持するのではなく、BookIdを保持する例が次の実装である。</p>
 <p>この形にすることで、<code>Review</code> 集約は <code>Book</code> 集約の内部構造を知らずに済む。</p>
 <p>これが『集約間は識別子でコールする』という指針の具体例である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Review</span><span class="w"> </span><span class="p">{</span>
@@ -33498,7 +33498,7 @@
 <span class="w">  </span><span class="c1">// (省略)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>Book</code> 集約側が ReviewId のリストを持つパターンもある。</p>
+<p><code>Book</code> 集約側がReviewIdのリストを持つパターンもある。</p>
 <p>このパターンでは、<code>Book</code> 集約と複数の <code>Review</code> 集約の関係を表現しつつ、<code>Review</code> 集約そのものを直接抱え込まずに済む。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
@@ -33581,7 +33581,7 @@
 <h3 id="11-2-4">11-2-4 集約の外部では結果整合性を用いる<a class="headerlink" href="#11-2-4" title="Permanent link">&para;</a></h3>
 <p>異なる集約の状態の整合性を保ちたい場合、これらの集約を統合するのではなく、結果整合性を採用することで集約間の整合性を保つように妥協することも重要である。</p>
 <p><code>Book</code> 集約のなかに <code>Review</code> 集約を含め、状態の整合性を保とうとするとすると次のような設計になる。</p>
-<p>この実装は『1 冊につきレビューは 100 件まで』という Book 集約と Review 集約間の状態の整合性を保ちやすくなる一方、<code>Book</code> 集約が肥大化し、<code>Review</code> 集約の更新のたびに <code>Book</code> 集約全体を巻き込んでしまっている</p>
+<p>この実装は『1冊につきレビューは100件まで』というBook集約とReview集約間の状態の整合性を保ちやすくなる一方、<code>Book</code> 集約が肥大化し、<code>Review</code> 集約の更新のたびに <code>Book</code> 集約全体を巻き込んでしまっている</p>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nx">bookId</span><span class="o">:</span><span class="w"> </span><span class="kt">BookId</span><span class="p">,</span>
@@ -33601,7 +33601,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>それに対し、<code>Book</code> 集約と <code>Review</code> 集約を分けたまま、状態の結果整合性を保つ。</p>
-<p>この設計では、<code>Book</code> 集約と <code>Review</code> 集約を疎結合にしている。Book リポジトリで Books 集約の状態を取得し、Review リポジトリで取得した <code>Review</code> 集約に渡している。</p>
+<p>この設計では、<code>Book</code> 集約と <code>Review</code> 集約を疎結合にしている。BookリポジトリでBooks集約の状態を取得し、Reviewリポジトリで取得した <code>Review</code> 集約に渡している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Book集約 - 基本情報管理に特化</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
@@ -33653,7 +33653,7 @@
 </code></pre></div>
 <h2 id="11-3">11-3 複数の集約による実装<a class="headerlink" href="#11-3" title="Permanent link">&para;</a></h2>
 <h3 id="11-3-1">11-3-1 設計指針に基づいた実装アプローチ<a class="headerlink" href="#11-3-1" title="Permanent link">&para;</a></h3>
-<p>ここでは、『集約は小さくする』『集約間は識別子で参照する』『デメテルの法則に従う』『集約の外部では結果整合性を用いる』という 4 つの原則を守って、集約を実装する。</p>
+<p>ここでは、『集約は小さくする』『集約間は識別子で参照する』『デメテルの法則に従う』『集約の外部では結果整合性を用いる』という4つの原則を守って、集約を実装する。</p>
 <table>
 <thead>
 <tr>
@@ -33674,7 +33674,7 @@
 </table>
 <h3 id="11-3-2-review">11-3-2 Review集約の実装<a class="headerlink" href="#11-3-2-review" title="Permanent link">&para;</a></h3>
 <p>実際の <code>Review</code> 集約の実装は次のとおりである。</p>
-<p>この実装では、<code>Review</code> 集約が書籍 ID（<code>BookId</code>）などの状態を持ち、また信頼性評価（<code>isTrustworthy()</code>）、推薦本抽出（<code>extractRecommendedBooks()</code>）、名前変更（<code>updateName()</code>）、評価変更（<code>updateRating()</code>）、コメント編集（<code>editComment()</code>）という振る舞いを持つ。</p>
+<p>この実装では、<code>Review</code> 集約が書籍ID（<code>BookId</code>）などの状態を持ち、また信頼性評価（<code>isTrustworthy()</code>）、推薦本抽出（<code>extractRecommendedBooks()</code>）、名前変更（<code>updateName()</code>）、評価変更（<code>updateRating()</code>）、コメント編集（<code>editComment()</code>）という振る舞いを持つ。</p>
 <p><code>Review</code> 集約が <code>Book</code> 集約を参照するときは、<code>BookId</code> を使うだけである。</p>
 <p><code>Review</code> 集約と <code>Book</code> 集約は疎結合になっている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">BookId</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../Book/BookId/BookId&quot;</span><span class="p">;</span>
@@ -33791,7 +33791,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="11-3-3-book">11-3-3 Book集約の実装<a class="headerlink" href="#11-3-3-book" title="Permanent link">&para;</a></h3>
-<p><code>Book</code> 集約は書籍 ID（<code>BookId</code>）、タイトル（<code>Title</code>）、著者（<code>Author</code>）、価格（<code>Price</code>）という状態を持ち、また価格変更（<code>changePrice()</code>）という振る舞いを持つ。</p>
+<p><code>Book</code> 集約は書籍ID（<code>BookId</code>）、タイトル（<code>Title</code>）、著者（<code>Author</code>）、価格（<code>Price</code>）という状態を持ち、また価格変更（<code>changePrice()</code>）という振る舞いを持つ。</p>
 <p><code>Book</code> 集約が <code>Review</code> 集約をコールすることはない。</p>
 <p><code>Review</code> 集約と <code>Book</code> 集約は疎結合になっている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Author</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./Author/Author&quot;</span><span class="p">;</span>
@@ -34198,7 +34198,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月23日 20:17:49 JST">2026-05-23</span>
   </span>
 
     

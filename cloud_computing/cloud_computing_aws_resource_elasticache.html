@@ -34048,7 +34048,7 @@
 <p><br></p>
 <h2 id="01-amazon-elasticache">01. Amazon ElastiCacheとは<a class="headerlink" href="#01-amazon-elasticache" title="Permanent link">&para;</a></h2>
 <p>アプリケーションの代わりに、セッション、クエリキャッシュ、分散ロックなどを管理する。</p>
-<p>Redis と Memcached がある。</p>
+<p>RedisとMemcachedがある。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/hharu/items/c8c2954290f920f8a2f6">https://qiita.com/hharu/items/c8c2954290f920f8a2f6</a></li>
@@ -34074,7 +34074,7 @@
 <tbody>
 <tr>
 <td style="text-align: left;">クラスターエンジン</td>
-<td>すべてのRedisノードのキャッシュエンジンを設定する。Redis通常モード、Redisクラスターモードから選択する。</td>
+<td>全てのRedisノードのキャッシュエンジンを設定する。Redis通常モード、Redisクラスターモードから選択する。</td>
 <td>Redisクラスターモードと同様に、Redis通常モードもクラスター構成になる。ただし、クラスターモードとはクラスターの構成方法が異なる。</td>
 </tr>
 <tr>
@@ -34084,12 +34084,12 @@
 </tr>
 <tr>
 <td style="text-align: left;">エンジンバージョンの互換性</td>
-<td>すべてのRedisノードのキャッシュエンジンのバージョンを設定する。</td>
-<td>マイナーバージョンが自動的に更新されないように、例えば『<code>6.x</code>』は設定しないほうがよい。</td>
+<td>全てのRedisノードのキャッシュエンジンのバージョンを設定する。</td>
+<td>マイナーバージョンが自動的に更新されないように、例えば『<code>6.x</code>』は設定しないほうが良い。</td>
 </tr>
 <tr>
 <td style="text-align: left;">パラメーターグループ</td>
-<td>すべてのRedisノードのグローバルオプションを設定する。</td>
+<td>全てのRedisノードのグローバルオプションを設定する。</td>
 <td>デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。</td>
 </tr>
 <tr>
@@ -34137,7 +34137,7 @@
 <p><br></p>
 <h3 id="redis">Redisクラスター<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h3>
 <h4 id="redis_1">▼ Redisクラスターとは<a class="headerlink" href="#redis_1" title="Permanent link">&para;</a></h4>
-<p>複数の Redis ノードを持つ Redis シャードから構成されている。</p>
+<p>複数のRedisノードを持つRedisシャードから構成されている。</p>
 <p><code>1</code> 個のリクエストを処理するグループ単位である。</p>
 <p><img alt="redis-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/redis-cluster.png" /></p>
 <blockquote>
@@ -34147,7 +34147,7 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ クラスターモード<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>クラスターモードを有効化すると、Redis クラスター内に複数の Redis シャードを作成する。</p>
+<p>クラスターモードを有効化すると、Redisクラスター内に複数のRedisシャードを作成する。</p>
 <p>反対に無効化すると、シャードは <code>1</code> 個だけ作成される。</p>
 <blockquote>
 <ul>
@@ -34157,10 +34157,10 @@
 <p><br></p>
 <h3 id="redis_2">Redisシャード<a class="headerlink" href="#redis_2" title="Permanent link">&para;</a></h3>
 <h4 id="redis_3">▼ Redisシャードとは<a class="headerlink" href="#redis_3" title="Permanent link">&para;</a></h4>
-<p>Redis ノードのグループであり、処理の実行単位でもある。</p>
+<p>Redisノードのグループであり、処理の実行単位でもある。</p>
 <p>同じデータを保管するグループ単位であり、プライマリーノードとレプリカノードが含まれる。</p>
-<p>同じ Redis シャード内にある Redis ノード間では、セッションやクエリキャッシュが同期される。</p>
-<p>一方で、Amazon Aurora の DB クラスターはこれに相当する概念である。</p>
+<p>同じRedisシャード内にあるRedisノード間では、セッションやクエリキャッシュが同期される。</p>
+<p>一方で、Amazon AuroraのDBクラスターはこれに相当する概念である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards">https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards</a></li>
@@ -34173,17 +34173,17 @@
 <p><br></p>
 <h3 id="_5">セッション管理機能<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ セッション管理機能とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>アプリケーションがセッション ID を管理する代わりに、セッション ID を管理する。</p>
-<p>冗長化されたそれぞれのアプリケーションは、ユーザーのログイン後に、Amazon ElastiCache から共通のセッション ID を取得する。</p>
-<p><img alt="Amazon ElastiCache のセッション管理機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon ElastiCache のセッション管理機能.png" /></p>
+<p>アプリケーションがセッションIDを管理する代わりに、セッションIDを管理する。</p>
+<p>冗長化されたそれぞれのアプリケーションは、ユーザーのログイン後に、Amazon ElastiCacheから共通のセッションIDを取得する。</p>
+<p><img alt="Amazon ElastiCacheのセッション管理機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon ElastiCacheのセッション管理機能.png" /></p>
 <h4 id="amazon-elasticache">▼ Amazon ElastiCacheを使用しない場合<a class="headerlink" href="#amazon-elasticache" title="Permanent link">&para;</a></h4>
 <p>アプリケーションが特にコンテナの場合、アプリでセッションデータを管理してしまうと、該当のセッションを持ったコンテナが他のコンテナにセッションデータを引き継げず、スケールイン/スケールアウトしてしまう。</p>
-<p>一方で、Amazon ElastiCache に管理を切り分けることにより、コンテナがスケールイン/スケールアウトしても、ログイン状態を維持できるようになる。</p>
+<p>一方で、Amazon ElastiCacheに管理を切り分けることにより、コンテナがスケールイン/スケールアウトしても、ログイン状態を維持できるようになる。</p>
 <p><br></p>
 <h3 id="_7">クエリキャッシュ管理機能<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ クエリキャッシュ管理機能とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>Amazon RDS に対する SQL と読み出されたデータを、キャッシュとして管理する。</p>
-<p>DB 側でのクエリキャッシュはパフォーマンス上の問題から廃止になっており、DB からクエリキャッシュ機能を切り分けた Amazon ElastiCache が必要になる。</p>
+<p>Amazon RDSに対するSQLと読み出されたデータを、キャッシュとして管理する。</p>
+<p>DB側でのクエリキャッシュはパフォーマンス上の問題から廃止になっており、DBからクエリキャッシュ機能を切り分けたAmazon ElastiCacheが必要になる。</p>
 <p><img alt="クエリCache管理機能_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クエリCache管理機能_1.png" /></p>
 <blockquote>
 <ul>
@@ -34195,7 +34195,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。</p>
+<p>アプリケーションは、Amazon RDSの前に、Redisに対してRead処理を実行する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
@@ -34203,11 +34203,11 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>初めて実行された SQL の場合、Redis は SQL をキーとして保管し、キャッシュがないことをアプリケーションへ返却する。</p>
+<p>初めて実行されたSQLの場合、RedisはSQLをキーとして保管し、キャッシュが無いことをアプリケーションへ返却する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>アプリケーションは Amazon RDS に対して Read 処理を実行する。</p>
+<p>アプリケーションはAmazon RDSに対してRead処理を実行する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
@@ -34215,7 +34215,7 @@
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>アプリケーションは Redis にデータを登録する。</p>
+<p>アプリケーションはRedisにデータを登録する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Amazon ElastiCacheには、SQLの実行結果がまだ保管されていない</span>
@@ -34236,7 +34236,7 @@
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>次回、アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。</p>
+<p>次回、アプリケーションは、Amazon RDSの前に、Redisに対してRead処理を実行する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
@@ -34244,7 +34244,7 @@
 <dl>
 <dt><code>(7)</code></dt>
 <dd>
-<p>Redis は、SQL をキーにしてデータを特定し、アプリケーションに返却する。</p>
+<p>Redisは、SQLをキーにしてデータを特定し、アプリケーションに返却する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Amazon ElastiCacheには、SQLの実行結果が既に保管されている</span>
@@ -34305,30 +34305,30 @@
 <p><br></p>
 <h3 id="_12">計画的なダウンタイム<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ 計画的なダウンタイムとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>Redis クラスターでは、設定値 (例：エンジンバージョン) のアップグレード時に、Redis ノードの再起動が必要である。</p>
+<p>Redisクラスターでは、設定値 (例：エンジンバージョン) のアップグレード時に、Redisノードの再起動が必要である。</p>
 <p>サイトの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。</p>
 <h4 id="_14">▼ バックアップとインポートによるダウンタイムの最小化<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>以下の手順で、ダウンタイムを最小限にしてアップグレードできる。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Redis のセッションやクエリキャッシュを S3 にエクスポートする。</p>
+<p>RedisのセッションやクエリキャッシュをS3にエクスポートする。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>新しい Redis を作成する。このとき、インポートを使用して、セッションやクエリキャッシュを引き継いだ Redis クラスターを別途作成する。</p>
+<p>新しいRedisを作成する。この時、インポートを使用して、セッションやクエリキャッシュを引き継いだRedisクラスターを別途作成する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>新しく作成した Redis クラスターをアップグレードする。</p>
+<p>新しく作成したRedisクラスターをアップグレードする。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>アプリケーションの接続先を古い Redis クラスターから新しいものに変更する。</p>
+<p>アプリケーションの接続先を古いRedisクラスターから新しいものに変更する。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>古い Redis クラスターを削除する。</p>
+<p>古いRedisクラスターを削除する。</p>
 </dd>
 </dl>
 <p><br></p>
@@ -34352,7 +34352,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 20:03:06 JST">2026-04-29</span>
   </span>
 
     

@@ -35692,7 +35692,7 @@
 <h3 id="configure">configure<a class="headerlink" href="#configure" title="Permanent link">&para;</a></h3>
 <h4 id="configure_1">▼ configure<a class="headerlink" href="#configure_1" title="Permanent link">&para;</a></h4>
 <p>資格情報を設定する。</p>
-<p>OS によって、資格情報ファイルの配置場所が異なる。</p>
+<p>OSによって、資格情報ファイルの配置場所が異なる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure
 </code></pre></div>
 <h4 id="-profile">▼ --profile<a class="headerlink" href="#-profile" title="Permanent link">&para;</a></h4>
@@ -35721,7 +35721,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 <p>資格情報の特定の項目を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;資格情報の項目&gt;
 </code></pre></div>
-<p>アクセスキーID を設定する。</p>
+<p>アクセスキーIDを設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="s2">&quot;&lt;アクセスキーID&gt;&quot;</span>
 </code></pre></div>
 <p>シークレットアクセスキーを設定する。</p>
@@ -35736,10 +35736,10 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 <h3 id="awsconfidentials"><code>~/.aws/confidentials</code> ファイル<a class="headerlink" href="#awsconfidentials" title="Permanent link">&para;</a></h3>
 <h4 id="awsconfidentials_1">▼ <code>~/.aws/confidentials</code> ファイルとは<a class="headerlink" href="#awsconfidentials_1" title="Permanent link">&para;</a></h4>
 <p>資格情報を設定する。</p>
-<p>Linux や Unix の場合は、<code>$HOME/.aws/&lt;資格情報ファイル名&gt;</code> に配置される。</p>
-<p>また、Windows の場合は、<code>%USERPROFILE%\.aws\&lt;資格情報ファイル名&gt;</code> に配置される。</p>
+<p>LinuxやUnixの場合は、<code>$HOME/.aws/&lt;資格情報ファイル名&gt;</code> に配置される。</p>
+<p>また、Windowsの場合は、<code>%USERPROFILE%\.aws\&lt;資格情報ファイル名&gt;</code> に配置される。</p>
 <h4 id="aws_access_key_id">▼ aws_access_key_id<a class="headerlink" href="#aws_access_key_id" title="Permanent link">&para;</a></h4>
-<p>AWS CLI を実行するアカウントのアクセスキーID を設定する。</p>
+<p>AWS CLIを実行するアカウントのアクセスキーIDを設定する。</p>
 <p><code>config</code> ファイルに設定できるが、<code>confidentials</code> ファイルへの設定が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[default]</span>
 <span class="na">aws_access_key_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">*****</span>
@@ -35750,7 +35750,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 </ul>
 </blockquote>
 <h4 id="aws_secret_access_key">▼ aws_secret_access_key<a class="headerlink" href="#aws_secret_access_key" title="Permanent link">&para;</a></h4>
-<p>AWS CLI を実行するアカウントのシークレットアクセスキーID を設定する。</p>
+<p>AWS CLIを実行するアカウントのシークレットアクセスキーIDを設定する。</p>
 <p><code>config</code> ファイルに設定できるが、<code>confidentials</code> ファイルへの設定が推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[default]</span>
 <span class="na">aws_secret_access_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">*****</span>
@@ -35774,7 +35774,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 <p><br></p>
 <h3 id="awsconfig"><code>~/.aws/config</code> ファイル<a class="headerlink" href="#awsconfig" title="Permanent link">&para;</a></h3>
 <h4 id="output">▼ output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h4>
-<p>AWS CLI の返却値のデータ形式を設定する。</p>
+<p>AWS CLIの返却値のデータ形式を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[default]</span>
 <span class="na">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">json</span>
 </code></pre></div>
@@ -35784,7 +35784,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 </ul>
 </blockquote>
 <h4 id="region">▼ region<a class="headerlink" href="#region" title="Permanent link">&para;</a></h4>
-<p>AWS CLI で操作する AWS リソースのリージョンを設定する。</p>
+<p>AWS CLIで操作するAWSリソースのリージョンを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[default]</span>
 <span class="na">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ap-northeast-1</span>
 </code></pre></div>
@@ -35794,7 +35794,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 </ul>
 </blockquote>
 <h4 id="role_arn">▼ role_arn<a class="headerlink" href="#role_arn" title="Permanent link">&para;</a></h4>
-<p>AWS CLI の実行で、AWS IAM ユーザーに委譲する AWS IAM ロールを設定する。</p>
+<p>AWS CLIの実行で、AWS IAMユーザーに委譲するAWS IAMロールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[profile foo]</span>
 <span class="na">role_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">arn:aws:iam::&lt;AWSアカウントID&gt;:role/foo-role</span>
 </code></pre></div>
@@ -35804,7 +35804,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 </ul>
 </blockquote>
 <h4 id="role_session_name">▼ role_session_name<a class="headerlink" href="#role_session_name" title="Permanent link">&para;</a></h4>
-<p>AWS IAM ロールの委譲後の AWS IAM ユーザーの一時的な名前を設定する。</p>
+<p>AWS IAMロールの委譲後のAWS IAMユーザーの一時的な名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[profile foo]</span>
 <span class="na">role_session_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">hiroki.hasegawa</span>
 </code></pre></div>
@@ -35814,7 +35814,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 </ul>
 </blockquote>
 <h4 id="source_profile">▼ source_profile<a class="headerlink" href="#source_profile" title="Permanent link">&para;</a></h4>
-<p>AWS IAM ロールの委譲先の AWS IAM ユーザーのプロファイル名を設定する。</p>
+<p>AWS IAMロールの委譲先のAWS IAMユーザーのプロファイル名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[profile foo]</span>
 <span class="na">source_profile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">default</span>
 </code></pre></div>
@@ -35826,7 +35826,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 <p><br></p>
 <h2 id="01-03">01-03. 環境変数<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="aws_access_key_id_1">AWS_ACCESS_KEY_ID<a class="headerlink" href="#aws_access_key_id_1" title="Permanent link">&para;</a></h3>
-<p>現在のターミナルで使用するアクセスキーID を設定する。</p>
+<p>現在のターミナルで使用するアクセスキーIDを設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>&lt;アクセスキーID&gt;
 </code></pre></div>
 <p><br></p>
@@ -35864,7 +35864,7 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 <p><br></p>
 <h3 id="aws_session_token_1">AWS_SESSION_TOKEN<a class="headerlink" href="#aws_session_token_1" title="Permanent link">&para;</a></h3>
 <p>現在のターミナルで使用するセッショントークンを設定する。</p>
-<p>AWS STS で発行された一時的な資格情報に含まれ、この資格情報を使用するときに、アクセスキーID やシークレットアクセスキーと合わせて必要になる。</p>
+<p>AWS STSで発行された一時的な資格情報に含まれ、この資格情報を使用するときに、アクセスキーIDとシークレットアクセスキーと合わせて必要になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SESSION_TOKEN</span><span class="o">=</span>&lt;セッショントークン&gt;
 </code></pre></div>
 <p><br></p>
@@ -35914,30 +35914,30 @@ Default<span class="w"> </span>output<span class="w"> </span>format<span class="
 <p><br></p>
 <h3 id="api">API側のフィルタリング系<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <h4 id="api_1">▼ API側のフィルタリング系とは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
-<p>AWS リソースの API 側でフィルタリングし、実際に取得するデータを制御できる。</p>
-<p>AWS リソースごとに専用のオプションがある。</p>
-<p>代わりに、<code>jq</code> コマンドの <code>select()</code> 関数を使用してもよい。</p>
+<p>AWSリソースのAPI側でフィルタリングし、実際に取得するデータを制御できる。</p>
+<p>AWSリソースごとに専用のオプションがある。</p>
+<p>代わりに、<code>jq</code> コマンドの <code>select()</code> 関数を使用しても良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side">https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side</a></li>
 </ul>
 </blockquote>
 <h4 id="-filter">▼ --filter<a class="headerlink" href="#-filter" title="Permanent link">&para;</a></h4>
-<p>Amazon SES、AWS Cost Explorer など</p>
+<p>Amazon SES、AWS Cost Explorerなど</p>
 <h4 id="-filters">▼ --filters<a class="headerlink" href="#-filters" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2、AWS AutoScaling、Amazon RDS など</p>
+<p>Amazon EC2、AWS AutoScaling、Amazon RDSなど</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 特定のタグ値のデータのみを取得する。『tag:』のつけ忘れに注意する。</span>
 $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:&lt;タグ名&gt;,Values=&lt;タグ値&gt;&quot;</span>
 </code></pre></div>
 <h4 id="filter">▼ filterの文字を含む独自のオプション<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h4>
-<p>AWS DynamoDB など</p>
+<p>AWS DynamoDBなど</p>
 <h4 id="-include">▼ --include<a class="headerlink" href="#-include" title="Permanent link">&para;</a></h4>
-<p>AWS Certificate Manager など</p>
+<p>AWS Certificate Managerなど</p>
 <p><br></p>
 <h3 id="_6">コマンド実行側のフィルタリング系<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ コマンド実行側のフィルタリング系とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>コマンド実行側でフィルタリングし、取得するキーや値を制御できる。</p>
-<p>代わりに、<code>jq</code> コマンドのパスを使用してもよい。</p>
+<p>代わりに、<code>jq</code> コマンドのパスを使用しても良い。</p>
 <h4 id="-query">▼ --query<a class="headerlink" href="#-query" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># 全てのキーと値を取得する。</span>
 $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Reservations[*]&quot;</span>
@@ -35974,7 +35974,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 </code></pre></div>
 <h4 id="set-alarm-state">▼ set-alarm-state<a class="headerlink" href="#set-alarm-state" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>Amazon CloudWatch アラームの状態を変更する。</p>
+<p>Amazon CloudWatchアラームの状態を変更する。</p>
 <p>アラームをテストできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>cloudwatch<span class="w"> </span>set-alarm-state<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--alarm-name<span class="w"> </span><span class="s2">&quot;prd-foo-alarm&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -35988,7 +35988,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 </code></pre></div>
 <h4 id="get-metric-statistics">▼ get-metric-statistics<a class="headerlink" href="#get-metric-statistics" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>すべてのロググループに対して、一日当たりの収集サイズを <code>start-time</code> から <code>end-time</code> の間で取得する。</p>
+<p>全てのロググループに対して、一日当たりの収集サイズを <code>start-time</code> から <code>end-time</code> の間で取得する。</p>
 <p><code>--dimensions</code> オプションを使用して、特定のディメンション (ロググループ) を対象に集計できる (ただし、やってみたけどうまくいかず) 。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>cloudwatch<span class="w"> </span>get-metric-statistics<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--namespace<span class="w"> </span>AWS/Logs<span class="w"> </span><span class="se">\</span>
@@ -36007,7 +36007,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p><br></p>
 <h3 id="aws-codedeploy">AWS CodeDeploy<a class="headerlink" href="#aws-codedeploy" title="Permanent link">&para;</a></h3>
 <h4 id="register-on-premises-instance">▼ register-on-premises-instance<a class="headerlink" href="#register-on-premises-instance" title="Permanent link">&para;</a></h4>
-<p>オンプレミスのサーバーを CodeDeploy のデプロイ先として設定する。</p>
+<p>オンプレミスのサーバーをCodeDeployのデプロイ先として設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>deploy<span class="w"> </span>register-on-premises-instance<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--instance-name<span class="w"> </span>foo-on-premises-instance<span class="w"> </span><span class="se">\</span>
@@ -36016,8 +36016,8 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p><br></p>
 <h3 id="amazon-ec2">Amazon EC2<a class="headerlink" href="#amazon-ec2" title="Permanent link">&para;</a></h3>
 <h4 id="describe-instances">▼ describe-instances<a class="headerlink" href="#describe-instances" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 の情報を取得する。</p>
-<p>ローカル PC から踏み台サーバー (Amazon EC2) を経由して Amazon Aurora に接続する場合、Amazon EC2 のインスタンス ID を取得したいときに役立つ。</p>
+<p>Amazon EC2の情報を取得する。</p>
+<p>ローカルPCから踏み台サーバー (Amazon EC2) を経由してAmazon Auroraに接続する場合、Amazon EC2のインスタンスIDを取得したいときに役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:Name,Values=&lt;Amazon EC2名&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;Reservations[].Instances[].InstanceId&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -36038,7 +36038,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p><br></p>
 <h3 id="amazon-eks">Amazon EKS<a class="headerlink" href="#amazon-eks" title="Permanent link">&para;</a></h3>
 <h4 id="update-addon">▼ update-addon<a class="headerlink" href="#update-addon" title="Permanent link">&para;</a></h4>
-<p>コンフリクトで Amazon EKS アドオンの設定を更新できない場合に、変更できるようにする。</p>
+<p>コンフリクトでAmazon EKSアドオンの設定を更新できない場合に、変更できるようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>eks<span class="w"> </span>update-addon<span class="w"> </span>--cluster-name<span class="w"> </span>foo-cluster<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--addon-name<span class="w"> </span>&lt;アドオン名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--addon-version<span class="w"> </span>v1.14.1-eksbuild.1<span class="w"> </span><span class="se">\</span>
@@ -36055,7 +36055,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p><br></p>
 <h3 id="aws-resource-groups">AWS Resource Groups<a class="headerlink" href="#aws-resource-groups" title="Permanent link">&para;</a></h3>
 <h4 id="get-resources">▼ get-resources<a class="headerlink" href="#get-resources" title="Permanent link">&para;</a></h4>
-<p>AWS リソースがリソースグループで管理されている場合、特定のタグを持つ AWS リソースを取得する。</p>
+<p>AWSリソースがリソースグループで管理されている場合、特定のタグを持つAWSリソースを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>resourcegroupstaggingapi<span class="w"> </span>get-resources<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--tag-filters<span class="w"> </span><span class="nv">Key</span><span class="o">=</span>&lt;タグ名&gt;,Values<span class="o">=</span>&lt;タグ値&gt;
 </code></pre></div>
@@ -36064,7 +36064,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <li><a href="https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/">https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/</a></li>
 </ul>
 </blockquote>
-<p>AWS リソースの種類 (ec2、alb など) を指定して、特定の AWS リソースのみを取得できる。</p>
+<p>AWSリソースの種類 (ec2、albなど) を指定して、特定のAWSリソースのみを取得できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>resourcegroupstaggingapi<span class="w"> </span>get-resources<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--resource-type-filters<span class="w"> </span>&lt;AWSリソースの種類&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--tag-filters<span class="w"> </span><span class="nv">Key</span><span class="o">=</span>&lt;タグ名&gt;,Values<span class="o">=</span>&lt;タグ値&gt;
@@ -36072,8 +36072,8 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p><br></p>
 <h3 id="amazon-rdsamazon-aurora">Amazon RDS、Amazon Aurora<a class="headerlink" href="#amazon-rdsamazon-aurora" title="Permanent link">&para;</a></h3>
 <h4 id="describe-db-clusters">▼ describe-db-clusters<a class="headerlink" href="#describe-db-clusters" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 の情報を取得する。</p>
-<p>ローカル PC から踏み台サーバー (Amazon EC2) を経由して Amazon Aurora に接続する場合、Amazon Aurora のクラスター名を取得したいときに役立つ。</p>
+<p>Amazon EC2の情報を取得する。</p>
+<p>ローカルPCから踏み台サーバー (Amazon EC2) を経由してAmazon Auroraに接続する場合、Amazon Auroraのクラスター名を取得したいときに役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-clusters<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--db-cluster-identifier<span class="w"> </span>&lt;Amazon<span class="w"> </span>Auroraのクラスター名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;DBClusters[0].ReaderEndpoint&quot;</span><span class="w"> </span>--output<span class="w"> </span>text
@@ -36124,7 +36124,7 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p><br></p>
 <h3 id="amazon-sqs">Amazon SQS<a class="headerlink" href="#amazon-sqs" title="Permanent link">&para;</a></h3>
 <h4 id="get-queue-url">▼ get-queue-url<a class="headerlink" href="#get-queue-url" title="Permanent link">&para;</a></h4>
-<p>キューの URL を取得する。</p>
+<p>キューのURLを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>get-queue-url<span class="w"> </span>--queue-name<span class="w"> </span>&lt;キュー名&gt;
 </code></pre></div>
 <h4 id="receive-message">▼ receive-message<a class="headerlink" href="#receive-message" title="Permanent link">&para;</a></h4>
@@ -36154,8 +36154,8 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 <p><br></p>
 <h3 id="aws-secrets-manager">AWS Secrets Manager<a class="headerlink" href="#aws-secrets-manager" title="Permanent link">&para;</a></h3>
 <h4 id="get-secret-value">▼ get-secret-value<a class="headerlink" href="#get-secret-value" title="Permanent link">&para;</a></h4>
-<p>特定の Secret に格納されている文字列を取得する。</p>
-<p>ローカル PC から踏み台サーバー (Amazon EC2) を経由して Amazon Aurora に接続する場合、Amazon Aurora のユーザー名とパスワードを取得したいときに役立つ。</p>
+<p>特定のSecretに格納されている文字列を取得する。</p>
+<p>ローカルPCから踏み台サーバー (Amazon EC2) を経由してAmazon Auroraに接続する場合、Amazon Auroraのユーザー名とパスワードを取得したいときに役立つ。</p>
 <p>注意点として、出力した文字列はダブルクオーテーションで囲われている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># こちらより、後述の --output=text の使用がおすすめである</span>
 $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w"> </span>get-secret-value<span class="w"> </span><span class="se">\</span>
@@ -36165,7 +36165,7 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 <span class="c1"># ダブルクオーテーションで囲われている</span>
 <span class="s2">&quot;...&quot;</span>
 </code></pre></div>
-<p>もし AWS Secrets Manager に JSON ファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。</p>
+<p>もしAWS Secrets ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。</p>
 <p>そのため、<code>--output</code> オプションで <code>text</code> 使用してダブルクオーテーションを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w"> </span>get-secret-value<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--secret-id<span class="o">=</span>&lt;シークレット名&gt;<span class="w"> </span><span class="se">\</span>
@@ -36183,7 +36183,7 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 <p><br></p>
 <h3 id="aws-sts">AWS STS<a class="headerlink" href="#aws-sts" title="Permanent link">&para;</a></h3>
 <h4 id="decode-authorization-message">▼ decode-authorization-message<a class="headerlink" href="#decode-authorization-message" title="Permanent link">&para;</a></h4>
-<p>STS でエンコードされたエラーメッセージをでコードする。</p>
+<p>STSでエンコードされたエラーメッセージをでコードする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>sts<span class="w"> </span>decode-authorization-message<span class="w"> </span>--encoded-message<span class="w"> </span>zAc3k...
 
 <span class="o">{</span>
@@ -36203,14 +36203,14 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 <p><br></p>
 <h3 id="aws-systems-manager-ssm">AWS Systems Manager (新SSM)<a class="headerlink" href="#aws-systems-manager-ssm" title="Permanent link">&para;</a></h3>
 <h4 id="create-activation">▼ create-activation<a class="headerlink" href="#create-activation" title="Permanent link">&para;</a></h4>
-<p>サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシンなど) を AWS Systems Manager で管理するために、ID とコードを発行する。</p>
+<p>サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシンなど) をAWS Systems Managerで管理するために、IDとコードを発行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>create-activation<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--default-instance-name<span class="w"> </span>foo-vm<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--iam-role<span class="w"> </span>foo-vm-role<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--registration-limit<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
-<p>発行した ID とコードは、<code>amazon-ssm-agent</code> コマンドの実行時に必要となる。</p>
+<p>発行したIDとコードは、<code>amazon-ssm-agent</code> コマンドの実行時に必要となる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>amazon-ssm-agent<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-register<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-id<span class="w"> </span><span class="s2">&quot;&lt;ID&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -36225,7 +36225,7 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 </ul>
 </blockquote>
 <h4 id="get-parameters-by-path">▼ get-parameters-by-path<a class="headerlink" href="#get-parameters-by-path" title="Permanent link">&para;</a></h4>
-<p>特定のパスで始まるすべての変数をパラメーターストアから取得する。</p>
+<p>特定のパスで始まる全ての変数をパラメーターストアから取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># パスのないパラメーターの場合</span>
 <span class="l l-Scalar l-Scalar-Plain">$ aws ssm get-parameters-by-path --path &quot;/&quot;</span>
 
@@ -36297,16 +36297,16 @@ $<span class="w"> </span>aws<span class="w"> </span>secretsmanager<span class="w
 <h2 id="04">04. 認証/認可の手法<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="sso">SSO<a class="headerlink" href="#sso" title="Permanent link">&para;</a></h3>
 <h4 id="saml2aws">▼ saml2aws<a class="headerlink" href="#saml2aws" title="Permanent link">&para;</a></h4>
-<p>AWS に SSO でログインする。</p>
-<p>認証フェーズを外部 (Auth0、GitHub、Keycloak、Zitadel、AWS Cognito、Google Cloud Auth など) に委譲し、AWS では認可フェーズのみを実施する。</p>
-<p>追加で MFA を採用している場合は、ワンタイムコードの入力が要求される。</p>
+<p>AWSにSSOでログインする。</p>
+<p>認証フェーズを外部 (Auth0、GitHub、Keycloak、Zitadel、AWS Cognito、Google Cloud Authなど) に委譲し、AWSでは認可フェーズのみを実施する。</p>
+<p>追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/Versent/saml2aws">https://github.com/Versent/saml2aws</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実行例＊</strong></p>
-<p>ここでは、IP プロバイダーに Keycloak を使用している。</p>
+<p>ここでは、IPプロバイダーにKeycloakを使用している。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>saml2aws<span class="w"> </span>login
 
 Using<span class="w"> </span>IdP<span class="w"> </span>Account<span class="w"> </span>default<span class="w"> </span>to<span class="w"> </span>access<span class="w"> </span>Keycloak<span class="w"> </span>https://external.example/api
@@ -36328,7 +36328,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
 <p><br></p>
 <h3 id="_9">リクエスト制限<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="ip">▼ 送信元IPに基づく制限<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
-<p>特定の送信元 IP アドレスを制限するポリシーを AWS IAM ユーザーに紐付けることにより、その AWS IAM ユーザーが AWS CLI の実行するときに、社外から実行できないように制限をかけられる。</p>
+<p>特定の送信元IPアドレスを制限するポリシーをAWS IAMユーザーに紐付けることにより、そのAWS IAMユーザーがAWS CLIの実行するときに、社外から実行できないように制限をかけられる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
@@ -36341,7 +36341,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>ポリシーの Deny ステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『<code>with an explicit deny</code>』という文言がつく。</p>
+<p>ポリシーのDenyステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『<code>with an explicit deny</code>』という文言がつく。</p>
 <div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>An<span class="w"> </span>error<span class="w"> </span>occurred<span class="w"> </span><span class="o">(</span>AccessDeniedException<span class="o">)</span><span class="w"> </span>when<span class="w"> </span>calling<span class="w"> </span>the<span class="w"> </span>&lt;アクション名&gt;<span class="w"> </span>operation:<span class="w"> </span>&lt;AWS<span class="w"> </span>IAMユーザー名&gt;<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>authorized<span class="w"> </span>to<span class="w"> </span>perform:<span class="w"> </span>&lt;アクション名&gt;<span class="w"> </span>on<span class="w"> </span>resource:<span class="w"> </span>&lt;リソースARN&gt;<span class="w"> </span>with<span class="w"> </span>an<span class="w"> </span>explicit<span class="w"> </span>deny
 </code></pre></div>
 <p><br></p>
@@ -36365,7 +36365,7 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

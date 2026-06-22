@@ -35230,11 +35230,11 @@
 <p><br></p>
 <h3 id="1">1. サイトリライアビリティオペレーション<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ パターンの概要<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>今までのシステム運用 (例：NOC) を SREing と言い換えるだけの方法のこと。</p>
+<p>今までのシステム運用 (例：NOC) をSREingと言い換えるだけの方法のこと。</p>
 <h4 id="_4">▼ 問題点<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <ul>
-<li>SREer の作業内容には、システム運用だけなく、開発も含まれる。またこの開発では、できるだけ人の手を離れていて、障害の発生頻度が少ないようなシステムを構築する必要がある。</li>
-<li>NOC のような場所は、作業に集中できる環境ではない。<ul>
+<li>SREerの作業内容には、システム運用だけなく、開発も含まれる。またこの開発では、できるだけ人の手を離れていて、障害の発生頻度が少ないようなシステムを構築する必要がある。</li>
+<li>NOCのような場所は、作業に集中できる環境ではない。<ul>
 <li>
 <blockquote>
 <ul>
@@ -35262,12 +35262,12 @@
 <h4 id="_5">▼ 解決策<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <ul>
 <li>作業時間の最適化<ul>
-<li>SREer は、勤務時間の半分以上を、システム運用ではなく開発に割り当てる。</li>
+<li>SREerは、勤務時間の半分以上を、システム運用ではなく開発に割り当てる。</li>
 </ul>
 </li>
 <li>作業場所の最適化<ul>
-<li>NOC のように、24 時間 365 日、システムのすぐそばでオンコール担当者がこれの面倒を見るのではなく、リモートでどこからでもすぐに対応可能にする。</li>
-<li>オンコール担当者がメトリクスのとき系列データの共有リンクをインシデントに関心がある人に共有すれば、共通の視点でインシデントを見ることができる。</li>
+<li>NOCのように、24時間365日、システムのすぐそばでオンコール担当者がこれの面倒を見るのではなく、リモートでどこからでもすぐに対応可能にする。</li>
+<li>オンコール担当者がメトリクスの時系列データの共有リンクをインシデントに関心がある人に共有すれば、共通の視点でインシデントを見ることができる。</li>
 </ul>
 </li>
 </ul>
@@ -35276,7 +35276,7 @@
 <h4 id="_6">▼ パターンの概要<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <ul>
 <li>自動検出されたエラーイベントからアラートを手動で作成すること。</li>
-<li>作成したすべてのアラートを通知し、手動でインシデントか否かを判断してしまうこと。</li>
+<li>作成した全てのアラートを通知し、手動でインシデントか否かを判断してしまうこと。</li>
 </ul>
 <h4 id="_7">▼ 問題点<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>インシデントの解決作業のせいで、それ以外の業務に集中できない。</p>
@@ -35284,7 +35284,7 @@
 <ul>
 <li>アラート通知前の自動解決<ul>
 <li>エラーイベントのアラートが作成されたとき、すぐにオンコール担当者に通知するのでなく、システムに自動的に解決する。<ul>
-<li>Kubernetes の LivenessProbe ヘルスチェックや Node 停止時の Pod の移動は、この自動的解決の <code>1</code> 個である。</li>
+<li>KubernetesのLivenessProbeヘルスチェックやNode停止時のPodの移動は、この自動的解決の <code>1</code> 個である。</li>
 </ul>
 </li>
 </ul>
@@ -35340,7 +35340,7 @@
 </ul>
 <h4 id="_17">▼ 解決策<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <ul>
-<li>オンコールはすべてのエンジニアの仕事であり、アプリ開発チームは SREer にオンコールをすべて丸投げしないようにする。</li>
+<li>オンコールは全てのエンジニアの仕事であり、アプリ開発チームはSREerにオンコールを全て丸投げしないようにする。</li>
 <li>アプリ開発者もオンコールの担当になるようなルール (例：交代制、二次オンコール担当) を設ける。</li>
 </ul>
 <p><br></p>
@@ -35388,7 +35388,7 @@
 <p>信頼性を高めようと慎重になり、機能変更からリリースまでの間に、関門になるステップを設けてしまうこと。</p>
 <h4 id="_28">▼ 問題点<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
 <ul>
-<li>関門となるステップ (例：変更管理委員会) が、必ずしも、機能変更のリリースによい付加効果をもたらすわけでもなく、またユーザーからの評価を提供してくれるわけでもない。</li>
+<li>関門となるステップ (例：変更管理委員会) が、必ずしも、機能変更のリリースに良い付加効果をもたらすわけでもなく、またユーザーからの評価を提供してくれるわけでもない。</li>
 <li>不要なステップがあると、変更、リリース、ユーザー評価のサイクルの速度が落ちるため、システムの信頼性が高まりにくくなる。</li>
 </ul>
 <h4 id="_29">▼ 解決策<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
@@ -35405,9 +35405,9 @@
 <p><br></p>
 <h3 id="10">10. 設計の難所<a class="headerlink" href="#10" title="Permanent link">&para;</a></h3>
 <h4 id="_30">▼ パターンの概要<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
-<p>システム設計時の SREer のコンサルがボトルネックになってしまう。</p>
+<p>システム設計時のSREerのコンサルがボトルネックになってしまう。</p>
 <h4 id="_31">▼ 問題点<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
-<p>SREer の役割の <code>1</code> 個として、システムの設計段階でレビュー (例：派遣型、窓口型) を行う必要がある。</p>
+<p>SREerの役割の <code>1</code> 個として、システムの設計段階でレビュー (例：派遣型、窓口型) を行う必要がある。</p>
 <p>一方で、システムの数が多くなると、コンサルのステップがボトルネックになり、リリースの頻度が低くなる。</p>
 <blockquote>
 <ul>
@@ -35419,10 +35419,10 @@
 <p><br></p>
 <h3 id="11">11. 棒が多すぎてニンジンが不足<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
 <h4 id="_33">▼ パターンの概要<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
-<p>SREing の実現に必要なツールをアプリ開発チームに導入したいとき、まず提案するのではなく、使用を強制してしまうこと。</p>
+<p>SREingの実現に必要なツールをアプリ開発チームに導入したいとき、まず提案するのではなく、使用を強制してしまうこと。</p>
 <h4 id="_34">▼ 問題点<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <ul>
-<li>SREing はプッシュ型ではなくプル型であり、アプリ開発チームから課題を聞き出す必要がある。</li>
+<li>SREingはプッシュ型ではなくプル型であり、アプリ開発チームから課題を聞き出す必要がある。</li>
 <li>ツールをプッシュ型で強制的に導入した結果、エンジニアの開発がより非効率になることがある。</li>
 </ul>
 <h4 id="_35">▼ 解決策<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
@@ -35430,7 +35430,7 @@
 <p><br></p>
 <h3 id="12">12. プロダクションの延期<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
 <h4 id="_36">▼ パターンの概要<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
-<p>リリース前にエラーイベントの原因になりそうなことを未然にすべて解決しようとしてしまうこと。</p>
+<p>リリース前にエラーイベントの原因になりそうなことを未然に全て解決しようとしてしまうこと。</p>
 <h4 id="_37">▼ 問題点<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
 <p>機能変更からリリースまでに必要以上に時間がかかると、ユーザーからの評価が遅くなる。</p>
 <h4 id="_38">▼ 解決策<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
@@ -35440,12 +35440,12 @@
 </ul>
 </li>
 <li>ユーザーからの評価を素早く得る<ul>
-<li>ユーザーからの評価を素早く得られる Testing in production を含むデプロイ手法 (例：ダークローンチ、カナリアリリース) を採用する。</li>
+<li>ユーザーからの評価を素早く得られるTesting in productionを含むデプロイ手法 (例：ダークローンチ、カナリアリリース) を採用する。</li>
 </ul>
 </li>
 <li>ロールフォワード、ロールバックの自動化<ul>
 <li>リリース前の予防を完璧にしない。代わりに、リスクヘッジとして、リリース後のロールフォワードとロールバックを自動で実行できるようにする。<ul>
-<li>Progressive Delivery を採用し、SLO を判定基準とした自動ロールバックを実現する。</li>
+<li>Progressive Deliveryを採用し、SLOを判定基準とした自動ロールバックを実現する。</li>
 <li>
 <blockquote>
 <ul>
@@ -35461,14 +35461,14 @@
 <p><br></p>
 <h3 id="13-mttf-mttr">13. リカバリー時間ではなく障害回避の最適化 (<code>MTTF &gt; MTTR</code>)<a class="headerlink" href="#13-mttf-mttr" title="Permanent link">&para;</a></h3>
 <h4 id="_39">▼ パターンの概要<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
-<p>MTTF を重要視し、MTTR を軽視してしまうこと。</p>
+<p>MTTFを重要視し、MTTRを軽視してしまうこと。</p>
 <p><img alt="mtxx" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtxx.png" /></p>
 <h4 id="_40">▼ 問題点<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
-<p>障害が発生するのは避けられず、MTTF の最適化は現実的でない。よって、MTTR を短縮するべきである。</p>
+<p>障害が発生するのは避けられず、MTTFの最適化は現実的でない。よって、MTTRを短縮するべきである。</p>
 <h4 id="_41">▼ 解決策<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
 <ul>
 <li>障害の範囲の縮小<ul>
-<li>障害範囲 (あるいは blast-radius) を最小限にする。</li>
+<li>障害範囲 (あるいはblast-radius) を最小限にする。</li>
 </ul>
 </li>
 <li>回復力の向上<ul>
@@ -35505,15 +35505,15 @@
 <p><br></p>
 <h3 id="16-slo">16. 不適切な「おやおや」のSLO<a class="headerlink" href="#16-slo" title="Permanent link">&para;</a></h3>
 <h4 id="_48">▼ パターンの概要<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
-<p>ビジネスとは無関係に SLO を決めてしまっていること。</p>
-<p>また、一度決まった SLO が更新されないままになってしまうこと。</p>
+<p>ビジネスとは無関係にSLOを決めてしまっていること。</p>
+<p>また、一度決まったSLOが更新されないままになってしまうこと。</p>
 <h4 id="_49">▼ 問題点<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
-<p>ユーザーニーズに基づいた SLO ではないため、いずれシステムの不備 (例：スループット不足、過負荷、ハードウェアキャパシティ不足) が浮き彫りになる。</p>
-<p>また、SLO が最新の状況に則していないと、ユーザーからの評価を下げることになる。</p>
+<p>ユーザーニーズに基づいたSLOではないため、いずれシステムの不備 (例：スループット不足、過負荷、ハードウェアキャパシティ不足) が浮き彫りになる。</p>
+<p>また、SLOが最新の状況に則していないと、ユーザーからの評価を下げることになる。</p>
 <h4 id="_50">▼ 解決策<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
-<p>ビジネス側と話し合い、ユーザーニーズ、ビジネスの収益、に基づいた SLO を設定する。</p>
-<p>ビジネスと SLO の双方向で、定期的に更新する (例：SLO に合わせて営業時間を更新する) 。</p>
-<p>また SLO は高過ぎればよいということもなく、例えば <code>99.5</code>%と <code>99.9</code>%の信頼性の間でユーザー評価が変わらないのであれば、労力をかけて <code>99.99</code>%にする必要はない。</p>
+<p>ビジネス側と話し合い、ユーザーニーズ、ビジネスの収益、に基づいたSLOを設定する。</p>
+<p>ビジネスとSLOの双方向で、定期的に更新する (例：SLOに合わせて営業時間を更新する) 。</p>
+<p>またSLOは高過ぎれば良いということもなく、例えば <code>99.5</code>%と <code>99.9</code>%の信頼性の間でユーザー評価が変わらないのであれば、労力をかけて <code>99.99</code>%にする必要はない。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html">https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html</a></li>
@@ -35522,13 +35522,13 @@
 <p><br></p>
 <h3 id="17-api">17. ファイアウォール越しにAPIを投げ渡す<a class="headerlink" href="#17-api" title="Permanent link">&para;</a></h3>
 <h4 id="_51">▼ パターンの概要<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
-<p>パートナーに機能 (例：API) を提供するようなビジネスをしている場合、パートナーの SLO に無関心で、自社の SLO のみを守ろうとしてしまうこと。</p>
+<p>パートナーに機能 (例：API) を提供するようなビジネスをしている場合、パートナーのSLOに無関心で、自社のSLOのみを守ろうとしてしまうこと。</p>
 <h4 id="_52">▼ 問題点<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
 <p>自社がパートナーの問題への関心を欠くと、チーム間の無関心で起こる問題と同様のことが起こる。</p>
 <h4 id="_53">▼ 解決策<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
 <ul>
-<li>共通認識からなる SLI と SLO の設定<ul>
-<li>自社とパートナーの間で SLI を共有し、自社とパートナーのシステムを合わせた SLO を設定する。</li>
+<li>共通認識からなるSLIとSLOの設定<ul>
+<li>自社とパートナーの間でSLIを共有し、自社とパートナーのシステムを合わせたSLOを設定する。</li>
 </ul>
 </li>
 <li>インシデントを共通管理<ul>
@@ -35539,19 +35539,19 @@
 <p><br></p>
 <h3 id="18">18. 運用チームの修復<a class="headerlink" href="#18" title="Permanent link">&para;</a></h3>
 <h4 id="_54">▼ パターンの概要<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h4>
-<p>運用手法のみを改善すれば SREing を実践できる、と考えてしまうこと。</p>
+<p>運用手法のみを改善すればSREingを実践できる、と考えてしまうこと。</p>
 <h4 id="_55">▼ 問題点<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h4>
-<p>SREing の実践のために、運用だけではなく、ビジネス、システム、チームも改善する必要がある。例えば、優先順位付け、計画と実行、意思決定、設計、構築、トイル、ヒューマンエラー、コミュニケーションなどである。</p>
-<p>SREing の最終目標はシステムの信頼性を高めることであり、これらはその手段である。</p>
+<p>SREingの実践のために、運用だけではなく、ビジネス、システム、チームも改善する必要がある。例えば、優先順位付け、計画と実行、意思決定、設計、構築、トイル、ヒューマンエラー、コミュニケーションなどである。</p>
+<p>SREingの最終目標はシステムの信頼性を高めることであり、これらはその手段である。</p>
 <h4 id="_56">▼ 解決策<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h4>
-<p>上層部から理解が得られず、SREing を十分に実践できなくとも、少なくともシステムとチームは改善できる。</p>
+<p>上層部から理解が得られず、SREingを十分に実践できなくとも、少なくともシステムとチームは改善できる。</p>
 <p><br></p>
 <h3 id="19">19. 最後にもう一言<a class="headerlink" href="#19" title="Permanent link">&para;</a></h3>
 <ul>
-<li>SREing のアンチパターンは、変化し続ける。</li>
+<li>SREingのアンチパターンは、変化し続ける。</li>
 <li>筆者が集めたアンチパターンは、全体のほんの一部分でしかない。</li>
-<li>SREing の失敗事例を、自社内外問わず、共有していく必要がある。</li>
-<li>失敗事例があれば、Twitter アカウント <code>@BlakeBisset</code> 宛に、<code>#SREantipatterns</code> をつけて共有してほしい。</li>
+<li>SREingの失敗事例を、自社内外問わず、共有していく必要がある。</li>
+<li>失敗事例があれば、Twitterアカウント <code>@BlakeBisset</code> 宛に、<code>#SREantipatterns</code> をつけて共有してほしい。</li>
 </ul>
 <p><br></p>
 
@@ -35574,7 +35574,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 19:57:08 JST">2026-02-15</span>
   </span>
 
     

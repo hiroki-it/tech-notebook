@@ -33588,12 +33588,12 @@
 <p><br></p>
 <h2 id="01-ingress-metadataannotations">01. Ingressの <code>.metadata.annotations</code> キー<a class="headerlink" href="#01-ingress-metadataannotations" title="Permanent link">&para;</a></h2>
 <h3 id="ingress-metadataannotations">Ingressの <code>.metadata.annotations</code> キーとは<a class="headerlink" href="#ingress-metadataannotations" title="Permanent link">&para;</a></h3>
-<p>特定の ALB のリスナールールを決める。</p>
-<p>Ingress で <code>nginx</code> の IngressClass を指定する必要がある。</p>
+<p>特定のALBのリスナールールを決める。</p>
+<p>Ingressで <code>nginx</code> のIngressClassを指定する必要がある。</p>
 <p><br></p>
 <h3 id="nginxingresskubernetesioaffinity"><code>nginx.ingress.kubernetes.io/affinity</code> キー<a class="headerlink" href="#nginxingresskubernetesioaffinity" title="Permanent link">&para;</a></h3>
-<p>Pod へのルーティング時にセッションを維持する (スティッキーセッション) かどうかを設定する。</p>
-<p>同じセッション内であれば、特定のクライアントからのリクエストを Service 配下の特定の Pod にルーティングし続けられる。</p>
+<p>Podへのルーティング時にセッションを維持する (スティッキーセッション) かどうかを設定する。</p>
+<p>同じセッション内であれば、特定のクライアントからのリクエストをService配下の特定のPodにルーティングし続けられる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">piVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33608,7 +33608,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="nginxingresskubernetesiowhitelist-source-range"><code>nginx.ingress.kubernetes.io/whitelist-source-range</code> キー<a class="headerlink" href="#nginxingresskubernetesiowhitelist-source-range" title="Permanent link">&para;</a></h3>
-<p>インバウンド通信で許可する CIDR を設定する。</p>
+<p>インバウンド通信で許可するCIDRを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">piVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33623,7 +33623,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="nginxingresskubernetesiodenylist-source-range"><code>nginx.ingress.kubernetes.io/denylist-source-range</code> キー<a class="headerlink" href="#nginxingresskubernetesiodenylist-source-range" title="Permanent link">&para;</a></h3>
-<p>インバウンド通信で拒否する CIDR を設定する。</p>
+<p>インバウンド通信で拒否するCIDRを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">piVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33639,7 +33639,7 @@
 <p><br></p>
 <h2 id="02-configmap">02. 一括設定のConfigMap<a class="headerlink" href="#02-configmap" title="Permanent link">&para;</a></h2>
 <h3 id="configmap">一括設定のConfigMapとは<a class="headerlink" href="#configmap" title="Permanent link">&para;</a></h3>
-<p>すべての Ingress に一括してルールを設定する。</p>
+<p>全てのIngressに一括してルールを設定する。</p>
 <p><br></p>
 <h3 id="proxy-connect-timeout">proxy-connect-timeout<a class="headerlink" href="#proxy-connect-timeout" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -33673,7 +33673,7 @@
 <p><br></p>
 <h3 id="use-forwarded-headers">use-forwarded-headers<a class="headerlink" href="#use-forwarded-headers" title="Permanent link">&para;</a></h3>
 <p>通過したリクエストに <code>X-Forwarded-For</code> ヘッダーを追加する。</p>
-<p>送信元 IP アドレスを保持するために役立つ。</p>
+<p>送信元IPアドレスを保持するために役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33708,7 +33708,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

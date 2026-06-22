@@ -35747,9 +35747,9 @@
 <p><br></p>
 <h3 id="_4">ダウンタイム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ダウンタイムの発生条件<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>以下の条件のとき、Amazon EC2 にダウンタイムが発生する。</p>
-<p>Amazon EC2 を冗長化している場合は、ユーザーに影響を与えずに対処できる。</p>
-<p>ダウンタイムが発生するほうのインスタンスを事前に ALB のターゲットグループから解除しておき、停止したインスタンスが起動した後に、ターゲットグループに再登録する。</p>
+<p>以下の条件の時、Amazon EC2にダウンタイムが発生する。</p>
+<p>Amazon EC2を冗長化している場合は、ユーザーに影響を与えずに対処できる。</p>
+<p>ダウンタイムが発生するほうのインスタンスを事前にALBのターゲットグループから解除しておき、停止したインスタンスが起動した後に、ターゲットグループに再登録する。</p>
 <table>
 <thead>
 <tr>
@@ -35811,18 +35811,18 @@
 <li><a href="https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=24">https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=24</a></li>
 </ul>
 </blockquote>
-<p>AWS AMI の OS のバージョンによっては、新しく登場したインスタンスタイプを適用できないことがあるため注意する。</p>
-<p>例えば、CentOS 6 系の AWS AMI では、<code>t3.small</code> を選択できない。</p>
+<p>AWS AMIのOSのバージョンによっては、新しく登場したインスタンスタイプを適用できないことがあるため注意する。</p>
+<p>例えば、CentOS 6系のAWS AMIでは、<code>t3.small</code> を選択できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow">https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow</a></li>
 </ul>
 </blockquote>
 <h4 id="cpu">▼ CPUバーストモード<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
-<p>バーストモードのインスタンスタイプの場合、一定水準のベースライン CPU 使用率を提供しつつ、これを超過できる。</p>
-<p>CPU 使用率がベースラインを超えたとき、超過した分だけ Amazon EC2 は CPU クレジットを消費する。</p>
-<p>CPU クレジットは一定の割合で回復する。</p>
-<p>蓄積できる最大 CPU クレジット、クレジットの回復率、ベースライン CPU 使用率は、インスタンスタイプによって異なる。</p>
+<p>バーストモードのインスタンスタイプの場合、一定水準のベースラインCPU使用率を提供しつつ、これを超過できる。</p>
+<p>CPU使用率がベースラインを超えたとき、超過した分だけAmazon EC2はCPUクレジットを消費する。</p>
+<p>CPUクレジットは一定の割合で回復する。</p>
+<p>蓄積できる最大CPUクレジット、クレジットの回復率、ベースラインCPU使用率は、インスタンスタイプによって異なる。</p>
 <p>詳しくは以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
@@ -36025,10 +36025,10 @@
 <p><br></p>
 <h3 id="_10">ルートデバイスボリューム<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ ルートデバイスボリュームとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 では、ブロックデバイスにルートデバイスボリュームが紐づいている。</p>
+<p>Amazon EC2では、ブロックデバイスにルートデバイスボリュームが紐づいている。</p>
 <p>複数のブロックデバイスを用意し、それぞれを異なるルートデバイスボリュームから紐付けることもできる。</p>
 <p>加えて、このブロックデバイスが、マウントポイントになるディレクトリ紐づいている。</p>
-<p>つまり Amazon EC2 が作成されると、ボリューム内に保管したファイルは、ブロックデバイスを経由して、マウントポイントのディレクトリ内に作成される。</p>
+<p>つまりAmazon EC2が作成されると、ボリューム内に保管したファイルは、ブロックデバイスを経由して、マウントポイントのディレクトリ内に作成される。</p>
 <p>また反対に、マウント先ディレクトリ内に保管したファイルは、ルートデバイスボリューム内に保管される。</p>
 <p>複数のルートボリュームを紐付ける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリへマウントするようにしておく。</p>
 <blockquote>
@@ -36039,10 +36039,10 @@
 </blockquote>
 <h4 id="aws-ebs">▼ AWS EBSボリューム<a class="headerlink" href="#aws-ebs" title="Permanent link">&para;</a></h4>
 <p><img alt="ec2_ebs-backed-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_ebs-backed-instance.png" /></p>
-<p>名前がややこしいが、Amazon EC2 における仮想ストレージに相当し、仮想ボリュームではない。</p>
-<p>AWS EBS で保管されているルートデバイスボリュームで、推奨の方法である。</p>
-<p>インスタンスストアボリュームとは異なり、コンピューティングとして動作する Amazon EC2 と、ストレージとして動作するルートデバイスボリュームが分離されている。</p>
-<p>そのため、Amazon EC2 が誤って削除されてしまったとしても、ボリュームは削除されずに、データを守れる。</p>
+<p>名前がややこしいが、Amazon EC2における仮想ストレージに相当し、仮想ボリュームではない。</p>
+<p>AWS EBSで保管されているルートデバイスボリュームで、推奨の方法である。</p>
+<p>インスタンスストアボリュームとは異なり、コンピューティングとして動作するAmazon EC2と、ストレージとして動作するルートデバイスボリュームが分離されている。</p>
+<p>そのため、Amazon EC2が誤って削除されてしまったとしても、ボリュームは削除されずに、データを守れる。</p>
 <p>また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。</p>
 <blockquote>
 <ul>
@@ -36053,10 +36053,10 @@
 </blockquote>
 <h4 id="_12">▼ インスタンスストアボリューム<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p><img alt="ec2_instance-store-backed-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_instance-store-backed-instance.png" /></p>
-<p>名前がややこしいが、Amazon EC2 における仮想ストレージに相当し、仮想ボリュームではない。</p>
+<p>名前がややこしいが、Amazon EC2における仮想ストレージに相当し、仮想ボリュームではない。</p>
 <p>インスタンスストアで保管されているルートデバイスボリュームで、非推奨の方法である。</p>
-<p>AWS EBS ボリュームとは異なり、コンピューティングとして動作する Amazon EC2 内にルートデバイスボリュームが存在している。</p>
-<p>そのため、インスタンスストアボリュームは、Amazon EC2 を削除すると一緒に削除されてしまう。</p>
+<p>AWS EBSボリュームとは異なり、コンピューティングとして動作するAmazon EC2内にルートデバイスボリュームが存在している。</p>
+<p>そのため、インスタンスストアボリュームは、Amazon EC2を削除すると一緒に削除されてしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts</a></li>
@@ -36066,7 +36066,7 @@
 <p><br></p>
 <h3 id="amazon-ec2_1">Amazon EC2のライフサイクルフェーズ<a class="headerlink" href="#amazon-ec2_1" title="Permanent link">&para;</a></h3>
 <p><img alt="aws_ec2_lifecycle_phase" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ec2_lifecycle_phase.png" /></p>
-<p>Amazon EC2 のライフサイクルにはフェーズがある。</p>
+<p>Amazon EC2のライフサイクルにはフェーズがある。</p>
 <table>
 <thead>
 <tr>
@@ -36109,14 +36109,14 @@
 <p><br></p>
 <h3 id="amazon-ec2_2">Amazon EC2への接続<a class="headerlink" href="#amazon-ec2_2" title="Permanent link">&para;</a></h3>
 <h4 id="ssh">▼ キーペアを使用したSSH公開鍵認証<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
-<p>キーペアのうちの秘密鍵を使用して、対応する公開鍵を持つ Amazon EC2 に SSH 公開鍵認証でリクエストできる。</p>
-<p>クライアントの SSH のパケットは、まずインターネットを経由して、Internet Gateway を通過する。</p>
-<p>その後、Amazon Route 53、ALB を経由せず、そのまま Amazon EC2 へ向かう。</p>
+<p>キーペアのうちの秘密鍵を使用して、対応する公開鍵を持つAmazon EC2にSSH公開鍵認証でリクエストできる。</p>
+<p>クライアントのSSHのパケットは、まずインターネットを経由して、Internet Gatewayを通過する。</p>
+<p>その後、Amazon Route 53、ALBを経由せず、そのままAmazon EC2へ向かう。</p>
 <p><img alt="ssh-port-forward" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png" /></p>
 <p><br></p>
 <h3 id="_13">キーペア<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ フィンガープリント値<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>ローカルマシンに配置されている秘密鍵が、該当する Amazon EC2 に配置されている公開鍵とペアなのか否かを、フィンガープリント値を照合して確認する方法</p>
+<p>ローカルマシンに配置されている秘密鍵が、該当するAmazon EC2に配置されている公開鍵とペアなのか否かを、フィンガープリント値を照合して確認する方法</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>openssl<span class="w"> </span>pkcs8<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-in<span class="w"> </span>&lt;秘密鍵名&gt;.pem<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-inform<span class="w"> </span>PEM<span class="w"> </span><span class="se">\</span>
@@ -36128,11 +36128,11 @@
 <p><br></p>
 <h3 id="_15">ユーザーデータファイル<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="_16">▼ ユーザーデータファイルとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 の起動時に任意のコマンドを実行できるようにする。</p>
+<p>Amazon EC2の起動時に任意のコマンドを実行できるようにする。</p>
 <h4 id="_17">▼ 実行タイミング<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>ユーザーデータの実行タイミングは、<code>cloud-config.service</code> ファイルで設定している。</p>
 <p>ネットワークがオンラインになった後、実行する。</p>
-<p>つまり、Amazon EC2 のプロセスに関する設定 (systemd など) の後に、ユーザーデータを実行する。</p>
+<p>つまり、Amazon EC2のプロセスに関する設定 (systemdなど) の後に、ユーザーデータを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># /usr/lib/systemd/system/cloud-config.serviceファイル</span>
 
 <span class="k">[Unit]</span>
@@ -36166,9 +36166,9 @@
 <p><br></p>
 <h2 id="02-amazon-ec2-based-on-aws-amiamazon-machine-image">02. Amazon EC2 based on AWS AMI：Amazon Machine Image<a class="headerlink" href="#02-amazon-ec2-based-on-aws-amiamazon-machine-image" title="Permanent link">&para;</a></h2>
 <h3 id="aws-ami">AWS AMIとは<a class="headerlink" href="#aws-ami" title="Permanent link">&para;</a></h3>
-<p>Amazon EC2 のマシンイメージであり、Amazon EC2 の完全なコピーを作成できる。</p>
-<p>Amazon EC2 上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア (OS、ミドルウェア) と AWS EBS ボリュームの両方が内蔵されたコピーのこと。</p>
-<p>AWS AMI を入れ替える場合、コンテナイメージと同様に Amazon EC2 を作成し直す必要がある。</p>
+<p>Amazon EC2のマシンイメージであり、Amazon EC2の完全なコピーを作成できる。</p>
+<p>Amazon EC2上でアプリケーションソフトウェアを稼働させるために必要なソフトウェア (OS、ミドルウェア) とAWS EBSボリュームの両方が内蔵されたコピーのこと。</p>
+<p>AWS AMIを入れ替える場合、コンテナイメージと同様にAmazon EC2を作成し直す必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html</a></li>
@@ -36179,14 +36179,14 @@
 <p><br></p>
 <h3 id="aws-ami_1">AWS AMIタイプ<a class="headerlink" href="#aws-ami_1" title="Permanent link">&para;</a></h3>
 <h4 id="aws-ebs-backed-ami">▼ AWS EBS-backed AMI<a class="headerlink" href="#aws-ebs-backed-ami" title="Permanent link">&para;</a></h4>
-<p>AWS EBS ボリュームを持つ Amazon EC2 を作成する AWS AMI のこと。</p>
+<p>AWS EBSボリュームを持つAmazon EC2を作成するAWS AMIのこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device</a></li>
 </ul>
 </blockquote>
 <h4 id="instance-store-backed-ami">▼ instance store-backed AMI<a class="headerlink" href="#instance-store-backed-ami" title="Permanent link">&para;</a></h4>
-<p>インスタンスストアボリュームを持つ Amazon EC2 を作成する AWS AMI のこと。</p>
+<p>インスタンスストアボリュームを持つAmazon EC2を作成するAWS AMIのこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device</a></li>
@@ -36194,7 +36194,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="aws-ami_2">AWS AMIの作成<a class="headerlink" href="#aws-ami_2" title="Permanent link">&para;</a></h3>
-<p>AMI の作成時に再起動が基本的に必要になる。</p>
+<p>AMIの作成時に再起動が基本的に必要になる。</p>
 <p>これは無効にできる。ただし、データが欠損する恐れもある。</p>
 <blockquote>
 <ul>
@@ -36220,7 +36220,7 @@
 <td><code>⭕️</code></td>
 </tr>
 <tr>
-<td>すべてのアカウント間 (パブリック)</td>
+<td>全てのアカウント間 (パブリック)</td>
 <td><code>⭕️</code></td>
 </tr>
 </tbody>
@@ -36233,21 +36233,21 @@
 <p><br></p>
 <h3 id="aws-ami-os">AWS AMI OS<a class="headerlink" href="#aws-ami-os" title="Permanent link">&para;</a></h3>
 <h4 id="aws-ami-os_1">▼ AWS AMI OSとは<a class="headerlink" href="#aws-ami-os_1" title="Permanent link">&para;</a></h4>
-<p>Linux ディストリビューション別に AWS AMI OS を配布している。</p>
+<p>Linuxディストリビューション別にAWS AMI OSを配布している。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/mp/linux/">https://aws.amazon.com/jp/mp/linux/</a></li>
 </ul>
 </blockquote>
 <h4 id="amazon-linux">▼ Amazon Linux<a class="headerlink" href="#amazon-linux" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 を作成するために最適化された Linux のこと。</p>
+<p>Amazon EC2を作成するために最適化されたLinuxのこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.acrovision.jp/service/aws/?p=609">https://www.acrovision.jp/service/aws/?p=609</a></li>
 </ul>
 </blockquote>
 <h4 id="centos">▼ CentOS<a class="headerlink" href="#centos" title="Permanent link">&para;</a></h4>
-<p>ベンダー公式あるいは非公式が提供している AWS AMI が区別しにくいので、確実に公式ベンダーが提供しているもの選択すること。</p>
+<p>ベンダー公式あるいは非公式が提供しているAWS AMIが区別しにくいので、確実に公式ベンダーが提供しているもの選択すること。</p>
 <blockquote>
 <ul>
 <li><a href="https://wiki.centos.org/Cloud/AWS">https://wiki.centos.org/Cloud/AWS</a></li>
@@ -36256,7 +36256,7 @@
 <p><br></p>
 <h2 id="03-amazon-ec2-with-aws-ebselastic-block-storage">03. Amazon EC2 with AWS EBS：Elastic Block Storage<a class="headerlink" href="#03-amazon-ec2-with-aws-ebselastic-block-storage" title="Permanent link">&para;</a></h2>
 <h3 id="aws-ebs_1">AWS EBSとは<a class="headerlink" href="#aws-ebs_1" title="Permanent link">&para;</a></h3>
-<p>Amazon EC2 のクラウド内蔵ストレージとして働く。</p>
+<p>Amazon EC2のクラウド内蔵ストレージとして働く。</p>
 <p><br></p>
 <h2 id="03-02">03-02. セットアップ<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_18">コンソール画面の場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
@@ -36355,10 +36355,10 @@
 </tbody>
 </table>
 <h4 id="_20">▼ 下限のサイズ<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>一般的なアプリケーションであれば、最低限 <code>20</code>～<code>30</code>GiB のサイズがあるとよい。</p>
-<p>しかし、踏み台サーバー (Amazon EC2) の場合、プライベートサブネットに接続するための足場としての用途しかなく、大きなサイズの AWS EBS ボリュームを組み込む必要がない。</p>
+<p>一般的なアプリケーションであれば、最低限 <code>20</code>～<code>30</code>GiBのサイズがあると良い。</p>
+<p>しかし、踏み台サーバー (Amazon EC2) の場合、プライベートサブネットに接続するための足場としての用途しかなく、大きなサイズのAWS EBSボリュームを組み込む必要がない。</p>
 <p>そこでできるだけ最小限のボリュームを選択し、ストレージ合計を抑える必要がある。</p>
-<p>OS によって下限ボリュームサイズが異なることに注意する。</p>
+<p>OSによって下限ボリュームサイズが異なることに注意する。</p>
 <table>
 <thead>
 <tr>
@@ -36381,7 +36381,7 @@
 </tbody>
 </table>
 <h4 id="_21">▼ 現在の空き容量の確認<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>AWS EBS ボリュームの現在の空き容量を確認するためには、<code>df</code> コマンドでパーティションの使用率を確認するか、cloudwatch エージェントでこのデータを収集する必要がある。</p>
+<p>AWS EBSボリュームの現在の空き容量を確認するためには、<code>df</code> コマンドでパーティションの使用率を確認するか、cloudwatchエージェントでこのデータを収集する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>ec2-user<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>df<span class="w"> </span>-hT<span class="w"> </span>/dev/xvda1
 
 <span class="c1"># パーティションの使用率が15%であることから、AWS EBSボリュームの使用率がわかる。</span>
@@ -36396,16 +36396,16 @@ Filesystem<span class="w">     </span>Type<span class="w">      </span>Size<span
 <p><br></p>
 <h3 id="aws-ebs_4">AWS EBSボリュームの拡張<a class="headerlink" href="#aws-ebs_4" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ サイズの拡張<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>サイズを拡張するためには、実際のストレージ (AWS EBS ボリューム) 、AWS EBS ボリューム内のパーティション、Amazon EC2 内のファイルシステム、に関して作業が必要にある。</p>
+<p>サイズを拡張するためには、実際のストレージ (AWS EBSボリューム) 、AWS EBSボリューム内のパーティション、Amazon EC2内のファイルシステム、に関して作業が必要にある。</p>
 <p><strong>＊例＊</strong></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>任意で、バックアップのために拡張対象の Amazon EC2 の AWS AMI を作成しておく。</p>
+<p>任意で、バックアップのために拡張対象のAmazon EC2のAWS AMIを作成しておく。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Amazon EC2 の AWS EBS ボリュームを <code>8</code>GiB から <code>16</code>GiB に拡張する例を考える。</p>
+<p>Amazon EC2のAWS EBSボリュームを <code>8</code>GiBから <code>16</code>GiBに拡張する例を考える。</p>
 <p><code>lsblk</code>コマンドで現在のボリュームのサイズを確認すると、AWS EBSボリュームが<code>8</code>GiBである。</p>
 <p>この時、AWS EBSボリューム内にパーティションがある。</p>
 <p><code>df</code>コマンドでパーティションのサイズを確認すると、同じく<code>8</code>GiBである。</p>
@@ -36429,7 +36429,7 @@ Filesystem<span class="w">     </span>Size<span class="w">   </span>Used<span cl
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>コンソール画面から、AWS EBS ボリュームを <code>16</code>GiB に拡張する。</p>
+<p>コンソール画面から、AWS EBSボリュームを <code>16</code>GiBに拡張する。</p>
 <p>この時、ダウンタイムは発生しない。</p>
 <p>改めて<code>lsblk</code>コマンドを実行することにより、該当のAWS EBSボリュームが拡張されたことを確認できる。</p>
 <p>ただ<code>df</code>コマンドで確認すると、パーティションはまだ拡張されていない。</p>
@@ -36472,7 +36472,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p><code>lsblk</code> コマンドの結果、AWS EBS ボリュームが複数のパーティションで区切られている場合、この手順が必要になる。</p>
+<p><code>lsblk</code> コマンドの結果、AWS EBSボリュームが複数のパーティションで区切られている場合、この手順が必要になる。</p>
 <p>今回、AWS EBSボリュームがパーティションに区切られている。</p>
 <p>そのため、<code>growpart</code>コマンドでパーティションの番号を指定し、パーティションのサイズを拡張する。パーティションに区切られていなければ、この手順は不要である。</p>
 </dd>
@@ -36547,15 +36547,15 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p><br></p>
 <h3 id="aws-ebs_6">AWS EBSボリュームの永続化<a class="headerlink" href="#aws-ebs_6" title="Permanent link">&para;</a></h3>
 <h4 id="aws-ebs_7">▼ AWS EBSボリュームの永続化とは<a class="headerlink" href="#aws-ebs_7" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 の初期作成時に、ストレージの追加の項目で『終了時に削除』の設定を無効化しておく。</p>
-<p>これにより、Amazon EC2 が削除されても、AWS EBS ボリュームを削除しないようにできる。</p>
+<p>Amazon EC2の初期作成時に、ストレージの追加の項目で『終了時に削除』の設定を無効化しておく。</p>
+<p>これにより、Amazon EC2が削除されても、AWS EBSボリュームを削除しないようにできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage</a></li>
 </ul>
 </blockquote>
 <h4 id="amazon-ec2_3">▼ Amazon EC2の作成後に永続化する<a class="headerlink" href="#amazon-ec2_3" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 の作成後に、AWS EBS ボリュームを永続化したい場合は、CLI を実行する必要がある。</p>
+<p>Amazon EC2の作成後に、AWS EBSボリュームを永続化したい場合は、CLIを実行する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>modify-instance-attribute<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--instance-id<span class="w"> </span>&lt;インスタンスID&gt;
 <span class="w">    </span>--block-device-mappings<span class="w"> </span><span class="se">\</span>
@@ -36565,8 +36565,8 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <span class="p p-Indicator">[{</span><span class="s">&quot;DeviceName&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/dev/sda1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Ebs&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;DeleteOnTermination&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">}}]</span>
 </code></pre></div>
 <h4 id="_23">▼ 注意点<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 に AutoScaling グループを適用している場合は、AWS EBS ボリュームを永続化しないほうがよいかもしれない。</p>
-<p>AWS AutoScaling のスケールイン時に、削除された Amazon EC2 の AWS EBS ボリュームが削除されないため、未使用の AWS EBS ボリュームがどんどん溜まっていく問題が起こる。</p>
+<p>Amazon EC2にAutoScalingグループを適用している場合は、AWS EBSボリュームを永続化しないほうが良いかもしれない。</p>
+<p>AWS AutoScalingのスケールイン時に、削除されたAmazon EC2のAWS EBSボリュームが削除されないため、未使用のAWS EBSボリュームがどんどん溜まっていく問題が起こる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2">https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2</a></li>
@@ -36575,8 +36575,8 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p><br></p>
 <h3 id="aws-ebs_8">AWS EBSボリュームのアタッチとデタッチ<a class="headerlink" href="#aws-ebs_8" title="Permanent link">&para;</a></h3>
 <h4 id="_24">▼ デバイスパスの確認<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p>AWS EBS ボリュームのデバイスパスと、OS 上での実際のデバイスパスが異なる。</p>
-<p>例えば、<code>/dev/xvdb</code> をデバイスパスとしても、OS 上では <code>/dev/nvme1n1</code> になる。</p>
+<p>AWS EBSボリュームのデバイスパスと、OS上での実際のデバイスパスが異なる。</p>
+<p>例えば、<code>/dev/xvdb</code> をデバイスパスとしても、OS上では <code>/dev/nvme1n1</code> になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
 
 /dev/nvme1n1<span class="w">   </span>xfs<span class="w">       </span>100G<span class="w">  </span><span class="m">4</span>.3G<span class="w">  </span>96G<span class="w">   </span><span class="m">1</span>%<span class="w"> </span>/var/lib
@@ -36594,18 +36594,18 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </ul>
 </blockquote>
 <h4 id="_26">▼ マルチアタッチ<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>ボリュームタイプが <code>io1</code> または <code>io2</code> の AWS EBS ボリュームは、複数の Amazon EC2 に横断して紐づけられる。</p>
+<p>ボリュームタイプが <code>io1</code> または <code>io2</code> のAWS EBSボリュームは、複数のAmazon EC2に横断して紐づけられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/ebs/latest/userguide/working-with-multi-attach.html">https://docs.aws.amazon.com/ebs/latest/userguide/working-with-multi-attach.html</a></li>
 </ul>
 </blockquote>
 <h4 id="_27">▼ デタッチ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>起動中の Amazon EC2 からボリュームをアタッチする場合、<code>unmount</code> コマンドを実行する。</p>
+<p>起動中のAmazon EC2からボリュームをアタッチする場合、<code>unmount</code> コマンドを実行する。</p>
 <p><code>target is busy</code> というエラーにより失敗する場合がある。その際はプロセスを停止しなければならない。結果として手順は複雑になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>umount<span class="w"> </span>-d<span class="w"> </span>/dev/nvme1n1
 </code></pre></div>
-<p>代わりに、Amazon EC2 を停止したうえでボリュームをデタッチすると、コマンドを手動で実行する必要がなく簡単である。</p>
+<p>代わりに、Amazon EC2を停止したうえでボリュームをデタッチすると、コマンドを手動で実行する必要がなく簡単である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-detaching-volume.html#umount-detach-volume">https://docs.aws.amazon.com/ebs/latest/userguide/ebs-detaching-volume.html#umount-detach-volume</a></li>
@@ -36615,10 +36615,10 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p><br></p>
 <h3 id="_28">スナップショット<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <h4 id="_29">▼ スナップショットとは<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
-<p>AWS EBS ボリュームのコピーのこと。</p>
+<p>AWS EBSボリュームのコピーのこと。</p>
 <p>スナップショットは内部的に増分バックアップになっており、前回のスナップショットの増分を次回のスナップショットに追加する。</p>
 <p>そのため、スナップショットの頻度が高ければ増分が少なくなり、スナップショットの作成時間が短くなる。</p>
-<p>ソフトウェアと AWS EBS ボリュームのコピーの両方が内蔵された AWS AMI とは区別すること。</p>
+<p>ソフトウェアとAWS EBSボリュームのコピーの両方が内蔵されたAWS AMIとは区別すること。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html#how_snapshots_work">https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html#how_snapshots_work</a></li>
@@ -36648,7 +36648,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p><br></p>
 <h3 id="aws-ssm-session-manager">AWS SSM Session Managerを使用したログインシェル<a class="headerlink" href="#aws-ssm-session-manager" title="Permanent link">&para;</a></h3>
 <h4 id="aws-ssm-session-manager_1">▼ AWS SSM Session Managerを使用したログインシェル<a class="headerlink" href="#aws-ssm-session-manager_1" title="Permanent link">&para;</a></h4>
-<p>AWS SSM Session Manager を使用して Amazon EC2 に接続し、ログインシェルを起動する。</p>
+<p>AWS SSM Session Managerを使用してAmazon EC2に接続し、ログインシェルを起動する。</p>
 <p><img alt="ec2_session-manager" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_session-manager.png" /></p>
 <blockquote>
 <ul>
@@ -36657,8 +36657,8 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </ul>
 </blockquote>
 <h4 id="systems-manager">▼ systems-managerエージェント<a class="headerlink" href="#systems-manager" title="Permanent link">&para;</a></h4>
-<p>AWS Systems Manager を使用して Amazon EC2 に接続する場合、Amazon EC2 自体に systems-manager エージェントをインストールしておく必要がある。</p>
-<p>カスタム AMI であれば自身でインストールし、最適化された AWS AMI であれば事前にインストールされている。</p>
+<p>AWS Systems Managerを使用してAmazon EC2に接続する場合、Amazon EC2自体にsystems-managerエージェントをインストールしておく必要がある。</p>
+<p>カスタムAMIであれば自身でインストールし、最適化されたAWS AMIであれば事前にインストールされている。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html</a></li>
@@ -36704,15 +36704,15 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <h2 id="04-enielastic-network-interface">04. ENI：Elastic Network Interface<a class="headerlink" href="#04-enielastic-network-interface" title="Permanent link">&para;</a></h2>
 <h3 id="eni">ENIとは<a class="headerlink" href="#eni" title="Permanent link">&para;</a></h3>
 <p>クラウドネットワークインターフェースとして働く。</p>
-<p>ENI には、サブネットから IP アドレスが割り当てられている。</p>
-<p>ENI を AWS リソースに紐づけると、ENI はその AWS リソースに IP アドレスを割り当てる。</p>
-<p>また、Amazon EC2 のセキュリティグループも ENI に紐づいている。</p>
-<p>ENI を再作成した場合、ENI は IP アドレスをサブネット内に一度解放し、新しい IP アドレスを ENI に紐づける。</p>
+<p>ENIには、サブネットからIPアドレスが割り当てられている。</p>
+<p>ENIをAWSリソースに紐づけると、ENIはそのAWSリソースにIPアドレスを割り当てる。</p>
+<p>また、Amazon EC2のセキュリティグループもENIに紐づいている。</p>
+<p>ENIを再作成した場合、ENIはIPアドレスをサブネット内に一度解放し、新しいIPアドレスをENIに紐づける。</p>
 <p><br></p>
 <h3 id="eni_1">ENIの種類<a class="headerlink" href="#eni_1" title="Permanent link">&para;</a></h3>
 <h4 id="eni-eth0">▼ プライマリーENI (<code>eth0</code>)<a class="headerlink" href="#eni-eth0" title="Permanent link">&para;</a></h4>
-<p>ENI が必要な AWS リソースには、デフォルトでプライマリーENI が紐づいている。</p>
-<p>プライマリーENI は、Amazon EC2 から解除できない。</p>
+<p>ENIが必要なAWSリソースには、デフォルトでプライマリーENIが紐づいている。</p>
+<p>プライマリーENIは、Amazon EC2から解除できない。</p>
 <p><img alt="aws_eni_primary-eni" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_primary-eni.png" /></p>
 <blockquote>
 <ul>
@@ -36721,8 +36721,8 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </ul>
 </blockquote>
 <h4 id="eni-eth1">▼ セカンダリーENI (<code>eth1</code>)<a class="headerlink" href="#eni-eth1" title="Permanent link">&para;</a></h4>
-<p>プライマリーENI に加えて、セカンダリーENI を AWS リソースに紐づけられる。</p>
-<p>セカンダリーENI は、Amazon EC2 から解除できる。</p>
+<p>プライマリーENIに加えて、セカンダリーENIをAWSリソースに紐づけられる。</p>
+<p>セカンダリーENIは、Amazon EC2から解除できる。</p>
 <p><img alt="aws_eni_secondary-eni" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_secondary-eni.png" /></p>
 <blockquote>
 <ul>
@@ -36733,39 +36733,39 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p><br></p>
 <h3 id="aws">紐付けられるAWSリソース<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="alb">▼ ALB<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
-<p>ENI に紐付けられた IP アドレスを、ALB に割り当てる。</p>
+<p>ENIに紐付けられたIPアドレスを、ALBに割り当てる。</p>
 <h4 id="amazon-ec2_4">▼ Amazon EC2<a class="headerlink" href="#amazon-ec2_4" title="Permanent link">&para;</a></h4>
-<p>ENI に紐付けられた IP アドレスを、Amazon EC2 に割り当てる。</p>
+<p>ENIに紐付けられたIPアドレスを、Amazon EC2に割り当てる。</p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics</a></li>
 </ul>
 <h4 id="fargateamazon-ec2">▼ Fargate環境のAmazon EC2<a class="headerlink" href="#fargateamazon-ec2" title="Permanent link">&para;</a></h4>
-<p>明言されていないため推測ではあるが、ENI に紐付けられた local インターフェースが、Fargate としての Amazon EC2 に紐付けられる。</p>
-<p>Fargate 環境のホストが Amazon EC2 とは明言されていない。</p>
+<p>明言されていないため推測ではあるが、ENIに紐付けられたlocalインターフェースが、FargateとしてのAmazon EC2に紐付けられる。</p>
+<p>Fargate環境のホストがAmazon EC2とは明言されていない。</p>
 <ul>
 <li><a href="https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/">https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/</a></li>
 </ul>
 <h4 id="elastic-ip">▼ Elastic IP<a class="headerlink" href="#elastic-ip" title="Permanent link">&para;</a></h4>
-<p>ENI に Elastic IP アドレスが紐付けられる。</p>
-<p>この ENI を他の AWS リソースに紐付けることにより、ENI を経由して、Elastic IP を紐付けられる。</p>
+<p>ENIにElastic IPアドレスが紐付けられる。</p>
+<p>このENIを他のAWSリソースに紐付けることにより、ENIを経由して、Elastic IPを紐付けられる。</p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses</a></li>
 </ul>
 <h4 id="globalaccelerator">▼ GlobalAccelerator<a class="headerlink" href="#globalaccelerator" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="aws-nat-gateway">▼ AWS NAT Gateway<a class="headerlink" href="#aws-nat-gateway" title="Permanent link">&para;</a></h4>
-<p>ENI に紐付けられたパブリック IP アドレスを、AWS NAT Gateway に割り当てる。</p>
+<p>ENIに紐付けられたパブリックIPアドレスを、AWS NAT Gatewayに割り当てる。</p>
 <h4 id="amazon-rds">▼ Amazon RDS<a class="headerlink" href="#amazon-rds" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="_31">▼ セキュリティグループ<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
-<p>ENI にセキュリティグループが紐付けられる。</p>
-<p>この ENI を他の AWS リソースに紐付けることにより、ENI を経由して、セキュリティグループを紐付けられる。</p>
+<p>ENIにセキュリティグループが紐付けられる。</p>
+<p>このENIを他のAWSリソースに紐付けることにより、ENIを経由して、セキュリティグループを紐付けられる。</p>
 <h4 id="amazon-vpc_1">▼ Amazon VPCエンドポイント<a class="headerlink" href="#amazon-vpc_1" title="Permanent link">&para;</a></h4>
-<p>Interface 型の Amazon VPC エンドポイントとして動作する。</p>
+<p>Interface型のAmazon VPCエンドポイントとして動作する。</p>
 <p><br></p>
 <h3 id="amazon-vpc_2">Amazon VPCトラフィックミラーリング<a class="headerlink" href="#amazon-vpc_2" title="Permanent link">&para;</a></h3>
-<p>ENI を経由して、同じ Amazon VPC 内の異なるインスタンスなどにパケットのコピーを送信する。</p>
-<p>Amazon VPC エンドポイントを経由すれば異なる Amazon VPC に送信できる。</p>
+<p>ENIを経由して、同じAmazon VPC内の異なるインスタンスなどにパケットのコピーを送信する。</p>
+<p>Amazon VPCエンドポイントを経由すれば異なるAmazon VPCに送信できる。</p>
 <p><img alt="vpc_traffic-mirroring" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_traffic-mirroring.png" /></p>
 <blockquote>
 <ul>
@@ -36803,11 +36803,11 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 <p><br></p>
 <h2 id="04-03-ipv4-prefix-delegation">04-03. IPv4 Prefix delegation<a class="headerlink" href="#04-03-ipv4-prefix-delegation" title="Permanent link">&para;</a></h2>
 <h3 id="ipv4-prefix-delegation">IPv4 Prefix delegationとは<a class="headerlink" href="#ipv4-prefix-delegation" title="Permanent link">&para;</a></h3>
-<p>複数の CIDR (サブネット内の <code>*.*.*.*/28</code>) を ENI に割り当て、この ENI を Amazon EC2 に紐づける。</p>
-<p>Amazon EC2 に紐づけた CIDR から IP アドレスを取得する。</p>
-<p>使用できる IP アドレスを <code>16</code> 個の倍数で増やせる。</p>
-<p>そのため、サブネットで <code>16</code> 個 (<code>*.*.*.*/28</code>) の連続した IP アドレスの範囲が空いている必要がある。</p>
-<p>セカンダリーIP アドレス割り当てとは異なり、IP アドレスではなく CIDR を丸ごと ENI に割り当てられるため、Amazon EC2 内で使用可能な IP アドレス数を大きく増やせる。</p>
+<p>複数のCIDR (サブネット内の <code>*.*.*.*/28</code>) をENIに割り当て、このENIをAmazon EC2に紐づける。</p>
+<p>Amazon EC2に紐づけたCIDRからIPアドレスを取得する。</p>
+<p>使用できるIPアドレスを <code>16</code> 個の倍数で増やせる。</p>
+<p>そのため、サブネットで <code>16</code> 個 (<code>*.*.*.*/28</code>) の連続したIPアドレスの範囲が空いている必要がある。</p>
+<p>セカンダリーIPアドレス割り当てとは異なり、IPアドレスではなくCIDRを丸ごとENIに割り当てられるため、Amazon EC2内で使用可能なIPアドレス数を大きく増やせる。</p>
 <table>
 <thead>
 <tr>
@@ -36833,8 +36833,8 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </blockquote>
 <p><br></p>
 <h3 id="ip_2">IPアドレス数<a class="headerlink" href="#ip_2" title="Permanent link">&para;</a></h3>
-<p>ENI に割り当てる CIDR (サブネット内の <code>*.*.*.*/28</code>) は、<code>16</code> 個の IP アドレスを持つ。</p>
-<p>ENI には複数の CIDR を紐づけられるため、<code>16</code> 個の倍数だけ、Amazon EC2 内で取得できる IP アドレスが増える。</p>
+<p>ENIに割り当てるCIDR (サブネット内の <code>*.*.*.*/28</code>) は、<code>16</code> 個のIPアドレスを持つ。</p>
+<p>ENIには複数のCIDRを紐づけられるため、<code>16</code> 個の倍数だけ、Amazon EC2内で取得できるIPアドレスが増える。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix</a></li>
@@ -36842,13 +36842,13 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </blockquote>
 <p><br></p>
 <h3 id="cidr-28">CIDR (サブネット内の <code>*.*.*.*/28</code>) の事前予約<a class="headerlink" href="#cidr-28" title="Permanent link">&para;</a></h3>
-<p>ENI に CIDR を手動/自動で割り当てるとき、サブネット内に断片化されていない <code>*.*.*.*/28</code> がないと、<code>InsufficientCidr</code> というエラーになる。</p>
-<p>そこで、サブネットに CIDR (<code>*.*.*.*/28</code>) を予約しておき、これを IPv4 Prefix delegation のために使用する。</p>
-<p>ただ、執筆時点 (2023/11/23) では、使用中のサブネットで割り当て済みセカンダリープライベート IP アドレスの分布を確認する方法がない。</p>
-<p>サブネット内に CIDR (<code>*.*.*.*/28</code>) をいったん予約しておいて、Amazon EC2 の再作成によるセカンダリープライベート IP アドレス解放を待つとよい。</p>
-<p>CIDR 内のセカンダリープライベート IP アドレスが使用中であっても CIDR を予約できる。</p>
-<p>予約した CIDR 内のセカンダリープライベート IP アドレスが一度解放されれば、これを自動で再割り当てない仕組みになっている。</p>
-<p>もちろん、サブネットを新しく作成すれば使用中のセカンダリープライベート IP アドレスがないため、これの解放を待つ必要はない。</p>
+<p>ENIにCIDRを手動/自動で割り当てるとき、サブネット内に断片化されていない <code>*.*.*.*/28</code> が無いと、<code>InsufficientCidr</code> というエラーになる。</p>
+<p>そこで、サブネットにCIDR (<code>*.*.*.*/28</code>) を予約しておき、これをIPv4 Prefix delegationのために使用する。</p>
+<p>ただ、執筆時点 (2023/11/23) では、使用中のサブネットで割り当て済みセカンダリープライベートIPアドレスの分布を確認する方法がない。</p>
+<p>サブネット内にCIDR (<code>*.*.*.*/28</code>) をいったん予約しておいて、Amazon EC2の再作成によるセカンダリープライベートIPアドレス解放を待つとよい。</p>
+<p>CIDR内のセカンダリープライベートIPアドレスが使用中であってもCIDRを予約できる。</p>
+<p>予約したCIDR内のセカンダリープライベートIPアドレスが一度解放されれば、これを自動で再割り当てない仕組みになっている。</p>
+<p>もちろん、サブネットを新しく作成すれば使用中のセカンダリープライベートIPアドレスがないため、これの解放を待つ必要はない。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html">https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html</a></li>
@@ -36863,7 +36863,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
 </blockquote>
 <p><br></p>
 <h3 id="cidr">CIDRの断片化の確認<a class="headerlink" href="#cidr" title="Permanent link">&para;</a></h3>
-<p>ツールを使用して、CIDR が断片化されているかを確認するとよい。</p>
+<p>ツールを使用して、CIDRが断片化されているかを確認するとよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>describe_unused_ips.py<span class="w"> </span>subnet-***
 
 <span class="nv">subnet_id</span><span class="o">=</span><span class="s1">&#39;subnet-***&#39;</span><span class="w"> </span><span class="nv">mode</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span>
@@ -36912,7 +36912,7 @@ Filesystem<span class="w">     </span>Type<span class="w">  </span>Size<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:26:17 JST">2026-04-06</span>
   </span>
 
     

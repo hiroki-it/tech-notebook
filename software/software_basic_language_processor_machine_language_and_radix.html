@@ -35620,19 +35620,19 @@
 <p><br></p>
 <h2 id="01-2">01. 機械語と2進数の関係<a class="headerlink" href="#01-2" title="Permanent link">&para;</a></h2>
 <h3 id="_3">機械語とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>あらゆる情報を『0』と『1』の 2 進数を機械語として、CPU に対して、命令が実行される。</p>
+<p>あらゆる情報を『0』と『1』の2進数を機械語として、CPUに対して、命令が実行される。</p>
 <p><img alt="二進法とCPU" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/二進法とCPU.jpg" /></p>
 <p><br></p>
 <h3 id="bit">さまざまな進数とbitの関係<a class="headerlink" href="#bit" title="Permanent link">&para;</a></h3>
 <p>しかし、人間が扱ううえでは <code>8</code> 進数あるいは <code>16</code> 進数に変換して表すことが適している。</p>
-<p><code>2</code> 進数 1 ケタが『<code>1</code>bit』と定義されている。</p>
-<p><code>8</code> 進数の 1 ケタは <code>2</code> 進数の 3 ケタ (=<code>3</code>bit) に相当し、<code>16</code> 進数の 1 ケタは <code>2</code> 進数の 4 ケタ (<code>4</code>bit) に相当する。</p>
+<p><code>2</code> 進数1ケタが『<code>1</code>bit』と定義されている。</p>
+<p><code>8</code> 進数の1ケタは <code>2</code> 進数の3ケタ (=<code>3</code>bit) に相当し、<code>16</code> 進数の1ケタは <code>2</code> 進数の4ケタ (<code>4</code>bit) に相当する。</p>
 <p><img alt="bit_byte" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bit_byte.png" /></p>
 <p><img alt="進数表" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/進数表.png" /></p>
 <p><br></p>
 <h3 id="8bit1byte-bit">なぜ８bitを1Byteとするのか？ (半角英数字とbitの関係)<a class="headerlink" href="#8bit1byte-bit" title="Permanent link">&para;</a></h3>
-<p><code>8</code>bit を一区切りとして、<code>1</code>Byte と表す。</p>
-<p>これは、半角英数字一文字が８bit のデータサイズを持つからである。</p>
+<p><code>8</code>bitを一区切りとして、<code>1</code>Byteと表す。</p>
+<p>これは、半角英数字一文字が８bitのデータサイズを持つからである。</p>
 <p><img alt="半角英数字一文字で1バイト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/半角英数字一文字で1バイト.png" /></p>
 <p><br></p>
 <h3 id="byte">Byte単位<a class="headerlink" href="#byte" title="Permanent link">&para;</a></h3>
@@ -35645,7 +35645,7 @@
 <p><img alt="p106" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p106.png" /></p>
 <p><br></p>
 <h3 id="cpu">一般的なCPUが扱える情報の種数<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
-<p>CPU では、各データは 2 進法によって区別されている。CPU は 4 、8、16、32-bit バージョンと進歩し、2008 年の後半からは 64-bit バージョンの CPU が普及し始めた。1-bit は 2 種類の情報を表せるため、32-bit の CPU では 2^32、64-bit では 2^64 の種類の情報を扱える。</p>
+<p>CPUでは、各データは2進法によって区別されている。CPUは4 、8、16、32-bitバージョンと進歩し、2008年の後半からは 64-bitバージョンのCPUが普及し始めた。1-bitは2種類の情報を表せるため、32-bitのCPUでは2^32、64-bitでは2^64の種類の情報を扱える。</p>
 <p><br></p>
 <h2 id="01-02">01-02. 機械語命令の種類<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_4">設定命令<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
@@ -35665,15 +35665,15 @@
 <p><br></p>
 <h2 id="01-03">01-03. シフト命令<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="_11">論理左シフト<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>最上位に正負を表す『符号 bit』を設定せずに、シフトを実行する。</p>
+<p>最上位に正負を表す『符号bit』を設定せずに、シフトを実行する。</p>
 <p>２進数の場合…</p>
-<p>左に <code>1</code>bit シフトすると『2 倍』</p>
-<p>左に <code>1</code>bit シフトし、元の値を足すを『3 倍』</p>
-<p>左に <code>2</code>bit シフトすると『4 倍』</p>
-<p>左に <code>2</code>bit シフトし、元の値を足すと『5 倍』</p>
-<p>左に <code>2</code>bit シフトし、元の値を足して『5 倍』。</p>
-<p>加えて <code>2</code>bit シフトすると『10 倍』</p>
-<p>左に <code>3</code>bit シフトすると『8 倍』</p>
+<p>左に <code>1</code>bitシフトすると『2倍』</p>
+<p>左に <code>1</code>bitシフトし、元の値を足すを『3倍』</p>
+<p>左に <code>2</code>bitシフトすると『4倍』</p>
+<p>左に <code>2</code>bitシフトし、元の値を足すと『5倍』</p>
+<p>左に <code>2</code>bitシフトし、元の値を足して『5倍』。</p>
+<p>加えて <code>2</code>bitシフトすると『10倍』</p>
+<p>左に <code>3</code>bitシフトすると『8倍』</p>
 <h4 id="_12">▼ 正の数の場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>00011100</p>
@@ -35684,11 +35684,11 @@
 <p><img alt="負の論理左シフト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/負の論理左シフト.png" /></p>
 <p><br></p>
 <h3 id="_14">論理右シフト<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p>最上位に正負を表す『符号 bit』を設定せずに、シフトを実行する。</p>
+<p>最上位に正負を表す『符号bit』を設定せずに、シフトを実行する。</p>
 <p>２進数の場合…</p>
-<p>右に <code>1</code>bit シフトすると『1/2』</p>
-<p>右に <code>2</code>bit シフトすると『1/4』</p>
-<p>右に <code>3</code>bit シフトすると『1/8』</p>
+<p>右に <code>1</code>bitシフトすると『1/2』</p>
+<p>右に <code>2</code>bitシフトすると『1/4』</p>
+<p>右に <code>3</code>bitシフトすると『1/8』</p>
 <h4 id="_15">▼ 正の数の場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>00011100</p>
@@ -35700,15 +35700,15 @@
 <p>こういう場合、算術シフトが使用される。</p>
 <p><img alt="負の論理右シフト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/負の論理右シフト.png" /></p>
 <h3 id="_17">算術左シフト<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>最上位に正負を表す『符号 bit』を設定し、シフトを実行する。</p>
+<p>最上位に正負を表す『符号bit』を設定し、シフトを実行する。</p>
 <p>２進数の場合…</p>
-<p>左に <code>1</code>bit シフトすると『2 倍』</p>
-<p>左に <code>1</code>bit シフトし、元の値を足すを『3 倍』</p>
-<p>左に <code>2</code>bit シフトすると『4 倍』</p>
-<p>左に <code>2</code>bit シフトし、元の値を足すと『5 倍』</p>
-<p>左に <code>2</code>bit シフトし、元の値を足して『5 倍』。</p>
-<p>加えて <code>2</code>bit シフトすると『10 倍』</p>
-<p>左に <code>3</code>bit シフトすると『8 倍』</p>
+<p>左に <code>1</code>bitシフトすると『2倍』</p>
+<p>左に <code>1</code>bitシフトし、元の値を足すを『3倍』</p>
+<p>左に <code>2</code>bitシフトすると『4倍』</p>
+<p>左に <code>2</code>bitシフトし、元の値を足すと『5倍』</p>
+<p>左に <code>2</code>bitシフトし、元の値を足して『5倍』。</p>
+<p>加えて <code>2</code>bitシフトすると『10倍』</p>
+<p>左に <code>3</code>bitシフトすると『8倍』</p>
 <h4 id="_18">▼ 正の数の場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>00011100</p>
@@ -35720,10 +35720,10 @@
 <p><br></p>
 <h3 id="_20">算術右シフト<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <p>２進数の場合…</p>
-<p>最上位に正負を表す『符号 bit』を設定し、シフトを実行する。</p>
-<p>右に <code>1</code>bit シフトすると『1/2』</p>
-<p>右に <code>2</code>bit シフトすると『1/4』</p>
-<p>右に <code>3</code>bit シフトすると『1/8』</p>
+<p>最上位に正負を表す『符号bit』を設定し、シフトを実行する。</p>
+<p>右に <code>1</code>bitシフトすると『1/2』</p>
+<p>右に <code>2</code>bitシフトすると『1/4』</p>
+<p>右に <code>3</code>bitシフトすると『1/8』</p>
 <h4 id="_21">▼ 正の数の場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
 <p>00011100</p>
@@ -35737,7 +35737,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>16 進数が 2 進数に変換され、記号へ値が割り当てられる。 (ビット分割)</p>
+<p>16進数が2進数に変換され、記号へ値が割り当てられる。 (ビット分割)</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -35770,7 +35770,7 @@
 <h4 id="_26">▼ 実効アドレスの計算の実行<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>ここに、レジスタ番号と内容の表を張る。</p>
 <p>(実効アドレス) = [adr + [X] ]</p>
-<p>= [1000h + [レジスタ 2] ] (※配列のように、レジスタ 2 の値を参照)</p>
+<p>= [1000h + [レジスタ2] ] (※配列のように、レジスタ2の値を参照)</p>
 <p>= [1000h + 0002h]</p>
 <p>= [1002h]</p>
 <p>= 1003h</p>
@@ -35825,17 +35825,17 @@
 <h2 id="01-06-cpu">01-06. CPUにおける小数の処理方法<a class="headerlink" href="#01-06-cpu" title="Permanent link">&para;</a></h2>
 <h3 id="_28">固定小数点数<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <p>『この位置に小数点がある』な前提で数字を扱うことによって、小数点を含む数値を表す方法。</p>
-<p>CPU は、数値に対し、特定の位置に小数点を打つ。</p>
+<p>CPUは、数値に対し、特定の位置に小数点を打つ。</p>
 <h3 id="_29">浮動小数点数<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <p>指数表記を使用することによって、小数点を含む数値を表す方法。</p>
 <h4 id="_30">▼ 正規化した数式から浮動小数点数への変換<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p><img alt="正規化した数式から浮動小数点数への変換" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/正規化した数式から浮動小数点数への変換.png" /></p>
 <h4 id="_31">▼ 浮動小数点数から正規化した数式への変換<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
-<p>指数部と仮数部を調節し、できるだけ仮数部の上位桁へ 0 が入らないようにして、誤差を少なくすること。例えば、ある計算の結果が <code>0.012345×10^-3</code> だった場合、仮数部を 0.1～1 の範囲に収めるため、<code>0.12345×10^-4</code> に変更する。</p>
+<p>指数部と仮数部を調節し、できるだけ仮数部の上位桁へ0が入らないようにして、誤差を少なくすること。例えば、ある計算の結果が <code>0.012345×10^-3</code> だった場合、仮数部を0.1～1の範囲に収めるため、<code>0.12345×10^-4</code> に変更する。</p>
 <p><img alt="浮動小数点数から正規化した数式への変換" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/浮動小数点数から正規化した数式への変換.png" /></p>
 <p><br></p>
 <h2 id="01-07">01-07. 誤差<a class="headerlink" href="#01-07" title="Permanent link">&para;</a></h2>
-<p>『誤差』：実際の数値と CPU が表現できる数値の間に生じるズレのこと。</p>
+<p>『誤差』：実際の数値とCPUが表現できる数値の間に生じるズレのこと。</p>
 <h3 id="_32">無限小数<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <blockquote>
 <ul>
@@ -35848,7 +35848,7 @@
 <p><strong>＊例＊</strong></p>
 <p>初代ドラクエ</p>
 <p>初代のドラゴンクエストの経験値の上限は『<code>65535</code>』だった。</p>
-<p>これは、経験値が 16bit (2 Byte) で表されており、桁溢れが起きることを防ぐために <code>65535</code> 以上は計算しないようになっていた。</p>
+<p>これは、経験値が16bit (2 Byte) で表されており、桁溢れが起きることを防ぐために <code>65535</code> 以上は計算しないようになっていた。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/4297124513">https://www.amazon.co.jp/dp/4297124513</a></li>
@@ -35896,7 +35896,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>『<code>(16^0 × 5) + (16^1 × 2) + (16^2 × 1) + (16^3 × A) + (16^4 × C)</code>』というように、下の位から、順に 16^N をかけていく。 (A と C は、10 進数に変換して『10』と『12』)</p>
+<p>『<code>(16^0 × 5) + (16^1 × 2) + (16^2 × 1) + (16^3 × A) + (16^4 × C)</code>』というように、下の位から、順に16^Nをかけていく。 (AとCは、10進数に変換して『10』と『12』)</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -35911,7 +35911,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>『<code>(2^0 × 1) + (2^1 × 0) + (2^2 × 1) + (2^3 × 1) + (2^4 × 0) + (2^5 × 1) + (2^6 × 1)</code>』というように、下の位から、順に 2^N をかけていく。</p>
+<p>『<code>(2^0 × 1) + (2^1 × 0) + (2^2 × 1) + (2^3 × 1) + (2^4 × 0) + (2^5 × 1) + (2^6 × 1)</code>』というように、下の位から、順に2^Nをかけていく。</p>
 </dd>
 </dl>
 <h4 id="_41">▼ 少数<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
@@ -35927,7 +35927,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>16 進数で 10～15 は、A～F で表記されるため、<code>11</code> を B で表記。</p>
+<p>16進数で10～15は、A～Fで表記されるため、<code>11</code> をBで表記。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -35940,15 +35940,15 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>『<code>0.1015625</code>』に <code>16</code> をかけ、整数部分を取り出す。 (<code>0.1015625 × 16 = 1.625</code>。『<code>1</code>』を取り出し、16 進数に変換して『<code>1</code>』)</p>
+<p>『<code>0.1015625</code>』に <code>16</code> をかけ、整数部分を取り出す。 (<code>0.1015625 × 16 = 1.625</code>。『<code>1</code>』を取り出し、16進数に変換して『<code>1</code>』)</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>計算結果の少数部分に 16 を加えてかける。少数部分が 0 になるまで、これを繰り返す。 (<code>0.625 × 16 = 10.0</code> より、『<code>10</code>』を取り出し、16 進数に変換して『A』)</p>
+<p>計算結果の少数部分に16を加えてかける。少数部分が0になるまで、これを繰り返す。 (<code>0.625 × 16 = 10.0</code> より、『<code>10</code>』を取り出し、16進数に変換して『A』)</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>少数部分が 0 になったため、取り出した数を順に並べ、答えは『0.1A』</p>
+<p>少数部分が0になったため、取り出した数を順に並べ、答えは『0.1A』</p>
 </dd>
 </dl>
 <p><br></p>
@@ -35959,22 +35959,22 @@
 <h4 id="_45">▼ 少数<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
 <p><br></p>
 <h2 id="02-03-x-10-y">02-03. X 進数 ➔ 10進数 ➔ Y 進数<a class="headerlink" href="#02-03-x-10-y" title="Permanent link">&para;</a></h2>
-<p>一度、10 進数に変換してから、任意の進数に変換する。</p>
+<p>一度、10進数に変換してから、任意の進数に変換する。</p>
 <h3 id="16-2">16進数 ➔ 2進数<a class="headerlink" href="#16-2" title="Permanent link">&para;</a></h3>
 <h4 id="_46">▼ 整数<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong>『<code>20B3</code>』</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>2、0、B、3 を 10 進数に変換して、『<code>(16^0 × 3) + (16^1 × 11)  + (16^2 × 0) + (16^3 × 2) = 8371</code>』</p>
+<p>2、0、B、3を10進数に変換して、『<code>(16^0 × 3) + (16^1 × 11)  + (16^2 × 0) + (16^3 × 2) = 8371</code>』</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>10 と 15 を 2 進数に変換して、『<code>0010</code>』、『<code>0000</code>』、『<code>1011</code>』、『<code>0011</code>』</p>
+<p>10と15を2進数に変換して、『<code>0010</code>』、『<code>0000</code>』、『<code>1011</code>』、『<code>0011</code>』</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>よって、AF は 10 進法に変換して『<code>0010000010110011</code>』</p>
+<p>よって、AFは10進法に変換して『<code>0010000010110011</code>』</p>
 </dd>
 </dl>
 <p><br></p>
@@ -35986,11 +35986,11 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>整数部分の <code>2A</code> を 10 進数に変換して、</p>
+<p>整数部分の <code>2A</code> を10進数に変換して、</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>42 を 2 進数に変換して、『<code>101010</code>』。また、余り計算のとき、余り１を <code>2^N</code> に直しておく。</p>
+<p>42を2進数に変換して、『<code>101010</code>』。また、余り計算の時、余り１を <code>2^N</code> に直しておく。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -36003,7 +36003,7 @@
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>76 を 2 進数に変換して、『1001100』。また、余り計算のとき、余り１を 2^N に直しておく。</p>
+<p>76を2進数に変換して、『1001100』。また、余り計算の時、余り１を2^Nに直しておく。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -36023,7 +36023,7 @@
 <h2 id="03">03. 論理回路<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_48">論理式<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>
 <p><img alt="論理式一覧" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/論理式一覧.png" /></p>
-<p>以下のベン図では、集合 A と集合 B は入力が『<code>1</code>』の場合、外側は入力が『<code>0</code>』の場合を表している。</p>
+<p>以下のベン図では、集合Aと集合Bは入力が『<code>1</code>』の場合、外側は入力が『<code>0</code>』の場合を表している。</p>
 <p>演算方法を思い出すときには、ベン図を思い出せ。</p>
 <p><br></p>
 <h3 id="not-not">否定回路 (NOT回路) 、NOT演算、ベン図<a class="headerlink" href="#not-not" title="Permanent link">&para;</a></h3>
@@ -36032,45 +36032,45 @@
 <p><img alt="NOT回路" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NOT回路.png" /></p>
 <p><br></p>
 <h3 id="and-and">論理積回路 (AND回路) 、AND演算、ベン図<a class="headerlink" href="#and-and" title="Permanent link">&para;</a></h3>
-<p><code>2</code> 個の bit を比較して、どちらも『<code>1</code>』なら『<code>1</code>』を出力。</p>
+<p><code>2</code> 個のbitを比較して、どちらも『<code>1</code>』なら『<code>1</code>』を出力。</p>
 <p><img alt="AND回路とビット" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AND回路とビット.png" /></p>
 <p><img alt="AND回路" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AND回路.png" /></p>
 <p><br></p>
 <h3 id="nand-nand">否定論理積回路 (NAND回路) 、NAND演算、ベン図<a class="headerlink" href="#nand-nand" title="Permanent link">&para;</a></h3>
-<p><code>2</code> 個の bit を比較して、どちらも『<code>1</code>』なら『<code>0</code>』を出力。</p>
+<p><code>2</code> 個のbitを比較して、どちらも『<code>1</code>』なら『<code>0</code>』を出力。</p>
 <p>ベン図では両方が『<code>1</code>』以外の場合を指しているが、回路の出力をうまく説明できない…。</p>
 <p><img alt="NAND回路とビット" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NAND回路とビット.png" /></p>
 <p><img alt="NAND回路" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NAND回路.png" /></p>
 <p><br></p>
 <h3 id="or-or">論理和回路 (OR回路) 、OR演算、ベン図<a class="headerlink" href="#or-or" title="Permanent link">&para;</a></h3>
-<p><code>2</code> 個の bit を比較して、どちらかが『<code>1</code>』なら『<code>1</code>』を出力。</p>
+<p><code>2</code> 個のbitを比較して、どちらかが『<code>1</code>』なら『<code>1</code>』を出力。</p>
 <p><img alt="OR回路とビット" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OR回路とビット.png" /></p>
 <p><img alt="OR回路" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OR回路.png" /></p>
 <p><br></p>
 <h3 id="eorxor-eor">排他的論理和回路 (EOR回路/XOR回路) 、EOR演算、ベン図<a class="headerlink" href="#eorxor-eor" title="Permanent link">&para;</a></h3>
-<p><code>2</code> 個の bit を比較して、どちらかだけが『<code>1</code>』なら『<code>1</code>』を出力。</p>
+<p><code>2</code> 個のbitを比較して、どちらかだけが『<code>1</code>』なら『<code>1</code>』を出力。</p>
 <p><img alt="EOR回路またはXOR回路とビット" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EOR回路またはXOR回路とビット.png" /></p>
 <p><img alt="EOR回路またはXOR回路" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EOR回路またはXOR回路.png" /></p>
 <p><br></p>
 <h3 id="nor-nor">否定論理和回路 (NOR回路) 、NOR演算、ベン図<a class="headerlink" href="#nor-nor" title="Permanent link">&para;</a></h3>
-<p><code>2</code> 個の bit を比較して、どちらも『<code>0</code>』なら『<code>1</code>』を出力。</p>
+<p><code>2</code> 個のbitを比較して、どちらも『<code>0</code>』なら『<code>1</code>』を出力。</p>
 <p><img alt="NOR回路とビット" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NOR回路とビット.png" /></p>
 <p><img alt="NOR回路" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NOR回路.png" /></p>
 <p><br></p>
 <h3 id="_49">フリップフロップ回路<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h3>
 <p>わかりやすい動画解説：<a href="https://www.youtube.com/watch?v=4vAGaWyGanU">https://www.youtube.com/watch?v=4vAGaWyGanU</a></p>
-<p>SRAM の電子回路に使用している (6 章を参照) 。</p>
-<p>Set 側に初期値『<code>1</code>』が入力される。</p>
+<p>SRAMの電子回路に使用している (6章を参照) 。</p>
+<p>Set側に初期値『<code>1</code>』が入力される。</p>
 <p>入力を『<code>0</code>』に変えても、両方の出力結果は変わらず、安定している。</p>
 <p><img alt="フリップフロップ回路-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/フリップフロップ回路-2.png" /></p>
-<p>Reset 側に『1』を入力すると、両方の出力結果は変化する。</p>
+<p>Reset側に『1』を入力すると、両方の出力結果は変化する。</p>
 <p><img alt="フリップフロップ回路-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/フリップフロップ回路-3.png" /></p>
 <p><br></p>
 <h2 id="03-02">03-02. 論理演算命令<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_50">論理積<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
 <p><strong>＊例題＊</strong></p>
-<p>16 進数の『F』は、2 進数で『<code>0000 0000 0000 1111</code>』で表す。</p>
-<p>よって、000F を使用して AND 演算した場合、下位 4 桁を変化させずに取り出せる。</p>
+<p>16進数の『F』は、2進数で『<code>0000 0000 0000 1111</code>』で表す。</p>
+<p>よって、000Fを使用してAND演算した場合、下位4桁を変化させずに取り出せる。</p>
 <div class="highlight"><pre><span></span><code>1100 1101 1111 1000
 0000 0000 0000 1111
 ーーーーーーーーーーー
@@ -36082,8 +36082,8 @@
 </ul>
 </blockquote>
 <p><strong>＊例題＊</strong></p>
-<p>16 進数の『7F』は、2 進数で『<code>0000 0000 0111 1111</code>』で表す。</p>
-<p>よって、7F を使用して AND 演算した場合、下位 7 桁を変化させずに取り出せる。</p>
+<p>16進数の『7F』は、2進数で『<code>0000 0000 0111 1111</code>』で表す。</p>
+<p>よって、7Fを使用してAND演算した場合、下位7桁を変化させずに取り出せる。</p>
 <div class="highlight"><pre><span></span><code>1100 1101 1111 1000
 0000 0000 0111 1111
 ーーーーーーーーーーー
@@ -36102,9 +36102,9 @@
 <p><br></p>
 <h3 id="_54">否定論理和<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h3>
 <p><strong>＊例題＊</strong></p>
-<p>X と Y の否定論理積 X NAND Y は、NOT(X AND Y)として定義される。</p>
-<p>X OR Y を NAND のみを使用して表した論理式はどれか。</p>
-<p><code>X=0</code>、<code>Y=0</code> のときに X OR Y が『<code>0</code>』になることから、『<code>0</code>』になる選択肢を探す。</p>
+<p>XとYの否定論理積 X NAND Yは、NOT(X AND Y)として定義される。</p>
+<p>X OR YをNANDのみを使用して表した論理式はどれか。</p>
+<p><code>X=0</code>、<code>Y=0</code> の時にX OR Yが『<code>0</code>』になることから、『<code>0</code>』になる選択肢を探す。</p>
 <h4 id="x-nand-y-nand-x-nand-y">▼ ((X NAND Y) NAND X) NAND Y<a class="headerlink" href="#x-nand-y-nand-x-nand-y" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p">((</span><span class="mi">0</span><span class="w"> </span><span class="n">NAND</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="n">NAND</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="n">NAND</span><span class="w"> </span><span class="mi">0</span>
 <span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="n">NAND</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">NAND</span><span class="w"> </span><span class="mi">0</span>
@@ -36148,7 +36148,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
   </span>
 
     

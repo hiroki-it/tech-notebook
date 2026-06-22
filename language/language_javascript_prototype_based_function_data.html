@@ -34468,7 +34468,7 @@
 <span class="nx">methodA</span><span class="p">();</span>
 </code></pre></div>
 <h4 id="_6">▼ 名前がドルマークのもの<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>JavaScript でよく見かけるドルマーク。</p>
+<p>JavaScriptでよく見かけるドルマーク。</p>
 <p>これは、関数の名前としてドルマークを使用しているのみである。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 定義</span>
@@ -34476,7 +34476,7 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>jQuery では、パッケージの読み出し宣言時に、『Jquery』という名前の代わりにドルマークを使用する仕様になってる。</p>
+<p>jQueryでは、パッケージの読み出し宣言時に、『Jquery』という名前の代わりにドルマークを使用する仕様になってる。</p>
 <p>これと混乱しないように注意する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// jQuery.get() と同じ</span>
@@ -34533,7 +34533,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span><span class="w"> </span><span class="c1">// undefied</span>
 </code></pre></div>
 <h4 id="null">▼ null<a class="headerlink" href="#null" title="Permanent link">&para;</a></h4>
-<p><code>null</code> は、undefined とは異なり、意図して代入しなければ適用されないデータ型である。</p>
+<p><code>null</code> は、undefinedとは異なり、意図して代入しなければ適用されないデータ型である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 変数a: 意図をもってnullを入れている</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
@@ -34541,7 +34541,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span><span class="w"> </span><span class="c1">// null</span>
 </code></pre></div>
 <h4 id="undefined_1">▼ undefinedの返却<a class="headerlink" href="#undefined_1" title="Permanent link">&para;</a></h4>
-<p>undefined を返却する場合、<code>return</code> のみを記述する。</p>
+<p>undefinedを返却する場合、<code>return</code> のみを記述する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// 空の『return文』。空なので『undefined』を返す。</span>
@@ -34740,7 +34740,7 @@
 <h4 id="for-of_1">▼ <code>for  of</code> とは<a class="headerlink" href="#for-of_1" title="Permanent link">&para;</a></h4>
 <p>順序を保ったまま配列を走査し、値を取得する。</p>
 <p>オブジェクトに対して <code>entires()</code> 関数を使用して、一度配列に変換すれば、オブジェクトでも <code>for  of</code> を使用できる。</p>
-<p><code>for  in</code> を使用するより、こちらを使用したほうがよい。</p>
+<p><code>for  in</code> を使用するより、こちらを使用したほうが良い。</p>
 <h4 id="_16">▼ 配列の場合<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;baz&quot;</span><span class="p">];</span>
 
@@ -34847,19 +34847,19 @@
 </code></pre></div>
 <h4 id="foreach">▼ <code>forEach()</code> 関数を使用した代替法<a class="headerlink" href="#foreach" title="Permanent link">&para;</a></h4>
 <p>反復処理のループを <code>continue</code> でスキップと同じ動作を、配列を処理する関数のコールバック関数の早期リターンで実現できる。</p>
-<p><code>continue</code> を使用するより、こちらのほうがよい。</p>
+<p><code>continue</code> を使用するより、こちらのほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.deep-rain.com/programming/javascript/778#continue">https://www.deep-rain.com/programming/javascript/778#continue</a></li>
 </ul>
 </blockquote>
-<p>PHP にも、<code>forEach()</code> 関数と同様に配列に対してコールバック関数を適用する関数 (<code>find</code>、<code>fliter</code>、<code>map</code>、<code>reduce</code>、<code>some</code>) があり、用途に合わせて使い分ける。</p>
+<p>PHPにも、<code>forEach()</code> 関数と同様に配列に対してコールバック関数を適用する関数 (<code>find</code>、<code>fliter</code>、<code>map</code>、<code>reduce</code>、<code>some</code>) があり、用途に合わせて使い分ける。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce">https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce</a></li>
 </ul>
 </blockquote>
-<p>補足として PHP にも、<code>forEach()</code> 関数と同じような使い方をする <code>array_walk()</code> 関数がある。</p>
+<p>補足としてPHPにも、<code>forEach()</code> 関数と同じような使い方をする <code>array_walk()</code> 関数がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html">https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html</a></li>
@@ -34899,7 +34899,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

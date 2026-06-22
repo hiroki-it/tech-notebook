@@ -33948,7 +33948,7 @@
 <p><br></p>
 <h2 id="01">01. 例外の定義<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">標準例外クラス<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>いずれも Throwable インターフェースを実装している。</p>
+<p>いずれもThrowableインターフェースを実装している。</p>
 <p>以下リンクを参考にせよ。</p>
 <blockquote>
 <ul>
@@ -33958,7 +33958,7 @@
 <p><br></p>
 <h3 id="_3">自前例外クラス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 定義<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>エラーの種類に合わせて、<code>Exception</code> クラスを継承した自前例外クラスを実装し、使い分けるとよい。</p>
+<p>エラーの種類に合わせて、<code>Exception</code> クラスを継承した自前例外クラスを実装し、使い分けると良い。</p>
 <p><code>__construct()</code> 関数に、メッセージやエラーコード (例外コード) などを渡せる。</p>
 <p>エラーコードのデフォルト値はゼロである。</p>
 <blockquote>
@@ -33971,7 +33971,7 @@
 <p>混乱を避けるため、例外クラスのエラーコード値にステータスコードを割り当てないようにする。</p>
 <p>ステータスコードはコントローラーにおけるレスポンス処理で割り当てる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>『Foo 変数が見つからない』というエラーに対応する例外クラスを定義する。</p>
+<p>『Foo変数が見つからない』というエラーに対応する例外クラスを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">class</span> <span class="nc">FooNotFoundException</span> <span class="k">extends</span> <span class="nx">Exception</span>
@@ -34013,9 +34013,9 @@
 <h4 id="_7">▼ フレームワークの標準機能<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>多くのフレームワークでは、ランタイムエラーや非ランタイムエラーが発生すると、それを検知して、例外をスローしてくれる。</p>
 <h4 id="_8">▼ 自前定義<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>if-throw 文を使用して、エラー検出と例外スローを実行する。</p>
-<p>ランタイムエラーは検出できないことに注意する。特定の処理のなかに、想定できる例外があり、それを例外クラスとしてするために使用する。</p>
-<p>ここでは、すべての例外クラスの親クラスである <code>Exception</code> クラスのインスタンスを投げている。</p>
+<p>if-throw文を使用して、エラー検出と例外スローを実行する。</p>
+<p>ランタイムエラーは検出できないことに注意する。特定の処理の中に、想定できる例外があり、それを例外クラスとしてするために使用する。</p>
+<p>ここでは、全ての例外クラスの親クラスである <code>Exception</code> クラスのインスタンスを投げている。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -34029,7 +34029,7 @@
     <span class="k">return</span> <span class="s2">&quot;これは </span><span class="si">${</span><span class="nv">value</span><span class="si">}</span><span class="s2"> です。&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ただし、if-throw では、都度例外を検証するがあり、さまざまな可能性を考慮しなければいけなくなる。</p>
+<p>ただし、if-throwでは、都度例外を検証するがあり、さまざまな可能性を考慮しなければいけなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">value</span><span class="p">()</span> <span class="p">{</span>
@@ -34049,10 +34049,10 @@
 <h2 id="03">03. 例外キャッチ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_9">例外キャッチの方法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="try-catch-finally">▼ try-catch-finallyとは<a class="headerlink" href="#try-catch-finally" title="Permanent link">&para;</a></h4>
-<p>try-catch-finally では、特定の処理のなかで起こる想定できない例外を捉えられる。</p>
+<p>try-catch-finallyでは、特定の処理の中で起こる想定できない例外を捉えられる。</p>
 <p>想定できない例外が起こる場合として、以下の状況がある。</p>
 <ul>
-<li>外部 API へのリクエスト</li>
+<li>外部APIへのリクエスト</li>
 <li>パッケージ内の関数のコール</li>
 <li>想定外のデータ型の入力</li>
 </ul>
@@ -34092,7 +34092,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>finally 句は、try 句や catch 句の返却処理が行われる直前に実行されるため、finally 句では、<code>return</code> や <code>continue</code> を使用しないようにする。</p>
+<p>finally句は、try句やcatch句の返却処理が行われる直前に実行されるため、finally句では、<code>return</code> や <code>continue</code> を使用しないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Exception\ExternalApiErrorException</span><span class="p">;</span>
@@ -34182,7 +34182,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_10">新たな例外のスローし直し<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>例外を <code>try-catch</code> でキャッチした後、別の新しい例外をスローしてもよい。</p>
+<p>例外を <code>try-catch</code> でキャッチした後、別の新しい例外をスローしても良い。</p>
 <p>その場合は、例外のコンストラクタの第三引数 (<code>previous</code>) を使用して、キャッチされていた元の例外も検知できるようにする。</p>
 <p>補足として、この例外をロギングする場合、スタックトレースログとして出力される。</p>
 <blockquote>
@@ -34194,7 +34194,7 @@
 <p><br></p>
 <h3 id="_11">例外キャッチのレイヤー<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ コントローラー/ミドルウェア派<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>想定外のエラーも含めて、すべてのエラーを検出できるように、コントローラーまたはミドルウェアに try-catch 文を実装する。</p>
+<p>想定外のエラーも含めて、全てのエラーを検出できるように、コントローラーまたはミドルウェアにtry-catch文を実装する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/">https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/</a></li>
@@ -34202,7 +34202,7 @@
 </ul>
 </blockquote>
 <h4 id="_13">▼ ユースケース派<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>コントローラーの実装をより単純にするべく、より下位のユースケースに try-catch を実装する。</p>
+<p>コントローラーの実装をより単純にするべく、より下位のユースケースにtry-catchを実装する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/">https://www.reddit.com/r/dotnet/comments/kyoe83/web_api_trycatch_in_controller_or_not/</a></li>
@@ -34250,7 +34250,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>他に、Logger インターフェースを使用することも多い。</p>
+<p>他に、Loggerインターフェースを使用することも多い。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/php-fig/log">https://github.com/php-fig/log</a></li>
@@ -34289,12 +34289,12 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_15">ロギングのレイヤー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p><code>try-catch</code> に伴うロギングの場合、catch 句のなかでこれを実行する。</p>
-<p>そのため、ロギングを実行するレイヤーは try-catch のレイヤーと同じになる。</p>
+<p><code>try-catch</code> に伴うロギングの場合、catch句の中でこれを実行する。</p>
+<p>そのため、ロギングを実行するレイヤーはtry-catchのレイヤーと同じになる。</p>
 <p><br></p>
 <h3 id="_16">ログの種類別の振り分け<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ 例外ごとのロギング<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>例えば、メッセージアプリケーションの API に対してメッセージ作成のリクエストを送信するとき、例外の種類に合わせて、外部 API との接続失敗によるエラーログを作成することと、自社ソフトウェアなどその他原因によるエラーログを作成する必要がある。</p>
+<p>例えば、メッセージアプリケーションのAPIに対してメッセージ作成のリクエストを送信するとき、例外の種類に合わせて、外部APIとの接続失敗によるエラーログを作成することと、自社ソフトウェアなどその他原因によるエラーログを作成する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -34374,7 +34374,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

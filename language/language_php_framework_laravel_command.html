@@ -34163,7 +34163,7 @@
 <p><br></p>
 <h3 id="make">make<a class="headerlink" href="#make" title="Permanent link">&para;</a></h3>
 <h4 id="factory">▼ factory<a class="headerlink" href="#factory" title="Permanent link">&para;</a></h4>
-<p>Factory を自動的に作成する。</p>
+<p>Factoryを自動的に作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:factory<span class="w"> </span>&lt;Factory名&gt;<span class="w"> </span>--model<span class="o">=</span>&lt;対象とするModel名&gt;
 </code></pre></div>
 <h4 id="httpcontroller">▼ HTTP｜controller<a class="headerlink" href="#httpcontroller" title="Permanent link">&para;</a></h4>
@@ -34171,52 +34171,52 @@
 $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>&lt;Controller名&gt;
 </code></pre></div>
 <h4 id="httpformrequest">▼ HTTP｜formRequest<a class="headerlink" href="#httpformrequest" title="Permanent link">&para;</a></h4>
-<p>FormRequest クラスを自動作成する。</p>
+<p>FormRequestクラスを自動作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:request<span class="w"> </span>&lt;Request名&gt;
 </code></pre></div>
 <h4 id="httpmiddleware">▼ HTTP｜middleware<a class="headerlink" href="#httpmiddleware" title="Permanent link">&para;</a></h4>
-<p>Middleware クラスを自動作成する。</p>
+<p>Middlewareクラスを自動作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:middleware<span class="w"> </span>&lt;Middleware名&gt;
 </code></pre></div>
 <h4 id="migration">▼ migration<a class="headerlink" href="#migration" title="Permanent link">&para;</a></h4>
-<p>DB マイグレーションファイルを作成する。</p>
+<p>DBマイグレーションファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:migration<span class="w"> </span>create_&lt;テーブル名&gt;_table
 </code></pre></div>
 <h4 id="model">▼ model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h4>
-<p>Eloquent モデルを自動作成する。</p>
+<p>Eloquentモデルを自動作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>&lt;Eloquentモデル名&gt;
 </code></pre></div>
 <h4 id="resource">▼ resource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h4>
-<p>Resource クラスを自動作成する。</p>
+<p>Resourceクラスを自動作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:resource<span class="w"> </span>&lt;Resource名&gt;
 </code></pre></div>
 <h4 id="provider">▼ provider<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h4>
-<p>Provider クラスを自動作成する。</p>
+<p>Providerクラスを自動作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:provider<span class="w"> </span>&lt;クラス名&gt;
 </code></pre></div>
 <h4 id="seeder">▼ seeder<a class="headerlink" href="#seeder" title="Permanent link">&para;</a></h4>
-<p>Seeder クラスを自動作成する。</p>
+<p>Seederクラスを自動作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>make:seeder<span class="w"> </span>&lt;Seeder名&gt;
 </code></pre></div>
 <p><br></p>
 <h3 id="migrate">migrate<a class="headerlink" href="#migrate" title="Permanent link">&para;</a></h3>
 <h4 id="migrate_1">▼ migrateとは<a class="headerlink" href="#migrate_1" title="Permanent link">&para;</a></h4>
-<p>DB マイグレーションファイルを元にテーブルを作成する。</p>
+<p>DBマイグレーションファイルを元にテーブルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate
 </code></pre></div>
 <p>コマンド実行時、以下のエラーが表示される場合もある。</p>
-<p>DB マイグレーションファイル名のスネークケースで、これがクラス名のキャメルケースと対応づけられており、ファイル名とクラス名の関係が正しくないために起こるエラーである。</p>
+<p>DBマイグレーションファイル名のスネークケースで、これがクラス名のキャメルケースと対応づけられており、ファイル名とクラス名の関係が正しくないために起こるエラーである。</p>
 <div class="highlight"><pre><span></span><code>Symfony<span class="se">\C</span>omponent<span class="se">\D</span>ebug<span class="se">\E</span>xception<span class="se">\F</span>atalThrowableError<span class="w"> </span>:<span class="w"> </span>Class<span class="w"> </span><span class="s2">&quot;CreateFooTable&quot;</span><span class="w"> </span>not<span class="w"> </span>found
 </code></pre></div>
 <h4 id="status">▼ status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h4>
-<p>DB マイグレーションの結果を確認する。</p>
+<p>DBマイグレーションの結果を確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate:status
 </code></pre></div>
 <h4 id="rollback">▼ rollback<a class="headerlink" href="#rollback" title="Permanent link">&para;</a></h4>
 <p>指定した履歴数だけ、ロールバックする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate:rollback<span class="w"> </span>--step<span class="o">=</span>&lt;ロールバック数&gt;
 </code></pre></div>
-<p>実際の使用場面として、DB マイグレーションに失敗した場合、1 つ前の履歴にロールバックして DB マイグレーションファイルを修正した後、再び DB マイグレーションを行う。</p>
+<p>実際の使用場面として、DBマイグレーションに失敗した場合、1つ前の履歴にロールバックしてDBマイグレーションファイルを修正した後、再びDBマイグレーションを行う。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># DBマイグレーションに失敗したので、1つ前の履歴にロールバック。</span>
 $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate:rollback<span class="w"> </span>--step<span class="o">=</span><span class="m">1</span>
 
@@ -34229,7 +34229,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="reset">▼ reset<a class="headerlink" href="#reset" title="Permanent link">&para;</a></h4>
-<p>初期の状態まで、すべてロールバックする。</p>
+<p>初期の状態まで、全てロールバックする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate:reset
 </code></pre></div>
 <blockquote>
@@ -34238,7 +34238,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="refresh">▼ refresh<a class="headerlink" href="#refresh" title="Permanent link">&para;</a></h4>
-<p>すべてのロールバック (<code>migrate:reset</code>) を実行し、次いで <code>migrate</code> を実行する。</p>
+<p>全てのロールバック (<code>migrate:reset</code>) を実行し、次いで <code>migrate</code> を実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate:refresh
 </code></pre></div>
 <blockquote>
@@ -34247,12 +34247,12 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="fresh">▼ fresh<a class="headerlink" href="#fresh" title="Permanent link">&para;</a></h4>
-<p>すべてのテーブルを削除と <code>migrate</code> を実行する。</p>
-<p>DB マイグレーションファイルの構文チェックを行わずに、強制的に実行される。</p>
+<p>全てのテーブルを削除と <code>migrate</code> を実行する。</p>
+<p>DBマイグレーションファイルの構文チェックを行わずに、強制的に実行される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate:fresh
 </code></pre></div>
-<p>DB マイグレーション時、テーブルがすでに存在するエラーは発生する場合もある。</p>
-<p>この場合、テーブルが DB マイグレーションされる前までロールバックし、DB マイグレーションを再実行することが最適である。</p>
+<p>DBマイグレーション時、テーブルがすでに存在するエラーは発生する場合もある。</p>
+<p>この場合、テーブルがDBマイグレーションされる前までロールバックし、DBマイグレーションを再実行することが最適である。</p>
 <p>しかしそれが難しければ、このコマンドを実行する必要がある。</p>
 <div class="highlight"><pre><span></span><code>SQLSTATE<span class="o">[</span>42S01<span class="o">]</span>:<span class="w"> </span>&lt;テーブル名&gt;<span class="w"> </span>table<span class="w"> </span>or<span class="w"> </span>view<span class="w"> </span>already<span class="w"> </span>exists
 </code></pre></div>
@@ -34262,8 +34262,8 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="-force">▼ --force<a class="headerlink" href="#-force" title="Permanent link">&para;</a></h4>
-<p>DB マイグレーション時、本当に実行してよいか確認画面 (Yes/No) が表示される。</p>
-<p>CI/CD パイプライン時に、この確認画面で Yes/No を入力できないため、確認画面をスキップできるようにする必要がある。</p>
+<p>DBマイグレーション時、本当に実行して良いか確認画面 (Yes/No) が表示される。</p>
+<p>CI/CDパイプライン時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>migrate<span class="w"> </span>--force
 </code></pre></div>
 <blockquote>
@@ -34289,7 +34289,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <p><br></p>
 <h3 id="db">db<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <h4 id="seed">▼ seed<a class="headerlink" href="#seed" title="Permanent link">&para;</a></h4>
-<p>Seeder を実行する。Seeder を新しく作成したときや Seeder 名を変更したとき、Composer の <code>dump-autoload</code> を実行する必要がある。</p>
+<p>Seederを実行する。Seederを新しく作成したときやSeeder名を変更したとき、Composerの <code>dump-autoload</code> を実行する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>composer<span class="w"> </span>dump-autoload
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="c1"># 特定のSeederを実行</span>
@@ -34335,7 +34335,7 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:35:59 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:48:36 JST">2026-02-17</span>
   </span>
 
     

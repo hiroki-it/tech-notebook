@@ -33884,7 +33884,7 @@
 <p><br></p>
 <h2 id="01-admission-controllers">01. admission-controllersアドオン<a class="headerlink" href="#01-admission-controllers" title="Permanent link">&para;</a></h2>
 <h3 id="admission-controllers_1">admission-controllersアドオンとは<a class="headerlink" href="#admission-controllers_1" title="Permanent link">&para;</a></h3>
-<p>有効化すると、kube-apiserver にて、認証ステップと認可ステップの後に admission プラグインを実行できる。</p>
+<p>有効化すると、kube-apiserverにて、認証ステップと認可ステップの後にadmissionプラグインを実行できる。</p>
 <p><img alt="kubernetes_admission-controllers" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers.png" /></p>
 <blockquote>
 <ul>
@@ -33895,10 +33895,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="admission-controllers_2">admission-controllersアドオンのステップ<a class="headerlink" href="#admission-controllers_2" title="Permanent link">&para;</a></h3>
-<p>admission-controllers アドオンは、mutating-admission ステップ、validating-admission ステップ、といったコンポーネントから構成されている。</p>
-<p>mutating-admission ステップは、リクエストの内容を変更する。</p>
-<p>また validating-admission ステップは、リクエストを許可するか否かを決める。</p>
-<p>kube-apiserver クライアント (<code>kubectl</code> クライアント、Kubernetes リソース) からのリクエスト (例：Kubernetes リソースに対する作成/更新/削除、kube-apiserver からのプロキシへのフォワーディング) 時、各ステップで admission プラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。</p>
+<p>admission-controllersアドオンは、mutating-admissionステップ、validating-admissionステップ、といったコンポーネントから構成されている。</p>
+<p>mutating-admissionステップは、リクエストの内容を変更する。</p>
+<p>またvalidating-admissionステップは、リクエストを許可するか否かを決める。</p>
+<p>kube-apiserverクライアント (<code>kubectl</code> クライアント、Kubernetesリソース) からのリクエスト (例：Kubernetesリソースに対する作成/更新/削除、kube-apiserverからのプロキシへのフォワーディング) 時、各ステップでadmissionプラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。</p>
 <p><img alt="kubernetes_admission-controllers_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -33911,8 +33911,8 @@
 <h2 id="01-02-admission">01-02. admissionプラグイン<a class="headerlink" href="#01-02-admission" title="Permanent link">&para;</a></h2>
 <h3 id="admission">admissionプラグイン<a class="headerlink" href="#admission" title="Permanent link">&para;</a></h3>
 <h4 id="admission_1">▼ admissionプラグインとは<a class="headerlink" href="#admission_1" title="Permanent link">&para;</a></h4>
-<p>admission プラグインは、ビルトイン処理やユーザー定義の処理を発火させられるアドオンから構成されている。</p>
-<p>kube-apiserver の起動時に実行される <code>kube-apiserver</code> コマンドの結果から、使用している admission プラグインの一覧を取得できる。</p>
+<p>admissionプラグインは、ビルトイン処理やユーザー定義の処理を発火させられるアドオンから構成されている。</p>
+<p>kube-apiserverの起動時に実行される <code>kube-apiserver</code> コマンドの結果から、使用しているadmissionプラグインの一覧を取得できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kube-apiserver<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>enable-admission-plugins
 
 CertificateApproval,
@@ -33940,9 +33940,9 @@ ValidatingAdmissionWebhook,
 </ul>
 </blockquote>
 <h4 id="webhook">▼ Webhook系プラグインのサーバー証明書<a class="headerlink" href="#webhook" title="Permanent link">&para;</a></h4>
-<p>Webhook 系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhook など) では、kube-apiserver から webhook サーバーに HTTPS リクエストを送信するとき、webhook サーバーのために SL 証明書が必要である。</p>
-<p>このサーバー証明書は、Secret と Configuration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfiguration など) で管理している。</p>
-<p>サーバー証明書を含む Secret の作成は <code>kube-webhook-certgen</code> イメージで <code>create</code> コマンドを実行することにより、Configuration への挿入は <code>patch</code> コマンドを実行することで実現している。</p>
+<p>Webhook系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhookなど) では、kube-apiserverからwebhookサーバーにHTTPSリクエストを送信するとき、webhookサーバーのためにSL証明書が必要である。</p>
+<p>このサーバー証明書は、SecretとConfiguration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfigurationなど) で管理している。</p>
+<p>サーバー証明書を含むSecretの作成は <code>kube-webhook-certgen</code> イメージで <code>create</code> コマンドを実行することにより、Configurationへの挿入は <code>patch</code> コマンドを実行することで実現している。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-create">https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-create</a></li>
@@ -33953,9 +33953,9 @@ ValidatingAdmissionWebhook,
 <p><br></p>
 <h3 id="mutatingadmissionwebhook">MutatingAdmissionWebhookプラグイン<a class="headerlink" href="#mutatingadmissionwebhook" title="Permanent link">&para;</a></h3>
 <h4 id="mutatingadmissionwebhook_1">▼ MutatingAdmissionWebhookプラグイン<a class="headerlink" href="#mutatingadmissionwebhook_1" title="Permanent link">&para;</a></h4>
-<p>MutatingAdmissionWebhook プラグインを使用すると、mutating-admission ステップ時、webhook サーバーに AdmissionReview のリクエストが送信され、ユーザー定義の処理を発火させられる。</p>
-<p>ユーザー定義の処理が定義された webhook サーバーを別途用意しておく必要がある。</p>
-<p>webhook サーバーから返信された AdmissionReview を含むレスポンスに基づいて、kube-apiserver に対するリクエストの内容を変更する。</p>
+<p>MutatingAdmissionWebhookプラグインを使用すると、mutating-admissionステップ時、webhookサーバーにAdmissionReviewのリクエストが送信され、ユーザー定義の処理を発火させられる。</p>
+<p>ユーザー定義の処理が定義されたwebhookサーバーを別途用意しておく必要がある。</p>
+<p>webhookサーバーから返信されたAdmissionReviewを含むレスポンスに基づいて、kube-apiserverに対するリクエストの内容を変更する。</p>
 <p><img alt="kubernetes_admission-controllers_admission-review" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_admission-review.png" /></p>
 <blockquote>
 <ul>
@@ -33964,12 +33964,12 @@ ValidatingAdmissionWebhook,
 </ul>
 </blockquote>
 <h4 id="mutatingwebhookconfiguration">▼ MutatingWebhookConfiguration<a class="headerlink" href="#mutatingwebhookconfiguration" title="Permanent link">&para;</a></h4>
-<p>MutatingWebhookConfiguration で、MutatingAdmissionWebhook プラグインの発火条件や webhook サーバーの宛先情報を設定する。</p>
-<p>webhook サーバーは、Cluster 内部に配置することが多い。</p>
+<p>MutatingWebhookConfigurationで、MutatingAdmissionWebhookプラグインの発火条件やwebhookサーバーの宛先情報を設定する。</p>
+<p>webhookサーバーは、Cluster内部に配置することが多い。</p>
 <p><img alt="kubernetes_admission-controllers_webhook" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png" /></p>
 <p><strong>＊例＊</strong></p>
-<p>Istio の MutatingWebhookConfiguration は以下の通りである。</p>
-<p>Pod の作成のための kube-apiserver のコール自体がエラーとなる。</p>
+<p>IstioのMutatingWebhookConfigurationは以下の通りである。</p>
+<p>Podの作成のためのkube-apiserverのコール自体がエラーとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MutatingWebhookConfiguration</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34017,8 +34017,8 @@ ValidatingAdmissionWebhook,
 <p><br></p>
 <h3 id="validatingadmissionwebhook">ValidatingAdmissionWebhookプラグイン<a class="headerlink" href="#validatingadmissionwebhook" title="Permanent link">&para;</a></h3>
 <h4 id="validatingadmissionwebhook_1">▼ ValidatingAdmissionWebhookプラグイン<a class="headerlink" href="#validatingadmissionwebhook_1" title="Permanent link">&para;</a></h4>
-<p>ValidatingAdmissionWebhook プラグインを使用すると、validating-admission ステップ時、webhook サーバーに AdmissionReview のリクエストが送信され、ユーザー定義の処理を発火させられる。</p>
-<p>ユーザー定義の処理が定義された webhook サーバーを別途用意しておく必要がある。</p>
+<p>ValidatingAdmissionWebhookプラグインを使用すると、validating-admissionステップ時、webhookサーバーにAdmissionReviewのリクエストが送信され、ユーザー定義の処理を発火させられる。</p>
+<p>ユーザー定義の処理が定義されたwebhookサーバーを別途用意しておく必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/">https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/</a></li>
@@ -34026,8 +34026,8 @@ ValidatingAdmissionWebhook,
 </blockquote>
 <h4 id="validatingwebhookconfiguration">▼ ValidatingWebhookConfiguration<a class="headerlink" href="#validatingwebhookconfiguration" title="Permanent link">&para;</a></h4>
 <p><img alt="kubernetes_admission-controllers_webhook" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png" /></p>
-<p>ValidatingWebhookConfiguration で、ValidatingAdmissionWebhook プラグインの発火条件や webhook サーバーの宛先情報を設定する。</p>
-<p>webhook サーバーは、Cluster 内部に配置することが多い。</p>
+<p>ValidatingWebhookConfigurationで、ValidatingAdmissionWebhookプラグインの発火条件やwebhookサーバーの宛先情報を設定する。</p>
+<p>webhookサーバーは、Cluster内部に配置することが多い。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ValidatingWebhookConfiguration</span>
@@ -34069,8 +34069,8 @@ ValidatingAdmissionWebhook,
 <p><br></p>
 <h2 id="01-03-admissionreview">01-03. AdmissionReviewとは<a class="headerlink" href="#01-03-admissionreview" title="Permanent link">&para;</a></h2>
 <h3 id="admissionreview">AdmissionReviewとは<a class="headerlink" href="#admissionreview" title="Permanent link">&para;</a></h3>
-<p>AdmissionReview は、リクエストを定義する AdmissionRequest と、レスポンスを定義する AdmissionResponse からなる。</p>
-<p>admission-controller アドオンと webhook サーバーの間のリクエスト／レスポンスのデータである。</p>
+<p>AdmissionReviewは、リクエストを定義するAdmissionRequestと、レスポンスを定義するAdmissionResponseからなる。</p>
+<p>admission-controllerアドオンとwebhookサーバーの間のリクエスト／レスポンスのデータである。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview">https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview</a></li>
@@ -34088,7 +34088,7 @@ ValidatingAdmissionWebhook,
 <p><br></p>
 <h3 id="mutating-admission">mutating-admissionステップの場合<a class="headerlink" href="#mutating-admission" title="Permanent link">&para;</a></h3>
 <h4 id="admissionrequest">▼ AdmissionRequest<a class="headerlink" href="#admissionrequest" title="Permanent link">&para;</a></h4>
-<p>kube-apiserver は、特定のリクエストを受信すると、webhook サーバーに AdmissionReview 内の AdmissionRequest にリクエストパラメーターを格納し、リクエストとして送信する。</p>
+<p>kube-apiserverは、特定のリクエストを受信すると、webhookサーバーにAdmissionReview内のAdmissionRequestにリクエストパラメーターを格納し、リクエストとして送信する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;admission.k8s.io/v1&quot;</span><span class="p p-Indicator">,</span>
@@ -34145,8 +34145,8 @@ ValidatingAdmissionWebhook,
 </ul>
 </blockquote>
 <h4 id="admissionresponse">▼ AdmissionResponse<a class="headerlink" href="#admissionresponse" title="Permanent link">&para;</a></h4>
-<p>webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処理を格納し、レスポンスとして返信する。</p>
-<p>マニフェストの patch 処理の定義方法は、JSON Patch ツールに依存している。</p>
+<p>webhookサーバーは、AdmissionReview内のAdmissionResponseにpatch処理を格納し、レスポンスとして返信する。</p>
+<p>マニフェストのpatch処理の定義方法は、JSON Patchツールに依存している。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;admission.k8s.io/v1&quot;</span><span class="p p-Indicator">,</span>
@@ -34186,14 +34186,14 @@ ValidatingAdmissionWebhook,
 <p><br></p>
 <h3 id="validating-admission">validating-admissionステップ<a class="headerlink" href="#validating-admission" title="Permanent link">&para;</a></h3>
 <h4 id="admissionrequest_1">▼ AdmissionRequest<a class="headerlink" href="#admissionrequest_1" title="Permanent link">&para;</a></h4>
-<p>kube-apiserver は、mutating-admission ステップと同じ AdmissionReview 内の AdmissionRequest にリクエストパラメータを格納し、リクエストとして送信する。</p>
+<p>kube-apiserverは、mutating-admissionステップと同じAdmissionReview内のAdmissionRequestにリクエストパラメータを格納し、リクエストとして送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview">https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview</a></li>
 </ul>
 </blockquote>
 <h4 id="admissionresponse_1">▼ AdmissionResponse<a class="headerlink" href="#admissionresponse_1" title="Permanent link">&para;</a></h4>
-<p>webhook サーバーは、AdmissionReview 内の AdmissionResponse にバリデーションの結果を格納し、レスポンスとして返信する。</p>
+<p>webhookサーバーは、AdmissionReview内のAdmissionResponseにバリデーションの結果を格納し、レスポンスとして返信する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;admission.k8s.io/v1&quot;</span><span class="p p-Indicator">,</span>
@@ -34238,7 +34238,7 @@ ValidatingAdmissionWebhook,
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
   </span>
 
     

@@ -35108,11 +35108,11 @@
 <p><br></p>
 <h2 id="01-resource">01. <code>resource</code> ブロック<a class="headerlink" href="#01-resource" title="Permanent link">&para;</a></h2>
 <h3 id="resource"><code>resource</code> ブロックとは<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h3>
-<p>ルートモジュール/チャイルドモジュールにて、クラウドプロバイダーの API に対してリクエストを送信し、クラウドインフラを作成する。</p>
+<p>ルートモジュール/チャイルドモジュールにて、クラウドプロバイダーのAPIに対してリクエストを送信し、クラウドインフラを作成する。</p>
 <p><br></p>
 <h3 id="resource_1"><code>resource</code> タイプ<a class="headerlink" href="#resource_1" title="Permanent link">&para;</a></h3>
 <p>操作されるリソースの種類のこと。</p>
-<p>リソースと Terraform の <code>resource</code> タイプはおおよそ一致している。</p>
+<p>リソースとTerraformの <code>resource</code> タイプはおおよそ一致している。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html">https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html</a></li>
@@ -35135,12 +35135,12 @@
 <p><br></p>
 <h2 id="02-data">02. <code>data</code> ブロック<a class="headerlink" href="#02-data" title="Permanent link">&para;</a></h2>
 <h3 id="data"><code>data</code> ブロックとは<a class="headerlink" href="#data" title="Permanent link">&para;</a></h3>
-<p>クラウドプロバイダーの API に対してリクエストを送信し、クラウドインフラに関するデータを取得する。</p>
+<p>クラウドプロバイダーのAPIに対してリクエストを送信し、クラウドインフラに関するデータを取得する。</p>
 <p><br></p>
 <h3 id="data_1"><code>data</code> ブロックの実装方法<a class="headerlink" href="#data_1" title="Permanent link">&para;</a></h3>
 <h4 id="aws_1">▼ AWSの場合<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、Amazon ECS タスク定義名を指定して、AWS から</p>
+<p>例として、Amazon ECSタスク定義名を指定して、AWSから</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Data ECS task definition</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35149,7 +35149,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>AMI を検索したうえで、AWS から特定の AMI を取得する。</p>
+<p>AMIを検索したうえで、AWSから特定のAMIを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Data AMI</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35188,7 +35188,7 @@
 <p><br></p>
 <h2 id="03-output">03. <code>output</code> ブロック<a class="headerlink" href="#03-output" title="Permanent link">&para;</a></h2>
 <h3 id="output"><code>output</code> ブロックとは<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
-<p>可読性の観点から、<code>resource</code> ブロック一括で出力するのではなく、<code>resource</code> ブロックの特定の <code>attribute</code> 値を出力するようにしたほうがよい。</p>
+<p>可読性の観点から、<code>resource</code> ブロック一括で出力するのではなく、<code>resource</code> ブロックの特定の <code>attribute</code> 値を出力するようにしたほうが良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.terraform.io/language/values/outputs#output-values">https://www.terraform.io/language/values/outputs#output-values</a></li>
@@ -35269,7 +35269,7 @@
 <h4 id="_4">▼ ローカルモジュール内で使用する場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>ローカルモジュール内の <code>resource</code> ブロックが持つ値を、ルートモジュールに出力する。</p>
 <p>この場合、ローカルモジュールがコール元に依存する。</p>
-<p>可読性の観点から、<code>resource</code> ブロック一括で出力するのではなく、<code>resource</code> ブロックの特定の <code>attribute</code> 値を出力するようにしたほうがよい。</p>
+<p>可読性の観点から、<code>resource</code> ブロック一括で出力するのではなく、<code>resource</code> ブロックの特定の <code>attribute</code> 値を出力するようにしたほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── modules/</span><span class="w"> </span><span class="c1"># ローカルモジュール</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── foo-module/</span>
@@ -35356,12 +35356,12 @@
 <p><br></p>
 <h3 id="output_1"><code>output</code> ブロックのデータ型<a class="headerlink" href="#output_1" title="Permanent link">&para;</a></h3>
 <h4 id="count">▼ <code>count</code> 引数を使用した場合の注意点<a class="headerlink" href="#count" title="Permanent link">&para;</a></h4>
-<p><code>resource</code> ブロックの作成に <code>count</code> 引数を使用した場合、その <code>resource</code> ブロックは list 型として扱われる。</p>
+<p><code>resource</code> ブロックの作成に <code>count</code> 引数を使用した場合、その <code>resource</code> ブロックはlist型として扱われる。</p>
 <p>そのため、<code>output</code> ブロックではキー名を指定して出力できる。</p>
 <p>補足として、<code>for_each</code> 引数で作成した <code>resource</code> ブロックはアスタリスクでインデックス名を指定できないため、注意。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、VPC のサブネットを示す。</p>
-<p>ここでは、パブリックサブネット、application サブネット、datastore サブネットを <code>count</code> 引数で作成したとする。</p>
+<p>例として、VPCのサブネットを示す。</p>
+<p>ここでは、パブリックサブネット、applicationサブネット、datastoreサブネットを <code>count</code> 引数で作成したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># AWS パブリックサブネット</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35387,7 +35387,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="list-output">▼ list型 <code>output</code> ブロック<a class="headerlink" href="#list-output" title="Permanent link">&para;</a></h4>
-<p>インデックスキーをアスタリスクを指定した場合、list 型になる。</p>
+<p>インデックスキーをアスタリスクを指定した場合、list型になる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon VPC</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35460,10 +35460,10 @@
 <p><br></p>
 <h3 id="_7">オプション<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ データ型<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>単一値、list 型、map 型を定義できる。</p>
+<p>単一値、list型、map型を定義できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>AZ、サブネットの CIDR ブロック、RDS のパラメーターグループ値などは map 型として保持しておくとよい。</p>
-<p>また、IP アドレスのセット、ユーザーエージェントなどは list 型として保持しておくとよい。</p>
+<p>AZ、サブネットのCIDRブロック、RDSのパラメーターグループ値などはmap型として保持しておくと良い。</p>
+<p>また、IPアドレスのセット、ユーザーエージェントなどはlist型として保持しておくと良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables ECS</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35531,9 +35531,9 @@
 <h4 id="_9">▼ デフォルト値<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>変数のデフォルト値を定義できる。</p>
 <p>有効な値を設定してしまうと可読性が悪くなる。</p>
-<p>そのため、無効値 (例：boolean 型であれば <code>false</code>、string 型であれば空文字、list 型であれば空配列など) を設定する。</p>
+<p>そのため、無効値 (例：boolean型であれば <code>false</code>、string型であれば空文字、list型であれば空配列など) を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p><code>module</code> ブロックや <code>resource</code> ブロック内で、<code>count</code> 引数を使用して条件分岐を定義した場合に、そのフラグ値となる boolean 値をデフォルト値として定義するとよい。</p>
+<p><code>module</code> ブロックや <code>resource</code> ブロック内で、<code>count</code> 引数を使用して条件分岐を定義した場合に、そのフラグ値となるboolean値をデフォルト値として定義すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;enable_provision&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;enable provision&quot;</span>
 <span class="w">  </span><span class="na">type</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="kt">bool</span>
@@ -35543,17 +35543,17 @@
 <p><br></p>
 <h2 id="06">06. メタ引数<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_10">メタ引数とは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>すべての <code>resource</code> ブロックで使用できるオプションのこと。</p>
+<p>全ての <code>resource</code> ブロックで使用できるオプションのこと。</p>
 <p><br></p>
 <h3 id="depends_on"><code>depends_on</code> 引数<a class="headerlink" href="#depends_on" title="Permanent link">&para;</a></h3>
 <h4 id="depends_on_1">▼ <code>depends_on</code> 引数とは<a class="headerlink" href="#depends_on_1" title="Permanent link">&para;</a></h4>
 <p><code>resource</code> ブロック間の依存関係を明示的に定義する。</p>
-<p>Terraform では、基本的に <code>resource</code> ブロック間の依存関係が暗黙的に定義されている。</p>
-<p>しかし、複数の <code>resource</code> ブロックが関わると、<code>resource</code> ブロックを適切な順番で作成できない場合があるため、そういったときに使用する。</p>
+<p>Terraformでは、基本的に <code>resource</code> ブロック間の依存関係が暗黙的に定義されている。</p>
+<p>しかし、複数の <code>resource</code> ブロックが関わると、<code>resource</code> ブロックを適切な順番で作成できない場合があるため、そういった時に使用する。</p>
 <h4 id="alb-target-group-vs-albecs">▼ ALB target group vs. ALB、ECS<a class="headerlink" href="#alb-target-group-vs-albecs" title="Permanent link">&para;</a></h4>
-<p>例として、ALB target group を示す。</p>
-<p>ALB Target group と ALB の <code>resource</code> ブロックを適切な順番で作成できないため、ECS の作成時にエラーが起こる。</p>
-<p>ALB の後に ALB target group を作成する必要がある。</p>
+<p>例として、ALB target groupを示す。</p>
+<p>ALB Target groupとALBの <code>resource</code> ブロックを適切な順番で作成できないため、ECSの作成時にエラーが起こる。</p>
+<p>ALBの後にALB target groupを作成する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># AWS ALB target group</span>
@@ -35580,9 +35580,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="internet-gateway-vs-ec2elastic-ipaws-nat-gateway">▼ Internet Gateway vs. EC2、Elastic IP、AWS NAT Gateway<a class="headerlink" href="#internet-gateway-vs-ec2elastic-ipaws-nat-gateway" title="Permanent link">&para;</a></h4>
-<p>例として、AWS NAT Gateway を示す。</p>
-<p>AWS NAT Gateway、Internet Gateway の <code>resource</code> ブロックを適切な順番で作成できない。</p>
-<p>そのため、Internet Gateway の作成後に、AWS NAT Gateway を作成するように定義する必要がある。</p>
+<p>例として、AWS NAT Gatewayを示す。</p>
+<p>AWS NAT Gateway、Internet Gatewayの <code>resource</code> ブロックを適切な順番で作成できない。</p>
+<p>そのため、Internet Gatewayの作成後に、AWS NAT Gatewayを作成するように定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon EC2</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35640,7 +35640,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="amazon-s3-vs">▼ Amazon S3バケットポリシー vs. パブリックアクセスブロックポリシー<a class="headerlink" href="#amazon-s3-vs" title="Permanent link">&para;</a></h4>
-<p>例として、Amazon S3 を示す。</p>
+<p>例として、Amazon S3を示す。</p>
 <p>バケットポリシーとパブリックアクセスブロックポリシーを同時に作成できないため、作成のタイミングが重ならないようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon S3</span>
@@ -35826,10 +35826,10 @@
 <p><br></p>
 <h3 id="for_each"><code>for_each</code> 引数<a class="headerlink" href="#for_each" title="Permanent link">&para;</a></h3>
 <h4 id="for_each_1">▼ <code>for_each</code> 引数とは<a class="headerlink" href="#for_each_1" title="Permanent link">&para;</a></h4>
-<p>あらかじめ <code>for_each</code> 引数に格納した map 型の <code>key</code> の数だけ、<code>resource</code> ブロックを繰り返し実行する。</p>
+<p>あらかじめ <code>for_each</code> 引数に格納したmap型の <code>key</code> の数だけ、<code>resource</code> ブロックを繰り返し実行する。</p>
 <p>繰り返し処理を実行するときに、<code>count</code> 引数とは違い、要素名を指定して出力できる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、subnet を繰り返し作成する。</p>
+<p>例として、subnetを繰り返し作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables Global</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35859,11 +35859,11 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="az">▼ 冗長化されたAZにおける設定<a class="headerlink" href="#az" title="Permanent link">&para;</a></h4>
-<p>冗長化された AZ で共通のルートテーブルを作成する場合、そこで、<code>for_each</code> 引数を使用すると、少ない実装で作成できる。</p>
-<p><code>for_each</code> 引数で作成された <code>resource</code> ブロックは <code>terraform apply</code> コマンド実行中に map 構造として扱われ、<code>resource</code> ブロック名の下層にキー名で <code>resource</code> ブロックが並ぶ構造になっている。</p>
+<p>冗長化されたAZで共通のルートテーブルを作成する場合、そこで、<code>for_each</code> 引数を使用すると、少ない実装で作成できる。</p>
+<p><code>for_each</code> 引数で作成された <code>resource</code> ブロックは <code>terraform apply</code> コマンド実行中にmap構造として扱われ、<code>resource</code> ブロック名の下層にキー名で <code>resource</code> ブロックが並ぶ構造になっている。</p>
 <p>これを参照するために、『<code>&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[each.key].&lt;attribute&gt;</code>』とする。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付く AWS NAT Gateway の設定が冗長化された AZ で共通の場合、<code>for_each</code> 引数で作成する。</p>
+<p>パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付くAWS NAT Gatewayの設定が冗長化されたAZで共通の場合、<code>for_each</code> 引数で作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables Global</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35937,7 +35937,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="output_3">▼ 単一値で <code>output</code> ブロック<a class="headerlink" href="#output_3" title="Permanent link">&para;</a></h4>
-<p><code>resource</code> ブロックの作成に <code>for_each</code> 引数を使用した場合、その <code>resource</code> ブロックは map 型として扱われる。</p>
+<p><code>resource</code> ブロックの作成に <code>for_each</code> 引数を使用した場合、その <code>resource</code> ブロックはmap型として扱われる。</p>
 <p>そのため、キー名を指定して出力できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables Global</span>
@@ -36014,8 +36014,8 @@
 </blockquote>
 <h4 id="map">▼ map型の場合<a class="headerlink" href="#map" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>map 型のキー名と値の両方を設定値として使用する。</p>
-<p>例として、RDS パラメーターグループの <code>parameter</code> ブロックを、map 型通常変数を使用して繰り返し作成する。</p>
+<p>map型のキー名と値の両方を設定値として使用する。</p>
+<p>例として、RDSパラメーターグループの <code>parameter</code> ブロックを、map型通常変数を使用して繰り返し作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables RDS</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36054,7 +36054,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>map 型の値を設定値として使用する。</p>
+<p>map型の値を設定値として使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">security_group_ingress_ec2_ssh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;*.*.*.*&quot;</span>
 <span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;SSH access from foo ip address&quot;</span>
@@ -36087,7 +36087,7 @@
 </code></pre></div>
 <h4 id="list">▼ list型の場合<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、WAF の正規表現パターンセットの <code>regular_expression</code> ブロックを、list 型通常変数を使用して繰り返し作成する。</p>
+<p>例として、WAFの正規表現パターンセットの <code>regular_expression</code> ブロックを、list型通常変数を使用して繰り返し作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables WAF</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36121,12 +36121,12 @@
 <p><code>resource</code> ブロックの作成、更新、そして削除のプロセスをカスタマイズする。</p>
 <h4 id="create_before_destroy">▼ create_before_destroy<a class="headerlink" href="#create_before_destroy" title="Permanent link">&para;</a></h4>
 <p><code>resource</code> ブロックを新しく作成した後に削除するように、変更できる。</p>
-<p>通常時、Terraform の処理順序として、<code>resource</code> ブロックの削除後に作成が行われる。</p>
+<p>通常時、Terraformの処理順序として、<code>resource</code> ブロックの削除後に作成が行われる。</p>
 <p>しかし、他のリソースと依存関係が存在する場合、先に削除が行われることによって、他のリソースに影響が出てしまう。</p>
 <p>これに対処するため、先に新しい <code>resource</code> ブロックを作成し、紐付けし直してから削除する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、AWS Certificate Manager のサーバー証明書を示す。</p>
-<p>AWS Certificate Manager のサーバー証明書は、ALB や CloudFront に紐付いている。新しい証明書に紐付け直した後、既存のものを削除する必要がある。</p>
+<p>例として、AWS Certificate Managerのサーバー証明書を示す。</p>
+<p>AWS Certificate Managerのサーバー証明書は、ALBやCloudFrontに紐付いている。新しい証明書に紐付け直した後、既存のものを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For foo domain</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36141,8 +36141,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、RDS のクラスターパラメーターグループとサブネットグループを示す。</p>
-<p>RDS のアップグレード時、パラメーターグループは再作成する必要がある。</p>
+<p>例として、RDSのクラスターパラメーターグループとサブネットグループを示す。</p>
+<p>RDSのアップグレード時、パラメーターグループは再作成する必要がある。</p>
 <p>このときに既存のパラメーターグループと同名だと衝突してしまうため、パラメーターグループの名前やリソース名にはファミリー名をつけるといよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon RDS Cluster Parameter Group</span>
@@ -36167,8 +36167,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、Redis のパラメーターグループとサブネットグループを示す。</p>
-<p>RDS のアップグレード時、パラメーターグループは再作成する必要がある。</p>
+<p>例として、Redisのパラメーターグループとサブネットグループを示す。</p>
+<p>RDSのアップグレード時、パラメーターグループは再作成する必要がある。</p>
 <p>このときに既存のパラメーターグループと同名だと衝突してしまうため、パラメーターグループの名前やリソース名にはファミリー名をつけるといよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># AWS Redis Parameter Group</span>
@@ -36195,10 +36195,10 @@
 <h4 id="ignore_changes">▼ ignore_changes<a class="headerlink" href="#ignore_changes" title="Permanent link">&para;</a></h4>
 <p>実インフラのみで発生した <code>resource</code> ブロックの作成・更新・削除を無視し、<code>tfstate</code> ファイルへ反映しないようにする。</p>
 <p>これにより、<code>ignore_changes</code> 引数を定義したタイミング以降、実インフラと <code>tfstate</code> ファイルに差分があっても、<code>tfstate</code> ファイルの値が更新されなくなる。</p>
-<p>ただし、リソースによっては <code>ignore_changes</code> 引数を使えないものがある (例：SSM パラメーターストア) 。</p>
+<p>ただし、リソースによっては <code>ignore_changes</code> 引数を使えないものがある (例：SSMパラメーターストア) 。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、ECS を示す。</p>
-<p>ECS では、AWS AutoScaling によって Amazon ECS タスク数が増加する。</p>
+<p>例として、ECSを示す。</p>
+<p>ECSでは、AWS AutoScalingによってAmazon ECSタスク数が増加する。</p>
 <p>そのため、これらを無視する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon ECS Service</span>
@@ -36216,8 +36216,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、Redis を示す。</p>
-<p>Redis では、AWS AutoScaling によってプライマリー数とレプリカ数が増減する。</p>
+<p>例として、Redisを示す。</p>
+<p>Redisでは、AWS AutoScalingによってプライマリー数とレプリカ数が増減する。</p>
 <p>そのため、これらを無視する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># AWS Redis Cluster</span>
@@ -36253,7 +36253,7 @@
 <p><br></p>
 <h3 id="regexall"><code>regexall</code> 引数<a class="headerlink" href="#regexall" title="Permanent link">&para;</a></h3>
 <h4 id="regexall_1">▼ <code>regexall</code> 引数とは<a class="headerlink" href="#regexall_1" title="Permanent link">&para;</a></h4>
-<p>正規表現ルールに基づいて、文字列のなかから文字を抽出する。</p>
+<p>正規表現ルールに基づいて、文字列の中から文字を抽出する。</p>
 <p>これを応用して、特定の文字列を含む場合に条件を分岐させるようにできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">security_group_ingress_ec2_ssh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nb">prd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -36297,9 +36297,9 @@
 <h3 id="templatefile"><code>templatefile()</code> 関数<a class="headerlink" href="#templatefile" title="Permanent link">&para;</a></h3>
 <h4 id="templatefile_1">▼ <code>templatefile()</code> 関数とは<a class="headerlink" href="#templatefile_1" title="Permanent link">&para;</a></h4>
 <p>第一引数でポリシーが定義されたファイルを読み出し、第二引数でファイルに変数を渡す。</p>
-<p>ファイルの拡張子は tpl とするのがよい。</p>
+<p>ファイルの拡張子はtplとするのが良い。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>例として、Amazon S3 を示す。</p>
+<p>例として、Amazon S3を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon S3 bucket policy</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36314,8 +36314,8 @@
 <span class="w">  </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>バケットポリシーを定義する tpl 形式ファイルでは、string 型の場合は <code>"${}"</code> で、integer 型の場合は <code>${}</code> で変数を展開する。</p>
-<p>ここで拡張子を json にしてしまうと、integer 型の出力を json の構文エラーとして扱われてしまう。</p>
+<p>バケットポリシーを定義するtpl形式ファイルでは、string型の場合は <code>"${}"</code> で、integer型の場合は <code>${}</code> で変数を展開する。</p>
+<p>ここで拡張子をjsonにしてしまうと、integer型の出力をjsonの構文エラーとして扱われてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -36371,7 +36371,7 @@
 <p><br></p>
 <h3 id="containerdefinitions">containerDefinitionsの設定<a class="headerlink" href="#containerdefinitions" title="Permanent link">&para;</a></h3>
 <h4 id="containerdefinitions_1">▼ containerDefinitionsとは<a class="headerlink" href="#containerdefinitions_1" title="Permanent link">&para;</a></h4>
-<p>Amazon ECS タスク定義のうち、コンテナを定義する部分のこと。</p>
+<p>Amazon ECSタスク定義のうち、コンテナを定義する部分のこと。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;ipcMode&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
@@ -36382,12 +36382,12 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="_14">▼ 設定方法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>integer 型を通常変数として渡せるように、拡張子を json ではなく tpl とするのがよい。</p>
-<p><code>image</code> キーでは、ECR イメージの URL を設定する。</p>
+<p>integer型を通常変数として渡せるように、拡張子をjsonではなくtplとするのが良い。</p>
+<p><code>image</code> キーでは、ECRイメージのURLを設定する。</p>
 <p>バージョンタグは任意で指定でき、もし指定しない場合は、『<code>latest</code>』という名前のタグが自動的に割り当てられる。</p>
-<p>バージョンタグにハッシュ値が割り当てられている場合、Terraform では時系列で最新のタグ名を取得する方法がないため、<code>secrets</code> キーでは、パラメーターストアの値を参照できる。</p>
-<p>ログ分割の目印を設定する <code>awslogs-datetime-format</code> キーでは、タイムスタンプを表す <code>\\[%Y-%m-%d %H:%M:%S\\]</code> を設定するとよい。</p>
-<p>これにより、同じ時間に発生したログを 1 つのログとしてまとめられるため、スタックトレースが見やすくなる。</p>
+<p>バージョンタグにハッシュ値が割り当てられている場合、Terraformでは時系列で最新のタグ名を取得する方法がないため、<code>secrets</code> キーでは、パラメーターストアの値を参照できる。</p>
+<p>ログ分割の目印を設定する <code>awslogs-datetime-format</code> キーでは、タイムスタンプを表す <code>\\[%Y-%m-%d %H:%M:%S\\]</code> を設定すると良い。</p>
+<p>これにより、同じ時間に発生したログを1つのログとしてまとめられるため、スタックトレースが見やすくなる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
@@ -36440,7 +36440,7 @@
 <p><br></p>
 <h2 id="08">08. 関数<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <h3 id="_15">関数を使用できるブロック<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>Terraform では、<code>variables</code> ブロックには定数を設定する必要があるため、関数は <code>variables</code> ブロックで使用できない。</p>
+<p>Terraformでは、<code>variables</code> ブロックには定数を設定する必要があるため、関数は <code>variables</code> ブロックで使用できない。</p>
 <p><code>variables</code> ブロックの値を一度 <code>locals</code> ブロックで加工する必要がある。</p>
 <blockquote>
 <ul>
@@ -36449,7 +36449,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="jsonencode">jsonencode<a class="headerlink" href="#jsonencode" title="Permanent link">&para;</a></h3>
-<p>Terraform のデータ型を JSON 文字列型に変換する。</p>
+<p>Terraformのデータ型をJSON文字列型に変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.hashicorp.com/terraform/language/functions/jsonencode">https://developer.hashicorp.com/terraform/language/functions/jsonencode</a></li>
@@ -36477,7 +36477,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
   </span>
 
     

@@ -33915,9 +33915,9 @@
 <p><br></p>
 <h2 id="02">02. インターラクター<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">インターラクターとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>入力/出力の処理時で、責務を以下のように分類できる。</p>
-<p>ユースケースごとに異なる Interactor クラスを定義する方法と、すべてのユースケースを責務として持つ Interactor クラスを定義する方法がある。</p>
-<p>また、Interactor インターフェースを用意して、インターフェース層のコントローラーはこれを経由して、実装 Interactor クラスの関数をコールする。</p>
+<p>入力/出力の処理時で、責務を以下の様に分類できる。</p>
+<p>ユースケースごとに異なるInteractorクラスを定義する方法と、全てのユースケースを責務として持つInteractorクラスを定義する方法がある。</p>
+<p>また、Interactorインターフェースを用意して、インターフェース層のコントローラーはこれを経由して、実装Interactorクラスの関数をコールする。</p>
 <table>
 <thead>
 <tr>
@@ -33960,11 +33960,11 @@
 <p><br></p>
 <h3 id="_8">呼び出せるリポジトリの種類<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>同じ境界づけられたコンテキストに属しているルートエンティティであれば、ユースケース層がそれぞれのルートエンティティに対応するリポジトリを操作することは許される。</p>
-<p>例えば、親子関係にあるルートエンティティの場合（親：Book ルートエンティティ、Review ルートエンティティ）を考える。</p>
-<p>Book ルートエンティティと Review ルートエンティティの間でユースケースが異なると仮定する。</p>
-<p>Review ルートエンティティの操作のために Book ルートエンティティが必要な場合、Review ユースケースが Book リポジトリをコールする必要がある。</p>
-<p>Book ルートエンティティと Review ルートエンティティは親子関係にあり、同じ境界づけられたコンテキストに属している。</p>
-<p>そのため、Review ユースケースが Book リポジトリをコールしてもよい。</p>
+<p>例えば、親子関係にあるルートエンティティの場合（親：Bookルートエンティティ、Reviewルートエンティティ）を考える。</p>
+<p>BookルートエンティティとReviewルートエンティティの間でユースケースが異なると仮定する。</p>
+<p>Reviewルートエンティティの操作のためにBookルートエンティティが必要な場合、ReviewユースケースがBookリポジトリをコールする必要がある。</p>
+<p>BookルートエンティティとReviewルートエンティティは親子関係にあり、同じ境界づけられたコンテキストに属している。</p>
+<p>そのため、ReviewユースケースがBookリポジトリをコールしてもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/76036673/can-a-usecase-have-repositories-from-different-domains-as-dependencies-followin">https://stackoverflow.com/questions/76036673/can-a-usecase-have-repositories-from-different-domains-as-dependencies-followin</a></li>
@@ -33983,7 +33983,7 @@
 <h3 id="_9">ユースケースと関数名<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>インターラクターでは、ドメイン層を組み合わせてソフトウェアの振舞 (ユースケース) を具現化する。</p>
 <p>そのため、関数名はユースケースを適切に表現した自由な英単語を使用する。</p>
-<p><code>CREATE</code> 処理と <code>UPDATE</code> 処理を SAVE 処理としてまとめてもよい。</p>
+<p><code>CREATE</code> 処理と <code>UPDATE</code> 処理をSAVE処理としてまとめても良い。</p>
 <table>
 <thead>
 <tr>
@@ -34048,8 +34048,8 @@
 </table>
 <p><br></p>
 <h3 id="_10">トランザクション処理の定義<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>トランザクション処理はユースケース層で定義するとよい。</p>
-<p>例えば、<code>READ</code> 処理と <code>UPDATE</code> 処理の両方が必要な更新系ユースケースでは、<code>READ</code> 処理と <code>UPDATE</code> 処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。</p>
+<p>トランザクション処理はユースケース層で定義すると良い。</p>
+<p>例えば、<code>READ</code>処理と<code>UPDATE</code>処理の両方が必要な更新系ユースケースでは、<code>READ</code>処理と<code>UPDATE</code>処理の間のタイミングで、ほかのユーザーがデータを更新してしまう可能性がある。</p>
 <p>そのため、ユースケース層でトランザクション処理を定義し、定義したトランザクション範囲内でリポジトリを呼び出す。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -34281,12 +34281,12 @@
 <p>上位レイヤーのプレゼンターのインターフェースのこと。</p>
 <p>インターラクターは、レスポンスモデルではなく。</p>
 <p>アウトプットバウンダリをインターフェース層に出力する。</p>
-<p>ただし、アプリケーションを API として使用する場合は、プレゼンターとアウトプットバウンダリが不要になる。そのため、インターラクターはレスポンスモデルを返却する。</p>
+<p>ただし、アプリケーションをAPIとして使用する場合は、プレゼンターとアウトプットバウンダリが不要になる。そのため、インターラクターはレスポンスモデルを返却する。</p>
 <p><br></p>
 <h2 id="05">05. リクエストモデル (インプットデータ)<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_13">リクエストモデルとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>インターフェース層のコントローラーから入力されるリクエストパラメーターを、ユースケース層に入力するときの入力構造を定義する。</p>
-<p>インターラクターの関数ごとにリクエストモデルを用意するとよい。</p>
+<p>インターラクターの関数ごとにリクエストモデルを用意すると良い。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Interface\Foo\Requests</span><span class="p">;</span>
@@ -34318,12 +34318,12 @@
 <h2 id="06">06. レスポンスモデル (アウトプットデータ)<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_14">レスポンスモデルとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p>ユースケース層のインターラクターから出力されるドメインモデルを、インターフェース層に出力するときの出力構造を定義する。</p>
-<p>インターラクターの関数ごとにレスポンスモデルを用意するとよい。</p>
-<p>またコントローラーにて、フレームワーク依存の JSON レスポンス関数にレスポンスモデルを渡せるよう、クラス自身の構造を変換する関数を持たせるとよい。</p>
-<p>もし、クラス自身を渡して問題ない JSON レスポンス関数であれば、これは不要である。</p>
+<p>インターラクターの関数ごとにレスポンスモデルを用意すると良い。</p>
+<p>またコントローラーにて、フレームワーク依存のJSONレスポンス関数にレスポンスモデルを渡せるよう、クラス自身の構造を変換する関数を持たせると良い。</p>
+<p>もし、クラス自身を渡して問題ないJSONレスポンス関数であれば、これは不要である。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ユースケース層の index 関数に対応するレスポンスモデル。</p>
-<p>JSON レスポンス関数が配列構造を引数に受け付けるため、これに渡せるよう、自身を配列構造に変換する関数を持たせる。</p>
+<p>ユースケース層のindex関数に対応するレスポンスモデル。</p>
+<p>JSONレスポンス関数が配列構造を引数に受け付けるため、これに渡せるよう、自身を配列構造に変換する関数を持たせる。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Interface\Foo\Responses</span><span class="p">;</span>
@@ -34354,7 +34354,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ユースケース層の create 関数に対応するレスポンスモデル。</p>
+<p>ユースケース層のcreate関数に対応するレスポンスモデル。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Interface\Foo\Responses</span><span class="p">;</span>
@@ -34398,7 +34398,7 @@
 <h3 id="_15">アプリケーションサービスとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>ユースケース層で、他のオブジェクトを対象とした汎用的な振舞ロジックを切り分けたもの。</p>
 <p>アプリケーションサービスは、他のオブジェクトにロジックを関数として提供するのみで、自身の状態を変化させる関数は持たせないようにする。</p>
-<p>補足として、『サービス』の概念はすべてのレイヤーに存在する。</p>
+<p>補足として、『サービス』の概念は全てのレイヤーに存在する。</p>
 <p>特定の機能を提供するアプリケーションをサービスとみなして連携すれば、マイクロサービスアーキテクチャにもなる。</p>
 <p><br></p>
 <h3 id="_16">通知処理<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
@@ -34467,7 +34467,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月2日 15:53:51 JST">2026-06-02</span>
   </span>
 
     

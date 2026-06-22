@@ -35278,7 +35278,7 @@ $<span class="w"> </span>pstree
 <p><br></p>
 <h3 id="supervisor">supervisorの構成要素<a class="headerlink" href="#supervisor" title="Permanent link">&para;</a></h3>
 <h4 id="supervisor_1">▼ supervisor<a class="headerlink" href="#supervisor_1" title="Permanent link">&para;</a></h4>
-<p>Python 製のユーティリティである。</p>
+<p>Python製のユーティリティである。</p>
 <p>メモリ上の複数のプロセスをデーモン化し、一括で管理する。</p>
 <blockquote>
 <ul>
@@ -35287,14 +35287,14 @@ $<span class="w"> </span>pstree
 </ul>
 </blockquote>
 <h4 id="supervisorctl">▼ supervisorctl<a class="headerlink" href="#supervisorctl" title="Permanent link">&para;</a></h4>
-<p>supervisord を操作する。</p>
+<p>supervisordを操作する。</p>
 <blockquote>
 <ul>
 <li><a href="http://supervisord.org/introduction.html#supervisor-components">http://supervisord.org/introduction.html#supervisor-components</a></li>
 </ul>
 </blockquote>
 <h4 id="supervisord">▼ supervisord<a class="headerlink" href="#supervisord" title="Permanent link">&para;</a></h4>
-<p>supervisor 自体のプロセスのこと。</p>
+<p>supervisor自体のプロセスのこと。</p>
 <blockquote>
 <ul>
 <li><a href="http://supervisord.org/introduction.html#supervisor-components">http://supervisord.org/introduction.html#supervisor-components</a></li>
@@ -35303,7 +35303,7 @@ $<span class="w"> </span>pstree
 <p><br></p>
 <h3 id="supervisord_1">supervisordセクション<a class="headerlink" href="#supervisord_1" title="Permanent link">&para;</a></h3>
 <h4 id="supervisord_2">▼ supervisordセクションとは<a class="headerlink" href="#supervisord_2" title="Permanent link">&para;</a></h4>
-<p>supervisor の <code>supervisord</code> プロセスのプールを設定する。</p>
+<p>supervisorの <code>supervisord</code> プロセスのプールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[supervisord]</span>
 
 <span class="na">...</span>
@@ -35319,22 +35319,22 @@ $<span class="w"> </span>pstree
 <span class="na">directory</span><span class="o">=</span><span class="s">/var/www/foo</span>
 </code></pre></div>
 <h4 id="logfile">▼ logfile<a class="headerlink" href="#logfile" title="Permanent link">&para;</a></h4>
-<p>supervisord のログファイルの場所を設定する。</p>
+<p>supervisordのログファイルの場所を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[supervisord]</span>
 <span class="na">logfile</span><span class="o">=</span><span class="s">/var/log/supervisor/supervisord.log</span>
 </code></pre></div>
 <h4 id="loglevel">▼ loglevel<a class="headerlink" href="#loglevel" title="Permanent link">&para;</a></h4>
-<p>supervisord のログレベルを設定する。</p>
+<p>supervisordのログレベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[supervisord]</span>
 <span class="na">loglevel</span><span class="o">=</span><span class="s">info</span>
 </code></pre></div>
 <h4 id="nodaemon">▼ nodaemon<a class="headerlink" href="#nodaemon" title="Permanent link">&para;</a></h4>
-<p>supervisord をフォアグラウンドで起動するか否かを設定する。</p>
+<p>supervisordをフォアグラウンドで起動するか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[supervisord]</span>
 <span class="na">nodaemon</span><span class="o">=</span><span class="s">true</span>
 </code></pre></div>
 <h4 id="pidfile">▼ pidfile<a class="headerlink" href="#pidfile" title="Permanent link">&para;</a></h4>
-<p>supervisord の pid が記載されるファイルを設定する。</p>
+<p>supervisordのpidが記載されるファイルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[supervisord]</span>
 <span class="na">pidfile</span><span class="o">=</span><span class="s">/var/tmp/supervisor/supervisord.pid</span>
 </code></pre></div>
@@ -35344,7 +35344,7 @@ $<span class="w"> </span>pstree
 <span class="na">redirect_stderr</span><span class="o">=</span><span class="s">true</span>
 </code></pre></div>
 <h4 id="user">▼ user<a class="headerlink" href="#user" title="Permanent link">&para;</a></h4>
-<p>supervisord の実行ユーザーを設定する。</p>
+<p>supervisordの実行ユーザーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[supervisord]</span>
 <span class="na">user</span><span class="o">=</span><span class="s">root</span>
 </code></pre></div>
@@ -35372,7 +35372,7 @@ $<span class="w"> </span>pstree
 <span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
 </code></pre></div>
 <h4 id="autostart">▼ autostart<a class="headerlink" href="#autostart" title="Permanent link">&para;</a></h4>
-<p>supervisord の起動時、デーモン化されたプロセスを自動的に起動させるか否かを設定する。</p>
+<p>supervisordの起動時、デーモン化されたプロセスを自動的に起動させるか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[program:foo]</span>
 <span class="na">autostart</span><span class="o">=</span><span class="s">true</span>
 </code></pre></div>
@@ -35442,7 +35442,7 @@ $<span class="w"> </span>pstree
 <h3 id="supervisorctl_1">supervisorctl<a class="headerlink" href="#supervisorctl_1" title="Permanent link">&para;</a></h3>
 <h4 id="restart">▼ restart<a class="headerlink" href="#restart" title="Permanent link">&para;</a></h4>
 <p>指定したデーモンを再起動する。</p>
-<p><code>all</code> とした場合は、すべてを再起動する。</p>
+<p><code>all</code> とした場合は、全てを再起動する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>supervisorctl<span class="w"> </span>restart<span class="w"> </span>&lt;デーモン名&gt;
 </code></pre></div>
 <blockquote>
@@ -35463,7 +35463,7 @@ $<span class="w"> </span>pstree
 <h2 id="03-systemctlsystem-control-service">03. systemctl：system control (新service)<a class="headerlink" href="#03-systemctlsystem-control-service" title="Permanent link">&para;</a></h2>
 <h3 id="systemctl">systemctlの構成要素<a class="headerlink" href="#systemctl" title="Permanent link">&para;</a></h3>
 <h4 id="systemctl_1">▼ systemctl<a class="headerlink" href="#systemctl_1" title="Permanent link">&para;</a></h4>
-<p>メモリ上のプロセスをデーモン化する機能を持つ systemd を制御する。</p>
+<p>メモリ上のプロセスをデーモン化する機能を持つsystemdを制御する。</p>
 <blockquote>
 <ul>
 <li><a href="https://cameong.hatenablog.com/entry/2016/10/18/121400">https://cameong.hatenablog.com/entry/2016/10/18/121400</a></li>
@@ -35537,7 +35537,7 @@ $<span class="w"> </span>pstree
 <span class="na">OnFailure</span><span class="o">=</span><span class="s">notify-email@%i.service</span>
 </code></pre></div>
 <h4 id="service">▼ Serviceセクション<a class="headerlink" href="#service" title="Permanent link">&para;</a></h4>
-<p>service ユニットのオプションを設定する。</p>
+<p>serviceユニットのオプションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Service]</span>
 <span class="c1"># デーモンの実行ユーザーを。もし設定しない場合、root権限の実行ユーザーを使用する。</span>
 <span class="c1"># https://www.golinuxcloud.com/run-systemd-service-specific-user-group-linux/</span>
@@ -35576,7 +35576,7 @@ $<span class="w"> </span>pstree
 <h3 id="systemctl_2">systemctl<a class="headerlink" href="#systemctl_2" title="Permanent link">&para;</a></h3>
 <h4 id="daemon-reload">▼ daemon-reload<a class="headerlink" href="#daemon-reload" title="Permanent link">&para;</a></h4>
 <p>サーバー内で <code>/etc/sytemd/system</code> ディレクトリ配下のカスタムユニットファイルを直接変更した場合に使用する。</p>
-<p>すべてのデーモンのカスタムユニットファイルを再読み込みする。</p>
+<p>全てのデーモンのカスタムユニットファイルを再読み込みする。</p>
 <p>ただし、デーモンがすでに稼働中の場合は、<code>systemctl restart</code> コマンドが別途必要になる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
 </code></pre></div>
@@ -35586,7 +35586,7 @@ $<span class="w"> </span>pstree
 </ul>
 </blockquote>
 <h4 id="disable">▼ disable<a class="headerlink" href="#disable" title="Permanent link">&para;</a></h4>
-<p>OS の起動時、デーモン化されたプロセスが自動起動しないように設定する。</p>
+<p>OSの起動時、デーモン化されたプロセスが自動起動しないように設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>&lt;ユニット名&gt;
 
 <span class="c1"># 例：Cron、Apache</span>
@@ -35594,7 +35594,7 @@ $<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"
 $<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>httpd.service
 </code></pre></div>
 <h4 id="enable">▼ enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h4>
-<p>OS の起動時、デーモン化されたプロセスが自動起動するように設定する。</p>
+<p>OSの起動時、デーモン化されたプロセスが自動起動するように設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>&lt;ユニット名&gt;
 
 <span class="c1"># 例：Cron、Apache</span>
@@ -35604,7 +35604,7 @@ $<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enabl
 <h4 id="is-failed">▼ is-failed<a class="headerlink" href="#is-failed" title="Permanent link">&para;</a></h4>
 <p>プロセスが正常に実行されているかどうかを確認する。</p>
 <p>正常の場合は <code>active</code>、異常の場合は <code>failed</code> になる。</p>
-<p>これは、<code>systemctl status</code> コマンドの Active 行でも確認できる。</p>
+<p>これは、<code>systemctl status</code> コマンドのActive行でも確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>is-failed<span class="w"> </span>&lt;ユニット名&gt;
 
 active
@@ -35616,7 +35616,7 @@ active
 </blockquote>
 <h4 id="list-units">▼ list-units<a class="headerlink" href="#list-units" title="Permanent link">&para;</a></h4>
 <p>デーモン化されたプロセスの稼働状態を一覧を取得する。</p>
-<p><code>grep</code> と組み合わせて、起動中 (<code>active</code>) 、停止中 (<code>inactive</code>) 、起動失敗 (<code>failed</code>) のデーモンのみを取得するとよい。</p>
+<p><code>grep</code> と組み合わせて、起動中 (<code>active</code>) 、停止中 (<code>inactive</code>) 、起動失敗 (<code>failed</code>) のデーモンのみを取得すると良い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--type<span class="o">=</span>&lt;ユニットの拡張子&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>list-units<span class="w"> </span>--type<span class="o">=</span>service<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>active
@@ -35641,7 +35641,7 @@ dev-mqueue.mount<span class="w">                  </span>loaded<span class="w"> 
 </ul>
 </blockquote>
 <h4 id="list-unit-files">▼ list-unit-files<a class="headerlink" href="#list-unit-files" title="Permanent link">&para;</a></h4>
-<p>デーモン化されたプロセスの Unit の一覧と、OS 起動時にデーモンが自動起動するようになっているか否かを取得する。</p>
+<p>デーモン化されたプロセスのUnitの一覧と、OS起動時にデーモンが自動起動するようになっているか否かを取得する。</p>
 <p><code>STATE</code> (<code>enable</code>、<code>disable</code>、<code>static</code>) で自動起動するかを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>list-unit-files<span class="w"> </span>--type<span class="o">=</span>&lt;ユニットの拡張子&gt;
 </code></pre></div>
@@ -35666,7 +35666,7 @@ proc-sys-fs-binfmt_misc.mount<span class="w"> </span>static
 <h4 id="log">▼ log<a class="headerlink" href="#log" title="Permanent link">&para;</a></h4>
 <p><code>systemctl</code> コマンドにはログを取得するオプションがないため、代わりに <code>journalctl</code> コマンドを使用する。</p>
 <h4 id="reload">▼ reload<a class="headerlink" href="#reload" title="Permanent link">&para;</a></h4>
-<p>デーモン化されたプロセスを Graceful Restart する。</p>
+<p>デーモン化されたプロセスをGraceful Restartする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>&lt;ユニット名&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx.service
@@ -35716,7 +35716,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 <p><br></p>
 <h3 id="journalctl">journalctl<a class="headerlink" href="#journalctl" title="Permanent link">&para;</a></h3>
 <h4 id="journalctl_1">▼ journalctlとは<a class="headerlink" href="#journalctl_1" title="Permanent link">&para;</a></h4>
-<p>system で管理するすべてのユニットの標準出力と標準エラー出力のログを取得する。</p>
+<p>systemで管理する全てのユニットの標準出力と標準エラー出力のログを取得する。</p>
 <p><code>grep</code> コマンドで特定のエラーログレベルに絞る必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>journalctl<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
 </code></pre></div>
@@ -35738,7 +35738,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 <h3 id="systemd">systemdのアラート<a class="headerlink" href="#systemd" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ アラートを直接的に通知する場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>デーモンが失敗状態になったとき、メールアドレスやチャット宛にアラートを直接的に送信するためには、<code>OnFailure</code> オプションを使用する。</p>
-<p>このときに指定するユニットファイル名には、「<code>@%i</code>』が必要である (実際のファイル名に <code>%i</code> は不要である) 。」</p>
+<p>この時に指定するユニットファイル名には、「<code>@%i</code>』が必要である (実際のファイル名に <code>%i</code> は不要である) 。」</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Unit]</span>
 
 <span class="na">...</span>
@@ -35768,7 +35768,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
 </blockquote>
 <h4 id="_9">▼ アラートを間接的に通知する場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>デーモンが失敗状態になったとき、出力したログを使用してアラートを送信するためには、<code>StandardOutput</code> オプションや <code>StandardError</code> オプションを使用する。</p>
-<p>一度、ログとして出力し、このログを Amazon CloudWatch Logs などに送信する。</p>
+<p>一度、ログとして出力し、このログをAmazon CloudWatch Logsなどに送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[Service]</span>
 
 <span class="na">...</span>
@@ -35849,7 +35849,7 @@ mq959<span class="w"> </span>/usr/sbin/rsyslogd<span class="w"> </span>-n
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     

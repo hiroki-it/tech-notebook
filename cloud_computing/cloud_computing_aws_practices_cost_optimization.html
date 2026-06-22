@@ -34254,8 +34254,8 @@
 <li>SLO (サーバー稼働率、レスポンス速度、秒当たり平均トランザクション数、バックアップ保管期間など)</li>
 <li>現在の運用料金</li>
 <li>アプリエンジニアの開発生産性</li>
-<li>Web アプリケーションのリソース要求の特徴 (恒常的な要求、瞬間的な要求)</li>
-<li>ビジネスドメインの性質による夜間や土日のトラフィックの増減 (例えば、Chatwork のようなビジネスチャットツールでは、夜間や土日のトラフィックが減る)</li>
+<li>Webアプリケーションのリソース要求の特徴 (恒常的な要求、瞬間的な要求)</li>
+<li>ビジネスドメインの性質による夜間や土日のトラフィックの増減 (例えば、Chatworkのようなビジネスチャットツールでは、夜間や土日のトラフィックが減る)</li>
 </ul>
 <blockquote>
 <ul>
@@ -34274,19 +34274,19 @@
 <p><br></p>
 <h3 id="_4">改善活動<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>コスト最適化に関する週次ミーティングを設け、コスト可視化ツール (例：Cost Explore、Evidence) のレポートを使用して、現在のコストを確認する。</p>
-<p>このとき、必要以上にコストがかかっている AWS リソースを見つければ、次週のミーティングまでに改善する。</p>
+<p>この時、必要以上にコストがかかっているAWSリソースを見つければ、次週のミーティングまでに改善する。</p>
 <p><br></p>
 <h3 id="aws_1">効果の大きいAWSリソース<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
-<p>以下の AWS リソースは使用料金が高く、削減効果が大きい。</p>
+<p>以下のAWSリソースは使用料金が高く、削減効果が大きい。</p>
 <ul>
-<li>Amazon EC2、Amazon EC2 ベースの AWS リソース (例：AWS Fargate)</li>
-<li>Amazon RDS、Amazon RDS ベースの AWS リソース (例：Amazon Aurora)</li>
+<li>Amazon EC2、Amazon EC2ベースのAWSリソース (例：AWS Fargate)</li>
+<li>Amazon RDS、Amazon RDSベースのAWSリソース (例：Amazon Aurora)</li>
 <li>AWS ALB</li>
 </ul>
 <p><br></p>
 <h2 id="02-service-quotas">02. Service Quotas<a class="headerlink" href="#02-service-quotas" title="Permanent link">&para;</a></h2>
 <h3 id="service-quotast">Service Quotastとは<a class="headerlink" href="#service-quotast" title="Permanent link">&para;</a></h3>
-<p>各種 AWS リソースの設定の上限値を上げられる。</p>
+<p>各種AWSリソースの設定の上限値を上げられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html">https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html</a></li>
@@ -34311,7 +34311,7 @@
 <h3 id="albnlb">ALB、NLB<a class="headerlink" href="#albnlb" title="Permanent link">&para;</a></h3>
 <h4 id="alb">▼ ALB<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
 <p>固定費とトラフィック量に応じた料金がかかる。</p>
-<p>マイクロサービスアーキテクチャでは、ALB が増えがちであり必要経費であるが、地味に高い。</p>
+<p>マイクロサービスアーキテクチャでは、ALBが増えがちであり必要経費であるが、地味に高い。</p>
 <ul>
 <li>固定費：<code>0.0243 × 730 = $17.739/月</code></li>
 <li>トラフィック量に応じた料金：<code>0.008 × 730 = $5.84/月</code>（ここでは少ないトラフィック量を想定）</li>
@@ -34330,11 +34330,11 @@
 <p><br></p>
 <h3 id="aws-ebs">AWS EBS<a class="headerlink" href="#aws-ebs" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 料金体系<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>AWS EBS ボリュームは、ボリュームの使用率に関わらず、最大サイズに基づいて料金が発生する。</p>
-<p>また、複数の AWS EBS ボリュームを Amazon EC2 に紐付けている場合は、その合計サイズで料金が発生する。</p>
+<p>AWS EBSボリュームは、ボリュームの使用率に関わらず、最大サイズに基づいて料金が発生する。</p>
+<p>また、複数のAWS EBSボリュームをAmazon EC2に紐付けている場合は、その合計サイズで料金が発生する。</p>
 <p>そのため、必要最低限のサイズを選択するように、過剰なサイズを選択してはいけない。</p>
-<p>その他、ボリュームタイプによっては、IOPS やスループットの設定値が課金対象になっている。</p>
-<p>汎用 SSD (gp2 タイプ) であれば、AWS EBS ボリュームの最大サイズのみを考慮すればよい。</p>
+<p>その他、ボリュームタイプによっては、IOPSやスループットの設定値が課金対象になっている。</p>
+<p>汎用SSD (gp2タイプ) であれば、AWS EBSボリュームの最大サイズのみを考慮すれば良い。</p>
 <p>また、注意点として、リージョンごとに料金体系が異なる。</p>
 <blockquote>
 <ul>
@@ -34386,7 +34386,7 @@
 </blockquote>
 <h4 id="_9">▼ 実行時間<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>インスタンスのライフサイクルのフェーズに応じて、料金が発生する。</p>
-<p>Amazon EC2 を実行している時間分だけ料金がかかる。</p>
+<p>Amazon EC2を実行している時間分だけ料金がかかる。</p>
 <p>インスタンスを使用せずに配置しているのみであれば、料金はかからない。</p>
 <table>
 <thead>
@@ -34437,19 +34437,19 @@
 <p><br></p>
 <h3 id="amazon-ecr">Amazon ECR<a class="headerlink" href="#amazon-ecr" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 合計サイズ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>Amazon ECR に保管したイメージの合計サイズが <code>500MB</code> を超えると、請求が発生するため、古いイメージを定期的に削除する必要がある。</p>
+<p>Amazon ECRに保管したイメージの合計サイズが <code>500MB</code> を超えると、請求が発生するため、古いイメージを定期的に削除する必要がある。</p>
 <p><br></p>
 <h3 id="fargate">Fargate<a class="headerlink" href="#fargate" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ リソースサイズ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Fargate では、Fargate ワーカーNode 内で Pod が使用したリソースサイズによって、料金が決まる。</p>
-<p>そのため、冗長化する Pod 数を減らすことにより、料金を抑えられる。</p>
+<p>Fargateでは、FargateワーカーNode内でPodが使用したリソースサイズによって、料金が決まる。</p>
+<p>そのため、冗長化するPod数を減らすことにより、料金を抑えられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/fargate/pricing/">https://aws.amazon.com/jp/fargate/pricing/</a></li>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>バージニア北部の Fargate ワーカーNode 内で、Pod が <code>10</code> 個を毎日 <code>1</code> 時間稼働させ、Pod が <code>0.25</code>vCPU と <code>1</code>GiB メモリを使用したとする。</p>
+<p>バージニア北部のFargateワーカーNode内で、Podが <code>10</code> 個を毎日 <code>1</code> 時間稼働させ、Podが <code>0.25</code>vCPUと <code>1</code>GiBメモリを使用したとする。</p>
 <p>この場合、１ヶ月の請求額は以下のようになる。</p>
 <div class="highlight"><pre><span></span><code>CPU の月額料金
 合計 vCPU 料金 = (ポッド数) × (vCPU 数) × (CPU 秒当たりの料金) × (秒単位の 1 日当たりの CPU 使用時間) × (日数)
@@ -34502,7 +34502,7 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
 <p><br></p>
 <h2 id="04">04. 削減方法<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="ec2">EC2<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
-<p>Auto Scaling グループを使用している場合、予定されたアクションで起動と停止のスケジュールを設定できる。</p>
+<p>Auto Scalingグループを使用している場合、予定されたアクションで起動と停止のスケジュールを設定できる。</p>
 <p>または、チェンジカレンダーで、タグを使用した起動と停止のスケジュールを設定できる。</p>
 <p><br></p>
 <h3 id="rds_1">RDS<a class="headerlink" href="#rds_1" title="Permanent link">&para;</a></h3>
@@ -34531,7 +34531,7 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
   </span>
 
     

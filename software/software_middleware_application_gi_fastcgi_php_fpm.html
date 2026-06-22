@@ -33766,8 +33766,8 @@
 <p><br></p>
 <h2 id="01-php-fpm">01. PHP-FPMの仕組み<a class="headerlink" href="#01-php-fpm" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>PHP-FPM は、Server API、Zend Engine、といったコンポーネントから構成される。</p>
-<p>FastCGI プロトコルを使用したアプリケーション系ミドルウェアである。</p>
+<p>PHP-FPMは、Server API、Zend Engine、といったコンポーネントから構成される。</p>
+<p>FastCGIプロトコルを使用したアプリケーション系ミドルウェアである。</p>
 <p><img alt="php-fpm_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php-fpm_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -33776,7 +33776,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">プロセスプール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>PHP-FPM では、リクエストのたびにプロセスを起動するわけでなく、あらかじめ複数のプロセスを稼働している。</p>
+<p>PHP-FPMでは、リクエストのたびにプロセスを起動するわけでなく、あらかじめ複数のプロセスを稼働している。</p>
 <p>そして、リクエストを受信するたびに、プロセスを割り当てている。</p>
 <p>あらかじめ準備されたプロセス群を『プール』という。</p>
 <blockquote>
@@ -33787,8 +33787,8 @@
 <p><br></p>
 <h2 id="01-02">01-02. ユースケース<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="fastcgi">FastCGIとして<a class="headerlink" href="#fastcgi" title="Permanent link">&para;</a></h3>
-<p>PHP-FPM は、FastCGI として Web サーバーと PHP ファイルの間でデータ通信する。</p>
-<p>PHP-FPM と PHP は、それぞれ独立した子プロセスとして実行されている。</p>
+<p>PHP-FPMは、FastCGIとしてWebサーバーとPHPファイルの間でデータ通信する。</p>
+<p>PHP-FPMとPHPは、それぞれ独立した子プロセスとして実行されている。</p>
 <p>そのため、設定値を別々に設定する必要がある。</p>
 <p>例えば、ログの出力先はそれぞれ個別に設定する必要がある。</p>
 <p><img alt="php-fpm_fastcgi" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php-fpm_fastcgi.png" /></p>
@@ -33810,7 +33810,7 @@
 <p><br></p>
 <h3 id="systemctl">systemctlコマンドによる操作<a class="headerlink" href="#systemctl" title="Permanent link">&para;</a></h3>
 <h4 id="status">▼ status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h4>
-<p>PHP-FPM のプロセスが正常に実行中であることを確認する。プロセスがプールとして準備されていることも確認できる。</p>
+<p>PHP-FPMのプロセスが正常に実行中であることを確認する。プロセスがプールとして準備されていることも確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>php-fpm.service
 
 ●<span class="w"> </span>php-fpm.service<span class="w"> </span>-<span class="w"> </span>The<span class="w"> </span>PHP<span class="w"> </span>FastCGI<span class="w"> </span>Process<span class="w"> </span>Manager
@@ -33860,7 +33860,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 18:51:01 JST">2026-02-16</span>
   </span>
 
     

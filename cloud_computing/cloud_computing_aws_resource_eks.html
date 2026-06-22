@@ -19423,7 +19423,7 @@
   <a href="#amazon-vpcaws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon VPC外のほかのAWSリソースへのリクエスト
+        ▼ Amazon VPC外の他のAWSリソースへのリクエスト
       
     </span>
   </a>
@@ -19445,7 +19445,7 @@
   <a href="#amazon-vpcaws_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon VPC内のほかのAWSリソースへのリクエスト
+        ▼ Amazon VPC内の他のAWSリソースへのリクエスト
       
     </span>
   </a>
@@ -35359,7 +35359,7 @@
   <a href="#amazon-vpcaws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon VPC外のほかのAWSリソースへのリクエスト
+        ▼ Amazon VPC外の他のAWSリソースへのリクエスト
       
     </span>
   </a>
@@ -35381,7 +35381,7 @@
   <a href="#amazon-vpcaws_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon VPC内のほかのAWSリソースへのリクエスト
+        ▼ Amazon VPC内の他のAWSリソースへのリクエスト
       
     </span>
   </a>
@@ -36424,14 +36424,14 @@
 <h3 id="_2">コントロールプレーン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ コントロールプレーンとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>コンテナオーケストレーションを実行する環境を提供する。</p>
-<p>データプレーンの Amazon VPC 外に存在している。</p>
+<p>データプレーンのAmazon VPC外に存在している。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/">https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/</a></li>
 </ul>
 </blockquote>
 <h4 id="_4">▼ コントロールプレーンの仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>Amazon EKS のコントロールプレーンは、開発者や他の AWS リソースからのリクエストを待ち受ける API、接続を API にルーティングする NLB、データプレーンを管理するコンポーネント、からなる。</p>
+<p>Amazon EKSのコントロールプレーンは、開発者や他のAWSリソースからのリクエストを待ち受けるAPI、接続をAPIにルーティングするNLB、データプレーンを管理するコンポーネント、からなる。</p>
 <p><img alt="eks_control-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane.png" /></p>
 <blockquote>
 <ul>
@@ -36441,8 +36441,8 @@
 <p><br></p>
 <h3 id="_5">データプレーン<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ データプレーンとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>複数のホスト (Amazon EC2、Fargate) の OS 上でコンテナオーケストレーションを実行する。</p>
-<p>『<code>on EC2</code>』『<code>on Fargate</code>』という呼び方は、データプレーンが Amazon EKS の実行環境 (<code>on environment</code>) の意味合いを持つからである。</p>
+<p>複数のホスト (Amazon EC2、Fargate) のOS上でコンテナオーケストレーションを実行する。</p>
+<p>『<code>on EC2</code>』『<code>on Fargate</code>』という呼び方は、データプレーンがAmazon EKSの実行環境 (<code>on environment</code>) の意味合いを持つからである。</p>
 <p><br></p>
 <h2 id="01-02">01-02. セットアップ (コンソールの場合)<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_7">設定項目と説明<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
@@ -36483,7 +36483,7 @@
 <tr>
 <td>クラスターセキュリティグループ</td>
 <td>Amazon EKS Clusterのセキュリティグループを設定する。</td>
-<td>インバウンドとアウトバウンド通信の両方のルールで、すべてのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって <code>eks-cluster-sg-&lt;Amazon EKS Cluster名&gt;</code> というセキュリティグループも自動設定される。<br><a href="https://yuutookun.hatenablog.com/entry/fargate_for_eks">https://yuutookun.hatenablog.com/entry/fargate_for_eks</a></td>
+<td>インバウンドとアウトバウンド通信の両方のルールで、全てのIPアドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWSによって <code>eks-cluster-sg-&lt;Amazon EKS Cluster名&gt;</code> というセキュリティグループも自動設定される。<br><a href="https://yuutookun.hatenablog.com/entry/fargate_for_eks">https://yuutookun.hatenablog.com/entry/fargate_for_eks</a></td>
 </tr>
 <tr>
 <td>クラスターIPアドレスファミリー</td>
@@ -36514,7 +36514,7 @@
 </table>
 <p><br></p>
 <h2 id="01-03-terraform">01-03. セットアップ (Terraformの場合)<a class="headerlink" href="#01-03-terraform" title="Permanent link">&para;</a></h2>
-<p>ここでは、Terraform の公式モジュールを使用する。</p>
+<p>ここでは、Terraformの公式モジュールを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;eks_foo&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/eks/aws&quot;</span>
 
@@ -36590,11 +36590,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="amazon-eks-cluster">Amazon EKS Clusterの資格情報の追加<a class="headerlink" href="#amazon-eks-cluster" title="Permanent link">&para;</a></h3>
-<p><code>kubectl</code> コマンドで Amazon EKS Cluster を操作するためには、<code>kubeconfig</code> ファイルへ Cluster の資格情報を登録する必要がある。</p>
+<p><code>kubectl</code> コマンドでAmazon EKS Clusterを操作するためには、<code>kubeconfig</code> ファイルへClusterの資格情報を登録する必要がある。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>AWS CLI に資格情報を設定する。</p>
+<p>AWS CLIに資格情報を設定する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure
@@ -36602,7 +36602,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Amazon EKS Cluster の名前を指定して、<code>kubeconfig</code> ファイルに Cluster の資格情報を登録する。</p>
+<p>Amazon EKS Clusterの名前を指定して、<code>kubeconfig</code> ファイルにClusterの資格情報を登録する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span>--name<span class="w"> </span>foo-eks-cluster
@@ -36610,7 +36610,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>kubectl</code> コマンドの向き先を、Amazon EKS Cluster の kube-apiserver に変更する。</p>
+<p><code>kubectl</code> コマンドの向き先を、Amazon EKS Clusterのkube-apiserverに変更する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>&lt;ClusterのARN&gt;
@@ -36660,11 +36660,11 @@
 </table>
 <p><br></p>
 <h3 id="node">コントロールプレーンNode<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
-<p>コントロールプレーン Node は、ユーザーの管理外の Amazon VPC に所属している。</p>
+<p>コントロールプレーンNodeは、ユーザーの管理外のAmazon VPCに所属している。</p>
 <p><br></p>
 <h3 id="_9">パブリックアクセス/プライベートアクセス<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>kube-apiserver のインターネットへの公開範囲を設定できる。</p>
-<p>プライベートアクセスの場合、Amazon VPC 内部からのみリクエストできるように制限でき、送信元 IP アドレスを指定してアクセスを許可できる。</p>
+<p>kube-apiserverのインターネットへの公開範囲を設定できる。</p>
+<p>プライベートアクセスの場合、Amazon VPC内部からのみリクエストできるように制限でき、送信元IPアドレスを指定してアクセスを許可できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/">https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/</a></li>
@@ -36673,8 +36673,8 @@
 <p><br></p>
 <h3 id="_10">監視<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-eks-upgrade-insight">▼ Amazon EKS Upgrade insight<a class="headerlink" href="#amazon-eks-upgrade-insight" title="Permanent link">&para;</a></h4>
-<p>非推奨 apiVersion 検出ツール (例：pluto、kubepug) のようなクライアント側からの検証ではなく、kube-apiserver 側で非推奨 apiVersion を検出する。</p>
-<p>kube-apiserver の監査ログから非推奨 apiVersion を検出する。</p>
+<p>非推奨apiVersion検出ツール (例：pluto、kubepug) のようなクライアント側からの検証ではなく、kube-apiserver側で非推奨apiVersionを検出する。</p>
+<p>kube-apiserverの監査ログから非推奨apiVersionを検出する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">クライアント</span><span class="w"> </span><span class="c1"># pluto で検証</span>
 <span class="l l-Scalar l-Scalar-Plain">↓</span>
 <span class="nn">---</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cluster</span>
@@ -36696,26 +36696,26 @@
 <h2 id="02-02-kube-apiserver">02-02. kube-apiserver<a class="headerlink" href="#02-02-kube-apiserver" title="Permanent link">&para;</a></h2>
 <h3 id="aws-auth-configmap-kubernetes-rbac">aws-auth (ConfigMap) を経由したKubernetes RBACとの連携<a class="headerlink" href="#aws-auth-configmap-kubernetes-rbac" title="Permanent link">&para;</a></h3>
 <p><img alt="eks_auth_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png" /></p>
-<p>ConfigMap を経由して Kubernetes の RBAC と連携することにより、Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープを制御する。</p>
+<p>ConfigMapを経由してKubernetesのRBACと連携することにより、Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の認可スコープを制御する。</p>
 <p>新しいアクセスエントリーよりもセットアップが難しい。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>あらかじめ、kube-apiserver クライアント (<code>kubectl</code> クライアント、Kubernetes リソース) に紐づく AWS IAM ユーザーを作成しておく。</p>
+<p>あらかじめ、kube-apiserverクライアント (<code>kubectl</code> クライアント、Kubernetesリソース) に紐づくAWS IAMユーザーを作成しておく。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>AWS IAM ユーザーが kube-apiserver の URL にリクエストを送信する。</p>
+<p>AWS IAMユーザーがkube-apiserverのURLにリクエストを送信する。</p>
 <p>kube-apiserverは、aws-iam-authenticator-serverにWebhookリクエストを送信する。</p>
 <p>admission-controllersアドオンのWebhookではないことに注意する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>コントロールプレーン Node 上の aws-iam-authenticator-server は、IAM API を使用して AWS IAM ユーザーを認証する。</p>
+<p>コントロールプレーンNode上のaws-iam-authenticator-serverは、IAM APIを使用してAWS IAMユーザーを認証する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>もし認証に成功していた場合、aws-iam-authenticator-server は、ConfigMap (aws-auth) を確認する。</p>
+<p>もし認証に成功していた場合、aws-iam-authenticator-serverは、ConfigMap (aws-auth) を確認する。</p>
 <p>このConfigMapには、そのAWS IAMユーザーに紐づくUserAccount／ServiceAccount／Group／RoleBinding／ClusterRoleBindingが定義されている。</p>
 <p>この時、Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の場合はUserAccount、Kubernetesリソースの場合はServiceAccountを取得する。</p>
 </dd>
@@ -36742,11 +36742,11 @@
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>aws-iam-authenticator-server は、UserAccount／ServiceAccount／Group、RoleBinding や ClusterRoleBinding の情報を含むレスポンスを kube-apiserver に返信する。</p>
+<p>aws-iam-authenticator-serverは、UserAccount／ServiceAccount／Group、RoleBindingやClusterRoleBindingの情報を含むレスポンスをkube-apiserverに返信する。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>あとは、Kubernetes の標準の認可の仕組みである。</p>
+<p>あとは、Kubernetesの標準の認可の仕組みである。</p>
 <p>kube-apiserverは、UserAccount／ServiceAccount／Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを経由して取得する。</p>
 <p>AWS IAMユーザーは、Kubernetesリソースを操作できる。</p>
 </dd>
@@ -36763,10 +36763,10 @@
 <p><br></p>
 <h3 id="aws-iamkubernetes-cluster">プリンシパルAWS IAMロールとアクセスエントリーを経由したKubernetes Clusterの操作<a class="headerlink" href="#aws-iamkubernetes-cluster" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 概要<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>プリンシパル AWS IAM ロールとアクセスエントリーを使用することにより、Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープを制御する。</p>
-<p>プリンシパル AWS IAM ロールとアクセスエントリーを使用する場合、従来の aws-auth (ConfigMap) と比較して、より簡単にセットアップできる。</p>
-<p>プリンシパル AWS IAM ロールに紐づく Pod が Amazon EKS へ接続するとき、アクセスエントリーがこれを中継する。</p>
-<p>Kubernetes リソースの認可スコープを IRSA で制御し、この仕組みのなかで、アクセスエントリーはアクセスエントリーポリシーを AWS IAM ロールに動的に紐づける。</p>
+<p>プリンシパルAWS IAMロールとアクセスエントリーを使用することにより、Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の認可スコープを制御する。</p>
+<p>プリンシパルAWS IAMロールとアクセスエントリーを使用する場合、従来のaws-auth (ConfigMap) と比較して、より簡単にセットアップできる。</p>
+<p>プリンシパルAWS IAMロールに紐づくPodがAmazon EKSへ接続するとき、アクセスエントリーがこれを中継する。</p>
+<p>Kubernetesリソースの認可スコープをIRSAで制御し、この仕組みの中で、アクセスエントリーはアクセスエントリーポリシーをAWS IAMロールに動的に紐づける。</p>
 <h4 id="kubectl-argocd">▼ <code>kubectl</code> クライアント (例：開発者、ArgoCDなど)<a class="headerlink" href="#kubectl-argocd" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Amazon EKS Clusterのkubectlクライアントとなる別のAmazon EKS Cluster</span>
 
@@ -36817,7 +36817,7 @@
 <span class="w">  </span><span class="na">role_requires_mfa</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の Amazon EKS Cluster のサーバー証明書を base64 方式エンコードした値 (<code>-----BEGIN CERTIFICATE-----</code> から <code>-----END CERTIFICATE-----</code> まで) を <code>caData</code> として設定する。</p>
+<p>Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) のAmazon EKS Clusterのサーバー証明書をbase64方式エンコードした値 (<code>-----BEGIN CERTIFICATE-----</code> から <code>-----END CERTIFICATE-----</code> まで) を <code>caData</code> として設定する。</p>
 <p><code>aws eks describe-cluster</code> コマンドやコンソール画面から確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
@@ -36966,8 +36966,8 @@
 <p><br></p>
 <h3 id="amazon-eks-cluster_1">Amazon EKS Cluster<a class="headerlink" href="#amazon-eks-cluster_1" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-eks-cluster_2">▼ Amazon EKS Clusterとは<a class="headerlink" href="#amazon-eks-cluster_2" title="Permanent link">&para;</a></h4>
-<p>Fargate ワーカーNode や Amazon EC2 ワーカーNode の管理グループ単位のこと。</p>
-<p>Kubernetes Cluster に相当する。</p>
+<p>FargateワーカーNodeやAmazon EC2ワーカーNodeの管理グループ単位のこと。</p>
+<p>Kubernetes Clusterに相当する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.sunnycloud.jp/column/20210315-01/">https://www.sunnycloud.jp/column/20210315-01/</a></li>
@@ -36976,7 +36976,7 @@
 <p><br></p>
 <h3 id="node_1">マルチワーカーNode<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h3>
 <h4 id="node_2">▼ マルチワーカーNodeとは<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h4>
-<p>マルチワーカーNode を作成する場合、AZ ごとに Node を作成する。</p>
+<p>マルチワーカーNodeを作成する場合、AZごとにNodeを作成する。</p>
 <p><img alt="eks_multi-node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_multi-node.png" /></p>
 <blockquote>
 <ul>
@@ -36984,9 +36984,9 @@
 </ul>
 </blockquote>
 <h4 id="node_3">▼ ワーカーNode間のファイル共有<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h4>
-<p>AWS EFS を使用して、ワーカーNode 間でファイルを共有する。</p>
-<p>Pod のファイルはワーカーNode にマウントされるため、異なるワーカーNode 上の Pod 間でファイルを共有したい場合 (例：Prometheus のローカルストレージを Pod 間で共有したい) に役立つ。</p>
-<p>ただしできるだけ、ワーカーNode をステートフルではなくステートレスにする必要があり、Pod のファイルはワーカーNode の外で管理する必要がある。</p>
+<p>AWS EFSを使用して、ワーカーNode間でファイルを共有する。</p>
+<p>PodのファイルはワーカーNodeにマウントされるため、異なるワーカーNode上のPod間でファイルを共有したい場合 (例：PrometheusのローカルストレージをPod間で共有したい) に役立つ。</p>
+<p>ただしできるだけ、ワーカーNodeをステートフルではなくステートレスにする必要があり、PodのファイルはワーカーNodeの外で管理する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.linkode.co.jp/entry/2020/07/01/142155">https://blog.linkode.co.jp/entry/2020/07/01/142155</a></li>
@@ -36996,15 +36996,15 @@
 <h3 id="irsaiam-roles-for-service-accounts">IRSA：IAM Roles for Service Accounts<a class="headerlink" href="#irsaiam-roles-for-service-accounts" title="Permanent link">&para;</a></h3>
 <h4 id="irsa">▼ IRSAとは<a class="headerlink" href="#irsa" title="Permanent link">&para;</a></h4>
 <p><img alt="eks_oidc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png" /></p>
-<p>特に Kubernetes リソースの認可スコープを制御する仕組みのこと。</p>
-<p>Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープは、RBAC で制御する。</p>
-<p>Amazon EKS を SSO の ID プロバイダーとして使用することにより、IAM の認証フェーズを Amazon EKS に委譲する。</p>
+<p>特にKubernetesリソースの認可スコープを制御する仕組みのこと。</p>
+<p>Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の認可スコープは、RBACで制御する。</p>
+<p>Amazon EKSをSSOのIDプロバイダーとして使用することにより、IAMの認証フェーズをAmazon EKSに委譲する。</p>
 <h4 id="_14">▼ セットアップ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>ここでは、SSO の種類で OIDC を選ぶとする。</p>
+<p>ここでは、SSOの種類でOIDCを選ぶとする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>SSO の ID プロバイダーのタイプは、OIDC とする。</p>
+<p>SSOのIDプロバイダーのタイプは、OIDCとする。</p>
 <p>『Amazon EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのサーバー証明書を署名する中間認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (<code>sts.amazonaws.com</code>) 』を使用して、OIDCプロバイダーを作成する。</p>
 </dd>
 </dl>
@@ -37077,7 +37077,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>IRSA で使用する AWS IAM ロールの信頼されたエンティティに、Amazon EKS Cluster の OIDC プロバイダーURL やユーザー名 (<code>system:serviceaccount:&lt;Namespac名&gt;:&lt;ServiceAccount名&gt;</code>) を設定する。</p>
+<p>IRSAで使用するAWS IAMロールの信頼されたエンティティに、Amazon EKS ClusterのOIDCプロバイダーURLやユーザー名 (<code>system:serviceaccount:&lt;Namespac名&gt;:&lt;ServiceAccount名&gt;</code>) を設定する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
@@ -37104,7 +37104,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>ServiceAccount の <code>.metadata.annotations.eks.amazonaws.com/role-arn</code> キーで AWS IAM ロールの ARN を設定する。</p>
+<p>ServiceAccountの <code>.metadata.annotations.eks.amazonaws.com/role-arn</code> キーでAWS IAMロールのARNを設定する。</p>
 <p>これにより、Amazon EKSで認証済みのServiceAccountにAWS IAMロールを紐付けることができるようになる。</p>
 <p><code>automountServiceAccountToken</code>キーが有効化されていることを確認する。</p>
 </dd>
@@ -37121,7 +37121,7 @@
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>Pod で、ServiceAccount 名を設定する。</p>
+<p>Podで、ServiceAccount名を設定する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -37133,9 +37133,9 @@
 <span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-sa</span>
 <span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<p>もし <code>.metadata.annotations.eks.amazonaws.com/role-arn</code> キーを使用しない場合、Kubernetes リソースから AWS リソースへのアクセスがあったときは、Amazon EC2 ワーカーNode や Fargate ワーカーNode の AWS IAM ロールが使用される。</p>
-<p>IRSA が登場するまでは、Amazon EKS 上でのワーカーNode (例：Amazon EC2、Fargate) にしか AWS IAM ロールを紐付けることができず、Kubernetes リソースに AWS IAM ロールを直接的に紐付けることはできなかった。</p>
-<p>ServiceAccount のトークンは、コンテナにファイルとしてマウントされている。</p>
+<p>もし <code>.metadata.annotations.eks.amazonaws.com/role-arn</code> キーを使用しない場合、KubernetesリソースからAWSリソースへのアクセスがあったときは、Amazon EC2ワーカーNodeやFargateワーカーNodeのAWS IAMロールが使用される。</p>
+<p>IRSAが登場するまでは、Amazon EKS上でのワーカーNode (例：Amazon EC2、Fargate) にしかAWS IAMロールを紐付けることができず、KubernetesリソースにAWS IAMロールを直接的に紐付けることはできなかった。</p>
+<p>ServiceAccountのトークンは、コンテナにファイルとしてマウントされている。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>printenv<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-f
 
 <span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>ap-northeast-1
@@ -37162,7 +37162,7 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Amazon EKS Cluster の名前を指定して、<code>kubeconfig</code> ファイルに Cluster の資格情報を登録する。</p>
+<p>Amazon EKS Clusterの名前を指定して、<code>kubeconfig</code> ファイルにClusterの資格情報を登録する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span>--name<span class="w"> </span>foo-eks-cluster
@@ -37175,7 +37175,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>kubectl</code> コマンドの向き先を、Amazon EKS Cluster の kube-apiserver に変更する。</p>
+<p><code>kubectl</code> コマンドの向き先を、Amazon EKS Clusterのkube-apiserverに変更する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>&lt;ClusterのARN&gt;
@@ -37188,7 +37188,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>マニフェストを使用して、ダッシュボードの Kubernetes リソースを Amazon EKS にデプロイする。</p>
+<p>マニフェストを使用して、ダッシュボードのKubernetesリソースをAmazon EKSにデプロイする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
@@ -37201,7 +37201,7 @@
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>ダッシュボードに安全に接続するために、ServiceAccount を Amazon EKS にデプロイする</p>
+<p>ダッシュボードに安全に接続するために、ServiceAccountをAmazon EKSにデプロイする</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service-account.yml
@@ -37217,7 +37217,7 @@
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>ローカルマシンから Amazon EKS にポートフォワーディングを実行する。</p>
+<p>ローカルマシンからAmazon EKSにポートフォワーディングを実行する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>proxy
@@ -37231,11 +37231,11 @@
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1</span>
 </code></pre></div>
 <h4 id="node-amazon-ec2fargate">▼ ワーカーNode (例：Amazon EC2、Fargate) への接続<a class="headerlink" href="#node-amazon-ec2fargate" title="Permanent link">&para;</a></h4>
-<p>AWS SSM Session Manager を使用して、ワーカーNode (例：Amazon EC2、Fargate) に接続できる。</p>
+<p>AWS SSM Session Managerを使用して、ワーカーNode (例：Amazon EC2、Fargate) に接続できる。</p>
 <p><br></p>
 <h2 id="03-02-clusterip">03-02. Cluster内のIPアドレス<a class="headerlink" href="#03-02-clusterip" title="Permanent link">&para;</a></h2>
 <h3 id="serviceip">ServiceのためのIPアドレス<a class="headerlink" href="#serviceip" title="Permanent link">&para;</a></h3>
-<p>Service に割り当てる IP アドレスは、Service IP 範囲によって決まる。</p>
+<p>Serviceに割り当てるIPアドレスは、Service IP範囲によって決まる。</p>
 <p><code>10.100.0.0/16</code> または <code>172.20.0.0/16</code> のいずれかになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>-A<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.clusterIP}&#39;</span>
 
@@ -37253,8 +37253,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="podip">PodのためのIPアドレス<a class="headerlink" href="#podip" title="Permanent link">&para;</a></h3>
-<p>Pod の IP アドレスは、Amazon EC2 の ENI とセカンダリープライベート IP アドレスに割り当てられる IP アドレスによって決まる。</p>
-<p>Amazon VPC CNI 内の L-IPAM デーモンは、ENI とセカンダリープライベート IP アドレスの情報を CNI にプールする。</p>
+<p>PodのIPアドレスは、Amazon EC2のENIとセカンダリープライベートIPアドレスに割り当てられるIPアドレスによって決まる。</p>
+<p>Amazon VPC CNI内のL-IPAMデーモンは、ENIとセカンダリープライベートIPアドレスの情報をCNIにプールする。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/">https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/</a></li>
@@ -37263,9 +37263,9 @@
 </blockquote>
 <p><br></p>
 <h2 id="03-03">03-03. サブネット内外へのリクエスト<a class="headerlink" href="#03-03" title="Permanent link">&para;</a></h2>
-<p>Amazon EKS データプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上の ALB から通信を受信するとよい。</p>
-<p>このとき、パブリックネットワークにあるレジストリから、Istio や ArgoCD のコンテナイメージをプルできるように、Amazon EKS Fargate ワーカーNode と Internet Gateway 間のネットワークを繋げる必要がある。</p>
-<p>そのために、パブリックサブネットに AWS NAT Gateway を配置する。</p>
+<p>Amazon EKSデータプレーンはプライベートサブネットで稼働させ、パブリックネットワーク上のALBから通信を受信すると良い。</p>
+<p>この時、パブリックネットワークにあるレジストリから、IstioやArgoCDのコンテナイメージをプルできるように、Amazon EKS FargateワーカーNodeとInternet Gateway間のネットワークを繋げる必要がある。</p>
+<p>そのために、パブリックサブネットにAWS NAT Gatewayを配置する。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/">https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/</a></li>
@@ -37274,8 +37274,8 @@
 <p><br></p>
 <h2 id="03-04">03-04. データプレーン内外へのリクエスト<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
 <h3 id="_17">パブリックサブネット内のデータプレーンからのリクエスト<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>Pod をパブリックサブネットに配置した場合、パブリックネットワークや Amazon VPC 外にある AWS リソース (Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) に対してリクエストを送信するために特に必要なものはない。</p>
-<p>このとき、<code>POD_SECURITY_GROUP_ENFORCING_MODE=standard</code> に設定された Amazon VPC CNI は SNAT 処理を実行し、クライアント側 Pod の送信元 IP アドレスを Amazon EC2 ワーカーNode のプライマリーENI (<code>eth0</code>) の IP アドレスに変換する。</p>
+<p>Podをパブリックサブネットに配置した場合、パブリックネットワークやAmazon VPC外にあるAWSリソース (Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDBなど) に対してリクエストを送信するために特に必要なものは無い。</p>
+<p>この時、<code>POD_SECURITY_GROUP_ENFORCING_MODE=standard</code> に設定されたAmazon VPC CNIはSNAT処理を実行し、クライアント側Podの送信元IPアドレスをAmazon EC2ワーカーNodeのプライマリーENI (<code>eth0</code>) のIPアドレスに変換する。</p>
 <blockquote>
 <ul>
 <li><a href="https://note.com/tyrwzl/n/n715a8ef3c28a">https://note.com/tyrwzl/n/n715a8ef3c28a</a></li>
@@ -37285,7 +37285,7 @@
 <p><br></p>
 <h3 id="_18">プライベートサブネット内のデータプレーンからのリクエスト<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="pod">▼ Pod外から内へのリクエスト<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>Pod をプライベートサブネットに配置した場合、プライベートサブネット外から内のデータプレーンへのリクエストを AWS Load Balancer Controller で受信し、AWS ALB を使用して Pod にルーティングする。</p>
+<p>Podをプライベートサブネットに配置した場合、プライベートサブネット外から内のデータプレーンへのリクエストをAWS Load Balancer Controllerで受信し、AWS ALBを使用してPodにルーティングする。</p>
 <p><img alt="eks_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -37293,7 +37293,7 @@
 </ul>
 </blockquote>
 <h4 id="_19">▼ 宛先情報の管理方法<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>リクエストの宛先情報は、Secret で管理し、Pod 内のコンテナにマウントする。</p>
+<p>リクエストの宛先情報は、Secretで管理し、Pod内のコンテナにマウントする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37308,11 +37308,11 @@
 <span class="w">  </span><span class="nt">SQS_QUEUE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-queue.fifo</span>
 <span class="w">  </span><span class="nt">SQS_REGION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
 </code></pre></div>
-<h4 id="amazon-vpcaws">▼ Amazon VPC外のほかのAWSリソースへのリクエスト<a class="headerlink" href="#amazon-vpcaws" title="Permanent link">&para;</a></h4>
-<p>Pod をプライベートサブネットに配置した場合、パブリックネットワークや Amazon VPC 外にある AWS リソース (Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、AWS DynamoDB など) に対してリクエストを送信するためには、AWS NAT Gateway または Amazon VPC エンドポイントを配置する必要がある。</p>
-<p>このとき、クライアント側 Pod の送信元 IP アドレスは、AWS NAT Gateway または Amazon VPC エンドポイントに紐づく IP アドレスとなる。</p>
-<p>以下のようなエラーで Pod が起動しない場合、Pod が何らかの理由でコンテナイメージをプルできない可能性がある。</p>
-<p>また、Pod が作成されない限り、ワーカーNode も作成されないことに注意する。</p>
+<h4 id="amazon-vpcaws">▼ Amazon VPC外の他のAWSリソースへのリクエスト<a class="headerlink" href="#amazon-vpcaws" title="Permanent link">&para;</a></h4>
+<p>Podをプライベートサブネットに配置した場合、パブリックネットワークやAmazon VPC外にあるAWSリソース (Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、AWS DynamoDBなど) に対してリクエストを送信するためには、AWS NAT GatewayまたはAmazon VPCエンドポイントを配置する必要がある。</p>
+<p>この時、クライアント側Podの送信元IPアドレスは、AWS NAT GatewayまたはAmazon VPCエンドポイントに紐づくIPアドレスとなる。</p>
+<p>以下のようなエラーでPodが起動しない場合、Podが何らかの理由でコンテナイメージをプルできない可能性がある。</p>
+<p>また、Podが作成されない限り、ワーカーNodeも作成されないことに注意する。</p>
 <div class="highlight"><pre><span></span><code>Pod<span class="w"> </span>provisioning<span class="w"> </span>timed<span class="w"> </span>out<span class="w"> </span><span class="o">(</span>will<span class="w"> </span>retry<span class="o">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>pod
 </code></pre></div>
 <blockquote>
@@ -37321,9 +37321,9 @@
 </ul>
 </blockquote>
 <h4 id="amazon-vpc">▼ Amazon VPC外のコントロールプレーンへのリクエスト<a class="headerlink" href="#amazon-vpc" title="Permanent link">&para;</a></h4>
-<p>Amazon EKS Cluster を作成すると、ENI も作成する。</p>
-<p>これにより、データプレーンが Amazon VPC 外のコントロールプレーンと通信できるようになる。</p>
-<p>データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドな Interface 型 Amazon VPC エンドポイントまたは AWS NAT Gateway が必要になる。</p>
+<p>Amazon EKS Clusterを作成すると、ENIも作成する。</p>
+<p>これにより、データプレーンがAmazon VPC外のコントロールプレーンと通信できるようになる。</p>
+<p>データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドなInterface型Amazon VPCエンドポイントまたはAWS NAT Gatewayが必要になる。</p>
 <table>
 <thead>
 <tr>
@@ -37378,15 +37378,15 @@
 <li><a href="https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/">https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/</a></li>
 </ul>
 </blockquote>
-<h4 id="amazon-vpcaws_1">▼ Amazon VPC内のほかのAWSリソースへのリクエスト<a class="headerlink" href="#amazon-vpcaws_1" title="Permanent link">&para;</a></h4>
-<p>Amazon VPC 内にある AWS リソース (RDS など) の場合、その AWS 側のセキュリティグループにて、Pod のプライベートサブネットの CIDR ブロックを許可すればよい。</p>
+<h4 id="amazon-vpcaws_1">▼ Amazon VPC内の他のAWSリソースへのリクエスト<a class="headerlink" href="#amazon-vpcaws_1" title="Permanent link">&para;</a></h4>
+<p>Amazon VPC内にあるAWSリソース (RDSなど) の場合、そのAWS側のセキュリティグループにて、PodのプライベートサブネットのCIDRブロックを許可すればよい。</p>
 <p><br></p>
 <h2 id="03-05">03-05. コントロールプレーン内外へのリクエスト<a class="headerlink" href="#03-05" title="Permanent link">&para;</a></h2>
 <h3 id="node_4">コントロールプレーンとワーカーNodeのネットワーク<a class="headerlink" href="#node_4" title="Permanent link">&para;</a></h3>
-<p>コントロールプレーンは Amazon VPC 外にあり、ワーカーNode は Amazon VPC 内にある。</p>
-<p><code>kubectl</code> コマンドやワーカーNode からのリクエストのエンドポイントとして NLB が配置されている。</p>
-<p>この NLB を経由して、コントロールプレーン内の kube-apiserver にリクエストを送信できる。</p>
-<p>Amazon VPC 外から NLB への <code>443</code> 番ポートに対するネットワークからのリクエストはデフォルトでは許可されているが、拒否するように設定できる。</p>
+<p>コントロールプレーンはAmazon VPC外にあり、ワーカーNodeはAmazon VPC内にある。</p>
+<p><code>kubectl</code> コマンドやワーカーNodeからのリクエストのエンドポイントとしてNLBが配置されている。</p>
+<p>このNLBを経由して、コントロールプレーン内のkube-apiserverにリクエストを送信できる。</p>
+<p>Amazon VPC外からNLBへの <code>443</code> 番ポートに対するネットワークからのリクエストはデフォルトでは許可されているが、拒否するように設定できる。</p>
 <p><img alt="eks_control-plane_worker_network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network.png" /></p>
 <blockquote>
 <ul>
@@ -37396,22 +37396,22 @@
 <p><br></p>
 <h3 id="_20">クラスターエンドポイントのリクエスト制限<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <h4 id="_21">▼ パブリックのみの場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>基本的には、すべての IP アドレスから kube-apiserver にリクエストを送信できる。</p>
-<p>プライベートサブネット内にワーカーNode がある場合、AWS NAT Gateway を経由して、kube-apiserver にリクエストを送信することになる。</p>
+<p>基本的には、全てのIPアドレスからkube-apiserverにリクエストを送信できる。</p>
+<p>プライベートサブネット内にワーカーNodeがある場合、AWS NAT Gatewayを経由して、kube-apiserverにリクエストを送信することになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access">https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access</a></li>
 </ul>
 </blockquote>
 <h4 id="_22">▼ パブリックとプライベートの場合<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>パブリックとプライベートを許可する場合、指定した CIDR ブロックに含まれる IP アドレスからのみ、kube-apiserver にリクエストを送信できる。</p>
-<p>プライベートサブネット内にワーカーNode がある場合、以下のいずれかの経路で kube-apiserver にリクエストを送信することになる。</p>
+<p>パブリックとプライベートを許可する場合、指定したCIDRブロックに含まれるIPアドレスからのみ、kube-apiserverにリクエストを送信できる。</p>
+<p>プライベートサブネット内にワーカーNodeがある場合、以下のいずれかの経路でkube-apiserverにリクエストを送信することになる。</p>
 <ul>
-<li>AWS NAT Gateway を経由して、AWS NAT Gateway を経由して、パブリック制限を通過する</li>
-<li>ENI (Interface 型の Amazon VPC エンドポイント) を経由して、プライベート制限を通過する</li>
+<li>AWS NAT Gatewayを経由して、AWS NAT Gatewayを経由して、パブリック制限を通過する</li>
+<li>ENI (Interface型のAmazon VPCエンドポイント) を経由して、プライベート制限を通過する</li>
 </ul>
 <p><img alt="eks_control-plane_worker_network_public_private_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png" /></p>
-<p>Amazon VPC 外の AWS リソース (例：Amazon EKS コントロールプレーン、Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) にリクエストを送信する場合、専用の Amazon VPC エンドポイントを設ける必要がある。</p>
+<p>Amazon VPC外のAWSリソース (例：Amazon EKSコントロールプレーン、Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDBなど) にリクエストを送信する場合、専用のAmazon VPCエンドポイントを設ける必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -37466,13 +37466,13 @@
 </ul>
 </blockquote>
 <h4 id="_23">▼ プライベートのみの場合<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>プライベートのみを許可する場合、この NLB は閉じられ、Amazon VPC 内からしか kube-apiserver にリクエストを送信できなくなる。</p>
-<p>プライベートサブネット内にワーカーNode がある場合、Amazon VPC エンドポイントを経由して、kube-apiserver にリクエストを送信することになる。</p>
-<p>この状態で、<code>kubectl</code> コマンドで kube-apiserver にリクエストを送信できるようにする方法としては、以下のパターンがある。</p>
+<p>プライベートのみを許可する場合、このNLBは閉じられ、Amazon VPC内からしかkube-apiserverにリクエストを送信できなくなる。</p>
+<p>プライベートサブネット内にワーカーNodeがある場合、Amazon VPCエンドポイントを経由して、kube-apiserverにリクエストを送信することになる。</p>
+<p>この状態で、<code>kubectl</code> コマンドでkube-apiserverにリクエストを送信できるようにする方法としては、以下のパターンがある。</p>
 <ul>
 <li>ローカルマシンから</li>
-<li>Amazon VPC 内の踏み台 Amazon EC2 から</li>
-<li>Amazon VPC 内の Cloud9 から</li>
+<li>Amazon VPC内の踏み台Amazon EC2から</li>
+<li>Amazon VPC内のCloud9から</li>
 </ul>
 <blockquote>
 <ul>
@@ -37485,9 +37485,9 @@
 <h2 id="04-on-amazon-ec2-amazon-ec2node">04. on Amazon EC2 (Amazon EC2ワーカーNode)<a class="headerlink" href="#04-on-amazon-ec2-amazon-ec2node" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-ec2node">Amazon EC2ワーカーNode<a class="headerlink" href="#amazon-ec2node" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-ec2node_1">▼ Amazon EC2ワーカーNodeとは<a class="headerlink" href="#amazon-ec2node_1" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 で稼働する Kubernetes のホストのこと。</p>
-<p>Fargate と比べてカスタマイズ性が高く、ワーカーNode 当たりで稼働する Pod 数に重み付けを設定できる。</p>
-<p>一方で、各 Amazon EC2 のハードウェアリソースの消費量をユーザーが管理しなければならないため、Kubernetes のホストの管理が大変である。</p>
+<p>Amazon EC2で稼働するKubernetesのホストのこと。</p>
+<p>Fargateと比べてカスタマイズ性が高く、ワーカーNode当たりで稼働するPod数に重み付けを設定できる。</p>
+<p>一方で、各Amazon EC2のハードウェアリソースの消費量をユーザーが管理しなければならないため、Kubernetesのホストの管理が大変である。</p>
 <p><img alt="eks_on_ec2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_on_ec2.png" /></p>
 <blockquote>
 <ul>
@@ -37497,10 +37497,10 @@
 <p><br></p>
 <h3 id="_24">セットアップ<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="iam">▼ IAMポリシー<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 ワーカーNode が、自身の所属する Cluster にリクエストを送信できるように、Amazon EC2 ワーカーNode に <code>AmazonEKSWorkerNodePolicy</code> を付与する必要がある。</p>
-<p>Amazon EC2 ワーカーNode 内の Pod が Amazon ECR からコンテナイメージをプルできるように、Amazon EC2 ワーカーNode に <code>AmazonEC2ContainerRegistryReadOnly</code> を付与する必要がある。</p>
-<p>これにより、Pod のコンテナごとに AWS の資格情報をマウントする必要がなくなる。</p>
-<p><code>aws-node</code> の Pod が AWS のネットワーク系の API にリクエストを送信できるように、IRSA 用の ServiceAccount に <code>AmazonEKS_CNI_Policy</code> (IPv4 の場合) または <code>AmazonEKS_CNI_IPv6_Policy</code> (IPv6 の場合) を付与する必要がある。</p>
+<p>Amazon EC2ワーカーNodeが、自身の所属するClusterにリクエストを送信できるように、Amazon EC2ワーカーNodeに <code>AmazonEKSWorkerNodePolicy</code> を付与する必要がある。</p>
+<p>Amazon EC2ワーカーNode内のPodがAmazon ECRからコンテナイメージをプルできるように、Amazon EC2ワーカーNodeに <code>AmazonEC2ContainerRegistryReadOnly</code> を付与する必要がある。</p>
+<p>これにより、PodのコンテナごとにAWSの資格情報をマウントする必要がなくなる。</p>
+<p><code>aws-node</code> のPodがAWSのネットワーク系のAPIにリクエストを送信できるように、IRSA用のServiceAccountに <code>AmazonEKS_CNI_Policy</code> (IPv4の場合) または <code>AmazonEKS_CNI_IPv6_Policy</code> (IPv6の場合) を付与する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html">https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html</a></li>
@@ -37544,13 +37544,13 @@
 <h3 id="_27">マネージド<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="node_5">▼ マネージドNodeグループ<a class="headerlink" href="#node_5" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Node グループ内の各 Amazon EC2 ワーカーNode の作成</li>
-<li>Node グループに紐づく AWS Auto Scaling グループの作成</li>
-<li>Amazon EC2 ワーカーNode の OS やミドルウェアの各種アップグレード</li>
+<li>Nodeグループ内の各Amazon EC2ワーカーNodeの作成</li>
+<li>Nodeグループに紐づくAWS Auto Scalingグループの作成</li>
+<li>Amazon EC2ワーカーNodeのOSやミドルウェアの各種アップグレード</li>
 </ul>
 <p>を自動化する。</p>
-<p>Node グループは、Amazon EC2 ワーカーNode が配置されるプライベートサブネットの AZ にこれをスケジューリングさせるように、AWS Auto Scaling グループに各 AZ を自動的に設定する。</p>
-<p>AWS Auto Scaling グループの機能を使用すれば、Amazon EC2 ワーカーNode の自動的な起動/停止やヘルスチェックを設定できる。</p>
+<p>Nodeグループは、Amazon EC2ワーカーNodeが配置されるプライベートサブネットのAZにこれをスケジューリングさせるように、AWS Auto Scalingグループに各AZを自動的に設定する。</p>
+<p>AWS Auto Scalingグループの機能を使用すれば、Amazon EC2ワーカーNodeの自動的な起動/停止やヘルスチェックを設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html</a></li>
@@ -37559,8 +37559,8 @@
 </ul>
 </blockquote>
 <h4 id="node_6">▼ Nodeグループの定期アクション<a class="headerlink" href="#node_6" title="Permanent link">&para;</a></h4>
-<p>同じ Node グループの Amazon EC2 ワーカーNode の定期アクションを設定する。</p>
-<p>Amazon EKS のテスト環境の請求料金を節約するため、昼間に通常の個数へスケールアウトし、夜間に <code>0</code> 個へスケールインするようにすれば、ワーカーNode を夜間だけ停止させられる。</p>
+<p>同じNodeグループのAmazon EC2ワーカーNodeの定期アクションを設定する。</p>
+<p>Amazon EKSのテスト環境の請求料金を節約するため、昼間に通常の個数へスケールアウトし、夜間に <code>0</code> 個へスケールインするようにすれば、ワーカーNodeを夜間だけ停止させられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html</a></li>
@@ -37568,8 +37568,8 @@
 </ul>
 </blockquote>
 <h4 id="aws-auto-scaling">▼ 起動テンプレートとAWS Auto Scalingグループとの紐付け<a class="headerlink" href="#aws-auto-scaling" title="Permanent link">&para;</a></h4>
-<p>マネージド Node グループは、あくまで Amazon EC2 Node のライフサイクルを管理するだけである。</p>
-<p>どのような Amazon EC2 Node を管理するのかは起動テンプレートと AWS Auto Scaling グループを使用して定義する必要がある。</p>
+<p>マネージドNodeグループは、あくまでAmazon EC2 Nodeのライフサイクルを管理するだけである。</p>
+<p>どのようなAmazon EC2 Nodeを管理するのかは起動テンプレートとAWS Auto Scalingグループを使用して定義する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/">https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/</a></li>
@@ -37580,12 +37580,12 @@
 <h3 id="_28">セルフマネージド<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <h4 id="node_7">▼ セルフマネージドNodeグループ<a class="headerlink" href="#node_7" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Node グループ内の各 Amazon EC2 ワーカーNode の作成</li>
-<li>Node グループに紐づく AWS Auto Scaling グループの作成</li>
-<li>Amazon EC2 ワーカーNode の OS やミドルウェアの各種アップグレード</li>
+<li>Nodeグループ内の各Amazon EC2ワーカーNodeの作成</li>
+<li>Nodeグループに紐づくAWS Auto Scalingグループの作成</li>
+<li>Amazon EC2ワーカーNodeのOSやミドルウェアの各種アップグレード</li>
 </ul>
 <p>をユーザーが管理する。</p>
-<p>AWS Auto Scaling グループの機能を使用すれば、Amazon EC2 ワーカーNode の自動的な起動/停止やヘルスチェックを設定できる。</p>
+<p>AWS Auto Scalingグループの機能を使用すれば、Amazon EC2ワーカーNodeの自動的な起動/停止やヘルスチェックを設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed">https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed</a></li>
@@ -37594,10 +37594,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="node_8">Node数の変更<a class="headerlink" href="#node_8" title="Permanent link">&para;</a></h3>
-<p>Node グループ (マネージド Node グループ、セルフマネージド Node グループ) では、希望数を変更することで現在の Node 数を変更できる。</p>
-<p>設定後、AWS Auto Scaling グループは希望数で設定した Node 数を維持する (Karpenter のドキュメントでは、これを『静的』と表現している)。</p>
-<p>希望数のほかにも最大数と最小数を設定できるが、これらは実際には機能しない。</p>
-<p>もし負荷の状況に応じてスケーリングしたい場合、Node のスケーリングツール (例：ClusterAutoscaler、Karpenter など) を使用しないと、最大数と最小数の設定に応じたスケーリングを実施してくれない。</p>
+<p>Nodeグループ (マネージドNodeグループ、セルフマネージドNodeグループ) では、希望数を変更することで現在のNode数を変更できる。</p>
+<p>設定後、AWS Auto Scalingグループは希望数で設定したNode数を維持する (Karpenterのドキュメントでは、これを『静的』と表現している)。</p>
+<p>希望数の他にも最大数と最小数を設定できるが、これらは実際には機能しない。</p>
+<p>もし負荷の状況に応じてスケーリングしたい場合、Nodeのスケーリングツール (例：ClusterAutoscaler、Karpenterなど) を使用しないと、最大数と最小数の設定に応じたスケーリングを実施してくれない。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/motani/items/b32f1607d34ae8e5bc00#%E6%A6%82%E8%A6%81">https://qiita.com/motani/items/b32f1607d34ae8e5bc00#%E6%A6%82%E8%A6%81</a></li>
@@ -37658,9 +37658,9 @@
 <p><br></p>
 <h3 id="amazon-ec2_1">Amazon EC2のヘルスチェック<a class="headerlink" href="#amazon-ec2_1" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-ec2_2">▼ Amazon EC2に関するヘルスチェック<a class="headerlink" href="#amazon-ec2_2" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 に関するヘルスチェック (例：Amazon EC2 の正常性) は、AWS Auto Scaling グループで設定できる。</p>
+<p>Amazon EC2に関するヘルスチェック (例：Amazon EC2の正常性) は、AWS Auto Scalingグループで設定できる。</p>
 <h4 id="node_11">▼ Nodeに関するヘルスチェック<a class="headerlink" href="#node_11" title="Permanent link">&para;</a></h4>
-<p>Node に関するヘルスチェック (例：Amazon EC2 内の kubelet の正常性) は、Amazon EKS アドオンの Node 監視エージェントで設定できる。</p>
+<p>Nodeに関するヘルスチェック (例：Amazon EC2内のkubeletの正常性) は、Amazon EKSアドオンのNode監視エージェントで設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.reddit.com/r/aws/comments/1hg998p/comment/m2hfdns/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">https://www.reddit.com/r/aws/comments/1hg998p/comment/m2hfdns/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button</a></li>
@@ -37671,21 +37671,21 @@
 <h2 id="04-03-amazon-ec2-node-ami">04-03. Amazon EC2 Node AMI<a class="headerlink" href="#04-03-amazon-ec2-node-ami" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-ec2nodeami">Amazon EC2ワーカーNodeの最適化AMI<a class="headerlink" href="#amazon-ec2nodeami" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-ec2nodeami_1">▼ Amazon EC2ワーカーNodeの最適化AMIとは<a class="headerlink" href="#amazon-ec2nodeami_1" title="Permanent link">&para;</a></h4>
-<p>任意の Amazon EC2 ワーカーNode を使用できるが、AWS が用意している最適化 AMI を選んだほうがよい。</p>
-<p>この AWS AMI には、Amazon EC2 が Amazon EKS と連携するために必要なソフトウェアがプリインストールされており、Amazon EC2 ワーカーNode をセットアップする手間が省ける。</p>
-<p>必ずしも、すべての Amazon EC2 ワーカーNode を同じ AWS AMI で構築する必要はない。</p>
-<p>Amazon EC2 ワーカーNode を種類ごとに異なる AWS AMI で作成し、特定のアプリケーションを含む Pod は特定の Amazon EC2 ワーカーNode にスケジューリングさせる (例：計算処理系アプリは Amazon EKS 最適化高速 AMI の Amazon EC2 ワーカーNode 上で動かす) といった方法でもよい。</p>
+<p>任意のAmazon EC2ワーカーNodeを使用できるが、AWSが用意している最適化AMIを選んだほうが良い。</p>
+<p>このAWS AMIには、Amazon EC2がAmazon EKSと連携するために必要なソフトウェアがプリインストールされており、Amazon EC2ワーカーNodeをセットアップする手間が省ける。</p>
+<p>必ずしも、全てのAmazon EC2ワーカーNodeを同じAWS AMIで構築する必要はない。</p>
+<p>Amazon EC2ワーカーNodeを種類ごとに異なるAWS AMIで作成し、特定のアプリケーションを含むPodは特定のAmazon EC2ワーカーNodeにスケジューリングさせる (例：計算処理系アプリはAmazon EKS最適化高速AMIのAmazon EC2ワーカーNode上で動かす) といった方法でもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html">https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html</a></li>
 </ul>
 </blockquote>
 <h4 id="amazon-eks-amazon-linux">▼ Amazon EKS 最適化 Amazon Linux<a class="headerlink" href="#amazon-eks-amazon-linux" title="Permanent link">&para;</a></h4>
-<p>Amazon EKS のための標準的な Amazon EC2 を作成できる。もっとも推奨である。</p>
-<p><code>aws ssm get-parameter</code> コマンドを使用すると、公式が提供するマシンコンテナイメージの ID を確認できる。</p>
-<p>注意点として、AWS AMI のマイナーバージョンは固定できるが、パッチバージョンは固定できない。</p>
-<p>そのため、パッチバージョンがアップグレードされるたびに、AWS AMI の ID は変わる。</p>
-<p>AWS AMI の ID を固定するためには、AWS AMI をダウンロードして自前で管理する必要がある。</p>
+<p>Amazon EKSのための標準的なAmazon EC2を作成できる。もっとも推奨である。</p>
+<p><code>aws ssm get-parameter</code> コマンドを使用すると、公式が提供するマシンコンテナイメージのIDを確認できる。</p>
+<p>注意点として、AWS AMIのマイナーバージョンは固定できるが、パッチバージョンは固定できない。</p>
+<p>そのため、パッチバージョンがアップグレードされる度に、AWS AMIのIDは変わる。</p>
+<p>AWS AMIのIDを固定するためには、AWS AMIをダウンロードして自前で管理する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>/aws/service/eks/optimized-ami/&lt;バージョン&gt;/amazon-linux-2/recommended/image_id<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
@@ -37699,12 +37699,12 @@
 </ul>
 </blockquote>
 <h4 id="amazon-eks-amazon-linux_1">▼ Amazon EKS 最適化高速 Amazon Linux<a class="headerlink" href="#amazon-eks-amazon-linux_1" title="Permanent link">&para;</a></h4>
-<p>GPU が搭載された Amazon EC2 や Amazon EC2 Inf1 インスタンスを作成できる。</p>
-<p>GPU が必要なアプリケーションの含む Pod (計算処理系、機械学習系のアプリケーション) と相性がよい。</p>
+<p>GPUが搭載されたAmazon EC2やAmazon EC2 Inf1インスタンスを作成できる。</p>
+<p>GPUが必要なアプリケーションの含むPod (計算処理系、機械学習系のアプリケーション) と相性が良い。</p>
 <h4 id="amazon-eks-arm-amazon-linux">▼ Amazon EKS 最適化 ARM Amazon Linux<a class="headerlink" href="#amazon-eks-arm-amazon-linux" title="Permanent link">&para;</a></h4>
-<p>ARM ベースのプロセッサーが搭載された Amazon EC2 を作成できる。</p>
+<p>ARMベースのプロセッサーが搭載されたAmazon EC2を作成できる。</p>
 <h4 id="amazon-eks-bottlerocket-ami">▼ Amazon EKS 最適化 Bottlerocket AMI<a class="headerlink" href="#amazon-eks-bottlerocket-ami" title="Permanent link">&para;</a></h4>
-<p>コンテナに特化した Amazon EC2 を作成できる。</p>
+<p>コンテナに特化したAmazon EC2を作成できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>/aws/service/bottlerocket/aws-k8s-&lt;バージョン&gt;/x86_64/latest/image_id<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span><span class="se">\</span>
@@ -37720,10 +37720,10 @@
 <p><br></p>
 <h3 id="amazon-ec2nodeami_2">Amazon EC2ワーカーNodeのカスタムAMI<a class="headerlink" href="#amazon-ec2nodeami_2" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-ec2nodeami_3">▼ Amazon EC2ワーカーNodeのカスタムAMIとは<a class="headerlink" href="#amazon-ec2nodeami_3" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 ワーカーNode の最適化 AMI ではない AWS AMI のこと。</p>
+<p>Amazon EC2ワーカーNodeの最適化AMIではないAWS AMIのこと。</p>
 <p><br></p>
 <h3 id="kubelet-configjson-kubeletconfiguration"><code>kubelet-config.json</code> ファイル (KubeletConfiguration)<a class="headerlink" href="#kubelet-configjson-kubeletconfiguration" title="Permanent link">&para;</a></h3>
-<p>Amazon EC2 ワーカーNode の kubelet を設定する。</p>
+<p>Amazon EC2ワーカーNodeのkubeletを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;kind&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;KubeletConfiguration&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;apiVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;kubelet.config.k8s.io/v1beta1&quot;</span><span class="p p-Indicator">,</span>
@@ -37770,9 +37770,9 @@
 <p><br></p>
 <h3 id="_29">ユーザーデータファイル<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <h4 id="_30">▼ ユーザーデータファイルとは<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 Node の起動時に任意のコマンドを実行できるようにする。</p>
-<p>また、セルフマネージド Node グループやマネージド Node グループにて、Amazon EC2 ワーカーNode の AWS AMI にカスタム AMI を使用したり、任意の AWS AMI で起動テンプレートを使用する場合、AWS 側で決められたコマンド (<code>bootstrap.sh</code> ファイル) を実行する必要がある。</p>
-<p>一方で、マネージド Node グループにて、起動テンプレートを使用せずに Amazon EC2 ワーカーNode を作成する場合、ユーザーデータファイルを自動で作成してくれるため、これは不要である。</p>
+<p>Amazon EC2 Nodeの起動時に任意のコマンドを実行できるようにする。</p>
+<p>また、セルフマネージドNodeグループやマネージドNodeグループにて、Amazon EC2ワーカーNodeのAWS AMIにカスタムAMIを使用したり、任意のAWS AMIで起動テンプレートを使用する場合、AWS側で決められたコマンド (<code>bootstrap.sh</code> ファイル) を実行する必要がある。</p>
+<p>一方で、マネージドNodeグループにて、起動テンプレートを使用せずにAmazon EC2ワーカーNodeを作成する場合、ユーザーデータファイルを自動で作成してくれるため、これは不要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/</a></li>
@@ -37781,8 +37781,8 @@
 </ul>
 </blockquote>
 <h4 id="bootstrapsh">▼ <code>bootstrap.sh</code> ファイル<a class="headerlink" href="#bootstrapsh" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 ワーカーNode のカスタム AMI に必要なファイルである。</p>
-<p>Amazon EC2 ワーカーNode 起動時のユーザーデータファイル内で、<code>bootstrap.sh</code> ファイルに決められたパラメーターを渡す必要がある。</p>
+<p>Amazon EC2ワーカーNodeのカスタムAMIに必要なファイルである。</p>
+<p>Amazon EC2ワーカーNode起動時のユーザーデータファイル内で、<code>bootstrap.sh</code> ファイルに決められたパラメーターを渡す必要がある。</p>
 <p>ユーザーデータファイル内で、<code>bootstrap.sh</code> ファイルにパラメーターを渡す必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -37802,7 +37802,7 @@
 <span class="w">  </span>--apiserver-endpoint<span class="w"> </span>https://*****.gr7.ap-northeast-1.eks.amazonaws.com<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--container-runtime<span class="w"> </span>containerd
 </code></pre></div>
-<p>なお、設定可能なすべてのパラメーターは、以下から確認できる。</p>
+<p>なお、設定可能な全てのパラメーターは、以下から確認できる。</p>
 <p>よく使用するパラメーター配下の通りである。</p>
 <table>
 <thead>
@@ -37876,9 +37876,9 @@
 </ul>
 </blockquote>
 <h4 id="amazon-ec2node_2">▼ Amazon EC2ワーカーNodeのコンテナイメージキャッシュ削除<a class="headerlink" href="#amazon-ec2node_2" title="Permanent link">&para;</a></h4>
-<p>kubelet は、Node のコンテナイメージのキャッシュを作成する。</p>
-<p>コンテナイメージのキャッシュは、kubelet によるガベージコレクションまたは Node の再作成で削除される。</p>
-<p>KubeletConfiguration の <code>--image-gc-high-threshold</code> オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。</p>
+<p>kubeletは、Nodeのコンテナイメージのキャッシュを作成する。</p>
+<p>コンテナイメージのキャッシュは、kubeletによるガベージコレクションまたはNodeの再作成で削除される。</p>
+<p>KubeletConfigurationの <code>--image-gc-high-threshold</code> オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。</p>
 <p><code>--image-gc-low-threshold</code> オプションで、解放しようとするディスク使用率を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>ディスク使用率が <code>70</code>%を超過した場合、ディスク使用率 <code>50</code>%分を解放する。</p>
@@ -37911,16 +37911,16 @@
 </ul>
 </blockquote>
 <h4 id="amazon-ec2nodegraceful-shutdown">▼ Amazon EC2ワーカーNodeのGraceful Shutdown<a class="headerlink" href="#amazon-ec2nodegraceful-shutdown" title="Permanent link">&para;</a></h4>
-<p>デフォルトでは、Amazon EC2 ワーカーNode は新しい Pod のスケジューリングを禁止した後、Pod の退避を待たずに停止してしまう。</p>
-<p>kubelet を使用して Amazon EC2 ワーカーNode の停止を待機し、Pod が終了する (ワーカーNode から退避させる) までの時間を稼ぐ。</p>
-<p>ワーカーNode の停止までの待機中に終了できた Pod は、<code>Failed</code> ステータスとなる。</p>
-<p>KubeletConfiguration の <code>--shutdown-grace-period</code> オプション (<code>shutdownGracePeriod</code>) で、ワーカーNode の停止を待機する期間を設定する。</p>
-<p>また <code>--shutdown-grace-period-critical-pods</code> オプション (<code>shutdownGracePeriodCriticalPods</code>) で、特に重要な Pod の終了のために待機する時間を設定する。</p>
+<p>デフォルトでは、Amazon EC2ワーカーNodeは新しいPodのスケジューリングを禁止した後、Podの退避を待たずに停止してしまう。</p>
+<p>kubeletを使用してAmazon EC2ワーカーNodeの停止を待機し、Podが終了する (ワーカーNodeから退避させる) までの時間を稼ぐ。</p>
+<p>ワーカーNodeの停止までの待機中に終了できたPodは、<code>Failed</code> ステータスとなる。</p>
+<p>KubeletConfigurationの <code>--shutdown-grace-period</code> オプション (<code>shutdownGracePeriod</code>) で、ワーカーNodeの停止を待機する期間を設定する。</p>
+<p>また <code>--shutdown-grace-period-critical-pods</code> オプション (<code>shutdownGracePeriodCriticalPods</code>) で、特に重要なPodの終了のために待機する時間を設定する。</p>
 <p><code>InhibitDelayMaxSec</code> には、<code>--shutdown-grace-period</code> オプションと同じ秒数 (単位は不要) を設定する。</p>
-<p>注意点として、この時間が長すぎると、ワーカーNode の停止の全体時間が長くなるため、結果的にローリングアップグレードで Node の所要時間も長くなってしまう。</p>
+<p>注意点として、この時間が長すぎると、ワーカーNodeの停止の全体時間が長くなるため、結果的にローリングアップグレードでNodeの所要時間も長くなってしまう。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ワーカーNode の停止を <code>6</code> 分だけ待機し、その後に停止を始める。</p>
-<p><code>6</code> 分のうち後半 <code>2</code> 分を、重要な Pod の停止に割り当てる。</p>
+<p>ワーカーNodeの停止を <code>6</code> 分だけ待機し、その後に停止を始める。</p>
+<p><code>6</code> 分のうち後半 <code>2</code> 分を、重要なPodの停止に割り当てる。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># ユーザーデータファイル</span>
@@ -37958,8 +37958,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <li><a href="https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown">https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown</a></li>
 </ul>
 </blockquote>
-<p><code>Failed</code> ステータスの Pod は、そのままでは削除できない。</p>
-<p>そのため、<code>Failed</code> ステータスな Pod を自動で削除してくれるツール (例：descheduler) や、以下のような削除コマンドを持つ CronJob を作成するとよい。</p>
+<p><code>Failed</code> ステータスのPodは、そのままでは削除できない。</p>
+<p>そのため、<code>Failed</code> ステータスなPodを自動で削除してくれるツール (例：descheduler) や、以下のような削除コマンドを持つCronJobを作成するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>ns<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>namespace<span class="w"> </span>-o<span class="w"> </span>name<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span>/<span class="w"> </span>-f<span class="w"> </span><span class="m">2</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$ns</span>
 <span class="w">  </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span><span class="nv">$ns</span><span class="w"> </span>-o<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
@@ -37975,8 +37975,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 <p><br></p>
 <h3 id="_31">組み込みミドルウェア<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <h4 id="_32">▼ 時刻調整処理<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
-<p>Node 間の時刻が異なると、時刻をもとにした処理 (例：認証) が失敗する可能性がある。</p>
-<p>各 Node には、時刻を正しく調整するミドルウェア (<code>configure-clocksource</code>) があらかじめインストールされている。</p>
+<p>Node間の時刻が異なると、時刻をもとにした処理 (例：認証) が失敗する可能性がある。</p>
+<p>各Nodeには、時刻を正しく調整するミドルウェア (<code>configure-clocksource</code>) があらかじめインストールされている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">################################################################################</span>
 <span class="c1">### Time #######################################################################</span>
 <span class="c1">################################################################################</span>
@@ -38010,11 +38010,11 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <p><br></p>
 <h2 id="04-04">04-04. セットアップ (コンソールの場合)<a class="headerlink" href="#04-04" title="Permanent link">&para;</a></h2>
 <h3 id="node_12">マネージドNodeグループの場合<a class="headerlink" href="#node_12" title="Permanent link">&para;</a></h3>
-<p>起動テンプレートを使用し、Amazon EC2 ワーカーNode を作成する。</p>
-<p>起動テンプレートのタグ付け機能を使用して Amazon EC2 にタグ付けでき、これは任意である。</p>
+<p>起動テンプレートを使用し、Amazon EC2ワーカーNodeを作成する。</p>
+<p>起動テンプレートのタグ付け機能を使用してAmazon EC2にタグ付けでき、これは任意である。</p>
 <h3 id="node_13">セルフマネージドNodeグループの場合<a class="headerlink" href="#node_13" title="Permanent link">&para;</a></h3>
-<p>任意の AWS Auto Scaling グループにて、起動テンプレートを使用して Amazon EC2 ワーカーNode を作成する。</p>
-<p>AWS Auto Scaling グループのタグ付け機能を使用して、<code>kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt;</code> タグ (値は <code>owned</code>) をつけ、Node グループに明示的に参加させる必要がある。</p>
+<p>任意のAWS Auto Scalingグループにて、起動テンプレートを使用してAmazon EC2ワーカーNodeを作成する。</p>
+<p>AWS Auto Scalingグループのタグ付け機能を使用して、<code>kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt;</code> タグ (値は <code>owned</code>) をつけ、Nodeグループに明示的に参加させる必要がある。</p>
 <p>なお、起動テンプレートも合わせて使用でき、これは任意である。</p>
 <blockquote>
 <ul>
@@ -38025,7 +38025,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <p><br></p>
 <h2 id="04-04-terraform">04-04. セットアップ (Terraformの場合)<a class="headerlink" href="#04-04-terraform" title="Permanent link">&para;</a></h2>
 <h3 id="node_14">マネージドNodeグループの場合<a class="headerlink" href="#node_14" title="Permanent link">&para;</a></h3>
-<p>起動テンプレートを使用し、Amazon EC2 ワーカーNode を作成する。</p>
+<p>起動テンプレートを使用し、Amazon EC2ワーカーNodeを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Nodeグループ</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_node_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -38083,7 +38083,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 </ul>
 </blockquote>
 <h3 id="node_15">セルフマネージドNodeグループの場合<a class="headerlink" href="#node_15" title="Permanent link">&para;</a></h3>
-<p>任意の AutoScaling にて、起動テンプレートを使用して Amazon EC2 ワーカーNode を作成する。</p>
+<p>任意のAutoScalingにて、起動テンプレートを使用してAmazon EC2ワーカーNodeを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
@@ -38120,17 +38120,17 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <p><br></p>
 <h3 id="_33">監視<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <h4 id="_34">▼ データポイント収集<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
-<p>Fargate ワーカーNode 内のメトリクスの元になるデータポイントを収集するうえで、Fargate ワーカーNode は DaemonSet に非対応である。</p>
+<p>FargateワーカーNode内のメトリクスの元になるデータポイントを収集するうえで、FargateワーカーNodeはDaemonSetに非対応である。</p>
 <p>そのため、データポイント収集コンテナをサイドカーコンテナとして配置する必要がある。</p>
-<p>収集ツールとして、OpenTelemetry をサポートしている。</p>
+<p>収集ツールとして、OpenTelemetryをサポートしている。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/">https://aws.amazon.com/jp/blogs/news/introducing-amazon-cloudwatch-container-insights-for-amazon-eks-fargate-using-aws-distro-for-opentelemetry/</a></li>
 </ul>
 </blockquote>
 <h4 id="_35">▼ ログ収集<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
-<p>Fargate ワーカーNode 内のログをフォワーディングするうえで、Fargate は DaemonSet に非対応のため、ログフォワーディングコンテナをサイドカーコンテナとして配置する必要がある。</p>
-<p>ロググーティングツールとして、FluentBit をサポートしている。</p>
+<p>FargateワーカーNode内のログをフォワーディングするうえで、FargateはDaemonSetに非対応のため、ログフォワーディングコンテナをサイドカーコンテナとして配置する必要がある。</p>
+<p>ロググーティングツールとして、FluentBitをサポートしている。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html">https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html</a></li>
@@ -38139,7 +38139,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ログフォワーディングコンテナのための Namespace を作成する。</p>
+<p>ログフォワーディングコンテナのためのNamespaceを作成する。</p>
 <p>名前は、必ず<code>aws-observability</code>とする。</p>
 </dd>
 </dl>
@@ -38158,7 +38158,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>aws-observability</code> 内で <code>aws-logging</code> という名前の ConfigMap を作成する。</p>
+<p><code>aws-observability</code> 内で <code>aws-logging</code> という名前のConfigMapを作成する。</p>
 <p>これより、ログフォワーディングコンテナとしてFluentBitコンテナが作成され、PodからAmazon CloudWatch Logsにログを送信できるようになる。</p>
 <p>名前は、必ず<code>aws-logging</code>とする。</p>
 </dd>
@@ -38188,7 +38188,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Fargate ワーカーNode に Amazon ECR や CloudWatch への認可スコープを持つポッド実行ロールを付与しておく。</p>
+<p>FargateワーカーNodeにAmazon ECRやCloudWatchへの認可スコープを持つポッド実行ロールを付与しておく。</p>
 <p>これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがAmazon ECRからコンテナイメージをプルできる様になる。</p>
 <p>一方で、Pod内のコンテナには認可スコープが付与されない。</p>
 <p>そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) に関しては、ServiceAccountとAWS IAMロールの紐付けが必要である。</p>
@@ -38207,7 +38207,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <p><br></p>
 <h2 id="05-02">05-02. セットアップ (コンソールの場合)<a class="headerlink" href="#05-02" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-ec2node_3">Amazon EC2ワーカーNodeとの比較<a class="headerlink" href="#amazon-ec2node_3" title="Permanent link">&para;</a></h3>
-<p>Amazon EC2 ワーカーNode と比較して、使用できない機能については、以下のリンクを参考にせよ。</p>
+<p>Amazon EC2ワーカーNodeと比較して、使用できない機能については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate.html">https://docs.aws.amazon.com/eks/latest/userguide/fargate.html</a></li>
@@ -38218,22 +38218,22 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <h3 id="fargatenode">FargateワーカーNode<a class="headerlink" href="#fargatenode" title="Permanent link">&para;</a></h3>
 <h4 id="fargatenode_1">▼ FargateワーカーNodeとは<a class="headerlink" href="#fargatenode_1" title="Permanent link">&para;</a></h4>
 <p><img alt="eks_on_fargate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_on_fargate.png" /></p>
-<p>Fargate 上で稼働する Kubernetes のホストのこと。</p>
-<p>Kubernetes のワーカーNode に相当する。</p>
-<p>Amazon EC2 ワーカーNode と比べてカスタマイズ性が低く、ワーカーNode 当たりで稼働する Pod 数は AWS が管理する。</p>
-<p>一方で、各 Amazon EC2 のハードウェアリソースの消費量をユーザーが管理しなくてもよいため、Kubernetes のホストの管理が楽である。</p>
+<p>Fargate上で稼働するKubernetesのホストのこと。</p>
+<p>KubernetesのワーカーNodeに相当する。</p>
+<p>Amazon EC2ワーカーNodeと比べてカスタマイズ性が低く、ワーカーNode当たりで稼働するPod数はAWSが管理する。</p>
+<p>一方で、各Amazon EC2のハードウェアリソースの消費量をユーザーが管理しなくてもよいため、Kubernetesのホストの管理が楽である。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.sunnycloud.jp/column/20210315-01/">https://www.sunnycloud.jp/column/20210315-01/</a></li>
 </ul>
 </blockquote>
 <h4 id="fargatenode_2">▼ FargateワーカーNodeを使用できない場合<a class="headerlink" href="#fargatenode_2" title="Permanent link">&para;</a></h4>
-<p>以下の場合は、Amazon EC2 ワーカーNode を使用する。</p>
+<p>以下の場合は、Amazon EC2ワーカーNodeを使用する。</p>
 <ul>
-<li>Fargate ワーカーNode では、DaemonSet が使えない。サイドカーを配置する必要がある。</li>
-<li>Fargate で設定可能な最大スペックを超えたスペックが必要である。</li>
-<li>EmptyDir Volume 以外が必要である。</li>
-<li>Fargate ワーカーNode では、サービスメッシュに AppMesh しか使えない。もし、AppMesh を使いたくない場合は、Amazon EC2 ワーカーNode を使用する。</li>
+<li>FargateワーカーNodeでは、DaemonSetが使えない。サイドカーを配置する必要がある。</li>
+<li>Fargateで設定可能な最大スペックを超えたスペックが必要である。</li>
+<li>EmptyDir Volume以外が必要である。</li>
+<li>FargateワーカーNodeでは、サービスメッシュにAppMeshしか使えない。もし、AppMeshを使いたくない場合は、Amazon EC2ワーカーNodeを使用する。</li>
 </ul>
 <blockquote>
 <ul>
@@ -38241,7 +38241,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 </ul>
 </blockquote>
 <h4 id="fargate">▼ Fargateプロファイル<a class="headerlink" href="#fargate" title="Permanent link">&para;</a></h4>
-<p>Fargate を設定する。</p>
+<p>Fargateを設定する。</p>
 <table>
 <thead>
 <tr>
@@ -38284,9 +38284,9 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <p><br></p>
 <h2 id="06">06. アップグレード<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_36">アップグレードとは<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
-<p>Amazon EKS Cluster にて、コントロールプレーンとデータプレーンをローリング方式でアップグレードする。</p>
-<p>AWS は IaaS のため、AWS AMI を指定すれば、Node の OS のアップグレードも実施してくれる。</p>
-<p>執筆時点 (2022/01/28) では、AWS の API を経由して <code>updateConfig</code> 値を設定すれば、アップグレード時のサージ数を設定できる。</p>
+<p>Amazon EKS Clusterにて、コントロールプレーンとデータプレーンをローリング方式でアップグレードする。</p>
+<p>AWSはIaaSのため、AWS AMIを指定すれば、NodeのOSのアップグレードも実施してくれる。</p>
+<p>執筆時点 (2022/01/28) では、AWSのAPIを経由して <code>updateConfig</code> 値を設定すれば、アップグレード時のサージ数を設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html">https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html</a></li>
@@ -38296,34 +38296,34 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <p><br></p>
 <h3 id="_37">アップグレードの仕組み<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <h4 id="_38">▼ データプレーンの場合<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
-<p>Amazon EKS Cluster のアップグレード時、以下の仕組みでデータプレーンのワーカーNode をローリングアップグレードする。</p>
-<p>また、Node グループに紐づく AWS Auto Scaling グループの AZ リバランシングの仕組みによって、既存のワーカーNode と同じ AZ でワーカーNode を再作成する。</p>
+<p>Amazon EKS Clusterのアップグレード時、以下の仕組みでデータプレーンのワーカーNodeをローリングアップグレードする。</p>
+<p>また、Nodeグループに紐づくAWS Auto ScalingグループのAZリバランシングの仕組みによって、既存のワーカーNodeと同じAZでワーカーNodeを再作成する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Node グループ単位でローリングアップグレードできるように、Amazon EKS Cluster のワーカーNode 数の設定 (Node 希望数、Node 最大数) を自動的に増加させる。</p>
+<p>Nodeグループ単位でローリングアップグレードできるように、Amazon EKS ClusterのワーカーNode数の設定 (Node希望数、Node最大数) を自動的に増加させる。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>旧ワーカーNode を残して、新しい AWS AMI を使用したワーカーNode を作成する。</p>
+<p>旧ワーカーNodeを残して、新しいAWS AMIを使用したワーカーNodeを作成する。</p>
 <p>旧ワーカーNodeが稼働しているAZで新ワーカーNodeを作成する。</p>
 <p>旧ワーカーNodeを残せるのは、あらかじめAmazon EKS ClusterのワーカーNode数の設定 (Node希望数、Node最大数) を増加させているためである。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>各 AZ で新ワーカーNode を正しく作成できることを検証する。</p>
+<p>各AZで新ワーカーNodeを正しく作成できることを検証する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>AZ リバランシングが成功すれば、旧ワーカーNode で Drain が開始され、Pod のスケジューリングが無効化される。</p>
+<p>AZリバランシングが成功すれば、旧ワーカーNodeでDrainが開始され、Podのスケジューリングが無効化される。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>新ワーカーNode 上で Pod をスケジューリングさせ直し、旧ワーカーNode を削除する。</p>
+<p>新ワーカーNode上でPodをスケジューリングさせ直し、旧ワーカーNodeを削除する。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>最終的に、アップグレード前のワーカーNode 数 (Node 希望数) に戻る。</p>
+<p>最終的に、アップグレード前のワーカーNode数 (Node希望数) に戻る。</p>
 </dd>
 </dl>
 <blockquote>
@@ -38336,20 +38336,20 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <p><br></p>
 <h3 id="_39">手順<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
 <h4 id="_40">▼ インプレース<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
-<p>Amazon EKS Cluster はおおよそ以下の方法でインプレースアップグレードする。</p>
+<p>Amazon EKS Clusterはおおよそ以下の方法でインプレースアップグレードする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>コントロールプレーン Node をアップグレードする。</p>
+<p>コントロールプレーンNodeをアップグレードする。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>ワーカーNode をアップグレードする。</p>
+<p>ワーカーNodeをアップグレードする。</p>
 <p>コントロールプレーン上のkube-apiserverのバージョンに応じた新しいAWS AMIを使用して、ワーカーNodeを再作成する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>ワーカーNode 上の Amazon EKS アドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNI など) をアップグレードする。</p>
+<p>ワーカーNode上のAmazon EKSアドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNIなど) をアップグレードする。</p>
 </dd>
 </dl>
 <blockquote>
@@ -38358,32 +38358,32 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 </ul>
 </blockquote>
 <h4 id="_41">▼ ブルー/グリーン<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
-<p>Amazon EKS Cluster はおおよそ以下の方法でブルー/グリーンアップグレードする。</p>
+<p>Amazon EKS Clusterはおおよそ以下の方法でブルー/グリーンアップグレードする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>新しいバージョン Amazon EKS クラスターを構築する。またマイクロサービスなどをデプロイする。</p>
+<p>新しいバージョンAmazon EKSクラスターを構築する。またマイクロサービスなどをデプロイする。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>このままだと、新旧の EKS クラスターでバッチサービスの実行が衝突する。</p>
+<p>このままだと、新旧のEKSクラスターでバッチサービスの実行が衝突する。</p>
 <p>そこで、<code>kubectl patch cronjobs foo-batch -p '{"spec" : {"suspend" : true }}'</code>を実行し、旧EKSクラスターのバッチサービスを止める。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>新しい Amazon EKS クラスターの Ingress Controller や Ingress Gateway の Pod に対して、ポートフォワーディングを実行し、アプリケーションを動作確認する。</p>
+<p>新しいAmazon EKSクラスターのIngress ControllerやIngress GatewayのPodに対して、ポートフォワーディングを実行し、アプリケーションを動作確認する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>既存の AWS ALB ターゲットグループにグリーン環境の Amazon EKS クラスターの Node を登録する。</p>
+<p>既存のAWS ALBターゲットグループにグリーン環境のAmazon EKSクラスターのNodeを登録する。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>既存の AWS ALB ターゲットグループからブルー環境の Amazon EKS クラスターの Node を解除する。</p>
+<p>既存のAWS ALBターゲットグループからブルー環境のAmazon EKSクラスターのNodeを解除する。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>ワーカーNode 上の Amazon EKS アドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNI など) をアップグレードする。</p>
+<p>ワーカーNode上のAmazon EKSアドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNIなど) をアップグレードする。</p>
 </dd>
 </dl>
 <p><br></p>
@@ -38407,7 +38407,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月27日 12:07:29 JST">2026-05-27</span>
   </span>
 
     

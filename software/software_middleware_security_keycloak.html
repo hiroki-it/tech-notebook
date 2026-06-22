@@ -34710,7 +34710,7 @@
 <p><br></p>
 <h2 id="01-keycloak">01. Keycloakとは<a class="headerlink" href="#01-keycloak" title="Permanent link">&para;</a></h2>
 <p>アプリケーションに代わって、認証／認可処理を実行する。</p>
-<p>認証／認可に関する API を公開し、認証時のアカウントの CRUD や、認可時のアカウントに対する権限スコープ付与ができる。</p>
+<p>認証／認可に関するAPIを公開し、認証時のアカウントのCRUDや、認可時のアカウントに対する権限スコープ付与ができる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.keycloak.org/docs-api/22.0.1/rest-api/index.html">https://www.keycloak.org/docs-api/22.0.1/rest-api/index.html</a></li>
@@ -34720,7 +34720,7 @@
 <p><br></p>
 <h2 id="01-02-keycloak">01-02. Keycloakの仕組み<a class="headerlink" href="#01-02-keycloak" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Keycloak は、認証処理サービス、Infinispan、アカウント管理用の RDBMS、といったコンポーネントから構成されている。</p>
+<p>Keycloakは、認証処理サービス、Infinispan、アカウント管理用のRDBMS、といったコンポーネントから構成されている。</p>
 <p><img alt="keycloak_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -34729,19 +34729,19 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">認証処理サービス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>ID プロバイダーとして、DB からセッションデータを取得し、認証処理を実施する。</p>
+<p>IDプロバイダーとして、DBからセッションデータを取得し、認証処理を実施する。</p>
 <p><br></p>
 <h3 id="infinispan">Infinispan<a class="headerlink" href="#infinispan" title="Permanent link">&para;</a></h3>
-<p>Keycloak からセッションデータを取得し、DB に永続化する。</p>
+<p>Keycloakからセッションデータを取得し、DBに永続化する。</p>
 <p><br></p>
 <h3 id="rdbms">RDBMS<a class="headerlink" href="#rdbms" title="Permanent link">&para;</a></h3>
 <p>セッションデータを保管する。</p>
 <p><br></p>
 <h2 id="01-03-keycloak">01-03. Keycloakの拡張性設計<a class="headerlink" href="#01-03-keycloak" title="Permanent link">&para;</a></h2>
 <h3 id="_4">クラスタリング設計<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>Keycloak では、クラスタリング構成を使用できる。</p>
-<p>Keycloak クラスターでは、JGroups は Infinispan クラスターインスタンス間でレプリケーション通信 (例：PING、TCPPING、JDBC_PING、DNS_PING、KUBE_PING など) を実施する。</p>
-<p>レプリケーション通信によって、Keycloak クラスター内の Infinispan クラスターインスタンス間でセッションデータを同期する。</p>
+<p>Keycloakでは、クラスタリング構成を使用できる。</p>
+<p>Keycloakクラスターでは、JGroupsはInfinispanクラスターインスタンス間でレプリケーション通信 (例：PING、TCPPING、JDBC_PING、DNS_PING、KUBE_PINGなど) を実施する。</p>
+<p>レプリケーション通信によって、Keycloakクラスター内のInfinispanクラスターインスタンス間でセッションデータを同期する。</p>
 <p><img alt="keycloak_clustering" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_clustering.png" /></p>
 <blockquote>
 <ul>
@@ -34753,8 +34753,8 @@
 <p><br></p>
 <h3 id="_5">クラスターインスタンス検出方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="tcpping">▼ TCPPING<a class="headerlink" href="#tcpping" title="Permanent link">&para;</a></h4>
-<p>固定された IP とポート番号を宛先情報として使用する。</p>
-<p><code>7800</code> 番ポート (以前は <code>7600</code> 番だった) を使用し、TCP プロトコルのレプリケーション通信を実施する。</p>
+<p>固定されたIPとポート番号を宛先情報として使用する。</p>
+<p><code>7800</code> 番ポート (以前は <code>7600</code> 番だった) を使用し、TCPプロトコルのレプリケーション通信を実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.keycloak.org/2019/05/keycloak-cluster-setup">https://www.keycloak.org/2019/05/keycloak-cluster-setup</a></li>
@@ -34762,9 +34762,9 @@
 </ul>
 </blockquote>
 <h4 id="jdbc_ping">▼ JDBC_PING<a class="headerlink" href="#jdbc_ping" title="Permanent link">&para;</a></h4>
-<p>動的な IP アドレスとポート番号を宛先情報として使用する。</p>
+<p>動的なIPアドレスとポート番号を宛先情報として使用する。</p>
 <p>クラスターインスタンスは自身の宛先情報をサービスレジストリに登録する (セルフ登録パターン) 。</p>
-<p><code>7800</code> 番 (以前は <code>7600</code> 番だった) と <code>57800</code> 番のポートを使用し、TCP プロトコルのレプリケーション通信を実施する。</p>
+<p><code>7800</code> 番 (以前は <code>7600</code> 番だった) と <code>57800</code> 番のポートを使用し、TCPプロトコルのレプリケーション通信を実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.keycloak.org/2019/05/keycloak-cluster-setup">https://www.keycloak.org/2019/05/keycloak-cluster-setup</a></li>
@@ -34773,14 +34773,14 @@
 </ul>
 </blockquote>
 <h4 id="dns_ping">▼ DNS_PING<a class="headerlink" href="#dns_ping" title="Permanent link">&para;</a></h4>
-<p>ドメインレジストラ (例：CoreDNS) 内の A レコードや SVC レコードを宛先情報として使用する。</p>
+<p>ドメインレジストラ (例：CoreDNS) 内のAレコードやSVCレコードを宛先情報として使用する。</p>
 <p>ドメインレジストラはクラスターインスタンスの宛先情報をサービスレジストリに登録する (サードパーティ登録パターン) 。</p>
-<p><code>7800</code> 番ポート (以前は <code>7600</code> 番だった) を使用し、TCP プロトコルのレプリケーション通信を実施する。</p>
+<p><code>7800</code> 番ポート (以前は <code>7600</code> 番だった) を使用し、TCPプロトコルのレプリケーション通信を実施する。</p>
 <ul>
-<li>Kubernetes 環境で Headless Service を作成する</li>
-<li>Keycloak の環境変数を設定する<ul>
+<li>Kubernetes環境でHeadless Serviceを作成する</li>
+<li>Keycloakの環境変数を設定する<ul>
 <li>KC_CACHE_STACK=kubernetes</li>
-<li>JAVA_OPTS_APPEND=-Djgroups.dns.query=<Headless Service の DNS 名></li>
+<li>JAVA_OPTS_APPEND=-Djgroups.dns.query=<Headless ServiceのDNS名></li>
 </ul>
 </li>
 </ul>
@@ -34801,7 +34801,7 @@
 <p><br></p>
 <h3 id="_6">性能設計<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 性能設計<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Keycloak は CPU とメモリを使用する。</p>
+<p>KeycloakはCPUとメモリを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/high_availability_guide/concepts-memory-and-cpu-sizing-#concepts-memory-and-cpu-sizing-calculation-example">https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/high_availability_guide/concepts-memory-and-cpu-sizing-#concepts-memory-and-cpu-sizing-calculation-example</a></li>
@@ -34809,12 +34809,12 @@
 </ul>
 </blockquote>
 <h4 id="cpu">▼ CPU<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
-<p>最大リクエスト数 (1 秒間にどのくらいのリクエストを処理できるのか) に影響する。</p>
+<p>最大リクエスト数 (1秒間にどのくらいのリクエストを処理できるのか) に影響する。</p>
 <p><strong>設定例</strong></p>
 <ul>
-<li>1 秒あたり 24 回のログインリクエスト ➡️ 3 vCPU</li>
-<li>1 秒あたり 450 回のクライアント資格情報の付与処理 ➡️ 1 vCPU</li>
-<li>350 回のリクエストのリフレッシュトークン ➡️ 1 vCPU</li>
+<li>1秒あたり24回のログインリクエスト ➡️ 3 vCPU</li>
+<li>1秒あたり450回のクライアント資格情報の付与処理 ➡️ 1 vCPU</li>
+<li>350回のリクエストのリフレッシュトークン ➡️ 1 vCPU</li>
 </ul>
 <blockquote>
 <ul>
@@ -34825,9 +34825,9 @@
 <h4 id="_8">▼ メモリ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>最大セッション数 (最大何人が同時にログイン状態になれるのか) に影響する。</p>
 <p><strong>設定例</strong></p>
-<p>1000 MB を設定し、余剰分を増設する。</p>
+<p>1000 MBを設定し、余剰分を増設する。</p>
 <ul>
-<li>50000 のアクティブセッション用 ➡️ 余剰 250 MB</li>
+<li>50000のアクティブセッション用 ➡️ 余剰 250 MB</li>
 </ul>
 <blockquote>
 <ul>
@@ -34851,8 +34851,8 @@
 <p><br></p>
 <h2 id="02-02">02-02. 認証<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="realm">Realm<a class="headerlink" href="#realm" title="Permanent link">&para;</a></h3>
-<p>Keycloak では、Admin アカウントの認証は master realm で、それ以外はユーザー定義の realm、で管理する。</p>
-<p>master realm でログイン後、ユーザー定義の realm を作成するとよい。</p>
+<p>Keycloakでは、Adminアカウントの認証はmaster realmで、それ以外はユーザー定義のrealm、で管理する。</p>
+<p>master realmでログイン後、ユーザー定義のrealmを作成すると良い。</p>
 <blockquote>
 <ul>
 <li><a href="https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm">https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm</a></li>
@@ -34865,9 +34865,9 @@
 <h4 id="x509">▼ X509証明書の場合<a class="headerlink" href="#x509" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <h4 id="jwt">▼ JWTの場合<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h4>
-<p>Keycloak クライアントは、『ヘッダー』『ペイロード』『署名』のそれぞれの JSON 型データを <code>base64</code> 方式によってエンコードし、ドットでつなぐ。</p>
-<p>これらの処理によって、JWT を作成する。</p>
-<p>その後、Keycloak の認可エンドポイントに JWT を送信する。</p>
+<p>Keycloakクライアントは、『ヘッダー』『ペイロード』『署名』のそれぞれのJSON型データを <code>base64</code> 方式によってエンコードし、ドットでつなぐ。</p>
+<p>これらの処理によって、JWTを作成する。</p>
+<p>その後、Keycloakの認可エンドポイントにJWTを送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0">https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0</a></li>
@@ -34942,8 +34942,8 @@
 <h2 id="03">03. エンドポイント<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="oidc_2">OIDC<a class="headerlink" href="#oidc_2" title="Permanent link">&para;</a></h3>
 <h4 id="_16">▼ ディスカバリーエンドポイント<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>すべての設定を取得できる。</p>
-<p>事前に作成したユーザー定義の realm を設定する。</p>
+<p>全ての設定を取得できる。</p>
+<p>事前に作成したユーザー定義のrealmを設定する。</p>
 <div class="highlight"><pre><span></span><code>/realms/&lt;realm名&gt;/.well-known/openid-configuration
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/.well-known/openid-configuration
@@ -34980,7 +34980,7 @@
 <span class="o">}</span>
 </code></pre></div>
 <h4 id="issuer">▼ / (issuerエンドポイント)<a class="headerlink" href="#issuer" title="Permanent link">&para;</a></h4>
-<p>JWT トークンの発行元 ID プロバイダーの識別子である。</p>
+<p>JWTトークンの発行元IDプロバイダーの識別子である。</p>
 <p>クライアント側では <code>authority</code> 値として指定する。</p>
 <div class="highlight"><pre><span></span><code>GET<span class="w"> </span>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;
 </code></pre></div>
@@ -34991,7 +34991,7 @@
 </blockquote>
 <h4 id="auth">▼ /auth (認可エンドポイント)<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h4>
 <p>アプリケーションがブラウザ経由で接続するエンドポイントである。</p>
-<p>Keycloak のほかのエンドポイントとは異なり、インターネットから接続できるように公開する必要がある。</p>
+<p>Keycloakの他のエンドポイントとは異なり、インターネットから接続できるように公開する必要がある。</p>
 <div class="highlight"><pre><span></span><code>GET<span class="w"> </span>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/auth
 </code></pre></div>
 <blockquote>
@@ -35011,7 +35011,7 @@
 </blockquote>
 <h4 id="introspect">▼ /introspect (イントロスペクションエンドポイント)<a class="headerlink" href="#introspect" title="Permanent link">&para;</a></h4>
 <p>アクセストークンの有効期限が失効しているかどうかを検証する。</p>
-<p>(JWKs エンドポイントとの違いがややこしい)</p>
+<p>(JWKsエンドポイントとの違いがややこしい)</p>
 <div class="highlight"><pre><span></span><code>POST<span class="w"> </span>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/token/introspect
 </code></pre></div>
 <blockquote>
@@ -35020,9 +35020,9 @@
 </ul>
 </blockquote>
 <h4 id="token">▼ /token<a class="headerlink" href="#token" title="Permanent link">&para;</a></h4>
-<p>フローに応じたトークン (アクセストークン、ID トークン) や認可コードを取得できる。</p>
-<p>また、Token Exchange を使用すると新しいトークンに交換したり、別の ID プロバイダーのトークンに変換できる。</p>
-<p>なお、Keycloak は JWT 仕様のアクセストークンを採用している。</p>
+<p>フローに応じたトークン (アクセストークン、IDトークン) や認可コードを取得できる。</p>
+<p>また、Token Exchangeを使用すると新しいトークンに交換したり、別のIDプロバイダーのトークンに変換できる。</p>
+<p>なお、KeycloakはJWT仕様のアクセストークンを採用している。</p>
 <div class="highlight"><pre><span></span><code>GET<span class="w"> </span>https://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/token
 </code></pre></div>
 <blockquote>
@@ -35057,7 +35057,7 @@
 <h2 id="04-slo">04. SLO：シングルログアウト<a class="headerlink" href="#04-slo" title="Permanent link">&para;</a></h2>
 <h3 id="_17">バックチャネル<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="id">▼ IDプロバイダーへのリクエスト<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
-<p>アプリケーションは、ID プロバイダーのログアウトエンドポイント (<code>/logout</code>) に POST リクエストを送信する。</p>
+<p>アプリケーションは、IDプロバイダーのログアウトエンドポイント (<code>/logout</code>) にPOSTリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
 <span class="c1"># IDプロバイダーのログアウトエンドポイント</span>
 <span class="l l-Scalar l-Scalar-Plain">POST /realms/&lt;realm名&gt;/protocol/openid-connect/logout HTTP/1.1</span>
@@ -35097,8 +35097,8 @@
 </ul>
 </blockquote>
 <h4 id="_18">▼ アプリケーションへのリクエスト<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>ID プロバイダーは、バックエンドアプリケーションのバックチャネルログアウトエンドポイント (<code>/k_logout</code>) に POST リクエストを送信する。</p>
-<p>すべてのアプリケーションに対して、この処理を繰り返す。</p>
+<p>IDプロバイダーは、バックエンドアプリケーションのバックチャネルログアウトエンドポイント (<code>/k_logout</code>) にPOSTリクエストを送信する。</p>
+<p>全てのアプリケーションに対して、この処理を繰り返す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
 <span class="c1"># バックエンドアプリケーションのバックチャネルログアウトエンドポイント</span>
 <span class="l l-Scalar l-Scalar-Plain">POST /k_logout HTTP/1.1</span>
@@ -35109,9 +35109,9 @@
 <span class="nn">---</span>
 <span class="l l-Scalar l-Scalar-Plain">logout_token=eyJhbGciOiJSUzI1NiIs...zspo4weMQfU-1jL0DxSg</span>
 </code></pre></div>
-<p>POST リクエストには、JWT トークン (たぶん ID トークン) が含まれている。</p>
-<p>ID トークンには、アプリケーション間で共有しているクライアントのセッション ID が含まれてする。</p>
-<p>Keycloak は、このセッション ID でログアウトすべきクライアントを判定し、認証処理を実行する。</p>
+<p>POSTリクエストには、JWTトークン (たぶんIDトークン) が含まれている。</p>
+<p>IDトークンには、アプリケーション間で共有しているクライアントのセッションIDが含まれてする。</p>
+<p>Keycloakは、このセッションIDでログアウトすべきクライアントを判定し、認証処理を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;edfd2bf0-1f2d-4875-a4b1-2752caa07ee1-1606363972255&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;expiration&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1606364002</span><span class="p p-Indicator">,</span>
@@ -35130,7 +35130,7 @@
 </ul>
 </blockquote>
 <h4 id="id_1">▼ IDプロバイダーからのレスポンス<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h4>
-<p>ID プロバイダーのログアウトエンドポイントは、アプリケーションにレスポンスを送信する。</p>
+<p>IDプロバイダーのログアウトエンドポイントは、アプリケーションにレスポンスを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># レスポンス</span>
 <span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 204 No Content</span>
 </code></pre></div>
@@ -35143,7 +35143,7 @@
 <p><br></p>
 <h3 id="_19">フロントチャネル<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="id_2">▼ IDプロバイダーへのリクエスト<a class="headerlink" href="#id_2" title="Permanent link">&para;</a></h4>
-<p>ブラウザは、ID プロバイダーのログアウトエンドポイント (<code>/logout</code>) に GET リクエストを送信する。</p>
+<p>ブラウザは、IDプロバイダーのログアウトエンドポイント (<code>/logout</code>) にGETリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リクエスト</span>
 <span class="c1"># IDプロバイダーのログアウトエンドポイント</span>
 <span class="l l-Scalar l-Scalar-Plain">GET http://&lt;Keycloakのドメイン名&gt;/realms/&lt;realm名&gt;/protocol/openid-connect/logout?id_token_hint=eyJhbGciOiJS...RE2AZmGgKJAj-HlHw&amp;post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Flogout%2Fcomplete&amp;state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81</span>
@@ -35177,7 +35177,7 @@
 </ul>
 </blockquote>
 <h4 id="id_3">▼ IDプロバイダーからのレスポンス<a class="headerlink" href="#id_3" title="Permanent link">&para;</a></h4>
-<p>ID プロバイダーのログアウトエンドポイントは、ブラウザにレスポンスを送信する。</p>
+<p>IDプロバイダーのログアウトエンドポイントは、ブラウザにレスポンスを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># レスポンス</span>
 <span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 307 Temporary Redirect</span>
 <span class="l l-Scalar l-Scalar-Plain">http://localhost:8000/logout/complete?state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81</span>
@@ -35223,7 +35223,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月26日 13:16:32 JST">2026-03-26</span>
   </span>
 
     

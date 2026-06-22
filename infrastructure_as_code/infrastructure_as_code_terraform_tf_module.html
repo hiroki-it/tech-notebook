@@ -34117,7 +34117,7 @@
 <h4 id="terraform_2">▼ <code>terraform</code> ブロックとは<a class="headerlink" href="#terraform_2" title="Permanent link">&para;</a></h4>
 <p>ルートモジュールで、<code>terraform</code> コマンドの実行時に、エントリーポイントとして動作する。</p>
 <h4 id="required_providers">▼ required_providers<a class="headerlink" href="#required_providers" title="Permanent link">&para;</a></h4>
-<p>AWS や Google Cloud など、使用するプロバイダを定義する。</p>
+<p>AWSやGoogle Cloudなど、使用するプロバイダを定義する。</p>
 <p>プロバイダによって、異なる <code>resource</code> タイプが提供される。</p>
 <p>一番最初に読みこまれるファイルのため、通常変数やモジュール化などが行えない。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -34139,10 +34139,10 @@
 </code></pre></div>
 <h4 id="backend">▼ <code>backend</code> ブロック<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h4>
 <p>インフラの状態ファイル (<code>tfstate</code> ファイル) を管理する場所を設定する。</p>
-<p>S3 などの実インフラで管理する場合、資格情報を設定する必要がある。</p>
-<p>代わりに、<code>terraform init</code> コマンド実行時に指定してもよい。</p>
+<p>S3などの実インフラで管理する場合、資格情報を設定する必要がある。</p>
+<p>代わりに、<code>terraform init</code> コマンド実行時に指定しても良い。</p>
 <p>デフォルト値は <code>local</code> である。</p>
-<p>通常は変数を使用できず、ハードコーディングする必要がある。そのため、値を動的に変更したい場合は、ローカルマシンでは <code>providers.tf</code> ファイルの <code>backend</code> オプションを参照し、CD のなかで <code>terraform init</code> コマンドのオプションを使用して値を渡すようにする。</p>
+<p>通常は変数を使用できず、ハードコーディングする必要がある。そのため、値を動的に変更したい場合は、ローカルマシンでは <code>providers.tf</code> ファイルの <code>backend</code> オプションを参照し、CDの中で <code>terraform init</code> コマンドのオプションを使用して値を渡すようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.terraform.io/language/settings/backends/s3">https://www.terraform.io/language/settings/backends/s3</a></li>
@@ -34177,7 +34177,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>どのユーザーもバケット内のオブジェクトを削除できないように、ポリシーを設定しておくとよい。</p>
+<p>どのユーザーもバケット内のオブジェクトを削除できないように、ポリシーを設定しておくと良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2008-10-17&quot;</span><span class="p p-Indicator">,</span>
@@ -34195,7 +34195,7 @@
 <p><br></p>
 <h3 id="provider"><code>provider</code> ブロック<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h3>
 <h4 id="provider_1">▼ <code>provider</code> ブロックとは<a class="headerlink" href="#provider_1" title="Permanent link">&para;</a></h4>
-<p>ルートモジュールで、Terraform で操作するクラウドインフラベンダーを設定する。</p>
+<p>ルートモジュールで、Terraformで操作するクラウドインフラベンダーを設定する。</p>
 <p>ベンダーでのアカウント認証のため、資格情報を渡す必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
@@ -34268,7 +34268,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>PagerDuty の状態を Amazon S3 バケットで管理する場合。</p>
+<p>PagerDutyの状態をAmazon S3バケットで管理する場合。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;s3&quot;</span><span class="w"> </span><span class="p">{}</span>
@@ -34325,7 +34325,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="default_tags">▼ default_tags<a class="headerlink" href="#default_tags" title="Permanent link">&para;</a></h4>
-<p>Terraform で作成するリソースに一括してタグを設定できる。</p>
+<p>Terraformで作成するリソースに一括してタグを設定できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
@@ -34357,7 +34357,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>反対に、default_tags を無効化する <code>provider</code> ブロックを定義しておくとよい。</p>
+<p>反対に、default_tagsを無効化する <code>provider</code> ブロックを定義しておくと良い。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nb">required_providers</span><span class="w"> </span><span class="p">{</span>
@@ -34493,8 +34493,8 @@
 </code></pre></div>
 <h4 id="_6">▼ リモートモジュールをコールする場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>リモートモジュールをコールし、オプションを設定する。</p>
-<p>外部リポジトリとしては、GitHub、Terraform レジストリ、Amazon S3、Google Cloud Storage などを指定できる。</p>
-<p>リポジトリの認証時にベーシック認証や SSH 公開鍵認証で接続できるが、鍵の登録が不要なベーシック認証のほうが簡単である。</p>
+<p>外部リポジトリとしては、GitHub、Terraformレジストリ、Amazon S3、Google Cloud Storageなどを指定できる。</p>
+<p>リポジトリの認証時にベーシック認証やSSH公開鍵認証で接続できるが、鍵の登録が不要なベーシック認証のほうが簡単である。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
@@ -34572,7 +34572,7 @@
 <li><a href="https://stackoverflow.com/a/69226878">https://stackoverflow.com/a/69226878</a></li>
 </ul>
 </blockquote>
-<p>特定のコミット ID を指定できる。</p>
+<p>特定のコミットIDを指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
 <span class="c1"># ---------------------------------------------</span>
@@ -34658,7 +34658,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan
 <span class="p">]</span>
 </code></pre></div>
 <h4 id="tf_var_">▼ <code>TF_VAR_&lt;環境変数名&gt;</code><a class="headerlink" href="#tf_var_" title="Permanent link">&para;</a></h4>
-<p>環境変数としてエクスポートしておくと自動的に読み込まれる。<code>&lt;環境変数名&gt;</code> の文字が、実際の環境変数名として Terraform に渡される。</p>
+<p>環境変数としてエクスポートしておくと自動的に読み込まれる。<code>&lt;環境変数名&gt;</code> の文字が、実際の環境変数名としてTerraformに渡される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>printenv
 
 <span class="nv">TF_VAR_ecr_version_tag</span><span class="o">=</span>foo
@@ -34668,7 +34668,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan
 <h3 id="_9">チャイルドモジュールとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ チャイルドモジュールとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>ルートモジュールから使用するモジュールのこと。</p>
-<p>Terraform の <code>2</code> 個以上のブロックをパッケージ化することにより、複数の <code>resource</code> ブロックをまとめ、<code>1</code> 個の <code>resource</code> ブロックのように扱う。</p>
+<p>Terraformの <code>2</code> 個以上のブロックをパッケージ化することにより、複数の <code>resource</code> ブロックをまとめ、<code>1</code> 個の <code>resource</code> ブロックのように扱う。</p>
 <p>チャイルドモジュール内でチャイルドモジュールを作成すると、チャイルドモジュール内に <code>provider</code> ブロックを定義することになり、チャイルドモジュールを削除できない問題になる。</p>
 <p>そのため、チャイルドモジュール内でチャイルドモジュールを作成しないようにする。</p>
 <blockquote>
@@ -34679,7 +34679,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan
 </blockquote>
 <h4 id="_11">▼ ローカルモジュール<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>ルートモジュールと同じリポジトリにあるチャイルドモジュールのこと。</p>
-<p>任意の <code>resource</code> ブロックを含めてよいわけではなく、同じ責務を持つ <code>resource</code> ブロックをまとめ、凝集度が高くなるようにする。</p>
+<p>任意の <code>resource</code> ブロックを含めて良いわけではなく、同じ責務を持つ <code>resource</code> ブロックをまとめ、凝集度が高くなるようにする。</p>
 <p>ローカルモジュール間で変数を受け渡すときは、必ずルートモジュールを経由し、ローカルモジュール内でローカルモジュールをコールすることはしない。</p>
 <blockquote>
 <ul>
@@ -34691,7 +34691,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan
 <p>パブリックに公開されている場合は、特に『パブリッシュモジュール』ともいう。</p>
 <p>モジュール内の処理を追うのが大変になるため、多用しない。</p>
 <p>ドキュメントを確認すれば、いずれの <code>resource</code> ブロックがリモートモジュールに含まれているかがわかる。</p>
-<p>任意の <code>resource</code> ブロックを含めてよいわけではなく、同じ責務を持つ <code>resource</code> ブロックをまとめ、凝集度が高くなるようにする。</p>
+<p>任意の <code>resource</code> ブロックを含めて良いわけではなく、同じ責務を持つ <code>resource</code> ブロックをまとめ、凝集度が高くなるようにする。</p>
 <p>リモートモジュール間で変数を受け渡すときは、必ずルートモジュールを経由し、リモートモジュール内でリモートモジュールをコールすることはしない。</p>
 <p>また、相互依存による循環参照エラーが起こるため、ローカルモジュール内でリモートモジュールをコールするようなことはせず、ルートモジュールでリモートモジュールを直接的にコールする。</p>
 <blockquote>
@@ -34721,7 +34721,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>plan
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
   </span>
 
     

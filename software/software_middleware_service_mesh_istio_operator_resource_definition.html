@@ -34307,12 +34307,12 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ チャートとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。</p>
-<p>プロファイルは、設定済みの IstioOperator のチャートであり、<code>istioctl</code> コマンドインストール時、<code>manifests</code> ディレクトリ以下に同梱される。</p>
+<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
+<p>プロファイルは、設定済みのIstioOperatorのチャートであり、<code>istioctl</code> コマンドインストール時、<code>manifests</code> ディレクトリ以下に同梱される。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p><code>istioctl</code> コマンドで IstioOperator を指定する。IstioOperator は、デフォルト値は <code>istio-system</code> に Istio リソースを作成するようになっている。</p>
+<p><code>istioctl</code> コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルト値は <code>istio-system</code> にIstioリソースを作成するようになっている。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>operator<span class="w"> </span>init
@@ -34330,7 +34330,7 @@ Operator<span class="w"> </span>controller<span class="w"> </span>will<span clas
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>IstioOperator が定義されたマニフェストを、<code>istioctl</code> コマンドまたは <code>kubectl</code> コマンドを使用して、Istio リソースを作成する。</p>
+<p>IstioOperatorが定義されたマニフェストを、<code>istioctl</code> コマンドまたは <code>kubectl</code> コマンドを使用して、Istioリソースを作成する。</p>
 <p>その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。<code>kubectl apply</code>コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。</p>
 </dd>
 </dl>
@@ -34355,7 +34355,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 </ul>
 </blockquote>
 <h4 id="_4">▼ チャートとして<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。</p>
+<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
 <p>チャートは、<code>istioctl</code> コマンドインストール時の <code>manifests</code> ディレクトリ以下に同梱されている。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>manifests/charts/istio-operator<span class="w"> </span>-n<span class="w"> </span>istio-operator<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
@@ -34379,7 +34379,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <h2 id="03-spec">03. spec<a class="headerlink" href="#03-spec" title="Permanent link">&para;</a></h2>
 <h3 id="speccomponent">.spec.component<a class="headerlink" href="#speccomponent" title="Permanent link">&para;</a></h3>
 <h4 id="component">▼ componentとは<a class="headerlink" href="#component" title="Permanent link">&para;</a></h4>
-<p>IstioOperator 管理で Istio リソースを作成する。</p>
+<p>IstioOperator管理でIstioリソースを作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&amp;locale=en">https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&amp;locale=en</a></li>
@@ -34387,8 +34387,8 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 </ul>
 </blockquote>
 <h4 id="componentk8s">▼ <code>&lt;component名&gt;</code>.k8s<a class="headerlink" href="#componentk8s" title="Permanent link">&para;</a></h4>
-<p>各 component が共通的に持つ設定項目である。</p>
-<p>各種 Kubernetes リソースと同じ設定値を拡張機能として設定できる。</p>
+<p>各componentが共通的に持つ設定項目である。</p>
+<p>各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。</p>
 <p>ただし、執筆時点 (2022/06/04) では、これを使用することは非推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
@@ -34417,8 +34417,8 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 </code></pre></div>
 <h4 id="base">▼ base<a class="headerlink" href="#base" title="Permanent link">&para;</a></h4>
-<p>base コンポーネントのオプションを設定する。</p>
-<p>base コンポーネントを有効化しないと、カスタムリソースを作成できない。</p>
+<p>baseコンポーネントのオプションを設定する。</p>
+<p>baseコンポーネントを有効化しないと、カスタムリソースを作成できない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34436,7 +34436,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 </ul>
 </blockquote>
 <h4 id="cni">▼ cni<a class="headerlink" href="#cni" title="Permanent link">&para;</a></h4>
-<p>istio-cni コンポーネントのオプションを設定する。</p>
+<p>istio-cniコンポーネントのオプションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34454,8 +34454,8 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 </ul>
 </blockquote>
 <h4 id="egressgateways">▼ egressGateways<a class="headerlink" href="#egressgateways" title="Permanent link">&para;</a></h4>
-<p>IstioOperator で管理する Istio Egress Gateway のオプションを設定する。</p>
-<p>Istio Egress Gateway を直接的に作成するのではなく、IstioOperator に作成させる。</p>
+<p>IstioOperatorで管理するIstio Egress Gatewayのオプションを設定する。</p>
+<p>Istio Egress Gatewayを直接的に作成するのではなく、IstioOperatorに作成させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34467,7 +34467,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-egressgateway</span>
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
-<p><code>.spec.egressGateways.k8s</code> キーで Service の定義を設定できるが、これは非推奨である。</p>
+<p><code>.spec.egressGateways.k8s</code> キーでServiceの定義を設定できるが、これは非推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34488,8 +34488,8 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">                </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 </code></pre></div>
 <h4 id="ingressgateways">▼ ingressGateways<a class="headerlink" href="#ingressgateways" title="Permanent link">&para;</a></h4>
-<p>IstioOperator で管理する Istio Ingress Gateway のオプションを設定する。</p>
-<p>Istio Ingress Gateway を直接的に作成するのではなく、IstioOperator に作成させる。</p>
+<p>IstioOperatorで管理するIstio Ingress Gatewayのオプションを設定する。</p>
+<p>Istio Ingress Gatewayを直接的に作成するのではなく、IstioOperatorに作成させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34501,7 +34501,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-ingressgateway</span>
 <span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
-<p><code>.spec.ingressGateways.k8s</code> キーで Service の定義を設定できるが、これは非推奨である。</p>
+<p><code>.spec.ingressGateways.k8s</code> キーでServiceの定義を設定できるが、これは非推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34584,7 +34584,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.*.*.*</span>
 </code></pre></div>
-<p>補足として、以下の方法でユーザー定義の Istio Ingress Gateway を作成できる (かなり大変) 。</p>
+<p>補足として、以下の方法でユーザー定義のIstio Ingress Gatewayを作成できる (かなり大変) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d">https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d</a></li>
@@ -34592,7 +34592,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 </ul>
 </blockquote>
 <h4 id="istiodremote">▼ istiodRemote<a class="headerlink" href="#istiodremote" title="Permanent link">&para;</a></h4>
-<p>istiod コンポーネントのオプションを設定する。</p>
+<p>istiodコンポーネントのオプションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34643,7 +34643,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <p><br></p>
 <h3 id="spechub">.spec.hub<a class="headerlink" href="#spechub" title="Permanent link">&para;</a></h3>
 <h4 id="hub">▼ hubとは<a class="headerlink" href="#hub" title="Permanent link">&para;</a></h4>
-<p>Istio リソースを構成するコンテナのベースイメージのレジストリを設定する。</p>
+<p>Istioリソースを構成するコンテナのベースイメージのレジストリを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34655,7 +34655,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <p><br></p>
 <h3 id="specnamespace">.spec.namespace<a class="headerlink" href="#specnamespace" title="Permanent link">&para;</a></h3>
 <h4 id="namespace">▼ namespaceとは<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h4>
-<p>IstioOperator 管理で作成される Istio リソースの Namespace を設定する。</p>
+<p>IstioOperator管理で作成されるIstioリソースのNamespaceを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34673,7 +34673,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <h3 id="specprofile">.spec.profile<a class="headerlink" href="#specprofile" title="Permanent link">&para;</a></h3>
 <h4 id="profile">▼ profileとは<a class="headerlink" href="#profile" title="Permanent link">&para;</a></h4>
 <p>プロファイルを設定する。</p>
-<p>実際には設定済みの IstioOperator である。</p>
+<p>実際には設定済みのIstioOperatorである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34690,7 +34690,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <p><br></p>
 <h3 id="specrevision">.spec.revision<a class="headerlink" href="#specrevision" title="Permanent link">&para;</a></h3>
 <h4 id="revision">▼ revisionとは<a class="headerlink" href="#revision" title="Permanent link">&para;</a></h4>
-<p>Istiod コントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。</p>
+<p>Istiodコントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。</p>
 <p>バージョンの表記方法がハイフン繋ぎであることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
@@ -34709,7 +34709,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <p><br></p>
 <h3 id="spectag">.spec.tag<a class="headerlink" href="#spectag" title="Permanent link">&para;</a></h3>
 <h4 id="tag">▼ tagとは<a class="headerlink" href="#tag" title="Permanent link">&para;</a></h4>
-<p>Istio リソースを構成するコンテナのベースイメージのバージョンを設定する。</p>
+<p>Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34842,7 +34842,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
 <span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Mi</span>
 </code></pre></div>
 <h4 id="sidecarinjectorwebhook">▼ sidecarInjectorWebhook<a class="headerlink" href="#sidecarinjectorwebhook" title="Permanent link">&para;</a></h4>
-<p>istio-proxy ごとのオプション値を設定する。</p>
+<p>istio-proxyごとのオプション値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install.istio.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IstioOperator</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34884,7 +34884,7 @@ istiooperator.install.istio.io/istio-operator<span class="w"> </span>created
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
   </span>
 
     

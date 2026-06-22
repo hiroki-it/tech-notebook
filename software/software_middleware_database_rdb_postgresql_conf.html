@@ -33861,11 +33861,11 @@
 <p><br></p>
 <h3 id="_3">動作確認<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ ステータス確認<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>PostgreSQL のプロセスが稼働していることを確認する。</p>
+<p>PostgreSQLのプロセスが稼働していることを確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>postgresql-13.service
 </code></pre></div>
 <h4 id="_5">▼ 接続確認<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>DB に接続する。</p>
+<p>DBに接続する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># psql -U foo-user -h *.*.*.* -p 5432 -d foo-db</span>
 $<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>&lt;ユーザー名&gt;<span class="w"> </span>-h<span class="w"> </span>&lt;DBホスト名&gt;<span class="w"> </span>-p<span class="w"> </span>&lt;ポート番号&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;DB名&gt;
 </code></pre></div>
@@ -33899,9 +33899,9 @@ $<span class="w"> </span>vacuum<span class="w"> </span>&lt;テーブル名&gt;
 <div class="highlight"><pre><span></span><code><span class="na">autovacuum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">on</span>
 </code></pre></div>
 <h4 id="_7">▼ オートバキュームとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>PostgreSQL は、オートバキュームによって DB 上の残骸タプルを自動的に削除する。</p>
-<p>デッドタプル率 (DB のストレージ全体量に対するタプル量) が <code>n</code>%以上になると、PostgreSQL はオートバキュームを実行するように設定できる。</p>
-<p>オートバキュームでは DB で削除処理が実行されるため、ハードウェアリソースの消費量が高まってしまう。</p>
+<p>PostgreSQLは、オートバキュームによってDB上の残骸タプルを自動的に削除する。</p>
+<p>デッドタプル率 (DBのストレージ全体量に対するタプル量) が <code>n</code>%以上になると、PostgreSQLはオートバキュームを実行するように設定できる。</p>
+<p>オートバキュームではDBで削除処理が実行されるため、ハードウェアリソースの消費量が高まってしまう。</p>
 <p>今回のオートバキュームと次回のそれの間で実行できるトランザクションは <code>20</code> 億回と決まっているため、ある程度の間隔でオートバキュームを実行する必要がある。</p>
 <blockquote>
 <ul>
@@ -33910,7 +33910,7 @@ $<span class="w"> </span>vacuum<span class="w"> </span>&lt;テーブル名&gt;
 </blockquote>
 <h4 id="_8">▼ タプルと残骸タプル<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>テーブルのレコード (行) のこと。</p>
-<p>PostgreSQL でレコードを UPDATE/DELETE すると、操作前のレコードは削除されずに残骸となる。</p>
+<p>PostgreSQLでレコードをUPDATE/DELETEすると、操作前のレコードは削除されずに残骸となる。</p>
 <p>これを削除するために、オートバキュームが必要である。</p>
 <blockquote>
 <ul>
@@ -33930,7 +33930,7 @@ $<span class="w"> </span>vacuum<span class="w"> </span>&lt;テーブル名&gt;
 </blockquote>
 <h4 id="_9">▼ ログローテーション<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>ログローテーションによって、ログファイルを分割して保管しておく。</p>
-<p><code>log_directory</code> オプションで設定したディレクトリ配下に、PostgreSQL はログローテーションされたログファイルを配置する。</p>
+<p><code>log_directory</code> オプションで設定したディレクトリ配下に、PostgreSQLはログローテーションされたログファイルを配置する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/var/lib/pgsql
 
 drwx------.<span class="w">  </span><span class="m">2</span><span class="w"> </span>postgres<span class="w"> </span>postgres<span class="w">      </span><span class="m">4096</span><span class="w">  </span>7月<span class="w">  </span><span class="m">4</span><span class="w">  </span><span class="m">2022</span><span class="w"> </span>.
@@ -33996,7 +33996,7 @@ $<span class="w"> </span>cat<span class="w"> </span>/var/lib/postgresql-Sun.log<
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
   </span>
 
     

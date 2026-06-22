@@ -5268,7 +5268,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        すべての認可スコープを付与
+        全ての認可スコープを付与
       
     </span>
   </a>
@@ -33618,7 +33618,7 @@
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        すべての認可スコープを付与
+        全ての認可スコープを付与
       
     </span>
   </a>
@@ -33890,26 +33890,26 @@
 <h2 id="04-grant">04. GRANT<a class="headerlink" href="#04-grant" title="Permanent link">&para;</a></h2>
 <h3 id="_2">ユーザーの種類<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ ルートユーザー<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>ルートユーザーに対して、最初からすべての DB に対して権限を付与されており不要。</p>
+<p>ルートユーザーに対して、最初から全てのDBに対して権限を付与されており不要。</p>
 <h4 id="_4">▼ アプリケーション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>アプリケーションに対して、使用する DB に対する全権限を付与する。</p>
+<p>アプリケーションに対して、使用するDBに対する全権限を付与する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- DB名をクオーテーションで囲う必要はない</span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DB名</span><span class="o">&gt;</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;&lt;ユーザー名&gt;&#39;</span>
 </code></pre></div>
 <h4 id="_5">▼ 読み出し/書き込みユーザー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>読み出し/書き込みユーザーに対して、使用する DB に対する全権限を付与する。</p>
+<p>読み出し/書き込みユーザーに対して、使用するDBに対する全権限を付与する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- DB名をクオーテーションで囲う必要はない</span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DB名</span><span class="o">&gt;</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;&lt;ユーザー名&gt;&#39;</span>
 </code></pre></div>
 <h4 id="_6">▼ 読み出しのみユーザー<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>使用する DB に対する SELECT 権限を付与する。</p>
+<p>使用するDBに対するSELECT権限を付与する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- DB名をクオーテーションで囲う必要はない</span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DB名</span><span class="o">&gt;</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;&lt;ユーザー名&gt;&#39;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_7">すべての認可スコープを付与<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>DB 名は、シングルクオーテーションで囲う必要がない。</p>
-<p>全権限を付与する場合、<code>PRIVILEGES</code> は省略できるが、厳密には省略しないようほうがよい。</p>
+<h3 id="_7">全ての認可スコープを付与<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>DB名は、シングルクオーテーションで囲う必要が無い。</p>
+<p>全権限を付与する場合、<code>PRIVILEGES</code> は省略できるが、厳密には省略しないようほうが良い。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 全てのDBに関する権限を付与</span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s2">&quot;&lt;ユーザー名&gt;&quot;</span><span class="p">;</span>
 
@@ -33922,7 +33922,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_8">一部の認可スコープを付与<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>特定の DB に関する読み出し権限のみ付与する。</p>
+<p>特定のDBに関する読み出し権限のみ付与する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">&lt;</span><span class="n">DB名</span><span class="o">&gt;</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s2">&quot;&lt;ユーザー名&gt;&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
@@ -33930,14 +33930,14 @@
 <p>ユーザーに付与されている権限を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="k">GRANTS</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="s2">&quot;&lt;ユーザー名&gt;&quot;</span><span class="p">;</span>
 </code></pre></div>
-<p>作成したのみで権限を何も付与してないユーザーの場合、『DB サーバー内の全 DB に関して、全権限なし』を表す <code>USAGE</code> として表示される。</p>
+<p>作成したのみで権限を何も付与してないユーザーの場合、『DBサーバー内の全DBに関して、全権限なし』を表す <code>USAGE</code> として表示される。</p>
 <div class="highlight"><pre><span></span><code><span class="k">GRANT</span><span class="w"> </span><span class="k">USAGE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s2">&quot;&lt;ユーザー名&gt;&quot;</span><span class="p">;</span>
 </code></pre></div>
-<p>特定の DB の認可スコープを与えると、上記に加えて、付与した GRANT 権限も表示されるようになる。</p>
+<p>特定のDBの認可スコープを与えると、上記に加えて、付与したGRANT権限も表示されるようになる。</p>
 <p><br></p>
 <h2 id="05-revoke">05. REVOKE<a class="headerlink" href="#05-revoke" title="Permanent link">&para;</a></h2>
 <h3 id="_10">全権限削除<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>全権限を削除し、GRANT 権限を USAGE に戻す。</p>
+<p>全権限を削除し、GRANT権限をUSAGEに戻す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Amazon AuroraまたはAmazon RDSの場合</span>
 <span class="k">REVOKE</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n n-Quoted">`%`</span><span class="p">.</span><span class="o">*</span>
 <span class="k">FROM</span>
@@ -33955,7 +33955,7 @@
 <h2 id="06-rollback">06. ROLLBACK<a class="headerlink" href="#06-rollback" title="Permanent link">&para;</a></h2>
 <h3 id="rollback">ROLLBACKとは<a class="headerlink" href="#rollback" title="Permanent link">&para;</a></h3>
 <p>トランザクション中の一連のステートメントを取り消し、元の状態に戻す。</p>
-<p>RDBMS でいう『ロールバック』の概念を実装する。</p>
+<p>RDBMSでいう『ロールバック』の概念を実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- トランザクション処理を開始する</span>
 <span class="k">BEGIN</span><span class="p">;</span>
 
@@ -34005,7 +34005,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 21:54:05 JST">2026-04-29</span>
   </span>
 
     

@@ -33648,10 +33648,10 @@
 <p><br></p>
 <h3 id="_4">分割パターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ モノレポ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaC ツール (例：Kubernetes、Terraform など) を、<code>1</code> 個のリポジトリで管理する。各要素はディレクトリで分割する。</p>
-<p>ただし、バックエンド/フロントエンド/IaC ツールは異なるモノレポとしてもよい。</p>
-<p>Google ではモノレポによるマイクロサービスアーキテクチャが採用されており、自前のバージョン管理システム (Piper/CitC) を使用している。</p>
-<p>その他にも、アメリカの IT 大企業 (例：Facebook、Microsoft、Uber、Airbnb、Twitter など) でもモノリポを採用している。</p>
+<p>バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaCツール (例：Kubernetes、Terraformなど) を、<code>1</code> 個のリポジトリで管理する。各要素はディレクトリで分割する。</p>
+<p>ただし、バックエンド/フロントエンド/IaCツールは異なるモノレポとしても良い。</p>
+<p>Googleではモノレポによるマイクロサービスアーキテクチャが採用されており、自前のバージョン管理システム (Piper/CitC) を使用している。</p>
+<p>その他にも、アメリカのIT大企業 (例：Facebook、Microsoft、Uber、Airbnb、Twitterなど) でもモノリポを採用している。</p>
 <p><img alt="monorepo" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monorepo.png" /></p>
 <blockquote>
 <ul>
@@ -33661,7 +33661,7 @@
 </ul>
 </blockquote>
 <h4 id="_6">▼ ポリレポ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaC ツール (例：Kubernetes、Terraform など) をそれぞれ異なるリポジトリで管理する。</p>
+<p>バックエンドのマイクロサービス、バックエンドから分離されたフロントエンドアプリケーション、IaCツール (例：Kubernetes、Terraformなど) をそれぞれ異なるリポジトリで管理する。</p>
 <p><img alt="polyrepo" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/polyrepo.png" /></p>
 <blockquote>
 <ul>
@@ -33671,11 +33671,11 @@
 <p><br></p>
 <h2 id="02">02. アプリケーションリポジトリ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_7">開発環境<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>アプリエンジニアとインフラエンジニアの責務を完全に分離する場合、アプリエンジニアは IaC ツールの存在を知る必要がない。</p>
-<p>ただし便宜上、アプリエンジニアは Docker compose 使用して開発するとよい。</p>
+<p>アプリエンジニアとインフラエンジニアの責務を完全に分離する場合、アプリエンジニアはIaCツールの存在を知る必要がない。</p>
+<p>ただし便宜上、アプリエンジニアはDocker compose使用して開発すると良い。</p>
 <p>各マイクロサービスへ <code>docker-compose.yml</code> ファイルを置き、基本的には他のマイクロサービスへ依存せず開発可能にする必要がある。モノレポ/ポリレポでも同じだ。</p>
-<p>ただし、マイクロサービス間のネットワークを繋げないと、マイクロサービス間でパケットを送受信できない。そのため、Docker compose の <code>external</code> オプションを使用して、マイクロサービス間のネットワークを接続する。</p>
-<p>このときに、開発環境でサービスメッシュを使用している場合、マイクロサービス間の通信で名前解決しやすい。</p>
+<p>ただし、マイクロサービス間のネットワークを繋げないと、マイクロサービス間でパケットを送受信できない。そのため、Docker composeの <code>external</code> オプションを使用して、マイクロサービス間のネットワークを接続する。</p>
+<p>この時に、開発環境でサービスメッシュを使用している場合、マイクロサービス間の通信で名前解決しやすい。</p>
 <p>一方で、これを使用していない場合、開発環境のみでコンテナのホスト名を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># モノレポの場合</span>
 <span class="l l-Scalar l-Scalar-Plain">backend_mono_repository/</span>
@@ -33733,9 +33733,9 @@
 <p><br></p>
 <h2 id="03-iac">03. コンテナIaCツールリポジトリ<a class="headerlink" href="#03-iac" title="Permanent link">&para;</a></h2>
 <h3 id="_9">開発環境<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>IaC ツールに Kubernetes を使用した場合を示す。</p>
-<p>開発環境で Kubernetes を稼働させる場合、Skaffold などのコンテナイメージビルドツールを使用するとよい。</p>
-<p>このとき、コンテナイメージのビルドのために、アプリケーションリポジトリにある Dockerfile を指定する必要がある。</p>
+<p>IaCツールにKubernetesを使用した場合を示す。</p>
+<p>開発環境でKubernetesを稼働させる場合、Skaffoldなどのコンテナイメージビルドツールを使用すると良い。</p>
+<p>この時、コンテナイメージのビルドのために、アプリケーションリポジトリにあるDockerfileを指定する必要がある。</p>
 <p>開発環境では同じ階層にリポジトリを配置しておき、ビルドツールで相対パスを指定することにより、同階層のアプリケーションリポジトリを参照可能にする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">project/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── backend_mono_repository</span>
@@ -33749,7 +33749,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="04-iac">04. クラウドインフラIaCツールリポジトリ<a class="headerlink" href="#04-iac" title="Permanent link">&para;</a></h2>
-<p>IaC ツールに Terraform を使用した場合を示す。</p>
+<p>IaCツールにTerraformを使用した場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># クラウドインフラのIaCツールを管理するリポジトリ</span>
 <span class="l l-Scalar l-Scalar-Plain">infrastructure_repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── modules/</span>
@@ -33778,7 +33778,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
   </span>
 
     

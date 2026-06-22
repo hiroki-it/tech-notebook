@@ -34196,8 +34196,8 @@
 <p><br></p>
 <h2 id="01-node">01. Nodeネットワーク<a class="headerlink" href="#01-node" title="Permanent link">&para;</a></h2>
 <h3 id="node">Nodeネットワークとは<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
-<p>同じサブネットマスク内にある Node の NIC 間を接続するネットワーク。</p>
-<p>Node ネットワークの作成は、Kubernetes の実行環境のネットワークが担う。</p>
+<p>同じサブネットマスク内にあるNodeのNIC間を接続するネットワーク。</p>
+<p>Nodeネットワークの作成は、Kubernetesの実行環境のネットワークが担う。</p>
 <p><img alt="kubernetes_node-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node-network.png" /></p>
 <blockquote>
 <ul>
@@ -34207,8 +34207,8 @@
 <p><br></p>
 <h2 id="02-service">02. Serviceネットワーク<a class="headerlink" href="#02-service" title="Permanent link">&para;</a></h2>
 <h3 id="service">Serviceネットワークとは<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
-<p>Pod のアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つ Service までリクエストを送信する。</p>
-<p>Service ネットワークの作成は、Kubernetes が担う。</p>
+<p>Podのアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つServiceまでリクエストを送信する。</p>
+<p>Serviceネットワークの作成は、Kubernetesが担う。</p>
 <p><img alt="kubernetes_service-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_service-network.png" /></p>
 <blockquote>
 <ul>
@@ -34219,8 +34219,8 @@
 <p><br></p>
 <h2 id="03-cluster">03. Clusterネットワーク<a class="headerlink" href="#03-cluster" title="Permanent link">&para;</a></h2>
 <h3 id="cluster">Clusterネットワークとは<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h3>
-<p>同じ Cluster ネットワーク内にある Pod の仮想 NIC (veth) 間を接続するネットワーク。</p>
-<p>Cluster ネットワークの作成は、CNI が担う。</p>
+<p>同じClusterネットワーク内にあるPodの仮想NIC (veth) 間を接続するネットワーク。</p>
+<p>Clusterネットワークの作成は、CNIが担う。</p>
 <p><img alt="kubernetes_cluster-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-network.png" /></p>
 <blockquote>
 <ul>
@@ -34230,8 +34230,8 @@
 <p><br></p>
 <h2 id="04-pod">04. Podネットワーク<a class="headerlink" href="#04-pod" title="Permanent link">&para;</a></h2>
 <h3 id="pod">Podネットワークとは<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
-<p>Pod 内のネットワークのみを経由して、他のコンテナにリクエストを送信する。</p>
-<p>Pod ごとにネットワークインターフェースが付与され、また IP アドレスが割り当てられる。</p>
+<p>Pod内のネットワークのみを経由して、他のコンテナにリクエストを送信する。</p>
+<p>Podごとにネットワークインターフェースが付与され、またIPアドレスが割り当てられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate">https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate</a></li>
@@ -34240,9 +34240,9 @@
 <p><br></p>
 <h3 id="_2">名前空間<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 名前空間の種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Pod のネットワークは複数の種類の名前空間から構成される。</p>
-<p>ネットワークの範囲に応じて、コンテナが同じ Node 内のいずれのコンポーネントのプロセスと通信できるようになるのかが決まる。</p>
-<p>注意点として、Docker とは名前空間の種類が異なる。</p>
+<p>Podのネットワークは複数の種類の名前空間から構成される。</p>
+<p>ネットワークの範囲に応じて、コンテナが同じNode内のいずれのコンポーネントのプロセスと通信できるようになるのかが決まる。</p>
+<p>注意点として、Dockerとは名前空間の種類が異なる。</p>
 <p><img alt="kubernetes_pod-network_namespace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod-network_namespace.png" /></p>
 <blockquote>
 <ul>
@@ -34250,9 +34250,9 @@
 </ul>
 </blockquote>
 <h4 id="ipc">▼ IPC名前空間<a class="headerlink" href="#ipc" title="Permanent link">&para;</a></h4>
-<p>プロセスは、同じ IPC 名前空間に属するほかのプロセスと通信できる。</p>
-<p>Kubernetes のセキュリティ上の理由から、デフォルトでは Pod 内のコンテナはホスト (Node) とは異なる IPC 名前空間を使用し、ネットワークを分離している。</p>
-<p>そのため、コンテナのプロセスは Node のプロセスと通信できないようになっている。</p>
+<p>プロセスは、同じIPC名前空間に属する他のプロセスと通信できる。</p>
+<p>Kubernetesのセキュリティ上の理由から、デフォルトではPod内のコンテナはホスト (Node) とは異なるIPC名前空間を使用し、ネットワークを分離している。</p>
+<p>そのため、コンテナのプロセスはNodeのプロセスと通信できないようになっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/mamorita/items/15437a1dbcc00919fa4e">https://qiita.com/mamorita/items/15437a1dbcc00919fa4e</a></li>
@@ -34270,9 +34270,9 @@
 <p><br></p>
 <h2 id="05">05. ネットワークレイヤー<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="ingress-controller-l7">Ingress Controller由来の <code>L7</code> ロードバランサーの場合<a class="headerlink" href="#ingress-controller-l7" title="Permanent link">&para;</a></h3>
-<p>Ingress Controller の場合、<code>L7</code> ロードバランサーをプロビジョニングする。</p>
-<p>Ingress Controller による <code>L7</code> ロードバランサーは、受信した通信を Service にルーティングする。</p>
-<p>Service は <code>L4</code> ロードバランサーとして、インバウンド通信を Pod にルーティングする。</p>
+<p>Ingress Controllerの場合、<code>L7</code> ロードバランサーをプロビジョニングする。</p>
+<p>Ingress Controllerによる <code>L7</code> ロードバランサーは、受信した通信をServiceにルーティングする。</p>
+<p>Serviceは <code>L4</code> ロードバランサーとして、インバウンド通信をPodにルーティングする。</p>
 <p><img alt="kubernetes_network_l4-l7" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png" /></p>
 <blockquote>
 <ul>
@@ -34281,12 +34281,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="loadbalancer-service-l4">LoadBalancer Service由来の <code>L4</code> ロードバランサーの場合<a class="headerlink" href="#loadbalancer-service-l4" title="Permanent link">&para;</a></h3>
-<p>LoadBalancer Service の場合、<code>L4</code> ロードバランサーをプロビジョニングする。</p>
+<p>LoadBalancer Serviceの場合、<code>L4</code> ロードバランサーをプロビジョニングする。</p>
 <p><br></p>
 <h2 id="06-pod">06. Pod間通信<a class="headerlink" href="#06-pod" title="Permanent link">&para;</a></h2>
 <h3 id="pod_1">Pod間通信の経路<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h3>
-<p>Pod 内のコンテナから宛先の Pod にリクエストを送信する。</p>
-<p>このとき、Pod をスケジューリングさせている Node が同じ/異なるかのいずれの場合で、経由するネットワークが異なる。</p>
+<p>Pod内のコンテナから宛先のPodにリクエストを送信する。</p>
+<p>この時、PodをスケジューリングさせているNodeが同じ/異なるかのいずれの場合で、経由するネットワークが異なる。</p>
 <table>
 <thead>
 <tr>
@@ -34312,7 +34312,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">通信方法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>同じ Pod 内のコンテナ間は『<code>localhost:&lt;ポート番号&gt;</code>』で通信できる。</p>
+<p>同じPod内のコンテナ間は『<code>localhost:&lt;ポート番号&gt;</code>』で通信できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod内のコンテナに接続する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
@@ -34321,10 +34321,10 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <p><br></p>
 <h3 id="podip">PodのIPアドレスを指定する場合<a class="headerlink" href="#podip" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Pod 内のコンテナで、宛先の Pod の IP アドレスやポート番号を直接的に指定する。</p>
-<p>ただし、Pod の IP アドレスは動的に変化するため、現実的な方法ではない。</p>
+<p>Pod内のコンテナで、宛先のPodのIPアドレスやポート番号を直接的に指定する。</p>
+<p>ただし、PodのIPアドレスは動的に変化するため、現実的な方法ではない。</p>
 <p><strong>＊例＊</strong></p>
-<p>foo-pod から、IP アドレス (<code>11.0.0.1</code>) とポート番号 (<code>80</code>) を指定して、bar-pod にパケットを送信してみる。</p>
+<p>foo-podから、IPアドレス (<code>11.0.0.1</code>) とポート番号 (<code>80</code>) を指定して、bar-podにパケットを送信してみる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
@@ -34348,8 +34348,8 @@ traceroute<span class="w"> </span>to<span class="w"> </span><span class="m">11</
 <p><br></p>
 <h3 id="serviceip">ServiceのIPアドレスを指定する場合<a class="headerlink" href="#serviceip" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ 仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>kubelet は、Pod 内のコンテナに Service の宛先情報 (プロトコル、IP アドレス、ポート番号) を出力する。</p>
-<p>Pod 内のコンテナは、これを使用し、Service を介して Pod にリクエストを送信する。</p>
+<p>kubeletは、Pod内のコンテナにServiceの宛先情報 (プロトコル、IPアドレス、ポート番号) を出力する。</p>
+<p>Pod内のコンテナは、これを使用し、Serviceを介してPodにリクエストを送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services">https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services</a></li>
@@ -34357,7 +34357,7 @@ traceroute<span class="w"> </span>to<span class="w"> </span><span class="m">11</
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>foo-service という Service を作成した場合の環境変数を示す。</p>
+<p>foo-serviceというServiceを作成した場合の環境変数を示す。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>foo-pod<span class="w"> </span>--<span class="w"> </span>printenv<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n
 
 <span class="nv">FOO_APP_SERVICE_PORT</span><span class="o">=</span>tcp://10.110.235.51:80
@@ -34372,10 +34372,10 @@ traceroute<span class="w"> </span>to<span class="w"> </span><span class="m">11</
 <p><br></p>
 <h3 id="service_1">Serviceの完全修飾ドメイン名を指定する場合<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 仕組み<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Kubernetes に採用できる権威 DNS サーバー (kube-dns、CoreDNS、HashiCorp Consul など) は、Service の NS レコードを管理し、Service の完全修飾ドメイン名で名前解決できるようになる。</p>
-<p>Pod のスケジューリング時に、kubelet は Pod 内のコンテナの <code>/etc/resolv.conf</code> ファイルに権威 DNS サーバーの IP アドレスを設定する。</p>
-<p>Pod 内のコンテナは、自身の <code>/etc/resolv.conf</code> ファイルで権威 DNS サーバーの IP アドレスを確認し、DNS サーバーから宛先 Pod の IP アドレスを正引きする。</p>
-<p>レスポンスに含まれる宛先の Pod の IP アドレスを使用して、Pod にリクエストを送信する。</p>
+<p>Kubernetesに採用できる権威DNSサーバー (kube-dns、CoreDNS、HashiCorp Consulなど) は、ServiceのNSレコードを管理し、Serviceの完全修飾ドメイン名で名前解決できるようになる。</p>
+<p>Podのスケジューリング時に、kubeletはPod内のコンテナの <code>/etc/resolv.conf</code> ファイルに権威DNSサーバーのIPアドレスを設定する。</p>
+<p>Pod内のコンテナは、自身の <code>/etc/resolv.conf</code> ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーから宛先PodのIPアドレスを正引きする。</p>
+<p>レスポンスに含まれる宛先のPodのIPアドレスを使用して、Podにリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod内のコンテナに接続する。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--<span class="w"> </span>bash
 
@@ -34398,7 +34398,7 @@ options<span class="w"> </span>ndots:5
 <h4 id="ndots">▼ ndots<a class="headerlink" href="#ndots" title="Permanent link">&para;</a></h4>
 <p>宛先コンテナの名前解決時のドット数を設定する。</p>
 <p>ドット数が多ければ多いほど、ローカルドメインから網羅的に名前解決を実施するため、ハードウェアリソースの消費が高くなる。</p>
-<p>例えば、<code>ndots:5</code> とした Pod が <code>example.com</code> を名前解決する場合、ドット数は <code>5</code> になる。</p>
+<p>例えば、<code>ndots:5</code> としたPodが <code>example.com</code> を名前解決する場合、ドット数は <code>5</code> になる。</p>
 <p>そのため、最初は <code>example.com.default.svc.cluster.local.</code> から名前解決を始め、<code>example.com.</code> で終わる。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -34433,7 +34433,7 @@ options<span class="w"> </span>ndots:5
 <h3 id="pod_2">Podのアウトバウンド通信のデバッグ<a class="headerlink" href="#pod_2" title="Permanent link">&para;</a></h3>
 <h4 id="kubectl-run">▼ <code>kubectl run</code> コマンド<a class="headerlink" href="#kubectl-run" title="Permanent link">&para;</a></h4>
 <p><code>kubectl exec</code> コマンドが運用的に禁止されているような状況がある。</p>
-<p>そのような状況下で、シングル Node の場合は、<code>kubectl run</code> コマンドで <code>--rm</code> オプションを有効化する。そして、Cluster ネットワーク内に <code>curl</code> コマンドによる検証用の Pod を一時的に新規作成する。</p>
+<p>そのような状況下で、シングルNodeの場合は、<code>kubectl run</code> コマンドで <code>--rm</code> オプションを有効化する。そして、Clusterネットワーク内に <code>curl</code> コマンドによる検証用のPodを一時的に新規作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># シングルNodeの場合</span>
 
 <span class="c1"># curl送信用のコンテナを作成する。</span>
@@ -34456,10 +34456,10 @@ $<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </sp
 <span class="o">[</span>root@&lt;Pod名&gt;:~<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>mtr<span class="w"> </span>&lt;Serviceの完全修飾ドメイン名やIPアドレス&gt;
 </code></pre></div>
 <h4 id="kubectl-debug-node">▼ <code>kubectl debug node</code> コマンド<a class="headerlink" href="#kubectl-debug-node" title="Permanent link">&para;</a></h4>
-<p>マルチ Node の場合は、指定した Node 上で Pod を作成できない。</p>
-<p>(たぶん) 名前が一番昇順の Node 上で Pod が作成されてしまい、Node を指定できない。</p>
+<p>マルチNodeの場合は、指定したNode上でPodを作成できない。</p>
+<p>(たぶん) 名前が一番昇順のNode上でPodが作成されてしまい、Nodeを指定できない。</p>
 <p>そのため、代わりに <code>kubectl debug</code> コマンドを使用する。</p>
-<p>ただし、<code>kubectl debug</code> コマンドで作成された Pod は、使用後に手動で削除する必要がある。</p>
+<p>ただし、<code>kubectl debug</code> コマンドで作成されたPodは、使用後に手動で削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># マルチNodeの場合</span>
 
 <span class="c1"># Podが稼働するNodeを確認する。</span>
@@ -34484,9 +34484,9 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="pod_3">▼ デバッグ用Podを起動しておく<a class="headerlink" href="#pod_3" title="Permanent link">&para;</a></h4>
-<p>デバッグ用 Pod を起動しておく方法もある。</p>
+<p>デバッグ用Podを起動しておく方法もある。</p>
 <p><code>curl</code> コマンド専用イメージを使用する場合、コンテナ起動後に <code>curl</code> コマンドを実行し、すぐに終了してしまう。</p>
-<p>そのため、CrashLoopBackOff になってしまう。</p>
+<p>そのため、CrashLoopBackOffになってしまう。</p>
 <p>これを防ぐために、<code>sleep infinity</code> コマンドを実行し、ずっとスリープするようにしておく。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -34536,7 +34536,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:29:18 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:44:29 JST">2026-02-16</span>
   </span>
 
     
