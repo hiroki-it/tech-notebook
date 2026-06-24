@@ -111,9 +111,9 @@ args = ["-y", "chrome-devtools-mcp@latest", "--no-usage-statistics"]
 startup_timeout_sec = 60.0
 ```
 
-
 <br>
 
+np
 
 ### Confluenceの場合
 
@@ -130,8 +130,6 @@ CONFLUENCE_PERSONAL_TOKEN = "<Confluenceで発行したパーソナルアクセ�
 
 <br>
 
-
-
 ### GitHubの場合
 
 ```toml
@@ -142,7 +140,14 @@ bearer_token_env_var = "GITHUB_TOKEN"
 
 <br>
 
+### Playwrightの場合
 
+```toml
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@latest"]
+startup_timeout_sec = 60.0
+```
 
 ## 04. Skills
 
