@@ -102,22 +102,47 @@ MCPサーバー（実体はプロセス）を通じて、外部のAPIからCodex
 
 <br>
 
+### Chrome dev toolsの場合
+
+```toml
+[mcp_servers.chrome-devtools]
+command = "npx"
+args = ["-y", "chrome-devtools-mcp@latest", "--no-usage-statistics"]
+startup_timeout_sec = 60.0
+```
+
+
+<br>
+
+
 ### Confluenceの場合
 
 ```toml
 [mcp_servers.confluence]
 startup_timeout_sec = 60
-
 command = "uv"
-
 args = ["run", "--native-tls", "mcp-atlassian", "--confluence-url=https://confluence.foo.com"]
 
-env.REQUESTS_CA_BUNDLE = "<必要であれば、リモートワークのプロキシの証明書>"
-
-env.CONFLUENCE_PERSONAL_TOKEN = "<Confluenceで発行したパーソナルアクセストークン>"
+[mcp_servers.confluence.env]
+REQUESTS_CA_BUNDLE = "<必要であれば、リモートワークのプロキシの証明書>"
+CONFLUENCE_PERSONAL_TOKEN = "<Confluenceで発行したパーソナルアクセストークン>"
 ```
 
 <br>
+
+
+
+### GitHubの場合
+
+```toml
+[mcp_servers.github]
+url = "https://api.githubcopilot.com/mcp/"
+bearer_token_env_var = "GITHUB_TOKEN"
+```
+
+<br>
+
+
 
 ## 04. Skills
 
