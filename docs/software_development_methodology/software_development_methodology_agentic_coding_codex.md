@@ -188,7 +188,8 @@ startup_timeout_sec = 60.0
 ```yaml
 # openai.yaml
 interface:
-  display_name: "Do something"
+  # ドルマークで検索したときに表示されるスキル名
+  display_name: "do-something"
   short_description: "Help with Do something tasks"
 ```
 
