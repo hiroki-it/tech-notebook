@@ -25,11 +25,11 @@ description: 設定ファイル＠Kindの知見を記録しています。
 
 #### ▼ nodes
 
-Kubernetes ClusterのNode (コントロールプレーンNode、ワーカーNode) を設定する。
+Kubernetes Cluster の Node (コントロールプレーン Node、ワーカーNode) を設定する。
 
 #### ▼ extraPortMappings
 
-NodeとPod内のコンテナのポートをマッピングする。
+Node と Pod 内のコンテナのポートをマッピングする。
 
 ```yaml
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -66,7 +66,7 @@ nodes:
 
 #### ▼ role
 
-Nodeの役割を設定する。
+Node の役割を設定する。
 
 ```yaml
 apiVersion: kind.x-k8s.io/v1alpha4
@@ -82,7 +82,7 @@ nodes:
 
 #### ▼ image
 
-Kubernetesのバージョンを設定する。
+Kubernetes のバージョンを設定する。
 
 ```yaml
 apiVersion: kind.x-k8s.io/v1alpha4

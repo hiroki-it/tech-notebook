@@ -19,7 +19,7 @@ description: 設定ファイル＠Prometheus
 
 #### ▼ `prometheus.yml` ファイルとは
 
-Prometheusを設定する。
+Prometheus を設定する。
 
 `/etc/prometheus` ディレクトリ配下におく。
 
@@ -31,7 +31,7 @@ Prometheusを設定する。
 
 #### ▼ globalセクションとは
 
-全てのデータポイント収集からアラートまでを共通で設定する。
+すべてのデータポイント収集からアラートまでを共通で設定する。
 
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#configuration-file
 
@@ -55,7 +55,7 @@ global:
 
 #### ▼ external_labels
 
-Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信するときに、これに付与するラベルを設定する。
+Prometheus が外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortex など) にメトリクスを送信するときに、これに付与するラベルを設定する。
 
 ```yaml
 global:
@@ -74,7 +74,7 @@ global:
 
 #### ▼ alertmanagers
 
-使用するAlertmanagerを設定する。
+使用する Alertmanager を設定する。
 
 ```yaml
 alerting:
@@ -93,7 +93,7 @@ alerting:
 
 #### ▼ rule_filesセクションとは
 
-Prometheusのアラートルールを設定する。
+Prometheus のアラートルールを設定する。
 
 ```yaml
 rule_files:
@@ -103,7 +103,7 @@ rule_files:
 
 **＊実装例＊**
 
-PodのCPU使用率とメモリ使用率が閾値を超えた場合に、アラートを作成する。
+Pod の CPU 使用率とメモリ使用率が閾値を超えた場合に、アラートを作成する。
 
 ```yaml
 groups:
@@ -169,13 +169,13 @@ groups:
 
 #### ▼ scrape_configsセクション
 
-Retrievalのルールを設定する。
+Retrieval のルールを設定する。
 
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config
 
 #### ▼ static_configs
 
-IPアドレスやポート番号の変わらない対象を監視する。
+IP アドレスやポート番号の変わらない対象を監視する。
 
 ```yaml
 scrape_configs:
@@ -215,9 +215,9 @@ scrape_configs:
 
 #### ▼ sd_configs
 
-IPアドレスやポート番号が動的に変化する対象を監視する。
+IP アドレスやポート番号が動的に変化する対象を監視する。
 
-監視対象のIPアドレスやポート番号が変わると、Prometheusはそれを検出し、自身の設定を動的に変更する。
+監視対象の IP アドレスやポート番号が変わると、Prometheus はそれを検出し、自身の設定を動的に変更する。
 
 ```yaml
 scrape_configs:
@@ -265,7 +265,7 @@ scrape_configs:
 
 ### globalセクション
 
-全てのアラートを共通で設定する。
+すべてのアラートを共通で設定する。
 
 ```yaml
 global:
@@ -301,7 +301,7 @@ route:
       severity: critical
 ```
 
-もし特定の実行環境 (例：開発環境) でアラートを無効にしておきたい場合、nullを設定すると良い。
+もし特定の実行環境 (例：開発環境) でアラートを無効にしておきたい場合、null を設定するとよい。
 
 ```yaml
 route:
@@ -314,7 +314,7 @@ route:
 
 アラートのラベルと値を使用して、ルーティング時の合致条件を設定する。
 
-アラートのラベルは、Prometheusのrule_filesセクションで設定する。
+アラートのラベルは、Prometheus の rule_files セクションで設定する。
 
 ```yaml
 route:
@@ -362,7 +362,7 @@ receivers:
 
 #### ▼ pagerduty_configs
 
-通知先とするPagerDutyのServiceを設定する。
+通知先とする PagerDuty の Service を設定する。
 
 ```yaml
 receivers:
@@ -389,9 +389,9 @@ receivers:
 
 #### ▼ slack_configs
 
-通知先とするSlackのチャンネルを設定する。
+通知先とする Slack のチャンネルを設定する。
 
-globalセクション配下でSlackのURLを設定する必要がある。
+global セクション配下で Slack の URL を設定する必要がある。
 
 ```yaml
 global:
@@ -443,7 +443,7 @@ receivers:
       - ...
 ```
 
-インシデント管理ツールが専用のエンドポイントを公開していれば、Alertmanagerからツールにアラートを送信できる。
+インシデント管理ツールが専用のエンドポイントを公開していれば、Alertmanager からツールにアラートを送信できる。
 
 ```yaml
   receivers:

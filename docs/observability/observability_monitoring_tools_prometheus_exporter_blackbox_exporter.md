@@ -17,9 +17,9 @@ description: Blackbox Exporter＠Prometheus
 
 ### アーキテクチャ
 
-Blackbox Exporterは、外部システムに特定のプロトコル (例：HTTP、HTTPS、DNS、ICMP、SSH、SMTP) でヘルスチェックを実施する。
+Blackbox Exporter は、外部システムに特定のプロトコル (例：HTTP、HTTPS、DNS、ICMP、SSH、SMTP) でヘルスチェックを実施する。
 
-また、Prometheusにメトリクスを公開する。
+また、Prometheus にメトリクスを公開する。
 
 ![blackbox_exporter_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_architecture.png)
 
@@ -40,7 +40,7 @@ Blackbox Exporterは、外部システムに特定のプロトコル (例：HTTP
 
 ### チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
@@ -139,9 +139,9 @@ spec:
 
 ### Service
 
-Prometheusは、ServiceMonitorを介して、Blackbox ExporterのPodからメトリクスの元になるデータポイントを収集する。
+Prometheus は、ServiceMonitor を介して、Blackbox Exporter の Pod からメトリクスの元になるデータポイントを収集する。
 
-この時にPodの前段にServiceを配置する必要がある。
+このときに Pod の前段に Service を配置する必要がある。
 
 ```yaml
 kind: Service
@@ -171,7 +171,7 @@ spec:
 
 #### ▼ http
 
-外形監視でHTTPリクエストを送信する。
+外形監視で HTTP リクエストを送信する。
 
 ```yaml
 modules:
@@ -182,7 +182,7 @@ modules:
 
 #### ▼ tcp
 
-外形監視でTCPスリーウェイハンドシェイクを実行する。
+外形監視で TCP スリーウェイハンドシェイクを実行する。
 
 ```yaml
 modules:
@@ -193,7 +193,7 @@ modules:
 
 #### ▼ dns
 
-外形監視でHTTPリクエストを送信する。
+外形監視で HTTP リクエストを送信する。
 
 ```yaml
 modules:
@@ -204,7 +204,7 @@ modules:
 
 #### ▼ icmp
 
-外形監視でPing (ICMPエコーリクエスト) リクエストを送信する。
+外形監視で Ping (ICMP エコーリクエスト) リクエストを送信する。
 
 ```yaml
 modules:
@@ -215,7 +215,7 @@ modules:
 
 #### ▼ grpc
 
-外形監視でgRPCによるHTTPリクエストを送信する。
+外形監視で gRPC による HTTP リクエストを送信する。
 
 ```yaml
 modules:
@@ -230,11 +230,11 @@ modules:
 
 #### ▼ http probeとは
 
-監視対象に送信するHTTPリクエストを定義する。
+監視対象に送信する HTTP リクエストを定義する。
 
 #### ▼ GETリクエストの場合
 
-外形監視でGETリクエストを送信する。
+外形監視で GET リクエストを送信する。
 
 ```yaml
 modules:
@@ -286,7 +286,7 @@ modules:
 
 #### ▼ POSTリクエストの場合
 
-外形監視にて、HTTPプロトコルでPOSTリクエストを送信する。
+外形監視にて、HTTP プロトコルで POST リクエストを送信する。
 
 ```yaml
 modules:
@@ -331,7 +331,7 @@ modules:
 
 #### ▼ 確認方法
 
-Blackbox Exporterの場合は、Nodeの『`127.0.0.1:9115/probe?target=google.com&module=http_2xx`』をコールすると、PromQLで使用できるメトリクスの元になるデータポイントを取得できる。
+Blackbox Exporter の場合は、Node の『`127.0.0.1:9115/probe?target=google.com&module=http_2xx`』をコールすると、PromQL で使用できるメトリクスの元になるデータポイントを取得できる。
 
 ```bash
 $ curl http://127.0.0.1:9115/probe?target=google.com&module=http_2xx

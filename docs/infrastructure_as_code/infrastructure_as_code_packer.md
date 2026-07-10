@@ -27,19 +27,19 @@ description: Packer＠IaCの知見を記録しています。
 
 #### ▼ プラットフォームがAWSの場合
 
-プロビジョナーを使用してAmazon EC2をプロビジョニングし、そのAmazon EC2からAWS AMIを作成する。
+プロビジョナーを使用して Amazon EC2 をプロビジョニングし、その Amazon EC2 から AWS AMI を作成する。
 
-AWS AMIの作成後、Amazon EC2を削除する。
+AWS AMI の作成後、Amazon EC2 を削除する。
 
-例えば、PackerでプロビジョナーとしてAnsibleを指定してAWS AMIを作成しつつ、TerraformでAWS AMIからAmazon EC2を作成したとする。
+例えば、Packer でプロビジョナーとして Ansible を指定して AWS AMI を作成しつつ、Terraform で AWS AMI から Amazon EC2 を作成したとする。
 
-これにより、クラウドインフラのプロビジョニングでAnsibleとTerraformが共存できるようになる。
+これにより、クラウドインフラのプロビジョニングで Ansible と Terraform が共存できるようになる。
 
-注意点として、起動中のAmazon EC2からAWS AMIを作成するわけではなく、設定値が同じ新しいAmazon EC2からAWS AMIを作成する。
+注意点として、起動中の Amazon EC2 から AWS AMI を作成するわけではなく、設定値が同じ新しい Amazon EC2 から AWS AMI を作成する。
 
-また、AWS AMIに内蔵されているAWS EBSボリュームも、既存のAmazon EC2のものではなく、新品のものである。
+また、AWS AMI に内蔵されている AWS EBS ボリュームも、既存の Amazon EC2 のものではなく、新品のものである。
 
-既存のAmazon EC2のバックアップツールとしては使用できない。
+既存の Amazon EC2 のバックアップツールとしては使用できない。
 
 ![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packer_aws.png)
 

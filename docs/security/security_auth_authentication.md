@@ -29,16 +29,16 @@ description: 認証＠認証／認可の知見を記録しています。
 
 認証管理におけるテナントのようなもの。
 
-realmごとに認証を管理する。
+realm ごとに認証を管理する。
 
-例えばKeycloakであれば、Adminアカウントの認証はmaster realmで、それ以外はユーザー定義のrealm、で管理する。
+例えば Keycloak であれば、Admin アカウントの認証は master realm で、それ以外はユーザー定義の realm、で管理する。
 
 > - https://www.seil.jp/doc/index.html#fn/pppac/cmd/authentication_realm.html
 > - https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm
 
 #### ▼ realmの粒度
 
-マイクロサービスアーキテクチャでは、横断的なrealm (こちらがよさそう) 、または各マイクロサービスでrealmを作成するとよい。
+マイクロサービスアーキテクチャでは、横断的な realm (こちらがよさそう) 、または各マイクロサービスで realm を作成するとよい。
 
 > - https://github.com/vicjicaman/microservice-realm
 
@@ -48,11 +48,11 @@ realmごとに認証を管理する。
 
 #### ▼ クライアントIDとは
 
-IDプロバイダーのクライアントのIDを表す。
+ID プロバイダーのクライアントの ID を表す。
 
 #### ▼ クライアントIDの粒度
 
-マイクロサービスアーキテクチャでは、横断的なクライアントID 、またはマイクロサービスでクライアントID (こちらがよさそう) を作成するとよい。
+マイクロサービスアーキテクチャでは、横断的なクライアント ID 、またはマイクロサービスでクライアント ID (こちらがよさそう) を作成するとよい。
 
 <br>
 

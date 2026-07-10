@@ -34,11 +34,11 @@ app = FastAPI()
 
 #### ▼ APIRouterクラスとは
 
-FastAPIクラスに非同期処理を実行するエンドポイントを追加する。
+FastAPI クラスに非同期処理を実行するエンドポイントを追加する。
 
-FastAPIインスタンスに登録するためには、`include_router()` 関数にAPIRouterインスタンスを渡す必要がある。
+FastAPI インスタンスに登録するためには、`include_router()` 関数に APIRouter インスタンスを渡す必要がある。
 
-また、DBのセッションを開始するために、DBオブジェクトを注入する必要がある。
+また、DB のセッションを開始するために、DB オブジェクトを注入する必要がある。
 
 > - https://github.com/tiangolo/fastapi/issues/1693#issuecomment-665833384
 
@@ -63,7 +63,7 @@ app.include_router(router)
 
 ## 02. 非同期
 
-I/Oバウンドが発生しない場合や `async/await` 宣言をサポートしているパッケージを利用する場合は、`async` 宣言を使用する。
+I/O バウンドが発生しない場合や `async/await` 宣言をサポートしているパッケージを利用する場合は、`async` 宣言を使用する。
 
 ただし、これは関数側で `async` 宣言が必要になる。
 

@@ -17,7 +17,7 @@ description: Project＠Google Cloudリソースの知見を記録しています
 
 ### プロジェクトID
 
-Google Cloudのプロジェクト番号である。
+Google Cloud のプロジェクト番号である。
 
 機密な値ではない。
 

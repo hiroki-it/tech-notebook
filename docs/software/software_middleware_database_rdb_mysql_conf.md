@@ -25,7 +25,7 @@ description: 設定ファイル＠MySQLの知見を記録しています。
 $ dnf install -y mysql
 ```
 
-`mysql` コマンド、MySQLのRDBMSをインストールしたい場合はこちら。
+`mysql` コマンド、MySQL の RDBMS をインストールしたい場合はこちら。
 
 ```bash
 $ dnf install -y mysql-server
@@ -39,7 +39,7 @@ $ dnf install -y mysql-server
 $ yum install -y mysql
 ```
 
-`mysql` コマンド、MySQLのRDBMSをインストールしたい場合はこちら。
+`mysql` コマンド、MySQL の RDBMS をインストールしたい場合はこちら。
 
 ```bash
 $ yum install -y mysql mysql-server
@@ -53,7 +53,7 @@ $ yum install -y mysql mysql-server
 
 #### ▼ ステータス確認
 
-MySQLのプロセスが稼働していることを確認する。
+MySQL のプロセスが稼働していることを確認する。
 
 ```bash
 $ systemctl status mysql.service
@@ -61,11 +61,11 @@ $ systemctl status mysql.service
 
 #### ▼ 接続確認
 
-DBに接続する。
+DB に接続する。
 
-pオプションの値にはスペースが不要であることに注意する。
+p オプションの値にはスペースが不要であることに注意する。
 
-開発環境では、DBホスト名は仮想サーバーやコンテナのホスト名である。
+開発環境では、DB ホスト名は仮想サーバーやコンテナのホスト名である。
 
 ```bash
 $ mysql -h "<DBホスト名>" -u "<ユーザー名>" -p'<パスワード>' -P "<ポート番号>" "<DB名>"
@@ -100,7 +100,7 @@ mysql> SELECT user, host FROM mysql.user;
 
 #### ▼ パラメーターの設定
 
-パラメーターは、全てのセッションに共通する『グローバルパラメーター』と各セッションのみの『セッションパラメーター』がある。
+パラメーターは、すべてのセッションに共通する『グローバルパラメーター』と各セッションのみの『セッションパラメーター』がある。
 
 ```mysql
 -- グローバルパラメーターの場合
@@ -112,7 +112,7 @@ SET time_zone = "Asia/Tokyo";
 
 #### ▼ パラメーターの表示
 
-DBに登録されているグローバルパラメーターとセッションパラメーターを取得する。
+DB に登録されているグローバルパラメーターとセッションパラメーターを取得する。
 
 ```mysql
 -- セッション/グローバルパラメーターを表示
@@ -132,7 +132,7 @@ SHOW GLOBAL VARIABLES LIKE "%time_zone";
 
 #### ▼ `/etc/mysql/my.cnf` ファイルとは
 
-MySQLの起動時の値を設定する。
+MySQL の起動時の値を設定する。
 
 `my.cnf` ファイルは、`/etc/mysql` ディレクトリ配下に配置されている。
 
@@ -171,7 +171,7 @@ MySQLの起動時の値を設定する。
 
 #### ▼ `/var/log/mysqld.log` ファイルとは
 
-MySQLプロセスの実行ログを出力する。
+MySQL プロセスの実行ログを出力する。
 
 #### ▼ temporary password
 
@@ -190,7 +190,7 @@ $ less mysqld.log | grep "temporary password"
 
 ### mysqldセクション
 
-mysqlサーバーの `mysqld` プロセスのプールを設定する。
+mysql サーバーの `mysqld` プロセスのプールを設定する。
 
 <br>
 
@@ -198,7 +198,7 @@ mysqlサーバーの `mysqld` プロセスのプールを設定する。
 
 #### ▼ とは
 
-DBの作成時に適用する文字コードを設定する。
+DB の作成時に適用する文字コードを設定する。
 
 ```ini
 [mysql]
@@ -224,7 +224,7 @@ collation_server = utf8mb4_general_ci
 
 #### ▼ default_authentication_pluginとは
 
-MySQLの認証方法を設定する。
+MySQL の認証方法を設定する。
 
 MySQL`v8.0` 未満では、認証方法はパスワード認証であった。
 
@@ -250,7 +250,7 @@ SELECT user, host, plugin FROM mysql.user;
 +------------------+-----------+-----------------------+
 ```
 
-MySQL`v8.0` 以降では、SHA-256プラガブル認証がデフォルトになった。
+MySQL`v8.0` 以降では、SHA-256 プラガブル認証がデフォルトになった。
 
 ```ini
 [mysqld]
@@ -293,7 +293,7 @@ default-time-zone = SYSTEM
 
 #### ▼ datadirとは
 
-DBの定義ファイルを配置するディレクトリを設定する。
+DB の定義ファイルを配置するディレクトリを設定する。
 
 ```ini
 [mysqld]
@@ -302,13 +302,13 @@ datadir = /var/lib/mysql
 
 #### ▼ `datadir` ディレクトリ
 
-DBの定義ファイルを管理する。
+DB の定義ファイルを管理する。
 
 基本的には `/var/lib/mysql` ディレクトリを使用するように設定されている。
 
-DB固有の情報は、DB名のディレクトリで管理されている。
+DB 固有の情報は、DB 名のディレクトリで管理されている。
 
-dockerエリアのマウントポイントとして指定される。
+docker エリアのマウントポイントとして指定される。
 
 > - https://dev.mysql.com/doc/refman/8.0/ja/data-directory.html
 
@@ -411,7 +411,7 @@ general_log_file = mysql-general.log
 
 #### ▼ log_queries_not_using_indexesとは
 
-DBインデックスを使用するか否かを設定する。
+DB インデックスを使用するか否かを設定する。
 
 ```ini
 [mysqld]
@@ -437,7 +437,7 @@ long_query_time = 3
 
 #### ▼ pid-fileとは
 
-プロセスIDが記載されたファイルの作成先を設定する。
+プロセス ID が記載されたファイルの作成先を設定する。
 
 ```ini
 [mysqld]
@@ -511,7 +511,7 @@ user = mysql
 
 ### clientセクションとは
 
-mysqlクライアントツールの `client` プロセスのプールを設定する。
+mysql クライアントツールの `client` プロセスのプールを設定する。
 
 <br>
 

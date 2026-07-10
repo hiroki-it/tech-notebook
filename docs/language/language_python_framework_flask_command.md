@@ -51,7 +51,7 @@ static          GET      /static/<path:filename>
 
 #### ▼ runとは
 
-Flaskクラスの `run()` 関数と同じ機能を持ち、インバウンド通信のリッスンを開始する。
+Flask クラスの `run()` 関数と同じ機能を持ち、インバウンド通信のリッスンを開始する。
 
 開発環境のみで推奨される方法である。
 
@@ -64,7 +64,7 @@ $ flask run
 
 #### ▼ --host
 
-受信する通信のIPアドレスを設定する。
+受信する通信の IP アドレスを設定する。
 
 ```bash
 $ flask run --host=0.0.0.0
@@ -88,7 +88,7 @@ $ flask run --reload
 $ flask run --port=8080
 ```
 
-Flaskが以前のプロセスを削除できなかった場合は、ポートが使用されてしまっているため、プロセスを削除する必要がある。
+Flask が以前のプロセスを削除できなかった場合は、ポートが使用されてしまっているため、プロセスを削除する必要がある。
 
 ```bash
 OSError: [Errno 98] Address already in use

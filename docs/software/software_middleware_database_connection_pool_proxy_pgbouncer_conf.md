@@ -17,7 +17,7 @@ description: 設定ファイル＠PgBouncerの知見を記録しています。
 
 ### `pgbouncer.ini` ファイル
 
-PgBouncerの設定ファイルである。
+PgBouncer の設定ファイルである。
 
 <br>
 
@@ -71,11 +71,11 @@ server_reset_query = DISCARD ALL
 
 ### pool_mode
 
-クライアントが、DB接続を再利用できる条件を設定する。
+クライアントが、DB 接続を再利用できる条件を設定する。
 
 #### ▼ session
 
-クライアント接続が切断された場合に、DB接続も切断する。
+クライアント接続が切断された場合に、DB 接続も切断する。
 
 ```ini
 [pgbouncer]
@@ -86,7 +86,7 @@ pool_mode = session
 
 #### ▼ transaction
 
-トランザクションの終了後、DB接続も切断する。
+トランザクションの終了後、DB 接続も切断する。
 
 ```ini
 [pgbouncer]
@@ -97,7 +97,7 @@ pool_mode = transaction
 
 #### ▼ statement
 
-クエリの終了後、DB接続も切断する。
+クエリの終了後、DB 接続も切断する。
 
 ```ini
 [pgbouncer]
@@ -112,7 +112,7 @@ pool_mode = statement
 
 ### DB名
 
-DB接続時の宛先情報を設定する。
+DB 接続時の宛先情報を設定する。
 
 ```ini
 [databases]
@@ -127,7 +127,7 @@ foo_db = host=127.0.0.1 port=5432 dbname=foo_db
 
 デフォルトでは、くえりが完了するまでの待機し続けてしまう。
 
-`query_wait_timeout` を設定すれば、タイムアウト時間を超えてもDBから返信が無い場合、接続を切断するようになる。
+`query_wait_timeout` を設定すれば、タイムアウト時間を超えても DB から返信がない場合、接続を切断するようになる。
 
 ```ini
 [databases]
@@ -140,7 +140,7 @@ query_wait_timeout = 30000
 
 ### max_client_conn
 
-DBが同時に受信できるクライアント接続の最大数を設定する。
+DB が同時に受信できるクライアント接続の最大数を設定する。
 
 ```ini
 [databases]

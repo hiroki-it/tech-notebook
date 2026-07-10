@@ -17,7 +17,7 @@ description: 設定＠PHPの知見を記録しています。
 
 ### `php.ini` ファイルとは
 
-PHPの起動時の値を設定する。
+PHP の起動時の値を設定する。
 
 `php.ini` ファイルは、`/usr/local/etc/php` ディレクトリ配下に配置されている。
 
@@ -44,11 +44,11 @@ Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcma
 
 ### 本番/開発環境共通
 
-PHPでは、`/usr/local/etc/php` ディレクトリには `php.ini-development` ファイルと `php.ini-production` ファイルが最初から配置されている。
+PHP では、`/usr/local/etc/php` ディレクトリには `php.ini-development` ファイルと `php.ini-production` ファイルが最初から配置されている。
 
 これをコピーして設定値を変更し、読み込まれるようにファイル名を `php.ini` に変えて配置する (これ以外のファイル名では読み込まれない) 。
 
-代わりに、最小限の設定値のみを変更した `php.ini` ファイルを自身で作成し、同じく配置しても良い。
+代わりに、最小限の設定値のみを変更した `php.ini` ファイルを自身で作成し、同じく配置してもよい。
 
 ```bash
 $ ls -la /usr/local/etc/php

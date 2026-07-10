@@ -45,7 +45,7 @@ description: LogQL＠Grafana Lokiの知見を記録しています。
 
 **＊実行例＊**
 
-5分間のログを集約する。
+5 分間のログを集約する。
 
 ```bash
 count_over_time({app="foo", namespace="foo"} |= "ERROR" [5m])

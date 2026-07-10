@@ -19,7 +19,7 @@ description: Image Updater＠ArgoCDの知見を記録しています。
 
 #### ▼ argocd-image-updater.argoproj.io
 
-ArgoCD Image Updaterを設定する。
+ArgoCD Image Updater を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -55,7 +55,7 @@ spec: ...
 
 #### ▼ accounts.image-updater
 
-argocd-cm (ConfigMap) で、ArgoCDのAPIユーザーを作成する必要がある。
+argocd-cm (ConfigMap) で、ArgoCD の API ユーザーを作成する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -116,7 +116,7 @@ data:
 
 #### ▼ policy.csv
 
-argocd-rbac-cm (ConfigMap) で、APIユーザーに認可スコープを設定する必要がある。
+argocd-rbac-cm (ConfigMap) で、API ユーザーに認可スコープを設定する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -144,7 +144,7 @@ data:
 
 #### ▼ argocd.token
 
-image-updaterユーザーのAPIキーを設定する。
+image-updater ユーザーの API キーを設定する。
 
 暗号化ツール (例：SOPS) を使用して管理するとよい。
 

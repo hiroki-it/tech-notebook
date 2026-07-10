@@ -15,7 +15,7 @@ description: DDL＠SQLの知見を記録しています。
 
 ## 01. DDLとは
 
-テーブル、DBオブジェクトの操作、に関するクエリのこと。
+テーブル、DB オブジェクトの操作、に関するクエリのこと。
 
 > - https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DDL-Data-Definition-Language
 
@@ -73,7 +73,7 @@ SELECT * FROM <テーブル名>;
 
 #### ▼ ユーザー作成
 
-CREATEで以下の４種類を作成する。
+CREATE で以下の４種類を作成する。
 
 パスワードは、例えば `8` 文字のパスワードを割り当てる。
 
@@ -92,7 +92,7 @@ CREATE USER "<ユーザー名>" IDENTIFIED BY "<パスワード>";
 
 ここで表示される特権と。
 
-ALL特権は異なる。
+ALL 特権は異なる。
 
 ```mysql
 SELECT * FROM mysql.user;

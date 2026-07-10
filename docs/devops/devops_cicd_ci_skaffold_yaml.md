@@ -25,17 +25,17 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 #### ▼ ステージの種類
 
-CI/CDパイプラインのステップをステージと呼ぶ。
+CI/CD パイプラインのステップをステージと呼ぶ。
 
-build/test/deployステージに加えて、継続的な開発に役立つステージを持つ。
+build/test/deploy ステージに加えて、継続的な開発に役立つステージを持つ。
 
-ただし、Skaffoldは基本的には開発環境でしか使用しないため、ユースケースが限定的なステージもある。
+ただし、Skaffold は基本的には開発環境でしか使用しないため、ユースケースが限定的なステージもある。
 
 ![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline.png)
 
 #### ▼ 各ステージのツールの選択
 
-Skaffoldの各ステージでは、それ専用のツールをコールできる。
+Skaffold の各ステージでは、それ専用のツールをコールできる。
 
 ![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline_tools.png)
 
@@ -127,7 +127,7 @@ build:
 
 ビルドしたコンテナイメージをリポジトリにプッシュするか否かを設定する。
 
-Skaffoldは基本的には開発環境でしか使用しないため、これは無効化しておいたほうが良い。
+Skaffold は基本的には開発環境でしか使用しないため、これは無効化しておいたほうがよい。
 
 ```yaml
 build:
@@ -137,9 +137,9 @@ build:
 
 #### ▼ useBuildkit
 
-BuildKit機能の有効化を設定する。
+BuildKit 機能の有効化を設定する。
 
-BuildKitではコンテナイメージレイヤーが並列的に作成されるため、ビルド時間を従来よりも短縮できる。
+BuildKit ではコンテナイメージレイヤーが並列的に作成されるため、ビルド時間を従来よりも短縮できる。
 
 ```yaml
 build:
@@ -155,7 +155,7 @@ build:
 
 #### ▼ gitCommit
 
-コミットIDをバージョンタグとして設定する。
+コミット ID をバージョンタグとして設定する。
 
 ```yaml
 build:
@@ -167,7 +167,7 @@ build:
 
 #### ▼ sha256
 
-sha256ハッシュ値と `latest` タグをバージョンタグとして設定する。
+sha256 ハッシュ値と `latest` タグをバージョンタグとして設定する。
 
 ```yaml
 build:
@@ -203,7 +203,7 @@ portForward:
 
 ### testステージとは
 
-Kubernetesリソースのテスト方法を定義する。
+Kubernetes リソースのテスト方法を定義する。
 
 > - https://skaffold.dev/docs/pipeline-stages/testers/
 
@@ -238,7 +238,7 @@ fileExistenceTests:
 
 ### deployステージとは
 
-Kubernetesリソースのデプロイ手法を定義する。
+Kubernetes リソースのデプロイ手法を定義する。
 
 > - https://skaffold.dev/docs/pipeline-stages/deployers/
 
@@ -248,7 +248,7 @@ Kubernetesリソースのデプロイ手法を定義する。
 
 #### ▼ kubectlとは
 
-`kubectl` コマンドを使用して、Kubernetesリソースをデプロイする。
+`kubectl` コマンドを使用して、Kubernetes リソースをデプロイする。
 
 ワイルドカード (`*`) を使用できる。
 
@@ -268,7 +268,7 @@ deploy:
 
 #### ▼ helm
 
-Helmを使用して、Kubernetesリソースをデプロイする。
+Helm を使用して、Kubernetes リソースをデプロイする。
 
 ```yaml
 deploy:

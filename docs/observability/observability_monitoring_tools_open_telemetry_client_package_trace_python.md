@@ -39,9 +39,9 @@ description: Python＠OpenTelemetryクライアントパッケージの知見を
 
 #### ▼ パッケージの初期化
 
-ここでは、FlaskというフレームワークでPythonのアプリケーションを作成したとする。
+ここでは、Flask というフレームワークで Python のアプリケーションを作成したとする。
 
-otelクライアントパッケージを初期化する。
+otel クライアントパッケージを初期化する。
 
 初期化の段階で、トレースコンテキストを抽出する。
 
@@ -107,7 +107,7 @@ print(response.text, flush=True)
 
 なお、親スパンと子スパンでスパン作成の実装方法は変わらない。
 
-ここでは、Flaskでリクエストを受信するため、`FlaskInstrumentor()` 関数でスパンを処理している。
+ここでは、Flask でリクエストを受信するため、`FlaskInstrumentor()` 関数でスパンを処理している。
 
 ```python
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
@@ -138,7 +138,7 @@ def hello_world():
 
 #### ▼ トレースコンテキスト注入と子スパン作成
 
-Carrierにトレースコンテキストを注入し、また子スパンを作成する。
+Carrier にトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンと子スパンでスパン作成の実装方法は変わらない。
 

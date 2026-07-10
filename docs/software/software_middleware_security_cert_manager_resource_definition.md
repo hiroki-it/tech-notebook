@@ -37,7 +37,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manag
 
 認証局を使用して、秘密鍵と証明書署名要求で署名済みの `X.509` のサーバー証明書 (`.crt` ファイル) を作成する。
 
-証明書自体は、紐づくSecretに割り当てられる。
+証明書自体は、紐づく Secret に割り当てられる。
 
 > - https://cert-manager.io/docs/concepts/certificate/
 > - https://zenn.dev/masaaania/articles/e54119948bbaa2#issuer
@@ -48,7 +48,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manag
 
 #### ▼ secretNameとは
 
-サーバー証明書、サーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。
+サーバー証明書、サーバー証明書とペアになる秘密鍵を保持する Secret の名前を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -64,9 +64,9 @@ spec:
 
 #### ▼ サーバー証明書を使用する
 
-Ingressの `.spec.tls[*].secretName` キーにて、Secretを設定する。
+Ingress の `.spec.tls[*].secretName` キーにて、Secret を設定する。
 
-これにより、Ingressにサーバー証明書を割り当てられる。
+これにより、Ingress にサーバー証明書を割り当てられる。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -165,7 +165,7 @@ spec:
 
 #### ▼ isCAとは
 
-秘密鍵と証明書署名要求 (`.csr` ファイル) で署名済みのサーバー証明書が、中間CA証明書であるか否かを設定する。
+秘密鍵と証明書署名要求 (`.csr` ファイル) で署名済みのサーバー証明書が、中間 CA 証明書であるか否かを設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -245,7 +245,7 @@ spec:
 
 ### ClusterIssuerとは
 
-異なるNamespaceに対して横断的に証明書を作成する認証局を作成する。
+異なる Namespace に対して横断的に証明書を作成する認証局を作成する。
 
 > - https://blog.1q77.com/2020/03/cert-manager/#issuer-%E3%81%AE%E7%99%BB%E9%8C%B2
 
@@ -255,11 +255,11 @@ spec:
 
 #### ▼ acmeとは
 
-サーバー証明書を自動的に更新するACMEプロトコルについて設定する。
+サーバー証明書を自動的に更新する ACME プロトコルについて設定する。
 
 #### ▼ server
 
-ACMEサーバーのURLを設定する。
+ACME サーバーの URL を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -274,7 +274,7 @@ spec:
 
 #### ▼ email
 
-ACMEサーバーのユーザーの登録に使用したメールアドレスを設定する。
+ACME サーバーのユーザーの登録に使用したメールアドレスを設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -289,7 +289,7 @@ spec:
 
 #### ▼ privateKeySecretRef
 
-サーバー証明書、サーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。
+サーバー証明書、サーバー証明書とペアになる秘密鍵を保持する Secret の名前を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -305,7 +305,7 @@ spec:
 
 #### ▼ solvers
 
-名前解決の委譲先 (例：Amazon Route 53、Google CloudDNSなど) を設定する。
+名前解決の委譲先 (例：Amazon Route 53、Google CloudDNS など) を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1alpha2
@@ -334,11 +334,11 @@ spec:
 
 ### Issuerとは
 
-同じNamespaceに対して証明書を作成する認証局を作成する。
+同じ Namespace に対して証明書を作成する認証局を作成する。
 
-同じNamespaceにあるKubernetesリソースに対して証明書を作成する。
+同じ Namespace にある Kubernetes リソースに対して証明書を作成する。
 
-もし複数のNamespaceに対して横断的に証明書を作成したい場合、ClusterIssuerを使用する必要がある。
+もし複数の Namespace に対して横断的に証明書を作成したい場合、ClusterIssuer を使用する必要がある。
 
 > - https://cert-manager.io/docs/concepts/issuer/
 
@@ -348,7 +348,7 @@ spec:
 
 #### ▼ secretName
 
-サーバー証明書、サーバー証明書とペアになる秘密鍵を保持するSecretの名前を設定する。
+サーバー証明書、サーバー証明書とペアになる秘密鍵を保持する Secret の名前を設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1

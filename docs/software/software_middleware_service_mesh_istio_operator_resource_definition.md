@@ -19,13 +19,13 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 #### ▼ チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
-プロファイルは、設定済みのIstioOperatorのチャートであり、`istioctl` コマンドインストール時、`manifests` ディレクトリ以下に同梱される。
+プロファイルは、設定済みの IstioOperator のチャートであり、`istioctl` コマンドインストール時、`manifests` ディレクトリ以下に同梱される。
 
 `(1)`
 
-: `istioctl` コマンドでIstioOperatorを指定する。IstioOperatorは、デフォルト値は `istio-system` にIstioリソースを作成するようになっている。
+: `istioctl` コマンドで IstioOperator を指定する。IstioOperator は、デフォルト値は `istio-system` に Istio リソースを作成するようになっている。
 
 ```bash
 $ istioctl operator init
@@ -40,7 +40,7 @@ Operator controller will watch namespaces: istio-system
 
 `(2)`
 
-: IstioOperatorが定義されたマニフェストを、`istioctl` コマンドまたは `kubectl` コマンドを使用して、Istioリソースを作成する。
+: IstioOperator が定義されたマニフェストを、`istioctl` コマンドまたは `kubectl` コマンドを使用して、Istio リソースを作成する。
 
      その代わりにここで、IstioOperatorにHelmを使用させてIstioリソースを作成することもできる。`kubectl apply`コマンドでも作成できるが、成否の実行ログがわかりにくいことに注意する。
 
@@ -67,7 +67,7 @@ istiooperator.install.istio.io/istio-operator created
 
 #### ▼ チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
 チャートは、`istioctl` コマンドインストール時の `manifests` ディレクトリ以下に同梱されている。
 
@@ -102,16 +102,16 @@ metadata:
 
 #### ▼ componentとは
 
-IstioOperator管理でIstioリソースを作成する。
+IstioOperator 管理で Istio リソースを作成する。
 
 > - https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
 > - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec
 
 #### ▼ `<component名>`.k8s
 
-各componentが共通的に持つ設定項目である。
+各 component が共通的に持つ設定項目である。
 
-各種Kubernetesリソースと同じ設定値を拡張機能として設定できる。
+各種 Kubernetes リソースと同じ設定値を拡張機能として設定できる。
 
 ただし、執筆時点 (2022/06/04) では、これを使用することは非推奨である。
 
@@ -145,9 +145,9 @@ spec:
 
 #### ▼ base
 
-baseコンポーネントのオプションを設定する。
+base コンポーネントのオプションを設定する。
 
-baseコンポーネントを有効化しないと、カスタムリソースを作成できない。
+base コンポーネントを有効化しないと、カスタムリソースを作成できない。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -166,7 +166,7 @@ spec:
 
 #### ▼ cni
 
-istio-cniコンポーネントのオプションを設定する。
+istio-cni コンポーネントのオプションを設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -185,9 +185,9 @@ spec:
 
 #### ▼ egressGateways
 
-IstioOperatorで管理するIstio Egress Gatewayのオプションを設定する。
+IstioOperator で管理する Istio Egress Gateway のオプションを設定する。
 
-Istio Egress Gatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
+Istio Egress Gateway を直接的に作成するのではなく、IstioOperator に作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -202,7 +202,7 @@ spec:
         enabled: "true"
 ```
 
-`.spec.egressGateways.k8s` キーでServiceの定義を設定できるが、これは非推奨である。
+`.spec.egressGateways.k8s` キーで Service の定義を設定できるが、これは非推奨である。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -227,9 +227,9 @@ spec:
 
 #### ▼ ingressGateways
 
-IstioOperatorで管理するIstio Ingress Gatewayのオプションを設定する。
+IstioOperator で管理する Istio Ingress Gateway のオプションを設定する。
 
-Istio Ingress Gatewayを直接的に作成するのではなく、IstioOperatorに作成させる。
+Istio Ingress Gateway を直接的に作成するのではなく、IstioOperator に作成させる。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -244,7 +244,7 @@ spec:
         enabled: "true"
 ```
 
-`.spec.ingressGateways.k8s` キーでServiceの定義を設定できるが、これは非推奨である。
+`.spec.ingressGateways.k8s` キーで Service の定義を設定できるが、これは非推奨である。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -330,14 +330,14 @@ status:
     - ip: *.*.*.*
 ```
 
-補足として、以下の方法でユーザー定義のIstio Ingress Gatewayを作成できる (かなり大変) 。
+補足として、以下の方法でユーザー定義の Istio Ingress Gateway を作成できる (かなり大変) 。
 
 > - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
 > - https://github.com/istio/istio/issues/23303
 
 #### ▼ istiodRemote
 
-istiodコンポーネントのオプションを設定する。
+istiod コンポーネントのオプションを設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -393,7 +393,7 @@ spec:
 
 #### ▼ hubとは
 
-Istioリソースを構成するコンテナのベースイメージのレジストリを設定する。
+Istio リソースを構成するコンテナのベースイメージのレジストリを設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -411,7 +411,7 @@ spec:
 
 #### ▼ namespaceとは
 
-IstioOperator管理で作成されるIstioリソースのNamespaceを設定する。
+IstioOperator 管理で作成される Istio リソースの Namespace を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -433,7 +433,7 @@ spec:
 
 プロファイルを設定する。
 
-実際には設定済みのIstioOperatorである。
+実際には設定済みの IstioOperator である。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -453,7 +453,7 @@ spec:
 
 #### ▼ revisionとは
 
-Istiodコントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。
+Istiod コントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。
 
 バージョンの表記方法がハイフン繋ぎであることに注意する。
 
@@ -476,7 +476,7 @@ spec:
 
 #### ▼ tagとは
 
-Istioリソースを構成するコンテナのベースイメージのバージョンを設定する。
+Istio リソースを構成するコンテナのベースイメージのバージョンを設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -630,7 +630,7 @@ spec:
 
 #### ▼ sidecarInjectorWebhook
 
-istio-proxyごとのオプション値を設定する。
+istio-proxy ごとのオプション値を設定する。
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1

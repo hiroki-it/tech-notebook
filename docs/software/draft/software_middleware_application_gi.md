@@ -23,7 +23,7 @@ description: GI：Gateway Interface＠アプリケーション系ミドルウェ
 
 ## 02. FastCGI
 
-CGIプロトコルの性能を向上させたプロトコル仕様のこと。
+CGI プロトコルの性能を向上させたプロトコル仕様のこと。
 
 <br>
 

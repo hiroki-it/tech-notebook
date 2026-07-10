@@ -189,7 +189,7 @@ $ kubectl annotate service <サービス名> konghq.com/plugins=rate-limiting-pl
 
 #### ▼ global
 
-ClusterスコープでKongPluginを有効化する。
+Cluster スコープで KongPlugin を有効化する。
 
 ```yaml
 apiVersion: configuration.konghq.com/v1
@@ -205,7 +205,7 @@ metadata:
 
 ### plugin
 
-KongIngressのプラグイン名を指定する。
+KongIngress のプラグイン名を指定する。
 
 > - https://docs.konghq.com/kubernetes-ingress-controller/latest/reference/custom-resources/#kongplugin
 

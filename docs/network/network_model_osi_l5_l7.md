@@ -17,7 +17,7 @@ description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 
 ### アプリケーション層とは
 
-アプリケーションが待ち受けるプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3など) を処理する層である。
+アプリケーションが待ち受けるプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3 など) を処理する層である。
 
 > - https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4
 
@@ -81,25 +81,25 @@ $ sudo lsof -i -P | grep LISTEN
 
 `(1)`
 
-: 送信元アプリ (例：任意のアプリ、Gmailなど) は、メールを送信する。
+: 送信元アプリ (例：任意のアプリ、Gmail など) は、メールを送信する。
 
 `(2)`
 
-: SMTPサーバー (送信元メールサーバー) は、メールを受信する。
+: SMTP サーバー (送信元メールサーバー) は、メールを受信する。
 
      なお、宛先にも仲介用のSMTPサーバーがある場合がある。
 
 `(3)`
 
-: SMTPサーバーは、メールをPOP/IMAPサーバー (宛先メールサーバー) にフォワーディングする。
+: SMTP サーバーは、メールを POP/IMAP サーバー (宛先メールサーバー) にフォワーディングする。
 
 `(4)`
 
-: POP/IMAPサーバーは、メールを保管する。
+: POP/IMAP サーバーは、メールを保管する。
 
 `(5)`
 
-: 宛先のアプリ( 例：任意のアプリ、Gmailなど) は、各々が指定したプロトコルに応じて、POP/IMAPサーバーからメールデータを定期的に取得する。
+: 宛先のアプリ( 例：任意のアプリ、Gmail など) は、各々が指定したプロトコルに応じて、POP/IMAP サーバーからメールデータを定期的に取得する。
 
 > - https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
 
@@ -107,11 +107,11 @@ $ sudo lsof -i -P | grep LISTEN
 
 アプリケーションのメール送信機能を開発するときに、送信テストを実施する必要があり、この内容は公開したくない。
 
-そこで、SMTPサーバーのモック (例：mailtrap、MailCatcher、MailDevなど) を提供するサービスを利用する。
+そこで、SMTP サーバーのモック (例：mailtrap、MailCatcher、MailDev など) を提供するサービスを利用する。
 
-このSMTPサーバーのモックは、アプリから受信したメールをPOP/IMAPサーバーにフォワーディングしない。
+この SMTP サーバーのモックは、アプリから受信したメールを POP/IMAP サーバーにフォワーディングしない。
 
-そのため、POP/IMAPサーバーにテスト用メールを送信することなく、アプリケーションは送信テストを実施できる。
+そのため、POP/IMAP サーバーにテスト用メールを送信することなく、アプリケーションは送信テストを実施できる。
 
 > - https://untitledreport.com/mailhog%E3%81%AE%E5%BE%8C%E7%B6%99fake-smtp%E3%80%81mailpit%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F/
 
@@ -125,9 +125,9 @@ $ sudo lsof -i -P | grep LISTEN
 
 #### ▼ SMTP-AUTH：SMTP AUTHentication
 
-SMTPに認証を組み込んだ仕組みのこと。
+SMTP に認証を組み込んだ仕組みのこと。
 
-クライアント (メール送信できるアプリ) からメールサーバーにメールデータをSMTP送信するとき、メールサーバーがクライアントに対して認証する。
+クライアント (メール送信できるアプリ) からメールサーバーにメールデータを SMTP 送信するとき、メールサーバーがクライアントに対して認証する。
 
 ![SMTP-AUTH](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SMTP-AUTH.png)
 
@@ -153,13 +153,13 @@ SMTPに認証を組み込んだ仕組みのこと。
 
 **＊例＊**
 
-GmailでPOPかIMAPを設定できる。
+Gmail で POP か IMAP を設定できる。
 
 ![GmailでPOPorIMAPを設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GmailでPOPかIMAPを設定.jpg)
 
 #### ▼ IMAP4の仕組み
 
-IMAPのリクエストは、`<タグ> <リクエストコマンド> <引数>` からなる。
+IMAP のリクエストは、`<タグ> <リクエストコマンド> <引数>` からなる。
 
 レスポンスは、`<タグ> <ステータス> <レスポンスコード> <メッセージ>` からなる。
 
@@ -240,7 +240,7 @@ THREAD=ORDEREDSUBJECT MULTIAPPEND
 
 ### DB接続系
 
-`L4` のプロトコルに属する独自プロトコルもある (例：Redisなど) 。
+`L4` のプロトコルに属する独自プロトコルもある (例：Redis など) 。
 
 - MySQL
 - PostgreSQL

@@ -140,9 +140,9 @@ func parentFunction(ctx context.Context) {
 
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#create-nested-spans
 
-TracerProviderの作成時だけでなく、スパンの作成のタイミングでも属性を設定できる。
+TracerProvider の作成時だけでなく、スパンの作成のタイミングでも属性を設定できる。
 
-アプリ内の全ての処理に共通する属性は、TracerProviderで設定すると良い。
+アプリ内のすべての処理に共通する属性は、TracerProvider で設定するとよい。
 
 ```go
 func parentFunction(ctx context.Context) {
@@ -194,7 +194,7 @@ func childFunction(ctx context.Context) {
 
 #### ▼ 拡張otelクライアントパッケージ
 
-標準のotelクライアントパッケージと外部ツールを連携しやすいようにしたパッケージを提供する。
+標準の otel クライアントパッケージと外部ツールを連携しやすいようにしたパッケージを提供する。
 
 #### ▼ Exporter
 
@@ -202,7 +202,7 @@ func childFunction(ctx context.Context) {
 
 #### ▼ Propagator
 
-標準のotelクライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for OpenTelemetry Collector) を、使用できるようになる。
+標準の otel クライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for OpenTelemetry Collector) を、使用できるようになる。
 
 > - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/propagators
 
@@ -214,7 +214,7 @@ func childFunction(ctx context.Context) {
 
 分散トレース収集ツールが、独自のパッケージを提供している場合がある。
 
-拡張otelクライアントパッケージとは異なり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。
+拡張 otel クライアントパッケージとは異なり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。
 
 #### ▼ AWS Distro for OpenTelemetry Collector
 
@@ -233,7 +233,7 @@ func childFunction(ctx context.Context) {
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
-ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
+ここでは、フレームワークなしで Go アプリケーションを作成しているとする。
 
 パッケージを初期化し、トレースコンテキストを抽出する。
 
@@ -445,7 +445,7 @@ func main() {
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
-Carrierにトレースコンテキストを注入し、また子スパンを作成する。
+Carrier にトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンと子スパンでスパン作成の実装方法は変わらない。
 
@@ -539,9 +539,9 @@ func main() {
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
-ここでは、フレームワークなしでGoアプリケーションを作成しているとする。
+ここでは、フレームワークなしで Go アプリケーションを作成しているとする。
 
-otelクライアントパッケージを初期化する。
+otel クライアントパッケージを初期化する。
 
 初期化の段階で、トレースコンテキストを伝播する。
 
@@ -774,7 +774,7 @@ func checkSession() gin.HandlerFunc {
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
-Carrierにトレースコンテキストを注入し、また子スパンを作成する。
+Carrier にトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンと子スパンでスパン作成の実装方法は変わらない。
 
@@ -1094,7 +1094,7 @@ func parent(ctx *gin.Context) {
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
-Carrierにトレースコンテキストを注入し、また子スパンを作成する。
+Carrier にトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンと子スパンでスパン作成の実装方法は変わらない。
 
@@ -1175,11 +1175,11 @@ func child(ctx *gin.Context) {
 
 #### ▼ ログへのID出力
 
-`trace.Span` から取得できるトレースIDはW3C Trace Context仕様である。
+`trace.Span` から取得できるトレース ID は W3C Trace Context 仕様である。
 
-そのため、もしX-Ray形式の各種IDを使用したい場合 (例：ログにX-Ray形式IDを出力したい)、変換処理が必要である。
+そのため、もし X-Ray 形式の各種 ID を使用したい場合 (例：ログに X-Ray 形式 ID を出力したい)、変換処理が必要である。
 
-ここでは、元のW3C Trace Context仕様から指定した位置の文字列を抽出し、`1-***-***` というIDを作成している。
+ここでは、元の W3C Trace Context 仕様から指定した位置の文字列を抽出し、`1-***-***` という ID を作成している。
 
 ```go
 func getXrayTraceID(span trace.Span) string {
@@ -1330,7 +1330,7 @@ func main() {
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
-Carrierにトレースコンテキストを注入し、また子スパンを作成する。
+Carrier にトレースコンテキストを注入し、また子スパンを作成する。
 
 なお、親スパンと子スパンでスパン作成の実装方法は変わらない。
 
@@ -1393,7 +1393,7 @@ func main() {
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
-gRPCを使用しない場合と実装方法は同じである。
+gRPC を使用しない場合と実装方法は同じである。
 
 ```go
 package trace
@@ -1457,9 +1457,9 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
-gRPCクライアント側では、gRPCサーバーとの接続を作成する必要がある。
+gRPC クライアント側では、gRPC サーバーとの接続を作成する必要がある。
 
-クライアント側では、ClientInterceptorを使用し、スパンの開始/終了を自動化する。
+クライアント側では、ClientInterceptor を使用し、スパンの開始/終了を自動化する。
 
 ```go
 package main
@@ -1542,7 +1542,7 @@ func main() {
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
-サーバー側では、ServerInterceptorを使用し、スパンの開始/終了を自動化する。
+サーバー側では、ServerInterceptor を使用し、スパンの開始/終了を自動化する。
 
 ```go
 package main
@@ -1818,7 +1818,7 @@ func main() {
 
 分散トレースとログを紐づけるために、ログのフィールドに `trace_id` キーや `span_id` キーを追加する。
 
-監視バックエンドによっては、W3C Trace Context仕様以外の仕様でトレースコンテキストを表示する場合があるため、その場合はIDを事前に変換しておく。
+監視バックエンドによっては、W3C Trace Context 仕様以外の仕様でトレースコンテキストを表示する場合があるため、その場合は ID を事前に変換しておく。
 
 ```go
 package log

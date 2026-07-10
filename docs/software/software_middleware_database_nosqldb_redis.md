@@ -19,7 +19,7 @@ description: Redis＠NoSQLの知見を記録しています。
 
 メモリ上にデータを保管する。
 
-揮発的なため、Redisを再起動するとデータが削除されてしまう。
+揮発的なため、Redis を再起動するとデータが削除されてしまう。
 
 > - https://qiita.com/KurosawaTsuyoshi/items/f7d74f2c60df188dbd6d
 

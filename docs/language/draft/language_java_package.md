@@ -53,9 +53,9 @@ dependencies {
 
 #### ▼ logback.xml
 
-logbackを設定する。
+logback を設定する。
 
-ここでは、slf4jを介してlogbackのロガーを使用し、LogstashEncoderで構造化する。
+ここでは、slf4j を介して logback のロガーを使用し、LogstashEncoder で構造化する。
 
 ```xml
 <configuration>

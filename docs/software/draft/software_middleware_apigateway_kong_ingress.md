@@ -27,7 +27,7 @@ description: Kong Ingress＠Kongの知見を記録しています。
 
 ### KongPluginとは
 
-KongIngressを拡張する。
+KongIngress を拡張する。
 
 > - https://docs.konghq.com/kubernetes-ingress-controller/latest/concepts/custom-resources/#kongplugin
 

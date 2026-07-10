@@ -17,7 +17,7 @@ description: コマンド＠Protocol Bufferの知見を記録しています。
 
 ### -I (--proto_path)
 
-`--proto_path` でも良い。
+`--proto_path` でもよい。
 
 `proto` ファイルのあるディレクトリを指定する。
 
@@ -46,7 +46,7 @@ $ protoc -I=. --go_out=. foo.proto
 
 #### ▼ paths
 
---プラグイン名\_optオプションのパスが絶対パスか相対パスかを設定する。
+--プラグイン名\_opt オプションのパスが絶対パスか相対パスかを設定する。
 
 ```bash
 $ protoc -I=. --go_out=. --go_opt=paths=source_relative foo.proto
@@ -115,7 +115,7 @@ $ protoc -I=. --go_out=. foo.proto
 
 ### --go-grpc_out
 
-`foo.proto` ファイルから、gRPCに対応する `foo.pb.go` ファイルをコンパイルする。
+`foo.proto` ファイルから、gRPC に対応する `foo.pb.go` ファイルをコンパイルする。
 
 ```bash
 $ protoc -I=. --go_out=. --go-grpc_out=. foo.proto

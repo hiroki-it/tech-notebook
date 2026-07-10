@@ -19,14 +19,14 @@ description: PromQL＠メトリクス
 
 #### ▼ Instant vector
 
-特定の時点の時系列データのこと。
+特定の時点のとき系列データのこと。
 
 > - https://prometheus.io/docs/prometheus/latest/querying/basics/#instant-vector-selectors
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Range vector
 
-特定の期間の時系列データのこと。
+特定の期間のとき系列データのこと。
 
 > - https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
@@ -72,7 +72,7 @@ resource.labels.pod_name=~".*pod.*"
 
 #### ▼ エスケープ
 
-正規表現で記号をエスケープする場合、Grafanaでは２つのバックスラッシュ (`\\`) を使用する。
+正規表現で記号をエスケープする場合、Grafana では２つのバックスラッシュ (`\\`) を使用する。
 
 **＊実行例＊**
 
@@ -98,7 +98,7 @@ sum(<メトリクス名>) by (<ラベル>)
 
 **例**
 
-直近1時間に関して、Istioの istio-proxyの受信リクエストのテータポイント数を、コンテナの種類ごとに集約する。
+直近 1 時間に関して、Istio の istio-proxy の受信リクエストのテータポイント数を、コンテナの種類ごとに集約する。
 
 ```bash
 sum(idelta(istio_requests_total[1h])) by (destination_app)
@@ -109,7 +109,7 @@ sum(idelta(istio_requests_total[1h])) by (destination_app)
 
 **例**
 
-任意の期間内に関して、Istioの istio-proxyの受信リクエストのテータポイント数の増加量を集約する。
+任意の期間内に関して、Istio の istio-proxy の受信リクエストのテータポイント数の増加量を集約する。
 
 ```bash
 sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__range:])) by (destination_service)
@@ -117,7 +117,7 @@ sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__r
 
 **例**
 
-任意の期間内に関して、Istioの istio-proxyの処理時間の一番高い値を集約する。
+任意の期間内に関して、Istio の istio-proxy の処理時間の一番高い値を集約する。
 
 ```bash
 max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -125,7 +125,7 @@ max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 **例**
 
-任意の期間内に関して、Istioの istio-proxyの処理時間の平均を集約する。
+任意の期間内に関して、Istio の istio-proxy の処理時間の平均を集約する。
 
 ```bash
 avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -135,7 +135,7 @@ avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 複数の種類で集約できる。
 
-直近1時間に関して、Istioの istio-proxyで収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%` 変数) を、Pod名、変数値の種類ごとに集約する。
+直近 1 時間に関して、Istio の istio-proxy で収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%` 変数) を、Pod 名、変数値の種類ごとに集約する。
 
 ```bash
 sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, response_flags)
@@ -160,11 +160,11 @@ sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, respons
 
 #### ▼ increase
 
-rate関数のラッパーであり、rate関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間当たりの増加数) を集約する。
+rate 関数のラッパーであり、rate 関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間当たりの増加数) を集約する。
 
 **＊例＊**
 
-rate関数に期間 (今回は5m) を自動的に掛けた数値を集約する。
+rate 関数に期間 (今回は 5m) を自動的に掛けた数値を集約する。
 
 ```bash
 increase(<Counter型メトリクス名>[5m])
@@ -178,7 +178,7 @@ increase(<Counter型メトリクス名>[5m])
 
 **例**
 
-Envoyに登録された全ての宛先のうち、正常なクラスターの割合を集約する。
+Envoy に登録されたすべての宛先のうち、正常なクラスターの割合を集約する。
 
 ```bash
 sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
@@ -196,9 +196,9 @@ sum(envoy_cluster_membership_healthy) / sum(envoy_cluster_membership_total)
 
 注意点として、常に同じ割合で増加していく場合には各データポイント間に差分はないので、グラフは横一直線 (ずっと `0`) になってしまう。
 
-メトリクス型がCounterの場合は `rate()` 関数で秒当たりの変化を集約し、これを `sum()` 関数で合計できる。
+メトリクス型が Counter の場合は `rate()` 関数で秒当たりの変化を集約し、これを `sum()` 関数で合計できる。
 
-一方で、Gaugeであると `rate()` 関数は使用できない。
+一方で、Gauge であると `rate()` 関数は使用できない。
 
 `rate()` 関数を使用しない場合、メトリクスの単位は『累計〇〇』になる。
 
@@ -220,7 +220,7 @@ rate(<Counter型メトリクス名>[1m]) * 60
 
 集約の時間が短い場合 (例：1m、5m) 、急激な変化の影響を受けるため、短期間の傾向を反映した値になる。
 
-リアルタイム処理が求められる場合 (CPUやメモリの使用率、ステータスコード、リクエスト数の急激な変化) は、短くする。
+リアルタイム処理が求められる場合 (CPU やメモリの使用率、ステータスコード、リクエスト数の急激な変化) は、短くする。
 
 ```bash
 # 秒当たりの平均増加率を１分間で集約する
@@ -242,18 +242,18 @@ rate(<Counter型メトリクス名>[1h])
 
 ![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
 
-`reporter="source"` の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyの先にあるアプリがレスポンスを返信する平均レスポンスタイムを集約する。
+`reporter="source"` の場合、送信元 istio-proxy からメトリクスを取得することになり、宛先 istio-proxy の先にあるアプリがレスポンスを返信する平均レスポンスタイムを集約する。
 
-`pod` ラベルから取得できるのは、送信元のPod名である。
+`pod` ラベルから取得できるのは、送信元の Pod 名である。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集約する
 rate(istio_request_duration_milliseconds_sum{reporter="source"}[5m])/ rate(istio_request_duration_milliseconds_count{reporter="source"}[5m])
 ```
 
-`reporter="destination"` の場合、宛先istio-proxyからメトリクスを取得することになり、アプリがレスポンスを返信する平均レスポンスタイムを集約する。
+`reporter="destination"` の場合、宛先 istio-proxy からメトリクスを取得することになり、アプリがレスポンスを返信する平均レスポンスタイムを集約する。
 
-`pod` ラベルから取得できるのは、宛先のPod名である。
+`pod` ラベルから取得できるのは、宛先の Pod 名である。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集約する
@@ -268,20 +268,20 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 
 ![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
 
-400ステータスのレスポンスを集約する。
+400 ステータスのレスポンスを集約する。
 
-`reporter="source"` の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信したステータスコードを集約する。
+`reporter="source"` の場合、送信元 istio-proxy からメトリクスを取得することになり、宛先 istio-proxy がアプリから受信したステータスコードを集約する。
 
-`pod` ラベルから取得できるのは、送信元のPod名である。
+`pod` ラベルから取得できるのは、送信元の Pod 名である。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集約する
 sum(rate(istio_requests_total{reporter="source", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
-`reporter="destination"` の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信したステータスコードを集約する。
+`reporter="destination"` の場合、送信元 istio-proxy からメトリクスを取得することになり、宛先 istio-proxy がアプリから受信したステータスコードを集約する。
 
-`pod` ラベルから取得できるのは、宛先のPod名である。
+`pod` ラベルから取得できるのは、宛先の Pod 名である。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集約する
@@ -297,18 +297,18 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 
 レスポンスのなかったリクエスト数 (`0` ステータス) を集約する。
 
-`reporter="source"` の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信しなかったことを集約する。
+`reporter="source"` の場合、送信元 istio-proxy からメトリクスを取得することになり、宛先 istio-proxy がアプリから受信しなかったことを集約する。
 
-`pod` ラベルから取得できるのは、送信元のPod名である。
+`pod` ラベルから取得できるのは、送信元の Pod 名である。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集約する
 sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
-`pod` ラベルから取得できるのは、宛先のPod名である。
+`pod` ラベルから取得できるのは、宛先の Pod 名である。
 
-`reporter="destination"` の場合、送信元istio-proxyからメトリクスを取得することになり、宛先 istio-proxyがアプリから受信しなかったことを集約する。
+`reporter="destination"` の場合、送信元 istio-proxy からメトリクスを取得することになり、宛先 istio-proxy がアプリから受信しなかったことを集約する。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集約する
@@ -323,7 +323,7 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"0"}[5m])) 
 
 **例**
 
-直近5分に関して、メトリクスの平均増加率 (%/秒) を集約する。
+直近 5 分に関して、メトリクスの平均増加率 (%/秒) を集約する。
 
 ```bash
 rate(<Counter型メトリクス名>[5m])
@@ -340,7 +340,7 @@ rate(<Counter型メトリクス名>[5m])
 
 ### コンテナが起動/停止しているか
 
-Prometheusでデータポイントを収集できるか否かで、コンテナの起動/停止を表す。
+Prometheus でデータポイントを収集できるか否かで、コンテナの起動/停止を表す。
 
 ```bash
 absent(container_tasks_state{name="<コンテナ名>",state="running"}) == 1
@@ -354,7 +354,7 @@ absent(container_tasks_state{name="<コンテナ名>",state="running"}) == 1
 
 ### データポイントの平均サイズ (KB/秒) の増加率
 
-Prometheusで収集したデータポイントの平均サイズ (KB/秒) の増加率を表す。
+Prometheus で収集したデータポイントの平均サイズ (KB/秒) の増加率を表す。
 
 ```bash
 # 秒当たりの平均増加率を１時間で集約する
@@ -369,7 +369,7 @@ rate(prometheus_tsdb_compaction_chunk_samples_sum[1h])
 
 ### データポイントの合計数 (個/秒) の増加率
 
-Prometheusで収集したデータポイントの合計数 (個/秒) の増加率を表す。
+Prometheus で収集したデータポイントの合計数 (個/秒) の増加率を表す。
 
 ```bash
 # 秒当たりの平均増加率を１時間で集約する
@@ -383,7 +383,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 ### データポイントの合計サイズ (KB/秒) の増加率
 
-Prometheusで収集したデータポイントの合計サイズ (KB/秒) の増加率を表す。
+Prometheus で収集したデータポイントの合計サイズ (KB/秒) の増加率を表す。
 
 計算式からもわかるように、データポイントの収集の間隔を長くすることにより、データポイント数が減るため、合計のサイズを小さくできる。
 
@@ -403,7 +403,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 
 ### データポイントの合計サイズ (KB/日) の推移
 
-Prometheusで収集したデータポイントの合計サイズ (KB/日) の推移を表す。
+Prometheus で収集したデータポイントの合計サイズ (KB/日) の推移を表す。
 
 ```bash
 # 秒当たりの平均増加率を１時間で集約する
@@ -452,13 +452,13 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 
 #### ▼ 必要データサイズ (KB/日)
 
-Prometheusで収集したデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を表す。
+Prometheus で収集したデータポイントの全サイズうち、リモートストレージに実際に送信しているサイズ (KB/日) を表す。
 
 リモート書き込みサイズではなく、送信サイズであるため、書き込みに成功していない可能性があることに注意する。
 
 この結果から、リモートストレージの必要データサイズを推測できる。
 
-補足として、リモートストレージが送信された全てのデータを保管できるとは限らないため、リモートストレージ側で必要データサイズを確認するほうがより正確である。
+補足として、リモートストレージが送信されたすべてのデータを保管できるとは限らないため、リモートストレージ側で必要データサイズを確認するほうがより正確である。
 
 ```bash
 rate(prometheus_remote_storage_bytes_total[1h]) *

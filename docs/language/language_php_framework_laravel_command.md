@@ -39,7 +39,7 @@ $ php artisan config:clear
 
 #### ▼ factory
 
-Factoryを自動的に作成する。
+Factory を自動的に作成する。
 
 ```bash
 $ php artisan make:factory <Factory名> --model=<対象とするModel名>
@@ -54,7 +54,7 @@ $ php artisan make:controller <Controller名>
 
 #### ▼ HTTP｜formRequest
 
-FormRequestクラスを自動作成する。
+FormRequest クラスを自動作成する。
 
 ```bash
 $ php artisan make:request <Request名>
@@ -62,7 +62,7 @@ $ php artisan make:request <Request名>
 
 #### ▼ HTTP｜middleware
 
-Middlewareクラスを自動作成する。
+Middleware クラスを自動作成する。
 
 ```bash
 $ php artisan make:middleware <Middleware名>
@@ -70,7 +70,7 @@ $ php artisan make:middleware <Middleware名>
 
 #### ▼ migration
 
-DBマイグレーションファイルを作成する。
+DB マイグレーションファイルを作成する。
 
 ```bash
 $ php artisan make:migration create_<テーブル名>_table
@@ -78,7 +78,7 @@ $ php artisan make:migration create_<テーブル名>_table
 
 #### ▼ model
 
-Eloquentモデルを自動作成する。
+Eloquent モデルを自動作成する。
 
 ```bash
 $ php artisan make:model <Eloquentモデル名>
@@ -86,7 +86,7 @@ $ php artisan make:model <Eloquentモデル名>
 
 #### ▼ resource
 
-Resourceクラスを自動作成する。
+Resource クラスを自動作成する。
 
 ```bash
 $ php artisan make:resource <Resource名>
@@ -94,7 +94,7 @@ $ php artisan make:resource <Resource名>
 
 #### ▼ provider
 
-Providerクラスを自動作成する。
+Provider クラスを自動作成する。
 
 ```bash
 $ php artisan make:provider <クラス名>
@@ -102,7 +102,7 @@ $ php artisan make:provider <クラス名>
 
 #### ▼ seeder
 
-Seederクラスを自動作成する。
+Seeder クラスを自動作成する。
 
 ```bash
 $ php artisan make:seeder <Seeder名>
@@ -114,7 +114,7 @@ $ php artisan make:seeder <Seeder名>
 
 #### ▼ migrateとは
 
-DBマイグレーションファイルを元にテーブルを作成する。
+DB マイグレーションファイルを元にテーブルを作成する。
 
 ```bash
 $ php artisan migrate
@@ -122,7 +122,7 @@ $ php artisan migrate
 
 コマンド実行時、以下のエラーが表示される場合もある。
 
-DBマイグレーションファイル名のスネークケースで、これがクラス名のキャメルケースと対応づけられており、ファイル名とクラス名の関係が正しくないために起こるエラーである。
+DB マイグレーションファイル名のスネークケースで、これがクラス名のキャメルケースと対応づけられており、ファイル名とクラス名の関係が正しくないために起こるエラーである。
 
 ```bash
 Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateFooTable" not found
@@ -130,7 +130,7 @@ Symfony\Component\Debug\Exception\FatalThrowableError : Class "CreateFooTable" n
 
 #### ▼ status
 
-DBマイグレーションの結果を確認する。
+DB マイグレーションの結果を確認する。
 
 ```bash
 $ php artisan migrate:status
@@ -144,7 +144,7 @@ $ php artisan migrate:status
 $ php artisan migrate:rollback --step=<ロールバック数>
 ```
 
-実際の使用場面として、DBマイグレーションに失敗した場合、1つ前の履歴にロールバックしてDBマイグレーションファイルを修正した後、再びDBマイグレーションを行う。
+実際の使用場面として、DB マイグレーションに失敗した場合、1 つ前の履歴にロールバックして DB マイグレーションファイルを修正した後、再び DB マイグレーションを行う。
 
 ```bash
 # DBマイグレーションに失敗したので、1つ前の履歴にロールバック。
@@ -158,7 +158,7 @@ $ php artisan migrate
 
 #### ▼ reset
 
-初期の状態まで、全てロールバックする。
+初期の状態まで、すべてロールバックする。
 
 ```bash
 $ php artisan migrate:reset
@@ -168,7 +168,7 @@ $ php artisan migrate:reset
 
 #### ▼ refresh
 
-全てのロールバック (`migrate:reset`) を実行し、次いで `migrate` を実行する。
+すべてのロールバック (`migrate:reset`) を実行し、次いで `migrate` を実行する。
 
 ```bash
 $ php artisan migrate:refresh
@@ -178,17 +178,17 @@ $ php artisan migrate:refresh
 
 #### ▼ fresh
 
-全てのテーブルを削除と `migrate` を実行する。
+すべてのテーブルを削除と `migrate` を実行する。
 
-DBマイグレーションファイルの構文チェックを行わずに、強制的に実行される。
+DB マイグレーションファイルの構文チェックを行わずに、強制的に実行される。
 
 ```bash
 $ php artisan migrate:fresh
 ```
 
-DBマイグレーション時、テーブルがすでに存在するエラーは発生する場合もある。
+DB マイグレーション時、テーブルがすでに存在するエラーは発生する場合もある。
 
-この場合、テーブルがDBマイグレーションされる前までロールバックし、DBマイグレーションを再実行することが最適である。
+この場合、テーブルが DB マイグレーションされる前までロールバックし、DB マイグレーションを再実行することが最適である。
 
 しかしそれが難しければ、このコマンドを実行する必要がある。
 
@@ -200,9 +200,9 @@ SQLSTATE[42S01]: <テーブル名> table or view already exists
 
 #### ▼ --force
 
-DBマイグレーション時、本当に実行して良いか確認画面 (Yes/No) が表示される。
+DB マイグレーション時、本当に実行してよいか確認画面 (Yes/No) が表示される。
 
-CI/CDパイプライン時に、この確認画面でYes/Noを入力できないため、確認画面をスキップできるようにする必要がある。
+CI/CD パイプライン時に、この確認画面で Yes/No を入力できないため、確認画面をスキップできるようにする必要がある。
 
 ```bash
 $ php artisan migrate --force
@@ -241,7 +241,7 @@ $ php artisan optimize:clear
 
 #### ▼ seed
 
-Seederを実行する。Seederを新しく作成したときやSeeder名を変更したとき、Composerの `dump-autoload` を実行する必要がある。
+Seeder を実行する。Seeder を新しく作成したときや Seeder 名を変更したとき、Composer の `dump-autoload` を実行する必要がある。
 
 ```bash
 $ composer dump-autoload

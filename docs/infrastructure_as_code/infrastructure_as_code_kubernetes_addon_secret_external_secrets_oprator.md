@@ -17,7 +17,7 @@ description: External Secrets Operator＠Secret系の知見を記録していま
 
 ### アーキテクチャ
 
-External Secrets Operatorは、external-secrets、external-secrets-controller、から構成される。
+External Secrets Operator は、external-secrets、external-secrets-controller、から構成される。
 
 ![external-secrets-operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-secrets-operator_architecture.png)
 
@@ -34,13 +34,13 @@ External Secrets Operatorは、external-secrets、external-secrets-controller、
 
 ### external-secrets-controller
 
-external-secrets-controllerは、プロバイダー (例：AWS、Google Cloud、Vault) のAPIと通信し、プロバイダーのSecretストア (例：AWS Secrets Manager、Google Cloud Secret Manager、Vault SecretsEngine) から変数を取得する。
+external-secrets-controller は、プロバイダー (例：AWS、Google Cloud、Vault) の API と通信し、プロバイダーの Secret ストア (例：AWS Secrets Manager、Google Cloud Secret Manager、Vault SecretsEngine) から変数を取得する。
 
-その後、取得した変数をSecretのデータとして注入する。
+その後、取得した変数を Secret のデータとして注入する。
 
-Secretを作成せずにPod内コンテナへマウントするSecretsストアCSIドライバーと比較して、Kubernetesとプロバイダーがより疎結合になる。
+Secret を作成せずに Pod 内コンテナへマウントする Secrets ストア CSI ドライバーと比較して、Kubernetes とプロバイダーがより疎結合になる。
 
-一方で、同様にSecretのデータとして注入するhelm-secrets/vault-helmと比較して、関係するコンポーネントが増える。そのため、脆弱性が高まる。
+一方で、同様に Secret のデータとして注入する helm-secrets/vault-helm と比較して、関係するコンポーネントが増える。そのため、脆弱性が高まる。
 
 <br>
 

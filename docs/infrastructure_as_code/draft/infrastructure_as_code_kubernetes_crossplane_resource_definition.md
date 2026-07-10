@@ -133,7 +133,7 @@ spec:
 
 ### pipeline
 
-Compositionの作成で実行される一連の処理を設定する。
+Composition の作成で実行される一連の処理を設定する。
 
 ```yaml
 apiVersion: apiextensions.crossplane.io/v1
@@ -259,7 +259,7 @@ spec:
 
 #### ▼ package
 
-Helm Releaseを管理する。
+Helm Release を管理する。
 
 ```yaml
 apiVersion: pkg.crossplane.io/v1

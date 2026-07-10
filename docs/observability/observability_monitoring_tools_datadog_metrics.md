@@ -17,9 +17,9 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 ### Processエージェントとは
 
-デーモンであるdatadogエージェントに含まれている。
+デーモンである datadog エージェントに含まれている。
 
-アプリケーションからメトリクスの元になるデータポイントを収集し、Datadogにフォワーディングする。
+アプリケーションからメトリクスの元になるデータポイントを収集し、Datadog にフォワーディングする。
 
 ![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
 
@@ -39,7 +39,7 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 ### Processエージェントとは
 
-サーバーの場合と同様にして、アプリケーションからメトリクスを受信し、Datadogにフォワーディングする。
+サーバーの場合と同様にして、アプリケーションからメトリクスを受信し、Datadog にフォワーディングする。
 
 > - https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 
@@ -51,7 +51,7 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 #### ▼ Kubernetesの場合
 
-ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverにフォワーディングする。
+Cluster やワーカーNode からメトリクスを受信し、コントロールプレーン Node の kube-apiserver にフォワーディングする。
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
 
@@ -81,13 +81,13 @@ ClusterやワーカーNodeからメトリクスを受信し、コントロール
 
 ### インテグレーションのセットアップ
 
-Datadogでインテグレーションを有効化すると同時に、アプリケーションにエージェントをインストールする。
+Datadog でインテグレーションを有効化すると同時に、アプリケーションにエージェントをインストールする。
 
 <br>
 
 ### メトリクスの削除
 
-Datadogに送信されなくなったメトリクスは、時間経過とともにDatadogから削除される。
+Datadog に送信されなくなったメトリクスは、時間経過とともに Datadog から削除される。
 
 > - https://docs.datadoghq.com/dashboards/faq/historical-data/
 

@@ -122,14 +122,14 @@ class FooController():
 
 > - https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data
 
-Depends関数について
+Depends 関数について
 
 > - https://zenn.dev/sh0nk/books/537bb028709ab9/viewer/b92ab0#di
 
 > DB接続部分にDIを利用することにより、ビジネスロジックとDBが密結合になることを防ぎます。
 
-また、DIによってこの `db` インスタンスの中身を外部からoverrideできる。
+また、DI によってこの `db` インスタンスの中身を外部から override できる。
 
-そのため、例えばテストの時に `get_db` と異なるテスト用の接続先へ置換するといったことを、プロダクションコードに触れることなく実施できる。
+そのため、例えばテストのときに `get_db` と異なるテスト用の接続先へ置換するといったことを、プロダクションコードに触れることなく実施できる。
 
 <br>

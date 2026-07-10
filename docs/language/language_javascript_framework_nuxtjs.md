@@ -15,7 +15,7 @@ description: Nuxt.js＠フレームワークの知見を記録しています。
 
 ## 01. Nuxt.jsとは
 
-Vue.jsフレームワークを使用したフレームワークである。
+Vue.js フレームワークを使用したフレームワークである。
 
 <br>
 
@@ -25,15 +25,15 @@ Vue.jsフレームワークを使用したフレームワークである。
 
 #### ▼ serverモードとは
 
-アプリケーションをSSRとして稼働させる。
+アプリケーションを SSR として稼働させる。
 
 > - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
 #### ▼ `dev`
 
-開発環境のため、SSRアプリケーションをビルドし、Nodeサーバーを起動する。
+開発環境のため、SSR アプリケーションをビルドし、Node サーバーを起動する。
 
-Webpackは使用されないため、静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) の圧縮や画像ファイル名のハッシュ化は実行されない。
+Webpack は使用されないため、静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) の圧縮や画像ファイル名のハッシュ化は実行されない。
 
 > - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-server
 
@@ -48,13 +48,13 @@ $ yarn dev
 
 #### ▼ `build`
 
-本番環境のため、JavaScriptサーバーの起動前にSSRアプリケーションのビルドを実行する。
+本番環境のため、JavaScript サーバーの起動前に SSR アプリケーションのビルドを実行する。
 
-`yarn dev` コマンドとは異なり、ビルド時にWebpackによる最適化が実行される。
+`yarn dev` コマンドとは異なり、ビルド時に Webpack による最適化が実行される。
 
 これにより、`.js` ファイルと `.css` ファイルはミニファイされる。
 
-ミニファイにより、不要な改行やインデントが削除され、パッケージの読み出し用のURLはまとめられ、圧縮される。
+ミニファイにより、不要な改行やインデントが削除され、パッケージの読み出し用の URL はまとめられ、圧縮される。
 
 画像名はハッシュ化される。
 
@@ -68,13 +68,13 @@ $ yarn build
 次の理由で、`yarn build` コマンドでしか再現できないエラーがあることに注意である
 
 - `yarn build` 時には `yarn dev` にはないミニファイという内部処理があり、その過程でフロントエンドが想定外のビルド結果になる
-- `yarn dev` ではReactのハイドレーションで起こるエラーに寛容であり、`yarn build` では厳しいため、フロントエンドで問題がないように見える
+- `yarn dev` では React のハイドレーションで起こるエラーに寛容であり、`yarn build` では厳しいため、フロントエンドで問題がないように見える
 
 #### ▼ `start`
 
-本番環境のため、`yarn build` コマンドによるビルド完了後にNodeサーバーを起動する。
+本番環境のため、`yarn build` コマンドによるビルド完了後に Node サーバーを起動する。
 
-SSRモードのために使用する。
+SSR モードのために使用する。
 
 ```bash
 # リファレンスでは nuxt startとなっているが、yarn startで問題ない。
@@ -93,19 +93,19 @@ $ yarn start
 
 #### ▼ staticモードとは
 
-アプリケーションをSSGとして稼働させる。
+アプリケーションを SSG として稼働させる。
 
 > - https://ja.nuxtjs.org/docs/2.x/get-started/commands#target-static
 
 #### ▼ `dev`
 
-開発環境でSSGアプリケーションを稼働させるために使用する。
+開発環境で SSG アプリケーションを稼働させるために使用する。
 
-Nodeサーバーを起動し、サーバー内でJavaScriptから静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を作成する。
+Node サーバーを起動し、サーバー内で JavaScript から静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を作成する。
 
-そのため、SSGモードで作成されるアプリは完全な静的ファイルでない。
+そのため、SSG モードで作成されるアプリは完全な静的ファイルでない。
 
-また、`build` コマンドとは異なり、Webpackは使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
+また、`build` コマンドとは異なり、Webpack は使用されないため、静的ファイルの圧縮や画像ファイル名のハッシュ化は実行されない。
 
 ```bash
 # リファレンスでは nuxt devとなっているが、yarn devで問題ない。
@@ -120,15 +120,15 @@ $ yarn dev
 
 #### ▼ `generate`
 
-本番環境でSSGアプリケーションを稼働させるために使用する。
+本番環境で SSG アプリケーションを稼働させるために使用する。
 
-`yarn dev` コマンドとは異なり、Nodeサーバーは起動せず、そのままJavaScriptから静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を作成する。
+`yarn dev` コマンドとは異なり、Node サーバーは起動せず、そのまま JavaScript から静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を作成する。
 
-そのため、SSGは完全な静的ファイルからなる。
+そのため、SSG は完全な静的ファイルからなる。
 
-ビルド時はバックエンドへ接続し、DBへ格納したデータ (例：画像パス) を元に静的ファイルをビルドできる。
+ビルド時はバックエンドへ接続し、DB へ格納したデータ (例：画像パス) を元に静的ファイルをビルドできる。
 
-SSGモードのために使用する。
+SSG モードのために使用する。
 
 ```bash
 # リファレンスでは nuxt generateとなっているが、yarn generateで問題ない。
@@ -154,7 +154,7 @@ $ yarn start
 
 ### ビルド時のWebpackオプション
 
-SSRモードとSSGモードで、`build` コマンド時に使用されるWebpackの最適化方法を指定できる。
+SSR モードと SSG モードで、`build` コマンド時に使用される Webpack の最適化方法を指定できる。
 
 `
 
@@ -164,7 +164,7 @@ SSRモードとSSGモードで、`build` コマンド時に使用されるWebpac
 
 ### キャッシュ削除
 
-Nuxt.jsのキャッシュは `node_modules/.cache` ディレクトリ配下に作成される。
+Nuxt.js のキャッシュは `node_modules/.cache` ディレクトリ配下に作成される。
 
 そのため、キャッシュを削除したい場合はこのディレクトリごと削除する。
 
@@ -178,7 +178,7 @@ $ rm -rf node_modules/.cache/hard-source/
 
 ### `nuxt.config.js` ファイルとは
 
-Nuxtがデフォルトで用意している設定をプロパティの設定値で上書きできる。
+Nuxt がデフォルトで用意している設定をプロパティの設定値で上書きできる。
 
 各プロパティは以下のリンクを参考にせよ。
 
@@ -198,13 +198,13 @@ const nuxtConfig: Configuration = {
 
 #### ▼ `dotenv` パッケージの利用
 
-あらかじめ、dotenvモジュールをインストールしておく。
+あらかじめ、dotenv モジュールをインストールしておく。
 
 `process.env` から `.env` ファイルの環境変数を参照する。
 
-定数に代入する場合は、まとめて代入すると良い。
+定数に代入する場合は、まとめて代入するとよい。
 
-なお、依存パッケージが増えてしまうため、代替の方法があるならそちらのほうが良い。
+なお、依存パッケージが増えてしまうため、代替の方法があるならそちらのほうがよい。
 
 ```bash
 $ npm install @nuxtjs/dotenv
@@ -289,11 +289,11 @@ const nuxtConfig: Configuration = {
 
 クライアントサイドのみで参照できる環境変数を設定する。
 
-すなわち、SSRモードのクライアント側のみが対応している。
+すなわち、SSR モードのクライアント側のみが対応している。
 
 環境変数は、`pages`、`store`、`components`、`plugin` ディレクトリで使用できる。
 
-ブラウザのJavaScriptソースタブで公開されてしまうため、機密な変数は設定しないようにする。
+ブラウザの JavaScript ソースタブで公開されてしまうため、機密な変数は設定しないようにする。
 
 もし `publicRuntimeConfig` で同じ名前の変数が設定されていた場合は、この値を上書きする。
 
@@ -333,7 +333,7 @@ export function foo() {
 
 サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する。
 
-すなわち、全モード (SSG/CSR/SSRモード) が対応している。
+すなわち、全モード (SSG/CSR/SSR モード) が対応している。
 
 環境変数は、`pages`、`store`、`components`、`plugin` ディレクトリで使用できる。
 
@@ -372,7 +372,7 @@ export function foo() {
 
 ビルド時にログを最小限にする。
 
-CIツールでログが確認できなくなるため、無効化しておいたほうが良い。
+CI ツールでログが確認できなくなるため、無効化しておいたほうがよい。
 
 ```javascript
 import {Configuration} from "@nuxt/types";
@@ -409,7 +409,7 @@ const nuxtConfig: Configuration = {
 
 ### buildModules
 
-SSG/SSRモードの `yarn dev` (開発用コマンド) 、またSSRモードの `yarn build` の時のみ、`node_module` ディレクトリ内に作成するパッケージを設定する。
+SSG/SSR モードの `yarn dev` (開発用コマンド) 、また SSR モードの `yarn build` のときのみ、`node_module` ディレクトリ内に作成するパッケージを設定する。
 
 ```javascript
 import {Configuration} from "@nuxt/types";
@@ -427,7 +427,7 @@ const nuxtConfig: Configuration = {
 
 ### `dist` ディレクトリ：`distribution`
 
-SSGモードの `generate` コマンドの実行時に、アーティファクトが配置される。
+SSG モードの `generate` コマンドの実行時に、アーティファクトが配置される。
 
 > - https://nuxtjs.org/ja/docs/directory-structure/dist
 

@@ -115,8 +115,6 @@ startup_timeout_sec = 60.0
 
 <br>
 
-
-
 ### Confluenceの場合
 
 ```toml
@@ -163,7 +161,6 @@ startup_timeout_sec = 60.0
         ├── scripts/ # スキルで呼び出すスクリプトを実装する
         └── SKILL.md # スキルを定義する
 ```
-
 
 <br>
 

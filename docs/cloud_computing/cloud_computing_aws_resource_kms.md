@@ -25,7 +25,7 @@ description: AWS KMS＠AWSリソースの知見を記録しています。
 
 ### AWSマネージド型
 
-暗号化キーを使用するAWSリソースが、ユーザーに代わって暗号化キーを管理する。
+暗号化キーを使用する AWS リソースが、ユーザーに代わって暗号化キーを管理する。
 
 暗号化キーを使用できるユーザーをキーポリシーで設定できない。
 
@@ -66,7 +66,7 @@ description: AWS KMS＠AWSリソースの知見を記録しています。
 
 ### キーポリシー
 
-AWS KMSのリクエスト制限を設定する。
+AWS KMS のリクエスト制限を設定する。
 
 **＊例＊**
 
@@ -128,7 +128,7 @@ AWS KMSのリクエスト制限を設定する。
 
 - 暗号化と復号 (`ENCRYPT_DECRYPT`)
 - 署名と検証 (`SIGN_VERIFY`)
-- MCの生成と検証 (`GENERATE_VERIFY_MAC`)
+- MC の生成と検証 (`GENERATE_VERIFY_MAC`)
 
 > - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-usage
 
@@ -146,11 +146,11 @@ AWS KMSのリクエスト制限を設定する。
 
 ### キーポリシー
 
-AWS KMSにポリシーを設定する。
+AWS KMS にポリシーを設定する。
 
-AWSマネージド型では設定できず、セルフマネージド型でのみ設定できる。
+AWS マネージド型では設定できず、セルフマネージド型でのみ設定できる。
 
-AWS KMSを使用できるユーザーやAWSリソースを制限できるようになる。
+AWS KMS を使用できるユーザーや AWS リソースを制限できるようになる。
 
 > - https://zenn.dev/m_taiki/articles/77c9542649aca0#%E7%B5%90%E8%AB%96
 

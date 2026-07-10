@@ -63,7 +63,7 @@ resources:
 
 元になるリソース定義を設定する。
 
-ここでは、Deploymentを設定する。
+ここでは、Deployment を設定する。
 
 ```yaml
 apiVersion: apps/v1
@@ -132,7 +132,7 @@ patches:
 
 **＊実装例＊**
 
-ここでは、Deploymentの差分を設定する。
+ここでは、Deployment の差分を設定する。
 
 `.spec.replicas` キー以下は `base` ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
 
@@ -145,7 +145,7 @@ spec:
   replicas: 3
 ```
 
-ここでは、Deploymentの差分を設定する。
+ここでは、Deployment の差分を設定する。
 
 `.spec.template.spec.containers[*].resources` キー以下は `base` ディレクトリ配下のリソース定義ファイルで宣言されていないため、追加処理が実行される。
 
@@ -170,11 +170,11 @@ spec:
 
 ### プラグインとは
 
-Kustomizeのプラグインには、GeneratorとTransformerの種類がある。
+Kustomize のプラグインには、Generator と Transformer の種類がある。
 
 Generator (例：SecretGenerator、ConfigMapGenerator) のプラグインは、マニフェストを作成する。
 
-一歩でTransformerは、マニフェストを部分的に書き換える。
+一歩で Transformer は、マニフェストを部分的に書き換える。
 
 > - https://github.com/kubernetes-sigs/kustomize/blob/master/examples/configureBuiltinPlugin.md
 > - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
@@ -211,9 +211,9 @@ viaduct.ai/v1/ksops/ksops
 
 #### ▼ KSOPSとは
 
-SOPSを使用して、復号したデータをSecretにデータを注入する。
+SOPS を使用して、復号したデータを Secret にデータを注入する。
 
-SOPSで使用できる暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGPなど) をKSOPSでも使用できる。
+SOPS で使用できる暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGP など) を KSOPS でも使用できる。
 
 > - https://github.com/viaduct-ai/kustomize-sops/blob/v3.0.0/README.md#argo-cd-helm-chart-with-custom-tooling
 > - https://github.com/viaduct-ai/kustomize-sops/issues/117#issuecomment-852174964
@@ -221,9 +221,9 @@ SOPSで使用できる暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、
 
 #### ▼ セットアップ
 
-シェルスクリプトを使用して、KSOPSに関するバイナリーをインストールする。
+シェルスクリプトを使用して、KSOPS に関するバイナリーをインストールする。
 
-SOPSは内蔵されており、不要である。
+SOPS は内蔵されており、不要である。
 
 ```bash
 $ curl -s https://raw.githubusercontent.com/viaduct-ai/kustomize-sops/master/scripts/install-ksops-archive.sh | bash
@@ -235,10 +235,10 @@ $ curl -s https://raw.githubusercontent.com/viaduct-ai/kustomize-sops/master/scr
 
 ### Helmとの比較
 
-なお、どのような要件でもHelmを推奨する。
+なお、どのような要件でも Helm を推奨する。
 
-Kustomizeは、変数や条件分岐の柔軟性が低いため、マニフェストが増えるにつれて共通化が大変になる。
+Kustomize は、変数や条件分岐の柔軟性が低いため、マニフェストが増えるにつれて共通化が大変になる。
 
-一方で、Helmは柔軟性が高く、共通化しやすい。
+一方で、Helm は柔軟性が高く、共通化しやすい。
 
 <br>

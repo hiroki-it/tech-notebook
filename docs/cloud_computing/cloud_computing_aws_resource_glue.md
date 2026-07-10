@@ -34,7 +34,7 @@ description: Glue＠AWSリソースの知見を記録しています。
 
 ### 高速処理
 
-Apache Sparkを使用して、大きなサイズのデータを高速に並列処理できる。
+Apache Spark を使用して、大きなサイズのデータを高速に並列処理できる。
 
 > - https://docs.aws.amazon.com/glue/latest/dg/spark_and_pyspark.html
 

@@ -25,15 +25,15 @@ argo-rollouts-controller、ダッシュボード、から構成される。
 
 ### argo-rollouts-controller
 
-Argo RolloutsリソースのReconciliationを実行する。
+Argo Rollouts リソースの Reconciliation を実行する。
 
 <br>
 
 ### ArgoCDのダッシュボードの拡張
 
-Argo RolloutsとArgoCDは異なるCluster上に独立して存在できる。
+Argo Rollouts と ArgoCD は異なる Cluster 上に独立して存在できる。
 
-ArgoCDのダッシュボードを拡張すると、ArgoCDからArgo Rolloutsを操作できるようになる。
+ArgoCD のダッシュボードを拡張すると、ArgoCD から Argo Rollouts を操作できるようになる。
 
 > - https://argo-rollouts.readthedocs.io/en/latest/FAQ/#how-does-argo-rollouts-integrate-with-argo-cd
 > - https://github.com/argoproj-labs/rollout-extension

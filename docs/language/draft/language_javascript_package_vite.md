@@ -17,7 +17,7 @@ description: vite＠JavaScriptの知見を記録しています。
 
 ### build
 
-本番環境用にJavaScriptファイルをビルドする。
+本番環境用に JavaScript ファイルをビルドする。
 
 ```bash
 $ vite build
@@ -31,7 +31,7 @@ $ vite build
 
 #### ▼ devとは
 
-開発環境用にJavaScriptファイルをビルドする。
+開発環境用に JavaScript ファイルをビルドする。
 
 ```bash
 $ vite dev
@@ -44,9 +44,9 @@ $ vite
 
 #### ▼ --host
 
-開発環境にDockerを使用している場合、viteのポートを全て公開する必要がある。
+開発環境に Docker を使用している場合、vite のポートをすべて公開する必要がある。
 
-これにより、ホストOSからコンテナ内のviteへ接続できるようにする。
+これにより、ホスト OS からコンテナ内の vite へ接続できるようにする。
 
 ```bash
 $ vite dev --host
@@ -64,7 +64,7 @@ $ vite dev --host 0.0.0.0
 
 `vite` コマンドのオプションを設定する。
 
-開発環境と本番環境で共通のオプションを設定すると良い。
+開発環境と本番環境で共通のオプションを設定するとよい。
 
 ```typescript
 import {defineConfig} from "vite";

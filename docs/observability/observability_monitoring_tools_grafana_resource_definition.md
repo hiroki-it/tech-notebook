@@ -19,7 +19,7 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 #### ▼ チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://grafana.github.io/helm-charts
@@ -34,7 +34,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/grafana -n
 
 > - https://github.com/grafana/helm-charts/tree/main/charts/grafana
 
-Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。
+Prometheus のコンポーネントとしてインストールしたい場合は、GitHub から全部入りの kube-prometheus-stack チャートをインストールし、リソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
@@ -54,7 +54,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prome
 
 #### ▼ ドキュメントから
 
-Grafanaのドキュメントから `yaml` ファイルをコピーし、`grafana.yaml` ファイルを作成する。
+Grafana のドキュメントから `yaml` ファイルをコピーし、`grafana.yaml` ファイルを作成する。
 
 これを作成する。
 
@@ -68,11 +68,11 @@ $ kubectl apply -f grafana.yaml
 
 ### ダッシュボードの公開
 
-Nodeの外からPrometheusのダッシュボードをネットワークに公開する場合、Node外からPrometheusサーバーにインバウンド通信が届くようにする必要がある。
+Node の外から Prometheus のダッシュボードをネットワークに公開する場合、Node 外から Prometheus サーバーにインバウンド通信が届くようにする必要がある。
 
 **＊実装例＊**
 
-Ingressを作成する。
+Ingress を作成する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -96,11 +96,11 @@ spec:
             pathType: Prefix
 ```
 
-IngressClassを作成する。
+IngressClass を作成する。
 
-開発環境では、IngressClassとしてNginxを使用する。
+開発環境では、IngressClass として Nginx を使用する。
 
-本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、Google Cloud CLB) を使用する。
+本番環境では、クラウドプロバイダーの IngressClass (AWS ALB、Google Cloud CLB) を使用する。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -112,7 +112,7 @@ spec:
   controller: k8s.io/ingress-nginx
 ```
 
-ClusterIP Serviceを作成する。
+ClusterIP Service を作成する。
 
 ```yaml
 apiVersion: v1
@@ -143,7 +143,7 @@ spec:
 
 ### 接続
 
-Grafanaのダッシュボードに接続できる。
+Grafana のダッシュボードに接続できる。
 
 ユーザー名は `admin`、パスワードは `prom-operator` がデフォルト値である。
 

@@ -77,9 +77,9 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 #### ▼ apiVersionとは
 
-Helmのバージョンを設定する。
+Helm のバージョンを設定する。
 
-`.apiVersion` キーの `v1` はHelmの `v2` に対応しており、`v2` は `v3` をサポートしている。
+`.apiVersion` キーの `v1` は Helm の `v2` に対応しており、`v2` は `v3` をサポートしている。
 
 ```yaml
 apiVersion: v2
@@ -94,9 +94,9 @@ apiVersion: v2
 
 #### ▼ appVersionとは
 
-Kubernetes上で稼働するアプリケーションのHelmリリースバージョンを設定する。
+Kubernetes 上で稼働するアプリケーションの Helm リリースバージョンを設定する。
 
-Helmリリースバージョンは、GitHubのHelmリリースタグで管理したほうがよく、`appVersion` キーの値は特に変更しなくても良い。
+Helm リリースバージョンは、GitHub の Helm リリースタグで管理したほうがよく、`appVersion` キーの値は特に変更しなくてもよい。
 
 公式チャートでは、チャート内で使用しているコンテナイメージのタグが `appVersion` キーに設定されている。
 
@@ -188,7 +188,7 @@ dependencies:
 
 ### kubeVersion
 
-チャート内のマニフェストが最低限対応可能なkube-apiserverのバージョンを設定する。
+チャート内のマニフェストが最低限対応可能な kube-apiserver のバージョンを設定する。
 
 ```yaml
 kubeVersion: ">=1.22.0-0"
@@ -215,7 +215,7 @@ maintainers:
 
 #### ▼ nameとは
 
-Helmで作成されるKubernetesリソースの接頭辞を設定する。
+Helm で作成される Kubernetes リソースの接頭辞を設定する。
 
 > - https://helm.sh/docs/topics/charts/#the-chartyaml-file
 
@@ -233,7 +233,7 @@ name: foo
 
 #### ▼ application
 
-Kubernetesリソースを含むチャートであることを表す。
+Kubernetes リソースを含むチャートであることを表す。
 
 ```yaml
 type: application
@@ -243,7 +243,7 @@ type: application
 
 #### ▼ library
 
-Kubernetesリソースを含まず、関数のみを含むチャートであることを表す。
+Kubernetes リソースを含まず、関数のみを含むチャートであることを表す。
 
 ```yaml
 type: library
@@ -257,7 +257,7 @@ type: library
 
 #### ▼ versionとは
 
-チャートアーカイブ (`.tgz` 形式ファイル) のHelmリリースバージョンを設定する。
+チャートアーカイブ (`.tgz` 形式ファイル) の Helm リリースバージョンを設定する。
 
 `template` ディレクトリ配下のファイルを変更した場合に更新する。
 
@@ -325,7 +325,7 @@ metadata:
 
 #### ▼ affinity
 
-チャート内のDeploymentの `.spec.template.spec.affinity` キーに値を設定する。
+チャート内の Deployment の `.spec.template.spec.affinity` キーに値を設定する。
 
 ```yaml
 affinity:
@@ -341,13 +341,13 @@ affinity:
 
 #### ▼ crd.install
 
-同じチャート内でCRDとカスタムリソースを含んでいる場合に、CRDの作成はスキップする。
+同じチャート内で CRD とカスタムリソースを含んでいる場合に、CRD の作成はスキップする。
 
-この場合、CRDを `kubectl apply` コマンドで作成することになる。
+この場合、CRD を `kubectl apply` コマンドで作成することになる。
 
-CRDはCluster内に `1` 個あれば十分であるが、Clusterに複数のHelmリリースをインストールする場合、`meta.helm.sh` キーでお互いがコンフリクトを起こしてしまう。
+CRD は Cluster 内に `1` 個あれば十分であるが、Cluster に複数の Helm リリースをインストールする場合、`meta.helm.sh` キーでお互いがコンフリクトを起こしてしまう。
 
-そのため、CRDのみHelmの管理外に配置するという必要がある。
+そのため、CRD のみ Helm の管理外に配置するという必要がある。
 
 ```yaml
 crds:
@@ -356,25 +356,25 @@ crds:
 
 #### ▼ fullnameOverride
 
-デフォルトでは、チャートのインストールによって作成されるKubernetesリソース名は、『`＜Helmリリース名＞-＜Chart名＞`』になる。
+デフォルトでは、チャートのインストールによって作成される Kubernetes リソース名は、『`＜Helmリリース名＞-＜Chart名＞`』になる。
 
 ```yaml
 fullnameOverride: foo
 ```
 
-もし、`fullnameOverride` オプションを設定していた場合、Kubernetesリソース名は『`＜fullnameOverrideオプションの値＞`』になる。
+もし、`fullnameOverride` オプションを設定していた場合、Kubernetes リソース名は『`＜fullnameOverrideオプションの値＞`』になる。
 
-補足として、チャートごとにKubernetesリソース名の前後へ特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) が付く場合もある。
+補足として、チャートごとに Kubernetes リソース名の前後へ特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) が付く場合もある。
 
 `nameOverride` オプションとは独立している。
 
 そのため、`nameOverride` オプションでチャートをインストールした後に `fullnameOverride` オプションへ移行したい場合、`nameOverride` オプションによるチャートを一度アンインストールする必要がある。
 
-しかし、そのまま `fullnameOverride` オプションに移行してしまうと、`nameOverride` オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。
+しかし、そのまま `fullnameOverride` オプションに移行してしまうと、`nameOverride` オプション時の Kubernetes リソースが残骸として残ってしまう可能性がある。
 
 #### ▼ image.pullPolicy
 
-チャート内のDeploymentの `.spec.template.spec.containers[*].imagePullPolicy` キーに値を設定する。
+チャート内の Deployment の `.spec.template.spec.containers[*].imagePullPolicy` キーに値を設定する。
 
 ```yaml
 image:
@@ -383,7 +383,7 @@ image:
 
 #### ▼ image.repository
 
-チャート内のDeploymentの `.spec.template.spec.containers[*].image` キーのリポジトリ名部分に値を設定する。
+チャート内の Deployment の `.spec.template.spec.containers[*].image` キーのリポジトリ名部分に値を設定する。
 
 ```yaml
 image:
@@ -392,20 +392,20 @@ image:
 
 #### ▼ image.tag
 
-チャート内のDeploymentの `.spec.template.spec.containers[*].image` キーのタグ値部分に値を設定する。
+チャート内の Deployment の `.spec.template.spec.containers[*].image` キーのタグ値部分に値を設定する。
 
 ```yaml
 image:
   tag: v1.0.0
 ```
 
-チャートのバージョンとコンテナイメージのバージョンには対応関係があり、基本的にはチャートの `values` ファイルで定義されているデフォルトの `image.tag` キー値を使用したほうが良い。
+チャートのバージョンとコンテナイメージのバージョンには対応関係があり、基本的にはチャートの `values` ファイルで定義されているデフォルトの `image.tag` キー値を使用したほうがよい。
 
 ただ、コンテナイメージを自前のイメージリポジトリで管理している場合は、デフォルトの `image.tag` キー値を参照してバージョンを確認し、揃えるようにする。
 
 #### ▼ imagePullSecrets
 
-チャート内のDeploymentの `.spec.template.spec.imagePullSecrets` キーに値を設定する。
+チャート内の Deployment の `.spec.template.spec.imagePullSecrets` キーに値を設定する。
 
 ```yaml
 imagePullSecrets: foo-repository-credentials-secret
@@ -413,7 +413,7 @@ imagePullSecrets: foo-repository-credentials-secret
 
 #### ▼ ingress.annotations
 
-チャート内のIngressの `.metadata.annotations` オプションに値を設定する。
+チャート内の Ingress の `.metadata.annotations` オプションに値を設定する。
 
 ```yaml
 ingress:
@@ -427,11 +427,11 @@ ingress:
   annotations: true
 ```
 
-Ingressの作成を有効化する。
+Ingress の作成を有効化する。
 
 #### ▼ ingress.hosts
 
-チャート内のIngressの `.spec.rules` キーに値を設定する。
+チャート内の Ingress の `.spec.rules` キーに値を設定する。
 
 ```yaml
 ingress:
@@ -441,7 +441,7 @@ ingress:
 
 #### ▼ ingress.tls
 
-チャート内のIngressの `.spec.tls` キーに値を設定する。
+チャート内の Ingress の `.spec.tls` キーに値を設定する。
 
 ```yaml
 ingress:
@@ -457,19 +457,19 @@ ingress:
 nameOverride: foo
 ```
 
-デフォルトでは、チャートによって作成されるKubernetesリソース名は、『`＜Helmリリース名＞-＜Chart名＞`』になる。
+デフォルトでは、チャートによって作成される Kubernetes リソース名は、『`＜Helmリリース名＞-＜Chart名＞`』になる。
 
-もし、`nameOverride` オプションを設定していた場合、Kubernetesリソース名は『`＜Helmリリース名＞-＜nameOverrideオプションの値＞`』になる。
+もし、`nameOverride` オプションを設定していた場合、Kubernetes リソース名は『`＜Helmリリース名＞-＜nameOverrideオプションの値＞`』になる。
 
-補足として、チャートごとにKubernetesリソース名の前後へ特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) が付く場合もある。
+補足として、チャートごとに Kubernetes リソース名の前後へ特定の文字列 (例：コンポーネント名、番号、インスタンスハッシュ値) が付く場合もある。
 
 `fullnameOverride` オプションとは独立しており、`fullnameOverride` オプションでチャートをインストールした後に `nameOverride` オプションへ移行したい場合、`fullnameOverride` オプションによるチャートを一度アンインストールする必要がある。
 
-しかし、そのまま `nameOverride` オプションに移行してしまうと、`fullnameOverride` オプション時のKubernetesリソースが残骸として残ってしまう可能性がある。
+しかし、そのまま `nameOverride` オプションに移行してしまうと、`fullnameOverride` オプション時の Kubernetes リソースが残骸として残ってしまう可能性がある。
 
 #### ▼ nodeSelector
 
-チャート内のDeploymentの `.spec.template.spec.nodeSelector` キーに値を設定する。
+チャート内の Deployment の `.spec.template.spec.nodeSelector` キーに値を設定する。
 
 ```yaml
 nodeSelector:
@@ -478,7 +478,7 @@ nodeSelector:
 
 #### ▼ podSecurityContext
 
-チャート内のDeploymentの `.spec.template.spec.securityContext` キーに値を設定する。
+チャート内の Deployment の `.spec.template.spec.securityContext` キーに値を設定する。
 
 ```yaml
 securityContext:
@@ -487,7 +487,7 @@ securityContext:
 
 #### ▼ replicaCount
 
-チャート内のDeploymentの `.spec.replicas` キーに値を設定する。
+チャート内の Deployment の `.spec.replicas` キーに値を設定する。
 
 ```yaml
 replicaCount: 3
@@ -495,7 +495,7 @@ replicaCount: 3
 
 #### ▼ resources
 
-チャート内のDeploymentの `.spec.template.spec.containers[*].resources` オプションに値を設定する。
+チャート内の Deployment の `.spec.template.spec.containers[*].resources` オプションに値を設定する。
 
 ```yaml
 resources:
@@ -505,7 +505,7 @@ resources:
 
 #### ▼ securityContext
 
-チャート内のDeploymentの `.spec.template.spec.containers[*].securityContext` オプションに値を設定する。
+チャート内の Deployment の `.spec.template.spec.containers[*].securityContext` オプションに値を設定する。
 
 ```yaml
 securityContext:
@@ -515,7 +515,7 @@ securityContext:
 
 #### ▼ serviceAccount.create
 
-ServiceAccountの作成を有効化する。
+ServiceAccount の作成を有効化する。
 
 ```yaml
 serviceAccount:
@@ -524,7 +524,7 @@ serviceAccount:
 
 #### ▼ serviceAccount.annotations
 
-チャート内のServiceAccountの `.metadata.annotations` オプションに値を設定する。
+チャート内の ServiceAccount の `.metadata.annotations` オプションに値を設定する。
 
 ```yaml
 serviceAccount:
@@ -534,7 +534,7 @@ serviceAccount:
 
 #### ▼ service.type
 
-チャート内のServiceの `.spec.type` キーに値を設定する。
+チャート内の Service の `.spec.type` キーに値を設定する。
 
 ```yaml
 service:
@@ -543,7 +543,7 @@ service:
 
 #### ▼ service.port
 
-チャート内のServiceの `.spec.ports.port` キーに値を設定する。
+チャート内の Service の `.spec.ports.port` キーに値を設定する。
 
 ```yaml
 service:
@@ -552,7 +552,7 @@ service:
 
 #### ▼ tolerations
 
-チャート内のDeploymentの `.spec.template.spec.tolerations` キーに値を設定する。
+チャート内の Deployment の `.spec.template.spec.tolerations` キーに値を設定する。
 
 ```yaml
 tolerations:

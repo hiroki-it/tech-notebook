@@ -15,7 +15,7 @@ description: WorkMail＠AWSリソースの知見を記録しています。
 
 ## 01. WorkMailとは
 
-Gmail、サンダーバード、Yahooメールなどと同類のメール管理アプリケーション。
+Gmail、サンダーバード、Yahoo メールなどと同類のメール管理アプリケーション。
 
 <br>
 

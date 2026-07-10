@@ -15,9 +15,9 @@ description: Amazon EFS＠AWSリソースの知見を記録しています。
 
 ## 01. Amazon EFS：Elastic File Systemとは
 
-マウントターゲットと接続された片方のEC2から、ファイルを読み出し、これをもう一方に出力する。
+マウントターゲットと接続された片方の EC2 から、ファイルを読み出し、これをもう一方に出力する。
 
-ファイルの実体はいずれかのEC2に存在しているため、接続を切断している間、片方のEC2内のファイルは無くなる。
+ファイルの実体はいずれかの EC2 に存在しているため、接続を切断している間、片方の EC2 内のファイルは無くなる。
 
 再接続すると、切断直前のファイルが再び表示されようになる。
 
@@ -66,7 +66,7 @@ description: Amazon EFS＠AWSリソースの知見を記録しています。
 
 ### プロビジョニングモードの仕組み
 
-スループット性能のオートスケーリング機能は無いが、一定の性能は保証されている。
+スループット性能のオートスケーリング機能はないが、一定の性能は保証されている。
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/provisioning-mode_credit-balance-size.png)
 
@@ -78,7 +78,7 @@ description: Amazon EFS＠AWSリソースの知見を記録しています。
 
 ### 登録
 
-`mount` コマンドを使用して、AWS EFSにマウントする。
+`mount` コマンドを使用して、AWS EFS にマウントする。
 
 ```bash
 # mount -t efs -o tls <ファイルシステムID>:<マウント元ディレクトリ> <マウントポイント>
@@ -91,9 +91,9 @@ $ mount -t efs -o tls fs-*****:/ /var/www/foo
 
 ### 解除
 
-`unmount` コマンドを使用して、AWS EFSからアンマウントする。
+`unmount` コマンドを使用して、AWS EFS からアンマウントする。
 
-`df` コマンドで、AWS EFSのDNS名と、マウントされているEC2内のディレクトリを確認した後、`unmount` コマンドを実行する。
+`df` コマンドで、AWS EFS の DNS 名と、マウントされている EC2 内のディレクトリを確認した後、`unmount` コマンドを実行する。
 
 ```bash
 $ df

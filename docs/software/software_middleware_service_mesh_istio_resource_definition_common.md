@@ -17,11 +17,11 @@ description: メタデータ＠Istioの知見を記録しています。
 
 ### istio-injection
 
-指定したNamespaceに所属するPod内へ、istio-proxyを自動的にインジェクションするか否かを設定する。
+指定した Namespace に所属する Pod 内へ、istio-proxy を自動的にインジェクションするか否かを設定する。
 
 `.metadata.labels.istio.io/rev` キーとはコンフリクトを発生させるため、どちらかしか使えない (`.metadata.labels.istio-injection` キーの値が `disabled` の場合は共存できる) 。
 
-`.metadata.labels.istio-injection` キーを使用する場合、Istioのアップグレードがインプレース方式になる。
+`.metadata.labels.istio-injection` キーを使用する場合、Istio のアップグレードがインプレース方式になる。
 
 **＊実装例＊**
 
@@ -34,7 +34,7 @@ metadata:
     istio-injection: enabled
 ```
 
-アプリケーション以外のNamespaceでは `disabled` 値を設定することが多い。
+アプリケーション以外の Namespace では `disabled` 値を設定することが多い。
 
 ```yaml
 apiVersion: v1
@@ -60,15 +60,15 @@ metadata:
 
 #### ▼ サイドカーモードの場合
 
-指定したNamespaceに所属するPod内へ、istio-proxyを自動的にインジェクションするか否かを設定する。
+指定した Namespace に所属する Pod 内へ、istio-proxy を自動的にインジェクションするか否かを設定する。
 
 また、サイドカーモードのカナリアアップグレードにも使用できる。
 
-IstoOperatorの `.spec.revision` キーと同じである。
+IstoOperator の `.spec.revision` キーと同じである。
 
 `.metadata.labels.istio-injection` キーとはコンフリクトを発生させるため、どちらかしか使えない (`.metadata.labels.istio-injection` キーの値が `disabled` の場合は共存できる) 。
 
-`.metadata.labels.istio.io/rev` キーを使用する場合、Istioのアップグレードがカナリア方式になる。
+`.metadata.labels.istio.io/rev` キーを使用する場合、Istio のアップグレードがカナリア方式になる。
 
 **＊実装例＊**
 
@@ -99,7 +99,7 @@ metadata:
 
 #### ▼ アンビエントモードの場合
 
-istio-proxyからwaypoint-proxyを作成する。
+istio-proxy から waypoint-proxy を作成する。
 
 また、アンビエントモードのカナリアアップグレードにも使用できる。
 
@@ -122,9 +122,9 @@ metadata:
 
 #### ▼ istio.io/dataplane-modeとは
 
-アンビエントモードの場合、設定したNamespaceでztunnel Podを有効化する。
+アンビエントモードの場合、設定した Namespace で ztunnel Pod を有効化する。
 
-このラベルがついているNamespaceのみで、ztunnel PodへのリダイレクトによってPodは `L4` のトラフィックを送受信できる。
+このラベルがついている Namespace のみで、ztunnel Pod へのリダイレクトによって Pod は `L4` のトラフィックを送受信できる。
 
 ```yaml
 apiVersion: v1
@@ -157,13 +157,13 @@ metadata:
 
 #### ▼ istio.io/use-waypointとは
 
-アンビエントモードの場合、設定したNamespaceでwaypoint-proxyを有効化する。
+アンビエントモードの場合、設定した Namespace で waypoint-proxy を有効化する。
 
-waypoint-proxyと紐づくGateway名 (Gateway API) を指定する。
+waypoint-proxy と紐づく Gateway 名 (Gateway API) を指定する。
 
-このラベルがついているNamespaceのみで、waypoint-proxyへのリダイレクトによってPodは `L7` のトラフィックを送受信できる。
+このラベルがついている Namespace のみで、waypoint-proxy へのリダイレクトによって Pod は `L7` のトラフィックを送受信できる。
 
-もし、`istio.io/use-waypoint` を設定したNamespaceにwaypoint-proxy (Gateway APIのNamespaceによって決まる) が一緒にいない場合は、`istio.io/use-waypoint-namespace` でwaypoint-proxyにいるNamespaceを指定する必要がある。
+もし、`istio.io/use-waypoint` を設定した Namespace に waypoint-proxy (Gateway API の Namespace によって決まる) が一緒にいない場合は、`istio.io/use-waypoint-namespace` で waypoint-proxy にいる Namespace を指定する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -185,9 +185,9 @@ metadata:
 
 #### ▼ istio.io/use-waypoint-namespaceとは
 
-`istio.io/use-waypoint` を設定したNamespaceにwaypoint-proxy (Gateway APIのNamespaceによって決まる) が一緒にいない場合は、`istio.io/use-waypoint-namespace` でwaypoint-proxyにいるNamespaceを指定する必要がある。
+`istio.io/use-waypoint` を設定した Namespace に waypoint-proxy (Gateway API の Namespace によって決まる) が一緒にいない場合は、`istio.io/use-waypoint-namespace` で waypoint-proxy にいる Namespace を指定する必要がある。
 
-例えば、`app` でGatewayとistio-waypointを作成している場合、waypoint-proxyを使用する他のNamespaceでは、`istio.io/use-namespace: app` とする。
+例えば、`app` で Gateway と istio-waypoint を作成している場合、waypoint-proxy を使用するほかの Namespace では、`istio.io/use-namespace: app` とする。
 
 ```yaml
 apiVersion: v1
@@ -228,7 +228,7 @@ metadata:
 
 #### ▼ istio.io/waypoint-forとは
 
-waypoint-proxyの宛先とするKubernetesリソースを設定する。
+waypoint-proxy の宛先とする Kubernetes リソースを設定する。
 
 - `service` (Service)
 - `workload` (Pod、Virtual Machine)
@@ -259,7 +259,7 @@ spec:
 
 ### annotationsとは
 
-Deploymentの `.spec.template` キーや、Podの `.metadata.` キーにて、istio-proxyごとのオプション値を設定する。Deploymentの `.metadata.` キーで定義しないように注意する。
+Deployment の `.spec.template` キーや、Pod の `.metadata.` キーにて、istio-proxy ごとのオプション値を設定する。Deployment の `.metadata.` キーで定義しないように注意する。
 
 > - https://istio.io/latest/docs/reference/config/annotations/
 
@@ -267,9 +267,9 @@ Deploymentの `.spec.template` キーや、Podの `.metadata.` キーにて、is
 
 ### istio.io/rev
 
-IstoOperatorの `.spec.revision` キーと同じ。
+IstoOperator の `.spec.revision` キーと同じ。
 
-特定のPodで、Istioとこれのカナリアリリースを有効化するか否かを設定する。
+特定の Pod で、Istio とこれのカナリアリリースを有効化するか否かを設定する。
 
 **＊実装例＊**
 
@@ -294,13 +294,13 @@ spec:
 
 #### ▼ proxy.istio.io/configとは
 
-istio-proxyの `envoy` プロセスの設定値を上書きし、ユーザー定義の値を設定する。
+istio-proxy の `envoy` プロセスの設定値を上書きし、ユーザー定義の値を設定する。
 
-これを使用するよりは、Istiodコントロールプレーンの `.meshConfig.defaultConfig` キーやProxyConfigの `.spec.environmentVariables` キーを使用したほうがいいかもしれない。
+これを使用するよりは、Istiod コントロールプレーンの `.meshConfig.defaultConfig` キーや ProxyConfig の `.spec.environmentVariables` キーを使用したほうがいいかもしれない。
 
-ProxyConfigが最優先であり、これらの設定はマージされる。
+ProxyConfig が最優先であり、これらの設定はマージされる。
 
-`.meshConfig.defaultConfig` キーにデフォルト値を設定しておき、ProxyConfigでNamespaceやマイクロサービスPodごとに上書きするのがよい。
+`.meshConfig.defaultConfig` キーにデフォルト値を設定しておき、ProxyConfig で Namespace やマイクロサービス Pod ごとに上書きするのがよい。
 
 #### ▼ configPath
 
@@ -332,17 +332,17 @@ spec:
 
 デフォルト値は `45` である。
 
-istio-proxy内のEnvoyプロセスは、ホットリスタート時に接続のドレイン処理を実施する。
+istio-proxy 内の Envoy プロセスは、ホットリスタート時に接続のドレイン処理を実施する。
 
 この接続のドレイン処理時間で、新しい接続を受け入れ続ける時間を設定する。
 
-Envoyの `--drain-time-s` オプションに相当する。
+Envoy の `--drain-time-s` オプションに相当する。
 
 設定した時間が短過ぎると、処理中の接続を終了することなく、強制的に切断してしまう。
 
 レースコンディションを解決するための `.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION` キーでも、同じ値を設定するとよい。
 
-似た設定の `terminationDrainDuration` は、istio-proxyの終了時のドレイン処理時間である。
+似た設定の `terminationDrainDuration` は、istio-proxy の終了時のドレイン処理時間である。
 
 ```yaml
 apiVersion: apps/v1
@@ -367,9 +367,9 @@ spec:
 
 執筆時点 (2023/10/31) ですでに廃止されている。
 
-istio-proxy上のEnvoyの親プロセスを終了するまでに待機する時間を設定する。
+istio-proxy 上の Envoy の親プロセスを終了するまでに待機する時間を設定する。
 
-Podの `.metadata.annotations.proxy.istio.io/config.terminationDrainDuration` キーよりも、最低 `5` 秒以上長くすると良い。
+Pod の `.metadata.annotations.proxy.istio.io/config.terminationDrainDuration` キーよりも、最低 `5` 秒以上長くするとよい。
 
 **＊実装例＊**
 
@@ -400,17 +400,17 @@ spec:
 
 `EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数が `false` な場合にのみ設定できる。
 
-`true` の場合は、代わりにPodの `.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION` 変数と `## EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数を設定する。
+`true` の場合は、代わりに Pod の `.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION` 変数と `## EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数を設定する。
 
-istio-proxy内のEnvoyプロセスは、終了時に接続のドレイン処理を実施する。
+istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処理を実施する。
 
 この接続のドレイン処理時間を設定する。
 
-似た設定の `drainDuration` は、istio-proxy内のEnvoyのホットリスタート時のドレイン処理時間である。
+似た設定の `drainDuration` は、istio-proxy 内の Envoy のホットリスタート時のドレイン処理時間である。
 
 **＊実装例＊**
 
-Envoyプロセスの接続のドレイン処理 `5` 秒間に実施する。
+Envoy プロセスの接続のドレイン処理 `5` 秒間に実施する。
 
 ```yaml
 apiVersion: apps/v1
@@ -436,9 +436,9 @@ spec:
 
 ### sidecar.istio.io/excludeInboundPorts、sidecar.istio.io/excludeOutboundPorts
 
-特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptablesがistio-proxyへリダイレクトしないようにする。
+特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptables が istio-proxy へリダイレクトしないようにする。
 
-例えば、Pod間でレプリケーション通信をする場合 (例：Keycloakクラスター、Redisクラスターなど) 、istio-proxyを経由する必要はない。
+例えば、Pod 間でレプリケーション通信をする場合 (例：Keycloak クラスター、Redis クラスターなど) 、istio-proxy を経由する必要はない。
 
 ```yaml
 apiVersion: apps/v1
@@ -460,7 +460,7 @@ spec:
 
 ### sidecar.istio.io/inject
 
-特定のPod (例：DB) にサイドカーを注入するか否かを設定する。
+特定の Pod (例：DB) にサイドカーを注入するか否かを設定する。
 
 **＊実装例＊**
 
@@ -485,7 +485,7 @@ spec:
 
 ### sidecar.istio.io/proxyCPU
 
-istio-proxyで使用するCPUサイズを設定する。
+istio-proxy で使用する CPU サイズを設定する。
 
 **＊実装例＊**
 
@@ -510,7 +510,7 @@ spec:
 
 ### sidecar.istio.io/proxyImage
 
-istio-proxyの作成に使用するコンテナイメージを設定する。
+istio-proxy の作成に使用するコンテナイメージを設定する。
 
 **＊実装例＊**
 
@@ -535,7 +535,7 @@ spec:
 
 ### sidecar.istio.io/proxyMemory
 
-istio-proxyで使用するメモリサイズを設定する。
+istio-proxy で使用するメモリサイズを設定する。
 
 **＊実装例＊**
 

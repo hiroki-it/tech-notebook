@@ -37,20 +37,20 @@ description: PipeCD＠CDツールの知見を記録しています。
 
 #### ▼ 同じAmazon ECS Cluster
 
-PipeCDをデプロイ先のAmazon ECS Clusterで一緒に動かす。
+PipeCD をデプロイ先の Amazon ECS Cluster で一緒に動かす。
 
-同じAmazon ECS Clusterの専用Service上でPipeCDを動かし、Gitのリポジトリをポーリングする。
+同じ Amazon ECS Cluster の専用 Service 上で PipeCD を動かし、Git のリポジトリをポーリングする。
 
 > - https://pipecd.dev/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/
 > - https://pipecd.dev/docs-v0.45.x/user-guide/managing-application/adding-an-application/
 
 #### ▼ 外部のAmazon ECS Cluster
 
-PipeCDをデプロイ先のAmazon ECS Clusterの外部で動かす。
+PipeCD をデプロイ先の Amazon ECS Cluster の外部で動かす。
 
-PipeCDは、サーバーやコンテナ (Amazon EKS、Amazon ECS、Amazon EC2) で動かせる。
+PipeCD は、サーバーやコンテナ (Amazon EKS、Amazon ECS、Amazon EC2) で動かせる。
 
-なお、デプロイ先のAmazon ECS Clusterにエージェントをインストールする必要がある。
+なお、デプロイ先の Amazon ECS Cluster にエージェントをインストールする必要がある。
 
 > - https://pipecd.dev/docs-v0.45.x/installation/install-piped/
 

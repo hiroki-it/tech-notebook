@@ -31,9 +31,9 @@ $ kc.sh build
 
 以下がデフォルトで設定されている。
 
-- HTTPが無効
+- HTTP が無効
 - ホスト名が必須
-- HTTPSが推奨
+- HTTPS が推奨
 
 ```bash
 $ kc.sh start
@@ -43,7 +43,7 @@ $ kc.sh start
 
 #### ▼ --cache-stack
 
-JGroupsのレプリケーション間通信で使用するクラスターインスタンス検出方法を設定する。
+JGroups のレプリケーション間通信で使用するクラスターインスタンス検出方法を設定する。
 
 ```bash
 $ kc.sh start --cache-stack kubernetes
@@ -59,9 +59,9 @@ $ kc.sh start --cache-stack kubernetes
 
 #### ▼ --import-realm
 
-起動時に `/opt/keycloak/data/import` ディレクトリ内のrealm定義ファイル (`<任意の名前>.json` ファイル) をインポートする。
+起動時に `/opt/keycloak/data/import` ディレクトリ内の realm 定義ファイル (`<任意の名前>.json` ファイル) をインポートする。
 
-コンテナであれば、`/opt/keycloak/data/import` ディレクトリ内にrealm定義ファイルをマウントしておく。
+コンテナであれば、`/opt/keycloak/data/import` ディレクトリ内に realm 定義ファイルをマウントしておく。
 
 ```bash
 $ kc.sh start --import-realm
@@ -87,7 +87,7 @@ $ kc.sh start --optimized
 
 以下がデフォルトで設定されている。
 
-- HTTPが有効
+- HTTP が有効
 - ホスト名が任意
 - キャッシュ設定がローカル
 - テーマキャッシュとテンプレートキャッシュが無効

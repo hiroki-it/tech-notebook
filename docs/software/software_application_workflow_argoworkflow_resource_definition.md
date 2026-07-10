@@ -41,7 +41,7 @@ spec:
 
 パイプラインの処理を設定する。
 
-WorkflowTemplateとして切り分けても良い。
+WorkflowTemplate として切り分けてもよい。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -70,7 +70,7 @@ spec:
 
 #### ▼ workflowTemplateRefとは
 
-切り分けたWorkflowTemplateの名前を設定する。
+切り分けた WorkflowTemplate の名前を設定する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -173,7 +173,7 @@ data:
 
 #### ▼ data.service
 
-通知先のURLを設定する。
+通知先の URL を設定する。
 
 ```yaml
 apiVersion: v1

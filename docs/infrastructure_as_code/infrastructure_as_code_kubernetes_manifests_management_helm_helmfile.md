@@ -17,9 +17,9 @@ description: Helmfile＠Helmの知見を記録しています。
 
 `helm` コマンドを宣言的に実行できる。
 
-ただし、ArgoCDのApplicationの `.spec.source.helm` キーでも `helm` コマンドを宣言的に実行しつつ、実行を自動化できる。
+ただし、ArgoCD の Application の `.spec.source.helm` キーでも `helm` コマンドを宣言的に実行しつつ、実行を自動化できる。
 
-そのため、できるだけArgoCDを使用したほうが良い。
+そのため、できるだけ ArgoCD を使用したほうがよい。
 
 <br>
 
@@ -31,7 +31,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 マイクロサービスをチャートの単位とみなし、マイクロサービスごとに別にディレクトリを作成する。
 
-各マイクロサービスのディレクトリには、`helmfile.d` ディレクトリを置き、ここにHelmリリース単位の `helmfile.yaml` ファイルを配置する。
+各マイクロサービスのディレクトリには、`helmfile.d` ディレクトリを置き、ここに Helm リリース単位の `helmfile.yaml` ファイルを配置する。
 
 ```yaml
 repository/
@@ -82,7 +82,7 @@ releases:
     version: <バージョンタグ>
 ```
 
-補足として、`helmfile.yaml` ファイル内でもHelmの関数を使用できる。
+補足として、`helmfile.yaml` ファイル内でも Helm の関数を使用できる。
 
 ```yaml
 environments:
@@ -231,7 +231,7 @@ helmfiles:
 
 `helmfile apply` コマンドが正常に完了しなかった場合に、自動的にロールバックする。
 
-ただし、Helmfileの自動作成機能でNamespaceは削除されずそのまま残る。
+ただし、Helmfile の自動作成機能で Namespace は削除されずそのまま残る。
 
 ```yaml
 releases:
@@ -240,7 +240,7 @@ releases:
 
 #### ▼ chart
 
-Helmリリース対象のチャートへのパスを設定する。
+Helm リリース対象のチャートへのパスを設定する。
 
 ```yaml
 releases:
@@ -249,11 +249,11 @@ releases:
 
 #### ▼ createNamespace
 
-`helm install` コマンド時にNamespaceが存在しない場合、これの作成を有効化するか否かを設定する。
+`helm install` コマンド時に Namespace が存在しない場合、これの作成を有効化するか否かを設定する。
 
-デフォルト値は `true` になっており、Helmリリース前にNamespaceを自動的に作成するようになっている。
+デフォルト値は `true` になっており、Helm リリース前に Namespace を自動的に作成するようになっている。
 
-ただし、Namespaceので出どころがわからなくなるため、Helmfileの `createNamespace` オプションは無効化し、Namespaceのマニフェストを定義しておくほうが良い。
+ただし、Namespace ので出どころがわからなくなるため、Helmfile の `createNamespace` オプションは無効化し、Namespace のマニフェストを定義しておくほうがよい。
 
 ```yaml
 releases:
@@ -281,7 +281,7 @@ releases:
         version: 1.0.0
 ```
 
-依存先チャートで `values` ファイルの指定はいらないが、extraチャート側でデフォルト値を設定しておく必要がある
+依存先チャートで `values` ファイルの指定はいらないが、extra チャート側でデフォルト値を設定しておく必要がある
 
 ```yaml
 # extraチャートのデフォルト値
@@ -330,7 +330,7 @@ releases:
 
 #### ▼ set
 
-Helmの実行時に出力する `values` の値を設定する。
+Helm の実行時に出力する `values` の値を設定する。
 
 キー名にドットを含む場合、`\` でエスケープする必要がある。
 
@@ -345,7 +345,7 @@ releases:
 
 #### ▼ name
 
-Helmリリース名を設定する。
+Helm リリース名を設定する。
 
 ```yaml
 releases:
@@ -354,7 +354,7 @@ releases:
 
 #### ▼ needs
 
-Helmリリースのインストール/アンインストールの順番を明示的に設定する。
+Helm リリースのインストール/アンインストールの順番を明示的に設定する。
 
 ```yaml
 releases:
@@ -376,11 +376,11 @@ releases:
 
 #### ▼ namespace
 
-チャートをインストールするNamespaceを設定する。
+チャートをインストールする Namespace を設定する。
 
-各マニフェストで定義できるが、実装し忘れがよく起こるため、Helmfileでまとめて指定しまうと良い。
+各マニフェストで定義できるが、実装し忘れがよく起こるため、Helmfile でまとめて指定しまうとよい。
 
-ただし、マニフェスト側だけしか見ていないと、Namespaceが指定されていないように見えるため、注意が必要である。
+ただし、マニフェスト側だけしか見ていないと、Namespace が指定されていないように見えるため、注意が必要である。
 
 ```yaml
 releases:
@@ -389,7 +389,7 @@ releases:
 
 #### ▼ values
 
-Helmの実行時に使用する上書き用の `values` ファイルを設定する。
+Helm の実行時に使用する上書き用の `values` ファイルを設定する。
 
 チャート内に置いた `values` ファイルを指定する必要はない。
 
@@ -411,7 +411,7 @@ repository/
 └── baz/ # bazサービス
 ```
 
-もし `{{ .Environment.Name }}` を使用したい場合は、`environments` キーの方でvaluesファイルを読み込ませるようにする。
+もし `{{ .Environment.Name }}` を使用したい場合は、`environments` キーのほうで values ファイルを読み込ませるようにする。
 
 ```yaml
 environments:
@@ -424,7 +424,7 @@ releases: ...
 
 #### ▼ version
 
-Helmリリースのバージョンを設定する。
+Helm リリースのバージョンを設定する。
 
 ```yaml
 releases:
@@ -453,7 +453,7 @@ releases:
 
 #### ▼ oci
 
-OCIリポジトリをチャートリポジトリとして使用する場合に、これを有効化する。
+OCI リポジトリをチャートリポジトリとして使用する場合に、これを有効化する。
 
 ```yaml
 repositories:
@@ -491,7 +491,7 @@ releases:
 
 #### ▼ url
 
-Helmリリース対象のチャートリポジトリのURLを設定する。
+Helm リリース対象のチャートリポジトリの URL を設定する。
 
 ```yaml
 repositories:
@@ -509,7 +509,7 @@ releases:
 
 ### secrets
 
-Helmの実行時に復号するSecretのファイルを設定する。
+Helm の実行時に復号する Secret のファイルを設定する。
 
 ```yaml
 secrets:
@@ -526,7 +526,7 @@ secrets:
 
 #### ▼ 同じチャートを異なるNamespaceでデプロイ
 
-`release` キー配下に同じチャートを宣言すれば、同じチャートを異なるNamespaceにデプロイできる。
+`release` キー配下に同じチャートを宣言すれば、同じチャートを異なる Namespace にデプロイできる。
 
 ```yaml
 releases:
@@ -549,7 +549,7 @@ releases:
 
 #### ▼ 事前に必要なチャートをデプロイ
 
-Istioのリソースをアプリケーションのチャートより前にデプロイする。
+Istio のリソースをアプリケーションのチャートより前にデプロイする。
 
 ```yaml
 releases:
@@ -569,7 +569,7 @@ releases:
 
 #### ▼ Istio PeerAuthentication
 
-Istio PeerAuthenticationのように、Namespace単位で作成する必要があるリソースで役立つ。
+Istio PeerAuthentication のように、Namespace 単位で作成する必要があるリソースで役立つ。
 
 ```yaml
 releases:
@@ -603,7 +603,7 @@ spec:
 
 #### ▼ Istio Telemetry
 
-Istio Telemetryのように、Namespace単位で作成する必要があるリソースで役立つ。
+Istio Telemetry のように、Namespace 単位で作成する必要があるリソースで役立つ。
 
 ```yaml
 releases:
@@ -648,7 +648,7 @@ spec:
 
 テキストファイルを相対パスで読み込み、レンダリングする。
 
-readFile関数の前で改行する、1行目に空行が入ったり、関数処理時に発生した不要な文字 (体験談：`2`) が混入したりすることに注意する。
+readFile 関数の前で改行する、1 行目に空行が入ったり、関数処理時に発生した不要な文字 (体験談：`2`) が混入したりすることに注意する。
 
 ```yaml
 apiVersion: v1
@@ -694,11 +694,11 @@ data:
 
 #### ▼ JSONファイルを読み込める
 
-Helmには `.Files.Get` 関数や `.Files.Glob` 関数がある。
+Helm には `.Files.Get` 関数や `.Files.Glob` 関数がある。
 
-これらの関数でJSONファイルを読み込もうとすると、 (なぜか) エラーになる。
+これらの関数で JSON ファイルを読み込もうとすると、 (なぜか) エラーになる。
 
-Helmfileの `readFile()` 関数ではエラーが起こらない。
+Helmfile の `readFile()` 関数ではエラーが起こらない。
 
 ```yaml
 apiVersion: v1
@@ -715,9 +715,9 @@ data:
 
 ### values.gotmplファイルとは
 
-Helmでは `values` ファイルをテンプレート化できないが、Helmfileではこれが可能である。
+Helm では `values` ファイルをテンプレート化できないが、Helmfile ではこれが可能である。
 
-`values` ファイルに、Helmfileの変数や他の `values` ファイルの値を出力する。
+`values` ファイルに、Helmfile の変数や他の `values` ファイルの値を出力する。
 
 特に、公式チャートに実行環境別の `values` ファイルを渡したい場合に役立つ。
 
@@ -725,9 +725,9 @@ Helmでは `values` ファイルをテンプレート化できないが、Helmfi
 
 ### helmfileでの指定
 
-Helmfileでは、`environments` キーの後に `releases` キーが読み込まれる。
+Helmfile では、`environments` キーの後に `releases` キーが読み込まれる。
 
-そのため、`values.yaml.gotmpl` ファイルに値を渡すための `values` ファイルは、Helmfileの `environments` キー配下で読み込まなければならない。
+そのため、`values.yaml.gotmpl` ファイルに値を渡すための `values` ファイルは、Helmfile の `environments` キー配下で読み込まなければならない。
 
 ```yaml
 environments:

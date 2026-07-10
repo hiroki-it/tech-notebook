@@ -15,9 +15,9 @@ description: ansible.cfg＠Ansibleの知見を記録しています。
 
 ## 01. `ansible.cfg` ファイル
 
-Ansible自体を設定する。
+Ansible 自体を設定する。
 
-代わりに、環境変数を使用しても良い。
+代わりに、環境変数を使用してもよい。
 
 > - http://yamada.daiji.ro/blog/?p=618
 > - https://docs.ansible.com/ansible/2.9_ja/reference_appendices/general_precedence.html#id2
@@ -60,7 +60,7 @@ remote_user = ansible
 
 #### ▼ private_key_fileとは
 
-管理対象ノードへのSSH公開鍵認証に使用する秘密鍵を設定する。
+管理対象ノードへの SSH 公開鍵認証に使用する秘密鍵を設定する。
 
 ```ini
 [defaults]
@@ -93,7 +93,7 @@ host_key_checking = False
 
 #### ▼ host_pattern_mismatchとは
 
-管理対象ノードがinventoryファイルに見つからない場合の返却値を設定する。
+管理対象ノードが inventory ファイルに見つからない場合の返却値を設定する。
 
 ```ini
 [defaults]

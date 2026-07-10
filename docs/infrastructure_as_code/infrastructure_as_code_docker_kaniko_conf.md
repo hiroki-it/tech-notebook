@@ -17,7 +17,7 @@ description: 設定ファイル＠Kanikoの知見を記録しています。
 
 ### `config.json` ファイルとは
 
-Kanikoのオプションを設定する。
+Kaniko のオプションを設定する。
 
 `/kaniko/.docker` ディレクトリに配置する。
 
@@ -44,7 +44,7 @@ Kanikoのオプションを設定する。
 
 #### ▼ 機密情報の設定
 
-CIの実行コンテナでは、機密情報を動的に設定できるようにする。
+CI の実行コンテナでは、機密情報を動的に設定できるようにする。
 
 ```bash
 $ aws ecr get-login-password --region ap-northeast-1 \

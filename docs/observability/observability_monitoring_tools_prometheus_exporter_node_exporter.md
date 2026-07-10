@@ -49,7 +49,7 @@ $ /usr/local/bin/node_exporter --web.listen-address=":9100"
 
 ### チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
@@ -63,7 +63,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus
 
 > - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
 
-複数のExporterを一括してインストールする場合、例えばkube-prometheus-stackチャートがある。
+複数の Exporter を一括してインストールする場合、例えば kube-prometheus-stack チャートがある。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
@@ -95,7 +95,7 @@ $ node_exporter --web.listen-address=':9100'
 
 ### 確認方法
 
-Node Exporterの場合は、Nodeの『`127.0.0.1:9100/metrics`』をコールすると、PromQLで使用できるメトリクスの元になるデータポイントを取得できる。
+Node Exporter の場合は、Node の『`127.0.0.1:9100/metrics`』をコールすると、PromQL で使用できるメトリクスの元になるデータポイントを取得できる。
 
 ```bash
 # Node内でコールする。
@@ -117,7 +117,7 @@ node_exporter_build_info{branch="HEAD",goversion="go1.15.8",revision="4e837d4da7
 
 ### CPU使用率
 
-NodeのCPU使用率を取得する。
+Node の CPU 使用率を取得する。
 
 ```bash
 # 秒当たりの平均増加率を１分間で集約する
@@ -130,7 +130,7 @@ rate(node_cpu_seconds_total[1m])
 
 ### メモリ使用率
 
-Nodeのメモリ使用率を取得する。
+Node のメモリ使用率を取得する。
 
 ```bash
 node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
@@ -142,7 +142,7 @@ node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
 
 ### ディスク使用率
 
-Nodeのディスク使用率を取得する。
+Node のディスク使用率を取得する。
 
 ```bash
 100 - (node_filesystem_avail_bytes / node_filesystem_size_bytes) * 100
@@ -166,7 +166,7 @@ Nodeのディスク使用率を取得する。
 
 ### ディスクのI/OによるCPU使用率
 
-ディスクのI/OによるCPU使用率 (ディスクのI/OがNodeのCPUをどの程度使用しているか) を取得する。
+ディスクの I/O による CPU 使用率 (ディスクの I/O が Node の CPU をどの程度使用しているか) を取得する。
 
 `iostat` コマンドの `%util` 指標と同じである。
 
@@ -201,13 +201,13 @@ rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_t
 
 ### パケットの受信サイズ
 
-Nodeのパケットの受信サイズを取得する。
+Node のパケットの受信サイズを取得する。
 
 ```bash
 node_network_receive_packets_total
 ```
 
-これを使用して、DDOS攻撃のアラートを作成できる。
+これを使用して、DDOS 攻撃のアラートを作成できる。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集約する

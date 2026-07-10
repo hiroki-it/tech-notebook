@@ -43,7 +43,7 @@ const router = new VueRouter({
 module.exports = router;
 ```
 
-また、vue-routerの能力を利用するために、`router` オプションをルートコンポーネントに注入する必要がある。
+また、vue-router の能力を利用するために、`router` オプションをルートコンポーネントに注入する必要がある。
 
 ```javascript
 import router from "./router";
@@ -69,7 +69,7 @@ var vm = new Vue({
 
 ### `$router` (Routerインスタンス)
 
-Webアプリ全体に1つ存在し、全体的なRouter機能を管理しているインスタンス。
+Web アプリ全体に 1 つ存在し、全体的な Router 機能を管理しているインスタンス。
 
 スタック型で履歴を保持し、履歴を行き来することにより、ページ遷移する。
 
@@ -107,6 +107,6 @@ this.$router.push({
 
 ## 02. その他のRouterパッケージ
 
-JQueryにはJQueryRouter、ReactにはReact-Routerがある。
+JQuery には JQueryRouter、React には React-Router がある。
 
 <br>

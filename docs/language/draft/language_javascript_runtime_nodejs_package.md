@@ -19,9 +19,9 @@ description: パッケージ＠Node.jsの知見を記録しています。
 
 #### ▼ pinoとは
 
-Node.jsのロガーである。
+Node.js のロガーである。
 
-Node.jsのロガーは通常バックエンドでしか使用できないが、Pino内の `pino/browser` モジュールはブラウザで使用できる。
+Node.js のロガーは通常バックエンドでしか使用できないが、Pino 内の `pino/browser` モジュールはブラウザで使用できる。
 
 #### ▼ ログ構造
 
@@ -159,9 +159,9 @@ logger.error({err: new Error("error!")}, "エラー発生");
 
 #### ▼ winstonとは
 
-Node.jsのロガーである。
+Node.js のロガーである。
 
-バックエンドのみで使用でき、Node.jsのレンダリングに関わる処理でコールしても何も起こらない。
+バックエンドのみで使用でき、Node.js のレンダリングに関わる処理でコールしても何も起こらない。
 
 ```javascript
 import * as winston from "winston";
@@ -246,7 +246,7 @@ export const logger = winston.createLogger({
 
 #### ▼ child_process
 
-子のnode.jsプロセスを実行する。
+子の node.js プロセスを実行する。
 
 ```javascript
 import spawn from "child_process";
@@ -316,7 +316,7 @@ await new Promise((resolve, reject) => {
 
 #### ▼ process.on
 
-Node.jsのプロセスのステータスに応じて、処理を実行する。
+Node.js のプロセスのステータスに応じて、処理を実行する。
 
 ```javascript
 // プロセスの終了前にクリーンアップ処理を実行する
@@ -390,7 +390,7 @@ fs.writeFile("output.txt", "書き込む内容", (err) => {
 
 ### キャッシュの作成
 
-外部のインメモリDBではなく、コンテナやサーバーのメモリ上にオブジェクトのキャッシュを作成する。
+外部のインメモリ DB ではなく、コンテナやサーバーのメモリ上にオブジェクトのキャッシュを作成する。
 
 ```javascript
 import NodeCache from "node-cache";

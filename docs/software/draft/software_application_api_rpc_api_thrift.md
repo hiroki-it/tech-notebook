@@ -15,9 +15,9 @@ description: Thrift＠RPC-APIの知見を記録しています。
 
 ## Thrift
 
-RPC-APIを実装できる。
+RPC-API を実装できる。
 
-プロトコルは、HTTP/1.1である。
+プロトコルは、HTTP/1.1 である。
 
 > - https://medium.com/devglossary/what-is-apache-thrift-is-it-the-same-as-grpc-2562dba125b0
 

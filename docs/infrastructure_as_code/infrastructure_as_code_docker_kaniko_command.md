@@ -23,7 +23,7 @@ description: コマンド＠Kanikoの知見を記録しています。
 $ /kaniko/executor --build-args "FOO=foo"
 ```
 
-オプションの値にスペースがあるとkanikoがクラッシュするため、IFSに `NULL` を設定して対処する。
+オプションの値にスペースがあると kaniko がクラッシュするため、IFS に `NULL` を設定して対処する。
 
 また、`--build-arg` の値をオプションの一部のように解釈してしまうため、`=` でオプションと値を区別させる。
 
@@ -40,7 +40,7 @@ $ /kaniko/executor --build-args="FOO=foo" --build-args="BAR='bar1 bar2 bar3'"
 
 ### --context
 
-指定したDockerfileのあるディレクトリをカレントディレクトリとして、dockerデーモンに送信するディレクトリを設定する。
+指定した Dockerfile のあるディレクトリをカレントディレクトリとして、docker デーモンに送信するディレクトリを設定する。
 
 ```bash
 $ /kaniko/executor --context=.
@@ -62,7 +62,7 @@ $ /kaniko/executor --destination=****.dkr.ecr.ap-northeast-1.amazonaws.com/kanik
 
 ### --dockerfile
 
-コンテナ内でビルドしたいDockerfileのパスを設定する。
+コンテナ内でビルドしたい Dockerfile のパスを設定する。
 
 ```bash
 $ /kaniko/executor --dockerfile=./docker/Dockerfile

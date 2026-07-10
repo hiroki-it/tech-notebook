@@ -25,7 +25,7 @@ description: Cloud Logging＠Google Cloudリソースの知見を記録してい
 
 ログを収集/保管できる。
 
-Cloud Loggingでログを処理するためのAPI (`logging.googleapis.com`) を公開している。
+Cloud Logging でログを処理するための API (`logging.googleapis.com`) を公開している。
 
 | 項目                   | 説明                                                                                                                                       |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -55,7 +55,7 @@ Cloud Loggingでログを処理するためのAPI (`logging.googleapis.com`) を
 
 #### ▼ ログシンク
 
-ログの特定の文字列を発火条件として、各種Google Cloudリソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoringなど) にログイベントを送信する。
+ログの特定の文字列を発火条件として、各種 Google Cloud リソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoring など) にログイベントを送信する。
 
 ![google_cloud_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_logging.png)
 
@@ -64,7 +64,7 @@ Cloud Loggingでログを処理するためのAPI (`logging.googleapis.com`) を
 
 #### ▼ ログシンクフィルター
 
-シンクを発火させる時のログの条件を設定する。
+シンクを発火させるときのログの条件を設定する。
 
 ```bash
 resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namespace" AND resource.labels.pod_name =~ "foo-pod" AND jsonPayload.level = ("FATAL" OR "ERROR")
@@ -86,7 +86,7 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
 
 **＊例＊**
 
-例えば、Containerdが以下のようなログを作成したとする。
+例えば、Containerd が以下のようなログを作成したとする。
 
 ログメッセージは、構造化ログになっている。
 
@@ -262,9 +262,9 @@ jsonPayload.Level = "WARN"
 
 #### ▼ 組み合わせ
 
-マイクロサービスアーキテクチャで、istio-proxyのアウトバウンド通信で発生したエラーをクエリする。
+マイクロサービスアーキテクチャで、istio-proxy のアウトバウンド通信で発生したエラーをクエリする。
 
-ここでは、宛先Clusterとして `PassthroughCluster` を指定した。
+ここでは、宛先 Cluster として `PassthroughCluster` を指定した。
 
 ```bash
 # Kubernetes上のPod内のistio-proxyコンテナ

@@ -25,7 +25,7 @@ description: kube-state-metrics＠Prometheus
 
 ### チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://prometheus-community.github.io/helm-charts
@@ -114,7 +114,7 @@ spec:
 
 #### ▼ 確認方法
 
-Node Exporterの場合は、Nodeの『`127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics`』をコールすると、PromQLで使用できるメトリクスの元になるデータポイントを取得できる。
+Node Exporter の場合は、Node の『`127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics`』をコールすると、PromQL で使用できるメトリクスの元になるデータポイントを取得できる。
 
 ```bash
 $ curl http://127.0.0.1:8001/api/v1/namespaces/kube-system/services/kube-state-metrics:http-metrics/proxy/metrics

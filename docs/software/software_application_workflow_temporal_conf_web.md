@@ -30,7 +30,7 @@ auth:
 
 ### providers
 
-IDプロバイダーを設定する。
+ID プロバイダーを設定する。
 
 ```yaml
 auth:

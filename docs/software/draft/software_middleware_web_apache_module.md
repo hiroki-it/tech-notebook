@@ -15,7 +15,7 @@ description: モジュール＠Apacheの知見を記録しています。
 
 ## 01. httpd
 
-OpenTelemetryコミュニティ製のモジュールであり、ApacheをOpenTelemetryで計装できるようにする。
+OpenTelemetry コミュニティ製のモジュールであり、Apache を OpenTelemetry で計装できるようにする。
 
 > - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/httpd
 

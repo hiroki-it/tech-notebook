@@ -15,7 +15,7 @@ description: Secret系＠リソース定義の知見を記録しています。
 
 ## 01. 専用Secret
 
-Istioの各種コンポーネントの機密な変数やファイルを管理する。
+Istio の各種コンポーネントの機密な変数やファイルを管理する。
 
 <br>
 
@@ -23,11 +23,11 @@ Istioの各種コンポーネントの機密な変数やファイルを管理す
 
 ### istio-ca-secretとは
 
-Istiodコントロールプレーンの自己署名のための証明書を管理する。
+Istiod コントロールプレーンの自己署名のための証明書を管理する。
 
-Istiodコントロールプレーンは、`istio-ca-secret` を使用して、自身がルート認証局であることを署名する。
+Istiod コントロールプレーンは、`istio-ca-secret` を使用して、自身がルート認証局であることを署名する。
 
-Istioコントロールプレーンのログから、自己署名のための証明書の作成を確認できる。
+Istio コントロールプレーンのログから、自己署名のための証明書の作成を確認できる。
 
 ```bash
 2025-01-26T11:21:09.206877Z	info	Use self-signed certificate as the CA certificate
@@ -123,9 +123,9 @@ data:
 
 ### istio-remote-secretとは
 
-複数Kubernetes Clusterメッシュを採用する場合に必要である。
+複数 Kubernetes Cluster メッシュを採用する場合に必要である。
 
-プライマリClusterがリモートClusterのkube-apiserverをコールできるように、サーバー証明書を持つ。
+プライマリ Cluster がリモート Cluster の kube-apiserver をコールできるように、サーバー証明書を持つ。
 
 > - https://istio.io/latest/docs/setup/install/multicluster/primary-remote_multi-network/
 

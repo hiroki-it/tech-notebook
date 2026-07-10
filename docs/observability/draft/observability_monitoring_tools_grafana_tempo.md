@@ -90,7 +90,7 @@ module "s3_grafana_tempo" {
 
 ## 02. アラート
 
-Grafana Tempoを条件としたアラートを作成できない。
+Grafana Tempo を条件としたアラートを作成できない。
 
 > - https://github.com/grafana/tempo/discussions/2082#discussioncomment-4898549
 

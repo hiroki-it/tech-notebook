@@ -29,9 +29,9 @@ $ apachectl configtest
 
 ### graceful
 
-Apacheを段階的に再起動する。
+Apache を段階的に再起動する。
 
-Graceful Restartできる。
+Graceful Restart できる。
 
 ```bash
 $ apachectl graceful
@@ -111,7 +111,7 @@ $ httpd -M
 
 ### -S
 
-実際に読み込まれたVirtualHostの設定を取得する。
+実際に読み込まれた VirtualHost の設定を取得する。
 
 ```bash
 $ httpd -S
@@ -125,7 +125,7 @@ $ httpd -S
 
 ### httpd configtest
 
-Apacheの設定ファイルのバリデーションを実行する。
+Apache の設定ファイルのバリデーションを実行する。
 
 ```bash
 $ service httpd configtest

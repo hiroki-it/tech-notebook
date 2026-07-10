@@ -71,7 +71,7 @@ methodA();
 
 #### ▼ 名前がドルマークのもの
 
-JavaScriptでよく見かけるドルマーク。
+JavaScript でよく見かけるドルマーク。
 
 これは、関数の名前としてドルマークを使用しているのみである。
 
@@ -84,7 +84,7 @@ function $() {
 }
 ```
 
-jQueryでは、パッケージの読み出し宣言時に、『Jquery』という名前の代わりにドルマークを使用する仕様になってる。
+jQuery では、パッケージの読み出し宣言時に、『Jquery』という名前の代わりにドルマークを使用する仕様になってる。
 
 これと混乱しないように注意する。
 
@@ -167,7 +167,7 @@ console.log(b); // undefied
 
 #### ▼ null
 
-`null` は、undefinedとは異なり、意図して代入しなければ適用されないデータ型である。
+`null` は、undefined とは異なり、意図して代入しなければ適用されないデータ型である。
 
 **＊実装例＊**
 
@@ -180,7 +180,7 @@ console.log(a); // null
 
 #### ▼ undefinedの返却
 
-undefinedを返却する場合、`return` のみを記述する。
+undefined を返却する場合、`return` のみを記述する。
 
 **＊実装例＊**
 
@@ -412,7 +412,7 @@ console.log(baz); // 3
 
 オブジェクトに対して `entires()` 関数を使用して、一度配列に変換すれば、オブジェクトでも `for  of` を使用できる。
 
-`for  in` を使用するより、こちらを使用したほうが良い。
+`for  in` を使用するより、こちらを使用したほうがよい。
 
 #### ▼ 配列の場合
 
@@ -555,15 +555,15 @@ for (const [key, value] of array.entries()) {
 
 反復処理のループを `continue` でスキップと同じ動作を、配列を処理する関数のコールバック関数の早期リターンで実現できる。
 
-`continue` を使用するより、こちらのほうが良い。
+`continue` を使用するより、こちらのほうがよい。
 
 > - https://www.deep-rain.com/programming/javascript/778#continue
 
-PHPにも、`forEach()` 関数と同様に配列に対してコールバック関数を適用する関数 (`find`、`fliter`、`map`、`reduce`、`some`) があり、用途に合わせて使い分ける。
+PHP にも、`forEach()` 関数と同様に配列に対してコールバック関数を適用する関数 (`find`、`fliter`、`map`、`reduce`、`some`) があり、用途に合わせて使い分ける。
 
 > - https://qiita.com/diescake/items/70d9b0cbd4e3d5cc6fce
 
-補足としてPHPにも、`forEach()` 関数と同じような使い方をする `array_walk()` 関数がある。
+補足として PHP にも、`forEach()` 関数と同じような使い方をする `array_walk()` 関数がある。
 
 > - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html
 
