@@ -563,7 +563,7 @@ Istio のパケット暗号化で相互 TLS を導入している場合、istio-
 
 1. Istio は、サイドカーインジェクション時、マイクロサービスの LivenessProbe ヘルスチェックと ReadinessProbe ヘルスチェックのパスを `/app-health/<コンテナ名>/livez` と `/app-health/<コンテナ名>/readyz` に書き換え、元のパスを `ISTIO_KUBE_APP_PROBERS` に保存する。
 2. kubelet は Pod に HTTP ヘルスチェックを送信する。
-3. istio-proxy は kubelet の HTTP ヘルスチェックを受信する。`ISTIO_KUBE_APP_PROBERS` から元のパスを取得し、マイクロサービスに HTTP ヘルスチェックをリダイレクトする。 istio-proxy はマイクロサービスからレスポンスを受信し、kubelet に HTTP ヘルスチェックを返信する。
+3. istio-proxy は kubelet の HTTP ヘルスチェックを受信する。`ISTIO_KUBE_APP_PROBERS` から元のパスを取得し、マイクロサービスに HTTP ヘルスチェックをリダイレクトする。続けて、istio-proxy はマイクロサービスからレスポンスを受信する。最後に、kubelet に HTTP ヘルスチェックを返信する。
 
 なお、Pod の `.metadata.annotations` に `sidecar.istio.io/rewriteAppHTTPProbers: "false"` を設定しておくと、これを無効化できる。
 

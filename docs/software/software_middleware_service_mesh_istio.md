@@ -408,9 +408,9 @@ AuthorizationPolicy で認可プロバイダー (例：Keycloak、Open Policy Ag
 クライアント証明書／サーバー証明書を提供しつつ、これを定期的に自動更新する。
 
 1. Istiod コントロールプレーンは、`istio-ca-secret` (Secret) を自己署名する。
-2. Istiod コントロールプレーンは、istio-proxy から送信された秘密鍵と証明書署名要求で署名済みのクライアント証明書／サーバー証明書を作成する。特に設定しなければ、istio-proxy の pilot-agent プロセスが、秘密鍵と証明書署名要求を自動で作成してくれる。
+2. Istiod コントロールプレーンは、istio-proxy から送信された秘密鍵と証明書署名要求で署名済みのクライアント証明書／サーバー証明書を作成する。追加設定がない場合、istio-proxy の pilot-agent プロセスが動作する。pilot-agent プロセスは秘密鍵と証明書署名要求を自動で作成する。
 3. istio-proxy からのリクエストに応じて、Istiod の SDS-API がクライアント証明書／サーバー証明書を istio-proxy に配布する。
-4. Istiod コントロールプレーンは、CA 証明書を持つ `istio-ca-root-cert` (ConfigMap) を自動的に作成する。これは、istio-proxy にマウントされ、証明書を検証するために使用する。
+4. Istiod コントロールプレーンは、CA 証明書を持つ `istio-ca-root-cert` (ConfigMap) を自動的に作成する。`istio-ca-root-cert` は istio-proxy にマウントされ、証明書を検証するために使用する。
 5. istio-proxy 間で相互 TLS 認証できるようになる。
 6. 証明書が失効すると、istio-proxy の証明書が自動的に差し代わる。Pod の再起動は不要である。
 
