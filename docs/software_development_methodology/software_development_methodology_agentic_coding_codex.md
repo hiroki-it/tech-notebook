@@ -154,7 +154,7 @@ startup_timeout_sec = 60.0
 
 ### ディレクトリ
 
-```text
+```yaml
 ~/.codex/
 └── skills
     └── create-foo
@@ -163,6 +163,7 @@ startup_timeout_sec = 60.0
         ├── scripts/ # スキルで呼び出すスクリプトを実装する
         └── SKILL.md # スキルを定義する
 ```
+
 
 <br>
 
