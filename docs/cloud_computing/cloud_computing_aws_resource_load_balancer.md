@@ -521,7 +521,7 @@ flowchart LR
 
 #### ▼ L3/L4防御
 
-Amazon EC2 Security Group をアタッチし、L3/L4（IPアドレス、プロトコル、ポート番号） を防御する。
+Amazon EC2 Security Group をアタッチし、L3/L4（IP アドレス、プロトコル、ポート番号） を防御する。
 
 ```mermaid
 flowchart LR

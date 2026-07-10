@@ -15,9 +15,9 @@ description: goldilocks＠ベストプラクティス違反の知見を記録し
 
 ## 01. goldilocksの仕組み
 
-IaCのソースコード上のCPU/メモリの設定値と、Cluster上の実際のハードウェアリソース消費量を比較して、最適な設定値 (`.spec.containers[*].resources.limits` キー) を算出できる
+IaC のソースコード上の CPU/メモリの設定値と、Cluster 上の実際のハードウェアリソース消費量を比較して、最適な設定値 (`.spec.containers[*].resources.limits` キー) を算出できる
 
-実際のClusterにリクエストしないと解析できない。
+実際の Cluster にリクエストしないと解析できない。
 
 <br>
 

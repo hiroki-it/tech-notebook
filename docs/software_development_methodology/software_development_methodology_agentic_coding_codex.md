@@ -72,7 +72,7 @@ name="<プロバイダー名>"
 wire_api="responses"
 ```
 
-MacOSでの通知スクリプトは次のとおり。
+MacOS での通知スクリプトは次のとおり。
 
 ```bash
 #!/bin/bash
@@ -98,13 +98,13 @@ osascript -e "display notification \"$SAFE_MESSAGE\" with title \"Codexの作業
 
 ### MCPサーバーとは
 
-MCPサーバー（実体はプロセス）を通じて、外部のAPIからCodexのコンテキストを取得する。
+MCP サーバー（実体はプロセス）を通じて、外部の API から Codex のコンテキストを取得する。
 
 <br>
 
 ### Chrome dev toolsの場合
 
-Codexがブラウザを読めるようになる。
+Codex がブラウザを読めるようになる。
 
 ```toml
 [mcp_servers.chrome-devtools]

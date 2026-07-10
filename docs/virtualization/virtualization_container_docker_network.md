@@ -21,19 +21,19 @@ description: ネットワーク＠Dockerの知見を記録しています。
 
 ![docker_bridge-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bridge-network.png)
 
-bridgeネットワークは、
+bridge ネットワークは、
 
 - コンテナイーサネット (`eth`)
 - 両端にネットワークインターフェースを持つ仮想イーサネット (`veth`)
 - 仮想ブリッジ (`docker0`)
-- NATルーター (iptables)
+- NAT ルーター (iptables)
 - 両端にネットワークインターフェースを持つホストイーサネット (`eth`)
 
 といったコンポーネントから構成される。
 
 ホスト上に `docker0` ブリッジを作成し、`L2` (データリンク層) で複数のコンテナ間を接続する。
 
-また、ホストのiptablesがNAPTルーターとして働き、ブリッジとホストの間を接続する。
+また、ホストの iptables が NAPT ルーターとして働き、ブリッジとホストの間を接続する。
 
 `brctl` コマンドを使用し、`docker0` ブリッジがどの仮想インターフェースと接続されているかを確認できる。
 
@@ -44,7 +44,7 @@ bridge name     bridge id               STP enabled     interfaces
 docker0         8000.02426c931c59       no              vethc06ae92
 ```
 
-仮想ネットワークインターフェースのIPアドレス
+仮想ネットワークインターフェースの IP アドレス
 
 ```bash
 docker network inspect foo-network
@@ -83,7 +83,7 @@ docker network inspect foo-network
 ]
 ```
 
-ブリッジのサブネットマスクとゲートウェイのIPアドレスは自動で割り当てられるが、明示的に設定できる。
+ブリッジのサブネットマスクとゲートウェイの IP アドレスは自動で割り当てられるが、明示的に設定できる。
 
 ```bash
 $ docker network create foo-network --subnet=172.18.0.0/16 --gateway=172.18.0.1
@@ -97,9 +97,9 @@ $ docker network create foo-network --subnet=172.18.0.0/16 --gateway=172.18.0.1
 
 サーバーに対するリクエストがコンテナに届くまでを以下に示す。
 
-サーバーの `8080` 番ポートと、WWWコンテナの `80` 番ポートのアプリケーションの間で、ポートフォワーディングを行う。
+サーバーの `8080` 番ポートと、WWW コンテナの `80` 番ポートのアプリケーションの間で、ポートフォワーディングを行う。
 
-これにより、『`http://<サーバーのプライベートIPアドレス (localhost) >:8080`』へリクエストを送信すると、WWWコンテナのポート番号へフォワーディングされる。
+これにより、『`http://<サーバーのプライベートIPアドレス (localhost) >:8080`』へリクエストを送信すると、WWW コンテナのポート番号へフォワーディングされる。
 
 | 処理場所           | リクエストの流れ                   | プライベートIPアドレス例                                      | ポート番号例 |
 | :----------------- | :--------------------------------- | :------------------------------------------------------------ | ------------ |
@@ -136,11 +136,11 @@ NETWORK ID          NAME                    DRIVER              SCOPE
 
 ![docker_host-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_host-network.png)
 
-hostネットワークは、コンテナのネットワークインターフェース (`eth`) 、ホストのネットワークインターフェース (`eth*`) 、といったコンポーネントから構成される。
+host ネットワークは、コンテナのネットワークインターフェース (`eth`) 、ホストのネットワークインターフェース (`eth*`) 、といったコンポーネントから構成される。
 
 特定のコンテナとホストを直接的に接続する。
 
-コンテナのIPアドレスは、ホストのIPアドレスになる。
+コンテナの IP アドレスは、ホストの IP アドレスになる。
 
 ```bash
 $ docker network list
@@ -190,7 +190,7 @@ $ curl --fail http://127.0.0.1:8080
 
 **＊例＊**
 
-『アプリコンテナ』から『Webコンテナ』に対して、リクエストを送信し、アプリコンテナとWebコンテナの間の成否を確認する。
+『アプリコンテナ』から『Web コンテナ』に対して、リクエストを送信し、アプリコンテナと Web コンテナの間の成否を確認する。
 
 ```bash
 # コンテナ内で実行

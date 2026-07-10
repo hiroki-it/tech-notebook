@@ -17,7 +17,7 @@ description: コマンド＠Containerdの知見を記録しています。
 
 ### pods
 
-KubernetesのNode内で `crictl` コマンドを実行している場合に、Node内で稼働するPodを取得する。
+Kubernetes の Node 内で `crictl` コマンドを実行している場合に、Node 内で稼働する Pod を取得する。
 
 > - https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-pods
 

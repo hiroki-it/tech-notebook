@@ -17,14 +17,14 @@ description: confest＠コード規約違反の知見を記録しています。
 
 ### 検出項目
 
-Regoによるユーザー定義のポリシーに基づいて、さまざまなツールの設定ファイルのコード規約違反を検証する。
+Rego によるユーザー定義のポリシーに基づいて、さまざまなツールの設定ファイルのコード規約違反を検証する。
 
 自由にコード規約を定義でき、ほかの静的解析ツールの項目を網羅できる。
 
 - ベストプラクティス
-- 非推奨apiVersion検出
+- 非推奨 apiVersion 検出
 
-一方でビルトインのコード規約はなく、ユーザーがRegoで規約を実装しないといけない。
+一方でビルトインのコード規約はなく、ユーザーが Rego で規約を実装しないといけない。
 
 > - https://github.com/open-policy-agent/conftest
 > - https://www.conftest.dev/examples/
@@ -96,7 +96,7 @@ violation[msg] {
 
 #### ▼ -p
 
-Regoファイルのあるディレクトリ名を設定する。
+Rego ファイルのあるディレクトリ名を設定する。
 
 ```bash
 $ conftest test deployment.yaml -p ./policies

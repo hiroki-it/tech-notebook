@@ -210,7 +210,7 @@ graph LR
 ```
 ````
 
-3. `./docs/<機能名>/`のディレクトリに新機能全体のコンポーネント図を`component-diagram.mmd`の名前で作成する。次はその例である。
+3. `./docs/<機能名>/` のディレクトリに新機能全体のコンポーネント図を `component-diagram.mmd` の名前で作成する。次はその例である。
 
 ```mermaid
 flowchart LR

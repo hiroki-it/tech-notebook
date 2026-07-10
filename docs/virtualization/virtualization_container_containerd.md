@@ -21,7 +21,7 @@ description: Containerd＠仮想化の知見を記録しています。
 
 ## 02. 設定ファイル
 
-Containerdはデーモンとして稼働させる必要があるため、ユニットファイルで実行を定義する。
+Containerd はデーモンとして稼働させる必要があるため、ユニットファイルで実行を定義する。
 
 ```ini
 [Unit]
@@ -62,9 +62,9 @@ WantedBy=multi-user.target
 
 ### 形式
 
-Containerdは、テキスト形式ログを作成する。
+Containerd は、テキスト形式ログを作成する。
 
-ログメッセージの箇所が文字列またはJSONの場合がある。
+ログメッセージの箇所が文字列または JSON の場合がある。
 
 <br>
 
@@ -102,7 +102,7 @@ Containerdは、テキスト形式ログを作成する。
 
 ### Dockerのログとの比較
 
-Dockerは、`json` 形式をログを作成する。
+Docker は、`json` 形式をログを作成する。
 
 ```yaml
 {

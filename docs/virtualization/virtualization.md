@@ -54,9 +54,9 @@ description: 仮想化の知見を記録しています。
 
 ![ハイパーバイザー型仮想化](https://user-images.githubusercontent.com/42175286/60386395-3afbd080-9acf-11e9-9fbe-6287753cb43a.png)
 
-物理サーバーのBIOSから起動したハイパーバイザー上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー (マシン) を作成する。
+物理サーバーの BIOS から起動したハイパーバイザー上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー (マシン) を作成する。
 
-この時、ホストは使用しない。
+このとき、ホストは使用しない。
 
 #### ▼ Provider例
 
@@ -70,7 +70,7 @@ description: 仮想化の知見を記録しています。
 
 ### OS仮想化とは
 
-物理サーバー上で、ソフトウェアであるOSを部分的に仮想化しつつ、各仮想環境でハードウェアは共有する。
+物理サーバー上で、ソフトウェアである OS を部分的に仮想化しつつ、各仮想環境でハードウェアは共有する。
 
 > - https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization\
 > - https://www.paloaltonetworks.jp/company/in-the-news/2019/making-containers-more-isolated-an-overview-of-sandboxed-container-technologies
@@ -83,7 +83,7 @@ description: 仮想化の知見を記録しています。
 
 ![コンテナ型仮想化](https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png)
 
-物理サーバーのホスト上で、OSのユーザー空間を分割し、独立した各ユーザー空間上でコンテナを作成する。
+物理サーバーのホスト上で、OS のユーザー空間を分割し、独立した各ユーザー空間上でコンテナを作成する。
 
 > - https://www.undercoverlog.com/entry/2018/10/01/Docker%E3%81%AE%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93/cgroups%EF%BC%89
 
@@ -104,9 +104,9 @@ description: 仮想化の知見を記録しています。
 
 ### セットアップの速さの違い
 
-ホスト型とハイパーバイザ型では、ハードウェア要素 (例：CPU、メモリ、ストレージ) とソフトウェア (例：ゲストOS) を仮想化する必要がある。
+ホスト型とハイパーバイザ型では、ハードウェア要素 (例：CPU、メモリ、ストレージ) とソフトウェア (例：ゲスト OS) を仮想化する必要がある。
 
-一方で、コンテナ型では、OSのユーザー空間を分割するだけのため、仮想化のセットアップが速い。
+一方で、コンテナ型では、OS のユーザー空間を分割するだけのため、仮想化のセットアップが速い。
 
 ![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想化の比較.png)
 
@@ -116,7 +116,7 @@ description: 仮想化の知見を記録しています。
 
 #### ▼ オーバーヘッドの小ささ
 
-ゲストOS上のアプリケーションを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。
+ゲスト OS 上のアプリケーションを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。
 
 この分だけ、時間 (オーバーヘッド) を要する。
 
@@ -126,7 +126,7 @@ description: 仮想化の知見を記録しています。
 
 #### ▼ オーバーヘッドの比較
 
-sysbenchというベンチマークツールを使用して、CPU・メモリ・I/O処理に着目し、物理サーバー・コンテナ型仮想化 (Docker) ・ホスト型仮想化 (VirtualBox) の性能を比較すると、コンテナ型であるDockerはもっともオーバーヘッドが小さい。
+sysbench というベンチマークツールを使用して、CPU・メモリ・I/O 処理に着目し、物理サーバー・コンテナ型仮想化 (Docker) ・ホスト型仮想化 (VirtualBox) の性能を比較すると、コンテナ型である Docker はもっともオーバーヘッドが小さい。
 
 > - https://codezine.jp/article/detail/7894
 

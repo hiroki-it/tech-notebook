@@ -55,7 +55,7 @@ $ pip install pytest-playwright
 
 ### JavaScriptの場合
 
-実際のユーザーを模した一連の操作をJavaScriptのコードで表現する。
+実際のユーザーを模した一連の操作を JavaScript のコードで表現する。
 
 ```javascript
 import {test, expect} from "@playwright/test";
@@ -142,7 +142,7 @@ test("Post タイトルと作成者確認", async ({page}) => {
 
 ### Pythonの場合
 
-実際のユーザーを模した一連の操作をPythonのコードで表現する。
+実際のユーザーを模した一連の操作を Python のコードで表現する。
 
 ```python
 import re
