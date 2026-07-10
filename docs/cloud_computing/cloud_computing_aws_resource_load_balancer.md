@@ -480,7 +480,7 @@ TID_123456
 
 ### L7防御
 
-AWS WAF を使用して、L7 を防御する。
+AWS WAF をアタッチし、L7 を防御する。
 
 <br>
 
@@ -521,6 +521,16 @@ flowchart LR
 
 #### ▼ L3/L4防御
 
-Amazon EC2 Security Group を使用して、L3/L4（IPアドレス、プロトコル、ポート番号） を防御する。
+Amazon EC2 Security Group をアタッチし、L3/L4（IPアドレス、プロトコル、ポート番号） を防御する。
+
+```mermaid
+flowchart LR
+    Route53
+    NLB[NLB with SG]
+    ALB[internal ALB]
+    EKS
+
+    Route53 --> NLB --> ALB --> EKS
+```
 
 <br>

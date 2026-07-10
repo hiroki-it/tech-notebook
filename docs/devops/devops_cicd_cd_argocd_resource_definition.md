@@ -850,7 +850,7 @@ Application 自体もカスタムリソースなため、Application が Applica
 
 | ステータス名 | 説明                                                                                                                                                                   |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Healthy      | すべてのKubernetesリソースは正常に稼働している。                                                                                                                         |
+| Healthy      | すべてのKubernetesリソースは正常に稼働している。                                                                                                                       |
 | Progressing  | 一部のKubernetesリソースは正常に稼働していないが、リソースの状態が変化中のため、正常になる可能性がある。この状態の場合は、ステータスが他のいずれかになるまで待機する。 |
 | Degraded     | 一部のKubernetesリソースは正常に稼働していない。                                                                                                                       |
 | Suspended    | 一部のKubernetesリソースは、イベント (例：CronJobなど) が実行されることを待機している。                                                                                |
@@ -998,10 +998,10 @@ spec:
 
 また、マニフェストリポジトリにチャートを配置している場合でも、チャートリポジトリと同様にチャートを扱える。
 
-| 設定項目  | 説明                                                                                                                                                                               |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `include` | `.spec.source.path` キーで指定したディレクトリ内で、特定のマニフェストのみを指定し、kube-apiserverに送信する                                                                       |
-| `exclude` | `.spec.source.path` キーで指定したディレクトリ内で、特定のマニフェストを除外し、kube-apiserverに送信する                                                                           |
+| 設定項目  | 説明                                                                                                                                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `include` | `.spec.source.path` キーで指定したディレクトリ内で、特定のマニフェストのみを指定し、kube-apiserverに送信する                                                                         |
+| `exclude` | `.spec.source.path` キーで指定したディレクトリ内で、特定のマニフェストを除外し、kube-apiserverに送信する                                                                             |
 | `recurse` | `.spec.source.path` キーで指定したディレクトリにサブディレクトリが存在している場合、すべてのマニフェストを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。 |
 
 ```yaml
@@ -1644,7 +1644,7 @@ GitOps でのマニフェストの Sync 処理の詳細を設定する。
 | `CreateNamespace`        | Applicationの作成対象のNamespaceを自動的に作成する。                                                                                                                                   | Namespaceので出どころがわからなくなるため、ArgoCDの `createNamespace` オプションは無効化し、Namespaceのマニフェストを定義しておくほうがよい。                                                                     |
 | `Validate`               |                                                                                                                                                                                        |                                                                                                                                                                                                                   |
 | `PrunePropagationPolicy` | Sync後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、KubernetesでのKubernetesリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファンがある。 | ・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
-| `PruneLast`              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度すべてのKubernetesリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。   | ・https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                    |
+| `PruneLast`              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度すべてのKubernetesリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。 | ・https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                    |
 | `ServerSideApply`        | Sync時、`kubectl apply` コマンド `--server-side` オプションを有効化する。                                                                                                              | ・https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply                                                                                                                             |
 
 ```yaml
