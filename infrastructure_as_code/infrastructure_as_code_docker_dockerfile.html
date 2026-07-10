@@ -34613,7 +34613,7 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="apt">▼ aptリポジトリから<a class="headerlink" href="#apt" title="Permanent link">&para;</a></h4>
-<p>Dockerエンジン、CLI、インストールする。</p>
+<p>Docker エンジン、CLI、インストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>docker-ce<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>docker-ce-cli
@@ -34636,7 +34636,7 @@
 <p><strong>＊例＊</strong></p>
 <p>ビルドに失敗したコンテナイメージからコンテナを作成し、接続する。</p>
 <p><code>rm</code> オプションを設定し、接続の切断後にコンテナを削除する。</p>
-<p>Dockerfileで、コンテナイメージのプロセスの起動コマンドを <code>ENTRYPOINT</code> で設定している場合は、後から上書きできなくなる。</p>
+<p>Dockerfile で、コンテナイメージのプロセスの起動コマンドを <code>ENTRYPOINT</code> で設定している場合は、後から上書きできなくなる。</p>
 <p>そのため、<code>docker run</code> コマンドの引数として新しいコマンドを渡せずに、デバッグできないことがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-it<span class="w"> </span>&lt;ビルドに失敗したコンテナイメージID&gt;<span class="w"> </span>/bin/bash
 </code></pre></div>
@@ -34647,7 +34647,7 @@
 <h2 id="02-add">02. ADD<a class="headerlink" href="#02-add" title="Permanent link">&para;</a></h2>
 <h3 id="add">ADDとは<a class="headerlink" href="#add" title="Permanent link">&para;</a></h3>
 <p>ホスト側のファイルを、コンテナの指定ディレクトリ配下にコピーし、このファイルが <code>tar</code> ファイルの場合は解凍する。</p>
-<p>また、URLを直接的に指定して、ダウンロードから解凍までを実行もできる。</p>
+<p>また、URL を直接的に指定して、ダウンロードから解凍までを実行もできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/engine/reference/builder/#add">https://docs.docker.com/engine/reference/builder/#add</a></li>
@@ -34657,10 +34657,10 @@
 <h3 id="copy">COPYとの違い<a class="headerlink" href="#copy" title="Permanent link">&para;</a></h3>
 <p>似た命令として <code>COPY</code> 処理がある。</p>
 <p><code>ADD</code> 処理は <code>COPY</code> 処理とは異なり、インターネットからファイルをダウンロードして解凍したうえで、コピーする。</p>
-<p>解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、<code>COPY</code> 処理が推奨である。</p>
+<p>解凍によって意図しないファイルが Dockerfile に組み込まれる可能性があるため、<code>COPY</code> 処理が推奨である。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>以下では <code>ADD</code> 処理を使用している。</p>
-<p>URLを直接的に指定し、ダウンロードから解凍までを実行している。</p>
+<p>URL を直接的に指定し、ダウンロードから解凍までを実行している。</p>
 <div class="highlight"><pre><span></span><code><span class="k">ADD</span><span class="w"> </span>http://example.com/big.tar.xz<span class="w"> </span>/usr/src/things/
 <span class="k">RUN</span><span class="w"> </span>tar<span class="w"> </span>-xJf<span class="w"> </span>/usr/src/things/big.tar.xz<span class="w"> </span>-C<span class="w"> </span>/usr/src/things
 <span class="k">RUN</span><span class="w"> </span>make<span class="w"> </span>-C<span class="w"> </span>/usr/src/things<span class="w"> </span>all
@@ -34679,7 +34679,7 @@
 <p><br></p>
 <h2 id="03-arg">03. ARG<a class="headerlink" href="#03-arg" title="Permanent link">&para;</a></h2>
 <h3 id="arg">ARGとは<a class="headerlink" href="#arg" title="Permanent link">&para;</a></h3>
-<p>Dockerfileの命令で扱える変数を定義する。</p>
+<p>Dockerfile の命令で扱える変数を定義する。</p>
 <p><br></p>
 <h3 id="env">ENVとの違い<a class="headerlink" href="#env" title="Permanent link">&para;</a></h3>
 <p>似た命令として <code>ENV</code> がある。</p>
@@ -34693,7 +34693,7 @@
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">&quot;3.8.0&quot;</span>
 <span class="k">RUN</span><span class="w"> </span>pyenv<span class="w"> </span>install<span class="w"> </span><span class="si">${</span><span class="nv">PYTHON_VERSION</span><span class="si">}</span>
 </code></pre></div>
-<p>一方で、Dockerfileの命令に展開するための変数として定義できる。</p>
+<p>一方で、Dockerfile の命令に展開するための変数として定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># ARGは、Dockerfileの命令に展開するための変数として定義できる。</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">OS_VERSION</span><span class="o">=</span><span class="s2">&quot;8&quot;</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:${OS_VERSION}</span>
@@ -34703,7 +34703,7 @@
 <span class="c"># 変数を展開できない</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:${OS_VERSION}</span>
 </code></pre></div>
-<p>そのため、以下の様に使い分けることになる。</p>
+<p>そのため、以下のように使い分けることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># 最初に全て、ARGで定義</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">CENTOS_VERSION</span><span class="o">=</span><span class="s2">&quot;8&quot;</span>
 <span class="k">ARG</span><span class="w"> </span><span class="nv">PYTHON_VERSION</span><span class="o">=</span><span class="s2">&quot;3.8.0&quot;</span>
@@ -34763,14 +34763,14 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">注意点<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>Dockerfileで <code>CMD</code> を指定しない場合、コンテナイメージのデフォルトのバイナリファイルが割り当てられる。</p>
-<p>いったん、デフォルトのバイナリファイルを確認した後に、これをDockerfileに明示的に実装する。</p>
+<p>Dockerfile で <code>CMD</code> を指定しない場合、コンテナイメージのデフォルトのバイナリファイルが割り当てられる。</p>
+<p>いったん、デフォルトのバイナリファイルを確認した後に、これを Dockerfile に明示的に実装する。</p>
 <div class="highlight"><pre><span></span><code>CONTAINER<span class="w"> </span>ID<span class="w">   </span>IMAGE<span class="w">   </span>COMMAND<span class="w">     </span>CREATED<span class="w">          </span>STATUS<span class="w">         </span>PORTS<span class="w">                    </span>NAMES
 2b2d3dfafee8<span class="w">   </span>*****<span class="w">   </span><span class="s2">&quot;/bin/sh&quot;</span><span class="w">   </span><span class="m">11</span><span class="w"> </span>seconds<span class="w"> </span>ago<span class="w">   </span>Up<span class="w"> </span><span class="m">8</span><span class="w"> </span>seconds<span class="w">   </span><span class="m">0</span>.0.0.0:8000-&gt;8000/tcp<span class="w">   </span>foo-image
 </code></pre></div>
-<p>静的型付け言語ではプロセスの起動時に、代わりにアーティファクトのバイナリファイルを実行しても良い。</p>
+<p>静的型付け言語ではプロセスの起動時に、代わりにアーティファクトのバイナリファイルを実行してもよい。</p>
 <p>その場合、<code>bin</code> ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる。</p>
-<p>しかし、<code>bin</code> ディレクトリへの認可スコープがない場合もある。その場合は、1つ下にディレクトリを作成し、そこにバイナリファイルを配置するようにする。</p>
+<p>しかし、<code>bin</code> ディレクトリへの認可スコープがない場合もある。その場合は、1 つ下にディレクトリを作成し、そこにバイナリファイルを配置するようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># /go/bin にアクセスできない時は、/go/bin/cmdにアーティファクトを配置する。</span>
 ERROR:<span class="w"> </span><span class="k">for</span><span class="w"> </span>xxx-container<span class="w">  </span>Cannot<span class="w"> </span>start<span class="w"> </span>service<span class="w"> </span>go:<span class="w"> </span>OCI<span class="w"> </span>runtime<span class="w"> </span>create<span class="w"> </span>failed:<span class="w"> </span>container_linux.go:367:<span class="w"> </span>starting<span class="w"> </span>container<span class="w"> </span>process<span class="w"> </span>caused:<span class="w"> </span>exec:<span class="w"> </span><span class="s2">&quot;/go/bin&quot;</span>:<span class="w"> </span>permission<span class="w"> </span>denied:<span class="w"> </span>unknown
 </code></pre></div>
@@ -34791,7 +34791,7 @@ ERROR:<span class="w"> </span><span class="k">for</span><span class="w"> </span>
 </blockquote>
 <p><br></p>
 <h3 id="-from">--from<a class="headerlink" href="#-from" title="Permanent link">&para;</a></h3>
-<p>他のステージ名、ローカルのコンテナイメージ名、リモート (DockerHubのみ) のコンテナイメージ名を指定して、そのコンテナイメージが持つファイルをコピーする。</p>
+<p>他のステージ名、ローカルのコンテナイメージ名、リモート (DockerHub のみ) のコンテナイメージ名を指定して、そのコンテナイメージが持つファイルをコピーする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>composer:&lt;バージョン&gt;<span class="w"> </span>/usr/bin/composer<span class="w"> </span>/usr/bin/composer
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>nginx:latest<span class="w"> </span>/etc/nginx/nginx.conf<span class="w"> </span>/nginx.conf
@@ -34822,7 +34822,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p><br></p>
 <h2 id="07-env">07. ENV<a class="headerlink" href="#07-env" title="Permanent link">&para;</a></h2>
 <h3 id="env_1">ENVとは<a class="headerlink" href="#env_1" title="Permanent link">&para;</a></h3>
-<p>OS上のコマンド処理で展開できる変数を定義できる。</p>
+<p>OS 上のコマンド処理で展開できる変数を定義できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/engine/reference/builder/#env">https://docs.docker.com/engine/reference/builder/#env</a></li>
@@ -34845,7 +34845,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p>コンテナのポートを開放するのみでは不十分である。</p>
 <p>プロセス自体がリクエストを受信できるようにポートを設定する必要がある。</p>
 <p>ただし、多くの場合デフォルトでこれが設定されている。</p>
-<p>例えば、PHP-FPMでは、<code>/usr/local/etc/www.conf.default</code> ファイルと <code>/usr/local/etc/php-fpm.d/www.conf</code> ファイルには、<code>listen</code> オプションの値に <code>127.0.0.1:9000</code> が割り当てられている。</p>
+<p>例えば、PHP-FPM では、<code>/usr/local/etc/www.conf.default</code> ファイルと <code>/usr/local/etc/php-fpm.d/www.conf</code> ファイルには、<code>listen</code> オプションの値に <code>127.0.0.1:9000</code> が割り当てられている。</p>
 <p><br></p>
 <h2 id="09-from">09. FROM<a class="headerlink" href="#09-from" title="Permanent link">&para;</a></h2>
 <h3 id="from">FROMとは<a class="headerlink" href="#from" title="Permanent link">&para;</a></h3>
@@ -34861,23 +34861,23 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <h3 id="_7">イメージレジストリの指定<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>指定できるイメージレジストリの例と記法は以下の通りである。</p>
 <h4 id="dockerhub">▼ DockerHub<a class="headerlink" href="#dockerhub" title="Permanent link">&para;</a></h4>
-<p>PHP-FPMをインストールする場合は、<code>php:8.0-fpm</code> である。</p>
+<p>PHP-FPM をインストールする場合は、<code>php:8.0-fpm</code> である。</p>
 <blockquote>
 <ul>
 <li><a href="https://hub.docker.com/_/php">https://hub.docker.com/_/php</a></li>
 </ul>
 </blockquote>
 <h4 id="_8">▼ クラウドプロバイダー (パブリック)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>パブリックなAmazon ECR、Google Container Registry、Google Cloud Artifact Registry、RedHat Quay、からイメージをプルする。</p>
-<p>ECRパブリックギャラリーからPHP-FPMをインストールする場合は、<code>public.ecr.aws/bitnami/php-fpm:latest</code> である。</p>
+<p>パブリックな Amazon ECR、Google Container Registry、Google Cloud Artifact Registry、RedHat Quay、からイメージをプルする。</p>
+<p>ECR パブリックギャラリーから PHP-FPM をインストールする場合は、<code>public.ecr.aws/bitnami/php-fpm:latest</code> である。</p>
 <blockquote>
 <ul>
 <li><a href="https://gallery.ecr.aws/bitnami/php-fpm">https://gallery.ecr.aws/bitnami/php-fpm</a></li>
 </ul>
 </blockquote>
 <h4 id="_9">▼ クラウドプロバイダー (プライベート)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>プライベートなAmazon ECR、Google Container Registry、Google Cloud Artifact Registry、RedHat Quay、からイメージをプルする。</p>
-<p>ECRプライベートレジストリからPHP-FPMをインストールする場合は、<code>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest</code> である。</p>
+<p>プライベートな Amazon ECR、Google Container Registry、Google Cloud Artifact Registry、RedHat Quay、からイメージをプルする。</p>
+<p>ECR プライベートレジストリから PHP-FPM をインストールする場合は、<code>&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest</code> である。</p>
 <blockquote>
 <ul>
 <li><a href="https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1">https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1</a></li>
@@ -34901,8 +34901,8 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p><br></p>
 <h3 id="_13">レートリミット<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="dockerhub_1">▼ DockerHub<a class="headerlink" href="#dockerhub_1" title="Permanent link">&para;</a></h4>
-<p>DockerHubのレートリミットは、匿名アカウントであれば <code>100</code> プル/<code>6</code> 時間、無料アカウントであれば <code>200</code> プル/<code>6</code> 時間、である。</p>
-<p>CIパイプライン上でコンテナイメージをビルドしていると、これにひっかかりやすい。</p>
+<p>DockerHub のレートリミットは、匿名アカウントであれば <code>100</code> プル/<code>6</code> 時間、無料アカウントであれば <code>200</code> プル/<code>6</code> 時間、である。</p>
+<p>CI パイプライン上でコンテナイメージをビルドしていると、これにひっかかりやすい。</p>
 <p>クラウドプロバイダーのレートリミットのほうが寛容なため、クラウドプロバイダー (パブリック/プライベート) からプルする方法もよい。</p>
 <blockquote>
 <ul>
@@ -34928,9 +34928,9 @@ $<span class="w"> </span>crane<span class="w"> </span>copy<span class="w"> </spa
 <p><br></p>
 <h3 id="cpu">CPUアーキテクチャの指定<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
 <h4 id="cpu_1">▼ CPUアーキテクチャの指定<a class="headerlink" href="#cpu_1" title="Permanent link">&para;</a></h4>
-<p><code>docker buildx</code> コマンドを実行し、複数のCPUアーキテクチャに対応したコンテナイメージを作成する。</p>
-<p>イメージの対応するCPUアーキテクチャ (例：Intel、AMD、ARM) を設定する。</p>
-<p>ただし、DockerがホストのOSを認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。</p>
+<p><code>docker buildx</code> コマンドを実行し、複数の CPU アーキテクチャに対応したコンテナイメージを作成する。</p>
+<p>イメージの対応する CPU アーキテクチャ (例：Intel、AMD、ARM) を設定する。</p>
+<p>ただし、Docker がホストの OS を認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">--platform=linux/amd64</span><span class="w"> </span>python:latest-slim
 </code></pre></div>
 <blockquote>
@@ -34940,7 +34940,7 @@ $<span class="w"> </span>crane<span class="w"> </span>copy<span class="w"> </spa
 </blockquote>
 <h4 id="docker-buildx">▼ <code>docker buildx</code> コマンドのセットアップ<a class="headerlink" href="#docker-buildx" title="Permanent link">&para;</a></h4>
 <p><code>docker buildx</code> コマンド時に、<code>Multi-platform build is not supported for the docker driver.</code> というエラーになることがある。</p>
-<p>これのために、マルチCPUアーキテクチャをビルドする実行環境を構築する必要がある。</p>
+<p>これのために、マルチ CPU アーキテクチャをビルドする実行環境を構築する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ----------------------------</span>
 <span class="c1"># docker buildxコマンドの準備</span>
 <span class="c1"># ----------------------------</span>
@@ -35039,7 +35039,7 @@ $<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35050,11 +35050,11 @@ $<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

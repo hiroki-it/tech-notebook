@@ -33874,7 +33874,7 @@
 <p><br></p>
 <h2 id="01-amazon-api-gateway">01. Amazon API Gateway拡張機能<a class="headerlink" href="#01-amazon-api-gateway" title="Permanent link">&para;</a></h2>
 <h4 id="_2">▼ 必要なキー<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>Amazon API Gatewayのインポートに当たり、OpenAPIの <code>yaml</code> ファイルにキーを新たに実装する必要がある。</p>
+<p>Amazon API Gateway のインポートに当たり、OpenAPI の <code>yaml</code> ファイルにキーを新たに実装する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html</a></li>
@@ -33883,7 +33883,7 @@
 <p><br></p>
 <h3 id="x-amazon-apigateway-integration"><code>x-amazon-apigateway-integration</code> キー<a class="headerlink" href="#x-amazon-apigateway-integration" title="Permanent link">&para;</a></h3>
 <h4 id="x-amazon-apigateway-integration_1">▼ <code>x-amazon-apigateway-integration</code> キーとは<a class="headerlink" href="#x-amazon-apigateway-integration_1" title="Permanent link">&para;</a></h4>
-<p>該当するHTTPメソッドで統合リクエストや統合レスポンスを定義するために <code>x-amazon-apigateway-integration</code> キー が必要である。各項目の説明は以下のリンクを参考にせよ。</p>
+<p>該当する HTTP メソッドで統合リクエストや統合レスポンスを定義するために <code>x-amazon-apigateway-integration</code> キー が必要である。各項目の説明は以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html</a></li>
@@ -33929,7 +33929,7 @@
 <span class="w">            </span><span class="nt">statusCode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
 </code></pre></div>
 <h4 id="amazon-vpc_1">▼ セットアップ (Amazon VPCリンク&amp;非プロキシ統合の場合)<a class="headerlink" href="#amazon-vpc_1" title="Permanent link">&para;</a></h4>
-<p>パススルー条件やresponseキー以下の統合レスポンスを設定できる。</p>
+<p>パススルー条件や response キー以下の統合レスポンスを設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">paths</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">/users</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">post</span><span class="p">:</span>
@@ -34002,7 +34002,7 @@
 <h4 id="x-amazon-apigateway-request-validator_1">▼ <code>x-amazon-apigateway-request-validator</code> キーとは<a class="headerlink" href="#x-amazon-apigateway-request-validator_1" title="Permanent link">&para;</a></h4>
 <p>メソッドリクエストで各種パラメーターのバリデーションを実行するために、<code>x-amazon-apigateway-request-validator</code> キーが必要である。</p>
 <h4 id="_5">▼ セットアップ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>事前に定義した <code>x-amazon-apigateway-request-validators</code> キーの中から、使用するバリデーションのエイリアスを宣言する。</p>
+<p>事前に定義した <code>x-amazon-apigateway-request-validators</code> キーのなかから、使用するバリデーションのエイリアスを宣言する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">paths</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">/users</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">post</span><span class="p">:</span>
@@ -34032,22 +34032,22 @@
 <h3 id="_6">サンプルについて<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 注意点<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>インポートにあたり、以下に注意する。</p>
-<p>Swagger EditorでAPIの仕様書の <code>html</code> ファイルを確認できる。</p>
+<p>Swagger Editor で API の仕様書の <code>html</code> ファイルを確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://editor.swagger.io/">https://editor.swagger.io/</a></li>
 </ul>
 </blockquote>
 <ul>
-<li>OpenAPI仕様のバージョン2.0と3.0をサポートしている。</li>
-<li><code>x-amazon-apigateway-integration</code> キーを各HTTPメソッドに定義する。</li>
-<li>Amazon API Gatewayが <code>security</code> キーのルート定義に非対応のため、冗長ではあるが、各HTTPメソッドに個別に定義する。</li>
-<li>リクエストメソッドで受信するAPIキーのヘッダー名は、小文字で『<code>x-api-key</code>』以外は設定できない。ただし、統合リクエストでフォワーディングするときに付与するヘッダー名は『<code>X-API-Key</code>』と設定できる。</li>
-<li>統合リクエストでバックエンドにフォワーディングするAPIキーは、シングルクオートで囲う必要がある。</li>
-<li>APIキーの作成は手動で行う必要がある。</li>
+<li>OpenAPI 仕様のバージョン 2.0 と 3.0 をサポートしている。</li>
+<li><code>x-amazon-apigateway-integration</code> キーを各 HTTP メソッドに定義する。</li>
+<li>Amazon API Gateway が <code>security</code> キーのルート定義に非対応のため、冗長ではあるが、各 HTTP メソッドに個別に定義する。</li>
+<li>リクエストメソッドで受信する API キーのヘッダー名は、小文字で『<code>x-api-key</code>』以外は設定できない。ただし、統合リクエストでフォワーディングするときに付与するヘッダー名は『<code>X-API-Key</code>』と設定できる。</li>
+<li>統合リクエストでバックエンドにフォワーディングする API キーは、シングルクオートで囲う必要がある。</li>
+<li>API キーの作成は手動で行う必要がある。</li>
 <li>ステージの作成は手動で行う必要がある。</li>
 <li><code>servers</code> キーの実装はインポートしても反映できない。</li>
-<li>マッピングテンプレートはVTLを使用して定義できる。</li>
+<li>マッピングテンプレートは VTL を使用して定義できる。</li>
 </ul>
 <h4 id="_8">▼ その他非対応な記法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>その他の非対応の記述については、以下のリンクを参考にせよ。</p>
@@ -34871,7 +34871,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_9">モック統合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>Amazon API Gatewayのエンドポイントに対して、以下のパラメーターでリクエストを送信すると、レスポンスを確認できる。</p>
+<p>Amazon API Gateway のエンドポイントに対して、以下のパラメーターでリクエストを送信すると、レスポンスを確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://*****.execute-api.ap-northeast-1.amazonaws.com/dev/users/?userId=1</span>
 <span class="nn">---</span>
 <span class="nt">X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="err">*****</span>
@@ -35295,7 +35295,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35306,11 +35306,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

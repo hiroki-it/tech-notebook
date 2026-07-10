@@ -10587,7 +10587,7 @@
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        関数の返却値を意図的に無視
+        関数の返り値を意図的に無視
       
     </span>
   </a>
@@ -34340,7 +34340,7 @@
   <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
-        関数の返却値を意図的に無視
+        関数の返り値を意図的に無視
       
     </span>
   </a>
@@ -34507,7 +34507,7 @@
 </tr>
 <tr>
 <td>メモリの安全性を高める仕組み</td>
-<td>メモリアドレスに割り当てられている数値同士を演算する『ポインタ演算』の能力を意図して廃止している。ポインタ演算の例として、10番アドレスと20番アドレスの数値を足して、30番アドレスに新しく割り当てる、といった処理を行う。この時、何らかの原因で片方のアドレスが文字列だった場合、30番アドレスに予期しない値 (数値+文字列) が割り当てられることになる。これは、不具合や悪意ある操作に繋がるため、Goではポインタ演算子の機能がない。</td>
+<td>メモリアドレスに割り当てられている数値同士を演算する『ポインタ演算』の能力を意図して廃止している。ポインタ演算の例として、10番アドレスと20番アドレスの数値を足して、30番アドレスに新しく割り当てる、といった処理を行う。このとき、何らかの原因で片方のアドレスが文字列だった場合、30番アドレスに予期しない値 (数値+文字列) が割り当てられることになる。これは、不具合や悪意ある操作に繋がるため、Goではポインタ演算子の機能がない。</td>
 </tr>
 <tr>
 <td>クラスや継承がない</td>
@@ -34611,7 +34611,7 @@ $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p><code>go.mod</code> ファイルのGoのバージョン定義や、Goパッケージをアップグレードする。</p>
+<p><code>go.mod</code> ファイルの Go のバージョン定義や、Go パッケージをアップグレードする。</p>
 <p><code>-go</code>オプションがあるが、基本的にはgoのバイナリのバージョンをアップグレードする。</p>
 </dd>
 </dl>
@@ -34623,7 +34623,7 @@ $<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>ti
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>古いバージョンのGoバイナリをアンインストールする。</p>
+<p>古いバージョンの Go バイナリをアンインストールする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># which goでバイナリの場所を確認する</span>
@@ -34642,7 +34642,7 @@ $<span class="w"> </span>asdf<span class="w"> </span>uninstall<span class="w"> <
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>PPAリポジトリを登録する。</p>
+<p>PPA リポジトリを登録する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:longsleep/golang-backports
@@ -34719,7 +34719,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <ul>
 <li>環境変数を格納するための処理 (例：<code>config.go</code>)</li>
 <li>バージョンを取得するための処理 (例：<code>version.go</code>)</li>
-<li>安全に処理を終了するGraceful Shutdown処理 (例：<code>shutdown.go</code>)</li>
+<li>安全に処理を終了する Graceful Shutdown 処理 (例：<code>shutdown.go</code>)</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">go-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── config.go</span>
@@ -34747,7 +34747,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <p>インターフェースと構造体の両方を同じパッケージに配置していると、インターフェースが他からインポートされ、構造体が他をインポートするようになり、発生しやすい。</p>
 <p><img alt="golang_import_cycle" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/golang_import_cycle.png" /></p>
 <h4 id="go_1">▼ 他の言語でGo製パッケージをインポートする<a class="headerlink" href="#go_1" title="Permanent link">&para;</a></h4>
-<p>言語によっては、Go製パッケージをインポートできるパッケージが用意されている。</p>
+<p>言語によっては、Go 製パッケージをインポートできるパッケージが用意されている。</p>
 <ul>
 <li><code>ctypes</code> (Python)</li>
 <li><code>ffi</code> (Ruby)</li>
@@ -34784,12 +34784,12 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 </code></pre></div>
 <p><br></p>
 <h3 id="_6">文の区切り<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>Goでは文の処理はセミコロンで区切られる。</p>
+<p>Go では文の処理はセミコロンで区切られる。</p>
 <p>ただし、セミコロンはコンパイル時に補完され、実装時には省略できる。</p>
 <p><br></p>
 <h2 id="05">05. 命名規則<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="githubwiki">GitHubWikiによる規則<a class="headerlink" href="#githubwiki" title="Permanent link">&para;</a></h3>
-<p>Goの命名規則は、GitHubのWikiに記載されている。</p>
+<p>Go の命名規則は、GitHub の Wiki に記載されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/golang/go/wiki/CodeReviewComments">https://github.com/golang/go/wiki/CodeReviewComments</a></li>
@@ -34798,12 +34798,12 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="_7">ディレクトリ名<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>小文字一単語またはケバブケースで命名する。</p>
-<p>ビルド時にシンタックスエラーとなる可能性があるため、できる限りハイフンを使用しないほうが良い。</p>
+<p>ビルド時にシンタックスエラーとなる可能性があるため、できる限りハイフンを使用しないほうがよい。</p>
 <p><br></p>
 <h3 id="_8">パッケージ名<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>親ディレクトリ名で命名する。</p>
-<p>また、処理中の変数名と被るとパッケージのインポートに失敗するため、変数名と被らないように、できるだけ省略しない名前のほうが良い。</p>
-<p>ただし、テストファイルに関しては、パッケージ名を『<code>foo_test</code>』として良い。</p>
+<p>また、処理中の変数名と被るとパッケージのインポートに失敗するため、変数名と被らないように、できるだけ省略しない名前のほうがよい。</p>
+<p>ただし、テストファイルに関しては、パッケージ名を『<code>foo_test</code>』としてよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/golang/go/wiki/CodeReviewComments#package-names">https://github.com/golang/go/wiki/CodeReviewComments#package-names</a></li>
@@ -34836,11 +34836,11 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="_12">レシーバ名<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>構造体名の頭一文字または頭二文字を取って命名する。</p>
-<p>アプリ内で構造体名の頭文字が重複すると、同じレシーバ名の構造体が乱立してしまうため、これを防ぐために二文字を取ると良い。</p>
+<p>アプリ内で構造体名の頭文字が重複すると、同じレシーバ名の構造体が乱立してしまうため、これを防ぐために二文字を取るとよい。</p>
 <p>また、修飾語と組み合わせて構成される構造体名の場合、被修飾語の頭二文字を取る。</p>
 <p>オブジェクト指向で使われる『<code>this</code>』『<code>self</code>』</p>
 <p><strong>＊例＊</strong></p>
-<p>httpClientであれば、修飾語は『<code>http</code>』被修飾語『<code>client</code>』である。</p>
+<p>httpClient であれば、修飾語は『<code>http</code>』被修飾語『<code>client</code>』である。</p>
 <p>そのため、レシーバ名または引数名では『<code>cl</code>』とする。</p>
 <blockquote>
 <ul>
@@ -34853,14 +34853,14 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <h4 id="_14">▼ 一時的な変数名<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>英単語の頭一文字、頭二文字、略語、で命名する。</p>
 <p>これは、実際の処理を強調し、変数を目立たなくするためである。</p>
-<p>ただし、スコープの大きな変数に省略した名前をつけると、重複する可能性があるため、省略せずにローワーキャメルケースで命名しても良い。</p>
+<p>ただし、スコープの大きな変数に省略した名前をつけると、重複する可能性があるため、省略せずにローワーキャメルケースで命名してもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/golang/go/wiki/CodeReviewComments#variable-names">https://github.com/golang/go/wiki/CodeReviewComments#variable-names</a></li>
 </ul>
 </blockquote>
 <p>省略名については、略語検索サイトで探す。</p>
-<p>代わりに、Goリファレンスからその単語がどう省略されているかを探しても良い。</p>
+<p>代わりに、Go リファレンスからその単語がどう省略されているかを探してもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.allacronyms.com/">https://www.allacronyms.com/</a></li>
@@ -34871,10 +34871,10 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <h4 id="_16">▼ モックの変数<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>モック構造体を代入するための変数は、『<code>m</code>』とする。</p>
 <h4 id="error">▼ error構造体の変数名<a class="headerlink" href="#error" title="Permanent link">&para;</a></h4>
-<p>error構造体を変数に代入する場合、『<code>Err</code>』と接頭辞をつける。</p>
+<p>error 構造体を変数に代入する場合、『<code>Err</code>』と接頭辞をつける。</p>
 <p><br></p>
 <h3 id="_17">キー名の検証<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>map型やslice型で指定したキー名が存在するか検証する場合、boolean値を代入する変数を『<code>ok</code>』とする。</p>
+<p>map 型や slice 型で指定したキー名が存在するか検証する場合、boolean 値を代入する変数を『<code>ok</code>』とする。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -34902,7 +34902,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <h2 id="06">06. 実装スタイル<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_18">オブジェクト指向型<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>振る舞いは内部に状態を持つ。</p>
-<p>副作用はあってもなくともよい（同じ入力の時に、出力は同じでも異なってもよい）。</p>
+<p>副作用はあってもなくともよい（同じ入力のときに、出力は同じでも異なってもよい）。</p>
 <p>状態・振る舞いが結合している。</p>
 <p>ほかの型と共存できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
@@ -34944,8 +34944,8 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 </code></pre></div>
 <p><br></p>
 <h2 id="07">07. その他のお作法<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<h3 id="_20">関数の返却値を意図的に無視<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<p>関数の返却値を使用しない場合、意図的に無視することを伝える場合、<code>_</code>を使用する。</p>
+<h3 id="_20">関数の返り値を意図的に無視<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>関数の返り値を使用しない場合、意図的に無視することを伝える場合、<code>_</code> を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;os&quot;</span>
@@ -34978,7 +34978,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <p><br></p>
 <h3 id="uber">Uber風のお作法<a class="headerlink" href="#uber" title="Permanent link">&para;</a></h3>
-<p>Uber社が採用しているお作法。</p>
+<p>Uber 社が採用しているお作法。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/uber-go/guide/blob/master/style.md">https://github.com/uber-go/guide/blob/master/style.md</a></li>
@@ -34986,7 +34986,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <p><br></p>
 <h3 id="_22">イミュータブルにできない<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<p>Goには標準でイミュータブルの機能がない。これを無理に実現しようとすると、逆に保守性が低くなる可能性もある。</p>
+<p>Go には標準でイミュータブルの機能がない。これを無理に実現しようとすると、逆に保守性が低くなる可能性もある。</p>
 <p>そのため、イミュータブルにするか否かは慎重に判断する。</p>
 <blockquote>
 <ul>
@@ -35015,7 +35015,7 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月1日 18:45:22 JST">2026-06-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35026,11 +35026,11 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

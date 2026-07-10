@@ -34105,7 +34105,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>&lt;サブコマンド&
 </ul>
 </blockquote>
 <h4 id="-e">▼ -e<a class="headerlink" href="#-e" title="Permanent link">&para;</a></h4>
-<p>Helmリリース対象の実行環境名 (dev、stg、prd) を設定する。</p>
+<p>Helm リリース対象の実行環境名 (dev、stg、prd) を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>&lt;コマンド&gt;
 </code></pre></div>
 <blockquote>
@@ -34146,9 +34146,9 @@ Do<span class="w"> </span>you<span class="w"> </span>really<span class="w"> </sp
 <p><br></p>
 <h3 id="apply">apply<a class="headerlink" href="#apply" title="Permanent link">&para;</a></h3>
 <h4 id="apply_1">▼ apply<a class="headerlink" href="#apply_1" title="Permanent link">&para;</a></h4>
-<p>まず <code>helmfile diff</code> コマンドを実行することにより、この時に差分があれば、<code>helmfile sync</code> コマンドを実行する。</p>
-<p><code>helmfile sync</code> コマンドとは異なり、Helmリリース間に差分がないと、リビジョンは更新されない。</p>
-<p>注意点として、Helmの使用と同様に、CRDのマニフェストは作成できるが変更できない。</p>
+<p>まず <code>helmfile diff</code> コマンドを実行することにより、このときに差分があれば、<code>helmfile sync</code> コマンドを実行する。</p>
+<p><code>helmfile sync</code> コマンドとは異なり、Helm リリース間に差分がないと、リビジョンは更新されない。</p>
+<p>注意点として、Helm の使用と同様に、CRD のマニフェストは作成できるが変更できない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply
 
 Upgrading<span class="w"> </span><span class="nv">release</span><span class="o">=</span>foo-release,<span class="w"> </span><span class="nv">chart</span><span class="o">=</span>./charts/foo
@@ -34174,9 +34174,9 @@ foo-release<span class="w">         </span>./charts/foo<span class="w">         
 </ul>
 </blockquote>
 <h4 id="-skip-crds">▼ --skip-crds<a class="headerlink" href="#-skip-crds" title="Permanent link">&para;</a></h4>
-<p>CRDの作成をスキップする。</p>
-<p><code>kubectl apply</code> コマンドでCRDを作成した場合に役立つ。</p>
-<p>注意点として、CRDの更新はHelmがサポートしていないため、あくまで作成をスキップする。</p>
+<p>CRD の作成をスキップする。</p>
+<p><code>kubectl apply</code> コマンドで CRD を作成した場合に役立つ。</p>
+<p>注意点として、CRD の更新は Helm がサポートしていないため、あくまで作成をスキップする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>apply<span class="w"> </span>--skip-crds
 </code></pre></div>
 <h4 id="-skip-diff-on-install">▼ --skip-diff-on-install<a class="headerlink" href="#-skip-diff-on-install" title="Permanent link">&para;</a></h4>
@@ -34191,8 +34191,8 @@ foo-release<span class="w">         </span>./charts/foo<span class="w">         
 <p><br></p>
 <h3 id="destroy">destroy<a class="headerlink" href="#destroy" title="Permanent link">&para;</a></h3>
 <h4 id="destroy_1">▼ destroyとは<a class="headerlink" href="#destroy_1" title="Permanent link">&para;</a></h4>
-<p>インストール済みの全てのチャートをアンインストールする。</p>
-<p>CRDも削除する。</p>
+<p>インストール済みのすべてのチャートをアンインストールする。</p>
+<p>CRD も削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>destroy
 </code></pre></div>
 <blockquote>
@@ -34201,8 +34201,8 @@ foo-release<span class="w">         </span>./charts/foo<span class="w">         
 </ul>
 </blockquote>
 <h4 id="helm-destroy">▼ 特定のHelmリリースのみ <code>destroy</code> したい<a class="headerlink" href="#helm-destroy" title="Permanent link">&para;</a></h4>
-<p><code>helmfile</code> コマンドで複数のHelmリリースを一緒に管理している場合、特定のHelmリリースのみ <code>destroy</code> できない。</p>
-<p>代わりに、<code>helm uninstall</code> コマンドで特定のHelmリリースを削除する。</p>
+<p><code>helmfile</code> コマンドで複数の Helm リリースを一緒に管理している場合、特定の Helm リリースのみ <code>destroy</code> できない。</p>
+<p>代わりに、<code>helm uninstall</code> コマンドで特定の Helm リリースを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>uninstall<span class="w"> </span>&lt;Helmリリース名&gt;
 
 <span class="c1"># 削除したHelmリリースのみが差分として出力される</span>
@@ -34211,7 +34211,7 @@ $<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </sp
 <p><br></p>
 <h3 id="list">list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h3>
 <h4 id="list_1">▼ list<a class="headerlink" href="#list_1" title="Permanent link">&para;</a></h4>
-<p>Helmfileでインストールしたチャートの一覧を取得する。</p>
+<p>Helmfile でインストールしたチャートの一覧を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>list
 
 NAME<span class="w">          </span>NAMESPACE<span class="w">      </span>ENABLED<span class="w">   </span>LABELS<span class="w">   </span>CHART<span class="w">              </span>VERSION
@@ -34222,8 +34222,8 @@ baz-chart<span class="w">     </span>baz-namespace<span class="w">  </span><span
 <p><br></p>
 <h3 id="diff">diff<a class="headerlink" href="#diff" title="Permanent link">&para;</a></h3>
 <h4 id="diff_1">▼ diffとは<a class="headerlink" href="#diff_1" title="Permanent link">&para;</a></h4>
-<p>全てのHelmリリースに対して、helm-diffプラグインを実行する。</p>
-<p>helm-diffプラグインでは、前回のHelmリリースと、今回の <code>helm upgrade --dry-run</code> コマンドの差分を取得する。</p>
+<p>すべての Helm リリースに対して、helm-diff プラグインを実行する。</p>
+<p>helm-diff プラグインでは、前回の Helm リリースと、今回の <code>helm upgrade --dry-run</code> コマンドの差分を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>diff
 </code></pre></div>
 <blockquote>
@@ -34233,9 +34233,9 @@ baz-chart<span class="w">     </span>baz-namespace<span class="w">  </span><span
 </ul>
 </blockquote>
 <h4 id="-debug">▼ --debug<a class="headerlink" href="#-debug" title="Permanent link">&para;</a></h4>
-<p>オプションの無い <code>helmfile diff</code> では、以下の出力になってしまう。</p>
+<p>オプションのない <code>helmfile diff</code> では、以下の出力になってしまう。</p>
 <ul>
-<li>Secretに出力された値がエンコードされてしまっている。</li>
+<li>Secret に出力された値がエンコードされてしまっている。</li>
 <li><code>helm upgrade --dry-run</code> コマンドのどの段階でエラーになったかがわからない。</li>
 </ul>
 <p><code>--debug</code> オプションであれば、これらを確認できる。</p>
@@ -34271,9 +34271,9 @@ Source:<span class="w"> </span>project/manifests/persistent-volume.yaml
 <p><br></p>
 <h3 id="sync">sync<a class="headerlink" href="#sync" title="Permanent link">&para;</a></h3>
 <h4 id="sync_1">▼ syncとは<a class="headerlink" href="#sync_1" title="Permanent link">&para;</a></h4>
-<p>全てのHelmリリースに関して、<code>helm upgrade --install</code> コマンドを実行する。</p>
-<p><code>helmfile apply</code> コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョンを更新する。</p>
-<p>注意点として、Helmの使用と同様に、CRDのマニフェストは作成できるが変更できない。</p>
+<p>すべての Helm リリースに関して、<code>helm upgrade --install</code> コマンドを実行する。</p>
+<p><code>helmfile apply</code> コマンドとは異なり、Helm リリース間に差分がなくとも、リビジョンを更新する。</p>
+<p>注意点として、Helm の使用と同様に、CRD のマニフェストは作成できるが変更できない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>sync
 </code></pre></div>
 <blockquote>
@@ -34285,11 +34285,11 @@ Source:<span class="w"> </span>project/manifests/persistent-volume.yaml
 <p><br></p>
 <h3 id="template">template<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
 <h4 id="template_1">▼ templateとは<a class="headerlink" href="#template_1" title="Permanent link">&para;</a></h4>
-<p>全てのHelmリリースに関して、<code>helm template</code> コマンドを実行する。</p>
+<p>すべての Helm リリースに関して、<code>helm template</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>template
 </code></pre></div>
 <h4 id="-include-crds">▼ --include-crds<a class="headerlink" href="#-include-crds" title="Permanent link">&para;</a></h4>
-<p>CRDも含めて、<code>helm template</code> コマンドを実行する。</p>
+<p>CRD も含めて、<code>helm template</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>template<span class="w"> </span>--include-crds
 </code></pre></div>
 <p><br></p>
@@ -34297,7 +34297,7 @@ Source:<span class="w"> </span>project/manifests/persistent-volume.yaml
 <h4 id="write-values_1">▼ write-valuesとは<a class="headerlink" href="#write-values_1" title="Permanent link">&para;</a></h4>
 <p>個人的に感動したコマンド。<code>helmfile</code> コマンドの実行で使用される <code>values</code> ファイルを、ファイルに書き出す。</p>
 <p>複数の <code>values</code> ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた <code>values</code> ファイルが優先されるようになっている。</p>
-<p>この時に、<code>helmfile write-values</code> コマンドを使用すると、優先された値で定義された <code>values</code> ファイルを確認できる。</p>
+<p>このときに、<code>helmfile write-values</code> コマンドを使用すると、優先された値で定義された <code>values</code> ファイルを確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-e<span class="w"> </span>prd<span class="w"> </span>-f<span class="w"> </span>./helmfile.yaml<span class="w"> </span>write-values
 
 <span class="c1"># helmfile.yamlファイルのディレクトリ以下に、ディレクトリとファイルが生成される。</span>
@@ -34324,7 +34324,7 @@ Writing<span class="w"> </span>values<span class="w"> </span>file<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:55:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34335,11 +34335,11 @@ Writing<span class="w"> </span>values<span class="w"> </span>file<span class="w"
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

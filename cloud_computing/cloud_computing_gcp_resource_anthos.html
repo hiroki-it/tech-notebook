@@ -34443,7 +34443,7 @@
 <h2 id="01-anthos">01. Anthos<a class="headerlink" href="#01-anthos" title="Permanent link">&para;</a></h2>
 <h3 id="anthos">Anthosの仕組み<a class="headerlink" href="#anthos" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>Anthosは、Google Anthos GKE Cluster、Google Anthos Service Mesh、Google Anthos Config Management、といったコンポーネントから構成される。</p>
+<p>Anthos は、Google Anthos GKE Cluster、Google Anthos Service Mesh、Google Anthos Config Management、といったコンポーネントから構成される。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.fsi.co.jp/blog/5939/">https://www.fsi.co.jp/blog/5939/</a></li>
@@ -34453,10 +34453,10 @@
 <p><br></p>
 <h3 id="google-anthos-gke-cluster">Google Anthos GKE Cluster<a class="headerlink" href="#google-anthos-gke-cluster" title="Permanent link">&para;</a></h3>
 <h4 id="google-anthos-gke-cluster_1">▼ Google Anthos GKE Clusterとは<a class="headerlink" href="#google-anthos-gke-cluster_1" title="Permanent link">&para;</a></h4>
-<p>Google GKE Cluster (コントロールプレーンNode、ワーカーNodeを含む) から構成される。</p>
+<p>Google GKE Cluster (コントロールプレーン Node、ワーカーNode を含む) から構成される。</p>
 <h4 id="cluster">▼ アタッチCluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h4>
-<p>AnthosのGoogle GKE Cluster部分の能力を、Kubernetesの他の実行環境 (Amazon EKS、Azure AKS、RKE、K3SやK3D) のClusterに委譲する。</p>
-<p>AnthosのKubernetesのバージョンは、各実行環境のClusterが対応するKubernetesのバージョンに依存する。</p>
+<p>Anthos の Google GKE Cluster 部分の能力を、Kubernetes のほかの実行環境 (Amazon EKS、Azure AKS、RKE、K3S や K3D) の Cluster に委譲する。</p>
+<p>Anthos の Kubernetes のバージョンは、各実行環境の Cluster が対応する Kubernetes のバージョンに依存する。</p>
 <p><img alt="anthos_attached_cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_attached_cluster.png" /></p>
 <blockquote>
 <ul>
@@ -34484,14 +34484,14 @@
 </ul>
 </blockquote>
 <h4 id="traffic-director">▼ Traffic Director<a class="headerlink" href="#traffic-director" title="Permanent link">&para;</a></h4>
-<p>サービス検出として、istio-proxyに他の宛先の情報を提供する。</p>
+<p>サービス検出として、istio-proxy に他の宛先の情報を提供する。</p>
 <blockquote>
 <ul>
 <li><a href="https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23">https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23</a></li>
 </ul>
 </blockquote>
 <h4 id="mesh-ca">▼ Mesh CA<a class="headerlink" href="#mesh-ca" title="Permanent link">&para;</a></h4>
-<p>中間認証局として、相互TLS認証のためのサーバー証明書をistio-proxyに提供する。</p>
+<p>中間認証局として、相互 TLS 認証のためのサーバー証明書を istio-proxy に提供する。</p>
 <p>また、サーバー証明書が失効すれば更新する。</p>
 <blockquote>
 <ul>
@@ -34501,7 +34501,7 @@
 <p><br></p>
 <h3 id="google-anthos-config-management">Google Anthos Config Management<a class="headerlink" href="#google-anthos-config-management" title="Permanent link">&para;</a></h3>
 <h4 id="google-anthos-config-management_1">▼ Google Anthos Config Managementとは<a class="headerlink" href="#google-anthos-config-management_1" title="Permanent link">&para;</a></h4>
-<p>一連のacm-operator (cluster-operatorなど) から構成される。</p>
+<p>一連の acm-operator (cluster-operator など) から構成される。</p>
 <p><img alt="anthos_config-management" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management.png" /></p>
 <blockquote>
 <ul>
@@ -34509,9 +34509,9 @@
 </ul>
 </blockquote>
 <h4 id="acm-operator">▼ acm-operatorの仕組み<a class="headerlink" href="#acm-operator" title="Permanent link">&para;</a></h4>
-<p>一連のacm-operator (cluster-operatorなど) は、組み合わさって動作する。</p>
-<p>Gitリポジトリで管理されたACMカスタムリソースのGitOpsを実装する。</p>
-<p>注意点として、サポートしているのはACMカスタムリソースのみで、通常のKubernetesリソースをデプロイできない。</p>
+<p>一連の acm-operator (cluster-operator など) は、組み合わさって動作する。</p>
+<p>Git リポジトリで管理された ACM カスタムリソースの GitOps を実装する。</p>
+<p>注意点として、サポートしているのは ACM カスタムリソースのみで、通常の Kubernetes リソースをデプロイできない。</p>
 <p><img alt="anthos_config-management_gitops" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management_gitops.png" /></p>
 <blockquote>
 <ul>
@@ -34521,11 +34521,11 @@
 </ul>
 </blockquote>
 <h4 id="cluster-operator">▼ cluster-operator<a class="headerlink" href="#cluster-operator" title="Permanent link">&para;</a></h4>
-<p>cluster-operatorは、kube-apiserverを経由して、etcdにwatchイベントを送信している。</p>
-<p>Google Anthos GKE Clusterのバインディング情報がetcdに永続化されたことを検知した場合に、kube-apiserverを経由して、Google Anthos GKE Cluster上のkubeletにカスタムリソースの作成をコールする。</p>
-<p>Google Anthos GKE ClusterがGoogle Cloud以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operatorがこれらのAPIを経由して、Google Anthos GKE Cluster上のkubeletをコールすることになる。</p>
-<p>またkube-controller-managerはcluster-operatorを反復的に実行する。</p>
-<p>これにより、Google Anthos GKE ClusterはCRDの宣言通りに定期的に修復される (reconciliationループ) 。</p>
+<p>cluster-operator は、kube-apiserver を経由して、etcd に watch イベントを送信している。</p>
+<p>Google Anthos GKE Cluster のバインディング情報が etcd に永続化されたことを検知した場合に、kube-apiserver を経由して、Google Anthos GKE Cluster 上の kubelet にカスタムリソースの作成をコールする。</p>
+<p>Google Anthos GKE Cluster が Google Cloud 以外 (オンプレミス、ベアメタル、他クラウドプロバイダー) にある場合は、cluster-operator がこれらの API を経由して、Google Anthos GKE Cluster 上の kubelet をコールすることになる。</p>
+<p>また kube-controller-manager は cluster-operator を反復的に実行する。</p>
+<p>これにより、Google Anthos GKE Cluster は CRD の宣言通りに定期的に修復される (reconciliation ループ) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.jetstack.io/blog/anthos-aws/">https://www.jetstack.io/blog/anthos-aws/</a></li>
@@ -34534,7 +34534,7 @@
 <p><br></p>
 <h3 id="_3">その他<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="connect-gateway">▼ connect-gateway<a class="headerlink" href="#connect-gateway" title="Permanent link">&para;</a></h4>
-<p>Google Cloud上で <code>kubectl</code> コマンドを実行して各クラウドプロバイダー上のGoogle Anthos GKE Clusterのkube-apiserverにリクエストを送信するときに、各クラウドプロバイダーごとのAPIの違いを吸収してくれる。</p>
+<p>Google Cloud 上で <code>kubectl</code> コマンドを実行して各クラウドプロバイダー上の Google Anthos GKE Cluster の kube-apiserver にリクエストを送信するときに、各クラウドプロバイダーごとの API の違いを吸収してくれる。</p>
 <p><img alt="anthos_connect-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_connect-gateway.png" /></p>
 <blockquote>
 <ul>
@@ -34542,7 +34542,7 @@
 </ul>
 </blockquote>
 <h4 id="fleet-workload-identity">▼ fleet-workload-identity<a class="headerlink" href="#fleet-workload-identity" title="Permanent link">&para;</a></h4>
-<p>Google Cloud側の資格情報と、各クラウドプロバイダーのAnthos内のServiceAccountを紐付ける。</p>
+<p>Google Cloud 側の資格情報と、各クラウドプロバイダーの Anthos 内の ServiceAccount を紐付ける。</p>
 <p>これにより、クラウドプロバイダー側でアカウントを作成する必要がない。</p>
 <blockquote>
 <ul>
@@ -34550,7 +34550,7 @@
 </ul>
 </blockquote>
 <h4 id="anetd">▼ anetd<a class="headerlink" href="#anetd" title="Permanent link">&para;</a></h4>
-<p>cniとして、Ciliumを使用してGoogle Anthos GKE Clusterのネットワークを作成する。</p>
+<p>cni として、Cilium を使用して Google Anthos GKE Cluster のネットワークを作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works">https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works</a></li>
@@ -34559,9 +34559,9 @@
 <p><br></p>
 <h2 id="02-on-">02. on-オンプレミス<a class="headerlink" href="#02-on-" title="Permanent link">&para;</a></h2>
 <h3 id="on-">on-オンプレミスの仕組み<a class="headerlink" href="#on-" title="Permanent link">&para;</a></h3>
-<p>on-オンプレミスは、各Clusterを作成するワークステーション (Clusterの作成後に削除される) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、といったコンポーネントから構成される。</p>
-<p>ワークステーションにて、Google CloudのAPIを経由してオンプレミス (例：VMWare) のAPIをコールし、オンプレミス環境上にGoogle Anthos GKE Clusterを作成する。</p>
-<p>Google Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
+<p>on-オンプレミスは、各 Cluster を作成するワークステーション (Cluster の作成後に削除される) 、コントロールプレーン Node の所属する管理 Cluster、ワーカーNode の所属するユーザーCluster、といったコンポーネントから構成される。</p>
+<p>ワークステーションにて、Google Cloud の API を経由してオンプレミス (例：VMWare) の API をコールし、オンプレミス環境上に Google Anthos GKE Cluster を作成する。</p>
+<p>Google Anthos GKE Cluster のライフサイクルも Google Cloud から管理できる。</p>
 <p><img alt="anthos_on_on-premises_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_on-premises_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -34572,9 +34572,9 @@
 <h2 id="02-02-on-">02-02. on-ベアメタル<a class="headerlink" href="#02-02-on-" title="Permanent link">&para;</a></h2>
 <h3 id="on-_1">on-ベアメタルの仕組み<a class="headerlink" href="#on-_1" title="Permanent link">&para;</a></h3>
 <h4 id="kubernetes-cluster">▼ 複数Kubernetes Clusterタイプ<a class="headerlink" href="#kubernetes-cluster" title="Permanent link">&para;</a></h4>
-<p>複数Kubernetes Clusterタイプのon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeの所属する管理Cluster、ワーカーNodeの所属するユーザーCluster、<code>L4</code> (トランスポート層) のロードバランサーから構成される。</p>
-<p>Google CloudのAPIを経由して、ベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にGoogle Anthos GKE Clusterを作成する。</p>
-<p>Google Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
+<p>複数 Kubernetes Cluster タイプの on-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーン Node の所属する管理 Cluster、ワーカーNode の所属するユーザーCluster、<code>L4</code> (トランスポート層) のロードバランサーから構成される。</p>
+<p>Google Cloud の API を経由して、ベアメタルプロバイダーの API をコールし、ベアメタル環境上に Google Anthos GKE Cluster を作成する。</p>
+<p>Google Anthos GKE Cluster のライフサイクルも Google Cloud から管理できる。</p>
 <p><img alt="anthos_on_bare-metal_multi-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_multi-cluster.png" /></p>
 <blockquote>
 <ul>
@@ -34583,9 +34583,9 @@
 </ul>
 </blockquote>
 <h4 id="cluster_1">▼ スタンドアローンClusterタイプ (ハイブリッドタイプ)<a class="headerlink" href="#cluster_1" title="Permanent link">&para;</a></h4>
-<p>スタンドアローンClusterタイプ (ハイブリッドタイプ) のon-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーンNodeとワーカーNodeの両方が所属するベアメタルCluster、といったコンポーネントから構成される。</p>
-<p>ワークステーションにて、Google CloudのAPIを経由してベアメタルプロバイダーのAPIをコールし、ベアメタル環境上にGoogle Anthos GKE Clusterを作成する。</p>
-<p>Google Anthos GKE ClusterのライフサイクルもGoogle Cloudから管理できる。</p>
+<p>スタンドアローン Cluster タイプ (ハイブリッドタイプ) の on-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーン Node とワーカーNode の両方が所属するベアメタル Cluster、といったコンポーネントから構成される。</p>
+<p>ワークステーションにて、Google Cloud の API を経由してベアメタルプロバイダーの API をコールし、ベアメタル環境上に Google Anthos GKE Cluster を作成する。</p>
+<p>Google Anthos GKE Cluster のライフサイクルも Google Cloud から管理できる。</p>
 <p><img alt="anthos_on_bare-metal_standalone-cluster" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_standalone-cluster.png" /></p>
 <blockquote>
 <ul>
@@ -34596,16 +34596,16 @@
 <p><br></p>
 <h3 id="_4">ワークステーション<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ワークステーションとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Google Anthos Clusterの作成時やアップグレード時に、<code>bmctl</code> コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上でKindを起動する。</p>
+<p>Google Anthos Cluster の作成時やアップグレード時に、<code>bmctl</code> コマンドはワークステーション (仮想サーバー) を構築し、ワークステーション上で Kind を起動する。</p>
 <p>ベアメタルであるため、自前で仮想サーバー (例：VMware) を作成する必要がある。</p>
-<p>Kindはコンテナを構築し、そのコンテナ内でブートストラップClusterを作成できるか否かを検証することにより、Google Anthos Clusterの事前検証する。</p>
-<p>Kindがコンテナを構築するために、Google Anthos Clusterの構築前に、<code>docker</code> プロセスを起動しておく必要がある。</p>
+<p>Kind はコンテナを構築し、そのコンテナ内でブートストラップ Cluster を作成できるか否かを検証することにより、Google Anthos Cluster の事前検証する。</p>
+<p>Kind がコンテナを構築するために、Google Anthos Cluster の構築前に、<code>docker</code> プロセスを起動しておく必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>docker
 </code></pre></div>
 <h4 id="cluster_2">▼ ブートストラップCluster<a class="headerlink" href="#cluster_2" title="Permanent link">&para;</a></h4>
-<p>Kindがコンテナ内で作成する仮想的なGoogle Anthos Clusterのこと。</p>
-<p>VClusterを使用して、仮想的なGoogle Anthos Clusterを作成している。</p>
-<p><code>~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig</code> ファイルを指定することにより、ブートストラップClusterのkube-apiserverにリクエストを送信できる。</p>
+<p>Kind がコンテナ内で作成する仮想的な Google Anthos Cluster のこと。</p>
+<p>VCluster を使用して、仮想的な Google Anthos Cluster を作成している。</p>
+<p><code>~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig</code> ファイルを指定することにより、ブートストラップ Cluster の kube-apiserver にリクエストを送信できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--kubeconfig<span class="w"> </span>~/baremetal/bmctl-workspace/.kindkubeconfig
@@ -34613,12 +34613,12 @@
 <p><br></p>
 <h2 id="02-03-on-google-cloud">02-03. on-Google Cloud<a class="headerlink" href="#02-03-on-google-cloud" title="Permanent link">&para;</a></h2>
 <h3 id="on-google-cloud">on-Google Cloudの仕組み<a class="headerlink" href="#on-google-cloud" title="Permanent link">&para;</a></h3>
-<p>Google Cloud環境上にGoogle Anthos GKE Clusterを作成する。</p>
+<p>Google Cloud 環境上に Google Anthos GKE Cluster を作成する。</p>
 <p><br></p>
 <h2 id="02-04-on-">02-04. on-クラウドプロバイダー<a class="headerlink" href="#02-04-on-" title="Permanent link">&para;</a></h2>
 <h3 id="on-_2">on-クラウドプロバイダーの仕組み<a class="headerlink" href="#on-_2" title="Permanent link">&para;</a></h3>
-<p>Google CloudのAPIを経由して、他のクラウドプロバイダー (例：AWS、Azure) のAPIをコールし、クラウドプロバイダー上にGoogle Anthos GKE Clusterを作成する。</p>
-<p>ただし他のクラウドプロバイダーでは、専用Kubernetes実行環境 (例：Amazon EKS、Google Cloud GKE、Azure AKSなど) を使用すれば良いため、Google Cloud環境、オンプレミス環境、ベアメタル環境、でAnthosを使用することが多い。</p>
+<p>Google Cloud の API を経由して、他のクラウドプロバイダー (例：AWS、Azure) の API をコールし、クラウドプロバイダー上に Google Anthos GKE Cluster を作成する。</p>
+<p>ただし他のクラウドプロバイダーでは、専用 Kubernetes 実行環境 (例：Amazon EKS、Google Cloud GKE、Azure AKS など) を使用すればよいため、Google Cloud 環境、オンプレミス環境、ベアメタル環境、で Anthos を使用することが多い。</p>
 <p><img alt="anthos_on_cloud-provider" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_cloud-provider.png" /></p>
 <p><br></p>
 <h2 id="03-bmctl">03. bmctlコマンド<a class="headerlink" href="#03-bmctl" title="Permanent link">&para;</a></h2>
@@ -34629,7 +34629,7 @@
 </code></pre></div>
 <h3 id="update">update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
 <h4 id="update_1">▼ updateとは<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
-<p>CRDの設定値を変更し、kube-apiserverに送信する。</p>
+<p>CRD の設定値を変更し、kube-apiserver に送信する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>~/baremetal/bmctl<span class="w"> </span>update<span class="w"> </span>cluster<span class="w"> </span>-c<span class="w"> </span>foo-anthos-cluster<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 </code></pre></div>
 <blockquote>
@@ -34640,11 +34640,11 @@
 <p><br></p>
 <h3 id="upgrade">upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h3>
 <h4 id="upgrade_1">▼ upgradeとは<a class="headerlink" href="#upgrade_1" title="Permanent link">&para;</a></h4>
-<p>AnthosのKubernetesのバージョンをプリフライトチェックで検証し、成功すればアップグレードする。</p>
+<p>Anthos の Kubernetes のバージョンをプリフライトチェックで検証し、成功すればアップグレードする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>~/baremetal/bmctl<span class="w"> </span>upgrade<span class="w"> </span>cluster<span class="w"> </span>-c<span class="w"> </span>foo-anthos-cluster<span class="w"> </span>-n<span class="w"> </span>foo-namespace
 </code></pre></div>
 <h4 id="-reuse-bootstrap-cluster">▼ --reuse-bootstrap-cluster<a class="headerlink" href="#-reuse-bootstrap-cluster" title="Permanent link">&para;</a></h4>
-<p>既存のブートストラップClusterを再利用することにより、プリフライトチェックの一部をスキップし、成功すればアップグレードする。</p>
+<p>既存のブートストラップ Cluster を再利用することにより、プリフライトチェックの一部をスキップし、成功すればアップグレードする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>~/baremetal/bmctl<span class="w"> </span>upgrade<span class="w"> </span>cluster<span class="w"> </span>-c<span class="w"> </span>foo-anthos-cluster<span class="w"> </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span>--reuse-bootstrap-cluster
 </code></pre></div>
 <p><br></p>
@@ -34668,7 +34668,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34679,11 +34679,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

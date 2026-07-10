@@ -33679,14 +33679,14 @@
 <h2 id="01-fluentbitfluentd">01. FluentBit/Fluentdの仕組み<a class="headerlink" href="#01-fluentbitfluentd" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><img alt="fluent-bit_fluentd_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture.png" /></p>
-<p>FluentBit/Fluentdは、インプットフェーズ、バッファーフェーズ、アウトプットレイヤー、から構成される。</p>
+<p>FluentBit/Fluentd は、インプットフェーズ、バッファーフェーズ、アウトプットレイヤー、から構成される。</p>
 <p>アプリケーションからログを収集し、これをフィルタリングした後、複数の宛先にルーティングする。</p>
 <p>プッシュ型で収集したログはまずインプットされる。</p>
 <p>メモリやファイルをバッファーとして使用でき、ログはチャンクとしてステージに蓄えられる。</p>
 <p>ステージに一定サイズのチャンクが蓄えられるか、または一定時間が経過すると、チャンクはキューに格納される。</p>
 <p>キューは、指定された宛先にログを順番にルーティングする。</p>
 <p>プロセスが再起動されると、特にメモリのバッファー上に蓄えられたログは破棄されるため、ログ損失が起こってしまう。</p>
-<p>補足として、AWS Kinesis Data Firehoseも似たようなバッファリングとルーティングの仕組みを持っている。</p>
+<p>補足として、AWS Kinesis Data Firehose も似たようなバッファリングとルーティングの仕組みを持っている。</p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html">https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html</a></li>
@@ -33705,7 +33705,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">複数のログパイプラインの集約<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>複数のFluentBitを稼働させる場合、アウトプット先がそれぞれのログパイプラインを受信しても良いが、送信元にメッセージキューを配置しても良い。</p>
+<p>複数の FluentBit を稼働させる場合、アウトプット先がそれぞれのログパイプラインを受信してもよいが、送信元にメッセージキューを配置してもよい。</p>
 <p>メッセージキューを配置すると、ログパイプラインを乱雑にせず、集約できるようになる。</p>
 <p>またメッセージキューによって、アウトプット先のレートリミットを超過しないように、一定の間隔でログを送信できる。</p>
 <p><img alt="fluent-bit_fluentd_message-queue" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_message-queue.png" /></p>
@@ -33771,11 +33771,11 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ エージェントパターンの実装例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>エージェントは、デーモンプロセス、サイドカー、DaemonSetなどで実装する。</p>
+<p>エージェントは、デーモンプロセス、サイドカー、DaemonSet などで実装する。</p>
 <ul>
-<li>FluentBit/Fluentdプロセスをサーバーで、プロセスとして直接的に常駐させる。</li>
-<li>KubernetesのPod内のサイドカーとして配置する。</li>
-<li>KubernetesのDaemonSet配下のPodとして常駐させる。</li>
+<li>FluentBit/Fluentd プロセスをサーバーで、プロセスとして直接的に常駐させる。</li>
+<li>Kubernetes の Pod 内のサイドカーとして配置する。</li>
+<li>Kubernetes の DaemonSet 配下の Pod として常駐させる。</li>
 </ul>
 <blockquote>
 <ul>
@@ -33831,7 +33831,7 @@
 <h4 id="_10">▼ フォワーダーアグリゲーターパターンとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>フォワーダーアグリゲーターパターンは、フォワーダー、アグリゲーター、といったコンポーネントから構成される。</p>
 <p>ログの送信元では、フォワーダー (FluentBit/Fluentd) は <code>L7</code> ロードバランサーを介してログを収集する。</p>
-<p>さらに、フォワーダーは別のFluentBit/Fluentd (アグリゲーター) にログを送信する。</p>
+<p>さらに、フォワーダーは別の FluentBit/Fluentd (アグリゲーター) にログを送信する。</p>
 <p>アグリゲーターはログを集約し、監視バックエンドにログを送信する。</p>
 <p><img alt="fluent-bit_fluentd_forwarder-aggregator-pattern" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png" /></p>
 <blockquote>
@@ -33841,9 +33841,9 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ フォワーダーアグリゲーターパターンの実装例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p><code>L7</code> ロードバランサーはIngress Controller、アグリゲーターはDeploymentなどで実装できる。</p>
-<p>FluentBit/Fluentd以外で言うと、Nginxで実装されたGrafana Loki Gatewayは <code>L7</code> ロードバランサーである。</p>
-<p>Grafana Loki Gatewayは、Cluster内のGrafana Alloyからログを受信し、Grafana Lokiに送信する。</p>
+<p><code>L7</code> ロードバランサーは Ingress Controller、アグリゲーターは Deployment などで実装できる。</p>
+<p>FluentBit/Fluentd 以外で言うと、Nginx で実装された Grafana Loki Gateway は <code>L7</code> ロードバランサーである。</p>
+<p>Grafana Loki Gateway は、Cluster 内の Grafana Alloy からログを受信し、Grafana Loki に送信する。</p>
 <p><br></p>
 
 
@@ -33865,7 +33865,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 21:19:15 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -33876,11 +33876,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

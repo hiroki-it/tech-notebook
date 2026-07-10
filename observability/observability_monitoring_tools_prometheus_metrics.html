@@ -34087,12 +34087,12 @@
 <h2 id="01">01. メトリクス<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">メトリクス型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ メトリクス型の確認<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Prometheusのダッシュボードでメトリクスをクエリすると、検索結果に表示される。</p>
+<p>Prometheus のダッシュボードでメトリクスをクエリすると、検索結果に表示される。</p>
 <h4 id="counter">▼ Counter型<a class="headerlink" href="#counter" title="Permanent link">&para;</a></h4>
 <p>累計で常に増加するメトリクス (例：リクエスト数) が所属する。</p>
-<p>メトリクス型がCounterの場合は <code>rate()</code> 関数を使用できる。</p>
+<p>メトリクス型が Counter の場合は <code>rate()</code> 関数を使用できる。</p>
 <p><code>rate()</code> 関数で秒当たりの差分し、これを <code>sum()</code> 関数で合計すると累計だったメトリクスを現在の増減で表現できる。</p>
-<p>Counterは <code>rate()</code> 関数で秒当たりの増減で集約することが多いため、Grafanaダッシュボード上では、Counterのメトリクスの単位を『〇〇/秒』とする。</p>
+<p>Counter は <code>rate()</code> 関数で秒当たりの増減で集約することが多いため、Grafana ダッシュボード上では、Counter のメトリクスの単位を『〇〇/秒』とする。</p>
 <p><code>rate()</code> 関数を使用しない場合、メトリクスの単位は『累計〇〇』になる。</p>
 <blockquote>
 <ul>
@@ -34101,9 +34101,9 @@
 </ul>
 </blockquote>
 <h4 id="gauge">▼ Gauge型<a class="headerlink" href="#gauge" title="Permanent link">&para;</a></h4>
-<p>動的に増減するメトリクス (例：CPU使用率、Pod数) が所属する。</p>
-<p>メトリクス型がGaugeであると <code>rate()</code> 関数は使用できない。</p>
-<p>Gaugeはそれ自体が増減であるため、Grafanaダッシュボード上では、メトリクスの単位を『〇 (元のメトリクスそのまま) 』とすることがほとんどである。</p>
+<p>動的に増減するメトリクス (例：CPU 使用率、Pod 数) が所属する。</p>
+<p>メトリクス型が Gauge であると <code>rate()</code> 関数は使用できない。</p>
+<p>Gauge はそれ自体が増減であるため、Grafana ダッシュボード上では、メトリクスの単位を『〇 (元のメトリクスそのまま) 』とすることがほとんどである。</p>
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge">https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge</a></li>
@@ -34128,7 +34128,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">メタデータ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>Prometheusのメトリクスには、メタデータとして『ラベル』を付与できる。</p>
+<p>Prometheus のメトリクスには、メタデータとして『ラベル』を付与できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.logz.io/docs/user-guide/infrastructure-monitoring/introduction-to-prometheus/explore-metrics-prometheus/#prometheus-metrics-metadata-labels">https://docs.logz.io/docs/user-guide/infrastructure-monitoring/introduction-to-prometheus/explore-metrics-prometheus/#prometheus-metrics-metadata-labels</a></li>
@@ -34154,7 +34154,7 @@ http_request_duration_seconds
 <p><br></p>
 <h3 id="prometheus_tsdb_">ローカルストレージ (<code>prometheus_tsdb_*</code>)<a class="headerlink" href="#prometheus_tsdb_" title="Permanent link">&para;</a></h3>
 <h4 id="prometheus_tsdb_head_samples_appended_total">▼ prometheus_tsdb_head_samples_appended_total<a class="headerlink" href="#prometheus_tsdb_head_samples_appended_total" title="Permanent link">&para;</a></h4>
-<p>Prometheusが収集したデータポイントの合計数を表す。</p>
+<p>Prometheus が収集したデータポイントの合計数を表す。</p>
 <div class="highlight"><pre><span></span><code>prometheus_tsdb_head_samples_appended_total
 </code></pre></div>
 <blockquote>
@@ -34164,7 +34164,7 @@ http_request_duration_seconds
 </ul>
 </blockquote>
 <h4 id="prometheus_tsdb_compaction_chunk_size_bytes_sum">▼ prometheus_tsdb_compaction_chunk_size_bytes_sum<a class="headerlink" href="#prometheus_tsdb_compaction_chunk_size_bytes_sum" title="Permanent link">&para;</a></h4>
-<p>Prometheusが作成したチャンクの合計サイズ (KB) を表す。</p>
+<p>Prometheus が作成したチャンクの合計サイズ (KB) を表す。</p>
 <div class="highlight"><pre><span></span><code>prometheus_tsdb_compaction_chunk_size_bytes_sum
 </code></pre></div>
 <blockquote>
@@ -34174,7 +34174,7 @@ http_request_duration_seconds
 </ul>
 </blockquote>
 <h4 id="prometheus_tsdb_compaction_chunk_samples_sum">▼ prometheus_tsdb_compaction_chunk_samples_sum<a class="headerlink" href="#prometheus_tsdb_compaction_chunk_samples_sum" title="Permanent link">&para;</a></h4>
-<p>Prometheusが作成したチャンクの合計数を表す。</p>
+<p>Prometheus が作成したチャンクの合計数を表す。</p>
 <div class="highlight"><pre><span></span><code>prometheus_tsdb_compaction_chunk_samples_sum
 </code></pre></div>
 <blockquote>
@@ -34186,7 +34186,7 @@ http_request_duration_seconds
 <p><br></p>
 <h2 id="02-02">02-02. 外部から収集したデータポイント<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-eks">Amazon EKSから収集したデータポイント<a class="headerlink" href="#amazon-eks" title="Permanent link">&para;</a></h3>
-<p>Amazon EKSで利用できるAPI名を表す。</p>
+<p>Amazon EKS で利用できる API 名を表す。</p>
 <div class="highlight"><pre><span></span><code>aggregator_unavailable_apiservice<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;apiserver&quot;</span>,<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;&lt;API名&gt;&quot;</span><span class="o">}</span>
 
 aggregator_unavailable_apiservice<span class="o">{</span><span class="nv">job</span><span class="o">=</span><span class="s2">&quot;apiserver&quot;</span>,<span class="w"> </span><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;v1.metrics.eks.amazonaws.com&quot;</span><span class="o">}</span>
@@ -34199,11 +34199,11 @@ aggregator_unavailable_apiservice<span class="o">{</span><span class="nv">job</s
 <p><br></p>
 <h3 id="kubelet">kubeletから収集したデータポイント<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h3>
 <h4 id="container_cpu_usage_seconds_total">▼ container_cpu_usage_seconds_total<a class="headerlink" href="#container_cpu_usage_seconds_total" title="Permanent link">&para;</a></h4>
-<p>コンテナのCPUの使用時間を表す。</p>
-<p>インターネットではこれをCPU使用率と言っている記事が多くあるが、このメトリクスだけではコンテナのCPU使用率の分子を表すだけである。</p>
+<p>コンテナの CPU の使用時間を表す。</p>
+<p>インターネットではこれを CPU 使用率と言っている記事が多くあるが、このメトリクスだけではコンテナの CPU 使用率の分子を表すだけである。</p>
 <div class="highlight"><pre><span></span><code>container_cpu_usage_seconds_total
 </code></pre></div>
-<p><code>kube_pod_container_resource_requests</code> メトリクスや <code>kube_pod_container_resource_limits</code> を使用して、CPU使用率を集約できる。</p>
+<p><code>kube_pod_container_resource_requests</code> メトリクスや <code>kube_pod_container_resource_limits</code> を使用して、CPU 使用率を集約できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod単位のCPU使用率</span>
 <span class="c1"># メモリ実際値 / 下限値 (.spec.containers[*].resources.requestsキー)</span>
 sum<span class="o">(</span>rate<span class="o">(</span>container_cpu_usage_seconds_total<span class="o">{</span>container!<span class="o">=</span><span class="s2">&quot;&quot;</span><span class="o">}[</span>5m<span class="o">]))</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_requests<span class="o">{</span><span class="nv">resource</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="o">})</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>*<span class="w"> </span><span class="m">100</span>
@@ -34219,7 +34219,7 @@ sum<span class="o">(</span>rate<span class="o">(</span>container_cpu_usage_secon
 </ul>
 </blockquote>
 <h4 id="container_memory_working_set_bytes">▼ container_memory_working_set_bytes<a class="headerlink" href="#container_memory_working_set_bytes" title="Permanent link">&para;</a></h4>
-<p><code>kube_pod_container_resource_requests</code> メトリクスや <code>kube_pod_container_resource_limits</code> を使用して、CPU使用率を集約できる。</p>
+<p><code>kube_pod_container_resource_requests</code> メトリクスや <code>kube_pod_container_resource_limits</code> を使用して、CPU 使用率を集約できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Pod単位のメモリ使用率</span>
 <span class="c1"># メモリ実際値 / メモリ下限値 (.spec.containers[*].resources.requestsキー)</span>
 sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>sum<span class="o">(</span>kube_pod_container_resource_requests<span class="o">{</span><span class="nv">resource</span><span class="o">=</span><span class="s2">&quot;memory&quot;</span><span class="o">})</span><span class="w"> </span>by<span class="w"> </span><span class="o">(</span>pod<span class="o">)</span><span class="w">  </span>*<span class="w"> </span><span class="m">100</span>
@@ -34243,9 +34243,9 @@ sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</
 <h4 id="container">▼ container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h4>
 <p>コンテナ名を表す。</p>
 <h4 id="service">▼ service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h4>
-<p>KubernetesのService名を表す。</p>
+<p>Kubernetes の Service 名を表す。</p>
 <h4 id="instance">▼ instance<a class="headerlink" href="#instance" title="Permanent link">&para;</a></h4>
-<p>NodeのIPアドレスとポート番号を表す。</p>
+<p>Node の IP アドレスとポート番号を表す。</p>
 <h4 id="job">▼ job<a class="headerlink" href="#job" title="Permanent link">&para;</a></h4>
 <p><code>scrape_configs</code> キー配下の <code>job_name</code> キー名を表す。</p>
 <p><br></p>
@@ -34280,7 +34280,7 @@ sum<span class="o">(</span>container_memory_working_set_bytes<span class="o">)</
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

@@ -35708,11 +35708,11 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>サーバーの場合、稼働するdatadogエージェントが、datadog-APIにアプリケーションログを送信する。コンテナの場合、FluentBitが代わりにアプリケーションログを送信する。</p>
+<p>サーバーの場合、稼働する datadog エージェントが、datadog-API にアプリケーションログを送信する。コンテナの場合、FluentBit が代わりにアプリケーションログを送信する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Datadogにて、ログはパイプラインで処理され、構造化ログになる。</p>
+<p>Datadog にて、ログはパイプラインで処理され、構造化ログになる。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -35733,7 +35733,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Datadogにて、ログはパイプラインで処理され、構造化ログになる。</p>
+<p>Datadog にて、ログはパイプラインで処理され、構造化ログになる。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
@@ -35748,8 +35748,8 @@
 <p><br></p>
 <h2 id="02">02. ログエージェント (サーバーの場合)<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_4">ログエージェントとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>デーモンであるdatadogエージェントに含まれている。</p>
-<p>アプリケーションからログを収集し、Datadogにフォワーディングする。</p>
+<p>デーモンである datadog エージェントに含まれている。</p>
+<p>アプリケーションからログを収集し、Datadog にフォワーディングする。</p>
 <p><img alt="datadog-agent_on-server" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png" /></p>
 <blockquote>
 <ul>
@@ -35767,8 +35767,8 @@
 <p><br></p>
 <h2 id="03-amazon-ecs-fargate">03. ログエージェント (Amazon ECS Fargateの場合)<a class="headerlink" href="#03-amazon-ecs-fargate" title="Permanent link">&para;</a></h2>
 <h3 id="_6">ログエージェントとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>サーバーの場合とは異なり、Amazon ECS Fargateのdatadogエージェントはログを収集できない。</p>
-<p>そのため、代わりにFireLensコンテナを使用する必要がある。</p>
+<p>サーバーの場合とは異なり、Amazon ECS Fargate の datadog エージェントはログを収集できない。</p>
+<p>そのため、代わりに FireLens コンテナを使用する必要がある。</p>
 <p>メトリクスと分散トレースであれば収集できる。</p>
 <blockquote>
 <ul>
@@ -35778,8 +35778,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="firelens">FireLensコンテナ<a class="headerlink" href="#firelens" title="Permanent link">&para;</a></h3>
-<p>FluentBitを稼働させたコンテナのこと。</p>
-<p>Datadogの代わりにログを収集する。</p>
+<p>FluentBit を稼働させたコンテナのこと。</p>
+<p>Datadog の代わりにログを収集する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens">https://docs.datadoghq.com/integrations/ecs_fargate/?tab=fluentbitandfirelens</a></li>
@@ -35789,7 +35789,7 @@
 <h2 id="02-02-clusternode-kubernetes">02-02. Cluster/Nodeエージェント (Kubernetesの場合)<a class="headerlink" href="#02-02-clusternode-kubernetes" title="Permanent link">&para;</a></h2>
 <h3 id="clusternode">Cluster/Nodeエージェントとは<a class="headerlink" href="#clusternode" title="Permanent link">&para;</a></h3>
 <h4 id="kubernetes">▼ Kubernetesの場合<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
-<p>ClusterやワーカーNodeからメトリクスを受信し、コントロールプレーンNodeのkube-apiserverにフォワーディングする。</p>
+<p>Cluster やワーカーNode からメトリクスを受信し、コントロールプレーン Node の kube-apiserver にフォワーディングする。</p>
 <p><img alt="datadog-agent_on_kubernetes" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png" /></p>
 <blockquote>
 <ul>
@@ -35810,7 +35810,7 @@
 <h2 id="04">04. ブラウザのコンソールログの収集<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="sdk">ブラウザログSDK<a class="headerlink" href="#sdk" title="Permanent link">&para;</a></h3>
 <h4 id="sdk_1">▼ ブラウザログSDKとは<a class="headerlink" href="#sdk_1" title="Permanent link">&para;</a></h4>
-<p>ブラウザ上のJavaScriptで実行され、<code>console.error()</code> 関数の実行結果、キャッチされていない例外、ネットワークエラーを含む構造化ログをDatadogに送信する。</p>
+<p>ブラウザ上の JavaScript で実行され、<code>console.error()</code> 関数の実行結果、キャッチされていない例外、ネットワークエラーを含む構造化ログを Datadog に送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/logs/log_collection/javascript">https://docs.datadoghq.com/logs/log_collection/javascript</a></li>
@@ -35864,7 +35864,7 @@
 <h3 id="_9">セットアップ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="npm">▼ NPMの場合<a class="headerlink" href="#npm" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>Nuxt.jsの場合、エントリーポイントは <code>nuxt.config</code> ファイルである。</p>
+<p>Nuxt.js の場合、エントリーポイントは <code>nuxt.config</code> ファイルである。</p>
 <p>プラグインとして実装し、これをエントリーポイントで読み込むようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># .env.datadogファイル</span>
 
@@ -36049,7 +36049,7 @@
 <h2 id="06">06. 収集したログの送信<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="ec2">EC2におけるログの送信<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
 <h4 id="php-monolog">▼ PHP Monologの場合<a class="headerlink" href="#php-monolog" title="Permanent link">&para;</a></h4>
-<p>LogパッケージにMonologを採用している場合、<code>/etc/datadog-agent/conf.d/php.d</code> ディレクトリ配下に <code>conf.yaml</code> ファイルを作成する。ここに、Datadogにログを送信するための設定する。</p>
+<p>Log パッケージに Monolog を採用している場合、<code>/etc/datadog-agent/conf.d/php.d</code> ディレクトリ配下に <code>conf.yaml</code> ファイルを作成する。ここに、Datadog にログを送信するための設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">init_config</span><span class="p">:</span>
 
@@ -36070,11 +36070,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="amazon-ecs-fargate">Amazon ECS Fargateにおけるログの送信<a class="headerlink" href="#amazon-ecs-fargate" title="Permanent link">&para;</a></h3>
-<p>FireLensコンテナで稼働するFluentBitが、Datadogにログを送信する。</p>
+<p>FireLens コンテナで稼働する FluentBit が、Datadog にログを送信する。</p>
 <p><br></p>
 <h2 id="07">07. ログパイプライン<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="_15">ログパイプラインとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>Datadogに送信されたログのメッセージから値を抽出し、構造化ログの各属性に割り当てる。</p>
+<p>Datadog に送信されたログのメッセージから値を抽出し、構造化ログの各属性に割り当てる。</p>
 <p>パイプラインのルールに当てはまらなかったされなかったログは、そのまま流入する。</p>
 <p>属性ごとにファセットが対応しており、各ファセットの値判定ルールを基にして、ログコンソール画面に表示される。</p>
 <p><br></p>
@@ -36083,7 +36083,7 @@
 <p>指定した属性/タグに割り当てられた値を、別の属性に割り当て直す。</p>
 <p>再割り当て時に、元のデータ型を変更できる。</p>
 <p><strong>＊例＊</strong></p>
-<p>Amazon CloudWatch Logsから、以下のようなAmazon API Gatewayアクセスログの構造化ログを受信する例を考える。</p>
+<p>Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセスログの構造化ログを受信する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;content&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -36205,10 +36205,10 @@
 <h4 id="_21">▼ カテゴリプロセッサー<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>検索条件に一致する属性を持つ構造化ログに対して、属性を新しく付与する。</p>
 <p><strong>＊例＊</strong></p>
-<p>Nginxから、以下のような非構造化ログを受信する例を考える。</p>
+<p>Nginx から、以下のような非構造化ログを受信する例を考える。</p>
 <div class="highlight"><pre><span></span><code>*.*.*.*<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">01</span>/Sep/2021:00:00:00<span class="w"> </span>+0000<span class="o">]</span><span class="w"> </span><span class="s2">&quot;GET /healthcheck HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="s2">&quot;ELB-HealthChecker/2.0&quot;</span>
 </code></pre></div>
-<p>以下のようなGrokパーサールールを定義する。</p>
+<p>以下のような Grok パーサールールを定義する。</p>
 <p><code>http.status_code</code> 属性にステータスコード値を割り当てる。</p>
 <div class="highlight"><pre><span></span><code>access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] &quot;(?&gt;%{_method} |)%{_url}(?&gt; %{_version}|)&quot; %{_status_code} (?&gt;%{_bytes_written}|-)
 access.combined %{access.common} (%{number:duration:scale(1000000000)} )?&quot;%{_referer}&quot; &quot;%{_user_agent}&quot;( &quot;%{_x_forwarded_for}&quot;)?.*
@@ -36252,7 +36252,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 <h2 id="07-02">07-02. パーサー系<a class="headerlink" href="#07-02" title="Permanent link">&para;</a></h2>
 <h3 id="grok">Grokパーサー<a class="headerlink" href="#grok" title="Permanent link">&para;</a></h3>
 <h4 id="grok_1">▼ Grokパーサーとは<a class="headerlink" href="#grok_1" title="Permanent link">&para;</a></h4>
-<p>パースルール (<code>%{&lt;マッチャー名&gt;:&lt;エクストラクト名&gt;:&lt;フィルター名&gt;}</code>) を使用して、<code>message</code> 属性に割り当てられた非構造化ログを構造化し、構造化ログに付与する。また、Extractを使用すると、<code>message</code> 属性以外に対してGrokパーサーを使用できるようになるため、構造化ログも扱えるようになる。</p>
+<p>パースルール (<code>%{&lt;マッチャー名&gt;:&lt;エクストラクト名&gt;:&lt;フィルター名&gt;}</code>) を使用して、<code>message</code> 属性に割り当てられた非構造化ログを構造化し、構造化ログに付与する。また、Extract を使用すると、<code>message</code> 属性以外に対して Grok パーサーを使用できるようになるため、構造化ログも扱えるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/logs/processing/parsing/?tab=matcher">https://docs.datadoghq.com/logs/processing/parsing/?tab=matcher</a></li>
@@ -36288,7 +36288,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 </tbody>
 </table>
 <h4 id="1">▼ 例１<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<p>Laravelから、以下のような非構造化ログを受信する例を考える。</p>
+<p>Laravel から、以下のような非構造化ログを受信する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2021</span>-01-01<span class="w"> </span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span>staging.ERROR:<span class="w"> </span>ログのメッセージ
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">2021</span>-01-01<span class="w"> </span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span>production.ERROR:<span class="w"> </span>ログのメッセージ
@@ -36305,7 +36305,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 <span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>以下のようなGrokパーサールールを定義する。</p>
+<p>以下のような Grok パーサールールを定義する。</p>
 <p><code>date</code> マッチャーを使用して、また <code>date</code> 属性をエクストラクト先とする。</p>
 <p><code>word</code> マッチャーを使用して、また <code>log_status</code> カスタム属性をエクストラクト先とする。</p>
 <p>任意のルール名を設定できる。</p>
@@ -36317,14 +36317,14 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 </blockquote>
 <div class="highlight"><pre><span></span><code>FooRule \[%{date(&quot;yyyy-MM-dd HH:mm:ss&quot;):date}\]\s+(production|staging).%{word:log_status}\:.+
 </code></pre></div>
-<p>これにより、非構造化ログは以下の様に構造化され、構造化ログに付与される。</p>
+<p>これにより、非構造化ログは以下のように構造化され、構造化ログに付与される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;date&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1630454400000</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="c1"># エポック形式 (UNIX時間)</span>
 <span class="w">  </span><span class="s">&quot;log_status&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;INFO&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="2">▼ 例２<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>AWS WAFから以下のような構造化ログを受信する例を考える。</p>
+<p>AWS WAF から以下のような構造化ログを受信する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;timestamp&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1639459445119</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;formatVersion&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
@@ -36370,19 +36370,19 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 <span class="w">  </span><span class="s">&quot;httpMethod&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;GET&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>以下のようなGrokパーサールールを定義する。</p>
+<p>以下のような Grok パーサールールを定義する。</p>
 <p><code>data</code> マッチャーを使用して、また <code>wafacl_name</code> カスタム属性をエクストラクト先とする。</p>
 <p>抽出する必要のない文字列は、ワイルドカード (<code>.*</code>) を指定する。</p>
 <div class="highlight"><pre><span></span><code>Rule .*\/webacl\/%{data:wafacl_name}\/.*
 </code></pre></div>
-<p>また、Extract機能の対象キーを <code>webaclId</code> 属性とする。</p>
-<p>これにより、<code>webaclId</code> 属性の非構造化ログは以下の様に構造化され、構造化ログに付与される。</p>
+<p>また、Extract 機能の対象キーを <code>webaclId</code> 属性とする。</p>
+<p>これにより、<code>webaclId</code> 属性の非構造化ログは以下のように構造化され、構造化ログに付与される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;wafacl_name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd-foo-alb-waf&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="url">Urlパーサー<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
 <h4 id="url_1">▼ Urlパーサーとは<a class="headerlink" href="#url_1" title="Permanent link">&para;</a></h4>
-<p>構造化ログのURL値からパスパラメーターやクエリパラメーターを検出し、詳細な属性として新しく付与する。</p>
+<p>構造化ログの URL 値からパスパラメーターやクエリパラメーターを検出し、詳細な属性として新しく付与する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#url-parser">https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#url-parser</a></li>
@@ -36404,7 +36404,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 <span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>以下のようなGrokパーサのルールを定義する。</p>
+<p>以下のような Grok パーサのルールを定義する。</p>
 <p>各マッチャーでカスタム属性に値を割り当てる。</p>
 <div class="highlight"><pre><span></span><code>FooRule %{ipv4:network.client.ip}\s+\[%{date(&quot;yyyy-MM-dd HH:mm:ss&quot;):date}\]\s+%{word:http.method}\s+%{notSpace:http.url}\s+%{integer:http.status_code}
 </code></pre></div>
@@ -36416,7 +36416,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 <span class="w">  </span><span class="s">&quot;network&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;client&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;ip&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;192.168.0.1&quot;</span><span class="p p-Indicator">}},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>これに対して、Urlパーサのルールを定義する。</p>
+<p>これに対して、Url パーサのルールを定義する。</p>
 <p><code>http.url</code> 属性からパスパラメーターやクエリパラメーターを検出し、<code>http.url_details</code> 属性として新しく付与する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;date&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1609502400000</span><span class="p p-Indicator">,</span>
@@ -36432,7 +36432,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="2_1">▼ 例２<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
-<p>Amazon CloudWatch Logsから、以下のようなAmazon API Gatewayアクセスログの構造化ログを受信する例を考える。</p>
+<p>Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセスログの構造化ログを受信する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;content&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -36479,7 +36479,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 <span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>これに対して、以下のようなカテゴリパーサーのルールを定義する。各Lambdaの <code>aws.invoked_function_arn</code> 属性のARNに応じて、<code>service</code> 属性にサービス値 (<code>foo-apigateway</code>、<code>bar-apigateway</code>、<code>baz-apigateway</code>) を付与する。この属性を使用する理由は、さまざまなAWSリソースの構造化ログが持っているためである (<code>owner</code> 属性でも良い。ただし、おそらくS3からログを収集する場合はこれがない？) 。元の構造化ログにすでに <code>service</code> 属性があるため、この値が上書きされる。</p>
+<p>これに対して、以下のようなカテゴリパーサーのルールを定義する。各 Lambda の <code>aws.invoked_function_arn</code> 属性の ARN に応じて、<code>service</code> 属性にサービス値 (<code>foo-apigateway</code>、<code>bar-apigateway</code>、<code>baz-apigateway</code>) を付与する。この属性を使用する理由は、さまざまな AWS リソースの構造化ログが持っているためである (<code>owner</code> 属性でもよい。ただし、おそらく S3 からログを収集する場合はこれがない？) 。元の構造化ログにすでに <code>service</code> 属性があるため、この値が上書きされる。</p>
 <div class="highlight"><pre><span></span><code>foo-apigateway @aws.invoked_function_arn:&quot;arn:aws:lambda:ap-northeast-1:&lt;AWSアカウントID&gt;:function:datadog-ForwarderStack-*****-Forwarder-*****&quot;
 bar-apigateway @aws.invoked_function_arn:&quot;arn:aws:lambda:ap-northeast-1:&lt;AWSアカウントID&gt;:function:datadog-ForwarderStack-*****-Forwarder-*****&quot;
 baz-apigateway @aws.invoked_function_arn:&quot;arn:aws:lambda:ap-northeast-1:&lt;AWSアカウントID&gt;:function:datadog-ForwarderStack-*****-Forwarder-*****&quot;
@@ -36504,10 +36504,10 @@ baz-apigateway @aws.invoked_function_arn:&quot;arn:aws:lambda:ap-northeast-1:&lt
 <h4 id="_24">▼ ユーザーエージェントパーサーとは<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
 <p>ユーザーエージェントの文字列を解析し、詳細な項目ごとに分解した構造化ログとして出力する。</p>
 <h4 id="1_2">▼ 例１<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
-<p>Nginxから、以下のような非構造化ログを受信する例を考える。</p>
+<p>Nginx から、以下のような非構造化ログを受信する例を考える。</p>
 <div class="highlight"><pre><span></span><code>*.*.*.*<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">01</span>/Sep/2021:00:00:00<span class="w"> </span>+0000<span class="o">]</span><span class="w"> </span><span class="s2">&quot;GET /healthcheck HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="w"> </span><span class="s2">&quot;ELB-HealthChecker/2.0&quot;</span>
 </code></pre></div>
-<p>これに対して、以下のようなGrokパーサーのルールを定義する。</p>
+<p>これに対して、以下のような Grok パーサーのルールを定義する。</p>
 <p><code>http.useragent</code> 属性にユーザーエージェント値を割り当てる。</p>
 <div class="highlight"><pre><span></span><code>access.common %{_client_ip} %{_ident} %{_auth} \[%{_date_access}\] &quot;(?&gt;%{_method} |)%{_url}(?&gt; %{_version}|)&quot; %{_status_code} (?&gt;%{_bytes_written}|-)
 access.combined %{access.common} (%{number:duration:scale(1000000000)} )?&quot;%{_referer}&quot; &quot;%{_user_agent}&quot;( &quot;%{_x_forwarded_for}&quot;)?.*
@@ -36554,7 +36554,7 @@ error.format %{date(&quot;yyyy/MM/dd HH:mm:ss&quot;):date_access} \[%{word:level
 <h3 id="_25">ストリングビルダープロセッサー<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="_26">▼ ストリングビルダープロセッサーとは<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>構造化ログの属性にアクセスし、ルールを基に属性値を出力し、新しい文字列を作成する。</p>
-<p>配列値のキー名にアクセスするようにルールを定義した場合、そのキーの全ての値をカンマ区切りで出力できる。</p>
+<p>配列値のキー名にアクセスするようにルールを定義した場合、そのキーのすべての値をカンマ区切りで出力できる。</p>
 <p>また、配列状のオブジェクトのキー名にアクセスするようにルールを定義した場合、各オブジェクトの同キーの値をカンマ区切りで出力できる。</p>
 <blockquote>
 <ul>
@@ -36577,7 +36577,7 @@ error.format %{date(&quot;yyyy/MM/dd HH:mm:ss&quot;):date_access} \[%{word:level
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>これに対して、ストリングビルダープロセッサーのルールを定義する。</p>
-<p>構造化ログの <code>http.url</code> の値を出力して完全なURLを作成し、これを <code>http.url_full</code> 属性として新しく付与する。</p>
+<p>構造化ログの <code>http.url</code> の値を出力して完全な URL を作成し、これを <code>http.url_full</code> 属性として新しく付与する。</p>
 <div class="highlight"><pre><span></span><code>https://example.com%{http.url}
 </code></pre></div>
 <p>これにより、以下の構造化ログが得られる。</p>
@@ -36671,7 +36671,7 @@ error.format %{date(&quot;yyyy/MM/dd HH:mm:ss&quot;):date_access} \[%{word:level
 <p><br></p>
 <h3 id="_32">粒度<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <h4 id="service">▼ service流入パターン<a class="headerlink" href="#service" title="Permanent link">&para;</a></h4>
-<p>serviceタグで流入させたログをsourceタグで振り分ける場合を示す。</p>
+<p>service タグで流入させたログを source タグで振り分ける場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">log-pipeline</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo-pipeline</span><span class="w"> </span><span class="c1"># service:foo でログ流入</span>
 <span class="p p-Indicator">|</span><span class="err">   ├── 共通処理</span>
@@ -36685,7 +36685,7 @@ error.format %{date(&quot;yyyy/MM/dd HH:mm:ss&quot;):date_access} \[%{word:level
 <span class="nn">...</span>
 </code></pre></div>
 <h4 id="source">▼ source流入パターン<a class="headerlink" href="#source" title="Permanent link">&para;</a></h4>
-<p>sourceタグで流入させたログをserviceタグで振り分ける場合を示す。</p>
+<p>source タグで流入させたログを service タグで振り分ける場合を示す。</p>
 <div class="highlight"><pre><span></span><code>log-pipeline
 ├──<span class="w"> </span>aws-waf-pipeline<span class="w"> </span><span class="c1"># source:waf でログ流入</span>
 <span class="p">|</span><span class="w">   </span>├──<span class="w"> </span>共通処理
@@ -36705,8 +36705,8 @@ error.format %{date(&quot;yyyy/MM/dd HH:mm:ss&quot;):date_access} \[%{word:level
 <p><br></p>
 <h3 id="_35">パーサーに関して<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
 <h4 id="grok_2">▼ Grokパーサーのルールにコメント<a class="headerlink" href="#grok_2" title="Permanent link">&para;</a></h4>
-<p>ベストプラクティス通り、Grokパーサーではコメントでログサンプルを示すようにする。</p>
-<p>ログの種類が1つしかない場合は任意であるが、ログの種類が複数あり、それぞれを解析するルールも複数ある場合は必ずコメントする。</p>
+<p>ベストプラクティス通り、Grok パーサーではコメントでログサンプルを示すようにする。</p>
+<p>ログの種類が 1 つしかない場合は任意であるが、ログの種類が複数あり、それぞれを解析するルールも複数ある場合は必ずコメントする。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/logs/guide/log-parsing-best-practice/">https://docs.datadoghq.com/logs/guide/log-parsing-best-practice/</a></li>
@@ -36733,7 +36733,7 @@ autoFilledRule3<span class="w"> </span>...
 <h3 id="_37">事前処理<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <h4 id="_38">▼ プリプロセッサー<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <p>予約済み属性 (<code>message</code>、<code>timestamp</code>、<code>status</code>、<code>host</code>、<code>service</code>) に基づいて、ログを構造化する。</p>
-<p>例えば、受信したログが非構造化ログの場合、これはDatadogの基底構造化ログの <code>message</code> 属性に割り当てられる。</p>
+<p>例えば、受信したログが非構造化ログの場合、これは Datadog の基底構造化ログの <code>message</code> 属性に割り当てられる。</p>
 <p>一方で、構造化ログであった場合、<code>message</code> 属性は使用されない。</p>
 <blockquote>
 <ul>
@@ -36761,7 +36761,7 @@ autoFilledRule3<span class="w"> </span>...
 </blockquote>
 <h4 id="_42">▼ インデックス<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
 <p>パイプラインで処理を終えたログをグループ化し、ログの破棄ルールや保管期間をグループごとに定義できる。</p>
-<p>インデックスを使用すれば、Datadogのログ保管のネックになる保管料金を抑えられる。</p>
+<p>インデックスを使用すれば、Datadog のログ保管のネックになる保管料金を抑えられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/logs/indexes/">https://docs.datadoghq.com/logs/indexes/</a></li>
@@ -36826,10 +36826,10 @@ autoFilledRule3<span class="w"> </span>...
 </ul>
 </blockquote>
 <h4 id="_52">▼ 属性のファセット化<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
-<p>Pathの値に属性までのアクセスを『<code>@</code>』から入力すると、ログの属性がファセットの値に登録される。</p>
+<p>Path の値に属性までのアクセスを『<code>@</code>』から入力すると、ログの属性がファセットの値に登録される。</p>
 <p><img alt="datadog_facet_attribute" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_facet_attribute.png" /></p>
 <h4 id="_53">▼ タグのファセット化<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
-<p>Pathの値にタグ名をそのまま入力すると、タグがファセットの値に登録される。</p>
+<p>Path の値にタグ名をそのまま入力すると、タグがファセットの値に登録される。</p>
 <p><img alt="datadog_facet_tag" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_facet_tag.png" /></p>
 <p><br></p>
 
@@ -36852,7 +36852,7 @@ autoFilledRule3<span class="w"> </span>...
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -36863,11 +36863,11 @@ autoFilledRule3<span class="w"> </span>...
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

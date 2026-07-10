@@ -34513,7 +34513,7 @@
 <p><br></p>
 <h2 id="03-frameworkversion">03. frameworkVersion<a class="headerlink" href="#03-frameworkversion" title="Permanent link">&para;</a></h2>
 <h3 id="frameworkversion">frameworkVersionとは<a class="headerlink" href="#frameworkversion" title="Permanent link">&para;</a></h3>
-<p>Serverless Frameworkのバージョンを設定する。</p>
+<p>Serverless Framework のバージョンを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">frameworkVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
 </code></pre></div>
@@ -34532,7 +34532,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="description">description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h3>
-<p>Lambda関数の説明文を設定する。</p>
+<p>Lambda 関数の説明文を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">functions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">main</span><span class="p">:</span>
@@ -34540,7 +34540,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="environment">environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h3>
-<p>Lambda関数の変数を設定する。</p>
+<p>Lambda 関数の変数を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables">https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables</a></li>
@@ -34557,7 +34557,7 @@
 <p><br></p>
 <h3 id="events">events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h3>
 <h4 id="eventbridge">▼ eventBridge<a class="headerlink" href="#eventbridge" title="Permanent link">&para;</a></h4>
-<p>Lambda関数に紐付けて作成するAmazon EventBridgeを設定する。</p>
+<p>Lambda 関数に紐付けて作成する Amazon EventBridge を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>イベントパターンとして、<code>json</code> ファイルを読み込む</p>
 <div class="highlight"><pre><span></span><code><span class="nt">functions</span><span class="p">:</span>
@@ -34572,8 +34572,8 @@
 </ul>
 </blockquote>
 <h4 id="sqs">▼ sqs<a class="headerlink" href="#sqs" title="Permanent link">&para;</a></h4>
-<p>Lambda関数に紐付けるSQSを設定する。</p>
-<p>新しくSQSを作成できず、既存のSQSと紐付ける動作しかないことに注意する。</p>
+<p>Lambda 関数に紐付ける SQS を設定する。</p>
+<p>新しく SQS を作成できず、既存の SQS と紐付ける動作しかないことに注意する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">functions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">main</span><span class="p">:</span>
@@ -34588,7 +34588,7 @@
 <p><br></p>
 <h3 id="image">image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h3>
 <h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
-<p>Lambda関数で使用するイメージのエイリアスを設定する。</p>
+<p>Lambda 関数で使用するイメージのエイリアスを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">functions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">main</span><span class="p">:</span>
@@ -34597,7 +34597,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="maximumretryattempts">maximumRetryAttempts<a class="headerlink" href="#maximumretryattempts" title="Permanent link">&para;</a></h3>
-<p>Lambda関数のリトライ回数を設定する。</p>
+<p>Lambda 関数のリトライ回数を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts">https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts</a></li>
@@ -34610,7 +34610,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="memorysize">memorySize<a class="headerlink" href="#memorysize" title="Permanent link">&para;</a></h3>
-<p>Lambda関数のメモリサイズを設定する。</p>
+<p>Lambda 関数のメモリサイズを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">functions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">main</span><span class="p">:</span>
@@ -34618,7 +34618,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="name_1">name<a class="headerlink" href="#name_1" title="Permanent link">&para;</a></h3>
-<p>Lambda関数の名前を設定する。</p>
+<p>Lambda 関数の名前を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">functions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">main</span><span class="p">:</span>
@@ -34626,16 +34626,16 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="role">role<a class="headerlink" href="#role" title="Permanent link">&para;</a></h3>
-<p>Lambda関数に紐付けるIAMロールを設定する。</p>
+<p>Lambda 関数に紐付ける IAM ロールを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>別に <code>resources.Resources</code> を使用して作成したIAMロールを設定する。</p>
+<p>別に <code>resources.Resources</code> を使用して作成した IAM ロールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">functions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">main</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LambdaRole.Arn</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="runtime">runtime<a class="headerlink" href="#runtime" title="Permanent link">&para;</a></h3>
-<p>Lambda関数で使用する言語とバージョンを設定する。</p>
+<p>Lambda 関数で使用する言語とバージョンを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">functions</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">main</span><span class="p">:</span>
@@ -34660,7 +34660,7 @@
 <p><br></p>
 <h2 id="06-provider">06. provider<a class="headerlink" href="#06-provider" title="Permanent link">&para;</a></h2>
 <h3 id="provider">providerとは<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h3>
-<p>Serverless Frameworkで操作するクラウドインフラベンダーを設定する。</p>
+<p>Serverless Framework で操作するクラウドインフラベンダーを設定する。</p>
 <p>ベンダーでのアカウント認証のため、資格情報を渡す必要がある。</p>
 <p><br></p>
 <h3 id="ecr">ecr<a class="headerlink" href="#ecr" title="Permanent link">&para;</a></h3>
@@ -34671,8 +34671,8 @@
 <span class="w">    </span><span class="nt">scanOnPush</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <h4 id="images">▼ images<a class="headerlink" href="#images" title="Permanent link">&para;</a></h4>
-<p>Lambda関数のベースイメージを指定し、エイリアスを付ける。</p>
-<p>名前は全て小文字である必要がある。</p>
+<p>Lambda 関数のベースイメージを指定し、エイリアスを付ける。</p>
+<p>名前はすべて小文字である必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">provider</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ecr</span><span class="p">:</span>
@@ -34683,14 +34683,14 @@
 <p><br></p>
 <h3 id="eventbridge_1">eventBridge<a class="headerlink" href="#eventbridge_1" title="Permanent link">&para;</a></h3>
 <h4 id="usecloudformation">▼ useCloudFormation<a class="headerlink" href="#usecloudformation" title="Permanent link">&para;</a></h4>
-<p>Amazon EventBridgeをCloudFormationで作成するか否かを設定する。</p>
+<p>Amazon EventBridge を CloudFormation で作成するか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">provider</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">eventBridge</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">useCloudFormation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="lambdahashingversion">lambdaHashingVersion<a class="headerlink" href="#lambdahashingversion" title="Permanent link">&para;</a></h3>
-<p>Lambda関数のハッシュバージョンを設定する。</p>
+<p>Lambda 関数のハッシュバージョンを設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">provider</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">lambdaHashingVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20201221</span>
@@ -34710,7 +34710,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="stackname">stackName<a class="headerlink" href="#stackname" title="Permanent link">&para;</a></h3>
-<p>CloudFormationのスタック名を設定する。</p>
+<p>CloudFormation のスタック名を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">provider</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stackName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;CloudFormationスタック名&gt;</span>
@@ -34718,7 +34718,7 @@
 <p><br></p>
 <h3 id="stage">stage<a class="headerlink" href="#stage" title="Permanent link">&para;</a></h3>
 <p>ステージ名を設定する。</p>
-<p>クラウドインフラの実行環境名と考えて良い。</p>
+<p>クラウドインフラの実行環境名と考えてよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">provider</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ステージ名&gt;</span>
@@ -34733,9 +34733,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="iam">IAMロール<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h3>
-<p>IAMロールを作成する。</p>
+<p>IAM ロールを作成する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>IAMロールに紐付けるIAMポリシーは、<code>json</code> ファイルで切り分けておいたほうが良い。</p>
+<p>IAM ロールに紐付ける IAM ポリシーは、<code>json</code> ファイルで切り分けておいたほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">Resources</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">LambdaRole</span><span class="p">:</span>
@@ -34796,7 +34796,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34807,11 +34807,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

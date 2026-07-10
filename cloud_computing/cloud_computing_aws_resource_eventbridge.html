@@ -33635,8 +33635,8 @@
 <h2 id="01-amazon-eventbridge">01. Amazon EventBridgeとは<a class="headerlink" href="#01-amazon-eventbridge" title="Permanent link">&para;</a></h2>
 <p>クラウドパブリッシュ／サブスクライブ方式のシステムとして働く。</p>
 <p>送受信の関係が多対多のパブリッシュ／サブスクライブ方式であり、プッシュ型の通信方式である。</p>
-<p>AWSのクラウドメッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。</p>
-<p>また、イベントの書き換えロジックがAWS Lambdaで実装するほど複雑でない場合に、AWS Lambdaの代わりにも使用できる。</p>
+<p>AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能が少なくシンプルである。</p>
+<p>また、イベントの書き換えロジックが AWS Lambda で実装するほど複雑でない場合に、AWS Lambda の代わりにも使用できる。</p>
 <table>
 <thead>
 <tr>
@@ -33671,15 +33671,15 @@
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">パターン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="aws">▼ イベント受信対象のAWSリソース<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
-<p>イベント受信対象のAWSリソースは以下のリンクを参考にせよ。</p>
+<p>イベント受信対象の AWS リソースは以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event-list.html">https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event-list.html</a></li>
 </ul>
 </blockquote>
 <h4 id="_3">▼ イベントパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>指定したAWSリソースでイベントが起こると、以下のようなJSONを送信する。</p>
-<p>イベントパターンを定義し、JSON構造が一致するイベントのみをターゲットに送信する。</p>
+<p>指定した AWS リソースでイベントが起こると、以下のような JSON を送信する。</p>
+<p>イベントパターンを定義し、JSON 構造が一致するイベントのみをターゲットに送信する。</p>
 <p>イベントパターンに定義しないキーは任意のデータと見なされる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p p-Indicator">,</span>
@@ -33696,7 +33696,7 @@
 <span class="c1"># Amazon SNSのデータ</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>AWS Amplifyの指定したIDのアプリケーションが、<code>AWS Amplify Deployment Status Change</code> のイベントを送信し、これの <code>jobStatus</code> が <code>SUCCEED</code>/<code>FAILED</code> だった場合、これを送信する。</p>
+<p>AWS Amplify の指定した ID のアプリケーションが、<code>AWS Amplify Deployment Status Change</code> のイベントを送信し、これの <code>jobStatus</code> が <code>SUCCEED</code>/<code>FAILED</code> だった場合、これを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;detail&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;appId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;jobStatus&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;SUCCEED&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;FAILED&quot;</span><span class="p p-Indicator">]},</span>
 <span class="w">  </span><span class="s">&quot;detail-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;AWS</span><span class="nv"> </span><span class="s">Amplify</span><span class="nv"> </span><span class="s">Deployment</span><span class="nv"> </span><span class="s">Status</span><span class="nv"> </span><span class="s">Change&quot;</span><span class="p p-Indicator">],</span>
@@ -33709,8 +33709,8 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ スケジュール<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>cron式またはrate式を使用して、スケジュールを定義する。</p>
-<p>これとAWS Lambdaを組み合わせることにより、ジョブを実行できる。</p>
+<p>cron 式または rate 式を使用して、スケジュールを定義する。</p>
+<p>これと AWS Lambda を組み合わせることにより、ジョブを実行できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html</a></li>
@@ -33719,26 +33719,26 @@
 <p><br></p>
 <h3 id="_5">ターゲット<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ ターゲットの一覧<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>AWSリソースで発生したイベントを受信し、他のAWSリソースや外部APIに送信する。</p>
+<p>AWS リソースで発生したイベントを受信し、他の AWS リソースや外部 API に送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html">https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html</a></li>
 </ul>
 </blockquote>
 <h4 id="_7">▼ デバッグ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Amazon EventBridgeでは、どのようなJSONのイベントをターゲットに送信したかを確認できない。</p>
-<p>そこで、デバッグ時はAmazon EventBridgeのターゲットにAWS Lambdaを設定し、イベント構造をログから確認する。</p>
+<p>Amazon EventBridge では、どのような JSON のイベントをターゲットに送信したかを確認できない。</p>
+<p>そこで、デバッグ時は Amazon EventBridge のターゲットに AWS Lambda を設定し、イベント構造をログから確認する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>あらかじめ、イベントの内容を出力する関数をAWS Lambdaに作成しておく。</p>
+<p>あらかじめ、イベントの内容を出力する関数を AWS Lambda に作成しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// AWS Lambdaにデバッグ用の関数を用意する</span>
 <span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">event</span><span class="p">},</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">));</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>対象のAWSリソースで任意のイベントが発生したときに、Amazon EventBridgeからAWS Lambdaに送信するように設定する。</p>
+<p>対象の AWS リソースで任意のイベントが発生したときに、Amazon EventBridge から AWS Lambda に送信するように設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;source&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;aws.amplify&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>AWSリソースで意図的にイベントを起こし、AWS Lambdaのロググループから内容を確認する。</p>
+<p>AWS リソースで意図的にイベントを起こし、AWS Lambda のロググループから内容を確認する。</p>
 <p><code>detail</code> キーにイベントが割り当てられている。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;event&quot;</span><span class="p p-Indicator">:</span>
@@ -33764,13 +33764,13 @@
 <p><br></p>
 <h3 id="_8">入力<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 入力トランスフォーマー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>入力パスで使用する値を抽出し、入力テンプレートで送信するJSONを定義できる。</p>
-<p>イベントのJSONの値を変数として出力できる。</p>
+<p>入力パスで使用する値を抽出し、入力テンプレートで送信する JSON を定義できる。</p>
+<p>イベントの JSON の値を変数として出力できる。</p>
 <p><code>event</code> キーをドルマークとして、ドットで繋いでアクセスする。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>入力パスにて、使用する値を抽出する。</p>
-<p>AWS Amplifyで発生したイベントのJSONを変数として取り出す。</p>
-<p>ここでは、以下のAWS Amplifyのイベントを受信したとする。</p>
+<p>AWS Amplify で発生したイベントの JSON を変数として取り出す。</p>
+<p>ここでは、以下の AWS Amplify のイベントを受信したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;event&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -33792,8 +33792,8 @@
 <span class="w">    </span><span class="p p-Indicator">},</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>JSONのキー名が変数名として動作する。</p>
-<p><code>$</code> でJSONのルートのキーを指定して、いったん変数を取り出す。</p>
+<p>JSON のキー名が変数名として動作する。</p>
+<p><code>$</code> で JSON のルートのキーを指定して、いったん変数を取り出す。</p>
 <p>ここでは、<code>detail</code> キーを指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;appId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$.detail.appId&quot;</span><span class="p p-Indicator">,</span>
@@ -33803,9 +33803,9 @@
 <span class="w">  </span><span class="s">&quot;region&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;$.region&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>その後、入力テンプレートにて送信するJSONを定義する。例えばここでは、Slackに送信するJSONを出力する。</p>
+<p>その後、入力テンプレートにて送信する JSON を定義する。例えばここでは、Slack に送信する JSON を出力する。</p>
 <p>出力するときは、入力パスの変数名を『<code>&lt;&gt;</code>』で囲う。</p>
-<p>Slackに送信するメッセージの作成ツールは、以下のリンクを参考にせよ。</p>
+<p>Slack に送信するメッセージの作成ツールは、以下のリンクを参考にせよ。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;channel&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;text&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;AWS</span><span class="nv"> </span><span class="s">Amplifyデプロイ完了通知&quot;</span><span class="p p-Indicator">,</span>
@@ -33877,7 +33877,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:26:17 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

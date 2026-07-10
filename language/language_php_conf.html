@@ -33448,7 +33448,7 @@
 <p><br></p>
 <h2 id="01-phpini">01. <code>php.ini</code> ファイル<a class="headerlink" href="#01-phpini" title="Permanent link">&para;</a></h2>
 <h3 id="phpini"><code>php.ini</code> ファイルとは<a class="headerlink" href="#phpini" title="Permanent link">&para;</a></h3>
-<p>PHPの起動時の値を設定する。</p>
+<p>PHP の起動時の値を設定する。</p>
 <p><code>php.ini</code> ファイルは、<code>/usr/local/etc/php</code> ディレクトリ配下に配置されている。</p>
 <p>配置された任意の <code>ini</code> ファイルに実装された設定値が、ユーザー定義のカスタム値として読み込まれる。</p>
 <p>また、それ以外の設定値はデフォルト値となる。</p>
@@ -33469,9 +33469,9 @@ Additional<span class="w"> </span>.ini<span class="w"> </span>files<span class="
 </blockquote>
 <p><br></p>
 <h3 id="_2">本番/開発環境共通<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>PHPでは、<code>/usr/local/etc/php</code> ディレクトリには <code>php.ini-development</code> ファイルと <code>php.ini-production</code> ファイルが最初から配置されている。</p>
+<p>PHP では、<code>/usr/local/etc/php</code> ディレクトリには <code>php.ini-development</code> ファイルと <code>php.ini-production</code> ファイルが最初から配置されている。</p>
 <p>これをコピーして設定値を変更し、読み込まれるようにファイル名を <code>php.ini</code> に変えて配置する (これ以外のファイル名では読み込まれない) 。</p>
-<p>代わりに、最小限の設定値のみを変更した <code>php.ini</code> ファイルを自身で作成し、同じく配置しても良い。</p>
+<p>代わりに、最小限の設定値のみを変更した <code>php.ini</code> ファイルを自身で作成し、同じく配置してもよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/usr/local/etc/php
 
 drwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">4096</span><span class="w"> </span>Dec<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">13</span>:39<span class="w"> </span>.
@@ -33617,7 +33617,7 @@ drwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 16:48:36 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -33628,11 +33628,11 @@ drwxr-xr-x<span class="w"> </span><span class="m">1</span><span class="w"> </spa
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

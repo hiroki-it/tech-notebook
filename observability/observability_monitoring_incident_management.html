@@ -34415,8 +34415,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. インシデントとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>エラーイベントの内で、サービスの停止を起こし得る想定外のイベントのこと。</p>
-<p>全てのエラーイベントがインシデントというわけではない。</p>
+<p>エラーイベントのうちで、サービスの停止を起こし得る想定外のイベントのこと。</p>
+<p>すべてのエラーイベントがインシデントというわけではない。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management">https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management</a></li>
@@ -34472,7 +34472,7 @@
 <p><br></p>
 <h3 id="severity">インシデント重要度レベル (severityレベル)<a class="headerlink" href="#severity" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ インシデント重要度レベルとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>全てのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。</p>
+<p>すべてのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。</p>
 <p>そのため、インシデントの優先度付けが必要である。</p>
 <table>
 <thead>
@@ -34508,15 +34508,15 @@
 <p><br></p>
 <h3 id="_7">インシデントの解決フロー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="pagerduty">▼ PagerDutyの場合<a class="headerlink" href="#pagerduty" title="Permanent link">&para;</a></h4>
-<p>PagerDutyをインシデント管理ツールとして、PagerDutyに通知されたエラーイベントの内で、特に重要なものをインシデントとして対処する。</p>
+<p>PagerDuty をインシデント管理ツールとして、PagerDuty に通知されたエラーイベントのうちで、特に重要なものをインシデントとして対処する。</p>
 <p>また、各ロールの担当者にオンコールを自動的にエスカレーションする。</p>
 <h4 id="grafana-oncall">▼ Grafana OnCallの場合<a class="headerlink" href="#grafana-oncall" title="Permanent link">&para;</a></h4>
-<p>Grafana OnCallをインシデント管理ツールとして、Grafana OnCallに通知されたエラーイベントの内で、特に重要なものをインシデントとして対処する。</p>
+<p>Grafana OnCall をインシデント管理ツールとして、Grafana OnCall に通知されたエラーイベントのうちで、特に重要なものをインシデントとして対処する。</p>
 <p>また、各ロールの担当者にオンコールを自動的にエスカレーションする。</p>
 <h4 id="slack-apps">▼ Slack (手動、Apps) の場合<a class="headerlink" href="#slack-apps" title="Permanent link">&para;</a></h4>
-<p>Slackをインシデント管理ツールとして、Slackに通知されたエラーイベントの内で、特に重要なものをインシデントとして対処する。</p>
+<p>Slack をインシデント管理ツールとして、Slack に通知されたエラーイベントのうちで、特に重要なものをインシデントとして対処する。</p>
 <p>また、各ロールの担当者にオンコールを自動的にエスカレーションする。</p>
-<p>ただ、SlackのApps (例：incident.io、echoboomer/incident-botなど) でインシデント管理を自動化しても良い。</p>
+<p>ただ、Slack の Apps (例：incident.io、echoboomer/incident-bot など) でインシデント管理を自動化してもよい。</p>
 <p>注意点として、各ツールはインシデントごとにインシデント対処チャンネルを作るため、対処後にチャンネルの残骸が増えていってしまう。</p>
 <blockquote>
 <ul>
@@ -34528,15 +34528,15 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>CloudWactchアラームからSlackのチャンネルに、アラートが通知される。</p>
+<p>CloudWactch アラームから Slack のチャンネルに、アラートが通知される。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>責任者は、Slackに通知されたアラートを確認する。</p>
+<p>責任者は、Slack に通知されたアラートを確認する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>アラート名 (例：prd-foo-ecs-container-laravel-log-alarm) から、Amazon CloudWatchアラームを探す。</p>
+<p>アラート名 (例：prd-foo-ecs-container-laravel-log-alarm) から、Amazon CloudWatch アラームを探す。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
@@ -34546,7 +34546,7 @@
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>Log Insightsを使用して、ロググループの直近のエラーログを抽出する。</p>
+<p>Log Insights を使用して、ロググループの直近のエラーログを抽出する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 小文字と大文字を区別せずに、Errorを含むログを検索する。</span>
@@ -34563,7 +34563,7 @@
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
-<p>クエリの結果をコピーし、アラートのThreadに貼り付ける。</p>
+<p>クエリの結果をコピーし、アラートの Thread に貼り付ける。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="o">[</span><span class="m">2021</span>-12-01<span class="w"> </span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span>request.ERROR:<span class="w"> </span>Uncaught<span class="w"> </span>PHP<span class="w"> </span>Exception<span class="w"> </span>*****
@@ -34631,7 +34631,7 @@
 <p><br></p>
 <h3 id="_20">インシデントの通知抑制<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <h4 id="_21">▼ インシデントの抑制とは<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>全てのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。</p>
+<p>すべてのインシデントを同じ優先度で対応すると、重要度の高いインシデントの解決が遅れてしまう。</p>
 <p>そういった場合は、インシデントの通知を抑制する。</p>
 <blockquote>
 <ul>
@@ -34639,7 +34639,7 @@
 </ul>
 </blockquote>
 <h4 id="_22">▼ 特定のシステムを無視<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>特定のシステムにて、発生したインシデントを全て無視し、インシデントが恒久的に通知されないようにする。</p>
+<p>特定のシステムにて、発生したインシデントをすべて無視し、インシデントが恒久的に通知されないようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/13558">https://thinkit.co.jp/article/13558</a></li>
@@ -34719,7 +34719,7 @@
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">稼働率</span><span class="p">)</span>
 <span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">MTBF</span><span class="p">)</span><span class="w"> </span><span class="err">÷</span><span class="w"> </span><span class="p">(</span><span class="n">MTBF</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">MTTR</span><span class="p">)</span>
 </code></pre></div>
-<p>システムが冗長化されている場合、全てのインスタンスの非稼働率をかけて、全体から引くことにより、稼働率を算出できる。</p>
+<p>システムが冗長化されている場合、すべてのインスタンスの非稼働率をかけて、全体から引くことにより、稼働率を算出できる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="err">稼働率</span><span class="p">)</span>
 <span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">稼働率</span><span class="p">)</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="err">稼働率</span><span class="p">)</span>
 </code></pre></div>
@@ -34731,7 +34731,7 @@
 <p><strong>＊例＊</strong></p>
 <p>システムが冗長化されている例を示す。</p>
 <p>すでに稼働率は算出されているものとする。</p>
-<p>全てのインスタンスの非稼働率をかけて、全体から引く。</p>
+<p>すべてのインスタンスの非稼働率をかけて、全体から引く。</p>
 <div class="highlight"><pre><span></span><code><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="mf">-0.81</span><span class="p">)</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="mf">-0.64</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.9316</span>
 </code></pre></div>
 <p><img alt="稼働率の計算" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/稼働率の計算.jpg" /></p>
@@ -34770,7 +34770,7 @@
 </ul>
 </blockquote>
 <h4 id="_27">▼ ダッシュボード<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>MTxxメトリクスをダッシュボード化する。</p>
+<p>MTxx メトリクスをダッシュボード化する。</p>
 <p>実際に時間と目標時間を比較すれば、今回のインシデント管理の良し悪しを判断できる。</p>
 <p>そのため、インシデント管理自体もソフトウェア開発と同様に反復的な改善をしやすくなる。</p>
 <p>DRI Hops (インシデントの直接的に責任者) の値を使用して人的コストを可視化することにより、エンジニアリングマネージャがインシデント管理を扱いやすくなる。</p>
@@ -34812,7 +34812,7 @@
 <span class="gu">## 障害発生から対応までのタイムライン</span>
 </code></pre></div>
 <h4 id="pagerduty_1">▼ PagerDutyの事例<a class="headerlink" href="#pagerduty_1" title="Permanent link">&para;</a></h4>
-<p>PagerDuty社が公開しているテンプレートがある。</p>
+<p>PagerDuty 社が公開しているテンプレートがある。</p>
 <div class="highlight"><pre><span></span><code><span class="gh"># ポストモーテム</span>
 
 <span class="gu">## 全体の要約</span>
@@ -34906,7 +34906,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34917,11 +34917,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

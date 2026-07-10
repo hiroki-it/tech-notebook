@@ -34453,7 +34453,7 @@
 </code></pre></div>
 <h4 id="cron">▼ Cronによるコマンドの自動実行<a class="headerlink" href="#cron" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>10秒ごとに、コマンドを自動実行する。</p>
+<p>10 秒ごとに、コマンドを自動実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># 10秒ごとに、コマンド処理を実行。</span>
@@ -34473,31 +34473,31 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Requestオブジェクト。グローバル変数から収集した情報やHTTPリクエストのヘッダー情報やコンテンツ情報を保持
+<p>Request オブジェクト。グローバル変数から収集した情報や HTTP リクエストのヘッダー情報やコンテンツ情報を保持
 <code>(2)</code></p>
 </dd>
 <dd>
-<p>カーネルオブジェクトの <code>handle()</code> 関数。送られてきたURLを基にしたコントローラー/アクションに対するルートの特定、特定されたコントローラー/アクションの実行、テンプレートのレンダリング
+<p>カーネルオブジェクトの <code>handle()</code> 関数。送られてきた URL を基にしたコントローラー/アクションに対するルートの特定、特定されたコントローラー/アクションの実行、テンプレートのレンダリング
 <code>(3)</code></p>
 </dd>
 <dd>
-<p>Responseオブジェクト。HTTPレスポンスのヘッダー情報やコンテンツ情報などの情報を保持。</p>
+<p>Response オブジェクト。HTTP レスポンスのヘッダー情報やコンテンツ情報などの情報を保持。</p>
 </dd>
 </dl>
 <h4 id="_3">▼ オブジェクトから取り出された関数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>カーネルが、クラアントからのHTTPリクエストをリクエストオブジェクトとして受け取る。
+<p>カーネルが、クラアントからの HTTP リクエストをリクエストオブジェクトとして受け取る。
 <code>(2)</code></p>
 </dd>
 <dd>
-<p>カーネルが、送られてきたURLとルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートがURLを作成。
+<p>カーネルが、送られてきた URL とルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートが URL を作成。
 <code>(3)</code></p>
 </dd>
 <dd>
 <p>カーネルが、その結果をレスポンスオブジェクトとしてクライアントに返す。
-このカーネルを、特別に『HTTPカーネル』と呼ぶ。</p>
+このカーネルを、特別に『HTTP カーネル』と呼ぶ。</p>
 </dd>
 </dl>
 <p><strong>【app.phpの実装例】</strong></p>
@@ -34527,7 +34527,7 @@
 <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">terminate</span><span class="p">(</span><span class="nv">$request</span><span class="p">,</span> <span class="nv">$response</span><span class="p">);</span>
 </code></pre></div>
 <p>上記の <code>handle()</code> 関数が定義されているファイル。</p>
-<p>ここで定義された <code>handle()</code> 関数が、C/Aに対するルートの特定、特定されたC/Aの実行、テンプレートのレンダリングを実行する。</p>
+<p>ここで定義された <code>handle()</code> 関数が、C/A に対するルートの特定、特定された C/A の実行、テンプレートのレンダリングを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span>
@@ -34557,10 +34557,10 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Ajaxによるリクエストの場合、JSON型データをレスポンスし、かつページレンダリング。</p>
+<p>Ajax によるリクエストの場合、JSON 型データをレスポンスし、かつページレンダリング。</p>
 </dd>
 </dl>
-<p>(2) Ajaxによるリクエストでない場合、ページレンダリングのみ</p>
+<p>(2) Ajax によるリクエストでない場合、ページレンダリングのみ</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">Symfony\Bundle\FrameworkBundle\Controller\AbstractController</span><span class="p">;</span>
@@ -34624,7 +34624,7 @@
 <p><br></p>
 <h2 id="03-04-pimple">03-04. Pimple<a class="headerlink" href="#03-04-pimple" title="Permanent link">&para;</a></h2>
 <h3 id="service-container">Service Container<a class="headerlink" href="#service-container" title="Permanent link">&para;</a></h3>
-<p>Symfonyから提供されるIoCコンテナのこと。</p>
+<p>Symfony から提供される IoC コンテナのこと。</p>
 <p><br></p>
 <h2 id="03-05-routing">03-05. Routing<a class="headerlink" href="#03-05-routing" title="Permanent link">&para;</a></h2>
 <h3 id="routingconfigurator">RoutingConfigurator<a class="headerlink" href="#routingconfigurator" title="Permanent link">&para;</a></h3>
@@ -34692,7 +34692,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

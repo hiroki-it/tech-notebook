@@ -34560,21 +34560,21 @@
 <h2 id="01">01. 認証<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">認証マイクロサービス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスごとに認証処理 (ユーザーの識別、ユーザーの有効性の検証) を持たせるのではなく、認証の責務を持つマイクロサービスを <code>1</code> 個だけ配置する。</p>
-<p>この認証マイクロサービスは、資格情報を永続化するためのDB、またはセッションを保管するためのストレージを持つ。</p>
+<p>この認証マイクロサービスは、資格情報を永続化するための DB、またはセッションを保管するためのストレージを持つ。</p>
 <p><br></p>
 <h3 id="http">HTTPサーバーの場合<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
 <p>認証では、ブラウザとの間で認可リクエストや認可レスポンスなどが発生する。</p>
-<p>ブラウザはgRPCクライアントとして使えないため、認証マイクロサービスはHTTPサーバーにしたほうがいい。</p>
+<p>ブラウザは gRPC クライアントとして使えないため、認証マイクロサービスは HTTP サーバーにしたほうがいい。</p>
 <p><br></p>
 <h3 id="grpc">gRPCサーバーの場合<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
-<p>前述のとおり、ブラウザはgRPCクライアントとして使えないため、認証マイクロサービスはHTTPサーバーにしたほうがいい。</p>
-<p>認証マイクロサービスをgRPCサーバーとする場合、認証マイクロサービスの前方にHTTPサーバーで受信してgRPCクライアントとしてリクエストを送信するゲートウェイが必要になる。</p>
+<p>前述のとおり、ブラウザは gRPC クライアントとして使えないため、認証マイクロサービスは HTTP サーバーにしたほうがいい。</p>
+<p>認証マイクロサービスを gRPC サーバーとする場合、認証マイクロサービスの前方に HTTP サーバーで受信して gRPC クライアントとしてリクエストを送信するゲートウェイが必要になる。</p>
 <p><br></p>
 <h2 id="01-02-sso">01-02. SSOパターン (独立パターン)<a class="headerlink" href="#01-02-sso" title="Permanent link">&para;</a></h2>
 <h3 id="sso">SSOパターンとは<a class="headerlink" href="#sso" title="Permanent link">&para;</a></h3>
 <p>『独立パターン』ともいう。</p>
 <p>認証マイクロサービスはトークンベース認証を使用し、アクセストークンを <code>Cookie</code> ヘッダーや <code>Authorization</code> ヘッダーで運搬する。</p>
-<p>この認証マイクロサービスは、資格情報を永続化するためのDBを持ち、有効期限が切れればアクセストークンを無効化する。</p>
+<p>この認証マイクロサービスは、資格情報を永続化するための DB を持ち、有効期限が切れればアクセストークンを無効化する。</p>
 <p>認証マイクロサービスが単一障害点になるというデメリットがある。</p>
 <blockquote>
 <ul>
@@ -34583,7 +34583,7 @@
 </ul>
 </blockquote>
 <h3 id="sso_1">SSOパターンの仕組み<a class="headerlink" href="#sso_1" title="Permanent link">&para;</a></h3>
-<p>各マイクロサービスは、SSOのIDプロバイダーに認証を委譲する。</p>
+<p>各マイクロサービスは、SSO の ID プロバイダーに認証を委譲する。</p>
 <p><img alt="microservices_authentication_type_sso" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso.png" /></p>
 <blockquote>
 <ul>
@@ -34594,9 +34594,9 @@
 <p><br></p>
 <h3 id="api">APIゲートウェイがある場合<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <h4 id="kong-gateway">▼ Kong Gateway<a class="headerlink" href="#kong-gateway" title="Permanent link">&para;</a></h4>
-<p>初回のSSO時、フロントエンドからIDプロバイダーに直接的に認可リクエストを送信する。</p>
-<p>その後、CookieにJWTを保管する。</p>
-<p>次回、Kong Gateway (APIゲートウェイ) がフロントエンドからのリクエストをKeycloakにフォワーディングし、JWTトークンの署名を検証する。</p>
+<p>初回の SSO 時、フロントエンドから ID プロバイダーに直接的に認可リクエストを送信する。</p>
+<p>その後、Cookie に JWT を保管する。</p>
+<p>次回、Kong Gateway (API ゲートウェイ) がフロントエンドからのリクエストを Keycloak にフォワーディングし、JWT トークンの署名を検証する。</p>
 <p>結果に応じて、宛先マイクロサービスにルーティングするかどうかを決める。</p>
 <p><img alt="microservices_authentication_type_sso_gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso_gateway.png" /></p>
 <blockquote>
@@ -34612,10 +34612,10 @@
 <h2 id="01-03">01-03. セッションパターン (集中パターン)<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="_4">セッションパターンとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>『集中パターン』ともいう。</p>
-<p>サーバー側に、セッションIDを作成する認証マイクロサービス (例：自前、Keycloakなど) を <code>1</code> 個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
+<p>サーバー側に、セッション ID を作成する認証マイクロサービス (例：自前、Keycloak など) を <code>1</code> 個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
 <p>この認証マイクロサービスは、セッションベース認証を使用し、セッションを <code>Cookie</code> ヘッダーで運搬する。</p>
-<p>セッションIDを再利用するために、ブラウザのCookieやセッションストレージツール (例：Redis) に保存する。</p>
-<p>(認証マイクロサービスだけでなく各マイクロサービスもセッションストレージツールへ接続できるようにする必要があるらしいが、Keycloakではそんなことない)</p>
+<p>セッション ID を再利用するために、ブラウザの Cookie やセッションストレージツール (例：Redis) に保存する。</p>
+<p>(認証マイクロサービスだけでなく各マイクロサービスもセッションストレージツールへ接続できるようにする必要があるらしいが、Keycloak ではそんなことない)</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86">https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86</a></li>
@@ -34624,10 +34624,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">セッションパターンの仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>各マイクロサービスは、セッションIDに基づいてアカウントをする。</p>
-<p><code>1</code> 個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、セッションIDを保管できるストレージ (例：Infinispan、Redisなど) を <code>1</code> 個だけ配置する。</p>
-<p>セッションベース認証は、コンテナの相性が悪く、各マイクロサービスがセッションIDを持つ必要がある。</p>
-<p>そのため、SessionStorageが必要になるというデメリットがある。</p>
+<p>各マイクロサービスは、セッション ID に基づいてアカウントをする。</p>
+<p><code>1</code> 個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、セッション ID を保管できるストレージ (例：Infinispan、Redis など) を <code>1</code> 個だけ配置する。</p>
+<p>セッションベース認証は、コンテナの相性が悪く、各マイクロサービスがセッション ID を持つ必要がある。</p>
+<p>そのため、SessionStorage が必要になるというデメリットがある。</p>
 <p><img alt="microservices_authentication_type_session" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_session.png" /></p>
 <blockquote>
 <ul>
@@ -34639,22 +34639,22 @@
 </blockquote>
 <p><br></p>
 <h3 id="idcookie">セッションIDをCookieヘッダーで運搬するパターン<a class="headerlink" href="#idcookie" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスアーキテクチャの文脈では、セッションIDを使用した認証は次のような仕組みになっている。このパターンは、さまざまなフロントエンドアプリケーション (例：SST、CSR、SSRなど) で採用できる。</p>
+<p>マイクロサービスアーキテクチャの文脈では、セッション ID を使用した認証は次のような仕組みになっている。このパターンは、さまざまなフロントエンドアプリケーション (例：SST、CSR、SSR など) で採用できる。</p>
 <ol>
 <li>未認証のアカウントはフロントエンドアプリケーションにリクエストを送信する。</li>
-<li>IDプロバイダーはレスポンスのSet-CookieヘッダーでセッションIDを返信する。</li>
-<li>フロントエンドアプリケーションはIDプロバイダーのレスポンスヘッダーからセッションIDを取得する。セッションIDを再利用するため、ブラウザはCookieにセッションIDを保存する。</li>
-<li>フロントエンドアプリケーションは、セッションIDをCookieヘッダーで運搬する。</li>
-<li>マイクロサービスは、セッションIDに対応するセッションデータがストレージにあるか、またセッションIDが失効していないかを検証する。セッションIDはCookieヘッダーで運搬し、後続のマイクロサービスに伝播させる。</li>
+<li>ID プロバイダーはレスポンスの Set-Cookie ヘッダーでセッション ID を返信する。</li>
+<li>フロントエンドアプリケーションは ID プロバイダーのレスポンスヘッダーからセッション ID を取得する。セッション ID を再利用するため、ブラウザは Cookie にセッション ID を保存する。</li>
+<li>フロントエンドアプリケーションは、セッション ID を Cookie ヘッダーで運搬する。</li>
+<li>マイクロサービスは、セッション ID に対応するセッションデータがストレージにあるか、またセッション ID が失効していないかを検証する。セッション ID は Cookie ヘッダーで運搬し、後続のマイクロサービスに伝播させる。</li>
 </ol>
 <p><img alt="microservices_authentication_type_session_cookie-header" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_session_cookie-header.png" /></p>
 <p><br></p>
 <h2 id="01-04-jwt">01-04. JWTパターン (分散パターン)<a class="headerlink" href="#01-04-jwt" title="Permanent link">&para;</a></h2>
 <h3 id="jwt">JWTパターンとは<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h3>
 <p>『分散パターン』ともいう。</p>
-<p>サーバー側に、JWTを作成する認証マイクロサービス (例：自前、Keycloakなど) を <code>1</code> 個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
+<p>サーバー側に、JWT を作成する認証マイクロサービス (例：自前、Keycloak など) を <code>1</code> 個だけ配置し、認証処理 (ユーザーの識別、ユーザーの有効性の検証) を実行する。</p>
 <p>認証マイクロサービスはトークンベース認証を使用し、アクセストークンを <code>Cookie</code> ヘッダーや <code>Authorization</code> ヘッダーで運搬する。</p>
-<p>トークンを再利用するために、ブラウザのCookie、SessionStorage、またはLocalStorageに保存する。</p>
+<p>トークンを再利用するために、ブラウザの Cookie、SessionStorage、または LocalStorage に保存する。</p>
 <blockquote>
 <ul>
 <li><a href="https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=7">https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=7</a></li>
@@ -34662,11 +34662,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="jwt_1">JWTパターンの仕組み<a class="headerlink" href="#jwt_1" title="Permanent link">&para;</a></h3>
-<p>各マイクロサービスは、JWTに基づいてアカウントを認証する。</p>
-<p><code>1</code> 個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、リクエスト／レスポンスのヘッダーにJWTを埋め込み、クライアントのフロントエンドアプリケーション側にJWTを保管させる。</p>
-<p>トークンベース認証の場合に、コンテナの相性が良く、各マイクロサービスはJWTを持つ必要がない。</p>
-<p>クライアントのフロントエンドアプリケーション側に保管したJWTトークンの失効が難しいというデメリットがある。</p>
-<p>その解決策として、Opaqueトークンパターン (ゲートウェイ集中パターン) がある。</p>
+<p>各マイクロサービスは、JWT に基づいてアカウントを認証する。</p>
+<p><code>1</code> 個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、リクエスト／レスポンスのヘッダーに JWT を埋め込み、クライアントのフロントエンドアプリケーション側に JWT を保管させる。</p>
+<p>トークンベース認証の場合に、コンテナの相性がよく、各マイクロサービスは JWT を持つ必要がない。</p>
+<p>クライアントのフロントエンドアプリケーション側に保管した JWT トークンの失効が難しいというデメリットがある。</p>
+<p>その解決策として、Opaque トークンパターン (ゲートウェイ集中パターン) がある。</p>
 <p><img alt="microservices_authentication_type_jwt" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_jwt.png" /></p>
 <blockquote>
 <ul>
@@ -34679,10 +34679,10 @@
 <h2 id="01-05-jwtapi">01-05. JWTとAPIゲートウェイの組み合わせパターン (ゲートウェイ集中パターン)<a class="headerlink" href="#01-05-jwtapi" title="Permanent link">&para;</a></h2>
 <h3 id="jwtapi">JWTとAPIゲートウェイの組み合わせパターンとは<a class="headerlink" href="#jwtapi" title="Permanent link">&para;</a></h3>
 <p>『ゲートウェイ集中パターン』ともいう。</p>
-<p>JWTパターンにAPIゲートウェイを組み合わせたパターンであり、JWTパターンでJWTトークンの失効が難しいというデメリットを解決する。</p>
-<p>サーバー側に、JWTを作成する認証マイクロサービス (例：自前、Keycloakなど) を <code>1</code> 個だけ配置する。</p>
-<p>APIゲートウェイは、認証を集中的に管理し、認証とアクセストークン署名検証を担う。</p>
-<p>認証マイクロサービスはトークンベース認証を使用し、API Gatewayを介して、非SSOで認証を実施する。</p>
+<p>JWT パターンに API ゲートウェイを組み合わせたパターンであり、JWT パターンで JWT トークンの失効が難しいというデメリットを解決する。</p>
+<p>サーバー側に、JWT を作成する認証マイクロサービス (例：自前、Keycloak など) を <code>1</code> 個だけ配置する。</p>
+<p>API ゲートウェイは、認証を集中的に管理し、認証とアクセストークン署名検証を担う。</p>
+<p>認証マイクロサービスはトークンベース認証を使用し、API Gateway を介して、非 SSO で認証を実施する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86">https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86</a></li>
@@ -34693,11 +34693,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="jwtapi_1">JWTとAPIゲートウェイの組み合わせパターンの仕組み<a class="headerlink" href="#jwtapi_1" title="Permanent link">&para;</a></h3>
-<p>各マイクロサービスは、JWTとOpaqueトークンに基づいてアカウントを認証する。</p>
-<p><code>1</code> 個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、リクエスト／レスポンスのヘッダーにJWTを埋め込む。</p>
-<p>クライアントのフロントエンドアプリケーション側にはJWTとペアになるOpaqueトークンを保管する。</p>
-<p>また、APIゲートウェイやロードバランサーで、OpaqueトークンとJWTトークンの間の相互変換を通信のたびに実行する。</p>
-<p>トークンベース認証の場合に、コンテナの相性が良く、各マイクロサービスはOpaqueトークンを持つ必要がない。</p>
+<p>各マイクロサービスは、JWT と Opaque トークンに基づいてアカウントを認証する。</p>
+<p><code>1</code> 個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、リクエスト／レスポンスのヘッダーに JWT を埋め込む。</p>
+<p>クライアントのフロントエンドアプリケーション側には JWT とペアになる Opaque トークンを保管する。</p>
+<p>また、API ゲートウェイやロードバランサーで、Opaque トークンと JWT トークンの間の相互変換を通信のたびに実行する。</p>
+<p>トークンベース認証の場合に、コンテナの相性がよく、各マイクロサービスは Opaque トークンを持つ必要がない。</p>
 <p><img alt="microservices_authentication_type_opaque-token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_opaque-token.png" /></p>
 <blockquote>
 <ul>
@@ -34710,16 +34710,16 @@
 <p><br></p>
 <h3 id="jwt_2">JWTプロキシーがある場合<a class="headerlink" href="#jwt_2" title="Permanent link">&para;</a></h3>
 <h4 id="aws-jwt-authorizer">▼ AWS JWT Authorizer<a class="headerlink" href="#aws-jwt-authorizer" title="Permanent link">&para;</a></h4>
-<p>ここでは、認証マイクロサービス (図では認可サーバー) から手動でJWTトークンを発行し、クライアントに共有すると仮定する。</p>
+<p>ここでは、認証マイクロサービス (図では認可サーバー) から手動で JWT トークンを発行し、クライアントに共有すると仮定する。</p>
 <ol>
-<li>クライアントのフロントエンドアプリケーションはAmazon API GatewayにJWTトークンを含むリクエストを送信する。</li>
-<li>Amazon API Gatewayは、AWS JWT Authorizerにリクエストを送信する。</li>
-<li>AWS JWT Authorizerは認証マイクロサービス (図では認可サーバー) のJWKSエンドポイントにリクエストを送信する。</li>
-<li>AWS JWT Authorizerは認証マイクロサービス (図では認可サーバー) から検証に使用する公開鍵を取得する。</li>
-<li>AWS JWT AuthorizerはJWTトークンの署名を検証する。</li>
-<li>Amazon API Gatewayは、バックエンドにリクエストを送信する。</li>
-<li>バックエンドは、Amazon API Gatewayにレスポンスを返信する。</li>
-<li>Amazon API Gatewayは、クライアントのフロントエンドアプリケーションにレスポンスを返信する。</li>
+<li>クライアントのフロントエンドアプリケーションは Amazon API Gateway に JWT トークンを含むリクエストを送信する。</li>
+<li>Amazon API Gateway は、AWS JWT Authorizer にリクエストを送信する。</li>
+<li>AWS JWT Authorizer は認証マイクロサービス (図では認可サーバー) の JWKS エンドポイントにリクエストを送信する。</li>
+<li>AWS JWT Authorizer は認証マイクロサービス (図では認可サーバー) から検証に使用する公開鍵を取得する。</li>
+<li>AWS JWT Authorizer は JWT トークンの署名を検証する。</li>
+<li>Amazon API Gateway は、バックエンドにリクエストを送信する。</li>
+<li>バックエンドは、Amazon API Gateway にレスポンスを返信する。</li>
+<li>Amazon API Gateway は、クライアントのフロントエンドアプリケーションにレスポンスを返信する。</li>
 </ol>
 <p><img alt="aws_jwt-authorizer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_jwt-authorizer.png" /></p>
 <blockquote>
@@ -34733,7 +34733,7 @@
 <h2 id="02">02. 認可<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">集中パターン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 集中パターンとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>認可スコープを定義する認可マイクロサービス (例：自前、Open Policy Agentなど) を <code>1</code> 個だけ配置し、認可処理を実行する。</p>
+<p>認可スコープを定義する認可マイクロサービス (例：自前、Open Policy Agent など) を <code>1</code> 個だけ配置し、認可処理を実行する。</p>
 <p><img alt="microservices_authorization_centralized-authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization.png" /></p>
 <blockquote>
 <ul>
@@ -34794,7 +34794,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34805,11 +34805,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

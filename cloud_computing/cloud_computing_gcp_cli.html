@@ -34644,15 +34644,15 @@ Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </
 <h2 id="02-google-cloud-cli">02. Google Cloud CLIのセットアップ<a class="headerlink" href="#02-google-cloud-cli" title="Permanent link">&para;</a></h2>
 <h3 id="auth">auth<a class="headerlink" href="#auth" title="Permanent link">&para;</a></h3>
 <h4 id="auth_1">▼ authとは<a class="headerlink" href="#auth_1" title="Permanent link">&para;</a></h4>
-<p>プリンシパル (例：ユーザー、サービスアカウント、グループ、ドメイン、KubernetesのServiceAccount) の認証する。</p>
+<p>プリンシパル (例：ユーザー、サービスアカウント、グループ、ドメイン、Kubernetes の ServiceAccount) の認証する。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/sdk/gcloud/reference/auth">https://cloud.google.com/sdk/gcloud/reference/auth</a></li>
 </ul>
 </blockquote>
 <h4 id="activate-service-account">▼ activate-service-account<a class="headerlink" href="#activate-service-account" title="Permanent link">&para;</a></h4>
-<p>資格情報ファイルを使用して、ServiceAccountにログインする。</p>
-<p>資格情報ファイルは使用後に削除したほうが良いらしい。</p>
+<p>資格情報ファイルを使用して、ServiceAccount にログインする。</p>
+<p>資格情報ファイルは使用後に削除したほうがよいらしい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>activate-service-account<span class="w"> </span>foo-service-account@foo-project.iam.gserviceaccount.com<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--key-file<span class="w"> </span>foo1-credentials.json
 
@@ -34685,9 +34685,9 @@ ACTIVE<span class="w">  </span>ACCOUNT
 </ul>
 </blockquote>
 <h4 id="application-default-login">▼ application-default login<a class="headerlink" href="#application-default-login" title="Permanent link">&para;</a></h4>
-<p>Google Cloud CLIによるGoogle Cloudリソースへのアクセスを認証するために使用する。</p>
+<p>Google Cloud CLI による Google Cloud リソースへのアクセスを認証するために使用する。</p>
 <p><code>~/.config/gcloud/application_default_credentials.json</code> ファイルを作成し、資格情報を定義する。</p>
-<p>また、これ使用してGoogle Cloudにログインする。</p>
+<p>また、これ使用して Google Cloud にログインする。</p>
 <p><code>~/.config/gcloud/application_default_credentials.json</code> ファイルは <code>1</code> 個のプリンシパルの資格情報しか持てないため、プリンシパルを切り替える場合はファイルを再作成する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>application-default<span class="w"> </span>login
 </code></pre></div>
@@ -34715,8 +34715,8 @@ ACTIVE<span class="w">  </span>ACCOUNT
 *<span class="w">       </span>example2@gmail.com
 </code></pre></div>
 <h4 id="login">▼ login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h4>
-<p>IAMユーザーを認証する。</p>
-<p>Google Cloud SDKによるGoogle Cloudリソースへのアクセスを認証するために使用する。</p>
+<p>IAM ユーザーを認証する。</p>
+<p>Google Cloud SDK による Google Cloud リソースへのアクセスを認証するために使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>login
 </code></pre></div>
 <blockquote>
@@ -34726,7 +34726,7 @@ ACTIVE<span class="w">  </span>ACCOUNT
 </blockquote>
 <h4 id="login-update-adc">▼ login --update-adc<a class="headerlink" href="#login-update-adc" title="Permanent link">&para;</a></h4>
 <p><code>gcloud auth application-default login</code> コマンドと <code>gcloud auth login</code> コマンドを同時に実行する。</p>
-<p>これにより、Google Cloud CLIのための資格情報 (<code>~/.config/gcloud/application_default_credentials.json</code> ファイル) とGoogle Cloud SDKのための資格情報が更新される。</p>
+<p>これにより、Google Cloud CLI のための資格情報 (<code>~/.config/gcloud/application_default_credentials.json</code> ファイル) と Google Cloud SDK のための資格情報が更新される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--update-adc
 </code></pre></div>
 <blockquote>
@@ -34738,11 +34738,11 @@ ACTIVE<span class="w">  </span>ACCOUNT
 <p>認証のアクセストークンを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>print-access-token
 </code></pre></div>
-<p>環境変数に設定して使用すると良い。</p>
+<p>環境変数に設定して使用するとよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span>Google<span class="w"> </span><span class="nv">Cloud_AUTH_TOKEN</span><span class="o">=</span><span class="sb">`</span>gcloud<span class="w"> </span>auth<span class="w"> </span>print-access-token<span class="sb">`</span>
 </code></pre></div>
 <h4 id="revoke">▼ revoke<a class="headerlink" href="#revoke" title="Permanent link">&para;</a></h4>
-<p>Configurationに設定されているプリンシパルを削除する。</p>
+<p>Configuration に設定されているプリンシパルを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>auth<span class="w"> </span>list
 
 Credentialed<span class="w"> </span>Accounts
@@ -34817,16 +34817,16 @@ The<span class="w"> </span>latest<span class="w"> </span>available<span class="w
 <p><br></p>
 <h3 id="config-configuration">config configuration<a class="headerlink" href="#config-configuration" title="Permanent link">&para;</a></h3>
 <h4 id="config-configuration_1">▼ config configurationとは<a class="headerlink" href="#config-configuration_1" title="Permanent link">&para;</a></h4>
-<p><code>gcloud</code> コマンドのConfigurationを操作する。</p>
+<p><code>gcloud</code> コマンドの Configuration を操作する。</p>
 <h4 id="activate">▼ activate<a class="headerlink" href="#activate" title="Permanent link">&para;</a></h4>
-<p>複数のConfigurationがある場合に、これらを切り替える。</p>
+<p>複数の Configuration がある場合に、これらを切り替える。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooというConfigurationに切り替える</span>
 $<span class="w"> </span>gcloud<span class="w"> </span>config<span class="w"> </span>configurations<span class="w"> </span>activate<span class="w"> </span>foo
 
 Activated<span class="w"> </span><span class="o">[</span>foo<span class="o">]</span>.
 </code></pre></div>
 <h4 id="create">▼ create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h4>
-<p>Configurationを新しく作成する。</p>
+<p>Configuration を新しく作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># barというConfigurationを新しく作成する</span>
 $<span class="w"> </span>gcloud<span class="w"> </span>config<span class="w"> </span>configurations<span class="w"> </span>create<span class="w"> </span>bar
 
@@ -34847,7 +34847,7 @@ bar<span class="w">   </span>True
 </ul>
 </blockquote>
 <h4 id="list_2">▼ list<a class="headerlink" href="#list_2" title="Permanent link">&para;</a></h4>
-<p>全てのConfigurationと、アクティブプリンシパルとを一覧で取得する。</p>
+<p>すべての Configuration と、アクティブプリンシパルとを一覧で取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>config<span class="w"> </span>configurations<span class="w"> </span>list
 
 NAME<span class="w">  </span>IS_ACTIVE<span class="w">  </span>ACCOUNT<span class="w">             </span>PROJECT<span class="w">      </span>COMPUTE_DEFAULT_ZONE<span class="w">  </span>COMPUTE_DEFAULT_REGION
@@ -34860,7 +34860,7 @@ bar<span class="w">   </span>True<span class="w">       </span>example@gmail.com
 </ul>
 </blockquote>
 <h4 id="rename">▼ rename<a class="headerlink" href="#rename" title="Permanent link">&para;</a></h4>
-<p>現在、非アクティブになっているConfigurationの特定の名前を変更する。</p>
+<p>現在、非アクティブになっている Configuration の特定の名前を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># barというConfigurationをアクティブにする</span>
 $<span class="w"> </span>gcloud<span class="w"> </span>config<span class="w"> </span>configurations<span class="w"> </span>activate<span class="w"> </span>bar
 
@@ -34955,7 +34955,7 @@ bar<span class="w">   </span>True<span class="w">       </span>example@gmail.com
 </ul>
 </blockquote>
 <h4 id="list_4">▼ list<a class="headerlink" href="#list_4" title="Permanent link">&para;</a></h4>
-<p>Google GKE Clusterの一覧を取得する。</p>
+<p>Google GKE Cluster の一覧を取得する。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>list
 
@@ -34977,7 +34977,7 @@ foo-gke-cluster<span class="w">    </span>asia-northeast1<span class="w">  </spa
 </ul>
 </blockquote>
 <h4 id="describe">▼ describe<a class="headerlink" href="#describe" title="Permanent link">&para;</a></h4>
-<p>Google GKE Node Poolの情報を取得する。</p>
+<p>Google GKE Node Pool の情報を取得する。</p>
 <p>アップグレードの手法を確認できる。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>container<span class="w"> </span>node-pools<span class="w"> </span>describe<span class="w"> </span>foo-node-pool<span class="w"> </span>--cluster<span class="o">=</span>foo-anthos-cluster
@@ -34998,7 +34998,7 @@ upgradeSettings:
 </ul>
 </blockquote>
 <h4 id="update_1">▼ update<a class="headerlink" href="#update_1" title="Permanent link">&para;</a></h4>
-<p>Google GKE Node Poolの設定を変更する。</p>
+<p>Google GKE Node Pool の設定を変更する。</p>
 <p><strong>＊実行例＊</strong></p>
 <p>ローリング方式 (サージ方式) のアップグレードを有効化する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>container<span class="w"> </span>node-pools<span class="w"> </span>update<span class="w"> </span>foo-node-pool<span class="w"> </span><span class="se">\</span>
@@ -35082,7 +35082,7 @@ User<span class="w"> </span>Config<span class="w"> </span>Directory:<span class=
 <p>記入中...</p>
 <h4 id="list_5">▼ list<a class="headerlink" href="#list_5" title="Permanent link">&para;</a></h4>
 <p>現在のプリンシパルが使用できるプロジェクトの一覧を取得する。</p>
-<p>注意点として、全てのプロジェクトではない。</p>
+<p>注意点として、すべてのプロジェクトではない。</p>
 <p><strong>＊実行例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>projects<span class="w"> </span>list
 
@@ -35099,7 +35099,7 @@ bar-project-***<span class="w">    </span>bar-project<span class="w">   </span>*
 <h2 id="03-google-cloud">03. Google Cloudリソース別のプラクティス<a class="headerlink" href="#03-google-cloud" title="Permanent link">&para;</a></h2>
 <h3 id="google-cloud-logging">Google Cloud Logging<a class="headerlink" href="#google-cloud-logging" title="Permanent link">&para;</a></h3>
 <h4 id="read">▼ read<a class="headerlink" href="#read" title="Permanent link">&para;</a></h4>
-<p>Google Cloud Loggingからログを読み出す。</p>
+<p>Google Cloud Logging からログを読み出す。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span><span class="nb">read</span><span class="w"> </span><span class="s1">&#39;resource.labels.container_name=&quot;foo-container&quot;&#39;</span><span class="w"> </span>--limit<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <blockquote>
@@ -35108,8 +35108,8 @@ bar-project-***<span class="w">    </span>bar-project<span class="w">   </span>*
 </ul>
 </blockquote>
 <h4 id="write">▼ write<a class="headerlink" href="#write" title="Permanent link">&para;</a></h4>
-<p>Google Cloud Loggingにログを送信する。</p>
-<p>アプリケーションの代わりに特定の条件に合致するログを送信したい場合に、使用すると良い。</p>
+<p>Google Cloud Logging にログを送信する。</p>
+<p>アプリケーションの代わりに特定の条件に合致するログを送信したい場合に、使用するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 非構造化ログ</span>
 $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> </span>write<span class="w"> </span>test-log<span class="w"> </span><span class="s2">&quot;これはテストログです&quot;</span>
 </code></pre></div>
@@ -35138,7 +35138,7 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
 <p><br></p>
 <h3 id="google-cloud-kms">Google Cloud KMS<a class="headerlink" href="#google-cloud-kms" title="Permanent link">&para;</a></h3>
 <h4 id="describe_1">▼ describeとは<a class="headerlink" href="#describe_1" title="Permanent link">&para;</a></h4>
-<p>Google Cloud KMSの暗号化キーを取得する。</p>
+<p>Google Cloud KMS の暗号化キーを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>kms<span class="w"> </span>keys<span class="w"> </span>describe<span class="w"> </span>&lt;KMSのリソースID&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gcloud<span class="w"> </span>kms<span class="w"> </span>keys<span class="w"> </span>describe<span class="w"> </span>projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key
@@ -35164,7 +35164,7 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:57:28 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35175,11 +35175,11 @@ $<span class="w"> </span>gcloud<span class="w"> </span>logging<span class="w"> <
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

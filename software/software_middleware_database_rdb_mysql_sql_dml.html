@@ -34945,7 +34945,7 @@
 <h3 id="select"><code>SELECT</code><a class="headerlink" href="#select" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ なし<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>指定したカラムを取得する。</p>
-<p>MySQLでは、取得結果の並び順が毎回異なるため、プライマリーキーの昇順で取得したい場合は、<code>ORDER BY</code> を使用して、明示的に並び替えるようにする。</p>
+<p>MySQL では、取得結果の並び順が毎回異なるため、プライマリーキーの昇順で取得したい場合は、<code>ORDER BY</code> を使用して、明示的に並び替えるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL">https://www.quora.com/What-is-the-default-order-of-records-for-a-SELECT-statement-in-MySQL</a></li>
@@ -34975,7 +34975,7 @@
 </code></pre></div>
 <p><strong>※消去法の小技：集合関数を入れ子状にはできない</strong></p>
 <p><strong>＊実装例＊</strong></p>
-<p>集合関数を、集合関数の中へ入れ子状にできない。</p>
+<p>集合関数を、集合関数のなかへ入れ子状にできない。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="nf">SUM</span><span class="p">(</span><span class="o">&lt;</span><span class="n">カラム名</span><span class="o">&gt;</span><span class="p">))</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <p>指定したカラムで、値無しも含む『フィールド』を取得する。</p>
@@ -34985,7 +34985,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="nf">COUNT</span><span class="p">(</span><span class="o">&lt;</span><span class="n">カラム名</span><span class="o">&gt;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="last_insert_id">▼ <code>LAST_INSERT_ID()</code> 関数<a class="headerlink" href="#last_insert_id" title="Permanent link">&para;</a></h4>
-<p>任意のテーブルへ最後に挿入されたIDを読み出す。</p>
+<p>任意のテーブルへ最後に挿入された ID を読み出す。</p>
 <p>テーブル名を指定する必要はない。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="nf">LAST_INSERT_ID</span><span class="p">();</span>
 </code></pre></div>
@@ -34995,8 +34995,8 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="case"><code>CASE</code><a class="headerlink" href="#case" title="Permanent link">&para;</a></h3>
-<p>カラム1が <code>true</code> だったら、カラム2を取得する。</p>
-<p><code>false</code> であったら、カラム3を取得する。</p>
+<p>カラム 1 が <code>true</code> だったら、カラム 2 を取得する。</p>
+<p><code>false</code> であったら、カラム 3 を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="k">CASE</span>
 <span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="o">&lt;</span><span class="n">エイリアス</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="n">カラム名1</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="o">&lt;</span><span class="n">エイリアス</span><span class="o">&gt;</span><span class="p">.</span><span class="o">&lt;</span><span class="n">カラム名2</span><span class="o">&gt;</span>
@@ -35010,12 +35010,12 @@
 <h4 id="join">▼ <code>JOIN</code> の種類<a class="headerlink" href="#join" title="Permanent link">&para;</a></h4>
 <p><img alt="内部結合のベン図" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/内部結合のベン図.jpg" /></p>
 <h4 id="left-join">▼ <code>LEFT JOIN</code> (左外部結合)<a class="headerlink" href="#left-join" title="Permanent link">&para;</a></h4>
-<p>『users』テーブルと『items』テーブルの商品IDが一致しているデータと、元となる『users』テーブルにしか存在しないデータが、セットで取得される。</p>
+<p>『users』テーブルと『items』テーブルの商品 ID が一致しているデータと、元となる『users』テーブルにしか存在しないデータが、セットで取得される。</p>
 <p><img alt="LEFT_JOIN" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LEFT_JOIN.png" /></p>
 <h4 id="inner-join">▼ <code>INNER JOIN</code> (内部結合)<a class="headerlink" href="#inner-join" title="Permanent link">&para;</a></h4>
 <p>基本情報技術者試験では、内部結合 (A∩B) しか出題されない。</p>
 <h4 id="where">▼ 内部結合に <code>WHERE</code> を使用する場合<a class="headerlink" href="#where" title="Permanent link">&para;</a></h4>
-<p><code>2</code> 個の <code>WHERE</code> 文が、<code>AND</code> で結びつけられているとき、まず1つ目の <code>WHERE</code> を満たすレコードを読み込んだ後、取得したレコードの中から、2つ目の <code>WHERE</code> を満たすレコードを読み込む。</p>
+<p><code>2</code> 個の <code>WHERE</code> 文が、<code>AND</code> で結びつけられているとき、まず 1 つ目の <code>WHERE</code> を満たすレコードを読み込んだ後、取得したレコードのなかから、2 つ目の <code>WHERE</code> を満たすレコードを読み込む。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 『カラム』のみでなく、どの『表』なの物なのかも指定</span>
 <span class="k">SELECT</span>
@@ -35142,7 +35142,7 @@
 <h3 id="between"><code>BETWEEN</code><a class="headerlink" href="#between" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 使い方<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>指定したカラムで、1以上10以下の『フィールド』を取得する。</p>
+<p>指定したカラムで、1 以上 10 以下の『フィールド』を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
@@ -35157,14 +35157,14 @@
 <h3 id="offsetlimit"><code>OFFSET</code>、<code>LIMIT</code><a class="headerlink" href="#offsetlimit" title="Permanent link">&para;</a></h3>
 <h4 id="offsetlimit_1">▼ <code>OFFSET</code>、<code>LIMIT</code><a class="headerlink" href="#offsetlimit_1" title="Permanent link">&para;</a></h4>
 <p>ページングし、レコードを読み込む。</p>
-<p>例えば、アプリケーションのUIから受け取ったページ指定を <code>OFFSET</code>（どこから）と <code>LIMIT</code>（どこまで）の値とし、どのレコードからどのレコードまでを取得するかを決める。</p>
+<p>例えば、アプリケーションの UI から受け取ったページ指定を <code>OFFSET</code>（どこから）と <code>LIMIT</code>（どこまで）の値とし、どのレコードからどのレコードまでを取得するかを決める。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="o">&lt;</span><span class="n">数値</span><span class="o">&gt;</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="o">&lt;</span><span class="n">数値</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="offsetlimit_2">▼ <code>OFFSET</code>、<code>LIMIT</code> の問題点<a class="headerlink" href="#offsetlimit_2" title="Permanent link">&para;</a></h4>
 <p>ページ数が増えると指定する <code>OFFSET</code> 値が大きくなる。</p>
-<p>そのため、『どこから』のレコードまで読み込む処理に負荷がかかり、<code>READ</code>処理の性能が落ちていく。</p>
-<p>代替案として、例えばカーソル方式であれば、前回のページングの位置をキャッシュするため、性能がより良い。</p>
-<p>例えばカーソルによるページングであれば、前回のページングの位置をキャッシュするため、性能がより良い。</p>
+<p>そのため、『どこから』のレコードまで読み込む処理に負荷がかかり、<code>READ</code> 処理の性能が落ちていく。</p>
+<p>代替案として、例えばカーソル方式であれば、前回のページングの位置をキャッシュするため、性能がよりよい。</p>
+<p>例えばカーソルによるページングであれば、前回のページングの位置をキャッシュするため、性能がよりよい。</p>
 <p><br></p>
 <h3 id="_11">サブクエリ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ 使い方<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
@@ -35237,13 +35237,13 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <p><br></p>
 <h3 id="_15">読み方<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="select_type">▼ <code>select_type</code><a class="headerlink" href="#select_type" title="Permanent link">&para;</a></h4>
-<p>SQLの種類が表示される。</p>
-<p>サブクエリを含まないSQLは <code>SIMPLE</code> となり、サブクエリを含むと、サブクエリの種類に応じて、<code>PRIMARY</code>、<code>SUBQUERY</code>、<code>DEPENDENT SUBQUERY</code>、<code>UNCACHEABLE SUBQUERY</code>、<code>DERIVED</code>、のいずれかが表示される。</p>
+<p>SQL の種類が表示される。</p>
+<p>サブクエリを含まない SQL は <code>SIMPLE</code> となり、サブクエリを含むと、サブクエリの種類に応じて、<code>PRIMARY</code>、<code>SUBQUERY</code>、<code>DEPENDENT SUBQUERY</code>、<code>UNCACHEABLE SUBQUERY</code>、<code>DERIVED</code>、のいずれかが表示される。</p>
 <h4 id="table">▼ <code>table</code><a class="headerlink" href="#table" title="Permanent link">&para;</a></h4>
 <p>設定した <code>SELECT</code> が使用するテーブル名が表示される。</p>
 <h4 id="type">▼ <code>type</code><a class="headerlink" href="#type" title="Permanent link">&para;</a></h4>
 <p>設定した <code>SELECT</code> をテーブルに使用するとき、どの程度の数のカラムを検索するのかが表示される。</p>
-<p>検索するカラムが多いSQLほど、想定実行時間が長くなる。</p>
+<p>検索するカラムが多い SQL ほど、想定実行時間が長くなる。</p>
 <table>
 <thead>
 <tr>
@@ -35257,13 +35257,13 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <tr>
 <td>ALL</td>
 <td>・DBインデックスを使用していない。</td>
-<td>全てのカラム</td>
-<td>全てのカラムを検索するため、実行時間がもっとも長く、改善する必要がある。</td>
+<td>すべてのカラム</td>
+<td>すべてのカラムを検索するため、実行時間がもっとも長く、改善する必要がある。</td>
 </tr>
 <tr>
 <td>index</td>
 <td>・DBインデックスを使用していない。</td>
-<td>全てのインデックスのカラム</td>
+<td>すべてのインデックスのカラム</td>
 <td></td>
 </tr>
 <tr>
@@ -35282,7 +35282,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <td>eq_ref</td>
 <td>・クラスタDBインデックスを使用している。</td>
 <td><code>1</code> 個のカラム</td>
-<td><code>1</code> 個のカラムしか <code>fetch</code> しないため、<code>JOIN</code> を使用したアクセスの中で、実行時間がもっとも短い。</td>
+<td><code>1</code> 個のカラムしか <code>fetch</code> しないため、<code>JOIN</code> を使用したアクセスのなかで、実行時間がもっとも短い。</td>
 </tr>
 <tr>
 <td>const</td>
@@ -35293,17 +35293,17 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 </tbody>
 </table>
 <h4 id="possible_keys">▼ <code>possible_keys</code><a class="headerlink" href="#possible_keys" title="Permanent link">&para;</a></h4>
-<p>DBインデックスとして設定されたカラムのうちで、実際に利用できるものの一覧が表示される。</p>
+<p>DB インデックスとして設定されたカラムのうちで、実際に利用できるものの一覧が表示される。</p>
 <p><br></p>
 <h2 id="05-insert">05. INSERT<a class="headerlink" href="#05-insert" title="Permanent link">&para;</a></h2>
 <h3 id="_16">バルクインサート<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>一度のINSERT文で複数の値を挿入する。</p>
+<p>一度の INSERT 文で複数の値を挿入する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;&lt;カラム名&gt;&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;レコード値&gt;&#39;</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="06-show">06. SHOW<a class="headerlink" href="#06-show" title="Permanent link">&para;</a></h2>
 <h3 id="tables">TABLES<a class="headerlink" href="#tables" title="Permanent link">&para;</a></h3>
-<p>DBを閲覧する。</p>
+<p>DB を閲覧する。</p>
 <p>主に動作確認使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="k">TABLES</span><span class="p">;</span>
 
@@ -35314,7 +35314,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 </code></pre></div>
 <p><br></p>
 <h3 id="engines">ENGINES<a class="headerlink" href="#engines" title="Permanent link">&para;</a></h3>
-<p>MySQLのInnoDBストレージエンジンを確認する。</p>
+<p>MySQL の InnoDB ストレージエンジンを確認する。</p>
 <p><code>\G</code> をつけると、読みやすく整形してくれる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SHOW</span><span class="w"> </span><span class="k">ENGINE</span><span class="w"> </span><span class="n">INNODB</span><span class="w"> </span><span class="k">STATUS</span><span class="err">\</span><span class="n">G</span><span class="p">;</span>
 </code></pre></div>
@@ -35333,7 +35333,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <h2 id="08-exec">08. EXEC<a class="headerlink" href="#08-exec" title="Permanent link">&para;</a></h2>
 <h3 id="stored-procedure">stored procedure<a class="headerlink" href="#stored-procedure" title="Permanent link">&para;</a></h3>
 <h4 id="stored-procedure_1">▼ stored procedureとは<a class="headerlink" href="#stored-procedure_1" title="Permanent link">&para;</a></h4>
-<p>あらかじめ一連のSQL文をDBに格納しておき、Call文でコールする方式。</p>
+<p>あらかじめ一連の SQL 文を DB に格納しておき、Call 文でコールする方式。</p>
 <p><img alt="p325" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p325.gif" /></p>
 <blockquote>
 <ul>
@@ -35342,7 +35342,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 </blockquote>
 <h4 id="_17">▼ 使い方<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p><code>SELECT</code> 文のstored procedureを作成する例を考える。</p>
+<p><code>SELECT</code> 文の stored procedure を作成する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- PROCEDUREを作成し、DBへ格納しておく。</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">SelectContact</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="n">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span>
 </code></pre></div>
@@ -35370,7 +35370,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 20:45:25 JST">2026-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35381,11 +35381,11 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

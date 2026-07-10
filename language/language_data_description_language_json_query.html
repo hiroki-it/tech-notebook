@@ -33916,7 +33916,7 @@
 <p><br></p>
 <h2 id="02">02. オプション<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="json">例で使用するJSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
-<p>以降で使用するJSON型データを以下の通りとする。</p>
+<p>以降で使用する JSON 型データを以下の通りとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># data.json</span>
 <span class="p p-Indicator">{</span><span class="s">&quot;foo&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;FOO&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;BAR&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[{</span><span class="s">&quot;qux&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;QUX&quot;</span><span class="p p-Indicator">},</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;quux&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;QUUX&quot;</span><span class="p p-Indicator">}]}</span>
 </code></pre></div>
@@ -33930,7 +33930,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_3">ファイル読み込み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>標準入力に入力することにより、JSONファイルを読み込む。</p>
+<p>標準入力に入力することにより、JSON ファイルを読み込む。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.foo[]&#39;</span>
 </code></pre></div>
 <p><br></p>
@@ -33949,7 +33949,7 @@ BAZ
 </blockquote>
 <p><br></p>
 <h3 id="-s">-s<a class="headerlink" href="#-s" title="Permanent link">&para;</a></h3>
-<p>JSON型データのリストから複数のオブジェクトを取得する場合、取得したオブジェクトを再びリストに入れる。</p>
+<p>JSON 型データのリストから複数のオブジェクトを取得する場合、取得したオブジェクトを再びリストに入れる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.baz[]&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-s
 
 <span class="o">[</span>
@@ -33987,7 +33987,7 @@ BAZ
 </ul>
 </blockquote>
 <h4 id="_6">▼ <code>[]</code><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>リストへのパスを表す。もしJSON型データが起点からリストだった場合は、『<code>.[]</code>』になる。</p>
+<p>リストへのパスを表す。もし JSON 型データが起点からリストだった場合は、『<code>.[]</code>』になる。</p>
 <p>オブジェクトを取得できるだけなため、取得したオブジェクトを再びリストに入れたい場合は、加えて <code>-s</code> オプションを有効化した <code>jq</code> コマンドに渡す必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.baz[]&#39;</span>
 
@@ -34043,7 +34043,7 @@ $<span class="w"> </span>cat<span class="w"> </span>data.json<span class="w"> </
 <p><br></p>
 <h3 id="_8">関数によるフィルタリング<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="select">▼ select<a class="headerlink" href="#select" title="Permanent link">&para;</a></h4>
-<p>パスによる取得結果の中から、特定のキーや値を持つオブジェクトを取得する。</p>
+<p>パスによる取得結果のなかから、特定のキーや値を持つオブジェクトを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooキーを持ち、値がFOOやBAZであるオブジェクトを取得する。</span>
 $<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.[] | select (.foo == &quot;FOO&quot; or .foo == &quot;BAZ&quot;)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;.&#39;</span>
 
@@ -34084,7 +34084,7 @@ FOO<span class="w"> </span>BAR<span class="w"> </span>BAZ
 <p><br></p>
 <h2 id="05">05. 変換<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="text">text<a class="headerlink" href="#text" title="Permanent link">&para;</a></h3>
-<p>text形式に変換する。</p>
+<p>text 形式に変換する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;. | @text&#39;</span>
 </code></pre></div>
 <blockquote>
@@ -34094,7 +34094,7 @@ FOO<span class="w"> </span>BAR<span class="w"> </span>BAZ
 </blockquote>
 <p><br></p>
 <h3 id="tsv">tsv<a class="headerlink" href="#tsv" title="Permanent link">&para;</a></h3>
-<p>tsv形式 (タブ切り) に変換する。</p>
+<p>tsv 形式 (タブ切り) に変換する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;. | @tsv&#39;</span>
 </code></pre></div>
 <blockquote>
@@ -34104,7 +34104,7 @@ FOO<span class="w"> </span>BAR<span class="w"> </span>BAZ
 </blockquote>
 <p><br></p>
 <h3 id="csv">csv<a class="headerlink" href="#csv" title="Permanent link">&para;</a></h3>
-<p>csv形式 (カンマ切り) に変換する。</p>
+<p>csv 形式 (カンマ切り) に変換する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>list.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;. | @csv&#39;</span>
 </code></pre></div>
 <blockquote>
@@ -34133,7 +34133,7 @@ FOO<span class="w"> </span>BAR<span class="w"> </span>BAZ
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34144,11 +34144,11 @@ FOO<span class="w"> </span>BAR<span class="w"> </span>BAZ
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

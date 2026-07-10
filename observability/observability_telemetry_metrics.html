@@ -33992,9 +33992,9 @@
 <p><br></p>
 <h2 id="01">01. メトリクス<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">メトリクスとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>とある分析にて、一定期間に発生した同じ種類のデータポイントの集約 (例：CPU使用率、メモリ使用率など) のこと。</p>
-<p>メトリクス名と数値のセット (例：Prometheusであれば <code>foo{x=1, y=2}</code>) で表されたデータポイントを集約し、メトリクスとする。</p>
-<p>メトリクスは、データポイントの形式にあわせていくつかの形式 (例：Count、Gauge、Histogram、Summaryなど) がある。</p>
+<p>とある分析にて、一定期間に発生した同じ種類のデータポイントの集約 (例：CPU 使用率、メモリ使用率など) のこと。</p>
+<p>メトリクス名と数値のセット (例：Prometheus であれば <code>foo{x=1, y=2}</code>) で表されたデータポイントを集約し、メトリクスとする。</p>
+<p>メトリクスは、データポイントの形式にあわせていくつかの形式 (例：Count、Gauge、Histogram、Summary など) がある。</p>
 <p>またメトリクスは、特定の方式 (平均、最大最小、合計、再カウント数) で再集計できる。</p>
 <p><img alt="metrics_namespace_dimension" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png" /></p>
 <blockquote>
@@ -34016,7 +34016,7 @@
 <h4 id="gauge">▼ Gauge<a class="headerlink" href="#gauge" title="Permanent link">&para;</a></h4>
 <p>値を量で表す。</p>
 <ul>
-<li>CPU使用量</li>
+<li>CPU 使用量</li>
 <li>...</li>
 </ul>
 <h4 id="histogram">▼ Histogram<a class="headerlink" href="#histogram" title="Permanent link">&para;</a></h4>
@@ -34034,8 +34034,8 @@
 <h3 id="_6">データポイント<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ データポイントとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>分析対象から得られる最小単位の数値のこと。</p>
-<p>メトリクス名と数値のセット (例：Prometheusであれば <code>foo{x=1, y=2}</code>) で表す。</p>
-<p>データポイントにはいくつかの形式 (例：Gauge、Histogram、Countなど) がある。</p>
+<p>メトリクス名と数値のセット (例：Prometheus であれば <code>foo{x=1, y=2}</code>) で表す。</p>
+<p>データポイントにはいくつかの形式 (例：Gauge、Histogram、Count など) がある。</p>
 <p>データポイントは、分析ごとに存在している。</p>
 <p>例えば、とある分析で <code>1</code> 分ごとに対象が測定される場合、<code>1</code> 分ごとに得られる数値データがデータポイントとなる。</p>
 <p>一方で、<code>1</code> 時間ごとの測定の場合、<code>1</code> 時間ごとに得られる数値データがデータポイントである。</p>
@@ -34051,7 +34051,7 @@
 <p>データポイントを収集する間隔を調節することにより、データポイント全体のデータサイズが変化する。</p>
 <p>収集間隔を縮小した場合、データポイント数が多くなるため、データサイズは大きくなる。</p>
 <p>反対に収集間隔を拡大した場合、データポイント数が少なくなるため、データサイズは小さくなる。</p>
-<p>注意点として、収集間隔を拡大した場合はより飛び飛びのメトリクスを描画してしまうため、欠損があったとしてもそれを検出できない可能性がある (例：3分間隔だとしたら、3分に満たない間で起こった欠損は描画できない)。</p>
+<p>注意点として、収集間隔を拡大した場合はより飛び飛びのメトリクスを描画してしまうため、欠損があったとしてもそれを検出できない可能性がある (例：3 分間隔だとしたら、3 分に満たない間で起こった欠損は描画できない)。</p>
 <h4 id="_9">▼ データポイントのダウンサンプリング<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>期間内にさまざまなタイムスタンプのデータポイントがある場合に、期間を区画に分け、区画内のタイプスタンプを数学的に集約し、単一の値に変換する。</p>
 <p>これにより、解像度を下げる代わりにデータポイント数を減らし、データポイントの合計データサイズを小さくする。</p>
@@ -34065,7 +34065,7 @@
 <p>冗長化されたデータポイント収集ツールのインスタンスが単一の監視バックエンドやストレージツールにメトリクスを送信する場合、特定の期間には、同じデータポイントが重複して存在することになる。</p>
 <p>この重複を排除するために、期間内で最新のタイムスタンプを持つデータポイントのみを残す。</p>
 <p>これにより、データポイント数を減らし、データポイントの合計データサイズを小さくする。</p>
-<p>重複排除のタイミングは、収集ツールの収集間隔と同じ値にすると良い。</p>
+<p>重複排除のタイミングは、収集ツールの収集間隔と同じ値にするとよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/">https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/</a></li>
@@ -34074,7 +34074,7 @@
 <p><br></p>
 <h3 id="_11">メトリクスの集約<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ メトリクスの集約とは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>同じ種類のメトリクスを特定のグループ (例：Amazon CloudWatchならば、ディメンション、名前空間) に集約する。</p>
+<p>同じ種類のメトリクスを特定のグループ (例：Amazon CloudWatch ならば、ディメンション、名前空間) に集約する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation</a></li>
@@ -34084,7 +34084,7 @@
 <p>集計は、特定の方式 (平均、最大最小、合計、再カウント数) で計算することを指す。</p>
 <p><br></p>
 <h3 id="exemplar">Exemplar<a class="headerlink" href="#exemplar" title="Permanent link">&para;</a></h3>
-<p>Histogram型やSummary型のメトリクスに付与できるメタ情報（<code># {...}</code>）のこと。</p>
+<p>Histogram 型や Summary 型のメトリクスに付与できるメタ情報（<code># {...}</code>）のこと。</p>
 <div class="highlight"><pre><span></span><code>http_requests_total<span class="o">{</span><span class="nv">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="o">}</span><span class="w"> </span><span class="m">1027</span><span class="w"> </span><span class="c1"># {trace_id=&quot;4bf9...&quot;, span_id=&quot;00f0...&quot;} 1</span>
 </code></pre></div>
 <p><br></p>
@@ -34122,7 +34122,7 @@
 </tbody>
 </table>
 <h4 id="_18">▼ サチュレーション<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>システム利用率 (CPU利用率、メモリ利用率、ストレージ利用率など) の飽和度のこと。</p>
+<p>システム利用率 (CPU 利用率、メモリ利用率、ストレージ利用率など) の飽和度のこと。</p>
 <p>例えば、以下の飽和度がある。</p>
 <p><code>60</code>～<code>70</code>%で、警告ラインを設けておく必要がある。</p>
 <p>サーバー監視対象のメトリクスに所属する。</p>
@@ -34135,7 +34135,7 @@
 <p><br></p>
 <h3 id="use">USEメトリクス<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
 <p><code>USE</code> は、Utilization (使用率)、Saturation (サチュレーション)、Errors (エラー数) のメトリクスの頭文字である。</p>
-<p>CPU、メモリ、ストレージ、ネットワークなどに関する <code>USE</code> メトリクス (例：CPU使用率、CPUサチュレーションなど) を含む。</p>
+<p>CPU、メモリ、ストレージ、ネットワークなどに関する <code>USE</code> メトリクス (例：CPU 使用率、CPU サチュレーションなど) を含む。</p>
 <blockquote>
 <ul>
 <li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies</a></li>
@@ -34145,7 +34145,7 @@
 <p><br></p>
 <h3 id="red">REDメトリクス<a class="headerlink" href="#red" title="Permanent link">&para;</a></h3>
 <p><code>RED</code> は、Rate (秒当たりのリクエスト数)、Errors (リクエストの失敗数)、Duration (レイテンシー) のメトリクスの頭文字である。</p>
-<p>SLIによく使用されるメトリクスである。</p>
+<p>SLI によく使用されるメトリクスである。</p>
 <blockquote>
 <ul>
 <li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#common-observability-strategies</a></li>
@@ -34153,7 +34153,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. メトリクスとトレース間の相関<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<p>ExemplarをHistogram型やSummary型のメトリクスに付与すると、メトリクスとトレース間を相関できる。</p>
+<p>Exemplar を Histogram 型や Summary 型のメトリクスに付与すると、メトリクスとトレース間を相関できる。</p>
 <p>また、監視ダッシュボード上でトレースの属性をメトリクスのラベルに変換しても、同様にメトリクスとトレース間を相関できる。</p>
 <p><br></p>
 
@@ -34176,7 +34176,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34187,11 +34187,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

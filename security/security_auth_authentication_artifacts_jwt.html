@@ -34038,10 +34038,10 @@
 <p><br></p>
 <h2 id="01-jwtjson-web-token">01. JWT：JSON Web Token<a class="headerlink" href="#01-jwtjson-web-token" title="Permanent link">&para;</a></h2>
 <h3 id="jwt_1">JWTとは<a class="headerlink" href="#jwt_1" title="Permanent link">&para;</a></h3>
-<p>『ヘッダー』『ペイロード』『署名』のそれぞれのJSON型データを <code>base64</code> 方式によってエンコードし、ドットでつないだトークン。</p>
-<p>JWTでエンコードされたトークンは、JWTトークンという。</p>
-<p>Bearer認証やOAuthのトークンとして使用できる。</p>
-<p>ランダムな文字列をこれら認証のトークンとするより、JWTを使用したほうがより安全である。</p>
+<p>『ヘッダー』『ペイロード』『署名』のそれぞれの JSON 型データを <code>base64</code> 方式によってエンコードし、ドットでつないだトークン。</p>
+<p>JWT でエンコードされたトークンは、JWT トークンという。</p>
+<p>Bearer 認証や OAuth のトークンとして使用できる。</p>
+<p>ランダムな文字列をこれら認証のトークンとするより、JWT を使用したほうがより安全である。</p>
 <blockquote>
 <ul>
 <li><a href="https://meetup-jp.toast.com/3511">https://meetup-jp.toast.com/3511</a></li>
@@ -34051,13 +34051,13 @@
 <p><br></p>
 <h2 id="04-jwt">04. JWTトークンの構造<a class="headerlink" href="#04-jwt" title="Permanent link">&para;</a></h2>
 <h3 id="jwt_2">JWTトークンの作成<a class="headerlink" href="#jwt_2" title="Permanent link">&para;</a></h3>
-<p>JWTは以下のサイトから取得できる。</p>
+<p>JWT は以下のサイトから取得できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://jwt.io/">https://jwt.io/</a></li>
 </ul>
 </blockquote>
-<p>例えばJavaScriptであれば、以下のような処理を実行し、JWTを作成する。</p>
+<p>例えば JavaScript であれば、以下のような処理を実行し、JWT を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// &lt;ヘッダーエンコード値&gt;.&lt;ペイロードエンコード値&gt;.&lt;署名エンコード値&gt;</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">token</span><span class="w"> </span><span class="o">=</span>
 <span class="w">  </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
@@ -34074,7 +34074,7 @@
 <p><br></p>
 <h3 id="jwt_3">JWTトークンの構造<a class="headerlink" href="#jwt_3" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ ヘッダー<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>ヘッダーは以下のJSON型データで定義される。</p>
+<p>ヘッダーは以下の JSON 型データで定義される。</p>
 <p>署名のためのアルゴリズムは、『<code>HS256</code> (共通鍵方式) 』『<code>RS256</code> (公開鍵方式) 』『<code>ES256</code>』『<code>none</code> (署名なし) 』から選択できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">typ</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;JWT&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// JWTトークンの使用</span>
@@ -34087,8 +34087,8 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ ペイロード<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>ペイロードは以下のJSON型データで定義される。</p>
-<p>ペイロードには、実際に送信したいJSONを設定する。</p>
+<p>ペイロードは以下の JSON 型データで定義される。</p>
+<p>ペイロードには、実際に送信したい JSON を設定する。</p>
 <p>必ず設定しなければならない『予約済みクレーム』と、ユーザー側が自由に定義できる『プライベートクレーム』がある。</p>
 <table>
 <thead>
@@ -34162,9 +34162,9 @@
 </ul>
 </blockquote>
 <h4 id="_4">▼ 署名（暗号ダイジェスト）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>ヘッダーとペイロードをbase64方式でエンコードし、公開鍵と秘密鍵のペアとエンコードした文字列である。</p>
-<p>例えばJavaScriptであれば、以下のような処理が実行されている。</p>
-<p>JWTを検証する場合、この署名の値を使用する。</p>
+<p>ヘッダーとペイロードを base64 方式でエンコードし、公開鍵と秘密鍵のペアとエンコードした文字列である。</p>
+<p>例えば JavaScript であれば、以下のような処理が実行されている。</p>
+<p>JWT を検証する場合、この署名の値を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">signature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HMACSHA256</span><span class="p">(</span>
 <span class="w">  </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">base64urlEncoding</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span>
 <span class="w">  </span><span class="nx">secret</span><span class="p">,</span>
@@ -34172,7 +34172,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="jwt_4">JWTトークンの種類<a class="headerlink" href="#jwt_4" title="Permanent link">&para;</a></h3>
-<p>JWTトークンには以下の種類がある。</p>
+<p>JWT トークンには以下の種類がある。</p>
 <table>
 <thead>
 <tr>
@@ -34200,7 +34200,7 @@
 <p><br></p>
 <h2 id="02-jwt">02. JWTトークンの検証の仕組み<a class="headerlink" href="#02-jwt" title="Permanent link">&para;</a></h2>
 <h3 id="_5">検証とは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>JWTトークン (例：IDトークン) の情報 (署名部分、有効期限、発行元など) から、JWTトークンの署名を検証できる。</p>
+<p>JWT トークン (例：ID トークン) の情報 (署名部分、有効期限、発行元など) から、JWT トークンの署名を検証できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE">https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE</a></li>
@@ -34208,10 +34208,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="_6">検証方法の種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>JWTの署名の検証方法には以下があり、公開鍵による検証が一般的である。</p>
+<p>JWT の署名の検証方法には以下があり、公開鍵による検証が一般的である。</p>
 <p>以下のいずれかの方法で検証できる。</p>
 <ul>
-<li>認可サーバーから取得した公開鍵のセット (JWKセット)</li>
+<li>認可サーバーから取得した公開鍵のセット (JWK セット)</li>
 <li>認可サーバーから取得した共通鍵</li>
 <li>認可サーバーのイントロスペクションエンドポイント</li>
 </ul>
@@ -34224,22 +34224,22 @@
 <p><br></p>
 <h3 id="_7">署名が公開鍵方式の場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 公開鍵方式の特徴<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>公開鍵方式では、秘密鍵を使用してJWT作成 (初回認証時) 、公開鍵を使用してJWT検証 (次回認証時) を実施する。</p>
-<p>例えば、SSOでは、JWTトークンの署名が公開鍵方式である。</p>
-<p>IDプロバイダー側に秘密鍵、クライアント側に公開鍵を配置する。</p>
+<p>公開鍵方式では、秘密鍵を使用して JWT 作成 (初回認証時) 、公開鍵を使用して JWT 検証 (次回認証時) を実施する。</p>
+<p>例えば、SSO では、JWT トークンの署名が公開鍵方式である。</p>
+<p>ID プロバイダー側に秘密鍵、クライアント側に公開鍵を配置する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88">https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88</a></li>
 </ul>
 </blockquote>
 <h4 id="_9">▼ 初回認証時<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>初回認証時は、JWTを作成する。</p>
+<p>初回認証時は、JWT を作成する。</p>
 <ol>
-<li>ユーザーは、IDプロバイダーのログインフォームにユーザーIDとパスワードを入力する。</li>
-<li>IDプロバイダーは、フォームの入力情報を含むリクエストを受信し、認証処理を実行する。また、DBのユーザー情報と照合して認証処理を実行する。</li>
-<li>認証が成功すれば、IDプロバイダーは秘密鍵を使用してJWTを作成する。</li>
-<li>IDプロバイダーは、JWTをレスポンスに含め、ユーザーに返信する。</li>
-<li>ブラウザは、JWTをLocalStorageやCookieに保管する。</li>
+<li>ユーザーは、ID プロバイダーのログインフォームにユーザーID とパスワードを入力する。</li>
+<li>ID プロバイダーは、フォームの入力情報を含むリクエストを受信し、認証処理を実行する。また、DB のユーザー情報と照合して認証処理を実行する。</li>
+<li>認証が成功すれば、ID プロバイダーは秘密鍵を使用して JWT を作成する。</li>
+<li>ID プロバイダーは、JWT をレスポンスに含め、ユーザーに返信する。</li>
+<li>ブラウザは、JWT を LocalStorage や Cookie に保管する。</li>
 </ol>
 <p><img alt="jwt_public_generate_token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_generate_token.png" /></p>
 <blockquote>
@@ -34248,13 +34248,13 @@
 </ul>
 </blockquote>
 <h4 id="_10">▼ 次回認証時<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>認証の成功状態を維持するため、初回認証時にブラウザの保管したJWTを再利用する。</p>
+<p>認証の成功状態を維持するため、初回認証時にブラウザの保管した JWT を再利用する。</p>
 <ol>
-<li>ユーザーは、ブラウザの保管したJWTをリクエストヘッダーに含め、アプリケーションに送信する。</li>
-<li>アプリケーションは、IDプロバイダーに公開鍵をリクエストする。</li>
-<li>IDプロバイダーは、アプリケーションに公開鍵をレスポンスする。</li>
-<li>アプリケーションは、IDプロバイダーから取得した公開鍵を使用してJWTの情報 (署名部分、有効期限、発行元など) から、JWTトークンの署名を検証する。</li>
-<li>JWTが有効であれば、アプリケーションの認証処理は成功とし、ユーザーにレスポンスを返信する</li>
+<li>ユーザーは、ブラウザの保管した JWT をリクエストヘッダーに含め、アプリケーションに送信する。</li>
+<li>アプリケーションは、ID プロバイダーに公開鍵をリクエストする。</li>
+<li>ID プロバイダーは、アプリケーションに公開鍵をレスポンスする。</li>
+<li>アプリケーションは、ID プロバイダーから取得した公開鍵を使用して JWT の情報 (署名部分、有効期限、発行元など) から、JWT トークンの署名を検証する。</li>
+<li>JWT が有効であれば、アプリケーションの認証処理は成功とし、ユーザーにレスポンスを返信する</li>
 </ol>
 <p><img alt="jwt_public_verify_token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_verify_token.png" /></p>
 <blockquote>
@@ -34266,17 +34266,17 @@
 <p><br></p>
 <h3 id="_11">署名が共通鍵方式の場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ 共通鍵方式の特徴<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>共通鍵方式では、秘密鍵を使用してJWT作成 (初回認証時) とJWT検証 (次回認証時) の両方を実施する。</p>
-<p>例えば、SSOではない認証の場合、JWTトークンの署名が共通鍵方式である。</p>
+<p>共通鍵方式では、秘密鍵を使用して JWT 作成 (初回認証時) と JWT 検証 (次回認証時) の両方を実施する。</p>
+<p>例えば、SSO ではない認証の場合、JWT トークンの署名が共通鍵方式である。</p>
 <p>ユーザー側とアプリケーション側に秘密鍵を配置する。</p>
 <h4 id="_13">▼ 初回認証時<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>初回認証時は、JWTを作成する。</p>
+<p>初回認証時は、JWT を作成する。</p>
 <ol>
-<li>ユーザーは、ログインフォームにユーザーIDとパスワードを入力する。</li>
-<li>アプリケーションは、フォームの入力情報を含むリクエストを受信する。また、DBのユーザー情報と照合して認証処理を実行する。</li>
-<li>認証が成功すれば、アプリケーションは秘密鍵を使用してJWTを作成する。</li>
-<li>アプリケーションは、JWTをレスポンスに含め、ユーザーに返信する。</li>
-<li>ブラウザは、JWTをLocalStorageやCookieに保管する。</li>
+<li>ユーザーは、ログインフォームにユーザーID とパスワードを入力する。</li>
+<li>アプリケーションは、フォームの入力情報を含むリクエストを受信する。また、DB のユーザー情報と照合して認証処理を実行する。</li>
+<li>認証が成功すれば、アプリケーションは秘密鍵を使用して JWT を作成する。</li>
+<li>アプリケーションは、JWT をレスポンスに含め、ユーザーに返信する。</li>
+<li>ブラウザは、JWT を LocalStorage や Cookie に保管する。</li>
 </ol>
 <p><img alt="jwt_common_generate_token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_generate_token.png" /></p>
 <blockquote>
@@ -34285,11 +34285,11 @@
 </ul>
 </blockquote>
 <h4 id="_14">▼ 次回認証時<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>認証の成功状態を維持するため、初回認証時にブラウザの保管したJWTを再利用する。</p>
+<p>認証の成功状態を維持するため、初回認証時にブラウザの保管した JWT を再利用する。</p>
 <ol>
-<li>ユーザーは、ブラウザの保管したJWTをリクエストヘッダーに含め、アプリケーションに送信する。</li>
-<li>アプリケーションは、秘密鍵を使用してJWTの署名を検証する。</li>
-<li>JWTが有効であれば、認証成功とし、ユーザーにレスポンスを返信する。</li>
+<li>ユーザーは、ブラウザの保管した JWT をリクエストヘッダーに含め、アプリケーションに送信する。</li>
+<li>アプリケーションは、秘密鍵を使用して JWT の署名を検証する。</li>
+<li>JWT が有効であれば、認証成功とし、ユーザーにレスポンスを返信する。</li>
 </ol>
 <p><img alt="jwt_common_verify_token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_verify_token.png" /></p>
 <blockquote>
@@ -34307,7 +34307,7 @@
 <span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;ヘッダーJSONエンコード値&gt;.&lt;ペイロードJSONエンコード値&gt;.&lt;署名JSONエンコード値&gt;</span>
 </code></pre></div>
 <p><code>Authorization</code> ヘッダーは <code>Cookie</code> ヘッダーとは異なり、ローカルマシンに保管できない。</p>
-<p>なお、APIではリクエストの送受信時に <code>Cookie</code> ヘッダーよりも <code>Authorization</code> ヘッダーのほうが扱いやすいため、<code>Authorization</code> ヘッダーでアクセストークンを運搬することになる。</p>
+<p>なお、API ではリクエストの送受信時に <code>Cookie</code> ヘッダーよりも <code>Authorization</code> ヘッダーのほうが扱いやすいため、<code>Authorization</code> ヘッダーでアクセストークンを運搬することになる。</p>
 <p>また、スマホアプリも <code>Cookie</code> ヘッダーより <code>Authorization</code> ヘッダーがいいらしい。</p>
 <blockquote>
 <ul>
@@ -34402,7 +34402,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 17:48:53 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

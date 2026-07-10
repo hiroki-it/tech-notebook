@@ -33967,11 +33967,11 @@
 <h2 id="01-oauth">01. OAuth<a class="headerlink" href="#01-oauth" title="Permanent link">&para;</a></h2>
 <h3 id="oauth_1">OAuthとは<a class="headerlink" href="#oauth_1" title="Permanent link">&para;</a></h3>
 <p><img alt="oauth_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_architecture.png" /></p>
-<p>SSOの一種であり、バージョンによって『OAuth 1.0』と『OAuth 2.0』がある。</p>
-<p>認証/認可フェーズ全体の中で、認可フェーズにOAuthプロトコルを使用したクライアントの照合方法を『OAuth』と呼ぶ。</p>
+<p>SSO の一種であり、バージョンによって『OAuth 1.0』と『OAuth 2.0』がある。</p>
+<p>認証/認可フェーズ全体のなかで、認可フェーズに OAuth プロトコルを使用したクライアントの照合方法を『OAuth』と呼ぶ。</p>
 <p>クライアントアプリで認証フェーズのみでログインし、連携先のアプリには認可フェーズのみでログインする。</p>
-<p>OAuthは認可フェーズのみで構成されているため、間違っても『OAuth認証』とは言わない。</p>
-<p>認証フェーズと認可フェーズでは、<code>3</code> 個の役割が定義されていることを説明したが、OAuthでは、より具体的に <code>4</code> 個の役割が定義されている。</p>
+<p>OAuth は認可フェーズのみで構成されているため、間違っても『OAuth 認証』とは言わない。</p>
+<p>認証フェーズと認可フェーズでは、<code>3</code> 個の役割が定義されていることを説明したが、OAuth では、より具体的に <code>4</code> 個の役割が定義されている。</p>
 <table>
 <thead>
 <tr>
@@ -34015,7 +34015,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="oauth_2">OAuthの種類<a class="headerlink" href="#oauth_2" title="Permanent link">&para;</a></h3>
-<p>OAuthには、仕組み別に『認可コードフロー』『暗黙的フロー』『リソースオーナー・パスワード・資格情報ズフロー (ダイレクト・アクセス・グラント) 』などがある。</p>
+<p>OAuth には、仕組み別に『認可コードフロー』『暗黙的フロー』『リソースオーナー・パスワード・資格情報ズフロー (ダイレクト・アクセス・グラント) 』などがある。</p>
 <p><br></p>
 <h2 id="02">02. トークンの検証<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アクセストークンの検証<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -34029,13 +34029,13 @@
 <p><br></p>
 <h2 id="03-oidc">03. OIDCとの違い<a class="headerlink" href="#03-oidc" title="Permanent link">&para;</a></h2>
 <h3 id="_3">目的<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>OAuthは認可の仕組みである。</p>
-<p>一方で、OIDCは認証の仕組みである。</p>
+<p>OAuth は認可の仕組みである。</p>
+<p>一方で、OIDC は認証の仕組みである。</p>
 <p><br></p>
 <h3 id="_4">トークンの違い<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>OIDCはOAuthの拡張であるため、仕組みは非常に似ている。</p>
-<p>OAuthでは、OIDCとは異なり、アクセストークン (JWT仕様かどうかはツール次第) のみを使用する。</p>
-<p>OAuthには脆弱性があるが、OIDCであればこれに対処できる。</p>
+<p>OIDC は OAuth の拡張であるため、仕組みは非常に似ている。</p>
+<p>OAuth では、OIDC とは異なり、アクセストークン (JWT 仕様かどうかはツール次第) のみを使用する。</p>
+<p>OAuth には脆弱性があるが、OIDC であればこれに対処できる。</p>
 <p><img alt="oidc_vs_oauth" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png" /></p>
 <blockquote>
 <ul>
@@ -34046,13 +34046,13 @@
 </blockquote>
 <p><br></p>
 <h2 id="04">04. 使用される認証スキーム<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<p>OAuthでは、認証スキーマとしてBearer認証の採用例が多い。</p>
-<p>一方で、AWSやGitHubでは独自の認証スキームの採用例もある。</p>
-<p>注意点として、認可サーバーによって発行されたBearerトークンは、<code>Authorization</code> ヘッダー、リクエストボディ、クエリパラメーターのいずれかに割り当てて送信できる。</p>
+<p>OAuth では、認証スキーマとして Bearer 認証の採用例が多い。</p>
+<p>一方で、AWS や GitHub では独自の認証スキームの採用例もある。</p>
+<p>注意点として、認可サーバーによって発行された Bearer トークンは、<code>Authorization</code> ヘッダー、リクエストボディ、クエリパラメーターのいずれかに割り当てて送信できる。</p>
 <p><br></p>
 <h2 id="05">05. 付与タイプ<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_5">付与タイプの種類<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>認可サーバーによるOAuthのアクセストークンの付与方法には種類がある。</p>
+<p>認可サーバーによる OAuth のアクセストークンの付与方法には種類がある。</p>
 <table>
 <thead>
 <tr>
@@ -34109,8 +34109,8 @@
 <p><br></p>
 <h3 id="_7">例<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 全体像<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>Facebookで認証フェーズのみでログインし、連携先の免許証作成サイトには認可フェーズのみでログインする。</p>
-<p>OIDCではなくOAuthのため、IDトークンではなく、リフレッシュトークンを含むアクセストークンであることに注意する。</p>
+<p>Facebook で認証フェーズのみでログインし、連携先の免許証作成サイトには認可フェーズのみでログインする。</p>
+<p>OIDC ではなく OAuth のため、ID トークンではなく、リフレッシュトークンを含むアクセストークンであることに注意する。</p>
 <p><img alt="oauth_authorization-code_facebook" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code_facebook.png" /></p>
 <blockquote>
 <ul>
@@ -34126,7 +34126,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>ブラウザは、Facebookアカウントを使用することをリクエストする。</p>
+<p>ブラウザは、Facebook アカウントを使用することをリクエストする。</p>
 <p>免許証作成サイトは、Facebookの認可サーバーの認可エンドポイントに、認可リクエストを送信する。</p>
 </dd>
 </dl>
@@ -34204,11 +34204,11 @@
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>ブラウザで、アカウント連携画面 (認可画面) に情報を入力し、Facebookに送信する。</p>
+<p>ブラウザで、アカウント連携画面 (認可画面) に情報を入力し、Facebook に送信する。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>Facebookの認可サーバーは、短命な認可コードを発行する。</p>
+<p>Facebook の認可サーバーは、短命な認可コードを発行する。</p>
 <p><code>Location</code>ヘッダーにリダイレクト先のURL (免許証作成サイトURL) とパラメーターを割り当て、認可レスポンスをブラウザに送信する。</p>
 <p>認可レスポンスにより、リダイレクトが起こる。</p>
 <p>リダイレクト先として指定するURLは、『コールバックURL』ともいう。</p>
@@ -34255,7 +34255,7 @@
 </dd>
 <dt><code>(7)</code></dt>
 <dd>
-<p>免許証作成サイトは、Facebookの認可サーバーのトークンエンドポイントにトークンリクエストを送信する。</p>
+<p>免許証作成サイトは、Facebook の認可サーバーのトークンエンドポイントにトークンリクエストを送信する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># トークンエンドポイントにトークンリクエストを送信する</span>
@@ -34323,11 +34323,11 @@
 <dl>
 <dt><code>(8)</code></dt>
 <dd>
-<p>Facebookの認可サーバーは、アクセストークンを含むトークンレスポンスを免許証作成サイトに返信する。</p>
+<p>Facebook の認可サーバーは、アクセストークンを含むトークンレスポンスを免許証作成サイトに返信する。</p>
 </dd>
 <dt><code>(9)</code></dt>
 <dd>
-<p>免許証作成サイトはアクセストークンを受信し、Facebookの認可サーバーにアクセストークンを再度送信する。</p>
+<p>免許証作成サイトはアクセストークンを受信し、Facebook の認可サーバーにアクセストークンを再度送信する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 200 OK</span>
@@ -34354,11 +34354,11 @@
 <dl>
 <dt><code>(10)</code></dt>
 <dd>
-<p>Facebookは認証を完了させ、Facebookの資格情報を送信する。</p>
+<p>Facebook は認証を完了させ、Facebook の資格情報を送信する。</p>
 </dd>
 <dt><code>(11)</code></dt>
 <dd>
-<p>免許証作成サイトは認可を実施し、Facebookの資格情報の権限に応じた処理をクライアントに提供する。</p>
+<p>免許証作成サイトは認可を実施し、Facebook の資格情報の権限に応じた処理をクライアントに提供する。</p>
 </dd>
 </dl>
 <p><br></p>
@@ -34403,7 +34403,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 17:48:53 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34414,11 +34414,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

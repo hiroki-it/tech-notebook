@@ -34088,8 +34088,8 @@
 <p><br></p>
 <h2 id="01">01. トレースエージェント (サーバーの場合)<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">トレースエージェントとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>デーモンであるdatadogエージェントに含まれている。</p>
-<p>アプリケーションから分散トレースを収集し、Datadogにフォワーディングする。</p>
+<p>デーモンである datadog エージェントに含まれている。</p>
+<p>アプリケーションから分散トレースを収集し、Datadog にフォワーディングする。</p>
 <p><img alt="datadog-agent_on-server" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png" /></p>
 <blockquote>
 <ul>
@@ -34107,10 +34107,10 @@
 <p><br></p>
 <h2 id="02-amazon-ecs-fargate">02. トレースエージェント (Amazon ECS Fargateの場合)<a class="headerlink" href="#02-amazon-ecs-fargate" title="Permanent link">&para;</a></h2>
 <h3 id="_4">トレースエージェントとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>サーバーの場合と同様にして、アプリケーションから分散トレースを受信し、Datadogにフォワーディングする。</p>
+<p>サーバーの場合と同様にして、アプリケーションから分散トレースを受信し、Datadog にフォワーディングする。</p>
 <p>サーバーの場合とは異なり、自身が収集しにいくことはできない。</p>
-<p>仕組みとして、アプリコンテナの分散トレースのクライアントパッケージはスパンを作成し、datadogコンテナの『<code>http://localhost:8126</code>』にこれを送信する。</p>
-<p>datadogコンテナ内のdatadogエージェントはこれをHTTPSプロトコルでDatadogにフォワーディングする。</p>
+<p>仕組みとして、アプリコンテナの分散トレースのクライアントパッケージはスパンを作成し、datadog コンテナの『<code>http://localhost:8126</code>』にこれを送信する。</p>
+<p>datadog コンテナ内の datadog エージェントはこれを HTTPS プロトコルで Datadog にフォワーディングする。</p>
 <p><img alt="datadog-tracer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-tracer.png" /></p>
 <blockquote>
 <ul>
@@ -34121,8 +34121,8 @@
 <p><br></p>
 <h3 id="_5">セットアップ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ エージェント<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>dockerエージェントにて、<code>DD_APM_ENABLED</code> の環境変数に <code>true</code> を割り当てると、合わせてトレースエージェントが有効になる。</p>
-<p>APMエージェントを有効化し、分散トレース監視バックエンドを送信できる。</p>
+<p>docker エージェントにて、<code>DD_APM_ENABLED</code> の環境変数に <code>true</code> を割り当てると、合わせてトレースエージェントが有効になる。</p>
+<p>APM エージェントを有効化し、分散トレース監視バックエンドを送信できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/agent/docker/apm/?tab=linux">https://docs.datadoghq.com/agent/docker/apm/?tab=linux</a></li>
@@ -34167,7 +34167,7 @@
 <h2 id="03">03. スパンの作成<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="datadog_1">Datadogにおける分散トレース<a class="headerlink" href="#datadog_1" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 分散トレースの構成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>Datadogで、分散トレースは複数のスパンの配列データとして定義される。</p>
+<p>Datadog で、分散トレースは複数のスパンの配列データとして定義される。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">span1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">span2</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">span3</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <p>また、複数の分散トレース自体を配列データとして定義できる。</p>
@@ -34179,7 +34179,7 @@
 </ul>
 </blockquote>
 <h4 id="_10">▼ スパンの構成<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>Datadogで、スパンはJSON型データとして定義される。アプリケーション内のクライアントパッケージで、指定されたJSON型のスパンが作成され、スパンはdatadog-APIに送信される。</p>
+<p>Datadog で、スパンは JSON 型データとして定義される。アプリケーション内のクライアントパッケージで、指定された JSON 型のスパンが作成され、スパンは datadog-API に送信される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">[</span>
@@ -34213,7 +34213,7 @@
 <p>スパンの <code>meta</code> キーにトレースコンテキストのセットを割り当てられる。</p>
 <p>トレースコンテキストはタグとして動作する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>PHP用のクライアントパッケージでlaravel内からタグを収集した例</p>
+<p>PHP 用のクライアントパッケージで laravel 内からタグを収集した例</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">    </span><span class="s">&quot;env&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;prd&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">    </span><span class="s">&quot;http&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
@@ -34300,8 +34300,8 @@
 <p><br></p>
 <h3 id="_21">マイクロサービスのタグ<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ マイクロサービスのタグとは<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>PHP用のクライアントパッケージによって、マイクロサービスにタグを追加できる。</p>
-<p>コードから、PHP用のクライアントパッケージがアプリケーションからどのように情報を抜き出し、分散トレースのタグの値を決定しているかがわかる。</p>
+<p>PHP 用のクライアントパッケージによって、マイクロサービスにタグを追加できる。</p>
+<p>コードから、PHP 用のクライアントパッケージがアプリケーションからどのように情報を抜き出し、分散トレースのタグの値を決定しているかがわかる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations">https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations</a></li>
@@ -34329,7 +34329,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

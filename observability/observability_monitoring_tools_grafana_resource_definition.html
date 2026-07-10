@@ -33519,7 +33519,7 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ チャートとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
+<p>チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://grafana.github.io/helm-charts
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -33534,7 +33534,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://github.com/grafana/helm-charts/tree/main/charts/grafana">https://github.com/grafana/helm-charts/tree/main/charts/grafana</a></li>
 </ul>
 </blockquote>
-<p>Prometheusのコンポーネントとしてインストールしたい場合は、GitHubから全部入りのkube-prometheus-stackチャートをインストールし、リソースを作成する。</p>
+<p>Prometheus のコンポーネントとしてインストールしたい場合は、GitHub から全部入りの kube-prometheus-stack チャートをインストールし、リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -33552,7 +33552,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h4 id="_4">▼ ドキュメントから<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>Grafanaのドキュメントから <code>yaml</code> ファイルをコピーし、<code>grafana.yaml</code> ファイルを作成する。</p>
+<p>Grafana のドキュメントから <code>yaml</code> ファイルをコピーし、<code>grafana.yaml</code> ファイルを作成する。</p>
 <p>これを作成する。</p>
 <blockquote>
 <ul>
@@ -33563,9 +33563,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="_5">ダッシュボードの公開<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>Nodeの外からPrometheusのダッシュボードをネットワークに公開する場合、Node外からPrometheusサーバーにインバウンド通信が届くようにする必要がある。</p>
+<p>Node の外から Prometheus のダッシュボードをネットワークに公開する場合、Node 外から Prometheus サーバーにインバウンド通信が届くようにする必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Ingressを作成する。</p>
+<p>Ingress を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33586,9 +33586,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">            </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefix</span>
 </code></pre></div>
-<p>IngressClassを作成する。</p>
-<p>開発環境では、IngressClassとしてNginxを使用する。</p>
-<p>本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、Google Cloud CLB) を使用する。</p>
+<p>IngressClass を作成する。</p>
+<p>開発環境では、IngressClass として Nginx を使用する。</p>
+<p>本番環境では、クラウドプロバイダーの IngressClass (AWS ALB、Google Cloud CLB) を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IngressClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33597,7 +33597,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="c1"># AWSの場合、ingress.k8s.aws/alb</span>
 <span class="w">  </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.io/ingress-nginx</span>
 </code></pre></div>
-<p>ClusterIP Serviceを作成する。</p>
+<p>ClusterIP Service を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33623,7 +33623,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="_6">接続<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>Grafanaのダッシュボードに接続できる。</p>
+<p>Grafana のダッシュボードに接続できる。</p>
 <p>ユーザー名は <code>admin</code>、パスワードは <code>prom-operator</code> がデフォルト値である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/grafana<span class="w"> </span>-n<span class="w"> </span>prometheus<span class="w"> </span><span class="m">8000</span>:80
 </code></pre></div>
@@ -33648,7 +33648,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

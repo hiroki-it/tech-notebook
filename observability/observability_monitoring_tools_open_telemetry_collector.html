@@ -34255,10 +34255,10 @@
 <h2 id="01-opentelemetry-collector">01. OpenTelemetry Collectorの仕組み<a class="headerlink" href="#01-opentelemetry-collector" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>『テレメトリーコンシューマー』ともいう。</p>
-<p>OpenTelemetry Collectorは、Receiver、Processor、Exporter、といったコンポーネントから構成されている。</p>
-<p>otelクライアントパッケージからのテレメトリーデータを、Receiverで受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。</p>
-<p>テレメトリーデータをotelクライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetry Collectorを使用したほうが良い。</p>
-<p>もし、サービスメッシュツール (例：Istio、Linkerdなど) のサイドカーモデルとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりに、サイドカーがプロキシ (例：OpenTelemetry Collector) にテレメトリーデータを送信する責務を持つ。</p>
+<p>OpenTelemetry Collector は、Receiver、Processor、Exporter、といったコンポーネントから構成されている。</p>
+<p>otel クライアントパッケージからのテレメトリーデータを、Receiver で受け取り、最終的にテレメトリーデーターの可視化ツールにこれを渡す。</p>
+<p>テレメトリーデータを otel クライアントパッケージからバックエンドに直接送信してもよいが、OpenTelemetry Collector を使用したほうがよい。</p>
+<p>もし、サービスメッシュツール (例：Istio、Linkerd など) のサイドカーモデルと OpenTelemetry の両方を採用する場合、otel クライアントパッケージの代わりに、サイドカーがプロキシ (例：OpenTelemetry Collector) にテレメトリーデータを送信する責務を持つ。</p>
 <p><img alt="open-telemetry_collector" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png" /></p>
 <blockquote>
 <ul>
@@ -34269,8 +34269,8 @@
 <p><br></p>
 <h3 id="receiver">Receiver<a class="headerlink" href="#receiver" title="Permanent link">&para;</a></h3>
 <h4 id="receiver_1">▼ Receiverとは<a class="headerlink" href="#receiver_1" title="Permanent link">&para;</a></h4>
-<p>OTLP形式のテレメトリーを受信する。</p>
-<p>HTTPSで受信する場合には、サーバー証明書が必要である。</p>
+<p>OTLP 形式のテレメトリーを受信する。</p>
+<p>HTTPS で受信する場合には、サーバー証明書が必要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md</a></li>
@@ -34278,7 +34278,7 @@
 </ul>
 </blockquote>
 <h4 id="prometheus-receiver">▼ Prometheus Receiver<a class="headerlink" href="#prometheus-receiver" title="Permanent link">&para;</a></h4>
-<p>Prometheusにリクエストを送信し、Prometheusの持つメトリクスの元になるデータポイントを収集する。</p>
+<p>Prometheus にリクエストを送信し、Prometheus の持つメトリクスの元になるデータポイントを収集する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver">https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver</a></li>
@@ -34289,7 +34289,7 @@
 <h3 id="processor">Processor<a class="headerlink" href="#processor" title="Permanent link">&para;</a></h3>
 <h4 id="processor_1">▼ Processorとは<a class="headerlink" href="#processor_1" title="Permanent link">&para;</a></h4>
 <p>テレメトリーを監視バックエンドへ送信する前に、事前処理を実行する。</p>
-<p>OpenTelemetryクライアントのProcessorと同じである。</p>
+<p>OpenTelemetry クライアントの Processor と同じである。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md</a></li>
@@ -34298,11 +34298,11 @@
 <p><br></p>
 <h3 id="exporter">Exporter<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h3>
 <h4 id="exporter_1">▼ Exporterとは<a class="headerlink" href="#exporter_1" title="Permanent link">&para;</a></h4>
-<p>OTLP形式やいくつかのOSS形式 (例：Prometheus、Jaegerなど) のテレメトリーを監視バックエンドに送信する。</p>
-<p>また、OpenTelemetryのスキーマ (<code>semconv</code> パッケージ) を経由して、スパンのデータ構造を変換する。</p>
-<p>OpenTelemetryクライアントのExporterと同じである。</p>
-<p>非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供するExporter (例：AWS Distro for OpenTelemetry CollectorのExporter) を使用する必要がある。</p>
-<p>HTTPSで送信する場合には、クライアント証明書が必要である。</p>
+<p>OTLP 形式やいくつかの OSS 形式 (例：Prometheus、Jaeger など) のテレメトリーを監視バックエンドに送信する。</p>
+<p>また、OpenTelemetry のスキーマ (<code>semconv</code> パッケージ) を経由して、スパンのデータ構造を変換する。</p>
+<p>OpenTelemetry クライアントの Exporter と同じである。</p>
+<p>非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供する Exporter (例：AWS Distro for OpenTelemetry Collector の Exporter) を使用する必要がある。</p>
+<p>HTTPS で送信する場合には、クライアント証明書が必要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md</a></li>
@@ -34311,9 +34311,9 @@
 </ul>
 </blockquote>
 <h4 id="amazon-cloudwatch-emf-exporter">▼ Amazon CloudWatch EMF Exporter<a class="headerlink" href="#amazon-cloudwatch-emf-exporter" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetry Collectorの持つ任意のメトリクス (例：別に収集したPrometheusメトリクス) を埋め込みメトリクスフォーマットに変換し、またAmazon CloudWatch Logsを宛先とする。</p>
-<p>Amazon CloudWatch Metricsは、埋め込みメトリクスフォーマットに変換されたログを基にカスタムメトリクスの元になるデータポイントを作成する。</p>
-<p>例えば、Amazon CloudWatchがデフォルトで対応していないメトリクス (例：Prometheus) を一度ログに変換したうえで、カスタムメトリクスとして表示し直すことができる。</p>
+<p>OpenTelemetry Collector の持つ任意のメトリクス (例：別に収集した Prometheus メトリクス) を埋め込みメトリクスフォーマットに変換し、また Amazon CloudWatch Logs を宛先とする。</p>
+<p>Amazon CloudWatch Metrics は、埋め込みメトリクスフォーマットに変換されたログを基にカスタムメトリクスの元になるデータポイントを作成する。</p>
+<p>例えば、Amazon CloudWatch がデフォルトで対応していないメトリクス (例：Prometheus) を一度ログに変換したうえで、カスタムメトリクスとして表示し直すことができる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter</a></li>
@@ -34322,10 +34322,10 @@
 </ul>
 </blockquote>
 <h4 id="aws-x-ray-exporter">▼ AWS X-Ray Exporter<a class="headerlink" href="#aws-x-ray-exporter" title="Permanent link">&para;</a></h4>
-<p>スパンをAWS X-Rayのセグメントに変換し、AWS X-Rayを宛先とする。</p>
-<p>OpenTelemetryとX-Rayの間で互換性のないデータ (例：OpenTelemetryのAttribute) は、まとめてX-Rayのアノテーションやメタデータに変換する。</p>
-<p>注意点として、トレースIDやスパンIDのトレースコンテキスト仕様は変換できず、そのままフォワーディングしてしまう。</p>
-<p>そのため、X-Rayの対応するトレースコンテキスト仕様 (例：W3C Trace Context、X-Ray仕様) ではない場合、スパンを送ったとしてもX-Ray上で分散トレースを作成できない。</p>
+<p>スパンを AWS X-Ray のセグメントに変換し、AWS X-Ray を宛先とする。</p>
+<p>OpenTelemetry と X-Ray の間で互換性のないデータ (例：OpenTelemetry の Attribute) は、まとめて X-Ray のアノテーションやメタデータに変換する。</p>
+<p>注意点として、トレース ID やスパン ID のトレースコンテキスト仕様は変換できず、そのままフォワーディングしてしまう。</p>
+<p>そのため、X-Ray の対応するトレースコンテキスト仕様 (例：W3C Trace Context、X-Ray 仕様) ではない場合、スパンを送ったとしても X-Ray 上で分散トレースを作成できない。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246">https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246</a></li>
@@ -34336,9 +34336,9 @@
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="aws">AWS側<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="terraform">▼ Terraformの公式モジュールの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
-<p>ここでは、X-Rayに接続すると仮定する。</p>
-<p>OpenTelemetry Collectorのセットアップのうち、AWS側で必要なものをまとめる。</p>
-<p>ここでは、Terraformの公式モジュールを使用する。</p>
+<p>ここでは、X-Ray に接続すると仮定する。</p>
+<p>OpenTelemetry Collector のセットアップのうち、AWS 側で必要なものをまとめる。</p>
+<p>ここでは、Terraform の公式モジュールを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_opentelemetry_collector&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
@@ -34400,11 +34400,11 @@
 </ul>
 </blockquote>
 <h4 id="_5">▼ エージェントパターンの実装例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>エージェントは、デーモンプロセス、サイドカー、DaemonSetなどで実装できる。</p>
+<p>エージェントは、デーモンプロセス、サイドカー、DaemonSet などで実装できる。</p>
 <h4 id="_6">▼ エージェントパターンのデメリット<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>もしOpenTelemetryで分散トレースのみを採用しているとする。</p>
-<p>エージェントパターンであると、スパンを作らないPodがいるNodeにまでOpenTelemetry Collectorをスケジューリングしてしまう。</p>
-<p>スパンを作るPodがいるNodeのためだけに、OpenTelemetry Collectorを配置すればよいため、エージェントパターンは不適である。</p>
+<p>もし OpenTelemetry で分散トレースのみを採用しているとする。</p>
+<p>エージェントパターンであると、スパンを作らない Pod がいる Node にまで OpenTelemetry Collector をスケジューリングしてしまう。</p>
+<p>スパンを作る Pod がいる Node のためだけに、OpenTelemetry Collector を配置すればよいため、エージェントパターンは不適である。</p>
 <p><br></p>
 <h3 id="_7">ゲートウェイパターン<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ ゲートウェイパターンとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
@@ -34416,7 +34416,7 @@
 </ul>
 </blockquote>
 <h4 id="_9">▼ ゲートウェイパターンの実装例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p><code>L7</code> ロードバランサーはIngress Controllerやistio-proxy、ゲートウェイはDeploymentなどで実装できる。</p>
+<p><code>L7</code> ロードバランサーは Ingress Controller や istio-proxy、ゲートウェイは Deployment などで実装できる。</p>
 <h4 id="_10">▼ ゲートウェイパターンのデメリット<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <p><br></p>
@@ -34629,8 +34629,8 @@
 <p>記入中...</p>
 <p><br></p>
 <h2 id="05">05. カスタムリソースを使用する場合<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<p>カスタムリソースを使用して、OpenTelemetryを定義できる。</p>
-<p>この場合、OpenTelemetry OperatorがInitContainerを経由して、アプリコンテナにOpenTelemetryの実装を挿入する。</p>
+<p>カスタムリソースを使用して、OpenTelemetry を定義できる。</p>
+<p>この場合、OpenTelemetry Operator が InitContainer を経由して、アプリコンテナに OpenTelemetry の実装を挿入する。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/opentelemetry/using-opentelemetry-auto-instrumentation-agents-in-kubernetes-869ec0f42377">https://medium.com/opentelemetry/using-opentelemetry-auto-instrumentation-agents-in-kubernetes-869ec0f42377</a></li>
@@ -34641,14 +34641,14 @@
 <h2 id="06-cncf">06. CNCFのメトリクスをクラウドプロバイダーに対応させる<a class="headerlink" href="#06-cncf" title="Permanent link">&para;</a></h2>
 <h3 id="aws_1">AWS<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 仕組み<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>以下の仕組みで、PrometheusのメトリクスをAmazon CloudWatch Container Insightsで監視できるようにする。</p>
+<p>以下の仕組みで、Prometheus のメトリクスを Amazon CloudWatch Container Insights で監視できるようにする。</p>
 <ol>
-<li>Prometheusは、メトリクスの元になるデータポイントを収集する。</li>
-<li>OpenTelemetry Collectorは、Prometheus ReceiverでPrometheusからリクエストを受信する。</li>
-<li>OpenTelemetry Collectorは、Amazon CloudWatch EMF Exporterを使用して、Prometheusメトリクスを埋め込みメトリクスフォーマットを持つログに変換する。</li>
-<li>OpenTelemetry Collectorは、Amazon CloudWatch Logsのロググループ (<code>/aws/containerinsights/&lt;Cluster名&gt;/performance</code>) にログを送信する。</li>
-<li>Amazon CloudWatch Logsは、埋め込みメトリクスフォーマットを受信する。</li>
-<li>Amazon CloudWatch Container Insightsは埋め込みメトリクスフォーマットを認識し、カスタムメトリクスの元になるデータポイントを作成する。これは、Prometheusメトリクスにほぼ対応している。</li>
+<li>Prometheus は、メトリクスの元になるデータポイントを収集する。</li>
+<li>OpenTelemetry Collector は、Prometheus Receiver で Prometheus からリクエストを受信する。</li>
+<li>OpenTelemetry Collector は、Amazon CloudWatch EMF Exporter を使用して、Prometheus メトリクスを埋め込みメトリクスフォーマットを持つログに変換する。</li>
+<li>OpenTelemetry Collector は、Amazon CloudWatch Logs のロググループ (<code>/aws/containerinsights/&lt;Cluster名&gt;/performance</code>) にログを送信する。</li>
+<li>Amazon CloudWatch Logs は、埋め込みメトリクスフォーマットを受信する。</li>
+<li>Amazon CloudWatch Container Insights は埋め込みメトリクスフォーマットを認識し、カスタムメトリクスの元になるデータポイントを作成する。これは、Prometheus メトリクスにほぼ対応している。</li>
 </ol>
 <blockquote>
 <ul>
@@ -34658,7 +34658,7 @@
 </ul>
 </blockquote>
 <h4 id="prometheus">▼ サポートしているPrometheusメトリクス<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
-<p>全てのPrometheusメトリクスにサポートしているわけでない。</p>
+<p>すべての Prometheus メトリクスにサポートしているわけでない。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-metrics-EKS.html">https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-metrics-EKS.html</a></li>
@@ -34685,7 +34685,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34696,11 +34696,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

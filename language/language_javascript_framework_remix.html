@@ -35417,9 +35417,9 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-remix">01. Remixとは<a class="headerlink" href="#01-remix" title="Permanent link">&para;</a></h2>
-<p>Reactのreact-routerを拡張したフレームワークである。</p>
-<p>Remixの90%はreact-routerとのこと。</p>
-<p>ラッパーを減らし、ブラウザがデフォルトで提供する関数やオブジェクト、HTML要素をそのまま使用できるようになっている。</p>
+<p>React の react-router を拡張したフレームワークである。</p>
+<p>Remix の 90%は react-router とのこと。</p>
+<p>ラッパーを減らし、ブラウザがデフォルトで提供する関数やオブジェクト、HTML 要素をそのまま使用できるようになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">action</span><span class="p">({</span><span class="nx">request</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// formData関数はブラウザからデフォルトで提供されている</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">formData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">.</span><span class="nx">formData</span><span class="p">();</span>
@@ -35436,7 +35436,7 @@
 <h2 id="02-remix">02. Remixの仕組み<a class="headerlink" href="#02-remix" title="Permanent link">&para;</a></h2>
 <h3 id="_2">処理の流れ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 概要<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>SSRのアプリケーションで以下の順に処理を実行し、データの取得からレンダリング（サーバーレンダリング／クライアントレンダリング）までを実施する。</p>
+<p>SSR のアプリケーションで以下の順に処理を実行し、データの取得からレンダリング（サーバーレンダリング／クライアントレンダリング）までを実施する。</p>
 <p>ローダーの段階である程度加工された状態でバックエンドからデータを習得できれば、フロントエンドの処理時にかかる負荷をバックエンド側に寄せられる。</p>
 <table>
 <thead>
@@ -35514,8 +35514,8 @@
 </ul>
 </blockquote>
 <h4 id="ssr">▼ SSRの場合の詳細な流れ<a class="headerlink" href="#ssr" title="Permanent link">&para;</a></h4>
-<p>以下は、SSR時にログイン後のトップページの表示に関わる処理である。</p>
-<p>SSRのため、サーバーレンダリングとしている。</p>
+<p>以下は、SSR 時にログイン後のトップページの表示に関わる処理である。</p>
+<p>SSR のため、サーバーレンダリングとしている。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">リクエスト受信：./app/entry.server.tsx</span>
 <span class="l l-Scalar l-Scalar-Plain">- クライアントがブラウザまたはBotかを判定</span>
 <span class="l l-Scalar l-Scalar-Plain">- UIレンダリングパターン選択</span>
@@ -35545,9 +35545,9 @@
 <h3 id="_4">ローダー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ローダーとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>ローダーは、<code>loader()</code> 関数として定義できる。</p>
-<p>レンダリング前にAPIからデータを取得し、またブラウザ操作に応じてアクションからデータを取得する。</p>
+<p>レンダリング前に API からデータを取得し、またブラウザ操作に応じてアクションからデータを取得する。</p>
 <p>各エンドポイントごとに定義できる。</p>
-<p>DBにクエリを送信し、データを取得できる。</p>
+<p>DB にクエリを送信し、データを取得できる。</p>
 <p>認証処理がある場合、ローダーの前に実行する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
@@ -35628,8 +35628,8 @@
 <p><br></p>
 <h3 id="remix_1">remixコンポーネント<a class="headerlink" href="#remix_1" title="Permanent link">&para;</a></h3>
 <h4 id="remix_2">▼ remixコンポーネントとは<a class="headerlink" href="#remix_2" title="Permanent link">&para;</a></h4>
-<p>Reactを使用して実装されたRemix専用のビルトインコンポーネントである。</p>
-<p>remixコンポーネントは、レンダリング処理を実行する。</p>
+<p>React を使用して実装された Remix 専用のビルトインコンポーネントである。</p>
+<p>remix コンポーネントは、レンダリング処理を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="c1">// 内部的にはreactコンポーネントである。</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
@@ -35671,19 +35671,19 @@
 </ul>
 </blockquote>
 <h4 id="_7">▼ 命名<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>機能内にあるURLを表すようなコンポーネント名にする。</p>
-<p>例えば、Fooという機能があり、その機能内にレポート表示URLがあれば、FooReportというコンポーネント名にする。</p>
+<p>機能内にある URL を表すようなコンポーネント名にする。</p>
+<p>例えば、Foo という機能があり、その機能内にレポート表示 URL があれば、FooReport というコンポーネント名にする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// レポートのURLで使用する</span>
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">FooReport</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 何らかの実装</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_8">▼ ロギング<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>remixコンポーネント内で <code>console.log()</code> 関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。</p>
+<p>remix コンポーネント内で <code>console.log()</code> 関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。</p>
 <h4 id="remix_3">▼ アクションではなくremixコンポーネントに実装するべき処理<a class="headerlink" href="#remix_3" title="Permanent link">&para;</a></h4>
-<p>バックエンドのデータを変更する必要がないような外部API通信処理は、アクションではなくremixコンポーネントに実装するべきである。</p>
+<p>バックエンドのデータを変更する必要がないような外部 API 通信処理は、アクションではなく remix コンポーネントに実装するべきである。</p>
 <h4 id="props">▼ props<a class="headerlink" href="#props" title="Permanent link">&para;</a></h4>
-<p>親コンポーネントから子コンポーネントにわたす値を特別にpropsという。</p>
+<p>親コンポーネントから子コンポーネントにわたす値を特別に props という。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
@@ -35730,9 +35730,9 @@
 <p><br></p>
 <h3 id="_9">アクション<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ アクションとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストのコンテキストを受信し、DBのデータを変更する。</p>
-<p>また、レスポンスのデータをremixコンポーネントに渡す。</p>
-<p>componentを同じファイルへ実装する以外に、<code>.server</code> ディレクトリへ切り分ける方法もある。</p>
+<p>レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストのコンテキストを受信し、DB のデータを変更する。</p>
+<p>また、レスポンスのデータを remix コンポーネントに渡す。</p>
+<p>component を同じファイルへ実装する以外に、<code>.server</code> ディレクトリへ切り分ける方法もある。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">type</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">ActionFunctionArgs</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">redirect</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Form</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
@@ -35804,8 +35804,8 @@
 <p><br></p>
 <h2 id="03">03. アーキテクチャ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="remixmvc">Remix独自のMVCアーキテクチャ<a class="headerlink" href="#remixmvc" title="Permanent link">&para;</a></h3>
-<p>Remixは独自のMVCアーキテクチャを採用している。</p>
-<p>各routeファイルが独立した小さなMVCになっている。</p>
+<p>Remix は独自の MVC アーキテクチャを採用している。</p>
+<p>各 route ファイルが独立した小さな MVC になっている。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">View</span>
 <span class="l l-Scalar l-Scalar-Plain"># routesのcomponentの処理などが相当</span>
 <span class="l l-Scalar l-Scalar-Plain">↓</span>
@@ -35845,8 +35845,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="04-ui">04. UIレンダリングパターン<a class="headerlink" href="#04-ui" title="Permanent link">&para;</a></h2>
-<p>Remixでは、SSRモード、CSRモード、SSGモードがある。</p>
-<p>CSRモードとSSGモードは厳密な区分ではなく、Remix独自の擬似的なモードである。</p>
+<p>Remix では、SSR モード、CSR モード、SSG モードがある。</p>
+<p>CSR モードと SSG モードは厳密な区分ではなく、Remix 独自の擬似的なモードである。</p>
 <p>それぞれのモードで、<code>entry.server.tsx</code> ファイルと <code>entry.client.tsx</code> ファイルが関与する。</p>
 <table>
 <thead>
@@ -35878,9 +35878,9 @@
 <h2 id="05">05. ディレクトリ構成<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_14">構成<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p><code>app</code> ディレクトリ配下はユーザーで構成する必要があり、例えば以下のようにする。</p>
-<p>レイヤードアーキテクチャに沿った依存方向やディレクトリ構成でアプリケーションを設計したいが、本アプリケーションが採用しているRemixにはフレームワークとしての設計ルールがあり、これも尊重する必要がある。</p>
-<p>レイヤードアーキテクチャに沿った依存方向で設計できるが、Remixは3つの要素（ローダー、アクション、コンポーネント）を使用した設計方法を強制する点で、ディレクトリ構成は完全にはレイヤードアーキテクチャに沿うことはできない。</p>
-<p>そこで、Remixを尊重しつつ、ディレクトリ構成をレイヤードアーキテクチャに可能な限り近づけることとする。</p>
+<p>レイヤードアーキテクチャに沿った依存方向やディレクトリ構成でアプリケーションを設計したいが、本アプリケーションが採用している Remix にはフレームワークとしての設計ルールがあり、これも尊重する必要がある。</p>
+<p>レイヤードアーキテクチャに沿った依存方向で設計できるが、Remix は 3 つの要素（ローダー、アクション、コンポーネント）を使用した設計方法を強制する点で、ディレクトリ構成は完全にはレイヤードアーキテクチャに沿うことはできない。</p>
+<p>そこで、Remix を尊重しつつ、ディレクトリ構成をレイヤードアーキテクチャに可能な限り近づけることとする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">├── app</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── authenticators</span><span class="w">     </span><span class="c1"># 認証処理ロジック</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── components</span><span class="w">         </span><span class="c1"># 汎用的なUIレンダリング、CSSスタイリングのロジック、UI入力値バリデーション</span>
@@ -35906,8 +35906,8 @@
 <span class="l l-Scalar l-Scalar-Plain">└── vitest</span><span class="w">  </span><span class="c1"># ユニットテストコード</span>
 </code></pre></div>
 <h4 id="routes">▼ <code>routes</code> ディレクトリについて<a class="headerlink" href="#routes" title="Permanent link">&para;</a></h4>
-<p><code>routes</code> ディレクトリには、APIルーティングまたはページング処理、状態管理、UIレンダリング、CSSスタイリング、API入力値バリデーションに関するロジックを置く。</p>
-<p><code>routes</code> ディレクトリのアーキテクチャはRemixの仕組み（ローダー、アクション、コンポーネント）の影響を特に受ける。</p>
+<p><code>routes</code> ディレクトリには、API ルーティングまたはページング処理、状態管理、UI レンダリング、CSS スタイリング、API 入力値バリデーションに関するロジックを置く。</p>
+<p><code>routes</code> ディレクトリのアーキテクチャは Remix の仕組み（ローダー、アクション、コンポーネント）の影響を特に受ける。</p>
 <p>フロントエンドまたはバックエンドのプレゼンテーション層のロジックがローダー、アクション、コンポーネントに配置される。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 例：app/routes/foo.tsx</span>
 
@@ -35938,13 +35938,13 @@
 <h4 id="usecases">▼ <code>usecases</code> ディレクトリについて<a class="headerlink" href="#usecases" title="Permanent link">&para;</a></h4>
 <p><code>usecases</code> ディレクトリには、<code>routes</code> ディレクトリの下書き・閲覧・作成・更新・削除系ユースケースの種類に応じて呼び出すためのユースケース処理を置く。</p>
 <ul>
-<li>下書き系：<code>getDraftXxx</code> (UI特有のユースケースで、APIでは不要)</li>
+<li>下書き系：<code>getDraftXxx</code> (UI 特有のユースケースで、API では不要)</li>
 <li>閲覧系：<code>getXxx</code>、<code>listXxx</code>、<code>searchXxx</code> など</li>
 <li>作成系：<code>registerXxx</code></li>
 <li>更新系：<code>changeXxx</code></li>
 <li>削除系：<code>deleteXxx</code></li>
 </ul>
-<p><code>routes</code> ディレクトリには、APIルーティングのためのapiルートとページング処理のためのuiルートがある。</p>
+<p><code>routes</code> ディレクトリには、API ルーティングのための api ルートとページング処理のための ui ルートがある。</p>
 <p>それぞれのルートに対応したユースケース処理のファイル（<code>uiXxxUsecase</code>、<code>apiXxxUsecase</code>）を作成すること、</p>
 <p><br></p>
 <h3 id="roottsx">root.tsx<a class="headerlink" href="#roottsx" title="Permanent link">&para;</a></h3>
@@ -35957,7 +35957,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="entryclienttsx">entry.client.tsx<a class="headerlink" href="#entryclienttsx" title="Permanent link">&para;</a></h3>
-<p>全てのモードで使用する (CSRモードだけではない) 。</p>
+<p>すべてのモードで使用する (CSR モードだけではない) 。</p>
 <p>マークアップファイルのハイドレーション処理のエントリーポイントである。</p>
 <blockquote>
 <ul>
@@ -35967,11 +35967,11 @@
 <p><br></p>
 <h3 id="entryservertsx">entry.server.tsx<a class="headerlink" href="#entryservertsx" title="Permanent link">&para;</a></h3>
 <h4 id="entryservertsx_1">▼ entry.server.tsxとは<a class="headerlink" href="#entryservertsx_1" title="Permanent link">&para;</a></h4>
-<p>全てのモードで使用する (SSRモードやSSGモードだけではない) 。</p>
+<p>すべてのモードで使用する (SSR モードや SSG モードだけではない) 。</p>
 <p>レスポンス作成処理のエントリーポイントである。</p>
 <p><code>RemixServer</code> で設定を変更できる。</p>
 <h4 id="default">▼ <code>default</code> エクスポート<a class="headerlink" href="#default" title="Permanent link">&para;</a></h4>
-<p><code>entry.server</code> ファイルの <code>default</code> エクスポート関数は、RemixのSSRモードのエントリーポイントになる。</p>
+<p><code>entry.server</code> ファイルの <code>default</code> エクスポート関数は、Remix の SSR モードのエントリーポイントになる。</p>
 <p><code>handleRequest</code> という名前であることが多いが、どんな名前でもよい。</p>
 <p><code>default</code> エクスポート関数は複数定義できない。</p>
 <blockquote>
@@ -35980,7 +35980,7 @@
 </ul>
 </blockquote>
 <h4 id="handledatarequest">▼ handleDataRequest<a class="headerlink" href="#handledatarequest" title="Permanent link">&para;</a></h4>
-<p>Remixの内部で実行され、JSONデータを作成し、Remixのフロントエンド処理に渡す。</p>
+<p>Remix の内部で実行され、JSON データを作成し、Remix のフロントエンド処理に渡す。</p>
 <p><code>useLoaderData()</code> 関数や <code>useFetcher().data</code> 関数で取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleDataRequest</span><span class="p">(</span><span class="nx">response</span><span class="o">:</span><span class="w"> </span><span class="nx">Response</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">request</span><span class="p">,</span><span class="w"> </span><span class="nx">params</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="nx">LoaderFunctionArgs</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">ActionFunctionArgs</span>
 <span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -36023,7 +36023,7 @@
 <p><br></p>
 <h2 id="06">06. セットアップ<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="react-router-v6">React Router v6<a class="headerlink" href="#react-router-v6" title="Permanent link">&para;</a></h3>
-<p>Remix v2を <code>@remix-run/node</code> パッケージからインポートする。</p>
+<p>Remix v2 を <code>@remix-run/node</code> パッケージからインポートする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">redirect</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -36034,7 +36034,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="react-router-v7">React Router v7以降<a class="headerlink" href="#react-router-v7" title="Permanent link">&para;</a></h3>
-<p>Remix自体がReact Routerに統合されたため、<code>react-router</code> パッケージをインポートする。</p>
+<p>Remix 自体が React Router に統合されたため、<code>react-router</code> パッケージをインポートする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">redirect</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react-router&quot;</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -36047,10 +36047,10 @@
 <p><br></p>
 <h2 id="07">07. ルーティング<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="uiapi">uiルートとapiルート<a class="headerlink" href="#uiapi" title="Permanent link">&para;</a></h3>
-<p>Remixでは、ブラウザルーティングとAPIエンドポイントを区別せず、両方を兼ねている。</p>
+<p>Remix では、ブラウザルーティングと API エンドポイントを区別せず、両方を兼ねている。</p>
 <p>ただし、ファイル名によって区別できる。</p>
 <p><code>app/routes/api.&lt;任意のパス&gt;</code> ファイルまたは <code>app/routes/api/&lt;任意のパス&gt;</code> ファイルを作成する。</p>
-<p>このファイルの処理は、APIとして処理される。</p>
+<p>このファイルの処理は、API として処理される。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/acompany/articles/123c29f46d213c#%E7%B5%B1%E4%B8%80%E7%9A%84%E3%81%AAapi%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%AE%E3%81%AB%E8%8B%A6%E5%8A%B4%E3%81%99%E3%82%8B%E3%80%82">https://zenn.dev/acompany/articles/123c29f46d213c#%E7%B5%B1%E4%B8%80%E7%9A%84%E3%81%AAapi%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%AE%E3%81%AB%E8%8B%A6%E5%8A%B4%E3%81%99%E3%82%8B%E3%80%82</a></li>
@@ -36101,8 +36101,8 @@
 </ul>
 </blockquote>
 <h4 id="tsx_1">▼ <code>&lt;ルート以降のパス&gt;.&lt;変数&gt;.tsx</code> (動的セグメント)<a class="headerlink" href="#tsx_1" title="Permanent link">&para;</a></h4>
-<p>動的にURLを決定する。</p>
-<p>URLに規則性があるようなページに適する。</p>
+<p>動的に URL を決定する。</p>
+<p>URL に規則性があるようなページに適する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                        </span><span class="c1"># URLパス</span>
 <span class="l l-Scalar l-Scalar-Plain">├── routes/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── _index.tsx</span><span class="w">          </span><span class="c1"># /</span>
@@ -36126,7 +36126,7 @@
 <span class="w">  </span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>以下のURLでページをレンダリングできる。</p>
+<p>以下の URL でページをレンダリングできる。</p>
 <ul>
 <li>/posts/1</li>
 <li>/posts/2</li>
@@ -36166,7 +36166,7 @@
 <p>親のファイル名にプレフィクスとして <code>_</code> (パスレスルート) をつける。</p>
 <p><strong>＊実装例＊</strong></p>
 <p><code>_auth.&lt;任意の名前&gt;.tsx</code> ファイルは、親の <code>_auth.tsx</code> ファイルのレイアウトを引き継いでいる。</p>
-<p>しかし、全てのファイルのURLに <code>auth</code> が含まれない。</p>
+<p>しかし、すべてのファイルの URL に <code>auth</code> が含まれない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                               </span><span class="c1"># URLパス</span>
 <span class="l l-Scalar l-Scalar-Plain">├── routes</span><span class="w">                         </span><span class="c1">#</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── _auth.tsx</span><span class="w">                  </span><span class="c1">#</span>
@@ -36201,7 +36201,7 @@
 <h4 id="_18">▼ 基本ルール<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>ディレクトリ名がパスとして認識される。</p>
 <h4 id="_19">▼ サブディレクトリ<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>Remix v1ではサブディレクトリにわけることができる。</p>
+<p>Remix v1 ではサブディレクトリにわけることができる。</p>
 <p>以下によると、Remix v2 はデフォルトでは routes にサブディレクトリを作れない。</p>
 <ul>
 <li><a href="https://github.com/remix-run/remix/discussions/8473#discussioncomment-8084973">https://github.com/remix-run/remix/discussions/8473#discussioncomment-8084973</a></li>
@@ -36230,11 +36230,11 @@
 <span class="l l-Scalar l-Scalar-Plain">├── _layout.tsx</span>
 <span class="l l-Scalar l-Scalar-Plain">└── index.tsx</span>
 </code></pre></div>
-<p>Remixの仕様ではディレクトリ構造やファイル名がエンドポイントに影響してしまう。</p>
+<p>Remix の仕様ではディレクトリ構造やファイル名がエンドポイントに影響してしまう。</p>
 <p>エンドポイントを崩さず <code>routes</code> にサブディレクトリを作る場合、ファイル名を部分的に変える必要があり、エンドポイントが一目ではわかりにくくなる。</p>
 <p>現在の状態であれば、ファイルは多くて辛いが、エンドポイントがファイル名から一目でわかる。</p>
 <p>よって、ひとまず現在のままとする。</p>
-<p>(Remixは規模が大きくなると、routes に辛さが出そう...)</p>
+<p>(Remix は規模が大きくなると、routes に辛さが出そう...)</p>
 <blockquote>
 <p>Remixはとても小さなサイトや個人のブログだけを想定しているのですか？Remixは全般的に好きだけど、フラットルートを使うようになったことで、正直Remixが使いづらくなった。</p>
 <p><a href="https://github.com/remix-run/remix/discussions/8473#discussioncomment-9174522">https://github.com/remix-run/remix/discussions/8473#discussioncomment-9174522</a></p>
@@ -36246,7 +36246,7 @@
 <p><br></p>
 <h3 id="_21">ストリーミング方式<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ レスポンスストリーミング<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>バックエンドからデータの取得に時間がかかる場合、deferによるレスポンスストリーミングを使用する。</p>
+<p>バックエンドからデータの取得に時間がかかる場合、defer によるレスポンスストリーミングを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">defer</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/node&quot;</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -36272,7 +36272,7 @@
 <p><br></p>
 <h2 id="09-remix">09. remixコンポーネントの種類<a class="headerlink" href="#09-remix" title="Permanent link">&para;</a></h2>
 <h3 id="_23">ユーザー定義<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<p>Remixがコンポーネントであることを認識するために、名前の先頭を大文字する。</p>
+<p>Remix がコンポーネントであることを認識するために、名前の先頭を大文字する。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/make-user-defined-component-name-capitalized-in-react/">https://dev.classmethod.jp/articles/make-user-defined-component-name-capitalized-in-react/</a></li>
@@ -36281,7 +36281,7 @@
 <p><br></p>
 <h3 id="remix-form">Remix Formコンポーネント<a class="headerlink" href="#remix-form" title="Permanent link">&para;</a></h3>
 <p><code>form</code> タグをレンダリングする。</p>
-<p><code>action</code> 値を省略した場合、フォームの入力データは他に送信されず、そのremixコンポーネント内のみで処理される。</p>
+<p><code>action</code> 値を省略した場合、フォームの入力データは他に送信されず、その remix コンポーネント内のみで処理される。</p>
 <p><code>action</code> 値を <code>/foos?index</code> パスとした場合、<code>routes/foos/index.jsx</code> ファイルにデータを送信する。</p>
 <p>一方で、<code>action</code> 値を <code>/foos</code> パスとした場合、<code>routes/foos.jsx</code> ファイルにデータを送信する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -36306,9 +36306,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="remix-link">Remix Linkコンポーネント<a class="headerlink" href="#remix-link" title="Permanent link">&para;</a></h3>
-<p>URLを書き換える。</p>
+<p>URL を書き換える。</p>
 <p>ページネーション処理に使える。</p>
-<p>LinkコンポーネントがURLクエリストリングのページ値を書き換えると、Remixのローダーがそれを検知し、新しいURLクエリストリングで再リクエストを送信することで別のページが表示される。</p>
+<p>Link コンポーネントが URL クエリストリングのページ値を書き換えると、Remix のローダーがそれを検知し、新しい URL クエリストリングで再リクエストを送信することで別のページが表示される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Link</span><span class="p">,</span><span class="w"> </span><span class="nx">useSearchParams</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
@@ -36354,7 +36354,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="remix-meta">Remix Metaコンポーネント<a class="headerlink" href="#remix-meta" title="Permanent link">&para;</a></h3>
-<p>Webページの <code>meta</code> タグ (Webサイト名、説明など) をレンダリングする。</p>
+<p>Web ページの <code>meta</code> タグ (Web サイト名、説明など) をレンダリングする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Meta</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@remix-run/react&quot;</span><span class="p">;</span>
 
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Root</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -36396,18 +36396,18 @@
 <p><br></p>
 <h2 id="10-hook">10. hook<a class="headerlink" href="#10-hook" title="Permanent link">&para;</a></h2>
 <h3 id="hook">hookをコールしてはいけない場所<a class="headerlink" href="#hook" title="Permanent link">&para;</a></h3>
-<p>Remixはhookを同じ順番、同じ回数でコールする必要がある。</p>
+<p>Remix は hook を同じ順番、同じ回数でコールする必要がある。</p>
 <ul>
-<li><code>onClick</code>などをイベントハンドラ</li>
-<li><code>if</code>などの条件分</li>
-<li><code>for</code>や<code>map</code>などの走査</li>
-<li>コンポーネントのprops</li>
+<li><code>onClick</code> などをイベントハンドラ</li>
+<li><code>if</code> などの条件分</li>
+<li><code>for</code> や <code>map</code> などの走査</li>
+<li>コンポーネントの props</li>
 </ul>
 <p><br></p>
 <h3 id="revalidator">revalidator<a class="headerlink" href="#revalidator" title="Permanent link">&para;</a></h3>
-<p>指定した間隔でloaderを再実行する。</p>
+<p>指定した間隔で loader を再実行する。</p>
 <p>リアルタイム更新で役立つ。</p>
-<p>loaderを再実行するからといって、ページをリロードしているわけではない。</p>
+<p>loader を再実行するからといって、ページをリロードしているわけではない。</p>
 <blockquote>
 <ul>
 <li><a href="https://reactrouter.com/api/hooks/useRevalidator">https://reactrouter.com/api/hooks/useRevalidator</a></li>
@@ -36416,9 +36416,9 @@
 <p><br></p>
 <h2 id="11-cookie">11. Cookieを使用した認証<a class="headerlink" href="#11-cookie" title="Permanent link">&para;</a></h2>
 <h3 id="localstoragesessionstoragecookie">LocalStorageやSessionStorageではなくCookie<a class="headerlink" href="#localstoragesessionstoragecookie" title="Permanent link">&para;</a></h3>
-<p>RemixはSSRアプリケーションを作成する。</p>
-<p>SSRでは、Web Storage APIと通信できず、ブラウザのLocalStorageやSessionStorageを操作できない。</p>
-<p>代わりに、ブラウザのCookie、サーバーのメモリ、サーバー上のファイルなどに資格情報を保存することになる。</p>
+<p>Remix は SSR アプリケーションを作成する。</p>
+<p>SSR では、Web Storage API と通信できず、ブラウザの LocalStorage や SessionStorage を操作できない。</p>
+<p>代わりに、ブラウザの Cookie、サーバーのメモリ、サーバー上のファイルなどに資格情報を保存することになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720">https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720</a></li>
@@ -36427,7 +36427,7 @@
 <p><br></p>
 <h3 id="cookie">Cookieの作成と保存<a class="headerlink" href="#cookie" title="Permanent link">&para;</a></h3>
 <h4 id="cookie_1">▼ ブラウザのCookieに保存する場合<a class="headerlink" href="#cookie_1" title="Permanent link">&para;</a></h4>
-<p>ブラウザのCookieに資格情報を保存する。</p>
+<p>ブラウザの Cookie に資格情報を保存する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">cookieSessionStorage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createCookieSessionStorage</span><span class="p">({</span>
 <span class="w">  </span><span class="nx">cookie</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;__session&quot;</span><span class="p">,</span>
@@ -36469,7 +36469,7 @@
 <p><br></p>
 <h2 id="11">11. モデル<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
 <h3 id="prisma">prismaによるスキーマ<a class="headerlink" href="#prisma" title="Permanent link">&para;</a></h3>
-<p>Prisma ORMを使用して、データベースのスキーマを定義する。</p>
+<p>Prisma ORM を使用して、データベースのスキーマを定義する。</p>
 <div class="highlight"><pre><span></span><code>model User {
   id        String   @id @default(cuid())
   name      String
@@ -36504,7 +36504,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="read">▼ READ<a class="headerlink" href="#read" title="Permanent link">&para;</a></h4>
-<p>DBレコードからドメインモデルを取得する。</p>
+<p>DB レコードからドメインモデルを取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">prisma</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;~/services/prisma.server&quot;</span><span class="p">;</span>
 
@@ -36705,7 +36705,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年6月22日 21:13:46 JST">2026-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -36716,11 +36716,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

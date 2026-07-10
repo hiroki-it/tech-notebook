@@ -34324,9 +34324,9 @@
 <p><br></p>
 <h2 id="01-oidcopenid-connect-id">01. OIDC：OpenID Connect (外部ID連携)<a class="headerlink" href="#01-oidcopenid-connect-id" title="Permanent link">&para;</a></h2>
 <h3 id="oidc">OIDCとは<a class="headerlink" href="#oidc" title="Permanent link">&para;</a></h3>
-<p>SSOの一種である。</p>
-<p>OAuthをベースとして、認証フェーズを追加し、認証/認可を実装する。</p>
-<p>そのため、OAuthの一種ともいえる。</p>
+<p>SSO の一種である。</p>
+<p>OAuth をベースとして、認証フェーズを追加し、認証/認可を実装する。</p>
+<p>そのため、OAuth の一種ともいえる。</p>
 <blockquote>
 <ul>
 <li><a href="https://baasinfo.net/?p=4418">https://baasinfo.net/?p=4418</a></li>
@@ -34336,7 +34336,7 @@
 <p><br></p>
 <h2 id="02-oidc">02. OIDCの仕組み<a class="headerlink" href="#02-oidc" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>認証フェーズの委譲先のIDプロバイダー、ログインしたいWebサイト、から構成される。</p>
+<p>認証フェーズの委譲先の ID プロバイダー、ログインしたい Web サイト、から構成される。</p>
 <blockquote>
 <ul>
 <li><a href="https://baasinfo.net/?p=4418">https://baasinfo.net/?p=4418</a></li>
@@ -34346,7 +34346,7 @@
 <p><br></p>
 <h3 id="_3">クレーム<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>クレームは資格情報の要素である。</p>
-<p>委譲元のクライアントは、IDプロバイダーから取得したクレームを資格情報として扱い、認可処理を実行する。</p>
+<p>委譲元のクライアントは、ID プロバイダーから取得したクレームを資格情報として扱い、認可処理を実行する。</p>
 <table>
 <thead>
 <tr>
@@ -34393,8 +34393,8 @@
 <p><br></p>
 <h3 id="_4">認可リクエスト時のクレームの取得<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="scope">▼ <code>scope</code> パラメーター<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h4>
-<p>認可リクエスト時に、<code>scope</code> パラメーターでクレームグループを指定し、IDプロバイダーからクレームを取得できる。</p>
-<p>IDプロバイダーは、取得したクレームグループに対応したクレームをIDトークンに設定し、クライアントに返信する。</p>
+<p>認可リクエスト時に、<code>scope</code> パラメーターでクレームグループを指定し、ID プロバイダーからクレームを取得できる。</p>
+<p>ID プロバイダーは、取得したクレームグループに対応したクレームを ID トークンに設定し、クライアントに返信する。</p>
 <p>委譲元のクライアントは、取得したクレームを資格情報として扱い、認可処理を実行する。</p>
 <table>
 <thead>
@@ -34448,7 +34448,7 @@
 <p><br></p>
 <h2 id="03">03. トークンの検証<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="id">IDトークンの検証<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
-<p>IDトークンの情報 (署名部分、有効期限、発行元など) から、IDトークンの署名を検証できる。</p>
+<p>ID トークンの情報 (署名部分、有効期限、発行元など) から、ID トークンの署名を検証できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE">https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE</a></li>
@@ -34472,17 +34472,17 @@
 </blockquote>
 <p><br></p>
 <h2 id="04-oidc">04. OIDCの種類<a class="headerlink" href="#04-oidc" title="Permanent link">&para;</a></h2>
-<p>ベースになっているOAuthと同様にして、OIDCには仕組み別に『認可コードフロー』『暗黙的フロー』『リソースオーナー・パスワード・資格情報ズフロー (ダイレクト・アクセス・グラント) 』などがある。</p>
+<p>ベースになっている OAuth と同様にして、OIDC には仕組み別に『認可コードフロー』『暗黙的フロー』『リソースオーナー・パスワード・資格情報ズフロー (ダイレクト・アクセス・グラント) 』などがある。</p>
 <p><br></p>
 <h2 id="05-oauth">05. OAuthとの違い<a class="headerlink" href="#05-oauth" title="Permanent link">&para;</a></h2>
 <h3 id="_6">目的<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>OIDCは認証の仕組みである。</p>
-<p>一方で、OAuthは認可の仕組みである。
+<p>OIDC は認証の仕組みである。</p>
+<p>一方で、OAuth は認可の仕組みである。
 <br></p>
 <h3 id="_7">トークンの違い<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>OIDCはOAuthの拡張であるため、仕組みは非常に似ている。</p>
-<p>OIDCでは、OAuthとは異なり、アクセストークン (JWT仕様かどうかはツール次第) だけでなくIDトークン (必ずJWT仕様) の使用する。</p>
-<p>また、OAuthの脆弱性に対処できる。</p>
+<p>OIDC は OAuth の拡張であるため、仕組みは非常に似ている。</p>
+<p>OIDC では、OAuth とは異なり、アクセストークン (JWT 仕様かどうかはツール次第) だけでなく ID トークン (必ず JWT 仕様) の使用する。</p>
+<p>また、OAuth の脆弱性に対処できる。</p>
 <p><img alt="oidc_vs_oauth" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png" /></p>
 <blockquote>
 <ul>
@@ -34495,8 +34495,8 @@
 <p><br></p>
 <h2 id="06">06. 認可コードフロー<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_8">仕組み<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>OAuthの認可コードフローと仕組みが似ており、アクセストークンだけでなくIDトークンも使用する。</p>
-<p>短命な認可コードを送信すると、IDプロバイダーからリフレッシュトークンを含むアクセストークンとIDトークンを取得できる。</p>
+<p>OAuth の認可コードフローと仕組みが似ており、アクセストークンだけでなく ID トークンも使用する。</p>
+<p>短命な認可コードを送信すると、ID プロバイダーからリフレッシュトークンを含むアクセストークンと ID トークンを取得できる。</p>
 <p><img alt="oidc_codeflow" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_codeflow.jpeg" /></p>
 <blockquote>
 <ul>
@@ -34508,7 +34508,7 @@
 <p><br></p>
 <h3 id="keycloak">Keycloakの場合<a class="headerlink" href="#keycloak" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 認可リクエスト送信<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>アプリからKeycloak宛に認可リクエストを送信する。</p>
+<p>アプリから Keycloak 宛に認可リクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://&lt;Keycloakのドメイン&gt;/realms/oidc-sample/protocol/openid-connect/auth?response_type<span class="o">=</span>code<span class="p">&amp;</span><span class="nv">client_id</span><span class="o">=</span>rp1<span class="p">&amp;</span><span class="nv">redirect_uri</span><span class="o">=</span>http://&lt;アプリケーションのドメイン&gt;/oidc<span class="p">&amp;</span><span class="nv">scope</span><span class="o">=</span>openid
 </code></pre></div>
 <blockquote>
@@ -34517,7 +34517,7 @@
 </ul>
 </blockquote>
 <h4 id="_10">▼ 認可レスポンス受信<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>Keycloakは認可レスポンスを受信し、アプリに対してリダイレクトを送信する。</p>
+<p>Keycloak は認可レスポンスを受信し、アプリに対してリダイレクトを送信する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://&lt;アプリケーションのドメイン&gt;/oidc?session_state<span class="o">=</span><span class="w"> </span>...<span class="w"> </span><span class="p">&amp;</span><span class="nv">code</span><span class="o">=</span>&lt;認証コード&gt;
 </code></pre></div>
 <blockquote>
@@ -34526,8 +34526,8 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ トークンリクエスト送信<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>認可コードを使用して、Keycloakにトークンリクエストを送信する。</p>
-<p>IDトークンとアクセストークンを取得できる。</p>
+<p>認可コードを使用して、Keycloak にトークンリクエストを送信する。</p>
+<p>ID トークンとアクセストークンを取得できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;grant_type=authorization_code&amp;code=&lt;認証コード&gt;&amp;redirect_uri=http://&lt;アプリケーションのドメイン&gt;/oidc&amp;client_id=rp1&amp;client_secret=&lt;Client secret&gt;&quot;</span><span class="w"> </span>http://&lt;Keycloakのドメイン&gt;/realms/oidc-sample/protocol/openid-connect/token
 
 <span class="o">{</span>
@@ -34583,8 +34583,8 @@
 <p><br></p>
 <h2 id="07-slo">07. SLO：シングルログアウト<a class="headerlink" href="#07-slo" title="Permanent link">&para;</a></h2>
 <h3 id="_15">シングルログアウトとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
-<p>SSOをログアウトする仕組みのこと。</p>
-<p>複数の方式を組み合わせてSSOをログアウトする。</p>
+<p>SSO をログアウトする仕組みのこと。</p>
+<p>複数の方式を組み合わせて SSO をログアウトする。</p>
 <p><br></p>
 <h3 id="rp-initiated">RP-Initiated<a class="headerlink" href="#rp-initiated" title="Permanent link">&para;</a></h3>
 <h4 id="_16">▼ シングル<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
@@ -34604,7 +34604,7 @@
 </ul>
 </blockquote>
 <h4 id="_20">▼ グローバル<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>フロントエンドのブラウザが、IDプロバイダーのログアウトエンドポイント (<code>&lt;IDプロバイダーのドメイン&gt;/&lt;IDプロバイダーによる&gt;</code>) にPOSTリクエストを送信し、全てのアプリケーションからログアウトする。</p>
+<p>フロントエンドのブラウザが、ID プロバイダーのログアウトエンドポイント (<code>&lt;IDプロバイダーのドメイン&gt;/&lt;IDプロバイダーによる&gt;</code>) に POST リクエストを送信し、すべてのアプリケーションからログアウトする。</p>
 <blockquote>
 <ul>
 <li><a href="https://auth0.com/blog/jp-the-not-so-easy-art-of-logging-out/#--------">https://auth0.com/blog/jp-the-not-so-easy-art-of-logging-out/#--------</a></li>
@@ -34620,7 +34620,7 @@
 </ul>
 </blockquote>
 <h4 id="_23">▼ グローバル<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>IDプロバイダーが、バックエンドのいずれかのアプリケーションのログアウトエンドポイント (<code>&lt;アプリケーションのドメイン&gt;/&lt;IDプロバイダーのクライアントパッケージによる&gt;</code>) にPOSTリクエストを送信し、そのアプリケーションでログアウト処理を実行する。</p>
+<p>ID プロバイダーが、バックエンドのいずれかのアプリケーションのログアウトエンドポイント (<code>&lt;アプリケーションのドメイン&gt;/&lt;IDプロバイダーのクライアントパッケージによる&gt;</code>) に POST リクエストを送信し、そのアプリケーションでログアウト処理を実行する。</p>
 <p>セッションデータが失効し、バックエンドのアプリケーションが起点となってログアウト処理を始める場合、それはバックチャネルである。</p>
 <p>また、フロントエンドのブラウザがバックエンドのアプリケーションにログアウトリクエストを送信し、これが起点となる場合もバックチャネルである。</p>
 <blockquote>
@@ -34650,7 +34650,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月11日 13:47:00 JST">2026-03-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34661,11 +34661,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

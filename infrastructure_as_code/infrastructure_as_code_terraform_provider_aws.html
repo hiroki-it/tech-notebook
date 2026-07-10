@@ -36471,8 +36471,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="aws">AWSプロバイダーとは<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h2>
-<p>TerraformがAWSリソースのAPIと通信可能にする。</p>
-<p>これにより、Terraformを使用してAWSリソースを作成できるようになる。</p>
+<p>Terraform が AWS リソースの API と通信可能にする。</p>
+<p>これにより、Terraform を使用して AWS リソースを作成できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">https://registry.terraform.io/providers/hashicorp/aws/latest/docs</a></li>
@@ -36483,7 +36483,7 @@
 <h3 id="resource">resource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ サーバー証明書のリクエスト<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>Eメール検証の場合を示す。</p>
+<p>E メール検証の場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For www domain</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36504,7 +36504,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>DNS検証の場合を示す。</p>
+<p>DNS 検証の場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For www domain</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36526,7 +36526,7 @@
 </code></pre></div>
 <h4 id="_3">▼ 検証の実行<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>Eメール検証の場合を示す。</p>
+<p>E メール検証の場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For www domain</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36536,7 +36536,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>DNS検証の場合を示す。</p>
+<p>DNS 検証の場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For www domain</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36547,14 +36547,14 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="1aws"><code>(1)</code>AWS以外でドメインを購入した場合は注意<a class="headerlink" href="#1aws" title="Permanent link">&para;</a></h4>
-<p>AWS以外でドメインを購入した場合はAWS以外で作業になる。</p>
-<p>サーバー証明書のDNS検証時に、ドメインを購入したサービスが管理するドメインレジストラに、Route53のNSレコード値を登録する。</p>
+<p>AWS 以外でドメインを購入した場合は AWS 以外で作業になる。</p>
+<p>サーバー証明書の DNS 検証時に、ドメインを購入したサービスが管理するドメインレジストラに、Route53 の NS レコード値を登録する。</p>
 <h4 id="2"><code>(2)</code> 検証のためにメール再送が必要<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>サーバー証明書のEメール検証時に、ドメインの所有者にメールが送信されないこともある。</p>
+<p>サーバー証明書の E メール検証時に、ドメインの所有者にメールが送信されないこともある。</p>
 <p>送信されなかった場合は、メールを再送する。</p>
 <h4 id="_4">(＊) サーバー証明書の検証方法を変更する<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>もしコンソール画面からサーバー証明書の検証方法を変更する場合、検証方法の異なるサーバー証明書を作成してこれに切り替えたうえで、古いサーバー証明書を削除する必要がある。</p>
-<p>これに合わせて、Terraformでもリリースを2回に分ける。</p>
+<p>これに合わせて、Terraform でもリリースを 2 回に分ける。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/switch-acm-certificate/</a></li>
@@ -36563,9 +36563,9 @@
 <p><br></p>
 <h2 id="aws-ami">AWS AMI<a class="headerlink" href="#aws-ami" title="Permanent link">&para;</a></h2>
 <h3 id="resource_1">resource<a class="headerlink" href="#resource_1" title="Permanent link">&para;</a></h3>
-<p>Amazon EC2の設定値を変更しても、AWS AMIでは初回時しかAmazon EC2を検知できない。</p>
-<p>新しいAMIを作成する場合、AMI名を変更し、AMIを再作成する。</p>
-<p>Amazon EC2の名前に、<code>&lt;バックアップするAmazon EC2のID&gt;</code> をつけることでわかりやすくなる。</p>
+<p>Amazon EC2 の設定値を変更しても、AWS AMI では初回時しか Amazon EC2 を検知できない。</p>
+<p>新しい AMI を作成する場合、AMI 名を変更し、AMI を再作成する。</p>
+<p>Amazon EC2 の名前に、<code>&lt;バックアップするAmazon EC2のID&gt;</code> をつけることでわかりやすくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_ami_from_instance&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-instance-&lt;バックアップするAmazon EC2のID&gt;&quot;</span>
 <span class="w">  </span><span class="na">source_instance_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;バックアップするAmazon EC2のID&gt;&quot;</span>
@@ -36593,7 +36593,7 @@
 <h3 id="data">data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ まとめ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>AMIを検索したうえで、AWSから特定のAMIを取得する。</p>
+<p>AMI を検索したうえで、AWS から特定の AMI を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For bastion</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36635,11 +36635,11 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="1-ami"><code>(1)</code> 取得するAMIのバージョンを固定<a class="headerlink" href="#1-ami" title="Permanent link">&para;</a></h4>
-<p>取得するAMIが常に最新になっていると、EC2が再作成されなねない。</p>
-<p>そこで、特定のAMIを取得できるようにしておく。</p>
-<p><code>most_recent</code> は無効化しておき、特定のAMIをフィルタリングする。</p>
+<p>取得する AMI が常に最新になっていると、EC2 が再作成されなねない。</p>
+<p>そこで、特定の AMI を取得できるようにしておく。</p>
+<p><code>most_recent</code> は無効化しておき、特定の AMI をフィルタリングする。</p>
 <h4 id="2aws-backupami"><code>(2)</code>AWS Backupで作成したAMIを参照<a class="headerlink" href="#2aws-backupami" title="Permanent link">&para;</a></h4>
-<p>AWS BackupでEC2のAMIを作成している場合に、フィルターの条件を使用して、AMIを参照する。</p>
+<p>AWS Backup で EC2 の AMI を作成している場合に、フィルターの条件を使用して、AMI を参照する。</p>
 <p><br></p>
 <h2 id="amazon-api-gateway">Amazon API Gateway<a class="headerlink" href="#amazon-api-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="resource_2">resource<a class="headerlink" href="#resource_2" title="Permanent link">&para;</a></h3>
@@ -36698,21 +36698,21 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="1-openapi"><code>(1)</code> OpenAPI仕様のインポートと差分認識<a class="headerlink" href="#1-openapi" title="Permanent link">&para;</a></h4>
-<p>あらかじめ用意したOpenAPI仕様の <code>yaml</code> ファイルを <code>body</code> オプションのパラメーターとし、これをインポートすることにより、APIを定義できる。</p>
+<p>あらかじめ用意した OpenAPI 仕様の <code>yaml</code> ファイルを <code>body</code> オプションのパラメーターとし、これをインポートすることにより、API を定義できる。</p>
 <p><code>yaml</code> ファイルに変数を渡すこともできる。</p>
-<p>APIの再デプロイのトリガーとして、<code>redeployment</code> パラメーターに <code>body</code> パラメーターのハッシュ値を渡すようにする。</p>
-<p>これにより、インポート元の <code>yaml</code> ファイルに差分があった場合、Terraformが <code>redeployment</code> パラメーターの値の変化を識別できるようになり、再デプロイを実行できる。</p>
+<p>API の再デプロイのトリガーとして、<code>redeployment</code> パラメーターに <code>body</code> パラメーターのハッシュ値を渡すようにする。</p>
+<p>これにより、インポート元の <code>yaml</code> ファイルに差分があった場合、Terraform が <code>redeployment</code> パラメーターの値の変化を識別できるようになり、再デプロイを実行できる。</p>
 <h4 id="_6">(＊) ステージ名を取得する方法はない<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>API Gatewayのステージ名を参照するためには、resourceを使用する必要があり、dataではこれを取得できない。</p>
-<p>もしステージをコンソール画面上から作成している場合、ステージのARNを参照できないため、ARNを自力で作る必要がある。</p>
-<p>API Gatewayの各ARNについては、以下のリンクを参考にせよ。</p>
+<p>API Gateway のステージ名を参照するためには、resource を使用する必要があり、data ではこれを取得できない。</p>
+<p>もしステージをコンソール画面上から作成している場合、ステージの ARN を参照できないため、ARN を自力で作る必要がある。</p>
+<p>API Gateway の各 ARN については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html</a></li>
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>WAFにAPI Gatewayを紐付けるために、ステージのARNが必要である。</p>
+<p>WAF に API Gateway を紐付けるために、ステージの ARN が必要である。</p>
 <p>これは自力で作る。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Web ACLアソシエーション</span>
@@ -36730,8 +36730,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="1-amazon-ecs"><code>(1)</code> Amazon ECSサービス名をルートとした命名<a class="headerlink" href="#1-amazon-ecs" title="Permanent link">&para;</a></h4>
-<p>同じAWSアカウントの異なるAmazon ECSサービスを作成する場合がある。</p>
-<p>この場合、コンテナ名が重複することになるため、Amazon CloudWatch LogsのロググループはAmazon ECSサービスをルートとして命名する必要がある。</p>
+<p>同じ AWS アカウントの異なる Amazon ECS サービスを作成する場合がある。</p>
+<p>この場合、コンテナ名が重複することになるため、Amazon CloudWatch Logs のロググループは Amazon ECS サービスをルートとして命名する必要がある。</p>
 <p><br></p>
 <h2 id="amazon-cloudfront">Amazon CloudFront<a class="headerlink" href="#amazon-cloudfront" title="Permanent link">&para;</a></h2>
 <h3 id="resource_4">resource<a class="headerlink" href="#resource_4" title="Permanent link">&para;</a></h3>
@@ -36770,10 +36770,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="1"><code>(1)</code> 削除保持機能<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<p>Terraformでは、<code>retain_on_delete</code> で設定できる。</p>
-<p>固有の設定で、AWSに対応するものは無い。</p>
+<p>Terraform では、<code>retain_on_delete</code> で設定できる。</p>
+<p>固有の設定で、AWS に対応するものはない。</p>
 <h4 id="origin">originブロック<a class="headerlink" href="#origin" title="Permanent link">&para;</a></h4>
-<p>Origins画面に設定するオリジンを定義する。</p>
+<p>Origins 画面に設定するオリジンを定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_cloudfront_distribution&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -36816,7 +36816,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="ordered_cache_behavior">ordered_cache_behaviorブロック<a class="headerlink" href="#ordered_cache_behavior" title="Permanent link">&para;</a></h4>
-<p>Behavior画面で設定するオリジンにルーティングするパスを定義する。</p>
+<p>Behavior 画面で設定するオリジンにルーティングするパスを定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_cloudfront_distribution&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -36847,7 +36847,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="default_cache_behavior">default_cache_behavior<a class="headerlink" href="#default_cache_behavior" title="Permanent link">&para;</a></h4>
-<p>Behavior画面で設定するオリジンにルーティングする標準パスを定義する。</p>
+<p>Behavior 画面で設定するオリジンにルーティングする標準パスを定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_cloudfront_distribution&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 
@@ -36879,8 +36879,8 @@
 <h2 id="amazon-ecr">Amazon ECR<a class="headerlink" href="#amazon-ecr" title="Permanent link">&para;</a></h2>
 <h3 id="resource_5">resource<a class="headerlink" href="#resource_5" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ライフサイクルポリシー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>ECRに紐付けられる、コンテナイメージの有効期間を定義するポリシー。</p>
-<p>コンソール画面から入力できるため、基本的にポリシーの実装は不要であるが、TerraformなどのIaCツールでは必要になる。</p>
+<p>ECR に紐付けられる、コンテナイメージの有効期間を定義するポリシー。</p>
+<p>コンソール画面から入力できるため、基本的にポリシーの実装は不要であるが、Terraform などの IaC ツールでは必要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;rules&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[</span>
@@ -36964,41 +36964,41 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="1_1"><code>(1)</code> ヘルスチェック待機時間<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
-<p>ECSタスクの起動が完了する前にサービスがロードバランサ－のヘルスチェックを検証し、Unhealthyと誤認してしまうため、ECSタスクの起動完了を待機する。</p>
-<p>例えば、ロードバランサ－が30秒間隔でヘルスチェックを実行する場合は、30秒単位で待機時間を増やし、適切な待機時間を見つけるようにする。</p>
+<p>ECS タスクの起動が完了する前にサービスがロードバランサ－のヘルスチェックを検証し、Unhealthy と誤認してしまうため、ECS タスクの起動完了を待機する。</p>
+<p>例えば、ロードバランサ－が 30 秒間隔でヘルスチェックを実行する場合は、30 秒単位で待機時間を増やし、適切な待機時間を見つけるようにする。</p>
 <h4 id="2_1"><code>(2)</code> 実インフラのリビジョンの追跡<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
-<p>アプリケーションのデプロイによって、実インフラのECSタスク定義のリビジョンが増加するため、これを追跡可能にする。</p>
+<p>アプリケーションのデプロイによって、実インフラの ECS タスク定義のリビジョンが増加するため、これを追跡可能にする。</p>
 <blockquote>
 <ul>
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition</a></li>
 </ul>
 </blockquote>
 <h4 id="3albnlb"><code>(3)</code>ALB/NLBリスナーの作成を待機<a class="headerlink" href="#3albnlb" title="Permanent link">&para;</a></h4>
-<p>Terraformは、特に依存関係を実装しない場合、『ターゲットグループ ➡️ ALB/NLB ➡️ リスナー』の順で <code>resource</code> ブロックを作成する。</p>
-<p>問題として、AWS ALBやAWS NLBやリスナーの作成が終了する前に、Amazon ECSサービスの作成が始まってしまう。</p>
-<p>AWS ALBやAWS NLBの作成 (※リスナーも含む可能性) が完全に完了しない状態では、ターゲットグループはAmazon ECSサービスに紐付けらず、これが完了する前にAmazon ECSサービスがターゲットグループを参照しようとするため、エラーになってしまう。</p>
-<p>リスナーの後にAmazon ECSサービスを作成するようにし、『ターゲットグループ ➡️ ALB/NLB ➡️ リスナー ➡️ Amazon ECSサービス』の順で <code>resource</code> ブロックを作成可能にする。</p>
+<p>Terraform は、特に依存関係を実装しない場合、『ターゲットグループ ➡️ ALB/NLB ➡️ リスナー』の順で <code>resource</code> ブロックを作成する。</p>
+<p>問題として、AWS ALB や AWS NLB やリスナーの作成が終了する前に、Amazon ECS サービスの作成が始まってしまう。</p>
+<p>AWS ALB や AWS NLB の作成 (※リスナーも含む可能性) が完全に完了しない状態では、ターゲットグループは Amazon ECS サービスに紐付けらず、これが完了する前に Amazon ECS サービスがターゲットグループを参照しようとするため、エラーになってしまう。</p>
+<p>リスナーの後に Amazon ECS サービスを作成するようにし、『ターゲットグループ ➡️ ALB/NLB ➡️ リスナー ➡️ Amazon ECS サービス』の順で <code>resource</code> ブロックを作成可能にする。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022">https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022</a></li>
 </ul>
 </blockquote>
 <h4 id="4aws-auto-scalingecs"><code>(4)</code>AWS Auto ScalingグループによるECSタスク数の増減を無視<a class="headerlink" href="#4aws-auto-scalingecs" title="Permanent link">&para;</a></h4>
-<p>AutoScalingによって、ECSタスク数が増減するため、これを無視する。</p>
+<p>AutoScaling によって、ECS タスク数が増減するため、これを無視する。</p>
 <h4 id="ecs">(＊) ECSタスク定義の更新<a class="headerlink" href="#ecs" title="Permanent link">&para;</a></h4>
-<p>TerraformでECSタスク定義を更新すると、現在稼働しているECSで稼働しているECSタスクはそのままに、新しいリビジョンのECSタスク定義を作成する。</p>
+<p>Terraform で ECS タスク定義を更新すると、現在稼働している ECS で稼働している ECS タスクはそのままに、新しいリビジョンの ECS タスク定義を作成する。</p>
 <p>コンソール画面の『新しいリビジョンの作成』と同じ挙動である。</p>
-<p>実際にECSタスクが増えていることは、サービスに紐付くECSタスク定義一覧から確認できる。</p>
-<p>次のデプロイ時に、このECSタスクが使用される。</p>
+<p>実際に ECS タスクが増えていることは、サービスに紐付く ECS タスク定義一覧から確認できる。</p>
+<p>次のデプロイ時に、この ECS タスクが使用される。</p>
 <h4 id="_8">(＊) サービスのデプロイの削除時間<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>Amazon ECSサービスの削除には『ドレイニング』の時間が発生する。</p>
+<p>Amazon ECS サービスの削除には『ドレイニング』の時間が発生する。</p>
 <p>約 <code>2</code> 分 <code>30</code> 秒かかるため、気長に待つこと。</p>
 <h4 id="_9">(＊) ローリングアップデート<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p><code>terraform apply</code> コマンドで、新しいリビジョンのECSタスク定義を作成すると、これを使用してローリングアップデートが自動的に実行されることに注意する。</p>
-<p>ただし、ローリングアップデートの仕組み上、新しいECSタスクのヘルスチェックが失敗すれば、既存のECSタスクは停止せずにそのまま稼働するため、安心ではあるが。</p>
+<p><code>terraform apply</code> コマンドで、新しいリビジョンの ECS タスク定義を作成すると、これを使用してローリングアップデートが自動的に実行されることに注意する。</p>
+<p>ただし、ローリングアップデートの仕組み上、新しい ECS タスクのヘルスチェックが失敗すれば、既存の ECS タスクは停止せずにそのまま稼働するため、安心ではあるが。</p>
 <h4 id="ecs_1">(＊) ECSコンテナ名<a class="headerlink" href="#ecs_1" title="Permanent link">&para;</a></h4>
-<p>コンテナ名は、役割名 (app、web、monitoringなど) ではなく、ベンダー名 (laravel、nginx、datadogなど) とする。</p>
-<p>ただし、AWS FireLensコンテナはlog_routerとしなければならない仕様であり、ベンダー名を使用できない場合は役割名になることを許容する。</p>
+<p>コンテナ名は、役割名 (app、web、monitoring など) ではなく、ベンダー名 (laravel、nginx、datadog など) とする。</p>
+<p>ただし、AWS FireLens コンテナは log_router としなければならない仕様であり、ベンダー名を使用できない場合は役割名になることを許容する。</p>
 <p><br></p>
 <h2 id="amazon-ec2">Amazon EC2<a class="headerlink" href="#amazon-ec2" title="Permanent link">&para;</a></h2>
 <h3 id="resource_7">resource<a class="headerlink" href="#resource_7" title="Permanent link">&para;</a></h3>
@@ -37045,17 +37045,17 @@
 <h4 id="1_2"><code>(1)</code> キーペアはコンソール上で設定<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
 <p>誤って削除しないように、またコードに秘密鍵の内容をハードコーディングしないように、キーペアはコンソール画面で作成した後、<code>key_name</code> でキー名を指定する。</p>
 <h4 id="2internet-gateway"><code>(2)</code>Internet Gatewayの後に作成<a class="headerlink" href="#2internet-gateway" title="Permanent link">&para;</a></h4>
-<p>Internet Gatewayの後にEC2を作成可能にする。</p>
+<p>Internet Gateway の後に EC2 を作成可能にする。</p>
 <blockquote>
 <ul>
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference</a></li>
 </ul>
 </blockquote>
 <h4 id="3ec2ebs"><code>(3)</code>EC2の削除時にEBSボリュームは削除されない<a class="headerlink" href="#3ec2ebs" title="Permanent link">&para;</a></h4>
-<p><code>aws_ami</code> リソースでAMIを作成する場合、EC2の削除時にEBSボリュームも削除するかどうかを設定できる。</p>
+<p><code>aws_ami</code> リソースで AMI を作成する場合、EC2 の削除時に EBS ボリュームも削除するかどうかを設定できる。</p>
 <p>一方で、<code>aws_volume_attachment</code> リソースではこのオプションがなく、デフォルトで同時に削除しないようになっている。</p>
 <p>同時に削除しないようにしたいため、<code>aws_volume_attachment</code> リソースでは特に対処は不要である。</p>
-<p>なお、<code>aws_volume_attachment</code> リソースでこのオプションを追加するPRが現座進行形で提出されている。</p>
+<p>なお、<code>aws_volume_attachment</code> リソースでこのオプションを追加する PR が現座進行形で提出されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/terraform-ec2-ebs_block_device-size-up/">https://dev.classmethod.jp/articles/terraform-ec2-ebs_block_device-size-up/</a></li>
@@ -37065,7 +37065,7 @@
 <p><br></p>
 <h2 id="amazon-eks">Amazon EKS<a class="headerlink" href="#amazon-eks" title="Permanent link">&para;</a></h2>
 <h3 id="resource_8">resource<a class="headerlink" href="#resource_8" title="Permanent link">&para;</a></h3>
-<p>EKSのNodeグループをマネージドとする場合、起動テンプレートも合わせて設定する必要がある。</p>
+<p>EKS の Node グループをマネージドとする場合、起動テンプレートも合わせて設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_eks_node_group&quot;</span><span class="w"> </span><span class="nv">&quot;this&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">cluster_name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-eks-cluster&quot;</span>
@@ -37137,17 +37137,17 @@
 </ul>
 </blockquote>
 <h4 id="1node"><code>(1)</code>Node数の増減は無視<a class="headerlink" href="#1node" title="Permanent link">&para;</a></h4>
-<p>EKSでは、cluster-autoscalerを使用して、Nodeをスケーリングさせる。</p>
-<p>この時のNode数の増減を無視できるようにしておく。</p>
+<p>EKS では、cluster-autoscaler を使用して、Node をスケーリングさせる。</p>
+<p>このときの Node 数の増減を無視できるようにしておく。</p>
 <p><br></p>
 <h2 id="aws-iam">AWS IAMユーザー<a class="headerlink" href="#aws-iam" title="Permanent link">&para;</a></h2>
 <h3 id="resource_9">resource<a class="headerlink" href="#resource_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ カスタマー管理ポリシーを持つロール<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>事前に、tpl形式のカスタマー管理ポリシーを定義しておく。</p>
-<p>作成済みのIAMロールに、<code>aws_iam_policy</code> リソースを使用して、AWS管理ポリシーをIAMユーザーに紐付ける。</p>
+<p>事前に、tpl 形式のカスタマー管理ポリシーを定義しておく。</p>
+<p>作成済みの IAM ロールに、<code>aws_iam_policy</code> リソースを使用して、AWS 管理ポリシーを IAM ユーザーに紐付ける。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>ローカルマシンからAWS CLIコマンドを実行する必要がある場合、コマンドを特定の送信元IPアドレスを特定のものに限定する。</p>
-<p>事前に、list型でIPアドレスを定義する。</p>
+<p>ローカルマシンから AWS CLI コマンドを実行する必要がある場合、コマンドを特定の送信元 IP アドレスを特定のものに限定する。</p>
+<p>事前に、list 型で IP アドレスを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># IP addresses</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37156,7 +37156,7 @@
 <span class="w">  </span><span class="s2">&quot;*.*.*.*/32&quot;</span>
 <span class="p">]</span>
 </code></pre></div>
-<p>また事前に、指定した送信元IPアドレス以外を拒否するカスタマー管理ポリシーを定義する。</p>
+<p>また事前に、指定した送信元 IP アドレス以外を拒否するカスタマー管理ポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
@@ -37171,8 +37171,8 @@
 <span class="w">  </span><span class="p p-Indicator">}</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>コンソール画面で作成済みのIAMユーザーの名前を取得する。</p>
-<p>tpl形式のポリシーにlist型の値を渡すとき、JSONを文字列に変換する <code>jsonencode()</code> 関数を使用する必要がある。</p>
+<p>コンソール画面で作成済みの IAM ユーザーの名前を取得する。</p>
+<p>tpl 形式のポリシーに list 型の値を渡すとき、JSON を文字列に変換する <code>jsonencode()</code> 関数を使用する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For IAM User</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37192,7 +37192,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="aws_1">▼ AWS管理ポリシー<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h4>
-<p>IAMユーザーにAWS管理ポリシーを紐付ける。</p>
+<p>IAM ユーザーに AWS 管理ポリシーを紐付ける。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For IAM User</span>
@@ -37207,10 +37207,10 @@
 <h3 id="resource_10">resource<a class="headerlink" href="#resource_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 信頼ポリシーを持つロール<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>コンソール画面でロールを作成する場合は意識しないが、特定の <code>resource</code> ブロックにロールを紐付けるためには、ロールに信頼ポリシーを組み込む必要がある。</p>
-<p>事前に、tpl形式の信頼ポリシーを定義しておく。</p>
-<p><code>aws_iam_role</code> リソースを使用して、IAMロールを作成すると同時に、これに信頼ポリシーを紐付ける。</p>
+<p>事前に、tpl 形式の信頼ポリシーを定義しておく。</p>
+<p><code>aws_iam_role</code> リソースを使用して、IAM ロールを作成すると同時に、これに信頼ポリシーを紐付ける。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>事前に、ECSタスクのための信頼ポリシーを定義する。</p>
+<p>事前に、ECS タスクのための信頼ポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -37223,7 +37223,7 @@
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>ECSタスクロールとECSタスク実行ロールに信頼ポリシー紐付ける。</p>
+<p>ECS タスクロールと ECS タスク実行ロールに信頼ポリシー紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># IAM Role For ECS Task Execution</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37249,7 +37249,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>事前に、Lambda@Edgeのための信頼ポリシーを定義する。</p>
+<p>事前に、Lambda@Edge のための信頼ポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -37264,7 +37264,7 @@
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>Lambda実行ロールに信頼ポリシー紐付ける。</p>
+<p>Lambda 実行ロールに信頼ポリシー紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># IAM Role For Lambda@Edge</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37279,17 +37279,17 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_12">▼ インラインポリシーを持つロール<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>事前に、tpl形式のインラインポリシーを定義しておく。</p>
+<p>事前に、tpl 形式のインラインポリシーを定義しておく。</p>
 <p><code>aws_iam_role_policy</code> リソースを使用して、インラインポリシーを作成すると同時に、これにインラインポリシーを紐付ける。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>事前に、ECSタスクに必要最低限の権限を与えるインラインポリシーを定義する。</p>
+<p>事前に、ECS タスクに必要最低限の権限を与えるインラインポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
 <span class="w">    </span><span class="p p-Indicator">[{</span><span class="s">&quot;Effect&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;Action&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;ssm:GetParameters&quot;</span><span class="p p-Indicator">],</span><span class="w"> </span><span class="s">&quot;Resource&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">}],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>ECSタスクロールとECSタスク実行ロールにインラインポリシー紐付ける。</p>
+<p>ECS タスクロールと ECS タスク実行ロールにインラインポリシー紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># IAM Role For ECS Task</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37303,9 +37303,9 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="aws_2">▼ AWS管理ポリシーを持つロール<a class="headerlink" href="#aws_2" title="Permanent link">&para;</a></h4>
-<p>事前に、tpl形式のAWS管理ポリシーを定義しておく。</p>
-<p><code>aws_iam_role_policy_attachment</code> リソースを使用して、実インフラにあるAWS管理ポリシーを作成済みのIAMロールに紐付ける。</p>
-<p>ポリシーのARNは、AWSのコンソール画面を確認する。</p>
+<p>事前に、tpl 形式の AWS 管理ポリシーを定義しておく。</p>
+<p><code>aws_iam_role_policy_attachment</code> リソースを使用して、実インフラにある AWS 管理ポリシーを作成済みの IAM ロールに紐付ける。</p>
+<p>ポリシーの ARN は、AWS のコンソール画面を確認する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># IAM Role For ECS Task Execution</span>
@@ -37316,11 +37316,11 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_13">▼ カスタマー管理ポリシーを持つロール<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>事前に、tpl形式のインラインポリシーを定義しておく。</p>
+<p>事前に、tpl 形式のインラインポリシーを定義しておく。</p>
 <p><code>aws_iam_role_policy</code> リソースを使用して、カスタマー管理ポリシーを作成する。</p>
-<p><code>aws_iam_role_policy_attachment</code> リソースを使用して、カスタマー管理ポリシーを作成済みのIAMロールに紐付ける。</p>
+<p><code>aws_iam_role_policy_attachment</code> リソースを使用して、カスタマー管理ポリシーを作成済みの IAM ロールに紐付ける。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>事前に、ECSタスクに必要最低限の権限を与えるカスタマー管理ポリシーを定義する。</p>
+<p>事前に、ECS タスクに必要最低限の権限を与えるカスタマー管理ポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -37333,7 +37333,7 @@
 <span class="w">    </span><span class="p p-Indicator">],</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>ECSタスクロールにカスタマー管理ポリシー紐付ける。</p>
+<p>ECS タスクロールにカスタマー管理ポリシー紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># IAM Role For ECS Task</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37352,11 +37352,11 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_14">▼ サービスリンクロール<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>サービスリンクロールは、AWSリソースの作成時に自動的に作成され、紐付けられる。</p>
-<p>そのため、Terraformの管理外である。</p>
+<p>サービスリンクロールは、AWS リソースの作成時に自動的に作成され、紐付けられる。</p>
+<p>そのため、Terraform の管理外である。</p>
 <p><code>aws_iam_service_linked_role</code> リソースを使用して、手動で作成できるが、数が多く実装の負担にもなるため、あえて管理外としても問題ない。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>サービス名を指定して、ApplicationAutoScalingのサービスリンクロールを作成する。</p>
+<p>サービス名を指定して、ApplicationAutoScaling のサービスリンクロールを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># IAM Role For ECS Service</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37372,8 +37372,8 @@
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_iam_service_linked_role.ecs_service_auto_scaling.arn</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ApplicationAutoScalingにサービスリンクロールを紐付ける。</p>
-<p>手動でも設定できるが、Terraformの管理外で自動的に紐付けられるため、あえて妥協しても良い。</p>
+<p>ApplicationAutoScaling にサービスリンクロールを紐付ける。</p>
+<p>手動でも設定できるが、Terraform の管理外で自動的に紐付けられるため、あえて妥協してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Application Auto Scaling For ECS</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37422,25 +37422,25 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="1-nlb"><code>(1)</code> NLBはスロースタート方式に非対応<a class="headerlink" href="#1-nlb" title="Permanent link">&para;</a></h4>
-<p>NLBに紐付くターゲットグループはスロースタート方式の負荷分散に非対応のため、これを明示的に無効化する必要がある。</p>
+<p>NLB に紐付くターゲットグループはスロースタート方式の負荷分散に非対応のため、これを明示的に無効化する必要がある。</p>
 <h4 id="2nlb"><code>(2)</code>NLBヘルスチェックには設定できる項目が少ない<a class="headerlink" href="#2nlb" title="Permanent link">&para;</a></h4>
-<p>ターゲットグループのフォワーディングプロトコルがTCPプロトコルの場合は、設定できないヘルスチェックオプションがいくつかある。</p>
-<p>ヘルスチェックプロトコルがHTTPまたはHTTPSリクエストの時のみ、パスを設定できる。</p>
+<p>ターゲットグループのフォワーディングプロトコルが TCP プロトコルの場合は、設定できないヘルスチェックオプションがいくつかある。</p>
+<p>ヘルスチェックプロトコルが HTTP または HTTPS リクエストのときのみ、パスを設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check</a></li>
 </ul>
 </blockquote>
 <h4 id="3nlb"><code>(3)</code>NLBスティッキーネスは明示的に無効化<a class="headerlink" href="#3nlb" title="Permanent link">&para;</a></h4>
-<p>スティッキネス機能を無効化する場合、AWSプロバイダーのアップグレード時に問題が起こらないように、このブロックを実装しないようにする。</p>
-<p>リンクのNOTE文を参考にせよ。</p>
+<p>スティッキネス機能を無効化する場合、AWS プロバイダーのアップグレード時に問題が起こらないように、このブロックを実装しないようにする。</p>
+<p>リンクの NOTE 文を参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness">https://registry.terraform.io/providers/hashicorp/aws/3.16.0/docs/resources/lb_target_group#stickiness</a></li>
 </ul>
 </blockquote>
 <h4 id="_15">(＊) ターゲットグループの削除時にリスナーを先に削除できない。<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>リスナーがターゲットグループに依存しているが、Terraformがターゲットグループの削除時にリスナーを先に削除しようとしない。</p>
+<p>リスナーがターゲットグループに依存しているが、Terraform がターゲットグループの削除時にリスナーを先に削除しようとしない。</p>
 <p>そのため、以下のようなエラーが発生する。</p>
 <div class="highlight"><pre><span></span><code>Error<span class="w"> </span>deleting<span class="w"> </span>Target<span class="w"> </span>Group:<span class="w"> </span>ResourceInUse:<span class="w"> </span>Target<span class="w"> </span>group<span class="w"> </span><span class="s1">&#39;arn:aws:elasticloadbalancing:ap-northeast-1:&lt;AWSアカウントID&gt;:targetgroup/*****-tg/*****&#39;</span><span class="w"> </span>is<span class="w"> </span>currently<span class="w"> </span><span class="k">in</span><span class="w"> </span>use<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>listener<span class="w"> </span>or<span class="w"> </span>a<span class="w"> </span>rule
 status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</span>,<span class="w"> </span>request<span class="w"> </span>id:<span class="w"> </span>*****
@@ -37562,13 +37562,13 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="1_3"><code>(1)</code> パラメーターストア<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h4>
-<p>Terraformに値をハードコーディングしたくない場合は、パラメーターストアで値を管理し、これを <code>data</code> ブロックで取得する。</p>
+<p>Terraform に値をハードコーディングしたくない場合は、パラメーターストアで値を管理し、これを <code>data</code> ブロックで取得する。</p>
 <h4 id="2_2"><code>(2)</code> メンテナンスウインドウ時に変更適用<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h4>
-<p>メンテナンスウインドウ時の変更適用をTerraformで行う場合、一段階目に <code>apply_immediately</code> オプションを <code>false</code> に変更して <code>terraform apply</code> コマンドを実行することにより、二段階目に修正を <code>terraform apply</code> コマンドを実行する。</p>
+<p>メンテナンスウインドウ時の変更適用を Terraform で行う場合、一段階目に <code>apply_immediately</code> オプションを <code>false</code> に変更して <code>terraform apply</code> コマンドを実行することにより、二段階目に修正を <code>terraform apply</code> コマンドを実行する。</p>
 <h4 id="3dbaz-3"><code>(3)</code>DBクラスターにはAZが <code>3</code> 個必要<a class="headerlink" href="#3dbaz-3" title="Permanent link">&para;</a></h4>
-<p>DBクラスターでは、レプリケーションのために、<code>3</code> 個のAZが必要である。</p>
-<p>そのため、指定したAZが2つであっても、コンソール画面上で <code>3</code> 個のAZが自動的に設定される。</p>
-<p>Terraformがこれを認識しないように、<code>ignore_changes</code> 引数でAZを指定しておく必要がある。</p>
+<p>DB クラスターでは、レプリケーションのために、<code>3</code> 個の AZ が必要である。</p>
+<p>そのため、指定した AZ が 2 つであっても、コンソール画面上で <code>3</code> 個の AZ が自動的に設定される。</p>
+<p>Terraform がこれを認識しないように、<code>ignore_changes</code> 引数で AZ を指定しておく必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones</a></li>
@@ -37577,19 +37577,19 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 </ul>
 </blockquote>
 <h4 id="4-az"><code>(4)</code> インスタンスを配置するAZは選択できない<a class="headerlink" href="#4-az" title="Permanent link">&para;</a></h4>
-<p>事前にインスタンスへAZを表す識別子を入れたとしても、Terraformはインスタンスの配置先AZを選択できない。</p>
-<p>そのため、AZと識別子の関係が逆になってしまうことがある。</p>
+<p>事前にインスタンスへ AZ を表す識別子を入れたとしても、Terraform はインスタンスの配置先 AZ を選択できない。</p>
+<p>そのため、AZ と識別子の関係が逆になってしまうことがある。</p>
 <p>多くの場合、 <code>c</code> ゾーンのインスタンスが最初に作成されるため、インスタンスのゾーン名と配置される <code>a</code>/<code>c</code> ゾーンが逆になる。</p>
-<p>その場合は、デプロイ後に手動で名前を変更すれば良い。</p>
-<p>この変更は、Terraformが差分として認識しないので問題ない。</p>
+<p>その場合は、デプロイ後に手動で名前を変更すればよい。</p>
+<p>この変更は、Terraform が差分として認識しないので問題ない。</p>
 <h4 id="5"><code>(5)</code> エンジンバージョンのアップグレードは画面から<a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
-<p>運用でTerraformによるエンジンバージョンのアップグレードに抵抗感がある場合、コンソール画面からアップグレードする。その後、Terraformで無視すると良い。</p>
-<p>ただし、画面からの変更後にTerraformのコードも変更しておく必要がある。</p>
-<p>Terraformを書き換えなくとも問題は起こらないが、Terraformのコードと実インフラが乖離してしまう。</p>
+<p>運用で Terraform によるエンジンバージョンのアップグレードに抵抗感がある場合、コンソール画面からアップグレードする。その後、Terraform で無視するとよい。</p>
+<p>ただし、画面からの変更後に Terraform のコードも変更しておく必要がある。</p>
+<p>Terraform を書き換えなくとも問題は起こらないが、Terraform のコードと実インフラが乖離してしまう。</p>
 <h4 id="6for_each"><code>(6)``for_each</code> 引数を使用して<a class="headerlink" href="#6for_each" title="Permanent link">&para;</a></h4>
-<p>Amazon Auroraでは、クラスターにインスタンスを1つだけ紐付けると、プライマリーインスタンスとして作成される。</p>
+<p>Amazon Aurora では、クラスターにインスタンスを 1 つだけ紐付けると、プライマリーインスタンスとして作成される。</p>
 <p>また以降インスタンスを紐付けると、リードレプリカとして自動的に作成されていく。</p>
-<p>AZのマップデータに対して <code>for_each</code> 引数を使用することにより、各AZに最低1つのインスタンスを配置するように設定できる。</p>
+<p>AZ のマップデータに対して <code>for_each</code> 引数を使用することにより、各 AZ に最低 1 つのインスタンスを配置するように設定できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance">https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance</a></li>
@@ -37597,17 +37597,17 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 </ul>
 </blockquote>
 <h4 id="7"><code>(7)</code> インスタンスタイプは別々に設定する<a class="headerlink" href="#7" title="Permanent link">&para;</a></h4>
-<p>インスタンスタイプに <code>for_each</code> 引数で値を渡さない場合、各DBインスタンスのインスタンスタイプを同時に変更することになる。</p>
+<p>インスタンスタイプに <code>for_each</code> 引数で値を渡さない場合、各 DB インスタンスのインスタンスタイプを同時に変更することになる。</p>
 <p>この場合、インスタンスのフェイルオーバーを使用できず、ダウンタイムを最小化できない。</p>
-<p>そのため、<code>for_each</code> 引数を使用して、DBインスタンスごとにインスタンスタイプを設定する。</p>
-<p>インスタンスごとに異なるインスタンスタイプを設定する場合は、<code>for_each</code> 引数で割り当てる値の順番を考慮する必要があるため、配置されているAZを事前に確認する必要がある。</p>
+<p>そのため、<code>for_each</code> 引数を使用して、DB インスタンスごとにインスタンスタイプを設定する。</p>
+<p>インスタンスごとに異なるインスタンスタイプを設定する場合は、<code>for_each</code> 引数で割り当てる値の順番を考慮する必要があるため、配置されている AZ を事前に確認する必要がある。</p>
 <h4 id="8"><code>(8)</code> インスタンスにバックアップウインドウは設定しない<a class="headerlink" href="#8" title="Permanent link">&para;</a></h4>
-<p>DBクラスターとDBインスタンスの両方に、<code>preferred_backup_window</code> オプションを設定できるが、RDSインスタンスに設定してはいけない。</p>
+<p>DB クラスターと DB インスタンスの両方に、<code>preferred_backup_window</code> オプションを設定できるが、RDS インスタンスに設定してはいけない。</p>
 <h4 id="9"><code>(9)</code> リードレプリカの追加<a class="headerlink" href="#9" title="Permanent link">&para;</a></h4>
 <p>クラスターに <code>count</code> 引数で量産したインスタンスを紐付ける。</p>
 <p><code>count</code> 引数は本来非推奨であるが、同じ設定のインスタンスを単に量産するだけなため、許容する。</p>
 <h4 id="10-az"><code>(10)</code> マルチAZを有効化する<a class="headerlink" href="#10-az" title="Permanent link">&para;</a></h4>
-<p>Amazon Auroraでは、紐付けられたサブネットグループが複数のAZのサブネットで構成されている場合、各インスタンスを自動的に配置するAZを決める。</p>
+<p>Amazon Aurora では、紐付けられたサブネットグループが複数の AZ のサブネットで構成されている場合、各インスタンスを自動的に配置する AZ を決める。</p>
 <p>そのため、サブネットグループに複数のサブネットを紐付けるようにする。</p>
 <blockquote>
 <ul>
@@ -37619,7 +37619,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <h3 id="resource_13">resource<a class="headerlink" href="#resource_13" title="Permanent link">&para;</a></h3>
 <h4 id="_16">▼ グローバルクラスター<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>グローバルクラスターは、状況によって実装方法が少し異なる。</p>
-<p>実装方法で依存関係の向きを変えているが、使っているAWSリソースのAPIは同じである。</p>
+<p>実装方法で依存関係の向きを変えているが、使っている AWS リソースの API は同じである。</p>
 <p>そのため、変更前後の <code>terraform plan</code> コマンドの差分は同じになる。</p>
 <h4 id="_17">▼ 既存のクラスターからグローバルクラスターを作成する<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>既存のクラスターからグローバルクラスターを作成する。</p>
@@ -37823,16 +37823,16 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p><br></p>
 <h2 id="aws_4">AWS ルートテーブル<a class="headerlink" href="#aws_4" title="Permanent link">&para;</a></h2>
 <h3 id="_20">メインルートテーブルは自動作成<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<p>Terraformを使用してVPCを作成したとき、メインルートテーブルが自動的に作成される。</p>
-<p>そのため、これはTerraformの管理外である。</p>
+<p>Terraform を使用して VPC を作成したとき、メインルートテーブルが自動的に作成される。</p>
+<p>そのため、これは Terraform の管理外である。</p>
 <p><br></p>
 <h2 id="amazon-s3">Amazon S3<a class="headerlink" href="#amazon-s3" title="Permanent link">&para;</a></h2>
 <h3 id="resource_15">resource<a class="headerlink" href="#resource_15" title="Permanent link">&para;</a></h3>
 <h4 id="_21">▼ バケットポリシー<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>Amazon S3紐付けられる、自身へのアクセスを制御するためにインラインポリシーのこと。</p>
+<p>Amazon S3 紐付けられる、自身へのアクセスを制御するためにインラインポリシーのこと。</p>
 <p>定義したバケットポリシーは、<code>aws_s3_bucket_policy</code> リソースでロールに紐付けできる。</p>
 <h4 id="alb">▼ ALBアクセスログ<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
-<p>ALBがバケットにログを書き込めるように、『ELBのサービスアカウントID』を許可する必要がある。</p>
+<p>ALB がバケットにログを書き込めるように、『ELB のサービスアカウント ID』を許可する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon S3 bucket policy</span>
@@ -37847,9 +37847,9 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="w">  </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>ALBのアクセスログを送信するバケット内には、自動的に『/AWSLogs/<AWSアカウントID>』の名前でディレクトリを作成する。</p>
-<p>そのため、『<code>arn:aws:s3:::&lt;バケット名&gt;/*</code>』の部分を最小権限として、『<code>arn:aws:s3:::&lt;バケット名&gt;/AWSLogs/&lt;AWSアカウントID&gt;/;*</code>』にしても良い。</p>
-<p>東京リージョンのELBサービスアカウントIDは『<code>582318560864</code>』である。</p>
+<p>ALB のアクセスログを送信するバケット内には、自動的に『/AWSLogs/<AWS アカウント ID>』の名前でディレクトリを作成する。</p>
+<p>そのため、『<code>arn:aws:s3:::&lt;バケット名&gt;/*</code>』の部分を最小権限として、『<code>arn:aws:s3:::&lt;バケット名&gt;/AWSLogs/&lt;AWSアカウントID&gt;/;*</code>』にしてもよい。</p>
+<p>東京リージョンの ELB サービスアカウント ID は『<code>582318560864</code>』である。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions</a></li>
@@ -37869,7 +37869,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="nlb">▼ NLBアクセスログ<a class="headerlink" href="#nlb" title="Permanent link">&para;</a></h4>
-<p>ALBがバケットにログを書き込めるように、『<code>delivery.logs.amazonaws.com</code>』からのリクエストを許可する必要がある。</p>
+<p>ALB がバケットにログを書き込めるように、『<code>delivery.logs.amazonaws.com</code>』からのリクエストを許可する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon S3 bucket policy</span>
@@ -37884,8 +37884,8 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="w">  </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>NLBのアクセスログを送信するバケット内には、自動的に『<code>/AWSLogs/&lt;AWSアカウントID&gt;</code>』の名前でディレクトリを作成する。</p>
-<p>そのため、『<code>arn:aws:s3:::&lt;バケット名&gt;/*</code>』の部分を最小権限として、『<code>arn:aws:s3:::&lt;バケット名&gt;/AWSLogs/&lt;AWSアカウントID&gt;/;*</code>』にしても良い。</p>
+<p>NLB のアクセスログを送信するバケット内には、自動的に『<code>/AWSLogs/&lt;AWSアカウントID&gt;</code>』の名前でディレクトリを作成する。</p>
+<p>そのため、『<code>arn:aws:s3:::&lt;バケット名&gt;/*</code>』の部分を最小権限として、『<code>arn:aws:s3:::&lt;バケット名&gt;/AWSLogs/&lt;AWSアカウントID&gt;/;*</code>』にしてもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;Version&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;Statement&quot;</span><span class="p p-Indicator">:</span>
@@ -37938,7 +37938,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="1terraform-plan"><code>(1)</code>terraform plan`コマンド時に非表示<a class="headerlink" href="#1terraform-plan" title="Permanent link">&para;</a></h4>
-<p>CIの <code>terraform plan</code> コマンド時に値が公開されないように <code>output</code> ブロックで <code>sensitive</code> オプションを有効化する。</p>
+<p>CI の <code>terraform plan</code> コマンド時に値が公開されないように <code>output</code> ブロックで <code>sensitive</code> オプションを有効化する。</p>
 <p><br></p>
 <h2 id="amazon-vpc">Amazon VPC<a class="headerlink" href="#amazon-vpc" title="Permanent link">&para;</a></h2>
 <h3 id="resource_16">resource<a class="headerlink" href="#resource_16" title="Permanent link">&para;</a></h3>
@@ -38123,8 +38123,8 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="1-awsfor_each"><code>(1)</code> 冗長化されたAWSリソースをfor_each関数で作成<a class="headerlink" href="#1-awsfor_each" title="Permanent link">&para;</a></h4>
-<p>AZを上長化している場合、VPC内のサブネットと関連のAWSリソース (ルートテーブル、NAT Gateway、Elastic IPなど) も冗長化することになる。</p>
-<p>各AZをキーとするマップ型で定義しておいた変数を <code>for_each</code> 引数に渡し、AWSリソースをAZごとに作成する。</p>
+<p>AZ を上長化している場合、VPC 内のサブネットと関連の AWS リソース (ルートテーブル、NAT Gateway、Elastic IP など) も冗長化することになる。</p>
+<p>各 AZ をキーとするマップ型で定義しておいた変数を <code>for_each</code> 引数に渡し、AWS リソースを AZ ごとに作成する。</p>
 <p><br></p>
 <h2 id="amazon-vpc-endpoint">Amazon VPC endpoint<a class="headerlink" href="#amazon-vpc-endpoint" title="Permanent link">&para;</a></h2>
 <h3 id="resource_17">resource<a class="headerlink" href="#resource_17" title="Permanent link">&para;</a></h3>
@@ -38212,7 +38212,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <h3 id="resource_18">resource<a class="headerlink" href="#resource_18" title="Permanent link">&para;</a></h3>
 <h4 id="rule">▼ ruleブロック<a class="headerlink" href="#rule" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>API Gateway用のWAFに、特定のユーザーエージェントを拒否するルールを設定する。</p>
+<p>API Gateway 用の WAF に、特定のユーザーエージェントを拒否するルールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_wafv2_web_acl&quot;</span><span class="w"> </span><span class="nv">&quot;api_gateway&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">rule</span><span class="w"> </span><span class="p">{</span>
@@ -38265,7 +38265,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>API Gateway用のWAFに、特定のグローバルIPアドレスを拒否するルールを設定する。</p>
+<p>API Gateway 用の WAF に、特定のグローバル IP アドレスを拒否するルールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_wafv2_web_acl&quot;</span><span class="w"> </span><span class="nv">&quot;api_gateway&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">rule</span><span class="w"> </span><span class="p">{</span>
@@ -38307,7 +38307,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>API Gateway用のWAFに、SQLインジェクションを拒否するマネージドルールを設定する。</p>
+<p>API Gateway 用の WAF に、SQL インジェクションを拒否するマネージドルールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_wafv2_web_acl&quot;</span><span class="w"> </span><span class="nv">&quot;api_gateway&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">rule</span><span class="w"> </span><span class="p">{</span>
@@ -38349,7 +38349,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>特定のパスのみAWSManagedRulesSQLiRuleSetの対象から除外する。</p>
+<p>特定のパスのみ AWSManagedRulesSQLiRuleSet の対象から除外する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_wafv2_web_acl&quot;</span><span class="w"> </span><span class="nv">&quot;api_gateway&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">rule</span><span class="w"> </span><span class="p">{</span>
@@ -38414,8 +38414,8 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>ALB用のWAFに、APIキーまたはBearerトークンをOR条件ルールを設定する。</p>
-<p>あくまで例としてで、本来であれば、異なるルールとしたほうが良い。</p>
+<p>ALB 用の WAF に、API キーまたは Bearer トークンを OR 条件ルールを設定する。</p>
+<p>あくまで例としてで、本来であれば、異なるルールとしたほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_wafv2_web_acl&quot;</span><span class="w"> </span><span class="nv">&quot;api_gateway&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="c1">  # x-api-keyヘッダーにAPIキーを含むリクエストを許可します。</span>
@@ -38487,53 +38487,53 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="ip">▼ IPセットの依存関係<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
-<p>WAFのIPセットと他設定の依存関係に癖がある。</p>
-<p>新しいIPセットへの付け換えと古いIPセットの削除を同時にデプロイしないようにする。</p>
-<p>もし同時に行った場合、Terraformは古いIPセットの削除処理を先に実行するが、これはWAFに紐付いているため、ここでエラーが起こってしまう。</p>
-<p>そのため、IPセットを新しく再設定する場合は、以下の通り <code>2</code> 個の段階に分けてデプロイする。</p>
-<p>補足として、IPセットの名前を変更する場合は、更新処理ではなく削除を伴う再作成処理が実行されるため注意する。</p>
-<p>(1) 新しいIPセットのresourceを実装し、ACLに紐付け、デプロイする。</p>
-<p>(2)古いIPセットのresourceを削除し、デプロイする。</p>
-<p>もし、これを忘れてしまった場合は、画面上で適当なIPセットに付け換えて、削除処理を実行可能にする。</p>
+<p>WAF の IP セットと他設定の依存関係に癖がある。</p>
+<p>新しい IP セットへの付け換えと古い IP セットの削除を同時にデプロイしないようにする。</p>
+<p>もし同時に行った場合、Terraform は古い IP セットの削除処理を先に実行するが、これは WAF に紐付いているため、ここでエラーが起こってしまう。</p>
+<p>そのため、IP セットを新しく再設定する場合は、以下の通り <code>2</code> 個の段階に分けてデプロイする。</p>
+<p>補足として、IP セットの名前を変更する場合は、更新処理ではなく削除を伴う再作成処理が実行されるため注意する。</p>
+<p>(1) 新しい IP セットの resource を実装し、ACL に紐付け、デプロイする。</p>
+<p>(2)古い IP セットの resource を削除し、デプロイする。</p>
+<p>もし、これを忘れてしまった場合は、画面上で適当な IP セットに付け換えて、削除処理を実行可能にする。</p>
 <p><br></p>
 <h2 id="terraformaws">Terraform管理外のAWSリソース<a class="headerlink" href="#terraformaws" title="Permanent link">&para;</a></h2>
 <h3 id="_22">判断基準<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<p>以下の理由で、個人的には、一部のAWSリソースではTerraformを使用しないほうが良い。</p>
-<p>代わりに、コンソール画面やAWS CLIでAWSリソースを構築する。</p>
+<p>以下の理由で、個人的には、一部の AWS リソースでは Terraform を使用しないほうがよい。</p>
+<p>代わりに、コンソール画面や AWS CLI で AWS リソースを構築する。</p>
 <ul>
-<li>ビジネスロジックを持つAWSリソースでは、継続的な改善のサイクルが早い (ロジックの変更頻度が高い) ため、リリースまでに時間がかかるTerraformで管理すると、このサイクルを阻害してしまう：<ul>
-<li>API Gateway、IAMユーザー/グループ、IAMユーザー/グループに関連するロール/ポリシーなど</li>
+<li>ビジネスロジックを持つ AWS リソースでは、継続的な改善のサイクルが早い (ロジックの変更頻度が高い) ため、リリースまでに時間がかかる Terraform で管理すると、このサイクルを阻害してしまう：<ul>
+<li>API Gateway、IAM ユーザー/グループ、IAM ユーザー/グループに関連するロール/ポリシーなど</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な変数やファイルを管理できない。<code>tfstate</code> ファイルに書き込まれないようにもする：<ul>
-<li>EC2の秘密鍵、パラメーターストアなど</li>
+<li>セキュリティを含む AWS リソースでは、Terraform のリポジトリで機密な変数やファイルを管理できない。<code>tfstate</code> ファイルに書き込まれないようにもする：<ul>
+<li>EC2 の秘密鍵、パラメーターストアなど</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>Terraformによる初期作成時に必要であり、それがないとそもそも <code>terraform apply</code> コマンドできない：<ul>
-<li>Terraform用IAMユーザー、tfstateを管理するAmazon S3バケットなど</li>
-<li>これに関しては、CloudFormationで作成しても良い。</li>
+<li>Terraform による初期作成時に必要であり、それがないとそもそも <code>terraform apply</code> コマンドできない：<ul>
+<li>Terraform 用 IAM ユーザー、tfstate を管理する Amazon S3 バケットなど</li>
+<li>これに関しては、CloudFormation で作成してもよい。</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>Terraformの誤操作で削除してはいけないAWSリソースでは、Terraformで管理しないことにより、削除を防げる：<ul>
-<li>tfstateを管理するAmazon S3バケットなど</li>
+<li>Terraform の誤操作で削除してはいけない AWS リソースでは、Terraform で管理しないことにより、削除を防げる：<ul>
+<li>tfstate を管理する Amazon S3 バケットなど</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>Terraformで特定のAWSリソースを作成すると、それに伴って自動的に作成されてしまう：<ul>
-<li>ENIなど</li>
+<li>Terraform で特定の AWS リソースを作成すると、それに伴って自動的に作成されてしまう：<ul>
+<li>ENI など</li>
 </ul>
 </li>
 </ul>
 <ul>
-<li>そもそもAWSがAPIを公開していないことが理由で、Terraformで実装できない：<ul>
-<li>Chatbotなど</li>
+<li>そもそも AWS が API を公開していないことが理由で、Terraform で実装できない：<ul>
+<li>Chatbot など</li>
 </ul>
 </li>
 </ul>
@@ -38550,22 +38550,22 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <tbody>
 <tr>
 <td>AWS Certificate Manager</td>
-<td>全て</td>
-<td><code>terraform apply</code> コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できるオプションを使用する場合には、Terraformで管理しても良い。</td>
+<td>すべて</td>
+<td><code>terraform apply</code> コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できるオプションを使用する場合には、Terraformで管理してもよい。</td>
 </tr>
 <tr>
 <td>Amazon API Gateway、紐付くVPCリンク</td>
-<td>全て</td>
+<td>すべて</td>
 <td>ビジネスロジックを持ち、ロジックの変更頻度が高い。バックエンドチームがスムーズにAPIを作成できるようになる。</td>
 </tr>
 <tr>
 <td>AWS Chatbot</td>
-<td>全て</td>
+<td>すべて</td>
 <td>AWSがAPIを公開していないため、Terraformで作成できない。</td>
 </tr>
 <tr>
 <td>AWS DynamoDB</td>
-<td>全て</td>
+<td>すべて</td>
 <td><code>state.lock</code> ファイルをテーブルとして管理する。</td>
 </tr>
 <tr>
@@ -38575,7 +38575,7 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 </tr>
 <tr>
 <td>AWS ENI</td>
-<td>全て</td>
+<td>すべて</td>
 <td>特定のAWSリソース (ALB、セキュリティグループなど) の作成に伴って、自動的に作成されるため、Terraformで管理できない。</td>
 </tr>
 <tr>
@@ -38590,12 +38590,12 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 </tr>
 <tr>
 <td>AWS IAMユーザー</td>
-<td>全て</td>
+<td>すべて</td>
 <td>ビジネスロジックを持ち、ロジックの変更頻度が高い。</td>
 </tr>
 <tr>
 <td>AWS IAMユーザーグループ</td>
-<td>全て</td>
+<td>すべて</td>
 <td>ビジネスロジックを持ち、ロジックの変更頻度が高い。</td>
 </tr>
 <tr>
@@ -38630,20 +38630,20 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 </tr>
 <tr>
 <td>Amazon SES</td>
-<td>全て</td>
-<td><code>terraform apply</code> コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できる場合には、Terraformで管理しても良い。</td>
+<td>すべて</td>
+<td><code>terraform apply</code> コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できる場合には、Terraformで管理してもよい。</td>
 </tr>
 <tr>
 <td>パラメーターストア</td>
-<td>全て</td>
-<td>セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な変数やファイルを管理するわけにはいかず、また <code>tfstate</code> ファイルに書き込まれてしまうため。パラメーターストアの代わりに、キーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) を使用しつつ、暗号化された状態でリポジトリで管理しても良い。</td>
+<td>すべて</td>
+<td>セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な変数やファイルを管理するわけにはいかず、また <code>tfstate</code> ファイルに書き込まれてしまうため。パラメーターストアの代わりに、キーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) を使用しつつ、暗号化された状態でリポジトリで管理してもよい。</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
 <h3 id="aws-cli">AWS CLIによるセットアップ例<a class="headerlink" href="#aws-cli" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-s3_1">▼ Amazon S3バケット<a class="headerlink" href="#amazon-s3_1" title="Permanent link">&para;</a></h4>
-<p>以下のコマンドを実行し、<code>tfstate</code> ファイル用のAmazon S3バケットを作成する。</p>
+<p>以下のコマンドを実行し、<code>tfstate</code> ファイル用の Amazon S3 バケットを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">AWS_REGION</span><span class="o">=</span><span class="s2">&quot;ap-northeast-1&quot;</span>
 <span class="nv">PREFIX</span><span class="o">=</span>foo
 <span class="nv">ENV</span><span class="o">=</span>prd
@@ -38685,8 +38685,8 @@ aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-encryption<sp
 <span class="s1">  }&#39;</span>
 </code></pre></div>
 <h4 id="dynamodb">▼ DynamoDB<a class="headerlink" href="#dynamodb" title="Permanent link">&para;</a></h4>
-<p>DynamoDBでは、<code>state.lock</code> ファイルをテーブルとして管理できる。</p>
-<p>以下のコマンドを実行し、<code>state.lock</code> ファイル用のDynamoDBを作成する。</p>
+<p>DynamoDB では、<code>state.lock</code> ファイルをテーブルとして管理できる。</p>
+<p>以下のコマンドを実行し、<code>state.lock</code> ファイル用の DynamoDB を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">AWS_REGION</span><span class="o">=</span><span class="s2">&quot;ap-northeast-1&quot;</span>
 <span class="nv">PREFIX</span><span class="o">=</span>foo
 <span class="nv">ENV</span><span class="o">=</span>prd
@@ -38708,10 +38708,10 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
 <p><br></p>
 <h3 id="tfstate-awsterraform"><code>tfstate</code> ファイルに関連するAWSリソースをTerraformで管理する<a class="headerlink" href="#tfstate-awsterraform" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-s3_2">▼ Amazon S3バケットの場合<a class="headerlink" href="#amazon-s3_2" title="Permanent link">&para;</a></h4>
-<p><code>tfstate</code> ファイルを管理するAmazon S3バケットをTerraformで管理しないプラクティスが一般的ではあるが、実はTerraformで管理する裏技がある。</p>
-<p>それは、<code>tfstate</code> ファイルのAmazon S3バケットのみを、別のローカルバックエンドの <code>tfsftate</code> ファイルで管理する方法である。</p>
-<p>このローカルバックエンドの <code>tfstate</code> ファイルが管理するAmazon S3バケットをリモートバックエンドとして、メインの <code>tfstate</code> ファイルを配置する。</p>
-<p>もちろん、ローカルバックエンドの <code>tfstate</code> ファイルがAmazon S3バケットに配置されたメインの <code>tfstate</code> ファイルを検知しないように、無視する必要がある。</p>
+<p><code>tfstate</code> ファイルを管理する Amazon S3 バケットを Terraform で管理しないプラクティスが一般的ではあるが、実は Terraform で管理する裏技がある。</p>
+<p>それは、<code>tfstate</code> ファイルの Amazon S3 バケットのみを、別のローカルバックエンドの <code>tfsftate</code> ファイルで管理する方法である。</p>
+<p>このローカルバックエンドの <code>tfstate</code> ファイルが管理する Amazon S3 バケットをリモートバックエンドとして、メインの <code>tfstate</code> ファイルを配置する。</p>
+<p>もちろん、ローカルバックエンドの <code>tfstate</code> ファイルが Amazon S3 バケットに配置されたメインの <code>tfstate</code> ファイルを検知しないように、無視する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">terraform</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">backend</span><span class="w"> </span><span class="nv">&quot;local&quot;</span><span class="w"> </span><span class="p">{}</span>
 
@@ -38766,7 +38766,7 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="dynamodb_1">▼ DynamoDBの場合<a class="headerlink" href="#dynamodb_1" title="Permanent link">&para;</a></h4>
-<p><code>state.lock</code> ファイルを管理するDynamoDBをTerraformで管理しないプラクティスが一般的ではあるが、実はTerraformで管理する裏技がある。</p>
+<p><code>state.lock</code> ファイルを管理する DynamoDB を Terraform で管理しないプラクティスが一般的ではあるが、実は Terraform で管理する裏技がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_dynamodb_table&quot;</span><span class="w"> </span><span class="nv">&quot;tfstate&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;tfstate-lock-table&quot;</span>
 <span class="w">  </span><span class="na">billing_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;PAY_PER_REQUEST&quot;</span>
@@ -38781,8 +38781,8 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
 <h2 id="aws_5">複数のAWSリソースに共通のプラクティス<a class="headerlink" href="#aws_5" title="Permanent link">&para;</a></h2>
 <h3 id="_24">環境変数<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="az">▼ AZに関するマップ型データ<a class="headerlink" href="#az" title="Permanent link">&para;</a></h4>
-<p>AZのデータ自体をマップ型データで用意しておく。</p>
-<p>また、AZごとに異なる値を設定できるように、その他のデータではAZ名をキー名としたマップデータを定義しておく。</p>
+<p>AZ のデータ自体をマップ型データで用意しておく。</p>
+<p>また、AZ ごとに異なる値を設定できるように、その他のデータでは AZ 名をキー名としたマップデータを定義しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">availability_zones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;a&quot;, c = &quot;c&quot;</span><span class="w"> </span><span class="p">}</span>
 
 <span class="c1"># ---------------------------------------------</span>
@@ -38800,11 +38800,11 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
 </code></pre></div>
 <p><br></p>
 <h3 id="aws_6">削除保護機能のあるAWSリソース<a class="headerlink" href="#aws_6" title="Permanent link">&para;</a></h3>
-<p>削除保護設定のあるAWSリソースに癖がある。</p>
+<p>削除保護設定のある AWS リソースに癖がある。</p>
 <p>削除保護の無効化と <code>resource</code> ブロックの削除を同時にデプロイしないようにする。</p>
 <p>もし同時に行った場合、削除処理を先に実行するが、削除は保護されたままなため、エラーになってしまう。</p>
 <p>エラーになってしまう。</p>
-<p>そのため、このAWSリソースを削除するときは、以下の通り <code>2</code> 個の段階に分けてデプロイする。</p>
+<p>そのため、この AWS リソースを削除するときは、以下の通り <code>2</code> 個の段階に分けてデプロイする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -38859,7 +38859,7 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -38870,11 +38870,11 @@ aws<span class="w"> </span>dynamodb<span class="w"> </span>create-table<span cla
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

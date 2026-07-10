@@ -34619,7 +34619,7 @@
 <p><br></p>
 <h3 id="_4">キャッシュメモリとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 一次キャッシュメモリと二次キャッシュメモリ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>CPUとメインメモリの間に、キャッシュメモリを何段階か配置し、CPUとメインメモリの間の読み出しと書き込みの処理速度の差を緩和させる。</p>
+<p>CPU とメインメモリの間に、キャッシュメモリを何段階か配置し、CPU とメインメモリの間の読み出しと書き込みの処理速度の差を緩和させる。</p>
 <p><img alt="メモリキャッシュ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリキャッシュ.gif" /></p>
 <p>実際に、タスクマネージャのパフォーマンスタブで、<code>n</code> 次キャッシュメモリがどのくらい使われているのかを確認できる。</p>
 <p><img alt="キャッシュメモリの実例" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/キャッシュメモリの実例.png" /></p>
@@ -34634,23 +34634,23 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>CPUは、命令をメインメモリに書き込む。</p>
+<p>CPU は、命令をメインメモリに書き込む。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>CPUは、メインメモリから命令を読み出す。</p>
+<p>CPU は、メインメモリから命令を読み出す。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>CPUは、二次キャッシュメモリに書き込む。</p>
+<p>CPU は、二次キャッシュメモリに書き込む。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>CPUは、一次キャッシュメモリに書き込む。</p>
+<p>CPU は、一次キャッシュメモリに書き込む。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>CPUは、命令する。</p>
+<p>CPU は、命令する。</p>
 </dd>
 </dl>
 <p><img alt="メモリとキャッシュメモリ_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_1.jpg" /></p>
@@ -34659,11 +34659,11 @@
 <p><br></p>
 <h3 id="_9">キャッシュメモリへの書き込み方式の種類<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="write-throught">▼ Write-throught方式<a class="headerlink" href="#write-throught" title="Permanent link">&para;</a></h4>
-<p>CPUは、命令をメインメモリとキャッシュメモリの両方に書き込む。</p>
+<p>CPU は、命令をメインメモリとキャッシュメモリの両方に書き込む。</p>
 <p>常にメインメモリとキャッシュメモリの内容が一致している状態を確保できるが、メモリへの書き込みが頻繁に行われるので遅い。</p>
 <p><img alt="Write-through方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Write-through方式.jpg" /></p>
 <h4 id="write-back">▼ Write-back方式<a class="headerlink" href="#write-back" title="Permanent link">&para;</a></h4>
-<p>CPUは、キャッシュメモリのみに書き込む。</p>
+<p>CPU は、キャッシュメモリのみに書き込む。</p>
 <p>次に、キャッシュメモリがメインメモリに書き込む。</p>
 <p>メインメモリとキャッシュメモリの内容が一致している状態を必ずしも確保できないが、メインメモリへの書き込み回数が少ないため速い</p>
 <p><img alt="Write-back方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Write-back方式.jpg" /></p>
@@ -34692,7 +34692,7 @@
 <p><br></p>
 <h3 id="_12">クライアントサイドキャッシュ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>クライアントのブラウザの使用するメモリ上で、レスポンスされた静的コンテンツのキャッシュを作成する。</p>
-<p>Chromeの場合は、CacheStorageに保管される。</p>
+<p>Chrome の場合は、CacheStorage に保管される。</p>
 <p><img alt="client_side_cache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client_side_cache.png" /></p>
 <blockquote>
 <ul>
@@ -34709,11 +34709,11 @@
 <p>記入中...</p>
 <h4 id="web">▼ Webサーバーキャッシュ<a class="headerlink" href="#web" title="Permanent link">&para;</a></h4>
 <p>リバースプロキシサーバーの使用するメモリ上で、レスポンスされた静的コンテンツのキャッシュを作成する。</p>
-<p>AWSでは、Amazon CloudFrontにおけるキャッシュがこれに相当する。</p>
+<p>AWS では、Amazon CloudFront におけるキャッシュがこれに相当する。</p>
 <h4 id="_15">▼ アプリケーションサーバーキャッシュ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>オブジェクトのプロパティの使用するメモリ上で、関数処理結果のキャッシュを作成する。</p>
 <p>必要な場合、これを取り出して再利用する。</p>
-<p>Laravelのキャッシュ機能については、以下のリンクを参考にせよ。</p>
+<p>Laravel のキャッシュ機能については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/cache.html">https://readouble.com/laravel/8.x/ja/cache.html</a></li>
@@ -34739,7 +34739,7 @@
 </tr>
 <tr>
 <td>緯度経度/フリーワードに基づく検索結果ページ</td>
-<td>パターン数が多く、キャッシュで全てのページを網羅することが現実的でない。</td>
+<td>パターン数が多く、キャッシュですべてのページを網羅することが現実的でない。</td>
 </tr>
 </tbody>
 </table>
@@ -34747,7 +34747,7 @@
 <h2 id="02-03">02-03. クライアントサイドキャッシュの仕組み<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
 <h3 id="_18">クライアントサイドキャッシュ使用/不使用の検証<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="etag">▼ ETag値による検証<a class="headerlink" href="#etag" title="Permanent link">&para;</a></h4>
-<p>ブラウザは、Etag値を使用してキャッシュの実現する。</p>
+<p>ブラウザは、Etag 値を使用してキャッシュの実現する。</p>
 <p><img alt="EtagとIf-NoneMach" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ETagとIf-None-Match.png" /></p>
 <h4 id="1"><code>(1)</code> キャッシュの有効時間が切れるまで<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <dl>
@@ -34757,15 +34757,15 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>サーバーは、特定のアルゴリズムを使用してハッシュ値を作成し、これをコンテンツのETag値とする。</p>
+<p>サーバーは、特定のアルゴリズムを使用してハッシュ値を作成し、これをコンテンツの ETag 値とする。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>サーバーは、<code>ETag</code> ヘッダーにETag値を設定し、コンテンツとともにレスポンスをクライアントに送信する。</p>
+<p>サーバーは、<code>ETag</code> ヘッダーに ETag 値を設定し、コンテンツとともにレスポンスをクライアントに送信する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>クライアントのブラウザは、コンテンツとETag値をキャッシュする。</p>
+<p>クライアントのブラウザは、コンテンツと ETag 値をキャッシュする。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -34785,14 +34785,14 @@
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>サーバーは、送信されたETag値とコンテンツのETag値を比較検証する。</p>
+<p>サーバーは、送信された ETag 値とコンテンツの ETag 値を比較検証する。</p>
 </dd>
 </dl>
 <h4 id="3"><code>(3)</code> 検証により、クライアントサイドキャッシュを使用<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ETag値の比較検証の結果、一致する。</p>
+<p>ETag 値の比較検証の結果、一致する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -34807,26 +34807,26 @@
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ETag値の比較検証の結果、一致しない。</p>
+<p>ETag 値の比較検証の結果、一致しない。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>サーバーは、両方の値が一致しない場合、ETag値を作成し、これをコンテンツの新しいETag値とする。</p>
+<p>サーバーは、両方の値が一致しない場合、ETag 値を作成し、これをコンテンツの新しい ETag 値とする。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>サーバーは、<code>ETag</code> ヘッダーにETag値を設定し、コンテンツとともにレスポンスをクライアントに送信する。</p>
+<p>サーバーは、<code>ETag</code> ヘッダーに ETag 値を設定し、コンテンツとともにレスポンスをクライアントに送信する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>クライアントのブラウザは、コンテンツとETag値をキャッシュする。</p>
+<p>クライアントのブラウザは、コンテンツと ETag 値をキャッシュする。</p>
 </dd>
 </dl>
 <p><br></p>
 <h3 id="_19">クライアントサイドキャッシュ時間の定義<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ クライアントサイドキャッシュなし<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>レスポンスヘッダーにて、<code>Cache-Control</code> ヘッダーに <code>no-store</code> を設定する。</p>
-<p>この場合、ETag値が無効になり、クライアントサイドキャッシュを使用しなくなる。</p>
+<p>この場合、ETag 値が無効になり、クライアントサイドキャッシュを使用しなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 200</span>
 <span class="nn">---</span>
 <span class="nt">Cache-Control</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">no-store</span>
@@ -34836,8 +34836,8 @@
 </code></pre></div>
 <h4 id="_21">▼ クライアントサイドキャッシュあり (有効時間あり)<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>レスポンスヘッダーにて、<code>Cache-Control</code> ヘッダーに <code>max-age=31536000</code> を設定する。</p>
-<p>Expireヘッダーに有効時間を設定しても良いが、<code>Cache-Control</code> ヘッダーの有効時間が優先される。</p>
-<p>この場合、有効時間を過ぎると、ETag値を比較検証するようになる。</p>
+<p>Expire ヘッダーに有効時間を設定してもよいが、<code>Cache-Control</code> ヘッダーの有効時間が優先される。</p>
+<p>この場合、有効時間を過ぎると、ETag 値を比較検証するようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 200</span>
 <span class="nn">---</span>
 <span class="nt">Cache-Control</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">max-age=31536000</span>
@@ -34847,7 +34847,7 @@
 </code></pre></div>
 <h4 id="_22">▼ クライアントサイドキャッシュあり (有効時間なし)<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>レスポンスヘッダーにて、<code>Cache-Control</code> ヘッダーに <code>max-age=0</code> を設定する。</p>
-<p>また、Expireヘッダーに期限切れの日時を設定する。この場合、毎回のリクエスト時にETag値を比較検証するようになる。</p>
+<p>また、Expire ヘッダーに期限切れの日時を設定する。この場合、毎回のリクエスト時に ETag 値を比較検証するようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 200</span>
 <span class="nn">---</span>
 <span class="nt">Cache-Control</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">max-age=0</span>
@@ -34865,16 +34865,16 @@
 <p><br></p>
 <h2 id="04-gpuvram">04. GPUとVRAM<a class="headerlink" href="#04-gpuvram" title="Permanent link">&para;</a></h2>
 <h3 id="gpu">GPU<a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h3>
-<p>CPUより少ないパラメーターで、より高速に並列処理を実行できる。</p>
+<p>CPU より少ないパラメーターで、より高速に並列処理を実行できる。</p>
 <p>画像処理や機械学習処理に的する。</p>
 <p><br></p>
 <h3 id="vram">VRAM<a class="headerlink" href="#vram" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <p><br></p>
 <h3 id="_24">サイズ<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<p>GPUとVRAMのサイズによって、扱うことのできる解像度と色数が決まる。</p>
+<p>GPU と VRAM のサイズによって、扱うことのできる解像度と色数が決まる。</p>
 <p><img alt="VRAM" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VRAM.jpg" /></p>
-<p>富士通PCのGPUとVRAMのサイズは、以下の通り。</p>
+<p>富士通 PC の GPU と VRAM のサイズは、以下の通り。</p>
 <p><img alt="本パソコンのVRAMスペック" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/本パソコンのVRAMスペック.jpg" /></p>
 <p>色数によって、<code>1</code> ドット当たり何ビットを要するが異なる。</p>
 <blockquote>
@@ -34904,7 +34904,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34915,11 +34915,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

@@ -33228,7 +33228,7 @@
 <td>Kubernetes Secret</td>
 <td>コンテナが使用する非公開設定 (例：DB認証情報)</td>
 <td>Kubernetesリポジトリ内のSOPS</td>
-<td>ファイルや環境変数として、コンテナに設定を渡せる。設定をbase64方式エンコードし、管理する。機密な設定を平文で管理することは危険であり、Secretで管理するほうが良い。</td>
+<td>ファイルや環境変数として、コンテナに設定を渡せる。設定をbase64方式エンコードし、管理する。機密な設定を平文で管理することは危険であり、Secretで管理するほうがよい。</td>
 </tr>
 </tbody>
 </table>
@@ -33243,43 +33243,43 @@
 <p>共有化したロジックをホストマシンのエージェントやカーネル機能として提供します。</p>
 <p><a href="https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14">https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14</a></p>
 <h2 id="microservice-chassis">Microservice chassisパターン<a class="headerlink" href="#microservice-chassis" title="Permanent link">&para;</a></h2>
-<p>アプリケーションの中でも非機能に近いロジックは、マイクロサービスに依らず、同じような実装になりがちである。</p>
+<p>アプリケーションのなかでも非機能に近いロジックは、マイクロサービスに依らず、同じような実装になりがちである。</p>
 <p>各マイクロサービスへ横断的に提供できるよう、共有リポジトリに切り分ける。</p>
 <p><a href="https://microservices.io/patterns/microservice-chassis.html">Microservices Pattern: Pattern: Microservice chassis</a></p>
 <h3 id="_5">ロギングツール<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>ロギングツールのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
-<p>ログの構造や属性 (メッセージ、トレースID、重要度、タイムスタンプ、 ログステータス、ユーザーエージェントなど) はマイクロサービス間で共有化するとよいです。</p>
+<p>ログの構造や属性 (メッセージ、トレース ID、重要度、タイムスタンプ、 ログステータス、ユーザーエージェントなど) はマイクロサービス間で共有化するとよいです。</p>
 <p>ログの構造や属性が各マイクロサービスで同じであると、ログクエリのロジックを統一できるため、マイクロサービス単位での分析可視化やアラート検知がしやすくなります。</p>
-<p>そこで、ロギングツールは共有リポジトリで提供し、各リポジトリが使用 (例：Goならimport) できるようにします。</p>
+<p>そこで、ロギングツールは共有リポジトリで提供し、各リポジトリが使用 (例：Go なら import) できるようにします。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-共有ロジック.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/8d917ef9-f01b-4759-8568-5c85c0ac02e8.png" /></p>
 <h3 id="_6">計装ツール<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>計装ツールのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
-<p>計装ツールのセットアップ処理や付与する属性 (マイクロサービス名、DB名、実行環境名など) はマイクロサービス間で共有化するとよいです。</p>
+<p>計装ツールのセットアップ処理や付与する属性 (マイクロサービス名、DB 名、実行環境名など) はマイクロサービス間で共有化するとよいです。</p>
 <p>セットアップ処理はやや煩雑な一方で、実装がマイクロサービスに依らないため、共有化できます。</p>
 <p>また特にトレーシングでは、スパンに付与すべき属性を統一すると、トレーシングによるトラブルシューティングが効率的になります。</p>
-<p>そこで、計装ツールは共有リポジトリで提供し、各リポジトリが使用 (例：Goならimport) できるようにします。</p>
+<p>そこで、計装ツールは共有リポジトリで提供し、各リポジトリが使用 (例：Go なら import) できるようにします。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-共有ロジック.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/0bc69bd0-e7f1-4a5e-96e3-c59cb3154703.png" /></p>
 <h3 id="ci">CI設定<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h3>
-<p>CI設定のコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
-<p>CIの設定ファイルは、実装がマイクロサービスに依らないため、共有化できます。</p>
-<p>各リポジトリが使用 (例：Goならimport) できるようにします。</p>
+<p>CI 設定のコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
+<p>CI の設定ファイルは、実装がマイクロサービスに依らないため、共有化できます。</p>
+<p>各リポジトリが使用 (例：Go なら import) できるようにします。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI設定.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI設定.drawio.png" /></p>
 <h3 id="cd">CD設定<a class="headerlink" href="#cd" title="Permanent link">&para;</a></h3>
-<p>CD設定のコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
-<p>ArgoCDを採用している場合、ArgoCDのルートApplicationをプラットフォームリポジトリ、各チームの親Applicationを共有リポジトに配置します。</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png" /></p>
+<p>CD 設定のコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
+<p>ArgoCD を採用している場合、ArgoCD のルート Application をプラットフォームリポジトリ、各チームの親 Application を共有リポジトに配置します。</p>
+<p><img alt="DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD 設定.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CD設定.drawio (1).png" /></p>
 <h3 id="rpc-api">RPC-API開発ツール<a class="headerlink" href="#rpc-api" title="Permanent link">&para;</a></h3>
-<p>RPC-API開発ツールのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
-<p>gRPCでは、クライアントとサーバーの両方で、サービス定義ファイル (<code>proto</code> ファイル) から作成したpbファイルを使用しなければなりません。</p>
-<p>各リポジトリでpbファイルを作成するような運用であると、サービス定義ファイルの変更時に、各リポジトリでpbファイルやAPI仕様書を作成しなければならず、管理が煩雑になります。</p>
+<p>RPC-API 開発ツールのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
+<p>gRPC では、クライアントとサーバーの両方で、サービス定義ファイル (<code>proto</code> ファイル) から作成した pb ファイルを使用しなければなりません。</p>
+<p>各リポジトリで pb ファイルを作成するような運用であると、サービス定義ファイルの変更時に、各リポジトリで pb ファイルや API 仕様書を作成しなければならず、管理が煩雑になります。</p>
 <p>そこで、サービス定義ファイルは共有リポジトリで提供し、またサービス定義ファイルから必要なものを自動的に作成できるようにします。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-API開発.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/6b14a262-71fb-4252-b426-b771270bf369.png" /></p>
 <p><a href="https://lab.mo-t.com/blog/protocol-buffers">Protocol Buffersの一元管理方法 | MoT Lab (GO Inc. Engineering Blog)</a></p>
 <h3 id="restful-api">RESTful-API開発ツール<a class="headerlink" href="#restful-api" title="Permanent link">&para;</a></h3>
-<p>RESTful-API開発ツールのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
+<p>RESTful-API 開発ツールのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-API開発.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/655351ac-0c0e-4640-9bb2-69484d16728f.png" /></p>
 <h3 id="iac">IaC<a class="headerlink" href="#iac" title="Permanent link">&para;</a></h3>
-<p>TerraformやAnsibleのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
+<p>Terraform や Ansible のコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。</p>
 <p>// ここにポンチ絵</p>
 <h1 id="21">21. リポジトリ分割方法<a class="headerlink" href="#21" title="Permanent link">&para;</a></h1>
 <pre class="mermaid"><code>flowchart LR
@@ -33290,7 +33290,7 @@
 
 </code></pre>
 <h2 id="_7">モノレポパターン<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>全てのマイクロサービスを単一のリポジトリで開発します。</p>
+<p>すべてのマイクロサービスを単一のリポジトリで開発します。</p>
 <h2 id="_8">ポリレポパターン<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>マイクロサービスごとに異なるリポジトリで開発します。</p>
 <p>なお、本記事では、ポリレポパターンを採用します。</p>
@@ -33304,21 +33304,21 @@
 </ul>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリ、K8s、Terraform .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/c7700740-69e9-4cc4-b541-81214f186370.png" /></p>
 <h3 id="kubernetes">Kubernetesリポジトリ群<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
-<p>Kubernetesリソースのコードは占有リポジトリに配置しましょう。</p>
+<p>Kubernetes リソースのコードは占有リポジトリに配置しましょう。</p>
 <ul>
 <li>マイクロサービス</li>
 <li>フロントエンドアプリ</li>
 <li>BFF</li>
-<li>SREツール</li>
+<li>SRE ツール</li>
 </ul>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリ、K8s、Terraform .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/e782458b-12ef-436f-a962-bfd740c342cf.png" /></p>
 <h3 id="terraform">Terraformリポジトリ群<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
-<p>Terraformのコードは占有リポジトリに配置しましょう。</p>
+<p>Terraform のコードは占有リポジトリに配置しましょう。</p>
 <ul>
 <li>マイクロサービス</li>
 <li>フロントエンドアプリ</li>
 <li>BFF</li>
-<li>SREツール</li>
+<li>SRE ツール</li>
 </ul>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリ、K8s、Terraform .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/2bb2b79a-8e43-4f82-942b-1a6572cebe0c.png" /></p>
 <h1 id="22">22. 組織構成<a class="headerlink" href="#22" title="Permanent link">&para;</a></h1>
@@ -33330,10 +33330,10 @@
 
 </code></pre>
 <h2 id="collective-ownership">Collective ownershipパターン<a class="headerlink" href="#collective-ownership" title="Permanent link">&para;</a></h2>
-<p>各チームは任意のコンポーネント (マイクロサービス、フロントエンドアプリ、BFF、SREツール) を共有します。</p>
+<p>各チームは任意のコンポーネント (マイクロサービス、フロントエンドアプリ、BFF、SRE ツール) を共有します。</p>
 <p>任意のコンポーネントを自由に変更できます。</p>
 <h2 id="strong-ownership">Strong ownershipパターン<a class="headerlink" href="#strong-ownership" title="Permanent link">&para;</a></h2>
-<p>1つのチームはコンポーネント (マイクロサービス、フロントエンドアプリ、BFF、SREツール) を占有します。</p>
+<p>1 つのチームはコンポーネント (マイクロサービス、フロントエンドアプリ、BFF、SRE ツール) を占有します。</p>
 <p>他チームの占有するコンポーネントを変更する場合、プルリクエストが必要です。</p>
 <pre class="mermaid"><code>flowchart LR
 
@@ -33412,11 +33412,11 @@
 
 </code></pre>
 <h2 id="ciops">CIOpsパターン<a class="headerlink" href="#ciops" title="Permanent link">&para;</a></h2>
-<p>Kubernetesをマイクロサービスのデプロイプラットフォームとして採用する場合、CIOpsパターンのCI/CDパイプラインはアンチパターンです。</p>
-<p>なお、ここではCIOpsパターンの説明を概説を省略します。</p>
+<p>Kubernetes をマイクロサービスのデプロイプラットフォームとして採用する場合、CIOps パターンの CI/CD パイプラインはアンチパターンです。</p>
+<p>なお、ここでは CIOps パターンの説明を概説を省略します。</p>
 <h2 id="gitops">GitOpsパターン<a class="headerlink" href="#gitops" title="Permanent link">&para;</a></h2>
-<p>Kubernetesをマイクロサービスのデプロイプラットフォームとして採用する場合、GitOpsパターンのCI/CDパイプラインが適切です。</p>
-<p>GitOpsでは、CIパイプラインとCDパイプラインが独立しています。</p>
+<p>Kubernetes をマイクロサービスのデプロイプラットフォームとして採用する場合、GitOps パターンの CI/CD パイプラインが適切です。</p>
+<p>GitOps では、CI パイプラインと CD パイプラインが独立しています。</p>
 <pre class="mermaid"><code>flowchart LR
 
   subgraph "👥 組織"
@@ -33443,13 +33443,13 @@
         end
   end</code></pre>
 <h1 id="23-02-gitops">23-02. GitOpsパターン<a class="headerlink" href="#23-02-gitops" title="Permanent link">&para;</a></h1>
-<p>GitOpsパターンは、以下の独立したCIパイプラインとCDパイプラインからなります。</p>
+<p>GitOps パターンは、以下の独立した CI パイプラインと CD パイプラインからなります。</p>
 <ul>
-<li>アプリリポジトリのCIパイプライン</li>
-<li>KubernetesリポジトリのCIパイプライン</li>
-<li>CDパイプライン</li>
+<li>アプリリポジトリの CI パイプライン</li>
+<li>Kubernetes リポジトリの CI パイプライン</li>
+<li>CD パイプライン</li>
 </ul>
-<p>CI/CDパイプラインのステップは、ここでは以下とします。</p>
+<p>CI/CD パイプラインのステップは、ここでは以下とします。</p>
 <p>ユースケースに合わせて、任意のステップを挿入できます。</p>
 <pre class="mermaid"><code>---
 title: GitOpsパターン
@@ -33480,43 +33480,43 @@ end
 </code></pre>
 <h2 id="_10">リポジトリ種別のパイプライン<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <h3 id="_11">フロントエンドアプリ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>フロントエンドアプリケーションのCI/CDパイプラインは、以下の要素からなります。</p>
+<p>フロントエンドアプリケーションの CI/CD パイプラインは、以下の要素からなります。</p>
 <ul>
-<li>アプリリポジトリのCIパイプライン (１行目)</li>
-<li>KubernetesリポジトリのCIパイプライン (２行目)</li>
-<li>CDパイプライン (３行目)</li>
+<li>アプリリポジトリの CI パイプライン (１行目)</li>
+<li>Kubernetes リポジトリの CI パイプライン (２行目)</li>
+<li>CD パイプライン (３行目)</li>
 </ul>
-<p>CDNを採用している場合は、デプロイ前後で必要な静的ファイルが変わっているかもしれません。</p>
-<p>そのため、ArgoCDによるフロントエンドアプリケーションのデプロイ後に、静的ファイルのキャッシュを削除すべきです。</p>
-<p>また、E2Eツール (例：Playwright) を使用して、実際のユーザーを模した一連の操作を実施し、全てのコンポーネントを対象としたシステムテストを実施すべきです。</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png" /></p>
+<p>CDN を採用している場合は、デプロイ前後で必要な静的ファイルが変わっているかもしれません。</p>
+<p>そのため、ArgoCD によるフロントエンドアプリケーションのデプロイ後に、静的ファイルのキャッシュを削除すべきです。</p>
+<p>また、E2E ツール (例：Playwright) を使用して、実際のユーザーを模した一連の操作を実施し、すべてのコンポーネントを対象としたシステムテストを実施すべきです。</p>
+<p><img alt="DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (フロントエンド).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (フロントエンド).drawio.png" /></p>
 <h3 id="bff">BFF<a class="headerlink" href="#bff" title="Permanent link">&para;</a></h3>
-<p>本記事では、BFFにNginxを採用しています。</p>
-<p>イメージビルド時に、Nginxのベースイメージにモジュール (例：計装モジュール) をインストールする必要があります。</p>
-<p>CI/CDパイプラインは、以下の要素からなります。</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png" /></p>
+<p>本記事では、BFF に Nginx を採用しています。</p>
+<p>イメージビルド時に、Nginx のベースイメージにモジュール (例：計装モジュール) をインストールする必要があります。</p>
+<p>CI/CD パイプラインは、以下の要素からなります。</p>
+<p><img alt="DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (BFF).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF).drawio.png" /></p>
 <h3 id="_12">マイクロサービス<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスのCI/CDパイプラインは、以下の要素からなります。</p>
+<p>マイクロサービスの CI/CD パイプラインは、以下の要素からなります。</p>
 <ul>
-<li>アプリリポジトリのCIパイプライン (１行目)</li>
-<li>KubernetesリポジトリのCIパイプライン (２行目)</li>
-<li>CDパイプライン (３行目)</li>
+<li>アプリリポジトリの CI パイプライン (１行目)</li>
+<li>Kubernetes リポジトリの CI パイプライン (２行目)</li>
+<li>CD パイプライン (３行目)</li>
 </ul>
 <p>デプロイの前後で、マイクロサービスに新しいカラムへの参照ロジックを追加しているかもしれません。</p>
-<p>そのため、ArgoCDによるマイクロサービスのデプロイ前に、DBマイグレーションを実行すべきです。</p>
+<p>そのため、ArgoCD によるマイクロサービスのデプロイ前に、DB マイグレーションを実行すべきです。</p>
 <p>また、ロードテストツール (例：Gatling) を使用して、マイクロサービスアーキテクチャ全体のロードテスト / 回帰テスト、を実施すべきです。</p>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png" /></p>
+<p><img alt="DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (マイクロサービス) .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (マイクロサービス) .drawio.png" /></p>
 <h3 id="sre">SREツール<a class="headerlink" href="#sre" title="Permanent link">&para;</a></h3>
-<p>SREツールは、OSSとしてビルド済みイメージが提供されていることが多いです。</p>
-<p>CI/CDパイプラインは、以下の要素からなります。</p>
+<p>SRE ツールは、OSS としてビルド済みイメージが提供されていることが多いです。</p>
+<p>CI/CD パイプラインは、以下の要素からなります。</p>
 <ul>
-<li>KubernetesリポジトリのCIパイプライン (１行目)</li>
-<li>CDパイプライン (２行目)</li>
+<li>Kubernetes リポジトリの CI パイプライン (１行目)</li>
+<li>CD パイプライン (２行目)</li>
 </ul>
-<p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png" /></p>
+<p><img alt="DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (BFF) .drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CDパイプライン (BFF) .drawio.png" /></p>
 <h2 id="gitops_1">リポジトリ分割パターンに基づくGitOpsパターン<a class="headerlink" href="#gitops_1" title="Permanent link">&para;</a></h2>
 <h3 id="gitops_2">ポリレポベースのGitOpsパターン<a class="headerlink" href="#gitops_2" title="Permanent link">&para;</a></h3>
-<p>ポリレポを採用した場合、各リポジトリにGitOpsパターンのCIパイプラインとCDパイプラインがあります。</p>
+<p>ポリレポを採用した場合、各リポジトリに GitOps パターンの CI パイプラインと CD パイプラインがあります。</p>
 <pre class="mermaid"><code>flowchart LR
 
   subgraph "👥 組織"
@@ -33622,8 +33622,8 @@ end
   end</code></pre>
 <p><a href="https://www.oreilly.com/library/view/building-microservices-2nd/9781492034018/ch07.html">Building Microservices, 2nd Edition</a></p>
 <h3 id="_13">手動デプロイと自動デプロイの使い分け<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>GitOpsパターンのCI/CDパイプラインのうちで、デプロイに着目します。</p>
-<p>基本的に全てのPodを自動でデプロイします (例：ArgoCD) 。</p>
+<p>GitOps パターンの CI/CD パイプラインのうちで、デプロイに着目します。</p>
+<p>基本的にすべての Pod を自動でデプロイします (例：ArgoCD) 。</p>
 <p>ただし、一部のツール (例：Istio) は運用のしやすさを考慮して、手動でデプロイします (例：Helmfile) 。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-GitOps.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-GitOps.drawio.png" /></p>
 <table>
@@ -33644,7 +33644,7 @@ end
 </tr>
 </tbody>
 </table>
-<p>ArgoCDの仕組みは、以下のブログで解説しているため、5000兆回ブックマークしてくれると嬉しいです！</p>
+<p>ArgoCD の仕組みは、以下のブログで解説しているため、5000 兆回ブックマークしてくれると嬉しいです！</p>
 <p><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115">【ArgoCD🐙】ArgoCDのマイクロサービスアーキテクチャと自動デプロイの仕組み - 好きな技術を布教したい 😗</a></p>
 <h1 id="24">24. マイクロサービスのデプロイ方法<a class="headerlink" href="#24" title="Permanent link">&para;</a></h1>
 <pre class="mermaid"><code>flowchart LR
@@ -33659,24 +33659,24 @@ end
 
 </code></pre>
 <h2 id="serverless-platforms">Serverless platforms<strong>パターン</strong><a class="headerlink" href="#serverless-platforms" title="Permanent link">&para;</a></h2>
-<p>PaaSやFaaS (例：AWSであれば、AWS BeanstalkやAWS Lambda) を使用して、マイクロサービスをデプロイします。</p>
+<p>PaaS や FaaS (例：AWS であれば、AWS Beanstalk や AWS Lambda) を使用して、マイクロサービスをデプロイします。</p>
 <p>是非について後述しています。</p>
 <p><a href="https://microservices.io/patterns/deployment/serverless-deployment.html">Microservices Pattern: Pattern: Serverless deployment</a></p>
 <h2 id="multiple-services-instance-per-host">Multiple services instance per hostパターン<a class="headerlink" href="#multiple-services-instance-per-host" title="Permanent link">&para;</a></h2>
 <p>物理マシン、仮想マシン、そしてコンテナを使用して、マイクロサービスをデプロイします。</p>
-<p>これらの上で、複数の種類のマイクロサービスを稼働させます。</p>
+<p>これらのうえで、複数の種類のマイクロサービスを稼働させます。</p>
 <h2 id="single-service-instance-per-host">Single service instance per hostパターン<a class="headerlink" href="#single-service-instance-per-host" title="Permanent link">&para;</a></h2>
 <p>仮想マシンまたはコンテナを使用して、マイクロサービスをデプロイします。</p>
-<p>これらの上で、単一の種類のマイクロサービスを稼働させます。</p>
+<p>これらのうえで、単一の種類のマイクロサービスを稼働させます。</p>
 <p>各物理マシンで単一の種類のマイクロサービスを稼働させることはコスト的に現実的ではないため、ここでは省略します。</p>
 <h3 id="service-instance-per-vm">Service instance per VM<strong>パターン</strong><a class="headerlink" href="#service-instance-per-vm" title="Permanent link">&para;</a></h3>
-<p>仮想マシン (例：AWSであればAmazon EC2) を使用して、マイクロサービスをデプロイします。</p>
+<p>仮想マシン (例：AWS であれば Amazon EC2) を使用して、マイクロサービスをデプロイします。</p>
 <p>仮想マシン上では、特定のマイクロサービスのみが稼働します。</p>
 <p>マイクロサービスを仮想マシンのマシンイメージにあらかじめ組み込みこんでおき、仮想マシンと一緒にデプロイします。</p>
 <h3 id="service-instance-per-container">Service instance per containerパターン<a class="headerlink" href="#service-instance-per-container" title="Permanent link">&para;</a></h3>
-<p>コンテナ (例：AWSであれば、Amazon ECSやAmazon EKS) を使用して、マイクロサービスをデプロイします。</p>
+<p>コンテナ (例：AWS であれば、Amazon ECS や Amazon EKS) を使用して、マイクロサービスをデプロイします。</p>
 <p>コンテナ上では、特定のマイクロサービスのみが稼働します。</p>
-<p>本記事では、Single instance per containerを採用とします。</p>
+<p>本記事では、Single instance per container を採用とします。</p>
 <p><a href="https://microservices.io/patterns/deployment/service-deployment-platform.html">Microservices Pattern: Pattern: Service deployment platform</a></p>
 <h1 id="24-02-service-instance-per-container">24-02. Service instance per containerパターン<a class="headerlink" href="#24-02-service-instance-per-container" title="Permanent link">&para;</a></h1>
 <h2 id="_14">マイクロサービス<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
@@ -33712,13 +33712,13 @@ end
 <h1 id="24-03">24-03. コンテナの作成から削除まで<a class="headerlink" href="#24-03" title="Permanent link">&para;</a></h1>
 <h2 id="_20">サービスメッシュ内<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
 <h3 id="kubelet">kubeletによるコンテナ作成<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスは、アプリまたはEnvoyの稼働するコンテナ群です。</p>
-<p>kubeletがPodの開始プロセスを始めると、以下の一連のプロセスも同時並行的に始まります。</p>
+<p>マイクロサービスは、アプリまたは Envoy の稼働するコンテナ群です。</p>
+<p>kubelet が Pod の開始プロセスを始めると、以下の一連のプロセスも同時並行的に始まります。</p>
 <p>これらのプロセスはそれぞれ独立しており、ユーザーは制御できません。</p>
 <ol>
 <li>コンテナを作成する。</li>
-<li>Workload (例：Deployment、StatefulSetなど) が新しいPodを管理下に追加する。</li>
-<li>Serviceとkube-proxyが古いPodの宛先情報を追加する。</li>
+<li>Workload (例：Deployment、StatefulSet など) が新しい Pod を管理下に追加する。</li>
+<li>Service と kube-proxy が古い Pod の宛先情報を追加する。</li>
 </ol>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリコンテナ (開始).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリコンテナ_(開始).drawio.png" /></p>
 <table>
@@ -33739,7 +33739,7 @@ end
 </tr>
 </tbody>
 </table>
-<p>kubeletは、コンテナをヘルスチェック (例：StartupProbe、LivenessProbe、ReadinessProbe) し、障害を防ぎます。</p>
+<p>kubelet は、コンテナをヘルスチェック (例：StartupProbe、LivenessProbe、ReadinessProbe) し、障害を防ぎます。</p>
 <table>
 <thead>
 <tr>
@@ -33763,13 +33763,13 @@ end
 <td>readyエンドポイント(例：Nginxなら用意してくれてる:8081/nginx-readyを使用する)</td>
 </tr>
 <tr>
-<td>正常時</td>
+<td>正常とき</td>
 <td>LivenessProbeまたはReadinessProbeを実行する。</td>
 <td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが200から399ステータスを返却すれば正常とみなす。</td>
 <td>HTTP リクエストの場合、コンテナのヘルスチェックエンドポイントが200から399ステータスを返却すれば正常とみなす。</td>
 </tr>
 <tr>
-<td>異常時</td>
+<td>異常とき</td>
 <td>LivenessProbeまたはReadinessProbeを実行しない。</td>
 <td>コンテナで障害 (例：デッドロック) が起こって応答しなくなると、コンテナを強制的に再起動してくれる。</td>
 <td>コンテナのプロセスの準備が完了しない間、そのコンテナが処理できるようになるまで通信を流さないようにしてくれる。</td>
@@ -33779,12 +33779,12 @@ end
 <p><a href="https://microservices.io/patterns/observability/health-check-api.html">Microservices Pattern: Pattern: Health Check API</a></p>
 <h3 id="kubelet_1">kubeletによるコンテナ削除<a class="headerlink" href="#kubelet_1" title="Permanent link">&para;</a></h3>
 <p>コンテナ削除に関するプラクティスです。</p>
-<p>kubeletがPodの終了プロセスを始めると、以下の一連のプロセスも同時並行的に始まります。</p>
+<p>kubelet が Pod の終了プロセスを始めると、以下の一連のプロセスも同時並行的に始まります。</p>
 <p>これらのプロセスはそれぞれ独立しており、ユーザーは制御できません。</p>
-<p>Serviceとkube-proxyがPodの宛先情報を削除する前にPodが終了してしまうと、ServiceからPodへのコネクションを途中で切断することになってしまいます。</p>
+<p>Service と kube-proxy が Pod の宛先情報を削除する前に Pod が終了してしまうと、Service から Pod へのコネクションを途中で切断することになってしまいます。</p>
 <ol>
-<li>Workload (例：Deployment、StatefulSetなど) が古いPodを管理下から削除する。</li>
-<li>Serviceとkube-proxyが古いPodの宛先情報を削除する。</li>
+<li>Workload (例：Deployment、StatefulSet など) が古い Pod を管理下から削除する。</li>
+<li>Service と kube-proxy が古い Pod の宛先情報を削除する。</li>
 <li>コンテナを削除する。</li>
 </ol>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリコンテナ (終了).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリコンテナ_(終了).drawio.png" /></p>
@@ -33812,33 +33812,33 @@ end
 <p>余裕があったら書くぜ！</p>
 </blockquote>
 <h1 id="24-04">24-04. その他のデプロイ選択肢<a class="headerlink" href="#24-04" title="Permanent link">&para;</a></h1>
-<p>Service instance per containerパターンでAmazon EKSを採用しました。</p>
+<p>Service instance per container パターンで Amazon EKS を採用しました。</p>
 <p>ここでは、その他の選択肢を考えます。</p>
 <h2 id="amazon-ecs">Amazon ECS<a class="headerlink" href="#amazon-ecs" title="Permanent link">&para;</a></h2>
-<p>Service instance per containerパターンで、Amazon ECSを使用して、マイクロサービスアーキテクチャを動かします。</p>
-<p>この場合、マイクロサービスをAmazon ECSサービスに対応させ、Amazon ECSタスクでマイクロサービスを水平スケーリングすることになります。</p>
+<p>Service instance per container パターンで、Amazon ECS を使用して、マイクロサービスアーキテクチャを動かします。</p>
+<p>この場合、マイクロサービスを Amazon ECS サービスに対応させ、Amazon ECS タスクでマイクロサービスを水平スケーリングすることになります。</p>
 <p><img alt="aws-ecs_microservices.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/aws-ecs_microservices.png" /></p>
 <p><a href="https://d1.awsstatic.com/events/Summits/reinvent2022/CON311-R_Best-practices-for-deploying-microservices-on-Amazon-ECS.pdf#page=12">d1.awsstatic.com</a></p>
 <h3 id="_22">マイクロサービスアーキテクチャとの相性<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<p>Amazon ECSは、Amazon EKSよりもアプリ領域とインフラ領域の責務がより曖昧になります。</p>
+<p>Amazon ECS は、Amazon EKS よりもアプリ領域とインフラ領域の責務がより曖昧になります。</p>
 <p>アプリ領域とインフラ領域で分業が進んでいない組織では、責務の境界が曖昧でも問題は起こりにくい。</p>
-<p>その一方で、組織が大きくなるほどAmazon ECSの管理者がボトルネックになります。</p>
-<p>例えば、Amazon ECSを管理しているのがインフラチームである一方で、アプリチームもAmazon ECSにコンテナを設定しないといけないです。</p>
-<p>この時、管理者のインフラチームに依頼する。しかし、インフラチームが手一杯であれば、スピード感が落ちる。</p>
+<p>その一方で、組織が大きくなるほど Amazon ECS の管理者がボトルネックになります。</p>
+<p>例えば、Amazon ECS を管理しているのがインフラチームである一方で、アプリチームも Amazon ECS にコンテナを設定しないといけないです。</p>
+<p>このとき、管理者のインフラチームに依頼する。しかし、インフラチームが手一杯であれば、スピード感が落ちる。</p>
 <p>マイクロサービスアーキテクチャは組織が大きくなるほど価値を発揮するはずなのに、これでは逆に辛くなっています。</p>
-<p>ただ、Amazon EKSに至るまでの過渡的なシステムとして、Amazon ECSを採用することはアリと考えています。</p>
+<p>ただ、Amazon EKS に至るまでの過渡的なシステムとして、Amazon ECS を採用することはアリと考えています。</p>
 <h2 id="aws-lambda">AWS Lambda<a class="headerlink" href="#aws-lambda" title="Permanent link">&para;</a></h2>
-<p>Serverless platformsパターンで、AWS Lambdaを使用して、マイクロサービスアーキテクチャを動かします。</p>
-<p>この場合、マイクロサービスはAWS Lambdaへ対応することになる。</p>
+<p>Serverless platforms パターンで、AWS Lambda を使用して、マイクロサービスアーキテクチャを動かします。</p>
+<p>この場合、マイクロサービスは AWS Lambda へ対応することになる。</p>
 <p><img alt="aws-lambda_microservices.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/aws-lambda_microservices.png" /></p>
 <p><a href="https://medium.com/aws-serverless-microservices-with-patterns-best/using-aws-lambda-as-a-microservice-dd7d7296c74a">Using AWS Lambda as a Microservice</a></p>
 <h3 id="_23">マイクロサービスアーキテクチャとの相性<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<p>AWS Lambdaは、Amazon EKSやAmazon ECSよりもさらにアプリ領域とインフラ領域の責務がより曖昧になります。</p>
-<p>組織が大きくなるほどAWS Lambdaの管理者がボトルネックになり、Amazon ECSよりも拡張性の問題は顕著です。</p>
-<p>前述の通り、マイクロサービスアーキテクチャは組織が大きくなるほど価値を発揮するはずですが、AWS Lambdaがこれを相殺します。</p>
-<p>これらのことから、AWS Lambdaでマイクロサービスアーキテクチャを採用するべきではないと考えています。</p>
+<p>AWS Lambda は、Amazon EKS や Amazon ECS よりもさらにアプリ領域とインフラ領域の責務がより曖昧になります。</p>
+<p>組織が大きくなるほど AWS Lambda の管理者がボトルネックになり、Amazon ECS よりも拡張性の問題は顕著です。</p>
+<p>前述の通り、マイクロサービスアーキテクチャは組織が大きくなるほど価値を発揮するはずですが、AWS Lambda がこれを相殺します。</p>
+<p>これらのことから、AWS Lambda でマイクロサービスアーキテクチャを採用するべきではないと考えています。</p>
 <h1 id="25">25. スケーリングと回復性管理<a class="headerlink" href="#25" title="Permanent link">&para;</a></h1>
-<p>スケーリングと回復性管理には、主に3つの対象があります。</p>
+<p>スケーリングと回復性管理には、主に 3 つの対象があります。</p>
 <ul>
 <li>Node</li>
 <li>Pod</li>
@@ -33857,19 +33857,19 @@ end
   回復性管理の基点 --- タイムアウト
   回復性管理の基点 --- サーキットブレイカー</code></pre>
 <h1 id="25-02-node">25-02. Nodeの垂直水平スケーリングと回復性管理<a class="headerlink" href="#25-02-node" title="Permanent link">&para;</a></h1>
-<p>ビジネス影響の大きいマイクロサービスにのみ、専用のNodeを用意します。</p>
-<p>それ以外のマイクロサービスは、Nodeに混合させます。</p>
-<p>専用のNodeを実現するには、Nodeに種類を表すラベルをつける必要があります。</p>
-<p>執筆時点では、以下のツールでラベル付きのNodeを作成できます。</p>
+<p>ビジネス影響の大きいマイクロサービスにのみ、専用の Node を用意します。</p>
+<p>それ以外のマイクロサービスは、Node に混合させます。</p>
+<p>専用の Node を実現するには、Node に種類を表すラベルをつける必要があります。</p>
+<p>執筆時点では、以下のツールでラベル付きの Node を作成できます。</p>
 <ul>
 <li>Karpenter</li>
-<li>AWSマネージドNodeグループNodeグループ</li>
-<li>セルフAWSマネージドNodeグループNodeグループ</li>
+<li>AWS マネージド Node グループ Node グループ</li>
+<li>セルフ AWS マネージド Node グループ Node グループ</li>
 </ul>
-<p>Nodeの作成には、マシンイメージとしてAMIを採用します。</p>
-<p>必要なソフトウェア (OS、ミドルウェア) とEBSボリュームの両方を内蔵できます。</p>
+<p>Node の作成には、マシンイメージとして AMI を採用します。</p>
+<p>必要なソフトウェア (OS、ミドルウェア) と EBS ボリュームの両方を内蔵できます。</p>
 <h2 id="karpenter">Karpenterによる垂直水平スケーリングと回復性管理<a class="headerlink" href="#karpenter" title="Permanent link">&para;</a></h2>
-<p>ここでは、Karpenterの仕組みについて解説します。</p>
+<p>ここでは、Karpenter の仕組みについて解説します。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Karpenter.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Karpenter.drawio.png" /></p>
 <table>
 <thead>
@@ -33909,10 +33909,10 @@ end
 <p>余裕があれば書くぜ！</p>
 </blockquote>
 <h2 id="karpenterawsnodenode">KarpenterとAWSマネージドNodeグループNodeグループの組み合わせ<a class="headerlink" href="#karpenterawsnodenode" title="Permanent link">&para;</a></h2>
-<p>KarpenterとAWSマネージドNodeグループNodeグループを採用し、Nodeを管理します。</p>
-<p>複数の方法を採用する理由は、Nodeを管理するKarpenterを、自身以外の方法で管理しているNode上で稼働させる必要があるためだ。</p>
-<p>ここでは、KarpenterのPodをAWSマネージドNodeグループNodeグループによるNode上に、アプリ領域のPodをKarpenterによるNode上に稼働させます。</p>
-<p>KarpenterとAWSマネージドNodeグループNodeグループの間では、機能が異なります。</p>
+<p>Karpenter と AWS マネージド Node グループ Node グループを採用し、Node を管理します。</p>
+<p>複数の方法を採用する理由は、Node を管理する Karpenter を、自身以外の方法で管理している Node 上で稼働させる必要があるためだ。</p>
+<p>ここでは、Karpenter の Pod を AWS マネージド Node グループ Node グループによる Node 上に、アプリ領域の Pod を Karpenter による Node 上に稼働させます。</p>
+<p>Karpenter と AWS マネージド Node グループ Node グループの間では、機能が異なります。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Nodeのスケーリング.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-Nodeのスケーリング.drawio_(1).png" /></p>
 <table>
 <thead>
@@ -33965,7 +33965,7 @@ end
 </tr>
 <tr>
 <td>HorizontalPodAutoscaler</td>
-<td>HorizontalPodAutoscalerでPodを水平スケーリングする。水平スケーリングは、Podの負荷が高くなるとPod数を増やし、システム全体が高負荷で機能しなくなる状況を避けられる。ただし、突発的な高負荷には弱く、Pod数の増減が間に合わないことがある。突発的な負荷のタイミングが事前に分かっているなら、事前に最小数を高めに設定しておく。</td>
+<td>HorizontalPodAutoscalerでPodを水平スケーリングする。水平スケーリングは、Podの負荷が高くなるとPod数を増やし、システム全体が高負荷で機能しなくなる状況を避けられる。ただし、突発的な高負荷には弱く、Pod数の増減が間に合わないことがある。突発的な負荷のタイミングが事前にわかっているなら、事前に最小数を高めに設定しておく。</td>
 </tr>
 <tr>
 <td>metrics-server</td>
@@ -33977,7 +33977,7 @@ end
 </tr>
 <tr>
 <td>PodDisruptionBudget</td>
-<td>Nodeのスケールインやアップグレード時に、Nodeはドレイン処理を実行し、Podを退避させる。この時にPodDisruptionBudgeを作成しないと、DeploymentやStatefulSet配下のPodが一斉に退避し、1個でもPodを動かすことで、ダウンタイムを避けるべきである。そこで、PodDisruptionBudgeを使用すると、ドレイン中にNode上で動かしておく最小最大のPod数を設定できる。</td>
+<td>Nodeのスケールインやアップグレード時に、Nodeはドレイン処理を実行し、Podを退避させる。このときにPodDisruptionBudgeを作成しないと、DeploymentやStatefulSet配下のPodが一斉に退避し、1個でもPodを動かすことで、ダウンタイムを避けるべきである。そこで、PodDisruptionBudgeを使用すると、ドレイン中にNode上で動かしておく最小最大のPod数を設定できる。</td>
 </tr>
 </tbody>
 </table>
@@ -34025,10 +34025,10 @@ end
 </blockquote>
 <h3 id="_29">契約テスト<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <p>送信元マイクロサービス (コンシューマー) と宛先マイクロサービス (プロデューサー) の連携のテストを実施します。</p>
-<p>この時、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を『契約 (Contract) サービス』として切り分けます。</p>
+<p>このとき、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を『契約 (Contract) サービス』として切り分けます。</p>
 <p>これを双方のマイクロサービス間で共有します。</p>
 <p>契約サービス上で、双方のリクエスト / レスポンスの内容が期待値に合致するかを検証します。</p>
-<p>Pactでは、Pact Brokerを契約サービスとして使用できます。</p>
+<p>Pact では、Pact Broker を契約サービスとして使用できます。</p>
 <p><img alt="cdc-test.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/cdc-test.png" /></p>
 <h3 id="e2e">E2Eテスト<a class="headerlink" href="#e2e" title="Permanent link">&para;</a></h3>
 <blockquote>
@@ -34068,7 +34068,7 @@ end
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34079,11 +34079,11 @@ end
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

@@ -34878,12 +34878,12 @@
 <p><br></p>
 <h3 id="atomicity">Atomicity (不可分性)<a class="headerlink" href="#atomicity" title="Permanent link">&para;</a></h3>
 <h4 id="atomicity_1">▼ Atomicityとは<a class="headerlink" href="#atomicity_1" title="Permanent link">&para;</a></h4>
-<p>トランザクションに含まれる全ての処理が成功することと、またはいずれかが失敗した場合には何も実行されていない状態に戻ることを保証する性質のこと。</p>
+<p>トランザクションに含まれるすべての処理が成功することと、またはいずれかが失敗した場合には何も実行されていない状態に戻ることを保証する性質のこと。</p>
 <p>コミット制御によって実装される。</p>
 <p><br></p>
 <h3 id="consistency">Consistency (整合性)<a class="headerlink" href="#consistency" title="Permanent link">&para;</a></h3>
 <h4 id="consistency_1">▼ Consistencyとは<a class="headerlink" href="#consistency_1" title="Permanent link">&para;</a></h4>
-<p>トランザクションの実行前後であっても、データは常にDBのルールに則っている性質のこと。</p>
+<p>トランザクションの実行前後であっても、データは常に DB のルールに則っている性質のこと。</p>
 <p>ユニークキー制約、トランザクションスコープ、AOP、ユニークオブワークによって実装される。</p>
 <p><br></p>
 <h3 id="isolation">Isolation (独立性)<a class="headerlink" href="#isolation" title="Permanent link">&para;</a></h3>
@@ -34985,7 +34985,7 @@
 <p><br></p>
 <h3 id="_3">トランザクション<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ トランザクションとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>複数のSQLステートメント (特に、INSERT、UPDATE、DELETE) をセットで扱い、まとめてDBに書き込む。</p>
+<p>複数の SQL ステートメント (特に、INSERT、UPDATE、DELETE) をセットで扱い、まとめて DB に書き込む。</p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/0803/24/news138_2.html">https://atmarkit.itmedia.co.jp/ait/articles/0803/24/news138_2.html</a></li>
@@ -34993,7 +34993,7 @@
 </ul>
 </blockquote>
 <h4 id="pdordb">▼ PDOによるRDBの書き込み系の操作<a class="headerlink" href="#pdordb" title="Permanent link">&para;</a></h4>
-<p>PDOでは書き込み処理に <code>exec()</code> 関数、読み出し処理に <code>query()</code> 関数を使用する。</p>
+<p>PDO では書き込み処理に <code>exec()</code> 関数、読み出し処理に <code>query()</code> 関数を使用する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 <span class="k">try</span><span class="p">{</span>
@@ -35037,17 +35037,17 @@
 </blockquote>
 <p><br></p>
 <h3 id="id">トランザクションID<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
-<p>一部のRDBMS (例：PostgreSQL) は、トランザクション処理を識別するためにトランザクションIDを付与する。</p>
+<p>一部の RDBMS (例：PostgreSQL) は、トランザクション処理を識別するためにトランザクション ID を付与する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- PostgreSQLでトランザクションIDを取得する</span>
 <span class="k">SELECT</span><span class="w"> </span><span class="n">txid_current</span><span class="p">();</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_6">コミット<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ コミット、二相コミットとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>トランザクション内の一連のSQLステートメントをメモリに書き込み、確定する。</p>
+<p>トランザクション内の一連の SQL ステートメントをメモリに書き込み、確定する。</p>
 <p>また、更新前ログとして、ストレージ上のジャーナルファイルに書き込む。</p>
 <h4 id="_8">▼ メモリ書き込み<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>コミットの結果をメモリ上で管理し、ある程度まとまってからDBファイルに書き込む。</p>
+<p>コミットの結果をメモリ上で管理し、ある程度まとまってから DB ファイルに書き込む。</p>
 <p>これにより、書き込み後にすぐ読み出しが必要な場合、読み出しが速くなる。</p>
 <p><img alt="DBMSによるメモリとディスクの使い分け" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DBMSによるメモリとディスクの使い分け.jpg" /></p>
 <blockquote>
@@ -35059,8 +35059,8 @@
 <p><img alt="wal" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/wal.png" /></p>
 <p>コミットのメモリ書き込みの仕組みの前に、ストレージ上のジャーナルファイルに更新前ログを書き込む。</p>
 <p>コミットの途中で障害が発生した場合、メモリに書き込まれたデータは削除されてしまう。</p>
-<p>そこで、WALによるジャーナルファイルの更新前ログをバックアップとして使用し、メモリ上に書き込まれたデータを復元できる。</p>
-<p>また、DBファイルに書き込むよりも書き込みサイズが少なく済むため、短時間で終了する。</p>
+<p>そこで、WAL によるジャーナルファイルの更新前ログをバックアップとして使用し、メモリ上に書き込まれたデータを復元できる。</p>
+<p>また、DB ファイルに書き込むよりも書き込みサイズが少なく済むため、短時間で終了する。</p>
 <blockquote>
 <ul>
 <li><a href="https://gihyo.jp/dev/serial/01/db-academy/000202">https://gihyo.jp/dev/serial/01/db-academy/000202</a></li>
@@ -35070,8 +35070,8 @@
 <p><br></p>
 <h3 id="_9">チェックポイント<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ チェックポイントとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>チェックポイントで、ストレージ上のジャーナルファイルの更新後ログをストレージ上のDBファイルに反映させる。</p>
-<p>この時、チェックポイントは、自動実行または手動実行で作成する。</p>
+<p>チェックポイントで、ストレージ上のジャーナルファイルの更新後ログをストレージ上の DB ファイルに反映させる。</p>
+<p>このとき、チェックポイントは、自動実行または手動実行で作成する。</p>
 <p><img alt="トランザクション" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランザクション.jpg" /></p>
 <blockquote>
 <ul>
@@ -35081,7 +35081,7 @@
 <p><br></p>
 <h3 id="_11">ロールバック<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ ロールバックとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>障害によって、トランザクション内の一連のSQLステートメントが1つでも実行されなかった場合、ストレージ上のジャーナルファイルの更新前ログを使用して、トランザクションの開始前の状態に戻す。</p>
+<p>障害によって、トランザクション内の一連の SQL ステートメントが 1 つでも実行されなかった場合、ストレージ上のジャーナルファイルの更新前ログを使用して、トランザクションの開始前の状態に戻す。</p>
 <p>クエリ言語 (例：MySQL) ごとに、ロールバックのクエリ (例：<code>ROLLBACK</code>) が用意されている。</p>
 <blockquote>
 <ul>
@@ -35091,13 +35091,13 @@
 </blockquote>
 <h4 id="_13">▼ システム障害からの回復<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>『<code>b</code>』の値を更新するSQLステートメントを含むトランザクションの途中に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新前ログ『<code>b = 1</code>』を使用して、障害発生前の状態に戻す。</p>
+<p>『<code>b</code>』の値を更新する SQL ステートメントを含むトランザクションの途中に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新前ログ『<code>b = 1</code>』を使用して、障害発生前の状態に戻す。</p>
 <p><img alt="障害回復機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/システム障害の障害回復機能.jpg" /></p>
 <p><br></p>
 <h3 id="_14">ロールフォワード<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ ロールフォワードとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>仮に、障害によって、トランザクションの終了後に一連のSQLステートメントの更新結果がストレージに反映されなかったとする。</p>
-<p>この時、ストレージ上のジャーナルファイルの更新後ログを使用して、ストレージ上のDBファイルに更新結果を反映させる。</p>
+<p>仮に、障害によって、トランザクションの終了後に一連の SQL ステートメントの更新結果がストレージに反映されなかったとする。</p>
+<p>このとき、ストレージ上のジャーナルファイルの更新後ログを使用して、ストレージ上の DB ファイルに更新結果を反映させる。</p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html">https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html</a></li>
@@ -35105,11 +35105,11 @@
 </blockquote>
 <h4 id="_16">▼ システム障害からの回復<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>『<code>a</code>』の値を更新するSQLステートメントを含むトランザクションの後に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新後ログ『<code>a = 5</code>』を使用して、ストレージ上のDBファイルに更新結果を反映させる。</p>
+<p>『<code>a</code>』の値を更新する SQL ステートメントを含むトランザクションの後に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新後ログ『<code>a = 5</code>』を使用して、ストレージ上の DB ファイルに更新結果を反映させる。</p>
 <p><img alt="障害回復機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/システム障害の障害回復機能.jpg" /></p>
 <h4 id="_17">▼ 媒体障害からの回復<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>ストレージを初期化/交換した後、バックアップファイルからDBを修復する。</p>
+<p>ストレージを初期化/交換した後、バックアップファイルから DB を修復する。</p>
 <p>ストレージ上のジャーナルファイルの更新後ログ『<code>a = 5</code>』『<code>b = 1</code>』を使用して、修復できる限りロールフォワードを行う。</p>
 <p><img alt="媒体障害の障害回復機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/媒体障害の障害回復機能.jpg" /></p>
 <blockquote>
@@ -35161,7 +35161,7 @@
 <p><br></p>
 <h2 id="03-dbms">03. DBMSによる排他制御<a class="headerlink" href="#03-dbms" title="Permanent link">&para;</a></h2>
 <h3 id="_18">排他制御とは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>RDBMSまたはアプリケーションによる <code>UPDATE</code> 処理競合問題を回避する仕組みのことである。</p>
+<p>RDBMS またはアプリケーションによる <code>UPDATE</code> 処理競合問題を回避する仕組みのことである。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/momotaro98/items/5e37eefc62d726a30aee">https://qiita.com/momotaro98/items/5e37eefc62d726a30aee</a></li>
@@ -35198,11 +35198,11 @@
 <p><br></p>
 <h3 id="update"><code>UPDATE</code> 処理競合問題<a class="headerlink" href="#update" title="Permanent link">&para;</a></h3>
 <p>アプリケーションのレコードの <code>UPDATE</code> 処理が、レコードの取得と更新からなるとする。</p>
-<p>ソフトウェアのユーザAとBがおり、ユーザBが <code>UPDATE</code> 処理時に取得しなければならないレコードの状態は、ユーザAが <code>UPDATE</code> 処理を終えた後のものである。</p>
-<p>しかし、ユーザAがレコードを取得してから更新を終えるまでの間に、ユーザBが同じくレコードを取得してしまうことがある。</p>
-<p>結果として、ユーザBの <code>UPDATE</code> 処理によって、ユーザAの処理が上書きされ、無かったことになってしまう。</p>
+<p>ソフトウェアのユーザ A と B がおり、ユーザ B が <code>UPDATE</code> 処理時に取得しなければならないレコードの状態は、ユーザ A が <code>UPDATE</code> 処理を終えた後のものである。</p>
+<p>しかし、ユーザ A がレコードを取得してから更新を終えるまでの間に、ユーザ B が同じくレコードを取得してしまうことがある。</p>
+<p>結果として、ユーザ B の <code>UPDATE</code> 処理によって、ユーザ A の処理が上書きされ、無かったことになってしまう。</p>
 <p><img alt="排他制御-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png" /></p>
-<p>ユーザAとユーザBの <code>UPDATE</code> 処理が並行したとしても、ユーザAの処理が無かったことにならないよう保証する方法として、『排他制御』がある。</p>
+<p>ユーザ A とユーザ B の <code>UPDATE</code> 処理が並行したとしても、ユーザ A の処理が無かったことにならないよう保証する方法として、『排他制御』がある。</p>
 <p><img alt="排他制御-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png" /></p>
 <blockquote>
 <ul>
@@ -35212,11 +35212,11 @@
 <p><br></p>
 <h3 id="_20">テーブル内のロックの範囲<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <h4 id="_21">▼ レコードロック<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>あるトランザクションの実行によって、RDBMSはクエリで操作したレコード (外部キーのある他テーブルのレコードを含む) をロックする。</p>
+<p>あるトランザクションの実行によって、RDBMS はクエリで操作したレコード (外部キーのある他テーブルのレコードを含む) をロックする。</p>
 <p>あるトランザクションがテーブルのレコードをロックすると、そのレコードに対する他のすべてのトランザクションのクエリがブロックする。</p>
 <p>同じテーブルであっても、他のレコードに対するクエリであればブロックしない。</p>
 <p>ロックが解除されるまでトランザクションは待機状態になる。</p>
-<p>アプリケーションやRDBMSでは、トランザクションのロック待機時間を設定しておく (例：prismaの <code>maxWait</code> 値、MySQLの <code>innodb_lock_wait_timeout</code> 値) 。そして、これを超過した場合はエラーになるよう設定する。</p>
+<p>アプリケーションや RDBMS では、トランザクションのロック待機時間を設定しておく (例：prisma の <code>maxWait</code> 値、MySQL の <code>innodb_lock_wait_timeout</code> 値) 。そして、これを超過した場合はエラーになるよう設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks">https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks</a></li>
@@ -35254,7 +35254,7 @@
 <p><br></p>
 <h2 id="03-02-dbms">03-02. DBMSの機能による排他制御<a class="headerlink" href="#03-02-dbms" title="Permanent link">&para;</a></h2>
 <h3 id="dbms">DBMSの機能による排他制御<a class="headerlink" href="#dbms" title="Permanent link">&para;</a></h3>
-<p>DBMSの機能で、排他制御を実施する方法である。</p>
+<p>DBMS の機能で、排他制御を実施する方法である。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/daiching/items/835fa37de22b397eece0#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AB%E3%81%AF%EF%BC%92%E7%A8%AE%E9%A1%9E%E3%81%AE%E6%A6%82%E5%BF%B5%E3%81%8C%E3%81%82%E3%82%8B">https://qiita.com/daiching/items/835fa37de22b397eece0#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AB%E3%81%AF%EF%BC%92%E7%A8%AE%E9%A1%9E%E3%81%AE%E6%A6%82%E5%BF%B5%E3%81%8C%E3%81%82%E3%82%8B</a></li>
@@ -35262,11 +35262,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="_26">共有ロック<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
-<p>DBの機能を使用して、テーブルの指定範囲をロックする。</p>
-<p>DBで、CRUDの <code>READ</code> 処理以外の処理を実行不可能にする。</p>
+<p>DB の機能を使用して、テーブルの指定範囲をロックする。</p>
+<p>DB で、CRUD の <code>READ</code> 処理以外の処理を実行不可能にする。</p>
 <p>レコードの <code>READ</code> 処理を実行するときに、他者によって <code>UPDATE</code> 処理されたくない場合に使用する。</p>
 <p>『共有』の名の通り、共有ロックされているレコードに対して、他の人も共有ロックを行える。</p>
-<p>MySQLでは、『<code>SELECT ... LOCK IN SHARE MODE</code>』を使用する。</p>
+<p>MySQL では、『<code>SELECT ... LOCK IN SHARE MODE</code>』を使用する。</p>
 <p><img alt="排他制御-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif" /></p>
 <blockquote>
 <ul>
@@ -35276,10 +35276,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="_27">占有ロック<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<p>DBの機能を使用して、テーブルの指定範囲をロックする。</p>
-<p>DBで、CRUDの全ての処理を実行不可能にする。</p>
-<p>レコードの <code>UPDATE</code> 処理を実行するときに、他者によってUPDATE/<code>READ</code> 処理の両方を実行させない場合に使用する。</p>
-<p>MySQLでは、『<code>SELECT ... FOR UPDATE</code>』を使用する。</p>
+<p>DB の機能を使用して、テーブルの指定範囲をロックする。</p>
+<p>DB で、CRUD のすべての処理を実行不可能にする。</p>
+<p>レコードの <code>UPDATE</code> 処理を実行するときに、他者によって UPDATE/<code>READ</code> 処理の両方を実行させない場合に使用する。</p>
+<p>MySQL では、『<code>SELECT ... FOR UPDATE</code>』を使用する。</p>
 <p><img alt="排他制御-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif" /></p>
 <blockquote>
 <ul>
@@ -35327,11 +35327,11 @@
 <h3 id="_31">楽観的ロック<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <h4 id="_32">▼ 楽観的ロックとは<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
 <p>アプリケーションの実装で、テーブルの指定範囲をロックする。</p>
-<p>DBのレコードにはバージョン値 (例：最終更新日時など) が存在しているとする。</p>
-<p><code>UPDATE</code> 処理のためにユーザAがDBのレコードを読み込んだときに、バージョン値を一時的に保持しておく。</p>
-<p>ユーザーAが続けて更新する直前に、DBからバージョンの値をあらためて取得する。</p>
-<p>保持しておいたバージョン値とDBの値を比較し、DBの値のほうがより新バージョンだった場合、<code>UPDATE</code> 処理を失敗させることにより、複数の更新処理の競合を防ぐ。</p>
-<p>競合によるエラーを表す <code>409</code> ステータスをレスポンスとして返信すると良い。</p>
+<p>DB のレコードにはバージョン値 (例：最終更新日時など) が存在しているとする。</p>
+<p><code>UPDATE</code> 処理のためにユーザ A が DB のレコードを読み込んだときに、バージョン値を一時的に保持しておく。</p>
+<p>ユーザーA が続けて更新する直前に、DB からバージョンの値をあらためて取得する。</p>
+<p>保持しておいたバージョン値と DB の値を比較し、DB の値のほうがより新バージョンだった場合、<code>UPDATE</code> 処理を失敗させることにより、複数の更新処理の競合を防ぐ。</p>
+<p>競合によるエラーを表す <code>409</code> ステータスをレスポンスとして返信するとよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html">https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html</a></li>
@@ -35339,8 +35339,8 @@
 </ul>
 </blockquote>
 <h4 id="orm">▼ ORMの楽観的ロックについて<a class="headerlink" href="#orm" title="Permanent link">&para;</a></h4>
-<p>ORMが楽観的ロックの能力を持っている場合がある。</p>
-<p>PHPのORMであるDoctrineのロック機能については、以下のリンクを参考にせよ。</p>
+<p>ORM が楽観的ロックの能力を持っている場合がある。</p>
+<p>PHP の ORM である Doctrine のロック機能については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.doctrine-project.org/projects/doctrine-orm/en/2.9/reference/transactions-and-concurrency.html#locking-support">https://www.doctrine-project.org/projects/doctrine-orm/en/2.9/reference/transactions-and-concurrency.html#locking-support</a></li>
@@ -35351,9 +35351,9 @@
 <h3 id="_33">悲観的ロック<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <h4 id="_34">▼ 悲観的ロックとは<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
 <p>アプリケーションの実装で、テーブルの指定範囲をロックする。</p>
-<p>ユーザAがDBのレコードを読み込んだ時点でロックを起動し、ユーザBはレコードの取得すら不可能にする。</p>
-<p>ユーザAが更新を終えてロックが解除され、そこで初めてユーザBはレコードを読み込めるようになる。</p>
-<p>アプリケーションで悲観的ロックを実装することは難易度が高く、基本的にはDBが提供するロックを使用する。</p>
+<p>ユーザ A が DB のレコードを読み込んだ時点でロックを起動し、ユーザ B はレコードの取得すら不可能にする。</p>
+<p>ユーザ A が更新を終えてロックが解除され、そこで初めてユーザ B はレコードを読み込めるようになる。</p>
+<p>アプリケーションで悲観的ロックを実装することは難易度が高く、基本的には DB が提供するロックを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html">https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html</a></li>
@@ -35365,8 +35365,8 @@
 <h3 id="pitr">PITR：ポイントインタイムリカバリー<a class="headerlink" href="#pitr" title="Permanent link">&para;</a></h3>
 <h4 id="_35">▼ ポイントインタイムリカバリーとは<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
 <p><img alt="db_point-in-time-recovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_point-in-time-recovery.png" /></p>
-<p>特定の時点のベースバックアップ (例：SQLによって異なり、MySQLの場合は <code>mysqldump</code> コマンドの出力) と、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQLによって異なり、MySQLの場合はバイナリーログ) を使用する。そして、DBを任意の時点の状態に戻す。</p>
-<p>トランザクションの前後の状態に戻すロールバック/ロールフォワードとは異なり、DBを任意の時点の状態に戻せる。</p>
+<p>特定の時点のベースバックアップ (例：SQL によって異なり、MySQL の場合は <code>mysqldump</code> コマンドの出力) と、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQL によって異なり、MySQL の場合はバイナリーログ) を使用する。そして、DB を任意の時点の状態に戻す。</p>
+<p>トランザクションの前後の状態に戻すロールバック/ロールフォワードとは異なり、DB を任意の時点の状態に戻せる。</p>
 <p>補足として、バックアップに含まれない期間の状態には戻せない。</p>
 <blockquote>
 <ul>
@@ -35376,9 +35376,9 @@
 </ul>
 </blockquote>
 <h4 id="_36">▼ ツール<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
-<p>ポイントインタイムリカバリーの時、開発者がベースバックアップ作成、リカバリー、古い差分バックアップの削除などの作業をしても良い。</p>
-<p>ただし、煩雑な手順になるため自動化ツールを使用したほうが良い。</p>
-<p>SQLの種類に合わせてツールが用意されている。</p>
+<p>ポイントインタイムリカバリーのとき、開発者がベースバックアップ作成、リカバリー、古い差分バックアップの削除などの作業をしてもよい。</p>
+<p>ただし、煩雑な手順になるため自動化ツールを使用したほうがよい。</p>
+<p>SQL の種類に合わせてツールが用意されている。</p>
 <table>
 <thead>
 <tr>
@@ -35438,7 +35438,7 @@ $<span class="w"> </span>barman<span class="w"> </span>list-backup<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 21:54:05 JST">2026-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35449,11 +35449,11 @@ $<span class="w"> </span>barman<span class="w"> </span>list-backup<span class="w
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

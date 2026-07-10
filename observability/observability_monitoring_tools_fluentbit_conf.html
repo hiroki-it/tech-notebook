@@ -35849,8 +35849,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_2">実行ログの確認<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Log_Level値でFluentBitのログレベルを制御できる。</p>
-<p><code>debug</code> を割り当てると、FluentBitのログがより詳細になり、各セクションの設定値を確認できるようになる。</p>
+<p>Log_Level 値で FluentBit のログレベルを制御できる。</p>
+<p><code>debug</code> を割り当てると、FluentBit のログがより詳細になり、各セクションの設定値を確認できるようになる。</p>
 <p><strong>＊実行ログ例＊</strong></p>
 <div class="highlight"><pre><span></span><code>Fluent<span class="w"> </span>Bit<span class="w"> </span>v1.8.6
 *<span class="w"> </span>Copyright<span class="w"> </span><span class="o">(</span>C<span class="o">)</span><span class="w"> </span><span class="m">2019</span>-2021<span class="w"> </span>The<span class="w"> </span>Fluent<span class="w"> </span>Bit<span class="w"> </span>Authors
@@ -35892,7 +35892,7 @@
 <p>ログのパイプラインへのインプット方法を設定する。</p>
 <p><img alt="fluent-bit_input" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_input.png" /></p>
 <p>プラグインを使用して、ログのインプット方法を設定する。</p>
-<p>コマンドの <code>-i</code> オプションでINPUT名を指定し、実行もできる。</p>
+<p>コマンドの <code>-i</code> オプションで INPUT 名を指定し、実行もできる。</p>
 <div class="highlight"><pre><span></span><code>Inputs
 <span class="w">  </span>cpu<span class="w">                     </span>CPU<span class="w"> </span>Usage
 <span class="w">  </span>mem<span class="w">                     </span>Memory<span class="w"> </span>Usage
@@ -35965,7 +35965,7 @@
 <h3 id="fluentbit_metrics">fluentbit_metricsプラグイン<a class="headerlink" href="#fluentbit_metrics" title="Permanent link">&para;</a></h3>
 <h4 id="fluentbit_metrics_1">▼ fluentbit_metricsプラグインとは<a class="headerlink" href="#fluentbit_metrics_1" title="Permanent link">&para;</a></h4>
 <p>自身のメトリクスの元になるデータポイントを収集する。</p>
-<p>合わせて、OUTPUTセクションでprometheus_exporterプラグインを使用し、Prometheusがリクエストを送信するためのエンドポイントを公開できる。</p>
+<p>合わせて、OUTPUT セクションで prometheus_exporter プラグインを使用し、Prometheus がリクエストを送信するためのエンドポイントを公開できる。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
 <span class="w">    </span>flush<span class="w">           </span><span class="m">1</span>
 <span class="w">    </span>log_level<span class="w">       </span>info
@@ -36031,8 +36031,8 @@
 <p><br></p>
 <h3 id="kubernetes-events">kubernetes-eventsプラグイン<a class="headerlink" href="#kubernetes-events" title="Permanent link">&para;</a></h3>
 <h4 id="kubernetes-events_1">▼ kubernetes-eventsプラグインとは<a class="headerlink" href="#kubernetes-events_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetesリソースのイベントをログとして収集する。</p>
-<p>kubernetes-event-exporterの代わりに使用できる。</p>
+<p>Kubernetes リソースのイベントをログとして収集する。</p>
+<p>kubernetes-event-exporter の代わりに使用できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/resmoio/kubernetes-event-exporter">https://github.com/resmoio/kubernetes-event-exporter</a></li>
@@ -36057,7 +36057,7 @@
 <p><br></p>
 <h3 id="systemd">systemd<a class="headerlink" href="#systemd" title="Permanent link">&para;</a></h3>
 <h4 id="systemd_1">▼ systemdプラグインとは<a class="headerlink" href="#systemd_1" title="Permanent link">&para;</a></h4>
-<p>systemdのログを収集する。</p>
+<p>systemd のログを収集する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>INPUT<span class="o">]</span>
 <span class="w">    </span>Name<span class="w"> </span>systemd
 <span class="w">    </span>Tag<span class="w"> </span>host.*
@@ -36069,7 +36069,7 @@
 <h3 id="tail">tailプラグイン<a class="headerlink" href="#tail" title="Permanent link">&para;</a></h3>
 <h4 id="tail_1">▼ tailプラグインとは<a class="headerlink" href="#tail_1" title="Permanent link">&para;</a></h4>
 <p>指定したパスに継続的にアウトプットされるログファイルを順次結合し、パイプラインにインプットする。</p>
-<p>あらかじめ、FluentBitコンテナ内にログファイルを配置する必要があり、<code>Path</code> でこれを指定する。</p>
+<p>あらかじめ、FluentBit コンテナ内にログファイルを配置する必要があり、<code>Path</code> でこれを指定する。</p>
 <p><code>v1.8</code> を境にオプションが変わっていることに注意する。</p>
 <h4 id="_9">▼ セットアップ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
@@ -36147,13 +36147,13 @@
 <p><br></p>
 <h3 id="cri">自前criプラグイン<a class="headerlink" href="#cri" title="Permanent link">&para;</a></h3>
 <h4 id="cri_1">▼ 自前criプラグインとは<a class="headerlink" href="#cri_1" title="Permanent link">&para;</a></h4>
-<p>執筆時点 (2023/04/04) では、公式がcriプラグインを提供していない。</p>
-<p>そこで、自前のcriプラグインを定義する。</p>
-<p>自前criプラグインでは、Containerdのテキスト形式ログにマッチできるような正規表現を設定する。</p>
-<p>Containerdのコンテナが作成する非構造化ログを構造化ログに変換する。</p>
+<p>執筆時点 (2023/04/04) では、公式が cri プラグインを提供していない。</p>
+<p>そこで、自前の cri プラグインを定義する。</p>
+<p>自前 cri プラグインでは、Containerd のテキスト形式ログにマッチできるような正規表現を設定する。</p>
+<p>Containerd のコンテナが作成する非構造化ログを構造化ログに変換する。</p>
 <h4 id="_11">▼ セットアップ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>PARSERセクションで、criプラグインを定義する。</p>
+<p>PARSER セクションで、cri プラグインを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>PARSER<span class="o">]</span>
 <span class="w">    </span>Name<span class="w">        </span>cri
 <span class="w">    </span>Format<span class="w">      </span>regex
@@ -36162,7 +36162,7 @@
 <span class="w">    </span>Time_Key<span class="w">    </span><span class="nb">time</span>
 <span class="w">    </span>Time_Format<span class="w"> </span>%Y-%m-%dT%H:%M:%S.%L%z
 </code></pre></div>
-<p>INPUTセクションでcriプラグインを読み込む。</p>
+<p>INPUT セクションで cri プラグインを読み込む。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>INPUT<span class="o">]</span>
 <span class="w">    </span>Name<span class="w">            </span>tail
 <span class="w">    </span>Path<span class="w">            </span>/var/log/containers/*.log
@@ -36172,7 +36172,7 @@
 <span class="w">    </span>Skip_Long_Lines<span class="w"> </span>On
 </code></pre></div>
 <p>例えば、以下のような非構造化ログがあったとする。</p>
-<p>criプラグインは、<code>&lt;timeキー&gt; &lt;streamキー&gt; &lt;logtagキー&gt; &lt;messageキー&gt;</code> を認識する。</p>
+<p>cri プラグインは、<code>&lt;timeキー&gt; &lt;streamキー&gt; &lt;logtagキー&gt; &lt;messageキー&gt;</code> を認識する。</p>
 <div class="highlight"><pre><span></span><code><span class="m">2021</span>-12-17T08:03:23.918838346+09:00<span class="w"> </span>stderr<span class="w"> </span>F<span class="w"> </span><span class="m">2021</span>/12/17<span class="w"> </span><span class="m">08</span>:03:23<span class="w"> </span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>start<span class="w"> </span>worker<span class="w"> </span>processes
 </code></pre></div>
 <p>その場合、構造化されて以下のようなログとなる。</p>
@@ -36245,7 +36245,7 @@
 <div class="highlight"><pre><span></span><code><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="w"> </span>memory:<span class="w"> </span><span class="o">[</span><span class="m">1488543156</span>,<span class="w"> </span><span class="o">{</span><span class="s2">&quot;Mem.total&quot;</span><span class="o">=</span>&gt;1016044,<span class="w"> </span><span class="s2">&quot;Mem.used&quot;</span><span class="o">=</span>&gt;841388,<span class="w"> </span><span class="s2">&quot;Mem.free&quot;</span><span class="o">=</span>&gt;174656,<span class="w"> </span><span class="s2">&quot;Swap.total&quot;</span><span class="o">=</span>&gt;2064380,<span class="w"> </span><span class="s2">&quot;Swap.used&quot;</span><span class="o">=</span>&gt;139888,<span class="w"> </span><span class="s2">&quot;Swap.free&quot;</span><span class="o">=</span>&gt;1924492<span class="o">}]</span>
 ...
 </code></pre></div>
-<p>FILTERセクションで、modifyプラグインを定義する。</p>
+<p>FILTER セクションで、modify プラグインを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>INPUT<span class="o">]</span>
 <span class="w">    </span>Name<span class="w"> </span>mem
 <span class="w">    </span>Tag<span class="w">  </span>mem.local
@@ -36309,7 +36309,7 @@
 <h3 id="multiline">multilineプラグイン<a class="headerlink" href="#multiline" title="Permanent link">&para;</a></h3>
 <h4 id="multiline_1">▼ multilineプラグインとは<a class="headerlink" href="#multiline_1" title="Permanent link">&para;</a></h4>
 <p>マッチした複数行のログを結合する。</p>
-<p>結合ルールは、MULTILINE_PARSERの設定ファイルに定義し、これをSERVICEで読み込む必要がある。</p>
+<p>結合ルールは、MULTILINE_PARSER の設定ファイルに定義し、これを SERVICE で読み込む必要がある。</p>
 <p>ただし、本番環境ではログが複数行にならないようにアプリケーション側で実装し、ログを収集して可視化する段階でフィルタリングできれば問題ない、という考え方もある。</p>
 <blockquote>
 <ul>
@@ -36330,7 +36330,7 @@
 <span class="w">    </span><span class="c1"># 使用するパーサー名</span>
 <span class="w">    </span>multiline.parser<span class="w">      </span>laravel
 </code></pre></div>
-<p>コマンドの <code>-f</code> オプションでFILTER名を指定し、実行もできる。</p>
+<p>コマンドの <code>-f</code> オプションで FILTER 名を指定し、実行もできる。</p>
 <div class="highlight"><pre><span></span><code>Filters
 <span class="w">  </span>alter_size<span class="w">              </span>Alter<span class="w"> </span>incoming<span class="w"> </span>chunk<span class="w"> </span>size
 <span class="w">  </span>aws<span class="w">                     </span>Add<span class="w"> </span>AWS<span class="w"> </span>Metadata
@@ -36356,9 +36356,9 @@
 </blockquote>
 <h4 id="multiline_parser">▼ MULTILINE_PARSER<a class="headerlink" href="#multiline_parser" title="Permanent link">&para;</a></h4>
 <p>複数行のログを結合するためのルールを設定する。</p>
-<p>ここで定義したパーサー名を、multilineプラグインで指定する必要がある。</p>
+<p>ここで定義したパーサー名を、multiline プラグインで指定する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Laravelのスタックトレースを結合する。</p>
+<p>Laravel のスタックトレースを結合する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>MULTILINE_PARSER<span class="o">]</span>
 <span class="w">    </span><span class="c1"># パーサー名</span>
 <span class="w">    </span>name<span class="w">          </span>laravel
@@ -36394,21 +36394,21 @@
 <li><a href="https://docs.fluentbit.io/manual/v/1.0/parser/regular_expression">https://docs.fluentbit.io/manual/v/1.0/parser/regular_expression</a></li>
 </ul>
 </blockquote>
-<p>FluentBitでの名前付きキャプチャについては、Fluentdのドキュメントを参考にせよ。</p>
+<p>FluentBit での名前付きキャプチャについては、Fluentd のドキュメントを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.fluentd.org/parser/regexp">https://docs.fluentd.org/parser/regexp</a></li>
 </ul>
 </blockquote>
 <h4 id="_17">▼ バリデーション<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>FluentBitは、内部的にはruby製関数を使用して正規表現を検証している。</p>
+<p>FluentBit は、内部的には ruby 製関数を使用して正規表現を検証している。</p>
 <p>そのため、これを確認できるバリデーションツールを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="http://rubular.com/">http://rubular.com/</a></li>
 </ul>
 </blockquote>
-<p>代わりに、Fluentdの正規表現チェッカーでも良い。</p>
+<p>代わりに、Fluentd の正規表現チェッカーでもよい。</p>
 <blockquote>
 <ul>
 <li><a href="http://fluentular.herokuapp.com/">http://fluentular.herokuapp.com/</a></li>
@@ -36423,8 +36423,8 @@
 <p><br></p>
 <h3 id="stdout">stdoutプラグイン<a class="headerlink" href="#stdout" title="Permanent link">&para;</a></h3>
 <h4 id="stdout_1">▼ stdoutプラグインとは<a class="headerlink" href="#stdout_1" title="Permanent link">&para;</a></h4>
-<p>マッチしたログを、OUTPUTを経ずに標準出力へそのまま出力する。</p>
-<p>FILTERまでのパイプラインが正しく動作しているかのデバッグとして役立つ。</p>
+<p>マッチしたログを、OUTPUT を経ずに標準出力へそのまま出力する。</p>
+<p>FILTER までのパイプラインが正しく動作しているかのデバッグとして役立つ。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.fluentbit.io/manual/pipeline/filters/standard-output">https://docs.fluentbit.io/manual/pipeline/filters/standard-output</a></li>
@@ -36465,8 +36465,8 @@
 <h2 id="05-stream_task">05. STREAM_TASK<a class="headerlink" href="#05-stream_task" title="Permanent link">&para;</a></h2>
 <h3 id="stream_task">STREAM_TASKとは<a class="headerlink" href="#stream_task" title="Permanent link">&para;</a></h3>
 <p>現在のデータストリームからログを抽出し、新しいストリームを作成する。</p>
-<p>このストリームは、パイプラインのINPUTに再び取り込まれ、処理し直される。</p>
-<p>同時に、SERVICEでSTREAM_TASKの設定ファイルを読み込む必要がある。</p>
+<p>このストリームは、パイプラインの INPUT に再び取り込まれ、処理し直される。</p>
+<p>同時に、SERVICE で STREAM_TASK の設定ファイルを読み込む必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
 <span class="w">    </span>Streams_File<span class="w"> </span>stream_processor.conf
 </code></pre></div>
@@ -36479,14 +36479,14 @@
 <p><br></p>
 <h3 id="sql">SQLステートメント<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
 <h4 id="sql_1">▼ SQLステートメントとは<a class="headerlink" href="#sql_1" title="Permanent link">&para;</a></h4>
-<p>STREAM_TASKセッションは、ユーザー定義のSQLステートメントで定義される。</p>
+<p>STREAM_TASK セッションは、ユーザー定義の SQL ステートメントで定義される。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/fluent/fluent-bit/tree/master/src/stream_processor">https://github.com/fluent/fluent-bit/tree/master/src/stream_processor</a></li>
 </ul>
 </blockquote>
 <h4 id="create-stream">▼ CREATE STREAM<a class="headerlink" href="#create-stream" title="Permanent link">&para;</a></h4>
-<p>SELECTステートメントの結果を使用して、データストリームを作成する。</p>
+<p>SELECT ステートメントの結果を使用して、データストリームを作成する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>STREAM_TASK<span class="o">]</span>
 <span class="w">    </span>Name<span class="w"> </span>foo-stream-task
@@ -36527,7 +36527,7 @@
 <p><br></p>
 <h2 id="06-buffer">06. BUFFER<a class="headerlink" href="#06-buffer" title="Permanent link">&para;</a></h2>
 <h3 id="buffer">BUFFERとは<a class="headerlink" href="#buffer" title="Permanent link">&para;</a></h3>
-<p>ログを蓄え、これを順番にROUTINGへ渡す。</p>
+<p>ログを蓄え、これを順番に ROUTING へ渡す。</p>
 <p><img alt="fluent-bit_buffer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_buffer.png" /></p>
 <blockquote>
 <ul>
@@ -36594,7 +36594,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <h3 id="routingoutput">ROUTING、OUTPUTとは<a class="headerlink" href="#routingoutput" title="Permanent link">&para;</a></h3>
 <p>ログのアウトプット先を設定する。</p>
 <p>設定できるアウトプット先の種類については、以下のリンクを参考にせよ。</p>
-<p>コマンドの <code>-o</code> オプションでOUTPUT名を指定し、実行もできる。</p>
+<p>コマンドの <code>-o</code> オプションで OUTPUT 名を指定し、実行もできる。</p>
 <p><img alt="fluent-bit_output" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_output.png" /></p>
 <div class="highlight"><pre><span></span><code>Outputs
 <span class="w">  </span>azure<span class="w">                   </span>Send<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>Azure<span class="w"> </span>HTTP<span class="w"> </span>Event<span class="w"> </span>Collector
@@ -36650,9 +36650,9 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <p><br></p>
 <h3 id="aws">AWS全部入り<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="aws_1">▼ AWS全部入り<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h4>
-<p>全てのAWS系プラグインを含んでいる</p>
+<p>すべての AWS 系プラグインを含んでいる</p>
 <h4 id="_22">▼ セットアップ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>AWSから提供される他の全てのFluentBitイメージを束ねたベースイメージを使用する。</p>
+<p>AWS から提供されるほかのすべての FluentBit イメージを束ねたベースイメージを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/aws-for-fluent-bit">https://github.com/aws/aws-for-fluent-bit</a></li>
@@ -36661,21 +36661,21 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <p><br></p>
 <h3 id="cloudwatch_log-cloudwatch">cloudwatch_logプラグイン (新cloudwatchプラグイン)<a class="headerlink" href="#cloudwatch_log-cloudwatch" title="Permanent link">&para;</a></h3>
 <h4 id="cloudwatch_log">▼ cloudwatch_logプラグインとは<a class="headerlink" href="#cloudwatch_log" title="Permanent link">&para;</a></h4>
-<p>ログをAmazon CloudWatch Logsにルーティングする。</p>
-<p>もともと、『cloudwatchプラグイン』という名前だった。</p>
+<p>ログを Amazon CloudWatch Logs にルーティングする。</p>
+<p>もともと、『cloudwatch プラグイン』という名前だった。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4">https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4</a></li>
 </ul>
 </blockquote>
 <h4 id="_23">▼ セットアップ<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<p>cloudwatch_logsプラグインがプリインストールされているベースイメージを使用する。</p>
+<p>cloudwatch_logs プラグインがプリインストールされているベースイメージを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit">https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit</a></li>
 </ul>
 </blockquote>
-<p>設定ファイルに予約されたAWS変数については、以下のリンクを参考にせよ。</p>
+<p>設定ファイルに予約された AWS 変数については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names">https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names</a></li>
@@ -36709,9 +36709,9 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <span class="w">    </span><span class="c1"># ログを特定のAWSアカウントで中央集中的に管理する場合に、IAMロールを設定する。</span>
 <span class="w">    </span>role_arn<span class="w">          </span>arn:aws:iam::&lt;AWSアカウントID&gt;:role/prd-foo-flunetbit-role
 </code></pre></div>
-<p>Amazon CloudWatch Logsに送信されるデータはJSON型である。</p>
+<p>Amazon CloudWatch Logs に送信されるデータは JSON 型である。</p>
 <p><code>log</code> キーにログが割り当てられている。</p>
-<p>特定のキーの値のみをAmazon CloudWatch Logsに送信する場合、log_keyオプションでキー名を設定する。</p>
+<p>特定のキーの値のみを Amazon CloudWatch Logs に送信する場合、log_key オプションでキー名を設定する。</p>
 <p>例えば、<code>log</code> キーのみを送信する場合、『<code>log</code>』と設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;container_id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;*****&quot;</span><span class="p p-Indicator">,</span>
@@ -36732,9 +36732,9 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <p><br></p>
 <h3 id="datadog">datadogプラグイン<a class="headerlink" href="#datadog" title="Permanent link">&para;</a></h3>
 <h4 id="datadog_1">▼ datadogプラグインとは<a class="headerlink" href="#datadog_1" title="Permanent link">&para;</a></h4>
-<p>ログをdatadogプラグインにルーティングする。</p>
+<p>ログを datadog プラグインにルーティングする。</p>
 <h4 id="_24">▼ セットアップ<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p>全てのベースイメージにdatadogプラグインがプリインストールされているため、datadogプラグインのインストールは不要である。</p>
+<p>すべてのベースイメージに datadog プラグインがプリインストールされているため、datadog プラグインのインストールは不要である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Datadogへのルーティング</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36777,8 +36777,8 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <p><br></p>
 <h3 id="kinesis_firehose">kinesis_firehoseプラグイン<a class="headerlink" href="#kinesis_firehose" title="Permanent link">&para;</a></h3>
 <h4 id="kinesis_firehose_1">▼ kinesis_firehoseプラグインとは<a class="headerlink" href="#kinesis_firehose_1" title="Permanent link">&para;</a></h4>
-<p>ログをKinesisFirehoseにルーティングする。</p>
-<p>kinesis_firehoseプラグインがプリインストールされているベースイメージを使用する。</p>
+<p>ログを KinesisFirehose にルーティングする。</p>
+<p>kinesis_firehose プラグインがプリインストールされているベースイメージを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit">https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit</a></li>
@@ -36787,8 +36787,8 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <p><br></p>
 <h3 id="kinesis_streams">kinesis_streamsプラグイン<a class="headerlink" href="#kinesis_streams" title="Permanent link">&para;</a></h3>
 <h4 id="kinesis_streams_1">▼ kinesis_streamsプラグインとは<a class="headerlink" href="#kinesis_streams_1" title="Permanent link">&para;</a></h4>
-<p>ログをKinesisStreamsにルーティングする。</p>
-<p>kinesis_streamsプラグインがプリインストールされているベースイメージを使用する。</p>
+<p>ログを KinesisStreams にルーティングする。</p>
+<p>kinesis_streams プラグインがプリインストールされているベースイメージを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/amazon-kinesis-streams-for-fluent-bit">https://github.com/aws/amazon-kinesis-streams-for-fluent-bit</a></li>
@@ -36796,7 +36796,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="loki">lokiプラグイン<a class="headerlink" href="#loki" title="Permanent link">&para;</a></h3>
-<p>Grafana Lokiにログを送信する。</p>
+<p>Grafana Loki にログを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>OUTPUT<span class="o">]</span>
 <span class="w">  </span>Name<span class="w"> </span>loki
 <span class="w">  </span>Match<span class="w"> </span>kube.*
@@ -36807,9 +36807,9 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <p><br></p>
 <h3 id="newrelic">newRelicプラグイン<a class="headerlink" href="#newrelic" title="Permanent link">&para;</a></h3>
 <h4 id="newrelic_1">▼ newRelicプラグインとは<a class="headerlink" href="#newrelic_1" title="Permanent link">&para;</a></h4>
-<p>ログをNewRelicにルーティングする。</p>
+<p>ログを NewRelic にルーティングする。</p>
 <h4 id="_25">▼ セットアップ<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
-<p>newRelicプラグインがプリインストールされているベースイメージを使用する。</p>
+<p>newRelic プラグインがプリインストールされているベースイメージを使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/newrelic/newrelic-fluent-bit-output">https://github.com/newrelic/newrelic-fluent-bit-output</a></li>
@@ -36840,10 +36840,10 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <p><br></p>
 <h3 id="stackdriver">stackdriverプラグイン<a class="headerlink" href="#stackdriver" title="Permanent link">&para;</a></h3>
 <h4 id="stackdriver_1">▼ stackdriverプラグインとは<a class="headerlink" href="#stackdriver_1" title="Permanent link">&para;</a></h4>
-<p>ログをGoogle Cloud Loggingにルーティングする。</p>
+<p>ログを Google Cloud Logging にルーティングする。</p>
 <h4 id="_27">▼ セットアップ<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>stackdriverプラグインはビルトインプラグインである。</p>
-<p>つまり、特に追加のセットアップなくGoogle Cloud Loggingにログをルーティングできる。</p>
+<p>stackdriver プラグインはビルトインプラグインである。</p>
+<p>つまり、特に追加のセットアップなく Google Cloud Logging にログをルーティングできる。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>OUTPUT<span class="o">]</span>
 <span class="w">    </span>Name<span class="w">   </span>stackdriver
 <span class="w">    </span>match<span class="w">  </span>*
@@ -36857,7 +36857,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <p><br></p>
 <h3 id="stdout_2">stdoutプラグイン<a class="headerlink" href="#stdout_2" title="Permanent link">&para;</a></h3>
 <h4 id="stdout_3">▼ stdoutプラグインとは<a class="headerlink" href="#stdout_3" title="Permanent link">&para;</a></h4>
-<p>標準出力にアウトプットする、FluentBitの実行ログに混じって、対象のログがアウトプットされることになる。</p>
+<p>標準出力にアウトプットする、FluentBit の実行ログに混じって、対象のログがアウトプットされることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>OUTPUT<span class="o">]</span>
 <span class="w">    </span>Name<span class="w">   </span>stdout
 <span class="w">    </span>match<span class="w">  </span>*
@@ -36883,7 +36883,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -36894,11 +36894,11 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

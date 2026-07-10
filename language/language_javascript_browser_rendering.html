@@ -35074,8 +35074,8 @@
 <p><br></p>
 <h2 id="01">01. レンダリングの仕組み<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">構成する処理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>以下の8つの処理からなる。</p>
-<p>クライアントの操作のたびにイベントが発火し、Scriptingプロセスが繰り返し実行される。</p>
+<p>以下の 8 つの処理からなる。</p>
+<p>クライアントの操作のたびにイベントが発火し、Scripting プロセスが繰り返し実行される。</p>
 <ul>
 <li>Downloading</li>
 <li>Parse</li>
@@ -35093,8 +35093,8 @@
 <p>ハードウェアが読み込むファイルには、バイナリファイルとテキストファイルがある。</p>
 <p>このうち、テキストファイルをタグとデータによって構造的に表現し、ハードウェアが読み込める状態する言語のこと。</p>
 <h4 id="_5">▼ マークアップ言語の歴史<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Webページをテキストによって構成するための言語をマークアップ言語という。</p>
-<p>1970年、IBMが、タグによって、テキスト文章に構造や意味を持たせるGML言語を発表した。</p>
+<p>Web ページをテキストによって構成するための言語をマークアップ言語という。</p>
+<p>1970 年、IBM が、タグによって、テキスト文章に構造や意味を持たせる GML 言語を発表した。</p>
 <p><img alt="markup-language-history" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/markup-language-history.png" /></p>
 <p><br></p>
 <h3 id="xml-extensible-markup-language"><code>xml</code> 形式：Extensible Markup Language<a class="headerlink" href="#xml-extensible-markup-language" title="Permanent link">&para;</a></h3>
@@ -35102,7 +35102,7 @@
 <p>テキストファイルのうち、何らかのデータの構造を表すことに特化している。</p>
 <h4 id="_6">▼ スキーマ言語とは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>マークアップ言語の特に <code>xml</code> 形式で、タグの付け方は自由である。</p>
-<p>しかし、利用者間で共通のルールを設けたほうが良い。</p>
+<p>しかし、利用者間で共通のルールを設けたほうがよい。</p>
 <p>ルールを定義するための言語をスキーマ言語という。</p>
 <p>スキーマ言語に、DTD：Document Type Definition (文書型定義) がある。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35120,7 +35120,7 @@
 <p><br></p>
 <h3 id="html-hypertext-markup-language"><code>html</code> 形式：HyperText Markup Language<a class="headerlink" href="#html-hypertext-markup-language" title="Permanent link">&para;</a></h3>
 <h4 id="html">▼ <code>html</code> 形式とは<a class="headerlink" href="#html" title="Permanent link">&para;</a></h4>
-<p>テキストファイルのうち、Webページの構造を表すことに特化している。</p>
+<p>テキストファイルのうち、Web ページの構造を表すことに特化している。</p>
 <p><br></p>
 <h2 id="01-03-javascript">01-03. JavaScript<a class="headerlink" href="#01-03-javascript" title="Permanent link">&para;</a></h2>
 <h3 id="javascript">マークアップ言語へのJavaScriptの組み込み<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h3>
@@ -35134,7 +35134,7 @@
 <p>外部 <code>js</code> ファイルを組み込む。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;sample.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>CDN (グローバルなキャッシュサーバー) の仕組みを使用して、Web上からWebページを取得もできる。</p>
+<p>CDN (グローバルなキャッシュサーバー) の仕組みを使用して、Web 上から Web ページを取得もできる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span>
   <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js&quot;</span>
   <span class="na">integrity</span><span class="o">=</span><span class="s">&quot;sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg=&quot;</span>
@@ -35142,8 +35142,8 @@
 <span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4 id="script">▼ scriptタグが複数ある場合<a class="headerlink" href="#script" title="Permanent link">&para;</a></h4>
-<p><code>1</code> 個のWebページの <code>html</code> ファイル内で、scriptタグが複数に分散していても、Scriptingプロセスでは、1つにまとめて実行される。</p>
-<p>そのため、より上部のscriptタグの処理は、より下部のscriptに引き継がれる。</p>
+<p><code>1</code> 個の Web ページの <code>html</code> ファイル内で、script タグが複数に分散していても、Scripting プロセスでは、1 つにまとめて実行される。</p>
+<p>そのため、より上部の script タグの処理は、より下部の script に引き継がれる。</p>
 <p>1。</p>
 <p>例えば、以下のコードがある。</p>
 <div class="highlight"><pre><span></span><code>localNum
@@ -35188,7 +35188,7 @@
 <span class="p">})();</span>
 </code></pre></div>
 <ol>
-<li>実行時には以下の様に、まとめて実行される。</li>
+<li>実行時には以下のように、まとめて実行される。</li>
 </ol>
 <p>ここでは、<code>html</code> ファイルで定義した関数の外にある変数は、グローバル変数になっている。</p>
 <p><code>1</code> 個のページを構成する <code>html</code> ファイルを別ファイルとして分割していても、同じである。</p>
@@ -35223,18 +35223,18 @@
 <h2 id="01-04">01-04. ブラウザのバージョン<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h2>
 <h3 id="polyfill">Polyfill<a class="headerlink" href="#polyfill" title="Permanent link">&para;</a></h3>
 <h4 id="polyfill_1">▼ Polyfillとは<a class="headerlink" href="#polyfill_1" title="Permanent link">&para;</a></h4>
-<p>JavaScriptやHTMLの更新にブラウザが追いついていない場合、それを補完するように実装されたパッケージのこと。</p>
+<p>JavaScript や HTML の更新にブラウザが追いついていない場合、それを補完するように実装されたパッケージのこと。</p>
 <p>『Polyfilla』に由来している。</p>
 <p><br></p>
 <h2 id="02-downloading">02. Downloading処理<a class="headerlink" href="#02-downloading" title="Permanent link">&para;</a></h2>
 <h3 id="downloading">Downloading処理とは<a class="headerlink" href="#downloading" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 非同期的な読み出し<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>まず、サーバーサイドからWebページ (<code>html</code> ファイル、<code>.css</code> ファイル、<code>js</code> ファイル、画像ファイル) は、分割されながら、バイト形式でレスポンスされる。</p>
+<p>まず、サーバーサイドから Web ページ (<code>html</code> ファイル、<code>.css</code> ファイル、<code>js</code> ファイル、画像ファイル) は、分割されながら、バイト形式でレスポンスされる。</p>
 <p>これは、メッセージボディに含まれている。</p>
 <p>これを優先度を基に読み込む処理。</p>
-<p>分割でレスポンスされたWebページを、随時読み込んでいく。</p>
-<p>そのため、各Webページの読み出しは非同期的に行われる。</p>
-<p>Downloading処理が終了したWebページから、次のParse処理に進んでいく。</p>
+<p>分割でレスポンスされた Web ページを、随時読み込んでいく。</p>
+<p>そのため、各 Web ページの読み出しは非同期的に行われる。</p>
+<p>Downloading 処理が終了した Web ページから、次の Parse 処理に進んでいく。</p>
 <h4 id="web">▼ Webページの要素の優先順位<a class="headerlink" href="#web" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
@@ -35257,9 +35257,9 @@
 <p><br></p>
 <h3 id="pre-loading">Pre-Loading<a class="headerlink" href="#pre-loading" title="Permanent link">&para;</a></h3>
 <h4 id="pre-loading_1">▼ Pre-Loadingとは<a class="headerlink" href="#pre-loading_1" title="Permanent link">&para;</a></h4>
-<p>Downloading処理の優先順位を上げるように宣言する。</p>
-<p>優先度の高い分割Webページは、次のParse処理、Scripting処理も行われる。</p>
-<p>そのため、JSファイルのScripting処理が、以降のimageファイルのDownloading処理よりも早くに行われることがある。</p>
+<p>Downloading 処理の優先順位を上げるように宣言する。</p>
+<p>優先度の高い分割 Web ページは、次の Parse 処理、Scripting 処理も行われる。</p>
+<p>そのため、JS ファイルの Scripting 処理が、以降の image ファイルの Downloading 処理よりも早くに行われることがある。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span> <span class="p">/&gt;</span>
   <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Title<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
@@ -35278,12 +35278,12 @@
 <h3 id="lazy-loading">Lazy Loading (遅延読み出し)<a class="headerlink" href="#lazy-loading" title="Permanent link">&para;</a></h3>
 <h4 id="lazy-loading_1">▼ Lazy Loadingとは<a class="headerlink" href="#lazy-loading_1" title="Permanent link">&para;</a></h4>
 <p>条件に合致した要素を随時読み込む。</p>
-<p>条件の指定方法には、<code>scroll</code>/<code>resize</code> イベントに基づく方法と、Intersection Observerによる要素の交差率に基づく方法がある。</p>
+<p>条件の指定方法には、<code>scroll</code>/<code>resize</code> イベントに基づく方法と、Intersection Observer による要素の交差率に基づく方法がある。</p>
 <p>画像ファイルの遅延読み出しでは、読み出し前にダミー画像を表示させておき、遅延読み出し時にダミー画像パスを本来の画像パスに上書きする。</p>
 <h4 id="scrollresize">▼ scrollイベントとresizeイベントに基づく遅延読み出し<a class="headerlink" href="#scrollresize" title="Permanent link">&para;</a></h4>
-<p>scrollイベントとresizeイベントを監視し、これらのイベントの発火をトリガーにして、画面内に新しく追加された要素を随時読み込む。</p>
+<p>scroll イベントと resize イベントを監視し、これらのイベントの発火をトリガーにして、画面内に新しく追加された要素を随時読み込む。</p>
 <h4 id="intersection-observer">▼ Intersection Observerの仕組みに基づく遅延読み出し<a class="headerlink" href="#intersection-observer" title="Permanent link">&para;</a></h4>
-<p>Intersection Observerの仕組みでは、特定のHTML要素を指定し、これがほかの要素とどのくらい交差しているかを非同期に検知できる。</p>
+<p>Intersection Observer の仕組みでは、特定の HTML 要素を指定し、これがほかの要素とどのくらい交差しているかを非同期に検知できる。</p>
 <p>指定の交差率を超えて、初めてその要素を読み込む。</p>
 <p>例えば、交差率の閾値を『<code>0.5</code>』と設定すると、ターゲットエレメントの交差率が『<code>0.5</code>』を超えた要素を随時読み込む。</p>
 <p><img alt="intersection-observer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/intersection-observer.png" /></p>
@@ -35385,11 +35385,11 @@
 <p><br></p>
 <h2 id="02-02-parse">02-02. Parse処理<a class="headerlink" href="#02-02-parse" title="Permanent link">&para;</a></h2>
 <h3 id="parse">Parse処理とは<a class="headerlink" href="#parse" title="Permanent link">&para;</a></h3>
-<p>Downloading処理によって読み込まれたWebページを翻訳するプロセス</p>
+<p>Downloading 処理によって読み込まれた Web ページを翻訳するプロセス</p>
 <p><br></p>
 <h3 id="html_1"><code>html</code> 形式テキストファイルの構造解析<a class="headerlink" href="#html_1" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 構造解析の流れ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>Downloading処理で読みこまれたバイト形式ファイルは、文字コードを基に、一連の文字列に変換される。</p>
+<p>Downloading 処理で読みこまれたバイト形式ファイルは、文字コードを基に、一連の文字列に変換される。</p>
 <p>ここでは、以下の <code>html</code> ファイルと <code>.css</code> ファイル (<code>style.css</code>) に変換されたとする。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
@@ -35424,20 +35424,20 @@
 <span class="w">  </span><span class="k">float</span><span class="p">:</span><span class="w"> </span><span class="kc">right</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Webページの文字列からHTMLタグが認識され、トークンに変換される。</p>
+<p>Web ページの文字列から HTML タグが認識され、トークンに変換される。</p>
 <p>各トークンは、<code>1</code> 個のオブジェクトに変換される。</p>
 <p><img alt="dom-tree_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree_process.png" /></p>
-<p>HTMLパーサーは、オブジェクトをノードとして、DOMツリーを作成する。</p>
-<p>DOMツリーを作成する途中でscriptタグに到達すると、いったん、JSファイルを読み込んでScripting処理を終えてから、DOMツリーの作成を再開する。</p>
-<p>DOMのインターフェースについては、以下のリンクを参考にせよ。</p>
+<p>HTML パーサーは、オブジェクトをノードとして、DOM ツリーを作成する。</p>
+<p>DOM ツリーを作成する途中で script タグに到達すると、いったん、JS ファイルを読み込んで Scripting 処理を終えてから、DOM ツリーの作成を再開する。</p>
+<p>DOM のインターフェースについては、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model">https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model</a></li>
 </ul>
 </blockquote>
 <p><img alt="dom-tree" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree.png" /></p>
-<p>同時に、CSSパーサーは、head タグにある link タグを基にサーバーへリクエストを送信する。</p>
-<p>レスポンスされた <code>.css</code> ファイルに対してDownloading処理を行った後、オブジェクトをノードとして、CSSOMツリーを作成する。</p>
+<p>同時に、CSS パーサーは、head タグにある link タグを基にサーバーへリクエストを送信する。</p>
+<p>レスポンスされた <code>.css</code> ファイルに対して Downloading 処理を行った後、オブジェクトをノードとして、CSSOM ツリーを作成する。</p>
 <p><img alt="cssom-tree" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cssom-tree.png" /></p>
 <p><br></p>
 <h3 id="xml_1"><code>xml</code> 形式テキストファイルの構造解析<a class="headerlink" href="#xml_1" title="Permanent link">&para;</a></h3>
@@ -35453,9 +35453,9 @@
 <p><br></p>
 <h2 id="03-scripting">03. Scripting処理<a class="headerlink" href="#03-scripting" title="Permanent link">&para;</a></h2>
 <h3 id="scripting">Scripting処理とは<a class="headerlink" href="#scripting" title="Permanent link">&para;</a></h3>
-<p>サーバーサイドからWebページ (<code>html</code> ファイル、<code>.css</code> ファイル、<code>js</code> ファイル、画像ファイル) を取得した後、レンダリングエンジンのHTMLの解析が <code>script</code> タグに到達する。</p>
-<p>レンダリングエンジンは、JavaScriptエンジンに <code>script</code> タグの内容を渡す。</p>
-<p>JavaScriptエンジンは、JavaScriptコードを機械語に翻訳し、実行する。</p>
+<p>サーバーサイドから Web ページ (<code>html</code> ファイル、<code>.css</code> ファイル、<code>js</code> ファイル、画像ファイル) を取得した後、レンダリングエンジンの HTML の解析が <code>script</code> タグに到達する。</p>
+<p>レンダリングエンジンは、JavaScript エンジンに <code>script</code> タグの内容を渡す。</p>
+<p>JavaScript エンジンは、JavaScript コードを機械語に翻訳し、実行する。</p>
 <p>この処理は、初回アクセス時のみでなく、イベントが発火したときにも実行される。</p>
 <blockquote>
 <ul>
@@ -35465,12 +35465,12 @@
 <p><br></p>
 <h3 id="javascript_1">JavaScriptエンジン<a class="headerlink" href="#javascript_1" title="Permanent link">&para;</a></h3>
 <h4 id="javascript_2">▼ JavaScriptエンジンとは<a class="headerlink" href="#javascript_2" title="Permanent link">&para;</a></h4>
-<p>JavaScriptのインタプリタのこと。</p>
-<p>JavaScriptエンジンは、レンダリングエンジンから <code>html</code> ファイルに組み込まれたJavaScriptのコードを受け取る。</p>
-<p>JavaScriptエンジンは、これを機械語に翻訳し、ハードウェアに対して命令する。</p>
+<p>JavaScript のインタプリタのこと。</p>
+<p>JavaScript エンジンは、レンダリングエンジンから <code>html</code> ファイルに組み込まれた JavaScript のコードを受け取る。</p>
+<p>JavaScript エンジンは、これを機械語に翻訳し、ハードウェアに対して命令する。</p>
 <p><img alt="JavaScriptEngine" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png" /></p>
 <h4 id="_12">▼ 機械語翻訳<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>JavaScriptエンジンは、コードを、字句解析、構造解析、意味解釈、命令の実行をコード１行ずつに対し、繰り返し実行する。</p>
+<p>JavaScript エンジンは、コードを、字句解析、構造解析、意味解釈、命令の実行をコード１行ずつに対し、繰り返し実行する。</p>
 <h2 id="03-02">03-02. イベント<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_13">イベント<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ イベントとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
@@ -35482,11 +35482,11 @@
 </blockquote>
 <h4 id="_15">▼ イベントハンドラ関数とは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>イベントの発火に伴ってコールされる関数のこと。</p>
-<p>イベントハンドラ関数が実行されるたびにScripting処理が繰り返される。</p>
+<p>イベントハンドラ関数が実行されるたびに Scripting 処理が繰り返される。</p>
 <p><br></p>
 <h3 id="html_2"><code>html</code> 形式におけるイベントハンドラ関数のコール<a class="headerlink" href="#html_2" title="Permanent link">&para;</a></h3>
 <h4 id="onload">▼ <code>onload</code><a class="headerlink" href="#onload" title="Permanent link">&para;</a></h4>
-<p>『Webページのローディング』というイベントが発火すると、イベントハンドラ関数をコールする。</p>
+<p>『Web ページのローディング』というイベントが発火すると、イベントハンドラ関数をコールする。</p>
 <h4 id="onclick">▼ <code>onclick</code><a class="headerlink" href="#onclick" title="Permanent link">&para;</a></h4>
 <p>『要素のクリック』というイベントが発火すると、イベントハンドラ関数をコールする。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;ボタン1&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;methodA()&quot;</span> <span class="p">/&gt;</span>
@@ -35500,7 +35500,7 @@
 <p><br></p>
 <h3 id="js">JS形式におけるイベントハンドラ関数のコール<a class="headerlink" href="#js" title="Permanent link">&para;</a></h3>
 <h4 id="documentgetelementbyidonclick">▼ <code>document.getElementById.onclick()</code> 関数<a class="headerlink" href="#documentgetelementbyidonclick" title="Permanent link">&para;</a></h4>
-<p>指定したIDに対して、<code>1</code> 個のイベントと <code>1</code> 個のイベントハンドラ関数を紐付ける。</p>
+<p>指定した ID に対して、<code>1</code> 個のイベントと <code>1</code> 個のイベントハンドラ関数を紐付ける。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 指定したIDで、クリックイベントが発火した時に、処理を実行する。</span>
 <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;btn&quot;</span><span class="p">).</span><span class="nx">onclick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -35508,7 +35508,7 @@
 <span class="p">};</span>
 </code></pre></div>
 <h4 id="documentaddeventlistener">▼ <code>document.addEventListener()</code> 関数<a class="headerlink" href="#documentaddeventlistener" title="Permanent link">&para;</a></h4>
-<p><code>1</code> 個のイベントに対して、1つ以上のイベントハンドラ関数を紐付ける。</p>
+<p><code>1</code> 個のイベントに対して、1 つ以上のイベントハンドラ関数を紐付ける。</p>
 <p>第一引数で、<code>click</code> などのイベントを設定し、第二引数で関数 (無名関数でも可) を渡す。</p>
 <p><code>false</code> を設定することにより、イベントバブリングを行わせない。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35552,23 +35552,23 @@
 <h2 id="04-rendering">04. Rendering処理<a class="headerlink" href="#04-rendering" title="Permanent link">&para;</a></h2>
 <h3 id="rendering">Rendering処理とは<a class="headerlink" href="#rendering" title="Permanent link">&para;</a></h3>
 <p>レンダリングツリーが作成され、ブラウザ上のどこに何を描画するのかを計算する。</p>
-<p>CalculateStyle処理とLayout処理に分けられる。</p>
+<p>CalculateStyle 処理と Layout 処理に分けられる。</p>
 <p><br></p>
 <h2 id="04-02-calculatestyle">04-02. CalculateStyle処理<a class="headerlink" href="#04-02-calculatestyle" title="Permanent link">&para;</a></h2>
 <h3 id="calculatestyle">CalculateStyle処理とは<a class="headerlink" href="#calculatestyle" title="Permanent link">&para;</a></h3>
-<p>レンダリングエンジンは、DOMツリーのルートのノードから順にCSSOSツリーを適用し、Renderツリーを作成する。</p>
+<p>レンダリングエンジンは、DOM ツリーのルートのノードから順に CSSOS ツリーを適用し、Render ツリーを作成する。</p>
 <p><img alt="Renderツリー" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Renderツリー.png" /></p>
 <p><br></p>
 <h2 id="04-03-layout">04-03. Layout処理<a class="headerlink" href="#04-03-layout" title="Permanent link">&para;</a></h2>
 <h3 id="layout">Layout処理とは<a class="headerlink" href="#layout" title="Permanent link">&para;</a></h3>
 <p>上記で読み込まれた <code>html</code> 形式テキストファイルには、ネストされた 2 つの div がある。</p>
 <p>1 つ目 (親) の <code>div</code> より、ノードの表示サイズをビューポートの幅の 50% に設定する。</p>
-<p>この親に含まれている 2 つ目 (子) の <code>div</code> より、その幅を親の50%、つまりビューポートの幅の25%になるようにレイアウトされる。</p>
+<p>この親に含まれている 2 つ目 (子) の <code>div</code> より、その幅を親の 50%、つまりビューポートの幅の 25%になるようにレイアウトされる。</p>
 <p><img alt="Layout処理" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Layout処理.png" /></p>
 <p><br></p>
 <h2 id="05-paint">05. Paint処理<a class="headerlink" href="#05-paint" title="Permanent link">&para;</a></h2>
 <h3 id="paint">Paint処理とは<a class="headerlink" href="#paint" title="Permanent link">&para;</a></h3>
-<p>DOMツリーの各ノードを、ブラウザ上に描画する。</p>
+<p>DOM ツリーの各ノードを、ブラウザ上に描画する。</p>
 <p><br></p>
 <h2 id="05-02-rasterize">05-02. Rasterize処理<a class="headerlink" href="#05-02-rasterize" title="Permanent link">&para;</a></h2>
 <h3 id="rasterize">Rasterize処理とは<a class="headerlink" href="#rasterize" title="Permanent link">&para;</a></h3>
@@ -35598,7 +35598,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35609,11 +35609,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

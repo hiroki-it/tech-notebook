@@ -33968,10 +33968,10 @@
 <p><br></p>
 <h2 id="01-aws-load-balancer-controller">01. AWS Load Balancer Controllerの仕組み<a class="headerlink" href="#01-aws-load-balancer-controller" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>AWS Load Balancer Controllerは、aws-load-balancer-controller、TargetGroupBinding、といったコンポーネントから構成されている。</p>
-<p>aws-load-balancer-controllerは、etcd上のIngressのマニフェストを検知し、設定値に応じたAWS ALBやAWS NLBをプロビジョニングし、これらのリスナールールごとにターゲットグループもプロビジョングする。</p>
-<p>その後、TargetGroupBindingの設定値を経由して、ALBのターゲットグループとIngressを紐付ける。</p>
-<p>これらにより、Cluster外からのリクエストをPodへルーティングできるようにする。</p>
+<p>AWS Load Balancer Controller は、aws-load-balancer-controller、TargetGroupBinding、といったコンポーネントから構成されている。</p>
+<p>aws-load-balancer-controller は、etcd 上の Ingress のマニフェストを検知し、設定値に応じた AWS ALB や AWS NLB をプロビジョニングし、これらのリスナールールごとにターゲットグループもプロビジョングする。</p>
+<p>その後、TargetGroupBinding の設定値を経由して、ALB のターゲットグループと Ingress を紐付ける。</p>
+<p>これらにより、Cluster 外からのリクエストを Pod へルーティングできるようにする。</p>
 <p><img alt="aws_load_balancer_controller_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -33984,24 +33984,24 @@
 <p><br></p>
 <h3 id="node">Nodeをターゲットグループに登録/ドレイン<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 登録の流れ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>AWS Load Balancer Controllerは、以下の仕組みでターゲットグループに新しいNodeを登録する。</p>
+<p>AWS Load Balancer Controller は、以下の仕組みでターゲットグループに新しい Node を登録する。</p>
 <ol>
-<li>対象のClusterのサブネット内にEC2 Nodeが起動状態に移行すると、AWS Load Balancer Controllerはそれを検知する。</li>
-<li>検知したEC2 Nodeをターゲットグループに追加する。</li>
-<li>EC2 Nodeが正常になれば、Nodeへルーティングできるようになる。</li>
+<li>対象の Cluster のサブネット内に EC2 Node が起動状態に移行すると、AWS Load Balancer Controller はそれを検知する。</li>
+<li>検知した EC2 Node をターゲットグループに追加する。</li>
+<li>EC2 Node が正常になれば、Node へルーティングできるようになる。</li>
 </ol>
 <h4 id="_4">▼ ドレイン処理の流れ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>AWS Load Balancer Controllerは、以下の仕組みでターゲットグループからEC2 Nodeをドレインする。</p>
+<p>AWS Load Balancer Controller は、以下の仕組みでターゲットグループから EC2 Node をドレインする。</p>
 <ol>
-<li>EC2 Nodeが停止状態に移行すると、AWS Load Balancer Controllerはそれを検知する。</li>
-<li>検知したEC2 Nodeをターゲットグループからドレインする。</li>
-<li>停止状態移行中のEC2 Node以外のNodeにリクエストをロードバランシングする。</li>
+<li>EC2 Node が停止状態に移行すると、AWS Load Balancer Controller はそれを検知する。</li>
+<li>検知した EC2 Node をターゲットグループからドレインする。</li>
+<li>停止状態移行中の EC2 Node 以外の Node にリクエストをロードバランシングする。</li>
 </ol>
 <p><br></p>
 <h3 id="service">Serviceタイプ<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
-<p>NodePort Serviceを使用しなければならない。</p>
-<p>AWS Load Balancer Controllerを使用しない場合は、NodePort Serviceのポート番号に合わせてAWSターゲットグループを作成する必要がある。</p>
-<p>AWS Load Balancer Controllerを使用する場合は、NodePort Serviceのポート番号をランダムにしても、そのポート番号を指定するAWSターゲットグループをAWS Load Balancer Controllerがプロビジョニングしてくれる。</p>
+<p>NodePort Service を使用しなければならない。</p>
+<p>AWS Load Balancer Controller を使用しない場合は、NodePort Service のポート番号に合わせて AWS ターゲットグループを作成する必要がある。</p>
+<p>AWS Load Balancer Controller を使用する場合は、NodePort Service のポート番号をランダムにしても、そのポート番号を指定する AWS ターゲットグループを AWS Load Balancer Controller がプロビジョニングしてくれる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">Amazon Route 53</span>
@@ -34023,8 +34023,8 @@
 <p><br></p>
 <h2 id="01-02">01-02. 設計パターン<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="aws-load-balancer-controller">AWS Load Balancer Controllerを使用しない場合<a class="headerlink" href="#aws-load-balancer-controller" title="Permanent link">&para;</a></h3>
-<p>もしAWS CLBを作成したい場合は、AWS Load Balancer Controllerを使用しない。</p>
-<p>LoadBalancer Serviceを作成すると、Amazon EKS内のcloud-controller-managerがAWS CLBを自動的にプロビジョニングする。</p>
+<p>もし AWS CLB を作成したい場合は、AWS Load Balancer Controller を使用しない。</p>
+<p>LoadBalancer Service を作成すると、Amazon EKS 内の cloud-controller-manager が AWS CLB を自動的にプロビジョニングする。</p>
 <p><br></p>
 <h3 id="targetgroupbinding">TargetGroupBindingパターン<a class="headerlink" href="#targetgroupbinding" title="Permanent link">&para;</a></h3>
 <blockquote>
@@ -34036,10 +34036,10 @@
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="aws">AWS側<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 共通<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>AWS Load Balancer Controllerは、サブネットを自動的に検出し、これにAWS ALBをプロビジョニングする。</p>
-<p>Ingressで作成するAWS ALBをパブリックサブネットで作成する場合、<code>kubernetes.io/role/elb</code> というタグ (値は <code>1</code> または空文字) を全てのパブリックサブネットに設定する。</p>
+<p>AWS Load Balancer Controller は、サブネットを自動的に検出し、これに AWS ALB をプロビジョニングする。</p>
+<p>Ingress で作成する AWS ALB をパブリックサブネットで作成する場合、<code>kubernetes.io/role/elb</code> というタグ (値は <code>1</code> または空文字) をすべてのパブリックサブネットに設定する。</p>
 <p>一方で、プライベートサブネットで作成する場合、<code>kubernetes.io/role/internal-elb</code> というタグ (値は <code>1</code> または空文字) をプライベートサブネットに設定する。</p>
-<p>またパブリックサブネットまたはプライベートサブネットのいずれであっても <code>kubernetes.io/cluster/&lt;Amazon EKS Clusterの名前&gt;</code> (値は、複数のAmazon EKS Clusterで共有するサブネットの場合は <code>shared</code>、単一のAmazon EKS Clusterの場合は <code>owned</code> とする) を設定する。</p>
+<p>またパブリックサブネットまたはプライベートサブネットのいずれであっても <code>kubernetes.io/cluster/&lt;Amazon EKS Clusterの名前&gt;</code> (値は、複数の Amazon EKS Cluster で共有するサブネットの場合は <code>shared</code>、単一の Amazon EKS Cluster の場合は <code>owned</code> とする) を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/</a></li>
@@ -34047,9 +34047,9 @@
 </ul>
 </blockquote>
 <h4 id="terraform">▼ Terraformの公式モジュールの場合<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h4>
-<p>AWS Load Balancer Controllerのセットアップのうち、AWS側で必要なものをまとめる。</p>
-<p>ここでは、Terraformの公式モジュールを使用する。</p>
-<p>コマンド (例：<code>eksctl</code> コマンド) を使用しても良い。</p>
+<p>AWS Load Balancer Controller のセットアップのうち、AWS 側で必要なものをまとめる。</p>
+<p>ここでは、Terraform の公式モジュールを使用する。</p>
+<p>コマンド (例：<code>eksctl</code> コマンド) を使用してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_aws_load_balancer_controller&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
@@ -34095,7 +34095,7 @@
 <li><a href="https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage">https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage</a></li>
 </ul>
 </blockquote>
-<p>別途、AWS Load Balancer ControllerのPodに紐付けるServiceAccountを作成し、IAMロールのARNを設定する。</p>
+<p>別途、AWS Load Balancer Controller の Pod に紐付ける ServiceAccount を作成し、IAM ロールの ARN を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34104,7 +34104,7 @@
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">eks.amazonaws.com/role-arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;IAMロールのARN&gt;</span>
 </code></pre></div>
-<p>IRSAにより、ServiceAccountにAWSのIAMロールが紐づく。</p>
+<p>IRSA により、ServiceAccount に AWS の IAM ロールが紐づく。</p>
 <p><img alt="aws_load_balancer_controller_irsa" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_irsa.png" /></p>
 <blockquote>
 <ul>
@@ -34112,12 +34112,12 @@
 </ul>
 </blockquote>
 <h4 id="awscli-eksctl">▼ <code>awscli</code> コマンド、<code>eksctl</code> コマンドの場合<a class="headerlink" href="#awscli-eksctl" title="Permanent link">&para;</a></h4>
-<p>AWS Load Balancer Controllerのセットアップのうち、AWS側で必要なものをまとめる。</p>
-<p>ここではコマンドを使用しているが、IaC (例：Terraform) を使用しても良い。</p>
+<p>AWS Load Balancer Controller のセットアップのうち、AWS 側で必要なものをまとめる。</p>
+<p>ここではコマンドを使用しているが、IaC (例：Terraform) を使用してもよい。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>ローカルマシンにIAMポリシーの <code>json</code> ファイルをダウンロードする。</p>
+<p>ローカルマシンに IAM ポリシーの <code>json</code> ファイルをダウンロードする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json<span class="w"> </span>-o<span class="w"> </span>iam_policy.json
@@ -34131,7 +34131,7 @@
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>json</code> ファイルを使用して、ServiceAccountのIAMロールに紐付けるためのIAMポリシーを作成する。</p>
+<p><code>json</code> ファイルを使用して、ServiceAccount の IAM ロールに紐付けるための IAM ポリシーを作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span><span class="se">\</span>
@@ -34141,7 +34141,7 @@
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Amazon EKS ClusterをOIDCプロバイダーとして使用する。</p>
+<p>Amazon EKS Cluster を OIDC プロバイダーとして使用する。</p>
 <p>これにより、Amazon EKS Cluster内で認証済みのServiceAccountにIAMロールを紐付けることができるようになる。</p>
 </dd>
 </dl>
@@ -34158,7 +34158,7 @@
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>AWS Load Balancer ControllerのPodのServiceAccountと、これに紐づくIAMロールを作成する。</p>
+<p>AWS Load Balancer Controller の Pod の ServiceAccount と、これに紐づく IAM ロールを作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>eksctl<span class="w"> </span>create<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
@@ -34177,7 +34177,7 @@
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>ServiceAccountを作成できたことを確認する。IAMロールはコンソール画面から確認する。</p>
+<p>ServiceAccount を作成できたことを確認する。IAM ロールはコンソール画面から確認する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>eksctl<span class="w"> </span>get<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
@@ -34216,11 +34216,11 @@ kube-system<span class="w">     </span>foo-aws-load-balancer-controller<span cla
 <p><br></p>
 <h3 id="kubernetes">Kubernetes側<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
 <h4 id="helm">▼ Helmの場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h4>
-<p>AWS Load Balancer Controllerのセットアップのうち、Kubernetes側で必要なものをまとめる。</p>
+<p>AWS Load Balancer Controller のセットアップのうち、Kubernetes 側で必要なものをまとめる。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>指定したリージョンにAWS Load Balancer Controllerをデプロイする。</p>
+<p>指定したリージョンに AWS Load Balancer Controller をデプロイする。</p>
 <p>この時、事前にマニフェストや<code>eksclt create iamserviceaccount</code>コマンドで作成したServiceAcountをALBに紐付ける。</p>
 <p>IRSAの仕組みにより、ServiceAccountを経由してPodとAWS IAMロールが紐づく。</p>
 </dd>
@@ -34262,7 +34262,7 @@ AWS<span class="w"> </span>Load<span class="w"> </span>Balancer<span class="w"> 
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>AWS Load Balancer Controllerがデプロイされ、READY状態になっていることを確認する。</p>
+<p>AWS Load Balancer Controller がデプロイされ、READY 状態になっていることを確認する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>list<span class="w"> </span>-n<span class="w"> </span>kube-system
@@ -34278,7 +34278,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>もし、以下の様に、<code>53</code> 番ポートへの接続でエラーになってしまう場合は、CoreDNSによる名前解決が正しくできていない。</p>
+<p>もし、以下のように、<code>53</code> 番ポートへの接続でエラーになってしまう場合は、CoreDNS による名前解決が正しくできていない。</p>
 <p>そのため、CoreDNSが正常に稼働しているか否かを確認する。</p>
 </dd>
 </dl>
@@ -34295,7 +34295,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>Ingressをデプロイし、IngressからAWS ALBを自動的に作成させる。</p>
+<p>Ingress をデプロイし、Ingress から AWS ALB を自動的に作成させる。</p>
 <p>以下の条件を満たす必要がある。</p>
 </dd>
 </dl>
@@ -34307,11 +34307,11 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 <p><br></p>
 <h2 id="02-02">02-02. マニフェスト<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">マニフェストの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>AWS Load Balancer Controllerは、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfigurationなどのマニフェストから構成されている。</p>
+<p>AWS Load Balancer Controller は、Deployment (aws-load-balancer-controller) 、Service (aws-load-balancer-controller-webhook-service) 、TargetGroupBinding、MutatingWebhookConfiguration などのマニフェストから構成されている。</p>
 <p><br></p>
 <h3 id="deploymentpod">Deployment配下のPod<a class="headerlink" href="#deploymentpod" title="Permanent link">&para;</a></h3>
 <h4 id="aws-load-balancer-controller_1">▼ aws-load-balancer-controller<a class="headerlink" href="#aws-load-balancer-controller_1" title="Permanent link">&para;</a></h4>
-<p>Deploymentは、Ingressで <code>alb</code> のIngressClassを指定していること検知して、AWS ALBをプロビジョニングする。</p>
+<p>Deployment は、Ingress で <code>alb</code> の IngressClass を指定していること検知して、AWS ALB をプロビジョニングする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34347,10 +34347,10 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 </blockquote>
 <p><br></p>
 <h3 id="mutatingwebhookconfiguration">MutatingWebhookConfiguration<a class="headerlink" href="#mutatingwebhookconfiguration" title="Permanent link">&para;</a></h3>
-<p>Webhookの宛先のServiceを決定する。</p>
-<p>Serviceを経由して、aws-load-balancer-controllerに内蔵されているwebhookサーバーにWebhookリクエストを送信する。</p>
-<p>このwebhookサーバーがAdmissionResponseを作成し、これをkube-apiserverに返信する。</p>
-<p>AdmissionResponseに応じて、kube-apiserverはマニフェストを変更する。</p>
+<p>Webhook の宛先の Service を決定する。</p>
+<p>Service を経由して、aws-load-balancer-controller に内蔵されている webhook サーバーに Webhook リクエストを送信する。</p>
+<p>この webhook サーバーが AdmissionResponse を作成し、これを kube-apiserver に返信する。</p>
+<p>AdmissionResponse に応じて、kube-apiserver はマニフェストを変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MutatingWebhookConfiguration</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34424,8 +34424,8 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 </code></pre></div>
 <p><br></p>
 <h3 id="service_1">Service<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h3>
-<p>AWS Load Balancer Controllerが作成された場合に、webhookサーバーにWebhookリクエストを送信する。</p>
-<p>ここでは、ClusterIP Serviceを使用する。</p>
+<p>AWS Load Balancer Controller が作成された場合に、webhook サーバーに Webhook リクエストを送信する。</p>
+<p>ここでは、ClusterIP Service を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34444,7 +34444,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
 </code></pre></div>
 <p><br></p>
 <h3 id="serviceaccount">ServiceAccount<a class="headerlink" href="#serviceaccount" title="Permanent link">&para;</a></h3>
-<p>IRSAの仕組みで、PodとIAMロールを紐付ける。</p>
+<p>IRSA の仕組みで、Pod と IAM ロールを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34495,7 +34495,7 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34506,11 +34506,11 @@ aws-load-balancer-controller<span class="w">   </span><span class="m">2</span>/2
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

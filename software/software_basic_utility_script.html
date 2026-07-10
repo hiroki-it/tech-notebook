@@ -34220,7 +34220,7 @@
 <h3 id="_5">ヒアドキュメント<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ ヒアドキュメントとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>ヒアドキュメントで作成したシェルスクリプトには、各行に <code>echo</code> が追加される。</p>
-<p>慣例として、終了文字列には <code>EOF</code>/<code>EOT</code>/<code>EOD</code> を使用するが、どんな文字でも良い。</p>
+<p>慣例として、終了文字列には <code>EOF</code>/<code>EOT</code>/<code>EOD</code> を使用するが、どんな文字でもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
 cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; echo.sh</span>
@@ -34334,7 +34334,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; echo.sh</span>
 <h3 id="_12">条件分岐<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="switch-case">▼ switch-case<a class="headerlink" href="#switch-case" title="Permanent link">&para;</a></h4>
 <p>シェル変数に代入された値によって、処理を分ける。</p>
-<p>全ての場合以外をアスタリスクで定義する。</p>
+<p>すべての場合以外をアスタリスクで定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -34439,11 +34439,11 @@ some_command
 <h2 id="02-makefile">02. Makefile<a class="headerlink" href="#02-makefile" title="Permanent link">&para;</a></h2>
 <h3 id="makefile">Makefileとは<a class="headerlink" href="#makefile" title="Permanent link">&para;</a></h3>
 <p>ユーティリティの特にビルド (コンパイル + リンク) に関する処理を、シェルスクリプトではなくターゲットとして実装したファイル。</p>
-<p>ただし、コンパイル以外を実装しても良い。</p>
+<p>ただし、コンパイル以外を実装してもよい。</p>
 <p><br></p>
 <h3 id="_16">セットアップ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="apk">▼ apkリポジトリから<a class="headerlink" href="#apk" title="Permanent link">&para;</a></h4>
-<p>ほとんどのOSで、<code>make</code> コマンドはプリインストールされているが、Alpine Linuxでは別途インストールが必要である。</p>
+<p>ほとんどの OS で、<code>make</code> コマンドはプリインストールされているが、Alpine Linux では別途インストールが必要である。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>apk<span class="w"> </span>add<span class="w"> </span>make
 </code></pre></div>
 <p><br></p>
@@ -34451,7 +34451,7 @@ some_command
 <h4 id="_18">▼ シェルの選択<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>シェルの種類を選択する。</p>
 <p>種類ごとに使用できるオプションがやや異なる。</p>
-<p>また同時に、<code>set</code> コマンドのオプションを有効化でき、これは全てのターゲットに適用される。</p>
+<p>また同時に、<code>set</code> コマンドのオプションを有効化でき、これはすべてのターゲットに適用される。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">SHELL</span><span class="o">=</span>/bin/bash<span class="w"> </span>-xeu
 </code></pre></div>
 <blockquote>
@@ -34554,8 +34554,8 @@ some_command
 <p><br></p>
 <h3 id="_24">実行方法とオプション<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="make">▼ make<a class="headerlink" href="#make" title="Permanent link">&para;</a></h4>
-<p>Makefileが配置された階層で、makeコマンドの引数としてターゲット名やシェル変数を渡せる。</p>
-<p>Makefile内でシェル変数のデフォルト値を定義できる。</p>
+<p>Makefile が配置された階層で、make コマンドの引数としてターゲット名やシェル変数を渡せる。</p>
+<p>Makefile 内でシェル変数のデフォルト値を定義できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>make<span class="w"> </span>&lt;ターゲット名&gt;<span class="w"> </span>&lt;シェル変数名&gt;<span class="o">=</span>&lt;値&gt;
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
@@ -34568,8 +34568,8 @@ some_command
 </code></pre></div>
 <p><br></p>
 <h3 id="makefile_1">Makefileのよくある使い方<a class="headerlink" href="#makefile_1" title="Permanent link">&para;</a></h3>
-<p>一般的に、Makefileはパッケージのビルドとインストールのために実装される。</p>
-<p>この時に慣例として、ターゲット名は <code>make</code> (ターゲット無し) と <code>install</code> になっていることが多い。</p>
+<p>一般的に、Makefile はパッケージのビルドとインストールのために実装される。</p>
+<p>このときに慣例として、ターゲット名は <code>make</code> (ターゲット無し) と <code>install</code> になっていることが多い。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/chihiro/items/f270744d7e09c58a50a5">https://qiita.com/chihiro/items/f270744d7e09c58a50a5</a></li>
@@ -34593,7 +34593,7 @@ $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>ルールが定義したMakefileを <code>configure</code> ファイルを元に作成する。</p>
+<p>ルールが定義した Makefile を <code>configure</code> ファイルを元に作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># configureへのパスに注意。</span>
@@ -34654,7 +34654,7 @@ $<span class="w"> </span>make<span class="w"> </span>install
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:57:28 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34665,11 +34665,11 @@ $<span class="w"> </span>make<span class="w"> </span>install
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

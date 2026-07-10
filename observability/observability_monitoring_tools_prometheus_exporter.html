@@ -34300,11 +34300,11 @@
 <p><br></p>
 <h2 id="01-exporter">01. Exporter<a class="headerlink" href="#01-exporter" title="Permanent link">&para;</a></h2>
 <h3 id="exporter">Exporterとは<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h3>
-<p>Prometheusがプル型収集でメトリクスの元になるデータポイントを収集するためのエンドポイントとして動作する。</p>
-<p>Prometheusはデータポイントをメトリクスとして集約する。</p>
-<p>基本的にはデータポイントを収集したいNode内で稼働させるが、一部のExporter (例：外形監視のblack-exporter) は、Node外で稼働させる。</p>
-<p>プル型収集により、アプリケーションはPrometheusの存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、ExporterをKubernetesのNodeに導入する必要がある。</p>
-<p>また、各Exporterは待ち受けるエンドポイントやポート番号が異なっており、Prometheusが各Exporterからメトリクスの元になるデータポイントを収集できるように、各Nodeでエンドポイントやポート番号へのインバウンド通信を許可する必要がある。</p>
+<p>Prometheus がプル型収集でメトリクスの元になるデータポイントを収集するためのエンドポイントとして動作する。</p>
+<p>Prometheus はデータポイントをメトリクスとして集約する。</p>
+<p>基本的にはデータポイントを収集したい Node 内で稼働させるが、一部の Exporter (例：外形監視の black-exporter) は、Node 外で稼働させる。</p>
+<p>プル型収集により、アプリケーションは Prometheus の存在を知る必要がなく、関心を分離できる。収集したいメトリクスに合わせて、Exporter を Kubernetes の Node に導入する必要がある。</p>
+<p>また、各 Exporter は待ち受けるエンドポイントやポート番号が異なっており、Prometheus が各 Exporter からメトリクスの元になるデータポイントを収集できるように、各 Node でエンドポイントやポート番号へのインバウンド通信を許可する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://openstandia.jp/oss_info/prometheus">https://openstandia.jp/oss_info/prometheus</a></li>
@@ -34313,13 +34313,13 @@
 </blockquote>
 <p><br></p>
 <h3 id="_2">確認<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Nodeで稼働しているExporterを確認する。</p>
+<p>Node で稼働している Exporter を確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ps<span class="w"> </span>-aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>exporter
 </code></pre></div>
 <p><br></p>
 <h3 id="exporter_1">Exporterのデザインパターン<a class="headerlink" href="#exporter_1" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ デザインパターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Exporterには、KubernetesのNode上でどう稼働させるかに応じて、デザインパターンがある。</p>
+<p>Exporter には、Kubernetes の Node 上でどう稼働させるかに応じて、デザインパターンがある。</p>
 <table>
 <thead>
 <tr>
@@ -34503,8 +34503,8 @@
 <p><br></p>
 <h3 id="_5">セットアップ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ チャートとして<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリから複数のチャートを一括でインストールし、Kubernetesリソースを作成する。</p>
-<p>kube-prometheus-stackは、いくつかのExporterをサブチャートとしてインストールしてくれる。</p>
+<p>チャートリポジトリから複数のチャートを一括でインストールし、Kubernetes リソースを作成する。</p>
+<p>kube-prometheus-stack は、いくつかの Exporter をサブチャートとしてインストールしてくれる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -34521,11 +34521,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="02-mysql-exporter-mysqld-exporter">02. MySQL Exporter (mysqld-exporter)<a class="headerlink" href="#02-mysql-exporter-mysqld-exporter" title="Permanent link">&para;</a></h2>
 <h3 id="mysql-exporter">MySQL Exporterとは<a class="headerlink" href="#mysql-exporter" title="Permanent link">&para;</a></h3>
-<p>MySQLにクエリを実行し、メトリクスとして収集する。</p>
+<p>MySQL にクエリを実行し、メトリクスとして収集する。</p>
 <p><br></p>
 <h3 id="_7">セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ チャートとして<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
+<p>チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -34542,7 +34542,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="_9">メトリクスの一覧<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 確認方法<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>PostgreSQL Exporterの場合は、Nodeの『<code>127.0.0.1:9104/metrics</code>』をコールすると、PromQLで使用できるメトリクスの元になるデータポイントを取得できる。</p>
+<p>PostgreSQL Exporter の場合は、Node の『<code>127.0.0.1:9104/metrics</code>』をコールすると、PromQL で使用できるメトリクスの元になるデータポイントを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9104/metrics
 
@@ -34561,11 +34561,11 @@ postgres_exporter_build_info<span class="o">{</span><span class="nv">branch</spa
 <p><br></p>
 <h2 id="03-postgresql-exporter">03. PostgreSQL Exporter<a class="headerlink" href="#03-postgresql-exporter" title="Permanent link">&para;</a></h2>
 <h3 id="postgresql-exporter">PostgreSQL Exporterとは<a class="headerlink" href="#postgresql-exporter" title="Permanent link">&para;</a></h3>
-<p>PostgreSQLにクエリを実行し、メトリクスとして収集する。</p>
+<p>PostgreSQL にクエリを実行し、メトリクスとして収集する。</p>
 <p><br></p>
 <h3 id="_11">メトリクスの一覧<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ 確認方法<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>PostgreSQL Exporterの場合は、Nodeの『<code>127.0.0.1:9187/metrics</code>』をコールすると、PromQLで使用できるメトリクスの元になるデータポイントを取得できる。</p>
+<p>PostgreSQL Exporter の場合は、Node の『<code>127.0.0.1:9187/metrics</code>』をコールすると、PromQL で使用できるメトリクスの元になるデータポイントを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9187/metrics
 
@@ -34584,8 +34584,8 @@ mysqld_exporter_build_info<span class="o">{</span><span class="nv">branch</span>
 <p><br></p>
 <h3 id="promql">PromQLを使用したメトリクス分析<a class="headerlink" href="#promql" title="Permanent link">&para;</a></h3>
 <h4 id="postgresql">▼ PostgreSQLのプロセスのステータス<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h4>
-<p>PostgreSQLのプロセスのステータスを表す。</p>
-<p><code>pg_up</code> は、PostgreSQLのプロセスのステータスを表す。</p>
+<p>PostgreSQL のプロセスのステータスを表す。</p>
+<p><code>pg_up</code> は、PostgreSQL のプロセスのステータスを表す。</p>
 <p>正常な場合に <code>1</code>、異常な場合に <code>0</code> となる。</p>
 <div class="highlight"><pre><span></span><code><span class="nv">pg_up</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
@@ -34595,7 +34595,7 @@ mysqld_exporter_build_info<span class="o">{</span><span class="nv">branch</span>
 </ul>
 </blockquote>
 <h4 id="postgresql_1">▼ PostgreSQLの連続稼働時間<a class="headerlink" href="#postgresql_1" title="Permanent link">&para;</a></h4>
-<p><code>pg_postmaster_start_time_seconds</code> は、PostgreSQLのマスタープロセス (postmasterプロセス) の連続稼働時間を表す。</p>
+<p><code>pg_postmaster_start_time_seconds</code> は、PostgreSQL のマスタープロセス (postmaster プロセス) の連続稼働時間を表す。</p>
 <div class="highlight"><pre><span></span><code>time<span class="o">()</span><span class="w"> </span>-<span class="w"> </span>pg_postmaster_start_time_seconds
 </code></pre></div>
 <blockquote>
@@ -34606,8 +34606,8 @@ mysqld_exporter_build_info<span class="o">{</span><span class="nv">branch</span>
 </ul>
 </blockquote>
 <h4 id="db">▼ DBインスタンス間のデータ同期の遅延<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
-<p>PostgreSQLで、RepmgrによるDBクラスターを採用している場合に、DBインスタンス間のデータ同期の遅延を表す。</p>
-<p><code>pg_replication_lag</code> は、DBインスタンス間のデータ同期にかかる時間を表す。</p>
+<p>PostgreSQL で、Repmgr による DB クラスターを採用している場合に、DB インスタンス間のデータ同期の遅延を表す。</p>
+<p><code>pg_replication_lag</code> は、DB インスタンス間のデータ同期にかかる時間を表す。</p>
 <div class="highlight"><pre><span></span><code>pg_replication_lag<span class="w"> </span>&gt;<span class="w"> </span><span class="m">10</span>
 </code></pre></div>
 <blockquote>
@@ -34616,7 +34616,7 @@ mysqld_exporter_build_info<span class="o">{</span><span class="nv">branch</span>
 </ul>
 </blockquote>
 <h4 id="_13">▼ 残骸タプルサイズ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>DBにたまっている残骸タプルのデータサイズを表す。</p>
+<p>DB にたまっている残骸タプルのデータサイズを表す。</p>
 <div class="highlight"><pre><span></span><code>pg_stat_user_tables_n_dead_tup<span class="o">{</span><span class="nv">datname</span><span class="o">=</span><span class="s2">&quot;&lt;DB名&gt;&quot;</span><span class="o">}</span>
 </code></pre></div>
 <blockquote>
@@ -34636,7 +34636,7 @@ $<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>h
 $<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>/tmp/process-exporter-0.7.10.linux-amd64.tar.gz<span class="w"> </span>-C<span class="w"> </span>/tmp
 </code></pre></div>
 <h4 id="_16">▼ チャートとして<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>執筆時点 (2023/03/26) 時点で、Process Exporterのチャートはない。</p>
+<p>執筆時点 (2023/03/26) 時点で、Process Exporter のチャートはない。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/ncabatoff/process-exporter">https://github.com/ncabatoff/process-exporter</a></li>
@@ -34645,7 +34645,7 @@ $<span class="w"> </span>tar<span class="w"> </span>-xvf<span class="w"> </span>
 <p><br></p>
 <h3 id="_17">メトリクスの一覧<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="_18">▼ 確認方法<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p>Process Exporterの場合は、Nodeの『<code>127.0.0.1:9256/metrics</code>』をコールすると、PromQLで使用できるメトリクスの元になるデータポイントを取得できる。</p>
+<p>Process Exporter の場合は、Node の『<code>127.0.0.1:9256/metrics</code>』をコールすると、PromQL で使用できるメトリクスの元になるデータポイントを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9256/metrics
 
@@ -34664,7 +34664,7 @@ process_exporter_build_info<span class="o">{</span><span class="nv">build_date</
 <h2 id="05-redis-exporter">05. Redis Exporter<a class="headerlink" href="#05-redis-exporter" title="Permanent link">&para;</a></h2>
 <h3 id="_19">メトリクスの一覧<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ 確認方法<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>Redis Exporterの場合は、Nodeの『<code>127.0.0.1:9121/metrics</code>』をコールすると、PromQLで使用できるメトリクスの元になるデータポイントを取得できる。</p>
+<p>Redis Exporter の場合は、Node の『<code>127.0.0.1:9121/metrics</code>』をコールすると、PromQL で使用できるメトリクスの元になるデータポイントを取得できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内でコールする。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:9121/metrics
 
@@ -34701,7 +34701,7 @@ redis_exporter_build_info<span class="o">{</span><span class="nv">build_date</sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

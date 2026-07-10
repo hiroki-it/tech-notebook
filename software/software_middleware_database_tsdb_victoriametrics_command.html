@@ -34145,9 +34145,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="-dedupminscrapeinterval">-dedup.minScrapeInterval<a class="headerlink" href="#-dedupminscrapeinterval" title="Permanent link">&para;</a></h3>
-<p>データポイントを重複排除することにより、特定の期間の中で最新のデータポイントを残す。</p>
-<p>重複排除のタイミングは、収集ツールの収集間隔と同じ値にすると良い。</p>
-<p>冗長化されたデータポイント収集ツールのインスタンスが単一のVictoriaMetricsへメトリクスを送信する場合、特定の期間には冗長化されたインスタンスによる同じデータポイント送信が発生する。</p>
+<p>データポイントを重複排除することにより、特定の期間のなかで最新のデータポイントを残す。</p>
+<p>重複排除のタイミングは、収集ツールの収集間隔と同じ値にするとよい。</p>
+<p>冗長化されたデータポイント収集ツールのインスタンスが単一の VictoriaMetrics へメトリクスを送信する場合、特定の期間には冗長化されたインスタンスによる同じデータポイント送信が発生する。</p>
 <p>この重複を排除するために、期間内で最新のタイムスタンプを持つデータポイントのみを残す。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-dedup.minScrapeInterval<span class="o">=</span>60s
@@ -34160,7 +34160,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="-httplistenaddr">-httpListenAddr<a class="headerlink" href="#-httplistenaddr" title="Permanent link">&para;</a></h3>
-<p>インバウンド通信を待ち受けるIPアドレスとポート番号を設定する。</p>
+<p>インバウンド通信を待ち受ける IP アドレスとポート番号を設定する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-httpListenAddr<span class="o">=</span><span class="m">0</span>.0.0.0:8248
 </code></pre></div>
@@ -34171,7 +34171,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="-insertmaxqueueduration">-insert.maxQueueDuration<a class="headerlink" href="#-insertmaxqueueduration" title="Permanent link">&para;</a></h3>
-<p>DBへの書き込みの同時実行時に、キューで待機する最大時間を設定する。</p>
+<p>DB への書き込みの同時実行時に、キューで待機する最大時間を設定する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-insert.maxQueueDuration<span class="o">=</span><span class="m">32</span>
 </code></pre></div>
@@ -34182,9 +34182,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="-maxconcurrentinserts">-maxConcurrentInserts<a class="headerlink" href="#-maxconcurrentinserts" title="Permanent link">&para;</a></h3>
-<p>DBへの書き込みの最大同時実行数を設定する。</p>
-<p>各CPUで1つずつ実行するため、 設定値はホストマシン (仮想サーバー、コンテナなど) のCPUのコア数に応じて自動的に設定される。</p>
-<p>最大同時実行数を制限することで、CPUやメモリのスパイクと、それに伴うクラッシュを防げる。</p>
+<p>DB への書き込みの最大同時実行数を設定する。</p>
+<p>各 CPU で 1 つずつ実行するため、 設定値はホストマシン (仮想サーバー、コンテナなど) の CPU のコア数に応じて自動的に設定される。</p>
+<p>最大同時実行数を制限することで、CPU やメモリのスパイクと、それに伴うクラッシュを防げる。</p>
 <p><img alt="victoria-metrics_ingestion-spike" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_ingestion-spike.png" /></p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-maxConcurrentInserts<span class="o">=</span>&lt;ホストマシンのCPUのコア数に応じて自動的に設定される&gt;
@@ -34200,7 +34200,7 @@
 <p><br></p>
 <h3 id="-maxlabelspertimeseries">-maxLabelsPerTimeseries<a class="headerlink" href="#-maxlabelspertimeseries" title="Permanent link">&para;</a></h3>
 <p>メトリクスに付与できるラベルの上限数を設定する。</p>
-<p>VictoriaMetricsでは、デフォルトで <code>30</code> 個しかラベルをつけられず、それ以上のラベルは切り捨てる。</p>
+<p>VictoriaMetrics では、デフォルトで <code>30</code> 個しかラベルをつけられず、それ以上のラベルは切り捨てる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-maxLabelsPerTimeseries<span class="o">=</span><span class="m">30</span>
 </code></pre></div>
@@ -34211,7 +34211,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="-memoryallowedbytes">-memory.allowedBytes<a class="headerlink" href="#-memoryallowedbytes" title="Permanent link">&para;</a></h3>
-<p>VictoriaMetricsが使用できるメモリサイズを設定する。</p>
+<p>VictoriaMetrics が使用できるメモリサイズを設定する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-memory.allowedBytes<span class="o">=</span><span class="m">100000</span>
 </code></pre></div>
@@ -34222,8 +34222,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="-memoryallowedpercent">-memory.allowedPercent<a class="headerlink" href="#-memoryallowedpercent" title="Permanent link">&para;</a></h3>
-<p>VictoriaMetricsが使用できるメモリサイズのうちで、許容するメモリ使用率を設定する。</p>
-<p>これが小さいと、VictoriaMetricsがOOMキラーで停止してしまう。</p>
+<p>VictoriaMetrics が使用できるメモリサイズのうちで、許容するメモリ使用率を設定する。</p>
+<p>これが小さいと、VictoriaMetrics が OOM キラーで停止してしまう。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-memory.allowedPercent<span class="o">=</span><span class="m">80</span>
 </code></pre></div>
@@ -34287,7 +34287,7 @@
 <h2 id="02-vmctl-prod">02. vmctl-prod<a class="headerlink" href="#02-vmctl-prod" title="Permanent link">&para;</a></h2>
 <h3 id="vm-native">vm-native<a class="headerlink" href="#vm-native" title="Permanent link">&para;</a></h3>
 <h4 id="vm-native_1">▼ vm-nativeとは<a class="headerlink" href="#vm-native_1" title="Permanent link">&para;</a></h4>
-<p>指定したURLのVictoriaMetricsのAPIからデータをエクスポートし、宛先のAPIにインポートする。</p>
+<p>指定した URL の VictoriaMetrics の API からデータをエクスポートし、宛先の API にインポートする。</p>
 <p><code>vm-native-filter-time-end</code> オプションを指定しなければ、<code>vm-native-filter-time-start</code> オプションの値以降のデータをエクスポートする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vmctl-prod<span class="w"> </span>vm-native<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--vm-native-src-addr<span class="o">=</span>http://&lt;移行元のVictoriaMetricsのURL&gt;:8428/api/v1/export<span class="w"> </span><span class="se">\</span>
@@ -34329,7 +34329,7 @@
 <h2 id="03-api">03. API<a class="headerlink" href="#03-api" title="Permanent link">&para;</a></h2>
 <h3 id="apiv1export">/api/v1/export<a class="headerlink" href="#apiv1export" title="Permanent link">&para;</a></h3>
 <p>エンドポイントからデータを取得し、データをエクスポートする。</p>
-<p>JSON、CSV、バイナリ、Prometheusの形式を選べる。</p>
+<p>JSON、CSV、バイナリ、Prometheus の形式を選べる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/export<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-d<span class="w"> </span><span class="s1">&#39;match[]=vm_http_request_errors_total&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>&gt;<span class="w"> </span>filename.json
@@ -34342,7 +34342,7 @@
 <p><br></p>
 <h3 id="apiv1import">/api/v1/import<a class="headerlink" href="#apiv1import" title="Permanent link">&para;</a></h3>
 <p>エンドポイントにデータを送信し、データをインポートする。</p>
-<p>JSON、CSV、バイナリ、Prometheusの形式を選べる。</p>
+<p>JSON、CSV、バイナリ、Prometheus の形式を選べる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/import<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--data-binary<span class="w"> </span><span class="s2">&quot;@filename.json&quot;</span>
@@ -34355,7 +34355,7 @@
 <p><br></p>
 <h3 id="apiv1query">/api/v1/query<a class="headerlink" href="#apiv1query" title="Permanent link">&para;</a></h3>
 <p>読み出しエンドポイントであり、ストレージに永続化されているメトリクスを取得できる。</p>
-<p>PrometheusのHTTPサーバーとおおよそ同じ読み出しエンドポイントを持つ。</p>
+<p>Prometheus の HTTP サーバーとおおよそ同じ読み出しエンドポイントを持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 読み出しエンドポイントにリクエストを送信する。</span>
 $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-X<span class="w"> </span>GET<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/query<span class="w"> </span><span class="se">\</span>
@@ -34369,7 +34369,7 @@ $<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <p><br></p>
 <h3 id="apiv1write">/api/v1/write<a class="headerlink" href="#apiv1write" title="Permanent link">&para;</a></h3>
 <p>書き込みエンドポイントであり、ストレージにメトリクスを永続化できる。</p>
-<p>PrometheusのHTTPサーバーとおおよそ同じ書き込みエンドポイントを持つ。</p>
+<p>Prometheus の HTTP サーバーとおおよそ同じ書き込みエンドポイントを持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 書き込みエンドポイントにリクエストを送信する。</span>
 $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://&lt;VictoriaMetricsのURL&gt;:8428/api/v1/write
 </code></pre></div>
@@ -34381,15 +34381,15 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 <p><br></p>
 <h3 id="metrics">/metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h3>
 <h4 id="flag">▼ flag<a class="headerlink" href="#flag" title="Permanent link">&para;</a></h4>
-<p>VictoriaMetricsの設定ファイルの値を表す。</p>
+<p>VictoriaMetrics の設定ファイルの値を表す。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">flag{name=&quot;&lt;設定項目&gt;&quot;, value=&quot;&lt;現在の値&gt;&quot;, is_set=&quot;&lt;ユーザー定義の有無 (true/false) &gt;&quot;}</span>
 </code></pre></div>
 <h4 id="vm_app_version">▼ vm_app_version<a class="headerlink" href="#vm_app_version" title="Permanent link">&para;</a></h4>
-<p>VictoriaMetricsのバージョンを表す。</p>
+<p>VictoriaMetrics のバージョンを表す。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">vm_app_version{version=&quot;victoria-metrics-&lt;バージョンの詳細値&gt;&quot;, short_version=&quot;&lt;バージョンの概略値&gt;&quot;}</span>
 </code></pre></div>
 <h4 id="vm_data_size_bytes">▼ vm_data_size_bytes<a class="headerlink" href="#vm_data_size_bytes" title="Permanent link">&para;</a></h4>
-<p>VictoriaMetricsの保管するデータサイズを表す。</p>
+<p>VictoriaMetrics の保管するデータサイズを表す。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">vm_data_size_bytes{type=&quot;storage/inmemory&quot;}</span>
 <span class="l l-Scalar l-Scalar-Plain">vm_data_size_bytes{type=&quot;storage/small&quot;}</span>
 <span class="l l-Scalar l-Scalar-Plain">vm_data_size_bytes{type=&quot;storage/big&quot;}</span>
@@ -34397,15 +34397,15 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
 <span class="l l-Scalar l-Scalar-Plain">vm_data_size_bytes{type=&quot;indexdb/file&quot;}</span>
 </code></pre></div>
 <h4 id="vm_free_disk_space_bytes">▼ vm_free_disk_space_bytes<a class="headerlink" href="#vm_free_disk_space_bytes" title="Permanent link">&para;</a></h4>
-<p>VictoriaMetricsのデータの空きサイズを表す。</p>
+<p>VictoriaMetrics のデータの空きサイズを表す。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">vm_free_disk_space_bytes{path=&quot;/var/lib/victoria-metrics/data&quot;}</span>
 </code></pre></div>
 <h4 id="vm_fs_read_bytes_total">▼ vm_fs_read_bytes_total<a class="headerlink" href="#vm_fs_read_bytes_total" title="Permanent link">&para;</a></h4>
-<p>VictoriaMetricsの読み出しのデータサイズを表す。</p>
+<p>VictoriaMetrics の読み出しのデータサイズを表す。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">vm_fs_read_bytes_total</span>
 </code></pre></div>
 <h4 id="vm_http_request_errors_total">▼ vm_http_request_errors_total<a class="headerlink" href="#vm_http_request_errors_total" title="Permanent link">&para;</a></h4>
-<p>VictoriaMetricsが処理したリクエストのエラー数を表す。</p>
+<p>VictoriaMetrics が処理したリクエストのエラー数を表す。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">vm_http_request_errors_total{path=&quot;*&quot;, reason=&quot;unsupported&quot;}</span>
 <span class="l l-Scalar l-Scalar-Plain">vm_http_request_errors_total{path=&quot;*&quot;, reason=&quot;wrong_auth_key&quot;}</span>
 <span class="l l-Scalar l-Scalar-Plain">vm_http_request_errors_total{path=&quot;*&quot;, reason=&quot;wrong_basic_auth&quot;}</span>
@@ -34474,7 +34474,7 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34485,11 +34485,11 @@ $<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>P
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

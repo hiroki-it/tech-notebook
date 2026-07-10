@@ -34132,8 +34132,8 @@
 <p><br></p>
 <h2 id="01-argocd">01. ArgoCDの仕組み<a class="headerlink" href="#01-argocd" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>ArgoCDは、argocd-server、repo-server、redis-server、dex-server、application-controller、といったコンポーネントから構成される。</p>
-<p>永続化するためのDBを持っておらず、ステートレスである。</p>
+<p>ArgoCD は、argocd-server、repo-server、redis-server、dex-server、application-controller、といったコンポーネントから構成される。</p>
+<p>永続化するための DB を持っておらず、ステートレスである。</p>
 <p><img alt="argocd_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/argocd/argocd_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -34190,7 +34190,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="04-applicationset-controller">04. applicationset-controller<a class="headerlink" href="#04-applicationset-controller" title="Permanent link">&para;</a></h2>
-<p>ApplicationSetリソースのReconciliationを実行する。</p>
+<p>ApplicationSet リソースの Reconciliation を実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/">https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/</a></li>
@@ -34253,7 +34253,7 @@
 <p><br></p>
 <h3 id="_6">拡張機能<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="argo-rollouts">▼ Argo Rolloutsの場合<a class="headerlink" href="#argo-rollouts" title="Permanent link">&para;</a></h4>
-<p>Argo Rolloutsをダッシュボードで操作する場合、執筆時点 (2023/05/24) で拡張機能としてインストールする必要がある。</p>
+<p>Argo Rollouts をダッシュボードで操作する場合、執筆時点 (2023/05/24) で拡張機能としてインストールする必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/argoproj-labs/rollout-extension">https://github.com/argoproj-labs/rollout-extension</a></li>
@@ -34262,11 +34262,11 @@
 <p><br></p>
 <h2 id="08-image-updater">08. image-updater<a class="headerlink" href="#08-image-updater" title="Permanent link">&para;</a></h2>
 <h3 id="image-updater">image-updaterとは<a class="headerlink" href="#image-updater" title="Permanent link">&para;</a></h3>
-<p>image-updaterを採用しない場合、GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップがある。</p>
+<p>image-updater を採用しない場合、GitOps のステップのなかで、マニフェストリポジトリ上にプルリクエストを作成するステップがある。</p>
 <p><img alt="gitops_without-image-updater" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_without-image-updater.png" /></p>
-<p>一方で、image-updaterを採用すると、GitOpsのステップの中で、マニフェストリポジトリ上にプルリクエストを作成するステップを省略できる。</p>
+<p>一方で、image-updater を採用すると、GitOps のステップのなかで、マニフェストリポジトリ上にプルリクエストを作成するステップを省略できる。</p>
 <p><img alt="gitops_with-image-updater" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_with-image-updater.png" /></p>
-<p>image-updaterは、アプリリポジトリからイメージリポジトリにコンテナイメージをプッシュした後、イメージリポジトリの更新を検知し、Cluster内のマニフェストを自動的に書き換える。</p>
+<p>image-updater は、アプリリポジトリからイメージリポジトリにコンテナイメージをプッシュした後、イメージリポジトリの更新を検知し、Cluster 内のマニフェストを自動的に書き換える。</p>
 <p>その後、マニフェストリポジトリに書き換えをコミットする。</p>
 <blockquote>
 <ul>
@@ -34279,15 +34279,15 @@
 <p>ただし、直接的にコマンドを送信できる。</p>
 <p>そのため、デバッグが可能である。</p>
 <p><strong>＊例＊</strong></p>
-<p>プラグインとして使用するためにインストールしたSOPSのバージョンを確認する。</p>
+<p>プラグインとして使用するためにインストールした SOPS のバージョンを確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>-it<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>foo-argocd-repo-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-c<span class="w"> </span>repo-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;sops --version&quot;</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p><code>/tmp/_argocd-repo/&lt;URLに基づくUUID&gt;</code> ディレクトリ配下で、<code>helm template</code> コマンドを使用してSecretの値を確認する。</p>
-<p>この時、<code>nl</code> コマンドを使用すると、作成したマニフェストの行数を表示できる。</p>
+<p><code>/tmp/_argocd-repo/&lt;URLに基づくUUID&gt;</code> ディレクトリ配下で、<code>helm template</code> コマンドを使用して Secret の値を確認する。</p>
+<p>このとき、<code>nl</code> コマンドを使用すると、作成したマニフェストの行数を表示できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>-it<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>foo-argocd-repo-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-c<span class="w"> </span>repo-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
@@ -34304,7 +34304,7 @@
 <h3 id="_8">共通<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 基本構成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>指定したブランチのコードの状態をポーリングする。</p>
-<p>プッシュによってコードが変更された場合、Kubernetesの状態をこれにSyncする。</p>
+<p>プッシュによってコードが変更された場合、Kubernetes の状態をこれに Sync する。</p>
 <p><img alt="argocd" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd.png" /></p>
 <blockquote>
 <ul>
@@ -34314,10 +34314,10 @@
 </ul>
 </blockquote>
 <h4 id="_10">▼ 検証<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>Applicationさえ削除しなければ、Kubernetesリソースをダッシュボード上からマニフェストを修正したり、Kubernetesリソースを削除しても、これが差分として認識される。</p>
-<p>そのため、Syncすれば元の状態に戻る。</p>
-<p>こういった点でも、ArgoCDを入れるほうが、Kubernetesの修正の検証がしやすい。</p>
-<p>注意点として、マニフェストに何かを追加するような変更は差分として認識されないため、Syncしても元に戻らない。</p>
+<p>Application さえ削除しなければ、Kubernetes リソースをダッシュボード上からマニフェストを修正したり、Kubernetes リソースを削除しても、これが差分として認識される。</p>
+<p>そのため、Sync すれば元の状態に戻る。</p>
+<p>こういった点でも、ArgoCD を入れるほうが、Kubernetes の修正の検証がしやすい。</p>
+<p>注意点として、マニフェストに何かを追加するような変更は差分として認識されないため、Sync しても元に戻らない。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/masahata/items/e22b0d30b77251b941d8">https://qiita.com/masahata/items/e22b0d30b77251b941d8</a></li>
@@ -34334,11 +34334,11 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>CIツールが、コンテナイメージをECRにプッシュする。</p>
+<p>CI ツールが、コンテナイメージを ECR にプッシュする。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>CIツールは、マニフェストリポジトリをクローンし、マニフェストのコンテナイメージのハッシュ値を変更する。</p>
+<p>CI ツールは、マニフェストリポジトリをクローンし、マニフェストのコンテナイメージのハッシュ値を変更する。</p>
 <p>このマニフェストの変更は、<code>yq</code>コマンドなどで直接的に実行する。</p>
 <p>変更したマニフェストをマニフェストリポジトリにプッシュする。</p>
 </dd>
@@ -34352,7 +34352,7 @@
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。</p>
+<p>ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。</p>
 </dd>
 </dl>
 <blockquote>
@@ -34373,7 +34373,7 @@
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>CIツールは、マニフェストリポジトリをクローンし、チャート内のマニフェストのコンテナイメージのハッシュ値を変更する。</p>
+<p>CI ツールは、マニフェストリポジトリをクローンし、チャート内のマニフェストのコンテナイメージのハッシュ値を変更する。</p>
 <p>このマニフェストの変更は、<code>yq</code>コマンドなどで直接的に実行する。</p>
 </dd>
 <dt><code>(4)</code></dt>
@@ -34386,7 +34386,7 @@
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。</p>
+<p>ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。</p>
 </dd>
 </dl>
 <blockquote>
@@ -34409,7 +34409,7 @@
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>ArgoCDがマニフェストの変更を検知し、Kubernetesにプルする。</p>
+<p>ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。</p>
 </dd>
 </dl>
 <blockquote>
@@ -34441,7 +34441,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 19:24:15 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34452,11 +34452,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

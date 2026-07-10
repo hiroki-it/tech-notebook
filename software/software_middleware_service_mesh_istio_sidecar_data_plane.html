@@ -34584,7 +34584,7 @@
 <p><img alt="istio_sidecar-mesh_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mesh_architecture.png" /></p>
 <p>サイドカーモードのデータプレーンは、istio-iptables、 <code>istio-init</code> コンテナ、istio-proxy、といったコンポーネントから構成される。</p>
 <p>サイドカープロキシを使用して、サービスメッシュを実装する。</p>
-<p>サイドカーは、<code>L4</code> (トランスポート層) のプロトコル (例：TCP、UDPなど) と <code>L7</code> (アプリケーション層) のプロトコル (例：HTTP、HTTPSなど) を処理できる。</p>
+<p>サイドカーは、<code>L4</code> (トランスポート層) のプロトコル (例：TCP、UDP など) と <code>L7</code> (アプリケーション層) のプロトコル (例：HTTP、HTTPS など) を処理できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/deployment/architecture/">https://istio.io/latest/docs/ops/deployment/architecture/</a></li>
@@ -34596,7 +34596,7 @@
 <h2 id="02">02. データプレーンの要素<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio-init"><code>istio-init</code> コンテナ<a class="headerlink" href="#istio-init" title="Permanent link">&para;</a></h3>
 <h4 id="istio-init_1">▼ <code>istio-init</code> コンテナとは<a class="headerlink" href="#istio-init_1" title="Permanent link">&para;</a></h4>
-<p>コンテナの起動時、<code>istio-iptables</code> コマンドを実行することにより、istio-iptablesをPodに適用する。</p>
+<p>コンテナの起動時、<code>istio-iptables</code> コマンドを実行することにより、istio-iptables を Pod に適用する。</p>
 <p><img alt="istio_istio-init" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-init.png" /></p>
 <blockquote>
 <ul>
@@ -34606,8 +34606,8 @@
 <p><br></p>
 <h3 id="istio-iptables">istio-iptables<a class="headerlink" href="#istio-iptables" title="Permanent link">&para;</a></h3>
 <h4 id="istio-iptables_1">▼ istio-iptablesとは<a class="headerlink" href="#istio-iptables_1" title="Permanent link">&para;</a></h4>
-<p>istio-iptablesは、istio-proxyを持つPod内のネットワークの経路を制御する。</p>
-<p>サービス検出としてPodのIPアドレスを持つのはistio-proxyであり、istio-iptablesではないことに注意する。</p>
+<p>istio-iptables は、istio-proxy を持つ Pod 内のネットワークの経路を制御する。</p>
+<p>サービス検出として Pod の IP アドレスを持つのは istio-proxy であり、istio-iptables ではないことに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># istio-initコンテナの起動時に実行する。</span>
 $<span class="w"> </span>pilot-agent<span class="w"> </span>istio-iptables<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-p<span class="w"> </span><span class="m">15001</span><span class="w"> </span><span class="se">\</span>
@@ -34628,7 +34628,7 @@ $<span class="w"> </span>pilot-agent<span class="w"> </span>istio-iptables<span 
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p><code>ps</code> コマンドを使用して、istio-proxyの <code>envoy</code> プロセスのID (PID) を取得する。</p>
+<p><code>ps</code> コマンドを使用して、istio-proxy の <code>envoy</code> プロセスの ID (PID) を取得する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># PIDが出力結果の2行目である。そのため、awkコマンドを使用して、2行目のみを取得している。</span>
@@ -34641,7 +34641,7 @@ $<span class="w"> </span>ps<span class="w"> </span>aux<span class="w"> </span><s
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>nsenter</code> コマンドを使用して、コンテナの稼働するユーザー空間を介し、コンテナに <code>iptables</code> コマンドを送信する。Istioによって管理されているChainのルールを取得できる。</p>
+<p><code>nsenter</code> コマンドを使用して、コンテナの稼働するユーザー空間を介し、コンテナに <code>iptables</code> コマンドを送信する。Istio によって管理されている Chain のルールを取得できる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>nsenter<span class="w"> </span>-t<span class="w"> </span>&lt;istio-proxyコンテナのPID&gt;<span class="w"> </span>-n<span class="w"> </span>iptables<span class="w"> </span>-L<span class="w"> </span>-n<span class="w"> </span>-t<span class="w"> </span>nat<span class="w"> </span>--line-number
@@ -34704,8 +34704,8 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="127001">▼ ローカルホストは <code>127.0.0.1</code> ではない<a class="headerlink" href="#127001" title="Permanent link">&para;</a></h4>
-<p>istio-proxyがインバウンドをマイクロサービスに送信するとき、<code>127.0.0.6</code> にリクエストを送信する。</p>
-<p><code>127.0.0.1</code> にするとiptables上で処理がループしてしまう。</p>
+<p>istio-proxy がインバウンドをマイクロサービスに送信するとき、<code>127.0.0.6</code> にリクエストを送信する。</p>
+<p><code>127.0.0.1</code> にすると iptables 上で処理がループしてしまう。</p>
 <p>Istio<code>v1.9</code> までは <code>127.0.0.1</code> で、<code>v1.10</code> から <code>127.0.0.6</code> になった。</p>
 <blockquote>
 <ul>
@@ -34716,8 +34716,8 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="pod">▼ Pod外からのインバウンド通信の場合<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>Pod外からマイクロサービスへのインバウンド通信は、istio-iptablesにより、istio-proxyの <code>15006</code> 番ポートにリダイレクトされる。</p>
-<p>istio-proxyはこれを受信し、ローカルホスト (<code>http://127.0.0.6:&lt;マイクロサービスのポート番号&gt;</code>) のマイクロサービスにルーティングする。</p>
+<p>Pod 外からマイクロサービスへのインバウンド通信は、istio-iptables により、istio-proxy の <code>15006</code> 番ポートにリダイレクトされる。</p>
+<p>istio-proxy はこれを受信し、ローカルホスト (<code>http://127.0.0.6:&lt;マイクロサービスのポート番号&gt;</code>) のマイクロサービスにルーティングする。</p>
 <p><img alt="istio_iptables_inbound" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png" /></p>
 <blockquote>
 <ul>
@@ -34726,8 +34726,8 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="pod_1">▼ Pod外へのアウトバウンド通信の場合<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスからPod外へのアウトバウンド通信は、istio-iptablesにより、istio-proxyの <code>15001</code> 番ポートにリダイレクトされる。</p>
-<p>サービス検出によってPod等の宛先情報が、istio-proxy内のEnvoyに登録されており、istio-proxyはアウトバウンド通信をPodに向けてルーティングする。</p>
+<p>マイクロサービスから Pod 外へのアウトバウンド通信は、istio-iptables により、istio-proxy の <code>15001</code> 番ポートにリダイレクトされる。</p>
+<p>サービス検出によって Pod 等の宛先情報が、istio-proxy 内の Envoy に登録されており、istio-proxy はアウトバウンド通信を Pod に向けてルーティングする。</p>
 <p><img alt="istio_iptables_outbound_other" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_other.png" /></p>
 <blockquote>
 <ul>
@@ -34736,7 +34736,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="_3">▼ ローカルホスト通信の場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスからローカルホスト (<code>http://127.0.0.6:&lt;ポート番号&gt;</code>) へのアウトバウンド通信は、istio-iptablesにより、istio-proxyの <code>15001</code> 番ポートにリダイレクトされる。</p>
+<p>マイクロサービスからローカルホスト (<code>http://127.0.0.6:&lt;ポート番号&gt;</code>) へのアウトバウンド通信は、istio-iptables により、istio-proxy の <code>15001</code> 番ポートにリダイレクトされる。</p>
 <p><img alt="istio_iptables_outbound_self" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_self.png" /></p>
 <blockquote>
 <ul>
@@ -34748,8 +34748,8 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <h4 id="istio-proxy_1">▼ istio-proxyとは<a class="headerlink" href="#istio-proxy_1" title="Permanent link">&para;</a></h4>
 <p><img alt="istio_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-proxy.png" /></p>
 <p>リバースプロキシの能力を持つサイドカーコンテナである。</p>
-<p>Dockerfileとしては、Envoyのバイナリファイルをインストールした後にpilot-agentを実行している。</p>
-<p>そのため、pilot-agent、Envoyが稼働している。</p>
+<p>Dockerfile としては、Envoy のバイナリファイルをインストールした後に pilot-agent を実行している。</p>
+<p>そのため、pilot-agent、Envoy が稼働している。</p>
 <div class="highlight"><pre><span></span><code>...
 
 <span class="c"># Install Envoy.</span>
@@ -34761,10 +34761,10 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <span class="c"># The pilot-agent will bootstrap Envoy.</span>
 <span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/usr/local/bin/pilot-agent&quot;</span><span class="p">]</span>
 </code></pre></div>
-<p>istio-proxyは、マイクロサービスのあるPodのみでなく、Istio Ingress GatewayのPod内にも存在している。</p>
-<p>Istioのサービスメッシュ外のネットワークからのインバウンド通信では、Istio Ingress Gateway内のistio-proxyにて、Pod等の宛先情報に基づいて、ルーティングを実行している。</p>
-<p>一方で、マイクロサービスを持つPod間通信では、Pod内のistio-proxyへ登録されたものに基づき、Pod間で直接通信している。</p>
-<p>仕様上、NginxやApacheを必須とする言語 (例：PHP) では、Pod内にリバースプロキシが <code>2</code> 個ある構成になってしまうことに注意する。</p>
+<p>istio-proxy は、マイクロサービスのある Pod のみでなく、Istio Ingress Gateway の Pod 内にも存在している。</p>
+<p>Istio のサービスメッシュ外のネットワークからのインバウンド通信では、Istio Ingress Gateway 内の istio-proxy にて、Pod 等の宛先情報に基づいて、ルーティングを実行している。</p>
+<p>一方で、マイクロサービスを持つ Pod 間通信では、Pod 内の istio-proxy へ登録されたものに基づき、Pod 間で直接通信している。</p>
+<p>仕様上、Nginx や Apache を必須とする言語 (例：PHP) では、Pod 内にリバースプロキシが <code>2</code> 個ある構成になってしまうことに注意する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2">https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2</a></li>
@@ -34774,16 +34774,16 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="_4">▼ 起動／終了の順番の制御<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスとistio-proxyの間で、起動／終了の順番を制御する必要がある。</p>
-<p><code>.spec.containers[*].lifecycle.postStart.exec.command</code> キーや <code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーに自前のコマンドを定義してistio-proxyの起動／終了の順番を制御する必要がある。</p>
+<p>マイクロサービスと istio-proxy の間で、起動／終了の順番を制御する必要がある。</p>
+<p><code>.spec.containers[*].lifecycle.postStart.exec.command</code> キーや <code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーに自前のコマンドを定義して istio-proxy の起動／終了の順番を制御する必要がある。</p>
 <p>ただし、以下のいずれかで不要になる。</p>
 <ul>
-<li>通常のistio-proxyの場合<ul>
+<li>通常の istio-proxy の場合<ul>
 <li><code>holdApplicationUntilProxyStarts</code> キーを <code>true</code> にする (<code>.spec.containers[*].lifecycle.postStart.exec.command</code> キーへ対応)</li>
 <li><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> 変数を <code>true</code> に設定する (<code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーへ対応)</li>
 </ul>
 </li>
-<li>InitContainerによるistio-proxyを使用する場合 (両方に対応)</li>
+<li>InitContainer による istio-proxy を使用する場合 (両方に対応)</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -34830,13 +34830,13 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="initcontainer">▼ InitContainerとして<a class="headerlink" href="#initcontainer" title="Permanent link">&para;</a></h4>
-<p>Kubernetesの <code>v1.28</code> では、InitContainerでサイドカーを作成できるようになった。</p>
-<p><code>pilot-agent</code> コマンドの実行時に <code>ENABLE_NATIVE_SIDECARS</code> 変数を渡せば良い。</p>
-<p>Istioでもこれをサポートしている。</p>
-<p>istio-proxyのインジェクションの仕組みはそのままで、PodのマニフェストのPatch処理の内容をInitContainerのインジェクションに変更している。</p>
-<p>これにより、Podの作成時にInitContainerをインジェクションできるようになる。</p>
-<p>今まで、<code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーや <code>.spec.containers[*].lifecycle.postStart.exec.command</code> キーに自前のコマンドを定義してistio-proxyの起動／終了の順番を制御する必要があった。</p>
-<p>しかし、InitContainerではKubernetesが起動／終了の順番を制御してくれるため、設定が不要になる。</p>
+<p>Kubernetes の <code>v1.28</code> では、InitContainer でサイドカーを作成できるようになった。</p>
+<p><code>pilot-agent</code> コマンドの実行時に <code>ENABLE_NATIVE_SIDECARS</code> 変数を渡せばよい。</p>
+<p>Istio でもこれをサポートしている。</p>
+<p>istio-proxy のインジェクションの仕組みはそのままで、Pod のマニフェストの Patch 処理の内容を InitContainer のインジェクションに変更している。</p>
+<p>これにより、Pod の作成時に InitContainer をインジェクションできるようになる。</p>
+<p>今まで、<code>.spec.containers[*].lifecycle.preStop.exec.command</code> キーや <code>.spec.containers[*].lifecycle.postStart.exec.command</code> キーに自前のコマンドを定義して istio-proxy の起動／終了の順番を制御する必要があった。</p>
+<p>しかし、InitContainer では Kubernetes が起動／終了の順番を制御してくれるため、設定が不要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34865,11 +34865,11 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <h3 id="istio-cni-istio-validation">istio-cniによる <code>istio-validation</code> コンテナ<a class="headerlink" href="#istio-cni-istio-validation" title="Permanent link">&para;</a></h3>
 <h4 id="istio-ini">▼ istio-iniとの関係性<a class="headerlink" href="#istio-ini" title="Permanent link">&para;</a></h4>
 <p><img alt="istio_istio-cni" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-cni.png" /></p>
-<p><code>istio-init</code> コンテナは、Podのネットワーク名前空間内で <code>istio-iptables</code> を実行し、iptablesルールを設定する。</p>
-<p>しかし、iptablesの操作には特権 (例：<code>CAP_NET_ADMIN</code>) が必要になりやすく、Podごとに特権 initContainer を持ち込む構成は攻撃面を広げるため、避けたいケースがある。</p>
-<p><code>istio-init</code> コンテナの代替案として、istio-cniが提供されている。</p>
-<p>istio-cniを使用する場合、iptablesの設定はノード上のistio-cni (DaemonSet) が実施するため、通常は <code>istio-init</code> コンテナが不要になる。</p>
-<p>その代わり、iptablesの設定完了を待つために <code>istio-validation</code> (initContainer) が挿入されることがある (race condition対策) 。</p>
+<p><code>istio-init</code> コンテナは、Pod のネットワーク名前空間内で <code>istio-iptables</code> を実行し、iptables ルールを設定する。</p>
+<p>しかし、iptables の操作には特権 (例：<code>CAP_NET_ADMIN</code>) が必要になりやすく、Pod ごとに特権 initContainer を持ち込む構成は攻撃面を広げるため、避けたいケースがある。</p>
+<p><code>istio-init</code> コンテナの代替案として、istio-cni が提供されている。</p>
+<p>istio-cni を使用する場合、iptables の設定はノード上の istio-cni (DaemonSet) が実施するため、通常は <code>istio-init</code> コンテナが不要になる。</p>
+<p>その代わり、iptables の設定完了を待つために <code>istio-validation</code> (initContainer) が挿入されることがある (race condition 対策) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/">https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/</a></li>
@@ -34879,9 +34879,9 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="istio-cni">▼ istio-cniとは<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h4>
-<p>各Node上で、istio-cniは <code>istio-cni-node</code> という名前のDaemonSetとして稼働する。</p>
-<p>istio-cniは、CNIプラグインのバイナリと設定をNode上のファイルシステムに配置する。</p>
-<p>KubernetesのPod作成時に、CNIの仕組みを介してPodのネットワーク名前空間に対してiptables設定する。</p>
+<p>各 Node 上で、istio-cni は <code>istio-cni-node</code> という名前の DaemonSet として稼働する。</p>
+<p>istio-cni は、CNI プラグインのバイナリと設定を Node 上のファイルシステムに配置する。</p>
+<p>Kubernetes の Pod 作成時に、CNI の仕組みを介して Pod のネットワーク名前空間に対して iptables 設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration">https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration</a></li>
@@ -34889,8 +34889,8 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="istio-validation">▼ <code>istio-validation</code> コンテナ<a class="headerlink" href="#istio-validation" title="Permanent link">&para;</a></h4>
-<p>istio-cniを採用している場合にのみ挿入されるコンテナ。</p>
-<p>istio-cniのDaemonSetがistio-iptablesを適用し終了することを待機するために、これが完了したかどうかを検証する。</p>
+<p>istio-cni を採用している場合にのみ挿入されるコンテナ。</p>
+<p>istio-cni の DaemonSet が istio-iptables を適用し終了することを待機するために、これが完了したかどうかを検証する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation">https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation</a></li>
@@ -34900,9 +34900,9 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <h2 id="02-02-istio-proxy">02-02. istio-proxy<a class="headerlink" href="#02-02-istio-proxy" title="Permanent link">&para;</a></h2>
 <h3 id="pilot-agent-istio-agent">pilot-agent (新istio-agent)<a class="headerlink" href="#pilot-agent-istio-agent" title="Permanent link">&para;</a></h3>
 <h4 id="pilot-agent">▼ pilot-agentとは<a class="headerlink" href="#pilot-agent" title="Permanent link">&para;</a></h4>
-<p>もともとは、istio-agentといわれていた。</p>
-<p>実体は、GitHubの <code>pilot-agent</code> ディレクトリ配下の <code>main.go</code> ファイルで実行されるGoのバイナリファイルである。</p>
-<p>ADS-APIとの間で双方向ストリーミングRPCを確立し、EnvoyからのADS-APIへのリクエストと反対にADS-APIからのリクエストを中継する。</p>
+<p>もともとは、istio-agent といわれていた。</p>
+<p>実体は、GitHub の <code>pilot-agent</code> ディレクトリ配下の <code>main.go</code> ファイルで実行される Go のバイナリファイルである。</p>
+<p>ADS-API との間で双方向ストリーミング RPC を確立し、Envoy からの ADS-API へのリクエストと反対に ADS-API からのリクエストを中継する。</p>
 <blockquote>
 <ul>
 <li><a href="https://rocdu.gitbook.io/deep-understanding-of-istio/6/5">https://rocdu.gitbook.io/deep-understanding-of-istio/6/5</a></li>
@@ -34967,7 +34967,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <li><a href="https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446">https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446</a></li>
 </ul>
 </blockquote>
-<p><code>handleRecv()</code> 関数内で、Envoyの各処理コンポーネントを整理し、最後に <code>XDSUpdates</code> チャネルへ値を送信している。</p>
+<p><code>handleRecv()</code> 関数内で、Envoy の各処理コンポーネントを整理し、最後に <code>XDSUpdates</code> チャネルへ値を送信している。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="nx">ADSC</span><span class="p">)</span><span class="w"> </span><span class="nx">handleRecv</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">for</span><span class="p">{</span>
@@ -35032,7 +35032,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="ads-istioctl">▼ ADSクライアントとしての <code>istioctl</code> コマンドの実装<a class="headerlink" href="#ads-istioctl" title="Permanent link">&para;</a></h4>
-<p><code>Run()</code> 関数によるXDS-APIとの通信は、<code>istioctl</code> コマンドでも使用されている。</p>
+<p><code>Run()</code> 関数による XDS-API との通信は、<code>istioctl</code> コマンドでも使用されている。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">GetXdsResponse</span><span class="p">(</span><span class="nx">dr</span><span class="w"> </span><span class="o">*</span><span class="nx">discovery</span><span class="p">.</span><span class="nx">DiscoveryRequest</span><span class="p">,</span><span class="w"> </span><span class="nx">ns</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">serviceAccount</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">opts</span><span class="w"> </span><span class="nx">clioptions</span><span class="p">.</span><span class="nx">CentralControlPlaneOptions</span><span class="p">,</span><span class="w"> </span><span class="nx">grpcOpts</span><span class="w"> </span><span class="p">[]</span><span class="nx">grpc</span><span class="p">.</span><span class="nx">DialOption</span><span class="p">,)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">discovery</span><span class="p">.</span><span class="nx">DiscoveryResponse</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -35059,7 +35059,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <p><br></p>
 <h3 id="envoy">Envoy<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h3>
 <h4 id="envoy_1">▼ Envoyとは<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h4>
-<p>istio-proxyにて、リバースプロキシとして動作する。Envoyは、pilot-agentを介して、ADS-APIにリモートプロシージャーコールを実行する。また反対に、XDS-APIからのリモートプロシージャーコールをpilot-agentを介して受信する。</p>
+<p>istio-proxy にて、リバースプロキシとして動作する。Envoy は、pilot-agent を介して、ADS-API にリモートプロシージャーコールを実行する。また反対に、XDS-API からのリモートプロシージャーコールを pilot-agent を介して受信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/">https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/</a></li>
@@ -35070,23 +35070,23 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <p><br></p>
 <h3 id="_5">ヘルスチェック<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="startprobe">▼ 自身のstartProbe<a class="headerlink" href="#startprobe" title="Permanent link">&para;</a></h4>
-<p>istio-proxyは、<code>10</code> 分以上起動が完了しないと、Podが終了する。</p>
+<p>istio-proxy は、<code>10</code> 分以上起動が完了しないと、Pod が終了する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default">https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default</a></li>
 </ul>
 </blockquote>
 <h4 id="http">▼ マイクロサービスのHTTPヘルスチェック<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>Istioのパケット暗号化で相互TLSを導入している場合、istio-proxyがリクエストを受信するために、クライアント証明書が必要である。</p>
-<p>しかし、Istioはkubeletにクライアント証明書を組み込めないため、このままだとistio-proxyはkubeletからのヘルスチェックを拒否してしまう。</p>
-<p>そのため、Istioで相互TLS認証を有効化していると、kubeletがHTTPヘルスチェックをistio-proxyに実施した場合、証明書のないエラーでHTTPヘルスチェックは失敗してしまう。</p>
-<p>これの対策として、以下の仕組みでHTTPヘルスチェックを成功させる。</p>
+<p>Istio のパケット暗号化で相互 TLS を導入している場合、istio-proxy がリクエストを受信するために、クライアント証明書が必要である。</p>
+<p>しかし、Istio は kubelet にクライアント証明書を組み込めないため、このままだと istio-proxy は kubelet からのヘルスチェックを拒否してしまう。</p>
+<p>そのため、Istio で相互 TLS 認証を有効化していると、kubelet が HTTP ヘルスチェックを istio-proxy に実施した場合、証明書のないエラーで HTTP ヘルスチェックは失敗してしまう。</p>
+<p>これの対策として、以下の仕組みで HTTP ヘルスチェックを成功させる。</p>
 <ol>
-<li>Istioは、サイドカーインジェクション時、マイクロサービスのLivenessProbeヘルスチェックとReadinessProbeヘルスチェックのパスを <code>/app-health/&lt;コンテナ名&gt;/livez</code> と <code>/app-health/&lt;コンテナ名&gt;/readyz</code> に書き換え、元のパスを <code>ISTIO_KUBE_APP_PROBERS</code> に保存する。</li>
-<li>kubeletはPodにHTTPヘルスチェックを送信する。</li>
-<li>istio-proxyはkubeletのHTTPヘルスチェックを受信する。<code>ISTIO_KUBE_APP_PROBERS</code> から元のパスを取得し、マイクロサービスにHTTPヘルスチェックをリダイレクトする。 istio-proxyはマイクロサービスからレスポンスを受信し、kubeletにHTTPヘルスチェックを返信する。</li>
+<li>Istio は、サイドカーインジェクション時、マイクロサービスの LivenessProbe ヘルスチェックと ReadinessProbe ヘルスチェックのパスを <code>/app-health/&lt;コンテナ名&gt;/livez</code> と <code>/app-health/&lt;コンテナ名&gt;/readyz</code> に書き換え、元のパスを <code>ISTIO_KUBE_APP_PROBERS</code> に保存する。</li>
+<li>kubelet は Pod に HTTP ヘルスチェックを送信する。</li>
+<li>istio-proxy は kubelet の HTTP ヘルスチェックを受信する。<code>ISTIO_KUBE_APP_PROBERS</code> から元のパスを取得し、マイクロサービスに HTTP ヘルスチェックをリダイレクトする。 istio-proxy はマイクロサービスからレスポンスを受信し、kubelet に HTTP ヘルスチェックを返信する。</li>
 </ol>
-<p>なお、Podの <code>.metadata.annotations</code> に <code>sidecar.istio.io/rewriteAppHTTPProbers: "false"</code> を設定しておくと、これを無効化できる。</p>
+<p>なお、Pod の <code>.metadata.annotations</code> に <code>sidecar.istio.io/rewriteAppHTTPProbers: "false"</code> を設定しておくと、これを無効化できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/">https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/</a></li>
@@ -35094,10 +35094,10 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 </ul>
 </blockquote>
 <h4 id="tcp">▼ マイクロサービスのTCPヘルスチェック<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
-<p>kubeletは、対象のポート番号でプロセスがリクエストを待ち受けているかのみを検証する。</p>
-<p>そのため、マイクロサービスが異常であってもistio-proxyが正常である限り、kubeletのTCPヘルスチェックが成功してしまう。</p>
-<p>これの対策として、istio-proxyは、kubeletから受信したTCPヘルスチェックをマイクロサービスに送信する。</p>
-<p>これにより、kuebletがマイクロサービスにTCPヘルスチェックを実施できるようになる。</p>
+<p>kubelet は、対象のポート番号でプロセスがリクエストを待ち受けているかのみを検証する。</p>
+<p>そのため、マイクロサービスが異常であっても istio-proxy が正常である限り、kubelet の TCP ヘルスチェックが成功してしまう。</p>
+<p>これの対策として、istio-proxy は、kubelet から受信した TCP ヘルスチェックをマイクロサービスに送信する。</p>
+<p>これにより、kueblet がマイクロサービスに TCP ヘルスチェックを実施できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/">https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/</a></li>
@@ -35107,24 +35107,24 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <p><br></p>
 <h3 id="istio-proxy_2">istio-proxyが終了するまでの仕組み<a class="headerlink" href="#istio-proxy_2" title="Permanent link">&para;</a></h3>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
-<p>istio-proxyは、Envoyプロセスを安全に停止する。</p>
+<p>istio-proxy は、Envoy プロセスを安全に停止する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>istio-proxyはGraceful Drainモード待機時間を開始する。</p>
+<p>istio-proxy は Graceful Drain モード待機時間を開始する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>Envoyは、接続のドレイン処理を実施する。</p>
+<p>Envoy は、接続のドレイン処理を実施する。</p>
 <p>Podの<code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code>値 (デフォルト<code>5</code>秒) の待機時間だけ、リクエストを受信しながら移行していく。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>Envoyは、プロセスのGraceful Drainモードを終了する。</p>
+<p>Envoy は、プロセスの Graceful Drain モードを終了する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>istio-proxyにSIGKILLシグナルを送信する。</p>
+<p>istio-proxy に SIGKILL シグナルを送信する。</p>
 </dd>
 </dl>
 <blockquote>
@@ -35137,7 +35137,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <p><br></p>
 <h2 id="02-03">02-03. 待ち受けるポート番号<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
 <h3 id="15000"><code>15000</code> 番<a class="headerlink" href="#15000" title="Permanent link">&para;</a></h3>
-<p>istio-proxyの <code>15000</code> 番ポートでは、Envoyのダッシュボードに対するリクエストを待ち受ける。</p>
+<p>istio-proxy の <code>15000</code> 番ポートでは、Envoy のダッシュボードに対するリクエストを待ち受ける。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># istio-proxyコンテナ内でローカルホストにリクエストを送信する。</span>
 istio-proxy@&lt;Pod名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump
 </code></pre></div>
@@ -35150,8 +35150,8 @@ istio-proxy@&lt;Pod名&gt;:<span class="w"> </span>$<span class="w"> </span>curl
 </blockquote>
 <p><br></p>
 <h3 id="15001"><code>15001</code> 番<a class="headerlink" href="#15001" title="Permanent link">&para;</a></h3>
-<p>istio-proxyの <code>15001</code> 番ポートでは、マイクロサービスからのアウトバウンド通信を待ち受ける。</p>
-<p>マイクロサービスからのアウトバウンド通信は、一度、istio-proxyの <code>15001</code> 番ポートにリダイレクトされる。</p>
+<p>istio-proxy の <code>15001</code> 番ポートでは、マイクロサービスからのアウトバウンド通信を待ち受ける。</p>
+<p>マイクロサービスからのアウトバウンド通信は、一度、istio-proxy の <code>15001</code> 番ポートにリダイレクトされる。</p>
 <blockquote>
 <ul>
 <li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar">https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar</a></li>
@@ -35159,7 +35159,7 @@ istio-proxy@&lt;Pod名&gt;:<span class="w"> </span>$<span class="w"> </span>curl
 </blockquote>
 <p><br></p>
 <h3 id="15004"><code>15004</code> 番<a class="headerlink" href="#15004" title="Permanent link">&para;</a></h3>
-<p>istio-proxyの <code>15004</code> 番ポートでは、コントロールプレーンのコンテナの <code>8080</code> 番ポートと一緒に使用される。</p>
+<p>istio-proxy の <code>15004</code> 番ポートでは、コントロールプレーンのコンテナの <code>8080</code> 番ポートと一緒に使用される。</p>
 <p>用途がわからず記入中...</p>
 <blockquote>
 <ul>
@@ -35168,8 +35168,8 @@ istio-proxy@&lt;Pod名&gt;:<span class="w"> </span>$<span class="w"> </span>curl
 </blockquote>
 <p><br></p>
 <h3 id="15006"><code>15006</code> 番<a class="headerlink" href="#15006" title="Permanent link">&para;</a></h3>
-<p>istio-proxyの <code>15006</code> 番ポートでは、マイクロサービスへのインバウンド通信を待ち受ける。</p>
-<p>マイクロサービスへのインバウンド通信は、一度、istio-proxyの <code>15006</code> 番ポートにリダイレクトされる。</p>
+<p>istio-proxy の <code>15006</code> 番ポートでは、マイクロサービスへのインバウンド通信を待ち受ける。</p>
+<p>マイクロサービスへのインバウンド通信は、一度、istio-proxy の <code>15006</code> 番ポートにリダイレクトされる。</p>
 <blockquote>
 <ul>
 <li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar">https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar</a></li>
@@ -35177,7 +35177,7 @@ istio-proxy@&lt;Pod名&gt;:<span class="w"> </span>$<span class="w"> </span>curl
 </blockquote>
 <p><br></p>
 <h3 id="15020"><code>15020</code> 番<a class="headerlink" href="#15020" title="Permanent link">&para;</a></h3>
-<p>istio-proxyの <code>15020</code> 番ポートでは、データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。</p>
+<p>istio-proxy の <code>15020</code> 番ポートでは、データプレーンのデバッグエンドポイントに対するリクエストを待ち受ける。</p>
 <blockquote>
 <ul>
 <li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#15020">https://jimmysong.io/en/blog/istio-components-and-ports/#15020</a></li>
@@ -35185,8 +35185,8 @@ istio-proxy@&lt;Pod名&gt;:<span class="w"> </span>$<span class="w"> </span>curl
 </blockquote>
 <p><br></p>
 <h3 id="15021"><code>15021</code> 番<a class="headerlink" href="#15021" title="Permanent link">&para;</a></h3>
-<p>istio-proxyの <code>15021</code> 番ポートでは、kubeletからのReadinessProbeヘルスチェックを待ち受ける。</p>
-<p>istio-proxy内のEnvoyが、<code>/healthz/ready</code> エンドポイントでReadinessProbeヘルスチェックを待ち受けており、もしEnvoyが停止してれば <code>503</code> レスポンスを返却する。</p>
+<p>istio-proxy の <code>15021</code> 番ポートでは、kubelet からの ReadinessProbe ヘルスチェックを待ち受ける。</p>
+<p>istio-proxy 内の Envoy が、<code>/healthz/ready</code> エンドポイントで ReadinessProbe ヘルスチェックを待ち受けており、もし Envoy が停止してれば <code>503</code> レスポンスを返却する。</p>
 <blockquote>
 <ul>
 <li><a href="https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar">https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar</a></li>
@@ -35203,8 +35203,8 @@ istio-proxy@&lt;Pod名&gt;:<span class="w"> </span>$<span class="w"> </span>curl
 </blockquote>
 <p><br></p>
 <h3 id="15090"><code>15090</code> 番<a class="headerlink" href="#15090" title="Permanent link">&para;</a></h3>
-<p>istio-proxyの <code>15090</code> 番ポートでは、istio-proxyのデータポイント収集ツール (例：Prometheus) からのリクエストを待ち受ける。</p>
-<p>istio-proxy内のEnvoyが、<code>/stats/prometheus</code> エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。</p>
+<p>istio-proxy の <code>15090</code> 番ポートでは、istio-proxy のデータポイント収集ツール (例：Prometheus) からのリクエストを待ち受ける。</p>
+<p>istio-proxy 内の Envoy が、<code>/stats/prometheus</code> エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。</p>
 <p>ただ、<code>discovery</code> コンテナにも <code>/stats/prometheus</code> エンドポイントがあり、データポイント収集ツールはこれを指定することが多い。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
@@ -35229,20 +35229,20 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
 <p><br></p>
 <h2 id="03-pilot-agent">03. pilot-agentコマンド<a class="headerlink" href="#03-pilot-agent" title="Permanent link">&para;</a></h2>
 <h3 id="_6">実行オプションの渡し方<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>istio-proxyの起動時に引数として渡す。</p>
-<p>Podであれば、<code>.spec.containers[*].args</code> オプションを使用する。</p>
+<p>istio-proxy の起動時に引数として渡す。</p>
+<p>Pod であれば、<code>.spec.containers[*].args</code> オプションを使用する。</p>
 <p><br></p>
 <h3 id="proxy">proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h3>
 <h4 id="router">▼ router<a class="headerlink" href="#router" title="Permanent link">&para;</a></h4>
-<p>istio-proxyをメッシュゲートウェイ (Istio Ingress GAteway、Istio Egress Gateway) として実行する。</p>
+<p>istio-proxy をメッシュゲートウェイ (Istio Ingress GAteway、Istio Egress Gateway) として実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-agent<span class="w"> </span>proxy<span class="w"> </span>router
 </code></pre></div>
 <h4 id="sidecar">▼ sidecar<a class="headerlink" href="#sidecar" title="Permanent link">&para;</a></h4>
-<p>istio-proxyをサイドカーとして実行する。</p>
+<p>istio-proxy をサイドカーとして実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-agent<span class="w"> </span>proxy<span class="w"> </span>sidecar
 </code></pre></div>
 <h3 id="wait">wait<a class="headerlink" href="#wait" title="Permanent link">&para;</a></h3>
-<p>istio-proxyのプロセスが起動完了するまで待機する。</p>
+<p>istio-proxy のプロセスが起動完了するまで待機する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pilot-agent<span class="w"> </span><span class="nb">wait</span>
 </code></pre></div>
 <blockquote>
@@ -35253,7 +35253,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
 <p><br></p>
 <h2 id="04-pilot-agent">04. pilot-agentコマンドの環境変数<a class="headerlink" href="#04-pilot-agent" title="Permanent link">&para;</a></h2>
 <h3 id="secret_ttl"><code>SECRET_TTL</code><a class="headerlink" href="#secret_ttl" title="Permanent link">&para;</a></h3>
-<p>istio-proxyの証明書の有効期限を設定する。</p>
+<p>istio-proxy の証明書の有効期限を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/pilot-agent/">https://istio.io/latest/docs/reference/commands/pilot-agent/</a></li>
@@ -35280,7 +35280,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35291,11 +35291,11 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

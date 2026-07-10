@@ -33776,8 +33776,8 @@
 <p><br></p>
 <h2 id="01-vcluster">01. VClusterの仕組み<a class="headerlink" href="#01-vcluster" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>VClusterは、コントロールプレーン、Syncer、といったコンポーネントから構成されている。</p>
-<p>仮想Cluster間では、Namespacedスコープはもちろん、ClusterスコープのKubernetesリソースも分離できる。</p>
+<p>VCluster は、コントロールプレーン、Syncer、といったコンポーネントから構成されている。</p>
+<p>仮想 Cluster 間では、Namespaced スコープはもちろん、Cluster スコープの Kubernetes リソースも分離できる。</p>
 <p><img alt="vcluster_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vcluster_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -33787,13 +33787,13 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">コントロールプレーン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>ホストCluster上に、Namespaceを単位とした仮想Clusterを作成する。</p>
-<p>仮想Clusterのバージョンは、ホストClusterに合わせる必要がある。</p>
+<p>ホスト Cluster 上に、Namespace を単位とした仮想 Cluster を作成する。</p>
+<p>仮想 Cluster のバージョンは、ホスト Cluster に合わせる必要がある。</p>
 <p><br></p>
 <h3 id="syncer">Syncer<a class="headerlink" href="#syncer" title="Permanent link">&para;</a></h3>
-<p>仮想Cluster内の仮想リソース (Service、Pod、ServiceAccount) を、ホストClusterにコピーする。</p>
-<p>ホストClusterで受信したリクエストを実Serviceにルーティングできれば、仮想Clusterにもルーティングできる。</p>
-<p>また、ホストCluster上のServiceAccountにクラウドプロバイダーの認可ロールを紐づければ、IRSAを実装できる。</p>
+<p>仮想 Cluster 内の仮想リソース (Service、Pod、ServiceAccount) を、ホスト Cluster にコピーする。</p>
+<p>ホスト Cluster で受信したリクエストを実 Service にルーティングできれば、仮想 Cluster にもルーティングできる。</p>
+<p>また、ホスト Cluster 上の ServiceAccount にクラウドプロバイダーの認可ロールを紐づければ、IRSA を実装できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.vcluster.com/docs/operator/external-access">https://www.vcluster.com/docs/operator/external-access</a></li>
@@ -33820,7 +33820,7 @@ $<span class="w"> </span>vcluster<span class="w"> </span>create<span class="w"> 
 </ul>
 </blockquote>
 <h4 id="helm">▼ Helmの場合<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h4>
-<p>Amazon EKS上で仮想Clusterを作成する。</p>
+<p>Amazon EKS 上で仮想 Cluster を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://charts.loft.sh
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -33840,7 +33840,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="03-vcluster">03. vclusterコマンド<a class="headerlink" href="#03-vcluster" title="Permanent link">&para;</a></h2>
 <h3 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
 <h4 id="create_1">▼ createとは<a class="headerlink" href="#create_1" title="Permanent link">&para;</a></h4>
-<p>仮想Clusterを作成する。</p>
+<p>仮想 Cluster を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vcluster<span class="w"> </span>create<span class="w"> </span>foo-cluster<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--kubernetes-version<span class="o">=</span>&lt;バージョン&gt;
@@ -33858,7 +33858,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span>--kubernetes-version<span class="o">=</span>&lt;バージョン&gt;
 </code></pre></div>
 <h4 id="-upgrade">▼ --upgrade<a class="headerlink" href="#-upgrade" title="Permanent link">&para;</a></h4>
-<p>仮想ClusterのKubernetesのバージョンをアップグレードする。</p>
+<p>仮想 Cluster の Kubernetes のバージョンをアップグレードする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vcluster<span class="w"> </span>create<span class="w"> </span>foo-cluster<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--upgrade<span class="w"> </span><span class="se">\</span>
@@ -33870,7 +33870,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="-isolate">▼ --isolate<a class="headerlink" href="#-isolate" title="Permanent link">&para;</a></h4>
-<p>仮想ClusterからホストClusterへは名前解決不可能できないようにし、仮想Cluster間を分離する。</p>
+<p>仮想 Cluster からホスト Cluster へは名前解決不可能できないようにし、仮想 Cluster 間を分離する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vcluster<span class="w"> </span>create<span class="w"> </span>foo-cluster<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--isolate<span class="w"> </span><span class="se">\</span>
@@ -33884,8 +33884,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="connect">connect<a class="headerlink" href="#connect" title="Permanent link">&para;</a></h3>
 <h4 id="connect_1">▼ connectとは<a class="headerlink" href="#connect_1" title="Permanent link">&para;</a></h4>
-<p>仮想Clusterにポートフォワーディングを実行する。</p>
-<p>これを実行している間、仮想Clusterに対して <code>kubectl</code> コマンドを実行できるようになる。</p>
+<p>仮想 Cluster にポートフォワーディングを実行する。</p>
+<p>これを実行している間、仮想 Cluster に対して <code>kubectl</code> コマンドを実行できるようになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vcluster<span class="w"> </span>connect<span class="w"> </span>&lt;Cluster名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>&lt;ClusterのNamespace名&gt;
 
@@ -33899,7 +33899,7 @@ Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[<
 <li><a href="https://ryusa.hatenablog.com/entry/2021/05/22/221614">https://ryusa.hatenablog.com/entry/2021/05/22/221614</a></li>
 </ul>
 </blockquote>
-<p>なお、仮想Clusterに直接的にコマンドを送信できる。</p>
+<p>なお、仮想 Cluster に直接的にコマンドを送信できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vcluster<span class="w"> </span>connect<span class="w"> </span>&lt;Cluster名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>&lt;ClusterのNamespace名&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-A
@@ -33925,7 +33925,7 @@ Forwarding<span class="w"> </span>from<span class="w"> </span><span class="o">[<
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

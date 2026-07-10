@@ -33178,8 +33178,8 @@
 <h1 id="05-14">05-14. アプリ領域を参照<a class="headerlink" href="#05-14" title="Permanent link">&para;</a></h1>
 <p><a href="https://example.com">【アプリ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
 <h1 id="15">15. トラフィック管理方法<a class="headerlink" href="#15" title="Permanent link">&para;</a></h1>
-<p>L4 / L7トラフィック管理のために、宛先情報を動的に検出しなければなりません。</p>
-<p>この時、サービス検出という機能を使用しています。</p>
+<p>L4 / L7 トラフィック管理のために、宛先情報を動的に検出しなければなりません。</p>
+<p>このとき、サービス検出という機能を使用しています。</p>
 <p>サービス検出の実装方法にはいくつか種類があります。</p>
 <pre class="mermaid"><code>flowchart LR
 
@@ -33201,12 +33201,12 @@
 <p>送信元マイクロサービスは、ロードバランサーにリクエストを送信します。</p>
 <p>ロードバランサーは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、またリクエストをロードバランシングする責務を担っています。</p>
 <p>なお、本記事では、サーバーサイドパターンを採用します。</p>
-<p>(例) Istio、CoreDNS、AWS ALBなど</p>
+<p>(例) Istio、CoreDNS、AWS ALB など</p>
 <p><img alt="service-discovery-pattern_server-side.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/service-discovery-pattern_server-side.png" /></p>
 <p><a href="https://microservices.io/patterns/server-side-discovery.html">Microservices Pattern: Pattern: Server-side service discovery</a></p>
 <h3 id="_4">クライアントサイドサービス検出パターン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>通信の送信元マイクロサービスは、宛先マイクロサービスの場所をサービスレジストリに問い合わせ、さらにロードバランシングする責務を担います。</p>
-<p>(例) NetflixのEureka、kube-proxyなど</p>
+<p>(例) Netflix の Eureka、kube-proxy など</p>
 <p><img alt="service-discovery-pattern_client-side.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/service-discovery-pattern_client-side.png" /></p>
 <p><a href="https://microservices.io/patterns/client-side-discovery.html">Microservices Pattern: Pattern: Client-side service discovery</a></p>
 <h2 id="_5">宛先登録<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
@@ -33223,7 +33223,7 @@
 <ul>
 <li>ラウンドロビン</li>
 <li>重み付きラウンドロビン</li>
-<li>IPハッシュ</li>
+<li>IP ハッシュ</li>
 </ul>
 <h3 id="_10">動的方式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>宛先の負荷をリアルタイムに考慮して、ロードバランシングします。</p>
@@ -33235,8 +33235,8 @@
 <h1 id="15-02">15-02. トラフィック管理方法<a class="headerlink" href="#15-02" title="Permanent link">&para;</a></h1>
 <h2 id="l3">L3<a class="headerlink" href="#l3" title="Permanent link">&para;</a></h2>
 <h3 id="vpc-cnikube-proxyip">VPC CNIアドオンやkube-proxyによるIPアドレス管理方法<a class="headerlink" href="#vpc-cnikube-proxyip" title="Permanent link">&para;</a></h3>
-<p>VPC CNIアドオンは、kubeletやAWS ENIと連携し、マイクロサービスPodをAmazon EKSクラスター内のネットワークに参加させます。</p>
-<p>kube-proxyはNode内のiptablesを更新し、Amazon EKSクラスター内で各ツールがトラフィック管理できるようにする。</p>
+<p>VPC CNI アドオンは、kubelet や AWS ENI と連携し、マイクロサービス Pod を Amazon EKS クラスター内のネットワークに参加させます。</p>
+<p>kube-proxy は Node 内の iptables を更新し、Amazon EKS クラスター内で各ツールがトラフィック管理できるようにする。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio.png" /></p>
 <table>
 <thead>
@@ -33262,9 +33262,9 @@
 </table>
 <h2 id="_11">サービスメッシュ内<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <h3 id="istiol4l7">IstioによるL4/L7トラフィック管理<a class="headerlink" href="#istiol4l7" title="Permanent link">&para;</a></h3>
-<p>Istioは、指定したNamespaceに属するPodへサービスメッシュの機能を提供する。</p>
-<p>管理下のPodにistio-proxyを挿入します。</p>
-<p>istio-proxyは、Podのアウトバウンド通信をL4 / L7ロードバランシングします。</p>
+<p>Istio は、指定した Namespace に属する Pod へサービスメッシュの機能を提供する。</p>
+<p>管理下の Pod に istio-proxy を挿入します。</p>
+<p>istio-proxy は、Pod のアウトバウンド通信を L4 / L7 ロードバランシングします。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L4_L7トラフィック管理 (サービスメッシュ内).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L4_L7トラフィック管理_(サービスメッシュ内).drawio.png" /></p>
 <table>
 <thead>
@@ -33293,8 +33293,8 @@
 </tbody>
 </table>
 <h3 id="istio">Istioによるクライアントの判定<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h3>
-<p>Istio IngressGatewayがサービスメッシュ外からの通信をサービスメッシュ内にロードバランシングします。</p>
-<p>クライアント (ブラウザ、外部API) に応じて、適切なフロントエンドアプリやAPI Gatewayにルーティングできます。</p>
+<p>Istio IngressGateway がサービスメッシュ外からの通信をサービスメッシュ内にロードバランシングします。</p>
+<p>クライアント (ブラウザ、外部 API) に応じて、適切なフロントエンドアプリや API Gateway にルーティングできます。</p>
 <table>
 <thead>
 <tr>
@@ -33322,11 +33322,11 @@
 </tbody>
 </table>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トラフィック管理 (南北).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%88%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E7%AE%A1%E7%90%86_(%E5%8D%97%E5%8C%97).drawio.png" /></p>
-<p>Istio IngressGatewayについては、以下のブログで解説しているため、5000兆回ブックマークしてくれると嬉しいです！</p>
+<p>Istio IngressGateway については、以下のブログで解説しているため、5000 兆回ブックマークしてくれると嬉しいです！</p>
 <p><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2024/01/16/013404">【Istio⛵️】Istioによって抽象化されるEnvoyのHTTPSリクエスト処理の仕組み - 好きな技術を布教したい 😗</a></p>
 <h2 id="_12">サービスメッシュ外<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<p>Istioは、指定したNamespace以外に属するPodにはサービスメッシュの機能を提供しません。</p>
-<p>サービスメッシュ外のNamespaceでは、CoreDNSを使用して、トラフィックを管理します。</p>
+<p>Istio は、指定した Namespace 以外に属する Pod にはサービスメッシュの機能を提供しません。</p>
+<p>サービスメッシュ外の Namespace では、CoreDNS を使用して、トラフィックを管理します。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L7トラフィック管理 (サービスメッシュ外).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L7トラフィック管理_(サービスメッシュ外).drawio.png" /></p>
 <table>
 <thead>
@@ -33375,9 +33375,9 @@
 </tbody>
 </table>
 <h1 id="16">16. 公開先ネットワーク制限<a class="headerlink" href="#16" title="Permanent link">&para;</a></h1>
-<p>フロントエンドは、Amazon EKSクラスターの外に公開します。</p>
-<p>ただし、社内ユーザーに公開すべきフロントエンドと、社内のSWEやSREerにだけ公開するものがあります。</p>
-<p>Amazon EKSクラスターの入り口で、リクエストを検査し、これらを制御しなければなりません。</p>
+<p>フロントエンドは、Amazon EKS クラスターの外に公開します。</p>
+<p>ただし、社内ユーザーに公開すべきフロントエンドと、社内の SWE や SREer にだけ公開するものがあります。</p>
+<p>Amazon EKS クラスターの入り口で、リクエストを検査し、これらを制御しなければなりません。</p>
 <pre class="mermaid"><code>flowchart LR
 
   公開先ネットワーク制限 ---- 公開先ネットワーク制限の基点((" "))
@@ -33388,11 +33388,11 @@
 <h2 id="_13">サービスメッシュ内<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <h3 id="_14">ロードバランサー境界<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p>ロードバランサーを境界として、公開先のネットワークを制限します。</p>
-<p>Istioは、指定したNamespaceに属するPodへサービスメッシュの機能を提供する。</p>
-<p>サービスメッシュ内には、ユーザーに公開するコンテナと、SWEやSREerにだけ公開するコンテナがあります。</p>
-<p>ユーザーに公開するコンテナでは、有害なIPアドレス以外にIPアドレスの制限は不要です。</p>
-<p>しかし、ダッシュボードでは、送信元が社内IPアドレスのリクエストだけを許可するような制限が必要になります。</p>
-<p>そこで、社外公開用と社内公開用のAWS ALBを配置し、AWS WAFを紐づけるとよいです。</p>
+<p>Istio は、指定した Namespace に属する Pod へサービスメッシュの機能を提供する。</p>
+<p>サービスメッシュ内には、ユーザーに公開するコンテナと、SWE や SREer にだけ公開するコンテナがあります。</p>
+<p>ユーザーに公開するコンテナでは、有害な IP アドレス以外に IP アドレスの制限は不要です。</p>
+<p>しかし、ダッシュボードでは、送信元が社内 IP アドレスのリクエストだけを許可するような制限が必要になります。</p>
+<p>そこで、社外公開用と社内公開用の AWS ALB を配置し、AWS WAF を紐づけるとよいです。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-エッジセキュリティ (サービスメッシュ内).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%A8%E3%83%83%E3%82%B7%E3%82%99%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3_(%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%83%A1%E3%83%83%E3%82%B7%E3%83%A5%E5%86%85).drawio.png" /></p>
 <table>
 <thead>
@@ -33433,15 +33433,15 @@
 </tbody>
 </table>
 <h3 id="api-gateway">API Gateway境界<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h3>
-<p>API Gatewayを境界として、公開先のネットワークを制限します。</p>
+<p>API Gateway を境界として、公開先のネットワークを制限します。</p>
 <p>これは認証認可と内容が重複するため、ここでは省略します。</p>
 <h2 id="_15">サービスメッシュ外<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
 <h3 id="_16">ロードバランサー境界<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>ロードバランサーを境界として、公開先のネットワークを制限します。</p>
-<p>Istioは、指定したNamespace以外に属するPodにはサービスメッシュの機能を提供しません。</p>
-<p>サービスメッシュ外には、SWEやSREerにだけ公開するコンテナがあります。</p>
-<p>送信元が社内IPアドレスのリクエストだけを許可するような制限が必要になります。</p>
-<p>そこで、社内公開用のAWS ALBを配置し、AWS WAFを紐づけるとよいです。</p>
+<p>Istio は、指定した Namespace 以外に属する Pod にはサービスメッシュの機能を提供しません。</p>
+<p>サービスメッシュ外には、SWE や SREer にだけ公開するコンテナがあります。</p>
+<p>送信元が社内 IP アドレスのリクエストだけを許可するような制限が必要になります。</p>
+<p>そこで、社内公開用の AWS ALB を配置し、AWS WAF を紐づけるとよいです。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-エッジセキュリティ (サービスメッシュ外).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%A8%E3%83%83%E3%82%B7%E3%82%99%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3_(%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%83%A1%E3%83%83%E3%82%B7%E3%83%A5%E5%A4%96).drawio.png" /></p>
 <table>
 <thead>
@@ -33488,7 +33488,7 @@
 <h1 id="17">17. 証明書管理方法<a class="headerlink" href="#17" title="Permanent link">&para;</a></h1>
 <p>マイクロサービスアーキテクチャでは、システム内で非常に多くのパケット通信が起こります。</p>
 <p>パケットのアプリケーションデータを暗号化しなければ、これを第三者に攻撃されかねません。</p>
-<p>TLSプロトコルを使用してアプリケーションデータを暗号化することにより、攻撃から防御できます。</p>
+<p>TLS プロトコルを使用してアプリケーションデータを暗号化することにより、攻撃から防御できます。</p>
 <pre class="mermaid"><code>flowchart LR
 
   証書管理方法([証書&lt;br&gt;管理方法]) --- 証明書管理方法の基点(( ))
@@ -33497,22 +33497,22 @@
   証明書管理方法の基点 --- クラウドリソースへの証明書紐付け[クラウドリソースへの&lt;br&gt;証明書紐付け]
 </code></pre>
 <blockquote>
-<p>💡 TLSプロトコルで暗号化できるのは、パケットの構成要素の中で、アプリケーションデータのみです。</p>
+<p>💡 TLSプロトコルで暗号化できるのは、パケットの構成要素なか中で、アプリケーションデータのみです。</p>
 </blockquote>
 <p><a href="https://www.oreilly.com/library/view/microservices-security-in/9781617295959VE/MSiA_part3.html">Microservices Security in Action video edition</a></p>
 <h2 id="tls">TLS認証の種類<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h2>
 <ul>
-<li>通常TLS認証</li>
-<li>相互TLS認証</li>
+<li>通常 TLS 認証</li>
+<li>相互 TLS 認証</li>
 </ul>
 <blockquote>
 <p>💡 余裕があったらしっかり書くぜ！</p>
 </blockquote>
 <h2 id="_17">サービスメッシュ内<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
 <h3 id="awsistio">AWSとIstioによる証明書管理<a class="headerlink" href="#awsistio" title="Permanent link">&para;</a></h3>
-<p>Istioは、指定したNamespaceに属するPodへサービスメッシュの機能を提供する。</p>
-<p>管理下のPodにistio-proxyを挿入します。</p>
-<p>istio-proxyはクライアント証明書 / SSL証明書を持ち、アップストリームとダウンストリームのistio-proxyと相互TLS認証するします。</p>
+<p>Istio は、指定した Namespace に属する Pod へサービスメッシュの機能を提供する。</p>
+<p>管理下の Pod に istio-proxy を挿入します。</p>
+<p>istio-proxy はクライアント証明書 / SSL 証明書を持ち、アップストリームとダウンストリームの istio-proxy と相互 TLS 認証するします。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-証明書管理.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-証明書管理.drawio.png" /></p>
 <table>
 <thead>
@@ -33573,8 +33573,8 @@
 </tbody>
 </table>
 <h2 id="_18">サービスメッシュ外<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
-<p>Istioは、指定したNamespace以外に属するPodにはサービスメッシュの機能を提供しません。</p>
-<p>そのため、　他のツール (例：Cert-manager) でクライアント証明書 / SSL証明書を発行し、コンテナに紐づけなければなりません。</p>
+<p>Istio は、指定した Namespace 以外に属する Pod にはサービスメッシュの機能を提供しません。</p>
+<p>そのため、　他のツール (例：Cert-manager) でクライアント証明書 / SSL 証明書を発行し、コンテナに紐づけなければなりません。</p>
 <blockquote>
 <p>💡 余裕があったら書くぜ！</p>
 </blockquote>
@@ -33612,17 +33612,17 @@
 </ul>
 <p>ここでは、集中ロギングを採用します。</p>
 <h2 id="fluentd-fluentbit">Fluentd / FluentBitによるログ収集<a class="headerlink" href="#fluentd-fluentbit" title="Permanent link">&para;</a></h2>
-<p>集中ロギングを実現するツールには、Fluentd / FluentBitがあります。</p>
-<p>Fluentd / FluentBitを使用して、Amazon EKSクラスター内で作成されるログを収集します。</p>
-<p>Fluentd / FluentBitの配置方法には、エージェントパターン (DaemonSet型、サイドカー型) 、フォワーダーアグリゲーターパターンがあります。</p>
-<p>ここでは、DaemonSet型のエージェントパターンを設定します。</p>
-<p>一方で、Amazon EKSコントロールプレーンのログは、そのままAmazon CloudWatch Logsに送信できます。</p>
+<p>集中ロギングを実現するツールには、Fluentd / FluentBit があります。</p>
+<p>Fluentd / FluentBit を使用して、Amazon EKS クラスター内で作成されるログを収集します。</p>
+<p>Fluentd / FluentBit の配置方法には、エージェントパターン (DaemonSet 型、サイドカー型) 、フォワーダーアグリゲーターパターンがあります。</p>
+<p>ここでは、DaemonSet 型のエージェントパターンを設定します。</p>
+<p>一方で、Amazon EKS コントロールプレーンのログは、そのまま Amazon CloudWatch Logs に送信できます。</p>
 <p><a href="https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/">Common Architecture Patterns with Fluentd and Fluent Bit</a></p>
 <p>ここでは、以下のログが登場します。</p>
 <ul>
 <li>アプリケーションの実行ログ</li>
-<li>istio-proxyのアクセスログ</li>
-<li>EKSコントロールプレーンのログ (実行ログ、監査ログなど)</li>
+<li>istio-proxy のアクセスログ</li>
+<li>EKS コントロールプレーンのログ (実行ログ、監査ログなど)</li>
 </ul>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ログ.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ログ.drawio.png" /></p>
 <table>
@@ -33692,12 +33692,12 @@
 <h2 id="prometheus">Prometheusによるメトリクス収集<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h2>
 <p>ここで概説するメトリクスの種類として、以下があります。</p>
 <ul>
-<li>Kubernetesリソース系メトリクス</li>
-<li>Istioリソース系メトリクス</li>
-<li>Kubernetesコンポーネント (kubelet、kube-proxyなど)</li>
-<li>その他のツール (CoreDNS、Karpenterなど)</li>
+<li>Kubernetes リソース系メトリクス</li>
+<li>Istio リソース系メトリクス</li>
+<li>Kubernetes コンポーネント (kubelet、kube-proxy など)</li>
+<li>その他のツール (CoreDNS、Karpenter など)</li>
 </ul>
-<p>Prometheus Serverを使用して、Amazon EKSクラスター内で作成されるメトリクスを収集します。</p>
+<p>Prometheus Server を使用して、Amazon EKS クラスター内で作成されるメトリクスを収集します。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-メトリクス.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9.drawio.png" /></p>
 <table>
 <thead>
@@ -33785,9 +33785,9 @@
 <p>ここで概説するスパンの種類として、以下があります。</p>
 <ul>
 <li>アプリケーションの作成するスパン</li>
-<li>istio-proxyの作成するスパン</li>
+<li>istio-proxy の作成するスパン</li>
 </ul>
-<p>OpenTelemetry Collectorを介して、Amazon EKSクラスター内のスパンをAWS X-Rayに送信します。</p>
+<p>OpenTelemetry Collector を介して、Amazon EKS クラスター内のスパンを AWS X-Ray に送信します。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トレース.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9.drawio.png" /></p>
 <table>
 <thead>
@@ -33896,7 +33896,7 @@
 <ul>
 <li>Amazon CloudWatch</li>
 <li>Amazon SNS</li>
-<li>Prometheus (Alertmanagerを含む)</li>
+<li>Prometheus (Alertmanager を含む)</li>
 <li>インシデント管理ツール</li>
 </ul>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E8%A8%AD%E8%A8%88.drawio_(1).png" /></p>
@@ -33922,7 +33922,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 21:54:05 JST">2026-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -33933,11 +33933,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

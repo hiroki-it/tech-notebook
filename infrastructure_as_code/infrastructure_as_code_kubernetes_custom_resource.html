@@ -34272,21 +34272,21 @@
 <p><br></p>
 <h2 id="01">01. カスタムリソース<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">カスタムリソースとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Kubernetesに標準で備わっていないKubernetesリソースを提供する。</p>
+<p>Kubernetes に標準で備わっていない Kubernetes リソースを提供する。</p>
 <p><br></p>
 <h3 id="_3">管理方針<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>CRDは、Helmの管理外 (<code>kubectl</code> コマンド) で作成/変更したほうがよい。</p>
+<p>CRD は、Helm の管理外 (<code>kubectl</code> コマンド) で作成/変更したほうがよい。</p>
 <p>理由としては以下の通りである。</p>
 <ul>
-<li>CRDの作成が衝突する可能性もある。また、CRDへ <code>meta.helm.sh</code> キーを付与したくない。</li>
-<li>HelmはCRDを作成できるが更新できないため、作成もHelmの管理外にしたい</li>
+<li>CRD の作成が衝突する可能性もある。また、CRD へ <code>meta.helm.sh</code> キーを付与したくない。</li>
+<li>Helm は CRD を作成できるが更新できないため、作成も Helm の管理外にしたい</li>
 </ul>
-<p>カスタムリソースのマニフェストで定義できるオプションやデータ型は、CRDのスキーマ定義に応じて決まる。</p>
-<p>そのため、CRDのスキーマを変更すると、同じCluster内にある該当のカスタムリソースに影響が出る。</p>
+<p>カスタムリソースのマニフェストで定義できるオプションやデータ型は、CRD のスキーマ定義に応じて決まる。</p>
+<p>そのため、CRD のスキーマを変更すると、同じ Cluster 内にある該当のカスタムリソースに影響が出る。</p>
 <p>具体的には、以下のような問題が起こる。</p>
 <ul>
-<li>CRDをアップグレードした場合に、スキーマに機能廃止があると、カスタムリソースで廃止されたその機能を使用できなくなる。</li>
-<li>CRD自体を誤って削除すると、これに対応するカスタムリソースも自動的に削除される。</li>
+<li>CRD をアップグレードした場合に、スキーマに機能廃止があると、カスタムリソースで廃止されたその機能を使用できなくなる。</li>
+<li>CRD 自体を誤って削除すると、これに対応するカスタムリソースも自動的に削除される。</li>
 </ul>
 <blockquote>
 <ul>
@@ -34297,7 +34297,7 @@
 <p><br></p>
 <h3 id="_4">カスタムリソース固有の問題<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 共通エラー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>以下のようなエラーになってしまう場合、CRDが存在していないか、CRDが古くて新しいカスタムリソースが対応していない可能性がある。</p>
+<p>以下のようなエラーになってしまう場合、CRD が存在していないか、CRD が古くて新しいカスタムリソースが対応していない可能性がある。</p>
 <div class="highlight"><pre><span></span><code>Failed<span class="w"> </span>to<span class="w"> </span>render<span class="w"> </span>chart:<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>status<span class="w"> </span><span class="m">1</span>:<span class="w"> </span>Error:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>kubernetes<span class="w"> </span>objects<span class="w"> </span>from<span class="w"> </span>release<span class="w"> </span>manifest:<span class="w"> </span>error<span class="w"> </span>validating<span class="w"> </span><span class="s2">&quot;&quot;</span>
 </code></pre></div>
 <h4 id="_6">▼ 個別<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
@@ -34322,27 +34322,27 @@
 <h2 id="02">02.セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_7">ユーザーによる自前管理<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 非チャートとして<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>CRDのマニフェストを送信し、その後にカスタムリソースのマニフェストを送信する。</p>
-<p>もしCRDを送信する前にカスタムリソースを送信してしまうと、kube-apiserverはCRDを見つけられずに、以下のエラーレスポンスを返信する。</p>
+<p>CRD のマニフェストを送信し、その後にカスタムリソースのマニフェストを送信する。</p>
+<p>もし CRD を送信する前にカスタムリソースを送信してしまうと、kube-apiserver は CRD を見つけられずに、以下のエラーレスポンスを返信する。</p>
 <div class="highlight"><pre><span></span><code>the<span class="w"> </span>server<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>find<span class="w"> </span>the<span class="w"> </span>requested<span class="w"> </span>resource
 </code></pre></div>
 <h4 id="_9">▼ チャートとして<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>CRDとカスタムリソースを含むチャートをインストールする。</p>
+<p>CRD とカスタムリソースを含むチャートをインストールする。</p>
 <p><br></p>
 <h3 id="custom-controller">Custom Controllerによる管理<a class="headerlink" href="#custom-controller" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 非チャートとして<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>Custom Controllerのマニフェストを送信し、後はCustom Controllerにカスタムリソースを作成させる。</p>
+<p>Custom Controller のマニフェストを送信し、後は Custom Controller にカスタムリソースを作成させる。</p>
 <h4 id="_11">▼ チャートとして<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Custom Controllerのチャートをインストールし、後はCustom Controllerにカスタムリソースを作成させる。</p>
+<p>Custom Controller のチャートをインストールし、後は Custom Controller にカスタムリソースを作成させる。</p>
 <p><br></p>
 <h2 id="03-crd">03. CRD<a class="headerlink" href="#03-crd" title="Permanent link">&para;</a></h2>
 <h3 id="crd">CRDとは<a class="headerlink" href="#crd" title="Permanent link">&para;</a></h3>
 <p>カスタムリソースを宣言的に定義する。</p>
-<p>ただし、kube-controllerはetcd内のカスタムリソースを検知できず、これを検知するためにはCustom Controllerを作成する必要がある。</p>
+<p>ただし、kube-controller は etcd 内のカスタムリソースを検知できず、これを検知するためには Custom Controller を作成する必要がある。</p>
 <p><br></p>
 <h3 id="_12">カスタムリソースの宣言値の決まり方<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>マニフェストの <code>.apiVersion</code> キーで、『<code>&lt;.spec.groupキー名&gt;/&lt;.spec.versionキー名&gt;</code>』と宣言し、カスタムリソースを使用する。</p>
-<p>例えば『<code>example.com</code>』というグループと『<code>v1</code>』というバージョンを定義したとすると、カスタムリソースからは <code>example.com/v1</code> というAPIからコールできるようになる。</p>
+<p>例えば『<code>example.com</code>』というグループと『<code>v1</code>』というバージョンを定義したとすると、カスタムリソースからは <code>example.com/v1</code> という API からコールできるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://hi1280.hatenablog.com/entry/2019/11/15/003101">https://hi1280.hatenablog.com/entry/2019/11/15/003101</a></li>
@@ -34351,13 +34351,13 @@
 </blockquote>
 <p><br></p>
 <h3 id="apiversion">.apiVersion<a class="headerlink" href="#apiversion" title="Permanent link">&para;</a></h3>
-<p>CRD自体のAPIグループの名前を設定する。</p>
+<p>CRD 自体の API グループの名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="metadata">.metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
 <h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
-<p>カスタムリソースのAPIグループの名前を設定する。</p>
+<p>カスタムリソースの API グループの名前を設定する。</p>
 <p>名前は、『<code>&lt;.spec.names.pluralキー名&gt;.&lt;spec.groupキー名&gt;</code>』とする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
@@ -34369,8 +34369,8 @@
 <p><br></p>
 <h3 id="specgroup">.spec.group<a class="headerlink" href="#specgroup" title="Permanent link">&para;</a></h3>
 <h4 id="group">▼ groupとは<a class="headerlink" href="#group" title="Permanent link">&para;</a></h4>
-<p>カスタムリソースが所属するAPIグループの名前を設定する。</p>
-<p>カスタムリソースを管理する組織の完全修飾ドメイン名にすると良い。</p>
+<p>カスタムリソースが所属する API グループの名前を設定する。</p>
+<p>カスタムリソースを管理する組織の完全修飾ドメイン名にするとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34387,8 +34387,8 @@
 <p><br></p>
 <h3 id="specscope">.spec.scope<a class="headerlink" href="#specscope" title="Permanent link">&para;</a></h3>
 <h4 id="scope">▼ scopeとは<a class="headerlink" href="#scope" title="Permanent link">&para;</a></h4>
-<p>カスタムリソースを『Namespacedスコープ』あるいは『Clusterスコープ』なKubernetesリソースとするかを設定する。</p>
-<p>注意点として、CRD自体はClusterスコープなKubernetesリソースである。</p>
+<p>カスタムリソースを『Namespaced スコープ』あるいは『Cluster スコープ』な Kubernetes リソースとするかを設定する。</p>
+<p>注意点として、CRD 自体は Cluster スコープな Kubernetes リソースである。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34403,8 +34403,8 @@
 </ul>
 </blockquote>
 <h4 id="cluster">▼ Clusterの場合<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h4>
-<p>同じカスタムリソースがCluster内に <code>1</code> 個のみ存在できるようにする。</p>
-<p>Namespaceごとにカスタムリソースを作成できなくなる。</p>
+<p>同じカスタムリソースが Cluster 内に <code>1</code> 個のみ存在できるようにする。</p>
+<p>Namespace ごとにカスタムリソースを作成できなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34419,8 +34419,8 @@
 </ul>
 </blockquote>
 <h4 id="namespaced">▼ Namespacedの場合<a class="headerlink" href="#namespaced" title="Permanent link">&para;</a></h4>
-<p>同じカスタムリソースがNamespace内に <code>1</code> 個のみ存在できるようにする。</p>
-<p>Namespaceごとにカスタムリソースを作成できるようになる。</p>
+<p>同じカスタムリソースが Namespace 内に <code>1</code> 個のみ存在できるようにする。</p>
+<p>Namespace ごとにカスタムリソースを作成できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34517,8 +34517,8 @@
 <p><br></p>
 <h3 id="specversions">.spec.versions<a class="headerlink" href="#specversions" title="Permanent link">&para;</a></h3>
 <h4 id="versions">▼ versionsとは<a class="headerlink" href="#versions" title="Permanent link">&para;</a></h4>
-<p>CRDに対応するカスタムリソースに関して、APIグループのバージョンを設定する。</p>
-<p>複数のバージョンのCRDをCluster内で同時に管理する場合、<code>.spec.versions[*].name</code> キー配下に複数のスキーマを定義する。</p>
+<p>CRD に対応するカスタムリソースに関して、API グループのバージョンを設定する。</p>
+<p>複数のバージョンの CRD を Cluster 内で同時に管理する場合、<code>.spec.versions[*].name</code> キー配下に複数のスキーマを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34539,8 +34539,8 @@
 </ul>
 </blockquote>
 <h4 id="name_1">▼ name<a class="headerlink" href="#name_1" title="Permanent link">&para;</a></h4>
-<p>APIグループのバージョン名を設定する。</p>
-<p>例えば『<code>v1</code>』というstring型のキーを設定すると、マニフェストの <code>.apiVersion</code> で、<code>/v1</code> を最後につけてコールすることになる。</p>
+<p>API グループのバージョン名を設定する。</p>
+<p>例えば『<code>v1</code>』という string 型のキーを設定すると、マニフェストの <code>.apiVersion</code> で、<code>/v1</code> を最後につけてコールすることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34555,7 +34555,7 @@
 </ul>
 </blockquote>
 <h4 id="served">▼ served<a class="headerlink" href="#served" title="Permanent link">&para;</a></h4>
-<p>APIグループのバージョンを有効化するかを設定する。</p>
+<p>API グループのバージョンを有効化するかを設定する。</p>
 <p>もしカスタムリソースに複数のバージョンが存在する場合、旧バージョンを無効化し、マニフェストで使用できないようにできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
@@ -34572,7 +34572,7 @@
 </blockquote>
 <h4 id="schema">▼ schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h4>
 <p>カスタムリソースの <code>.spec</code> キー以下に設定できるキーと、これのデータ型を設定する。</p>
-<p>例えば『<code>message</code>』というstring型のキーを設定すると、カスタムリソースの <code>.spec.message</code> キーに任意のstring型を設定できるようになる。</p>
+<p>例えば『<code>message</code>』という string 型のキーを設定すると、カスタムリソースの <code>.spec.message</code> キーに任意の string 型を設定できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34600,7 +34600,7 @@
 </ul>
 </blockquote>
 <h4 id="storage">▼ storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h4>
-<p>APIグループのバージョンをetcdのストレージに保管しても良いどうかを設定する。</p>
+<p>API グループのバージョンを etcd のストレージに保管してもよいどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiextensions.k8s.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomResourceDefinition</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34636,7 +34636,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:55:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34647,11 +34647,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

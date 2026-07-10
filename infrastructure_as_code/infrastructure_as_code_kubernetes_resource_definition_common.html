@@ -34740,9 +34740,9 @@
 <p><br></p>
 <h2 id="01-apiversion">01. apiVersion<a class="headerlink" href="#01-apiversion" title="Permanent link">&para;</a></h2>
 <h3 id="apiversion">apiVersionとは<a class="headerlink" href="#apiversion" title="Permanent link">&para;</a></h3>
-<p>APIグループのバージョンを設定する。</p>
-<p>kube-apiserverをアップグレードすると、APIグループの特定のバージョンが廃止されることもある。</p>
-<p>もし、そのバージョンを指定したマニフェストを <code>kubectl apply</code> コマンドやclient-goパッケージ経由で送信しようとすると、Kubernetesリソースを作成できず、エラーになってしまう。</p>
+<p>API グループのバージョンを設定する。</p>
+<p>kube-apiserver をアップグレードすると、API グループの特定のバージョンが廃止されることもある。</p>
+<p>もし、そのバージョンを指定したマニフェストを <code>kubectl apply</code> コマンドや client-go パッケージ経由で送信しようとすると、Kubernetes リソースを作成できず、エラーになってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 </code></pre></div>
 <blockquote>
@@ -34756,7 +34756,7 @@
 <h4 id="_3">▼ バージョンの段階<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>バージョンは、成熟度に応じて、<code>alpha</code>、<code>beta</code>、<code>stable</code>、の段階がある。</p>
 <p><code>alpha</code> のみデフォルトで無効化されており、<code>beta</code> や <code>stable</code> であれば、マニフェストで指定すればそのまま使用できる。</p>
-<p>もしバージョンの <code>v2</code> にKubernetesが対応していなければ、<code>v1beta1</code> や <code>v2beta2</code> で回避する方法がある。</p>
+<p>もしバージョンの <code>v2</code> に Kubernetes が対応していなければ、<code>v1beta1</code> や <code>v2beta2</code> で回避する方法がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/2008/27/news057.html">https://atmarkit.itmedia.co.jp/ait/articles/2008/27/news057.html</a></li>
@@ -34765,7 +34765,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-kind">02. kind<a class="headerlink" href="#02-kind" title="Permanent link">&para;</a></h2>
-<p>作成されるKubernetesリソースの種類を設定する。</p>
+<p>作成される Kubernetes リソースの種類を設定する。</p>
 <p><br></p>
 <h2 id="03-metadataannotation">03. metadata.annotation<a class="headerlink" href="#03-metadataannotation" title="Permanent link">&para;</a></h2>
 <h3 id="annotation">annotationとは<a class="headerlink" href="#annotation" title="Permanent link">&para;</a></h3>
@@ -34780,11 +34780,11 @@
 <p><br></p>
 <h3 id="kubernetes">任意のKubernetesリソースの場合<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
 <h4 id="kubectlkubernetesiolast-applied-configuration">▼ kubectl.kubernetes.io/last-applied-configuration<a class="headerlink" href="#kubectlkubernetesiolast-applied-configuration" title="Permanent link">&para;</a></h4>
-<p>kube-apiserverが、前回の <code>kubectl apply</code> コマンドで適用したマニフェストの設定値をJSONで割り当てる。</p>
-<p><code>kubectl apply</code> コマンドの削除処理時に、kube-apiserverは送信されたマニフェストと <code>.metadata.annotations.kubectl.kubernetes.io/last-applied-configuration</code> キーを比較し、削除すべき部分を決定する。</p>
+<p>kube-apiserver が、前回の <code>kubectl apply</code> コマンドで適用したマニフェストの設定値を JSON で割り当てる。</p>
+<p><code>kubectl apply</code> コマンドの削除処理時に、kube-apiserver は送信されたマニフェストと <code>.metadata.annotations.kubectl.kubernetes.io/last-applied-configuration</code> キーを比較し、削除すべき部分を決定する。</p>
 <p><code>kubectl edit</code> コマンドでマニフェストを変更してしまうと、<code>.metadata.annotations.kubectl.kubernetes.io/last-applied-configuration</code> キーが変更されない。</p>
 <p>そのため、次回の <code>kubectl apply</code> コマンドが失敗することもある。</p>
-<p>また、<code>kubectl apply</code> したいマニフェストが多すぎると、JSONが大きすぎて、<code>kubectl apply</code> に失敗することがある。</p>
+<p>また、<code>kubectl apply</code> したいマニフェストが多すぎると、JSON が大きすぎて、<code>kubectl apply</code> に失敗することがある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34798,7 +34798,7 @@
 </ul>
 </blockquote>
 <h4 id="kubernetesio">▼ <code>kubernetes.io</code> キー<a class="headerlink" href="#kubernetesio" title="Permanent link">&para;</a></h4>
-<p>Kubernetesリソースに関する情報を設定する。</p>
+<p>Kubernetes リソースに関する情報を設定する。</p>
 <p><code>.metadata.annotations</code> キー配下にも同じキーがあることに注意する。</p>
 <table>
 <thead>
@@ -34833,9 +34833,9 @@
 </ul>
 </blockquote>
 <h4 id="ingressclasskubernetesiois-default-class">▼ ingressclass.kubernetes.io/is-default-class<a class="headerlink" href="#ingressclasskubernetesiois-default-class" title="Permanent link">&para;</a></h4>
-<p>IngressがClusterネットワーク内に1つしか存在しない場合、IngressClassに設定することにより、デフォルトとする。</p>
-<p>Ingressが新しく作成された場合、このIngressClassの設定値が使用されるようになる。</p>
-<p>IngressClassを複数デフォルトとして設定しないようにする。</p>
+<p>Ingress が Cluster ネットワーク内に 1 つしか存在しない場合、IngressClass に設定することにより、デフォルトとする。</p>
+<p>Ingress が新しく作成された場合、この IngressClass の設定値が使用されるようになる。</p>
+<p>IngressClass を複数デフォルトとして設定しないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34851,8 +34851,8 @@
 <p><br></p>
 <h3 id="persistentvolume">PersistentVolumeの場合<a class="headerlink" href="#persistentvolume" title="Permanent link">&para;</a></h3>
 <h4 id="pvkubernetesio">▼ <code>pv.kubernetes.io</code> キー<a class="headerlink" href="#pvkubernetesio" title="Permanent link">&para;</a></h4>
-<p>PersistentVolumeに関する情報を設定する。</p>
-<p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
+<p>PersistentVolume に関する情報を設定する。</p>
+<p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
 <h4 id="_4">▼ 種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -34878,8 +34878,8 @@
 <p><br></p>
 <h3 id="persistentvolumeclaim">PersistentVolumeClaimの場合<a class="headerlink" href="#persistentvolumeclaim" title="Permanent link">&para;</a></h3>
 <h4 id="volumekubernetesio">▼ <code>volume.kubernetes.io</code> キーとは<a class="headerlink" href="#volumekubernetesio" title="Permanent link">&para;</a></h4>
-<p>PersistentVolumeClaimに関する情報を設定する。</p>
-<p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
+<p>PersistentVolumeClaim に関する情報を設定する。</p>
+<p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
 <table>
 <thead>
 <tr>
@@ -34904,8 +34904,8 @@
 <p><br></p>
 <h2 id="03-02-metadatafinalizers">03-02. metadata.finalizers<a class="headerlink" href="#03-02-metadatafinalizers" title="Permanent link">&para;</a></h2>
 <h3 id="finalizers">finalizersとは<a class="headerlink" href="#finalizers" title="Permanent link">&para;</a></h3>
-<p>Kubernetesリソースに親子関係がある場合に、親リソースよりも先に子リソースを削除できるようにするため、親リソースの削除を防ぐ。</p>
-<p>この時、<code>.metadata.finalizers</code> キーの値で親名が定義されている。</p>
+<p>Kubernetes リソースに親子関係がある場合に、親リソースよりも先に子リソースを削除できるようにするため、親リソースの削除を防ぐ。</p>
+<p>このとき、<code>.metadata.finalizers</code> キーの値で親名が定義されている。</p>
 <p>関連する子リソースが削除されると、<code>.metadata.finalizers</code> キーが削除され、親リソースも削除されるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -34922,9 +34922,9 @@
 <p><br></p>
 <h2 id="03-03-metadatageneration">03-03. metadata.generation<a class="headerlink" href="#03-03-metadatageneration" title="Permanent link">&para;</a></h2>
 <h3 id="generation">generation<a class="headerlink" href="#generation" title="Permanent link">&para;</a></h3>
-<p>Kubernetesリソースが最初に作成されてから何回変更されたかの回数 (世代数) を設定する。</p>
+<p>Kubernetes リソースが最初に作成されてから何回変更されたかの回数 (世代数) を設定する。</p>
 <p>マニフェストのどこかの設定値を変更すると、世代数が増える。</p>
-<p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
+<p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34938,7 +34938,7 @@
 <p><br></p>
 <h2 id="03-04-metadatalabels">03-04. metadata.labels<a class="headerlink" href="#03-04-metadatalabels" title="Permanent link">&para;</a></h2>
 <h3 id="labels">labelsとは<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h3>
-<p>Kubernetesが、Kubernetesリソースの一意に識別するための情報を設定する。</p>
+<p>Kubernetes が、Kubernetes リソースの一意に識別するための情報を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34952,8 +34952,8 @@
 <li><a href="https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d">https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d</a></li>
 </ul>
 </blockquote>
-<p>値は、string型である必要がある。</p>
-<p>int型を割り当てようとするとエラーになり、これはHelmの <code>values</code> ファイル経由で『数字』を出力しようとする場合に起こる。</p>
+<p>値は、string 型である必要がある。</p>
+<p>int 型を割り当てようとするとエラーになり、これは Helm の <code>values</code> ファイル経由で『数字』を出力しようとする場合に起こる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set</a></li>
@@ -34970,7 +34970,7 @@
 <p><br></p>
 <h3 id="kubernetes_1">任意のKubernetesリソースの場合<a class="headerlink" href="#kubernetes_1" title="Permanent link">&para;</a></h3>
 <h4 id="appkubernetesio">▼ <code>app.kubernetes.io</code> キー<a class="headerlink" href="#appkubernetesio" title="Permanent link">&para;</a></h4>
-<p>Kubernetes上で稼働するコンテナの情報を設定する。</p>
+<p>Kubernetes 上で稼働するコンテナの情報を設定する。</p>
 <table>
 <thead>
 <tr>
@@ -35039,9 +35039,9 @@
 </blockquote>
 <p><br></p>
 <h4 id="kubernetesio_1">▼ <code>kubernetes.io</code> キー<a class="headerlink" href="#kubernetesio_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetesリソースに関する情報を設定する。</p>
+<p>Kubernetes リソースに関する情報を設定する。</p>
 <p><code>.metadata.annotations</code> キー配下にも同じキーがあることに注意する。</p>
-<p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
+<p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
 <table>
 <thead>
 <tr>
@@ -35071,7 +35071,7 @@
 <p><br></p>
 <h3 id="node">Nodeの場合<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ラベルの設定方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>kubeletの <code>--node-labels</code> オプションを使用すると、Nodeにラベルを設定できる。</p>
+<p>kubelet の <code>--node-labels</code> オプションを使用すると、Node にラベルを設定できる。</p>
 <div class="highlight"><pre><span></span><code>--node-labels<span class="o">=</span><span class="nv">nodetype</span><span class="o">=</span>foo
 </code></pre></div>
 <blockquote>
@@ -35080,7 +35080,7 @@
 </ul>
 </blockquote>
 <h4 id="nodekubernetesio">▼ <code>node.kubernetes.io</code> キー<a class="headerlink" href="#nodekubernetesio" title="Permanent link">&para;</a></h4>
-<p>Nodeの情報を設定する。</p>
+<p>Node の情報を設定する。</p>
 <table>
 <thead>
 <tr>
@@ -35098,7 +35098,7 @@
 </tbody>
 </table>
 <h4 id="node-rolekubernetesio">▼ <code>node-role.kubernetes.io</code> キー<a class="headerlink" href="#node-rolekubernetesio" title="Permanent link">&para;</a></h4>
-<p>Nodeのtaintsを設定する。</p>
+<p>Node の taints を設定する。</p>
 <table>
 <thead>
 <tr>
@@ -35116,8 +35116,8 @@
 </tbody>
 </table>
 <h4 id="topologykubernetesio">▼ <code>topology.kubernetes.io</code> キー<a class="headerlink" href="#topologykubernetesio" title="Permanent link">&para;</a></h4>
-<p>Nodeに関する情報を設定する。</p>
-<p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
+<p>Node に関する情報を設定する。</p>
+<p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
 <table>
 <thead>
 <tr>
@@ -35142,8 +35142,8 @@
 <p><br></p>
 <h3 id="roleclusterrole">Role、ClusterRole、の場合<a class="headerlink" href="#roleclusterrole" title="Permanent link">&para;</a></h3>
 <h4 id="rbacauthorizationk8sio">▼ <code>rbac.authorization.k8s.io</code> キー<a class="headerlink" href="#rbacauthorizationk8sio" title="Permanent link">&para;</a></h4>
-<p>全てのKubernetesリソースに対して、一括して認可スコープを定義する。</p>
-<p>特定のKubernetesリソースに関して認可スコープを狭くしたい場合、<code>.rules</code> キー配下でそれを定義する。</p>
+<p>すべての Kubernetes リソースに対して、一括して認可スコープを定義する。</p>
+<p>特定の Kubernetes リソースに関して認可スコープを狭くしたい場合、<code>.rules</code> キー配下でそれを定義する。</p>
 <table>
 <thead>
 <tr>
@@ -35156,17 +35156,17 @@
 <tr>
 <td><code>rbac.authorization.k8s.io/aggregate-to-admin</code></td>
 <td><code>true</code></td>
-<td>Cluster内の全てのKubernetesリソースに全ての操作が可能な認可スコープを設定する。</td>
+<td>Cluster内のすべてのKubernetesリソースにすべての操作が可能な認可スコープを設定する。</td>
 </tr>
 <tr>
 <td><code>rbac.authorization.k8s.io/aggregate-to-edit</code></td>
 <td><code>true</code></td>
-<td>Namespace内の全てのKubernetesリソースに変更操作が可能な認可スコープを設定する。</td>
+<td>Namespace内のすべてのKubernetesリソースに変更操作が可能な認可スコープを設定する。</td>
 </tr>
 <tr>
 <td><code>rbac.authorization.k8s.io/aggregate-to-view</code></td>
 <td><code>true</code></td>
-<td>Cluster内の全てのKubernetesリソースに対して閲覧操作が可能な認可スコープを設定する。</td>
+<td>Cluster内のすべてのKubernetesリソースに対して閲覧操作が可能な認可スコープを設定する。</td>
 </tr>
 </tbody>
 </table>
@@ -35185,10 +35185,10 @@
 <h3 id="managedfields">managedFieldsとは<a class="headerlink" href="#managedfields" title="Permanent link">&para;</a></h3>
 <p>特定のマネージャーが管理するマニフェストのキー部分が自動的に割り当てられており、ここにないキーは管理外である。</p>
 <p><code>kubectl apply</code> コマンドで <code>--server-side</code> オプションを有効化した場合に作成される。</p>
-<p><code>.metadata.managedFields[*].manager</code> キーで、kube-apiserverクライアント (<code>kubectl</code> クライアント、Kubernetesリソース) が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。</p>
+<p><code>.metadata.managedFields[*].manager</code> キーで、kube-apiserver クライアント (<code>kubectl</code> クライアント、Kubernetes リソース) が管理している部分と、それ以外のマネージャーが管理している部分を区別できる。</p>
 <p><code>.metadata.managedFields[*].manager</code> キーにないマネージャーはマニフェストを変更できない。</p>
 <p><code>.metadata.managedFields</code> キー配下にマネージャーを新しく追加するためには、基本的には <code>--force-conflicts</code> オプションを使用する必要がある (他にも方法はあるが) 。</p>
-<p>ただし、kube-controllerやOperatorでは常に <code>--force-conflicts</code> オプションを実行するようになっている。</p>
+<p>ただし、kube-controller や Operator では常に <code>--force-conflicts</code> オプションを実行するようになっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/superbrothers/items/aeba9406691388b6a19e">https://qiita.com/superbrothers/items/aeba9406691388b6a19e</a></li>
@@ -35255,7 +35255,7 @@
 <p><br></p>
 <h2 id="03-06-metadataname">03-06. metadata.name<a class="headerlink" href="#03-06-metadataname" title="Permanent link">&para;</a></h2>
 <h3 id="name">nameとは<a class="headerlink" href="#name" title="Permanent link">&para;</a></h3>
-<p>Kubernetesリソースを一意に識別するための名前を設定する。</p>
+<p>Kubernetes リソースを一意に識別するための名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35268,7 +35268,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_7">名前は変更不可<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>Kubernetesにとって <code>.metadata.name</code> キーはIDであり、後から変更できない。</p>
+<p>Kubernetes にとって <code>.metadata.name</code> キーは ID であり、後から変更できない。</p>
 <p>もし別の名前に変更したい場合は、再作成する必要がある。</p>
 <blockquote>
 <ul>
@@ -35278,7 +35278,7 @@
 <p><br></p>
 <h2 id="03-07-metadatanamespace">03-07. metadata.namespace<a class="headerlink" href="#03-07-metadatanamespace" title="Permanent link">&para;</a></h2>
 <h3 id="namespace">namespaceとは<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
-<p>Kubernetesリソースを作成するNamespaceを設定する。</p>
+<p>Kubernetes リソースを作成する Namespace を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35292,9 +35292,9 @@
 <p><br></p>
 <h2 id="03-08-metadatauid">03-08. metadata.uid<a class="headerlink" href="#03-08-metadatauid" title="Permanent link">&para;</a></h2>
 <h3 id="uid">uid<a class="headerlink" href="#uid" title="Permanent link">&para;</a></h3>
-<p>そのKubernetesリソースを識別するユニークIDを設定する。</p>
-<p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
-<p>また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。</p>
+<p>その Kubernetes リソースを識別するユニーク ID を設定する。</p>
+<p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
+<p>また仮に開発者が変更しても、kube-controller や Custom Controller が正しい値に自動的に修復する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35310,16 +35310,16 @@
 <h2 id="04-status">04. status<a class="headerlink" href="#04-status" title="Permanent link">&para;</a></h2>
 <h3 id="status">status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h3>
 <h4 id="status_1">▼ statusとは<a class="headerlink" href="#status_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetesリソースの現在の状態を設定する。</p>
-<p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
-<p>また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。</p>
-<p>Kubernetesリソースごとに、<code>.status</code> キー配下の構造は異なっており、</p>
+<p>Kubernetes リソースの現在の状態を設定する。</p>
+<p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
+<p>また仮に開発者が変更しても、kube-controller や Custom Controller が正しい値に自動的に修復する。</p>
+<p>Kubernetes リソースごとに、<code>.status</code> キー配下の構造は異なっており、</p>
 <p><br></p>
 <h3 id="conditions">conditions<a class="headerlink" href="#conditions" title="Permanent link">&para;</a></h3>
 <h4 id="conditions_1">▼ conditionsとは<a class="headerlink" href="#conditions_1" title="Permanent link">&para;</a></h4>
 <p><code>.status</code> キーの履歴を設定する。</p>
-<p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
-<p>また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。</p>
+<p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
+<p>また仮に開発者が変更しても、kube-controller や Custom Controller が正しい値に自動的に修復する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -35351,10 +35351,10 @@
 <p><br></p>
 <h3 id="observedgeneration">observedGeneration<a class="headerlink" href="#observedgeneration" title="Permanent link">&para;</a></h3>
 <h4 id="observedgeneration_1">▼ observedGenerationとは<a class="headerlink" href="#observedgeneration_1" title="Permanent link">&para;</a></h4>
-<p>kube-controllerやCustom ControllerがKubernetesリソースの状態を管理している場合に、これらが検知した <code>.metadata.generation</code> キーの値を設定する。</p>
-<p>kube-controllerが設定してくれるため、開発者が設定する必要はない。</p>
-<p>また仮に開発者が変更しても、kube-controllerやCustom Controllerが正しい値に自動的に修復する。</p>
-<p><code>.metadata.generation</code> キーよりも <code>.status.observedGeneration</code> キーの世代数が小さい場合、kube-controllerやCustom ControllerがKubernetesリソースを検出できていない不具合を表す。</p>
+<p>kube-controller や Custom Controller が Kubernetes リソースの状態を管理している場合に、これらが検知した <code>.metadata.generation</code> キーの値を設定する。</p>
+<p>kube-controller が設定してくれるため、開発者が設定する必要はない。</p>
+<p>また仮に開発者が変更しても、kube-controller や Custom Controller が正しい値に自動的に修復する。</p>
+<p><code>.metadata.generation</code> キーよりも <code>.status.observedGeneration</code> キーの世代数が小さい場合、kube-controller や Custom Controller が Kubernetes リソースを検出できていない不具合を表す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -35391,7 +35391,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 17:20:32 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35402,11 +35402,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

@@ -33996,7 +33996,7 @@
 <p><br></p>
 <h2 id="01-openapi">01. OpenAPI仕様<a class="headerlink" href="#01-openapi" title="Permanent link">&para;</a></h2>
 <h3 id="openapi">OpenAPI仕様とは<a class="headerlink" href="#openapi" title="Permanent link">&para;</a></h3>
-<p>RESTful-APIの仕様を実装により説明するためのフォーマットのこと。JSON型またはYAML型で実装できる。</p>
+<p>RESTful-API の仕様を実装により説明するためのフォーマットのこと。JSON 型または YAML 型で実装できる。</p>
 <p>いくつかのフィールドから構成されている。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="c1"># openapiフィールド</span>
 
@@ -34024,15 +34024,15 @@
 <p><br></p>
 <h3 id="openapi_1">OpenAPI仕様の視覚化<a class="headerlink" href="#openapi_1" title="Permanent link">&para;</a></h3>
 <h4 id="openapi_2">▼ OpenAPI仕様の視覚化とは<a class="headerlink" href="#openapi_2" title="Permanent link">&para;</a></h4>
-<p>OpenAPI仕様を共有して閲覧できるように、仕様書の静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、<code>js</code> ファイル) を自動的に作成する。</p>
-<p>さらに、静的なWebサイトとして公開すると、チーム内で共有するとなおよい。</p>
+<p>OpenAPI 仕様を共有して閲覧できるように、仕様書の静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、<code>js</code> ファイル) を自動的に作成する。</p>
+<p>さらに、静的な Web サイトとして公開すると、チーム内で共有するとなおよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc">https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc</a></li>
 </ul>
 </blockquote>
 <h4 id="redoc">▼ ReDocの場合<a class="headerlink" href="#redoc" title="Permanent link">&para;</a></h4>
-<p>ReDocを使用して、OpenAPI仕様から静的ファイルを作成する。</p>
+<p>ReDoc を使用して、OpenAPI 仕様から静的ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span>
 <span class="nt">info</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
@@ -34064,15 +34064,15 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 </ul>
 </blockquote>
 <h4 id="swagger-uiswagger-codegen">▼ Swagger UI／Swagger Codegenの場合<a class="headerlink" href="#swagger-uiswagger-codegen" title="Permanent link">&para;</a></h4>
-<p>Swagger UI／Swagger Codegenを使用して、OpenAPI仕様から静的ファイルを作成する。</p>
+<p>Swagger UI／Swagger Codegen を使用して、OpenAPI 仕様から静的ファイルを作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc">https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc</a></li>
 </ul>
 </blockquote>
 <h4 id="openapi-generator">▼ OpenAPI Generatorの場合<a class="headerlink" href="#openapi-generator" title="Permanent link">&para;</a></h4>
-<p>OpenAPI Generatorを使用して、OpenAPI仕様から静的ファイルを作成する。</p>
-<p>なお、OpenAPI GeneratorはOpenAPI仕様からコードを作成できる。</p>
+<p>OpenAPI Generator を使用して、OpenAPI 仕様から静的ファイルを作成する。</p>
+<p>なお、OpenAPI Generator は OpenAPI 仕様からコードを作成できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-o<span class="w"> </span>docs/html<span class="w"> </span>-g<span class="w"> </span>html
 </code></pre></div>
 <blockquote>
@@ -34085,14 +34085,14 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 <p><br></p>
 <h3 id="api">APIスキーマ駆動開発<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <h4 id="api_1">▼ APIスキーマ駆動開発とは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
-<p>API仕様書に基づいて、APIを実装する。</p>
+<p>API 仕様書に基づいて、API を実装する。</p>
 <h4 id="openapi-generator_1">▼ OpenAPI Generatorの場合<a class="headerlink" href="#openapi-generator_1" title="Permanent link">&para;</a></h4>
-<p>以下の流れに基づいて、APIを実装していく。</p>
-<p>ここでは、コードの自動作成にOpenAPI Generatorを使用するものとする。</p>
+<p>以下の流れに基づいて、API を実装していく。</p>
+<p>ここでは、コードの自動作成に OpenAPI Generator を使用するものとする。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>OpenAPIに基づいてAPI仕様を定義する。</p>
+<p>OpenAPI に基づいて API 仕様を定義する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.3</span>
@@ -34126,7 +34126,7 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p>OpenAPI Generatorを使用して、API仕様から静的ファイルを自動的に作成する。</p>
+<p>OpenAPI Generator を使用して、API 仕様から静的ファイルを自動的に作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-o<span class="w"> </span>docs/html<span class="w"> </span>-g<span class="w"> </span>html
@@ -34134,7 +34134,7 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>OpenAPI Generatorを使って、API仕様からコードを自動的に作成する。</p>
+<p>OpenAPI Generator を使って、API 仕様からコードを自動的に作成する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># brew、npmなどでインストールする</span>
@@ -34174,7 +34174,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>自動的に作成されたファイル (<code>api_product.go</code>) に実際のAPIを追加実装していく。</p>
+<p>自動的に作成されたファイル (<code>api_product.go</code>) に実際の API を追加実装していく。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="cm">/*</span>
@@ -34221,7 +34221,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <p><br></p>
 <h3 id="_2">クラウドプロバイダーとの統合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="api_2">▼ APIゲートウェイの場合<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h4>
-<p>APIゲートウェイによるOpenAPI仕様のインポートについては、以下のリンクを参考にせよ。</p>
+<p>API ゲートウェイによる OpenAPI 仕様のインポートについては、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html">https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html</a></li>
@@ -34230,13 +34230,13 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <p><br></p>
 <h2 id="02">02. フィールド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="openapi_3">openapiフィールド (必須)<a class="headerlink" href="#openapi_3" title="Permanent link">&para;</a></h3>
-<p>OpenAPI仕様のバージョンを定義する。</p>
+<p>OpenAPI 仕様のバージョンを定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="info">infoフィールド (必須)<a class="headerlink" href="#info" title="Permanent link">&para;</a></h3>
-<p>API名、作成者名、メールアドレス、ライセンスなどを定義する。</p>
+<p>API 名、作成者名、メールアドレス、ライセンスなどを定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">info</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Foo API</span><span class="w"> </span><span class="c1"># API名</span>
@@ -34253,7 +34253,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 </code></pre></div>
 <p><br></p>
 <h3 id="servers">serversフィールド<a class="headerlink" href="#servers" title="Permanent link">&para;</a></h3>
-<p>API自体のURLなどを定義する。</p>
+<p>API 自体の URL などを定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">servers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://{env}.foo.com/api/v1</span>
@@ -34268,7 +34268,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 </code></pre></div>
 <p><br></p>
 <h3 id="paths">pathsフィールド (必須)<a class="headerlink" href="#paths" title="Permanent link">&para;</a></h3>
-<p>APIのエンドポイント、HTTPメソッド、ステータスコードなどを定義する。</p>
+<p>API のエンドポイント、HTTP メソッド、ステータスコードなどを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">paths</span><span class="p">:</span>
 <span class="w">  </span><span class="c1">#===========================</span>
 <span class="w">  </span><span class="c1"># pathsオブジェクト</span>
@@ -34480,7 +34480,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 </code></pre></div>
 <p><br></p>
 <h3 id="components">componentsフィールド (必須)<a class="headerlink" href="#components" title="Permanent link">&para;</a></h3>
-<p>APIスキーマなど、他の項目で共通して利用するものを定義する。</p>
+<p>API スキーマなど、他の項目で共通して利用するものを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
 <span class="w">  </span><span class="c1">#===========================</span>
 <span class="w">  </span><span class="c1"># callbackキーの共通化</span>
@@ -34554,8 +34554,8 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 </code></pre></div>
 <p><br></p>
 <h3 id="security">securityフィールド<a class="headerlink" href="#security" title="Permanent link">&para;</a></h3>
-<p>componentsフィールドで定義した認証方法を宣言する。</p>
-<p>ルートで宣言すると、全てのパスに適用できる。</p>
+<p>components フィールドで定義した認証方法を宣言する。</p>
+<p>ルートで宣言すると、すべてのパスに適用できる。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">security</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiKeyAuth</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
@@ -34573,7 +34573,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 </code></pre></div>
 <p><br></p>
 <h3 id="externaldocs">externalDocsフィールド<a class="headerlink" href="#externaldocs" title="Permanent link">&para;</a></h3>
-<p>APIを説明するドキュメントのリンクを定義する。</p>
+<p>API を説明するドキュメントのリンクを定義する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">externalDocs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">補足情報はこちら</span>
@@ -34582,12 +34582,12 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <p><br></p>
 <h2 id="03-api">03. APIスキーマ<a class="headerlink" href="#03-api" title="Permanent link">&para;</a></h2>
 <h3 id="api_3">APIスキーマとは<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h3>
-<p>RESTful-APIが受信するCRUDのデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。</p>
+<p>RESTful-API が受信する CRUD のデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。</p>
 <p><br></p>
 <h3 id="api_4">APIスキーマによるバリデーション<a class="headerlink" href="#api_4" title="Permanent link">&para;</a></h3>
 <p>データ型や必須データにより、リクエスト／レスポンスのデータのバリデーションを実行する。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>例えば、APIがレスポンス時に以下のようなJSON型データを返信する例を考える。</p>
+<p>例えば、API がレスポンス時に以下のような JSON 型データを返信する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;name&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Taro</span><span class="nv"> </span><span class="s">Yamada&quot;</span><span class="p p-Indicator">,</span>
@@ -34596,7 +34596,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
 <span class="w">  </span><span class="s">&quot;subjects&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;math&quot;</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>ここで、APIスキーマを以下の様に定義しておき、APIからデータをレスポンスするときのバリデーションを実行する。</p>
+<p>ここで、API スキーマを以下のように定義しておき、API からデータをレスポンスするときのバリデーションを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;$schema&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;https://json-schema.org/draft-04/schema#&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;object&quot;</span><span class="p p-Indicator">,</span>
@@ -34637,7 +34637,7 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:57:28 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34648,11 +34648,11 @@ $<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span 
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

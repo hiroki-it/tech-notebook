@@ -33863,8 +33863,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-envoy-api">01. Envoy-API<a class="headerlink" href="#01-envoy-api" title="Permanent link">&para;</a></h2>
-<p>Envoyの設定値をレスポンスとして返信する。ただ、欲しい設定をどのエンドポイントから取得すれば良いのかが個人的にはわかりにくい。</p>
-<p>そのため、サービスメッシュツール (例：Istio、Linkerd) でサポートされている付属ツール (例：<code>istioctl proxy-config</code> コマンド) を使用したほうが良い。</p>
+<p>Envoy の設定値をレスポンスとして返信する。ただ、欲しい設定をどのエンドポイントから取得すればよいのかが個人的にはわかりにくい。</p>
+<p>そのため、サービスメッシュツール (例：Istio、Linkerd) でサポートされている付属ツール (例：<code>istioctl proxy-config</code> コマンド) を使用したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/help
 </code></pre></div>
@@ -33950,7 +33950,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <p><br></p>
 <h3 id="_2">サービスメッシュツールごとの比較<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="istio">▼ Istioの場合<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
-<p>Istioを使用している場合には、宛先のIPアドレスとポート番号が登録されている。</p>
+<p>Istio を使用している場合には、宛先の IP アドレスとポート番号が登録されている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/clusters
 </code></pre></div>
@@ -33979,8 +33979,8 @@ outbound<span class="p">|</span><span class="m">50001</span><span class="p">|</s
 <p><br></p>
 <h2 id="04-config_dump">04. <code>/config_dump</code> エンドポイント<a class="headerlink" href="#04-config_dump" title="Permanent link">&para;</a></h2>
 <h3 id="config_dump"><code>/config_dump</code> エンドポイントとは<a class="headerlink" href="#config_dump" title="Permanent link">&para;</a></h3>
-<p>Envoyの現在の全ての設定値を、<code>json</code> 形式でレスポンスとして返信する。</p>
-<p>Envoyの稼働するサーバー/コンテナからローカルホストにリクエストを送信すると確認できる。</p>
+<p>Envoy の現在のすべての設定値を、<code>json</code> 形式でレスポンスとして返信する。</p>
+<p>Envoy の稼働するサーバー/コンテナからローカルホストにリクエストを送信すると確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump
 </code></pre></div>
@@ -34053,9 +34053,9 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </blockquote>
 <h4 id="dynamic_endpoint_configs">▼ <code>dynamic_endpoint_configs</code> キー<a class="headerlink" href="#dynamic_endpoint_configs" title="Permanent link">&para;</a></h4>
 <p>準備済みのエンドポイントが設定されている。</p>
-<p><code>cluster_name</code> キーは、<code>/config_dump?resource={dynamic_active_clusters}</code> エンドポイントから取得できるJSONの <code>service_name</code> キーのエイリアスと紐づいている。</p>
+<p><code>cluster_name</code> キーは、<code>/config_dump?resource={dynamic_active_clusters}</code> エンドポイントから取得できる JSON の <code>service_name</code> キーのエイリアスと紐づいている。</p>
 <p><strong>＊例＊</strong></p>
-<p>foo-podに登録されているbar-podの <code>endpoint</code> 値を確認してみる。</p>
+<p>foo-pod に登録されている bar-pod の <code>endpoint</code> 値を確認してみる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
@@ -34152,7 +34152,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 <p><br></p>
 <h3 id="resource">resourceパラメーター<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h3>
 <h4 id="resource_1">▼ resourceパラメーターとは<a class="headerlink" href="#resource_1" title="Permanent link">&para;</a></h4>
-<p><code>config_dump</code> エンドポイントの <code>json</code> 形式のレスポンスのうち、JSONのルートに反復して出現するキーをフィルタリングし、返信する。</p>
+<p><code>config_dump</code> エンドポイントの <code>json</code> 形式のレスポンスのうち、JSON のルートに反復して出現するキーをフィルタリングし、返信する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump?resource<span class="o">={}</span>
 </code></pre></div>
@@ -34163,7 +34163,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </blockquote>
 <h4 id="dynamic_active_clusters">▼ dynamic_active_clusters<a class="headerlink" href="#dynamic_active_clusters" title="Permanent link">&para;</a></h4>
 <p>準備済みのクラスターを、<code>json</code> 形式でレスポンスとして返信する。</p>
-<p>クラスターに紐づく宛先に関して、<code>load_assignment</code> キーで宛先IPアドレスを直接的に設定する場合と、<code>service_name</code> キーでエイリアスを設定する場合がある。</p>
+<p>クラスターに紐づく宛先に関して、<code>load_assignment</code> キーで宛先 IP アドレスを直接的に設定する場合と、<code>service_name</code> キーでエイリアスを設定する場合がある。</p>
 <p><code>service_name</code> キーに紐づく宛先情報は、<code>/config_dump?include_eds</code> エンドポイントのレスポンスの <code>dynamic_endpoint_configs</code> キー配下にある <code>cluster_name</code> キーで確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># envoyコンテナ内でローカルホストにリクエストを送信する。</span>
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump?resource<span class="o">={</span>dynamic_active_clusters<span class="o">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ClustersConfigDump.DynamicCluster<span class="w"> </span>-A<span class="w"> </span><span class="m">120</span>
@@ -34175,7 +34175,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>foo-podに登録されているbar-podの <code>dynamic_active_clusters</code> 値を確認してみる。</p>
+<p>foo-pod に登録されている bar-pod の <code>dynamic_active_clusters</code> 値を確認してみる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
@@ -34227,7 +34227,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>foo-podに登録されているbar-podの <code>dynamic_warming_clusters</code> 値を確認してみる。</p>
+<p>foo-pod に登録されている bar-pod の <code>dynamic_warming_clusters</code> 値を確認してみる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
 <span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
@@ -34252,7 +34252,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>foo-podに登録されているbar-podの <code>dynamic_listeners</code> 値を確認してみる。</p>
+<p>foo-pod に登録されている bar-pod の <code>dynamic_listeners</code> 値を確認してみる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
@@ -34312,7 +34312,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>foo-podに登録されているbar-podの <code>dynamic_route_configs</code> 値を確認してみる。</p>
+<p>foo-pod に登録されている bar-pod の <code>dynamic_route_configs</code> 値を確認してみる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
@@ -34377,7 +34377,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
 envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:15000/config_dump?resource<span class="o">={</span>static_listeners<span class="o">}</span>
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>foo-podに登録されているbar-podの <code>static_listeners</code> 値を確認してみる。</p>
+<p>foo-pod に登録されている bar-pod の <code>static_listeners</code> 値を確認してみる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl exec \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-it foo-pod \</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
@@ -34429,7 +34429,7 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34440,11 +34440,11 @@ envoy@&lt;コンテナ名&gt;:<span class="w"> </span>$<span class="w"> </span>c
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

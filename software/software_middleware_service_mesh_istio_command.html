@@ -35289,8 +35289,8 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <p><br></p>
 <h3 id="_6">プロファイル<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ プロファイルとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Istioの機能のセットを提供する。</p>
-<p>実際には設定済みのIstioOperatorであり、<code>istioctl</code> コマンドのインストール時、<code>manifests</code> ディレクトリ以下に配置される。</p>
+<p>Istio の機能のセットを提供する。</p>
+<p>実際には設定済みの IstioOperator であり、<code>istioctl</code> コマンドのインストール時、<code>manifests</code> ディレクトリ以下に配置される。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/setup/additional-setup/config-profiles/">https://istio.io/latest/docs/setup/additional-setup/config-profiles/</a></li>
@@ -35317,7 +35317,7 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <td style="text-align: left;">概要</td>
 <td style="text-align: center;">本番環境</td>
 <td style="text-align: center;">開発環境</td>
-<td style="text-align: center;">Istioリソースを全てカスタマイズしたい</td>
+<td style="text-align: center;">Istioリソースをすべてカスタマイズしたい</td>
 <td style="text-align: center;">なし</td>
 <td style="text-align: center;">最小限の機能が欲しい</td>
 <td style="text-align: center;">？</td>
@@ -35373,7 +35373,7 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 <p><br></p>
 <h2 id="analyze">analyze<a class="headerlink" href="#analyze" title="Permanent link">&para;</a></h2>
 <h3 id="analyze_1">analyzeとは<a class="headerlink" href="#analyze_1" title="Permanent link">&para;</a></h3>
-<p>Istioが正しく動作しているか否かを検証する。</p>
+<p>Istio の動作可否を検証する。</p>
 <p>成功した場合を以下に示す。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>analyze
 
@@ -35392,14 +35392,14 @@ Info<span class="w"> </span><span class="o">[</span>IST0118<span class="o">]</sp
 </blockquote>
 <p><br></p>
 <h3 id="-n">-n<a class="headerlink" href="#-n" title="Permanent link">&para;</a></h3>
-<p>Namespaceを指定しつつ、<code>analyze</code> コマンドを実行する。</p>
+<p>Namespace を指定しつつ、<code>analyze</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>analyze<span class="w"> </span>-n<span class="w"> </span>&lt;Namespace名&gt;
 </code></pre></div>
 <p><br></p>
 <h2 id="uninstall">uninstall<a class="headerlink" href="#uninstall" title="Permanent link">&para;</a></h2>
 <h3 id="_9">オプション<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="-purge">▼ --purge<a class="headerlink" href="#-purge" title="Permanent link">&para;</a></h4>
-<p>Istioリソースを全てdestroyする。</p>
+<p>Istio リソースをすべて destroy する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>x<span class="w"> </span>uninstall<span class="w"> </span>--purge
 </code></pre></div>
 <p><br></p>
@@ -35413,7 +35413,7 @@ Info<span class="w"> </span><span class="o">[</span>IST0118<span class="o">]</sp
 </blockquote>
 <p><br></p>
 <h3 id="-f">-f<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h3>
-<p>IstioOperatorのマニフェストを送信し、Kubernetesリソースを作成する。</p>
+<p>IstioOperator のマニフェストを送信し、Kubernetes リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>-f<span class="w"> </span>./istio-operator.yaml
 </code></pre></div>
 <blockquote>
@@ -35426,7 +35426,7 @@ Info<span class="w"> </span><span class="o">[</span>IST0118<span class="o">]</sp
 <h4 id="-set_1">▼ --setとは<a class="headerlink" href="#-set_1" title="Permanent link">&para;</a></h4>
 <p>インストールするもの、または変更する項目を指定する。</p>
 <h4 id="meshconfigaccesslogfile">▼ <code>meshConfig.accessLogFile</code><a class="headerlink" href="#meshconfigaccesslogfile" title="Permanent link">&para;</a></h4>
-<p>IstioOperatorを使用して、アクセスログの出力先を標準出力に変更する。</p>
+<p>IstioOperator を使用して、アクセスログの出力先を標準出力に変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--set<span class="w"> </span>meshConfig.accessLogFile<span class="o">=</span>/dev/stdout
 </code></pre></div>
 <h4 id="profile">▼ <code>profile</code><a class="headerlink" href="#profile" title="Permanent link">&para;</a></h4>
@@ -35439,11 +35439,11 @@ Info<span class="w"> </span><span class="o">[</span>IST0118<span class="o">]</sp
 </ul>
 </blockquote>
 <h4 id="revision">▼ <code>revision</code> (基本的に必須)<a class="headerlink" href="#revision" title="Permanent link">&para;</a></h4>
-<p>インストールされるKubernetesリソース名や、<code>.metadata.labels.istio.io/rev</code> キーにリビジョンをつけて、Istioをインストールする。</p>
+<p>インストールされる Kubernetes リソース名や、<code>.metadata.labels.istio.io/rev</code> キーにリビジョンをつけて、Istio をインストールする。</p>
 <p>バージョンは、ケバブケースで設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--set<span class="w"> </span><span class="nv">revision</span><span class="o">=</span><span class="m">1</span>-10-0
 </code></pre></div>
-<p>カナリアアップグレード時に使用するが、このオプションを使用しないとKubernetesリソース名にリビジョンがつかないため、インストール時にも使用したほうが良い。</p>
+<p>カナリアアップグレード時に使用するが、このオプションを使用しないと Kubernetes リソース名にリビジョンがつかないため、インストール時にも使用したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># revisionオプションを使用しない場合</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>install<span class="w"> </span>-y
 
@@ -35454,7 +35454,7 @@ NAME<span class="w">                              </span>WEBHOOKS<span class="w"
 istio-revision-tag-default<span class="w">        </span><span class="m">4</span><span class="w">          </span>15s
 istio-sidecar-injector<span class="w">            </span><span class="m">4</span><span class="w">          </span>23s
 </code></pre></div>
-<p>インストールするIstioは <code>istioctl</code> コマンドのバージョンで決まるため、<code>revision</code> キーのリビジョンと実際にインストールするIstioのバージョンは無関係である。</p>
+<p>インストールする Istio は <code>istioctl</code> コマンドのバージョンで決まるため、<code>revision</code> キーのリビジョンと実際にインストールする Istio のバージョンは無関係である。</p>
 <p>執筆時点 (2023/02/23) で、<code>istioctl</code> コマンドを使用してエイリアスを設定する方法はなく、自動的に <code>default</code> になってしまう。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfiguration
 
@@ -35505,8 +35505,8 @@ horizontalpodautoscaler.autoscaling/istiod-1-10-0<span class="w">          </spa
 <p><br></p>
 <h2 id="kube-inject">kube-inject<a class="headerlink" href="#kube-inject" title="Permanent link">&para;</a></h2>
 <h3 id="kube-inject_1">kube-injectとは<a class="headerlink" href="#kube-inject_1" title="Permanent link">&para;</a></h3>
-<p>istio-proxyを手動でインジェクションする。</p>
-<p>代わりに、<code>enabled</code> 値が割り当てられた <code>.metadata.labels,istio-injection</code> キーをNamespaceに付与しても良い。</p>
+<p>istio-proxy を手動でインジェクションする。</p>
+<p>代わりに、<code>enabled</code> 値が割り当てられた <code>.metadata.labels,istio-injection</code> キーを Namespace に付与してもよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject</a></li>
@@ -35515,13 +35515,13 @@ horizontalpodautoscaler.autoscaling/istiod-1-10-0<span class="w">          </spa
 </blockquote>
 <p><br></p>
 <h3 id="-f_1">-f<a class="headerlink" href="#-f_1" title="Permanent link">&para;</a></h3>
-<p>指定したマニフェストのPodにistio-proxyをインジェクションする。</p>
+<p>指定したマニフェストの Pod に istio-proxy をインジェクションする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>kube-inject<span class="w"> </span>-f<span class="w"> </span>pod.yaml
 </code></pre></div>
 <p><br></p>
 <h2 id="manifest-diff">manifest diff<a class="headerlink" href="#manifest-diff" title="Permanent link">&para;</a></h2>
 <h3 id="manifest-diff_1">manifest diffとは<a class="headerlink" href="#manifest-diff_1" title="Permanent link">&para;</a></h3>
-<p>ymlファイルの差分を取得する。</p>
+<p>yml ファイルの差分を取得する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff</a></li>
@@ -35532,7 +35532,7 @@ horizontalpodautoscaler.autoscaling/istiod-1-10-0<span class="w">          </spa
 <p><br></p>
 <h2 id="operator">operator<a class="headerlink" href="#operator" title="Permanent link">&para;</a></h2>
 <h3 id="init">init<a class="headerlink" href="#init" title="Permanent link">&para;</a></h3>
-<p>IstioOperatorを <code>istio-system</code> に作成する。</p>
+<p>IstioOperator を <code>istio-system</code> に作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>operator<span class="w"> </span>init
 
 Installing<span class="w"> </span>operator<span class="w"> </span>controller<span class="w"> </span><span class="k">in</span><span class="w"> </span>namespace:<span class="w"> </span>istio-operator<span class="w"> </span>using<span class="w"> </span>image:<span class="w"> </span>docker.io/istio/operator:&lt;リビジョン&gt;
@@ -35543,7 +35543,7 @@ Operator<span class="w"> </span>controller<span class="w"> </span>will<span clas
 <p><br></p>
 <h2 id="profile_1">profile<a class="headerlink" href="#profile_1" title="Permanent link">&para;</a></h2>
 <h3 id="profile_2">profileとは<a class="headerlink" href="#profile_2" title="Permanent link">&para;</a></h3>
-<p>Istioのプロファイルを操作する。</p>
+<p>Istio のプロファイルを操作する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile</a></li>
@@ -35568,7 +35568,7 @@ Istio<span class="w"> </span>configuration<span class="w"> </span>profiles:
 <p><br></p>
 <h2 id="proxy-config">proxy-config<a class="headerlink" href="#proxy-config" title="Permanent link">&para;</a></h2>
 <h3 id="proxy-config_1">proxy-configとは<a class="headerlink" href="#proxy-config_1" title="Permanent link">&para;</a></h3>
-<p>Istio上で管理されるEnvoyの構成情報を取得する。</p>
+<p>Istio 上で管理される Envoy の構成情報を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>&lt;設定項目&gt;<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;Namespace名&gt;
 </code></pre></div>
 <blockquote>
@@ -35582,14 +35582,14 @@ Istio<span class="w"> </span>configuration<span class="w"> </span>profiles:
 <h3 id="_10">グローバルオプション<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="-o">▼ -o<a class="headerlink" href="#-o" title="Permanent link">&para;</a></h4>
 <p>出力形式を指定する。</p>
-<p><code>jq</code> コマンドや <code>yq</code> コマンドと組み合わせたほうが良い。</p>
+<p><code>jq</code> コマンドや <code>yq</code> コマンドと組み合わせたほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 返信されたYAMLから、1番目の項目だけ取得する。</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>&lt;設定項目&gt;<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;Namespace名&gt;<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>yq
 </code></pre></div>
 <p><br></p>
 <h3 id="all">all<a class="headerlink" href="#all" title="Permanent link">&para;</a></h3>
 <h4 id="all_1">▼ allとは<a class="headerlink" href="#all_1" title="Permanent link">&para;</a></h4>
-<p>Envoyの処理コンポーネントの設定を全て取得する</p>
+<p>Envoy の処理コンポーネントの設定をすべて取得する</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>all<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="se">\</span>
@@ -35616,7 +35616,7 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class
 <p><br></p>
 <h3 id="bootstrap">bootstrap<a class="headerlink" href="#bootstrap" title="Permanent link">&para;</a></h3>
 <h4 id="bootstrap_1">▼ bootstrapとは<a class="headerlink" href="#bootstrap_1" title="Permanent link">&para;</a></h4>
-<p>Envoyで、起動時に読み込まれる設定を取得する。</p>
+<p>Envoy で、起動時に読み込まれる設定を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl proxy-config bootstrap foo-pod \</span>
 <span class="l l-Scalar l-Scalar-Plain">-n foo-namespace \</span>
 <span class="l l-Scalar l-Scalar-Plain">-o yaml | yq</span>
@@ -35662,7 +35662,7 @@ $<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class
 <p><br></p>
 <h3 id="cluster">cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h3>
 <h4 id="cluster_1">▼ clusterとは<a class="headerlink" href="#cluster_1" title="Permanent link">&para;</a></h4>
-<p>Envoyのクラスターの静的/動的な設定値を取得する。</p>
+<p>Envoy のクラスターの静的/動的な設定値を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>cluster<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;PodのNamespace名&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>cluster<span class="w"> </span>foo-pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
@@ -35725,7 +35725,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <p><br></p>
 <h3 id="endpoints">endpoints<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h3>
 <h4 id="endpoints_1">▼ endpointsとは<a class="headerlink" href="#endpoints_1" title="Permanent link">&para;</a></h4>
-<p>Envoyのエンドポイントの静的/動的な設定値を取得する。</p>
+<p>Envoy のエンドポイントの静的/動的な設定値を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>endpoints<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;PodのNamespace名&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>endpoints<span class="w"> </span>foo-pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
@@ -35814,7 +35814,7 @@ unix://./etc/istio/proxy/XDS<span class="w">                         </span>HEAL
 <p><br></p>
 <h3 id="listeners">listeners<a class="headerlink" href="#listeners" title="Permanent link">&para;</a></h3>
 <h4 id="listeners_1">▼ listenersとは<a class="headerlink" href="#listeners_1" title="Permanent link">&para;</a></h4>
-<p>Envoyのリスナーの静的/動的な設定値を取得する。</p>
+<p>Envoy のリスナーの静的/動的な設定値を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>listeners<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;PodのNamespace名&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>listeners<span class="w"> </span>foo-pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
@@ -35838,7 +35838,7 @@ ADDRESS<span class="w">               </span>PORT<span class="w">               
 <p><br></p>
 <h3 id="routes">routes<a class="headerlink" href="#routes" title="Permanent link">&para;</a></h3>
 <h4 id="routes_1">▼ routesとは<a class="headerlink" href="#routes_1" title="Permanent link">&para;</a></h4>
-<p>Envoyのルーティングの静的/動的な設定値を取得する。</p>
+<p>Envoy のルーティングの静的/動的な設定値を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>routes<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;PodのNamespace名&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-config<span class="w"> </span>routes<span class="w"> </span>foo-pod<span class="w"> </span>-n<span class="w"> </span>foo-namespace
@@ -35993,7 +35993,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p><br></p>
 <h2 id="precheck">precheck<a class="headerlink" href="#precheck" title="Permanent link">&para;</a></h2>
 <h3 id="precheck_1">precheckとは<a class="headerlink" href="#precheck_1" title="Permanent link">&para;</a></h3>
-<p>Istioをインストールまたはアップグレードできる準備が整っているかを検証する。</p>
+<p>Istio をインストールまたはアップグレードできる準備が整っているかを検証する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>x<span class="w"> </span>precheck
 
 ✅<span class="w"> </span>No<span class="w"> </span>issues<span class="w"> </span>found<span class="w"> </span>when<span class="w"> </span>checking<span class="w"> </span>the<span class="w"> </span>cluster.<span class="w"> </span>Istio<span class="w"> </span>is<span class="w"> </span>safe<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span>or<span class="w"> </span>upgrade!
@@ -36006,9 +36006,9 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 </blockquote>
 <h2 id="tag">tag<a class="headerlink" href="#tag" title="Permanent link">&para;</a></h2>
 <h3 id="tag_1">tagとは<a class="headerlink" href="#tag_1" title="Permanent link">&para;</a></h3>
-<p>Namespaceの <code>.metadata.labels.istio.io/rev</code> キーの値を書き換えずにアップグレードできるように、<code>.metadata.labels.istio.io/rev</code> キーにエイリアスタグを設定する。</p>
+<p>Namespace の <code>.metadata.labels.istio.io/rev</code> キーの値を書き換えずにアップグレードできるように、<code>.metadata.labels.istio.io/rev</code> キーにエイリアスタグを設定する。</p>
 <p>エイリアスは、<code>default</code> や <code>stable</code> をよく使用するが、実際はなんでよい。</p>
-<p>具体的には、MutatingWebhookConfigurationの <code>.metadata.labels</code> キーにあるエイリアス (<code>istio.io/tag</code> キーの値) と、エイリアスの実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) を操作する。</p>
+<p>具体的には、MutatingWebhookConfiguration の <code>.metadata.labels</code> キーにあるエイリアス (<code>istio.io/tag</code> キーの値) と、エイリアスの実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) を操作する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag">https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag</a></li>
@@ -36019,7 +36019,7 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p><br></p>
 <h3 id="generate">generate<a class="headerlink" href="#generate" title="Permanent link">&para;</a></h3>
 <h4 id="generate_1">▼ generateとは<a class="headerlink" href="#generate_1" title="Permanent link">&para;</a></h4>
-<p>MutatingWebhookConfigurationの <code>.metadata.labels</code> キーに、エイリアス (<code>istio.io/tag</code> キーの値) と、エイリアスの実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) を作成する。</p>
+<p>MutatingWebhookConfiguration の <code>.metadata.labels</code> キーに、エイリアス (<code>istio.io/tag</code> キーの値) と、エイリアスの実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span>generate<span class="w"> </span>&lt;エイリアス&gt;<span class="w"> </span>--revision<span class="w"> </span>&lt;エイリアスの実体&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
@@ -36037,8 +36037,8 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p><br></p>
 <h3 id="list_2">list<a class="headerlink" href="#list_2" title="Permanent link">&para;</a></h3>
 <h4 id="list_3">▼ listとは<a class="headerlink" href="#list_3" title="Permanent link">&para;</a></h4>
-<p>MutatingWebhookConfigurationの <code>.metadata.labels</code> キーにあるエイリアス (<code>istio.io/tag</code> キーの値) と、エイリアスの実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) を取得する。</p>
-<p>カナリアアップグレード前に、現在のバージョンのエイリアスとリビジョン (現在のIstioのバージョンタグ) を確認するために使用する。</p>
+<p>MutatingWebhookConfiguration の <code>.metadata.labels</code> キーにあるエイリアス (<code>istio.io/tag</code> キーの値) と、エイリアスの実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) を取得する。</p>
+<p>カナリアアップグレード前に、現在のバージョンのエイリアスとリビジョン (現在の Istio のバージョンタグ) を確認するために使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># アップグレード前に、istioctlコマンドで確認してみる。</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span>list
 
@@ -36060,8 +36060,8 @@ istio.io/tag:<span class="w"> </span>default
 <p><br></p>
 <h3 id="set">set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
 <h4 id="set_1">▼ setとは<a class="headerlink" href="#set_1" title="Permanent link">&para;</a></h4>
-<p>MutatingWebhookConfigurationの <code>.metadata.labels</code> キーにある既存のエイリアス (<code>istio.io/tag</code> キーの値) に実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) を設定する。</p>
-<p>カナリアアップグレード用のMutatingWebhookConfigurationを新しく作成するためや、既存のMutatingWebhookConfigurationにある現在のバージョンのエイリアスの実体を変更するために使用する。</p>
+<p>MutatingWebhookConfiguration の <code>.metadata.labels</code> キーにある既存のエイリアス (<code>istio.io/tag</code> キーの値) に実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) を設定する。</p>
+<p>カナリアアップグレード用の MutatingWebhookConfiguration を新しく作成するためや、既存の MutatingWebhookConfiguration にある現在のバージョンのエイリアスの実体を変更するために使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># カナリアアップグレード用のMutatingWebhookConfigurationがなければ新しく作成する。</span>
 <span class="c1"># もしあれば、MutatingWebhookConfigurationのエイリアスの実体を変更する。</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;エイリアス&gt;<span class="w"> </span>--revision<span class="w"> </span>&lt;エイリアスの実体&gt;<span class="w"> </span>--overwrite
@@ -36081,7 +36081,7 @@ default<span class="w">   </span><span class="m">1</span>-10-0<span class="w">  
 <dl>
 <dt><code>(2)</code></dt>
 <dd>
-<p><code>default</code> タグを持つMutatingWebhookConfigurationを確認する。</p>
+<p><code>default</code> タグを持つ MutatingWebhookConfiguration を確認する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># MutatingWebhookConfiguration</span>
@@ -36094,7 +36094,7 @@ istio-revision-tag-default<span class="w">          </span><span class="m">1</sp
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>もし、ここでIstioをアップグレードしたとする。</p>
+<p>もし、ここで Istio をアップグレードしたとする。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>install<span class="w"> </span>--set<span class="w"> </span><span class="nv">revision</span><span class="o">=</span><span class="m">1</span>-11-0
@@ -36102,7 +36102,7 @@ istio-revision-tag-default<span class="w">          </span><span class="m">1</sp
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>すると、既存のMutatingWebhookConfigurationを残して、新しいMutatingWebhookConfigurationを作成する。</p>
+<p>すると、既存の MutatingWebhookConfiguration を残して、新しい MutatingWebhookConfiguration を作成する。</p>
 <p>その他、新しいIstiodコントロールプレーンも作成される。</p>
 </dd>
 </dl>
@@ -36166,7 +36166,7 @@ istio.io/tag:<span class="w"> </span>default
 <p><br></p>
 <h2 id="proxy-status">proxy-status<a class="headerlink" href="#proxy-status" title="Permanent link">&para;</a></h2>
 <h3 id="proxy-status_1">proxy-statusとは<a class="headerlink" href="#proxy-status_1" title="Permanent link">&para;</a></h3>
-<p>Istio Ingress Gateway/EgressGateway、istio-proxyのステータスを取得する。</p>
+<p>Istio Ingress Gateway/EgressGateway、istio-proxy のステータスを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>proxy-status
 
 NAME<span class="w">                                      </span>CDS<span class="w">        </span>LDS<span class="w">        </span>EDS<span class="w">        </span>RDS<span class="w">          </span>ISTIOD<span class="w">           </span>VERSION
@@ -36184,7 +36184,7 @@ baz-pod.default<span class="w">                           </span>SYNCED<span cla
 <p><br></p>
 <h2 id="upgrade">upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h2>
 <h3 id="upgrade_1">upgradeとは<a class="headerlink" href="#upgrade_1" title="Permanent link">&para;</a></h3>
-<p>Istioのインプレースデプロイメントを実行する。</p>
+<p>Istio のインプレースデプロイメントを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>upgrade
 
 This<span class="w"> </span>will<span class="w"> </span>install<span class="w"> </span>the<span class="w"> </span>Istio<span class="w"> </span>&lt;バージョンタグ&gt;<span class="w"> </span>default<span class="w"> </span>profile<span class="w"> </span>with<span class="w"> </span><span class="o">[</span><span class="s2">&quot;Istio core&quot;</span><span class="w"> </span><span class="s2">&quot;Istiod&quot;</span><span class="w"> </span><span class="s2">&quot;Ingress gateways&quot;</span><span class="o">]</span><span class="w"> </span>components<span class="w"> </span>into<span class="w"> </span>the<span class="w"> </span>cluster.<span class="w"> </span>Proceed?<span class="w"> </span><span class="o">(</span>y/N<span class="o">)</span><span class="w"> </span>y
@@ -36202,7 +36202,7 @@ This<span class="w"> </span>will<span class="w"> </span>install<span class="w"> 
 <p><br></p>
 <h2 id="verify-install">verify-install<a class="headerlink" href="#verify-install" title="Permanent link">&para;</a></h2>
 <h3 id="verify-install_1">verify-installとは<a class="headerlink" href="#verify-install_1" title="Permanent link">&para;</a></h3>
-<p>Istioリソースが正しく作成されたかを検証する。</p>
+<p>Istio リソースが正しく作成されたかを検証する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>verify-install
 
 <span class="m">1</span><span class="w"> </span>Istio<span class="w"> </span>control<span class="w"> </span>planes<span class="w"> </span>detected,<span class="w"> </span>checking<span class="w"> </span>--revision<span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"> </span>only
@@ -36225,7 +36225,7 @@ Checked<span class="w"> </span><span class="m">3</span><span class="w"> </span>I
 <p><br></p>
 <h2 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h2>
 <h3 id="version_1">versionとは<a class="headerlink" href="#version_1" title="Permanent link">&para;</a></h3>
-<p>Istiodコントロールプレーンのバージョンを取得する。</p>
+<p>Istiod コントロールプレーンのバージョンを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>version
 
 client<span class="w"> </span>version:<span class="w"> </span><span class="m">1</span>.12.1
@@ -36254,7 +36254,7 @@ data<span class="w"> </span>plane<span class="w"> </span>version:<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -36265,11 +36265,11 @@ data<span class="w"> </span>plane<span class="w"> </span>version:<span class="w"
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

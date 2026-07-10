@@ -33583,7 +33583,7 @@
 <p><br></p>
 <h2 id="01">01. 分散トレースの計装<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_1">手動計装<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetryのTracerProviderを手動でセットアップする。</p>
+<p>OpenTelemetry の TracerProvider を手動でセットアップする。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/instrumentation/">https://opentelemetry.io/docs/instrumentation/</a></li>
@@ -33592,7 +33592,7 @@
 <p><br></p>
 <h3 id="_2">自動計装<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 自動計装とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetryのTracerProviderをアプリケーションの実行時に動的にセットアップする。</p>
+<p>OpenTelemetry の TracerProvider をアプリケーションの実行時に動的にセットアップする。</p>
 <p>ファイルの構造や環境変数名から、自動的に言語を検出してくれる。</p>
 <p>自動計装は手動計装より処理が増えるため、言語 (例：Java) によっては起動パフォーマンスに影響する可能性がある。</p>
 <blockquote>
@@ -33610,7 +33610,7 @@
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>JavaScriptやPythonでは、モンキーパッチで自動計装を実現している。</p>
+<p>JavaScript や Python では、モンキーパッチで自動計装を実現している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># JavaScriptの場合</span>
 $<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/api
 $<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--save<span class="w"> </span>@opentelemetry/auto-instrumentations-node
@@ -33634,15 +33634,15 @@ $<span class="w"> </span>opentelemetry-instrument<span class="w"> </span>python<
 </ul>
 </blockquote>
 <h4 id="_5">▼ コンパイル言語<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>コンパイル言語 (実行前にコンパイルする言語) の場合、エージェント (例：Javaエージェント、eBPFなど) による自動計装が適する。</p>
-<p>eBPFによるコンパイル言語の自動計装のほうが、手動計装よりもリクエスト処理のパフォーマンスが高くなる。</p>
+<p>コンパイル言語 (実行前にコンパイルする言語) の場合、エージェント (例：Java エージェント、eBPF など) による自動計装が適する。</p>
+<p>eBPF によるコンパイル言語の自動計装のほうが、手動計装よりもリクエスト処理のパフォーマンスが高くなる。</p>
 <blockquote>
 <ul>
 <li><a href="https://odigos.io/blog/ebpf-instrumentation-faster-than-manual">https://odigos.io/blog/ebpf-instrumentation-faster-than-manual</a></li>
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>JavaではJavaエージェント、GoではeBPFで自動計装を実現している。</p>
+<p>Java では Java エージェント、Go では eBPF で自動計装を実現している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Javaの場合</span>
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">JAVA_TOOL_OPTIONS</span><span class="o">=</span><span class="s2">&quot;-javaagent:&lt;パス&gt;/opentelemetry-javaagent.jar&quot;</span>
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">OTEL_SERVICE_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;サービス名&gt;&quot;</span>
@@ -33695,7 +33695,7 @@ $<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 17:23:55 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

@@ -33721,11 +33721,11 @@
 <p>ブラウザのストレージ機能であり、ブラウザを閉じると削除される。</p>
 <p><br></p>
 <h3 id="id">セッションIDの保存<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
-<p>フロントエンドアーキテクチャがCSRの場合に採用できる。</p>
-<p>SSRのアプリケーションはブラウザを操作できないため、ブラウザのLocalStorageをSSRのアプリケーションに渡せない。</p>
-<p>セッションIDで認証アーティファクトを運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。</p>
-<p>ブラウザは、SessionStorageにセッションIDを保管する。</p>
-<p>ブラウザを閉じると、ブラウザはSessionStorageのセッションIDを破棄し、認証はやり直しになる。</p>
+<p>フロントエンドアーキテクチャが CSR の場合に採用できる。</p>
+<p>SSR のアプリケーションはブラウザを操作できないため、ブラウザの LocalStorage を SSR のアプリケーションに渡せない。</p>
+<p>セッション ID で認証アーティファクトを運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。</p>
+<p>ブラウザは、SessionStorage にセッション ID を保管する。</p>
+<p>ブラウザを閉じると、ブラウザは SessionStorage のセッション ID を破棄し、認証はやり直しになる。</p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- string型で値を設定する必要がある --&gt;</span>
 <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">sessionStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s2">&quot;session_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span><span class="p">);</span>
@@ -33756,7 +33756,7 @@
 <p><br></p>
 <h3 id="_2">場所<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><strong>＊例＊</strong></p>
-<p>ローカルマシンがMacOSであれば、Chromeは <code>~/Library/Application Support/Google/Chrome/&lt;Profile&gt;/Local Storage/</code> ディレクトリに保管する。</p>
+<p>ローカルマシンが MacOS であれば、Chrome は <code>~/Library/Application Support/Google/Chrome/&lt;Profile&gt;/Local Storage/</code> ディレクトリに保管する。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/8634058/where-the-sessionstorage-and-localstorage-stored">https://stackoverflow.com/questions/8634058/where-the-sessionstorage-and-localstorage-stored</a></li>
@@ -33768,13 +33768,13 @@
 <p>ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。</p>
 <p><br></p>
 <h3 id="_3">トークンの保存<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>フロントエンドアーキテクチャがCSRの場合に採用できる。</p>
-<p>CSRのアプリケーションはブラウザを操作できるため、ブラウザのLocalStorageにアクセストークンを保存できる。</p>
-<p>一方で、SSRのアプリケーションはこれを操作できないため、ブラウザのLocalStorageにアクセストークンを保存できない。</p>
+<p>フロントエンドアーキテクチャが CSR の場合に採用できる。</p>
+<p>CSR のアプリケーションはブラウザを操作できるため、ブラウザの LocalStorage にアクセストークンを保存できる。</p>
+<p>一方で、SSR のアプリケーションはこれを操作できないため、ブラウザの LocalStorage にアクセストークンを保存できない。</p>
 <p>アクセストークンを運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。</p>
-<p>ブラウザは、LocalStorageにアクセストークンを保管する。</p>
-<p>ブラウザを閉じても、ブラウザはLocalStorageのアクセストークンを破棄せず、認証の成功状態を維持できる。</p>
-<p>LocalStorageはSessionStorageと比べて保管期間が長いため、XSSの危険性がより高い。</p>
+<p>ブラウザは、LocalStorage にアクセストークンを保管する。</p>
+<p>ブラウザを閉じても、ブラウザは LocalStorage のアクセストークンを破棄せず、認証の成功状態を維持できる。</p>
+<p>LocalStorage は SessionStorage と比べて保管期間が長いため、XSS の危険性がより高い。</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="w">  </span><span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s2">&quot;access_token&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;*****&quot;</span><span class="p">);</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
@@ -33801,7 +33801,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">認証後の閲覧履歴の保存<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>閲覧した情報をLocalStorageに保存しておく。</p>
+<p>閲覧した情報を LocalStorage に保存しておく。</p>
 <p>次回のログイン時に、最近閲覧した情報として表示する。</p>
 <blockquote>
 <ul>
@@ -33819,7 +33819,7 @@
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>ローカルマシンがMacOSであれば、Chromeは <code>~/Library/Application Support/Google/Chrome/&lt;Profile&gt;/Local Storage/</code> ディレクトリに保管する。</p>
+<p>ローカルマシンが MacOS であれば、Chrome は <code>~/Library/Application Support/Google/Chrome/&lt;Profile&gt;/Local Storage/</code> ディレクトリに保管する。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/27612275/12771072">https://stackoverflow.com/a/27612275/12771072</a></li>
@@ -33836,11 +33836,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="_6">トークンの保存<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。</p>
-<p>CSRまたはSSRのアプリケーションは、<code>Cookie</code> ヘッダーを介してブラウザのCookieにアクセストークンを保存できる。</p>
-<p>トークン (例：アクセストークン、IDトークンなど) で認証アーティファクトを運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。</p>
-<p>ブラウザは、Cookieにアクセストークンを保管する。</p>
-<p>ブラウザを閉じても、ブラウザはCookieのアクセストークンを破棄せず、認証の成功状態を維持できる。</p>
+<p>フロントエンドアプリケーションが CSR または SSR の場合に採用できる。</p>
+<p>CSR または SSR のアプリケーションは、<code>Cookie</code> ヘッダーを介してブラウザの Cookie にアクセストークンを保存できる。</p>
+<p>トークン (例：アクセストークン、ID トークンなど) で認証アーティファクトを運搬した場合、初回認証以降に、認証の成功状態を維持する必要がある。</p>
+<p>ブラウザは、Cookie にアクセストークンを保管する。</p>
+<p>ブラウザを閉じても、ブラウザは Cookie のアクセストークンを破棄せず、認証の成功状態を維持できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720">https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720</a></li>
@@ -33850,7 +33850,7 @@
 </blockquote>
 <h4 id="_7">▼ 場所<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>クライアントPCがMacOSであれば、Chromeは <code>/Users/&lt;ユーザー名&gt;/Library/Application Support/Google/Chrome/Default/Cookies</code> ディレクトリに <code>Cookie</code> ヘッダーの値を保管する。</p>
+<p>クライアント PC が MacOS であれば、Chrome は <code>/Users/&lt;ユーザー名&gt;/Library/Application Support/Google/Chrome/Default/Cookies</code> ディレクトリに <code>Cookie</code> ヘッダーの値を保管する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/EasyCoder/items/8ce7dfd75d05079be9d7#cookie%E3%81%AF%E3%81%A9%E3%81%93%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B">https://qiita.com/EasyCoder/items/8ce7dfd75d05079be9d7#cookie%E3%81%AF%E3%81%A9%E3%81%93%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B</a></li>
@@ -33858,11 +33858,11 @@
 </blockquote>
 <p><br></p>
 <h2 id="04">04. サーバー側のアプリケーションのセッション<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<p>フロントエンドアプリケーションがSSRの場合に採用できる。</p>
+<p>フロントエンドアプリケーションが SSR の場合に採用できる。</p>
 <p>アプリケーションのセッションファイル上で管理する。</p>
 <p><br></p>
 <h2 id="05-redis">05. サーバー側のセッションストレージツール (例：Redis)<a class="headerlink" href="#05-redis" title="Permanent link">&para;</a></h2>
-<p>フロントエンドアプリケーションがSSRの場合に採用できる。</p>
+<p>フロントエンドアプリケーションが SSR の場合に採用できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://redis.io/solutions/authentication-token-storage/">https://redis.io/solutions/authentication-token-storage/</a></li>
@@ -33889,7 +33889,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

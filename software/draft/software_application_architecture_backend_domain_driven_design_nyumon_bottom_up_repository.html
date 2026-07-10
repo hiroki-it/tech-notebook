@@ -33304,7 +33304,7 @@
   <a href="#save" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ より良い実装（リポジトリにSaveを書く）
+        ▼ よりよい実装（リポジトリにSaveを書く）
       
     </span>
   </a>
@@ -33377,7 +33377,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01">01. リポジトリとは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p>リポジトリとは、ドメインオブジェクト（エンティティや値オブジェクト）を外部（DB、サードパティAPI）から取得し、またこれに永続化するロジックをもつオブジェクトである。</p>
+<p>リポジトリとは、ドメインオブジェクト（エンティティや値オブジェクト）を外部（DB、サードパティ API）から取得し、またこれに永続化するロジックをもつオブジェクトである。</p>
 <p><br></p>
 <h2 id="02">02. リポジトリの実装方法（関数型）<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">インターフェースリポジトリ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -33448,9 +33448,9 @@
 </code></pre></div>
 <h3 id="dto">DTO<a class="headerlink" href="#dto" title="Permanent link">&para;</a></h3>
 <h4 id="dto_1">▼ DTOとは<a class="headerlink" href="#dto_1" title="Permanent link">&para;</a></h4>
-<p>ORMのデータモデルをエンティティそのままに使用する場合、ドメイン層がインフラストラクチャ層に依存してしまう。</p>
-<p>エンティティとORMのデータモデルを分離し、ORMのデータモデルをエンティティに詰め替える必要がある</p>
-<p>別の方法として、リポジトリでDTOに相当するロジックを実装してもよい。</p>
+<p>ORM のデータモデルをエンティティそのままに使用する場合、ドメイン層がインフラストラクチャ層に依存してしまう。</p>
+<p>エンティティと ORM のデータモデルを分離し、ORM のデータモデルをエンティティに詰め替える必要がある</p>
+<p>別の方法として、リポジトリで DTO に相当するロジックを実装してもよい。</p>
 <h4 id="dto_2">▼ DTOを使用しない場合<a class="headerlink" href="#dto_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">PrismaClient</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@prisma/client&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">User</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;../domain/user&quot;</span><span class="p">;</span>
@@ -33541,7 +33541,7 @@
 <p><br></p>
 <h3 id="_6">注意点<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="update">▼ よろしくない実装（リポジトリにUpdate〇〇をいっぱいかく）<a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
-<p>Userオブジェクトに実装するべき振る舞いのビジネスロジックを、永続化の役割を持つRepositoryへ実装することになってしまう。</p>
+<p>User オブジェクトに実装するべき振る舞いのビジネスロジックを、永続化の役割を持つ Repository へ実装することになってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">findbyId</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">updateName</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
@@ -33550,9 +33550,9 @@
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">findById</span><span class="p">(</span><span class="nx">userId</span><span class="p">);</span>
 <span class="k">await</span><span class="w"> </span><span class="nx">userRepository</span><span class="p">.</span><span class="nx">updateName</span><span class="p">(</span><span class="nx">getName</span><span class="p">(</span><span class="nx">user</span><span class="p">));</span><span class="w"> </span><span class="c1">// リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう</span>
 </code></pre></div>
-<h4 id="save">▼ より良い実装（リポジトリにSaveを書く）<a class="headerlink" href="#save" title="Permanent link">&para;</a></h4>
-<p>Userオブジェクトが振る舞いのビジネスロジックをもち、Repositoryは永続化ロジックをもつので、責務を区別できている</p>
-<p>責務さえ区別できていれば、名前はSaveやStore、それこそUpdateでもよい</p>
+<h4 id="save">▼ よりよい実装（リポジトリにSaveを書く）<a class="headerlink" href="#save" title="Permanent link">&para;</a></h4>
+<p>User オブジェクトが振る舞いのビジネスロジックをもち、Repository は永続化ロジックをもつので、責務を区別できている</p>
+<p>責務さえ区別できていれば、名前は Save や Store、それこそ Update でもよい</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">UserRepositoryInterface</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">findById</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">UserId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">save</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="p">;</span>
@@ -33565,8 +33565,8 @@
 <p><br></p>
 <h2 id="03">03. リポジトリで実装するべきロジックの見つけ方<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <ul>
-<li>DBに関するロジック（例：DB操作、ファイル操作）</li>
-<li>外部APIに関するロジック（例：HTTPハンドラー）</li>
+<li>DB に関するロジック（例：DB 操作、ファイル操作）</li>
+<li>外部 API に関するロジック（例：HTTP ハンドラー）</li>
 </ul>
 <p><br></p>
 
@@ -33589,7 +33589,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月23日 15:42:08 JST">2026-03-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -33600,11 +33600,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

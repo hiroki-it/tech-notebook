@@ -34514,7 +34514,7 @@
 <p><br></p>
 <h2 id="01-kiali">01. Kialiの仕組み<a class="headerlink" href="#01-kiali" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Kialiは、バックエンドコンポーネントとフロントエンドコンポーネントから構成されている。</p>
+<p>Kiali は、バックエンドコンポーネントとフロントエンドコンポーネントから構成されている。</p>
 <p><img alt="kiali_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kiali_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -34524,9 +34524,9 @@
 <p><br></p>
 <h3 id="_3">バックエンドコンポーネント<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ バックエンドコンポーネントとは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>バックエンドコンポーネントは、kube-apiserverからKubernetesリソース (例：Namespace、Deployment、Serviceなど) の情報を収集し、PrometheusからIstioのメトリクス (例：<code>istio_requests_total</code>、<code>istio_request_bytes_bucket</code>、<code>istio_request_bytes_count</code> など) を収集する。</p>
-<p>そのため、Kialiが必要とするメトリクスをPrometheusで事前に収集していないと、Kialiが正しく機能しない。</p>
-<p>アーキテクチャの図中で点線は、バックエンドコンポーネントがIstiodコントロールプレーンに間接的に依存していることを表している。</p>
+<p>バックエンドコンポーネントは、kube-apiserver から Kubernetes リソース (例：Namespace、Deployment、Service など) の情報を収集し、Prometheus から Istio のメトリクス (例：<code>istio_requests_total</code>、<code>istio_request_bytes_bucket</code>、<code>istio_request_bytes_count</code> など) を収集する。</p>
+<p>そのため、Kiali が必要とするメトリクスを Prometheus で事前に収集していないと、Kiali が正常に機能しない。</p>
+<p>アーキテクチャの図中で点線は、バックエンドコンポーネントが Istiod コントロールプレーンに間接的に依存していることを表している。</p>
 <blockquote>
 <ul>
 <li><a href="https://kiali.io/docs/architecture/architecture/#kiali-back-end">https://kiali.io/docs/architecture/architecture/#kiali-back-end</a></li>
@@ -34534,7 +34534,7 @@
 </ul>
 </blockquote>
 <h4 id="kilaiistio">▼ Kilaiが使用するIstioメトリクス<a class="headerlink" href="#kilaiistio" title="Permanent link">&para;</a></h4>
-<p>Kialiは、以下のメトリクスを使用してメッシュトポロジーやそのほかのグラフを作成する。</p>
+<p>Kiali は、以下のメトリクスを使用してメッシュトポロジーやそのほかのグラフを作成する。</p>
 <ul>
 <li>istio_requests_total</li>
 <li>istio_request_bytes_sum</li>
@@ -34549,14 +34549,14 @@
 <h4 id="_6">▼ フロントエンドコンポーネントとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>フロントエンドコンポーネントは、バックエンドからデータを取得し、ダッシュボード上にサービスメッシュトポロジーを作成する。</p>
 <p>サービスメッシュトポロジーから、マイクロサービス間の通信の依存関係や通信状況を確認できる。</p>
-<p>その他、監視ツール (例：Jaeger、Grafana) と連携し、Kiali上のデータから連携先ツールのURLへリダイレクトできるようにする。</p>
+<p>その他、監視ツール (例：Jaeger、Grafana) と連携し、Kiali 上のデータから連携先ツールの URL へリダイレクトできるようにする。</p>
 <blockquote>
 <ul>
 <li><a href="https://kiali.io/docs/architecture/architecture/#kiali-front-end">https://kiali.io/docs/architecture/architecture/#kiali-front-end</a></li>
 </ul>
 </blockquote>
 <h4 id="_7">▼ グラフ化手法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Kialiは、cytoscape.jsパッケージを使用し、『幅優先探索グラフ』や『有向グラフ』といったモデリング手法に基づいて、Istioから収集したデータポイントをグラフ化する。</p>
+<p>Kiali は、cytoscape.js パッケージを使用し、『幅優先探索グラフ』や『有向グラフ』といったモデリング手法に基づいて、Istio から収集したデータポイントをグラフ化する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/kiali/kiali/tree/v1.65.0/frontend/src/components/CytoscapeGraph/graphs">https://github.com/kiali/kiali/tree/v1.65.0/frontend/src/components/CytoscapeGraph/graphs</a></li>
@@ -34566,7 +34566,7 @@
 <p><br></p>
 <h2 id="01-02">01-02. マニフェスト<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_8">マニフェストの種類<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>Kialiは、Deployment、ConfigMap、Serviceなどのマニフェストから構成されている。</p>
+<p>Kiali は、Deployment、ConfigMap、Service などのマニフェストから構成されている。</p>
 <p><br></p>
 <h3 id="deploymentpod">Deployment配下のPod<a class="headerlink" href="#deploymentpod" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 設定例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
@@ -34622,8 +34622,8 @@
 <span class="w">    </span><span class="no">...</span>
 </code></pre></div>
 <h4 id="istio">▼ Istioとの対応<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
-<p>Kialiのバージョンは、Istioと対応関係にある。</p>
-<p>Kialiのバージョンに応じたリビジョンのIstioを指定する。</p>
+<p>Kiali のバージョンは、Istio と対応関係にある。</p>
+<p>Kiali のバージョンに応じたリビジョンの Istio を指定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://kiali.io/docs/installation/installation-guide/prerequisites/#version-compatibility">https://kiali.io/docs/installation/installation-guide/prerequisites/#version-compatibility</a></li>
@@ -34666,45 +34666,45 @@
 </ul>
 </blockquote>
 <h4 id="app">▼ Appグラフ<a class="headerlink" href="#app" title="Permanent link">&para;</a></h4>
-<p>アプリコンテナ間 (Pod間) の通信を表示する。</p>
+<p>アプリコンテナ間 (Pod 間) の通信を表示する。</p>
 <h4 id="service_1">▼ Serviceグラフ<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
-<p>Virtual Service間の通信を表示する。</p>
+<p>Virtual Service 間の通信を表示する。</p>
 <h4 id="versioned-app">▼ Versioned Appグラフ<a class="headerlink" href="#versioned-app" title="Permanent link">&para;</a></h4>
-<p>バージョン付きのアプリコンテナ間 (Pod間) の通信を表示する。</p>
+<p>バージョン付きのアプリコンテナ間 (Pod 間) の通信を表示する。</p>
 <h4 id="workload">▼ Workloadグラフ<a class="headerlink" href="#workload" title="Permanent link">&para;</a></h4>
-<p>Workload (例：Deployment、DaemonSet、StatefulSet、Jobなど) の通信を表示する。</p>
+<p>Workload (例：Deployment、DaemonSet、StatefulSet、Job など) の通信を表示する。</p>
 <p><br></p>
 <h3 id="_13">プロトコル別メトリクス<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="http">▼ HTTP<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>HTTPプロトコルに関して、インバウンド通信とアウトバウンド通信のレスポンスタイムやエラー率を表示する。</p>
+<p>HTTP プロトコルに関して、インバウンド通信とアウトバウンド通信のレスポンスタイムやエラー率を表示する。</p>
 <h4 id="grpc">▼ gRPC<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
-<p>RPCによるHTTPプロトコルに関して、インバウンド通信とアウトバウンド通信のレスポンスタイムやエラー率を表示する。</p>
+<p>RPC による HTTP プロトコルに関して、インバウンド通信とアウトバウンド通信のレスポンスタイムやエラー率を表示する。</p>
 <h4 id="tcp">▼ TCP<a class="headerlink" href="#tcp" title="Permanent link">&para;</a></h4>
-<p>TCPスリーウェイハンドシェイクのレスポンスタイムやエラー率を表示する。</p>
+<p>TCP スリーウェイハンドシェイクのレスポンスタイムやエラー率を表示する。</p>
 <p><br></p>
 <h3 id="_14">表示形式<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ 表示期間<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、最新 <code>1</code> 分に発生した通信しか表示しない。</p>
 <p>そのため、表示期間を延長する。</p>
 <h4 id="namespace">▼ Namespace<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h4>
-<p>デフォルトでは、全てのNamespaceが表示されて見にくい。</p>
-<p>そのため、アプリコンテナのNamespaceのみをフィルタリングして表示する。</p>
+<p>デフォルトでは、すべての Namespace が表示されて見にくい。</p>
+<p>そのため、アプリコンテナの Namespace のみをフィルタリングして表示する。</p>
 <h4 id="tls">▼ 相互TLS認証<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h4>
-<p>デフォルトでは、マイクロサービス間のいずれの通信が相互TLS認証になっているかを表示しない。</p>
-<p>そのため、凡例でSecurityを有効化する。</p>
+<p>デフォルトでは、マイクロサービス間のいずれの通信が相互 TLS 認証になっているかを表示しない。</p>
+<p>そのため、凡例で Security を有効化する。</p>
 <p><br></p>
 <h3 id="_16">汎用ラベルの意味合い<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ 表示するべき凡例<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>デフォルトでは、アプリコンテナ以外のコンポーネント (例：IstioのVirtual Service) が表示されて見にくい。</p>
+<p>デフォルトでは、アプリコンテナ以外のコンポーネント (例：Istio の Virtual Service) が表示されて見にくい。</p>
 <p>そのため、以下のみをフィルタリングして表示するとよい。</p>
 <ul>
-<li>Cluster囲み線</li>
-<li>Namespace囲み線</li>
+<li>Cluster 囲み線</li>
+<li>Namespace 囲み線</li>
 <li>レスポンスタイムと閾値 (<code>rt &gt; マイクロ秒数</code>)</li>
 </ul>
 <h4 id="_18">▼ 囲み線<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <ul>
-<li>複数のNamespaceにistio-proxyをインジェクションしている場合、Serviceとマイクロサービスが <code>NS</code> とついた線で囲われる。</li>
+<li>複数の Namespace に istio-proxy をインジェクションしている場合、Service とマイクロサービスが <code>NS</code> とついた線で囲われる。</li>
 <li>特定のマイクロサービスに複数の <code>subset</code> 値 (例：<code>v1</code>、<code>v2</code>) が付与されている場合、それらが <code>A</code> とついた線で囲われる。</li>
 </ul>
 <blockquote>
@@ -34714,8 +34714,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="istio_1">Istioのマニフェストの検証<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h3>
-<p>Kialiでは、Istioリソースのマニフェストを検証できる。</p>
-<p>ダッシュボード (Serviceタブ、Istio Configタブ) のConfigurationがエラー表示になっていれば、Istioリソースのマニフェストの問題がわかる。</p>
+<p>Kiali では、Istio リソースのマニフェストを検証できる。</p>
+<p>ダッシュボード (Service タブ、Istio Config タブ) の Configuration がエラー表示になっていれば、Istio リソースのマニフェストの問題がわかる。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration">https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration</a></li>
@@ -34733,7 +34733,7 @@
 </ul>
 </blockquote>
 <h4 id="envoy">▼ Envoy<a class="headerlink" href="#envoy" title="Permanent link">&para;</a></h4>
-<p>Workloadsタブから、各Podのistio-proxyにどんなEnvoy設定値 (リスナー、ルート、クラスター、エンドポイント) を適用しているかを確認できる。</p>
+<p>Workloads タブから、各 Pod の istio-proxy にどんな Envoy 設定値 (リスナー、ルート、クラスター、エンドポイント) を適用しているかを確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kiali.io/docs/features/details/#envoy">https://kiali.io/docs/features/details/#envoy</a></li>
@@ -34782,7 +34782,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 17:23:55 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34793,11 +34793,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

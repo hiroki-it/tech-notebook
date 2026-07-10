@@ -33556,8 +33556,8 @@
 <p><br></p>
 <h2 id="01-opentelemetry">01. OpenTelemetryの仕組み<a class="headerlink" href="#01-opentelemetry" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetryは、テレメトリーソース (例：サードパーティパッケージ、otelクライアントパッケージなど) 、テレメトリーサブスクライバー (例：OpenTelemetry Collectorなど) といったコンポーネントから構成されている。</p>
-<p>OpenTelemetryを導入することにより、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。</p>
+<p>OpenTelemetry は、テレメトリーソース (例：サードパーティパッケージ、otel クライアントパッケージなど) 、テレメトリーサブスクライバー (例：OpenTelemetry Collector など) といったコンポーネントから構成されている。</p>
+<p>OpenTelemetry を導入することにより、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。</p>
 <p><img alt="open-telemetry_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -33568,13 +33568,13 @@
 <p><br></p>
 <h2 id="02">02. テレメトリーソース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">サードパーティパッケージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>サードパーティパッケージは、otelクライアントパッケージの <code>1</code> 個であるAPIパッケージをコールし、テレメトリーデータを作成する。</p>
+<p>サードパーティパッケージは、otel クライアントパッケージの <code>1</code> 個である API パッケージをコールし、テレメトリーデータを作成する。</p>
 <p><br></p>
 <h3 id="otel">otelクライアントパッケージ<a class="headerlink" href="#otel" title="Permanent link">&para;</a></h3>
-<p>otelクライアントパッケージは、APIパッケージ、SDKパッケージ、セマンティック変換パッケージ、プラグイン、といったコンポーネントから構成されている。</p>
+<p>otel クライアントパッケージは、API パッケージ、SDK パッケージ、セマンティック変換パッケージ、プラグイン、といったコンポーネントから構成されている。</p>
 <p>アプリケーションをインスツルメント化する。</p>
-<p>otelクライアントパッケージは、テレメトリーデータをAPIパッケージから受け取り、バックエンドやプロキシ (例：OpenTelemetry Collector、Grafana Alloy)にこれを渡す。</p>
-<p>もし、サービスメッシュツール (例：Istio、Linkerdなど) のサイドカーモデルとOpenTelemetryの両方を採用する場合、otelクライアントパッケージの代わりにサイドカーを使用することになるため、otelクライアントパッケージは不要になる。</p>
+<p>otel クライアントパッケージは、テレメトリーデータを API パッケージから受け取り、バックエンドやプロキシ (例：OpenTelemetry Collector、Grafana Alloy)にこれを渡す。</p>
+<p>もし、サービスメッシュツール (例：Istio、Linkerd など) のサイドカーモデルと OpenTelemetry の両方を採用する場合、otel クライアントパッケージの代わりにサイドカーを使用することになるため、otel クライアントパッケージは不要になる。</p>
 <p><img alt="open-telemetry_client-package" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png" /></p>
 <blockquote>
 <ul>
@@ -33596,10 +33596,10 @@
 <p>以下の仕組みでスキーマファイルを使用し、テレメトリーを収集できる。</p>
 <p>それぞれのテレメトリーファイルのバージョンが異なっていても、それぞれのコンポーネントがテレメトリーを互換的に処理する。</p>
 <ol>
-<li>テレメトリーソースは、スキーマURLにある自身のスキーマファイルを読み込む。</li>
+<li>テレメトリーソースは、スキーマ URL にある自身のスキーマファイルを読み込む。</li>
 <li>テレメトリーソースは、自身のスキーマファイルに応じてテレメトリーを作成する。</li>
 <li>テレメトリーソースは、テレメトリーをバックエンドに送信する。</li>
-<li>バックエンドは、スキーマURLにある自身のスキーマファイルを読み込む。</li>
+<li>バックエンドは、スキーマ URL にある自身のスキーマファイルを読み込む。</li>
 <li>バックエンドは、自身のスキーマファイルに応じてテレメトリーをストレージに保管する。</li>
 <li>バックエンドのダッシュボードは、自身のスキーマファイルに応じてストレージからテレメトリーを取得する。</li>
 </ol>
@@ -33631,7 +33631,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

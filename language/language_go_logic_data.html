@@ -35002,14 +35002,14 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="defined-type">Defined Typeによるユーザー定義のプリミティブ型<a class="headerlink" href="#defined-type" title="Permanent link">&para;</a></h3>
-<p>Defined Typeを使用して、ユーザー定義のプリミティブ型を定義する。</p>
+<p>Defined Type を使用して、ユーザー定義のプリミティブ型を定義する。</p>
 <p>元のプリミティブ型とは互換性がなくなる。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>integer型を元に、Age型を定義する。</p>
+<p>integer 型を元に、Age 型を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Age</span><span class="w"> </span><span class="kt">int</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>パッケージの型を元に、MyAppWriter型を定義する。</p>
+<p>パッケージの型を元に、MyAppWriter 型を定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">MyAppWriter</span><span class="w"> </span><span class="nx">io</span><span class="p">.</span><span class="nx">Writer</span>
 </code></pre></div>
 <p><br></p>
@@ -35127,7 +35127,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="defined-type_1">Defined Typeによるユーザー定義の構造体<a class="headerlink" href="#defined-type_1" title="Permanent link">&para;</a></h3>
-<p>Defined Typeを使用して、ユーザー定義のデータ型の構造体を定義する。</p>
+<p>Defined Type を使用して、ユーザー定義のデータ型の構造体を定義する。</p>
 <p>フィールド名の頭文字を大文字にした場合は、パッケージ外からのアクセスをパブリックに、小文字にした場合はプライベートになる。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>パブリックなフィールドを持つ構造体は以下の通り。</p>
@@ -35157,7 +35157,7 @@
 <p><br></p>
 <h3 id="_11">初期化<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>すでに値が代入されている構造体を初期化する場合、いくつか記法がある。</p>
-<p>その中では、タグ付きリテラルが推奨される。</p>
+<p>そのなかでは、タグ付きリテラルが推奨される。</p>
 <p>初期化によって作成する構造体は、ポインタ型または非ポインタ型のいずれでも問題ない。</p>
 <p>ただし、多くの関数がポインタ型を引数型としていることから、それに合わせてポインタ型を作成することが多い。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35179,7 +35179,7 @@
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">person</span><span class="p">.</span><span class="nx">Name</span><span class="p">)</span><span class="w"> </span><span class="c1">// &quot;Hiroki&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>2つ目に、タグ無しリテラル表記がある。</p>
+<p>2 つ目に、タグ無しリテラル表記がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
@@ -35296,10 +35296,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="_12">埋め込みによる委譲<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>Goには継承がなく、代わりに委譲がある。</p>
+<p>Go には継承がなく、代わりに委譲がある。</p>
 <p>構造体のフィールドとして別の構造体を埋め込むことにより、埋め込まれた構造体に処理を委譲する。</p>
 <p>委譲する側の構造体を宣言するのみでなく、フィールドとして渡す必要がある。</p>
-<p>この時、実装者が委譲を意識しなくて良くなるように、コンストラクタの中で初期化する。</p>
+<p>このとき、実装者が委譲を意識しなくてよくなるように、コンストラクタのなかで初期化する。</p>
 <p>インターフェースの委譲とは異なり、アップキャストは行えない。</p>
 <p>つまり、委譲された構造体は委譲する構造体のデータ型にキャストでき、同じデータ型として扱えない。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35422,7 +35422,7 @@
 <p><br></p>
 <h2 id="04-json">04. JSON<a class="headerlink" href="#04-json" title="Permanent link">&para;</a></h2>
 <h3 id="json">JSONと構造体のマッピング<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
-<p>構造体とJSONの間でパースを実行するとき、構造体の各フィールドと、JSONのキー名を、マッピングしておける。</p>
+<p>構造体と JSON の間でパースを実行するとき、構造体の各フィールドと、JSON のキー名を、マッピングしておける。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35453,8 +35453,8 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="omitempty">omitempty<a class="headerlink" href="#omitempty" title="Permanent link">&para;</a></h3>
-<p>値が『<code>false</code>、<code>0</code>、<code>nil</code>、空配列、空slice、空map、空文字』の時に、JSONエンコードでこれを除外できる。</p>
-<p>構造体を除外したい場合は、nilになりうるポインタ型としておく。</p>
+<p>値が『<code>false</code>、<code>0</code>、<code>nil</code>、空配列、空 slice、空 map、空文字』のときに、JSON エンコードでこれを除外できる。</p>
+<p>構造体を除外したい場合は、nil になりうるポインタ型としておく。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35560,7 +35560,7 @@
 <p><br></p>
 <h3 id="_19">参照演算子 (<code>&amp;</code>)<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>定義された変数に対して、&amp; (アンパサンド) を宣言すると、メモリアドレスを参照できる。</p>
-<p>参照したメモリアドレス値は、ポインタ型の変数に代入する必要があるが、型推論で記述すればこれを意識しなくて良い。</p>
+<p>参照したメモリアドレス値は、ポインタ型の変数に代入する必要があるが、型推論で記述すればこれを意識しなくてよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35701,7 +35701,7 @@
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;%v&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="c1">// []byte{0x61, 0x62, 0x63}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>構造体のsliceの宣言と代入を同時に実行する。</p>
+<p>構造体の slice の宣言と代入を同時に実行する。</p>
 <p>また、型推論する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35723,7 +35723,7 @@
 <p><br></p>
 <h3 id="_23">配列の値の参照<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <h4 id="_24">▼ <code>[&lt;数値&gt;]</code><a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p>sliceで、指定したインデックスの値を参照する。</p>
+<p>slice で、指定したインデックスの値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
@@ -35739,7 +35739,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_25">▼ <code>[&lt;数値&gt;:]</code><a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
-<p>sliceで、指定したインデックス以上の値を参照する。</p>
+<p>slice で、指定したインデックス以上の値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
@@ -35755,7 +35755,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_26">▼ <code>[:&lt;数値&gt;]</code><a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>sliceで、指定したインデックス未満の値を参照する。</p>
+<p>slice で、指定したインデックス未満の値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
@@ -35776,7 +35776,7 @@
 </ul>
 </blockquote>
 <h4 id="_27">▼ <code>[&lt;数値&gt;:&lt;数値&gt;]</code><a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
-<p>sliceで、指定したインデックスの範囲 (以上、未満) の値を参照する。</p>
+<p>slice で、指定したインデックスの範囲 (以上、未満) の値を参照する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;log&quot;</span>
@@ -35799,7 +35799,7 @@
 <p><br></p>
 <h3 id="_28">要素の追加<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <h4 id="slice_1">▼ sliceに値を追加する<a class="headerlink" href="#slice_1" title="Permanent link">&para;</a></h4>
-<p>渡されたsliceで、後ろから要素を追加する。</p>
+<p>渡された slice で、後ろから要素を追加する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -35814,8 +35814,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="sliceslice">▼ sliceにsliceを追加する<a class="headerlink" href="#sliceslice" title="Permanent link">&para;</a></h4>
-<p>渡されたsliceで、後ろから要素を追加する。</p>
-<p>sliceをアンパック (<code>...</code>) する必要がある。</p>
+<p>渡された slice で、後ろから要素を追加する。</p>
+<p>slice をアンパック (<code>...</code>) する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -35856,7 +35856,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_30">▼ <code>インデックス番号:文字列</code><a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
-<p>mapの定義と代入を同時に実行する。</p>
+<p>map の定義と代入を同時に実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -35888,7 +35888,7 @@
 <span class="w">    </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span><span class="w"> </span><span class="c1">// map[0:Hiroki 1:Hiroko 2:Hiroshi]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>または、<code>make()</code> 関数を使用してmapを作成もできる。</p>
+<p>または、<code>make()</code> 関数を使用して map を作成もできる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -35925,7 +35925,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="map_1">複数のデータ型を持つmap<a class="headerlink" href="#map_1" title="Permanent link">&para;</a></h3>
-<p>map型データの値をインターフェース型とすることにより、複数のデータ型を表現できる。</p>
+<p>map 型データの値をインターフェース型とすることにより、複数のデータ型を表現できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -35972,7 +35972,7 @@
 <p>構造体の委譲とは異なり、アップキャストを行える。</p>
 <p>つまり、委譲された構造体は委譲するインターフェースのデータ型にキャストでき、同じデータ型として扱える。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>InspectImpl構造体にAnimalインターフェースを埋め込み、構造体に <code>Eat()</code> 関数、<code>Sleep()</code> 関数、<code>Mating()</code> 関数の処理を委譲する。</p>
+<p>InspectImpl 構造体に Animal インターフェースを埋め込み、構造体に <code>Eat()</code> 関数、<code>Sleep()</code> 関数、<code>Mating()</code> 関数の処理を委譲する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;fmt&quot;</span>
@@ -36037,7 +36037,7 @@
 </ul>
 </blockquote>
 <h4 id="_33">▼ インターフェースを構造体に埋め込む<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
-<p>構造体のフィールドとして別のインターフェースを埋め込むことにより、埋め込まれた構造体に処理の全てを委譲する。</p>
+<p>構造体のフィールドとして別のインターフェースを埋め込むことにより、埋め込まれた構造体に処理のすべてを委譲する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE2%3A-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%92%E6%A7%8B%E9%80%A0%E4%BD%93%E3%81%AB%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80">https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE2%3A-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%92%E6%A7%8B%E9%80%A0%E4%BD%93%E3%81%AB%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80</a></li>
@@ -36179,7 +36179,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 </code></pre></div>
 <p><br></p>
 <h3 id="error">errorインターフェース<a class="headerlink" href="#error" title="Permanent link">&para;</a></h3>
-<p>Goには、標準搭載されているインターフェースがある。</p>
+<p>Go には、標準搭載されているインターフェースがある。</p>
 <p>このインターフェースが強制する関数を実装した構造体を定義すると、自動的に委譲が行われる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
@@ -36188,7 +36188,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
 </code></pre></div>
 <p><br></p>
 <h3 id="string">stringインターフェース<a class="headerlink" href="#string" title="Permanent link">&para;</a></h3>
-<p>構造体に <code>String()</code> 関数を定義しておくと、Print系関数に構造体を渡したときに、これが実行される。</p>
+<p>構造体に <code>String()</code> 関数を定義しておくと、Print 系関数に構造体を渡したときに、これが実行される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -36264,7 +36264,7 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -36275,11 +36275,11 @@ Insect<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

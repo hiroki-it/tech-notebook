@@ -35296,8 +35296,8 @@
 <p><br></p>
 <h2 id="01-typescript">01. TypeScriptとは<a class="headerlink" href="#01-typescript" title="Permanent link">&para;</a></h2>
 <p>静的型付けのフロントエンド言語である。</p>
-<p><code>tsconfig.json</code> ファイルに基づいて、TypeScriptファイルをコンパイルし、JavaScriptファイルを作成する。</p>
-<p>拡張子として、<code>ts</code> と <code>tsx</code> (TypeScript内にJSXを実装できる) を使用できる。</p>
+<p><code>tsconfig.json</code> ファイルに基づいて、TypeScript ファイルをコンパイルし、JavaScript ファイルを作成する。</p>
+<p>拡張子として、<code>ts</code> と <code>tsx</code> (TypeScript 内に JSX を実装できる) を使用できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://ugo.tokyo/ts-config/#outline__1">https://ugo.tokyo/ts-config/#outline__1</a></li>
@@ -35306,7 +35306,7 @@
 <p><br></p>
 <h2 id="02">02 型検証の仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">型検証の有無<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>TypeScriptは静的型付け言語のため、コンパイル時に型検証 (変数、引数、返却値で指定された型に対して、渡される値の型が一致しているかを検証するプロセス) を実施する。</p>
+<p>TypeScript は静的型付け言語のため、コンパイル時に型検証 (変数、引数、返却値で指定された型に対して、渡される値の型が一致しているかを検証するプロセス) を実施する。</p>
 <p>ほかの静的型付け言語にはない『トランスパイル』というプロセスがあるが、ここでは型検証を実施しない。</p>
 <table>
 <thead>
@@ -35358,7 +35358,7 @@
 <p><br></p>
 <h3 id="const">const<a class="headerlink" href="#const" title="Permanent link">&para;</a></h3>
 <h4 id="const_1">▼ constアサーション<a class="headerlink" href="#const_1" title="Permanent link">&para;</a></h4>
-<p>constで宣言／代入された変数に関して、再代入できないようにする。</p>
+<p>const で宣言／代入された変数に関して、再代入できないようにする。</p>
 <p>型がより複雑な配列やオブジェクトリテラルで使用すると便利である。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">obj</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -35476,7 +35476,7 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">value3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">[</span><span class="s2">&quot;baz-qux&quot;</span><span class="p">];</span><span class="w"> </span><span class="c1">// 789</span>
 </code></pre></div>
 <h4 id="record">▼ Recordによる定義<a class="headerlink" href="#record" title="Permanent link">&para;</a></h4>
-<p>Recordを使用することで、オブジェクト型をわかりやすく定義できる。</p>
+<p>Record を使用することで、オブジェクト型をわかりやすく定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">object</span><span class="o">:</span><span class="w"> </span><span class="kt">Record</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;taro&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">age</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;20&quot;</span><span class="p">,</span>
@@ -35492,7 +35492,7 @@
 <p><br></p>
 <h3 id="_9">配列型<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 配列とは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>可変的な要素数、順序は自由、型は全て同じデータ型である。</p>
+<p>可変的な要素数、順序は自由、型はすべて同じデータ型である。</p>
 <h4 id="_11">▼ 変数<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">strArray</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">];</span>
 
@@ -35565,7 +35565,7 @@
 </ul>
 </blockquote>
 <h4 id="_19">▼ 型変数（ジェネリクス）<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>安全なany型ともいえる。</p>
+<p>安全な any 型ともいえる。</p>
 <p>型変数では、定義した時点で型が決まっていない。</p>
 <p>コール時に型変数へ任意の型を推論で代入し、それに合わせた引数型と返却型の関数を定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 最初の&lt;T&gt;    型変数を定義</span>
@@ -35699,7 +35699,7 @@
 </code></pre></div>
 <h4 id="error_1">▼ 独自のErrorオブジェクト型<a class="headerlink" href="#error_1" title="Permanent link">&para;</a></h4>
 <p>ステータスコードに応じたエラーを継承すると、<code>try-catch</code> で扱いやすくなる。</p>
-<p>基本的には、ビルトインのErrorオブジェクトを継承する。</p>
+<p>基本的には、ビルトインの Error オブジェクトを継承する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Errorオブジェクトを継承した独自のErrorオブジェクト</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">FooError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
@@ -35716,7 +35716,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>プロパティをErrorオブジェクトの外から渡す場合は、次のとおりで実装する。</p>
+<p>プロパティを Error オブジェクトの外から渡す場合は、次のとおりで実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Errorオブジェクトを継承した独自のErrorオブジェクト</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">FooError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
@@ -35734,10 +35734,10 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>独自のErrorオブジェクトでは、必ずしも、Errorオブジェクトを継承する必要はない。</p>
-<p>例えば、任意のErrorオブジェクトと実行時間や開始時間をプロパティにもつ <code>FailedResult</code> クラスがある。</p>
-<p>独自のErrorオブジェクトのプロパティに実行時間や開始時間を入れればいいと考えるかもしれないが、外部ツールの任意のErrorオブジェクトには外からこれらを設定できないため、整合性が合わなくなる。</p>
-<p>一方で、Errorオブジェクトのプロパティへ実行時間や開始時間を入れれば、任意のErrorオブジェクトへ対応できるようになる。</p>
+<p>独自の Error オブジェクトでは、必ずしも、Error オブジェクトを継承する必要はない。</p>
+<p>例えば、任意の Error オブジェクトと実行時間や開始時間をプロパティにもつ <code>FailedResult</code> クラスがある。</p>
+<p>独自の Error オブジェクトのプロパティに実行時間や開始時間を入れればいいと考えるかもしれないが、外部ツールの任意の Error オブジェクトには外からこれらを設定できないため、整合性が合わなくなる。</p>
+<p>一方で、Error オブジェクトのプロパティへ実行時間や開始時間を入れれば、任意の Error オブジェクトへ対応できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FailedResult</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// resultプロパティにはErrorオブジェクトが入る</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_result</span><span class="o">:</span><span class="w"> </span><span class="kt">unknown</span><span class="p">;</span>
@@ -35929,7 +35929,7 @@
 <span class="kd">const</span><span class="w"> </span><span class="nx">user2</span><span class="o">:</span><span class="w"> </span><span class="kt">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;abc123&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Bob&quot;</span><span class="p">};</span>
 </code></pre></div>
 <h4 id="_34">▼ オブジェクト全体で複数の型を用意<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
-<p><code>name</code> プロパティが <code>string</code> 型のUserと、<code>undefined</code> 型のUserWithoutNameを別々に定義している。</p>
+<p><code>name</code> プロパティが <code>string</code> 型の User と、<code>undefined</code> 型の UserWithoutName を別々に定義している。</p>
 <p><code>undefined</code> 型のほうが網羅範囲は広い。結果的に <code>undefined</code> 型として扱われる。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
@@ -35947,8 +35947,8 @@
 <p><br></p>
 <h2 id="04">04. 独自の型宣言<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_35">比較<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
-<p>typeエイリアス宣言のほうが型としての強制力が高い。</p>
-<p>また、interface宣言はオブジェクト指向の文脈でメソッドの仕様を持たせることが多く、型の文脈では適さない（と個人的に思っている）</p>
+<p>type エイリアス宣言のほうが型としての強制力が高い。</p>
+<p>また、interface 宣言はオブジェクト指向の文脈でメソッドの仕様を持たせることが多く、型の文脈では適さない（と個人的に思っている）</p>
 <table>
 <thead>
 <tr>
@@ -35989,8 +35989,8 @@
 <p><br></p>
 <h3 id="type">typeエイリアス宣言<a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
 <h4 id="type_1">▼ typeエイリアス宣言とは<a class="headerlink" href="#type_1" title="Permanent link">&para;</a></h4>
-<p>オブジェクト以外の型を宣言する場合、typeエイリアス宣言を使用する。</p>
-<p>ただ、オブジェクトでtypeエイリアス宣言を使用してもよい。</p>
+<p>オブジェクト以外の型を宣言する場合、type エイリアス宣言を使用する。</p>
+<p>ただ、オブジェクトで type エイリアス宣言を使用してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">type</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">bar</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">baz</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
@@ -36063,8 +36063,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="interface">interface宣言<a class="headerlink" href="#interface" title="Permanent link">&para;</a></h3>
-<p>オブジェクトの型を宣言する場合、interface宣言を使用する。</p>
-<p>ただ、オブジェクトでtypeエイリアス宣言を使用してもよい。</p>
+<p>オブジェクトの型を宣言する場合、interface 宣言を使用する。</p>
+<p>ただ、オブジェクトで type エイリアス宣言を使用してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">bar</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
 <span class="w">  </span><span class="nx">baz</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
@@ -36081,7 +36081,7 @@
 </ul>
 <h4 id="dotenv">▼ dotenvパッケージ<a class="headerlink" href="#dotenv" title="Permanent link">&para;</a></h4>
 <p><code>dotenv</code> パッケージ</p>
-<p>なお、依存パッケージが増えてしまうため、代替の方法があるならそちらのほうが良い。</p>
+<p>なお、依存パッケージが増えてしまうため、代替の方法があるならそちらのほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">dotenv</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;dotenv&quot;</span><span class="p">;</span>
 
 <span class="c1">// .envファイルを読み込む</span>
@@ -36121,7 +36121,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">logger</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./logger&quot;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="_40">▼ 型と関数が混在<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
-<p>型と関数が混在する場合、いくつかの記法（型と関数で <code>import</code> を分けるなど）があるが、次の実装方法が一番良い。</p>
+<p>型と関数が混在する場合、いくつかの記法（型と関数で <code>import</code> を分けるなど）があるが、次の実装方法が一番よい。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">foo1</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">foo2</span><span class="p">,</span>
@@ -36132,8 +36132,8 @@
 <span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./foo&quot;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="import_2">▼ 動的import<a class="headerlink" href="#import_2" title="Permanent link">&para;</a></h4>
-<p>一部のモジュールはサーダーレンダリング中に読み込むことができず、ファイルの上部でimportするとエラーになることがある。</p>
-<p>こういったモジュールはCSRモードのクライアントレンダリング</p>
+<p>一部のモジュールはサーダーレンダリング中に読み込むことができず、ファイルの上部で import するとエラーになることがある。</p>
+<p>こういったモジュールは CSR モードのクライアントレンダリング</p>
 <div class="highlight"><pre><span></span><code><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// react-apexchartsは内部でブラウザのwindowを参照するため、本ファイルの上部でimportするとSSRモードのサーバーレンダリング中にwindowを参照できずにエラーになる</span>
 <span class="w">  </span><span class="c1">// 動的importを使用することで、react-apexchartsの部分だけをCSRモードのクライアントレンダリング中に読み込むようにする</span>
@@ -36207,7 +36207,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月20日 13:07:22 JST">2026-05-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -36218,11 +36218,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

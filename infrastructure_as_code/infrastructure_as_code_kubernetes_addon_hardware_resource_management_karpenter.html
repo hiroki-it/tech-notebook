@@ -34334,7 +34334,7 @@
 <p><br></p>
 <h2 id="01-karpenter">01. Karpenterの仕組み<a class="headerlink" href="#01-karpenter" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Karpenterは、Karpenter Controllerから構成される。</p>
+<p>Karpenter は、Karpenter Controller から構成される。</p>
 <p><img alt="karpenter_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -34344,10 +34344,10 @@
 <p><br></p>
 <h3 id="karpenter-controller">Karpenter Controller<a class="headerlink" href="#karpenter-controller" title="Permanent link">&para;</a></h3>
 <h4 id="karpenter-controller_1">▼ Karpenter Controllerとは<a class="headerlink" href="#karpenter-controller_1" title="Permanent link">&para;</a></h4>
-<p>Karpenter Controllerは、KarpenterのCustom Controllerとして、カスタムリソースを作成/変更する。</p>
-<p>また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、Amazon EC2フリート) をコールし、AWSリソース (例：起動テンプレート、Amazon EC2) をプロビジョニングする。</p>
-<p>この時、AWS Load Balancer Controllerも使用していると、Clusterのサブネット内にAmazon EC2 Nodeが増えたことを検知し、ターゲットグループにこれを登録してくれる。</p>
-<p>なお、NodePool配下のAmazon EC2 Nodeは起動テンプレートから作成するが、起動テンプレート自体はAmazon EC2 Node作成後に削除する。</p>
+<p>Karpenter Controller は、Karpenter の Custom Controller として、カスタムリソースを作成/変更する。</p>
+<p>また、カスタムリソースの設定値に応じて、API (例：起動テンプレート、Amazon EC2 フリート) をコールし、AWS リソース (例：起動テンプレート、Amazon EC2) をプロビジョニングする。</p>
+<p>このとき、AWS Load Balancer Controller も使用していると、Cluster のサブネット内に Amazon EC2 Node が増えたことを検知し、ターゲットグループにこれを登録してくれる。</p>
+<p>なお、NodePool 配下の Amazon EC2 Node は起動テンプレートから作成するが、起動テンプレート自体は Amazon EC2 Node 作成後に削除する。</p>
 <p><img alt="karpenter_controller" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png" /></p>
 <blockquote>
 <ul>
@@ -34356,10 +34356,10 @@
 </ul>
 </blockquote>
 <h4 id="pod">▼ Podのバインド<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>Karpenterは、新しいNodeにPodをバインドし、kube-schedulerがNodeにPodをスケジューリングさせることを待つ。</p>
-<p>kube-schedulerの代わりに、KarpenterがNodeを選定しているため、Podのスケジューリングが早い。</p>
-<p>一方で、cluster-autoscalerであれば、Podをバインドしない。</p>
-<p>cluster-autoscalerのNodeのスケールアウト後に、kube-schedulerがNode選定処理に基づいてPodをNodeにバインドするため、スケジューリングまでに時間がかかる。</p>
+<p>Karpenter は、新しい Node に Pod をバインドし、kube-scheduler が Node に Pod をスケジューリングさせることを待つ。</p>
+<p>kube-scheduler の代わりに、Karpenter が Node を選定しているため、Pod のスケジューリングが早い。</p>
+<p>一方で、cluster-autoscaler であれば、Pod をバインドしない。</p>
+<p>cluster-autoscaler の Node のスケールアウト後に、kube-scheduler が Node 選定処理に基づいて Pod を Node にバインドするため、スケジューリングまでに時間がかかる。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/reference/threat-model/">https://karpenter.sh/preview/reference/threat-model/</a></li>
@@ -34370,12 +34370,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="disruption-controller">disruption-controller<a class="headerlink" href="#disruption-controller" title="Permanent link">&para;</a></h3>
-<p>Karpenterは、Nodeで特定のイベントを検知すると、Nodeを中断する。</p>
+<p>Karpenter は、Node で特定のイベントを検知すると、Node を中断する。</p>
 <ul>
-<li>Nodeのスポット中断警告イベント</li>
-<li>Nodeのヘルスステータス</li>
-<li>Nodeのインスタンス終了イベント</li>
-<li>Nodeのインスタンス停止イベント</li>
+<li>Node のスポット中断警告イベント</li>
+<li>Node のヘルスステータス</li>
+<li>Node のインスタンス終了イベント</li>
+<li>Node のインスタンス停止イベント</li>
 </ul>
 <blockquote>
 <ul>
@@ -34386,10 +34386,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="termination-controller">termination-controller<a class="headerlink" href="#termination-controller" title="Permanent link">&para;</a></h3>
-<p>Amazon EC2ワーカーNodeの削除命令を検知し、Amazon EC2ワーカーNodeのGraceful Shutdownから削除までを行う。</p>
-<p>Amazon EC2ワーカーNodeは、デフォルトではNodeのGraceful Shutdownを実施しない。</p>
+<p>Amazon EC2 ワーカーNode の削除命令を検知し、Amazon EC2 ワーカーNode の Graceful Shutdown から削除までを行う。</p>
+<p>Amazon EC2 ワーカーNode は、デフォルトでは Node の Graceful Shutdown を実施しない。</p>
 <p>そのため、<code>kubelet-config.json</code> ファイル (KubeletConfiguration)の <code>--shutdown-grace-period</code> オプションを使用する必要がある。</p>
-<p>一方で、Karpenterを使用すると、termination-controllerがGraceful Shutdownを実施してくれる。</p>
+<p>一方で、Karpenter を使用すると、termination-controller が Graceful Shutdown を実施してくれる。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/concepts/disruption/#termination-controller">https://karpenter.sh/docs/concepts/disruption/#termination-controller</a></li>
@@ -34398,9 +34398,9 @@
 <p><br></p>
 <h2 id="02">02. スケーリング<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">スケーリングの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Karpenterは、起動テンプレートを作成したうえでAmazon EC2フリートAPIをコールし、Amazon EC2 Nodeをスケールアウト/スケールアップする。</p>
-<p>また反対に、Amazon EC2 Nodeをスケールイン/スケールダウンする。</p>
-<p>Karpenterはバージョニングされてない独立した起動テンプレートを作成する。</p>
+<p>Karpenter は、起動テンプレートを作成したうえで Amazon EC2 フリート API をコールし、Amazon EC2 Node をスケールアウト/スケールアップする。</p>
+<p>また反対に、Amazon EC2 Node をスケールイン/スケールダウンする。</p>
+<p>Karpenter はバージョニングされてない独立した起動テンプレートを作成する。</p>
 <p>そのため、残骸として残らないように、その都度起動テンプレートを削除する。</p>
 <div class="highlight"><pre><span></span><code>...
 
@@ -34432,8 +34432,8 @@
 <li><a href="https://github.com/aws/karpenter/pull/1278">https://github.com/aws/karpenter/pull/1278</a></li>
 </ul>
 </blockquote>
-<p>そのため、Nodeグループは不要 (グループレス) であり、Karpenterで指定した条件のNodeをまとめてスケーリングできる。</p>
-<p>Karpenterを使用しない場合、クラウドプロバイダーのNode数は固定である。</p>
+<p>そのため、Node グループは不要 (グループレス) であり、Karpenter で指定した条件の Node をまとめてスケーリングできる。</p>
+<p>Karpenter を使用しない場合、クラウドプロバイダーの Node 数は固定である。</p>
 <blockquote>
 <ul>
 <li><a href="https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs">https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs</a></li>
@@ -34444,8 +34444,8 @@
 <p><br></p>
 <h3 id="_4">スケーリングパラメーター<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ スケーリングパラメーターとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Karpenterは、さまざまな情報に基づいて、Nodeをスケーリングするか否かを決定する。</p>
-<p>鳥の群れの動きをモデリングしたBoidsアルゴリズムに似たような方法で、スケーリング対象のNodeを選定する。</p>
+<p>Karpenter は、さまざまな情報に基づいて、Node をスケーリングするか否かを決定する。</p>
+<p>鳥の群れの動きをモデリングした Boids アルゴリズムに似たような方法で、スケーリング対象の Node を選定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation">https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation</a></li>
@@ -34453,8 +34453,8 @@
 </ul>
 </blockquote>
 <h4 id="pod_1">▼ Podのスケジューリングの可否<a class="headerlink" href="#pod_1" title="Permanent link">&para;</a></h4>
-<p>kube-schedulerから情報を取得し、新しいPodをNode上にスケジューリングできない状態 (<code>Pending</code> 状態) を検知し、Nodeのスケジューリングを検討する。</p>
-<p>新しいPodをスケジューリングできなくなる理由としては、Nodeの上限数超過やハードウェアリソース不足がある。</p>
+<p>kube-scheduler から情報を取得し、新しい Pod を Node 上にスケジューリングできない状態 (<code>Pending</code> 状態) を検知し、Node のスケジューリングを検討する。</p>
+<p>新しい Pod をスケジューリングできなくなる理由としては、Node の上限数超過やハードウェアリソース不足がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/concepts/#scheduling">https://karpenter.sh/docs/concepts/#scheduling</a></li>
@@ -34462,19 +34462,19 @@
 </ul>
 </blockquote>
 <h4 id="_6">▼ コスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>より低コストになるようにAmazon EC2 Nodeを統合する。</p>
+<p>より低コストになるように Amazon EC2 Node を統合する。</p>
 <p>以下のような条件の場合、統合を発動する。</p>
 <ul>
-<li>Amazon EC2 NodeにPodがおらず、これを削除できる</li>
-<li>Podが特定のAmazon EC2 Nodeに偏っており、Podが少ないNodeから多いNodeに再スケジューリングさせても、Podを問題なく動かせる。</li>
-<li>現在のインスタンスタイプより低いインスタンスタイプにしても、問題なくPodを動かせる。</li>
+<li>Amazon EC2 Node に Pod がおらず、これを削除できる</li>
+<li>Pod が特定の Amazon EC2 Node に偏っており、Pod が少ない Node から多い Node に再スケジューリングさせても、Pod を問題なく動かせる。</li>
+<li>現在のインスタンスタイプより低いインスタンスタイプにしても、問題なく Pod を動かせる。</li>
 </ul>
 <p>反対に、以下のような条件の場合には統合しない。</p>
 <ul>
-<li>Controllerが不明なPod</li>
-<li>Podの退避を拒否するPodDisruptionBudget (例：<code>disruptionsAllowed=0</code>) があり、統合するとPodDisruptionBudgetに違反する。</li>
-<li>Podの <code>metadata.annotations</code> キー配下に <code>karpenter.sh/do-not-evict</code> キーがある。</li>
-<li>PodにAffinityがあり、統合するとAffinityに違反する。</li>
+<li>Controller が不明な Pod</li>
+<li>Pod の退避を拒否する PodDisruptionBudget (例：<code>disruptionsAllowed=0</code>) があり、統合すると PodDisruptionBudget に違反する。</li>
+<li>Pod の <code>metadata.annotations</code> キー配下に <code>karpenter.sh/do-not-evict</code> キーがある。</li>
+<li>Pod に Affinity があり、統合すると Affinity に違反する。</li>
 </ul>
 <blockquote>
 <ul>
@@ -34485,8 +34485,8 @@
 <p><br></p>
 <h3 id="node">削除対象のNode選定<a class="headerlink" href="#node" title="Permanent link">&para;</a></h3>
 <h4 id="finalizer">▼ Finalizer<a class="headerlink" href="#finalizer" title="Permanent link">&para;</a></h4>
-<p>Nodeの削除はKarpenterが管理する。</p>
-<p>Karpenter外から削除操作 (例：<code>kubectl delete</code> コマンド) があったとして、Karpenterがこれを検知し、Nodeを削除する。</p>
+<p>Node の削除は Karpenter が管理する。</p>
+<p>Karpenter 外から削除操作 (例：<code>kubectl delete</code> コマンド) があったとして、Karpenter がこれを検知し、Node を削除する。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/concepts/#disrupting-nodes">https://karpenter.sh/docs/concepts/#disrupting-nodes</a></li>
@@ -34523,8 +34523,8 @@
 <p><br></p>
 <h3 id="aws">AWSリソースとの連携<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 起動テンプレート<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>KarpenterのKarpenter Controllerは、起動テンプレートを作成したうえで、Amazon EC2フリートAPIからAmazon EC2 Nodeを作成する。</p>
-<p>執筆時点 (2023/11/04) 時点では、Karpenter Controllerは自身以外 (例：Terraformなど) で作成した起動テンプレートを参照できない。</p>
+<p>Karpenter の Karpenter Controller は、起動テンプレートを作成したうえで、Amazon EC2 フリート API から Amazon EC2 Node を作成する。</p>
+<p>執筆時点 (2023/11/04) 時点では、Karpenter Controller は自身以外 (例：Terraform など) で作成した起動テンプレートを参照できない。</p>
 <p>不都合があって廃止した経緯がある。</p>
 <blockquote>
 <ul>
@@ -34539,9 +34539,9 @@
 </ul>
 </blockquote>
 <h4 id="node_1">▼ マネージドNodeグループ (有無に関係ない)<a class="headerlink" href="#node_1" title="Permanent link">&para;</a></h4>
-<p>Karpenterは、マネージドNodeグループの有無に関係なく、Nodeをスケーリングできる。</p>
-<p>マネージドNodeグループは静的キャパシティであり、KarpenterはマネージドNodeグループ配下のAmazon EC2のAmazon EC2フリートAPIを動的にコールする。</p>
-<p>ただし、マネージドNodeグループで管理するNodeをKarpenterに置き換えるため、マネージドNodeグループ管理下のNodeを意図的にスケールインさせ、KarpenterにNodeをプロビジョニングさせる必要がある。</p>
+<p>Karpenter は、マネージド Node グループの有無に関係なく、Node をスケーリングできる。</p>
+<p>マネージド Node グループは静的キャパシティであり、Karpenter はマネージド Node グループ配下の Amazon EC2 の Amazon EC2 フリート API を動的にコールする。</p>
+<p>ただし、マネージド Node グループで管理する Node を Karpenter に置き換えるため、マネージド Node グループ管理下の Node を意図的にスケールインさせ、Karpenter に Node をプロビジョニングさせる必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features">https://karpenter.sh/docs/faq/#how-does-karpenter-interact-with-aws-node-group-features</a></li>
@@ -34551,8 +34551,8 @@
 <p><br></p>
 <h3 id="karpentercluster-autoscaler">Karpenterとcluster-autoscaler<a class="headerlink" href="#karpentercluster-autoscaler" title="Permanent link">&para;</a></h3>
 <h4 id="karpenter_1">▼ Karpenterのいいところ<a class="headerlink" href="#karpenter_1" title="Permanent link">&para;</a></h4>
-<p>AWSの場合のみ、cluster-autoscalerの代わりにKarpenterを使用できる。</p>
-<p>Karpenterでは、作成されるNodeのスペックを事前に指定する必要がなく、またリソース効率も良い。</p>
+<p>AWS の場合のみ、cluster-autoscaler の代わりに Karpenter を使用できる。</p>
+<p>Karpenter では、作成される Node のスペックを事前に指定する必要がなく、またリソース効率もよい。</p>
 <p>そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。</p>
 <p><img alt="karpenter_vs_cluster-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
 <blockquote>
@@ -34561,10 +34561,10 @@
 </ul>
 </blockquote>
 <h4 id="cluster-autoscaler">▼ cluster-autoscalerのいいところ<a class="headerlink" href="#cluster-autoscaler" title="Permanent link">&para;</a></h4>
-<p>cluster-autoscalerはクラウドプロバイダーによらず使用できるが、Karpenterは執筆時点 (2023/02/26) ではAWS上でしか使用できない。</p>
-<p>そのため、クラウドプロバイダーのオートスケーリング (例：Amazon EC2 Auto Scalingグループ) に関するAPIをコールすることになり、その機能がオートスケーリングに関するAPIに依存する。</p>
-<p>一方でKarpenterは、Amazon EC2のグループ (例：Amazon EC2フリート) に関するAPIをコールする。</p>
-<p>そのため、より柔軟なNode数にスケーリングでき、マネージドNodeグループを介さない分Nodeの起動が早い。</p>
+<p>cluster-autoscaler はクラウドプロバイダーによらず使用できるが、Karpenter は執筆時点 (2023/02/26) では AWS 上でしか使用できない。</p>
+<p>そのため、クラウドプロバイダーのオートスケーリング (例：Amazon EC2 Auto Scaling グループ) に関する API をコールすることになり、その機能がオートスケーリングに関する API に依存する。</p>
+<p>一方で Karpenter は、Amazon EC2 のグループ (例：Amazon EC2 フリート) に関する API をコールする。</p>
+<p>そのため、より柔軟な Node 数にスケーリングでき、マネージド Node グループを介さない分 Node の起動が早い。</p>
 <p><img alt="karpenter_vs_cluster-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
 <blockquote>
 <ul>
@@ -34576,33 +34576,33 @@
 <p><br></p>
 <h3 id="_8">垂直/水平スケーリング<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 対応するスケーリング<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>Karpenterは、現在のハードウェアリソースの使用量に応じて、Nodeを垂直/水平スケーリングする。</p>
-<p>なお、Karpeneterでは垂直スケーリングを代わりに『deprovisioning』という。</p>
+<p>Karpenter は、現在のハードウェアリソースの使用量に応じて、Node を垂直/水平スケーリングする。</p>
+<p>なお、Karpeneter では垂直スケーリングを代わりに『deprovisioning』という。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/aws/karpenter/issues/1226">https://github.com/aws/karpenter/issues/1226</a></li>
 </ul>
 </blockquote>
 <h4 id="_10">▼ スケールアウト/スケールアップの場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>例えば、以下のような仕組みで、Nodeの垂直/水平スケーリングのスケールアウト/スケールアップを実行する。</p>
-<p>Karpenterは、スケジューリングできないPod (<code>Pending</code> 状態) が出現すると、スケールアウト/スケールアップを検討する。</p>
+<p>例えば、以下のような仕組みで、Node の垂直/水平スケーリングのスケールアウト/スケールアップを実行する。</p>
+<p>Karpenter は、スケジューリングできない Pod (<code>Pending</code> 状態) が出現すると、スケールアウト/スケールアップを検討する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Podが、Nodeの <code>70</code>%にあたるハードウェアリソースを要求する。</p>
+<p>Pod が、Node の <code>70</code>%にあたるハードウェアリソースを要求する。</p>
 <p>しかし、Nodeが<code>1</code>台では足りない。<code>70 + 70 = 140%</code>になるため、既存のNodeの少なくとも<code>1.4</code>倍のスペックが必要となる。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>新しく決定したスペックで、Nodeを新しく作成する。</p>
+<p>新しく決定したスペックで、Node を新しく作成する。</p>
 </dd>
 <dt><code>(3)</code></dt>
 <dd>
-<p>新しく作成したNodeにPodをスケジューリングさせる。また、既存のNodeが不要であれば削除する。</p>
+<p>新しく作成した Node に Pod をスケジューリングさせる。また、既存の Node が不要であれば削除する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>結果として、<code>1</code> 台で <code>2</code> 個のPodをスケジューリングさせている。</p>
+<p>結果として、<code>1</code> 台で <code>2</code> 個の Pod をスケジューリングさせている。</p>
 </dd>
 </dl>
 <blockquote>
@@ -34612,7 +34612,7 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ スケールイン/スケールダウンの場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Expiration、Drift、Consolidationの順にNodeを検証し、削除可能なNodeを選ぶ。</p>
+<p>Expiration、Drift、Consolidation の順に Node を検証し、削除可能な Node を選ぶ。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/preview/concepts/disruption/">https://karpenter.sh/preview/concepts/disruption/</a></li>
@@ -34621,8 +34621,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="az">マルチAZ<a class="headerlink" href="#az" title="Permanent link">&para;</a></h3>
-<p>Karpenterでは、Nodeを作成するAZを設定できない。</p>
-<p>代わりに、PodのAZ指定を尊重し、Podのスケジューリング先のAZに合わせてNodeを作成する。</p>
+<p>Karpenter では、Node を作成する AZ を設定できない。</p>
+<p>代わりに、Pod の AZ 指定を尊重し、Pod のスケジューリング先の AZ に合わせて Node を作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://karpenter.sh/docs/concepts/scheduling/#topology-spread">https://karpenter.sh/docs/concepts/scheduling/#topology-spread</a></li>
@@ -34633,9 +34633,9 @@
 <h3 id="aws_1">AWS側<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
 <h4 id="terraform-1">▼ Terraformの公式モジュール (1) の場合<a class="headerlink" href="#terraform-1" title="Permanent link">&para;</a></h4>
 <p><code>terraform-aws-modules/iam/.../iam-assumable-role-with-oidc</code> を使用する。</p>
-<p>Kapenterのセットアップのうち、AWS側で必要なものをまとめる。</p>
-<p>ここでは、Terraformの公式モジュールを使用する。</p>
-<p>コマンド (例：<code>eksctl</code> コマンド) を使用しても良い。</p>
+<p>Kapenter のセットアップのうち、AWS 側で必要なものをまとめる。</p>
+<p>ここでは、Terraform の公式モジュールを使用する。</p>
+<p>コマンド (例：<code>eksctl</code> コマンド) を使用してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">&quot;iam_assumable_role_with_oidc_karpenter_controller&quot;</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">source</span><span class="w">                        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc&quot;</span>
@@ -34865,7 +34865,7 @@
 <p><br></p>
 <h2 id="04">04. トラブルシューティング<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_12">ローカル環境での検証<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>ローカル環境でKarpenterを検証できる。</p>
+<p>ローカル環境で Karpenter を検証できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kwok.sigs.k8s.io/docs/examples/scalability/scale-using-karpenter/">https://kwok.sigs.k8s.io/docs/examples/scalability/scale-using-karpenter/</a></li>
@@ -34874,9 +34874,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="guaranteed-qos">メモリをGuaranteed QoSにする<a class="headerlink" href="#guaranteed-qos" title="Permanent link">&para;</a></h3>
-<p>Podの特に <code>resources</code> キーで、上限 (<code>.spec.containers[*].resources.limits</code>) が設定されていないと、使用量がバーストする。</p>
-<p>その場合、Karpenterの作成したNodeのメモリ量を超え、NodeのSystemOOMイベントによって他のPodが終了してしまう。</p>
-<p>Podのメモリで上限 (<code>.spec.containers[*].resources.limits</code>) = 下限 (<code>.spec.containers[*].resources.requests</code>) のように設定する (Guaranteed QoS) と、OOMキラーを避けられる。</p>
+<p>Pod の特に <code>resources</code> キーで、上限 (<code>.spec.containers[*].resources.limits</code>) が設定されていないと、使用量がバーストする。</p>
+<p>その場合、Karpenter の作成した Node のメモリ量を超え、Node の SystemOOM イベントによって他の Pod が終了してしまう。</p>
+<p>Pod のメモリで上限 (<code>.spec.containers[*].resources.limits</code>) = 下限 (<code>.spec.containers[*].resources.requests</code>) のように設定する (Guaranteed QoS) と、OOM キラーを避けられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html">https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html</a></li>
@@ -34884,8 +34884,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="_13">スポットインスタンスの場合はインスタンスタイプを幅広く設定する<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>スポットインスタンスの仕組みで選ばれたインスタンスタイプが補充されていない場合、KarpenterはNodeをプロビジョニングできない。</p>
-<p>インスタンスタイプが補充されるまでNodeのプロビジョニングは待機となり、PodはPending状態のままになる可能性がある。</p>
+<p>スポットインスタンスの仕組みで選ばれたインスタンスタイプが補充されていない場合、Karpenter は Node をプロビジョニングできない。</p>
+<p>インスタンスタイプが補充されるまで Node のプロビジョニングは待機となり、Pod は Pending 状態のままになる可能性がある。</p>
 <p>これを回避するために、インスタンスタイプを幅広く設定するとよい。</p>
 <blockquote>
 <ul>
@@ -34913,7 +34913,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月23日 20:34:21 JST">2026-05-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34924,11 +34924,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

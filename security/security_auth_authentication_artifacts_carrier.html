@@ -33614,8 +33614,8 @@
 <p><br></p>
 <h2 id="01">01. 運搬方法の一覧<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>マイクロサービスアーキテクチャの文脈では、各認証アーティファクトにさまざまな運搬媒体があります。</p>
-<p>セッションID、アクセストークンであるJWTトークンやOpaqueトークン、APIキーはHTTP/1.1リクエストの <code>Cookie</code> ヘッダーや <code>Authorization</code> ヘッダーで運搬できます。</p>
-<p>HTTP/2では、ヘッダー名は小文字にする必要があります。</p>
+<p>セッション ID、アクセストークンである JWT トークンや Opaque トークン、API キーは HTTP/1.1 リクエストの <code>Cookie</code> ヘッダーや <code>Authorization</code> ヘッダーで運搬できます。</p>
+<p>HTTP/2 では、ヘッダー名は小文字にする必要があります。</p>
 <table>
 <thead>
 <tr>
@@ -33672,15 +33672,15 @@
 </ul>
 <p><br></p>
 <h3 id="id">セッションIDを運搬する場合<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
-<p>セッションベース認証の場合、セッションIDを <code>Cookie</code> ヘッダーで運搬する。</p>
+<p>セッションベース認証の場合、セッション ID を <code>Cookie</code> ヘッダーで運搬する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>セッションIDを <code>Cookie</code> ヘッダーに割り当て、リクエストを送信する。</p>
+<p>セッション ID を <code>Cookie</code> ヘッダーに割り当て、リクエストを送信する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>最初、ユーザー作成の段階で、クライアントが資格情報をサーバーに送信する。サーバーは、資格情報をDBに保管する。</p>
+<p>最初、ユーザー作成の段階で、クライアントが資格情報をサーバーに送信する。サーバーは、資格情報を DB に保管する。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/users</span>
@@ -33702,7 +33702,7 @@
 <dl>
 <dt><code>(4)</code></dt>
 <dd>
-<p>サーバーは、DBの資格情報を照合し、ログインを許可する。サーバーは、セッションIDを作成し、セッションIDに書き込む。</p>
+<p>サーバーは、DB の資格情報を照合し、ログインを許可する。サーバーは、セッション ID を作成し、セッション ID に書き込む。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># セッションID</span>
@@ -33711,7 +33711,7 @@
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p>レスポンスの <code>Set-Cookie</code> ヘッダーにセッションIDを割り当て、クライアントに送信する。<code>Set-Cookie</code> ヘッダーにより、クライアントは <code>Cookie</code> ヘッダーを設定しなければいけなくなる。</p>
+<p>レスポンスの <code>Set-Cookie</code> ヘッダーにセッション ID を割り当て、クライアントに送信する。<code>Set-Cookie</code> ヘッダーにより、クライアントは <code>Cookie</code> ヘッダーを設定しなければいけなくなる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
@@ -33721,7 +33721,7 @@
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>サーバーは、セッションIDとユーザーIDを紐付けてサーバー内に保管する。</p>
+<p>サーバーは、セッション ID とユーザーID を紐付けてサーバー内に保管する。</p>
 <p>加えて次回のログイン時、クライアントは、リクエストの<code>Cookie</code>ヘッダーにセッションIDを割り当て、クライアントに送信する。</p>
 <p>サーバーは、保管したセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。</p>
 <p>これにより、改めて資格情報を送信せずに、素早くログインできるようになる。</p>
@@ -33734,7 +33734,7 @@
 <dl>
 <dt><code>(7)</code></dt>
 <dd>
-<p>認証解除時、サーバーでセッションIDを削除する。</p>
+<p>認証解除時、サーバーでセッション ID を削除する。</p>
 </dd>
 </dl>
 <blockquote>
@@ -33745,8 +33745,8 @@
 <p><br></p>
 <h3 id="_4">アクセストークンを運搬する場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>トークンベース認証の場合、アクセストークンを <code>Cookie</code> ヘッダーで運搬する。</p>
-<p>CSRFトークンと組み合わせるとさらに良くなる。</p>
-<p>なお、APIではリクエストの送受信時に <code>Cookie</code> ヘッダーよりも <code>Authorization</code> ヘッダーのほうが扱いやすいため、<code>Authorization</code> ヘッダーでアクセストークンを運搬することになる。</p>
+<p>CSRF トークンと組み合わせるとさらによくなる。</p>
+<p>なお、API ではリクエストの送受信時に <code>Cookie</code> ヘッダーよりも <code>Authorization</code> ヘッダーのほうが扱いやすいため、<code>Authorization</code> ヘッダーでアクセストークンを運搬することになる。</p>
 <p>また、スマホアプリも <code>Cookie</code> ヘッダーより <code>Authorization</code> ヘッダーがいいらしい。</p>
 <p><img alt="JWT" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JWT.png" /></p>
 <blockquote>
@@ -33767,7 +33767,7 @@
 </ul>
 <p><br></p>
 <h3 id="id_1">セッションIDを運搬する場合<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h3>
-<p>セッションベース認証の場合は、セッションIDを <code>Authorization</code> ヘッダーで運搬することはない。</p>
+<p>セッションベース認証の場合は、セッション ID を <code>Authorization</code> ヘッダーで運搬することはない。</p>
 <p><br></p>
 <h3 id="_6">アクセストークンを運搬する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>トークンベース認証の場合、アクセストークンを <code>Authorization</code> ヘッダーで運搬する。</p>
@@ -33776,8 +33776,8 @@
 <span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;ヘッダーJSONエンコード値&gt;.&lt;ペイロードJSONエンコード値&gt;.&lt;署名JSONエンコード値&gt;</span>
 </code></pre></div>
 <p>なお不便ではあるが、<code>Authorization</code> ヘッダーは <code>Cookie</code> ヘッダーとは異なり、ローカルマシンに保管できない。</p>
-<p>その代わり、ブラウザの設定によって、ブラウザのWebストレージで保管できる (Chromeでは、LocalStorageあるいはSessionStorage) 。</p>
-<p>なお、APIではリクエストの送受信時に <code>Cookie</code> ヘッダーよりも <code>Authorization</code> ヘッダーのほうが扱いやすいため、<code>Authorization</code> ヘッダーでアクセストークンを運搬することになる。</p>
+<p>その代わり、ブラウザの設定によって、ブラウザの Web ストレージで保管できる (Chrome では、LocalStorage あるいは SessionStorage) 。</p>
+<p>なお、API ではリクエストの送受信時に <code>Cookie</code> ヘッダーよりも <code>Authorization</code> ヘッダーのほうが扱いやすいため、<code>Authorization</code> ヘッダーでアクセストークンを運搬することになる。</p>
 <p>また、スマホアプリも <code>Cookie</code> ヘッダーより <code>Authorization</code> ヘッダーがいいらしい。</p>
 <blockquote>
 <ul>
@@ -33790,7 +33790,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="04">04. クエリストリングによる運搬<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<p>例えば、Google APIではAPIキーをクエリストリングに割り当てる。</p>
+<p>例えば、Google API では API キーをクエリストリングに割り当てる。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/sakuraya/items/6f1030279a747bcce648#%E8%AA%8D%E8%A8%BC">https://qiita.com/sakuraya/items/6f1030279a747bcce648#%E8%AA%8D%E8%A8%BC</a></li>
@@ -33818,7 +33818,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月22日 21:19:15 JST">2026-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -33829,11 +33829,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

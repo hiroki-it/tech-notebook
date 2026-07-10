@@ -34437,7 +34437,7 @@
 <h2 id="01-argocd-app">01. argocd appコマンド<a class="headerlink" href="#01-argocd-app" title="Permanent link">&para;</a></h2>
 <h3 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
 <h4 id="create_1">▼ createとは<a class="headerlink" href="#create_1" title="Permanent link">&para;</a></h4>
-<p>ArgoCDのアプリケーションを作成する。</p>
+<p>ArgoCD のアプリケーションを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span>create<span class="w"> </span>foo-application<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--project<span class="w"> </span>default<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--repo<span class="w"> </span>https://github.com/hiroki-hasegawa/foo-manifests.git<span class="w"> </span><span class="se">\</span>
@@ -34456,12 +34456,12 @@
 <p><br></p>
 <h3 id="delete">delete<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h3>
 <h4 id="delete_1">▼ deleteとは<a class="headerlink" href="#delete_1" title="Permanent link">&para;</a></h4>
-<p>ArgoCDのApplicationを削除する。</p>
+<p>ArgoCD の Application を削除する。</p>
 <h4 id="-cascade">▼ --cascade<a class="headerlink" href="#-cascade" title="Permanent link">&para;</a></h4>
-<p><code>--cascade</code> オプションを有効化すると、ArgoCDのApplication自体と、Application配下のKubernetesリソースの両方を連鎖的に削除できる。</p>
+<p><code>--cascade</code> オプションを有効化すると、ArgoCD の Application 自体と、Application 配下の Kubernetes リソースの両方を連鎖的に削除できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span>delete<span class="w"> </span>&lt;ArgoCDのアプリケーション名&gt;<span class="w"> </span>--cascade<span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
-<p>反対に無効化すると、Applicationのみを単体で削除する。</p>
+<p>反対に無効化すると、Application のみを単体で削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span>delete<span class="w"> </span>&lt;ArgoCDのアプリケーション名&gt;<span class="w"> </span>--cascade<span class="o">=</span><span class="nb">false</span>
 </code></pre></div>
 <blockquote>
@@ -34470,7 +34470,7 @@
 <li><a href="https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/">https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/</a></li>
 </ul>
 </blockquote>
-<p>代わりに、<code>kubectl</code> コマンドを使用して ArgoCDのApplicationを削除しても良い。</p>
+<p>代わりに、<code>kubectl</code> コマンドを使用して ArgoCD の Application を削除してもよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>app<span class="w"> </span>&lt;ArgoCDのアプリケーション名&gt;
 </code></pre></div>
 <blockquote>
@@ -34481,19 +34481,19 @@
 <p><br></p>
 <h3 id="get">get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
 <h4 id="-hard-refresh">▼ --hard-refresh<a class="headerlink" href="#-hard-refresh" title="Permanent link">&para;</a></h4>
-<p>redis-server上に保管したapplication-controllerのキャッシュを削除し、再作成する。</p>
+<p>redis-server 上に保管した application-controller のキャッシュを削除し、再作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span>get<span class="w"> </span>--hard-refresh
 </code></pre></div>
 <p><br></p>
 <h3 id="set">set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
 <h4 id="set_1">▼ setとは<a class="headerlink" href="#set_1" title="Permanent link">&para;</a></h4>
-<p>指定したApplicationで、オプションを有効化する。</p>
+<p>指定した Application で、オプションを有効化する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span><span class="nb">set</span><span class="w"> </span>foo-application<span class="w"> </span>--sync-policy<span class="w"> </span>automated
 </code></pre></div>
 <p><br></p>
 <h3 id="sync">sync<a class="headerlink" href="#sync" title="Permanent link">&para;</a></h3>
 <h4 id="sync_1">▼ syncとは<a class="headerlink" href="#sync_1" title="Permanent link">&para;</a></h4>
-<p>指定したApplicationで、Syncのドライランを実行する。</p>
+<p>指定した Application で、Sync のドライランを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span>sync<span class="w"> </span>foo-application<span class="w"> </span>--project<span class="w"> </span>foo-project
 </code></pre></div>
 <blockquote>
@@ -34505,7 +34505,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span>sync<span class="w"> </span>foo-application<span class="w"> </span>--dry-run<span class="w"> </span>--project<span class="w"> </span>foo-project
 </code></pre></div>
 <h4 id="-local">▼ --local<a class="headerlink" href="#-local" title="Permanent link">&para;</a></h4>
-<p>指定したApplicationで、ローカルマシンのディレクトリをリポジトリとしてポーリングする。</p>
+<p>指定した Application で、ローカルマシンのディレクトリをリポジトリとしてポーリングする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>app<span class="w"> </span>sync<span class="w"> </span>foo-application<span class="w"> </span>--local<span class="o">=</span>&lt;ディレクトリへのパス&gt;<span class="w"> </span>--project<span class="w"> </span>foo-project
 </code></pre></div>
 <blockquote>
@@ -34516,8 +34516,8 @@
 <p><br></p>
 <h2 id="02-argocd-admin">02. argocd adminコマンド<a class="headerlink" href="#02-argocd-admin" title="Permanent link">&para;</a></h2>
 <h3 id="cluster">cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h3>
-<p>application-controllerのレプリカ当たるの情報を取得できる。</p>
-<p>シャード数やReconcile中のApplication数を知れる。</p>
+<p>application-controller のレプリカ当たるの情報を取得できる。</p>
+<p>シャード数や Reconcile 中の Application 数を知れる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>admin<span class="w"> </span>cluster<span class="w"> </span>stats
 
 SERVER<span class="w">                          </span>SHARD<span class="w">  </span>CONNECTION<span class="w">  </span>NAMESPACES<span class="w"> </span>COUNT<span class="w">  </span>APPS<span class="w"> </span>COUNT<span class="w">  </span>RESOURCES<span class="w"> </span>COUNT
@@ -34537,22 +34537,22 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <h2 id="03-argocd-cluster">03. argocd clusterコマンド<a class="headerlink" href="#03-argocd-cluster" title="Permanent link">&para;</a></h2>
 <h3 id="add">add<a class="headerlink" href="#add" title="Permanent link">&para;</a></h3>
 <h4 id="add_1">▼ addとは<a class="headerlink" href="#add_1" title="Permanent link">&para;</a></h4>
-<p>ArgoCDにポーリングさせたいClusterを登録する。</p>
+<p>ArgoCD にポーリングさせたい Cluster を登録する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>&lt;デプロイ先のClusterのARN&gt;
 </code></pre></div>
 <h4 id="-name">▼ --name<a class="headerlink" href="#-name" title="Permanent link">&para;</a></h4>
-<p>ダッシュボードでCluster名を使用してフィルタリングするときに、その表示名を設定する。</p>
+<p>ダッシュボードで Cluster 名を使用してフィルタリングするときに、その表示名を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>&lt;デプロイ先のClusterのARN&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;ダッシュボード上でのClusterの表示名&gt;
 </code></pre></div>
 <h4 id="-upsert">▼ --upsert<a class="headerlink" href="#-upsert" title="Permanent link">&para;</a></h4>
-<p>すでにClusterを登録済みの場合、これを上書きする。</p>
+<p>すでに Cluster を登録済みの場合、これを上書きする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>&lt;デプロイ先のClusterのARN&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;ダッシュボード上でのClusterの表示名&gt;<span class="w"> </span>--upsert
 </code></pre></div>
 <p><br></p>
 <h2 id="04-argocd-repo">04. argocd repoコマンド<a class="headerlink" href="#04-argocd-repo" title="Permanent link">&para;</a></h2>
 <h3 id="repo">repo<a class="headerlink" href="#repo" title="Permanent link">&para;</a></h3>
 <h4 id="repo_1">▼ repoとは<a class="headerlink" href="#repo_1" title="Permanent link">&para;</a></h4>
-<p>ArgoCDがプライベートリポジトリをポーリングする場合、リポジトリを操作する。</p>
+<p>ArgoCD がプライベートリポジトリをポーリングする場合、リポジトリを操作する。</p>
 <h4 id="add_2">▼ add<a class="headerlink" href="#add_2" title="Permanent link">&para;</a></h4>
 <p>プライベートリポジトリをポーリングする場合、ポーリング対象として追加する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>oci://&lt;OCIレジストリ名&gt;<span class="w"> </span><span class="se">\</span>
@@ -34580,9 +34580,9 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <span class="s1">&#39;admin:login&#39;</span><span class="w"> </span>logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>successfully
 </code></pre></div>
 <h4 id="-sso-sso-port">▼ --sso、--sso-port<a class="headerlink" href="#-sso-sso-port" title="Permanent link">&para;</a></h4>
-<p>SSOでログインする。</p>
-<p>コールバックURL (認可レスポンスのリダイレクト先URL) でIDプロバイダーで公開するポート番号を指定する。</p>
-<p>また、ダッシュボード上でSSOを実施する場合とは異なり、IDプロバイダー側でローカルマシン (<code>localhost</code>) からのリクエストを許可する必要がある。</p>
+<p>SSO でログインする。</p>
+<p>コールバック URL (認可レスポンスのリダイレクト先 URL) で ID プロバイダーで公開するポート番号を指定する。</p>
+<p>また、ダッシュボード上で SSO を実施する場合とは異なり、ID プロバイダー側でローカルマシン (<code>localhost</code>) からのリクエストを許可する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>login<span class="w"> </span>&lt;ArgoCDのドメイン名&gt;<span class="w"> </span>--sso<span class="w"> </span>--sso-port<span class="w"> </span><span class="m">465</span>
 </code></pre></div>
 <blockquote>
@@ -34594,8 +34594,8 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <p><br></p>
 <h2 id="06-argocd-application-controller">06. argocd-application-controllerコマンド<a class="headerlink" href="#06-argocd-application-controller" title="Permanent link">&para;</a></h2>
 <h3 id="argocd-application-controller">argocd-application-controllerコマンドとは<a class="headerlink" href="#argocd-application-controller" title="Permanent link">&para;</a></h3>
-<p>application-controllerを操作するコマンドである。</p>
-<p>application-controllerのコンテナの起動コマンドとしても使われている。</p>
+<p>application-controller を操作するコマンドである。</p>
+<p>application-controller のコンテナの起動コマンドとしても使われている。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/">https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/</a></li>
@@ -34604,19 +34604,19 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <p><br></p>
 <h3 id="_2">グローバルオプション<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="-namespace">▼ --namespace<a class="headerlink" href="#-namespace" title="Permanent link">&para;</a></h4>
-<p>application-controllerの処理対象のNamespaceを設定する。</p>
+<p>application-controller の処理対象の Namespace を設定する。</p>
 <p>設定しても効果がないため、存在意義がわからない...</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-application-controller<span class="w"> </span>--namespace<span class="w"> </span>foo-namespace<span class="w"> </span>...
 </code></pre></div>
 <h4 id="-application-namespaces">▼ --application-namespaces<a class="headerlink" href="#-application-namespaces" title="Permanent link">&para;</a></h4>
-<p>ArgoCDがClusterスコープモードの場合、Applicationを作成できるNamespaceを設定する。</p>
+<p>ArgoCD が Cluster スコープモードの場合、Application を作成できる Namespace を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-application-controller<span class="w"> </span>--application-namespaces<span class="w"> </span><span class="s2">&quot;*&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="07-argocd-server">07. argocd-serverコマンド<a class="headerlink" href="#07-argocd-server" title="Permanent link">&para;</a></h2>
 <h3 id="argocd-server">argocd-serverコマンドとは<a class="headerlink" href="#argocd-server" title="Permanent link">&para;</a></h3>
-<p>argocd-serverを操作するコマンドである。</p>
-<p>argocd-serverのコンテナの起動コマンドとしても使われている。</p>
+<p>argocd-server を操作するコマンドである。</p>
+<p>argocd-server のコンテナの起動コマンドとしても使われている。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-server/">https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-server/</a></li>
@@ -34625,17 +34625,17 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
 <p><br></p>
 <h3 id="_3">グローバルオプション<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="-namespace_1">▼ --namespace<a class="headerlink" href="#-namespace_1" title="Permanent link">&para;</a></h4>
-<p>argocd-serverの処理対象のNamespaceを設定する。</p>
+<p>argocd-server の処理対象の Namespace を設定する。</p>
 <p>設定しても効果がないため、存在意義がわからない...</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-server<span class="w"> </span>--namespace<span class="w"> </span>foo-namespace<span class="w"> </span>...
 </code></pre></div>
 <h4 id="-application-namespaces_1">▼ --application-namespaces<a class="headerlink" href="#-application-namespaces_1" title="Permanent link">&para;</a></h4>
-<p>ArgoCDがClusterスコープモードの場合、Applicationを操作できるNamespaceを設定する。</p>
+<p>ArgoCD が Cluster スコープモードの場合、Application を操作できる Namespace を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-server<span class="w"> </span>--application-namespaces<span class="w"> </span><span class="s2">&quot;*&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="version">version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
-<p>ArgoCDのargocd-serverに内蔵されているプラグインのバージョンを取得する。</p>
+<p>ArgoCD の argocd-server に内蔵されているプラグインのバージョンを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd-server<span class="w"> </span>version
 
 <span class="o">{</span>
@@ -34673,7 +34673,7 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34684,11 +34684,11 @@ https://kubernetes.default.svc<span class="w">  </span><span class="m">0</span><
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

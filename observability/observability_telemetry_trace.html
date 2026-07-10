@@ -34205,7 +34205,7 @@
 <h2 id="01">01. 分散トレース<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">分散トレースとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスから収集したスパンのセットのこと。</p>
-<p>スパンをトレースIDで紐付けると、<code>1</code> 個のリクエストで発生したマイクロサービスを横断する処理を一繋ぎで表現できるようになる。</p>
+<p>スパンをトレース ID で紐付けると、<code>1</code> 個のリクエストで発生したマイクロサービスを横断する処理を一繋ぎで表現できるようになる。</p>
 <p><img alt="distributed-trace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace.png" /></p>
 <blockquote>
 <ul>
@@ -34286,14 +34286,14 @@
 <h3 id="_9">トレースコンテキストとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>各スパンに含まれる情報のこと。</p>
 <ul>
-<li>各種ID</li>
+<li>各種 ID</li>
 <li>マイクロサービスの属性情報</li>
 </ul>
 <p><br></p>
 <h3 id="_10">トレースコンテキスト作成の仕組み<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>ロードバランサー (例：Istio Ingress Gateway、AWS ALB) やAPIゲートウェイ (例：Amazon API Gateway) が最初にトレースコンテキストを作成する。</p>
-<p>これらは、トレースコンテキストがIDを持っているかを検証する。</p>
-<p>もしIDがなければ、スパンにIDを新しく割り当てる。</p>
+<p>ロードバランサー (例：Istio Ingress Gateway、AWS ALB) や API ゲートウェイ (例：Amazon API Gateway) が最初にトレースコンテキストを作成する。</p>
+<p>これらは、トレースコンテキストが ID を持っているかを検証する。</p>
+<p>もし ID がなければ、スパンに ID を新しく割り当てる。</p>
 <p><img alt="distributed-tracing" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-tracing.png" /></p>
 <blockquote>
 <ul>
@@ -34302,7 +34302,7 @@
 </ul>
 </blockquote>
 <h4 id="id">▼ IDの種類<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
-<p>トレースコンテキストには、以下のIDが含まれている。</p>
+<p>トレースコンテキストには、以下の ID が含まれている。</p>
 <table>
 <thead>
 <tr>
@@ -34313,11 +34313,11 @@
 <tbody>
 <tr>
 <td>トレースID</td>
-<td>リクエストIDである。全てのマイクロサービスで同じになる。</td>
+<td>リクエストIDである。すべてのマイクロサービスで同じになる。</td>
 </tr>
 <tr>
 <td>スパンID</td>
-<td>各マイクロサービス固有の処理IDである。 全てのマイクロサービスで異なっている。</td>
+<td>各マイクロサービス固有の処理IDである。 すべてのマイクロサービスで異なっている。</td>
 </tr>
 <tr>
 <td>親スパンID</td>
@@ -34333,8 +34333,8 @@
 </blockquote>
 <h4 id="_11">▼ トレースコンテキスト伝播 (分散トレースコンテキスト伝播)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>マイクロサービスで、受信した通信のヘッダーから分散トレースのトレースコンテキストを取得し、アウトバウンド通信のヘッダーにトレースコンテキストを渡すような、実装が必要である。</p>
-<p>分散トレースの監視バックエンド (例：OpenTelemetry、LightStep、Jaeger、Zipkin、Datadog、AWS X-Ray) ごとに、ヘッダーからトレースコンテキストを簡単に取り出せるパッケージを使用すると良い。</p>
-<p>インバウンド通信がHTTPプロコトルでアウトバウンド通信が、gRPCによるHTTPリクエストである場合も、ヘッダー間での受け渡しが必要である。</p>
+<p>分散トレースの監視バックエンド (例：OpenTelemetry、LightStep、Jaeger、Zipkin、Datadog、AWS X-Ray) ごとに、ヘッダーからトレースコンテキストを簡単に取り出せるパッケージを使用するとよい。</p>
+<p>インバウンド通信が HTTP プロコトルでアウトバウンド通信が、gRPC による HTTP リクエストである場合も、ヘッダー間での受け渡しが必要である。</p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing">https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing</a></li>
@@ -34344,19 +34344,19 @@
 </blockquote>
 <h4 id="_12">▼ 異なる言語間での受け渡し<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <ul>
-<li>異なる言語の各アプリで、計装パッケージによるTracerProviderのセットアップやスパンの作成は必要</li>
-<li>言語間で計装パッケージのトレースコンテキスト仕様は標準化されているため、言語が違ってもCarrierからトレースコンテキストの情報 (スパンID、トレースIDなど) を抽出したり注入したりできる</li>
+<li>異なる言語の各アプリで、計装パッケージによる TracerProvider のセットアップやスパンの作成は必要</li>
+<li>言語間で計装パッケージのトレースコンテキスト仕様は標準化されているため、言語が違っても Carrier からトレースコンテキストの情報 (スパン ID、トレース ID など) を抽出したり注入したりできる</li>
 </ul>
 <p><br></p>
 <h3 id="_13">トレースコンテキスト仕様の種類<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ 一覧<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>トレースコンテキストにはいくつかの仕様があり、仕様ごとにCarrierやデータ形式が異なる。</p>
+<p>トレースコンテキストにはいくつかの仕様があり、仕様ごとに Carrier やデータ形式が異なる。</p>
 <ul>
 <li>W3C Trace Context</li>
 <li>W3C Baggage</li>
 <li>B3 (Zipkin)</li>
 <li>Jaeger</li>
-<li>独自仕様 (AWS X-Ray、Datadog、LightStepなど)</li>
+<li>独自仕様 (AWS X-Ray、Datadog、LightStep など)</li>
 </ul>
 <blockquote>
 <ul>
@@ -34366,7 +34366,7 @@
 </ul>
 </blockquote>
 <h4 id="w3c-trace-context">▼ W3C Trace Context<a class="headerlink" href="#w3c-trace-context" title="Permanent link">&para;</a></h4>
-<p>W3C Trace Context仕様のIDは以下の通りである。</p>
+<p>W3C Trace Context 仕様の ID は以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -34404,7 +34404,7 @@
 </ul>
 </blockquote>
 <h4 id="b3-zipkin">▼ B3 (Zipkin)<a class="headerlink" href="#b3-zipkin" title="Permanent link">&para;</a></h4>
-<p>B3仕様のIDは以下の通りである。</p>
+<p>B3 仕様の ID は以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -34444,7 +34444,7 @@
 </ul>
 </blockquote>
 <h4 id="x-ray">▼ X-Ray<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h4>
-<p>X-Ray仕様のIDは以下の通りである。</p>
+<p>X-Ray 仕様の ID は以下の通りである。</p>
 <table>
 <thead>
 <tr>
@@ -34477,7 +34477,7 @@
 <h3 id="carrier">ツールごとのCarrier<a class="headerlink" href="#carrier" title="Permanent link">&para;</a></h3>
 <h4 id="carrier_1">▼ Carrierとは<a class="headerlink" href="#carrier_1" title="Permanent link">&para;</a></h4>
 <p>トレースコンテキストを宛先マイクロサービスに伝播させる処理を持つ。</p>
-<p>伝播に使用する媒体 (例：HTTPヘッダー、メッセージボディ、gRPCメタデータなど) を『Carrier』という。</p>
+<p>伝播に使用する媒体 (例：HTTP ヘッダー、メッセージボディ、gRPC メタデータなど) を『Carrier』という。</p>
 <p><img alt="distributed-trace_propagated" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png" /></p>
 <h4 id="_15">▼ 標準ヘッダー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <table>
@@ -34499,7 +34499,7 @@
 </tbody>
 </table>
 <h4 id="zipkin">▼ zipkin系ヘッダー<a class="headerlink" href="#zipkin" title="Permanent link">&para;</a></h4>
-<p>Zipkinが使用するヘッダーを追加する。</p>
+<p>Zipkin が使用するヘッダーを追加する。</p>
 <table>
 <thead>
 <tr>
@@ -34537,7 +34537,7 @@
 </ul>
 </blockquote>
 <h4 id="aws-x-ray">▼ AWS X-Ray系ヘッダー<a class="headerlink" href="#aws-x-ray" title="Permanent link">&para;</a></h4>
-<p>AWS X-Rayが使用するヘッダーを追加する。</p>
+<p>AWS X-Ray が使用するヘッダーを追加する。</p>
 <table>
 <thead>
 <tr>
@@ -34585,10 +34585,10 @@
 <p><br></p>
 <h2 id="03">03. スパン<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_16">スパンとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p>マイクロサービスアーキテクチャの特定のサービスにて、1つのリクエストで発生したデータのセットのこと。</p>
+<p>マイクロサービスアーキテクチャの特定のサービスにて、1 つのリクエストで発生したデータのセットのこと。</p>
 <p>スパンには親子関係があり、最上位の親スパンを『ルートスパン』ともいう。</p>
-<p>JSON型で定義されることが多い。</p>
-<p>SaaSツールによってJSON型の構造が異なる。</p>
+<p>JSON 型で定義されることが多い。</p>
+<p>SaaS ツールによって JSON 型の構造が異なる。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentracing.io/docs/overview/spans/">https://opentracing.io/docs/overview/spans/</a></li>
@@ -34600,7 +34600,7 @@
 <h3 id="_17">スパン名<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="_18">▼ スパン名について<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>スパンが作成されたクラス (構造体) やメソッド (関数) が判別しやすいようにする。</p>
-<p>区切り記号は、ドット (<code>.</code>) や スラッシュ(<code>/</code>) が良い。</p>
+<p>区切り記号は、ドット (<code>.</code>) や スラッシュ(<code>/</code>) がよい。</p>
 <h4 id="_19">▼ サーバー側の場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>サーバー側では、例えば以下のスパン名をとする。</p>
 <table>
@@ -34764,7 +34764,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34775,11 +34775,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

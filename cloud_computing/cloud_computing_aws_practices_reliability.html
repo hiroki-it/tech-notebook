@@ -33775,33 +33775,33 @@
 <p><br></p>
 <h3 id="_3">冗長化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="az">▼ マルチAZ<a class="headerlink" href="#az" title="Permanent link">&para;</a></h4>
-<p>マルチAZを採用する。</p>
-<p>それぞれのAZにAmazon EC2/ECSを冗長化する。</p>
-<p>特定のAZで障害が発生した場合、AWS ALBを起点として、インバウンド通信の向き先を正常なAZのAmazon EC2/ECSに切り替える。</p>
+<p>マルチ AZ を採用する。</p>
+<p>それぞれの AZ に Amazon EC2/ECS を冗長化する。</p>
+<p>特定の AZ で障害が発生した場合、AWS ALB を起点として、インバウンド通信の向き先を正常な AZ の Amazon EC2/ECS に切り替える。</p>
 <h4 id="aws-nat-gateway">▼ AWS NAT Gateway<a class="headerlink" href="#aws-nat-gateway" title="Permanent link">&para;</a></h4>
-<p>AWS NAT Gatewayを冗長化する。</p>
-<p>AWS NAT GatewayをAZ別に用意する。これにより、特定のAZで障害が起こっても、他のAZのアウトバウンド通信へ影響しないようにする。</p>
+<p>AWS NAT Gateway を冗長化する。</p>
+<p>AWS NAT Gateway を AZ 別に用意する。これにより、特定の AZ で障害が起こっても、他の AZ のアウトバウンド通信へ影響しないようにする。</p>
 <h4 id="auto-scaling-group">▼ Auto Scaling Group<a class="headerlink" href="#auto-scaling-group" title="Permanent link">&para;</a></h4>
-<p>Auto Scaling Groupを採用する。</p>
-<p>Amazon EC2で障害が発生した場合、AWS ALBを起点にして、正常なAmazon EC2に切り替える。</p>
+<p>Auto Scaling Group を採用する。</p>
+<p>Amazon EC2 で障害が発生した場合、AWS ALB を起点にして、正常な Amazon EC2 に切り替える。</p>
 <h4 id="amazon-eks-node">▼ Amazon EKS マネージドNodeグループ<a class="headerlink" href="#amazon-eks-node" title="Permanent link">&para;</a></h4>
-<p>Amazon EKS マネージドNodeグループを採用する。</p>
-<p>Amazon EC2 Nodeで障害が発生した場合、AWS ALBを起点にして、正常なAmazon EC2に切り替える。</p>
+<p>Amazon EKS マネージド Node グループを採用する。</p>
+<p>Amazon EC2 Node で障害が発生した場合、AWS ALB を起点にして、正常な Amazon EC2 に切り替える。</p>
 <h4 id="amazon-aurora">▼ Amazon Aurora<a class="headerlink" href="#amazon-aurora" title="Permanent link">&para;</a></h4>
-<p>Amazon Auroraでフェイルオーバーを採用する。</p>
+<p>Amazon Aurora でフェイルオーバーを採用する。</p>
 <p>プライマリーインスタンスで障害が発生した場合、フェイルオーバーにより、リードレプリカがプライマリーインスタンスに昇格します。</p>
 <p><br></p>
 <h3 id="_4">スケーリング<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="amazon-eks-node_1">▼ Amazon EKS マネージドNodeグループ<a class="headerlink" href="#amazon-eks-node_1" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2 Nodeのスケールアップには、Cluster Autoscaler、Amazon EKS マネージドNodeグループを採用する。</p>
-<p>Cluster AutoscalerとAmazon EKS マネージドNodeグループ、では、PodによるAmazon EC2 Nodeの負荷に応じてAmazon EC2 Nodeをスケーリングする。</p>
+<p>Amazon EC2 Node のスケールアップには、Cluster Autoscaler、Amazon EKS マネージド Node グループを採用する。</p>
+<p>Cluster Autoscaler と Amazon EKS マネージド Node グループ、では、Pod による Amazon EC2 Node の負荷に応じて Amazon EC2 Node をスケーリングする。</p>
 <h4 id="auto-scaling-group_1">▼ Auto Scaling Group<a class="headerlink" href="#auto-scaling-group_1" title="Permanent link">&para;</a></h4>
-<p>Amazon EC2のスケールアップには、Auto Scaling Groupを採用する。</p>
-<p>Auto Scaling Groupでは、Amazon EC2のハードウェアリソース (CPU、メモリ) の消費率に応じて、自動水平スケーリングします。</p>
+<p>Amazon EC2 のスケールアップには、Auto Scaling Group を採用する。</p>
+<p>Auto Scaling Group では、Amazon EC2 のハードウェアリソース (CPU、メモリ) の消費率に応じて、自動水平スケーリングします。</p>
 <p><br></p>
 <h2 id="02">02. 災害の対策<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="dr-bcp">DRリージョン (BCPリージョン) とは<a class="headerlink" href="#dr-bcp" title="Permanent link">&para;</a></h3>
-<p>『BCPリージョン』ともいう。</p>
+<p>『BCP リージョン』ともいう。</p>
 <p>メインリージョンで災害が起こった場合に、システムの障害にならないように、災害回復用リージョンを用意しておく。</p>
 <blockquote>
 <ul>
@@ -33811,11 +33811,11 @@
 <p><br></p>
 <h3 id="_5">バックアップリストア構成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p><img alt="dr-architecture_backup-restore" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_backup-restore.png" /></p>
-<p>DRリージョンにメインリージョンのAWSリソース (例：EBSボリューム、RDS) のスナップショットを定期的に作成しておく。</p>
-<p>メインリージョンで障害が起こった場合は、スナップショットを使用して、DRリージョンにAWSリソースを復元する。</p>
-<p>DRリージョンの準備が完了次第、DRリージョンにリクエストをルーティングできるようにする。</p>
-<p>障害が起こってから対応することが多いため、RTOが長くなってしまう。</p>
-<p>RPOは最後のバックアップ時点である。</p>
+<p>DR リージョンにメインリージョンの AWS リソース (例：EBS ボリューム、RDS) のスナップショットを定期的に作成しておく。</p>
+<p>メインリージョンで障害が起こった場合は、スナップショットを使用して、DR リージョンに AWS リソースを復元する。</p>
+<p>DR リージョンの準備が完了次第、DR リージョンにリクエストをルーティングできるようにする。</p>
+<p>障害が起こってから対応することが多いため、RTO が長くなってしまう。</p>
+<p>RPO は最後のバックアップ時点である。</p>
 <p>一方で金銭的コストが低い。</p>
 <blockquote>
 <ul>
@@ -33827,11 +33827,11 @@
 <p><br></p>
 <h3 id="_6">パイロットライト構成<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><img alt="dr-architecture_pilot-light" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_pilot-light.png" /></p>
-<p>DRリージョンに低スペックなDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
-<p>メインリージョンで障害が起こった場合は、DRリージョンでDB以外のインフラコンポーネント (例：アプリケーション部分など) を作成し、またDBのスペックをメインリージョンと同等に上げる。</p>
-<p>DRリージョンの準備が完了次第、DRリージョンにリクエストをルーティングできるようにする。</p>
-<p>障害が起こってから対応することが多いため、RTOがやや長くなってしまう。</p>
-<p>RPOは最後の同期時点である。</p>
+<p>DR リージョンに低スペックな DB を作成しておき、メインリージョンと DR リージョンの DB を定期的に同期しておく。</p>
+<p>メインリージョンで障害が起こった場合は、DR リージョンで DB 以外のインフラコンポーネント (例：アプリケーション部分など) を作成し、また DB のスペックをメインリージョンと同等に上げる。</p>
+<p>DR リージョンの準備が完了次第、DR リージョンにリクエストをルーティングできるようにする。</p>
+<p>障害が起こってから対応することが多いため、RTO がやや長くなってしまう。</p>
+<p>RPO は最後の同期時点である。</p>
 <p>一方で金銭的コストが低い。</p>
 <blockquote>
 <ul>
@@ -33842,11 +33842,11 @@
 <p><br></p>
 <h3 id="_7">ウォームスタンバイ構成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p><img alt="dr-architecture_warm-standby" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_warm-standby.png" /></p>
-<p>DRリージョンにメインリージョンよりも低スペックなアプリケーションとDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
-<p>メインリージョンで障害が起こった場合は、DRリージョンでアプリケーションとDBのスペックをメインリージョンと同等に上げる。</p>
-<p>DRリージョンの準備が完了次第、DRリージョンにリクエストをルーティングできるようにする。</p>
-<p>障害が起こった後、スペックを向上させ、またルーティング先を切り替えるのみで回復できるため、RTOが短い。</p>
-<p>RPOは最後の同期時点である。</p>
+<p>DR リージョンにメインリージョンよりも低スペックなアプリケーションと DB を作成しておき、メインリージョンと DR リージョンの DB を定期的に同期しておく。</p>
+<p>メインリージョンで障害が起こった場合は、DR リージョンでアプリケーションと DB のスペックをメインリージョンと同等に上げる。</p>
+<p>DR リージョンの準備が完了次第、DR リージョンにリクエストをルーティングできるようにする。</p>
+<p>障害が起こった後、スペックを向上させ、またルーティング先を切り替えるのみで回復できるため、RTO が短い。</p>
+<p>RPO は最後の同期時点である。</p>
 <p>一方で、金銭的コストが高い。</p>
 <blockquote>
 <ul>
@@ -33857,10 +33857,10 @@
 <p><br></p>
 <h3 id="_8">マルチサイトアクティブ構成<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p><img alt="dr-architecture_multi-site-active" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_multi-site-active.png" /></p>
-<p>DRリージョンにメインリージョンと同等のアプリケーションとDBを作成しておき、メインリージョンとDRリージョンのDBを定期的に同期しておく。</p>
-<p>メインリージョンで障害が起こった場合は、DRリージョンにリクエストをルーティングできるようにする。</p>
-<p>障害が起こった後、ルーティング先を切り替えるのみで回復できるため、RTOが短い。</p>
-<p>RPOは最後の同期時点である。</p>
+<p>DR リージョンにメインリージョンと同等のアプリケーションと DB を作成しておき、メインリージョンと DR リージョンの DB を定期的に同期しておく。</p>
+<p>メインリージョンで障害が起こった場合は、DR リージョンにリクエストをルーティングできるようにする。</p>
+<p>障害が起こった後、ルーティング先を切り替えるのみで回復できるため、RTO が短い。</p>
+<p>RPO は最後の同期時点である。</p>
 <p>一方で、金銭的コストが高い。</p>
 <blockquote>
 <ul>
@@ -33889,7 +33889,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     

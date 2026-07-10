@@ -33999,8 +33999,8 @@
 <h2 id="01-nginx">01. Nginxの仕組み<a class="headerlink" href="#01-nginx" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><img alt="nginx_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nginx_architecture.png" /></p>
-<p>Nginxは、マスタープロセス、ワーカープロセス、プロキシキャッシュストレージ、キャッシュローダー、キャッシュマネージャー、といったコンポーネントから構成される。</p>
-<p>Nginxの起動時、最初にマスタープロセスが実行され、Nginxに設定を適用する。</p>
+<p>Nginx は、マスタープロセス、ワーカープロセス、プロキシキャッシュストレージ、キャッシュローダー、キャッシュマネージャー、といったコンポーネントから構成される。</p>
+<p>Nginx の起動時、最初にマスタープロセスが実行され、Nginx に設定を適用する。</p>
 <p>また、マスタープロセスは子プロセスとしてのワーカープロセスを実行し、各ワーカープロセスがリクエストを並列的に処理する。</p>
 <p>ワーカープロセスは、キャッシュローダーを使用して、静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) のキャッシュをメモリ上のプロキシキャッシュストレージに保管し、一方で保管したキャッシュを取得する。</p>
 <p>キャッシュマネージャは、保管したキャッシュの有効期限を管理する。</p>
@@ -34012,8 +34012,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="radix-tree">Radix Treeアルゴリズム<a class="headerlink" href="#radix-tree" title="Permanent link">&para;</a></h3>
-<p>Nginxは、リクエストのIPアドレスを照合して、リクエストを許可/拒否する。</p>
-<p>この時、Radix Treeアルゴリズムに基づいて、IPアドレスを高速で照合している。</p>
+<p>Nginx は、リクエストの IP アドレスを照合して、リクエストを許可/拒否する。</p>
+<p>このとき、Radix Tree アルゴリズムに基づいて、IP アドレスを高速で照合している。</p>
 <blockquote>
 <ul>
 <li><a href="https://csatlas.com/c-radix-tree-nginx/">https://csatlas.com/c-radix-tree-nginx/</a></li>
@@ -34022,10 +34022,10 @@
 <p><br></p>
 <h3 id="_3">モジュール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 静的モジュール<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>静的モジュールは、ビルド後にNginxのバイナリに組み込む必要がある。</p>
-<p>必要不要かにかかわらず、Nginxと一緒に強制的に実行する必要がある。</p>
+<p>静的モジュールは、ビルド後に Nginx のバイナリに組み込む必要がある。</p>
+<p>必要不要かにかかわらず、Nginx と一緒に強制的に実行する必要がある。</p>
 <h4 id="_5">▼ 動的モジュール<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>動的モジュールは、ビルド後にNginxのバイナリに組み込む必要がない。</p>
+<p>動的モジュールは、ビルド後に Nginx のバイナリに組み込む必要がない。</p>
 <p>必要な場合にのみインストールし、また実行すればよい。</p>
 <p>動的モジュールは、<code>load_module</code> ディレクティブで読み込む。</p>
 <div class="highlight"><pre><span></span><code><span class="k">load_module</span><span class="w"> </span><span class="s">modules/&lt;動的モジュール名&gt;.so</span><span class="p">;</span>
@@ -34075,12 +34075,12 @@ ngx_stream_geoip_module.so
 <h2 id="02">02. ユースケース<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">リバースプロキシのミドルウェアとして<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 構成<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Nginxを配置し、リクエストをWebサーバーにルーティングする。</p>
-<p>リバースプロキシのミドルウェアとして使用する場合、Nginxをパブリックネットワークに公開しさえすれば、パブリックネットワークからNginxを介して、後段のWebサーバーにリクエストを送信できるようになる。</p>
+<p>Nginx を配置し、リクエストを Web サーバーにルーティングする。</p>
+<p>リバースプロキシのミドルウェアとして使用する場合、Nginx をパブリックネットワークに公開しさえすれば、パブリックネットワークから Nginx を介して、後段の Web サーバーにリクエストを送信できるようになる。</p>
 <h4 id="httphttps">▼ HTTP/HTTPSプロトコルの場合<a class="headerlink" href="#httphttps" title="Permanent link">&para;</a></h4>
-<p>Nginxは、HTTP/HTTPSリクエストをルーティングする。</p>
-<p>また、Appサーバーからのレスポンスの返信データが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保管する。</p>
-<p>以降に同じ静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) に関するインバウンド通信があった場合、NginxはAppサーバーへルーティングせず、保管したキャッシュを取得し、レスポンスとして返信する。</p>
+<p>Nginx は、HTTP/HTTPS リクエストをルーティングする。</p>
+<p>また、App サーバーからのレスポンスの返信データが静的ファイルであった場合、これのキャッシュをプロキシキャッシュストレージに保管する。</p>
+<p>以降に同じ静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) に関するインバウンド通信があった場合、Nginx は App サーバーへルーティングせず、保管したキャッシュを取得し、レスポンスとして返信する。</p>
 <p><img alt="リバースプロキシサーバーとしてのNginx" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リバースプロキシサーバーとしてのNginx.png" /></p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">#-------------------------------------</span>
@@ -34110,7 +34110,7 @@ ngx_stream_geoip_module.so
 <p><strong>＊実装例＊</strong></p>
 <p>もし分散トレースを採用する場合、マイクロサービス間でトレースコンテキストを伝播する必要がある。</p>
 <p>クライアント/サーバー側のリバースプロキシでトレースコンテキストを伝播できるようにする。</p>
-<p>サービスメッシュツール (例：Istio) を使用すれば、これのサイドカープロキシが宛先のコンテナにトレースコンテキストを伝播してくれるが、Nginxであれば自前で実装する必要がある。</p>
+<p>サービスメッシュツール (例：Istio) を使用すれば、これのサイドカープロキシが宛先のコンテナにトレースコンテキストを伝播してくれるが、Nginx であれば自前で実装する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># クライアント側</span>
 <span class="k">http</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># $_request_id</span>
@@ -34175,9 +34175,9 @@ ngx_stream_geoip_module.so
 </blockquote>
 <h4 id="fastcgi">▼ FastCGIプロトコルの場合<a class="headerlink" href="#fastcgi" title="Permanent link">&para;</a></h4>
 <p><img alt="NginxとPHP-FPMの組み合わせ" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NginxとPHP-FPMの組み合わせ.png" /></p>
-<p>PHP-FPMはFastCGIプロトコルでリクエストを受信するため、これに変換する必要がある。</p>
-<p>静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) のインバウンド通信が送信されてきた場合、Nginxはそのままレスポンスを返信する。</p>
-<p>動的ファイルのインバウンド通信が送信されてきた場合、Nginxは、FastCGIプロトコルを介して、PHP-FPMにインバウンド通信をリダイレクトする。</p>
+<p>PHP-FPM は FastCGI プロトコルでリクエストを受信するため、これに変換する必要がある。</p>
+<p>静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) のインバウンド通信が送信されてきた場合、Nginx はそのままレスポンスを返信する。</p>
+<p>動的ファイルのインバウンド通信が送信されてきた場合、Nginx は、FastCGI プロトコルを介して、PHP-FPM にインバウンド通信をリダイレクトする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 設定ファイルのバリデーション</span>
 $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 </code></pre></div>
@@ -34220,7 +34220,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="grpc">▼ gRPCプロトコルの場合<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h4>
-<p>Nginxは、HTTP/HTTPS/gRPCリクエストをgRPCとしてルーティングする。</p>
+<p>Nginx は、HTTP/HTTPS/gRPC リクエストを gRPC としてルーティングする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">stream</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
@@ -34268,7 +34268,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <h3 id="_8">フォワードプロキシのミドルウェアとして<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ 構成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>フォワードプロキシのミドルウェアとして使用できる。</p>
-<p>クライアントサイドにNginxを配置し、リクエストを外部ネットワークにルーティングする。</p>
+<p>クライアントサイドに Nginx を配置し、リクエストを外部ネットワークにルーティングする。</p>
 <h4 id="httphttps_1">▼ HTTP/HTTPSプロトコルの場合<a class="headerlink" href="#httphttps_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">worker_processes</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
 
@@ -34308,10 +34308,10 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <h3 id="l4l7-"><code>L4</code>/<code>L7</code> ロードバランサ－のミドルウェアとして<a class="headerlink" href="#l4l7-" title="Permanent link">&para;</a></h3>
 <h4 id="l7">▼ <code>L7</code> ロードバランサーの場合 (実装がかなり複雑になる)<a class="headerlink" href="#l7" title="Permanent link">&para;</a></h4>
 <p><code>L7</code> ロードバランサーとして使用できる。</p>
-<p>Nginxは、HTTPプロコトルのインバウンド通信を複数のWebサーバーに負荷分散的に振り分ける。</p>
-<p>受信した通信がHTTPプロトコルであった場合、HTTPSリクエストにリダイレクトすると良い。</p>
-<p>また、HTTPSプロトコルであれば、HTTPに変換してルーティングすると良い。</p>
-<p>ただし、HTTPSリクエストを受信するために、Nginxにサーバー証明書を設定する必要がある。</p>
+<p>Nginx は、HTTP プロコトルのインバウンド通信を複数の Web サーバーに負荷分散的に振り分ける。</p>
+<p>受信した通信が HTTP プロトコルであった場合、HTTPS リクエストにリダイレクトするとよい。</p>
+<p>また、HTTPS プロトコルであれば、HTTP に変換してルーティングするとよい。</p>
+<p>ただし、HTTPS リクエストを受信するために、Nginx にサーバー証明書を設定する必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">http</span><span class="w"> </span><span class="p">{</span>
 
@@ -34371,8 +34371,8 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 </ul>
 </blockquote>
 <h4 id="l4">▼ <code>L4</code> ロードバランサーの場合 (実装がかなり複雑になる)<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h4>
-<p>Nginxは、TCPスリーウェイハンドシェイクを複数のサーバーにTCPプロトコルのまま負荷分散的に振り分ける。</p>
-<p><code>L4</code> ロードバランサーのため、宛先のサーバーでTCPプロトコルをHTTPプロトコルに変換するように処理しなければならない。</p>
+<p>Nginx は、TCP スリーウェイハンドシェイクを複数のサーバーに TCP プロトコルのまま負荷分散的に振り分ける。</p>
+<p><code>L4</code> ロードバランサーのため、宛先のサーバーで TCP プロトコルを HTTP プロトコルに変換するように処理しなければならない。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">#-------------------------------------</span>
 <span class="c1"># TCPスリーウェイハンドシェイク</span>
@@ -34412,20 +34412,20 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 <p><br></p>
 <h3 id="api">APIゲートウェイとして<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <h4 id="api_1">▼ APIゲートウェイに必要な機能<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
-<p>NginxをAPIゲートウェイとして使用する。</p>
-<p>APIゲートウェイのため、リバースプロキシやロードバランサーとは異なり、以下の機能を持つ必要がある。</p>
+<p>Nginx を API ゲートウェイとして使用する。</p>
+<p>API ゲートウェイのため、リバースプロキシやロードバランサーとは異なり、以下の機能を持つ必要がある。</p>
 <ul>
-<li>全てのAPIのセットとして機能し、受信した通信を適切なマイクロサービスのAPIにルーティング</li>
+<li>すべての API のセットとして機能し、受信した通信を適切なマイクロサービスの API にルーティング</li>
 <li>認証</li>
-<li>トレースIDの付与</li>
+<li>トレース ID の付与</li>
 <li>キャッシュの作成</li>
 <li>リクエストのレートリミット</li>
 <li>パケットのアプリケーションデータの暗号化</li>
 <li>...</li>
 </ul>
 <h4 id="_10">▼ ルーティング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>APIゲートウェイとしてのルーティングの機能であれば、難しい実装はいらない。</p>
-<p>特定のパスに対するリクエストを特定のAPIにフォワーディングすれば良い。</p>
+<p>API ゲートウェイとしてのルーティングの機能であれば、難しい実装はいらない。</p>
+<p>特定のパスに対するリクエストを特定の API にフォワーディングすればよい。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
@@ -34451,8 +34451,8 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
 </ul>
 </blockquote>
 <h4 id="_11">▼ 認証<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Keycloakと連携し、NginxではなくKeycloak側で認証処理を実施する。</p>
-<p>Nginx (Keycloakクライアント) は、Keycloakの認可エンドポイントにアクセストークン署名検証リクエストを送信する。</p>
+<p>Keycloak と連携し、Nginx ではなく Keycloak 側で認証処理を実施する。</p>
+<p>Nginx (Keycloak クライアント) は、Keycloak の認可エンドポイントにアクセストークン署名検証リクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">user</span><span class="w">  </span><span class="s">nginx</span><span class="p">;</span>
 <span class="k">worker_processes</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span>
 
@@ -34518,7 +34518,7 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34529,11 +34529,11 @@ $<span class="w"> </span>php-fpm<span class="w"> </span>-t
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

@@ -34091,7 +34091,7 @@
 </tbody>
 </table>
 <h4 id="_2">▼ 機能の違い<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>RDBがAmazon AuroraかAmazon RDSかで機能に差があり、Amazon Auroraのほうが耐障害性や可用性が高い。</p>
+<p>RDB が Amazon Aurora か Amazon RDS かで機能に差があり、Amazon Aurora のほうが耐障害性や可用性が高い。</p>
 <p>ただし、その分費用が高いことに注意する。</p>
 <blockquote>
 <ul>
@@ -34101,16 +34101,16 @@
 <p><br></p>
 <h3 id="os">OSの隠蔽<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
 <h4 id="os_1">▼ OSの隠蔽とは<a class="headerlink" href="#os_1" title="Permanent link">&para;</a></h4>
-<p>Amazon RDSは、EC2内にDBMSが稼働したものであるが、このほとんどが隠蔽されている。</p>
-<p>そのためDBサーバーのようには操作できず、OSのバージョン確認やSSH公開鍵認証を行えない。</p>
+<p>Amazon RDS は、EC2 内に DBMS が稼働したものであるが、このほとんどが隠蔽されている。</p>
+<p>そのため DB サーバーのようには操作できず、OS のバージョン確認や SSH 公開鍵認証を行えない。</p>
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/">https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/</a></li>
 </ul>
 </blockquote>
 <h4 id="_3">▼ 確認方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Linux x86_64 (AMD64) が使用されているところまでは確認できるが、Linuxのバージョンは隠蔽されている。</p>
-<p>Amazon Auroraでも確認方法は同じである。</p>
+<p>Linux x86_64 (AMD64) が使用されているところまでは確認できるが、Linux のバージョンは隠蔽されている。</p>
+<p>Amazon Aurora でも確認方法は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- Amazon RDSの場合</span>
 <span class="k">SHOW</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%version%&#39;</span><span class="p">;</span>
 
@@ -34130,7 +34130,7 @@
 <p><br></p>
 <h2 id="04">04. メンテナンスウインドウ<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_4">メンテナンスウインドウ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>DBクラスター/DBインスタンスの設定の変更をスケジューリングさせる。</p>
+<p>DB クラスター/DB インスタンスの設定の変更をスケジューリングさせる。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/">https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/</a></li>
@@ -34138,12 +34138,12 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">メンテナンスの適切な曜日/時間帯<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>Amazon CloudWatch Metricsの <code>DatabaseConnections</code> メトリクスから、DBの接続数が低くなる時間帯を調査し、その時間帯にメンテナンスウィンドウを設定する。</p>
-<p>また、メンテナンスウィンドウの実施曜日が週末であると、サイトが停止したまま休日を迎える可能性があるため、週末以外になるように設定する (メンテナンスウィンドウがUTCであることに注意) 。</p>
+<p>Amazon CloudWatch Metrics の <code>DatabaseConnections</code> メトリクスから、DB の接続数が低くなる時間帯を調査し、その時間帯にメンテナンスウィンドウを設定する。</p>
+<p>また、メンテナンスウィンドウの実施曜日が週末であると、サイトが停止したまま休日を迎える可能性があるため、週末以外になるように設定する (メンテナンスウィンドウが UTC であることに注意) 。</p>
 <p><br></p>
 <h3 id="_6">『保留中の変更』『保留中のメンテナンス』<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p><img alt="rds_pending-maintenance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_pending-maintenance.png" /></p>
-<p>ユーザーが予定した設定変更は『保留中の変更』として表示される一方で、AWSによって定期的に行われるハードウェア/OS/DBエンジンのバージョンを強制アップグレードは『保留中のメンテナンス』として表示される。</p>
+<p>ユーザーが予定した設定変更は『保留中の変更』として表示される一方で、AWS によって定期的に行われるハードウェア/OS/DB エンジンのバージョンを強制アップグレードは『保留中のメンテナンス』として表示される。</p>
 <p>『次のメンテナンスウィンドウ』を選択すれば、実行タイミングをメンテナンスウィンドウ内に設定できる。ただし、これを選択しない場合は『日付の適用』に表示された時間帯で強制実行される。</p>
 <blockquote>
 <ul>
@@ -34177,7 +34177,7 @@
 </tr>
 <tr>
 <td>次のウィンドウ</td>
-<td>アクションの実行タイミングは、次回のメンテナンスウィンドウである。後でアップグレードを選択することにより、『利用可能』の状態に戻すことも可能。</td>
+<td>アクションの実行タイミングは、次回のメンテナンスウィンドウである。あとでアップグレードを選択することにより、『利用可能』の状態に戻すことも可能。</td>
 </tr>
 <tr>
 <td>進行中</td>
@@ -34188,7 +34188,7 @@
 <p><br></p>
 <h3 id="_8">『次のウィンドウ』状態の取り消し<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>設定の変更が『次のウィンドウ』状態にある場合、画面上からは『必須』や『利用可能』といった実行タイミングが未定の状態に戻せない。</p>
-<p>しかし、CLIを使用すると戻せる。</p>
+<p>しかし、CLI を使用すると戻せる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>rds<span class="w"> </span>describe-pending-maintenance-actions<span class="w"> </span>--output<span class="o">=</span>table
 
 -----------------------------------------------------------------------------------
@@ -34232,7 +34232,7 @@
 <p><br></p>
 <h3 id="_9">『保留中の変更』の取り消し<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>保留中の変更を画面上からは取り消せない。</p>
-<p>しかし、CLIを使用すると戻せる。</p>
+<p>しかし、CLI を使用すると戻せる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>rds<span class="w"> </span>modify-db-instance<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--db-instance-identifier<span class="w"> </span>prd-foo-instance<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>&lt;変更前の設定項目&gt;<span class="w"> </span>&lt;変更前の設定値&gt;<span class="w"> </span><span class="se">\</span>
@@ -34274,7 +34274,7 @@
 <tr>
 <td>パフォーマンスインサイト</td>
 <td>条件付きでなし</td>
-<td>パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメーターグループの <code>performance_schema</code> を有効化する必要がある。パラメーターグループの変更をDBインスタンスに反映させる上で再起動が必要なため、ここでダウンタイムが発生する。</td>
+<td>パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメーターグループの <code>performance_schema</code> を有効化する必要がある。パラメーターグループの変更をDBインスタンスに反映させるうえで再起動が必要なため、ここでダウンタイムが発生する。</td>
 </tr>
 <tr>
 <td>バックアップウインドウ</td>
@@ -34317,7 +34317,7 @@
 </ul>
 <p><br></p>
 <h3 id="_11">フェイルオーバーによるダウンタイムの最小化<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>DBインスタンスがマルチAZ構成の場合、以下の手順を使用してダウンタイムを最小化できる。</p>
+<p>DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用してダウンタイムを最小化できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/">https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/</a></li>
@@ -34338,17 +34338,17 @@
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover</a></li>
 </ul>
 </blockquote>
-<p>(3) Amazon RDSのAmazon RDSでは条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。</p>
+<p>(3) Amazon RDS の Amazon RDS では条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime</a></li>
 </ul>
 </blockquote>
 <p>(4) フェイルオーバー時に約 <code>1</code>～<code>2</code> 分のダウンタイムが発生する。</p>
-<p>フェイルオーバーを使用しない場合、DBインスタンスの再起動でダウンタイムが発生するが、これよりは時間が短いため、相対的にダウンタイムを短縮できる。</p>
+<p>フェイルオーバーを使用しない場合、DB インスタンスの再起動でダウンタイムが発生するが、これよりは時間が短いため、相対的にダウンタイムを短縮できる。</p>
 <p><br></p>
 <h2 id="07">07. イベント<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
-<p>コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探したほうが良い。</p>
+<p>コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探したほうがよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html</a></li>
@@ -34357,14 +34357,14 @@
 <p><br></p>
 <h2 id="08-amazon-rds">08. Amazon RDSプロキシ<a class="headerlink" href="#08-amazon-rds" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-rds_1">Amazon RDSプロキシとは<a class="headerlink" href="#amazon-rds_1" title="Permanent link">&para;</a></h3>
-<p>クラウドDBプロキシとして働く。</p>
+<p>クラウド DB プロキシとして働く。</p>
 <p><br></p>
 <h3 id="_12">接続プールの管理<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p>アプリからAmazon RDSにクエリが送信されたとき、接続を新しく作成せずに、接続プール内の非アクティブな接続を再利用し、Amazon RDSにフォワーディングする。</p>
-<p>アプリからDBのインスタンスに直接的にクエリを送信する場合、アプリケーションはAmazon RDSの同時接続の上限数 (インスタンスタイプで決まる) を考慮しない。</p>
+<p>アプリから Amazon RDS にクエリが送信されたとき、接続を新しく作成せずに、接続プール内の非アクティブな接続を再利用し、Amazon RDS にフォワーディングする。</p>
+<p>アプリから DB のインスタンスに直接的にクエリを送信する場合、アプリケーションは Amazon RDS の同時接続の上限数 (インスタンスタイプで決まる) を考慮しない。</p>
 <p>そのため、接続数が多くなりやすいアプリ (例：AWS Lambda、マルチスレッド) を使用していると、アプリケーションが無制限に接続を新しく作成することになる。</p>
-<p>その結果、アプリケーションの接続がAmazon RDSの同時接続の上限数を超えて接続してしまい、Amazon RDSがエラーを返却してしまう。</p>
-<p>Amazon RDSプロキシは、Amazon RDSの同時接続の上限数を考慮しつつ、接続プールから非アクティブな接続を再利用するため、アプリケーションがAmazon RDSの同時接続の上限数を超えて接続することがない。</p>
+<p>その結果、アプリケーションの接続が Amazon RDS の同時接続の上限数を超えて接続してしまい、Amazon RDS がエラーを返却してしまう。</p>
+<p>Amazon RDS プロキシは、Amazon RDS の同時接続の上限数を考慮しつつ、接続プールから非アクティブな接続を再利用するため、アプリケーションが Amazon RDS の同時接続の上限数を超えて接続することがない。</p>
 <p><img alt="aws_rds-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy.png" /></p>
 <blockquote>
 <ul>
@@ -34375,9 +34375,9 @@
 <p><br></p>
 <h3 id="_13">ユースケース<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="aws-lambdaamazon-rds">▼ AWS LambdaのデータベースにAmazon RDSを使用する場合<a class="headerlink" href="#aws-lambdaamazon-rds" title="Permanent link">&para;</a></h4>
-<p>リクエスト駆動型アプリケーションの場合、複数のリクエストに対して単一のDB接続を再利用できる。</p>
-<p>一方で、イベント駆動型アプリケーションの場合、単一リクエストに対して単一のDB接続を使用する。</p>
-<p>Amazon RDSにはDB接続の上限数があり、前段にAmazon RDSプロキシーがないとすぐに上限数に達してしまう。</p>
+<p>リクエスト駆動型アプリケーションの場合、複数のリクエストに対して単一の DB 接続を再利用できる。</p>
+<p>一方で、イベント駆動型アプリケーションの場合、単一リクエストに対して単一の DB 接続を使用する。</p>
+<p>Amazon RDS には DB 接続の上限数があり、前段に Amazon RDS プロキシーがないとすぐに上限数に達してしまう。</p>
 <p><img alt="aws_rds-proxy_lambda" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy_lambda.png" /></p>
 <blockquote>
 <ul>
@@ -34405,7 +34405,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:29:12 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34416,11 +34416,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

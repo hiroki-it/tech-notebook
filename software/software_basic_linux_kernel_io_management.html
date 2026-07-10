@@ -8682,7 +8682,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 標準出力に全て出力
+        ▼ 標準出力にすべて出力
       
     </span>
   </a>
@@ -8743,7 +8743,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 標準エラー出力に全て出力
+        ▼ 標準エラー出力にすべて出力
       
     </span>
   </a>
@@ -33747,7 +33747,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 標準出力に全て出力
+        ▼ 標準出力にすべて出力
       
     </span>
   </a>
@@ -33808,7 +33808,7 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 標準エラー出力に全て出力
+        ▼ 標準エラー出力にすべて出力
       
     </span>
   </a>
@@ -34150,7 +34150,7 @@
 <p><br></p>
 <h2 id="01-io">01. I/Oの意味合い<a class="headerlink" href="#01-io" title="Permanent link">&para;</a></h2>
 <h3 id="io">I/Oの意味合いの種類<a class="headerlink" href="#io" title="Permanent link">&para;</a></h3>
-<p>I/Oは、文脈によって意味合いが異なる。</p>
+<p>I/O は、文脈によって意味合いが異なる。</p>
 <table>
 <thead>
 <tr>
@@ -34185,8 +34185,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="iopsio-per-second">IOPS：I/O per second<a class="headerlink" href="#iopsio-per-second" title="Permanent link">&para;</a></h3>
-<p>ストレージへのI/O (数/毎秒) を表す。</p>
-<p>I/O自体が文脈によって意味合いが異なるが、IOPSはストレージの文脈でしか使用しない。</p>
+<p>ストレージへの I/O (数/毎秒) を表す。</p>
+<p>I/O 自体が文脈によって意味合いが異なるが、IOPS はストレージの文脈でしか使用しない。</p>
 <blockquote>
 <ul>
 <li><a href="https://dev-labo.com/aws/difference-iops-throughput/">https://dev-labo.com/aws/difference-iops-throughput/</a></li>
@@ -34215,8 +34215,8 @@
 <li><a href="http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/">http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ 標準出力に全て出力<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>コマンド処理の後に『<code>2&gt;&amp;1</code>』を追加すると、標準エラー出力の出力を標準出力へリダイレクトできる。この結果、処理の全ての結果を標準出力へ出力できるようになる。</p>
+<h4 id="_4">▼ 標準出力にすべて出力<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>コマンド処理の後に『<code>2&gt;&amp;1</code>』を追加すると、標準エラー出力の出力を標準出力へリダイレクトできる。この結果、処理のすべての結果を標準出力へ出力できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://teratail.com/questions/1285">https://teratail.com/questions/1285</a></li>
@@ -34225,9 +34225,9 @@
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
 </code></pre></div>
-<p>また、プロセスの標準出力は <code>/proc/&lt;プロセスID&gt;/fd</code> ディレクトリのファイルディスクリプタ番号 (<code>1</code> 番) で確認できる。プロセスIDは <code>ps</code> コマンドで事前に確認する。</p>
+<p>また、プロセスの標準出力は <code>/proc/&lt;プロセスID&gt;/fd</code> ディレクトリのファイルディスクリプタ番号 (<code>1</code> 番) で確認できる。プロセス ID は <code>ps</code> コマンドで事前に確認する。</p>
 <p><strong>＊例＊</strong></p>
-<p>PHP-FPMの稼働するアプリケーションの例</p>
+<p>PHP-FPM の稼働するアプリケーションの例</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ps<span class="w"> </span>-aux
 
 USER<span class="w">       </span>PID<span class="w"> </span>%CPU<span class="w"> </span>%MEM<span class="w">    </span>VSZ<span class="w">   </span>RSS<span class="w"> </span>TTY<span class="w">      </span>STAT<span class="w"> </span>START<span class="w">   </span>TIME<span class="w"> </span>COMMAND
@@ -34268,10 +34268,10 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/1
 <h4 id="_7">▼ 標準エラー出力とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>コマンドからターミナルに対して、エラーデータを出力するためのインターフェースのこと。</p>
 <p>プロセスごとに存在する。</p>
-<h4 id="_8">▼ 標準エラー出力に全て出力<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_8">▼ 標準エラー出力にすべて出力<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>コマンド処理の後に、『<code>1&gt;&amp;2</code> (または <code>&gt;&amp;2</code>) 』を追加すると、標準出力に対する出力を標準エラー出力にリダイレクトする。</p>
 <p><code>1</code> は標準出力であり、<code>2</code> は標準エラー出力を表す。</p>
-<p>この結果、処理の全ての結果を標準エラー出力へ出力できるようになる。</p>
+<p>この結果、処理のすべての結果を標準エラー出力へ出力できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://teratail.com/questions/1285">https://teratail.com/questions/1285</a></li>
@@ -34283,9 +34283,9 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/1
 
 $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;text&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 </code></pre></div>
-<p>また、プロセスの標準出力は <code>/proc/&lt;プロセスID&gt;/fd</code> ディレクトリのファイルディスクリプタ番号 (2番) で確認できる。プロセスIDは <code>ps</code> コマンドで事前に確認する。</p>
+<p>また、プロセスの標準出力は <code>/proc/&lt;プロセスID&gt;/fd</code> ディレクトリのファイルディスクリプタ番号 (2 番) で確認できる。プロセス ID は <code>ps</code> コマンドで事前に確認する。</p>
 <p><strong>＊例＊</strong></p>
-<p>PHP-FPMの稼働するアプリケーションの例</p>
+<p>PHP-FPM の稼働するアプリケーションの例</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ps<span class="w"> </span>-aux
 
 USER<span class="w">       </span>PID<span class="w"> </span>%CPU<span class="w"> </span>%MEM<span class="w">    </span>VSZ<span class="w">   </span>RSS<span class="w"> </span>TTY<span class="w">      </span>STAT<span class="w"> </span>START<span class="w">   </span>TIME<span class="w"> </span>COMMAND
@@ -34318,7 +34318,7 @@ $<span class="w"> </span>cat<span class="w"> </span>/proc/1/fd/2
 <p><br></p>
 <h3 id="_10">標準入力に対するリダイレクト例<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="cat">▼ catプロセスに対するリダイレクト<a class="headerlink" href="#cat" title="Permanent link">&para;</a></h4>
-<p>catプロセスの標準入力に <code>stdin.txt</code> ファイルの内容をリダイレクトする。</p>
+<p>cat プロセスの標準入力に <code>stdin.txt</code> ファイルの内容をリダイレクトする。</p>
 <p><code>cat</code> コマンドにファイルを渡すことと同じである。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>&lt;<span class="w"> </span>stdin.txt
 
@@ -34385,7 +34385,7 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <p>終了ステータスを <code>echo</code> コマンドに渡し、値を出力する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>&lt;任意のコマンド&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$?</span>
 </code></pre></div>
-<p>▼ grepプロセスに対する入力</p>
+<p>▼ grep プロセスに対する入力</p>
 <p>コマンドの出力結果を <code>grep</code> コマンドに渡し、フィルタリングを実行する。</p>
 <p><strong>＊例＊</strong></p>
 <p>検索されたファイル内で、加えて文字列を検索する。</p>
@@ -34444,11 +34444,11 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <h4 id="sort">▼ sortプロセスに対する入力<a class="headerlink" href="#sort" title="Permanent link">&para;</a></h4>
 <p>コマンドの出力結果に対して、並び順を変更する。</p>
 <p><strong>＊例＊</strong></p>
-<p>表示された環境変数をAZ昇順に並び替える。</p>
+<p>表示された環境変数を AZ 昇順に並び替える。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>printenv<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-f
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>表示された表を重複を削除して (<code>uniq</code> と同じ) AZ昇順に並び替える。</p>
+<p>表示された表を重複を削除して (<code>uniq</code> と同じ) AZ 昇順に並び替える。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>table.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-f<span class="w"> </span>-u
 </code></pre></div>
 <blockquote>
@@ -34474,8 +34474,8 @@ $<span class="w"> </span>cat<span class="w"> </span>source_ips.txt<span class="w
 </blockquote>
 <p><br></p>
 <h2 id="03">03. 印刷デバイスへのデータ出力<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<p>アプリケーションから印刷デバイスへデータを出力するとき、まず、CPUはスプーラにデータを出力する。</p>
-<p>Spoolerは、全てのデータをまとめて出力するのではなく、一時的にストレージ (Spool) にためておく。</p>
+<p>アプリケーションから印刷デバイスへデータを出力するとき、まず、CPU はスプーラにデータを出力する。</p>
+<p>Spooler は、すべてのデータをまとめて出力するのではなく、一時的にストレージ (Spool) にためておく。</p>
 <p>その後、少しずつ印刷デバイスにデータを出力 (Spooling) し、印刷デバイスにデータを印刷させる。</p>
 <p><img alt="スプーリング" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スプーリング.jpg" /></p>
 <p><br></p>
@@ -34499,7 +34499,7 @@ $<span class="w"> </span>cat<span class="w"> </span>source_ips.txt<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:45:58 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34510,11 +34510,11 @@ $<span class="w"> </span>cat<span class="w"> </span>source_ips.txt<span class="w
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

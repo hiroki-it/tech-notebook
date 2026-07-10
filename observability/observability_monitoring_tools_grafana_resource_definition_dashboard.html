@@ -34712,8 +34712,8 @@
 <p><br></p>
 <h2 id="01">01. ユーザー定義のダッシュボード<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">ユーザー定義のダッシュボードとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>ConfigMapの <code>.data</code> キーにJSONを設定すると、ダッシュボードを作成できる。</p>
-<p>ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。</p>
+<p>ConfigMap の <code>.data</code> キーに JSON を設定すると、ダッシュボードを作成できる。</p>
+<p>ConfigMap で作成したダッシュボードは、デフォルトで Grafana の GUI から変更できないようになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34745,8 +34745,8 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_4">エスケープ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>Goのテンプレートでは、『<code>{{</code>』と『<code>}}</code>』の記号がロジックで使用される。</p>
-<p>ダッシュボードのJSONではこれを使用するため、ロジックとして認識されないようにエスケープする必要がある。</p>
+<p>Go のテンプレートでは、『<code>{{</code>』と『<code>}}</code>』の記号がロジックで使用される。</p>
+<p>ダッシュボードの JSON ではこれを使用するため、ロジックとして認識されないようにエスケープする必要がある。</p>
 <p>エスケープの方法は数種があるが、一番簡単な方法を採用する。</p>
 <p>記号を含む文字ごと <code>{{ `&lt;記号を含む文字列全体&gt;` }}</code> のように挟み、エスケープする。</p>
 <p>多くの場合にこの方法で対処できるが、文字列内にバックスラッシュがある場合は対処できない。</p>
@@ -34769,8 +34769,8 @@
 </ul>
 </blockquote>
 <h3 id="helmconfigmap">HelmテンプレートによるConfigMap作成<a class="headerlink" href="#helmconfigmap" title="Permanent link">&para;</a></h3>
-<p>ダッシュボードはJSONファイルとして管理し、ConfigMapテンプレートへ出力すると、管理しやすい。</p>
-<p>ただ出力時にHelm起因のエラーが多発するため、自分はこれを不採用とした。</p>
+<p>ダッシュボードは JSON ファイルとして管理し、ConfigMap テンプレートへ出力すると、管理しやすい。</p>
+<p>ただ出力時に Helm 起因のエラーが多発するため、自分はこれを不採用とした。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14">https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14</a></li>
@@ -34861,9 +34861,9 @@
 <p><br></p>
 <h2 id="02">02. コミュニティダッシュボード<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">コミュニティダッシュボードとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>ユーザー定義のダッシュボードを自前で定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafanaダッシュボードコミュニティ) を使用したほうが良い。</p>
-<p>その場合、GitHubなどで公開されているJSONを、ConfigMapの <code>.data</code> キーに貼り付ける。</p>
-<p>ConfigMapで作成したダッシュボードは、デフォルトでGrafanaのGUIから変更できないようになっている。</p>
+<p>ユーザー定義のダッシュボードを自前で定義してもよいが、セットアップの簡単さや Prometheus のアップグレードへの追従しやすさの観点から、公開されたダッシュボード (例：kubernetes-mixins、Grafana ダッシュボードコミュニティ) を使用したほうがよい。</p>
+<p>その場合、GitHub などで公開されている JSON を、ConfigMap の <code>.data</code> キーに貼り付ける。</p>
+<p>ConfigMap で作成したダッシュボードは、デフォルトで Grafana の GUI から変更できないようになっている。</p>
 <blockquote>
 <ul>
 <li><a href="https://grafana.com/grafana/dashboards/">https://grafana.com/grafana/dashboards/</a></li>
@@ -34871,7 +34871,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_7">遊ぶ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>Grafana Playから、ダッシュボードのいくつかを試せる。</p>
+<p>Grafana Play から、ダッシュボードのいくつかを試せる。</p>
 <blockquote>
 <ul>
 <li><a href="https://play.grafana.org/dashboards">https://play.grafana.org/dashboards</a></li>
@@ -34882,7 +34882,7 @@
 <p>コミュニティダッシュボードを専用のディレクトリで管理する。</p>
 <p>ツールのいずれのバージョンに対応するダッシュボードなのかを、ケバブケースでファイル名に記載すると管理しやすい。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Istio関連のコミュニティダッシュボードを使用する場合は、以下の通りとする。</p>
+<p>Istio 関連のコミュニティダッシュボードを使用する場合は、以下の通りとする。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">.</span>
 <span class="l l-Scalar l-Scalar-Plain">├── Chart.yaml</span>
 <span class="l l-Scalar l-Scalar-Plain">├── README.md</span>
@@ -34907,8 +34907,8 @@
 <p><br></p>
 <h3 id="_10">コミュニティダッシュボードの採用<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="1"><code>(1)</code> ダッシュボードの検索<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<p>コミュニティダッシュボードのJSONは、<a href="https://grafana.com/grafana/dashboards/">Grafana Labs</a> からダウンロードできる。</p>
-<p>コミュニティダッシュボードのIDはJSONの <code>gnetId</code> セクションから確認でき、ダッシュボードをアップグレードする場合は、IDから該当のものを探すようにする。</p>
+<p>コミュニティダッシュボードの JSON は、<a href="https://grafana.com/grafana/dashboards/">Grafana Labs</a> からダウンロードできる。</p>
+<p>コミュニティダッシュボードの ID は JSON の <code>gnetId</code> セクションから確認でき、ダッシュボードをアップグレードする場合は、ID から該当のものを探すようにする。</p>
 <p>反対に、<code>gnetId</code> セクションが <code>null</code> になっているものは、ユーザー定義のダッシュボードである。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;gnetId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">}</span>
 </code></pre></div>
@@ -34916,10 +34916,10 @@
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;Foo</span><span class="nv"> </span><span class="s">Dashboard</span><span class="nv"> </span><span class="s">version</span><span class="nv"> </span><span class="s">1.0.0&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <h4 id="2"><code>(2)</code> ダッシュボードのバージョンの選択<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<p>ダッシュボードの <code>__requires</code> セクションで、PrometheusとGrafanaの最低バージョンを確認する。</p>
-<p>Kubernetesで稼働するPrometheusとGrafanaのバージョンに応じたダッシュボードを選ぶ。</p>
-<p>他には、ツールとダッシュボードの両方のバージョンが対応関係にある場合がある (例：Istioとダッシュボードの両方のバージョンは対応する)。</p>
-<p>ただし、Prometheusの方のバージョンは気にしなくて良さそう (よくあるPrometheusの <code>5.0.0</code> なんてバージョンは存在しない)。</p>
+<p>ダッシュボードの <code>__requires</code> セクションで、Prometheus と Grafana の最低バージョンを確認する。</p>
+<p>Kubernetes で稼働する Prometheus と Grafana のバージョンに応じたダッシュボードを選ぶ。</p>
+<p>他には、ツールとダッシュボードの両方のバージョンが対応関係にある場合がある (例：Istio とダッシュボードの両方のバージョンは対応する)。</p>
+<p>ただし、Prometheus のほうのバージョンは気にしなくて良さそう (よくある Prometheus の <code>5.0.0</code> なんてバージョンは存在しない)。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;__requires&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">    </span><span class="p p-Indicator">{</span>
@@ -34947,9 +34947,9 @@
 <p><a href="https://r37r0m0d3l.github.io/json_sort/">任意のサイト</a> で、アルファベット順かつスペース <code>2</code> 個で整形する。</p>
 <p>これは、運用方針による。</p>
 <h4 id="4"><code>(4)</code> 貼り付け<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
-<p>ConfigMapのJSONファイルのデータとして貼り付ける。</p>
+<p>ConfigMap の JSON ファイルのデータとして貼り付ける。</p>
 <p>エスケープするのを忘れない。</p>
-<p>なお、後々アップグレードしていくことになるため、運用が複雑にならないように、コミュニティダッシュボードはいじらないほうが良い。</p>
+<p>なお、後々アップグレードしていくことになるため、運用が複雑にならないように、コミュニティダッシュボードはいじらないほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34967,7 +34967,7 @@
 <h3 id="_11">コミュニティダッシュボードの共通仕様<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="use">▼ USEメトリクス<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
 <p>『<code>USE</code>』という名前を含むコミュニティダッシュボードがある。</p>
-<p>ダッシュボードは、USEメトリクス (例：CPU使用率、CPUサチュレーションなど) を表示できる。</p>
+<p>ダッシュボードは、USE メトリクス (例：CPU 使用率、CPU サチュレーションなど) を表示できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#use-method">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#use-method</a></li>
@@ -34976,7 +34976,7 @@
 </blockquote>
 <h4 id="red">▼ REDメトリクス<a class="headerlink" href="#red" title="Permanent link">&para;</a></h4>
 <p>『<code>RED</code>』という名前を含むコミュニティダッシュボードがある。</p>
-<p>ダッシュボードは、REDメトリクスを表示できる。</p>
+<p>ダッシュボードは、RED メトリクスを表示できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#red-method">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#red-method</a></li>
@@ -34985,8 +34985,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="kubernetes-mixinsgrafana">kubernetes-mixinsのGrafanaダッシュボード<a class="headerlink" href="#kubernetes-mixinsgrafana" title="Permanent link">&para;</a></h3>
-<p>kubernetes-mixinsはGrafanaダッシュボードを公開している。</p>
-<p>kubernetes-mixinsのレコーディングルールが定義済みであることを前提にしている。</p>
+<p>kubernetes-mixins は Grafana ダッシュボードを公開している。</p>
+<p>kubernetes-mixins のレコーディングルールが定義済みであることを前提にしている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/monitoring-mixins/website/tree/master/assets">https://github.com/monitoring-mixins/website/tree/master/assets</a></li>
@@ -34994,7 +34994,7 @@
 </ul>
 </blockquote>
 <h4 id="alertmanager">▼ Alertmanager<a class="headerlink" href="#alertmanager" title="Permanent link">&para;</a></h4>
-<p>AlertmanagerのPodからデータポイントを収集する。</p>
+<p>Alertmanager の Pod からデータポイントを収集する。</p>
 <table>
 <thead>
 <tr>
@@ -35017,7 +35017,7 @@
 </ul>
 </blockquote>
 <h4 id="argocd">▼ ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h4>
-<p>ArgoCDのPodからデータポイントを収集する。</p>
+<p>ArgoCD の Pod からデータポイントを収集する。</p>
 <table>
 <thead>
 <tr>
@@ -35040,7 +35040,7 @@
 </ul>
 </blockquote>
 <h4 id="coredns">▼ CoreDNS<a class="headerlink" href="#coredns" title="Permanent link">&para;</a></h4>
-<p>CoreDNSのPodからデータポイントを収集する。</p>
+<p>CoreDNS の Pod からデータポイントを収集する。</p>
 <table>
 <thead>
 <tr>
@@ -35063,7 +35063,7 @@
 </ul>
 </blockquote>
 <h4 id="kubernetes">▼ Kubernetesコンポーネント<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
-<p>Kubernetesコンポーネントからデータポイントを収集する。</p>
+<p>Kubernetes コンポーネントからデータポイントを収集する。</p>
 <table>
 <thead>
 <tr>
@@ -35112,8 +35112,8 @@
 </ul>
 </blockquote>
 <h4 id="pod">▼ Pod<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
-<p>Podからデータポイントを収集する。</p>
-<p>kubeletからデータポイントを収集できるようにしておく必要がある。</p>
+<p>Pod からデータポイントを収集する。</p>
+<p>kubelet からデータポイントを収集できるようにしておく必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -35187,8 +35187,8 @@
 </ul>
 </blockquote>
 <h4 id="workload">▼ Workload<a class="headerlink" href="#workload" title="Permanent link">&para;</a></h4>
-<p>Nodeからデータポイントを収集する。</p>
-<p>kubeletからデータポイントを収集できるようにしておく必要がある。</p>
+<p>Node からデータポイントを収集する。</p>
+<p>kubelet からデータポイントを収集できるようにしておく必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -35255,8 +35255,8 @@
 </tbody>
 </table>
 <h4 id="node">▼ Node<a class="headerlink" href="#node" title="Permanent link">&para;</a></h4>
-<p>Nodeからデータポイントを収集する。</p>
-<p>Node Exporterからデータポイントを収集できるようにしておく必要がある。</p>
+<p>Node からデータポイントを収集する。</p>
+<p>Node Exporter からデータポイントを収集できるようにしておく必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -35298,7 +35298,7 @@
 </ul>
 </blockquote>
 <h4 id="prometheus">▼ Prometheus<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h4>
-<p>PrometheusのPodからデータポイントを収集する。</p>
+<p>Prometheus の Pod からデータポイントを収集する。</p>
 <table>
 <thead>
 <tr>
@@ -35326,7 +35326,7 @@
 </ul>
 </blockquote>
 <h4 id="istio">▼ Istio<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h4>
-<p>IstioのPodからデータポイントを収集する。</p>
+<p>Istio の Pod からデータポイントを収集する。</p>
 <p><code>istioctl dashboard grafana</code> コマンドでもインストールできる。</p>
 <table>
 <thead>
@@ -35391,20 +35391,20 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="uid">uid<a class="headerlink" href="#uid" title="Permanent link">&para;</a></h3>
-<p>ダッシュボードのURLの元になるUIDを設定する。</p>
-<p>ダッシュボードのURLは、<code>&lt;UID&gt;-&lt;ダッシュボードのタイトルになる。&gt;</code></p>
+<p>ダッシュボードの URL の元になる UID を設定する。</p>
+<p>ダッシュボードの URL は、<code>&lt;UID&gt;-&lt;ダッシュボードのタイトルになる。&gt;</code></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;uid&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;cLV5GDCkz&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="title">title<a class="headerlink" href="#title" title="Permanent link">&para;</a></h3>
-<p>ダッシュボードのURLを設定する。</p>
-<p>ダッシュボードのURLがハッシュ値になってしまうため、英語のほうがいい。</p>
+<p>ダッシュボードの URL を設定する。</p>
+<p>ダッシュボードの URL がハッシュ値になってしまうため、英語のほうがいい。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;title&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;foo</span><span class="nv"> </span><span class="s">dashboard&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="tags">tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
 <p>他の何らかのチャート (例：kube-prometheus-stack) を使用した場合、ダッシュボードを作成することがある。</p>
-<p>これと区別できるように、本リポジトリのダッシュボードには <code>&lt;リポジトリ名&gt;.git</code> やリポジトリURLというタグをつけると良い。</p>
+<p>これと区別できるように、本リポジトリのダッシュボードには <code>&lt;リポジトリ名&gt;.git</code> やリポジトリ URL というタグをつけるとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;tags&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;&lt;リポジトリ名&gt;.git&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;github.com/example&quot;</span><span class="p p-Indicator">]}</span>
 </code></pre></div>
 <p><br></p>
@@ -35419,8 +35419,8 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="gnetid">gnetId<a class="headerlink" href="#gnetid" title="Permanent link">&para;</a></h3>
-<p>コミュニティダッシュボードを使用している場合、ダッシュボードIDを設定する。</p>
-<p>反対に、nullであればユーザー定義のダッシュボードである。</p>
+<p>コミュニティダッシュボードを使用している場合、ダッシュボード ID を設定する。</p>
+<p>反対に、null であればユーザー定義のダッシュボードである。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;gnetId&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35429,7 +35429,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="editable">editable<a class="headerlink" href="#editable" title="Permanent link">&para;</a></h3>
-<p>ダッシュボードをGUIから編集可能かを設定する。</p>
+<p>ダッシュボードを GUI から編集可能かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;editable&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
@@ -35439,16 +35439,16 @@
 <p><br></p>
 <h3 id="panels">panels<a class="headerlink" href="#panels" title="Permanent link">&para;</a></h3>
 <h4 id="panels_1">▼ panelsとは<a class="headerlink" href="#panels_1" title="Permanent link">&para;</a></h4>
-<p>メトリクスをPromQLでクエリして表示するパネルを定義する。</p>
-<p>一番最初にGUIでパネルを作成し、これのJSONを取得するほうが実装しやすい。</p>
+<p>メトリクスを PromQL でクエリして表示するパネルを定義する。</p>
+<p>一番最初に GUI でパネルを作成し、これの JSON を取得するほうが実装しやすい。</p>
 <blockquote>
 <ul>
 <li><a href="https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#panels">https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#panels</a></li>
 </ul>
 </blockquote>
 <h4 id="expr">▼ expr<a class="headerlink" href="#expr" title="Permanent link">&para;</a></h4>
-<p>PromQLを定義する。</p>
-<p>複数のラベルをOR条件で表示するようなパネルの場合、GrafanaがPromQL上にOR条件の正規表現を生成する。</p>
+<p>PromQL を定義する。</p>
+<p>複数のラベルを OR 条件で表示するようなパネルの場合、Grafana が PromQL 上に OR 条件の正規表現を生成する。</p>
 <p>そのため、<code>=~</code> 演算子を使用するようにする。</p>
 <p>ラベル変数を使用する場合は、<code>templating</code> セクションでその定義が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -35541,16 +35541,16 @@
 </ul>
 </blockquote>
 <h4 id="enable">▼ enable<a class="headerlink" href="#enable" title="Permanent link">&para;</a></h4>
-<p>templatingセクションを有効化する。</p>
+<p>templating セクションを有効化する。</p>
 <p>デフォルト値は <code>true</code> である。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">&quot;templating&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">&quot;enable&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
 <h4 id="list">▼ list<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
-<p>PromQLのラベル変数に値を挿入し、メトリクスをフィルタリングできるように、プルダウンを定義する。</p>
+<p>PromQL のラベル変数に値を挿入し、メトリクスをフィルタリングできるように、プルダウンを定義する。</p>
 <p>ラベル変数でフィルタリングする場合、指定したデータソースでクエリしたときのメトリクスがそのラベルを持っている必要がある。</p>
 <p>例えば、<code>kube_pod_info</code> メトリクスをラベル参照のために使用する場合、<code>kube_pod_info</code> メトリクスがプルダウンのラベルを持っていなければならない。</p>
-<p>加えて、ダッシュボード上のパネルのメトリクスもプルダウンのラベルでフィルタリングできるように、PromQLを定義する必要がある。</p>
-<p>例えば、<code>cluster</code> ラベル値でフィルタリングする場合、パネル上のPromQLでも <code>&lt;メトリクス&gt;{cluster=\"$cluster\"}</code> と定義しなければならない。</p>
+<p>加えて、ダッシュボード上のパネルのメトリクスもプルダウンのラベルでフィルタリングできるように、PromQL を定義する必要がある。</p>
+<p>例えば、<code>cluster</code> ラベル値でフィルタリングする場合、パネル上の PromQL でも <code>&lt;メトリクス&gt;{cluster=\"$cluster\"}</code> と定義しなければならない。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># templatingセクション</span>
 <span class="w">  </span><span class="s">&quot;templating&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span>
@@ -35911,7 +35911,7 @@
 <li><a href="https://qiita.com/prodigy413/items/c0c2304e1bc28f644526">https://qiita.com/prodigy413/items/c0c2304e1bc28f644526</a></li>
 </ul>
 </blockquote>
-<p>その上で <code>panel</code> セクションに <code>cluster</code> ラベルを定義すると、メトリクスを <code>cluster</code> ラベルでフィルタリングできるようになる。</p>
+<p>そのうえで <code>panel</code> セクションに <code>cluster</code> ラベルを定義すると、メトリクスを <code>cluster</code> ラベルでフィルタリングできるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="c1"># panelsセクション</span>
 <span class="w">  </span><span class="s">&quot;panels&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
@@ -35969,7 +35969,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 17:23:55 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35980,11 +35980,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

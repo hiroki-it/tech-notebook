@@ -35157,7 +35157,7 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="prometheus-operator">▼ 非チャートとして (prometheus-operator)<a class="headerlink" href="#prometheus-operator" title="Permanent link">&para;</a></h4>
-<p>Node内で監視系ツール (Prometheus、Alertmanager、Node Exporter、Grafanaなど) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
+<p>Node 内で監視系ツール (Prometheus、Alertmanager、Node Exporter、Grafana など) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetes リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/prometheus-operator/prometheus-operator.git
 
 $<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>bundle.yaml
@@ -35168,7 +35168,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="kube-prometheus">▼ 非チャートとして (kube-prometheus)<a class="headerlink" href="#kube-prometheus" title="Permanent link">&para;</a></h4>
-<p>Node内で監視系ツール (Prometheus、Alertmanager、Node Exporter、Grafanaなど) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetesリソースを作成する。</p>
+<p>Node 内で監視系ツール (Prometheus、Alertmanager、Node Exporter、Grafana など) をコンテナとして稼働させる場合、マニフェストリポジトリからマニフェストを送信し、Kubernetes リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/prometheus-operator/kube-prometheus.git
 
 $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="w"> </span>-f<span class="w"> </span>manifests/setup
@@ -35183,7 +35183,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 </ul>
 </blockquote>
 <h4 id="kube-prometheus-stack">▼ チャートとして (kube-prometheus-stack)<a class="headerlink" href="#kube-prometheus-stack" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
+<p>チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -35207,8 +35207,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="prometheus_1">▼ チャートとして (prometheus)<a class="headerlink" href="#prometheus_1" title="Permanent link">&para;</a></h4>
-<p>チャートとしてPrometheusをインストールし、リソースを作成する。</p>
-<p>kube-prometheus-stackとは異なり、最低限の関連ツール (Alertmanager、Node Exporterなど) のKubernetesリソースも合わせて作成する。</p>
+<p>チャートとして Prometheus をインストールし、リソースを作成する。</p>
+<p>kube-prometheus-stack とは異なり、最低限の関連ツール (Alertmanager、Node Exporter など) の Kubernetes リソースも合わせて作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://prometheus-community.github.io/helm-charts
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -35223,7 +35223,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="_3">▼ バイナリとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>バイナリとして監視系ツール (Prometheus、Alertmanagerなど) をインストールし、サーバー上でPrometheusを稼働させる。</p>
+<p>バイナリとして監視系ツール (Prometheus、Alertmanager など) をインストールし、サーバー上で Prometheus を稼働させる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>/opt/prometheus/prometheus<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--config.file<span class="o">=</span>/opt/prometheus/prometheus.yml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--web.console.templates<span class="o">=</span>/opt/prometheus/consoles<span class="w"> </span><span class="se">\</span>
@@ -35233,7 +35233,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span>--storage.tsdb.retention.time<span class="o">=</span>3d<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--storage.tsdb.path<span class="o">=</span>/var/lib/prometheus
 </code></pre></div>
-<p>Alertmanagerをクラスター化する場合、インスタンス間で相互TLS認証を実施できるようにする。</p>
+<p>Alertmanager をクラスター化する場合、インスタンス間で相互 TLS 認証を実施できるようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>/opt/alertmanager/alertmanager<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--config.file<span class="o">=</span>/opt/alertmanager/alertmanager.yml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--web.listen-address<span class="o">=</span>:9093<span class="w"> </span><span class="se">\</span>
@@ -35263,9 +35263,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="_5">ネットワークに公開する場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="prometheus_3">▼ Prometheusの場合<a class="headerlink" href="#prometheus_3" title="Permanent link">&para;</a></h4>
-<p>Nodeの外からPrometheusのダッシュボードをネットワークに公開する場合、Node外からPrometheusサーバーにインバウンド通信が届くようにする必要がある。</p>
+<p>Node の外から Prometheus のダッシュボードをネットワークに公開する場合、Node 外から Prometheus サーバーにインバウンド通信が届くようにする必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Ingressを作成する。</p>
+<p>Ingress を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35286,7 +35286,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">            </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefix</span>
 </code></pre></div>
-<p>IngressClassを作成する。</p>
+<p>IngressClass を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IngressClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35295,7 +35295,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="c1"># AWSの場合、ingress.k8s.aws/alb</span>
 <span class="w">  </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.io/ingress-nginx</span>
 </code></pre></div>
-<p>ClusterIP Serviceを作成する。</p>
+<p>ClusterIP Service を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35320,9 +35320,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
 </code></pre></div>
 <h4 id="alertmanager_1">▼ Alertmanagerの場合<a class="headerlink" href="#alertmanager_1" title="Permanent link">&para;</a></h4>
-<p>Nodeの外からAlertmanagerのダッシュボードをネットワークに公開する場合、Node外からAlertmanagerにインバウンド通信が届くようにする必要がある。</p>
+<p>Node の外から Alertmanager のダッシュボードをネットワークに公開する場合、Node 外から Alertmanager にインバウンド通信が届くようにする必要がある。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>Ingressを作成する。</p>
+<p>Ingress を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35343,9 +35343,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">            </span><span class="nt">pathType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prefix</span>
 </code></pre></div>
-<p>IngressClassを作成する。</p>
-<p>開発環境では、IngressClassとしてNginxを使用する。</p>
-<p>本番環境では、クラウドプロバイダーのIngressClass (AWS ALB、Google Cloud CLB) を使用する。</p>
+<p>IngressClass を作成する。</p>
+<p>開発環境では、IngressClass として Nginx を使用する。</p>
+<p>本番環境では、クラウドプロバイダーの IngressClass (AWS ALB、Google Cloud CLB) を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IngressClass</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35354,7 +35354,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="c1"># AWSの場合、ingress.k8s.aws/alb</span>
 <span class="w">  </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k8s.io/ingress-nginx</span>
 </code></pre></div>
-<p>ClusterIP Serviceを作成する。</p>
+<p>ClusterIP Service を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35381,14 +35381,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="02-alertmanager">02. Alertmanager<a class="headerlink" href="#02-alertmanager" title="Permanent link">&para;</a></h2>
 <h3 id="alertmanager_2">Alertmanagerとは<a class="headerlink" href="#alertmanager_2" title="Permanent link">&para;</a></h3>
-<p>Alertmanagerのセットアップ方法を決める。</p>
+<p>Alertmanager のセットアップ方法を決める。</p>
 <blockquote>
 <ul>
 <li><a href="https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Alertmanager">https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.Alertmanager</a></li>
 </ul>
 </blockquote>
 <h3 id="specversion">.spec.version<a class="headerlink" href="#specversion" title="Permanent link">&para;</a></h3>
-<p>Alertmanagerのコンテナイメージのバージョンを設定する。</p>
+<p>Alertmanager のコンテナイメージのバージョンを設定する。</p>
 <p>使用するコンテナイメージは、<code>.spec.baseImage</code> キーに設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
@@ -35402,7 +35402,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specserviceaccountname">.spec.serviceAccountName<a class="headerlink" href="#specserviceaccountname" title="Permanent link">&para;</a></h3>
-<p>AlertmanagerのPodに紐付けるServiceAccountの名前を設定する。</p>
+<p>Alertmanager の Pod に紐付ける ServiceAccount の名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35415,7 +35415,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specbaseimage">.spec.baseImage<a class="headerlink" href="#specbaseimage" title="Permanent link">&para;</a></h3>
-<p>Alertmanagerのコンテナイメージを設定する。</p>
+<p>Alertmanager のコンテナイメージを設定する。</p>
 <p>コンテナイメージのバージョンは、<code>.spec.version</code> キーに設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
@@ -35429,8 +35429,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specexternalurl">.spec.externalUrl<a class="headerlink" href="#specexternalurl" title="Permanent link">&para;</a></h3>
-<p>AlertmanagerのダッシュボードのURLを設定する。</p>
-<p>注意点として、IngressのHostヘッダールールで、ダッシュボードのドメインを許可する必要がある。</p>
+<p>Alertmanager のダッシュボードの URL を設定する。</p>
+<p>注意点として、Ingress の Host ヘッダールールで、ダッシュボードのドメインを許可する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35443,7 +35443,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specreplicas">.spec.replicas<a class="headerlink" href="#specreplicas" title="Permanent link">&para;</a></h3>
-<p>AlertmanagerのPodの冗長化数を設定する。</p>
+<p>Alertmanager の Pod の冗長化数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35456,7 +35456,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specloglevel">.spec.logLevel<a class="headerlink" href="#specloglevel" title="Permanent link">&para;</a></h3>
-<p>Alertmanagerのログレベルを設定する。</p>
+<p>Alertmanager のログレベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Alertmanager</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35469,7 +35469,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specresources">.spec.resources<a class="headerlink" href="#specresources" title="Permanent link">&para;</a></h3>
-<p>Alertmanagerのハードウェアリソースの要求量を設定する。</p>
+<p>Alertmanager のハードウェアリソースの要求量を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.StorageSpec">https://prometheus-operator.dev/docs/operator/api/#monitoring.coreos.com/v1.StorageSpec</a></li>
@@ -35503,16 +35503,16 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="03-alertmanagerconfig">03. AlertmanagerConfig<a class="headerlink" href="#03-alertmanagerconfig" title="Permanent link">&para;</a></h2>
 <h3 id="alertmanagerconfig">AlertmanagerConfigとは<a class="headerlink" href="#alertmanagerconfig" title="Permanent link">&para;</a></h3>
-<p>Alertmanagerのアラートグループや通知先ルールを決める。</p>
+<p>Alertmanager のアラートグループや通知先ルールを決める。</p>
 <p><br></p>
 <h2 id="04-podmonitor">04. PodMonitor<a class="headerlink" href="#04-podmonitor" title="Permanent link">&para;</a></h2>
 <h3 id="podmonitor">PodMonitorとは<a class="headerlink" href="#podmonitor" title="Permanent link">&para;</a></h3>
-<p>Podに対してプル型収集を実施し、これのデータポイントを収集する。</p>
-<p>Serviceを持つPodではServiceMonitorを使用し、これを持たないPodをPodMonitorで監視する。</p>
+<p>Pod に対してプル型収集を実施し、これのデータポイントを収集する。</p>
+<p>Service を持つ Pod では ServiceMonitor を使用し、これを持たない Pod を PodMonitor で監視する。</p>
 <p><br></p>
 <h3 id="specnamespaceselector">.spec.namespaceSelector<a class="headerlink" href="#specnamespaceselector" title="Permanent link">&para;</a></h3>
-<p>PodMonitorを有効化するときの任意の <code>metadata.labels</code> キー設定する。</p>
-<p>Prometheusは、<code>metadata.labels</code> キー有効化したNamespace内のPodを監視する。</p>
+<p>PodMonitor を有効化するときの任意の <code>metadata.labels</code> キー設定する。</p>
+<p>Prometheus は、<code>metadata.labels</code> キー有効化した Namespace 内の Pod を監視する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35538,11 +35538,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="05-probe">05. Probe<a class="headerlink" href="#05-probe" title="Permanent link">&para;</a></h2>
 <h3 id="probe">Probeとは<a class="headerlink" href="#probe" title="Permanent link">&para;</a></h3>
-<p>Ingressや静的IPアドレスのメトリクスに対してプル型収集を実施し、これらのデータポイントを収集する。</p>
+<p>Ingress や静的 IP アドレスのメトリクスに対してプル型収集を実施し、これらのデータポイントを収集する。</p>
 <p><br></p>
 <h2 id="06-prometheus">06. Prometheus<a class="headerlink" href="#06-prometheus" title="Permanent link">&para;</a></h2>
 <h3 id="prometheus_4">Prometheusとは<a class="headerlink" href="#prometheus_4" title="Permanent link">&para;</a></h3>
-<p>Prometheusのセットアップ方法を決める。</p>
+<p>Prometheus のセットアップ方法を決める。</p>
 <p><br></p>
 <h3 id="specalerting">.spec.alerting<a class="headerlink" href="#specalerting" title="Permanent link">&para;</a></h3>
 <p>アラートの宛先を設定する。</p>
@@ -35564,7 +35564,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specexternallabel">.spec.externalLabel<a class="headerlink" href="#specexternallabel" title="Permanent link">&para;</a></h3>
-<p>Prometheusが外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortexなど) にメトリクスを送信するときに、これに付与するラベルを設定する。</p>
+<p>Prometheus が外部ツール (例：Alertmanager、VictoriaMetrics、Grafana Mimir、M3DB、Thanos、Cortex など) にメトリクスを送信するときに、これに付与するラベルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35579,8 +35579,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specexternalurl_1">.spec.externalUrl<a class="headerlink" href="#specexternalurl_1" title="Permanent link">&para;</a></h3>
-<p>PrometheusのダッシュボードのURLを設定する。</p>
-<p>注意点として、IngressのHostヘッダールールで、ダッシュボードのドメインを許可する必要がある。</p>
+<p>Prometheus のダッシュボードの URL を設定する。</p>
+<p>注意点として、Ingress の Host ヘッダールールで、ダッシュボードのドメインを許可する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35593,7 +35593,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specimage">.spec.image<a class="headerlink" href="#specimage" title="Permanent link">&para;</a></h3>
-<p>prometheusコンテナのベースイメージを設定する。</p>
+<p>prometheus コンテナのベースイメージを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35606,7 +35606,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="specretention">.spec.retention<a class="headerlink" href="#specretention" title="Permanent link">&para;</a></h3>
-<p>Prometheusのローカルストレージの保持期間を設定する。</p>
+<p>Prometheus のローカルストレージの保持期間を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35664,8 +35664,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="07-prometheusrule">07. PrometheusRule<a class="headerlink" href="#07-prometheusrule" title="Permanent link">&para;</a></h2>
 <h3 id="prometheusrule">PrometheusRuleとは<a class="headerlink" href="#prometheusrule" title="Permanent link">&para;</a></h3>
 <p>ルール (アラートルール、レコーディングルール) を設定する。</p>
-<p>PrometheusRuleの定義に応じて、prometheusコンテナの <code>/etc/prometheus/rules</code> ディレクトリ配下にルールの設定ファイルが配置される。</p>
-<p>有効になっているPrometheusRuleは、Prometheusダッシュボードの Status &gt; Rule タブで確認できる。</p>
+<p>PrometheusRule の定義に応じて、prometheus コンテナの <code>/etc/prometheus/rules</code> ディレクトリ配下にルールの設定ファイルが配置される。</p>
+<p>有効になっている PrometheusRule は、Prometheus ダッシュボードの Status &gt; Rule タブで確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/">https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/</a></li>
@@ -35677,8 +35677,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>アラートの条件とするために、メトリクスを一時的に分析する。</p>
 <h4 id="_8">▼ レコーディングルール<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>メトリクスを分析し、分析結果を名前をつけて保管しておく。</p>
-<p>保管したメトリクスは、レコーディング名を使用して、Prometheusのダッシュボードで新しいメトリクスのように取得できる。</p>
-<p>公開されているレコーディングルール (例：kubernetes-mixinのレコーディングルール) を使用すると良い。</p>
+<p>保管したメトリクスは、レコーディング名を使用して、Prometheus のダッシュボードで新しいメトリクスのように取得できる。</p>
+<p>公開されているレコーディングルール (例：kubernetes-mixin のレコーディングルール) を使用するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 分析結果をnode_namespace_pod_container:container_cpu_usage_seconds_total:sum_irateというレコーディング名で保管しておく</span>
 <span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">  </span><span class="no">sum by (cluster, namespace, pod, container) (</span>
@@ -35696,15 +35696,15 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="_9">公開ルールレシピ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 公開ルールレシピとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>自前ルールを定義しても良いが、セットアップの簡単さやPrometheusのアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins、runbooks) を使用したほうが良い。</p>
+<p>自前ルールを定義してもよいが、セットアップの簡単さや Prometheus のアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins、runbooks) を使用したほうがよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://monitoring.mixins.dev">https://monitoring.mixins.dev</a></li>
 </ul>
 </blockquote>
 <h4 id="kubernetes-mixinsprometheusrule">▼ kubernetes-mixinsのPrometheusRule<a class="headerlink" href="#kubernetes-mixinsprometheusrule" title="Permanent link">&para;</a></h4>
-<p>kubernetes-mixinsでは、アラートルールとレコーディングルールのレシピが公開されている。</p>
-<p>kubernetes-mixinsはGrafanaダッシュボードも公開しており、kubernetes-mixinsのレコーディングルールが定義済みであることを前提にしている。</p>
+<p>kubernetes-mixins では、アラートルールとレコーディングルールのレシピが公開されている。</p>
+<p>kubernetes-mixins は Grafana ダッシュボードも公開しており、kubernetes-mixins のレコーディングルールが定義済みであることを前提にしている。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/monitoring-mixins/website/tree/master/assets">https://github.com/monitoring-mixins/website/tree/master/assets</a></li>
@@ -35712,7 +35712,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="runbooks">▼ runbooks<a class="headerlink" href="#runbooks" title="Permanent link">&para;</a></h4>
-<p>prometheus-opratorでは、アラートルールとレコーディングルールのレシピが公開されている。</p>
+<p>prometheus-oprator では、アラートルールとレコーディングルールのレシピが公開されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://runbooks.prometheus-operator.dev/">https://runbooks.prometheus-operator.dev/</a></li>
@@ -35758,13 +35758,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <td>CommonLabels</td>
 <td>map型</td>
 <td><code>.CommonLabels.alertname</code></td>
-<td>全てのアラートに共通するラベルが割り当てられている。</td>
+<td>すべてのアラートに共通するラベルが割り当てられている。</td>
 </tr>
 <tr>
 <td>CommonAnnotations</td>
 <td>map型</td>
 <td><code>.CommonAnnotations.summary</code></td>
-<td>全てのアラートに共通するアノテーションが割り当てられている。<code>.spec.groups[*].rules[*].labels</code> キー配下で設定したユーザー定義のアノテーションも含む。</td>
+<td>すべてのアラートに共通するアノテーションが割り当てられている。<code>.spec.groups[*].rules[*].labels</code> キー配下で設定したユーザー定義のアノテーションも含む。</td>
 </tr>
 <tr>
 <td>ExternalURL</td>
@@ -35785,7 +35785,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specgroups">.spec.groups<a class="headerlink" href="#specgroups" title="Permanent link">&para;</a></h3>
 <h4 id="groups">▼ groupsとは<a class="headerlink" href="#groups" title="Permanent link">&para;</a></h4>
 <p>アラートグループを設定する。</p>
-<p>アラートが多すぎる場合、アラートをグループ化し、通知頻度を調節すると良い。</p>
+<p>アラートが多すぎる場合、アラートをグループ化し、通知頻度を調節するとよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/alerting/latest/alertmanager/#grouping">https://prometheus.io/docs/alerting/latest/alertmanager/#grouping</a></li>
@@ -35919,8 +35919,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="08-servicemonitor">08. ServiceMonitor<a class="headerlink" href="#08-servicemonitor" title="Permanent link">&para;</a></h2>
 <h3 id="servicemonitor">ServiceMonitorとは<a class="headerlink" href="#servicemonitor" title="Permanent link">&para;</a></h3>
-<p>指定したServiceに対してプル型収集を実施し、これに紐づくPodのメトリクスの元になるデータポイントを収集する。</p>
-<p>有効になっているServiceMonitorは、Prometheusダッシュボードの Status &gt; ServiceDiscoveryタブや、Status &gt; Targets タブで確認できる。</p>
+<p>指定した Service に対してプル型収集を実施し、これに紐づく Pod のメトリクスの元になるデータポイントを収集する。</p>
+<p>有効になっている ServiceMonitor は、Prometheus ダッシュボードの Status &gt; ServiceDiscovery タブや、Status &gt; Targets タブで確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -35936,13 +35936,13 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-servive</span>
 </code></pre></div>
-<p>公開しないPodであるとServiceがないため、データポイント収集用のServiceを作成することになる。</p>
-<p>Prometheusは、Podから直接的にデータポイントを収集できるが、この時PodのIPアドレスは動的に変化してしまう。</p>
-<p>そのため、Podからメトリクスの元になるデータポイントを収集する場合は、基本的にはServiceMonitorでServiceを介してPodを動的に検出できるようにする。</p>
-<p>注意点として、アプリケーションのPodだけでなく、以下のPodも動的に検出する必要があるため、同様にServiceMonitorが必要である。</p>
+<p>公開しない Pod であると Service がないため、データポイント収集用の Service を作成することになる。</p>
+<p>Prometheus は、Pod から直接的にデータポイントを収集できるが、このとき Pod の IP アドレスは動的に変化してしまう。</p>
+<p>そのため、Pod からメトリクスの元になるデータポイントを収集する場合は、基本的には ServiceMonitor で Service を介して Pod を動的に検出できるようにする。</p>
+<p>注意点として、アプリケーションの Pod だけでなく、以下の Pod も動的に検出する必要があるため、同様に ServiceMonitor が必要である。</p>
 <ul>
-<li>Kubernetesコンポーネント (例：kube-apiserver、kubeletに内蔵されたcAdvisorなど)</li>
-<li>PrometheusのExporter (例：Node Exporter、kube-state-metricsなど)</li>
+<li>Kubernetes コンポーネント (例：kube-apiserver、kubelet に内蔵された cAdvisor など)</li>
+<li>Prometheus の Exporter (例：Node Exporter、kube-state-metrics など)</li>
 </ul>
 <p><img alt="prometheus-operator_service-monitor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
@@ -36008,7 +36008,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specendpoints">.spec.endpoints<a class="headerlink" href="#specendpoints" title="Permanent link">&para;</a></h3>
 <h4 id="endpoints">▼ endpointsとは<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h4>
-<p>収集の対象とするServiceで待ち受けるエンドポイントを設定する。</p>
+<p>収集の対象とする Service で待ち受けるエンドポイントを設定する。</p>
 <h4 id="interval">▼ interval<a class="headerlink" href="#interval" title="Permanent link">&para;</a></h4>
 <p>収集の間隔を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
@@ -36022,10 +36022,10 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="relabelings">▼ relabelings<a class="headerlink" href="#relabelings" title="Permanent link">&para;</a></h4>
 <p>作成したメトリクスのラベルやその値を変換する。</p>
-<p>ServiceMonitorでは、Kubernetes SD configurationsのメタラベルのうちで、<code>service</code>/<code>pod</code>/<code>endpoints</code> のラベルを変換できる。</p>
+<p>ServiceMonitor では、Kubernetes SD configurations のメタラベルのうちで、<code>service</code>/<code>pod</code>/<code>endpoints</code> のラベルを変換できる。</p>
 <p><strong>＊例＊</strong></p>
-<p>Node Exporterが作成したメトリクスでは、<code>instance</code> ラベルが <code>*.*.*.*:&lt;ポート番号&gt;</code> になっている。</p>
-<p>これだとわかりにくいため、Podの <code>__meta_kubernetes_pod_node_name</code> ラベルの値 (Nodeのホスト名) に変換する。</p>
+<p>Node Exporter が作成したメトリクスでは、<code>instance</code> ラベルが <code>*.*.*.*:&lt;ポート番号&gt;</code> になっている。</p>
+<p>これだとわかりにくいため、Pod の <code>__meta_kubernetes_pod_node_name</code> ラベルの値 (Node のホスト名) に変換する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36053,7 +36053,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="path">▼ path<a class="headerlink" href="#path" title="Permanent link">&para;</a></h4>
-<p>Serviceの待ち受けるパスを設定する。</p>
+<p>Service の待ち受けるパスを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36069,7 +36069,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="port">▼ port<a class="headerlink" href="#port" title="Permanent link">&para;</a></h4>
-<p>Serviceの待ち受けるポート名を設定する。</p>
+<p>Service の待ち受けるポート名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36085,7 +36085,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="scheme">▼ scheme<a class="headerlink" href="#scheme" title="Permanent link">&para;</a></h4>
-<p>Serviceの待ち受けるプロトコルを設定する。</p>
+<p>Service の待ち受けるプロトコルを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36096,7 +36096,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
 </code></pre></div>
 <h4 id="targetport">▼ targetPort<a class="headerlink" href="#targetport" title="Permanent link">&para;</a></h4>
-<p>Serviceの待ち受けるポート番号を設定する。</p>
+<p>Service の待ち受けるポート番号を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36109,9 +36109,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specnamespaceselector_1">.spec.namespaceSelector<a class="headerlink" href="#specnamespaceselector_1" title="Permanent link">&para;</a></h3>
 <h4 id="namespaceselector">▼ namespaceSelector<a class="headerlink" href="#namespaceselector" title="Permanent link">&para;</a></h4>
-<p>収集の対象とするServiceが所属するNamespaceを設定する。</p>
+<p>収集の対象とする Service が所属する Namespace を設定する。</p>
 <h4 id="any">▼ any<a class="headerlink" href="#any" title="Permanent link">&para;</a></h4>
-<p>全てNamespaceを収集対象として設定する。</p>
+<p>すべて Namespace を収集対象として設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36122,7 +36122,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="nt">any</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
 <h4 id="matchnames">▼ matchNames<a class="headerlink" href="#matchnames" title="Permanent link">&para;</a></h4>
-<p>特定のNamespaceを収集対象として設定する。</p>
+<p>特定の Namespace を収集対象として設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36148,7 +36148,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specselector">.spec.selector<a class="headerlink" href="#specselector" title="Permanent link">&para;</a></h3>
 <h4 id="matchlabels">▼ matchLabels<a class="headerlink" href="#matchlabels" title="Permanent link">&para;</a></h4>
 <p><img alt="prometheus-operator_service-monitor_match-labels" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor_match-labels.png" /></p>
-<p>収集の対象とするServiceに付与された <code>.metadata.labels</code> キーを設定する。</p>
+<p>収集の対象とする Service に付与された <code>.metadata.labels</code> キーを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36173,7 +36173,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><strong>＊例＊</strong></p>
-<p>Node ExporterのPodからメトリクスの元になるデータポイントを収集する。</p>
+<p>Node Exporter の Pod からメトリクスの元になるデータポイントを収集する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36194,7 +36194,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="09-thanosruler">09. ThanosRuler<a class="headerlink" href="#09-thanosruler" title="Permanent link">&para;</a></h2>
 <h3 id="thanosruler">ThanosRuler<a class="headerlink" href="#thanosruler" title="Permanent link">&para;</a></h3>
-<p>リモートストレージとしてThanosを使用する場合、これをセットアップ方法を決める。</p>
+<p>リモートストレージとして Thanos を使用する場合、これをセットアップ方法を決める。</p>
 <p><br></p>
 
 
@@ -36216,7 +36216,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 17:23:55 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -36227,11 +36227,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

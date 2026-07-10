@@ -34368,9 +34368,9 @@
 <p><br></p>
 <h2 id="01-grpc">01. gRPCの仕組み<a class="headerlink" href="#01-grpc" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>RPCフレームワークの1つで、Protocol Bufferを使用してRPC (リモートプロシージャーコール) を実行する。</p>
-<p>従来のHTTP/1.1ではなく、HTTP/2 (例：gRPC、GraphQLなど) を使用する。</p>
-<p>RESTful-APIに対するリクエストではリクエストのヘッダーやボディを作成する必要がある。</p>
+<p>RPC フレームワークの 1 つで、Protocol Buffer を使用して RPC (リモートプロシージャーコール) を実行する。</p>
+<p>従来の HTTP/1.1 ではなく、HTTP/2 (例：gRPC、GraphQL など) を使用する。</p>
+<p>RESTful-API に対するリクエストではリクエストのヘッダーやボディを作成する必要がある。</p>
 <p>一方で、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。</p>
 <p><img alt="grpc_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_architecture.png" /></p>
 <blockquote>
@@ -34383,8 +34383,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="tls">TLSの有無 (暗号化の有無)<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h3>
-<p>WebブラウザがgRPCクライアントの場合、TLSは必須である。</p>
-<p>ただ、それ以外の場合はgRPCではTLSを無効化できる。</p>
+<p>Web ブラウザが gRPC クライアントの場合、TLS は必須である。</p>
+<p>ただ、それ以外の場合は gRPC では TLS を無効化できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/a/51008941">https://stackoverflow.com/a/51008941</a></li>
@@ -34394,7 +34394,7 @@
 <p><br></p>
 <h2 id="02">02. 通信方式<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="grpc">gRPCの通信方式とは<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h3>
-<p>gRPCでは、gRPCクライアントとgRPCサーバーの間の通信方式に種類がある。</p>
+<p>gRPC では、gRPC クライアントと gRPC サーバーの間の通信方式に種類がある。</p>
 <p>通信方式は、<code>proto</code> ファイルで定義する。</p>
 <p><img alt="grpc_connection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png" /></p>
 <blockquote>
@@ -34408,8 +34408,8 @@
 <h4 id="rpc">▼ 単項RPCとは<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_unary-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png" /></p>
 <p>リクエスト／レスポンス方式の通信を実施する。</p>
-<p>まず、<code>1</code> 個のTCP接続を確立し、その中に <code>1</code> 個のストリームを作成する。</p>
-<p>次に、gRPCクライアントが <code>1</code> 個のリクエストを送信し、これが終えると受信後に <code>1</code> 個のレスポンスを返信する。</p>
+<p>まず、<code>1</code> 個の TCP 接続を確立し、そのなかに <code>1</code> 個のストリームを作成する。</p>
+<p>次に、gRPC クライアントが <code>1</code> 個のリクエストを送信し、これが終えると受信後に <code>1</code> 個のレスポンスを返信する。</p>
 <p>一番よく使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Request</span><span class="w"> </span><span class="p">{</span>
 
@@ -34432,10 +34432,10 @@
 <h4 id="rpc_1">▼ サーバーストリーミングRPCとは<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_server-streaming" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png" /></p>
 <p>ストリーミング方式の通信を実施する。</p>
-<p>まず、<code>1</code> 個のTCP接続を確立し、その中に単一またはのストリームを作成する。</p>
-<p>次に、gRPCクライアントがストリーム上で <code>1</code> 個のリクエストを送信し、これが終えるとサーバーは複数個のレスポンスを並行的に返信する。</p>
+<p>まず、<code>1</code> 個の TCP 接続を確立し、そのなかに単一またはのストリームを作成する。</p>
+<p>次に、gRPC クライアントがストリーム上で <code>1</code> 個のリクエストを送信し、これが終えるとサーバーは複数個のレスポンスを並行的に返信する。</p>
 <p>任意のタイミングで、サーバーからまとめてレスポンスさせたい場合に使用する。</p>
-<p>サーバーストリーミングRPCであっても、クライアントがクライアントストリーミングRPCを非同期的に実行すれば、同時ストリーミングになる。</p>
+<p>サーバーストリーミング RPC であっても、クライアントがクライアントストリーミング RPC を非同期的に実行すれば、同時ストリーミングになる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Notification</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Notification</span><span class="w"> </span><span class="p">(</span><span class="n">NotificationRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">NotificationResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34456,10 +34456,10 @@
 <h4 id="rpc_2">▼ クライアントストリーミングRPCとは<a class="headerlink" href="#rpc_2" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_client-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png" /></p>
 <p>ストリーミング方式の通信を実施する。</p>
-<p>まず、<code>1</code> 個のTCP接続を確立し、その中に単一のストリームを作成する。</p>
-<p>次に、gRPCクライアントがストリーム上で複数個のリクエストを並行的に送信し、これが終えるとサーバーは <code>1</code> 個のレスポンスを返信する。</p>
-<p>gRPCクライアントからのリクエストの送信データサイズが大きくなる場合 (例：アップロードサービス) に使用する。</p>
-<p>クライアントストリーミングRPCであっても、クライアントがクライアントストリーミングRPCを非同期的に実行すれば、同時ストリーミングになる。</p>
+<p>まず、<code>1</code> 個の TCP 接続を確立し、そのなかに単一のストリームを作成する。</p>
+<p>次に、gRPC クライアントがストリーム上で複数個のリクエストを並行的に送信し、これが終えるとサーバーは <code>1</code> 個のレスポンスを返信する。</p>
+<p>gRPC クライアントからのリクエストの送信データサイズが大きくなる場合 (例：アップロードサービス) に使用する。</p>
+<p>クライアントストリーミング RPC であっても、クライアントがクライアントストリーミング RPC を非同期的に実行すれば、同時ストリーミングになる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Upload</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">UploadRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">UploadResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34480,11 +34480,11 @@
 <h4 id="rpc_3">▼ 双方向ストリーミングRPCとは<a class="headerlink" href="#rpc_3" title="Permanent link">&para;</a></h4>
 <p><img alt="grpc_bidrectional-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png" /></p>
 <p>ストリーミング方式の通信を実施する。</p>
-<p>まず、<code>1</code> 個のTCP接続を確立し、その中に複数のストリームを同時に作成する。</p>
-<p>次に、gRPCクライアントがストリーム上で複数個のリクエストを並行的に送信する。</p>
+<p>まず、<code>1</code> 個の TCP 接続を確立し、そのなかに複数のストリームを同時に作成する。</p>
+<p>次に、gRPC クライアントがストリーム上で複数個のリクエストを並行的に送信する。</p>
 <p>これが終えると、もう一方のストリーム上でサーバーも複数個のレスポンスを並行的に返信する (逆にサーバーからもリクエストを送信できる)。</p>
-<p>gRPCクライアントとgRPCサーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。</p>
-<p>双方向ストリーミングRPCでは、双方向の独立したストリーミングを実行するため、結果的に同時ストリーミングになる。</p>
+<p>gRPC クライアントと gRPC サーバーが互いにリクエストを送信する場合 (例：チャット、オンラインゲーム) に使用する。</p>
+<p>双方向ストリーミング RPC では、双方向の独立したストリーミングを実行するため、結果的に同時ストリーミングになる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">Chat</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">Chat</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ChatRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">stream</span><span class="w"> </span><span class="n">ChatResponse</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34554,7 +34554,7 @@
 <p><br></p>
 <h3 id="_4">リクエストの構造<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ リクエストメタデータ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>gRPCのリクエストでは、メタデータをヘッダーに格納する。</p>
+<p>gRPC のリクエストでは、メタデータをヘッダーに格納する。</p>
 <table>
 <thead>
 <tr>
@@ -34609,7 +34609,7 @@
 </ul>
 </blockquote>
 <h4 id="_6">▼ レスポンスメタデータ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>gRPCのレスポンスでは、エラーに関するメタデータをトレーラーに、それ以外のメタデータをヘッダーに格納する。</p>
+<p>gRPC のレスポンスでは、エラーに関するメタデータをトレーラーに、それ以外のメタデータをヘッダーに格納する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses">https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses</a></li>
@@ -34620,16 +34620,16 @@
 <p><br></p>
 <h3 id="_7">通信の多重化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="http11">▼ HTTP/1.1の場合<a class="headerlink" href="#http11" title="Permanent link">&para;</a></h4>
-<p>TCP接続を確立中、レスポンスの返信があるまで、次のリクエストを送信できない。</p>
-<p>つまり、単一のリクエストとレスポンスが単一のTCP接続を占有し、レスポンスの返信があるまで次のリクエスト送信を待たないといけない (HTTP HoLブロッキング) 。</p>
+<p>TCP 接続を確立中、レスポンスの返信があるまで、次のリクエストを送信できない。</p>
+<p>つまり、単一のリクエストとレスポンスが単一の TCP 接続を占有し、レスポンスの返信があるまで次のリクエスト送信を待たないといけない (HTTP HoL ブロッキング) 。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.honai.me/blog/post/how-http-works-4-http2/#http%2F1.x-%E3%81%AE%E8%AA%B2%E9%A1%8C">https://www.honai.me/blog/post/how-http-works-4-http2/#http%2F1.x-%E3%81%AE%E8%AA%B2%E9%A1%8C</a></li>
 </ul>
 </blockquote>
 <h4 id="grpc_1">▼ gRPCの場合<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h4>
-<p>TCP接続を確立中、レスポンスの返信がなくても、次のリクエストを並列的に送信できる。</p>
-<p>つまり、複数のリクエストとレスポンスが単一のTCP接続を共有し、レスポンスがなくとも次のリクエストを並行的に送信できる。</p>
+<p>TCP 接続を確立中、レスポンスの返信がなくても、次のリクエストを並列的に送信できる。</p>
+<p>つまり、複数のリクエストとレスポンスが単一の TCP 接続を共有し、レスポンスがなくとも次のリクエストを並行的に送信できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.honai.me/blog/post/how-http-works-4-http2/#http%2F1.x-%E3%81%AE%E8%AA%B2%E9%A1%8C">https://www.honai.me/blog/post/how-http-works-4-http2/#http%2F1.x-%E3%81%AE%E8%AA%B2%E9%A1%8C</a></li>
@@ -34638,7 +34638,7 @@
 <p><br></p>
 <h3 id="_8">レスポンスタイム<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="http11_1">▼ HTTP/1.1の場合<a class="headerlink" href="#http11_1" title="Permanent link">&para;</a></h4>
-<p>HTTP/1.1の場合、<code>1</code> 個のリクエストとレスポンスを送受信する。</p>
+<p>HTTP/1.1 の場合、<code>1</code> 個のリクエストとレスポンスを送受信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one</a></li>
@@ -34646,11 +34646,11 @@
 </ul>
 </blockquote>
 <h4 id="grpc_2">▼ gRPCの場合<a class="headerlink" href="#grpc_2" title="Permanent link">&para;</a></h4>
-<p>単項RPCの場合、<code>1</code> 個のリクエストとレスポンスを送受信する。</p>
-<p>そのため、従来のHTTP/1.1と同じレスポンスタイムである。</p>
-<p>一方でストリーミングRPCの場合、複数個のリクエストとレスポンスを並行的に送受信する (多重化)。</p>
+<p>単項 RPC の場合、<code>1</code> 個のリクエストとレスポンスを送受信する。</p>
+<p>そのため、従来の HTTP/1.1 と同じレスポンスタイムである。</p>
+<p>一方でストリーミング RPC の場合、複数個のリクエストとレスポンスを並行的に送受信する (多重化)。</p>
 <p>そのため、重複しない通信時間が合計のレスポンスタイムになる。</p>
-<p>この時、リクエストとレスポンスの多重化により、帯域幅を無駄なく使用できるため、レスポンスタイムが短くなる。</p>
+<p>このとき、リクエストとレスポンスの多重化により、帯域幅を無駄なく使用できるため、レスポンスタイムが短くなる。</p>
 <p><img alt="grpc_streaming-rpc_response-time" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_streaming-rpc_response-time.png" /></p>
 <blockquote>
 <ul>
@@ -34791,24 +34791,24 @@
 <li><code>ResourceExhausted</code> (<code>8</code>)</li>
 <li><code>DeadlineExceeded</code> (<code>4</code>)</li>
 </ul>
-<p>なお、<code>Canceled</code> はgRPCクライアントがこれ以上のリクエストを必要としていない可能性があり、不要である。</p>
+<p>なお、<code>Canceled</code> は gRPC クライアントがこれ以上のリクエストを必要としていない可能性があり、不要である。</p>
 <p><br></p>
 <h3 id="_12">タイムアウト<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="http11_2">▼ HTTP/1.1の場合<a class="headerlink" href="#http11_2" title="Permanent link">&para;</a></h4>
-<p>TCP接続をリクエスト／レスポンスにタイムアウト時間を適用する。</p>
+<p>TCP 接続をリクエスト／レスポンスにタイムアウト時間を適用する。</p>
 <h4 id="rpc_4">▼ 単項RPCの場合<a class="headerlink" href="#rpc_4" title="Permanent link">&para;</a></h4>
-<p>TCP接続上に単一のストリーミングしかない。</p>
+<p>TCP 接続上に単一のストリーミングしかない。</p>
 <p>そのため、そのストリーミングを通過するリクエスト／レスポンスにタイムアウト時間を適用する。</p>
-<p>gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を <code>grpc-timeout</code> ヘッダーに設定する。</p>
+<p>gRPC は、TCP 接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を <code>grpc-timeout</code> ヘッダーに設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/envoy/issues/12578#issue-676405512">https://github.com/envoyproxy/envoy/issues/12578#issue-676405512</a></li>
 </ul>
 </blockquote>
 <h4 id="rpc_5">▼ ストリーミングRPCの場合<a class="headerlink" href="#rpc_5" title="Permanent link">&para;</a></h4>
-<p>TCP接続上に複数のストリーミングがある。</p>
+<p>TCP 接続上に複数のストリーミングがある。</p>
 <p>そのため、各ストリーミングを通過するリクエスト／レスポンスごとに同じタイムアウト時間を別々に適用する。</p>
-<p>gRPCは、TCP接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を <code>grpc-timeout</code> ヘッダーに設定する。</p>
+<p>gRPC は、TCP 接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を <code>grpc-timeout</code> ヘッダーに設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/envoyproxy/envoy/issues/12578#issue-676405512">https://github.com/envoyproxy/envoy/issues/12578#issue-676405512</a></li>
@@ -34932,8 +34932,8 @@
 <p><br></p>
 <h3 id="proto-pb_go"><code>proto</code> ファイルと <code>pb_go</code> ファイルを専用リポジトリに配置する場合<a class="headerlink" href="#proto-pb_go" title="Permanent link">&para;</a></h3>
 <h4 id="grpc_4">▼ gRPCクライアント/サーバーのリポジトリ<a class="headerlink" href="#grpc_4" title="Permanent link">&para;</a></h4>
-<p>各マイクロサービスのリポジトリでは、アプリケーションのインフラストラクチャ層にgRPCクライアントとgRPCサーバーの定義を配置する。</p>
-<p>なお、<code>pb</code> ファイルはProtocol Bufferの共有リポジトリで管理する。</p>
+<p>各マイクロサービスのリポジトリでは、アプリケーションのインフラストラクチャ層に gRPC クライアントと gRPC サーバーの定義を配置する。</p>
+<p>なお、<code>pb</code> ファイルは Protocol Buffer の共有リポジトリで管理する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># fooサービス (JavaScript製)</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── src/</span>
@@ -34980,12 +34980,12 @@
 </ul>
 </blockquote>
 <h4 id="protocol-buffer">▼ Protocol Bufferの共有リポジトリ<a class="headerlink" href="#protocol-buffer" title="Permanent link">&para;</a></h4>
-<p><code>pb</code> ファイルに関しては、gRPCサーバーは、さらに宛先マイクロサービスをコールするgRPCクライアントにもなる。</p>
-<p>そのため、Protocol Bufferの共有リポジトリでは、各マイクロサービスの <code>proto</code> ファイル、RPC-API仕様書、<code>pb</code> ファイルを管理する。</p>
-<p><code>pb</code> ファイルには以下があり、これは共有リポジトリではなく、gRPCクライアント/サーバーのリポジトリで管理してもよい。</p>
+<p><code>pb</code> ファイルに関しては、gRPC サーバーは、さらに宛先マイクロサービスをコールする gRPC クライアントにもなる。</p>
+<p>そのため、Protocol Buffer の共有リポジトリでは、各マイクロサービスの <code>proto</code> ファイル、RPC-API 仕様書、<code>pb</code> ファイルを管理する。</p>
+<p><code>pb</code> ファイルには以下があり、これは共有リポジトリではなく、gRPC クライアント/サーバーのリポジトリで管理してもよい。</p>
 <ul>
-<li>gRPCサーバーとしての <code>proto</code> ファイルから作った <code>pb</code> ファイル</li>
-<li>gRPCクライアントとしての <code>proto</code> ファイル (これは宛先gRPCサーバーのリポジトリにある) から作った <code>pb</code> ファイル</li>
+<li>gRPC サーバーとしての <code>proto</code> ファイルから作った <code>pb</code> ファイル</li>
+<li>gRPC クライアントとしての <code>proto</code> ファイル (これは宛先 gRPC サーバーのリポジトリにある) から作った <code>pb</code> ファイル</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="c1"># Protocol Buffer</span>
 <span class="l l-Scalar l-Scalar-Plain">repository/</span>
@@ -35042,7 +35042,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 13:18:00 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35053,11 +35053,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

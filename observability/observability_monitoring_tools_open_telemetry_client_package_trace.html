@@ -35494,8 +35494,8 @@
 <p><br></p>
 <h2 id="01-tracerprovider">01. TracerProvider<a class="headerlink" href="#01-tracerprovider" title="Permanent link">&para;</a></h2>
 <h3 id="tracerprovider">TracerProviderとは<a class="headerlink" href="#tracerprovider" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetryをセットアップし、スパンを作成する機能を提供する。</p>
-<p>Goなら、<code>go.opentelemetry.io/otel/sdk</code> パッケージからコールできる。</p>
+<p>OpenTelemetry をセットアップし、スパンを作成する機能を提供する。</p>
+<p>Go なら、<code>go.opentelemetry.io/otel/sdk</code> パッケージからコールできる。</p>
 <p><code>NewTracerProvider()</code> 関数に分散トレースのオプションを渡す。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
@@ -35579,7 +35579,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="tracerprovideroption">TracerProviderOption<a class="headerlink" href="#tracerprovideroption" title="Permanent link">&para;</a></h3>
-<p>分散トレースのオプションを持つ <code>TracerProviderOption</code> 構造体を別に作成し、TracerProviderに渡してもよい。</p>
+<p>分散トレースのオプションを持つ <code>TracerProviderOption</code> 構造体を別に作成し、TracerProvider に渡してもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -35656,7 +35656,7 @@
 <p><br></p>
 <h3 id="_3">分散トレースの無効化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="tracerprovider_1">▼ TracerProviderを実行しない<a class="headerlink" href="#tracerprovider_1" title="Permanent link">&para;</a></h4>
-<p>一番単純な方法として、スパンを作成しない場合は、TracerProviderのセットアップをコールしないことである。</p>
+<p>一番単純な方法として、スパンを作成しない場合は、TracerProvider のセットアップをコールしないことである。</p>
 <p>以下のように条件分岐を実装する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35679,7 +35679,7 @@
 
 <span class="p">}</span>
 </code></pre></div>
-<p>マイクロサービスで使用するConfigMapを使い、分散トレースの有効化を切り替える。</p>
+<p>マイクロサービスで使用する ConfigMap を使い、分散トレースの有効化を切り替える。</p>
 <p>有効化の切り替えは実行環境別に設定するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -35714,9 +35714,9 @@
 </ul>
 </blockquote>
 <h4 id="nooptracerprovider">▼ NoopTracerProviderを使用する<a class="headerlink" href="#nooptracerprovider" title="Permanent link">&para;</a></h4>
-<p>TracerProviderのデフォルト値である。</p>
-<p>多くの言語で、TracerProviderのインターフェースの実装である。</p>
-<p>また、TracerProviderを意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK固有の一部の関数 (<code>ForceFlush()</code> 関数) がある場合は使用できない。</p>
+<p>TracerProvider のデフォルト値である。</p>
+<p>多くの言語で、TracerProvider のインターフェースの実装である。</p>
+<p>また、TracerProvider を意図的に無効化したい場合 (分散トレースが不要な開発環境) にも役立つが、SDK 固有の一部の関数 (<code>ForceFlush()</code> 関数) がある場合は使用できない。</p>
 <p>Go (<code>v1.20</code>) から <code>go.opentelemetry.io/otel/trace/noop</code> に移動したため、アップグレード時はパッケージを変更する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">TracerProvider</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="o">...</span>
@@ -35736,7 +35736,7 @@
 <h4 id="sampler">▼ Samplerを無効化する<a class="headerlink" href="#sampler" title="Permanent link">&para;</a></h4>
 <p>開発環境では、分散トレースを実施したくない。</p>
 <p><code>NeverSample()</code> 関数を使用し、スパンの作成を無効化するとよい。</p>
-<p>TracerProviderの初期化処理はそのままで、スパンの作成のみを無効化できる。</p>
+<p>TracerProvider の初期化処理はそのままで、スパンの作成のみを無効化できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35907,7 +35907,7 @@
 <p><br></p>
 <h3 id="spanlink">SpanLink<a class="headerlink" href="#spanlink" title="Permanent link">&para;</a></h3>
 <p>親子関係にないスパンを紐づける場合に使用する。</p>
-<p>ブラウザを経由する処理（例：ログインの認可リクエスト）では、トレースが途切れてしまうが、SpanLinkでこれを関連づけられる。</p>
+<p>ブラウザを経由する処理（例：ログインの認可リクエスト）では、トレースが途切れてしまうが、SpanLink でこれを関連づけられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://tech.bm-sms.co.jp/entry/2024/05/21/110000">https://tech.bm-sms.co.jp/entry/2024/05/21/110000</a></li>
@@ -35916,7 +35916,7 @@
 <p><br></p>
 <h3 id="spanspanstatus">Spanステータス（SpanStatus）<a class="headerlink" href="#spanspanstatus" title="Permanent link">&para;</a></h3>
 <h4 id="span">▼ Spanステータスとは<a class="headerlink" href="#span" title="Permanent link">&para;</a></h4>
-<p>Spanに紐づく処理の成否を表す。</p>
+<p>Span に紐づく処理の成否を表す。</p>
 <h4 id="unset">▼ Unset<a class="headerlink" href="#unset" title="Permanent link">&para;</a></h4>
 <p>スパンに対応する処理が成功したことを表す。</p>
 <blockquote>
@@ -36189,7 +36189,7 @@
 <p><br></p>
 <h2 id="01-03">01-03. エラー時の事後処理<a class="headerlink" href="#01-03" title="Permanent link">&para;</a></h2>
 <h3 id="_6">自前のエラーの使用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>TracerProviderがスローするエラーを自前のエラーに変更する。</p>
+<p>TracerProvider がスローするエラーを自前のエラーに変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -36234,7 +36234,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_7">未送信スパンの送信<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>処理の失敗時にSpan Processor内へ未送信のスパンが残っている場合、これを送信し切ってしまうほうが良い。</p>
+<p>処理の失敗時に Span Processor 内へ未送信のスパンが残っている場合、これを送信し切ってしまうほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -36310,10 +36310,10 @@
 </blockquote>
 <p><br></p>
 <h3 id="graceful-shutdown">Graceful Shutdown処理<a class="headerlink" href="#graceful-shutdown" title="Permanent link">&para;</a></h3>
-<p>TracerProviderは、Graceful Shutdown処理を実行するための関数を持っている。</p>
-<p>処理の失敗時にGraceful Shutdown処理を実行する。</p>
+<p>TracerProvider は、Graceful Shutdown 処理を実行するための関数を持っている。</p>
+<p>処理の失敗時に Graceful Shutdown 処理を実行する。</p>
 <p>これにより、例えば確保しているハードウェアリソースを解放できる。</p>
-<p>なお、TracerProviderでGraceful Shutdown処理を実行すれば、ExporterやSpan Processorも連鎖的にGraceful Shutdownできる。</p>
+<p>なお、TracerProvider で Graceful Shutdown 処理を実行すれば、Exporter や Span Processor も連鎖的に Graceful Shutdown できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -36390,28 +36390,28 @@
 <p><br></p>
 <h2 id="02-exporter">02. Exporter<a class="headerlink" href="#02-exporter" title="Permanent link">&para;</a></h2>
 <h3 id="exporter">Exporterとは<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h3>
-<p>スパンの宛先とするスパン収集ツール (例：AWS Distro for OpenTelemetry Collector、Google Cloud Trace、OpenTelemetry Collectorなど) を決める処理を持つ。</p>
+<p>スパンの宛先とするスパン収集ツール (例：AWS Distro for OpenTelemetry Collector、Google Cloud Trace、OpenTelemetry Collector など) を決める処理を持つ。</p>
 <p><br></p>
 <h3 id="exporter_1">Exporterの種類<a class="headerlink" href="#exporter_1" title="Permanent link">&para;</a></h3>
 <h4 id="stdout-exporter">▼ Stdout Exporter<a class="headerlink" href="#stdout-exporter" title="Permanent link">&para;</a></h4>
 <p>標準出力をスパンの宛先とする。</p>
-<p>例えばGoの場合、<code>go.opentelemetry.io/otel/exporters/stdout/stdouttrace</code> パッケージからコールできる。</p>
-<p><code>go.opentelemetry.io/otel/sdk/export/</code> パッケージは執筆時点 (2023/09/18時点) で非推奨である。</p>
+<p>例えば Go の場合、<code>go.opentelemetry.io/otel/exporters/stdout/stdouttrace</code> パッケージからコールできる。</p>
+<p><code>go.opentelemetry.io/otel/sdk/export/</code> パッケージは執筆時点 (2023/09/18 時点) で非推奨である。</p>
 <h4 id="otlp-http-exporter">▼ OTLP HTTP Exporter<a class="headerlink" href="#otlp-http-exporter" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetry Collectorをスパンの宛先とし、HTTPでOpenTelemetry Collector接続する。</p>
-<p>例えばGoの場合、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp</code> パッケージからコールできる。</p>
+<p>OpenTelemetry Collector をスパンの宛先とし、HTTP で OpenTelemetry Collector 接続する。</p>
+<p>例えば Go の場合、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp</code> パッケージからコールできる。</p>
 <h4 id="otlp-grpc-exporter">▼ OTLP gRPC Exporter<a class="headerlink" href="#otlp-grpc-exporter" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetry Collectorをスパンの宛先とし、gRPCでOpenTelemetry Collector接続する。</p>
-<p>gRPCクライアントとして、gRPCサーバーに接続可能なアプリケーションで使用できる。</p>
-<p>例えばGoの場合、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code> パッケージからコールできる。</p>
+<p>OpenTelemetry Collector をスパンの宛先とし、gRPC で OpenTelemetry Collector 接続する。</p>
+<p>gRPC クライアントとして、gRPC サーバーに接続可能なアプリケーションで使用できる。</p>
+<p>例えば Go の場合、<code>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc</code> パッケージからコールできる。</p>
 <h4 id="jaeger-exporter">▼ Jaeger Exporter<a class="headerlink" href="#jaeger-exporter" title="Permanent link">&para;</a></h4>
-<p>Jaegerをスパンの宛先とする。</p>
-<p>例えばGoの場合、<code>go.opentelemetry.io/otel/exporters/trace/jaeger</code> パッケージからコールできる。</p>
+<p>Jaeger をスパンの宛先とする。</p>
+<p>例えば Go の場合、<code>go.opentelemetry.io/otel/exporters/trace/jaeger</code> パッケージからコールできる。</p>
 <h4 id="aws-x-ray-exporter">▼ AWS X-Ray Exporter<a class="headerlink" href="#aws-x-ray-exporter" title="Permanent link">&para;</a></h4>
-<p>AWS X-Rayをスパンの宛先とする。</p>
+<p>AWS X-Ray をスパンの宛先とする。</p>
 <h4 id="google-cloud-trace-exporter">▼ Google Cloud Trace Exporter<a class="headerlink" href="#google-cloud-trace-exporter" title="Permanent link">&para;</a></h4>
-<p>Google Cloud Traceをスパンの宛先とする。</p>
-<p>例えばGoの場合、<code>github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace</code> パッケージからコールできる。</p>
+<p>Google Cloud Trace をスパンの宛先とする。</p>
+<p>例えば Go の場合、<code>github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace</code> パッケージからコールできる。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3</a></li>
@@ -36420,7 +36420,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_8">スパン宛先の設定<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>Goの場合、<code>WithEndpoint()</code> 関数を使用して、スパンの宛先 (例：<code>127.0.0.1:4317</code>、<code>opentelemetry-collector.foo-namespace.svc.cluster.local:4317</code> など) を設定する。</p>
+<p>Go の場合、<code>WithEndpoint()</code> 関数を使用して、スパンの宛先 (例：<code>127.0.0.1:4317</code>、<code>opentelemetry-collector.foo-namespace.svc.cluster.local:4317</code> など) を設定する。</p>
 <p><br></p>
 <h3 id="_9">エラー時の事後処理<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 未送信スパンの送信<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
@@ -36430,8 +36430,8 @@
 </ul>
 </blockquote>
 <h4 id="graceful-shutdown_1">▼ Graceful Shutdown処理<a class="headerlink" href="#graceful-shutdown_1" title="Permanent link">&para;</a></h4>
-<p>Exporterは、Graceful Shutdown処理を実行するための関数を持っている。</p>
-<p>なお、TracerProviderでGraceful Shutdown処理を実行すれば、Exporterも連鎖的にGraceful Shutdownできる。</p>
+<p>Exporter は、Graceful Shutdown 処理を実行するための関数を持っている。</p>
+<p>なお、TracerProvider で Graceful Shutdown 処理を実行すれば、Exporter も連鎖的に Graceful Shutdown できる。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">InitTracerProvider</span><span class="p">(</span><span class="nx">serviceName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">sdktrace</span><span class="p">.</span><span class="nx">TracerProvider</span><span class="p">,</span><span class="w"> </span><span class="kd">func</span><span class="p">(),</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="o">...</span>
@@ -36523,9 +36523,9 @@
 <p><br></p>
 <h2 id="03-id-generator">03. ID Generator<a class="headerlink" href="#03-id-generator" title="Permanent link">&para;</a></h2>
 <h3 id="id-generator">ID Generatorとは<a class="headerlink" href="#id-generator" title="Permanent link">&para;</a></h3>
-<p>特定の監視バックエンドの形式で、トレースIDやスパンIDを作成する。</p>
-<p>ID Generatorを使用しない場合、ID GeneratorはW3C Trace Context仕様に沿ったランダムなIDを作成する。</p>
-<p>もしW3C Trace Context仕様以外のランダムなIDがよければ、専用のID Generatorを使用する必要がある。</p>
+<p>特定の監視バックエンドの形式で、トレース ID やスパン ID を作成する。</p>
+<p>ID Generator を使用しない場合、ID Generator は W3C Trace Context 仕様に沿ったランダムな ID を作成する。</p>
+<p>もし W3C Trace Context 仕様以外のランダムな ID がよければ、専用の ID Generator を使用する必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90">https://zenn.dev/avita_blog/articles/d1fb4afd200aa1#tracer-provider%E3%81%AE%E4%BD%9C%E6%88%90</a></li>
@@ -36533,7 +36533,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="x-ray">X-Ray仕様<a class="headerlink" href="#x-ray" title="Permanent link">&para;</a></h3>
-<p>X-Ray仕様のトレースIDやスパンIDを作成する。</p>
+<p>X-Ray 仕様のトレース ID やスパン ID を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
@@ -36565,16 +36565,16 @@
 <p><br></p>
 <h3 id="span-processor_1">Span Processorの種類<a class="headerlink" href="#span-processor_1" title="Permanent link">&para;</a></h3>
 <h4 id="batch-span-processor">▼ Batch Span Processor<a class="headerlink" href="#batch-span-processor" title="Permanent link">&para;</a></h4>
-<p>テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくしたうえでExporterに渡す。</p>
-<p>Exporterがまとめてスパンを送信できるようになるため、スパンの送信でスループットを高められる。</p>
-<p>Goの場合、<code>BatchSpanProcessor()</code> 関数を使用する。</p>
+<p>テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくしたうえで Exporter に渡す。</p>
+<p>Exporter がまとめてスパンを送信できるようになるため、スパンの送信でスループットを高められる。</p>
+<p>Go の場合、<code>BatchSpanProcessor()</code> 関数を使用する。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor">https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor</a></li>
 </ul>
 </blockquote>
 <h4 id="simple-span-processor">▼ Simple Span Processor<a class="headerlink" href="#simple-span-processor" title="Permanent link">&para;</a></h4>
-<p>テレメトリーファイルをそのままExporterに渡す。</p>
+<p>テレメトリーファイルをそのまま Exporter に渡す。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor">https://opentelemetry.io/docs/languages/java/instrumentation/#span-processor</a></li>
@@ -36589,8 +36589,8 @@
 </ul>
 </blockquote>
 <h4 id="graceful-shutdown_2">▼ Graceful Shutdown処理<a class="headerlink" href="#graceful-shutdown_2" title="Permanent link">&para;</a></h4>
-<p>Span Processorは、Graceful Shutdown処理を実行するための関数を持っている。</p>
-<p>なお、TracerProviderでGraceful Shutdown処理を実行すれば、Span Processorも連鎖的にGraceful Shutdownできる。</p>
+<p>Span Processor は、Graceful Shutdown 処理を実行するための関数を持っている。</p>
+<p>なお、TracerProvider で Graceful Shutdown 処理を実行すれば、Span Processor も連鎖的に Graceful Shutdown できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1">https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1</a></li>
@@ -36602,11 +36602,11 @@
 <h2 id="05-propagator">05. Propagator<a class="headerlink" href="#05-propagator" title="Permanent link">&para;</a></h2>
 <h3 id="propagator">Propagatorとは<a class="headerlink" href="#propagator" title="Permanent link">&para;</a></h3>
 <p>トレースコンテキストを宛先マイクロサービスに伝播させる処理を持つ。</p>
-<p>Carrierからトレースコンテキストを注入する操作を『注入 (Inject) 』、反対に取り出す操作を『抽出 (Extract) 』という。</p>
+<p>Carrier からトレースコンテキストを注入する操作を『注入 (Inject) 』、反対に取り出す操作を『抽出 (Extract) 』という。</p>
 <p><img alt="distributed-trace_propagated" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png" /></p>
 <p><br></p>
 <h3 id="composite-propagator">Composite Propagator<a class="headerlink" href="#composite-propagator" title="Permanent link">&para;</a></h3>
-<p>複数のPropagatorを持ち、マイクロサービス上での要求に応じて、Propagatorを動的に切り替えられる。</p>
+<p>複数の Propagator を持ち、マイクロサービス上での要求に応じて、Propagator を動的に切り替えられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/specs/otel/context/api-propagators/#composite-propagator">https://opentelemetry.io/docs/specs/otel/context/api-propagators/#composite-propagator</a></li>
@@ -36708,14 +36708,14 @@
 <h2 id="05-02">05-02. トレースコンテキスト仕様<a class="headerlink" href="#05-02" title="Permanent link">&para;</a></h2>
 <h3 id="_14">トレースコンテキスト仕様の種類<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="opentelemetry">▼ OpenTelemetry<a class="headerlink" href="#opentelemetry" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetryが定めるトレースコンテキスト仕様である。</p>
-<p>例えばGoの場合、<code>go.opentelemetry.io/otel/propagation</code> パッケージからコールできる。</p>
+<p>OpenTelemetry が定めるトレースコンテキスト仕様である。</p>
+<p>例えば Go の場合、<code>go.opentelemetry.io/otel/propagation</code> パッケージからコールできる。</p>
 <h4 id="x-ray_1">▼ X-Ray<a class="headerlink" href="#x-ray_1" title="Permanent link">&para;</a></h4>
-<p>X-Rayが定めるトレースコンテキスト仕様である。</p>
+<p>X-Ray が定めるトレースコンテキスト仕様である。</p>
 <p><br></p>
 <h3 id="_15">トレースコンテキスト仕様の設定<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>いずれのトレースコンテキスト仕様を使用するかをクライアント側とサーバー側の両方で設定する必要がある。</p>
-<p>例えばGoの場合、<code>SetTextMapPropagator()</code> 関数を使用してトレースコンテキスト仕様を設定する。</p>
+<p>例えば Go の場合、<code>SetTextMapPropagator()</code> 関数を使用してトレースコンテキスト仕様を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// クライアント側マイクロサービス</span>
 <span class="c1">// 前のマイクロサービスにとってはサーバー側にもなる</span>
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewTracerProvider</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -36758,7 +36758,7 @@
 <h3 id="resource_1">Resourceの種類<a class="headerlink" href="#resource_1" title="Permanent link">&para;</a></h3>
 <h4 id="httpgrpc">▼ HTTP/gRPCリクエストの場合<a class="headerlink" href="#httpgrpc" title="Permanent link">&para;</a></h4>
 <p>デフォルトで、さまざまな属性を持っている。</p>
-<p>例えばGoであれば、<code>go.opentelemetry.io/otel/resource</code> パッケージからコールできる。</p>
+<p>例えば Go であれば、<code>go.opentelemetry.io/otel/resource</code> パッケージからコールできる。</p>
 <p>有益な属性として、以下がある。</p>
 <p>分散トレースの監視バックエンド (例：X-Ray) 上では、キー名は <code>otel.resource.&lt;属性名&gt;</code> になる。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
@@ -36824,7 +36824,7 @@
 </tr>
 <tr>
 <td>Tail-based</td>
-<td>サーバー側 (OpenTelemetry Collector) で、収集したスパンからサンプリングする (実際は全てをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。</td>
+<td>サーバー側 (OpenTelemetry Collector) で、収集したスパンからサンプリングする (実際はすべてをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。</td>
 </tr>
 </tbody>
 </table>
@@ -36836,7 +36836,7 @@
 </blockquote>
 <h4 id="_19">▼ クライアント側のサンプリング率<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>クライアント側でのサンプリング率を設定する。</p>
-<p>Tail-based方式の場合、前提としてアプリケーションで全てのスパンをサンプリングするため、サンプリング率は <code>100</code>% (<code>AlwaysOn</code> または <code>TraceIdRationBased=1.0</code>) が推奨である。</p>
+<p>Tail-based 方式の場合、前提としてアプリケーションですべてのスパンをサンプリングするため、サンプリング率は <code>100</code>% (<code>AlwaysOn</code> または <code>TraceIdRationBased=1.0</code>) が推奨である。</p>
 <p>ただ、負荷を抑える目的で、一定割合のアプリケーションでサンプリングすることもある。</p>
 <table>
 <thead>
@@ -36848,7 +36848,7 @@
 <tbody>
 <tr>
 <td><code>AlwaysOn</code></td>
-<td>全てのスパンをサンプリングする。本番環境で注意して使用する (非推奨というわけではない)。</td>
+<td>すべてのスパンをサンプリングする。本番環境で注意して使用する (非推奨というわけではない)。</td>
 </tr>
 <tr>
 <td><code>AlwaysOff</code></td>
@@ -36873,7 +36873,7 @@
 </ul>
 </blockquote>
 <h4 id="opentelemetry-collector">▼ サーバー側 (OpenTelemetry Collector) のサンプリング率<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h4>
-<p>Tail-based方式の場合、OpenTelemetry Collectorでアプリケーションからの全てのスパンを収集したうえで、Span Processorでサンプリング率を決める。</p>
+<p>Tail-based 方式の場合、OpenTelemetry Collector でアプリケーションからのすべてのスパンを収集したうえで、Span Processor でサンプリング率を決める。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">attributes</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">actions</span><span class="p">:</span>
@@ -36895,7 +36895,7 @@
 <p><br></p>
 <h2 id="08">08. 環境変数<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <h3 id="_20">一覧<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<p>OpenTelemetryの仕様では、あるべき環境変数が決まっている。</p>
+<p>OpenTelemetry の仕様では、あるべき環境変数が決まっている。</p>
 <p>ただ、言語によって開発状況が異なり、使えない環境変数がある。</p>
 <blockquote>
 <ul>
@@ -36903,7 +36903,7 @@
 </ul>
 </blockquote>
 <h3 id="_21">共通<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<p>指定するSamplerやパラメーターを環境変数で設定できる。</p>
+<p>指定する Sampler やパラメーターを環境変数で設定できる。</p>
 <table>
 <thead>
 <tr>
@@ -37049,7 +37049,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -37060,11 +37060,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

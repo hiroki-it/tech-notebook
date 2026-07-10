@@ -33980,7 +33980,7 @@
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンソール画面の場合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>ログを収集/保管できる。</p>
-<p>Cloud Loggingでログを処理するためのAPI (<code>logging.googleapis.com</code>) を公開している。</p>
+<p>Cloud Logging でログを処理するための API (<code>logging.googleapis.com</code>) を公開している。</p>
 <table>
 <thead>
 <tr>
@@ -34022,7 +34022,7 @@
 <p><br></p>
 <h3 id="_6">ログルーター<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ログシンク<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>ログの特定の文字列を発火条件として、各種Google Cloudリソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoringなど) にログイベントを送信する。</p>
+<p>ログの特定の文字列を発火条件として、各種 Google Cloud リソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoring など) にログイベントを送信する。</p>
 <p><img alt="google_cloud_logging" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_logging.png" /></p>
 <blockquote>
 <ul>
@@ -34031,7 +34031,7 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ ログシンクフィルター<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>シンクを発火させる時のログの条件を設定する。</p>
+<p>シンクを発火させるときのログの条件を設定する。</p>
 <div class="highlight"><pre><span></span><code>resource.type<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;k8s_container&quot;</span><span class="w"> </span>AND<span class="w"> </span>resource.labels.namespace_name<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo-namespace&quot;</span><span class="w"> </span>AND<span class="w"> </span>resource.labels.pod_name<span class="w"> </span><span class="o">=</span>~<span class="w"> </span><span class="s2">&quot;foo-pod&quot;</span><span class="w"> </span>AND<span class="w"> </span>jsonPayload.level<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">(</span><span class="s2">&quot;FATAL&quot;</span><span class="w"> </span>OR<span class="w"> </span><span class="s2">&quot;ERROR&quot;</span><span class="o">)</span>
 </code></pre></div>
 <p><br></p>
@@ -34065,7 +34065,7 @@
 </tbody>
 </table>
 <p><strong>＊例＊</strong></p>
-<p>例えば、Containerdが以下のようなログを作成したとする。</p>
+<p>例えば、Containerd が以下のようなログを作成したとする。</p>
 <p>ログメッセージは、構造化ログになっている。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># わかりやすいように改行している。</span>
 <span class="m">2023</span>-03-16T19:48:25.824524924+09:00<span class="w"> </span>stderr<span class="w"> </span>F<span class="w"> </span><span class="o">{</span>
@@ -34199,8 +34199,8 @@ resource.labels.pod_name<span class="w"> </span><span class="o">=</span>~<span c
 jsonPayload.Level<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;WARN&quot;</span>
 </code></pre></div>
 <h4 id="_22">▼ 組み合わせ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p>マイクロサービスアーキテクチャで、istio-proxyのアウトバウンド通信で発生したエラーをクエリする。</p>
-<p>ここでは、宛先Clusterとして <code>PassthroughCluster</code> を指定した。</p>
+<p>マイクロサービスアーキテクチャで、istio-proxy のアウトバウンド通信で発生したエラーをクエリする。</p>
+<p>ここでは、宛先 Cluster として <code>PassthroughCluster</code> を指定した。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Kubernetes上のPod内のistio-proxyコンテナ</span>
 <span class="c1"># 送信元Clusterとして、PassthroughClusterを設定する</span>
 resource.labels.container_name<span class="o">=</span><span class="s2">&quot;istio-proxy&quot;</span>
@@ -34229,7 +34229,7 @@ jsonPayload.upstream_cluster<span class="o">=</span><span class="s2">&quot;Passt
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34240,11 +34240,11 @@ jsonPayload.upstream_cluster<span class="o">=</span><span class="s2">&quot;Passt
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

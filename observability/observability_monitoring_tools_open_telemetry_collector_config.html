@@ -34755,7 +34755,7 @@
 <h2 id="01">01. 共通<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">コンテナイメージ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="otelopentelemetry-collector">▼ otel/opentelemetry-collector<a class="headerlink" href="#otelopentelemetry-collector" title="Permanent link">&para;</a></h4>
-<p>標準機能 (core) に加えて、一部のcontribute機能を使用するために、標準の <code>otel/opentelemetry-collector-k8s</code> ではなく
+<p>標準機能 (core) に加えて、一部の contribute 機能を使用するために、標準の <code>otel/opentelemetry-collector-k8s</code> ではなく
 <code>otel/opentelemetry-collector-core</code> を使用する必要がある。</p>
 <p>エントリポイントが異なるため、コマンド名も異なる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol<span class="w"> </span>--config<span class="w"> </span>relay.yaml
@@ -34778,7 +34778,7 @@
 </ul>
 </blockquote>
 <h4 id="otelopentelemetry-collector-contrib">▼ otel/opentelemetry-collector-contrib<a class="headerlink" href="#otelopentelemetry-collector-contrib" title="Permanent link">&para;</a></h4>
-<p>標準機能 (core) に加えて、contribute機能 (例：AWS Exporter) を使用するために、標準の <code>otel/opentelemetry-collector-k8s</code> ではなく
+<p>標準機能 (core) に加えて、contribute 機能 (例：AWS Exporter) を使用するために、標準の <code>otel/opentelemetry-collector-k8s</code> ではなく
 <code>otel/opentelemetry-collector-contrib</code> を使用する必要がある。</p>
 <p>エントリポイントが異なるため、コマンド名も異なる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>otelcol-contrib<span class="w"> </span>--config<span class="w"> </span>relay.yaml
@@ -34874,7 +34874,7 @@
 </ul>
 </blockquote>
 <h4 id="insecure">▼ insecure<a class="headerlink" href="#insecure" title="Permanent link">&para;</a></h4>
-<p>TLSを有効化するフラグを設定する。</p>
+<p>TLS を有効化するフラグを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">&lt;タイプ&gt;</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">tls</span><span class="p">:</span>
@@ -34910,23 +34910,23 @@
 <p><br></p>
 <h2 id="02-exporters">02. exporters<a class="headerlink" href="#02-exporters" title="Permanent link">&para;</a></h2>
 <h3 id="exporters">exportersとは<a class="headerlink" href="#exporters" title="Permanent link">&para;</a></h3>
-<p>Exporterを設定する。</p>
-<p>OpenTelemetry Collectorは、設定した監視バックエンドにテレメトリーを送信する。</p>
+<p>Exporter を設定する。</p>
+<p>OpenTelemetry Collector は、設定した監視バックエンドにテレメトリーを送信する。</p>
 <p><br></p>
 <h3 id="awsxray">awsxray<a class="headerlink" href="#awsxray" title="Permanent link">&para;</a></h3>
 <h4 id="awsxray_1">▼ awsxrayとは<a class="headerlink" href="#awsxray_1" title="Permanent link">&para;</a></h4>
-<p>X-Rayにスパンを送信する。</p>
-<p>ただし、OpenTelemetryにはAWS X-Ray Exporterが含まれていない。</p>
-<p>そのため、AWS製のコンテナイメージ (<code>public.ecr.aws/aws-observability/aws-otel-collector</code>) に差し替えておく必要がある。</p>
+<p>X-Ray にスパンを送信する。</p>
+<p>ただし、OpenTelemetry には AWS X-Ray Exporter が含まれていない。</p>
+<p>そのため、AWS 製のコンテナイメージ (<code>public.ecr.aws/aws-observability/aws-otel-collector</code>) に差し替えておく必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB</a></li>
 </ul>
 </blockquote>
 <h4 id="index_all_attributes">▼ index_all_attributes<a class="headerlink" href="#index_all_attributes" title="Permanent link">&para;</a></h4>
-<p>スパンの属性をAWS X-Rayのアノテーションに変換する。</p>
-<p>AWS X-Rayでは、アノテーションでフィルタリングできるが、メタデータではできない。</p>
-<p>OpenTelemetryのスパンをAWS X-Rayに送信すると、AWS X-Ray上で属性はメタデータになる。</p>
+<p>スパンの属性を AWS X-Ray のアノテーションに変換する。</p>
+<p>AWS X-Ray では、アノテーションでフィルタリングできるが、メタデータではできない。</p>
+<p>OpenTelemetry のスパンを AWS X-Ray に送信すると、AWS X-Ray 上で属性はメタデータになる。</p>
 <p>そこで、属性をフィルタリング可能なアノテーションに変換する。</p>
 <p>なお、ドット (<code>.</code>) は、アンダースコア (<code>_</code>) になる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
@@ -34940,7 +34940,7 @@
 </ul>
 </blockquote>
 <h4 id="no_verify_ssl">▼ no_verify_ssl<a class="headerlink" href="#no_verify_ssl" title="Permanent link">&para;</a></h4>
-<p>X-Rayへの通信でTLSを有効化するか否かを設定する。</p>
+<p>X-Ray への通信で TLS を有効化するか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">awsxray</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">no_verify_ssl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -34951,7 +34951,7 @@
 </ul>
 </blockquote>
 <h4 id="region">▼ region<a class="headerlink" href="#region" title="Permanent link">&para;</a></h4>
-<p>X-Rayのあるリージョンを設定する。</p>
+<p>X-Ray のあるリージョンを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">awsxray</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ap-northeast-1</span>
@@ -35022,8 +35022,8 @@ Attributes:
 </blockquote>
 <p><br></p>
 <h3 id="googlecloud">googlecloud<a class="headerlink" href="#googlecloud" title="Permanent link">&para;</a></h3>
-<p>Google Cloudリソース (例：Cloud Trace、Cloud Logging、Cloud Monitoring) にテレメトリーを送信する。</p>
-<p>OpenTelemetry Collectorに資格情報を紐づけていたとしても、ここでプロジェクト名を指定する必要がある。</p>
+<p>Google Cloud リソース (例：Cloud Trace、Cloud Logging、Cloud Monitoring) にテレメトリーを送信する。</p>
+<p>OpenTelemetry Collector に資格情報を紐づけていたとしても、ここでプロジェクト名を指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">googlecloud</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-project</span>
@@ -35045,8 +35045,8 @@ Attributes:
 <p><br></p>
 <h3 id="otlp">otlp<a class="headerlink" href="#otlp" title="Permanent link">&para;</a></h3>
 <h4 id="otlp_1">▼ otlpとは<a class="headerlink" href="#otlp_1" title="Permanent link">&para;</a></h4>
-<p>OTLP形式で指定したエンドポイントにgRPCでテレメトリーを送信する。</p>
-<p>HTTP/2のため、プロトコル名を指定しない。</p>
+<p>OTLP 形式で指定したエンドポイントに gRPC でテレメトリーを送信する。</p>
+<p>HTTP/2 のため、プロトコル名を指定しない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">otlp</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-tempo.grafana-tempo.svc.cluster.local:4317</span>
@@ -35059,8 +35059,8 @@ Attributes:
 <p><br></p>
 <h3 id="otlphttp">otlphttp<a class="headerlink" href="#otlphttp" title="Permanent link">&para;</a></h3>
 <h4 id="otlphttp_1">▼ otlphttpとは<a class="headerlink" href="#otlphttp_1" title="Permanent link">&para;</a></h4>
-<p>OTLP形式で指定したエンドポイントにHTTPでテレメトリーを送信する。</p>
-<p>HTTP/1.1のため、プロトコル名を指定する。</p>
+<p>OTLP 形式で指定したエンドポイントに HTTP でテレメトリーを送信する。</p>
+<p>HTTP/1.1 のため、プロトコル名を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exporters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">otlphttp</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://grafana-tempo.grafana-tempo.svc.cluster.local:4318</span>
@@ -35083,12 +35083,12 @@ Attributes:
 <p><br></p>
 <h2 id="04-processors">04. processors<a class="headerlink" href="#04-processors" title="Permanent link">&para;</a></h2>
 <h3 id="processors">processorsとは<a class="headerlink" href="#processors" title="Permanent link">&para;</a></h3>
-<p>Processorを設定する</p>
+<p>Processor を設定する</p>
 <p><br></p>
 <h3 id="attribute">attribute<a class="headerlink" href="#attribute" title="Permanent link">&para;</a></h3>
 <h4 id="attribute_1">▼ attributeとは<a class="headerlink" href="#attribute_1" title="Permanent link">&para;</a></h4>
 <p>テレメトリーに付与する属性を設定する。</p>
-<p>可読性が低くなるため、属性はアプリ側で実装したほうが良い。</p>
+<p>可読性が低くなるため、属性はアプリ側で実装したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">attributes</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">actions</span><span class="p">:</span>
@@ -35105,7 +35105,7 @@ Attributes:
 </ul>
 </blockquote>
 <h4 id="k8sattribute">▼ k8sattribute<a class="headerlink" href="#k8sattribute" title="Permanent link">&para;</a></h4>
-<p>コンテナの所属NamespaceやPodなどの属性をテレメトリーに設定する。</p>
+<p>コンテナの所属 Namespace や Pod などの属性をテレメトリーに設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">k8sattributes</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">extract</span><span class="p">:</span>
@@ -35126,7 +35126,7 @@ Attributes:
 <p><br></p>
 <h3 id="batch">batch<a class="headerlink" href="#batch" title="Permanent link">&para;</a></h3>
 <h4 id="batch_1">▼ batchとは<a class="headerlink" href="#batch_1" title="Permanent link">&para;</a></h4>
-<p>テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくしたうえでExporterに渡す。</p>
+<p>テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくしたうえで Exporter に渡す。</p>
 <p>推奨である。</p>
 <blockquote>
 <ul>
@@ -35176,8 +35176,8 @@ Attributes:
 <p><br></p>
 <h2 id="05-receivers">05. receivers<a class="headerlink" href="#05-receivers" title="Permanent link">&para;</a></h2>
 <h3 id="receivers">receiversとは<a class="headerlink" href="#receivers" title="Permanent link">&para;</a></h3>
-<p>Receiverを設定する。</p>
-<p>OpenTelemetryのクライアントは、Receiverを指定し、テレメトリーを送信する。</p>
+<p>Receiver を設定する。</p>
+<p>OpenTelemetry のクライアントは、Receiver を指定し、テレメトリーを送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md">https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md</a></li>
@@ -35186,8 +35186,8 @@ Attributes:
 <p><br></p>
 <h3 id="otlp_2">otlp<a class="headerlink" href="#otlp_2" title="Permanent link">&para;</a></h3>
 <h4 id="otlp_3">▼ otlpとは<a class="headerlink" href="#otlp_3" title="Permanent link">&para;</a></h4>
-<p>OTLP形式でテレメトリーを受信する。</p>
-<p>クライアントがHTTPクライアントかgRPCクライアントかによって、エンドポイントを使い分ける。</p>
+<p>OTLP 形式でテレメトリーを受信する。</p>
+<p>クライアントが HTTP クライアントか gRPC クライアントかによって、エンドポイントを使い分ける。</p>
 <p>設定したエンドポイントに応じて、受信サーバーが起動する。</p>
 <div class="highlight"><pre><span></span><code>...
 
@@ -35202,7 +35202,7 @@ Attributes:
 </ul>
 </blockquote>
 <h4 id="http">▼ http<a class="headerlink" href="#http" title="Permanent link">&para;</a></h4>
-<p>HTTPで受信する。</p>
+<p>HTTP で受信する。</p>
 <p>テレメトリーごとにエンドポイント (<code>/v1/logs</code>、<code>/v1/metrics</code>、<code>/v1/traces</code>) が異なる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">receivers</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">otlp</span><span class="p">:</span>
@@ -35256,7 +35256,7 @@ Attributes:
 <p><br></p>
 <h3 id="telemetry">telemetry<a class="headerlink" href="#telemetry" title="Permanent link">&para;</a></h3>
 <h4 id="telemetry_1">▼ telemetryとは<a class="headerlink" href="#telemetry_1" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetry Collector自体のテレメトリーの作成方法を設定する。</p>
+<p>OpenTelemetry Collector 自体のテレメトリーの作成方法を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://opentelemetry.io/docs/collector/configuration/#telemetry">https://opentelemetry.io/docs/collector/configuration/#telemetry</a></li>
@@ -35264,7 +35264,7 @@ Attributes:
 </ul>
 </blockquote>
 <h4 id="logs">▼ logs<a class="headerlink" href="#logs" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetry Collectorのログの作成方法を設定する。</p>
+<p>OpenTelemetry Collector のログの作成方法を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">telemetry</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">logs</span><span class="p">:</span>
@@ -35292,7 +35292,7 @@ Attributes:
 <div class="highlight"><pre><span></span><code><span class="m">2024</span>-03-25T03:22:08.220Z<span class="w">    </span>debug<span class="w">   </span>awsxrayexporter@v0.96.0/awsxray.go:57<span class="w">   </span>TracesExporter<span class="w">  </span><span class="o">{</span><span class="s2">&quot;kind&quot;</span>:<span class="w"> </span><span class="s2">&quot;exporter&quot;</span>,<span class="w"> </span><span class="s2">&quot;data_type&quot;</span>:<span class="w"> </span><span class="s2">&quot;traces&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;awsxray&quot;</span>,<span class="w"> </span><span class="s2">&quot;type&quot;</span>:<span class="w"> </span><span class="s2">&quot;awsxray&quot;</span>,<span class="w"> </span><span class="s2">&quot;name&quot;</span>:<span class="w"> </span><span class="s2">&quot;awsxray&quot;</span>,<span class="w"> </span><span class="s2">&quot;#spans&quot;</span>:<span class="w"> </span><span class="m">1</span><span class="o">}</span>
 </code></pre></div>
 <h4 id="metrics">▼ metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h4>
-<p>OpenTelemetry Collectorのメトリクスの作成方法を設定する。</p>
+<p>OpenTelemetry Collector のメトリクスの作成方法を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">telemetry</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metrics</span><span class="p">:</span>
@@ -35327,7 +35327,7 @@ Attributes:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -35338,11 +35338,11 @@ Attributes:
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

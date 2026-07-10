@@ -35420,7 +35420,7 @@
 <p><br></p>
 <h2 id="01-gitlab-ci">01. GitLab CIの仕組み<a class="headerlink" href="#01-gitlab-ci" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>GitLab Runnerは、GitLabリポジトリの <code>gitlab-ci.yml</code> ファイルをHTTPSで参照し、定義したパイプラインを実行する。</p>
+<p>GitLab Runner は、GitLab リポジトリの <code>gitlab-ci.yml</code> ファイルを HTTPS で参照し、定義したパイプラインを実行する。</p>
 <p><img alt="gitlab-ci_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab-ci_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -35431,7 +35431,7 @@
 <p><br></p>
 <h3 id="gitlab-runner">GitLab Runner<a class="headerlink" href="#gitlab-runner" title="Permanent link">&para;</a></h3>
 <h4 id="gitlab-runner_1">▼ GitLab Runnerとは<a class="headerlink" href="#gitlab-runner_1" title="Permanent link">&para;</a></h4>
-<p>GitLab CIの <code>gitlab-ci.yml</code> ファイルで定義したパイプラインを実行する。</p>
+<p>GitLab CI の <code>gitlab-ci.yml</code> ファイルで定義したパイプラインを実行する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.gitlab.com/runner/">https://docs.gitlab.com/runner/</a></li>
@@ -35466,7 +35466,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_8">他のプライベートリポジトリへのアクセス<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>他のプライベートリポジトリに接続するためには、GitLab CIで、Gitの資格情報をセットアップする必要がある。</p>
+<p>他のプライベートリポジトリに接続するためには、GitLab CI で、Git の資格情報をセットアップする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">go_mod</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}</span>
@@ -35485,7 +35485,7 @@
 <h2 id="03-api">03. API<a class="headerlink" href="#03-api" title="Permanent link">&para;</a></h2>
 <h3 id="_9">パイプライン実行<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>他のリポジトリのパイプラインを発火する。</p>
-<p>例えば、GitOps時にアプリリポジトリがKubernetesリポジトリのパイプラインを実行する場合に役立つ。</p>
+<p>例えば、GitOps 時にアプリリポジトリが Kubernetes リポジトリのパイプラインを実行する場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">trigger_upstream_pipeline</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/alpine/git</span>
 <span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
@@ -35504,13 +35504,13 @@
 </blockquote>
 <p><br></p>
 <h3 id="webhook">Webhook<a class="headerlink" href="#webhook" title="Permanent link">&para;</a></h3>
-<p>MRの作成や更新のタイミングで、外部サービスのAPIをコールできる。</p>
+<p>MR の作成や更新のタイミングで、外部サービスの API をコールできる。</p>
 <p><br></p>
 <h2 id="04-global">04. Global<a class="headerlink" href="#04-global" title="Permanent link">&para;</a></h2>
 <h3 id="_10">予約変数<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="ci_commit_branch">▼ <code>CI_COMMIT_BRANCH</code><a class="headerlink" href="#ci_commit_branch" title="Permanent link">&para;</a></h4>
 <p>現在のブランチ名が割り当てられている。</p>
-<p>featureブランチの名前によらず、CIを実行する条件を定義できる。</p>
+<p>feature ブランチの名前によらず、CI を実行する条件を定義できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
@@ -35523,7 +35523,7 @@
 <p>現在のタグ名が割り当てられている。</p>
 <p>条件文と組み合わせれば、タグの作成時にパイプラインを発火させられる。</p>
 <h4 id="ci_pipeline_source">▼ <code>CI_PIPELINE_SOURCE</code><a class="headerlink" href="#ci_pipeline_source" title="Permanent link">&para;</a></h4>
-<p>現在のパイプラインを発火させたイベント名 (MR作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。</p>
+<p>現在のパイプラインを発火させたイベント名 (MR 作成/更新イベント、手動パイプライン実行イベント) が割り当てられている。</p>
 <p>タグの付与時にパイプラインを発火させる場合、<code>CI_COMMIT_TAG</code> 変数を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -35563,10 +35563,10 @@
 </ul>
 </blockquote>
 <h4 id="ci_project_dir">▼ <code>CI_PROJECT_DIR</code><a class="headerlink" href="#ci_project_dir" title="Permanent link">&para;</a></h4>
-<p>GitLabの実行環境のルートディレクトリが割り当てられている。</p>
-<p>GitLabは、ルートディレクトリにGitLabリポジトリをクローンする。</p>
+<p>GitLab の実行環境のルートディレクトリが割り当てられている。</p>
+<p>GitLab は、ルートディレクトリに GitLab リポジトリをクローンする。</p>
 <h4 id="git_submodule_strategy">▼ <code>GIT_SUBMODULE_STRATEGY</code><a class="headerlink" href="#git_submodule_strategy" title="Permanent link">&para;</a></h4>
-<p>デフォルトですと、GitLab CIがサブモジュールを無視して処理してしまうため、これを無視しないようにする。</p>
+<p>デフォルトですと、GitLab CI がサブモジュールを無視して処理してしまうため、これを無視しないようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">GIT_SUBMODULE_STRATEGY</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;recursive&quot;</span>
@@ -35579,8 +35579,8 @@
 <p><br></p>
 <h3 id="include">include<a class="headerlink" href="#include" title="Permanent link">&para;</a></h3>
 <h4 id="include_1">▼ includeとは<a class="headerlink" href="#include_1" title="Permanent link">&para;</a></h4>
-<p>参照する別リポジトリとCIテンプレートファイルを設定する。</p>
-<p>GitLab CIのJobの設定ファイルを、中央集中的なリポジトリで一括管理しておき、これを他のリポジトリからリモート参照できるようになる。</p>
+<p>参照する別リポジトリと CI テンプレートファイルを設定する。</p>
+<p>GitLab CI の Job の設定ファイルを、中央集中的なリポジトリで一括管理しておき、これを他のリポジトリからリモート参照できるようになる。</p>
 <p>ポリレポ構成規約と相性がよい。</p>
 <blockquote>
 <ul>
@@ -35588,9 +35588,9 @@
 </ul>
 </blockquote>
 <h4 id="ci">▼ 親リポジトリ側のCIテンプレート<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h4>
-<p>子リポジトリでは、Jobを定義する。</p>
-<p>GitLab CIでは、定義したJobは自動的に実行される。</p>
-<p>一方で <code>.</code> (ドット) をつけることで、使用を明示的に宣言しない限り実行できない『隠しJob』として定義できる。</p>
+<p>子リポジトリでは、Job を定義する。</p>
+<p>GitLab CI では、定義した Job は自動的に実行される。</p>
+<p>一方で <code>.</code> (ドット) をつけることで、使用を明示的に宣言しない限り実行できない『隠し Job』として定義できる。</p>
 <p>また、子リポジトリで上書きできる変数を親リポジトリに設定しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># foo-job.yaml</span>
 
@@ -35631,7 +35631,7 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ 子リポジトリ側のリモートコール<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>子リポジトリでは、親リポジトリのCIテンプレート上の隠しJobをコールする。</p>
+<p>子リポジトリでは、親リポジトリの CI テンプレート上の隠し Job をコールする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">include</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># GitLab CIのテンプレートを管理するリポジトリ</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project/ci-template-repository-1</span>
@@ -35686,8 +35686,8 @@
 </ul>
 </blockquote>
 <h4 id="_12">▼ ヒアドキュメントを使用したファイルの配布<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>ヒアドキュメントを使用して、CIの実行コンテナでファイルを自動的に作成し、これを配布する。</p>
-<p><code>artifacts</code> キーを使用して、後続のJobでも設定ファイルを使用できるようにしている。</p>
+<p>ヒアドキュメントを使用して、CI の実行コンテナでファイルを自動的に作成し、これを配布する。</p>
+<p><code>artifacts</code> キーを使用して、後続の Job でも設定ファイルを使用できるようにしている。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">GITLAB_COMMENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;6.0.1&quot;</span>
 
@@ -35773,7 +35773,7 @@
 </code></pre></div>
 <h3 id="variables-job">variables (Jobレベルでも設定可)<a class="headerlink" href="#variables-job" title="Permanent link">&para;</a></h3>
 <h4 id="variables">▼ variablesとは<a class="headerlink" href="#variables" title="Permanent link">&para;</a></h4>
-<p>Job内で使用する変数を設定する。</p>
+<p>Job 内で使用する変数を設定する。</p>
 <p>値をダブルクオートかシングルクオートで囲わないと、<code>.gitlab-ci.yml</code> ファイル自体で予期せぬ構文エラーになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">BAR</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bar&quot;</span>
@@ -35824,7 +35824,7 @@
 </code></pre></div>
 <h4 id="_15">▼ リスト<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>変数でリストを定義できる。</p>
-<p>これを使用して、単一のJob内で <code>for</code> を実行できる。</p>
+<p>これを使用して、単一の Job 内で <code>for</code> を実行できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">LIST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo1 foo2 foo3</span>
@@ -35844,14 +35844,14 @@
 <p><br></p>
 <h3 id="workflow">workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h3>
 <h4 id="workflow_1">▼ workflowとは<a class="headerlink" href="#workflow_1" title="Permanent link">&para;</a></h4>
-<p>GitLab CI自体の発火を制御する。</p>
+<p>GitLab CI 自体の発火を制御する。</p>
 <blockquote>
 <ul>
 <li><a href="https://gitlab-docs.creationline.com/ee/ci/yaml/#workflowrules">https://gitlab-docs.creationline.com/ee/ci/yaml/#workflowrules</a></li>
 </ul>
 </blockquote>
 <h4 id="if">▼ if<a class="headerlink" href="#if" title="Permanent link">&para;</a></h4>
-<p>GitLab CIが発火する条件を設定する。</p>
+<p>GitLab CI が発火する条件を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ブランチ名に応じて、CIで使用する実行コンテナ名を切り替える</span>
 <span class="c1"># main、develop、MR作成/変更、の順に条件を検証する。</span>
 <span class="nt">workflow</span><span class="p">:</span>
@@ -35948,10 +35948,10 @@
 <p><br></p>
 <h3 id="artifacts">artifacts<a class="headerlink" href="#artifacts" title="Permanent link">&para;</a></h3>
 <h4 id="artifacts_1">▼ artifactsとは<a class="headerlink" href="#artifacts_1" title="Permanent link">&para;</a></h4>
-<p>GitLabでは、以前のステージのJobのファイルを後続のJobへデフォルトで継承できる。</p>
-<p>ただし、GitLabのバージョンが古いと、この機能がない場合もある。</p>
-<p>しかし、<code>needs</code> でJob間に依存関係を定義している場合、<code>artifacts</code> を使用しても、<code>needs</code> で指定しているJob以外のファイルを継承できない。</p>
-<p><code>needs</code> で指定したJobの <code>artifacts</code> のみを継承できる。</p>
+<p>GitLab では、以前のステージの Job のファイルを後続の Job へデフォルトで継承できる。</p>
+<p>ただし、GitLab のバージョンが古いと、この機能がない場合もある。</p>
+<p>しかし、<code>needs</code> で Job 間に依存関係を定義している場合、<code>artifacts</code> を使用しても、<code>needs</code> で指定している Job 以外のファイルを継承できない。</p>
+<p><code>needs</code> で指定した Job の <code>artifacts</code> のみを継承できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
@@ -35997,7 +35997,7 @@
 </ul>
 </blockquote>
 <h4 id="artifacts_2">▼ artifactsが不要な場合<a class="headerlink" href="#artifacts_2" title="Permanent link">&para;</a></h4>
-<p>GitLabでは、以前のステージのJobのファイルを後続のJobにデフォルトで継承できる。</p>
+<p>GitLab では、以前のステージの Job のファイルを後続の Job にデフォルトで継承できる。</p>
 <p>そのため、<code>artifacts</code> は不要である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ビルドステージ</span>
 <span class="nt">foo_job</span><span class="p">:</span>
@@ -36028,7 +36028,7 @@
 <h4 id="cache_1">▼ cacheとは<a class="headerlink" href="#cache_1" title="Permanent link">&para;</a></h4>
 <p>指定したディレクトリのキャッシュを作成する。</p>
 <p>もしそのディレクトリに変化がなければ、前回のパイプラインのディレクトリを再利用する。</p>
-<p>これにより、CIの時間を短縮できる。</p>
+<p>これにより、CI の時間を短縮できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">bar_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">cache</span><span class="p">:</span>
@@ -36070,8 +36070,8 @@
 <p><br></p>
 <h3 id="dependencies">dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
 <h4 id="dependencies_1">▼ dependencies<a class="headerlink" href="#dependencies_1" title="Permanent link">&para;</a></h4>
-<p>通常、<code>dependencies</code> を指定せずに <code>artifacts</code> を使用した場合、全てのJobとファイルを継承する。</p>
-<p><code>dependencies</code> を設定すれば、<code>artifacts</code> が設定された特定のJobを指定し、そのJobのみをファイルを継承する。</p>
+<p>通常、<code>dependencies</code> を指定せずに <code>artifacts</code> を使用した場合、すべての Job とファイルを継承する。</p>
+<p><code>dependencies</code> を設定すれば、<code>artifacts</code> が設定された特定の Job を指定し、その Job のみをファイルを継承する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
@@ -36109,7 +36109,7 @@
 <p><br></p>
 <h3 id="image">image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h3>
 <h4 id="image_1">▼ imageとは<a class="headerlink" href="#image_1" title="Permanent link">&para;</a></h4>
-<p>Jobの実行コンテナを設定する。</p>
+<p>Job の実行コンテナを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
@@ -36124,12 +36124,12 @@
 </ul>
 </blockquote>
 <h4 id="ci_dependency_proxy_direct_group_image_prefix">▼ <code>CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX</code> (依存プロキシ)<a class="headerlink" href="#ci_dependency_proxy_direct_group_image_prefix" title="Permanent link">&para;</a></h4>
-<p>GitLab上にコンテナイメージのキャッシュを作成する。</p>
-<p>CIでは、コンテナイメージのプルの頻度が高まるため、イメージレジストリ (例：DockerHub) によってはプル数の制限にひっかかってしまう。</p>
-<p>イメージレジストリのパスのプレフィクスとして <code>CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX</code> (依存プロキシ) をつけると、コンテナイメージがGitLabのDependency Proxyを経由するようになる。</p>
+<p>GitLab 上にコンテナイメージのキャッシュを作成する。</p>
+<p>CI では、コンテナイメージのプルの頻度が高まるため、イメージレジストリ (例：DockerHub) によってはプル数の制限にひっかかってしまう。</p>
+<p>イメージレジストリのパスのプレフィクスとして <code>CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX</code> (依存プロキシ) をつけると、コンテナイメージが GitLab の Dependency Proxy を経由するようになる。</p>
 <p>キャッシュは、リポジトリの親グループの『<code>https://&lt;URL&gt;/&lt;親グループ&gt;/-/dependency_proxy</code>』という設定ページで確認できる。</p>
-<p>Dependency Proxyはコンテナイメージをキャッシュするため、毎回DockerHubにコンテナをプルしなくなり、プル数の制限にひっかかりにくくなる。</p>
-<p>なお、執筆時点 (2025/03/05) ではDockerHubへのプルの経由のみに対応している。</p>
+<p>Dependency Proxy はコンテナイメージをキャッシュするため、毎回 DockerHub にコンテナをプルしなくなり、プル数の制限にひっかかりにくくなる。</p>
+<p>なお、執筆時点 (2025/03/05) では DockerHub へのプルの経由のみに対応している。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
@@ -36148,8 +36148,8 @@
 <p><br></p>
 <h3 id="needs">needs<a class="headerlink" href="#needs" title="Permanent link">&para;</a></h3>
 <h4 id="needs_1">▼ needsとは<a class="headerlink" href="#needs_1" title="Permanent link">&para;</a></h4>
-<p>Job間の依存関係を設定する。</p>
-<p>同じステージ内に複数のJobがある場合に役立つ。</p>
+<p>Job 間の依存関係を設定する。</p>
+<p>同じステージ内に複数の Job がある場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 
@@ -36177,7 +36177,7 @@
 <p><br></p>
 <h3 id="parallel">parallel<a class="headerlink" href="#parallel" title="Permanent link">&para;</a></h3>
 <h4 id="parallel_1">▼ parallelとは<a class="headerlink" href="#parallel_1" title="Permanent link">&para;</a></h4>
-<p>特定のJobを並列処理する。</p>
+<p>特定の Job を並列処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">parallel</span><span class="p">:</span>
@@ -36197,7 +36197,7 @@
 </ul>
 </blockquote>
 <h4 id="_16">▼ アーティファクト依存関係<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>並列処理した各Jobに対して、アーティファクトの依存関係を設定できる。</p>
+<p>並列処理した各 Job に対して、アーティファクトの依存関係を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
@@ -36228,7 +36228,7 @@
 </ul>
 </blockquote>
 <h4 id="job">▼ Jobの依存関係<a class="headerlink" href="#job" title="Permanent link">&para;</a></h4>
-<p>並列処理した各Jobに対して、Jobの依存関係を設定できる。</p>
+<p>並列処理した各 Job に対して、Job の依存関係を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
@@ -36265,10 +36265,10 @@
 <p><br></p>
 <h3 id="rules">rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h3>
 <h4 id="rules_1">▼ rulesとは<a class="headerlink" href="#rules_1" title="Permanent link">&para;</a></h4>
-<p>Jobの発火条件を設定する。</p>
-<p>複数の条件 (複数の <code>if</code> キー、<code>if</code> キーと <code>changes</code> キーの組み合わせ) を並べた場合、上から順番に条件を検証していくため、OR条件になる。</p>
+<p>Job の発火条件を設定する。</p>
+<p>複数の条件 (複数の <code>if</code> キー、<code>if</code> キーと <code>changes</code> キーの組み合わせ) を並べた場合、上から順番に条件を検証していくため、OR 条件になる。</p>
 <h4 id="if_1">▼ if<a class="headerlink" href="#if_1" title="Permanent link">&para;</a></h4>
-<p>条件に合致した場合のみ、Jobを発火する。</p>
+<p>条件に合致した場合のみ、Job を発火する。</p>
 <p>ブランチ名やタグを使用した発火を定義できる。</p>
 <p>イベントの種類が設定された <code>CI_PIPELINE_SOURCE</code> 変数を使用できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">check_tag</span><span class="p">:</span>
@@ -36296,7 +36296,7 @@
 </ul>
 </blockquote>
 <h4 id="changes_1">▼ changes<a class="headerlink" href="#changes_1" title="Permanent link">&para;</a></h4>
-<p>プッシュ時に、指定したファイルやディレクトリで差分があれば、Jobを発火する。</p>
+<p>プッシュ時に、指定したファイルやディレクトリで差分があれば、Job を発火する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">gemerate_template</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm template . -f foo-values.yaml -f foo-secrets.yaml &gt; foo.yaml</span>
@@ -36317,7 +36317,7 @@
 <h3 id="services">services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h3>
 <h4 id="services_1">▼ services<a class="headerlink" href="#services_1" title="Permanent link">&para;</a></h4>
 <p><img alt="gitlab_service-container" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab_service-container.png" /></p>
-<p>JobのCIの実行コンテナとは別のサービスコンテナを作成する。</p>
+<p>Job の CI の実行コンテナとは別のサービスコンテナを作成する。</p>
 <p>両方のコンテナで使用するイメージのバーションは揃えるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># CIの実行環境</span>
@@ -36334,7 +36334,7 @@
 </ul>
 </blockquote>
 <h4 id="_17">▼ 複数のコンテナを同時に起動するため<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>Jobでアプリコンテナを動かし、DBコンテナを別に起動しておく場合、もう1つコンテナが必要になる。</p>
+<p>Job でアプリコンテナを動かし、DB コンテナを別に起動しておく場合、もう 1 つコンテナが必要になる。</p>
 <p>これを回避するために使用する。</p>
 <blockquote>
 <ul>
@@ -36342,7 +36342,7 @@
 </ul>
 </blockquote>
 <h4 id="tls">▼ TLSの無効化 (非暗号化)<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h4>
-<p>GitLab CI上でDocker in Dockerを使用する場合、実行コンテナとサービスコンテナでセットアップが必要である。</p>
+<p>GitLab CI 上で Docker in Docker を使用する場合、実行コンテナとサービスコンテナでセットアップが必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ドライバーの設定</span>
 <span class="w">  </span><span class="nt">DOCKER_DRIVER</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;overlay2&quot;</span>
@@ -36371,9 +36371,9 @@
 <p><br></p>
 <h3 id="stage">stage<a class="headerlink" href="#stage" title="Permanent link">&para;</a></h3>
 <h4 id="stage_1">▼ stage<a class="headerlink" href="#stage_1" title="Permanent link">&para;</a></h4>
-<p>Jobが所属するステージを設定する。</p>
-<p>より先のステージ内のJobが全て成功しない限り、後続のJobを開始しない。</p>
-<p>同じステージに所属するJobは、並行的に実行される。</p>
+<p>Job が所属するステージを設定する。</p>
+<p>より先のステージ内の Job がすべて成功しない限り、後続の Job を開始しない。</p>
+<p>同じステージに所属する Job は、並行的に実行される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
@@ -36412,7 +36412,7 @@
 <p><br></p>
 <h3 id="script">script<a class="headerlink" href="#script" title="Permanent link">&para;</a></h3>
 <h4 id="script_1">▼ scriptとは<a class="headerlink" href="#script_1" title="Permanent link">&para;</a></h4>
-<p>Jobで実行する処理を設定する。</p>
+<p>Job で実行する処理を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
@@ -36425,9 +36425,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="trigger">trigger<a class="headerlink" href="#trigger" title="Permanent link">&para;</a></h3>
-<p>Jobが発火した場合、特定のアクションを実施する。</p>
+<p>Job が発火した場合、特定のアクションを実施する。</p>
 <p><strong>＊例＊</strong></p>
-<p>モノレポでGitLabCIを採用している場合、 親の <code>.gitlab-ci.yml</code> ファイルでディレクトリ配下の変更を検知し、子の <code>.gitlab-ci.yml</code> ファイルを読み込む (<code>include</code>) ようにする。</p>
+<p>モノレポで GitLabCI を採用している場合、 親の <code>.gitlab-ci.yml</code> ファイルでディレクトリ配下の変更を検知し、子の <code>.gitlab-ci.yml</code> ファイルを読み込む (<code>include</code>) ようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 親の.gitlab-ci.yml</span>
 <span class="nt">stage</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -36464,14 +36464,14 @@
 <p><br></p>
 <h3 id="when">when<a class="headerlink" href="#when" title="Permanent link">&para;</a></h3>
 <h4 id="when_1">▼ whenとは<a class="headerlink" href="#when_1" title="Permanent link">&para;</a></h4>
-<p>Jobを実行する条件を設定する。</p>
+<p>Job を実行する条件を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.gitlab.com/ci/yaml/index.html#when">https://docs.gitlab.com/ci/yaml/index.html#when</a></li>
 </ul>
 </blockquote>
 <h4 id="always">▼ always<a class="headerlink" href="#always" title="Permanent link">&para;</a></h4>
-<p>ワークフローのうちで、前のJobのステータスに関係なく、必ずJobを実行する</p>
+<p>ワークフローのうちで、前の Job のステータスに関係なく、必ず Job を実行する</p>
 <div class="highlight"><pre><span></span><code><span class="nt">bar_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
@@ -36484,7 +36484,7 @@
 </ul>
 </blockquote>
 <h4 id="manual">▼ manual<a class="headerlink" href="#manual" title="Permanent link">&para;</a></h4>
-<p>ワークフローのうちで、手動の場合にのみJobを実行する。</p>
+<p>ワークフローのうちで、手動の場合にのみ Job を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
@@ -36497,7 +36497,7 @@
 </ul>
 </blockquote>
 <h4 id="never">▼ never<a class="headerlink" href="#never" title="Permanent link">&para;</a></h4>
-<p>特定の条件の場合、Jobを実行しない。</p>
+<p>特定の条件の場合、Job を実行しない。</p>
 <p>なお、<code>when: never</code> のみの定義は意味がない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">baz_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -36521,7 +36521,7 @@
 <p><br></p>
 <h3 id="_19">同じファイル<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="anchorjob">▼ anchorの隠しJob化<a class="headerlink" href="#anchorjob" title="Permanent link">&para;</a></h4>
-<p>anchorとして定義した処理を隠しJob化する。</p>
+<p>anchor として定義した処理を隠し Job 化する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># GitLabの他のリポジトリからモジュールをプルするために、資格情報をセットアップする</span>
 <span class="nt">.setup_git</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;setup_git</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;machine foo.gitlab.com&quot; &gt; ~/.netrc</span>
@@ -36545,7 +36545,7 @@
 </ul>
 </blockquote>
 <h4 id="before_script-job">▼ <code>before_script</code> キーの隠しJob化<a class="headerlink" href="#before_script-job" title="Permanent link">&para;</a></h4>
-<p><code>before_script</code> キーを隠しJob化することで、共通のスクリプトとして使用できる。</p>
+<p><code>before_script</code> キーを隠し Job 化することで、共通のスクリプトとして使用できる。</p>
 <p>ただし、呼び出す側で別の <code>before_script</code> キーがあると、上書きしてしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># GitLabの他のリポジトリからモジュールをプルするために、資格情報をセットアップする</span>
 <span class="nt">.setup_git</span><span class="p">:</span>
@@ -36589,7 +36589,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 19:04:20 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -36600,11 +36600,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

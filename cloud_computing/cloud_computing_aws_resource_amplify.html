@@ -33799,10 +33799,10 @@
 <h2 id="02-aws-amplify">02. AWS Amplifyの仕組み<a class="headerlink" href="#02-aws-amplify" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ フロントエンド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>SSGの場合、静的ファイルをデプロイしさえすれば、アプリケーションとしての要件が全て整う。</p>
-<p>CSRの場合、サーバーレスのバックエンドを自動作成してくれ、フロントエンドをデプロイしさえすれば、要件が全て整う。</p>
-<p>これのAWSリソースはCloudFormationによって作成されるが、AWS Amplify経由でしか設定を変更できず、各AWSリリースのコンソール画面を見ても、非表示になっている。</p>
-<p>ただし、Amazon Route 53の設定は表示されており、AWS Amplifyが追加したDNSレコードをユーザーが編集できるようになっている。</p>
+<p>SSG の場合、静的ファイルをデプロイしさえすれば、アプリケーションとしての要件がすべて整う。</p>
+<p>CSR の場合、サーバーレスのバックエンドを自動作成してくれ、フロントエンドをデプロイしさえすれば、要件がすべて整う。</p>
+<p>これの AWS リソースは CloudFormation によって作成されるが、AWS Amplify 経由でしか設定を変更できず、各 AWS リリースのコンソール画面を見ても、非表示になっている。</p>
+<p>ただし、Amazon Route 53 の設定は表示されており、AWS Amplify が追加した DNS レコードをユーザーが編集できるようになっている。</p>
 <table>
 <thead>
 <tr>
@@ -33822,7 +33822,7 @@
 </tbody>
 </table>
 <h4 id="_4">▼ バックエンド<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>フロントエンドでGraphQLによるリクエストを実装している場合、AppSyncを使用して、これを受信できるAPIを作成する必要がある。</p>
+<p>フロントエンドで GraphQL によるリクエストを実装している場合、AppSync を使用して、これを受信できる API を作成する必要がある。</p>
 <table>
 <thead>
 <tr>
@@ -33884,10 +33884,10 @@
 </tbody>
 </table>
 <h4 id="cicd">▼ CI/CDパイプライン<a class="headerlink" href="#cicd" title="Permanent link">&para;</a></h4>
-<p>AWS Amplifyは、連携先のリポジトリからソースコードをプルし、アプリケーションをビルドする。</p>
-<p>GitHubのブランチごとにアプリケーションのCI/CDパイプラインが発火するようにすれば、プルリクエストごとにアプリケーションの実行環境を用意できる。</p>
-<p>プルリクごとに実行環境を作成できると、例えば、<code>1</code> 個のプルリクをデザイナーサイドやビジネスサイド (例：SEOなど) がレビューできるようになる。</p>
-<p>ただし、App Runnerを使用したほうがよいかもしれない。</p>
+<p>AWS Amplify は、連携先のリポジトリからソースコードをプルし、アプリケーションをビルドする。</p>
+<p>GitHub のブランチごとにアプリケーションの CI/CD パイプラインが発火するようにすれば、プルリクエストごとにアプリケーションの実行環境を用意できる。</p>
+<p>プルリクごとに実行環境を作成できると、例えば、<code>1</code> 個のプルリクをデザイナーサイドやビジネスサイド (例：SEO など) がレビューできるようになる。</p>
+<p>ただし、App Runner を使用したほうがよいかもしれない。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/intercept6/articles/4016e9d61ab36761685d">https://zenn.dev/intercept6/articles/4016e9d61ab36761685d</a></li>
@@ -33915,7 +33915,7 @@
 <tr>
 <td>本番稼働ブランチ</td>
 <td>基点ブランチを設定する。</td>
-<td>AWS Amplifyを本番運用しない場合は、<code>develop</code> ブランチを設定すれば良い。</td>
+<td>AWS Amplifyを本番運用しない場合は、<code>develop</code> ブランチを設定すればよい。</td>
 </tr>
 <tr>
 <td>ブランチの自動検出</td>
@@ -33982,10 +33982,10 @@ $<span class="w"> </span>amplify<span class="w"> </span>publish
 </table>
 <h4 id="amplifyyml">▼ <code>amplify.yml</code> ファイル<a class="headerlink" href="#amplifyyml" title="Permanent link">&para;</a></h4>
 <p>バージョン管理リポジトリのルートに <code>amplify.yml</code> ファイルを配置する。</p>
-<p>Next.jsではSSG/SSRの両モードでビルド＆デプロイできる。</p>
-<p><code>package.json</code> ファイルで使用される <code>next</code> コマンドに応じて、SSGまたはSSRのいずれかのインフラが作成され、デプロイされる。</p>
-<p>SSGの場合、裏側ではAmazon S3、Amazon CloudFront、Amazon Route 53などが作成され、静的ホスティングが実行される。</p>
-<p>SSRの場合、フロントエンドのみでなくバックエンドの実行環境が必要になるため、AWS LambdaやCogniteを作成する。</p>
+<p>Next.js では SSG/SSR の両モードでビルド＆デプロイできる。</p>
+<p><code>package.json</code> ファイルで使用される <code>next</code> コマンドに応じて、SSG または SSR のいずれかのインフラが作成され、デプロイされる。</p>
+<p>SSG の場合、裏側では Amazon S3、Amazon CloudFront、Amazon Route 53 などが作成され、静的ホスティングが実行される。</p>
+<p>SSR の場合、フロントエンドのみでなくバックエンドの実行環境が必要になるため、AWS Lambda や Cognite を作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 
 <span class="c1">#=====================</span>
@@ -34088,7 +34088,7 @@ $<span class="w"> </span>amplify<span class="w"> </span>publish
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:25:01 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34099,11 +34099,11 @@ $<span class="w"> </span>amplify<span class="w"> </span>publish
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

@@ -34410,7 +34410,7 @@
 <p><br></p>
 <h2 id="01-cvecommon-vulnerabilities-and-exposures">01. CVE：Common Vulnerabilities and Exposures)<a class="headerlink" href="#01-cvecommon-vulnerabilities-and-exposures" title="Permanent link">&para;</a></h2>
 <h3 id="cve">CVEとは<a class="headerlink" href="#cve" title="Permanent link">&para;</a></h3>
-<p>報告された脆弱性レポートについて、一意な番号をつけて管理したDBのこと。</p>
+<p>報告された脆弱性レポートについて、一意な番号をつけて管理した DB のこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.nic.ad.jp/ja/basics/terms/cve.html">https://www.nic.ad.jp/ja/basics/terms/cve.html</a></li>
@@ -34420,14 +34420,14 @@
 <p><br></p>
 <h3 id="cvedb">CVEのDBの種類<a class="headerlink" href="#cvedb" title="Permanent link">&para;</a></h3>
 <h4 id="github">▼ GitHub<a class="headerlink" href="#github" title="Permanent link">&para;</a></h4>
-<p>GitHubで脆弱性に関するIssueが立てられ、これが致命的であると、CVEに掲載される。</p>
-<p>GitHub上のOSSのCVEは、GitHub Advisory Databaseで検索できる。</p>
+<p>GitHub で脆弱性に関する Issue が立てられ、これが致命的であると、CVE に掲載される。</p>
+<p>GitHub 上の OSS の CVE は、GitHub Advisory Database で検索できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/advisories">https://github.com/advisories</a></li>
 </ul>
 </blockquote>
-<p>また、各リポジトリのセキュリティの項目で各OSSのCVEを確認できる。</p>
+<p>また、各リポジトリのセキュリティの項目で各 OSS の CVE を確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.github.com/ja/code-security/getting-started/adding-a-security-policy-to-your-repository">https://docs.github.com/ja/code-security/getting-started/adding-a-security-policy-to-your-repository</a></li>
@@ -34436,14 +34436,14 @@
 </ul>
 </blockquote>
 <h4 id="gitlab">▼ GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h4>
-<p>GitLab上のOSSのCVEは、GitLab Advisory Databaseで検索できる。</p>
+<p>GitLab 上の OSS の CVE は、GitLab Advisory Database で検索できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://advisories.gitlab.com/">https://advisories.gitlab.com/</a></li>
 </ul>
 </blockquote>
 <h4 id="redhat">▼ RedHat<a class="headerlink" href="#redhat" title="Permanent link">&para;</a></h4>
-<p>RedHat上のOSSのCVEは、RedHat CVEDBで検索できる。</p>
+<p>RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://access.redhat.com/security/security-updates/cve">https://access.redhat.com/security/security-updates/cve</a></li>
@@ -34473,8 +34473,8 @@
 <p><br></p>
 <h3 id="csrfcross-site-request-forgeries">CSRF：Cross-Site Request Forgeries<a class="headerlink" href="#csrfcross-site-request-forgeries" title="Permanent link">&para;</a></h3>
 <h4 id="csrf">▼ CSRFとは<a class="headerlink" href="#csrf" title="Permanent link">&para;</a></h4>
-<p>ユーザーがとあるフォームからログイン後、セッションIDを保持したまま悪意のあるサイトに接続したとする。</p>
-<p>悪意のあるサイトのサーバーは、ユーザーのセッションIDを使用して、ログインしていた元のサイトのサーバーを攻撃する。</p>
+<p>ユーザーがとあるフォームからログイン後、セッション ID を保持したまま悪意のあるサイトに接続したとする。</p>
+<p>悪意のあるサイトのサーバーは、ユーザーのセッション ID を使用して、ログインしていた元のサイトのサーバーを攻撃する。</p>
 <p>サーバーは、正しいフォームからのリクエストと誤認してしまい、攻撃を許容してしまう。</p>
 <p><img alt="csrf" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf.png" /></p>
 <blockquote>
@@ -34495,16 +34495,16 @@
 <p><br></p>
 <h3 id="directory-traversal">Directory traversal<a class="headerlink" href="#directory-traversal" title="Permanent link">&para;</a></h3>
 <h4 id="directory-traversal_1">▼ Directory traversalとは<a class="headerlink" href="#directory-traversal_1" title="Permanent link">&para;</a></h4>
-<p>traversalは、横断する (ディレクトリを乗り越える) の意味。</p>
+<p>traversal は、横断する (ディレクトリを乗り越える) の意味。</p>
 <p>パス名を使用してファイルを指定し、管理者の意図していないファイルを不正に参照またはダウンロードする。</p>
 <p><img alt="ディレクトリトラバーサル" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ディレクトリトラバーサル.jpg" /></p>
 <p><br></p>
 <h3 id="dosdenial-of-service">DoS攻撃：Denial of Service (サービス拒否攻撃)<a class="headerlink" href="#dosdenial-of-service" title="Permanent link">&para;</a></h3>
 <h4 id="dos">▼ DoS攻撃とは (サービス拒否攻撃)<a class="headerlink" href="#dos" title="Permanent link">&para;</a></h4>
-<p>Webサーバーに大量のリクエストを送信し、障害を起こす手法。</p>
-<p>クライアントが1つの場合はDos攻撃、複数の場合はDDos攻撃という。</p>
-<p>Dos攻撃はIPアドレスを指定して防御できるが、DDos攻撃はそれができない。</p>
-<p>そのため、同一IPアドレスのリクエスト数制限や特定の国を指定したIPアドレス制限が必要になる。</p>
+<p>Web サーバーに大量のリクエストを送信し、障害を起こす手法。</p>
+<p>クライアントが 1 つの場合は Dos 攻撃、複数の場合は DDos 攻撃という。</p>
+<p>Dos 攻撃は IP アドレスを指定して防御できるが、DDos 攻撃はそれができない。</p>
+<p>そのため、同一 IP アドレスのリクエスト数制限や特定の国を指定した IP アドレス制限が必要になる。</p>
 <p><img alt="DoS攻撃" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DoS攻撃.png" /></p>
 <blockquote>
 <ul>
@@ -34512,7 +34512,7 @@
 </ul>
 </blockquote>
 <h4 id="edos">▼ EDos<a class="headerlink" href="#edos" title="Permanent link">&para;</a></h4>
-<p>Webサーバーに大量のリクエストを送信し、クラウドサービスの重量課金額を上げさせる手法。</p>
+<p>Web サーバーに大量のリクエストを送信し、クラウドサービスの重量課金額を上げさせる手法。</p>
 <blockquote>
 <ul>
 <li><a href="https://ja.m.wikipedia.org/wiki/DoS攻撃">https://ja.m.wikipedia.org/wiki/DoS攻撃</a></li>
@@ -34521,22 +34521,22 @@
 <p><br></p>
 <h3 id="sql">SQLインジェクション<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
 <h4 id="sql_1">▼ SQLインジェクションとは<a class="headerlink" href="#sql_1" title="Permanent link">&para;</a></h4>
-<p>DBのクエリのパラメーターとなる入力に、不正な文字列を入力して不正なクエリを送信させ、DBの情報を抜き取る手法。</p>
+<p>DB のクエリのパラメーターとなる入力に、不正な文字列を入力して不正なクエリを送信させ、DB の情報を抜き取る手法。</p>
 <p>ただし、近年は減少傾向にある。</p>
 <p><img alt="SQLインジェクション" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SQLインジェクション.jpg" /></p>
 <h4 id="_4">▼ 攻撃例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>例えば、アプリケーションの認証ロジックに以下のようなSQLがあるとする。</p>
+<p>例えば、アプリケーションの認証ロジックに以下のような SQL があるとする。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">USER_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{user_name}&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{password}&#39;</span>
 </code></pre></div>
-<p>この時、ログインの入力フォームに以下を入力する。</p>
+<p>このとき、ログインの入力フォームに以下を入力する。</p>
 <ul>
 <li>ユーザー名：<code>foo</code></li>
 <li>パスワード： <code>aaa' or '1' ='1</code></li>
 </ul>
-<p>これにより、以下のRead処理を実行することになる。</p>
+<p>これにより、以下の Read 処理を実行することになる。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">USER_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;foo&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;aaa&#39;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="o">=</span><span class="s1">&#39;1&#39;</span>
 </code></pre></div>
-<p>このSQLは、<code>'1' ='1'</code> により <code>true</code> となり、処理に成功してしまう。</p>
+<p>この SQL は、<code>'1' ='1'</code> により <code>true</code> となり、処理に成功してしまう。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/mo_ri_regen/articles/sql-injection">https://zenn.dev/mo_ri_regen/articles/sql-injection</a></li>
@@ -34545,7 +34545,7 @@
 <p><br></p>
 <h3 id="xsscross-site-scripting">XSS：Cross Site Scripting<a class="headerlink" href="#xsscross-site-scripting" title="Permanent link">&para;</a></h3>
 <h4 id="xss">▼ XSSとは<a class="headerlink" href="#xss" title="Permanent link">&para;</a></h4>
-<p>WebアプリによるHTML出力のエスケープ処理の欠陥を悪用し、利用者のWebブラウザで悪意のあるスクリプトを実行させる手法。</p>
+<p>Web アプリによる HTML 出力のエスケープ処理の欠陥を悪用し、利用者の Web ブラウザで悪意のあるスクリプトを実行させる手法。</p>
 <p>悪意のある第三者が正常なサイトへ事前にスクリプトを埋め込む。これを実行してしまったユーザーの情報を盗む。</p>
 <p><img alt="cross-cite-scripting" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cross-cite-scripting.png" /></p>
 <h4 id="_5">▼ 攻撃例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
@@ -34561,7 +34561,7 @@
 <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>他の人が掲示板アプリケーションを開くと、上記の投稿内のスクリプトが実行される。</p>
-<p>スクリプトは、Cookieをサイトに送信する。</p>
+<p>スクリプトは、Cookie をサイトに送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/oreo2990/articles/d33a264b2d8b4c">https://zenn.dev/oreo2990/articles/d33a264b2d8b4c</a></li>
@@ -34576,9 +34576,9 @@
 <p><br></p>
 <h3 id="brute-forcereverse-brute-force">Brute-force攻撃とReverse Brute-force攻撃<a class="headerlink" href="#brute-forcereverse-brute-force" title="Permanent link">&para;</a></h3>
 <h4 id="brute-forcereverse-brute-force_1">▼ Brute-force攻撃とReverse Brute-force攻撃とは<a class="headerlink" href="#brute-forcereverse-brute-force_1" title="Permanent link">&para;</a></h4>
-<p>Brute-forceは力ずくの意味。IDを固定して、パスワードを総当たりで試す手法。</p>
-<p>例えば、5桁数字のパスワードなら、9の5乗通りの組み合わせを試す。</p>
-<p>一方で、Reverse Brute-forceは、パスワードを固定して、IDを総当たりで試す手法。</p>
+<p>Brute-force は力ずくの意味。ID を固定して、パスワードを総当たりで試す手法。</p>
+<p>例えば、5 桁数字のパスワードなら、9 の 5 乗通りの組み合わせを試す。</p>
+<p>一方で、Reverse Brute-force は、パスワードを固定して、ID を総当たりで試す手法。</p>
 <p><img alt="brute-force-attack_reverse-brute-force-attack" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/brute-force-attack_reverse-brute-force-attack.png" /></p>
 <h4 id="_8">▼ パスワードのパターン数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
@@ -34600,7 +34600,7 @@
 <p><br></p>
 <h3 id="dns-cache-poisoning">DNS Cache Poisoning<a class="headerlink" href="#dns-cache-poisoning" title="Permanent link">&para;</a></h3>
 <h4 id="dns-cache-poisoning_1">▼ DNS Cache Poisoningとは<a class="headerlink" href="#dns-cache-poisoning_1" title="Permanent link">&para;</a></h4>
-<p>キャッシュDNSサーバーが持つIPアドレスを偽のIPアドレスに変え、偽のサイトに強制的に接続させる手法。</p>
+<p>キャッシュ DNS サーバーが持つ IP アドレスを偽の IP アドレスに変え、偽のサイトに強制的に接続させる手法。</p>
 <p><img alt="DNSキャッシュポイズニング" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DNSキャッシュポイズニング.gif" /></p>
 <p><br></p>
 <h3 id="back-door">Back Door<a class="headerlink" href="#back-door" title="Permanent link">&para;</a></h3>
@@ -34628,7 +34628,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月29日 20:03:06 JST">2026-04-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -34639,11 +34639,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

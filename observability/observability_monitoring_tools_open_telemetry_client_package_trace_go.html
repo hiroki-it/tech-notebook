@@ -34579,8 +34579,8 @@
 <li><a href="https://opentelemetry.io/docs/languages/go/instrumentation/#create-nested-spans">https://opentelemetry.io/docs/languages/go/instrumentation/#create-nested-spans</a></li>
 </ul>
 </blockquote>
-<p>TracerProviderの作成時だけでなく、スパンの作成のタイミングでも属性を設定できる。</p>
-<p>アプリ内の全ての処理に共通する属性は、TracerProviderで設定すると良い。</p>
+<p>TracerProvider の作成時だけでなく、スパンの作成のタイミングでも属性を設定できる。</p>
+<p>アプリ内のすべての処理に共通する属性は、TracerProvider で設定するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">parentFunction</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="c1">// Tracerを作成する</span>
@@ -34629,7 +34629,7 @@
 <p><br></p>
 <h3 id="otel_1">拡張otelクライアントパッケージ<a class="headerlink" href="#otel_1" title="Permanent link">&para;</a></h3>
 <h4 id="otel_2">▼ 拡張otelクライアントパッケージ<a class="headerlink" href="#otel_2" title="Permanent link">&para;</a></h4>
-<p>標準のotelクライアントパッケージと外部ツールを連携しやすいようにしたパッケージを提供する。</p>
+<p>標準の otel クライアントパッケージと外部ツールを連携しやすいようにしたパッケージを提供する。</p>
 <h4 id="exporter">▼ Exporter<a class="headerlink" href="#exporter" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
@@ -34637,7 +34637,7 @@
 </ul>
 </blockquote>
 <h4 id="propagator">▼ Propagator<a class="headerlink" href="#propagator" title="Permanent link">&para;</a></h4>
-<p>標準のotelクライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for OpenTelemetry Collector) を、使用できるようになる。</p>
+<p>標準の otel クライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for OpenTelemetry Collector) を、使用できるようになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/propagators">https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/propagators</a></li>
@@ -34647,7 +34647,7 @@
 <h3 id="sdk">分散トレースSDK<a class="headerlink" href="#sdk" title="Permanent link">&para;</a></h3>
 <h4 id="sdk_1">▼ 分散トレースSDK<a class="headerlink" href="#sdk_1" title="Permanent link">&para;</a></h4>
 <p>分散トレース収集ツールが、独自のパッケージを提供している場合がある。</p>
-<p>拡張otelクライアントパッケージとは異なり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。</p>
+<p>拡張 otel クライアントパッケージとは異なり、対象のスパン収集ツールにスパンを送信するためだけのパッケージである。</p>
 <h4 id="aws-distro-for-opentelemetry-collector">▼ AWS Distro for OpenTelemetry Collector<a class="headerlink" href="#aws-distro-for-opentelemetry-collector" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
@@ -34665,7 +34665,7 @@
 <h2 id="02">02. 手動でスパンを開始/終了する場合<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_5">宛先が標準出力の場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ パッケージ初期化とトレースコンテキスト抽出 (共通)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
+<p>ここでは、フレームワークなしで Go アプリケーションを作成しているとする。</p>
 <p>パッケージを初期化し、トレースコンテキストを抽出する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
@@ -34871,7 +34871,7 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>Carrierにトレースコンテキストを注入し、また子スパンを作成する。</p>
+<p>Carrier にトレースコンテキストを注入し、また子スパンを作成する。</p>
 <p>なお、親スパンと子スパンでスパン作成の実装方法は変わらない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -34961,8 +34961,8 @@
 <p><br></p>
 <h3 id="opentelemetry-collector">宛先がOpenTelemetry Collectorの場合<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ パッケージ初期化とトレースコンテキスト抽出 (共通)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>ここでは、フレームワークなしでGoアプリケーションを作成しているとする。</p>
-<p>otelクライアントパッケージを初期化する。</p>
+<p>ここでは、フレームワークなしで Go アプリケーションを作成しているとする。</p>
+<p>otel クライアントパッケージを初期化する。</p>
 <p>初期化の段階で、トレースコンテキストを伝播する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
@@ -35190,7 +35190,7 @@
 </ul>
 </blockquote>
 <h4 id="_11">▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>Carrierにトレースコンテキストを注入し、また子スパンを作成する。</p>
+<p>Carrier にトレースコンテキストを注入し、また子スパンを作成する。</p>
 <p>なお、親スパンと子スパンでスパン作成の実装方法は変わらない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35503,7 +35503,7 @@
 </ul>
 </blockquote>
 <h4 id="_14">▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>Carrierにトレースコンテキストを注入し、また子スパンを作成する。</p>
+<p>Carrier にトレースコンテキストを注入し、また子スパンを作成する。</p>
 <p>なお、親スパンと子スパンでスパン作成の実装方法は変わらない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35582,9 +35582,9 @@
 </ul>
 </blockquote>
 <h4 id="id">▼ ログへのID出力<a class="headerlink" href="#id" title="Permanent link">&para;</a></h4>
-<p><code>trace.Span</code> から取得できるトレースIDはW3C Trace Context仕様である。</p>
-<p>そのため、もしX-Ray形式の各種IDを使用したい場合 (例：ログにX-Ray形式IDを出力したい)、変換処理が必要である。</p>
-<p>ここでは、元のW3C Trace Context仕様から指定した位置の文字列を抽出し、<code>1-***-***</code> というIDを作成している。</p>
+<p><code>trace.Span</code> から取得できるトレース ID は W3C Trace Context 仕様である。</p>
+<p>そのため、もし X-Ray 形式の各種 ID を使用したい場合 (例：ログに X-Ray 形式 ID を出力したい)、変換処理が必要である。</p>
+<p>ここでは、元の W3C Trace Context 仕様から指定した位置の文字列を抽出し、<code>1-***-***</code> という ID を作成している。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">getXrayTraceID</span><span class="p">(</span><span class="nx">span</span><span class="w"> </span><span class="nx">trace</span><span class="p">.</span><span class="nx">Span</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="nx">traceId</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">span</span><span class="p">.</span><span class="nx">SpanContext</span><span class="p">().</span><span class="nx">TraceID</span><span class="p">().</span><span class="nx">String</span><span class="p">()</span>
@@ -35731,7 +35731,7 @@
 </ul>
 </blockquote>
 <h4 id="_17">▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>Carrierにトレースコンテキストを注入し、また子スパンを作成する。</p>
+<p>Carrier にトレースコンテキストを注入し、また子スパンを作成する。</p>
 <p>なお、親スパンと子スパンでスパン作成の実装方法は変わらない。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -35789,7 +35789,7 @@
 <h2 id="03">03. 自動でスパンを開始/終了する場合<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_18">宛先が標準出力の場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="_19">▼ パッケージ初期化とトレースコンテキスト抽出 (共通)<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p>gRPCを使用しない場合と実装方法は同じである。</p>
+<p>gRPC を使用しない場合と実装方法は同じである。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">trace</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35852,8 +35852,8 @@
 </ul>
 </blockquote>
 <h4 id="_20">▼ 親スパン作成 (クライアント側のみ)<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
-<p>gRPCクライアント側では、gRPCサーバーとの接続を作成する必要がある。</p>
-<p>クライアント側では、ClientInterceptorを使用し、スパンの開始/終了を自動化する。</p>
+<p>gRPC クライアント側では、gRPC サーバーとの接続を作成する必要がある。</p>
+<p>クライアント側では、ClientInterceptor を使用し、スパンの開始/終了を自動化する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -35935,7 +35935,7 @@
 </ul>
 </blockquote>
 <h4 id="_21">▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p>サーバー側では、ServerInterceptorを使用し、スパンの開始/終了を自動化する。</p>
+<p>サーバー側では、ServerInterceptor を使用し、スパンの開始/終了を自動化する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -36202,7 +36202,7 @@
 <p><br></p>
 <h2 id="05">05. 分散トレースとログの紐付け<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <p>分散トレースとログを紐づけるために、ログのフィールドに <code>trace_id</code> キーや <code>span_id</code> キーを追加する。</p>
-<p>監視バックエンドによっては、W3C Trace Context仕様以外の仕様でトレースコンテキストを表示する場合があるため、その場合はIDを事前に変換しておく。</p>
+<p>監視バックエンドによっては、W3C Trace Context 仕様以外の仕様でトレースコンテキストを表示する場合があるため、その場合は ID を事前に変換しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">log</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -36282,7 +36282,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月29日 19:27:26 JST">2026-05-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
   </span>
 
     
@@ -36293,11 +36293,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 
