@@ -8,7 +8,9 @@ const { globSync } = require("glob");
 
 const args = process.argv.slice(2);
 if (args.length === 0) {
-  console.error("Usage: node scripts/textlint-with-quotes.js <textlint args...>");
+  console.error(
+    "Usage: node scripts/textlint/textlint-with-quotes.js <textlint args...>",
+  );
   process.exit(2);
 }
 
@@ -59,23 +61,16 @@ const textlintBin = path.join(
 const textlintArgs = [
   "--config",
   ".textlintrc.local.json",
+  "--rulesdir",
+  "scripts/textlint",
   ...args.flatMap(materializeArg),
 ];
 
 const result = spawnSync(textlintBin, textlintArgs, {
   cwd: process.cwd(),
   encoding: "utf8",
-  maxBuffer: 1024 * 1024 * 50,
   shell: false,
 });
-
-if (args.includes("--fix")) {
-  for (const [temporaryPath, originalPath] of temporaryPathMap.entries()) {
-    if (fs.existsSync(temporaryPath)) {
-      fs.copyFileSync(temporaryPath, originalPath);
-    }
-  }
-}
 
 fs.rmSync(tmpDir, { recursive: true, force: true });
 
