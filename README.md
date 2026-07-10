@@ -29,19 +29,19 @@
 
 ## セットアップ
 
-1. miseでツールをインストールする。
+1. mise でツールをインストールする。
 
 ```bash
 $ mise install
 ```
 
-2. miseでYarnをインストールする
+2. mise で Yarn をインストールする
 
 ```bash
 $ mise use -g npm:yarn
 ```
 
-3. PIPでpythonのパッケージをインストールする
+3. PIP で python のパッケージをインストールする
 
 ```bash
 $ pip3 install -r requirements.txt
@@ -51,7 +51,7 @@ $ pip3 install -r requirements.txt
 
 ## 整形
 
-1. yarnでパッケージをインストールする。
+1. yarn でパッケージをインストールする。
 
 ```bash
 $ yarn install
@@ -67,7 +67,7 @@ $ yarn prettier -w --no-bracket-spacing **/*.md
 
 ## Webサイト生成
 
-1. ローカルマシンでWebサイトを生成する
+1. ローカルマシンで Web サイトを生成する
 
 ```bash
 $ mkdocs serve
