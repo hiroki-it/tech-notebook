@@ -34017,7 +34017,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-golangci-lint">01. golangci-lintとは<a class="headerlink" href="#01-golangci-lint" title="Permanent link">&para;</a></h2>
-<p>Goのさまざまな静的解析ツールをまとめて実行できる。</p>
+<p>Go のさまざまな静的解析ツールをまとめて実行できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># golangci-lintの公式リポジトリのサンプルを参考にする</span>
 <span class="c1"># @see https://github.com/golangci/golangci-lint/blob/main/.golangci.yml</span>
 <span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
@@ -34095,7 +34095,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="03-golangciyml">03. .golangci.yml<a class="headerlink" href="#03-golangciyml" title="Permanent link">&para;</a></h2>
-<p>golangci-lint v2系では、設定ファイルに <code>version: "2"</code> を指定する。</p>
+<p>golangci-lint v2 系では、設定ファイルに <code>version: "2"</code> を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
 </code></pre></div>
 <p><br></p>
@@ -34272,7 +34272,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="v1">v1系からの変更点<a class="headerlink" href="#v1" title="Permanent link">&para;</a></h3>
-<p>v2系では <code>linters-settings</code> は <code>linters.settings</code> に移動した。</p>
+<p>v2 系では <code>linters-settings</code> は <code>linters.settings</code> に移動した。</p>
 <p>また、除外ルールは <code>issues.exclude-rules</code> ではなく <code>linters.exclusions.rules</code> に設定する。</p>
 <p><code>gofmt</code> や <code>goimports</code> などのフォーマッターは、<code>linters.enable</code> ではなく <code>formatters.enable</code> に設定する。</p>
 <p><br></p>
@@ -34280,13 +34280,13 @@
 <h3 id="_2">グローバル<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="-color">▼ --color<a class="headerlink" href="#-color" title="Permanent link">&para;</a></h4>
 <p>コマンドの実行結果に色をつける。</p>
-<p>CIによっては、実行時に色がなくなってしまうが、<code>always</code> を有効化すると色がつくようになる。</p>
+<p>CI によっては、実行時に色がなくなってしまうが、<code>always</code> を有効化すると色がつくようになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>golangci-lint<span class="w"> </span>linters<span class="w"> </span>--color<span class="w"> </span>always
 </code></pre></div>
 <p><br></p>
 <h3 id="run_1">run<a class="headerlink" href="#run_1" title="Permanent link">&para;</a></h3>
 <h4 id="-go">▼ --go<a class="headerlink" href="#-go" title="Permanent link">&para;</a></h4>
-<p>Goのバージョンを指定して実行する。</p>
+<p>Go のバージョンを指定して実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>golangci-lint<span class="w"> </span>run<span class="w"> </span>--go<span class="w"> </span>&lt;バージョン&gt;
 </code></pre></div>
 <h4 id="-config">▼ --config<a class="headerlink" href="#-config" title="Permanent link">&para;</a></h4>
@@ -34354,7 +34354,7 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
 </blockquote>
 <h4 id="_7">▼ 特定のコード<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>コメントアウトのコードに対して、指定した番号の静的解析を無視する。</p>
-<p>注意点として、各ツールの用意しているignoreコメントではなく、golangci-lint専用のコメントである。</p>
+<p>注意点として、各ツールの用意している ignore コメントではなく、golangci-lint 専用のコメントである。</p>
 <p>特定の番号 (例：<code>SA1019</code>) を無視することは難しそう。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">grpc</span>
 
@@ -34429,7 +34429,7 @@ asciicheck:<span class="w"> </span>checks<span class="w"> </span>that<span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月21日 21:05:55 JST">2026-05-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     

@@ -34155,7 +34155,7 @@
 <p><br></p>
 <h2 id="02">02. コマンド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">オプション無し<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>全てのテストファイルを対象として、定義した関数を実行する。</p>
+<p>すべてのテストファイルを対象として、定義した関数を実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>vendor/bin/phpunit
 PHPUnit<span class="w"> </span><span class="m">9</span>.5.0<span class="w"> </span>by<span class="w"> </span>Sebastian<span class="w"> </span>Bergmann<span class="w"> </span>and<span class="w"> </span>contributors.
 
@@ -34190,9 +34190,9 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p><br></p>
 <h2 id="03-phpunitxml">03. phpunit.xmlファイル<a class="headerlink" href="#03-phpunitxml" title="Permanent link">&para;</a></h2>
 <h3 id="phpunitxml"><code>phpunit.xml</code> ファイルとは<a class="headerlink" href="#phpunitxml" title="Permanent link">&para;</a></h3>
-<p>PHPUnitの設定する。</p>
+<p>PHPUnit の設定する。</p>
 <p>デフォルトの設定では、あらかじめルートディレクトリに <code>tests</code> ディレクトリを配置し、これを <code>Units</code> ディレクトリまたは <code>Feature</code> ディレクトリに分割しておく。</p>
-<p>また、<code>Test</code> で終了するphpファイルを作成しておく必要がある。</p>
+<p>また、<code>Test</code> で終了する php ファイルを作成しておく必要がある。</p>
 <blockquote>
 <ul>
 <li><a href="http://phpunit.readthedocs.io/ja/latest/configuration.html">http://phpunit.readthedocs.io/ja/latest/configuration.html</a></li>
@@ -34227,7 +34227,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 </blockquote>
 <p><br></p>
 <h3 id="php"><code>php</code> タグ<a class="headerlink" href="#php" title="Permanent link">&para;</a></h3>
-<p>PHPUnitの実行前に設定する <code>ini_set()</code> 関数、<code>define()</code> 関数、グローバル変数を定義できる。</p>
+<p>PHPUnit の実行前に設定する <code>ini_set()</code> 関数、<code>define()</code> 関数、グローバル変数を定義できる。</p>
 <p>タグ名との対応関係については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
@@ -34235,9 +34235,9 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>Composerの実行時はメモリ不足を避ける。</p>
+<p>Composer の実行時はメモリ不足を避ける。</p>
 <p>そのため、メモリを拡張する。</p>
-<p>また、テスト用のDBに通信できるよう、DBに関する環境変数を設定する。</p>
+<p>また、テスト用の DB に通信できるよう、DB に関する環境変数を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">&lt;phpunit&gt;</span>
 
 ...
@@ -34263,7 +34263,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <h2 id="04">04. アサーション関数<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_3">アサーション関数とは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>実測値と期待値を比較し、結果に応じて <code>SUCCESS</code> または <code>FAILURES</code> を返却する。</p>
-<p>非staticまたはstaticとしてコールできる。</p>
+<p>非 static または static としてコールできる。</p>
 <div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertTrue();</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="x">self::assertTrue()</span>
@@ -34281,7 +34281,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p><br></p>
 <h3 id="assertequals">assertEquals<a class="headerlink" href="#assertequals" title="Permanent link">&para;</a></h3>
 <p>『<code>==</code>』を使用して、期待値と実際値の整合性を検証する。</p>
-<p>データ型を検証できないため、<code>assertSame()</code> 関数を使用するほうが良い。</p>
+<p>データ型を検証できないため、<code>assertSame()</code> 関数を使用するほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="x">$this-&gt;assertSame(200, $response-&gt;getStatusCode());</span>
 </code></pre></div>
 <p><br></p>
@@ -34340,9 +34340,9 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <p><br></p>
 <h2 id="06">06. 事前処理と事後処理<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="setup"><code>setUp()</code> 関数<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h3>
-<p>事前処理として、全てのテスト関数の前にコールされる関数である。</p>
+<p>事前処理として、すべてのテスト関数の前にコールされる関数である。</p>
 <p><strong>＊実装例＊</strong></p>
-<p>IoCコンテナを事前に作成する。</p>
+<p>IoC コンテナを事前に作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
@@ -34360,7 +34360,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>ユニットテストで検証するクラスが実際の処理の中でインスタンス化される時、依存先のクラスはすでにインスタンス化されているはずである。</p>
+<p>ユニットテストで検証するクラスが実際の処理のなかでインスタンス化されるとき、依存先のクラスはすでにインスタンス化されているはずである。</p>
 <p>そのため、これと同様に依存先のクラスのモックを事前に作成しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -34390,7 +34390,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 </code></pre></div>
 <p><br></p>
 <h3 id="teardown"><code>tearDown()</code> 関数<a class="headerlink" href="#teardown" title="Permanent link">&para;</a></h3>
-<p>事後処理として、全てのテスト関数の後にコールされる関数である。</p>
+<p>事後処理として、すべてのテスト関数の後にコールされる関数である。</p>
 <p>グローバル変数やサービスコンテナにデータを格納する場合、後の検証でもそのデータが誤って使用されてしまわないように、サービスコンテナを破棄するために使用される。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -34419,7 +34419,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <h3 id="createmock"><code>createMock()</code> 関数<a class="headerlink" href="#createmock" title="Permanent link">&para;</a></h3>
 <p>クラスの名前空間を元に、モックまたはスタブとして使用する擬似オブジェクトを作成する。</p>
 <p>以降の処理での用途によって、呼び名が異なることに注意する。</p>
-<p>補足として、PHPUnitの場合、モックの関数は <code>null</code> を返却する。</p>
+<p>補足として、PHPUnit の場合、モックの関数は <code>null</code> を返却する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
 <span class="k">use</span> <span class="nx">PHPUnit\Framework\TestCase</span><span class="p">;</span>
@@ -34696,7 +34696,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_8">▼ テストケース<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>外部Webサイトが正常であることを前提として、外部Webサービスとの連携が含まれていることに注意する。</p>
+<p>外部 Web サイトが正常であることを前提として、外部 Web サービスとの連携が含まれていることに注意する。</p>
 <table>
 <thead>
 <tr>
@@ -34819,7 +34819,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="post">▼ 正常系POST<a class="headerlink" href="#post" title="Permanent link">&para;</a></h4>
-<p>コントローラーが <code>200</code> ステータスを含むレスポンスを返信すること、更新されたデータのIDが期待通りであること、レスポンスされたデータが期待通りであることを検証する。</p>
+<p>コントローラーが <code>200</code> ステータスを含むレスポンスを返信すること、更新されたデータの ID が期待通りであること、レスポンスされたデータが期待通りであることを検証する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
@@ -34939,7 +34939,7 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -34950,11 +34950,11 @@ Available<span class="w"> </span>test<span class="o">(</span>s<span class="o">)<
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

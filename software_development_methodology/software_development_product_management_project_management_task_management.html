@@ -33924,13 +33924,13 @@
 <h4 id="_5">▼ 担当者<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <ul>
 <li>自社<ul>
-<li>Aさん</li>
-<li>Bさん</li>
+<li>A さん</li>
+<li>B さん</li>
 </ul>
 </li>
 <li>外部会社<ul>
-<li>Cさん</li>
-<li>Dさん</li>
+<li>C さん</li>
+<li>D さん</li>
 </ul>
 </li>
 </ul>
@@ -33988,9 +33988,9 @@
 <p><br></p>
 <h2 id="02">02. 大粒度でタスクの洗い出し<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_8">大粒度でタスクの洗い出しとは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>issueやEpic issueを1つのタスクとみなし、大きく洗い出す。</p>
+<p>issue や Epic issue を 1 つのタスクとみなし、大きく洗い出す。</p>
 <p>この段階では、タスクは大きくて問題ない。</p>
-<p>以下のような表を作成すると良い。</p>
+<p>以下のような表を作成するとよい。</p>
 <table>
 <thead>
 <tr>
@@ -34071,22 +34071,22 @@
 <p>週次ミーティングでタスクの状態を定期的に管理する。</p>
 <ul>
 <li>タスクの進捗を確認 (特に優先度 高)<ul>
-<li>タスクボード：&lt;ボードのURL&gt;</li>
+<li>タスクボード：&lt;ボードの URL&gt;</li>
 </ul>
 </li>
 <li>新しい課題を積み課題ボードに追加<ul>
-<li>積み課題ボード：&lt;ボードのURL&gt;</li>
+<li>積み課題ボード：&lt;ボードの URL&gt;</li>
 <li>『積みラベル』をつけてボードに追加する</li>
 </ul>
 </li>
 <li>積み課題のタスク化と担当者アサイン (特に優先度 高)<ul>
-<li>積み課題ボード：&lt;ボードのURL&gt;</li>
+<li>積み課題ボード：&lt;ボードの URL&gt;</li>
 <li>積み課題に 『担当者』『タスクラベル』を設定する ➡️ タスクボードに自動振り分け</li>
 </ul>
 </li>
 <li>監視チャンネルを巡回し、必要に応じて積み課題ボードに追加<ul>
-<li>devチャンネル：&lt;監視チャンネルのURL&gt;</li>
-<li>prdチャンネル：&lt;監視チャンネルのURL&gt;</li>
+<li>dev チャンネル：&lt;監視チャンネルの URL&gt;</li>
+<li>prd チャンネル：&lt;監視チャンネルの URL&gt;</li>
 </ul>
 </li>
 <li>その他共有事項あれば</li>
@@ -34096,7 +34096,7 @@
 <p><br></p>
 <h3 id="_15">タスクの優先順位決め<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="_16">▼ タスクの優先度決めとは<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>機能として欲しい期待度のこと。</p>
+<p>機能としてほしい期待度のこと。</p>
 <p>ガントチャートとタスク表を組み合わせると、スケジュールを管理しやすい。</p>
 <p><img alt="gantt-chart_table" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gantt-chart_table.png" /></p>
 <p><br></p>
@@ -34108,8 +34108,8 @@
 </ul>
 </blockquote>
 <h4 id="_17">▼ 優先度の種類<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p>高、中、低の3段階でを決める。</p>
-<p>ビジネス側と議論しながら決めると良い。</p>
+<p>高、中、低の 3 段階でを決める。</p>
+<p>ビジネス側と議論しながら決めるとよい。</p>
 <ul>
 <li>高：必ず実装する必要がある。</li>
 <li>中：できる限り実装したい。ただし、後回しにできる。</li>
@@ -34121,17 +34121,17 @@
 <h3 id="_18">タスクの依頼とは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>タスクをメンバーに依頼し、タスク全体を細分化してもらう (メンバーのスキル次第では一緒にやる) 。</p>
 <p>工数を定量化しやくする。</p>
-<p>見積コストが大きい場合 (目安は <code>13</code> 以上) 、Epicとしてタスクを分割するとよい。</p>
+<p>見積コストが大きい場合 (目安は <code>13</code> 以上) 、Epic としてタスクを分割するとよい。</p>
 <p>実装以外のタスク (調査、設計、ドキュメンテーションなど) もタスクとする。</p>
 <p>ユニットテストは、タスク見積りへ含めるようにする。</p>
 <p><br></p>
 <h3 id="_19">締め切りを決める<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>人間の心理として、締切がないと危機感が生まれず、いつまで経ってもタスクが始まらない。</p>
-<p>そのため、締切 (リリース日) の融通がきくタスクであっても、締切を決めてしまうほうが良い。</p>
-<p>ちなみに、これは虎案件の某PM氏がよく言っていた。</p>
+<p>そのため、締切 (リリース日) の融通がきくタスクであっても、締切を決めてしまうほうがよい。</p>
+<p>ちなみに、これは虎案件の某 PM 氏がよく言っていた。</p>
 <p><br></p>
 <h2 id="05">05. 振り返り<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
-<p>KPTなどで、プロジェクトを振り返る。</p>
+<p>KPT などで、プロジェクトを振り返る。</p>
 <p><br></p>
 
 
@@ -34153,7 +34153,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 19:04:20 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -34164,11 +34164,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

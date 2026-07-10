@@ -33912,8 +33912,8 @@
 <p><br></p>
 <h2 id="01-pluto">01. plutoの仕組み<a class="headerlink" href="#01-pluto" title="Permanent link">&para;</a></h2>
 <h3 id="_2">検出項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>指定したKubernetesのバージョンに基づいて、Kubernetesリソースやカスタムリソースのマニフェストの非推奨apiVersionVersionを検証する。</p>
-<p>pluto以外では、ドキュメント、リリースノート、メトリクス (<code>apiserver_requested_deprecated_apis</code>) 、監査ログ、で非推奨apiVersionを確認できる。</p>
+<p>指定した Kubernetes のバージョンに基づいて、Kubernetes リソースやカスタムリソースのマニフェストの非推奨 apiVersionVersion を検証する。</p>
+<p>pluto 以外では、ドキュメント、リリースノート、メトリクス (<code>apiserver_requested_deprecated_apis</code>) 、監査ログ、で非推奨 apiVersion を確認できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/using-api/deprecation-guide/">https://kubernetes.io/docs/reference/using-api/deprecation-guide/</a></li>
@@ -33924,8 +33924,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="kubernetes">対応するKubernetesリソース<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h3>
-<p>標準のKubernetesリソースだけでなく、CRDや一部のカスタムリソース (Istioを含む) もサポートしている。</p>
-<p>ただ、全てのカスタムリソースをサポートしているわけではない。</p>
+<p>標準の Kubernetes リソースだけでなく、CRD や一部のカスタムリソース (Istio を含む) もサポートしている。</p>
+<p>ただ、すべてのカスタムリソースをサポートしているわけではない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">deprecated-versions</span><span class="p">:</span>
 
 <span class="w">  </span><span class="c1"># Deployment</span>
@@ -33960,7 +33960,7 @@
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<p>もしplutoが対応していない項目に関しては、以下のコマンドで確認すると良い。</p>
+<p>もし pluto が対応していない項目に関しては、以下のコマンドで確認するとよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>crd<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{range .items[*]}{.spec.group}{&quot;\t&quot;}{range .spec.versions[*]}{.name}{&quot;,&quot;}{end}{&quot;\t&quot;}{.metadata.name}{&quot;\n&quot;}{end}&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>&lt;リソースの種類<span class="w"> </span><span class="o">(</span>例：istio<span class="o">)</span><span class="w"> </span>&gt;
@@ -33999,9 +33999,9 @@ foo-cj<span class="w">   </span>foo-namespace<span class="w">   </span>CronJob<s
 NAME<span class="w">    </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
 foo-cj<span class="w">  </span>foo-namespace<span class="w">   </span>CronJob<span class="w">                   </span>batch/v1beta1<span class="w">         </span>batch/v1<span class="w">         </span><span class="nb">true</span><span class="w">         </span>v1.21.0<span class="w">         </span><span class="nb">false</span><span class="w">     </span>v1.25.0
 </code></pre></div>
-<p>CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。</p>
+<p>CI 上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすればよく、特に GitOps で CI/CD を分離している場合は、必ずしも kube-apiserver と通信する必要はない。</p>
 <p>ちなみに、ここでは <code>foo-secrets.yaml</code> を渡している。</p>
-<p>クラウドの暗号化キーを使用する場合、復号でクラウドとの通信が発生してしまうが、CI上でクラウドとの通信は不要であるため、暗号化されたまま <code>helm template</code> コマンドに渡している。</p>
+<p>クラウドの暗号化キーを使用する場合、復号でクラウドとの通信が発生してしまうが、CI 上でクラウドとの通信は不要であるため、暗号化されたまま <code>helm template</code> コマンドに渡している。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span>-
 
@@ -34011,8 +34011,8 @@ foo-cj<span class="w">  </span>foo-namespace<span class="w">   </span>CronJob<sp
 <p><br></p>
 <h3 id="-f-additional-versions">-f (--additional-versions)<a class="headerlink" href="#-f-additional-versions" title="Permanent link">&para;</a></h3>
 <h4 id="-f">▼ -fとは<a class="headerlink" href="#-f" title="Permanent link">&para;</a></h4>
-<p>plutoが検証可能なAPIグループを追加する。</p>
-<p>plutoはデフォルトで全てのKubernetesリソースを検証できるが、一方でカスタムリソースは一部にしか検証していない。</p>
+<p>pluto が検証可能な API グループを追加する。</p>
+<p>pluto はデフォルトですべての Kubernetes リソースを検証できるが、一方でカスタムリソースは一部にしか検証していない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>list-versions<span class="w"> </span>-f<span class="w"> </span>additional-versions.yaml
 </code></pre></div>
 <blockquote>
@@ -34022,7 +34022,7 @@ foo-cj<span class="w">  </span>foo-namespace<span class="w">   </span>CronJob<sp
 </ul>
 </blockquote>
 <h4 id="additional-versionsyaml">▼ <code>additional-versions.yaml</code> ファイル<a class="headerlink" href="#additional-versionsyaml" title="Permanent link">&para;</a></h4>
-<p>追加で検証するAPIグループのルールを設定する。</p>
+<p>追加で検証する API グループのルールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># version: APIグループのバージョン</span>
 <span class="c1"># kind: カスタムリソース名</span>
 <span class="c1"># deprecated-in: APIグループの特定のバージョンが非推奨になる場合、警告が出るようになるKubernetesバージョン</span>
@@ -34054,7 +34054,7 @@ foo-cj<span class="w">  </span>foo-namespace<span class="w">   </span>CronJob<sp
 <span class="w">    </span><span class="nt">replacement-available-in</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 <span class="w">    </span><span class="nt">component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio</span>
 </code></pre></div>
-<p>このファイルを <code>-f</code> オプションで渡すと、追加したAPIグループのルールを検証できるようになる。</p>
+<p>このファイルを <code>-f</code> オプションで渡すと、追加した API グループのルールを検証できるようになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>list-versions<span class="w"> </span>-f<span class="w"> </span>additional-versions.yaml
 
 ...
@@ -34063,7 +34063,7 @@ DestinationRule<span class="w">                  </span>networking.istio.io/v1be
 Gateway<span class="w">                          </span>networking.istio.io/v1alpha3<span class="w">           </span>n/a<span class="w">             </span>n/a<span class="w">          </span>n/a<span class="w">                                    </span>n/a<span class="w">             </span>istio
 VirtualService<span class="w">                   </span>networking.istio.io/v1beta1<span class="w">            </span>n/a<span class="w">             </span>n/a<span class="w">          </span>n/a<span class="w">                                    </span>n/a<span class="w">             </span>istio
 </code></pre></div>
-<p>Istioの主要カスタムリソースで <code>v1</code> がリリース (2024/05/14) されたので、<code>v1beta1</code> が非推奨になる日も近い...。</p>
+<p>Istio の主要カスタムリソースで <code>v1</code> がリリース (2024/05/14) されたので、<code>v1beta1</code> が非推奨になる日も近い...。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/blog/2024/v1-apis/#overview-of-istio-crds">https://istio.io/latest/blog/2024/v1-apis/#overview-of-istio-crds</a></li>
@@ -34072,14 +34072,14 @@ VirtualService<span class="w">                   </span>networking.istio.io/v1be
 <p><br></p>
 <h3 id="-t">-t<a class="headerlink" href="#-t" title="Permanent link">&para;</a></h3>
 <h4 id="-t_1">▼ -tとは<a class="headerlink" href="#-t_1" title="Permanent link">&para;</a></h4>
-<p>plutoで検証するターゲットコンポーネントのバージョン (<code>versions.yaml</code> ファイルの <code>target-versions</code> キー) を指定する。</p>
+<p>pluto で検証するターゲットコンポーネントのバージョン (<code>versions.yaml</code> ファイルの <code>target-versions</code> キー) を指定する。</p>
 <p>マイナーバージョン (例：<code>1.24.0</code>) まで指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesのバージョン&gt;
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">istio</span><span class="o">=</span>&lt;Istioのバージョン&gt;
 </code></pre></div>
 <p>現在と次のバージョンを指定した処理を自動化で実行すれば、アップグレードに備えられる。</p>
-<p>継続的に検出できるようにするため、CI上で自動化すると良い。</p>
+<p>継続的に検出できるようにするため、CI 上で自動化するとよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesの現在のバージョン&gt;
 
 $<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-t<span class="w"> </span><span class="nv">k8s</span><span class="o">=</span>&lt;Kubernetesの次のバージョン&gt;
@@ -34114,7 +34114,7 @@ $<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </s
 <p><br></p>
 <h2 id="03_1">03. サブコマンド<a class="headerlink" href="#03_1" title="Permanent link">&para;</a></h2>
 <h3 id="detect">detect<a class="headerlink" href="#detect" title="Permanent link">&para;</a></h3>
-<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨apiVersionを検出する。</p>
+<p>kube-apiserver からの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨 apiVersion を検出する。</p>
 <p><code>pluto detect-api-resources</code> コマンドとの違いは記入中...</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
 
@@ -34131,7 +34131,7 @@ baz-hpa<span class="w">  </span>baz-namespace<span class="w">   </span>Horizonta
 </blockquote>
 <p><br></p>
 <h3 id="detect-api-resources">detect-api-resources<a class="headerlink" href="#detect-api-resources" title="Permanent link">&para;</a></h3>
-<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨apiVersionを検出する。</p>
+<p>kube-apiserver からの返信、または標準入力で入力されたマニフェストから、リソース名単位で非推奨 apiVersion を検出する。</p>
 <p><code>pluto detect</code> コマンドとの違いは記入中...</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect-api-resources<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
 
@@ -34148,7 +34148,7 @@ baz-hpa<span class="w">  </span>baz-namespace<span class="w">   </span>Horizonta
 </blockquote>
 <p><br></p>
 <h3 id="detect-files">detect-files<a class="headerlink" href="#detect-files" title="Permanent link">&para;</a></h3>
-<p>ディレクトリ内のファイルを再帰的に検証し、リソース名単位で非推奨apiVersionを検出する。</p>
+<p>ディレクトリ内のファイルを再帰的に検証し、リソース名単位で非推奨 apiVersion を検出する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect-files<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
 </code></pre></div>
 <blockquote>
@@ -34159,7 +34159,7 @@ baz-hpa<span class="w">  </span>baz-namespace<span class="w">   </span>Horizonta
 </blockquote>
 <p><br></p>
 <h3 id="detect-helm">detect-helm<a class="headerlink" href="#detect-helm" title="Permanent link">&para;</a></h3>
-<p>kube-apiserverからの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨apiVersionを検出する。</p>
+<p>kube-apiserver からの返信、または標準入力で入力されたマニフェストから、チャート単位で非推奨 apiVersion を検出する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>detect-helm<span class="w"> </span>-<span class="w"> </span>-o<span class="w"> </span>wide
 
 NAME<span class="w">       </span>NAMESPACE<span class="w">       </span>KIND<span class="w">                      </span>VERSION<span class="w">               </span>REPLACEMENT<span class="w">      </span>DEPRECATED<span class="w">   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w">   </span>REMOVED<span class="w"> </span>IN
@@ -34175,7 +34175,7 @@ baz-chart<span class="w">  </span>baz-namespace<span class="w">   </span>Horizon
 </blockquote>
 <p><br></p>
 <h3 id="list-versions">list-versions<a class="headerlink" href="#list-versions" title="Permanent link">&para;</a></h3>
-<p>plutoで検証できるAPIグループの一覧を取得する。</p>
+<p>pluto で検証できる API グループの一覧を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pluto<span class="w"> </span>list-versions
 
 KIND<span class="w">                             </span>NAME<span class="w">                                   </span>DEPRECATED<span class="w"> </span>IN<span class="w">   </span>REMOVED<span class="w"> </span>IN<span class="w">   </span>REPLACEMENT<span class="w">                            </span>COMPONENT
@@ -34215,7 +34215,7 @@ PodSecurityPolicy<span class="w">                </span>policy/v1beta1<span clas
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -34226,11 +34226,11 @@ PodSecurityPolicy<span class="w">                </span>policy/v1beta1<span clas
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

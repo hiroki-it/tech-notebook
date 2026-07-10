@@ -33693,7 +33693,7 @@ $<span class="w"> </span>tar<span class="w"> </span>xvzf<span class="w"> </span>
 <p><br></p>
 <h2 id="02-jmeter">02. JMeterの仕組み<a class="headerlink" href="#02-jmeter" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>JMeterは、以下のコンポーネントから構成されている。</p>
+<p>JMeter は、以下のコンポーネントから構成されている。</p>
 <p><img alt="jmeter_architecuture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jmeter_architecuture.png" /></p>
 <blockquote>
 <ul>
@@ -33715,19 +33715,19 @@ $<span class="w"> </span>tar<span class="w"> </span>xvzf<span class="w"> </span>
 <p>ユーザー当たりのリクエスト送信数に相当する。</p>
 <h4 id="_7">▼ ランプアップ秒<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>リクエストを送信する期間に相当する。</p>
-<p>長くし過ぎすると、全てのリクエスト数を送信するまでに時間がかかるため、負荷が小さくなる。</p>
+<p>長くし過ぎすると、すべてのリクエスト数を送信するまでに時間がかかるため、負荷が小さくなる。</p>
 <p><br></p>
 <h2 id="03">03. ロードテスト (負荷テスト)<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_8">実行<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>以下の手順で、JMeterを使用したロードテストを実施する。</p>
+<p>以下の手順で、JMeter を使用したロードテストを実施する。</p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>URLのアクセスランキングを元に、リクエストを送信するためのURLリストを <code>csv</code> ファイルで作成する。Googleを参考にしたが、ALBアクセスログを参考にしたほうが、より正確かもしれない。</p>
+<p>URL のアクセスランキングを元に、リクエストを送信するための URL リストを <code>csv</code> ファイルで作成する。Google を参考にしたが、ALB アクセスログを参考にしたほうが、より正確かもしれない。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>JMeterのGUI版にて、シナリオ (<code>jmx</code> ファイル) を作成する。スループットコントローラーでURLリスト (<code>csv</code> ファイル) をJMeterのビルトイン関数で読み込むようにする。</p>
+<p>JMeter の GUI 版にて、シナリオ (<code>jmx</code> ファイル) を作成する。スループットコントローラーで URL リスト (<code>csv</code> ファイル) を JMeter のビルトイン関数で読み込むようにする。</p>
 <p>csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば<code>10000</code>個といった高負荷であると、ローカルマシンがフリーズするため注意すること。</p>
 </dd>
 </dl>
@@ -33739,11 +33739,11 @@ $<span class="w"> </span>tar<span class="w"> </span>xvzf<span class="w"> </span>
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>AWSリソースのスペック、VPNなど、ロードテストの周辺準備が整っていることを確認する。</p>
+<p>AWS リソースのスペック、VPN など、ロードテストの周辺準備が整っていることを確認する。</p>
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>JMeterのCUI版のバイナリファイルに、<code>jmx</code> ファイルをドラッグ＆ドロップし、テストを実施する。</p>
+<p>JMeter の CUI 版のバイナリファイルに、<code>jmx</code> ファイルをドラッグ＆ドロップし、テストを実施する。</p>
 <p>または、バイナリファイルへのパスを通した上で、以下のコマンドでも実行できる。</p>
 </dd>
 </dl>
@@ -33753,7 +33753,7 @@ $<span class="w"> </span>tar<span class="w"> </span>xvzf<span class="w"> </span>
 <span class="w">    </span>-e<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span>&lt;レポートファイルへのパス&gt;
 </code></pre></div>
-<p>ここで、GUI版を使用しない理由は、コマンドの結果に表示される説明より、GUI版では正しい結果を得られないとのことのためである。</p>
+<p>ここで、GUI 版を使用しない理由は、コマンドの結果に表示される説明より、GUI 版では正しい結果を得られないとのことのためである。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># コマンドの結果</span>
 Don<span class="err">&#39;</span>t<span class="w"> </span>use<span class="w"> </span>GUI<span class="w"> </span>mode<span class="w"> </span><span class="k">for</span><span class="w"> </span>load<span class="w"> </span>testing<span class="w"> </span>!,<span class="w"> </span>only<span class="w"> </span><span class="k">for</span><span class="w"> </span>Test<span class="w"> </span>creation<span class="w"> </span>and<span class="w"> </span>Test<span class="w"> </span>debugging.For<span class="w"> </span>load<span class="w"> </span>testing,<span class="w"> </span>use<span class="w"> </span>CLI<span class="w"> </span>Mode<span class="w"> </span><span class="o">(</span>was<span class="w"> </span>NON<span class="w"> </span>GUI<span class="o">)</span>:
 </code></pre></div>
@@ -33764,7 +33764,7 @@ Don<span class="err">&#39;</span>t<span class="w"> </span>use<span class="w"> </
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>テストを修正して新しく実行したい場合、<code>jmx</code> ファイル、<code>jtl</code> ファイル、logファイルをコピーして、バックアアップしておく。</p>
+<p>テストを修正して新しく実行したい場合、<code>jmx</code> ファイル、<code>jtl</code> ファイル、log ファイルをコピーして、バックアアップしておく。</p>
 </dd>
 </dl>
 <p><br></p>
@@ -33772,12 +33772,12 @@ Don<span class="err">&#39;</span>t<span class="w"> </span>use<span class="w"> </
 <dl>
 <dt><code>(7)</code></dt>
 <dd>
-<p>JMeterのGUI版にて、スレッドグループに、結果をツリーで表示、結果を表で表示のリスナーを追加する。</p>
+<p>JMeter の GUI 版にて、スレッドグループに、結果をツリーで表示、結果を表で表示のリスナーを追加する。</p>
 <p>これらの画面で、<code>jtl</code>ファイルを読み込むと、<code>jtl</code>ファイルに基づく集計データを得られる。</p>
 </dd>
 <dt><code>(8)</code></dt>
 <dd>
-<p>各種のAmazon CloudWatch Metricsにて、テスト時間帯に着目し、プロットから、数値を読み取る。</p>
+<p>各種の Amazon CloudWatch Metrics にて、テスト時間帯に着目し、プロットから、数値を読み取る。</p>
 </dd>
 </dl>
 <p><br></p>
@@ -33804,7 +33804,7 @@ Don<span class="err">&#39;</span>t<span class="w"> </span>use<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -33815,11 +33815,11 @@ Don<span class="err">&#39;</span>t<span class="w"> </span>use<span class="w"> </
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

@@ -33615,22 +33615,22 @@
 <h2 id="02">02. 事前情報の収集<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <p>次の番号の手順で事前情報を収集する。</p>
 <ol>
-<li>本プロジェクトはマルチリポジトリのうちの1つのリポジトリであるため、親ディレクトリに移動 (<code>cd ../</code>) し、関連コンポーネントのドキュメントやコードから情報を集めて。</li>
-<li>プロジェクトのカレントディレクトリにあるCLAUDE.mdと親ディレクトリのCLAUDE.mdを参照し、レビューに必要なプロジェクトの情報を集める</li>
-<li><code>git fetch origin &amp;&amp; git diff origin/develop...HEAD</code> を実行し、プルリクエストの作業ブランチとリモートのdevelopブランチの間の差分を知る</li>
-<li>GitHub Issueの内容の提示を私に求めて</li>
+<li>本プロジェクトはマルチリポジトリのうちの 1 つのリポジトリであるため、親ディレクトリに移動 (<code>cd ../</code>) し、関連コンポーネントのドキュメントやコードから情報を集めて。</li>
+<li>プロジェクトのカレントディレクトリにある CLAUDE.md と親ディレクトリの CLAUDE.md を参照し、レビューに必要なプロジェクトの情報を集める</li>
+<li><code>git fetch origin &amp;&amp; git diff origin/develop...HEAD</code> を実行し、プルリクエストの作業ブランチとリモートの develop ブランチの間の差分を知る</li>
+<li>GitHub Issue の内容の提示を私に求めて</li>
 </ol>
 <p><br></p>
 <h2 id="03-pr">03. PRの説明<a class="headerlink" href="#03-pr" title="Permanent link">&para;</a></h2>
 <h3 id="_1">戦略的設計の観点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>PRはドメイン駆動設計の戦略的設計に基づいて説明して。要望は後述の通り。</p>
+<p>PR はドメイン駆動設計の戦略的設計に基づいて説明して。要望は後述の通り。</p>
 <ul>
 <li>ドメインエキスパートが誰かを仮定して</li>
 <li>ユースケース図を作成して</li>
 <li>オブジェクト図を作成して</li>
 </ul>
 <h3 id="_2">戦術的設計の観点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>PRはドメイン駆動設計の戦術的設計に基づいて説明して。要望は後述の通り。</p>
+<p>PR はドメイン駆動設計の戦術的設計に基づいて説明して。要望は後述の通り。</p>
 <p>次の戦術的設計表を参照し、どのパターンを実装しているか。どのパターンに属するロジックを追加・変更したのかを教えて。</p>
 <p>表には概要にしか記載していないので、インターネットから正しい情報をインプットして。</p>
 <table>
@@ -33865,15 +33865,15 @@
 <h3 id="_4">機能設計に関して<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>次に対処した実装になっているかを確認する。</p>
 <ul>
-<li>機能設計がGitHub Issueの課題を満たす実装になっているか</li>
+<li>機能設計が GitHub Issue の課題を満たす実装になっているか</li>
 <li>バックエンドの観点<ul>
-<li>ユーザーのユースケースを満たすCRUDを実装できているか</li>
-<li>モデルやDBのデータ型は適切か</li>
+<li>ユーザーのユースケースを満たす CRUD を実装できているか</li>
+<li>モデルや DB のデータ型は適切か</li>
 <li>ビジネスロジックがドメイン層以外に流出していないか</li>
 </ul>
 </li>
 <li>フロントエンドの観点<ul>
-<li>ユースケースを満たすUIを実装できているか</li>
+<li>ユースケースを満たす UI を実装できているか</li>
 </ul>
 </li>
 </ul>
@@ -33881,20 +33881,20 @@
 <p>次に対処した実装になっているかを確認する。</p>
 <ol>
 <li>安全性の観点<ul>
-<li>ハードコードされた認証情報、APIキー、トークン</li>
-<li>SQLインジェクションの脆弱性</li>
-<li>XSS脆弱性</li>
+<li>ハードコードされた認証情報、API キー、トークン</li>
+<li>SQL インジェクションの脆弱性</li>
+<li>XSS 脆弱性</li>
 <li>パストラバーサルのリスク</li>
 </ul>
 </li>
 <li>性能の観点<ul>
-<li>ストレージI/Oの性能問題<ul>
-<li>N+1問題がないか</li>
-<li>WHERE句やJOINのキーにインデックスが存在するか</li>
+<li>ストレージ I/O の性能問題<ul>
+<li>N+1 問題がないか</li>
+<li>WHERE 句や JOIN のキーにインデックスが存在するか</li>
 <li>ページネーションを使用せずに、大量のデータ量を取得して一ページに表示していないか</li>
 </ul>
 </li>
-<li>ネットワークI/Oの性能問題</li>
+<li>ネットワーク I/O の性能問題</li>
 <li>反復処理の問題<ul>
 <li>非効率な処理がないか</li>
 <li>ループ内で線形探索処理を実行してしまっていないか</li>
@@ -33912,8 +33912,8 @@
 </ul>
 </li>
 <li>保守性の観点<ul>
-<li>バックエンド（すべての領域）、フロントエンド（Presener、Validators、ViewModelの領域のみ）の観点<ul>
-<li>try-catchが適切に使用されており、またcatchしたエラーの型に応じて、適切なハンドリングを実装できているか。</li>
+<li>バックエンド（すべての領域）、フロントエンド（Presener、Validators、ViewModel の領域のみ）の観点<ul>
+<li>try-catch が適切に使用されており、また catch したエラーの型に応じて、適切なハンドリングを実装できているか。</li>
 <li>早期リターンを使用できているか。</li>
 <li>関数や変数へのロジック切り分けは汎用性や意味づけが必要な場合のみ実施するべきで、必要以上に実施していないか。</li>
 <li>引数の型を定義しているか。返却値型は過剰なので不要である。ただし、プロダクトによっては <code>export</code>
@@ -33923,7 +33923,7 @@
 </ul>
 </li>
 <li>起こる可能性が 低いエッジケースを考慮できているか。ただし、気にしすぎと我々が判断した場合、エッジケースには対処しない。</li>
-<li>APIを実装する場合、バリデーションがあるか</li>
+<li>API を実装する場合、バリデーションがあるか</li>
 <li>型推論が可能な言語では、型定義は必要最低限で問題ない。最低限の型定義になっているか。</li>
 <li>既存の関数を使用すれば少ないロジックで済むのに、それを使用せずに再発明してしまっていないか</li>
 <li>コードの変更行ができるだけ少なくなるように提案する。そのために、各関数の凝集度が高くなるように、必要に応じて既存の関数と新しい関数を統合する。ただし、凝集度が低くなるようであれば、必ずしも既存の関数と新しい関数を統合する必要はない。</li>
@@ -33932,7 +33932,7 @@
 <li>ソートバイモード：<code>name</code>、<code>type</code></li>
 <li>ソートオーダーモード：<code>asc</code>、<code>desc</code></li>
 <li>フィルターモード：<code>OR</code>、<code>AND</code></li>
-<li>UI閲覧モード：<code>group</code>、<code>list</code>、<code>panel</code></li>
+<li>UI 閲覧モード：<code>group</code>、<code>list</code>、<code>panel</code></li>
 <li>なんらかのタグ名：<code>タグ名なし</code></li>
 <li>レスポンスコード：<code>200</code>、<code>404</code></li>
 <li>時間範囲：<code>{id:"1d",value:1,label:"前日"}}</code></li>
@@ -33941,11 +33941,11 @@
 </ul>
 </li>
 <li>フロントエンド（View）の観点<ul>
-<li>ViewModelから取得したデータを適切にUIに展開できているか</li>
-<li>変更したUIは特定のユースケース時のみ表示されるようになっているか</li>
-<li>変更したUIがほかViewに影響を与えていないか</li>
+<li>ViewModel から取得したデータを適切に UI に展開できているか</li>
+<li>変更した UI は特定のユースケース時のみ表示されるようになっているか</li>
+<li>変更した UI がほか View に影響を与えていないか</li>
 <li>コンポーネントへのロジック切り分けは汎用性や意味づけが必要な場合のみ実施するべきで、必要以上に実施していないか。</li>
-<li>エラー発生時にUIの表示は崩れないか</li>
+<li>エラー発生時に UI の表示は崩れないか</li>
 <li>既存のコンポーネントを使用すれば少ないロジックで済むのに、それを使用せずに再発明してしまっていないか</li>
 </ul>
 </li>
@@ -33954,59 +33954,59 @@
 </ol>
 <h3 id="_6">テスト設計に関して<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ol>
-<li>バックエンド、フロントエンド（Presener、Validators、ViewModelのみ）の観点<ul>
+<li>バックエンド、フロントエンド（Presener、Validators、ViewModel のみ）の観点<ul>
 <li>適切なテストスイート設計になっているか<ul>
 <li><code>describe("&lt;パブリックな関数名&gt;")</code> &gt; <code>describe("&lt;テストスイート種別")</code> &gt; <code>it("&lt;正常系または異常系のテストケース&gt;")</code></li>
 </ul>
 </li>
 <li>必要なテストコードを実装できているか</li>
 <li>正常系のテストが冗長ではないか（ほかの正常系で検証できていることを再度検証している）</li>
-<li>UIバリデーションやDBカラム型によって、起こり得ない入力値をテストしてしまっていないか</li>
+<li>UI バリデーションや DB カラム型によって、起こり得ない入力値をテストしてしまっていないか</li>
 <li>正常系と異常系のそれぞれで境界値分析を実施できているか</li>
 </ul>
 </li>
 <li>フロントエンド（View）の観点<ul>
-<li>E2Eテストがあるか</li>
+<li>E2E テストがあるか</li>
 </ul>
 </li>
 </ol>
 <h3 id="_7">修正依頼提示のための修正サンプル<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>Claude Codeがファイルの内容を変更したいとき、まずいくつかの変更内容を提案し、承諾を得てから変更してください。</p>
+<p>Claude Code がファイルの内容を変更したいとき、まずいくつかの変更内容を提案し、承諾を得てから変更してください。</p>
 <p><br></p>
 <h2 id="05">05. 依存関係の説明<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>実装差分から関数や定数のimportとexportの関係を抽出する。この時、外部モジュールのimportは除外する。</p>
+<p>実装差分から関数や定数の import と export の関係を抽出する。このとき、外部モジュールの import は除外する。</p>
 </li>
 <li>
-<p>関数や定数のimportとexportの関係において、importがファイル中に1つ以上あった場合のみ、フローチャート（<code>flowchart</code>）をMermaidで必ず作成すること。</p>
+<p>関数や定数の import と export の関係において、import がファイル中に 1 つ以上あった場合のみ、フローチャート（<code>flowchart</code>）を Mermaid で必ず作成すること。</p>
 </li>
 </ol>
 <ul>
 <li>フローチャート（<code>flowchart</code>）のメタデータ（<code>---</code> と <code>---</code> で挟まれる部分）の <code>title:</code> を『新しく実装されたロジックの依存方向』とする</li>
-<li>フローチャートのグラフの方向をLRで表す</li>
-<li>ファイル間のimport方向を矢印（<code>---&gt;</code>）で表し、importしている関数や定数名を矢印のコメントにする（例：foo.tsファイルで <code>import { bar } from "~/app/models/bar.ts";</code> のような実装が追加された場合、<code>foo.ts -- bar --&gt; bar.ts</code> となる）</li>
+<li>フローチャートのグラフの方向を LR で表す</li>
+<li>ファイル間の import 方向を矢印（<code>---&gt;</code>）で表し、import している関数や定数名を矢印のコメントにする（例：foo.ts ファイルで <code>import { bar } from "~/app/models/bar.ts";</code> のような実装が追加された場合、<code>foo.ts -- bar --&gt; bar.ts</code> となる）</li>
 <li>矢印はハイフン３つ以上（<code>---&gt;</code> や <code>----&gt;</code>）にする</li>
 <li>ファイル名を四角いノード（例：<code>[foo.ts]</code>）で表す</li>
 <li>ファイルが所属するディレクトリ名をサブグラフ（例：<code>subgraph models ["./app/models"]</code>）で表し、入れ子のサブグラフは禁止である</li>
-<li>フローチャート、メタデータ、サブグラフといったMermaidの用語については、ドキュメントの <a href="https://docs.mermaidchart.com/mermaid-oss/syntax/flowchart.html#flowcharts-basic-syntax">https://docs.mermaidchart.com/mermaid-oss/syntax/flowchart.html#flowcharts-basic-syntax</a> を参考にする</li>
+<li>フローチャート、メタデータ、サブグラフといった Mermaid の用語については、ドキュメントの <a href="https://docs.mermaidchart.com/mermaid-oss/syntax/flowchart.html#flowcharts-basic-syntax">https://docs.mermaidchart.com/mermaid-oss/syntax/flowchart.html#flowcharts-basic-syntax</a> を参考にする</li>
 </ul>
 <ol>
-<li>関数や定数のimportとexportの関係から、シーケンス（<code>sequenceDiagram</code>）をMermaidで必ず作成すること。</li>
+<li>関数や定数の import と export の関係から、シーケンス（<code>sequenceDiagram</code>）を Mermaid で必ず作成すること。</li>
 </ol>
 <ul>
 <li>シーケンス（<code>sequenceDiagram</code>）のメタデータ（<code>---</code> と <code>---</code> で挟まれる部分）の <code>title:</code> を『新しく実装されたロジックの呼び出しと返却』とする</li>
 <li>シーケンスはフローチャートに登場したすべての依存関係を網羅し、依存関係のまとまりごとに別々のシーケンスを作成すること</li>
 <li>ファイル名でパーティシパント（例：<code>participant foo.ts</code>）で表す</li>
 <li>処理の呼び出しを実線の矢印（<code>-&gt;</code>）、その返却を点線の矢印（<code>--&gt;</code>）で表す</li>
-<li>シーケンスやパーティシパントといったMermaidの用語については、ドキュメントの <a href="https://docs.mermaidchart.com/mermaid-oss/syntax/sequenceDiagram.html">https://docs.mermaidchart.com/mermaid-oss/syntax/sequenceDiagram.html</a> を参考にする</li>
+<li>シーケンスやパーティシパントといった Mermaid の用語については、ドキュメントの <a href="https://docs.mermaidchart.com/mermaid-oss/syntax/sequenceDiagram.html">https://docs.mermaidchart.com/mermaid-oss/syntax/sequenceDiagram.html</a> を参考にする</li>
 </ul>
 <ol>
 <li>
 <p>テキストを必ず日本語（ja-JP）で出力すること。</p>
 </li>
 <li>
-<p>作成したフローチャートをDiagramセクションに、すべてのシーケンスをDescriptionセクションに出力すること。</p>
+<p>作成したフローチャートを Diagram セクションに、すべてのシーケンスを Description セクションに出力すること。</p>
 </li>
 </ol>
 <p><br></p>
@@ -34030,7 +34030,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 14:56:10 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -34041,11 +34041,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

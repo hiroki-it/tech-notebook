@@ -34229,7 +34229,7 @@
 <tr>
 <td>stylecheck</td>
 <td>Effective Goに則った方法で実装しているかを検証する。</td>
-<td>パッケージ名にアンダースコアを使用していないか。キャメルケースの変数名に略語 (例：HTTP、IDなど) を使う場合、略語は全て大文字にする。</td>
+<td>パッケージ名にアンダースコアを使用していないか。キャメルケースの変数名に略語 (例：HTTP、IDなど) を使う場合、略語はすべて大文字にする。</td>
 </tr>
 <tr>
 <td>whitespace</td>
@@ -34323,7 +34323,7 @@
 <p>テストファイルのパッケージ名が、同じディレクトリ配下にある実際の処理ファイルのパッケージ名と同じ場合、それはホワイトボックステストになる。</p>
 <h4 id="_12">▼ ブラックボックス風のホワイトテスト<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>テストファイルのパッケージ名が、同じディレクトリ配下にある実際の処理ファイルに『<code>_test</code>』を加えたパッケージ名の場合、それはブラックボックステスト風のホワイトテストになる。</p>
-<p>補足として、Goでは1つのディレクトリ内に1つのパッケージ名しか宣言できないが、ブラックボックステストのために『<code>_test</code>』を加えることは許されている。</p>
+<p>補足として、Go では 1 つのディレクトリ内に 1 つのパッケージ名しか宣言できないが、ブラックボックステストのために『<code>_test</code>』を加えることは許されている。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36">https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36</a></li>
@@ -34332,7 +34332,7 @@
 <p><br></p>
 <h3 id="_13">インターフェースの導入<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>テストできない構造体はモックに差し替えられることなる。</p>
-<p>この時、あらかじめ実際の構造体をインターフェースの実装にしておく。</p>
+<p>このとき、あらかじめ実際の構造体をインターフェースの実装にしておく。</p>
 <p>テスト時に、モックもインターフェイスの実装とすれば、モックが実際の構造体と同じデータ型として認識されるようになる。</p>
 <p>これにより、モックに差し替えられる。</p>
 <p><br></p>
@@ -34540,9 +34540,9 @@
 <p><br></p>
 <h3 id="_23">テストケース<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <h4 id="_24">▼ テストケース名<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p>ユニットテストの命名規則は、Goで一般的な方法（<code>&lt;テストスイート名&gt;_&lt;テストケース名&gt;</code>）にする。</p>
-<p><code>&lt;テストケース名&gt;</code> は、<code>〇〇の場合に~するはず</code>という意味で、 <code>&lt;助動詞&gt;&lt;動詞&gt;...When...</code> にする。</p>
-<p>つまり、<code>&lt;テストスイート名&gt;_&lt;助動詞&gt;&lt;動詞&gt;...When...</code>のようになる。</p>
+<p>ユニットテストの命名規則は、Go で一般的な方法（<code>&lt;テストスイート名&gt;_&lt;テストケース名&gt;</code>）にする。</p>
+<p><code>&lt;テストケース名&gt;</code> は、<code>〇〇の場合に~するはず</code> という意味で、 <code>&lt;助動詞&gt;&lt;動詞&gt;...When...</code> にする。</p>
+<p>つまり、<code>&lt;テストスイート名&gt;_&lt;助動詞&gt;&lt;動詞&gt;...When...</code> のようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">&quot;testing&quot;</span>
@@ -34670,15 +34670,15 @@
 <p><br></p>
 <h3 id="_27">外部依存のテスト<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="go_1">▼ Goのモックの特徴<a class="headerlink" href="#go_1" title="Permanent link">&para;</a></h4>
-<p>Goは、PHP・JavaScript・Python・TypeScriptのようにランタイムでプライベート関数の内部実装を差し替える（モンキーパッチ）ことができない。</p>
+<p>Go は、PHP・JavaScript・Python・TypeScript のようにランタイムでプライベート関数の内部実装を差し替える（モンキーパッチ）ことができない。</p>
 <p>そのため、外部依存のテスト時には次のいずれかの方法を使用する</p>
 <ul>
 <li>テスト時は実際の処理を使用し、外部を差し替えしない</li>
 <li>外部依存の処理をインターフェースにし、テスト時はインターフェースを介してモック構造体に差し替える</li>
 </ul>
-<p>Goでは、基本的に『実際の処理を使用し、差し替えしない』方法を使用する。</p>
+<p>Go では、基本的に『実際の処理を使用し、差し替えしない』方法を使用する。</p>
 <h4 id="httphttptestnewserver">▼ 外部のHTTPサーバー（<code>httptest.NewServer</code>）<a class="headerlink" href="#httphttptestnewserver" title="Permanent link">&para;</a></h4>
-<p>外部のHTTPサーバーへのリクエストをテストする場合、<code>httptest.NewServer</code>で実際のHTTPサーバーを起動し、自身に対してリクエストを送信する。</p>
+<p>外部の HTTP サーバーへのリクエストをテストする場合、<code>httptest.NewServer</code> で実際の HTTP サーバーを起動し、自身に対してリクエストを送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -34741,7 +34741,7 @@
 </ul>
 </blockquote>
 <h4 id="ttempdir">▼ 外部のファイルシステム（<code>t.TempDir</code>）<a class="headerlink" href="#ttempdir" title="Permanent link">&para;</a></h4>
-<p>外部ファイルシステムのファイル操作をテストする場合、<code>t.TempDir()</code>でテスト用の一時ディレクトリを作成し、実際のファイルを操作する。</p>
+<p>外部ファイルシステムのファイル操作をテストする場合、<code>t.TempDir()</code> でテスト用の一時ディレクトリを作成し、実際のファイルを操作する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">test</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -34827,7 +34827,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月23日 21:19:00 JST">2026-05-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -34838,11 +34838,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

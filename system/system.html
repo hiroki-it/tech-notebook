@@ -34114,10 +34114,10 @@
 <p><br></p>
 <h2 id="02-web">02. Webシステム<a class="headerlink" href="#02-web" title="Permanent link">&para;</a></h2>
 <h3 id="web">Webシステムとは<a class="headerlink" href="#web" title="Permanent link">&para;</a></h3>
-<p>システムのうちで、特にWeb技術に関するもののこと。</p>
-<p>ハードウェアとしてのWebサーバー/Appサーバー/DBサーバーと、Webに関するソフトウェアからなる。</p>
-<p>近年は、仮想環境を使用してWebシステムのハードウェア部分を作成することが多い。</p>
-<p>そのため、Web/App/DBサーバーではなく、仮想Web/App/DB環境と呼ぶほうが適切かもしれない。</p>
+<p>システムのうちで、特に Web 技術に関するもののこと。</p>
+<p>ハードウェアとしての Web サーバー/App サーバー/DB サーバーと、Web に関するソフトウェアからなる。</p>
+<p>近年は、仮想環境を使用して Web システムのハードウェア部分を作成することが多い。</p>
+<p>そのため、Web/App/DB サーバーではなく、仮想 Web/App/DB 環境と呼ぶほうが適切かもしれない。</p>
 <p><img alt="web-server_app-server_db-server" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/web-server_app-server_db-server.png" /></p>
 <blockquote>
 <ul>
@@ -34127,7 +34127,7 @@
 <p><br></p>
 <h3 id="web_1">Webシステムのミドルウェア<a class="headerlink" href="#web_1" title="Permanent link">&para;</a></h3>
 <h4 id="webapp">▼ Webサーバー、Appサーバーが必要な場合<a class="headerlink" href="#webapp" title="Permanent link">&para;</a></h4>
-<p>NginxまたはEnvoyを使用する場合で考えるとする。</p>
+<p>Nginx または Envoy を使用する場合で考えるとする。</p>
 <table>
 <thead>
 <tr>
@@ -34189,7 +34189,7 @@
 </ul>
 </blockquote>
 <h4 id="webapp_1">▼ Webサーバー、Appサーバーが不要な場合<a class="headerlink" href="#webapp_1" title="Permanent link">&para;</a></h4>
-<p>Go、JavaScript、ではWebサーバーとAppサーバーがいらない。</p>
+<p>Go、JavaScript、では Web サーバーと App サーバーがいらない。</p>
 <table>
 <thead>
 <tr>
@@ -34236,11 +34236,11 @@
 <p><br></p>
 <h2 id="02-02">02-02. フォワード/リバースプロキシサーバー<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="_5">フォワード/リバースプロキシサーバーとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>クライアントとWebサーバーの間にあり、Webサーバーへのロードバランシングやキャッシュ作成を担う。</p>
+<p>クライアントと Web サーバーの間にあり、Web サーバーへのロードバランシングやキャッシュ作成を担う。</p>
 <p><br></p>
 <h3 id="web_2">Webサーバーとの違い<a class="headerlink" href="#web_2" title="Permanent link">&para;</a></h3>
-<p>Webサーバーとは異なり、静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) を直接的に提供できない。</p>
-<p>一方で、Webサーバーはロードバランシングが苦手である。</p>
+<p>Web サーバーとは異なり、静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) を直接的に提供できない。</p>
+<p>一方で、Web サーバーはロードバランシングが苦手である。</p>
 <p><br></p>
 <h3 id="_6">能力<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ロードバランシング<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -34271,7 +34271,7 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ 静的コンテンツのキャッシュ作成<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>以前にWebサーバーが返却した静的コンテンツのキャッシュを作成する。</p>
+<p>以前に Web サーバーが返却した静的コンテンツのキャッシュを作成する。</p>
 <p><img alt="プロキシサーバーのキャッシュ能力" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロキシサーバーのキャッシュ能力.png" /></p>
 <table>
 <thead>
@@ -34299,7 +34299,7 @@
 </ul>
 </blockquote>
 <h4 id="ssltls">▼ SSL/TLS終端<a class="headerlink" href="#ssltls" title="Permanent link">&para;</a></h4>
-<p>リバースプロキシをSSL/TLS終端として、HTTPプロトコルでWebサーバーにリクエストをロードバランシングする。</p>
+<p>リバースプロキシを SSL/TLS 終端として、HTTP プロトコルで Web サーバーにリクエストをロードバランシングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://pig-log.com/nginx-reverseproxy-ssl/">https://pig-log.com/nginx-reverseproxy-ssl/</a></li>
@@ -34312,8 +34312,8 @@
 <p><img alt="proxy-server" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/proxy-server.png" /></p>
 <h4 id="_11">▼ クラウド上の場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>クラウドの場合も、仮想環境が作成されるのみで、配置場所は同じである。</p>
-<p>各CDNが提供するDNS (例：Akamaiなら <code>&lt;ドメイン名&gt;.edgekey.net</code>、AWSなら <code>&lt;自動発行されるランダム文字列&gt;.cloudfront.net</code>) を、ドメインレジストリのレコードに登録する。</p>
-<p>このDNSからエッジサーバーのIPアドレスを正引きできる。</p>
+<p>各 CDN が提供する DNS (例：Akamai なら <code>&lt;ドメイン名&gt;.edgekey.net</code>、AWS なら <code>&lt;自動発行されるランダム文字列&gt;.cloudfront.net</code>) を、ドメインレジストリのレコードに登録する。</p>
+<p>この DNS からエッジサーバーの IP アドレスを正引きできる。</p>
 <ul>
 <li>Akamai</li>
 <li>Amazon CloudFront</li>
@@ -34329,13 +34329,13 @@
 <p><br></p>
 <h2 id="02-03-web">02-03. Webサーバー<a class="headerlink" href="#02-03-web" title="Permanent link">&para;</a></h2>
 <h3 id="web_3">Webサーバーとは<a class="headerlink" href="#web_3" title="Permanent link">&para;</a></h3>
-<p>静的コンテンツを返却するミドルウェア (例：Apache、Nginxなど) を稼働させるためのサーバーのこと。</p>
-<p>また、WebサーバーかつAppサーバーのミドルウェアとして動作する (例：NGINX Unit) がインストールされていることもある。</p>
+<p>静的コンテンツを返却するミドルウェア (例：Apache、Nginx など) を稼働させるためのサーバーのこと。</p>
+<p>また、Web サーバーかつ App サーバーのミドルウェアとして動作する (例：NGINX Unit) がインストールされていることもある。</p>
 <p><br></p>
 <h3 id="_12">能力<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ 静的コンテンツのレスポンス<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>ブラウザから静的コンテンツのみのリクエストがあった場合、静的コンテンツをレスポンスする。</p>
-<p>Appサーバーにはリクエストを送信しない。</p>
+<p>App サーバーにはリクエストを送信しない。</p>
 <table>
 <thead>
 <tr>
@@ -34375,8 +34375,8 @@
 </tbody>
 </table>
 <h4 id="_14">▼ 静的 + 動的コンテンツのレスポンス<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>静的コンテンツと動的コンテンツの両方のリクエストがあった場合、Appサーバーに動的コンテンツのリクエストを送信する。</p>
-<p>Appサーバーからレスポンスを受け取り、ブラウザにレスポンスを実行する。</p>
+<p>静的コンテンツと動的コンテンツの両方のリクエストがあった場合、App サーバーに動的コンテンツのリクエストを送信する。</p>
+<p>App サーバーからレスポンスを受け取り、ブラウザにレスポンスを実行する。</p>
 <table>
 <thead>
 <tr>
@@ -34416,7 +34416,7 @@
 </tbody>
 </table>
 <h4 id="ssltls_1">▼ SSL/TLS終端<a class="headerlink" href="#ssltls_1" title="Permanent link">&para;</a></h4>
-<p>WebサーバーをSSL/TLS終端として、HTTPプロトコルでAppサーバーにリクエストをロードバランシングする。</p>
+<p>Web サーバーを SSL/TLS 終端として、HTTP プロトコルで App サーバーにリクエストをロードバランシングする。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.f5.com/ja_jp/glossary/https">https://www.f5.com/ja_jp/glossary/https</a></li>
@@ -34425,12 +34425,12 @@
 <p><br></p>
 <h2 id="02-04-app">02-04. Appサーバー<a class="headerlink" href="#02-04-app" title="Permanent link">&para;</a></h2>
 <h3 id="app">Appサーバーとは<a class="headerlink" href="#app" title="Permanent link">&para;</a></h3>
-<p>動的コンテンツを返却するミドルウェア (例：PHPならPHP-FPM、JavaならApache Tomcat) を稼働させるためのサーバーのこと。</p>
+<p>動的コンテンツを返却するミドルウェア (例：PHP なら PHP-FPM、Java なら Apache Tomcat) を稼働させるためのサーバーのこと。</p>
 <p><br></p>
 <h3 id="_15">能力<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="_16">▼ 動的コンテンツのレスポンス<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p>Webサーバーから動的コンテンツのリクエストがあった場合、プログラミング言語を言語プロセッサーで翻訳し、DBサーバーにクエリを送信する。</p>
-<p>DBサーバーからのレスポンスを受け取り、Webサーバーに動的なコンテンツのレスポンスを実行する。</p>
+<p>Web サーバーから動的コンテンツのリクエストがあった場合、プログラミング言語を言語プロセッサーで翻訳し、DB サーバーにクエリを送信する。</p>
+<p>DB サーバーからのレスポンスを受け取り、Web サーバーに動的なコンテンツのレスポンスを実行する。</p>
 <table>
 <thead>
 <tr>
@@ -34472,7 +34472,7 @@
 <p><br></p>
 <h2 id="02-05-db">02-05. DBサーバー<a class="headerlink" href="#02-05-db" title="Permanent link">&para;</a></h2>
 <h3 id="db">DBサーバーとは<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
-<p>DB管理システムを稼働させるためのサーバーのこと。</p>
+<p>DB 管理システムを稼働させるためのサーバーのこと。</p>
 <p><br></p>
 
 
@@ -34494,7 +34494,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     

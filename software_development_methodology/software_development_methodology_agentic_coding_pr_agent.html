@@ -34243,7 +34243,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-pr-agent">01. PR Agentとは<a class="headerlink" href="#01-pr-agent" title="Permanent link">&para;</a></h2>
-<p>メンションに応じて自動でPRの内容を読み取り、レビューを実施する。</p>
+<p>メンションに応じて自動で PR の内容を読み取り、レビューを実施する。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h3>
@@ -34295,51 +34295,51 @@
 <h2 id="_2">自動レビュー<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="_3">レビュー依頼前<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ol>
-<li>PR AgentをCIに導入する</li>
-<li>開発者はPR上でPR-Agentにコメントをもらい、レビューをお願いする前に、ある程度問題点を修正しておく</li>
+<li>PR Agent を CI に導入する</li>
+<li>開発者は PR 上で PR-Agent にコメントをもらい、レビューをお願いする前に、ある程度問題点を修正しておく</li>
 </ol>
 <p><br></p>
 <h3 id="_4">レビュー依頼後<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <ol>
-<li>レビュアーは手元で生成AIに git diff develop をさせて、作業ブランチとdevelopブランチの差分を読み取らせる</li>
-<li>生成AIに次を読み取らせ、レビューしてもらう</li>
+<li>レビュアーは手元で生成 AI に git diff develop をさせて、作業ブランチと develop ブランチの差分を読み取らせる</li>
+<li>生成 AI に次を読み取らせ、レビューしてもらう</li>
 </ol>
 <ul>
 <li>保守性や可読性などのルールをまとめたオリジナルのドキュメント</li>
 <li>すでに作成いただいている仕様書</li>
 </ul>
 <ol>
-<li>レビュアーは自身の観点と生成AIの観点を合わせて、必要であればコメントをする</li>
+<li>レビュアーは自身の観点と生成 AI の観点を合わせて、必要であればコメントをする</li>
 </ol>
 <p><br></p>
 <h2 id="02-webhook">02. Webhook<a class="headerlink" href="#02-webhook" title="Permanent link">&para;</a></h2>
 <h3 id="webhookci">Webhookを使用したCI発火<a class="headerlink" href="#webhookci" title="Permanent link">&para;</a></h3>
-<p>PR上で <code>/&lt;コマンド&gt;</code> を実行することで、Webhookを介してPR-Agentを実行できる。</p>
-<p>プッシュのたびにPR-Agentを実行させるとレビューへの修正負荷が高いため、PR-Agentの発火はWebhookで制御したほうが良い。</p>
+<p>PR 上で <code>/&lt;コマンド&gt;</code> を実行することで、Webhook を介して PR-Agent を実行できる。</p>
+<p>プッシュのたびに PR-Agent を実行させるとレビューへの修正負荷が高いため、PR-Agent の発火は Webhook で制御したほうがよい。</p>
 <p><br></p>
 <h3 id="describe">/describe<a class="headerlink" href="#describe" title="Permanent link">&para;</a></h3>
-<p>変更内容から、自動的にMRの種別や変更内容などをdescriptionに記載する。</p>
+<p>変更内容から、自動的に MR の種別や変更内容などを description に記載する。</p>
 <h3 id="review">/review<a class="headerlink" href="#review" title="Permanent link">&para;</a></h3>
-<p>変更したコードの問題点やセキュリティ的な脆弱性などをレビューし、PRにコメントする。</p>
+<p>変更したコードの問題点やセキュリティ的な脆弱性などをレビューし、PR にコメントする。</p>
 <h3 id="improve">/improve<a class="headerlink" href="#improve" title="Permanent link">&para;</a></h3>
-<p>コードの改善点をMRにコメントする。</p>
+<p>コードの改善点を MR にコメントする。</p>
 <h3 id="ask">/ask &lt;質問内容&gt;<a class="headerlink" href="#ask" title="Permanent link">&para;</a></h3>
-<p>PR全体や特定の行について質問する。</p>
+<p>PR 全体や特定の行について質問する。</p>
 <h3 id="config">/config<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
-<p>現在のpr-agentの設定を出力する。</p>
+<p>現在の pr-agent の設定を出力する。</p>
 <h3 id="help">/help<a class="headerlink" href="#help" title="Permanent link">&para;</a></h3>
-<p>pr-agentの使い方を出力する。</p>
+<p>pr-agent の使い方を出力する。</p>
 <p><br></p>
 <h2 id="03-config">03. configセクション<a class="headerlink" href="#03-config" title="Permanent link">&para;</a></h2>
 <h3 id="model">model<a class="headerlink" href="#model" title="Permanent link">&para;</a></h3>
-<p>メインで使用するmodelを設定する。</p>
+<p>メインで使用する model を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[config]</span>
 
 <span class="n">model</span><span class="o">=</span><span class="s2">&quot;bedrock/us.anthropic.claude-3-7-sonnet-20250219-v1:0&quot;</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="fallback_models">fallback_models<a class="headerlink" href="#fallback_models" title="Permanent link">&para;</a></h3>
-<p>処理に失敗した際のfallbackで使用するmodelを設定する。</p>
+<p>処理に失敗した際の fallback で使用する model を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[config]</span>
 
 <span class="n">fallback_models</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bedrock/anthropic.claude-3-haiku-20240307-v1:0&quot;</span><span class="p">]</span>
@@ -34366,7 +34366,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="use">use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
-<p>Webhook側ではなく本リポジトリ側の設定を優先する。</p>
+<p>Webhook 側ではなく本リポジトリ側の設定を優先する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[config]</span>
 
 <span class="n">use_repo_settings_file</span><span class="o">=</span><span class="kc">true</span>
@@ -34381,14 +34381,14 @@
 <p><br></p>
 <h2 id="04-github_app">04 github_appセクション<a class="headerlink" href="#04-github_app" title="Permanent link">&para;</a></h2>
 <h3 id="handle_push_trigger">handle_push_trigger<a class="headerlink" href="#handle_push_trigger" title="Permanent link">&para;</a></h3>
-<p>プッシュでPR-Agentが起動するフラグを設定する。</p>
+<p>プッシュで PR-Agent が起動するフラグを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[github_app]</span>
 <span class="n">handle_push_trigger</span><span class="o">=</span><span class="kc">false</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="05-pr_description">05. pr_descriptionセクション<a class="headerlink" href="#05-pr_description" title="Permanent link">&para;</a></h2>
 <h3 id="enable_help">enable_help<a class="headerlink" href="#enable_help" title="Permanent link">&para;</a></h3>
-<p>Helpセクションを設定する。</p>
+<p>Help セクションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
 
 <span class="n">enable_help_comment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
@@ -34396,21 +34396,21 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="enable_pr_diagram">enable_pr_diagram<a class="headerlink" href="#enable_pr_diagram" title="Permanent link">&para;</a></h3>
-<p>Diagramセクションを設定する。</p>
+<p>Diagram セクションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
 
 <span class="n">enable_pr_diagram</span><span class="o">=</span><span class="kc">true</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="enable_pr_type">enable_pr_type<a class="headerlink" href="#enable_pr_type" title="Permanent link">&para;</a></h3>
-<p>PR Typeセクションを設定する。</p>
+<p>PR Type セクションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
 
 <span class="n">enable_pr_type</span><span class="o">=</span><span class="kc">false</span>
 </code></pre></div>
 <h3 id="inline_file_summarycollapsible_file_listenable_semantic_files_types">inline_file_summary、collapsible_file_list、enable_semantic_files_types<a class="headerlink" href="#inline_file_summarycollapsible_file_listenable_semantic_files_types" title="Permanent link">&para;</a></h3>
 <p><br></p>
-<p>Changes walkthroughセクションを設定する。</p>
+<p>Changes walkthrough セクションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
 
 <span class="n">inline_file_summary</span><span class="o">=</span><span class="kc">false</span>
@@ -34418,7 +34418,7 @@
 <span class="n">enable_semantic_files_types</span><span class="o">=</span><span class="kc">false</span>
 </code></pre></div>
 <h3 id="enable_help_1">enable_help<a class="headerlink" href="#enable_help_1" title="Permanent link">&para;</a></h3>
-<p>Helpセクションを設定する。</p>
+<p>Help セクションを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
 
 <span class="n">enable_help_comment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
@@ -34426,7 +34426,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="extra_instructions">extra_instructions<a class="headerlink" href="#extra_instructions" title="Permanent link">&para;</a></h3>
-<p>PRの説明欄に関するプロンプトを設定する。</p>
+<p>PR の説明欄に関するプロンプトを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_description]</span>
 
 <span class="n">extra_instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
@@ -34441,14 +34441,14 @@
 <p><br></p>
 <h2 id="06-pr_reviewer">06. pr_reviewerセクション<a class="headerlink" href="#06-pr_reviewer" title="Permanent link">&para;</a></h2>
 <h3 id="enable_help_text">enable_help_text<a class="headerlink" href="#enable_help_text" title="Permanent link">&para;</a></h3>
-<p>Helpセクション設定する。</p>
+<p>Help セクション設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_reviewer]</span>
 
 <span class="n">enable_help_text</span><span class="o">=</span><span class="kc">false</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="extra_instructions_1">extra_instructions<a class="headerlink" href="#extra_instructions_1" title="Permanent link">&para;</a></h3>
-<p>PRレビューに関するプロンプトを設定する。</p>
+<p>PR レビューに関するプロンプトを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_reviewer]</span>
 
 <span class="n">extra_instructions</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
@@ -34457,7 +34457,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="require_score_review">require_score_review<a class="headerlink" href="#require_score_review" title="Permanent link">&para;</a></h3>
-<p>PRスコア算出のフラグを設定する。</p>
+<p>PR スコア算出のフラグを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[pr_reviewer]</span>
 
 <span class="n">require_score_review</span><span class="o">=</span><span class="kc">true</span>
@@ -34510,7 +34510,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年3月26日 18:15:48 JST">2026-03-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -34521,11 +34521,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

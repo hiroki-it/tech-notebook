@@ -34278,7 +34278,7 @@
 <p><br></p>
 <h2 id="01-docker">01. Dockerの仕組み<a class="headerlink" href="#01-docker" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Dockerは、ホストOS、Dockerコンテナ (ベースイメージ、コンテナイメージレイヤー、コンテナレイヤー) といったコンポーネントから構成される。</p>
+<p>Docker は、ホスト OS、Docker コンテナ (ベースイメージ、コンテナイメージレイヤー、コンテナレイヤー) といったコンポーネントから構成される。</p>
 <p><img alt="docker_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_architecture.png" /></p>
 <blockquote>
 <ul>
@@ -34288,8 +34288,8 @@
 <p><br></p>
 <h3 id="docker_1">Dockerコンテナ<a class="headerlink" href="#docker_1" title="Permanent link">&para;</a></h3>
 <h4 id="docker_2">▼ Dockerコンテナとは<a class="headerlink" href="#docker_2" title="Permanent link">&para;</a></h4>
-<p>namespaceとcgroupsを使用して、ホストOSを分割した領域である。</p>
-<p>namespaceでは、カーネルを分離できるため、カーネルの要素 (プロセス、マウントポイント、ネットワーク、ファイル構造、ユーザー、グループなど) を独立させられる。</p>
+<p>namespace と cgroups を使用して、ホスト OS を分割した領域である。</p>
+<p>namespace では、カーネルを分離できるため、カーネルの要素 (プロセス、マウントポイント、ネットワーク、ファイル構造、ユーザー、グループなど) を独立させられる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.itbook.info/network/docker06.html">https://www.itbook.info/network/docker06.html</a></li>
@@ -34297,14 +34297,14 @@
 </ul>
 </blockquote>
 <h4 id="_3">▼ ベースイメージ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>ベースイメージは、実行OSに依存せず一貫してビルドできる。</p>
+<p>ベースイメージは、実行 OS に依存せず一貫してビルドできる。</p>
 <p>そのため、配布できる。</p>
-<p>各イメージレジストリ (例：DockerHub、Amazon ECR、Google Container Registry、Artifactory、Harborなど) には、カスタマイズするうえでのベースとなるベースイメージが提供されている。</p>
+<p>各イメージレジストリ (例：DockerHub、Amazon ECR、Google Container Registry、Artifactory、Harbor など) には、カスタマイズするうえでのベースとなるベースイメージが提供されている。</p>
 <h4 id="_4">▼ イメージレイヤー<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p><img alt="イメージレイヤーからなるコンテナイメージのビルド" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージのビルド.png" /></p>
 <p>イメージレイヤーの実体は、<code>/var/lib/docker/overlay2</code> ディレクトリ配下にハッシュ値の名前からなるファイルとして保管されている。</p>
-<p>Dockerは、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。</p>
-<p>1つの命令につき、1つのコンテナイメージレイヤーを積み重ねるようになっている。</p>
+<p>Docker は、オーバーレイファイルシステムを使用して、各ファイルを層状に管理する。</p>
+<p>1 つの命令につき、1 つのコンテナイメージレイヤーを積み重ねるようになっている。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>inspect<span class="w"> </span>foo-container<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;{{json .GraphDriver.Data}}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
 
 <span class="o">{</span>
@@ -34321,7 +34321,7 @@
 </ul>
 </blockquote>
 <h4 id="_5">▼ コンテナレイヤー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>コンテナイメージからコンテナを作成するときに、コンテナイメージレイヤーの上にコンテナレイヤーが積み重ねられる。</p>
+<p>コンテナイメージからコンテナを作成するときに、コンテナイメージレイヤーのうえにコンテナレイヤーが積み重ねられる。</p>
 <p><img alt="コンテナイメージ上へのコンテナレイヤーの積み重ね" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png" /></p>
 <blockquote>
 <ul>
@@ -34331,9 +34331,9 @@
 <p><br></p>
 <h3 id="_6">権限別コンテナの種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 特権コンテナ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>rootユーザー権限のCapability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITEなど) の全て持つユーザーで実行したコンテナのこと。</p>
+<p>root ユーザー権限の Capability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDIT_WRITE など) のすべて持つユーザーで実行したコンテナのこと。</p>
 <p>例えば、特権コンテナの実行ユーザーは、ルートファイルシステム上の <code>/proc</code> へ書き込む権限を持つ。</p>
-<p>/proc配下にはNodeへのアクセスを中継するファイルがあるため、特権コンテナの実行ユーザーはNode上で任意のコマンドを実行できる。</p>
+<p>/proc 配下には Node へのアクセスを中継するファイルがあるため、特権コンテナの実行ユーザーは Node 上で任意のコマンドを実行できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
@@ -34341,15 +34341,15 @@
 </ul>
 </blockquote>
 <h4 id="_8">▼ 通常コンテナ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>rootユーザーで実行したコンテナのこと。</p>
+<p>root ユーザーで実行したコンテナのこと。</p>
 <blockquote>
 <ul>
 <li><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
 </ul>
 </blockquote>
 <h4 id="root">▼ 非rootコンテナ<a class="headerlink" href="#root" title="Permanent link">&para;</a></h4>
-<p>コンテナランタイムとコンテナ自体の両方を非rootユーザーで実行したコンテナのこと。</p>
-<p>これらのユーザーは、Capabilityを全く持たない。</p>
+<p>コンテナランタイムとコンテナ自体の両方を非 root ユーザーで実行したコンテナのこと。</p>
+<p>これらのユーザーは、Capability を全く持たない。</p>
 <blockquote>
 <ul>
 <li><a href="https://jpn.nec.com/cybersecurity/blog/210730/index.html">https://jpn.nec.com/cybersecurity/blog/210730/index.html</a></li>
@@ -34360,7 +34360,7 @@
 <h2 id="02-docker">02. Dockerクライアント<a class="headerlink" href="#02-docker" title="Permanent link">&para;</a></h2>
 <h3 id="docker_3">dockerクライアント<a class="headerlink" href="#docker_3" title="Permanent link">&para;</a></h3>
 <h4 id="docker_4">▼ dockerクライアントとは<a class="headerlink" href="#docker_4" title="Permanent link">&para;</a></h4>
-<p>dockerクライアントは、<code>docker</code> コマンドを使用してdockerデーモンAPIをコールできる。</p>
+<p>docker クライアントは、<code>docker</code> コマンドを使用して docker デーモン API をコールできる。</p>
 <p><img alt="docker-daemon" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-client.png" /></p>
 <blockquote>
 <ul>
@@ -34371,8 +34371,8 @@
 <h3 id="docker_5">dockerデーモン<a class="headerlink" href="#docker_5" title="Permanent link">&para;</a></h3>
 <h4 id="docker_6">▼ dockerデーモンとは<a class="headerlink" href="#docker_6" title="Permanent link">&para;</a></h4>
 <p>ホスト側に常駐し、コンテナの操作を担うデーモン。</p>
-<p>dockerクライアントにdockerデーモンAPIを公開する。</p>
-<p>クライアントが <code>docker</code> コマンドを実行することにより、dockerデーモンAPIがコールされ、コマンドに沿ってコンテナが操作される。</p>
+<p>docker クライアントに docker デーモン API を公開する。</p>
+<p>クライアントが <code>docker</code> コマンドを実行することにより、docker デーモン API がコールされ、コマンドに沿ってコンテナが操作される。</p>
 <p><img alt="docker-daemon" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-daemon.png" /></p>
 <p><br></p>
 <h2 id="03-cgroups">03. cgroups<a class="headerlink" href="#03-cgroups" title="Permanent link">&para;</a></h2>
@@ -34385,10 +34385,10 @@
 <p><br></p>
 <h2 id="04-namespace">04. namespace<a class="headerlink" href="#04-namespace" title="Permanent link">&para;</a></h2>
 <h3 id="namespace">namespaceとは<a class="headerlink" href="#namespace" title="Permanent link">&para;</a></h3>
-<p>各namespaceを使用して、ホストのカーネルを論理的に分離する。</p>
+<p>各 namespace を使用して、ホストのカーネルを論理的に分離する。</p>
 <p>論理的に分離された各領域をコンテナとして使用する。</p>
 <p>コンテナ間では、ハードウェアリソース要求やプロセス間通信が独立している。</p>
-<p>注意点として、Kubernetesとはnamespaceの種類が異なる。</p>
+<p>注意点として、Kubernetes とは namespace の種類が異なる。</p>
 <blockquote>
 <ul>
 <li><a href="https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4">https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4</a></li>
@@ -34398,8 +34398,8 @@
 </blockquote>
 <p><br></p>
 <h3 id="ipc-namespace">IPC namespace<a class="headerlink" href="#ipc-namespace" title="Permanent link">&para;</a></h3>
-<p>SysV IPCオブジェクト、POSIXメッセージキューを分離する。</p>
-<p>コンテナは、同じIPC namespaceに属する他のプロセスと通信できる。</p>
+<p>SysV IPC オブジェクト、POSIX メッセージキューを分離する。</p>
+<p>コンテナは、同じ IPC namespace に属するほかのプロセスと通信できる。</p>
 <blockquote>
 <ul>
 <li><a href="https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5">https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5</a></li>
@@ -34425,9 +34425,9 @@
 </blockquote>
 <p><br></p>
 <h3 id="pid-namespace">PID namespace<a class="headerlink" href="#pid-namespace" title="Permanent link">&para;</a></h3>
-<p>プロセスIDを分離する。</p>
-<p>各コンテナが独立したPIDを持てるようになる。</p>
-<p>逆に言うと、同じPID namespaceに属するプロセスのPIDは同じになる。</p>
+<p>プロセス ID を分離する。</p>
+<p>各コンテナが独立した PID を持てるようになる。</p>
+<p>逆に言うと、同じ PID namespace に属するプロセスの PID は同じになる。</p>
 <blockquote>
 <ul>
 <li><a href="https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5">https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5</a></li>
@@ -34435,11 +34435,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="user-namespace">User namespace<a class="headerlink" href="#user-namespace" title="Permanent link">&para;</a></h3>
-<p>ユーザーID (UID)、グループID (GID)を分離する。</p>
-<p>各コンテナが独立したUIDやGIDを持てるようになる。</p>
-<p>ただし、Dockerでは機能が制限されることを嫌って、User Namespaceをデフォルトで無効化している。</p>
-<p>そのため、コンテナとホストのUID/GIDが同じになっている。</p>
-<p>これに伴い、コンテナをrootユーザーで実行することに脆弱性がある。</p>
+<p>ユーザーID (UID)、グループ ID (GID)を分離する。</p>
+<p>各コンテナが独立した UID や GID を持てるようになる。</p>
+<p>ただし、Docker では機能が制限されることを嫌って、User Namespace をデフォルトで無効化している。</p>
+<p>そのため、コンテナとホストの UID/GID が同じになっている。</p>
+<p>これに伴い、コンテナを root ユーザーで実行することに脆弱性がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h8">https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h8</a></li>
@@ -34459,7 +34459,7 @@
 <h2 id="03">03. ロギング<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_9">ロギングドライバー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ ロギングドライバーとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>コンテナ内の標準出力 (<code>/dev/stdout</code>) と標準エラー出力 (<code>/dev/stderr</code>) に出力されたログを、ファイルやAPIに対してフォワーディングする。</p>
+<p>コンテナ内の標準出力 (<code>/dev/stdout</code>) と標準エラー出力 (<code>/dev/stderr</code>) に出力されたログを、ファイルや API に対してフォワーディングする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--log-driver<span class="w"> </span>&lt;ロギングドライバー名&gt;<span class="w"> </span>--name<span class="w">  </span>&lt;コンテナ名&gt;<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
 </code></pre></div>
 <h4 id="json-file">▼ json-file<a class="headerlink" href="#json-file" title="Permanent link">&para;</a></h4>
@@ -34483,8 +34483,8 @@
 </ul>
 </blockquote>
 <h4 id="fluentd">▼ fluentd<a class="headerlink" href="#fluentd" title="Permanent link">&para;</a></h4>
-<p>構造化ログに変換し、サイドカーとして稼働するFluentdコンテナに送信する。</p>
-<p>Amazon ECSコンテナのawsfirelensドライバーは、fluentdドライバーをラッピングしたものである。</p>
+<p>構造化ログに変換し、サイドカーとして稼働する Fluentd コンテナに送信する。</p>
+<p>Amazon ECS コンテナの awsfirelens ドライバーは、fluentd ドライバーをラッピングしたものである。</p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="o">{</span>
 <span class="w">   </span><span class="s2">&quot;log-driver&quot;</span>:<span class="w"> </span><span class="s2">&quot;fluentd&quot;</span>,
 <span class="w">    </span><span class="c1"># ドライバーのオプション</span>
@@ -34500,10 +34500,10 @@
 </ul>
 </blockquote>
 <h4 id="none">▼ none<a class="headerlink" href="#none" title="Permanent link">&para;</a></h4>
-<p>標準出力/標準エラー出力に出力されたログを、ファイルやAPIにフォワーディングしない。</p>
+<p>標準出力/標準エラー出力に出力されたログを、ファイルや API にフォワーディングしない。</p>
 <p>ファイルに出力しないことにより、開発環境のアプリケーションサイズの肥大化を防ぐ。</p>
 <h4 id="awslogs">▼ awslogs<a class="headerlink" href="#awslogs" title="Permanent link">&para;</a></h4>
-<p>標準出力/標準エラー出力に出力されたログをAmazon CloudWatch-APIに送信する。</p>
+<p>標準出力/標準エラー出力に出力されたログを Amazon CloudWatch-API に送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;log-driver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;awslogs&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># ドライバーのオプション</span>
@@ -34516,7 +34516,7 @@
 </ul>
 </blockquote>
 <h4 id="gcplogs">▼ gcplogs<a class="headerlink" href="#gcplogs" title="Permanent link">&para;</a></h4>
-<p>標準出力/標準エラー出力に出力されたログを、Google Cloud LoggingのAPIにフォワーディングする。</p>
+<p>標準出力/標準エラー出力に出力されたログを、Google Cloud Logging の API にフォワーディングする。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">&quot;log-driver&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;gcplogs&quot;</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="c1"># ドライバーのオプション</span>
@@ -34531,7 +34531,7 @@
 <p><br></p>
 <h3 id="_11">各ベンダーのコンテナイメージのログ出力先<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ コンテナの標準出力/標準エラー出力<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>Linuxでは、標準出力は『<code>/proc/&lt;プロセスID&gt;/fd/1</code>』、標準エラー出力は『<code>/proc/&lt;プロセスID&gt;/fd/2</code>』である。</p>
+<p>Linux では、標準出力は『<code>/proc/&lt;プロセスID&gt;/fd/1</code>』、標準エラー出力は『<code>/proc/&lt;プロセスID&gt;/fd/2</code>』である。</p>
 <p>コンテナでは、『<code>/dev/stdout</code>』が『<code>/proc/self/fd/1</code>』のシンボリックリンク、また『<code>/dev/stderr</code>』が『<code>/proc/&lt;プロセスID&gt;/fd/2</code>』のシンボリックリンクとして設定されている。</p>
 <div class="highlight"><pre><span></span><code><span class="o">[</span>root@&lt;コンテナID&gt;:/dev<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la
 
@@ -34555,7 +34555,7 @@ crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </spa
 crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">5</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">11</span>:36<span class="w"> </span>zero
 </code></pre></div>
 <h4 id="nginx">▼ nginxイメージ<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h4>
-<p>公式のnginxイメージは、<code>/dev/stdout</code> というシンボリックリンクを、<code>/var/log/nginx/access.log</code> ファイルに作成している。</p>
+<p>公式の nginx イメージは、<code>/dev/stdout</code> というシンボリックリンクを、<code>/var/log/nginx/access.log</code> ファイルに作成している。</p>
 <p>また、<code>/dev/stderr</code> というシンボリックリンクを、<code>/var/log/nginx/error.log</code> ファイルに作成している。</p>
 <p>これにより、これらのファイルに対するログの出力は、<code>/dev/stdout</code> と <code>/dev/stderr</code> にフォワーディングされる。</p>
 <blockquote>
@@ -34586,7 +34586,7 @@ crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月6日 21:30:45 JST">2026-04-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -34597,11 +34597,11 @@ crw-rw-rw-<span class="w"> </span><span class="m">1</span><span class="w"> </spa
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

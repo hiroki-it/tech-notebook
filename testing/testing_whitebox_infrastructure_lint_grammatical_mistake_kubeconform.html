@@ -33768,7 +33768,7 @@
 <p><br></p>
 <h2 id="01-kubeconform">01. kubeconformの仕組み<a class="headerlink" href="#01-kubeconform" title="Permanent link">&para;</a></h2>
 <h3 id="_2">検出項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Kubernetesリソースのスキーマ (カスタムリソースであればCRD) に基づいて、マニフェストのAPI仕様違反を検出する。</p>
+<p>Kubernetes リソースのスキーマ (カスタムリソースであれば CRD) に基づいて、マニフェストの API 仕様違反を検出する。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_3">インストール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -33782,14 +33782,14 @@
 <p><br></p>
 <h3 id="_4">カスタムリソースのスキーマの用意<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="crd">▼ CRDのマニフェストのインストール<a class="headerlink" href="#crd" title="Permanent link">&para;</a></h4>
-<p>CRDのマニフェストをインストールする。</p>
+<p>CRD のマニフェストをインストールする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リポジトリからCRDを取得する</span>
 $<span class="w"> </span>wget<span class="w"> </span>https://github.com/hiroki-hasegawa/foo-repository/crds.yaml
 </code></pre></div>
 <p>あるいは、<code>json</code> 形式のスキーマを直接インストールしてもよい。</p>
 <p>この場合、後述のスキーマの作成は不要になる。</p>
 <h4 id="_5">▼ スキーマの作成<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p><code>openapi2jsonschema</code> を使い、CRDのマニフェストから各カスタムリソースのスキーマを <code>json</code> 形式で作成する。</p>
+<p><code>openapi2jsonschema</code> を使い、CRD のマニフェストから各カスタムリソースのスキーマを <code>json</code> 形式で作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 各カスタムリソースのJSONスキーマのファイル形式を設定する</span>
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">FILENAME_FORMAT</span><span class="o">=</span><span class="s1">&#39;{kind}-{version}&#39;</span>
 
@@ -33812,14 +33812,14 @@ JSON<span class="w"> </span>schema<span class="w"> </span>written<span class="w"
 <h2 id="_6">オプション<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <h3 id="_7">標準入力<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>標準入力からマニフェストを渡す。</p>
-<p>CI上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすれば良く、特にGitOpsでCI/CDを分離している場合は、必ずしもkube-apiserverと通信する必要はない。</p>
+<p>CI 上でこれを実行する場合、リポジトリ内のマニフェストを渡しさえすればよく、特に GitOps で CI/CD を分離している場合は、必ずしも kube-apiserver と通信する必要はない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>-f<span class="w"> </span>foo-secrets.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="p">|</span><span class="w"> </span>kubeconform<span class="w"> </span>-kubernetes-version<span class="w"> </span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span>-
 </code></pre></div>
 <p><br></p>
 <h3 id="-kubernetes-version">-kubernetes-version<a class="headerlink" href="#-kubernetes-version" title="Permanent link">&para;</a></h3>
 <h4 id="-kubernetes-version_1">▼ -kubernetes-versionとは<a class="headerlink" href="#-kubernetes-version_1" title="Permanent link">&para;</a></h4>
-<p>Kubernetesのバージョンを指定する。</p>
+<p>Kubernetes のバージョンを指定する。</p>
 <p>マイナーバージョン (例：<code>1.24.0</code>) まで指定する必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-kubernetes-version<span class="w"> </span>&lt;Kubernetesのバージョン&gt;<span class="w"> </span><span class="se">\</span>
@@ -33829,8 +33829,8 @@ JSON<span class="w"> </span>schema<span class="w"> </span>written<span class="w"
 <span class="w">    </span>manifest.yaml
 </code></pre></div>
 <h4 id="_8">▼ 現在のバージョンと次のバージョンを指定<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>現在と次のKubernetesバージョンを指定した処理を自動化すれば、アップグレードに備えられる。</p>
-<p>継続的に検出できるようにするため、CI上で自動化すると良い。</p>
+<p>現在と次の Kubernetes バージョンを指定した処理を自動化すれば、アップグレードに備えられる。</p>
+<p>継続的に検出できるようにするため、CI 上で自動化するとよい。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-kubernetes-version<span class="w"> </span>&lt;Kubernetesの現在のバージョン&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-strict<span class="w"> </span><span class="se">\</span>
@@ -33849,15 +33849,15 @@ $<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</
 <h3 id="-schema-location">-schema-location<a class="headerlink" href="#-schema-location" title="Permanent link">&para;</a></h3>
 <h4 id="-schema-location_1">▼ -schema-locationとは<a class="headerlink" href="#-schema-location_1" title="Permanent link">&para;</a></h4>
 <p><code>json</code> 形式のスキーマの場所を明示的に設定する。</p>
-<p>Goテンプレートのように、マニフェスト内の値をスキーマのパスに出力できる。</p>
+<p>Go テンプレートのように、マニフェスト内の値をスキーマのパスに出力できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-schema-location<span class="w"> </span>default<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-schema-location<span class="w"> </span><span class="s1">&#39;https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{ .Group }}/{{ .ResourceKind }}_{{ .ResourceAPIVersion }}.json&#39;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>manifest.yaml
 </code></pre></div>
-<p>Kubernetesリソースのスキーマは、<code>default</code> エイリアス (<code>https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/{{.NormalizedKubernetesVersion}}-standalone{{.StrictSuffix}}/{{.ResourceKind}}{{.KindSuffix}}.json</code>) にある。</p>
-<p><code>kubeconform</code> コマンドは、<code>-kubernetes-version</code> オプションで渡したKubernetesのバージョンを <code>{{.NormalizedKubernetesVersion}}</code> に出力する。</p>
-<p>CRDのスキーマは、<code>https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json</code> にある。</p>
+<p>Kubernetes リソースのスキーマは、<code>default</code> エイリアス (<code>https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/{{.NormalizedKubernetesVersion}}-standalone{{.StrictSuffix}}/{{.ResourceKind}}{{.KindSuffix}}.json</code>) にある。</p>
+<p><code>kubeconform</code> コマンドは、<code>-kubernetes-version</code> オプションで渡した Kubernetes のバージョンを <code>{{.NormalizedKubernetesVersion}}</code> に出力する。</p>
+<p>CRD のスキーマは、<code>https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json</code> にある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/yannh/kubeconform#overriding-schemas-location">https://github.com/yannh/kubeconform#overriding-schemas-location</a></li>
@@ -33885,7 +33885,7 @@ $<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月16日 15:47:08 JST">2026-02-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -33896,11 +33896,11 @@ $<span class="w"> </span>kubeconform<span class="w"> </span><span class="se">\</
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

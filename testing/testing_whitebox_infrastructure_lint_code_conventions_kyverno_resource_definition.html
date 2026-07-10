@@ -33743,7 +33743,7 @@
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ チャートとして<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。</p>
+<p>チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;チャートリポジトリ名&gt;<span class="w"> </span>https://kyverno.github.io/kyverno/
 
 $<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -33761,7 +33761,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="02-clusterpolicy">02. ClusterPolicy<a class="headerlink" href="#02-clusterpolicy" title="Permanent link">&para;</a></h2>
 <h3 id="validationfailureaction">validationFailureAction<a class="headerlink" href="#validationfailureaction" title="Permanent link">&para;</a></h3>
 <h4 id="validationfailureaction_1">▼ validationFailureActionとは<a class="headerlink" href="#validationfailureaction_1" title="Permanent link">&para;</a></h4>
-<p>ルールに則っていないKubernetesリソースの作成/更新があった場合に、これを拒否するか、または許可するが監査ログを記録するかを設定する。</p>
+<p>ルールに則っていない Kubernetes リソースの作成/更新があった場合に、これを拒否するか、または許可するが監査ログを記録するかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kyverno.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterPolicy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33778,7 +33778,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="background">background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h3>
 <h4 id="background_1">▼ backgroundとは<a class="headerlink" href="#background_1" title="Permanent link">&para;</a></h4>
-<p>Kyvernoの導入後に作成/更新されるKubernetesだけでなく、導入前の既存のKubernetesリソースもKyvernoの検査対象とするかを設定する。</p>
+<p>Kyverno の導入後に作成/更新される Kubernetes だけでなく、導入前の既存の Kubernetes リソースも Kyverno の検査対象とするかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kyverno.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterPolicy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33795,7 +33795,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="rules">rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h3>
 <h4 id="rules_1">▼ rulesとは<a class="headerlink" href="#rules_1" title="Permanent link">&para;</a></h4>
-<p>Webhookリクエスト時に実行するKyvernoのルールを設定する。</p>
+<p>Webhook リクエスト時に実行する Kyverno のルールを設定する。</p>
 <h4 id="mutate">▼ Mutateルールの場合<a class="headerlink" href="#mutate" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
 <p>コンテナイメージのタグ名が『<code>latest</code>』だった場合に、マニフェストに <code>imagePullPolicy</code> キーを追加する。</p>
@@ -33826,7 +33826,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="validate">▼ Validateルールの場合<a class="headerlink" href="#validate" title="Permanent link">&para;</a></h4>
 <p><strong>＊実装例＊</strong></p>
-<p>Podのマニフェストの <code>metadata.labels</code> キー以下に、<code>app.kubernetes.io/name</code> キーがあるか否かを検証する。</p>
+<p>Pod のマニフェストの <code>metadata.labels</code> キー以下に、<code>app.kubernetes.io/name</code> キーがあるか否かを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kyverno.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterPolicy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33853,7 +33853,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><strong>＊実装例＊</strong></p>
-<p>Podのマニフェストの <code>.spec.containers</code> キー以下に、<code>resources</code> キーがあるか否かを検証する。</p>
+<p>Pod のマニフェストの <code>.spec.containers</code> キー以下に、<code>resources</code> キーがあるか否かを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kyverno.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterPolicy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -33908,7 +33908,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     

@@ -35028,7 +35028,7 @@
 <h4 id="_6">▼ 文法違反テスト<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>ソースコードの実行前に、字句解析、構文解析、型解析を実施し、ソースコードの文法上の問題を検証する。</p>
 <p>ソースコードの機械語翻訳の仕組みの違いのために、コンパイラ方式言語の場合はアプリケーションの実行前に文法違反を検出できるが、インタプリタ方式言語は実行時でしか検出できない。</p>
-<p>そのため、特にインタプリタ方式言語では実施したほうが良い。</p>
+<p>そのため、特にインタプリタ方式言語では実施したほうがよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://golangtokyo.github.io/codelab/find-gophers/?index=codelab#5">https://golangtokyo.github.io/codelab/find-gophers/?index=codelab#5</a></li>
@@ -35141,7 +35141,7 @@
 <h4 id="_9">▼ 脆弱性診断<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>ソースコードの実装方法に起因する脆弱性を検証する。</p>
 <h4 id="_10">▼ その他<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>テストされるソースコード (例：Dockerfile、Kubernetesのマニフェスト、Terraform) によって、静的解析には他にも種類がある。</p>
+<p>テストされるソースコード (例：Dockerfile、Kubernetes のマニフェスト、Terraform) によって、静的解析には他にも種類がある。</p>
 <p><br></p>
 <h2 id="03">03. ユニットテスト (単体テスト)<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_11">ユニットテストとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -35156,8 +35156,8 @@ Fooクラスやfoo関数の内部処理
 <p>言語によっては、ビルトインのコマンド (例：<code>go test</code> コマンド) で実現できる。</p>
 <p>一方で、外部テストツールが必要な場合もある。</p>
 <p>検証対象以外の処理はスタブとして定義する。理想としては、アーキテクチャの層ごとにユニットテストを実施する必要がある。</p>
-<p>この時、データアクセスに関わる層のユニットテストのために、本来のDBとは別に、あらかじめテスト用DBを用意したほうが良い。</p>
-<p>テスト用DBを <code>docker-compose.yml</code> ファイルによって用意する方法については、以下のリンクを参考にせよ。</p>
+<p>このとき、データアクセスに関わる層のユニットテストのために、本来の DB とは別に、あらかじめテスト用 DB を用意したほうがよい。</p>
+<p>テスト用 DB を <code>docker-compose.yml</code> ファイルによって用意する方法については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html</a></li>
@@ -35167,7 +35167,7 @@ Fooクラスやfoo関数の内部処理
 <h2 id="03-02">03-02. 設計規約<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="_12">ユニットテストの構成<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>ユニットテストはテストスイート (テストの組) から構成され、テストスイートはテストケース (テスト関数) に分類できる。</p>
-<p>例えば、Goでは構造体をテストスイートとして扱う。</p>
+<p>例えば、Go では構造体をテストスイートとして扱う。</p>
 <p><img alt="test-plan_test-suite_test-case" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test-plan_test-suite_test-case.jpg" /></p>
 <p><br></p>
 <h3 id="_13">必要なテスト<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
@@ -35185,13 +35185,13 @@ Fooクラスやfoo関数の内部処理
 <li>異常系であれば『<code>should throw error when timeout occurs</code>』や『<code>should return 400 when user id is empty</code>』</li>
 </ul>
 <h4 id="roy-osherove">▼ Roy Osherove氏の命名規則<a class="headerlink" href="#roy-osherove" title="Permanent link">&para;</a></h4>
-<p>Roy Osherove氏の命名規則に従って、<code>&lt;テスト対象の関数名&gt;_&lt;入力値&gt;_&lt;期待される返却値&gt;</code> で命名する。</p>
+<p>Roy Osherove 氏の命名規則に従って、<code>&lt;テスト対象の関数名&gt;_&lt;入力値&gt;_&lt;期待される返却値&gt;</code> で命名する。</p>
 <p>例えば、次のとおりである。</p>
 <ul>
 <li>正常系であれば『<code>testFoo_Xxx_ReturnXxx</code>』</li>
 <li>異常系であれば『<code>testFoo_Xxx_ExceptionThrown</code>』や『<code>testFoo_Xxx_ErrorThrown</code>』</li>
 </ul>
-<p>Roy Osherove氏の命名規則については、以下のリンクを参考にせよ。</p>
+<p>Roy Osherove 氏の命名規則については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html">https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html</a></li>
@@ -35199,7 +35199,7 @@ Fooクラスやfoo関数の内部処理
 </blockquote>
 <p><br></p>
 <h3 id="_18">アサーションの比較値<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p>ユニットテストのアサーション関数で、期待値と実際値を比較する場合、期待値を定数として管理したほうが良い。</p>
+<p>ユニットテストのアサーション関数で、期待値と実際値を比較する場合、期待値を定数として管理したほうがよい。</p>
 <blockquote>
 <ul>
 <li><a href="https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html">https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html</a></li>
@@ -35210,9 +35210,9 @@ Fooクラスやfoo関数の内部処理
 <ul>
 <li>ユニットテストを準備フェーズ、実行フェーズ、検証フェーズに分割する</li>
 <li>テストコード上で何かを加工することはせず、初期データをそのまま対象に渡す</li>
-<li>1つのユニットテストでは、1つの関数のみを検証する</li>
+<li>1 つのユニットテストでは、1 つの関数のみを検証する</li>
 <li>プライベート関数はテストする必要がない</li>
-<li>インフラストラクチャ層のロジック（DB接続、ネットワーク接続、ファイル読み込み）はモック化する</li>
+<li>インフラストラクチャ層のロジック（DB 接続、ネットワーク接続、ファイル読み込み）はモック化する</li>
 </ul>
 <p><br></p>
 <h2 id="03-03">03-03. テストダブル<a class="headerlink" href="#03-03" title="Permanent link">&para;</a></h2>
@@ -35230,10 +35230,10 @@ Fooクラスやfoo関数の内部処理
 <p>実体があるかのように見せかける見下層クラスとして使用する擬似オブジェクトを『モック』という。</p>
 <p>スタブと用途が異なる。</p>
 <p>ただし、モックとスタブはいずれも擬似オブジェクトである。</p>
-<p>モックでは、クラスの振る舞いと状態が全てダミー実装に置き換わる。</p>
+<p>モックでは、クラスの振る舞いと状態がすべてダミー実装に置き換わる。</p>
 <p>もし下層クラスを正しい回数実行できているかを検証したい場合は、下層クラスのモックを定義し、実体のある上層クラスが下層クラスにパラメーターを渡したときのコール回数と指定回数を比較する。</p>
 <p>注意点として、用語の定義はテストフレームワークごとにやや異なる。</p>
-<p>PHPUnitにおけるモックについては、以下のリンクを参考にせよ。</p>
+<p>PHPUnit におけるモックについては、以下のリンクを参考にせよ。</p>
 <table>
 <thead>
 <tr>
@@ -35262,14 +35262,14 @@ Fooクラスやfoo関数の内部処理
 </blockquote>
 <h4 id="_23">▼ スタブ<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p>クラスの関数の処理を検証したいときに、クラスが依存している下層クラスは、実体があるかのように見せかける。</p>
-<p>この時、見せかけの下層クラスとして使用する擬似オブジェクトを『スタブ』という。</p>
+<p>このとき、見せかけの下層クラスとして使用する擬似オブジェクトを『スタブ』という。</p>
 <p>モックと用途が異なる。</p>
 <p>ただし、モックとスタブはいずれも擬似オブジェクトである。</p>
-<p>モックと同様にスタブでも、クラスの振る舞いと状態が全てダミー実装に置き換わる。</p>
+<p>モックと同様にスタブでも、クラスの振る舞いと状態がすべてダミー実装に置き換わる。</p>
 <p>スタブには、正しい処理を実行するように引数と返却値を持つ関数を定義し、その他の実体のある処理が正しく実行されるかを検証する。</p>
 <p>これらにより、検証対象の処理のみが実体であっても、一連の処理を実行できる。</p>
 <p>注意点として、用語の定義はテストフレームワークごとにやや異なる。</p>
-<p>PHPUnitにおけるスタブについては、以下のリンクを参考にせよ。</p>
+<p>PHPUnit におけるスタブについては、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-stubs">https://phpunit.readthedocs.io/ja/latest/test-doubles.html#test-doubles-stubs</a></li>
@@ -35286,11 +35286,11 @@ Fooクラスやfoo関数の内部処理
 <p><br></p>
 <h2 id="03-04">03-04. 外部通信処理のモック<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
 <h3 id="http">HTTPクライアントパッケージのモック<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
-<p>HTTPクライアントパッケージそのものをモックに差し替えて、その場で擬似的なレスポンスを返却させる。</p>
+<p>HTTP クライアントパッケージそのものをモックに差し替えて、その場で擬似的なレスポンスを返却させる。</p>
 <p><br></p>
 <h3 id="http_1">ローカルのモックHTTPサーバー<a class="headerlink" href="#http_1" title="Permanent link">&para;</a></h3>
 <h4 id="http_2">▼ ローカルのモックHTTPサーバーとは<a class="headerlink" href="#http_2" title="Permanent link">&para;</a></h4>
-<p>外部通信処理が発生した場合、ローカルで起動したモックHTTPサーバーにHTTPリクエストを送信する。</p>
+<p>外部通信処理が発生した場合、ローカルで起動したモック HTTP サーバーに HTTP リクエストを送信する。</p>
 <h4 id="httpbin">▼ httpbin<a class="headerlink" href="#httpbin" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">httpbin</span><span class="p">:</span>
@@ -35316,7 +35316,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <p><br></p>
 <h3 id="_25">外部モックサイト<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="_26">▼ 外部モックサイトとは<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
-<p>外部通信処理が発生した場合、 <a href="https://httpbin.org/">https://httpbin.org/</a> にHTTPリクエストを送信する。</p>
+<p>外部通信処理が発生した場合、 <a href="https://httpbin.org/">https://httpbin.org/</a> に HTTP リクエストを送信する。</p>
 <p><br></p>
 <h2 id="03-05-db">03-05. DB接続処理のモック<a class="headerlink" href="#03-05-db" title="Permanent link">&para;</a></h2>
 <h3 id="db">ローカルのモックDBサーバー<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
@@ -35333,9 +35333,9 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <h2 id="03-06">03-06. 網羅率<a class="headerlink" href="#03-06" title="Permanent link">&para;</a></h2>
 <h3 id="_27">網羅率とは<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <p>網羅条件に基づいたユニットテストの品質指標である。</p>
-<p>採用した網羅で考えられる全ての条件のうち、テストで検証できている割合で表す。</p>
+<p>採用した網羅で考えられるすべての条件のうち、テストで検証できている割合で表す。</p>
 <p>網羅率はテストスイートやパッケージを単位として解析され、これは言語別に異なる。</p>
-<p>言語やツールごとに網羅率を解析する方法が異なり、PHPのPHPUnitでは以下のリンクを参考にせよ。</p>
+<p>言語やツールごとに網羅率を解析する方法が異なり、PHP の PHPUnit では以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
 <li><a href="https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html">https://phpunit.readthedocs.io/ja/latest/code-coverage-analysis.html</a></li>
@@ -35345,9 +35345,9 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <h3 id="_28">網羅条件の種類<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <h4 id="c0statement-coverage">▼ C０：Statement Coverage (命令網羅)<a class="headerlink" href="#c0statement-coverage" title="Permanent link">&para;</a></h4>
 <p><img alt="p494-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-1.png" /></p>
-<p>全ての命令が実行されるかを検証する。</p>
+<p>すべての命令が実行されるかを検証する。</p>
 <p><strong>＊例＊</strong></p>
-<p>AとBは、『1』または『0』になり得るとする。</p>
+<p>A と B は、『1』または『0』になり得るとする。</p>
 <table>
 <thead>
 <tr>
@@ -35369,9 +35369,9 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 </blockquote>
 <h4 id="c1decision-coverage">▼ C１：Decision Coverage (判定条件網羅/分岐網羅)<a class="headerlink" href="#c1decision-coverage" title="Permanent link">&para;</a></h4>
 <p><img alt="p494-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-2.png" /></p>
-<p>全ての判定が実行されるかを検証する。</p>
+<p>すべての判定が実行されるかを検証する。</p>
 <p><strong>＊例＊</strong></p>
-<p>AとBは、『1』または『0』になり得るとする。</p>
+<p>A と B は、『1』または『0』になり得るとする。</p>
 <table>
 <thead>
 <tr>
@@ -35397,9 +35397,9 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 </blockquote>
 <h4 id="c2condition-coverage">▼ C２：Condition Coverage (条件網羅)<a class="headerlink" href="#c2condition-coverage" title="Permanent link">&para;</a></h4>
 <p><img alt="p494-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-3.png" /></p>
-<p>各条件が、取り得る全ての値で実行されるかを検証する。</p>
+<p>各条件が、取り得るすべての値で実行されるかを検証する。</p>
 <p><strong>＊例＊</strong></p>
-<p>AとBは、『1』または『0』になり得るとする。</p>
+<p>A と B は、『1』または『0』になり得るとする。</p>
 <table>
 <thead>
 <tr>
@@ -35418,7 +35418,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 </tr>
 </tbody>
 </table>
-<p>または、次の組み合わせでも良い。</p>
+<p>または、次の組み合わせでもよい。</p>
 <table>
 <thead>
 <tr>
@@ -35444,10 +35444,10 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 </blockquote>
 <h4 id="mccmultiple-condition-coverage">▼ MCC：Multiple Condition Coverage (複数条件網羅)<a class="headerlink" href="#mccmultiple-condition-coverage" title="Permanent link">&para;</a></h4>
 <p><img alt="p494-4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-4.png" /></p>
-<p>各条件が、取り得る全ての値で、かつ全ての組み合わせが実行されるかを検証する。</p>
+<p>各条件が、取り得るすべての値で、かつすべての組み合わせが実行されるかを検証する。</p>
 <p>一般的に、複数条件網羅を採用すれば、最低限のソフトウェア品質を担保できていると言える。</p>
 <p><strong>＊例＊</strong></p>
-<p>AとBは、『1』または『0』になり得るとする。</p>
+<p>A と B は、『1』または『0』になり得るとする。</p>
 <table>
 <thead>
 <tr>
@@ -35498,7 +35498,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <tbody>
 <tr>
 <td><code>10</code> 以下</td>
-<td>非常に良い</td>
+<td>非常によい</td>
 <td><code>25</code>%</td>
 </tr>
 <tr>
@@ -35528,7 +35528,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <h2 id="04">04. 機能テスト (フィーチャーテスト)<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_31">機能テストとは<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <p>アプリケーションの各エンドポイントを <code>1</code> 個の機能ととらえる。</p>
-<p>アプリ (またはアプリケーションのAPIゲートウェイ) のエンドポイントにリクエストを送信し、外部APIとの連携も含めて、レスポンスが機能要件通りに返信されるか否かを検証する。</p>
+<p>アプリ (またはアプリケーションの API ゲートウェイ) のエンドポイントにリクエストを送信し、外部 API との連携も含めて、レスポンスが機能要件通りに返信されるか否かを検証する。</p>
 <p>スタブを使用することは少ない。</p>
 <p>ブラックボックステストの機能テストとは意味合いが異なることに注意する。</p>
 <blockquote>
@@ -35540,7 +35540,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <h2 id="05">05. 回帰テスト<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_32">回帰テストとは<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <p>テストの期待値ファイル（例：JSON）を作成しておき、何らかの機能追加/変更によって、機能追加/変更を含むコンポーネントが既存のコンポーネントに影響を与えていないか (既存の機能でデグレーションが起こっていないか) を検証する。</p>
-<p>特にGoでは、この初期データをファイルを『ゴールデンファイル』という。</p>
+<p>特に Go では、この初期データをファイルを『ゴールデンファイル』という。</p>
 <p>ゴールデン (金) は化学的に安定した物質であることに由来しており、『安定したプロダクト』とかけている。</p>
 <p>デメリットとして、ゴールデンファイルの型を解析できないため、型安全性が低くなってしまう。</p>
 <blockquote>
@@ -35551,7 +35551,7 @@ $<span class="w"> </span>curl<span class="w"> </span>http://httpbin.local/get
 <p><br></p>
 <h2 id="06-e2e">06. E2Eテスト<a class="headerlink" href="#06-e2e" title="Permanent link">&para;</a></h2>
 <h3 id="e2e">E2Eテストとは<a class="headerlink" href="#e2e" title="Permanent link">&para;</a></h3>
-<p>実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、特定の機能に関する全てのコンポーネント間 (フロントエンド、バックエンド、DB、外部APIなど) の連携をテストを実施する。</p>
+<p>実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、特定の機能に関するすべてのコンポーネント間 (フロントエンド、バックエンド、DB、外部 API など) の連携をテストを実施する。</p>
 <div class="highlight"><pre><span></span><code>ブラウザから入力
 ↓
 フロントエンド
@@ -35580,9 +35580,9 @@ DB、外部API
 <p><br></p>
 <h3 id="e2e_1">E2Eテストツール例<a class="headerlink" href="#e2e_1" title="Permanent link">&para;</a></h3>
 <h4 id="_37">▼ 手動<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
-<p>手動でフロントエンドを操作し、E2Eテストを実施する。</p>
+<p>手動でフロントエンドを操作し、E2E テストを実施する。</p>
 <h4 id="_38">▼ 自前<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
-<p>言語によっては、ビルトインのコマンド (例：<code>go test</code> コマンド) でE2Eテストを実装できる。</p>
+<p>言語によっては、ビルトインのコマンド (例：<code>go test</code> コマンド) で E2E テストを実装できる。</p>
 <p>実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施する。</p>
 <blockquote>
 <ul>
@@ -35609,7 +35609,7 @@ DB、外部API
 </ul>
 </blockquote>
 <h4 id="_40">▼ バックエンド系ツール<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
-<p>実際のユーザーを模した一連の操作 (APIへのリクエスト) を実施する。</p>
+<p>実際のユーザーを模した一連の操作 (API へのリクエスト) を実施する。</p>
 <p>ツールは以下の通り。</p>
 <ul>
 <li><code>curl</code> コマンド</li>
@@ -35642,7 +35642,7 @@ DB、外部API
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年5月22日 22:50:22 JST">2026-05-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -35653,11 +35653,11 @@ DB、外部API
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

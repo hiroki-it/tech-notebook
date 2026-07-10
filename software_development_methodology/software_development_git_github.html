@@ -34597,10 +34597,10 @@
 <h2 id="01-issue">01. Issue<a class="headerlink" href="#01-issue" title="Permanent link">&para;</a></h2>
 <h3 id="_2">作業内容<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 作成<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>テンプレートを元に、Issueを作成する。</p>
-<p><code>1</code> 個のIssueとブランチにたくさんの実装をコミットすることは望ましくない。</p>
+<p>テンプレートを元に、Issue を作成する。</p>
+<p><code>1</code> 個の Issue とブランチにたくさんの実装をコミットすることは望ましくない。</p>
 <p>そこで、大きな対応を個々の対応に分割する。</p>
-<p>そして、大きな対応に関する基点Issueと基点ブランチを作成し、個々の対応に関連する子Issueと子ブランチを作成していく。</p>
+<p>そして、大きな対応に関する基点 Issue と基点ブランチを作成し、個々の対応に関連する子 Issue と子ブランチを作成していく。</p>
 <p>各対応が終了したら、親ブランチへマージしていく。</p>
 <h4 id="_4">▼ 削除<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>リポジトリの管理者権限があれば削除できる。</p>
@@ -34608,7 +34608,7 @@
 <h3 id="_5">テンプレート<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ 配置場所<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>リポジトリの直下に <code>.github</code> ディレクトリを配置し、<code>ISSUE_TEMPLATE.md</code> ファイルや <code>PULL_REQUEST_TEMPLATE.md</code> ファイルを配置する。</p>
-<p>Issueのテンプレートに関して、代わりに <code>ISSUE_TEMPLATE</code> ディレクトリを配置し、任意の名前のmdファイルを配置すると、複数のテンプレートを作成できる。</p>
+<p>Issue のテンプレートに関して、代わりに <code>ISSUE_TEMPLATE</code> ディレクトリを配置し、任意の名前の md ファイルを配置すると、複数のテンプレートを作成できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── .github/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── ISSUE_TEMPLATE.md</span>
@@ -34650,8 +34650,8 @@
 <h2 id="02">02. プルリクエスト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_9">作業内容<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 呼び名<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>GitHubではプルリクエストである。</p>
-<p>一方で、GitLabではマージリクエストという。</p>
+<p>GitHub ではプルリクエストである。</p>
+<p>一方で、GitLab ではマージリクエストという。</p>
 <h4 id="_11">▼ 作成<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>テンプレートを元に、プルリクエストを作成する。</p>
 <h4 id="_12">▼ 削除<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
@@ -34665,14 +34665,14 @@
 <p><br></p>
 <h3 id="_13">テンプレート<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="_14">▼ 配置場所<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>Issueテンプレートと同じ階層に配置する。</p>
+<p>Issue テンプレートと同じ階層に配置する。</p>
 <h4 id="_15">▼ タイトル<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>タイトルは『〇した。』とする。</p>
 <p>句読点の有無は好み。</p>
 <h4 id="wip">▼ WIP<a class="headerlink" href="#wip" title="Permanent link">&para;</a></h4>
 <p>実装途中のプルリクエストであり、実装方法などを質問したい場合、タイトルに『WIP』とつけておく。</p>
 <p>レビューしてもらいたくなったら、これをはずす。</p>
-<p>レビュー修正時に、実装に時間がかかりそうであったら、再び付けても良い。</p>
+<p>レビュー修正時に、実装に時間がかかりそうであったら、再び付けてもよい。</p>
 <h4 id="_16">▼ 内容<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>内容は『対応内容』と『レビューしてほしいところ』さえ伝われば、文言自体はそのリポジトリのルールに合わせる。</p>
 <p>もし、レビュー期限や動作確認手順を知らせる必要があれば『レビュー期限』『確認手順』の項目を設ける。</p>
@@ -34692,11 +34692,11 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_17">コミットの粒度<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
-<p>DBからフロント出力までに至る実装をコミットする場合、以下の <code>3</code> 個を意識する。</p>
+<p>DB からフロント出力までに至る実装をコミットする場合、以下の <code>3</code> 個を意識する。</p>
 <ul>
-<li>DBからコミット</li>
+<li>DB からコミット</li>
 <li>関連性のある実装をまとめてコミット</li>
-<li>1回のコミットで、コードサイズを少なくする</li>
+<li>1 回のコミットで、コードサイズを少なくする</li>
 </ul>
 <p><br></p>
 <h3 id="_18">レビュー観点<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
@@ -34728,7 +34728,7 @@
 <p><br></p>
 <h2 id="03-github-api">03. GitHub-API<a class="headerlink" href="#03-github-api" title="Permanent link">&para;</a></h2>
 <h3 id="_22">最新リリース<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
-<p>GitHubのAPIを使用することで、リリースページにある最新のバイナリをインストールできる。</p>
+<p>GitHub の API を使用することで、リリースページにある最新のバイナリをインストールできる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># リリースページの最新のバイナリへのURLを取得する</span>
 $<span class="w"> </span><span class="nv">LATEST_DOWNLOAD_URL</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-sL<span class="w"> </span>https://api.github.com/repos/hiroki-hasegawa/foo-repository/releases/latest<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;.assets[].browser_download_url&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>linux_amd64<span class="k">)</span>
 
@@ -34748,7 +34748,7 @@ $<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 <p><br></p>
 <h2 id="04-git-flow">04. Git-flow<a class="headerlink" href="#04-git-flow" title="Permanent link">&para;</a></h2>
 <h3 id="git-flow">Git-flowとは<a class="headerlink" href="#git-flow" title="Permanent link">&para;</a></h3>
-<p>Gitでソフトウェアを開発する場合、役割を持たせたブランチを作成し、ルールに沿ってコミットする。Git-flowを簡略化したものに、GitHub-flowやGitlab-flowがある。</p>
+<p>Git でソフトウェアを開発する場合、役割を持たせたブランチを作成し、ルールに沿ってコミットする。Git-flow を簡略化したものに、GitHub-flow や Gitlab-flow がある。</p>
 <p><img alt="git-flow" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/git-flow.png" /></p>
 <blockquote>
 <ul>
@@ -34800,7 +34800,7 @@ $<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>Issueを作成する。</p>
+<p>Issue を作成する。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -34812,11 +34812,11 @@ $<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>速攻でapproveをもらい、<code>main</code> ブランチにマージする。この時、<code>hotfix</code> ブランチは後で <code>develop</code> ブランチにマージするため、削除しないようにする。</p>
+<p>速攻で approve をもらい、<code>main</code> ブランチにマージする。このとき、<code>hotfix</code> ブランチはあとで <code>develop</code> ブランチにマージするため、削除しないようにする。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>パッチ番号を1つ増やしたタグを付与し、再リリースする。</p>
+<p>パッチ番号を 1 つ増やしたタグを付与し、再リリースする。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
@@ -34828,10 +34828,10 @@ $<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 <p><code>release</code> ブランチの作成自体が任意であるが、もし作成しない場合には <code>develop</code> ブランチにマージできないプルリクエストがたくさん溜まることになるため、推奨である。</p>
 <h4 id="developstaging-developua">▼ <code>develop/staging</code> ブランチ (<code>develop/ua</code>)<a class="headerlink" href="#developstaging-developua" title="Permanent link">&para;</a></h4>
 <p><code>develop</code> ブランチを基点とし、ステージング環境 (ユーザー受け入れ環境) に機能をデプロイするためのブランチ。</p>
-<p>CIツールやCDツールを使用して、コミット (マージコミットを含む) によってデプロイが発火する。</p>
+<p>CI ツールや CD ツールを使用して、コミット (マージコミットを含む) によってデプロイが発火する。</p>
 <h4 id="developtesting-developsandbox">▼ <code>develop/testing</code> ブランチ (<code>develop/sandbox</code>)<a class="headerlink" href="#developtesting-developsandbox" title="Permanent link">&para;</a></h4>
 <p><code>develop</code> ブランチを基点とし、テスト環境 (サンドボックス環境、検証環境) に機能をデプロイするためのブランチ。</p>
-<p>CIツールやCDツールを使用して、コミット (マージコミットを含む) によってデプロイが発火する。</p>
+<p>CI ツールや CD ツールを使用して、コミット (マージコミットを含む) によってデプロイが発火する。</p>
 <h4 id="feature">▼ <code>feature</code> ブランチ<a class="headerlink" href="#feature" title="Permanent link">&para;</a></h4>
 <p><code>develop</code> ブランチを基点とし、機能を作成/更新/削除するリクエストを作成するためのブランチ。</p>
 <p><br></p>
@@ -34918,7 +34918,7 @@ $<span class="w"> </span>./foo-bainary<span class="w"> </span>--version
 <dl>
 <dt><code>(3)</code></dt>
 <dd>
-<p>一度 <code>add</code> を行い、コンフリクトの修正をGitに認識させる。</p>
+<p>一度 <code>add</code> を行い、コンフリクトの修正を Git に認識させる。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>foo/bar.twig
@@ -34940,7 +34940,7 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
 <dl>
 <dt><code>(5)</code></dt>
 <dd>
-<p><code>git commit</code> (<code>-m</code> はつけてはいけない) を行い、vimエディタが表示される。</p>
+<p><code>git commit</code> (<code>-m</code> はつけてはいけない) を行い、vim エディタが表示される。</p>
 </dd>
 </dl>
 <div class="highlight"><pre><span></span><code><span class="w"> </span>Merge<span class="w"> </span>branch<span class="w"> </span><span class="s2">&quot;ブランチ名&quot;</span><span class="w"> </span>into<span class="w"> </span>ブランチ名
@@ -34960,7 +34960,7 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
 <dl>
 <dt><code>(8)</code></dt>
 <dd>
-<p>プッシュする。この時、マージコミットを作成するとき、基点ブランチ以外からマージしていると、差分のコミットが1つにまとまらず、</p>
+<p>プッシュする。このとき、マージコミットを作成するとき、基点ブランチ以外からマージしていると、差分のコミットが 1 つにまとまらず、</p>
 </dd>
 </dl>
 <blockquote>
@@ -34977,7 +34977,7 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
 </ul>
 </blockquote>
 <h4 id="_31">▼ エディタを使用して<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
-<p>エディタの例として、PHPStormを使用する。</p>
+<p>エディタの例として、PHPStorm を使用する。</p>
 <p>一番簡単かもしれない。</p>
 <p><br></p>
 <h3 id="_32">ブランチ別の解決方法<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
@@ -34996,7 +34996,7 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
-<p>基点ブランチから、一段目の派生ブランチにマージし、これをプッシュする。ここでプッシュしないと、2番目のブランチが1つ目のブランチとの差分を検出してしまい、大サイズの差分コミットをマージすることになってしまう。</p>
+<p>基点ブランチから、一段目の派生ブランチにマージし、これをプッシュする。ここでプッシュしないと、2 番目のブランチが 1 つ目のブランチとの差分を検出してしまい、大サイズの差分コミットをマージすることになってしまう。</p>
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
@@ -35024,7 +35024,7 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年4月28日 21:40:20 JST">2026-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -35035,11 +35035,11 @@ Changes<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </sp
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

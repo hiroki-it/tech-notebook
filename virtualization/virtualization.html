@@ -33868,8 +33868,8 @@
 <h3 id="_6">ハイパーバイザー型仮想化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ハイパーバイザー型仮想化とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><img alt="ハイパーバイザー型仮想化" src="https://user-images.githubusercontent.com/42175286/60386395-3afbd080-9acf-11e9-9fbe-6287753cb43a.png" /></p>
-<p>物理サーバーのBIOSから起動したハイパーバイザー上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー (マシン) を作成する。</p>
-<p>この時、ホストは使用しない。</p>
+<p>物理サーバーの BIOS から起動したハイパーバイザー上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー (マシン) を作成する。</p>
+<p>このとき、ホストは使用しない。</p>
 <h4 id="provider_1">▼ Provider例<a class="headerlink" href="#provider_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>VMware vSphere Hypervisor</li>
@@ -33879,7 +33879,7 @@
 <p><br></p>
 <h2 id="02-02-os">02-02. OS仮想化<a class="headerlink" href="#02-02-os" title="Permanent link">&para;</a></h2>
 <h3 id="os">OS仮想化とは<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
-<p>物理サーバー上で、ソフトウェアであるOSを部分的に仮想化しつつ、各仮想環境でハードウェアは共有する。</p>
+<p>物理サーバー上で、ソフトウェアである OS を部分的に仮想化しつつ、各仮想環境でハードウェアは共有する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization">https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization</a>\</li>
@@ -33890,7 +33890,7 @@
 <h3 id="_8">コンテナ型仮想化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ コンテナ型仮想化とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p><img alt="コンテナ型仮想化" src="https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png" /></p>
-<p>物理サーバーのホスト上で、OSのユーザー空間を分割し、独立した各ユーザー空間上でコンテナを作成する。</p>
+<p>物理サーバーのホスト上で、OS のユーザー空間を分割し、独立した各ユーザー空間上でコンテナを作成する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.undercoverlog.com/entry/2018/10/01/Docker%E3%81%AE%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93/cgroups%EF%BC%89">https://www.undercoverlog.com/entry/2018/10/01/Docker%E3%81%AE%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93/cgroups%EF%BC%89</a></li>
@@ -33913,18 +33913,18 @@
 <p><br></p>
 <h2 id="03">03. 各仮想化の性能の比較<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_10">セットアップの速さの違い<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>ホスト型とハイパーバイザ型では、ハードウェア要素 (例：CPU、メモリ、ストレージ) とソフトウェア (例：ゲストOS) を仮想化する必要がある。</p>
-<p>一方で、コンテナ型では、OSのユーザー空間を分割するだけのため、仮想化のセットアップが速い。</p>
+<p>ホスト型とハイパーバイザ型では、ハードウェア要素 (例：CPU、メモリ、ストレージ) とソフトウェア (例：ゲスト OS) を仮想化する必要がある。</p>
+<p>一方で、コンテナ型では、OS のユーザー空間を分割するだけのため、仮想化のセットアップが速い。</p>
 <p><img alt="仮想化の比較" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想化の比較.png" /></p>
 <p><br></p>
 <h3 id="_11">処理速度の違い<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ オーバーヘッドの小ささ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p>ゲストOS上のアプリケーションを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。</p>
+<p>ゲスト OS 上のアプリケーションを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。</p>
 <p>この分だけ、時間 (オーバーヘッド) を要する。</p>
 <p>一方で、コンテナ型では、各コンテナがホストとカーネルを共有するため、オーバーヘッドが小さい。</p>
 <p><img alt="仮想化の比較" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想化の比較.png" /></p>
 <h4 id="_13">▼ オーバーヘッドの比較<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p>sysbenchというベンチマークツールを使用して、CPU・メモリ・I/O処理に着目し、物理サーバー・コンテナ型仮想化 (Docker) ・ホスト型仮想化 (VirtualBox) の性能を比較すると、コンテナ型であるDockerはもっともオーバーヘッドが小さい。</p>
+<p>sysbench というベンチマークツールを使用して、CPU・メモリ・I/O 処理に着目し、物理サーバー・コンテナ型仮想化 (Docker) ・ホスト型仮想化 (VirtualBox) の性能を比較すると、コンテナ型である Docker はもっともオーバーヘッドが小さい。</p>
 <blockquote>
 <ul>
 <li><a href="https://codezine.jp/article/detail/7894">https://codezine.jp/article/detail/7894</a></li>
@@ -33952,7 +33952,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月15日 18:49:08 JST">2026-02-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -33963,11 +33963,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

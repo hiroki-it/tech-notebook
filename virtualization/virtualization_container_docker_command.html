@@ -35103,7 +35103,7 @@
 <h3 id="build">build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
 <h4 id="-force-rm-no-cache">▼ -force-rm、--no-cache<a class="headerlink" href="#-force-rm-no-cache" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>キャッシュ無しで、指定のDockerfileを基に、コンテナイメージをビルドする。失敗したときは削除するように、<code>--force-rm</code> オプションを有効化するか否かを設定する。</p>
+<p>キャッシュ無しで、指定の Dockerfile を基に、コンテナイメージをビルドする。失敗したときは削除するように、<code>--force-rm</code> オプションを有効化するか否かを設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>--file<span class="w"> </span>Dockerfile<span class="w"> </span>--tag<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--force-rm<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--no-cache<span class="w"> </span>.
 </code></pre></div>
 <h4 id="-tag-t">▼ --tag (-t)<a class="headerlink" href="#-tag-t" title="Permanent link">&para;</a></h4>
@@ -35117,7 +35117,7 @@
 </blockquote>
 <h4 id="-target">▼ --target<a class="headerlink" href="#-target" title="Permanent link">&para;</a></h4>
 <p>ビルドするステージ名を設定する。</p>
-<p>マルチステージビルドの時に使用する。</p>
+<p>マルチステージビルドのときに使用する。</p>
 <p>ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ローカルマシンのターゲットを指定する</span>
 $<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>--file<span class="w"> </span>Dockerfile<span class="w"> </span>--tag<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>--target<span class="w"> </span>dev<span class="w"> </span>.
@@ -35146,7 +35146,7 @@ $<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </s
 <p><code>--push</code> オプションを使用すると、ビルド後にコンテナレジストリへプッシュできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--push
 </code></pre></div>
-<p><code>--platform</code> オプションで、任意のCPUアーキテクチャに対応するコンテナイメージをビルドできる。</p>
+<p><code>--platform</code> オプションで、任意の CPU アーキテクチャに対応するコンテナイメージをビルドできる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64
 </code></pre></div>
 <blockquote>
@@ -35178,14 +35178,14 @@ $<span class="w"> </span>docker<span class="w"> </span>commit<span class="w"> </
 <p><br></p>
 <h3 id="container">container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h3>
 <h4 id="prune">▼ prune<a class="headerlink" href="#prune" title="Permanent link">&para;</a></h4>
-<p>停止中コンテナのみを全て削除する。</p>
+<p>停止中コンテナのみをすべて削除する。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>container<span class="w"> </span>prune
 </code></pre></div>
 <p><br></p>
 <h3 id="cp">cp<a class="headerlink" href="#cp" title="Permanent link">&para;</a></h3>
 <h4 id="cp_1">▼ cpとは<a class="headerlink" href="#cp_1" title="Permanent link">&para;</a></h4>
-<p>Dockerfileの <code>COPY</code> コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにコンテナイメージをビルドを実行することは面倒のため、ホストからコンテナにコピーし、再読み出しを実行する。</p>
+<p>Dockerfile の <code>COPY</code> コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにコンテナイメージをビルドを実行することは面倒のため、ホストからコンテナにコピーし、再読み出しを実行する。</p>
 <p>ただし、コンテナを再作成すると元に戻ってしまうことに注意。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ホスト側のファイルをコンテナにコピー</span>
@@ -35283,21 +35283,21 @@ $<span class="w"> </span>docker<span class="w"> </span>container<span class="w">
 </code></pre></div>
 <h4 id="rmi">▼ rmi<a class="headerlink" href="#rmi" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>タグ名のないイメージのみを全て削除する。</p>
+<p>タグ名のないイメージのみをすべて削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>rmi<span class="w"> </span>--force<span class="w"> </span><span class="k">$(</span>sudo<span class="w"> </span>docker<span class="w"> </span>images<span class="w"> </span>--filter<span class="w"> </span><span class="s2">&quot;dangling=true&quot;</span><span class="w"> </span>--all<span class="w"> </span>--quiet<span class="k">)</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="inspect_1">inspect<a class="headerlink" href="#inspect_1" title="Permanent link">&para;</a></h3>
 <h4 id="inspect_2">▼ inspectとは<a class="headerlink" href="#inspect_2" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>起動中コンテナの全ての設定内容を取得する。</p>
+<p>起動中コンテナのすべての設定内容を取得する。</p>
 <p><code>grep</code> とも組み合わせられる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;起動中コンテナ名&gt;
 
 $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;起動中コンテナ名&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>IPAddress
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>json-fileドライバーを使用しているときに、ログファイルの出力先を確認する。</p>
+<p>json-file ドライバーを使用しているときに、ログファイルの出力先を確認する。</p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span>$<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> </span>&lt;起動中コンテナ名&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LogPath
 
 <span class="w"> </span><span class="s2">&quot;LogPath&quot;</span>:<span class="w"> </span><span class="s2">&quot;/var/lib/docker/containers/*****-json.log&quot;</span>,
@@ -35343,7 +35343,7 @@ aeef782b227d<span class="w">        </span>tech-notebook_default<span class="w">
 <h3 id="ps">ps<a class="headerlink" href="#ps" title="Permanent link">&para;</a></h3>
 <h4 id="-a">▼ -a<a class="headerlink" href="#-a" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>コンテナの起動と停止に関わらず、IDなどの一覧を取得する。</p>
+<p>コンテナの起動と停止に関わらず、ID などの一覧を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>ps<span class="w"> </span>-a
 </code></pre></div>
 <p><br></p>
@@ -35357,12 +35357,12 @@ aeef782b227d<span class="w">        </span>tech-notebook_default<span class="w">
 <h3 id="push">push<a class="headerlink" href="#push" title="Permanent link">&para;</a></h3>
 <h4 id="push_1">▼ pushとは<a class="headerlink" href="#push_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>ホストで作成したコンテナイメージを、指定したDockerHubのユーザーにアップロードする。</p>
+<p>ホストで作成したコンテナイメージを、指定した DockerHub のユーザーにアップロードする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </span>&lt;Docker<span class="w"> </span>Hubユーザー名&gt;/&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>ホストで作成したコンテナイメージを、指定したECRにアップロードする。</p>
-<p>ECRはタグ名がやや特殊のため、事前にタグを付け替える必要がある。</p>
+<p>ホストで作成したコンテナイメージを、指定した ECR にアップロードする。</p>
+<p>ECR はタグ名がやや特殊のため、事前にタグを付け替える必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># docker tag foo:latest &lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com/foo-repository:latest</span>
 $<span class="w"> </span>docker<span class="w"> </span>tag<span class="w"> </span>&lt;ローカルマシンでのコンテナイメージ名&gt;:&lt;ローカルマシンでのバージョンタグ&gt;<span class="w"> </span>&lt;イメージレジストリ名&gt;/&lt;イメージリポジトリ名&gt;:&lt;バージョンタグ&gt;
 
@@ -35373,13 +35373,13 @@ $<span class="w"> </span>docker<span class="w"> </span>push<span class="w"> </sp
 <h3 id="rm">rm<a class="headerlink" href="#rm" title="Permanent link">&para;</a></h3>
 <h4 id="-force">▼ --force<a class="headerlink" href="#-force" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>起動中/停止中の全てコンテナを強制的に削除する。</p>
+<p>起動中/停止中のすべてコンテナを強制的に削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>rm<span class="w"> </span>--force<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>--all<span class="w"> </span>--quiet<span class="k">)</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="run">run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
 <h4 id="-hostname">▼ --hostname<a class="headerlink" href="#-hostname" title="Permanent link">&para;</a></h4>
-<p>コンテナ内の <code>/etc/hosts</code> ファイルで、コンテナのプライベートIPアドレスを確認できる。</p>
+<p>コンテナ内の <code>/etc/hosts</code> ファイルで、コンテナのプライベート IP アドレスを確認できる。</p>
 <p><code>--hostname</code> オプションで命名していればその名前、指定していなければランダムな文字列が割り当てられる。</p>
 <p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--hostname<span class="w"> </span>&lt;ホスト名&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--publish<span class="o">=</span><span class="m">8080</span>:80<span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
@@ -35406,7 +35406,7 @@ ff02::2<span class="w"> </span>ip6-allrouters
 </blockquote>
 <h4 id="-expose">▼ --expose<a class="headerlink" href="#-expose" title="Permanent link">&para;</a></h4>
 <p>他のコンテナに公開するコンテナポートを <code>--expose</code> オプションで設定できる。</p>
-<p>これはDockerfileでEXPOSE命令として設定しても良い。</p>
+<p>これは Dockerfile で EXPOSE 命令として設定してもよい。</p>
 <p>補足として、プロセスの受信するポートと合わせる必要がある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-it<span class="w"> </span>--name<span class="w"> </span>&lt;コンテナ名&gt;<span class="w"> </span>--expose<span class="o">=</span><span class="m">80</span><span class="w"> </span>&lt;コンテナイメージ名&gt;:&lt;バージョンタグ&gt;<span class="w"> </span>/bin/bash
 </code></pre></div>
@@ -35498,7 +35498,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span>&lt;起動中コンテナ名&gt;
 </code></pre></div>
 <p><strong>＊例＊</strong></p>
-<p>全てのコンテナを停止する。</p>
+<p>すべてのコンテナを停止する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>stop<span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>ps<span class="w"> </span>--all<span class="w"> </span>--quiet<span class="k">)</span>
 </code></pre></div>
 <p><br></p>
@@ -35507,22 +35507,22 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p>ボリュームマウントを作成する。</p>
 <p><code>docker</code> コマンドではなく、<code>docker compose</code> コマンドで作成することが推奨である。</p>
 <p><strong>＊例＊</strong></p>
-<p>ホスト側のdockerエリアにボリュームを作成</p>
+<p>ホスト側の docker エリアにボリュームを作成</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>&lt;ボリューム名&gt;
 </code></pre></div>
 <h4 id="ls_1">▼ ls<a class="headerlink" href="#ls_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>dockerエリアのVolumeの一覧を表示</p>
+<p>docker エリアの Volume の一覧を表示</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>ls
 </code></pre></div>
 <h4 id="rm_1">▼ rm<a class="headerlink" href="#rm_1" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>dockerエリアのボリュームを削除</p>
+<p>docker エリアのボリュームを削除</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>rm<span class="w"> </span>&lt;ボリューム名&gt;
 </code></pre></div>
 <h4 id="inspect_5">▼ inspect<a class="headerlink" href="#inspect_5" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong></p>
-<p>dockerエリアのVolumeの詳細を表示</p>
+<p>docker エリアの Volume の詳細を表示</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span>volume<span class="w"> </span>inspect<span class="w"> </span>&lt;ボリューム名&gt;
 
 <span class="o">[</span>
@@ -35547,9 +35547,9 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <span class="w">    </span>--mount<span class="w"> </span><span class="nv">type</span><span class="o">=</span>volume,<span class="w"> </span><span class="nv">src</span><span class="o">=</span>&lt;ホストボリューム名&gt;<span class="w"> </span>volume-driver<span class="o">=</span>local,<span class="w"> </span><span class="nv">dst</span><span class="o">=</span>&lt;コンテナ側ディレクトリ&gt;
 </code></pre></div>
 <p><strong>＊実装例＊</strong></p>
-<p>Dockerfileでボリュームマウントを実行する場合、コンテナ側のマウントポイントを設定する。</p>
-<p>dockerエリアのマウントポイントは、自動的に作成される。</p>
-<p>Docker Composeで実行することが推奨である。</p>
+<p>Dockerfile でボリュームマウントを実行する場合、コンテナ側のマウントポイントを設定する。</p>
+<p>docker エリアのマウントポイントは、自動的に作成される。</p>
+<p>Docker Compose で実行することが推奨である。</p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu</span>
 <span class="k">RUN</span><span class="w"> </span>mkdir<span class="w"> </span>/myvol
 <span class="k">RUN</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello world&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/myvol/greeting
@@ -35578,7 +35578,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年2月17日 18:50:03 JST">2026-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
   </span>
 
     
@@ -35589,11 +35589,11 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 
