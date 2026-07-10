@@ -17,7 +17,7 @@ description: PHPStan＠静的解析の知見を記録しています。
 
 レベルに応じて、静的解析を実施する。
 
-最初は、必ず検出したい項目 (例：未定義関数、引数/返却値型の誤り) を決めて、これを検出できるレベルを設定すると良い。
+最初は、必ず検出したい項目 (例：未定義関数、引数/返却値型の誤り) を決めて、これを検出できるレベルを設定するとよい。
 
 > - https://phpstan.org/user-guide/rule-levels
 > - https://creators-note.chatwork.com/entry/2022/05/24/084828#%E8%A7%A3%E6%9E%90%E3%83%AC%E3%83%99%E3%83%AB%E3%82%92%E6%B1%BA%E5%AE%9A%E3%81%99%E3%82%8B
@@ -28,7 +28,7 @@ description: PHPStan＠静的解析の知見を記録しています。
 
 ### オプション無し
 
-全てのファイルを対象として、静的解析を実施する。
+すべてのファイルを対象として、静的解析を実施する。
 
 ```bash
 $ vendor/bin/phpstan analyse
@@ -40,7 +40,7 @@ $ vendor/bin/phpstan analyse
 
 ### `phpstan.neonファイル` とは
 
-PHPStanの設定する。
+PHPStan の設定する。
 
 <br>
 

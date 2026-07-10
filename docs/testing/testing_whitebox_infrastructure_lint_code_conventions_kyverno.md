@@ -19,11 +19,11 @@ description: Kyverno＠コード規約違反の知見を記録しています。
 
 ![kyverno_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kyverno_architecture.png)
 
-Kyvernoは、admission-controllersアドオン、webhookサーバー、Controllerなどのコンポーネトから構成されている。
+Kyverno は、admission-controllers アドオン、webhook サーバー、Controller などのコンポーネトから構成されている。
 
-ほかの静的解析ツール (例：kubeconform、pluto) やAmazon EKSのアップグレードインサイトとは異なり、kube-apiserverにマニフェストが送信された後に静的解析する。
+ほかの静的解析ツール (例：kubeconform、pluto) や Amazon EKS のアップグレードインサイトとは異なり、kube-apiserver にマニフェストが送信された後に静的解析する。
 
-kube-apiserverのmutating-admissionステップとvalidating-admissionステップでKyvernoのwebhookサーバーにWebhookが送信される。
+kube-apiserver の mutating-admission ステップと validating-admission ステップで Kyverno の webhook サーバーに Webhook が送信される。
 
 送信されたマニフェストの宣言が、事前に設定されたルールどおりであるかを検証する。もし違反していれば、マニフェストの宣言を変更する。
 
@@ -44,12 +44,12 @@ etcd # Amazon EKSアップグレードインサイトで検証
 
 ### 検出項目
 
-Yamlによるユーザー定義のポリシーに基づいて、さまざまなツールの設定ファイルのコード規約違反を検証する。
+Yaml によるユーザー定義のポリシーに基づいて、さまざまなツールの設定ファイルのコード規約違反を検証する。
 
 自由にコード規約を定義でき、ほかの静的解析ツールの項目を網羅できる。
 
 - ベストプラクティス
-- 非推奨apiVersion検出
+- 非推奨 apiVersion 検出
 
 > - https://kyverno.io/policies/
 

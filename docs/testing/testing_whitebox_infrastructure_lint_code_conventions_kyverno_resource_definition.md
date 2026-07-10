@@ -19,7 +19,7 @@ description: リソース定義＠Kyvernoの知見を記録しています。
 
 #### ▼ チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://kyverno.github.io/kyverno/
@@ -41,7 +41,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kyverno -n
 
 #### ▼ validationFailureActionとは
 
-ルールに則っていないKubernetesリソースの作成/更新があった場合に、これを拒否するか、または許可するが監査ログを記録するかを設定する。
+ルールに則っていない Kubernetes リソースの作成/更新があった場合に、これを拒否するか、または許可するが監査ログを記録するかを設定する。
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -61,7 +61,7 @@ spec:
 
 #### ▼ backgroundとは
 
-Kyvernoの導入後に作成/更新されるKubernetesだけでなく、導入前の既存のKubernetesリソースもKyvernoの検査対象とするかを設定する。
+Kyverno の導入後に作成/更新される Kubernetes だけでなく、導入前の既存の Kubernetes リソースも Kyverno の検査対象とするかを設定する。
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -81,7 +81,7 @@ spec:
 
 #### ▼ rulesとは
 
-Webhookリクエスト時に実行するKyvernoのルールを設定する。
+Webhook リクエスト時に実行する Kyverno のルールを設定する。
 
 #### ▼ Mutateルールの場合
 
@@ -117,7 +117,7 @@ spec:
 
 **＊実装例＊**
 
-Podのマニフェストの `metadata.labels` キー以下に、`app.kubernetes.io/name` キーがあるか否かを検証する。
+Pod のマニフェストの `metadata.labels` キー以下に、`app.kubernetes.io/name` キーがあるか否かを検証する。
 
 ```yaml
 apiVersion: kyverno.io/v1
@@ -145,7 +145,7 @@ spec:
 
 **＊実装例＊**
 
-Podのマニフェストの `.spec.containers` キー以下に、`resources` キーがあるか否かを検証する。
+Pod のマニフェストの `.spec.containers` キー以下に、`resources` キーがあるか否かを検証する。
 
 ```yaml
 apiVersion: kyverno.io/v1

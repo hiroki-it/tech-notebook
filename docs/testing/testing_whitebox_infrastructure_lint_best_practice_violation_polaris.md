@@ -19,7 +19,7 @@ description: polaris＠ベストプラクティス違反の知見を記録して
 
 一般に知られているベストプラクティス項目に基づいて、マニフェストのベストプラクティス違反 (例：脆弱性、効率性、信頼性など) を検証する。
 
-Helmチャートのまま検査できず、一度マニフェストとして渡す必要がある。
+Helm チャートのまま検査できず、一度マニフェストとして渡す必要がある。
 
 > - https://polaris.docs.fairwinds.com/checks/security/
 > - https://polaris.docs.fairwinds.com/checks/efficiency/
@@ -56,7 +56,7 @@ $ brew install FairwindsOps/tap/polaris
 
 #### ▼ Admission Controller
 
-Admission Controllerとして、実際にデプロイされたマニフェストに対して静的解析する。
+Admission Controller として、実際にデプロイされたマニフェストに対して静的解析する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://charts.fairwinds.com/stable
@@ -106,7 +106,7 @@ checks:
 
 #### ▼ 重要度レベルの変更
 
-polarisの実行時に、重要度が `danger` 以上のルールを検証するようにしたとする。
+polaris の実行時に、重要度が `danger` 以上のルールを検証するようにしたとする。
 
 重要度がデフォルトで `warning` のルールは検証しなくなるため、検証したいルールは `danger` に格上げする
 
@@ -151,7 +151,7 @@ checks:
 
 #### ▼ 設定し忘れの検証
 
-DaemonSet配下のPodでは、`.spec.priorityClassName` キーや `.spec.affinity` キーを設定しておくほうが良いが、これを設定し忘れてしまう可能性がある。
+DaemonSet 配下の Pod では、`.spec.priorityClassName` キーや `.spec.affinity` キーを設定しておくほうがよいが、これを設定し忘れてしまう可能性がある。
 
 こういった場合、カスタムルールが役立つ。
 
@@ -287,7 +287,7 @@ customChecks:
 
 #### ▼ 作成し忘れ
 
-HorizontalPodAutoscalerは、Deploymentと合わせて作る必要があるが、作成し忘れてしまう可能性がある。
+HorizontalPodAutoscaler は、Deployment と合わせて作る必要があるが、作成し忘れてしまう可能性がある。
 
 こういった場合、カスタムルールが役立つ。
 
@@ -328,9 +328,9 @@ mutations:
 
 ### exemptions
 
-脆弱性検出の項目から除外するKubernetesリソースを設定する。
+脆弱性検出の項目から除外する Kubernetes リソースを設定する。
 
-一部のKubernetesリソース (例：kube-system) は、root権限を持つ実行ユーザーで実行しなければならないため、除外設定が必要である。
+一部の Kubernetes リソース (例：kube-system) は、root 権限を持つ実行ユーザーで実行しなければならないため、除外設定が必要である。
 
 ```yaml
 exemptions:
@@ -437,7 +437,7 @@ Polaris audited Path manifest.yaml at 2023-09-13T03:27:57+09:00
 
 #### ▼ --helm-chart、--helm-values
 
-Helmチャートを指定する。
+Helm チャートを指定する。
 
 ```bash
 $ polaris audit --helm-chart ./chart --helm-values ./chart/values.yaml
@@ -447,7 +447,7 @@ $ polaris audit --helm-chart ./chart --helm-values ./chart/values.yaml
 
 #### ▼ --set-exit-code-on-danger
 
-dangerレベルのルール違反が検出された場合、終了コード `3` を出力する。
+danger レベルのルール違反が検出された場合、終了コード `3` を出力する。
 
 ```bash
 $ polaris audit --audit-path manifest.yaml --severity danger --set-exit-code-on-danger

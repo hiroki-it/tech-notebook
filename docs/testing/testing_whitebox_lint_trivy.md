@@ -17,9 +17,9 @@ description: trivy＠脆弱性診断の知見を記録しています。
 
 ### 検出項目
 
-アプリケーションのパッケージ、IaC (Kubernetes、Terraform、Dockerfile) 、イメージ (コンテナイメージ、マシンイメージ) で報告されたCVEに基づいて、ファイルの実装方法に起因する脆弱性を検証する。
+アプリケーションのパッケージ、IaC (Kubernetes、Terraform、Dockerfile) 、イメージ (コンテナイメージ、マシンイメージ) で報告された CVE に基づいて、ファイルの実装方法に起因する脆弱性を検証する。
 
-Regoでカスタムポリシーを実装できる。
+Rego でカスタムポリシーを実装できる。
 
 <br>
 
@@ -41,7 +41,7 @@ $ docker run aquasec/trivy
 
 #### ▼ チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://aquasecurity.github.io/helm-charts/
@@ -61,7 +61,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/trivy-oper
 
 ### `.trivyignore` ファイル
 
-検証したくないCVEの項目を設定する。
+検証したくない CVE の項目を設定する。
 
 ```bash
 $ cat .trivyignore.yaml
@@ -120,7 +120,7 @@ $ trivy config --debug <IaCファイル>
 $ trivy config --exit-code 1 <IaCファイル>
 ```
 
-マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡しても良い。
+マニフェスト管理ツール (Helm、Kustomize) の作成したマニフェストファイルを渡してもよい。
 
 ```bash
 $ helm template . -f foo-values.yaml -f foo-secrets.yaml > manifest.yaml

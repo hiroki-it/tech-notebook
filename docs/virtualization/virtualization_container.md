@@ -47,7 +47,7 @@ description: コンテナ＠仮想化の知見を記録しています。
 
 ### CRIランタイムとは
 
-高レベルなランタイムであり、Podやコンテナを管理する。
+高レベルなランタイムであり、Pod やコンテナを管理する。
 
 - containerd
 - CRI-O
@@ -65,7 +65,7 @@ description: コンテナ＠仮想化の知見を記録しています。
 
 #### ▼ コンテナの起動
 
-OCIランタイム (例：runC) と単一／複数のCNIプラグイン (例：flannel) のバイナリを実行し、コンテナを起動する。
+OCI ランタイム (例：runC) と単一／複数の CNI プラグイン (例：flannel) のバイナリを実行し、コンテナを起動する。
 
 ![container-runtime_run-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container-runtime_run-container.png)
 
@@ -75,7 +75,7 @@ OCIランタイム (例：runC) と単一／複数のCNIプラグイン (例：f
 
 #### ▼ イメージレイヤーのキャッシュ
 
-コンテナランタイム (例：Docker、Containerdなど) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker` ディレクトリ、`var/lib/containerd` ディレクトリなど) に保管する。
+コンテナランタイム (例：Docker、Containerd など) は、ベースイメージを含む各イメージレイヤーをキャッシュとしてローカルストレージ (例：`var/lib/docker` ディレクトリ、`var/lib/containerd` ディレクトリなど) に保管する。
 
 > - https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images
 > - https://stackoverflow.com/a/75905173

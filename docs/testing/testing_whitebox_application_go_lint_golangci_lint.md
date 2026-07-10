@@ -15,7 +15,7 @@ description: golangci-lint＠静的解析の知見を記録しています。
 
 ## 01. golangci-lintとは
 
-Goのさまざまな静的解析ツールをまとめて実行できる。
+Go のさまざまな静的解析ツールをまとめて実行できる。
 
 ```yaml
 # golangci-lintの公式リポジトリのサンプルを参考にする
@@ -100,7 +100,7 @@ go_lint:
 
 ## 03. .golangci.yml
 
-golangci-lint v2系では、設定ファイルに `version: "2"` を指定する。
+golangci-lint v2 系では、設定ファイルに `version: "2"` を指定する。
 
 ```yaml
 version: "2"
@@ -311,7 +311,7 @@ severity:
 
 ### v1系からの変更点
 
-v2系では `linters-settings` は `linters.settings` に移動した。
+v2 系では `linters-settings` は `linters.settings` に移動した。
 
 また、除外ルールは `issues.exclude-rules` ではなく `linters.exclusions.rules` に設定する。
 
@@ -327,7 +327,7 @@ v2系では `linters-settings` は `linters.settings` に移動した。
 
 コマンドの実行結果に色をつける。
 
-CIによっては、実行時に色がなくなってしまうが、`always` を有効化すると色がつくようになる。
+CI によっては、実行時に色がなくなってしまうが、`always` を有効化すると色がつくようになる。
 
 ```bash
 $ golangci-lint linters --color always
@@ -339,7 +339,7 @@ $ golangci-lint linters --color always
 
 #### ▼ --go
 
-Goのバージョンを指定して実行する。
+Go のバージョンを指定して実行する。
 
 ```bash
 $ golangci-lint run --go <バージョン>
@@ -424,7 +424,7 @@ package pkg
 
 コメントアウトのコードに対して、指定した番号の静的解析を無視する。
 
-注意点として、各ツールの用意しているignoreコメントではなく、golangci-lint専用のコメントである。
+注意点として、各ツールの用意している ignore コメントではなく、golangci-lint 専用のコメントである。
 
 特定の番号 (例：`SA1019`) を無視することは難しそう。
 
