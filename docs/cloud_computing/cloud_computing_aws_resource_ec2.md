@@ -13,7 +13,7 @@ description: Amazon EC2＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. Amazon EC2：Elastic Computer Cloud
+## 01. Amazon EC2：Elastic Compute Cloud
 
 ### Amazon EC2とは
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS EFS＠AWSリソース
-description: AWS EFS＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon EFS＠AWSリソース
+description: Amazon EFS＠AWSリソースの知見を記録しています。
 ---
 
-# AWS EFS＠AWSリソース
+# Amazon EFS＠AWSリソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: AWS EFS＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. AWS EFS：Elastic File Systemとは
+## 01. Amazon EFS：Elastic File Systemとは
 
 マウントターゲットと接続された片方のEC2から、ファイルを読み出し、これをもう一方に出力する。
 

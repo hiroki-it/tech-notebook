@@ -1185,7 +1185,7 @@ security_group_ingress_ec2_ssh = {
 
 ```terraform
 # ---------------------------------------------
-# AWS Security Group
+# Amazon EC2 Security Group
 # ---------------------------------------------
 resource "aws_security_group" "ec2" {
 

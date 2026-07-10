@@ -847,7 +847,7 @@ $ aws ssm get-parameters-by-path --path "/FOO"
 
 <br>
 
-### AWS Security Group
+### Amazon EC2 Security Group
 
 #### ▼ authorize-security-group-ingress
 
