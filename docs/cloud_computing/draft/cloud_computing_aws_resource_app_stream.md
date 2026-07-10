@@ -15,8 +15,8 @@ description: App Stream＠AWSの知見を記録しています。
 
 ## 01. App Streamとは
 
-Windowsの仮想環境を提供する。
+Windows の仮想環境を提供する。
 
-Windowsのユーザーやグループを管理するAWS Managed Microsoft ADと組み合わせる。 
+Windows のユーザーやグループを管理する AWS Managed Microsoft AD と組み合わせる。
 
 <br>
