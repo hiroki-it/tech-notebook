@@ -15,7 +15,7 @@ description: Next.js＠フレームワークの知見を記録しています。
 
 ## 01. Next.jsとは
 
-Reactパッケージを使用したフレームワークである。
+React パッケージを使用したフレームワークである。
 
 <br>
 
@@ -25,7 +25,7 @@ Reactパッケージを使用したフレームワークである。
 
 #### ▼ CSRモード
 
-以下の場合はCSRモードになり、SPAをレンダリングする。
+以下の場合は CSR モードになり、SPA をレンダリングする。
 
 - ファイルの先頭に `"use client"` を指定している。
 
@@ -77,7 +77,7 @@ export default CsrPage;
 
 #### ▼ SSRモード
 
-以下の場合はSSRモードになる。
+以下の場合は SSR モードになる。
 
 - `fetch()` 関数の第二引数に、`{ cache: "no-store" }` を指定している
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
@@ -141,7 +141,7 @@ Route (app)                              Size     First Load JS
 
 #### ▼ SSGモード
 
-以下の場合はSSGモードになる。
+以下の場合は SSG モードになる。
 
 - `fetch()` 関数の第二引数に、`{ cache: "force-cache" }` を指定しているか、または何も指定していない
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
@@ -203,7 +203,7 @@ Route (app)                              Size     First Load JS
 
 #### ▼ ISRモード
 
-以下の場合はISRモードになる。
+以下の場合は ISR モードになる。
 
 - `fetch()` 関数の第二引数に、`{ next: { revalidate: <任意の値> } }` を指定している
 - `useEffect`、`useState`、`onClick` などのブラウザ依存の機能を使用していない
@@ -246,7 +246,7 @@ export default IsrPage;
 
 #### ▼ ハイブリッド
 
-フロントエンド領域のロジックをCSRモード、バックエンド領域のロジックをSSRモードで実行する。
+フロントエンド領域のロジックを CSR モード、バックエンド領域のロジックを SSR モードで実行する。
 
 ```jsx
 // フロントエンド領域のファイル
@@ -295,11 +295,11 @@ Route (app)                              Size     First Load JS
 
 #### ▼ APIルートモード（Route Handlerモード）
 
-『Route Handlerモード』ともいう。
+『Route Handler モード』ともいう。
 
-`app/api/foo` ディレクトリに `route.ts` ファイルをおくと、`app/api/` がエンドポイントのAPIルートモードになる。
+`app/api/foo` ディレクトリに `route.ts` ファイルをおくと、`app/api/` がエンドポイントの API ルートモードになる。
 
-APIルートモードとほかのモード（CSR、SSR、SSG）はディレクトリを分けて共存させられるため、1つのアプリケーションでフロントエンドアプリケーションとBFFを兼ねることができる。
+API ルートモードとほかのモード（CSR、SSR、SSG）はディレクトリを分けて共存させられるため、1 つのアプリケーションでフロントエンドアプリケーションと BFF を兼ねることができる。
 
 ```typescript
 // app/api/foo/route.tsファイル
@@ -316,17 +316,17 @@ export default (_: NextApiRequest, res: NextApiResponse) => {
 
 #### ▼ Node.jsランタイム
 
-JavaScriptまたはTypeScriptをNode.js上で稼働させる。
+JavaScript または TypeScript を Node.js 上で稼働させる。
 
-Next.jsの多くのコンポーネントがNode.jsランタイムである。
+Next.js の多くのコンポーネントが Node.js ランタイムである。
 
 > - https://nextjs.org/docs/app/api-reference/file-conventions/proxy
 
 #### ▼ Edgeランタイム
 
-JavaScriptまたはTypeScriptをエッジ（例：Cloudflare、Amazon CloudFront、Fastlyなど）
+JavaScript または TypeScript をエッジ（例：Cloudflare、Amazon CloudFront、Fastly など）
 
-Next.jsでは、`export const runtime = 'edge'` を宣言すると、Edgeランタイムで動かせる。
+Next.js では、`export const runtime = 'edge'` を宣言すると、Edge ランタイムで動かせる。
 
 ```typescript
 export const runtime = 'edge'
@@ -364,15 +364,15 @@ export const runtime = 'edge'
 
 `.env` ファイルを自動的に読み込み、また名前に応じて処理が変わる。
 
-dotenvパッケージは不要である。
+dotenv パッケージは不要である。
 
 #### ▼ `.env` ファイル
 
-全ての `yarn` コマンドで自動的に読み込まれる。
+すべての `yarn` コマンドで自動的に読み込まれる。
 
 #### ▼ `.env.local` ファイル
 
-全ての `yarn` コマンドで自動的に読み込まれる。
+すべての `yarn` コマンドで自動的に読み込まれる。
 
 > - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
 
@@ -408,7 +408,7 @@ dotenvパッケージは不要である。
 
 #### ▼ ディレクトリ
 
-Next.jsでは、ブラウザルーティングとAPIエンドポイントを区別している。
+Next.js では、ブラウザルーティングと API エンドポイントを区別している。
 
 ```yaml
 app/
@@ -427,7 +427,7 @@ app/
 
 #### ▼ 動的ルート
 
-ルーティングにおけるパスパラメーターの値を事前に定義せず、処理の中で決定する。
+ルーティングにおけるパスパラメーターの値を事前に定義せず、処理のなかで決定する。
 
 ```typescript
 import {NextRequest} from "next/server";

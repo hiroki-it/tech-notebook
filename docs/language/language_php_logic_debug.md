@@ -19,7 +19,7 @@ description: デバッグロジック＠PHPの知見を記録しています。
 
 #### ▼ 基本形
 
-ブラウザの『デベロッパーツール＞Network＞出力先ページのPreviewタブまたはResponseタブ』で確認できる。
+ブラウザの『デベロッパーツール＞Network＞出力先ページの Preview タブまたは Response タブ』で確認できる。
 
 **＊実装例＊**
 
@@ -31,7 +31,7 @@ var_dump($var);
 
 #### ▼ 例外処理との組み合わせ
 
-ブラウザのデベロッパーツール＞Network＞出力先ページのPreviewタブで例外エラー画面が表示される。
+ブラウザのデベロッパーツール＞Network＞出力先ページの Preview タブで例外エラー画面が表示される。
 
 エラー画面の上部で、`var_dump($var)` の結果を確認できる。
 
@@ -124,7 +124,7 @@ $ sudo pecl install xdebug-2.2.7
 
 #### 2. Xdebugの設定
 
-Xdebugのあるローカル仮想環境から見て、PhpStromビルトイン仮想環境を接続先と見なす。
+Xdebug のあるローカル仮想環境から見て、PhpStrom ビルトイン仮想環境を接続先と見なす。
 
 ```ini
 zend_extension=/usr/lib64/php/modules/xdebug.so
@@ -169,7 +169,7 @@ $ service httpd restart
 
 デバッガーエンジン (Xdebug) は `80` 番ポートを開放する。
 
-エディタ仮想環境はこれに対して、セッション開始のリクエストをHTTPプロトコルで送信する。
+エディタ仮想環境はこれに対して、セッション開始のリクエストを HTTP プロトコルで送信する。
 
 #### 3. デバッガーエンジンから仮想環境に対するリクエスト
 
@@ -177,17 +177,17 @@ $ service httpd restart
 
 #### 4. Breakpointの設定
 
-エディタ仮想環境は、デバッガーエンジンに対して、Breakpointを設定するリクエストを送信する。
+エディタ仮想環境は、デバッガーエンジンに対して、Breakpoint を設定するリクエストを送信する。
 
 #### 5. DBGプロトコル：Debuggerプロトコルによる相互通信の確立
 
-DBGプロトコルを使用して、エディタ仮想環境とデバッガーエンジンの間の相互通信を確立する。
+DBG プロトコルを使用して、エディタ仮想環境とデバッガーエンジンの間の相互通信を確立する。
 
 #### 6. 相互通信の実行
 
 エディタは、デバッガーエンジンに対してコードを送信する。
 
-デバッガーエンジンは、Breakpointまでの各変数の中身を解析し、エディタ仮想環境に返信する。
+デバッガーエンジンは、Breakpoint までの各変数の中身を解析し、エディタ仮想環境に返信する。
 
 ![Xdebug仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Xdebug仕組み.png)
 

@@ -15,13 +15,13 @@ description: HTTP認証＠認証の知見を記録しています。
 
 ## 01. HTTP認証とは
 
-HTTPリクエストの中で認証する認証スキームのこと。
+HTTP リクエストのなかで認証する認証スキームのこと。
 
 リクエストの `Authorization` ヘッダーとレスポンスの `WWW-Authenticate` ヘッダーで認証スキームを指定する。
 
-認証スキームの種類には、『ベーシック認証』、『ダイジェスト認証』、『Bearer認証』などがある。
+認証スキームの種類には、『ベーシック認証』、『ダイジェスト認証』、『Bearer 認証』などがある。
 
-資格情報の一時的な保管は、ブラウザのWebStoregeで行うため、認証解除 (ログアウト) をサーバー側で完全に制御できない。
+資格情報の一時的な保管は、ブラウザの WebStorege で行うため、認証解除 (ログアウト) をサーバー側で完全に制御できない。
 
 > - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
 > - https://architecting.hateblo.jp/entry/2020/03/27/130535

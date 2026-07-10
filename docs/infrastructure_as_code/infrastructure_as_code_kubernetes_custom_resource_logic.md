@@ -37,7 +37,7 @@ spec:
 
 ### カスタムリソース
 
-Deploymentを管理するFooリソースとする。
+Deployment を管理する Foo リソースとする。
 
 ```go
 package v1alpha1
@@ -97,7 +97,7 @@ spec:
 
 #### ▼ controller.go
 
-このCustom Controllerは、FooリソースをReconciliationし、またDeploymentの状態をwatchする。
+この Custom Controller は、Foo リソースを Reconciliation し、また Deployment の状態を watch する。
 
 ```go
 package main
@@ -498,7 +498,7 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 
 ![kubernetes_custome-controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png)
 
-main.goの処理の流れは、custome-controllerの仕組みとおおよそ一致している。
+main.go の処理の流れは、custome-controller の仕組みとおおよそ一致している。
 
 アーキテクチャ図の番号をコメントアウトで記載した。
 

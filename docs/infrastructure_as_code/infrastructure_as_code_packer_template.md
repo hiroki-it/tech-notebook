@@ -175,7 +175,7 @@ build {
 
 #### ▼ shell-local
 
-Ansibleは、コントロールノード (ansibleデプロイサーバー) と管理対象ノード (ansibleデプロイ先サーバー) から構成される。
+Ansible は、コントロールノード (ansible デプロイサーバー) と管理対象ノード (ansible デプロイ先サーバー) から構成される。
 
 `shell-local` では、コントロールノードで実行するコマンドを設定する。
 
@@ -196,7 +196,7 @@ build {
 
 #### ▼ shellとは
 
-Ansibleは、コントロールノード (ansibleデプロイサーバー) と管理対象ノード (ansibleデプロイ先サーバー) から構成される。
+Ansible は、コントロールノード (ansible デプロイサーバー) と管理対象ノード (ansible デプロイ先サーバー) から構成される。
 
 `shell` では、管理対象ノードで実行するコマンドを設定する。
 
@@ -251,7 +251,7 @@ packer {
 
 #### ▼ ami_name
 
-AWS AMIの名前を設定する。
+AWS AMI の名前を設定する。
 
 ```hcl
 source "amazon-ebs" "foo" {
@@ -287,9 +287,9 @@ source "amazon-ebs" "foo" {
 
 同じ名前のマシンイメージが存在する場合に、既存のマシンイメージを登録解除してからこれを作成するか否かを設定する。
 
-Packerの作成するマシンイメージの名前は、ランダム値をつけない限り、常に同じである。
+Packer の作成するマシンイメージの名前は、ランダム値をつけない限り、常に同じである。
 
-マシンイメージの名前の重複を許可しないプロバイダー (例：AWS) では、`1` 個の名前のマシンイメージを1回しか作成できないことになってしまう。
+マシンイメージの名前の重複を許可しないプロバイダー (例：AWS) では、`1` 個の名前のマシンイメージを 1 回しか作成できないことになってしまう。
 
 そういった場合に使用する。
 
@@ -309,7 +309,7 @@ source "amazon-ebs" "foo" {
 
 #### ▼ launch_block_device_mappings
 
-EC2に紐付けるルートデバイスボリュームを設定する。
+EC2 に紐付けるルートデバイスボリュームを設定する。
 
 ```hcl
 source "amazon-ebs" "foo" {
@@ -328,7 +328,7 @@ source "amazon-ebs" "foo" {
 
 #### ▼ region
 
-AWS AMIを作成するリージョンを設定する。
+AWS AMI を作成するリージョンを設定する。
 
 ```hcl
 source "amazon-ebs" "foo" {
@@ -346,7 +346,7 @@ source "amazon-ebs" "foo" {
 
 #### ▼ source_ami
 
-AWS AMIの基とするAWS AMI (例：Amazon Linux 2 AMI) を設定する。
+AWS AMI の基とする AWS AMI (例：Amazon Linux 2 AMI) を設定する。
 
 ```hcl
 source "amazon-ebs" "foo" {
@@ -358,7 +358,7 @@ source "amazon-ebs" "foo" {
 
 #### ▼ ssh_username
 
-EC2へのSSH公開鍵認証時に使用するユーザー名を設定する。
+EC2 への SSH 公開鍵認証時に使用するユーザー名を設定する。
 
 ```hcl
 source "amazon-ebs" "foo" {
@@ -405,7 +405,7 @@ source "amazon-ebs" "foo" {
 
 ### 関数を使用できるブロック
 
-Packerでは、`variables` ブロックには定数を設定する必要があるため、関数は `variables` ブロックで使用できない。
+Packer では、`variables` ブロックには定数を設定する必要があるため、関数は `variables` ブロックで使用できない。
 
 `variables` ブロックの値を一度 `locals` ブロックで加工する必要がある。
 

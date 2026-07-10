@@ -25,7 +25,7 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 ## 02. ansible-communityコマンド
 
-Ansibleのバージョンを確認する。
+Ansible のバージョンを確認する。
 
 `ansible version` コマンドではなく、こちらの使用する。
 
@@ -41,7 +41,7 @@ $ ansible-community --version
 
 ### ansibleコマンドとの違い
 
-複数のタスクを含むPlaybookを実行できる。
+複数のタスクを含む Playbook を実行できる。
 
 > - https://stackoverflow.com/a/64723156/12771072
 
@@ -49,7 +49,7 @@ $ ansible-community --version
 
 ### --ask-vault-pass (ask-vault-password)
 
-ansible-vaultプラグインによって暗号化されたパスワードファイルを復号し、プロビジョニングを実行する。
+ansible-vault プラグインによって暗号化されたパスワードファイルを復号し、プロビジョニングを実行する。
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
@@ -57,7 +57,7 @@ $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク
 
 **＊例＊**
 
-全てのインベントリーを指定し、また暗号化済みファイルを復号し、プロビジョニングを実行する。
+すべてのインベントリーを指定し、また暗号化済みファイルを復号し、プロビジョニングを実行する。
 
 ```bash
 $ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
@@ -69,7 +69,7 @@ $ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
 
 ### --vault-password-file
 
-ansible-vaultプラグインによって暗号化されたパスワードファイルを直接的に指定し、プロビジョニングを実行する。
+ansible-vault プラグインによって暗号化されたパスワードファイルを直接的に指定し、プロビジョニングを実行する。
 
 ```bash
 $ ansible-playbook foo-playbook.yml -i ./inventories --vault-password-file foo-file
@@ -83,11 +83,11 @@ $ ansible-playbook foo-playbook.yml -i ./inventories --vault-password-file foo-f
 
 #### ▼ -iとは
 
-inventoryファイルを指定する。
+inventory ファイルを指定する。
 
 これにより、プロビジョニングの実行先の管理対象ノードを指定できる。
 
-基本的には、ディレクトリを指定したほうが良い。
+基本的には、ディレクトリを指定したほうがよい。
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ>
@@ -95,7 +95,7 @@ $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク
 
 **＊例＊**
 
-fooインベントリのみを指定して、プロビジョニングを実行する。
+foo インベントリのみを指定して、プロビジョニングを実行する。
 
 ```bash
 $ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
@@ -103,7 +103,7 @@ $ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 
 **＊例＊**
 
-全てのインベントリーを指定して、プロビジョニングを実行する。
+すべてのインベントリーを指定して、プロビジョニングを実行する。
 
 ```bash
 $ ansible-playbook foo-playbook.yml -i ./inventories

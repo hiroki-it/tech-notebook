@@ -15,7 +15,7 @@ description: 設定ファイル＠Promtailの知見を記録しています。
 
 ## 01. Promtailは非推奨
 
-Promtailは非推奨で、Grafana Alloyへの移行が推奨になった。
+Promtail は非推奨で、Grafana Alloy への移行が推奨になった。
 
 > - https://grafana.com/docs/alloy/latest/set-up/migrate/from-promtail/
 
@@ -25,9 +25,9 @@ Promtailは非推奨で、Grafana Alloyへの移行が推奨になった。
 
 ### clients
 
-Promtailのログの送信先を設定する。
+Promtail のログの送信先を設定する。
 
-Grafana Lokiの場合、`/loki/api/v1/push` パスを設定する。
+Grafana Loki の場合、`/loki/api/v1/push` パスを設定する。
 
 ```yaml
 clients:

@@ -25,7 +25,7 @@ description: App Engine＠Google Cloudリソースの知見を記録していま
 
 #### ▼ 条件付きRoleBinding
 
-IAMユーザーに一時的にロールを付与する。
+IAM ユーザーに一時的にロールを付与する。
 
 > - https://cloud.google.com/iam/docs/conditions-overview#resources
 

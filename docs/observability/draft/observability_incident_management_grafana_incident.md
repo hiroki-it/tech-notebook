@@ -15,9 +15,9 @@ description: Grafana Incident＠インシデント管理ツールの知見を記
 
 ## 01. Grafana Incidentとは
 
-Grafana OnCallを拡張する。
+Grafana OnCall を拡張する。
 
-Grafana OnCallとは異なり、オンコール担当者に異なるロール (例：Commanderなど) を割り当てられる。
+Grafana OnCall とは異なり、オンコール担当者に異なるロール (例：Commander など) を割り当てられる。
 
 インシデントコマンドシステムを採用し、ロールを決める。
 

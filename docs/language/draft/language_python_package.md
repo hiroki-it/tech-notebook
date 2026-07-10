@@ -128,7 +128,7 @@ log.info("<メッセージ>")
 
 #### ▼ add
 
-loguruを設定する。
+loguru を設定する。
 
 ```python
 from loguru import logger

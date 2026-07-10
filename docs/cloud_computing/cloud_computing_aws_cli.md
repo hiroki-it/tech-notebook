@@ -21,7 +21,7 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 資格情報を設定する。
 
-OSによって、資格情報ファイルの配置場所が異なる。
+OS によって、資格情報ファイルの配置場所が異なる。
 
 ```bash
 $ aws configure
@@ -66,7 +66,7 @@ $ aws configure list
 $ aws configure set <資格情報の項目>
 ```
 
-アクセスキーIDを設定する。
+アクセスキーID を設定する。
 
 ```bash
 $ aws configure set aws_access_key_id "<アクセスキーID>"
@@ -96,13 +96,13 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 資格情報を設定する。
 
-LinuxやUnixの場合は、`$HOME/.aws/<資格情報ファイル名>` に配置される。
+Linux や Unix の場合は、`$HOME/.aws/<資格情報ファイル名>` に配置される。
 
-また、Windowsの場合は、`%USERPROFILE%\.aws\<資格情報ファイル名>` に配置される。
+また、Windows の場合は、`%USERPROFILE%\.aws\<資格情報ファイル名>` に配置される。
 
 #### ▼ aws_access_key_id
 
-AWS CLIを実行するアカウントのアクセスキーIDを設定する。
+AWS CLI を実行するアカウントのアクセスキーID を設定する。
 
 `config` ファイルに設定できるが、`confidentials` ファイルへの設定が推奨である。
 
@@ -115,7 +115,7 @@ aws_access_key_id = *****
 
 #### ▼ aws_secret_access_key
 
-AWS CLIを実行するアカウントのシークレットアクセスキーIDを設定する。
+AWS CLI を実行するアカウントのシークレットアクセスキーID を設定する。
 
 `config` ファイルに設定できるが、`confidentials` ファイルへの設定が推奨である。
 
@@ -145,7 +145,7 @@ aws_session_token = *****
 
 #### ▼ output
 
-AWS CLIの返却値のデータ形式を設定する。
+AWS CLI の返却値のデータ形式を設定する。
 
 ```ini
 [default]
@@ -156,7 +156,7 @@ output = json
 
 #### ▼ region
 
-AWS CLIで操作するAWSリソースのリージョンを設定する。
+AWS CLI で操作する AWS リソースのリージョンを設定する。
 
 ```ini
 [default]
@@ -167,7 +167,7 @@ region = ap-northeast-1
 
 #### ▼ role_arn
 
-AWS CLIの実行で、AWS IAMユーザーに委譲するAWS IAMロールを設定する。
+AWS CLI の実行で、AWS IAM ユーザーに委譲する AWS IAM ロールを設定する。
 
 ```ini
 [profile foo]
@@ -178,7 +178,7 @@ role_arn = arn:aws:iam::<AWSアカウントID>:role/foo-role
 
 #### ▼ role_session_name
 
-AWS IAMロールの委譲後のAWS IAMユーザーの一時的な名前を設定する。
+AWS IAM ロールの委譲後の AWS IAM ユーザーの一時的な名前を設定する。
 
 ```ini
 [profile foo]
@@ -189,7 +189,7 @@ role_session_name = hiroki.hasegawa
 
 #### ▼ source_profile
 
-AWS IAMロールの委譲先のAWS IAMユーザーのプロファイル名を設定する。
+AWS IAM ロールの委譲先の AWS IAM ユーザーのプロファイル名を設定する。
 
 ```ini
 [profile foo]
@@ -204,7 +204,7 @@ source_profile = default
 
 ### AWS_ACCESS_KEY_ID
 
-現在のターミナルで使用するアクセスキーIDを設定する。
+現在のターミナルで使用するアクセスキーID を設定する。
 
 ```bash
 $ export AWS_ACCESS_KEY_ID=<アクセスキーID>
@@ -264,7 +264,7 @@ $ export AWS_SECRET_ACCESS_KEY=<シークレットアクセスキー>
 
 現在のターミナルで使用するセッショントークンを設定する。
 
-AWS STSで発行された一時的な資格情報に含まれ、この資格情報を使用するときに、アクセスキーIDとシークレットアクセスキーと合わせて必要になる。
+AWS STS で発行された一時的な資格情報に含まれ、この資格情報を使用するときに、アクセスキーID とシークレットアクセスキーと合わせて必要になる。
 
 ```bash
 $ export AWS_SESSION_TOKEN=<セッショントークン>
@@ -348,21 +348,21 @@ $ aws iam list-users --page-size 10
 
 #### ▼ API側のフィルタリング系とは
 
-AWSリソースのAPI側でフィルタリングし、実際に取得するデータを制御できる。
+AWS リソースの API 側でフィルタリングし、実際に取得するデータを制御できる。
 
-AWSリソースごとに専用のオプションがある。
+AWS リソースごとに専用のオプションがある。
 
-代わりに、`jq` コマンドの `select()` 関数を使用しても良い。
+代わりに、`jq` コマンドの `select()` 関数を使用してもよい。
 
 > - https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-filter.html#cli-usage-filter-server-side
 
 #### ▼ --filter
 
-Amazon SES、AWS Cost Explorerなど
+Amazon SES、AWS Cost Explorer など
 
 #### ▼ --filters
 
-Amazon EC2、AWS AutoScaling、Amazon RDSなど
+Amazon EC2、AWS AutoScaling、Amazon RDS など
 
 ```bash
 # 特定のタグ値のデータのみを取得する。『tag:』のつけ忘れに注意する。
@@ -371,11 +371,11 @@ $ aws ec2 describe-instances --filters "Name=tag:<タグ名>,Values=<タグ値>"
 
 #### ▼ filterの文字を含む独自のオプション
 
-AWS DynamoDBなど
+AWS DynamoDB など
 
 #### ▼ --include
 
-AWS Certificate Managerなど
+AWS Certificate Manager など
 
 <br>
 
@@ -385,7 +385,7 @@ AWS Certificate Managerなど
 
 コマンド実行側でフィルタリングし、取得するキーや値を制御できる。
 
-代わりに、`jq` コマンドのパスを使用しても良い。
+代わりに、`jq` コマンドのパスを使用してもよい。
 
 #### ▼ --query
 
@@ -441,7 +441,7 @@ $ aws cloudwatch describe-alarms --alarm-names <アラーム名>
 
 **＊例＊**
 
-Amazon CloudWatchアラームの状態を変更する。
+Amazon CloudWatch アラームの状態を変更する。
 
 アラームをテストできる。
 
@@ -463,7 +463,7 @@ $ aws cloudwatch set-alarm-state \
 
 **＊例＊**
 
-全てのロググループに対して、一日当たりの収集サイズを `start-time` から `end-time` の間で取得する。
+すべてのロググループに対して、一日当たりの収集サイズを `start-time` から `end-time` の間で取得する。
 
 `--dimensions` オプションを使用して、特定のディメンション (ロググループ) を対象に集計できる (ただし、やってみたけどうまくいかず) 。
 
@@ -486,7 +486,7 @@ $ aws cloudwatch get-metric-statistics \
 
 #### ▼ register-on-premises-instance
 
-オンプレミスのサーバーをCodeDeployのデプロイ先として設定する。
+オンプレミスのサーバーを CodeDeploy のデプロイ先として設定する。
 
 ```bash
 $ aws deploy register-on-premises-instance \
@@ -501,9 +501,9 @@ $ aws deploy register-on-premises-instance \
 
 #### ▼ describe-instances
 
-Amazon EC2の情報を取得する。
+Amazon EC2 の情報を取得する。
 
-ローカルPCから踏み台サーバー (Amazon EC2) を経由してAmazon Auroraに接続する場合、Amazon EC2のインスタンスIDを取得したいときに役立つ。
+ローカル PC から踏み台サーバー (Amazon EC2) を経由して Amazon Aurora に接続する場合、Amazon EC2 のインスタンス ID を取得したいときに役立つ。
 
 ```bash
 $ aws ec2 describe-instances \
@@ -534,7 +534,7 @@ $ aws ecr get-login-password --region ap-northeast-1
 
 #### ▼ update-addon
 
-コンフリクトでAmazon EKSアドオンの設定を更新できない場合に、変更できるようにする。
+コンフリクトで Amazon EKS アドオンの設定を更新できない場合に、変更できるようにする。
 
 ```bash
 $ aws eks update-addon --cluster-name foo-cluster \
@@ -563,7 +563,7 @@ $ aws iam update-user \
 
 #### ▼ get-resources
 
-AWSリソースがリソースグループで管理されている場合、特定のタグを持つAWSリソースを取得する。
+AWS リソースがリソースグループで管理されている場合、特定のタグを持つ AWS リソースを取得する。
 
 ```bash
 $ aws resourcegroupstaggingapi get-resources \
@@ -572,7 +572,7 @@ $ aws resourcegroupstaggingapi get-resources \
 
 > - https://dev.classmethod.jp/articles/resource-groups-tagging-api-launches-resourcearnlist-parameter-getresources-operation/
 
-AWSリソースの種類 (ec2、albなど) を指定して、特定のAWSリソースのみを取得できる。
+AWS リソースの種類 (ec2、alb など) を指定して、特定の AWS リソースのみを取得できる。
 
 ```bash
 $ aws resourcegroupstaggingapi get-resources \
@@ -586,9 +586,9 @@ $ aws resourcegroupstaggingapi get-resources \
 
 #### ▼ describe-db-clusters
 
-Amazon EC2の情報を取得する。
+Amazon EC2 の情報を取得する。
 
-ローカルPCから踏み台サーバー (Amazon EC2) を経由してAmazon Auroraに接続する場合、Amazon Auroraのクラスター名を取得したいときに役立つ。
+ローカル PC から踏み台サーバー (Amazon EC2) を経由して Amazon Aurora に接続する場合、Amazon Aurora のクラスター名を取得したいときに役立つ。
 
 ```bash
 $ aws rds describe-db-clusters \
@@ -663,7 +663,7 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
 
 #### ▼ get-queue-url
 
-キューのURLを取得する。
+キューの URL を取得する。
 
 ```bash
 $ aws sqs get-queue-url --queue-name <キュー名>
@@ -709,9 +709,9 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 #### ▼ get-secret-value
 
-特定のSecretに格納されている文字列を取得する。
+特定の Secret に格納されている文字列を取得する。
 
-ローカルPCから踏み台サーバー (Amazon EC2) を経由してAmazon Auroraに接続する場合、Amazon Auroraのユーザー名とパスワードを取得したいときに役立つ。
+ローカル PC から踏み台サーバー (Amazon EC2) を経由して Amazon Aurora に接続する場合、Amazon Aurora のユーザー名とパスワードを取得したいときに役立つ。
 
 注意点として、出力した文字列はダブルクオーテーションで囲われている。
 
@@ -725,7 +725,7 @@ $ aws secretsmanager get-secret-value \
 "..."
 ```
 
-もしAWS Secrets ManagerにJSONファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。
+もし AWS Secrets Manager に JSON ファイルを登録している場合、これを取得するとダブルクオーテーションで囲われてしまっている。
 
 そのため、`--output` オプションで `text` 使用してダブルクオーテーションを削除する必要がある。
 
@@ -747,7 +747,7 @@ $ aws secretsmanager get-secret-value \
 
 #### ▼ decode-authorization-message
 
-STSでエンコードされたエラーメッセージをでコードする。
+STS でエンコードされたエラーメッセージをでコードする。
 
 ```bash
 $ aws sts decode-authorization-message --encoded-message zAc3k...
@@ -775,7 +775,7 @@ $ aws sts get-caller-identity --profile foo
 
 #### ▼ create-activation
 
-サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシンなど) をAWS Systems Managerで管理するために、IDとコードを発行する。
+サーバー (例：オンプレミスサーバー、エッジデバイス、仮想マシンなど) を AWS Systems Manager で管理するために、ID とコードを発行する。
 
 ```bash
 $ aws ssm create-activation \
@@ -785,7 +785,7 @@ $ aws ssm create-activation \
     --registration-limit 2
 ```
 
-発行したIDとコードは、`amazon-ssm-agent` コマンドの実行時に必要となる。
+発行した ID とコードは、`amazon-ssm-agent` コマンドの実行時に必要となる。
 
 ```bash
 $ amazon-ssm-agent \
@@ -801,7 +801,7 @@ $ amazon-ssm-agent \
 
 #### ▼ get-parameters-by-path
 
-特定のパスで始まる全ての変数をパラメーターストアから取得する。
+特定のパスで始まるすべての変数をパラメーターストアから取得する。
 
 ```yaml
 # パスのないパラメーターの場合
@@ -883,17 +883,17 @@ $ aws ec2 revoke-security-group-ingress \
 
 #### ▼ saml2aws
 
-AWSにSSOでログインする。
+AWS に SSO でログインする。
 
-認証フェーズを外部 (Auth0、GitHub、Keycloak、Zitadel、AWS Cognito、Google Cloud Authなど) に委譲し、AWSでは認可フェーズのみを実施する。
+認証フェーズを外部 (Auth0、GitHub、Keycloak、Zitadel、AWS Cognito、Google Cloud Auth など) に委譲し、AWS では認可フェーズのみを実施する。
 
-追加でMFAを採用している場合は、ワンタイムコードの入力が要求される。
+追加で MFA を採用している場合は、ワンタイムコードの入力が要求される。
 
 > - https://github.com/Versent/saml2aws
 
 **＊実行例＊**
 
-ここでは、IPプロバイダーにKeycloakを使用している。
+ここでは、IP プロバイダーに Keycloak を使用している。
 
 ```bash
 $ saml2aws login
@@ -921,7 +921,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 
 #### ▼ 送信元IPに基づく制限
 
-特定の送信元IPアドレスを制限するポリシーをAWS IAMユーザーに紐付けることにより、そのAWS IAMユーザーがAWS CLIの実行するときに、社外から実行できないように制限をかけられる。
+特定の送信元 IP アドレスを制限するポリシーを AWS IAM ユーザーに紐付けることにより、その AWS IAM ユーザーが AWS CLI の実行するときに、社外から実行できないように制限をかけられる。
 
 **＊実装例＊**
 
@@ -938,7 +938,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 }
 ```
 
-ポリシーのDenyステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『`with an explicit deny`』という文言がつく。
+ポリシーの Deny ステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『`with an explicit deny`』という文言がつく。
 
 ```bash
 Error: An error occurred (AccessDeniedException) when calling the <アクション名> operation: <AWS IAMユーザー名> is not authorized to perform: <アクション名> on resource: <リソースARN> with an explicit deny

@@ -27,9 +27,9 @@ description: Websocket-API＠APIの知見を記録しています。
 
 ### 仕組み
 
-通常のRESTful-APIでHTTPを使用する場合、双方向通信は実施できない。
+通常の RESTful-API で HTTP を使用する場合、双方向通信は実施できない。
 
-一方で、Websocket-APIではHTTPを拡張し、双方向通信は実施できるようにしている。
+一方で、Websocket-API では HTTP を拡張し、双方向通信は実施できるようにしている。
 
 ![websocket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/websocket.png)
 
@@ -140,7 +140,7 @@ func main() {
 
 #### ▼ リクエストヘッダー
 
-ブラウザはサーバーにHTTPリクエストを送信する。
+ブラウザはサーバーに HTTP リクエストを送信する。
 
 ```yaml
 GET /chatService HTTP/1.1
@@ -156,9 +156,9 @@ Sec-WebSocket-Version: 13
 
 #### ▼ レスポンスヘッダー
 
-サーバーは、HTTPレスポンスに `Upgrade` ヘッダーを設定する。
+サーバーは、HTTP レスポンスに `Upgrade` ヘッダーを設定する。
 
-これにより、HTTPプロトコルがWebsocketプロトコルに変更される。
+これにより、HTTP プロトコルが Websocket プロトコルに変更される。
 
 ```yaml
 HTTP/1.1 101 Switching Protocols
@@ -177,7 +177,7 @@ Sec-WebSocket-Protocol: wamp
 
 ### 仕組み
 
-Websocket上の通信を暗号化する。
+Websocket 上の通信を暗号化する。
 
 ```javascript
 import WebSocket from "ws";
@@ -194,11 +194,11 @@ const wss = new WebSocket("wss://localhost:8080");
 
 ### 仕組み
 
-通常のMQTTの場合、ブラウザでは使用できず、IoTの文脈で使用できる。
+通常の MQTT の場合、ブラウザでは使用できず、IoT の文脈で使用できる。
 
-一方で、MQTT over WebsocketではWebsocketプロトコルで通信し、MQTTプロトコルを使用する。
+一方で、MQTT over Websocket では Websocket プロトコルで通信し、MQTT プロトコルを使用する。
 
-これにより、ブラウザからMQTTプロトコルでリクエストを送信できるようになる。
+これにより、ブラウザから MQTT プロトコルでリクエストを送信できるようになる。
 
 ![mqtt-over-websocket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mqtt-over-websocket.png)
 
@@ -209,11 +209,11 @@ const wss = new WebSocket("wss://localhost:8080");
 
 ### AWS ALBがある場合
 
-ブラウザはまずAWS ALBに対してHTTPSプロトコルでリクエストを送信する。
+ブラウザはまず AWS ALB に対して HTTPS プロトコルでリクエストを送信する。
 
-AWS ALBからブラウザへのレスポンス後に、ブラウザはWebsocketプロトコルでAWS ALBと通信する。
+AWS ALB からブラウザへのレスポンス後に、ブラウザは Websocket プロトコルで AWS ALB と通信する。
 
-ブラウザは、AWS ALBのHTTPSのリスナールールを介して、MQTTプロトコルでEmqxにイベントを送信する。
+ブラウザは、AWS ALB の HTTPS のリスナールールを介して、MQTT プロトコルで Emqx にイベントを送信する。
 
 ![mqtt-over-websocket-on-aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mqtt-over-websocket-on-aws.png)
 
@@ -300,7 +300,7 @@ client.on("error", (err) => {
 
 #### ▼ リクエストヘッダー
 
-MQTTクライアントは、MQTTサーバーにHTTPリクエストを送信する。
+MQTT クライアントは、MQTT サーバーに HTTP リクエストを送信する。
 
 ```yaml
 GET /mqtt HTTP/1.1
@@ -314,11 +314,11 @@ Sec-WebSocket-Version: 13
 
 #### ▼ レスポンスヘッダー
 
-MQTTサーバーは、HTTPレスポンスに `Upgrade` ヘッダーを設定する。
+MQTT サーバーは、HTTP レスポンスに `Upgrade` ヘッダーを設定する。
 
-これにより、HTTPプロトコルがWebsocketプロトコルに変更される。
+これにより、HTTP プロトコルが Websocket プロトコルに変更される。
 
-このWebsocketプロトコル上で、MQTTプロトコルを使用できる。
+この Websocket プロトコル上で、MQTT プロトコルを使用できる。
 
 ```yaml
 HTTP/1.1 101 Switching Protocols

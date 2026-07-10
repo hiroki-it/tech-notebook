@@ -37,7 +37,7 @@ description: Traefik＠サービスメッシュ系ミドルウェアの知見を
 
 ### 認証／認可
 
-IDプロバイダーと通信し、認証／認可を実施する。
+ID プロバイダーと通信し、認証／認可を実施する。
 
 > - https://doc.traefik.io/traefik/middlewares/http/forwardauth/
 
@@ -45,7 +45,7 @@ IDプロバイダーと通信し、認証／認可を実施する。
 
 ### 証明書管理
 
-Cert Managerと連携する必要がある。
+Cert Manager と連携する必要がある。
 
 > - https://doc.traefik.io/traefik/user-guides/cert-manager/
 
@@ -121,7 +121,7 @@ Cert Managerと連携する必要がある。
 
 ## 05. サービスメッシュ
 
-Traefikをサービスメッシュとして各マイクロサービスに提供する。
+Traefik をサービスメッシュとして各マイクロサービスに提供する。
 
 > - https://doc.traefik.io/traefik-mesh/
 

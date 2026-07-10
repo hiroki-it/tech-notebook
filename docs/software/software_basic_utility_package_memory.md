@@ -67,7 +67,7 @@ $ pip3 install supervisor
 
 #### ▼ supervisor
 
-Python製のユーティリティである。
+Python 製のユーティリティである。
 
 メモリ上の複数のプロセスをデーモン化し、一括で管理する。
 
@@ -76,13 +76,13 @@ Python製のユーティリティである。
 
 #### ▼ supervisorctl
 
-supervisordを操作する。
+supervisord を操作する。
 
 > - http://supervisord.org/introduction.html#supervisor-components
 
 #### ▼ supervisord
 
-supervisor自体のプロセスのこと。
+supervisor 自体のプロセスのこと。
 
 > - http://supervisord.org/introduction.html#supervisor-components
 
@@ -92,7 +92,7 @@ supervisor自体のプロセスのこと。
 
 #### ▼ supervisordセクションとは
 
-supervisorの `supervisord` プロセスのプールを設定する。
+supervisor の `supervisord` プロセスのプールを設定する。
 
 ```ini
 [supervisord]
@@ -113,7 +113,7 @@ directory=/var/www/foo
 
 #### ▼ logfile
 
-supervisordのログファイルの場所を設定する。
+supervisord のログファイルの場所を設定する。
 
 ```ini
 [supervisord]
@@ -122,7 +122,7 @@ logfile=/var/log/supervisor/supervisord.log
 
 #### ▼ loglevel
 
-supervisordのログレベルを設定する。
+supervisord のログレベルを設定する。
 
 ```ini
 [supervisord]
@@ -131,7 +131,7 @@ loglevel=info
 
 #### ▼ nodaemon
 
-supervisordをフォアグラウンドで起動するか否かを設定する。
+supervisord をフォアグラウンドで起動するか否かを設定する。
 
 ```ini
 [supervisord]
@@ -140,7 +140,7 @@ nodaemon=true
 
 #### ▼ pidfile
 
-supervisordのpidが記載されるファイルを設定する。
+supervisord の pid が記載されるファイルを設定する。
 
 ```ini
 [supervisord]
@@ -158,7 +158,7 @@ redirect_stderr=true
 
 #### ▼ user
 
-supervisordの実行ユーザーを設定する。
+supervisord の実行ユーザーを設定する。
 
 ```ini
 [supervisord]
@@ -197,7 +197,7 @@ autorestart=true
 
 #### ▼ autostart
 
-supervisordの起動時、デーモン化されたプロセスを自動的に起動させるか否かを設定する。
+supervisord の起動時、デーモン化されたプロセスを自動的に起動させるか否かを設定する。
 
 ```ini
 [program:foo]
@@ -312,7 +312,7 @@ programs=bar,baz
 
 指定したデーモンを再起動する。
 
-`all` とした場合は、全てを再起動する。
+`all` とした場合は、すべてを再起動する。
 
 ```bash
 $ supervisorctl restart <デーモン名>
@@ -338,7 +338,7 @@ $ supervisorctl update
 
 #### ▼ systemctl
 
-メモリ上のプロセスをデーモン化する機能を持つsystemdを制御する。
+メモリ上のプロセスをデーモン化する機能を持つ systemd を制御する。
 
 > - https://cameong.hatenablog.com/entry/2016/10/18/121400
 > - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
@@ -406,7 +406,7 @@ OnFailure=notify-email@%i.service
 
 #### ▼ Serviceセクション
 
-serviceユニットのオプションを設定する。
+service ユニットのオプションを設定する。
 
 ```ini
 [Service]
@@ -456,7 +456,7 @@ WantedBy=multi-user.target
 
 サーバー内で `/etc/sytemd/system` ディレクトリ配下のカスタムユニットファイルを直接変更した場合に使用する。
 
-全てのデーモンのカスタムユニットファイルを再読み込みする。
+すべてのデーモンのカスタムユニットファイルを再読み込みする。
 
 ただし、デーモンがすでに稼働中の場合は、`systemctl restart` コマンドが別途必要になる。
 
@@ -468,7 +468,7 @@ $ systemctl daemon-reload
 
 #### ▼ disable
 
-OSの起動時、デーモン化されたプロセスが自動起動しないように設定する。
+OS の起動時、デーモン化されたプロセスが自動起動しないように設定する。
 
 ```bash
 $ systemctl disable <ユニット名>
@@ -480,7 +480,7 @@ $ systemctl disable httpd.service
 
 #### ▼ enable
 
-OSの起動時、デーモン化されたプロセスが自動起動するように設定する。
+OS の起動時、デーモン化されたプロセスが自動起動するように設定する。
 
 ```bash
 $ systemctl enable <ユニット名>
@@ -496,7 +496,7 @@ $ systemctl enable httpd.service
 
 正常の場合は `active`、異常の場合は `failed` になる。
 
-これは、`systemctl status` コマンドのActive行でも確認できる。
+これは、`systemctl status` コマンドの Active 行でも確認できる。
 
 ```bash
 $ systemctl is-failed <ユニット名>
@@ -510,7 +510,7 @@ active
 
 デーモン化されたプロセスの稼働状態を一覧を取得する。
 
-`grep` と組み合わせて、起動中 (`active`) 、停止中 (`inactive`) 、起動失敗 (`failed`) のデーモンのみを取得すると良い。
+`grep` と組み合わせて、起動中 (`active`) 、停止中 (`inactive`) 、起動失敗 (`failed`) のデーモンのみを取得するとよい。
 
 ```bash
 $ systemctl list-units --type=<ユニットの拡張子>
@@ -540,7 +540,7 @@ dev-mqueue.mount                  loaded active mounted POSIX Message Queue File
 
 #### ▼ list-unit-files
 
-デーモン化されたプロセスのUnitの一覧と、OS起動時にデーモンが自動起動するようになっているか否かを取得する。
+デーモン化されたプロセスの Unit の一覧と、OS 起動時にデーモンが自動起動するようになっているか否かを取得する。
 
 `STATE` (`enable`、`disable`、`static`) で自動起動するかを確認できる。
 
@@ -576,7 +576,7 @@ proc-sys-fs-binfmt_misc.mount static
 
 #### ▼ reload
 
-デーモン化されたプロセスをGraceful Restartする。
+デーモン化されたプロセスを Graceful Restart する。
 
 ```bash
 $ systemctl reload <ユニット名>
@@ -661,7 +661,7 @@ $ systemctl stop nginx.service
 
 #### ▼ journalctlとは
 
-systemで管理する全てのユニットの標準出力と標準エラー出力のログを取得する。
+system で管理するすべてのユニットの標準出力と標準エラー出力のログを取得する。
 
 `grep` コマンドで特定のエラーログレベルに絞る必要がある。
 
@@ -696,7 +696,7 @@ $ journalctl -f -u foo.service | grep -i error
 
 デーモンが失敗状態になったとき、メールアドレスやチャット宛にアラートを直接的に送信するためには、`OnFailure` オプションを使用する。
 
-この時に指定するユニットファイル名には、「`@%i`』が必要である (実際のファイル名に `%i` は不要である) 。」
+このときに指定するユニットファイル名には、「`@%i`』が必要である (実際のファイル名に `%i` は不要である) 。」
 
 ```ini
 [Unit]
@@ -731,7 +731,7 @@ WantedBy=multi-user.target
 
 デーモンが失敗状態になったとき、出力したログを使用してアラートを送信するためには、`StandardOutput` オプションや `StandardError` オプションを使用する。
 
-一度、ログとして出力し、このログをAmazon CloudWatch Logsなどに送信する。
+一度、ログとして出力し、このログを Amazon CloudWatch Logs などに送信する。
 
 ```ini
 [Service]

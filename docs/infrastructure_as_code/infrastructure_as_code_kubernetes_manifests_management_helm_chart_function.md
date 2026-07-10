@@ -17,7 +17,7 @@ description: アクション＠チャートの知見を記録しています。
 
 ### 予約された変数
 
-デプロイツール内 (例：ArgoCD、Flux) でHelmを使用する場合、そのツールの実行環境によってバージョン値が変わる。
+デプロイツール内 (例：ArgoCD、Flux) で Helm を使用する場合、そのツールの実行環境によってバージョン値が変わる。
 
 | 変数名                          | デフォルト値             | 値                                                                                                                                                                                                                                                                                                                                |
 | ------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -99,7 +99,7 @@ description: アクション＠チャートの知見を記録しています。
 {{- end }}
 ```
 
-条件数が2`個しかない場合であれば、三項演算子の結果を変数に格納できる。
+条件数が 2`個しかない場合であれば、三項演算子の結果を変数に格納できる。
 
 そのため、`{{- if }}` から `{{- end }}` の外側でも変数を使用できる。
 
@@ -125,13 +125,13 @@ url: https://{{ $subDomain }}{{.Values.serviceName }}.com
 
 ## 02. Helmのコメントアウト
 
-Helmのテンプレート内にコメントアウトを定義する。
+Helm のテンプレート内にコメントアウトを定義する。
 
 `*/}}` にはスペースを含めずに、一繋ぎで定義する。
 
-YAMLのコメントアウト (例：`#`) であると、テンプレートの出力時に、YAMLのコメントアウトとしてそのまま出力されてしまうため、注意する。
+YAML のコメントアウト (例：`#`) であると、テンプレートの出力時に、YAML のコメントアウトとしてそのまま出力されてしまうため、注意する。
 
-Helmのコメントの前に不要な改行が挿入されないように、`{{-` とするほうが良い。
+Helm のコメントの前に不要な改行が挿入されないように、`{{-` とするほうがよい。
 
 ```yaml
 {{- /* コメント */}}
@@ -217,11 +217,11 @@ metadata:
 
 マニフェストの``.metadata.`キーの値には文字列しか設定できない。
 
-`values` ファイルから出力した値が数字の場合、Helmは勝手にint型に変換しようとする。
+`values` ファイルから出力した値が数字の場合、Helm は勝手に int 型に変換しようとする。
 
-そのため、metadataキーの値にint型を出力しようとしてエラーになってしまう。
+そのため、metadata キーの値に int 型を出力しようとしてエラーになってしまう。
 
-int型にならないように、`values` ファイルの出力先をダブルクオーテーションで囲うと良い。
+int 型にならないように、`values` ファイルの出力先をダブルクオーテーションで囲うとよい。
 
 ```yaml
 # valuesファイル
@@ -295,11 +295,11 @@ bar:
 
 出力されたデータをそのままの形で出力する。
 
-`values` ファイルにmap型やlist型をそのまま出力する場合に使用する。
+`values` ファイルに map 型や list 型をそのまま出力する場合に使用する。
 
 #### ▼ map型の場合
 
-map型を出力する。
+map 型を出力する。
 
 ```yaml
 # valuesファイル
@@ -320,7 +320,7 @@ data: {{- toYaml .Values.parameters | nindent 2}}
 
 #### ▼ list型の場合
 
-list型を出力する。
+list 型を出力する。
 
 ```yaml
 # valuesファイル
@@ -385,7 +385,7 @@ baz:
 
 出力時に、`yaml` ファイルのルートを明示的に出力する。
 
-アクションの中で、`yaml` ファイルのルートへリクエストしたい場合に役立つ。
+アクションのなかで、`yaml` ファイルのルートへリクエストしたい場合に役立つ。
 
 **＊実装例＊**
 
@@ -418,7 +418,7 @@ metadata:
 
 #### ▼ rangeとは
 
-同じ階層にある他の `yaml` ファイルのキーとその値を格納し、`foreach()` 関数のように出力する。
+同じ階層にあるほかの `yaml` ファイルのキーとその値を格納し、`foreach()` 関数のように出力する。
 
 > - https://helm.sh/docs/chart_template_guide/control_structures/
 
@@ -443,9 +443,9 @@ bar: bar
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
-`fromYaml()` 関数を使用して、string型をmap型に変換する。
+`fromYaml()` 関数を使用して、string 型を map 型に変換する。
 
-その後、`range()` 関数でキーと値を取得し、Secretのデータとして割り当てる。
+その後、`range()` 関数でキーと値を取得し、Secret のデータとして割り当てる。
 
 ```yaml
 {{- $decoded := .Values.config | b64dec | fromYaml }}
@@ -524,7 +524,7 @@ data:
 
 ### with
 
-YAMLの現在のパスを変更する。
+YAML の現在のパスを変更する。
 
 ```yaml
 foo:
@@ -565,7 +565,7 @@ data:
 
 #### ▼ fromYamlとは
 
-string型をmap型に変換する。
+string 型を map 型に変換する。
 
 **＊実装例＊**
 
@@ -584,7 +584,7 @@ bar: bar
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
-`fromYaml()` 関数を使用して、string型をmap型に変換する。
+`fromYaml()` 関数を使用して、string 型を map 型に変換する。
 
 ```yaml
 {{- $decoded := .Values.config | b64dec | fromYaml }}
@@ -609,7 +609,7 @@ data:
 
 #### ▼ splitListとは
 
-string型を指定した文字で分割し、list型に変換する
+string 型を指定した文字で分割し、list 型に変換する
 
 ```yaml
 url: https://github.com/hiroki-hasegawa/foo-repository.git
@@ -645,17 +645,17 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 
 #### ▼ printfとは
 
-さまざまなデータ型をstring型で出力する。
+さまざまなデータ型を string 型で出力する。
 
 > - https://helm.sh/docs/chart_template_guide/function_list/#printf
 
 #### ▼ エスケープ
 
-Helmのテンプレート内に、アクションや変数以外の理由で `{}` を出力する場合 (例：Alertmanagerのアラートの変数出力の定義) 、これらとして認識されないようにエスケープする必要がある。
+Helm のテンプレート内に、アクションや変数以外の理由で `{}` を出力する場合 (例：Alertmanager のアラートの変数出力の定義) 、これらとして認識されないようにエスケープする必要がある。
 
 また、エスケープする場合は必ず改行 (`|`、`|-`、`|+`) で出力する必要がある。エスケープのために `printf()` 関数を使用できる。
 
-一方で、HelmではGoのテンプレートを使用していため、これと同じエスケープの方法 (例：``{{`<記号を含む文字列全体>`}}``、`{{"<記号>"}}`) を使用できる。
+一方で、Helm では Go のテンプレートを使用していため、これと同じエスケープの方法 (例：``{{`<記号を含む文字列全体>`}}``、`{{"<記号>"}}`) を使用できる。
 
 エスケープしたい文字列にバッククオートが含まれる場合、『``{{`<記号を含む文字列>`}}``』を使用できず、他のエスケープ方法 (`{{"<記号>"}}`、`printf()` 関数) が必要になる。
 
@@ -693,7 +693,7 @@ receivers:
 
 #### ▼ trimSuffixとは
 
-string型から指定した文字を削除し、再取得する。
+string 型から指定した文字を削除し、再取得する。
 
 ```yaml
 url: https://github.com/hiroki-hasegawa/foo-repository.git
@@ -722,7 +722,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 
 #### ▼ lastとは
 
-list型の最後を取得する。
+list 型の最後を取得する。
 
 ```yaml
 lists:
@@ -748,7 +748,7 @@ lists:
 
 `base64` 方式でエンコードする。
 
-Secretの `.data` キーでは、他のKubernetesリソースへの出力時に自動的に `base64` 方式でデコードするようになっており、相性が良い。
+Secret の `.data` キーでは、他の Kubernetes リソースへの出力時に自動的に `base64` 方式でデコードするようになっており、相性がよい。
 
 **＊実装例＊**
 
@@ -771,7 +771,7 @@ data:
 
 **＊実装例＊**
 
-リポジトリの資格情報を管理するSecretを繰り返し作成する。
+リポジトリの資格情報を管理する Secret を繰り返し作成する。
 
 ```yaml
 {{- range .Values.github.repositories }}
@@ -813,7 +813,7 @@ data:
 
 #### ▼ 変化しない一意な名前
 
-セキュリティではなく、変化しない一意な名前のKubernetesリソース (特にConfigMap、Secret) を作成できるように、接尾辞にbase64方式のエンコード値を使用する。
+セキュリティではなく、変化しない一意な名前の Kubernetes リソース (特に ConfigMap、Secret) を作成できるように、接尾辞に base64 方式のエンコード値を使用する。
 
 ```yaml
 # valuesファイル
@@ -869,13 +869,13 @@ webhooks:
 
 入力内容をハッシュ値に変換する。
 
-SecretとConfigMapの設定値を変更した場合に、Podを配下にもつKubernetesリソース (例：Deployment、StatefulSet、DaemonSet) では、Podを再作成する必要がある。
+Secret と ConfigMap の設定値を変更した場合に、Pod を配下にもつ Kubernetes リソース (例：Deployment、StatefulSet、DaemonSet) では、Pod を再作成する必要がある。
 
-これらのKubernetesリソースのPodTemplateの `.metadata.annotations` キーにて、テンプレートの出力を `sha256sum` に入力する。
+これらの Kubernetes リソースの PodTemplate の `.metadata.annotations` キーにて、テンプレートの出力を `sha256sum` に入力する。
 
-これにより、SecretとConfigMapを変更した場合に、ハッシュ値が変更される。
+これにより、Secret と ConfigMap を変更した場合に、ハッシュ値が変更される。
 
-そのため、PodTemplateが変更されたことになり、Podも再作成できるようになる。
+そのため、PodTemplate が変更されたことになり、Pod も再作成できるようになる。
 
 **＊実装例＊**
 
@@ -950,9 +950,9 @@ baz:
 
 `-}}` であると改行コードを削除し、不要な改行が挿入されないようにする。
 
-Helmの関数の中には処理結果に改行コードを挿入するものがあるため、これを削除したい場合に役立つ。
+Helm の関数のなかには処理結果に改行コードを挿入するものがあるため、これを削除したい場合に役立つ。
 
-ただし基本的には、`-}}` は使用しないほうが良いらしい。
+ただし基本的には、`-}}` は使用しないほうがよいらしい。
 
 > - https://github.com/helm/helm/issues/4191#issuecomment-539149037
 > - https://racchai.hatenablog.com/entry/2016/05/24/070000
@@ -1141,7 +1141,7 @@ foo:
 
 ### NOT条件
 
-`ne` 演算子 (not equalの略) を使用する。
+`ne` 演算子 (not equal の略) を使用する。
 
 ```yaml
 {{- if ne .Values.global.env "tes" }}

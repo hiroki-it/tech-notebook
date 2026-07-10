@@ -19,7 +19,7 @@ description: コマンド＠Kustomizeの知見を記録しています。
 
 #### ▼ buildとは
 
-Kustomizeの設定ファイルに基づいて、マニフェストを作成する。
+Kustomize の設定ファイルに基づいて、マニフェストを作成する。
 
 ```bash
 $ kustomize build
@@ -49,7 +49,7 @@ $ kustomize build --enable-alpha-plugins ./kustomize/overlay
 
 #### ▼ --enable-helm
 
-Kustomizeを使用して、Helmを実行できるようにする。
+Kustomize を使用して、Helm を実行できるようにする。
 
 ```bash
 $ kustomize build --enable-helm ./chart
@@ -81,7 +81,7 @@ $ kubectl apply -k ./
 
 > - https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
 
-リモートにある `kustomize.yaml` ファイルを使用する場合も、同じく `kustomize.yaml` ファイルのあるディレクトリのURLを指定する。
+リモートにある `kustomize.yaml` ファイルを使用する場合も、同じく `kustomize.yaml` ファイルのあるディレクトリの URL を指定する。
 
 ```bash
 $ kubectl diff -k "<リポジトリのURL>/<kustomize.yamlファイルのあるディレクトリ>?ref=<タグ>" > kustomize.diff
@@ -93,7 +93,7 @@ $ kubectl apply -k "<リポジトリのURL>/<kustomize.yamlファイルのある
 
 **＊実行例＊**
 
-例えば、argocd-cdチャートの `5.28.0` を使用する場合、これはArgoCDの `2.6.7` に対応しているため、以下の値で作成/変更する。
+例えば、argocd-cd チャートの `5.28.0` を使用する場合、これは ArgoCD の `2.6.7` に対応しているため、以下の値で作成/変更する。
 
 ```bash
 $ kubectl diff -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"
@@ -101,7 +101,7 @@ $ kubectl diff -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7
 $ kubectl apply -k "https://github.com/argoproj/argo-cd/manifests/crds?ref=v2.6.7"
 ```
 
-例えば、aws-load-balancer-controllerチャートの `1.5.2` を使用する場合、これはaws-load-balancer-controllerの `2.5.1` に対応しているため、以下の値で作成/変更する。
+例えば、aws-load-balancer-controller チャートの `1.5.2` を使用する場合、これは aws-load-balancer-controller の `2.5.1` に対応しているため、以下の値で作成/変更する。
 
 ```bash
 $ kubectl diff -k "https://github.com/kubernetes-sigs/aws-load-balancer-controller/helm/aws-load-balancer-controller/crds?ref=v2.5.1"

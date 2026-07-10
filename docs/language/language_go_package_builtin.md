@@ -81,7 +81,7 @@ type Context interface {
 
 コンテキストから値を取得する。
 
-どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
+どんな値を設定してもよいが、プロセスや API を渡り歩くリクエストスコープの値を設定することが多い。
 
 `WithValue()` 関数でキー名はユーザー定義型を使用しているはずなので、取得するときもこれをキー名と指定する。
 
@@ -118,7 +118,7 @@ func fooHandler(ctx context.Context) {
 
 コンテキストに値を設定する。
 
-どんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
+どんな値を設定してもよいが、プロセスや API を渡り歩くリクエストスコープの値を設定することが多い。
 
 ```go
 package server
@@ -410,9 +410,9 @@ func main() {
 
 #### ▼ キャンセル
 
-Contextでは親子関係を設定できる。
+Context では親子関係を設定できる。
 
-先に作成したContextが親、後に作成したContextが子になる。
+先に作成した Context が親、後に作成した Context が子になる。
 
 親コンテキストの処理をキャンセルすると、子コンテキストの処理も連鎖的にキャンセルできる。
 
@@ -446,9 +446,9 @@ func main() {
 
 #### ▼ リクエストスコープ
 
-セッションID、認証トークン、トレースコンテキストなどを伝達できる。
+セッション ID、認証トークン、トレースコンテキストなどを伝達できる。
 
-実際はどんな値を設定しても良いが、プロセスやAPIを渡り歩くリクエストスコープの値を設定することが多い。
+実際はどんな値を設定してもよいが、プロセスや API を渡り歩くリクエストスコープの値を設定することが多い。
 
 そのため、多くのフレームワークではコンテキストをリクエストスコープの伝達に使用している。
 
@@ -478,7 +478,7 @@ type Context struct {
 
 ### `Marshal()` 関数
 
-構造体をJSONに変換する。
+構造体を JSON に変換する。
 
 変換前に、マッピングを実行するようにする。
 
@@ -519,7 +519,7 @@ func main() {
 }
 ```
 
-この時、構造体のフィールドはパブリックにする必要がある。
+このとき、構造体のフィールドはパブリックにする必要がある。
 
 しかし、`MarshalJSON()` 関数を構造体に定義すると、`Marshal()` 関数の代わりにこれがコールするようになる。
 
@@ -578,7 +578,7 @@ func main() {
 
 ### `Unmarshal()` 関数
 
-JSONを構造体に変換する。
+JSON を構造体に変換する。
 
 リクエストの受信によく使われる。
 
@@ -630,11 +630,11 @@ func main() {
 
 ### `RawMessage()` 関数
 
-JSONから構造体へパースする場合は、`Unmarshal()` 関数を実行する。これにより、部分的にパースせずJSONのまま取得できる。
+JSON から構造体へパースする場合は、`Unmarshal()` 関数を実行する。これにより、部分的にパースせず JSON のまま取得できる。
 
 **＊実装例＊**
 
-CloudWatchはさまざまなイベントを処理するため、一部のJSON構造が動的に変化する。
+CloudWatch はさまざまなイベントを処理するため、一部の JSON 構造が動的に変化する。
 
 そのため、`RawMessage()` 関数が使用されている。
 
@@ -658,7 +658,7 @@ type CloudWatchEvent struct {
 }
 ```
 
-イベントのJSONを文字列のまま取得できる。
+イベントの JSON を文字列のまま取得できる。
 
 ```go
 package handler
@@ -680,11 +680,11 @@ func HandleRequest(event events.CloudWatchEvent) (string) {
 
 ### `Indent()` 関数
 
-渡されたJSONにインデントを挿入する。
+渡された JSON にインデントを挿入する。
 
-タブを挿入する場合は『`\t`』、空白2つを挿入する場合は『`  `』を設定する。
+タブを挿入する場合は『`\t`』、空白 2 つを挿入する場合は『`  `』を設定する。
 
-標準出力に出力すると、整形されたJSONを確認できる。
+標準出力に出力すると、整形された JSON を確認できる。
 
 ```go
 package main
@@ -831,7 +831,7 @@ Usage of main.go:
 
 ### 接頭接尾辞無し関数
 
-接頭接尾辞の無い関数 (例：`Print()` 関数、`Sprint()` 関数、`Fprint()` 関数など) が所属する。
+接頭接尾辞のない関数 (例：`Print()` 関数、`Sprint()` 関数、`Fprint()` 関数など) が所属する。
 
 複数の引数をスペースを挟んで繋ぐ。
 
@@ -865,7 +865,7 @@ func main() {
 }
 ```
 
-ただし、引数のいずれかがstring値の場合、スペースが挿入されない。
+ただし、引数のいずれかが string 値の場合、スペースが挿入されない。
 
 ```go
 package main
@@ -901,7 +901,7 @@ func main() {
 
 接頭辞が `F` や `P` の関数とは異なり、処理結果は標準出力へ出力せず返却する。
 
-標準出力に出力できる他の関数の引数として渡す必要がある。
+標準出力に出力できるほかの関数の引数として渡す必要がある。
 
 **＊実装例＊**
 
@@ -1081,7 +1081,7 @@ func main() {
 
 標準出力に出力する `fmt` パッケージとは異なり、標準エラー出力に設定したメッセージを出力する。
 
-Goにはデフォルトで、ロギング用パッケージが用意されている。
+Go にはデフォルトで、ロギング用パッケージが用意されている。
 
 > - https://pkg.go.dev/log
 > - https://zenn.dev/link/comments/0247de9ed6c174
@@ -1114,7 +1114,7 @@ if err != nil {
 
 渡された値を標準出力に出力し、`os.Exit(1)` を実行して、ステータス `1` で処理を完了する。
 
-ただ、この仕様がわかりにくいため、`os.Exit(1)` と `log.Printf()` 関数を別々に実行したほうが良い。
+ただ、この仕様がわかりにくいため、`os.Exit(1)` と `log.Printf()` 関数を別々に実行したほうがよい。
 
 **＊実装例＊**
 
@@ -1193,11 +1193,11 @@ if err != nil {
 
 ### httpパッケージとは
 
-HTTPクライアントまたはWebサーバを提供する。
+HTTP クライアントまたは Web サーバを提供する。
 
-そのため、GoではNginxやApacheが不要である。
+そのため、Go では Nginx や Apache が不要である。
 
-ただし、GoによるWebサーバーは機能が不十分である、そのため、NginxやApacheをWebサーバとして、GoをAppサーバとして使用したほうが良い。
+ただし、Go による Web サーバーは機能が不十分である、そのため、Nginx や Apache を Web サーバとして、Go を App サーバとして使用したほうがよい。
 
 > - https://golang.org/pkg/net/http/#pkg-index
 > - https://stackoverflow.com/questions/17776584/what-are-the-benefits-of-using-nginx-in-front-of-a-webserver-for-go
@@ -1229,7 +1229,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request)  {
 
 #### ▼ Header
 
-HTTPヘッダーを操作する。
+HTTP ヘッダーを操作する。
 
 ```go
 package server
@@ -1268,7 +1268,7 @@ type Handler interface {
 
 #### ▼ HandlerFunc
 
-Handlerの実装である。
+Handler の実装である。
 
 ```go
 type HandlerFunc func(ResponseWriter, *Request)
@@ -1304,7 +1304,7 @@ func FooMiddleware() func(http.Handler) http.Handler {
 
 『メディエイターパターン』ともいう。
 
-コントローラーの処理前に実行するBeforeMiddlewareと、コントローラーとビューの処理後に実行するAfterMiddlewareがある。
+コントローラーの処理前に実行する BeforeMiddleware と、コントローラーとビューの処理後に実行する AfterMiddleware がある。
 
 ![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
 
@@ -1315,7 +1315,7 @@ func FooMiddleware() func(http.Handler) http.Handler {
 
 **＊実装例＊**
 
-HTMLをレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) を起動する。
+HTML をレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) を起動する。
 
 ```go
 package main
@@ -1369,7 +1369,7 @@ func main() {
 
 #### ▼ リカバー系
 
-HTTPリクエストの処理で起こったパニックを、`Internal Server Error` として処理する。
+HTTP リクエストの処理で起こったパニックを、`Internal Server Error` として処理する。
 
 ```go
 package main
@@ -1571,7 +1571,7 @@ func main() {
 
 サーバを起動する。
 
-第一引数にサーバーのURL、第二引数にServeMux関数 (マルチプレクサ関数) を渡す。
+第一引数にサーバーの URL、第二引数に ServeMux 関数 (マルチプレクサ関数) を渡す。
 
 第二引数に `nil` を渡した場合、デフォルト引数として `http.DefaultServeMux` が渡される。
 
@@ -1602,13 +1602,13 @@ func main() {
 
 ### `NewServeMux()` 関数
 
-サーバーを起動する `ListenAndServe()` 関数に対して、自身で定義したServeMux関数を渡す場合、`NewServeMux()` 関数を使用する必要がある。
+サーバーを起動する `ListenAndServe()` 関数に対して、自身で定義した ServeMux 関数を渡す場合、`NewServeMux()` 関数を使用する必要がある。
 
 これの `HandleFunc()` 関数に対してルーティングと関数を定義する。
 
 **＊実装例＊**
 
-HTMLをレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) を起動する。
+HTML をレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) を起動する。
 
 ```go
 package main
@@ -1638,7 +1638,7 @@ func main() {
 }
 ```
 
-JSONをレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) を起動する。
+JSON をレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) を起動する。
 
 ```go
 package main
@@ -1699,7 +1699,7 @@ func main() {
 
 ### `Open()` 関数
 
-ファイルをReadOnly状態にする。
+ファイルを ReadOnly 状態にする。
 
 ```go
 package main

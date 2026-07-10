@@ -25,9 +25,9 @@ description: パッケージ＠Flaskの知見を記録しています。
 
 #### ▼ 全体
 
-特にKubernetes内では、`api_base_url` と `authorize_url` のドメインに、外部から接続できるKeycloakのドメインを設定する。
+特に Kubernetes 内では、`api_base_url` と `authorize_url` のドメインに、外部から接続できる Keycloak のドメインを設定する。
 
-一方で、`access_token_url` と `jwks_uri` はKubernetes内部からのみ接続できるように、Serviceのドメインとする。
+一方で、`access_token_url` と `jwks_uri` は Kubernetes 内部からのみ接続できるように、Service のドメインとする。
 
 ```python
 from authlib.integrations.flask_client import OAuth
@@ -52,7 +52,7 @@ oauth.register(
 )
 ```
 
-IDプロバイダー名を指定し、ここで設定した変数を取得できる。
+ID プロバイダー名を指定し、ここで設定した変数を取得できる。
 
 ```python
 # http://<KeycloakのAPIのドメイン>/
@@ -70,15 +70,15 @@ print(oauth.<IDプロバイダー名>.api_base_url)
 
 #### ▼ アクセストークンを `Authorization` ヘッダーで運搬する場合
 
-フロントエンドアプリケーションがCSRの場合に採用できる。
+フロントエンドアプリケーションが CSR の場合に採用できる。
 
-PythonでCSRのアプリケーションを実現できないため、`Authorization` ヘッダーの運搬は実装できない。
+Python で CSR のアプリケーションを実現できないため、`Authorization` ヘッダーの運搬は実装できない。
 
 #### ▼ アクセストークンを `Cookie` ヘッダーで運搬する場合
 
-フロントエンドアプリケーションがCSRまたはSSRの場合に採用できる。
+フロントエンドアプリケーションが CSR または SSR の場合に採用できる。
 
-CSRまたはSSRのアプリケーションは、`Cookie` ヘッダーを介してブラウザのCookieにアクセストークンを保存できる。
+CSR または SSR のアプリケーションは、`Cookie` ヘッダーを介してブラウザの Cookie にアクセストークンを保存できる。
 
 ```python
 from flask import url_for, redirect
@@ -119,9 +119,9 @@ def callback():
 
 #### ▼ アクセストークンを `Authorization` ヘッダーで運搬する場合
 
-フロントエンドアプリケーションがCSRの場合に採用できる。
+フロントエンドアプリケーションが CSR の場合に採用できる。
 
-PythonでCSRのアプリケーションを実現できないため、`Authorization` ヘッダーの運搬は実装できない。
+Python で CSR のアプリケーションを実現できないため、`Authorization` ヘッダーの運搬は実装できない。
 
 #### ▼ アクセストークンを `Cookie` ヘッダーで運搬する場合
 
@@ -148,9 +148,9 @@ def logout():
 
 #### ▼ アクセストークンを `Authorization` ヘッダーで運搬する場合
 
-フロントエンドアプリケーションがCSRの場合に採用できる。
+フロントエンドアプリケーションが CSR の場合に採用できる。
 
-PythonでCSRのアプリケーションを実現できないため、`Authorization` ヘッダーの運搬は実装できない。
+Python で CSR のアプリケーションを実現できないため、`Authorization` ヘッダーの運搬は実装できない。
 
 #### ▼ アクセストークンを `Cookie` ヘッダーで運搬する場合
 
@@ -219,7 +219,7 @@ oidc = OpenIDConnect(app)
 
 ### client_secrets.json
 
-資格情報をJSONファイルで定義する。
+資格情報を JSON ファイルで定義する。
 
 ```yaml
 {

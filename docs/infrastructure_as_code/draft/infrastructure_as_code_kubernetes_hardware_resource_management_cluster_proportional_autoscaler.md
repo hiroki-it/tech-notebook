@@ -15,9 +15,9 @@ description: cluster-proportional-autoscaler＠ハードウェアリソース管
 
 # 01. cluster-proportional-autoscalerの仕組み
 
-NodeのCPUやNode数に応じて、Podを水平スケーリングする。
+Node の CPU や Node 数に応じて、Pod を水平スケーリングする。
 
-メトリクスをパラメーターとするHorizontalPodAutoscalerとは異なる。
+メトリクスをパラメーターとする HorizontalPodAutoscaler とは異なる。
 
 > - https://github.com/kubernetes-sigs/cluster-proportional-autoscaler
 > - https://creators-note.chatwork.com/entry/2020/12/23/100000#dns-autoscalercluster-proportional-autoscaler

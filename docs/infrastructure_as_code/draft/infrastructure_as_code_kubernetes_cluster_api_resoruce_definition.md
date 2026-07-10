@@ -45,7 +45,7 @@ spec:
 
 ### Cluster (Google Cloud Anthos)
 
-Anthos GKE Clusterを設定する。
+Anthos GKE Cluster を設定する。
 
 ```yaml
 apiVersion: baremetal.cluster.gke.io/v1
@@ -279,9 +279,9 @@ spec:
 
 ### NodePool (Google Cloud Anthos)
 
-Anthos GKE Cluster内のNodeに関して、Nodeグループを設定する。
+Anthos GKE Cluster 内の Node に関して、Node グループを設定する。
 
-Anthos on Baremetalの場合は、Nodeの固定IPアドレスを設定することにより、NodeグループにNodeを参加させられる。
+Anthos on Baremetal の場合は、Node の固定 IP アドレスを設定することにより、Node グループに Node を参加させられる。
 
 ```yaml
 apiVersion: baremetal.cluster.gke.io/v1

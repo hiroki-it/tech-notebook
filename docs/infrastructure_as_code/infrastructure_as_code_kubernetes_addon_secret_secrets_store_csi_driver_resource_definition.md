@@ -19,7 +19,7 @@ description: リソース定義＠SecretsストアCSIドライバーの知見を
 
 #### ▼ チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
@@ -33,7 +33,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/secrets-st
 
 #### ▼ Amazon EKS専用のチャートとして
 
-Amazon EKSでSecretsストアCSIドライバーを簡単にセットアップするために、それ専用のチャートを使用する。
+Amazon EKS で Secrets ストア CSI ドライバーを簡単にセットアップするために、それ専用のチャートを使用する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts
@@ -43,7 +43,7 @@ $ helm repo update
 $ helm install <Helmリリース名> <チャートリポジトリ名>/secrets-store-csi-driver -n kube-system --version <バージョンタグ>
 ```
 
-また、Amazon EKSのために必要なマニフェストをインストールする。
+また、Amazon EKS のために必要なマニフェストをインストールする。
 
 ```bash
 $ kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
@@ -55,9 +55,9 @@ $ kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-drive
 
 ## 02. Pod＠Kubernetesでの設定
 
-SecretsストアCSIドライバーによって、PodではSecretを介さずに、プロバイダーから変数を直接的にマウントする。
+Secrets ストア CSI ドライバーによって、Pod では Secret を介さずに、プロバイダーから変数を直接的にマウントする。
 
-別途、Podに紐づくServiceAccountへ、プロバイダーのSecretへの認可スコープを付与する必要がある。
+別途、Pod に紐づく ServiceAccount へ、プロバイダーの Secret への認可スコープを付与する必要がある。
 
 ```yaml
 apiVersion: v1
@@ -98,9 +98,9 @@ spec:
 
 #### ▼ namespace
 
-Namespaceを設定する。
+Namespace を設定する。
 
-Secretのマウント対象となるPodと、同じNamespaceにする必要がある。
+Secret のマウント対象となる Pod と、同じ Namespace にする必要がある。
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -117,7 +117,7 @@ metadata:
 
 #### ▼ providerとは
 
-Secretのプロバイダーを設定する。
+Secret のプロバイダーを設定する。
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -136,13 +136,13 @@ spec:
 
 #### ▼ parametersとは
 
-プロバイダーに応じて、参照するSecretのデータを設定する。
+プロバイダーに応じて、参照する Secret のデータを設定する。
 
 > - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
 #### ▼ objects (AWSプロバイダーの場合)
 
-AWSプロバイダー上のSecret (AWS Secrets Manager、AWS Systems Manager) を識別する情報を設定する。
+AWS プロバイダー上の Secret (AWS Secrets Manager、AWS Systems Manager) を識別する情報を設定する。
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -184,7 +184,7 @@ spec:
 
 #### ▼ objects (Google Cloudプロバイダーの場合)
 
-Google Cloudプロバイダー上のSecret (Google Cloud Secret Manager) を識別する情報を設定する。
+Google Cloud プロバイダー上の Secret (Google Cloud Secret Manager) を識別する情報を設定する。
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1

@@ -17,7 +17,7 @@ description: TSDBの知見を記録しています。
 
 時系列データ (例：データポイント) を永続化する。
 
-また、とある期間を単位として時系列データをグループ化し、一連の連続データとして表現する。
+また、とある期間を単位としてとき系列データをグループ化し、一連の連続データとして表現する。
 
 ![tsdb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tsdb.png)
 

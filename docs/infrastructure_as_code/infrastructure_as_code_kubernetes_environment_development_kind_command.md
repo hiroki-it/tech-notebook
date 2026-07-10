@@ -33,7 +33,7 @@ $ kubectl cluster-info
 
 ### create
 
-Kubernetes Clusterを作成する。
+Kubernetes Cluster を作成する。
 
 #### ▼ --config
 
@@ -45,7 +45,7 @@ $ kind create cluster --config kind-config.yaml
 
 #### ▼ --name
 
-Kubernetes Clusterの名前を設定する。
+Kubernetes Cluster の名前を設定する。
 
 ```bash
 $ kind create cluster --name foo-cluster
@@ -53,9 +53,9 @@ $ kind create cluster --name foo-cluster
 
 #### ▼ --image
 
-KubernetesのコントロールプレーンNodeとワーカーNodeのバージョンを設定する。
+Kubernetes のコントロールプレーン Node とワーカーNode のバージョンを設定する。
 
-Kubernetesのデフォルトのバージョンは、Kindのバージョンごとに決まっている。
+Kubernetes のデフォルトのバージョンは、Kind のバージョンごとに決まっている。
 
 ```bash
 $ kind create cluster --image kindest/node:v1.28.0
@@ -68,7 +68,7 @@ $ kind create cluster --image kindest/node:v1.28.0
 
 処理ログの出力レベルを設定する。
 
-数字が大きいほど、出力レベルが低い。(`9` はInfo)
+数字が大きいほど、出力レベルが低い。(`9` は Info)
 
 ```bash
 $ kind create cluster -v 9 --name foo-cluster
@@ -76,11 +76,11 @@ $ kind create cluster -v 9 --name foo-cluster
 
 #### ▼ --wait
 
-NodeのReady状態の待機時間を設定する。
+Node の Ready 状態の待機時間を設定する。
 
-これを設定しないと、NodeがReady状態になるのを待たずに、コマンド処理が終了になってしまう。
+これを設定しないと、Node が Ready 状態になるのを待たずに、コマンド処理が終了になってしまう。
 
-デフォルトだと `0` 秒であり、コントロールプレーンNodeとワーカーNodeが一台ずつで `2` 分半かかる。
+デフォルトだと `0` 秒であり、コントロールプレーン Node とワーカーNode が一台ずつで `2` 分半かかる。
 
 ```bash
 $ kind create cluster --wait 3m
@@ -93,9 +93,9 @@ $ kind create cluster --wait 3m
 
 ### delete
 
-Kubernetes Clusterを削除する。
+Kubernetes Cluster を削除する。
 
-CIの実行コンテナでKubernetes Clusterを作成する場合、コンテナが残らないように、`kind delete cluster` コマンドを実行する。
+CI の実行コンテナで Kubernetes Cluster を作成する場合、コンテナが残らないように、`kind delete cluster` コマンドを実行する。
 
 ```bash
 $ kind delete cluster --name foo-cluster
@@ -107,7 +107,7 @@ $ kind delete cluster --name foo-cluster
 
 ### export
 
-Kubernetes Clusterのログを出力する。
+Kubernetes Cluster のログを出力する。
 
 ```bash
 $ kind export logs
@@ -119,7 +119,7 @@ $ kind export logs
 
 ### load
 
-Kubernetes Cluster内にコンテナイメージをプルする。
+Kubernetes Cluster 内にコンテナイメージをプルする。
 
 ```bash
 $ kind load docker-image -name dev nginx:latest

@@ -17,11 +17,11 @@ description: Kubernetesプロバイダー＠Terraformの知見を記録してい
 
 ### Kubernetesプロバイダーとは
 
-TerraformがKubernetesのkube-apiserverと通信できるようにする。
+Terraform が Kubernetes の kube-apiserver と通信できるようにする。
 
-これにより、Terraformを使用してKubernetesリソースを作成できるようになる。
+これにより、Terraform を使用して Kubernetes リソースを作成できるようになる。
 
-もしクラウドプロバイダーのCluster (例：Amazon EKS、Google Cloud GKE、Azure AKEなど) を使用している場合、これのkube-apiserverである。
+もしクラウドプロバイダーの Cluster (例：Amazon EKS、Google Cloud GKE、Azure AKE など) を使用している場合、これの kube-apiserver である。
 
 ```terraform
 provider "kubernetes" {
@@ -38,7 +38,7 @@ provider "kubernetes" {
 
 ### バージョン
 
-Kubernetesとの対応バージョンは、client-goパッケージのバージョンを確認する。
+Kubernetes との対応バージョンは、client-go パッケージのバージョンを確認する。
 
 > - https://github.com/hashicorp/terraform-provider-kubernetes/blob/main/go.mod
 

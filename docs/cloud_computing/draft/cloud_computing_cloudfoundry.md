@@ -15,7 +15,7 @@ description: Cloud Foundry＠クラウドコンピューティングの知見を
 
 ## 01. Cloud Foundryとは
 
-PaaSを構築するためのコンポーネントを提供する。
+PaaS を構築するためのコンポーネントを提供する。
 
 > - https://qr.ae/p238u7
 

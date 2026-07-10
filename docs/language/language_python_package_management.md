@@ -55,7 +55,7 @@ timeout = 60
 
 #### ▼ purge
 
-全てパッケージのキャッシュを削除する。
+すべてパッケージのキャッシュを削除する。
 
 ```bash
 $ pip3 cache purge
@@ -111,7 +111,7 @@ $ pip3 install <パッケージ名>
 
 #### ▼ --upgrade
 
-pip自身を含む、指定したパッケージをアップグレードする。
+pip 自身を含む、指定したパッケージをアップグレードする。
 
 アップグレード後は、`pip3 check` コマンドで依存関係が正しいかを確認し、`pip3 freeze` コマンドで要件ファイルも更新する必要がある。
 
@@ -136,7 +136,7 @@ $ pip3 freeze --local \
 
 > - https://gist.github.com/e8l/c20ab194091dd02fafe7
 
-pip自身をアップグレードする。
+pip 自身をアップグレードする。
 
 ```bash
 $ pip3 install --upgrade pip
@@ -152,7 +152,7 @@ $ pip3 install --user <パッケージ名>
 
 #### ▼ -r
 
-バージョン管理とrequirements.txtファイルを元にパッケージをインストールする。
+バージョン管理と requirements.txt ファイルを元にパッケージをインストールする。
 
 ```bash
 $ pip3 install -r requirements.txt
@@ -170,7 +170,7 @@ $ pip3 install -r requirements.txt --prefix=/usr/local
 
 #### ▼ freezeとは
 
-pipでインストールされたパッケージを元に、要件ファイルを作成する。
+pip でインストールされたパッケージを元に、要件ファイルを作成する。
 
 ```bash
 # インストールのため
@@ -233,7 +233,7 @@ setuptools         60.5.0  60.9.3 wheel
 
 #### ▼ showとは
 
-pipでインストールしたパッケージ情報を取得する。
+pip でインストールしたパッケージ情報を取得する。
 
 ```bash
 $ pip3 show sphinx
@@ -273,7 +273,7 @@ $ pip3 cache remove <パッケージ名>
 
 `uninstall.txt` ファイルを元にパッケージをアンインストールもできる。
 
-キャッシュが残っているので、`pip3 cache purge` コマンドでキャッシュも全て削除しておく。
+キャッシュが残っているので、`pip3 cache purge` コマンドでキャッシュもすべて削除しておく。
 
 ```bash
 $ pip3 uninstall -y -r uninstall.txt

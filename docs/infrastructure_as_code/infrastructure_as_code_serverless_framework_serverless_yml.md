@@ -50,7 +50,7 @@ custom:
 
 ### frameworkVersionとは
 
-Serverless Frameworkのバージョンを設定する。
+Serverless Framework のバージョンを設定する。
 
 **＊実装例＊**
 
@@ -72,7 +72,7 @@ frameworkVersion: "2"
 
 ### description
 
-Lambda関数の説明文を設定する。
+Lambda 関数の説明文を設定する。
 
 **＊実装例＊**
 
@@ -86,7 +86,7 @@ functions:
 
 ### environment
 
-Lambda関数の変数を設定する。
+Lambda 関数の変数を設定する。
 
 > - https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables
 
@@ -107,7 +107,7 @@ functions:
 
 #### ▼ eventBridge
 
-Lambda関数に紐付けて作成するAmazon EventBridgeを設定する。
+Lambda 関数に紐付けて作成する Amazon EventBridge を設定する。
 
 **＊実装例＊**
 
@@ -125,9 +125,9 @@ functions:
 
 #### ▼ sqs
 
-Lambda関数に紐付けるSQSを設定する。
+Lambda 関数に紐付ける SQS を設定する。
 
-新しくSQSを作成できず、既存のSQSと紐付ける動作しかないことに注意する。
+新しく SQS を作成できず、既存の SQS と紐付ける動作しかないことに注意する。
 
 **＊実装例＊**
 
@@ -146,7 +146,7 @@ functions:
 
 #### ▼ name
 
-Lambda関数で使用するイメージのエイリアスを設定する。
+Lambda 関数で使用するイメージのエイリアスを設定する。
 
 **＊実装例＊**
 
@@ -161,7 +161,7 @@ functions:
 
 ### maximumRetryAttempts
 
-Lambda関数のリトライ回数を設定する。
+Lambda 関数のリトライ回数を設定する。
 
 > - https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts
 
@@ -177,7 +177,7 @@ functions:
 
 ### memorySize
 
-Lambda関数のメモリサイズを設定する。
+Lambda 関数のメモリサイズを設定する。
 
 **＊実装例＊**
 
@@ -191,7 +191,7 @@ functions:
 
 ### name
 
-Lambda関数の名前を設定する。
+Lambda 関数の名前を設定する。
 
 **＊実装例＊**
 
@@ -205,11 +205,11 @@ functions:
 
 ### role
 
-Lambda関数に紐付けるIAMロールを設定する。
+Lambda 関数に紐付ける IAM ロールを設定する。
 
 **＊実装例＊**
 
-別に `resources.Resources` を使用して作成したIAMロールを設定する。
+別に `resources.Resources` を使用して作成した IAM ロールを設定する。
 
 ```yaml
 functions:
@@ -221,7 +221,7 @@ functions:
 
 ### runtime
 
-Lambda関数で使用する言語とバージョンを設定する。
+Lambda 関数で使用する言語とバージョンを設定する。
 
 **＊実装例＊**
 
@@ -259,7 +259,7 @@ package:
 
 ### providerとは
 
-Serverless Frameworkで操作するクラウドインフラベンダーを設定する。
+Serverless Framework で操作するクラウドインフラベンダーを設定する。
 
 ベンダーでのアカウント認証のため、資格情報を渡す必要がある。
 
@@ -279,9 +279,9 @@ provider:
 
 #### ▼ images
 
-Lambda関数のベースイメージを指定し、エイリアスを付ける。
+Lambda 関数のベースイメージを指定し、エイリアスを付ける。
 
-名前は全て小文字である必要がある。
+名前はすべて小文字である必要がある。
 
 **＊実装例＊**
 
@@ -299,7 +299,7 @@ provider:
 
 #### ▼ useCloudFormation
 
-Amazon EventBridgeをCloudFormationで作成するか否かを設定する。
+Amazon EventBridge を CloudFormation で作成するか否かを設定する。
 
 ```yaml
 provider:
@@ -311,7 +311,7 @@ provider:
 
 ### lambdaHashingVersion
 
-Lambda関数のハッシュバージョンを設定する。
+Lambda 関数のハッシュバージョンを設定する。
 
 **＊実装例＊**
 
@@ -348,7 +348,7 @@ provider:
 
 ### stackName
 
-CloudFormationのスタック名を設定する。
+CloudFormation のスタック名を設定する。
 
 **＊実装例＊**
 
@@ -363,7 +363,7 @@ provider:
 
 ステージ名を設定する。
 
-クラウドインフラの実行環境名と考えて良い。
+クラウドインフラの実行環境名と考えてよい。
 
 **＊実装例＊**
 
@@ -384,11 +384,11 @@ provider:
 
 ### IAMロール
 
-IAMロールを作成する。
+IAM ロールを作成する。
 
 **＊実装例＊**
 
-IAMロールに紐付けるIAMポリシーは、`json` ファイルで切り分けておいたほうが良い。
+IAM ロールに紐付ける IAM ポリシーは、`json` ファイルで切り分けておいたほうがよい。
 
 ```yaml
 resources:

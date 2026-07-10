@@ -23,7 +23,7 @@ description: AWS DynamoDB＠AWSリソースの知見を記録しています。
 
 ### セットアップ(Terraformの場合)
 
-ここでは、auth-userサービスがトークンをAWS DynamoDBに保存するとする。
+ここでは、auth-user サービスがトークンを AWS DynamoDB に保存するとする。
 
 ```terraform
 module "dynamodb_user" {
@@ -55,9 +55,9 @@ module "dynamodb_user" {
 
 ## 03. ユースケース
 
-### `CREATE`処理
+### `CREATE` 処理
 
-ここでは、auth-userサービスがトークンをAWS DynamoDBに保存するとする。
+ここでは、auth-user サービスがトークンを AWS DynamoDB に保存するとする。
 
 ```go
 package main

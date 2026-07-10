@@ -17,9 +17,9 @@ description: VCluster＠本番環境
 
 ### アーキテクチャ
 
-VClusterは、コントロールプレーン、Syncer、といったコンポーネントから構成されている。
+VCluster は、コントロールプレーン、Syncer、といったコンポーネントから構成されている。
 
-仮想Cluster間では、Namespacedスコープはもちろん、ClusterスコープのKubernetesリソースも分離できる。
+仮想 Cluster 間では、Namespaced スコープはもちろん、Cluster スコープの Kubernetes リソースも分離できる。
 
 ![vcluster_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vcluster_architecture.png)
 
@@ -30,19 +30,19 @@ VClusterは、コントロールプレーン、Syncer、といったコンポー
 
 ### コントロールプレーン
 
-ホストCluster上に、Namespaceを単位とした仮想Clusterを作成する。
+ホスト Cluster 上に、Namespace を単位とした仮想 Cluster を作成する。
 
-仮想Clusterのバージョンは、ホストClusterに合わせる必要がある。
+仮想 Cluster のバージョンは、ホスト Cluster に合わせる必要がある。
 
 <br>
 
 ### Syncer
 
-仮想Cluster内の仮想リソース (Service、Pod、ServiceAccount) を、ホストClusterにコピーする。
+仮想 Cluster 内の仮想リソース (Service、Pod、ServiceAccount) を、ホスト Cluster にコピーする。
 
-ホストClusterで受信したリクエストを実Serviceにルーティングできれば、仮想Clusterにもルーティングできる。
+ホスト Cluster で受信したリクエストを実 Service にルーティングできれば、仮想 Cluster にもルーティングできる。
 
-また、ホストCluster上のServiceAccountにクラウドプロバイダーの認可ロールを紐づければ、IRSAを実装できる。
+また、ホスト Cluster 上の ServiceAccount にクラウドプロバイダーの認可ロールを紐づければ、IRSA を実装できる。
 
 > - https://www.vcluster.com/docs/operator/external-access
 
@@ -71,7 +71,7 @@ $ vcluster create <Cluster名> \
 
 #### ▼ Helmの場合
 
-Amazon EKS上で仮想Clusterを作成する。
+Amazon EKS 上で仮想 Cluster を作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://charts.loft.sh
@@ -95,7 +95,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/vcluster-e
 
 #### ▼ createとは
 
-仮想Clusterを作成する。
+仮想 Cluster を作成する。
 
 ```bash
 $ vcluster create foo-cluster \
@@ -118,7 +118,7 @@ $ vcluster create foo-cluster \
 
 #### ▼ --upgrade
 
-仮想ClusterのKubernetesのバージョンをアップグレードする。
+仮想 Cluster の Kubernetes のバージョンをアップグレードする。
 
 ```bash
 $ vcluster create foo-cluster \
@@ -131,7 +131,7 @@ $ vcluster create foo-cluster \
 
 #### ▼ --isolate
 
-仮想ClusterからホストClusterへは名前解決不可能できないようにし、仮想Cluster間を分離する。
+仮想 Cluster からホスト Cluster へは名前解決不可能できないようにし、仮想 Cluster 間を分離する。
 
 ```bash
 $ vcluster create foo-cluster \
@@ -148,9 +148,9 @@ $ vcluster create foo-cluster \
 
 #### ▼ connectとは
 
-仮想Clusterにポートフォワーディングを実行する。
+仮想 Cluster にポートフォワーディングを実行する。
 
-これを実行している間、仮想Clusterに対して `kubectl` コマンドを実行できるようになる。
+これを実行している間、仮想 Cluster に対して `kubectl` コマンドを実行できるようになる。
 
 ```bash
 $ vcluster connect <Cluster名> \
@@ -164,7 +164,7 @@ Forwarding from [::1]:8443 -> 8443
 
 > - https://ryusa.hatenablog.com/entry/2021/05/22/221614
 
-なお、仮想Clusterに直接的にコマンドを送信できる。
+なお、仮想 Cluster に直接的にコマンドを送信できる。
 
 ```bash
 $ vcluster connect <Cluster名> \

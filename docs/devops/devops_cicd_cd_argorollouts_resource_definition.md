@@ -17,9 +17,9 @@ description: リソース定義＠Argo Rolloutsの知見を記録しています
 
 ### Rolloutとは
 
-KubernetesのDeploymentに代わって、Podのライフサイクルを管理する。
+Kubernetes の Deployment に代わって、Pod のライフサイクルを管理する。
 
-Deploymentよりも複雑な手法でPodをデプロイできる。
+Deployment よりも複雑な手法で Pod をデプロイできる。
 
 <br>
 
@@ -27,7 +27,7 @@ Deploymentよりも複雑な手法でPodをデプロイできる。
 
 #### ▼ analysisとは
 
-Progressive Deliveryを使用する場合、詳細を設定する。
+Progressive Delivery を使用する場合、詳細を設定する。
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
 
@@ -65,15 +65,15 @@ spec:
 
 デプロイ手法を設定する。
 
-大前提として、そもそもArgoCDは `kubectl apply` コマンドでリソースを作成しているだけなため、デプロイ手法は、Deploymentの `.spec.strategy` キーや、DaemonSetとStatefulSetの `.spec.updateStrategy` キーの設定値に依存する。
+大前提として、そもそも ArgoCD は `kubectl apply` コマンドでリソースを作成しているだけなため、デプロイ手法は、Deployment の `.spec.strategy` キーや、DaemonSet と StatefulSet の `.spec.updateStrategy` キーの設定値に依存する。
 
-ArgoCDの `strategy` オプションを使用することにより、これらのKubernetesリソース自体を冗長化し、より安全にapplyを行える。
+ArgoCD の `strategy` オプションを使用することにより、これらの Kubernetes リソース自体を冗長化し、より安全に apply を行える。
 
 #### ▼ blueGreen
 
 ![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_blue-green-deployment.png)
 
-ブルー/グリーンデプロイメントを使用して、新しいPodをデプロイする。
+ブルー/グリーンデプロイメントを使用して、新しい Pod をデプロイする。
 
 | 設定項目                | 説明                                                                                                                                                     |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -111,7 +111,7 @@ spec:
 
 ![argocd_canary-release](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_canary-release.png)
 
-カナリアリリースを使用して、新しいPodをデプロイする。
+カナリアリリースを使用して、新しい Pod をデプロイする。
 
 | キー   | 説明                                                                                                                                                      |
 | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -165,9 +165,9 @@ spec:
 
 ### .spec.template
 
-Deploymentの `spec.template` キーと同じである。
+Deployment の `spec.template` キーと同じである。
 
-Rolloutで管理したいPodを定義する。
+Rollout で管理したい Pod を定義する。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

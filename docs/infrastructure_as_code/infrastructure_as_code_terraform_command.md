@@ -62,7 +62,7 @@ $ terraform apply -destroy -var-file=foo.tfvars
 
 デフォルト値は `10` である。
 
-クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を `5` ほどに小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。
+クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を `5` ほどに小さくし、コマンドの API のコールがレートリミットを超過しないようにする。
 
 ```bash
 $ terraform apply \
@@ -70,7 +70,7 @@ $ terraform apply \
     -parallelism=30
 ```
 
-オプションで毎回設定するのが大変なため、環境変数で設定しても良い。
+オプションで毎回設定するのが大変なため、環境変数で設定してもよい。
 
 ```bash
 $ export TF_CLI_ARGS_plan="--parallelism=50"
@@ -81,13 +81,13 @@ $ export TF_CLI_ARGS_apply="--parallelism=50"
 
 #### ▼ -refresh-only
 
-すでに管理対象になっている実インフラが、Terraformの管理外から変更された場合、実インフラの状態はそのままに、`tfstate` ファイルにその状態を書き込む。
+すでに管理対象になっている実インフラが、Terraform の管理外から変更された場合、実インフラの状態はそのままに、`tfstate` ファイルにその状態を書き込む。
 
-もし、Terraform管理外の実インフラがない場合は、`No changes.` になる。
+もし、Terraform 管理外の実インフラがない場合は、`No changes.` になる。
 
 具体的は、`terraform plan` コマンドで出力される `Note: Objects have changed outside of Terraform` の内容を指す。
 
-ただし、そもそもTerraformで管理されていない実インフラ (create処理判定されるもの) は処理できない。代わりに `terraform import` コマンドの実行が必要になる。
+ただし、そもそも Terraform で管理されていない実インフラ (create 処理判定されるもの) は処理できない。代わりに `terraform import` コマンドの実行が必要になる。
 
 ```bash
 $ terraform apply -refresh-only
@@ -226,7 +226,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 また、`terraform plan` コマンドや `terraform apply` コマンドの向き先を別のバックエンドに切り替える。
 
-バックエンドの代わりに、`terraform` ブロック内の `backend` オプションで指定しても良い。
+バックエンドの代わりに、`terraform` ブロック内の `backend` オプションで指定してもよい。
 
 ただし、`terraform setting` ブロック内では通常変数を使用できないため、こちらのオプションが推奨である。
 
@@ -245,7 +245,7 @@ $ terraform init \
 
 #### ▼ -reconfigure
 
-初期化のための `terraform init` コマンドの時、今現在で設定しているバックエンドにある `tfstate` ファイルをそのまま使用する。
+初期化のための `terraform init` コマンドのとき、今現在で設定しているバックエンドにある `tfstate` ファイルをそのまま使用する。
 
 `--migrate-state` オプションとは異なり、元のバックエンドが異なる場合、元のバックエンドの `tfstate` ファイルはそのまま保持される。
 
@@ -256,13 +256,13 @@ $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 > - https://www.terraform.io/cli/commands/init#backend-initialization
 > - https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/
 
-また、開発時に一時的にlocalをバックエンドとして使用する場合にも役立つ。
+また、開発時に一時的に local をバックエンドとして使用する場合にも役立つ。
 
 > - https://repl.info/archives/1435/
 
 #### ▼ --migrate-state
 
-初期化のための `terraform init` コマンドの時、この時、元のバックエンドにある `tfstate` ファイルをコピーし、指定したバックエンドに移行する。
+初期化のための `terraform init` コマンドのとき、このとき、元のバックエンドにある `tfstate` ファイルをコピーし、指定したバックエンドに移行する。
 
 元のバックエンドの `tfstate` ファイルを削除するか否かを選択できる。
 
@@ -382,7 +382,7 @@ $ terraform get
 
 これにより、どの `resource` ブロックが他のどの `resource` ブロックを使用しているかがわかる。
 
-Graphvizのダウンロードが必要である。
+Graphviz のダウンロードが必要である。
 
 ```bash
 $ brew install graphviz
@@ -394,7 +394,7 @@ $ terraform graph | dot -Tpng > graph.png
 
 #### ▼ -draw-cycles
 
-グラフの中で循環参照の矢印を色付きで表示する。
+グラフのなかで循環参照の矢印を色付きで表示する。
 
 ```bash
 $ terraform graph -draw-cycles | dot -Tpng > graph.png
@@ -522,7 +522,7 @@ actions need to be performed.
 
 #### ▼ -target
 
-特定の `resource` ブロックを使用して、`terraform plan` コマンドを実行する。`terraform plan` コマンドの最初のRefreshingStateフェーズを実行するブロックも絞り込めるため、特定のブロックRefreshingStateフェーズでバグがある場合の回避策にも使用できる。`-target` オプションで指定するアドレスは、`terraform plan` コマンド自身の出力結果や、`terraform state list` コマンドで確認できる。
+特定の `resource` ブロックを使用して、`terraform plan` コマンドを実行する。`terraform plan` コマンドの最初の RefreshingState フェーズを実行するブロックも絞り込めるため、特定のブロック RefreshingState フェーズでバグがある場合の回避策にも使用できる。`-target` オプションで指定するアドレスは、`terraform plan` コマンド自身の出力結果や、`terraform state list` コマンドで確認できる。
 
 > - https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
 
@@ -540,9 +540,9 @@ $ terraform plan \
     -target='module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
 ```
 
-指定方法は、全てのブロックを対象とした `terraform plan` コマンドが参考になる。
+指定方法は、すべてのブロックを対象とした `terraform plan` コマンドが参考になる。
 
-`grep` コマンドを使用してresourceタイプ名や `module` ブロック名で抽出すると、指定方法がわかる。
+`grep` コマンドを使用して resource タイプ名や `module` ブロック名で抽出すると、指定方法がわかる。
 
 ```bash
 # resourceブロックの指定方法を調べる。
@@ -592,7 +592,7 @@ $ terraform plan \
 
 デフォルト値は `10` である。
 
-クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を小さくし、コマンドのAPIのコールがレートリミットを超過しないようにする。
+クラウドプロバイダーのレートリミットが小さい場合は、並列処理数を小さくし、コマンドの API のコールがレートリミットを超過しないようにする。
 
 ```bash
 $ terraform plan \
@@ -630,13 +630,13 @@ $ terraform plan \
 
 前半部分と後半部分に区別されている。
 
-前半部分は、Terraform管理外の方法 (画面上、他ツール) による実インフラの変更について、その変更前後を検出する。
+前半部分は、Terraform 管理外の方法 (画面上、他ツール) による実インフラの変更について、その変更前後を検出する。
 
-また、クラウドプロバイダーの新機能に伴う新しいAPIの追加も検出される。
+また、クラウドプロバイダーの新機能に伴う新しい API の追加も検出される。
 
-検出のため、applyによって変更される実インフラを表しているわけではない。
+検出のため、apply によって変更される実インフラを表しているわけではない。
 
-そして後半部分は、Terraformのコードの変更によって、実インフラがどのように変更されるかを表している。
+そして後半部分は、Terraform のコードの変更によって、実インフラがどのように変更されるかを表している。
 
 結果の最後に表示される対象の `resource` ブロックの数を確認しても、前半部分の `resource` ブロックは含まれていないことがわかる。
 
@@ -691,7 +691,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 **＊例＊**
 
-CPUアーキテクチャ (例：Intel、AMD、ARM) を設定しつつ、`terraform.lock.hcl` ファイルを作成する。
+CPU アーキテクチャ (例：Intel、AMD、ARM) を設定しつつ、`terraform.lock.hcl` ファイルを作成する。
 
 ```bash
 $ terraform providers lock \
@@ -772,7 +772,7 @@ $ terraform state pull > <tfstateファイル名>
 
 #### ▼ rm
 
-`tfstate` ファイルから状態を削除し、Terraformの管理外にする。
+`tfstate` ファイルから状態を削除し、Terraform の管理外にする。
 
 `count` 引数や `for_each` 引数を使用している場合は、シングルクオーテーションで囲う必要がある。
 
@@ -971,17 +971,17 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 <br>
 
-## 02. 実インフラの全ての設定値を `tfstate` ファイルに取り込む
+## 02. 実インフラのすべての設定値を `tfstate` ファイルに取り込む
 
 ### `import` について
 
-実インフラの全ての設定値を `tfstate` ファイルに取り込む場合、これの設定値を `resource` ブロックの設定値として `tfstate` ファイルに書き込み、Terraformの管理下におく必要がある (`tfstate` ファイル上では、`resource` ブロックは `managed` モードという表記になる) 。
+実インフラのすべての設定値を `tfstate` ファイルに取り込む場合、これの設定値を `resource` ブロックの設定値として `tfstate` ファイルに書き込み、Terraform の管理下におく必要がある (`tfstate` ファイル上では、`resource` ブロックは `managed` モードという表記になる) 。
 
-この時、`terraform import` コマンドを実行する方法と、コンソール画面から一度削除したうえで `terraform apply` コマンドを実行する方法がある (前者を推奨) 。
+このとき、`terraform import` コマンドを実行する方法と、コンソール画面から一度削除したうえで `terraform apply` コマンドを実行する方法がある (前者を推奨) 。
 
 執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを `1` 個ずつ指定して、`tfstate` ファイルに書き込んでいく必要がある。
 
-似た目的で使用する `terraform apply -refresh-only` コマンドは実インフラの一部の設定値が対象であるが、`import` は実インフラの全ての設定値が対象である。
+似た目的で使用する `terraform apply -refresh-only` コマンドは実インフラの一部の設定値が対象であるが、`import` は実インフラのすべての設定値が対象である。
 
 > - https://dtan4.hatenablog.com/entry/2016/08/18/010652
 
@@ -1239,11 +1239,11 @@ No changes. Infrastructure is up-to-date.
 
 #### ▼ importできない `resource` タイプ
 
-`resource` ブロック間の紐付けに特化したような `resource` ブロックは、`terraform import` コマンドに対応していないものが多い (AWSであれば、`aws_acm_certificate_validation`、`aws_lb_target_group_attachment` など) 。
+`resource` ブロック間の紐付けに特化したような `resource` ブロックは、`terraform import` コマンドに対応していないものが多い (AWS であれば、`aws_acm_certificate_validation`、`aws_lb_target_group_attachment` など) 。
 
 その場合、`tfstate` ファイルと実インフラの差分を解消できないことがある。
 
-ただし、こういった非対応の `resource` ブロックは、クラウドプロバイダーにはインフラリソースが存在しないTerraform特有の `resource` ブロックであることが多い。
+ただし、こういった非対応の `resource` ブロックは、クラウドプロバイダーにはインフラリソースが存在しない Terraform 特有の `resource` ブロックであることが多い。
 
 そのため、実際に `terraform apply` コマンドを実行してみても、実インフラに影響が出ない場合もある。
 
@@ -1251,13 +1251,13 @@ No changes. Infrastructure is up-to-date.
 
 もし `terraform import` コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになってしまう。
 
-(エラー例1)
+(エラー例 1)
 
 ```bash
 Error: InvalidParameterException: Creation of service was not idempotent.
 ```
 
-(エラー例2)
+(エラー例 2)
 
 ```bash
 Error: error creating ECR repository: RepositoryAlreadyExistsException: The repository with name 'f' already exists in the registry with id '*****'
@@ -1271,7 +1271,7 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 実インフラから実インフラの一部の設定値を `tfstate` ファイルに取り込む場合、以下の方法が便利だ。
 
-似た目的で使用する `import` は実インフラの全ての設定値が対象であるが、`terraform apply -refresh-only` コマンドは実インフラの一部の設定値が対象である。
+似た目的で使用する `import` は実インフラのすべての設定値が対象であるが、`terraform apply -refresh-only` コマンドは実インフラの一部の設定値が対象である。
 
 `(1)`
 

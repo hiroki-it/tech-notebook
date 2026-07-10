@@ -17,17 +17,17 @@ description: ユーティリティパッケージ＠JavaScriptの知見を記録
 
 ### axiosとは
 
-JavaScript Promiseを使用したHTTPクライアントパッケージである。
+JavaScript Promise を使用した HTTP クライアントパッケージである。
 
 <br>
 
 ### axios api
 
-HTTPリクエストを送信する。
+HTTP リクエストを送信する。
 
 **＊実装例＊**
 
-非同期処理としてGETリクエストを送信する。
+非同期処理として GET リクエストを送信する。
 
 ```javascript
 // axiosオブジェクトの関数はPromiseオブジェクトを返却する。
@@ -108,7 +108,7 @@ const asyncFunc = async () => {
 
 **＊実装例＊**
 
-クライアント証明書を使用して、HTTPSリクエストを送信する。
+クライアント証明書を使用して、HTTPS リクエストを送信する。
 
 ```javascript
 import axios from "axios";
@@ -270,9 +270,9 @@ axios.get("/user/12345").then(function (response) {
 
 ### axios-retryとは
 
-axiosパッケージによる非同期処理をリトライする。
+axios パッケージによる非同期処理をリトライする。
 
-httpClientのインスタンスを渡す必要がある。
+httpClient のインスタンスを渡す必要がある。
 
 ```javascript
 import axios from "axios";
@@ -294,7 +294,7 @@ const response = await httpClient.get("http://example.com");
 console.log(response.data);
 ```
 
-即時関数を使用すると、`axios` によるhttpクライアント作成と `axios-retry` によるリトライ設定を一括で行いつつ、httpクライアントのインスタンスを作成する処理を実装できる。
+即時関数を使用すると、`axios` による http クライアント作成と `axios-retry` によるリトライ設定を一括で行いつつ、http クライアントのインスタンスを作成する処理を実装できる。
 
 ```typescript
 // httpClientのインスタンスを作成する
@@ -326,7 +326,7 @@ console.log(response.data);
 
 ### メモリリーク対策
 
-メモリリークにつながるため、アプリケーションの実行中に1回だけグローバルに `axios-retry` を設定する必要がある。
+メモリリークにつながるため、アプリケーションの実行中に 1 回だけグローバルに `axios-retry` を設定する必要がある。
 
 > - https://tech.andpad.co.jp/entry/2020/03/19/080036
 > - https://github.com/axios/axios/issues/4763
@@ -341,7 +341,7 @@ console.log(response.data);
 
 ### Nodemonとは
 
-JavaScriptのソースコードに変更があれば、Node.js上のプロセスを再起動する。
+JavaScript のソースコードに変更があれば、Node.js 上のプロセスを再起動する。
 
 > - https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
 > - https://ashitaka-blog.com/node-js%E3%81%AE%E3%83%9B%E3%83%83%E3%83%88%E3%83%AA%E3%83%AD%E3%83%BC%E3%83%89%E8%A8%AD%E5%AE%9A/
@@ -352,7 +352,7 @@ JavaScriptのソースコードに変更があれば、Node.js上のプロセス
 
 ### ts-nodeとは
 
-Node.js上で、TypeScriptをJavaScriptへコンパイルせずそのまま実行する。
+Node.js 上で、TypeScript を JavaScript へコンパイルせずそのまま実行する。
 
 > - https://qiita.com/ckoshien/items/1a8b15fe5cc3bfc15199
 
@@ -370,7 +370,7 @@ $ yarn ts-node --require tsconfig-paths/register dbseed.ts"
 
 ## 04. typescript-call-graph
 
-TypeScriptのコールグラフを作成する。
+TypeScript のコールグラフを作成する。
 
 ブラウザ上で確認できる。
 

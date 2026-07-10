@@ -27,7 +27,7 @@ description: IAM＠Google Cloudリソースの知見を記録しています。
 - サービスアカウント
 - グループ
 - ドメイン
-- KubernetesのServiceAccount
+- Kubernetes の ServiceAccount
 
 > - https://cloud.google.com/iam/docs/principal-identifiers?hl=ja
 > - https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
@@ -60,9 +60,9 @@ $ gcloud auth login
 
 ### サービスアカウントとは
 
-GoogleCloudリソース自体のアカウントである。
+GoogleCloud リソース自体のアカウントである。
 
-サービスアカウントを実際のGoogle Cloudリソースや外部リソース (例：AWSリソース、ログ収集ツールなど) に紐づけるためには、サービスアカウントの資格情報ファイルをこれに持たせる必要がある。
+サービスアカウントを実際の Google Cloud リソースや外部リソース (例：AWS リソース、ログ収集ツールなど) に紐づけるためには、サービスアカウントの資格情報ファイルをこれに持たせる必要がある。
 
 <br>
 
@@ -174,11 +174,11 @@ $ gcloud info
 
 ### Workload Identityとは
 
-GoogleCloud外リソース (例：AWS、Azure、Kubernetesなど) からGoogleCloudリソースのAPIにリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、APIにリクエストを送信できるようにする仕組みのこと。
+GoogleCloud 外リソース (例：AWS、Azure、Kubernetes など) から GoogleCloud リソースの API にリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、API にリクエストを送信できるようにする仕組みのこと。
 
-従来は、サービスアカウントのサービスアカウントキーをGoogleCloud外リソースを持たせる仕組みであった。
+従来は、サービスアカウントのサービスアカウントキーを GoogleCloud 外リソースを持たせる仕組みであった。
 
-一方で、Workload Identityではサービスアカウントキーの代わりにトークンを使用する。
+一方で、Workload Identity ではサービスアカウントキーの代わりにトークンを使用する。
 
 > - https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation
 
@@ -188,14 +188,14 @@ GoogleCloud外リソース (例：AWS、Azure、Kubernetesなど) からGoogleCl
 
 #### ▼ アーキテクチャ
 
-1. GoogleCloud以外で認証する。
+1. GoogleCloud 以外で認証する。
 2. 認証が成功する。
-3. 資格情報をGoogleCloud STSに送信する。
-4. Workload Identityプールにて、資格情報を検証する。
+3. 資格情報を GoogleCloud STS に送信する。
+4. Workload Identity プールにて、資格情報を検証する。
 5. 検証が成功し、一時的なトークンを発行する。
-6. GoogleCloud以外リソースにトークンを送信する。
-7. GoogleCloud以外リソースは、トークンを使用してGoogleCloudリソースのサービスアカウントに紐づく。
-8. GoogleCloudリソースのAPIにリクエストを送信できるようになる。
+6. GoogleCloud 以外リソースにトークンを送信する。
+7. GoogleCloud 以外リソースは、トークンを使用して GoogleCloud リソースのサービスアカウントに紐づく。
+8. GoogleCloud リソースの API にリクエストを送信できるようになる。
 
 ![google-cloud_workload-identity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png)
 
@@ -204,23 +204,23 @@ GoogleCloud外リソース (例：AWS、Azure、Kubernetesなど) からGoogleCl
 
 #### ▼ Workload Identityプール
 
-GoogleCloud外リソースのグループを設定する。
+GoogleCloud 外リソースのグループを設定する。
 
-例えば、AWS側でOpenTelemetry Collectorを使用する場合、Workload Identityプールは `opentelemetry-collector` とする。
+例えば、AWS 側で OpenTelemetry Collector を使用する場合、Workload Identity プールは `opentelemetry-collector` とする。
 
 #### ▼ プロバイダー
 
-各GoogleCloud外リソースを設定する。
+各 GoogleCloud 外リソースを設定する。
 
-外部リソースの種類ごとに単位 (例：AWSであればAWSアカウントごと) が異なる。
+外部リソースの種類ごとに単位 (例：AWS であれば AWS アカウントごと) が異なる。
 
-例えば、AWS側の本番環境でOpenTelemetry Collectorを使用する場合、Workload Identityプールは `prd-opentelemetry-collector` とする。
+例えば、AWS 側の本番環境で OpenTelemetry Collector を使用する場合、Workload Identity プールは `prd-opentelemetry-collector` とする。
 
 #### ▼ アクセス許可
 
 プロバイダーに応じた権限を設定する。
 
-例えば、プロバイダーがAWSであれば `aws_role` でIAMロールの委譲用のARN (`arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>`) を設定し、IAMロールにサービスアカウントを紐づけられる。
+例えば、プロバイダーが AWS であれば `aws_role` で IAM ロールの委譲用の ARN (`arn:aws:sts:<新しいアカウントID>:assumed-role/<IAMロール名>`) を設定し、IAM ロールにサービスアカウントを紐づけられる。
 
 > - https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2
 
@@ -228,11 +228,11 @@ GoogleCloud外リソースのグループを設定する。
 
 ### Google CloudとAWSの連携の場合
 
-AWS IAMロール名とこれに紐づけるサービスアカウント名をWorkload Identityに設定する。
+AWS IAM ロール名とこれに紐づけるサービスアカウント名を Workload Identity に設定する。
 
-このIAMロールは、通常のIAMロールだけでなく、IRSA用IAMロールでもよい (設定は複雑になるが) 。
+この IAM ロールは、通常の IAM ロールだけでなく、IRSA 用 IAM ロールでもよい (設定は複雑になるが) 。
 
-AWS IAMロールを経由して、サービスアカウントを使用できるようになる。
+AWS IAM ロールを経由して、サービスアカウントを使用できるようになる。
 
 > - https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2
 > - https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation#amazon-eks%E3%81%8B%E3%82%89%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88

@@ -57,7 +57,7 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 | 記号名                                                                                                                                                             | 説明                                                                                                                                                                                                                                     | 補足                          |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_actor.png)                   | ソフトウェアを利用するユーザーや、連携する他のソフトウェアを表す。                                                                                                                                                                       |                               |
+| アクター：<br>![usecase-diagram_actor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_actor.png)                   | ソフトウェアを利用するユーザーや、連携するほかのソフトウェアを表す。                                                                                                                                                                       |                               |
 | ユースケース：<br>![usecase-diagram_usecase-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_usecase-name.png) | ソフトウェアの具体的な機能を表す。                                                                                                                                                                                                       |                               |
 | サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_subject.png)           | アクターとソフトウェアの境界線を表す。                                                                                                                                                                                                   |                               |
 | パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_package.png)             | アクターによって提供する機能に違いがある場合、これの境界線を表す。                                                                                                                                                                       |                               |
@@ -66,16 +66,16 @@ DFD、ユースケース図、アクティビティ図などがある。
 | 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png)                   | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。                                                                                                                                                                           | `<< invoke >>` も同じである。 |
 | 先行：<br>`<< precedes >>`                                                                                                                                         | 矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表す。                                                                                                                                                               |                               |
 | 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png)                     | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                   |                               |
-| ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                       | 機能の前提事項や考慮事項を記載する。認証／認可は全てのユースケースに関係するため、ノートに記載する。<br>- https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent> |                               |
+| ノート：<br>![usecase-diagram_note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png)                       | 機能の前提事項や考慮事項を記載する。認証／認可はすべてのユースケースに関係するため、ノートに記載する。<br>- https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent> |                               |
 
 > - https://it-koala.com/usecasediagrams-1832>
 > - https://www.itsenka.com/contents/development/uml/usecase.html
 
 **＊例＊**
 
-とある映画チケット料金を題材に、ハッシュタグチケット料金モデリングとして、色々なほうがユースケース図とクラス図を作成されている。
+とある映画チケット料金を題材に、ハッシュタグチケット料金モデリングとして、いろいろなほうがユースケース図とクラス図を作成されている。
 
-いずれの方も非常に参考になる
+いずれのほうも非常に参考になる
 
 > - https://github.com/tooppoo/ticket-modeling>
 
@@ -169,7 +169,7 @@ stateDiagram-v2
 
 ![ストップウォッチのステートマシン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン図.jpg)
 
-ステートマシン表を作成してみると、ステートマシン図では、9つあるセルのうち `4` 個のセルしか表現できておらず、残り5つのセルは表現されていないことに気づける。
+ステートマシン表を作成してみると、ステートマシン図では、9 つあるセルのうち `4` 個のセルしか表現できておらず、残り 5 つのセルは表現されていないことに気づける。
 
 ![ストップウォッチのステートマシン表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン表.jpg)
 
@@ -193,7 +193,7 @@ stateDiagram-v2
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | インスタンス指定 | 特定の状態にあるオブジェクト (インスタンス) の具体例を表す。『<u>`<具体的なインスタンス名>:<クラス名>`</u>』のように下線付きで表記する。 |
 | スロット         | インスタンスが保持する具体的な状態を表す。『`<属性名>:<データ型> = <値>`』で表記する。                                                   |
-| リンク           | インスタンス間の関係性を表す。何かしらの関係性があれば、全てリンクとして定義する。                                                       |
+| リンク           | インスタンス間の関係性を表す。何かしらの関係性があれば、すべてリンクとして定義する。                                                       |
 
 > - https://thinkit.co.jp/article/40/3/3.html
 > - https://www.itsenka.com/contents/development/uml/object.html

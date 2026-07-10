@@ -19,7 +19,7 @@ description: リソース定義＠FluentBitの知見を記録しています。
 
 #### ▼ チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://fluent.github.io/helm-charts
@@ -35,7 +35,7 @@ $ helm install <Helmリリース名> <リポジトリ名>/fluent-bit -n fluent -
 
 #### ▼ Amazon EKS専用のチャートとして
 
-Amazon EKSでFluentBitを簡単にセットアップするために、それ専用のチャートを使用する。
+Amazon EKS で FluentBit を簡単にセットアップするために、それ専用のチャートを使用する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-charts

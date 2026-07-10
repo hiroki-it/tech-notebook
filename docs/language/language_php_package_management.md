@@ -80,7 +80,7 @@ $ php -r "unlink('composer-setup.php');"
 
 #### ▼ config
 
-Composerのコマンドのオプションのデフォルト値を設定する。
+Composer のコマンドのオプションのデフォルト値を設定する。
 
 ```yaml
 {
@@ -104,7 +104,7 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 
 インストールされるパッケージとバージョンを設定する。
 
-パッケージ数が少ないプロジェクトではキャレット表記で積極的にアップグレードし、規模が大きくなるほどチルダ表記で慎重にアップグレードすると良い。
+パッケージ数が少ないプロジェクトではキャレット表記で積極的にアップグレードし、規模が大きくなるほどチルダ表記で慎重にアップグレードするとよい。
 
 ```bash
 # キャレット表記
@@ -210,9 +210,9 @@ Composerのコマンドのオプションのデフォルト値を設定する。
 
 #### ▼ version
 
-Composerのバージョンを設定する。
+Composer のバージョンを設定する。
 
-インストールされているcomposerと齟齬がないようにする。
+インストールされている composer と齟齬がないようにする。
 
 ```yaml
 {
@@ -246,9 +246,9 @@ Composerのバージョンを設定する。
 
 #### ▼ `autoload.php` ファイルとは
 
-プロジェクト内の全てのphpファイルを名前空間に対応づけ、`require()` 関数を使用せずに名前空間のみでパッケージを読み込めるようにする。
+プロジェクト内のすべての php ファイルを名前空間に対応づけ、`require()` 関数を使用せずに名前空間のみでパッケージを読み込めるようにする。
 
-エントリーポイント (`index.php` ファイル) あるいは `bootstrap.php` ファイルで、`autoload.php` ファイルを読み込むようにすると良い。
+エントリーポイント (`index.php` ファイル) あるいは `bootstrap.php` ファイルで、`autoload.php` ファイルを読み込むようにするとよい。
 
 ```php
 <?php
@@ -282,7 +282,7 @@ return array(
 
 #### ▼ 確認方法
 
-登録済みのphpファイルと名前空間の対応関係は、`php` コマンドで確認すると良い。
+登録済みの php ファイルと名前空間の対応関係は、`php` コマンドで確認するとよい。
 
 ```bash
 $ php -r '
@@ -313,7 +313,7 @@ $ composer clear-cache
 
 新しいディレクトリを作成しつつ、プロジェクトのファイルを展開もできるが、カレントディレクトリ配下にそのまま展開したほうが便利である。
 
-補足として、ファイルが1つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。
+補足として、ファイルが 1 つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。
 
 ```bash
 # カレントディレクトリ配下にプロジェクトを作成する。
@@ -326,7 +326,7 @@ $ composer create-project --prefer-dist laravel/lumen .
 
 ### diagnose
 
-Composerを使用するための準備が揃っているかを検証する。
+Composer を使用するための準備が揃っているかを検証する。
 
 ```bash
 $ composer diagnose
@@ -350,13 +350,13 @@ Checking https connectivity to packagist: OK
 $ composer dump-autoload
 ```
 
-存在するクラスが見つからないエラーに悩まされたときは、クラスが登録されていない可能性があるため、`dump-autoload` を実行すると良い。
+存在するクラスが見つからないエラーに悩まされたときは、クラスが登録されていない可能性があるため、`dump-autoload` を実行するとよい。
 
 ```bash
  Exception : Target class [FooClass] does not exist.
 ```
 
-また、`autoload` プロパティに登録されているパスが誤っていないかも確認したほうが良い。
+また、`autoload` プロパティに登録されているパスが誤っていないかも確認したほうがよい。
 
 ```yaml
 {"autoload": {"psr-4": {}}}
@@ -401,7 +401,7 @@ $ composer install -vvv
 
 #### ▼ --no-dev
 
-require-devタグ内のパッケージは除いてインストール
+require-dev タグ内のパッケージは除いてインストール
 
 ```bash
 $ composer install --no-dev
@@ -409,9 +409,9 @@ $ composer install --no-dev
 
 #### ▼ --prefer-dist
 
-Composerの配布サイトからインストールする。`prefer-source` オプションを使用するよりも高速でインストールできる。
+Composer の配布サイトからインストールする。`prefer-source` オプションを使用するよりも高速でインストールできる。
 
-デフォルトでdistを使用するため、実際は宣言しなくても問題ない。
+デフォルトで dist を使用するため、実際は宣言しなくても問題ない。
 
 ```bash
 $ composer install --prefer-dist
@@ -419,9 +419,9 @@ $ composer install --prefer-dist
 
 #### ▼ --prefer-source
 
-GitHubのComposerリポジトリからインストールする。
+GitHub の Composer リポジトリからインストールする。
 
-Composerの開発者用である。
+Composer の開発者用である。
 
 ```bash
 $ composer install --prefer-source
@@ -441,9 +441,9 @@ $ composer install --prefer-source
 $ composer reinstall <パッケージ名>
 ```
 
-再インストールで問題を解決できなければ、全てのパッケージを再インストールすると良い。
+再インストールで問題を解決できなければ、すべてのパッケージを再インストールするとよい。
 
-composerキャッシュと `vendor` ディレクトリを削除し、`composer install` コマンドを実行する。
+composer キャッシュと `vendor` ディレクトリを削除し、`composer install` コマンドを実行する。
 
 ```bash
 $ composer clearcache
@@ -476,7 +476,7 @@ $ composer remove <パッケージ名>
 
 または、パッケージのアップグレード/ダウングレードする場合、パッケージのバージョンを書き換える。
 
-コマンドを使用せずに自分で実装しても良い。
+コマンドを使用せずに自分で実装してもよい。
 
 > - https://getcomposer.org/doc/03-cli.md#require
 > - https://prograshi.com/framework/laravel/require-update-install/
@@ -503,9 +503,9 @@ $ composer <スクリプト名>
 
 `composer.json` ファイルに書き込まれたパッケージを最新のバージョンでインストールし、`composer.lock` ファイルを書き換える。
 
-`composer.lock` ファイルに全てのパッケージ情報を書き込むため、リポジトリの利用者がインストールするパッケージにも影響を与える。
+`composer.lock` ファイルにすべてのパッケージ情報を書き込むため、リポジトリの利用者がインストールするパッケージにも影響を与える。
 
-パッケージ内でエラーが発生したら、`composer update` コマンドによるパッケージの更新が原因だと考えたほうが良い。
+パッケージ内でエラーが発生したら、`composer update` コマンドによるパッケージの更新が原因だと考えたほうがよい。
 
 いずれかのパッケージで新バージョンをリリースした。ただし、このリリースは不具合が含まれていた可能性が高い。
 
@@ -531,13 +531,13 @@ $ composer update -vvv
 
 #### ▼ `COMPOSER_MEMORY_LIMIT`
 
-Composerのコマンドの実行時のメモリ上限を設定する。
+Composer のコマンドの実行時のメモリ上限を設定する。
 
 メモリ上限を無しにして、コマンドを実行できる。
 
-phpバイナリファイルを使用する。
+php バイナリファイルを使用する。
 
-コンテナ内で実行する場合、設定画面からコンテナのCPUやメモリを増設もできる。
+コンテナ内で実行する場合、設定画面からコンテナの CPU やメモリを増設もできる。
 
 ```bash
 $ COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-dist -vvv
@@ -553,9 +553,9 @@ $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 
 ### 事前確認の重要性
 
-バージョン更新により、アプリケーションや関連する他のアプリケーションに影響が出る場合もある。
+バージョン更新により、アプリケーションや関連するほかのアプリケーションに影響が出る場合もある。
 
-そのため、想定外の影響が起こらないように、マニュアルやリリースノートにて、バージョン間の差異を全て確認しておく必要がある。
+そのため、想定外の影響が起こらないように、マニュアルやリリースノートにて、バージョン間の差異をすべて確認しておく必要がある。
 
 <br>
 
@@ -593,7 +593,7 @@ $ COMPOSER_MEMORY_LIMIT=-1 composer update -vvv
 
 バージョンアップによりダウンタイムが発生する場合、その間はメンテナンスページを表示する必要がある。
 
-例えば、AWS ALBにはメンテナンスページを表示するための機能がある。
+例えば、AWS ALB にはメンテナンスページを表示するための機能がある。
 
 ダウンタイム中にシステムでリクエストを受信しないことで、負荷をかけない目的もある。
 

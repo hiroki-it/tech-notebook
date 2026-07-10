@@ -17,9 +17,9 @@ description: Platform Engineering＠DevOpsの知見を記録しています。
 
 ### Platform Engineeringとは
 
-DevOpsというインターフェースを実装したエンジニアリング手法である。
+DevOps というインターフェースを実装したエンジニアリング手法である。
 
-SREingとは異なり、開発者体験の向上からDevOpsを実現する。
+SREing とは異なり、開発者体験の向上から DevOps を実現する。
 
 ![platform-engineering_ai](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering_ai.png)
 
@@ -54,7 +54,7 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 
 #### ▼ サービス形態
 
-アプリ/インフラチームにPaaS風のセルフサービスを提供する。
+アプリ/インフラチームに PaaS 風のセルフサービスを提供する。
 
 セルフサービスでは、利用者側が自律的にプラットフォームの機能を導入できる。
 
@@ -97,9 +97,9 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 - セットアップ方法
 - サンプルソースコード
 - 依存関係の管理
-- CI/CDパイプラインテンプレート
-- クラウドIaCテンプレート
-- Kubernetesマニフェスト
+- CI/CD パイプラインテンプレート
+- クラウド IaC テンプレート
+- Kubernetes マニフェスト
 - 実装規約
 - ロギングとモニタリング計測
 - リファレンス
@@ -143,7 +143,7 @@ SREingとは異なり、開発者体験の向上からDevOpsを実現する。
 
 ### ユーザーの満足度や生産性
 
-生産性は、SPACEフレームワークなどで定義づけする。
+生産性は、SPACE フレームワークなどで定義づけする。
 
 > - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#how-to-measure-the-success-of-platforms
 > - https://dl.acm.org/doi/10.1145/3454122.3454124

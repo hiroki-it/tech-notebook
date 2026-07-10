@@ -19,7 +19,7 @@ description: 設定ファイル＠Falcoの知見を記録しています。
 
 #### ▼ チャートとして
 
-チャートリポジトリからチャートをインストールし、Kubernetesリソースを作成する。
+チャートリポジトリからチャートをインストールし、Kubernetes リソースを作成する。
 
 ```bash
 $ helm repo add <チャートリポジトリ名> https://falcosecurity.github.io/charts
@@ -45,7 +45,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/falco -n f
 
 ### rules_file
 
-切り分けて定義したFalcoの設定ファイルを設定する。
+切り分けて定義した Falco の設定ファイルを設定する。
 
 ```yaml
 rules_file:
@@ -63,7 +63,7 @@ rules_file:
 
 ### plugins
 
-Falcoの拡張プラグインを設定する。
+Falco の拡張プラグインを設定する。
 
 ```yaml
 plugins:

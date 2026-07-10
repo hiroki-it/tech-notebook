@@ -19,7 +19,7 @@ description: 設定ファイル＠Nginxの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-nginxを `apt-get` コマンドでインストールすると、旧バージョンが指定されるため、`apt` コマンドを使用する。
+nginx を `apt-get` コマンドでインストールすると、旧バージョンが指定されるため、`apt` コマンドを使用する。
 
 ```bash
 $ apt install nginx
@@ -47,7 +47,7 @@ $ yum install -y nginx
 
 基本的には読み込むようにする。
 
-ただし、nginx.confファイルの設定が上書きされてしまわないかを注意する。
+ただし、nginx.conf ファイルの設定が上書きされてしまわないかを注意する。
 
 ```nginx
 include /etc/nginx/conf.d/*.conf;
@@ -71,7 +71,7 @@ include  /usr/share/nginx/modules/*.conf;
 
 #### ▼ `mime.types` ファイルとは
 
-リクエストのContent-TypeのMIMEタイプとファイル拡張子の間の対応関係が定義されているファイル。
+リクエストの Content-Type の MIME タイプとファイル拡張子の間の対応関係が定義されているファイル。
 
 ```nginx
 include /etc/nginx/mime.types;
@@ -83,19 +83,19 @@ include /etc/nginx/mime.types;
 
 #### ▼ `fastcgi_params` ファイルとは
 
-FastCGIプロトコルでルーティングする場合に使用する。
+FastCGI プロトコルでルーティングする場合に使用する。
 
 アプリケーションで使用できる変数を定義する。
 
 `nginx.conf` ファイルによって読み込まれる。
 
-OSやそのバージョンによって、変数のデフォルト値が異なることもある。
+OS やそのバージョンによって、変数のデフォルト値が異なることもある。
 
 実際にインバウンド通信のルーティング先に接続し、上書き設定が必要なものと不要なものを判断する必要がある。
 
 #### ▼ Debian系の場合
 
-Debian10の設定ファイルを以下に示す。
+Debian10 の設定ファイルを以下に示す。
 
 **＊実装例＊**
 
@@ -197,7 +197,7 @@ http {
 
 #### ▼ load_module
 
-Nginxでは、ビルド時にモジュール (`so` ファイル) をバイナリを組み込むが、すでにビルド済みのモジュールを実行時に読み込める。
+Nginx では、ビルド時にモジュール (`so` ファイル) をバイナリを組み込むが、すでにビルド済みのモジュールを実行時に読み込める。
 
 デフォルトでは、モジュールは `modules` ディレクトリにある。
 
@@ -216,7 +216,7 @@ pid logs/nginx.pid;
 
 #### ▼ worker_connections
 
-workerプロセスが同時に処理できる接続の最大数を設定する。
+worker プロセスが同時に処理できる接続の最大数を設定する。
 
 ```nginx
 worker_connections 1024;
@@ -242,7 +242,7 @@ worker_rlimit_nofile 8192;
 
 ### `$request_uri`
 
-受信したリクエストのHTTPメソッドとURLが割り当てられている。
+受信したリクエストの HTTP メソッドと URL が割り当てられている。
 
 ```nginx
 GET http://_:80/foo
@@ -255,7 +255,7 @@ GET http://_:80/foo
 
 ### `$uri`
 
-受信したリクエストのURLパスが割り当てられている。
+受信したリクエストの URL パスが割り当てられている。
 
 > - https://nginx.org/en/docs/http/ngx_http_core_module.html#var_uri
 > - https://blog.utgw.net/entry/2020/03/12/121959

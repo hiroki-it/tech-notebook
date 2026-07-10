@@ -17,7 +17,7 @@ description: Grafana Alloy＠Grafanaの知見を記録しています。
 
 テレメトリーを収集、監視バックエンドに送信する。
 
-Grafana Alloyを使用するとOpenTelemetry Collectorが不要になるが、機能面ではOpenTelemetry Collectorのほうが充実しているため、完全には代替できない。
+Grafana Alloy を使用すると OpenTelemetry Collector が不要になるが、機能面では OpenTelemetry Collector のほうが充実しているため、完全には代替できない。
 
 > - https://www.reddit.com/r/devops/comments/1j84p18/opentelemetry_collector_vs_grafana_alloy/
 

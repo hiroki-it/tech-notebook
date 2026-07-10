@@ -15,11 +15,11 @@ description: Kubevirt＠本番環境の知見を記録しています。
 
 ## 01. Kubevirtの仕組み
 
-Cluster上に仮想Nodeを作成し、またライフサイクルを管理する。
+Cluster 上に仮想 Node を作成し、またライフサイクルを管理する。
 
-Kuberbetesオーケストレーションツール (例：Kubeadm) を組み合わせられる。
+Kuberbetes オーケストレーションツール (例：Kubeadm) を組み合わせられる。
 
-仮想サーバーの各コンポーネントを作成するQEMU、仮想サーバーのライフサイクルを管理するlibvirtなどを使用している。
+仮想サーバーの各コンポーネントを作成する QEMU、仮想サーバーのライフサイクルを管理する libvirt などを使用している。
 
 > - https://github.com/kubevirt/kubevirt/blob/main/docs/vm-configuration.md#virtual-machine-configuration
 > - https://wiki.archlinux.jp/index.php/Libvirt

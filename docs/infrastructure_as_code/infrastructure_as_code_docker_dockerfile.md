@@ -19,7 +19,7 @@ description: Dockerfile＠Dockerの知見を記録しています。
 
 #### ▼ aptリポジトリから
 
-Dockerエンジン、CLI、インストールする。
+Docker エンジン、CLI、インストールする。
 
 ```bash
 $ apt-get install -y \
@@ -47,7 +47,7 @@ $ systemctl start docker
 
 `rm` オプションを設定し、接続の切断後にコンテナを削除する。
 
-Dockerfileで、コンテナイメージのプロセスの起動コマンドを `ENTRYPOINT` で設定している場合は、後から上書きできなくなる。
+Dockerfile で、コンテナイメージのプロセスの起動コマンドを `ENTRYPOINT` で設定している場合は、後から上書きできなくなる。
 
 そのため、`docker run` コマンドの引数として新しいコマンドを渡せずに、デバッグできないことがある。
 
@@ -69,7 +69,7 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 ホスト側のファイルを、コンテナの指定ディレクトリ配下にコピーし、このファイルが `tar` ファイルの場合は解凍する。
 
-また、URLを直接的に指定して、ダウンロードから解凍までを実行もできる。
+また、URL を直接的に指定して、ダウンロードから解凍までを実行もできる。
 
 > - https://docs.docker.com/engine/reference/builder/#add
 
@@ -81,13 +81,13 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 `ADD` 処理は `COPY` 処理とは異なり、インターネットからファイルをダウンロードして解凍したうえで、コピーする。
 
-解凍によって意図しないファイルがDockerfileに組み込まれる可能性があるため、`COPY` 処理が推奨である。
+解凍によって意図しないファイルが Dockerfile に組み込まれる可能性があるため、`COPY` 処理が推奨である。
 
 **＊実装例＊**
 
 以下では `ADD` 処理を使用している。
 
-URLを直接的に指定し、ダウンロードから解凍までを実行している。
+URL を直接的に指定し、ダウンロードから解凍までを実行している。
 
 ```dockerfile
 ADD http://example.com/big.tar.xz /usr/src/things/
@@ -112,7 +112,7 @@ RUN mkdir -p /usr/src/things \
 
 ### ARGとは
 
-Dockerfileの命令で扱える変数を定義する。
+Dockerfile の命令で扱える変数を定義する。
 
 <br>
 
@@ -133,7 +133,7 @@ ENV PYTHON_VERSION="3.8.0"
 RUN pyenv install ${PYTHON_VERSION}
 ```
 
-一方で、Dockerfileの命令に展開するための変数として定義できる。
+一方で、Dockerfile の命令に展開するための変数として定義できる。
 
 ```dockerfile
 # ARGは、Dockerfileの命令に展開するための変数として定義できる。
@@ -146,7 +146,7 @@ ENV OS_VERSION "8"
 FROM centos:${OS_VERSION}
 ```
 
-そのため、以下の様に使い分けることになる。
+そのため、以下のように使い分けることになる。
 
 ```dockerfile
 # 最初に全て、ARGで定義
@@ -220,20 +220,20 @@ FROM python:${PYTHON_VERSION}
 
 ### 注意点
 
-Dockerfileで `CMD` を指定しない場合、コンテナイメージのデフォルトのバイナリファイルが割り当てられる。
+Dockerfile で `CMD` を指定しない場合、コンテナイメージのデフォルトのバイナリファイルが割り当てられる。
 
-いったん、デフォルトのバイナリファイルを確認した後に、これをDockerfileに明示的に実装する。
+いったん、デフォルトのバイナリファイルを確認した後に、これを Dockerfile に明示的に実装する。
 
 ```bash
 CONTAINER ID   IMAGE   COMMAND     CREATED          STATUS         PORTS                    NAMES
 2b2d3dfafee8   *****   "/bin/sh"   11 seconds ago   Up 8 seconds   0.0.0.0:8000->8000/tcp   foo-image
 ```
 
-静的型付け言語ではプロセスの起動時に、代わりにアーティファクトのバイナリファイルを実行しても良い。
+静的型付け言語ではプロセスの起動時に、代わりにアーティファクトのバイナリファイルを実行してもよい。
 
 その場合、`bin` ディレクトリにバイナリファイルとしてのアーティファクトを配置することになる。
 
-しかし、`bin` ディレクトリへの認可スコープがない場合もある。その場合は、1つ下にディレクトリを作成し、そこにバイナリファイルを配置するようにする。
+しかし、`bin` ディレクトリへの認可スコープがない場合もある。その場合は、1 つ下にディレクトリを作成し、そこにバイナリファイルを配置するようにする。
 
 ```bash
 # /go/bin にアクセスできない時は、/go/bin/cmdにアーティファクトを配置する。
@@ -266,7 +266,7 @@ COPY ./src src/
 
 ### --from
 
-他のステージ名、ローカルのコンテナイメージ名、リモート (DockerHubのみ) のコンテナイメージ名を指定して、そのコンテナイメージが持つファイルをコピーする。
+他のステージ名、ローカルのコンテナイメージ名、リモート (DockerHub のみ) のコンテナイメージ名を指定して、そのコンテナイメージが持つファイルをコピーする。
 
 ```dockerfile
 COPY --from=composer:<バージョン> /usr/bin/composer /usr/bin/composer
@@ -311,7 +311,7 @@ $ docker run --rm -it <コンテナイメージ名>:<バージョンタグ> /bin
 
 ### ENVとは
 
-OS上のコマンド処理で展開できる変数を定義できる。
+OS 上のコマンド処理で展開できる変数を定義できる。
 
 > - https://docs.docker.com/engine/reference/builder/#env
 
@@ -340,7 +340,7 @@ OS上のコマンド処理で展開できる変数を定義できる。
 
 ただし、多くの場合デフォルトでこれが設定されている。
 
-例えば、PHP-FPMでは、`/usr/local/etc/www.conf.default` ファイルと `/usr/local/etc/php-fpm.d/www.conf` ファイルには、`listen` オプションの値に `127.0.0.1:9000` が割り当てられている。
+例えば、PHP-FPM では、`/usr/local/etc/www.conf.default` ファイルと `/usr/local/etc/php-fpm.d/www.conf` ファイルには、`listen` オプションの値に `127.0.0.1:9000` が割り当てられている。
 
 <br>
 
@@ -364,23 +364,23 @@ FROM python:latest-slim
 
 #### ▼ DockerHub
 
-PHP-FPMをインストールする場合は、`php:8.0-fpm` である。
+PHP-FPM をインストールする場合は、`php:8.0-fpm` である。
 
 > - https://hub.docker.com/_/php
 
 #### ▼ クラウドプロバイダー (パブリック)
 
-パブリックなAmazon ECR、Google Container Registry、Google Cloud Artifact Registry、RedHat Quay、からイメージをプルする。
+パブリックな Amazon ECR、Google Container Registry、Google Cloud Artifact Registry、RedHat Quay、からイメージをプルする。
 
-ECRパブリックギャラリーからPHP-FPMをインストールする場合は、`public.ecr.aws/bitnami/php-fpm:latest` である。
+ECR パブリックギャラリーから PHP-FPM をインストールする場合は、`public.ecr.aws/bitnami/php-fpm:latest` である。
 
 > - https://gallery.ecr.aws/bitnami/php-fpm
 
 #### ▼ クラウドプロバイダー (プライベート)
 
-プライベートなAmazon ECR、Google Container Registry、Google Cloud Artifact Registry、RedHat Quay、からイメージをプルする。
+プライベートな Amazon ECR、Google Container Registry、Google Cloud Artifact Registry、RedHat Quay、からイメージをプルする。
 
-ECRプライベートレジストリからPHP-FPMをインストールする場合は、`<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest` である。
+ECR プライベートレジストリから PHP-FPM をインストールする場合は、`<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-php-repository:latest` である。
 
 > - https://ap-northeast-1.console.aws.amazon.com/ecr/repositories?region=ap-northeast-1
 
@@ -412,9 +412,9 @@ FROM python@sha256:*****
 
 #### ▼ DockerHub
 
-DockerHubのレートリミットは、匿名アカウントであれば `100` プル/`6` 時間、無料アカウントであれば `200` プル/`6` 時間、である。
+DockerHub のレートリミットは、匿名アカウントであれば `100` プル/`6` 時間、無料アカウントであれば `200` プル/`6` 時間、である。
 
-CIパイプライン上でコンテナイメージをビルドしていると、これにひっかかりやすい。
+CI パイプライン上でコンテナイメージをビルドしていると、これにひっかかりやすい。
 
 クラウドプロバイダーのレートリミットのほうが寛容なため、クラウドプロバイダー (パブリック/プライベート) からプルする方法もよい。
 
@@ -445,11 +445,11 @@ $ crane copy nginx:<バージョン> *****.dkr.ecr.ap-northeast-1.amazonaws.com/
 
 #### ▼ CPUアーキテクチャの指定
 
-`docker buildx` コマンドを実行し、複数のCPUアーキテクチャに対応したコンテナイメージを作成する。
+`docker buildx` コマンドを実行し、複数の CPU アーキテクチャに対応したコンテナイメージを作成する。
 
-イメージの対応するCPUアーキテクチャ (例：Intel、AMD、ARM) を設定する。
+イメージの対応する CPU アーキテクチャ (例：Intel、AMD、ARM) を設定する。
 
-ただし、DockerがホストのOSを認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。
+ただし、Docker がホストの OS を認識して、自動的に選んでくれるため、ユーザーが設定する必要はない。
 
 ```dockerfile
 FROM --platform=linux/amd64 python:latest-slim
@@ -461,7 +461,7 @@ FROM --platform=linux/amd64 python:latest-slim
 
 `docker buildx` コマンド時に、`Multi-platform build is not supported for the docker driver.` というエラーになることがある。
 
-これのために、マルチCPUアーキテクチャをビルドする実行環境を構築する必要がある。
+これのために、マルチ CPU アーキテクチャをビルドする実行環境を構築する必要がある。
 
 ```bash
 # ----------------------------

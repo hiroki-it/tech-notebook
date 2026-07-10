@@ -15,7 +15,7 @@ description: 分散DB＠DB系ミドルウェアの知見を記録しています
 
 ## 分散DBとは
 
-永続データを複数に分割して管理し、これらを組み合わせて単一のDBのように扱う。
+永続データを複数に分割して管理し、これらを組み合わせて単一の DB のように扱う。
 
 > - https://www.mongodb.com/resources/basics/databases/distributed-database
 
@@ -28,8 +28,8 @@ description: 分散DB＠DB系ミドルウェアの知見を記録しています
 #### ▼ RDB
 
 - CockroachDB
-- Vitess (MySQL互換)
-- TiDB (MySQL互換)
+- Vitess (MySQL 互換)
+- TiDB (MySQL 互換)
 - TigerBeetle (金融ドメイン特化)
 
 #### ▼ NoSQL DB
@@ -42,7 +42,7 @@ description: 分散DB＠DB系ミドルウェアの知見を記録しています
 
 #### ▼ RDB
 
-注意点として、Amazon Auroraは分散DBではない。
+注意点として、Amazon Aurora は分散 DB ではない。
 
 - YugabyteDB Managed
 

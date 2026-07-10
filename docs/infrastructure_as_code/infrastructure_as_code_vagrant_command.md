@@ -75,7 +75,7 @@ $ vagrant reload
 
 ### ssh
 
-仮想環境にSSH公開鍵認証で接続する。
+仮想環境に SSH 公開鍵認証で接続する。
 
 ```bash
 $ vagrant ssh

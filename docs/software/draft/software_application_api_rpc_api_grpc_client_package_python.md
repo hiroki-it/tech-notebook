@@ -31,7 +31,7 @@ description: Python＠gRPCクライアントパッケージの知見を記録し
 
 #### ▼ Protocol Buffer自動作成ツール
 
-pipリポジトリから、Protocol Buffer自動作成ツールをインストールする。
+pip リポジトリから、Protocol Buffer 自動作成ツールをインストールする。
 
 ```bash
 $ pip3 install grpcio-tools
@@ -47,7 +47,7 @@ $ pip3 install grpcio-tools
 
 #### ▼ gRPCクライアントパッケージ
 
-pipリポジトリから、gRPCクライアントをインストールする。
+pip リポジトリから、gRPC クライアントをインストールする。
 
 ```bash
 $ pip3 install grpcio

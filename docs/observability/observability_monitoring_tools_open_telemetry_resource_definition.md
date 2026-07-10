@@ -17,9 +17,9 @@ description: リソース定義＠OpenTelemetryの知見を記録しています
 
 ### Podの `.metadata.annotations` キー
 
-Podにアノテーションを設定し、自動計装を実施するPodを制御できる。
+Pod にアノテーションを設定し、自動計装を実施する Pod を制御できる。
 
-アノテーションを設定すると、自動計装を実施するInitContainer (`opentelemetry-auto-instrumentation`) を挿入できる。
+アノテーションを設定すると、自動計装を実施する InitContainer (`opentelemetry-auto-instrumentation`) を挿入できる。
 
 言語ごとにアノテーションのキー名が異なる。
 
@@ -41,7 +41,7 @@ spec: ...
 
 #### ▼ exporterとは
 
-自動計装でExporterを設定する。
+自動計装で Exporter を設定する。
 
 > - https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecexporter
 
@@ -63,7 +63,7 @@ spec:
 
 #### ▼ goとは
 
-Podのアプリ言語がGoの場合に、
+Pod のアプリ言語が Go の場合に、
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -80,7 +80,7 @@ spec:
 
 #### ▼ propagatorsとは
 
-自動計装でPropagatorを設定する。
+自動計装で Propagator を設定する。
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1
@@ -107,7 +107,7 @@ spec:
 
 #### ▼ samplerとは
 
-自動計装でSamplerを設定する。
+自動計装で Sampler を設定する。
 
 > - https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecsampler
 

@@ -9,9 +9,9 @@ description: 専用パッケージ＠Laravelの知見を記録しています。
 
 ### Laravel Mixパッケージとは
 
-WebpackをLaravelを介して操作できるパッケージのこと。
+Webpack を Laravel を介して操作できるパッケージのこと。
 
-Breezeパッケージにも同梱されている。
+Breeze パッケージにも同梱されている。
 
 > - https://readouble.com/laravel/8.x/ja/mix.html
 
@@ -54,7 +54,7 @@ $ npm run watch
 
 #### ▼ enum型のクラスの定義
 
-BenSampoのenum型のクラスを継承し、区分値と判定関数を実装する。
+BenSampo の enum 型のクラスを継承し、区分値と判定関数を実装する。
 
 **＊実装例＊**
 
@@ -129,7 +129,7 @@ class RoleType extends Enum
 
 **＊実装例＊**
 
-DBから区分値を取得し、これを元にenum型のクラスを作成する。
+DB から区分値を取得し、これを元に enum 型のクラスを作成する。
 
 ```php
 <?php
@@ -153,7 +153,7 @@ $staff->roleType->isSalesRole(); // false
 
 #### ▼ laravel-ide-helperとは
 
-PHPStromでLaravelを開発する場合、拡張機能を提供する。
+PHPStrom で Laravel を開発する場合、拡張機能を提供する。
 
 > - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 > - https://pleiades.io/help/phpstorm/laravel.html
@@ -182,7 +182,7 @@ return [
 
 #### ▼ Facade
 
-PHPStromで、関数が定義された場所にジャンプできるように、`_ide_helper.php` ファイルを作成する。
+PHPStrom で、関数が定義された場所にジャンプできるように、`_ide_helper.php` ファイルを作成する。
 
 > - https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
 
@@ -192,7 +192,7 @@ $ php artisan ide-helper:generate
 
 #### ▼ アノテーション作成
 
-PHPStromで、LaravelのEloquentモデルでのアノテーションを自動作成する。
+PHPStrom で、Laravel の Eloquent モデルでのアノテーションを自動作成する。
 
 > - https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
 
@@ -202,7 +202,7 @@ $ php artisan ide-helper:models
 
 #### ▼ 予測表示
 
-PHPStromで、Laravelの関数を予測表示できるように、`phpstorm.meta.php` ファイルを作成する。
+PHPStrom で、Laravel の関数を予測表示できるように、`phpstorm.meta.php` ファイルを作成する。
 
 > - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
 

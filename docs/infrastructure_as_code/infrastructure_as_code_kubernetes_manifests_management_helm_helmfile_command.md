@@ -30,7 +30,7 @@ $ helmfile <サブコマンド>
 
 #### ▼ -e
 
-Helmリリース対象の実行環境名 (dev、stg、prd) を設定する。
+Helm リリース対象の実行環境名 (dev、stg、prd) を設定する。
 
 ```bash
 $ helmfile -e prd <コマンド>
@@ -89,11 +89,11 @@ $ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
 
 #### ▼ apply
 
-まず `helmfile diff` コマンドを実行することにより、この時に差分があれば、`helmfile sync` コマンドを実行する。
+まず `helmfile diff` コマンドを実行することにより、このときに差分があれば、`helmfile sync` コマンドを実行する。
 
-`helmfile sync` コマンドとは異なり、Helmリリース間に差分がないと、リビジョンは更新されない。
+`helmfile sync` コマンドとは異なり、Helm リリース間に差分がないと、リビジョンは更新されない。
 
-注意点として、Helmの使用と同様に、CRDのマニフェストは作成できるが変更できない。
+注意点として、Helm の使用と同様に、CRD のマニフェストは作成できるが変更できない。
 
 ```bash
 $ helmfile -e prd apply
@@ -120,11 +120,11 @@ foo-release         ./charts/foo         0.0.1
 
 #### ▼ --skip-crds
 
-CRDの作成をスキップする。
+CRD の作成をスキップする。
 
-`kubectl apply` コマンドでCRDを作成した場合に役立つ。
+`kubectl apply` コマンドで CRD を作成した場合に役立つ。
 
-注意点として、CRDの更新はHelmがサポートしていないため、あくまで作成をスキップする。
+注意点として、CRD の更新は Helm がサポートしていないため、あくまで作成をスキップする。
 
 ```bash
 $ helmfile -e prd apply --skip-crds
@@ -146,9 +146,9 @@ $ helmfile -e prd apply --skip-diff-on-install
 
 #### ▼ destroyとは
 
-インストール済みの全てのチャートをアンインストールする。
+インストール済みのすべてのチャートをアンインストールする。
 
-CRDも削除する。
+CRD も削除する。
 
 ```bash
 $ helmfile -e prd destroy
@@ -158,9 +158,9 @@ $ helmfile -e prd destroy
 
 #### ▼ 特定のHelmリリースのみ `destroy` したい
 
-`helmfile` コマンドで複数のHelmリリースを一緒に管理している場合、特定のHelmリリースのみ `destroy` できない。
+`helmfile` コマンドで複数の Helm リリースを一緒に管理している場合、特定の Helm リリースのみ `destroy` できない。
 
-代わりに、`helm uninstall` コマンドで特定のHelmリリースを削除する。
+代わりに、`helm uninstall` コマンドで特定の Helm リリースを削除する。
 
 ```bash
 $ helm uninstall <Helmリリース名>
@@ -175,7 +175,7 @@ $ helmfile -e prd diff
 
 #### ▼ list
 
-Helmfileでインストールしたチャートの一覧を取得する。
+Helmfile でインストールしたチャートの一覧を取得する。
 
 ```bash
 $ helmfile list
@@ -192,9 +192,9 @@ baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
 
 #### ▼ diffとは
 
-全てのHelmリリースに対して、helm-diffプラグインを実行する。
+すべての Helm リリースに対して、helm-diff プラグインを実行する。
 
-helm-diffプラグインでは、前回のHelmリリースと、今回の `helm upgrade --dry-run` コマンドの差分を取得する。
+helm-diff プラグインでは、前回の Helm リリースと、今回の `helm upgrade --dry-run` コマンドの差分を取得する。
 
 ```bash
 $ helmfile -e prd diff
@@ -205,9 +205,9 @@ $ helmfile -e prd diff
 
 #### ▼ --debug
 
-オプションの無い `helmfile diff` では、以下の出力になってしまう。
+オプションのない `helmfile diff` では、以下の出力になってしまう。
 
-- Secretに出力された値がエンコードされてしまっている。
+- Secret に出力された値がエンコードされてしまっている。
 - `helm upgrade --dry-run` コマンドのどの段階でエラーになったかがわからない。
 
 `--debug` オプションであれば、これらを確認できる。
@@ -258,11 +258,11 @@ Source: project/manifests/persistent-volume.yaml
 
 #### ▼ syncとは
 
-全てのHelmリリースに関して、`helm upgrade --install` コマンドを実行する。
+すべての Helm リリースに関して、`helm upgrade --install` コマンドを実行する。
 
-`helmfile apply` コマンドとは異なり、Helmリリース間に差分がなくとも、リビジョンを更新する。
+`helmfile apply` コマンドとは異なり、Helm リリース間に差分がなくとも、リビジョンを更新する。
 
-注意点として、Helmの使用と同様に、CRDのマニフェストは作成できるが変更できない。
+注意点として、Helm の使用と同様に、CRD のマニフェストは作成できるが変更できない。
 
 ```bash
 $ helmfile -e prd sync
@@ -277,7 +277,7 @@ $ helmfile -e prd sync
 
 #### ▼ templateとは
 
-全てのHelmリリースに関して、`helm template` コマンドを実行する。
+すべての Helm リリースに関して、`helm template` コマンドを実行する。
 
 ```bash
 $ helmfile -e prd template
@@ -285,7 +285,7 @@ $ helmfile -e prd template
 
 #### ▼ --include-crds
 
-CRDも含めて、`helm template` コマンドを実行する。
+CRD も含めて、`helm template` コマンドを実行する。
 
 ```bash
 $ helmfile -e prd template --include-crds
@@ -301,7 +301,7 @@ $ helmfile -e prd template --include-crds
 
 複数の `values` ファイルを使用している場合に、これらに同じキーがあると、後に読み込まれた `values` ファイルが優先されるようになっている。
 
-この時に、`helmfile write-values` コマンドを使用すると、優先された値で定義された `values` ファイルを確認できる。
+このときに、`helmfile write-values` コマンドを使用すると、優先された値で定義された `values` ファイルを確認できる。
 
 ```bash
 $ helmfile -e prd -f ./helmfile.yaml write-values

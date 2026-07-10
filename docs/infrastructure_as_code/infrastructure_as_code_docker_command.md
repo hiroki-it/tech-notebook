@@ -15,7 +15,7 @@ description: コマンド＠Dockerの知見を記録しています。
 
 ## こちらまで
 
-Dockerのコマンドはセクションが重複しており、以下のセクションを参照してください。
+Docker のコマンドはセクションが重複しており、以下のセクションを参照してください。
 
 > - https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker_command.html
 

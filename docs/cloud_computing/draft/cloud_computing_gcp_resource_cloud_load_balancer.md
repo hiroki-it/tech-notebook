@@ -23,8 +23,8 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 ### `L7` ロードバランサー
 
-- 外部HTTPS負荷分散プロキシ
-- 内部HTTPS負荷分散プロキシ
+- 外部 HTTPS 負荷分散プロキシ
+- 内部 HTTPS 負荷分散プロキシ
 
 ![google_cloud_load_balancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_load_balancer.png)
 
@@ -34,9 +34,9 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 ### `L4` ロードバランサー
 
-- TCP/SSLプロキシ負荷分散プロキシ
-- TCP/UDPネットワーク負荷分散パススルー
-- 内部TCP/UDP負荷分散パススルー
+- TCP/SSL プロキシ負荷分散プロキシ
+- TCP/UDP ネットワーク負荷分散パススルー
+- 内部 TCP/UDP 負荷分散パススルー
 
 ![google_cloud_load_balancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_load_balancer.png)
 
@@ -50,7 +50,7 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 #### ▼ 種類
 
-Load Balancerは、通過したリクエストにヘッダーを付与する。
+Load Balancer は、通過したリクエストにヘッダーを付与する。
 
 - `Via`: `1.1 google` (リクエストとレスポンス)
 - `X-Forwarded-Proto`: `<http、https>` (リクエストのみ)
@@ -61,7 +61,7 @@ Load Balancerは、通過したリクエストにヘッダーを付与する。
 
 #### ▼ X-Cloud-Trace-Context
 
-Google Cloud独自の仕様である。
+Google Cloud 独自の仕様である。
 
 > - https://cloud.google.com/trace/docs/trace-context?hl=ja#context-propagation-protocols
 

@@ -15,9 +15,9 @@ description: Crossplaneの知見を記録しています。
 
 ## 01. Crossplaneとは
 
-既存のKubernetesリソースのAPIを拡張する。
+既存の Kubernetes リソースの API を拡張する。
 
-また、Kubernetesの外部プロバイダー (例：AWS、Google Cloud、Azureなど) のリソースをKubernetesリソースとして定義できるようにする。
+また、Kubernetes の外部プロバイダー (例：AWS、Google Cloud、Azure など) のリソースを Kubernetes リソースとして定義できるようにする。
 
 > - https://docs.crossplane.io/latest/concepts/
 

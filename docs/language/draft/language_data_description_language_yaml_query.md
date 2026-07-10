@@ -31,7 +31,7 @@ $ sudo chmod +x /usr/local/bin/yq
 
 ### 例で使用するYAML
 
-以降で使用するYAMLデータを以下の通りとする。
+以降で使用する YAML データを以下の通りとする。
 
 ```yaml
 # data.yaml
@@ -42,7 +42,7 @@ baz:
   - quux: QUUX
 ```
 
-注意点として、`yq` コマンドはGoテンプレートをサポートしていない。
+注意点として、`yq` コマンドは Go テンプレートをサポートしていない。
 
 > - https://github.com/mikefarah/yq/issues/636
 

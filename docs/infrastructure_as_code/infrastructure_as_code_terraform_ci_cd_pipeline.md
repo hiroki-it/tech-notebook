@@ -253,9 +253,9 @@ workflows:
 
 #### ▼ ポリレポの場合
 
-実行環境のイメージはUbuntuなどを使用する。
+実行環境のイメージは Ubuntu などを使用する。
 
-各リポジトリでバージョン管理ツール (例：asdf) を使用することにより、リポジトリに応じて異なるTerraformのバージョンをインストールできるようになる。
+各リポジトリでバージョン管理ツール (例：asdf) を使用することにより、リポジトリに応じて異なる Terraform のバージョンをインストールできるようになる。
 
 <br>
 
@@ -263,7 +263,7 @@ workflows:
 
 #### ▼ `assume_role.sh` ファイル
 
-Assume Roleを実行し、CircleCIで使用するIAMユーザーにロールを一時的に委譲する。
+Assume Role を実行し、CircleCI で使用する IAM ユーザーにロールを一時的に委譲する。
 
 **＊実装例＊**
 
@@ -324,7 +324,7 @@ EOF
 
 #### ▼ `terraform_apply.sh` ファイル
 
-特定のAWSアカウントに対して `terraform apply` コマンドを実行する。
+特定の AWS アカウントに対して `terraform apply` コマンドを実行する。
 
 **＊実装例＊**
 
@@ -343,7 +343,7 @@ terraform -chdir=./"${ENV}" apply \
 
 #### ▼ `terraform_fmt.sh` ファイル
 
-GitHubリポジトリにプッシュされたコードに対して `terraform fmt` コマンドを実行する。
+GitHub リポジトリにプッシュされたコードに対して `terraform fmt` コマンドを実行する。
 
 **＊実装例＊**
 
@@ -359,7 +359,7 @@ terraform fmt \
 
 #### ▼ `terraform_init.sh` ファイル
 
-GitHubリポジトリにプッシュされたコードに対して `terraform init` コマンドを実行する。
+GitHub リポジトリにプッシュされたコードに対して `terraform init` コマンドを実行する。
 
 **＊実装例＊**
 
@@ -382,7 +382,7 @@ terraform -chdir=./"${ENV}" init \
 
 #### ▼ `terraform_plan.sh` ファイル
 
-特定のAWSアカウントに対して `terraform plan` コマンドを実行する。
+特定の AWS アカウントに対して `terraform plan` コマンドを実行する。
 
 **＊実装例＊**
 
@@ -402,7 +402,7 @@ terraform -chdir=./"${ENV}" plan \
 
 #### ▼ `terraform_validate.sh` ファイル
 
-GitHubリポジトリにプッシュされたコードに対して `terraform validate` コマンドを実行する。
+GitHub リポジトリにプッシュされたコードに対して `terraform validate` コマンドを実行する。
 
 **＊実装例＊**
 

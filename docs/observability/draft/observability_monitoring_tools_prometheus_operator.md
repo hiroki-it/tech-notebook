@@ -17,7 +17,7 @@ description: PrometheusOperator＠Prometheusの知見を記録しています。
 
 ### アーキテクチャ
 
-PrometheusOperatorは、Prometheus、Alertmanager、Expoter (Node Exporter、kube-state-metrics) 、Grafana、といったコンポーネントから構成されている。
+PrometheusOperator は、Prometheus、Alertmanager、Expoter (Node Exporter、kube-state-metrics) 、Grafana、といったコンポーネントから構成されている。
 
 > - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
 
@@ -25,11 +25,11 @@ PrometheusOperatorは、Prometheus、Alertmanager、Expoter (Node Exporter、kub
 
 ### セットアップ
 
-PrometheusOperatorは、Prometheus系の全てのカスタムリソースを要求するため、これを作成する必要がある。
+PrometheusOperator は、Prometheus 系のすべてのカスタムリソースを要求するため、これを作成する必要がある。
 
 **＊例＊**
 
-kube-prometheus-stackが提供するCRDを使用する。
+kube-prometheus-stack が提供する CRD を使用する。
 
 ```bash
 $ kubectl diff -f "https://raw.githubusercontent.com/prometheus-community/helm-charts/kube-prometheus-stack-<バージョン>/charts/kube-prometheus-stack/charts/crds/crds/crd-alertmanagerconfigs.yaml"
@@ -59,7 +59,7 @@ $ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-c
 
 ## 02. spec
 
-現状、PrometheusOperatorという名前のカスタムリソースはない。
+現状、PrometheusOperator という名前のカスタムリソースはない。
 
 > - https://github.com/prometheus-operator/kube-prometheus/tree/main/manifests
 

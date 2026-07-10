@@ -31,7 +31,7 @@ $ k3d version
 
 #### ▼ --agents
 
-ワーカーNodeの数を設定する。
+ワーカーNode の数を設定する。
 
 ```bash
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --agent 3
@@ -62,7 +62,7 @@ $ kubectl label node k3d-foo-cluster-agent-2 node-type=app --overwrite
 
 #### ▼ --config
 
-`config.yaml` ファイルを使用して、K3D Clusterを作成する。
+`config.yaml` ファイルを使用して、K3D Cluster を作成する。
 
 ```bash
 $ k3d cluster create --config config.yaml
@@ -72,7 +72,7 @@ $ k3d cluster create --config config.yaml
 
 #### ▼ --image
 
-Kubernetesのバージョンを指定して、K3D Clusterを作成する。
+Kubernetes のバージョンを指定して、K3D Cluster を作成する。
 
 ```bash
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1
@@ -83,7 +83,7 @@ $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1
 
 #### ▼ --servers
 
-コントロールプレーンNodeの数を設定する。
+コントロールプレーン Node の数を設定する。
 
 ```bash
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --servers 2
@@ -93,9 +93,9 @@ $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --servers 2
 
 #### ▼ --volume
 
-ホストマシンのファイルをK3d Clusterにマウントする。
+ホストマシンのファイルを K3d Cluster にマウントする。
 
-`config.yaml` ファイルや `registries.yaml` ファイルをK3D Cluster内へ配置するときに役立つ。
+`config.yaml` ファイルや `registries.yaml` ファイルを K3D Cluster 内へ配置するときに役立つ。
 
 ```bash
 $ k3d cluster create foo-cluster --volume "registries.yaml:/etc/rancher/k3s/registries.yaml
@@ -107,7 +107,7 @@ $ k3d cluster create foo-cluster --volume "registries.yaml:/etc/rancher/k3s/regi
 
 デフォルト値は `true` である。
 
-kube-apiserverからリクエストが返却されたうえで、処理を完了させる。
+kube-apiserver からリクエストが返却されたうえで、処理を完了させる。
 
 ```bash
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --wait
@@ -125,7 +125,7 @@ $ k3d cluster delete foo-cluster
 
 ### list
 
-K3D Clusterの情報を取得する。
+K3D Cluster の情報を取得する。
 
 ```bash
 $ k3d cluster list

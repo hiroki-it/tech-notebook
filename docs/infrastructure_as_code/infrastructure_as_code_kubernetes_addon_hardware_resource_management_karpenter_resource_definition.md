@@ -17,11 +17,11 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 ### EC2NodeClassとは
 
-NodePool内のNodeに対して、AWS固有の仕様を設定する。
+NodePool 内の Node に対して、AWS 固有の仕様を設定する。
 
-ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。
+Cluster スコープな Kubernetes リソースであるため、Namespace は設定できない。
 
-Terraformの `aws_launch_template` ブロックと競合する。
+Terraform の `aws_launch_template` ブロックと競合する。
 
 > - https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
@@ -30,7 +30,7 @@ Terraformの `aws_launch_template` ブロックと競合する。
 
 ### amiFamily
 
-AWS AMIの種類を設定する。
+AWS AMI の種類を設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -46,11 +46,11 @@ spec:
 
 ### amiSelectorTerms
 
-EC2 NodeのAMIを設定する。
+EC2 Node の AMI を設定する。
 
-AMIのバージョンを固定したい場合に役立つ。
+AMI のバージョンを固定したい場合に役立つ。
 
-設定しない場合、Karpenterは最適化AMIを自動的に選択する。
+設定しない場合、Karpenter は最適化 AMI を自動的に選択する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -69,9 +69,9 @@ spec:
 
 ### blockDeviceMappings
 
-プロビジョニングするEC2 Nodeのブロックデバイスを設定する。
+プロビジョニングする EC2 Node のブロックデバイスを設定する。
 
-`100`Gi以上のルートボリュームのデバイスパス (`/dev/xvda`) を設定しないと、ボリューム不足でNodeをプロビジョニングできず、エラーになってしまう。
+`100`Gi 以上のルートボリュームのデバイスパス (`/dev/xvda`) を設定しないと、ボリューム不足で Node をプロビジョニングできず、エラーになってしまう。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -94,7 +94,7 @@ spec:
 
 ### detailedMonitoring
 
-EC2 NodeのCloudWatchによる監視を設定する。
+EC2 Node の CloudWatch による監視を設定する。
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/
 
@@ -102,7 +102,7 @@ EC2 NodeのCloudWatchによる監視を設定する。
 
 ### metadataOptions
 
-EC2 Nodeのメタデータへのアクセスを制御する。
+EC2 Node のメタデータへのアクセスを制御する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -124,9 +124,9 @@ spec:
 
 ### instanceProfile
 
-IAMロールの代わりに使用するIAMインスタンスプロファイル名を設定する。
+IAM ロールの代わりに使用する IAM インスタンスプロファイル名を設定する。
 
-プライベートなEKS Cluster (アウトバウンド通信を禁止している) の場合、IAMロールの代わりにIAMインスタンスプロファイルを使用する。
+プライベートな EKS Cluster (アウトバウンド通信を禁止している) の場合、IAM ロールの代わりに IAM インスタンスプロファイルを使用する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -143,9 +143,9 @@ spec:
 
 ### role
 
-IAMプロファイル名の代わりに使用するIAMロールを設定する。
+IAM プロファイル名の代わりに使用する IAM ロールを設定する。
 
-プライベートなEKS Cluster (アウトバウンド通信を禁止している) の場合、IAMロールの代わりにIAMインスタンスプロファイルを使用する。
+プライベートな EKS Cluster (アウトバウンド通信を禁止している) の場合、IAM ロールの代わりに IAM インスタンスプロファイルを使用する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -160,7 +160,7 @@ spec:
 
 ### securityGroupSelectorTerms
 
-EC2 Nodeに紐づけるセキュリティグループを動的に検出するために、クラスターセキュリティグループのリソースを設定する。
+EC2 Node に紐づけるセキュリティグループを動的に検出するために、クラスターセキュリティグループのリソースを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -179,7 +179,7 @@ spec:
 
 ### subnetSelectorTerms
 
-EC2 Nodeをプロビジョニングするサブネットを動的に検出するために、サブネットのリソースを設定する。
+EC2 Node をプロビジョニングするサブネットを動的に検出するために、サブネットのリソースを設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -199,7 +199,7 @@ spec:
 
 ### status
 
-karpenter-controllerがEC2 Nodeを作成するために取得した情報を自動的に設定する。
+karpenter-controller が EC2 Node を作成するために取得した情報を自動的に設定する。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -243,13 +243,13 @@ status:
 
 #### ▼ tags
 
-NodePool配下のEC2 Node、またこれに紐づくAWSリソース (例：EBSボリュームなど) に挿入するタグを設定する。
+NodePool 配下の EC2 Node、またこれに紐づく AWS リソース (例：EBS ボリュームなど) に挿入するタグを設定する。
 
-なお、NodePool配下のEC2 Nodeは起動テンプレートから作成する。ただし、起動テンプレート自体はEC2 Nodeの作成後に削除される。
+なお、NodePool 配下の EC2 Node は起動テンプレートから作成する。ただし、起動テンプレート自体は EC2 Node の作成後に削除される。
 
 #### ▼ デフォルトのタグ
 
-KarpenterがEC2 Nodeにデフォルトで挿入するタグは上書きしないように、設定しない。
+Karpenter が EC2 Node にデフォルトで挿入するタグは上書きしないように、設定しない。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -279,7 +279,7 @@ spec:
 
 #### ▼ ユーザー定義のタグ
 
-EC2 Nodeに挿入するユーザー定義のタグを設定できる。
+EC2 Node に挿入するユーザー定義のタグを設定できる。
 
 ```yaml
 apiVersion: karpenter.k8s.aws/v1beta1
@@ -299,7 +299,7 @@ spec:
 
 #### ▼ IRSA用IAMロールの条件と一致させる
 
-ここで挿入するタグと、AWS IAMポリシーの条件で指定するタグと一致させる必要がある。
+ここで挿入するタグと、AWS IAM ポリシーの条件で指定するタグと一致させる必要がある。
 
 ```yaml
 {
@@ -327,7 +327,7 @@ spec:
 }
 ```
 
-もちろん、Karpenter以外の方法 (例：Terraformなど) で挿入したタグを使用しても良い。
+もちろん、Karpenter 以外の方法 (例：Terraform など) で挿入したタグを使用してもよい。
 
 > - https://github.com/aws/karpenter/issues/1488#issuecomment-1096972053
 
@@ -335,7 +335,7 @@ spec:
 
 ### userData
 
-プロビジョニングするEC2 Nodeのユーザーデータを設定する。
+プロビジョニングする EC2 Node のユーザーデータを設定する。
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/
 
@@ -345,11 +345,11 @@ spec:
 
 ### NodePoolとは
 
-NodePool内のNodeに対して、クラウドプロバイダーに依らない仕様を設定する。
+NodePool 内の Node に対して、クラウドプロバイダーに依らない仕様を設定する。
 
-EC2 Nodeのグループ (例：Amazon EKS Nodeグループ、Google Cloud Nodeプールなど) に合わせて、複数作成すると良い。
+EC2 Node のグループ (例：Amazon EKS Node グループ、Google Cloud Node プールなど) に合わせて、複数作成するとよい。
 
-ClusterスコープなKubernetesリソースであるため、Namespaceは設定できない。
+Cluster スコープな Kubernetes リソースであるため、Namespace は設定できない。
 
 > - https://karpenter.sh/preview/concepts/nodepools/
 
@@ -359,7 +359,7 @@ ClusterスコープなKubernetesリソースであるため、Namespaceは設定
 
 #### ▼ consolidationPolicy
 
-Node統合の条件を設定する。
+Node 統合の条件を設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -376,7 +376,7 @@ spec:
 
 #### ▼ consolidateAfter
 
-EC2 NodeからPodが全て退避した後にEC2 Nodeを削除するまでの待機時間を設定する。
+EC2 Node から Pod がすべて退避した後に EC2 Node を削除するまでの待機時間を設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -393,9 +393,9 @@ spec:
 
 #### ▼ expireAfter
 
-EC2 Nodeを削除し、再作成するまでの期間を設定する。
+EC2 Node を削除し、再作成するまでの期間を設定する。
 
-EC2 Nodeを定期的に再作成することにより、最適なスペックを再設定するため、脆弱性抑制やコスト削減につながる。
+EC2 Node を定期的に再作成することにより、最適なスペックを再設定するため、脆弱性抑制やコスト削減につながる。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -414,9 +414,9 @@ spec:
 
 ### limits
 
-プロビジョニングするEC2 Nodeが持つハードウェアリソース (CPU、メモリ) の上限を設定する。
+プロビジョニングする EC2 Node が持つハードウェアリソース (CPU、メモリ) の上限を設定する。
 
-Karpenter配下のEC2 Nodeのハードウェアリソースがこれを超過した場合に、既存のNodeを削除しないと、新しいものをプロビジョニングできない。
+Karpenter 配下の EC2 Node のハードウェアリソースがこれを超過した場合に、既存の Node を削除しないと、新しいものをプロビジョニングできない。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -437,7 +437,7 @@ spec:
 
 ### weight
 
-複数のProvisionerがある場合に、このProvisionerの優先順位の高さを設定する。
+複数の Provisioner がある場合に、この Provisioner の優先順位の高さを設定する。
 
 デフォルトでは、重みが `0` である。
 
@@ -459,7 +459,7 @@ spec:
 
 ### annotations
 
-EC2 Nodeに付与するアノテーションを設定する。
+EC2 Node に付与するアノテーションを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -482,7 +482,7 @@ spec:
 
 ### kubelet
 
-kubeletの `KubeletConfiguration` オプションにパラメーターを渡す。
+kubelet の `KubeletConfiguration` オプションにパラメーターを渡す。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -531,7 +531,7 @@ spec:
 
 #### ▼ labels
 
-EC2 Nodeに付与するラベルを設定する。
+EC2 Node に付与するラベルを設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -554,7 +554,7 @@ spec:
 
 ### nodeClassRef
 
-Provisionerで使用するEC2 NodeClass名を設定する。
+Provisioner で使用する EC2 NodeClass 名を設定する。
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1
@@ -577,9 +577,9 @@ spec:
 
 #### ▼ requirementsとは
 
-プロビジョニングするEC2 Nodeのハードウェアリソースを制限する。
+プロビジョニングする EC2 Node のハードウェアリソースを制限する。
 
-制限しなかった項目は、Karpenterがよしなに設定値を選ぶ。
+制限しなかった項目は、Karpenter がよしなに設定値を選ぶ。
 
 **＊実装例＊**
 
@@ -725,9 +725,9 @@ spec:
 
 ### aws.interruptionQueueName
 
-割り込み処理を有効化する場合に、Amazon SQSの名前を設定する。
+割り込み処理を有効化する場合に、Amazon SQS の名前を設定する。
 
-別途、Amazon SQSを作成し、KarpenterにAmazon SQSへの権限を付与しておく必要がある。
+別途、Amazon SQS を作成し、Karpenter に Amazon SQS への権限を付与しておく必要がある。
 
 ```yaml
 apiVersion: v1
@@ -762,7 +762,7 @@ data:
 
 ### aws.clusterEndpoint
 
-Amazon EKS Clusterのkube-apiserverのURLを設定する。
+Amazon EKS Cluster の kube-apiserver の URL を設定する。
 
 ```yaml
 apiVersion: v1
@@ -816,7 +816,7 @@ data:
 
 ロギングを設定する。
 
-zapパッケージを使用しているため、設定値の種類はzapパッケージのものである。
+zap パッケージを使用しているため、設定値の種類は zap パッケージのものである。
 
 ```yaml
 apiVersion: v1
@@ -889,9 +889,9 @@ data:
 
 ### karpenter.sh/do-not-disrupt
 
-長時間実行するPodの場合、完了前にKarpenterがNodeを終了しないようにする必要がある。
+長時間実行する Pod の場合、完了前に Karpenter が Node を終了しないようにする必要がある。
 
-`karpenter.sh/do-not-disrupt` キーを設定すると、Podの終了を待機できる。
+`karpenter.sh/do-not-disrupt` キーを設定すると、Pod の終了を待機できる。
 
 ```yaml
 apiVersion: apps/v1

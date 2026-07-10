@@ -89,7 +89,7 @@ $ docker compose up --build -d <サービス名>
 
 #### ▼ -f
 
-ファイルを指定して、docker-composeを実行する。
+ファイルを指定して、docker-compose を実行する。
 
 ```bash
 $ docker compose up -f foo-docker-compose.yml
@@ -143,7 +143,7 @@ $ docker compose run --rm -d --service-ports <サービス名>
 
 #### ▼ stopとは
 
-指定したサービスの起動中コンテナを全て停止する。
+指定したサービスの起動中コンテナをすべて停止する。
 
 ```bash
 $ docker compose stop <サービス名>
@@ -215,7 +215,7 @@ $ docker compose logs -f <サービス名>
 
 クラウドインフラの削除をプロビジョニングする。
 
-コンテキストがAWSの場合は、Amazon ECSクラスターとその中身を削除する。
+コンテキストが AWS の場合は、Amazon ECS クラスターとその中身を削除する。
 
 > - https://github.com/docker/compose-cli
 
@@ -225,7 +225,7 @@ $ docker compose logs -f <サービス名>
 
 クラウドインフラの作成をプロビジョニングする。
 
-コンテキストがAWSの場合は、Amazon ECSクラスターとその中身を作成する。
+コンテキストが AWS の場合は、Amazon ECS クラスターとその中身を作成する。
 
 > - https://github.com/docker/compose-cli
 

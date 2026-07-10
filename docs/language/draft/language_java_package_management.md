@@ -24,7 +24,7 @@ description: パッケージ管理＠Javaの知見を記録しています。
 
 ### Mavenとは
 
-Javaのパッケージを管理する。
+Java のパッケージを管理する。
 
 <br>
 

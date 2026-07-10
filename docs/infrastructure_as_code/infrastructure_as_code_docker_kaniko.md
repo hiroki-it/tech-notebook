@@ -17,15 +17,15 @@ description: Kaniko＠Dockerの知見を記録しています。
 
 コンテナ内でコンテナイメージのビルドをエミュレートする。
 
-これにより、Docker in Dockerの問題を回避できる。
+これにより、Docker in Docker の問題を回避できる。
 
-また、Kubernetes Cluster内でコンテナイメージをビルドできるようになる。
+また、Kubernetes Cluster 内でコンテナイメージをビルドできるようになる。
 
 レイヤー単位でコンテナイメージのキャッシュを作成できる。
 
-そのため、都度、コンテナイメージをビルドしなくて良くなる。
+そのため、都度、コンテナイメージをビルドしなくてよくなる。
 
-2026/02/28時点でサポートが停止しており、BuildKitなどの代替ツールに移行したほうが良い。
+2026/02/28 時点でサポートが停止しており、BuildKit などの代替ツールに移行したほうがよい。
 
 > - https://qiita.com/chimame/items/7cf8356b7fb55c0990f9#%E3%81%AA%E3%82%93%E3%81%A7%E4%BD%BF%E3%81%86%E3%81%AE
 > - https://snyk.io/blog/building-docker-images-kubernetes/
@@ -68,7 +68,7 @@ spec:
 
 ### DockerHub
 
-DockerHubの資格情報は、エンコードしたうえで、あらかじめGitLab CIの変数 (`DOCKERHUB_TOKEN`) に設定しておく。
+DockerHub の資格情報は、エンコードしたうえで、あらかじめ GitLab CI の変数 (`DOCKERHUB_TOKEN`) に設定しておく。
 
 ```bash
 $ echo -n USER:PASSWORD | base64
@@ -96,7 +96,7 @@ build:
 
 ### Amazon ECR
 
-AWSの資格情報は、あらかじめGitLab CIの変数 (`AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY`) に設定しておく。
+AWS の資格情報は、あらかじめ GitLab CI の変数 (`AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY`) に設定しておく。
 
 ```yaml
 build:
@@ -117,7 +117,7 @@ build:
 
 ### Google Container Registry
 
-Google Cloudの資格情報ファイルは、あらかじめGitLab CIの変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
+Google Cloud の資格情報ファイルは、あらかじめ GitLab CI の変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
 
 ```yaml
 build:

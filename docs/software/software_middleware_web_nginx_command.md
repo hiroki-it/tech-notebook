@@ -27,7 +27,7 @@ $ nginx -c ./custom-nginx.conf
 
 ### reload
 
-`nginx` プロセスをGraceful Restartする。
+`nginx` プロセスを Graceful Restart する。
 
 `systemctl` コマンドでも再起動できる。
 
@@ -44,7 +44,7 @@ $ nginx -s reload
 
 設定ファイルのバリデーションを実行する。
 
-また、読み込まれている全ての設定ファイル (`include` ディレクティブの対象も含む) の内容の一覧を取得する。
+また、読み込まれているすべての設定ファイル (`include` ディレクティブの対象も含む) の内容の一覧を取得する。
 
 `service` コマンドでもバリデーションを実行できる。
 
@@ -60,7 +60,7 @@ $ nginx -t
 
 ### configtest
 
-Nginxの設定ファイルのバリデーションを実行する。
+Nginx の設定ファイルのバリデーションを実行する。
 
 ```bash
 $ service nginx configtest

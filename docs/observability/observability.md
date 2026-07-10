@@ -54,9 +54,9 @@ description: 可観測性の知見を記録しています。
 
 可観測性を実現するために収集する必要のあるデータ要素 (『メトリクス』『ログ』『分散トレース』) のこと。
 
-NewRelicやDatadogはテレメトリーの要素を全て持つ。
+NewRelic や Datadog はテレメトリーの要素をすべて持つ。
 
-また、AWSではCloudWatch (メトリクス+ログ) とX-Ray (分散トレース) を両方利用すると、これらの要素を満たせたことになり、可観測性を実現できる。
+また、AWS では CloudWatch (メトリクス+ログ) と X-Ray (分散トレース) を両方利用すると、これらの要素を満たせたことになり、可観測性を実現できる。
 
 > - https://www.forbes.com/sites/andythurai/2021/02/02/aiops-vs-observability-vs-monitoringwhat-is-the-difference-are-you-using-the-right-one-for-your-enterprise/
 > - https://knowledge.sakura.ad.jp/26395/
@@ -67,9 +67,9 @@ NewRelicやDatadogはテレメトリーの要素を全て持つ。
 
 システムを、テレメトリーを収集できるような状態にすること。
 
-計装するためには、データポイント収集用のツール、ロギングパッケージ、分散トレースのためのリクエストIDの付与などを用意する必要がある。
+計装するためには、データポイント収集用のツール、ロギングパッケージ、分散トレースのためのリクエスト ID の付与などを用意する必要がある。
 
-多くの場合、各テレメトリーの収集ツールは別々に用意する必要があるが、OpenTelemetryではこれらの収集機能をフレームワークとして提供しようとしている。
+多くの場合、各テレメトリーの収集ツールは別々に用意する必要があるが、OpenTelemetry ではこれらの収集機能をフレームワークとして提供しようとしている。
 
 > - https://syu-m-5151.hatenablog.com/entry/2022/07/12/115434
 > - https://www.splunk.com/en_us/data-insider/what-is-opentelemetry.html

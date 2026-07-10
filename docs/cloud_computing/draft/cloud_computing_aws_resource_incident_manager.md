@@ -17,31 +17,31 @@ description: Incident Management＠AWSの知見を記録しています。
 
 ![aws_incident_manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_incident_manager.png)
 
-Incident Managerをインシデント管理ツールとして使用する。
+Incident Manager をインシデント管理ツールとして使用する。
 
-Amazon CloudWatchアラームのアラートを、Incident Managerにインシデントとして通知する。
+Amazon CloudWatch アラームのアラートを、Incident Manager にインシデントとして通知する。
 
 また、各ロールの担当者にオンコールを自動的にエスカレーションする。
 
 `(1)`
 
-: エラーイベントの送信元 (例：手動、Amazon CloudWatchアラーム、Amazon EventBridgeなど) からIncident Managerに、エラーイベントを通知する。
+: エラーイベントの送信元 (例：手動、Amazon CloudWatch アラーム、Amazon EventBridge など) から Incident Manager に、エラーイベントを通知する。
 
 `(2)`
 
-: Incident Managerは、エラーイベントからインシデントを作成する。
+: Incident Manager は、エラーイベントからインシデントを作成する。
 
      Automationが、インシデントの自動回復を試みる。
 
 `(3)`
 
-: Automationがインシデントを解決できなかったとする。
+: Automation がインシデントを解決できなかったとする。
 
       Incident Managerは、インシデントを責任者 (インシデントコマンダー) にオンコールする。
 
 `(4)`
 
-: インシデントの通知を受けたオンコール担当者は、Incident Managerを確認する。
+: インシデントの通知を受けたオンコール担当者は、Incident Manager を確認する。
 
 `(5)`
 
