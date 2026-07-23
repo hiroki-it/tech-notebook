@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】App Stream＠AWS
-description: App Stream＠AWSの知見を記録しています。
+title: 【IT技術の知見】WorkSpaces Applications＠AWS
+description: WorkSpaces Applications＠AWSの知見を記録しています。
 ---
 
-# App Stream＠AWS
+# WorkSpaces Applications＠AWS
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: App Stream＠AWSの知見を記録しています。
 
 <br>
 
-## 01. App Streamとは
+## 01. WorkSpaces Applicationsとは
 
 Windows の仮想環境を提供する。
 
