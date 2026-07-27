@@ -134,7 +134,7 @@ REQUESTS_CA_BUNDLE = "<必要であれば、リモートワークのプロキシ
 ```toml
 [mcp_servers.github]
 url = "https://api.githubcopilot.com/mcp/"
-bearer_token_env_var = "GITHUB_PERSONAL_TOKEN"
+http_headers = { Authorization = "Bearer <ここにパーソナルアクセストークン>" }
 ```
 
 <br>

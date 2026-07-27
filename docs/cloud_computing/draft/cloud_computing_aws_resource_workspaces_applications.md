@@ -17,6 +17,18 @@ description: WorkSpaces Applications＠AWSの知見を記録しています。
 
 Windows の仮想環境を提供する。
 
-Windows のユーザーやグループを管理する AWS Managed Microsoft AD と組み合わせる。
+<br>
+
+## 02. ユーザー管理
+
+### ユーザープール
+
+組み込みのユーザープールと組み合わせて、Windows のユーザーやグループを管理する。
+
+<br>
+
+### AWS Managed Microsoft AD
+
+AWS Managed Microsoft AD と組み合わせて、Windows のユーザーやグループを管理する。
 
 <br>
