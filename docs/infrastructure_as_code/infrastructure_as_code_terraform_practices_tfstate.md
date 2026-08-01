@@ -279,8 +279,8 @@ repository/
 │
 ├── bar/
 │   ├── backend.tf # バックエンド内の/bar/terraform.tfstate
-│   ├── remote_state.tfvars # terraform_remote_state ブロックを使用し、foo のtfstate ファイルから状態を参照する
-│   ├── resource.tf # foo のtfstate ファイルから参照した状態を使用する
+│   ├── remote_state.tfvars # terraform_remote_state ブロックを使用し、foo の tfstate ファイルから状態を参照する
+│   ├── resource.tf # foo の tfstate ファイルから参照した状態を使用する
 │   ├── provider.tf
 │   ...
 │

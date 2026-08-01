@@ -31,10 +31,10 @@ ArgoCD を使用している場合、ArgoCD の情報を設定する。
 
 Custom Controller (application-controller) が設定してくれるため、開発者が設定する必要はない。
 
-| キー                             | 値の例                                                         | 説明                                                                                                                                                                                                                                                                                    |
-| -------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `argocd.argoproj.io/instance`    | `foo-application`                                              | ConfigMap の `application.resourceTrackingMethod` で `label` を設定する。ArgoCD のApplication 名を設定する。もし Kubernetes リソースに設定すれば親 Application が自動的に紐付き、Application に設定されば App of Apps パターンでの親 Application が紐づく。なお、CRD には設定されない。 |
-| `argocd.argoproj.io/tracking-id` | `foo-application:apps/Deployment:foo-namespace/foo-deployment` | ConfigMap の `application.resourceTrackingMethod` で `annotation` を設定する。`<Application名>:<APIグループ名>/<リソースのkind名>:<Namespace名>/リソース名` というアノテーションを自動的に付与する。                                                                                    |
+| キー                             | 値の例                                                         | 説明                                                                                                                                                                                                                                                                                     |
+| -------------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `argocd.argoproj.io/instance`    | `foo-application`                                              | ConfigMap の `application.resourceTrackingMethod` で `label` を設定する。ArgoCD の Application 名を設定する。もし Kubernetes リソースに設定すれば親 Application が自動的に紐付き、Application に設定されば App of Apps パターンでの親 Application が紐づく。なお、CRD には設定されない。 |
+| `argocd.argoproj.io/tracking-id` | `foo-application:apps/Deployment:foo-namespace/foo-deployment` | ConfigMap の `application.resourceTrackingMethod` で `annotation` を設定する。`<Application名>:<APIグループ名>/<リソースのkind名>:<Namespace名>/リソース名` というアノテーションを自動的に付与する。                                                                                     |
 
 <br>
 

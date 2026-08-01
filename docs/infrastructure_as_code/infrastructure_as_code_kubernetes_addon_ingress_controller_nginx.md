@@ -46,7 +46,7 @@ spec:
   selector:
     app: foo-app
   ports:
-    # Nginx Ingress Controller がTCP プロトコルに変換してくれる
+    # Nginx Ingress Controller が TCP プロトコルに変換してくれる
     - protocol: TCP
       port: 9000
       targetPort: 9000

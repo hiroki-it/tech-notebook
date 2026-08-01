@@ -205,7 +205,7 @@ metadata:
   labels:
     # Gateway の名前
     istio.io/use-waypoint: istio-waypoint
-    # app にwaypoint-proxy がある
+    # app に waypoint-proxy がある
     istio.io/use-namespace: app
 ---
 apiVersion: v1
@@ -215,7 +215,7 @@ metadata:
   labels:
     # Gateway の名前
     istio.io/use-waypoint: istio-waypoint
-    # app にwaypoint-proxy がある
+    # app に waypoint-proxy がある
     istio.io/use-namespace: app
 ```
 

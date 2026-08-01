@@ -243,7 +243,7 @@ spec:
         - /var/run/argocd/argocd-cmp-server
       securityContext:
         runAsNonRoot: true
-        # サイドカーのコンテナプロセスのユーザーID は999 とする。
+        # サイドカーのコンテナプロセスのユーザーID は 999 とする。
         runAsUser: 999
       volumeMounts:
         - name: var-files
@@ -468,7 +468,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainer にHelm をインストールする。
+      # InitContainer に Helm をインストールする。
       args:
         - |
           apk --update add wget
@@ -477,7 +477,7 @@ spec:
           cp ./linux-amd64/helm /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
-        # Pod の共有 Volume にHelm を配置する。
+        # Pod の共有 Volume に Helm を配置する。
         - name: custom-tools
           mountPath: /custom-tools
 
@@ -567,7 +567,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainer にHelmfile をインストールする。
+      # InitContainer に Helmfile をインストールする。
       args:
         - |
           apk --update add wget
@@ -579,7 +579,7 @@ spec:
           chown -R 999 /helm-working-dir
           chmod -R u+rwx /helm-working-dir
       volumeMounts:
-        # Pod の共有 Volume にHelmfile を配置する。
+        # Pod の共有 Volume に Helmfile を配置する。
         - name: custom-tools
           mountPath: /custom-tools
     # SOPS
@@ -613,7 +613,7 @@ spec:
           chown -R 999 /helm-working-dir/plugins
           chmod -R u+rwx /helm-working-dir/plugins/
       volumeMounts:
-        # Pod の共有 Volume にhelm プラグインを配置する。
+        # Pod の共有 Volume に helm プラグインを配置する。
         - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
 
@@ -768,7 +768,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainer にHelm をインストールする。
+      # InitContainer に Helm をインストールする。
       args:
         - |
           apk --update add wget
@@ -779,7 +779,7 @@ spec:
           cp ./linux-amd64/helm /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
-        # Pod の共有 Volume にHelm を配置する。
+        # Pod の共有 Volume に Helm を配置する。
         - name: custom-tools
           mountPath: /custom-tools
     # SOPS
@@ -813,7 +813,7 @@ spec:
           chown -R 999 /helm-working-dir/plugins
           chmod -R u+rwx /helm-working-dir/plugins/
       volumeMounts:
-        # Pod の共有 Volume にhelm プラグインを配置する。
+        # Pod の共有 Volume に helm プラグインを配置する。
         - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
 
@@ -872,7 +872,7 @@ data:
           - /bin/bash
           - -c
         # jkroepke 製の helm-secrets の場合
-        # 暗号化された values ファイル (SOPS のsecrets ファイル) 、平文の values ファイルを使用して helm コマンドを実行する。
+        # 暗号化された values ファイル (SOPS の secrets ファイル) 、平文の values ファイルを使用して helm コマンドを実行する。
         args:
           - >
             set -euo pipefail;
@@ -912,7 +912,7 @@ data:
           - /bin/bash
           - -c
         # zendesk 製の helm-secrets の場合
-        # 暗号化された values ファイル (SOPS のsecrets ファイル) 、平文の values ファイルを使用して helm コマンドを実行する。
+        # 暗号化された values ファイル (SOPS の secrets ファイル) 、平文の values ファイルを使用して helm コマンドを実行する。
         args:
           - >
             set -euo pipefail;
@@ -1061,7 +1061,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainer にKustomize をインストールする。
+      # InitContainer に Kustomize をインストールする。
       args:
         - |
           apk --update add wget
@@ -1070,7 +1070,7 @@ spec:
           cp kustomize /custom-tools/
           chmod +x /custom-tools/kustomize
       volumeMounts:
-        # Pod の共有 Volume にKustomize を配置する。
+        # Pod の共有 Volume に Kustomize を配置する。
         - mountPath: /usr/local/bin/kustomize
           name: custom-tools
           subPath: kustomize
@@ -1188,7 +1188,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainer にKustomize をインストールする。
+      # InitContainer に Kustomize をインストールする。
       args:
         # Kustomize は別の InitContainer でインストールしているため、ここでは KSOPS のバイナリのみをコピーする
         - |
@@ -1204,7 +1204,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainer にKustomize をインストールする。
+      # InitContainer に Kustomize をインストールする。
       args:
         - |
           apk --update add wget
@@ -1213,7 +1213,7 @@ spec:
           cp kustomize /custom-tools/
           chmod +x /custom-tools/kustomize
       volumeMounts:
-        # Pod の共有 Volume にKustomize を配置する。
+        # Pod の共有 Volume に Kustomize を配置する。
         - mountPath: /usr/local/bin/kustomize
           name: custom-tools
           subPath: kustomize

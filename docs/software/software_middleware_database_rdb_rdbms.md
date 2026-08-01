@@ -17,11 +17,11 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 ### RDBMS の種類
 
-| RDBMS      | RDB             |
-| ---------- | --------------- |
-| MariaDB    | MariaDB のDB    |
-| MySQL      | MySQL のDB      |
-| PostgreSQL | PostgreSQL のDB |
+| RDBMS      | RDB              |
+| ---------- | ---------------- |
+| MariaDB    | MariaDB の DB    |
+| MySQL      | MySQL の DB      |
+| PostgreSQL | PostgreSQL の DB |
 
 <br>
 

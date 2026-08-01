@@ -236,10 +236,10 @@ Kubernetes リソースを配置するサーバーのこと。
 
 kubelet は、Node のライフサイクルフェーズを設定する。
 
-| フェーズ名 | 説明                                                        |
-| ---------- | ----------------------------------------------------------- |
-| Ready      | Node がPod をスケジューリング可能な状態であることを表す。   |
-| NotReady   | Node がPod をスケジューリング不可能な状態であることを表す。 |
+| フェーズ名 | 説明                                                         |
+| ---------- | ------------------------------------------------------------ |
+| Ready      | Node が Pod をスケジューリング可能な状態であることを表す。   |
+| NotReady   | Node が Pod をスケジューリング不可能な状態であることを表す。 |
 
 #### ▼ イベント
 
@@ -318,16 +318,16 @@ status:
 | CrashLoopBackOff     | Pod が、一連のフェーズ (`Running` フェーズ、`Waiting` フェーズ、`Failed` フェーズ) を繰り返している。 |                                                                                                                                                                                                                                                          |
 | CreateContainerError | Pod 内のコンテナの作成に失敗した。                                                                    |                                                                                                                                                                                                                                                          |
 | ErrImagePull         | Pod 内のコンテナイメージのプルに失敗した。                                                            |                                                                                                                                                                                                                                                          |
-| Error                | Pod 内のいずれかのコンテナが異常に終了した。                                                          | Job 配下の Pod の場合は Error になっても、次の Pod が作成される。Job の `.spec.ttlSecondsAfterFinished` キーを設定していなければ、Error のPod がしばらく残り続けるが、もし新しい Pod がCompleted になれば問題ない。                                      |
+| Error                | Pod 内のいずれかのコンテナが異常に終了した。                                                          | Job 配下の Pod の場合は Error になっても、次の Pod が作成される。Job の `.spec.ttlSecondsAfterFinished` キーを設定していなければ、Error の Pod がしばらく残り続けるが、もし新しい Pod が Completed になれば問題ない。                                    |
 | Failed               | Pod 内のすべてのコンテナの起動が完了し、その後に異常に停止した。                                      |                                                                                                                                                                                                                                                          |
 | ImagePullBackOff     | Pod 内のコンテナイメージのプルに失敗した。                                                            |                                                                                                                                                                                                                                                          |
 | OOMKilled            | Pod のメモリの空きサイズが足らず、コンテナが強制的に終了された。                                      |                                                                                                                                                                                                                                                          |
-| Pending              | Pod がNode にスケジューリングされたが、Pod 内のすべてのコンテナの起動がまだ完了していない。           |                                                                                                                                                                                                                                                          |
+| Pending              | Pod が Node にスケジューリングされたが、Pod 内のすべてのコンテナの起動がまだ完了していない。          |                                                                                                                                                                                                                                                          |
 | PodInitializing      | Pod 内に InitContainer がある場合の理由である。コンテナイメージをプルし、コンテナを作成している。     |                                                                                                                                                                                                                                                          |
-| PostStartHookError   | Pod のPostStart フックに失敗した。                                                                    |                                                                                                                                                                                                                                                          |
+| PostStartHookError   | Pod の PostStart フックに失敗した。                                                                   |                                                                                                                                                                                                                                                          |
 | Running              | Pod 内のすべてのコンテナの起動が完了し、実行中である。                                                | コンテナの起動が完了すれば `Running` フェーズになるが、コンテナ内でビルトインサーバーを起動するようなアプリケーション (例：フレームワークのビルトインサーバー機能) の場合は、`Running` フェーズであっても `Ready` コンディションではないことに注意する。 |
 | Succeed              | Pod 内のすべてのコンテナの起動が完了し、その後に正常に停止した。                                      |                                                                                                                                                                                                                                                          |
-| Unknown              | Node とPod の間の通信に異常があり、Node がPod から情報を取得できなかった。                            |                                                                                                                                                                                                                                                          |
+| Unknown              | Node と Pod の間の通信に異常があり、Node が Pod から情報を取得できなかった。                          |                                                                                                                                                                                                                                                          |
 
 > - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase
 > - https://qiita.com/tkusumi/items/825ccde31fdc3d0b8425#%E4%BB%A3%E8%A1%A8%E7%9A%84%E3%81%AA-pod-%E3%81%AE%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E8%A1%A8%E8%A8%98
@@ -553,7 +553,7 @@ kind: Deployment
 metadata:
   name: foo-balloon
 spec:
-  # ゾーンが 3つあるため、ゾーン間で移動するようにレプリカ数を 3つにする
+  # ゾーンが 3 つあるため、ゾーン間で移動するようにレプリカ数を 3 つにする
   replicas: 3
   selector:
     matchLabels:
@@ -651,7 +651,7 @@ StatefulSet は、Deployment や ReplicaSet とは異なり、同時に Pod を�
 
 <br>
 
-### Deployment とStatefulSet との違い
+### Deployment と StatefulSet との違い
 
 #### ▼ 設定値
 
@@ -1219,7 +1219,7 @@ Namespace が異なれば、`.metadata.labels` キーに同じ値 (例：同じ�
 
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces
 
-#### ▼ Namespace がTerminating のままになる
+#### ▼ Namespace が Terminating のままになる
 
 以下の方法で対処する。
 
@@ -1475,7 +1475,7 @@ Volumes:
 
 > - https://thinkit.co.jp/article/14195
 
-#### ▼ Docker のVolume との違い
+#### ▼ Docker の Volume との違い
 
 Docker のボリュームとは独立した機能であることに注意する。
 

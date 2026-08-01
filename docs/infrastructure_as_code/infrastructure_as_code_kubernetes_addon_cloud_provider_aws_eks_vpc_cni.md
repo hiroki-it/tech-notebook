@@ -220,7 +220,7 @@ spec:
             - mountPath: /run/xtables.lock
               name: xtables-lock
         # Node Agent (aws-network-policy-agent)
-        # NetworkPolicy をCluster 全体に適用する
+        # NetworkPolicy を Cluster 全体に適用する
         - name: aws-eks-nodeagent
           image: 602401143452.dkr.ecr.us-west-2.amazonaws.com/amazon/aws-network-policy-agent:v1.0.5
           env:
@@ -341,7 +341,7 @@ Kubernetes のバージョンに応じて、異なるアドオンのバージョ
 | `MY_NODE_NAME`                          | ワーカーNode 名が設定されているマニフェストのキーを設定する。                                                                                                                                                                                                                                  | `"fieldRef": {"apiVersion": "v1","fieldPath": "spec.nodeName"}}`                   |
 | `MY_POD_NAME`                           | Pod 名が設定されているマニフェストのキーを設定する。                                                                                                                                                                                                                                           | `"fieldRef": {"apiVersion": "v1","fieldPath": "metadata.name"}}`                   |
 | `POD_SECURITY_GROUP_ENFORCING_MODE`     | Pod のセキュリティグループの適用方法を設定する。注意点として、Pod の送信元 IP アドレスにも影響を与える。                                                                                                                                                                                       | `standard` (`standard` の場合は、プライマリーENI のセキュリティグループを適用する) |
-| `VPC_ID`                                | Amazon VPC のID を設定する。                                                                                                                                                                                                                                                                   | `vpc-*****`                                                                        |
+| `VPC_ID`                                | Amazon VPC の ID を設定する。                                                                                                                                                                                                                                                                  | `vpc-*****`                                                                        |
 | `WARM_ENI_TARGET`                       | Amazon EC2/Fargate ワーカーNode 当たりで最低限確保する AWS ENI 数を設定する。                                                                                                                                                                                                                  | `1`                                                                                |
 | `WARM_PREFIX_TARGET`                    |                                                                                                                                                                                                                                                                                                | `1`                                                                                |
 | `WARM_IP_TARGET`                        | `WARM_ENI_TARGET` と競合するため、デフォルトでは設定されていない。Amazon EC2/Fargate ワーカーNode 当たりでウォーム状態にしておくセカンダリープライベート IP アドレス数を設定する。`WARM_ENI_TARGET` の値が小さすぎると、EC2-API のコール回数が増え、リクエスト数制限にひっかかる可能性がある。 | `2`                                                                                |

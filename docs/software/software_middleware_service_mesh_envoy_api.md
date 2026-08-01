@@ -267,7 +267,7 @@ configs:
               - endpoint:
                   address:
                     socket_address:
-                      # 冗長化された bar-pod のIP アドレス
+                      # 冗長化された bar-pod の IP アドレス
                       address: 11.0.0.1
                       # bar-pod 内のコンテナが待ち受けるポート番号
                       port_value: 80
@@ -288,7 +288,7 @@ configs:
               - endpoint:
                   address:
                     socket_address:
-                      # 冗長化された bar-pod のIP アドレス
+                      # 冗長化された bar-pod の IP アドレス
                       address: 11.0.0.2
                       # bar-pod 内のコンテナが待ち受けるポート番号
                       port_value: 80
@@ -309,7 +309,7 @@ configs:
               - endpoint:
                   address:
                     socket_address:
-                      # 冗長化された baz-pod のIP アドレス
+                      # 冗長化された baz-pod の IP アドレス
                       address: 11.0.0.3
                       # baz-pod 内のコンテナが待ち受けるポート番号
                       port_value: 80

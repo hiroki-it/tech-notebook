@@ -285,9 +285,9 @@ cookie: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエン�
 | クライアント保持方法                                            | 組み合わせ             | おすすめ度 | コメント                                                                |
 | --------------------------------------------------------------- | ---------------------- | :--------: | ----------------------------------------------------------------------- |
 | `Cookie` ヘッダー (ローカルマシンのディレクトリ) 、LocalStorage | JWT トークンのみ       |   △ 〜 ×   | いずれの方法でも、XSS によって JWT が盗まれる可能性がある。             |
-| `Cookie` ヘッダー                                               | プリフライトリクエスト |     △      | Access-Control-Max-Age の期間内だと CSRF でJWT が盗まれる可能性がある。 |
+| `Cookie` ヘッダー                                               | プリフライトリクエスト |     △      | Access-Control-Max-Age の期間内だと CSRF で JWT が盗まれる可能性がある。 |
 | `Cookie` ヘッダー                                               | CSRF トークン          |     ⭕     |                                                                         |
-| SameSiteCookie                                                  |                        |     ⭕     | SPA とAPI が同一オリジンの必要がある。                                  |
+| SameSiteCookie                                                  |                        |     ⭕     | SPA と API が同一オリジンの必要がある。                                  |
 
 > - https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
 > - https://blog.flatt.tech/entry/auth0_access_token_poc

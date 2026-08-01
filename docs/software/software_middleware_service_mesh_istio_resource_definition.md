@@ -48,7 +48,7 @@ kind: IstioOperator
 metadata:
   name: istio-operator
 spec:
-  # Istio のdemo チャートをインストールし、リソースを作成する。
+  # Istio の demo チャートをインストールし、リソースを作成する。
   profile: demo
 ```
 
@@ -1252,7 +1252,7 @@ metadata:
 spec:
   configPatches:
     - match:
-        # istio-ingressgateway とistio-proxy コンテナの両方に適用する
+        # istio-ingressgateway と istio-proxy コンテナの両方に適用する
         - context: ANY
 ```
 
@@ -1463,7 +1463,7 @@ spec:
             type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
             value:
               stat_prefix: http_local_rate_limiter
-              # 4 秒中に 4リクエスト数までを指定する
+              # 4 秒中に 4 リクエスト数までを指定する
               token_bucket:
                 max_tokens: 4
                 tokens_per_fill: 4
@@ -1529,7 +1529,7 @@ spec:
               type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
               value:
                 stat_prefix: http_local_rate_limiter
-                # 4 秒中に 4リクエスト数までを指定する
+                # 4 秒中に 4 リクエスト数までを指定する
                 token_bucket:
                   max_tokens: 4
                   tokens_per_fill: 4
@@ -1702,7 +1702,7 @@ spec:
 
 <br>
 
-## 04-03. EnvoyFilter のKeepAlive の設定
+## 04-03. EnvoyFilter の KeepAlive の設定
 
 istio-ingressgateway 内の istio-proxy で、KeepAlive を実行できるようにする。
 
@@ -2200,7 +2200,7 @@ spec:
 apiVersion: security.istio.io/v1
 kind: PeerAuthentication
 metadata:
-  # foo 内の全ての istio-proxy にPeerAuthentication を適用する
+  # foo 内の全ての istio-proxy に PeerAuthentication を適用する
   namespace: foo
   name: peer-authentication
 spec:
@@ -2241,7 +2241,7 @@ spec:
 apiVersion: security.istio.io/v1
 kind: PeerAuthentication
 metadata:
-  # foo 内の全ての istio-proxy にPeerAuthentication を適用する
+  # foo 内の全ての istio-proxy に PeerAuthentication を適用する
   namespace: foo
   name: peer-authentication
 spec:
@@ -2580,7 +2580,7 @@ spec:
     - number: 3306
       name: tcp-mysql
       protocol: TCP
-  # Host ヘッダーがあるため、DNS でIP アドレスを取得する
+  # Host ヘッダーがあるため、DNS で IP アドレスを取得する
   resolution: DNS
 ```
 
@@ -3152,7 +3152,7 @@ spec:
     #  Host ヘッダー値が external.com の時に VirtualService を適用する。
     - external.com
   gateways:
-    # Pod から Istio Egress Gateway のPod への通信で使用する
+    # Pod から Istio Egress Gateway の Pod への通信で使用する
     # gateway 名と両方設定する場合は、デフォルト値としての省略はできない
     - mesh
     # Istio Egress Gateway からエントリ済みシステムへの通信で使用する
@@ -3161,7 +3161,7 @@ spec:
     # external.com に対するリクエストは、Istio Egress Gateway にルーティング (リダイレクト) する
     - match:
         - gateways:
-            # Pod から Istio Egress Gateway のPod への通信で使用する
+            # Pod から Istio Egress Gateway の Pod への通信で使用する
             - mesh
           port: 80
       route:
@@ -3196,7 +3196,7 @@ spec:
     #  Host ヘッダー値が external.com の時に VirtualService を適用する。
     - external.com
   gateways:
-    # Pod から Istio Egress Gateway のPod への通信で使用する
+    # Pod から Istio Egress Gateway の Pod への通信で使用する
     - mesh
     # Istio Egress Gateway からエントリ済みシステムへの通信で使用する
     - foo/foo-egressgateway
@@ -3204,7 +3204,7 @@ spec:
     # external.com に対するリクエストは、Istio Egress Gateway にルーティング (リダイレクト) する
     - match:
         - gateways:
-            # Pod から Istio Egress Gateway のPod への通信で使用する
+            # Pod から Istio Egress Gateway の Pod への通信で使用する
             - mesh
           port: 443
           sniHosts:
@@ -3239,7 +3239,7 @@ spec:
   exportTo:
     - "*"
   hosts:
-    # アプリは DB のFQDN を指定する
+    # アプリは DB の FQDN を指定する
     # VirtualSErvice ではこれを指定する
     - <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
   gateways:
@@ -3448,7 +3448,7 @@ spec:
   http:
     - match:
         - gateways:
-            # Pod から Istio Egress Gateway のPod への通信で使用する
+            # Pod から Istio Egress Gateway の Pod への通信で使用する
             - mesh
           port: 443
       route:
@@ -3532,7 +3532,7 @@ spec:
         attempts: 3
         # リトライの処理タイムアウト時間
         perTryTimeout: 10s
-        # Envoy のx-envoy-retry-on の値
+        # Envoy の x-envoy-retry-on の値
         retryOn: gateway-error
 ```
 
@@ -3559,7 +3559,7 @@ spec:
         attempts: 3
         # リトライの処理タイムアウト時間
         perTryTimeout: 10s
-        # Envoy のx-envoy-retry-on の値
+        # Envoy の x-envoy-retry-on の値
         retryOn: gateway-error
 ```
 
@@ -3915,7 +3915,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute
 
-#### ▼ Istio Egress Gateway のVirtualService での注意点
+#### ▼ Istio Egress Gateway の VirtualService での注意点
 
 `.spec.tls` キーで送信する場合、Istio Egress Gateway はアプリケーションデータを復号できないため、プロトコルを TCP として扱う。
 

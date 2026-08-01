@@ -365,7 +365,7 @@ spec:
         - /usr/local/bin/argocd-server
         - --port=8080
         - --metrics-port=8083
-        # AWS ALB がHTTP リクエストでルーティングするように設定しているため、HTTP リクエストを許可する
+        # AWS ALB が HTTP リクエストでルーティングするように設定しているため、HTTP リクエストを許可する
         - --insecure
       # クライアント、Prometheus、からのリクエストを受信する
       ports:
@@ -414,7 +414,7 @@ spec:
 
       ...
 
-  # 各種 ConfigMap やSecret を読み込む
+  # 各種 ConfigMap や Secret を読み込む
   volumes:
     - name: plugins-home
       emptyDir: { }
@@ -434,7 +434,7 @@ spec:
         defaultMode: 420
         name: argocd-styles-cm
         optional: "true"
-    # repo-server にHTTPS リクエストを送信するために、サーバー証明書を設定する
+    # repo-server に HTTPS リクエストを送信するために、サーバー証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
@@ -447,7 +447,7 @@ spec:
             path: ca.crt
         optional: "true"
         secretName: argocd-repo-server-tls
-    # dex-server にHTTPS リクエストを送信するために、サーバー証明書を設定する
+    # dex-server に HTTPS リクエストを送信するために、サーバー証明書を設定する
     - name: argocd-dex-server-tls
       secret:
         defaultMode: 420
@@ -532,7 +532,7 @@ spec:
           mountPath: /app/config/gpg/keys
         - name: argocd-repo-server-tls
           mountPath: /app/config/reposerver/tls
-        # ConfigManagementPlugin のhelm コマンドを実行するディレクトリをコンテナにマウントする
+        # ConfigManagementPlugin の helm コマンドを実行するディレクトリをコンテナにマウントする
         - name: helm-working-dir
           mountPath: /helm-working-dir
         # コンテナ間で通信するための Unix ドメインソケットファイルをコンテナにマウントする
@@ -793,7 +793,7 @@ spec:
           name: argocd-home
   # 各種 Secret を読み込む
   volumes:
-    # repo-server とHTTPS リクエストを送信するために、サーバー証明書を設定する
+    # repo-server と HTTPS リクエストを送信するために、サーバー証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
@@ -1584,7 +1584,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    # 外部の Amazon EKS Cluster のkube-apiserver のエンドポイントを指定する。
+    # 外部の Amazon EKS Cluster の kube-apiserver のエンドポイントを指定する。
     server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
@@ -1704,7 +1704,7 @@ spec:
         targetRevision: HEAD
         path: .
       destination:
-        # Cluster のURL を出力する。
+        # Cluster の URL を出力する。
         server: "{{url}}"
         namespace: foo-namespace
 ```
@@ -1757,7 +1757,7 @@ spec:
       server: "*"
   sourceRepos:
     - "*"
-# 執筆時点 (2023/05/17) では、default のAppProject でsourceNamespaces キーは使用できない
+# 執筆時点 (2023/05/17) では、default の AppProject で sourceNamespaces キーは使用できない
 # sourceNamespaces
 ```
 
@@ -1783,7 +1783,7 @@ metadata:
   name: prd
   namespace: foo # サービス名など
 spec:
-  # AppProject への所属を許可したい Application のNamespace を設定する
+  # AppProject への所属を許可したい Application の Namespace を設定する
   sourceNamespaces:
     - foo
 ```
@@ -1905,7 +1905,7 @@ metadata:
 spec:
   destinations:
     - namespace: "*" # 所属する Application は、全ての Namespace にデプロイできる。
-      server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com # 所属する Application は、指定した URL のCluster のみを指定できる。
+      server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com # 所属する Application は、指定した URL の Cluster のみを指定できる。
 ```
 
 <br>

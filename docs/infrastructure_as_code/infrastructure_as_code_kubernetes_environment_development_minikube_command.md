@@ -583,7 +583,7 @@ $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/
 > - https://minikube.sigs.k8s.io/docs/commands/ssh/
 > - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
-#### ▼ `--` (ハイフン 2つ)
+#### ▼ `--` (ハイフン 2 つ)
 
 Node に SSH 公開鍵認証で接続し、任意のコマンドを実行する。
 

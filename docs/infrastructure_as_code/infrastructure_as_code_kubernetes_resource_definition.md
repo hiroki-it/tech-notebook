@@ -212,7 +212,7 @@ clusters:
   - cluster:
       # kube-apiserver のサーバー証明書
       certificate-authority-data: LS0tLS1 ...
-      # kube-apiserver のURL
+      # kube-apiserver の URL
       server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 
     ...
@@ -727,12 +727,12 @@ metadata:
   name: foo-deployment
 spec:
   selector:
-    matchLabels: # Deployment に紐付ける Pod のmetadata.labels キー
+    matchLabels: # Deployment に紐付ける Pod の metadata.labels キー
       app.kubernetes.io/name: foo-pod
       app.kubernetes.io/component: app
   template:
     metadata:
-      labels: # Pod のmetadata.labels キー
+      labels: # Pod の metadata.labels キー
         app.kubernetes.io/name: foo-pod
         app.kubernetes.io/component: app
 ```
@@ -782,10 +782,10 @@ v1.LabelSelector{MatchLabels:map[string]string{"app.kubernetes.io/name":"foo-pod
 
 以下のタイミングで Deployment は Pod を再デプロイする。
 
-| 箇所                                  | 説明                                                                |
-| ------------------------------------- | ------------------------------------------------------------------- |
-| `.spec.replicas` キー                 | Pod のレプリカ数を変更すると、Deployment はPod を再デプロイする。   |
-| `.spec.template` キー配下の任意のキー | Pod テンプレートを変更した場合、Deployment はPod を再デプロイする。 |
+| 箇所                                  | 説明                                                                 |
+| ------------------------------------- | -------------------------------------------------------------------- |
+| `.spec.replicas` キー                 | Pod のレプリカ数を変更すると、Deployment は Pod を再デプロイする。   |
+| `.spec.template` キー配下の任意のキー | Pod テンプレートを変更した場合、Deployment は Pod を再デプロイする。 |
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
 
@@ -890,7 +890,7 @@ spec:
     rollingUpdate:
       # デプロイ時に、Pod のレプリカ数の 10 個だけ、新しい Pod を並行的に作成する
       maxSurge: 10
-      # デプロイ時に、Pod のレプリカ数の 0個が停止している状態にならないようにする
+      # デプロイ時に、Pod のレプリカ数の 0 個が停止している状態にならないようにする
       maxUnavailable: 0
   selector:
     matchLabels:
@@ -2530,7 +2530,7 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
           - matchExpressions:
-              # Pod をスケジューリングさせたい Node のmetadata.labels キー
+              # Pod をスケジューリングさせたい Node の metadata.labels キー
               # ここで Node グループのキーを指定しておけば、Node グループ単位でスケジューリングさせられる。
               - key: node.kubernetes.io/nodetype
                 operator: In
@@ -2586,7 +2586,7 @@ spec:
         - topologyKey: kubernetes.io/hostname
           labelSelector:
             - matchExpressions:
-                # Pod のmetadata.labels キー
+                # Pod の metadata.labels キー
                 - key: app.kubernetes.io/name
                   operator: In
                   # 指定した値をキーに持つ Pod と同じ Node に、Pod をスケジューリングさせる。
@@ -2661,7 +2661,7 @@ spec:
         - topologyKey: topology.kubernetes.io/zone
           labelSelector:
             - matchExpressions:
-                # Pod のmetadata.labels キー
+                # Pod の metadata.labels キー
                 - key: app.kubernetes.io/name
                   operator: In
                   # 指定した値をキーに持つ Pod とは異なる Node に、Pod をスケジューリングさせる。
@@ -2736,7 +2736,7 @@ spec:
             - topologyKey: topology.kubernetes.io/zone
               labelSelector:
                 - matchExpressions:
-                    # Pod のmetadata.labels キー
+                    # Pod の metadata.labels キー
                     - key: app.kubernetes.io/name
                       operator: In
                       # 指定した値をキーに持つ Pod とは異なる Node に、Pod をスケジューリングさせる。
@@ -3155,7 +3155,7 @@ spec:
       livenessProbe:
         httpGet:
           port: 8080
-          # SpringBoot 製Java アプリケーションの liveness エンドポイント
+          # SpringBoot 製 Java アプリケーションの liveness エンドポイント
           path: /actuator/health/liveness
           scheme: HTTP
         # 各設定のデフォルト値を示す
@@ -3276,7 +3276,7 @@ spec:
     - name: app
       image: app:1.0.0
       livenessProbe:
-        # 初回以降の LivenessProbe ヘルスチェックを実行するまでに 5秒間待機する。
+        # 初回以降の LivenessProbe ヘルスチェックを実行するまでに 5 秒間待機する。
         initialDelaySeconds: 10
 ```
 
@@ -3419,7 +3419,7 @@ spec:
       startupProbe:
         httpGet:
           port: 8080
-          # SpringBoot 製Java アプリケーションのの startup エンドポイント
+          # SpringBoot 製 Java アプリケーションのの startup エンドポイント
           path: /actuator/startup
         initialDelaySeconds: 10
         periodSeconds: 10
@@ -3455,7 +3455,7 @@ spec:
       readinessProbe:
         httpGet:
           port: 8080
-          # SpringBoot 製Java アプリケーションの Readiness エンドポイント
+          # SpringBoot 製 Java アプリケーションの Readiness エンドポイント
           path: /actuator/health/readiness
           scheme: HTTP
         # 各設定のデフォルト値を示す
@@ -3967,8 +3967,8 @@ spec:
   initContainers:
     - name: readiness-check-redis
       image: busybox:1.28
-      # StatefulSet のインメモリ DB コンテナの 6379 番ポートに通信できるまで、本 Pod のapp コンテナの起動開始を待機する。
-      # StatefulSet でReadinessProbe ヘルスチェックを設定しておけば、これの Pod がREADY になるまで nc コマンドは成功しないようになる。
+      # StatefulSet のインメモリ DB コンテナの 6379 番ポートに通信できるまで、本 Pod の app コンテナの起動開始を待機する。
+      # StatefulSet で ReadinessProbe ヘルスチェックを設定しておけば、これの Pod が READY になるまで nc コマンドは成功しないようになる。
       command:
         - /bin/bash
         - -c
@@ -4102,7 +4102,7 @@ DaemonSet では、特定の Node に Pod をスケジューリングさせら�
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#running-pods-on-select-nodes
 
-#### ▼ nodeSelector とaffinitty の両方設定
+#### ▼ nodeSelector と affinitty の両方設定
 
 `.spec.nodeSelector` キーと `.spec.affinity` キーの両方を設定できる。
 
@@ -4917,7 +4917,7 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
-  # Pod をNode から退避させる時に、Pod1 個のみを退避できる。
+  # Pod を Node から退避させる時に、Pod1 個のみを退避できる。
   maxUnavailable: 1
 ```
 
@@ -4940,7 +4940,7 @@ kind: PodDisruptionBudget
 metadata:
   name: foo-pod-disruption-budget
 spec:
-  # Pod をNode から退避させる時に、他の Node で新しい Pod3 個のスケジューリングが完了するまで待機できる。
+  # Pod を Node から退避させる時に、他の Node で新しい Pod3 個のスケジューリングが完了するまで待機できる。
   minAvailable: 3
 ```
 

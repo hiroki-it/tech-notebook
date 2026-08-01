@@ -27,10 +27,10 @@ description: Backup＠AWSの知見を記録しています。
 
 | AWS リソースの種類 | バックアップ内容                                                                     |
 | ------------------ | ------------------------------------------------------------------------------------ |
-| Amazon EC2         | Amazon EC2 のAWS AMI を作成する。                                                    |
+| Amazon EC2         | Amazon EC2 の AWS AMI を作成する。                                                   |
 | Amazon S3          | Amazon S3 バケットの中身のバックアップを作成する。                                   |
 | AWS EBS ボリューム | AWS EBS ボリュームのバックアップを作成する。スナップショットではないことに注意する。 |
-| Amazon Aurora      | Amazon Aurora のDB Cluster 全体のバックアップを作成する。                            |
+| Amazon Aurora      | Amazon Aurora の DB Cluster 全体のバックアップを作成する。                           |
 
 <br>
 

@@ -158,7 +158,7 @@ Cluster-wide:
 NodeGroups:
   Name:        foo-node-group
 
-  # registered：Node の現在数  # cloudProviderTarget：Node の必要数。cloudProviderTarget のNode 数に合わせてスケーリングする。
+  # registered：Node の現在数  # cloudProviderTarget：Node の必要数。cloudProviderTarget の Node 数に合わせてスケーリングする。
   # LastProbeTime：直近で確認した時間
   # LastTransitionTime：直近でスケーリングを実施した時間
   Health:      Healthy (ready=4 unready=0 (resourceUnready=0) notStarted=0 longNotStarted=0 registered=4 longUnregistered=0 cloudProviderTarget=4 (minSize=3, maxSize=10))
@@ -189,10 +189,10 @@ NodeGroups:
 
 ### AWS 側
 
-| アドオン名         | タグ                                               | 値      | 説明                                                                                                                                                                         |
-| ------------------ | -------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cluster-autoscaler | `k8s.io/cluster-autoscaler/<Amazon EKS Cluster名>` | `owned` | cluster-autoscaler を使用する場合、cluster-autoscaler がEC2 ワーカーNode を検出するために必要である。<br>- https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
-| 同上               | `k8s.io/cluster-autoscaler/enabled`                | `true`  | 同上                                                                                                                                                                         |
+| アドオン名         | タグ                                               | 値      | 説明                                                                                                                                                                          |
+| ------------------ | -------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cluster-autoscaler | `k8s.io/cluster-autoscaler/<Amazon EKS Cluster名>` | `owned` | cluster-autoscaler を使用する場合、cluster-autoscaler が EC2 ワーカーNode を検出するために必要である。<br>- https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
+| 同上               | `k8s.io/cluster-autoscaler/enabled`                | `true`  | 同上                                                                                                                                                                          |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html
 

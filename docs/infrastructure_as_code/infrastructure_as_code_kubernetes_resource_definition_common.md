@@ -152,10 +152,10 @@ kube-controller が設定してくれるため、開発者が設定する必要�
 
 #### ▼ 種類
 
-| キー                                   | 値の例                                                                       | 説明                                                                                      |
-| -------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `pv.kubernetes.io/bound-by-controller` | `yes`                                                                        | PersistentVolume のCSI ドライバーの Controller がプロビジョニングしたかどうかを設定する。 |
-| `pv.kubernetes.io/provisioned-by`      | `ebs.csi.aws.com` (AWS EBS CSI ドライバー)、`kubernetes.io/aws-ebs` (非推奨) | その PersistVolume を作成したツールを設定する。                                           |
+| キー                                   | 値の例                                                                       | 説明                                                                                       |
+| -------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `pv.kubernetes.io/bound-by-controller` | `yes`                                                                        | PersistentVolume の CSI ドライバーの Controller がプロビジョニングしたかどうかを設定する。 |
+| `pv.kubernetes.io/provisioned-by`      | `ebs.csi.aws.com` (AWS EBS CSI ドライバー)、`kubernetes.io/aws-ebs` (非推奨) | その PersistVolume を作成したツールを設定する。                                            |
 
 <br>
 
@@ -283,11 +283,11 @@ Kubernetes リソースに関する情報を設定する。
 
 kube-controller が設定してくれるため、開発者が設定する必要はない。
 
-| キー                     | 値の例                                                    | 説明                                  |
-| ------------------------ | --------------------------------------------------------- | ------------------------------------- |
-| `kubernetes.io/arch`     | `amd64`                                                   | Node のCPU アーキテクチャを設定する。 |
-| `kubernetes.io/hostname` | `ip-*-*-*-*.ap-northeast-1.compute.internal` (AWS の場合) | Node のホスト名を設定する。           |
-| `kubernetes.io/os`       | `linux`                                                   | Node のOS を設定する。                |
+| キー                     | 値の例                                                    | 説明                                   |
+| ------------------------ | --------------------------------------------------------- | -------------------------------------- |
+| `kubernetes.io/arch`     | `amd64`                                                   | Node の CPU アーキテクチャを設定する。 |
+| `kubernetes.io/hostname` | `ip-*-*-*-*.ap-northeast-1.compute.internal` (AWS の場合) | Node のホスト名を設定する。            |
+| `kubernetes.io/os`       | `linux`                                                   | Node の OS を設定する。                |
 
 <br>
 
@@ -434,13 +434,13 @@ metadata:
       # operator が管理するマニフェストのキー部分
       fields: ...
 
-    # ArgoCD のapplication-controller による管理 (後からの変更)
+    # ArgoCD の application-controller による管理 (後からの変更)
     - manager: argocd-application-controller
       apiVersion: apps/v1
       # kube-apiserver に対するリクエスト内容
       operation: Update
       time: "2022-01-01T16:00:00.000Z"
-      # ArgoCD のapplication-controller が管理するマニフェストのキー部分
+      # ArgoCD の application-controller が管理するマニフェストのキー部分
       fields: ...
 ```
 

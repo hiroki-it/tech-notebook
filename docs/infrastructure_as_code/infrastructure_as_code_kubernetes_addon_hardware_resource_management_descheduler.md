@@ -87,7 +87,7 @@ metadata:
   namespace: descheduler
 spec:
   # 毎日 00:00 (JST) に descheduler を実行する
-  # Amazon EKS はUTC でタイムゾーンを設定しているため、9 時間分ずらす必要がある
+  # Amazon EKS は UTC でタイムゾーンを設定しているため、9 時間分ずらす必要がある
   schedule: "0 15 * * *"
 
   # その他の例
@@ -220,7 +220,7 @@ strategies:
           cpu: 70
           memory: 70
           pods: 70
-        # 閾値 (kube-scheduler を使用して、この値を超過していない Node にPod を再スケジューリングさせる)
+        # 閾値 (kube-scheduler を使用して、この値を超過していない Node に Pod を再スケジューリングさせる)
         thresholds:
           cpu: 20
           memory: 20

@@ -238,7 +238,7 @@ webhooks:
         operations: ["CREATE", "UPDATE"]
         resources: ["pods"]
         scope: "*"
-    # Istiod のService の宛先情報を登録する。
+    # Istiod の Service の宛先情報を登録する。
     clientConfig:
       service:
         name: istiod-<リビジョン>

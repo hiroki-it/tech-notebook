@@ -69,7 +69,7 @@ phases:
     commands:
       # Amazon ECR にログイン
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
-      # Amazon ECR のURL をCodeBuild の環境変数から作成
+      # Amazon ECR の URL を CodeBuild の環境変数から作成
       - REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}
       # バージョンタグはコミットのハッシュ値を使用
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)

@@ -291,7 +291,7 @@ CI/CD パイプライン上の `terraform` コマンドの実行で必要なシ�
 ```yaml
 repository/
 ├── .circleci/ # CI ツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tekton など) の設定ファイル
-└── ops/ # Terraform のCI/CD の自動化シェルスクリプト
+└── ops/ # Terraform の CI/CD の自動化シェルスクリプト
 ```
 
 <br>

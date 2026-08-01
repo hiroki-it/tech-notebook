@@ -26,7 +26,7 @@ description: アクション＠チャートの知見を記録しています。
 | `.Release.Namespace`            |                          | リリースされる名前空間                                                                                                                                                                                                                                                                                                                 |
 | `.Release.Service`              | `v3` の場合 `Helm`、`v2` | リリースに使用したツール名                                                                                                                                                                                                                                                                                                             |
 | `.Release.Revision`             |                          | リリースのリビジョン                                                                                                                                                                                                                                                                                                                   |
-| `.Release.IsUpgrade`            |                          | upgrade かrollback 操作の場合、true がセットされる                                                                                                                                                                                                                                                                                     |
+| `.Release.IsUpgrade`            |                          | upgrade か rollback 操作の場合、true がセットされる                                                                                                                                                                                                                                                                                    |
 | `.Release.IsInstall`            |                          | install 操作の場合、true がセットされる                                                                                                                                                                                                                                                                                                |
 | `.Values`                       |                          | values ファイルもしくはユーザーから-f で指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能                                                                                                                                                                                  |
 | `.Chart.ApiVersion`             |                          | Chart.yaml に記載されるチャート API のバージョン                                                                                                                                                                                                                                                                                       |
@@ -104,7 +104,7 @@ description: アクション＠チャートの知見を記録しています。
 そのため、`{{- if }}` から `{{- end }}` の外側でも変数を使用できる。
 
 ```yaml
-# 実行環境は dev かprd しかないものとする。
+# 実行環境は dev か prd しかないものとする。
 # .values.environment が "prd" の場合は printf 関数でサブドメインを作成し、それではない場合は空文字とする
 {{- $subDomain := ternary (printf "%s." .values.environment ) "" .values.environment "prd" }}
 url: https://{{ $subDomain }}{{.Values.serviceName }}.com

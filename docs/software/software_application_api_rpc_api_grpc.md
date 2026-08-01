@@ -201,7 +201,7 @@ service Chat {
 
 <br>
 
-## 03. HTTP/1.1 とgRPC の違い
+## 03. HTTP/1.1 と gRPC の違い
 
 ### パケットの構造
 

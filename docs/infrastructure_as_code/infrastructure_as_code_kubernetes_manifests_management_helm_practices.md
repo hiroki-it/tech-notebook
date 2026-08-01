@@ -46,7 +46,7 @@ repository/
 そのため、`1` 個のバージョンのみを管理する。
 
 ```yaml
-# Kubernetes とHelm を同じリポジトリにする場合
+# Kubernetes と Helm を同じリポジトリにする場合
 repository/
 ├── kubernetes/
 ├── helm/
@@ -55,7 +55,7 @@ repository/
 ```
 
 ```yaml
-# Kubernetes とHelm を異なるリポジトリにする場合
+# Kubernetes と Helm を異なるリポジトリにする場合
 repository/
 ├── foo-chart/
 ├── bar-chart/
@@ -68,7 +68,7 @@ repository/
 この方法であると、リポジトリが増えすぎてしまうため、少なくとも同じ種類のチャートは同じリポジトリで管理するほうがよい。
 
 ```yaml
-# Kubernetes とHelm を同じリポジトリにする場合
+# Kubernetes と Helm を同じリポジトリにする場合
 repository/
 ├── kubernetes/
 ├── helm/
@@ -76,7 +76,7 @@ repository/
 ```
 
 ```yaml
-# Kubernetes とHelm を異なるリポジトリにする場合
+# Kubernetes と Helm を異なるリポジトリにする場合
 repository/
 ├── foo-chart/
 ```

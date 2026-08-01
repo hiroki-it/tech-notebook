@@ -13,7 +13,7 @@ description: 機械語と進数の知見を記録しています。
 
 <br>
 
-## 01. 機械語と 2進数の関係
+## 01. 機械語と 2 進数の関係
 
 ### 機械語とは
 
@@ -37,7 +37,7 @@ description: 機械語と進数の知見を記録しています。
 
 <br>
 
-### なぜ８bit を1Byte とするのか？ (半角英数字と bit の関係)
+### なぜ８bit を 1Byte とするのか？ (半角英数字と bit の関係)
 
 `8`bit を一区切りとして、`1`Byte と表す。
 
@@ -259,7 +259,7 @@ CPU では、各データは 2 進法によって区別されている。CPU は
 
 命令：20B3h
 
-#### ▼ 16 進数の 2進数への変換
+#### ▼ 16 進数の 2 進数への変換
 
 ![機械語命令の構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/機械語命令の構造.gif)
 

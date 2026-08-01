@@ -413,7 +413,7 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 
 > - https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
 
-#### ▼ 実装例 (Go のslice)
+#### ▼ 実装例 (Go の slice)
 
 この例では、Go の slice で補償トランザクションの仕組みを実装している。
 
@@ -592,7 +592,7 @@ export const saga = df.orchestrator(function* (context) {
 
 > - https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF
 
-#### ▼ 実装例 (Go のslice)
+#### ▼ 実装例 (Go の slice)
 
 この例では、アウトボックスパターンで Saga オーケストレーションを実装している。
 

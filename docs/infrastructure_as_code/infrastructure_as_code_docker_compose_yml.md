@@ -802,7 +802,7 @@ services:
       - backend-network
 
 networks:
-  # backend とdatabase のサービスのためだけに、新しく docker ネットワークを作成する
+  # backend と database のサービスのためだけに、新しく docker ネットワークを作成する
   backend-network:
   shared-network:
     # ネットワークを新しく作成せずに、既存のネットワークに接続する

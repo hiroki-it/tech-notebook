@@ -35,7 +35,7 @@ Pod を Node 内の Cluster ネットワークに参加させると、異なる 
 
 <br>
 
-### CNI とCRI の関係
+### CNI と CRI の関係
 
 > - https://jimmysong.io/blog/cni-deep-dive/
 
@@ -43,7 +43,7 @@ Pod を Node 内の Cluster ネットワークに参加させると、異なる 
 
 ### CNI によるクラスター内の通信
 
-#### ▼ Pod とNode 間の通信
+#### ▼ Pod と Node 間の通信
 
 > - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/166890
 

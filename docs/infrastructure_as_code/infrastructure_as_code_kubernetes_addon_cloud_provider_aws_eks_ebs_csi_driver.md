@@ -208,7 +208,7 @@ spec:
   csi:
     # AWS EBS CSI ドライバーをプロビジョナーに設定する
     driver: ebs.csi.aws.com
-    # 手動で作成した AWS EBS のID を設定する。
+    # 手動で作成した AWS EBS の ID を設定する。
     volumeHandle: vol-*****
 ```
 

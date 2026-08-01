@@ -269,7 +269,7 @@ OIDC または Web ID フェデレーションによる認証／認可を使用�
 
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
-#### ▼ Cognito をID プロバイダーとする場合
+#### ▼ Cognito を ID プロバイダーとする場合
 
 Cognito を ID プロバイダーとして使用するように、信頼されたエンティティを設定する。
 
@@ -291,7 +291,7 @@ Cognito を ID プロバイダーとして使用するように、信頼され�
 }
 ```
 
-#### ▼ Amazon EKS をID プロバイダーとする場合
+#### ▼ Amazon EKS を ID プロバイダーとする場合
 
 ![Amazon EKS_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EKS_oidc.png)
 

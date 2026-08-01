@@ -1903,7 +1903,7 @@ metadata:
   # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 spec:
-  # Zipkin やJaeger にアクセスログを送信させる Pod を設定する
+  # Zipkin や Jaeger にアクセスログを送信させる Pod を設定する
   selector:
     matchLabels:
       name: app
@@ -2390,11 +2390,11 @@ spec:
             value: istiod
 ```
 
-| 設定値       | 説明                                                     |
-| ------------ | -------------------------------------------------------- |
-| `istiod`     | Istiod が提供するサーバー証明書を使用する。              |
-| `kubernetes` | Kubernetes のSecret で管理するサーバー証明書を使用する。 |
-| `none`       | サーバー証明書を使用しない。                             |
+| 設定値       | 説明                                                      |
+| ------------ | --------------------------------------------------------- |
+| `istiod`     | Istiod が提供するサーバー証明書を使用する。               |
+| `kubernetes` | Kubernetes の Secret で管理するサーバー証明書を使用する。 |
+| `none`       | サーバー証明書を使用しない。                              |
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 

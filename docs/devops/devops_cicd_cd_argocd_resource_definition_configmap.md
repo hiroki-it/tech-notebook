@@ -137,7 +137,7 @@ ConfigMap や Secret のファイル変更に合わせてチェックサム値�
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/controller/sync.go#L246
 
-#### ▼ Root のApplication 名の重複
+#### ▼ Root の Application 名の重複
 
 単一の Kubernetes Cluster で Namespaced スコープの ArgoCD を構築しているとき、Root の Application を `default` という AppProject へ配置すると、この問題が起こりうる。
 
@@ -294,7 +294,7 @@ data:
   kustomize.path.v2.0.0: /usr/local/bin/kustomize_2_0_0
 ```
 
-#### ▼ 各 Application でKustomize を使用する
+#### ▼ 各 Application で Kustomize を使用する
 
 Application の `.spec.kustomize.version` キーで、使用する Kustomize のバージョンを指定する。
 
@@ -460,7 +460,7 @@ metadata:
   name: argocd-cmd-params-cm
   namespace: argocd
 data:
-  # application-controller とargocd-server
+  # application-controller と argocd-server
   # Application の作成を許可したい Namespace を設定する
   application.namespaces: foo-application-ns
 ```
@@ -545,7 +545,7 @@ data:
   server.dex.server.strict.tls: "false"
   server.disable.auth: "false"
   server.enable.gzip: "false"
-  # ロードバランサーで、リクエストを HTTP でフォワーディングするように設定している場合、argocd-server でHTTP リクエストの受信を許可する
+  # ロードバランサーで、リクエストを HTTP でフォワーディングするように設定している場合、argocd-server で HTTP リクエストの受信を許可する
   server.insecure: "true"
   server.log.format: text
   server.log.level: warn
@@ -574,10 +574,10 @@ Casbin の記法を使用して、ロールと認可スコープを定義しつ�
 
 `readonly` と `admin` というロールは、デフォルトで定義済みである。
 
-| 記号                 | 項目                                                                                                                | 説明                                                                                              |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <AppProject名>/<ApplicationのNamespace名>/<Application名>` | ロールと ArgoCD 系リソースの認可スコープを定義する。代わりに、Role やClusterRole でも定義できる。 |
-| `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                                        | グループにロールを紐付ける。                                                                      |
+| 記号                 | 項目                                                                                                                | 説明                                                                                               |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <AppProject名>/<ApplicationのNamespace名>/<Application名>` | ロールと ArgoCD 系リソースの認可スコープを定義する。代わりに、Role や ClusterRole でも定義できる。 |
+| `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                                        | グループにロールを紐付ける。                                                                       |
 
 > - https://stackoverflow.com/a/73784100
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-permission-structure

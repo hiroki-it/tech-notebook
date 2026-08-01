@@ -15,7 +15,7 @@ description: Istioを採用しない場合との比較＠Istioの知見を記録
 
 ## 01. 比較表
 
-### Istio とKubernetes のみの比較
+### Istio と Kubernetes のみの比較
 
 Kubernetes と Istio には重複する能力がいくつか (例：サービス検出) ある。すべての Pod の istio-proxy をインジェクションする場合、kube-proxy と Service によるサービスメッシュは不要になる。
 
@@ -30,7 +30,7 @@ Kubernetes と Istio には重複する能力がいくつか (例：サービス
 | サービス検出でのリスナー                    | EnvoyFilter + EndpointSlice                                                                                                                                                                                                                     | `listener` キー                | kube-proxy + Service (+ CoreDNS)                 |
 | トラフィック管理                            | VirtualService + Service + DestinationRule                                                                                                                                                                                                      | 記入中...                      | Service                                          |
 | サービス検出での追加サービス設定            | ServiceEntry + EndpointSlice                                                                                                                                                                                                                    | `cluster` キー                 | EndpointSlice                                    |
-| Cluster 外Node に対するサービス検出         | WorkloadEntry                                                                                                                                                                                                                                   | `endpoint` キー                | Egress                                           |
+| Cluster 外 Node に対するサービス検出        | WorkloadEntry                                                                                                                                                                                                                                   | `endpoint` キー                | Egress                                           |
 | サービスレジストリ                          | etcd                                                                                                                                                                                                                                            | etcd                           | etcd                                             |
 | Node 外からのインバウンド通信のルーティング | ・VirtualService + Gateway (内部的には、NodePort Service または LoadBalancer Service が作成され、これらは Node 外からのインバウンド通信を待ち受けられるため、Ingress は不要である) <br>・Ingress + Istio Ingress Controller + ClusterIP Service | `route` キー + `listener` キー | Ingress + Ingress Controller + ClusterIP Service |
 
@@ -84,10 +84,10 @@ Google Cloud Service Mesh では、HTTPRoute などを補うカスタムリソ�
 
 ### デメリット
 
-| 項目                                    | 説明                                                                                                                                                                                                                                |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Node のハードウェアリソースの消費量増加 | Istio のPod 間通信では、Kubernetes と比べて、通信に必要なコンポーネント (例：Istiod コントロールプレーン、istio-proxy) が増える。そのため、Node のハードウェアリソースの消費量が増え、また宛先 Pod からのレスポンス速度が低くなる。 |
-| 学習コストの増加                        | Istio が多機能であり、学習コストが増加する。                                                                                                                                                                                        |
+| 項目                                    | 説明                                                                                                                                                                                                                                 |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Node のハードウェアリソースの消費量増加 | Istio の Pod 間通信では、Kubernetes と比べて、通信に必要なコンポーネント (例：Istiod コントロールプレーン、istio-proxy) が増える。そのため、Node のハードウェアリソースの消費量が増え、また宛先 Pod からのレスポンス速度が低くなる。 |
+| 学習コストの増加                        | Istio が多機能であり、学習コストが増加する。                                                                                                                                                                                         |
 
 > - https://arxiv.org/pdf/2004.00372.pdf
 > - https://www.containiq.com/post/kubernetes-service-mesh

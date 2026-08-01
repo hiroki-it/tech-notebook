@@ -1581,7 +1581,7 @@ integer 型を通常変数として渡せるように、拡張子を json では
   {
     # コンテナ名
     "name": "laravel",
-    # ECR のURL。タグを指定しない場合は latest が割り当てられる。
+    # ECR の URL。タグを指定しない場合は latest が割り当てられる。
     "image": "${laravel_ecr_repository_url}",
     "essential": "true",
     "portMappings": [

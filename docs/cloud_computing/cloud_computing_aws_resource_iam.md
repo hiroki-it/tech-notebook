@@ -272,7 +272,7 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
       {
         # 許可する
         "Effect": "Allow",
-        # SSM のAPI への GetParameters のコールを指定する
+        # SSM の API への GetParameters のコールを指定する
         "Action": ["ssm:GetParameters"],
         # 任意の AWS ソースを対象とする
         "Resource": "*",

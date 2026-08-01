@@ -4531,7 +4531,7 @@ class DatabaseSeeder extends Seeder
 | AppServiceProvider                                    | ・ServiceContainer へのクラスのバインド (登録) <br>・ServiceContainer からのインスタンスのリゾルブ (作成) |
 | MacroServiceProvider                                  | ServiceContainer への関数のバインド (登録)                                                                |
 | RouteServiceProvider<br>(`app.php`、`web.php` も使用) | ルーティングとコントローラーの対応関係の定義                                                              |
-| EventServiceProvider                                  | EventListener と Eventhandler 関数の対応関係の定義                                                         |
+| EventServiceProvider                                  | EventListener と Eventhandler 関数の対応関係の定義                                                        |
 
 #### ▼ ServiceProvider のコール
 

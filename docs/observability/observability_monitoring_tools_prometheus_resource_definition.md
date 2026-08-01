@@ -735,7 +735,7 @@ prometheus-oprator では、アラートルールとレコーディングルー�
 | GroupLabels       | map 型    | ・`.GroupLabels.alertname` <br>・`.GroupLabels.instance` <br>・`.GroupLabels.job` | 特定のアラートグループに関するラベルが割り当てられている。`.spec.groups[*].rules[*].labels` キー配下で設定したユーザー定義のラベルも含む。<br>・https://prometheus.io/docs/alerting/latest/notifications/#kv |
 | CommonLabels      | map 型    | `.CommonLabels.alertname`                                                         | すべてのアラートに共通するラベルが割り当てられている。                                                                                                                                                       |
 | CommonAnnotations | map 型    | `.CommonAnnotations.summary`                                                      | すべてのアラートに共通するアノテーションが割り当てられている。`.spec.groups[*].rules[*].labels` キー配下で設定したユーザー定義のアノテーションも含む。                                                       |
-| ExternalURL       | string 型 | `.ExternalURL`                                                                    | Alertmanger の URL が割り当てられている。                                                                                                                                                                     |
+| ExternalURL       | string 型 | `.ExternalURL`                                                                    | Alertmanger の URL が割り当てられている。                                                                                                                                                                    |
 
 > - https://www.amazon.co.jp/dp/4910313001
 > - https://prometheus.io/docs/alerting/latest/notifications/

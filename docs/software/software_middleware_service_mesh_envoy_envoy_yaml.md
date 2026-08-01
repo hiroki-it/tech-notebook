@@ -779,7 +779,7 @@ static_resources:
                   address: 192.168.0.1
                   port_value: 81
               - endpoint:
-                  address: foo-service.foo-namespace.svc.cluster.local # クラスター (ここでは Kubernetes のService) の完全修飾ドメイン名
+                  address: foo-service.foo-namespace.svc.cluster.local # クラスター (ここでは Kubernetes の Service) の完全修飾ドメイン名
                   port_value: 82
 ```
 
@@ -1101,7 +1101,7 @@ staticResources:
                   address:
                     pipe:
                       # ここではソケットファイルを指定する
-                      # envoy とxds-api のプロセス間で、パケットを送受信する
+                      # envoy と xds-api のプロセス間で、パケットを送受信する
                       path: ./etc/istio/proxy/xds
 ```
 

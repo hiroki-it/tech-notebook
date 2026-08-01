@@ -359,8 +359,8 @@ kubernetes-mixins のレコーディングルールが定義済みであるこ�
 
 Alertmanager の Pod からデータポイントを収集する。
 
-| ダッシュボード名          | 監視対象           | 説明                                        |
-| ------------------------- | ------------------ | ------------------------------------------- |
+| ダッシュボード名          | 監視対象            | 説明                                        |
+| ------------------------- | ------------------- | ------------------------------------------- |
 | `Alertmanager / Overview` | Alertmanager の Pod | Alertmanager 固有のメトリクスを分析できる。 |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/alertmanager/dashboards
@@ -369,8 +369,8 @@ Alertmanager の Pod からデータポイントを収集する。
 
 ArgoCD の Pod からデータポイントを収集する。
 
-| ダッシュボード名 | 監視対象     | 説明                                  |
-| ---------------- | ------------ | ------------------------------------- |
+| ダッシュボード名 | 監視対象      | 説明                                  |
+| ---------------- | ------------- | ------------------------------------- |
 | `ArgoCD`         | ArgoCD の Pod | ArgoCD 固有のメトリクスを分析できる。 |
 
 > - https://github.com/argoproj/argo-cd/blob/v2.7.6/examples/dashboard.json
@@ -379,8 +379,8 @@ ArgoCD の Pod からデータポイントを収集する。
 
 CoreDNS の Pod からデータポイントを収集する。
 
-| ダッシュボード名 | 監視対象      | 説明                                                                                                   |
-| ---------------- | ------------- | ------------------------------------------------------------------------------------------------------ |
+| ダッシュボード名 | 監視対象       | 説明                                                                                                    |
+| ---------------- | -------------- | ------------------------------------------------------------------------------------------------------- |
 | `CoreDNS`        | CoreDNS の Pod | CoreDNS の Pod に対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を分析できる。 |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/coredns/dashboards
@@ -389,13 +389,13 @@ CoreDNS の Pod からデータポイントを収集する。
 
 Kubernetes コンポーネントからデータポイントを収集する。
 
-| ダッシュボード名                  | 監視対象                | 説明                                                                                                                               | おすすめ |
-| --------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| ダッシュボード名                  | 監視対象                | 説明                                                                                                                                | おすすめ |
+| --------------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `Kubernetes / API server`         | kube-apiserver          | kube-apiserver の SLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU 使用率、メモリ使用率) を分析できる。 |          |
-| `Kubernetes / Kubelet`            | kubelet                 |                                                                                                                                    |          |
-| `Kubernetes / Proxy`              | kube-proxy              |                                                                                                                                    |          |
-| `Kubernetes / Controller Manager` | kube-controller-manager |                                                                                                                                    |          |
-| `Kubernetes / Scheduler`          | kube-scheduler          |                                                                                                                                    |          |
+| `Kubernetes / Kubelet`            | kubelet                 |                                                                                                                                     |          |
+| `Kubernetes / Proxy`              | kube-proxy              |                                                                                                                                     |          |
+| `Kubernetes / Controller Manager` | kube-controller-manager |                                                                                                                                     |          |
+| `Kubernetes / Scheduler`          | kube-scheduler          |                                                                                                                                     |          |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards
 
@@ -449,11 +449,11 @@ Node からデータポイントを収集する。
 
 Node Exporter からデータポイントを収集できるようにしておく必要がある。
 
-| ダッシュボード名                       | 監視対象 | メトリクス     | 説明                                                                                        | おすすめ |
-| -------------------------------------- | -------- | -------------- | ------------------------------------------------------------------------------------------- | -------- |
+| ダッシュボード名                       | 監視対象 | メトリクス     | 説明                                                                                         | おすすめ |
+| -------------------------------------- | -------- | -------------- | -------------------------------------------------------------------------------------------- | -------- |
 | `Node Exporter / USE Method / Cluster` | Node     | USE メトリクス | Node の USE メトリクスの合計を分析できる。Cluster 全体のハードウェアリソースの分析に役立つ。 | ★        |
 | `Node Exporter / USE Method / Node`    | Node     | USE メトリクス | Node の USE メトリクスを Node 単位で分析できる。                                             |          |
-| `Node Exporter / Nodes`                | Node     | ハードウェア   | Node のハードウェアリソース使用率メトリクスを Node 単位で分析できる。                       |          |
+| `Node Exporter / Nodes`                | Node     | ハードウェア   | Node のハードウェアリソース使用率メトリクスを Node 単位で分析できる。                        |          |
 
 > - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-cluster-rsrc-use.yaml#L23
 > - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-rsrc-use.yaml#L23
@@ -462,8 +462,8 @@ Node Exporter からデータポイントを収集できるようにしておく
 
 Prometheus の Pod からデータポイントを収集する。
 
-| ダッシュボード名            | 監視対象         | 説明 |
-| --------------------------- | ---------------- | ---- |
+| ダッシュボード名            | 監視対象          | 説明 |
+| --------------------------- | ----------------- | ---- |
 | `Prometheus / Remote Write` | Prometheus の Pod |      |
 | `Prometheus / Overview`     | Prometheus の Pod |      |
 
@@ -479,7 +479,7 @@ Istio の Pod からデータポイントを収集する。
 | -------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------- |
 | `Istio Wasm Extension Dashboard` |                                    |                                                                                     |
 | `Istio Mesh Dashboard`           |                                    | HTTP プロトコルと TCP プロトコルのメトリクスを確認したい場合に役立つ。              |
-| `Istio Control Plane Dashboard`  | Istiod の Pod                       |                                                                                     |
+| `Istio Control Plane Dashboard`  | Istiod の Pod                      |                                                                                     |
 | `Istio Performance Dashboard`    | Istio Ingress Gateway、istio-proxy |                                                                                     |
 | `Istio Workload Dashboard`       | Istio のカスタムリソース           |                                                                                     |
 | `Istio Service Dashboard`        | Istio VirtualService               | Istio Ingress Gateway の宛先の Service に関するメトリクスを確認したい場合に役立つ。 |

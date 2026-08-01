@@ -45,7 +45,7 @@ Kubernetes Cluster 上でこれを稼働させることが推奨である。
 
 > - https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
 
-#### ▼ Amazon Route 53 とAWS Cloud Map によるサービス検出
+#### ▼ Amazon Route 53 と AWS Cloud Map によるサービス検出
 
 AWS CloudMap を使用して、Amazon ECS タスクの宛先情報を動的に Amazon Route 53 に追加削除する。
 

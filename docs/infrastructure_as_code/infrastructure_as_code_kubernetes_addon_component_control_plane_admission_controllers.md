@@ -142,7 +142,7 @@ webhooks:
         operations: ["CREATE", "UPDATE"]
         resources: ["pods"]
         scope: "*"
-    # Istiod のService の宛先情報を登録する。
+    # Istiod の Service の宛先情報を登録する。
     clientConfig:
       service:
         name: istiod-<リビジョン>
@@ -343,7 +343,7 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処
     "op": "add",
     # .spec.replicas キーをターゲットとする。
     "path": "/spec/replicas",
-    # 値は 3とする。
+    # 値は 3 とする。
     "value": 3,
   },
 ]

@@ -24,7 +24,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 <br>
 
-### CVE のDB の種類
+### CVE の DB の種類
 
 #### ▼ GitHub
 

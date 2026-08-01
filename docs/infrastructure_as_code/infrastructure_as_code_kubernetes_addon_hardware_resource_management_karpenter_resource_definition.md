@@ -258,7 +258,7 @@ metadata:
   name: foo-node-class
 spec:
   tags:
-    # AWS はKarpenter がプロビジョニングした AWS リソースにタグを挿入する
+    # AWS は Karpenter がプロビジョニングした AWS リソースにタグを挿入する
     aws:ec2:fleet-id: fleet-*****
     aws:ec2launchtemplate:id: lt-*****
     aws:ec2launchtemplate:version: 1
@@ -297,7 +297,7 @@ spec:
 
 > - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
-#### ▼ IRSA 用IAM ロールの条件と一致させる
+#### ▼ IRSA 用 IAM ロールの条件と一致させる
 
 ここで挿入するタグと、AWS IAM ポリシーの条件で指定するタグと一致させる必要がある。
 
@@ -309,7 +309,7 @@ spec:
             "Action": "ec2:RunInstances",
             "Condition": {
                 "StringEquals": {
-                    # Karpenter のEC2NodeClass で挿入した起動テンプレートのタグを指定する
+                    # Karpenter の EC2NodeClass で挿入した起動テンプレートのタグを指定する
                     "ec2:ResourceTag/karpenter.sh/discovery": [
                         "foo-cluster",
                     ]

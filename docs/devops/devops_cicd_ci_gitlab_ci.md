@@ -587,7 +587,7 @@ fmt:
 foo_job:
   stage: build
   script:
-    # 『echo foo-1』が失敗しても、終了コードを 1にして Job を中断させない
+    # 『echo foo-1』が失敗しても、終了コードを 1 にして Job を中断させない
     - echo foo-1 || true
     - echo foo-2
   # 0 以外の全ての終了コードの場合のみ終了する
@@ -649,7 +649,7 @@ bar_job:
 # デプロイステージ
 baz_job:
   stage: deploy
-  # foo_job のartifacts は継承できるが、bar_job のartifacts は継承できない
+  # foo_job の artifacts は継承できるが、bar_job の artifacts は継承できない
   needs:
     - foo_job
   script:
@@ -657,7 +657,7 @@ baz_job:
 
 qux_job:
   stage: deploy
-  # foo_job とbar_job の両方の artifacts を継承できる
+  # foo_job と bar_job の両方の artifacts を継承できる
   needs:
     - foo_job
     - bar_job
@@ -929,7 +929,7 @@ baz_job:
   stage: deploy
   script:
     - echo baz
-  # foo_job のfoo1 のアーティファクトのみを継承する
+  # foo_job の foo1 のアーティファクトのみを継承する
   dependencies:
     - "foo_job: [foo1]"
 ```
@@ -965,7 +965,7 @@ baz_job:
     - job: foo_job
       parallel:
         matrix:
-          # foo_job のfoo2 に依存する
+          # foo_job の foo2 に依存する
           - ENV: foo2
 ```
 

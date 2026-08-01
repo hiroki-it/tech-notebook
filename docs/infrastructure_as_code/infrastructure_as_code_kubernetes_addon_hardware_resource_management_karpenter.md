@@ -247,7 +247,7 @@ Karpenter は、マネージド Node グループの有無に関係なく、Node
 
 <br>
 
-### Karpenter とcluster-autoscaler
+### Karpenter と cluster-autoscaler
 
 #### ▼ Karpenter のいいところ
 

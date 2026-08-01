@@ -57,7 +57,7 @@ Amazon EKS のコントロールプレーンは、開発者や他の AWS リソ�
 | シークレット                     | Secret に保管するデータを AWS KMS の暗号化キーで暗号化するか否かを設定する。                     |                                                                                                                                                                                                                                                                                                                                     |
 | Amazon VPC、サブネット           | ENI を配置するサブネットを設定する。                                                             | 複数の AZ にまたがっている必要がある。                                                                                                                                                                                                                                                                                              |
 | クラスターセキュリティグループ   | Amazon EKS Cluster のセキュリティグループを設定する。                                            | インバウンドとアウトバウンド通信の両方のルールで、すべての IP アドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWS によって `eks-cluster-sg-<Amazon EKS Cluster名>` というセキュリティグループも自動設定される。<br>https://yuutookun.hatenablog.com/entry/fargate_for_eks |
-| クラスターIP アドレスファミリー  | Pod とService に割り当てる ClusterIP のIP アドレスタイプ (IPv4、IPv6) を設定する。               |                                                                                                                                                                                                                                                                                                                                     |
+| クラスターIP アドレスファミリー  | Pod と Service に割り当てる ClusterIP の IP アドレスタイプ (IPv4、IPv6) を設定する。             |                                                                                                                                                                                                                                                                                                                                     |
 | CIDR ブロック                    | ClusterIP Service に割り当てる IP アドレスの CIDR ブロックを設定する。                           |                                                                                                                                                                                                                                                                                                                                     |
 | クラスターエンドポイントアクセス | kube-apiserver のリクエスト制限を設定する。                                                      |                                                                                                                                                                                                                                                                                                                                     |
 | ネットワークアドオン             | ネットワークに関する Amazon EKS アドオンを設定する。                                             | 執筆時点 (2023/02/05) では、AWS kube-proxy、AWS CoreDNS、Amazon VPC CNI を使用できる。                                                                                                                                                                                                                                              |
@@ -472,17 +472,17 @@ resource "aws_iam_role" "access_entry_argocd" {
 
 ![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks.png)
 
-| データプレーン上の AWS リソース               | Kubernetes リソース         | 補足                                                                                                                                                                                                                                                                                          |
-| --------------------------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Fargate ワーカーNode、Amazon EC2 ワーカーNode | ワーカーNode                | ・https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                                                           |
-| Amazon EKS Cluster                            | Cluster                     | ・https://docs.aws.amazon.com/eks/latest/userguide/clusters.html                                                                                                                                                                                                                              |
-| AWS ALB                                       | Ingress                     | Ingress はAWS ALB に置き換える必要がある。AWS Load Balancer Controller を作成すると、AWS ALB は自動的に作成される。<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html <br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
-| AWS Load Balancer Controller                  | Ingress Controller          | AWS ALB を自動的に作成する。<br>・https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on                                                                                                                                                                        |
-| Amazon API Gateway + NLB                      |                             | ・https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                                                          |
-| EBS、AWS EFS                                  | PersistentVolume            | ・https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                                               |
-| Secrets Manager                               | Secret                      | ・https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                                                        |
-| AWS IAM ユーザー                              | ServiceAccount、UserAccount | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                         |
-| AWS IAM ロール                                | Role、ClusterRole           | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                         |
+| データプレーン上の AWS リソース               | Kubernetes リソース         | 補足                                                                                                                                                                                                                                                                                           |
+| --------------------------------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Fargate ワーカーNode、Amazon EC2 ワーカーNode | ワーカーNode                | ・https://docs.aws.amazon.com/eks/latest/userguide/eks-compute.html                                                                                                                                                                                                                            |
+| Amazon EKS Cluster                            | Cluster                     | ・https://docs.aws.amazon.com/eks/latest/userguide/clusters.html                                                                                                                                                                                                                               |
+| AWS ALB                                       | Ingress                     | Ingress は AWS ALB に置き換える必要がある。AWS Load Balancer Controller を作成すると、AWS ALB は自動的に作成される。<br>・https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html <br>・https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes |
+| AWS Load Balancer Controller                  | Ingress Controller          | AWS ALB を自動的に作成する。<br>・https://aws.amazon.com/jp/blogs/news/using-alb-ingress-controller-with-amazon-eks-on                                                                                                                                                                         |
+| Amazon API Gateway + NLB                      |                             | ・https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/                                                                                                                                                                                                           |
+| EBS、AWS EFS                                  | PersistentVolume            | ・https://docs.aws.amazon.com/eks/latest/userguide/storage.html                                                                                                                                                                                                                                |
+| Secrets Manager                               | Secret                      | ・https://docs.aws.amazon.com/eks/latest/userguide/manage-secrets.html                                                                                                                                                                                                                         |
+| AWS IAM ユーザー                              | ServiceAccount、UserAccount | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                          |
+| AWS IAM ロール                                | Role、ClusterRole           | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                          |
 
 > - https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
 
@@ -599,7 +599,7 @@ spec:
         defaultMode: 420
         sources:
           - serviceAccountToken:
-              # OIDC のID プロバイダーによるトークンの発行対象
+              # OIDC の ID プロバイダーによるトークンの発行対象
               audience: sts.amazonaws.com
               expirationSeconds: 86400
               path: token
@@ -1016,7 +1016,7 @@ Amazon EC2 ワーカーNode 内の Pod が Amazon ECR からコンテナイメ�
 | Node 上のログの場所                  | 説明                                                                                                               |
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | `/var/log/containers	`                | このディレクトリに、その Amazon EC2 ワーカーNode 上の Pod 内コンテナのログファイルのシンボリックリンクを作成する。 |
-| `var/log/aws-routed-eni/ipamd.log`   | このディレクトリに、Amazon VPC CNI のL-IPAM デーモンのログを出力する。                                             |
+| `var/log/aws-routed-eni/ipamd.log`   | このディレクトリに、Amazon VPC CNI の L-IPAM デーモンのログを出力する。                                            |
 | `/var/log/aws-routed-eni/plugin.log` | 同上                                                                                                               |
 
 > - https://docs.aws.amazon.com/prescriptive-guidance/latest/implementing-logging-monitoring-cloudwatch/kubernetes-eks-logging.html#eks-node-application-logging
@@ -1099,9 +1099,9 @@ Node グループ (マネージド Node グループ、セルフマネージド 
 
 #### ▼ マネージド Node グループ
 
-| タグ   | 値                             | 説明                                                                                                                                                                                                                                  |
-| ------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Name` | Amazon EC2 ワーカーNode の名前 | Node グループで指定する起動テンプレートのタグに、`Name` タグを設定しておく。起動する Amazon EC2 ワーカーNode にAmazon EC2 の名前は `Name` タグで決まる仕組みのため、起動テンプレートによってワーカーNode 名を設定させることができる。 |
+| タグ   | 値                             | 説明                                                                                                                                                                                                                                   |
+| ------ | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Name` | Amazon EC2 ワーカーNode の名前 | Node グループで指定する起動テンプレートのタグに、`Name` タグを設定しておく。起動する Amazon EC2 ワーカーNode に Amazon EC2 の名前は `Name` タグで決まる仕組みのため、起動テンプレートによってワーカーNode 名を設定させることができる。 |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html
 
@@ -1110,7 +1110,7 @@ Node グループ (マネージド Node グループ、セルフマネージド 
 | タグ                                           | 値                             | 説明                                                                                                                                                     |
 | ---------------------------------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Name`                                         | Amazon EC2 ワーカーNode の名前 | Amazon EC2 の名前は `Name` タグで決まる仕組みのため、Node グループに参加させる Amazon EC2 ワーカーNode の `Name` タグに、ワーカーNode 名を設定しておく。 |
-| `kubernetes.io/cluster/<Amazon EKS Cluster名>` | `owned`                        | セルフマネージド型の Amazon EC2 ワーカーNode を使用する場合、ユーザーが作成した Amazon EC2 をNode グループに参加させるために、必要である。               |
+| `kubernetes.io/cluster/<Amazon EKS Cluster名>` | `owned`                        | セルフマネージド型の Amazon EC2 ワーカーNode を使用する場合、ユーザーが作成した Amazon EC2 を Node グループに参加させるために、必要である。              |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
 
@@ -1301,7 +1301,7 @@ set -o xtrace
 
 | パラメーター            | 例                                          | 説明                                                                                                                                                                                                    |
 | ----------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--apiserver-endpoint ` |                                             | Amazon EKS Cluster のkube-apiserver のエンドポイントを設定する。                                                                                                                                        |
+| `--apiserver-endpoint ` |                                             | Amazon EKS Cluster の kube-apiserver のエンドポイントを設定する。                                                                                                                                       |
 | `--b64-cluster-ca`      |                                             | kube-apiserver のエンドポイントを設定した場合、HTTPS でリクエストするために、サーバー証明書を設定する。                                                                                                 |
 | `--container-runtime`   | `containerd`                                | コンテナランタイムの種類を設定する。                                                                                                                                                                    |
 | `--kubelet-extra-args`  | `--node-labels=nodetype=foo --max-pods=110` | KubeletConfiguration のデフォルト値を上書きする。                                                                                                                                                       |
@@ -1381,7 +1381,7 @@ fi
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-image-cache/
 
-#### ▼ Amazon EC2 ワーカーNode のGraceful Shutdown
+#### ▼ Amazon EC2 ワーカーNode の Graceful Shutdown
 
 デフォルトでは、Amazon EC2 ワーカーNode は新しい Pod のスケジューリングを禁止した後、Pod の退避を待たずに停止してしまう。
 
@@ -1754,9 +1754,9 @@ Fargate を設定する。
 
 | コンポーネント名           | 説明                                                                                                                     | 補足                                                                                                                                                                                                                                                                                   |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pod 実行ロール             | kubelet がAWS リソースにリクエストを送信できるように、Pod にロールを設定する。                                           | ・実行ポリシー (`AmazonEKSFargatePodExecutionRolePolicy`) には、Amazon ECR への認可スコープのみが付与されている。<br>・信頼されたエンティティでは、`eks-fargate-pods.amazonaws.com` を設定する必要がある。<br>https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
+| Pod 実行ロール             | kubelet が AWS リソースにリクエストを送信できるように、Pod にロールを設定する。                                          | ・実行ポリシー (`AmazonEKSFargatePodExecutionRolePolicy`) には、Amazon ECR への認可スコープのみが付与されている。<br>・信頼されたエンティティでは、`eks-fargate-pods.amazonaws.com` を設定する必要がある。<br>https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html |
 | サブネット                 | Amazon EKS Fargate ワーカーNode が起動するサブネット ID を設定する。                                                     | プライベートサブネットを設定する必要がある。                                                                                                                                                                                                                                           |
-| ポッドセレクタ (Namespace) | Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod のNamespace の値を設定する。        | ・`kube-system` や `default` を指定する Kubernetes リソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・Istio やArgoCD を、それ専用の Namespace で稼働させる場合は、その Namespace のためのプロファイルを作成しておく必要がある。                               |
+| ポッドセレクタ (Namespace) | Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod の Namespace の値を設定する。       | ・`kube-system` や `default` を指定する Kubernetes リソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・Istio や ArgoCD を、それ専用の Namespace で稼働させる場合は、その Namespace のためのプロファイルを作成しておく必要がある。                              |
 | ポッドセレクタ (Label)     | Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod の任意の label キーの値を設定する。 |                                                                                                                                                                                                                                                                                        |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components

@@ -162,7 +162,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 <br>
 
-### Pod のIP アドレスを指定する場合
+### Pod の IP アドレスを指定する場合
 
 #### ▼ 仕組み
 
@@ -200,7 +200,7 @@ traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
 
 <br>
 
-### Service のIP アドレスを指定する場合
+### Service の IP アドレスを指定する場合
 
 #### ▼ 仕組み
 

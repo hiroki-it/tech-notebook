@@ -498,7 +498,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
   address:
     # 宛先 IP アドレスとポート番号が合致した場合に、このリスナーで処理される。
     socketAddress:
-      # Service のIP アドレス
+      # Service の IP アドレス
       address: 172.16.0.1 # 全ての宛先 IP アドレスを合致させる場合は、0.0.0.0 とする。
       # Service のポート番号
       portValue: 50001
@@ -754,7 +754,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
             # パスベースルーティング
             prefix: /
           route:
-            # クラスター (ここでは Kubernetes のService)
+            # クラスター (ここでは Kubernetes の Service)
             cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
     - name: allow_any
       domains:
@@ -960,7 +960,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 
 ```yaml
 # foo-pod 内の envoy コンテナが、以下の envoy.yaml ファイルで構成されているとする。
-# クラスター (ここでは Kubernetes のService)
+# クラスター (ここでは Kubernetes の Service)
 - name: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
   connectTimeout: 0.25s
   type: STATIC

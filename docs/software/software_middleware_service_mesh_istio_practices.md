@@ -548,10 +548,10 @@ workflow:
         ENV: "tes"
 
 variables:
-  # EKS はK8s のマイナーバージョンを公開していないため、".0"と仮定して処理する
-  # 現在の EKS のK8s バージョン
+  # EKS は K8s のマイナーバージョンを公開していないため、".0"と仮定して処理する
+  # 現在の EKS の K8s バージョン
   K8S_CURRENT_VERSION: "1.24.0"
-  # アップグレード後の EKS のK8s バージョン
+  # アップグレード後の EKS の K8s バージョン
   K8S_NEXT_VERSION: "1.26.0"
 
   # 現在の Istio のバージョン

@@ -404,13 +404,13 @@ metadata:
 spec:
   containers:
     - args:
-        # AWS ALB でL7 ロードバランシングする Cluster 名を設定する
+        # AWS ALB で L7 ロードバランシングする Cluster 名を設定する
         - "--cluster-name=foo-cluster"
         # Ingress に紐づける IngressClass を設定する
         - "--ingress-class=alb"
         # AWS ALB のあるリージョンを設定する
         - "--aws-region=ap-northeast-1"
-        # AWS ALB のある VPC のID を設定する
+        # AWS ALB のある VPC の ID を設定する
         - "--aws-vpc-id=vpc-*****"
       name: aws-load-balancer-controller
       image: public.ecr.aws/eks/aws-load-balancer-controller:v2.4.0

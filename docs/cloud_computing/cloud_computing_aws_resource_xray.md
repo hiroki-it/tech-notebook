@@ -52,11 +52,11 @@ Amazon EKS で DamonSet として稼働させる。
 
 ### サンプリング
 
-| 項目                | 説明                                                                                    |
-| ------------------- | --------------------------------------------------------------------------------------- |
-| Limits              | スパンの収集に関する上限値を設定する。                                                  |
-| Matching criteria   | スパンのキーに基づくフィルタリングの一致条件を設定する。                                |
-| Matching attributes | AWS 以外の文脈で付与されたラベル (例：OpenTelemetry のAttribute) の一致条件を設定する。 |
+| 項目                | 説明                                                                                     |
+| ------------------- | ---------------------------------------------------------------------------------------- |
+| Limits              | スパンの収集に関する上限値を設定する。                                                   |
+| Matching criteria   | スパンのキーに基づくフィルタリングの一致条件を設定する。                                 |
+| Matching attributes | AWS 以外の文脈で付与されたラベル (例：OpenTelemetry の Attribute) の一致条件を設定する。 |
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html
 
@@ -455,9 +455,9 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 <br>
 
-## 05. OpenTelemetry とX-Ray の対応関係
+## 05. OpenTelemetry と X-Ray の対応関係
 
-### OpenTelemetry とX-Ray
+### OpenTelemetry と X-Ray
 
 #### ▼ 一覧
 

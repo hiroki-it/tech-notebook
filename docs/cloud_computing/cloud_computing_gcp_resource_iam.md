@@ -226,7 +226,7 @@ GoogleCloud 外リソースのグループを設定する。
 
 <br>
 
-### Google Cloud とAWS の連携の場合
+### Google Cloud と AWS の連携の場合
 
 AWS IAM ロール名とこれに紐づけるサービスアカウント名を Workload Identity に設定する。
 

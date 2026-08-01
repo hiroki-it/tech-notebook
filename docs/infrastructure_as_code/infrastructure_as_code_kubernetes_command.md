@@ -123,9 +123,9 @@ ServerSideApply と ClientSideApply の間で、マニフェストの最終的�
 
 ClientSideApply では、クライアント側（例：kubectl、ArgoCD の application-controller など）が kube-apiserver からマニフェストの実体を取得し、クライアントを変更してから kube-apiserver に送信する。
 
-|      | ServerSideApply | ClientSideApply                               |
-| ---- | --------------- | --------------------------------------------- |
-| 主体 | kube-apiserver  | kubectl、ArgoCD のapplication-controller など |
+|      | ServerSideApply | ClientSideApply                                |
+| ---- | --------------- | ---------------------------------------------- |
+| 主体 | kube-apiserver  | kubectl、ArgoCD の application-controller など |
 
 特に、ServerSideApply では kube-apiserver がよしなにマニフェストの最終状態を決めることもある。そのため、マニフェストファイルと実体が異なる場合もある。
 

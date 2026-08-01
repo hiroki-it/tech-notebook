@@ -316,7 +316,7 @@ Service の名前解決を介さずに、特定の Pod のインスタンスに�
 
 <br>
 
-### Pod のIP アドレスを固定する
+### Pod の IP アドレスを固定する
 
 Kubernetes では、Pod の IP アドレスを固定できない。
 

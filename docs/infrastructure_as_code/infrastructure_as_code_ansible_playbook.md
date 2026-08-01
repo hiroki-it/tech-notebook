@@ -656,7 +656,7 @@ SELinux を無効化する。
 **＊実装例＊**
 
 ```yaml
-# rsyslog_conf_file にstat を格納する
+# rsyslog_conf_file に stat を格納する
 - name: Check if /etc/rsyslog.conf exists
   ansible.builtin.stat:
     path: /etc/rsyslog.conf
@@ -796,7 +796,7 @@ SELinux を無効化する。
 **＊実装例＊**
 
 ```yaml
-# systemd でnginx のプロセスを管理します。
+# systemd で nginx のプロセスを管理します。
 - name: Start nginx systemd
   ansible.builtin.systemd:
     name: Start nginx
@@ -808,7 +808,7 @@ SELinux を無効化する。
 **＊実装例＊**
 
 ```yaml
-# systemd でcloudwatch エージェントのプロセスを管理します。
+# systemd で cloudwatch エージェントのプロセスを管理します。
 - name: Start cloudwatch-agent systemd
   ansible.builtin.systemd:
     name: amazon-cloudwatch-agent

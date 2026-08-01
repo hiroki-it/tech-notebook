@@ -185,7 +185,7 @@ spec:
       # NodePort Service が待ち受けるポート番号
       port: 443
       protocol: TCP
-      # NodePort Service の宛先ポート番号 (Istio Ingress Gateway のPod が待ち受けるポート番号)
+      # NodePort Service の宛先ポート番号 (Istio Ingress Gateway の Pod が待ち受けるポート番号)
       targetPort: 443
     - name: http-bar
       nodePort: 30002
@@ -306,7 +306,7 @@ Istiod コントロールプレーンは、ServiceEntry の設定値を Envoy �
 
 <br>
 
-### 送信元 Pod とIstio Egress Gateway 間の通信
+### 送信元 Pod と Istio Egress Gateway 間の通信
 
 #### ▼ 相互 TLS 認証
 
@@ -575,9 +575,9 @@ httpbin-app-service.services.svc.cluster.local                                  
 
 #### ▼ VirtualService 数
 
-|                     | API ゲートウェイを Istio で管理する場合                                                                       | API ゲートウェイを Istio で管理しない場合                                                                                                            |
-| ------------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| VirtualService の数 | 外部からのインバウンド通信を API ゲートウェイにルーティングする VirtualService を1 つだけ作成しておけばよい。 | API ゲートウェイからすべてのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできる VirtualService を定義する必要がある。 |
+|                     | API ゲートウェイを Istio で管理する場合                                                                        | API ゲートウェイを Istio で管理しない場合                                                                                                            |
+| ------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| VirtualService の数 | 外部からのインバウンド通信を API ゲートウェイにルーティングする VirtualService を 1 つだけ作成しておけばよい。 | API ゲートウェイからすべてのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできる VirtualService を定義する必要がある。 |
 
 > - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
 
@@ -1105,9 +1105,9 @@ Pod 間通信時、相互 TLS 認証を実施する。
 
 <br>
 
-## 08. RequestAuthentication とAuthorizationPolicy
+## 08. RequestAuthentication と AuthorizationPolicy
 
-### RequestAuthentication とAuthorizationPolicy とは
+### RequestAuthentication と AuthorizationPolicy とは
 
 Pod 間通信時、JWT による認証と認可を実施する。
 
@@ -1152,7 +1152,7 @@ spec:
         - name: Authorization
           prefix: "Bearer "
 ---
-# AuthorizationPolicy でRequestAuthentication を強制する
+# AuthorizationPolicy で RequestAuthentication を強制する
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
@@ -1301,16 +1301,16 @@ data:
 
 これらの環境変数は、いずれ istio-sidecar-injector (ConfigMap) や istio-mesh-cm (ConfigMap) などに移行される可能性がある。
 
-| 環境変数                                         | 対応する設定 (実験段階)                                                                   |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------- |
-| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors` を有効化してもよい。                   |
-| `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、istio-proxy の代わりに Kubernetes のInit Container |
-| `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                                                           |
-| `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                                                           |
-| `PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES` |                                                                                           |
-| `ENABLE_ENHANCED_JWTトークンLE_MERGE`            |                                                                                           |
-| `PILOT_UNIFIED_SIDECAR_SCOPE`                    |                                                                                           |
-| `VERIFY_CERT_AT_CLIENT`                          | どこにこの変数あるんやろか...                                                             |
+| 環境変数                                         | 対応する設定 (実験段階)                                                                    |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors` を有効化してもよい。                    |
+| `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、istio-proxy の代わりに Kubernetes の Init Container |
+| `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                                                            |
+| `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                                                            |
+| `PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES` |                                                                                            |
+| `ENABLE_ENHANCED_JWTトークンLE_MERGE`            |                                                                                            |
+| `PILOT_UNIFIED_SIDECAR_SCOPE`                    |                                                                                            |
+| `VERIFY_CERT_AT_CLIENT`                          | どこにこの変数あるんやろか...                                                              |
 
 > - https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go
 

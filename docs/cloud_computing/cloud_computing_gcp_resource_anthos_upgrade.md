@@ -391,7 +391,7 @@ $ kubectl get namespace -L istio.io/rev
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_gateways
 > - https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane
 
-#### ▼ Istio Ingress Gateway のistio-proxy をアップグレード
+#### ▼ Istio Ingress Gateway の istio-proxy をアップグレード
 
 `(11)`
 
@@ -628,7 +628,7 @@ $ kubectl get pod -A -o wide
 
 <br>
 
-## 03. Node のOS のアップグレード (ベアメタル環境の場合)
+## 03. Node の OS のアップグレード (ベアメタル環境の場合)
 
 ベアメタル環境の場合、Google Cloud は Node の OS のバージョンを管理してくれず、Google Cloud 外でアップグレードする必要がある。
 

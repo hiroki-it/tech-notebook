@@ -112,14 +112,14 @@ polaris の実行時に、重要度が `danger` 以上のルールを検証す�
 
 ```yaml
 checks:
-  # Pod のcpu の設定し忘れ
+  # Pod の cpu の設定し忘れ
   cpuLimitsMissing: danger
   cpuRequestsMissing: danger
 
-  # Deployment のreplicas が1 個である
+  # Deployment の replicas が 1 個である
   deploymentMissingReplicas: danger
 
-  # Pod のLivenessProbe ヘルスチェックの設定し忘れ
+  # Pod の LivenessProbe ヘルスチェックの設定し忘れ
   livenessProbeMissing: danger
 
   # Pod のメモリの設定し忘れ
@@ -130,10 +130,10 @@ checks:
   # PodDisruptionBudget で指定したラベル値を Deployment が持たない場合でも、Missing とみなす‍♂️
   missingPodDisruptionBudget: danger
 
-  # Pod のpriorityClass の設定し忘れ
+  # Pod の priorityClass の設定し忘れ
   priorityClassNotSet: danger
 
-  # Pod のReadinessProbe ヘルスチェックの設定し忘れ
+  # Pod の ReadinessProbe ヘルスチェックの設定し忘れ
   readinessProbeMissing: danger
 ```
 
@@ -161,7 +161,7 @@ checks:
   daemonSetPriorityClassMissing: danger
 
 customChecks:
-  # DaemonSet のpriorityClass の設定し忘れを検証する
+  # DaemonSet の priorityClass の設定し忘れを検証する
   # ビルトインの priorityClassNotSet ルールでは Workload 全体を検証してしまうため、DaemonSet 限定のルールを定義した
   daemonSetPriorityClassMissing:
     successMessage: In DaemonSet, priority class is set
@@ -206,7 +206,7 @@ checks:
   deploymentAffinityMissing: danger
 
 customChecks:
-  # Deployment のaffinity の設定し忘れを検証する
+  # Deployment の affinity の設定し忘れを検証する
   deploymentAffinityMissing:
     successMessage: In Deployment, affinity is set
     failureMessage: In Deployment, affinity should be set
@@ -250,7 +250,7 @@ checks:
   deploymentNodeSelectorMissing: danger
 
 customChecks:
-  # Deployment のnodeSelector の設定し忘れを検証する
+  # Deployment の nodeSelector の設定し忘れを検証する
   deploymentNodeSelectorMissing:
     successMessage: In Deployment, nodeSelector is set
     failureMessage: In Deployment, nodeSelector should be set

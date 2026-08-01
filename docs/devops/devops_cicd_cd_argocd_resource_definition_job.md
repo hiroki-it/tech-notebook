@@ -146,7 +146,7 @@ metadata:
   name: foo-job
   annotations:
     argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: 0 # 優先度 0 (デフォルトで 0になる)
+    argocd.argoproj.io/sync-wave: 0 # 優先度 0 (デフォルトで 0 になる)
 ```
 
 ```yaml
