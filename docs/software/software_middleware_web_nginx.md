@@ -543,7 +543,7 @@ server {
 
 #### ▼ 認証
 
-Keycloak と連携し、Nginx ではなく Keycloak 側で認証処理を実施する。
+Keycloak と連携し、Nginx ではなく Keycloak 側で認証する。
 
 Nginx (Keycloak クライアント) は、Keycloak の認可エンドポイントにアクセストークン署名検証リクエストを送信する。
 

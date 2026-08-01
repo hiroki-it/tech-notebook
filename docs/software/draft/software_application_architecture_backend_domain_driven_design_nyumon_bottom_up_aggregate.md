@@ -276,7 +276,7 @@ class EFUserRepository implements IUserRepository {
 }
 ```
 
-これの対処方法として、データモデル（DTO ともいう）を使用するのがよい。
+その対処方法として、データモデル（DTO ともいう）を使用するのがよい。
 
 まずは、データモデルインターフェースを定義する。
 

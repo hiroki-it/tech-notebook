@@ -434,7 +434,7 @@ spec:
 
 ## 02. Helm との連携
 
-repo-server は Helm を実行できるため、これのサイドカーは不要である。
+repo-server は Helm を実行できるため、Helm のサイドカーは不要である。
 
 デフォルトで ArgoCD にインストールされている Helm の推奨バージョン以外を使用したい場合、Kustomize を InitContainer でインストールする必要がある。
 
@@ -1020,7 +1020,7 @@ spec:
 
 ### Kustomize の実行方法
 
-repo-server は Kustomize を実行できるため、これのサイドカーは不要である。
+repo-server は Kustomize を実行できるため、Kustomize のサイドカーは不要である。
 
 ### セットアップ
 
@@ -1127,7 +1127,7 @@ spec:
 
 ### KSOPS の実行方法
 
-repo-server は KSOPS を実行できる (`kustomize` コマンドで `--enable-alpha-plugins` オプションを有効化するだけのため) ため、これのサイドカーは不要である。
+repo-server は KSOPS を実行できる (`kustomize` コマンドで `--enable-alpha-plugins` オプションを有効化するだけのため) ため、KSOPS のサイドカーは不要である。
 
 <br>
 

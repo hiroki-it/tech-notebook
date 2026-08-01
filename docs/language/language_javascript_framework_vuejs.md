@@ -61,7 +61,7 @@ Vue は、アプリケーションの設計に MVVM アーキテクチャを使�
 
 `(4)`
 
-: これの元、双方向データバインディングが実現される仕組みとして、View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。
+: この仕組みのもと、双方向データバインディングが実現される。View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。
 
 ![Vueコンポーネントツリーにおけるコンポーネント間の通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueにおけるMVVMアーキテクチャ.png)
 
@@ -278,7 +278,7 @@ var vm = new Vue({
       updateCriteria(key, value) {
         /*
         ・コンポーネント (v-foo-component-1) と紐付く処理
-        ・changeイベントの発火と、これのイベントハンドラ関数に引数を渡す。
+        ・changeイベントの発火と、そのイベントハンドラ関数に引数を渡す。
         */
         this.$emit("change", {criteria: localCriteria});
       },

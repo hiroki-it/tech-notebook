@@ -612,7 +612,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 
 ### リスナーフィルター
 
-各種プロトコルの受信処理を実施する。
+各種プロトコルを受信する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/listener/listener
 
@@ -631,7 +631,7 @@ TCP プロトコルを処理し、後続の HTTP フィルターを管理する�
 
 ### HTTP フィルター
 
-HTTP リクエストの処理を実施する。
+HTTP リクエストを処理する。
 
 主要な HTTP フィルターとして、`http.router` や `http.grpc_web` がある。
 

@@ -461,7 +461,7 @@ FROM --platform=linux/amd64 python:latest-slim
 
 `docker buildx` コマンド時に、`Multi-platform build is not supported for the docker driver.` というエラーになることがある。
 
-これのために、マルチ CPU アーキテクチャをビルドする実行環境を構築する必要がある。
+このために、マルチ CPU アーキテクチャをビルドする実行環境を構築する必要がある。
 
 ```bash
 # ----------------------------

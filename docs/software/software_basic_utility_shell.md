@@ -132,7 +132,7 @@ Last login: Mon Jun 20 13:36:40 JST 2022 on pts/0
 
 > - https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
 
-補足として、もしシェルスクリプト内でこれを実行した場合は、これのファイル名を取得できる。
+補足として、もしシェルスクリプト内でこれを実行した場合は、そのファイル名を取得できる。
 
 ```bash
 #!/bin/sh

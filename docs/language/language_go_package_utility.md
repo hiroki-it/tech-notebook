@@ -700,7 +700,7 @@ func main() {
 
 通常、OpenTelemetry のミドルウェアを実行すると、アプリケーションの最初の関数 (主に `main()` 関数) で自動的にスパンを作成する。
 
-Tracer の `Start()` 関数を使用すると、これの子スパンを手動で作成でき、最初の関数の内部でコールされた別の関数の処理時間を計測できるようになる。
+Tracer の `Start()` 関数を使用すると、その子スパンを手動で作成でき、最初の関数の内部でコールされた別の関数の処理時間を計測できるようになる。
 
 ```go
 package main
@@ -1571,7 +1571,7 @@ func inject(ctx context.Context, propagators propagation.TextMapPropagator) cont
 
 #### ▼ NewClientHandler
 
-執筆時点 (2024/03/31) で ClientInterceptor 系関数は非推奨になっており、これの移行先である。
+執筆時点 (2024/03/31) で ClientInterceptor 系関数は非推奨になっており、その移行先である。
 
 ```go
 package main
@@ -1638,7 +1638,7 @@ func extract(ctx context.Context, propagators propagation.TextMapPropagator) con
 
 #### ▼ NewServerHandler
 
-執筆時点 (2024/03/31) で ServerInterceptor 系関数は非推奨になっており、これの移行先である。
+執筆時点 (2024/03/31) で ServerInterceptor 系関数は非推奨になっており、その移行先である。
 
 ```go
 package main

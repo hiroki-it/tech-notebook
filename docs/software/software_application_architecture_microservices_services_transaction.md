@@ -885,7 +885,7 @@ Try フェーズでは、ローカルトランザクション処理を開始す�
 
 Confirm フェーズでは、ローカルトランザクション処理をコミットする。
 
-Cancel フェーズでは、以前のフェーズで問題が合った場合、ロールバックを実施する。
+Cancel フェーズでは、以前のフェーズで問題があった場合、ロールバックする。
 
 > - https://www.ibm.com/blogs/think/jp-ja/microservices-applications-enabled-by-ibmcloud-managed-services/
 > - https://dev.to/yedf2/best-practice-for-tcc-distributed-transaction-in-go-402m

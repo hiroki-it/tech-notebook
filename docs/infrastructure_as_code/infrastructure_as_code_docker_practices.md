@@ -62,7 +62,7 @@ description: プラクティス集＠Dockerの知見を記録しています。
 
 ![container_pid_1_problem_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_2.png)
 
-すると、これの子プロセスも連鎖的に終了してくれる。
+すると、その子プロセスも連鎖的に終了してくれる。
 
 ![container_pid_1_problem_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_3.png)
 
@@ -72,7 +72,7 @@ description: プラクティス集＠Dockerの知見を記録しています。
 
 ![host_container_pid_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/host_container_pid_1.png)
 
-アプリやミドルウェアのプロセスは、いずれかの親プロセスを終了しても、これの子プロセスも連鎖的に終了できない。
+アプリやミドルウェアのプロセスは、いずれかの親プロセスを終了しても、その子プロセスも連鎖的に終了できない。
 
 そのため、子プロセスが残骸として残ってしまう。
 

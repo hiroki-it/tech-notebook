@@ -184,7 +184,7 @@ data:
 
 #### ▼ globalProjects とは
 
-グローバルスコープを持つ親 AppProject と、これの設定値を継承させる子 AppProject を指定する。
+グローバルスコープを持つ親 AppProject と、その設定値を継承させる子 AppProject を指定する。
 
 `labelSelector` キーで、子 Project の条件を設定する。
 
