@@ -89,8 +89,6 @@ const user = {
 };
 ```
 
-
-
 <br>
 
 ## 03. 不要な DB レコードやカラムを取得する
@@ -435,13 +433,10 @@ const users = await prisma.user.findMany({
   },
 });
 
-const userCountByTeam = users.reduce<Record<string, number>>(
-  (counts, user) => {
-    counts[user.teamId] = (counts[user.teamId] ?? 0) + 1;
-    return counts;
-  },
-  {},
-);
+const userCountByTeam = users.reduce<Record<string, number>>((counts, user) => {
+  counts[user.teamId] = (counts[user.teamId] ?? 0) + 1;
+  return counts;
+}, {});
 ```
 
 #### ▼ 解決方法
@@ -488,10 +483,7 @@ const orders = await prisma.order.findMany({
   },
 });
 
-const totalAmount = orders.reduce(
-  (total, order) => total + order.amount,
-  0,
-);
+const totalAmount = orders.reduce((total, order) => total + order.amount, 0);
 ```
 
 #### ▼ 解決方法
