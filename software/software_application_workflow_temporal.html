@@ -33895,7 +33895,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="temporal_2">Temporal サーバー<a class="headerlink" href="#temporal_2" title="Permanent link">&para;</a></h3>
-<p>Temporal サーバーは、内臓するメッセージ中継システムを操作してワークフローの現在のステートを管理し、またステートの履歴を DB に永続化する。</p>
+<p>Temporal サーバーは、内蔵するメッセージ中継システムを操作してワークフローの現在のステートを管理し、ステートの履歴を DB に永続化する。</p>
 <blockquote>
 <ul>
 <li><a href="https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d">https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d</a></li>
@@ -34005,7 +34005,7 @@
 <li>コンテナとして動かせるため、アプリとインフラを責務分離できる。</li>
 <li>ワークフローとマイクロサービスを疎結合にできる</li>
 </ul>
-<p>一方で、マネージドサービスとしては AWS Step Functions があり、次の点でデメリットがある。</p>
+<p>一方で、マネージドサービスには AWS Step Functions があり、次の点でデメリットがある。</p>
 <ul>
 <li>AWS SDK を使用しない限り、プログラミング言語でマネージドサービスを定義できないため、複雑なビジネスロジックを実装しにくい。</li>
 <li>アプリとインフラの責務分離できていないものが多く、アプリチームとインフラチームが分業しにくくなる原因になる。</li>
@@ -34016,7 +34016,7 @@
 <li>時間のかかる処理（例：<code>for</code> 文、HTTP リクエスト、ループ、ポーリング、DB 操作、ファイル操作、計算、暗号化、圧縮解凍など）ができない</li>
 </ul>
 <p>マイクロサービスアーキテクチャのトランザクション管理の文脈でワークフローエンジンを使用したい場合、ワークフローエンジン自体がマイクロサービスである。</p>
-<p>そのため、これを複雑なビジネスロジックを実装でき、また分業できることが望ましい。</p>
+<p>そのため、複雑なビジネスロジックを実装でき、分業できることが望ましい。</p>
 <p>なお、Temporal に類似した OSS として、他に Cadence がある。</p>
 <blockquote>
 <ul>
@@ -34495,7 +34495,7 @@ sequenceDiagram
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:13 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:54:32 JST">2026-08-01</span>
   </span>
 
     

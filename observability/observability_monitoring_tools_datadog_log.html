@@ -30633,12 +30633,12 @@
   <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
       
-        パーサーに関して
+        パーサーについて
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="パーサーに関して">
+    <nav class="md-nav" aria-label="パーサーについて">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -35275,12 +35275,12 @@
   <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
       
-        パーサーに関して
+        パーサーについて
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="パーサーに関して">
+    <nav class="md-nav" aria-label="パーサーについて">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -36306,8 +36306,8 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>以下のような Grok パーサールールを定義する。</p>
-<p><code>date</code> マッチャーを使用して、また <code>date</code> 属性をエクストラクト先とする。</p>
-<p><code>word</code> マッチャーを使用して、また <code>log_status</code> カスタム属性をエクストラクト先とする。</p>
+<p><code>date</code> マッチャーを使用し、<code>date</code> 属性をエクストラクト先とする。</p>
+<p><code>word</code> マッチャーを使用し、<code>log_status</code> カスタム属性をエクストラクト先とする。</p>
 <p>任意のルール名を設定できる。</p>
 <p><code>date</code> マッチャーのタイムスタンプ形式の指定は以下を参考にせよ。</p>
 <blockquote>
@@ -36371,7 +36371,7 @@ CRITICAL<span class="w"> </span>@http.status_code:<span class="o">[</span><span 
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p>以下のような Grok パーサールールを定義する。</p>
-<p><code>data</code> マッチャーを使用して、また <code>wafacl_name</code> カスタム属性をエクストラクト先とする。</p>
+<p><code>data</code> マッチャーを使用し、<code>wafacl_name</code> カスタム属性をエクストラクト先とする。</p>
 <p>抽出する必要のない文字列は、ワイルドカード (<code>.*</code>) を指定する。</p>
 <div class="highlight"><pre><span></span><code>Rule .*\/webacl\/%{data:wafacl_name}\/.*
 </code></pre></div>
@@ -36703,7 +36703,7 @@ error.format %{date(&quot;yyyy/MM/dd HH:mm:ss&quot;):date_access} \[%{word:level
 <p>そのため、リマッパーを使用するときは明示的にデータ型を設定する。</p>
 <p><img alt="datadog_log-pipeline_data-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_log-pipeline_data-type.png" /></p>
 <p><br></p>
-<h3 id="_35">パーサーに関して<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<h3 id="_35">パーサーについて<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
 <h4 id="grok_2">▼ Grok パーサーのルールにコメント<a class="headerlink" href="#grok_2" title="Permanent link">&para;</a></h4>
 <p>ベストプラクティス通り、Grok パーサーではコメントでログサンプルを示すようにする。</p>
 <p>ログの種類が 1 つしかない場合は任意であるが、ログの種類が複数あり、それぞれを解析するルールも複数ある場合は必ずコメントする。</p>
@@ -36783,7 +36783,7 @@ autoFilledRule3<span class="w"> </span>...
 <h4 id="_47">▼ オートコンプリート<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
 <p>入力欄右のアイコンで切り替える。</p>
 <p>検索条件として属性名と値を補完入力できる。</p>
-<p>オートコンプリートをの使用時は、小文字で入力した属性名の頭文字が画面上で大文字に変換される。</p>
+<p>オートコンプリートの使用時は、小文字で入力した属性名の頭文字が画面上で大文字に変換される。</p>
 <p><strong>＊例＊</strong></p>
 <p>『<code>service:foo</code>』をオートコンプリートで入力する。</p>
 <p><img alt="log-query_auto-complete" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_auto-complete.png" /></p>
@@ -36852,7 +36852,7 @@ autoFilledRule3<span class="w"> </span>...
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:13 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
   </span>
 
     

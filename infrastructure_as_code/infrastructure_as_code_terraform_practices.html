@@ -36402,7 +36402,7 @@
 <h3 id="resource-data_1"><code>resource</code> ブロック、<code>data</code> ブロック<a class="headerlink" href="#resource-data_1" title="Permanent link">&para;</a></h3>
 <h4 id="_26">▼ 設定の並び順、行間<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>最初に <code>count</code> 引数や <code>for_each</code> 引数を設定し改行する。</p>
-<p>その後、各リソースの設定を行間を空けずに記述する (順番のルールはなし) 。</p>
+<p>その後、各リソースの設定を、行間を空けずに記述する (順番のルールはなし) 。</p>
 <p>最後に共通の設定として、<code>tags</code>、<code>depends_on</code>、<code>lifecycle</code> の順で配置する。</p>
 <p>ただし実際、これらのすべての設定が必要なリソースはない。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -36750,7 +36750,7 @@ crash.*.log
 </ul>
 </blockquote>
 <h4 id="_36">▼ ユニットテスト<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
-<p>テスト環境に対して <code>terraform apply</code> コマンドを実行することにより、機能追加/変更を含むブロックが単体でまさしく動作するか否かを検証する。</p>
+<p>テスト環境に対して <code>terraform apply</code> コマンドを実行することにより、機能追加/変更を含むブロックが単体で正しく動作するか否かを検証する。</p>
 <p>代わりに、外部のテストツール (例：Terratest) を使用してもよい。</p>
 <p>このとき、リソース名をランダム値にしておくと、他の開発者とリソース名が重複せずによい。</p>
 <p>また、確認後にリソースを <code>terraform apply -destroy</code> コマンドで削除する。</p>
@@ -36792,8 +36792,8 @@ crash.*.log
 <p><br></p>
 <h3 id="_40">各ブロックのブラックボックステスト<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
 <h4 id="_41">▼ 結合テスト<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
-<p>ステージング環境に対して <code>terraform apply</code> コマンドを実行することにより、機能追加/変更を含む複数のブロックが正しく連携するか否かを検証する</p>
-<p>例えば、</p>
+<p>ステージング環境で <code>terraform apply</code> コマンドを実行することで、機能追加/変更を含む複数のブロックが正しく連携するか否かを検証する。</p>
+<p>例えば、次のような構成を検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">ALB</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇️⬆️</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇️⬆️</span>
@@ -36893,7 +36893,7 @@ crash.*.log
 </dd>
 </dl>
 <p>ダウンタイムが発生する DB インスタンスの設定項目は以下のリンクを参考にせよ。</p>
-<p>Amazon RDS の項目として書かれており、Aurora ではないが、おおよそ同じなため参考にしている。</p>
+<p>Amazon RDS の項目として書かれており、Aurora ではないが、おおよそ同じであるため参考にしている。</p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings</a></li>
@@ -36938,7 +36938,7 @@ crash.*.log
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:13 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:54:32 JST">2026-08-01</span>
   </span>
 
     

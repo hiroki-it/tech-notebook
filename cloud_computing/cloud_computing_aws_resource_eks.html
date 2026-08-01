@@ -36763,7 +36763,7 @@
 <p><br></p>
 <h3 id="aws-iam-kubernetes-cluster">プリンシパル AWS IAM ロールとアクセスエントリーを経由した Kubernetes Cluster の操作<a class="headerlink" href="#aws-iam-kubernetes-cluster" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 概要<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
-<p>プリンシパル AWS IAM ロールとアクセスエントリーを使用することにより、Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープを制御する。</p>
+<p>プリンシパル AWS IAM ロールとアクセスエントリーを使用することで、Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープを制御する。</p>
 <p>プリンシパル AWS IAM ロールとアクセスエントリーを使用する場合、従来の aws-auth (ConfigMap) と比較して、より簡単にセットアップできる。</p>
 <p>プリンシパル AWS IAM ロールに紐づく Pod が Amazon EKS へ接続するとき、アクセスエントリーがこれを中継する。</p>
 <p>Kubernetes リソースの認可スコープを IRSA で制御し、この仕組みのなかで、アクセスエントリーはアクセスエントリーポリシーを AWS IAM ロールに動的に紐づける。</p>
@@ -36998,7 +36998,7 @@
 <p><img alt="eks_oidc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png" /></p>
 <p>特に Kubernetes リソースの認可スコープを制御する仕組みのこと。</p>
 <p>Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープは、RBAC で制御する。</p>
-<p>Amazon EKS を SSO の ID プロバイダーとして使用することにより、IAM の認証フェーズを Amazon EKS に委譲する。</p>
+<p>Amazon EKS を SSO の ID プロバイダーとして使用することで、IAM の認証フェーズを Amazon EKS に委譲する。</p>
 <h4 id="_14">▼ セットアップ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>ここでは、SSO の種類で OIDC を選ぶとする。</p>
 <dl>
@@ -37323,7 +37323,7 @@
 <h4 id="amazon-vpc">▼ Amazon VPC 外のコントロールプレーンへのリクエスト<a class="headerlink" href="#amazon-vpc" title="Permanent link">&para;</a></h4>
 <p>Amazon EKS Cluster を作成すると、ENI も作成する。</p>
 <p>これにより、データプレーンが Amazon VPC 外のコントロールプレーンと通信できるようになる。</p>
-<p>データプレーンがコントロールプレーンをリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドな Interface 型 Amazon VPC エンドポイントまたは AWS NAT Gateway が必要になる。</p>
+<p>データプレーンがコントロールプレーンとリクエストを送受信する場合、コントロールプレーンのクラスターエンドポイントの設定 (パブリック、プライベート) によって、マネージドな Interface 型 Amazon VPC エンドポイントまたは AWS NAT Gateway が必要になる。</p>
 <table>
 <thead>
 <tr>
@@ -37681,7 +37681,7 @@
 </ul>
 </blockquote>
 <h4 id="amazon-eks-amazon-linux">▼ Amazon EKS 最適化 Amazon Linux<a class="headerlink" href="#amazon-eks-amazon-linux" title="Permanent link">&para;</a></h4>
-<p>Amazon EKS のための標準的な Amazon EC2 を作成できる。もっとも推奨される方式である。</p>
+<p>Amazon EKS のための標準的な Amazon EC2 を作成できる。推奨方式である。</p>
 <p><code>aws ssm get-parameter</code> コマンドを使用すると、公式が提供するマシンコンテナイメージの ID を確認できる。</p>
 <p>注意点として、AWS AMI のマイナーバージョンは固定できるが、パッチバージョンは固定できない。</p>
 <p>そのため、パッチバージョンがアップグレードされるたびに、AWS AMI の ID は変わる。</p>
@@ -38191,7 +38191,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <p>Fargate ワーカーNode に Amazon ECR や CloudWatch への認可スコープを持つポッド実行ロールを付与しておく。</p>
 <p>これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがAmazon ECRからコンテナイメージをプルできる様になる。</p>
 <p>一方で、Pod内のコンテナには認可スコープが付与されない。</p>
-<p>そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) に関しては、ServiceAccountとAWS IAMロールの紐付けが必要である。</p>
+<p>そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) には、ServiceAccountとAWS IAMロールの紐付けが必要である。</p>
 </dd>
 </dl>
 <blockquote>
@@ -38407,7 +38407,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:13 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:54:32 JST">2026-08-01</span>
   </span>
 
     

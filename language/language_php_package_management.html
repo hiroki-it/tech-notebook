@@ -34780,7 +34780,7 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 <p><br></p>
 <h3 id="composerlock"><code>composer.lock</code> ファイル<a class="headerlink" href="#composerlock" title="Permanent link">&para;</a></h3>
 <p>プロジェクトで <code>composer install</code> コマンドが実行されたとき、<code>composer.json</code> ファイルでのバージョンの指定方法が『固定』以外であると、コマンドの実行タイミングによって、インストールされるバージョンが変わってしまう。</p>
-<p>インストーされるバージョンをチーム内で固定するため、プロジェクトが正しく動作するバージョンのセットを記載した <code>composer.lock</code> ファイルを作成しておく必要がある。</p>
+<p>インストールされるバージョンをチーム内で固定するため、プロジェクトが正しく動作するバージョンのセットを記載した <code>composer.lock</code> ファイルを作成しておく必要がある。</p>
 <p>これは、<code>composer update</code> の実行時に作成される。</p>
 <p><code>composer install</code> の実行タイミングに限らず、共通のバージョンのセットをインストールできる。</p>
 <p>もし、アプリケーションに実際にインストールされている各パッケージのバージョンを知りたい場合は、<code>composer.json</code> ファイルではなく、<code>composer.lock</code> ファイルを確認すること。</p>
@@ -34831,7 +34831,7 @@ $<span class="w"> </span>php<span class="w"> </span>-r<span class="w"> </span><s
 <p><br></p>
 <h3 id="create-project">create-project<a class="headerlink" href="#create-project" title="Permanent link">&para;</a></h3>
 <p>パッケージがすでに組み込まれたプロジェクトを作成する。</p>
-<p>プロジェクトを <code>git clone</code> コマンドを実行することにより、プロジェクト内で <code>composer install</code> コマンドを実行することと同じである。</p>
+<p>プロジェクトで <code>git clone</code> コマンドを実行することは、プロジェクト内で <code>composer install</code> コマンドを実行することと同じである。</p>
 <p>新しいディレクトリを作成しつつ、プロジェクトのファイルを展開もできるが、カレントディレクトリ配下にそのまま展開したほうが便利である。</p>
 <p>補足として、ファイルが 1 つでもあるディレクトリにはプロジェクトのファイルを展開できないため、一時的に削除しておく。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># カレントディレクトリ配下にプロジェクトを作成する。</span>
@@ -34998,7 +34998,7 @@ $<span class="w"> </span>composer<span class="w"> </span>update
 <p><br></p>
 <h3 id="_7">バージョン間の互換性を確認<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>破壊的変更のためにバージョン間で互換性が全くない。旧バージョンと新バージョンで使用方法やオプションが変わる場合もある。</p>
-<p>一方で、互換性があるものの、大きな変更がなされている可能性がある。</p>
+<p>一方で、互換性はあるものの、大きな変更がなされている可能性がある。</p>
 <p><br></p>
 <h3 id="_8">追加、廃止、非推奨を確認<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>バージョンアップにより、新機能が追加されている可能性がある。</p>
@@ -35047,7 +35047,7 @@ $<span class="w"> </span>composer<span class="w"> </span>update
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
   </span>
 
     

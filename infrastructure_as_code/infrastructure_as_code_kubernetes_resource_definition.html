@@ -44694,7 +44694,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h2 id="endpointslice">EndpointSlice<a class="headerlink" href="#endpointslice" title="Permanent link">&para;</a></h2>
 <h3 id="specendpoints">.spec.endpoints<a class="headerlink" href="#specendpoints" title="Permanent link">&para;</a></h3>
 <h4 id="endpoints">▼ endpoints とは<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h4>
-<p>Service でルーティング先の Pod に関して、『現在の』 宛先情報を設定する。</p>
+<p>Service でルーティング先の Pod に、『現在の』 宛先情報を設定する。</p>
 <p>Kubernetes が自動的に更新するため、ユーザーが管理する必要はない。</p>
 <h4 id="addresses">▼ addresses<a class="headerlink" href="#addresses" title="Permanent link">&para;</a></h4>
 <p>Pod の現在の IP アドレスを設定する。</p>
@@ -46640,7 +46640,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h4 id="livenessprobe">▼ livenessProbe とは<a class="headerlink" href="#livenessprobe" title="Permanent link">&para;</a></h4>
 <p>kubelet がヘルスチェックを実行することで、コンテナが正常に動作しているか確認する。</p>
 <p>注意点として、LivenessProbe ヘルスチェックの間隔が短すぎると、kubelet に必要以上の負荷がかかる。</p>
-<p><code>terminationGracePeriodSeconds</code> に関しては、<code>.spec.terminationGracePeriodSeconds</code> キーで Pod 単位での待機時間を設定できる。</p>
+<p><code>terminationGracePeriodSeconds</code> は、<code>.spec.terminationGracePeriodSeconds</code> キーで Pod 単位の待機時間を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46900,7 +46900,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">startupProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpGet</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">          </span><span class="c1"># SpringBoot 製 Java アプリケーションのの startup エンドポイント</span>
+<span class="w">          </span><span class="c1"># SpringBoot 製 Java アプリケーションの startup エンドポイント</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/actuator/startup</span>
 <span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
@@ -46920,7 +46920,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <h3 id="speccontainersreadinessprobe">.spec.containers[*].readinessProbe<a class="headerlink" href="#speccontainersreadinessprobe" title="Permanent link">&para;</a></h3>
 <h4 id="readinessprobe">▼ readinessProbe とは<a class="headerlink" href="#readinessprobe" title="Permanent link">&para;</a></h4>
 <p>kubelet がヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。</p>
-<p><code>terminationGracePeriodSeconds</code> に関しては、<code>.spec.terminationGracePeriodSeconds</code> キーで Pod 単位での待機時間を設定できる。</p>
+<p><code>terminationGracePeriodSeconds</code> は、<code>.spec.terminationGracePeriodSeconds</code> キーで Pod 単位の待機時間を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47194,7 +47194,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p><br></p>
 <h3 id="speccontainerssecuritycontext">.spec.containers[*].securityContext<a class="headerlink" href="#speccontainerssecuritycontext" title="Permanent link">&para;</a></h3>
 <h4 id="securitycontext">▼ securityContext とは<a class="headerlink" href="#securitycontext" title="Permanent link">&para;</a></h4>
-<p>Pod 内の特定のコンテナに対して、認可スコープを設定する。</p>
+<p>Pod 内の特定のコンテナに認可スコープを設定する。</p>
 <p>オプションは、<code>.spec.securityContext</code> キーと同じである。</p>
 <blockquote>
 <ul>
@@ -47563,7 +47563,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p><br></p>
 <h3 id="specsecuritycontext">.spec.securityContext<a class="headerlink" href="#specsecuritycontext" title="Permanent link">&para;</a></h3>
 <h4 id="securitycontext_1">▼ securityContext とは<a class="headerlink" href="#securitycontext_1" title="Permanent link">&para;</a></h4>
-<p>Pod 内のすべてのコンテナに対して、認可スコープを設定する。</p>
+<p>Pod 内のすべてのコンテナに認可スコープを設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc">https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc</a></li>
@@ -48406,7 +48406,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="subjectsname">subjects.name<a class="headerlink" href="#subjectsname" title="Permanent link">&para;</a></h3>
 <h4 id="subjectsname_1">▼ subjects.name とは<a class="headerlink" href="#subjectsname_1" title="Permanent link">&para;</a></h4>
 <p>Role の紐付け先の Account の名前を設定する。</p>
-<p>ServiceAccount 名に関しては、ユーザー名でもよい。</p>
+<p>ServiceAccount 名は、ユーザー名でもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">io.k8s.api.rbac.v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RoleBinding</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -49405,7 +49405,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:52 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
   </span>
 
     

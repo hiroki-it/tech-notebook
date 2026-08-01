@@ -34748,7 +34748,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <h4 id="istio-proxy_1">▼ istio-proxy とは<a class="headerlink" href="#istio-proxy_1" title="Permanent link">&para;</a></h4>
 <p><img alt="istio_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-proxy.png" /></p>
 <p>リバースプロキシの能力を持つサイドカーコンテナである。</p>
-<p>Dockerfile としては、Envoy のバイナリファイルをインストールした後に pilot-agent を実行している。</p>
+<p>Dockerfile では、Envoy のバイナリファイルをインストールした後に pilot-agent を実行している。</p>
 <p>そのため、pilot-agent、Envoy が稼働している。</p>
 <div class="highlight"><pre><span></span><code>...
 
@@ -34881,7 +34881,7 @@ num<span class="w">  </span>target<span class="w">     </span>prot<span class="w
 <h4 id="istio-cni">▼ istio-cni とは<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h4>
 <p>各 Node 上で、istio-cni は <code>istio-cni-node</code> という名前の DaemonSet として稼働する。</p>
 <p>istio-cni は、CNI プラグインのバイナリと設定を Node 上のファイルシステムに配置する。</p>
-<p>Kubernetes の Pod 作成時に、CNI の仕組みを介して Pod のネットワーク名前空間に対して iptables 設定する。</p>
+<p>Kubernetes の Pod 作成時に、CNI の仕組みを介して Pod のネットワーク名前空間に iptables を設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration">https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration</a></li>
@@ -35280,7 +35280,7 @@ istio_request_messages_total<span class="o">{</span>...<span class="o">}</span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:13 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
   </span>
 
     

@@ -37437,10 +37437,10 @@
 <tbody>
 <tr>
 <td>要件例</td>
-<td>アプリ系 Node グループはユーザーに影響がある。 そのため、稼働時間を長くしたい。</td>
-<td>バッチ系 Node グループはユーザーに影響がある。 そのため、稼働時間を長くしたい。</td>
-<td>ロードバランサー系 Node グループは単一障害点となりユーザーに影響が大きい。 そのため、稼働時間はもっとも長くしたい。</td>
-<td>監視系 Node グループはユーザーに影響がない。 そのため、稼働時間を短くても問題ない。</td>
+<td>アプリ系 Node グループはユーザーに影響がある。そのため、稼働時間を長くしたい。</td>
+<td>バッチ系 Node グループはユーザーに影響がある。そのため、稼働時間を長くしたい。</td>
+<td>ロードバランサー系 Node グループは単一障害点となりユーザーに影響が大きい。そのため、稼働時間はもっとも長くしたい。</td>
+<td>監視系 Node グループはユーザーに影響がない。そのため、稼働時間が短くても問題ない。</td>
 </tr>
 <tr>
 <td></td>
@@ -37513,10 +37513,10 @@
 </tr>
 <tr>
 <td>ハードウェアリソースの要件例</td>
-<td>アプリは恒常的に CPU/メモリを必要とする。 また、Node グループ当たりの Pod の合計数が多い。</td>
-<td>バッチ系は瞬間的に CPU/メモリを必要とする。 また、Node グループ当たりの Pod の合計数が多い。</td>
-<td>L7 ロードバランサー系は恒常的に CPU/メモリを必要とする。 一方で、Node グループ当たりの Pod の合計数が少ない</td>
-<td>監視ツールは恒常的に CPU/メモリを必要とする。 一方で、Node グループ当たりの Pod の合計数が少ない。</td>
+<td>アプリは恒常的に CPU/メモリを必要とする。また、Node グループ当たりの Pod の合計数が多い。</td>
+<td>バッチ系は瞬間的に CPU/メモリを必要とする。また、Node グループ当たりの Pod の合計数が多い。</td>
+<td>L7 ロードバランサー系は恒常的に CPU/メモリを必要とする。一方で、Node グループ当たりの Pod の合計数が少ない</td>
+<td>監視ツールは恒常的に CPU/メモリを必要とする。一方で、Node グループ当たりの Pod の合計数が少ない。</td>
 </tr>
 <tr>
 <td></td>
@@ -38877,10 +38877,10 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <tbody>
 <tr>
 <td>Pod が全滅していないことを確認する。</td>
-<td>PodDisruptionBugdet の設定によって Workload (例：Deployment、DaemonSet、StatefulSet、Job など) で起動しているアプリケーションの Pod が全滅しないかを確認する。 PodDisruptionBugdet を適切に設定できていないと、例えば Web アプリケーションのコンテナがすべてダウンしてしまいリクエストを受け付けられなくなるといったケースがあるため、PodDisruptionBugdet の設定した内容に沿って Pod が保護されるかを確認する。</td>
+<td>PodDisruptionBugdet を設定することで、Workload (例：Deployment、DaemonSet、StatefulSet、Job など) で起動しているアプリケーションの Pod が全滅しないかを確認する。 PodDisruptionBugdet を適切に設定できていないと、例えば Web アプリケーションのコンテナがすべてダウンしてしまいリクエストを受け付けられなくなるといったケースがあるため、PodDisruptionBugdet の設定内容に沿って Pod が保護されるかを確認する。</td>
 </tr>
 <tr>
-<td>Pod がまさしく Node に分散されていることを確認する。</td>
+<td>Pod が正しく Node に分散されていることを確認する。</td>
 <td>NodeAffinity の設定に基づいて適切に Pod が Node に分散配置されるかや、NodeLabel や Taint の設定に基づいた Node が選定されているかなどを確認する。</td>
 </tr>
 <tr>
@@ -39237,7 +39237,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:52 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:54:32 JST">2026-08-01</span>
   </span>
 
     
