@@ -16,6 +16,7 @@ if (args.length === 0) {
 
 const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "textlint-quotes-"));
 const temporaryPathMap = new Map();
+const originalContentMap = new Map();
 
 const stripBlockQuoteMarks = (content) => {
   return content.replace(/^([ \t]{0,3})> ?/gm, "$1");
@@ -28,6 +29,7 @@ const materializeFile = (filePath) => {
   const content = fs.readFileSync(filePath, "utf8");
   fs.writeFileSync(outputPath, stripBlockQuoteMarks(content));
   temporaryPathMap.set(outputPath, filePath);
+  originalContentMap.set(outputPath, content);
   return outputPath;
 };
 
@@ -62,7 +64,7 @@ const textlintArgs = [
   "--config",
   ".textlintrc.local.json",
   "--rulesdir",
-  "scripts/textlint",
+  "scripts/textlint/rules",
   ...args.flatMap(materializeArg),
 ];
 
@@ -71,6 +73,22 @@ const result = spawnSync(textlintBin, textlintArgs, {
   encoding: "utf8",
   shell: false,
 });
+
+if (args.includes("--fix") && (result.status ?? 1) === 0) {
+  for (const [temporaryPath, originalPath] of temporaryPathMap.entries()) {
+    const fixedLines = fs.readFileSync(temporaryPath, "utf8").split("\n");
+    const originalLines = originalContentMap.get(temporaryPath).split("\n");
+    const restored = fixedLines.map((line, index) => {
+      const match = originalLines[index]?.match(/^([ \t]{0,3})> ?/);
+      if (!match) {
+        return line;
+      }
+      const content = line.slice(match[1].length);
+      return content ? `${match[1]}> ${content}` : `${match[1]}>`;
+    });
+    fs.writeFileSync(originalPath, restored.join("\n"));
+  }
+}
 
 fs.rmSync(tmpDir, { recursive: true, force: true });
 
