@@ -495,7 +495,7 @@ data:
 
 #### ▼ date_formats セクション
 
-時間に関して設定する。
+時間について設定する。
 
 #### ▼ default_timezone
 

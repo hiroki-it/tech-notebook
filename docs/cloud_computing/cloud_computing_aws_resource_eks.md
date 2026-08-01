@@ -960,7 +960,7 @@ Amazon VPC 外の AWS リソース (例：Amazon EKS コントロールプレー
 
 プライベートサブネット内にワーカーNode がある場合、Amazon VPC エンドポイントを経由して、kube-apiserver にリクエストを送信することになる。
 
-この状態で、`kubectl` コマンドで kube-apiserver にリクエストを送信できるようにする方法としては、以下のパターンがある。
+この状態で、`kubectl` コマンドを使用して kube-apiserver にリクエストを送信する方法は、以下のとおりである。
 
 - ローカルマシンから
 - Amazon VPC 内の踏み台 Amazon EC2 から
@@ -1149,7 +1149,7 @@ Amazon EC2 ワーカーNode を種類ごとに異なる AWS AMI で作成し、�
 
 #### ▼ Amazon EKS 最適化 Amazon Linux
 
-Amazon EKS のための標準的な Amazon EC2 を作成できる。もっとも推奨である。
+Amazon EKS のための標準的な Amazon EC2 を作成できる。もっとも推奨される方式である。
 
 `aws ssm get-parameter` コマンドを使用すると、公式が提供するマシンコンテナイメージの ID を確認できる。
 

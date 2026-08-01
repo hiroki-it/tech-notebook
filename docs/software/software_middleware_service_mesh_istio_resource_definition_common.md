@@ -269,7 +269,7 @@ Deployment の `.spec.template` キーや、Pod の `.metadata.` キーにて、
 
 IstoOperator の `.spec.revision` キーと同じ。
 
-特定の Pod で、Istio とこれのカナリアリリースを有効化するか否かを設定する。
+特定の Pod で、Istio とそのカナリアリリースを有効化するか否かを設定する。
 
 **＊実装例＊**
 

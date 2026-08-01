@@ -21,7 +21,7 @@ Terraform が Kubernetes の kube-apiserver と通信できるようにする。
 
 これにより、Terraform を使用して Kubernetes リソースを作成できるようになる。
 
-もしクラウドプロバイダーの Cluster (例：Amazon EKS、Google Cloud GKE、Azure AKE など) を使用している場合、これの kube-apiserver である。
+もしクラウドプロバイダーの Cluster (例：Amazon EKS、Google Cloud GKE、Azure AKE など) を使用している場合、その Cluster の kube-apiserver である。
 
 ```terraform
 provider "kubernetes" {

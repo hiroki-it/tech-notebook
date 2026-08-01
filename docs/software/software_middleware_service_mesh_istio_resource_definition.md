@@ -3094,7 +3094,7 @@ spec:
 
 いずれの Gateway の条件に合致したリクエストを処理するかを設定する。
 
-Gateway 名とこれの Namespace を設定する。
+Gateway 名とその Namespace を設定する。
 
 VirtualService と Gateway が同じ Namespace に所属する場合は、Namespace を省略できる (`.spec.export` キーとは関係ない) 。
 
@@ -3590,7 +3590,7 @@ spec:
 
 リトライ失敗の理由を設定する。
 
-istio-proxy は、レスポンスの `x-envoy-retry-on` ヘッダーに割り当てるため、これの値を設定する。
+istio-proxy は、レスポンスの `x-envoy-retry-on` ヘッダーに割り当てるため、その値を設定する。
 
 **＊実装例＊**
 

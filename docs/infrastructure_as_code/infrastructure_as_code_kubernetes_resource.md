@@ -207,7 +207,7 @@ $ kubectl exec -it <Pod名> -- bash
 
 CronJob 配下の Job は、決まった時間にならないと実行されない。
 
-任意の時間に実行するためには、CronJob を指定し、これの配下で一時的に Job を作成する。
+任意の時間に実行するためには、CronJob を指定し、その配下で一時的に Job を作成する。
 
 ```bash
 $ kubectl create job test-job --from=cronjob/foo-cron-job -n foo

@@ -71,7 +71,7 @@ deprecated-versions:
 
 ```
 
-もし pluto が対応していない項目に関しては、以下のコマンドで確認するとよい。
+もし pluto が対応していない項目は、以下のコマンドで確認するとよい。
 
 ```bash
 $ kubectl get crd \

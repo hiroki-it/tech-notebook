@@ -104,13 +104,13 @@ select * from `employees` where `department_id` = 3
 
 レコード取得時に IN 句や JOIN 句を使用すると、N+1 問題を解消できる。
 
-Laravel では `with()` 関数を使用すると内部的には、親テーブルへの SQL と、IN 句を使用した SQL が発行され、最終的に 2 回で済む。
+Laravel では `with()` 関数を使用すると、内部的に親テーブルへの SQL と IN 句を使用した SQL が発行され、最終的に 2 回で済む。
 
 ```php
 <?php
 
 // SQL発行 (2回)
-// 内部的ににIN句
+// 内部的にIN句
 $departments = Department::with('employees')->get();
 
 foreach($departments as $department) {
@@ -176,7 +176,7 @@ const logs = await Promise.all(
 
 レコード取得時に IN 句や JOIN 句を使用すると、N+1 問題を解消できる。
 
-Prisma では、`in` プロパティを IN 句を使用した SQL が発行され、最終的に 2 回で済む。
+Prisma では、`in` プロパティを使用すると、IN 句を含む SQL が発行され、最終的に 2 回で済む。
 
 ```typescript
 import type {User} from "@prisma/client";
@@ -228,7 +228,7 @@ const users = await prisma.user.findMany({
 
 集計結果を一覧で表示するような機能では、テナント内のレコードを横断的に取得する必要がある。
 
-しかし、大量のレコードを Read 処理で取得し、これをその都度集計すると負荷がかかる。処理時間も長くなる。
+ただし、大量のレコードを Read 処理で取得し、その都度集計すると負荷がかかる。処理時間も長くなる。
 
 <br>
 
@@ -254,7 +254,7 @@ const eventCount = events.length;
 
 高負荷の処理をバッチマイクロサービスに分割する。
 
-バックエンドでは、バッチマイクロサービスと共有のテーブルか、事前に集計されたレコードを取得する。
+バックエンドでは、バッチマイクロサービスとの共有テーブルから、事前に集計されたレコードを取得する。
 
 バッチマイクロサービスでは、共有の集計テーブルに集計結果を書き込む。
 
@@ -317,7 +317,7 @@ const eventCount = eventSummary?.count ?? 0;
 
 検索対象を表す配列が空の場合、検索結果は空になることが事前にわかる。
 
-それにもかかわらず SQL を実行すると、不要な DB 処理が発生し、性能が悪くなったり、不具合が起こる可能性がある。
+それにもかかわらず SQL を実行すると、不要な DB 処理が発生して性能が低下したり、不具合が起こったりする可能性がある。
 
 <br>
 
@@ -339,7 +339,7 @@ async function findByUserNames(userNames: string[]) {
 
 空入力に対するガード節を設け、SQL を実行せずに空配列を返す。
 
-この早期リターンにより、不要な DB 処理を防止し、性能改善や不具合を防げる。
+この早期リターンにより、不要な DB 処理を避け、性能低下や不具合を防げる。
 
 ```typescript
 async function findByUserNames(userNames: string[]) {

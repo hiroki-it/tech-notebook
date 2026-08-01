@@ -98,7 +98,7 @@ sum(<メトリクス名>) by (<ラベル>)
 
 **例**
 
-直近 1 時間に関して、Istio の istio-proxy の受信リクエストのテータポイント数を、コンテナの種類ごとに集約する。
+直近 1 時間の Istio の istio-proxy の受信リクエストのテータポイント数を、コンテナの種類ごとに集約する。
 
 ```bash
 sum(idelta(istio_requests_total[1h])) by (destination_app)
@@ -109,7 +109,7 @@ sum(idelta(istio_requests_total[1h])) by (destination_app)
 
 **例**
 
-任意の期間内に関して、Istio の istio-proxy が受信したリクエストについて、データポイント数の増加量を集約する。
+任意の期間内で、Istio の istio-proxy が受信したリクエストについて、データポイント数の増加量を集約する。
 
 ```bash
 sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__range:])) by (destination_service)
@@ -117,7 +117,7 @@ sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__r
 
 **例**
 
-任意の期間内に関して、Istio の istio-proxy の処理時間の一番高い値を集約する。
+任意の期間内で、Istio の istio-proxy の処理時間の一番高い値を集約する。
 
 ```bash
 max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -125,7 +125,7 @@ max(max_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 **例**
 
-任意の期間内に関して、Istio の istio-proxy の処理時間の平均を集約する。
+任意の期間内で、Istio の istio-proxy の処理時間の平均を集約する。
 
 ```bash
 avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_service_namespace="default"}[$__rate_interval])[$__range:])) by (destination_service)
@@ -135,7 +135,7 @@ avg(avg_over_time(rate(istio_request_duration_milliseconds_sum{destination_servi
 
 複数の種類で集約できる。
 
-直近 1 時間に関して、Istio の istio-proxy で収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%` 変数) を、Pod 名、変数値の種類ごとに集約する。
+直近 1 時間の Istio の istio-proxy で収集したレスポンスの補足メッセージ (`%RESPONSE_FLAGS%` 変数) を、Pod 名、変数値の種類ごとに集約する。
 
 ```bash
 sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, response_flags)
@@ -216,7 +216,7 @@ rate(<Counter型メトリクス名>[1m]) * 60
 
 **例**
 
-直近 `n` 分や `n` 時間に関して、メトリクスの平均増加率 (%/秒) を集約する。
+直近 `n` 分や `n` 時間のメトリクスの平均増加率 (%/秒) を集約する。
 
 集約の時間が短い場合 (例：1m、5m) 、急激な変化の影響を受けるため、短期間の傾向を反映した値になる。
 
@@ -323,7 +323,7 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"0"}[5m])) 
 
 **例**
 
-直近 5 分に関して、メトリクスの平均増加率 (%/秒) を集約する。
+直近 5 分のメトリクスの平均増加率 (%/秒) を集約する。
 
 ```bash
 rate(<Counter型メトリクス名>[5m])

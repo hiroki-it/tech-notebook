@@ -1197,7 +1197,7 @@ HTTP クライアントまたは Web サーバを提供する。
 
 そのため、Go では Nginx や Apache が不要である。
 
-ただし、Go による Web サーバーは機能が不十分である、そのため、Nginx や Apache を Web サーバとして、Go を App サーバとして使用したほうがよい。
+ただし、Go による Web サーバーは機能が不十分である。そのため、Nginx や Apache を Web サーバとして、Go を App サーバとして使用したほうがよい。
 
 > - https://golang.org/pkg/net/http/#pkg-index
 > - https://stackoverflow.com/questions/17776584/what-are-the-benefits-of-using-nginx-in-front-of-a-webserver-for-go
@@ -1604,7 +1604,7 @@ func main() {
 
 サーバーを起動する `ListenAndServe()` 関数に対して、自身で定義した ServeMux 関数を渡す場合、`NewServeMux()` 関数を使用する必要がある。
 
-これの `HandleFunc()` 関数に対してルーティングと関数を定義する。
+作成した ServeMux の `HandleFunc()` 関数にルーティングと関数を定義する。
 
 **＊実装例＊**
 

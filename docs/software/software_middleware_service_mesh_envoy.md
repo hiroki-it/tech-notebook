@@ -620,7 +620,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 
 ### ネットワークフィルター
 
-TCP プロトコルの処理や後続の HTTP フィルターの管理を実施する。
+TCP プロトコルを処理し、後続の HTTP フィルターを管理する。
 
 主要なネットワークフィルターとして、`network.http_connection_manager` や `network.tcp_proxy` がある。
 

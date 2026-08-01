@@ -1190,7 +1190,7 @@ class FooRepository extends Repository implements DomainFooRepository
 
 AWS ALB や Global Accelerator から『`/healthcheck`』に対してヘルスチェックを設定したうえで、`200` ステータスを含むレスポンスを返信する。
 
-Nginx でヘルスチェックの返信を実装もできるが、アプリケーションの死活管理としては、Laravel に返信を実装するほうが適切である。
+Nginx でもヘルスチェックの返信を実装できるが、アプリケーションの死活管理には、Laravel に返信を実装するほうが適切である。
 
 RouteServiceProvider も参照せよ。
 
@@ -1401,7 +1401,7 @@ Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
 
 このファイルは非公開であり、リクエストによってアクセスできない。
 
-事前に、シンボリックリンクを作成する、また、`filesystems.php` ファイルに設定が必要である。
+事前にシンボリックリンクを作成し、`filesystems.php` ファイルを設定する必要がある。
 
 ```bash
 $ php artisan storage:link
@@ -2063,7 +2063,7 @@ class Foo
 
 #### ▼ Factory による Seed の初期データ量産
 
-Factory における定義を基にして、指定した数だけ Seed の初期データを量産する。
+Factory の定義を基にして、指定した数だけ Seed の初期データを量産する。
 
 **＊実装例＊**
 

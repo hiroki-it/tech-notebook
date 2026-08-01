@@ -168,7 +168,7 @@ AWS の使用上、AWS Certificate Manager のサーバー証明書を配置で�
 > - https://serverfault.com/a/1126428
 > - https://www.reddit.com/r/aws/comments/aidrfn/comment/eenbc60/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
-#### ▼ Amazon Route 53 ➡️ AWS ALB、NLB、の場合
+#### ▼ Amazon Route 53 ➡️ AWS ALB、NLB の場合
 
 AWS ALB で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS にサーバー証明書は不要である。
 
@@ -210,7 +210,7 @@ Amazon CloudFront に送信された HTTPS リクエストを AWS ALB へルー�
 | Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS                                                       | Amazon CloudFront                            |
 | Amazon Route 53 ➡️ Amazon CloudFront (AWS Certificate Manager のサーバー証明書) ➡️ Amazon S3                                                                              | Amazon CloudFront                            |
 
-#### ▼ Amazon Route 53 ➡️ Amazon EC2/Amazon ECS/Amazon EKS、AWS Lightsail、の場合
+#### ▼ Amazon Route 53 ➡️ Amazon EC2/Amazon ECS/Amazon EKS、AWS Lightsail の場合
 
 Amazon Route 53 で SSL/TLS 終端とする場合、Amazon EC2/Amazon ECS/Amazon EKS にサーバー証明書は不要である。
 

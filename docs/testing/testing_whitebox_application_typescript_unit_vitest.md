@@ -15,7 +15,7 @@ description: Vitest＠JavaScriptユニットテストの知見を記録してい
 
 ## 01. Vitest とは
 
-ユニットテストと機能テストの実施に必要な機能を提供し、加えてテストを実施する。
+ユニットテストと機能テストに必要な機能を提供し、テストも実行する。
 
 <br>
 
@@ -88,7 +88,7 @@ describe("<パブリックな関数名>", async () => {
 
 #### ▼ 変数名
 
-例えば、`baseFoo` 変数を定義し、これのプロパティを各テストケースで継承する。
+例えば、`baseFoo` 変数を定義し、そのプロパティを各テストケースで継承する。
 
 ```typescript
 import axios from "axios";
@@ -331,7 +331,7 @@ export default defineConfig({
 
 #### ▼ 注意点
 
-Vitest は TypeScript を直接トランスパイルするため、型検証を実施しない。
+Vitest は TypeScript を直接トランスパイルするため、型を検証しない。
 
 例えば、TypeScript のテストコードで、関数に渡す型がまちがっていてもエラーにならない。
 

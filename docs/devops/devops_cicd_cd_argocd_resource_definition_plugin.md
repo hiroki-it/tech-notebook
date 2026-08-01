@@ -30,7 +30,7 @@ ArgoCD の仕様上、一部のツール (Helmfile、helm プラグイン、argo
 執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet など)
 を Application のオプションとして実行できるようになっている。
 
-すなわち、これらの repo-server はこれらのツールを実行できる。
+つまり、これらの repo-server はこれらのツールを実行できる。
 
 `/usr/local/bin` ディレクトリ配下でバイナリを確認できる。
 

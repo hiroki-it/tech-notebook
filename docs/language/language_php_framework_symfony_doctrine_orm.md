@@ -48,7 +48,7 @@ $queryBuilder = $this->createQueryBuilder();
 
 #### ▼ `select()` 関数
 
-QueryBuilder クラスにおける `select()` 関数に、値を設定する。
+QueryBuilder クラスの `select()` 関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -66,7 +66,7 @@ $queryBuilder
 
 #### ▼ `insert()` 関数
 
-QueryBuilder クラスにおける `insert()` 関数に、値を設定する。
+QueryBuilder クラスの `insert()` 関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -79,7 +79,7 @@ $queryBuilder
 
 #### ▼ `update()` 関数
 
-QueryBuilder クラスにおける `update()` 関数に、値を設定する。
+QueryBuilder クラスの `update()` 関数に、値を設定する。
 
 **＊実装例＊**
 
@@ -92,7 +92,7 @@ $queryBuilder
 
 #### ▼ `delete()` 関数
 
-QueryBuilder クラスにおける `delete()` 関数に、値を設定する。
+QueryBuilder クラスの `delete()` 関数に、値を設定する。
 
 **＊実装例＊**
 

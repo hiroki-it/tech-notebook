@@ -994,7 +994,7 @@ spec:
 
 #### ▼ directory
 
-ポーリング対象のマニフェストリポジトリのディレクトリ構造に関して設定する。
+ポーリング対象のマニフェストリポジトリのディレクトリ構造について設定する。
 
 また、マニフェストリポジトリにチャートを配置している場合でも、チャートリポジトリと同様にチャートを扱える。
 
@@ -1562,7 +1562,7 @@ kube-apiserver の URL を設定する。
 
 ArgoCD の稼働している Cluster を指定する場合は、in-cluster (`https://kubernetes.default.svc`) を設定する。
 
-一方で、外部の Kubernetes Cluster を指定する場合、これの kube-apiserver のエンドポイントを指定する必要がある。
+一方で、外部の Kubernetes Cluster を指定する場合、その Cluster の kube-apiserver のエンドポイントを指定する必要がある。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1

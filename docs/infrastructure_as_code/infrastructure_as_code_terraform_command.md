@@ -274,7 +274,7 @@ $ terraform init --migrate-state -backend-config=./foo/backend.tfvars
 
 #### ▼ -upgrade
 
-現在のバージョンを基に、自前/公式リモートモジュール、プラグイン、のアップグレード/ダウングレードを行う。
+現在のバージョンを基に、自前/公式リモートモジュールやプラグインのアップグレード/ダウングレードを行う。
 
 合わせて、`.terraform.lock.hcl` ファイルを更新する。
 
@@ -975,7 +975,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 ### `import` について
 
-実インフラのすべての設定値を `tfstate` ファイルに取り込む場合、これの設定値を `resource` ブロックの設定値として `tfstate` ファイルに書き込み、Terraform の管理下におく必要がある (`tfstate` ファイル上では、`resource` ブロックは `managed` モードという表記になる) 。
+実インフラのすべての設定値を `tfstate` ファイルに取り込む場合、実インフラの設定値を `resource` ブロックの設定値として `tfstate` ファイルに書き込み、Terraform の管理下におく必要がある (`tfstate` ファイル上では、`resource` ブロックは `managed` モードという表記になる) 。
 
 このとき、`terraform import` コマンドを実行する方法と、コンソール画面から一度削除したうえで `terraform apply` コマンドを実行する方法がある (前者を推奨) 。
 

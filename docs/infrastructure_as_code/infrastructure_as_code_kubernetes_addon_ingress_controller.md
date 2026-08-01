@@ -15,9 +15,9 @@ description: Ingress Controller＠Ingress Controller系の知見を記録して�
 
 ## 01. Ingress Controller とは
 
-Ingress Controller は、kube-controller のように単一/複数の Ingress に watch イベントを送信する、
+Ingress Controller は、kube-controller のように単一/複数の Ingress に watch イベントを送信する。
 
-これのルールに応じたリバースプロキシやロードバランサー (Ingress Controller の種類による) を作成し、Node 外からの受信した通信を Service にルーティングする。
+Ingress のルールに応じたリバースプロキシやロードバランサー (Ingress Controller の種類による) を作成し、Node 外から受信した通信を Service にルーティングする。
 
 注意点として、Ingress Controller が Service にルーティングするのであって、Ingress はあくまでルーティングのルールを定義しているだけである。
 

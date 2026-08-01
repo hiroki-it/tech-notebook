@@ -607,7 +607,7 @@ Istio の Pod からデータポイントを収集する。
 
 メトリクスを PromQL でクエリして表示するパネルを定義する。
 
-一番最初に GUI でパネルを作成し、これの JSON を取得するほうが実装しやすい。
+最初に GUI でパネルを作成し、その JSON を取得するほうが実装しやすい。
 
 > - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/view-dashboard-json-model/#panels
 

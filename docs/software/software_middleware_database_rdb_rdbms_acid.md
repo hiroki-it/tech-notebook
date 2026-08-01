@@ -397,7 +397,7 @@ RDBMS またはアプリケーションによる `UPDATE` 処理競合問題を�
 
 ### DBMS の機能による排他制御
 
-DBMS の機能で、排他制御を実施する方法である。
+DBMS の機能で、排他制御する方法である。
 
 > - https://qiita.com/daiching/items/835fa37de22b397eece0#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AB%E3%81%AF%EF%BC%92%E7%A8%AE%E9%A1%9E%E3%81%AE%E6%A6%82%E5%BF%B5%E3%81%8C%E3%81%82%E3%82%8B
 
@@ -460,7 +460,7 @@ MySQL では、『`SELECT ... FOR UPDATE`』を使用する。
 
 ### アプリケーションによる排他制御
 
-アプリケーションによる実装で、排他制御を実施する方法である。
+アプリケーションの実装で、排他制御する方法である。
 
 > - https://qiita.com/daiching/items/835fa37de22b397eece0#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AB%E3%81%AF%EF%BC%92%E7%A8%AE%E9%A1%9E%E3%81%AE%E6%A6%82%E5%BF%B5%E3%81%8C%E3%81%82%E3%82%8B
 

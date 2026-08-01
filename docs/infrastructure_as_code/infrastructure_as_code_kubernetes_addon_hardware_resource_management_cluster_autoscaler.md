@@ -38,7 +38,7 @@ cluster-autoscaler を使用しない場合、クラウドプロバイダーの 
 
 cluster-autoscaler は、ハードウェアリソース不足が原因でスケジューリングできない Pod があるとき、Node をスケーリングする。
 
-これのために、合わせて metrics-server を使用する。
+この処理のために、合わせて metrics-server を使用する。
 
 取得した Pod のハードウェアの最大リソース消費量 (`.spec.containers[*].resources` キーの合計値) と、Node 全体のリソースの空き領域を定期的 (`10` 分ほど) に比較し、Node をスケーリングさせる。
 
@@ -83,7 +83,7 @@ cluster-autoscaler は、Deployment (cluster-autoscaler) 、ConfigMap (cluster-a
 
 #### ▼ cluster-autoscaler
 
-Node グループ名やこれのタグ値を使用して、コールする Node グループをフィルタリングする。
+Node グループ名やそのタグ値を使用して、コールする Node グループをフィルタリングする。
 
 ```yaml
 apiVersion: v1

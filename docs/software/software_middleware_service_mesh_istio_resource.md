@@ -1179,7 +1179,7 @@ spec:
 
 代わりに、JWT が含まれていないリクエストを AuthorizationPolicy による認可処理失敗 (`403` ステータス) として扱う必要がある。
 
-Keycloak の宛先情報を Istio に登録する必要があるため、これの Pod をサービスメッシュ内に配置するか、サービスメッシュ外に配置して Istio Egress Gateway や ServiceEntry 経由で接続できるようにする。
+Keycloak の宛先情報を Istio に登録する必要があるため、Keycloak の Pod をサービスメッシュ内に配置するか、サービスメッシュ外に配置して Istio Egress Gateway や ServiceEntry 経由で接続できるようにする。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -1230,7 +1230,7 @@ spec:
 
 代わりに、JWT が含まれていないリクエストを AuthorizationPolicy による認可処理失敗 (`403` ステータス) として扱う必要がある。
 
-OAuth2 Proxy の宛先情報を Istio に登録する必要があるため、これの Pod をサービスメッシュ内に配置するか、サービスメッシュ外に配置して Istio Egress Gateway や ServiceEntry 経由で接続できるようにする。
+OAuth2 Proxy の宛先情報を Istio に登録する必要があるため、OAuth2 Proxy の Pod をサービスメッシュ内に配置するか、サービスメッシュ外に配置して Istio Egress Gateway や ServiceEntry 経由で接続できるようにする。
 
 ```yaml
 apiVersion: security.istio.io/v1

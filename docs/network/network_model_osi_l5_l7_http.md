@@ -744,7 +744,7 @@ GET リクエストには不要である。
 
 #### ▼ データ型の指定方法
 
-もっともよい方法は、リクエストの `Content-Type` ヘッダーに、『`application/json`』を設定することによりある。
+もっともよい方法は、リクエストの `Content-Type` ヘッダーに『`application/json`』を設定することである。
 
 ```yaml
 POST https://example.com/users/12345

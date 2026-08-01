@@ -21,7 +21,7 @@ description: マイクロサービス設計＠マイクロサービスの知見�
 
 ![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anti-corruption-layer.png)
 
-マイクロサービスアーキテクチャにおいて、分散システム状に構成されたバックエンドのコンポーネントのこと。
+マイクロサービスアーキテクチャで、分散システム状に構成されたバックエンドのコンポーネントのこと。
 
 特定のマイクロサービスが他のマイクロサービスに侵食され、マイクロサービスの凝集度が低くならないようにするため、ACL：Anti Corruption Layer (腐食防止レイヤー) を設ける必要がある。
 
@@ -105,7 +105,7 @@ DB レコードの書き込み/読み出しのトランザクション処理を�
 
 また、各マイクロサービスを名詞ではなく動詞 (例：〇〇管理サービス、〇〇中継サービス、〇〇通知サービス、〇〇集計サービス) で命名するとよい。
 
-その他、各マイクロサービスで DB を完全に独立させることや、SAGA パターンを使用することがある。
+そのほか、各マイクロサービスで DB を完全に独立させることや、SAGA パターンを使用することがある。
 
 > - https://www.koslib.com/posts/entity-services-anti-pattern/
 > - https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/

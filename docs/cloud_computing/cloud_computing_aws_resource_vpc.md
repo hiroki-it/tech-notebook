@@ -65,7 +65,7 @@ Amazon VPC 内で作成されたインスタンスにはパブリック IP ア�
 
 ### Amazon VPC サブネットとは
 
-クラウドプライベートネットワークにおけるセグメントとして働く。
+クラウドプライベートネットワークのセグメントとして働く。
 
 <br>
 
@@ -177,7 +177,7 @@ AWS NAT Gateway の代わりに Amazon VPC エンドポイントを使用する�
 
 #### ▼ Interface 型
 
-サービス名としては、『プライベートリンク』ともいう。
+サービス名は、『プライベートリンク』ともいう。
 
 実体はプライベート IP アドレスを持つ ENI であり、ENI が AWS リソースからリクエストを受信する。
 
@@ -192,7 +192,7 @@ Amazon S3、DynamoDB 以外のすべてのリソース
 
 #### ▼ Gateway 型
 
-ルートテーブルにおける定義に従う。
+ルートテーブルの定義に従う。
 
 実体は Amazon VPC エンドポイントであり、Amazon VPC エンドポイントが AWS リソースからリクエストを受信する。
 
@@ -225,7 +225,7 @@ NAT 処理 (DNAT、SNAT) を実行し、パブリック IP アドレス (Amazon 
 
 ### DNAT 処理
 
-Internet Gateway の DNAT 処理では、Amazon VPC 外からリクエストを受信し、これの送信元 IP アドレスをプライベート IP アドレスに変換する。
+Internet Gateway の DNAT 処理では、Amazon VPC 外からリクエストを受信し、その送信元 IP アドレスをプライベート IP アドレスに変換する。
 
 AWS NAT Gateway からのリクエストであれば、送信元 IP アドレスを AWS NAT Gateway の Elastic IP アドレスに変換する。
 
@@ -237,7 +237,7 @@ AWS NAT Gateway からのリクエストであれば、送信元 IP アドレス
 
 ### SNAT 処理
 
-Internet Gateway の SNAT 処理では、Amazon VPC 内からリクエストを受信し、これの送信元 IP アドレスをパブリック IP アドレスに変換する。
+Internet Gateway の SNAT 処理では、Amazon VPC 内からリクエストを受信し、その送信元 IP アドレスをパブリック IP アドレスに変換する。
 
 一方で、宛先 IP アドレスや宛先ポート番号は変換しない。
 
@@ -273,7 +273,7 @@ SNAT 処理 (SNAT 処理のみで、DNAT 処理は持たない) を実行し、�
 
 ### SNAT 処理
 
-AWS NAT Gateway の SNAT 処理では、プライベートサブネットからリクエストを受信し、これの送信元 IP アドレスをプライベート IP アドレスに変換する。
+AWS NAT Gateway の SNAT 処理では、プライベートサブネットからリクエストを受信し、その送信元 IP アドレスをプライベート IP アドレスに変換する。
 
 また、Internet Gateway を使用して、このプライベート IP アドレスをパブリック IP アドレスに変換する。
 

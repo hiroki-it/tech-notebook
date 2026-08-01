@@ -461,7 +461,7 @@ class EnginnerShainManagement extends ShainManagement
 
 実装クラスに処理内容を記述しなければならない。
 
-すなわち、抽象クラスに関数の型のみ定義した場合と同じである。
+つまり、抽象クラスに関数の型のみ定義した場合と同じである。
 
 多重継承できる。
 

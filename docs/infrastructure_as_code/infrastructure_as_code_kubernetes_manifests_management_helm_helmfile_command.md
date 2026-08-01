@@ -258,7 +258,7 @@ Source: project/manifests/persistent-volume.yaml
 
 #### ▼ sync とは
 
-すべての Helm リリースに関して、`helm upgrade --install` コマンドを実行する。
+すべての Helm リリースで、`helm upgrade --install` コマンドを実行する。
 
 `helmfile apply` コマンドとは異なり、Helm リリース間に差分がなくとも、リビジョンを更新する。
 
@@ -277,7 +277,7 @@ $ helmfile -e prd sync
 
 #### ▼ template とは
 
-すべての Helm リリースに関して、`helm template` コマンドを実行する。
+すべての Helm リリースで、`helm template` コマンドを実行する。
 
 ```bash
 $ helmfile -e prd template

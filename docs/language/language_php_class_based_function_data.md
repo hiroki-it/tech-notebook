@@ -1841,7 +1841,7 @@ var_dump($result); // 1
 
 #### ▼ クエスチョン
 
-クエスチョンの前に記載された文字列に関して、有無に関わらず問題ないことを意味する。
+クエスチョンの前に記載された文字列は、有無にかかわらず問題ないことを意味する。
 
 > - http://www.ipc.juen.ac.jp/contents/manuals/spam/regular.html
 

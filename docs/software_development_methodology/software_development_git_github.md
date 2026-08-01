@@ -41,7 +41,7 @@ description: GitHub＠Gitの知見を記録しています。
 
 リポジトリの直下に `.github` ディレクトリを配置し、`ISSUE_TEMPLATE.md` ファイルや `PULL_REQUEST_TEMPLATE.md` ファイルを配置する。
 
-Issue のテンプレートに関して、代わりに `ISSUE_TEMPLATE` ディレクトリを配置し、任意の名前の md ファイルを配置すると、複数のテンプレートを作成できる。
+Issue のテンプレートでは、代わりに `ISSUE_TEMPLATE` ディレクトリを配置し、任意の名前の md ファイルを配置すると、複数のテンプレートを作成できる。
 
 ```yaml
 repository/

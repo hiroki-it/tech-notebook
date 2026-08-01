@@ -79,7 +79,7 @@ node affinity や node selector を実施できるように、`.metadata.labels`
 | `deploy`                                        | 他の Kubernetes リソースをデプロイするための Kubernetes リソース (例：ArgoCD の Pod) のコンテナを配置する。Node グループ内に含めずに、異なる Cluster に切り分けて管理してもよい。                                                                                                                                                      |
 | `ingress`、`gateway、`egress`                   | ワーカーNode へのインバウンド通信の入口になるリソース (例：Ingress、IngressGateway) のコンテナや、API ゲートウェイのアプリを配置する。これは単一障害点になりうるため、ワーカーNode の CPU やメモリを潤沢にしようできるように、他のリソースのコンテナとは別の Node グループにしたほうがよい。また、アップグレード時間の短縮にも繋がる。 |
 | `master`                                        | セルフマネージドな Kubernetes コントロールプレーン Node のコンテナを稼働させる。マネージドなコントロールプレーン Node (例：Amazon EKS、Google Cloud GKE、Azure AKS など) の場合、この Node グループは不要になる。                                                                                                                      |
-| `system`                                        | ログやメトリクスの元になるデータポイントを収集するリソース (例：Prometheus、Alertmanager、の Pod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーン Node のコンテナを稼働させる。マネージドなコントロールプレーン Node (例：Amazon VPC Lattice など) の場合、この Node グループは不要になる。         |
+| `system`                                        | ログやメトリクスの元になるデータポイントを収集するリソース (例：Prometheus、Alertmanager の Pod) のコンテナを配置する。また、セルフマネージドなサービスメッシュコントロールプレーン Node のコンテナを稼働させる。マネージドなコントロールプレーン Node (例：Amazon VPC Lattice など) の場合、この Node グループは不要になる。         |
 
 ```yaml
 apiVersion: v1

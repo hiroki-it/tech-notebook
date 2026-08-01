@@ -360,7 +360,7 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 
 一方で、AWS-API をコールしてすべての Amazon Aurora の DB インスタンスを削除する場合、Amazon Aurora の DB クラスターは自動的に削除されずに、空の状態になる。
 
-例えば、Terraform を使用して Amazon Aurora の DB クラスターを作成するときに、インスタンスの作成に失敗すると Amazon Aurora の DB クラスターが空になる、
+例えば、Terraform を使用して Amazon Aurora の DB クラスターを作成するときに、インスタンスの作成に失敗すると Amazon Aurora の DB クラスターが空になる。
 
 これは、Terraform が AWS-API をコールして作成しているためである。
 

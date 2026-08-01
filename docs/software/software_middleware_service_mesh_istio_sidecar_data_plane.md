@@ -559,7 +559,7 @@ Istio のパケット暗号化で相互 TLS を導入している場合、istio-
 
 そのため、Istio で相互 TLS 認証を有効化していると、kubelet が HTTP ヘルスチェックを istio-proxy に実施した場合、証明書のないエラーで HTTP ヘルスチェックは失敗してしまう。
 
-これの対策として、以下の仕組みで HTTP ヘルスチェックを成功させる。
+その対策として、以下の仕組みで HTTP ヘルスチェックを成功させる。
 
 1. Istio は、サイドカーインジェクション時、マイクロサービスの LivenessProbe ヘルスチェックと ReadinessProbe ヘルスチェックのパスを `/app-health/<コンテナ名>/livez` と `/app-health/<コンテナ名>/readyz` に書き換え、元のパスを `ISTIO_KUBE_APP_PROBERS` に保存する。
 2. kubelet は Pod に HTTP ヘルスチェックを送信する。
@@ -576,7 +576,7 @@ kubelet は、対象のポート番号でプロセスがリクエストを待ち
 
 そのため、マイクロサービスが異常であっても istio-proxy が正常である限り、kubelet の TCP ヘルスチェックが成功してしまう。
 
-これの対策として、istio-proxy は、kubelet から受信した TCP ヘルスチェックをマイクロサービスに送信する。
+その対策として、istio-proxy は、kubelet から受信した TCP ヘルスチェックをマイクロサービスに送信する。
 
 これにより、kueblet がマイクロサービスに TCP ヘルスチェックを実施できるようになる。
 

@@ -15,7 +15,7 @@ description: Composition API＠Vue.jsの知見を記録しています。
 
 ## 01. Composition API とは
 
-Vue.js でパッケージの 1 つで、状態管理を実施する。
+Vue.js のパッケージの 1 つで、状態を管理する。
 
 Vuex の後継である。
 

@@ -449,7 +449,7 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 
 #### ▼ サイズの拡張
 
-サイズを拡張するためには、実際のストレージ (AWS EBS ボリューム) 、AWS EBS ボリューム内のパーティション、Amazon EC2 内のファイルシステム、に関して作業が必要にある。
+サイズを拡張するためには、実際のストレージ (AWS EBS ボリューム) 、AWS EBS ボリューム内のパーティション、Amazon EC2 内のファイルシステムについて作業する必要がある。
 
 **＊例＊**
 

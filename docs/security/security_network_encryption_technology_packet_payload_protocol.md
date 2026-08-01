@@ -295,7 +295,7 @@ SSL/TLS プロトコルで暗号化するために、VPN ツール (例：Zscale
 
 **＊設定例＊**
 
-Docker であればプロキシ設定を実施するか、Dockerfile にルート証明書を組み込む必要がある。
+Docker であればプロキシを設定するか、Dockerfile にルート証明書を組み込む必要がある。
 
 ![vpn_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png)
 

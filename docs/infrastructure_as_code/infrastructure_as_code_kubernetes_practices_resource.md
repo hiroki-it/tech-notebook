@@ -48,7 +48,7 @@ description: プラクティス集＠Kubernetesリソースの知見を記録し
 
 性能目標値に基づいて、Node のスペック/数を適切に選び、Cluster 全体の CPU / メモリをサイジングする。
 
-ロードテストを実施して、実地的な状況 (例：平常時、ピーク時、障害時) な負荷を再現し、性能目標を達成できるかを検証する。
+ロードテストを実施して、実際の状況 (例：平常時、ピーク時、障害時) に近い負荷を再現し、性能目標を達成できるかを検証する。
 
 - 平均スループット
 - 平均レスポンスタイム
@@ -1615,7 +1615,7 @@ Helm チャート専用の静的解析ツールが存在するため、必要に
 | Workload のデプロイ戦略が正しく動作していることを確認する。 | Workload (例：Deployment、DaemonSet、StatefulSet、Job など) のデプロイ戦略 (例：RollingUpdate) が設定に応じた割合で行われ、Pod の入れ替えが行われていることを確認する。                                                                                                                                                                                                                                         |
 | Workload が Pod のレプリカ数を維持できることを確認する。    | Workload (例：Deployment、DaemonSet、StatefulSet、Job など) に属する Pod が削除され、replica 数を下回った際に時間経過で設定したレプリカ数になるように回復されることを確認する。                                                                                                                                                                                                                                 |
 | Pod のスケーリングが正しく動作することを確認する。          | HorizontalPodAutorocaler や VerticalPodAutoscaler を使用している場合、HorizontalPodAutorocaler や VerticalPodAutoscaler の設定と使用しているメトリクスに応じたスケーリングが行われることを確認する。                                                                                                                                                                                                            |
-| Node のスケーリングが正しく動作することを確認する。         | Cluster Autoscaler や Karpenter を使用している場合、Cluster Autoscaler や Karpenter の設定と Node のリソース状況応じたスケーリングが行われることを確認する。                                                                                                                                                                                                                                                    |
+| Node のスケーリングが正しく動作することを確認する。         | Cluster Autoscaler や Karpenter を使用している場合、Cluster Autoscaler や Karpenter の設定と Node のリソース状況に応じたスケーリングが行われることを確認する。                                                                                                                                                                                                                                                    |
 
 <br>
 

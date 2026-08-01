@@ -539,7 +539,7 @@ possible_keys: index_t2_on_c3
 
 SQL の種類が表示される。
 
-サブクエリを含まない SQL は `SIMPLE` となり、サブクエリを含むと、サブクエリの種類に応じて、`PRIMARY`、`SUBQUERY`、`DEPENDENT SUBQUERY`、`UNCACHEABLE SUBQUERY`、`DERIVED`、のいずれかが表示される。
+サブクエリを含まない SQL は `SIMPLE` となり、サブクエリを含むと、サブクエリの種類に応じて、`PRIMARY`、`SUBQUERY`、`DEPENDENT SUBQUERY`、`UNCACHEABLE SUBQUERY`、`DERIVED` のいずれかが表示される。
 
 #### ▼ `table`
 

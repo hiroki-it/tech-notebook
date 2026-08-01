@@ -97,7 +97,7 @@ package foo;
 
 関数 (`rpc`) とそのグループ (`service`) を設定する。
 
-gRPC における API 仕様である。
+gRPC の API 仕様である。
 
 ```protobuf
 service GreetingService {

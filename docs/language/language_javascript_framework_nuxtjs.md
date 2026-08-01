@@ -289,7 +289,7 @@ const nuxtConfig: Configuration = {
 
 クライアントサイドのみで参照できる環境変数を設定する。
 
-すなわち、SSR モードのクライアント側のみが対応している。
+つまり、SSR モードのクライアント側のみが対応している。
 
 環境変数は、`pages`、`store`、`components`、`plugin` ディレクトリで使用できる。
 
@@ -333,7 +333,7 @@ export function foo() {
 
 サーバーサイドとクライアントサイドの両方で参照できる環境変数を設定する。
 
-すなわち、全モード (SSG/CSR/SSR モード) が対応している。
+つまり、全モード (SSG/CSR/SSR モード) が対応している。
 
 環境変数は、`pages`、`store`、`components`、`plugin` ディレクトリで使用できる。
 

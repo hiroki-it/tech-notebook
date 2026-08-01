@@ -844,7 +844,7 @@ SELECT ステートメントの結果を使用して、データストリーム�
 
 **＊実装例＊**
 
-タグが `*-bar-*` (ワイルドカード指定) であるログのうち、`container_name` キーの値が `qux` であるもののみをフィルタリングし、これの `log` キーを抽出する。
+タグが `*-bar-*` (ワイルドカード指定) であるログのうち、`container_name` キーの値が `qux` であるもののみをフィルタリングし、その `log` キーを抽出する。
 
 ```bash
 SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';

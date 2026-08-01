@@ -998,7 +998,7 @@ static_resources:
 
 #### ▼ ads_config とは
 
-ADS-API に関して設定する。
+ADS-API について設定する。
 
 Envoy が ADS-API にリクエストを送信するように設定できる。
 
@@ -1135,7 +1135,7 @@ dynamic_resources:
 
 #### ▼ cds_config とは
 
-CDS-API に関して設定する。
+CDS-API について設定する。
 
 #### ▼ path
 
@@ -1155,7 +1155,7 @@ dynamic_resources:
 
 #### ▼ lds_config とは
 
-LDS-API に関して設定する。
+LDS-API について設定する。
 
 #### ▼ path
 

@@ -520,7 +520,7 @@ spec:
 
 #### ▼ failedJobsHistoryLimit とは
 
-実行に失敗した Job に関して、上限の履歴数を設定する。
+実行に失敗した Job の履歴数に上限を設定する。
 
 ```yaml
 apiVersion: io.k8s.api.batch.v1
@@ -608,7 +608,7 @@ CronJob のデフォルトの仕様として、Job が `100` 回連続で失敗�
 
 #### ▼ successfulJobsHistoryLimit とは
 
-実行に成功した Job に関して、上限の履歴数を設定する。
+実行に成功した Job の履歴数に上限を設定する。
 
 ```yaml
 apiVersion: batch/v1
@@ -5387,7 +5387,7 @@ data:
 
 Kubernetes の `v1.24` 以降では、Secret が自動的に作成されないようになっている。
 
-`.metadata.annotations` キーと `.type` キーを設定した Secret を作成すると、Kubernetes はこれの `data` キー配下にトークン文字列を自動的に追加する。
+`.metadata.annotations` キーと `.type` キーを設定した Secret を作成すると、Kubernetes は Secret の `data` キー配下にトークン文字列を自動的に追加する。
 
 このトークンには、失効期限がない。
 
@@ -5428,7 +5428,7 @@ SSL/TLS を使用するための変数を設定する。
 
 サーバー証明書、サーバー証明書とペアになる秘密鍵の文字列が必要である。
 
-ユースケースとしては、変数を Ingress に割り当て、Ingress と Service の間を HTTPS プロトコルでパケットを送受信する例がある。
+ユースケースには、変数を Ingress に割り当て、Ingress と Service の間を HTTPS プロトコルでパケットを送受信する例がある。
 
 ```yaml
 apiVersion: v1

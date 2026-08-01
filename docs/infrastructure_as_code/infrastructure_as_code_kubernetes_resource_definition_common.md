@@ -36,7 +36,7 @@ apiVersion: v1
 
 #### ▼ バージョンの段階
 
-バージョンは、成熟度に応じて、`alpha`、`beta`、`stable`、の段階がある。
+バージョンには、成熟度に応じて、`alpha`、`beta`、`stable` の段階がある。
 
 `alpha` のみデフォルトで無効化されており、`beta` や `stable` であれば、マニフェストで指定すればそのまま使用できる。
 
@@ -332,7 +332,7 @@ kube-controller が設定してくれるため、開発者が設定する必要�
 
 <br>
 
-### Role、ClusterRole、の場合
+### Role、ClusterRole の場合
 
 #### ▼ `rbac.authorization.k8s.io` キー
 

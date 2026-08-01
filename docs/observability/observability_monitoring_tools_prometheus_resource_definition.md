@@ -454,7 +454,7 @@ Alertmanager のアラートグループや通知先ルールを決める。
 
 ### PodMonitor とは
 
-Pod に対してプル型収集を実施し、これのデータポイントを収集する。
+Pod に対してプル型収集を実施し、Pod のデータポイントを収集する。
 
 Service を持つ Pod では ServiceMonitor を使用し、これを持たない Pod を PodMonitor で監視する。
 

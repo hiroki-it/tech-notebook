@@ -19,7 +19,7 @@ description: vue-router＠Vue.jsの知見を記録しています。
 
 ![vue-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue-router.png)
 
-ルーティングパッケージの一種。コンポーネントに対してルーティングを行い、`/<ルート>/<パラメータ>` に応じて、コールするコンポーネントを動的に切り替えられる。
+ルーティングパッケージの一種。コンポーネントへのルーティングを設定し、`/<ルート>/<パラメータ>` に応じて、コールするコンポーネントを動的に切り替えられる。
 
 ```yaml
 GET https://example.com:80/<ルート>/<パスパラメータ>?text1=a&text2=b

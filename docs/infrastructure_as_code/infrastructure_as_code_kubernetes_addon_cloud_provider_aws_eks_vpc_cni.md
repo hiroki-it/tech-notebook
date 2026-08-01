@@ -359,7 +359,7 @@ Kubernetes のバージョンに応じて、異なるアドオンのバージョ
 
 L-IPAM デーモンが `aws-node` という DaemonSet として稼働している。
 
-これのコンテナの環境変数で、アドオンの設定が管理されている。
+`aws-node` のコンテナの環境変数で、アドオンの設定が管理されている。
 
 ```bash
 $ kubectl get daemonset aws-node \

@@ -477,7 +477,7 @@ data:
 
 #### ▼ ingressSelector とは
 
-すべての istio-proxy に関して、使用する Gateway の `.metadata.labels.istio` キーの値を設定する。
+すべての istio-proxy に、使用する Gateway の `.metadata.labels.istio` キーの値を設定する。
 
 デフォルトでは、Ingress として `ingressgateway` が設定される。
 
@@ -498,7 +498,7 @@ data:
 
 #### ▼ ingressService とは
 
-すべての istio-proxy に関して、使用する Ingress Controller の `.metadata.labels.istio` キーの値を設定する。
+すべての istio-proxy に、使用する Ingress Controller の `.metadata.labels.istio` キーの値を設定する。
 
 デフォルトでは、Ingress として `ingressgateway` が設定される。
 
@@ -521,7 +521,7 @@ data:
 
 #### ▼ proxyHttpPort とは
 
-すべての istio-proxy に関して、Cluster 外からのインバウンド通信 (特に HTTP プロトコル) を待ち受けるポート番号を設定する。
+すべての istio-proxy に、Cluster 外からのインバウンド通信 (特に HTTP プロトコル) を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: v1
@@ -600,7 +600,7 @@ data:
 
 #### ▼ proxyListenPort とは
 
-すべての istio-proxy に関して、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。
+すべての istio-proxy に、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: v1
@@ -1641,7 +1641,7 @@ Keycloak は、ID プロバイダーとしてだけでなく認可プロバイ�
 
 datadog のトレースコンテキスト仕様 (datadog の独自仕様) でトレース ID とスパン ID を作成する。
 
-datadog エージェントの宛先情報を Istio に登録する必要があるため、これの Pod をサービスメッシュ内に配置するか、サービスメッシュ外に配置して Istio Egress Gateway や ServiceEntry 経由で接続できるようにする。
+datadog エージェントの宛先情報を Istio に登録する必要があるため、datadog エージェントの Pod をサービスメッシュ内に配置するか、サービスメッシュ外に配置して Istio Egress Gateway や ServiceEntry 経由で接続できるようにする。
 
 ただ、datadog エージェントをサービスメッシュ内に配置すると、Telemetry リソースが datadog エージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 
@@ -1729,7 +1729,7 @@ OpenTelemetry のトレースコンテキスト仕様 (W3C Trace Context) でト
 
 OTLP 形式のエンドポイントであればよいため、OpenTelemetry Collector も指定できる。
 
-OpenTelemetry Collector の宛先情報を Istio に登録する必要があるため、これの Pod をサービスメッシュ内に配置するか、サービスメッシュ外に配置して Istio Egress Gateway や ServiceEntry 経由で接続できるようにする。
+OpenTelemetry Collector の宛先情報を Istio に登録する必要があるため、OpenTelemetry Collector の Pod をサービスメッシュ内に配置するか、サービスメッシュ外に配置して Istio Egress Gateway や ServiceEntry 経由で接続できるようにする。
 
 ただ、OpenTelemetry Collector をサービスメッシュ内に配置すると、Telemetry リソースが OpenTelemetry Collector 自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 
@@ -1842,7 +1842,7 @@ Zipkin のトレースコンテキスト仕様 (B3 コンテキスト) でトレ
 
 Jaeger は B3 をサポートしているため、Jaeger のクライアントとしても使用できる。
 
-jaeger エージェントの宛先情報を Istio に登録する必要があるため、これの Pod をサービスメッシュ内に配置するか、サービスメッシュ外に配置して Istio Egress Gateway や ServiceEntry 経由で接続できるようにする。
+jaeger エージェントの宛先情報を Istio に登録する必要があるため、jaeger エージェントの Pod をサービスメッシュ内に配置するか、サービスメッシュ外に配置して Istio Egress Gateway や ServiceEntry 経由で接続できるようにする。
 
 ただ、jaeger エージェントをサービスメッシュ内に配置すると、Telemetry リソースが jaeger エージェント自体の分散トレースを作成してしまうため、メッシュ外に配置するべきである。
 

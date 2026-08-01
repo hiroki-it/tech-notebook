@@ -80,7 +80,7 @@ Amazon EC2 ワーカーNode の削除命令を検知し、Amazon EC2 ワーカ�
 
 Amazon EC2 ワーカーNode は、デフォルトでは Node の Graceful Shutdown を実施しない。
 
-そのため、`kubelet-config.json` ファイル (KubeletConfiguration)の `--shutdown-grace-period` オプションを使用する必要がある。
+そのため、`kubelet-config.json` ファイル (KubeletConfiguration) の `--shutdown-grace-period` オプションを使用する必要がある。
 
 一方で、Karpenter を使用すると、termination-controller が Graceful Shutdown を実施してくれる。
 
@@ -154,7 +154,7 @@ Karpenter は、さまざまな情報に基づいて、Node をスケーリン�
 
 kube-scheduler から情報を取得し、新しい Pod を Node 上にスケジューリングできない状態 (`Pending` 状態) を検知し、Node のスケジューリングを検討する。
 
-新しい Pod をスケジューリングできなくなる理由としては、Node の上限数超過やハードウェアリソース不足がある。
+新しい Pod をスケジューリングできなくなる理由は、Node の上限数超過やハードウェアリソース不足である。
 
 > - https://karpenter.sh/docs/concepts/#scheduling
 > - https://karpenter.sh/docs/concepts/provisioners/#max-pods

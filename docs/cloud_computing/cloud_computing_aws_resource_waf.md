@@ -62,7 +62,7 @@ description: AWS WAF＠AWSリソース
 
 ### Overview における Sampled requests の見方
 
-『すべてのルール』または『各ルール』におけるアクセス許可/拒否の履歴を確認できる。
+『すべてのルール』または『各ルール』のアクセス許可/拒否の履歴を確認できる。
 
 AWS ALB や Amazon CloudFront のアクセスログよりも解りやすく、さまざまなデバッグに役立つ。
 

@@ -326,7 +326,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 リクエストされたデータが正しいかを、サーバサイド側で検証する。
 
-フロントエンドからリクエストされるデータに関しては、JavaScript と PHP の両方によるバリデーションが必要である。
+フロントエンドからリクエストされるデータには、JavaScript と PHP の両方によるバリデーションが必要である。
 
 > - https://github.com/Respect/Validation
 

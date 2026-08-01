@@ -69,7 +69,7 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 **＊実装例＊**
 
-AWS Amplify の指定した ID のアプリケーションが、`AWS Amplify Deployment Status Change` のイベントを送信し、これの `jobStatus` が `SUCCEED`/`FAILED` だった場合、これを送信する。
+AWS Amplify の指定した ID のアプリケーションが `AWS Amplify Deployment Status Change` イベントを送信し、イベントの `jobStatus` が `SUCCEED`/`FAILED` だった場合、これを送信する。
 
 ```yaml
 {
