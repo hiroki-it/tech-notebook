@@ -344,7 +344,7 @@ message DiscoveryResponse {
 
 #### ▼ 静的なリスナー登録
 
-`envoy.yaml` ファイルで `listeners` キーを設定することにより、Envoy にリスナーを静的に設定できる。
+`envoy.yaml` ファイルで `listeners` キーを設定することで、Envoy にリスナーを静的に設定できる。
 
 ```yaml
 static_resources:
@@ -838,7 +838,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 
 #### ▼ クラスターの静的な登録
 
-`envoy.yaml` ファイルで `clusters` キーを設定することにより、Envoy にクラスターを静的に設定できる。
+`envoy.yaml` ファイルで `clusters` キーを設定することで、Envoy にクラスターを静的に設定できる。
 
 ```yaml
 static_resources:

@@ -459,7 +459,7 @@ Pod を強制的に削除する。
 
 特に、`Terminating` フェーズのまま削除されない Pod に対して有効である。
 
-合わせて `--grace-period` オプションを有効化することにより、即時に削除できる。
+合わせて `--grace-period` オプションを有効化することで、即時に削除できる。
 
 ```bash
 $ kubectl delete pod <TerminatingステータスのままのPod名> --force --grace-period=0

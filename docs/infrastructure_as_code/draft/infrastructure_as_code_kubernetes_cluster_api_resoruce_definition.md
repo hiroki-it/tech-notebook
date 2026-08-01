@@ -281,7 +281,7 @@ spec:
 
 Anthos GKE Cluster 内の Node に、Node グループを設定する。
 
-Anthos on Baremetal の場合は、Node の固定 IP アドレスを設定することにより、Node グループに Node を参加させられる。
+Anthos on Baremetal の場合は、Node の固定 IP アドレスを設定することで、Node グループに Node を参加させられる。
 
 ```yaml
 apiVersion: baremetal.cluster.gke.io/v1

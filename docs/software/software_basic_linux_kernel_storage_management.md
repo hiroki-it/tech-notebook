@@ -244,7 +244,7 @@ Windows では、C ドライブと D ドライブがパーティションに相�
 
 #### ▼ MacOS の場合
 
-MacOS では、`diskutil` コマンドを実行することにより、パーティションとマウントポイントを確認できる。
+MacOS では、`diskutil` コマンドを実行することで、パーティションとマウントポイントを確認できる。
 
 > - https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280
 

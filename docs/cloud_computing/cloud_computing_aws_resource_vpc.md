@@ -54,9 +54,9 @@ Amazon VPC 内で作成されたインスタンスにはパブリック IP ア�
 
 #### ▼ 紐付け
 
-| 紐付け名       | 補足                                                                                                        |
-| -------------- | ----------------------------------------------------------------------------------------------------------- |
-| EC2 との紐付け | 非推奨の方法である。<br>- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview   |
+| 紐付け名       | 補足                                                                                                      |
+| -------------- | --------------------------------------------------------------------------------------------------------- |
+| EC2 との紐付け | 非推奨の方法である。<br>- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview |
 | ENI との紐付け | 推奨の方法である。<br>- https://docs.aws.amazon.com/vpc/latest/userguide/vpc-eips.html#vpc-eip-overview   |
 
 <br>

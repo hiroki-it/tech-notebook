@@ -162,7 +162,7 @@ Minikube では、`mount` コマンド、ホスト側の `$MINIKUBE_HOME/files` 
 
 ここで作成された PersistentVolume を、Pod の PersistentVolumeClaim で指定する。
 
-このように、ホストから Node、Node から Pod へマウントを実行することにより、ホスト側のディレクトリを Pod 内のコンテナに間接的にマウントできる。
+このように、ホストから Node、Node から Pod へマウントを実行することで、ホスト側のディレクトリを Pod 内のコンテナに間接的にマウントできる。
 
 > - https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
@@ -224,7 +224,7 @@ spec:
 
 #### ▼ Node の場合
 
-Node 内で `ip addr` コマンドを実行することにより、Node に割り当てられた CIDR ブロックを確認できる。
+Node 内で `ip addr` コマンドを実行することで、Node に割り当てられた CIDR ブロックを確認できる。
 
 > - https://nishipy.com/archives/1467
 
@@ -331,7 +331,7 @@ networks:
 
 ### Minikube 内の『コンテナ』からホスト (`host.minikube.internal`) にリクエスト
 
-Minikube 内の『コンテナ』から『ホスト』に対して、リクエストを送信する。
+Minikube 内の『コンテナ』から『ホスト』へリクエストを送信する。
 
 ```bash
 # コンテナに接続する

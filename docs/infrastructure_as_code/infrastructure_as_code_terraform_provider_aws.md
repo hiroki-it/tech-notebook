@@ -1398,7 +1398,7 @@ Amazon Aurora では、クラスターにインスタンスを 1 つだけ紐付
 
 また以降インスタンスを紐付けると、リードレプリカとして自動的に作成されていく。
 
-AZ のマップデータに対して `for_each` 引数を使用することにより、各 AZ に最低 1 つのインスタンスを配置するように設定できる。
+AZ のマップデータに対して `for_each` 引数を使用することで、各 AZ に最低 1 つのインスタンスを配置するように設定できる。
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
 > - https://github.com/hashicorp/terraform/issues/5333

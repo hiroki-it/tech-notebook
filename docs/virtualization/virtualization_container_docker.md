@@ -130,7 +130,7 @@ docker クライアントは、`docker` コマンドを使用して docker デ�
 
 docker クライアントに docker デーモン API を公開する。
 
-クライアントが `docker` コマンドを実行することにより、docker デーモン API がコールされ、コマンドに沿ってコンテナが操作される。
+クライアントが `docker` コマンドを実行することで、docker デーモン API がコールされ、コマンドに沿ってコンテナが操作される。
 
 ![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-daemon.png)
 

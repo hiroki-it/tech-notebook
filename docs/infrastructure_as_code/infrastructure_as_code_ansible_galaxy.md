@@ -174,7 +174,7 @@ repository/
 
 ### コマンド
 
-Ansible のコントロールノードで `ansible-galaxy` コマンドを実行することにより、管理対象ノードの `~/.ansible/roles` ディレクトリ配下に role モジュールをインストールする。
+Ansible のコントロールノードで `ansible-galaxy` コマンドを実行することで、管理対象ノードの `~/.ansible/roles` ディレクトリ配下に role モジュールをインストールする。
 
 ```bash
 $ ansible-galaxy install <roleモジュール名>

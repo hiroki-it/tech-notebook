@@ -821,7 +821,7 @@ Amazon EKS データプレーンはプライベートサブネットで稼働さ
 
 ### パブリックサブネット内のデータプレーンからのリクエスト
 
-Pod をパブリックサブネットに配置した場合、パブリックネットワークや Amazon VPC 外にある AWS リソース (Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) に対してリクエストを送信するために特に必要なものはない。
+Pod をパブリックサブネットに配置した場合、パブリックネットワークや Amazon VPC 外にある AWS リソース (Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) へリクエストを送信するために特に必要なものはない。
 
 このとき、`POD_SECURITY_GROUP_ENFORCING_MODE=standard` に設定された Amazon VPC CNI は SNAT 処理を実行し、クライアント側 Pod の送信元 IP アドレスを Amazon EC2 ワーカーNode のプライマリーENI (`eth0`) の IP アドレスに変換する。
 
@@ -862,7 +862,7 @@ data:
 
 #### ▼ Amazon VPC 外のほかの AWS リソースへのリクエスト
 
-Pod をプライベートサブネットに配置した場合、パブリックネットワークや Amazon VPC 外にある AWS リソース (Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、AWS DynamoDB など) に対してリクエストを送信するためには、AWS NAT Gateway または Amazon VPC エンドポイントを配置する必要がある。
+Pod をプライベートサブネットに配置した場合、パブリックネットワークや Amazon VPC 外にある AWS リソース (Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、AWS DynamoDB など) へリクエストを送信するためには、AWS NAT Gateway または Amazon VPC エンドポイントを配置する必要がある。
 
 このとき、クライアント側 Pod の送信元 IP アドレスは、AWS NAT Gateway または Amazon VPC エンドポイントに紐づく IP アドレスとなる。
 

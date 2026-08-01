@@ -849,7 +849,7 @@ networks:
 
 #### ▼ NFS ストレージ
 
-NFS プラグインを使用することにより、永続データを `/var/lib/docker/volumes` ディレクトリではなく、NFS ストレージに保管する。
+NFS プラグインを使用することで、永続データを `/var/lib/docker/volumes` ディレクトリではなく、NFS ストレージに保管する。
 
 **＊実装例＊**
 

@@ -499,7 +499,7 @@ Go では、基本的に『実際の処理を使用し、差し替えしない�
 
 #### ▼ 外部の HTTP サーバー（`httptest.NewServer`）
 
-外部の HTTP サーバーへのリクエストをテストする場合、`httptest.NewServer` で実際の HTTP サーバーを起動し、自身に対してリクエストを送信する。
+外部の HTTP サーバーへのリクエストをテストする場合、`httptest.NewServer` で実際の HTTP サーバーを起動し、自身へリクエストを送信する。
 
 ```go
 package test

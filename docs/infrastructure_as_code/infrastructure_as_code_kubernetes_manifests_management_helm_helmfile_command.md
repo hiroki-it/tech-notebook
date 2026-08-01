@@ -89,7 +89,7 @@ $ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
 
 #### ▼ apply
 
-まず `helmfile diff` コマンドを実行することにより、このときに差分があれば、`helmfile sync` コマンドを実行する。
+まず `helmfile diff` コマンドを実行することで、このときに差分があれば、`helmfile sync` コマンドを実行する。
 
 `helmfile sync` コマンドとは異なり、Helm リリース間に差分がないと、リビジョンは更新されない。
 

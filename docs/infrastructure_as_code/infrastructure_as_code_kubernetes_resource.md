@@ -521,7 +521,7 @@ Pod の終了プロセスが始まると、以下の一連のプロセスも開�
 
 #### ▼ 待ち受けるポート番号の確認
 
-Pod 内のコンテナ内で `netstat` コマンドを実行することにより、コンテナが待ち受けるポート番号を確認できる。
+Pod 内のコンテナ内で `netstat` コマンドを実行することで、コンテナが待ち受けるポート番号を確認できる。
 
 ```bash
 $ kubectl exec foo-istiod -n istio-system -- netstat -tulpn
@@ -1331,7 +1331,7 @@ Docker の Volume とは独立した機能であることに注意する。
 
 #### ▼ PersistentVolume の使用率の確認方法 (CrashLoopBackOff でない場合)
 
-Pod 内で `df` コマンドを実行することにより、PersistentVolume の使用率を確認できる。
+Pod 内で `df` コマンドを実行することで、PersistentVolume の使用率を確認できる。
 
 出力結果で、ファイルシステム全体の使用率を確認する。
 

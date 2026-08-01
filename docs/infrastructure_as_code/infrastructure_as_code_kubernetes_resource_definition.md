@@ -1992,7 +1992,7 @@ spec:
 
 Kubernetes の実行時に自動的に作成される。
 
-もし手動で作成する場合は、`kubectl` コマンドを実行することにより、そのときに `--register-node` キーを `false` とする必要がある。
+もし手動で作成する場合は、`kubectl` コマンドを実行することで、そのときに `--register-node` キーを `false` とする必要がある。
 
 <br>
 
@@ -2491,7 +2491,7 @@ Deployment や Stateful でこれを使用する場合は、Pod のレプリカ�
 
 #### ▼ affinity.nodeAffinity とは
 
-Node の `.metadata.labels` キーを指定することにより、kube-scheduler が Pod をスケジューリングさせる Node を設定する。
+Node の `.metadata.labels` キーを指定することで、kube-scheduler が Pod をスケジューリングさせる Node を設定する。
 
 `.spec.nodeSelector` キーと比較して、より複雑に条件を設定できる。
 
@@ -2565,7 +2565,7 @@ Pod が削除された後に Node の `.metadata.labels` キーの値が変更�
 
 #### ▼ affinity.podAffinity とは
 
-Node 内の Pod を、`.metadata.labels` キーで指定することにより、その Pod と同じ Node 内に、新しい Pod をスケジューリングさせる。
+Node 内の Pod を、`.metadata.labels` キーで指定することで、その Pod と同じ Node 内に、新しい Pod をスケジューリングさせる。
 
 ```yaml
 apiVersion: v1

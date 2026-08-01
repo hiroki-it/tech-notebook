@@ -86,7 +86,7 @@ Webhook 系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmission
 
 このサーバー証明書は、Secret と Configuration (例：MutatingAdmissionConfiguration、ValidatingAdmissionConfiguration など) で管理している。
 
-サーバー証明書を含む Secret の作成は `kube-webhook-certgen` イメージで `create` コマンドを実行することにより、Configuration への挿入は `patch` コマンドを実行することで実現している。
+サーバー証明書を含む Secret の作成は `kube-webhook-certgen` イメージで `create` コマンドを実行することで、Configuration への挿入は `patch` コマンドを実行することで実現している。
 
 > - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-create
 > - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-patch

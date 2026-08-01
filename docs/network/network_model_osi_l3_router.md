@@ -238,7 +238,7 @@ NAPT の処理を持つルーターのこと。
 
 `1` 個の IP アドレスに対して、複数の内部 IP アドレスを紐付けられる。
 
-AWS や GCP などで使用されているような NAT ルーターはこちらであり、IP アドレスとポート番号の両方を指定することにより、VPC 内のプライベート IP アドレスに単一のパブリック IP アドレスを割り当てるようになっている。
+AWS や GCP などで使用されているような NAT ルーターはこちらであり、IP アドレスとポート番号の両方を指定することで、VPC 内のプライベート IP アドレスに単一のパブリック IP アドレスを割り当てるようになっている。
 
 ![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt-router.png)
 

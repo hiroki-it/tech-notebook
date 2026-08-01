@@ -123,7 +123,7 @@ metadata:
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
-Ingress が Cluster ネットワーク内に 1 つしか存在しない場合、IngressClass に設定することにより、デフォルトとする。
+Ingress が Cluster ネットワーク内に 1 つしか存在しない場合、IngressClass に設定することで、デフォルトとする。
 
 Ingress が新しく作成された場合、この IngressClass の設定値が使用されるようになる。
 

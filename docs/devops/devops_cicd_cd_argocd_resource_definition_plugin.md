@@ -633,7 +633,7 @@ spec:
 
 #### ▼ helmfile の処理の定義
 
-`helmfile template` コマンドを実行することにより、マニフェストを作成する。
+`helmfile template` コマンドを実行することで、マニフェストを作成する。
 
 ```yaml
 apiVersion: v1

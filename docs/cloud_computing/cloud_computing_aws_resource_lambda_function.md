@@ -158,7 +158,7 @@ AWS Lambda で関数を作成すると、Amazon CloudWatch Logs のロググル�
 
 #### ▼ aws-lambda-go とは
 
-Go を使用して、AWS Lambda-API に対してリクエストを送信し、AWS リソースを操作できる。
+Go を使用して、AWS Lambda-API へリクエストを送信し、AWS リソースを操作できる。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html
 
@@ -386,7 +386,7 @@ Amazon CloudWatch Logs にてこれを確認する。
 | パッケージ名                | 説明                                                                                  | 補足                                                                |
 | --------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | JavaScript の標準パッケージ | JavaScript にビルトイン関数を使用できる                                               | ・https://nodejs.org/api/index.html                                 |
-| `aws-sdk.js`                | JavaScript を使用して、AWS-API に対してリクエストを送信し、AWS リソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
+| `aws-sdk.js`                | JavaScript を使用して、AWS-API へリクエストを送信し、AWS リソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
 

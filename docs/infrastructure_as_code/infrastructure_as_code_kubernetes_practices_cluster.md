@@ -174,7 +174,7 @@ GitOps を採用できないため、CIOps になる。
 
 `(2)`
 
-: `kubectl drain` コマンドを実行することにより、旧 Node グループ内のワーカーNode でドレイン処理を開始させる。
+: `kubectl drain` コマンドを実行することで、旧 Node グループ内のワーカーNode でドレイン処理を開始させる。
 
      この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。
 

@@ -711,7 +711,7 @@ $ kubectl config use-context <デプロイ先のClusterのARN>
 
 `(5)`
 
-: `argocd cluster add <デプロイ先のClusterのARN>` コマンドを実行することにより、デプロイ先の Cluster に ArgoCD のエージェントを作成する。
+: `argocd cluster add <デプロイ先のClusterのARN>` コマンドを実行することで、デプロイ先の Cluster に ArgoCD のエージェントを作成する。
 
     Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) を作成できる。
 

@@ -35,7 +35,7 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 
 #### ▼ `istio-init` コンテナとは
 
-コンテナの起動時、`istio-iptables` コマンドを実行することにより、istio-iptables を Pod に適用する。
+コンテナの起動時、`istio-iptables` コマンドを実行することで、istio-iptables を Pod に適用する。
 
 ![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-init.png)
 

@@ -978,7 +978,7 @@ Facade がトレイトの代わりになる場合、Facade を使用すると責
 
 **＊例＊**
 
-Notifiable トレイトを User クラスで使用せずに、Notification ファサードによるオンデマンド通知を使用することにより、User クラスが通知処理の責務を持たずに済む。
+Notifiable トレイトを User クラスで使用せずに、Notification ファサードによるオンデマンド通知を使用することで、User クラスが通知処理の責務を持たずに済む。
 
 #### ▼ 標準登録された Facade クラスの種類
 
@@ -3202,7 +3202,7 @@ return [
 
 **＊実装例＊**
 
-外部の API に対してリクエストを送信し、データを取得する。
+外部の API へリクエストを送信し、データを取得する。
 
 取得した JSON 型データを、クライアントにレスポンスする。
 
@@ -3710,7 +3710,7 @@ class TfaTokenNotification extends Notification
 
 MailMessage クラスの関数を使用して、E メール通知の内容を作成する。
 
-`markdown()` 関数を使用することにより、マークダウン形式で定義できる。
+`markdown()` 関数を使用することで、マークダウン形式で定義できる。
 
 > - https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message
 > - https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown
@@ -4232,7 +4232,7 @@ Route::get('/users/{user}', 'UserController@index');
 
 または。
 
-このとき、『`/users/1`』に対してリクエストを送信すると、ユーザーID が `1` のユーザーが DB から読み出され、コントローラーにインジェクションされる。
+このとき、『`/users/1`』へリクエストを送信すると、ユーザーID が `1` のユーザーが DB から読み出され、コントローラーにインジェクションされる。
 
 ```php
 <?php

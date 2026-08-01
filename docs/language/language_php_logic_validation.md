@@ -362,7 +362,7 @@ function leapYear(int $year): string
 
 #### ▼ if と return を使用した早期リターン
 
-各 if 文で `return` を使用することにより、`if` が入れ子状になることを防げる。
+各 if 文で `return` を使用することで、`if` が入れ子状になることを防げる。
 
 これを、早期リターンともいう。
 
