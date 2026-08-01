@@ -439,7 +439,7 @@ flowchart LR
 - クライアントサイド暗号化のための S3 マネージド暗号化キー (図では省略)
 - Kubernetes リポジトリ内の SOPS (図では省略)
 
-![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png)
+![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png)
 
 # 08-02. 永続データ管理
 
@@ -565,7 +565,7 @@ flowchart LR
 
 宛先マイクロサービスはストレージをポーリングし、新しいデータが追加され次第、ストレージからこれを読み込みます。
 
-![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png)
+![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png)
 
 ## 振り返り
 

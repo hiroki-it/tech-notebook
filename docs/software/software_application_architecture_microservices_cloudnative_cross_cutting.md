@@ -416,7 +416,7 @@ CDN を採用している場合は、デプロイ前後で必要な静的ファ�
 
 また、E2E ツール (例：Playwright) を使用して、実際のユーザーを模した一連の操作を実施し、すべてのコンポーネントを対象としたシステムテストを実施すべきです。
 
-![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (フロントエンド).drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (フロントエンド).drawio.png)
+![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (フロントエンド).drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (フロントエンド).drawio.png)
 
 ### BFF
 
@@ -426,7 +426,7 @@ CDN を採用している場合は、デプロイ前後で必要な静的ファ�
 
 CI/CD パイプラインは、以下の要素からなります。
 
-![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (BFF).drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (BFF).drawio.png)
+![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (BFF).drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (BFF).drawio.png)
 
 ### マイクロサービス
 
@@ -442,7 +442,7 @@ CI/CD パイプラインは、以下の要素からなります。
 
 また、ロードテストツール (例：Gatling) を使用して、マイクロサービスアーキテクチャ全体のロードテスト / 回帰テスト、を実施すべきです。
 
-![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (マイクロサービス) .drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (マイクロサービス) .drawio.png)
+![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (マイクロサービス) .drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (マイクロサービス) .drawio.png)
 
 ### SRE ツール
 
@@ -453,7 +453,7 @@ CI/CD パイプラインは、以下の要素からなります。
 - Kubernetes リポジトリの CI パイプライン (１行目)
 - CD パイプライン (２行目)
 
-![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (BFF) .drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (BFF) .drawio.png)
+![DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (BFF) .drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-CI_CD パイプライン (BFF) .drawio.png)
 
 ## リポジトリ分割パターンに基づく GitOps パターン
 

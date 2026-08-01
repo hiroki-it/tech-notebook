@@ -36,7 +36,7 @@ Google アナリティクスで、メトリクスの元になるデータポイ�
   <script
     async
     src="https://www.googletagmanager.com/gtag/js?id=G-*****"
-  > </script>
+  ></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {

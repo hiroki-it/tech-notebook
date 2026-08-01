@@ -122,7 +122,7 @@ CDN (グローバルなキャッシュサーバー) の仕組みを使用して�
   src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"
   integrity="sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg="
   crossorigin="anonymous"
-> </script>
+></script>
 ```
 
 #### ▼ script タグが複数ある場合
