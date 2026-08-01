@@ -497,7 +497,7 @@ Pod 全体をディメンションとしたメトリクスの監視ポリシー�
 
 #### ▼ Deployment 系
 
-Deployment が正しく Pod を作成できない場合、それだけで HelloWorld のアプリケーションを起動できるイメージがある。
+Deployment が正常に Pod を作成できない場合、それだけで HelloWorld のアプリケーションを起動できるイメージがある。
 
 ```yaml
 apiVersion: v1
