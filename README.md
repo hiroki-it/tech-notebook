@@ -65,7 +65,7 @@ $ yarn prettier -w --no-bracket-spacing **/*.md
 
 <br>
 
-## Webサイト生成
+## Web サイト生成
 
 1. ローカルマシンで Web サイトを生成する
 
