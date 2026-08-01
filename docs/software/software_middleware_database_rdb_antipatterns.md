@@ -407,5 +407,3 @@ SELECT team_id, COUNT(*)
 FROM users
 GROUP BY team_id;
 ```
-
-ただし、グループの分類条件や集計値の計算に業務上の判定が必要な場合、そのドメインロジックを SQL に含めず、アプリケーション側で処理する。
