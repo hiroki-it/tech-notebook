@@ -35446,7 +35446,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">
 </ul>
 </blockquote>
 <h4 id="-upgrade">▼ -upgrade<a class="headerlink" href="#-upgrade" title="Permanent link">&para;</a></h4>
-<p>現在のバージョンを基に、自前/公式リモートモジュール、プラグイン、のアップグレード/ダウングレードを行う。</p>
+<p>現在のバージョンを基に、自前/公式リモートモジュールやプラグインのアップグレード/ダウングレードを行う。</p>
 <p>合わせて、<code>.terraform.lock.hcl</code> ファイルを更新する。</p>
 <p>リモートモジュールやプラグインのバージョンを固定していない場合、<code>upgrade</code> オプションによって、最新のバージョンを毎回インストールすることになる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-upgrade
@@ -36023,7 +36023,7 @@ $<span class="w"> </span>terraform<span class="w"> </span>-chdir<span class="o">
 <p><br></p>
 <h2 id="02-tfstate">02. 実インフラのすべての設定値を <code>tfstate</code> ファイルに取り込む<a class="headerlink" href="#02-tfstate" title="Permanent link">&para;</a></h2>
 <h3 id="import_2"><code>import</code> について<a class="headerlink" href="#import_2" title="Permanent link">&para;</a></h3>
-<p>実インフラのすべての設定値を <code>tfstate</code> ファイルに取り込む場合、これの設定値を <code>resource</code> ブロックの設定値として <code>tfstate</code> ファイルに書き込み、Terraform の管理下におく必要がある (<code>tfstate</code> ファイル上では、<code>resource</code> ブロックは <code>managed</code> モードという表記になる) 。</p>
+<p>実インフラのすべての設定値を <code>tfstate</code> ファイルに取り込む場合、実インフラの設定値を <code>resource</code> ブロックの設定値として <code>tfstate</code> ファイルに書き込み、Terraform の管理下におく必要がある (<code>tfstate</code> ファイル上では、<code>resource</code> ブロックは <code>managed</code> モードという表記になる) 。</p>
 <p>このとき、<code>terraform import</code> コマンドを実行する方法と、コンソール画面から一度削除したうえで <code>terraform apply</code> コマンドを実行する方法がある (前者を推奨) 。</p>
 <p>執筆時点 (2022/07/19) で、複数のインフラリソースを網羅的に確認する方法は公式になく、インフラリソースを <code>1</code> 個ずつ指定して、<code>tfstate</code> ファイルに書き込んでいく必要がある。</p>
 <p>似た目的で使用する <code>terraform apply -refresh-only</code> コマンドは実インフラの一部の設定値が対象であるが、<code>import</code> は実インフラのすべての設定値が対象である。</p>
@@ -36308,7 +36308,7 @@ No<span class="w"> </span>changes.<span class="w"> </span>Infrastructure<span cl
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:13 JST">2026-08-01</span>
   </span>
 
     

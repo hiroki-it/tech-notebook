@@ -39208,7 +39208,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specconfigpatchesmatch">.spec.configPatches.match<a class="headerlink" href="#specconfigpatchesmatch" title="Permanent link">&para;</a></h3>
 <h4 id="match">▼ match とは<a class="headerlink" href="#match" title="Permanent link">&para;</a></h4>
 <p>フィルターの設定値を変更する場合、その実行条件を設定する。</p>
-<p>条件に合致する設定値があった場合、<code>.spec.configPatches.patch</code> キーで設定した内容の変更処理を実施する。</p>
+<p>条件に合致する設定値があった場合、<code>.spec.configPatches.patch</code> キーで設定した内容に変更する。</p>
 <h4 id="cluster">▼ cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h4>
 <p>指定したクラスターが存在する場合、フィルターの設定値を変更する。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -40839,7 +40839,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="namespacegateway">▼ <code>&lt;Namespace名&gt;/&lt;Gateway名&gt;</code><a class="headerlink" href="#namespacegateway" title="Permanent link">&para;</a></h4>
 <p>いずれの Gateway の条件に合致したリクエストを処理するかを設定する。</p>
-<p>Gateway 名とこれの Namespace を設定する。</p>
+<p>Gateway 名とその Namespace を設定する。</p>
 <p>VirtualService と Gateway が同じ Namespace に所属する場合は、Namespace を省略できる (<code>.spec.export</code> キーとは関係ない) 。</p>
 <p>ただ、Namespace は省略しないほうがわかりやすい。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -41271,7 +41271,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="retryon">▼ retryOn<a class="headerlink" href="#retryon" title="Permanent link">&para;</a></h4>
 <p>リトライ失敗の理由を設定する。</p>
-<p>istio-proxy は、レスポンスの <code>x-envoy-retry-on</code> ヘッダーに割り当てるため、これの値を設定する。</p>
+<p>istio-proxy は、レスポンスの <code>x-envoy-retry-on</code> ヘッダーに割り当てるため、その値を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>デフォルトでは、リトライの条件は <code>connect-failure,refused-stream,unavailable</code> である。</p>
 <p><code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code> 変数を <code>true</code> にすると、元はデフォルト値であった <code>503</code> を設定できる。</p>
@@ -41623,7 +41623,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:52 JST">2026-08-01</span>
   </span>
 
     

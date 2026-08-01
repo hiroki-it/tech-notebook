@@ -34548,7 +34548,7 @@
 </dd>
 <dt><code>(4)</code></dt>
 <dd>
-<p>これの元、双方向データバインディングが実現される仕組みとして、View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。</p>
+<p>この仕組みのもと、双方向データバインディングが実現される。View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。</p>
 </dd>
 </dl>
 <p><img alt="Vueコンポーネントツリーにおけるコンポーネント間の通信" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueにおけるMVVMアーキテクチャ.png" /></p>
@@ -34563,7 +34563,7 @@
 <h3 id="mvvm_3">MVVM アーキテクチャの実装例<a class="headerlink" href="#mvvm_3" title="Permanent link">&para;</a></h3>
 <h4 id="1-view-foohtmlfootwig">(1) 【View】テンプレート (<code>foo.html</code>、<code>foo.twig</code>)<a class="headerlink" href="#1-view-foohtmlfootwig" title="Permanent link">&para;</a></h4>
 <p>データが、テンプレートから <code>js</code> ファイルに渡される仕組みは、フレークワークを使用しない場合と同じである。</p>
-<p>データが <code>js</code> ファイルに渡される状況としては、イベント発火時である。</p>
+<p>データが <code>js</code> ファイルに渡されるのは、イベント発火時である。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>例えば、テンプレートの親コンポーネントタグでクリックイベントが発火したとき、親コンポーネントから、イベントに紐付いたイベントハンドラ関数がコールされる。</p>
 <div class="highlight"><pre><span></span><code><span class="cm">&lt;!-- divタグのidは『app』とする --&gt;</span>
@@ -34738,7 +34738,7 @@
 <span class="w">      </span><span class="nx">updateCriteria</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="cm">/*</span>
 <span class="cm">        ・コンポーネント (v-foo-component-1) と紐付く処理</span>
-<span class="cm">        ・changeイベントの発火と、これのイベントハンドラ関数に引数を渡す。</span>
+<span class="cm">        ・changeイベントの発火と、そのイベントハンドラ関数に引数を渡す。</span>
 <span class="cm">        */</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="s2">&quot;change&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="nx">localCriteria</span><span class="p">});</span>
 <span class="w">      </span><span class="p">},</span>
@@ -35246,7 +35246,7 @@ undefined
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:52 JST">2026-08-01</span>
   </span>
 
     

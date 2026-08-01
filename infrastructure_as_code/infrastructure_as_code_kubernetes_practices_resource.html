@@ -37136,7 +37136,7 @@
 <h3 id="_3">ハードウェアをサイジングする<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="cpu">▼ CPU / メモリをサイジングする<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
 <p>性能目標値に基づいて、Node のスペック/数を適切に選び、Cluster 全体の CPU / メモリをサイジングする。</p>
-<p>ロードテストを実施して、実地的な状況 (例：平常時、ピーク時、障害時) な負荷を再現し、性能目標を達成できるかを検証する。</p>
+<p>ロードテストを実施して、実際の状況 (例：平常時、ピーク時、障害時) に近い負荷を再現し、性能目標を達成できるかを検証する。</p>
 <ul>
 <li>平均スループット</li>
 <li>平均レスポンスタイム</li>
@@ -37603,7 +37603,7 @@
 <p>1 時間に Job を 1 回実行すると仮定すると、簡単に <code>100</code> 回を超過してしまう。</p>
 <div class="highlight"><pre><span></span><code>停止時間<span class="w"> </span><span class="o">(</span>8h<span class="o">)</span><span class="w"> </span>*<span class="w"> </span>実行間隔<span class="w"> </span><span class="o">(</span><span class="m">60</span>/h<span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>480回
 </code></pre></div>
-<p>このとき、<code>.spec.startingDeadlineSeconds</code> キーを設定しておくと、これの期間に <code>100</code> 回連続で失敗したときのみ、Job を再実行できなくなる。</p>
+<p>このとき、<code>.spec.startingDeadlineSeconds</code> キーを設定しておくと、その期間に <code>100</code> 回連続で失敗したときのみ、Job を再実行できなくなる。</p>
 <p><code>100</code> 回連続を判定する期間を短くすることで、再作成しなくてもよくなるようにする。</p>
 <blockquote>
 <ul>
@@ -38071,7 +38071,7 @@ options<span class="w"> </span>ndots:5
 <p>機密性の高い情報を保持することは危険であり、Secret で保持するほうがよい。</p>
 <h4 id="secret-secret">▼ Secret の元データは Secret ストアで暗号化して管理する<a class="headerlink" href="#secret-secret" title="Permanent link">&para;</a></h4>
 <p>Secret は、base64 方式のエンコード値を保持する。</p>
-<p>これの元データを平文のまま管理することは危険なため、Secret ストアに管理するほうがよい。</p>
+<p>その元データを平文のまま管理することは危険なため、Secret ストアに管理するほうがよい。</p>
 <p>また、暗号化キーを使って暗号化したうえで、Secret ストアで管理する。</p>
 <table>
 <thead>
@@ -38897,7 +38897,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 </tr>
 <tr>
 <td>Node のスケーリングが正しく動作することを確認する。</td>
-<td>Cluster Autoscaler や Karpenter を使用している場合、Cluster Autoscaler や Karpenter の設定と Node のリソース状況応じたスケーリングが行われることを確認する。</td>
+<td>Cluster Autoscaler や Karpenter を使用している場合、Cluster Autoscaler や Karpenter の設定と Node のリソース状況に応じたスケーリングが行われることを確認する。</td>
 </tr>
 </tbody>
 </table>
@@ -39237,7 +39237,7 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:52 JST">2026-08-01</span>
   </span>
 
     

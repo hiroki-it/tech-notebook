@@ -34603,7 +34603,7 @@
 <h3 id="_4">デフォルトツール<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>執筆時点 (2023/04/22) では、いくつかのツール (例：Helm、Kustomize、Ks、Jsonnet など)
 を Application のオプションとして実行できるようになっている。</p>
-<p>すなわち、これらの repo-server はこれらのツールを実行できる。</p>
+<p>つまり、これらの repo-server はこれらのツールを実行できる。</p>
 <p><code>/usr/local/bin</code> ディレクトリ配下でバイナリを確認できる。</p>
 <div class="highlight"><pre><span></span><code>argocd@repo-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/usr/local/bin
 
@@ -34974,7 +34974,7 @@ Flags:
 </code></pre></div>
 <p><br></p>
 <h2 id="02-helm">02. Helm との連携<a class="headerlink" href="#02-helm" title="Permanent link">&para;</a></h2>
-<p>repo-server は Helm を実行できるため、これのサイドカーは不要である。</p>
+<p>repo-server は Helm を実行できるため、Helm のサイドカーは不要である。</p>
 <p>デフォルトで ArgoCD にインストールされている Helm の推奨バージョン以外を使用したい場合、Kustomize を InitContainer でインストールする必要がある。</p>
 <p>Helm を使用できるように、Helm をインストールする。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -35503,7 +35503,7 @@ Flags:
 <p><br></p>
 <h2 id="05-kustomize">05. Kustomize<a class="headerlink" href="#05-kustomize" title="Permanent link">&para;</a></h2>
 <h3 id="kustomize">Kustomize の実行方法<a class="headerlink" href="#kustomize" title="Permanent link">&para;</a></h3>
-<p>repo-server は Kustomize を実行できるため、これのサイドカーは不要である。</p>
+<p>repo-server は Kustomize を実行できるため、Kustomize のサイドカーは不要である。</p>
 <h3 id="_13">セットアップ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="kustomize_1">▼ Kustomize のインストール<a class="headerlink" href="#kustomize_1" title="Permanent link">&para;</a></h4>
 <p>デフォルトで ArgoCD にインストールされている Kustomize の推奨バージョン以外を使用したい場合、Kustomize を InitContainer でインストールする必要がある。</p>
@@ -35591,7 +35591,7 @@ Flags:
 <p><br></p>
 <h2 id="06-ksops">06. KSOPS<a class="headerlink" href="#06-ksops" title="Permanent link">&para;</a></h2>
 <h3 id="ksops">KSOPS の実行方法<a class="headerlink" href="#ksops" title="Permanent link">&para;</a></h3>
-<p>repo-server は KSOPS を実行できる (<code>kustomize</code> コマンドで <code>--enable-alpha-plugins</code> オプションを有効化するだけのため) ため、これのサイドカーは不要である。</p>
+<p>repo-server は KSOPS を実行できる (<code>kustomize</code> コマンドで <code>--enable-alpha-plugins</code> オプションを有効化するだけのため) ため、KSOPS のサイドカーは不要である。</p>
 <p><br></p>
 <h3 id="_16">セットアップ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="ksops_1">▼ KSOPS のインストール<a class="headerlink" href="#ksops_1" title="Permanent link">&para;</a></h4>
@@ -35905,7 +35905,7 @@ Flags:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:44:25 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:40:52 JST">2026-08-01</span>
   </span>
 
     
