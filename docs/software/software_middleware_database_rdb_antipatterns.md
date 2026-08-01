@@ -36,7 +36,64 @@ export async function handler() {
 
 <br>
 
-## 02. 不要な DB レコードやカラムを取得する
+## 02. データの意味や用途に適さないカラム型で保存する
+
+### 問題
+
+データの見た目だけでカラム型を決めると、値の比較や計算のたびに型変換が必要になる。
+
+また、DB がカラム型に基づいて値を検証できず、不正な値を保存したり、インデックスを効果的に使用できなかったりする可能性がある。
+
+データの見た目ではなく、ドメイン上の意味、制約、比較方法、計算方法に適したカラム型で保存する。
+
+<br>
+
+### 実装例（TypeScript）
+
+#### ▼ 問題がある実装
+
+```typescript
+const user = {
+  id: 1,
+  birthDate: "2000-01-01",
+};
+```
+
+#### ▼ 解決方法
+
+日付として比較や計算を行う値には、`VARCHAR` 型のカラムではなく `DATE` 型のカラムを使用する。
+
+同様に、金額には `DECIMAL` 型のカラム、件数には `INT` 型のカラム、真偽値には `BOOLEAN` 型のカラムを使用する。
+
+ただし、電話番号、郵便番号、商品コードなど、数字で構成されていても計算を目的としない値には `VARCHAR` 型のカラムを使用する。
+
+```typescript
+import {Prisma} from "@prisma/client";
+
+const user = {
+  id: 1,
+  // 日付（DBではDATE型のカラムにする）
+  birthDate: new Date("2000-01-01"),
+  // 金額（DBではDECIMAL型のカラムにする）
+  accountBalance: new Prisma.Decimal("1000.50"),
+  // 件数（DBではINT型のカラムにする）
+  loginCount: 10,
+  // 真偽値（DBではBOOLEAN型のカラムにする）
+  isActive: true,
+  // 電話番号（DBではVARCHAR型のカラムにする）
+  phoneNumber: "03-1234-5678",
+  // 郵便番号（DBではVARCHAR型のカラムにする）
+  postalCode: "012-3456",
+  // 商品コード（DBではVARCHAR型のカラムにする）
+  productCode: "001234",
+};
+```
+
+
+
+<br>
+
+## 03. 不要な DB レコードやカラムを取得する
 
 ### 問題
 
@@ -59,7 +116,7 @@ const user = await prisma.user.findUnique({
 
 <br>
 
-## 03. N+1 問題を起こす
+## 04. N+1 問題を起こす
 
 ### N+1 問題とは
 
@@ -196,7 +253,7 @@ const logs = await prisma.log.findMany({
 
 <br>
 
-## 04. 一覧取得でページング（取得数指定）がない
+## 05. 一覧取得でページング（取得数指定）がない
 
 ### 問題
 
@@ -222,7 +279,7 @@ const users = await prisma.user.findMany({
 
 <br>
 
-## 05. 検索するレコード数をむやみに増やす
+## 06. 検索するレコード数をむやみに増やす
 
 ### 問題
 
@@ -311,7 +368,7 @@ const eventCount = eventSummary?.count ?? 0;
 
 <br>
 
-## 06. 空入力でも SQL を実行する
+## 07. 空入力でも SQL を実行する
 
 ### 問題
 
@@ -357,7 +414,7 @@ async function findByUserNames(userNames: string[]) {
 
 <br>
 
-## 07. GROUP BY 句を使用せずにアプリケーション側で集計する
+## 08. GROUP BY 句を使用せずにアプリケーション側で集計する
 
 ### 問題
 
@@ -406,4 +463,54 @@ const userCountByTeam = await prisma.user.groupBy({
 SELECT team_id, COUNT(*)
 FROM users
 GROUP BY team_id;
+```
+
+<br>
+
+## 09. SUM 関数を使用せずにアプリケーション側で合計する
+
+### 問題
+
+合計対象のレコードをすべて取得してアプリケーション側で合計すると、DB から転送するデータ量とアプリケーションのメモリ使用量が増える。
+
+単純な数値の合計には SUM 関数を使用し、必要な合計値だけを取得する。
+
+<br>
+
+### 実装例（TypeScript）
+
+#### ▼ 問題がある実装
+
+```typescript
+const orders = await prisma.order.findMany({
+  select: {
+    amount: true,
+  },
+});
+
+const totalAmount = orders.reduce(
+  (total, order) => total + order.amount,
+  0,
+);
+```
+
+#### ▼ 解決方法
+
+Prisma の `aggregate()` 関数を使用し、注文金額を合計する処理をアプリケーションのインフラストラクチャ層から DB に委譲する。
+
+```typescript
+const result = await prisma.order.aggregate({
+  _sum: {
+    amount: true,
+  },
+});
+
+const totalAmount = result._sum.amount ?? 0;
+```
+
+内部的には、SUM 関数を使用した SQL が発行される。
+
+```sql
+SELECT SUM(amount)
+FROM orders;
 ```
