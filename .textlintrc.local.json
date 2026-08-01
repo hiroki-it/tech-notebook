@@ -24,12 +24,6 @@
       "no-exclamation-question-mark": false,
       "no-hankaku-kana": false
     },
-    "no-triple-no": {
-      "max": 2
-    },
-    "no-ascii-before-uchi-soto": true,
-    "ja-space-in-yaml-comments": true,
-    "ja-space-between-half-and-full-width": true,
     "textlint-rule-preset-ja-spacing": {
       "ja-nakaguro-or-halfwidth-space-between-katakana": false,
       "ja-no-space-around-parentheses": false,
