@@ -74,7 +74,7 @@ const result = spawnSync(textlintBin, textlintArgs, {
   shell: false,
 });
 
-if (args.includes("--fix") && (result.status ?? 1) === 0) {
+if (args.includes("--fix") && result.status !== null) {
   for (const [temporaryPath, originalPath] of temporaryPathMap.entries()) {
     const fixedLines = fs.readFileSync(temporaryPath, "utf8").split("\n");
     const originalLines = originalContentMap.get(temporaryPath).split("\n");
