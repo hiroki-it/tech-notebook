@@ -28,7 +28,7 @@ Knative を使用しない場合、イベント駆動関数の公開に必要な
 
 ### アーキテクチャ
 
-Knative は、Service、Route、Configuration、Revision、から構成される。
+Knative は、Service、Route、Configuration、Revision から構成される。
 
 ![knative_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture.png)
 
@@ -39,7 +39,7 @@ Knative は、Service、Route、Configuration、Revision、から構成される
 
 ### イベントメッシュ
 
-Knative のイベントメッシュ (Knative Eventing) は、イベントブローカー、イベントトリガー、からなる。
+Knative のイベントメッシュ (Knative Eventing) は、イベントブローカー、イベントトリガーからなる。
 
 イベントブローカーは、送信元マイクロサービスのメッセージ中継システムのクライアント SDK として機能する。
 

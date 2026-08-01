@@ -27,7 +27,7 @@ description: Amazon EKS＠AWSリソースの知見を記録しています。
 
 #### ▼ コントロールプレーンの仕組み
 
-Amazon EKS のコントロールプレーンは、開発者や他の AWS リソースからのリクエストを待ち受ける API、接続を API にルーティングする NLB、データプレーンを管理するコンポーネント、からなる。
+Amazon EKS のコントロールプレーンは、開発者や他の AWS リソースからのリクエストを待ち受ける API、接続を API にルーティングする NLB、データプレーンを管理するコンポーネントからなる。
 
 ![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane.png)
 
@@ -642,7 +642,7 @@ spec:
 
 : ServiceAccount の `.metadata.annotations.eks.amazonaws.com/role-arn` キーで AWS IAM ロールの ARN を設定する。
 
-     これにより、Amazon EKSで認証済みのServiceAccountにAWS IAMロールを紐付けることができるようになる。
+     これにより、Amazon EKSで認証済みのServiceAccountにAWS IAMロールを紐付けられるようになる。
 
      `automountServiceAccountToken`キーが有効化されていることを確認する。
 
@@ -1101,7 +1101,7 @@ Node グループ (マネージド Node グループ、セルフマネージド 
 
 | タグ   | 値                             | 説明                                                                                                                                                                                                                                   |
 | ------ | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Name` | Amazon EC2 ワーカーNode の名前 | Node グループで指定する起動テンプレートのタグに、`Name` タグを設定しておく。起動する Amazon EC2 ワーカーNode に Amazon EC2 の名前は `Name` タグで決まる仕組みのため、起動テンプレートによってワーカーNode 名を設定させることができる。 |
+| `Name` | Amazon EC2 ワーカーNode の名前 | Node グループで指定する起動テンプレートのタグに、`Name` タグを設定しておく。Amazon EC2 ワーカーNode の名前は `Name` タグで決まるため、起動テンプレートでワーカーNode 名を設定できる。 |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html
 
@@ -1665,7 +1665,7 @@ metadata:
 
 : `aws-observability` 内で `aws-logging` という名前の ConfigMap を作成する。
 
-     これより、ログフォワーディングコンテナとしてFluentBitコンテナが作成され、PodからAmazon CloudWatch Logsにログを送信できるようになる。
+     これにより、ログフォワーディングコンテナとしてFluentBitコンテナが作成され、PodからAmazon CloudWatch Logsにログを送信できるようになる。
 
      名前は、必ず`aws-logging`とする。
 

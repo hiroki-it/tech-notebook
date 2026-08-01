@@ -32,7 +32,7 @@ OAuth をベースとして、認証フェーズを追加し、認証/認可を�
 
 ### アーキテクチャ
 
-認証フェーズの委譲先の ID プロバイダー、ログインしたい Web サイト、から構成される。
+認証フェーズの委譲先の ID プロバイダー、ログインしたい Web サイトから構成される。
 
 > - https://baasinfo.net/?p=4418
 > - https://tech.yyh-gl.dev/blog/id_token_and_access_token/

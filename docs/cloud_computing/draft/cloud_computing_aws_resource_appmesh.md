@@ -19,7 +19,7 @@ description: App Mesh＠AWSの知見を記録しています。
 
 クラウドサービスメッシュとして機能する。
 
-VirtualRouter、VirtualService、VirtualNode、One-Way TLS/mTLS、から構成される。
+VirtualRouter、VirtualService、VirtualNode、One-Way TLS/mTLS から構成される。
 
 > - https://zenn.dev/cadp/articles/ecs-service-mesh-compare
 

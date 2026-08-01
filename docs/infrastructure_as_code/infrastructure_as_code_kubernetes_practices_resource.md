@@ -904,11 +904,11 @@ search foo.svc.cluster.local svc.cluster.local cluster.local
 options ndots:5
 ```
 
-これにより、ドメインのドット数が `5` 未満の場合は、Cluster 内で名前解決するしようとする。
+これにより、ドメインのドット数が `5` 未満の場合は、Cluster 内で名前解決しようとする。
 
 しかし、Cluster 外へしかリクエストを送信しないコンテナでは、Cluster 内で名前解決する必要はない。
 
-そういったコンテナの Pod では、Pod DNS Config の `.spec.dnsConfig.options` キーで ndots を `1` にし、ドット数が `1` 未満の場合 (つまりドットが `1` 個でもあれば) 、Cluster 外で名前解決するさせるようにする。
+そういったコンテナの Pod では、Pod DNS Config の `.spec.dnsConfig.options` キーで ndots を `1` にし、ドット数が `1` 未満の場合 (つまりドットが `1` 個でもあれば) 、Cluster 外で名前解決させるようにする。
 
 ```yaml
 apiVersion: v1
@@ -1421,7 +1421,7 @@ istio-init コンテナとかまさにその例
 
 #### ▼ allowPrivilegeEscalation を無効化する
 
-コンテナのプロセスは、コンテナ起動コマンド (親プロセス)、親プロセスが実行するプロセス (子プロセス) 、からなる。
+コンテナのプロセスは、コンテナ起動コマンド (親プロセス)、親プロセスが実行するプロセス (子プロセス) からなる。
 
 `.containers[*].securityContext.allowPrivilegeEscalation` キーを有効化してしまうと、子プロセスは権限フラグ (`setuid`、`setgid`) を使用できるようになる。
 

@@ -37,7 +37,7 @@ Custom Controller は、client-go コンポーネントと custom-controller コ
 
 #### ▼ client-go コンポーネントの仕組み
 
-リフレクター、インフォーマー、インデクサー、から構成される。
+リフレクター、インフォーマー、インデクサーから構成される。
 
 > - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components
 > - https://speakerdeck.com/bells17/controller-runtime-deep-dive?slide=35
@@ -71,7 +71,7 @@ Delta FIFO キューから Kubernetes リソースの実体を取得する。
 
 #### ▼ custom-controller コンポーネントとは
 
-リソースイベントハンドラー、ワークキュー、アイテム処理、から構成される。
+リソースイベントハンドラー、ワークキュー、アイテム処理から構成される。
 
 これらを組み合わせて、Reconciliation を実行する。
 

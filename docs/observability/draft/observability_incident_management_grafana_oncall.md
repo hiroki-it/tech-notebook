@@ -21,7 +21,7 @@ description: Grafana OnCall＠インシデント管理ツールの知見を記�
 
 ## 01. Grafana OnCall の仕組み
 
-Grafana OnCall は、Grafana OnCall Engine、DB、から構成されている。
+Grafana OnCall は、Grafana OnCall Engine、DB から構成されている。
 
 ![grafana-oncall_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grafana-oncall_architecture.png)
 

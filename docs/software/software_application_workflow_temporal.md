@@ -17,7 +17,7 @@ description: Temporal＠ワークフローの知見を記録しています。
 
 ### アーキテクチャ
 
-Temporal は、Temporal クライアント、Temporal サーバー、ステート用 DB、Temporal ワーカー、からなる。
+Temporal は、Temporal クライアント、Temporal サーバー、ステート用 DB、Temporal ワーカーからなる。
 
 ![temporal_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_architecture.png)
 

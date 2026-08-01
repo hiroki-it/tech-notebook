@@ -17,7 +17,7 @@ description: Cilium@ネットワーク系の知見を記録しています。
 
 ### アーキテクチャ
 
-Cilium は、Cilium エージェント、Cilium CNI、から構成される。
+Cilium は、Cilium エージェント、Cilium CNI から構成される。
 
 > - https://caddi.tech/archives/3864
 

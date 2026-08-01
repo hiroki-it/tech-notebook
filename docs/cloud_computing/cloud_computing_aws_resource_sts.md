@@ -297,7 +297,7 @@ Cognito を ID プロバイダーとして使用するように、信頼され�
 
 Amazon EKS を ID プロバイダーとして使用するように、`Federated` キーで Amazon EKS Cluster の識別子を設定する。
 
-これにより、Amazon EKS Cluster 内で認証済みの ServiceAccount に AWS IAM ロールを紐付けることができるようになる。
+これにより、Amazon EKS Cluster 内で認証済みの ServiceAccount に AWS IAM ロールを紐付けられるようになる。
 
 また、`Condition` キーで特定の ServiceAccount を指定できるようにする。
 

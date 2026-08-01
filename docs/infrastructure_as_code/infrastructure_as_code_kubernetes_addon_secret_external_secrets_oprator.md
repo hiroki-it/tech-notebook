@@ -17,7 +17,7 @@ description: External Secrets Operator＠Secret系の知見を記録していま
 
 ### アーキテクチャ
 
-External Secrets Operator は、external-secrets、external-secrets-controller、から構成される。
+External Secrets Operator は、external-secrets、external-secrets-controller から構成される。
 
 ![external-secrets-operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-secrets-operator_architecture.png)
 

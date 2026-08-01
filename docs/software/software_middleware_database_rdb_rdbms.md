@@ -27,7 +27,7 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 ### アーキテクチャ
 
-RDBMS は、リレーショナルエンジン、DB エンジン (ストレージエンジン) 、から構成される。
+RDBMS は、リレーショナルエンジン、DB エンジン (ストレージエンジン) から構成される。
 
 ![DB管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DB管理システムの仕組み.png)
 

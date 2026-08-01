@@ -19,7 +19,7 @@ description: FluentBit/Fluentd＠監視ツールの知見を記録していま�
 
 ![fluent-bit_fluentd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture.png)
 
-FluentBit/Fluentd は、インプットフェーズ、バッファーフェーズ、アウトプットレイヤー、から構成される。
+FluentBit/Fluentd は、インプットフェーズ、バッファーフェーズ、アウトプットレイヤーから構成される。
 
 アプリケーションからログを収集し、これをフィルタリングした後、複数の宛先にルーティングする。
 

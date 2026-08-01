@@ -595,7 +595,7 @@ func main() {
 
 ### 配列とは
 
-要素、各要素のメモリアドレス、からなるデータのこと。
+要素、各要素のメモリアドレスからなるデータのこと。
 
 ![aggregate-type_array](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aggregate-type_array.png)
 

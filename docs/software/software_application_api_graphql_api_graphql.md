@@ -17,7 +17,7 @@ description: GraphQL＠GraphQL-APIの知見を記録しています。
 
 ### アーキテクチャ
 
-GraphQL は、GraphQL-API の GraphQL サーバー、GraphQL クライアント、から構成される。
+GraphQL は、GraphQL-API の GraphQL サーバー、GraphQL クライアントから構成される。
 
 従来の RESTful-API を使用した場合、バックエンドのエンドポイントが増えるたびに、フロントエンドが指定すべきエンドポイントも増えていく。
 

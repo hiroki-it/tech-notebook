@@ -17,7 +17,7 @@ description: Argo Rollouts＠CDツールの知見を記録しています。
 
 ### アーキテクチャ
 
-argo-rollouts-controller、ダッシュボード、から構成される。
+argo-rollouts-controller、ダッシュボードから構成される。
 
 > - https://argo-rollouts.readthedocs.io/en/stable/architecture/
 

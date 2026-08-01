@@ -25,7 +25,7 @@ description: Amazon ECS＠AWSリソースの知見を記録しています。
 
 #### ▼ コントロールプレーンの仕組み
 
-Amazon ECS のコントロールプレーンは、開発者や他の AWS リソースからのリクエストを待ち受ける API、データプレーンを管理するコンポーネント、からなる。
+Amazon ECS のコントロールプレーンは、開発者や他の AWS リソースからのリクエストを待ち受ける API、データプレーンを管理するコンポーネントからなる。
 
 ![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane.png)
 

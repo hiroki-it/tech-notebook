@@ -19,7 +19,7 @@ description: Argo Workflows＠ワークフローの知見を記録していま�
 
 ワークフローエンジンである。
 
-workflow-controller、DB、から構成される。
+workflow-controller、DB から構成される。
 
 <br>
 

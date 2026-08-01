@@ -39,7 +39,7 @@ Istiod コントロールプレーン数に関するパターンである。
 
 複数 Kubernetes Cluster のネットワークを横断的に管理する Istiod コントロールプレーンを作成する。
 
-Istiod コントロールプレーンを持つプライマリ Cluster、サービスメッシュに参加する Cluster のリモート Cluster、からなる。
+Istiod コントロールプレーンを持つプライマリ Cluster、サービスメッシュに参加する Cluster のリモート Cluster からなる。
 
 > - https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models
 
@@ -61,7 +61,7 @@ Kubernetes Cluster ごとに Istiod コントロールプレーンを作成す�
 
 異なる Cluster が同じプライベートネットワーク内に所属している場合、Cluster のコントロールプレーン Node 間でデータプレーンを管理し合う。
 
-これにより、このとき、IngressGateway を使用せずに、異なる Cluster のコンテナが直接的に通信できる。
+このとき、IngressGateway を使用せずに、異なる Cluster のコンテナが直接通信できる。
 
 ![istio_multi-service-mesh_cluster_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_same-network.png)
 
@@ -71,7 +71,7 @@ Kubernetes Cluster ごとに Istiod コントロールプレーンを作成す�
 
 異なる Cluster が異なるプライベートネットワーク内に所属している場合、Cluster のコントロールプレーン Node 間でデータプレーンを管理し合う。
 
-これにより、このとき、IngressGateway を経由して、異なる Cluster のコンテナが間接的に通信できる。
+このとき、IngressGateway を経由して、異なる Cluster のコンテナが間接的に通信できる。
 
 ![istio_multi-service-mesh_cluster_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_difficult-network.png)
 
