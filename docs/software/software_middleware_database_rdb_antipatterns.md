@@ -310,3 +310,102 @@ const eventCount = eventSummary?.count ?? 0;
 ```
 
 <br>
+
+## 06. 空入力でも SQL を実行する
+
+### 問題
+
+検索対象を表す配列が空の場合、検索結果は空になることが事前にわかる。
+
+それにもかかわらず SQL を実行すると、不要な DB 処理が発生し、性能が悪くなったり、不具合が起こる可能性がある。
+
+<br>
+
+### 実装例（TypeScript）
+
+#### ▼ 問題がある実装
+
+```typescript
+async function findByUserNames(userNames: string[]) {
+  return prisma.user.findMany({
+    where: {
+      name: {in: userNames},
+    },
+  });
+}
+```
+
+#### ▼ 解決方法
+
+空入力に対するガード節を設け、SQL を実行せずに空配列を返す。
+
+この早期リターンにより、不要な DB 処理を防止し、性能改善や不具合を防げる。
+
+```typescript
+async function findByUserNames(userNames: string[]) {
+  if (userNames.length === 0) {
+    return [];
+  }
+
+  return prisma.user.findMany({
+    where: {
+      name: {in: userNames},
+    },
+  });
+}
+```
+
+<br>
+
+## 07. GROUP BY 句を使用せずにアプリケーション側で集計する
+
+### 問題
+
+集計対象のレコードをすべて取得してアプリケーション側でグループ化すると、DB から転送するデータ量とアプリケーションのメモリ使用量が増える。
+
+単純な件数や合計値の集計には GROUP BY 句を使用し、必要な集計結果だけを取得する。
+
+<br>
+
+### 実装例（TypeScript）
+
+#### ▼ 問題がある実装
+
+```typescript
+const users = await prisma.user.findMany({
+  select: {
+    teamId: true,
+  },
+});
+
+const userCountByTeam = users.reduce<Record<string, number>>(
+  (counts, user) => {
+    counts[user.teamId] = (counts[user.teamId] ?? 0) + 1;
+    return counts;
+  },
+  {},
+);
+```
+
+#### ▼ 解決方法
+
+Prisma の `groupBy()` 関数を使用し、チームごとのユーザー数を集計する処理をアプリケーションのインフラストラクチャ層から DB に委譲する。
+
+```typescript
+const userCountByTeam = await prisma.user.groupBy({
+  by: ["teamId"],
+  _count: {
+    _all: true,
+  },
+});
+```
+
+内部的には、GROUP BY 句を使用した SQL が発行される。
+
+```sql
+SELECT team_id, COUNT(*)
+FROM users
+GROUP BY team_id;
+```
+
+ただし、グループの分類条件や集計値の計算に業務上の判定が必要な場合、そのドメインロジックを SQL に含めず、アプリケーション側で処理する。
