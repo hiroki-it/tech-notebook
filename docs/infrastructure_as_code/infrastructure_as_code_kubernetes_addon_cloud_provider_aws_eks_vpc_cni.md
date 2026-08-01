@@ -632,7 +632,7 @@ $ ./max-pods-calculator.sh \
 
 AWS ドキュメントで EC2 Node に割り当てられる IP アドレスを増やす方法を調べると、従来のセカンダリーIP アドレス割り当てモードではなく、Prefix delegation モードの記載が充実している。
 
-AWS としては、Prefix delegation モードのほうを使ってほしいのかもしれない。
+AWS は、Prefix delegation モードのほうを使ってほしいのかもしれない。
 
 実際、セカンダリーIP アドレス割り当てモードでは、割り当てられる IP アドレスが劇的に増えないため、Prefix delegation モードのほうがよい。
 

@@ -398,7 +398,7 @@ EC2 をホストとして、コンテナを作成する。
 
 | AMI 名                                 | 説明                                                                                                                                 | 特に相性のよいアプリ                                                    |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
-| Amazon ECS 最適化 Amazon Linux 2       | Amazon ECS のための標準的な EC2 を作成できる。推奨される方式。                                                                       |                                                                         |
+| Amazon ECS 最適化 Amazon Linux 2       | Amazon ECS のための標準的な EC2 を作成できる。推奨方式。                                                                             |                                                                         |
 | Amazon ECS 最適化 Amazon Linux 2022    | Amazon Linux 2 よりも先進的な機能を持つ EC2 を作成できる。<br>https://docs.aws.amazon.com/linux/al2022/ug/compare-al2-to-AL2022.html |                                                                         |
 | Amazon ECS 最適化 Amazon Linux         | Amazon ECS のための標準的な EC2 を作成できる。非推奨であり、Amazon Linux 2 を使用したほうがよい。                                    |                                                                         |
 | Amazon ECS 最適化 Amazon Linux 2 arm64 | arm64 ベースの Graviton プロセッサーが搭載された EC2 を作成できる。                                                                  |                                                                         |

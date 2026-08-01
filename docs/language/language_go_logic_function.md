@@ -276,7 +276,7 @@ module example.com/foo
 
 #### ▼ 引数の型
 
-引数の型として、構造体の場合はポインタ型、それ以外のデータの場合はポインタ型以外が推奨される。
+引数の型は、構造体の場合はポインタ型、それ以外のデータの場合はポインタ型以外が推奨である。
 
 > - https://github.com/golang/go/wiki/CodeReviewComments#pass-values
 

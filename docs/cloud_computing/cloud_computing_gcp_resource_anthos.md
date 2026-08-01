@@ -214,7 +214,7 @@ Kind がコンテナ内で作成する仮想的な Google Anthos Cluster のこ�
 
 VCluster を使用して、仮想的な Google Anthos Cluster を作成している。
 
-`~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig` ファイルを指定することにより、ブートストラップ Cluster の kube-apiserver にリクエストを送信できる。
+`~/baremetal/bmctl-workspace/foo-anthos-cluster/.kindkubeconfig` ファイルを指定することで、ブートストラップ Cluster の kube-apiserver にリクエストを送信できる。
 
 ```bash
 $ kubectl get pod \

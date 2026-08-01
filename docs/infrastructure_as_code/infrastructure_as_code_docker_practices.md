@@ -719,7 +719,7 @@ Dockerfile の文法違反を検証する。
 
 ビルド後のコンテナの構造を検証するツール (例：container-structure-test) を使用する。
 
-ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の `ENTRYPOINT` がまさしく動作するかなど) が存在するかを検証する。
+ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の `ENTRYPOINT` が正しく動作するかなど) が存在するかを検証する。
 
 > - https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF
 

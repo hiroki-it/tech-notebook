@@ -390,7 +390,7 @@ GPU と VRAM のサイズによって、扱うことのできる解像度と色�
 
 ![本パソコンのVRAMスペック](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/本パソコンのVRAMスペック.jpg)
 
-色数によって、`1` ドット当たり何ビットを要するが異なる。
+色数によって、`1` ドット当たりに必要なビット数が異なる。
 
 > - https://www.amazon.co.jp/dp/4297124513
 

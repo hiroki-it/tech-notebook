@@ -21,7 +21,7 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービス検出の必要性、パケットのアプリケーションデータの暗号化、テレメトリー作成など) を解決する責務を持つ。
 
-Node 外からのインバウンド通信、また Node 外へのアウトバウンド通信は、ztunnel Pod を経由して、一度 waypoint-proxy Pod にリダイレクトされる。
+Node 外からのインバウンド通信と Node 外へのアウトバウンド通信は、ztunnel Pod を経由して、一度 waypoint-proxy Pod にリダイレクトされる。
 
 サイドカーモードを将来的に廃止するということはなく、好きなほうを選べるようにするらしい。
 
@@ -451,7 +451,7 @@ spec:
 
 Namespace 外からの `L7` インバウンド通信を HBORN を経由して受信し、Namespace 内の宛先 Pod に送信する。
 
-waypoint-proxy は、サービス検出により宛先情報を取得し、また証明書を管理する。
+waypoint-proxy は、サービス検出により宛先情報を取得し、証明書を管理する。
 
 ![istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview.png)
 

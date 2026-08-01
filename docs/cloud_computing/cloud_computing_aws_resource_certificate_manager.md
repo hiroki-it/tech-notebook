@@ -200,7 +200,7 @@ AWS リソースには AWS Certificate Manager のサーバー証明書を紐づ
 
 Amazon CloudFront から AWS ALB に HTTPS リクエストを送信する場合、それぞれにサーバー証明書を配置する必要がある。
 
-ただ、Amazon CloudFront はバージニア北部で、また AWS ALB は東京リージョンで証明書を作成する必要がある。
+ただし、Amazon CloudFront はバージニア北部、AWS ALB は東京リージョンで証明書を作成する必要がある。
 
 Amazon CloudFront に送信された HTTPS リクエストを AWS ALB へルーティングするために、両方に紐付ける証明書で承認するドメインは一致させる必要がある。
 

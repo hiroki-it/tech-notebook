@@ -87,7 +87,7 @@ RUN curl -Lo https://github.com/DataDog/dd-trace-php/releases/download/${DD_TRAC
 
 #### ▼ インストールの動作確認
 
-パッケージがまさしく読み込まれているか否かは、`php --ri=ddtrace` コマンドまたは `phpinfo()` 関数の結果から確認できる。
+パッケージが正しく読み込まれているか否かは、`php --ri=ddtrace` コマンドまたは `phpinfo()` 関数の結果から確認できる。
 
 ```bash
 # 成功の場合

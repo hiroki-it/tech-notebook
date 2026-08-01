@@ -611,7 +611,7 @@ Pod の負荷に合わせて Pod の自動水平スケーリングを実行し�
 
 DaemonSet とは異なり、Pod を指定した個数に維持管理できる。
 
-ReplicaSet を直接的に操作するのではなく、Deployment 使用してこれを行うことが推奨される。
+ReplicaSet を直接操作するのではなく、Deployment を使用することが推奨である。
 
 > - https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#replicaset%E3%82%92%E4%BD%BF%E3%81%86%E3%81%A8%E3%81%8D
 > - https://thinkit.co.jp/article/13611

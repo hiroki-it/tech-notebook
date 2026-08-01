@@ -377,7 +377,7 @@ export class UserApplicationService {
 
 <details><summary>🚨補足（クリックで開く）</summary><div>
 
-ServiceLocator では static 宣言なため、アプリ起動時にインスタンスを ServiceLocator 内で作る。
+ServiceLocator では static 宣言であるため、アプリ起動時にインスタンスを ServiceLocator 内で作る。
 
 UserApplicationService のなかでは、依存先の UserRepository がすでに準備されてしまっている
 
@@ -595,7 +595,7 @@ const userApplicationService = new UserApplicationService(tokens.userRepository,
 userApplicationService.findById("1");
 ```
 
-ServiceLocator オブジェクトでは static 宣言なため、アプリ起動時にインスタンスを ServiceLocator オブジェクト内で作る。
+ServiceLocator オブジェクトでは static 宣言であるため、アプリ起動時にインスタンスを ServiceLocator オブジェクト内で作る。
 
 ServiceLocator オブジェクトからインスタンスを取り出せないため、コンストラクタにインスタンスを渡せない。
 

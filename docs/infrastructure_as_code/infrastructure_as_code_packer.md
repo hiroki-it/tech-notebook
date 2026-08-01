@@ -39,7 +39,7 @@ AWS AMI の作成後、Amazon EC2 を削除する。
 
 また、AWS AMI に内蔵されている AWS EBS ボリュームも、既存の Amazon EC2 のものではなく、新品のものである。
 
-既存の Amazon EC2 のバックアップツールとしては使用できない。
+既存の Amazon EC2 のバックアップツールには使用できない。
 
 ![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packer_aws.png)
 

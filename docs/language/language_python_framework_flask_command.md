@@ -53,7 +53,7 @@ static          GET      /static/<path:filename>
 
 Flask クラスの `run()` 関数と同じ機能を持ち、インバウンド通信のリッスンを開始する。
 
-開発環境のみで推奨される方法である。
+開発環境のみで推奨の方法である。
 
 ```bash
 $ flask run

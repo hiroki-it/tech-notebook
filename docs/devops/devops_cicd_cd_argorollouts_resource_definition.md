@@ -67,7 +67,7 @@ spec:
 
 大前提として、そもそも ArgoCD は `kubectl apply` コマンドでリソースを作成しているだけなため、デプロイ手法は、Deployment の `.spec.strategy` キーや、DaemonSet と StatefulSet の `.spec.updateStrategy` キーの設定値に依存する。
 
-ArgoCD の `strategy` オプションを使用することにより、これらの Kubernetes リソース自体を冗長化し、より安全に apply を行える。
+ArgoCD の `strategy` オプションを使用することで、これらの Kubernetes リソース自体を冗長化し、より安全に apply を行える。
 
 #### ▼ blueGreen
 

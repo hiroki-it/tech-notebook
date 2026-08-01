@@ -65,7 +65,7 @@ PREFIX_FOO = "foo"
 
 設定されたルーティングを元に、Werkzeug による Web サーバーを起動する。
 
-開発環境のみで推奨される方法である。
+開発環境のみで推奨の方法である。
 
 ```python
 from flask import Flask

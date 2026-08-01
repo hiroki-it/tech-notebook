@@ -320,7 +320,7 @@ data:
 
 #### ▼ 概要
 
-プリンシパル AWS IAM ロールとアクセスエントリーを使用することにより、Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープを制御する。
+プリンシパル AWS IAM ロールとアクセスエントリーを使用することで、Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープを制御する。
 
 プリンシパル AWS IAM ロールとアクセスエントリーを使用する場合、従来の aws-auth (ConfigMap) と比較して、より簡単にセットアップできる。
 
@@ -532,7 +532,7 @@ Pod のファイルはワーカーNode にマウントされるため、異な�
 
 Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープは、RBAC で制御する。
 
-Amazon EKS を SSO の ID プロバイダーとして使用することにより、IAM の認証フェーズを Amazon EKS に委譲する。
+Amazon EKS を SSO の ID プロバイダーとして使用することで、IAM の認証フェーズを Amazon EKS に委譲する。
 
 #### ▼ セットアップ
 
@@ -1149,7 +1149,7 @@ Amazon EC2 ワーカーNode を種類ごとに異なる AWS AMI で作成し、�
 
 #### ▼ Amazon EKS 最適化 Amazon Linux
 
-Amazon EKS のための標準的な Amazon EC2 を作成できる。推奨される方式である。
+Amazon EKS のための標準的な Amazon EC2 を作成できる。推奨方式である。
 
 `aws ssm get-parameter` コマンドを使用すると、公式が提供するマシンコンテナイメージの ID を確認できる。
 

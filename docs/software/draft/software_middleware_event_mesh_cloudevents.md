@@ -21,7 +21,7 @@ description: CloudEvents＠パブリッシュ／サブスクライブ方式の�
 
 また宛先では、メッセージキューからメッセージを受信する。
 
-異なる言語間でメッセージの仕様は同じなため、異なる言語に渡ってメッセージを送受信できる。
+異なる言語間でもメッセージの仕様は同じであるため、言語をまたいでメッセージを送受信できる。
 
 ![cloudevents_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudevents_architecture.png)
 

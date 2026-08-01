@@ -356,7 +356,7 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 
 #### ▼ 空の Amazon Aurora の DB クラスターとは
 
-コンソール画面にて、Amazon Aurora の DB クラスター内のすべての Amazon Aurora の DB インスタンスを削除すると、Amazon Aurora の DB クラスターも自動的に削除される。
+コンソール画面で、Amazon Aurora の DB クラスター内のすべての Amazon Aurora の DB インスタンスを削除すると、Amazon Aurora の DB クラスターも自動的に削除される。
 
 一方で、AWS-API をコールしてすべての Amazon Aurora の DB インスタンスを削除する場合、Amazon Aurora の DB クラスターは自動的に削除されずに、空の状態になる。
 

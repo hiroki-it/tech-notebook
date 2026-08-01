@@ -530,7 +530,7 @@ istio.io/tag: default
 
 : Istio の mutating-admission を設定する MutatingWebhookConfiguration のラベル値を変更する。
 
-     MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) の実体 (`istio.io/rev`キーの値) が旧バージョンのままなため、新バージョンに変更する。
+     MutatingWebhookConfigurationの`.metadata.labels`キーにあるエイリアス (`istio.io/tag`キーの値) の実体 (`istio.io/rev`キーの値) が旧バージョンのままであるため、新バージョンに変更する。
 
      `istioctl`コマンドは、`asmcli`コマンドの`--output_dir`オプションで指定したディレクトリにある。
 

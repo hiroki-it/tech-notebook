@@ -185,7 +185,7 @@ Service の `.spec.ports.name` キー数だけ、完全修飾ドメイン名が�
 
 #### ▼ Pod 内から Service に対する正引き名前解決
 
-Pod 内のコンテナから宛先の Service に対して、`nslookup` コマンドの正引きする。
+Pod 内のコンテナから宛先の Service を `nslookup` コマンドで正引きする。
 
 Service に `.metadata.name` キーが設定されている場合、Service の完全修飾ドメイン名は、`.metadata.name` キーの値になる。
 

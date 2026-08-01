@@ -1076,7 +1076,7 @@ Terraform の整形コマンド (`terraform fmt` コマンド) を使用して�
 
 #### ▼ ユニットテスト
 
-テスト環境に対して `terraform apply` コマンドを実行することにより、機能追加/変更を含むブロックが単体でまさしく動作するか否かを検証する。
+テスト環境に対して `terraform apply` コマンドを実行することにより、機能追加/変更を含むブロックが単体で正しく動作するか否かを検証する。
 
 代わりに、外部のテストツール (例：Terratest) を使用してもよい。
 
@@ -1279,7 +1279,7 @@ DB インスタンスの設定変更でダウンタイムが発生する場合�
 
 ダウンタイムが発生する DB インスタンスの設定項目は以下のリンクを参考にせよ。
 
-Amazon RDS の項目として書かれており、Aurora ではないが、おおよそ同じなため参考にしている。
+Amazon RDS の項目として書かれており、Aurora ではないが、おおよそ同じであるため参考にしている。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 

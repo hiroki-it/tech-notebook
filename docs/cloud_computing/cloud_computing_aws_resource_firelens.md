@@ -94,7 +94,7 @@ FluentBit が対応する宛先にログをルーティングできる。
 
 #### ▼ Amazon ECR パブリックギャラリーを使用する場合
 
-Amazon ECS タスクのコンテナ定義にて、Amazon ECR パブリックギャラリーの URL を指定し、Amazon ECR イメージのプルする。
+Amazon ECS タスクのコンテナ定義で、Amazon ECR パブリックギャラリーの URL を指定し、Amazon ECR イメージをプルする。
 
 デフォルトで内蔵されている `conf` ファイルの設定をそのまま使用する場合は、こちらを採用する。
 
@@ -104,7 +104,7 @@ Amazon ECS タスクのコンテナ定義にて、Amazon ECR パブリックギ�
 
 あらかじめ、DockerHub から FluentBit イメージをプルするための Dockerfile を作成し、プライベート Amazon ECR リポジトリにコンテナイメージをプッシュしておく。
 
-Amazon ECS タスクのコンテナ定義にて、プライベート Amazon ECR リポジトリの URL を指定し、Amazon ECR イメージのプルする。
+Amazon ECS タスクのコンテナ定義で、プライベート Amazon ECR リポジトリの URL を指定し、Amazon ECR イメージをプルする。
 
 デフォルトで内蔵されている `conf` ファイルの設定を上書きしたい場合は、こちらを採用する。
 

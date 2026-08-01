@@ -17,7 +17,7 @@ description: PrivateServiceConnect＠Google Cloudリソースの知見を記録�
 
 グローバルプライベート IP アドレスを発行する。
 
-このグローバルプライベート IP アドレスを指定することにより、Google Cloud 側のプライベートネットワーク (VPC) とユーザー側のプライベートネットワークの間を接続できる。
+このグローバルプライベート IP アドレスを指定することで、Google Cloud 側のプライベートネットワーク (VPC) とユーザー側のプライベートネットワークの間を接続できる。
 
 注意点として、PrivateServiceConnect は、それ専用の中継 VPC 内に作成する。
 
