@@ -152,7 +152,7 @@ outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local::10.0.0.3:80::regi
 
 ### `/config_dump` エンドポイントとは
 
-Envoy の現在のすべての設定値を、`json` 形式でレスポンスとして返信する。
+Envoy における現在の設定値すべてを、`json` 形式でレスポンスとして返信する。
 
 Envoy の稼働するサーバー/コンテナからローカルホストにリクエストを送信すると確認できる。
 

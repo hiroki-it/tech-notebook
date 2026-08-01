@@ -322,7 +322,7 @@ flowchart LR
 
 > 💡 API Gateway として、Nginx を採用します。
 >
-> API Gateway で、API へのルーティングの責務のほかに、認証やレートリミットなどの責務が必要な場合があります。
+> API Gateway で、API へのルーティング責務のほかに、認証やレートリミットなどの責務が必要な場合があります。
 >
 > Nginx は API Gateway に特化したツールではないため、API Gateway に必要な責務を網羅しきれないです。
 >

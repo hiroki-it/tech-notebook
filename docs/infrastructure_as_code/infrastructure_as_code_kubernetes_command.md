@@ -1384,7 +1384,7 @@ $ kubectl logs -f <Pod名> | grep -i error
 
 #### ▼ --previous
 
-停止済みの前回のコンテナのログを取得する。
+前回停止したコンテナのログを取得する。
 
 ```bash
 $ kubectl logs -f <Pod名> --previous

@@ -451,7 +451,7 @@ $goalPoint = 6
 
 **＊アルゴリズム解説＊**
 
-正のコストの経路のみの場合、使用される方法。
+正のコストを持つ経路のみの場合、使用される方法。
 
 ![ダイクストラ法_01](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_01.png)
 

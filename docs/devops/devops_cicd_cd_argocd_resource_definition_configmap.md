@@ -835,7 +835,7 @@ ArgoCD は、ArgoCD の外 (特にリポジトリ) に HTTPS リクエストを�
 
 ArgoCD では、コンテナイメージの `/etc/ssl` ディレクトリにデフォルトのサーバー証明書が配置されているが、ユーザー定義のサーバー証明書を使用したい場合がある。
 
-この ConfigMap は、そのためのユーザー定義のサーバー証明書を管理する。
+この ConfigMap は、そのためにユーザーが定義したサーバー証明書を管理する。
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-tls-certs-cm.yaml

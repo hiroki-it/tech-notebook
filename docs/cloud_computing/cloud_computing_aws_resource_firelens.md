@@ -382,7 +382,7 @@ Amazon ECR パブリックギャラリーからプルしたコンテナイメー
 
 #### ▼ `parser.conf` ファイルとは
 
-FireLens コンテナで処理中のログのキーの値を修正したい場合、`parser.conf` ファイルで PARSER セクションを設定する必要がある。
+FireLens コンテナで処理中のログについて、キーの値を修正したい場合、`parser.conf` ファイルで PARSER セクションを設定する必要がある。
 
 #### ▼ PARSER セクション
 

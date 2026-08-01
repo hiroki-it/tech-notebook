@@ -372,7 +372,7 @@ status:
 > - https://stackoverflow.com/a/59354112
 > - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions
 
-#### ▼ Pod の最後のフェーズの理由
+#### ▼ Pod における最後のフェーズの理由
 
 Pod は、`.status.reason` キーに、最後のフェーズの理由を値として持つ。
 

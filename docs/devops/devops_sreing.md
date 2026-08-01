@@ -47,7 +47,7 @@ SREer の具体的な行動を明確にするためには、サイトの信頼�
 
 #### ▼ 引用：[組織の信頼性のマインドセット](https://cloud.google.com/blog/ja/products/devops-sre/the-five-phases-of-organizational-reliability)
 
-プロダクトの信頼性は、そのシステムのアーキテクチャ/プロセス/文化/開発組織のマインドセットによって決まる。
+プロダクトの信頼性は、そのシステムを支えるアーキテクチャ/プロセス/文化/開発組織のマインドセットによって決まる。
 
 <br>
 

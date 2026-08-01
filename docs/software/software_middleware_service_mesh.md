@@ -202,7 +202,7 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 - 宛先マイクロサービス
 - サービスレジストリ
 - ロードバランサー
-- 名前解決 (DNS ベースのサービス検出の場合のみ)
+- 名前解決 (DNS ベースでサービスを検出する場合のみ)
 
 > - https://www.baeldung.com/cs/service-discovery-microservices
 

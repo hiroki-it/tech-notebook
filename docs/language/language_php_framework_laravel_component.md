@@ -4861,7 +4861,7 @@ $result = $foo->method();
 
 #### ▼ `register()` 関数と `boot()` 関数の違い
 
-Laravel のライフサイクルで、ServiceContainer へのクラスのバインドのときには、まず ServiceProvider の `register()` 関数が実行され、その後に `boot()` 関数が実行される。
+Laravel のライフサイクルで、ServiceContainer にクラスをバインドするときには、まず ServiceProvider の `register()` 関数が実行され、その後に `boot()` 関数が実行される。
 
 そのため、ServiceProvider が他の ServiceProvider をコールするような処理を実装したいとき、これは `boot()` 関数に実装することが適している。
 

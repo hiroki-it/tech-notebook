@@ -920,7 +920,7 @@ istio.io/tag: default
 
 MutatingWebhookConfiguration の `.metadata.labels` キーにある既存のエイリアス (`istio.io/tag` キーの値) に実体 (`.metadata.labels.istio.io/rev` キーの値) を設定する。
 
-カナリアアップグレード用の MutatingWebhookConfiguration を新しく作成するためや、既存の MutatingWebhookConfiguration にある現在のバージョンのエイリアスの実体を変更するために使用する。
+カナリアアップグレード用の MutatingWebhookConfiguration を新しく作成するためや、既存の MutatingWebhookConfiguration にある現在のバージョンについて、エイリアスの実体を変更するために使用する。
 
 ```bash
 # カナリアアップグレード用のMutatingWebhookConfigurationがなければ新しく作成する。

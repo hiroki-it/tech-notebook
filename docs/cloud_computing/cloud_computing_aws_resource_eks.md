@@ -302,7 +302,7 @@ data:
 
 `(6)`
 
-: あとは、Kubernetes の標準の認可の仕組みである。
+: あとは、Kubernetes 標準の認可の仕組みである。
 
      kube-apiserverは、UserAccount／ServiceAccount／Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを経由して取得する。
 

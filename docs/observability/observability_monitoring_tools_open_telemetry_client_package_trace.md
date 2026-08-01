@@ -744,7 +744,7 @@ func foo()  {
 
 #### ▼ Span イベントとは
 
-スパンの処理時間中の特定時点のイベントを表す。
+スパンの処理時間中における特定時点のイベントを表す。
 
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#events
 > - https://blog.cybozu.io/entry/2023/04/12/170000

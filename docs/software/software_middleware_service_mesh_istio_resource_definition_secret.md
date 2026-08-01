@@ -23,11 +23,11 @@ Istio の各種コンポーネントの機密な変数やファイルを管理�
 
 ### istio-ca-secret とは
 
-Istiod コントロールプレーンの自己署名のための証明書を管理する。
+Istiod コントロールプレーンが自己署名するための証明書を管理する。
 
 Istiod コントロールプレーンは、`istio-ca-secret` を使用して、自身がルート認証局であることを署名する。
 
-Istio コントロールプレーンのログから、自己署名のための証明書の作成を確認できる。
+Istio コントロールプレーンのログから、自己署名に使用する証明書の作成を確認できる。
 
 ```bash
 2025-01-26T11:21:09.206877Z	info	Use self-signed certificate as the CA certificate

@@ -41,7 +41,7 @@ uname の値を spec で指定されたものと比較し、OS が Linux であ�
 
 また、指定されたパスからカーネルコンフィグをロードするか、ファイルが見つからない場合はカーネルコンフィグモジュールをロードして、さまざまなカーネルコンフィグをチェックする。
 
-次に、"cpu", "cpuacct", "cpuset", "devices", "freezer", "memory" CGroups が現在存在するかどうかをチェックする。このカテゴリの最後のチェックは、Docker についてです。Docker のバージョンと Graph ドライバをチェックする。
+次に、"cpu", "cpuacct", "cpuset", "devices", "freezer", "memory" CGroups が現在存在するかどうかをチェックする。このカテゴリで最後にチェックするのは Docker についてです。Docker のバージョンと Graph ドライバをチェックする。
 
 現在は、"aufs", "overlay", "devicemapper "がチェックされます。
 

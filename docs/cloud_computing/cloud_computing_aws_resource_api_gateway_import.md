@@ -222,7 +222,7 @@ Swagger Editor で API の仕様書の `html` ファイルを確認できる。
 
 #### ▼ その他非対応な記法
 
-その他の非対応の記述については、以下のリンクを参考にせよ。
+その他の非対応記述については、以下のリンクを参考にせよ。
 
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis
 

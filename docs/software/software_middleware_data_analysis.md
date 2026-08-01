@@ -42,7 +42,7 @@ description: データ分析系ミドルウェアの知見を記録していま�
 
 加工済みデータを保管する。
 
-特定の形式のデータのみを保管できる。
+特定形式のデータのみを保管できる。
 
 > - https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake
 

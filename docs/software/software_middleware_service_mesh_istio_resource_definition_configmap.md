@@ -559,7 +559,7 @@ data:
 
 #### ▼ outboundTrafficPolicy とは
 
-サービスメッシュ外へのリクエストの宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
+サービスメッシュ外に送信するリクエストについて、宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
 
 #### ▼ ALLOW_ANY (デフォルト)
 
@@ -1468,7 +1468,7 @@ spec:
 
 istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処理を実施する。
 
-この接続のドレイン処理前の待機時間を設定する。
+この接続について、ドレイン処理前の待機時間を設定する。
 
 `terminationDrainDuration` との違いとして、`MINIMUM_DRAIN_DURATION` の時間だけ待機した後、ドレイン処理を開始し、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS` によって `downstream_cx_active` メトリクスが 0 になるまでドレイン処理をし続ける点である。
 

@@ -357,11 +357,11 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 異なるネットワーク内の特定のアプリケーションにのみと通信できるリモートデスクトッププロトコルよりも、広範囲に通信できる。
 
-| 要素              | Forti の場合 | OpenVPN の場合 | Zscaler の場合                                   |
-| ----------------- | ------------ | -------------- | ------------------------------------------------ |
-| 送信元マシン内    | FortiClient  | OpenVpnClient  | Zapp (クラウド Zscaler のクライアントツール)     |
+| 要素              | Forti の場合 | OpenVPN の場合 | Zscaler の場合                                    |
+| ----------------- | ------------ | -------------- | ------------------------------------------------- |
+| 送信元マシン内    | FortiClient  | OpenVpnClient  | Zapp (クラウド Zscaler のクライアントツール)      |
 | 中継 VPN マシン内 | FortiGate    | OpenVpn        | SDP ゲートウェイ (クラウド Zscaler の VPN マシン) |
-| 宛先マシン内      | -            | -              | -                                                |
+| 宛先マシン内      | -            | -              | -                                                 |
 
 > - www.amazon.co.jp/dp/B0756SS7N3
 > - https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/

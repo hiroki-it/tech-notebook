@@ -878,7 +878,7 @@ Application は、元は ArgocCD の application-controller と同じ Namespace 
 
 #### ▼ ignoreDifferences とは
 
-特定の Application の Sync ステータス (Synced、OutOfSync) の判定時、特定の Kubernetes リソースの特定の設定値の差分を無視し、OutOfSync にならないようする。
+特定の Application について Sync ステータス (Synced、OutOfSync) を判定するとき、特定の Kubernetes リソースにある特定の設定値の差分を無視し、OutOfSync にならないようする。
 
 Sync 後に Kubernetes リソースが変化するような仕様 (動的な設定値、Job による変更、mutating-admission ステップでの Webhook、マニフェストの自動整形など) の場合に使用する。
 
@@ -1311,7 +1311,7 @@ ID  DATE                           REVISION
 
 #### ▼ repoURL
 
-ポーリング対象のチャートレジストリ内のリポジトリの URL を設定する。
+ポーリング対象となるチャートレジストリ内リポジトリの URL を設定する。
 
 パブリックリポジトリであれば認証が不要であるが、プライベートリポジトリであればこれが必要になる。
 

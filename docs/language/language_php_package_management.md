@@ -80,7 +80,7 @@ $ php -r "unlink('composer-setup.php');"
 
 #### ▼ config
 
-Composer のコマンドのオプションのデフォルト値を設定する。
+Composer コマンドにあるオプションのデフォルト値を設定する。
 
 ```yaml
 {
@@ -531,7 +531,7 @@ $ composer update -vvv
 
 #### ▼ `COMPOSER_MEMORY_LIMIT`
 
-Composer のコマンドの実行時のメモリ上限を設定する。
+Composer コマンド実行時のメモリ上限を設定する。
 
 メモリ上限を無しにして、コマンドを実行できる。
 

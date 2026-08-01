@@ -1079,7 +1079,7 @@ Amazon CloudWatch Logs に送信されるデータは JSON 型である。
 
 `log` キーにログが割り当てられている。
 
-特定のキーの値のみを Amazon CloudWatch Logs に送信する場合、log_key オプションでキー名を設定する。
+特定キーの値のみを Amazon CloudWatch Logs に送信する場合、log_key オプションでキー名を設定する。
 
 例えば、`log` キーのみを送信する場合、『`log`』と設定する。
 

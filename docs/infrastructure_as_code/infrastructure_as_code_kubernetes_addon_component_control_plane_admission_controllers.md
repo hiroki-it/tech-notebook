@@ -121,7 +121,7 @@ webhook サーバーは、Cluster 内部に配置することが多い。
 
 Istio の MutatingWebhookConfiguration は以下の通りである。
 
-Pod の作成のための kube-apiserver のコール自体がエラーとなる。
+Pod を作成するための kube-apiserver のコール自体がエラーとなる。
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1beta1
@@ -232,7 +232,7 @@ webhooks:
 
 AdmissionReview は、リクエストを定義する AdmissionRequest と、レスポンスを定義する AdmissionResponse からなる。
 
-admission-controller アドオンと webhook サーバーの間のリクエスト／レスポンスのデータである。
+admission-controller アドオンと webhook サーバーの間で送受信するリクエスト／レスポンスのデータである。
 
 > - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
 

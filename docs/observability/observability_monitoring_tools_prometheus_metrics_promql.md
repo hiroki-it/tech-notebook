@@ -109,7 +109,7 @@ sum(idelta(istio_requests_total[1h])) by (destination_app)
 
 **例**
 
-任意の期間内に関して、Istio の istio-proxy の受信リクエストのテータポイント数の増加量を集約する。
+任意の期間内に関して、Istio の istio-proxy が受信したリクエストについて、データポイント数の増加量を集約する。
 
 ```bash
 sum(increase(istio_requests_total{destination_workload_namespace="default"}[$__range:])) by (destination_service)

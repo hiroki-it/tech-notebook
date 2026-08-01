@@ -164,14 +164,14 @@ JavaScript のビルトイン関数である。
 
 #### ▼ JQuery Promise
 
-JQuery パッケージの提供する非同期処理化のためのオブジェクトである。
+JQuery パッケージが提供する、非同期処理化のためのオブジェクトである。
 
 > - https://api.jquery.com/category/ajax/shorthand-methods/
 > - https://api.jquery.com/jquery.ajax
 
 #### ▼ JavaScript Promise
 
-JavaScript の提供する非同期処理化のためのビルトインオブジェクトである。
+JavaScript が提供する、非同期処理化のためのビルトインオブジェクトである。
 
 JavaScript Promise を実装しやすくする。
 

@@ -148,7 +148,7 @@ description: 暗号方式＠アプリケーションデータの暗号化技術�
 
 ### ハッシュ関数とは
 
-何かのアプリケーションデータを入力すると、規則性のない一定の桁数の値を出力する演算手法。
+何らかのアプリケーションデータを入力すると、規則性がなく桁数が一定の値を出力する演算手法。
 
 ![ハッシュ関数](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハッシュ関数.png)
 
