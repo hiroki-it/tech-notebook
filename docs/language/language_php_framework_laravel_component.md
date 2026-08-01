@@ -3436,17 +3436,17 @@ $ php artisan migrate
 
 #### ▼ `change()` 関数
 
-指定したカラムのDBカラム型を変更する。
+指定したカラムの DB カラム型を変更する。
 
 **＊実装例＊**
 
-DBカラム型を変更するためだけに DB マイグレーションファイルを作成する。
+DB カラム型を変更するためだけに DB マイグレーションファイルを作成する。
 
 ```bash
 $ php artisan make:migration change_column_data_type --table=foos
 ```
 
-テーブルのDBカラム型を定義し、`change()` 関数をコールする。
+テーブルの DB カラム型を定義し、`change()` 関数をコールする。
 
 変更後でも、ロールバックできるように、`down()` 関数も定義しておく。
 
@@ -3482,7 +3482,7 @@ class ChangeColumnDataType extends Migration
 }
 ```
 
-DB マイグレーションを実行すると、指定したテーブルのDBカラム型が変更される。
+DB マイグレーションを実行すると、指定したテーブルの DB カラム型が変更される。
 
 実行後は、作成した DB マイグレーションファイルを削除する。
 
