@@ -31894,7 +31894,7 @@
   <a href="#01-pagerduty" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. PagerDutyの仕組み
+        01. PagerDuty の仕組み
       
     </span>
   </a>
@@ -31929,7 +31929,7 @@
   <a href="#pagerduty_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ PagerDutyの解決フェーズ
+        ▼ PagerDuty の解決フェーズ
       
     </span>
   </a>
@@ -31951,7 +31951,7 @@
   <a href="#resolved" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Resolvedへの自動的な移行
+        ▼ Resolved への自動的な移行
       
     </span>
   </a>
@@ -33350,7 +33350,7 @@
   <a href="#01-pagerduty" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. PagerDutyの仕組み
+        01. PagerDuty の仕組み
       
     </span>
   </a>
@@ -33385,7 +33385,7 @@
   <a href="#pagerduty_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ PagerDutyの解決フェーズ
+        ▼ PagerDuty の解決フェーズ
       
     </span>
   </a>
@@ -33407,7 +33407,7 @@
   <a href="#resolved" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Resolvedへの自動的な移行
+        ▼ Resolved への自動的な移行
       
     </span>
   </a>
@@ -33558,7 +33558,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-pagerduty">01. PagerDutyの仕組み<a class="headerlink" href="#01-pagerduty" title="Permanent link">&para;</a></h2>
+<h2 id="01-pagerduty">01. PagerDuty の仕組み<a class="headerlink" href="#01-pagerduty" title="Permanent link">&para;</a></h2>
 <p><img alt="pagerduty_on-call" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_on-call.png" /></p>
 <p>PagerDuty をインシデント管理ツールとして使用する。</p>
 <p>Amazon CloudWatch アラームに通知されたエラーイベントのうちから、特に重要なものを PagerDuty でインシデントとして対処する。</p>
@@ -33600,7 +33600,7 @@
 <p><br></p>
 <h2 id="02">02. インシデント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_2">インシデントの解決フェーズ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<h4 id="pagerduty_1">▼ PagerDutyの解決フェーズ<a class="headerlink" href="#pagerduty_1" title="Permanent link">&para;</a></h4>
+<h4 id="pagerduty_1">▼ PagerDuty の解決フェーズ<a class="headerlink" href="#pagerduty_1" title="Permanent link">&para;</a></h4>
 <p>インシデントには解決フェーズがあり、PagerDuty ではそれ管理できる。</p>
 <h4 id="_3">▼ 解決フェーズの種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>PagerDuty では、以下の解決フェーズを設定できる。</p>
@@ -33614,11 +33614,11 @@
 <tbody>
 <tr>
 <td>Triggered</td>
-<td>アラートがインシデントとして見なされ、タスクが作成された。再現性の低い瞬間的なインシデントであれば、Acknowledgedフェーズを経ずに、そのままResolvedにしてもよい。</td>
+<td>アラートがインシデントとして見なされ、タスクが作成された。再現性の低い瞬間的なインシデントであれば、Acknowledged フェーズを経ずに、そのまま Resolved にしてもよい。</td>
 </tr>
 <tr>
 <td>Acknowledged</td>
-<td>インシデントのタスクに対応中であるが、まだ解決できていない。一定期間、Resolvedフェーズに移行しない場合は、再びTriggeredフェーズに戻る。</td>
+<td>インシデントのタスクに対応中であるが、まだ解決できていない。一定期間、Resolved フェーズに移行しない場合は、再び Triggered フェーズに戻る。</td>
 </tr>
 <tr>
 <td>Resolved</td>
@@ -33633,7 +33633,7 @@
 <li><a href="https://support.pagerduty.com/docs/incidents#incident-statuses">https://support.pagerduty.com/docs/incidents#incident-statuses</a></li>
 </ul>
 </blockquote>
-<h4 id="resolved">▼ Resolvedへの自動的な移行<a class="headerlink" href="#resolved" title="Permanent link">&para;</a></h4>
+<h4 id="resolved">▼ Resolved への自動的な移行<a class="headerlink" href="#resolved" title="Permanent link">&para;</a></h4>
 <p>解決フェーズが一定時間 Triggered フェーズのままで Resolved に移行しない場合、自動的に Resolved に移行するように設定できる。</p>
 <p>注意点として、自動移行で Resolved になったインシデントは、同じインシデントが発生しない限り、Triggered フェーズに戻ることはない。</p>
 <blockquote>
@@ -33685,7 +33685,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

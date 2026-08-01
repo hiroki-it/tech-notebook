@@ -19665,10 +19665,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-wafweb-application-firewall" class="md-nav__link">
+  <a href="#01-aws-waf-web-application-firewall" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. AWS WAFとは：Web Application Firewall
+        01. AWS WAF とは：Web Application Firewall
       
     </span>
   </a>
@@ -19690,12 +19690,12 @@
   <a href="#2-02-terraform" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2-02. セットアップ (Terraformの場合)
+        2-02. セットアップ (Terraform の場合)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2-02. セットアップ (Terraformの場合)">
+    <nav class="md-nav" aria-label="2-02. セットアップ (Terraform の場合)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -19721,10 +19721,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#overviewsampled-requests" class="md-nav__link">
+  <a href="#overview-sampled-requests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OverviewにおけるSampled requestsの見方
+        Overview における Sampled requests の見方
       
     </span>
   </a>
@@ -33413,10 +33413,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-wafweb-application-firewall" class="md-nav__link">
+  <a href="#01-aws-waf-web-application-firewall" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. AWS WAFとは：Web Application Firewall
+        01. AWS WAF とは：Web Application Firewall
       
     </span>
   </a>
@@ -33438,12 +33438,12 @@
   <a href="#2-02-terraform" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2-02. セットアップ (Terraformの場合)
+        2-02. セットアップ (Terraform の場合)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2-02. セットアップ (Terraformの場合)">
+    <nav class="md-nav" aria-label="2-02. セットアップ (Terraform の場合)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33469,10 +33469,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#overviewsampled-requests" class="md-nav__link">
+  <a href="#overview-sampled-requests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        OverviewにおけるSampled requestsの見方
+        Overview における Sampled requests の見方
       
     </span>
   </a>
@@ -33699,7 +33699,7 @@
   
 
 
-<h1 id="aws-wafaws">AWS WAF＠AWSリソース<a class="headerlink" href="#aws-wafaws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-wafaws">AWS WAF＠AWS リソース<a class="headerlink" href="#aws-wafaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -33708,13 +33708,13 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-aws-wafweb-application-firewall">01. AWS WAFとは：Web Application Firewall<a class="headerlink" href="#01-aws-wafweb-application-firewall" title="Permanent link">&para;</a></h2>
+<h2 id="01-aws-waf-web-application-firewall">01. AWS WAF とは：Web Application Firewall<a class="headerlink" href="#01-aws-waf-web-application-firewall" title="Permanent link">&para;</a></h2>
 <p><code>L7</code> (アプリケーション層) に対するサイバー攻撃を防御する。</p>
 <table>
 <thead>
 <tr>
 <th>サイバー攻撃の種類</th>
-<th>対抗するAWSリソースの種類</th>
+<th>対抗する AWS リソースの種類</th>
 </tr>
 </thead>
 <tbody>
@@ -33724,7 +33724,7 @@
 </tr>
 <tr>
 <td>傍受、情報漏洩</td>
-<td>Amazon VPC内の特にプライベートサブネット間のピアリング接続。VPC外を介さずにパケットを送受信できる。</td>
+<td>Amazon VPC 内の特にプライベートサブネット間のピアリング接続。VPC 外を介さずにパケットを送受信できる。</td>
 </tr>
 <tr>
 <td>ポートスキャン</td>
@@ -33758,7 +33758,7 @@
 </table>
 <p><br></p>
 <h2 id="02">02. セットアップ (コンソールの場合)<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h2 id="2-02-terraform">2-02. セットアップ (Terraformの場合)<a class="headerlink" href="#2-02-terraform" title="Permanent link">&para;</a></h2>
+<h2 id="2-02-terraform">2-02. セットアップ (Terraform の場合)<a class="headerlink" href="#2-02-terraform" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># 記入中...</span>
 </code></pre></div>
 <h3 id="_2">設定項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -33774,17 +33774,17 @@
 <tr>
 <td>Web ACLs</td>
 <td>アクセス許可と拒否のルールを定義する。</td>
-<td>紐付けるAWSリソースに合わせて、作成するリージョンを切り替える必要がある。</td>
+<td>紐付ける AWS リソースに合わせて、作成するリージョンを切り替える必要がある。</td>
 </tr>
 <tr>
 <td>Bot Control</td>
-<td>Botに関するアクセス許可と拒否のルールを定義する。</td>
+<td>Bot に関するアクセス許可と拒否のルールを定義する。</td>
 <td></td>
 </tr>
 <tr>
 <td>IP Sets</td>
-<td>IPアドレスの共通部品を管理する。</td>
-<td>アクセスを許可したいIPアドレスセットを作成するとき、すべてのIPアドレスを <code>1</code> 個のセットで管理してしまうと、何のIPアドレスかわらなあくなってしまう。そこで、許可するIPアドレスのセットを種類 (例：自社のグローバルIPアドレス、外部の協力A社/B社のグローバルIPアドレスなど) で分割するとよい。一方で、拒否するIPアドレスはひとまとめにしてもよい。</td>
+<td>IP アドレスの共通部品を管理する。</td>
+<td>アクセスを許可したい IP アドレスセットを作成するとき、すべての IP アドレスを <code>1</code> 個のセットで管理してしまうと、何の IP アドレスかわらなあくなってしまう。そこで、許可する IP アドレスのセットを種類 (例：自社のグローバル IP アドレス、外部の協力 A社/B 社のグローバル IP アドレスなど) で分割するとよい。一方で、拒否する IP アドレスはひとまとめにしてもよい。</td>
 </tr>
 <tr>
 <td>Regex pattern sets</td>
@@ -33794,7 +33794,7 @@
 <tr>
 <td>Rule groups</td>
 <td>ルールの共通部品を管理する。</td>
-<td>各AWS WAFに同じルールを設定する場合、ルールグループを使用する必要がある。ただし、ルールグループを使用すると、これらのルールを共通のメトリクスで監視しなければならなくなる。そのため、もしメトリクスを分けるのであれば、ルールグループを使用しないようにする。</td>
+<td>各 AWS WAF に同じルールを設定する場合、ルールグループを使用する必要がある。ただし、ルールグループを使用すると、これらのルールを共通のメトリクスで監視しなければならなくなる。そのため、もしメトリクスを分けるのであれば、ルールグループを使用しないようにする。</td>
 </tr>
 </tbody>
 </table>
@@ -33811,27 +33811,27 @@
 <tbody>
 <tr>
 <td>Overview</td>
-<td>AWS WAFによって許可/拒否されたリクエストのアクセスログを確認できる。</td>
+<td>AWS WAF によって許可/拒否されたリクエストのアクセスログを確認できる。</td>
 <td></td>
 </tr>
 <tr>
 <td>Rules</td>
 <td>順番にルールを判定し、一致するルールがあればアクションを実行する。このとき、一致するルールの後にあるルールは。判定されない。</td>
-<td>AWSマネージドルールについては、以下のリンクを参考にせよ。<br>- <a href="https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html">https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html</a></td>
+<td>AWS マネージドルールについては、以下のリンクを参考にせよ。<br>- <a href="https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html">https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html</a></td>
 </tr>
 <tr>
 <td>Associated AWS resources</td>
-<td>AWS WAFを紐付けるAWSリソースを設定する。</td>
-<td>Amazon CloudFront、AWS ALBなどに紐付けできる。</td>
+<td>AWS WAF を紐付ける AWS リソースを設定する。</td>
+<td>Amazon CloudFront、AWS ALB などに紐付けできる。</td>
 </tr>
 <tr>
 <td>Logging and metrics</td>
-<td>アクセスログをKinesis Data Firehoseに出力するように設定する。</td>
+<td>アクセスログを Kinesis Data Firehose に出力するように設定する。</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="overviewsampled-requests">OverviewにおけるSampled requestsの見方<a class="headerlink" href="#overviewsampled-requests" title="Permanent link">&para;</a></h3>
+<h3 id="overview-sampled-requests">Overview における Sampled requests の見方<a class="headerlink" href="#overview-sampled-requests" title="Permanent link">&para;</a></h3>
 <p>『すべてのルール』または『各ルール』におけるアクセス許可/拒否の履歴を確認できる。</p>
 <p>AWS ALB や Amazon CloudFront のアクセスログよりも解りやすく、さまざまなデバッグに役立つ。</p>
 <p>ただし、３時間分しか残らない。</p>
@@ -33847,11 +33847,11 @@
 <span class="nt">Sec-Fetch-Mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigate</span>
 <span class="nt">Sec-Fetch-User</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">?1</span>
 <span class="nt">Sec-Fetch-Dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">document</span>
-<span class="c1"># CORSであるか否か</span>
+<span class="c1"># CORS であるか否か</span>
 <span class="nt">Sec-Fetch-Site</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">same-origin</span>
 <span class="nt">Accept-Encoding</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gzip, deflate, br</span>
 <span class="nt">Accept-Language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ja,en;q=0.9</span>
-<span class="c1"># Cookieヘッダー</span>
+<span class="c1"># Cookie ヘッダー</span>
 <span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;; _gid=&lt;GoogleAnalytics値&gt;; __ulfpc=&lt;GoogleAnalytics値&gt;; _ga=&lt;GoogleAnalytics値&gt;</span>
 </code></pre></div>
 <p><br></p>
@@ -33871,7 +33871,7 @@
 </tr>
 <tr>
 <td>マネージドルール</td>
-<td>AWSが事前に用意している防御ルールで、よくある <code>L7</code> に対するサイバー攻撃（例：SQLインジェクション、XSS、OSコマンドインジェクション）を防御できる。</td>
+<td>AWS が事前に用意している防御ルールで、よくある <code>L7</code> に対するサイバー攻撃（例：SQL インジェクション、XSS、OS コマンドインジェクション）を防御できる。</td>
 </tr>
 <tr>
 <td>カスタムルールグループ</td>
@@ -33900,7 +33900,7 @@
 <thead>
 <tr>
 <th>マネージドルールの元のアクション</th>
-<th>Countモード</th>
+<th>Count モード</th>
 <th>上書きオプション</th>
 <th>結果</th>
 </tr>
@@ -33910,25 +33910,25 @@
 <td>Block</td>
 <td>ON</td>
 <td>ON</td>
-<td>Countし、その後Blockが実行する。そのため、その後のルールは検証せずに完了する。</td>
+<td>Count し、その後 Block が実行する。そのため、その後のルールは検証せずに完了する。</td>
 </tr>
 <tr>
 <td>Block</td>
 <td>ON</td>
 <td>OFF</td>
-<td>Countのみが実行される。そのため、その後のルールも検証する。</td>
+<td>Count のみが実行される。そのため、その後のルールも検証する。</td>
 </tr>
 <tr>
 <td>Block</td>
 <td>OFF</td>
 <td>ON</td>
-<td>そもそもCountモードが無効なため、上書きオプションは能力せずに、Blockが実行される。</td>
+<td>そもそも Count モードが無効なため、上書きオプションは能力せずに、Block が実行される。</td>
 </tr>
 <tr>
 <td>Block</td>
 <td>OFF</td>
 <td>OFF</td>
-<td>そもそもCountモードが無効なため、マネージドルールのBlockが実行される (と思っていたが、結果としてCountとして動作する模様) 。</td>
+<td>そもそも Count モードが無効なため、マネージドルールの Block が実行される (と思っていたが、結果として Count として動作する模様) 。</td>
 </tr>
 </tbody>
 </table>
@@ -34018,7 +34018,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:28:04 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

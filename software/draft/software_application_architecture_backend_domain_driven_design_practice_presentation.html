@@ -33175,12 +33175,12 @@
   <a href="#15-2-expressjs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        15-2 Express.jsを利用した実装
+        15-2 Express.js を利用した実装
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="15-2 Express.jsを利用した実装">
+    <nav class="md-nav" aria-label="15-2 Express.js を利用した実装">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33226,19 +33226,19 @@
   <a href="#15-2-2-web-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        15-2-2 Web APIの実装
+        15-2-2 Web API の実装
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="15-2-2 Web APIの実装">
+    <nav class="md-nav" aria-label="15-2-2 Web API の実装">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ APIの共有処理
+        ▼ API の共有処理
       
     </span>
   </a>
@@ -33249,7 +33249,7 @@
   <a href="#api_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 書籍登録API
+        ▼ 書籍登録 API
       
     </span>
   </a>
@@ -33260,7 +33260,7 @@
   <a href="#api_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 推薦書籍取得API（中核ユースケースに対応）
+        ▼ 推薦書籍取得 API（中核ユースケースに対応）
       
     </span>
   </a>
@@ -33271,7 +33271,7 @@
   <a href="#api_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ レビュー登録API
+        ▼ レビュー登録 API
       
     </span>
   </a>
@@ -33282,7 +33282,7 @@
   <a href="#api_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ レビュー編集API
+        ▼ レビュー編集 API
       
     </span>
   </a>
@@ -33293,7 +33293,7 @@
   <a href="#api_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ レビュー削除API
+        ▼ レビュー削除 API
       
     </span>
   </a>
@@ -33321,7 +33321,7 @@
   <a href="#api_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 書籍登録API
+        ▼ 書籍登録 API
       
     </span>
   </a>
@@ -33332,7 +33332,7 @@
   <a href="#api_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 推薦書籍取得API（中核ユースケースに対応）
+        ▼ 推薦書籍取得 API（中核ユースケースに対応）
       
     </span>
   </a>
@@ -33343,7 +33343,7 @@
   <a href="#api_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ レビュー登録API
+        ▼ レビュー登録 API
       
     </span>
   </a>
@@ -33354,7 +33354,7 @@
   <a href="#api_9" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ レビュー編集API
+        ▼ レビュー編集 API
       
     </span>
   </a>
@@ -33365,7 +33365,7 @@
   <a href="#api_10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ レビュー削除API
+        ▼ レビュー削除 API
       
     </span>
   </a>
@@ -33451,7 +33451,7 @@
 </ul>
 <p>プレゼンテーション層では、アプリケーションは Web フレームワークやパッケージに依存してよい。</p>
 <p>一方で、アプリケーション層やドメイン層ではこれらに依存しないことが重要である。</p>
-<h2 id="15-2-expressjs">15-2 Express.jsを利用した実装<a class="headerlink" href="#15-2-expressjs" title="Permanent link">&para;</a></h2>
+<h2 id="15-2-expressjs">15-2 Express.js を利用した実装<a class="headerlink" href="#15-2-expressjs" title="Permanent link">&para;</a></h2>
 <p>『レビュー内容から推薦書籍データを取得する』というユースケースの機能として実装するまでの流れを解説する。</p>
 <h3 id="15-2-1">15-2-1 環境のセットアップ<a class="headerlink" href="#15-2-1" title="Permanent link">&para;</a></h3>
 <p>まず、Express.js を利用するための最低限のセットアップを行う。</p>
@@ -33475,9 +33475,9 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <div class="highlight"><pre><span></span><code>npx<span class="w"> </span>ts-node<span class="w"> </span>src/Presentation/Express/index.ts
 </code></pre></div>
 <p>『外部』のブラウザで <code>http://localhost:3000</code> に HTTP リクエストを送信し、 <code>Hello World!</code> が表示されれば成功である。</p>
-<h3 id="15-2-2-web-api">15-2-2 Web APIの実装<a class="headerlink" href="#15-2-2-web-api" title="Permanent link">&para;</a></h3>
+<h3 id="15-2-2-web-api">15-2-2 Web API の実装<a class="headerlink" href="#15-2-2-web-api" title="Permanent link">&para;</a></h3>
 <p>プレゼンテーション層で API を実装していく。</p>
-<h4 id="api">▼ APIの共有処理<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
+<h4 id="api">▼ API の共有処理<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> の API の共有処理の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;express&quot;</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span>
@@ -33524,7 +33524,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <span class="kd">const</span><span class="w"> </span><span class="nx">invalid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span>
 <span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mf">400</span><span class="p">).</span><span class="nx">json</span><span class="p">({</span><span class="nx">ok</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Invalid request&quot;</span><span class="p">});</span>
 </code></pre></div>
-<h4 id="api_1">▼ 書籍登録API<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
+<h4 id="api_1">▼ 書籍登録 API<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> の書籍登録 API の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// POST</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/book&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -33550,7 +33550,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<h4 id="api_2">▼ 推薦書籍取得API（中核ユースケースに対応）<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h4>
+<h4 id="api_2">▼ 推薦書籍取得 API（中核ユースケースに対応）<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> の推薦書籍取得 API の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// GET</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/book/:isbn/recommendations&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -33579,7 +33579,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<h4 id="api_3">▼ レビュー登録API<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h4>
+<h4 id="api_3">▼ レビュー登録 API<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> のレビュー登録 API の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// POST</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">&quot;/book/:isbn/review&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -33609,7 +33609,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<h4 id="api_4">▼ レビュー編集API<a class="headerlink" href="#api_4" title="Permanent link">&para;</a></h4>
+<h4 id="api_4">▼ レビュー編集 API<a class="headerlink" href="#api_4" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> のレビュー編集 API の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// PUT</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="s2">&quot;/review/:reviewId&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -33637,7 +33637,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <span class="w">  </span><span class="p">}</span>
 <span class="p">});</span>
 </code></pre></div>
-<h4 id="api_5">▼ レビュー削除API<a class="headerlink" href="#api_5" title="Permanent link">&para;</a></h4>
+<h4 id="api_5">▼ レビュー削除 API<a class="headerlink" href="#api_5" title="Permanent link">&para;</a></h4>
 <p><code>CatalogService/src/Presentation/Express/index.ts</code> のレビュー削除 API の実装である。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// DELETE</span>
 <span class="nx">app</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="s2">&quot;/review/:reviewId&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -33666,7 +33666,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 </code></pre></div>
 <h3 id="15-2-2-1">15-2-2-1 動作確認<a class="headerlink" href="#15-2-2-1" title="Permanent link">&para;</a></h3>
 <p>『外部』の CLI（ここでは <code>curl</code>）から HTTP リクエストを送信し、API がレスポンスを返信することを確認する。</p>
-<h4 id="api_6">▼ 書籍登録API<a class="headerlink" href="#api_6" title="Permanent link">&para;</a></h4>
+<h4 id="api_6">▼ 書籍登録 API<a class="headerlink" href="#api_6" title="Permanent link">&para;</a></h4>
 <p>書籍登録 API で書籍を登録する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
@@ -33689,7 +33689,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="api_7">▼ 推薦書籍取得API（中核ユースケースに対応）<a class="headerlink" href="#api_7" title="Permanent link">&para;</a></h4>
+<h4 id="api_7">▼ 推薦書籍取得 API（中核ユースケースに対応）<a class="headerlink" href="#api_7" title="Permanent link">&para;</a></h4>
 <p>推薦書籍取得 API で推薦書籍を取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>http://localhost:3000/book/9784814400737/recommendations
 </code></pre></div>
@@ -33706,7 +33706,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="api_8">▼ レビュー登録API<a class="headerlink" href="#api_8" title="Permanent link">&para;</a></h4>
+<h4 id="api_8">▼ レビュー登録 API<a class="headerlink" href="#api_8" title="Permanent link">&para;</a></h4>
 <p>レビュー登録 API でレビューを登録する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
@@ -33728,7 +33728,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="api_9">▼ レビュー編集API<a class="headerlink" href="#api_9" title="Permanent link">&para;</a></h4>
+<h4 id="api_9">▼ レビュー編集 API<a class="headerlink" href="#api_9" title="Permanent link">&para;</a></h4>
 <p>レビュー編集 API でレビューを編集する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="se">\</span>
@@ -33749,7 +33749,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="api_10">▼ レビュー削除API<a class="headerlink" href="#api_10" title="Permanent link">&para;</a></h4>
+<h4 id="api_10">▼ レビュー削除 API<a class="headerlink" href="#api_10" title="Permanent link">&para;</a></h4>
 <p>レビュー削除 API でレビューを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>http://localhost:3000/review/-L3ru-W1auxLZSCiGmIvG
 </code></pre></div>
@@ -33785,7 +33785,7 @@ npm<span class="w"> </span>i<span class="w"> </span>@types/express@^5.0.1<span c
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

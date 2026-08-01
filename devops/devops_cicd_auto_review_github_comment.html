@@ -28886,7 +28886,7 @@
   <a href="#01-github-comment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. github-commentとは
+        01. github-comment とは
       
     </span>
   </a>
@@ -28943,7 +28943,7 @@
   <a href="#-var_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ -varとは
+        ▼ -var とは
       
     </span>
   </a>
@@ -28999,7 +28999,7 @@
   <a href="#exec_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ execとは
+        ▼ exec とは
       
     </span>
   </a>
@@ -29027,7 +29027,7 @@
   <a href="#hide_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ hideとは
+        ▼ hide とは
       
     </span>
   </a>
@@ -29094,7 +29094,7 @@
   <a href="#exec_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ execとは
+        ▼ exec とは
       
     </span>
   </a>
@@ -29205,7 +29205,7 @@
   <a href="#when_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ whenとは
+        ▼ when とは
       
     </span>
   </a>
@@ -33573,7 +33573,7 @@
   <a href="#01-github-comment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. github-commentとは
+        01. github-comment とは
       
     </span>
   </a>
@@ -33630,7 +33630,7 @@
   <a href="#-var_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ -varとは
+        ▼ -var とは
       
     </span>
   </a>
@@ -33686,7 +33686,7 @@
   <a href="#exec_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ execとは
+        ▼ exec とは
       
     </span>
   </a>
@@ -33714,7 +33714,7 @@
   <a href="#hide_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ hideとは
+        ▼ hide とは
       
     </span>
   </a>
@@ -33781,7 +33781,7 @@
   <a href="#exec_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ execとは
+        ▼ exec とは
       
     </span>
   </a>
@@ -33892,7 +33892,7 @@
   <a href="#when_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ whenとは
+        ▼ when とは
       
     </span>
   </a>
@@ -34004,7 +34004,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-github-comment">01. github-commentとは<a class="headerlink" href="#01-github-comment" title="Permanent link">&para;</a></h2>
+<h2 id="01-github-comment">01. github-comment とは<a class="headerlink" href="#01-github-comment" title="Permanent link">&para;</a></h2>
 <p>任意のツールの標準出力/標準エラー出力の結果を、レビューコメントとして GitHub に POST リクエストを送信する。</p>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
@@ -34025,7 +34025,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 </blockquote>
 <p><br></p>
 <h3 id="-var">-var<a class="headerlink" href="#-var" title="Permanent link">&para;</a></h3>
-<h4 id="-var_1">▼ -varとは<a class="headerlink" href="#-var_1" title="Permanent link">&para;</a></h4>
+<h4 id="-var_1">▼ -var とは<a class="headerlink" href="#-var_1" title="Permanent link">&para;</a></h4>
 <p>レビューコメントのテンプレートの <code>{{ .Vars.&lt;変数&gt; }}</code> に出力できる変数を定義する。</p>
 <p>実行コマンドごとに異なる文字列を使用したい場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-k<span class="w"> </span>&lt;テンプレート名&gt;<span class="w">  </span>-var<span class="w"> </span><span class="s2">&quot;TestName:foo-test&quot;</span><span class="w"> </span>-var<span class="w"> </span><span class="s2">&quot;Description:〇〇を検証する&quot;</span><span class="w"> </span>--<span class="w"> </span>&lt;好きなコマンド&gt;
@@ -34109,7 +34109,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <p><br></p>
 <h2 id="04">04. コマンド<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="exec">exec<a class="headerlink" href="#exec" title="Permanent link">&para;</a></h3>
-<h4 id="exec_1">▼ execとは<a class="headerlink" href="#exec_1" title="Permanent link">&para;</a></h4>
+<h4 id="exec_1">▼ exec とは<a class="headerlink" href="#exec_1" title="Permanent link">&para;</a></h4>
 <p>コマンドを実行し、標準出力/標準エラー出力の出力内容からレビューコメントを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-k<span class="w"> </span>&lt;テンプレート名&gt;<span class="w"> </span>--<span class="w"> </span>&lt;好きなコマンド&gt;
 </code></pre></div>
@@ -34120,7 +34120,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 </blockquote>
 <p><br></p>
 <h3 id="hide">hide<a class="headerlink" href="#hide" title="Permanent link">&para;</a></h3>
-<h4 id="hide_1">▼ hideとは<a class="headerlink" href="#hide_1" title="Permanent link">&para;</a></h4>
+<h4 id="hide_1">▼ hide とは<a class="headerlink" href="#hide_1" title="Permanent link">&para;</a></h4>
 <p>テンプレートで定義した条件に応じて、レビューコメントを非表示にする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>./github-comment<span class="w"> </span>hide<span class="w"> </span>-k<span class="w"> </span>&lt;テンプレート名&gt;
 </code></pre></div>
@@ -34179,11 +34179,11 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 </blockquote>
 <p><br></p>
 <h3 id="exec_2">exec<a class="headerlink" href="#exec_2" title="Permanent link">&para;</a></h3>
-<h4 id="exec_3">▼ execとは<a class="headerlink" href="#exec_3" title="Permanent link">&para;</a></h4>
+<h4 id="exec_3">▼ exec とは<a class="headerlink" href="#exec_3" title="Permanent link">&para;</a></h4>
 <p><code>github-comment exec</code> コマンドの結果に使用するテンプレート</p>
 <h4 id="_4">▼ テンプレート名<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
-<span class="c1"># github-comment execコマンドで使用するテンプレート</span>
+<span class="c1"># github-comment exec コマンドで使用するテンプレート</span>
 <span class="nt">exec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># テンプレート名</span>
 <span class="w">  </span><span class="nt">default</span><span class="p">:</span>
@@ -34193,7 +34193,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 <span class="w">        </span><span class="no">...</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
-<span class="c1"># github-comment execコマンドで使用するテンプレート</span>
+<span class="c1"># github-comment exec コマンドで使用するテンプレート</span>
 <span class="nt">exec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># テンプレート名</span>
 <span class="w">  </span><span class="nt">default</span><span class="p">:</span>
@@ -34321,8 +34321,8 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 </tr>
 <tr>
 <td><code>{{ template "link" . }}</code></td>
-<td>Jobへのリンク</td>
-<td>CIツールによって異なる。</td>
+<td>Job へのリンク</td>
+<td>CI ツールによって異なる。</td>
 </tr>
 </tbody>
 </table>
@@ -34369,7 +34369,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
 </blockquote>
 <p><br></p>
 <h3 id="when">when<a class="headerlink" href="#when" title="Permanent link">&para;</a></h3>
-<h4 id="when_1">▼ whenとは<a class="headerlink" href="#when_1" title="Permanent link">&para;</a></h4>
+<h4 id="when_1">▼ when とは<a class="headerlink" href="#when_1" title="Permanent link">&para;</a></h4>
 <p>テンプレートを使用する条件を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <p>テンプレートが 1 つの場合は、<code>when</code> キーを <code>true</code> とする</p>
@@ -34459,7 +34459,7 @@ $<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

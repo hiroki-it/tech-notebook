@@ -1740,7 +1740,7 @@
   <a href="#api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        APIにおける入力値のバリデーション
+        API における入力値のバリデーション
       
     </span>
   </a>
@@ -1751,7 +1751,7 @@
   <a href="#ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UIおける入力値のバリデーション
+        UI おける入力値のバリデーション
       
     </span>
   </a>
@@ -33507,7 +33507,7 @@
   <a href="#api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        APIにおける入力値のバリデーション
+        API における入力値のバリデーション
       
     </span>
   </a>
@@ -33518,7 +33518,7 @@
   <a href="#ui" class="md-nav__link">
     <span class="md-ellipsis">
       
-        UIおける入力値のバリデーション
+        UI おける入力値のバリデーション
       
     </span>
   </a>
@@ -33681,28 +33681,28 @@
 <tbody>
 <tr>
 <td>入力</td>
-<td>インフラストラクチャ層のWeb APIから入力される資格情報を照合し、認証する。</td>
+<td>インフラストラクチャ層の Web API から入力される資格情報を照合し、認証する。</td>
 <td>認証はインターフェース層あるいはユースケース層に実装する。<code>&lt;br&gt;</code>・<a href="https://github.com/little-hands/ddd-q-and-a/issues/173">https://github.com/little-hands/ddd-q-and-a/issues/173</a></td>
 </tr>
 <tr>
 <td></td>
-<td>インフラストラクチャ層のWeb APIから入力されるパラメーターをAPI仕様 (必須、書式など) と照らし合わせ、バリデーションを実行する。</td>
-<td>データの値がAPI仕様と比較して正しいか否かを検証することに止まり、データの値が正しいか否かの検証は、ユースケース層やドメイン層に実装する。</td>
+<td>インフラストラクチャ層の Web API から入力されるパラメーターを API 仕様 (必須、書式など) と照らし合わせ、バリデーションを実行する。</td>
+<td>データの値が API 仕様と比較して正しいか否かを検証することに止まり、データの値が正しいか否かの検証は、ユースケース層やドメイン層に実装する。</td>
 </tr>
 <tr>
 <td></td>
-<td>インフラストラクチャ層のWeb APIから入力されるパラメーターをリクエストモデルに変換し、ユースケース層のインターラクターに入力する。</td>
+<td>インフラストラクチャ層の Web API から入力されるパラメーターをリクエストモデルに変換し、ユースケース層のインターラクターに入力する。</td>
 <td>リクエストモデル作成処理で、ドメイン層への依存が必要になる。リクエストモデル作成処理を切り分け、ユースケース層に配置すると、コントローラーがドメイン層に依存することを防げる。</td>
 </tr>
 <tr>
 <td>出力</td>
-<td>ユースケース層のインターラクターから出力されるレスポンスモデルを、JSON型データとしてフロントエンドに返信する。</td>
-<td>バックエンドをAPIとして使用する場合、プレゼンターは不要である。</td>
+<td>ユースケース層のインターラクターから出力されるレスポンスモデルを、JSON 型データとしてフロントエンドに返信する。</td>
+<td>バックエンドを API として使用する場合、プレゼンターは不要である。</td>
 </tr>
 <tr>
 <td></td>
 <td>ユースケース層のインターラクターから出力されるプレゼンターをビューモデルに変換し、バックエンドのテンプレートエンジンに出力する。</td>
-<td>バックエンドでテンプレートエンジンを使用してHTMLを作成する場合、プレゼンターが必要である。</td>
+<td>バックエンドでテンプレートエンジンを使用して HTML を作成する場合、プレゼンターが必要である。</td>
 </tr>
 </tbody>
 </table>
@@ -33727,7 +33727,7 @@
 <h3 id="_7">バリデーションパターンとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>デザインパターンの一種。</p>
 <p>インターフェース層のバリデーションでは、データの必須や書式を検証する。</p>
-<h3 id="api">APIにおける入力値のバリデーション<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<h3 id="api">API における入力値のバリデーション<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
 <p><strong>＊実装例＊</strong></p>
 <p>日時データのフォーマットを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
@@ -33756,7 +33756,7 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="ui">UIおける入力値のバリデーション<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
+<h3 id="ui">UI おける入力値のバリデーション<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>
 <h3 id="_8">クエリストリングにバリデーションは必要かどうか<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>受信した URL クエリストリングの形式が誤っていた場合、デフォルト値で処理するように実装するとよい。</p>
@@ -33815,7 +33815,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

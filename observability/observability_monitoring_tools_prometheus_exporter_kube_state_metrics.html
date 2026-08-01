@@ -31484,7 +31484,7 @@
   <a href="#01-kube-state-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. kube-state-metricsの仕組み
+        01. kube-state-metrics の仕組み
       
     </span>
   </a>
@@ -33356,7 +33356,7 @@
   <a href="#01-kube-state-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. kube-state-metricsの仕組み
+        01. kube-state-metrics の仕組み
       
     </span>
   </a>
@@ -33606,7 +33606,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-kube-state-metrics">01. kube-state-metricsの仕組み<a class="headerlink" href="#01-kube-state-metrics" title="Permanent link">&para;</a></h2>
+<h2 id="01-kube-state-metrics">01. kube-state-metrics の仕組み<a class="headerlink" href="#01-kube-state-metrics" title="Permanent link">&para;</a></h2>
 <p>記入中</p>
 <p>...</p>
 <p><br></p>
@@ -33656,11 +33656,11 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--port=8080</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--resources=certificatesigningrequests,configmaps,cronjobs,daemonsets,deployments,endpoints,horizontalpodautoscalers,ingresses,jobs,leases,limitranges,mutatingwebhookconfigurations,namespaces,networkpolicies,nodes,persistentvolumeclaims,persistentvolumes,poddisruptionbudgets,pods,replicasets,replicationcontrollers,resourcequotas,secrets,services,statefulsets,storageclasses,validatingwebhookconfigurations,volumeattachments</span>
-<span class="w">            </span><span class="c1"># 必要なKubernetesリソースのラベルをメトリクスに付与する。</span>
+<span class="w">            </span><span class="c1"># 必要な Kubernetes リソースのラベルをメトリクスに付与する。</span>
 <span class="w">            </span><span class="c1"># kube_node_labels、kube_deployment_labels、kube_pod_labels、で取得できる</span>
-<span class="w">            </span><span class="c1"># 例えば、クラウドプロバイダーのNodeからNodeグループ名を含むラベル (例：eks.amazonaws.com/nodegroup) を取得する場合、設定する必要がある。</span>
+<span class="w">            </span><span class="c1"># 例えば、クラウドプロバイダーの Node から Node グループ名を含むラベル (例：eks.amazonaws.com/nodegroup) を取得する場合、設定する必要がある。</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--metric-labels-allowlist=nodes=[*],deployments=[*],pods=[*]</span>
-<span class="w">            </span><span class="c1"># 必要なKubernetesリソースのアノテーションをメトリクスに付与する。</span>
+<span class="w">            </span><span class="c1"># 必要な Kubernetes リソースのアノテーションをメトリクスに付与する。</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--metric-annotations-allowlist=nodes=[*],deployments=[*],pods=[*]</span>
 <span class="w">          </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
 <span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.9.2</span>
@@ -33719,20 +33719,20 @@ kube_service_info
 <th>メトリクス</th>
 <th>メトリクスの種類</th>
 <th>説明</th>
-<th>PromQL例</th>
+<th>PromQL 例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>kube_node_status_condition</code></td>
 <td>記入中...</td>
-<td>Nodeの現在のライフサイクルフェーズを表す。</td>
+<td>Node の現在のライフサイクルフェーズを表す。</td>
 <td><code>kube_node_status_condition{job="kube-state-metrics",condition="Ready",status="true"}</code></td>
 </tr>
 <tr>
 <td><code>kube_pod_status_phase</code></td>
 <td>記入中...</td>
-<td>Podの現在ライフサイクルフェーズを表す。</td>
+<td>Pod の現在ライフサイクルフェーズを表す。</td>
 <td><code>kube_pod_status_phase{job="kube-state-metrics",phase="Succeeded"}</code></td>
 </tr>
 <tr>
@@ -33744,55 +33744,55 @@ kube_service_info
 <tr>
 <td><code>kube_pod_container_resource_limits</code></td>
 <td>Count</td>
-<td>Podのハードウェアリソースの <code>.spec.containers[*].resources.limits</code> キーを表す。設定していなければ <code>null</code> になる。</td>
+<td>Pod のハードウェアリソースの <code>.spec.containers[*].resources.limits</code> キーを表す。設定していなければ <code>null</code> になる。</td>
 <td><code>kube_pod_container_resource_limits{job="kube-state-metrics"}</code></td>
 </tr>
 <tr>
 <td><code>kube_deployment_spec_replicas</code></td>
 <td>Count</td>
-<td>Deploymentで指定しているPodのレプリカ数を表す。</td>
+<td>Deployment で指定している Pod のレプリカ数を表す。</td>
 <td><code>kube_deployment_spec_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
 </tr>
 <tr>
 <td><code>kube_deployment_status_replicas</code></td>
 <td>Count</td>
-<td>Deploymentで指定しているPodのレプリカ数のうち、現在実行されているPod数を表す。</td>
+<td>Deployment で指定している Pod のレプリカ数のうち、現在実行されている Pod 数を表す。</td>
 <td><code>kube_deployment_status_replicas{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
 </tr>
 <tr>
 <td><code>kube_deployment_status_replicas_available</code></td>
 <td>Count</td>
-<td>Deploymentで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。</td>
+<td>Deployment で指定している Pod のレプリカ数のうち、現在利用できる Pod 数を表す。</td>
 <td><code>kube_deployment_status_replicas_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
 </tr>
 <tr>
 <td><code>kube_deployment_status_replicas_unavailable</code></td>
 <td>Count</td>
-<td>Deploymentで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。</td>
+<td>Deployment で指定している Pod のレプリカ数のうち、現在利用できない Pod 数を表す。</td>
 <td><code>kube_deployment_status_replicas_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
 </tr>
 <tr>
 <td><code>kube_daemonset_status_desired_number_scheduled</code></td>
 <td>Count</td>
-<td>DaemonSetで指定しているPodのレプリカ数を表す。</td>
+<td>DaemonSet で指定している Pod のレプリカ数を表す。</td>
 <td><code>kube_daemonset_status_desired_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
 </tr>
 <tr>
 <td><code>kube_daemonset_status_current_number_scheduled</code></td>
 <td>Count</td>
-<td>DaemonSetで指定しているPodのレプリカ数のうち、現在実行されているPod数を表す。</td>
+<td>DaemonSet で指定している Pod のレプリカ数のうち、現在実行されている Pod 数を表す。</td>
 <td><code>kube_daemonset_status_current_number_scheduled{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
 </tr>
 <tr>
 <td><code>kube_daemonset_status_number_available</code></td>
 <td>Count</td>
-<td>DaemonSetで指定しているPodのレプリカ数のうち、現在利用できるPod数を表す。</td>
+<td>DaemonSet で指定している Pod のレプリカ数のうち、現在利用できる Pod 数を表す。</td>
 <td><code>kube_daemonset_status_number_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
 </tr>
 <tr>
 <td><code>kube_daemonset_status_number_unavailable</code></td>
 <td>Count</td>
-<td>DaemonSetで指定しているPodのレプリカ数のうち、現在利用できないPod数を表す。</td>
+<td>DaemonSet で指定している Pod のレプリカ数のうち、現在利用できない Pod 数を表す。</td>
 <td><code>kube_daemonset_status_number_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}</code></td>
 </tr>
 </tbody>
@@ -33824,7 +33824,7 @@ kube_service_info
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     
@@ -33835,11 +33835,11 @@ kube_service_info
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
-      hiroki-it
+      hiroki-it, hiroki.hasegawa.ex
     </nav>
   </span>
 

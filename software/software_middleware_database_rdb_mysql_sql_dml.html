@@ -5100,7 +5100,7 @@
   <a href="#01-dml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. DMLとは
+        01. DML とは
       
     </span>
   </a>
@@ -5185,7 +5185,7 @@
   <a href="#db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ アプリからDBへの責務の委譲
+        ▼ アプリから DB への責務の委譲
       
     </span>
   </a>
@@ -5440,7 +5440,7 @@
   <a href="#db_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ アプリからDBへの責務の委譲
+        ▼ アプリから DB への責務の委譲
       
     </span>
   </a>
@@ -5647,7 +5647,7 @@
   <a href="#db_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 各DBサイズの確認
+        ▼ 各 DB サイズの確認
       
     </span>
   </a>
@@ -5870,7 +5870,7 @@
   <a href="#stored-procedure_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ stored procedureとは
+        ▼ stored procedure とは
       
     </span>
   </a>
@@ -34035,7 +34035,7 @@
   <a href="#01-dml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. DMLとは
+        01. DML とは
       
     </span>
   </a>
@@ -34120,7 +34120,7 @@
   <a href="#db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ アプリからDBへの責務の委譲
+        ▼ アプリから DB への責務の委譲
       
     </span>
   </a>
@@ -34375,7 +34375,7 @@
   <a href="#db_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ アプリからDBへの責務の委譲
+        ▼ アプリから DB への責務の委譲
       
     </span>
   </a>
@@ -34582,7 +34582,7 @@
   <a href="#db_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 各DBサイズの確認
+        ▼ 各 DB サイズの確認
       
     </span>
   </a>
@@ -34805,7 +34805,7 @@
   <a href="#stored-procedure_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ stored procedureとは
+        ▼ stored procedure とは
       
     </span>
   </a>
@@ -34972,7 +34972,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-dml">01. DMLとは<a class="headerlink" href="#01-dml" title="Permanent link">&para;</a></h2>
+<h2 id="01-dml">01. DML とは<a class="headerlink" href="#01-dml" title="Permanent link">&para;</a></h2>
 <p>テーブル上のレコードを操作するクエリのこと。</p>
 <blockquote>
 <ul>
@@ -35002,9 +35002,9 @@
 <p>指定したカラムで、『フィールド』の合計を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="nf">SUM</span><span class="p">(</span><span class="o">&lt;</span><span class="n">カラム名</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
-<h4 id="db">▼ アプリからDBへの責務の委譲<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
-<p><code>SUM</code>の処理はアプリではなくDBが実行する</p>
-<p>つまり、アプリからDBへ責務を委譲できる。</p>
+<h4 id="db">▼ アプリから DB への責務の委譲<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
+<p><code>SUM</code>の処理はアプリではなく DB が実行する</p>
+<p>つまり、アプリから DB へ責務を委譲できる。</p>
 <p>これにより、アプリのクエリ処理の性能による負荷を軽減できる。</p>
 <p>ほかの<code>GROUP BY</code>も同様である。</p>
 <p><br></p>
@@ -35145,10 +35145,10 @@
 <p>指定したカラムで、<code>SELECT</code> で読み出した値以外の『フィールド』を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="n">カラム名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">レコード名</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">160</span><span class="p">);</span>
 </code></pre></div>
-<p><strong>【IN句を使用しなかった場合】</strong></p>
+<p><strong>【IN 句を使用しなかった場合】</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fruit</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;みかん&quot;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;りんご&quot;</span><span class="p">;</span>
 </code></pre></div>
-<p><strong>【IN句を使用した場合】</strong></p>
+<p><strong>【IN 句を使用した場合】</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">fruit</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">name</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span><span class="s2">&quot;みかん&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;りんご&quot;</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="any">▼ <code>ANY</code> の使い方<a class="headerlink" href="#any" title="Permanent link">&para;</a></h4>
@@ -35163,9 +35163,9 @@
 <p>指定したカラムをグループ化し、フィールドの値の平均値を算出する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">&lt;</span><span class="n">カラム名1</span><span class="o">&gt;</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="o">&lt;</span><span class="n">カラム名2</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">&lt;</span><span class="n">テーブル名</span><span class="o">&gt;</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="o">&lt;</span><span class="n">カラム名1</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div>
-<h4 id="db_1">▼ アプリからDBへの責務の委譲<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h4>
-<p><code>GROUP BY</code>の処理はアプリではなくDBが実行する</p>
-<p>つまり、アプリからDBへ責務を委譲できる。</p>
+<h4 id="db_1">▼ アプリから DB への責務の委譲<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h4>
+<p><code>GROUP BY</code>の処理はアプリではなく DB が実行する</p>
+<p>つまり、アプリから DB へ責務を委譲できる。</p>
 <p>これにより、アプリのクエリ処理の性能による負荷を軽減できる。</p>
 <p>ほかの<code>SUM</code>も同様である。</p>
 <p><br></p>
@@ -35239,7 +35239,7 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h3>
-<h4 id="db_2">▼ 各DBサイズの確認<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h4>
+<h4 id="db_2">▼ 各 DB サイズの確認<a class="headerlink" href="#db_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span>
 <span class="w">    </span><span class="n">table_schema</span><span class="p">,</span>
 <span class="w">    </span><span class="nf">sum</span><span class="p">(</span><span class="n">data_length</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mb</span>
@@ -35317,37 +35317,37 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <tbody>
 <tr>
 <td>ALL</td>
-<td>・DBインデックスを使用していない。</td>
+<td>・DB インデックスを使用していない。</td>
 <td>すべてのカラム</td>
 <td>すべてのカラムを検索するため、実行時間がもっとも長く、改善する必要がある。</td>
 </tr>
 <tr>
 <td>index</td>
-<td>・DBインデックスを使用していない。</td>
+<td>・DB インデックスを使用していない。</td>
 <td>すべてのインデックスのカラム</td>
 <td></td>
 </tr>
 <tr>
 <td>range</td>
-<td>・セカンダリーDBインデックスを使用している。<br>・<code>WHERE</code> に重複したレコード値、<code>IN</code>、<code>BETWEEN</code> を使用している。</td>
+<td>・セカンダリーDB インデックスを使用している。<br>・<code>WHERE</code> に重複したレコード値、<code>IN</code>、<code>BETWEEN</code> を使用している。</td>
 <td>特定の複数カラム</td>
 <td></td>
 </tr>
 <tr>
 <td>ref</td>
-<td>・セカンダリーDBインデックスを使用している。<br>・<code>WHERE</code> に重複しないレコード値</td>
+<td>・セカンダリーDB インデックスを使用している。<br>・<code>WHERE</code> に重複しないレコード値</td>
 <td>特定の複数カラム</td>
 <td></td>
 </tr>
 <tr>
 <td>eq_ref</td>
-<td>・クラスタDBインデックスを使用している。</td>
+<td>・クラスタ DB インデックスを使用している。</td>
 <td><code>1</code> 個のカラム</td>
 <td><code>1</code> 個のカラムしか <code>fetch</code> しないため、<code>JOIN</code> を使用したアクセスのなかで、実行時間がもっとも短い。</td>
 </tr>
 <tr>
 <td>const</td>
-<td>・クラスタDBインデックスを使用している。<br>・<code>JOIN</code> を使用していない。</td>
+<td>・クラスタ DB インデックスを使用している。<br>・<code>JOIN</code> を使用していない。</td>
 <td><code>1</code> 個のカラム</td>
 <td><code>1</code> 個のカラムしか <code>fetch</code> しないため、実行時間がもっとも短い。</td>
 </tr>
@@ -35393,7 +35393,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
 <p><br></p>
 <h2 id="08-exec">08. EXEC<a class="headerlink" href="#08-exec" title="Permanent link">&para;</a></h2>
 <h3 id="stored-procedure">stored procedure<a class="headerlink" href="#stored-procedure" title="Permanent link">&para;</a></h3>
-<h4 id="stored-procedure_1">▼ stored procedureとは<a class="headerlink" href="#stored-procedure_1" title="Permanent link">&para;</a></h4>
+<h4 id="stored-procedure_1">▼ stored procedure とは<a class="headerlink" href="#stored-procedure_1" title="Permanent link">&para;</a></h4>
 <p>あらかじめ一連の SQL 文を DB に格納しておき、Call 文でコールする方式。</p>
 <p><img alt="p325" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p325.gif" /></p>
 <blockquote>
@@ -35431,7 +35431,7 @@ possible_keys:<span class="w"> </span>index_t2_on_c3
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月27日 15:47:47 JST">2026-07-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

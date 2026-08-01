@@ -2988,7 +2988,7 @@
   <a href="#db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ DBにとって
+        ▼ DB にとって
       
     </span>
   </a>
@@ -34129,7 +34129,7 @@
   <a href="#db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ DBにとって
+        ▼ DB にとって
       
     </span>
   </a>
@@ -34391,38 +34391,38 @@
 <h3 id="_8">タイムアウト時間<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ マイクロサービスだけに着目する場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>送信元マイクロサービスよりも宛先マイクロサービスのタイムアウト時間を短くする。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 45秒</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 45 秒</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎︎︎</span>
-<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 30秒</span>
+<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 30 秒</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 15秒</span>
+<span class="l l-Scalar l-Scalar-Plain">マイクロサービス</span><span class="w"> </span><span class="c1"># 15 秒</span>
 </code></pre></div>
 <h4 id="_10">▼ サイドカープロキシにも着目する場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>送信元マイクロサービスよりもサイドカーのタイムアウト時間を短くする。</p>
 <p>また、サイドカーよりも宛先マイクロサービスのサイドカーのタイムアウト時間を短くする。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">アプリ</span><span class="w"> </span><span class="c1"># 45秒</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">アプリ</span><span class="w"> </span><span class="c1"># 45 秒</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 44秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">--------------</span><span class="w"> </span><span class="c1"># マイクロサービス間の境界</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 31秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">アプリ</span><span class="w"> </span><span class="c1"># 30秒</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 29秒</span>
+<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 44 秒</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">--------------</span><span class="w"> </span><span class="c1"># マイクロサービス間の境界</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 16秒</span>
+<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 31 秒</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain">アプリ</span><span class="w"> </span><span class="c1"># 15秒</span>
+<span class="l l-Scalar l-Scalar-Plain">アプリ</span><span class="w"> </span><span class="c1"># 30 秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 29 秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">--------------</span><span class="w"> </span><span class="c1"># マイクロサービス間の境界</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">サイドカー</span><span class="w"> </span><span class="c1"># 16 秒</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
+<span class="l l-Scalar l-Scalar-Plain">アプリ</span><span class="w"> </span><span class="c1"># 15 秒</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="_11">タイムアウトの種類<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -34554,7 +34554,7 @@
 <p>プログラムの実行が強制的に停止されるランタイムエラー (実行時エラー) 、停止せずに続行される非ランタイムエラー、に分類される。</p>
 <p><br></p>
 <h3 id="_18">エラーハンドリングの意義<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<h4 id="db">▼ DBにとって<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
+<h4 id="db">▼ DB にとって<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
 <p>DB 更新系の処理の途中にエラーが発生すると、DB が中途半端な更新状態になってしまう。</p>
 <p>そのため、関数コールしたクラスでエラーを検出し、これをきっかけにロールバック処理を実行する必要がある。</p>
 <p>注意点として、下層クラスのエラーの内容自体は握りつぶさずに、スタックトレースとして関数コールしたクラスでロギングしておく。</p>
@@ -34628,7 +34628,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

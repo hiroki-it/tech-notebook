@@ -21290,7 +21290,7 @@
   <a href="#01-ansible-galaxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. Ansible Galaxyとは
+        01. Ansible Galaxy とは
       
     </span>
   </a>
@@ -21313,19 +21313,19 @@
   <a href="#role" class="md-nav__link">
     <span class="md-ellipsis">
       
-        roleモジュールのディレクトリ構成
+        role モジュールのディレクトリ構成
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="roleモジュールのディレクトリ構成">
+    <nav class="md-nav" aria-label="role モジュールのディレクトリ構成">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#task" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 複数のtaskがある場合
+        ▼ 複数の task がある場合
       
     </span>
   </a>
@@ -21336,7 +21336,7 @@
   <a href="#task_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 複数のtaskがある場合
+        ▼ 複数の task がある場合
       
     </span>
   </a>
@@ -33372,7 +33372,7 @@
   <a href="#01-ansible-galaxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. Ansible Galaxyとは
+        01. Ansible Galaxy とは
       
     </span>
   </a>
@@ -33395,19 +33395,19 @@
   <a href="#role" class="md-nav__link">
     <span class="md-ellipsis">
       
-        roleモジュールのディレクトリ構成
+        role モジュールのディレクトリ構成
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="roleモジュールのディレクトリ構成">
+    <nav class="md-nav" aria-label="role モジュールのディレクトリ構成">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#task" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 複数のtaskがある場合
+        ▼ 複数の task がある場合
       
     </span>
   </a>
@@ -33418,7 +33418,7 @@
   <a href="#task_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 複数のtaskがある場合
+        ▼ 複数の task がある場合
       
     </span>
   </a>
@@ -33628,7 +33628,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-ansible-galaxy">01. Ansible Galaxyとは<a class="headerlink" href="#01-ansible-galaxy" title="Permanent link">&para;</a></h2>
+<h2 id="01-ansible-galaxy">01. Ansible Galaxy とは<a class="headerlink" href="#01-ansible-galaxy" title="Permanent link">&para;</a></h2>
 <p><code>role</code> ディレクトリ配下を role モジュールとして別リポジトリに切り分け、これをリモート参照する仕組みのこと。</p>
 <blockquote>
 <ul>
@@ -33637,10 +33637,10 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. 参照される側<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="role">roleモジュールのディレクトリ構成<a class="headerlink" href="#role" title="Permanent link">&para;</a></h3>
-<h4 id="task">▼ 複数のtaskがある場合<a class="headerlink" href="#task" title="Permanent link">&para;</a></h4>
+<h3 id="role">role モジュールのディレクトリ構成<a class="headerlink" href="#role" title="Permanent link">&para;</a></h3>
+<h4 id="task">▼ 複数の task がある場合<a class="headerlink" href="#task" title="Permanent link">&para;</a></h4>
 <p><code>meta</code> ディレクトリ配下に、role モジュールを宣言する設定ファイルを配置する。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">foo-role-module-repository/</span><span class="w"> </span><span class="c1"># roleモジュール</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">foo-role-module-repository/</span><span class="w"> </span><span class="c1"># role モジュール</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">├── defaults/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   └── main.yml</span>
@@ -33681,9 +33681,9 @@
 <li><a href="https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243">https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243</a></li>
 </ul>
 </blockquote>
-<h4 id="task_1">▼ 複数のtaskがある場合<a class="headerlink" href="#task_1" title="Permanent link">&para;</a></h4>
+<h4 id="task_1">▼ 複数の task がある場合<a class="headerlink" href="#task_1" title="Permanent link">&para;</a></h4>
 <p><code>meta</code> ディレクトリ配下に、role モジュールを宣言する設定ファイルを配置する。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">foo-role-module-repository/</span><span class="w"> </span><span class="c1"># roleモジュール</span>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">foo-role-module-repository/</span><span class="w"> </span><span class="c1"># role モジュール</span>
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">├── defaults/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   └── main.yml</span>
@@ -33740,7 +33740,7 @@
 <p>リモート参照する role モジュールの URL を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-role</span>
 <span class="w">  </span><span class="nt">scm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git</span>
-<span class="w">  </span><span class="c1"># roleモジュールのあるリポジトリ</span>
+<span class="w">  </span><span class="c1"># role モジュールのあるリポジトリ</span>
 <span class="w">  </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/hiroki-hasegawa/foo-role-module-repository.git</span>
 <span class="w">  </span><span class="c1"># ブランチ</span>
 <span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
@@ -33795,7 +33795,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

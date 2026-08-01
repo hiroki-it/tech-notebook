@@ -27921,12 +27921,12 @@
   <a href="#01-circleci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. CircleCIの仕組み
+        01. CircleCI の仕組み
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. CircleCIの仕組み">
+    <nav class="md-nav" aria-label="01. CircleCI の仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -27941,10 +27941,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cicd" class="md-nav__link">
+  <a href="#ci-cd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CIパイプライン/CDパイプライン
+        CI パイプライン/CD パイプライン
       
     </span>
   </a>
@@ -28036,10 +28036,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#circlecissh" class="md-nav__link">
+  <a href="#circleci-ssh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ CircleCIコンテナにSSH公開鍵認証
+        ▼ CircleCI コンテナに SSH 公開鍵認証
       
     </span>
   </a>
@@ -28061,7 +28061,7 @@
   <a href="#ssh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ SSHキー
+        ▼ SSH キー
       
     </span>
   </a>
@@ -33372,12 +33372,12 @@
   <a href="#01-circleci" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. CircleCIの仕組み
+        01. CircleCI の仕組み
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. CircleCIの仕組み">
+    <nav class="md-nav" aria-label="01. CircleCI の仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33392,10 +33392,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cicd" class="md-nav__link">
+  <a href="#ci-cd" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CIパイプライン/CDパイプライン
+        CI パイプライン/CD パイプライン
       
     </span>
   </a>
@@ -33487,10 +33487,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#circlecissh" class="md-nav__link">
+  <a href="#circleci-ssh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ CircleCIコンテナにSSH公開鍵認証
+        ▼ CircleCI コンテナに SSH 公開鍵認証
       
     </span>
   </a>
@@ -33512,7 +33512,7 @@
   <a href="#ssh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ SSHキー
+        ▼ SSH キー
       
     </span>
   </a>
@@ -33634,7 +33634,7 @@
 
 
 <h1 id="circleci">CircleCI<a class="headerlink" href="#circleci" title="Permanent link">&para;</a></h1>
-<h2 id="01-circleci">01. CircleCIの仕組み<a class="headerlink" href="#01-circleci" title="Permanent link">&para;</a></h2>
+<h2 id="01-circleci">01. CircleCI の仕組み<a class="headerlink" href="#01-circleci" title="Permanent link">&para;</a></h2>
 <h3 id="_1">アーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p><img alt="circleci_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circleci_architecture.png" /></p>
 <blockquote>
@@ -33643,7 +33643,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="cicd">CIパイプライン/CDパイプライン<a class="headerlink" href="#cicd" title="Permanent link">&para;</a></h3>
+<h3 id="ci-cd">CI パイプライン/CD パイプライン<a class="headerlink" href="#ci-cd" title="Permanent link">&para;</a></h3>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -33683,7 +33683,7 @@
 <p>デバッグでは行数がわからない仕様になっている。</p>
 <p>そこで、workflow の job のどこで失敗しているのかを特定するために、検証しない job をコメントアウトしておく。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">workflows</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># build以外を実行しないことにより、buildのみを検証できる。</span>
+<span class="w">  </span><span class="c1"># build 以外を実行しないことにより、build のみを検証できる。</span>
 <span class="w">  </span><span class="nt">build-test-and-deploy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
@@ -33718,7 +33718,7 @@ $<span class="w"> </span>circleci<span class="w"> </span>config<span class="w"> 
 <span class="c1"># 専用のコンテナを作成し、展開ファイルを元にテストを実施する。</span>
 $<span class="w"> </span>circleci<span class="w"> </span><span class="nb">local</span><span class="w"> </span>execute<span class="w"> </span>-c<span class="w"> </span>.circleci/process.yml<span class="w"> </span>--job<span class="w"> </span>&lt;job名&gt;
 </code></pre></div>
-<h4 id="circlecissh">▼ CircleCIコンテナにSSH公開鍵認証<a class="headerlink" href="#circlecissh" title="Permanent link">&para;</a></h4>
+<h4 id="circleci-ssh">▼ CircleCI コンテナに SSH 公開鍵認証<a class="headerlink" href="#circleci-ssh" title="Permanent link">&para;</a></h4>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -33749,7 +33749,7 @@ $<span class="w"> </span>circleci<span class="w"> </span><span class="nb">local<
 <li><a href="https://circleci.com/docs/2.0/insights-tests/">https://circleci.com/docs/2.0/insights-tests/</a></li>
 </ul>
 </blockquote>
-<h4 id="ssh">▼ SSHキー<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
+<h4 id="ssh">▼ SSH キー<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
 <p>SSH キーを作成する必要がある。</p>
 <table>
 <thead>
@@ -33761,11 +33761,11 @@ $<span class="w"> </span>circleci<span class="w"> </span><span class="nb">local<
 <tbody>
 <tr>
 <td>デプロイキー</td>
-<td>CircleCIコンテナがプロジェクトのGitHubリポジトリに接続するために必要である (例：CIOps) 。GitHubのリポジトリ設定にあるデプロイキーが、自動的に作成される。</td>
+<td>CircleCI コンテナがプロジェクトの GitHub リポジトリに接続するために必要である (例：CIOps) 。GitHub のリポジトリ設定にあるデプロイキーが、自動的に作成される。</td>
 </tr>
 <tr>
 <td>ユーザーキー</td>
-<td>CircleCIコンテナがプロジェクト以外のGitHubリポジトリに接続するために必要である (例：GitOps) 。GitHubのアカウント設定にあるSSHキーが、自動的に作成される。</td>
+<td>CircleCI コンテナがプロジェクト以外の GitHub リポジトリに接続するために必要である (例：GitOps) 。GitHub のアカウント設定にある SSH キーが、自動的に作成される。</td>
 </tr>
 </tbody>
 </table>
@@ -33795,7 +33795,7 @@ $<span class="w"> </span>circleci<span class="w"> </span><span class="nb">local<
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

@@ -18455,12 +18455,12 @@
   <a href="#02-terraform" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. セットアップ (Terraformの場合)
+        02. セットアップ (Terraform の場合)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. セットアップ (Terraformの場合)">
+    <nav class="md-nav" aria-label="02. セットアップ (Terraform の場合)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -18574,7 +18574,7 @@
   <a href="#amazon-ecs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon ECSの場合
+        ▼ Amazon ECS の場合
       
     </span>
   </a>
@@ -18613,7 +18613,7 @@
   <a href="#amazon-ecs_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon ECSの場合
+        ▼ Amazon ECS の場合
       
     </span>
   </a>
@@ -18685,7 +18685,7 @@
   <a href="#amazon-ec2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Amazon EC2ヘルスチェック
+        Amazon EC2 ヘルスチェック
       
     </span>
   </a>
@@ -33579,12 +33579,12 @@
   <a href="#02-terraform" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. セットアップ (Terraformの場合)
+        02. セットアップ (Terraform の場合)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. セットアップ (Terraformの場合)">
+    <nav class="md-nav" aria-label="02. セットアップ (Terraform の場合)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33698,7 +33698,7 @@
   <a href="#amazon-ecs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon ECSの場合
+        ▼ Amazon ECS の場合
       
     </span>
   </a>
@@ -33737,7 +33737,7 @@
   <a href="#amazon-ecs_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon ECSの場合
+        ▼ Amazon ECS の場合
       
     </span>
   </a>
@@ -33809,7 +33809,7 @@
   <a href="#amazon-ec2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Amazon EC2ヘルスチェック
+        Amazon EC2 ヘルスチェック
       
     </span>
   </a>
@@ -33947,7 +33947,7 @@
   
 
 
-<h1 id="autoscalingaws">AutoScaling＠AWSリソース<a class="headerlink" href="#autoscalingaws" title="Permanent link">&para;</a></h1>
+<h1 id="autoscalingaws">AutoScaling＠AWS リソース<a class="headerlink" href="#autoscalingaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -33990,12 +33990,12 @@
 </tr>
 <tr>
 <td>ネットワーク</td>
-<td>いずれのAZのサブネットでインスタンスを作成するかを設定する。</td>
-<td>選択したAZの個数よりも少ない個数のAmazon EC2を作成する場合、作成先のAZをランダムに選択する。</td>
+<td>いずれの AZ のサブネットでインスタンスを作成するかを設定する。</td>
+<td>選択した AZ の個数よりも少ない個数の Amazon EC2 を作成する場合、作成先の AZ をランダムに選択する。</td>
 </tr>
 <tr>
 <td>ロードバランシング</td>
-<td>オートスケーリングに紐づけるAWS ALBを設定する。</td>
+<td>オートスケーリングに紐づける AWS ALB を設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -34010,13 +34010,13 @@
 </tr>
 <tr>
 <td>アクティビティ通知</td>
-<td>スケーリング時のイベントをSNSに通知するように設定する。</td>
+<td>スケーリング時のイベントを SNS に通知するように設定する。</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<h2 id="02-terraform">02. セットアップ (Terraformの場合)<a class="headerlink" href="#02-terraform" title="Permanent link">&para;</a></h2>
+<h2 id="02-terraform">02. セットアップ (Terraform の場合)<a class="headerlink" href="#02-terraform" title="Permanent link">&para;</a></h2>
 <h3 id="_3">スケーリンググループ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># オートスケーリンググループ</span>
 <span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_autoscaling_group&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
@@ -34218,7 +34218,7 @@
 <li><code>70</code>%のときに Amazon EC2 を <code>2</code> 個スケールアウト</li>
 <li><code>90</code>%のときに Amazon EC2 を <code>3</code> 個スケールアウト</li>
 </ul>
-<h4 id="amazon-ecs">▼ Amazon ECSの場合<a class="headerlink" href="#amazon-ecs" title="Permanent link">&para;</a></h4>
+<h4 id="amazon-ecs">▼ Amazon ECS の場合<a class="headerlink" href="#amazon-ecs" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
 <blockquote>
 <ul>
@@ -34236,7 +34236,7 @@
 <li>DB クラスターの Amazon Aurora のリードレプリカ数</li>
 <li>Lambda のスクリプト同時実行数</li>
 </ul>
-<h4 id="amazon-ecs_1">▼ Amazon ECSの場合<a class="headerlink" href="#amazon-ecs_1" title="Permanent link">&para;</a></h4>
+<h4 id="amazon-ecs_1">▼ Amazon ECS の場合<a class="headerlink" href="#amazon-ecs_1" title="Permanent link">&para;</a></h4>
 <p>ターゲット値の設定に応じて、自動的にスケールアウトやスケールインが起こるシナリオ例を示す。</p>
 <dl>
 <dt><code>(1)</code></dt>
@@ -34275,23 +34275,23 @@
 <tbody>
 <tr>
 <td>ターゲット追跡スケーリングポリシー</td>
-<td>監視対象のメトリクスがターゲット値を超過しているか否かを基に、Amazon ECSタスク数のスケーリングが実行される。</td>
+<td>監視対象のメトリクスがターゲット値を超過しているか否かを基に、Amazon ECS タスク数のスケーリングが実行される。</td>
 <td></td>
 </tr>
 <tr>
-<td>Amazon ECSサービスメトリクス</td>
+<td>Amazon ECS サービスメトリクス</td>
 <td>監視対象のメトリクスを設定する。</td>
-<td>『平均CPU』、『平均メモリ』、『Amazon ECSタスク当たりのAWS ALBからのリクエスト数』を監視できる。SLIに対応するAmazon CloudWatch Metricsも参考にせよ。</td>
+<td>『平均 CPU』、『平均メモリ』、『Amazon ECS タスク当たりの AWS ALB からのリクエスト数』を監視できる。SLI に対応する Amazon CloudWatch Metrics も参考にせよ。</td>
 </tr>
 <tr>
 <td>ターゲット値</td>
-<td>Amazon ECSタスク数のスケーリングが実行される収束値を設定する。</td>
-<td>ターゲット値を超過している場合、Amazon ECSタスク数がスケールアウトされる。反対に、ターゲット値未満 (正確にはターゲット値の <code>90</code>%未満) の場合、Amazon ECSタスク数がスケールインされる。</td>
+<td>Amazon ECS タスク数のスケーリングが実行される収束値を設定する。</td>
+<td>ターゲット値を超過している場合、Amazon ECS タスク数がスケールアウトされる。反対に、ターゲット値未満 (正確にはターゲット値の <code>90</code>%未満) の場合、Amazon ECS タスク数がスケールインされる。</td>
 </tr>
 <tr>
 <td>スケールアウトクールダウン期間</td>
 <td>スケールアウトを完了してから、次回のスケールアウトを発動できるまでの時間を設定する。</td>
-<td>・期間を短くし過ぎると、ターゲット値を超過する状態が断続的に続いた場合、余分なスケールアウトが連続して実行されてしまうため注意する。<br>・期間を長く過ぎると、スケールアウトが不十分になり、Amazon ECSの負荷が緩和されないため注意する。</td>
+<td>・期間を短くし過ぎると、ターゲット値を超過する状態が断続的に続いた場合、余分なスケールアウトが連続して実行されてしまうため注意する。<br>・期間を長く過ぎると、スケールアウトが不十分になり、Amazon ECS の負荷が緩和されないため注意する。</td>
 </tr>
 <tr>
 <td>スケールインクールダウン期間</td>
@@ -34330,7 +34330,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="amazon-ec2">Amazon EC2ヘルスチェック<a class="headerlink" href="#amazon-ec2" title="Permanent link">&para;</a></h3>
+<h3 id="amazon-ec2">Amazon EC2 ヘルスチェック<a class="headerlink" href="#amazon-ec2" title="Permanent link">&para;</a></h3>
 <p>Amazon EC2 が自身をヘルスチェックし、異常な Amazon EC2 があれば、必要に応じて Amazon EC2 を作成し直す。</p>
 <p><code>running</code> が正常である。</p>
 <p><code>impaired</code>、<code>stopping</code>、<code>stopped</code>、<code>shutting-down</code>、<code>terminated</code> が異常である。</p>
@@ -34378,7 +34378,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

@@ -6741,7 +6741,7 @@
   <a href="#istio-cni_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ istio-cniとは
+        ▼ istio-cni とは
       
     </span>
   </a>
@@ -6763,7 +6763,7 @@
   <a href="#google-cloud-mesh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Google Cloud Meshに関して
+        ▼ Google Cloud Mesh に関して
       
     </span>
   </a>
@@ -6791,7 +6791,7 @@
   <a href="#ztunnel_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ztunnelとは
+        ▼ ztunnel とは
       
     </span>
   </a>
@@ -6841,7 +6841,7 @@
   <a href="#waypoint-proxy_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ waypoint-proxyとは
+        ▼ waypoint-proxy とは
       
     </span>
   </a>
@@ -6860,10 +6860,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#namespacenode" class="md-nav__link">
+  <a href="#namespace-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ NamespaceかつNodeのリバースプロキシとして
+        ▼ Namespace かつ Node のリバースプロキシとして
       
     </span>
   </a>
@@ -33474,7 +33474,7 @@
   <a href="#istio-cni_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ istio-cniとは
+        ▼ istio-cni とは
       
     </span>
   </a>
@@ -33496,7 +33496,7 @@
   <a href="#google-cloud-mesh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Google Cloud Meshに関して
+        ▼ Google Cloud Mesh に関して
       
     </span>
   </a>
@@ -33524,7 +33524,7 @@
   <a href="#ztunnel_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ ztunnelとは
+        ▼ ztunnel とは
       
     </span>
   </a>
@@ -33574,7 +33574,7 @@
   <a href="#waypoint-proxy_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ waypoint-proxyとは
+        ▼ waypoint-proxy とは
       
     </span>
   </a>
@@ -33593,10 +33593,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#namespacenode" class="md-nav__link">
+  <a href="#namespace-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ NamespaceかつNodeのリバースプロキシとして
+        ▼ Namespace かつ Node のリバースプロキシとして
       
     </span>
   </a>
@@ -33771,7 +33771,7 @@
   
 
 
-<h1 id="istio">データプレーン＠Istioアンビエント<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h1>
+<h1 id="istio">データプレーン＠Istio アンビエント<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -33793,44 +33793,44 @@
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">リダイレクト</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下のPodなので、Nodeごとにいる</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet 配下の Pod なので、Node ごとにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span><span class="w"> </span><span class="c1"># HBONE</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">waypoint-proxy Pod (L7)</span><span class="w"> </span><span class="c1"># Deployment配下のPodなので、任意のNodeにいる</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7 ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">waypoint-proxy Pod (L7)</span><span class="w"> </span><span class="c1"># Deployment 配下の Pod なので、任意の Node にいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">マイクロサービスのPod</span>
 </code></pre></div>
 <p>サービスメッシュ内のリクエストの経路は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">マイクロサービスのPod</span><span class="w"> </span><span class="c1"># 送信元</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下のPodなので、Nodeごとにいる</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet 配下の Pod なので、Node ごとにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span><span class="w"> </span><span class="c1"># HBONE</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">waypoint-proxy Pod (L7)</span><span class="w"> </span><span class="c1"># Deployment配下のPodなので、任意のNodeにいる</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7 ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">waypoint-proxy Pod (L7)</span><span class="w"> </span><span class="c1"># Deployment 配下の Pod なので、任意の Node にいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span><span class="w"> </span><span class="c1"># HBONE</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下のPodなので、Nodeごとにいる</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet 配下の Pod なので、Node ごとにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬇⬆️︎</span>
 <span class="l l-Scalar l-Scalar-Plain">マイクロサービスのPod</span><span class="w"> </span><span class="c1"># 宛先</span>
 </code></pre></div>
 <p>サービスメッシュ外へのリクエストの経路は以下の通りである。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆️⬇</span>
-<span class="l l-Scalar l-Scalar-Plain"># L7ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">waypoint-proxy Pod (L7)</span><span class="w"> </span><span class="c1"># Deployment配下なので、任意のNodeにいる</span>
+<span class="l l-Scalar l-Scalar-Plain"># L7 ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">waypoint-proxy Pod (L7)</span><span class="w"> </span><span class="c1"># Deployment 配下なので、任意の Node にいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆️⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆️⬇</span><span class="w"> </span><span class="c1"># HBONE</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆️⬇</span>
-<span class="l l-Scalar l-Scalar-Plain"># L4ロードバランサー</span>
-<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet配下なので、Nodeごとにいる</span>
+<span class="l l-Scalar l-Scalar-Plain"># L4 ロードバランサー</span>
+<span class="l l-Scalar l-Scalar-Plain">ztunnel Pod (L4)</span><span class="w"> </span><span class="c1"># DaemonSet 配下なので、Node ごとにいる</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆️⬇</span>
 <span class="l l-Scalar l-Scalar-Plain">リダイレクト</span>
 <span class="l l-Scalar l-Scalar-Plain">⬆️⬇</span>
@@ -33849,7 +33849,7 @@
 <p><br></p>
 <h2 id="02">02. データプレーンの要素<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio-cni">istio-cni<a class="headerlink" href="#istio-cni" title="Permanent link">&para;</a></h3>
-<h4 id="istio-cni_1">▼ istio-cniとは<a class="headerlink" href="#istio-cni_1" title="Permanent link">&para;</a></h4>
+<h4 id="istio-cni_1">▼ istio-cni とは<a class="headerlink" href="#istio-cni_1" title="Permanent link">&para;</a></h4>
 <p>実体は、DaemonSet として稼働する。</p>
 <p><code>kube-system</code> の Namespace におき、PriorityClass を <code>system-node-critical</code> とすることが推奨である。</p>
 <p>istio-cni は、<code>/var/run/ztunnel/ztunnel.sock</code> ファイル経由で ztunnel から接続される。</p>
@@ -33871,7 +33871,7 @@
 <li><a href="https://www.reddit.com/r/kubernetes/comments/1cygujm/comment/l59qh64/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">https://www.reddit.com/r/kubernetes/comments/1cygujm/comment/l59qh64/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button</a></li>
 </ul>
 </blockquote>
-<h4 id="google-cloud-mesh">▼ Google Cloud Meshに関して<a class="headerlink" href="#google-cloud-mesh" title="Permanent link">&para;</a></h4>
+<h4 id="google-cloud-mesh">▼ Google Cloud Mesh に関して<a class="headerlink" href="#google-cloud-mesh" title="Permanent link">&para;</a></h4>
 <p>Google Cloud Mesh では、istio-cni のロジックが GKE に統合されており、istio-cni が存在しない。</p>
 <p>代わりに、NEG などを使用する。</p>
 <blockquote>
@@ -33881,7 +33881,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="ztunnel">ztunnel<a class="headerlink" href="#ztunnel" title="Permanent link">&para;</a></h3>
-<h4 id="ztunnel_1">▼ ztunnelとは<a class="headerlink" href="#ztunnel_1" title="Permanent link">&para;</a></h4>
+<h4 id="ztunnel_1">▼ ztunnel とは<a class="headerlink" href="#ztunnel_1" title="Permanent link">&para;</a></h4>
 <p>サービスメッシュ内の <code>L4</code> トラフィックを管理する。</p>
 <p>実体は DaemonSet 配下の Pod であり、Node ごとにスケジューリングされている。</p>
 <p>ztunnel Pod は、<code>/var/run/ztunnel/ztunnel.sock</code> ファイル経由で istio-cni に接続する。</p>
@@ -33927,7 +33927,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="waypoint-proxy">waypoint-proxy<a class="headerlink" href="#waypoint-proxy" title="Permanent link">&para;</a></h3>
-<h4 id="waypoint-proxy_1">▼ waypoint-proxyとは<a class="headerlink" href="#waypoint-proxy_1" title="Permanent link">&para;</a></h4>
+<h4 id="waypoint-proxy_1">▼ waypoint-proxy とは<a class="headerlink" href="#waypoint-proxy_1" title="Permanent link">&para;</a></h4>
 <p>サービスメッシュ内の <code>L7</code> トラフィックを管理する。</p>
 <p>実体は、Gateway-API で作成された istio-proxy を含む Pod である。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ istioctl experimental waypoint generate</span>
@@ -34186,7 +34186,7 @@
 <li><a href="https://www.anyflow.net/sw-engineer/istio-ambient-mode">https://www.anyflow.net/sw-engineer/istio-ambient-mode</a></li>
 </ul>
 </blockquote>
-<h4 id="namespacenode">▼ NamespaceかつNodeのリバースプロキシとして<a class="headerlink" href="#namespacenode" title="Permanent link">&para;</a></h4>
+<h4 id="namespace-node">▼ Namespace かつ Node のリバースプロキシとして<a class="headerlink" href="#namespace-node" title="Permanent link">&para;</a></h4>
 <p>waypoint-proxy は、Namespace かつ Node のリバースプロキシである。</p>
 <p>アウトバウンド通信には関与せず、宛先リバースプロキシとしてのみ機能する。</p>
 <p>マイクロサービス Pod がいる Namespace 単位で waypoint-proxy を作成するとよい。</p>
@@ -34257,7 +34257,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

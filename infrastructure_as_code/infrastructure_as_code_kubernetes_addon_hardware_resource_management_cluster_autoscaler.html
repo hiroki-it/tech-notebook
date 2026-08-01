@@ -25873,7 +25873,7 @@
   <a href="#pod" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Podのスケジューリングの可否が条件の場合
+        ▼ Pod のスケジューリングの可否が条件の場合
       
     </span>
   </a>
@@ -25884,7 +25884,7 @@
   <a href="#kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Kubernetes以外のメトリクスを条件すると仮定する場合
+        ▼ Kubernetes 以外のメトリクスを条件すると仮定する場合
       
     </span>
   </a>
@@ -25900,7 +25900,7 @@
   <a href="#karpenter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Karpenterとの違い
+        Karpenter との違い
       
     </span>
   </a>
@@ -25936,15 +25936,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#deploymentpod" class="md-nav__link">
+  <a href="#deployment-pod" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deployment配下のPod
+        Deployment 配下の Pod
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deployment配下のPod">
+    <nav class="md-nav" aria-label="Deployment 配下の Pod">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -26012,7 +26012,7 @@
   <a href="#aws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWS側
+        AWS 側
       
     </span>
   </a>
@@ -33525,7 +33525,7 @@
   <a href="#pod" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Podのスケジューリングの可否が条件の場合
+        ▼ Pod のスケジューリングの可否が条件の場合
       
     </span>
   </a>
@@ -33536,7 +33536,7 @@
   <a href="#kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Kubernetes以外のメトリクスを条件すると仮定する場合
+        ▼ Kubernetes 以外のメトリクスを条件すると仮定する場合
       
     </span>
   </a>
@@ -33552,7 +33552,7 @@
   <a href="#karpenter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Karpenterとの違い
+        Karpenter との違い
       
     </span>
   </a>
@@ -33588,15 +33588,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#deploymentpod" class="md-nav__link">
+  <a href="#deployment-pod" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deployment配下のPod
+        Deployment 配下の Pod
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deployment配下のPod">
+    <nav class="md-nav" aria-label="Deployment 配下の Pod">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33664,7 +33664,7 @@
   <a href="#aws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWS側
+        AWS 側
       
     </span>
   </a>
@@ -33853,7 +33853,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">条件に応じたアーキテクチャ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="pod">▼ Podのスケジューリングの可否が条件の場合<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<h4 id="pod">▼ Pod のスケジューリングの可否が条件の場合<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
 <p>cluster-autoscaler は、ハードウェアリソース不足が原因でスケジューリングできない Pod があるとき、Node をスケーリングする。</p>
 <p>これのために、合わせて metrics-server を使用する。</p>
 <p>取得した Pod のハードウェアの最大リソース消費量 (<code>.spec.containers[*].resources</code> キーの合計値) と、Node 全体のリソースの空き領域を定期的 (<code>10</code> 分ほど) に比較し、Node をスケーリングさせる。</p>
@@ -33866,7 +33866,7 @@
 <li><a href="https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#when-does-cluster-autoscaler-change-the-size-of-a-cluster">https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#when-does-cluster-autoscaler-change-the-size-of-a-cluster</a></li>
 </ul>
 </blockquote>
-<h4 id="kubernetes">▼ Kubernetes以外のメトリクスを条件すると仮定する場合<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
+<h4 id="kubernetes">▼ Kubernetes 以外のメトリクスを条件すると仮定する場合<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
 <p>Kubernetes 以外のメトリクス (例：Amazon CloudWatch、Google Cloud Monitoring) を条件とする場合は、metrics-server は不要である。</p>
 <blockquote>
 <ul>
@@ -33874,7 +33874,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="karpenter">Karpenterとの違い<a class="headerlink" href="#karpenter" title="Permanent link">&para;</a></h3>
+<h3 id="karpenter">Karpenter との違い<a class="headerlink" href="#karpenter" title="Permanent link">&para;</a></h3>
 <p>Karpenter は、EC2 のグループ (例：Amazon EC2 フリート) に関する API をコールする。</p>
 <p>一方で cluster-autoscaler は、クラウドプロバイダーの Node グループ (例：Amazon EKS Node グループ) に関する API をコールする。</p>
 <p><img alt="karpenter_vs_cluster-autoscaler" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png" /></p>
@@ -33888,7 +33888,7 @@
 <h3 id="_4">マニフェストの種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>cluster-autoscaler は、Deployment (cluster-autoscaler) 、ConfigMap (cluster-autoscaler-status) などのマニフェストから構成されている。</p>
 <p><br></p>
-<h3 id="deploymentpod">Deployment配下のPod<a class="headerlink" href="#deploymentpod" title="Permanent link">&para;</a></h3>
+<h3 id="deployment-pod">Deployment 配下の Pod<a class="headerlink" href="#deployment-pod" title="Permanent link">&para;</a></h3>
 <h4 id="cluster-autoscaler_1">▼ cluster-autoscaler<a class="headerlink" href="#cluster-autoscaler_1" title="Permanent link">&para;</a></h4>
 <p>Node グループ名やこれのタグ値を使用して、コールする Node グループをフィルタリングする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -33903,7 +33903,7 @@
 <span class="w">        </span><span class="c1"># クラウドプロバイダーを設定する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--cloud-provider=aws&quot;</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--namespace=kube-system&quot;</span>
-<span class="w">        </span><span class="c1"># Nodeグループが設定されたClusterを設定する。</span>
+<span class="w">        </span><span class="c1"># Node グループが設定された Cluster を設定する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/&lt;Cluster名&gt;&quot;</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--logtostderr=true&quot;</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;--stderrthreshold=info&quot;</span>
@@ -33949,11 +33949,11 @@
 <span class="w">               </span><span class="l l-Scalar l-Scalar-Plain">LastProbeTime</span><span class="p p-Indicator">:</span><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">2023-03-27 10:38:18.722053187 +0000 UTC ...</span>
 <span class="w">               </span><span class="l l-Scalar l-Scalar-Plain">LastTransitionTime</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2023-03-27 10:29:04.227287209 +0000 UTC ...</span>
 
-<span class="c1"># Nodeグループ名</span>
+<span class="c1"># Node グループ名</span>
 <span class="nt">NodeGroups</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">Name</span><span class="p">:</span><span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">foo-node-group</span>
 
-<span class="w">  </span><span class="c1"># registered：Nodeの現在数  # cloudProviderTarget：Nodeの必要数。cloudProviderTargetのNode数に合わせてスケーリングする。</span>
+<span class="w">  </span><span class="c1"># registered：Node の現在数  # cloudProviderTarget：Node の必要数。cloudProviderTarget のNode 数に合わせてスケーリングする。</span>
 <span class="w">  </span><span class="c1"># LastProbeTime：直近で確認した時間</span>
 <span class="w">  </span><span class="c1"># LastTransitionTime：直近でスケーリングを実施した時間</span>
 <span class="w">  </span><span class="nt">Health</span><span class="p">:</span><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">Healthy (ready=4 unready=0 (resourceUnready=0) notStarted=0 longNotStarted=0 registered=4 longUnregistered=0 cloudProviderTarget=4 (minSize=3, maxSize=10))</span>
@@ -33967,7 +33967,7 @@
 <span class="w">               </span><span class="l l-Scalar l-Scalar-Plain">LastTransitionTime</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2023-03-27 10:25:12.791878569 +0000 UTC ...</span>
 
 <span class="w">  </span><span class="c1"># スケールインに関する情報</span>
-<span class="w">  </span><span class="c1"># CandidatesPresent (スケーリングのNode候補がいる)、NonCacdidates (スケーリングのNode候補がいる)</span>
+<span class="w">  </span><span class="c1"># CandidatesPresent (スケーリングの Node 候補がいる)、NonCacdidates (スケーリングの Node 候補がいる)</span>
 <span class="w">  </span><span class="nt">ScaleDown</span><span class="p">:</span><span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">CandidatesPresent (candidates=2)</span>
 <span class="w">               </span><span class="l l-Scalar l-Scalar-Plain">LastProbeTime</span><span class="p p-Indicator">:</span><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">2023-03-27 10:38:18.722053187 +0000 UTC ...</span>
 <span class="w">               </span><span class="l l-Scalar l-Scalar-Plain">LastTransitionTime</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2023-03-27 10:29:04.227287209 +0000 UTC ...</span>
@@ -33981,7 +33981,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="aws">AWS側<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<h3 id="aws">AWS 側<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -33996,7 +33996,7 @@
 <td>cluster-autoscaler</td>
 <td><code>k8s.io/cluster-autoscaler/&lt;Amazon EKS Cluster名&gt;</code></td>
 <td><code>owned</code></td>
-<td>cluster-autoscalerを使用する場合、cluster-autoscalerがEC2ワーカーNodeを検出するために必要である。<br>- <a href="https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html">https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html</a></td>
+<td>cluster-autoscaler を使用する場合、cluster-autoscaler がEC2 ワーカーNode を検出するために必要である。<br>- <a href="https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html">https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html</a></td>
 </tr>
 <tr>
 <td>同上</td>
@@ -34076,7 +34076,7 @@
 <tr>
 <td><code>cluster-autoscaler.kubernetes.io/scale-down-disabled</code></td>
 <td><code>true</code></td>
-<td>cluster-autoscalerのスケールインで削除させないNodeに設定する。</td>
+<td>cluster-autoscaler のスケールインで削除させない Node に設定する。</td>
 </tr>
 </tbody>
 </table>
@@ -34101,7 +34101,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

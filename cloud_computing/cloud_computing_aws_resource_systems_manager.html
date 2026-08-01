@@ -19746,7 +19746,7 @@
   <a href="#aws-ssm-session-manager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWS SSM Session Managerとは
+        AWS SSM Session Manager とは
       
     </span>
   </a>
@@ -19757,7 +19757,7 @@
   <a href="#aws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWSセッション
+        AWS セッション
       
     </span>
   </a>
@@ -19768,7 +19768,7 @@
   <a href="#aws_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        同時AWSセッションの上限数
+        同時 AWS セッションの上限数
       
     </span>
   </a>
@@ -33539,7 +33539,7 @@
   <a href="#aws-ssm-session-manager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWS SSM Session Managerとは
+        AWS SSM Session Manager とは
       
     </span>
   </a>
@@ -33550,7 +33550,7 @@
   <a href="#aws" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWSセッション
+        AWS セッション
       
     </span>
   </a>
@@ -33561,7 +33561,7 @@
   <a href="#aws_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        同時AWSセッションの上限数
+        同時 AWS セッションの上限数
       
     </span>
   </a>
@@ -33677,7 +33677,7 @@
   
 
 
-<h1 id="aws-systems-manager-ssm-aws">AWS Systems Manager (新SSM) ＠AWSリソース<a class="headerlink" href="#aws-systems-manager-ssm-aws" title="Permanent link">&para;</a></h1>
+<h1 id="aws-systems-manager-ssm-aws">AWS Systems Manager (新 SSM) ＠AWS リソース<a class="headerlink" href="#aws-systems-manager-ssm-aws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -33749,17 +33749,17 @@ EC2、RDS
 </thead>
 <tbody>
 <tr>
-<td>Automationタイプ</td>
-<td>サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のAWS Lambdaが使用されている (たぶん) 。<br>- <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html</a></td>
-<td>EC2を起動し、状態がOKになるまで監視する手順を自動化した例： <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html</a></td>
+<td>Automation タイプ</td>
+<td>サーバー/コンテナ外でコマンドを実行する。内部的には、Python 製の AWS Lambda が使用されている (たぶん) 。<br>- <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html</a></td>
+<td>EC2 を起動し、状態が OK になるまで監視する手順を自動化した例： <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html">https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html</a></td>
 </tr>
 <tr>
-<td>Commandタイプ</td>
-<td>サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>- <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types">https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types</a></td>
-<td>・EC2内で実行するlinuxコマンドを自動化した例： <a href="https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/">https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/</a> <br>・EC2内で実行するawscliコマンドを自動化した例： <a href="https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/">https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/</a></td>
+<td>Command タイプ</td>
+<td>サーバー/コンテナ内でコマンドを実行する。内部的には、Run Command が使用されている。<br>- <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types">https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types</a></td>
+<td>・EC2 内で実行する linux コマンドを自動化した例： <a href="https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/">https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/</a> <br>・EC2 内で実行する awscli コマンドを自動化した例： <a href="https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/">https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/</a></td>
 </tr>
 <tr>
-<td>Sessionタイプ</td>
+<td>Session タイプ</td>
 <td></td>
 <td></td>
 </tr>
@@ -33816,7 +33816,7 @@ EC2、RDS
 <p>SM パラメーター名は、『<code>/&lt;リソース名&gt;/&lt;変数名&gt;</code>』とすると、わかりやすい。</p>
 <p><br></p>
 <h2 id="04-aws-ssm-session-manager">04. AWS SSM Session Manager<a class="headerlink" href="#04-aws-ssm-session-manager" title="Permanent link">&para;</a></h2>
-<h3 id="aws-ssm-session-manager">AWS SSM Session Managerとは<a class="headerlink" href="#aws-ssm-session-manager" title="Permanent link">&para;</a></h3>
+<h3 id="aws-ssm-session-manager">AWS SSM Session Manager とは<a class="headerlink" href="#aws-ssm-session-manager" title="Permanent link">&para;</a></h3>
 <p>EC2 (Amazon ECS や Amazon EKS のコンテナのホストを含む) へ通信できるようにする。</p>
 <p>SSH 公開鍵認証とは異なり、Internet Gateway 経由ではなく、ssmmessages エンドポイント経由でインスタンスへリクエストを送信できる。</p>
 <p>接続したいインスタンスに systems-manager エージェントをインストールする必要がある。</p>
@@ -33827,7 +33827,7 @@ EC2、RDS
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="aws">AWSセッション<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
+<h3 id="aws">AWS セッション<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <p>TLS、Sigv4、AWS KMS を使用して暗号化された接続のこと。</p>
 <blockquote>
 <ul>
@@ -33835,7 +33835,7 @@ EC2、RDS
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="aws_1">同時AWSセッションの上限数<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
+<h3 id="aws_1">同時 AWS セッションの上限数<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h3>
 <p>同時 AWS セッションの上限数は 2 つまである。</p>
 <p>以下のようなエラーが出たときは、セッション途中のユーザーが他にいるか、過去のセッションを完了できていない可能性がある。</p>
 <p>AWS SSM Session Manager で既存のセッションを完了できる。</p>
@@ -33863,7 +33863,7 @@ An<span class="w"> </span>error<span class="w"> </span>occurred<span class="w"> 
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

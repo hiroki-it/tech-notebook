@@ -10362,7 +10362,7 @@
   <a href="#context_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contextとは
+        Context とは
       
     </span>
   </a>
@@ -10592,7 +10592,7 @@
   <a href="#request_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Requestとは
+        ▼ Request とは
       
     </span>
   </a>
@@ -10726,7 +10726,7 @@
   <a href="#engine_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Engineとは
+        ▼ Engine とは
       
     </span>
   </a>
@@ -10754,7 +10754,7 @@
   <a href="#use_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Useとは
+        ▼ Use とは
       
     </span>
   </a>
@@ -33765,7 +33765,7 @@
   <a href="#context_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contextとは
+        Context とは
       
     </span>
   </a>
@@ -33995,7 +33995,7 @@
   <a href="#request_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Requestとは
+        ▼ Request とは
       
     </span>
   </a>
@@ -34129,7 +34129,7 @@
   <a href="#engine_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Engineとは
+        ▼ Engine とは
       
     </span>
   </a>
@@ -34157,7 +34157,7 @@
   <a href="#use_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Useとは
+        ▼ Use とは
       
     </span>
   </a>
@@ -34383,7 +34383,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
-<h3 id="context_1">Contextとは<a class="headerlink" href="#context_1" title="Permanent link">&para;</a></h3>
+<h3 id="context_1">Context とは<a class="headerlink" href="#context_1" title="Permanent link">&para;</a></h3>
 <p>受信したリクエストのすべてのコンテキスト (例：処理中のコンテキスト) を持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">Context</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Request</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span>
@@ -34550,7 +34550,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="request_1">Request<a class="headerlink" href="#request_1" title="Permanent link">&para;</a></h3>
-<h4 id="request_2">▼ Requestとは<a class="headerlink" href="#request_2" title="Permanent link">&para;</a></h4>
+<h4 id="request_2">▼ Request とは<a class="headerlink" href="#request_2" title="Permanent link">&para;</a></h4>
 <p>受信したリクエストを情報を持つ。</p>
 <h4 id="context_2">▼ Context<a class="headerlink" href="#context_2" title="Permanent link">&para;</a></h4>
 <p>受信したリクエストのコンテキストを取得する。</p>
@@ -34692,13 +34692,13 @@
 <p><br></p>
 <h2 id="engine">Engine<a class="headerlink" href="#engine" title="Permanent link">&para;</a></h2>
 <h3 id="engine_1">Engine<a class="headerlink" href="#engine_1" title="Permanent link">&para;</a></h3>
-<h4 id="engine_2">▼ Engineとは<a class="headerlink" href="#engine_2" title="Permanent link">&para;</a></h4>
+<h4 id="engine_2">▼ Engine とは<a class="headerlink" href="#engine_2" title="Permanent link">&para;</a></h4>
 <p>ルーティングを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">router</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">New</span><span class="p">()</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="use">Use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h3>
-<h4 id="use_1">▼ Useとは<a class="headerlink" href="#use_1" title="Permanent link">&para;</a></h4>
+<h4 id="use_1">▼ Use とは<a class="headerlink" href="#use_1" title="Permanent link">&para;</a></h4>
 <p>ユーザー定義のミドルウェアを使用する。</p>
 <p><code>gin.HandlerFunc()</code> 関数という Gin 固有のデータ型が必要である。</p>
 <p>ミドルウェアは、<code>Use</code> した順番で実行する。</p>
@@ -34808,7 +34808,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

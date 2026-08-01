@@ -29,7 +29,7 @@
     
     
       
-        <title>【アプリ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説 - 俺の技術ノート</title>
+        <title>【アプリ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説 - 俺の技術ノート</title>
       
     
     
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【アプリ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説
+              【アプリ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説
             
           </span>
         </div>
@@ -33169,9 +33169,9 @@
   
 
 
-<h1 id="ddd">【アプリ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説<a class="headerlink" href="#ddd" title="Permanent link">&para;</a></h1>
+<h1 id="ddd">【アプリ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説<a class="headerlink" href="#ddd" title="Permanent link">&para;</a></h1>
 <h1 id="_1">本記事について<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【導入】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a> の記事のアプリ領域です。</p>
+<p><a href="https://example.com">【導入】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a> の記事のアプリ領域です。</p>
 <p>以下の関連パターンがあります。</p>
 <p>フロントエンド領域のデザインパターンです。</p>
 <pre class="mermaid"><code>flowchart LR
@@ -33201,7 +33201,7 @@
   マイクロサービス領域の基点 --- 認証認可([認証認可])
 </code></pre>
 <h1 id="01-04">01-04. 導入を参照<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【導入】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
+<p><a href="https://example.com">【導入】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
 <h1 id="05">05. 関連するアーキテクチャスタイル<a class="headerlink" href="#05" title="Permanent link">&para;</a></h1>
 <p>まず、モノリスアーキテクチャとマイクロサービスアーキテクチャがどのように違うのかを概説します。</p>
 <h2 id="_2">マイクロサービスアーキテクチャに至るまで<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
@@ -33216,31 +33216,31 @@
 <th></th>
 <th>モノリスアーキテクチャ</th>
 <th>プレゼンテーション・ドメイン分離</th>
-<th>API Gateway採用</th>
+<th>API Gateway 採用</th>
 <th>マイクロサービスアーキテクチャ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>領域の種類</td>
-<td>フロントエンド、バックエンド、各種ストレージ（DBなど）</td>
-<td>フロントエンド、バックエンド、各種ストレージ（DBなど）</td>
-<td>フロントエンド、API Gateway、マイクロサービス、各種ストレージ（DBなど）</td>
+<td>フロントエンド、バックエンド、各種ストレージ（DB など）</td>
+<td>フロントエンド、バックエンド、各種ストレージ（DB など）</td>
+<td>フロントエンド、API Gateway、マイクロサービス、各種ストレージ（DB など）</td>
 <td>フロントエンド、API Gateway、マイクロサービス、DB</td>
 </tr>
 <tr>
 <td>責務</td>
 <td>アプリは、フロントエンドとバックエンドの領域からなる。アプリが両方の領域の責務を担っている。</td>
 <td>アプリは、フロントエンドアプリとバックエンドアプリからなる。両アプリは各領域の責務を担っている。</td>
-<td>アプリは、フロントエンドアプリとバックエンドアプリからなる。両アプリは各領域の責務を担っている。また、これらの領域の間に、API Gateway領域がある。</td>
-<td>アプリは、独立したAPIを持つ複数のマイクロサービスとフロントエンドアプリからなる。両アプリは各領域の責務を担っている。これらの領域の間に、API Gateway領域がある。</td>
+<td>アプリは、フロントエンドアプリとバックエンドアプリからなる。両アプリは各領域の責務を担っている。また、これらの領域の間に、API Gateway 領域がある。</td>
+<td>アプリは、独立した API を持つ複数のマイクロサービスとフロントエンドアプリからなる。両アプリは各領域の責務を担っている。これらの領域の間に、API Gateway 領域がある。</td>
 </tr>
 <tr>
 <td>結合度</td>
 <td>フロントエンドとバックエンドの領域は密結合になっている。各領域は同じプロセスで稼働する。</td>
 <td>フロントエンドとバックエンドの領域は疎結合になっている。各領域は異なるプロセスで稼働する。</td>
-<td>フロントエンド、バックエンド、API Gatewayの領域は疎結合になっている。各領域は異なるプロセスで稼働する。</td>
-<td>フロントエンド、各マイクロサービス、API Gatewayの領域は疎結合になっている。各領域は、異なるプロセスで稼働する。</td>
+<td>フロントエンド、バックエンド、API Gateway の領域は疎結合になっている。各領域は異なるプロセスで稼働する。</td>
+<td>フロントエンド、各マイクロサービス、API Gateway の領域は疎結合になっている。各領域は、異なるプロセスで稼働する。</td>
 </tr>
 </tbody>
 </table>
@@ -33308,8 +33308,8 @@
 <tbody>
 <tr>
 <td>保守性</td>
-<td>短期的には、PCブラウザとスマホブラウザを両方を一度に保守できる。</td>
-<td>長期的には、変更の影響範囲が大きい。また、PCブラウザとスマホブラウザの条件分岐が増えていく。</td>
+<td>短期的には、PC ブラウザとスマホブラウザを両方を一度に保守できる。</td>
+<td>長期的には、変更の影響範囲が大きい。また、PC ブラウザとスマホブラウザの条件分岐が増えていく。</td>
 </tr>
 <tr>
 <td>性能</td>
@@ -33318,7 +33318,7 @@
 </tr>
 <tr>
 <td>拡張性</td>
-<td>短期的には、PCブラウザとスマホブラウザを同時に拡張できる。</td>
+<td>短期的には、PC ブラウザとスマホブラウザを同時に拡張できる。</td>
 <td>長期的には、一方のブラウザだけに対応するロジックを実装していくと、条件分岐が複雑になり、拡張しにくくなっていく。</td>
 </tr>
 </tbody>
@@ -33343,7 +33343,7 @@
 <tbody>
 <tr>
 <td>保守性</td>
-<td>長期的には、PCブラウザとスマホブラウザの責務を分離できるため、影響範囲が小さく保守しやすくなる。</td>
+<td>長期的には、PC ブラウザとスマホブラウザの責務を分離できるため、影響範囲が小さく保守しやすくなる。</td>
 <td>-</td>
 </tr>
 <tr>
@@ -33353,8 +33353,8 @@
 </tr>
 <tr>
 <td>拡張性</td>
-<td>長期的には、PCブラウザとスマホブラウザの責務を分離できるため、一方のブラウザの機能を拡張しやすい。</td>
-<td>短期的には、PCブラウザとスマホブラウザの両方を開発しないといけず、拡張の速度が落ちる。</td>
+<td>長期的には、PC ブラウザとスマホブラウザの責務を分離できるため、一方のブラウザの機能を拡張しやすい。</td>
+<td>短期的には、PC ブラウザとスマホブラウザの両方を開発しないといけず、拡張の速度が落ちる。</td>
 </tr>
 </tbody>
 </table>
@@ -33380,7 +33380,7 @@
 </ul>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリ全体設計.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%96%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%A2%E3%83%97%E3%83%AA%E5%85%A8%E4%BD%93%E8%A8%AD%E8%A8%88.drawio.png" /></p>
 <h1 id="06-02">06-02. フロントエンドの関連パターン<a class="headerlink" href="#06-02" title="Permanent link">&para;</a></h1>
-<h2 id="cdn">CDNパターン<a class="headerlink" href="#cdn" title="Permanent link">&para;</a></h2>
+<h2 id="cdn">CDN パターン<a class="headerlink" href="#cdn" title="Permanent link">&para;</a></h2>
 <p>CDN パターンは、クラウドアーキテクチャで採用できるパターンです。</p>
 <p>CDN パターンでは、物理的に世界の様々な場所にあるエッジサーバーがキャッシュサーバーとして機能します。</p>
 <p>CDN パターンはマイクロサービスアーキテクチャとは直接的な関連性が低いです。</p>
@@ -33442,7 +33442,7 @@ sequenceDiagram
     エッジサーバー --&gt;&gt; ブラウザ (PC、スマホ): レスポンス&lt;br&gt;(静的ファイル)
 </code></pre>
 <p><a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html#HowCloudFrontWorksContentDelivery">How CloudFront delivers content - Amazon CloudFront</a></p>
-<h1 id="07-api-gateway">07. API Gateway分割方法<a class="headerlink" href="#07-api-gateway" title="Permanent link">&para;</a></h1>
+<h1 id="07-api-gateway">07. API Gateway 分割方法<a class="headerlink" href="#07-api-gateway" title="Permanent link">&para;</a></h1>
 <p>マイクロサービスアーキテクチャの API Gateway 領域には、マイクロサービスを公開する API Gateway を配置します。</p>
 <p>API Gateway の主要な機能として、受信した通信を適切なマイクロサービスの API にルーティングします。</p>
 <p>認証や L7 ロードバランシングの責務を持たせられますが、必須ではありません。</p>
@@ -33456,12 +33456,12 @@ sequenceDiagram
 
 </code></pre>
 <blockquote>
-<p>💡 API Gatewayとして、Nginxを採用します。</p>
-<p>API Gatewayで、APIへのルーティングの責務のほかに、認証やレートリミットなどの責務が必要な場合があります。</p>
-<p>NginxはAPI Gatewayに特化したツールではないため、API Gatewayに必要な責務を網羅しきれないです。</p>
-<p>その場合、Nginxのサイドカーとして配置するistio-proxyで、不足する責務を補完します。</p>
+<p>💡 API Gateway として、Nginx を採用します。</p>
+<p>API Gateway で、API へのルーティングの責務のほかに、認証やレートリミットなどの責務が必要な場合があります。</p>
+<p>Nginx はAPI Gateway に特化したツールではないため、API Gateway に必要な責務を網羅しきれないです。</p>
+<p>その場合、Nginx のサイドカーとして配置する istio-proxy で、不足する責務を補完します。</p>
 </blockquote>
-<h2 id="gateway">中央集約Gatewayパターン<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h2>
+<h2 id="gateway">中央集約 Gateway パターン<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h2>
 <p>各クライアントで共有する API Gateway を配置します。</p>
 <p>API Gateway には、各クライアントからのすべてのリクエストを想定したエンドポイントを実装します。</p>
 <p>クライアントとして、PC ブラウザフロントエンド、スマホブラウザフロントエンド、外部 API があると仮定しています。</p>
@@ -33480,23 +33480,23 @@ sequenceDiagram
 <tbody>
 <tr>
 <td>保守性</td>
-<td>短期的には、PCブラウザとスマホブラウザの両方のエンドポイントを一度に保守できる。</td>
-<td>長期的には、変更の影響範囲が大きい。また、PCブラウザとスマホブラウザの条件分岐が増えていく。</td>
+<td>短期的には、PC ブラウザとスマホブラウザの両方のエンドポイントを一度に保守できる。</td>
+<td>長期的には、変更の影響範囲が大きい。また、PC ブラウザとスマホブラウザの条件分岐が増えていく。</td>
 </tr>
 <tr>
 <td>性能</td>
 <td>-</td>
-<td>長期的には、ソースコードが多くなるため、API Gatewayのビルド時間が長くなる。</td>
+<td>長期的には、ソースコードが多くなるため、API Gateway のビルド時間が長くなる。</td>
 </tr>
 <tr>
 <td>拡張性</td>
-<td>短期的には、PCブラウザとスマホブラウザのエンドポイントを同時に拡張できる。</td>
+<td>短期的には、PC ブラウザとスマホブラウザのエンドポイントを同時に拡張できる。</td>
 <td>長期的には、一方のブラウザだけに対応するロジックを実装していくと、条件分岐が複雑になり、拡張しにくくなっていく。</td>
 </tr>
 </tbody>
 </table>
 <p><a href="https://microservices.io/patterns/apigateway.html">Microservices Pattern: Pattern: API Gateway / Backends for Frontends</a></p>
-<h2 id="bffbackends-for-frontends">BFFパターン：Backends for frontends<a class="headerlink" href="#bffbackends-for-frontends" title="Permanent link">&para;</a></h2>
+<h2 id="bff-backends-for-frontends">BFF パターン：Backends for frontends<a class="headerlink" href="#bff-backends-for-frontends" title="Permanent link">&para;</a></h2>
 <p>クライアント別の API Gateway を配置します。</p>
 <p>API Gateway には、特定のクライアントからのリクエストを想定したエンドポイントだけを実装します。</p>
 <p>クライアントとして、PC ブラウザフロントエンド、スマホブラウザフロントエンド、外部 API があると仮定しています。</p>
@@ -33515,28 +33515,28 @@ sequenceDiagram
 <tbody>
 <tr>
 <td>保守性</td>
-<td>長期的には、PCブラウザとスマホブラウザの責務を分離できるため、影響範囲が小さく保守しやすくなる。</td>
+<td>長期的には、PC ブラウザとスマホブラウザの責務を分離できるため、影響範囲が小さく保守しやすくなる。</td>
 <td>-</td>
 </tr>
 <tr>
 <td>性能</td>
-<td>長期的には、ソースコードが少なくなるため、API Gatewayのビルド時間を短縮できる。</td>
+<td>長期的には、ソースコードが少なくなるため、API Gateway のビルド時間を短縮できる。</td>
 <td>-</td>
 </tr>
 <tr>
 <td>拡張性</td>
-<td>長期的には、PCブラウザとスマホブラウザの責務を分離できるため、一方のブラウザのためだけのエンドポイントを拡張しやすい。</td>
-<td>短期的には、PCブラウザとスマホブラウザの両方のエンドポイントを開発しないといけず、拡張の速度が落ちる。</td>
+<td>長期的には、PC ブラウザとスマホブラウザの責務を分離できるため、一方のブラウザのためだけのエンドポイントを拡張しやすい。</td>
+<td>短期的には、PC ブラウザとスマホブラウザの両方のエンドポイントを開発しないといけず、拡張の速度が落ちる。</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>💡 BFFとしてGraphQL-APIを採用することは個人的に非推奨です。
-BFFはフロントエンドチームとバックエンドチームの両方の責任範囲と考えています
-フロントエンドとバックエンドの領域と疎結合にするために、両方の領域に依存しない技術 (例えば、今回ようにNginx) を使用したいです。
-GraphQL-APIのエンドポイントには、GraphQLクライアントでリクエストを送信しなければなりません。
-そのため、BFFでGraphQL-APIを採用すると、フロントエンドとBFFの責務の結合度が上がってしまいます。
-ただ、BFFを特にフロントエンドチームの責任範囲として捉える場合は、BFFをGraphQL-APIを持つコンテナとして実装してよいいかもしれません。</p>
+<p>💡 BFF として GraphQL-API を採用することは個人的に非推奨です。
+BFF はフロントエンドチームとバックエンドチームの両方の責任範囲と考えています
+フロントエンドとバックエンドの領域と疎結合にするために、両方の領域に依存しない技術 (例えば、今回ように Nginx) を使用したいです。
+GraphQL-API のエンドポイントには、GraphQL クライアントでリクエストを送信しなければなりません。
+そのため、BFF でGraphQL-API を採用すると、フロントエンドと BFF の責務の結合度が上がってしまいます。
+ただ、BFF を特にフロントエンドチームの責任範囲として捉える場合は、BFF をGraphQL-API を持つコンテナとして実装してよいいかもしれません。</p>
 </blockquote>
 <p><a href="https://microservices.io/patterns/apigateway.html">Microservices Pattern: Pattern: API Gateway / Backends for Frontends</a></p>
 <h2 id="_11">振り返り<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
@@ -33558,7 +33558,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
   ストレージ領域の基点 --- 一時データ管理方法([一時データ&lt;br&gt;管理方法])
 </code></pre>
 <h2 id="_12">データの種類に応じた管理方法<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<h3 id="awskubernetes">AWSリソースとKubernetesによるデータ管理<a class="headerlink" href="#awskubernetes" title="Permanent link">&para;</a></h3>
+<h3 id="aws-kubernetes">AWS リソースと Kubernetes によるデータ管理<a class="headerlink" href="#aws-kubernetes" title="Permanent link">&para;</a></h3>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-データ管理.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-データ管理.drawio.png" /></p>
 <table>
 <thead>
@@ -33574,18 +33574,18 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <td>Amazon Aurora</td>
 <td>永続データ</td>
 <td>AWS KMS</td>
-<td>Nodeのストレージで永続データを管理する場合、Nodeの障害がデータに影響を与える可能性がある。Nodeに永続データを持たせずに、外部のサーバー (例：Amazon Aurora) を使用する。</td>
+<td>Node のストレージで永続データを管理する場合、Node の障害がデータに影響を与える可能性がある。Node に永続データを持たせずに、外部のサーバー (例：Amazon Aurora) を使用する。</td>
 </tr>
 <tr>
 <td>AWS EBS</td>
 <td>一時データ (インメモリキャッシュ、メモリやファイル上バッファリング)</td>
 <td>AWS KMS</td>
-<td>Nodeのメモリやファイル上バッファでデータを管理する場合、Nodeの障害がデータに影響を与える可能性がある。ただし、定期的に外部に送信するデータ (例：ログ) やキャッシュのような一時データであれば、メモリやファイル上バッファで管理してもよい。</td>
+<td>Node のメモリやファイル上バッファでデータを管理する場合、Node の障害がデータに影響を与える可能性がある。ただし、定期的に外部に送信するデータ (例：ログ) やキャッシュのような一時データであれば、メモリやファイル上バッファで管理してもよい。</td>
 </tr>
 <tr>
 <td>Amazon S3</td>
 <td>静的ファイル (例：画像、メール、動画)</td>
-<td>クライアントサイド暗号化のためのS3マネージド暗号化キー</td>
+<td>クライアントサイド暗号化のための S3 マネージド暗号化キー</td>
 <td>フロントエンドアプリケーションのために、静的ファイルを管理しておく。</td>
 </tr>
 <tr>
@@ -33612,10 +33612,10 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <li>クライアントサイド暗号化のための S3 マネージド暗号化キー (図では省略)</li>
 <li>Kubernetes リポジトリ内の SOPS (図では省略)</li>
 </ul>
-<p><img alt="DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png" /></p>
+<p><img alt="DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png" /></p>
 <h1 id="08-02">08-02. 永続データ管理<a class="headerlink" href="#08-02" title="Permanent link">&para;</a></h1>
-<h2 id="db">DB分割<a class="headerlink" href="#db" title="Permanent link">&para;</a></h2>
-<h3 id="shared-db">Shared DBパターン<a class="headerlink" href="#shared-db" title="Permanent link">&para;</a></h3>
+<h2 id="db">DB 分割<a class="headerlink" href="#db" title="Permanent link">&para;</a></h2>
+<h3 id="shared-db">Shared DB パターン<a class="headerlink" href="#shared-db" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスで共有する DB を配置します。</p>
 <p>また、この DB 内で、各マイクロサービスが占有するテーブルを分割する。</p>
 <p>後述していますが、境界づけられたコンテキストを単位として、マイクロサービスを分割することがよいとされています。</p>
@@ -33624,7 +33624,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-データベースの分割.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/aef2273c-e99c-43f8-9ba4-74b8e61275a3.png" /></p>
 <p><a href="https://microservices.io/patterns/data/shared-database.html">Microservices Pattern: Pattern: Shared database</a></p>
 <p><a href="https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2">🐾 Does your microservice deserve its own database?</a></p>
-<h3 id="db-per-service">DB per serviceパターン<a class="headerlink" href="#db-per-service" title="Permanent link">&para;</a></h3>
+<h3 id="db-per-service">DB per service パターン<a class="headerlink" href="#db-per-service" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスで占有する DB を配置します。</p>
 <p>もちろん、テーブルも占有です。</p>
 <p>本記事では、マイクロサービス占有 DB パターンを採用とします。</p>
@@ -33677,19 +33677,19 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <tbody>
 <tr>
 <td>フロントエンド領域</td>
-<td>フロントエンドアプリは、Amazon EKSクラスター外からのリクエストをRESTful-APIで待ち受けます。API GatewayのRESTful-APIにリクエストを送信します。</td>
+<td>フロントエンドアプリは、Amazon EKS クラスター外からのリクエストを RESTful-API で待ち受けます。API Gateway のRESTful-API にリクエストを送信します。</td>
 </tr>
 <tr>
-<td>API Gateway領域</td>
-<td>Nginxは、フロントエンドからのリクエストをRESTful-APIで待ち受けます。マイクロサービスのRPC-APIやRESTful-APIにリクエストを送信するように設定できます。RPC-APIにgRPCでリクエストを送信する場合、<code>ngx_http_grpc_module</code> が必要です。</td>
+<td>API Gateway 領域</td>
+<td>Nginx は、フロントエンドからのリクエストを RESTful-API で待ち受けます。マイクロサービスの RPC-API やRESTful-API にリクエストを送信するように設定できます。RPC-API にgRPC でリクエストを送信する場合、<code>ngx_http_grpc_module</code> が必要です。</td>
 </tr>
 <tr>
 <td>マイクロサービス領域</td>
-<td>マイクロサービスのインフラストラクチャ層にRPC-APIやRESTful-APIを実装し、ダウンストリームからのリクエストを待ち受ける。一方で、インフラストラクチャ層にRPC-APIやRESTful-APIのクライアントを実装し、アップストリームにリクエストを送信する。MySQLへの永続化する責務を持つマイクロサービスでは、インフラストラクチャ層にMySQLクライアントが必要になります。</td>
+<td>マイクロサービスのインフラストラクチャ層に RPC-API やRESTful-API を実装し、ダウンストリームからのリクエストを待ち受ける。一方で、インフラストラクチャ層に RPC-API やRESTful-API のクライアントを実装し、アップストリームにリクエストを送信する。MySQL への永続化する責務を持つマイクロサービスでは、インフラストラクチャ層に MySQL クライアントが必要になります。</td>
 </tr>
 <tr>
 <td>ストレージ領域 (DB)</td>
-<td>占有DBのMySQLサーバーは、MySQLクライアントが送信したクエリを待ち受けます。</td>
+<td>占有 DB のMySQL サーバーは、MySQL クライアントが送信したクエリを待ち受けます。</td>
 </tr>
 </tbody>
 </table>
@@ -33705,7 +33705,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <h2 id="_20">データ共有方式<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
 <p>送信元マイクロサービスは作成したデータをストレージに保管します。</p>
 <p>宛先マイクロサービスはストレージをポーリングし、新しいデータが追加され次第、ストレージからこれを読み込みます。</p>
-<p><img alt="DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png" /></p>
+<p><img alt="DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービス間の通信方式.drawio (1).png" /></p>
 <h2 id="_21">振り返り<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
 <p>ここで、もう一度、マイクロサービスアーキテクチャを概説します。</p>
 <p>マイクロサービスアーキテクチャのマイクロサービス領域で、いくつかのマイクロサービスを稼働させています。</p>
@@ -33727,13 +33727,13 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
   DDDに基づく境界 --- 1つ以上のルートエンティティ群[1つ以上の集約]
   マイクロサービス分割方法の基点 ---- 永続データの機密性
 </code></pre>
-<h2 id="ddd_1">DDDに基づく分割<a class="headerlink" href="#ddd_1" title="Permanent link">&para;</a></h2>
+<h2 id="ddd_1">DDD に基づく分割<a class="headerlink" href="#ddd_1" title="Permanent link">&para;</a></h2>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの適切な大きさ.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-マイクロサービスの適切な大きさ.drawio.png" /></p>
 <h3 id="_22">境界づけられたコンテキスト<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p>境界づけられたコンテキストを単位として、マイクロサービスを分割します。</p>
 <p>本記事では、境界づけられたコンテキストパターンを採用とします。</p>
 <p>境界づけられたコンテキストについては後述します。</p>
-<h3 id="1">1つ以上の集約<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<h3 id="1">1 つ以上の集約<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <p>1 つ以上の集約を単位として、マイクロサービスを分割します。</p>
 <p>集約については後述します。</p>
 <blockquote>
@@ -33791,35 +33791,35 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <td>OrderCreated</td>
 <td>Order</td>
 <td>1</td>
-<td>OrderCreatedオブジェクトをJSONに変換したやつ</td>
+<td>OrderCreated オブジェクトを JSON に変換したやつ</td>
 </tr>
 <tr>
 <td>2</td>
 <td>OrderUpdated</td>
 <td>Order</td>
 <td>1</td>
-<td>OrderUpdatedオブジェクトをJSONに変換したやつ</td>
+<td>OrderUpdated オブジェクトを JSON に変換したやつ</td>
 </tr>
 <tr>
 <td>3</td>
 <td>OrderCreated</td>
 <td>Order</td>
 <td>2</td>
-<td>OrderCreatedオブジェクトをJSONに変換したやつ</td>
+<td>OrderCreated オブジェクトを JSON に変換したやつ</td>
 </tr>
 <tr>
 <td>4</td>
 <td>OrderCanceled</td>
 <td>Order</td>
 <td>1</td>
-<td>OrderCanceledオブジェクトをJSONに変換したやつ</td>
+<td>OrderCanceled オブジェクトを JSON に変換したやつ</td>
 </tr>
 <tr>
 <td>5</td>
 <td>OrderCreated</td>
 <td>Order</td>
 <td>3</td>
-<td>OrderCreatedオブジェクトをJSONに変換したやつ</td>
+<td>OrderCreated オブジェクトを JSON に変換したやつ</td>
 </tr>
 <tr>
 <td>…</td>
@@ -33840,7 +33840,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <h3 id="_29">通信方式<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <p>イベントソーシングで採用できるマイクロサービス間通信方式は、パブリッシュサブスクライブ方式です。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ステートソーシング 、イベントソーシング.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/a3b65d1d-ea20-4f90-b423-038934d38cb7.png" /></p>
-<h1 id="10-03-ddd">10-03. DDDの用語<a class="headerlink" href="#10-03-ddd" title="Permanent link">&para;</a></h1>
+<h1 id="10-03-ddd">10-03. DDD の用語<a class="headerlink" href="#10-03-ddd" title="Permanent link">&para;</a></h1>
 <h2 id="_30">問題領域<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -33854,7 +33854,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <tr>
 <td>ドメイン (問題領域)</td>
 <td>ビジネス全体で見たときに、システム化の対象となるビジネス業務的な領域のこと。</td>
-<td>Amazonのような小売業ビジネス</td>
+<td>Amazon のような小売業ビジネス</td>
 </tr>
 <tr>
 <td>コアドメイン</td>
@@ -33863,7 +33863,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 </tr>
 <tr>
 <td>サブドメイン</td>
-<td>ドメインの構成要素である。ドメインのなかでは、重要度のより低い領域のこと。ビジネスの成長に伴って変化する。コアドメインとは異なり、内製化は最優先ではない。将来的には内製化するとして、SaaS (例：経理SaaSのマネーフォワード、総務人事SaaSのサイボウズなど) にビジネスロジックを委譲してもよい。</td>
+<td>ドメインの構成要素である。ドメインのなかでは、重要度のより低い領域のこと。ビジネスの成長に伴って変化する。コアドメインとは異なり、内製化は最優先ではない。将来的には内製化するとして、SaaS (例：経理 SaaS のマネーフォワード、総務人事 SaaS のサイボウズなど) にビジネスロジックを委譲してもよい。</td>
 <td>小売業務フローのなかでも、決済管理業務</td>
 </tr>
 </tbody>
@@ -33881,7 +33881,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <tr>
 <td>解決領域</td>
 <td>ドメインを技術的方法でモデリングし、その結果得られるドメインモデルの集合である。</td>
-<td>ECシステム全体</td>
+<td>EC システム全体</td>
 </tr>
 <tr>
 <td>境界づけられたコンテキスト</td>
@@ -33902,9 +33902,9 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 </table>
 <h2 id="_32">問題領域と解決領域の関係<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h2>
 <p>システム化の対象となる問題領域があります。</p>
-<p><a href="https://www.amazon.co.jp/dp/479813161X">実践DDD</a></p>
+<p><a href="https://www.amazon.co.jp/dp/479813161X">実践 DDD</a></p>
 <p><a href="https://www.amazon.co.jp/dp/481440073X">ドメイン駆動設計をはじめよう ―ソフトウェアの実装と事業戦略を結びつける実践技法</a></p>
-<h1 id="10-04-ddd">10-04. ステートソーシングパターンに基づくDDD<a class="headerlink" href="#10-04-ddd" title="Permanent link">&para;</a></h1>
+<h1 id="10-04-ddd">10-04. ステートソーシングパターンに基づく DDD<a class="headerlink" href="#10-04-ddd" title="Permanent link">&para;</a></h1>
 <pre class="mermaid"><code>flowchart LR
 
   マイクロサービス設計方法 --- マイクロサービス設計方法の基点((" "))
@@ -33944,7 +33944,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <p>ただし、荒く大きな境界づけられたコンテキストを定義し、ドメインの成長に柔軟に対応できるようにするのであれば、新規のシステムでもマイクロサービスアーキテクチャを許容できると考えています。</p>
 </blockquote>
 <p><a href="https://booth.pm/ja/items/3363104">DDD サンプルコード&amp;FAQ</a></p>
-<h2 id="ddd_2">DDDデザインパターン<a class="headerlink" href="#ddd_2" title="Permanent link">&para;</a></h2>
+<h2 id="ddd_2">DDD デザインパターン<a class="headerlink" href="#ddd_2" title="Permanent link">&para;</a></h2>
 <p>ドメインモデル図を具体的な実装に落とし込むためのデザインパターンがあります。(五十音順)</p>
 <p>ここでは、各デザインパターンの責務の概説は省略します。</p>
 <ul>
@@ -33960,7 +33960,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <li>ドメインサービス</li>
 <li>…</li>
 </ul>
-<p><a href="https://www.amazon.co.jp/dp/B07S675HVM">「実践DDD」から学ぶDDDの実装入門 CodeZine Digital First</a></p>
+<p><a href="https://www.amazon.co.jp/dp/B07S675HVM">「実践 DDD」から学ぶ DDD の実装入門 CodeZine Digital First</a></p>
 <h2 id="_34">アプリアーキテクチャ<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h2>
 <h3 id="_35">種類<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
 <p>デザインパターンを適切な層へ実装するため、またドメインロジックを持つパターンを隔離するため、アーキテクチャを採用する。</p>
@@ -33987,15 +33987,15 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <thead>
 <tr>
 <th>アプリアーキテクチャ層名の例</th>
-<th>DDDのデザインパターン</th>
+<th>DDD のデザインパターン</th>
 <th>クリーンアーキテクチャのデザインパターン</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>インフラストラクチャ層</td>
-<td>リポジトリ (実装) 、ファクトリー、イベントリスナー、DTOなど</td>
-<td>DBなど</td>
+<td>リポジトリ (実装) 、ファクトリー、イベントリスナー、DTO など</td>
+<td>DB など</td>
 </tr>
 <tr>
 <td>インターフェース層</td>
@@ -34019,7 +34019,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <p>そのため、マイクロサービスで、フロントエンドに関するデザインパターン (例：インターフェース層のプレゼンター、ユースケース層のアウトプットバウンダリー) は不要です。</p>
 <p><img alt="clean-architecture_layer.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/clean-architecture_layer.png" /></p>
 <p><a href="https://www.amazon.co.jp/dp/4048930656">Clean Architecture 達人に学ぶソフトウェアの構造と設計</a></p>
-<p><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html">[ 技術講座 ] Domain-Driven Designのエッセンス 第1回｜オブジェクトの広場</a></p>
+<p><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html">[ 技術講座 ] Domain-Driven Design のエッセンス 第 1回｜オブジェクトの広場</a></p>
 <h3 id="_37">マイクロサービスへの適用<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスでは、任意のアプリアーキテクチャを採用できます。</p>
 <p>例えば、受注管理業務のマイクロサービスでアプリアーキテクチャ層の依存関係を意識し、クリーンアーキテクチャを設計します。</p>
@@ -34030,7 +34030,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリアーキテクチャ.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリアーキテクチャ.drawio.png" /></p>
 <p><a href="https://booth.pm/ja/items/1835632">DDD モデリング/実装ガイド</a></p>
 <p><a href="https://booth.pm/ja/items/3363104">DDD サンプルコード&amp;FAQ</a></p>
-<p><a href="https://www.amazon.co.jp/dp/B082WXZVPC">DDD入門 ボトムアップでわかる！DDDの基本</a></p>
+<p><a href="https://www.amazon.co.jp/dp/B082WXZVPC">DDD 入門 ボトムアップでわかる！DDD の基本</a></p>
 <p>↓ 世界でもっとも勉強になる Issue たち</p>
 <p><a href="https://github.com/little-hands/ddd-q-and-a/issues">https://github.com/little-hands/ddd-q-and-a/issues</a></p>
 <h1 id="11">11. トランザクション管理方法<a class="headerlink" href="#11" title="Permanent link">&para;</a></h1>
@@ -34044,7 +34044,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
   Saga --- コレオグラフィフィベース[コレオグラフィフィ&lt;br&gt;ベース]
   DB-per-serviceの場合 ---- 2フェーズコミット["2フェーズコミット&lt;br&gt;(非推奨)"]
 </code></pre>
-<h2 id="saga">Sagaパターン<a class="headerlink" href="#saga" title="Permanent link">&para;</a></h2>
+<h2 id="saga">Saga パターン<a class="headerlink" href="#saga" title="Permanent link">&para;</a></h2>
 <p>DB per service 下でのトランザクション管理方法の 1 つです。</p>
 <p>マイクロサービスの永続化の間に依存関係がある場合 (例：受注データの永続化には、配送データや決済データの永続化の結果が必要) に、これらのマイクロサービスの永続化を調整する必要があります。</p>
 <p>占有 DB を持つマイクロサービスを調整するときに、ACID 属性のうち特に C (整合性) の担保が課題になります。</p>
@@ -34052,14 +34052,14 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <p>このときに、いずれかのローカルトランザクションの成功または失敗に関わらず、データ全体として整合性を満たさなければなりません。</p>
 <p>Saga パターンは、この課題を解決するためのパターンです。</p>
 <p><a href="https://microservices.io/patterns/data/saga.html">Microservices Pattern: Pattern: Saga</a></p>
-<p><a href="https://engineers.ntt.com/entry/2023/12/12/095337">複数サービス間でのデータの整合性維持に向けたSagaの実装 - NTT Communications Engineers' Blog</a></p>
+<p><a href="https://engineers.ntt.com/entry/2023/12/12/095337">複数サービス間でのデータの整合性維持に向けた Saga の実装 - NTT Communications Engineers' Blog</a></p>
 <h2 id="2">２フェーズコミット (二相コミットパターン)<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <p>Saga パターンと同様に、DB per service 下でのトランザクション管理方法の 1 つです。</p>
 <blockquote>
 <p>💡 余裕があったら書くぜ！</p>
 </blockquote>
 <p><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/">分散トランザクションに挑戦しよう！</a></p>
-<h1 id="11-02-saga">11-02. Sagaパターン<a class="headerlink" href="#11-02-saga" title="Permanent link">&para;</a></h1>
+<h1 id="11-02-saga">11-02. Saga パターン<a class="headerlink" href="#11-02-saga" title="Permanent link">&para;</a></h1>
 <h2 id="_38">オーケストレーションベース<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h2>
 <p>オーケストレーションベースは、Saga パターンのデザインパターンの 1 つです。</p>
 <p>Saga オーケストレーターを配置し、Saga パターンを実装します。</p>
@@ -34070,7 +34070,7 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <p>各マイクロサービス間の通信方式は、リクエスト/レスポンス方式またはパブリッシュ/サブスクライブ方式のどちらでもよいです。</p>
 <p><a href="https://microservices.io/patterns/data/saga.html">Microservices Pattern: Pattern: Saga</a></p>
 <p><a href="https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md">https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md</a></p>
-<h3 id="temporal">Temporalによるオーケストレーションベース<a class="headerlink" href="#temporal" title="Permanent link">&para;</a></h3>
+<h3 id="temporal">Temporal によるオーケストレーションベース<a class="headerlink" href="#temporal" title="Permanent link">&para;</a></h3>
 <p>ここでは、Temporal を採用し、オーケストレーションベースの Saga パターンを実装します</p>
 <p>フロントエンドアプリが同期リクエストを送信し、Saga オーケストレーションを実行します。</p>
 <p>さらにその後、非同期リクエストで処理結果を取得し、クライアントに返却します。</p>
@@ -34084,20 +34084,20 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 </thead>
 <tbody>
 <tr>
-<td>マイクロサービス (Temporalクライアント)</td>
+<td>マイクロサービス (Temporal クライアント)</td>
 <td>ワークフローをタスクキューに登録する。タスクキューからワークフローを取得し、これを実行する。ワークフローを調整し、ローカルトランザクション処理を実行する。このとき、いずれかのローカルトランザクションが失敗した場合は、ローカルトランザクション処理を元に戻すトランザクション処理を逆順で実行する。この擬似的なロールバックの仕組みを、補償トランザクションという。</td>
 </tr>
 <tr>
 <td>ワークフローステータスチェッカー</td>
-<td>Temporalサーバーからワークフローのステータスを定期的に取得する。</td>
+<td>Temporal サーバーからワークフローのステータスを定期的に取得する。</td>
 </tr>
 <tr>
-<td>タスクキュー (Temporalサーバー)</td>
-<td>Sagaオーケストレーターやメッセージキューとして機能する。ワークフローの進捗度を占有DBに永続化する。APIを持ち、Temporal SDKで操作できる。ワークフローのステータスをSagaログとして占有DBに永続化する。</td>
+<td>タスクキュー (Temporal サーバー)</td>
+<td>Saga オーケストレーターやメッセージキューとして機能する。ワークフローの進捗度を占有 DB に永続化する。API を持ち、Temporal SDK で操作できる。ワークフローのステータスを Saga ログとして占有 DB に永続化する。</td>
 </tr>
 <tr>
-<td>依存対象マイクロサービス (Temporalワーカー)</td>
-<td>自身が実行すべきアクティビティをTemporalサーバーに登録する。Temporalサーバーからアクティビティタスクを取得し、これを実行する。アクティビティタスクが完了すれば、タスクキューに結果を送信する。ローカルトランザクションのエンドポイントとは別に、補償トランザクション処理を実行できるエントポイントも持つ。</td>
+<td>依存対象マイクロサービス (Temporal ワーカー)</td>
+<td>自身が実行すべきアクティビティを Temporal サーバーに登録する。Temporal サーバーからアクティビティタスクを取得し、これを実行する。アクティビティタスクが完了すれば、タスクキューに結果を送信する。ローカルトランザクションのエンドポイントとは別に、補償トランザクション処理を実行できるエントポイントも持つ。</td>
 </tr>
 </tbody>
 </table>
@@ -34114,20 +34114,20 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 </thead>
 <tbody>
 <tr>
-<td>マイクロサービス (Temporalクライアント)</td>
-<td>ドメイン層には、ワークフローの定義ロジックを実装する。インフラストラクチャ層に、クライアントからの同期リクエストを受信するためのAPIとTemporal SDKクライアントを実装する。</td>
+<td>マイクロサービス (Temporal クライアント)</td>
+<td>ドメイン層には、ワークフローの定義ロジックを実装する。インフラストラクチャ層に、クライアントからの同期リクエストを受信するための API とTemporal SDK クライアントを実装する。</td>
 </tr>
 <tr>
 <td>ワークフローステータスチェッカー</td>
-<td>ドメイン層には、取得するワークフローステータスのロジックを実装する。インフラストラクチャ層にTemporal SDKのロジックを実装する。インフラストラクチャ層に、クライアントからの非同期リクエスト (ポーリング処理) を受信するためのAPIとTemporal SDKクライアントを実装する。</td>
+<td>ドメイン層には、取得するワークフローステータスのロジックを実装する。インフラストラクチャ層に Temporal SDK のロジックを実装する。インフラストラクチャ層に、クライアントからの非同期リクエスト (ポーリング処理) を受信するための API とTemporal SDK クライアントを実装する。</td>
 </tr>
 <tr>
-<td>タスクキュー (Temporalサーバー)</td>
+<td>タスクキュー (Temporal サーバー)</td>
 <td>ユーザーが独自のロジックを実装する必要はなく、専用の設定ファイルを定義する。</td>
 </tr>
 <tr>
-<td>依存対象マイクロサービス (Temporalワーカー)</td>
-<td>インフラストラクチャ層にTemporal SDKのロジックを実装する。</td>
+<td>依存対象マイクロサービス (Temporal ワーカー)</td>
+<td>インフラストラクチャ層に Temporal SDK のロジックを実装する。</td>
 </tr>
 </tbody>
 </table>
@@ -34176,8 +34176,8 @@ GraphQL-APIのエンドポイントには、GraphQLクライアントでリク�
 <p>💡</p>
 <p>余裕があったら書くぜ！</p>
 </blockquote>
-<h1 id="13-02-oidcsso">13-02. OIDCによるSSO<a class="headerlink" href="#13-02-oidcsso" title="Permanent link">&para;</a></h1>
-<h2 id="keycloakistiosso">KeycloakとIstioによるSSO<a class="headerlink" href="#keycloakistiosso" title="Permanent link">&para;</a></h2>
+<h1 id="13-02-oidc-sso">13-02. OIDC による SSO<a class="headerlink" href="#13-02-oidc-sso" title="Permanent link">&para;</a></h1>
+<h2 id="keycloak-istio-sso">Keycloak とIstio による SSO<a class="headerlink" href="#keycloak-istio-sso" title="Permanent link">&para;</a></h2>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-SSO (詳細).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-SSO_(詳細).drawio.png" /></p>
 <ol>
 <li>ユーザーはログインする。ブラウザは、Amazon Route 53 にリクエストを送信する。</li>
@@ -34283,7 +34283,7 @@ sequenceDiagram
 
     PCブラウザ -&gt;&gt; Istio IngressGateway : 任意のデータ取得のため&lt;br&gt;アクセストークン再利用</code></pre>
 <p><a href="https://ysyau.medium.com/spa-and-rest-api-application-friendly-oauth-2-0-oidc-login-flow-80ba927ff47d">SPA and Rest API Application friendly Oauth 2.0/Oidc login flow</a></p>
-<h2 id="keycloakistio">KeycloakとIstioによるアクセストークン検証<a class="headerlink" href="#keycloakistio" title="Permanent link">&para;</a></h2>
+<h2 id="keycloak-istio">Keycloak とIstio によるアクセストークン検証<a class="headerlink" href="#keycloak-istio" title="Permanent link">&para;</a></h2>
 <p>Istio を使用して、クライアントが認証済みかどうかをアクセストークンでその都度検証できます。</p>
 <p>ブラウザは、LocalStorage に管理したアクセストークンを再利用します。</p>
 <p>Amazon EKS クラスター内では、リクエストの Authorization ヘッダーにアクセストークンを設定し、Pod 間でアクセストークンを伝播する必要があります。</p>
@@ -34301,15 +34301,15 @@ sequenceDiagram
 <tbody>
 <tr>
 <td>Istio AuthorizationPolicy</td>
-<td>紐付けたPodのistio-proxyにアクセストークンの検証処理を実装する。istio-proxyは、IDプロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンがない場合に、ダウンストリームに <code>403</code> ステータスを返信する。失効 / 不正のアクセストークンを含むリクエストを検証せずに許可してしまうため、RequestAuthenticationも実装すべきである。</td>
+<td>紐付けた Pod のistio-proxy にアクセストークンの検証処理を実装する。istio-proxy は、ID プロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンがない場合に、ダウンストリームに <code>403</code> ステータスを返信する。失効 / 不正のアクセストークンを含むリクエストを検証せずに許可してしまうため、RequestAuthentication も実装すべきである。</td>
 </tr>
 <tr>
 <td>Istio RequestAuthentication</td>
-<td>紐付けたPodのistio-proxyにアクセストークンの検証処理を実装する。istio-proxyは、IDプロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンが失効 / 不正だった場合に、ダウンストリームに <code>401</code> ステータスを返信する。アクセストークンがないリクエストを検証せずに許可してしまうため、AuthorizationPolicyも実装すべきである。</td>
+<td>紐付けた Pod のistio-proxy にアクセストークンの検証処理を実装する。istio-proxy は、ID プロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンが失効 / 不正だった場合に、ダウンストリームに <code>401</code> ステータスを返信する。アクセストークンがないリクエストを検証せずに許可してしまうため、AuthorizationPolicy も実装すべきである。</td>
 </tr>
 <tr>
-<td>Istioデータプレーン (istio-proxy)</td>
-<td>Keycloakにアクセストークンの検証リクエストを送信する。</td>
+<td>Istio データプレーン (istio-proxy)</td>
+<td>Keycloak にアクセストークンの検証リクエストを送信する。</td>
 </tr>
 <tr>
 <td>Keycloak</td>
@@ -34399,9 +34399,9 @@ flowchart LR
 <p>ここにポンチ絵を描く。</p>
 </blockquote>
 <h1 id="15-22">15-22. インフラ領域を参照<a class="headerlink" href="#15-22" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【インフラ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
+<p><a href="https://example.com">【インフラ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
 <h1 id="24-29">24-29. 横断領域を参照<a class="headerlink" href="#24-29" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【横断領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
+<p><a href="https://example.com">【横断領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
 
 
 
@@ -34422,7 +34422,7 @@ flowchart LR
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:32:55 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

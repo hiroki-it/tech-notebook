@@ -14904,12 +14904,12 @@
   <a href="#01-polaris" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. polarisの仕組み
+        01. polaris の仕組み
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. polarisの仕組み">
+    <nav class="md-nav" aria-label="01. polaris の仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -15006,7 +15006,7 @@
   <a href="#checks_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ checksとは
+        ▼ checks とは
       
     </span>
   </a>
@@ -15045,7 +15045,7 @@
   <a href="#customchecks_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ customChecksとは
+        ▼ customChecks とは
       
     </span>
   </a>
@@ -15134,7 +15134,7 @@
   <a href="#audit_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ auditとは
+        ▼ audit とは
       
     </span>
   </a>
@@ -33539,12 +33539,12 @@
   <a href="#01-polaris" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. polarisの仕組み
+        01. polaris の仕組み
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. polarisの仕組み">
+    <nav class="md-nav" aria-label="01. polaris の仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33641,7 +33641,7 @@
   <a href="#checks_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ checksとは
+        ▼ checks とは
       
     </span>
   </a>
@@ -33680,7 +33680,7 @@
   <a href="#customchecks_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ customChecksとは
+        ▼ customChecks とは
       
     </span>
   </a>
@@ -33769,7 +33769,7 @@
   <a href="#audit_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ auditとは
+        ▼ audit とは
       
     </span>
   </a>
@@ -33998,7 +33998,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="01-polaris">01. polarisの仕組み<a class="headerlink" href="#01-polaris" title="Permanent link">&para;</a></h2>
+<h2 id="01-polaris">01. polaris の仕組み<a class="headerlink" href="#01-polaris" title="Permanent link">&para;</a></h2>
 <h3 id="_2">検出項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>一般に知られているベストプラクティス項目に基づいて、マニフェストのベストプラクティス違反 (例：脆弱性、効率性、信頼性など) を検証する。</p>
 <p>Helm チャートのまま検査できず、一度マニフェストとして渡す必要がある。</p>
@@ -34050,7 +34050,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="02-configyaml">02. <code>config.yaml</code> ファイル<a class="headerlink" href="#02-configyaml" title="Permanent link">&para;</a></h2>
 <h3 id="checks">checks<a class="headerlink" href="#checks" title="Permanent link">&para;</a></h3>
-<h4 id="checks_1">▼ checksとは<a class="headerlink" href="#checks_1" title="Permanent link">&para;</a></h4>
+<h4 id="checks_1">▼ checks とは<a class="headerlink" href="#checks_1" title="Permanent link">&para;</a></h4>
 <p>検査項目ごとに重要度レベル (ignore、warning、danger) を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">checks</span><span class="p">:</span>
 
@@ -34085,28 +34085,28 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>polaris の実行時に、重要度が <code>danger</code> 以上のルールを検証するようにしたとする。</p>
 <p>重要度がデフォルトで <code>warning</code> のルールは検証しなくなるため、検証したいルールは <code>danger</code> に格上げする</p>
 <div class="highlight"><pre><span></span><code><span class="nt">checks</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Podのcpuの設定し忘れ</span>
+<span class="w">  </span><span class="c1"># Pod のcpu の設定し忘れ</span>
 <span class="w">  </span><span class="nt">cpuLimitsMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 <span class="w">  </span><span class="nt">cpuRequestsMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
-<span class="w">  </span><span class="c1"># Deploymentのreplicasが1個である</span>
+<span class="w">  </span><span class="c1"># Deployment のreplicas が1 個である</span>
 <span class="w">  </span><span class="nt">deploymentMissingReplicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
-<span class="w">  </span><span class="c1"># PodのLivenessProbeヘルスチェックの設定し忘れ</span>
+<span class="w">  </span><span class="c1"># Pod のLivenessProbe ヘルスチェックの設定し忘れ</span>
 <span class="w">  </span><span class="nt">livenessProbeMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
-<span class="w">  </span><span class="c1"># Podのメモリの設定し忘れ</span>
+<span class="w">  </span><span class="c1"># Pod のメモリの設定し忘れ</span>
 <span class="w">  </span><span class="nt">memoryLimitsMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 <span class="w">  </span><span class="nt">memoryRequestsMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
-<span class="w">  </span><span class="c1"># PodDisruptionBudgetの作成し忘れ</span>
-<span class="w">  </span><span class="c1"># PodDisruptionBudgetで指定したラベル値をDeploymentが持たない場合でも、Missingとみなす‍♂️</span>
+<span class="w">  </span><span class="c1"># PodDisruptionBudget の作成し忘れ</span>
+<span class="w">  </span><span class="c1"># PodDisruptionBudget で指定したラベル値を Deployment が持たない場合でも、Missing とみなす‍♂️</span>
 <span class="w">  </span><span class="nt">missingPodDisruptionBudget</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
-<span class="w">  </span><span class="c1"># PodのpriorityClassの設定し忘れ</span>
+<span class="w">  </span><span class="c1"># Pod のpriorityClass の設定し忘れ</span>
 <span class="w">  </span><span class="nt">priorityClassNotSet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
-<span class="w">  </span><span class="c1"># PodのReadinessProbeヘルスチェックの設定し忘れ</span>
+<span class="w">  </span><span class="c1"># Pod のReadinessProbe ヘルスチェックの設定し忘れ</span>
 <span class="w">  </span><span class="nt">readinessProbeMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 </code></pre></div>
 <blockquote>
@@ -34116,7 +34116,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="customchecks">customChecks<a class="headerlink" href="#customchecks" title="Permanent link">&para;</a></h3>
-<h4 id="customchecks_1">▼ customChecksとは<a class="headerlink" href="#customchecks_1" title="Permanent link">&para;</a></h4>
+<h4 id="customchecks_1">▼ customChecks とは<a class="headerlink" href="#customchecks_1" title="Permanent link">&para;</a></h4>
 <p>カスタムルールを定義する。</p>
 <blockquote>
 <ul>
@@ -34131,8 +34131,8 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">daemonSetPriorityClassMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
 <span class="nt">customChecks</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># DaemonSetのpriorityClassの設定し忘れを検証する</span>
-<span class="w">  </span><span class="c1"># ビルトインのpriorityClassNotSetルールではWorkload全体を検証してしまうため、DaemonSet限定のルールを定義した</span>
+<span class="w">  </span><span class="c1"># DaemonSet のpriorityClass の設定し忘れを検証する</span>
+<span class="w">  </span><span class="c1"># ビルトインの priorityClassNotSet ルールでは Workload 全体を検証してしまうため、DaemonSet 限定のルールを定義した</span>
 <span class="w">  </span><span class="nt">daemonSetPriorityClassMissing</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">successMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In DaemonSet, priority class is set</span>
 <span class="w">    </span><span class="nt">failureMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In DaemonSet, priority class should be set</span>
@@ -34144,29 +34144,29 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
 <span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># .specキーに関するルール</span>
+<span class="w">        </span><span class="c1"># .spec キーに関するルール</span>
 <span class="w">        </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">          </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template</span>
 <span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># .spec.templateキーに関するルール</span>
+<span class="w">            </span><span class="c1"># .spec.template キーに関するルール</span>
 <span class="w">            </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">              </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
 <span class="w">              </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># .spec.template.specキーに関するルール</span>
+<span class="w">                </span><span class="c1"># .spec.template.spec キーに関するルール</span>
 <span class="w">                </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">                  </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">priorityClassName</span>
 <span class="w">                  </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">                    </span><span class="c1"># .spec.template.spec.priorityClassNameキーに関するルール</span>
+<span class="w">                    </span><span class="c1"># .spec.template.spec.priorityClassName キーに関するルール</span>
 <span class="w">                    </span><span class="nt">priorityClassName</span><span class="p">:</span>
 <span class="w">                      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">                      </span><span class="nt">not</span><span class="p">:</span>
-<span class="w">                        </span><span class="c1"># ostring型が空値であった場合にエラーとする</span>
+<span class="w">                        </span><span class="c1"># ostring 型が空値であった場合にエラーとする</span>
 <span class="w">                        </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">checks</span><span class="p">:</span>
@@ -34174,7 +34174,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">deploymentAffinityMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
 <span class="nt">customChecks</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Deploymentのaffinityの設定し忘れを検証する</span>
+<span class="w">  </span><span class="c1"># Deployment のaffinity の設定し忘れを検証する</span>
 <span class="w">  </span><span class="nt">deploymentAffinityMissing</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">successMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In Deployment, affinity is set</span>
 <span class="w">    </span><span class="nt">failureMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In Deployment, affinity should be set</span>
@@ -34186,29 +34186,29 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
 <span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># .specキーに関するルール</span>
+<span class="w">        </span><span class="c1"># .spec キーに関するルール</span>
 <span class="w">        </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">          </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template</span>
 <span class="w">          </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># .spec.templateキーに関するルール</span>
+<span class="w">            </span><span class="c1"># .spec.template キーに関するルール</span>
 <span class="w">            </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">              </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">spec</span>
 <span class="w">              </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># .spec.template.specキーに関するルール</span>
+<span class="w">                </span><span class="c1"># .spec.template.spec キーに関するルール</span>
 <span class="w">                </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">                  </span><span class="nt">required</span><span class="p">:</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">affinity</span>
 <span class="w">                  </span><span class="nt">properties</span><span class="p">:</span>
-<span class="w">                    </span><span class="c1"># .spec.template.spec.affinityキーに関するルール</span>
+<span class="w">                    </span><span class="c1"># .spec.template.spec.affinity キーに関するルール</span>
 <span class="w">                    </span><span class="nt">affinity</span><span class="p">:</span>
 <span class="w">                      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
 <span class="w">                      </span><span class="nt">not</span><span class="p">:</span>
-<span class="w">                        </span><span class="c1"># object型が空値であった場合にエラーとする</span>
+<span class="w">                        </span><span class="c1"># object 型が空値であった場合にエラーとする</span>
 <span class="w">                        </span><span class="nt">const</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">checks</span><span class="p">:</span>
@@ -34216,7 +34216,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">deploymentNodeSelectorMissing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
 <span class="nt">customChecks</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># DeploymentのnodeSelectorの設定し忘れを検証する</span>
+<span class="w">  </span><span class="c1"># Deployment のnodeSelector の設定し忘れを検証する</span>
 <span class="w">  </span><span class="nt">deploymentNodeSelectorMissing</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">successMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In Deployment, nodeSelector is set</span>
 <span class="w">    </span><span class="nt">failureMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In Deployment, nodeSelector should be set</span>
@@ -34261,14 +34261,14 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">missingHorizontalPodAutoscalerWithDeployment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">danger</span>
 
 <span class="nt">customChecks</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Deploymentを作成している場合、HorizontalPodAutoscalerも作成していることを検証する</span>
+<span class="w">  </span><span class="c1"># Deployment を作成している場合、HorizontalPodAutoscaler も作成していることを検証する</span>
 <span class="w">  </span><span class="nt">missingHorizontalPodAutoscalerWithDeployment</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">successMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler exists</span>
 <span class="w">    </span><span class="nt">failureMessage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HorizontalPodAutoscaler should exist</span>
 <span class="w">    </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reliability</span>
 <span class="w">    </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/Deployment</span>
 <span class="w">    </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="c1"># Deploymentがある場合に合わせて必要なKubernetesリソースを定義する</span>
+<span class="w">    </span><span class="c1"># Deployment がある場合に合わせて必要な Kubernetes リソースを定義する</span>
 <span class="w">    </span><span class="nt">additionalSchemas</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">autoscaling/HorizontalPodAutoscaler</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
@@ -34293,9 +34293,9 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>脆弱性検出の項目から除外する Kubernetes リソースを設定する。</p>
 <p>一部の Kubernetes リソース (例：kube-system) は、root 権限を持つ実行ユーザーで実行しなければならないため、除外設定が必要である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">exemptions</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Namespace名</span>
+<span class="w">  </span><span class="c1"># Namespace 名</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
-<span class="w">    </span><span class="c1"># Controller名 (Workload名)</span>
+<span class="w">    </span><span class="c1"># Controller 名 (Workload 名)</span>
 <span class="w">    </span><span class="nt">controllerNames</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns-controller</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ebs-csi-controller</span>
@@ -34324,7 +34324,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h2 id="03">03. コマンド<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="audit">audit<a class="headerlink" href="#audit" title="Permanent link">&para;</a></h3>
-<h4 id="audit_1">▼ auditとは<a class="headerlink" href="#audit_1" title="Permanent link">&para;</a></h4>
+<h4 id="audit_1">▼ audit とは<a class="headerlink" href="#audit_1" title="Permanent link">&para;</a></h4>
 <p>マニフェストがルールに違反しているかどうかを検証する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 結果を読みやすく出力する。</span>
 $<span class="w"> </span>polaris<span class="w"> </span>audit<span class="w"> </span>--audit-path<span class="w"> </span>manifest.yaml
@@ -34420,7 +34420,7 @@ Polaris<span class="w"> </span>audited<span class="w"> </span>Path<span class="w
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 17:22:15 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

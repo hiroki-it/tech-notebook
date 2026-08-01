@@ -8268,7 +8268,7 @@
   <a href="#reverse_proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        reverse_proxyとは
+        reverse_proxy とは
       
     </span>
   </a>
@@ -8279,7 +8279,7 @@
   <a href="#nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        リバースプロキシがNginxの場合
+        リバースプロキシが Nginx の場合
       
     </span>
   </a>
@@ -33717,7 +33717,7 @@
   <a href="#reverse_proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        reverse_proxyとは
+        reverse_proxy とは
       
     </span>
   </a>
@@ -33728,7 +33728,7 @@
   <a href="#nginx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        リバースプロキシがNginxの場合
+        リバースプロキシが Nginx の場合
       
     </span>
   </a>
@@ -33941,7 +33941,7 @@
 </blockquote>
 <h4 id="issuerurl">▼ issuerURL<a class="headerlink" href="#issuerurl" title="Permanent link">&para;</a></h4>
 <p>JWT トークンの発行元の識別子を設定する</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法がOIDCで、IDプロバイダーがKeycloakの場合</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が OIDC で、ID プロバイダーが Keycloak の場合</span>
 <span class="nt">providers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">oidcConfig</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">issuerURL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://keycloak.foo-namespace.svc.cluster.local/realms/&lt;realm名&gt;&quot;</span>
@@ -33951,7 +33951,7 @@
 <li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#oidcoptions">https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#oidcoptions</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法がOIDCで、IDプロバイダーがAWS Cognitoの場合</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が OIDC で、ID プロバイダーが AWS Cognito の場合</span>
 <span class="nt">providers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">oidcConfig</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">issuerURL</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://cognito-idp.ap-northeast-1.amazonaws.com/&lt;ユーザープールID&gt;&quot;</span>
@@ -33971,7 +33971,7 @@
 <p>記入中...</p>
 <p><br></p>
 <h3 id="provider">provider<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法がOIDCで、任意のIDプロバイダーの場合</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が OIDC で、任意の ID プロバイダーの場合</span>
 <span class="nt">providers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;oidc&quot;</span>
 </code></pre></div>
@@ -33980,7 +33980,7 @@
 <li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect">https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が任意で、IDプロバイダーがGitHubの場合</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が任意で、ID プロバイダーが GitHub の場合</span>
 <span class="nt">providers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;github&quot;</span>
 </code></pre></div>
@@ -33989,7 +33989,7 @@
 <li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github">https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が任意で、IDプロバイダーがKeycloakの場合</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が任意で、ID プロバイダーが Keycloak の場合</span>
 <span class="nt">providers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keycloak&quot;</span>
 </code></pre></div>
@@ -33998,7 +33998,7 @@
 <li><a href="https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak">https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak</a></li>
 </ul>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法がOIDCで、IDプロバイダーがKeycloakの場合</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># 認証方法が OIDC で、ID プロバイダーが Keycloak の場合</span>
 <span class="nt">providers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keycloak-oidc&quot;</span>
 </code></pre></div>
@@ -34045,7 +34045,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="05-reverse_proxy">05. reverse_proxy<a class="headerlink" href="#05-reverse_proxy" title="Permanent link">&para;</a></h2>
-<h3 id="reverse_proxy">reverse_proxyとは<a class="headerlink" href="#reverse_proxy" title="Permanent link">&para;</a></h3>
+<h3 id="reverse_proxy">reverse_proxy とは<a class="headerlink" href="#reverse_proxy" title="Permanent link">&para;</a></h3>
 <p>OAuth2 Proxy の送信元に任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">reverse_proxy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
@@ -34055,7 +34055,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="nginx">リバースプロキシがNginxの場合<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
+<h3 id="nginx">リバースプロキシが Nginx の場合<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
 <p>まずは、クライアントアプリケーションが、Nginx を介さずに認可リクエストを直接的に ID プロバイダーに送信する。</p>
 <p>ID プロバイダーがトークンの発行を終え、クライアントが再びリクエストを送信したとき、これは Nginx を通過する。</p>
 <p>Nginx は OAuth2 Proxy にアクセストークン署名検証リクエストを送信し、OAuth2 Proxy は ID プロバイダーのバリデーション結果を Nginx に返信する。</p>
@@ -34127,7 +34127,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

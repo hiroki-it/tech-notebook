@@ -29,7 +29,7 @@
     
     
       
-        <title>【導入】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説 - 俺の技術ノート</title>
+        <title>【導入】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説 - 俺の技術ノート</title>
       
     
     
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【導入】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説
+              【導入】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説
             
           </span>
         </div>
@@ -33169,7 +33169,7 @@
   
 
 
-<h1 id="ddd">【導入】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説<a class="headerlink" href="#ddd" title="Permanent link">&para;</a></h1>
+<h1 id="ddd">【導入】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説<a class="headerlink" href="#ddd" title="Permanent link">&para;</a></h1>
 <h1 id="01">01. はじめに<a class="headerlink" href="#01" title="Permanent link">&para;</a></h1>
 <p>どうも、Istio のマスコットやってますカイルくんです。</p>
 <p><img alt="Windowsイルカ.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/Windows%E3%82%A4%E3%83%AB%E3%82%AB.png" /></p>
@@ -33229,21 +33229,21 @@
 </thead>
 <tbody>
 <tr>
-<td>1999年</td>
+<td>1999 年</td>
 <td>モノリシックアーキテクチャ</td>
 <td>バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた。</td>
 <td><a href="https://en.wikipedia.org/wiki/Monolithic_application">https://en.wikipedia.org/wiki/Monolithic_application</a></td>
 </tr>
 <tr>
-<td>1900年後半〜2000年前半</td>
+<td>1900 年後半〜2000 年前半</td>
 <td>サービス指向アーキテクチャ</td>
-<td>Michael BellやThomas Erlらが、アプリを機能の粒度で分割するアーキテクチャを提唱した。ただ『機能』という粒度に分割の指針がなかった。様々な課題があったため、概念としては提唱されていても、実装方法の確立にまでは至らなかった。</td>
+<td>Michael Bell やThomas Erl らが、アプリを機能の粒度で分割するアーキテクチャを提唱した。ただ『機能』という粒度に分割の指針がなかった。様々な課題があったため、概念としては提唱されていても、実装方法の確立にまでは至らなかった。</td>
 <td>・<a href="https://en.wikipedia.org/wiki/Service-oriented_architecture">https://en.wikipedia.org/wiki/Service-oriented_architecture</a> ・<a href="https://www.amazon.co.jp/dp/B09B5L4NVT">https://www.amazon.co.jp/dp/B09B5L4NVT</a></td>
 </tr>
 <tr>
-<td>2003年</td>
+<td>2003 年</td>
 <td>DDD</td>
-<td>Eric EvansはDDDを提唱した。DDDは、オブジェクト指向分析設計から派生した分析設計の方法の一種である。特に機能要件を解決するアプリケーションに有効である。オブジェクト指向分析設計のベタープラクティスを集め、より強化することにつながった。</td>
+<td>Eric Evans はDDD を提唱した。DDD は、オブジェクト指向分析設計から派生した分析設計の方法の一種である。特に機能要件を解決するアプリケーションに有効である。オブジェクト指向分析設計のベタープラクティスを集め、より強化することにつながった。</td>
 <td>・<a href="https://www.amazon.co.jp/dp/481440073X">https://www.amazon.co.jp/dp/481440073X</a></td>
 </tr>
 <tr>
@@ -33253,9 +33253,9 @@
 <td></td>
 </tr>
 <tr>
-<td>2014年</td>
+<td>2014 年</td>
 <td>マイクロサービスアーキテクチャ</td>
-<td>Simon Brownは、モノリシックアーキテクチャは、時間経過とともに、無秩序でつぎはぎだらけになり得ることを指摘した。Martin FowlerとJames Lewisは、サービス指向アーキテクチャとDDDを統合し、アプリを独立したマイクロサービスの集まりに分割するアーキテクチャを提唱した。サービス指向アーキテクチャにDDDの高凝集/低結合の考え方を取り入れることで、サービス指向アーキテクチャを実装可能な理論に昇華させた。</td>
+<td>Simon Brown は、モノリシックアーキテクチャは、時間経過とともに、無秩序でつぎはぎだらけになり得ることを指摘した。Martin Fowler とJames Lewis は、サービス指向アーキテクチャと DDD を統合し、アプリを独立したマイクロサービスの集まりに分割するアーキテクチャを提唱した。サービス指向アーキテクチャに DDD の高凝集/低結合の考え方を取り入れることで、サービス指向アーキテクチャを実装可能な理論に昇華させた。</td>
 <td>・<a href="https://dzone.com/articles/distributed-big-balls-mud">https://dzone.com/articles/distributed-big-balls-mud</a></td>
 </tr>
 <tr>
@@ -33276,11 +33276,11 @@
 <p><a href="https://microservices.io/patterns/">Microservices Pattern: A pattern language for microservices</a></p>
 <p><a href="https://microservices.io/patterns/microservices.html#related-patterns">Microservices Pattern: Microservice Architecture pattern</a></p>
 <h1 id="03">03. クラウドネイティブ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h1>
-<h2 id="cncf">CNCFによる定義づけ<a class="headerlink" href="#cncf" title="Permanent link">&para;</a></h2>
+<h2 id="cncf">CNCF による定義づけ<a class="headerlink" href="#cncf" title="Permanent link">&para;</a></h2>
 <p>CNCF は、クラウドネイティブを以下のように定義づけしています。</p>
 <p>マイクロサービスアーキテクチャを構築するために適した技術であることがわかります。</p>
 <blockquote>
-<p>クラウドネイティブ技術は、パブリッククラウド、プライベートクラウド、ハイブリッドクラウドなどの近代的でダイナミックな環境において、スケーラブルなアプリケーションを構築および実行するための能力を組織にもたらします。 このアプローチの代表例に、コンテナ、サービスメッシュ、マイクロサービス、イミュータブルインフラストラクチャ、および宣言型APIがあります。</p>
+<p>クラウドネイティブ技術は、パブリッククラウド、プライベートクラウド、ハイブリッドクラウドなどの近代的でダイナミックな環境において、スケーラブルなアプリケーションを構築および実行するための能力を組織にもたらします。 このアプローチの代表例に、コンテナ、サービスメッシュ、マイクロサービス、イミュータブルインフラストラクチャ、および宣言型 API があります。</p>
 </blockquote>
 <p><a href="https://github.com/cncf/toc/blob/main/DEFINITION.md">https://github.com/cncf/toc/blob/main/DEFINITION.md</a></p>
 <h2 id="_4">クラウドネイティブに関する歴史<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
@@ -33297,42 +33297,42 @@
 <tr>
 <td>2004</td>
 <td>AWS</td>
-<td>AWSは、同社初のクラウドサービスとしてSQSを公開した。</td>
+<td>AWS は、同社初のクラウドサービスとして SQS を公開した。</td>
 <td><a href="https://en.wikipedia.org/wiki/Amazon_Web_Services">https://en.wikipedia.org/wiki/Amazon_Web_Services</a></td>
 </tr>
 <tr>
 <td>2008</td>
 <td>Google Cloud</td>
-<td>Google Cloudは、同社初のクラウドサービスとしてApp Engineを公開した。</td>
+<td>Google Cloud は、同社初のクラウドサービスとして App Engine を公開した。</td>
 <td><a href="https://en.wikipedia.org/wiki/Google_Cloud_Platform">https://en.wikipedia.org/wiki/Google_Cloud_Platform</a></td>
 </tr>
 <tr>
 <td>2010</td>
 <td>Azure</td>
-<td>Azureは、同社初のクラウドサービスとしてWindows Azureを公開した。</td>
+<td>Azure は、同社初のクラウドサービスとして Windows Azure を公開した。</td>
 <td><a href="https://en.wikipedia.org/wiki/Microsoft_Azure">https://en.wikipedia.org/wiki/Microsoft_Azure</a></td>
 </tr>
 <tr>
 <td>2013</td>
 <td>Docker</td>
-<td>dotCloudが、仮想化技術としてコンテナを公開した。</td>
+<td>dotCloud が、仮想化技術としてコンテナを公開した。</td>
 <td><a href="https://en.wikipedia.org/wiki/Docker_(software)">https://en.wikipedia.org/wiki/Docker_(software)</a></td>
 </tr>
 <tr>
 <td>2014</td>
 <td>Kubernetes</td>
-<td>GoogleがKubernetesを発表した。</td>
+<td>Google がKubernetes を発表した。</td>
 <td><a href="https://kubernetes.io/blog/2024/06/06/10-years-of-kubernetes/">https://kubernetes.io/blog/2024/06/06/10-years-of-kubernetes/</a></td>
 </tr>
 <tr>
 <td>2014-2024</td>
-<td>CNCFプロジェクト21分野</td>
-<td>Kubernetesの登場後、CNCFでは21分野に渡るクラウドネイティブ技術のプロジェクトが登場した。</td>
+<td>CNCF プロジェクト 21 分野</td>
+<td>Kubernetes の登場後、CNCF では 21 分野に渡るクラウドネイティブ技術のプロジェクトが登場した。</td>
 <td><a href="https://landscape.cncf.io/">https://landscape.cncf.io/</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="cncf_1">CNCFによるツール分類<a class="headerlink" href="#cncf_1" title="Permanent link">&para;</a></h2>
+<h2 id="cncf_1">CNCF によるツール分類<a class="headerlink" href="#cncf_1" title="Permanent link">&para;</a></h2>
 <p>CNCF では、ツールを以下で分類しています。</p>
 <p>本記事で登場するツールの一部を例として紹介しました。</p>
 <table>
@@ -33377,7 +33377,7 @@
 </tr>
 <tr>
 <td>API Gateway</td>
-<td>今回はサービスプロキシのNginxで代替</td>
+<td>今回はサービスプロキシの Nginx で代替</td>
 </tr>
 <tr>
 <td>調整とサービスディスカバリー</td>
@@ -33448,7 +33448,7 @@
 
 
 </code></pre>
-<h3 id="api-gateway">API Gateway領域<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h3>
+<h3 id="api-gateway">API Gateway 領域<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスアーキテクチャの API Gateway 領域のデザインパターンは以下のとおりです。</p>
 <pre class="mermaid"><code>flowchart LR
 
@@ -33489,11 +33489,11 @@
 <td>Helm、Kubernetes、Terraform</td>
 </tr>
 <tr>
-<td>L7ロードバランサー</td>
+<td>L7 ロードバランサー</td>
 <td>AWS ALB</td>
 </tr>
 <tr>
-<td>L7/L4ロードバランサー</td>
+<td>L7/L4 ロードバランサー</td>
 <td>Istio EgressGateway、Istio IngressGateway、Nginx Ingress Controller</td>
 </tr>
 <tr>
@@ -33521,11 +33521,11 @@
 <td>OAuth2 Proxy、Keycloak</td>
 </tr>
 <tr>
-<td>Node管理</td>
+<td>Node 管理</td>
 <td>Karpenter</td>
 </tr>
 <tr>
-<td>Pod管理</td>
+<td>Pod 管理</td>
 <td>descheduler</td>
 </tr>
 <tr>
@@ -33534,7 +33534,7 @@
 </tr>
 <tr>
 <td>その他</td>
-<td>周辺のAWSリソース</td>
+<td>周辺の AWS リソース</td>
 </tr>
 </tbody>
 </table>
@@ -33555,15 +33555,15 @@
 <td>Nginx</td>
 </tr>
 <tr>
-<td>L7ロードバランサー</td>
+<td>L7 ロードバランサー</td>
 <td>AWS ALB</td>
 </tr>
 <tr>
-<td>L7/L4ロードバランサー</td>
+<td>L7/L4 ロードバランサー</td>
 <td>Istio EgressGateway、Istio IngressGateway</td>
 </tr>
 <tr>
-<td>IDプロバイダー</td>
+<td>ID プロバイダー</td>
 <td>Google、Keycloak</td>
 </tr>
 <tr>
@@ -33588,20 +33588,20 @@
 </tr>
 <tr>
 <td>マイクロサービス</td>
-<td>任意の言語、Keyacloak (認証マイクロサービス) 、Temporal (Sagaオーケストレーター)</td>
+<td>任意の言語、Keyacloak (認証マイクロサービス) 、Temporal (Saga オーケストレーター)</td>
 </tr>
 <tr>
 <td>その他</td>
-<td>周辺のAWSリソース</td>
+<td>周辺の AWS リソース</td>
 </tr>
 </tbody>
 </table>
 <h1 id="05-15">05-15. アプリ領域を参照<a class="headerlink" href="#05-15" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【アプリ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
+<p><a href="https://example.com">【アプリ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
 <h1 id="16-19">16-19. インフラ領域を参照<a class="headerlink" href="#16-19" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【インフラ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
+<p><a href="https://example.com">【インフラ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
 <h1 id="20-26">20-26. 横断領域を参照<a class="headerlink" href="#20-26" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【横断領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
+<p><a href="https://example.com">【横断領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
 <h1 id="27">27. おわりに<a class="headerlink" href="#27" title="Permanent link">&para;</a></h1>
 <p>マイクロサービスアーキテクチャのことになると、早口になるタイプのオタクです。</p>
 <p>どうかこの想い、同志に届いてほしいです。</p>
@@ -33646,7 +33646,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

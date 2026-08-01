@@ -19889,7 +19889,7 @@
   <a href="#az" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ マルチAZ
+        ▼ マルチ AZ
       
     </span>
   </a>
@@ -19922,7 +19922,7 @@
   <a href="#amazon-eks-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon EKS マネージドNodeグループ
+        ▼ Amazon EKS マネージド Node グループ
       
     </span>
   </a>
@@ -19961,7 +19961,7 @@
   <a href="#amazon-eks-node_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon EKS マネージドNodeグループ
+        ▼ Amazon EKS マネージド Node グループ
       
     </span>
   </a>
@@ -20005,7 +20005,7 @@
   <a href="#dr-bcp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DRリージョン (BCPリージョン) とは
+        DR リージョン (BCP リージョン) とは
       
     </span>
   </a>
@@ -33479,7 +33479,7 @@
   <a href="#az" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ マルチAZ
+        ▼ マルチ AZ
       
     </span>
   </a>
@@ -33512,7 +33512,7 @@
   <a href="#amazon-eks-node" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon EKS マネージドNodeグループ
+        ▼ Amazon EKS マネージド Node グループ
       
     </span>
   </a>
@@ -33551,7 +33551,7 @@
   <a href="#amazon-eks-node_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon EKS マネージドNodeグループ
+        ▼ Amazon EKS マネージド Node グループ
       
     </span>
   </a>
@@ -33595,7 +33595,7 @@
   <a href="#dr-bcp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DRリージョン (BCPリージョン) とは
+        DR リージョン (BCP リージョン) とは
       
     </span>
   </a>
@@ -33774,7 +33774,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">冗長化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="az">▼ マルチAZ<a class="headerlink" href="#az" title="Permanent link">&para;</a></h4>
+<h4 id="az">▼ マルチ AZ<a class="headerlink" href="#az" title="Permanent link">&para;</a></h4>
 <p>マルチ AZ を採用する。</p>
 <p>それぞれの AZ に Amazon EC2/ECS を冗長化する。</p>
 <p>特定の AZ で障害が発生した場合、AWS ALB を起点として、インバウンド通信の向き先を正常な AZ の Amazon EC2/ECS に切り替える。</p>
@@ -33784,7 +33784,7 @@
 <h4 id="auto-scaling-group">▼ Auto Scaling Group<a class="headerlink" href="#auto-scaling-group" title="Permanent link">&para;</a></h4>
 <p>Auto Scaling Group を採用する。</p>
 <p>Amazon EC2 で障害が発生した場合、AWS ALB を起点にして、正常な Amazon EC2 に切り替える。</p>
-<h4 id="amazon-eks-node">▼ Amazon EKS マネージドNodeグループ<a class="headerlink" href="#amazon-eks-node" title="Permanent link">&para;</a></h4>
+<h4 id="amazon-eks-node">▼ Amazon EKS マネージド Node グループ<a class="headerlink" href="#amazon-eks-node" title="Permanent link">&para;</a></h4>
 <p>Amazon EKS マネージド Node グループを採用する。</p>
 <p>Amazon EC2 Node で障害が発生した場合、AWS ALB を起点にして、正常な Amazon EC2 に切り替える。</p>
 <h4 id="amazon-aurora">▼ Amazon Aurora<a class="headerlink" href="#amazon-aurora" title="Permanent link">&para;</a></h4>
@@ -33792,7 +33792,7 @@
 <p>プライマリーインスタンスで障害が発生した場合、フェイルオーバーにより、リードレプリカがプライマリーインスタンスに昇格します。</p>
 <p><br></p>
 <h3 id="_4">スケーリング<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<h4 id="amazon-eks-node_1">▼ Amazon EKS マネージドNodeグループ<a class="headerlink" href="#amazon-eks-node_1" title="Permanent link">&para;</a></h4>
+<h4 id="amazon-eks-node_1">▼ Amazon EKS マネージド Node グループ<a class="headerlink" href="#amazon-eks-node_1" title="Permanent link">&para;</a></h4>
 <p>Amazon EC2 Node のスケールアップには、Cluster Autoscaler、Amazon EKS マネージド Node グループを採用する。</p>
 <p>Cluster Autoscaler と Amazon EKS マネージド Node グループ、では、Pod による Amazon EC2 Node の負荷に応じて Amazon EC2 Node をスケーリングする。</p>
 <h4 id="auto-scaling-group_1">▼ Auto Scaling Group<a class="headerlink" href="#auto-scaling-group_1" title="Permanent link">&para;</a></h4>
@@ -33800,7 +33800,7 @@
 <p>Auto Scaling Group では、Amazon EC2 のハードウェアリソース (CPU、メモリ) の消費率に応じて、自動水平スケーリングします。</p>
 <p><br></p>
 <h2 id="02">02. 災害の対策<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="dr-bcp">DRリージョン (BCPリージョン) とは<a class="headerlink" href="#dr-bcp" title="Permanent link">&para;</a></h3>
+<h3 id="dr-bcp">DR リージョン (BCP リージョン) とは<a class="headerlink" href="#dr-bcp" title="Permanent link">&para;</a></h3>
 <p>『BCP リージョン』ともいう。</p>
 <p>メインリージョンで災害が起こった場合に、システムの障害にならないように、災害回復用リージョンを用意しておく。</p>
 <blockquote>
@@ -33889,7 +33889,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

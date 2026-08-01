@@ -19044,7 +19044,7 @@
   <a href="#kinesis-data-streams" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kinesis Data Streamsとは
+        Kinesis Data Streams とは
       
     </span>
   </a>
@@ -19072,7 +19072,7 @@
   <a href="#kinesis-data-firehose" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kinesis Data Firehoseとは
+        Kinesis Data Firehose とは
       
     </span>
   </a>
@@ -19145,7 +19145,7 @@
   <a href="#kinesis-data-analytics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kinesis Data Analyticsとは
+        Kinesis Data Analytics とは
       
     </span>
   </a>
@@ -33374,7 +33374,7 @@
   <a href="#kinesis-data-streams" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kinesis Data Streamsとは
+        Kinesis Data Streams とは
       
     </span>
   </a>
@@ -33402,7 +33402,7 @@
   <a href="#kinesis-data-firehose" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kinesis Data Firehoseとは
+        Kinesis Data Firehose とは
       
     </span>
   </a>
@@ -33475,7 +33475,7 @@
   <a href="#kinesis-data-analytics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kinesis Data Analyticsとは
+        Kinesis Data Analytics とは
       
     </span>
   </a>
@@ -33591,7 +33591,7 @@
   
 
 
-<h1 id="kinesisaws">Kinesis＠AWSリソース<a class="headerlink" href="#kinesisaws" title="Permanent link">&para;</a></h1>
+<h1 id="kinesisaws">Kinesis＠AWS リソース<a class="headerlink" href="#kinesisaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -33601,7 +33601,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-kinesis-data-streams">01. Kinesis Data Streams<a class="headerlink" href="#01-kinesis-data-streams" title="Permanent link">&para;</a></h2>
-<h3 id="kinesis-data-streams">Kinesis Data Streamsとは<a class="headerlink" href="#kinesis-data-streams" title="Permanent link">&para;</a></h3>
+<h3 id="kinesis-data-streams">Kinesis Data Streams とは<a class="headerlink" href="#kinesis-data-streams" title="Permanent link">&para;</a></h3>
 <p>リアルタイム処理のストリーミングデータ (例：動画データ、音声データなど) を継続的に収集し、保管する。</p>
 <blockquote>
 <ul>
@@ -33610,7 +33610,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="02-kinesis-data-firehose-kinesis-delivery-stream">02. Kinesis Data Firehose (Kinesis Delivery Stream)<a class="headerlink" href="#02-kinesis-data-firehose-kinesis-delivery-stream" title="Permanent link">&para;</a></h2>
-<h3 id="kinesis-data-firehose">Kinesis Data Firehoseとは<a class="headerlink" href="#kinesis-data-firehose" title="Permanent link">&para;</a></h3>
+<h3 id="kinesis-data-firehose">Kinesis Data Firehose とは<a class="headerlink" href="#kinesis-data-firehose" title="Permanent link">&para;</a></h3>
 <p>リアルタイム処理のストリーミングデータ (例：動画データ、音声データなど) を継続的に収集し、保管/可視化/分析/レポート作成/アラートができる外部サービスや AWS リソースにフォワーディングする。</p>
 <p>フォワーディング時に AWS Lambda 関数を使用することにより、収集したデータを加工できる。</p>
 <p>より非マネージにストリーミングしたい場合は、ストリーミングツール (例：Apache Kafka) を使用する。</p>
@@ -33636,29 +33636,29 @@
 </thead>
 <tbody>
 <tr>
-<td>DNSレコードの変換</td>
+<td>DNS レコードの変換</td>
 <td>バッファーに蓄えられたログを、指定された形式でフォワーディングする前に、テキストの内容を変換する。</td>
-<td>AWS Lambdaを使用する。<br>- <a href="https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html">https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html</a></td>
+<td>AWS Lambda を使用する。<br>- <a href="https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html">https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html</a></td>
 </tr>
 <tr>
 <td>フォワーディング先</td>
-<td>フォワーディング先とするS3バケットを設定する。</td>
+<td>フォワーディング先とする S3 バケットを設定する。</td>
 <td></td>
 </tr>
 <tr>
 <td>ディレクトリ名</td>
-<td>S3へのフォワーディング時に、S3に作成するディレクトリの名前を設定できる。デフォルトで <code>YYYY/MM/dd/HH</code> 形式でディレクトリが作成され、執筆時点 (2021/11/09) では、UTCのみ設定できる。</td>
-<td>もしJSTにしたい場合はAWS Lambdaに変換処理を実装し、Kinesis Data Firehoseと連携する必要がある。<br>- <a href="https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549">https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549</a></td>
+<td>S3 へのフォワーディング時に、S3 に作成するディレクトリの名前を設定できる。デフォルトで <code>YYYY/MM/dd/HH</code> 形式でディレクトリが作成され、執筆時点 (2021/11/09) では、UTC のみ設定できる。</td>
+<td>もし JST にしたい場合は AWS Lambda に変換処理を実装し、Kinesis Data Firehose と連携する必要がある。<br>- <a href="https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549">https://qiita.com/qiita-kurara/items/b697b65772cb0905c0f2#comment-ac3a2eb2f6d30a917549</a></td>
 </tr>
 <tr>
 <td>バッファー</td>
-<td>Kinesis Data Firehoseでは、受信したログをいったんバッファーに蓄え、一定期間あるいは一定サイズが蓄えられた時点で、ログファイルとしてフォワーディングする。このとき、バッファーに蓄える期間や上限サイズを設定できる。</td>
+<td>Kinesis Data Firehose では、受信したログをいったんバッファーに蓄え、一定期間あるいは一定サイズが蓄えられた時点で、ログファイルとしてフォワーディングする。このとき、バッファーに蓄える期間や上限サイズを設定できる。</td>
 <td>・<a href="https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#frequency">https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#frequency</a></td>
 </tr>
 <tr>
 <td>ファイル形式</td>
 <td>フォワーディング時のファイル形式を設定できる。</td>
-<td>ログファイルの最終到達地点がS3の場合は圧縮形式で問題ないが、S3から加えて他のツール (例：Datadog) にフォワーディングする場合はデータ形式を設定しないほうがよい。</td>
+<td>ログファイルの最終到達地点が S3 の場合は圧縮形式で問題ないが、S3 から加えて他のツール (例：Datadog) にフォワーディングする場合はデータ形式を設定しないほうがよい。</td>
 </tr>
 <tr>
 <td>バックアップ</td>
@@ -33672,13 +33672,13 @@
 </tr>
 <tr>
 <td>エラーログの収集</td>
-<td>データのフォワーディング時にエラーが発生した場合、エラーログをAmazon CloudWatch Logsに送信する。</td>
+<td>データのフォワーディング時にエラーが発生した場合、エラーログを Amazon CloudWatch Logs に送信する。</td>
 <td></td>
 </tr>
 <tr>
-<td>IAMロール</td>
-<td>Kinesis Data FirehoseがAWSリソースにデータをフォワーディングできるように、認可スコープを設定する。</td>
-<td>KinesisではIAMロールの細やかな設定が正しく動作しないことがあり、最小認可スコープを諦め、FullAccess権限のロールを付与してしまうほうがよい。最低限、Amazon CloudWatch LogsとS3の認可スコープが必要である。</td>
+<td>IAM ロール</td>
+<td>Kinesis Data Firehose がAWS リソースにデータをフォワーディングできるように、認可スコープを設定する。</td>
+<td>Kinesis では IAM ロールの細やかな設定が正しく動作しないことがあり、最小認可スコープを諦め、FullAccess 権限のロールを付与してしまうほうがよい。最低限、Amazon CloudWatch Logs とS3 の認可スコープが必要である。</td>
 </tr>
 <tr>
 <td>メトリクス</td>
@@ -33689,7 +33689,7 @@
 </table>
 <p><br></p>
 <h2 id="03-kinesis-data-analytics">03. Kinesis Data Analytics<a class="headerlink" href="#03-kinesis-data-analytics" title="Permanent link">&para;</a></h2>
-<h3 id="kinesis-data-analytics">Kinesis Data Analyticsとは<a class="headerlink" href="#kinesis-data-analytics" title="Permanent link">&para;</a></h3>
+<h3 id="kinesis-data-analytics">Kinesis Data Analytics とは<a class="headerlink" href="#kinesis-data-analytics" title="Permanent link">&para;</a></h3>
 <p>リアルタイム処理のストリーミングデータ (例：動画データ、音声データなど) を継続的に収集し、分析する。</p>
 <blockquote>
 <ul>
@@ -33717,7 +33717,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:28:04 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

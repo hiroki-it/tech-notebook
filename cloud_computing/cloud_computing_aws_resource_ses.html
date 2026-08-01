@@ -19484,7 +19484,7 @@
   <a href="#amazon-ses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Amazon SESとは
+        Amazon SES とは
       
     </span>
   </a>
@@ -19539,7 +19539,7 @@
   <a href="#03-terraform" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. セットアップ (Terraformの場合)
+        03. セットアップ (Terraform の場合)
       
     </span>
   </a>
@@ -19573,7 +19573,7 @@
   <a href="#sandbox" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sandboxモードの解除
+        Sandbox モードの解除
       
     </span>
   </a>
@@ -19704,10 +19704,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#awssmtp-auth" class="md-nav__link">
+  <a href="#aws-smtp-auth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWSにおけるSMTP-AUTHの仕組み
+        AWS における SMTP-AUTH の仕組み
       
     </span>
   </a>
@@ -33507,7 +33507,7 @@
   <a href="#amazon-ses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Amazon SESとは
+        Amazon SES とは
       
     </span>
   </a>
@@ -33562,7 +33562,7 @@
   <a href="#03-terraform" class="md-nav__link">
     <span class="md-ellipsis">
       
-        03. セットアップ (Terraformの場合)
+        03. セットアップ (Terraform の場合)
       
     </span>
   </a>
@@ -33596,7 +33596,7 @@
   <a href="#sandbox" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sandboxモードの解除
+        Sandbox モードの解除
       
     </span>
   </a>
@@ -33727,10 +33727,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#awssmtp-auth" class="md-nav__link">
+  <a href="#aws-smtp-auth" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWSにおけるSMTP-AUTHの仕組み
+        AWS における SMTP-AUTH の仕組み
       
     </span>
   </a>
@@ -33857,7 +33857,7 @@
   
 
 
-<h1 id="amazon-sesaws">Amazon SES＠AWSリソース<a class="headerlink" href="#amazon-sesaws" title="Permanent link">&para;</a></h1>
+<h1 id="amazon-sesaws">Amazon SES＠AWS リソース<a class="headerlink" href="#amazon-sesaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
 <blockquote>
@@ -33867,7 +33867,7 @@
 </blockquote>
 <p><br></p>
 <h2 id="01-amazon-sessimple-email-service">01. Amazon SES：Simple Email Service<a class="headerlink" href="#01-amazon-sessimple-email-service" title="Permanent link">&para;</a></h2>
-<h3 id="amazon-ses">Amazon SESとは<a class="headerlink" href="#amazon-ses" title="Permanent link">&para;</a></h3>
+<h3 id="amazon-ses">Amazon SES とは<a class="headerlink" href="#amazon-ses" title="Permanent link">&para;</a></h3>
 <p>クラウドメールサーバーとして働く。</p>
 <p>メール受信をトリガーとして、アクションを実行する。</p>
 <p><br></p>
@@ -33885,23 +33885,23 @@
 <tbody>
 <tr>
 <td>Domain</td>
-<td>Amazon SESのドメイン名を設定する。</td>
-<td>設定したドメイン名には、『<code>10 inbound-smtp.us-east-1.amazonaws.com</code>』というMXレコードタイプの値が紐付く。</td>
+<td>Amazon SES のドメイン名を設定する。</td>
+<td>設定したドメイン名には、『<code>10 inbound-smtp.us-east-1.amazonaws.com</code>』という MX レコードタイプの値が紐付く。</td>
 </tr>
 <tr>
 <td>Email Addresses</td>
-<td>宛先として認証するメールアドレスを設定する。設定するとAWSからメールが届くため、指定されたリンクをクリックする。</td>
-<td>Sandboxモードのときだけ動作する。</td>
+<td>宛先として認証するメールアドレスを設定する。設定すると AWS からメールが届くため、指定されたリンクをクリックする。</td>
+<td>Sandbox モードのときだけ動作する。</td>
 </tr>
 <tr>
 <td>Sending Statistics</td>
-<td>Amazon SESで収集したデータをメトリクスで確認できる。</td>
-<td><code>Request Increased Sending Limits</code> のリンクにて、Sandboxモードの解除を申請できる。</td>
+<td>Amazon SES で収集したデータをメトリクスで確認できる。</td>
+<td><code>Request Increased Sending Limits</code> のリンクにて、Sandbox モードの解除を申請できる。</td>
 </tr>
 <tr>
 <td>SMTP Settings</td>
-<td>SMTP-AUTHの接続情報を確認できる。</td>
-<td>アプリケーションの <code>25</code> 番ポートは送信制限があるため、<code>465</code> 番ポートを使用する。これに合わせて、Amazon SESも受信で <code>465</code> 番ポートを使用する。</td>
+<td>SMTP-AUTH の接続情報を確認できる。</td>
+<td>アプリケーションの <code>25</code> 番ポートは送信制限があるため、<code>465</code> 番ポートを使用する。これに合わせて、Amazon SES も受信で <code>465</code> 番ポートを使用する。</td>
 </tr>
 <tr>
 <td>Rule Sets</td>
@@ -33935,7 +33935,7 @@
 </tbody>
 </table>
 <p><br></p>
-<h2 id="03-terraform">03. セットアップ (Terraformの場合)<a class="headerlink" href="#03-terraform" title="Permanent link">&para;</a></h2>
+<h2 id="03-terraform">03. セットアップ (Terraform の場合)<a class="headerlink" href="#03-terraform" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_sesv2_configuration_set&quot;</span><span class="w"> </span><span class="nv">&quot;foo&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">configuration_set_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span>
 
@@ -34035,7 +34035,7 @@
 <h2 id="04">04. 仕様上の制約<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_3">作成リージョンの制約<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>Amazon SES は連携する AWS リソースと同じリージョンに作成しなければならない。</p>
-<h3 id="sandbox">Sandboxモードの解除<a class="headerlink" href="#sandbox" title="Permanent link">&para;</a></h3>
+<h3 id="sandbox">Sandbox モードの解除<a class="headerlink" href="#sandbox" title="Permanent link">&para;</a></h3>
 <p>Amazon SES はデフォルトでは Sandbox モードになっている。</p>
 <p>Sandbox モードでは以下の制限がかかっており。</p>
 <p>サポートセンターに解除申請が必要である。</p>
@@ -34049,11 +34049,11 @@
 <tbody>
 <tr>
 <td>送信制限</td>
-<td>Amazon SESで認証したメールアドレスのみに送信できる。</td>
+<td>Amazon SES で認証したメールアドレスのみに送信できる。</td>
 </tr>
 <tr>
 <td>受信制限</td>
-<td>1日に200メールのみ受信できる。</td>
+<td>1 日に 200 メールのみ受信できる。</td>
 </tr>
 </tbody>
 </table>
@@ -34080,7 +34080,7 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="06-smtp-auth">06. SMTP-AUTH<a class="headerlink" href="#06-smtp-auth" title="Permanent link">&para;</a></h2>
-<h3 id="awssmtp-auth">AWSにおけるSMTP-AUTHの仕組み<a class="headerlink" href="#awssmtp-auth" title="Permanent link">&para;</a></h3>
+<h3 id="aws-smtp-auth">AWS における SMTP-AUTH の仕組み<a class="headerlink" href="#aws-smtp-auth" title="Permanent link">&para;</a></h3>
 <p>一般的な SMTP-AUTH では、クライアントアカウントの認証が必要である。同様にして、AWS でもこれが必要であり、IAM ユーザーを使用してこれを実現する。</p>
 <p>送信元となるアプリケーションに IAM ユーザーを紐付け、この IAM ユーザーにはユーザー名とパスワードを設定する。</p>
 <p>アプリケーションが Amazon SES を経由してメールを送信するとき、アプリケーションに対して、Amazon SES がユーザー名とパスワードを使用した認証する。</p>
@@ -34117,7 +34117,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:28:04 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

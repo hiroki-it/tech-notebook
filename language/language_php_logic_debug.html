@@ -12291,12 +12291,12 @@
   <a href="#02-xdebug" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. Xdebugによるデバッグ
+        02. Xdebug によるデバッグ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. Xdebugによるデバッグ">
+    <nav class="md-nav" aria-label="02. Xdebug によるデバッグ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -12326,7 +12326,7 @@
   <a href="#2-xdebug" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Xdebugの設定
+        2. Xdebug の設定
       
     </span>
   </a>
@@ -12348,7 +12348,7 @@
   <a href="#4-phpstorm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. PhpStormビルトインの設定
+        4. PhpStorm ビルトインの設定
       
     </span>
   </a>
@@ -12409,7 +12409,7 @@
   <a href="#4-breakpoint" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Breakpointの設定
+        4. Breakpoint の設定
       
     </span>
   </a>
@@ -12417,10 +12417,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-dbgdebugger" class="md-nav__link">
+  <a href="#5-dbg-debugger" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. DBGプロトコル：Debuggerプロトコルによる相互通信の確立
+        5. DBG プロトコル：Debugger プロトコルによる相互通信の確立
       
     </span>
   </a>
@@ -33640,12 +33640,12 @@
   <a href="#02-xdebug" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. Xdebugによるデバッグ
+        02. Xdebug によるデバッグ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. Xdebugによるデバッグ">
+    <nav class="md-nav" aria-label="02. Xdebug によるデバッグ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33675,7 +33675,7 @@
   <a href="#2-xdebug" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Xdebugの設定
+        2. Xdebug の設定
       
     </span>
   </a>
@@ -33697,7 +33697,7 @@
   <a href="#4-phpstorm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. PhpStormビルトインの設定
+        4. PhpStorm ビルトインの設定
       
     </span>
   </a>
@@ -33758,7 +33758,7 @@
   <a href="#4-breakpoint" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Breakpointの設定
+        4. Breakpoint の設定
       
     </span>
   </a>
@@ -33766,10 +33766,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-dbgdebugger" class="md-nav__link">
+  <a href="#5-dbg-debugger" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. DBGプロトコル：Debuggerプロトコルによる相互通信の確立
+        5. DBG プロトコル：Debugger プロトコルによる相互通信の確立
       
     </span>
   </a>
@@ -33974,13 +33974,13 @@
 <span class="nb">header</span><span class="p">(</span><span class="s2">&quot;Content-Type: text/html; charset=UTF-8&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="02-xdebug">02. Xdebugによるデバッグ<a class="headerlink" href="#02-xdebug" title="Permanent link">&para;</a></h2>
+<h2 id="02-xdebug">02. Xdebug によるデバッグ<a class="headerlink" href="#02-xdebug" title="Permanent link">&para;</a></h2>
 <h3 id="_7">セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="1">1. ローカル仮想環境に対するインストール<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <p>ローカル仮想環境で以下のコマンドを実行。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>pecl<span class="w"> </span>install<span class="w"> </span>xdebug-2.2.7
 </code></pre></div>
-<h4 id="2-xdebug">2. Xdebugの設定<a class="headerlink" href="#2-xdebug" title="Permanent link">&para;</a></h4>
+<h4 id="2-xdebug">2. Xdebug の設定<a class="headerlink" href="#2-xdebug" title="Permanent link">&para;</a></h4>
 <p>Xdebug のあるローカル仮想環境から見て、PhpStrom ビルトイン仮想環境を接続先と見なす。</p>
 <div class="highlight"><pre><span></span><code><span class="na">zend_extension</span><span class="o">=</span><span class="s">/usr/lib64/php/modules/xdebug.so</span>
 
@@ -34006,7 +34006,7 @@
 <h4 id="3">3. ローカル仮想環境を再起動<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>service<span class="w"> </span>httpd<span class="w"> </span>restart
 </code></pre></div>
-<h4 id="4-phpstorm">4. PhpStormビルトインの設定<a class="headerlink" href="#4-phpstorm" title="Permanent link">&para;</a></h4>
+<h4 id="4-phpstorm">4. PhpStorm ビルトインの設定<a class="headerlink" href="#4-phpstorm" title="Permanent link">&para;</a></h4>
 <p><br></p>
 <h3 id="_8">デバッグにおける通信の仕組み<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="1_1">1. エディタ仮想環境の作成<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
@@ -34016,9 +34016,9 @@
 <p>エディタ仮想環境はこれに対して、セッション開始のリクエストを HTTP プロトコルで送信する。</p>
 <h4 id="3_1">3. デバッガーエンジンから仮想環境に対するリクエスト<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
 <p>デバッガーエンジン (Xdebug) はセッションを開始し、エディタ仮想環境の <code>9000</code> 番ポートに対して、レスポンスを返信する。</p>
-<h4 id="4-breakpoint">4. Breakpointの設定<a class="headerlink" href="#4-breakpoint" title="Permanent link">&para;</a></h4>
+<h4 id="4-breakpoint">4. Breakpoint の設定<a class="headerlink" href="#4-breakpoint" title="Permanent link">&para;</a></h4>
 <p>エディタ仮想環境は、デバッガーエンジンに対して、Breakpoint を設定するリクエストを送信する。</p>
-<h4 id="5-dbgdebugger">5. DBGプロトコル：Debuggerプロトコルによる相互通信の確立<a class="headerlink" href="#5-dbgdebugger" title="Permanent link">&para;</a></h4>
+<h4 id="5-dbg-debugger">5. DBG プロトコル：Debugger プロトコルによる相互通信の確立<a class="headerlink" href="#5-dbg-debugger" title="Permanent link">&para;</a></h4>
 <p>DBG プロトコルを使用して、エディタ仮想環境とデバッガーエンジンの間の相互通信を確立する。</p>
 <h4 id="6">6. 相互通信の実行<a class="headerlink" href="#6" title="Permanent link">&para;</a></h4>
 <p>エディタは、デバッガーエンジンに対してコードを送信する。</p>
@@ -34045,7 +34045,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     

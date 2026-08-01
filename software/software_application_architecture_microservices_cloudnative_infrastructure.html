@@ -29,7 +29,7 @@
     
     
       
-        <title>【インフラ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説 - 俺の技術ノート</title>
+        <title>【インフラ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説 - 俺の技術ノート</title>
       
     
     
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【インフラ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説
+              【インフラ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説
             
           </span>
         </div>
@@ -33169,14 +33169,14 @@
   
 
 
-<h1 id="ddd">【インフラ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説<a class="headerlink" href="#ddd" title="Permanent link">&para;</a></h1>
+<h1 id="ddd">【インフラ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説<a class="headerlink" href="#ddd" title="Permanent link">&para;</a></h1>
 <h1 id="_1">本記事について<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【導入】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a> の記事のインフラ領域です。</p>
+<p><a href="https://example.com">【導入】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a> の記事のインフラ領域です。</p>
 <p>インフラ領域のデザインパターンです。</p>
 <h1 id="01-04">01-04. 導入を参照<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【導入】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
+<p><a href="https://example.com">【導入】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
 <h1 id="05-14">05-14. アプリ領域を参照<a class="headerlink" href="#05-14" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【アプリ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
+<p><a href="https://example.com">【アプリ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
 <h1 id="15">15. トラフィック管理方法<a class="headerlink" href="#15" title="Permanent link">&para;</a></h1>
 <p>L4 / L7 トラフィック管理のために、宛先情報を動的に検出しなければなりません。</p>
 <p>このとき、サービス検出という機能を使用しています。</p>
@@ -33194,7 +33194,7 @@
   L4-/-L7トラフィック管理方法の基点 --- ロードバランシング
   ロードバランシング ---- 静的
   ロードバランシング ---- 動的</code></pre>
-<p><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2022/12/25/060000">【Istio⛵️】Istioのサービス間通信を実現するサービス検出の仕組み - 好きな技術を布教したい 😗</a></p>
+<p><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2022/12/25/060000">【Istio⛵️】Istio のサービス間通信を実現するサービス検出の仕組み - 好きな技術を布教したい 😗</a></p>
 <h2 id="_2">宛先検出<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="_3">サーバーサイドサービス検出パターン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>送信元マイクロサービスから、問い合わせとロードバランシングの責務が切り離されています。</p>
@@ -33234,7 +33234,7 @@
 </ul>
 <h1 id="15-02">15-02. トラフィック管理方法<a class="headerlink" href="#15-02" title="Permanent link">&para;</a></h1>
 <h2 id="l3">L3<a class="headerlink" href="#l3" title="Permanent link">&para;</a></h2>
-<h3 id="vpc-cnikube-proxyip">VPC CNIアドオンやkube-proxyによるIPアドレス管理方法<a class="headerlink" href="#vpc-cnikube-proxyip" title="Permanent link">&para;</a></h3>
+<h3 id="vpc-cni-kube-proxy-ip">VPC CNI アドオンや kube-proxy による IP アドレス管理方法<a class="headerlink" href="#vpc-cni-kube-proxy-ip" title="Permanent link">&para;</a></h3>
 <p>VPC CNI アドオンは、kubelet や AWS ENI と連携し、マイクロサービス Pod を Amazon EKS クラスター内のネットワークに参加させます。</p>
 <p>kube-proxy は Node 内の iptables を更新し、Amazon EKS クラスター内で各ツールがトラフィック管理できるようにする。</p>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio.png" /></p>
@@ -33248,20 +33248,20 @@
 <tbody>
 <tr>
 <td>AWS ENI</td>
-<td>ENIには、サブネットからIPアドレスが割り当てられている。ENIをAWSリソースに紐づけると、ENIはそのAWSリソースにIPアドレスを割り当てる。</td>
+<td>ENI には、サブネットから IP アドレスが割り当てられている。ENI をAWS リソースに紐づけると、ENI はその AWS リソースに IP アドレスを割り当てる。</td>
 </tr>
 <tr>
 <td>AWS kube-proxy アドオン</td>
-<td>kube-proxyはNode内のiptablesを更新し、Amazon EKSクラスター内で L4トラフィックを管理できるようにする。Node内のiptableに対して、PodのIPアドレスを追加 / 削除リクエストを送信する。AWSマネージドPodとして稼働する。</td>
+<td>kube-proxy はNode 内の iptables を更新し、Amazon EKS クラスター内で L4 トラフィックを管理できるようにする。Node 内の iptable に対して、Pod のIP アドレスを追加 / 削除リクエストを送信する。AWS マネージド Pod として稼働する。</td>
 </tr>
 <tr>
-<td>Amazon VPC CNIアドオン</td>
-<td>NodeにアタッチされたENIに対して、IPアドレスの取得 / 解放リクエストを送信する。また、新しいPodに対して、IPアドレスの割当 / 解放リクエストを送信する。必要に応じて、新しいENIのアタッチをAmazon EKSコントロールプレーンにリクエストする。AWSマネージドPodとして稼働する。</td>
+<td>Amazon VPC CNI アドオン</td>
+<td>Node にアタッチされた ENI に対して、IP アドレスの取得 / 解放リクエストを送信する。また、新しい Pod に対して、IP アドレスの割当 / 解放リクエストを送信する。必要に応じて、新しい ENI のアタッチを Amazon EKS コントロールプレーンにリクエストする。AWS マネージド Pod として稼働する。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="_11">サービスメッシュ内<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<h3 id="istiol4l7">IstioによるL4/L7トラフィック管理<a class="headerlink" href="#istiol4l7" title="Permanent link">&para;</a></h3>
+<h3 id="istio-l4l7">Istio による L4/L7 トラフィック管理<a class="headerlink" href="#istio-l4l7" title="Permanent link">&para;</a></h3>
 <p>Istio は、指定した Namespace に属する Pod へサービスメッシュの機能を提供する。</p>
 <p>管理下の Pod に istio-proxy を挿入します。</p>
 <p>istio-proxy は、Pod のアウトバウンド通信を L4 / L7 ロードバランシングします。</p>
@@ -33276,23 +33276,23 @@
 <tbody>
 <tr>
 <td>AWS ALB</td>
-<td>Amazon EKSクラスター外の通信をCluster内のNodePort ServiceにL7ロードバランシングする。</td>
+<td>Amazon EKS クラスター外の通信を Cluster 内の NodePort Service にL7 ロードバランシングする。</td>
 </tr>
 <tr>
-<td>Istioコントロールプレーン</td>
-<td>KubernetesリソースやIstioリソースの宛先情報に基づいて、istio-proxy内のEnvoyプロセスを設定する。宛先情報はインメモリで保管する。</td>
+<td>Istio コントロールプレーン</td>
+<td>Kubernetes リソースや Istio リソースの宛先情報に基づいて、istio-proxy 内の Envoy プロセスを設定する。宛先情報はインメモリで保管する。</td>
 </tr>
 <tr>
-<td>Istioデータプレーン (istio-proxy)</td>
-<td>ダウンストリームのistio-proxyからのリクエストをアップストリームにL7ロードバランシングする。また、　アップストリームがAmazon EKSクラスター外の場合は、プロトコルに応じたロードバランシングになる。プロトコルがMySQLの場合はL4ロードバランシングになる。</td>
+<td>Istio データプレーン (istio-proxy)</td>
+<td>ダウンストリームの istio-proxy からのリクエストをアップストリームに L7 ロードバランシングする。また、　アップストリームが Amazon EKS クラスター外の場合は、プロトコルに応じたロードバランシングになる。プロトコルが MySQL の場合は L4 ロードバランシングになる。</td>
 </tr>
 <tr>
 <td>NodePort Service</td>
-<td>kube-proxyの更新したiptableを使用して、AWS ALBからのリクエストをIstio Ingress GatewayにL4ロードバランシングする。</td>
+<td>kube-proxy の更新した iptable を使用して、AWS ALB からのリクエストを Istio Ingress Gateway にL4 ロードバランシングする。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="istio">Istioによるクライアントの判定<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h3>
+<h3 id="istio">Istio によるクライアントの判定<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h3>
 <p>Istio IngressGateway がサービスメッシュ外からの通信をサービスメッシュ内にロードバランシングします。</p>
 <p>クライアント (ブラウザ、外部 API) に応じて、適切なフロントエンドアプリや API Gateway にルーティングできます。</p>
 <table>
@@ -33305,25 +33305,25 @@
 <tbody>
 <tr>
 <td>Istio Gateway</td>
-<td>NodePort Serviceからのリクエストを受信する。</td>
+<td>NodePort Service からのリクエストを受信する。</td>
 </tr>
 <tr>
 <td>Istio VirtualService (1)</td>
-<td>宛先とするフロントエンドアプリケーションのServiceを決定する。PCブラウザやスマホブラウザからのリクエストは、User-Agentヘッダーにブラウザを判定できる値を持つ。VirtualServiceでこれを判定する。</td>
+<td>宛先とするフロントエンドアプリケーションの Service を決定する。PC ブラウザやスマホブラウザからのリクエストは、User-Agent ヘッダーにブラウザを判定できる値を持つ。VirtualService でこれを判定する。</td>
 </tr>
 <tr>
 <td>Istio VirtualService (2)</td>
-<td>宛先とするフロントエンドアプリケーションのServiceを決定する。外部APIからのリクエストは、HostヘッダーにAPIのドメインを持つ。VirtualServiceでこれを判定する。</td>
+<td>宛先とするフロントエンドアプリケーションの Service を決定する。外部 API からのリクエストは、Host ヘッダーに API のドメインを持つ。VirtualService でこれを判定する。</td>
 </tr>
 <tr>
 <td>Kubernetes NodePort Service</td>
-<td>kube-proxyの更新したiptableを使用して、ALBからのリクエストを受信し、Istio IngressGateway PodにL4ロードバランシングする。</td>
+<td>kube-proxy の更新した iptable を使用して、ALB からのリクエストを受信し、Istio IngressGateway Pod にL4 ロードバランシングする。</td>
 </tr>
 </tbody>
 </table>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トラフィック管理 (南北).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%88%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E7%AE%A1%E7%90%86_(%E5%8D%97%E5%8C%97).drawio.png" /></p>
 <p>Istio IngressGateway については、以下のブログで解説しているため、5000 兆回ブックマークしてくれると嬉しいです！</p>
-<p><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2024/01/16/013404">【Istio⛵️】Istioによって抽象化されるEnvoyのHTTPSリクエスト処理の仕組み - 好きな技術を布教したい 😗</a></p>
+<p><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2024/01/16/013404">【Istio⛵️】Istio によって抽象化される Envoy のHTTPS リクエスト処理の仕組み - 好きな技術を布教したい 😗</a></p>
 <h2 id="_12">サービスメッシュ外<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <p>Istio は、指定した Namespace 以外に属する Pod にはサービスメッシュの機能を提供しません。</p>
 <p>サービスメッシュ外の Namespace では、CoreDNS を使用して、トラフィックを管理します。</p>
@@ -33338,39 +33338,39 @@
 <tbody>
 <tr>
 <td>AWS ALB</td>
-<td>Amazon EKSクラスター外の通信をCluster内のNodePort ServiceにL7ロードバランシングする。</td>
+<td>Amazon EKS クラスター外の通信を Cluster 内の NodePort Service にL7 ロードバランシングする。</td>
 </tr>
 <tr>
-<td>AWS CoreDNSアドオン</td>
-<td>Podの名前解決を実施する。</td>
+<td>AWS CoreDNS アドオン</td>
+<td>Pod の名前解決を実施する。</td>
 </tr>
 <tr>
 <td>Kubernetes ClusterIP Service</td>
-<td>kube-proxyの更新したiptableを使用して、PodからのリクエストをPodにL4ロードバランシングする。</td>
+<td>kube-proxy の更新した iptable を使用して、Pod からのリクエストを Pod にL4 ロードバランシングする。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap</td>
-<td>AWS CoreDNSアドオンの各種設定を管理する。Terraformで <code>json</code> ファイルとして作成する。</td>
+<td>AWS CoreDNS アドオンの各種設定を管理する。Terraform で <code>json</code> ファイルとして作成する。</td>
 </tr>
 <tr>
 <td>Kubernetes NodePort Service</td>
-<td>kube-proxyの更新したiptableを使用して、AWS ALBからのリクエストをIstio Ingress GatewayにL4ロードバランシングする。</td>
+<td>kube-proxy の更新した iptable を使用して、AWS ALB からのリクエストを Istio Ingress Gateway にL4 ロードバランシングする。</td>
 </tr>
 <tr>
 <td>Pod (送信元)</td>
-<td>サービスメッシュ外にある任意の送信元Podである。kubeletは、Pod内のコンテナの <code>/etc/resolv.conf</code> ファイルに権威DNSサーバー (ここではCoreDNS) のIPアドレスを設定する。リクエスト時に、コンテナは自身の <code>/etc/resolv.conf</code> ファイルで権威DNSサーバーのIPアドレスを確認し、DNSサーバーに宛先PodのIPアドレスの正引きを実施する。送信元Podは、取得したIPアドレスを使用して、宛先Podにリクエストを送信する。</td>
+<td>サービスメッシュ外にある任意の送信元 Pod である。kubelet は、Pod 内のコンテナの <code>/etc/resolv.conf</code> ファイルに権威 DNS サーバー (ここでは CoreDNS) の IP アドレスを設定する。リクエスト時に、コンテナは自身の <code>/etc/resolv.conf</code> ファイルで権威 DNS サーバーの IP アドレスを確認し、DNS サーバーに宛先 Pod のIP アドレスの正引きを実施する。送信元 Pod は、取得した IP アドレスを使用して、宛先 Pod にリクエストを送信する。</td>
 </tr>
 <tr>
 <td>Pod (宛先)</td>
-<td>サービスメッシュ外にある任意の宛先Podである。</td>
+<td>サービスメッシュ外にある任意の宛先 Pod である。</td>
 </tr>
 <tr>
-<td>iptables (Node内)</td>
-<td>PodのIPアドレスを管理する。</td>
+<td>iptables (Node 内)</td>
+<td>Pod のIP アドレスを管理する。</td>
 </tr>
 <tr>
 <td>kubelet</td>
-<td>Node内でデーモンプロセスとして稼働し、Amazon EKSコントロールプレーンからPod作成 / 削除リクエストを受信する。新しいPodをCluster Networkに参加させるために、Amazon VPC CNIにリクエストを送信する。</td>
+<td>Node 内でデーモンプロセスとして稼働し、Amazon EKS コントロールプレーンから Pod 作成 / 削除リクエストを受信する。新しい Pod をCluster Network に参加させるために、Amazon VPC CNI にリクエストを送信する。</td>
 </tr>
 </tbody>
 </table>
@@ -33404,27 +33404,27 @@
 <tbody>
 <tr>
 <td>AWS ALB (社外公開用)</td>
-<td>SQLインジェクションやXSSを検査するAWS WAFを紐付ける。アプリケーションをL7の攻撃から防御できるようにする。</td>
+<td>SQL インジェクションや XSS を検査する AWS WAF を紐付ける。アプリケーションを L7 の攻撃から防御できるようにする。</td>
 </tr>
 <tr>
 <td>AWS ALB (社内公開用)</td>
-<td>IPアドレスを検査するAWS WAFを紐付ける。SWEやSREerだけがリクエストを送信できるようにする。</td>
+<td>IP アドレスを検査する AWS WAF を紐付ける。SWE やSREer だけがリクエストを送信できるようにする。</td>
 </tr>
 <tr>
 <td>Amazon Route 53</td>
-<td>ドメインに合わせて、社外公開用または社内公開用のAWS ALBのいずれかに振り分ける。</td>
+<td>ドメインに合わせて、社外公開用または社内公開用の AWS ALB のいずれかに振り分ける。</td>
 </tr>
 <tr>
-<td>IDプロバイダー</td>
-<td>ダッシュボードにログインできるSWEやSREerの認証情報を管理する。</td>
+<td>ID プロバイダー</td>
+<td>ダッシュボードにログインできる SWE やSREer の認証情報を管理する。</td>
 </tr>
 <tr>
 <td>Istio IngressGateway</td>
-<td>宛先とするServiceを決定する。外部APIからのリクエストは、Hostヘッダーにドメインを持つ。VirtualServiceでこれを判定する。</td>
+<td>宛先とする Service を決定する。外部 API からのリクエストは、Host ヘッダーにドメインを持つ。VirtualService でこれを判定する。</td>
 </tr>
 <tr>
-<td>Keycloak、Temporalなど</td>
-<td>SWEやSREerにだけ公開するコンテナである。ツールのダッシュボードで、ビルトインのSSOがある場合、IDプロバイダーに認証フェーズを直接委譲できる。</td>
+<td>Keycloak、Temporal など</td>
+<td>SWE やSREer にだけ公開するコンテナである。ツールのダッシュボードで、ビルトインの SSO がある場合、ID プロバイダーに認証フェーズを直接委譲できる。</td>
 </tr>
 <tr>
 <td>フロントエンド (PC / スマホブラウザ)</td>
@@ -33432,7 +33432,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="api-gateway">API Gateway境界<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h3>
+<h3 id="api-gateway">API Gateway 境界<a class="headerlink" href="#api-gateway" title="Permanent link">&para;</a></h3>
 <p>API Gateway を境界として、公開先のネットワークを制限します。</p>
 <p>これは認証認可と内容が重複するため、ここでは省略します。</p>
 <h2 id="_15">サービスメッシュ外<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
@@ -33452,36 +33452,36 @@
 </thead>
 <tbody>
 <tr>
-<td>Alertmanager、Grafana、Kiali、Prometheusなど</td>
-<td>SWEやSREerにだけ公開するコンテナである。</td>
+<td>Alertmanager、Grafana、Kiali、Prometheus など</td>
+<td>SWE やSREer にだけ公開するコンテナである。</td>
 </tr>
 <tr>
 <td>AWS ALB (社内公開用)</td>
-<td>IPアドレスを検査するAWS WAFを紐付ける。SWEやSREerだけがリクエストを送信できるようにする。</td>
+<td>IP アドレスを検査する AWS WAF を紐付ける。SWE やSREer だけがリクエストを送信できるようにする。</td>
 </tr>
 <tr>
-<td>AWS CoreDNSアドオン</td>
-<td>ツールによっては、連携のために、他のツールのAmazon EKSクラスター内ドメインを設定しなければならない。</td>
+<td>AWS CoreDNS アドオン</td>
+<td>ツールによっては、連携のために、他のツールの Amazon EKS クラスター内ドメインを設定しなければならない。</td>
 </tr>
 <tr>
 <td>Amazon Route 53</td>
-<td>社内公開用のAWS ALBに振り分ける。</td>
+<td>社内公開用の AWS ALB に振り分ける。</td>
 </tr>
 <tr>
-<td>IDプロバイダー</td>
-<td>ダッシュボードにログインできるSWEやSREerの認証情報を管理する。</td>
+<td>ID プロバイダー</td>
+<td>ダッシュボードにログインできる SWE やSREer の認証情報を管理する。</td>
 </tr>
 <tr>
 <td>NAT Gateway</td>
-<td>ツールによっては、ダッシュボード間の連携のために、他のツールのAmazon EKSクラスター外公開ドメインを設定しなければならない。送信元IPアドレスを固定するために、NAT Gatewayを経由させる。</td>
+<td>ツールによっては、ダッシュボード間の連携のために、他のツールの Amazon EKS クラスター外公開ドメインを設定しなければならない。送信元 IP アドレスを固定するために、NAT Gateway を経由させる。</td>
 </tr>
 <tr>
 <td>Nginx Ingress Controller</td>
-<td>宛先とするServiceを決定する。Amazon EKSクラスター外のからのリクエストは、Hostヘッダーにドメインを持つ。Nginx Ingress Controllerでこれを判定する。</td>
+<td>宛先とする Service を決定する。Amazon EKS クラスター外のからのリクエストは、Host ヘッダーにドメインを持つ。Nginx Ingress Controller でこれを判定する。</td>
 </tr>
 <tr>
 <td>OAuth2 Proxy2</td>
-<td>ビルトインのSSOがないツール (例：Alertmanager、Kiali、Prometheusなど) のダッシュボードにSSOでログインしたい場合、OAuth2 Proxyを使用する。Nginx Ingress Controllerは、OAuth2 Proxyを介して、認証フェーズをIDプロバイダーに委譲する。SSOがあるツール (例：Grafanaなど) では、OAuth2 Proxyは使用せずに、直接委譲する。</td>
+<td>ビルトインの SSO がないツール (例：Alertmanager、Kiali、Prometheus など) のダッシュボードに SSO でログインしたい場合、OAuth2 Proxy を使用する。Nginx Ingress Controller は、OAuth2 Proxy を介して、認証フェーズを ID プロバイダーに委譲する。SSO があるツール (例：Grafana など) では、OAuth2 Proxy は使用せずに、直接委譲する。</td>
 </tr>
 </tbody>
 </table>
@@ -33497,10 +33497,10 @@
   証明書管理方法の基点 --- クラウドリソースへの証明書紐付け[クラウドリソースへの&lt;br&gt;証明書紐付け]
 </code></pre>
 <blockquote>
-<p>💡 TLSプロトコルで暗号化できるのは、パケットの構成要素なか中で、アプリケーションデータのみです。</p>
+<p>💡 TLS プロトコルで暗号化できるのは、パケットの構成要素なか中で、アプリケーションデータのみです。</p>
 </blockquote>
 <p><a href="https://www.oreilly.com/library/view/microservices-security-in/9781617295959VE/MSiA_part3.html">Microservices Security in Action video edition</a></p>
-<h2 id="tls">TLS認証の種類<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h2>
+<h2 id="tls">TLS 認証の種類<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h2>
 <ul>
 <li>通常 TLS 認証</li>
 <li>相互 TLS 認証</li>
@@ -33509,7 +33509,7 @@
 <p>💡 余裕があったらしっかり書くぜ！</p>
 </blockquote>
 <h2 id="_17">サービスメッシュ内<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
-<h3 id="awsistio">AWSとIstioによる証明書管理<a class="headerlink" href="#awsistio" title="Permanent link">&para;</a></h3>
+<h3 id="aws-istio">AWS とIstio による証明書管理<a class="headerlink" href="#aws-istio" title="Permanent link">&para;</a></h3>
 <p>Istio は、指定した Namespace に属する Pod へサービスメッシュの機能を提供する。</p>
 <p>管理下の Pod に istio-proxy を挿入します。</p>
 <p>istio-proxy はクライアント証明書 / SSL 証明書を持ち、アップストリームとダウンストリームの istio-proxy と相互 TLS 認証するします。</p>
@@ -33524,47 +33524,47 @@
 <tbody>
 <tr>
 <td>Amazon CA</td>
-<td>中間認証局である。AWS Certificate Managerで管理するSSL証明書を署名する。</td>
+<td>中間認証局である。AWS Certificate Manager で管理する SSL 証明書を署名する。</td>
 </tr>
 <tr>
 <td>Amazon Root CA / Starfield Root CA</td>
-<td>ルート認証局である。Amazon CAを署名する。</td>
+<td>ルート認証局である。Amazon CA を署名する。</td>
 </tr>
 <tr>
 <td>AWS ALB</td>
-<td>AWS Certificate Managerの管理するSSL証明書を、AWS ALBに紐づける。ユーザーがAmazon EKSクラスターにリクエストを送信するときに、通常のTLSを実行できるようになる。なお、ここでSSL/TLS終端とし、アップストリームのIstio IngressGatewayでSSL/TLSを再開する。</td>
+<td>AWS Certificate Manager の管理する SSL 証明書を、AWS ALB に紐づける。ユーザーが Amazon EKS クラスターにリクエストを送信するときに、通常の TLS を実行できるようになる。なお、ここで SSL/TLS 終端とし、アップストリームの Istio IngressGateway でSSL/TLS を再開する。</td>
 </tr>
 <tr>
 <td>Amazon Aurora</td>
-<td>SSL証明書をAmazon Auroraに紐づける。マイクロサービスがAmazon Auroraにトランザクション処理を実行するときに、通常のTLSを実行できるようになる。</td>
+<td>SSL 証明書を Amazon Aurora に紐づける。マイクロサービスが Amazon Aurora にトランザクション処理を実行するときに、通常の TLS を実行できるようになる。</td>
 </tr>
 <tr>
 <td>AWS Certificate Manager</td>
-<td>発行されたSSL証明書を管理する。</td>
+<td>発行された SSL 証明書を管理する。</td>
 </tr>
 <tr>
-<td>Istioコントロールプレーン</td>
-<td>ルート認証局として、istio-proxyに紐づけるためのクライアント証明書 / SSL証明書を発行する。</td>
+<td>Istio コントロールプレーン</td>
+<td>ルート認証局として、istio-proxy に紐づけるためのクライアント証明書 / SSL 証明書を発行する。</td>
 </tr>
 <tr>
-<td>Istioデータプレーン (istio-proxy)</td>
-<td>秘密鍵と証明書要求を作成し、ルート認証局のIstioコントロールプレーンに送信する。また、Istioコントロールプレーンが作成したクライアント証明書 / SSL証明書を取得し、アップストリームとダウンストリームのistio-proxyと相互TLS認証を実行する。</td>
+<td>Istio データプレーン (istio-proxy)</td>
+<td>秘密鍵と証明書要求を作成し、ルート認証局の Istio コントロールプレーンに送信する。また、Istio コントロールプレーンが作成したクライアント証明書 / SSL 証明書を取得し、アップストリームとダウンストリームの istio-proxy と相互 TLS 認証を実行する。</td>
 </tr>
 <tr>
 <td>Istio PeerAuthentication</td>
-<td>Namepspaceを指定し、これに属するPodで相互TLS認証を実行する。</td>
+<td>Namepspace を指定し、これに属する Pod で相互 TLS 認証を実行する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap</td>
-<td>クライアント証明書 / SSL証明書を検証できるCA証明書を管理する。</td>
+<td>クライアント証明書 / SSL 証明書を検証できる CA 証明書を管理する。</td>
 </tr>
 <tr>
 <td>Kubernetes Namespace</td>
-<td>PeerAuthenticationで指定されるNamespaceである。</td>
+<td>PeerAuthentication で指定される Namespace である。</td>
 </tr>
 <tr>
 <td>Kubernetes Secret</td>
-<td>Istioコントロールプレーンが使用するオレオレ証明書を管理する。Istioコントロールプレーンは、オレオレ証明書を使用して自身を署名し、ルート認証局として機能する。</td>
+<td>Istio コントロールプレーンが使用するオレオレ証明書を管理する。Istio コントロールプレーンは、オレオレ証明書を使用して自身を署名し、ルート認証局として機能する。</td>
 </tr>
 <tr>
 <td>rds-ca</td>
@@ -33611,7 +33611,7 @@
 <li>分散</li>
 </ul>
 <p>ここでは、集中ロギングを採用します。</p>
-<h2 id="fluentd-fluentbit">Fluentd / FluentBitによるログ収集<a class="headerlink" href="#fluentd-fluentbit" title="Permanent link">&para;</a></h2>
+<h2 id="fluentd-fluentbit">Fluentd / FluentBit によるログ収集<a class="headerlink" href="#fluentd-fluentbit" title="Permanent link">&para;</a></h2>
 <p>集中ロギングを実現するツールには、Fluentd / FluentBit があります。</p>
 <p>Fluentd / FluentBit を使用して、Amazon EKS クラスター内で作成されるログを収集します。</p>
 <p>Fluentd / FluentBit の配置方法には、エージェントパターン (DaemonSet 型、サイドカー型) 、フォワーダーアグリゲーターパターンがあります。</p>
@@ -33635,43 +33635,43 @@
 <tbody>
 <tr>
 <td>AWS EBS</td>
-<td>コンテナランタイムは、コンテナの標準出力または標準エラー出力したログの実体をAWS EBSボリュームの <code>/var/log/pods</code> ディレクトリに出力する。また、<code>/var/log/container</code> ディレクトリに各コンテナのログのシンボリックリンクがある。</td>
+<td>コンテナランタイムは、コンテナの標準出力または標準エラー出力したログの実体を AWS EBS ボリュームの <code>/var/log/pods</code> ディレクトリに出力する。また、<code>/var/log/container</code> ディレクトリに各コンテナのログのシンボリックリンクがある。</td>
 </tr>
 <tr>
 <td>Amazon CloudWatch Logs</td>
-<td>Amazon EKSクラスター内のログを収集し、また保管する。</td>
+<td>Amazon EKS クラスター内のログを収集し、また保管する。</td>
 </tr>
 <tr>
-<td>Amazon EKSコントロールプレーン</td>
-<td>Amazon EKSコントロールプレーンは、コントロールプレーンコンポーネントのログをAmazon CloudWatch Logsに出力する。</td>
+<td>Amazon EKS コントロールプレーン</td>
+<td>Amazon EKS コントロールプレーンは、コントロールプレーンコンポーネントのログを Amazon CloudWatch Logs に出力する。</td>
 </tr>
 <tr>
 <td>Fluentd / FluentBit</td>
-<td>DaemonSet型のエージェントパターンを採用し、DaemonSetとして各Nodeに稼働させる。<code>/var/log/container</code> ディレクトリに各コンテナのログのシンボリックリンクがある。INPUTセクションでこのディレクトリを指定し、ログを収集する。今回の例では、istio-proxyのアクセスログとアプリケーションの実行ログを収集するとする。OUTPUTセクションで、ログの宛先にAmazon CloudWatch Logsを設定する。</td>
+<td>DaemonSet 型のエージェントパターンを採用し、DaemonSet として各 Node に稼働させる。<code>/var/log/container</code> ディレクトリに各コンテナのログのシンボリックリンクがある。INPUT セクションでこのディレクトリを指定し、ログを収集する。今回の例では、istio-proxy のアクセスログとアプリケーションの実行ログを収集するとする。OUTPUT セクションで、ログの宛先に Amazon CloudWatch Logs を設定する。</td>
 </tr>
 <tr>
-<td>Istioコントロールプレーン</td>
-<td>Istioデータプレーン (istio-proxy) にAccessLoggingプロバイダーの設定を適用する。</td>
+<td>Istio コントロールプレーン</td>
+<td>Istio データプレーン (istio-proxy) に AccessLogging プロバイダーの設定を適用する。</td>
 </tr>
 <tr>
-<td>Istioデータプレーン (istio-proxy)</td>
+<td>Istio データプレーン (istio-proxy)</td>
 <td>アクセスログを出力する。</td>
 </tr>
 <tr>
 <td>Istio Telemetry</td>
-<td><code>.spec.accessLogging[*]providers</code> キーで、AccessLoggingプロバイダーを使用する。</td>
+<td><code>.spec.accessLogging[*]providers</code> キーで、AccessLogging プロバイダーを使用する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Fluentd / FluentBit)</td>
-<td>Fluentd / FluentBitの各種オプションを管理する。</td>
+<td>Fluentd / FluentBit の各種オプションを管理する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Istio)</td>
-<td><code>.extensionProviders</code> キーで、AccessLoggingプロバイダーを宣言する。</td>
+<td><code>.extensionProviders</code> キーで、AccessLogging プロバイダーを宣言する。</td>
 </tr>
 <tr>
 <td>SWE / SREer</td>
-<td>Amazon CloudWatch Logsのログインサイト機能で、ログを分析可視化する。Amazon CloudWatch Logsのログイベントをメトリクス化すれば、監視できるようになる。</td>
+<td>Amazon CloudWatch Logs のログインサイト機能で、ログを分析可視化する。Amazon CloudWatch Logs のログイベントをメトリクス化すれば、監視できるようになる。</td>
 </tr>
 <tr>
 <td>アプリ</td>
@@ -33689,7 +33689,7 @@
 <li>中央集中</li>
 <li>分散</li>
 </ul>
-<h2 id="prometheus">Prometheusによるメトリクス収集<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h2>
+<h2 id="prometheus">Prometheus によるメトリクス収集<a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h2>
 <p>ここで概説するメトリクスの種類として、以下があります。</p>
 <ul>
 <li>Kubernetes リソース系メトリクス</li>
@@ -33709,63 +33709,63 @@
 <tbody>
 <tr>
 <td>CloudWatch Metrics</td>
-<td>AWSリソース系メトリクスを収集し、また保管する。Amazon EKSクラスター内から収集できるメトリクスの種類は少なく、代わりに、Prometheus Serverに収集してもらうほうが、セットアップが楽である。</td>
+<td>AWS リソース系メトリクスを収集し、また保管する。Amazon EKS クラスター内から収集できるメトリクスの種類は少なく、代わりに、Prometheus Server に収集してもらうほうが、セットアップが楽である。</td>
 </tr>
 <tr>
 <td>Grafana</td>
-<td>Prometheus Serverのメトリクスを参照して分析し、ダッシュボードのパネルとして可視化する。</td>
+<td>Prometheus Server のメトリクスを参照して分析し、ダッシュボードのパネルとして可視化する。</td>
 </tr>
 <tr>
-<td>Istioコントロールプレーン</td>
-<td>Istioデータプレーンのメトリクスを中央集中的に管理する。また、Istioデータプレーン (istio-proxy) にMeticsプロバイダーの設定を適用する。</td>
+<td>Istio コントロールプレーン</td>
+<td>Istio データプレーンのメトリクスを中央集中的に管理する。また、Istio データプレーン (istio-proxy) に Metics プロバイダーの設定を適用する。</td>
 </tr>
 <tr>
-<td>Istioデータプレーン (istio-proxy)</td>
-<td>IstioコントロールプレーンにIstioリソース系メトリクスを送信する。</td>
+<td>Istio データプレーン (istio-proxy)</td>
+<td>Istio コントロールプレーンに Istio リソース系メトリクスを送信する。</td>
 </tr>
 <tr>
 <td>Istio Telemetry</td>
-<td><code>.spec.metrics[*]providers</code> キーで、Metricsプロバイダーを使用する。</td>
+<td><code>.spec.metrics[*]providers</code> キーで、Metrics プロバイダーを使用する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Istio)</td>
-<td><code>.extensionProviders</code> キーで、Metricsプロバイダーを宣言する。</td>
+<td><code>.extensionProviders</code> キーで、Metrics プロバイダーを宣言する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Grafana)</td>
-<td>各種オプションを設定する。また、ダッシュボードをJSONで管理する。</td>
+<td>各種オプションを設定する。また、ダッシュボードを JSON で管理する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Kiali)</td>
-<td>各種オプションを設定する。また、ダッシュボードをJSONで管理する。</td>
+<td>各種オプションを設定する。また、ダッシュボードを JSON で管理する。</td>
 </tr>
 <tr>
 <td>Kiali</td>
-<td>Prometheusのメトリクスを参照して分析し、メッシュマップとして可視化する。</td>
+<td>Prometheus のメトリクスを参照して分析し、メッシュマップとして可視化する。</td>
 </tr>
 <tr>
 <td>kube-state-metrics</td>
-<td>Podの状態系メトリクス (例：レプリカ数、ヘルスチェック失敗数など) を収集する。</td>
+<td>Pod の状態系メトリクス (例：レプリカ数、ヘルスチェック失敗数など) を収集する。</td>
 </tr>
 <tr>
-<td>Kubernetesコンポーネント</td>
-<td>kubelet、kube-proxyなどである。これらのメトリクスもPrometheus Serverで収集できる。</td>
+<td>Kubernetes コンポーネント</td>
+<td>kubelet、kube-proxy などである。これらのメトリクスも Prometheus Server で収集できる。</td>
 </tr>
 <tr>
 <td>Prometheus Server</td>
-<td>ServiceMonitorを介して、Amazon EKSクラスター内の様々なメトリクスを収集する。また、VictroriaMetricsにメトリクスを永続化する。Amazon EKSクラスター外から収集できるメトリクスの種類は少なく、代わりに、CloudWatch Metricsに収集してもらうほうが、セットアップが楽である。</td>
+<td>ServiceMonitor を介して、Amazon EKS クラスター内の様々なメトリクスを収集する。また、VictroriaMetrics にメトリクスを永続化する。Amazon EKS クラスター外から収集できるメトリクスの種類は少なく、代わりに、CloudWatch Metrics に収集してもらうほうが、セットアップが楽である。</td>
 </tr>
 <tr>
 <td>Prometheus Node Exporter</td>
-<td>Nodeのハードウェアリソース系メトリクス (CPU使用量、メモリ使用量など) を収集する。</td>
+<td>Node のハードウェアリソース系メトリクス (CPU 使用量、メモリ使用量など) を収集する。</td>
 </tr>
 <tr>
 <td>Prometheus ServiceMonitor</td>
-<td>Prometheus Serverからのリクエストを受信し、対象のServiceからメトリクスを収集する。</td>
+<td>Prometheus Server からのリクエストを受信し、対象の Service からメトリクスを収集する。</td>
 </tr>
 <tr>
 <td>SWE / SREer</td>
-<td>Amazon CloudWatch Metricsでメトリクスを監視する。</td>
+<td>Amazon CloudWatch Metrics でメトリクスを監視する。</td>
 </tr>
 <tr>
 <td>VictoriaMetrics</td>
@@ -33781,7 +33781,7 @@
 <li>中央集中</li>
 <li>分散</li>
 </ul>
-<h2 id="opentelemetry-collector">OpenTelemetry Collectorによるトレース収集<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h2>
+<h2 id="opentelemetry-collector">OpenTelemetry Collector によるトレース収集<a class="headerlink" href="#opentelemetry-collector" title="Permanent link">&para;</a></h2>
 <p>ここで概説するスパンの種類として、以下があります。</p>
 <ul>
 <li>アプリケーションの作成するスパン</li>
@@ -33834,7 +33834,7 @@
 <li>分散</li>
 </ul>
 <p>ここでは、中央集中パターンを採用します。</p>
-<h2 id="awsprometheusslack">AWSリソース、Prometheus、Slackによるインシデント管理<a class="headerlink" href="#awsprometheusslack" title="Permanent link">&para;</a></h2>
+<h2 id="aws-prometheusslack">AWS リソース、Prometheus、Slack によるインシデント管理<a class="headerlink" href="#aws-prometheusslack" title="Permanent link">&para;</a></h2>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-インシデント管理フロー.drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%A4%E3%83%B3%E3%82%B7%E3%83%86%E3%82%99%E3%83%B3%E3%83%88%E7%AE%A1%E7%90%86%E3%83%95%E3%83%AD%E3%83%BC.drawio.png" /></p>
 <table>
 <thead>
@@ -33846,11 +33846,11 @@
 <tbody>
 <tr>
 <td>Alertmanager</td>
-<td>Prpmetheusが送信したアラートをインシデント管理ツールに転送する。</td>
+<td>Prpmetheus が送信したアラートをインシデント管理ツールに転送する。</td>
 </tr>
 <tr>
 <td>Amazon CloudWatch Alarm</td>
-<td>Amazon CloudWatch Logsによるログメトリクスやその他のAWS系メトリクスが、期間中に統計量の閾値を超過したとする。この場合に、超過を検知してアラートイベントを発火する。</td>
+<td>Amazon CloudWatch Logs によるログメトリクスやその他の AWS 系メトリクスが、期間中に統計量の閾値を超過したとする。この場合に、超過を検知してアラートイベントを発火する。</td>
 </tr>
 <tr>
 <td>Amazon CloudWatch Logs</td>
@@ -33858,31 +33858,31 @@
 </tr>
 <tr>
 <td>Amazon CloudWatch Metrics</td>
-<td>AWS系メトリクスを収集する。</td>
+<td>AWS 系メトリクスを収集する。</td>
 </tr>
 <tr>
 <td>Amazon SNS</td>
-<td>Amazon CloudWatch Alarmがパブリッシュしたアラートをインシデント管理ツールに転送する。</td>
+<td>Amazon CloudWatch Alarm がパブリッシュしたアラートをインシデント管理ツールに転送する。</td>
 </tr>
 <tr>
 <td>Fluentd / FluentBit</td>
-<td>Amazon EKSクラスター内のログを収集し、Amazon CloudWatch Logsに送信する。</td>
+<td>Amazon EKS クラスター内のログを収集し、Amazon CloudWatch Logs に送信する。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap (Alertmanager)</td>
-<td>Alertmanagerの各種オプションを管理する。</td>
+<td>Alertmanager の各種オプションを管理する。</td>
 </tr>
 <tr>
 <td>PrometheusRule</td>
-<td>アラートを発火させるために、PromQLで定義したメトリクスの異常期間と統計量の閾値を設定する。アラートルールだけでなく、レコーディングルールも設定できる。レコーディングルールでは、設定したPromQLの取得結果をカスタムメトリクスとして扱い、Prometheus Serverから取得できる。</td>
+<td>アラートを発火させるために、PromQL で定義したメトリクスの異常期間と統計量の閾値を設定する。アラートルールだけでなく、レコーディングルールも設定できる。レコーディングルールでは、設定した PromQL の取得結果をカスタムメトリクスとして扱い、Prometheus Server から取得できる。</td>
 </tr>
 <tr>
 <td>Prometheus Server</td>
-<td>Amazon EKSクラスター内からメトリクスを収集する。メトリクスがPrometheusRuleで設定した統計の閾値を超過すると、Alertmanagerにアラートを送信する。</td>
+<td>Amazon EKS クラスター内からメトリクスを収集する。メトリクスが PrometheusRule で設定した統計の閾値を超過すると、Alertmanager にアラートを送信する。</td>
 </tr>
 <tr>
 <td>インシデント管理ツール (Slack、Incident.io)</td>
-<td>特定のマイクロサービスのインシデント対応フローを自動化する。インシデントをSlackが受信すると、Incident.ioがインシデント対応チャンネルを自動的に作成する。その後、まずはインシデントコマンダーを一次担当者に自動的に割り当てる。インシデントコマンダーは、Incident.ioのBotの質問に答えながら、インシデント解決者を二次担当者に割り当てる。インシデントコマンダーは指揮に努める。インシデント解決者は対処に尽力し、対応が完了した後、Botの質問に答えながら振り返りレポートを作成する。</td>
+<td>特定のマイクロサービスのインシデント対応フローを自動化する。インシデントを Slack が受信すると、Incident.io がインシデント対応チャンネルを自動的に作成する。その後、まずはインシデントコマンダーを一次担当者に自動的に割り当てる。インシデントコマンダーは、Incident.io のBot の質問に答えながら、インシデント解決者を二次担当者に割り当てる。インシデントコマンダーは指揮に努める。インシデント解決者は対処に尽力し、対応が完了した後、Bot の質問に答えながら振り返りレポートを作成する。</td>
 </tr>
 <tr>
 <td>マイクロサービスのオンコールチーム</td>
@@ -33901,7 +33901,7 @@
 </ul>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E8%A8%AD%E8%A8%88.drawio_(1).png" /></p>
 <h1 id="20-26">20-26. 横断領域を参照<a class="headerlink" href="#20-26" title="Permanent link">&para;</a></h1>
-<p><a href="https://example.com">【横断領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
+<p><a href="https://example.com">【横断領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説</a></p>
 
 
 
@@ -33922,7 +33922,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年7月10日 15:14:59 JST">2026-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
   </span>
 
     
