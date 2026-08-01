@@ -5136,12 +5136,12 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        データ型
+        カラム型
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="データ型">
+    <nav class="md-nav" aria-label="カラム型">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -33937,12 +33937,12 @@
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        データ型
+        カラム型
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="データ型">
+    <nav class="md-nav" aria-label="カラム型">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -34498,7 +34498,7 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mysql<span class="w"> </span>--force<span class="w"> </span>-h<span class="w"> </span><span class="s2">&quot;&lt;DBのホスト名&gt;&quot;</span><span class="w"> </span>-u<span class="w"> </span><span class="s2">&quot;&lt;ユーザー名&gt;&quot;</span><span class="w"> </span>-p<span class="s1">&#39;&lt;パスワード&gt;&#39;</span><span class="w"> </span><span class="s2">&quot;&lt;DB名&gt;&quot;</span><span class="w"> </span>&lt;<span class="w"> </span>table.sql
 </code></pre></div>
 <p><br></p>
-<h3 id="_8">データ型<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="_8">カラム型<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="integer">▼ integer 型<a class="headerlink" href="#integer" title="Permanent link">&para;</a></h4>
 <p>数値型である。</p>
 <p>integer 値がどのくらい増えるかによって、<code>3</code> 個を使い分ける。</p>
@@ -34506,7 +34506,7 @@
 <table>
 <thead>
 <tr>
-<th>データ型</th>
+<th>カラム型</th>
 <th>例</th>
 <th>設定可能範囲</th>
 <th>符号なし (Unsigned) を有効化した場合</th>
@@ -34514,19 +34514,19 @@
 </thead>
 <tbody>
 <tr>
-<td>TINYINT</td>
+<td><code>TINYINT</code></td>
 <td><code>0</code></td>
 <td><code>-128</code><br>~ <code>+127</code></td>
 <td><code>0</code><br>~ <code>+255</code></td>
 </tr>
 <tr>
-<td>INT</td>
+<td><code>INT</code></td>
 <td><code>0</code></td>
 <td><code>2147483648</code><br>~ <code>+2147483647</code></td>
 <td><code>0</code><br>~ <code>+4294967295</code></td>
 </tr>
 <tr>
-<td>BIGINT</td>
+<td><code>BIGINT</code></td>
 <td><code>0</code></td>
 <td><code>-9223372036854775808</code><br>~ <code>+9223372036854775807</code></td>
 <td><code>0</code><br>~ <code>+18446744073709551615</code></td>
@@ -34536,26 +34536,26 @@
 <h4 id="string">▼ string 型<a class="headerlink" href="#string" title="Permanent link">&para;</a></h4>
 <p>文字列型である。</p>
 <p>文字数がどのくらい増えるかによって、<code>3</code> 個を使い分ければよい。</p>
-<p>VARCHAR では、文字量に応じて VARCHAR(31)や VARCHAR(255)をよく使用するが、どんな数字でもいい。</p>
-<p>ただ、文字量が多いのであれば、VARCHAR よりも TEXT や MEDIUMTEXT を使用するほうがいい。</p>
+<p><code>VARCHAR</code> では、文字量に応じて <code>VARCHAR(31)</code> や <code>VARCHAR(255)</code> をよく使用するが、どんな数字でもいい。</p>
+<p>ただ、文字量が多いのであれば、<code>VARCHAR</code> よりも <code>TEXT</code> や <code>MEDIUMTEXT</code> を使用するほうがいい。</p>
 <table>
 <thead>
 <tr>
-<th>データ型</th>
+<th>カラム型</th>
 <th>例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>VARCHAR(n)</td>
+<td><code>VARCHAR(n)</code></td>
 <td><code>foo</code></td>
 </tr>
 <tr>
-<td>TEXT</td>
+<td><code>TEXT</code></td>
 <td><code>はじめまして。長谷川広樹です。</code></td>
 </tr>
 <tr>
-<td>MEDIUMTEXT</td>
+<td><code>MEDIUMTEXT</code></td>
 <td><code>&lt;ここに長いログメッセージ&gt;</code></td>
 </tr>
 </tbody>
@@ -34566,21 +34566,21 @@
 <table>
 <thead>
 <tr>
-<th>データ型（<code>(n)</code> は保存する小数点を表す）</th>
+<th>カラム型（<code>(n)</code> は保存する小数点を表す）</th>
 <th>例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>DATETIME</td>
+<td><code>DATETIME</code></td>
 <td><code>2026-01-23 15:04:05</code></td>
 </tr>
 <tr>
-<td>DATETIME(3)</td>
+<td><code>DATETIME(3)</code></td>
 <td><code>2026-01-23 15:04:05.123</code></td>
 </tr>
 <tr>
-<td>DATETIME(6)</td>
+<td><code>DATETIME(6)</code></td>
 <td><code>2026-01-23 15:04:05.123456</code></td>
 </tr>
 </tbody>
@@ -34660,7 +34660,7 @@
 <p>プライマリーキーとするカラムにはプライマリーキー制約を課すようにする。</p>
 <p>プライマリーキー制約によって、UNIQUE 制約と NOT NULL 制約の両方が課される。</p>
 <h4 id="not-null">▼ NOT NULL 制約<a class="headerlink" href="#not-null" title="Permanent link">&para;</a></h4>
-<p>レコードに挿入される値のデータ型を指定しておくことによって、データ型不一致や Null のための例外処理を実装しなくてもよくなる。</p>
+<p>レコードに挿入される値のカラム型を指定しておくことによって、カラム型の不一致や Null のための例外処理を実装しなくてもよくなる。</p>
 <h4 id="_15">▼ 外部キー制約<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>親テーブルのカラムを参照する子テーブルのカラムを『外部キー』という。このとき、子テーブルに課す制約を『外部キー制約』という。</p>
 <p>子テーブルにおける外部キー制約によって、親子テーブル間に以下の整合性ルールが課される。</p>
@@ -34931,7 +34931,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 21:30:26 JST">2026-08-01</span>
   </span>
 
     
