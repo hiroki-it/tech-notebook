@@ -280,7 +280,7 @@ SELECT txid_current();
 CREATE DATABASE IF NOT EXISTS `kizukeba_pronami_php` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 USE `kizukeba_pronami_php`;
 
-# テーブルのカラム型を指定
+# テーブルのDBカラム型を指定
 -- Dumping structure for table kizukeba_pronami_php.mst_staff
 CREATE TABLE IF NOT EXISTS `mst_staff` (
   `code` int(11) NOT NULL AUTO_INCREMENT,
