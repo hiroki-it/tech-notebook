@@ -7947,7 +7947,7 @@
   <a href="#04-03-envoyfilter-keepalive" class="md-nav__link">
     <span class="md-ellipsis">
       
-        04-03. EnvoyFilter のKeepAlive の設定
+        04-03. EnvoyFilter の KeepAlive の設定
       
     </span>
   </a>
@@ -9378,7 +9378,7 @@
   <a href="#istio-egress-gateway-virtualservice" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Istio Egress Gateway のVirtualService での注意点
+        ▼ Istio Egress Gateway の VirtualService での注意点
       
     </span>
   </a>
@@ -36597,7 +36597,7 @@
   <a href="#04-03-envoyfilter-keepalive" class="md-nav__link">
     <span class="md-ellipsis">
       
-        04-03. EnvoyFilter のKeepAlive の設定
+        04-03. EnvoyFilter の KeepAlive の設定
       
     </span>
   </a>
@@ -38028,7 +38028,7 @@
   <a href="#istio-egress-gateway-virtualservice" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Istio Egress Gateway のVirtualService での注意点
+        ▼ Istio Egress Gateway の VirtualService での注意点
       
     </span>
   </a>
@@ -38254,7 +38254,7 @@ $<span class="w"> </span>istioctl<span class="w"> </span>install<span class="w">
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istio-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Istio のdemo チャートをインストールし、リソースを作成する。</span>
+<span class="w">  </span><span class="c1"># Istio の demo チャートをインストールし、リソースを作成する。</span>
 <span class="w">  </span><span class="nt">profile</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>istio-operator.yaml
@@ -39012,7 +39012,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">simple</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LEAST_CONN</span>
 </code></pre></div>
 <h4 id="portlevelsettingsloadbalancer">▼ portLevelSettings.loadBalancer<a class="headerlink" href="#portlevelsettingsloadbalancer" title="Permanent link">&para;</a></h4>
-<p>Pod のポート番号別のルーティングの負荷分散方式を設定する。</p>
+<p>Pod について、ポート番号別ルーティングの負荷分散方式を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -39252,7 +39252,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">configPatches</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># istio-ingressgateway とistio-proxy コンテナの両方に適用する</span>
+<span class="w">        </span><span class="c1"># istio-ingressgateway と istio-proxy コンテナの両方に適用する</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANY</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
@@ -39436,7 +39436,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit</span>
 <span class="w">            </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_local_rate_limiter</span>
-<span class="w">              </span><span class="c1"># 4 秒中に 4リクエスト数までを指定する</span>
+<span class="w">              </span><span class="c1"># 4 秒中に 4 リクエスト数までを指定する</span>
 <span class="w">              </span><span class="nt">token_bucket</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">                </span><span class="nt">tokens_per_fill</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
@@ -39502,7 +39502,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">              </span><span class="nt">type_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit</span>
 <span class="w">              </span><span class="nt">value</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">stat_prefix</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http_local_rate_limiter</span>
-<span class="w">                </span><span class="c1"># 4 秒中に 4リクエスト数までを指定する</span>
+<span class="w">                </span><span class="c1"># 4 秒中に 4 リクエスト数までを指定する</span>
 <span class="w">                </span><span class="nt">token_bucket</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">                  </span><span class="nt">tokens_per_fill</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
@@ -39670,7 +39670,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="04-03-envoyfilter-keepalive">04-03. EnvoyFilter のKeepAlive の設定<a class="headerlink" href="#04-03-envoyfilter-keepalive" title="Permanent link">&para;</a></h2>
+<h2 id="04-03-envoyfilter-keepalive">04-03. EnvoyFilter の KeepAlive の設定<a class="headerlink" href="#04-03-envoyfilter-keepalive" title="Permanent link">&para;</a></h2>
 <p>istio-ingressgateway 内の istio-proxy で、KeepAlive を実行できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -40085,7 +40085,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PeerAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># foo 内の全ての istio-proxy にPeerAuthentication を適用する</span>
+<span class="w">  </span><span class="c1"># foo 内の全ての istio-proxy に PeerAuthentication を適用する</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peer-authentication</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -40138,7 +40138,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PeerAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># foo 内の全ての istio-proxy にPeerAuthentication を適用する</span>
+<span class="w">  </span><span class="c1"># foo 内の全ての istio-proxy に PeerAuthentication を適用する</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">peer-authentication</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -40422,7 +40422,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">number</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp-mysql</span>
 <span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-<span class="w">  </span><span class="c1"># Host ヘッダーがあるため、DNS でIP アドレスを取得する</span>
+<span class="w">  </span><span class="c1"># Host ヘッダーがあるため、DNS で IP アドレスを取得する</span>
 <span class="w">  </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DNS</span>
 </code></pre></div>
 <blockquote>
@@ -40882,7 +40882,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="c1">#  Host ヘッダー値が external.com の時に VirtualService を適用する。</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># Pod から Istio Egress Gateway のPod への通信で使用する</span>
+<span class="w">    </span><span class="c1"># Pod から Istio Egress Gateway の Pod への通信で使用する</span>
 <span class="w">    </span><span class="c1"># gateway 名と両方設定する場合は、デフォルト値としての省略はできない</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">    </span><span class="c1"># Istio Egress Gateway からエントリ済みシステムへの通信で使用する</span>
@@ -40891,7 +40891,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="c1"># external.com に対するリクエストは、Istio Egress Gateway にルーティング (リダイレクト) する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># Pod から Istio Egress Gateway のPod への通信で使用する</span>
+<span class="w">            </span><span class="c1"># Pod から Istio Egress Gateway の Pod への通信で使用する</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
@@ -40927,7 +40927,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="c1">#  Host ヘッダー値が external.com の時に VirtualService を適用する。</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external.com</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># Pod から Istio Egress Gateway のPod への通信で使用する</span>
+<span class="w">    </span><span class="c1"># Pod から Istio Egress Gateway の Pod への通信で使用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">    </span><span class="c1"># Istio Egress Gateway からエントリ済みシステムへの通信で使用する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo/foo-egressgateway</span>
@@ -40935,7 +40935,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="c1"># external.com に対するリクエストは、Istio Egress Gateway にルーティング (リダイレクト) する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># Pod から Istio Egress Gateway のPod への通信で使用する</span>
+<span class="w">            </span><span class="c1"># Pod から Istio Egress Gateway の Pod への通信で使用する</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">          </span><span class="nt">sniHosts</span><span class="p">:</span>
@@ -40968,7 +40968,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">exportTo</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*&quot;</span>
 <span class="w">  </span><span class="nt">hosts</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># アプリは DB のFQDN を指定する</span>
+<span class="w">    </span><span class="c1"># アプリは DB の FQDN を指定する</span>
 <span class="w">    </span><span class="c1"># VirtualSErvice ではこれを指定する</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;DBクラスター名&gt;.cluster-&lt;id&gt;.ap-northeast-1.rds.amazonaws.com</span>
 <span class="w">  </span><span class="nt">gateways</span><span class="p">:</span>
@@ -41150,7 +41150,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">  </span><span class="nt">http</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">match</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">gateways</span><span class="p">:</span>
-<span class="w">            </span><span class="c1"># Pod から Istio Egress Gateway のPod への通信で使用する</span>
+<span class="w">            </span><span class="c1"># Pod から Istio Egress Gateway の Pod への通信で使用する</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mesh</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">route</span><span class="p">:</span>
@@ -41223,7 +41223,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">        </span><span class="c1"># リトライの処理タイムアウト時間</span>
 <span class="w">        </span><span class="nt">perTryTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
-<span class="w">        </span><span class="c1"># Envoy のx-envoy-retry-on の値</span>
+<span class="w">        </span><span class="c1"># Envoy の x-envoy-retry-on の値</span>
 <span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway-error</span>
 </code></pre></div>
 <p>Gateway 系ステータス (<code>502</code>、<code>503</code>、<code>504</code>) の場合、<code>attempts</code> の数だけリトライする。</p>
@@ -41246,7 +41246,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">        </span><span class="nt">attempts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">        </span><span class="c1"># リトライの処理タイムアウト時間</span>
 <span class="w">        </span><span class="nt">perTryTimeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
-<span class="w">        </span><span class="c1"># Envoy のx-envoy-retry-on の値</span>
+<span class="w">        </span><span class="c1"># Envoy の x-envoy-retry-on の値</span>
 <span class="w">        </span><span class="nt">retryOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway-error</span>
 </code></pre></div>
 <blockquote>
@@ -41549,7 +41549,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute">https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute</a></li>
 </ul>
 </blockquote>
-<h4 id="istio-egress-gateway-virtualservice">▼ Istio Egress Gateway のVirtualService での注意点<a class="headerlink" href="#istio-egress-gateway-virtualservice" title="Permanent link">&para;</a></h4>
+<h4 id="istio-egress-gateway-virtualservice">▼ Istio Egress Gateway の VirtualService での注意点<a class="headerlink" href="#istio-egress-gateway-virtualservice" title="Permanent link">&para;</a></h4>
 <p><code>.spec.tls</code> キーで送信する場合、Istio Egress Gateway はアプリケーションデータを復号できないため、プロトコルを TCP として扱う。</p>
 <p>そのため、Istio Egress Gateway 上を通過する TLS は Istio のメトリクスでは TCP として処理され、また Istio Egress Gateway ではスパンを作成できない。</p>
 <p><img alt="istio-egressgateway_tls_passthrough" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png" /></p>
@@ -41623,7 +41623,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

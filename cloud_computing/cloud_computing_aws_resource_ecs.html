@@ -19422,7 +19422,7 @@
   <a href="#fargate-ip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Fargate のIP アドレス
+        ▼ Fargate の IP アドレス
       
     </span>
   </a>
@@ -34644,7 +34644,7 @@
   <a href="#fargate-ip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Fargate のIP アドレス
+        ▼ Fargate の IP アドレス
       
     </span>
   </a>
@@ -35409,17 +35409,17 @@
 <tr>
 <td>最小ヘルス率</td>
 <td>Amazon ECS タスクの必要数の設定を <code>100</code>%とし、新しいタスクのデプロイ時に、稼働中タスクの最低合計数を割合で設定する。</td>
-<td>例として、タスク必要数が 4個だと仮定する。タスクヘルス最小率を 50%とすれば、稼働中タスクの最低合計数は 2個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br><a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments</a></td>
+<td>例として、タスク必要数が 4 個だと仮定する。タスクヘルス最小率を 50%とすれば、稼働中タスクの最低合計数は 2 個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中の既存タスク/新タスクの数が最低合計数未満にならないように制御される。<br><a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments</a></td>
 </tr>
 <tr>
 <td>最大率</td>
 <td>Amazon ECS タスクの必要数の設定を <code>100</code>%とし、新しいタスクのデプロイ時に、稼働中/停止中タスクの最高合計数を割合で設定する。</td>
-<td>例として、タスク必要数が 4個だと仮定する。タスク最大率を 200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br><a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments</a></td>
+<td>例として、タスク必要数が 4 個だと仮定する。タスク最大率を 200%とすれば、稼働中/停止中タスクの最高合計数は８個となる。デプロイ時の既存タスク停止と新タスク起動では、稼働中/停止中の既存タスク/新タスクの数が最高合計数を超過しないように制御される。<br><a href="https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments">https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments</a></td>
 </tr>
 <tr>
 <td>ヘルスチェックの待機期間</td>
 <td>デプロイ時の ALB/NLB のヘルスチェックを開始するまでの待機時間を設定する。猶予期間を過ぎても、ALB/NLB のヘルスチェックが失敗していれば、サービスはタスクを停止し、新しいタスクを再起動する。</td>
-<td>ALB/NLB ではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特に NLB では、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLB のヘルスチェックが完了する前に、Amazon ECS サービスが NLB のヘルスチェックの結果を確認してしまうことがある。例えば、NLB とLaravel を使用する場合は、ターゲット登録と Laravel コンテナの築の時間を加味して、<code>330</code> 秒以上を目安とする。例えば、ALB とNuxt.js (SSR モード) を使用する場合は、<code>600</code> 秒以上を目安とする。注意点として、アプリコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。</td>
+<td>ALB/NLB ではターゲットを登録し、ヘルスチェックを実行するプロセスがある。特に NLB では、これに時間がかかる。またアプリケーションによっては、コンテナの作成に時間がかかる。そのため、NLB のヘルスチェックが完了する前に、Amazon ECS サービスが NLB のヘルスチェックの結果を確認してしまうことがある。例えば、NLB と Laravel を使用する場合は、ターゲット登録と Laravel コンテナの築の時間を加味して、<code>330</code> 秒以上を目安とする。例えば、ALB と Nuxt.js (SSR モード) を使用する場合は、<code>600</code> 秒以上を目安とする。注意点として、アプリコンテナ作成にかかる時間は、開発環境での所要時間を参考にする。</td>
 </tr>
 <tr>
 <td>タスクの最小数</td>
@@ -35587,7 +35587,7 @@
 <tr>
 <td>image</td>
 <td></td>
-<td>Amazon ECR のURL を設定する。</td>
+<td>Amazon ECR の URL を設定する。</td>
 <td>指定できる URL の記法は、Dockerfile の <code>FROM</code> 処理と同じである。<br><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html</a></td>
 </tr>
 <tr>
@@ -35655,7 +35655,7 @@
 <h4 id="amazon-ecs-ip">▼ Amazon ECS タスクの IP アドレス<a class="headerlink" href="#amazon-ecs-ip" title="Permanent link">&para;</a></h4>
 <p>Amazon ECS タスクごとに異なるプライベート IP が割り当てられる。</p>
 <p>この IP アドレスに対して、ALB はルーティングを実行する。</p>
-<h4 id="fargate-ip">▼ Fargate のIP アドレス<a class="headerlink" href="#fargate-ip" title="Permanent link">&para;</a></h4>
+<h4 id="fargate-ip">▼ Fargate の IP アドレス<a class="headerlink" href="#fargate-ip" title="Permanent link">&para;</a></h4>
 <p>Fargate は動的パブリック IP アドレス (Fargate の再作成後に変化する IP アドレス) を持ち、固定パブリック IP アドレスである Elastic IP アドレスを設定できない。</p>
 <p>リクエストの先にある外部サービスが、セキュリティ上で静的な IP アドレスを要求する場合、リクエスト (パブリックネットワーク向き通信) 時に送信元パケットに付加される IP アドレスが動的になり、リクエストできなくなってしまう。</p>
 <p>そこで、Fargate のリクエストが、Elastic IP アドレスを持つ AWS NAT Gateway を経由する (Fargate は、パブリックサブネットとプライベートサブネットのどちらに配置してもよい) 。</p>
@@ -35767,7 +35767,7 @@
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
-<p>『新タスクの起動』と『ヘルスチェック確認後の既存タスクの停止』のプロセスが繰り返し実行され、徐々に既存タスクが新タスクに置き換わる。</p>
+<p>『新タスクの起動』と『ヘルスチェック確認後に既存タスクを停止する』プロセスが繰り返し実行され、徐々に既存タスクが新タスクに置き換わる。</p>
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
@@ -35971,7 +35971,7 @@ aws<span class="w"> </span>ecs<span class="w"> </span>execute-command<span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

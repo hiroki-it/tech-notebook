@@ -36848,7 +36848,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <p><br></p>
 <h3 id="outboundtrafficpolicy">outboundTrafficPolicy<a class="headerlink" href="#outboundtrafficpolicy" title="Permanent link">&para;</a></h3>
 <h4 id="outboundtrafficpolicy_1">▼ outboundTrafficPolicy とは<a class="headerlink" href="#outboundtrafficpolicy_1" title="Permanent link">&para;</a></h4>
-<p>サービスメッシュ外へのリクエストの宛先の種類 (<code>PassthroughCluster</code>、<code>BlackHoleCluster</code>) を設定する。</p>
+<p>サービスメッシュ外に送信するリクエストについて、宛先の種類 (<code>PassthroughCluster</code>、<code>BlackHoleCluster</code>) を設定する。</p>
 <h4 id="allow_any">▼ ALLOW_ANY (デフォルト)<a class="headerlink" href="#allow_any" title="Permanent link">&para;</a></h4>
 <p>サービスメッシュ外へのリクエストの宛先を <code>PassthroughCluster</code> として扱う。</p>
 <p>また、ServiceEntry として登録した宛先には固有の名前がつく。</p>
@@ -37603,7 +37603,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <p><code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> 変数が <code>true</code> な場合にのみ設定できる。</p>
 <p><code>false</code> の場合は、代わりに <code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code> を設定する。</p>
 <p>istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処理を実施する。</p>
-<p>この接続のドレイン処理前の待機時間を設定する。</p>
+<p>この接続について、ドレイン処理前の待機時間を設定する。</p>
 <p><code>terminationDrainDuration</code> との違いとして、<code>MINIMUM_DRAIN_DURATION</code> の時間だけ待機した後、ドレイン処理を開始し、<code>EXIT_ON_ZERO_ACTIVE_CONNECTIONS</code> によって <code>downstream_cx_active</code> メトリクスが 0 になるまでドレイン処理をし続ける点である。</p>
 <p>Pod の <code>.metadata.annotations.proxy.istio.io/config.drainDuration</code> キーで起こるレースコンディションを解決するための設定で、同じ値を設定するとよい。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -37972,7 +37972,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <span class="w">  </span><span class="c1"># もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Zipkin やJaeger にアクセスログを送信させる Pod を設定する</span>
+<span class="w">  </span><span class="c1"># Zipkin や Jaeger にアクセスログを送信させる Pod を設定する</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
@@ -38414,7 +38414,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 </tr>
 <tr>
 <td><code>kubernetes</code></td>
-<td>Kubernetes のSecret で管理するサーバー証明書を使用する。</td>
+<td>Kubernetes の Secret で管理するサーバー証明書を使用する。</td>
 </tr>
 <tr>
 <td><code>none</code></td>
@@ -38539,7 +38539,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

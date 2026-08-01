@@ -28283,7 +28283,7 @@
   <a href="#0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 0 以外のすべての終了コードの場合
+        ▼ 0 以外の終了コードすべての場合
       
     </span>
   </a>
@@ -28294,7 +28294,7 @@
   <a href="#0_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 0 以外の特定の終了コードの場合
+        ▼ 0 以外の特定終了コードの場合
       
     </span>
   </a>
@@ -34749,7 +34749,7 @@
   <a href="#0" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 0 以外のすべての終了コードの場合
+        ▼ 0 以外の終了コードすべての場合
       
     </span>
   </a>
@@ -34760,7 +34760,7 @@
   <a href="#0_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 0 以外の特定の終了コードの場合
+        ▼ 0 以外の特定終了コードの場合
       
     </span>
   </a>
@@ -35900,7 +35900,7 @@
 <p><br></p>
 <h2 id="05-job">05. Job<a class="headerlink" href="#05-job" title="Permanent link">&para;</a></h2>
 <h3 id="allow_failure">allow_failure<a class="headerlink" href="#allow_failure" title="Permanent link">&para;</a></h3>
-<h4 id="0">▼ <code>0</code> 以外のすべての終了コードの場合<a class="headerlink" href="#0" title="Permanent link">&para;</a></h4>
+<h4 id="0">▼ <code>0</code> 以外の終了コードすべての場合<a class="headerlink" href="#0" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 
@@ -35923,13 +35923,13 @@
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># 『echo foo-1』が失敗しても、終了コードを 1にして Job を中断させない</span>
+<span class="w">    </span><span class="c1"># 『echo foo-1』が失敗しても、終了コードを 1 にして Job を中断させない</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo-1 || true</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo foo-2</span>
 <span class="w">  </span><span class="c1"># 0 以外の全ての終了コードの場合のみ終了する</span>
 <span class="w">  </span><span class="nt">allow_failure</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 </code></pre></div>
-<h4 id="0_1">▼ <code>0</code> 以外の特定の終了コードの場合<a class="headerlink" href="#0_1" title="Permanent link">&para;</a></h4>
+<h4 id="0_1">▼ <code>0</code> 以外の特定終了コードの場合<a class="headerlink" href="#0_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
@@ -35976,7 +35976,7 @@
 <span class="c1"># デプロイステージ</span>
 <span class="nt">baz_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
-<span class="w">  </span><span class="c1"># foo_job のartifacts は継承できるが、bar_job のartifacts は継承できない</span>
+<span class="w">  </span><span class="c1"># foo_job の artifacts は継承できるが、bar_job の artifacts は継承できない</span>
 <span class="w">  </span><span class="nt">needs</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
@@ -35984,7 +35984,7 @@
 
 <span class="nt">qux_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
-<span class="w">  </span><span class="c1"># foo_job とbar_job の両方の artifacts を継承できる</span>
+<span class="w">  </span><span class="c1"># foo_job と bar_job の両方の artifacts を継承できる</span>
 <span class="w">  </span><span class="nt">needs</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar_job</span>
@@ -36129,7 +36129,7 @@
 <p>イメージレジストリのパスのプレフィクスとして <code>CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX</code> (依存プロキシ) をつけると、コンテナイメージが GitLab の Dependency Proxy を経由するようになる。</p>
 <p>キャッシュは、リポジトリの親グループの『<code>https://&lt;URL&gt;/&lt;親グループ&gt;/-/dependency_proxy</code>』という設定ページで確認できる。</p>
 <p>Dependency Proxy はコンテナイメージをキャッシュするため、毎回 DockerHub にコンテナをプルしなくなり、プル数の制限にひっかかりにくくなる。</p>
-<p>なお、執筆時点 (2025/03/05) では DockerHub へのプルの経由のみに対応している。</p>
+<p>なお、執筆時点 (2025/03/05) では DockerHub へのプル経由のみに対応している。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">foo_job</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
@@ -36218,7 +36218,7 @@
 <span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo baz</span>
-<span class="w">  </span><span class="c1"># foo_job のfoo1 のアーティファクトのみを継承する</span>
+<span class="w">  </span><span class="c1"># foo_job の foo1 のアーティファクトのみを継承する</span>
 <span class="w">  </span><span class="nt">dependencies</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;foo_job:</span><span class="nv"> </span><span class="s">[foo1]&quot;</span>
 </code></pre></div>
@@ -36253,7 +36253,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_job</span>
 <span class="w">      </span><span class="nt">parallel</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">matrix</span><span class="p">:</span>
-<span class="w">          </span><span class="c1"># foo_job のfoo2 に依存する</span>
+<span class="w">          </span><span class="c1"># foo_job の foo2 に依存する</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo2</span>
 </code></pre></div>
 <blockquote>
@@ -36589,7 +36589,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

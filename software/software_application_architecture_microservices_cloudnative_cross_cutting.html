@@ -33802,7 +33802,7 @@ end
 </tr>
 <tr>
 <td>Kubernetes Pod TerminationGracefulPeriodSeconds オプション</td>
-<td>Service とkube-proxy の処理後に Pod を終了できるように、ユーザーが Pod の <code>.spec.terminationGracePeriodSeconds</code> キーに任意の秒数を設定する。Pod の削除に伴う Service とkube-proxy の処理の完了を待機できるようになる。なお、<code>.spec.terminationGracePeriodSeconds</code> の秒数が長すぎると、Pod の終了に時間がかかりすぎるようになり、Pod の更新や Amazon EKS クラスターのアップグレードに時間に影響が出る。</td>
+<td>Service と kube-proxy の処理後に Pod を終了できるように、ユーザーが Pod の <code>.spec.terminationGracePeriodSeconds</code> キーに任意の秒数を設定する。Pod の削除に伴う Service と kube-proxy の処理の完了を待機できるようになる。なお、<code>.spec.terminationGracePeriodSeconds</code> の秒数が長すぎると、Pod の終了に時間がかかりすぎるようになり、Pod の更新や Amazon EKS クラスターのアップグレードに時間に影響が出る。</td>
 </tr>
 </tbody>
 </table>
@@ -33893,7 +33893,7 @@ end
 </tr>
 <tr>
 <td>Karpenter Controller</td>
-<td>Pod のフェーズを監視し、Pending フェーズのままの Pod が現れると、起動テンプレートと Node を作成する。起動テンプレートは、Node の作成後に削除する。作成した Node にPod をバインドし、kube-scheduler によるスケジューリングを待つ。料金最適化やハードウェア消費量最適化のために、様々なパラメーターから作成 / 削除 / 置換の対象とする Node を計算し、Node の統合と垂直水平スケーリングを実行する。統合には、鳥の群れの動きをモデリングした Boids と似たアルゴリズムを使用している。EC2 Node のヘルスステータスで異常を検知すると、その Node を終了します。</td>
+<td>Pod のフェーズを監視し、Pending フェーズのままの Pod が現れると、起動テンプレートと Node を作成する。起動テンプレートは、Node の作成後に削除する。作成した Node に Pod をバインドし、kube-scheduler によるスケジューリングを待つ。料金最適化やハードウェア消費量最適化のために、様々なパラメーターから作成 / 削除 / 置換の対象とする Node を計算し、Node の統合と垂直水平スケーリングを実行する。統合には、鳥の群れの動きをモデリングした Boids と似たアルゴリズムを使用している。EC2 Node のヘルスステータスで異常を検知すると、その Node を終了します。</td>
 </tr>
 <tr>
 <td>Karpenter NodePool</td>
@@ -33908,7 +33908,7 @@ end
 <p>💡</p>
 <p>余裕があれば書くぜ！</p>
 </blockquote>
-<h2 id="karpenter-aws-node-node">Karpenter とAWS マネージド Node グループ Node グループの組み合わせ<a class="headerlink" href="#karpenter-aws-node-node" title="Permanent link">&para;</a></h2>
+<h2 id="karpenter-aws-node-node">Karpenter と AWS マネージド Node グループ Node グループの組み合わせ<a class="headerlink" href="#karpenter-aws-node-node" title="Permanent link">&para;</a></h2>
 <p>Karpenter と AWS マネージド Node グループ Node グループを採用し、Node を管理します。</p>
 <p>複数の方法を採用する理由は、Node を管理する Karpenter を、自身以外の方法で管理している Node 上で稼働させる必要があるためだ。</p>
 <p>ここでは、Karpenter の Pod を AWS マネージド Node グループ Node グループによる Node 上に、アプリ領域の Pod を Karpenter による Node 上に稼働させます。</p>
@@ -33931,7 +33931,7 @@ end
 <tr>
 <td>Graceful Shutdown</td>
 <td>自身の作成した Node を削除するときに、GracefulShutdown を実行する。</td>
-<td>デフォルトでは Graceful Shutdown を実行できない。EC2 UserData で、<code>kubelet-config.json</code> に ShutdownGracePeriod とShutdownGracePeriodCriticalPods の設定が必要である。</td>
+<td>デフォルトでは Graceful Shutdown を実行できない。EC2 UserData で、<code>kubelet-config.json</code> に ShutdownGracePeriod と ShutdownGracePeriodCriticalPods の設定が必要である。</td>
 </tr>
 <tr>
 <td>料金最適化</td>
@@ -33957,7 +33957,7 @@ end
 <tbody>
 <tr>
 <td>Descheduler</td>
-<td>Descheduler は、ポリシーに応じて不適切な Node から Pod を退避させる。Node のハードウェアリソースの消費量が動的に高まった場合に、kube-scheduler は不適切な Node から Pod を退避し、別の Node にこれを再スケジューリングさせられない。他に Node が障害が起こり、他の Node にPod が退避した場合に、その後 Node が復旧したとしても、Pod が元の Node に戻ることはない。Descheduler を使用すれば、再スケジューリングを自動化できる。</td>
+<td>Descheduler は、ポリシーに応じて不適切な Node から Pod を退避させる。Node のハードウェアリソースの消費量が動的に高まった場合に、kube-scheduler は不適切な Node から Pod を退避し、別の Node にこれを再スケジューリングさせられない。他に Node が障害が起こり、他の Node に Pod が退避した場合に、その後 Node が復旧したとしても、Pod が元の Node に戻ることはない。Descheduler を使用すれば、再スケジューリングを自動化できる。</td>
 </tr>
 <tr>
 <td>Deployment</td>
@@ -33965,7 +33965,7 @@ end
 </tr>
 <tr>
 <td>HorizontalPodAutoscaler</td>
-<td>HorizontalPodAutoscaler でPod を水平スケーリングする。水平スケーリングは、Pod の負荷が高くなると Pod 数を増やし、システム全体が高負荷で機能しなくなる状況を避けられる。ただし、突発的な高負荷には弱く、Pod 数の増減が間に合わないことがある。突発的な負荷のタイミングが事前にわかっているなら、事前に最小数を高めに設定しておく。</td>
+<td>HorizontalPodAutoscaler で Pod を水平スケーリングする。水平スケーリングは、Pod の負荷が高くなると Pod 数を増やし、システム全体が高負荷で機能しなくなる状況を避けられる。ただし、突発的な高負荷には弱く、Pod 数の増減が間に合わないことがある。突発的な負荷のタイミングが事前にわかっているなら、事前に最小数を高めに設定しておく。</td>
 </tr>
 <tr>
 <td>metrics-server</td>
@@ -33977,7 +33977,7 @@ end
 </tr>
 <tr>
 <td>PodDisruptionBudget</td>
-<td>Node のスケールインやアップグレード時に、Node はドレイン処理を実行し、Pod を退避させる。このときに PodDisruptionBudge を作成しないと、Deployment やStatefulSet 配下の Pod が一斉に退避し、1 個でも Pod を動かすことで、ダウンタイムを避けるべきである。そこで、PodDisruptionBudge を使用すると、ドレイン中に Node 上で動かしておく最小最大の Pod 数を設定できる。</td>
+<td>Node のスケールインやアップグレード時に、Node はドレイン処理を実行し、Pod を退避させる。このときに PodDisruptionBudge を作成しないと、Deployment や StatefulSet 配下の Pod が一斉に退避し、1 個でも Pod を動かすことで、ダウンタイムを避けるべきである。そこで、PodDisruptionBudge を使用すると、ドレイン中に Node 上で動かしておく最小最大の Pod 数を設定できる。</td>
 </tr>
 </tbody>
 </table>
@@ -34025,7 +34025,7 @@ end
 </blockquote>
 <h3 id="_29">契約テスト<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <p>送信元マイクロサービス (コンシューマー) と宛先マイクロサービス (プロデューサー) の連携のテストを実施します。</p>
-<p>このとき、一方のマイクロサービスに他方のマイクロサービスのモックの定義するのではなく、モックの定義を『契約 (Contract) サービス』として切り分けます。</p>
+<p>このとき、一方のマイクロサービスに他方のマイクロサービスのモックを定義するのではなく、モックの定義を『契約 (Contract) サービス』として切り分けます。</p>
 <p>これを双方のマイクロサービス間で共有します。</p>
 <p>契約サービス上で、双方のリクエスト / レスポンスの内容が期待値に合致するかを検証します。</p>
 <p>Pact では、Pact Broker を契約サービスとして使用できます。</p>
@@ -34068,7 +34068,7 @@ end
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

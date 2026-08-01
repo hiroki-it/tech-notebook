@@ -34596,7 +34596,7 @@
 <tr>
 <td>Origin Domain Name</td>
 <td>Amazon CloudFront をリバースプロキシサーバーとして、AWS リソースのエンドポイントや DNS にルーティングする。</td>
-<td>・例えば、S3 のエンドポイント、ALB のDNS 名を設定する。<br>・別アカウントの AWS リソースの DNS 名であってもよい。</td>
+<td>・例えば、S3 のエンドポイント、ALB の DNS 名を設定する。<br>・別アカウントの AWS リソースの DNS 名であってもよい。</td>
 </tr>
 <tr>
 <td>Origin Path</td>
@@ -34606,11 +34606,11 @@
 <tr>
 <td>Origin Access Identity</td>
 <td>リクエストのルーティング先となる AWS リソースで認可スコープの紐付けが必要な場合に設定する。ルーティング先の AWS リソースでは、アクセスポリシーを紐付ける。</td>
-<td>Amazon CloudFront がS3 に対して読み出しを実行するために必要。</td>
+<td>Amazon CloudFront が S3 に対して読み出しを実行するために必要。</td>
 </tr>
 <tr>
 <td>Origin Protocol Policy</td>
-<td>リクエストのルーティング先となる AWS リソースに対して、HTTP とHTTPS プロトコルのいずれのプロトコルでルーティングするかを設定する。</td>
+<td>リクエストのルーティング先となる AWS リソースに対して、HTTP と HTTPS プロトコルのいずれのプロトコルでルーティングするかを設定する。</td>
 <td>・ALB で必要。ALB のリスナーのプロトコルに合わせて設定する。<br>・<code>HTTP Only</code>：HTTP プロトコルでルーティング<br>・<code>HTTPS Only</code>：HTTPS プロトコルでルーティング<br>・<code>Match Viewer</code>：両方でルーティング</td>
 </tr>
 <tr>
@@ -34668,7 +34668,7 @@
 <tr>
 <td>TTL</td>
 <td>Amazon CloudFront にキャッシュを保管しておく秒数を詳細に設定する。</td>
-<td>・Min、Max、Default のすべてを <code>0</code> 秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小 TTL はゼロである必要がある。<br>・キャッシュの最終的な有効期間は、Amazon CloudFront のTTL 秒の設定、<code>Cache-Control</code> ヘッダー、<code>Expires</code> ヘッダー値の組み合わせによって決まる。</td>
+<td>・Min、Max、Default のすべてを <code>0</code> 秒とすると、キャッシュを無効化できる。<br>・『Headers = All』としている場合、キャッシュが実質無効となるため、最小 TTL はゼロである必要がある。<br>・キャッシュの最終的な有効期間は、Amazon CloudFront の TTL 秒の設定、<code>Cache-Control</code> ヘッダー、<code>Expires</code> ヘッダー値の組み合わせによって決まる。</td>
 </tr>
 <tr>
 <td>Whitelist Header</td>
@@ -34683,7 +34683,7 @@
 <tr>
 <td>Compress Objects Automatically</td>
 <td>レスポンス時に <code>gzip</code> ファイルとして圧縮するか否かを設定</td>
-<td>・クライアントからのリクエストヘッダーの Accept-Encoding にgzip が設定されている場合、レスポンス時に、gzip 形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを返信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。</td>
+<td>・クライアントからのリクエストヘッダーの Accept-Encoding に gzip が設定されている場合、レスポンス時に、gzip 形式で圧縮して送信するか否かを設定する。設定しない場合、圧縮せずにレスポンスを返信する。<br>・クライアント側のダウンロード速度向上のため、基本的には有効化する。</td>
 </tr>
 </tbody>
 </table>
@@ -34700,7 +34700,7 @@
 <span class="c1"># 各 Cookie ヘッダーの値 (二回目のリクエスト時に設定される)</span>
 <span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;; __ulfpc=&lt;GoogleAnalytics値&gt;; _ga=&lt;GoogleAnalytics値&gt;; _gid=&lt;GoogleAnalytics値&gt;</span>
 <span class="c1"># 送信元 IP アドレス</span>
-<span class="c1"># ※プロキシ (AWS ALB やAmazon CloudFront なども含む) を経由している場合、それら全ての IP アドレスが順に設定される</span>
+<span class="c1"># ※プロキシ (AWS ALB や Amazon CloudFront なども含む) を経由している場合、それら全ての IP アドレスが順に設定される</span>
 <span class="nt">X-Forwarded-For</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;client&gt;, &lt;proxy1&gt;, &lt;proxy2&gt;</span>
 <span class="nt">Accept-Language</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ja,en;q=0.9</span>
 <span class="nt">Accept</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</span>
@@ -35031,7 +35031,7 @@ The document tree is shown below.
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:44:25 JST">2026-08-01</span>
   </span>
 
     

@@ -28686,7 +28686,7 @@
   <a href="#root-application" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Root のApplication 名の重複
+        ▼ Root の Application 名の重複
       
     </span>
   </a>
@@ -28809,7 +28809,7 @@
   <a href="#application-kustomize" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 各 Application でKustomize を使用する
+        ▼ 各 Application で Kustomize を使用する
       
     </span>
   </a>
@@ -34053,7 +34053,7 @@
   <a href="#root-application" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Root のApplication 名の重複
+        ▼ Root の Application 名の重複
       
     </span>
   </a>
@@ -34176,7 +34176,7 @@
   <a href="#application-kustomize" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ 各 Application でKustomize を使用する
+        ▼ 各 Application で Kustomize を使用する
       
     </span>
   </a>
@@ -34877,7 +34877,7 @@
 <li><a href="https://github.com/argoproj/argo-cd/blob/v2.6.0/controller/sync.go#L246">https://github.com/argoproj/argo-cd/blob/v2.6.0/controller/sync.go#L246</a></li>
 </ul>
 </blockquote>
-<h4 id="root-application">▼ Root のApplication 名の重複<a class="headerlink" href="#root-application" title="Permanent link">&para;</a></h4>
+<h4 id="root-application">▼ Root の Application 名の重複<a class="headerlink" href="#root-application" title="Permanent link">&para;</a></h4>
 <p>単一の Kubernetes Cluster で Namespaced スコープの ArgoCD を構築しているとき、Root の Application を <code>default</code> という AppProject へ配置すると、この問題が起こりうる。</p>
 <p><code>default</code> の AppProject に所属した Application は、Namespaced スコープの application-controller であって、他の Namespace も見てしまうようである。</p>
 <p>Root の Application 名が重複している場合、たとえ Namespace が異なっていても、Namespace 間で Root の Application を共有してしまう。</p>
@@ -35007,7 +35007,7 @@
 <span class="w">  </span><span class="nt">kustomize.path.v1.0.0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/kustomize_1_0_0</span>
 <span class="w">  </span><span class="nt">kustomize.path.v2.0.0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/kustomize_2_0_0</span>
 </code></pre></div>
-<h4 id="application-kustomize">▼ 各 Application でKustomize を使用する<a class="headerlink" href="#application-kustomize" title="Permanent link">&para;</a></h4>
+<h4 id="application-kustomize">▼ 各 Application で Kustomize を使用する<a class="headerlink" href="#application-kustomize" title="Permanent link">&para;</a></h4>
 <p>Application の <code>.spec.kustomize.version</code> キーで、使用する Kustomize のバージョンを指定する。</p>
 <p>各 Application で異なるバージョンの Kustomize を指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
@@ -35153,7 +35153,7 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-cmd-params-cm</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
 <span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># application-controller とargocd-server</span>
+<span class="w">  </span><span class="c1"># application-controller と argocd-server</span>
 <span class="w">  </span><span class="c1"># Application の作成を許可したい Namespace を設定する</span>
 <span class="w">  </span><span class="nt">application.namespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-application-ns</span>
 </code></pre></div>
@@ -35221,7 +35221,7 @@
 <span class="w">  </span><span class="nt">server.dex.server.strict.tls</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
 <span class="w">  </span><span class="nt">server.disable.auth</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
 <span class="w">  </span><span class="nt">server.enable.gzip</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
-<span class="w">  </span><span class="c1"># ロードバランサーで、リクエストを HTTP でフォワーディングするように設定している場合、argocd-server でHTTP リクエストの受信を許可する</span>
+<span class="w">  </span><span class="c1"># ロードバランサーで、リクエストを HTTP でフォワーディングするように設定している場合、argocd-server で HTTP リクエストの受信を許可する</span>
 <span class="w">  </span><span class="nt">server.insecure</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">  </span><span class="nt">server.log.format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">text</span>
 <span class="w">  </span><span class="nt">server.log.level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span>
@@ -35256,7 +35256,7 @@
 <tr>
 <td><code>p</code> (パーミッション)</td>
 <td><code>p, &lt;ロール名&gt; &lt;Kubernetesリソースの種類&gt; &lt;アクション名&gt; &lt;AppProject名&gt;/&lt;ApplicationのNamespace名&gt;/&lt;Application名&gt;</code></td>
-<td>ロールと ArgoCD 系リソースの認可スコープを定義する。代わりに、Role やClusterRole でも定義できる。</td>
+<td>ロールと ArgoCD 系リソースの認可スコープを定義する。代わりに、Role や ClusterRole でも定義できる。</td>
 </tr>
 <tr>
 <td><code>g</code> (グループ)</td>
@@ -35494,7 +35494,7 @@
 <h3 id="argocd-tls-certs-cm">argocd-tls-certs-cm<a class="headerlink" href="#argocd-tls-certs-cm" title="Permanent link">&para;</a></h3>
 <p>ArgoCD は、ArgoCD の外 (特にリポジトリ) に HTTPS リクエストを送信する。</p>
 <p>ArgoCD では、コンテナイメージの <code>/etc/ssl</code> ディレクトリにデフォルトのサーバー証明書が配置されているが、ユーザー定義のサーバー証明書を使用したい場合がある。</p>
-<p>この ConfigMap は、そのためのユーザー定義のサーバー証明書を管理する。</p>
+<p>この ConfigMap は、そのためにユーザーが定義したサーバー証明書を管理する。</p>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca">https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca</a></li>
@@ -35589,7 +35589,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

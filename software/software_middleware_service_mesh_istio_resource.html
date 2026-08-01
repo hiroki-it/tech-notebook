@@ -7158,12 +7158,12 @@
   <a href="#pod-istio-egress-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        送信元 Pod とIstio Egress Gateway 間の通信
+        送信元 Pod と Istio Egress Gateway 間の通信
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="送信元 Pod とIstio Egress Gateway 間の通信">
+    <nav class="md-nav" aria-label="送信元 Pod と Istio Egress Gateway 間の通信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7654,19 +7654,19 @@
   <a href="#08-requestauthentication-authorizationpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        08. RequestAuthentication とAuthorizationPolicy
+        08. RequestAuthentication と AuthorizationPolicy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="08. RequestAuthentication とAuthorizationPolicy">
+    <nav class="md-nav" aria-label="08. RequestAuthentication と AuthorizationPolicy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#requestauthentication-authorizationpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        RequestAuthentication とAuthorizationPolicy とは
+        RequestAuthentication と AuthorizationPolicy とは
       
     </span>
   </a>
@@ -34293,12 +34293,12 @@
   <a href="#pod-istio-egress-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        送信元 Pod とIstio Egress Gateway 間の通信
+        送信元 Pod と Istio Egress Gateway 間の通信
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="送信元 Pod とIstio Egress Gateway 間の通信">
+    <nav class="md-nav" aria-label="送信元 Pod と Istio Egress Gateway 間の通信">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -34789,19 +34789,19 @@
   <a href="#08-requestauthentication-authorizationpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        08. RequestAuthentication とAuthorizationPolicy
+        08. RequestAuthentication と AuthorizationPolicy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="08. RequestAuthentication とAuthorizationPolicy">
+    <nav class="md-nav" aria-label="08. RequestAuthentication と AuthorizationPolicy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#requestauthentication-authorizationpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        RequestAuthentication とAuthorizationPolicy とは
+        RequestAuthentication と AuthorizationPolicy とは
       
     </span>
   </a>
@@ -35145,7 +35145,7 @@
 <span class="w">      </span><span class="c1"># NodePort Service が待ち受けるポート番号</span>
 <span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-<span class="w">      </span><span class="c1"># NodePort Service の宛先ポート番号 (Istio Ingress Gateway のPod が待ち受けるポート番号)</span>
+<span class="w">      </span><span class="c1"># NodePort Service の宛先ポート番号 (Istio Ingress Gateway の Pod が待ち受けるポート番号)</span>
 <span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http-bar</span>
 <span class="w">      </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30002</span>
@@ -35253,7 +35253,7 @@
 <h3 id="envoy_1">Envoy の設定値として<a class="headerlink" href="#envoy_1" title="Permanent link">&para;</a></h3>
 <p>Istiod コントロールプレーンは、ServiceEntry の設定値を Envoy のクラスターに変換する。</p>
 <p><br></p>
-<h3 id="pod-istio-egress-gateway">送信元 Pod とIstio Egress Gateway 間の通信<a class="headerlink" href="#pod-istio-egress-gateway" title="Permanent link">&para;</a></h3>
+<h3 id="pod-istio-egress-gateway">送信元 Pod と Istio Egress Gateway 間の通信<a class="headerlink" href="#pod-istio-egress-gateway" title="Permanent link">&para;</a></h3>
 <h4 id="tls">▼ 相互 TLS 認証<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h4>
 <p>送信元マイクロサービスは HTTP を指定し、istio-proxy のクライアント証明書と Istio Egress Gateway のサーバー証明書で相互 TLS 認証を実施する。</p>
 <p>Istio Egress Gateway はアプリケーションデータを復号できるため、プロトコルを HTTP として扱う。</p>
@@ -35503,7 +35503,7 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 <tbody>
 <tr>
 <td>VirtualService の数</td>
-<td>外部からのインバウンド通信を API ゲートウェイにルーティングする VirtualService を1 つだけ作成しておけばよい。</td>
+<td>外部からのインバウンド通信を API ゲートウェイにルーティングする VirtualService を 1 つだけ作成しておけばよい。</td>
 <td>API ゲートウェイからすべてのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできる VirtualService を定義する必要がある。</td>
 </tr>
 </tbody>
@@ -35984,8 +35984,8 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="08-requestauthentication-authorizationpolicy">08. RequestAuthentication とAuthorizationPolicy<a class="headerlink" href="#08-requestauthentication-authorizationpolicy" title="Permanent link">&para;</a></h2>
-<h3 id="requestauthentication-authorizationpolicy">RequestAuthentication とAuthorizationPolicy とは<a class="headerlink" href="#requestauthentication-authorizationpolicy" title="Permanent link">&para;</a></h3>
+<h2 id="08-requestauthentication-authorizationpolicy">08. RequestAuthentication と AuthorizationPolicy<a class="headerlink" href="#08-requestauthentication-authorizationpolicy" title="Permanent link">&para;</a></h2>
+<h3 id="requestauthentication-authorizationpolicy">RequestAuthentication と AuthorizationPolicy とは<a class="headerlink" href="#requestauthentication-authorizationpolicy" title="Permanent link">&para;</a></h3>
 <p>Pod 間通信時、JWT による認証と認可を実施する。</p>
 <p>JWT トークンが失効／不正な場合、RequestAuthentication は <code>401</code> レスポンスを返信する。</p>
 <p>JWT トークンがない場合、AuthorizationPolicy は <code>403</code> レスポンスを返信する必要がある。</p>
@@ -36021,7 +36021,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
 <span class="w">          </span><span class="nt">prefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">&quot;</span>
 <span class="nn">---</span>
-<span class="c1"># AuthorizationPolicy でRequestAuthentication を強制する</span>
+<span class="c1"># AuthorizationPolicy で RequestAuthentication を強制する</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AuthorizationPolicy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36174,7 +36174,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 </tr>
 <tr>
 <td><code>ENABLE_NATIVE_SIDECARS</code></td>
-<td>istio-sidecar-injector (ConfigMap) で、istio-proxy の代わりに Kubernetes のInit Container</td>
+<td>istio-sidecar-injector (ConfigMap) で、istio-proxy の代わりに Kubernetes の Init Container</td>
 </tr>
 <tr>
 <td><code>ENABLE_RESOLUTION_NONE_TARGET_PORT</code></td>
@@ -36228,7 +36228,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:44:25 JST">2026-08-01</span>
   </span>
 
     

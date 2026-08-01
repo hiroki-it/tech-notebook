@@ -35563,7 +35563,7 @@
 <tbody>
 <tr>
 <td>概要</td>
-<td>カスタマイズ性が高いため、カスタマイズ次第で本番環境と開発環境の差異を小さくできる。2022 年3 月の現在では、Kubernetes の開発環境として、ベタープラクティスである。</td>
+<td>カスタマイズ性が高いため、カスタマイズ次第で本番環境と開発環境の差異を小さくできる。2022 年 3 月の現在では、Kubernetes の開発環境として、ベタープラクティスである。</td>
 <td>セットアップが非常に簡単 (有効化するだけ) なため、開発に取り掛かるまでが早い。</td>
 <td>セットアップが簡単なため、開発に取り掛かるまでが早い</td>
 <td>実行環境を開発環境としても使用する。開発者ごとに異なる Namespace を作成する。これを採用している企業が多い。</td>
@@ -35579,7 +35579,7 @@
 <td>コンテナランタイム</td>
 <td>docker、containerd、cri-o</td>
 <td>docker</td>
-<td>containerd (ホスト OS のdocker コンテナを作成し、このなかに containerd コンテナを作成する)</td>
+<td>containerd (ホスト OS の docker コンテナを作成し、このなかに containerd コンテナを作成する)</td>
 <td>docker、containerd</td>
 </tr>
 <tr>
@@ -35667,7 +35667,7 @@
 <td>メリット</td>
 <td>すべて自前なため、自由にカスタマイズできる。</td>
 <td>カスタマイズ性が高い。</td>
-<td>マネージドであるため、ユーザーが Kubernetes のワーカーNode を管理するコストが低い。執筆時点 (2022 年3 月) では、Kubernetes の本番環境として、ベタープラクティスである。</td>
+<td>マネージドであるため、ユーザーが Kubernetes のワーカーNode を管理するコストが低い。執筆時点 (2022 年 3 月) では、Kubernetes の本番環境として、ベタープラクティスである。</td>
 </tr>
 <tr>
 <td>デメリット</td>
@@ -35815,7 +35815,7 @@
 <tr>
 <td>CPU</td>
 <td>%</td>
-<td>同じ Cluster 内のワーカーNode のCPU 使用率をデータポイントとする。</td>
+<td>同じ Cluster 内のワーカーNode の CPU 使用率をデータポイントとする。</td>
 <td>・統計 : 期間内平均使用率<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&gt;= 80</code></td>
 </tr>
 <tr>
@@ -35936,7 +35936,7 @@
 <tr>
 <td>Pod の必要最低数</td>
 <td>カウント</td>
-<td>同じ Cluster 内のワーカーNode のPod 必要最低数をデータポイントとする。</td>
+<td>同じ Cluster 内のワーカーNode の Pod 必要最低数をデータポイントとする。</td>
 <td>・統計 : 期間内合計数<br>・期間 : <code>5</code> 分<br>・閾値 : <code>&lt;= 1</code></td>
 </tr>
 </tbody>
@@ -36056,7 +36056,7 @@
 </tr>
 <tr>
 <td>マニフェストのコード規約違反</td>
-<td>外部の Policy as Code ツール (例：conftest、Gatekeeper CLI のgator など) を使用する。ポリシー (rego など) の定義に基づいて、そのプロダクトのコード規約違反を検証する。</td>
+<td>外部の Policy as Code ツール (例：conftest、Gatekeeper CLI の gator など) を使用する。ポリシー (rego など) の定義に基づいて、そのプロダクトのコード規約違反を検証する。</td>
 <td>・<a href="https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B">https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B</a></td>
 </tr>
 <tr>
@@ -36156,7 +36156,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Deployment のRollingUpdate 戦略を採用している場合</td>
+<td>Deployment の RollingUpdate 戦略を採用している場合</td>
 <td>過去のリリースタグ (リビジョン) を再デプロイする。あるいは GitHub によるコミットのリバートを使用し、現在のコミットを打ち消すコミットを作成し、PR を作成する。</td>
 <td style="text-align: center;">非推奨</td>
 </tr>
@@ -36206,7 +36206,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:44:25 JST">2026-08-01</span>
   </span>
 
     

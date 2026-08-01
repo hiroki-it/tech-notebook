@@ -23664,7 +23664,7 @@
   <a href="#pod_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Pod の最後のフェーズの理由
+        ▼ Pod における最後のフェーズの理由
       
     </span>
   </a>
@@ -23824,12 +23824,12 @@
   <a href="#deployment-statefulset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deployment とStatefulSet との違い
+        Deployment と StatefulSet との違い
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deployment とStatefulSet との違い">
+    <nav class="md-nav" aria-label="Deployment と StatefulSet との違い">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -24315,7 +24315,7 @@
   <a href="#namespace-terminating" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Namespace がTerminating のままになる
+        ▼ Namespace が Terminating のままになる
       
     </span>
   </a>
@@ -24593,7 +24593,7 @@
   <a href="#docker-volume" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Docker のVolume との違い
+        ▼ Docker の Volume との違い
       
     </span>
   </a>
@@ -35365,7 +35365,7 @@
   <a href="#pod_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Pod の最後のフェーズの理由
+        ▼ Pod における最後のフェーズの理由
       
     </span>
   </a>
@@ -35525,12 +35525,12 @@
   <a href="#deployment-statefulset" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deployment とStatefulSet との違い
+        Deployment と StatefulSet との違い
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Deployment とStatefulSet との違い">
+    <nav class="md-nav" aria-label="Deployment と StatefulSet との違い">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -36016,7 +36016,7 @@
   <a href="#namespace-terminating" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Namespace がTerminating のままになる
+        ▼ Namespace が Terminating のままになる
       
     </span>
   </a>
@@ -36294,7 +36294,7 @@
   <a href="#docker-volume" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Docker のVolume との違い
+        ▼ Docker の Volume との違い
       
     </span>
   </a>
@@ -37101,11 +37101,11 @@
 <tbody>
 <tr>
 <td>Ready</td>
-<td>Node がPod をスケジューリング可能な状態であることを表す。</td>
+<td>Node が Pod をスケジューリング可能な状態であることを表す。</td>
 </tr>
 <tr>
 <td>NotReady</td>
-<td>Node がPod をスケジューリング不可能な状態であることを表す。</td>
+<td>Node が Pod をスケジューリング不可能な状態であることを表す。</td>
 </tr>
 </tbody>
 </table>
@@ -37227,7 +37227,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <tr>
 <td>Error</td>
 <td>Pod 内のいずれかのコンテナが異常に終了した。</td>
-<td>Job 配下の Pod の場合は Error になっても、次の Pod が作成される。Job の <code>.spec.ttlSecondsAfterFinished</code> キーを設定していなければ、Error のPod がしばらく残り続けるが、もし新しい Pod がCompleted になれば問題ない。</td>
+<td>Job 配下の Pod の場合は Error になっても、次の Pod が作成される。Job の <code>.spec.ttlSecondsAfterFinished</code> キーを設定していなければ、Error の Pod がしばらく残り続けるが、もし新しい Pod が Completed になれば問題ない。</td>
 </tr>
 <tr>
 <td>Failed</td>
@@ -37246,7 +37246,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </tr>
 <tr>
 <td>Pending</td>
-<td>Pod がNode にスケジューリングされたが、Pod 内のすべてのコンテナの起動がまだ完了していない。</td>
+<td>Pod が Node にスケジューリングされたが、Pod 内のすべてのコンテナの起動がまだ完了していない。</td>
 <td></td>
 </tr>
 <tr>
@@ -37256,7 +37256,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </tr>
 <tr>
 <td>PostStartHookError</td>
-<td>Pod のPostStart フックに失敗した。</td>
+<td>Pod の PostStart フックに失敗した。</td>
 <td></td>
 </tr>
 <tr>
@@ -37271,7 +37271,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 </tr>
 <tr>
 <td>Unknown</td>
-<td>Node とPod の間の通信に異常があり、Node がPod から情報を取得できなかった。</td>
+<td>Node と Pod の間の通信に異常があり、Node が Pod から情報を取得できなかった。</td>
 <td></td>
 </tr>
 </tbody>
@@ -37338,7 +37338,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <li><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions">https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-conditions</a></li>
 </ul>
 </blockquote>
-<h4 id="pod_6">▼ Pod の最後のフェーズの理由<a class="headerlink" href="#pod_6" title="Permanent link">&para;</a></h4>
+<h4 id="pod_6">▼ Pod における最後のフェーズの理由<a class="headerlink" href="#pod_6" title="Permanent link">&para;</a></h4>
 <p>Pod は、<code>.status.reason</code> キーに、最後のフェーズの理由を値として持つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">phase</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Failed</span>
@@ -37534,7 +37534,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-balloon</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># ゾーンが 3つあるため、ゾーン間で移動するようにレプリカ数を 3つにする</span>
+<span class="w">  </span><span class="c1"># ゾーンが 3 つあるため、ゾーン間で移動するようにレプリカ数を 3 つにする</span>
 <span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
@@ -37619,7 +37619,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="deployment-statefulset">Deployment とStatefulSet との違い<a class="headerlink" href="#deployment-statefulset" title="Permanent link">&para;</a></h3>
+<h3 id="deployment-statefulset">Deployment と StatefulSet との違い<a class="headerlink" href="#deployment-statefulset" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 設定値<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>StatefulSet では、一部の設定変更が禁止されている。</p>
 <div class="highlight"><pre><span></span><code>The<span class="w"> </span>StatefulSet<span class="w"> </span><span class="s2">&quot;foo-pod&quot;</span><span class="w"> </span>is<span class="w"> </span>invalid:<span class="w"> </span>spec:<span class="w"> </span>Forbidden:<span class="w"> </span>updates<span class="w"> </span>to<span class="w"> </span>statefulset<span class="w"> </span>spec<span class="w"> </span><span class="k">for</span><span class="w"> </span>fields<span class="w"> </span>other<span class="w"> </span>than<span class="w"> </span><span class="s1">&#39;replicas&#39;</span>,<span class="w"> </span><span class="s1">&#39;template&#39;</span>,<span class="w"> </span><span class="s1">&#39;updateStrategy&#39;</span><span class="w"> </span>and<span class="w"> </span><span class="s1">&#39;minReadySeconds&#39;</span><span class="w"> </span>are<span class="w"> </span>forbidden
@@ -38090,7 +38090,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <li><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces">https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#initial-namespaces</a></li>
 </ul>
 </blockquote>
-<h4 id="namespace-terminating">▼ Namespace がTerminating のままになる<a class="headerlink" href="#namespace-terminating" title="Permanent link">&para;</a></h4>
+<h4 id="namespace-terminating">▼ Namespace が Terminating のままになる<a class="headerlink" href="#namespace-terminating" title="Permanent link">&para;</a></h4>
 <p>以下の方法で対処する。</p>
 <blockquote>
 <ul>
@@ -38371,7 +38371,7 @@ Volumes:
 <li><a href="https://thinkit.co.jp/article/14195">https://thinkit.co.jp/article/14195</a></li>
 </ul>
 </blockquote>
-<h4 id="docker-volume">▼ Docker のVolume との違い<a class="headerlink" href="#docker-volume" title="Permanent link">&para;</a></h4>
+<h4 id="docker-volume">▼ Docker の Volume との違い<a class="headerlink" href="#docker-volume" title="Permanent link">&para;</a></h4>
 <p>Docker のボリュームとは独立した機能であることに注意する。</p>
 <blockquote>
 <ul>
@@ -38774,7 +38774,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

@@ -34799,7 +34799,7 @@ argocd@cmp-server:/usr/local/bin<span class="o">]</span><span class="w"> </span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/argocd/argocd-cmp-server</span>
 <span class="w">      </span><span class="nt">securityContext</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">        </span><span class="c1"># サイドカーのコンテナプロセスのユーザーID は999 とする。</span>
+<span class="w">        </span><span class="c1"># サイドカーのコンテナプロセスのユーザーID は 999 とする。</span>
 <span class="w">        </span><span class="nt">runAsUser</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">999</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">var-files</span>
@@ -35002,7 +35002,7 @@ Flags:
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
-<span class="w">      </span><span class="c1"># InitContainer にHelm をインストールする。</span>
+<span class="w">      </span><span class="c1"># InitContainer に Helm をインストールする。</span>
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">apk --update add wget</span>
@@ -35011,7 +35011,7 @@ Flags:
 <span class="w">          </span><span class="no">cp ./linux-amd64/helm /custom-tools/</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Pod の共有 Volume にHelm を配置する。</span>
+<span class="w">        </span><span class="c1"># Pod の共有 Volume に Helm を配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/custom-tools</span>
 
@@ -35087,7 +35087,7 @@ Flags:
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
-<span class="w">      </span><span class="c1"># InitContainer にHelmfile をインストールする。</span>
+<span class="w">      </span><span class="c1"># InitContainer に Helmfile をインストールする。</span>
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">apk --update add wget</span>
@@ -35099,7 +35099,7 @@ Flags:
 <span class="w">          </span><span class="no">chown -R 999 /helm-working-dir</span>
 <span class="w">          </span><span class="no">chmod -R u+rwx /helm-working-dir</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Pod の共有 Volume にHelmfile を配置する。</span>
+<span class="w">        </span><span class="c1"># Pod の共有 Volume に Helmfile を配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/custom-tools</span>
 <span class="w">    </span><span class="c1"># SOPS</span>
@@ -35133,7 +35133,7 @@ Flags:
 <span class="w">          </span><span class="no">chown -R 999 /helm-working-dir/plugins</span>
 <span class="w">          </span><span class="no">chmod -R u+rwx /helm-working-dir/plugins/</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Pod の共有 Volume にhelm プラグインを配置する。</span>
+<span class="w">        </span><span class="c1"># Pod の共有 Volume に helm プラグインを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/helm-working-dir/plugins</span>
 
@@ -35276,7 +35276,7 @@ Flags:
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
-<span class="w">      </span><span class="c1"># InitContainer にHelm をインストールする。</span>
+<span class="w">      </span><span class="c1"># InitContainer に Helm をインストールする。</span>
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">apk --update add wget</span>
@@ -35287,7 +35287,7 @@ Flags:
 <span class="w">          </span><span class="no">cp ./linux-amd64/helm /custom-tools/</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Pod の共有 Volume にHelm を配置する。</span>
+<span class="w">        </span><span class="c1"># Pod の共有 Volume に Helm を配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/custom-tools</span>
 <span class="w">    </span><span class="c1"># SOPS</span>
@@ -35321,7 +35321,7 @@ Flags:
 <span class="w">          </span><span class="no">chown -R 999 /helm-working-dir/plugins</span>
 <span class="w">          </span><span class="no">chmod -R u+rwx /helm-working-dir/plugins/</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Pod の共有 Volume にhelm プラグインを配置する。</span>
+<span class="w">        </span><span class="c1"># Pod の共有 Volume に helm プラグインを配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helm-working-dir</span>
 <span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/helm-working-dir/plugins</span>
 
@@ -35374,7 +35374,7 @@ Flags:
 <span class="w">          </span><span class="no">- /bin/bash</span>
 <span class="w">          </span><span class="no">- -c</span>
 <span class="w">        </span><span class="no"># jkroepke 製の helm-secrets の場合</span>
-<span class="w">        </span><span class="no"># 暗号化された values ファイル (SOPS のsecrets ファイル) 、平文の values ファイルを使用して helm コマンドを実行する。</span>
+<span class="w">        </span><span class="no"># 暗号化された values ファイル (SOPS の secrets ファイル) 、平文の values ファイルを使用して helm コマンドを実行する。</span>
 <span class="w">        </span><span class="no">args:</span>
 <span class="w">          </span><span class="no">- &gt;</span>
 <span class="w">            </span><span class="no">set -euo pipefail;</span>
@@ -35411,7 +35411,7 @@ Flags:
 <span class="w">          </span><span class="no">- /bin/bash</span>
 <span class="w">          </span><span class="no">- -c</span>
 <span class="w">        </span><span class="no"># zendesk 製の helm-secrets の場合</span>
-<span class="w">        </span><span class="no"># 暗号化された values ファイル (SOPS のsecrets ファイル) 、平文の values ファイルを使用して helm コマンドを実行する。</span>
+<span class="w">        </span><span class="no"># 暗号化された values ファイル (SOPS の secrets ファイル) 、平文の values ファイルを使用して helm コマンドを実行する。</span>
 <span class="w">        </span><span class="no">args:</span>
 <span class="w">          </span><span class="no">- &gt;</span>
 <span class="w">            </span><span class="no">set -euo pipefail;</span>
@@ -35536,7 +35536,7 @@ Flags:
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
-<span class="w">      </span><span class="c1"># InitContainer にKustomize をインストールする。</span>
+<span class="w">      </span><span class="c1"># InitContainer に Kustomize をインストールする。</span>
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">apk --update add wget</span>
@@ -35545,7 +35545,7 @@ Flags:
 <span class="w">          </span><span class="no">cp kustomize /custom-tools/</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools/kustomize</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Pod の共有 Volume にKustomize を配置する。</span>
+<span class="w">        </span><span class="c1"># Pod の共有 Volume に Kustomize を配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/kustomize</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize</span>
@@ -35643,7 +35643,7 @@ Flags:
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
-<span class="w">      </span><span class="c1"># InitContainer にKustomize をインストールする。</span>
+<span class="w">      </span><span class="c1"># InitContainer に Kustomize をインストールする。</span>
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># Kustomize は別の InitContainer でインストールしているため、ここでは KSOPS のバイナリのみをコピーする</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -35659,7 +35659,7 @@ Flags:
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/sh</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
-<span class="w">      </span><span class="c1"># InitContainer にKustomize をインストールする。</span>
+<span class="w">      </span><span class="c1"># InitContainer に Kustomize をインストールする。</span>
 <span class="w">      </span><span class="nt">args</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">          </span><span class="no">apk --update add wget</span>
@@ -35668,7 +35668,7 @@ Flags:
 <span class="w">          </span><span class="no">cp kustomize /custom-tools/</span>
 <span class="w">          </span><span class="no">chmod +x /custom-tools/kustomize</span>
 <span class="w">      </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Pod の共有 Volume にKustomize を配置する。</span>
+<span class="w">        </span><span class="c1"># Pod の共有 Volume に Kustomize を配置する。</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/local/bin/kustomize</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-tools</span>
 <span class="w">          </span><span class="nt">subPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize</span>
@@ -35905,7 +35905,7 @@ Flags:
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:44:25 JST">2026-08-01</span>
   </span>
 
     

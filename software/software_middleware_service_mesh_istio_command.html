@@ -36061,7 +36061,7 @@ istio.io/tag:<span class="w"> </span>default
 <h3 id="set">set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
 <h4 id="set_1">▼ set とは<a class="headerlink" href="#set_1" title="Permanent link">&para;</a></h4>
 <p>MutatingWebhookConfiguration の <code>.metadata.labels</code> キーにある既存のエイリアス (<code>istio.io/tag</code> キーの値) に実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) を設定する。</p>
-<p>カナリアアップグレード用の MutatingWebhookConfiguration を新しく作成するためや、既存の MutatingWebhookConfiguration にある現在のバージョンのエイリアスの実体を変更するために使用する。</p>
+<p>カナリアアップグレード用の MutatingWebhookConfiguration を新しく作成するためや、既存の MutatingWebhookConfiguration にある現在のバージョンについて、エイリアスの実体を変更するために使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># カナリアアップグレード用のMutatingWebhookConfigurationがなければ新しく作成する。</span>
 <span class="c1"># もしあれば、MutatingWebhookConfigurationのエイリアスの実体を変更する。</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;エイリアス&gt;<span class="w"> </span>--revision<span class="w"> </span>&lt;エイリアスの実体&gt;<span class="w"> </span>--overwrite
@@ -36254,7 +36254,7 @@ data<span class="w"> </span>plane<span class="w"> </span>version:<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

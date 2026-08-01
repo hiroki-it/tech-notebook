@@ -27052,7 +27052,7 @@
   <a href="#nodeselector-affinitty" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ nodeSelector とaffinitty の両方設定
+        ▼ nodeSelector と affinitty の両方設定
       
     </span>
   </a>
@@ -42161,7 +42161,7 @@
   <a href="#nodeselector-affinitty" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ nodeSelector とaffinitty の両方設定
+        ▼ nodeSelector と affinitty の両方設定
       
     </span>
   </a>
@@ -44072,7 +44072,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cluster</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># kube-apiserver のサーバー証明書</span>
 <span class="w">      </span><span class="nt">certificate-authority-data</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LS0tLS1 ...</span>
-<span class="w">      </span><span class="c1"># kube-apiserver のURL</span>
+<span class="w">      </span><span class="c1"># kube-apiserver の URL</span>
 <span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://*****.gr7.ap-northeast-1.eks.amazonaws.com</span>
 
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
@@ -44154,7 +44154,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="current-context">current-context<a class="headerlink" href="#current-context" title="Permanent link">&para;</a></h3>
 <h4 id="current-context_1">▼ current-context とは<a class="headerlink" href="#current-context_1" title="Permanent link">&para;</a></h4>
-<p><code>kubectl</code> コマンドの現在の向き先の名前を設定する。</p>
+<p><code>kubectl</code> コマンドについて、現在の向き先の名前を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Config</span>
 <span class="nt">current-context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ClusterのARN&gt;</span>
@@ -44480,12 +44480,12 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-deployment</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="c1"># Deployment に紐付ける Pod のmetadata.labels キー</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="c1"># Deployment に紐付ける Pod の metadata.labels キー</span>
 <span class="w">      </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 <span class="w">      </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="c1"># Pod のmetadata.labels キー</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="c1"># Pod の metadata.labels キー</span>
 <span class="w">        </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod</span>
 <span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 </code></pre></div>
@@ -44537,11 +44537,11 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <tbody>
 <tr>
 <td><code>.spec.replicas</code> キー</td>
-<td>Pod のレプリカ数を変更すると、Deployment はPod を再デプロイする。</td>
+<td>Pod のレプリカ数を変更すると、Deployment は Pod を再デプロイする。</td>
 </tr>
 <tr>
 <td><code>.spec.template</code> キー配下の任意のキー</td>
-<td>Pod テンプレートを変更した場合、Deployment はPod を再デプロイする。</td>
+<td>Pod テンプレートを変更した場合、Deployment は Pod を再デプロイする。</td>
 </tr>
 </tbody>
 </table>
@@ -44637,7 +44637,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">    </span><span class="nt">rollingUpdate</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># デプロイ時に、Pod のレプリカ数の 10 個だけ、新しい Pod を並行的に作成する</span>
 <span class="w">      </span><span class="nt">maxSurge</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">      </span><span class="c1"># デプロイ時に、Pod のレプリカ数の 0個が停止している状態にならないようにする</span>
+<span class="w">      </span><span class="c1"># デプロイ時に、Pod のレプリカ数の 0 個が停止している状態にならないようにする</span>
 <span class="w">      </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
@@ -45590,7 +45590,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h2 id="limitrange">LimitRange<a class="headerlink" href="#limitrange" title="Permanent link">&para;</a></h2>
 <h3 id="speclimit">.spec.limit<a class="headerlink" href="#speclimit" title="Permanent link">&para;</a></h3>
 <h4 id="container">▼ Container の場合<a class="headerlink" href="#container" title="Permanent link">&para;</a></h4>
-<p>Namespace 内のコンテナのハードウェアリソースの上限必要サイズを設定する。</p>
+<p>Namespace 内にあるコンテナについて、ハードウェアリソースの上限必要サイズを設定する。</p>
 <p>Pod の <code>.spec.containers[*].resources</code> キー配下に設定がなくとも、コンテナの実行時に自動的に挿入できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
@@ -46053,7 +46053,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">      </span><span class="nt">requiredDuringSchedulingIgnoredDuringExecution</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">nodeSelectorTerms</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">              </span><span class="c1"># Pod をスケジューリングさせたい Node のmetadata.labels キー</span>
+<span class="w">              </span><span class="c1"># Pod をスケジューリングさせたい Node の metadata.labels キー</span>
 <span class="w">              </span><span class="c1"># ここで Node グループのキーを指定しておけば、Node グループ単位でスケジューリングさせられる。</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node.kubernetes.io/nodetype</span>
 <span class="w">                </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
@@ -46102,7 +46102,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topologyKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/hostname</span>
 <span class="w">          </span><span class="nt">labelSelector</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># Pod のmetadata.labels キー</span>
+<span class="w">                </span><span class="c1"># Pod の metadata.labels キー</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
 <span class="w">                  </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
 <span class="w">                  </span><span class="c1"># 指定した値をキーに持つ Pod と同じ Node に、Pod をスケジューリングさせる。</span>
@@ -46170,7 +46170,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topologyKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">topology.kubernetes.io/zone</span>
 <span class="w">          </span><span class="nt">labelSelector</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">                </span><span class="c1"># Pod のmetadata.labels キー</span>
+<span class="w">                </span><span class="c1"># Pod の metadata.labels キー</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
 <span class="w">                  </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
 <span class="w">                  </span><span class="c1"># 指定した値をキーに持つ Pod とは異なる Node に、Pod をスケジューリングさせる。</span>
@@ -46242,7 +46242,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">topologyKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">topology.kubernetes.io/zone</span>
 <span class="w">              </span><span class="nt">labelSelector</span><span class="p">:</span>
 <span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">                    </span><span class="c1"># Pod のmetadata.labels キー</span>
+<span class="w">                    </span><span class="c1"># Pod の metadata.labels キー</span>
 <span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.kubernetes.io/name</span>
 <span class="w">                      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
 <span class="w">                      </span><span class="c1"># 指定した値をキーに持つ Pod とは異なる Node に、Pod をスケジューリングさせる。</span>
@@ -46414,7 +46414,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>Node 全体のハードウェアリソースを分母として、Pod 内のコンテナが要求するリソースの下限/上限必要サイズを設定する。</p>
 <p>各 Pod は Node 内のハードウェアリソース (<code>cpu</code>、<code>memory</code>、<code>ephemeral-storage</code>) を奪い合っており、Node が複数ある場合、kube-scheduler は <code>requests</code> 値以上の余剰がある Node 上に Pod のスケジューリングを実行する。</p>
 <p>このとき kube-scheduler は、コンテナの <code>resource</code> キーの値に基づいて、どの Node に Pod を作成するかを決めている。</p>
-<p>同じ Pod 内に <code>resources</code> キーを設定したコンテナが複数ある場合、下限/上限の必要サイズを満たしているか否かの判定は、同じ Pod 内のコンテナの要求サイズの合計値に基づく。</p>
+<p>同じ Pod 内に <code>resources</code> キーを設定したコンテナが複数ある場合、下限/上限の必要サイズを満たしているか否かは、同じ Pod 内にあるコンテナの要求サイズ合計値に基づいて判定する。</p>
 <table>
 <thead>
 <tr>
@@ -46652,7 +46652,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpGet</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">          </span><span class="c1"># SpringBoot 製Java アプリケーションの liveness エンドポイント</span>
+<span class="w">          </span><span class="c1"># SpringBoot 製 Java アプリケーションの liveness エンドポイント</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/actuator/health/liveness</span>
 <span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
 <span class="w">        </span><span class="c1"># 各設定のデフォルト値を示す</span>
@@ -46778,7 +46778,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app:1.0.0</span>
 <span class="w">      </span><span class="nt">livenessProbe</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># 初回以降の LivenessProbe ヘルスチェックを実行するまでに 5秒間待機する。</span>
+<span class="w">        </span><span class="c1"># 初回以降の LivenessProbe ヘルスチェックを実行するまでに 5 秒間待機する。</span>
 <span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div>
 <blockquote>
@@ -46900,7 +46900,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">startupProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpGet</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">          </span><span class="c1"># SpringBoot 製Java アプリケーションのの startup エンドポイント</span>
+<span class="w">          </span><span class="c1"># SpringBoot 製 Java アプリケーションのの startup エンドポイント</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/actuator/startup</span>
 <span class="w">        </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
 <span class="w">        </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
@@ -46932,7 +46932,7 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">readinessProbe</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">httpGet</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080</span>
-<span class="w">          </span><span class="c1"># SpringBoot 製Java アプリケーションの Readiness エンドポイント</span>
+<span class="w">          </span><span class="c1"># SpringBoot 製 Java アプリケーションの Readiness エンドポイント</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/actuator/health/readiness</span>
 <span class="w">          </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
 <span class="w">        </span><span class="c1"># 各設定のデフォルト値を示す</span>
@@ -47371,8 +47371,8 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <span class="w">  </span><span class="nt">initContainers</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">readiness-check-redis</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox:1.28</span>
-<span class="w">      </span><span class="c1"># StatefulSet のインメモリ DB コンテナの 6379 番ポートに通信できるまで、本 Pod のapp コンテナの起動開始を待機する。</span>
-<span class="w">      </span><span class="c1"># StatefulSet でReadinessProbe ヘルスチェックを設定しておけば、これの Pod がREADY になるまで nc コマンドは成功しないようになる。</span>
+<span class="w">      </span><span class="c1"># StatefulSet のインメモリ DB コンテナの 6379 番ポートに通信できるまで、本 Pod の app コンテナの起動開始を待機する。</span>
+<span class="w">      </span><span class="c1"># StatefulSet で ReadinessProbe ヘルスチェックを設定しておけば、これの Pod が READY になるまで nc コマンドは成功しないようになる。</span>
 <span class="w">      </span><span class="nt">command</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-c</span>
@@ -47512,7 +47512,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <li><a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#running-pods-on-select-nodes">https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#running-pods-on-select-nodes</a></li>
 </ul>
 </blockquote>
-<h4 id="nodeselector-affinitty">▼ nodeSelector とaffinitty の両方設定<a class="headerlink" href="#nodeselector-affinitty" title="Permanent link">&para;</a></h4>
+<h4 id="nodeselector-affinitty">▼ nodeSelector と affinitty の両方設定<a class="headerlink" href="#nodeselector-affinitty" title="Permanent link">&para;</a></h4>
 <p><code>.spec.nodeSelector</code> キーと <code>.spec.affinity</code> キーの両方を設定できる。</p>
 <p>両方を設定した場合、両方を満たした Node に Pod をスケジューリングさせられる。</p>
 <blockquote>
@@ -47523,7 +47523,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p><br></p>
 <h3 id="specrestartpolicy">.spec.restartPolicy<a class="headerlink" href="#specrestartpolicy" title="Permanent link">&para;</a></h3>
 <h4 id="restartpolicy_1">▼ restartPolicy とは<a class="headerlink" href="#restartpolicy_1" title="Permanent link">&para;</a></h4>
-<p>Pod 内のコンテナのライフサイクルの再起動ポリシーを設定する。</p>
+<p>Pod 内にあるコンテナについて、ライフサイクルの再起動ポリシーを設定する。</p>
 <h4 id="always">▼ Always<a class="headerlink" href="#always" title="Permanent link">&para;</a></h4>
 <p>コンテナが停止した場合、これが正常 (終了ステータス <code>0</code>) か異常 (終了ステータス <code>1</code>) かを問わず、常にコンテナを再起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -47693,7 +47693,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </ul>
 </blockquote>
 <h4 id="_7">▼ コンテナが複数個ある場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>Pod 内にアプリ以外のコンテナ (istio-proxy など) がある場合、すべてのコンテナの終了プロセスの時間を考慮する必要がある。</p>
+<p>Pod 内にアプリ以外のコンテナ (istio-proxy など) がある場合、すべてのコンテナについて終了プロセスの時間を考慮する必要がある。</p>
 <p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
 <blockquote>
 <ul>
@@ -48200,7 +48200,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod-disruption-budget</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Pod をNode から退避させる時に、Pod1 個のみを退避できる。</span>
+<span class="w">  </span><span class="c1"># Pod を Node から退避させる時に、Pod1 個のみを退避できる。</span>
 <span class="w">  </span><span class="nt">maxUnavailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </code></pre></div>
 <blockquote>
@@ -48219,7 +48219,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-pod-disruption-budget</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Pod をNode から退避させる時に、他の Node で新しい Pod3 個のスケジューリングが完了するまで待機できる。</span>
+<span class="w">  </span><span class="c1"># Pod を Node から退避させる時に、他の Node で新しい Pod3 個のスケジューリングが完了するまで待機できる。</span>
 <span class="w">  </span><span class="nt">minAvailable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 <blockquote>
@@ -49405,7 +49405,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

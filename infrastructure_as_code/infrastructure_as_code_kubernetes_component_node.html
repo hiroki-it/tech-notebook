@@ -34549,11 +34549,11 @@
 </tr>
 <tr>
 <td><code>deploy</code></td>
-<td>他の Kubernetes リソースをデプロイするための Kubernetes リソース (例：ArgoCD のPod) のコンテナを配置する。Node グループ内に含めずに、異なる Cluster に切り分けて管理してもよい。</td>
+<td>他の Kubernetes リソースをデプロイするための Kubernetes リソース (例：ArgoCD の Pod) のコンテナを配置する。Node グループ内に含めずに、異なる Cluster に切り分けて管理してもよい。</td>
 </tr>
 <tr>
 <td><code>ingress</code>、<code>gateway、</code>egress`</td>
-<td>ワーカーNode へのインバウンド通信の入口になるリソース (例：Ingress、IngressGateway) のコンテナや、API ゲートウェイのアプリを配置する。これは単一障害点になりうるため、ワーカーNode のCPU やメモリを潤沢にしようできるように、他のリソースのコンテナとは別の Node グループにしたほうがよい。また、アップグレード時間の短縮にも繋がる。</td>
+<td>ワーカーNode へのインバウンド通信の入口になるリソース (例：Ingress、IngressGateway) のコンテナや、API ゲートウェイのアプリを配置する。これは単一障害点になりうるため、ワーカーNode の CPU やメモリを潤沢にしようできるように、他のリソースのコンテナとは別の Node グループにしたほうがよい。また、アップグレード時間の短縮にも繋がる。</td>
 </tr>
 <tr>
 <td><code>master</code></td>
@@ -34641,7 +34641,7 @@
 <tbody>
 <tr>
 <td>サービス検出</td>
-<td>Service とその Service 配下の EndpointSlice の追加と削除を監視し、これらの増減に合わせて、ワーカーNode 上で稼働する iptables にIP アドレスを追加/削除する。</td>
+<td>Service とその Service 配下の EndpointSlice の追加と削除を監視し、これらの増減に合わせて、ワーカーNode 上で稼働する iptables に IP アドレスを追加/削除する。</td>
 </tr>
 <tr>
 <td><code>L4</code> ロードバランサー</td>
@@ -34702,7 +34702,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <tbody>
 <tr>
 <td>サービス検出</td>
-<td>Service とその Service 配下の EndpointSlice の追加と削除を監視し、これらの増減に合わせて、ワーカーNode 上で稼働する iptables にIP アドレスを追加/削除する。</td>
+<td>Service とその Service 配下の EndpointSlice の追加と削除を監視し、これらの増減に合わせて、ワーカーNode 上で稼働する iptables に IP アドレスを追加/削除する。</td>
 </tr>
 <tr>
 <td><code>L4</code> ロードバランサー</td>
@@ -35097,7 +35097,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:44:25 JST">2026-08-01</span>
   </span>
 
     

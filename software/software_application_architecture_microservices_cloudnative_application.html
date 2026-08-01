@@ -33457,8 +33457,8 @@ sequenceDiagram
 </code></pre>
 <blockquote>
 <p>💡 API Gateway として、Nginx を採用します。</p>
-<p>API Gateway で、API へのルーティングの責務のほかに、認証やレートリミットなどの責務が必要な場合があります。</p>
-<p>Nginx はAPI Gateway に特化したツールではないため、API Gateway に必要な責務を網羅しきれないです。</p>
+<p>API Gateway で、API へのルーティング責務のほかに、認証やレートリミットなどの責務が必要な場合があります。</p>
+<p>Nginx は API Gateway に特化したツールではないため、API Gateway に必要な責務を網羅しきれないです。</p>
 <p>その場合、Nginx のサイドカーとして配置する istio-proxy で、不足する責務を補完します。</p>
 </blockquote>
 <h2 id="gateway">中央集約 Gateway パターン<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h2>
@@ -33535,8 +33535,8 @@ sequenceDiagram
 BFF はフロントエンドチームとバックエンドチームの両方の責任範囲と考えています
 フロントエンドとバックエンドの領域と疎結合にするために、両方の領域に依存しない技術 (例えば、今回ように Nginx) を使用したいです。
 GraphQL-API のエンドポイントには、GraphQL クライアントでリクエストを送信しなければなりません。
-そのため、BFF でGraphQL-API を採用すると、フロントエンドと BFF の責務の結合度が上がってしまいます。
-ただ、BFF を特にフロントエンドチームの責任範囲として捉える場合は、BFF をGraphQL-API を持つコンテナとして実装してよいいかもしれません。</p>
+そのため、BFF で GraphQL-API を採用すると、フロントエンドと BFF の責務の結合度が上がってしまいます。
+ただ、BFF を特にフロントエンドチームの責任範囲として捉える場合は、BFF を GraphQL-API を持つコンテナとして実装してよいいかもしれません。</p>
 </blockquote>
 <p><a href="https://microservices.io/patterns/apigateway.html">Microservices Pattern: Pattern: API Gateway / Backends for Frontends</a></p>
 <h2 id="_11">振り返り<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
@@ -33677,19 +33677,19 @@ GraphQL-API のエンドポイントには、GraphQL クライアントでリク
 <tbody>
 <tr>
 <td>フロントエンド領域</td>
-<td>フロントエンドアプリは、Amazon EKS クラスター外からのリクエストを RESTful-API で待ち受けます。API Gateway のRESTful-API にリクエストを送信します。</td>
+<td>フロントエンドアプリは、Amazon EKS クラスター外からのリクエストを RESTful-API で待ち受けます。API Gateway の RESTful-API にリクエストを送信します。</td>
 </tr>
 <tr>
 <td>API Gateway 領域</td>
-<td>Nginx は、フロントエンドからのリクエストを RESTful-API で待ち受けます。マイクロサービスの RPC-API やRESTful-API にリクエストを送信するように設定できます。RPC-API にgRPC でリクエストを送信する場合、<code>ngx_http_grpc_module</code> が必要です。</td>
+<td>Nginx は、フロントエンドからのリクエストを RESTful-API で待ち受けます。マイクロサービスの RPC-API や RESTful-API にリクエストを送信するように設定できます。RPC-API に gRPC でリクエストを送信する場合、<code>ngx_http_grpc_module</code> が必要です。</td>
 </tr>
 <tr>
 <td>マイクロサービス領域</td>
-<td>マイクロサービスのインフラストラクチャ層に RPC-API やRESTful-API を実装し、ダウンストリームからのリクエストを待ち受ける。一方で、インフラストラクチャ層に RPC-API やRESTful-API のクライアントを実装し、アップストリームにリクエストを送信する。MySQL への永続化する責務を持つマイクロサービスでは、インフラストラクチャ層に MySQL クライアントが必要になります。</td>
+<td>マイクロサービスのインフラストラクチャ層に RPC-API や RESTful-API を実装し、ダウンストリームからのリクエストを待ち受ける。一方で、インフラストラクチャ層に RPC-API や RESTful-API のクライアントを実装し、アップストリームにリクエストを送信する。MySQL への永続化する責務を持つマイクロサービスでは、インフラストラクチャ層に MySQL クライアントが必要になります。</td>
 </tr>
 <tr>
 <td>ストレージ領域 (DB)</td>
-<td>占有 DB のMySQL サーバーは、MySQL クライアントが送信したクエリを待ち受けます。</td>
+<td>占有 DB の MySQL サーバーは、MySQL クライアントが送信したクエリを待ち受けます。</td>
 </tr>
 </tbody>
 </table>
@@ -34019,7 +34019,7 @@ GraphQL-API のエンドポイントには、GraphQL クライアントでリク
 <p>そのため、マイクロサービスで、フロントエンドに関するデザインパターン (例：インターフェース層のプレゼンター、ユースケース層のアウトプットバウンダリー) は不要です。</p>
 <p><img alt="clean-architecture_layer.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/clean-architecture_layer.png" /></p>
 <p><a href="https://www.amazon.co.jp/dp/4048930656">Clean Architecture 達人に学ぶソフトウェアの構造と設計</a></p>
-<p><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html">[ 技術講座 ] Domain-Driven Design のエッセンス 第 1回｜オブジェクトの広場</a></p>
+<p><a href="https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html">[ 技術講座 ] Domain-Driven Design のエッセンス 第 1 回｜オブジェクトの広場</a></p>
 <h3 id="_37">マイクロサービスへの適用<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスでは、任意のアプリアーキテクチャを採用できます。</p>
 <p>例えば、受注管理業務のマイクロサービスでアプリアーキテクチャ層の依存関係を意識し、クリーンアーキテクチャを設計します。</p>
@@ -34115,11 +34115,11 @@ GraphQL-API のエンドポイントには、GraphQL クライアントでリク
 <tbody>
 <tr>
 <td>マイクロサービス (Temporal クライアント)</td>
-<td>ドメイン層には、ワークフローの定義ロジックを実装する。インフラストラクチャ層に、クライアントからの同期リクエストを受信するための API とTemporal SDK クライアントを実装する。</td>
+<td>ドメイン層には、ワークフローの定義ロジックを実装する。インフラストラクチャ層に、クライアントからの同期リクエストを受信するための API と Temporal SDK クライアントを実装する。</td>
 </tr>
 <tr>
 <td>ワークフローステータスチェッカー</td>
-<td>ドメイン層には、取得するワークフローステータスのロジックを実装する。インフラストラクチャ層に Temporal SDK のロジックを実装する。インフラストラクチャ層に、クライアントからの非同期リクエスト (ポーリング処理) を受信するための API とTemporal SDK クライアントを実装する。</td>
+<td>ドメイン層には、取得するワークフローステータスのロジックを実装する。インフラストラクチャ層に Temporal SDK のロジックを実装する。インフラストラクチャ層に、クライアントからの非同期リクエスト (ポーリング処理) を受信するための API と Temporal SDK クライアントを実装する。</td>
 </tr>
 <tr>
 <td>タスクキュー (Temporal サーバー)</td>
@@ -34177,7 +34177,7 @@ GraphQL-API のエンドポイントには、GraphQL クライアントでリク
 <p>余裕があったら書くぜ！</p>
 </blockquote>
 <h1 id="13-02-oidc-sso">13-02. OIDC による SSO<a class="headerlink" href="#13-02-oidc-sso" title="Permanent link">&para;</a></h1>
-<h2 id="keycloak-istio-sso">Keycloak とIstio による SSO<a class="headerlink" href="#keycloak-istio-sso" title="Permanent link">&para;</a></h2>
+<h2 id="keycloak-istio-sso">Keycloak と Istio による SSO<a class="headerlink" href="#keycloak-istio-sso" title="Permanent link">&para;</a></h2>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-SSO (詳細).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-SSO_(詳細).drawio.png" /></p>
 <ol>
 <li>ユーザーはログインする。ブラウザは、Amazon Route 53 にリクエストを送信する。</li>
@@ -34283,7 +34283,7 @@ sequenceDiagram
 
     PCブラウザ -&gt;&gt; Istio IngressGateway : 任意のデータ取得のため&lt;br&gt;アクセストークン再利用</code></pre>
 <p><a href="https://ysyau.medium.com/spa-and-rest-api-application-friendly-oauth-2-0-oidc-login-flow-80ba927ff47d">SPA and Rest API Application friendly Oauth 2.0/Oidc login flow</a></p>
-<h2 id="keycloak-istio">Keycloak とIstio によるアクセストークン検証<a class="headerlink" href="#keycloak-istio" title="Permanent link">&para;</a></h2>
+<h2 id="keycloak-istio">Keycloak と Istio によるアクセストークン検証<a class="headerlink" href="#keycloak-istio" title="Permanent link">&para;</a></h2>
 <p>Istio を使用して、クライアントが認証済みかどうかをアクセストークンでその都度検証できます。</p>
 <p>ブラウザは、LocalStorage に管理したアクセストークンを再利用します。</p>
 <p>Amazon EKS クラスター内では、リクエストの Authorization ヘッダーにアクセストークンを設定し、Pod 間でアクセストークンを伝播する必要があります。</p>
@@ -34301,11 +34301,11 @@ sequenceDiagram
 <tbody>
 <tr>
 <td>Istio AuthorizationPolicy</td>
-<td>紐付けた Pod のistio-proxy にアクセストークンの検証処理を実装する。istio-proxy は、ID プロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンがない場合に、ダウンストリームに <code>403</code> ステータスを返信する。失効 / 不正のアクセストークンを含むリクエストを検証せずに許可してしまうため、RequestAuthentication も実装すべきである。</td>
+<td>紐付けた Pod の istio-proxy にアクセストークンの検証処理を実装する。istio-proxy は、ID プロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンがない場合に、ダウンストリームに <code>403</code> ステータスを返信する。失効 / 不正のアクセストークンを含むリクエストを検証せずに許可してしまうため、RequestAuthentication も実装すべきである。</td>
 </tr>
 <tr>
 <td>Istio RequestAuthentication</td>
-<td>紐付けた Pod のistio-proxy にアクセストークンの検証処理を実装する。istio-proxy は、ID プロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンが失効 / 不正だった場合に、ダウンストリームに <code>401</code> ステータスを返信する。アクセストークンがないリクエストを検証せずに許可してしまうため、AuthorizationPolicy も実装すべきである。</td>
+<td>紐付けた Pod の istio-proxy にアクセストークンの検証処理を実装する。istio-proxy は、ID プロバイダーにアクセストークン検証のリクエストを送信する。アクセストークンが失効 / 不正だった場合に、ダウンストリームに <code>401</code> ステータスを返信する。アクセストークンがないリクエストを検証せずに許可してしまうため、AuthorizationPolicy も実装すべきである。</td>
 </tr>
 <tr>
 <td>Istio データプレーン (istio-proxy)</td>
@@ -34422,7 +34422,7 @@ flowchart LR
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

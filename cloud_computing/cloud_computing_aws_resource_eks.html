@@ -19997,7 +19997,7 @@
   <a href="#amazon-ec2-node-graceful-shutdown" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon EC2 ワーカーNode のGraceful Shutdown
+        ▼ Amazon EC2 ワーカーNode の Graceful Shutdown
       
     </span>
   </a>
@@ -35933,7 +35933,7 @@
   <a href="#amazon-ec2-node-graceful-shutdown" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon EC2 ワーカーNode のGraceful Shutdown
+        ▼ Amazon EC2 ワーカーNode の Graceful Shutdown
       
     </span>
   </a>
@@ -36487,7 +36487,7 @@
 </tr>
 <tr>
 <td>クラスターIP アドレスファミリー</td>
-<td>Pod とService に割り当てる ClusterIP のIP アドレスタイプ (IPv4、IPv6) を設定する。</td>
+<td>Pod と Service に割り当てる ClusterIP の IP アドレスタイプ (IPv4、IPv6) を設定する。</td>
 <td></td>
 </tr>
 <tr>
@@ -36746,7 +36746,7 @@
 </dd>
 <dt><code>(6)</code></dt>
 <dd>
-<p>あとは、Kubernetes の標準の認可の仕組みである。</p>
+<p>あとは、Kubernetes 標準の認可の仕組みである。</p>
 <p>kube-apiserverは、UserAccount／ServiceAccount／Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを経由して取得する。</p>
 <p>AWS IAMユーザーは、Kubernetesリソースを操作できる。</p>
 </dd>
@@ -36924,7 +36924,7 @@
 <tr>
 <td>AWS ALB</td>
 <td>Ingress</td>
-<td>Ingress はAWS ALB に置き換える必要がある。AWS Load Balancer Controller を作成すると、AWS ALB は自動的に作成される。<br>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html">https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html</a> <br>・<a href="https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes">https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes</a></td>
+<td>Ingress は AWS ALB に置き換える必要がある。AWS Load Balancer Controller を作成すると、AWS ALB は自動的に作成される。<br>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html">https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html</a> <br>・<a href="https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes">https://blog.linkode.co.jp/entry/2020/06/26/095917#AWS-ALB-Ingress-Controller-for-Kubernetes</a></td>
 </tr>
 <tr>
 <td>AWS Load Balancer Controller</td>
@@ -37060,7 +37060,7 @@
 <span class="w">        </span><span class="nt">defaultMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">420</span>
 <span class="w">        </span><span class="nt">sources</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">serviceAccountToken</span><span class="p">:</span>
-<span class="w">              </span><span class="c1"># OIDC のID プロバイダーによるトークンの発行対象</span>
+<span class="w">              </span><span class="c1"># OIDC の ID プロバイダーによるトークンの発行対象</span>
 <span class="w">              </span><span class="nt">audience</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sts.amazonaws.com</span>
 <span class="w">              </span><span class="nt">expirationSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86400</span>
 <span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">token</span>
@@ -37526,7 +37526,7 @@
 </tr>
 <tr>
 <td><code>var/log/aws-routed-eni/ipamd.log</code></td>
-<td>このディレクトリに、Amazon VPC CNI のL-IPAM デーモンのログを出力する。</td>
+<td>このディレクトリに、Amazon VPC CNI の L-IPAM デーモンのログを出力する。</td>
 </tr>
 <tr>
 <td><code>/var/log/aws-routed-eni/plugin.log</code></td>
@@ -37619,7 +37619,7 @@
 <tr>
 <td><code>Name</code></td>
 <td>Amazon EC2 ワーカーNode の名前</td>
-<td>Node グループで指定する起動テンプレートのタグに、<code>Name</code> タグを設定しておく。起動する Amazon EC2 ワーカーNode にAmazon EC2 の名前は <code>Name</code> タグで決まる仕組みのため、起動テンプレートによってワーカーNode 名を設定させることができる。</td>
+<td>Node グループで指定する起動テンプレートのタグに、<code>Name</code> タグを設定しておく。起動する Amazon EC2 ワーカーNode に Amazon EC2 の名前は <code>Name</code> タグで決まる仕組みのため、起動テンプレートによってワーカーNode 名を設定させることができる。</td>
 </tr>
 </tbody>
 </table>
@@ -37646,7 +37646,7 @@
 <tr>
 <td><code>kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt;</code></td>
 <td><code>owned</code></td>
-<td>セルフマネージド型の Amazon EC2 ワーカーNode を使用する場合、ユーザーが作成した Amazon EC2 をNode グループに参加させるために、必要である。</td>
+<td>セルフマネージド型の Amazon EC2 ワーカーNode を使用する場合、ユーザーが作成した Amazon EC2 を Node グループに参加させるために、必要である。</td>
 </tr>
 </tbody>
 </table>
@@ -37816,7 +37816,7 @@
 <tr>
 <td><code>--apiserver-endpoint</code></td>
 <td></td>
-<td>Amazon EKS Cluster のkube-apiserver のエンドポイントを設定する。</td>
+<td>Amazon EKS Cluster の kube-apiserver のエンドポイントを設定する。</td>
 </tr>
 <tr>
 <td><code>--b64-cluster-ca</code></td>
@@ -37910,7 +37910,7 @@
 <li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-image-cache/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-image-cache/</a></li>
 </ul>
 </blockquote>
-<h4 id="amazon-ec2-node-graceful-shutdown">▼ Amazon EC2 ワーカーNode のGraceful Shutdown<a class="headerlink" href="#amazon-ec2-node-graceful-shutdown" title="Permanent link">&para;</a></h4>
+<h4 id="amazon-ec2-node-graceful-shutdown">▼ Amazon EC2 ワーカーNode の Graceful Shutdown<a class="headerlink" href="#amazon-ec2-node-graceful-shutdown" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、Amazon EC2 ワーカーNode は新しい Pod のスケジューリングを禁止した後、Pod の退避を待たずに停止してしまう。</p>
 <p>kubelet を使用して Amazon EC2 ワーカーNode の停止を待機し、Pod が終了する (ワーカーNode から退避させる) までの時間を稼ぐ。</p>
 <p>ワーカーNode の停止までの待機中に終了できた Pod は、<code>Failed</code> ステータスとなる。</p>
@@ -38253,7 +38253,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <tbody>
 <tr>
 <td>Pod 実行ロール</td>
-<td>kubelet がAWS リソースにリクエストを送信できるように、Pod にロールを設定する。</td>
+<td>kubelet が AWS リソースにリクエストを送信できるように、Pod にロールを設定する。</td>
 <td>・実行ポリシー (<code>AmazonEKSFargatePodExecutionRolePolicy</code>) には、Amazon ECR への認可スコープのみが付与されている。<br>・信頼されたエンティティでは、<code>eks-fargate-pods.amazonaws.com</code> を設定する必要がある。<br><a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html">https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html</a></td>
 </tr>
 <tr>
@@ -38263,8 +38263,8 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 </tr>
 <tr>
 <td>ポッドセレクタ (Namespace)</td>
-<td>Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod のNamespace の値を設定する。</td>
-<td>・<code>kube-system</code> や <code>default</code> を指定する Kubernetes リソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・Istio やArgoCD を、それ専用の Namespace で稼働させる場合は、その Namespace のためのプロファイルを作成しておく必要がある。</td>
+<td>Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod の Namespace の値を設定する。</td>
+<td>・<code>kube-system</code> や <code>default</code> を指定する Kubernetes リソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・Istio や ArgoCD を、それ専用の Namespace で稼働させる場合は、その Namespace のためのプロファイルを作成しておく必要がある。</td>
 </tr>
 <tr>
 <td>ポッドセレクタ (Label)</td>
@@ -38407,7 +38407,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:47:56 JST">2026-08-01</span>
   </span>
 
     

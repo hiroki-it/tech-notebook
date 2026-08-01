@@ -33248,11 +33248,11 @@
 <tbody>
 <tr>
 <td>AWS ENI</td>
-<td>ENI には、サブネットから IP アドレスが割り当てられている。ENI をAWS リソースに紐づけると、ENI はその AWS リソースに IP アドレスを割り当てる。</td>
+<td>ENI には、サブネットから IP アドレスが割り当てられている。ENI を AWS リソースに紐づけると、ENI はその AWS リソースに IP アドレスを割り当てる。</td>
 </tr>
 <tr>
 <td>AWS kube-proxy アドオン</td>
-<td>kube-proxy はNode 内の iptables を更新し、Amazon EKS クラスター内で L4 トラフィックを管理できるようにする。Node 内の iptable に対して、Pod のIP アドレスを追加 / 削除リクエストを送信する。AWS マネージド Pod として稼働する。</td>
+<td>kube-proxy は Node 内の iptables を更新し、Amazon EKS クラスター内で L4 トラフィックを管理できるようにする。Node 内の iptable に対して、Pod の IP アドレスを追加 / 削除リクエストを送信する。AWS マネージド Pod として稼働する。</td>
 </tr>
 <tr>
 <td>Amazon VPC CNI アドオン</td>
@@ -33276,7 +33276,7 @@
 <tbody>
 <tr>
 <td>AWS ALB</td>
-<td>Amazon EKS クラスター外の通信を Cluster 内の NodePort Service にL7 ロードバランシングする。</td>
+<td>Amazon EKS クラスター外の通信を Cluster 内の NodePort Service に L7 ロードバランシングする。</td>
 </tr>
 <tr>
 <td>Istio コントロールプレーン</td>
@@ -33288,7 +33288,7 @@
 </tr>
 <tr>
 <td>NodePort Service</td>
-<td>kube-proxy の更新した iptable を使用して、AWS ALB からのリクエストを Istio Ingress Gateway にL4 ロードバランシングする。</td>
+<td>kube-proxy の更新した iptable を使用して、AWS ALB からのリクエストを Istio Ingress Gateway に L4 ロードバランシングする。</td>
 </tr>
 </tbody>
 </table>
@@ -33317,13 +33317,13 @@
 </tr>
 <tr>
 <td>Kubernetes NodePort Service</td>
-<td>kube-proxy の更新した iptable を使用して、ALB からのリクエストを受信し、Istio IngressGateway Pod にL4 ロードバランシングする。</td>
+<td>kube-proxy の更新した iptable を使用して、ALB からのリクエストを受信し、Istio IngressGateway Pod に L4 ロードバランシングする。</td>
 </tr>
 </tbody>
 </table>
 <p><img alt="DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トラフィック管理 (南北).drawio.png" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%88%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E7%AE%A1%E7%90%86_(%E5%8D%97%E5%8C%97).drawio.png" /></p>
 <p>Istio IngressGateway については、以下のブログで解説しているため、5000 兆回ブックマークしてくれると嬉しいです！</p>
-<p><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2024/01/16/013404">【Istio⛵️】Istio によって抽象化される Envoy のHTTPS リクエスト処理の仕組み - 好きな技術を布教したい 😗</a></p>
+<p><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2024/01/16/013404">【Istio⛵️】Istio によって抽象化される Envoy の HTTPS リクエスト処理の仕組み - 好きな技術を布教したい 😗</a></p>
 <h2 id="_12">サービスメッシュ外<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <p>Istio は、指定した Namespace 以外に属する Pod にはサービスメッシュの機能を提供しません。</p>
 <p>サービスメッシュ外の Namespace では、CoreDNS を使用して、トラフィックを管理します。</p>
@@ -33338,7 +33338,7 @@
 <tbody>
 <tr>
 <td>AWS ALB</td>
-<td>Amazon EKS クラスター外の通信を Cluster 内の NodePort Service にL7 ロードバランシングする。</td>
+<td>Amazon EKS クラスター外の通信を Cluster 内の NodePort Service に L7 ロードバランシングする。</td>
 </tr>
 <tr>
 <td>AWS CoreDNS アドオン</td>
@@ -33346,7 +33346,7 @@
 </tr>
 <tr>
 <td>Kubernetes ClusterIP Service</td>
-<td>kube-proxy の更新した iptable を使用して、Pod からのリクエストを Pod にL4 ロードバランシングする。</td>
+<td>kube-proxy の更新した iptable を使用して、Pod からのリクエストを Pod に L4 ロードバランシングする。</td>
 </tr>
 <tr>
 <td>Kubernetes ConfigMap</td>
@@ -33354,11 +33354,11 @@
 </tr>
 <tr>
 <td>Kubernetes NodePort Service</td>
-<td>kube-proxy の更新した iptable を使用して、AWS ALB からのリクエストを Istio Ingress Gateway にL4 ロードバランシングする。</td>
+<td>kube-proxy の更新した iptable を使用して、AWS ALB からのリクエストを Istio Ingress Gateway に L4 ロードバランシングする。</td>
 </tr>
 <tr>
 <td>Pod (送信元)</td>
-<td>サービスメッシュ外にある任意の送信元 Pod である。kubelet は、Pod 内のコンテナの <code>/etc/resolv.conf</code> ファイルに権威 DNS サーバー (ここでは CoreDNS) の IP アドレスを設定する。リクエスト時に、コンテナは自身の <code>/etc/resolv.conf</code> ファイルで権威 DNS サーバーの IP アドレスを確認し、DNS サーバーに宛先 Pod のIP アドレスの正引きを実施する。送信元 Pod は、取得した IP アドレスを使用して、宛先 Pod にリクエストを送信する。</td>
+<td>サービスメッシュ外にある任意の送信元 Pod である。kubelet は、Pod 内のコンテナの <code>/etc/resolv.conf</code> ファイルに権威 DNS サーバー (ここでは CoreDNS) の IP アドレスを設定する。リクエスト時に、コンテナは自身の <code>/etc/resolv.conf</code> ファイルで権威 DNS サーバーの IP アドレスを確認し、DNS サーバーに宛先 Pod の IP アドレスの正引きを実施する。送信元 Pod は、取得した IP アドレスを使用して、宛先 Pod にリクエストを送信する。</td>
 </tr>
 <tr>
 <td>Pod (宛先)</td>
@@ -33366,11 +33366,11 @@
 </tr>
 <tr>
 <td>iptables (Node 内)</td>
-<td>Pod のIP アドレスを管理する。</td>
+<td>Pod の IP アドレスを管理する。</td>
 </tr>
 <tr>
 <td>kubelet</td>
-<td>Node 内でデーモンプロセスとして稼働し、Amazon EKS コントロールプレーンから Pod 作成 / 削除リクエストを受信する。新しい Pod をCluster Network に参加させるために、Amazon VPC CNI にリクエストを送信する。</td>
+<td>Node 内でデーモンプロセスとして稼働し、Amazon EKS コントロールプレーンから Pod 作成 / 削除リクエストを受信する。新しい Pod を Cluster Network に参加させるために、Amazon VPC CNI にリクエストを送信する。</td>
 </tr>
 </tbody>
 </table>
@@ -33408,7 +33408,7 @@
 </tr>
 <tr>
 <td>AWS ALB (社内公開用)</td>
-<td>IP アドレスを検査する AWS WAF を紐付ける。SWE やSREer だけがリクエストを送信できるようにする。</td>
+<td>IP アドレスを検査する AWS WAF を紐付ける。SWE や SREer だけがリクエストを送信できるようにする。</td>
 </tr>
 <tr>
 <td>Amazon Route 53</td>
@@ -33416,7 +33416,7 @@
 </tr>
 <tr>
 <td>ID プロバイダー</td>
-<td>ダッシュボードにログインできる SWE やSREer の認証情報を管理する。</td>
+<td>ダッシュボードにログインできる SWE や SREer の認証情報を管理する。</td>
 </tr>
 <tr>
 <td>Istio IngressGateway</td>
@@ -33424,7 +33424,7 @@
 </tr>
 <tr>
 <td>Keycloak、Temporal など</td>
-<td>SWE やSREer にだけ公開するコンテナである。ツールのダッシュボードで、ビルトインの SSO がある場合、ID プロバイダーに認証フェーズを直接委譲できる。</td>
+<td>SWE や SREer にだけ公開するコンテナである。ツールのダッシュボードで、ビルトインの SSO がある場合、ID プロバイダーに認証フェーズを直接委譲できる。</td>
 </tr>
 <tr>
 <td>フロントエンド (PC / スマホブラウザ)</td>
@@ -33453,11 +33453,11 @@
 <tbody>
 <tr>
 <td>Alertmanager、Grafana、Kiali、Prometheus など</td>
-<td>SWE やSREer にだけ公開するコンテナである。</td>
+<td>SWE や SREer にだけ公開するコンテナである。</td>
 </tr>
 <tr>
 <td>AWS ALB (社内公開用)</td>
-<td>IP アドレスを検査する AWS WAF を紐付ける。SWE やSREer だけがリクエストを送信できるようにする。</td>
+<td>IP アドレスを検査する AWS WAF を紐付ける。SWE や SREer だけがリクエストを送信できるようにする。</td>
 </tr>
 <tr>
 <td>AWS CoreDNS アドオン</td>
@@ -33469,7 +33469,7 @@
 </tr>
 <tr>
 <td>ID プロバイダー</td>
-<td>ダッシュボードにログインできる SWE やSREer の認証情報を管理する。</td>
+<td>ダッシュボードにログインできる SWE や SREer の認証情報を管理する。</td>
 </tr>
 <tr>
 <td>NAT Gateway</td>
@@ -33509,7 +33509,7 @@
 <p>💡 余裕があったらしっかり書くぜ！</p>
 </blockquote>
 <h2 id="_17">サービスメッシュ内<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
-<h3 id="aws-istio">AWS とIstio による証明書管理<a class="headerlink" href="#aws-istio" title="Permanent link">&para;</a></h3>
+<h3 id="aws-istio">AWS と Istio による証明書管理<a class="headerlink" href="#aws-istio" title="Permanent link">&para;</a></h3>
 <p>Istio は、指定した Namespace に属する Pod へサービスメッシュの機能を提供する。</p>
 <p>管理下の Pod に istio-proxy を挿入します。</p>
 <p>istio-proxy はクライアント証明書 / SSL 証明書を持ち、アップストリームとダウンストリームの istio-proxy と相互 TLS 認証するします。</p>
@@ -33532,7 +33532,7 @@
 </tr>
 <tr>
 <td>AWS ALB</td>
-<td>AWS Certificate Manager の管理する SSL 証明書を、AWS ALB に紐づける。ユーザーが Amazon EKS クラスターにリクエストを送信するときに、通常の TLS を実行できるようになる。なお、ここで SSL/TLS 終端とし、アップストリームの Istio IngressGateway でSSL/TLS を再開する。</td>
+<td>AWS Certificate Manager の管理する SSL 証明書を、AWS ALB に紐づける。ユーザーが Amazon EKS クラスターにリクエストを送信するときに、通常の TLS を実行できるようになる。なお、ここで SSL/TLS 終端とし、アップストリームの Istio IngressGateway で SSL/TLS を再開する。</td>
 </tr>
 <tr>
 <td>Amazon Aurora</td>
@@ -33882,7 +33882,7 @@
 </tr>
 <tr>
 <td>インシデント管理ツール (Slack、Incident.io)</td>
-<td>特定のマイクロサービスのインシデント対応フローを自動化する。インシデントを Slack が受信すると、Incident.io がインシデント対応チャンネルを自動的に作成する。その後、まずはインシデントコマンダーを一次担当者に自動的に割り当てる。インシデントコマンダーは、Incident.io のBot の質問に答えながら、インシデント解決者を二次担当者に割り当てる。インシデントコマンダーは指揮に努める。インシデント解決者は対処に尽力し、対応が完了した後、Bot の質問に答えながら振り返りレポートを作成する。</td>
+<td>特定のマイクロサービスのインシデント対応フローを自動化する。インシデントを Slack が受信すると、Incident.io がインシデント対応チャンネルを自動的に作成する。その後、まずはインシデントコマンダーを一次担当者に自動的に割り当てる。インシデントコマンダーは、Incident.io の Bot の質問に答えながら、インシデント解決者を二次担当者に割り当てる。インシデントコマンダーは指揮に努める。インシデント解決者は対処に尽力し、対応が完了した後、Bot の質問に答えながら振り返りレポートを作成する。</td>
 </tr>
 <tr>
 <td>マイクロサービスのオンコールチーム</td>
@@ -33922,7 +33922,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:44:25 JST">2026-08-01</span>
   </span>
 
     
