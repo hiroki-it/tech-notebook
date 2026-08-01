@@ -279,7 +279,7 @@ spec:
 
 ### NodePool (Google Cloud Anthos)
 
-Anthos GKE Cluster 内の Node に関して、Node グループを設定する。
+Anthos GKE Cluster 内の Node に、Node グループを設定する。
 
 Anthos on Baremetal の場合は、Node の固定 IP アドレスを設定することにより、Node グループに Node を参加させられる。
 

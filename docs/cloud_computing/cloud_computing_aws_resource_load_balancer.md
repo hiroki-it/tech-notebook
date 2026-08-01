@@ -37,7 +37,7 @@ description: LB＠AWSリソースの知見を記録しています。
 
 クラウドリバースプロキシサーバー、かつクラウド `L7` ロードバランサーとして働く。
 
-Amazon EC2 へのリクエストをバランスよく分配することによって、サーバーへの負荷を緩和する。
+Amazon EC2 へのリクエストをバランスよく分配することで、サーバーへの負荷を緩和する。
 
 ![aws_alb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_alb.png)
 

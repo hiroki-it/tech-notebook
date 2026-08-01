@@ -76,7 +76,7 @@ OTLP 形式やいくつかの OSS 形式 (例：Prometheus、Jaeger など) の�
 
 OpenTelemetry クライアントの Exporter と同じである。
 
-非対応の監視バックエンド (例：X-Ray) に関しては、その形式の監視バックエンドが提供する Exporter (例：AWS Distro for OpenTelemetry Collector の Exporter) を使用する必要がある。
+非対応の監視バックエンド (例：X-Ray) では、その形式の監視バックエンドが提供する Exporter (例：AWS Distro for OpenTelemetry Collector の Exporter) を使用する必要がある。
 
 HTTPS で送信する場合には、クライアント証明書が必要である。
 

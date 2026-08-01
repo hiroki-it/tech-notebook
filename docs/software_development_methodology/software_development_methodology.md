@@ -23,7 +23,7 @@ description: 開発手法論＠開発手法の知見を記録しています。
 
 #### ▼ 外部設計の詳細
 
-外部設計では、ユーザ向けのソフトウェア設計が行われる。
+外部設計では、ユーザ向けにソフトウェアを設計する。
 
 ![外部設計の詳細](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/外部設計の詳細.png)
 

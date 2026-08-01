@@ -15,7 +15,7 @@ description: 構造化設計＠アーキテクチャの知見を記録してい�
 
 ## 構造化設計
 
-構造化言語 (例：Go など) に関して、処理手順を階層的にとらえること。
+構造化言語 (例：Go など) で、処理手順を階層的にとらえること。
 
 > - https://stackoverflow.com/questions/17951803/programming-go-using-unified-modelling-language-diagrams
 > - http://shikou-sakugo.cocolog-nifty.com/blog/2011/02/post-60cc.html

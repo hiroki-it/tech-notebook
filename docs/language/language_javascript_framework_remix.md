@@ -544,7 +544,7 @@ export default function FooComponent() {
 
 `routes` ディレクトリには、API ルーティングのための api ルートとページング処理のための ui ルートがある。
 
-それぞれのルートに対応したユースケース処理のファイル（`uiXxxUsecase`、`apiXxxUsecase`）を作成すること、
+それぞれのルートに対応したユースケース処理のファイル（`uiXxxUsecase`、`apiXxxUsecase`）を作成する。
 
 <br>
 

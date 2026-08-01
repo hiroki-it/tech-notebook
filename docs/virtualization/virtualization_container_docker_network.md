@@ -21,7 +21,7 @@ description: ネットワーク＠Dockerの知見を記録しています。
 
 ![docker_bridge-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bridge-network.png)
 
-bridge ネットワークは、
+bridge ネットワークについて、以下に示す。
 
 - コンテナイーサネット (`eth`)
 - 両端にネットワークインターフェースを持つ仮想イーサネット (`veth`)
@@ -163,7 +163,7 @@ ac017dda93d6        host                    host                local
 
 ここでのコンテナ側のホスト名は、『`localhost`』となる。
 
-ホストとコンテナの間におけるネットワーク接続の成否を確認できる。
+ホストとコンテナ間のネットワーク接続の成否を確認できる。
 
 **＊例＊**
 
@@ -205,7 +205,7 @@ $ curl --fail http://<webコンテナに割り当てたホスト名>:80/
 
 リクエストは、ホストを経由して、ポートフォワーディングされたコンテナにフォワーディングされる。
 
-ホストとコンテナの間におけるネットワーク接続の成否を確認できる。
+ホストとコンテナ間のネットワーク接続の成否を確認できる。
 
 **＊例＊**
 

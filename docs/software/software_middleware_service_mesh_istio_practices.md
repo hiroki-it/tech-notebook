@@ -85,7 +85,7 @@ spec:
 
 ## 02. トラフィック管理
 
-### Istio Ingress Gateway に関して
+### Istio Ingress Gateway について
 
 #### ▼ Istiod コントロールプレーンとは異なる Namespace におく
 

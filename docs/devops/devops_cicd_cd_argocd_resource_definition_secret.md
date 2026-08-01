@@ -594,8 +594,6 @@ ArgoCD の application-controller は、`cluster-<エンドポイントURL>` と
 
 #### ▼ Amazon EKS の場合
 
-Amazon EKS の場合、
-
 **例**
 
 デプロイ先の Cluster が Amazon EKS の場合は、以下のような Secret が作成される。

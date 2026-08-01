@@ -17,7 +17,7 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 ### EC2NodeClass とは
 
-NodePool 内の Node に対して、AWS 固有の仕様を設定する。
+NodePool 内の Node に AWS 固有の仕様を設定する。
 
 Cluster スコープな Kubernetes リソースであるため、Namespace は設定できない。
 
@@ -345,7 +345,7 @@ spec:
 
 ### NodePool とは
 
-NodePool 内の Node に対して、クラウドプロバイダーに依らない仕様を設定する。
+NodePool 内の Node にクラウドプロバイダーに依らない仕様を設定する。
 
 EC2 Node のグループ (例：Amazon EKS Node グループ、Google Cloud Node プールなど) に合わせて、複数作成するとよい。
 

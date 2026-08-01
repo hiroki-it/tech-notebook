@@ -632,7 +632,7 @@ Prometheus 上でメトリクスをクエリすると、Istiod コントロー�
 | メトリクス名                          | 単位     | 説明                                                                                                                                                                                    |
 | ------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `istio_requests_total`                | カウント | istio-proxy が受信した総リクエスト数を表す。メトリクスの名前空間に対してさまざまなディメンションを設定できる。`<br>`・https://blog.christianposta.com/understanding-istio-telemetry-v2/ |
-| `istio_request_duration_milliseconds` | カウント | istio-proxy が受信したリクエストに関して、処理の所要時間を表す。                                                                                                                        |
+| `istio_request_duration_milliseconds` | カウント | istio-proxy が受信したリクエストの処理時間を表す。                                                                                                                                      |
 | `istio_request_messages_total`        | カウント | istio-proxy が受信した gRPC による総 HTTP リクエスト数を表す。                                                                                                                          |
 | `istio_request_messages_total`        | カウント | istio-proxy が受信した gRPC による総 HTTP リクエスト数を表す。                                                                                                                          |
 

@@ -959,7 +959,7 @@ spec:
 
 #### ▼ endpoints とは
 
-Service でルーティング先の Pod に関して、『現在の』 宛先情報を設定する。
+Service でルーティング先の Pod に、『現在の』 宛先情報を設定する。
 
 Kubernetes が自動的に更新するため、ユーザーが管理する必要はない。
 
@@ -3141,7 +3141,7 @@ kubelet がヘルスチェックを実行することで、コンテナが正常
 
 注意点として、LivenessProbe ヘルスチェックの間隔が短すぎると、kubelet に必要以上の負荷がかかる。
 
-`terminationGracePeriodSeconds` に関しては、`.spec.terminationGracePeriodSeconds` キーで Pod 単位での待機時間を設定できる。
+`terminationGracePeriodSeconds` は、`.spec.terminationGracePeriodSeconds` キーで Pod 単位の待機時間を設定できる。
 
 ```yaml
 apiVersion: v1
@@ -3419,7 +3419,7 @@ spec:
       startupProbe:
         httpGet:
           port: 8080
-          # SpringBoot 製 Java アプリケーションのの startup エンドポイント
+          # SpringBoot 製 Java アプリケーションの startup エンドポイント
           path: /actuator/startup
         initialDelaySeconds: 10
         periodSeconds: 10
@@ -3441,7 +3441,7 @@ spec:
 
 kubelet がヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。
 
-`terminationGracePeriodSeconds` に関しては、`.spec.terminationGracePeriodSeconds` キーで Pod 単位での待機時間を設定できる。
+`terminationGracePeriodSeconds` は、`.spec.terminationGracePeriodSeconds` キーで Pod 単位の待機時間を設定できる。
 
 ```yaml
 apiVersion: v1
@@ -3762,7 +3762,7 @@ spec:
 
 #### ▼ securityContext とは
 
-Pod 内の特定のコンテナに対して、認可スコープを設定する。
+Pod 内の特定のコンテナに認可スコープを設定する。
 
 オプションは、`.spec.securityContext` キーと同じである。
 
@@ -4172,7 +4172,7 @@ spec:
 
 #### ▼ securityContext とは
 
-Pod 内のすべてのコンテナに対して、認可スコープを設定する。
+Pod 内のすべてのコンテナに認可スコープを設定する。
 
 > - https://qiita.com/dingtianhongjie/items/51a4cea1265c5ec836cc
 
@@ -5180,7 +5180,7 @@ roleRef:
 
 Role の紐付け先の Account の名前を設定する。
 
-ServiceAccount 名に関しては、ユーザー名でもよい。
+ServiceAccount 名は、ユーザー名でもよい。
 
 ```yaml
 apiVersion: io.k8s.api.rbac.v1

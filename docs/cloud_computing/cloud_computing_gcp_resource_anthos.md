@@ -200,7 +200,7 @@ Google Anthos Cluster の作成時やアップグレード時に、`bmctl` コ�
 
 ベアメタルであるため、自前で仮想サーバー (例：VMware) を作成する必要がある。
 
-Kind はコンテナを構築し、そのコンテナ内でブートストラップ Cluster を作成できるか否かを検証することにより、Google Anthos Cluster の事前検証する。
+Kind はコンテナを構築し、そのコンテナ内でブートストラップ Cluster を作成できるか否かを検証することで、Google Anthos Cluster を事前検証する。
 
 Kind がコンテナを構築するために、Google Anthos Cluster の構築前に、`docker` プロセスを起動しておく必要がある。
 
@@ -282,7 +282,7 @@ $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace
 
 #### ▼ --reuse-bootstrap-cluster
 
-既存のブートストラップ Cluster を再利用することにより、プリフライトチェックの一部をスキップし、成功すればアップグレードする。
+既存のブートストラップ Cluster を再利用することで、プリフライトチェックの一部をスキップし、成功すればアップグレードする。
 
 ```bash
 $ ~/baremetal/bmctl upgrade cluster -c foo-anthos-cluster -n foo-namespace --reuse-bootstrap-cluster

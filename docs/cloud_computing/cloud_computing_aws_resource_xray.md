@@ -208,7 +208,7 @@ subsegment.put_annotation("component", value)
 
 #### ▼ Amazon CloudWatch Logs との連携
 
-あらかじめ、分散トレースに紐づくログがあるロググループ名を設定し、またログには X-Ray 仕様のトレース ID を出力しておく必要がある。
+あらかじめ、分散トレースに紐づくログがあるロググループ名を設定し、ログには X-Ray 仕様のトレース ID を出力しておく必要がある。
 
 > - https://zenn.dev/k6s4i53rx/articles/69ef65b84dd799#%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95
 

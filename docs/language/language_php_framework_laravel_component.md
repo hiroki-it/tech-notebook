@@ -564,7 +564,7 @@ class EventServiceProvider extends ServiceProvider
 
 Laravel の多くのコンポーネントに、`boot()` 関数が定義されている。
 
-Eloquent モデルでは、インスタンス作成時に `boot()` 関数がコールされ、これによりに `bootTraits()` 関数が実行される。
+Eloquent モデルでは、インスタンス作成時に `boot()` 関数がコールされ、これにより `bootTraits()` 関数が実行される。
 
 Trait に `boot+<クラス名>` という名前の静的関数が定義されていると、`bootTraits()` 関数はこれをコールする。
 

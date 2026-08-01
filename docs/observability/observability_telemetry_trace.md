@@ -40,7 +40,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 分散トレースで特定のマイクロサービス間でレスポンスタイムを可視化できるため、いずれのマイクロサービス間の通信がボトルネックになっているかがわかる。
 
-その送信元マイクロサービスのリクエストまたは宛先マイクロサービスのレスポンスに関して、性能に問題がないかを調査する必要がある。
+その送信元マイクロサービスのリクエストまたは宛先マイクロサービスのレスポンスについて、性能に問題がないかを調査する必要がある。
 
 ![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png)
 

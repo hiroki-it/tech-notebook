@@ -49,7 +49,7 @@ Kubernetes Cluster 上でこれを稼働させることが推奨である。
 
 AWS CloudMap を使用して、Amazon ECS タスクの宛先情報を動的に Amazon Route 53 に追加削除する。
 
-これにより、Amazon ECS タスクが他の ECS タスクと通信可能にする。
+これにより、Amazon ECS タスクは他の ECS タスクと通信できる。
 
 ![aws_ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ecs_service-discovery.png)
 

@@ -83,7 +83,7 @@ description: テレメトリー間の紐付け＠Datadog
 〇：`laravel` ➡️ `order`、`order-service`
 ✕：`laravel` ➡️ `order-laravel`、`order-service-laravel`
 
-フレームワーク以外のパッケージなどの分散トレースに関しては、紐付けられないことを許容している。
+フレームワーク以外のパッケージなどの分散トレースは、紐付けられないことを許容している。
 
 APM の service 名と Amazon ECS タスク/ログの service タグは、名前の付け方が異なることに注意する。
 

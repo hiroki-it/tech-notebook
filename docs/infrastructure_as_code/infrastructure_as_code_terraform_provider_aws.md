@@ -15,7 +15,7 @@ description: AWSプロバイダー＠Terraformの知見を記録しています�
 
 ## AWS プロバイダーとは
 
-Terraform が AWS リソースの API と通信可能にする。
+Terraform が AWS リソースの API と通信できるようにする。
 
 これにより、Terraform を使用して AWS リソースを作成できるようになる。
 
@@ -1358,7 +1358,7 @@ Terraform に値をハードコーディングしたくない場合は、パラ�
 
 #### `(2)` メンテナンスウインドウ時に変更適用
 
-メンテナンスウインドウ時の変更適用を Terraform で行う場合、一段階目に `apply_immediately` オプションを `false` に変更して `terraform apply` コマンドを実行することにより、二段階目に修正を `terraform apply` コマンドを実行する。
+メンテナンスウインドウ時の変更適用を Terraform で行う場合、一段階目に `apply_immediately` オプションを `false` に変更して `terraform apply` コマンドを実行し、二段階目に修正後の内容で `terraform apply` コマンドを実行する。
 
 #### `(3)`DB クラスターには AZ が `3` 個必要
 
@@ -2442,7 +2442,7 @@ WAF の IP セットと他設定の依存関係に癖がある。
 
 - Terraform による初期作成時に必要であり、それがないとそもそも `terraform apply` コマンドできない：
   - Terraform 用 IAM ユーザー、tfstate を管理する Amazon S3 バケットなど
-  - これに関しては、CloudFormation で作成してもよい。
+  - これらの AWS リソースは、CloudFormation で作成してもよい。
 
 - Terraform の誤操作で削除してはいけない AWS リソースでは、Terraform で管理しないことにより、削除を防げる：
   - tfstate を管理する Amazon S3 バケットなど

@@ -99,7 +99,7 @@ API Server、Controller Manager、Scheduler の追加引数が有効かどうか
 
 #### ▼ Etcd チェック
 
-etcd のバージョンチェックを行います。
+etcd のバージョンを確認します。
 
 #### ▼ Authorization Mode Checks
 

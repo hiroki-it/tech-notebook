@@ -372,7 +372,7 @@ Go の命名規則は、GitHub の Wiki に記載されている。
 
 また、処理中の変数名と被るとパッケージのインポートに失敗するため、変数名と被らないように、できるだけ省略しない名前のほうがよい。
 
-ただし、テストファイルに関しては、パッケージ名を『`foo_test`』としてよい。
+ただし、テストファイルは、パッケージ名を『`foo_test`』としてよい。
 
 > - https://github.com/golang/go/wiki/CodeReviewComments#package-names
 

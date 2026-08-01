@@ -572,7 +572,7 @@ runs:
 
 > - https://zenn.dev/kinjosan/articles/bd82e07aa69080
 
-これに関しては以前は非対応であったため、`add-mask` コマンドを使用した方法がネット上で見つかることに注意する。
+この機能は以前は非対応であったため、`add-mask` コマンドを使用した方法がネット上で見つかることに注意する。
 
 > - https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1
 > - https://github.com/actions/runner/issues/643#issuecomment-708228940

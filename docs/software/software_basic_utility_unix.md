@@ -447,7 +447,7 @@ HTTP プロトコルでリクエストを送信する。
 
 なお、TCP スリーウェイハンドシェイクを実行する場合は `nc` コマンドを使用する。
 
-ダウンロードのためのユーティリティとしては、`curl` コマンドよりも `wget` コマンドのほうがよい。
+ダウンロード用のユーティリティは、`curl` コマンドよりも `wget` コマンドのほうがよい。
 
 > - https://yamitzky.hatenablog.com/entry/2016/05/13/204107
 > - https://qiita.com/toshihirock/items/c7279fdcf808d3128261
@@ -1633,7 +1633,7 @@ $ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
 
 ### スワッピング方式
 
-物理メモリにおけるアドレス空間管理方法の一種。
+物理メモリでのアドレス空間管理方法の一種。
 
 ![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スワッピング方式.png)
 

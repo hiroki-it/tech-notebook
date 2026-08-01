@@ -17,7 +17,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 `helm` コマンドを宣言的に実行できる。
 
-ただし、ArgoCD の Application の `.spec.source.helm` キーでも `helm` コマンドを宣言的に実行しつつ、実行を自動化できる。
+一方で、ArgoCD の Application の `.spec.source.helm` キーでも `helm` コマンドを宣言的に実行しつつ、実行を自動化できる。
 
 そのため、できるだけ ArgoCD を使用したほうがよい。
 

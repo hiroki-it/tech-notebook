@@ -197,7 +197,7 @@ data:
 
 認可スコープで、実施条件 (例：いずれの Kubernetes リソース、HTTP メソッド、JWT トークンの発行元 ID プロバイダーの識別子) を設定する。
 
-その条件に合致した場合、認証済みの送信元を許可するか否かを実施する。
+その条件に合致した場合、認証済みの送信元を許可するか否かを判定する。
 
 #### ▼ 特定の ServiceAccount を持つ Pod を送信元として許可する
 
@@ -1886,7 +1886,7 @@ Istio Ingress Gateway/EgressGateway の Pod で待ち受けるポート番号を
 
 Ingress Nginx Controller であれば、Nginx Controller Pod で待ち受けるコンテナポート番号に相当する。
 
-IngressGateway の内部的な Service のタイプに関して、NodePort Service を選んだ場合、Node の宛先ポート番号に合わせる。
+IngressGateway の内部的な Service のタイプで NodePort Service を選んだ場合、Node の宛先ポート番号に合わせる。
 
 一方で、LoadBalancer Service を選んだ場合、LoadBalancer がルーティングできる宛先ポート番号とする。
 
@@ -3060,7 +3060,7 @@ spec:
 
 VirtualService の設定値を適用する `Host` ヘッダー値を設定する。
 
-ワイルドカード (`*`) を使用してすべてのドメインを許可してもよいが、特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可するとよい。
+ワイルドカード (`*`) を使用してすべてのドメインを許可してもよいが、特定のマイクロサービスへのリクエストのみを扱うため、宛先マイクロサービスのホスト名に限定するとよい。
 
 なお、`.spec.gateways` キーで `mesh` (デフォルト値) を使用する場合、ワイルドカード以外を設定しないといけない。 (例：`.spec.hosts` キーを設定しない、特定の Host ヘッダー値を設定するなど)
 

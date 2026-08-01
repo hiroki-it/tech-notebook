@@ -263,7 +263,7 @@ data:
 
 #### ▼ kustomize.path.<バージョン>とは
 
-デフォルトの Kustomize のバージョン以外のものも使用したい場合、そののバージョンと、バイナリファイルの置き場所を設定する。
+デフォルトの Kustomize のバージョン以外のものも使用したい場合、そのバージョンと、バイナリファイルの置き場所を設定する。
 
 ArgoCD で 1 つのバージョンの Kustomize しか使用しない場合、`kustomize.path.<バージョン>` で `/usr/local/bin/kustomize` を指定する。
 

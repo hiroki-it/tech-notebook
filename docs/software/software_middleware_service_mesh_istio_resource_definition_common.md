@@ -436,7 +436,7 @@ spec:
 
 ### sidecar.istio.io/excludeInboundPorts、sidecar.istio.io/excludeOutboundPorts
 
-特定のポート番号に対するインバウンド通信／アウトバウンド通信に関して、istio-iptables が istio-proxy へリダイレクトしないようにする。
+特定のポート番号に対するインバウンド通信／アウトバウンド通信を、istio-iptables が istio-proxy へリダイレクトしないようにする。
 
 例えば、Pod 間でレプリケーション通信をする場合 (例：Keycloak クラスター、Redis クラスターなど) 、istio-proxy を経由する必要はない。
 

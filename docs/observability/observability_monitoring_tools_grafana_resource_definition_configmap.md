@@ -772,7 +772,7 @@ Grafana の `dashboard.json` ファイルを管理する。
 
 Kubernetes の通常の仕組みであれば、ConfigMap の数だけ VolumeMount でマウントする必要がある。
 
-これに関して、ダッシュボードの ConfigMap の数だけ VolumeMount を実行してくれるサイドカーが開発されている。
+この課題に対して、ダッシュボードの ConfigMap の数だけ VolumeMount を実行するサイドカーが開発されている。
 
 なお、ダッシュボードが増えるほど ConfigMap の VolumeMount が必要になるため、Pod で必要なストレージの容量が増えていく。
 

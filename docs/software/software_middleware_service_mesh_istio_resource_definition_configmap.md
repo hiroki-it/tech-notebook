@@ -344,7 +344,7 @@ istio-proxy のインバウンド通信時のリトライ条件は以下であ�
 
 `extensionProviders` キーで定義したもののうち、デフォルトで使用するプロバイダーを設定する。
 
-Telemetry で自動的に選択される、
+Telemetry で自動的に選択される。
 
 Envoy を使用してアクセスログを収集する場合、`.mesh.defaultProviders.accessLogging` キーには何も設定しなくてよい。
 
@@ -1267,7 +1267,7 @@ data:
 
 デフォルト値は `false` である。
 
-固定 IP アドレスが設定されていない ServiceEntry に対して、IP アドレスを動的に設定する。
+固定 IP アドレスが設定されていない ServiceEntry に、IP アドレスを動的に設定する。
 
 `ISTIO_META_DNS_CAPTURE` を有効にしないと、`ISTIO_META_DNS_AUTO_ALLOCATE` は機能しない。
 

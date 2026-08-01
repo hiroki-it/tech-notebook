@@ -63,7 +63,7 @@ spec:
 
 #### ▼ go とは
 
-Pod のアプリ言語が Go の場合に、
+Pod のアプリ言語が Go の場合は、以下のように設定する。
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1

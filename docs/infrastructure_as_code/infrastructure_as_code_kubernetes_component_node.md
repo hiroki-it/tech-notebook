@@ -59,7 +59,7 @@ Kubernetes には Node グループというリソースがなく、グループ
 
 基本的には、Node グループは冗長化されたワーカーNode で構成されており、ID は違えど、ワーカーNode 名はすべて同じである。
 
-Node グループをターゲットとする `L7` ロードバランサーでは、Node グループ内で冗長化ワーカーNode のいずれかに対してルーティングすることになる。
+Node グループをターゲットとする `L7` ロードバランサーでは、Node グループ内で冗長化ワーカーNode のいずれかへルーティングすることになる。
 
 > - https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6
 > - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html#cluster-autoscaler

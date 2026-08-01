@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
 });
 ```
 
-ログレベル（info、error）は数値になっており、`info` や `error` などをの文字列を出力する場合、次のように実装する。
+ログレベル（info、error）は数値になっており、`info` や `error` などの文字列を出力する場合、次のように実装する。
 
 ```javascript
 import pino from "pino";

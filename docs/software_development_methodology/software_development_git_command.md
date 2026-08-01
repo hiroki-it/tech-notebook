@@ -1131,7 +1131,7 @@ pick b1b5c0f add #0 *****
 
 『挿入モード』に変更し、この１行の `pick` を `edit` に変更。
 
-その後、
+その後、次のコマンドで保存する。
 
 ```bash
 :w
@@ -1139,7 +1139,7 @@ pick b1b5c0f add #0 *****
 
 として保管。
 
-その後、エディタ上で『Ctrl+C』を押し、
+その後、エディタ上で『Ctrl+C』を押して、次のコマンドで終了する。
 
 ```bash
 :qa!
@@ -1167,7 +1167,7 @@ Successfully rebased and updated refs/heads/develop.
 
 `(5)`
 
-: プッシュしようとすると、`![rejected] develop -> develop (non-fast-forward)` とエラーが出るため、
+: プッシュしようとすると、`![rejected] develop -> develop (non-fast-forward)` とエラーが出るため、次のコマンドを実行する。
 
 ```bash
 $ git merge <ブランチ名> --allow-unrelated-histories

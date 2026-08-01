@@ -120,7 +120,7 @@ spec:
 
 > - https://github.com/istio/istio/blob/1.14.3/pilot/pkg/bootstrap/server.go#L412-L476
 
-Dockerfile としては、最後に `pilot-discovery` コマンドで Istio コントロールプレーンを実行している。
+Dockerfile では、最後に `pilot-discovery` コマンドで Istio コントロールプレーンを実行している。
 
 ```dockerfile
 ENTRYPOINT ["/usr/local/bin/pilot-discovery"]

@@ -49,7 +49,7 @@ vm-alert は、vmstorage に対して MetricsQL を定期的に実行し、条�
 
 VictoriaMetrics を監視バックエンドかつ監視フロントエンドとして使用する場合、Prometheus は不要になる。
 
-各コンポーネントがメモリを使用するため、
+各コンポーネントがメモリを使用する。
 
 ![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_monitoring_architecture.png)
 

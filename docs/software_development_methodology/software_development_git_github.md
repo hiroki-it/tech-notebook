@@ -442,7 +442,7 @@ Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 `(8)`
 
-: プッシュする。このとき、マージコミットを作成するとき、基点ブランチ以外からマージしていると、差分のコミットが 1 つにまとまらず、
+: プッシュする。このとき、マージコミットを作成するとき、基点ブランチ以外からマージしていると、差分のコミットが 1 つにまとまらない。
 
 > - http://www-creators.com/archives/1938
 

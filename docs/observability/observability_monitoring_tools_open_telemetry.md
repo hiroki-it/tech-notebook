@@ -19,7 +19,7 @@ description: OpenTelemetry＠監視ツールの知見を記録しています。
 
 OpenTelemetry は、テレメトリーソース (例：サードパーティパッケージ、otel クライアントパッケージなど) 、テレメトリーサブスクライバー (例：OpenTelemetry Collector など) といったコンポーネントから構成されている。
 
-OpenTelemetry を導入することにより、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。
+OpenTelemetry を導入することで、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。
 
 ![open-telemetry_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_architecture.png)
 

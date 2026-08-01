@@ -52,7 +52,7 @@ RDBMS は、リレーショナルエンジン、DB エンジン (ストレージ
 
 『ストレージエンジン』ともいう。
 
-RDBMS が DB に対してデータの CRUD の処理を行うために必要なソフトウェアのこと。
+RDBMS が DB のデータを CRUD 処理するために必要なソフトウェアのこと。
 
 > - https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/
 > - https://atmarkit.itmedia.co.jp/ait/articles/1007/26/news087.html

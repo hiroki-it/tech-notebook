@@ -853,9 +853,9 @@ ClusterIP Service
 Pod
 ```
 
-Ingress がないと Cluster ネットワーク内からのみしかアクセスできず、安全である。
+Ingress がないと Cluster ネットワーク内からしかアクセスできず、安全である。
 
-一方でもし Ingress を使用する場合、LoadBalancer Service と同様にして (レイヤーは異なるが) 、Pod の IP アドレスを宛先とする `L7` ロードバランサー (例：AWS ALB と AWS ターゲットグループ) を自動的にプロビジョニングする。
+一方で、Ingress を使用する場合、LoadBalancer Service と同様にして (レイヤーは異なるが) 、Pod の IP アドレスを宛先とする `L7` ロードバランサー (例：AWS ALB と AWS ターゲットグループ) を自動的にプロビジョニングする。
 
 そのため、クラウドプロバイダーのリソースと Kubernetes リソースが密結合になり、責務の境界が曖昧になってしまう。
 
@@ -1035,7 +1035,7 @@ Headless Service 以外の Service は、負荷分散方式により、配下の
 
 その一方で、Headless Service は配下のすべての Pod の IP アドレスを同時に返却する。
 
-DNS サーバーは Headless Service から IP アドレスを取得し、
+DNS サーバーが Headless Service から IP アドレスを取得する様子を、次のコマンドで確認できる。
 
 ```bash
 $ dig <Serviceの完全修飾ドメイン名>
@@ -1394,7 +1394,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 Node のストレージ上に Volume を作成し、これをコンテナにバインドマウントする。
 
-機能としては、Volume の一種である Pod による HostPath と同じである。
+機能は、Volume の一種である Pod による HostPath と同じである。
 
 マルチ Node はサポートしていないため、本番環境では非推奨である。
 

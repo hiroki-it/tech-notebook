@@ -643,7 +643,7 @@ DB マイグレーション後、以下のテーブルを作成する。
 
 #### ▼ トークンを作成
 
-コマンド実行により、`/storage/oauth` キー、Personal Access Client、Password Grant Client を作成する。
+コマンドを実行することで、`/storage/oauth` キー、Personal Access Client、Password Grant Client を作成する。
 
 ```bash
 $ php artisan passport:install

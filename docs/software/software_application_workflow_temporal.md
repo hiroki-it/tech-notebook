@@ -39,7 +39,7 @@ Temporal クライアントは、Temporal サーバーをコールし、Temporal
 
 ### Temporal サーバー
 
-Temporal サーバーは、内臓するメッセージ中継システムを操作してワークフローの現在のステートを管理し、またステートの履歴を DB に永続化する。
+Temporal サーバーは、内蔵するメッセージ中継システムを操作してワークフローの現在のステートを管理し、ステートの履歴を DB に永続化する。
 
 > - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
 > - https://temporal.io/blog/sergey-inversion-of-execution
@@ -160,7 +160,7 @@ Temporal の大きな特徴は、次のとおりである。
 - コンテナとして動かせるため、アプリとインフラを責務分離できる。
 - ワークフローとマイクロサービスを疎結合にできる
 
-一方で、マネージドサービスとしては AWS Step Functions があり、次の点でデメリットがある。
+一方で、マネージドサービスには AWS Step Functions があり、次の点でデメリットがある。
 
 - AWS SDK を使用しない限り、プログラミング言語でマネージドサービスを定義できないため、複雑なビジネスロジックを実装しにくい。
 - アプリとインフラの責務分離できていないものが多く、アプリチームとインフラチームが分業しにくくなる原因になる。

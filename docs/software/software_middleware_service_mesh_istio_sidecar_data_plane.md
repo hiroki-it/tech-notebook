@@ -196,7 +196,7 @@ istio-proxy はこれを受信し、ローカルホスト (`http://127.0.0.6:<�
 
 リバースプロキシの能力を持つサイドカーコンテナである。
 
-Dockerfile としては、Envoy のバイナリファイルをインストールした後に pilot-agent を実行している。
+Dockerfile では、Envoy のバイナリファイルをインストールした後に pilot-agent を実行している。
 
 そのため、pilot-agent、Envoy が稼働している。
 
@@ -351,7 +351,7 @@ istio-cni を使用する場合、iptables の設定はノード上の istio-cni
 
 istio-cni は、CNI プラグインのバイナリと設定を Node 上のファイルシステムに配置する。
 
-Kubernetes の Pod 作成時に、CNI の仕組みを介して Pod のネットワーク名前空間に対して iptables 設定する。
+Kubernetes の Pod 作成時に、CNI の仕組みを介して Pod のネットワーク名前空間に iptables を設定する。
 
 > - https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration
 > - https://istio.io/latest/docs/setup/additional-setup/cni/

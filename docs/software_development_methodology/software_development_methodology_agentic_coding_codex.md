@@ -98,7 +98,7 @@ osascript -e "display notification \"$SAFE_MESSAGE\" with title \"Codexの作業
 
 ### MCP サーバーとは
 
-MCP サーバー（実体はプロセス）を通じて、外部の API から Codex のコンテキストを取得する。
+MCP サーバー（実体はプロセス）を介して、外部の API から Codex のコンテキストを取得する。
 
 <br>
 

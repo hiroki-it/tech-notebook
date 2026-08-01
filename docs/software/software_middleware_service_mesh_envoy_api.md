@@ -353,7 +353,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 
 準備済みのクラスターを、`json` 形式でレスポンスとして返信する。
 
-クラスターに紐づく宛先に関して、`load_assignment` キーで宛先 IP アドレスを直接的に設定する場合と、`service_name` キーでエイリアスを設定する場合がある。
+クラスターに紐づく宛先には、`load_assignment` キーで宛先 IP アドレスを直接的に設定する場合と、`service_name` キーでエイリアスを設定する場合がある。
 
 `service_name` キーに紐づく宛先情報は、`/config_dump?include_eds` エンドポイントのレスポンスの `dynamic_endpoint_configs` キー配下にある `cluster_name` キーで確認できる。
 
