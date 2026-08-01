@@ -13,7 +13,7 @@ description: Protocol Buffer＠データ記述型言語の知見を記録して�
 
 <br>
 
-## 01. Protocol Bufferとは
+## 01. Protocol Buffer とは
 
 異なる言語間やサーバー間で変換できるデータ記述型言語である。
 
@@ -93,7 +93,7 @@ package foo;
 
 ### service
 
-#### ▼ serviceとは
+#### ▼ service とは
 
 関数 (`rpc`) とそのグループ (`service`) を設定する。
 

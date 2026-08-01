@@ -106,7 +106,7 @@ const createUserRepositoryInMemory = (): UserRepositoryInterface => {
 
 ### DTO
 
-#### ▼ DTOとは
+#### ▼ DTO とは
 
 ORM のデータモデルをエンティティそのままに使用する場合、ドメイン層がインフラストラクチャ層に依存してしまう。
 
@@ -114,7 +114,7 @@ ORM のデータモデルをエンティティそのままに使用する場合�
 
 別の方法として、リポジトリで DTO に相当するロジックを実装してもよい。
 
-#### ▼ DTOを使用しない場合
+#### ▼ DTO を使用しない場合
 
 ```typescript
 import {PrismaClient} from "@prisma/client";
@@ -161,7 +161,7 @@ export const save = async (
 };
 ```
 
-#### ▼ DTOを使用する場合
+#### ▼ DTO を使用する場合
 
 ```typescript
 import {PrismaClient} from "@prisma/client";
@@ -211,7 +211,7 @@ export const save = async (
 
 ### 注意点
 
-#### ▼ よろしくない実装（リポジトリにUpdate〇〇をいっぱいかく）
+#### ▼ よろしくない実装（リポジトリに Update 〇〇をいっぱいかく）
 
 User オブジェクトに実装するべき振る舞いのビジネスロジックを、永続化の役割を持つ Repository へ実装することになってしまう。
 
@@ -227,7 +227,7 @@ const user = await userRepository.findById(userId);
 await userRepository.updateName(getName(user)); // リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう
 ```
 
-#### ▼ よりよい実装（リポジトリにSaveを書く）
+#### ▼ よりよい実装（リポジトリに Save を書く）
 
 User オブジェクトが振る舞いのビジネスロジックをもち、Repository は永続化ロジックをもつので、責務を区別できている
 

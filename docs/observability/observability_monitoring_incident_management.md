@@ -64,7 +64,7 @@ description: インシデント管理＠監視の知見を記録しています�
 
 <br>
 
-### インシデント重要度レベル (severityレベル)
+### インシデント重要度レベル (severity レベル)
 
 #### ▼ インシデント重要度レベルとは
 
@@ -85,13 +85,13 @@ description: インシデント管理＠監視の知見を記録しています�
 
 ### インシデントの解決フロー
 
-#### ▼ PagerDutyの場合
+#### ▼ PagerDuty の場合
 
 PagerDuty をインシデント管理ツールとして、PagerDuty に通知されたエラーイベントのうちで、特に重要なものをインシデントとして対処する。
 
 また、各ロールの担当者にオンコールを自動的にエスカレーションする。
 
-#### ▼ Grafana OnCallの場合
+#### ▼ Grafana OnCall の場合
 
 Grafana OnCall をインシデント管理ツールとして、Grafana OnCall に通知されたエラーイベントのうちで、特に重要なものをインシデントとして対処する。
 
@@ -279,18 +279,18 @@ fields @timestamp, @message, @logStream
 
 ## 06. インシデント管理の事後評価
 
-### MTxxメトリクス
+### MTxx メトリクス
 
-#### ▼ MTxxメトリクスとは
+#### ▼ MTxx メトリクスとは
 
 ![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtxx.png)
 
-| メトリクス名                    |                                                                                                                                                                             | 補足                                                                  |
-| ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| MTTF：Mean Time To Failure      | 稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。                                                                        | ・https://e-words.jp/w/MTTF.html                                      |
-| MTBF：Mean Time Between Failure | 特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。                                                            | ・https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
-| MTTD：Mean Time To Diagnose     | 障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。                                                    |                                                                       |
-| MTTR：Mean Time To Repair       | 障害の回復開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、回復せずに異常稼働していたのかがわかる。可用性テスト時の目標値のRTOとは異なることに注意する。 | ・https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
+| メトリクス名                    |                                                                                                                                                                               | 補足                                                                  |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| MTTF：Mean Time To Failure      | 稼働開始地点から障害開始地点までの平均稼働時間のこと。どのくらいの間、正常稼働していたのかがわかる。                                                                          | ・https://e-words.jp/w/MTTF.html                                      |
+| MTBF：Mean Time Between Failure | 特定の障害と次の障害の障害開始地点までの平均稼働時間のこと。正常稼働と異常稼働を合わせた全体の稼働時間がわかる。                                                              | ・https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
+| MTTD：Mean Time To Diagnose     | 障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。                                                      |                                                                       |
+| MTTR：Mean Time To Repair       | 障害の回復開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、回復せずに異常稼働していたのかがわかる。可用性テスト時の目標値の RTO とは異なることに注意する。 | ・https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
 
 > - https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
 > - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
@@ -336,7 +336,7 @@ fields @timestamp, @message, @logStream
 
 ![稼働率の計算](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/稼働率の計算.jpg)
 
-#### ▼ MTxxメトリクスのインシデント管理への適用
+#### ▼ MTxx メトリクスのインシデント管理への適用
 
 ![mttx-metrics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics.png)
 
@@ -403,7 +403,7 @@ DRI Hops (インシデントの直接的に責任者) の値を使用して人�
 ## 障害発生から対応までのタイムライン
 ```
 
-#### ▼ PagerDutyの事例
+#### ▼ PagerDuty の事例
 
 PagerDuty 社が公開しているテンプレートがある。
 

@@ -15,7 +15,7 @@ description: ルール＠Codexの知見を記録しています。
 
 ## 01. ドメインオブジェクトの規約
 
-### Remixの場合
+### Remix の場合
 
 ````markdown
 # ドメイン設計

@@ -3,7 +3,7 @@ title: 【IT技術の知見】GCPプロバイダー＠Terraform
 description: GCPプロバイダー＠Terraformの知見を記録しています。
 ---
 
-# GCPプロバイダー＠Terraform
+# GCP プロバイダー＠Terraform
 
 ## はじめに
 

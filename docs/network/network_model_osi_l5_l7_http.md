@@ -13,9 +13,9 @@ description: HTTP＠L5 ~ L7の知見を記録しています。
 
 <br>
 
-## 01. HTTPメッセージ
+## 01. HTTP メッセージ
 
-### HTTPメッセージとは
+### HTTP メッセージとは
 
 アプリケーション層で作成されるデータを HTTP メッセージという。
 
@@ -23,15 +23,15 @@ description: HTTP＠L5 ~ L7の知見を記録しています。
 
 <br>
 
-### HTTPコンテキスト
+### HTTP コンテキスト
 
-#### ▼ HTTPコンテキスト
+#### ▼ HTTP コンテキスト
 
 特定のリクエスト／レスポンスに関するあらゆる情報 (例：リクエストパラメーター、セッション、その他フレームワーク固有の情報など) を扱うための仕組みのこと。
 
 特にフレームワークやパッケージでよく使われる用語である。
 
-#### ▼ .NET Frameworkの場合
+#### ▼ .NET Framework の場合
 
 .NET のフレームワーク。
 
@@ -39,7 +39,7 @@ description: HTTP＠L5 ~ L7の知見を記録しています。
 
 > - https://docs.microsoft.com/en-us/dotnet/api/system.web.routing.requestcontext?view=netframework-4.8
 
-#### ▼ Ginの場合
+#### ▼ Gin の場合
 
 Go のフレームワーク。
 
@@ -47,7 +47,7 @@ Go のフレームワーク。
 
 > - https://pkg.go.dev/github.com/gin-gonic/gin#Context
 
-#### ▼ Nuxt.jsの場合
+#### ▼ Nuxt.js の場合
 
 JavaScript のフレームワーク。
 
@@ -55,7 +55,7 @@ JavaScript のフレームワーク。
 
 > - https://nuxtjs.org/ja/docs/internals-glossary/context/
 
-#### ▼ Lambdaの場合
+#### ▼ Lambda の場合
 
 フレームワークでなはいが、Lambda の場合にパラメーターとして context オブジェクトが用意されている。
 
@@ -76,9 +76,9 @@ HTTP リクエストのたびに、送信元と宛先間で TCP スリーウェ�
 
 ## 02. リクエスト
 
-### GETリクエストの場合
+### GET リクエストの場合
 
-#### ▼ GETリクエストとは
+#### ▼ GET リクエストとは
 
 クエリパラメーターに送信するデータを記述する。
 
@@ -100,7 +100,7 @@ Host: example.com
 # リクエストライン
 GET https://example.com/bar-form.php?text1=a&text2=b
 ---
-# 送信元IPアドレス
+# 送信元 IP アドレス
 RemoteAddr: *.*.*.*
 ```
 
@@ -151,7 +151,7 @@ User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ch
 # リクエストライン
 GET https://example.com/bar-form.php?text1=a&text2=b
 ---
-# レスポンス返信してほしいMIMEタイプ
+# レスポンス返信してほしい MIME タイプ
 Accept: text/html, application/xhtml+xml, application/xml; q=0
 ```
 
@@ -193,16 +193,16 @@ Referer: https://foo.co.jp/
 # リクエストライン
 GET https://example.com/bar-form.php?text1=a&text2=b
 ---
-# 送信元IPアドレス
-# ※ リバースプロキシサーバー (AWS ALBやAmazon CloudFrontなども含む) を経由している場合、それら全てのIPアドレスも順に設定される
+# 送信元 IP アドレス
+# ※ リバースプロキシサーバー (AWS ALB や Amazon CloudFront なども含む) を経由している場合、それら全ての IP アドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 ```
 
 <br>
 
-### POSTリクエストの場合
+### POST リクエストの場合
 
-#### ▼ POSTリクエストとは
+#### ▼ POST リクエストとは
 
 クエリパラメーターを、URL に記述せず、メッセージボディに記述してリクエストを送信する方法。
 
@@ -221,7 +221,7 @@ POST https://example.com/bar-form.php
 # リクエストされたドメイン名
 Host: example.com
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -231,10 +231,10 @@ text=a&text2=b
 # リクエストライン
 POST https://example.com/bar-form.php
 ---
-# 送信元IPアドレス
+# 送信元 IP アドレス
 RemoteAddr: *.*.*.*
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -246,7 +246,7 @@ POST https://example.com/bar-form.php
 ---
 Content-Length: 15
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -259,7 +259,7 @@ POST https://example.com/bar-form.php
 # クライアントサイドキャッシュの最大有効期限 (リクエストヘッダーとレスポンスヘッダーの両方で定義可能)
 Cache-Control: no-store
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -272,7 +272,7 @@ POST https://example.com/bar-form.php
 # オリジン (デフォルトではプロトコル + ドメイン + ポート番号)
 Origin: https://example.com
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -286,7 +286,7 @@ POST https://example.com/bar-form.php
 ---
 Upgrade-Insecure-Requests: 1
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -296,10 +296,10 @@ text=a&text2=b
 # リクエストライン
 POST https://example.com/bar-form.php
 ---
-# リクエストで送信するMIMEタイプ
+# リクエストで送信する MIME タイプ
 Content-Type: application/x-www-firm-urlencoded
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -312,7 +312,7 @@ POST https://example.com/bar-form.php
 # ブラウザのバージョン情報等
 User-Agent: Mozzila/5.0 (Windows NT 10.0; Win64; x64) Ap
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -322,10 +322,10 @@ text=a&text2=b
 # リクエストライン
 POST https://example.com/bar-form.php
 ---
-# レスポンス返信してほしいMIMEタイプ
+# レスポンス返信してほしい MIME タイプ
 Accept: text/html, application/xhtml+xml, application/xml; q=0
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -338,7 +338,7 @@ POST https://example.com/bar-form.php
 # レスポンスで返信してほしいエンコーディング形式
 Accept-Encondig: gzip, deflate, br
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -351,7 +351,7 @@ POST https://example.com/bar-form.php
 # レスポンスで返信してほしい言語
 Accept-Language: ja, en-US; q=0.9, en; q=0.8
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -364,7 +364,7 @@ POST https://example.com/bar-form.php
 # 遷移元のページ
 Referer: https://foo.co.jp/
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -374,10 +374,10 @@ text=a&text2=b
 # リクエストライン
 POST https://example.com/bar-form.php
 ---
-# 各Cookieの値 (二回目のリクエスト時に設定される)
+# 各 Cookie の値 (二回目のリクエスト時に設定される)
 Cookie: sessionid=<セッションID>; csrftoken=<トークン>; _gat=1
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
@@ -389,15 +389,15 @@ text=a&text2=b
 # リクエストライン
 POST https://example.com/bar-form.php
 ---
-# 送信元IPアドレス
-# ※ リバースプロキシサーバー (AWS ALBやAmazon CloudFrontなども含む) を経由している場合、それら全てのIPアドレスも順に設定される
+# 送信元 IP アドレス
+# ※ リバースプロキシサーバー (AWS ALB や Amazon CloudFront なども含む) を経由している場合、それら全ての IP アドレスも順に設定される
 X-Forwarded-For: <client>, <proxy1>, <proxy2>
 ---
-# ボディ (SSLによって暗号化される)
+# ボディ (SSL によって暗号化される)
 text=a&text2=b
 ```
 
-#### ▼ 例外として、ボディを持つGETリクエストの場合
+#### ▼ 例外として、ボディを持つ GET リクエストの場合
 
 GET リクエストではあるが、ボディにクエリパラメーターを記述して送信する方法がある。
 
@@ -407,7 +407,7 @@ GET リクエストではあるが、ボディにクエリパラメーターを�
 
 ### 送信例
 
-#### ▼ PHPの場合
+#### ▼ PHP の場合
 
 ```php
 <?php
@@ -452,17 +452,17 @@ curl_close($curl);
 ```yaml
 200 OK
 ---
-# レスポンスで送信するMIMEタイプ
+# レスポンスで送信する MIME タイプ
 Content-Type: text/html;charset=UTF-8
 Transfer-Encoding: chunked
 Connection: close
-# Webサーバー (nginx、apache、AmazonS3などが表示される)
+# Web サーバー (nginx、apache、AmazonS3 などが表示される)
 Server: nginx
 Date: Sat, 26 Sep 2020 04:25:08 GMT
-# リファラポリシー (nginx、apacheなどで実装可能)
+# リファラポリシー (nginx、apache などで実装可能)
 Referrer-Policy: no-referrer-when-downgrade
 x-amz-rid:	*****
-# セッションIDを含むCookie情報
+# セッション ID を含む Cookie 情報
 Set-Cookie: session-id=*****; Domain=.amazon.co.jp; Expires=Sun, 26-Sep-2021 04:25:08 GMT; Path=/
 Set-Cookie: session-id-time=*****; Domain=.amazon.co.jp; Expires=Sun, 26-Sep-2021 04:25:08 GMT; Path=/
 Set-Cookie: i18n-prefs=JPY; Domain=.amazon.co.jp; Expires=Sun, 26-Sep-2021 04:25:08 GMT; Path=/
@@ -481,7 +481,7 @@ X-Content-Type-Options:	nosniff
 Vary: Accept-Encoding,User-Agent,Content-Type,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent
 Strict-Transport-Security: max-age=*****; includeSubDomains; preload
 X-Frame-Options: SAMEORIGIN
-# Amazon CloudFrontのキャッシュにヒットしたか否か
+# Amazon CloudFront のキャッシュにヒットしたか否か
 X-Cache: Miss from cloudfront
 Via: 1.1 <発行されたランダム文字列>.cloudfront.net (Amazon CloudFront)
 X-Amz-Cf-Pop: SEA19-C2
@@ -540,7 +540,7 @@ API に認証プロセスが存在し、トークンの発行が必要だとす�
 
 しかし、認可プロセスにてトークンの所有者の認可スコープ外と判定されたことを表す。
 
-#### ▼ `403` (送信元IPアドレスの参照禁止)
+#### ▼ `403` (送信元 IP アドレスの参照禁止)
 
 誤ったリクエストである。
 
@@ -548,7 +548,7 @@ API に認証/認可プロセスが存在せず、トークン発行と参照権
 
 送信元 IP アドレスに参照権限がないと判定されてことを表す。
 
-#### ▼ `404` (Webページが見つからない)
+#### ▼ `404` (Web ページが見つからない)
 
 誤ったリクエストである。
 
@@ -564,7 +564,7 @@ API に認証/認可プロセスが存在せず、トークン発行と参照権
 
 > - https://www.sakurasaku-labo.jp/blogs/soft-404-error
 
-#### ▼ `405` (許可されていないHTTPメソッド)
+#### ▼ `405` (許可されていない HTTP メソッド)
 
 誤ったリクエストである。
 
@@ -716,7 +716,7 @@ Gateway Timeout (`504` ステータス) とやや似ている。
 
 ### MIME type (Content type)
 
-#### ▼ MIME typeとは
+#### ▼ MIME type とは
 
 POST/PUT リクエストで、ボディパラメーターのデータ形式を表す識別子のこと。
 
@@ -726,19 +726,19 @@ GET リクエストには不要である。
 
 > - https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
 
-| トップレベルタイプ | サブレベルタイプ      | 意味                                |
-| ------------------ | --------------------- | ----------------------------------- |
-| application        | octet-stream          | 任意のMIME type (指定なし) を示す。 |
-|                    | javascript            | jsファイル                          |
-|                    | json                  | jsonファイル                        |
-|                    | x-www-form-urlencoded | POSTリクエストの送信データ          |
-|                    | zip                   | `.zip` ファイル                     |
-| text               | html                  | `html` ファイル                     |
-|                    | css                   | `.css` ファイル                     |
-|                    | plain                 | プレーンテキスト                    |
-| image              | png                   | pngファイル                         |
-|                    | jpeg                  | jpegファイル                        |
-|                    | gif                   | gifファイル                         |
+| トップレベルタイプ | サブレベルタイプ      | 意味                                 |
+| ------------------ | --------------------- | ------------------------------------ |
+| application        | octet-stream          | 任意の MIME type (指定なし) を示す。 |
+|                    | javascript            | js ファイル                          |
+|                    | json                  | json ファイル                        |
+|                    | x-www-form-urlencoded | POST リクエストの送信データ          |
+|                    | zip                   | `.zip` ファイル                      |
+| text               | html                  | `html` ファイル                      |
+|                    | css                   | `.css` ファイル                      |
+|                    | plain                 | プレーンテキスト                     |
+| image              | png                   | png ファイル                         |
+|                    | jpeg                  | jpeg ファイル                        |
+|                    | gif                   | gif ファイル                         |
 
 > - https://stackoverflow.com/questions/5661596/do-i-need-a-content-type-header-for-http-get-requests
 
@@ -761,11 +761,11 @@ POST https://example.com/users/12345?format=json
 
 <br>
 
-## 05. HTTP/HTTPSプロトコルの擬似ステートフル化
+## 05. HTTP/HTTPS プロトコルの擬似ステートフル化
 
-### Cookie、Cookie情報 (キー名/値)
+### Cookie、Cookie 情報 (キー名/値)
 
-#### ▼ Cookie、Cookie情報とは
+#### ▼ Cookie、Cookie 情報とは
 
 クライアントからの次回のリクエスト時でも、Cookie 情報 (キー名/値のセット) を使用して、同一クライアントと認識できる仕組みを Cookie という。
 
@@ -773,22 +773,22 @@ HTTP はステートレスなプロトコルであるが、Cookie 情報によ�
 
 > - https://www.engilaboo.com/definitely-understand-cookie-session/
 
-#### ▼ Cookie情報に関わるヘッダー
+#### ▼ Cookie 情報に関わるヘッダー
 
 最初は、サーバーからのレスポンス時に `Set-Cookie` ヘッダーへ割り当てて送信する。
 
 反対に、クライアントからのリクエスト時は、`Cookie` ヘッダーに Cookie 情報を割り当てて送信される。
 
-| HTTPメッセージの種類 | ヘッダー名 | 属性     | 内容                                                                                                    |
-| -------------------- | ---------- | -------- | ------------------------------------------------------------------------------------------------------- |
-| レスポンス           | Set-Cookie | Name     | Cookie名と値                                                                                            |
-|                      |            | Expires  | Cookieの有効期限 (日数)                                                                                 |
-|                      |            | Max-Age  | Cookieの有効期限 (秒数)                                                                                 |
-|                      |            | Domain   | クライアントがリクエストするときのCookie宛先ドメイン名。                                                |
-|                      |            | Path     | クライアントがリクエストするときのCookie宛先ディレクトリ                                                |
-|                      |            | Secure   | クライアントからのリクエストでSSLプロトコルが使用されているときのみ、リクエストを送信できるようにする。 |
-|                      |            | HttpOnly | クライアント側で、JavaScriptがCookieを使用できないようにする。XSS攻撃の対策になる。                     |
-| リクエスト           | Cookie     |          | セッションIDなどのCookie情報                                                                            |
+| HTTP メッセージの種類 | ヘッダー名 | 属性     | 内容                                                                                                      |
+| --------------------- | ---------- | -------- | --------------------------------------------------------------------------------------------------------- |
+| レスポンス            | Set-Cookie | Name     | Cookie 名と値                                                                                             |
+|                       |            | Expires  | Cookie の有効期限 (日数)                                                                                  |
+|                       |            | Max-Age  | Cookie の有効期限 (秒数)                                                                                  |
+|                       |            | Domain   | クライアントがリクエストするときの Cookie 宛先ドメイン名。                                                |
+|                       |            | Path     | クライアントがリクエストするときの Cookie 宛先ディレクトリ                                                |
+|                       |            | Secure   | クライアントからのリクエストで SSL プロトコルが使用されているときのみ、リクエストを送信できるようにする。 |
+|                       |            | HttpOnly | クライアント側で、JavaScript が Cookie を使用できないようにする。XSS 攻撃の対策になる。                    |
+| リクエスト            | Cookie     |          | セッション ID などの Cookie 情報                                                                          |
 
 クライアントから受信したリクエストの `Cookie` ヘッダーの内容は、グローバル変数に格納されている。
 
@@ -872,7 +872,7 @@ GoogleConsole におけるセッションについては、以下のリンクを
 
 <br>
 
-### セッションIDとは
+### セッション ID とは
 
 サーバー側のセッションデータに紐づく ID である。
 

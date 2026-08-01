@@ -3,7 +3,7 @@ title: 【IT技術の知見】Goプラグイン＠Protocol Bufferコンパイラ
 description: Goプラグイン＠Protocol Bufferコンパイラーの知見を記録しています。
 ---
 
-# Goプラグイン＠Protocol Bufferコンパイラー
+# Go プラグイン＠Protocol Buffer コンパイラー
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: Goプラグイン＠Protocol Bufferコンパイラーの知見を�
 
 <br>
 
-## 01. Protocol BufferコンパイラーGoプラグイン
+## 01. Protocol Buffer コンパイラーGo プラグイン
 
-### Protocol BufferコンパイラーGoプラグインとは
+### Protocol Buffer コンパイラーGo プラグインとは
 
 サービス定義ファイル (`proto` ファイル) から `pb.go` ファイルをコンパイルできる。
 
@@ -27,7 +27,7 @@ $ go install google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
 
 <br>
 
-### Protocol BufferとGoの対応関係
+### Protocol Buffer と Go の対応関係
 
 `pb.go` ファイルをコンパイルした場合、以下の対応関係になる。
 

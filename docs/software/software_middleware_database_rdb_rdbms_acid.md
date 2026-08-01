@@ -15,7 +15,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ## 01. ACID
 
-### ACIDとは
+### ACID とは
 
 トランザクション処理を実現するため必要な機能を略して『ACID』という。
 
@@ -26,7 +26,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ### Atomicity (不可分性)
 
-#### ▼ Atomicityとは
+#### ▼ Atomicity とは
 
 トランザクションに含まれるすべての処理が成功することと、またはいずれかが失敗した場合には何も実行されていない状態に戻ることを保証する性質のこと。
 
@@ -36,7 +36,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ### Consistency (整合性)
 
-#### ▼ Consistencyとは
+#### ▼ Consistency とは
 
 トランザクションの実行前後であっても、データは常に DB のルールに則っている性質のこと。
 
@@ -46,7 +46,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ### Isolation (独立性)
 
-#### ▼ Isolationとは
+#### ▼ Isolation とは
 
 トランザクションはお互いに独立し、影響を与え合わない性質のこと。
 
@@ -56,7 +56,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 ### Durability (永続性)
 
-#### ▼ Durabilityとは
+#### ▼ Durability とは
 
 トランザクションの完了後は、たとえ障害があったとしても、データは失われない性質のこと。
 
@@ -64,25 +64,25 @@ description: ACID＠RDBMSの知見を記録しています。
 
 <br>
 
-## 02. DBの処理フロー
+## 02. DB の処理フロー
 
 ### 一連の流れ
 
 ![コミット制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミット制御.jpg)
 
-| RDBの書き込み系の操作                                      | よくある関数名 (例：PDO)                                    | ラッピング           | 障害からの回復                     |
+| RDB の書き込み系の操作                                     | よくある関数名 (例：PDO)                                    | ラッピング           | 障害からの回復                     |
 | :--------------------------------------------------------- | :---------------------------------------------------------- | -------------------- | ---------------------------------- |
 | 更新前ログをジャーナルファイルに書き込む                   | ⬇️                                                          | ⬇️                   |                                    |
 | ⬇️                                                         | ⬇️                                                          | ⬇️                   |                                    |
 | トランザクション開始                                       | `beginTransaction()` 関数                                   | `execute()` 関数開始 |                                    |
 | ⬇️                                                         | ⬇️                                                          | ⬇️                   | ⬆️                                 |
-| ・C/U/Dの実行<br>・トランザクション終了                    | ・`insert()` 関数<br>・`update()` 関数<br>・`delete()` 関数 | `flush()` 関数       | ⬆️ ロールバック：`rollBack()` 関数 |
+| ・C/U/D の実行<br>・トランザクション終了                   | ・`insert()` 関数<br>・`update()` 関数<br>・`delete()` 関数 | `flush()` 関数       | ⬆️ ロールバック：`rollBack()` 関数 |
 | ⬇️                                                         | ⬇️                                                          | ⬇️                   | ⬆️                                 |
 | コミットの実行。更新後ログをジャーナルファイルに書き込む。 | `commit()` 関数開始                                         | ⬇️                   |                                    |
 | ⬇️                                                         | ⬇️                                                          | ⬇️                   | ⬇️                                 |
 | ⬇️                                                         | ⬇️                                                          | ⬇️                   | ⬇️ _Roll forward_                  |
 | ⬇️                                                         | ⬇️                                                          | ⬇️                   | ⬇️                                 |
-| チェックポイントによる更新後ログのDB反映                   | `commit()` 関数終了                                         | `execute()` 関数終了 |                                    |
+| チェックポイントによる更新後ログの DB 反映                 | `commit()` 関数終了                                         | `execute()` 関数終了 |                                    |
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -97,7 +97,7 @@ description: ACID＠RDBMSの知見を記録しています。
 > - https://atmarkit.itmedia.co.jp/ait/articles/0803/24/news138_2.html
 > - https://oss-db.jp/dojo/dojo_01
 
-#### ▼ PDOによるRDBの書き込み系の操作
+#### ▼ PDO による RDB の書き込み系の操作
 
 PDO では書き込み処理に `exec()` 関数、読み出し処理に `query()` 関数を使用する。
 
@@ -138,7 +138,7 @@ try{
 > - https://radiochemical.hatenablog.com/entry/2020/11/22/152511
 > - https://stackoverflow.com/a/69421830/12771072
 
-#### ▼ DoctrineによるRDBの書き込み系の操作
+#### ▼ Doctrine による RDB の書き込み系の操作
 
 詳しくは、以下のリンクを参考にせよ。
 
@@ -146,7 +146,7 @@ try{
 
 <br>
 
-### トランザクションID
+### トランザクション ID
 
 一部の RDBMS (例：PostgreSQL) は、トランザクション処理を識別するためにトランザクション ID を付与する。
 
@@ -304,7 +304,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 <br>
 
-## 03. DBMSによる排他制御
+## 03. DBMS による排他制御
 
 ### 排他制御とは
 
@@ -393,9 +393,9 @@ RDBMS またはアプリケーションによる `UPDATE` 処理競合問題を�
 
 <br>
 
-## 03-02. DBMSの機能による排他制御
+## 03-02. DBMS の機能による排他制御
 
-### DBMSの機能による排他制御
+### DBMS の機能による排他制御
 
 DBMS の機能で、排他制御を実施する方法である。
 
@@ -485,7 +485,7 @@ DB のレコードにはバージョン値 (例：最終更新日時など) が�
 > - https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html
 > - https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/
 
-#### ▼ ORMの楽観的ロックについて
+#### ▼ ORM の楽観的ロックについて
 
 ORM が楽観的ロックの能力を持っている場合がある。
 
@@ -539,7 +539,7 @@ PHP の ORM である Doctrine のロック機能については、以下のリ�
 
 SQL の種類に合わせてツールが用意されている。
 
-| SQLの種類  | ポイントインタイムリカバリーのツール例 | 補足                                                           |
+| SQL の種類 | ポイントインタイムリカバリーのツール例 | 補足                                                           |
 | ---------- | -------------------------------------- | -------------------------------------------------------------- |
 | MySQL      | XtraBackup                             | ・https://developers.cyberagent.co.jp/blog/archives/28454/     |
 | PostgreSQL | Barman                                 | ・https://www.sraoss.co.jp/tech-blog/pgsql/barman/             |

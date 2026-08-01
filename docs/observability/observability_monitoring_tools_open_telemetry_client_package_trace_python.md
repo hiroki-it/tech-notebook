@@ -3,7 +3,7 @@ title: 【IT技術の知見】Python＠OpenTelemetryクライアントパッケ�
 description: Python＠OpenTelemetryクライアントパッケージの知見を記録しています。
 ---
 
-# Python＠OpenTelemetryクライアントパッケージ
+# Python＠OpenTelemetry クライアントパッケージ
 
 ## はじめに
 
@@ -15,27 +15,27 @@ description: Python＠OpenTelemetryクライアントパッケージの知見を
 
 ## 01. 概要
 
-### otelクライアントパッケージ
+### otel クライアントパッケージ
 
 記入中...
 
 <br>
 
-### 拡張otelクライアントパッケージ
+### 拡張 otel クライアントパッケージ
 
 記入中...
 
 <br>
 
-### 分散トレースSDK
+### 分散トレース SDK
 
 記入中...
 
 <br>
 
-## 02. アプリでgRPCを使用しない場合
+## 02. アプリで gRPC を使用しない場合
 
-### 宛先がGoogle Cloud Traceの場合
+### 宛先が Google Cloud Trace の場合
 
 #### ▼ パッケージの初期化
 

@@ -13,7 +13,7 @@ description: Kyverno＠コード規約違反の知見を記録しています。
 
 <br>
 
-## 01. Kyvernoの仕組み
+## 01. Kyverno の仕組み
 
 ### アーキテクチャ
 
@@ -34,7 +34,7 @@ kube-apiserver の mutating-admission ステップと validating-admission ス�
 ↓
 kube-apiserver # Kyverno で検証
 ↓
-etcd # Amazon EKSアップグレードインサイトで検証
+etcd # Amazon EKS アップグレードインサイトで検証
 ```
 
 > - https://www.squadcast.com/blog/kyverno-policy-management-in-kubernetes

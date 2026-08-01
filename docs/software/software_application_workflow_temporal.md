@@ -13,7 +13,7 @@ description: Temporal＠ワークフローの知見を記録しています。
 
 <br>
 
-## 01. Temporalの仕組み
+## 01. Temporal の仕組み
 
 ### アーキテクチャ
 
@@ -28,7 +28,7 @@ Temporal は、Temporal クライアント、Temporal サーバー、ステー�
 
 <br>
 
-### Temporalクライアント
+### Temporal クライアント
 
 Temporal クライアントは、Temporal サーバーをコールし、Temporal ワーカーによって登録されたワークフローを実行する。
 
@@ -37,7 +37,7 @@ Temporal クライアントは、Temporal サーバーをコールし、Temporal
 
 <br>
 
-### Temporalサーバー
+### Temporal サーバー
 
 Temporal サーバーは、内臓するメッセージ中継システムを操作してワークフローの現在のステートを管理し、またステートの履歴を DB に永続化する。
 
@@ -46,15 +46,15 @@ Temporal サーバーは、内臓するメッセージ中継システムを操�
 
 <br>
 
-### ステート用DB
+### ステート用 DB
 
-#### ▼ ステート用DB
+#### ▼ ステート用 DB
 
 ステート用 DB は、Saga のステートの履歴を保管する。
 
 Temporal サーバーで処理中に障害が起こった場合でも、ワークフローの途中から処理を実行できるようにする。
 
-#### ▼ PostgreSQLの場合
+#### ▼ PostgreSQL の場合
 
 主に、`temporal`DB と `temporal_visibility` を使用する。
 
@@ -104,7 +104,7 @@ temporal=# \dt
 > - https://github.com/temporalio/temporal/blob/main/schema/postgresql/v12/temporal/schema.sql
 > - https://github.com/temporalio/temporal/blob/main/schema/mysql/v8/visibility/schema.sql
 
-#### ▼ MySQLの場合
+#### ▼ MySQL の場合
 
 主に、`temporal`DB と `temporal_visibility` を使用する。
 
@@ -113,7 +113,7 @@ temporal=# \dt
 
 <br>
 
-### Temporalワーカー
+### Temporal ワーカー
 
 『制御の反転』という仕組みになっており、実際にワークフローやアクティビティを実行するのは、Temporal サーバーではなく Temporal ワーカーである。
 
@@ -132,9 +132,9 @@ temporal=# \dt
 
 ## 02. ユースケース
 
-### Sagaオーケストレーターとして
+### Saga オーケストレーターとして
 
-#### ▼ Sagaオーケストレーターとして
+#### ▼ Saga オーケストレーターとして
 
 Temporal を Saga パターンのオーケストレーターとして使用する。
 
@@ -179,7 +179,7 @@ Temporal の大きな特徴は、次のとおりである。
 > - https://thinhdanggroup.github.io/temporal-airflow/
 > - https://pipekit.io/blog/temporal-vs-argo-workflows
 
-#### ▼ Temporalクライアント
+#### ▼ Temporal クライアント
 
 Temporal クライアントは、Temporal サーバーのエンドポイントをコールするサーバーとして実装する。
 
@@ -277,11 +277,11 @@ func startWorkflowHandler(w http.ResponseWriter, r *http.Request, temporalClient
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/gateway/main.go
 > - https://docs.temporal.io/develop/go/temporal-clients
 
-#### ▼ Temporalサーバーとステート用DB
+#### ▼ Temporal サーバーとステート用 DB
 
 制御が反転しているため、Temporal サーバーはユーザーが何かを実装する必要はない。
 
-#### ▼ アクティビティ定義用のTemporalワーカー
+#### ▼ アクティビティ定義用の Temporal ワーカー
 
 アクティビティ定義用の Temporal ワーカーは、ワークフロー定義を登録する。
 
@@ -393,7 +393,7 @@ func (a *YourActivityObject) GetInfo(ctx context.Context) (*YourActivityResultOb
 
 > - https://github.com/temporalio/documentation/blob/main/sample-apps/go/yourapp/your_activity_definition_dacx.go
 
-#### ▼ ワークフロー定義用のTemporalワーカー
+#### ▼ ワークフロー定義用の Temporal ワーカー
 
 ワークフロー定義用の Temporal ワーカーは、ワークフロー定義を登録する。
 

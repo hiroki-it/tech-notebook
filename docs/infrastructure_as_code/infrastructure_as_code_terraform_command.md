@@ -13,7 +13,7 @@ description: コマンド＠Terraformの知見を記録しています。
 
 <br>
 
-## 01. terraformコマンド
+## 01. terraform コマンド
 
 ### global option
 
@@ -27,7 +27,7 @@ description: コマンド＠Terraformの知見を記録しています。
 
 ### apply
 
-#### ▼ applyとは
+#### ▼ apply とは
 
 インフラリソースをプロビジョニングする。
 
@@ -179,7 +179,7 @@ $ terraform apply foo.tfplan
 
 ### init
 
-#### ▼ initとは
+#### ▼ init とは
 
 `terraform` コマンドを実行しているローカルマシンの `.terraform` ディレクトリを初期化 (`terraform.lock.hcl` ファイルの作成、ローカル/リモートモジュールやプロバイダーのインストール、バックエンドの切り替えなど) を実行する。
 
@@ -323,7 +323,7 @@ $ mkdir -p $HOME/.terraform.d/plugins/registry.terraform.io/hashicorp/${PROVIDER
 
 ### fmt
 
-#### ▼ fmtとは
+#### ▼ fmt とは
 
 `.tf` ファイルのコードを整形する。
 
@@ -376,7 +376,7 @@ $ terraform get
 
 ### graph
 
-#### ▼ graphとは
+#### ▼ graph とは
 
 `tfstate` ファイルに基づいて、リソース間の依存関係をグラフ化する。
 
@@ -430,7 +430,7 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 
 ### import
 
-#### ▼ importとは
+#### ▼ import とは
 
 実インフラの状態を読み込み、`tfstate` ファイルに反映する。
 
@@ -475,7 +475,7 @@ $ terraform output -json
 
 ### plan
 
-#### ▼ planとは
+#### ▼ plan とは
 
 実行計画を取得する。
 
@@ -615,7 +615,7 @@ $ terraform plan \
 
 <br>
 
-### planのプラクティス
+### plan のプラクティス
 
 #### ▼ 出力内容の読み方
 
@@ -685,7 +685,7 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 
 ### provider
 
-#### ▼ providerとは
+#### ▼ provider とは
 
 `terraform.lock.hcl` ファイルを作成する。
 
@@ -726,7 +726,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 ### state
 
-#### ▼ stateとは
+#### ▼ state とは
 
 `tfstate` ファイルを操作する。
 
@@ -916,7 +916,7 @@ $ terraform state show 'aws_instance.bastion'
 
 ### taint
 
-#### ▼ taintとは
+#### ▼ taint とは
 
 バックエンドにある `tfstate` ファイルにて、指定された `resource` ブロックの `tainted` フラグを立てる。
 
@@ -954,7 +954,7 @@ Plan: 1 to add, 0 to change, 1 to destroy.
 
 ### validate
 
-#### ▼ validateとは
+#### ▼ validate とは
 
 設定ファイルを検証する。
 
@@ -1237,7 +1237,7 @@ No changes. Infrastructure is up-to-date.
 
 ### Tips
 
-#### ▼ importできない `resource` タイプ
+#### ▼ import できない `resource` タイプ
 
 `resource` ブロック間の紐付けに特化したような `resource` ブロックは、`terraform import` コマンドに対応していないものが多い (AWS であれば、`aws_acm_certificate_validation`、`aws_lb_target_group_attachment` など) 。
 
@@ -1247,7 +1247,7 @@ No changes. Infrastructure is up-to-date.
 
 そのため、実際に `terraform apply` コマンドを実行してみても、実インフラに影響が出ない場合もある。
 
-#### ▼ importを行わなかった場合のエラー
+#### ▼ import を行わなかった場合のエラー
 
 もし `terraform import` コマンドを行わないと、すでにクラウド上にインフラリソースが存在しているためにインフラリソースを作成できない、というエラーになってしまう。
 

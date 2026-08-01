@@ -25,7 +25,7 @@ description: 認証＠認証／認可の知見を記録しています。
 
 ### realm
 
-#### ▼ realmとは
+#### ▼ realm とは
 
 認証管理におけるテナントのようなもの。
 
@@ -36,7 +36,7 @@ realm ごとに認証を管理する。
 > - https://www.seil.jp/doc/index.html#fn/pppac/cmd/authentication_realm.html
 > - https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm
 
-#### ▼ realmの粒度
+#### ▼ realm の粒度
 
 マイクロサービスアーキテクチャでは、横断的な realm (こちらがよさそう) 、または各マイクロサービスで realm を作成するとよい。
 
@@ -44,13 +44,13 @@ realm ごとに認証を管理する。
 
 <br>
 
-### クライアントID
+### クライアント ID
 
-#### ▼ クライアントIDとは
+#### ▼ クライアント ID とは
 
 ID プロバイダーのクライアントの ID を表す。
 
-#### ▼ クライアントIDの粒度
+#### ▼ クライアント ID の粒度
 
 マイクロサービスアーキテクチャでは、横断的なクライアント ID 、またはマイクロサービスでクライアント ID (こちらがよさそう) を作成するとよい。
 

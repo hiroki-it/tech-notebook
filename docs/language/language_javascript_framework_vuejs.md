@@ -13,15 +13,15 @@ description: Vue.js＠フレームワークの知見を記録しています。
 
 <br>
 
-## 01. Vue.jsを使用したMVVMアーキテクチャ
+## 01. Vue.js を使用した MVVM アーキテクチャ
 
-### MVVMアーキテクチャ、双方向データバインディング
+### MVVM アーキテクチャ、双方向データバインディング
 
-#### ▼ MVVMアーキテクチャとは
+#### ▼ MVVM アーキテクチャとは
 
 > - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html
 
-#### ▼ MVVMアーキテクチャにおける各層の責務
+#### ▼ MVVM アーキテクチャにおける各層の責務
 
 `(1)`
 
@@ -43,7 +43,7 @@ description: Vue.js＠フレームワークの知見を記録しています。
 
      ビジネスロジックや、ajax関数によるデータ送受信を記述する。
 
-#### ▼ Vueを使用したMVVMアーキテクチャ、双方向データバインディング
+#### ▼ Vue を使用した MVVM アーキテクチャ、双方向データバインディング
 
 Vue は、アプリケーションの設計に MVVM アーキテクチャを使用することを前提として、双方向データバインディングを実現できるような機能を提供する。
 
@@ -81,7 +81,7 @@ Vue は、アプリケーションの設計に MVVM アーキテクチャを使�
 
 <br>
 
-### MVVMアーキテクチャの実装例
+### MVVM アーキテクチャの実装例
 
 #### (1) 【View】テンプレート (`foo.html`、`foo.twig`)
 
@@ -125,7 +125,7 @@ Vue は、アプリケーションの設計に MVVM アーキテクチャを使�
 </script>
 ```
 
-#### (1-2) 【ViewModel】データの初期化を実行するVueコンストラクタ関数 (`index.js`)
+#### (1-2) 【ViewModel】データの初期化を実行する Vue コンストラクタ関数 (`index.js`)
 
 ![vue-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue-instance.png)
 
@@ -297,11 +297,11 @@ var vm = new Vue({
 </script>
 ```
 
-#### (3) 【Model】オブジェクトに相当するVuex (`store.js`)
+#### (3) 【Model】オブジェクトに相当する Vuex (`store.js`)
 
 ノート内の『Vuex』の項目を参照せよ。
 
-#### (3-2) 【Model】オブジェクトに相当するJavaScript (`foo.js`)
+#### (3-2) 【Model】オブジェクトに相当する JavaScript (`foo.js`)
 
 クラス宣言で実装する。
 
@@ -331,7 +331,7 @@ class Foo {
 
 <br>
 
-## 02. ViewとViewModelの間での双方向データバインディングの方法
+## 02. View と ViewModel の間での双方向データバインディングの方法
 
 ### イベントハンドリング
 
@@ -367,7 +367,7 @@ View のフォーム送信イベントが起きた時点で、ViewModel にバ�
 <div id="app">
   <v-foo-component
           v-on:search="result()"
-  ></v-foo-component>
+  > </v-foo-component>
 </div>
 
 <!-- Vueインスタンスの作成は外部スクリプトで実行する。 -->
@@ -560,16 +560,16 @@ Vue インスタンスの作成から破棄までの間に実行される関数�
 
 すべての関数を使用する必要はない。
 
-| 順番 | フック名      | タイミング                                            |
-| :--- | :------------ | :---------------------------------------------------- |
-| 1    | beforeCreate  | Vueインスタンスの作成前                               |
-| 2    | created       | Vueインスタンスの作成後                               |
-| 3    | beforeMount   | Vueインスタンスがマウントされる前                     |
-| 4    | mounted       | Vueインスタンスがマウントされた後                     |
-| 5    | beforeUpdate  | データ更新時の再レンダリング前                        |
-| 6    | updated       | データ更新時の再レンダリング後                        |
-| 7    | beforeDestroy | Vueインスタンスが削除される前 (`$destroy` 関数実行前) |
-| 8    | destroyed     | Vueインスタンスが削除された後 (`$destroy` 関数実行後) |
+| 順番 | フック名      | タイミング                                             |
+| :--- | :------------ | :----------------------------------------------------- |
+| 1    | beforeCreate  | Vue インスタンスの作成前                               |
+| 2    | created       | Vue インスタンスの作成後                               |
+| 3    | beforeMount   | Vue インスタンスがマウントされる前                     |
+| 4    | mounted       | Vue インスタンスがマウントされた後                     |
+| 5    | beforeUpdate  | データ更新時の再レンダリング前                         |
+| 6    | updated       | データ更新時の再レンダリング後                         |
+| 7    | beforeDestroy | Vue インスタンスが削除される前 (`$destroy` 関数実行前) |
+| 8    | destroyed     | Vue インスタンスが削除された後 (`$destroy` 関数実行後) |
 
 > - https://jp.vuejs.org/v2/api/index.html#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3-%E3%83%A9%E3%82%A4%E3%83%95%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%83%95%E3%83%83%E3%82%AF
 

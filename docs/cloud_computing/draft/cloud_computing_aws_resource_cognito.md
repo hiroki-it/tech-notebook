@@ -3,7 +3,7 @@ title: 【IT技術の知見】AWS Cognito＠AWSリソース
 description: AWS Cognito＠AWSリソースの知見を記録しています。
 ---
 
-# AWS Cognito＠AWSリソース
+# AWS Cognito＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: AWS Cognito＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. AWS Cognitoとは
+## 01. AWS Cognito とは
 
 ### ユーザープール
 
@@ -39,10 +39,10 @@ description: AWS Cognito＠AWSリソースの知見を記録しています。
 
 AWS Lambda オーソライザーは認可だけでなく認証も実施するため、これを使用する場合は AWS Cognito を使用できない。
 
-|      | AWS Cognitoオーソライザー | AWS Lambdaオーソライザー |
-| ---- | :-----------------------: | :----------------------: |
-| 認証 |            ✅             |                          |
-| 認可 |            ✅             |            ✅            |
+|      | AWS Cognito オーソライザー | AWS Lambda オーソライザー |
+| ---- | :------------------------: | :-----------------------: |
+| 認証 |             ✅             |                           |
+| 認可 |             ✅             |            ✅             |
 
 ![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
 
@@ -60,7 +60,7 @@ AWS Lambda オーソライザーは認可だけでなく認証も実施するた
 
 <br>
 
-## 03. クラウドIDプロバイダーとして
+## 03. クラウド ID プロバイダーとして
 
 アカウント情報を管理する。
 

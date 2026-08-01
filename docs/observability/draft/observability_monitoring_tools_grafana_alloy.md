@@ -13,7 +13,7 @@ description: Grafana Alloy＠Grafanaの知見を記録しています。
 
 <br>
 
-## 01. Grafana Alloyとは
+## 01. Grafana Alloy とは
 
 テレメトリーを収集、監視バックエンドに送信する。
 

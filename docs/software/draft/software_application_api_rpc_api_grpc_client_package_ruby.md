@@ -3,7 +3,7 @@ title: 【IT技術の知見】Ruby＠gRPCクライアントパッケージ
 description: Ruby＠gRPCクライアントパッケージの知見を記録しています。
 ---
 
-# Ruby＠gRPCクライアントパッケージ
+# Ruby＠gRPC クライアントパッケージ
 
 ## はじめに
 
@@ -17,7 +17,7 @@ description: Ruby＠gRPCクライアントパッケージの知見を記録し�
 
 ### サーバー側
 
-#### ▼ Protocol Buffer自動作成ツール
+#### ▼ Protocol Buffer 自動作成ツール
 
 gem リポジトリから、Protocol Buffer 自動作成ツールをインストールする。
 
@@ -25,7 +25,7 @@ gem リポジトリから、Protocol Buffer 自動作成ツールをインスト
 $ gem install grpc-tools
 ```
 
-#### ▼ gRPCサーバー
+#### ▼ gRPC サーバー
 
 記入中...
 
@@ -33,7 +33,7 @@ $ gem install grpc-tools
 
 ### クライアント側
 
-#### ▼ gRPCクライアントパッケージ
+#### ▼ gRPC クライアントパッケージ
 
 gem リポジトリから、gRPC クライアントをインストールする。
 
@@ -43,7 +43,7 @@ $ gem install grpc
 
 <br>
 
-### gRPCサーバーとクライアントの両方
+### gRPC サーバーとクライアントの両方
 
 #### ▼ `proto` ファイル
 

@@ -13,7 +13,7 @@ description: Dex＠セキュリティ系ミドルウェアの知見を記録し�
 
 <br>
 
-## 01. Dexとは
+## 01. Dex とは
 
 SSO (例：OAuth、SAML、OIDC など) の ID プロバイダーに認可リクエストを送信する。
 
@@ -24,7 +24,7 @@ SSO (例：OAuth、SAML、OIDC など) の ID プロバイダーに認可リク�
 
 ## 02. connectors
 
-### connectorsとは
+### connectors とは
 
 認可リクエストの宛先を設定する。
 
@@ -52,7 +52,7 @@ connectors:
 
 ### OIDC
 
-#### ▼ Keycloakの場合
+#### ▼ Keycloak の場合
 
 ```yaml
 connectors:
@@ -60,7 +60,7 @@ connectors:
     id: keycloak
     name: keycloak
     config:
-      # JWTトークンの発行元IDプロバイダーの識別子を設定する
+      # JWT トークンの発行元 ID プロバイダーの識別子を設定する
       # ブラウザから接続する
       issuer: http://keycloak.com/realms/<realm名>
       clientID: <Keycloakに認可リクエストを送信するクライアント名>

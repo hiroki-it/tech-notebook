@@ -15,7 +15,7 @@ description: Platform Engineering＠DevOpsの知見を記録しています。
 
 ## 01. Platform Engineering
 
-### Platform Engineeringとは
+### Platform Engineering とは
 
 DevOps というインターフェースを実装したエンジニアリング手法である。
 

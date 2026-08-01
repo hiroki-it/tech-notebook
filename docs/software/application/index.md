@@ -44,8 +44,8 @@ hide:
 ### フロントエンドアーキテクチャ
 
 - #### [︎フロントエンドアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html)
-- #### [UIレンダリングパターン](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_ui_rendering_patterns.html)
-- #### [UI設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_ui_design.html)
+- #### [UI レンダリングパターン](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_ui_rendering_patterns.html)
+- #### [UI 設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_ui_design.html)
 - #### [状態管理](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend_state.html)
 
 <br>
@@ -56,7 +56,7 @@ hide:
 
 - #### [クラウドネイティブ技術とマイクロサービスアーキテクチャーのつながり](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cloudnative.html)
 
-- #### [APIゲートウェイ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_api_gateway.html)
+- #### [API ゲートウェイ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_api_gateway.html)
 
 - #### [CI/CD](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cicd.html)
 
@@ -103,7 +103,7 @@ hide:
 - #### <u>RESTful-API</u>
 
   > - ##### [︎RESTful-API](https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful.html)
-  > - ##### [︎API仕様書](https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful_api_specification.html)
+  > - ##### [︎API 仕様書](https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful_api_specification.html)
 
 - #### <u>RPC-API</u>
 
@@ -129,5 +129,5 @@ hide:
 
   > - ##### [Temporal](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal.html)
   > - ##### <u>設定ファイル</u>
-  >   > - ##### [Clusterスコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_cluster.html)
-  >   > - ##### [Webスコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_web.html)
+  >   > - ##### [Cluster スコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_cluster.html)
+  >   > - ##### [Web スコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_web.html)

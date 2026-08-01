@@ -13,7 +13,7 @@ description: Pythonの知見を記録しています。
 
 <br>
 
-## 01. Pythonとは
+## 01. Python とは
 
 記入中...
 
@@ -23,7 +23,7 @@ description: Pythonの知見を記録しています。
 
 ### インストール
 
-#### ▼ yumリポジトリから
+#### ▼ yum リポジトリから
 
 ```bash
 $ yum install -y python3
@@ -33,7 +33,7 @@ $ yum install -y python3
 
 ### Dockerfile
 
-#### ▼ Flask、uWSGIを使用する場合
+#### ▼ Flask、uWSGI を使用する場合
 
 ```dockerfile
 #===================
@@ -83,7 +83,7 @@ COPY ../software /var/www/foo/
 CMD ["uwsgi", "--ini", "/etc/wsgi/wsgi.ini"]
 ```
 
-#### ▼ FastAPI、uvicornを使用する場合
+#### ▼ FastAPI、uvicorn を使用する場合
 
 ```dockerfile
 #===================
@@ -136,7 +136,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
 
 ### 命名規則
 
-#### ▼ PEPによる規則
+#### ▼ PEP による規則
 
 Python の命名規則は、PEP に記載されている。
 
@@ -184,7 +184,7 @@ Python の命名規則は、PEP に記載されている。
 
 ### package、subpackage
 
-#### ▼ package、subpackageとは
+#### ▼ package、subpackage とは
 
 ディレクトリに相当する。
 
@@ -205,7 +205,7 @@ Python の命名規則は、PEP に記載されている。
 
 ### module
 
-#### ▼ moduleとは
+#### ▼ module とは
 
 パッケージ内の各ファイルに相当する。
 
@@ -216,7 +216,7 @@ Python の命名規則は、PEP に記載されている。
 
 ### from import
 
-#### ▼ from importとは
+#### ▼ from import とは
 
 パッケージとして定義したディレクトリからクラスや関数読み込む。
 

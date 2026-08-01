@@ -13,7 +13,7 @@ description: Kaniko＠Dockerの知見を記録しています。
 
 <br>
 
-## 01. Kanikoとは
+## 01. Kaniko とは
 
 コンテナ内でコンテナイメージのビルドをエミュレートする。
 
@@ -32,7 +32,7 @@ description: Kaniko＠Dockerの知見を記録しています。
 
 <br>
 
-## 02. Pod上で実行する場合
+## 02. Pod 上で実行する場合
 
 ### Amazon ECR
 
@@ -64,7 +64,7 @@ spec:
 
 <br>
 
-## 03. GitLab上で実行する場合
+## 03. GitLab 上で実行する場合
 
 ### DockerHub
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】AWS KMS＠AWSリソース
 description: AWS KMS＠AWSリソースの知見を記録しています。
 ---
 
-# AWS KMS＠AWSリソース
+# AWS KMS＠AWS リソース
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: AWS KMS＠AWSリソースの知見を記録しています。
 
 ## 01. AWS KMS
 
-### AWS KMSとは
+### AWS KMS とは
 
 暗号化キーを管理する。
 
@@ -23,7 +23,7 @@ description: AWS KMS＠AWSリソースの知見を記録しています。
 
 <br>
 
-### AWSマネージド型
+### AWS マネージド型
 
 暗号化キーを使用する AWS リソースが、ユーザーに代わって暗号化キーを管理する。
 

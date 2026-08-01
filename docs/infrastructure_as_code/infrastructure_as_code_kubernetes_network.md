@@ -13,9 +13,9 @@ description: ネットワーク＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 01. Nodeネットワーク
+## 01. Node ネットワーク
 
-### Nodeネットワークとは
+### Node ネットワークとは
 
 同じサブネットマスク内にある Node の NIC 間を接続するネットワーク。
 
@@ -27,9 +27,9 @@ Node ネットワークの作成は、Kubernetes の実行環境のネットワ�
 
 <br>
 
-## 02. Serviceネットワーク
+## 02. Service ネットワーク
 
-### Serviceネットワークとは
+### Service ネットワークとは
 
 Pod のアウトバウンド通信に割り当てられたホスト名を認識し、そのホスト名を持つ Service までリクエストを送信する。
 
@@ -42,9 +42,9 @@ Service ネットワークの作成は、Kubernetes が担う。
 
 <br>
 
-## 03. Clusterネットワーク
+## 03. Cluster ネットワーク
 
-### Clusterネットワークとは
+### Cluster ネットワークとは
 
 同じ Cluster ネットワーク内にある Pod の仮想 NIC (veth) 間を接続するネットワーク。
 
@@ -56,9 +56,9 @@ Cluster ネットワークの作成は、CNI が担う。
 
 <br>
 
-## 04. Podネットワーク
+## 04. Pod ネットワーク
 
-### Podネットワークとは
+### Pod ネットワークとは
 
 Pod 内のネットワークのみを経由して、他のコンテナにリクエストを送信する。
 
@@ -82,7 +82,7 @@ Pod のネットワークは複数の種類の名前空間から構成される�
 
 > - https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway
 
-#### ▼ IPC名前空間
+#### ▼ IPC 名前空間
 
 プロセスは、同じ IPC 名前空間に属するほかのプロセスと通信できる。
 
@@ -94,25 +94,25 @@ Kubernetes のセキュリティ上の理由から、デフォルトでは Pod �
 > - https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured
 > - https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896
 
-### Network名前空間
+### Network 名前空間
 
 <br>
 
-### PID名前空間
+### PID 名前空間
 
 <br>
 
-### Hostname名前空間
+### Hostname 名前空間
 
 <br>
 
-### cgroup名前空間
+### cgroup 名前空間
 
 <br>
 
 ## 05. ネットワークレイヤー
 
-### Ingress Controller由来の `L7` ロードバランサーの場合
+### Ingress Controller 由来の `L7` ロードバランサーの場合
 
 Ingress Controller の場合、`L7` ロードバランサーをプロビジョニングする。
 
@@ -126,24 +126,24 @@ Service は `L4` ロードバランサーとして、インバウンド通信を
 
 <br>
 
-### LoadBalancer Service由来の `L4` ロードバランサーの場合
+### LoadBalancer Service 由来の `L4` ロードバランサーの場合
 
 LoadBalancer Service の場合、`L4` ロードバランサーをプロビジョニングする。
 
 <br>
 
-## 06. Pod間通信
+## 06. Pod 間通信
 
-### Pod間通信の経路
+### Pod 間通信の経路
 
 Pod 内のコンテナから宛先の Pod にリクエストを送信する。
 
 このとき、Pod をスケジューリングさせている Node が同じ/異なるかのいずれの場合で、経由するネットワークが異なる。
 
-| 条件             | 経由するネットワーク                                         |
-| ---------------- | ------------------------------------------------------------ |
-| Nodeが異なる場合 | Nodeネットワーク + Clusterネットワーク + Serviceネットワーク |
-| Nodeが同じ場合   | Clusterネットワーク + Serviceネットワーク                    |
+| 条件              | 経由するネットワーク                                            |
+| ----------------- | --------------------------------------------------------------- |
+| Node が異なる場合 | Node ネットワーク + Cluster ネットワーク + Service ネットワーク |
+| Node が同じ場合   | Cluster ネットワーク + Service ネットワーク                     |
 
 > - https://kubernetes.io/docs/concepts/cluster-administration/networking/
 
@@ -162,7 +162,7 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 <br>
 
-### PodのIPアドレスを指定する場合
+### Pod のIP アドレスを指定する場合
 
 #### ▼ 仕組み
 
@@ -200,7 +200,7 @@ traceroute to 11.0.0.1 (11.0.0.1), 30 hops max, 46 byte packets
 
 <br>
 
-### ServiceのIPアドレスを指定する場合
+### Service のIP アドレスを指定する場合
 
 #### ▼ 仕組み
 
@@ -230,7 +230,7 @@ FOO_APP_SERVICE_SERVICE_PORT_HTTP_ACCOUNT=80
 
 <br>
 
-### Serviceの完全修飾ドメイン名を指定する場合
+### Service の完全修飾ドメイン名を指定する場合
 
 #### ▼ 仕組み
 
@@ -297,7 +297,7 @@ options ndots:5
 
 ## 07. 通信のデバッグ
 
-### Podのアウトバウンド通信のデバッグ
+### Pod のアウトバウンド通信のデバッグ
 
 #### ▼ `kubectl run` コマンド
 
@@ -360,7 +360,7 @@ $ kubectl delete -n default node-debugger-*****
 > - https://qiita.com/tkusumi/items/a62c209972bd0d4913fc
 > - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
 
-#### ▼ デバッグ用Podを起動しておく
+#### ▼ デバッグ用 Pod を起動しておく
 
 デバッグ用 Pod を起動しておく方法もある。
 

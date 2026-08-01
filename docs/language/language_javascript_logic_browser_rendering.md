@@ -15,7 +15,7 @@ description: レンダリングロジック＠JavaScriptを記録しています
 
 ## Window
 
-### Windowとは
+### Window とは
 
 ブラウザのウィンドウ (ブラウザタブ) を表すオブジェクトである。
 
@@ -25,7 +25,7 @@ description: レンダリングロジック＠JavaScriptを記録しています
 
 ### clearInterval
 
-#### ▼ clearIntervalとは
+#### ▼ clearInterval とは
 
 `setInterval()` 関数によって定期実行中の関数を停止する関数を返却する。
 
@@ -59,7 +59,7 @@ setTimeout(() => {
 
 ### setTimeout
 
-#### ▼ setTimeoutとは
+#### ▼ setTimeout とは
 
 指定した秒数だけ処理を待機する。
 
@@ -76,7 +76,7 @@ await new Promise((resolve) => {
 
 ### setInterval
 
-#### ▼ setIntervalとは
+#### ▼ setInterval とは
 
 指定した秒数ごとに処理を実行する。
 

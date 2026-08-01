@@ -3,7 +3,7 @@ title: 【IT技術の知見】 kubeconform＠API仕様違反テスト
 description: kubeconform＠API仕様違反テストの知見を記録しています。
 ---
 
-# kubeconform＠API仕様違反テスト
+# kubeconform＠API 仕様違反テスト
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: kubeconform＠API仕様違反テストの知見を記録してい�
 
 <br>
 
-## 01. kubeconformの仕組み
+## 01. kubeconform の仕組み
 
 ### 検出項目
 
@@ -35,7 +35,7 @@ $ brew install kubeconform
 
 ### カスタムリソースのスキーマの用意
 
-#### ▼ CRDのマニフェストのインストール
+#### ▼ CRD のマニフェストのインストール
 
 CRD のマニフェストをインストールする。
 
@@ -88,7 +88,7 @@ $ helm template . -f foo-values.yaml -f foo-secrets.yaml \
 
 ### -kubernetes-version
 
-#### ▼ -kubernetes-versionとは
+#### ▼ -kubernetes-version とは
 
 Kubernetes のバージョンを指定する。
 
@@ -129,7 +129,7 @@ $ kubeconform \
 
 ### -schema-location
 
-#### ▼ -schema-locationとは
+#### ▼ -schema-location とは
 
 `json` 形式のスキーマの場所を明示的に設定する。
 

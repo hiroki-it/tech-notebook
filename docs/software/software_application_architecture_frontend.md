@@ -13,15 +13,15 @@ description: フロントエンドアーキテクチャ＠フロントエンド�
 
 <br>
 
-## 01. MVCアーキテクチャ
+## 01. MVC アーキテクチャ
 
-### MVCアーキテクチャとは
+### MVC アーキテクチャとは
 
 記入中...
 
 <br>
 
-### UIレンダリングパターンとの関係性
+### UI レンダリングパターンとの関係性
 
 以下の UI レンダリングパターンを使用している場合、MVC アーキテクチャで構築することになる。
 
@@ -31,15 +31,15 @@ description: フロントエンドアーキテクチャ＠フロントエンド�
 
 <br>
 
-### Nuxt.jsを参考に考える
+### Nuxt.js を参考に考える
 
 Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 
-| Nuxt.jsのディレクトリ | Atomic Designのレイヤー     |
-| --------------------- | --------------------------- |
-| components            | Atoms、Molecules、Organisms |
-| pages                 | Pages                       |
-| layouts               | Templates                   |
+| Nuxt.js のディレクトリ | Atomic Design のレイヤー    |
+| ---------------------- | --------------------------- |
+| components             | Atoms、Molecules、Organisms |
+| pages                  | Pages                       |
+| layouts                | Templates                   |
 
 > - https://tec.tecotec.co.jp/entry/2020/03/27/090000
 
@@ -85,7 +85,7 @@ Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 
 ## 04. マイクロフロントエンド
 
-### UI部品合成とは
+### UI 部品合成とは
 
 静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) のコンポーネントを、各マイクロサービスに対応するように分割する設計方法。
 
@@ -107,7 +107,7 @@ Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 
 クライアント側 (ブラウザ上) で、静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を合成する。
 
-#### ▼ iframeタグ
+#### ▼ iframe タグ
 
 ページへコンポーネントに対応する `iframe` タグを組み込む。
 
@@ -119,7 +119,7 @@ Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 
 > - https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaJavascript
 
-#### ▼ webコンポーネント
+#### ▼ web コンポーネント
 
 > - https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaWebComponents
 

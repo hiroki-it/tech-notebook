@@ -38,7 +38,7 @@ description: 仮想化の知見を記録しています。
 
 物理サーバーのホスト上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー (マシン) を作成する。
 
-#### ▼ Provider例
+#### ▼ Provider 例
 
 | OS      | VirtualBox | Lima | QEMU | VMware Workstation | VMware Fusion |
 | ------- | :--------: | :--: | :--: | :----------------: | :-----------: |
@@ -58,7 +58,7 @@ description: 仮想化の知見を記録しています。
 
 このとき、ホストは使用しない。
 
-#### ▼ Provider例
+#### ▼ Provider 例
 
 - VMware vSphere Hypervisor
 - Xen
@@ -66,9 +66,9 @@ description: 仮想化の知見を記録しています。
 
 <br>
 
-## 02-02. OS仮想化
+## 02-02. OS 仮想化
 
-### OS仮想化とは
+### OS 仮想化とは
 
 物理サーバー上で、ソフトウェアである OS を部分的に仮想化しつつ、各仮想環境でハードウェアは共有する。
 
@@ -87,7 +87,7 @@ description: 仮想化の知見を記録しています。
 
 > - https://www.undercoverlog.com/entry/2018/10/01/Docker%E3%81%AE%E5%8B%95%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E5%90%8D%E5%89%8D%E7%A9%BA%E9%96%93/cgroups%EF%BC%89
 
-#### ▼ Provider例
+#### ▼ Provider 例
 
 - Docker
 - Containerd

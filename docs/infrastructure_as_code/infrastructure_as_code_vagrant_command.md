@@ -13,7 +13,7 @@ description: コマンド＠Vagrantの知見を記録しています。
 
 <br>
 
-## 01. vagrantコマンド
+## 01. vagrant コマンド
 
 ### box add
 

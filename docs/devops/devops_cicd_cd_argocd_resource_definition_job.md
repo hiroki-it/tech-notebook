@@ -3,7 +3,7 @@ title: 【IT技術の知見】Job系＠リソース定義
 description: Job系＠リソース定義の知見を記録しています。
 ---
 
-# Job系＠リソース定義
+# Job 系＠リソース定義
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Job系＠リソース定義の知見を記録しています。
 
 <br>
 
-## 01. 専用Job
+## 01. 専用 Job
 
 Job に、ArgoCD の Sync に伴う処理を設定する。
 
@@ -46,13 +46,13 @@ Job に、ArgoCD の `Sync` フェーズを設定する。
 
 設定したフェーズのタイミングで、ArgoCD はこの Job をフックする。
 
-| 設定項目 | 処理の実行タイミング | 適するJobの処理                                                            |
-| -------- | -------------------- | -------------------------------------------------------------------------- |
-| PreSync  | Syncの前             | DBマイグレーション処理（アプリケーションを起動する前に実行する必要がある） |
-| Sync     | Syncと同時           | Deploymentのアップデート戦略以外のデプロイ実行処理                         |
-| Skip     | Syncスキップ時       |                                                                            |
-| PostSync | Syncの後             | ヘルスチェック                                                             |
-| SyncFail | Syncの失敗時         | Sync失敗の残骸となったKubernetesリソースの削除処理                         |
+| 設定項目 | 処理の実行タイミング | 適する Job の処理                                                           |
+| -------- | -------------------- | --------------------------------------------------------------------------- |
+| PreSync  | Sync の前            | DB マイグレーション処理（アプリケーションを起動する前に実行する必要がある） |
+| Sync     | Sync と同時          | Deployment のアップデート戦略以外のデプロイ実行処理                         |
+| Skip     | Sync スキップ時      |                                                                             |
+| PostSync | Sync の後            | ヘルスチェック                                                              |
+| SyncFail | Sync の失敗時        | Sync 失敗の残骸となった Kubernetes リソースの削除処理                       |
 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
@@ -72,7 +72,7 @@ metadata:
   namespace: argocd
   name: foo-migration-job
   annotations:
-    # Syncの前に実行する。
+    # Sync の前に実行する。
     argocd.argoproj.io/hook: PreSync
     # 次のフック前に削除する。
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
@@ -88,7 +88,7 @@ spec:
           command: ["<マイグレーションを実行するためのコマンド>"]
           envFrom:
             - secretRef:
-                # DBの接続情報 (ホスト、ユーザー名、パスワード) はSecretに設定しておく。
+                # DB の接続情報 (ホスト、ユーザー名、パスワード) は Secret に設定しておく。
                 name: foo-secret
       restartPolicy: Never
 ```
@@ -135,7 +135,7 @@ metadata:
   name: foo-job
   annotations:
     argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: -1 # 優先度-1 (3個の中で一番優先される)
+    argocd.argoproj.io/sync-wave: -1 # 優先度-1 (3 個の中で一番優先される)
 ```
 
 ```yaml
@@ -146,7 +146,7 @@ metadata:
   name: foo-job
   annotations:
     argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: 0 # 優先度0 (デフォルトで0になる)
+    argocd.argoproj.io/sync-wave: 0 # 優先度 0 (デフォルトで 0になる)
 ```
 
 ```yaml
@@ -157,7 +157,7 @@ metadata:
   name: foo-job
   annotations:
     argocd.argoproj.io/hook: SyncFail
-    argocd.argoproj.io/sync-wave: 1 # 優先度1
+    argocd.argoproj.io/sync-wave: 1 # 優先度 1
 ```
 
 > - https://weseek.co.jp/tech/95/

@@ -13,7 +13,7 @@ description: BuildKit＠Dockerの知見を記録しています。
 
 <br>
 
-## 01. BuildKitとは
+## 01. BuildKit とは
 
 コンテナ内でコンテナイメージのビルドできるようにする実行エンジンである。
 

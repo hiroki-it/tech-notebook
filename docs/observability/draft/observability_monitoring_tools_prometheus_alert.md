@@ -13,7 +13,7 @@ description: アラート＠Prometheusの知見を記録しています。
 
 <br>
 
-## Kubernetesで便利なアラート
+## Kubernetes で便利なアラート
 
 ### `KubeAPIDown`
 

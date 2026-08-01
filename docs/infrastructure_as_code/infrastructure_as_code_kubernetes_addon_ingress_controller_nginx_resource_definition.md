@@ -13,9 +13,9 @@ description: Nginx Ingress Controller＠Ingress Controllerの知見を記録し�
 
 <br>
 
-## 01. Ingressの `.metadata.annotations` キー
+## 01. Ingress の `.metadata.annotations` キー
 
-### Ingressの `.metadata.annotations` キーとは
+### Ingress の `.metadata.annotations` キーとは
 
 特定の ALB のリスナールールを決める。
 
@@ -76,9 +76,9 @@ metadata:
 
 <br>
 
-## 02. 一括設定のConfigMap
+## 02. 一括設定の ConfigMap
 
-### 一括設定のConfigMapとは
+### 一括設定の ConfigMap とは
 
 すべての Ingress に一括してルールを設定する。
 

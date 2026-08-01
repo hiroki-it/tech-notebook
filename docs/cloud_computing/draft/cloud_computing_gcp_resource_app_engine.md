@@ -3,7 +3,7 @@ title: 【IT技術の知見】App Engine＠Google Cloudリソース
 description: App Engine＠Google Cloudリソースの知見を記録しています。
 ---
 
-# App Engine＠Google Cloudリソース
+# App Engine＠Google Cloud リソース
 
 ## はじめに
 
@@ -23,7 +23,7 @@ description: App Engine＠Google Cloudリソースの知見を記録していま
 
 ### RoleBinding
 
-#### ▼ 条件付きRoleBinding
+#### ▼ 条件付き RoleBinding
 
 IAM ユーザーに一時的にロールを付与する。
 

@@ -13,7 +13,7 @@ description: Knative＠パブリッシュ／サブスクライブ方式の知見
 
 <br>
 
-## 01. Knativeとは
+## 01. Knative とは
 
 Knative を使用しない場合、イベント駆動関数の公開に必要な Kubernetes リソース (例：Deployment、Service、Pod など) をユーザーが作成し、関数を公開する。
 
@@ -24,7 +24,7 @@ Knative を使用しない場合、イベント駆動関数の公開に必要な
 
 .png<br>
 
-## 02. Knativeの仕組み
+## 02. Knative の仕組み
 
 ### アーキテクチャ
 
@@ -59,7 +59,7 @@ Knative のイベントメッシュ (Knative Eventing) は、イベントブロ�
 
 ## 03. イベント駆動関数テンプレート
 
-### Goの場合
+### Go の場合
 
 ```go
 package main

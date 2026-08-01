@@ -45,7 +45,7 @@ flowchart LR
 
 <br>
 
-## Gitグラフ
+## Git グラフ
 
 ```mermaid
 ---

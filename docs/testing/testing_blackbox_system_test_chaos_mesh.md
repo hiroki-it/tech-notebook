@@ -13,7 +13,7 @@ description: ChaosMesh＠システムテストの知見を記録しています�
 
 <br>
 
-## 01. ChaosMeshの仕組み
+## 01. ChaosMesh の仕組み
 
 ### アーキテクチャ
 

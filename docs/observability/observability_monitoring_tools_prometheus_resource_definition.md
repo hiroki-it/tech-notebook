@@ -125,13 +125,13 @@ $ /opt/alertmanager/alertmanager \
 
 ### ネットワークに公開しない場合
 
-#### ▼ Prometheusの場合
+#### ▼ Prometheus の場合
 
 ```bash
 $ kubectl port-forward svc/prometheus -n prometheus 9090:9090
 ```
 
-#### ▼ Alertmanagerの場合
+#### ▼ Alertmanager の場合
 
 ```bash
 $ kubectl port-forward svc/alertmanager -n prometheus 9093:9093
@@ -141,7 +141,7 @@ $ kubectl port-forward svc/alertmanager -n prometheus 9093:9093
 
 ### ネットワークに公開する場合
 
-#### ▼ Prometheusの場合
+#### ▼ Prometheus の場合
 
 Node の外から Prometheus のダッシュボードをネットワークに公開する場合、Node 外から Prometheus サーバーにインバウンド通信が届くようにする必要がある。
 
@@ -158,7 +158,7 @@ metadata:
 spec:
   ingressClassName: foo-ingress-class
   rules:
-    # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
+    # ドメインを割り当てる場合、Host ヘッダーの合致ルールが必要である。
     - host: foo.prometheus.com
       http:
         paths:
@@ -179,7 +179,7 @@ kind: IngressClass
 metadata:
   name: foo-ingress-class
 spec:
-  # AWSの場合、ingress.k8s.aws/alb
+  # AWS の場合、ingress.k8s.aws/alb
   controller: k8s.io/ingress-nginx
 ```
 
@@ -210,7 +210,7 @@ spec:
   type: ClusterIP
 ```
 
-#### ▼ Alertmanagerの場合
+#### ▼ Alertmanager の場合
 
 Node の外から Alertmanager のダッシュボードをネットワークに公開する場合、Node 外から Alertmanager にインバウンド通信が届くようにする必要がある。
 
@@ -227,7 +227,7 @@ metadata:
 spec:
   ingressClassName: foo-ingress-class
   rules:
-    # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
+    # ドメインを割り当てる場合、Host ヘッダーの合致ルールが必要である。
     - host: foo.alertmanager.com
       http:
         paths:
@@ -252,7 +252,7 @@ kind: IngressClass
 metadata:
   name: foo-ingress-class
 spec:
-  # AWSの場合、ingress.k8s.aws/alb
+  # AWS の場合、ingress.k8s.aws/alb
   controller: k8s.io/ingress-nginx
 ```
 
@@ -287,7 +287,7 @@ spec:
 
 ## 02. Alertmanager
 
-### Alertmanagerとは
+### Alertmanager とは
 
 Alertmanager のセットアップ方法を決める。
 
@@ -444,7 +444,7 @@ spec:
 
 ## 03. AlertmanagerConfig
 
-### AlertmanagerConfigとは
+### AlertmanagerConfig とは
 
 Alertmanager のアラートグループや通知先ルールを決める。
 
@@ -452,7 +452,7 @@ Alertmanager のアラートグループや通知先ルールを決める。
 
 ## 04. PodMonitor
 
-### PodMonitorとは
+### PodMonitor とは
 
 Pod に対してプル型収集を実施し、これのデータポイントを収集する。
 
@@ -473,7 +473,7 @@ metadata:
   name: foo-pod-monitor
 spec:
   namespaceSelector:
-    # 任意のmetadata.labelsキーを設定する。
+    # 任意の metadata.labels キーを設定する。
     prometheus-pod-monitor: enabled
 ```
 
@@ -482,7 +482,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
-    # PodMonitorを有効化したいNamespaceに付与する
+    # PodMonitor を有効化したい Namespace に付与する
     prometheus-pod-monitor: enabled
   name: foo-namespace
 ```
@@ -493,7 +493,7 @@ metadata:
 
 ## 05. Probe
 
-### Probeとは
+### Probe とは
 
 Ingress や静的 IP アドレスのメトリクスに対してプル型収集を実施し、これらのデータポイントを収集する。
 
@@ -501,7 +501,7 @@ Ingress や静的 IP アドレスのメトリクスに対してプル型収集�
 
 ## 06. Prometheus
 
-### Prometheusとは
+### Prometheus とは
 
 Prometheus のセットアップ方法を決める。
 
@@ -659,7 +659,7 @@ spec:
 
 ## 07. PrometheusRule
 
-### PrometheusRuleとは
+### PrometheusRule とは
 
 ルール (アラートルール、レコーディングルール) を設定する。
 
@@ -686,7 +686,7 @@ PrometheusRule の定義に応じて、prometheus コンテナの `/etc/promethe
 公開されているレコーディングルール (例：kubernetes-mixin のレコーディングルール) を使用するとよい。
 
 ```yaml
-# 分析結果をnode_namespace_pod_container:container_cpu_usage_seconds_total:sum_irateというレコーディング名で保管しておく
+# 分析結果を node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate というレコーディング名で保管しておく
 expr: |
   sum by (cluster, namespace, pod, container) (
     irate(container_cpu_usage_seconds_total{job="cadvisor", image!=""}[5m])
@@ -708,7 +708,7 @@ record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
 
 > - https://monitoring.mixins.dev
 
-#### ▼ kubernetes-mixinsのPrometheusRule
+#### ▼ kubernetes-mixins の PrometheusRule
 
 kubernetes-mixins では、アラートルールとレコーディングルールのレシピが公開されている。
 
@@ -727,15 +727,15 @@ prometheus-oprator では、アラートルールとレコーディングルー�
 
 ### アラート内で使用できる予約変数
 
-| 変数名            | データ型 | デフォルトラベル例                                                                | 説明                                                                                                                                                                                                         |
-| ----------------- | -------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Receiver          | string型 | `.Receiver`                                                                       | アラートの受信者が割り当てられている。                                                                                                                                                                       |
-| Status            | string型 | `.Status`                                                                         | アラートがFiring状態/Resolved状態が割り当てられている。                                                                                                                                                      |
-| Alerts            | map型    | `.Alerts.Labels.SortedPairs`                                                      | アラートの情報が割り当てられている。<br>・https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                                                    |
-| GroupLabels       | map型    | ・`.GroupLabels.alertname` <br>・`.GroupLabels.instance` <br>・`.GroupLabels.job` | 特定のアラートグループに関するラベルが割り当てられている。`.spec.groups[*].rules[*].labels` キー配下で設定したユーザー定義のラベルも含む。<br>・https://prometheus.io/docs/alerting/latest/notifications/#kv |
-| CommonLabels      | map型    | `.CommonLabels.alertname`                                                         | すべてのアラートに共通するラベルが割り当てられている。                                                                                                                                                       |
-| CommonAnnotations | map型    | `.CommonAnnotations.summary`                                                      | すべてのアラートに共通するアノテーションが割り当てられている。`.spec.groups[*].rules[*].labels` キー配下で設定したユーザー定義のアノテーションも含む。                                                       |
-| ExternalURL       | string型 | `.ExternalURL`                                                                    | AlertmangerのURLが割り当てられている。                                                                                                                                                                       |
+| 変数名            | データ型  | デフォルトラベル例                                                                | 説明                                                                                                                                                                                                         |
+| ----------------- | --------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Receiver          | string 型 | `.Receiver`                                                                       | アラートの受信者が割り当てられている。                                                                                                                                                                       |
+| Status            | string 型 | `.Status`                                                                         | アラートが Firing 状態/Resolved 状態が割り当てられている。                                                                                                                                                   |
+| Alerts            | map 型    | `.Alerts.Labels.SortedPairs`                                                      | アラートの情報が割り当てられている。<br>・https://prometheus.io/docs/alerting/latest/notifications/#alert                                                                                                    |
+| GroupLabels       | map 型    | ・`.GroupLabels.alertname` <br>・`.GroupLabels.instance` <br>・`.GroupLabels.job` | 特定のアラートグループに関するラベルが割り当てられている。`.spec.groups[*].rules[*].labels` キー配下で設定したユーザー定義のラベルも含む。<br>・https://prometheus.io/docs/alerting/latest/notifications/#kv |
+| CommonLabels      | map 型    | `.CommonLabels.alertname`                                                         | すべてのアラートに共通するラベルが割り当てられている。                                                                                                                                                       |
+| CommonAnnotations | map 型    | `.CommonAnnotations.summary`                                                      | すべてのアラートに共通するアノテーションが割り当てられている。`.spec.groups[*].rules[*].labels` キー配下で設定したユーザー定義のアノテーションも含む。                                                       |
+| ExternalURL       | string 型 | `.ExternalURL`                                                                    | Alertmanger の URL が割り当てられている。                                                                                                                                                                     |
 
 > - https://www.amazon.co.jp/dp/4910313001
 > - https://prometheus.io/docs/alerting/latest/notifications/
@@ -745,7 +745,7 @@ prometheus-oprator では、アラートルールとレコーディングルー�
 
 ### .spec.groups
 
-#### ▼ groupsとは
+#### ▼ groups とは
 
 アラートグループを設定する。
 
@@ -785,7 +785,7 @@ spec:
 | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | `alert`       | アラートルール名を設定する                                                                                                  |
 | `annotations` | アラートルールによるアラートの通知内容を設定する。`.metadata.labels` キーや発火値 (`$value`) を通知内容に変数で出力できる。 |
-| `expr`        | アラートルールで監視するメトリクスに関するPromQLを設定する。ロジックを変更すればアラートの発火をテストできる。              |
+| `expr`        | アラートルールで監視するメトリクスに関する PromQL を設定する。ロジックを変更すればアラートの発火をテストできる。            |
 | `for`         | アラートの通知のクールダウン期間を設定する。クールダウン期間中に発火したアラートは通知されない。                            |
 | `labels`      | アラートの通知内容に付与するラベルを設定する                                                                                |
 
@@ -826,10 +826,10 @@ spec:
 
 アラートルールは、『スネークケース』『コロン区切り』で命名する。
 
-| 項目     | 説明                                                                                                                 |
-| -------- | -------------------------------------------------------------------------------------------------------------------- |
-| `record` | レコーディングルール名を設定する                                                                                     |
-| `expr`   | レコーディングルールで監視するメトリクスに関するPromQLを設定する。ロジックを変更すればアラートの発火をテストできる。 |
+| 項目     | 説明                                                                                                                   |
+| -------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `record` | レコーディングルール名を設定する                                                                                       |
+| `expr`   | レコーディングルールで監視するメトリクスに関する PromQL を設定する。ロジックを変更すればアラートの発火をテストできる。 |
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -843,7 +843,7 @@ spec:
   groups:
     - name: foo-recording-rules
       rules:
-        # Prometheusのレコーディングルールを定義する。
+        # Prometheus のレコーディングルールを定義する。
         - record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
           # PromQL
           expr: ...
@@ -855,7 +855,7 @@ spec:
 
 ## 08. ServiceMonitor
 
-### ServiceMonitorとは
+### ServiceMonitor とは
 
 指定した Service に対してプル型収集を実施し、これに紐づく Pod のメトリクスの元になるデータポイントを収集する。
 
@@ -923,7 +923,7 @@ spec:
 ```
 
 ```yaml
-# kube-apiserverにフォワーディングするService
+# kube-apiserver にフォワーディングする Service
 # デフォルトで作成されている
 apiVersion: v1
 kind: Service
@@ -956,7 +956,7 @@ spec:
 
 ### .spec.endpoints
 
-#### ▼ endpointsとは
+#### ▼ endpoints とは
 
 収集の対象とする Service で待ち受けるエンドポイントを設定する。
 
@@ -995,7 +995,7 @@ metadata:
   namespace: prometheus
 spec:
   endpoints:
-    # __meta_kubernetes_pod_node_nameラベルの値をinstanceラベルの値として挿入する
+    # __meta_kubernetes_pod_node_name ラベルの値を instance ラベルの値として挿入する
     - relabelings:
         - action: replace
           # 変換のために使用する値を持つラベル名を設定する
@@ -1116,7 +1116,7 @@ spec:
 ```
 
 ```yaml
-# 収集対象のService
+# 収集対象の Service
 apiVersion: v1
 kind: Service
 metadata:
@@ -1148,7 +1148,7 @@ spec:
 ```
 
 ```yaml
-# 収集対象のService
+# 収集対象の Service
 apiVersion: v1
 kind: Service
 metadata:
@@ -1176,7 +1176,7 @@ spec:
 ```
 
 ```yaml
-# 収集対象のService
+# 収集対象の Service
 apiVersion: v1
 kind: Service
 metadata:

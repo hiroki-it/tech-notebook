@@ -17,7 +17,7 @@ description: 設定ファイル＠Nginxの知見を記録しています。
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 nginx を `apt-get` コマンドでインストールすると、旧バージョンが指定されるため、`apt` コマンドを使用する。
 
@@ -27,7 +27,7 @@ $ apt install nginx
 
 > - https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 
-#### ▼ yumリポジトリから
+#### ▼ yum リポジトリから
 
 ```bash
 $ yum install -y nginx
@@ -93,7 +93,7 @@ OS やそのバージョンによって、変数のデフォルト値が異な�
 
 実際にインバウンド通信のルーティング先に接続し、上書き設定が必要なものと不要なものを判断する必要がある。
 
-#### ▼ Debian系の場合
+#### ▼ Debian 系の場合
 
 Debian10 の設定ファイルを以下に示す。
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】AWSプロバイダー＠Terraform
 description: AWSプロバイダー＠Terraformの知見を記録しています。
 ---
 
-# AWSプロバイダー＠Terraform
+# AWS プロバイダー＠Terraform
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: AWSプロバイダー＠Terraformの知見を記録しています�
 
 <br>
 
-## AWSプロバイダーとは
+## AWS プロバイダーとは
 
 Terraform が AWS リソースの API と通信可能にする。
 
@@ -110,7 +110,7 @@ resource "aws_acm_certificate_validation" "www_an1" {
 }
 ```
 
-#### `(1)`AWS以外でドメインを購入した場合は注意
+#### `(1)`AWS 以外でドメインを購入した場合は注意
 
 AWS 以外でドメインを購入した場合は AWS 以外で作業になる。
 
@@ -216,7 +216,7 @@ data "aws_ami" "backuped" {
 }
 ```
 
-#### `(1)` 取得するAMIのバージョンを固定
+#### `(1)` 取得する AMI のバージョンを固定
 
 取得する AMI が常に最新になっていると、EC2 が再作成されなねない。
 
@@ -224,7 +224,7 @@ data "aws_ami" "backuped" {
 
 `most_recent` は無効化しておき、特定の AMI をフィルタリングする。
 
-#### `(2)`AWS Backupで作成したAMIを参照
+#### `(2)`AWS Backup で作成した AMI を参照
 
 AWS Backup で EC2 の AMI を作成している場合に、フィルターの条件を使用して、AMI を参照する。
 
@@ -291,7 +291,7 @@ resource "aws_api_gateway_stage" "foo" {
 }
 ```
 
-#### `(1)` OpenAPI仕様のインポートと差分認識
+#### `(1)` OpenAPI 仕様のインポートと差分認識
 
 あらかじめ用意した OpenAPI 仕様の `yaml` ファイルを `body` オプションのパラメーターとし、これをインポートすることにより、API を定義できる。
 
@@ -339,7 +339,7 @@ resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
 }
 ```
 
-#### `(1)` Amazon ECSサービス名をルートとした命名
+#### `(1)` Amazon ECS サービス名をルートとした命名
 
 同じ AWS アカウントの異なる Amazon ECS サービスを作成する場合がある。
 
@@ -394,7 +394,7 @@ Terraform では、`retain_on_delete` で設定できる。
 
 固有の設定で、AWS に対応するものはない。
 
-#### originブロック
+#### origin ブロック
 
 Origins 画面に設定するオリジンを定義する。
 
@@ -444,7 +444,7 @@ resource "aws_cloudfront_distribution" "this" {
 }
 ```
 
-#### ordered_cache_behaviorブロック
+#### ordered_cache_behavior ブロック
 
 Behavior 画面で設定するオリジンにルーティングするパスを定義する。
 
@@ -628,7 +628,7 @@ ECS タスクの起動が完了する前にサービスがロードバランサ�
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecs_task_definition
 
-#### `(3)`ALB/NLBリスナーの作成を待機
+#### `(3)`ALB/NLB リスナーの作成を待機
 
 Terraform は、特に依存関係を実装しない場合、『ターゲットグループ ➡️ ALB/NLB ➡️ リスナー』の順で `resource` ブロックを作成する。
 
@@ -640,11 +640,11 @@ AWS ALB や AWS NLB の作成 (※リスナーも含む可能性) が完全に�
 
 > - https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
 
-#### `(4)`AWS Auto ScalingグループによるECSタスク数の増減を無視
+#### `(4)`AWS Auto Scaling グループによる ECS タスク数の増減を無視
 
 AutoScaling によって、ECS タスク数が増減するため、これを無視する。
 
-#### (＊) ECSタスク定義の更新
+#### (＊) ECS タスク定義の更新
 
 Terraform で ECS タスク定義を更新すると、現在稼働している ECS で稼働している ECS タスクはそのままに、新しいリビジョンの ECS タスク定義を作成する。
 
@@ -666,7 +666,7 @@ Amazon ECS サービスの削除には『ドレイニング』の時間が発生
 
 ただし、ローリングアップデートの仕組み上、新しい ECS タスクのヘルスチェックが失敗すれば、既存の ECS タスクは停止せずにそのまま稼働するため、安心ではあるが。
 
-#### (＊) ECSコンテナ名
+#### (＊) ECS コンテナ名
 
 コンテナ名は、役割名 (app、web、monitoring など) ではなく、ベンダー名 (laravel、nginx、datadog など) とする。
 
@@ -725,13 +725,13 @@ resource "aws_volume_attachment" "foo" {
 
 誤って削除しないように、またコードに秘密鍵の内容をハードコーディングしないように、キーペアはコンソール画面で作成した後、`key_name` でキー名を指定する。
 
-#### `(2)`Internet Gatewayの後に作成
+#### `(2)`Internet Gateway の後に作成
 
 Internet Gateway の後に EC2 を作成可能にする。
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway#argument-reference
 
-#### `(3)`EC2の削除時にEBSボリュームは削除されない
+#### `(3)`EC2 の削除時に EBS ボリュームは削除されない
 
 `aws_ami` リソースで AMI を作成する場合、EC2 の削除時に EBS ボリュームも削除するかどうかを設定できる。
 
@@ -821,7 +821,7 @@ resource "aws_eks_node_group" "this" {
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#example-usage
 
-#### `(1)`Node数の増減は無視
+#### `(1)`Node 数の増減は無視
 
 EKS では、cluster-autoscaler を使用して、Node をスケーリングさせる。
 
@@ -829,7 +829,7 @@ EKS では、cluster-autoscaler を使用して、Node をスケーリングさ�
 
 <br>
 
-## AWS IAMユーザー
+## AWS IAM ユーザー
 
 ### resource
 
@@ -897,7 +897,7 @@ resource "aws_iam_policy" "aws_cli_command_executor_ip_address_restriction" {
 }
 ```
 
-#### ▼ AWS管理ポリシー
+#### ▼ AWS 管理ポリシー
 
 IAM ユーザーに AWS 管理ポリシーを紐付ける。
 
@@ -915,7 +915,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 <br>
 
-## AWS IAMロール
+## AWS IAM ロール
 
 ### resource
 
@@ -1044,7 +1044,7 @@ resource "aws_iam_role_policy" "ecs_task" {
 }
 ```
 
-#### ▼ AWS管理ポリシーを持つロール
+#### ▼ AWS 管理ポリシーを持つロール
 
 事前に、tpl 形式の AWS 管理ポリシーを定義しておく。
 
@@ -1201,11 +1201,11 @@ resource "aws_lb_target_group" "this" {
 }
 ```
 
-#### `(1)` NLBはスロースタート方式に非対応
+#### `(1)` NLB はスロースタート方式に非対応
 
 NLB に紐付くターゲットグループはスロースタート方式の負荷分散に非対応のため、これを明示的に無効化する必要がある。
 
-#### `(2)`NLBヘルスチェックには設定できる項目が少ない
+#### `(2)`NLB ヘルスチェックには設定できる項目が少ない
 
 ターゲットグループのフォワーディングプロトコルが TCP プロトコルの場合は、設定できないヘルスチェックオプションがいくつかある。
 
@@ -1213,7 +1213,7 @@ NLB に紐付くターゲットグループはスロースタート方式の負�
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group#health_check
 
-#### `(3)`NLBスティッキーネスは明示的に無効化
+#### `(3)`NLB スティッキーネスは明示的に無効化
 
 スティッキネス機能を無効化する場合、AWS プロバイダーのアップグレード時に問題が起こらないように、このブロックを実装しないようにする。
 
@@ -1238,7 +1238,7 @@ status code: 400, request id: *****
 
 <br>
 
-## Amazon Auroraの場合
+## Amazon Aurora の場合
 
 ### resource
 
@@ -1360,7 +1360,7 @@ Terraform に値をハードコーディングしたくない場合は、パラ�
 
 メンテナンスウインドウ時の変更適用を Terraform で行う場合、一段階目に `apply_immediately` オプションを `false` に変更して `terraform apply` コマンドを実行することにより、二段階目に修正を `terraform apply` コマンドを実行する。
 
-#### `(3)`DBクラスターにはAZが `3` 個必要
+#### `(3)`DB クラスターには AZ が `3` 個必要
 
 DB クラスターでは、レプリケーションのために、`3` 個の AZ が必要である。
 
@@ -1372,7 +1372,7 @@ Terraform がこれを認識しないように、`ignore_changes` 引数で AZ �
 > - https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
 > - https://github.com/hashicorp/terraform-provider-aws/issues/1111
 
-#### `(4)` インスタンスを配置するAZは選択できない
+#### `(4)` インスタンスを配置する AZ は選択できない
 
 事前にインスタンスへ AZ を表す識別子を入れたとしても、Terraform はインスタンスの配置先 AZ を選択できない。
 
@@ -1423,7 +1423,7 @@ DB クラスターと DB インスタンスの両方に、`preferred_backup_wind
 
 `count` 引数は本来非推奨であるが、同じ設定のインスタンスを単に量産するだけなため、許容する。
 
-#### `(10)` マルチAZを有効化する
+#### `(10)` マルチ AZ を有効化する
 
 Amazon Aurora では、紐付けられたサブネットグループが複数の AZ のサブネットで構成されている場合、各インスタンスを自動的に配置する AZ を決める。
 
@@ -1687,7 +1687,7 @@ Amazon S3 紐付けられる、自身へのアクセスを制御するために�
 
 定義したバケットポリシーは、`aws_s3_bucket_policy` リソースでロールに紐付けできる。
 
-#### ▼ ALBアクセスログ
+#### ▼ ALB アクセスログ
 
 ALB がバケットにログを書き込めるように、『ELB のサービスアカウント ID』を許可する必要がある。
 
@@ -1731,7 +1731,7 @@ ALB のアクセスログを送信するバケット内には、自動的に『/
 }
 ```
 
-#### ▼ NLBアクセスログ
+#### ▼ NLB アクセスログ
 
 ALB がバケットにログを書き込めるように、『`delivery.logs.amazonaws.com`』からのリクエストを許可する必要がある。
 
@@ -2008,7 +2008,7 @@ resource "aws_eip" "nat_gateway" {
 }
 ```
 
-#### `(1)` 冗長化されたAWSリソースをfor_each関数で作成
+#### `(1)` 冗長化された AWS リソースを for_each 関数で作成
 
 AZ を上長化している場合、VPC 内のサブネットと関連の AWS リソース (ルートテーブル、NAT Gateway、Elastic IP など) も冗長化することになる。
 
@@ -2108,7 +2108,7 @@ resource "aws_vpc_endpoint" "ssmmessages" {
 
 ### resource
 
-#### ▼ ruleブロック
+#### ▼ rule ブロック
 
 **＊実装例＊**
 
@@ -2406,7 +2406,7 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 }
 ```
 
-#### ▼ IPセットの依存関係
+#### ▼ IP セットの依存関係
 
 WAF の IP セットと他設定の依存関係に癖がある。
 
@@ -2426,7 +2426,7 @@ WAF の IP セットと他設定の依存関係に癖がある。
 
 <br>
 
-## Terraform管理外のAWSリソース
+## Terraform 管理外の AWS リソース
 
 ### 判断基準
 
@@ -2457,32 +2457,32 @@ WAF の IP セットと他設定の依存関係に癖がある。
 
 ### 詳細
 
-| AWSリソース                         | 管理外の部分                         | 管理外の理由                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ----------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| AWS Certificate Manager             | すべて                               | `terraform apply` コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できるオプションを使用する場合には、Terraformで管理してもよい。                                                                                                                                                                                                                                |
-| Amazon API Gateway、紐付くVPCリンク | すべて                               | ビジネスロジックを持ち、ロジックの変更頻度が高い。バックエンドチームがスムーズにAPIを作成できるようになる。                                                                                                                                                                                                                                                                                                  |
-| AWS Chatbot                         | すべて                               | AWSがAPIを公開していないため、Terraformで作成できない。                                                                                                                                                                                                                                                                                                                                                      |
-| AWS DynamoDB                        | すべて                               | `state.lock` ファイルをテーブルとして管理する。                                                                                                                                                                                                                                                                                                                                                              |
-| Amazon EC2                          | 秘密鍵                               | Terraformで作成するときにGitHubで秘密鍵を管理する必要があるため、セキュリティ上の理由で却下する。                                                                                                                                                                                                                                                                                                            |
-| AWS ENI                             | すべて                               | 特定のAWSリソース (ALB、セキュリティグループなど) の作成に伴って、自動的に作成されるため、Terraformで管理できない。                                                                                                                                                                                                                                                                                          |
-| Amazon EventBridge                  | StepFunctionsGetEventsForECSTaskRule | Step FunctionsでECS RunTaskの『ECSタスクが完了するまで待機』オプションを選択すると自動的に作成されるため、Terraformで管理できない。このルールは、ECSのECSタスクの状態がSTOPPEDになったことを検知し、StepFunctionsに通知してくれる。STOPPED は、ECSタスクが正常に停止 (完了？) した状態を表す。                                                                                                               |
-| AWS Global Accelerator              | セキュリティグループ                 | リソースを作成するとセキュリティグループが自動作成されるため、セキュリティグループのみTerraformで管理できない。                                                                                                                                                                                                                                                                                              |
-| AWS IAMユーザー                     | すべて                               | ビジネスロジックを持ち、ロジックの変更頻度が高い。                                                                                                                                                                                                                                                                                                                                                           |
-| AWS IAMユーザーグループ             | すべて                               | ビジネスロジックを持ち、ロジックの変更頻度が高い。                                                                                                                                                                                                                                                                                                                                                           |
-| AWS IAMロール                       | ユーザーに紐付くロール               | ビジネスロジックを持ち、ロジックの変更頻度が高い。                                                                                                                                                                                                                                                                                                                                                           |
-|                                     | サービスリンクロール                 | サービスリンクロールは自動的に作成されるが、これが行われる前に事前にTerraformで作成でき、以下のリンクにて各AWSリソースにサービスリンクロールが存在しているのか否かを確認できる。しかし、数が多く、また初回作成時のみしかエラーは起こらないため、サービスリンクロールはTerraformで作成しないようにする。<br>- https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html |
-| AWS IAMポリシー                     |                                      | ビジネスロジックを持ち、ロジックの変更頻度が高い。ただし、IPアドレス制限ポリシーなど、自動化したほうが便利になる場合はこの限りではない。                                                                                                                                                                                                                                                                     |
-| Amazon RDS                          | admin以外のユーザー                  | 各ユーザー作成のために、mysql providerを使用する必要がある。ただし、moduleディレクトリ配下に `provider.tf` ファイルを配置する必要があるため、ディレクトリ構成規約に難がある。                                                                                                                                                                                                                                |
-| Amazon Route 53                     | NSレコード                           | ホストゾーンを作成すると、レコードとして、NSレコード値が自動的に設定される。これは、Terraformの管理外である。                                                                                                                                                                                                                                                                                                |
-| Amazon S3                           | `tfstate` ファイルの管理バケット     | ・リモートバックエンドとして `tfstate` ファイルを格納するため、Terraformのデプロイより先に存在している必要がある。<br>・Terraformで誤って削除してしまわないようにする。<br>・`terraform apply -destroy` コマンドの実行時に、他のAWSリソースを削除する前に `tfstate` ファイルのAmazon S3バケットを先に削除してしまう。                                                                                        |
-| Amazon SES                          | すべて                               | `terraform apply` コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できる場合には、Terraformで管理してもよい。                                                                                                                                                                                                                                                    |
-| パラメーターストア                  | すべて                               | セキュリティを含むAWSリソースでは、Terraformのリポジトリで機密な変数やファイルを管理するわけにはいかず、また `tfstate` ファイルに書き込まれてしまうため。パラメーターストアの代わりに、キーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) を使用しつつ、暗号化された状態でリポジトリで管理してもよい。                                                                                                |
+| AWS リソース                          | 管理外の部分                         | 管理外の理由                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| AWS Certificate Manager               | すべて                               | `terraform apply` コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できるオプションを使用する場合には、Terraform で管理してもよい。                                                                                                                                                                                                                                     |
+| Amazon API Gateway、紐付く VPC リンク | すべて                               | ビジネスロジックを持ち、ロジックの変更頻度が高い。バックエンドチームがスムーズに API を作成できるようになる。                                                                                                                                                                                                                                                                                                      |
+| AWS Chatbot                           | すべて                               | AWS がAPI を公開していないため、Terraform で作成できない。                                                                                                                                                                                                                                                                                                                                                         |
+| AWS DynamoDB                          | すべて                               | `state.lock` ファイルをテーブルとして管理する。                                                                                                                                                                                                                                                                                                                                                                    |
+| Amazon EC2                            | 秘密鍵                               | Terraform で作成するときに GitHub で秘密鍵を管理する必要があるため、セキュリティ上の理由で却下する。                                                                                                                                                                                                                                                                                                               |
+| AWS ENI                               | すべて                               | 特定の AWS リソース (ALB、セキュリティグループなど) の作成に伴って、自動的に作成されるため、Terraform で管理できない。                                                                                                                                                                                                                                                                                             |
+| Amazon EventBridge                    | StepFunctionsGetEventsForECSTaskRule | Step Functions でECS RunTask の『ECS タスクが完了するまで待機』オプションを選択すると自動的に作成されるため、Terraform で管理できない。このルールは、ECS のECS タスクの状態が STOPPED になったことを検知し、StepFunctions に通知してくれる。STOPPED は、ECS タスクが正常に停止 (完了？) した状態を表す。                                                                                                           |
+| AWS Global Accelerator                | セキュリティグループ                 | リソースを作成するとセキュリティグループが自動作成されるため、セキュリティグループのみ Terraform で管理できない。                                                                                                                                                                                                                                                                                                  |
+| AWS IAM ユーザー                      | すべて                               | ビジネスロジックを持ち、ロジックの変更頻度が高い。                                                                                                                                                                                                                                                                                                                                                                 |
+| AWS IAM ユーザーグループ              | すべて                               | ビジネスロジックを持ち、ロジックの変更頻度が高い。                                                                                                                                                                                                                                                                                                                                                                 |
+| AWS IAM ロール                        | ユーザーに紐付くロール               | ビジネスロジックを持ち、ロジックの変更頻度が高い。                                                                                                                                                                                                                                                                                                                                                                 |
+|                                       | サービスリンクロール                 | サービスリンクロールは自動的に作成されるが、これが行われる前に事前に Terraform で作成でき、以下のリンクにて各 AWS リソースにサービスリンクロールが存在しているのか否かを確認できる。しかし、数が多く、また初回作成時のみしかエラーは起こらないため、サービスリンクロールは Terraform で作成しないようにする。<br>- https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html |
+| AWS IAM ポリシー                      |                                      | ビジネスロジックを持ち、ロジックの変更頻度が高い。ただし、IP アドレス制限ポリシーなど、自動化したほうが便利になる場合はこの限りではない。                                                                                                                                                                                                                                                                          |
+| Amazon RDS                            | admin 以外のユーザー                 | 各ユーザー作成のために、mysql provider を使用する必要がある。ただし、module ディレクトリ配下に `provider.tf` ファイルを配置する必要があるため、ディレクトリ構成規約に難がある。                                                                                                                                                                                                                                    |
+| Amazon Route 53                       | NS レコード                          | ホストゾーンを作成すると、レコードとして、NS レコード値が自動的に設定される。これは、Terraform の管理外である。                                                                                                                                                                                                                                                                                                    |
+| Amazon S3                             | `tfstate` ファイルの管理バケット     | ・リモートバックエンドとして `tfstate` ファイルを格納するため、Terraform のデプロイより先に存在している必要がある。<br>・Terraform で誤って削除してしまわないようにする。<br>・`terraform apply -destroy` コマンドの実行時に、他の AWS リソースを削除する前に `tfstate` ファイルの Amazon S3 バケットを先に削除してしまう。                                                                                        |
+| Amazon SES                            | すべて                               | `terraform apply` コマンド中に承認作業が発生し、プロビジョニングが止まってしまうため。ただし、承認を自動で実行できる場合には、Terraform で管理してもよい。                                                                                                                                                                                                                                                         |
+| パラメーターストア                    | すべて                               | セキュリティを含む AWS リソースでは、Terraform のリポジトリで機密な変数やファイルを管理するわけにはいかず、また `tfstate` ファイルに書き込まれてしまうため。パラメーターストアの代わりに、キーバリュー型ストア (例：SOPS、kubesec、Hashicorp Vault) を使用しつつ、暗号化された状態でリポジトリで管理してもよい。                                                                                                   |
 
 <br>
 
-### AWS CLIによるセットアップ例
+### AWS CLI によるセットアップ例
 
-#### ▼ Amazon S3バケット
+#### ▼ Amazon S3 バケット
 
 以下のコマンドを実行し、`tfstate` ファイル用の Amazon S3 バケットを作成する。
 
@@ -2554,9 +2554,9 @@ aws dynamodb create-table\
 
 <br>
 
-### `tfstate` ファイルに関連するAWSリソースをTerraformで管理する
+### `tfstate` ファイルに関連する AWS リソースを Terraform で管理する
 
-#### ▼ Amazon S3バケットの場合
+#### ▼ Amazon S3 バケットの場合
 
 `tfstate` ファイルを管理する Amazon S3 バケットを Terraform で管理しないプラクティスが一般的ではあるが、実は Terraform で管理する裏技がある。
 
@@ -2623,7 +2623,7 @@ resource "aws_kms_key" "tfstate" {
 }
 ```
 
-#### ▼ DynamoDBの場合
+#### ▼ DynamoDB の場合
 
 `state.lock` ファイルを管理する DynamoDB を Terraform で管理しないプラクティスが一般的ではあるが、実は Terraform で管理する裏技がある。
 
@@ -2641,11 +2641,11 @@ resource "aws_dynamodb_table" "tfstate" {
 
 <br>
 
-## 複数のAWSリソースに共通のプラクティス
+## 複数の AWS リソースに共通のプラクティス
 
 ### 環境変数
 
-#### ▼ AZに関するマップ型データ
+#### ▼ AZ に関するマップ型データ
 
 AZ のデータ自体をマップ型データで用意しておく。
 
@@ -2670,7 +2670,7 @@ vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 <br>
 
-### 削除保護機能のあるAWSリソース
+### 削除保護機能のある AWS リソース
 
 削除保護設定のある AWS リソースに癖がある。
 
@@ -2692,10 +2692,10 @@ vpc_subnet_public_cidrs            = { a = "*.*.*.*/27", c = "*.*.*.*/27" }
 
 もし、これを忘れてしまった場合は、画面上で削除処理を無効化し、削除処理を実行可能にする。
 
-| AWSリソース名 | Terraform上での設定名        |
-| ------------- | ---------------------------- |
-| ALB           | `enable_deletion_protection` |
-| EC2           | `disable_api_termination`    |
-| RDS           | `deletion_protection`        |
+| AWS リソース名 | Terraform 上での設定名       |
+| -------------- | ---------------------------- |
+| ALB            | `enable_deletion_protection` |
+| EC2            | `disable_api_termination`    |
+| RDS            | `deletion_protection`        |
 
 <br>

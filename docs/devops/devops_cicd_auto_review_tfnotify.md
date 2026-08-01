@@ -13,7 +13,7 @@ description: tfnotify＠自動レビューツールの知見を記録してい�
 
 <br>
 
-## 01. tfnotifyとは
+## 01. tfnotify とは
 
 `terraform` コマンドの処理結果を、レビューコメントとして GitHub に POST リクエストを送信する。
 

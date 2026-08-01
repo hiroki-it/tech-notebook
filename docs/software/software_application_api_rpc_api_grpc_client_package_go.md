@@ -3,7 +3,7 @@ title: 【IT技術の知見】Go＠gRPCクライアントパッケージ
 description: Go＠gRPCクライアントパッケージの知見を記録しています。
 ---
 
-# Go＠gRPCクライアントパッケージ
+# Go＠gRPC クライアントパッケージ
 
 ## はじめに
 
@@ -17,7 +17,7 @@ description: Go＠gRPCクライアントパッケージの知見を記録して�
 
 ### 各種ツール
 
-#### ▼ Protocol Bufferコンパイラー
+#### ▼ Protocol Buffer コンパイラー
 
 `proto` ファイルをコンパイルするために、Protocol Buffer コンパイラーをインストールする。
 
@@ -35,7 +35,7 @@ $ asdf install protoc
 > - https://maku.blog/p/37e6uck/
 > - https://github.com/pseudomuto/protoc-gen-doc/blob/master/Dockerfile
 
-#### ▼ Protocol BufferコンパイラーGoプラグイン
+#### ▼ Protocol Buffer コンパイラーGo プラグイン
 
 サービス定義ファイル (`proto` ファイル) から `pb.go` ファイルをコンパイルするために、Protocol Buffer コンパイラーのプラグインをインストールする。
 
@@ -53,7 +53,7 @@ protoc-gen-go <バージョン>
 > - https://github.com/juaruipav/grpc-go-docker-helloworld/blob/master/server/Dockerfile#L7-L8
 > - https://medium.com/@jitenderkmr/exploring-grpc-gateway-in-golang-building-a-reverse-proxy-for-seamless-restful-integration-d342fe5248c4
 
-#### ▼ Protocol BufferコンパイラーGo-gRPCプラグイン
+#### ▼ Protocol Buffer コンパイラーGo-gRPC プラグイン
 
 サービス定義ファイル (`proto` ファイル) から gRPC 対応の `pb.go` ファイルをコンパイルするために、Protocol Buffer コンパイラーのプラグインをインストールする。
 
@@ -130,7 +130,7 @@ protoc \
 
 <br>
 
-### gRPCクライアントとgRPCサーバーの両方
+### gRPC クライアントと gRPC サーバーの両方
 
 #### ▼ `proto` ファイル (サービス定義ファイル) とは
 
@@ -163,7 +163,7 @@ $ protoc -I=. --go_out=. --go-grpc_out=. *.proto
 > - https://github.com/golang/protobuf/issues/1070#issuecomment-607465055
 > - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
 
-#### ▼ RPC-API仕様書
+#### ▼ RPC-API 仕様書
 
 gRPC における API 仕様書である。
 
@@ -177,7 +177,7 @@ $ protoc --doc_out=. --doc_opt=html,index.html *.proto
 
 ### サーバー側のみ
 
-#### ▼ gRPCサーバー
+#### ▼ gRPC サーバー
 
 リモートプロシージャーコールを受け付けるサーバーを定義する。
 
@@ -187,13 +187,13 @@ $ protoc --doc_out=. --doc_opt=html,index.html *.proto
 
 <br>
 
-### gRPCクライアント側のみ
+### gRPC クライアント側のみ
 
-#### ▼ gRPCクライアントパッケージ
+#### ▼ gRPC クライアントパッケージ
 
 記入中...
 
-#### ▼ gRPCクライアント
+#### ▼ gRPC クライアント
 
 Go の gRPC サーバーをリモートプロシージャーコールする。
 
@@ -266,7 +266,7 @@ func main() {
 
 ## 02-02. インターセプターの設定方法
 
-### 単項RPCの場合
+### 単項 RPC の場合
 
 #### ▼ 既製のインターセプター (`UnaryClientInterceptor`)
 
@@ -400,7 +400,7 @@ func UnaryClientInterceptor(opts ...fooOption) grpc.UnaryClientInterceptor {
 
 <br>
 
-### ストリーミングRPCの場合
+### ストリーミング RPC の場合
 
 ##### ▼ 既製のインターセプター (`StreamClientInterceptor`)
 
@@ -640,7 +640,7 @@ func main() {
 
 ## 03-02. インターセプターの設定方法
 
-### 単項RPCの場合
+### 単項 RPC の場合
 
 #### ▼ 既製のインターセプター (`UnaryServerInterceptor`)
 
@@ -724,7 +724,7 @@ func UnaryServerInterceptor(opts ...fooOption) grpc.UnaryServerInterceptor {
 
 <br>
 
-### ストリーミングRPCの場合
+### ストリーミング RPC の場合
 
 #### ▼ 既製のインターセプター (`StreamServerInterceptor`)
 
@@ -806,7 +806,7 @@ func StreamServerInterceptor(opts ...fooOption) grpc.StreamServerInterceptor {
 
 ## 04. サーバー側の実装例
 
-### gRPCサーバー (インターセプターがない場合)
+### gRPC サーバー (インターセプターがない場合)
 
 gRPC サーバーを実装する。
 
@@ -865,7 +865,7 @@ func main() {
 
 <br>
 
-### gRPCサーバー (インターセプターを使用する場合)
+### gRPC サーバー (インターセプターを使用する場合)
 
 #### ▼ インターセプターを使用する場合について
 
@@ -989,15 +989,15 @@ func main() {
 
 <br>
 
-## 05. gRPCクライアント側の実装例
+## 05. gRPC クライアント側の実装例
 
-### gRPCクライアントパッケージ
+### gRPC クライアントパッケージ
 
 記入中...
 
 <br>
 
-### gRPCクライアント
+### gRPC クライアント
 
 gRPC クライアント側では、gRPC サーバーとの接続を作成する必要がある。
 
@@ -1051,7 +1051,7 @@ func main() {
 
 <br>
 
-### gRPCクライアント (インターセプターを使用する場合)
+### gRPC クライアント (インターセプターを使用する場合)
 
 #### ▼ インターセプターを使用する場合について
 
@@ -1059,7 +1059,7 @@ gRPC クライアントでは、リクエスト／レスポンスの送受信前
 
 非 `Chain()` 関数であれば単一のインターセプター、一方で `Chain()` 関数であれば複数のインターセプターを渡せる。
 
-#### ▼ ストリーミングRPCの場合
+#### ▼ ストリーミング RPC の場合
 
 ```go
 package main
@@ -1094,7 +1094,7 @@ func main() {
 
 <br>
 
-## 06. gRPCサーバーとクライアントの両方の実装例
+## 06. gRPC サーバーとクライアントの両方の実装例
 
 ### `proto` ファイル
 
@@ -1522,7 +1522,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 <br>
 
-### クライアントからサーバーに単項RPCを送信する場合
+### クライアントからサーバーに単項 RPC を送信する場合
 
 #### ▼ クライアント側
 
@@ -1587,7 +1587,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 
 <br>
 
-### サーバーからクライアントに単項RPCを送信する場合
+### サーバーからクライアントに単項 RPC を送信する場合
 
 #### ▼ サーバー側
 

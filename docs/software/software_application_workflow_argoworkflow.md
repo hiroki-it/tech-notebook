@@ -13,7 +13,7 @@ description: Argo Workflows＠ワークフローの知見を記録していま�
 
 <br>
 
-## 01. Argo Workflowsの仕組み
+## 01. Argo Workflows の仕組み
 
 ### アーキテクチャ
 
@@ -54,7 +54,7 @@ type archivedWorkflowMetadata struct {
 
 ## 02. workflow-controller
 
-### workflow-controllerとは
+### workflow-controller とは
 
 特に ArgoCD Workflow の Custom Controller として、ArgoCD Workflow のマニフェストを作成/変更する。
 
@@ -71,7 +71,7 @@ application-controller を分離されている理由は、ArgoCD Workflow の�
 
 ## 03. ユースケース
 
-### CIパイプライン
+### CI パイプライン
 
 Argo Workflows 上でコンテナをビルドし、イメージレジストリにプッシュする。
 

@@ -13,7 +13,7 @@ description: Uvicorn＠アプリケーション系ミドルウェアの知見を
 
 <br>
 
-## 01. Uvicornの仕組み
+## 01. Uvicorn の仕組み
 
 ### アーキテクチャ
 
@@ -23,9 +23,9 @@ ASDI プロトコルを使用したアプリケーション系ミドルウェア
 
 ## 02. 設計規約
 
-### 開発環境でのUvicornの実行方法
+### 開発環境での Uvicorn の実行方法
 
-#### ▼ uvicornコマンドを使用する場合
+#### ▼ uvicorn コマンドを使用する場合
 
 アプリケーションのエントリーポイントを `uvicorn` コマンドで指定する。
 
@@ -41,7 +41,7 @@ FROM python:3.10-slim
 CMD ["uvicorn", "main:app", "--reload", "--port", "8000"]
 ```
 
-#### ▼ uvicornパッケージの `run()` 関数を使用する場合
+#### ▼ uvicorn パッケージの `run()` 関数を使用する場合
 
 アプリケーションのエントリーポイントを `python` コマンドで直接的に指定する場合、Uvicorn を実行できるように、uvicorn パッケージの `run()` 関数をエントリーポイントで実行する。
 
@@ -68,9 +68,9 @@ if __name__ == "__main__":
 
 <br>
 
-### 本番環境でのUvicornの実行方法
+### 本番環境での Uvicorn の実行方法
 
-#### ▼ Gunicornを使用する場合
+#### ▼ Gunicorn を使用する場合
 
 ![uvicorn_with-gunicorn](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uvicorn_with-gunicorn.png)
 
@@ -100,7 +100,7 @@ $ pip3 install uvicorn[standard]
 
 <br>
 
-## 03. uvicornコマンド
+## 03. uvicorn コマンド
 
 ルートディレクトリにエントリーポイントのファイルを配置している場合は、`<モジュール名>.<インスタンス名>` となる。
 
@@ -118,7 +118,7 @@ $ uvicorn src.main:app
 
 ### --reload
 
-#### ▼ --reloadとは
+#### ▼ --reload とは
 
 ソースコードが変更された場合、再読み出しする。
 
@@ -130,7 +130,7 @@ $ uvicorn main:app --reload
 
 ### --port
 
-#### ▼ --portとは
+#### ▼ --port とは
 
 インバウンド通信を受け付けるポート番号を設定する。
 

@@ -13,7 +13,7 @@ description: DCL＠SQLの知見を記録しています。
 
 <br>
 
-## 01. DCLとは
+## 01. DCL とは
 
 トランザクション処理を制御するクエリのこと。
 
@@ -23,7 +23,7 @@ description: DCL＠SQLの知見を記録しています。
 
 ## 02. BEGIN (START TRANSACTION)
 
-### BEGINとは
+### BEGIN とは
 
 トランザクション処理を開始する。
 
@@ -41,7 +41,7 @@ START TRANSACTION;
 
 ## 03. COMMIT
 
-### COMMITとは
+### COMMIT とは
 
 コミットを実行しつつ、トランザクション処理を終了する。
 
@@ -173,7 +173,7 @@ RENAME USER "<古いユーザー名>" TO "<新しいユーザー名>";
 
 ## 06. ROLLBACK
 
-### ROLLBACKとは
+### ROLLBACK とは
 
 トランザクション中の一連のステートメントを取り消し、元の状態に戻す。
 

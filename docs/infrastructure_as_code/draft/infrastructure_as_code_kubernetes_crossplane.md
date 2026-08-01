@@ -13,7 +13,7 @@ description: Crossplaneの知見を記録しています。
 
 <br>
 
-## 01. Crossplaneとは
+## 01. Crossplane とは
 
 既存の Kubernetes リソースの API を拡張する。
 

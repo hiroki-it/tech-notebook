@@ -3,7 +3,7 @@ title: 【IT技術の知見】Python＠gRPCクライアントパッケージ
 description: Python＠gRPCクライアントパッケージの知見を記録しています。
 ---
 
-# Python＠gRPCクライアントパッケージ
+# Python＠gRPC クライアントパッケージ
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Python＠gRPCクライアントパッケージの知見を記録し
 
 ## 01. セットアップ
 
-### gRPCクライアントとgRPCサーバーの両方
+### gRPC クライアントと gRPC サーバーの両方
 
 #### ▼ `proto` ファイル
 
@@ -29,7 +29,7 @@ description: Python＠gRPCクライアントパッケージの知見を記録し
 
 ### サーバー側
 
-#### ▼ Protocol Buffer自動作成ツール
+#### ▼ Protocol Buffer 自動作成ツール
 
 pip リポジトリから、Protocol Buffer 自動作成ツールをインストールする。
 
@@ -37,15 +37,15 @@ pip リポジトリから、Protocol Buffer 自動作成ツールをインスト
 $ pip3 install grpcio-tools
 ```
 
-#### ▼ gRPCサーバー
+#### ▼ gRPC サーバー
 
 記入中...
 
 <br>
 
-### gRPCクライアント側
+### gRPC クライアント側
 
-#### ▼ gRPCクライアントパッケージ
+#### ▼ gRPC クライアントパッケージ
 
 pip リポジトリから、gRPC クライアントをインストールする。
 

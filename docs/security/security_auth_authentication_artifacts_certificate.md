@@ -152,7 +152,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 > - https://dev.classmethod.jp/articles/ssl-certificate-system/
 > - https://blog.serverworks.co.jp/server-cert-verification
 
-#### ▼ TLSハンドシェイク開始
+#### ▼ TLS ハンドシェイク開始
 
 クライアントはサーバーに TLS ハンドシェイクを開始する。
 
@@ -184,7 +184,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 暗号スイートで指定された鍵交換アルゴリズム (例：ECDHE) により、送信元マイクロサービスと宛先マイクロサービス間で鍵合意し、共通鍵を共有する。
 
-#### ▼ TLSハンドシェイク終了
+#### ▼ TLS ハンドシェイク終了
 
 記入中...
 
@@ -201,7 +201,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 | 方法の種類   | 中間認証局名                | ルート認証局名 |
 | ------------ | --------------------------- | -------------- |
 | 自前         | Vault                       | 記入中...      |
-| AWS          | AWS Trust Services          | Starfield社    |
+| AWS          | AWS Trust Services          | Starfield 社   |
 | Google Cloud | Google Cloud Trust Services | 記入中...      |
 
 > - https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
@@ -224,7 +224,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 ## 02-04. 証明書の種類
 
-### CA証明書 (ルート証明書、トラストアンカー)
+### CA 証明書 (ルート証明書、トラストアンカー)
 
 『ルート証明書』『トラストアンカー』ともいう。
 
@@ -250,7 +250,7 @@ $ yum install -y ca-certificates
 
 <br>
 
-### 中間CA証明書
+### 中間 CA 証明書
 
 ルート認証局に自身の信頼性を担保してもらうために、中間認証局が発行する証明書のこと。
 
@@ -325,9 +325,9 @@ Web サイトのドメインの購入者が、ペアになる秘密鍵と組み�
 
 <br>
 
-### XML署名要証明書
+### XML 署名要証明書
 
-#### ▼ XML署名要証明書とは
+#### ▼ XML 署名要証明書とは
 
 送信された XML データが改ざんされていないことを検証するための証明書。
 
@@ -362,7 +362,7 @@ notAfter=<終了期限>
 | RFC 5280            | IETF                     | SAN の使用、証明書検証手順、拡張項目の扱いを定義する。         |
 | RFC 6125            | IETF                     | TLS におけるサーバー名の検証方法を定義する。                   |
 | RFC 2818            | IETF                     | HTTP over TLS (HTTPS) の仕様を定義する。                       |
-| RFC 5280 Appendix A | IETF                     | SAN の構文 (ASN.1形式) や使用例を含む技術的詳細を定義する。    |
+| RFC 5280 Appendix A | IETF                     | SAN の構文 (ASN.1 形式) や使用例を含む技術的詳細を定義する。   |
 | RFC 2459            | IETF                     | RFC 5280 の前身である。                                        |
 
 > - https://ja.wikipedia.org/wiki/X.509
@@ -381,9 +381,9 @@ notAfter=<終了期限>
 
 <br>
 
-## 02-06. CA証明書の配置
+## 02-06. CA 証明書の配置
 
-### 自己署名CA証明書 (オレオレCA証明書) の作成
+### 自己署名 CA 証明書 (オレオレ CA 証明書) の作成
 
 サーバーやクライアント自身で自己署名する方法がある。一方で、自己署名したルート認証局を別途作成する方法もある。
 
@@ -417,7 +417,7 @@ $ openssl x509 \
 > - https://www.networkinghowtos.com/howto/configure-nginx-to-use-ssl-certificates/
 > - https://qiita.com/yuta_vamdemic/items/613490ca284bd50da213
 
-#### ▼ OSの場合
+#### ▼ OS の場合
 
 OS ごとに、デフォルトのディレクトリが異なる。
 

@@ -13,7 +13,7 @@ description: Node Exporter＠Prometheus
 
 <br>
 
-## 01. Node Exporterの仕組み
+## 01. Node Exporter の仕組み
 
 記入中
 
@@ -113,9 +113,9 @@ node_exporter_build_info{branch="HEAD",goversion="go1.15.8",revision="4e837d4da7
 
 <br>
 
-## 05. PromQLを使用したメトリクス分析
+## 05. PromQL を使用したメトリクス分析
 
-### CPU使用率
+### CPU 使用率
 
 Node の CPU 使用率を取得する。
 
@@ -164,7 +164,7 @@ Node のディスク使用率を取得する。
 
 <br>
 
-### ディスクのI/OによるCPU使用率
+### ディスクの I/O による CPU 使用率
 
 ディスクの I/O による CPU 使用率 (ディスクの I/O が Node の CPU をどの程度使用しているか) を取得する。
 
@@ -181,7 +181,7 @@ rate(node_disk_io_time_seconds_total[1m])
 
 <br>
 
-### ディスクのI/Oレスポンスタイム
+### ディスクの I/O レスポンスタイム
 
 ```bash
 # 読み出しレスポンスタイム

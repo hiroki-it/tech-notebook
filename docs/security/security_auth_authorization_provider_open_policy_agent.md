@@ -13,7 +13,7 @@ description: Open Policy Agent＠認可プロバイダーの知見を記録し�
 
 <br>
 
-## 01. Open Policy Agentの仕組み
+## 01. Open Policy Agent の仕組み
 
 ### アーキテクチャ
 
@@ -73,7 +73,7 @@ Open Policy Agent は、`rego` ファイルのロジックに基づいて、bool
 > - https://thinkit.co.jp/article/17511
 
 ```yaml
-# subordinates.jsonファイル
+# subordinates.json ファイル
 {"alice": ["bob"], "bob": [], "charlie": ["david"], "david": []}
 ```
 
@@ -143,11 +143,11 @@ $ curl \
      実際は、aliceというアカウントがデータを参照できるかどうかを取得するために、アプリケーションがリクエストを作成する。
 
 ```yaml
-# request.jsonファイル
+# request.json ファイル
 {
   # リクエストの内容
   "input": {
-      # GETメソッド
+      # GET メソッド
       "method": "GET",
       # パス
       "path": ["finance", "salary", "alice"],
@@ -177,9 +177,9 @@ $ curl \
 
 <br>
 
-### KubernetesのGatekeeperとして
+### Kubernetes のGatekeeper として
 
-#### ▼ Gatekeeperとは
+#### ▼ Gatekeeper とは
 
 これは認可ツールではなく、マニフェストのコード規約違反を検知する PaC ツールである。
 
@@ -210,13 +210,13 @@ metadata:
   labels:
     gatekeeper.sh/system: "yes"
 webhooks:
-  # webhook名は完全修飾ドメイン名にする。
+  # webhook 名は完全修飾ドメイン名にする。
   - name: validation.gatekeeper.sh
     admissionReviewVersions: ["v1", "v1beta1"]
     clientConfig:
-      # webhookサーバーをCluster内部に自作する場合は、webhookサーバーに証明書バンドルを登録する。
+      # webhook サーバーを Cluster 内部に自作する場合は、webhook サーバーに証明書バンドルを登録する。
       caBundle: Ci0tLS0tQk...
-      # IstiodのServiceの宛先情報を登録する。
+      # Istiod のService の宛先情報を登録する。
       service:
         name: gatekeeper-webhook-service
         namespace: gatekeeper-system
@@ -230,7 +230,7 @@ webhooks:
         - key: admission.gatekeeper.sh/ignore
           operator: DoesNotExist
     objectSelector: {}
-    # validating-admissionステップ発火条件を登録する。
+    # validating-admission ステップ発火条件を登録する。
     rules:
       - apiGroups: ["*"]
         apiVersions: ["*"]
@@ -239,25 +239,25 @@ webhooks:
         scope: "*"
     sideEffects: None
     timeoutSeconds: 3
-    # webhook名は完全修飾ドメイン名にする。
+    # webhook 名は完全修飾ドメイン名にする。
   - name: check-ignore-label.gatekeeper.sh
     admissionReviewVersions: ["v1", "v1beta1"]
     clientConfig:
-      # webhookサーバーをCluster内部に自作する場合は、webhookサーバーに証明書バンドルを登録する。
+      # webhook サーバーを Cluster 内部に自作する場合は、webhook サーバーに証明書バンドルを登録する。
       caBundle: Ci0tLS0tQk...
-      # IstiodのServiceの宛先情報を登録する。
+      # Istiod のService の宛先情報を登録する。
       service:
         name: gatekeeper-webhook-service
         namespace: gatekeeper-system
         # エンドポイント
         path: /v1/admitlabel
         port: 443
-    # webhookサーバーのコールに失敗した場合の処理を設定する。
+    # webhook サーバーのコールに失敗した場合の処理を設定する。
     failurePolicy: Fail
     matchPolicy: Exact
     namespaceSelector: {}
     objectSelector: {}
-    # validating-admissionステップ発火条件を登録する。
+    # validating-admission ステップ発火条件を登録する。
     rules:
       - apiGroups: [""]
         apiVersions: ["*"]

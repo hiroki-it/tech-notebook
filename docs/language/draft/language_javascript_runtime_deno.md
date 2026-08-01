@@ -3,7 +3,7 @@ title: 【IT技術の知見】Deno＠JavaScriptランタイム
 description: Deno＠JavaScriptランタイムの知見を記録しています。
 ---
 
-# Deno＠JavaScriptランタイム
+# Deno＠JavaScript ランタイム
 
 ## はじめに
 

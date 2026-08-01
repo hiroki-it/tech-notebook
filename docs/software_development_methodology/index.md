@@ -18,15 +18,15 @@ hide:
   >   > - ##### [Codex](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_codex.html)
   >   > - ##### [スキル](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_codex_skills.html)
   > - ##### [PR Agent](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_pr_agent.html)
-  > - ##### <u>AIドキュメント</u>
-  >   > - ##### [AIドキュメント (プロダクトコンテキスト) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_context.html)
-  >   > - ##### [AIドキュメント (パッケージ選定) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_application_package_selection.html)
-  >   > - ##### [AIドキュメント (API定義書) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.html)
-  >   > - ##### [AIドキュメント (DB設計) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_database.html)
-  >   > - ##### [AIドキュメント (ユニットテスト設計) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.html)
-  >   > - ##### [AIドキュメント (システムの調査と実装) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_and_implementation.html)
-  >   > - ##### [AIドキュメント (巨大システムの調査) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_large_system.html)
-  >   > - ##### [AIドキュメント (レビュー) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_review.html)
+  > - ##### <u>AI ドキュメント</u>
+  >   > - ##### [AI ドキュメント (プロダクトコンテキスト) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_context.html)
+  >   > - ##### [AI ドキュメント (パッケージ選定) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_application_package_selection.html)
+  >   > - ##### [AI ドキュメント (API 定義書) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.html)
+  >   > - ##### [AI ドキュメント (DB 設計) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_database.html)
+  >   > - ##### [AI ドキュメント (ユニットテスト設計) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.html)
+  >   > - ##### [AI ドキュメント (システムの調査と実装) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_and_implementation.html)
+  >   > - ##### [AI ドキュメント (巨大システムの調査) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_large_system.html)
+  >   > - ##### [AI ドキュメント (レビュー) ](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology_agentic_coding_ai_document_review.html)
 
 <br>
 
@@ -36,9 +36,9 @@ hide:
 
 <br>
 
-### OSSコントリビューション
+### OSS コントリビューション
 
-- #### [OSSコントリビューション](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_oss_contribution.html)
+- #### [OSS コントリビューション](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_oss_contribution.html)
 
 <br>
 

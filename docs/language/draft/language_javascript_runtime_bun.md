@@ -3,7 +3,7 @@ title: 【IT技術の知見】Bun＠JavaScriptランタイム
 description: Bun＠JavaScriptランタイムの知見を記録しています。
 ---
 
-# Bun＠JavaScriptランタイム
+# Bun＠JavaScript ランタイム
 
 ## はじめに
 

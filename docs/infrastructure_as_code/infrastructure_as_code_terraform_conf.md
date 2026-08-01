@@ -31,7 +31,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
   "terraform_version": "1.0.0",
   "serial": 3,
   "lineage": "*****-*****-*****-*****-*****",
-  "outputs": { # outputブロックのapplyで追加される。
+  "outputs": { # output ブロックの apply で追加される。
     "foo_ids": {
       "value": "*****",
       "type": "string"
@@ -39,8 +39,8 @@ description: 設定ファイル＠Terraformの知見を記録しています。
   },
   "resources": [
     {
-      "mode": "data", # dataブロックのapplyで追加される。
-      "type": "aws_caller_identity", # resourceタイプ
+      "mode": "data", # data ブロックの apply で追加される。
+      "type": "aws_caller_identity", # resource タイプ
       "name": "current", # リソース名
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
       "instances": [ # 設定値
@@ -58,9 +58,9 @@ description: 設定ファイル＠Terraformの知見を記録しています。
       ]
     },
     {
-      "module": "module.ec2", # moduleブロックの場合に追加される。
-      "mode": "managed", # importや、resourceブロックのapplyで追加される。
-      "type": "aws_instance", # resourceタイプ
+      "module": "module.ec2", # module ブロックの場合に追加される。
+      "mode": "managed", # import や、resource ブロックの apply で追加される。
+      "type": "aws_instance", # resource タイプ
       "name": "bastion", # リソース名
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
       "instances": [ # 設定値
@@ -216,10 +216,10 @@ provider "registry.terraform.io/hashicorp/aws" {
 }
 ```
 
-| タグ名 | 説明                                                                                                                                                                                                                                                         |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `h1`   | 開発者が使用しているOSを表すハッシュ値を設定する。`zh` タグの `zip` パッケージのOS名に存在しないOS値が、`h1` タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。                                                                  |
-| `zh`   | プロバイダーの `zip` パッケージ (`terraform-provider-aws_<バージョン>_<OS名>`) のチェックサムハッシュ値を設定する。`h1` タグのOS値に存在しないOS名の `zip` パッケージが、`zh` タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。 |
+| タグ名 | 説明                                                                                                                                                                                                                                                             |
+| ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `h1`   | 開発者が使用している OS を表すハッシュ値を設定する。`zh` タグの `zip` パッケージの OS 名に存在しない OS 値が、`h1` タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。                                                                |
+| `zh`   | プロバイダーの `zip` パッケージ (`terraform-provider-aws_<バージョン>_<OS名>`) のチェックサムハッシュ値を設定する。`h1` タグの OS 値に存在しない OS 名の `zip` パッケージが、`zh` タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。 |
 
 > - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
 

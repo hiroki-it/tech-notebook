@@ -13,7 +13,7 @@ description: CloudEvents＠パブリッシュ／サブスクライブ方式の�
 
 <br>
 
-## 01. CloudEventsの仕組み
+## 01. CloudEvents の仕組み
 
 ### アーキテクチャ
 

@@ -95,7 +95,7 @@ spec:
 
 <br>
 
-## 02. overlaysディレクトリ
+## 02. overlays ディレクトリ
 
 ### `kustomize.yaml` ファイル
 
@@ -209,7 +209,7 @@ viaduct.ai/v1/ksops/ksops
 
 ### KSOPS
 
-#### ▼ KSOPSとは
+#### ▼ KSOPS とは
 
 SOPS を使用して、復号したデータを Secret にデータを注入する。
 
@@ -233,7 +233,7 @@ $ curl -s https://raw.githubusercontent.com/viaduct-ai/kustomize-sops/master/scr
 
 <br>
 
-### Helmとの比較
+### Helm との比較
 
 なお、どのような要件でも Helm を推奨する。
 

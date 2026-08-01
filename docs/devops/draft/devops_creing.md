@@ -13,9 +13,9 @@ description: CREing：Customer Reliability Engineering＠DevOpsの知見を記�
 
 <br>
 
-## 01. CREingの用語集
+## 01. CREing の用語集
 
-### CREingとは
+### CREing とは
 
 顧客のシステムに対する信頼性向上を目的としたエンジニアリング手法のこと。
 

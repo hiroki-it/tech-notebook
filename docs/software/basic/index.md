@@ -13,9 +13,9 @@ hide:
 
 ## 🐧 基本ソフトウェア (OS)
 
-### Linuxカーネル
+### Linux カーネル
 
-- #### [︎Linuxカーネル](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel.html)
+- #### [︎Linux カーネル](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel.html)
 
 - #### [︎プロセス管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_process_management.html)
 
@@ -35,7 +35,7 @@ hide:
 
 - #### [︎ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility.html)
 
-- #### [︎Unix系標準ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html)
+- #### [︎Unix 系標準ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html)
 
 - #### [︎シェル](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html)
 
@@ -51,9 +51,9 @@ hide:
 - #### <u>︎パッケージ管理ユーティリティ</u>
 
   > - ##### [︎パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management.html)
-  > - ##### [Linux系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_linux.html)
-  > - ##### [RedHat系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_redhat.html)
-  > - ##### [Debian系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_debian.html)
+  > - ##### [Linux 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_linux.html)
+  > - ##### [RedHat 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_redhat.html)
+  > - ##### [Debian 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_debian.html)
 
  <br>
 

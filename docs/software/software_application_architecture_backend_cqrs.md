@@ -15,7 +15,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 ## 01. CQRS
 
-### CQRSとは
+### CQRS とは
 
 ![cqrs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cqrs.png)
 
@@ -56,7 +56,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 ### Command (更新系)
 
-#### ▼ Commandとは
+#### ▼ Command とは
 
 `CREATE` 処理、`UPDATE` 処理、`DELETE` 処理を実行する処理フローのこと。
 
@@ -92,7 +92,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 ### Query (参照系)
 
-#### ▼ Queryとは
+#### ▼ Query とは
 
 `READ` 処理を実行するオブジェクトのこと。
 
@@ -118,7 +118,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 <br>
 
-## 02. CQRSとイベントソーシング式モデリング
+## 02. CQRS とイベントソーシング式モデリング
 
 イベントソーシングは、ステートソーシング (CRUD) とは異なり、データの参照/作成しかない。
 
@@ -126,14 +126,14 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 テーブル構造は以下のとおりになり、イベントデータが参照/作成されるだけである。
 
-| `id` | `event_name`  | `event_entity_name` | `event_entity_id` | `event_data`                                  |
-| ---- | ------------- | ------------------- | ----------------- | --------------------------------------------- |
-| 1    | OrderCreated  | Order               | 1                 | OrderCreatedオブジェクトをJSONに変換したもの  |
-| 2    | OrderUpdated  | Order               | 1                 | OrderUpdatedオブジェクトをJSONに変換したもの  |
-| 3    | OrderCreated  | Order               | 2                 | OrderCreatedオブジェクトをJSONに変換したもの  |
-| 4    | OrderCanceled | Order               | 1                 | OrderCanceledオブジェクトをJSONに変換したもの |
-| 5    | OrderCreated  | Order               | 3                 | OrderCreatedオブジェクトをJSONに変換したもの  |
-| ...  | ...           | ...                 | ...               | ...                                           |
+| `id` | `event_name`  | `event_entity_name` | `event_entity_id` | `event_data`                                     |
+| ---- | ------------- | ------------------- | ----------------- | ------------------------------------------------ |
+| 1    | OrderCreated  | Order               | 1                 | OrderCreated オブジェクトを JSON に変換したもの  |
+| 2    | OrderUpdated  | Order               | 1                 | OrderUpdated オブジェクトを JSON に変換したもの  |
+| 3    | OrderCreated  | Order               | 2                 | OrderCreated オブジェクトを JSON に変換したもの  |
+| 4    | OrderCanceled | Order               | 1                 | OrderCanceled オブジェクトを JSON に変換したもの |
+| 5    | OrderCreated  | Order               | 3                 | OrderCreated オブジェクトを JSON に変換したもの  |
+| ...  | ...           | ...                 | ...               | ...                                              |
 
 > - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
 > - https://postd.cc/using-cqrs-with-event-sourcing/

@@ -21,8 +21,8 @@ UI レンダリングに必要なデータを保持し、またユーザー操�
 | -------------------------- | ------------------------------------------------------------------------ |
 | React                      | `useState`、`useReducer`、`useRef`、`useContext`                         |
 | Vue.js                     | `ref`、`reactive`、`computed`、`watch`                                   |
-| Next.js (Reactと同じ)      | `useState`、`useReducer`、`useRef`、`useSyncExternalStore`、`useContext` |
-| Nuxt.js (Vue.jsと同じ)     | `ref`、`reactive`、`computed`、`watch`                                   |
+| Next.js (React と同じ)     | `useState`、`useReducer`、`useRef`、`useSyncExternalStore`、`useContext` |
+| Nuxt.js (Vue.js と同じ)    | `ref`、`reactive`、`computed`、`watch`                                   |
 
 <br>
 
@@ -52,9 +52,9 @@ UI で次のように操作している間、カーソルを当てている表�
 
 <br>
 
-## 02. MVPアーキテクチャ
+## 02. MVP アーキテクチャ
 
-### MVPアーキテクチャとは
+### MVP アーキテクチャとは
 
 以下の要素が該当のロジックをもつ。
 
@@ -64,9 +64,9 @@ UI で次のように操作している間、カーソルを当てている表�
 
 <br>
 
-## 03. MVVMアーキテクチャ
+## 03. MVVM アーキテクチャ
 
-### MVVMアーキテクチャとは
+### MVVM アーキテクチャとは
 
 以下の要素が該当のロジックをもつ。
 
@@ -94,13 +94,13 @@ Vue.js では、意識せずに MVVM アーキテクチャで実装できるよ�
 
 <br>
 
-## 04. Fluxアーキテクチャ
+## 04. Flux アーキテクチャ
 
 記入中...
 
 <br>
 
-## 05. Reduxアーキテクチャ
+## 05. Redux アーキテクチャ
 
 記入中...
 

@@ -13,7 +13,7 @@ description: Vault＠セキュリティ系ミドルウェアの知見を記録�
 
 <br>
 
-## Vaultとは
+## Vault とは
 
 保管データを暗号化する。
 

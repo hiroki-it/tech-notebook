@@ -31,9 +31,9 @@ description: プラクティス集＠Istioの知見を記録しています。
 
 <br>
 
-### サービスメッシュに登録しないPodの選定 (サイドカーモードの場合)
+### サービスメッシュに登録しない Pod の選定 (サイドカーモードの場合)
 
-#### ▼ 監視系のPod
+#### ▼ 監視系の Pod
 
 サイドカーモードに登録する Pod が増えると、その分 istio-proxy が増える。
 
@@ -41,7 +41,7 @@ description: プラクティス集＠Istioの知見を記録しています。
 
 テレメトリーを収集する必要のない Pod (例：監視を責務に持つ Pod) は、サイドカーモードへ登録しないようにする。
 
-#### ▼ Job配下のPod
+#### ▼ Job 配下の Pod
 
 Job 配下の Pod に istio-proxy を挿入した場合、Pod 内のコンテナが終了しても istio-proxy が終了せず、Pod 自体が削除されない問題もある。
 
@@ -85,15 +85,15 @@ spec:
 
 ## 02. トラフィック管理
 
-### Istio Ingress Gatewayに関して
+### Istio Ingress Gateway に関して
 
-#### ▼ Istiodコントロールプレーンとは異なるNamespaceにおく
+#### ▼ Istiod コントロールプレーンとは異なる Namespace におく
 
 セキュリティ上の理由から、Istio Ingress Gateway と Istiod コントロールプレーンは異なる Namespace におくほうがよい。
 
 > - https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway
 
-#### ▼ NodePort Serviceを選ぶ
+#### ▼ NodePort Service を選ぶ
 
 Istio Ingress Gateway では、内部的に作成される Service のタイプ (NodePort Service、ClusterIP Service、LoadBalancer Service) を選べる。
 
@@ -104,17 +104,17 @@ NodePort Service を選ぶ場合、Node の送信元に開発者がロードバ�
 ⬇⬆️︎
 Amazon Route 53
 ⬇⬆️︎
-# L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
+# L7 ロードバランサー (単一の L7 ロードバランサーを作成し、異なるポートを開放する複数の L4 ロードバランサーの振り分ける)
 AWS ALB
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
 VirtualService
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 ClusterIP Service
 ⬇⬆️︎
 Pod
@@ -133,7 +133,7 @@ NodePort Service を選ぶためには、Istio Ingress Gateway ではなく、Is
 > - https://github.com/istio/istio/issues/28310#issuecomment-733079966
 > - https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39
 
-#### ▼ ClusterIP Serviceを選ぶ (AWS Load Balancer Controllerを使用する場合のみ)
+#### ▼ ClusterIP Service を選ぶ (AWS Load Balancer Controller を使用する場合のみ)
 
 AWS Load Balancer Controller を使用する場合、Istio Ingress Gateway で ClusterIP Service を使用できる。
 
@@ -144,17 +144,17 @@ Ingress にて、`alb.ingress.kubernetes.io/target-type` キー値を `ip` と�
 ⬇⬆️︎
 Amazon Route 53
 ⬇⬆️︎
-# L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
+# L7 ロードバランサー (単一の L7 ロードバランサーを作成し、異なるポートを開放する複数の L4 ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 ClusterIP Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
 VirtualService
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 ClusterIP Service
 ⬇⬆️︎
 Pod
@@ -182,7 +182,7 @@ metadata:
 spec:
   hosts:
     # 特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可する
-    # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
+    # ただし、gateways オプションがある VirtualService ではワイルドカードする
     - foo
   http:
     - route:
@@ -195,7 +195,7 @@ spec:
 
 <br>
 
-### Istioリソースのリクエスト可能な範囲を限定する
+### Istio リソースのリクエスト可能な範囲を限定する
 
 Istio リソースの `.spec.exportTo` キーでは『`.` (ドット) 』を設定する。
 
@@ -210,7 +210,7 @@ spec:
   exportTo:
     - "."
   # 特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可する
-  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
+  # ただし、gateways オプションがある VirtualService ではワイルドカードする
   hosts:
     - foo
   http:
@@ -223,7 +223,7 @@ spec:
 
 <br>
 
-### DestinationRuleを最初に更新する
+### DestinationRule を最初に更新する
 
 新しいサブセットを追加する場合、DestinationRule を最初に更新する。
 
@@ -239,7 +239,7 @@ DestinationRule を最初に更新し、正常に完了することを待機し�
 
 ## 02-02. 通信ルーティングのパターン
 
-### LoadBalancer Serviceの場合
+### LoadBalancer Service の場合
 
 LoadBalancer Service を使用する場合、以下のようなネットワーク経路がある。
 
@@ -250,14 +250,14 @@ LoadBalancer Service を使用する場合、以下のようなネットワー�
 ⬇⬆️︎
 Amazon Route 53
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 LoadBalancer Service (Istio Ingress Gateway) によるAWS NLB
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
 VirtualService
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 ClusterIP Service
 ⬇⬆️︎
 Pod
@@ -265,7 +265,7 @@ Pod
 
 <br>
 
-### NodePort Serviceの場合
+### NodePort Service の場合
 
 #### ▼ `L7` ロードバランサーがない場合
 
@@ -276,14 +276,14 @@ Node の NIC の宛先情報は、Node 外から宛先 IP アドレスとして�
 ```yaml
 パブリックネットワーク
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
 VirtualService
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 ClusterIP Service
 ⬇⬆️︎
 Pod
@@ -302,17 +302,17 @@ Pod
 ⬇⬆️︎
 Amazon Route 53
 ⬇⬆️︎
-# L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
+# L7 ロードバランサー (単一の L7 ロードバランサーを作成し、異なるポートを開放する複数の L4 ロードバランサーの振り分ける)
 AWS ALB
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
 VirtualService
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 ClusterIP Service
 ⬇⬆️︎
 Pod
@@ -320,7 +320,7 @@ Pod
 
 <br>
 
-### ClusterIP Serviceの場合
+### ClusterIP Service の場合
 
 AWS Load Balancer Controller を使用する場合、Istio Ingress Gateway で ClusterIP Service を使用できる。
 
@@ -331,17 +331,17 @@ Ingress にて、`alb.ingress.kubernetes.io/target-type` キー値を `ip` と�
 ⬇⬆️︎
 Amazon Route 53
 ⬇⬆️︎
-# L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
+# L7 ロードバランサー (単一の L7 ロードバランサーを作成し、異なるポートを開放する複数の L4 ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 ClusterIP Service (Istio Ingress Gateway)
 ⬇⬆️︎
 Gateway
 ⬇⬆️︎
 VirtualService
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 ClusterIP Service
 ⬇⬆️︎
 Pod
@@ -372,7 +372,7 @@ Istio の開発プロジェクトでは、マイナーバージョンを `1` 個
 > - https://istio.io/latest/docs/setup/upgrade/
 > - https://thenewstack.io/upgrading-istio-without-downtime/
 
-#### ▼ Istiodコントロールプレーンでダウンタイムを発生させない
+#### ▼ Istiod コントロールプレーンでダウンタイムを発生させない
 
 Istiod コントロールプレーンでダウンタイムが発生すると、istio-proxy 内の pilot-agent が最新の宛先情報を取得できなくなる。
 
@@ -382,7 +382,7 @@ Istiod コントロールプレーンをカナリアアップグレードを採�
 
 > - https://thenewstack.io/upgrading-istio-without-downtime/
 
-#### ▼ Istio Ingress Gatewayでダウンタイムを発生させない
+#### ▼ Istio Ingress Gateway でダウンタイムを発生させない
 
 Istio Ingress Gateway でダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。
 
@@ -527,43 +527,43 @@ $ helm upgrade <新しいバージョンのリリース名> <チャートリポ�
 CI 上で Cluster を作成し、Istio をデプロイする。
 
 ```yaml
-# ブランチ名に応じて、CIで使用する実行環境名を切り替える
+# ブランチ名に応じて、CI で使用する実行環境名を切り替える
 workflow:
   rules:
-    # masterブランチにて、任意の方法でパイプラインを実行した場合
+    # master ブランチにて、任意の方法でパイプラインを実行した場合
     - if: $CI_COMMIT_REF_NAME == 'master'
       variables:
         ENV: "prd"
-    # developブランチにて、任意の方法でパイプラインを実行した場合
+    # develop ブランチにて、任意の方法でパイプラインを実行した場合
     - if: $CI_COMMIT_REF_NAME == 'develop'
       variables:
         ENV: "stg"
-    # MRにて、任意の方法でパイプラインを実行した場合
+    # MR にて、任意の方法でパイプラインを実行した場合
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       variables:
         ENV: "tes"
-    # 上記以外で、webから手動でパイプラインを実行した場合
+    # 上記以外で、web から手動でパイプラインを実行した場合
     - if: $CI_PIPELINE_SOURCE == 'web'
       variables:
         ENV: "tes"
 
 variables:
-  # EKSはK8sのマイナーバージョンを公開していないため、".0"と仮定して処理する
-  # 現在のEKSのK8sバージョン
+  # EKS はK8s のマイナーバージョンを公開していないため、".0"と仮定して処理する
+  # 現在の EKS のK8s バージョン
   K8S_CURRENT_VERSION: "1.24.0"
-  # アップグレード後のEKSのK8sバージョン
+  # アップグレード後の EKS のK8s バージョン
   K8S_NEXT_VERSION: "1.26.0"
 
-  # 現在のIstioのバージョン
+  # 現在の Istio のバージョン
   ISTIO_CURRENT_VERSION: "1.15.3"
-  # アップグレード後のIstioのバージョン
+  # アップグレード後の Istio のバージョン
   ISTIO_NEXT_VERSION: "1.17.5"
 
 stages:
   - build
   - test
 
-# K3Dの設定ファイルをセットアップする
+# K3D の設定ファイルをセットアップする
 setup_k3d_config:
   stage: build
   image: amazon/aws-cli
@@ -586,13 +586,13 @@ setup_k3d_config:
                 password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})
       EOF
 
-# 指定したバージョンのIstioを検証する
+# 指定したバージョンの Istio を検証する
 test_istio:
   stage: test
   image:
     name: docker
   variables:
-    # K3Dを使用することで Docker in Docker となるため、そのための環境変数を設定する
+    # K3D を使用することで Docker in Docker となるため、そのための環境変数を設定する
     # @see https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300
     DOCKER_DRIVER: "overlay2"
     DOCKER_HOST: "tcp://docker:2375"
@@ -600,59 +600,59 @@ test_istio:
   services:
     - name: docker:dind
       command: ["--tls=false"]
-  # K3D Clusterは異なるJobに持ち越せないので、事前処理として実行する
+  # K3D Cluster は異なる Job に持ち越せないので、事前処理として実行する
   before_script:
     - apk --update add bash curl git
-    # スクリプトでasdfをセットアップする
+    # スクリプトで asdf をセットアップする
     - source setup-asdf.sh
-    # K3Dをインストールする
+    # K3D をインストールする
     - |
       curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh
       k3d version
-    # kubectlコマンドをインストールする
+    # kubectl コマンドをインストールする
     - |
       curl -kLO https://dl.k8s.io/release/v"${K8S_NEXT_VERSION}"/bin/linux/amd64/kubectl
       chmod +x ./kubectl
       mv ./kubectl /usr/local/bin/kubectl
       kubectl version
-    # Clusterを作成する
-    # registries.yamlファイルをvolumeで配置する
-    # もし該当のバージョンのイメージがなければ、rc版を使用する
+    # Cluster を作成する
+    # registries.yaml ファイルを volume で配置する
+    # もし該当のバージョンのイメージがなければ、rc 版を使用する
     - |
       k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2 || \
         k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2
-    # Nodeにラベル付けする
+    # Node にラベル付けする
     - |
       kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-0 node.kubernetes.io/nodetype=ingress --overwrite
       kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-1 node.kubernetes.io/nodetype=system --overwrite
     # 動作を確認する
     - k3d cluster list
     - kubectl get node --show-labels
-  # Istioのインストールは、Helmを使ったIstioのアップグレード手順に則る
+  # Istio のインストールは、Helm を使った Istio のアップグレード手順に則る
   # @see https://istio.io/latest/docs/setup/upgrade/helm/
   script:
-    # CRDをインストールする
+    # CRD をインストールする
     - kubectl apply -f https://raw.githubusercontent.com/istio/istio/"${ISTIO_NEXT_VERSION}"/manifests/charts/base/crds/crd-all.gen.yaml
-    # Namespaceを作成する
+    # Namespace を作成する
     - |
       kubectl create ns istio-ingress
       kubectl label ns istio-ingress istio.io/rev=default
       kubectl create ns istio-system
-    # Namespaceのラベルを確認する
+    # Namespace のラベルを確認する
     - kubectl get ns -L istio.io/rev
-    # istiodチャートをApplyする
-    # ブルー/グリーンデプロイ時に新旧Istiodを並行稼働させるために、helmfile.yamlにリビジョンをつける
+    # istiod チャートを Apply する
+    # ブルー/グリーンデプロイ時に新旧 Istiod を並行稼働させるために、helmfile.yaml にリビジョンをつける
     - helmfile -e "${ENV}" -f helmfile_istiod_"${ISTIO_NEXT_VERSION//\./-}".yaml apply --skip-crds --skip-diff-on-install
-    # istio-baseチャートをApplyする
+    # istio-base チャートを Apply する
     - helmfile -e "${ENV}" -f helmfile_istio-base.yaml apply --skip-diff-on-install
-    # istio-ingressgatewayチャートをApplyする
+    # istio-ingressgateway チャートを Apply する
     - helmfile -e "${ENV}" -f helmfile_istio-ingressgateway.yaml apply --skip-diff-on-install
     # 動作を確認する
     - istioctl version
     - istioctl proxy-status
     - kubectl get all -n istio-ingress
     - kubectl get all -n istio-system
-    # Clusterを削除する
+    # Cluster を削除する
     - k3d cluster delete $CI_PIPELINE_ID
 ```
 

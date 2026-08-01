@@ -13,7 +13,7 @@ description: skaffold.yaml＠Skaffoldの知見を記録しています。
 
 <br>
 
-## 01 Skaffoldの仕組み
+## 01 Skaffold の仕組み
 
 ### アーキテクチャ
 
@@ -43,9 +43,9 @@ Skaffold の各ステージでは、それ専用のツールをコールでき�
 
 <br>
 
-## 02. buildステージ
+## 02. build ステージ
 
-### buildステージとは
+### build ステージとは
 
 コンテナイメージのビルド方法を定義する。
 
@@ -91,10 +91,10 @@ build:
 
 #### ▼ docker
 
-| 項目       | 説明                                                         | 補足                                                                         |
-| ---------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| dockerfile | マイクロサービスのルートからDockerfileまでのパスを設定する。 | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-dockerfile |
-| target     | ビルドするコンテナイメージのステージを設定する。             | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-target     |
+| 項目       | 説明                                                           | 補足                                                                         |
+| ---------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| dockerfile | マイクロサービスのルートから Dockerfile までのパスを設定する。 | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-dockerfile |
+| target     | ビルドするコンテナイメージのステージを設定する。               | https://skaffold.dev/docs/references/yaml/#build-artifacts-docker-target     |
 
 ```yaml
 build:
@@ -179,7 +179,7 @@ build:
 
 <br>
 
-## 03. portForwardステージ
+## 03. portForward ステージ
 
 `skaffold run` コマンド時に、同時にポートフォワーディングを実行する。
 
@@ -199,9 +199,9 @@ portForward:
 
 <br>
 
-## 04. testステージ
+## 04. test ステージ
 
-### testステージとは
+### test ステージとは
 
 Kubernetes リソースのテスト方法を定義する。
 
@@ -215,7 +215,7 @@ Kubernetes リソースのテスト方法を定義する。
 
 ```yaml
 test:
-  - image: <コンテナイメージリポジトリURL> # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<コンテナイメージリポジトリ名>:latest
+  - image: <コンテナイメージリポジトリURL> # <AWS アカウント ID>.dkr.ecr.ap-northeast-1.amazonaws.com/<コンテナイメージリポジトリ名>:latest
     structureTests:
       - ./structure-tests/foo.yaml
 ```
@@ -234,9 +234,9 @@ fileExistenceTests:
 
 <br>
 
-## 05. deployステージ
+## 05. deploy ステージ
 
-### deployステージとは
+### deploy ステージとは
 
 Kubernetes リソースのデプロイ手法を定義する。
 
@@ -246,7 +246,7 @@ Kubernetes リソースのデプロイ手法を定義する。
 
 ### kubectl
 
-#### ▼ kubectlとは
+#### ▼ kubectl とは
 
 `kubectl` コマンドを使用して、Kubernetes リソースをデプロイする。
 
@@ -276,7 +276,7 @@ deploy:
     releases:
       - name: <Helmリリース名>
         artifactOverrides:
-          image: <コンテナイメージ名> # buildステージのartifactsのコンテナイメージ名と合わせる。
+          image: <コンテナイメージ名> # build ステージの artifacts のコンテナイメージ名と合わせる。
         imageStrategy:
           helm: {}
 ```

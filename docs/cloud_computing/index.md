@@ -5,7 +5,7 @@ hide:
 
 # セクションの目次
 
-## ⛅ 3大クラウド (クラウドコンピューティング)
+## ⛅ 3 大クラウド (クラウドコンピューティング)
 
 ### クラウドコンピューティング
 
@@ -17,13 +17,13 @@ hide:
 
 - #### [︎AWS CLI](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_cli.html)
 
-- #### <u>AWSリソース</u>
+- #### <u>AWS リソース</u>
 
   > - ##### [アカウント](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_account.html)
   > - ##### [Amplify](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_amplify.html)
   > - ##### <u>API Gateway</u>
   >   > - ##### [︎API Gateway](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway.html)
-  >   > - ##### [︎API Gatewayに対するymlインポート](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html)
+  >   > - ##### [︎API Gateway に対する yml インポート](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html)
   > - ##### [︎AutoScaling](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_autoscaling.html)
   > - ##### [Backup](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_backup.html)
   > - ##### [Certificate Manager](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_certificate_manager.html)
@@ -32,7 +32,7 @@ hide:
   > - ##### [CloudFront](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudfront.html)
   > - ##### [CloudTrail](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudtrail.html)
   > - ##### [CloudWatch](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_cloudwatch.html)
-  > - ##### [Code兄弟](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_code.html)
+  > - ##### [Code 兄弟](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_code.html)
   > - ##### [Control Tower](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_control_tower.html)
   > - ##### [Direct Connect](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_direct_connect.html)
   > - ##### [︎EC2](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_ec2.html)
@@ -50,7 +50,7 @@ hide:
   > - ##### [KMS](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_kms.html)
   > - ##### <u>︎Lambda</u>
   >   > - ##### [︎Lambda](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda.html)
-  >   > - ##### [︎Lambda関数](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html)
+  >   > - ##### [︎Lambda 関数](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html)
   > - ##### [LB](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_load_balancer.html)
   > - ##### [Redshift](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_redshift.html)
   > - ##### <u>RDS</u>
@@ -64,7 +64,7 @@ hide:
   > - ##### [SQS](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_sqs.html)
   > - ##### [Step Functions](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_step_functions.html)
   > - ##### [STS](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_sts.html)
-  > - ##### [Systems Manager (新SSM) ](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_systems_manager.html)
+  > - ##### [Systems Manager (新 SSM) ](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_systems_manager.html)
   > - ##### [VPC](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_vpc.html)
   > - ##### [WAF](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_waf.html)
   > - ##### [WorkMail](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_work_mail.html)
@@ -87,7 +87,7 @@ hide:
 ### Google Cloud
 
 - #### [︎Google Cloud CLI](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_gcp_cli.html)
-- #### <u>Google Cloudリソース</u>
+- #### <u>Google Cloud リソース</u>
   > - ##### <u>Anthos</u>
   >   > - ##### [︎Anthos](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_gcp_resource_anthos.html)
   >   > - ##### [︎アップグレード](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_gcp_resource_anthos_upgrade.html)

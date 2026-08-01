@@ -13,7 +13,7 @@ description: cluster-proportional-autoscaler＠ハードウェアリソース管
 
 <br>
 
-# 01. cluster-proportional-autoscalerの仕組み
+# 01. cluster-proportional-autoscaler の仕組み
 
 Node の CPU や Node 数に応じて、Pod を水平スケーリングする。
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】Vitest＠JavaScriptユニットテスト
 description: Vitest＠JavaScriptユニットテストの知見を記録しています。
 ---
 
-# Vitest＠JavaScriptユニットテスト
+# Vitest＠JavaScript ユニットテスト
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Vitest＠JavaScriptユニットテストの知見を記録してい
 
 <br>
 
-## 01. Vitestとは
+## 01. Vitest とは
 
 ユニットテストと機能テストの実施に必要な機能を提供し、加えてテストを実施する。
 
@@ -168,7 +168,7 @@ afterEach(async () => {
 
 ### テストケースの処理
 
-#### ▼ Arrange-Act-Assertパターン
+#### ▼ Arrange-Act-Assert パターン
 
 Arrange-Act-Assert パターンを採用するとよい。
 
@@ -343,7 +343,7 @@ Vitest の思想では、テストコードの型検証はエディタやビル�
 
 ## 04. テストコード例
 
-### ユニットテストとしてDBへのCRUDを検証する
+### ユニットテストとして DB への CRUD を検証する
 
 事前処理として DB データを挿入し、事後処理として DB データを掃除する。
 
@@ -646,7 +646,7 @@ describe("fetchUser", () => {
 
 <br>
 
-### nullを持つオプショナル型が正しいかを検証する
+### null を持つオプショナル型が正しいかを検証する
 
 #### ▼ テスト対象のコード
 
@@ -732,7 +732,7 @@ describe("User optional property behavior", () => {
 
 <br>
 
-### unknown型の値が正しいかを検証する
+### unknown 型の値が正しいかを検証する
 
 #### ▼ テスト対象のコード
 

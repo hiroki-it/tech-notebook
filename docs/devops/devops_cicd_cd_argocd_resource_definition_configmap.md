@@ -3,7 +3,7 @@ title: 【IT技術の知見】ConfigMap系＠リソース定義
 description: ConfigMap系＠リソース定義の知見を記録しています。
 ---
 
-# ConfigMap系＠リソース定義
+# ConfigMap 系＠リソース定義
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: ConfigMap系＠リソース定義の知見を記録しています�
 
 <br>
 
-## 01. 専用ConfigMap
+## 01. 専用 ConfigMap
 
 ArgoCD の各コンポーネントの機密でない変数やファイルを管理する。
 
@@ -25,7 +25,7 @@ ConfigMap では、`.metadata.labels` キー配下に、必ず `app.kubernetes.i
 
 ## 02. argocd-cm (必須)
 
-### argocd-cmとは
+### argocd-cm とは
 
 ArgoCD の各コンポーネントで共通する値を設定する。
 
@@ -35,7 +35,7 @@ ArgoCD の各コンポーネントで共通する値を設定する。
 
 ### exec
 
-#### ▼ execとは
+#### ▼ exec とは
 
 ArgoCD の Exec 機能を設定する。
 
@@ -103,7 +103,7 @@ data:
 
 ### application.instanceLabelKey
 
-#### ▼ application.instanceLabelKeyとは
+#### ▼ application.instanceLabelKey とは
 
 Kubernetes リソースや子 Application が親 Application を識別するためのラベルのキー名を設定する。
 
@@ -137,7 +137,7 @@ ConfigMap や Secret のファイル変更に合わせてチェックサム値�
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/controller/sync.go#L246
 
-#### ▼ RootのApplication名の重複
+#### ▼ Root のApplication 名の重複
 
 単一の Kubernetes Cluster で Namespaced スコープの ArgoCD を構築しているとき、Root の Application を `default` という AppProject へ配置すると、この問題が起こりうる。
 
@@ -155,7 +155,7 @@ Root の Application 名が重複している場合、たとえ Namespace が異
 
 ### application.resourceTrackingMethod
 
-#### ▼ application.resourceTrackingMethodとは
+#### ▼ application.resourceTrackingMethod とは
 
 トラッキング ID を有効化する。
 
@@ -182,7 +182,7 @@ data:
 
 ### globalProjects
 
-#### ▼ globalProjectsとは
+#### ▼ globalProjects とは
 
 グローバルスコープを持つ親 AppProject と、これの設定値を継承させる子 AppProject を指定する。
 
@@ -208,7 +208,7 @@ data:
 ```
 
 ```yaml
-# グローバルスコープを持つ親AppProject
+# グローバルスコープを持つ親 AppProject
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
@@ -222,7 +222,7 @@ spec: ...
 
 ### kustomize.buildOptions
 
-#### ▼ kustomize.buildOptionsとは
+#### ▼ kustomize.buildOptions とは
 
 Kustomize の実行時に、コマンドに渡すオプションを設定する。
 
@@ -294,7 +294,7 @@ data:
   kustomize.path.v2.0.0: /usr/local/bin/kustomize_2_0_0
 ```
 
-#### ▼ 各ApplicationでKustomizeを使用する
+#### ▼ 各 Application でKustomize を使用する
 
 Application の `.spec.kustomize.version` キーで、使用する Kustomize のバージョンを指定する。
 
@@ -320,11 +320,11 @@ spec:
 
 ### oidc.config
 
-#### ▼ oidc.configとは
+#### ▼ oidc.config とは
 
 OIDC を使用して、ArgoCD へログインできるようにする。
 
-#### ▼ 委譲先Webサイトに直接的に接続する場合
+#### ▼ 委譲先 Web サイトに直接的に接続する場合
 
 ArgoCD から認証フェーズの委譲先の ID プロバイダーに情報を直接的に接続する。
 
@@ -341,7 +341,7 @@ metadata:
 data:
   admin.enabled: "true"
 
-  # OIDCに必要なIDやトークンを設定する
+  # OIDC に必要な ID やトークンを設定する
   oidc.config: |
     connectors:
       - type: github
@@ -350,10 +350,10 @@ data:
         config:
           clientID: *****
           clientSecret: *****
-        # dex-serverが認可レスポンスによるリダイレクトを受信するURLを設定する
+        # dex-server が認可レスポンスによるリダイレクトを受信する URL を設定する
         redirectURI: https://<ArgoCDのドメイン>/api/dex/callback
 
-  # ArgoCDのダッシュボードのNode外公開URLを設定する
+  # ArgoCD のダッシュボードの Node 外公開 URL を設定する
   # 開発環境では、https://127.0.0.1:8080
   url: <URL>
 ```
@@ -362,7 +362,7 @@ data:
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
 > - https://dexidp.io/docs/connectors/github/#configuration
 
-#### ▼ Dexを介して委譲先Webサイトに接続する場合
+#### ▼ Dex を介して委譲先 Web サイトに接続する場合
 
 ArgoCD から認証フェーズの委譲先の ID プロバイダーに直接的に接続するのではなく、ハブとしての Dex を使用する。
 
@@ -377,7 +377,7 @@ metadata:
 data:
   admin.enabled: "true"
 
-  # 必要なIDやトークンを設定する。
+  # 必要な ID やトークンを設定する。
   dex.config: |
     connectors:
       - type: github
@@ -386,10 +386,10 @@ data:
         config:
           clientID: *****
           clientSecret: *****
-        # dex-serverが認可レスポンスによるリダイレクトを受信するURLを設定する
+        # dex-server が認可レスポンスによるリダイレクトを受信する URL を設定する
         redirectURI: https://<ArgoCDのドメイン>/api/dex/callback
 
-  # ArgoCDのダッシュボードのNode外公開URLを設定する。
+  # ArgoCD のダッシュボードの Node 外公開 URL を設定する。
   # 開発環境では、https://127.0.0.1:8080
   url: <URL>
 ```
@@ -402,7 +402,7 @@ data:
 
 ### repositories
 
-#### ▼ repositoriesとは
+#### ▼ repositories とは
 
 ConfigMap でリポジトリの URL を管理する方法は、将来的に廃止される予定である。
 
@@ -412,7 +412,7 @@ ConfigMap でリポジトリの URL を管理する方法は、将来的に廃�
 
 ### resource.customizations.ignoreDifferences.all
 
-#### ▼ resource.customizations.ignoreDifferences.allとは
+#### ▼ resource.customizations.ignoreDifferences.all とは
 
 ArgoCD 全体で `.spec.ignoreDifferences` キーと同じ機能を有効化する。
 
@@ -427,7 +427,7 @@ metadata:
 data:
   resource.customizations.ignoreDifferences.all: |
     jsonPointers:
-      # .spec.replicasキー (インスタンス数) の設定値の変化を無視する。
+      # .spec.replicas キー (インスタンス数) の設定値の変化を無視する。
       - /spec/replicas
     jqPathExpressions:
       # .spec.metrics (ターゲット対象のメトリクス) の自動整形を無視する。
@@ -440,7 +440,7 @@ data:
 
 ## 03. argocd-cmd-params-cm
 
-### argocd-cmd-params-cmとは
+### argocd-cmd-params-cm とは
 
 ArgoCD の各コンポーネント (application-controller、dex-server、redis-server、repo-server) の起動コマンドに渡すオプションを設定する。
 
@@ -460,8 +460,8 @@ metadata:
   name: argocd-cmd-params-cm
   namespace: argocd
 data:
-  # application-controllerとargocd-server
-  # Applicationの作成を許可したいNamespaceを設定する
+  # application-controller とargocd-server
+  # Application の作成を許可したい Namespace を設定する
   application.namespaces: foo-application-ns
 ```
 
@@ -481,7 +481,7 @@ metadata:
   name: argocd-cmd-params-cm
   namespace: argocd
 data:
-  # Applicationの作成を許可したいNamespaceを設定する
+  # Application の作成を許可したい Namespace を設定する
   application.namespaces: foo
   controller.log.format: text
   controller.log.level: warn
@@ -545,7 +545,7 @@ data:
   server.dex.server.strict.tls: "false"
   server.disable.auth: "false"
   server.enable.gzip: "false"
-  # ロードバランサーで、リクエストをHTTPでフォワーディングするように設定している場合、argocd-serverでHTTPリクエストの受信を許可する
+  # ロードバランサーで、リクエストを HTTP でフォワーディングするように設定している場合、argocd-server でHTTP リクエストの受信を許可する
   server.insecure: "true"
   server.log.format: text
   server.log.level: warn
@@ -574,10 +574,10 @@ Casbin の記法を使用して、ロールと認可スコープを定義しつ�
 
 `readonly` と `admin` というロールは、デフォルトで定義済みである。
 
-| 記号                 | 項目                                                                                                                | 説明                                                                                          |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <AppProject名>/<ApplicationのNamespace名>/<Application名>` | ロールとArgoCD系リソースの認可スコープを定義する。代わりに、RoleやClusterRoleでも定義できる。 |
-| `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                                        | グループにロールを紐付ける。                                                                  |
+| 記号                 | 項目                                                                                                                | 説明                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `p` (パーミッション) | `p, <ロール名> <Kubernetesリソースの種類> <アクション名> <AppProject名>/<ApplicationのNamespace名>/<Application名>` | ロールと ArgoCD 系リソースの認可スコープを定義する。代わりに、Role やClusterRole でも定義できる。 |
+| `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                                        | グループにロールを紐付ける。                                                                      |
 
 > - https://stackoverflow.com/a/73784100
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-permission-structure
@@ -587,7 +587,7 @@ Casbin の記法を使用して、ロールと認可スコープを定義しつ�
 
 <br>
 
-### ArgoCDで認証する場合
+### ArgoCD で認証する場合
 
 ロールに付与するポリシーの認可スコープは、AppProject 単位にするとよい。
 
@@ -664,9 +664,9 @@ data:
 
 <br>
 
-### ArgoCDの認証をIDプロバイダーに委譲する場合 (SSOの場合)
+### ArgoCD の認証を ID プロバイダーに委譲する場合 (SSO の場合)
 
-#### ▼ IDプロバイダーのチームに紐付ける場合
+#### ▼ ID プロバイダーのチームに紐付ける場合
 
 ID プロバイダーに委譲する場合、グループ名は ID プロバイダーで認証されたものにする必要がある。
 
@@ -691,13 +691,13 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールとArgoCD系リソースの認可スコープを定義する
+    # ロールと ArgoCD 系リソースの認可スコープを定義する
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
     p, role:maintainer, *, *, app/*, allow
     p, role:maintainer, *, *, infra/*, allow
 
-    # IDプロバイダーで認証されたグループにロールを紐付ける
+    # ID プロバイダーで認証されたグループにロールを紐付ける
     g, example-org.github.com:app-team, role:app
     g, example-org.github.com:infra-team, role:infra
     g, example-org.github.com:maintainer, role:maintainer
@@ -727,13 +727,13 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールとArgoCD系リソースの認可スコープを定義する
+    # ロールと ArgoCD 系リソースの認可スコープを定義する
     p, role:app, *, *, dev-app/*, allow
     p, role:infra, *, *, dev-infra/*, allow
     p, role:maintainer, *, *, dev-app/*, allow
     p, role:maintainer, *, *, dev-infra/*, allow
 
-    # IDプロバイダーで認証されたグループにロールを紐付ける
+    # ID プロバイダーで認証されたグループにロールを紐付ける
     g, example-org.github.com:app-team, role:app
     g, example-org.github.com:infra-team, role:infra
     g, example-org.github.com:maintainer, role:maintainer
@@ -744,7 +744,7 @@ data:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv
 
-#### ▼ IDプロバイダーのメールアドレスに紐付ける場合
+#### ▼ ID プロバイダーのメールアドレスに紐付ける場合
 
 ID プロバイダー側で、メールアドレスによる認証グループがすでに存在しているとする。
 
@@ -765,13 +765,13 @@ data:
   # デフォルトのロール
   policy.default: role:readonly
   policy.csv: |
-    # ロールとArgoCD系リソースの認可スコープを定義する
+    # ロールと ArgoCD 系リソースの認可スコープを定義する
     p, role:app, *, *, app/*, allow
     p, role:infra, *, *, infra/*, allow
     p, role:maintainer, *, *, app/*, allow
     p, role:maintainer, *, *, infra/*, allow
 
-    # IDプロバイダーで認証されたグループにロールを紐付ける
+    # ID プロバイダーで認証されたグループにロールを紐付ける
     g, app-team@gmail.com, role:app
     g, infra-team@gmail.com, role:infra
     g, maintainer@gmail.com, role:maintainer
@@ -783,9 +783,9 @@ data:
 
 <br>
 
-## 05. サーバー証明書系ConfigMap
+## 05. サーバー証明書系 ConfigMap
 
-### サーバー証明書系ConfigMapとは
+### サーバー証明書系 ConfigMap とは
 
 argocd-server、repo-server、dex-server、は HTTPS リクエストを受信できる。
 

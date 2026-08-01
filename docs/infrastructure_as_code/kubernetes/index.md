@@ -19,7 +19,7 @@ hide:
 
 - #### [コントロールプレーンコンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.html)
 
-- #### [Nodeコンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.html)
+- #### [Node コンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.html)
 
 - #### [︎コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html)
 
@@ -30,15 +30,15 @@ hide:
 - #### <u>プラクティス集</u>
 
   > - ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices.html)
-  > - ##### [K8sリソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.html)
+  > - ##### [K8s リソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.html)
   > - ##### [K8s Cluster](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html)
-  > - ##### [K8sコンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_component.html)
+  > - ##### [K8s コンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_component.html)
 
 <br>
 
-### Kubernetesリソース
+### Kubernetes リソース
 
-- #### [︎Kubernetesリソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)
+- #### [︎Kubernetes リソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)
 
 - #### <u>︎リソース定義</u>
 

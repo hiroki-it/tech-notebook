@@ -24,9 +24,9 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 ## 02. 永続データ管理の分割方法
 
-### Shared DBパターン
+### Shared DB パターン
 
-#### ▼ Shared DBパターンとは
+#### ▼ Shared DB パターンとは
 
 各マイクロサービスで共有する DB を `1` 個だけ用意する。
 
@@ -35,7 +35,7 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 > - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
 > - https://microservices.io/patterns/data/shared-database.html
 
-#### ▼ マイクロサービス別のDBスキーマ
+#### ▼ マイクロサービス別の DB スキーマ
 
 Shared DB の場合に、マイクロサービス別に DB スキーマを作成する。
 
@@ -53,9 +53,9 @@ Shared DB の場合に、マイクロサービス別にテーブルを作成す�
 
 <br>
 
-### DB per serviceパターン (Database per service)
+### DB per service パターン (Database per service)
 
-#### ▼ DB per serviceパターンとは
+#### ▼ DB per service パターンとは
 
 各マイクロサービスで個別に DB を用意する。
 
@@ -76,23 +76,23 @@ Shared DB の場合に、マイクロサービス別にテーブルを作成す�
 
 <br>
 
-### Shared DBパターンとDB per serviceパターンの共存
+### Shared DB パターンと DB per service パターンの共存
 
-#### ▼ Shared DBパターンが向いているマイクロサービス
+#### ▼ Shared DB パターンが向いているマイクロサービス
 
-| マイクロサービスの種類 | 概説                                                                                    |
-| ---------------------- | --------------------------------------------------------------------------------------- |
-| バッチ処理サービス     | バッチ処理を使うほかサービスと同じDB（つまり、Shared DBパターン）に永続化したほうがいい |
+| マイクロサービスの種類 | 概説                                                                                      |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| バッチ処理サービス     | バッチ処理を使うほかサービスと同じ DB（つまり、Shared DB パターン）に永続化したほうがいい |
 
-#### ▼ DB per serviceパターンが向いているマイクロサービス
+#### ▼ DB per service パターンが向いているマイクロサービス
 
 - ほとんどすべての業務マイクロサービス
 
 <br>
 
-## 02-02. DDL、DCL、DMLの管理
+## 02-02. DDL、DCL、DML の管理
 
-### DDLの密結合パターン
+### DDL の密結合パターン
 
 DB per Service パターンと相性がいい。
 
@@ -106,7 +106,7 @@ DDL はマイクロサービスに統合し、ORM で DDL を実装する。
 
 <br>
 
-### DDLの疎結合パターン
+### DDL の疎結合パターン
 
 Shared DB パターンと DB per Service パターンの両方と相性がよく、Shared DB パターンと DB per service パターンが共存している場合にも適する。
 
@@ -126,7 +126,7 @@ DDL はマイクロサービスから切り離し、DDL 専用のツール（例
 
 ## 02-03. 永続データの種類に合わせたストレージ
 
-### Polyglot Persistenceパターン
+### Polyglot Persistence パターン
 
 キーバリューDB、ドキュメント DB、RDB、グラフ DB を異なるデータベースで管理する。
 
@@ -134,7 +134,7 @@ DDL はマイクロサービスから切り離し、DDL 専用のツール（例
 
 <br>
 
-### Multi-model DBパターン
+### Multi-model DB パターン
 
 キーバリューDB、ドキュメント DB、RDB、グラフ DB を同じデータベースで管理する。
 
@@ -150,9 +150,9 @@ DDL はマイクロサービスから切り離し、DDL 専用のツール（例
 
 ## 04. 静的ファイル管理の分割方法
 
-### Shared Storageパターン
+### Shared Storage パターン
 
-#### ▼ Shared Storageパターンとは
+#### ▼ Shared Storage パターンとは
 
 各マイクロサービスで共有するオブジェクトストレージを `1` 個だけ用意する。
 
@@ -160,15 +160,15 @@ DDL はマイクロサービスから切り離し、DDL 専用のツール（例
 
 <br>
 
-### Storage per serviceパターン
+### Storage per service パターン
 
-#### ▼ Storage per serviceパターンとは
+#### ▼ Storage per service パターンとは
 
 各マイクロサービスで個別にオブジェクトストレージを用意する。
 
 <br>
 
-### Shared StorageパターンとStorage per serviceパターンの共存
+### Shared Storage パターンと Storage per service パターンの共存
 
 基本的には、Storage per service パターンが推奨である。
 

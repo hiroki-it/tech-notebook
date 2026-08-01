@@ -3,7 +3,7 @@ title: 【IT技術の知見】Go＠OpenTelemetryクライアントパッケー�
 description: Go＠OpenTelemetryクライアントパッケージの知見を記録しています。
 ---
 
-# Go＠OpenTelemetryクライアントパッケージ
+# Go＠OpenTelemetry クライアントパッケージ
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Go＠OpenTelemetryクライアントパッケージの知見を記�
 
 ## 01. 概要
 
-### otelクライアントパッケージ
+### otel クライアントパッケージ
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
@@ -190,9 +190,9 @@ func childFunction(ctx context.Context) {
 
 <br>
 
-### 拡張otelクライアントパッケージ
+### 拡張 otel クライアントパッケージ
 
-#### ▼ 拡張otelクライアントパッケージ
+#### ▼ 拡張 otel クライアントパッケージ
 
 標準の otel クライアントパッケージと外部ツールを連携しやすいようにしたパッケージを提供する。
 
@@ -208,9 +208,9 @@ func childFunction(ctx context.Context) {
 
 <br>
 
-### 分散トレースSDK
+### 分散トレース SDK
 
-#### ▼ 分散トレースSDK
+#### ▼ 分散トレース SDK
 
 分散トレース収集ツールが、独自のパッケージを提供している場合がある。
 
@@ -535,7 +535,7 @@ func main() {
 
 <br>
 
-### 宛先がOpenTelemetry Collectorの場合
+### 宛先が OpenTelemetry Collector の場合
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
@@ -895,7 +895,7 @@ func createUser(ginCtx *gin.Context) {
 
 <br>
 
-### 宛先がX-Rayの場合
+### 宛先が X-Ray の場合
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
@@ -1173,7 +1173,7 @@ func child(ctx *gin.Context) {
 > - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
 > - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97
 
-#### ▼ ログへのID出力
+#### ▼ ログへの ID 出力
 
 `trace.Span` から取得できるトレース ID は W3C Trace Context 仕様である。
 
@@ -1195,7 +1195,7 @@ func getXrayTraceID(span trace.Span) string {
 
 <br>
 
-### 宛先がGoogle Cloud Traceの場合
+### 宛先が Google Cloud Trace の場合
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 
@@ -1644,7 +1644,7 @@ func main() {
 
 ## 04. メッセージキューを経由する場合
 
-### Amazon SQSの場合
+### Amazon SQS の場合
 
 #### ▼ パッケージ初期化とトレースコンテキスト抽出 (共通)
 

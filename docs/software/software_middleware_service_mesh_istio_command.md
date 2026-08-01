@@ -66,12 +66,12 @@ Istio の機能のセットを提供する。
 
 #### ▼ プロファイルの種類
 
-| ユースケース         | default  |   demo   |                  empty                  | external |       minimal        | openshift | preview | remote | ambient   |
-| :------------------- | :------: | :------: | :-------------------------------------: | :------: | :------------------: | :-------: | :-----: | :----: | --------- |
-| 概要                 | 本番環境 | 開発環境 | Istioリソースをすべてカスタマイズしたい |   なし   | 最小限の機能が欲しい |    ？     |  なし   |   ？   | 記入中... |
-| istio-egressgateway  |   なし   |    ✅    |                  なし                   |   なし   |         なし         |    ？     |  なし   |   ？   | 記入中... |
-| istio-ingressgateway |    ✅    |    ✅    |                  なし                   |   なし   |         なし         |    ？     |   ✅    |   ？   | 記入中... |
-| istiod               |    ✅    |    ✅    |                  なし                   |   なし   |          ✅          |    ？     |   ✅    |   ？   | 記入中... |
+| ユースケース         | default  |   demo   |                  empty                   | external |       minimal        | openshift | preview | remote | ambient   |
+| :------------------- | :------: | :------: | :--------------------------------------: | :------: | :------------------: | :-------: | :-----: | :----: | --------- |
+| 概要                 | 本番環境 | 開発環境 | Istio リソースをすべてカスタマイズしたい |   なし   | 最小限の機能が欲しい |    ？     |  なし   |   ？   | 記入中... |
+| istio-egressgateway  |   なし   |    ✅    |                   なし                   |   なし   |         なし         |    ？     |  なし   |   ？   | 記入中... |
+| istio-ingressgateway |    ✅    |    ✅    |                   なし                   |   なし   |         なし         |    ？     |   ✅    |   ？   | 記入中... |
+| istiod               |    ✅    |    ✅    |                   なし                   |   なし   |          ✅          |    ？     |   ✅    |   ？   | 記入中... |
 
 > - https://github.com/istio/istio/tree/1.24.2/manifests/profiles
 > - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
@@ -81,7 +81,7 @@ Istio の機能のセットを提供する。
 
 ## analyze
 
-### analyzeとは
+### analyze とは
 
 Istio の動作可否を検証する。
 
@@ -132,7 +132,7 @@ $ istioctl x uninstall --purge
 
 ## install
 
-### installとは
+### install とは
 
 プロファイルをインストールし、加えて設定値を変更する。
 
@@ -154,7 +154,7 @@ $ istioctl install -y -f ./istio-operator.yaml
 
 ### --set
 
-#### ▼ --setとは
+#### ▼ --set とは
 
 インストールするもの、または変更する項目を指定する。
 
@@ -257,7 +257,7 @@ horizontalpodautoscaler.autoscaling/istiod-1-10-0          Deployment/istiod-1-1
 
 ## kube-inject
 
-### kube-injectとは
+### kube-inject とは
 
 istio-proxy を手動でインジェクションする。
 
@@ -280,7 +280,7 @@ $ istioctl kube-inject -f pod.yaml
 
 ## manifest diff
 
-### manifest diffとは
+### manifest diff とは
 
 yml ファイルの差分を取得する。
 
@@ -311,7 +311,7 @@ Operator controller will watch namespaces: istio-system
 
 ## profile
 
-### profileとは
+### profile とは
 
 Istio のプロファイルを操作する。
 
@@ -321,7 +321,7 @@ Istio のプロファイルを操作する。
 
 ### list
 
-#### ▼ listとは
+#### ▼ list とは
 
 利用できるプロファイルを取得する。
 
@@ -343,7 +343,7 @@ Istio configuration profiles:
 
 ## proxy-config
 
-### proxy-configとは
+### proxy-config とは
 
 Istio 上で管理される Envoy の構成情報を取得する。
 
@@ -374,7 +374,7 @@ $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名> -o yaml | yq
 
 ### all
 
-#### ▼ allとは
+#### ▼ all とは
 
 Envoy の処理コンポーネントの設定をすべて取得する
 
@@ -407,7 +407,7 @@ $ istioctl proxy-config all foo-pod \
 
 ### bootstrap
 
-#### ▼ bootstrapとは
+#### ▼ bootstrap とは
 
 Envoy で、起動時に読み込まれる設定を取得する。
 
@@ -433,12 +433,12 @@ bootstrap:
       setNodeOnFirstMessageOnly: "true"
       transportApiVersion: V3
     cdsConfig:
-      # ADS-APIから取得した宛先情報のうち、クラスターを設定する。
+      # ADS-API から取得した宛先情報のうち、クラスターを設定する。
       ads: {}
       initialFetchTimeout: 0s
       resourceApiVersion: V3
     ldsConfig:
-      # ADS-APIから取得した宛先情報のうち、リスナーを設定する。
+      # ADS-API から取得した宛先情報のうち、リスナーを設定する。
       ads: {}
       initialFetchTimeout: 0s
       resourceApiVersion: V3
@@ -459,7 +459,7 @@ lastUpdated: "2022-11-16T08:12:07.162Z"
 
 ### cluster
 
-#### ▼ clusterとは
+#### ▼ cluster とは
 
 Envoy のクラスターの静的/動的な設定値を取得する。
 
@@ -496,13 +496,13 @@ $ istioctl proxy-config cluster foo-pod \
   type: EDS
   edsClusterConfig:
     edsConfig:
-      # ADS-APIを使用して取得することを指定する。
+      # ADS-API を使用して取得することを指定する。
       ads: {}
       initialFetchTimeout: 0s
       resourceApiVersion: V3
-    # serviceNameをクラスターとして使用する。
-    # エンドポイントはクラスターと紐づいており、ADS-APIから取得したエンドポイントをフィルタリングする。
-    # エンドポイントにはいくつかのインスタンスが紐づいており、1個を選んでルーティングする。
+    # serviceName をクラスターとして使用する。
+    # エンドポイントはクラスターと紐づいており、ADS-API から取得したエンドポイントをフィルタリングする。
+    # エンドポイントにはいくつかのインスタンスが紐づいており、1 個を選んでルーティングする。
     serviceName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
 ```
 
@@ -535,7 +535,7 @@ $ istioctl proxy-config routes foo-pod \
 
 ### endpoints
 
-#### ▼ endpointsとは
+#### ▼ endpoints とは
 
 Envoy のエンドポイントの静的/動的な設定値を取得する。
 
@@ -580,9 +580,9 @@ $ istioctl proxy-config endpoints foo-pod \
   hostStatuses:
     - address:
         socketAddress:
-          # 冗長化されたbar-podのインスタンスのIPアドレス
+          # 冗長化された bar-pod のインスタンスの IP アドレス
           address: 10.0.0.1
-          # bar-pod内のコンテナが待ち受けるポート番号
+          # bar-pod 内のコンテナが待ち受けるポート番号
           portValue: 80
       locality:
         region: ap-northeast-1
@@ -592,9 +592,9 @@ $ istioctl proxy-config endpoints foo-pod \
 
     - address:
         socketAddress:
-          # 冗長化されたbar-podのインスタンスのIPアドレス
+          # 冗長化された bar-pod のインスタンスの IP アドレス
           address: 10.0.0.2
-          # bar-pod内のコンテナが待ち受けるポート番号
+          # bar-pod 内のコンテナが待ち受けるポート番号
           portValue: 80
       locality:
         region: ap-northeast-1
@@ -604,9 +604,9 @@ $ istioctl proxy-config endpoints foo-pod \
 
     - address:
         socketAddress:
-          # bar-podのインスタンスのIPアドレス
+          # bar-pod のインスタンスの IP アドレス
           address: 10.0.0.3
-          # bar-pod内のコンテナが待ち受けるポート番号
+          # bar-pod 内のコンテナが待ち受けるポート番号
           portValue: 80
       locality:
         region: ap-northeast-1
@@ -633,7 +633,7 @@ $ istioctl proxy-config endpoints foo-pod \
 
 ### listeners
 
-#### ▼ listenersとは
+#### ▼ listeners とは
 
 Envoy のリスナーの静的/動的な設定値を取得する。
 
@@ -662,7 +662,7 @@ ADDRESS               PORT                          MATCH                       
 
 ### routes
 
-#### ▼ routesとは
+#### ▼ routes とは
 
 Envoy のルーティングの静的/動的な設定値を取得する。
 
@@ -704,11 +704,11 @@ $ istioctl proxy-config routes foo-pod \
 ---
 # ルート名
 - name: '50001'
-  # Envoyで仮想ホストを実行し、Envoyの稼働するコンテナが複数のドメインを仮想的に持てるようにしている。
+  # Envoy で仮想ホストを実行し、Envoy の稼働するコンテナが複数のドメインを仮想的に持てるようにしている。
   virtualHosts:
-    # Node外からfoo-podにリクエストを送信する時に選ばれる。
+    # Node 外から foo-pod にリクエストを送信する時に選ばれる。
     - name: foo-service.foo-namespace.svc.cluster.local:50001
-      # Hostヘッダー値を指定する。合致した場合に、この仮想ホストが選ばれる。
+      # Host ヘッダー値を指定する。合致した場合に、この仮想ホストが選ばれる。
       # 網羅的に検知できるように、色々なパターンを指定する。
       domains:
         - foo-service.foo-namespace.svc.cluster.local
@@ -725,7 +725,7 @@ $ istioctl proxy-config routes foo-pod \
         - match:
             prefix: /
           route:
-            # foo-podのルートと紐づくクラスターを指定する。
+            # foo-pod のルートと紐づくクラスターを指定する。
             cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
 
             ...
@@ -735,7 +735,7 @@ $ istioctl proxy-config routes foo-pod \
           ...
 
       includeRequestAttemptCount: "true"
-    # foo-podからbar-podにリクエストを送信する時に選ばれる。
+    # foo-pod から bar-pod にリクエストを送信する時に選ばれる。
     - name: bar-service.bar-namespace.svc.cluster.local:50002
       domains:
         - bar-service.bar-namespace.svc.cluster.local
@@ -752,7 +752,7 @@ $ istioctl proxy-config routes foo-pod \
         - match:
             prefix: /
           route:
-            # bar-podのルートと紐づくクラスターを指定する。
+            # bar-pod のルートと紐づくクラスターを指定する。
             cluster: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
 
             ...
@@ -762,7 +762,7 @@ $ istioctl proxy-config routes foo-pod \
           ...
 
       includeRequestAttemptCount: "true"
-    # foo-podからbaz-podにリクエストを送信する時に選ばれる。
+    # foo-pod から baz-pod にリクエストを送信する時に選ばれる。
     - name: baz-service.baz-namespace.svc.cluster.local:50003
       domains:
         - baz-service.baz-namespace.svc.cluster.local
@@ -779,7 +779,7 @@ $ istioctl proxy-config routes foo-pod \
         - match:
             prefix: /
           route:
-            # baz-podのルートと紐づくクラスターを指定する。
+            # baz-pod のルートと紐づくクラスターを指定する。
             cluster: outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local
 
             ...
@@ -828,7 +828,7 @@ NAME     DOMAINS                                      MATCH               VIRTUA
 
 ## precheck
 
-### precheckとは
+### precheck とは
 
 Istio をインストールまたはアップグレードできる準備が整っているかを検証する。
 
@@ -843,7 +843,7 @@ $ istioctl x precheck
 
 ## tag
 
-### tagとは
+### tag とは
 
 Namespace の `.metadata.labels.istio.io/rev` キーの値を書き換えずにアップグレードできるように、`.metadata.labels.istio.io/rev` キーにエイリアスタグを設定する。
 
@@ -859,7 +859,7 @@ Namespace の `.metadata.labels.istio.io/rev` キーの値を書き換えずに�
 
 ### generate
 
-#### ▼ generateとは
+#### ▼ generate とは
 
 MutatingWebhookConfiguration の `.metadata.labels` キーに、エイリアス (`istio.io/tag` キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev` キーの値) を作成する。
 
@@ -887,7 +887,7 @@ $ istioctl tag generate default --revision 1-0-1
 
 ### list
 
-#### ▼ listとは
+#### ▼ list とは
 
 MutatingWebhookConfiguration の `.metadata.labels` キーにあるエイリアス (`istio.io/tag` キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev` キーの値) を取得する。
 
@@ -916,7 +916,7 @@ istio.io/tag: default
 
 ### set
 
-#### ▼ setとは
+#### ▼ set とは
 
 MutatingWebhookConfiguration の `.metadata.labels` キーにある既存のエイリアス (`istio.io/tag` キーの値) に実体 (`.metadata.labels.istio.io/rev` キーの値) を設定する。
 
@@ -1037,7 +1037,7 @@ istio.io/tag: default
 
 ## proxy-status
 
-### proxy-statusとは
+### proxy-status とは
 
 Istio Ingress Gateway/EgressGateway、istio-proxy のステータスを取得する。
 
@@ -1058,7 +1058,7 @@ baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 
 ## upgrade
 
-### upgradeとは
+### upgrade とは
 
 Istio のインプレースデプロイメントを実行する。
 
@@ -1079,7 +1079,7 @@ This will install the Istio <バージョンタグ> default profile with ["Istio
 
 ## verify-install
 
-### verify-installとは
+### verify-install とは
 
 Istio リソースが正しく作成されたかを検証する。
 
@@ -1105,7 +1105,7 @@ Checked 3 Istio Deployments
 
 ## version
 
-### versionとは
+### version とは
 
 Istiod コントロールプレーンのバージョンを取得する。
 

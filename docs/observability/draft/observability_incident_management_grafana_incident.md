@@ -13,7 +13,7 @@ description: Grafana Incident＠インシデント管理ツールの知見を記
 
 <br>
 
-## 01. Grafana Incidentとは
+## 01. Grafana Incident とは
 
 Grafana OnCall を拡張する。
 

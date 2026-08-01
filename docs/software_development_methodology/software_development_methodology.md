@@ -59,7 +59,7 @@ UI や API のモックを作成することになる。
 
 ### RAD (Rapid Application Development)
 
-#### ▼ RADとは
+#### ▼ RAD とは
 
 Visual Basic などの開発支援ツールを使用して、短期間で設計～テストまでを繰り返す。
 
@@ -119,21 +119,21 @@ Visual Basic などの開発支援ツールを使用して、短期間で設計�
 
 ## 02. その他
 
-### CASEツール：Computer Aided Software Enginnering
+### CASE ツール：Computer Aided Software Enginnering
 
-#### ▼ CASEツールとは
+#### ▼ CASE ツールとは
 
 ソフトウェア開発をサポートする手法のこと。
 
-#### ▼ 上流CASEツール
+#### ▼ 上流 CASE ツール
 
 データフロー図、ER 図
 
-#### ▼ 下流CASEツール
+#### ▼ 下流 CASE ツール
 
 テスト支援ツール
 
-#### ▼ 保守CASEツール
+#### ▼ 保守 CASE ツール
 
 リバースエンジニアリング
 

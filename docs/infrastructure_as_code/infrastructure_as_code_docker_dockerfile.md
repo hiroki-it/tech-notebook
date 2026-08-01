@@ -17,7 +17,7 @@ description: Dockerfile＠Dockerの知見を記録しています。
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 Docker エンジン、CLI、インストールする。
 
@@ -65,7 +65,7 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 ## 02. ADD
 
-### ADDとは
+### ADD とは
 
 ホスト側のファイルを、コンテナの指定ディレクトリ配下にコピーし、このファイルが `tar` ファイルの場合は解凍する。
 
@@ -75,7 +75,7 @@ $ docker run --rm -it <検証したいコンテナイメージID> ls
 
 <br>
 
-### COPYとの違い
+### COPY との違い
 
 似た命令として `COPY` 処理がある。
 
@@ -110,13 +110,13 @@ RUN mkdir -p /usr/src/things \
 
 ## 03. ARG
 
-### ARGとは
+### ARG とは
 
 Dockerfile の命令で扱える変数を定義する。
 
 <br>
 
-### ENVとの違い
+### ENV との違い
 
 似た命令として `ENV` がある。
 
@@ -169,7 +169,7 @@ RUN pyenv install ${PYTHON_VERSION}
 
 ### スコープ
 
-#### ▼ FROMより前のARG
+#### ▼ FROM より前の ARG
 
 `FROM` より前で使用した `ARGS` は、後続含めて `FROM` でしか使用できない。
 
@@ -208,7 +208,7 @@ FROM python:${PYTHON_VERSION}
 
 ## 04. CMD
 
-### CMDとは
+### CMD とは
 
 イメージのプロセスの起動コマンドを実行する。
 
@@ -244,7 +244,7 @@ ERROR: for xxx-container  Cannot start service go: OCI runtime create failed: co
 
 ## 05. COPY
 
-### COPYとは
+### COPY とは
 
 ホスト側 (第一引数) のディレクトリ/ファイルをコンテナ側 (第二引数) にコピーする。
 
@@ -282,7 +282,7 @@ COPY --from=nginx:latest /etc/nginx/nginx.conf /nginx.conf
 
 ## 06. ENTRYPOINT
 
-### ENTRYPOINTとは
+### ENTRYPOINT とは
 
 イメージのプロセスの起動コマンドを実行する。
 
@@ -290,7 +290,7 @@ COPY --from=nginx:latest /etc/nginx/nginx.conf /nginx.conf
 
 <br>
 
-### CMDとの違い
+### CMD との違い
 
 似た命令として `CMD` がある。
 
@@ -309,7 +309,7 @@ $ docker run --rm -it <コンテナイメージ名>:<バージョンタグ> /bin
 
 ## 07. ENV
 
-### ENVとは
+### ENV とは
 
 OS 上のコマンド処理で展開できる変数を定義できる。
 
@@ -319,7 +319,7 @@ OS 上のコマンド処理で展開できる変数を定義できる。
 
 ## 08. EXPOSE
 
-### EXPOSEとは
+### EXPOSE とは
 
 他のコンテナに対してコンテナポートを開放する。
 
@@ -346,7 +346,7 @@ OS 上のコマンド処理で展開できる変数を定義できる。
 
 ## 09. FROM
 
-### FROMとは
+### FROM とは
 
 ベースのコンテナイメージを、コンテナにインストールする。
 
@@ -441,9 +441,9 @@ $ crane copy nginx:<バージョン> *****.dkr.ecr.ap-northeast-1.amazonaws.com/
 
 <br>
 
-### CPUアーキテクチャの指定
+### CPU アーキテクチャの指定
 
-#### ▼ CPUアーキテクチャの指定
+#### ▼ CPU アーキテクチャの指定
 
 `docker buildx` コマンドを実行し、複数の CPU アーキテクチャに対応したコンテナイメージを作成する。
 
@@ -514,7 +514,7 @@ $ docker buildx build --platform linux/amd64,linux/arm64 -t :latest . --push
 
 ## 10. RUN
 
-### RUNとは
+### RUN とは
 
 ベースイメージ上に、ソフトウェアをインストールする。
 
@@ -524,7 +524,7 @@ $ docker buildx build --platform linux/amd64,linux/arm64 -t :latest . --push
 
 ## 11. VOLUME
 
-### VOLUMEとは
+### VOLUME とは
 
 ボリュームマウントを実行する。
 
@@ -535,7 +535,7 @@ $ docker buildx build --platform linux/amd64,linux/arm64 -t :latest . --push
 
 ## 12. WORKDIR
 
-### WORKDIRとは
+### WORKDIR とは
 
 ビルド中の各命令の作業ディレクトリを絶対パスで指定する。
 

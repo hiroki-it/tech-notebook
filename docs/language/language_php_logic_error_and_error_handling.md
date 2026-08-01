@@ -147,7 +147,7 @@ function value() {
 
 ### 例外キャッチの方法
 
-#### ▼ try-catch-finallyとは
+#### ▼ try-catch-finally とは
 
 try-catch-finally では、特定の処理のなかで起こる想定できない例外を捉えられる。
 

@@ -13,7 +13,7 @@ description: Prometheus＠監視ツール
 
 <br>
 
-## 01. Prometheusの仕組み
+## 01. Prometheus の仕組み
 
 ### アーキテクチャ
 
@@ -31,9 +31,9 @@ Kubernetes リソースに関するメトリクスの元になるデータポイ
 
 <br>
 
-## 02. prometheusサーバー
+## 02. prometheus サーバー
 
-### prometheusサーバーとは
+### prometheus サーバーとは
 
 メトリクスの元になるデータポイントを収集し、管理する。
 
@@ -50,7 +50,7 @@ Kubernetes リソースに関するメトリクスの元になるデータポイ
 
 ## 02-02. Retrieval
 
-### Retrievalとは
+### Retrieval とは
 
 監視対象からデータポイントを定期的に収集する。
 
@@ -92,7 +92,7 @@ prometheus-prometheus-kube-prometheus-prometheus.yaml
 
 ## 02-03. HTTP server
 
-### HTTP serverとは
+### HTTP server とは
 
 データポイントを参照するためのエンドポイントを公開する。
 
@@ -148,7 +148,7 @@ data/
 ├── chunks_head/
 │   └── 000001
 │
-└── wal # WALによるバックアップ
+└── wal # WAL によるバックアップ
     ├── 000000002
     └── checkpoint.00000001/
         └── 00000000
@@ -179,9 +179,9 @@ TSDB のディレクトリは Node にマウントされるため、Node のス�
 
 <br>
 
-### 独自TSDB
+### 独自 TSDB
 
-#### ▼ 独自TSDBとは
+#### ▼ 独自 TSDB とは
 
 Prometheus では、TSDB (`data` ディレクトリ配下) を採用している。
 
@@ -271,7 +271,7 @@ TSDB のデータサイズがむやみに増えないよう、最低限のレコ
 
 ## 03. Alertmanager
 
-### Alertmanagerとは
+### Alertmanager とは
 
 Prometheus のアラートを受信し、特定の条件下で通知する。
 
@@ -319,7 +319,7 @@ alertname="PrometheusRemoteWriteDesiredShards"
 
 ## 04. PushGateway
 
-### PushGatewayとは
+### PushGateway とは
 
 Prometheus がプッシュ型収集でメトリクスの元になるデータポイントを収集するためのエンドポイントとして動作する。
 
@@ -329,7 +329,7 @@ Prometheus がプッシュ型収集でメトリクスの元になるデータポ
 
 ## 05. ServiceDiscovery
 
-### ServiceDiscoveryとは
+### ServiceDiscovery とは
 
 プル型収集の宛先の IP アドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。
 
@@ -337,7 +337,7 @@ Prometheus がプッシュ型収集でメトリクスの元になるデータポ
 
 <br>
 
-## 06. マネージドPrometheus
+## 06. マネージド Prometheus
 
 Prometheus のコンポーネントを部分的にマネージドにしたサービス。
 

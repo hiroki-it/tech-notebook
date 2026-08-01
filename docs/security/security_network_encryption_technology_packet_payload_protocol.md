@@ -79,13 +79,13 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ### S/MIME：Secure MIME
 
-#### ▼ S/MINEとは
+#### ▼ S/MINE とは
 
 暗号化ダイジェスト (署名) を含む証明書をメールに添付することによって、公開鍵のなりすましを防ぐセキュリティ技術。
 
 ![S_MIME](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/S_MIME.png)
 
-#### ▼ S/MIMEにおける証明書
+#### ▼ S/MIME における証明書
 
 証明書を S/MIME に使用する場合、特に S/MIME 証明書という。
 
@@ -113,7 +113,7 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ### SSH：Secure Shell
 
-#### ▼ SSHとは
+#### ▼ SSH とは
 
 ![ssh_public-key-authentication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh_public-key-authentication.png)
 
@@ -123,12 +123,12 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 物理 Web サーバーであっても、Web サーバーであっても、SSH 公開鍵認証によるリモート通信/操作の仕組みは同じである。
 
-| 要素           | Apache MINA/SSHDの場合 | OpenSSHの場合 | Puttyの場合 | TeraTermの場合 |
-| -------------- | ---------------------- | ------------- | ----------- | -------------- |
-| 送信元マシン内 | -                      | OpenSSH       | Putty       | TeraTerm       |
-| 宛先マシン内   | Apache MINA/SSHD       | OpenSSH       | -           | -              |
+| 要素           | Apache MINA/SSHD の場合 | OpenSSH の場合 | Putty の場合 | TeraTerm の場合 |
+| -------------- | ----------------------- | -------------- | ------------ | --------------- |
+| 送信元マシン内 | -                       | OpenSSH        | Putty        | TeraTerm        |
+| 宛先マシン内   | Apache MINA/SSHD        | OpenSSH        | -            | -               |
 
-#### ▼ SSHポートフォワーディング (SSHポートフォワーディング)
+#### ▼ SSH ポートフォワーディング (SSH ポートフォワーディング)
 
 ローカルマシンと踏み台サーバーの SSH 公開鍵認証と、ポートフォワーディングを組み合わせることによって、外部ネットワークのプライベートネットワーク内リモートサーバーに間接的にパケットを送受信する。
 
@@ -146,7 +146,7 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ### SCP：Secure Copy Protocol
 
-#### ▼ SCPとは
+#### ▼ SCP とは
 
 SSH を経由して、ファイルフォワーディングを実行する。
 
@@ -173,16 +173,16 @@ SSH の能力をより拡張したプロトコルである。
 
 ### SFTP：SSH File Transfer Protocol
 
-#### ▼ SFTPとは
+#### ▼ SFTP とは
 
 SSH を経由して、ファイルフォワーディングを実行する。
 
 SSH と FTP を組み合わせたプロトコルではなく、SSH の能力をより拡張したものである。
 
-| 要素           | Filezillaの場合 | WinSCPの場合 |
-| -------------- | --------------- | ------------ |
-| 送信元マシン内 | Filezilla       | WinSCP       |
-| 宛先マシン内   | -               | -            |
+| 要素           | Filezilla の場合 | WinSCP の場合 |
+| -------------- | ---------------- | ------------- |
+| 送信元マシン内 | Filezilla        | WinSCP        |
+| 宛先マシン内   | -                | -             |
 
 <br>
 
@@ -198,11 +198,11 @@ SSH と FTP を組み合わせたプロトコルではなく、SSH の能力を�
 
 その場合、ローカルマシンのコピーを一度リモート先にあるメモ帳などにペーストし、これをあらためてコピーアンドペーストするとよい。
 
-| 役割               | 概説                                                                                  | Chromeリモートデスクトップ |           Guacamole            | AWS Workspaces Applications |
-| ------------------ | ------------------------------------------------------------------------------------- | :------------------------: | :----------------------------: | :-------------------------: |
-| 送信元マシン       | ゲートウェイマシンのクライアントである。                                              |             ✅             |                                |                             |
-| ゲートウェイマシン | 宛先マシンで稼働するWebアプリケーションのクライアントであり、ブラウザが稼働している。 |                            | ✅ (Guacamoleサーバー + guard) |             ✅              |
-| 宛先マシン         | 異なるネットワーク内でWebアプリが稼働している。                                       |                            |                                |                             |
+| 役割               | 概説                                                                                    | Chrome リモートデスクトップ |            Guacamole            | AWS Workspaces Applications |
+| ------------------ | --------------------------------------------------------------------------------------- | :-------------------------: | :-----------------------------: | :-------------------------: |
+| 送信元マシン       | ゲートウェイマシンのクライアントである。                                                |             ✅              |                                 |                             |
+| ゲートウェイマシン | 宛先マシンで稼働する Web アプリケーションのクライアントであり、ブラウザが稼働している。 |                             | ✅ (Guacamole サーバー + guard) |             ✅              |
+| 宛先マシン         | 異なるネットワーク内で Web アプリが稼働している。                                       |                             |                                 |                             |
 
 > - https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1
 > - https://ja.helpleft.com/internet/what-is-remote-desktop-protocol.html
@@ -222,7 +222,7 @@ SSH と FTP を組み合わせたプロトコルではなく、SSH の能力を�
 
 ### SSL/TLS：Secure Sockets Layer／Transport Layer Security
 
-#### ▼ SSL/TLSとは
+#### ▼ SSL/TLS とは
 
 ハイブリッド暗号方式に基づく暗号化プロトコル。
 
@@ -236,7 +236,7 @@ SSL/TLS を使用した通信では、TLS ライブラリ (例：OpenSSL、Borin
 
 > - https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/
 
-#### ▼ SNI (SSL/TLSの拡張)
+#### ▼ SNI (SSL/TLS の拡張)
 
 宛先のサーバーに複数のサーバー証明書を配置できるようになる。
 
@@ -269,7 +269,7 @@ Chrome では、HTTPS リクエストの使用時にサーバー証明書の不�
 
 <br>
 
-### プロトコルのTLS化の仕組み
+### プロトコルの TLS 化の仕組み
 
 #### ▼ 概要
 
@@ -303,7 +303,7 @@ Docker であればプロキシ設定を実施するか、Dockerfile にルー�
 > - https://help.zscaler.com/zia/about-ssl-inspection
 > - https://docs.docker.com/guides/zscaler/#the-role-of-certificates-in-docker
 
-#### ▼ 相互TLS認証 (mTLS)
+#### ▼ 相互 TLS 認証 (mTLS)
 
 アプリケーション層で、双方向のピア認証を実施する。
 
@@ -323,7 +323,7 @@ Docker であればプロキシ設定を実施するか、Dockerfile にルー�
 
 ### IPsec：Internet Protocol Security
 
-#### ▼ IPSecとは
+#### ▼ IPSec とは
 
 共通鍵暗号方式に基づく暗号化プロトコル。
 
@@ -341,7 +341,7 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 > - https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/
 
-#### ▼ IPsecによるパケットのカプセル化
+#### ▼ IPsec によるパケットのカプセル化
 
 ![IPsecによるカプセル化](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるカプセル化.jpg)
 
@@ -349,7 +349,7 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 ### VPN：Virtual Private Network (仮想プライベートネットワーク)
 
-#### ▼ VPNとは
+#### ▼ VPN とは
 
 ![vpn_between_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_between_network.png)
 
@@ -357,11 +357,11 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 異なるネットワーク内の特定のアプリケーションにのみと通信できるリモートデスクトッププロトコルよりも、広範囲に通信できる。
 
-| 要素            | Fortiの場合 | OpenVPNの場合 | Zscalerの場合                                |
-| --------------- | ----------- | ------------- | -------------------------------------------- |
-| 送信元マシン内  | FortiClient | OpenVpnClient | Zapp (クラウドZscalerのクライアントツール)   |
-| 中継VPNマシン内 | FortiGate   | OpenVpn       | SDPゲートウェイ (クラウドZscalerのVPNマシン) |
-| 宛先マシン内    | -           | -             | -                                            |
+| 要素              | Forti の場合 | OpenVPN の場合 | Zscaler の場合                                   |
+| ----------------- | ------------ | -------------- | ------------------------------------------------ |
+| 送信元マシン内    | FortiClient  | OpenVpnClient  | Zapp (クラウド Zscaler のクライアントツール)     |
+| 中継 VPN マシン内 | FortiGate    | OpenVpn        | SDP ゲートウェイ (クラウド Zscaler のVPN マシン) |
+| 宛先マシン内      | -            | -              | -                                                |
 
 > - www.amazon.co.jp/dp/B0756SS7N3
 > - https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/

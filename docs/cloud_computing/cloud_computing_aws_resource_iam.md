@@ -3,7 +3,7 @@ title: 【IT技術の知見】AWS IAM＠AWSリソース
 description: AWS IAM＠AWSリソースの知見を記録しています。
 ---
 
-# AWS IAM＠AWSリソース
+# AWS IAM＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: AWS IAM＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. AWS IAMとは：Identify and Access Management
+## 01. AWS IAM とは：Identify and Access Management
 
 AWS リソースへのアクセスに関する認証/認可を制御する。
 
@@ -21,9 +21,9 @@ AWS リソースへのアクセスに関する認証/認可を制御する。
 
 <br>
 
-## 02. AWS IAMロール
+## 02. AWS IAM ロール
 
-### AWS IAMロールとは
+### AWS IAM ロールとは
 
 AWS IAM ポリシーのセットを定義する。
 
@@ -59,7 +59,7 @@ AWS リソースを作成したときに自動的に作成されるロール。
 
 <br>
 
-## 03. AWS IAMポリシー
+## 03. AWS IAM ポリシー
 
 ### アイデンティティベースのポリシー
 
@@ -67,7 +67,7 @@ AWS リソースを作成したときに自動的に作成されるロール。
 
 AWS IAM ユーザー、AWS IAM グループ、AWS IAM ロール、に紐付けるためのポリシーのこと。
 
-#### ▼ AWS管理ポリシー
+#### ▼ AWS 管理ポリシー
 
 AWS が提供しているポリシーのこと。
 
@@ -257,7 +257,7 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 
 <br>
 
-## 03-02. AWS IAMポリシーの構造
+## 03-02. AWS IAM ポリシーの構造
 
 ### 構造
 
@@ -267,14 +267,14 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
   "Sid": "foo",
   # Version
   "Version": "2012-10-17",
-  # Statement (AWS IAMステートメント)
+  # Statement (AWS IAM ステートメント)
   "Statement": [
       {
         # 許可する
         "Effect": "Allow",
-        # SSMのAPIへのGetParametersのコールを指定する
+        # SSM のAPI への GetParameters のコールを指定する
         "Action": ["ssm:GetParameters"],
-        # 任意のAWSソースを対象とする
+        # 任意の AWS ソースを対象とする
         "Resource": "*",
       },
     ],
@@ -297,9 +297,9 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 
 <br>
 
-### Statement (AWS IAMステートメント)
+### Statement (AWS IAM ステートメント)
 
-#### ▼ Statementとは
+#### ▼ Statement とは
 
 AWS リソースに関する認可のスコープを定義する。
 
@@ -379,9 +379,9 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
           {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
         "Condition": {
-            # OR条件
+            # OR 条件
             "StringEqual": {
-                # リスト型にすることでOR上限になる
+                # リスト型にすることで OR 上限になる
                 "sts:ExternalId": ["foo", "bar"],
               },
           },
@@ -418,7 +418,7 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 {"Version": "2012-10-17", "Statement": [
       {
         "Effect": "Allow",
-        # EC2を起動する
+        # EC2 を起動する
         "Action": "ec2:RunInstances",
         "Resource": "arn:aws:ec2:*:account-id:launch-template/*",
         "Condition": {
@@ -433,27 +433,27 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 
 <br>
 
-## 03-03. AWS IAMポリシーを紐付けできる対象
+## 03-03. AWS IAM ポリシーを紐付けできる対象
 
-### AWS IAMユーザーに対する紐付け
+### AWS IAM ユーザーに対する紐付け
 
 ![AWS IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMユーザーにポリシーを付与.jpeg)
 
 <br>
 
-### AWS IAMグループに対する紐付け
+### AWS IAM グループに対する紐付け
 
 ![AWS IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMグループにポリシーを付与.jpeg)
 
 <br>
 
-### AWS IAMロールに対する紐付け
+### AWS IAM ロールに対する紐付け
 
 ![AWS IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg)
 
 <br>
 
-## 04. ルートユーザー、AWS IAMユーザー
+## 04. ルートユーザー、AWS IAM ユーザー
 
 ### ルートユーザーとは
 
@@ -461,15 +461,15 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 
 <br>
 
-### AWS IAMユーザーとは
+### AWS IAM ユーザーとは
 
 特定の認可スコープをもったアカウントのこと。
 
 <br>
 
-## 05. AWS IAMグループ
+## 05. AWS IAM グループ
 
-### AWS IAMグループとは
+### AWS IAM グループとは
 
 AWS IAM ユーザーをグループ化したもの。
 
@@ -479,7 +479,7 @@ AWS IAM グループごとに AWS IAM ロールを紐付けすれば、AWS IAM �
 
 <br>
 
-### AWS IAMグループへのAWS IAMロールの紐付け
+### AWS IAM グループへの AWS IAM ロールの紐付け
 
 AWS IAM グループに対して、AWS IAM ロールを紐付ける。
 
@@ -491,10 +491,10 @@ AWS IAM グループに対して、AWS IAM ロールを紐付ける。
 
 ### グループ一覧
 
-| グループ名      | 説明                                                                                     | 補足 |
-| --------------- | ---------------------------------------------------------------------------------------- | ---- |
-| Administrator   | すべてのリソースに認可スコープがある。                                                   |      |
-| PowerUserAccess | AWS IAMのみが参照の認可スコープであり、それ以外のAWSリソースに変更の認可スコープがある。 |      |
-| ViewOnlyAccess  | 参照のみの認可スコープがある。                                                           |      |
+| グループ名      | 説明                                                                                        | 補足 |
+| --------------- | ------------------------------------------------------------------------------------------- | ---- |
+| Administrator   | すべてのリソースに認可スコープがある。                                                      |      |
+| PowerUserAccess | AWS IAM のみが参照の認可スコープであり、それ以外の AWS リソースに変更の認可スコープがある。 |      |
+| ViewOnlyAccess  | 参照のみの認可スコープがある。                                                              |      |
 
 <br>

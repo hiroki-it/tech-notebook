@@ -15,7 +15,7 @@ description: Grafana Loki＠Grafanaの知見を記録しています。
 
 ## 01. セットアップ
 
-### AWS側
+### AWS 側
 
 ```terraform
 module "iam_assumable_role_with_oidc_grafana_loki" {

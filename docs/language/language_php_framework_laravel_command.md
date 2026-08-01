@@ -13,9 +13,9 @@ description: コマンド＠Laravelの知見を記録しています。
 
 <br>
 
-## 01. artisanコマンド
+## 01. artisan コマンド
 
-### artisanコマンドとは
+### artisan コマンドとは
 
 アプリケーションの開発に役立つコマンドを提供する。
 
@@ -112,7 +112,7 @@ $ php artisan make:seeder <Seeder名>
 
 ### migrate
 
-#### ▼ migrateとは
+#### ▼ migrate とは
 
 DB マイグレーションファイルを元にテーブルを作成する。
 

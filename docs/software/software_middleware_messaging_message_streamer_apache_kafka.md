@@ -13,7 +13,7 @@ description: Apache Kafka＠ストリーマー系ミドルウェアの知見を�
 
 <br>
 
-## 01. Apache Kafkaとは
+## 01. Apache Kafka とは
 
 メッセージストリームとして、メッセージを連続的にキューイングし、また加工したうえで連続的にルーティングする。
 

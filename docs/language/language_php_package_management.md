@@ -293,7 +293,7 @@ $ php -r '
 
 <br>
 
-## 02-02. composerコマンド
+## 02-02. composer コマンド
 
 ### clear-cache
 
@@ -380,7 +380,7 @@ $ composer init
 
 ### install
 
-#### ▼ installとは
+#### ▼ install とは
 
 `composer.json` ファイルに書き込まれたパッケージを、`composer.lock` ファイルに書き込まれたバージョンでインストールする。
 
@@ -431,7 +431,7 @@ $ composer install --prefer-source
 
 ### reinstall
 
-#### ▼ reinstallとは
+#### ▼ reinstall とは
 
 指定したパッケージをアンインストールした後、再インストールする。
 
@@ -455,7 +455,7 @@ $ composer install -vvv
 
 ### remove
 
-#### ▼ removeとは
+#### ▼ remove とは
 
 パッケージを `composer.json` ファイルと `composer.lock` ファイルの両方から削除する。
 
@@ -470,7 +470,7 @@ $ composer remove <パッケージ名>
 
 ### require
 
-#### ▼ requireとは
+#### ▼ require とは
 
 パッケージ名を `composer.json` ファイルと `composer.lock` ファイルの両方に書き込み、インストールする。
 
@@ -499,7 +499,7 @@ $ composer <スクリプト名>
 
 ### update
 
-#### ▼ updateとは
+#### ▼ update とは
 
 `composer.json` ファイルに書き込まれたパッケージを最新のバージョンでインストールし、`composer.lock` ファイルを書き換える。
 

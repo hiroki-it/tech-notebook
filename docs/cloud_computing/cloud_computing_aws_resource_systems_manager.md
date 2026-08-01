@@ -3,7 +3,7 @@ title: 【IT技術の知見】AWS Systems Manager (新SSM) ＠AWSリソース
 description: AWS Systems Manager (新SSM) ＠AWSリソースの知見を記録しています。
 ---
 
-# AWS Systems Manager (新SSM) ＠AWSリソース
+# AWS Systems Manager (新 SSM) ＠AWS リソース
 
 ## はじめに
 
@@ -79,11 +79,11 @@ AWS リソースを変更するためには『ランブック (ドキュメン�
 
 ランブックには、AWS があらかじめ用意してくれるものとユーザー定義のものがある。
 
-| タイプ           | 説明                                                                                                                                                                                                    | 補足                                                                                                                                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Automationタイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python製のAWS Lambdaが使用されている (たぶん) 。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html | EC2を起動し、状態がOKになるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html                                                                                |
-| Commandタイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Commandが使用されている。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types       | ・EC2内で実行するlinuxコマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2内で実行するawscliコマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
-| Sessionタイプ    |                                                                                                                                                                                                         |                                                                                                                                                                                                                                               |
+| タイプ            | 説明                                                                                                                                                                                                       | 補足                                                                                                                                                                                                                                                |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Automation タイプ | サーバー/コンテナ外でコマンドを実行する。内部的には、Python 製の AWS Lambda が使用されている (たぶん) 。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation.html | EC2 を起動し、状態が OK になるまで監視する手順を自動化した例： https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-walk-document-builder.html                                                                                   |
+| Command タイプ    | サーバー/コンテナ内でコマンドを実行する。内部的には、Run Command が使用されている。<br>- https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html#what-are-document-types         | ・EC2 内で実行する linux コマンドを自動化した例： https://dev.classmethod.jp/articles/check-os-setting-ssm-doc-al2/ <br>・EC2 内で実行する awscli コマンドを自動化した例： https://dev.classmethod.jp/articles/autoscalling-terminating-log-upload/ |
+| Session タイプ    |                                                                                                                                                                                                            |                                                                                                                                                                                                                                                     |
 
 <br>
 
@@ -153,7 +153,7 @@ SM パラメーター名は、『`/<リソース名>/<変数名>`』とすると
 
 ## 04. AWS SSM Session Manager
 
-### AWS SSM Session Managerとは
+### AWS SSM Session Manager とは
 
 EC2 (Amazon ECS や Amazon EKS のコンテナのホストを含む) へ通信できるようにする。
 
@@ -166,7 +166,7 @@ SSH 公開鍵認証とは異なり、Internet Gateway 経由ではなく、ssmme
 
 <br>
 
-### AWSセッション
+### AWS セッション
 
 TLS、Sigv4、AWS KMS を使用して暗号化された接続のこと。
 
@@ -174,7 +174,7 @@ TLS、Sigv4、AWS KMS を使用して暗号化された接続のこと。
 
 <br>
 
-### 同時AWSセッションの上限数
+### 同時 AWS セッションの上限数
 
 同時 AWS セッションの上限数は 2 つまである。
 

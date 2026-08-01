@@ -232,7 +232,7 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 
 <br>
 
-### -tlsCertFile (-tlsKeyFileと一緒に使用する)
+### -tlsCertFile (-tlsKeyFile と一緒に使用する)
 
 サーバー証明書のパスを設定する。
 
@@ -250,7 +250,7 @@ $ victoria-metrics-prod -tlsCertFile=/etc/victoriametrics/server.crt -tlsKeyFile
 
 ### vm-native
 
-#### ▼ vm-nativeとは
+#### ▼ vm-native とは
 
 指定した URL の VictoriaMetrics の API からデータをエクスポートし、宛先の API にインポートする。
 

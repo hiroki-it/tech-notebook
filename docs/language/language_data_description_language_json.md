@@ -13,7 +13,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 <br>
 
-## 01. JSONとは
+## 01. JSON とは
 
 異なる言語間やサーバー間で変換できるデータ記述型言語である。
 
@@ -235,7 +235,7 @@ class Foo
 
 ### フロントエンドの場合
 
-#### ▼ シリアライズ：JS型からJSON
+#### ▼ シリアライズ：JS 型から JSON
 
 JS 型オブジェクトから JSON への変換には、`JSON.stringfy()` 関数を使用する。
 
@@ -254,7 +254,7 @@ console.log(json);
 // {"fruit":["banana","apple"],"account":200}
 ```
 
-#### ▼ デシリアライズ：JSONからJS型
+#### ▼ デシリアライズ：JSON から JS 型
 
 JSON から JS 型オブジェクトへの変換には、`JSON.parse()` 関数を使用する。
 
@@ -326,7 +326,7 @@ class StaffParser {
 
 ### バックエンドの場合
 
-#### ▼ デシリアライズ：JSONからPHP型
+#### ▼ デシリアライズ：JSON から PHP 型
 
 JSON から PHP 型オブジェクトの変換には。
 
@@ -384,7 +384,7 @@ var_dump($array);
 //  }
 ```
 
-#### ▼ シリアライズ：PHP型からJSON
+#### ▼ シリアライズ：PHP 型から JSON
 
 ```php
 <?php

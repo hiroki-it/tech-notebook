@@ -39,7 +39,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/kyverno -n
 
 ### validationFailureAction
 
-#### ▼ validationFailureActionとは
+#### ▼ validationFailureAction とは
 
 ルールに則っていない Kubernetes リソースの作成/更新があった場合に、これを拒否するか、または許可するが監査ログを記録するかを設定する。
 
@@ -59,7 +59,7 @@ spec:
 
 ### background
 
-#### ▼ backgroundとは
+#### ▼ background とは
 
 Kyverno の導入後に作成/更新される Kubernetes だけでなく、導入前の既存の Kubernetes リソースも Kyverno の検査対象とするかを設定する。
 
@@ -79,11 +79,11 @@ spec:
 
 ### rules
 
-#### ▼ rulesとは
+#### ▼ rules とは
 
 Webhook リクエスト時に実行する Kyverno のルールを設定する。
 
-#### ▼ Mutateルールの場合
+#### ▼ Mutate ルールの場合
 
 **＊実装例＊**
 
@@ -113,7 +113,7 @@ spec:
 
 > - https://kyverno.io/docs/writing-policies/mutate/
 
-#### ▼ Validateルールの場合
+#### ▼ Validate ルールの場合
 
 **＊実装例＊**
 

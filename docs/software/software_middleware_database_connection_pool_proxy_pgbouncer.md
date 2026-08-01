@@ -13,7 +13,7 @@ description: PgBouncer＠接続プールプロキシ系ミドルウェアの知�
 
 <br>
 
-## PgBouncerの仕組み
+## PgBouncer の仕組み
 
 ### アーキテクチャ
 

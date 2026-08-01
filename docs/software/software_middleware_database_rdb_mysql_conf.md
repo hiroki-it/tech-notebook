@@ -17,7 +17,7 @@ description: 設定ファイル＠MySQLの知見を記録しています。
 
 ### インストール
 
-#### ▼ dnfリポジトリから
+#### ▼ dnf リポジトリから
 
 `mysql` コマンドのみをインストールしたい場合はこちら。
 
@@ -31,7 +31,7 @@ $ dnf install -y mysql
 $ dnf install -y mysql-server
 ```
 
-#### ▼ yumリポジトリから
+#### ▼ yum リポジトリから
 
 `mysql` コマンドのみをインストールしたい場合はこちら。
 
@@ -90,11 +90,11 @@ mysql> SELECT user, host FROM mysql.user;
 
 #### ▼ パラメーターの種類
 
-| パラメーター名       | 説明                                                     |
-| -------------------- | -------------------------------------------------------- |
-| `max_connections`    | DBクライアントからのクエリの同時接続数を設定する。       |
-| `max_execution_time` | DBクライアントからのクエリのタイムアウト時間を設定する。 |
-| `time_zone`          | クエリのタイムゾーンを設定する。                         |
+| パラメーター名       | 説明                                                      |
+| -------------------- | --------------------------------------------------------- |
+| `max_connections`    | DB クライアントからのクエリの同時接続数を設定する。       |
+| `max_execution_time` | DB クライアントからのクエリのタイムアウト時間を設定する。 |
+| `time_zone`          | クエリのタイムゾーンを設定する。                          |
 
 > - https://dev.mysql.com/doc/refman/8.0/ja/server-system-variables.html
 
@@ -126,7 +126,7 @@ SHOW GLOBAL VARIABLES LIKE "%time_zone";
 
 <br>
 
-## 02. 設定ファイルの種類 (※ Dockerの場合)
+## 02. 設定ファイルの種類 (※ Docker の場合)
 
 ### `/etc/mysql/my.cnf` ファイル
 
@@ -186,9 +186,9 @@ $ less mysqld.log | grep "temporary password"
 
 <br>
 
-## 03. mysqldセクション
+## 03. mysqld セクション
 
-### mysqldセクション
+### mysqld セクション
 
 mysql サーバーの `mysqld` プロセスのプールを設定する。
 
@@ -222,7 +222,7 @@ collation_server = utf8mb4_general_ci
 
 ### default_authentication_plugin
 
-#### ▼ default_authentication_pluginとは
+#### ▼ default_authentication_plugin とは
 
 MySQL の認証方法を設定する。
 
@@ -278,7 +278,7 @@ select user, host, plugin from mysql.user;
 
 ### default-time-zone
 
-#### ▼ default-time-zoneとは
+#### ▼ default-time-zone とは
 
 デフォルトのタイムゾーンを設定する。
 
@@ -291,7 +291,7 @@ default-time-zone = SYSTEM
 
 ### datadir
 
-#### ▼ datadirとは
+#### ▼ datadir とは
 
 DB の定義ファイルを配置するディレクトリを設定する。
 
@@ -341,7 +341,7 @@ drwxr-x--- 2 mysql mysql    12288 Dec 17 09:54 sys
 
 ### innodb_lock_wait_timeout
 
-#### ▼ innodb_lock_wait_timeoutとは
+#### ▼ innodb_lock_wait_timeout とは
 
 トランザクションによるレコードロック中に、他のトランザクションがロックの解除を待機する最大時間を設定する。
 
@@ -357,7 +357,7 @@ innodb_lock_wait_timeout = 50
 
 ### log-error
 
-#### ▼ log-errorとは
+#### ▼ log-error とは
 
 エラーログの出力先を設定する。
 
@@ -370,7 +370,7 @@ log-error = mysql-error.log
 
 ### log_timestamps
 
-#### ▼ log_timestampsとは
+#### ▼ log_timestamps とは
 
 ログのタイムゾーンを設定する。
 
@@ -383,7 +383,7 @@ log_timestamps = SYSTEM
 
 ### general_log
 
-#### ▼ general_logとは
+#### ▼ general_log とは
 
 一般ログを出力するか否かを設定する。
 
@@ -396,7 +396,7 @@ general_log = 1
 
 ### general_log_file
 
-#### ▼ general_log_fileとは
+#### ▼ general_log_file とは
 
 一般ログの出力先のファイルを設定する。
 
@@ -409,7 +409,7 @@ general_log_file = mysql-general.log
 
 ### log_queries_not_using_indexes
 
-#### ▼ log_queries_not_using_indexesとは
+#### ▼ log_queries_not_using_indexes とは
 
 DB インデックスを使用するか否かを設定する。
 
@@ -422,7 +422,7 @@ log_queries_not_using_indexes = 0
 
 ### long_query_time
 
-#### ▼ long_query_timeとは
+#### ▼ long_query_time とは
 
 スロークエリログを出力する場合に、スロークエリと見なす閾値秒数を設定する。
 
@@ -435,7 +435,7 @@ long_query_time = 3
 
 ### pid-file
 
-#### ▼ pid-fileとは
+#### ▼ pid-file とは
 
 プロセス ID が記載されたファイルの作成先を設定する。
 
@@ -448,7 +448,7 @@ pid-file = /var/run/mysqld/mysqld.pid
 
 ### secure-file-priv
 
-#### ▼ secure-file-privとは
+#### ▼ secure-file-priv とは
 
 ```ini
 [mysqld]
@@ -459,7 +459,7 @@ secure-file-priv = /var/lib/mysql-files
 
 ### slow_query_log
 
-#### ▼ slow_query_logとは
+#### ▼ slow_query_log とは
 
 スロークエリログを出力するか否かを設定する。
 
@@ -472,7 +472,7 @@ slow_query_log = 1
 
 ### slow_query_log_file
 
-#### ▼ slow_query_log_fileとは
+#### ▼ slow_query_log_file とは
 
 スロークエリログの出力先のファイルを設定する。
 
@@ -485,7 +485,7 @@ slow_query_log_file = mysql-slow.log
 
 ### socket
 
-#### ▼ socketとは
+#### ▼ socket とは
 
 ```ini
 [mysqld]
@@ -496,7 +496,7 @@ socket = /var/lib/mysql/mysql.sock
 
 ### user
 
-#### ▼ userとは
+#### ▼ user とは
 
 プロセスの実行ユーザー名を設定する。
 
@@ -507,9 +507,9 @@ user = mysql
 
 <br>
 
-## 03-02. clientセクション
+## 03-02. client セクション
 
-### clientセクションとは
+### client セクションとは
 
 mysql クライアントツールの `client` プロセスのプールを設定する。
 
@@ -517,7 +517,7 @@ mysql クライアントツールの `client` プロセスのプールを設定�
 
 ### default-character-set
 
-#### ▼ default-character-setとは
+#### ▼ default-character-set とは
 
 デフォルトの文字コードを設定する。
 

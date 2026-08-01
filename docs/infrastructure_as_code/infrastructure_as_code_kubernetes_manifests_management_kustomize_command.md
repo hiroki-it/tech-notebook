@@ -17,7 +17,7 @@ description: コマンド＠Kustomizeの知見を記録しています。
 
 ### build
 
-#### ▼ buildとは
+#### ▼ build とは
 
 Kustomize の設定ファイルに基づいて、マニフェストを作成する。
 
@@ -65,7 +65,7 @@ $ kustomize build --output ./tmp ./kustomize/overlay
 
 <br>
 
-## 02. `kubectl` コマンドを使用したKustomizeの適用
+## 02. `kubectl` コマンドを使用した Kustomize の適用
 
 ### diff/apply -k
 

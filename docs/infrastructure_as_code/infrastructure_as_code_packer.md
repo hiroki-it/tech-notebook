@@ -13,7 +13,7 @@ description: Packer＠IaCの知見を記録しています。
 
 <br>
 
-## 01. Packerの仕組み
+## 01. Packer の仕組み
 
 ### アーキテクチャ
 
@@ -25,7 +25,7 @@ description: Packer＠IaCの知見を記録しています。
 
 ### ユースケース
 
-#### ▼ プラットフォームがAWSの場合
+#### ▼ プラットフォームが AWS の場合
 
 プロビジョナーを使用して Amazon EC2 をプロビジョニングし、その Amazon EC2 から AWS AMI を作成する。
 

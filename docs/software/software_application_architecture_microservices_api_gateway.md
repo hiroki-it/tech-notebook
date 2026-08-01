@@ -3,7 +3,7 @@ title: 【IT技術の知見】APIゲートウェイ領域＠マイクロサー�
 description: APIゲートウェイ領域＠マイクロサービスアーキテクチャの知見を記録しています。
 ---
 
-# APIゲートウェイ領域＠マイクロサービスアーキテクチャ
+# API ゲートウェイ領域＠マイクロサービスアーキテクチャ
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: APIゲートウェイ領域＠マイクロサービスアーキテ�
 
 <br>
 
-## 01. APIゲートウェイ
+## 01. API ゲートウェイ
 
-### APIゲートウェイとは
+### API ゲートウェイとは
 
 ![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png)
 
@@ -40,7 +40,7 @@ description: APIゲートウェイ領域＠マイクロサービスアーキテ�
 
 ### 分割パターン
 
-#### ▼ APIゲートウェイの分割パターンとは
+#### ▼ API ゲートウェイの分割パターンとは
 
 API ゲートウェイの責務をどのように分割するかに応じて、分割パターンがある。
 
@@ -82,9 +82,9 @@ BFF ではアプリケーションの種類ごとに API　Gateway を作成し�
 
 <br>
 
-### API形式パターン
+### API 形式パターン
 
-#### ▼ APIゲートウェイのAPI形式パターンとは
+#### ▼ API ゲートウェイの API 形式パターンとは
 
 API ゲートウェイの API 形式に応じて、分割パターンがある。
 
@@ -104,19 +104,19 @@ API ゲートウェイの API 形式に応じて、分割パターンがある�
 
 ### 責務パターン
 
-#### ▼ Gateway Offloadingパターン
+#### ▼ Gateway Offloading パターン
 
 API ゲートウェイは、マイクロサービス間で共通する問題 (認証、ロギング、サーバー証明書など) を処理する責務を持ちます。
 
 > - https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-offloading
 
-#### ▼ Gatewayルーティングパターン
+#### ▼ Gateway ルーティングパターン
 
 API ゲートウェイは、複数のマイクロサービスにリクエストをルーティングする責務を持ちます。
 
 > - https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-routing
 
-#### ▼ Gatewayアグリゲーターパターン
+#### ▼ Gateway アグリゲーターパターン
 
 API ゲートウェイに API Composition を適用した方法である。
 
@@ -146,7 +146,7 @@ GraphQL で API ゲートウェイを実装する場合は、特に注意が必�
 > - https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy
 > - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9
 
-#### ▼ OSSを使用する場合
+#### ▼ OSS を使用する場合
 
 API ゲートウェイの OSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、Apache APISIX など) を使用する。
 
@@ -176,9 +176,9 @@ Amazon Route 53 ---> Amazon API Gateway ---> AWS Load Balancer Controller ---> �
 
 <br>
 
-## 02. APIアグリゲーション層
+## 02. API アグリゲーション層
 
-### APIアグリゲーション層とは
+### API アグリゲーション層とは
 
 すべての API または複数の API のセットとして機能する。
 

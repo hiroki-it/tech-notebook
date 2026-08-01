@@ -25,7 +25,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 ### 冗長化
 
-#### ▼ マルチAZ
+#### ▼ マルチ AZ
 
 マルチ AZ を採用する。
 
@@ -45,7 +45,7 @@ Auto Scaling Group を採用する。
 
 Amazon EC2 で障害が発生した場合、AWS ALB を起点にして、正常な Amazon EC2 に切り替える。
 
-#### ▼ Amazon EKS マネージドNodeグループ
+#### ▼ Amazon EKS マネージド Node グループ
 
 Amazon EKS マネージド Node グループを採用する。
 
@@ -61,7 +61,7 @@ Amazon Aurora でフェイルオーバーを採用する。
 
 ### スケーリング
 
-#### ▼ Amazon EKS マネージドNodeグループ
+#### ▼ Amazon EKS マネージド Node グループ
 
 Amazon EC2 Node のスケールアップには、Cluster Autoscaler、Amazon EKS マネージド Node グループを採用する。
 
@@ -77,7 +77,7 @@ Auto Scaling Group では、Amazon EC2 のハードウェアリソース (CPU、
 
 ## 02. 災害の対策
 
-### DRリージョン (BCPリージョン) とは
+### DR リージョン (BCP リージョン) とは
 
 『BCP リージョン』ともいう。
 

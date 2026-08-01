@@ -13,7 +13,7 @@ description: PrometheusOperator＠Prometheusの知見を記録しています。
 
 <br>
 
-## 01. PrometheusOperatorの仕組み
+## 01. PrometheusOperator の仕組み
 
 ### アーキテクチャ
 

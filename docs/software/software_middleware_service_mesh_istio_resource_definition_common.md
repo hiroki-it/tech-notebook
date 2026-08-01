@@ -13,7 +13,7 @@ description: メタデータ＠Istioの知見を記録しています。
 
 <br>
 
-## 01. Namespaceの `.metadata.labels` キー
+## 01. Namespace の `.metadata.labels` キー
 
 ### istio-injection
 
@@ -42,14 +42,14 @@ kind: Namespace
 metadata:
   name: observability
   labels:
-    istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
+    istio-injection: disabled # disabled であれば、istio.io/rev キーと共存できる。
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: chaos-mesh
   labels:
-    istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
+    istio-injection: disabled # disabled であれば、istio.io/rev キーと共存できる。
 ```
 
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
@@ -85,14 +85,14 @@ kind: Namespace
 metadata:
   name: observability
   labels:
-    istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
+    istio-injection: disabled # disabled であれば、istio.io/rev キーと共存できる。
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: chaos-mesh
   labels:
-    istio-injection: disabled # disabledであれば、istio.io/revキーと共存できる。
+    istio-injection: disabled # disabled であれば、istio.io/rev キーと共存できる。
 ```
 
 > - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
@@ -120,7 +120,7 @@ metadata:
 
 ### istio.io/dataplane-mode
 
-#### ▼ istio.io/dataplane-modeとは
+#### ▼ istio.io/dataplane-mode とは
 
 アンビエントモードの場合、設定した Namespace で ztunnel Pod を有効化する。
 
@@ -138,13 +138,13 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: istio-egress
-  # istio-engressにはラベルは不要である
+  # istio-engress にはラベルは不要である
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
   name: istio-ingress
-  # istio-engressにはラベルは不要である
+  # istio-engress にはラベルは不要である
 ```
 
 > - https://istio.io/latest/docs/reference/config/labels/#IoIstioDataplaneMode
@@ -155,7 +155,7 @@ metadata:
 
 ### istio.io/use-waypoint
 
-#### ▼ istio.io/use-waypointとは
+#### ▼ istio.io/use-waypoint とは
 
 アンビエントモードの場合、設定した Namespace で waypoint-proxy を有効化する。
 
@@ -171,7 +171,7 @@ kind: Namespace
 metadata:
   name: app
   labels:
-    # Gatewayの名前
+    # Gateway の名前
     istio.io/use-waypoint: istio-waypoint
 ```
 
@@ -183,7 +183,7 @@ metadata:
 
 ### istio.io/use-waypoint-namespace
 
-#### ▼ istio.io/use-waypoint-namespaceとは
+#### ▼ istio.io/use-waypoint-namespace とは
 
 `istio.io/use-waypoint` を設定した Namespace に waypoint-proxy (Gateway API の Namespace によって決まる) が一緒にいない場合は、`istio.io/use-waypoint-namespace` で waypoint-proxy にいる Namespace を指定する必要がある。
 
@@ -195,7 +195,7 @@ kind: Namespace
 metadata:
   name: app
   labels:
-    # Gatewayの名前
+    # Gateway の名前
     istio.io/use-waypoint: istio-waypoint
 ---
 apiVersion: v1
@@ -203,9 +203,9 @@ kind: Namespace
 metadata:
   name: istio-egress
   labels:
-    # Gatewayの名前
+    # Gateway の名前
     istio.io/use-waypoint: istio-waypoint
-    # appにwaypoint-proxyがある
+    # app にwaypoint-proxy がある
     istio.io/use-namespace: app
 ---
 apiVersion: v1
@@ -213,9 +213,9 @@ kind: Namespace
 metadata:
   name: istio-ingress
   labels:
-    # Gatewayの名前
+    # Gateway の名前
     istio.io/use-waypoint: istio-waypoint
-    # appにwaypoint-proxyがある
+    # app にwaypoint-proxy がある
     istio.io/use-namespace: app
 ```
 
@@ -226,7 +226,7 @@ metadata:
 
 ### istio.io/waypoint-for
 
-#### ▼ istio.io/waypoint-forとは
+#### ▼ istio.io/waypoint-for とは
 
 waypoint-proxy の宛先とする Kubernetes リソースを設定する。
 
@@ -255,9 +255,9 @@ spec:
 
 <br>
 
-## 02. Podの `.metadata.annotations` キー
+## 02. Pod の `.metadata.annotations` キー
 
-### annotationsとは
+### annotations とは
 
 Deployment の `.spec.template` キーや、Pod の `.metadata.` キーにて、istio-proxy ごとのオプション値を設定する。Deployment の `.metadata.` キーで定義しないように注意する。
 
@@ -275,7 +275,7 @@ IstoOperator の `.spec.revision` キーと同じ。
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment # もしくはPod
+kind: Deployment # もしくは Pod
 metadata:
   name: foo-deployment
 spec:
@@ -292,7 +292,7 @@ spec:
 
 ### proxy.istio.io/config
 
-#### ▼ proxy.istio.io/configとは
+#### ▼ proxy.istio.io/config とは
 
 istio-proxy の `envoy` プロセスの設定値を上書きし、ユーザー定義の値を設定する。
 
@@ -310,7 +310,7 @@ ProxyConfig が最優先であり、これらの設定はマージされる。
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment # もしくはPod
+kind: Deployment # もしくは Pod
 metadata:
   name: foo-deployment
 spec:
@@ -346,7 +346,7 @@ Envoy の `--drain-time-s` オプションに相当する。
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment # もしくはPod
+kind: Deployment # もしくは Pod
 metadata:
   name: foo-deployment
 spec:
@@ -375,7 +375,7 @@ Pod の `.metadata.annotations.proxy.istio.io/config.terminationDrainDuration` �
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment # もしくはPod
+kind: Deployment # もしくは Pod
 metadata:
   name: foo-deployment
 spec:
@@ -414,7 +414,7 @@ Envoy プロセスの接続のドレイン処理 `5` 秒間に実施する。
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment # もしくはPod
+kind: Deployment # もしくは Pod
 metadata:
   name: foo-deployment
 spec:
@@ -442,7 +442,7 @@ spec:
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment # もしくはPod
+kind: Deployment # もしくは Pod
 metadata:
   name: foo-deployment
 spec:
@@ -466,7 +466,7 @@ spec:
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment # もしくはPod
+kind: Deployment # もしくは Pod
 metadata:
   name: foo-deployment
 spec:
@@ -491,7 +491,7 @@ istio-proxy で使用する CPU サイズを設定する。
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment # もしくはPod
+kind: Deployment # もしくは Pod
 metadata:
   name: foo-deployment
 spec:
@@ -516,7 +516,7 @@ istio-proxy の作成に使用するコンテナイメージを設定する。
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment # もしくはPod
+kind: Deployment # もしくは Pod
 metadata:
   name: foo-deployment
 spec:
@@ -541,7 +541,7 @@ istio-proxy で使用するメモリサイズを設定する。
 
 ```yaml
 apiVersion: apps/v1
-kind: Deployment # もしくはPod
+kind: Deployment # もしくは Pod
 metadata:
   name: foo-deployment
 spec:

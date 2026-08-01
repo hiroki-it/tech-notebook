@@ -13,9 +13,9 @@ description: コマンド＠Helmfileの知見を記録しています。
 
 <br>
 
-## 01. helmfileコマンド
+## 01. helmfile コマンド
 
-### globalオプション
+### global オプション
 
 #### ▼ オプション無し
 
@@ -144,7 +144,7 @@ $ helmfile -e prd apply --skip-diff-on-install
 
 ### destroy
 
-#### ▼ destroyとは
+#### ▼ destroy とは
 
 インストール済みのすべてのチャートをアンインストールする。
 
@@ -156,7 +156,7 @@ $ helmfile -e prd destroy
 
 > - https://helmfile.readthedocs.io/en/latest/#destroy
 
-#### ▼ 特定のHelmリリースのみ `destroy` したい
+#### ▼ 特定の Helm リリースのみ `destroy` したい
 
 `helmfile` コマンドで複数の Helm リリースを一緒に管理している場合、特定の Helm リリースのみ `destroy` できない。
 
@@ -190,7 +190,7 @@ baz-chart     baz-namespace  true               charts/baz-chart   1.0.0
 
 ### diff
 
-#### ▼ diffとは
+#### ▼ diff とは
 
 すべての Helm リリースに対して、helm-diff プラグインを実行する。
 
@@ -228,7 +228,7 @@ $ HELM_DIFF_COLOR=true helmfile -e prd diff
 
 > - https://github.com/roboll/helmfile/issues/2043#issuecomment-1081665414
 
-#### ▼ grepとの組み合わせ
+#### ▼ grep との組み合わせ
 
 マニフェストの差分が多すぎる場合、先にどのリソースへ変更があるのかを把握したほうがよい。
 
@@ -256,7 +256,7 @@ Source: project/manifests/persistent-volume.yaml
 
 ### sync
 
-#### ▼ syncとは
+#### ▼ sync とは
 
 すべての Helm リリースに関して、`helm upgrade --install` コマンドを実行する。
 
@@ -275,7 +275,7 @@ $ helmfile -e prd sync
 
 ### template
 
-#### ▼ templateとは
+#### ▼ template とは
 
 すべての Helm リリースに関して、`helm template` コマンドを実行する。
 
@@ -295,7 +295,7 @@ $ helmfile -e prd template --include-crds
 
 ### write-values
 
-#### ▼ write-valuesとは
+#### ▼ write-values とは
 
 個人的に感動したコマンド。`helmfile` コマンドの実行で使用される `values` ファイルを、ファイルに書き出す。
 

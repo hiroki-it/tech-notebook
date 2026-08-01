@@ -456,7 +456,7 @@ class CircleRepository implements ICircleRepository {
 }
 ```
 
-### 12.2.1 IDによるコンポジション
+### 12.2.1 ID によるコンポジション
 
 これまでの Circle は、User を Members 配列で保持することで、User を操作していた。
 

@@ -135,9 +135,9 @@ switch ($weeks) {
 
 <br>
 
-### if-elseの回避方法
+### if-else の回避方法
 
-#### ▼ if-elseを使用した場合
+#### ▼ if-else を使用した場合
 
 可読性が悪いため、避けるべき。
 
@@ -296,7 +296,7 @@ class Example
 
 <br>
 
-### if-elseif-elseの回避方法
+### if-elseif-else の回避方法
 
 #### ▼ 決定表を使用した条件分岐の整理
 
@@ -320,7 +320,7 @@ class Example
 
 ![決定表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定表.png)
 
-#### ▼ if-elseif-elseは使用しない
+#### ▼ if-elseif-else は使用しない
 
 可読性が悪いため、避けるべき。
 
@@ -360,7 +360,7 @@ function leapYear(int $year): string
 }
 ```
 
-#### ▼ ifとreturnを使用した早期リターン
+#### ▼ if と return を使用した早期リターン
 
 各 if 文で `return` を使用することにより、`if` が入れ子状になることを防げる。
 
@@ -402,7 +402,7 @@ function leapYear(int $year): string
 }
 ```
 
-#### ▼ switch-case-breakを使用した早期リターン
+#### ▼ switch-case-break を使用した早期リターン
 
 if 文の代わりに、`switch-case-break` によって、実装に、『◯◯の場合に切り換える』という意味合いを持たせられる。
 

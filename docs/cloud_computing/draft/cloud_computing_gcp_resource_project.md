@@ -3,7 +3,7 @@ title: 【IT技術の知見】Project＠Google Cloudリソース
 description: Project＠Google Cloudリソースの知見を記録しています。
 ---
 
-# Project＠Google Cloudリソース
+# Project＠Google Cloud リソース
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Project＠Google Cloudリソースの知見を記録しています
 
 ## 01. Project
 
-### プロジェクトID
+### プロジェクト ID
 
 Google Cloud のプロジェクト番号である。
 

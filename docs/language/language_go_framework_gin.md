@@ -15,7 +15,7 @@ description: Gin＠フレームワークの知見を記録しています。
 
 ## Context
 
-### Contextとは
+### Context とは
 
 受信したリクエストのすべてのコンテキスト (例：処理中のコンテキスト) を持つ。
 
@@ -221,7 +221,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 ### Request
 
-#### ▼ Requestとは
+#### ▼ Request とは
 
 受信したリクエストを情報を持つ。
 
@@ -391,7 +391,7 @@ func (uc *UserController) GetUser(ginCtx *gin.Context) {
 
 ### Engine
 
-#### ▼ Engineとは
+#### ▼ Engine とは
 
 ルーティングを定義する。
 
@@ -403,7 +403,7 @@ router := gin.New()
 
 ### Use
 
-#### ▼ Useとは
+#### ▼ Use とは
 
 ユーザー定義のミドルウェアを使用する。
 

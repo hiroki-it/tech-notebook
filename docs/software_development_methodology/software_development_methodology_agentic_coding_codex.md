@@ -13,7 +13,7 @@ description: Codex＠エージェンティックコーディングの知見を�
 
 <br>
 
-## 01. codexコマンド
+## 01. codex コマンド
 
 ### オプション
 
@@ -94,15 +94,15 @@ osascript -e "display notification \"$SAFE_MESSAGE\" with title \"Codexの作業
 
 <br>
 
-## 03. MCPサーバー
+## 03. MCP サーバー
 
-### MCPサーバーとは
+### MCP サーバーとは
 
 MCP サーバー（実体はプロセス）を通じて、外部の API から Codex のコンテキストを取得する。
 
 <br>
 
-### Chrome dev toolsの場合
+### Chrome dev tools の場合
 
 Codex がブラウザを読めるようになる。
 
@@ -115,7 +115,7 @@ startup_timeout_sec = 60.0
 
 <br>
 
-### Confluenceの場合
+### Confluence の場合
 
 ```toml
 [mcp_servers.confluence]
@@ -129,7 +129,7 @@ REQUESTS_CA_BUNDLE = "<必要であれば、リモートワークのプロキシ
 
 <br>
 
-### GitHubの場合
+### GitHub の場合
 
 ```toml
 [mcp_servers.github]
@@ -139,7 +139,7 @@ http_headers = { Authorization = "Bearer <ここにパーソナルアクセス�
 
 <br>
 
-### Playwrightの場合
+### Playwright の場合
 
 ```toml
 [mcp_servers.playwright]

@@ -57,7 +57,7 @@ providers:
 JWT トークンの発行元の識別子を設定する
 
 ```yaml
-# 認証方法がOIDCで、IDプロバイダーがKeycloakの場合
+# 認証方法が OIDC で、ID プロバイダーが Keycloak の場合
 providers:
   - oidcConfig:
       issuerURL: "http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>"
@@ -66,7 +66,7 @@ providers:
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#oidcoptions
 
 ```yaml
-# 認証方法がOIDCで、IDプロバイダーがAWS Cognitoの場合
+# 認証方法が OIDC で、ID プロバイダーが AWS Cognito の場合
 providers:
   - oidcConfig:
       issuerURL: "https://cognito-idp.ap-northeast-1.amazonaws.com/<ユーザープールID>"
@@ -95,7 +95,7 @@ providers:
 ### provider
 
 ```yaml
-# 認証方法がOIDCで、任意のIDプロバイダーの場合
+# 認証方法が OIDC で、任意の ID プロバイダーの場合
 providers:
   - provider: "oidc"
 ```
@@ -103,7 +103,7 @@ providers:
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect
 
 ```yaml
-# 認証方法が任意で、IDプロバイダーがGitHubの場合
+# 認証方法が任意で、ID プロバイダーが GitHub の場合
 providers:
   - provider: "github"
 ```
@@ -111,7 +111,7 @@ providers:
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github
 
 ```yaml
-# 認証方法が任意で、IDプロバイダーがKeycloakの場合
+# 認証方法が任意で、ID プロバイダーが Keycloak の場合
 providers:
   - provider: "keycloak"
 ```
@@ -119,7 +119,7 @@ providers:
 > - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak
 
 ```yaml
-# 認証方法がOIDCで、IDプロバイダーがKeycloakの場合
+# 認証方法が OIDC で、ID プロバイダーが Keycloak の場合
 providers:
   - provider: "keycloak-oidc"
 ```
@@ -175,7 +175,7 @@ redirect_url: "https://<アプリケーションのドメイン>/oauth2/callback
 
 ## 05. reverse_proxy
 
-### reverse_proxyとは
+### reverse_proxy とは
 
 OAuth2 Proxy の送信元に任意のリバースプロキシ (例：Nginx) があるかどうかを設定する。
 
@@ -187,7 +187,7 @@ reverse_proxy: true
 
 <br>
 
-### リバースプロキシがNginxの場合
+### リバースプロキシが Nginx の場合
 
 まずは、クライアントアプリケーションが、Nginx を介さずに認可リクエストを直接的に ID プロバイダーに送信する。
 

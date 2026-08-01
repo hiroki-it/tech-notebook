@@ -13,9 +13,9 @@ description: Kubernetes＠システムテストの知見を記録しています
 
 <br>
 
-## Kubernetes Clusterの回帰テスト
+## Kubernetes Cluster の回帰テスト
 
-### Kubernetes Clusterの回帰テストとは
+### Kubernetes Cluster の回帰テストとは
 
 CI 上に Kubernetes の環境を構築して、これにマニフェストや Helm チャートをデプロイする。
 

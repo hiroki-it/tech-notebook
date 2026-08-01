@@ -43,7 +43,7 @@ description: tfstateファイルの分割＠プラクティス集の知見を記
 
 <br>
 
-### 依存先AWSリソース別
+### 依存先 AWS リソース別
 
 依存先の多い AWS リソースに関して、依存先の AWS リソース別にローカルモジュールを分割する。
 
@@ -64,12 +64,12 @@ aws-repository/
         │   ├── outputs.tf
         │   └── variables.tf
         │
-        ├── iam/ # IAMロール
+        ├── iam/ # IAM ロール
         │   ├── main.tf
         │   ├── outputs.tf
         │   └── variables.tf
         │
-        ├── kubernetes/ # Kubernetesリソース (例：RoleBinding、StorageClassなど)
+        ├── kubernetes/ # Kubernetes リソース (例：RoleBinding、StorageClass など)
         │   ├── main.tf
         │   ├── outputs.tf
         │   └── variables.tf
@@ -84,7 +84,7 @@ aws-repository/
         │   ├── outputs.tf
         │   └── variables.tf
         │
-        └── node_group/ # Nodeグループ
+        └── node_group/ # Node グループ
             ├── main.tf
             ├── outputs.tf
             └── variables.tf
@@ -102,12 +102,12 @@ aws-remote-repository/
     │   ├── outputs.tf
     │   └── variables.tf
     │
-    ├── iam/ # IAMロール
+    ├── iam/ # IAM ロール
     │   ├── main.tf
     │   ├── outputs.tf
     │   └── variables.tf
     │
-    ├── kubernetes/ # Kubernetesリソース (例：RoleBinding、StorageClassなど)
+    ├── kubernetes/ # Kubernetes リソース (例：RoleBinding、StorageClass など)
     │   ├── main.tf
     │   ├── outputs.tf
     │   └── variables.tf
@@ -122,7 +122,7 @@ aws-remote-repository/
     │   ├── outputs.tf
     │   └── variables.tf
     │
-    └── node_group/ # Nodeグループ
+    └── node_group/ # Node グループ
         ├── main.tf
         ├── outputs.tf
         └── variables.tf
@@ -279,8 +279,8 @@ repository/
 │
 ├── bar/
 │   ├── backend.tf # バックエンド内の/bar/terraform.tfstate
-│   ├── remote_state.tfvars # terraform_remote_stateブロックを使用し、fooのtfstateファイルから状態を参照する
-│   ├── resource.tf # fooのtfstateファイルから参照した状態を使用する
+│   ├── remote_state.tfvars # terraform_remote_state ブロックを使用し、foo のtfstate ファイルから状態を参照する
+│   ├── resource.tf # foo のtfstate ファイルから参照した状態を使用する
 │   ├── provider.tf
 │   ...
 │

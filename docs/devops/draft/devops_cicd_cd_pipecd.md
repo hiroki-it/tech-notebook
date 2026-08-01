@@ -3,7 +3,7 @@ title: 【IT技術の知見】PipeCD＠CDツール
 description: PipeCD＠CDツールの知見を記録しています。
 ---
 
-# PipeCD＠CDツール
+# PipeCD＠CD ツール
 
 ## はじめに
 
@@ -33,9 +33,9 @@ description: PipeCD＠CDツールの知見を記録しています。
 
 ## 02. ユースケース
 
-### Amazon ECSの場合
+### Amazon ECS の場合
 
-#### ▼ 同じAmazon ECS Cluster
+#### ▼ 同じ Amazon ECS Cluster
 
 PipeCD をデプロイ先の Amazon ECS Cluster で一緒に動かす。
 
@@ -44,7 +44,7 @@ PipeCD をデプロイ先の Amazon ECS Cluster で一緒に動かす。
 > - https://pipecd.dev/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/
 > - https://pipecd.dev/docs-v0.45.x/user-guide/managing-application/adding-an-application/
 
-#### ▼ 外部のAmazon ECS Cluster
+#### ▼ 外部の Amazon ECS Cluster
 
 PipeCD をデプロイ先の Amazon ECS Cluster の外部で動かす。
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】UI設計＠フロントエンドアーキテクチ
 description: UI設計＠フロントエンドアーキテクチャの知見を記録しています。
 ---
 
-# UI設計＠フロントエンドアーキテクチャ
+# UI 設計＠フロントエンドアーキテクチャ
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: UI設計＠フロントエンドアーキテクチャの知見を�
 
 ## 01. Atomic Design
 
-### Atmic Designとは
+### Atmic Design とは
 
 UI レンダリングロジックを構成する要素を、5 つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。
 

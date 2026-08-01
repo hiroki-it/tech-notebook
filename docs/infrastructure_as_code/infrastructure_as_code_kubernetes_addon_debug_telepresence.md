@@ -13,7 +13,7 @@ description: Telepresence＠デバッグ系の知見を記録しています。
 
 <br>
 
-## 01. Telepresenceとは
+## 01. Telepresence とは
 
 Kubernetes Cluster 内の Pod で送受信するリクエストをローカル PC で確認できるようにする。
 
@@ -24,7 +24,7 @@ Kubernetes Cluster 内の Pod で送受信するリクエストをローカル P
 
 <br>
 
-## 02. Telepresenceの仕組み
+## 02. Telepresence の仕組み
 
 ### アーキテクチャ
 
@@ -38,7 +38,7 @@ Pod 内に traffic-agent を挿入し、その Pod に対する通信をロー�
 
 ## 02. セットアップ
 
-### brewリポジトリから
+### brew リポジトリから
 
 ```bash
 $ brew install telepresenceio/telepresence/telepresence-oss
@@ -52,7 +52,7 @@ $ brew install telepresenceio/telepresence/telepresence-oss
 
 ### connect
 
-#### ▼ connectとは
+#### ▼ connect とは
 
 Kubernetes Cluster に接続する。
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】GitHub Actions＠CIツール
 description: GitHub Actions＠CIツールの知見を記録しています。
 ---
 
-# GitHub Actions＠CIツール
+# GitHub Actions＠CI ツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: GitHub Actions＠CIツールの知見を記録しています。
 
 <br>
 
-## 01. GitHub Actionsの仕組み
+## 01. GitHub Actions の仕組み
 
 ### アーキテクチャ
 
@@ -25,7 +25,7 @@ GitHub Actions Runner は、GitHub リポジトリの設定ファイルを HTTPS
 
 ### GitHub Actions Runner
 
-#### ▼ GitHub Actions Runnerとは
+#### ▼ GitHub Actions Runner とは
 
 GitHub Actions の設定ファイルで定義したパイプラインを実行する。
 
@@ -83,7 +83,7 @@ repository/
 
 ## 03. name
 
-### nameとは
+### name とは
 
 Workflow 名を設定する。
 
@@ -112,7 +112,7 @@ on:
 
 ## 04. jobs
 
-### jobsとは
+### jobs とは
 
 Workflow の具体的な処理を設定する。
 
@@ -170,7 +170,7 @@ jobs:
     steps:
       - run: |
           # 何らかの処理
-      - if: failure() # 失敗した場合、このステップに入る。GitHub Actionsの失敗表記は消えない。
+      - if: failure() # 失敗した場合、このステップに入る。GitHub Actions の失敗表記は消えない。
         run: |
           echo failure
       - if: success() # 成功扱いのため、このステップに入る。
@@ -189,8 +189,8 @@ jobs:
   foo:
     runs-on: ubuntu-latest
     steps:
-      # botユーザーの資格情報を設定する
-      # botユーザーがPR上にコメントなどを送信できるようになる
+      # bot ユーザーの資格情報を設定する
+      # bot ユーザーが PR 上にコメントなどを送信できるようになる
       - name: Git config
         run: |
           git config --local user.email "example@gmail.com"
@@ -253,7 +253,7 @@ jobs:
 再利用可能なワークフローを定義する。
 
 ```yaml
-# pre-foo-template.ymlファイル
+# pre-foo-template.yml ファイル
 name: pre foo template
 
 on:
@@ -268,7 +268,7 @@ jobs:
 ```
 
 ```yaml
-# post-foo-template.ymlファイル
+# post-foo-template.yml ファイル
 name: post foo template
 
 on:
@@ -286,7 +286,7 @@ jobs:
 
 ```yaml
 jobs:
-  # テンプレートワークフローのJobを実行する
+  # テンプレートワークフローの Job を実行する
   calling-pre-foo-template:
     # テンプレートワークフローリポジトリの設定ファイルを読み込む
     uses: <オーナー>/<GitHubリポジトリ>/.github/workflows/pre-foo-templateyml@main
@@ -297,7 +297,7 @@ jobs:
       - run: |
           # 何らかの処理
 
-  # テンプレートワークフローのJobを実行する
+  # テンプレートワークフローの Job を実行する
   calling-post-foo-template:
     # テンプレートワークフローリポジトリの設定ファイルを読み込む
     uses: <オーナー>/<GitHubリポジトリ>/.github/workflows/post-foo-templateyml@main
@@ -312,7 +312,7 @@ jobs:
 
 ### composite
 
-#### ▼ compositeとは
+#### ▼ composite とは
 
 親ファイルの `steps` を別のファイルに切り分け、親ファイルでコールできる。
 
@@ -343,7 +343,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Echo
-        # compositeのディレクトリを指定する。
+        # composite のディレクトリを指定する。
         uses: ./.github/workflows/composite/bar
 ```
 
@@ -353,7 +353,7 @@ jobs:
 Error: Can't find 'action.yml', 'action.yaml' ...
 ```
 
-#### ▼ Secretsは使用不可
+#### ▼ Secrets は使用不可
 
 composite では、Secrets を使用できない。
 
@@ -390,7 +390,7 @@ runs:
 
 > - https://stackoverflow.com/questions/70098241/using-secrets-in-composite-actions-github
 
-#### ▼ Checkoutは使用不可
+#### ▼ Checkout は使用不可
 
 チェックアウト処理は定義できない。
 
@@ -426,9 +426,9 @@ runs:
 
 ## 07. 環境変数
 
-### Workflowレベル
+### Workflow レベル
 
-#### ▼ Workflowレベルとは
+#### ▼ Workflow レベルとは
 
 定義した `workflow` (`yaml` ファイル) 内のみで参照できる。
 
@@ -456,9 +456,9 @@ jobs:
 
 <br>
 
-### Jobsレベル
+### Jobs レベル
 
-#### ▼ Jobsレベルとは
+#### ▼ Jobs レベルとは
 
 定義した `jobs` キー内のみで参照できる。
 
@@ -503,9 +503,9 @@ jobs:
 
 <br>
 
-### Stepレベル
+### Step レベル
 
-#### ▼ Stepレベルとは
+#### ▼ Step レベルとは
 
 定義した `step` キー内のみで参照できる。
 
@@ -527,9 +527,9 @@ jobs:
 
 <br>
 
-## 07-02. Secret変数
+## 07-02. Secret 変数
 
-### Secret変数とは
+### Secret 変数とは
 
 環境変数と同様にして GitHub Actions 内で使用できる。
 
@@ -597,7 +597,7 @@ jobs:
 
 ```yaml
 inputs:
-  foo: # マスキングされ、.yamlファイルの構文解析でエラーになってしまう
+  foo: # マスキングされ、.yaml ファイルの構文解析でエラーになってしまう
     required: "true"
 
 runs:
@@ -613,7 +613,7 @@ runs:
 
 ### 変数のスコープレベル
 
-#### ▼ Projectレベル (Repository Secrets)
+#### ▼ Project レベル (Repository Secrets)
 
 リポジトリの設定の Secrets 項目に変数名と値を登録する。
 
@@ -633,7 +633,7 @@ jobs:
 
 > - https://stackoverflow.com/questions/65957197/difference-between-githubs-environment-and-repository-secrets
 
-#### ▼ Actionレベル (Environment Secrets)
+#### ▼ Action レベル (Environment Secrets)
 
 リポジトリの設定の Environment 項目に変数名と値を登録する。
 
@@ -662,7 +662,7 @@ jobs:
 > - https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
 > - https://stackoverflow.com/a/61428342
 
-#### ▼ Stepレベル
+#### ▼ Step レベル
 
 `jobs.foo.steps.env` キーに変数名と値を登録する。
 
@@ -691,7 +691,7 @@ jobs:
 
 ## 08. Actions
 
-### actionsパッケージ
+### actions パッケージ
 
 #### ▼ checkout
 
@@ -736,11 +736,11 @@ jobs:
 
 <br>
 
-## 09. Workflowコマンド
+## 09. Workflow コマンド
 
 ### add-mask
 
-#### ▼ add-maskとは
+#### ▼ add-mask とは
 
 変数の値をマスキングする。
 
@@ -766,7 +766,7 @@ jobs:
 
 ### set-output
 
-#### ▼ set-outputとは
+#### ▼ set-output とは
 
 GitHub Actions のユーザー定義のパラメーターを入力する。
 
@@ -785,7 +785,7 @@ jobs:
 
 > - https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter
 
-#### ▼ 同じstep内では使用不可
+#### ▼ 同じ step 内では使用不可
 
 同じ `step` 内で、パラメーターの入力と出力をしても、値は空になる。
 
@@ -803,7 +803,7 @@ jobs:
           echo ${{ steps.foo_id.outputs.FOO }}
 ```
 
-#### ▼ 異なるstep間での共有
+#### ▼ 異なる step 間での共有
 
 入力したパラメーターは、異なる `step` の間で出力できる。
 
@@ -846,7 +846,7 @@ jobs:
           echo "${{ steps.foo_id.outputs.FOO }}"
 ```
 
-#### ▼ 異なるjob間での共有
+#### ▼ 異なる job 間での共有
 
 入力したパラメーターは、異なる `job` の間で出力できる。
 
@@ -863,7 +863,7 @@ jobs:
         id: foo_id
         run: |
           echo "::set-output name=FOO::foo"
-    # 後続のjobに渡すパラメーター
+    # 後続の job に渡すパラメーター
     output:
       FOO: ${{ steps.foo_id.outputs.FOO }}
   bar:

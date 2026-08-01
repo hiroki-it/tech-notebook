@@ -3,7 +3,7 @@ title: 【IT技術の知見】Step Functions＠AWSリソース
 description: Step Functions＠AWSリソースの知見を記録しています。
 ---
 
-# Step Functions＠AWSリソース
+# Step Functions＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Step Functions＠AWSリソースの知見を記録しています�
 
 <br>
 
-## 01. Step Functionsとは
+## 01. Step Functions とは
 
 AWS サービスを組み合わせて、ワークフローエンジンを作成できる。
 
@@ -21,9 +21,9 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 
 ## 02. セットアップ
 
-### AWSリソースのAPIコール
+### AWS リソースの API コール
 
-#### ▼ APIコールできるリソース
+#### ▼ API コールできるリソース
 
 > - https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
 
@@ -60,15 +60,15 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 
 <br>
 
-### Amazon API Gatewayとの連携
+### Amazon API Gateway との連携
 
 #### ▼ 注意が必要な項目
 
-|              | 設定値         | 補足                        |
-| ------------ | -------------- | --------------------------- |
-| HTTPメソッド | POST           | GETメソッドでは動作しない。 |
-| アクション   | StartExecution |                             |
-| 実行ロール   | IAMロールのARN | StartExecutionを許可する。  |
+|               | 設定値           | 補足                         |
+| ------------- | ---------------- | ---------------------------- |
+| HTTP メソッド | POST             | GET メソッドでは動作しない。 |
+| アクション    | StartExecution   |                              |
+| 実行ロール    | IAM ロールの ARN | StartExecution を許可する。  |
 
 > - https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
 

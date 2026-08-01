@@ -3,7 +3,7 @@ title: 【IT技術の知見】Kubernetesプロバイダー＠Terraform
 description: Kubernetesプロバイダー＠Terraformの知見を記録しています。
 ---
 
-# Kubernetesプロバイダー＠Terraform
+# Kubernetes プロバイダー＠Terraform
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: Kubernetesプロバイダー＠Terraformの知見を記録してい
 
 <br>
 
-## 01. Kubernetesプロバイダー
+## 01. Kubernetes プロバイダー
 
-### Kubernetesプロバイダーとは
+### Kubernetes プロバイダーとは
 
 Terraform が Kubernetes の kube-apiserver と通信できるようにする。
 

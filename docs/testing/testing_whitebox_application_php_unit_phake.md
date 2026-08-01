@@ -3,7 +3,7 @@ title: 【IT技術の知見】Phake＠PHPユニットテスト
 description: Phake＠PHPユニットテストの知見を記録しています。
 ---
 
-# Phake＠PHPユニットテスト
+# Phake＠PHP ユニットテスト
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Phake＠PHPユニットテストの知見を記録しています�
 
 <br>
 
-## 01. Phakeとは
+## 01. Phake とは
 
 ユニットテストに必要なテストダブルを提供する。
 

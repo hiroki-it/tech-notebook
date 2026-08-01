@@ -192,7 +192,7 @@ Amazon S3 をオブジェクトストレージとして使用し、資格情報�
 ```yaml
 storage:
   trace:
-    # Amazon S3代替のMinIOを使用している場合
+    # Amazon S3 代替の MinIO を使用している場合
     s3:
       access_key: root
       bucket: grafana-tempo
@@ -204,7 +204,7 @@ storage:
 ```yaml
 storage:
   trace:
-    # Amazon S3使用している場合
+    # Amazon S3 使用している場合
     s3:
       bucket: grafana-tempo
       endpoint: s3.ap-northeast-1.amazonaws.com

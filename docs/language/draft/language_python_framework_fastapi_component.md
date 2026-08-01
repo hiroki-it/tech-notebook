@@ -15,9 +15,9 @@ description: コンポーネント＠FastAPIの知見を記録しています。
 
 ## 01. App
 
-### FastAPIクラス
+### FastAPI クラス
 
-#### ▼ FastAPIクラスとは
+#### ▼ FastAPI クラスとは
 
 ```python
 from fastapi import FastAPI
@@ -30,9 +30,9 @@ app = FastAPI()
 
 <br>
 
-### APIRouterクラス
+### APIRouter クラス
 
-#### ▼ APIRouterクラスとは
+#### ▼ APIRouter クラスとは
 
 FastAPI クラスに非同期処理を実行するエンドポイントを追加する。
 

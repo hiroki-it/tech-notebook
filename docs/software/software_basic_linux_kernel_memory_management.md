@@ -3,7 +3,7 @@ title: 【IT技術の知見】メモリ管理＠Linuxカーネル
 description: メモリ管理＠Linuxカーネルの知見を記録しています。
 ---
 
-# メモリ管理＠Linuxカーネル
+# メモリ管理＠Linux カーネル
 
 ## はじめに
 
@@ -112,7 +112,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ガベージコレクションにはさまざまなアルゴリズムがあり、採用されているアルゴリズムは言語ごとに異なる。
 
-#### ▼ Javaの場合
+#### ▼ Java の場合
 
 Java では、JVM：Java Virtual Machine (Java 仮想マシン) が、メモリ領域をオブジェクトに自動的に割り当てる。
 
@@ -172,7 +172,7 @@ Java では、JVM：Java Virtual Machine (Java 仮想マシン) が、メモリ�
 
 ### MMU：Memory Management Unit (メモリ管理ユニット)
 
-#### ▼ MMUにおける動的アドレス変換機構
+#### ▼ MMU における動的アドレス変換機構
 
 MMU によって、仮想メモリのアドレスは、物理メモリのアドレスに変換される。
 
@@ -220,13 +220,13 @@ CPU によって稼働したプロセスが、仮想メモリのアドレス空�
 
 <br>
 
-### Page Replacementアルゴリズム
+### Page Replacement アルゴリズム
 
 ページアウトのアルゴリズムのこと。
 
 方式ごとに、物理メモリのページフレームからストレージにページアウトするページが異なる。
 
-#### ▼ 『FIFO方式：First In First Out』と『LIFO方式：Last In First Out』
+#### ▼ 『FIFO 方式：First In First Out』と『LIFO 方式：Last In First Out』
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -234,7 +234,7 @@ CPU によって稼働したプロセスが、仮想メモリのアドレス空�
 
 ![p261-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-3.png)
 
-#### ▼ 『LRU方式：Least Recently Used』と『LFU方式：Least Frequently Used』
+#### ▼ 『LRU 方式：Least Recently Used』と『LFU 方式：Least Frequently Used』
 
 > - https://www.amazon.co.jp/dp/4297124513
 

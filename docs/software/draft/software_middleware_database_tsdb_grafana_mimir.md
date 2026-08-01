@@ -13,7 +13,7 @@ description: Grafana Mimir＠Grafanaの知見を記録しています。
 
 <br>
 
-## Grafana Mimirの仕組み
+## Grafana Mimir の仕組み
 
 ### アーキテクチャ
 

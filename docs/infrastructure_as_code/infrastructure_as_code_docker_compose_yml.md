@@ -13,7 +13,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 <br>
 
-## 01. docker-compose.ymlとは
+## 01. docker-compose.yml とは
 
 コンテナを宣言的に定義し、コンテナのプロビジョニングを実行する。
 
@@ -195,8 +195,8 @@ services:
     env_file:
       - .env
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # root権限の実行ユーザーのパス
-      MYSQL_DATABASE: ${DB_DATABASE} # DB名
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD} # root 権限の実行ユーザーのパス
+      MYSQL_DATABASE: ${DB_DATABASE} # DB 名
       MYSQL_USER: ${DB_USER} # 一般ユーザー名
       MYSQL_PASSWORD: ${DB_PASSWORD} # 一般ユーザーのパス
 ```
@@ -288,7 +288,7 @@ services:
       db:
         condition: service_healthy
 
-  # DBコンテナ
+  # DB コンテナ
   db:
     container_name: foo-mysql
     image: mysql:5.7
@@ -304,7 +304,7 @@ services:
           "root",
           "-p$MYSQL_ROOT_PASSWORD",
         ]
-      # 頻度が高すぎるとMySQLの起動前にヘルスチェック処理が終わってしまうため、10秒くらいがちょうどいい
+      # 頻度が高すぎると MySQL の起動前にヘルスチェック処理が終わってしまうため、10 秒くらいがちょうどいい
       interval: 10s
       timeout: 10s
       retries: 5
@@ -375,7 +375,7 @@ services:
   app:
     image: foo:<バージョンタグ>
     depends_on:
-      # 読み込んだdocker-compose内のサービス
+      # 読み込んだ docker-compose 内のサービス
       - bar
 ```
 
@@ -476,7 +476,7 @@ $ docker network inspect foo-network
 services:
   web:
     networks:
-      # defaultは、明示的に指定してもしなくてもどちらでも良い。
+      # default は、明示的に指定してもしなくてもどちらでも良い。
       - default
 ```
 
@@ -649,7 +649,7 @@ service:
 volumes:
   # ボリューム名
   db_data:
-    # localで、ホスト側のdockerエリアを指定
+    # local で、ホスト側の docker エリアを指定
     driver: local
 ```
 
@@ -680,7 +680,7 @@ mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - P
 services:
   app:
     build:
-      # 出力元の値は、.envファイルに定義しなければならない。
+      # 出力元の値は、.env ファイルに定義しなければならない。
       target: ${APP_ENV}
     image: ${APP_ENV}-foo
 ```
@@ -714,7 +714,7 @@ networks:
 services:
   web:
     networks:
-      # defaultは、明示的に指定してもしなくてもどちらでも良い。
+      # default は、明示的に指定してもしなくてもどちらでも良い。
       - default
 ```
 
@@ -788,7 +788,7 @@ $ docker network create shared-network
 (2) バックエンドの docker-compose を設定する。このとき、`backend-network` という docker ネットワークを新しく作成し、また既存の `shared-network` に接続する。
 
 ```yaml
-# バックエンドのDocker-compose
+# バックエンドの Docker-compose
 services:
   backend:
     container_name: backend-container
@@ -802,7 +802,7 @@ services:
       - backend-network
 
 networks:
-  # backendとdatabaseのサービスのためだけに、新しくdockerネットワークを作成する
+  # backend とdatabase のサービスのためだけに、新しく docker ネットワークを作成する
   backend-network:
   shared-network:
     # ネットワークを新しく作成せずに、既存のネットワークに接続する
@@ -812,7 +812,7 @@ networks:
 (3) フロントエンドの docker-compose を設定する。このとき、既存の `shared-network` に接続する。
 
 ```yaml
-# フロントエンドのDocker-compose
+# フロントエンドの Docker-compose
 services:
   frontend:
     container_name: frontend-container
@@ -821,7 +821,7 @@ services:
       - shared-network
 
 networks:
-  # frontendサービスしかないため、frontend-networkの作成は不要である
+  # frontend サービスしかないため、frontend-network の作成は不要である
   shared-netword:
     # ネットワークを新しく作成せずに、既存のネットワークに接続する
     external: true
@@ -833,7 +833,7 @@ networks:
 > - https://nishinatoshiharu.com/external-docker-network/
 > - https://tech.anti-pattern.co.jp/docker-compose/
 
-#### ▼ dockerネットワーク外からの通信
+#### ▼ docker ネットワーク外からの通信
 
 `external` オプションは docker ネットワーク間を接続する。
 
@@ -845,9 +845,9 @@ networks:
 
 ## 04. プラグイン
 
-### Volumeプラグイン
+### Volume プラグイン
 
-#### ▼ NFSストレージ
+#### ▼ NFS ストレージ
 
 NFS プラグインを使用することにより、永続データを `/var/lib/docker/volumes` ディレクトリではなく、NFS ストレージに保管する。
 
@@ -865,7 +865,7 @@ services:
 
 volumes:
   app_data:
-    driver_opts: # NFSプラグインを使用して、NFSストレージに保管。
+    driver_opts: # NFS プラグインを使用して、NFS ストレージに保管。
       type: "nfs"
       o: "addr=10.40.0.199,nolock,soft,rw"
       device: ":/nfs/example"
@@ -882,9 +882,9 @@ local     app_data
 
 ## 05. イメージ別プラクティス
 
-### mysqlイメージ
+### mysql イメージ
 
-#### ▼ ビルド時にSQL実行
+#### ▼ ビルド時に SQL 実行
 
 mysql コンテナには `docker-entrypoint-initdb.d` ディレクトリがある。
 
@@ -912,7 +912,7 @@ services:
       - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
-      # docker-entrypoint-initdb.dディレクトリにバインドマウントを実行する。
+      # docker-entrypoint-initdb.d ディレクトリにバインドマウントを実行する。
       - ./infra/docker/mysql/initdb:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: foo
@@ -932,7 +932,7 @@ volumes:
 また、`docker-entrypoint-initdb.d` ディレクトリ配下に配置するファイルとして、以下の `sql` ファイルを作成する。
 
 ```yaml
-# initdbに複数のsqlファイルを置く
+# initdb に複数の sql ファイルを置く
 initdb
 ├── foo.sql
 └── bar.sql

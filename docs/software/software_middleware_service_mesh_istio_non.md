@@ -3,7 +3,7 @@ title: 【IT技術の知見】Istioを採用しない場合との比較＠Istio
 description: Istioを採用しない場合との比較＠Istioの知見を記録しています。
 ---
 
-# Istioを採用しない場合との比較＠Istio
+# Istio を採用しない場合との比較＠Istio
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Istioを採用しない場合との比較＠Istioの知見を記録
 
 ## 01. 比較表
 
-### IstioとKubernetesのみの比較
+### Istio とKubernetes のみの比較
 
 Kubernetes と Istio には重複する能力がいくつか (例：サービス検出) ある。すべての Pod の istio-proxy をインジェクションする場合、kube-proxy と Service によるサービスメッシュは不要になる。
 
@@ -23,16 +23,16 @@ Kubernetes と Istio には重複する能力がいくつか (例：サービス
 
 そのため、istio-proxy をインジェクションしない Pod では、Istio ではなく、従来の kube-proxy と Service によるサービス検出を使用することになる。
 
-| 能力                                       | Istio + Kubernetes + Envoy                                                                                                                                                                                                                | Kubernetes + Envoy             | Kubernetesのみ                                   |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------------ |
-| サービスメッシュコントロールプレーン       | Istiodコントロールプレーン (`discovery` コンテナ)                                                                                                                                                                                         | go-control-plane               | なし                                             |
-| サービス検出でのルーティング先設定         | DestinationRule                                                                                                                                                                                                                           | `route` キー                   | kube-proxy + Service (+ CoreDNS)                 |
-| サービス検出でのリスナー                   | EnvoyFilter + EndpointSlice                                                                                                                                                                                                               | `listener` キー                | kube-proxy + Service (+ CoreDNS)                 |
-| トラフィック管理                           | VirtualService + Service + DestinationRule                                                                                                                                                                                                | 記入中...                      | Service                                          |
-| サービス検出での追加サービス設定           | ServiceEntry + EndpointSlice                                                                                                                                                                                                              | `cluster` キー                 | EndpointSlice                                    |
-| Cluster外Nodeに対するサービス検出          | WorkloadEntry                                                                                                                                                                                                                             | `endpoint` キー                | Egress                                           |
-| サービスレジストリ                         | etcd                                                                                                                                                                                                                                      | etcd                           | etcd                                             |
-| Node外からのインバウンド通信のルーティング | ・VirtualService + Gateway (内部的には、NodePort ServiceまたはLoadBalancer Serviceが作成され、これらはNode外からのインバウンド通信を待ち受けられるため、Ingressは不要である) <br>・Ingress + Istio Ingress Controller + ClusterIP Service | `route` キー + `listener` キー | Ingress + Ingress Controller + ClusterIP Service |
+| 能力                                        | Istio + Kubernetes + Envoy                                                                                                                                                                                                                      | Kubernetes + Envoy             | Kubernetes のみ                                  |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------------ |
+| サービスメッシュコントロールプレーン        | Istiod コントロールプレーン (`discovery` コンテナ)                                                                                                                                                                                              | go-control-plane               | なし                                             |
+| サービス検出でのルーティング先設定          | DestinationRule                                                                                                                                                                                                                                 | `route` キー                   | kube-proxy + Service (+ CoreDNS)                 |
+| サービス検出でのリスナー                    | EnvoyFilter + EndpointSlice                                                                                                                                                                                                                     | `listener` キー                | kube-proxy + Service (+ CoreDNS)                 |
+| トラフィック管理                            | VirtualService + Service + DestinationRule                                                                                                                                                                                                      | 記入中...                      | Service                                          |
+| サービス検出での追加サービス設定            | ServiceEntry + EndpointSlice                                                                                                                                                                                                                    | `cluster` キー                 | EndpointSlice                                    |
+| Cluster 外Node に対するサービス検出         | WorkloadEntry                                                                                                                                                                                                                                   | `endpoint` キー                | Egress                                           |
+| サービスレジストリ                          | etcd                                                                                                                                                                                                                                            | etcd                           | etcd                                             |
+| Node 外からのインバウンド通信のルーティング | ・VirtualService + Gateway (内部的には、NodePort Service または LoadBalancer Service が作成され、これらは Node 外からのインバウンド通信を待ち受けられるため、Ingress は不要である) <br>・Ingress + Istio Ingress Controller + ClusterIP Service | `route` キー + `listener` キー | Ingress + Ingress Controller + ClusterIP Service |
 
 > - https://thenewstack.io/why-do-you-need-istio-when-you-already-have-kubernetes/
 > - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
@@ -41,7 +41,7 @@ Kubernetes と Istio には重複する能力がいくつか (例：サービス
 
 <br>
 
-### Istio APIからKubernetes Gateway APIへの置き換え
+### Istio API から Kubernetes Gateway API への置き換え
 
 Istio の Gateway や VirtualService は、Kubernetes Gateway API の Gateway や HTTPRoute などに置き換えられる。
 
@@ -51,7 +51,7 @@ Istio の Gateway や VirtualService は、Kubernetes Gateway API の Gateway �
 
 Google Cloud Service Mesh では、HTTPRoute などを補うカスタムリソースとして、Mesh がある。
 
-| Istio API             | Kubernetes Gateway APIへの置き換え                                   |
+| Istio API             | Kubernetes Gateway API への置き換え                                  |
 | --------------------- | -------------------------------------------------------------------- |
 | AuthorizationPolicy   | そのまま使用                                                         |
 | DestinationRule       | そのまま使用                                                         |
@@ -70,7 +70,7 @@ Google Cloud Service Mesh では、HTTPRoute などを補うカスタムリソ�
 
 <br>
 
-## 01-02. Istioのメリット/デメリット
+## 01-02. Istio のメリット/デメリット
 
 ### メリット
 
@@ -84,10 +84,10 @@ Google Cloud Service Mesh では、HTTPRoute などを補うカスタムリソ�
 
 ### デメリット
 
-| 項目                                   | 説明                                                                                                                                                                                                                         |
-| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Nodeのハードウェアリソースの消費量増加 | IstioのPod間通信では、Kubernetesと比べて、通信に必要なコンポーネント (例：Istiodコントロールプレーン、istio-proxy) が増える。そのため、Nodeのハードウェアリソースの消費量が増え、また宛先Podからのレスポンス速度が低くなる。 |
-| 学習コストの増加                       | Istioが多機能であり、学習コストが増加する。                                                                                                                                                                                  |
+| 項目                                    | 説明                                                                                                                                                                                                                                |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Node のハードウェアリソースの消費量増加 | Istio のPod 間通信では、Kubernetes と比べて、通信に必要なコンポーネント (例：Istiod コントロールプレーン、istio-proxy) が増える。そのため、Node のハードウェアリソースの消費量が増え、また宛先 Pod からのレスポンス速度が低くなる。 |
+| 学習コストの増加                        | Istio が多機能であり、学習コストが増加する。                                                                                                                                                                                        |
 
 > - https://arxiv.org/pdf/2004.00372.pdf
 > - https://www.containiq.com/post/kubernetes-service-mesh
@@ -110,7 +110,7 @@ Pod 間 (フロントエンド領域とマイクロサービス領域間、マ�
 
 <br>
 
-### Kubernetesのみ
+### Kubernetes のみ
 
 Kubernetes 上の Pod は、Service の完全修飾ドメイン名の URL (`http://foo-service.default.svc.cluster.local`) を指定すると、その Service の配下にある Pod と HTTP で通信できる。
 

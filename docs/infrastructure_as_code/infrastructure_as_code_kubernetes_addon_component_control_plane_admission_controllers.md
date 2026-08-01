@@ -13,9 +13,9 @@ description: admission-controllers＠コントロールプレーン系の知見�
 
 <br>
 
-## 01. admission-controllersアドオン
+## 01. admission-controllers アドオン
 
-### admission-controllersアドオンとは
+### admission-controllers アドオンとは
 
 有効化すると、kube-apiserver にて、認証ステップと認可ステップの後に admission プラグインを実行できる。
 
@@ -27,7 +27,7 @@ description: admission-controllers＠コントロールプレーン系の知見�
 
 <br>
 
-### admission-controllersアドオンのステップ
+### admission-controllers アドオンのステップ
 
 admission-controllers アドオンは、mutating-admission ステップ、validating-admission ステップ、といったコンポーネントから構成されている。
 
@@ -45,11 +45,11 @@ kube-apiserver クライアント (`kubectl` クライアント、Kubernetes リ
 
 <br>
 
-## 01-02. admissionプラグイン
+## 01-02. admission プラグイン
 
-### admissionプラグイン
+### admission プラグイン
 
-#### ▼ admissionプラグインとは
+#### ▼ admission プラグインとは
 
 admission プラグインは、ビルトイン処理やユーザー定義の処理を発火させられるアドオンから構成されている。
 
@@ -80,7 +80,7 @@ ValidatingAdmissionWebhook,
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#which-plugins-are-enabled-by-default
 
-#### ▼ Webhook系プラグインのサーバー証明書
+#### ▼ Webhook 系プラグインのサーバー証明書
 
 Webhook 系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmissionWebhook など) では、kube-apiserver から webhook サーバーに HTTPS リクエストを送信するとき、webhook サーバーのために SL 証明書が必要である。
 
@@ -94,9 +94,9 @@ Webhook 系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmission
 
 <br>
 
-### MutatingAdmissionWebhookプラグイン
+### MutatingAdmissionWebhook プラグイン
 
-#### ▼ MutatingAdmissionWebhookプラグイン
+#### ▼ MutatingAdmissionWebhook プラグイン
 
 MutatingAdmissionWebhook プラグインを使用すると、mutating-admission ステップ時、webhook サーバーに AdmissionReview のリクエストが送信され、ユーザー定義の処理を発火させられる。
 
@@ -135,14 +135,14 @@ metadata:
 webhooks:
   - name: rev.namespace.sidecar-injector.istio.io
     admissionReviewVersions: ["v1", "v1beta1"]
-    # mutating-admissionステップ発火条件を登録する。
+    # mutating-admission ステップ発火条件を登録する。
     rules:
       - apiGroups: [""]
         apiVersions: ["v1"]
         operations: ["CREATE", "UPDATE"]
         resources: ["pods"]
         scope: "*"
-    # IstiodのServiceの宛先情報を登録する。
+    # Istiod のService の宛先情報を登録する。
     clientConfig:
       service:
         name: istiod-<リビジョン>
@@ -151,10 +151,10 @@ webhooks:
         path: "/inject"
         port: 443
       caBundle: Ci0tLS0tQk...
-    # webhookサーバーのコールに失敗した場合の処理を設定する。
+    # webhook サーバーのコールに失敗した場合の処理を設定する。
     failurePolicy: Fail
     matchPolicy: Equivalent
-    # 適用するNamaespaceを設定する。
+    # 適用する Namaespace を設定する。
     namespaceSelector:
       matchExpressions:
         - key: istio.io/rev
@@ -168,9 +168,9 @@ webhooks:
 
 <br>
 
-### ValidatingAdmissionWebhookプラグイン
+### ValidatingAdmissionWebhook プラグイン
 
-#### ▼ ValidatingAdmissionWebhookプラグイン
+#### ▼ ValidatingAdmissionWebhook プラグイン
 
 ValidatingAdmissionWebhook プラグインを使用すると、validating-admission ステップ時、webhook サーバーに AdmissionReview のリクエストが送信され、ユーザー定義の処理を発火させられる。
 
@@ -196,27 +196,27 @@ metadata:
   labels:
     istio.io/rev: <リビジョン>
 webhooks:
-  # webhook名は完全修飾ドメイン名にする。
+  # webhook 名は完全修飾ドメイン名にする。
   - name: validation.istio.io
     admissionReviewVersions: ["v1", "v1beta1"]
     sideEffects: None
     timeoutSeconds: 5
-    # 発火条件を登録する (例：Podの作成/更新リクエスト時に発火する) 。
+    # 発火条件を登録する (例：Pod の作成/更新リクエスト時に発火する) 。
     rules:
       - apiGroups: ["security.istio.io", "networking.istio.io"]
         apiVersions: ["*"]
         operations: ["CREATE", "UPDATE"]
         resources: ["*"]
         scope: "*"
-    # webhookサーバーの情報を登録する。
+    # webhook サーバーの情報を登録する。
     clientConfig:
-      # webhookサーバーの送信元にあるServiceを登録する。
+      # webhook サーバーの送信元にある Service を登録する。
       service:
         namespace: istio-system
         name: istiod-<リビジョン>
         port: 443
         path: /validate
-      # webhookサーバーをCluster内部に自作する場合は、webhookサーバーに証明書バンドルを登録する。
+      # webhook サーバーを Cluster 内部に自作する場合は、webhook サーバーに証明書バンドルを登録する。
       caBundle: Ci0tLS0tQk...
 ```
 
@@ -226,9 +226,9 @@ webhooks:
 
 <br>
 
-## 01-03. AdmissionReviewとは
+## 01-03. AdmissionReview とは
 
-### AdmissionReviewとは
+### AdmissionReview とは
 
 AdmissionReview は、リクエストを定義する AdmissionRequest と、レスポンスを定義する AdmissionResponse からなる。
 
@@ -249,7 +249,7 @@ admission-controller アドオンと webhook サーバーの間のリクエス�
 
 <br>
 
-### mutating-admissionステップの場合
+### mutating-admission ステップの場合
 
 #### ▼ AdmissionRequest
 
@@ -269,13 +269,13 @@ kube-apiserver は、特定のリクエストを受信すると、webhook サー
       "version": "v1",
       "kind": "Scale"
     },
-    # 変更されるKubernetesリソースの種類を表す。
+    # 変更される Kubernetes リソースの種類を表す。
     "resource": {
       "group": "apps",
       "version": "v1",
       "resource": "deployments"
     },
-    # kube-apiserverの操作の種類を表す。
+    # kube-apiserver の操作の種類を表す。
     "operation": "CREATE",
     # 認証／認可されたユーザーを表す。
     "userInfo": {
@@ -298,7 +298,7 @@ kube-apiserver は、特定のリクエストを受信すると、webhook サー
       "kind": "CreateOptions"
     },
     # ドライランモードで実行されていることを表す。
-    # etcdに永続化されない。
+    # etcd に永続化されない。
     "dryRun": "false"
   }
 
@@ -325,25 +325,25 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処
   # AdmissionResponse
   "response": {
       "uid": "<value from request.uid>",
-      # 宛先のwebhookサーバーが受信したか否かを表す。
+      # 宛先の webhook サーバーが受信したか否かを表す。
       "allowed": "true",
-      # PathによるPatch処理を行う。
+      # Path による Patch 処理を行う。
       "patchType": "JSONPatch",
-      # Patch処理の対象となるKubernetesリソースと処理内容を表す。base64方式でエンコードされている。
+      # Patch 処理の対象となる Kubernetes リソースと処理内容を表す。base64 方式でエンコードされている。
       "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0=",
     },
 }
 ```
 
 ```yaml
-# patchキーをbase64方式でデコードした場合
+# patch キーを base64 方式でデコードした場合
 [
   {
     # 追加処理を実行する。
     "op": "add",
-    # .spec.replicasキーをターゲットとする。
+    # .spec.replicas キーをターゲットとする。
     "path": "/spec/replicas",
-    # 値は3とする。
+    # 値は 3とする。
     "value": 3,
   },
 ]
@@ -356,7 +356,7 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処
 
 <br>
 
-### validating-admissionステップ
+### validating-admission ステップ
 
 #### ▼ AdmissionRequest
 
@@ -377,7 +377,7 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse にバリデ�
   # AdmissionResponse
   "response": {
       "uid": "<value from request.uid>",
-      # 宛先のwebhookサーバーが受信したか否かを表す。
+      # 宛先の webhook サーバーが受信したか否かを表す。
       "allowed": "true",
       "status":
         {

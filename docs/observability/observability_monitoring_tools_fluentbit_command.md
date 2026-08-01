@@ -13,9 +13,9 @@ description: コマンド＠FluentBitの知見を記録しています。
 
 <br>
 
-## fluent-bitコマンド
+## fluent-bit コマンド
 
-### fluent-bitコマンドとは
+### fluent-bit コマンドとは
 
 コマンドでセクションを実行できる。
 

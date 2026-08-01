@@ -13,7 +13,7 @@ description: Kubevirt＠本番環境の知見を記録しています。
 
 <br>
 
-## 01. Kubevirtの仕組み
+## 01. Kubevirt の仕組み
 
 Cluster 上に仮想 Node を作成し、またライフサイクルを管理する。
 

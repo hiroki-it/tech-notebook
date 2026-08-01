@@ -13,7 +13,7 @@ description: コマンド＠Skaffoldの知見を記録しています。
 
 <br>
 
-## 01. skaffoldコマンド
+## 01. skaffold コマンド
 
 ### グローバル
 
@@ -33,7 +33,7 @@ $ skaffold <任意のパラメーター> --verbosity=debug
 
 ### build
 
-#### ▼ buildとは
+#### ▼ build とは
 
 すべてのコンテナイメージをビルドする。
 

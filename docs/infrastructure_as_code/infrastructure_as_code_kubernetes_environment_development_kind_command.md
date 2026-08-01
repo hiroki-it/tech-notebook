@@ -29,7 +29,7 @@ $ kubectl cluster-info
 
 <br>
 
-## kindコマンド
+## kind コマンド
 
 ### create
 

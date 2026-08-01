@@ -3,7 +3,7 @@ title: 【IT技術の知見】Cypress＠E2Eテスト
 description: Cypress＠E2Eテストの知見を記録しています。
 ---
 
-# Cypress＠E2Eテスト
+# Cypress＠E2E テスト
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Cypress＠E2Eテストの知見を記録しています。
 
 <br>
 
-## 01. Cypressとは
+## 01. Cypress とは
 
 E2E テストの実施に必要な機能を提供し、加えてテストを実施する。
 
@@ -37,7 +37,7 @@ export function SubmitButton() {
 
 <br>
 
-## 03. E2Eテストの設計
+## 03. E2E テストの設計
 
 ### テストスイート、テストケース
 

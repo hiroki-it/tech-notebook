@@ -13,7 +13,7 @@ description: Helm＠マニフェスト管理の知見を記録しています。
 
 <br>
 
-## 01. Helmの仕組み
+## 01. Helm の仕組み
 
 ### アーキテクチャ
 
@@ -35,7 +35,7 @@ Helm の Helm リリースでは、バージョン管理に関する戦略を採
 
 > - https://medium.com/@koteswar.meesala/git-fast-forward-merge-vs-three-way-merge-8591434dd350
 
-#### ▼ 2方向の戦略的マージパッチ
+#### ▼ 2 方向の戦略的マージパッチ
 
 Helm の `v2` では、2 方向の戦略的マージパッチを採用している。
 
@@ -46,7 +46,7 @@ Helm の `v2` では、2 方向の戦略的マージパッチを採用してい�
 > - https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches
 > - https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1
 
-#### ▼ 3方向の戦略的マージパッチ
+#### ▼ 3 方向の戦略的マージパッチ
 
 Helm の `v3` では、3 方向の戦略的マージパッチを採用している。
 
@@ -63,9 +63,9 @@ Helm の `v3` では、3 方向の戦略的マージパッチを採用してい�
 
 <br>
 
-## 02. helmクライアント
+## 02. helm クライアント
 
-### helmクライアントとは
+### helm クライアントとは
 
 helm クライアントは、リポジトリからインストールしたチャートアーカイブ (`.tgz` 形式ファイル) に基づいて、現在のコンテキストで指定されている Cluster の kube-apiserver にリクエストを送信する。
 
@@ -95,12 +95,12 @@ Kubernetes をアップグレードした場合に、Helm もアップグレー�
 
 チャートレジストリ内にリポジトリを配置する。
 
-| レジストリ             | 補足                                               |
-| ---------------------- | -------------------------------------------------- |
-| ArtifactHub (Helm公式) | ・https://helm.sh/docs/topics/chart_repository/    |
-| GitHub、GitHub Pages   | ・https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
-| AWSリソース (ECR、S3)  |                                                    |
-| Google Cloudリソース   |                                                    |
+| レジストリ              | 補足                                               |
+| ----------------------- | -------------------------------------------------- |
+| ArtifactHub (Helm 公式) | ・https://helm.sh/docs/topics/chart_repository/    |
+| GitHub、GitHub Pages    | ・https://zenn.dev/mikutas/articles/2ab146fa1ea35b |
+| AWS リソース (ECR、S3)  |                                                    |
+| Google Cloud リソース   |                                                    |
 
 <br>
 
@@ -123,7 +123,7 @@ Kubernetes をアップグレードした場合に、Helm もアップグレー�
 
 <br>
 
-### OCIリポジトリ
+### OCI リポジトリ
 
 チャートリポジトリのように、リモートにあるチャートをインストールできるようになる。
 
@@ -149,11 +149,11 @@ ArtifactHub や、GitHub リポジトリにて `gh-pages` ブランチ上で複�
 ```yaml
 repository/ # チャートリポジトリ
 ├── index.yaml
-├── foo-chart-1.0.0.tgz # fooチャートアーカイブ
+├── foo-chart-1.0.0.tgz # foo チャートアーカイブ
 ├── foo-chart-2.0.0.tgz
-├── bar-chart-1.0.0.tgz # barチャートアーカイブ
+├── bar-chart-1.0.0.tgz # bar チャートアーカイブ
 ├── bar-chart-2.0.0.tgz
-├── baz-chart-1.0.0.tgz # bazチャートアーカイブ
+├── baz-chart-1.0.0.tgz # baz チャートアーカイブ
 ├── baz-chart-2.0.0.tgz
 │
 ...
@@ -170,9 +170,9 @@ repository/ # チャートリポジトリ
 
 ```yaml
 repository/ # マニフェストリポジトリ
-├── foo-chart # fooチャート
-├── bar-chart # barチャート
-├── baz-chart # bazチャート
+├── foo-chart # foo チャート
+├── bar-chart # bar チャート
+├── baz-chart # baz チャート
 │
 ...
 ```
@@ -193,7 +193,7 @@ repository/ # マニフェストリポジトリ
 
 ```yaml
 repository/
-├── foo-chart/ # fooチャート
+├── foo-chart/ # foo チャート
 │   ├── charts/ # 依存対象のサブチャートを配置する。
 │   ├── templates/ # ユーザー定義のチャートを配置する。ディレクトリ構造は自由である。
 │   │   ├── tests/
@@ -204,7 +204,7 @@ repository/
 │   ├── Chart.yaml # チャートの概要を設定する。頭文字は大文字である必要がある。
 │   └── values.yaml # テンプレートの変数に出力する値を設定する。
 │
-├── bar-chart/ # barチャート
+├── bar-chart/ # bar チャート
 │
 ...
 ```
@@ -222,7 +222,7 @@ repository/
 
 <br>
 
-### Helmリリース
+### Helm リリース
 
 実際にインストールされたチャートのインスタンスのこと。
 

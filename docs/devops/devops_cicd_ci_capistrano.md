@@ -3,7 +3,7 @@ title: 【IT技術の知見】Capistrano＠CIツール
 description: Capistrano＠CIツールの知見を記録しています。
 ---
 
-# Capistrano＠CIツール
+# Capistrano＠CI ツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Capistrano＠CIツールの知見を記録しています。
 
 <br>
 
-## 01. Capistranoの仕組み
+## 01. Capistrano の仕組み
 
 ### パイプライン構成
 

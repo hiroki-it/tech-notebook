@@ -13,7 +13,7 @@ description: gRPC＠RPC-APIの知見を記録しています。
 
 <br>
 
-## 01. gRPCの仕組み
+## 01. gRPC の仕組み
 
 ### アーキテクチャ
 
@@ -34,7 +34,7 @@ RESTful-API に対するリクエストではリクエストのヘッダーや�
 
 <br>
 
-### TLSの有無 (暗号化の有無)
+### TLS の有無 (暗号化の有無)
 
 Web ブラウザが gRPC クライアントの場合、TLS は必須である。
 
@@ -47,7 +47,7 @@ Web ブラウザが gRPC クライアントの場合、TLS は必須である。
 
 ## 02. 通信方式
 
-### gRPCの通信方式とは
+### gRPC の通信方式とは
 
 gRPC では、gRPC クライアントと gRPC サーバーの間の通信方式に種類がある。
 
@@ -60,9 +60,9 @@ gRPC では、gRPC クライアントと gRPC サーバーの間の通信方式�
 
 <br>
 
-### Unary RPC (単項RPC)
+### Unary RPC (単項 RPC)
 
-#### ▼ 単項RPCとは
+#### ▼ 単項 RPC とは
 
 ![grpc_unary-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png)
 
@@ -91,9 +91,9 @@ service Request {
 
 <br>
 
-### Server Streaming RPC (サーバーストリーミングRPC)
+### Server Streaming RPC (サーバーストリーミング RPC)
 
-#### ▼ サーバーストリーミングRPCとは
+#### ▼ サーバーストリーミング RPC とは
 
 ![grpc_server-streaming](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png)
 
@@ -123,9 +123,9 @@ service Notification {
 
 <br>
 
-### Client Streaming RPC (クライアントストリーミングRPC)
+### Client Streaming RPC (クライアントストリーミング RPC)
 
-#### ▼ クライアントストリーミングRPCとは
+#### ▼ クライアントストリーミング RPC とは
 
 ![grpc_client-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png)
 
@@ -155,9 +155,9 @@ service Upload {
 
 <br>
 
-### Bidirectional Streaming RPC (双方向ストリーミングRPC)
+### Bidirectional Streaming RPC (双方向ストリーミング RPC)
 
-#### ▼ 双方向ストリーミングRPCとは
+#### ▼ 双方向ストリーミング RPC とは
 
 ![grpc_bidrectional-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png)
 
@@ -201,16 +201,16 @@ service Chat {
 
 <br>
 
-## 03. HTTP/1.1とgRPCの違い
+## 03. HTTP/1.1 とgRPC の違い
 
 ### パケットの構造
 
-| 項目                                    | HTTP/1.1の場合               | HTTP/2の場合               |
-| --------------------------------------- | ---------------------------- | -------------------------- |
-| アプリケーションデータの形式            | テキスト (例：JSON、XMLなど) | バイナリ (例：Protocolbuf) |
-| TLSによるアプリケーションデータの暗号化 | 任意                         | 必須 (Webブラウザのみ)     |
-| トランスポートヘッダー                  | あり                         | あり                       |
-| IPヘッダー                              | あり                         | あり                       |
+| 項目                                     | HTTP/1.1 の場合               | HTTP/2 の場合              |
+| ---------------------------------------- | ----------------------------- | -------------------------- |
+| アプリケーションデータの形式             | テキスト (例：JSON、XML など) | バイナリ (例：Protocolbuf) |
+| TLS によるアプリケーションデータの暗号化 | 任意                          | 必須 (Web ブラウザのみ)    |
+| トランスポートヘッダー                   | あり                          | あり                       |
+| IP ヘッダー                              | あり                          | あり                       |
 
 > - https://www.wallarm.com/what/what-is-http-2-and-how-is-it-different-from-http-1
 
@@ -222,17 +222,17 @@ service Chat {
 
 gRPC のリクエストでは、メタデータをヘッダーに格納する。
 
-| メタデータのキー名     | 説明                             |
-| ---------------------- | -------------------------------- |
-| `accept-encoding`      |                                  |
-| `content-type`         |                                  |
-| `grpc-accept-encoding` |                                  |
-| `grpc-timeout `        | gRPCのタイムアウト時間を表す。   |
-| `method`               | リクエストのHTTPメソッドを表す。 |
-| `path`                 | リクエストのパスを表す。         |
-| `scheme`               |                                  |
-| `user-agent`           |                                  |
-| ...                    |                                  |
+| メタデータのキー名     | 説明                               |
+| ---------------------- | ---------------------------------- |
+| `accept-encoding`      |                                    |
+| `content-type`         |                                    |
+| `grpc-accept-encoding` |                                    |
+| `grpc-timeout `        | gRPC のタイムアウト時間を表す。    |
+| `method`               | リクエストの HTTP メソッドを表す。 |
+| `path`                 | リクエストのパスを表す。           |
+| `scheme`               |                                    |
+| `user-agent`           |                                    |
+| ...                    |                                    |
 
 > - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata
@@ -250,7 +250,7 @@ gRPC のレスポンスでは、エラーに関するメタデータをトレー
 
 ### 通信の多重化
 
-#### ▼ HTTP/1.1の場合
+#### ▼ HTTP/1.1 の場合
 
 TCP 接続を確立中、レスポンスの返信があるまで、次のリクエストを送信できない。
 
@@ -258,7 +258,7 @@ TCP 接続を確立中、レスポンスの返信があるまで、次のリク�
 
 > - https://www.honai.me/blog/post/how-http-works-4-http2/#http%2F1.x-%E3%81%AE%E8%AA%B2%E9%A1%8C
 
-#### ▼ gRPCの場合
+#### ▼ gRPC の場合
 
 TCP 接続を確立中、レスポンスの返信がなくても、次のリクエストを並列的に送信できる。
 
@@ -270,14 +270,14 @@ TCP 接続を確立中、レスポンスの返信がなくても、次のリク�
 
 ### レスポンスタイム
 
-#### ▼ HTTP/1.1の場合
+#### ▼ HTTP/1.1 の場合
 
 HTTP/1.1 の場合、`1` 個のリクエストとレスポンスを送受信する。
 
 > - https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one
 > - https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6
 
-#### ▼ gRPCの場合
+#### ▼ gRPC の場合
 
 単項 RPC の場合、`1` 個のリクエストとレスポンスを送受信する。
 
@@ -301,25 +301,25 @@ HTTP/1.1 の場合、`1` 個のリクエストとレスポンスを送受信す�
 
 #### ▼ 一覧
 
-| HTTP/1.1の場合 | HTTP/2の場合 | 意味                 | 説明                                                                                                                                                                                                         |
-| -------------- | ------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `200`          | `0`          | `OK`                 | リクエストに成功した。                                                                                                                                                                                       |
-| `499`          | `1`          | `Canceled`           | gRPCクライアントが処理を中断した。                                                                                                                                                                           |
-| `500`          | `2`          | `Unknown`            | いずれのステータスコードにも属していない不明なエラーである。                                                                                                                                                 |
-| `400`          | `3`          | `InvalidArgument`    | 無効な引数を指定したリクエストである。                                                                                                                                                                       |
-| `504`          | `4`          | `DeadlineExceeded`   | 処理が完了する前にタイムアウト時間を超過した。正常な場合でも、タイムアウト時間の超過でこのエラーになることがある。                                                                                           |
-| `404`          | `5`          | `NotFound`           | リクエストしたデータが存在しない。                                                                                                                                                                           |
-| `409`          | `6`          | `AlreadyExists`      |                                                                                                                                                                                                              |
-| `403`          | `7`          | `PermissionDenied`   |                                                                                                                                                                                                              |
-| `429`          | `8`          | `ResourceExhausted`  | gRPCクライアントがリクエスト送信しすぎている。                                                                                                                                                               |
-| `400`          | `9`          | `FailedPrecondition` |                                                                                                                                                                                                              |
-| `499`          | `10`         | `Aborted`            |                                                                                                                                                                                                              |
-| `400`          | `11`         | `OutOfRange`         | リクエストのパラメーターが正しくない。                                                                                                                                                                       |
-| `501`          | `12`         | `Unimplemented`      |                                                                                                                                                                                                              |
-| `500`          | `13`         | `Internal`           | gRPCサーバーがエラーを返却した。                                                                                                                                                                             |
-| `503`          | `14`         | `Unavailable`        | gRPCサーバー側で関数を実行する準備ができておらず、gRPCクライアント側で関数のコールに失敗している。gRPCクライアントからgRPCサーバーへのリクエスト送信は完了したが、レスポンスが返信されていない可能性がある。 |
-| `500`          | `15`         | `DataLoss`           |                                                                                                                                                                                                              |
-| `401`          | `16`         | `Unauthenticated`    |                                                                                                                                                                                                              |
+| HTTP/1.1 の場合 | HTTP/2 の場合 | 意味                 | 説明                                                                                                                                                                                                              |
+| --------------- | ------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `200`           | `0`           | `OK`                 | リクエストに成功した。                                                                                                                                                                                            |
+| `499`           | `1`           | `Canceled`           | gRPC クライアントが処理を中断した。                                                                                                                                                                               |
+| `500`           | `2`           | `Unknown`            | いずれのステータスコードにも属していない不明なエラーである。                                                                                                                                                      |
+| `400`           | `3`           | `InvalidArgument`    | 無効な引数を指定したリクエストである。                                                                                                                                                                            |
+| `504`           | `4`           | `DeadlineExceeded`   | 処理が完了する前にタイムアウト時間を超過した。正常な場合でも、タイムアウト時間の超過でこのエラーになることがある。                                                                                                |
+| `404`           | `5`           | `NotFound`           | リクエストしたデータが存在しない。                                                                                                                                                                                |
+| `409`           | `6`           | `AlreadyExists`      |                                                                                                                                                                                                                   |
+| `403`           | `7`           | `PermissionDenied`   |                                                                                                                                                                                                                   |
+| `429`           | `8`           | `ResourceExhausted`  | gRPC クライアントがリクエスト送信しすぎている。                                                                                                                                                                   |
+| `400`           | `9`           | `FailedPrecondition` |                                                                                                                                                                                                                   |
+| `499`           | `10`          | `Aborted`            |                                                                                                                                                                                                                   |
+| `400`           | `11`          | `OutOfRange`         | リクエストのパラメーターが正しくない。                                                                                                                                                                            |
+| `501`           | `12`          | `Unimplemented`      |                                                                                                                                                                                                                   |
+| `500`           | `13`          | `Internal`           | gRPC サーバーがエラーを返却した。                                                                                                                                                                                 |
+| `503`           | `14`          | `Unavailable`        | gRPC サーバー側で関数を実行する準備ができておらず、gRPC クライアント側で関数のコールに失敗している。gRPC クライアントから gRPC サーバーへのリクエスト送信は完了したが、レスポンスが返信されていない可能性がある。 |
+| `500`           | `15`          | `DataLoss`           |                                                                                                                                                                                                                   |
+| `401`           | `16`          | `Unauthenticated`    |                                                                                                                                                                                                                   |
 
 > - https://grpc.io/docs/guides/status-codes/
 > - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84
@@ -341,11 +341,11 @@ HTTP/1.1 の場合、`1` 個のリクエストとレスポンスを送受信す�
 
 ### タイムアウト
 
-#### ▼ HTTP/1.1の場合
+#### ▼ HTTP/1.1 の場合
 
 TCP 接続をリクエスト／レスポンスにタイムアウト時間を適用する。
 
-#### ▼ 単項RPCの場合
+#### ▼ 単項 RPC の場合
 
 TCP 接続上に単一のストリーミングしかない。
 
@@ -355,7 +355,7 @@ gRPC は、TCP 接続の確立前にタイムアウト時間を開始し、ス�
 
 > - https://github.com/envoyproxy/envoy/issues/12578#issue-676405512
 
-#### ▼ ストリーミングRPCの場合
+#### ▼ ストリーミング RPC の場合
 
 TCP 接続上に複数のストリーミングがある。
 
@@ -374,45 +374,45 @@ gRPC は、TCP 接続の確立前にタイムアウト時間を開始し、ス�
 ここでは、マイクロサービスが以下のような順で実行されるとする。
 
 ```yaml
-foo # JavaScript製
+foo # JavaScript 製
 ⬇⬆️︎
 ⬇⬆️︎
-bar # Go製
+bar # Go 製
 ⬇⬆️︎
 ⬇⬆️︎
-baz # Python製
+baz # Python 製
 ```
 
 <br>
 
-### `proto` ファイルをgRPCサーバー側に配置する場合
+### `proto` ファイルを gRPC サーバー側に配置する場合
 
-#### ▼ gRPCクライアント/サーバーのリポジトリ
+#### ▼ gRPC クライアント/サーバーのリポジトリ
 
 各マイクロサービスのリポジトリでは、アプリケーションのインフラストラクチャ層に `proto` ファイルを配置する。
 
 ```yaml
-# fooサービス (JavaScript製)
+# foo サービス (JavaScript 製)
 repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   ├── doc/ # .protoファイルから自動作成したRPC-API仕様書
+│   │   ├── doc/ # .proto ファイルから自動作成した RPC-API 仕様書
 │   │   │   └── bar/
 │   │   │       └── bar-client.html
 │   │   │
-│   │   ├── pb_go/ # .protoファイルから自動作成したpb.*ファイル
+│   │   ├── pb_go/ # .proto ファイルから自動作成した pb.*ファイル
 │   │   │   └── bar/
 │   │   │       └── bar-client.pb.js
 │   │   │
-│   │   └── grpc # gRPCクライアントの定義
+│   │   └── grpc # gRPC クライアントの定義
 │   │       └── bar/
 │   │           └── bar-client.js
 │   ...
 │
-├── proto/ # サービス定義ファイル (.protoファイル)
+├── proto/ # サービス定義ファイル (.proto ファイル)
 │   └── bar/
 │       └── bar-client.proto
 │
@@ -420,28 +420,28 @@ repository/
 ```
 
 ```yaml
-# barサービス (Go製)
+# bar サービス (Go 製)
 repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   ├── doc/ # .protoファイルから自動作成したRPC-API仕様書
+│   │   ├── doc/ # .proto ファイルから自動作成した RPC-API 仕様書
 │   │   │   ├── bar/
 │   │   │   │   └── bar-server.html
 │   │   │   │
 │   │   │   └── baz/
 │   │   │       └── baz-client.html
 │   │   │
-│   │   ├── pb_go/ # .protoファイルから自動作成したpb.*ファイル
+│   │   ├── pb_go/ # .proto ファイルから自動作成した pb.*ファイル
 │   │   │   ├── bar/
 │   │   │   │   └── bar-server.pb.go
 │   │   │   │
 │   │   │   └── baz/
 │   │   │       └── baz-client.pb.go
 │   │   │
-│   │   └── grpc # gRPCクライアントとgRPCサーバーの定義
+│   │   └── grpc # gRPC クライアントと gRPC サーバーの定義
 │   │       ├── bar/
 │   │       │   └── bar-server.go
 │   │       │
@@ -450,7 +450,7 @@ repository/
 │   │
 │   ...
 │
-├── proto/ # サービス定義ファイル (.protoファイル)
+├── proto/ # サービス定義ファイル (.proto ファイル)
 │   ├── bar/
 │   │   └── bar-server.proto
 │   │
@@ -461,7 +461,7 @@ repository/
 ```
 
 ```yaml
-# bazサービス (Python製)
+# baz サービス (Python 製)
 repository/
 ├── src/
 │   ├── interface/
@@ -469,21 +469,21 @@ repository/
 │   ├── domain/
 │   ├── infrastructure
 │   ├── infrastructure
-│   │   ├── doc/ # .protoファイルから自動作成したRPC-API仕様書
+│   │   ├── doc/ # .proto ファイルから自動作成した RPC-API 仕様書
 │   │   │   └── baz/
 │   │   │       └── baz-server.html
 │   │   │
-│   │   ├── pb_go/ # .protoファイルから自動作成したpb.*ファイル
+│   │   ├── pb_go/ # .proto ファイルから自動作成した pb.*ファイル
 │   │   │   └── baz/
 │   │   │       └── baz-server.pb.py
 │   │   │
-│   │   └── grpc # gRPCサーバーの定義
+│   │   └── grpc # gRPC サーバーの定義
 │   │       └── baz/
 │   │           └── baz-server.py
 │   │
 │   ...
 │
-├── proto/ # サービス定義ファイル (.protoファイル)
+├── proto/ # サービス定義ファイル (.proto ファイル)
 │   └── baz/
 │       └── baz-server.proto
 │
@@ -497,35 +497,35 @@ repository/
 
 ### `proto` ファイルと `pb_go` ファイルを専用リポジトリに配置する場合
 
-#### ▼ gRPCクライアント/サーバーのリポジトリ
+#### ▼ gRPC クライアント/サーバーのリポジトリ
 
 各マイクロサービスのリポジトリでは、アプリケーションのインフラストラクチャ層に gRPC クライアントと gRPC サーバーの定義を配置する。
 
 なお、`pb` ファイルは Protocol Buffer の共有リポジトリで管理する。
 
 ```yaml
-# fooサービス (JavaScript製)
+# foo サービス (JavaScript 製)
 repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   └── grpc # gRPCクライアントの定義
+│   │   └── grpc # gRPC クライアントの定義
 │   │       └── bar/
 │   │           └── bar-client.js
 │   │
 ```
 
 ```yaml
-# barサービス (Go製)
+# bar サービス (Go 製)
 repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   └── grpc # gRPCサーバーとクライアントの定義
+│   │   └── grpc # gRPC サーバーとクライアントの定義
 │   │       ├── bar/
 │   │       │   └── bar-server.go
 │   │       │
@@ -535,14 +535,14 @@ repository/
 ```
 
 ```yaml
-# bazサービス (Python製)
+# baz サービス (Python 製)
 repository/
 ├── src/
 │   ├── interface/
 │   ├── usecase/
 │   ├── domain/
 │   ├── infrastructure
-│   │   └── grpc # gRPCサーバーの定義
+│   │   └── grpc # gRPC サーバーの定義
 │   │       └── baz/
 │   │           └── baz-server.py
 │   │
@@ -551,7 +551,7 @@ repository/
 > - https://lab.mo-t.com/blog/protocol-buffers
 > - https://medium.com/namely-labs/how-we-build-grpc-services-at-namely-52a3ae9e7c35
 
-#### ▼ Protocol Bufferの共有リポジトリ
+#### ▼ Protocol Buffer の共有リポジトリ
 
 `pb` ファイルに関しては、gRPC サーバーは、さらに宛先マイクロサービスをコールする gRPC クライアントにもなる。
 
@@ -565,7 +565,7 @@ repository/
 ```yaml
 # Protocol Buffer
 repository/
-├── proto/ # サービス定義ファイル (.protoファイル)
+├── proto/ # サービス定義ファイル (.proto ファイル)
 │   ├── bar/
 │   │   ├── bar-server.proto
 │   │   └── bar-client.proto
@@ -573,7 +573,7 @@ repository/
 │   └── baz/
 │       └── baz-server.proto
 │
-├── doc/ # .protoファイルから自動作成したRPC-API仕様書
+├── doc/ # .proto ファイルから自動作成した RPC-API 仕様書
 │   ├── bar/
 │   │   ├── bar-server.html
 │   │   └── bar-client.html
@@ -582,7 +582,7 @@ repository/
 │       └── baz-server.html
 │
 │
-└── pb_go/ # .protoファイルから自動作成した.pb.*ファイル
+└── pb_go/ # .proto ファイルから自動作成した.pb.*ファイル
     ├── bar/
     │   ├── bar-server.pb.go
     │   └── bar-client.pb.js

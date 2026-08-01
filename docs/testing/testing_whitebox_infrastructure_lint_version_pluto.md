@@ -13,7 +13,7 @@ description: pluto＠バージョンテストの知見を記録しています�
 
 <br>
 
-## 01. plutoの仕組み
+## 01. pluto の仕組み
 
 ### 検出項目
 
@@ -28,7 +28,7 @@ pluto 以外では、ドキュメント、リリースノート、メトリク�
 
 <br>
 
-### 対応するKubernetesリソース
+### 対応する Kubernetes リソース
 
 標準の Kubernetes リソースだけでなく、CRD や一部のカスタムリソース (Istio を含む) もサポートしている。
 
@@ -59,7 +59,7 @@ deprecated-versions:
 
   ...
 
-  # Istioリソース
+  # Istio リソース
   - version: rbac.istio.io
     kind: AuthorizationPolicies
     deprecated-in: v1.4.0
@@ -139,7 +139,7 @@ foo-cj  foo-namespace   CronJob                   batch/v1beta1         batch/v1
 
 ### -f (--additional-versions)
 
-#### ▼ -fとは
+#### ▼ -f とは
 
 pluto が検証可能な API グループを追加する。
 
@@ -157,13 +157,13 @@ $ pluto list-versions -f additional-versions.yaml
 追加で検証する API グループのルールを設定する。
 
 ```yaml
-# version: APIグループのバージョン
+# version: API グループのバージョン
 # kind: カスタムリソース名
-# deprecated-in: APIグループの特定のバージョンが非推奨になる場合、警告が出るようになるKubernetesバージョン
-# removed-in: APIグループの特定のバージョンが機能廃止になる場合、使用できなくなるKubernetesバージョン
-# replacement-api: APIグループの特定のバージョンが機能廃止になる場合、変更後のAPIグループのバージョン
-# replacement-available-in: APIグループのバージョンが新規追加される場合、使用できるようになるKubernetesバージョン
-# component: APIグループを使用しているツール名
+# deprecated-in: API グループの特定のバージョンが非推奨になる場合、警告が出るようになる Kubernetes バージョン
+# removed-in: API グループの特定のバージョンが機能廃止になる場合、使用できなくなる Kubernetes バージョン
+# replacement-api: API グループの特定のバージョンが機能廃止になる場合、変更後の API グループのバージョン
+# replacement-available-in: API グループのバージョンが新規追加される場合、使用できるようになる Kubernetes バージョン
+# component: API グループを使用しているツール名
 
 deprecated-versions:
   - version: networking.istio.io/v1beta1
@@ -209,7 +209,7 @@ Istio の主要カスタムリソースで `v1` がリリース (2024/05/14) さ
 
 ### -t
 
-#### ▼ -tとは
+#### ▼ -t とは
 
 pluto で検証するターゲットコンポーネントのバージョン (`versions.yaml` ファイルの `target-versions` キー) を指定する。
 

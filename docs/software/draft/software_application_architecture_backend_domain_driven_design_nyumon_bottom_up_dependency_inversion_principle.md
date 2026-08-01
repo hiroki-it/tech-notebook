@@ -216,7 +216,7 @@ export class UserApplicationService {
 }
 ```
 
-### 7.4.1 Service Locatorパターン
+### 7.4.1 Service Locator パターン
 
 インメモリ実装リポジトリと実装リポジトリをハードコーディングせずに差し替えたい。
 
@@ -410,7 +410,7 @@ export class UserApplicationService {
 }
 ```
 
-### 7.4.2 IoCコンテナパターン
+### 7.4.2 IoC コンテナパターン
 
 ということで、Service Locator パターンとは別の方法で、インメモリ実装リポジトリと実装リポジトリを差し替えてみる。
 
@@ -461,7 +461,7 @@ export class UserApplicationService {
 他にも
 
 - コンストラクタインジェクション：constructor(…)
-- セッターインジェクション：set〇〇(…)
+- セッターインジェクション：set 〇〇(…)
 - メソッドインジェクション：foo(…)
 
 次に、IoC コンテナパターンを実装した IoC コンテナオブジェクトを説明する。

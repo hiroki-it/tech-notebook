@@ -15,7 +15,7 @@ description: クラス＠PHPの知見を記録しています。
 
 ## 01. has-one、has-many (状態として保持する関係性)
 
-### has-one、has-manyな関係性とは
+### has-one、has-many な関係性とは
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
 
@@ -25,13 +25,13 @@ description: クラス＠PHPの知見を記録しています。
 
 ### Association (関連)
 
-#### ▼ Associationとは
+#### ▼ Association とは
 
 クラス A がクラス B を状態として保持する関係性のこと。
 
 引数型/返却値型として使用する『依存』とは区別する。
 
-#### ▼ Associationの種類
+#### ▼ Association の種類
 
 保持される側のクラスのインスタンスが、状態として保持する側のクラスによって作成されるか否かによって、『Aggregation』または『Composition』に分類できる。
 
@@ -39,7 +39,7 @@ description: クラス＠PHPの知見を記録しています。
 
 ### Aggregation (集約)
 
-#### ▼ Aggregationとは
+#### ▼ Aggregation とは
 
 保持される側のクラスのインスタンスが、保持する側のクラスのインスタンスによって作成されずに外側から渡されるとき、クラス間が『Aggregation』の関係にある。
 
@@ -155,7 +155,7 @@ $car = new Car($tire1, $tire2, $tire3, $tire4);
 
 ### Composition (合成)
 
-#### ▼ Compositionとは
+#### ▼ Composition とは
 
 保持される側のクラスのインスタンスが、保持する側のクラスのインスタンスによって作成されるとき、クラス間が『Composition』の関係にある。
 
@@ -241,7 +241,7 @@ $car = new Car();
 
 ## 02. is-a-kind-of (グループとメンバーの関係性)
 
-### is-a-kind-ofな関係性とは
+### is-a-kind-of な関係性とは
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
 
@@ -251,7 +251,7 @@ $car = new Car();
 
 ### Generalization (汎化)
 
-#### ▼ 汎化におけるOverride
+#### ▼ 汎化における Override
 
 汎化のとき、子クラスで関数の処理内容を再び実装すると、処理内容は上書きされる。
 
@@ -441,7 +441,7 @@ class EnginnerShainManagement extends ShainManagement
 
 ### Realization (実現)
 
-#### ▼ Realizationとは
+#### ▼ Realization とは
 
 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。
 
@@ -514,7 +514,7 @@ class Mammal implements Animal
 | **子クラスでの継承先数**      | 単一継承         | 単一継承                     | 単一継承｜多重継承                                                                                         |
 | **メンバ変数のコール**        | 自身と継承先     | 継承先のみ                   | 実装先のみ                                                                                                 |
 | **定数の定義**                | ⭕️               | ⭕️                           | ⭕️                                                                                                         |
-| **抽象関数の定義**            | ✕                | ⭕️                           | ⭕️ (abstractは省略)                                                                                        |
+| **抽象関数の定義**            | ✕                | ⭕️                           | ⭕️ (abstract は省略)                                                                                       |
 | **具象関数の定義**            | ⭕️               | ⭕️                           | ✕                                                                                                          |
 | **`construct()` 関数 の定義** | ⭕️               | ⭕️                           | ✕                                                                                                          |
 
@@ -621,7 +621,7 @@ class SubFoo extends Foo
 
 ### Trait
 
-#### ▼ Traitとは
+#### ▼ Trait とは
 
 ![Trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Trait.png)
 
@@ -660,7 +660,7 @@ $bar = new Bar();
 $bar->foo(); // Hello World
 ```
 
-#### ▼ マジック関数を禁止するTrait
+#### ▼ マジック関数を禁止する Trait
 
 マジック関数を使用すると、処理が多くなるため、性能が悪くなる。
 
@@ -902,7 +902,7 @@ class Bar
 
 ## 03. use (引数型/返却値型として使用する関係性)
 
-### useな関係とは
+### use な関係とは
 
 > - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html
 
@@ -910,7 +910,7 @@ class Bar
 
 ### Dependency (依存)
 
-#### ▼ Dependencyとは
+#### ▼ Dependency とは
 
 ![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png)
 
@@ -953,7 +953,7 @@ final class User
 
 ### DI：Dependency Injection (依存オブジェクト注入)
 
-#### ▼ DIとは
+#### ▼ DI とは
 
 サプライヤー側 (依存先) の『インスタンス』を、クライアント側のインスタンスの外部から『引数として』注入する実装方法。
 
@@ -1121,7 +1121,7 @@ $user->method($name); // インジェクション
 
 ### DI Container (依存オブジェクト注入コンテナ) 、Service Container
 
-#### ▼ DI Container (依存オブジェクト注入コンテナ) 、Service Containerとは
+#### ▼ DI Container (依存オブジェクト注入コンテナ) 、Service Container とは
 
 依存オブジェクト注入の責務に特化したデザインパターンを『Service Container』という。
 
@@ -1172,7 +1172,7 @@ require_once __DIR__ . "/autoload.php";
 $sample = $container["sample"];
 ```
 
-#### ▼ Service Locatorパターン
+#### ▼ Service Locator パターン
 
 Service Locater パターンはアンチパターンである。
 
@@ -1206,7 +1206,7 @@ $sample = new Sample($container);
 
 ### DIP
 
-#### ▼ DIPとは
+#### ▼ DIP とは
 
 インターフェースに依存するように実装する。
 
@@ -1214,13 +1214,13 @@ $sample = new Sample($container);
 
 `2` 個の原則からなる。
 
-#### ▼ 原則1
+#### ▼ 原則 1
 
 上位レイヤーは下位レイヤーに依存してはならない。
 
 どちらのレイヤーも『抽象』に依存すべきである。
 
-#### ▼ 原則2
+#### ▼ 原則 2
 
 『抽象』は『実装』に依存してはならない。
 
@@ -1228,9 +1228,9 @@ $sample = new Sample($container);
 
 <br>
 
-### DIPを満たす実装
+### DIP を満たす実装
 
-#### ▼ DIPを満たさない実装の場合 (従来)
+#### ▼ DIP を満たさない実装の場合 (従来)
 
 より上位レイヤーにコール処理を配置し、下位レイヤーでコールされる側を定義する。
 
@@ -1238,7 +1238,7 @@ $sample = new Sample($container);
 
 ![DIPに基づかない設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づかない設計の場合.png)
 
-#### ▼ DIPを満たす実装の場合
+#### ▼ DIP を満たす実装の場合
 
 インターフェース (または抽象クラス) で抽象関数を記述することによって、実装クラスでの実装が強制される。
 
@@ -1256,7 +1256,7 @@ $sample = new Sample($container);
 
 ![DIPに基づく設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づく設計の場合.png)
 
-#### ▼ DIPに基づくドメイン駆動設計の場合
+#### ▼ DIP に基づくドメイン駆動設計の場合
 
 `(1)`
 
@@ -1278,7 +1278,7 @@ $sample = new Sample($container);
 
 <br>
 
-### DIPのメリット
+### DIP のメリット
 
 #### ▼ 実装リポジトリの差し替えが簡単
 

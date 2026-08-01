@@ -13,7 +13,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 <br>
 
-## 01. IstioOperatorとは
+## 01. IstioOperator とは
 
 Istio のコンポーネント (Istiod コントロールプレーン、Istio Ingress Gateway、Istio Egress Gateway など) を管理する。
 
@@ -30,9 +30,9 @@ IstioOperator は執筆時点 (2025/03/06) で非推奨であり、代わりに 
 
 ## 02. 他の管理方法への移行
 
-### Helm管理への移行
+### Helm 管理への移行
 
-#### ▼ B/Gデプロイメント
+#### ▼ B/G デプロイメント
 
 IstioOperator + Istiod + Istio Ingress Gateway から、Istiod + Istio Ingress Gateway に B/G デプロイメントのように移行する。
 

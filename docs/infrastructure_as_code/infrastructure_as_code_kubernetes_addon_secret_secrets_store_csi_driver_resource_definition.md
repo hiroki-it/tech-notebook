@@ -3,7 +3,7 @@ title: 【IT技術の知見】リソース定義＠SecretsストアCSIドライ�
 description: リソース定義＠SecretsストアCSIドライバーの知見を記録しています。
 ---
 
-# リソース定義＠SecretsストアCSIドライバー
+# リソース定義＠Secrets ストア CSI ドライバー
 
 ## はじめに
 
@@ -31,7 +31,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/secrets-st
 
 > - https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
 
-#### ▼ Amazon EKS専用のチャートとして
+#### ▼ Amazon EKS 専用のチャートとして
 
 Amazon EKS で Secrets ストア CSI ドライバーを簡単にセットアップするために、それ専用のチャートを使用する。
 
@@ -53,7 +53,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-drive
 
 <br>
 
-## 02. Pod＠Kubernetesでの設定
+## 02. Pod＠Kubernetes での設定
 
 Secrets ストア CSI ドライバーによって、Pod では Secret を介さずに、プロバイダーから変数を直接的にマウントする。
 
@@ -71,19 +71,19 @@ spec:
       image: app:1.0.0
       ports:
         - containerPort: 8080
-      # Secretは使用せずにPod内コンテナにファイルとしてマウントする。
+      # Secret は使用せずに Pod 内コンテナにファイルとしてマウントする。
       volumeMounts:
         - name: foo-secrets-store-csi-volume
           mountPath: /etc/secrets
           readOnly: true
   volumes:
-    # CSIボリュームを設定する。
+    # CSI ボリュームを設定する。
     - name: foo-secrets-store-csi-volume
       csi:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-          # SecretProviderClassを指定する。
+          # SecretProviderClass を指定する。
           secretProviderClass: foo-aws-secret-provider-class
 ```
 
@@ -106,7 +106,7 @@ Secret のマウント対象となる Pod と、同じ Namespace にする必要
 apiVersion: secrets-store.csi.x-k8s.io/v1
 kind: SecretProviderClass
 metadata:
-  namespace: foo-namespace # Podと同じNamespace
+  namespace: foo-namespace # Pod と同じ Namespace
 ```
 
 > - https://www.bigtreetc.com/column/eks-secrets/
@@ -115,7 +115,7 @@ metadata:
 
 ### .spec.provider
 
-#### ▼ providerとは
+#### ▼ provider とは
 
 Secret のプロバイダーを設定する。
 
@@ -134,13 +134,13 @@ spec:
 
 ### .spec.parameters
 
-#### ▼ parametersとは
+#### ▼ parameters とは
 
 プロバイダーに応じて、参照する Secret のデータを設定する。
 
 > - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
 
-#### ▼ objects (AWSプロバイダーの場合)
+#### ▼ objects (AWS プロバイダーの場合)
 
 AWS プロバイダー上の Secret (AWS Secrets Manager、AWS Systems Manager) を識別する情報を設定する。
 
@@ -152,9 +152,9 @@ metadata:
 spec:
   provider: aws
   parameters:
-    # AWS Secrets Managerから取得する。
-    # objectNameキーに、ARN (arn:aws:secretsmanager:ap-northeast-1:<AWSアカウントID>:secret:<Secretストア名>) を指定しても良い。
-    # その場合、objectTypeキーは不要になる。
+    # AWS Secrets Manager から取得する。
+    # objectName キーに、ARN (arn:aws:secretsmanager:ap-northeast-1:<AWS アカウント ID>:secret:<Secret ストア名>) を指定しても良い。
+    # その場合、objectType キーは不要になる。
     objects: |
       - objectName: "<Secret名>"
       - objectType: "secretsmanager"
@@ -171,7 +171,7 @@ metadata:
 spec:
   provider: aws
   parameters:
-    # AWS Systems Managerから取得する。
+    # AWS Systems Manager から取得する。
     objects: |
       - objectName: "/foo/USERNAME"
         objectType: "ssmparameter"
@@ -182,7 +182,7 @@ spec:
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
 > - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-systems-manager-parameter-store%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
 
-#### ▼ objects (Google Cloudプロバイダーの場合)
+#### ▼ objects (Google Cloud プロバイダーの場合)
 
 Google Cloud プロバイダー上の Secret (Google Cloud Secret Manager) を識別する情報を設定する。
 
@@ -194,7 +194,7 @@ metadata:
 spec:
   provider: gcp
   parameters:
-    # Google Cloud Secret Managerから取得する。
+    # Google Cloud Secret Manager から取得する。
     objects: |
       - resourceName: "projects/<プロジェクトID>/secrets/<Secret名>"
 ```

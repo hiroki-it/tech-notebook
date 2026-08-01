@@ -13,7 +13,7 @@ description: トランザクション管理＠マイクロサービスの知見�
 
 <br>
 
-## 01. Shared DBパターンのトランザクションパターン
+## 01. Shared DB パターンのトランザクションパターン
 
 - パターン不要 (各マイクロサービスの従来のトランザクション)
 
@@ -22,7 +22,7 @@ description: トランザクション管理＠マイクロサービスの知見�
 
 <br>
 
-## 02. DB per serviceパターンのトランザクションパターン
+## 02. DB per service パターンのトランザクションパターン
 
 ### ローカルトランザクション
 
@@ -93,7 +93,7 @@ description: トランザクション管理＠マイクロサービスの知見�
 
 マイクロサービスの処理のなかで実装する。
 
-#### ▼ OSSを使用する場合
+#### ▼ OSS を使用する場合
 
 二相コミットの OSS はなさそう。
 
@@ -115,9 +115,9 @@ description: トランザクション管理＠マイクロサービスの知見�
 
 <br>
 
-## 05. Sagaパターン（連鎖が必要なローカルトランザクションの場合）
+## 05. Saga パターン（連鎖が必要なローカルトランザクションの場合）
 
-### Sagaパターンとは
+### Saga パターンとは
 
 各マイクロサービスの永続化の間に依存関係がある場合 (例：受注データの永続化には、配送データや決済データの永続化の結果が必要) に、これらのマイクロサービスの永続化を調整する必要がある。
 
@@ -135,7 +135,7 @@ Saga オーケストレーターは、これらのマイクロサービスをコ
 
 <br>
 
-### SagaパターンとACID
+### Saga パターンと ACID
 
 > - https://engineers.ntt.com/entry/2023/12/12/095337#Saga%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%AE%9F%E7%8F%BE%E3%81%95%E3%82%8C%E3%82%8B%E5%AE%89%E5%85%A8%E6%80%A7
 
@@ -143,7 +143,7 @@ Saga オーケストレーターは、これらのマイクロサービスをコ
 
 ### デザインパターン
 
-#### ▼ Stateパターン
+#### ▼ State パターン
 
 Saga オーケストレーターをステートマシン図や State パターンでモデリングし、ステートマシンを実装する。
 
@@ -153,9 +153,9 @@ Saga オーケストレーターをステートマシン図や State パター�
 
 <br>
 
-## 05-02. オーケストレーションベースのSagaパターン
+## 05-02. オーケストレーションベースの Saga パターン
 
-### オーケストレーションベースのSagaパターンとは
+### オーケストレーションベースの Saga パターンとは
 
 一連のローカルトランザクションの実行をまとめて制御する責務を持った Saga オーケストレーター (コーディネーター) と、これをコールする別のマイクロサービスを配置する。
 
@@ -194,7 +194,7 @@ Saga オーケストレーターは、Order サービス (`T1`) 、Inventory サ
 > - https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079
 > - https://blog.knoldus.com/distributed-transactions-and-saga-patterns/
 
-#### ▼ OSSを使用する場合
+#### ▼ OSS を使用する場合
 
 Saga オーケストレーターの OSS (Temporal、Netflix Conductor、Uber Cadence など) を使用する。
 
@@ -212,7 +212,7 @@ Saga オーケストレーターのドメインモデリングにステートソ
 
 <br>
 
-### Sagaオーケストレーター
+### Saga オーケストレーター
 
 Saga オーケストレーターは、Saga オーケストレーターのワーカー（マイクロサービス）を調整し、ローカルトランザクション処理を連鎖的に実行する。
 
@@ -222,7 +222,7 @@ Saga オーケストレーターは、Saga オーケストレーターのワー�
 
 <br>
 
-### Sagaオーケストレーターのストレージ
+### Saga オーケストレーターのストレージ
 
 #### ▼ インメモリ
 
@@ -256,9 +256,9 @@ AWS StepFunctions のステートも設計例として、参考になる。
 
 <br>
 
-### Sagaオーケストレーターのステータスチェッカー
+### Saga オーケストレーターのステータスチェッカー
 
-#### ▼ Sagaオーケストレーターのステータスチェッカーとは
+#### ▼ Saga オーケストレーターのステータスチェッカーとは
 
 オーケストレーションベースの Saga パターンにて、Saga オーケストレーターにリクエストを送信するクライアントは、Saga オーケストレーターの処理結果を知る必要がある。
 
@@ -276,7 +276,7 @@ Saga ステータスチェッカーは、トランザクション ID を使用�
 
 <br>
 
-### Sagaオーケストレーターのワーカー
+### Saga オーケストレーターのワーカー
 
 #### ▼ メッセージキューを経由しないポイントツーポイントの場合
 
@@ -332,7 +332,7 @@ Saga オーケストレーターは、メッセージブローカーに対して
 
 > - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
 
-#### ▼ 実装例 (Goの `defer()` 関数)
+#### ▼ 実装例 (Go の `defer()` 関数)
 
 この例では、Go の `defer()` 関数で補償トランザクションの仕組みを実装している。
 
@@ -413,7 +413,7 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 
 > - https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
 
-#### ▼ 実装例 (Goのslice)
+#### ▼ 実装例 (Go のslice)
 
 この例では、Go の slice で補償トランザクションの仕組みを実装している。
 
@@ -505,7 +505,7 @@ func main() {
 > - https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5
 > - https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85
 
-#### ▼ 実装例 (TypeScriptの配列)
+#### ▼ 実装例 (TypeScript の配列)
 
 この例では、Azure の Durable Function にて、TypeScript の配列で補償トランザクションの仕組みを実装している。
 
@@ -592,7 +592,7 @@ export const saga = df.orchestrator(function* (context) {
 
 > - https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF
 
-#### ▼ 実装例 (Goのslice)
+#### ▼ 実装例 (Go のslice)
 
 この例では、アウトボックスパターンで Saga オーケストレーションを実装している。
 
@@ -783,9 +783,9 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 
 <br>
 
-## 05-03. Choreography (コレオグラフィ) ベースのSagaパターン
+## 05-03. Choreography (コレオグラフィ) ベースの Saga パターン
 
-### コレオグラフィベースのSagaパターンとは
+### コレオグラフィベースの Saga パターンとは
 
 マイクロサービスは、自身のローカルトランザクション処理を完了させた後に、次のマイクロサービスをコールする。
 
@@ -816,7 +816,7 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 
 > - https://github.com/fedeoliv/microservices-transactions
 
-#### ▼ OSSを使用する場合
+#### ▼ OSS を使用する場合
 
 コレオグラフィの OSS (例：Debezium、Maxwell など) を使用する。
 
@@ -849,9 +849,9 @@ Saga オーケストレーターのドメインモデリングにイベントソ
 
 <br>
 
-## 05-04. 並列パイプラインベースのSagaパターン
+## 05-04. 並列パイプラインベースの Saga パターン
 
-### 並列パイプラインベースのSagaパターンとは
+### 並列パイプラインベースの Saga パターンとは
 
 オーケストレーションベースとコレオグラフィベースのパターンを組み合わせる。
 
@@ -867,7 +867,7 @@ Saga オーケストレーターのドメインモデリングにイベントソ
 
 マイクロサービスの処理のなかで実装する。
 
-#### ▼ OSSを使用する場合
+#### ▼ OSS を使用する場合
 
 並列パイプラインの OSS (例：Apache Camel など) を使用する。
 
@@ -875,9 +875,9 @@ Saga オーケストレーターのドメインモデリングにイベントソ
 
 <br>
 
-## 06. TCCパターン
+## 06. TCC パターン
 
-### TCCパターンとは
+### TCC パターンとは
 
 各マイクロサービスに各処理フェーズ (Try、Confirm、Cancel) を実行する API を実装し、API を順に実行する。
 
@@ -908,9 +908,9 @@ API Composition サービスは、クライアントからのリクエストを�
 
 <br>
 
-## 08. Outboxパターン
+## 08. Outbox パターン
 
-### Outboxパターンとは
+### Outbox パターンとは
 
 マイクロサービスアーキテクチャにおいて、永続化処理とパブリッシュ処理が必要な場合に使える設計パターンである。
 
@@ -950,7 +950,7 @@ Outbox パターンでは、Saga ログテーブルに加えて、Outbox テー�
 
 ### メッセージリレーの設計パターン
 
-#### ▼ Polling publisherパターン
+#### ▼ Polling publisher パターン
 
 DB のイベントチェッカー (例：Debezium) を使用して、Outbox テーブルのイベントを検知する。
 
@@ -965,7 +965,7 @@ Saga オーケストレーターのクライアントやマイクロサービス
 > - https://github.com/debezium/debezium-examples/tree/main/saga
 > - https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10
 
-#### ▼ Transaction log tailingパターンとは
+#### ▼ Transaction log tailing パターンとは
 
 トランザクションログ (例：MySQL バイナリログ、PostgreSQL WAL など) を追跡する。
 

@@ -110,7 +110,7 @@ header("Content-Type: text/html; charset=UTF-8");
 
 <br>
 
-## 02. Xdebugによるデバッグ
+## 02. Xdebug によるデバッグ
 
 ### セットアップ
 
@@ -122,7 +122,7 @@ header("Content-Type: text/html; charset=UTF-8");
 $ sudo pecl install xdebug-2.2.7
 ```
 
-#### 2. Xdebugの設定
+#### 2. Xdebug の設定
 
 Xdebug のあるローカル仮想環境から見て、PhpStrom ビルトイン仮想環境を接続先と見なす。
 
@@ -155,7 +155,7 @@ xdebug.idekey=PhpStorm
 $ service httpd restart
 ```
 
-#### 4. PhpStormビルトインの設定
+#### 4. PhpStorm ビルトインの設定
 
 <br>
 
@@ -175,11 +175,11 @@ $ service httpd restart
 
 デバッガーエンジン (Xdebug) はセッションを開始し、エディタ仮想環境の `9000` 番ポートに対して、レスポンスを返信する。
 
-#### 4. Breakpointの設定
+#### 4. Breakpoint の設定
 
 エディタ仮想環境は、デバッガーエンジンに対して、Breakpoint を設定するリクエストを送信する。
 
-#### 5. DBGプロトコル：Debuggerプロトコルによる相互通信の確立
+#### 5. DBG プロトコル：Debugger プロトコルによる相互通信の確立
 
 DBG プロトコルを使用して、エディタ仮想環境とデバッガーエンジンの間の相互通信を確立する。
 

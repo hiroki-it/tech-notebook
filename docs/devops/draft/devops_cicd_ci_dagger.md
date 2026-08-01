@@ -3,7 +3,7 @@ title: 【IT技術の知見】Dagger＠CIツール
 description: Dagger＠CIツールの知見を記録しています。
 ---
 
-# Dagger＠CIツール
+# Dagger＠CI ツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Dagger＠CIツールの知見を記録しています。
 
 <br>
 
-## Daggerとは
+## Dagger とは
 
 Dagger で CI/CD パイプラインの設定ファイルを実装し、CI ツール上で実行する。
 

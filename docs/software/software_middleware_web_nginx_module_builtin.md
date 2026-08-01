@@ -58,9 +58,9 @@ http {
 
 ## 02. ngx_http_core_module
 
-### httpブロック
+### http ブロック
 
-#### ▼ httpブロック
+#### ▼ http ブロック
 
 すべての HTTP リクエストのインバウンド通信に共通する処理を設定する。
 
@@ -171,7 +171,7 @@ http {
 
 <br>
 
-### locationブロック
+### location ブロック
 
 特定のパスのインバウンド通信に関する処理を設定する。
 
@@ -221,7 +221,7 @@ location / {
 
 <br>
 
-### serverブロック
+### server ブロック
 
 特定のルーティング先に関する処理を設定する。
 
@@ -437,7 +437,7 @@ location ~ \.php$ {
 
 ### ヘルスチェックの受信
 
-#### ▼ nginxによるレスポンス
+#### ▼ nginx によるレスポンス
 
 Web サーバーのみヘルスチェックを受信する。
 
@@ -698,7 +698,7 @@ Reading: 0 Writing: 1 Waiting: 0
 
 ## 11. ngx_otel_module
 
-### ngx_otel_moduleとは
+### ngx_otel_module とは
 
 Nginx コミュニティ製のモジュールであり、Nginx を OpenTelemetry で計装できるようにする。
 

@@ -22,7 +22,7 @@ description: パッケージ管理＠Javaの知見を記録しています。
 
 ## 02. Maven
 
-### Mavenとは
+### Maven とは
 
 Java のパッケージを管理する。
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】NF＠AWSリソース
 description: NF＠AWSリソース
 ---
 
-# NF＠AWSリソース
+# NF＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: NF＠AWSリソース
 
 <br>
 
-## 01. NFとは：Network Firewall
+## 01. NF とは：Network Firewall
 
 `L3` (ネットワーク層) 〜 `L4` (トランスポート層) に対するサイバー攻撃を防御する。
 

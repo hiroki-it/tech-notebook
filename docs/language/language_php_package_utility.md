@@ -13,9 +13,9 @@ description: ユーティリティパッケージ＠PHPの知見を記録して�
 
 <br>
 
-## 01. Carbonパッケージ
+## 01. Carbon パッケージ
 
-### Carbonとは
+### Carbon とは
 
 > - https://github.com/briannesbitt/Carbon
 
@@ -23,18 +23,18 @@ description: ユーティリティパッケージ＠PHPの知見を記録して�
 
 ### データ型
 
-#### ▼ Date型
+#### ▼ Date 型
 
 厳密にはデータ型ではないが、便宜上、データ型とする。
 
 タイムスタンプとは、協定世界時(UTC)を基準にした 1970 年 1 月 1 日の 0 時 0 分 0 秒からの経過秒数を表したもの。
 
-| フォーマット        | 実装方法            | 備考                                                          |
-| ------------------- | ------------------- | ------------------------------------------------------------- |
-| 日付                | 2019-07-07          | 区切り記号なし、ドット、スラッシュなども可能                  |
-| 時間                | 19:07:07            | 区切り記号なし、も可能                                        |
-| 日時                | 2019-07-07 19:07:07 | 同上                                                          |
-| タイムスタンプ (秒) | 1562494027          | 1970年1月1日の0時0分0秒から2019-07-07 19:07:07 までの経過秒数 |
+| フォーマット        | 実装方法            | 備考                                                                 |
+| ------------------- | ------------------- | -------------------------------------------------------------------- |
+| 日付                | 2019-07-07          | 区切り記号なし、ドット、スラッシュなども可能                         |
+| 時間                | 19:07:07            | 区切り記号なし、も可能                                               |
+| 日時                | 2019-07-07 19:07:07 | 同上                                                                 |
+| タイムスタンプ (秒) | 1562494027          | 1970 年 1 月 1 日の 0 時 0 分 0 秒から 2019-07-07 19:07:07 までの経過秒数 |
 
 <br>
 
@@ -136,9 +136,9 @@ $carbon = Carbon::parse("2019-07-07 19:07:07")
 
 <br>
 
-## 02. Pinqパッケージ：Php Integrated Query
+## 02. Pinq パッケージ：Php Integrated Query
 
-### Pinqとは
+### Pinq とは
 
 配列データやオブジェクトデータに対して、クエリを送信できるようになる。
 
@@ -181,9 +181,9 @@ class Foo
 
 <br>
 
-## 03. Guzzleパッケージ
+## 03. Guzzle パッケージ
 
-### Guzzleパッケージとは
+### Guzzle パッケージとは
 
 通常、リクエストの送受信は、クライアントからサーバに対して、Postman や curl 関数などを使用して行う。
 
@@ -195,7 +195,7 @@ class Foo
 
 ### リクエスト
 
-#### ▼ GETリクエスト
+#### ▼ GET リクエスト
 
 **＊実装例＊**
 
@@ -220,7 +220,7 @@ $response = $client->request(
 
 > - https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
 
-#### ▼ POSTリクエスト
+#### ▼ POST リクエスト
 
 ```php
 <?php
@@ -292,9 +292,9 @@ $body = json_decode($response->getBody(), true);
 
 <br>
 
-## 04. KnpLabs/Snappyパッケージ
+## 04. KnpLabs/Snappy パッケージ
 
-### KnpLabs/Snappyとは
+### KnpLabs/Snappy とは
 
 ローカルまたは指定した URL の `html` ファイルから、PDF や画像のファイルを作成するパッケージ。
 
@@ -320,9 +320,9 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 <br>
 
-## 05. Respect/Validationパッケージ
+## 05. Respect/Validation パッケージ
 
-### Respect/Validationとは
+### Respect/Validation とは
 
 リクエストされたデータが正しいかを、サーバサイド側で検証する。
 
@@ -340,7 +340,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 ## 06. linecorp/line-bot-sdk
 
-### linecorp/line-bot-sdkとは
+### linecorp/line-bot-sdk とは
 
 ボットサーバーにて、LINE プラットフォームに返信するためのレスポンスを作成する。
 

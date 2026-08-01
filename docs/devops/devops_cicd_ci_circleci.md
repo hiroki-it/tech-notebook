@@ -5,7 +5,7 @@ description: CircleCI＠CIツールの知見を記録しています。
 
 # CircleCI
 
-## 01. CircleCIの仕組み
+## 01. CircleCI の仕組み
 
 ### アーキテクチャ
 
@@ -15,7 +15,7 @@ description: CircleCI＠CIツールの知見を記録しています。
 
 <br>
 
-### CIパイプライン/CDパイプライン
+### CI パイプライン/CD パイプライン
 
 `(1)`
 
@@ -63,7 +63,7 @@ CircleCI の鍵を GitHub に登録すると、リポジトリに対するプッ
 
 ```yaml
 workflows:
-  # build以外を実行しないことにより、buildのみを検証できる。
+  # build 以外を実行しないことにより、build のみを検証できる。
   build-test-and-deploy:
     jobs:
       - build
@@ -113,7 +113,7 @@ $ circleci config process .circleci/config.yml > .circleci/process.yml
 $ circleci local execute -c .circleci/process.yml --job <job名>
 ```
 
-#### ▼ CircleCIコンテナにSSH公開鍵認証
+#### ▼ CircleCI コンテナに SSH 公開鍵認証
 
 `(1)`
 
@@ -143,14 +143,14 @@ $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘�
 
 > - https://circleci.com/docs/2.0/insights-tests/
 
-#### ▼ SSHキー
+#### ▼ SSH キー
 
 SSH キーを作成する必要がある。
 
-| 鍵名         | 説明                                                                                                                                                      |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| デプロイキー | CircleCIコンテナがプロジェクトのGitHubリポジトリに接続するために必要である (例：CIOps) 。GitHubのリポジトリ設定にあるデプロイキーが、自動的に作成される。 |
-| ユーザーキー | CircleCIコンテナがプロジェクト以外のGitHubリポジトリに接続するために必要である (例：GitOps) 。GitHubのアカウント設定にあるSSHキーが、自動的に作成される。 |
+| 鍵名         | 説明                                                                                                                                                            |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| デプロイキー | CircleCI コンテナがプロジェクトの GitHub リポジトリに接続するために必要である (例：CIOps) 。GitHub のリポジトリ設定にあるデプロイキーが、自動的に作成される。   |
+| ユーザーキー | CircleCI コンテナがプロジェクト以外の GitHub リポジトリに接続するために必要である (例：GitOps) 。GitHub のアカウント設定にある SSH キーが、自動的に作成される。 |
 
 > - https://circleci.com/docs/2.0/add-ssh-key/
 

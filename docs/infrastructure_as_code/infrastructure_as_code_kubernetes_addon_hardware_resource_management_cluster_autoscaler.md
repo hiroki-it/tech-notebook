@@ -34,7 +34,7 @@ cluster-autoscaler を使用しない場合、クラウドプロバイダーの 
 
 ### 条件に応じたアーキテクチャ
 
-#### ▼ Podのスケジューリングの可否が条件の場合
+#### ▼ Pod のスケジューリングの可否が条件の場合
 
 cluster-autoscaler は、ハードウェアリソース不足が原因でスケジューリングできない Pod があるとき、Node をスケーリングする。
 
@@ -51,7 +51,7 @@ cluster-autoscaler は、ハードウェアリソース不足が原因でスケ�
 > - https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#pod%E3%81%AE%E8%B2%A0%E8%8D%B7%E9%87%8F%E3%81%AB%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpametricsserverclusterautoscaler
 > - https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#when-does-cluster-autoscaler-change-the-size-of-a-cluster
 
-#### ▼ Kubernetes以外のメトリクスを条件すると仮定する場合
+#### ▼ Kubernetes 以外のメトリクスを条件すると仮定する場合
 
 Kubernetes 以外のメトリクス (例：Amazon CloudWatch、Google Cloud Monitoring) を条件とする場合は、metrics-server は不要である。
 
@@ -59,7 +59,7 @@ Kubernetes 以外のメトリクス (例：Amazon CloudWatch、Google Cloud Moni
 
 <br>
 
-### Karpenterとの違い
+### Karpenter との違い
 
 Karpenter は、EC2 のグループ (例：Amazon EC2 フリート) に関する API をコールする。
 
@@ -79,7 +79,7 @@ cluster-autoscaler は、Deployment (cluster-autoscaler) 、ConfigMap (cluster-a
 
 <br>
 
-### Deployment配下のPod
+### Deployment 配下の Pod
 
 #### ▼ cluster-autoscaler
 
@@ -98,7 +98,7 @@ spec:
         # クラウドプロバイダーを設定する。
         - "--cloud-provider=aws"
         - "--namespace=kube-system"
-        # Nodeグループが設定されたClusterを設定する。
+        # Node グループが設定された Cluster を設定する。
         - "--node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/<Cluster名>"
         - "--logtostderr=true"
         - "--stderrthreshold=info"
@@ -154,11 +154,11 @@ Cluster-wide:
                LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...
                LastTransitionTime: 2023-03-27 10:29:04.227287209 +0000 UTC ...
 
-# Nodeグループ名
+# Node グループ名
 NodeGroups:
   Name:        foo-node-group
 
-  # registered：Nodeの現在数  # cloudProviderTarget：Nodeの必要数。cloudProviderTargetのNode数に合わせてスケーリングする。
+  # registered：Node の現在数  # cloudProviderTarget：Node の必要数。cloudProviderTarget のNode 数に合わせてスケーリングする。
   # LastProbeTime：直近で確認した時間
   # LastTransitionTime：直近でスケーリングを実施した時間
   Health:      Healthy (ready=4 unready=0 (resourceUnready=0) notStarted=0 longNotStarted=0 registered=4 longUnregistered=0 cloudProviderTarget=4 (minSize=3, maxSize=10))
@@ -172,7 +172,7 @@ NodeGroups:
                LastTransitionTime: 2023-03-27 10:25:12.791878569 +0000 UTC ...
 
   # スケールインに関する情報
-  # CandidatesPresent (スケーリングのNode候補がいる)、NonCacdidates (スケーリングのNode候補がいる)
+  # CandidatesPresent (スケーリングの Node 候補がいる)、NonCacdidates (スケーリングの Node 候補がいる)
   ScaleDown:   CandidatesPresent (candidates=2)
                LastProbeTime:      2023-03-27 10:38:18.722053187 +0000 UTC ...
                LastTransitionTime: 2023-03-27 10:29:04.227287209 +0000 UTC ...
@@ -187,12 +187,12 @@ NodeGroups:
 
 ## 02. セットアップ
 
-### AWS側
+### AWS 側
 
-| アドオン名         | タグ                                               | 値      | 説明                                                                                                                                                                     |
-| ------------------ | -------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| cluster-autoscaler | `k8s.io/cluster-autoscaler/<Amazon EKS Cluster名>` | `owned` | cluster-autoscalerを使用する場合、cluster-autoscalerがEC2ワーカーNodeを検出するために必要である。<br>- https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
-| 同上               | `k8s.io/cluster-autoscaler/enabled`                | `true`  | 同上                                                                                                                                                                     |
+| アドオン名         | タグ                                               | 値      | 説明                                                                                                                                                                         |
+| ------------------ | -------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| cluster-autoscaler | `k8s.io/cluster-autoscaler/<Amazon EKS Cluster名>` | `owned` | cluster-autoscaler を使用する場合、cluster-autoscaler がEC2 ワーカーNode を検出するために必要である。<br>- https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
+| 同上               | `k8s.io/cluster-autoscaler/enabled`                | `true`  | 同上                                                                                                                                                                         |
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html
 
@@ -254,8 +254,8 @@ NodeGroups:
 
 ### metadata.annotations
 
-| キー                                                   | 値の例 | 説明                                                           |
-| ------------------------------------------------------ | ------ | -------------------------------------------------------------- |
-| `cluster-autoscaler.kubernetes.io/scale-down-disabled` | `true` | cluster-autoscalerのスケールインで削除させないNodeに設定する。 |
+| キー                                                   | 値の例 | 説明                                                              |
+| ------------------------------------------------------ | ------ | ----------------------------------------------------------------- |
+| `cluster-autoscaler.kubernetes.io/scale-down-disabled` | `true` | cluster-autoscaler のスケールインで削除させない Node に設定する。 |
 
 <br>

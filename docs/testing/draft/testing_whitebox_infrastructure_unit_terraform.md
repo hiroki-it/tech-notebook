@@ -40,7 +40,7 @@ AWS リソースを単体コンポーネントと捉えて、ユニットテス�
 
 <br>
 
-## 02. terraform testコマンド
+## 02. terraform test コマンド
 
 記入中...
 

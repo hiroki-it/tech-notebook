@@ -13,7 +13,7 @@ description: Longhorn＠ストレージ系ミドルウェアの知見を記録�
 
 <br>
 
-## 01. Longhornとは
+## 01. Longhorn とは
 
 ブロックストレージとして機能する。
 

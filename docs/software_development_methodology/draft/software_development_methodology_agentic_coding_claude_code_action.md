@@ -13,7 +13,7 @@ description: Claude Code Action＠Claude Codeの知見を記録しています�
 
 <br>
 
-## 01. Claude Code Actionとは
+## 01. Claude Code Action とは
 
 メンションに応じて自動で Issue の内容を読み取り、実装をプッシュし、PR を作成する。
 

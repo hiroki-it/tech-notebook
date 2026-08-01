@@ -3,7 +3,7 @@ title: 【IT技術の知見】Amazon SES＠AWSリソース
 description: Amazon SES＠AWSリソースの知見を記録しています。
 ---
 
-# Amazon SES＠AWSリソース
+# Amazon SES＠AWS リソース
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Amazon SES＠AWSリソースの知見を記録しています。
 
 ## 01. Amazon SES：Simple Email Service
 
-### Amazon SESとは
+### Amazon SES とは
 
 クラウドメールサーバーとして働く。
 
@@ -29,14 +29,14 @@ description: Amazon SES＠AWSリソースの知見を記録しています。
 
 ![Amazon SES とは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon SES とは.png)
 
-| 設定項目           | 説明                                                                                                            | 補足                                                                                                                                          |
-| ------------------ | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Domain             | Amazon SESのドメイン名を設定する。                                                                              | 設定したドメイン名には、『`10 inbound-smtp.us-east-1.amazonaws.com`』というMXレコードタイプの値が紐付く。                                     |
-| Email Addresses    | 宛先として認証するメールアドレスを設定する。設定するとAWSからメールが届くため、指定されたリンクをクリックする。 | Sandboxモードのときだけ動作する。                                                                                                             |
-| Sending Statistics | Amazon SESで収集したデータをメトリクスで確認できる。                                                            | `Request Increased Sending Limits` のリンクにて、Sandboxモードの解除を申請できる。                                                            |
-| SMTP Settings      | SMTP-AUTHの接続情報を確認できる。                                                                               | アプリケーションの `25` 番ポートは送信制限があるため、`465` 番ポートを使用する。これに合わせて、Amazon SESも受信で `465` 番ポートを使用する。 |
-| Rule Sets          | メールの受信したトリガーとして実行するアクションを設定できる。                                                  |                                                                                                                                               |
-| IP Address Filters |                                                                                                                 |                                                                                                                                               |
+| 設定項目           | 説明                                                                                                              | 補足                                                                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Domain             | Amazon SES のドメイン名を設定する。                                                                               | 設定したドメイン名には、『`10 inbound-smtp.us-east-1.amazonaws.com`』という MX レコードタイプの値が紐付く。                                    |
+| Email Addresses    | 宛先として認証するメールアドレスを設定する。設定すると AWS からメールが届くため、指定されたリンクをクリックする。 | Sandbox モードのときだけ動作する。                                                                                                             |
+| Sending Statistics | Amazon SES で収集したデータをメトリクスで確認できる。                                                             | `Request Increased Sending Limits` のリンクにて、Sandbox モードの解除を申請できる。                                                            |
+| SMTP Settings      | SMTP-AUTH の接続情報を確認できる。                                                                                | アプリケーションの `25` 番ポートは送信制限があるため、`465` 番ポートを使用する。これに合わせて、Amazon SES も受信で `465` 番ポートを使用する。 |
+| Rule Sets          | メールの受信したトリガーとして実行するアクションを設定できる。                                                    |                                                                                                                                                |
+| IP Address Filters |                                                                                                                   |                                                                                                                                                |
 
 ### Rule Sets
 
@@ -47,7 +47,7 @@ description: Amazon SES＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 03. セットアップ (Terraformの場合)
+## 03. セットアップ (Terraform の場合)
 
 ```terraform
 resource "aws_sesv2_configuration_set" "foo" {
@@ -154,7 +154,7 @@ resource "aws_route53_record" "ses_dmarc_foo" {
 
 Amazon SES は連携する AWS リソースと同じリージョンに作成しなければならない。
 
-### Sandboxモードの解除
+### Sandbox モードの解除
 
 Amazon SES はデフォルトでは Sandbox モードになっている。
 
@@ -162,10 +162,10 @@ Sandbox モードでは以下の制限がかかっており。
 
 サポートセンターに解除申請が必要である。
 
-| 制限     | 説明                                                 |
-| -------- | ---------------------------------------------------- |
-| 送信制限 | Amazon SESで認証したメールアドレスのみに送信できる。 |
-| 受信制限 | 1日に200メールのみ受信できる。                       |
+| 制限     | 説明                                                  |
+| -------- | ----------------------------------------------------- |
+| 送信制限 | Amazon SES で認証したメールアドレスのみに送信できる。 |
+| 受信制限 | 1 日に 200 メールのみ受信できる。                     |
 
 <br>
 
@@ -213,7 +213,7 @@ SES ---> CloudWatch ---> SNS ---> Lambda ---> Slack
 
 ## 06. SMTP-AUTH
 
-### AWSにおけるSMTP-AUTHの仕組み
+### AWS における SMTP-AUTH の仕組み
 
 一般的な SMTP-AUTH では、クライアントアカウントの認証が必要である。同様にして、AWS でもこれが必要であり、IAM ユーザーを使用してこれを実現する。
 

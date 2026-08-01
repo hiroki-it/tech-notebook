@@ -3,7 +3,7 @@ title: 【IT技術の知見】API仕様書＠RESTful-API
 description: API仕様書＠RESTful-APIの知見を記録しています。
 ---
 
-# API仕様書＠RESTful-API
+# API 仕様書＠RESTful-API
 
 ## はじめに
 
@@ -13,41 +13,41 @@ description: API仕様書＠RESTful-APIの知見を記録しています。
 
 <br>
 
-## 01. OpenAPI仕様
+## 01. OpenAPI 仕様
 
-### OpenAPI仕様とは
+### OpenAPI 仕様とは
 
 RESTful-API の仕様を実装により説明するためのフォーマットのこと。JSON 型または YAML 型で実装できる。
 
 いくつかのフィールドから構成されている。
 
 ```yaml
-openapi: # openapiフィールド
+openapi: # openapi フィールド
 
-info: # infoフィールド
+info: # info フィールド
 
-servers: # serversフィールド
+servers: # servers フィールド
 
-paths: # pathsフィールド
+paths: # paths フィールド
 
-webhooks: # webhooksフィールド
+webhooks: # webhooks フィールド
 
-components: # componentsフィールド
+components: # components フィールド
 
-security: # securityフィールド
+security: # security フィールド
 
-tags: # tagsフィールド
+tags: # tags フィールド
 
-externalDocs: # externalDocsフィールド
+externalDocs: # externalDocs フィールド
 ```
 
 > - https://spec.openapis.org/oas/v3.1.0#fixed-fields
 
 <br>
 
-### OpenAPI仕様の視覚化
+### OpenAPI 仕様の視覚化
 
-#### ▼ OpenAPI仕様の視覚化とは
+#### ▼ OpenAPI 仕様の視覚化とは
 
 OpenAPI 仕様を共有して閲覧できるように、仕様書の静的ファイル (例：`html` ファイル、`css` ファイル、`js` ファイル) を自動的に作成する。
 
@@ -55,7 +55,7 @@ OpenAPI 仕様を共有して閲覧できるように、仕様書の静的ファ
 
 > - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
 
-#### ▼ ReDocの場合
+#### ▼ ReDoc の場合
 
 ReDoc を使用して、OpenAPI 仕様から静的ファイルを作成する。
 
@@ -90,13 +90,13 @@ $ redoc-cli bundle openapi.yaml redoc.html
 > - https://qiita.com/icck/items/97d00495ec324e1902d6
 > - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
 
-#### ▼ Swagger UI／Swagger Codegenの場合
+#### ▼ Swagger UI／Swagger Codegen の場合
 
 Swagger UI／Swagger Codegen を使用して、OpenAPI 仕様から静的ファイルを作成する。
 
 > - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
 
-#### ▼ OpenAPI Generatorの場合
+#### ▼ OpenAPI Generator の場合
 
 OpenAPI Generator を使用して、OpenAPI 仕様から静的ファイルを作成する。
 
@@ -108,19 +108,19 @@ $ openapi-generator generate -i docs/openapi.yaml -o docs/html -g html
 
 > - https://ky-yk-d.hatenablog.com/entry/2019/01/13/234108#OpenAPI-Generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%82%92%E8%A9%A6%E3%81%99
 
-#### ▼ oapi-codegenの場合
+#### ▼ oapi-codegen の場合
 
 記入中...
 
 <br>
 
-### APIスキーマ駆動開発
+### API スキーマ駆動開発
 
-#### ▼ APIスキーマ駆動開発とは
+#### ▼ API スキーマ駆動開発とは
 
 API 仕様書に基づいて、API を実装する。
 
-#### ▼ OpenAPI Generatorの場合
+#### ▼ OpenAPI Generator の場合
 
 以下の流れに基づいて、API を実装していく。
 
@@ -252,7 +252,7 @@ func GetProducts(c *gin.Context) {
 > - https://zenn.dev/team_soda/articles/b749228a360454#openapi-generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fschema%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C
 > - https://openapi-generator.tech/docs/generators/
 
-#### ▼ oapi-codegenの場合
+#### ▼ oapi-codegen の場合
 
 ```bash
 oapi-codegen -package=openapi -generate=types,client,spec openapi.yaml > api.go
@@ -262,7 +262,7 @@ oapi-codegen -package=openapi -generate=types,client,spec openapi.yaml > api.go
 
 ### クラウドプロバイダーとの統合
 
-#### ▼ APIゲートウェイの場合
+#### ▼ API ゲートウェイの場合
 
 API ゲートウェイによる OpenAPI 仕様のインポートについては、以下のリンクを参考にせよ。
 
@@ -272,7 +272,7 @@ API ゲートウェイによる OpenAPI 仕様のインポートについては�
 
 ## 02. フィールド
 
-### openapiフィールド (必須)
+### openapi フィールド (必須)
 
 OpenAPI 仕様のバージョンを定義する。
 
@@ -284,7 +284,7 @@ openapi: 3.0.0
 
 <br>
 
-### infoフィールド (必須)
+### info フィールド (必須)
 
 API 名、作成者名、メールアドレス、ライセンスなどを定義する。
 
@@ -292,22 +292,22 @@ API 名、作成者名、メールアドレス、ライセンスなどを定義�
 
 ```yaml
 info:
-  title: Foo API # API名
-  description: The API for Foo. # APIの説明
+  title: Foo API # API 名
+  description: The API for Foo. # API の説明
   termsOfService: https://www.foo.com/terms/ # 利用規約
   contact:
     name: API support # 連絡先名
-    url: https://www.foo.com/support # 連絡先に関するURL
+    url: https://www.foo.com/support # 連絡先に関する URL
     email: support@foo.com # メールアドレス
   license:
     name: Apache 2.0 # ライセンス
     url: https://www.apache.org/licenses/LICENSE-2.0.html # URL
-  version: <バージョンタグ> # APIドキュメントのバージョン
+  version: <バージョンタグ> # API ドキュメントのバージョン
 ```
 
 <br>
 
-### serversフィールド
+### servers フィールド
 
 API 自体の URL などを定義する。
 
@@ -328,20 +328,20 @@ servers:
 
 <br>
 
-### pathsフィールド (必須)
+### paths フィールド (必須)
 
 API のエンドポイント、HTTP メソッド、ステータスコードなどを定義する。
 
 ```yaml
 paths:
   #===========================
-  # pathsオブジェクト
+  # paths オブジェクト
   #===========================
   /users:
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
-    get: # GETメソッドを設定する。
+    get: # GET メソッドを設定する。
       tags:
         - ユーザー情報取得エンドポイント
       summary: ユーザー情報取得
@@ -364,7 +364,7 @@ paths:
                     userId: 1
                     name: Hiroki
               schema:
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -379,9 +379,9 @@ paths:
         "401":
           $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
-    post: # POSTメソッドを設定する。
+    post: # POST メソッドを設定する。
       tags:
         - ユーザー情報作成エンドポイント
       summary: ユーザー情報作成
@@ -396,8 +396,8 @@ paths:
           application/json: # MIME type
             foo: # メッセージボディ例
               userId: 1
-            schema: # APIスキーマ
-              $ref: "#/components/schemas/user" # Userモデルを参照する。
+            schema: # API スキーマ
+              $ref: "#/components/schemas/user" # User モデルを参照する。
       #===========================
       # レスポンス
       #===========================
@@ -409,7 +409,7 @@ paths:
               foo: # レスポンスボディ例
                 userId: 1
               schema:
-                $ref: "#/components/schemas/normal" # APIスキーマとして、正常系モデルを参照する。
+                $ref: "#/components/schemas/normal" # API スキーマとして、正常系モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -420,15 +420,15 @@ paths:
                 errors:
                   messages: ["ユーザーIDは必ず指定してください。"]
               schema:
-                $ref: "#/components/schemas/error" # APIスキーマとして、異常系モデルを参照する。
+                $ref: "#/components/schemas/error" # API スキーマとして、異常系モデルを参照する。
         "401":
           $ref: "#/components/responses/unauthorized" # 認証エラーを参照する。
   #===========================
-  # pathsオブジェクト
+  # paths オブジェクト
   #===========================
   /users/{userId}:
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     get:
       tags:
@@ -458,8 +458,8 @@ paths:
               foo: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # APIスキーマ
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+              schema: # API スキーマ
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -485,7 +485,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/error" # 異常系モデルを参照する。
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     put:
       tags:
@@ -515,8 +515,8 @@ paths:
               foo: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # APIスキーマ
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+              schema: # API スキーマ
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -545,22 +545,22 @@ paths:
 
 <br>
 
-### componentsフィールド (必須)
+### components フィールド (必須)
 
 API スキーマなど、他の項目で共通して利用するものを定義する。
 
 ```yaml
 components:
   #===========================
-  # callbackキーの共通化
+  # callback キーの共通化
   #===========================
   callbacks: {}
   #===========================
-  # linkキーの共通化
+  # link キーの共通化
   #===========================
   links: {}
   #===========================
-  # responseキーの共通化
+  # response キーの共通化
   #===========================
   responses:
     unauthorized:
@@ -575,7 +575,7 @@ components:
           schema:
             $ref: "#/components/schemas/error" # 異常系モデルを参照する。
   #===========================
-  # schemaキーの共通化
+  # schema キーの共通化
   #===========================
   schemas:
     # ユーザー
@@ -601,7 +601,7 @@ components:
           items:
             type: string
   #===========================
-  # securityフィールドの共通化
+  # security フィールドの共通化
   #===========================
   securitySchemes:
     # ベーシック認証
@@ -609,12 +609,12 @@ components:
       description: ベーシック認証
       type: http
       scheme: basic
-    # Bearer認証
+    # Bearer 認証
     bearerAuth:
       description: Bearer認証
       type: http
       scheme: bearer
-    # APIキー認証
+    # API キー認証
     apiKeyAuth:
       description: APIキー認証
       type: apiKey
@@ -624,7 +624,7 @@ components:
 
 <br>
 
-### securityフィールド
+### security フィールド
 
 components フィールドで定義した認証方法を宣言する。
 
@@ -639,7 +639,7 @@ security:
 
 <br>
 
-### tagsフィールド
+### tags フィールド
 
 各項目に付けるタグを定義する。
 
@@ -657,7 +657,7 @@ tags:
 
 <br>
 
-### externalDocsフィールド
+### externalDocs フィールド
 
 API を説明するドキュメントのリンクを定義する。
 
@@ -671,15 +671,15 @@ externalDocs:
 
 <br>
 
-## 03. APIスキーマ
+## 03. API スキーマ
 
-### APIスキーマとは
+### API スキーマとは
 
 RESTful-API が受信する CRUD のデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。
 
 <br>
 
-### APIスキーマによるバリデーション
+### API スキーマによるバリデーション
 
 データ型や必須データにより、リクエスト／レスポンスのデータのバリデーションを実行する。
 

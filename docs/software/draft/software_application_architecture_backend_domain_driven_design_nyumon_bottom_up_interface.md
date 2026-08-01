@@ -98,13 +98,13 @@ export class UserApplicationService implements IUserApplicationService {
 
 ### 依存性逆転の実装方法
 
-#### ▼ IoCコンテナパターン
+#### ▼ IoC コンテナパターン
 
-#### ▼ Service Locatorパターン
+#### ▼ Service Locator パターン
 
 依存関係がわかりにくくなるため、アンチパターンである。
 
-#### ▼ Singletonパターン
+#### ▼ Singleton パターン
 
 依存関係がわかりにくくなるため、アンチパターンである。
 

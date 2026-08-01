@@ -17,7 +17,7 @@ description: 設定ファイル＠PHP-FPMの知見を記録しています。
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ apt install php-fpm
@@ -29,7 +29,7 @@ $ apt-get install php-fpm
 
 <br>
 
-## 02. 設定ファイルの種類 (※ Dockerの場合)
+## 02. 設定ファイルの種類 (※ Docker の場合)
 
 ### `/usr/local/etc/php-fpm.conf` ファイル
 
@@ -150,7 +150,7 @@ decorate_workers_output = no
 
 <br>
 
-## 03. globalセクション
+## 03. global セクション
 
 ### error_log
 
@@ -174,9 +174,9 @@ pid = /run/php-fpm/php-fpm.pid
 
 <br>
 
-## 04. wwwセクション
+## 04. www セクション
 
-### wwwセクションとは
+### www セクションとは
 
 PHP-FPM の `www` プロセスのプールを設定する。
 
@@ -300,7 +300,7 @@ listen.owner = www-data
 
 ### php_admin_flag
 
-#### ▼ php_admin_flagとは
+#### ▼ php_admin_flag とは
 
 Apache のみで使用できる。
 
@@ -322,7 +322,7 @@ php_admin_flag[log_errors] = on
 
 ### php_admin_value
 
-#### ▼ php_admin_valueとは
+#### ▼ php_admin_value とは
 
 Apache のみで使用できる。
 
@@ -346,7 +346,7 @@ php_admin_value[error_log] = /dev/stderr
 
 ### php_flag
 
-#### ▼ php_flagとは
+#### ▼ php_flag とは
 
 PHP の `ini` ファイルで設定された boolean 値のオプションを上書きする。
 
@@ -368,7 +368,7 @@ php_flag[display_errors] = off
 
 ### php_value
 
-#### ▼ php_valueとは
+#### ▼ php_value とは
 
 PHP の `ini` ファイルで設定された boolean 値以外のオプションを上書きする。
 

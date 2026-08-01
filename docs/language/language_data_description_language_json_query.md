@@ -3,7 +3,7 @@ title: 【IT技術の知見】JSONクエリ＠JSON
 description: JSONクエリ＠JSONの知見を記録しています。
 ---
 
-# JSONクエリ＠JSON
+# JSON クエリ＠JSON
 
 ## はじめに
 
@@ -17,7 +17,7 @@ description: JSONクエリ＠JSONの知見を記録しています。
 
 ### セットアップ
 
-#### ▼ brewリポジトリから
+#### ▼ brew リポジトリから
 
 ```bash
 $ brew install jq
@@ -27,7 +27,7 @@ $ brew install jq
 
 ## 02. オプション
 
-### 例で使用するJSON
+### 例で使用する JSON
 
 以降で使用する JSON 型データを以下の通りとする。
 
@@ -37,8 +37,8 @@ $ brew install jq
 ```
 
 ```yaml
-# list.jsonファイル
-# 配列内のオブジェクトごとに、fooキーの値が異なる。
+# list.json ファイル
+# 配列内のオブジェクトごとに、foo キーの値が異なる。
 [
   {"foo": "FOO", "bar": "BAR", "baz": "BAZ"},
   {"foo": "BAR", "bar": "BAZ", "baz": "FOO"},

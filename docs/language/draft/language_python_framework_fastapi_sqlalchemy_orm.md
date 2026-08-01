@@ -15,7 +15,7 @@ description: SQLAlchemy ORM＠FastAPIの知見を記録しています。
 
 ## 01. セットアップ
 
-### DBへの接続
+### DB への接続
 
 **＊実装例＊**
 
@@ -126,7 +126,7 @@ Depends 関数について
 
 > - https://zenn.dev/sh0nk/books/537bb028709ab9/viewer/b92ab0#di
 
-> DB接続部分にDIを利用することにより、ビジネスロジックとDBが密結合になることを防ぎます。
+> DB 接続部分に DI を利用することにより、ビジネスロジックと DB が密結合になることを防ぎます。
 
 また、DI によってこの `db` インスタンスの中身を外部から override できる。
 

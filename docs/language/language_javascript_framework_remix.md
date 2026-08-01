@@ -13,7 +13,7 @@ description: Remix＠フレームワークの知見を記録しています。
 
 <br>
 
-## 01. Remixとは
+## 01. Remix とは
 
 React の react-router を拡張したフレームワークである。
 
@@ -36,7 +36,7 @@ export async function action({request}) {
 
 <br>
 
-## 02. Remixの仕組み
+## 02. Remix の仕組み
 
 ### 処理の流れ
 
@@ -46,19 +46,19 @@ SSR のアプリケーションで以下の順に処理を実行し、データ�
 
 ローダーの段階である程度加工された状態でバックエンドからデータを習得できれば、フロントエンドの処理時にかかる負荷をバックエンド側に寄せられる。
 
-| 順番 | 名前                | ディレクトリ     | ロジック                                              | 相当するデザインパターン | 責務                                                                                                                                                                                                                     |
-| ---- | ------------------- | ---------------- | ----------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 1    | ブラウザ上          | -                | -                                                     | -                        | 最初、ブラウザからRemixにリクエストを送信する。ほかに、アクション中の `remix-link` コンポーネントが、URLクエリストリングのページ値（`?page=n`）が書き換える。                                                            |
-| 2    | ローダー            | `app/routes`     | ルーティング                                          | Controller               | レンダリング前にバックエンドでデータを処理し、`return json()` でフロントエンドにデータを渡す。ローダーの段階でデータを用意しておき、フロントエンドではデータ表示ロジックだけを実装すると、ブラウザの描画の性能が上がる。 |
-| 3    | remixコンポーネント | `app/components` | UIロジック、CSSスタイリングロジック、状態管理ロジック | View + ViewModel         | レンダリング処理を実行する。reactコンポーネントとは区別する。また、`app/components` にあるreactコンポーネント（UIレンダリングロジック、状態管理ロジック）を呼び出す。 生成したページをブラウザに返信する。               |
-| 4    | ブラウザ上          | -                | -                                                     | -                        | Remixからページを取得し、表示する                                                                                                                                                                                        |
-| 5    | アクション          | `app/routes`     | ルーティング                                          | Controller               | レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストコンテキストを受信し、DBのデータを変更する。また、レスポンスをremixコンポーネントに渡す。                      |
-| 6    | ローダー            | `app/routes`     | UIロジック、CSSスタイリングロジック、状態管理ロジック | View + ViewModel         | ブラウザ操作に応じて、アクションからデータを取得する。                                                                                                                                                                   |
-| 7    | remixコンポーネント | `app/components` | UIロジック、CSSスタイリングロジック、状態管理ロジック | View + ViewModel         | ２番に同じ                                                                                                                                                                                                               |
+| 順番 | 名前                 | ディレクトリ     | ロジック                                                | 相当するデザインパターン | 責務                                                                                                                                                                                                                     |
+| ---- | -------------------- | ---------------- | ------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1    | ブラウザ上           | -                | -                                                       | -                        | 最初、ブラウザから Remix にリクエストを送信する。ほかに、アクション中の `remix-link` コンポーネントが、URL クエリストリングのページ値（`?page=n`）が書き換える。                                                         |
+| 2    | ローダー             | `app/routes`     | ルーティング                                            | Controller               | レンダリング前にバックエンドでデータを処理し、`return json()` でフロントエンドにデータを渡す。ローダーの段階でデータを用意しておき、フロントエンドではデータ表示ロジックだけを実装すると、ブラウザの描画の性能が上がる。 |
+| 3    | remix コンポーネント | `app/components` | UI ロジック、CSS スタイリングロジック、状態管理ロジック | View + ViewModel         | レンダリング処理を実行する。react コンポーネントとは区別する。また、`app/components` にある react コンポーネント（UI レンダリングロジック、状態管理ロジック）を呼び出す。 生成したページをブラウザに返信する。           |
+| 4    | ブラウザ上           | -                | -                                                       | -                        | Remix からページを取得し、表示する                                                                                                                                                                                       |
+| 5    | アクション           | `app/routes`     | ルーティング                                            | Controller               | レンダリング後のブラウザ操作に応じて、デザインパターンのコントローラーのようにクエリストリングやリクエストコンテキストを受信し、DB のデータを変更する。また、レスポンスを remix コンポーネントに渡す。                   |
+| 6    | ローダー             | `app/routes`     | UI ロジック、CSS スタイリングロジック、状態管理ロジック | View + ViewModel         | ブラウザ操作に応じて、アクションからデータを取得する。                                                                                                                                                                   |
+| 7    | remix コンポーネント | `app/components` | UI ロジック、CSS スタイリングロジック、状態管理ロジック | View + ViewModel         | ２番に同じ                                                                                                                                                                                                               |
 
 > - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
 
-#### ▼ SSRの場合の詳細な流れ
+#### ▼ SSR の場合の詳細な流れ
 
 以下は、SSR 時にログイン後のトップページの表示に関わる処理である。
 
@@ -189,9 +189,9 @@ export default function Posts() {
 
 <br>
 
-### remixコンポーネント
+### remix コンポーネント
 
-#### ▼ remixコンポーネントとは
+#### ▼ remix コンポーネントとは
 
 React を使用して実装された Remix 専用のビルトインコンポーネントである。
 
@@ -253,7 +253,7 @@ export default function FooReport() {
 
 remix コンポーネント内で `console.log()` 関数を実行すると、ブラウザのコンソールに出力され、バックエンドの実行ログには出力されない。
 
-#### ▼ アクションではなくremixコンポーネントに実装するべき処理
+#### ▼ アクションではなく remix コンポーネントに実装するべき処理
 
 バックエンドのデータを変更する必要がないような外部 API 通信処理は、アクションではなく remix コンポーネントに実装するべきである。
 
@@ -391,7 +391,7 @@ export async function action({request}: ActionFunctionArgs) {
 
 ## 03. アーキテクチャ
 
-### Remix独自のMVCアーキテクチャ
+### Remix 独自の MVC アーキテクチャ
 
 Remix は独自の MVC アーキテクチャを採用している。
 
@@ -399,15 +399,15 @@ Remix は独自の MVC アーキテクチャを採用している。
 
 ```yaml
 View
-# routesのcomponentの処理などが相当
+# routes の component の処理などが相当
 ↓
 ↓
 Controller
-# routesのloaderやactionの処理が相当
+# routes の loader や action の処理が相当
 ↓
 ↓
 Model
-# modelsなどが相当
+# models などが相当
 # ドメイン層のモデルとインフラストラクチャ層の永続化処理が結合している
 ```
 
@@ -419,11 +419,11 @@ Model
 
 ```yaml
 UserInterface層
-# routesのcomponent、loader、actionの処理の中で、入力と出力の処理が相当
+# routes の component、loader、action の処理の中で、入力と出力の処理が相当
 ↓
 ↓
 Application層
-# routesのcomponent、loader、actionの処理の中で、modelsとの調整処理が相当
+# routes の component、loader、action の処理の中で、models との調整処理が相当
 ↓
 ↓
 Domain層
@@ -431,7 +431,7 @@ Domain層
 ↓
 ↓
 Infrastructure層
-# データベース接続、ロギング、ファイルシステム操作、外部API通信などが相当
+# データベース接続、ロギング、ファイルシステム操作、外部 API 通信などが相当
 ```
 
 <br>
@@ -442,7 +442,7 @@ Infrastructure層
 
 <br>
 
-## 04. UIレンダリングパターン
+## 04. UI レンダリングパターン
 
 Remix では、SSR モード、CSR モード、SSG モードがある。
 
@@ -450,11 +450,11 @@ CSR モードと SSG モードは厳密な区分ではなく、Remix 独自の�
 
 それぞれのモードで、`entry.server.tsx` ファイルと `entry.client.tsx` ファイルが関与する。
 
-|           | `entry.server.tsx` ファイル              | `entry.client.tsx` ファイル        |
-| --------- | ---------------------------------------- | ---------------------------------- |
-| SSR       | サーバーレンダリング関連の処理           | ハイドレーション関連の処理         |
-| 擬似的CSR | 最小限のサーバーレンダリング関連の処理   | クライアントレンダリング関連の処理 |
-| 擬似的SSG | ビルド時にサーバーレンダリング関連の処理 | ハイドレーション関連の処理         |
+|            | `entry.server.tsx` ファイル              | `entry.client.tsx` ファイル        |
+| ---------- | ---------------------------------------- | ---------------------------------- |
+| SSR        | サーバーレンダリング関連の処理           | ハイドレーション関連の処理         |
+| 擬似的 CSR | 最小限のサーバーレンダリング関連の処理   | クライアントレンダリング関連の処理 |
+| 擬似的 SSG | ビルド時にサーバーレンダリング関連の処理 | ハイドレーション関連の処理         |
 
 <br>
 
@@ -473,25 +473,25 @@ CSR モードと SSG モードは厳密な区分ではなく、Remix 独自の�
 ```yaml
 ├── app
 │   ├── authenticators     # 認証処理ロジック
-│   ├── components         # 汎用的なUIレンダリング、CSSスタイリングのロジック、UI入力値バリデーション
-│   │   ├── core           # 汎用UIコンポーネント
+│   ├── components         # 汎用的な UI レンダリング、CSS スタイリングのロジック、UI 入力値バリデーション
+│   │   ├── core           # 汎用 UI コンポーネント
 │   │   ├── forms          # フォームコンポーネント
 │   │   ├── layouts        # レイアウトコンポーネント
-│   │   └── validators     # UI入力値バリデーション
+│   │   └── validators     # UI 入力値バリデーション
 │   ├── constants          # さまざまなグローバルな値
 │   ├── entry.client.tsx
 │   ├── entry.server.tsx
 │   ├── database           # データベースへの接続処理のロジック
-│   ├── models             # ORMモデル、ORMを使用したRead処理やWrite処理のロジック
+│   ├── models             # ORM モデル、ORM を使用した Read 処理や Write 処理のロジック
 │   ├── root.tsx
-│   ├── routes             # APIルーティングまたはページング処理、状態管理、UIレンダリング、CSSスタイリング、API入力値バリデーションに関するロジック
-│   ├── styles             # CSSやTailwindなど
-│   ├── usecases           # routeディレクトリのapiルートまたはuiルートから呼び出すユースケース
+│   ├── routes             # API ルーティングまたはページング処理、状態管理、UI レンダリング、CSS スタイリング、API 入力値バリデーションに関するロジック
+│   ├── styles             # CSS や Tailwind など
+│   ├── usecases           # route ディレクトリの api ルートまたは ui ルートから呼び出すユースケース
 │   └── utils              # 『薄い関数』『その他、汎用的な非機能ロジックの関数』など
 │
-├── cypress # E2Eテストのテストコード
-├── mocks   # E2Eテストのための外部APIモック
-├── prisma  # Prismaのデータベーススキーマ
+├── cypress # E2E テストのテストコード
+├── mocks   # E2E テストのための外部 API モック
+├── prisma  # Prisma のデータベーススキーマ
 ├── test    # テストコードのセットアップ
 └── vitest  # ユニットテストコード
 ```
@@ -570,7 +570,7 @@ export default function FooComponent() {
 
 ### entry.server.tsx
 
-#### ▼ entry.server.tsxとは
+#### ▼ entry.server.tsx とは
 
 すべてのモードで使用する (SSR モードや SSG モードだけではない) 。
 
@@ -621,13 +621,13 @@ app
 │       ├── rules.ts
 │       └── types.ts
 │
-├── infrastructure # modelsディレクトリのファイルをinfrastructureディレクトリに配置する
+├── infrastructure # models ディレクトリのファイルを infrastructure ディレクトリに配置する
 │   ├── prisma.server.ts
 │   └── projects
-│       ├── repo.server.ts # ドメインモデルをCRUDする
-│       └── DTO.ts # ドメインモデルのデータをDTOに詰め替える
+│       ├── repo.server.ts # ドメインモデルを CRUD する
+│       └── DTO.ts # ドメインモデルのデータを DTO に詰め替える
 │
-├── presentation # routesディレクトリのファイルをpresentationディレクトリに配置する
+├── presentation # routes ディレクトリのファイルを presentation ディレクトリに配置する
 │   └── projects
 │       ├── route.server.ts
 │       ├── route.tsx
@@ -653,7 +653,7 @@ import {redirect} from "@remix-run/node";
 
 <br>
 
-### React Router v7以降
+### React Router v7 以降
 
 Remix 自体が React Router に統合されたため、`react-router` パッケージをインポートする。
 
@@ -669,7 +669,7 @@ import {redirect} from "react-router";
 
 ## 07. ルーティング
 
-### uiルートとapiルート
+### ui ルートと api ルート
 
 Remix では、ブラウザルーティングと API エンドポイントを区別せず、両方を兼ねている。
 
@@ -691,7 +691,7 @@ Remix では、ブラウザルーティングと API エンドポイントを区
 ルートパスになる。
 
 ```yaml
-app/                        # URLパス
+app/                        # URL パス
 ├── routes/
 │   ├── _index.tsx          # /
 │   ...
@@ -706,7 +706,7 @@ app/                        # URLパス
 ルート以降のパスを設定する。
 
 ```yaml
-app/                        # URLパス
+app/                        # URL パス
 ├── routes/
 │   ├── _index.tsx          # /
 │   ├── home.tsx            # /home
@@ -739,7 +739,7 @@ export default function Foo() {
 URL に規則性があるようなページに適する。
 
 ```yaml
-app/                        # URLパス
+app/                        # URL パス
 ├── routes/
 │   ├── _index.tsx          # /
 │   ├── home.tsx            # /home
@@ -785,7 +785,7 @@ export default function Post() {
 しかし、`/home/auth` パスではなく、`/auth` パスになる。
 
 ```yaml
-app/                       #  URLパス                   引き継ぐレイアウト
+app/                       #  URL パス                   引き継ぐレイアウト
 ├── routes/
 │   ├── _index.tsx         #  /                        root.tsx
 │   ├── home.tsx           #                           root.tsx
@@ -812,7 +812,7 @@ app/                       #  URLパス                   引き継ぐレイア�
 しかし、すべてのファイルの URL に `auth` が含まれない。
 
 ```yaml
-app/                               # URLパス
+app/                               # URL パス
 ├── routes                         #
 │   ├── _auth.tsx                  #
 │   ├── _auth.login.tsx            # /login
@@ -894,7 +894,7 @@ Remix の仕様ではディレクトリ構造やファイル名がエンドポ�
 
 (Remix は規模が大きくなると、routes に辛さが出そう...)
 
-> Remixはとても小さなサイトや個人のブログだけを想定しているのですか？Remixは全般的に好きだけど、フラットルートを使うようになったことで、正直Remixが使いづらくなった。
+> Remix はとても小さなサイトや個人のブログだけを想定しているのですか？Remix は全般的に好きだけど、フラットルートを使うようになったことで、正直 Remix が使いづらくなった。
 >
 > https://github.com/remix-run/remix/discussions/8473#discussioncomment-9174522
 
@@ -938,7 +938,7 @@ export const loader = async () => {
 
 <br>
 
-## 09. remixコンポーネントの種類
+## 09. remix コンポーネントの種類
 
 ### ユーザー定義
 
@@ -948,7 +948,7 @@ Remix がコンポーネントであることを認識するために、名前�
 
 <br>
 
-### Remix Formコンポーネント
+### Remix Form コンポーネント
 
 `form` タグをレンダリングする。
 
@@ -981,7 +981,7 @@ function NewEvent() {
 
 <br>
 
-### Remix Linkコンポーネント
+### Remix Link コンポーネント
 
 URL を書き換える。
 
@@ -1039,7 +1039,7 @@ export async function loader({request}: LoaderFunctionArgs) {
 
 <br>
 
-### Remix Metaコンポーネント
+### Remix Meta コンポーネント
 
 Web ページの `meta` タグ (Web サイト名、説明など) をレンダリングする。
 
@@ -1062,7 +1062,7 @@ export default function Root() {
 
 <br>
 
-### Remix Outletコンポーネント
+### Remix Outlet コンポーネント
 
 親ページ内に子ページをレンダリングする。
 
@@ -1086,7 +1086,7 @@ export default function SomeParent() {
 
 ## 10. hook
 
-### hookをコールしてはいけない場所
+### hook をコールしてはいけない場所
 
 Remix は hook を同じ順番、同じ回数でコールする必要がある。
 
@@ -1109,9 +1109,9 @@ loader を再実行するからといって、ページをリロードしてい�
 
 <br>
 
-## 11. Cookieを使用した認証
+## 11. Cookie を使用した認証
 
-### LocalStorageやSessionStorageではなくCookie
+### LocalStorage や SessionStorage ではなく Cookie
 
 Remix は SSR アプリケーションを作成する。
 
@@ -1123,9 +1123,9 @@ SSR では、Web Storage API と通信できず、ブラウザの LocalStorage �
 
 <br>
 
-### Cookieの作成と保存
+### Cookie の作成と保存
 
-#### ▼ ブラウザのCookieに保存する場合
+#### ▼ ブラウザの Cookie に保存する場合
 
 ブラウザの Cookie に資格情報を保存する。
 
@@ -1172,7 +1172,7 @@ export const memorySessionStorage = createFileSessionStorage({
 
 ## 11. モデル
 
-### prismaによるスキーマ
+### prisma によるスキーマ
 
 Prisma ORM を使用して、データベースのスキーマを定義する。
 
@@ -1189,7 +1189,7 @@ model User {
 
 <br>
 
-### CRUD処理
+### CRUD 処理
 
 #### ▼ CREATE
 

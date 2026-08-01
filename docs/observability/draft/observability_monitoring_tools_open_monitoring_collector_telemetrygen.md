@@ -13,7 +13,7 @@ description: Telemetrygen＠OpenTelemetry Collectorの知見を記録してい�
 
 <br>
 
-## 01. Telemetrygenとは
+## 01. Telemetrygen とは
 
 ローカルマシンで擬似的に分散トレースを作成し、OpenTelemetry Collector がこれを正しく処理できるかを検証する。
 
@@ -36,7 +36,7 @@ $ go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telem
 
 <br>
 
-## 03. telemetrygenコマンド
+## 03. telemetrygen コマンド
 
 ### logs
 

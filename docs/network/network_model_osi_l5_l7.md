@@ -3,7 +3,7 @@ title: 【IT技術の知見】L5 ~ L7＠OSI参照モデル
 description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 ---
 
-# `L5` ~ `L7`＠OSI参照モデル
+# `L5` ~ `L7`＠OSI 参照モデル
 
 ## はじめに
 
@@ -103,7 +103,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 > - https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
 
-#### ▼ SMTPサーバーのモック
+#### ▼ SMTP サーバーのモック
 
 アプリケーションのメール送信機能を開発するときに、送信テストを実施する必要があり、この内容は公開したくない。
 
@@ -119,7 +119,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 ### SMTP：Simple Mail Transfer Protocol
 
-#### ▼ SMTPとは
+#### ▼ SMTP とは
 
 メールデータを送信するためのプロトコルのこと。
 
@@ -135,7 +135,7 @@ SMTP に認証を組み込んだ仕組みのこと。
 
 ### POP3：Post Official Protocol version 3
 
-#### ▼ POP3とは
+#### ▼ POP3 とは
 
 メールサーバーに届いたメールを、受信機器にダウンロードし、受信機器で参照するプロトコル。
 
@@ -145,7 +145,7 @@ SMTP に認証を組み込んだ仕組みのこと。
 
 ### IMAP4：Internet Message Access Protocol version 4
 
-#### ▼ IMAP4とは
+#### ▼ IMAP4 とは
 
 メールサーバーに届いたメールを、受信機器にダウンロードせず、メールサーバーに置いたまま参照するプロトコル。
 
@@ -157,7 +157,7 @@ Gmail で POP か IMAP を設定できる。
 
 ![GmailでPOPorIMAPを設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GmailでPOPかIMAPを設定.jpg)
 
-#### ▼ IMAP4の仕組み
+#### ▼ IMAP4 の仕組み
 
 IMAP のリクエストは、`<タグ> <リクエストコマンド> <引数>` からなる。
 
@@ -230,7 +230,7 @@ THREAD=ORDEREDSUBJECT MULTIAPPEND
 
 ### APOP：Authenticated POP
 
-#### ▼ APOPとは
+#### ▼ APOP とは
 
 メール受信の際に、チャレンジレスポンス方式の認証することにより、平文の資格情報がネットワークに流れるのを防止するプロトコル
 
@@ -238,7 +238,7 @@ THREAD=ORDEREDSUBJECT MULTIAPPEND
 
 ## 05. 独自プロコトル
 
-### DB接続系
+### DB 接続系
 
 `L4` のプロトコルに属する独自プロトコルもある (例：Redis など) 。
 

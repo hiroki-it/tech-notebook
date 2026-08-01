@@ -145,7 +145,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 > - https://hacogym.jp/
 > - https://zenn.dev/hsshss/articles/e11efefc7011ab
 
-#### ▼ 例：監視SaaS
+#### ▼ 例：監視 SaaS
 
 プラットフォームエンジニアリングでは、エンジニアの技術的な業務がドメインになる。
 
@@ -313,7 +313,7 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 
 > - https://next-engine.net/ec-blog/order-flow/
 
-#### ▼ 例：書籍ECサイト
+#### ▼ 例：書籍 EC サイト
 
 書籍 EC サイトの例。
 
@@ -424,7 +424,7 @@ class Book {
 > - https://note.com/alpinc/n/nab47ab9273c6
 > - https://thealp.co.jp/
 
-#### ▼ 例：会計アプリケーションを提供するfreee
+#### ▼ 例：会計アプリケーションを提供する freee
 
 会計アプリケーションを提供する freee の例。
 
@@ -473,9 +473,9 @@ class Book {
 | 精算                         | settlement         | 精算           | Settlement（精算）                                                                        |
 | 送金照合                     | reconciliation     | 照合           | Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分）              |
 | レポーティング               | reporting          | レポーティング | RemittanceHistory（送金履歴）、RemittanceDetailFile（送金明細ファイル）                   |
-| 送金取引管理ポータル         | web-portal         | 送金取引管理   | webポータルのフロントエンドアプリケーション                                               |
+| 送金取引管理ポータル         | web-portal         | 送金取引管理   | web ポータルのフロントエンドアプリケーション                                              |
 
-#### ▼ QR決済ドメイン
+#### ▼ QR 決済ドメイン
 
 QR 決済業務の担当者が変わる境目を見つけ、それを境界づけられたコンテキストにする。
 
@@ -495,14 +495,14 @@ QR決済取引管理ポータル：管理者がQR決済取引を照会し、例�
 
 **＊表＊**
 
-| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名         | 集約内のエンティティ                                                         |
-| ---------------------------- | ------------------ | -------------- | ---------------------------------------------------------------------------- |
-| QR決済取引                   | transaction        | 取引           | Transaction（取引）                                                          |
-| 加盟店契約                   | merchant           | 契約           | MerchantContract（加盟店契約）、Merchant（加盟店）                           |
-| 精算                         | payment            | 精算           | Payment（清算）                                                              |
-| ユーザー                     | user               | ユーザー       | User（ユーザー）                                                             |
-| QR決済照合                   | reconciliation     | 照合           | Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分） |
-| QR決済取引管理ポータル       | web-portal         | QR決済取引管理 | webポータルのフロントエンドアプリケーション                                  |
+| 境界づけられたコンテキスト名 | マイクロサービス名 | 集約名          | 集約内のエンティティ                                                         |
+| ---------------------------- | ------------------ | --------------- | ---------------------------------------------------------------------------- |
+| QR 決済取引                  | transaction        | 取引            | Transaction（取引）                                                          |
+| 加盟店契約                   | merchant           | 契約            | MerchantContract（加盟店契約）、Merchant（加盟店）                           |
+| 精算                         | payment            | 精算            | Payment（清算）                                                              |
+| ユーザー                     | user               | ユーザー        | User（ユーザー）                                                             |
+| QR 決済照合                  | reconciliation     | 照合            | Reconciliation（照合）、ReconciliationResult（照合結果）、Difference（差分） |
+| QR 決済取引管理ポータル      | web-portal         | QR 決済取引管理 | web ポータルのフロントエンドアプリケーション                                 |
 
 <br>
 
@@ -560,9 +560,9 @@ QR決済取引管理ポータル：管理者がQR決済取引を照会し、例�
 
 ## 04. 戦術的設計
 
-### MVCからレイヤードアーキテクチャへの変遷
+### MVC からレイヤードアーキテクチャへの変遷
 
-#### ▼ MVCと問題点
+#### ▼ MVC と問題点
 
 ドメイン駆動設計が提唱される以前、MVC の考え方が主流であった。
 
@@ -570,7 +570,7 @@ QR決済取引管理ポータル：管理者がQR決済取引を照会し、例�
 
 ![MVCモデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/MVCモデル.png)
 
-#### ▼ MVCからレイヤードアーキテクチャへの移行
+#### ▼ MVC からレイヤードアーキテクチャへの移行
 
 ドメイン駆動設計が登場したことによって、MVC は発展し、M・V・C それぞれの役割がより具体的で精密になった。
 
@@ -802,14 +802,14 @@ CQRS と相性がよい。
 
 テーブル構造は以下のとおりになり、イベントデータが参照/作成されるだけである。
 
-| `id` | `event_name`  | `event_entity_name` | `event_entity_id` | `event_data`                                  |
-| ---- | ------------- | ------------------- | ----------------- | --------------------------------------------- |
-| 1    | OrderCreated  | Order               | 1                 | OrderCreatedオブジェクトをJSONに変換したもの  |
-| 2    | OrderUpdated  | Order               | 1                 | OrderUpdatedオブジェクトをJSONに変換したもの  |
-| 3    | OrderCreated  | Order               | 2                 | OrderCreatedオブジェクトをJSONに変換したもの  |
-| 4    | OrderCanceled | Order               | 1                 | OrderCanceledオブジェクトをJSONに変換したもの |
-| 5    | OrderCreated  | Order               | 3                 | OrderCreatedオブジェクトをJSONに変換したもの  |
-| ...  | ...           | ...                 | ...               | ...                                           |
+| `id` | `event_name`  | `event_entity_name` | `event_entity_id` | `event_data`                                     |
+| ---- | ------------- | ------------------- | ----------------- | ------------------------------------------------ |
+| 1    | OrderCreated  | Order               | 1                 | OrderCreated オブジェクトを JSON に変換したもの  |
+| 2    | OrderUpdated  | Order               | 1                 | OrderUpdated オブジェクトを JSON に変換したもの  |
+| 3    | OrderCreated  | Order               | 2                 | OrderCreated オブジェクトを JSON に変換したもの  |
+| 4    | OrderCanceled | Order               | 1                 | OrderCanceled オブジェクトを JSON に変換したもの |
+| 5    | OrderCreated  | Order               | 3                 | OrderCreated オブジェクトを JSON に変換したもの  |
+| ...  | ...           | ...                 | ...               | ...                                              |
 
 > - https://youtu.be/Jtcp9ry8ZcE?t=1066
 > - https://qiita.com/uzawa-sorich/items/261021c1d265b20117ab#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0es%E3%81%A3%E3%81%A6%E4%BD%95
@@ -843,12 +843,12 @@ CQRS と相性がよい。
 
 MVC との関係は次のとおりである。
 
-| MVCアーキテクチャ | レイヤードアーキテクチャ           |
-| ----------------- | ---------------------------------- |
-| Model             | ドメイン層、インフラストラクチャ層 |
-| Controller        | インターフェース層                 |
-| View              | インターフェース層                 |
-| -                 | ユースケース層 (新しく実装する)    |
+| MVC アーキテクチャ | レイヤードアーキテクチャ           |
+| ------------------ | ---------------------------------- |
+| Model              | ドメイン層、インフラストラクチャ層 |
+| Controller         | インターフェース層                 |
+| View               | インターフェース層                 |
+| -                  | ユースケース層 (新しく実装する)    |
 
 > - https://www.amazon.co.jp/dp/4798121967
 > - https://techblog.yahoo.co.jp/entry/2021011230061115/

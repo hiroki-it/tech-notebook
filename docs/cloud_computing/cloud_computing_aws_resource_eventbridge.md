@@ -3,7 +3,7 @@ title: 【IT技術の知見】Amazon EventBridge＠AWSリソース
 description: Amazon EventBridge＠AWSリソースの知見を記録しています。
 ---
 
-# Amazon EventBridge＠AWSリソース
+# Amazon EventBridge＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Amazon EventBridge＠AWSリソースの知見を記録していま�
 
 <br>
 
-## 01. Amazon EventBridgeとは
+## 01. Amazon EventBridge とは
 
 クラウドパブリッシュ／サブスクライブ方式のシステムとして働く。
 
@@ -37,7 +37,7 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 ### パターン
 
-#### ▼ イベント受信対象のAWSリソース
+#### ▼ イベント受信対象の AWS リソース
 
 イベント受信対象の AWS リソースは以下のリンクを参考にせよ。
 
@@ -64,7 +64,7 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
   # その時々のイベントごとに異なるデータ
   "detail": {},
 }
-# Amazon SNSのデータ
+# Amazon SNS のデータ
 ```
 
 **＊実装例＊**

@@ -13,7 +13,7 @@ description: PagerDuty＠インシデント管理ツールの知見を記録し�
 
 <br>
 
-## 01. PagerDutyの仕組み
+## 01. PagerDuty の仕組み
 
 ![pagerduty_on-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_on-call.png)
 
@@ -60,7 +60,7 @@ Amazon CloudWatch アラームに通知されたエラーイベントのうち�
 
 ### インシデントの解決フェーズ
 
-#### ▼ PagerDutyの解決フェーズ
+#### ▼ PagerDuty の解決フェーズ
 
 インシデントには解決フェーズがあり、PagerDuty ではそれ管理できる。
 
@@ -68,18 +68,18 @@ Amazon CloudWatch アラームに通知されたエラーイベントのうち�
 
 PagerDuty では、以下の解決フェーズを設定できる。
 
-| 解決フェーズ | 説明                                                                                                                                                             |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Triggered    | アラートがインシデントとして見なされ、タスクが作成された。再現性の低い瞬間的なインシデントであれば、Acknowledgedフェーズを経ずに、そのままResolvedにしてもよい。 |
-| Acknowledged | インシデントのタスクに対応中であるが、まだ解決できていない。一定期間、Resolvedフェーズに移行しない場合は、再びTriggeredフェーズに戻る。                          |
-| Resolved     | インシデントのタスクを解決した。                                                                                                                                 |
+| 解決フェーズ | 説明                                                                                                                                                                |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Triggered    | アラートがインシデントとして見なされ、タスクが作成された。再現性の低い瞬間的なインシデントであれば、Acknowledged フェーズを経ずに、そのまま Resolved にしてもよい。 |
+| Acknowledged | インシデントのタスクに対応中であるが、まだ解決できていない。一定期間、Resolved フェーズに移行しない場合は、再び Triggered フェーズに戻る。                          |
+| Resolved     | インシデントのタスクを解決した。                                                                                                                                    |
 
 ![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_incident_phase.png)
 
 > - https://thinkit.co.jp/article/13420
 > - https://support.pagerduty.com/docs/incidents#incident-statuses
 
-#### ▼ Resolvedへの自動的な移行
+#### ▼ Resolved への自動的な移行
 
 解決フェーズが一定時間 Triggered フェーズのままで Resolved に移行しない場合、自動的に Resolved に移行するように設定できる。
 

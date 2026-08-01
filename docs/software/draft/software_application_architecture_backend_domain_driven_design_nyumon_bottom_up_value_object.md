@@ -278,7 +278,7 @@ export const getDisplayName = (fullName: FullName): string => {
 
 <br>
 
-## 05. 監視SaaSで値オブジェクトを考えてみる
+## 05. 監視 SaaS で値オブジェクトを考えてみる
 
 監視 SaaS を開発しているため、どんな値オブジェクトがありそうかを考えてみる。
 
@@ -286,13 +286,13 @@ export const getDisplayName = (fullName: FullName): string => {
 
 どのようなドメインモデルがあり、それを値オブジェクトに具体化できそうか考えてみる。
 
-| ドメインモデル   | プリミティブ | 値オブジェクト | 持つデータ                                                                                                                                                          |
-| ---------------- | ------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 時間範囲         | int          | TimeRange      | 期間                                                                                                                                                                |
-| タグ             | string       | Tag            | タグ値                                                                                                                                                              |
-| メトリクス型     | string       | MetricsType    | どのメトリクス型であるかを表す識別子（例えば、Prometheus互換であれば、counter、gauge、histogram、summaryといった型名の文字列）をmetricsTypeNameプロパティとしてもつ |
-| ヘルスステータス | string       | HealthStatus   | error、success、などをhealthStatusNameプロパティとしてもつ                                                                                                          |
-| プロジェクト名   | string       | ProjectName    |                                                                                                                                                                     |
+| ドメインモデル   | プリミティブ | 値オブジェクト | 持つデータ                                                                                                                                                              |
+| ---------------- | ------------ | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 時間範囲         | int          | TimeRange      | 期間                                                                                                                                                                    |
+| タグ             | string       | Tag            | タグ値                                                                                                                                                                  |
+| メトリクス型     | string       | MetricsType    | どのメトリクス型であるかを表す識別子（例えば、Prometheus 互換であれば、counter、gauge、histogram、summary といった型名の文字列）を metricsTypeName プロパティとしてもつ |
+| ヘルスステータス | string       | HealthStatus   | error、success、などを healthStatusName プロパティとしてもつ                                                                                                            |
+| プロジェクト名   | string       | ProjectName    |                                                                                                                                                                         |
 
 <br>
 

@@ -39,7 +39,7 @@ description: 15章＠ドメイン駆動設計実践入門の知見を記録し�
 
 一方で、アプリケーション層やドメイン層ではこれらに依存しないことが重要である。
 
-## 15-2 Express.jsを利用した実装
+## 15-2 Express.js を利用した実装
 
 『レビュー内容から推薦書籍データを取得する』というユースケースの機能として実装するまでの流れを解説する。
 
@@ -77,11 +77,11 @@ npx ts-node src/Presentation/Express/index.ts
 
 『外部』のブラウザで `http://localhost:3000` に HTTP リクエストを送信し、 `Hello World!` が表示されれば成功である。
 
-### 15-2-2 Web APIの実装
+### 15-2-2 Web API の実装
 
 プレゼンテーション層で API を実装していく。
 
-#### ▼ APIの共有処理
+#### ▼ API の共有処理
 
 `CatalogService/src/Presentation/Express/index.ts` の API の共有処理の実装である。
 
@@ -132,7 +132,7 @@ const invalid = (res: Response) =>
   res.status(400).json({ok: false, message: "Invalid request"});
 ```
 
-#### ▼ 書籍登録API
+#### ▼ 書籍登録 API
 
 `CatalogService/src/Presentation/Express/index.ts` の書籍登録 API の実装である。
 
@@ -162,7 +162,7 @@ app.post("/book", async (req, res) => {
 });
 ```
 
-#### ▼ 推薦書籍取得API（中核ユースケースに対応）
+#### ▼ 推薦書籍取得 API（中核ユースケースに対応）
 
 `CatalogService/src/Presentation/Express/index.ts` の推薦書籍取得 API の実装である。
 
@@ -195,7 +195,7 @@ app.get("/book/:isbn/recommendations", async (req, res) => {
 });
 ```
 
-#### ▼ レビュー登録API
+#### ▼ レビュー登録 API
 
 `CatalogService/src/Presentation/Express/index.ts` のレビュー登録 API の実装である。
 
@@ -229,7 +229,7 @@ app.post("/book/:isbn/review", async (req, res) => {
 });
 ```
 
-#### ▼ レビュー編集API
+#### ▼ レビュー編集 API
 
 `CatalogService/src/Presentation/Express/index.ts` のレビュー編集 API の実装である。
 
@@ -261,7 +261,7 @@ app.put("/review/:reviewId", async (req, res) => {
 });
 ```
 
-#### ▼ レビュー削除API
+#### ▼ レビュー削除 API
 
 `CatalogService/src/Presentation/Express/index.ts` のレビュー削除 API の実装である。
 
@@ -296,7 +296,7 @@ app.delete("/review/:reviewId", async (req, res) => {
 
 『外部』の CLI（ここでは `curl`）から HTTP リクエストを送信し、API がレスポンスを返信することを確認する。
 
-#### ▼ 書籍登録API
+#### ▼ 書籍登録 API
 
 書籍登録 API で書籍を登録する。
 
@@ -326,7 +326,7 @@ $ curl \
 }
 ```
 
-#### ▼ 推薦書籍取得API（中核ユースケースに対応）
+#### ▼ 推薦書籍取得 API（中核ユースケースに対応）
 
 推薦書籍取得 API で推薦書籍を取得する。
 
@@ -350,7 +350,7 @@ $ curl http://localhost:3000/book/9784814400737/recommendations
 }
 ```
 
-#### ▼ レビュー登録API
+#### ▼ レビュー登録 API
 
 レビュー登録 API でレビューを登録する。
 
@@ -379,7 +379,7 @@ $ curl \
 }
 ```
 
-#### ▼ レビュー編集API
+#### ▼ レビュー編集 API
 
 レビュー編集 API でレビューを編集する。
 
@@ -407,7 +407,7 @@ $ curl \
 }
 ```
 
-#### ▼ レビュー削除API
+#### ▼ レビュー削除 API
 
 レビュー削除 API でレビューを削除する。
 

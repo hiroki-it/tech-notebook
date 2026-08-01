@@ -13,7 +13,7 @@ description: 認証／認可＠Laravelの知見を記録しています。
 
 <br>
 
-## 01. Laravelの全体像
+## 01. Laravel の全体像
 
 ### ライフサイクル
 
@@ -21,23 +21,23 @@ description: 認証／認可＠Laravelの知見を記録しています。
 
 大まかな処理フローは以下の通りである。
 
-|     | 用語                                                    | 説明                                                                                                                  |
-| --- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| 1   | リクエストを受信する。                                  |                                                                                                                       |
-| 2   | `index.php` ファイル                                    | エントリーポイントから処理が開始する。                                                                                |
-| 3   | Autoload                                                | `autoload.php` ファイルにて、パッケージを自動的にロードする。                                                         |
-| 4   | Load App                                                | `bootstrap/app.php` ファイルにて、ServiceContainer (`Illuminate\Foundation\Application.php`) を実行する。             |
-| 5   | Http Kernel                                             | Kernelを実行する。                                                                                                    |
-| 6   | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProviderの `register()` 関数や `boot()` 関数を実行する。これにより、ServiceContainerにクラスがバインドされる。 |
-| 7   | Middleware                                              | BeforeMiddlewareを実行する。                                                                                          |
-| 8   | ・Dispatch by Router<br>・Routes Match                  | `web.php` ファイル、`app.php` ファイルなどのルーティング定義を元に、Routerが実行する。                                |
-| 9   | FormRequest                                             | バリデーションを実行する。                                                                                            |
-| 10  | Controller                                              | Controllerを起点として、DBにまで処理が走る。                                                                          |
-| 11  | Resource                                                | DBから読み込んだコレクション型データを配列型データに変換する。                                                        |
-| 12  | Response                                                | Responseを実行する。配列型データをJSON型データに変換する。                                                            |
-| 13  | Terminate Middleware                                    | AfterMiddlewareが実行される。                                                                                         |
-| 14  | View                                                    | `blade.php` ファイルを基に静的ファイルを作成する。                                                                    |
-| 15  | レスポンスを返信する。                                  |                                                                                                                       |
+|     | 用語                                                    | 説明                                                                                                                    |
+| --- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| 1   | リクエストを受信する。                                  |                                                                                                                         |
+| 2   | `index.php` ファイル                                    | エントリーポイントから処理が開始する。                                                                                  |
+| 3   | Autoload                                                | `autoload.php` ファイルにて、パッケージを自動的にロードする。                                                           |
+| 4   | Load App                                                | `bootstrap/app.php` ファイルにて、ServiceContainer (`Illuminate\Foundation\Application.php`) を実行する。               |
+| 5   | Http Kernel                                             | Kernel を実行する。                                                                                                     |
+| 6   | ・Register ServiceProviders<br>・Boot Service Providers | ServiceProvider の `register()` 関数や `boot()` 関数を実行する。これにより、ServiceContainer にクラスがバインドされる。 |
+| 7   | Middleware                                              | BeforeMiddleware を実行する。                                                                                           |
+| 8   | ・Dispatch by Router<br>・Routes Match                  | `web.php` ファイル、`app.php` ファイルなどのルーティング定義を元に、Router が実行する。                                 |
+| 9   | FormRequest                                             | バリデーションを実行する。                                                                                              |
+| 10  | Controller                                              | Controller を起点として、DB にまで処理が走る。                                                                          |
+| 11  | Resource                                                | DB から読み込んだコレクション型データを配列型データに変換する。                                                         |
+| 12  | Response                                                | Response を実行する。配列型データを JSON 型データに変換する。                                                           |
+| 13  | Terminate Middleware                                    | AfterMiddleware が実行される。                                                                                          |
+| 14  | View                                                    | `blade.php` ファイルを基に静的ファイルを作成する。                                                                      |
+| 15  | レスポンスを返信する。                                  |                                                                                                                         |
 
 > - https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
 
@@ -196,7 +196,7 @@ DB_USERNAME=<アプリケーションユーザー名>
 DB_PASSWORD=<アプリケーションユーザーのパスワード>
 ```
 
-#### ▼ RDBとRedisの選択
+#### ▼ RDB と Redis の選択
 
 ```php
 <?php
@@ -368,7 +368,7 @@ REDIS_PORT=<Redisのポート>
 
 ### Event
 
-#### ▼ Eventとは
+#### ▼ Event とは
 
 ビジネスの出来事がモデリングされたイベントオブジェクトとして動作する。
 
@@ -412,7 +412,7 @@ event(new UserCreatedEvent($user));
 
 > - https://readouble.com/laravel/8.x/ja/events.html#defining-events
 
-#### ▼ EloquentモデルのCRUDイベント
+#### ▼ Eloquent モデルの CRUD イベント
 
 Eloquent モデルでは、DB アクセスに関する関数の実行開始や終了の処理タイミングをイベントクラスに紐付けられる。
 
@@ -477,7 +477,7 @@ class User extends Model
 
 ### Listener
 
-#### ▼ Listenerとは
+#### ▼ Listener とは
 
 イベントが発生したときに、これに紐付いてコールするオブジェクトのこと。
 
@@ -560,7 +560,7 @@ class EventServiceProvider extends ServiceProvider
 }
 ```
 
-#### ▼ 任意のEloquentモデルCRUDイベントの検知
+#### ▼ 任意の Eloquent モデル CRUD イベントの検知
 
 Laravel の多くのコンポーネントに、`boot()` 関数が定義されている。
 
@@ -740,7 +740,7 @@ class ExecutorConstant
 
 ## 07. Exception
 
-### Laravelにおけるエラーハンドリング
+### Laravel におけるエラーハンドリング
 
 エラーハンドリングは `4` 個のステップからなる。
 
@@ -891,13 +891,13 @@ class Handler extends ExceptionHandler
 
 ### Facade
 
-#### ▼ Facadeとは
+#### ▼ Facade とは
 
 Facade に登録されたクラス (Facade クラス) と ServiceContainer を繋ぐ静的プロキシとして働く。
 
 関数をコールできるようになる。
 
-#### ▼ Facadeを使用しない場合
+#### ▼ Facade を使用しない場合
 
 new 演算子でインスタンスを作成する。
 
@@ -925,7 +925,7 @@ $foo = new Foo();
 $foo->method();
 ```
 
-#### ▼ Facadeの静的プロキシを使用する場合
+#### ▼ Facade の静的プロキシを使用する場合
 
 静的関数の記法でコールできる。
 
@@ -972,7 +972,7 @@ use Illuminate\Support\Facades\Foo;
 $result = Foo::method();
 ```
 
-#### ▼ Facadeを使用したほうがよい場合
+#### ▼ Facade を使用したほうがよい場合
 
 Facade がトレイトの代わりになる場合、Facade を使用すると責務がドメインモデルへ集中せずに済む。
 
@@ -980,7 +980,7 @@ Facade がトレイトの代わりになる場合、Facade を使用すると責
 
 Notifiable トレイトを User クラスで使用せずに、Notification ファサードによるオンデマンド通知を使用することにより、User クラスが通知処理の責務を持たずに済む。
 
-#### ▼ 標準登録されたFacadeクラスの種類
+#### ▼ 標準登録された Facade クラスの種類
 
 以下のクラスは、デフォルトで登録されている Facade である。
 
@@ -1034,9 +1034,9 @@ Notifiable トレイトを User クラスで使用せずに、Notification フ�
 
 <br>
 
-### Authファサード
+### Auth ファサード
 
-#### ▼ Authファサードとは
+#### ▼ Auth ファサードとは
 
 認証に関する処理を提供する。
 
@@ -1044,9 +1044,9 @@ Laravel からあらかじめ提供されている認証を使用しない場合
 
 <br>
 
-### DBファサード
+### DB ファサード
 
-#### ▼ DBファサードとは
+#### ▼ DB ファサードとは
 
 DB の操作処理を提供する。
 
@@ -1180,9 +1180,9 @@ class FooRepository extends Repository implements DomainFooRepository
 
 <br>
 
-### Routeファサード
+### Route ファサード
 
-#### ▼ Routeファサードとは
+#### ▼ Route ファサードとは
 
 ルーティング処理を提供する。
 
@@ -1201,13 +1201,13 @@ RouteServiceProvider も参照せよ。
 Web サーバーではヘルスチェックエンドポイントを設けず、App サーバー側にヘルスエンドポイント (例：`/healthcheck`) を設ける。
 
 ```yaml
-ロードバランサー # /healthcheckにヘルスチェックを送信する
+ロードバランサー # /healthcheck にヘルスチェックを送信する
 ⬇⬆️︎
 ⬇⬆️︎
 Webサーバー
 ⬇⬆️︎
 ⬇⬆️︎
-Appサーバー # /healthcheckで、200ステータスを返却する
+Appサーバー # /healthcheck で、200 ステータスを返却する
 ```
 
 ```php
@@ -1389,9 +1389,9 @@ Route::group(["prefix" => "foo" , "middleware" => "auth"], (function () {
 
 <br>
 
-### Storageファサード
+### Storage ファサード
 
-#### ▼ Storageファサードとは
+#### ▼ Storage ファサードとは
 
 ファイルの入出力処理を提供する。
 
@@ -1601,15 +1601,15 @@ Storage::put("file.txt", "file.txt");
 
 <br>
 
-### Validatorファサード
+### Validator ファサード
 
-#### ▼ Validatorファサードとは
+#### ▼ Validator ファサードとは
 
 バリデーション処理を提供する。
 
 FormRequest クラスの `validated()` 関数や `validate()` 関数の代わりに、Validator ファサードを使用してもよい。
 
-#### ▼ Validatorクラス、`fails()` 関数
+#### ▼ Validator クラス、`fails()` 関数
 
 Validate ファサードの `make()` 関数を使用して、ルールを定義する。
 
@@ -1728,7 +1728,7 @@ class FooController extends Controller
 
 ### `auth()` ヘルパー
 
-#### ▼ AuthManagerインスタンスの返却
+#### ▼ AuthManager インスタンスの返却
 
 認証処理を持つ AuthManager クラスのインスタンスを返却する。
 
@@ -1810,7 +1810,7 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 ### `response()` ヘルパー
 
-#### ▼ JSON型データを含むレスポンス
+#### ▼ JSON 型データを含むレスポンス
 
 返却される ResponseFactory クラスの `json()` 関数にレンダリングしたい JSON 型データを設定する。
 
@@ -1843,7 +1843,7 @@ class FooController extends Controller
 }
 ```
 
-#### ▼ Viewテンプレートのレスポンス
+#### ▼ View テンプレートのレスポンス
 
 返却される ResponseFactory クラスの `view()` 関数に、レンダリングしたいデータ (テンプレート、array 型データ、ステータスコードなど) を設定する。
 
@@ -1905,7 +1905,7 @@ class FooController extends Controller
 
 ### `route()` ヘルパー
 
-#### ▼ ルートエイリアスを基にURL作成
+#### ▼ ルートエイリアスを基に URL 作成
 
 ルートにエイリアスがついている場合、エイリアスに応じて URL を作成する。
 
@@ -1978,7 +1978,7 @@ $path = storage_path("app/file.txt");
 
 ### `url()` ヘルパー
 
-#### ▼ パスを基にURL作成
+#### ▼ パスを基に URL 作成
 
 指定したパスに応じて URL を作成する。
 
@@ -1999,7 +1999,7 @@ $url = url('/foo');
 
 ### 初期値レコードの定義
 
-#### ▼ Fakerによるランダム値作成
+#### ▼ Faker によるランダム値作成
 
 Faker は、レコードの値をランダムに作成する。
 
@@ -2009,7 +2009,7 @@ Farker クラスは、プロパティにランダムなデータを保持して�
 
 > - https://fwhy.github.io/faker-docs/
 
-#### ▼ Factoryによるレコード定義
+#### ▼ Factory によるレコード定義
 
 **＊実装例＊**
 
@@ -2044,7 +2044,7 @@ class FooFactory extends Factory
 }
 ```
 
-#### ▼ HasFactoryトレイト
+#### ▼ HasFactory トレイト
 
 Factory に対応する Eloquent モデルで使用する必要がある。
 
@@ -2061,7 +2061,7 @@ class Foo
 
 ### 初期データの量産
 
-#### ▼ FactoryによるSeedの初期データ量産
+#### ▼ Factory による Seed の初期データ量産
 
 Factory における定義を基にして、指定した数だけ Seed の初期データを量産する。
 
@@ -2679,7 +2679,7 @@ public function authorize()
 }
 ```
 
-#### ▼ Authファサード
+#### ▼ Auth ファサード
 
 ノート内の『Auth ファサード』の項目を参照せよ。
 
@@ -2770,7 +2770,7 @@ class FooAfterMiddleware
 
 <br>
 
-### 標準のMiddleware
+### 標準の Middleware
 
 #### ▼ EncryptCookies
 
@@ -3077,7 +3077,7 @@ LOG_CHANNEL=<オプション名>
 $ chmod -R 777 /var/www/foo/storage
 ```
 
-#### ▼ PHP-FPMのログについて
+#### ▼ PHP-FPM のログについて
 
 Laravel と PHP-FPM のプロセスはそれぞれ独立しているため、Laravel のログの出力先を変更しても、PHP-FPM のログの出力先は変更されない。
 
@@ -3633,7 +3633,7 @@ Schema::create("foos", function (Blueprint $table) {
 
 ## 13. Notification
 
-### artisanコマンド
+### artisan コマンド
 
 記入中...
 
@@ -3706,7 +3706,7 @@ class TfaTokenNotification extends Notification
 }
 ```
 
-#### ▼ Eメール通知内容の定義
+#### ▼ E メール通知内容の定義
 
 MailMessage クラスの関数を使用して、E メール通知の内容を作成する。
 
@@ -3763,7 +3763,7 @@ class TfaTokenNotification extends Notification
 @endcomponent
 ```
 
-#### ▼ SMS通知内容の定義
+#### ▼ SMS 通知内容の定義
 
 ```php
 <?php
@@ -3806,11 +3806,11 @@ class TfaTokenNotification extends Notification
 
 > - https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications
 
-#### ▼ Slack通知内容の定義
+#### ▼ Slack 通知内容の定義
 
 > - https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications
 
-#### ▼ DB通知内容の定義
+#### ▼ DB 通知内容の定義
 
 配列で DB に保管する内容を定義する。
 
@@ -3939,7 +3939,7 @@ class AwsSnsChannel
 
 ### 通知対象モデル
 
-#### ▼ Notifiableトレイトの `notify()` 関数
+#### ▼ Notifiable トレイトの `notify()` 関数
 
 通知対象となるモデルを定義する。
 
@@ -3975,7 +3975,7 @@ $user->notify(new FooNotification());
 
 > - https://laravel.com/api/8.x/Illuminate/Notifications/RoutesNotifications.html#method_notify
 
-#### ▼ Notificationファサード
+#### ▼ Notification ファサード
 
 通知対象となるモデルを定義する。
 
@@ -4029,7 +4029,7 @@ Notification::route('mail', $user->email_address)
 
 Eloquent モデルを JSON 型データとしてレスポンスするときに、いったん、配列データに変換する必要がある。
 
-#### ▼ 単一のEloquentモデルの配列化
+#### ▼ 単一の Eloquent モデルの配列化
 
 単一の Eloquent モデルを配列に変換する。
 
@@ -4101,7 +4101,7 @@ class FooController extends Controller
 }
 ```
 
-#### ▼ 複数のEloquentモデル (Collection型) の配列化
+#### ▼ 複数の Eloquent モデル (Collection 型) の配列化
 
 複数の Eloquent モデル (Collection 型) を配列に変換する。
 
@@ -4115,7 +4115,7 @@ class FooController extends Controller
 
 ### `api.php` ファイル
 
-#### ▼ Middlewareの適用
+#### ▼ Middleware の適用
 
 API のエンドポイントとして働くルーティング処理を実装する。
 
@@ -4158,7 +4158,7 @@ class Kernel extends HttpKernel
 
 ### `web.php` ファイル
 
-#### ▼ Middlewareの適用
+#### ▼ Middleware の適用
 
 API 以外のルーティング処理を実装する。
 
@@ -4258,7 +4258,7 @@ class UserController extends Controller
 
 ## 16. Security
 
-### CSRF対策
+### CSRF 対策
 
 #### ▼ アプリケーション側の対応
 
@@ -4278,7 +4278,7 @@ Blade を使用しない場合、セッション開始時のレスポンスの `
 > - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
 > - https://stackoverflow.com/questions/42408177/what-is-the-difference-between-x-xsrf-token-and-x-csrf-token
 
-#### ▼ HTTPクライアントツール側の対応
+#### ▼ HTTP クライアントツール側の対応
 
 Postman などの HTTP クライアントツールをフロントエンドの代わりに使用する場合は、レスポンスで返信される CSRF トークを扱えない。
 
@@ -4311,9 +4311,9 @@ return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
 });
 ```
 
-#### ▼ XSS対策
+#### ▼ XSS 対策
 
-#### ▼ 常時HTTPS化
+#### ▼ 常時 HTTPS 化
 
 <br>
 
@@ -4321,7 +4321,7 @@ return pm.sendRequest("http://127.0.0.1:8000", (error, response, {cookies}) => {
 
 ### 初期データの定義
 
-#### ▼ DBファサードによる定義
+#### ▼ DB ファサードによる定義
 
 DB ファサードを使用して、初期データを定義する。
 
@@ -4409,7 +4409,7 @@ class ExecutorConstant
 }
 ```
 
-#### ▼ CSVファイルによる定義
+#### ▼ CSV ファイルによる定義
 
 CSV ファイルを使用して、初期データを定義する。
 
@@ -4473,7 +4473,7 @@ class ProductsSeeder extends Seeder
 
 <br>
 
-### Seederの実行
+### Seeder の実行
 
 DatabaseSeeder にて、すべての Seeder をまとめて実行する。
 
@@ -4524,16 +4524,16 @@ class DatabaseSeeder extends Seeder
 
 ### ServiceProvider
 
-#### ▼ ServiceProviderの用途
+#### ▼ ServiceProvider の用途
 
-| 用途の種類                                            | 説明                                                                                                    |
-| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| AppServiceProvider                                    | ・ServiceContainerへのクラスのバインド (登録) <br>・ServiceContainerからのインスタンスのリゾルブ (作成) |
-| MacroServiceProvider                                  | ServiceContainerへの関数のバインド (登録)                                                               |
-| RouteServiceProvider<br>(`app.php`、`web.php` も使用) | ルーティングとコントローラーの対応関係の定義                                                            |
-| EventServiceProvider                                  | EventListenerとEventhandler関数の対応関係の定義                                                         |
+| 用途の種類                                            | 説明                                                                                                      |
+| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| AppServiceProvider                                    | ・ServiceContainer へのクラスのバインド (登録) <br>・ServiceContainer からのインスタンスのリゾルブ (作成) |
+| MacroServiceProvider                                  | ServiceContainer への関数のバインド (登録)                                                                |
+| RouteServiceProvider<br>(`app.php`、`web.php` も使用) | ルーティングとコントローラーの対応関係の定義                                                              |
+| EventServiceProvider                                  | EventListener と Eventhandler 関数の対応関係の定義                                                         |
 
-#### ▼ ServiceProviderのコール
+#### ▼ ServiceProvider のコール
 
 クラスの名前空間を、`config/app.php` ファイルの `providers` 配列に登録すると、アプリケーションの起動時に ServiceProvider をコールできる。
 
@@ -5095,7 +5095,7 @@ class RouteServiceProvider extends ServiceProvider
 
 ### EventServiceProvider
 
-#### ▼ EventとListenerの登録
+#### ▼ Event と Listener の登録
 
 Event と Listener の対応関係を定義する。
 
@@ -5250,7 +5250,7 @@ class FooController extends Controller
 }
 ```
 
-#### ▼ セッションデータがStoreクラスに至るまで
+#### ▼ セッションデータが Store クラスに至るまで
 
 すべてを追うことは難しいため、StartSession クラスの `handle()` 関数が実行されるところから始めるものとする。
 
@@ -5505,9 +5505,9 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 
 <br>
 
-### Twigとの互換
+### Twig との互換
 
-#### ▼ Bladeで実装した場合
+#### ▼ Blade で実装した場合
 
 **＊実装例＊**
 
@@ -5538,7 +5538,7 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 @endsection
 ```
 
-#### ▼ Twigで実装した場合
+#### ▼ Twig で実装した場合
 
 **＊実装例＊**
 

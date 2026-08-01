@@ -13,7 +13,7 @@ description: Websocket-API＠APIの知見を記録しています。
 
 <br>
 
-## 01. Websocket-APIの仕組み
+## 01. Websocket-API の仕組み
 
 ### アーキテクチャ
 
@@ -207,7 +207,7 @@ const wss = new WebSocket("wss://localhost:8080");
 
 <br>
 
-### AWS ALBがある場合
+### AWS ALB がある場合
 
 ブラウザはまず AWS ALB に対して HTTPS プロトコルでリクエストを送信する。
 

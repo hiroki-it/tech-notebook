@@ -13,7 +13,7 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 
 <br>
 
-## 01. Cloud Monitoringとは
+## 01. Cloud Monitoring とは
 
 ![google_cloud_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_monitoring.png)
 

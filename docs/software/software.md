@@ -31,9 +31,9 @@ description: ソフトウェアの知見を記録しています。
 
 ### アプリケーションソフトウェアの一覧
 
-|                    | ネイティブアプリ | Webアプリとクラウドアプリ | ハイブリッドアプリ |
-| :----------------: | :--------------: | :-----------------------: | :----------------: |
-| 利用できる通信状況 |      On/Off      |            On             |       On/Off       |
+|                    | ネイティブアプリ | Web アプリとクラウドアプリ | ハイブリッドアプリ |
+| :----------------: | :--------------: | :------------------------: | :----------------: |
+| 利用できる通信状況 |      On/Off      |             On             |       On/Off       |
 
 <br>
 
@@ -53,11 +53,11 @@ Office、BookLive のアプリ版
 
 <br>
 
-### Webアプリケーションとクラウドアプリケーション
+### Web アプリケーションとクラウドアプリケーション
 
 ![Webアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Webアプリ.png)
 
-#### ▼ Webアプリケーション
+#### ▼ Web アプリケーション
 
 Web サーバー上で稼働するソフトウェアのこと。
 
@@ -103,7 +103,7 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 
 ## 03. ミドルウェア
 
-### Webサーバーのミドルウェア (リバースプロキシとしても機能する場合がある)
+### Web サーバーのミドルウェア (リバースプロキシとしても機能する場合がある)
 
 - Apache
 - Nginx
@@ -115,7 +115,7 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 
 <br>
 
-### Appサーバーのミドルウェア
+### App サーバーのミドルウェア
 
 - Apache の拡張モジュール
 - PHP-FPM
@@ -127,7 +127,7 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 
 <br>
 
-### DBサーバーのミドルウェア
+### DB サーバーのミドルウェア
 
 - MySQL
 - MariaDB
@@ -138,11 +138,11 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 
 <br>
 
-## 04. 基本ソフトウェア (広義のOS)
+## 04. 基本ソフトウェア (広義の OS)
 
 ### 基本ソフトウェアの種類
 
-#### ▼ Unix系OS
+#### ▼ Unix 系OS
 
 Unix を源流として派生した OS。
 
@@ -168,11 +168,11 @@ MS-DOS を源流として派生した OS。今では、すべての派生が Win
 
 <br>
 
-## 04-02. Unix系OS
+## 04-02. Unix 系OS
 
-### Linux系統
+### Linux 系統
 
-#### ▼ Linux系統とは
+#### ▼ Linux 系統とは
 
 Unix から分岐した Linux は、加えて 3 系統 (Debian、RedHat、Slackware) に分岐する。
 
@@ -180,7 +180,7 @@ Unix から分岐した Linux は、加えて 3 系統 (Debian、RedHat、Slackw
 
 > - http://officemiyajima.com/index.php?What%20is%20Linux
 
-#### ▼ Debian系統
+#### ▼ Debian 系統
 
 Debian、Ubuntu など
 
@@ -193,7 +193,7 @@ Debian GNU/Linux 10 \n \l
 
 > - https://aoi-f.blog.ss-blog.jp/2010-09-13
 
-#### ▼ RedHat系統
+#### ▼ RedHat 系統
 
 RHEL、CentOS、Fedora など
 
@@ -207,15 +207,15 @@ Kernel \r on an \m
 
 > - https://aoi-f.blog.ss-blog.jp/2010-09-13
 
-#### ▼ Slackware系統
+#### ▼ Slackware 系統
 
 Slackware など
 
 <br>
 
-### BSD系統 (MacOSのみ
+### BSD 系統 (MacOS のみ
 
-#### ▼ BSD系統とは
+#### ▼ BSD 系統とは
 
 Unix から分岐した BSD は、加えて複数の系統 (例：MacOS など) に分岐する。
 
@@ -231,7 +231,7 @@ Unix から分岐した BSD は、加えて複数の系統 (例：MacOS など) 
 
 ## 06. Firmware
 
-### Firmwareとは
+### Firmware とは
 
 ソフトウェア (ミドルウェア+基本ソフトウェア) とハードウェアの間の段階にあるソフトウェア。
 
@@ -253,7 +253,7 @@ Windows 8 以降で採用されている新しい Firmware
 
 ## 07. OSS：Open Source Software
 
-### OSSとは
+### OSS とは
 
 以下の条件を満たすソフトウェアを OSS と呼ぶ。
 
@@ -270,7 +270,7 @@ Windows 8 以降で採用されている新しい Firmware
 - 提供者は、他のソフトウェアを制限するライセンスを追加できない。
 - 提供者は、技術的に偏りのあるライセンスを追加できない。
 
-### OSSの種類
+### OSS の種類
 
 ![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSS一覧.png)
 

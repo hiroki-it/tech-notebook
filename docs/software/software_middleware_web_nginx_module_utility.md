@@ -23,7 +23,7 @@ Nginx では、モジュールを事前にビルドし、バイナリに組み�
 
 <br>
 
-### Dockerの場合
+### Docker の場合
 
 #### ▼ 未ビルドモジュールの場合
 
@@ -67,9 +67,9 @@ FROM nginx:<バージョン>-alpine
 
 <br>
 
-## 02. gRPCパッケージ
+## 02. gRPC パッケージ
 
-### gRPCパッケージとは
+### gRPC パッケージとは
 
 nginx モジュールが gRPC を使用できるようにする。
 
@@ -109,9 +109,9 @@ $ make install
 
 <br>
 
-## 03. opentelemetry-cppパッケージ
+## 03. opentelemetry-cpp パッケージ
 
-### opentelemetry-cppパッケージとは
+### opentelemetry-cpp パッケージとは
 
 C++で Nginx を計装できるようにする。
 
@@ -154,7 +154,7 @@ $ make install
 
 ## 04. otel_ngx_module
 
-### otel_ngx_moduleとは
+### otel_ngx_module とは
 
 OpenTelemetry コミュニティ製のモジュールであり、Nginx を OpenTelemetry で計装できるようにする。
 
@@ -246,7 +246,7 @@ server {
 
 ## 05. otel_webserver_module
 
-### otel_webserver_moduleとは
+### otel_webserver_module とは
 
 Apache または Nginx を OpenTelemetry で計装できるようにする。
 

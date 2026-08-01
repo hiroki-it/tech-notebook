@@ -13,11 +13,11 @@ description: 認証／認可系＠リソース定義の知見を記録してい�
 
 <br>
 
-## 01. 専用Role
+## 01. 専用 Role
 
 ### Role
 
-#### ▼ argocd-application-controllerの場合
+#### ▼ argocd-application-controller の場合
 
 ArgoCD が Sync できる Kubernetes リソースの認可スコープを設定する。
 
@@ -70,7 +70,7 @@ rules:
 
 ### ClusterRole
 
-#### ▼ argocd-serverの場合
+#### ▼ argocd-server の場合
 
 ArgoCD のダッシュボードが持つ Kubernetes リソースに対する機能 (例：ログ、Exec) の認可スコープを設定する。
 
@@ -122,7 +122,7 @@ rules:
 
 <br>
 
-## 02. 専用RoleBinding
+## 02. 専用 RoleBinding
 
 ServiceAccount と Role を紐付けるために、RoleBinding を作成する。
 
@@ -146,11 +146,11 @@ subjects:
 
 <br>
 
-## 03. 専用ServiceAccount
+## 03. 専用 ServiceAccount
 
 ### argocd-manager
 
-#### ▼ argocd-managerとは
+#### ▼ argocd-manager とは
 
 ArgoCD の application-controller がデプロイ先と異なる Cluster で稼働している場合に、デプロイ先の Cluster にエージェントを作成する必要がある。
 

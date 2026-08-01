@@ -13,7 +13,7 @@ description: ロジック＠Custom Controllerの知見を記録しています�
 
 <br>
 
-## 01. FooリソースのCustom Controller
+## 01. Foo リソースの Custom Controller
 
 ### CRD
 

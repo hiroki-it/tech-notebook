@@ -13,7 +13,7 @@ description: Cloud Foundry＠クラウドコンピューティングの知見を
 
 <br>
 
-## 01. Cloud Foundryとは
+## 01. Cloud Foundry とは
 
 PaaS を構築するためのコンポーネントを提供する。
 

@@ -13,7 +13,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 <br>
 
-## 01. kubectlコマンド
+## 01. kubectl コマンド
 
 ### セットアップ
 
@@ -23,7 +23,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 `kubectl` コマンドは、`kubeconfig` ファイル上の Cluster の資格情報を基に、kube-apiserver にリクエストを送信する。
 
-#### ▼ configシンボリックリンク、--kubeconfig
+#### ▼ config シンボリックリンク、--kubeconfig
 
 ユーザーが、`config` ファイルを任意のディレクトリで管理する場合、シンボリックリンクを作成する。
 
@@ -46,7 +46,7 @@ $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 
 ### annotate
 
-#### ▼ annotateとは
+#### ▼ annotate とは
 
 指定した Kubernetes リソースのアノテーションを操作する。
 
@@ -72,7 +72,7 @@ $ kubectl annotate --overwrite pod foo-pod <キー名>- -n foo-namespace
 
 ### apply
 
-#### ▼ applyとは
+#### ▼ apply とは
 
 同じ識別子 (名前) のリソースが存在しない場合は、リソースを作成し、存在する場合はマニフェストの差分を更新する。
 
@@ -123,9 +123,9 @@ ServerSideApply と ClientSideApply の間で、マニフェストの最終的�
 
 ClientSideApply では、クライアント側（例：kubectl、ArgoCD の application-controller など）が kube-apiserver からマニフェストの実体を取得し、クライアントを変更してから kube-apiserver に送信する。
 
-|      | ServerSideApply | ClientSideApply                             |
-| ---- | --------------- | ------------------------------------------- |
-| 主体 | kube-apiserver  | kubectl、ArgoCDのapplication-controllerなど |
+|      | ServerSideApply | ClientSideApply                               |
+| ---- | --------------- | --------------------------------------------- |
+| 主体 | kube-apiserver  | kubectl、ArgoCD のapplication-controller など |
 
 特に、ServerSideApply では kube-apiserver がよしなにマニフェストの最終状態を決めることもある。そのため、マニフェストファイルと実体が異なる場合もある。
 
@@ -143,7 +143,7 @@ ClientSideApply では、クライアント側の制約により `metadata.annot
 
 ### cluster-info
 
-#### ▼ cluster-infoとは
+#### ▼ cluster-info とは
 
 コントロールプレーン Node の情報を取得する。
 
@@ -161,7 +161,7 @@ Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/s
 
 ### config
 
-#### ▼ configとは
+#### ▼ config とは
 
 `kubeconfig` ファイルのパラメーターを操作する。
 
@@ -282,7 +282,7 @@ users:
 
 ### cordon
 
-#### ▼ cordonとは
+#### ▼ cordon とは
 
 指定した Node にこれ以上 Pod をスケジューリングできないようにする (`SchedulingDisabled` 状態) 。
 
@@ -298,7 +298,7 @@ $ kubectl cordon <Node名>
 
 ### cp
 
-#### ▼ cpとは
+#### ▼ cp とは
 
 ホスト PC のファイルまたはディレクトリを指定した Pod 内のコンテナにコピーする。
 
@@ -318,7 +318,7 @@ $ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのデ�
 
 ### create
 
-#### ▼ createとは
+#### ▼ create とは
 
 さまざまなリソースを作成する。
 
@@ -424,7 +424,7 @@ $ kubectl create secret tls tls-secret --cert=/etc/ssl/certs/foo.crt --key=./foo
 
 ### delete
 
-#### ▼ deleteとは
+#### ▼ delete とは
 
 Kubernetes リソースを削除する。
 
@@ -472,7 +472,7 @@ $ kubectl delete pod <TerminatingステータスのままのPod名> --force --gr
 
 ### describe
 
-#### ▼ describeとは
+#### ▼ describe とは
 
 リソースの詳細な情報を参照する。
 
@@ -538,7 +538,7 @@ Name:               baz-node
 
 ### diff
 
-#### ▼ diffとは
+#### ▼ diff とは
 
 既存のマニフェストと、指定したマニフェストの差分を表示する。
 
@@ -557,7 +557,7 @@ $ curl "https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.15/manifests/crd
 
 ### drain
 
-#### ▼ drainとは
+#### ▼ drain とは
 
 Node にこれ以上 Pod をスケジューリングできないようにし (`SchedulingDisabled` 状態) 、また既存の Pod を退避させる。
 
@@ -578,7 +578,7 @@ $ kubectl drain <Node名>
 
 ### edit
 
-#### ▼ editとは
+#### ▼ edit とは
 
 マニフェストの設定値を直接的に変更する。
 
@@ -602,7 +602,7 @@ $ kubectl edit statefulset foo-statefulset
 
 ### exec
 
-#### ▼ execとは
+#### ▼ exec とは
 
 指定した Pod 内のコンテナのシェルを実行し、コンテナにログインする。
 
@@ -636,7 +636,7 @@ Defaulted container "foo-container" out of: foo-container, bar-container
 
 ### expose
 
-#### ▼ exposeとは
+#### ▼ expose とは
 
 Service を作成する。
 
@@ -678,7 +678,7 @@ $ kubectl expose <Service名> \
 
 ### get <リソース>
 
-#### ▼ getとは
+#### ▼ get とは
 
 リソースの簡易的な情報を参照する。
 
@@ -1136,7 +1136,7 @@ metadata:
   resourceVersion: "18329"
 type: Opaque
 data:
-  FOO: ***** # base64方式のエンコード値
+  FOO: ***** # base64 方式のエンコード値
   BAR: *****
   BAZ: *****
 ```
@@ -1296,7 +1296,7 @@ $ kubectl get pod -w
 
 ### label
 
-#### ▼ labelとは
+#### ▼ label とは
 
 指定したリソースの `.metadata.labels` キーを操作する。
 
@@ -1348,7 +1348,7 @@ $ kubectl label --overwrite namespace foo istio.io/rev=1-0-0 istio-injection-
 
 ### logs
 
-#### ▼ logsとは
+#### ▼ logs とは
 
 指定したリソースのログを取得する。
 
@@ -1408,7 +1408,7 @@ $ kubectl logs -n <Namespace名> --timestamps <Pod名> -c <コンテナ名> | gr
 
 ### replace
 
-#### ▼ replaceとは
+#### ▼ replace とは
 
 Kubernetes リソースを安全に削除し、別のマニフェストで再作成する。
 
@@ -1430,7 +1430,7 @@ $ kubectl replace --force -f foo.yaml
 
 ### rollout
 
-#### ▼ rolloutとは
+#### ▼ rollout とは
 
 Deployment、DaemonSet、StatefulSet、でコピーされた Pod を操作する。
 
@@ -1468,7 +1468,7 @@ $ kubectl rollout restart statefulset foo-statefulset -n foo-namespace
 
 ### patch
 
-#### ▼ patchとは
+#### ▼ patch とは
 
 JSON/`yaml` 形式を入力値として、リソースの設定値を変更する。
 
@@ -1505,7 +1505,7 @@ $ kubectl get pv \
 
 ### port-forward
 
-#### ▼ port-forwardとは
+#### ▼ port-forward とは
 
 ポートフォワーディングを実行し、ホストのポートから Pod にリクエストを送信できるようにする。
 
@@ -1568,7 +1568,7 @@ Forwarding from [::1]:8443 -> 9090
 
 ### proxy
 
-#### ▼ proxyとは
+#### ▼ proxy とは
 
 kube-apiserver の送信元にフォワード/リバースプロキシサーバーとして動作するリソースを作成する。
 
@@ -1590,7 +1590,7 @@ Starting to serve on [::]:8001
 
 ### run
 
-#### ▼ runとは
+#### ▼ run とは
 
 Deployment、Pod、Job を作成する。
 
@@ -1620,17 +1620,17 @@ $ kubectl run <Job名> --restart=OnFailure --image=<コンテナイメージ名>
 
 ### taint
 
-#### ▼ taintとは
+#### ▼ taint とは
 
 Node に Taint を付与する。
 
 エフェクトごとに、Toleration が付与された Pod のスケジューリング方法が異なる。
 
-| エフェクト       | 説明                                                                                                                                                                                                                                                                                  |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| NoExecute        | Tolerationが付与されたPodしか、そのNodeにスケジューリングさせられない。付与したPodがすでに稼働している場合、そのPodも再スケジューリングさせる。                                                                                                                                       |
-| NoSchedule       | Tolerationが付与されたPodしか、そのNodeにスケジューリングさせられない。付与したPodがすでに稼働している場合、そのPodは再スケジューリングさせない。                                                                                                                                     |
-| PreferNoSchedule | Tolerationが付与されたPodをそのNodeにスケジューリングさせる。ただし、いずれのPodにもTolerationが付与されていなければ、付与されていないPodもそのNodeにスケジューリングさせる。Tolerationが付与されたPodがすでにスケジューリングをさせている場合、そのPodは再スケジューリングさせない。 |
+| エフェクト       | 説明                                                                                                                                                                                                                                                                                                    |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NoExecute        | Toleration が付与された Pod しか、その Node にスケジューリングさせられない。付与した Pod がすでに稼働している場合、その Pod も再スケジューリングさせる。                                                                                                                                                |
+| NoSchedule       | Toleration が付与された Pod しか、その Node にスケジューリングさせられない。付与した Pod がすでに稼働している場合、その Pod は再スケジューリングさせない。                                                                                                                                              |
+| PreferNoSchedule | Toleration が付与された Pod をその Node にスケジューリングさせる。ただし、いずれの Pod にも Toleration が付与されていなければ、付与されていない Pod もその Node にスケジューリングさせる。Toleration が付与された Pod がすでにスケジューリングをさせている場合、その Pod は再スケジューリングさせない。 |
 
 **＊例＊**
 

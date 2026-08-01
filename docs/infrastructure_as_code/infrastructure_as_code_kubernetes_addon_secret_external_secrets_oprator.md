@@ -3,7 +3,7 @@ title: 【IT技術の知見】External Secrets Operator＠Secret系
 description: External Secrets Operator＠Secret系の知見を記録しています。
 ---
 
-# External Secrets Operator＠Secret系
+# External Secrets Operator＠Secret 系
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: External Secrets Operator＠Secret系の知見を記録していま
 
 <br>
 
-## 01. External Secrets Operatorの仕組み
+## 01. External Secrets Operator の仕組み
 
 ### アーキテクチャ
 

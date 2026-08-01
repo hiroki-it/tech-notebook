@@ -83,7 +83,7 @@ metadata:
 spec:
   ingressClassName: foo-ingress-class
   rules:
-    # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
+    # ドメインを割り当てる場合、Host ヘッダーの合致ルールが必要である。
     - host: foo.grafana.com
       http:
         paths:
@@ -108,7 +108,7 @@ kind: IngressClass
 metadata:
   name: foo-ingress-class
 spec:
-  # AWSの場合、ingress.k8s.aws/alb
+  # AWS の場合、ingress.k8s.aws/alb
   controller: k8s.io/ingress-nginx
 ```
 

@@ -27,9 +27,9 @@ Prometheus を設定する。
 
 <br>
 
-### globalセクション
+### global セクション
 
-#### ▼ globalセクションとは
+#### ▼ global セクションとは
 
 すべてのデータポイント収集からアラートまでを共通で設定する。
 
@@ -66,9 +66,9 @@ global:
 
 <br>
 
-### alertingセクション
+### alerting セクション
 
-#### ▼ alertingセクションとは
+#### ▼ alerting セクションとは
 
 アラートを設定する。
 
@@ -89,9 +89,9 @@ alerting:
 
 <br>
 
-### rule_filesセクション
+### rule_files セクション
 
-#### ▼ rule_filesセクションとは
+#### ▼ rule_files セクションとは
 
 Prometheus のアラートルールを設定する。
 
@@ -111,7 +111,7 @@ groups:
     rules:
       - alert: PodCpuUtilized
         # 値が長くなるため、『>-』で改行すると良い。
-        # Prometheusのレコーディングルール (node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate) をPromQLで使用する。
+        # Prometheus のレコーディングルール (node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate) を PromQL で使用する。
         expr: >-
           max(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{namespace="foo-namespace", pod=~"foo-pod.*", container="foo-container"}) /
           min(kube_pod_container_resource_limits{namespace="foo-namespace", pod=~"foo-pod.*",resource="cpu",container="foo-container"})
@@ -167,7 +167,7 @@ groups:
 
 > - https://promlabs.com/blog/2024/02/06/monitoring-tls-endpoint-certificate-expiration-with-prometheus/
 
-#### ▼ scrape_configsセクション
+#### ▼ scrape_configs セクション
 
 Retrieval のルールを設定する。
 
@@ -186,7 +186,7 @@ scrape_configs:
           - 127.0.0.1:9090'
         labels:
           cluster: prd
-  # Node Exporterの稼働するサーバーを監視する。
+  # Node Exporter の稼働するサーバーを監視する。
   - job_name: node-exporter
     static_configs:
       - targets:
@@ -221,7 +221,7 @@ IP アドレスやポート番号が動的に変化する対象を監視する�
 
 ```yaml
 scrape_configs:
-  # Amazon EC2をサービス検出で監視する
+  # Amazon EC2 をサービス検出で監視する
   - job_name: aws-ec2
     ec2_sd_configs:
       - port: 9100
@@ -232,7 +232,7 @@ scrape_configs:
   # https://prometheus.io/docs/prometheus/latest/configuration/configuration/#endpoints
   - job_name: foo-endpoints
     kubernetes_sd_configs:
-      # Service配下のEndpointを監視する
+      # Service 配下の Endpoint を監視する
       - role: endpoints
       # ラベルでフィルタリングする
       - source_labels:
@@ -244,7 +244,7 @@ scrape_configs:
   # https://prometheus.io/docs/prometheus/latest/configuration/configuration/#endpointslice
   - job_name: bar-endpointslice
     kubernetes_sd_configs:
-      # Service配下のEndpointSliceを監視する
+      # Service 配下の EndpointSlice を監視する
       - role: endpointslice
       # ラベルでフィルタリングする
       - source_labels:
@@ -263,7 +263,7 @@ scrape_configs:
 
 ## 02. Alertmanager
 
-### globalセクション
+### global セクション
 
 すべてのアラートを共通で設定する。
 
@@ -277,9 +277,9 @@ global:
 
 <br>
 
-### routeセクション
+### route セクション
 
-#### ▼ routeセクションとは
+#### ▼ route セクションとは
 
 合致条件に応じて、受信したアラートを特定の通知先にルーティングする。
 
@@ -291,11 +291,11 @@ global:
 
 ```yaml
 route:
-  # WarningレベルはSlackのレシーバーを選ぶ。
+  # Warning レベルは Slack のレシーバーを選ぶ。
   - receiver: slack-foo-channel
     match:
       severity: warning
-  # CriticalレベルはPagerDutyのレシーバーを選ぶ。
+  # Critical レベルは PagerDuty のレシーバーを選ぶ。
   - receiver: pagerduty-foo-service
     match:
       severity: critical
@@ -318,11 +318,11 @@ route:
 
 ```yaml
 route:
-  # WarningレベルはSlackのレシーバーを選ぶ。
+  # Warning レベルは Slack のレシーバーを選ぶ。
   - receiver: slack-foo-channel
     match:
       severity: warning
-  # CriticalレベルはPagerDutyのレシーバーを選ぶ。
+  # Critical レベルは PagerDuty のレシーバーを選ぶ。
   - receiver: pagerduty-foo-service
     match:
       severity: critical
@@ -330,9 +330,9 @@ route:
 
 <br>
 
-### receiversセクション
+### receivers セクション
 
-#### ▼ receiversセクションとは
+#### ▼ receivers セクションとは
 
 アラートの通知先をレシーバーとして設定する。
 
@@ -366,7 +366,7 @@ receivers:
 
 ```yaml
 receivers:
-  # PagerDutyに通知する。
+  # PagerDuty に通知する。
   - name: pagerduty-foo-service
     pagerduty_configs:
       - routing_key: *****
@@ -399,7 +399,7 @@ global:
   resolve_timeout: 5m
 
 receivers:
-  # Slackに通知する。
+  # Slack に通知する。
   - name: slack-foo-channel
     slack_configs:
       - channel: prd-foo-channel

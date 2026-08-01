@@ -11,7 +11,7 @@ hide:
 
 <br>
 
-## ⏬ K8sアドオン
+## ⏬ K8s アドオン
 
 ### コントロールプレーン系
 
@@ -19,7 +19,7 @@ hide:
 
 <br>
 
-### Ingress Controller系
+### Ingress Controller 系
 
 - #### [Ingress Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html)
 
@@ -62,16 +62,16 @@ hide:
 
 ### ストレージ系
 
-- #### <u>ストレージCSIドライバー</u>
-  > - ##### [ストレージCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_storage_csi_driver.html)
+- #### <u>ストレージ CSI ドライバー</u>
+  > - ##### [ストレージ CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_storage_csi_driver.html)
 
 <br>
 
-### Secret系
+### Secret 系
 
-- #### <u>SecretsストアCSIドライバー</u>
+- #### <u>Secrets ストア CSI ドライバー</u>
 
-  > - ##### [SecretsストアCSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html)
+  > - ##### [Secrets ストア CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html)
   > - ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html)
 
 - #### <u>External Secrets Operator</u>
@@ -86,13 +86,13 @@ hide:
 
 <br>
 
-### AWS系
+### AWS 系
 
-- #### [Amazon EKSアドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html)
+- #### [Amazon EKS アドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html)
 
 - #### [Amazon VPC CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html)
 
-- #### [AWS EBS CSIドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html)
+- #### [AWS EBS CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html)
 
 - #### [AWS OpenTelemetry Collector Operator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.html)
 

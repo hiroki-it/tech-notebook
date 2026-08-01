@@ -15,7 +15,7 @@ description: SAML＠SSOの知見を記録しています。
 
 ## 01. SAML：Security Assertion Markup Language
 
-### SAMLとは
+### SAML とは
 
 SSO の一種である。
 
@@ -23,7 +23,7 @@ OAuth とは異なる仕組みで認証/認可の両方を実装する。
 
 <br>
 
-### SAMLの仕組み
+### SAML の仕組み
 
 #### ▼ アーキテクチャ
 

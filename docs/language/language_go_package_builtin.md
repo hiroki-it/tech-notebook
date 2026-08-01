@@ -50,7 +50,7 @@ func main() {
 
 ## context
 
-### contextとは
+### context とは
 
 タイムアウト時間を設定し、またタイムアウト時間をすぎた場合に処理をキャンセルする。
 
@@ -160,7 +160,7 @@ should not use built-in type string as key for value; define your own type to av
 
 ### WithDeadline
 
-#### ▼ WithDeadlineとは
+#### ▼ WithDeadline とは
 
 コンテキストにタイムアウト時間を設定する。
 
@@ -170,7 +170,7 @@ should not use built-in type string as key for value; define your own type to av
 
 ### WithTimeout
 
-#### ▼ WithTimeoutとは
+#### ▼ WithTimeout とは
 
 コンテキストにタイムアウト時間を設定する。
 
@@ -320,7 +320,7 @@ func main() {
 
 ### 伝達のユースケース
 
-#### ▼ Goroutine間での伝達
+#### ▼ Goroutine 間での伝達
 
 > - https://zenn.dev/hsaki/books/golang-context/viewer/definition#%E5%87%A6%E7%90%86%E3%81%8C%E8%A4%87%E6%95%B0%E5%80%8B%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%BC%E3%83%81%E3%83%B3%E3%82%92%E3%81%BE%E3%81%9F%E3%81%90%E4%BE%8B
 
@@ -745,7 +745,7 @@ func main() {
 
 ## flag
 
-### flagとは
+### flag とは
 
 記入中...
 
@@ -821,7 +821,7 @@ Usage of main.go:
 
 ## fmt
 
-### fmtとは
+### fmt とは
 
 標準エラー出力に出力する `log` パッケージとは異なり、標準出力に設定したメッセージを出力する。
 
@@ -957,11 +957,11 @@ func main() {
 
 | よく使用する識別子 | 標準出力に出力されるもの     | 備考                                                 |
 | ------------------ | ---------------------------- | ---------------------------------------------------- |
-| `%s`               | 文字列またはsliceとして      |                                                      |
+| `%s`               | 文字列または slice として    |                                                      |
 | `%p`               | ポインタとして               |                                                      |
 | `%v`               | さまざまな型として           |                                                      |
 | `%+v`              | フィールドを含む構造体として | データの構造を確認できるため、デバッグに有効である。 |
-| `%#v`              | Go構文として                 | データの構造を確認できるため、デバッグに有効である。 |
+| `%#v`              | Go 構文として                | データの構造を確認できるため、デバッグに有効である。 |
 
 > - https://golang.org/pkg/fmt/#Printf
 > - https://golang.org/pkg/fmt/#Fprintf
@@ -1043,7 +1043,7 @@ func main() {
 
 ## hex
 
-### hexとは
+### hex とは
 
 値を `16` 進数にエンコード/デコードする。
 
@@ -1077,7 +1077,7 @@ func main() {
 
 ## log
 
-### logとは
+### log とは
 
 標準出力に出力する `fmt` パッケージとは異なり、標準エラー出力に設定したメッセージを出力する。
 
@@ -1191,7 +1191,7 @@ if err != nil {
 
 ## net/http
 
-### httpパッケージとは
+### http パッケージとは
 
 HTTP クライアントまたは Web サーバを提供する。
 
@@ -1250,7 +1250,7 @@ func main(w http.ResponseWriter, r *http.Request)  {
 
 <br>
 
-### Handler系
+### Handler 系
 
 #### ▼ Handler
 

@@ -13,7 +13,7 @@ description: OAuth2 Proxy＠セキュリティ系ミドルウェアの知見を�
 
 <br>
 
-## 01. OAuth2 Proxyとは
+## 01. OAuth2 Proxy とは
 
 OAuth2 Proxy は、送信元からのアクセストークン署名検証リクエストを ID プロバイダーに送信する。
 
@@ -23,7 +23,7 @@ OAuth 2.0 をベースとした SSO (例：OAuth、OIDC など) のアクセス�
 
 <br>
 
-## 02. OAuth2 Proxyの仕組み
+## 02. OAuth2 Proxy の仕組み
 
 ### アーキテクチャ
 
@@ -59,9 +59,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    # OAuth2 Proxyへのアクセストークン署名検証リクエスト送信処理を発火させるURLを設定する
+    # OAuth2 Proxy へのアクセストークン署名検証リクエスト送信処理を発火させる URL を設定する
     nginx.ingress.kubernetes.io/auth-signin: http://<OAuth2 Proxyのドメイン名>/oauth2/sign_in
-    # OAuth2 Proxyの認可エンドポイントを設定する
+    # OAuth2 Proxy の認可エンドポイントを設定する
     nginx.ingress.kubernetes.io/auth-url: http://<OAuth2 Proxyのドメイン名>/oauth2/auth
     nginx.ingress.kubernetes.io/proxy-buffer-size: 512k
   name: nginx-ingress

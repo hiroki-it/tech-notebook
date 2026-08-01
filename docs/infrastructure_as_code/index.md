@@ -62,16 +62,16 @@ hide:
 
   > - ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_command.html)
   > - ##### [︎設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_conf.html)
-  > - ##### <u>tfファイル</u>
+  > - ##### <u>tf ファイル</u>
   >   > - ##### [︎ブロック](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_tf_block.html)
   >   > - ##### [︎モジュール](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_tf_module.html)
   > - ##### <u>プロバイダー</u>
-  >   > - ##### [︎AWSプロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.html)
-  >   > - ##### [︎Kubernetesプロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.html)
-  > - ##### [︎CI/CDパイプライン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html)
+  >   > - ##### [︎AWS プロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.html)
+  >   > - ##### [︎Kubernetes プロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.html)
+  > - ##### [︎CI/CD パイプライン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html)
   > - ##### <u>プラクティス集</u>
   >   > - ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices.html)
-  >   > - ##### [tfstateファイル分割](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices_tfstate.html)
+  >   > - ##### [tfstate ファイル分割](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices_tfstate.html)
 
 - #### <u>Vagrant</u>
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】SecretsストアCSIドライバー＠Secret系
 description: SecretsストアCSIドライバー＠Secret系の知見を記録しています。
 ---
 
-# SecretsストアCSIドライバー＠Secret系
+# Secrets ストア CSI ドライバー＠Secret 系
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: SecretsストアCSIドライバー＠Secret系の知見を記録し
 
 <br>
 
-## 01. SecretsストアCSIドライバーとは
+## 01. Secrets ストア CSI ドライバーとは
 
 Secrets ストア CSI ドライバーは、SecretProviderClass で定義したプロバイダー (例：AWS、Google Cloud、Vault) の API と通信し、プロバイダーの Secret ストア (例：AWS Secrets Manager、Google Cloud SecretManager、Vault SecretsEngine) から変数を取得する。
 
@@ -31,7 +31,7 @@ Secret のデータとして注入する External Secrets Operator や helm-secr
 
 <br>
 
-## 02. SecretsストアCSIドライバーの仕組み
+## 02. Secrets ストア CSI ドライバーの仕組み
 
 ### アーキテクチャ
 

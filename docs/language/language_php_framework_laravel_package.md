@@ -5,9 +5,9 @@ description: 専用パッケージ＠Laravelの知見を記録しています。
 
 # 専用パッケージ＠Laravel
 
-## 01. Laravel Mixパッケージ
+## 01. Laravel Mix パッケージ
 
-### Laravel Mixパッケージとは
+### Laravel Mix パッケージとは
 
 Webpack を Laravel を介して操作できるパッケージのこと。
 
@@ -17,7 +17,7 @@ Breeze パッケージにも同梱されている。
 
 <br>
 
-### Webpackを操作するコマンド
+### Webpack を操作するコマンド
 
 #### ▼ アセットの初期コンパイル
 
@@ -52,7 +52,7 @@ $ npm run watch
 
 > - https://github.com/BenSampo/laravel-enum
 
-#### ▼ enum型のクラスの定義
+#### ▼ enum 型のクラスの定義
 
 BenSampo の enum 型のクラスを継承し、区分値と判定関数を実装する。
 
@@ -125,7 +125,7 @@ class RoleType extends Enum
 }
 ```
 
-#### ▼ enum型のクラスの使い方
+#### ▼ enum 型のクラスの使い方
 
 **＊実装例＊**
 
@@ -151,7 +151,7 @@ $staff->roleType->isSalesRole(); // false
 
 ### laravel-ide-helper
 
-#### ▼ laravel-ide-helperとは
+#### ▼ laravel-ide-helper とは
 
 PHPStrom で Laravel を開発する場合、拡張機能を提供する。
 

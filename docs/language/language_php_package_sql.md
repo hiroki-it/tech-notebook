@@ -3,7 +3,7 @@ title: 【IT技術の知見】SQLパッケージ＠PHP
 description: SQLパッケージ＠PHPの知見を記録しています。
 ---
 
-# SQLパッケージ＠PHP
+# SQL パッケージ＠PHP
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: SQLパッケージ＠PHPの知見を記録しています。
 
 <br>
 
-## 01. SQLパッケージ
+## 01. SQL パッケージ
 
 SQL を抽象化する API をアプリケーションに提供する。
 
@@ -25,7 +25,7 @@ SQL の種類が異なっていても、共通のロジックでクエリを送�
 
 ## 02. PDO
 
-### PDOとは
+### PDO とは
 
 > - https://www.javadrive.jp/php/pdo/
 

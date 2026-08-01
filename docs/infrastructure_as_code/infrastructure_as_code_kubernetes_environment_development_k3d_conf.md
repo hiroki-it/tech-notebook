@@ -189,7 +189,7 @@ registries:
 
 ### config
 
-#### ▼ configとは
+#### ▼ config とは
 
 ```yaml
 registries:
@@ -221,9 +221,9 @@ registries:
       <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
         auth:
           username: AWS
-          # aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード
+          # aws ecr get-login-password --region ap-northeast-1 コマンドから取得したパスワード
           password: <パスワード>
-        # イメージレジストリとの通信がHTTPSリクエストの場合は、サーバー証明書が必要になる
+        # イメージレジストリとの通信が HTTPS リクエストの場合は、サーバー証明書が必要になる
         tls:
           ca_file: <証明書>
           cert_file: <証明書>
@@ -239,7 +239,7 @@ registries:
       <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
         auth:
           username: AWS
-          # aws ecr get-login-password --region ap-northeast-1コマンドから取得したパスワード
+          # aws ecr get-login-password --region ap-northeast-1 コマンドから取得したパスワード
           password: <パスワード> 
         tls:
           insecure_skip_verify: true

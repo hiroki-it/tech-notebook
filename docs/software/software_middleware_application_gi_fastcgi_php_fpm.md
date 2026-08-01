@@ -13,7 +13,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系
 
 <br>
 
-## 01. PHP-FPMの仕組み
+## 01. PHP-FPM の仕組み
 
 ### アーキテクチャ
 
@@ -41,7 +41,7 @@ PHP-FPM では、リクエストのたびにプロセスを起動するわけで
 
 ## 01-02. ユースケース
 
-### FastCGIとして
+### FastCGI として
 
 PHP-FPM は、FastCGI として Web サーバーと PHP ファイルの間でデータ通信する。
 
@@ -60,7 +60,7 @@ PHP-FPM と PHP は、それぞれ独立した子プロセスとして実行さ�
 
 ## 02. コマンド
 
-### php-fpmコマンド
+### php-fpm コマンド
 
 #### ▼ -t
 
@@ -74,7 +74,7 @@ $ php-fpm -t
 
 <br>
 
-### systemctlコマンドによる操作
+### systemctl コマンドによる操作
 
 #### ▼ status
 

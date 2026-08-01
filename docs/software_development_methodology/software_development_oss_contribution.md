@@ -3,7 +3,7 @@ title: 【IT技術の知見】OSSコントリビューション＠開発手法
 description: OSSコントリビューション＠開発手法の知見を記録しています。
 ---
 
-# OSSコントリビューション＠開発手法
+# OSS コントリビューション＠開発手法
 
 ### はじめに
 
@@ -13,9 +13,9 @@ description: OSSコントリビューション＠開発手法の知見を記録�
 
 <br>
 
-## 01. OSSコントリビューションのコツ
+## 01. OSS コントリビューションのコツ
 
-### Issueから見つける
+### Issue から見つける
 
 OSS によっては、`help wanted` や `good first issue` といったラベルづけをしてくれている。
 
@@ -176,7 +176,7 @@ $ make test-integration
 
 ### 実際にやってみた
 
-#### ▼ Structured Logging & Contextual Logging対応
+#### ▼ Structured Logging & Contextual Logging 対応
 
 https://github.com/kubernetes/kubernetes/pull/124905 で OSS コントリビュートしてみた。
 

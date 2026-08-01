@@ -3,7 +3,7 @@ title: 【IT技術の知見】DB仕様書＠RDB
 description: DB仕様書＠RESTful-DBの知見を記録しています。
 ---
 
-# DB仕様書＠RDB
+# DB 仕様書＠RDB
 
 ## はじめに
 
@@ -13,13 +13,13 @@ description: DB仕様書＠RESTful-DBの知見を記録しています。
 
 <br>
 
-### DBテーブルスキーマ駆動開発
+### DB テーブルスキーマ駆動開発
 
-#### ▼ DBテーブルスキーマ駆動開発とは
+#### ▼ DB テーブルスキーマ駆動開発とは
 
 DB テーブルの仕様書に基づいて、CRUD のコードを実装する。
 
-#### ▼ Gorm Genの場合
+#### ▼ Gorm Gen の場合
 
 ```go
 // cmd/gormgen/main.go

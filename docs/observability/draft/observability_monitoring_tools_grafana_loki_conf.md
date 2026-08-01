@@ -107,7 +107,7 @@ common:
         chunks: grafana-loki-chunks
         ruler: grafana-loki-ruler
         admin: grafana-loki-admin
-      # MinIOを使用する場合
+      # MinIO を使用する場合
       endpoint: minio.istio-system.svc.cluster.local:9000
       insecure: true
       s3forcepathstyle: true
@@ -124,7 +124,7 @@ common:
         chunks: grafana-loki-chunks
         ruler: grafana-loki-ruler
         admin: grafana-loki-admin
-      # Amazon S3を使用する場合
+      # Amazon S3 を使用する場合
       region: ap-northeast-1
 ```
 
@@ -164,7 +164,7 @@ groups:
   - name: should_fire
     rules:
       - alert: HighPercentageError
-        # 5分あたりに5つ以上のエラーログが出る
+        # 5 分あたりに 5 つ以上のエラーログが出る
         expr: |
           count_over_time({app="foo", namespace="foo"} |= "ERROR" [5m]) > 5
         for: 1m

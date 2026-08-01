@@ -13,7 +13,7 @@ description: AWS CLI＠AWSの知見を記録しています。
 
 <br>
 
-## 01. AWS CLIのセットアップ
+## 01. AWS CLI のセットアップ
 
 ### configure
 
@@ -46,7 +46,7 @@ Default output format [None]: <アウトプット形式>
 
 ### list
 
-#### ▼ listとは
+#### ▼ list とは
 
 現在設定されている資格情報を取得する。
 
@@ -58,7 +58,7 @@ $ aws configure list
 
 ### set
 
-#### ▼ setとは
+#### ▼ set とは
 
 資格情報の特定の項目を設定する。
 
@@ -344,9 +344,9 @@ $ aws iam list-users --page-size 10
 
 <br>
 
-### API側のフィルタリング系
+### API 側のフィルタリング系
 
-#### ▼ API側のフィルタリング系とは
+#### ▼ API 側のフィルタリング系とは
 
 AWS リソースの API 側でフィルタリングし、実際に取得するデータを制御できる。
 
@@ -369,7 +369,7 @@ Amazon EC2、AWS AutoScaling、Amazon RDS など
 $ aws ec2 describe-instances --filters "Name=tag:<タグ名>,Values=<タグ値>"
 ```
 
-#### ▼ filterの文字を含む独自のオプション
+#### ▼ filter の文字を含む独自のオプション
 
 AWS DynamoDB など
 
@@ -415,7 +415,7 @@ $ aws ec2 describe-instances \
 
 <br>
 
-## 03. AWSリソース別のプラクティス
+## 03. AWS リソース別のプラクティス
 
 ### グローバルオプション
 
@@ -771,7 +771,7 @@ $ aws sts get-caller-identity --profile foo
 
 <br>
 
-### AWS Systems Manager (新SSM)
+### AWS Systems Manager (新 SSM)
 
 #### ▼ create-activation
 
@@ -919,7 +919,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 
 ### リクエスト制限
 
-#### ▼ 送信元IPに基づく制限
+#### ▼ 送信元 IP に基づく制限
 
 特定の送信元 IP アドレスを制限するポリシーを AWS IAM ユーザーに紐付けることにより、その AWS IAM ユーザーが AWS CLI の実行するときに、社外から実行できないように制限をかけられる。
 

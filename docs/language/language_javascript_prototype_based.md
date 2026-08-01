@@ -318,7 +318,7 @@ console.log(
 
 ### 糖衣構文の `class` の使用
 
-#### ▼ JavaScriptのクラスとは
+#### ▼ JavaScript のクラスとは
 
 ES6 から、糖衣構文の `class` によって、オブジェクトを宣言できるようになった。
 

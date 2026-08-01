@@ -15,7 +15,7 @@ description: ストレージ系＠パッケージの知見を記録していま�
 
 ## 01. growpart
 
-### growpartとは
+### growpart とは
 
 パーティションのデバイスファイル名を指定し、パーティションのサイズを拡張する。
 
@@ -102,7 +102,7 @@ $ growpart --dry-run /dev/xvda 1
 
 ## 02. resize2fs
 
-### resize2fsとは
+### resize2fs とは
 
 ファイルシステムを指定し、ファイルシステムのサイズを拡張する。
 
@@ -117,7 +117,7 @@ $ resize2fs <デバイスファイル名>
 
 ## 03. tree
 
-### treeとは
+### tree とは
 
 ディレクトリ構造を取得する。
 

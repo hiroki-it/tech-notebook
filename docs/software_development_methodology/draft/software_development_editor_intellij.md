@@ -13,7 +13,7 @@ description: IntelliJ＠エディターの知見を記録しています。
 
 <br>
 
-## DB接続
+## DB 接続
 
 ### local
 

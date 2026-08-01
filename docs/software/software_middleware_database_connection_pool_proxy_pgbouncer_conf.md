@@ -21,7 +21,7 @@ PgBouncer の設定ファイルである。
 
 <br>
 
-## 02. pgbouncerセクション
+## 02. pgbouncer セクション
 
 ### logfile
 
@@ -108,9 +108,9 @@ pool_mode = statement
 
 <br>
 
-## 03. databasesセクション
+## 03. databases セクション
 
-### DB名
+### DB 名
 
 DB 接続時の宛先情報を設定する。
 

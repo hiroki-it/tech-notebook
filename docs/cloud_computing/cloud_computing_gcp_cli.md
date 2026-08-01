@@ -3,7 +3,7 @@ title: 【IT技術の知見】Google Cloud CLI＠Google Cloudリソース
 description: Google Cloud CLI＠Google Cloudリソースの知見を記録しています。
 ---
 
-# Google Cloud CLI＠Google Cloudリソース
+# Google Cloud CLI＠Google Cloud リソース
 
 ## はじめに
 
@@ -50,11 +50,11 @@ Traceback (most recent call last):
 
 <br>
 
-## 02. Google Cloud CLIのセットアップ
+## 02. Google Cloud CLI のセットアップ
 
 ### auth
 
-#### ▼ authとは
+#### ▼ auth とは
 
 プリンシパル (例：ユーザー、サービスアカウント、グループ、ドメイン、Kubernetes の ServiceAccount) の認証する。
 
@@ -113,7 +113,7 @@ $ gcloud auth application-default login
 ```
 
 ```yaml
-# application_default_credentials.jsonファイル
+# application_default_credentials.json ファイル
 {
   "client_id": "***.apps.googleusercontent.com",
   "client_secret": "***",
@@ -198,7 +198,7 @@ $ gcloud auth revoke foo2-serviceaccount@foo-project.iam.gserviceaccount.com
 
 ### component
 
-#### ▼ componentとは
+#### ▼ component とは
 
 `gcloud` コマンドのコンポーネントを管理する。
 
@@ -271,7 +271,7 @@ The latest available version is: 400.0.0
 
 ### config configuration
 
-#### ▼ config configurationとは
+#### ▼ config configuration とは
 
 `gcloud` コマンドの Configuration を操作する。
 
@@ -425,7 +425,7 @@ bar   True       example@gmail.com   bar-project   asia-northeast1-a
 
 ### container clusters
 
-#### ▼ container clustersとは
+#### ▼ container clusters とは
 
 > - https://cloud.google.com/sdk/gcloud/reference/container/clusters
 
@@ -448,7 +448,7 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke       *.*.*.*      e2-medium     
 
 ### container node-pools
 
-#### ▼ container node-poolsとは
+#### ▼ container node-pools とは
 
 記入中...
 
@@ -507,7 +507,7 @@ $ gcloud container node-pools update foo-node-pool \
 
 ### init
 
-#### ▼ initとは
+#### ▼ init とは
 
 認証時のデフォルト値を対話方式で設定する。
 
@@ -558,7 +558,7 @@ Please enter numeric choice or text value (must exactly match list item): 3 # �
 
 ### info
 
-#### ▼ infoとは
+#### ▼ info とは
 
 現在使用している設定ファイルの場所を取得する。
 
@@ -577,7 +577,7 @@ User Config Directory: /root/.config/gcloud]
 
 ### project
 
-#### ▼ projectとは
+#### ▼ project とは
 
 記入中...
 
@@ -601,7 +601,7 @@ bar-project-***    bar-project   *****
 
 <br>
 
-## 03. Google Cloudリソース別のプラクティス
+## 03. Google Cloud リソース別のプラクティス
 
 ### Google Cloud Logging
 
@@ -656,7 +656,7 @@ $ gcloud storage cp --recursive gs://<Google Cloud Storage名>/<オブジェク�
 
 ### Google Cloud KMS
 
-#### ▼ describeとは
+#### ▼ describe とは
 
 Google Cloud KMS の暗号化キーを取得する。
 

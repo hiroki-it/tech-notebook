@@ -3,7 +3,7 @@ title: 【IT技術の知見】Direct Connect＠AWSリソース
 description: Direct Connect＠AWSリソースの知見を記録しています。
 ---
 
-# Direct Connect＠AWSリソース
+# Direct Connect＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Direct Connect＠AWSリソースの知見を記録しています�
 
 <br>
 
-## 01. Direct Connectとは
+## 01. Direct Connect とは
 
 専用線方式の WAN として動作し、AWS 側の単一のプライベートネットワーク (Amazon VPC) と、ユーザー側のプライベートネットワーク (例：オンプレミス) の間を接続する。
 

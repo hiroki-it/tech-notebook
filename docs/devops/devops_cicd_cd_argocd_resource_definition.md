@@ -29,9 +29,9 @@ sops 3.7.3
 
 <br>
 
-### AWS側
+### AWS 側
 
-#### ▼ Terraformの公式モジュールの場合
+#### ▼ Terraform の公式モジュールの場合
 
 ArgoCD のセットアップのうち、AWS 側で必要なものをまとめる。
 
@@ -131,7 +131,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/argo-cd -n
 
 > - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart
 
-#### ▼ Operatorとして
+#### ▼ Operator として
 
 ArgoCDOperator を先にセットアップし、ArgoCD に関するカスタムリソースを作成させる。
 
@@ -240,7 +240,7 @@ metadata:
 spec:
   ingressClassName: foo-ingress-class
   rules:
-    # ドメインを割り当てる場合、Hostヘッダーの合致ルールが必要である。
+    # ドメインを割り当てる場合、Host ヘッダーの合致ルールが必要である。
     - host: foo.argocd.com
       http:
         paths:
@@ -344,7 +344,7 @@ statefulset.apps/argocd-application-controller   1/1     119d
 
 <br>
 
-### Deployment配下のPod
+### Deployment 配下の Pod
 
 #### ▼ argocd-server
 
@@ -365,7 +365,7 @@ spec:
         - /usr/local/bin/argocd-server
         - --port=8080
         - --metrics-port=8083
-        # AWS ALBがHTTPリクエストでルーティングするように設定しているため、HTTPリクエストを許可する
+        # AWS ALB がHTTP リクエストでルーティングするように設定しているため、HTTP リクエストを許可する
         - --insecure
       # クライアント、Prometheus、からのリクエストを受信する
       ports:
@@ -375,7 +375,7 @@ spec:
         - containerPort: 8083
           name: metrics
           protocol: TCP
-      # 各種ConfigMapを読み込む。
+      # 各種 ConfigMap を読み込む。
       env:
         - name: *****
           valueFrom:
@@ -389,19 +389,19 @@ spec:
               key: *****
               name: argocd-redis
               optional: "true"
-      # Volumeの各種パスをコンテナにマウントする
+      # Volume の各種パスをコンテナにマウントする
       # https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77
       volumeMounts:
-        # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
+        # SSH 公開鍵認証既知ホストファイルをコンテナにマウントする
         - name: ssh-known-hosts
           mountPath: /app/config/ssh
-        # ArgoCD外にHTTPSリクエストを送信するためのサーバー証明書をコンテナにマウントする
+        # ArgoCD 外に HTTPS リクエストを送信するためのサーバー証明書をコンテナにマウントする
         - name: tls-certs
           mountPath: /app/config/tls
-        # repo-serverに対してHTTPSリクエストするためのサーバー証明書をコンテナにマウントする
+        # repo-server に対して HTTPS リクエストするためのサーバー証明書をコンテナにマウントする
         - mountPath: /app/config/server/tls
           name: argocd-repo-server-tls
-        # dex-serverに対してHTTPSリクエストするためのサーバー証明書をコンテナにマウントする
+        # dex-server に対して HTTPS リクエストするためのサーバー証明書をコンテナにマウントする
         - name: argocd-dex-server-tls
           mountPath: /app/config/dex/tls
         - name: plugins-home
@@ -414,7 +414,7 @@ spec:
 
       ...
 
-  # 各種ConfigMapやSecretを読み込む
+  # 各種 ConfigMap やSecret を読み込む
   volumes:
     - name: plugins-home
       emptyDir: { }
@@ -424,7 +424,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    # ArgoCD外 (特にリポジトリ) にHTTPSリクエストを送信するために、サーバー証明書を設定する。
+    # ArgoCD 外 (特にリポジトリ) に HTTPS リクエストを送信するために、サーバー証明書を設定する。
     - name: tls-certs
       configMap:
         defaultMode: 420
@@ -434,7 +434,7 @@ spec:
         defaultMode: 420
         name: argocd-styles-cm
         optional: "true"
-    # repo-serverにHTTPSリクエストを送信するために、サーバー証明書を設定する
+    # repo-server にHTTPS リクエストを送信するために、サーバー証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
@@ -447,7 +447,7 @@ spec:
             path: ca.crt
         optional: "true"
         secretName: argocd-repo-server-tls
-    # dex-serverにHTTPSリクエストを送信するために、サーバー証明書を設定する
+    # dex-server にHTTPS リクエストを送信するために、サーバー証明書を設定する
     - name: argocd-dex-server-tls
       secret:
         defaultMode: 420
@@ -477,7 +477,7 @@ spec:
   containers:
     - name: argocd-repo-server
       image: quay.io/argoproj/argocd:latest
-      # コマンドのパラーメーターは、argocd-cmd-params-cmから渡す
+      # コマンドのパラーメーターは、argocd-cmd-params-cm から渡す
       args:
         - /usr/local/bin/argocd-repo-server
         - --port=8081
@@ -490,7 +490,7 @@ spec:
         - containerPort: 8084
           name: metrics
           protocol: TCP
-      # 各種ConfigMapを読み込む。
+      # 各種 ConfigMap を読み込む。
       env:
         - name: XDG_CONFIG_HOME
           value: /.config
@@ -514,16 +514,16 @@ spec:
               key: *****
               name: argocd-redis
               optional: "true"
-      # Volumeの各種パスをコンテナにマウントする
+      # Volume の各種パスをコンテナにマウントする
       # https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77
       volumeMounts:
-        # InitContainerでインストールしたバイナリファイルをコンテナにマウントする
+        # InitContainer でインストールしたバイナリファイルをコンテナにマウントする
         - name: custom-tools
           mountPath: /usr/local/bin
-        # SSH公開鍵認証既知ホストファイルをコンテナにマウントする
+        # SSH 公開鍵認証既知ホストファイルをコンテナにマウントする
         - name: ssh-known-hosts
           mountPath: /app/config/ssh
-        # ArgoCD外にHTTPSリクエストを送信するために、サーバー証明書を設定する。
+        # ArgoCD 外に HTTPS リクエストを送信するために、サーバー証明書を設定する。
         - name: tls-certs
           mountPath: /app/config/tls
         - name: gpg-keys
@@ -532,10 +532,10 @@ spec:
           mountPath: /app/config/gpg/keys
         - name: argocd-repo-server-tls
           mountPath: /app/config/reposerver/tls
-        # ConfigManagementPluginのhelmコマンドを実行するディレクトリをコンテナにマウントする
+        # ConfigManagementPlugin のhelm コマンドを実行するディレクトリをコンテナにマウントする
         - name: helm-working-dir
           mountPath: /helm-working-dir
-        # コンテナ間で通信するためのUnixドメインソケットファイルをコンテナにマウントする
+        # コンテナ間で通信するための Unix ドメインソケットファイルをコンテナにマウントする
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
         # リポジトリから取得したクローンを保管するディレクトリをコンテナにマウントする
@@ -544,7 +544,7 @@ spec:
 
 
   initContainers:
-    # ConfigManagementPlugin用のサイドカーにcmp-serverバイナリをコピーするInitContainer
+    # ConfigManagementPlugin 用のサイドカーに cmp-server バイナリをコピーする InitContainer
     - name: copyutil
       image: quay.io/argoproj/argocd:latest
       command:
@@ -555,7 +555,7 @@ spec:
       volumeMounts:
         - mountPath: /var/run/argocd
           name: var-files
-    # お好きなツールをインストールするInitContainer
+    # お好きなツールをインストールする InitContainer
     # Helm
     - name: helm-installer
       image: alpine:3.17.3
@@ -602,7 +602,7 @@ spec:
         - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
 
-  # 各種Secretを読み込む
+  # 各種 Secret を読み込む
   volumes:
     - name: custom-tools
       emptyDir: { }
@@ -618,7 +618,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-ssh-known-hosts-cm
-    # ArgoCD外 (特にリポジトリ) にHTTPSリクエストを送信するためのサーバー証明書をコンテナにマウントする
+    # ArgoCD 外 (特にリポジトリ) に HTTPS リクエストを送信するためのサーバー証明書をコンテナにマウントする
     - name: tls-certs
       configMap:
         defaultMode: 420
@@ -627,7 +627,7 @@ spec:
       configMap:
         defaultMode: 420
         name: argocd-gpg-keys-cm
-    # 他のコンポーネントからHTTPSリクエストを受信するために、サーバー証明書を設定する
+    # 他のコンポーネントから HTTPS リクエストを受信するために、サーバー証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
@@ -664,7 +664,7 @@ spec:
         - ""
         - --appendonly
         - "no"
-      # application-controllerからのリクエストを受信する
+      # application-controller からのリクエストを受信する
       ports:
         - containerPort: 6379
           name: redis
@@ -688,7 +688,7 @@ spec:
   containers:
     - name: argocd-dex-server
       image: ghcr.io/dexidp/dex:latest
-      # コマンドのパラーメーターは、argocd-cmd-params-cmから渡す
+      # コマンドのパラーメーターは、argocd-cmd-params-cm から渡す
       command:
         - /shared/argocd-dex
       args:
@@ -704,7 +704,7 @@ spec:
         - name: metrics
           containerPort: 5558
           protocol: TCP
-      # 各種ConfigMapを読み込む
+      # 各種 ConfigMap を読み込む
       env:
         - name: *****
           valueFrom:
@@ -715,9 +715,9 @@ spec:
 
   ...
 
-  # 各種Secretを読み込む
+  # 各種 Secret を読み込む
   volumes:
-    # 他のコンポーネントからHTTPSリクエストを受信するために、サーバー証明書を設定する
+    # 他のコンポーネントから HTTPS リクエストを受信するために、サーバー証明書を設定する
     - name: argocd-dex-server-tls
       secret:
         defaultMode: 420
@@ -755,16 +755,16 @@ spec:
   containers:
     - name: argocd-application-controller
       image: quay.io/argoproj/argocd:latest
-      # コマンドのパラーメーターは、argocd-cmd-params-cmから渡す
+      # コマンドのパラーメーターは、argocd-cmd-params-cm から渡す
       args:
         - /usr/local/bin/argocd-application-controller
         - --metrics-port=8082
-      # Prometheusからのリクエストを受信する
+      # Prometheus からのリクエストを受信する
       ports:
         - containerPort: 8082
           name: metrics
           protocol: TCP
-      # 各種ConfigMapを読み込む
+      # 各種 ConfigMap を読み込む
       env:
         - name: *****
           valueFrom:
@@ -784,16 +784,16 @@ spec:
               key: ****
               name: argocd-redis
               optional: "true"
-      # Volumeの各種パスをコンテナにマウントする
+      # Volume の各種パスをコンテナにマウントする
       # https://github.com/argoproj/argo-cd/blob/v2.6.0/common/common.go#L60-L77
       volumeMounts:
         - mountPath: /app/config/controller/tls
           name: argocd-repo-server-tls
         - mountPath: /home/argocd
           name: argocd-home
-  # 各種Secretを読み込む
+  # 各種 Secret を読み込む
   volumes:
-    # repo-serverとHTTPSリクエストを送信するために、サーバー証明書を設定する
+    # repo-server とHTTPS リクエストを送信するために、サーバー証明書を設定する
     - name: argocd-repo-server-tls
       secret:
         defaultMode: 420
@@ -815,9 +815,9 @@ spec:
 
 ## 02. Application
 
-### Applicationとは
+### Application とは
 
-#### ▼ Kuberneresリソースのポーリング
+#### ▼ Kuberneres リソースのポーリング
 
 Kubernetes のカスタムリソースから定義される。
 
@@ -836,26 +836,26 @@ Application 自体もカスタムリソースなため、Application が Applica
 
 #### ▼ 操作の種類
 
-| 操作名       | 説明                                                                                                                                                                                              |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Sync         | ポーリング対象リポジトリとのマニフェストの差分を確認し、差分があれば `kubectl apply` コマンドを実行する。                                                                                         |
-| Refresh      | ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、applyは実行しない。                                                                                               |
-| Hard Refresh | redis-serverに保管されているキャッシュを削除する。また、ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、applyは実行しない。                                       |
-| Restart      | すでにapply済みのKubernetesリソース内のコンテナを再デプロイする。コンテナを再起動するのみで、Kubernetesリソースを作成することはない。<br>- https://twitter.com/reoring/status/1476046977599406087 |
+| 操作名       | 説明                                                                                                                                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Sync         | ポーリング対象リポジトリとのマニフェストの差分を確認し、差分があれば `kubectl apply` コマンドを実行する。                                                                                              |
+| Refresh      | ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、apply は実行しない。                                                                                                   |
+| Hard Refresh | redis-server に保管されているキャッシュを削除する。また、ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、apply は実行しない。                                          |
+| Restart      | すでに apply 済みの Kubernetes リソース内のコンテナを再デプロイする。コンテナを再起動するのみで、Kubernetes リソースを作成することはない。<br>- https://twitter.com/reoring/status/1476046977599406087 |
 
 > - https://argo-cd.readthedocs.io/en/stable/core_concepts/
 > - https://github.com/argoproj/argo-cd/discussions/8260
 
 #### ▼ ヘルスステータスの種類
 
-| ステータス名 | 説明                                                                                                                                                                   |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Healthy      | すべてのKubernetesリソースは正常に稼働している。                                                                                                                       |
-| Progressing  | 一部のKubernetesリソースは正常に稼働していないが、リソースの状態が変化中のため、正常になる可能性がある。この状態の場合は、ステータスが他のいずれかになるまで待機する。 |
-| Degraded     | 一部のKubernetesリソースは正常に稼働していない。                                                                                                                       |
-| Suspended    | 一部のKubernetesリソースは、イベント (例：CronJobなど) が実行されることを待機している。                                                                                |
-| Missing      | 記入中...                                                                                                                                                              |
-| Unknown      | 記入中...                                                                                                                                                              |
+| ステータス名 | 説明                                                                                                                                                                     |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Healthy      | すべての Kubernetes リソースは正常に稼働している。                                                                                                                       |
+| Progressing  | 一部の Kubernetes リソースは正常に稼働していないが、リソースの状態が変化中のため、正常になる可能性がある。この状態の場合は、ステータスが他のいずれかになるまで待機する。 |
+| Degraded     | 一部の Kubernetes リソースは正常に稼働していない。                                                                                                                       |
+| Suspended    | 一部の Kubernetes リソースは、イベント (例：CronJob など) が実行されることを待機している。                                                                               |
+| Missing      | 記入中...                                                                                                                                                                |
+| Unknown      | 記入中...                                                                                                                                                                |
 
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
 
@@ -876,7 +876,7 @@ Application は、元は ArgocCD の application-controller と同じ Namespace 
 
 ### .spec.ignoreDifferences
 
-#### ▼ ignoreDifferencesとは
+#### ▼ ignoreDifferences とは
 
 特定の Application の Sync ステータス (Synced、OutOfSync) の判定時、特定の Kubernetes リソースの特定の設定値の差分を無視し、OutOfSync にならないようする。
 
@@ -890,11 +890,11 @@ metadata:
   namespace: argocd
 spec:
   ignoreDifferences:
-    # KubernetesリソースのAPIグループの名前
+    # Kubernetes リソースの API グループの名前
     - group: apps
       kind: Deployment
       jsonPointers:
-        # .spec.replicasキー (インスタンス数) の設定値の変化を無視する。
+        # .spec.replicas キー (インスタンス数) の設定値の変化を無視する。
         - /spec/replicas
     - group: autoscaling
       kind: HorizontalPodAutoscaler
@@ -935,7 +935,7 @@ spec:
 
 ### .spec.project
 
-#### ▼ projectとは
+#### ▼ project とは
 
 アプリケーションの所属する AppProject 名を設定する。
 
@@ -975,16 +975,16 @@ spec:
 
 ### .spec.source
 
-#### ▼ sourceとは
+#### ▼ source とは
 
 リポジトリ (マニフェストリポジトリ、チャートリポジトリ、OCI リポジトリ) の変更をポーリングし、これらからプルしたマニフェストで
 `kubectl apply` コマンドを実行。
 
-| リポジトリの種類                                                              | 管理方法                                 | マニフェストのapply方法                                                                                                           |
-| ----------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| マニフェストリポジトリ (例：GitHub内のリポジトリ)                             | マニフェストそのまま                     | ArgoCDで直接的に `kubectl apply` コマンドを実行する。                                                                             |
-| チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ、Amazon S3) | チャートアーカイブ (`.tgz` 形式ファイル) | Helmを使用して、ArgoCDで間接的に `kubectl apply` コマンドを実行する。パラメーターに応じて、内部的に `helm` コマンドが実行される。 |
-| OCIリポジトリ (例：ECR内のリポジトリ)                                         | チャートアーカイブ (`.tgz` 形式ファイル) | Helmを使用して、ArgoCDで間接的に `kubectl apply` コマンドを実行する。パラメーターに応じて、内部的に `helm` コマンドが実行される。 |
+| リポジトリの種類                                                              | 管理方法                                 | マニフェストの apply 方法                                                                                                           |
+| ----------------------------------------------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| マニフェストリポジトリ (例：GitHub 内のリポジトリ)                            | マニフェストそのまま                     | ArgoCD で直接的に `kubectl apply` コマンドを実行する。                                                                              |
+| チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ、Amazon S3) | チャートアーカイブ (`.tgz` 形式ファイル) | Helm を使用して、ArgoCD で間接的に `kubectl apply` コマンドを実行する。パラメーターに応じて、内部的に `helm` コマンドが実行される。 |
+| OCI リポジトリ (例：ECR 内のリポジトリ)                                       | チャートアーカイブ (`.tgz` 形式ファイル) | Helm を使用して、ArgoCD で間接的に `kubectl apply` コマンドを実行する。パラメーターに応じて、内部的に `helm` コマンドが実行される。 |
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
 
@@ -1000,8 +1000,8 @@ spec:
 
 | 設定項目  | 説明                                                                                                                                                                                 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `include` | `.spec.source.path` キーで指定したディレクトリ内で、特定のマニフェストのみを指定し、kube-apiserverに送信する                                                                         |
-| `exclude` | `.spec.source.path` キーで指定したディレクトリ内で、特定のマニフェストを除外し、kube-apiserverに送信する                                                                             |
+| `include` | `.spec.source.path` キーで指定したディレクトリ内で、特定のマニフェストのみを指定し、kube-apiserver に送信する                                                                        |
+| `exclude` | `.spec.source.path` キーで指定したディレクトリ内で、特定のマニフェストを除外し、kube-apiserver に送信する                                                                            |
 | `recurse` | `.spec.source.path` キーで指定したディレクトリにサブディレクトリが存在している場合、すべてのマニフェストを指定できるように、ディレクトリ内の再帰的検出を有効化するか否かを設定する。 |
 
 ```yaml
@@ -1086,7 +1086,7 @@ spec:
 これにより、各実行環境内の Application は特定のブランチのみをポーリングするようになる。
 
 ```yaml
-# 本番環境のApplication
+# 本番環境の Application
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -1101,7 +1101,7 @@ spec:
 ```
 
 ```yaml
-# ステージング環境のApplication
+# ステージング環境の Application
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -1148,12 +1148,12 @@ spec:
 
 helmfile と同じように `helm` コマンドを宣言的に実行しつつ、実行を自動化できる。
 
-| 設定項目      | 説明                                                                                                                                                                                                                                                        | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `releaseName` | Helmリリース名を設定する。多くのチャートではデフォルトでArgoCDの名前をHelmリリース名としており、Helmリリース名はチャート内のKubernetesリソースのプレフィクスになる。予期せぬApplicationの再作成を防ぐにために、`releaseName` を明示的に設定したほうがよい。 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `values`      | `helm` コマンドに渡す `values` ファイルの値をハードコーディングする。                                                                                                                                                                                       | 執筆時点 (2022/10/31) では、`values` ファイルは、同じチャートリポジトリ内にある必要がある。チャートと `values` ファイルが異なるリポジトリにある場合 (例：チャートはOSSを参照し、`values` ファイルは自前で定義する) 、`valueFiles` オプションの代わりに `values` オプションを使用する。<br>・https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936 <br>・https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62 <br><br>ただし、Applicationに `values` ファイルをハードコーディングした場合、共有 `values` ファイルと差分 `values` ファイルに切り分けて定義できなくなってしまう。そこで、`values` オプションの一部分をHelmのテンプレート機能で動的に出力する。ただし、新機能として複数のリポジトリの `values` ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに `values` ファイルがあっても `valueFiles` オプションで指定できるようになる。<br>・https://github.com/argoproj/argo-cd/pull/10432 |
-| `valueFiles`  | `helm` コマンドに渡す `values` ファイルを設定する。                                                                                                                                                                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `version`     | `helm` コマンドのバージョンを設定する。デフォルトでは、`v3` になる。 ArgoCD自体をHelmでセットアップする場合は、インストールするHelmのバージョンを指定できる。そのため、このオプションを使用する必要はない。                                                 | ・https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 設定項目      | 説明                                                                                                                                                                                                                                                                  | 補足                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `releaseName` | Helm リリース名を設定する。多くのチャートではデフォルトで ArgoCD の名前を Helm リリース名としており、Helm リリース名はチャート内の Kubernetes リソースのプレフィクスになる。予期せぬ Application の再作成を防ぐにために、`releaseName` を明示的に設定したほうがよい。 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `values`      | `helm` コマンドに渡す `values` ファイルの値をハードコーディングする。                                                                                                                                                                                                 | 執筆時点 (2022/10/31) では、`values` ファイルは、同じチャートリポジトリ内にある必要がある。チャートと `values` ファイルが異なるリポジトリにある場合 (例：チャートは OSS を参照し、`values` ファイルは自前で定義する) 、`valueFiles` オプションの代わりに `values` オプションを使用する。<br>・https://github.com/argoproj/argo-cd/issues/2789#issuecomment-624043936 <br>・https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L48-L62 <br><br>ただし、Application に `values` ファイルをハードコーディングした場合、共有 `values` ファイルと差分 `values` ファイルに切り分けて定義できなくなってしまう。そこで、`values` オプションの一部分を Helm のテンプレート機能で動的に出力する。ただし、新機能として複数のリポジトリの `values` ファイルを参照する方法が提案されており、これを使用すれば異なるリポジトリに `values` ファイルがあっても `valueFiles` オプションで指定できるようになる。<br>・https://github.com/argoproj/argo-cd/pull/10432 |
+| `valueFiles`  | `helm` コマンドに渡す `values` ファイルを設定する。                                                                                                                                                                                                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `version`     | `helm` コマンドのバージョンを設定する。デフォルトでは、`v3` になる。 ArgoCD 自体を Helm でセットアップする場合は、インストールする Helm のバージョンを指定できる。そのため、このオプションを使用する必要はない。                                                      | ・https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L25
@@ -1237,7 +1237,7 @@ spec:
     helm:
       releaseName: foo
       valueFiles:
-        # helm-secretsを使用して暗号化されたvaluesファイル
+        # helm-secrets を使用して暗号化された values ファイル
         - ./secrets.yaml
 ```
 
@@ -1246,7 +1246,7 @@ spec:
 ポーリング対象のリポジトリに `.sops.yaml` ファイルと `secrets` ファイル (キーバリュー型ストア) を配置しておく必要がある。
 
 ```yaml
-# secretsファイル
+# secrets ファイル
 
 # キーバリュー型ストア
 data:
@@ -1261,14 +1261,14 @@ ArgoCD は暗号化された `values` ファイルを復号し、チャートを
 補足として ArgoCD 上では、Secret の data キーは `base64` 方式でエンコードされる。
 
 ```yaml
-# valuesファイルの暗号化された値を出力するテンプレートファイル
+# values ファイルの暗号化された値を出力するテンプレートファイル
 apiVersion: v1
 kind: Secret
 metadata:
   name: foo-aws-credentials
 type: Opaque
 data:
-  AWS_ACCESS_KEY: {{.Values.data.AWS_ACCESS_KEY | b64en}} # base64方式でエンコードされる。
+  AWS_ACCESS_KEY: {{.Values.data.AWS_ACCESS_KEY | b64en}} # base64 方式でエンコードされる。
   AWS_SECRET_ACCESS_KEY: {{.Values.data.AWS_SECRET_ACCESS_KEY | b64en}}
 ```
 
@@ -1326,7 +1326,7 @@ metadata:
   namespace: argocd
 spec:
   source:
-    # 例えば、GitHub内のGitHub Pagesをチャートリポジトリとして扱う。
+    # 例えば、GitHub 内の GitHub Pages をチャートリポジトリとして扱う。
     repoURL: https://github.com/hiroki-hasegawa/foo-repository.git
 ```
 
@@ -1343,7 +1343,7 @@ metadata:
   namespace: argocd
 spec:
   source:
-    # 例えば、Amazon S3をチャートリポジトリとして扱う。
+    # 例えば、Amazon S3 をチャートリポジトリとして扱う。
     repoURL: https://foo-bucket.s3.ap-northeast-1.amazonaws.com
 ```
 
@@ -1370,7 +1370,7 @@ spec:
 
 <br>
 
-### .spec.source (OCIレジストリ内リポジトリの場合)
+### .spec.source (OCI レジストリ内リポジトリの場合)
 
 #### ▼ chart
 
@@ -1394,7 +1394,7 @@ metadata:
   namespace: argocd
 spec:
   source:
-    # 例えば、ECR内のリポジトリをOCIリポジトリとして扱う。
+    # 例えば、ECR 内のリポジトリを OCI リポジトリとして扱う。
     repoURL: oci://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
 ```
 
@@ -1419,7 +1419,7 @@ spec:
 
 ### .spec.sources (Multiple sources)
 
-#### ▼ Multiple Sourcesとは
+#### ▼ Multiple Sources とは
 
 単一の Application から、複数のチャートやマニフェストをデプロイする。
 
@@ -1480,7 +1480,7 @@ spec:
           bar: bar
           baz: baz
     # 自前チャート
-    # helm-secretsプラグインを使用して、Secretを復号する。
+    # helm-secrets プラグインを使用して、Secret を復号する。
     - repoURL: https://github.com/hiroki-hasegawa/bar-repository.git
       targetRevision: main
       path: foo-extra
@@ -1507,7 +1507,7 @@ data:
 
 ### .spec.destination
 
-#### ▼ destinationとは
+#### ▼ destination とは
 
 apply 先の Kubernetes を設定する。
 
@@ -1576,7 +1576,7 @@ spec:
 ```
 
 ```yaml
-# Amazon EKSの場合
+# Amazon EKS の場合
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -1584,7 +1584,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    # 外部のAmazon EKS Clusterのkube-apiserverのエンドポイントを指定する。
+    # 外部の Amazon EKS Cluster のkube-apiserver のエンドポイントを指定する。
     server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
@@ -1594,7 +1594,7 @@ spec:
 
 ### .spec.syncPolicy
 
-#### ▼ syncPolicyとは
+#### ▼ syncPolicy とは
 
 Sync のオプションを設定する。
 
@@ -1610,11 +1610,11 @@ ArgoCD はリポジトリを `3` 分間ごとにポーリングしており、�
 
 一方で、App Of Apps パターンを採用している場合、親の Application の自動 Sync が有効化していると、子 Application の設定値 (例：ターゲットブランチ) を変更できず煩わしい。
 
-| 設定項目     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | 補足                                                                                                                                                                                                                 |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `allowEmpty` | Prune中に、Application配下にリソースを検出できなくなると、Pruneは失敗するようになっている。Applicationが空 (配下にリソースがない) 状態を許可するか否かを設定する。                                                                                                                                                                                                                                                                                                                                                                           | ・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
-| `prune`      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHubリポジトリでマニフェストが削除されても、ArgoCDはリソースを自動的に削除しない。開発者の気づかないうちに、残骸のKubernetesリソースが溜まる可能性があるため、有効化したほうがよい。`rev:<番号>` という表記があるKubernetesリソースは、`prune` を忘れて新旧バージョンが存在していることを表す。Applicationを削除するときには、Application配下のKubernetesリソースが残骸にならないように、Application配下のKubernetesリソースを先に削除しておく。 | ・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                   |
-| `selfHeal`   | ArgoCD以外の方法でCluster内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動Syncする。デフォルトでは、ArgoCD以外の方法で変更しても、自動Syncは実行しない。                                                                                                                                                                                                                                                                                                                                                            | ・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                              |
+| 設定項目     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | 補足                                                                                                                                                                                                                 |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `allowEmpty` | Prune 中に、Application 配下にリソースを検出できなくなると、Prune は失敗するようになっている。Application が空 (配下にリソースがない) 状態を許可するか否かを設定する。                                                                                                                                                                                                                                                                                                                                                                                    | ・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning-with-allow-empty-v18<br>・https://stackoverflow.com/questions/67597403/argocd-stuck-at-deleting-but-resources-are-already-deleted |
+| `prune`      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHub リポジトリでマニフェストが削除されても、ArgoCD はリソースを自動的に削除しない。開発者の気づかないうちに、残骸の Kubernetes リソースが溜まる可能性があるため、有効化したほうがよい。`rev:<番号>` という表記がある Kubernetes リソースは、`prune` を忘れて新旧バージョンが存在していることを表す。Application を削除するときには、Application 配下の Kubernetes リソースが残骸にならないように、Application 配下の Kubernetes リソースを先に削除しておく。 | ・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                   |
+| `selfHeal`   | ArgoCD 以外の方法で Cluster 内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動 Sync する。デフォルトでは、ArgoCD 以外の方法で変更しても、自動 Sync は実行しない。                                                                                                                                                                                                                                                                                                                                                                 | ・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                              |
 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L113
@@ -1639,13 +1639,13 @@ spec:
 
 GitOps でのマニフェストの Sync 処理の詳細を設定する。
 
-| 設定項目                 | 説明                                                                                                                                                                                   | 補足                                                                                                                                                                                                              |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CreateNamespace`        | Applicationの作成対象のNamespaceを自動的に作成する。                                                                                                                                   | Namespaceので出どころがわからなくなるため、ArgoCDの `createNamespace` オプションは無効化し、Namespaceのマニフェストを定義しておくほうがよい。                                                                     |
-| `Validate`               |                                                                                                                                                                                        |                                                                                                                                                                                                                   |
-| `PrunePropagationPolicy` | Sync後に不要になったKubernetesリソースの削除方法を設定する。削除方法は、KubernetesでのKubernetesリソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファンがある。 | ・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
-| `PruneLast`              | 通常のPruneでは、Syncしながら古いリソースを独立的に削除していく。PruneLastでは、一度すべてのKubernetesリソースをSyncしてしまい、正常に稼働した後に古いリソースをまとめて削除していく。 | ・https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                    |
-| `ServerSideApply`        | Sync時、`kubectl apply` コマンド `--server-side` オプションを有効化する。                                                                                                              | ・https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply                                                                                                                             |
+| 設定項目                 | 説明                                                                                                                                                                                           | 補足                                                                                                                                                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CreateNamespace`        | Application の作成対象の Namespace を自動的に作成する。                                                                                                                                        | Namespace ので出どころがわからなくなるため、ArgoCD の `createNamespace` オプションは無効化し、Namespace のマニフェストを定義しておくほうがよい。                                                                  |
+| `Validate`               |                                                                                                                                                                                                |                                                                                                                                                                                                                   |
+| `PrunePropagationPolicy` | Sync 後に不要になった Kubernetes リソースの削除方法を設定する。削除方法は、Kubernetes での Kubernetes リソースの削除の仕組みと同様に、バックグラウンド、フォアグラウンド、オルファンがある。   | ・https://www.devopsschool.com/blog/sync-options-in-argo-cd/<br>・https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/ |
+| `PruneLast`              | 通常の Prune では、Sync しながら古いリソースを独立的に削除していく。PruneLast では、一度すべての Kubernetes リソースを Sync してしまい、正常に稼働した後に古いリソースをまとめて削除していく。 | ・https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#prune-last                                                                                                                                    |
+| `ServerSideApply`        | Sync 時、`kubectl apply` コマンド `--server-side` オプションを有効化する。                                                                                                                     | ・https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply                                                                                                                             |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1695,7 +1695,7 @@ spec:
             url: https://kubernetes.default.svc
   template:
     metadata:
-      # Cluster名を出力する。
+      # Cluster 名を出力する。
       name: "{{cluster}}"
     spec:
       project: default
@@ -1704,7 +1704,7 @@ spec:
         targetRevision: HEAD
         path: .
       destination:
-        # ClusterのURLを出力する。
+        # Cluster のURL を出力する。
         server: "{{url}}"
         namespace: foo-namespace
 ```
@@ -1716,7 +1716,7 @@ spec:
 
 ## 04. AppProject
 
-### AppProjectとは
+### AppProject とは
 
 単一の Kubernetes Cluster 内で、Application の責務境界のテナントを作成する。
 
@@ -1757,7 +1757,7 @@ spec:
       server: "*"
   sourceRepos:
     - "*"
-# 執筆時点 (2023/05/17) では、defaultのAppProjectでsourceNamespacesキーは使用できない
+# 執筆時点 (2023/05/17) では、default のAppProject でsourceNamespaces キーは使用できない
 # sourceNamespaces
 ```
 
@@ -1768,7 +1768,7 @@ spec:
 
 ### spec.sourceNamespaces
 
-#### ▼ sourceNamespacesとは
+#### ▼ sourceNamespaces とは
 
 AppProject に所属可能な Application を制御する。
 
@@ -1783,7 +1783,7 @@ metadata:
   name: prd
   namespace: foo # サービス名など
 spec:
-  # AppProjectへの所属を許可したいApplicationのNamespaceを設定する
+  # AppProject への所属を許可したい Application のNamespace を設定する
   sourceNamespaces:
     - foo
 ```
@@ -1850,7 +1850,7 @@ spec:
 > - https://developers.redhat.com/articles/2022/04/13/manage-namespaces-multitenant-clusters-argo-cd-kustomize-and-helm#a_simple_argo_cd_application
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
 
-#### ▼ デフォルトのNamespacedスコープモード
+#### ▼ デフォルトの Namespaced スコープモード
 
 デフォルトの Namespaced スコープモードの ArgoCD では、application-controller と repo-server が自分自身の Namespace のみを見る。
 
@@ -1904,8 +1904,8 @@ metadata:
   namespace: foo # サービス名など
 spec:
   destinations:
-    - namespace: "*" # 所属するApplicationは、全てのNamespaceにデプロイできる。
-      server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com # 所属するApplicationは、指定したURLのClusterのみを指定できる。
+    - namespace: "*" # 所属する Application は、全ての Namespace にデプロイできる。
+      server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com # 所属する Application は、指定した URL のCluster のみを指定できる。
 ```
 
 <br>

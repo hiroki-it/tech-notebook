@@ -13,7 +13,7 @@ description: Composition API＠Vue.jsの知見を記録しています。
 
 <br>
 
-## 01. Composition APIとは
+## 01. Composition API とは
 
 Vue.js でパッケージの 1 つで、状態管理を実施する。
 

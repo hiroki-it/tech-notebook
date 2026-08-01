@@ -13,7 +13,7 @@ description: WorkSpaces Applications＠AWSの知見を記録しています。
 
 <br>
 
-## 01. WorkSpaces Applicationsとは
+## 01. WorkSpaces Applications とは
 
 Windows の仮想環境を提供する。
 

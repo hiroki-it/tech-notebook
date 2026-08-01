@@ -3,7 +3,7 @@ title: 【IT技術の知見】ConfigMap系＠Grafana
 description: ConfigMap系＠Grafanaの知見を記録しています。
 ---
 
-# ConfigMap系＠Grafana
+# ConfigMap 系＠Grafana
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: ConfigMap系＠Grafanaの知見を記録しています。
 
 ## 01. grafana-datasource-cm
 
-### grafana-datasource-cmとは
+### grafana-datasource-cm とは
 
 Grafana の `datasource.yaml` ファイルを管理する。
 
@@ -33,7 +33,7 @@ metadata:
   namespace: prometheus
 spec:
   containers:
-    # grafanaコンテナ
+    # grafana コンテナ
     - name: grafana
       image: grafana/grafana:8.0.0
 
@@ -68,11 +68,11 @@ spec:
 
 ### datasources
 
-#### ▼ datasourcesとは
+#### ▼ datasources とは
 
 Grafana のデータソースを設定する。
 
-#### ▼ Prometheusの場合
+#### ▼ Prometheus の場合
 
 Prometheus の場合、ビルトインのプラグインを使用できる。
 
@@ -93,7 +93,7 @@ data:
         url: http://<PrometheusのService名>.<PrometheusのNamespace名>:9090
         isDefault: "true"
         # メトリクスとトレース間を相関させる
-        # Prometheusで --enable-feature=exemplar-storage を有効にしておく必要がある
+        # Prometheus で --enable-feature=exemplar-storage を有効にしておく必要がある
         jsonData:
           exemplarTraceIdDestinations: 
             - name: tracd_id
@@ -105,7 +105,7 @@ data:
 > - https://grafana.com/grafana/plugins/prometheus/
 > - https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
 
-#### ▼ VictoriaMetricsの場合
+#### ▼ VictoriaMetrics の場合
 
 VictoriaMetrics の場合、ビルトインの `prometheus` タイプを使用できる。
 
@@ -134,7 +134,7 @@ data:
 
 > - https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
 
-#### ▼ Amazon CloudWatchの場合
+#### ▼ Amazon CloudWatch の場合
 
 Amazon CloudWatch の場合、`cloudwatch` タイプを指定する。
 
@@ -190,7 +190,7 @@ data:
         jsonData:
           derivedFields:
             - name: trace_id
-              # trace_idがネストされた場所にあっても検知できるようにする
+              # trace_id がネストされた場所にあっても検知できるようにする
               matcherRegex: '"trace_id":\s*"([^"]+)"'
               url: $${__value.raw}
               urlDisplayLabel: View Grafana Tempo
@@ -241,9 +241,9 @@ data:
             spanStartTimeShift: -1m
             # スパン終了時刻の検索ウィンドウの補正
             spanEndTimeShift: 1m
-            # トレースIDでログをフィルタリングするかどうかのフラグ
+            # トレース ID でログをフィルタリングするかどうかのフラグ
             filterByTraceID: true
-            # スパンIDでログをフィルタリングするかどうかのフラグ
+            # スパン ID でログをフィルタリングするかどうかのフラグ
             filterBySpanID: false
           # メトリクスとトレース間を相関させる
           tracesToMetrics:
@@ -286,7 +286,7 @@ Grafana の `grafana.ini` ファイルを管理する。
 
 ## 02-02. grafana.ini
 
-### auth.anonymousセクション
+### auth.anonymous セクション
 
 ユーザー名とパスワード無しでログインできるようにする。
 
@@ -316,7 +316,7 @@ data:
 
 <br>
 
-### auth.generic_oauthセクション
+### auth.generic_oauth セクション
 
 Keycloak を ID プロバイダーとして、SSO でログインできるようにする。
 
@@ -349,7 +349,7 @@ data:
 
 <br>
 
-### auth.githubセクション
+### auth.github セクション
 
 GitHub を ID プロバイダーとして、SSO でログインできるようにする。
 
@@ -381,7 +381,7 @@ data:
 
 <br>
 
-### pathsセクション
+### paths セクション
 
 記入中...
 
@@ -402,7 +402,7 @@ data:
 
 <br>
 
-### serverセクション
+### server セクション
 
 記入中...
 
@@ -423,7 +423,7 @@ data:
 
 <br>
 
-### dashboardセクション
+### dashboard セクション
 
 #### ▼ min_refresh_interval
 
@@ -449,7 +449,7 @@ data:
 
 <br>
 
-### databaseセクション
+### database セクション
 
 記入中...
 
@@ -470,7 +470,7 @@ data:
 
 <br>
 
-### remote_cacheセクション
+### remote_cache セクション
 
 記入中...
 
@@ -491,9 +491,9 @@ data:
 
 <br>
 
-### date_formatsセクション
+### date_formats セクション
 
-#### ▼ date_formatsセクション
+#### ▼ date_formats セクション
 
 時間に関して設定する。
 
@@ -534,9 +534,9 @@ data:
 
 <br>
 
-### usersセクション
+### users セクション
 
-#### ▼ usersセクション
+#### ▼ users セクション
 
 記入中...
 
@@ -593,7 +593,7 @@ data:
 
 ## 02-03. download_dashboard.sh
 
-### download_dashboard.shとは
+### download_dashboard.sh とは
 
 リモートからダッシュボードをダウンロードするスクリプトを定義する。
 
@@ -622,7 +622,7 @@ data:
       -H "Content-Type: application/json;charset=UTF-8" \
       "https://raw.githubusercontent.com/example/foo.json" \
       > "/var/lib/grafana/dashboards/remote/foo.json"
-  # 必ずdashboardproviders.yamlファイルが必要である
+  # 必ず dashboardproviders.yaml ファイルが必要である
   dashboardproviders.yaml: |
     apiVersion: 1
     providers:
@@ -720,7 +720,7 @@ data:
 
 ## 03. grafana-provider-cm
 
-### grafana-provider-cmとは
+### grafana-provider-cm とは
 
 Grafana の `provider.yaml` ファイルを管理する。
 
@@ -758,7 +758,7 @@ data:
 
 ## 04. grafana-dashboard-cm
 
-### grafana-dashboard-cmとは
+### grafana-dashboard-cm とは
 
 Grafana の `dashboard.json` ファイルを管理する。
 
@@ -784,7 +784,7 @@ metadata:
   namespace: prometheus
 spec:
   containers:
-    # grafanaコンテナ
+    # grafana コンテナ
     - name: grafana
       image: grafana/grafana:8.0.0
 
@@ -802,12 +802,12 @@ spec:
             value: WATCH
           - name: LABEL
             value: grafana_dashboard
-          # ダッシュボードのJSONファイルを配置するgrafanaコンテナのディレクトリ
+          # ダッシュボードの JSON ファイルを配置する grafana コンテナのディレクトリ
           - name: FOLDER
             value: /tmp/dashboards
           - name: RESOURCE
             value: both
-          # サイドカーがConfigMapを検知するNamespace
+          # サイドカーが ConfigMap を検知する Namespace
           - name: NAMESPACE
             value: ALL
       volumeMounts:
@@ -844,19 +844,19 @@ data:
 
 ### セットアップ
 
-#### ▼ grafanaチャートの場合
+#### ▼ grafana チャートの場合
 
 grafana チャートでは、`values` ファイルの `dashboards.label` キーや `dashboards.labelValue` キーを使用して、サイドカーが検知する ConfigMap を設定できる。
 
 ```yaml
-# valuesファイル
+# values ファイル
   dashboards:
 
     ...
 
-    # サイドカー検知用の.metadata.labelsキー
+    # サイドカー検知用の.metadata.labels キー
     label: grafana_dashboard
-    # .metadata.labelsキーの値
+    # .metadata.labels キーの値
     labelValue: null
 
     ...
@@ -885,23 +885,23 @@ data:
 
 > - https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 
-#### ▼ kube-prometheus-stackチャートの場合
+#### ▼ kube-prometheus-stack チャートの場合
 
 kube-prometheus-stack チャートでは、prometheus のチャートのほか、grafana チャートなどに依存している。
 
 kube-prometheus-stack チャートの `values` ファイルでは、サイドカー用の `grafana_dashboard` キーに `1` が割り当てられている。
 
 ```yaml
-# valuesファイル
+# values ファイル
 
   sidecar:
     dashboards:
 
       ...
 
-      # サイドカー検知用の.metadata.labelsキー
+      # サイドカー検知用の.metadata.labels キー
       label: grafana_dashboard
-      # .metadata.labelsキーの値
+      # .metadata.labels キーの値
       labelValue: "1"
 
       ...

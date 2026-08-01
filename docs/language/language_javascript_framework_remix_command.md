@@ -13,7 +13,7 @@ description: コマンド＠Remixの知見を記録しています。
 
 <br>
 
-## 01. remixコマンド
+## 01. remix コマンド
 
 ### build
 

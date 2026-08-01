@@ -230,7 +230,7 @@ $ ./foo-bainary --version
 
 ## 04. Git-flow
 
-### Git-flowとは
+### Git-flow とは
 
 Git でソフトウェアを開発する場合、役割を持たせたブランチを作成し、ルールに沿ってコミットする。Git-flow を簡略化したものに、GitHub-flow や Gitlab-flow がある。
 
@@ -373,7 +373,7 @@ CI ツールや CD ツールを使用して、コミット (マージコミッ�
 
 ### 解決方法
 
-#### ▼ Gitを使用して
+#### ▼ Git を使用して
 
 `(1)`
 
@@ -446,7 +446,7 @@ Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 > - http://www-creators.com/archives/1938
 
-#### ▼ GitHubを使用して
+#### ▼ GitHub を使用して
 
 プルリクエスト上に『Resolve conflicts』ボタンが出現し、ここからコンフリクトを修正できる。
 

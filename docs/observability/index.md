@@ -37,7 +37,7 @@ hide:
 - #### <u>Datadog</u>
 
   > - ##### [Datadog](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog.html)
-  > - ##### [︎datadogエージェントの設定](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_agent_conf.html)
+  > - ##### [︎datadog エージェントの設定](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_agent_conf.html)
   > - ##### [︎インテグレーション](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_integration.html)
   > - ##### <u>テレメトリー収集</u>
   >   > - ##### [︎メトリクス](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_datadog_metrics.html)
@@ -60,7 +60,7 @@ hide:
   > - ##### [︎Grafana](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_grafana.html)
   > - ##### <u>リソース定義</u>
   >   > - ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_grafana_resource_definition.html)
-  >   > - ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_grafana_resource_definition_configmap.html)
+  >   > - ##### [ConfigMap 系](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_grafana_resource_definition_configmap.html)
   >   > - ##### [ダッシュボード](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_grafana_resource_definition_dashboard.html)
 
 - #### <u>Jaeger</u>
@@ -71,7 +71,7 @@ hide:
 
   > - ##### [︎Kiali](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_kiali.html)
   > - ##### <u>リソース定義</u>
-  >   > - ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_kiali_resource_definition_configmap.html)
+  >   > - ##### [ConfigMap 系](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_kiali_resource_definition_configmap.html)
 
 - #### <u>OpenTelemetry</u>
 
@@ -102,10 +102,10 @@ hide:
   >   > - ##### [︎PromQL](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_metrics_promql.html)
   >   > - ##### [クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_prometheus_metrics_client_package.html)
 
-- #### <u>Googleアプリ</u>
+- #### <u>Google アプリ</u>
 
-  > - ##### [︎Googleアナリティクス](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_google_analytics.html)
-  > - ##### [︎Googleサーチコンソール](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_google_search_console.html)
+  > - ##### [︎Google アナリティクス](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_google_analytics.html)
+  > - ##### [︎Google サーチコンソール](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_tools_google_search_console.html)
 
 <br>
 

@@ -29,11 +29,11 @@ description: 暗号方式＠アプリケーションデータの暗号化技術�
 
 共通鍵暗号方式を実装するためのアルゴリズムのこと。
 
-#### ▼ DES暗号：Data Encryption Standard
+#### ▼ DES 暗号：Data Encryption Standard
 
 記入中...
 
-#### ▼ AES暗号：Advanced Encryption Standard
+#### ▼ AES 暗号：Advanced Encryption Standard
 
 記入中...
 
@@ -45,7 +45,7 @@ description: 暗号方式＠アプリケーションデータの暗号化技術�
 
 公開鍵暗号方式を実装するためのアルゴリズムのこと。
 
-#### ▼ RSA暗号：Rivest-Shamir-Adleman cryptosystem
+#### ▼ RSA 暗号：Rivest-Shamir-Adleman cryptosystem
 
 記入中...
 

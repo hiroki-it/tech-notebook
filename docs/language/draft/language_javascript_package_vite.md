@@ -13,7 +13,7 @@ description: vite＠JavaScriptの知見を記録しています。
 
 <br>
 
-## 01. viteコマンド
+## 01. vite コマンド
 
 ### build
 
@@ -29,7 +29,7 @@ $ vite build
 
 ### dev
 
-#### ▼ devとは
+#### ▼ dev とは
 
 開発環境用に JavaScript ファイルをビルドする。
 

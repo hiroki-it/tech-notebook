@@ -13,7 +13,7 @@ description: クライアントパッケージ＠分散トレースの知見を�
 
 <br>
 
-## 01. PHP用のクライアントパッケージ
+## 01. PHP 用のクライアントパッケージ
 
 ### セットアップ
 
@@ -48,7 +48,7 @@ env[DD_VERSION] = '<バージョンタグ>'
 > - https://docs.datadoghq.com/tracing/setup/php/
 > - https://app.datadoghq.com/apm/docs?architecture=host-based&framework=php-fpm&language=php
 
-#### ▼ インストール (Ansibleの場合)
+#### ▼ インストール (Ansible の場合)
 
 使用しているミドルウェアごとに、インストール方法が異なる。
 
@@ -177,7 +177,7 @@ datadog コンテナが分散トレースを受信している場合は、受信
 
 <br>
 
-## 02. JavaScript用のクライアントパッケージ
+## 02. JavaScript 用のクライアントパッケージ
 
 ### セットアップ
 
@@ -275,9 +275,9 @@ APM のマイクロサービスのタグ名に反映される。
 
 <br>
 
-## 03. Go用のクライアントパッケージ
+## 03. Go 用のクライアントパッケージ
 
-### HTTPを使用する場合
+### HTTP を使用する場合
 
 #### ▼ 送信元マイクロサービス
 
@@ -384,9 +384,9 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
 <br>
 
-### gRPCを使用する場合
+### gRPC を使用する場合
 
-#### ▼ Interceptorの実行
+#### ▼ Interceptor の実行
 
 事前処理としてスパンの作成などを行う Interceptor を使用する。
 
@@ -394,7 +394,7 @@ func InitTracerProvider(w http.ResponseWriter, r *http.Request) {
 
 各関数でスパンを作成する必要がなくなる。
 
-#### ▼ gRPCサーバー側
+#### ▼ gRPC サーバー側
 
 ```go
 package main
@@ -458,7 +458,7 @@ func main() {
 > - https://qiita.com/lightstaff/items/28724d9dd8a6b30b236d
 > - https://christina04.hatenablog.com/entry/grpc-unary-interceptor
 
-#### ▼ gRPCクライアント側
+#### ▼ gRPC クライアント側
 
 gRPC クライアント側では、gRPC サーバーとの接続を作成する必要がある。
 

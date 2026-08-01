@@ -15,7 +15,7 @@ description: リソース定義＠OpenTelemetryの知見を記録しています
 
 ## 01. Instrumentation
 
-### Podの `.metadata.annotations` キー
+### Pod の `.metadata.annotations` キー
 
 Pod にアノテーションを設定し、自動計装を実施する Pod を制御できる。
 
@@ -39,7 +39,7 @@ spec: ...
 
 ### exporter
 
-#### ▼ exporterとは
+#### ▼ exporter とは
 
 自動計装で Exporter を設定する。
 
@@ -61,7 +61,7 @@ spec:
 
 ### go
 
-#### ▼ goとは
+#### ▼ go とは
 
 Pod のアプリ言語が Go の場合に、
 
@@ -78,7 +78,7 @@ spec:
 
 ### propagators
 
-#### ▼ propagatorsとは
+#### ▼ propagators とは
 
 自動計装で Propagator を設定する。
 
@@ -97,7 +97,7 @@ spec:
 
 ### resource
 
-#### ▼ resourceとは
+#### ▼ resource とは
 
 > - https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentationspecresource
 
@@ -105,7 +105,7 @@ spec:
 
 ### sampler
 
-#### ▼ samplerとは
+#### ▼ sampler とは
 
 自動計装で Sampler を設定する。
 

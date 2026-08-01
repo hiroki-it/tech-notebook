@@ -15,7 +15,7 @@ description: フレームワーク＠セキュリティの知見を記録して�
 
 ## PCI：Payment Card Industry Data Security Standard
 
-### PCIとは
+### PCI とは
 
 クレジッドカードの会員データを安全に扱うために定義されている要件のこと。
 
@@ -27,13 +27,13 @@ description: フレームワーク＠セキュリティの知見を記録して�
 
 <br>
 
-### AWSの場合
+### AWS の場合
 
 > - https://speakerdeck.com/iselegant/sustainable-pcidss-operation-on-aws
 
 <br>
 
-### Kubernetesの場合
+### Kubernetes の場合
 
 > - https://raesene.github.io/categories/index.html#Kubernetes-ref
 > - https://www.container-security.site/defenders/PCI_Container_Orchestration_Guidance.html

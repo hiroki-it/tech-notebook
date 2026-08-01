@@ -13,11 +13,11 @@ description: コマンド＠Minikubeの知見を記録しています。
 
 <br>
 
-## 01. minikubeコマンド
+## 01. minikube コマンド
 
 ### addons
 
-#### ▼ addonsとは
+#### ▼ addons とは
 
 Minikube のアドオンを操作する。
 
@@ -112,7 +112,7 @@ $ minikube start --cni=cilium
 
 ### config
 
-#### ▼ configとは
+#### ▼ config とは
 
 `minikube` コマンドに関するパラメーターを操作する。
 
@@ -153,7 +153,7 @@ $ minikube config set kubernetes-version=v1.23.0
 
 ### dashboard
 
-#### ▼ dashboardとは
+#### ▼ dashboard とは
 
 Kubernetes のダッシュボードを開発環境に作成する。
 
@@ -172,7 +172,7 @@ $ minikube dashboard
 
 ### delete
 
-#### ▼ deleteとは
+#### ▼ delete とは
 
 Minikube のコンポーネントを削除する。
 
@@ -194,7 +194,7 @@ $ minikube delete --all --purge
 
 ### docker-env
 
-#### ▼ docker-envとは
+#### ▼ docker-env とは
 
 ホストで `docker` コマンドを実行したときに、ホスト側の docker デーモンでなく、ゲスト仮想環境内の Node の docker デーモンにリクエストを送信できるように環境変数を設定する。
 
@@ -248,7 +248,7 @@ $ eval $(minikube docker-env -u)
 
 ### ip
 
-#### ▼ ipとは
+#### ▼ ip とは
 
 ゲスト仮想環境内の Node の IP アドレスを取得する。
 
@@ -262,7 +262,7 @@ $ minikube ip
 
 ### kubectl
 
-#### ▼ kubectlとは
+#### ▼ kubectl とは
 
 Minikube の kube-apiserver をコンテキストとする `kubectl` コマンドを実行する。
 
@@ -356,7 +356,7 @@ $ kubectl label node minikube-m04 node-role.kubernetes.io/worker=worker --overwr
 
 ### mount
 
-#### ▼ mountとは
+#### ▼ mount とは
 
 ホスト側のファイルまたはディレクトリを、ゲスト仮想環境の指定したディレクトリにマウントする。
 
@@ -399,7 +399,7 @@ $ minikube update-context
 
 ### service
 
-#### ▼ serviceとは
+#### ▼ service とは
 
 NodePort Service を指定し、ホストから仮想サーバーを介して、Node 内の Service にポートフォワーディングを実行する。
 
@@ -507,7 +507,7 @@ $ minikube service istio-ingressgateway --url -n istio-ingress
 
 ### ssh
 
-#### ▼ sshとは
+#### ▼ ssh とは
 
 仮想環境内の Node に SSH 公開鍵認証で接続する。
 
@@ -583,7 +583,7 @@ $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/
 > - https://minikube.sigs.k8s.io/docs/commands/ssh/
 > - https://garafu.blogspot.com/2019/10/ssh-minikube-k8s-vm.html
 
-#### ▼ `--` (ハイフン2つ)
+#### ▼ `--` (ハイフン 2つ)
 
 Node に SSH 公開鍵認証で接続し、任意のコマンドを実行する。
 
@@ -603,7 +603,7 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 
 ### start
 
-#### ▼ startとは
+#### ▼ start とは
 
 ゲスト仮想環境を作成し、仮想環境内に Node を作成する。
 
@@ -911,7 +911,7 @@ $ minikube start --static-ip 192.168.200.200
 
 ### tunnel
 
-#### ▼ tunnelとは
+#### ▼ tunnel とは
 
 LoadBalancer を一時的に作成し、LoadBalancer Service に自動的に紐付ける。
 

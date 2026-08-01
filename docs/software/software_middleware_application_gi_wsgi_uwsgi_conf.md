@@ -17,7 +17,7 @@ description: 設定ファイル＠uWSGIの知見を記録しています。
 
 ### インストール
 
-#### ▼ pipリポジトリから
+#### ▼ pip リポジトリから
 
 ```bash
 $ pip3 install uwsgi
@@ -92,9 +92,9 @@ spawned uWSGI http 1 (pid: 10)
 
 <br>
 
-## 04. uwsgiセクション
+## 04. uwsgi セクション
 
-### uwsgiセクションとは
+### uwsgi セクションとは
 
 uWSGI の `uwsgi` プロセスのプールを設定する。
 

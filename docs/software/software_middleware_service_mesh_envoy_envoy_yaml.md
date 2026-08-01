@@ -76,7 +76,7 @@ Envoy では、YAML ファイルのキー名がスネークケースになって
 
 ## 02. admin
 
-### adminとは
+### admin とは
 
 記入中...
 
@@ -86,7 +86,7 @@ Envoy では、YAML ファイルのキー名がスネークケースになって
 
 ### access_log_path
 
-#### ▼ access_log_pathとは
+#### ▼ access_log_path とは
 
 Envoy のアクセスログの出力先を設定する。
 
@@ -101,7 +101,7 @@ admin:
 
 ## 03. admin.address
 
-### addressとは
+### address とは
 
 記入中...
 
@@ -154,7 +154,7 @@ admin:
 
 ## 04. static_resources
 
-### static_resourcesとは
+### static_resources とは
 
 静的な値を設定する。
 
@@ -167,7 +167,7 @@ admin:
 
 ## 05. static_resources.listeners
 
-### listenersとは
+### listeners とは
 
 受信する通信のリスナーを設定する。
 
@@ -391,7 +391,7 @@ static_resources:
                 http_filters:
                   - name: envoy.filters.http.router
                     typed_config:
-                      # HTTPフィルターを指定する
+                      # HTTP フィルターを指定する
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```
 
@@ -427,7 +427,7 @@ static_resources:
                 http_filters:
                   - name: envoy.filters.http.grpc_web
                     typed_config:
-                      # HTTPフィルターを指定する
+                      # HTTP フィルターを指定する
                       "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
 ```
 
@@ -439,7 +439,7 @@ static_resources:
 
 ### filter_chains.filters.typed_config.route_config
 
-#### ▼ route_configとは
+#### ▼ route_config とは
 
 特定のルーティング先に関する処理を設定する。
 
@@ -483,7 +483,7 @@ static_resources:
                 http_filters:
                   - name: envoy.filters.http.router
                     typed_config:
-                      # HTTPフィルターを指定する
+                      # HTTP フィルターを指定する
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```
 
@@ -522,18 +522,18 @@ static_resources:
                             cluster: foo_cluster
                             timeout: 30s
                             max_stream_duration:
-                              # ストリーミングRPCの確立後のタイムアウト時間を設定する
+                              # ストリーミング RPC の確立後のタイムアウト時間を設定する
                               max_connection_duration: 15
-                              # ストリーミングRPC全体のタイムアウト時間を設定する
+                              # ストリーミング RPC 全体のタイムアウト時間を設定する
                               max_stream_duration: 30
-                              # クライアント側でgrpc-timeoutヘッダーを使用している場合に、これをストリーミングRPCのタイムアウト時間として設定する (max_grpc_timeoutも同じ)
-                              # ただし、grpc_timeout_header_maxの設定値を超えて、grpc-timeoutヘッダーを設定できない
+                              # クライアント側で grpc-timeout ヘッダーを使用している場合に、これをストリーミング RPC のタイムアウト時間として設定する (max_grpc_timeout も同じ)
+                              # ただし、grpc_timeout_header_max の設定値を超えて、grpc-timeout ヘッダーを設定できない
                               grpc_timeout_header_max: 30
 
                 http_filters:
                   - name: envoy.filters.http.router
                     typed_config:
-                      # HTTPフィルターを指定する
+                      # HTTP フィルターを指定する
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```
 
@@ -606,7 +606,7 @@ sequenceDiagram
 
 ```yaml
 # 期待する例外スロー
-gRPCクライアント # タイムアウト (DeadlineExceededを受信)
+gRPCクライアント # タイムアウト (DeadlineExceeded を受信)
 ⬇⬆️︎
 ⬇⬆️︎
 Envoy
@@ -616,11 +616,11 @@ Envoy
 Envoy
 ⬇⬆️︎
 ⬇⬆️︎
-gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
+gRPCサーバー # タイムアウト (DeadlineExceeded を投げる)
 ```
 
 ```yaml
-gRPCクライアント # タイムアウト (Unavailableを受信)
+gRPCクライアント # タイムアウト (Unavailable を受信)
 ⬇⬆️︎
 ⬇⬆️︎
 Envoy
@@ -630,7 +630,7 @@ Envoy
 Envoy
 ⬇⬆️︎
 ⬇⬆️︎
-gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
+gRPCサーバー # タイムアウト (DeadlineExceeded を投げる)
 ```
 
 > - https://github.com/istio/istio/pull/45234#discussion_r1213965308
@@ -650,7 +650,7 @@ gRPCサーバー # タイムアウト (DeadlineExceededを投げる)
 
 ### name
 
-#### ▼ nameとは
+#### ▼ name とは
 
 インバウンド通信を受信するリスナーの名前を設定する。
 
@@ -668,7 +668,7 @@ static_resources:
 
 ## 06. static_resources.clusters
 
-### clustersとは
+### clusters とは
 
 インバウンド通信のルーティング先のマイクロサービスをグループ化する。
 
@@ -680,7 +680,7 @@ static_resources:
 
 ### circuit_breakers
 
-#### ▼ circuit_breakersとは
+#### ▼ circuit_breakers とは
 
 ルーティング先の同時接続の上限数を設定する。
 
@@ -709,7 +709,7 @@ static_resources:
 
 ### connect_timeout
 
-#### ▼ connect_timeoutとは
+#### ▼ connect_timeout とは
 
 ルーティング時のタイムアウト時間を設定する。
 
@@ -725,7 +725,7 @@ static_resources:
 
 ### dns_lookup_family
 
-#### ▼ dns_lookup_familyとは
+#### ▼ dns_lookup_family とは
 
 記入中...
 
@@ -741,7 +741,7 @@ static_resources:
 
 ### lb_policy
 
-#### ▼ lb_policyとは
+#### ▼ lb_policy とは
 
 ルーティングのアルゴリズムを設定する。
 
@@ -773,13 +773,13 @@ static_resources:
           # いずれかのエンドポイントにロードバランシング
           - lb_endpoints:
               - endpoint:
-                  address: 192.168.0.1 # クラスターのIPアドレス
+                  address: 192.168.0.1 # クラスターの IP アドレス
                   port_value: 80
               - endpoint:
                   address: 192.168.0.1
                   port_value: 81
               - endpoint:
-                  address: foo-service.foo-namespace.svc.cluster.local # クラスター (ここではKubernetesのService) の完全修飾ドメイン名
+                  address: foo-service.foo-namespace.svc.cluster.local # クラスター (ここでは Kubernetes のService) の完全修飾ドメイン名
                   port_value: 82
 ```
 
@@ -800,7 +800,7 @@ static_resources:
 
 ### name
 
-#### ▼ nameとは
+#### ▼ name とは
 
 ルーティング先のグループの名前を設定する。
 
@@ -850,10 +850,10 @@ static_resources:
         transport_socket:
           name: envoy.transport_sockets.tls
           typed_config:
-            # transport_sockets.tlsを指定する
+            # transport_sockets.tls を指定する
             "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.UpstreamTlsContext
             common_tls_context:
-              # static_resources.secretsキーで定義したクライアント証明書を設定する。
+              # static_resources.secrets キーで定義したクライアント証明書を設定する。
               tls_certificate_sds_secret_configs:
                 - name: client-cert
 
@@ -864,10 +864,10 @@ static_resources:
         transport_socket:
           name: envoy.transport_sockets.tls
           typed_config:
-            # transport_sockets.tlsを指定する
+            # transport_sockets.tls を指定する
             "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
             common_tls_context:
-              # static_resources.secretsキーで定義したサーバー証明書を設定する。
+              # static_resources.secrets キーで定義したサーバー証明書を設定する。
               tls_certificate_sds_secret_configs:
                 - name: server-cert
               validation_context_sds_secret_config:
@@ -908,7 +908,7 @@ static_resources:
 
 ### type
 
-#### ▼ typeとは
+#### ▼ type とは
 
 サービス検出の種類を設定する。
 
@@ -964,7 +964,7 @@ static_resources:
         envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
           "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
           http2_protocol_options:
-            # ストリーミングRPCの最大同時接続数を設定する
+            # ストリーミング RPC の最大同時接続数を設定する
             max_concurrent_streams: 100
 ```
 
@@ -986,7 +986,7 @@ static_resources:
 
 ## 07. dynamic_resources
 
-### dynamic_resourcesとは
+### dynamic_resources とは
 
 動的に宛先情報を設定する。
 
@@ -996,7 +996,7 @@ static_resources:
 
 ### ads_config
 
-#### ▼ ads_configとは
+#### ▼ ads_config とは
 
 ADS-API に関して設定する。
 
@@ -1026,14 +1026,14 @@ dynamic_resources:
       - envoy_grpc:
           cluster_name: xds_cluster
 
-# Envoyの識別子を設定する。
+# Envoy の識別子を設定する。
 node:
   cluster: foo-cluster
   id: foo-id
 
 static_resources:
   clusters:
-    # XDS-APIをクラスターとする。
+    # XDS-API をクラスターとする。
     - name: xds_cluster
       connect_timeout: 0.25s
       # 負荷分散方式
@@ -1046,11 +1046,11 @@ static_resources:
           - lb_endpoints:
               - endpoint:
                   address:
-                    # XDS-APIの宛先情報
+                    # XDS-API の宛先情報
                     socket_address:
                       address: 127.0.0.1
                       port_value: 15010
-    # 定義したXDS-APIのクラスターを指定する。
+    # 定義した XDS-API のクラスターを指定する。
     - name: services_cluster
       type: EDS
       connect_timeout: 0.25s
@@ -1092,7 +1092,7 @@ staticResources:
       http2ProtocolOptions: {}
       name: xdsCluster
       type: static
-      # xds-apiの宛先情報を設定する
+      # xds-api の宛先情報を設定する
       loadAssignment:
         clusterName: xdsCluster
         endpoints:
@@ -1101,7 +1101,7 @@ staticResources:
                   address:
                     pipe:
                       # ここではソケットファイルを指定する
-                      # envoyとxds-apiのプロセス間で、パケットを送受信する
+                      # envoy とxds-api のプロセス間で、パケットを送受信する
                       path: ./etc/istio/proxy/xds
 ```
 
@@ -1133,7 +1133,7 @@ dynamic_resources:
 
 ### cds_config
 
-#### ▼ cds_configとは
+#### ▼ cds_config とは
 
 CDS-API に関して設定する。
 
@@ -1153,7 +1153,7 @@ dynamic_resources:
 
 ### lds_config
 
-#### ▼ lds_configとは
+#### ▼ lds_config とは
 
 LDS-API に関して設定する。
 
@@ -1173,7 +1173,7 @@ dynamic_resources:
 
 ## 08. overload_manager
 
-### overload_managerとは
+### overload_manager とは
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#
 

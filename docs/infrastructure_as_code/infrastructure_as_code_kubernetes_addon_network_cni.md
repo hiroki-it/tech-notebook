@@ -15,7 +15,7 @@ description: CNI＠ネットワーク系の知見を記録しています。
 
 ## 01. CNI
 
-### CNIとは
+### CNI とは
 
 CNI は、Cluster 内に `L2` または `L3` を提供する (CNI によってさまざま) 。
 
@@ -35,23 +35,23 @@ Pod を Node 内の Cluster ネットワークに参加させると、異なる 
 
 <br>
 
-### CNIとCRIの関係
+### CNI とCRI の関係
 
 > - https://jimmysong.io/blog/cni-deep-dive/
 
 <br>
 
-### CNIによるクラスター内の通信
+### CNI によるクラスター内の通信
 
-#### ▼ PodとNode間の通信
+#### ▼ Pod とNode 間の通信
 
 > - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/166890
 
-#### ▼ 同じNode上のPod間
+#### ▼ 同じ Node 上の Pod 間
 
 > - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/238ea7
 
-#### ▼ 異なるNode上のPod間
+#### ▼ 異なる Node 上の Pod 間
 
 > - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/0d112c#calico%E6%96%B9%E5%BC%8F
 
@@ -75,7 +75,7 @@ Pod を Node 内の Cluster ネットワークに参加させると、異なる 
 
 <br>
 
-### CNI例
+### CNI 例
 
 CNI によって、`L2` または `L3` を提供する。
 
@@ -93,7 +93,7 @@ CNI によって、`L2` または `L3` を提供する。
 
 ### オーバーレイモードの仕組み
 
-#### ▼ 同一Node上のPod間通信
+#### ▼ 同一 Node 上の Pod 間通信
 
 Pod のネットワークインターフェース (`eth`) 、Node の仮想ネットワークインターフェース (`veth`) 、Node のブリッジ (`cni`) を使用して、同じ Node 上の Pod 間でパケットを送受信する。
 
@@ -101,7 +101,7 @@ Pod のネットワークインターフェース (`eth`) 、Node の仮想ネ�
 
 > - https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode
 
-#### ▼ 異なるNode上のPod間通信
+#### ▼ 異なる Node 上の Pod 間通信
 
 Pod のネットワークインターフェース (`eth`) 、Node の仮想ネットワークインターフェース (`veth`) 、Node のブリッジ (`cni`) を使用する。また、NAT ルーター (Cilium 以外は iptables、Cilium) と Node のネットワークインターフェース (`eth`) を使用する。そして、異なる Node 上の Pod 間でパケットを送受信する。
 
@@ -122,7 +122,7 @@ Pod のネットワークインターフェース (`eth`) 、Node の仮想ネ�
 
 <br>
 
-### CNI例
+### CNI 例
 
 CNI によって、`L2` または `L3` を提供する。
 
@@ -146,7 +146,7 @@ CNI によって、`L2` または `L3` を提供する。
 
 <br>
 
-### CNI例
+### CNI 例
 
 CNI によって、`L2` または `L3` を提供する。
 
@@ -154,7 +154,7 @@ CNI によって、`L2` または `L3` を提供する。
 
 <br>
 
-## 06. その他のCNI
+## 06. その他の CNI
 
 - Antrea (`L3`/`L4`)
 - Multus

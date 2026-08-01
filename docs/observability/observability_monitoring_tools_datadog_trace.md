@@ -35,7 +35,7 @@ description: 分散トレース＠Datadogの知見を記録しています。
 
 <br>
 
-## 02. トレースエージェント (Amazon ECS Fargateの場合)
+## 02. トレースエージェント (Amazon ECS Fargate の場合)
 
 ### トレースエージェントとは
 
@@ -73,17 +73,17 @@ APM エージェントを有効化し、分散トレース監視バックエン�
 
 #### ▼ デバッグ
 
-| 方法                      | 説明                                                                                                                                                                                    | 補足                                                                                                                                                                             |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 起動ログの有効化          | 環境変数の `DD_TRACE_STARTUP_LOGS` を有効化することにより、起動ログを標準出力に出力可能にする。起動ログから、クライアントパッケージの設定値を確認できる。                               | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                          |
-| デバッグログの有効化      | 各クライアントパッケージが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力可能にする。デバッグログから、実際にDatadogに送信されるスパンデータを確認できる。 | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                    |
-| Agent Flareコマンドの実行 | datadogコンテナ内でAgent Flareコマンドを実行し、Datadogサポートにdatadogコンテナの構成情報をメール送信する。                                                                            | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad <br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
+| 方法                       | 説明                                                                                                                                                                                      | 補足                                                                                                                                                                             |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 起動ログの有効化           | 環境変数の `DD_TRACE_STARTUP_LOGS` を有効化することにより、起動ログを標準出力に出力可能にする。起動ログから、クライアントパッケージの設定値を確認できる。                                 | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datadog-support                                                                          |
+| デバッグログの有効化       | 各クライアントパッケージが持つデバッグパラメーターを有効化することにより、デバッグログを標準出力に出力可能にする。デバッグログから、実際に Datadog に送信されるスパンデータを確認できる。 | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad                                                                                    |
+| Agent Flare コマンドの実行 | datadog コンテナ内で Agent Flare コマンドを実行し、Datadog サポートに datadog コンテナの構成情報をメール送信する。                                                                        | ・https://docs.datadoghq.com/tracing/troubleshooting/#troubleshooting-data-requested-by-datad <br>・https://docs.datadoghq.com/agent/troubleshooting/send_a_flare/?tab=agentv6v7 |
 
 <br>
 
 ## 03. スパンの作成
 
-### Datadogにおける分散トレース
+### Datadog における分散トレース
 
 #### ▼ 分散トレースの構成
 
@@ -120,12 +120,12 @@ Datadog で、スパンは JSON 型データとして定義される。アプリ
           "baz-sum": 123, # マイクロサービスのメトリクス
         },
       "name": "laravel.request", # スパン名
-      "parent_id": 123, # 親スパンID
+      "parent_id": 123, # 親スパン ID
       "resource": "/foo", # アクセスされたリソース
       "service": "laravel", # マイクロサービス名
-      "span_id": 123456789, # スパンID
+      "span_id": 123456789, # スパン ID
       "start": 0, # 処理開始時間
-      "trace_id": 123456789, # トレースID
+      "trace_id": 123456789, # トレース ID
       "type": "web", # マイクロサービスのタイプ
     },
   ],

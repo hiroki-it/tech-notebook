@@ -19,7 +19,7 @@ description: 13章＠ドメイン駆動設計入門ボトムアップの知見�
 
 <br>
 
-## 01. Specificationパターンとは
+## 01. Specification パターンとは
 
 ## 02. 使用方法
 

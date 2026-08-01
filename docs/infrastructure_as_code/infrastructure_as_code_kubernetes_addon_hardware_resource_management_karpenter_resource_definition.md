@@ -15,7 +15,7 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 ## 01. EC2NodeClass
 
-### EC2NodeClassとは
+### EC2NodeClass とは
 
 NodePool 内の Node に対して、AWS 固有の仕様を設定する。
 
@@ -258,18 +258,18 @@ metadata:
   name: foo-node-class
 spec:
   tags:
-    # AWSはKarpenterがプロビジョニングしたAWSリソースにタグを挿入する
+    # AWS はKarpenter がプロビジョニングした AWS リソースにタグを挿入する
     aws:ec2:fleet-id: fleet-*****
     aws:ec2launchtemplate:id: lt-*****
     aws:ec2launchtemplate:version: 1
     aws:eks:cluster-name: foo-cluster
-    # Karpenterは、カスタムリソースとEC2の状態を紐づけるためのタグを挿入する
+    # Karpenter は、カスタムリソースと EC2 の状態を紐づけるためのタグを挿入する
     karpenter.sh/managed-by: foo-cluster
     karpenter.sh/nodeclaim: foo-claim-*****
     karpenter.sh/nodepool: foo-nodepool
     karpenter.k8s.aws/ec2nodeclass: foo-node-class
     karpenter.k8s.aws/cluster: foo-cluster
-    # Amazon EKSにとってはセルフマネージドNodeになるため、KarpenterはセルフマネージドNodeとして認識されるようにタグを挿入してくれる
+    # Amazon EKS にとってはセルフマネージド Node になるため、Karpenter はセルフマネージド Node として認識されるようにタグを挿入してくれる
     kubernetes.io/cluster/foo-cluster: owned
 ```
 
@@ -290,14 +290,14 @@ spec:
   tags:
     Env: prd
     ManagedBy: https://github.com/hiroki-hasegawa/foo-karpenter.git
-    # Karpenterが管理することがわかりやすいように、接尾辞は "karpenter" とする
+    # Karpenter が管理することがわかりやすいように、接尾辞は "karpenter" とする
     Name: bar-cluster-foo-karpenter
     karpenter.sh/discovery: foo-cluster
 ```
 
 > - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
-#### ▼ IRSA用IAMロールの条件と一致させる
+#### ▼ IRSA 用IAM ロールの条件と一致させる
 
 ここで挿入するタグと、AWS IAM ポリシーの条件で指定するタグと一致させる必要がある。
 
@@ -309,7 +309,7 @@ spec:
             "Action": "ec2:RunInstances",
             "Condition": {
                 "StringEquals": {
-                    # KarpenterのEC2NodeClassで挿入した起動テンプレートのタグを指定する
+                    # Karpenter のEC2NodeClass で挿入した起動テンプレートのタグを指定する
                     "ec2:ResourceTag/karpenter.sh/discovery": [
                         "foo-cluster",
                     ]
@@ -343,7 +343,7 @@ spec:
 
 ## 02. NodePool
 
-### NodePoolとは
+### NodePool とは
 
 NodePool 内の Node に対して、クラウドプロバイダーに依らない仕様を設定する。
 
@@ -542,7 +542,7 @@ spec:
   template:
     metadata:
       labels:
-        # Karpenterの管理するEC2 Nodeにラベルを挿入する
+        # Karpenter の管理する EC2 Node にラベルを挿入する
         node.kubernetes.io/nodetype: foo
 ```
 
@@ -575,7 +575,7 @@ spec:
 
 ### requirements
 
-#### ▼ requirementsとは
+#### ▼ requirements とは
 
 プロビジョニングする EC2 Node のハードウェアリソースを制限する。
 
@@ -643,12 +643,12 @@ spec:
       requirements:
         - key: kubernetes.io/arch
           operator: In
-          # ARM製よりAMD製に対応したベースイメージのほうが多いので、AMD製を指定する
+          # ARM 製より AMD 製に対応したベースイメージのほうが多いので、AMD 製を指定する
           values:
             - amd64
         - key: karpenter.k8s.aws/instance-family
           operator: In
-          # ハードウェアリソース要求量が瞬間的に増える場合、T系を指定する
+          # ハードウェアリソース要求量が瞬間的に増える場合、T 系を指定する
           values:
             - t3
         - key: karpenter.k8s.aws/instance-size
@@ -721,7 +721,7 @@ spec:
 
 <br>
 
-## 03. グローバル設定用ConfigMap
+## 03. グローバル設定用 ConfigMap
 
 ### aws.interruptionQueueName
 
@@ -810,7 +810,7 @@ data:
 
 <br>
 
-## 04. ロギング設定用のConfigMap
+## 04. ロギング設定用の ConfigMap
 
 ### zap-logger-config
 
@@ -885,7 +885,7 @@ data:
 
 <br>
 
-## 05. Podの `.metadata.annotations` キー
+## 05. Pod の `.metadata.annotations` キー
 
 ### karpenter.sh/do-not-disrupt
 

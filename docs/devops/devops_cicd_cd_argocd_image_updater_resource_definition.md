@@ -30,13 +30,13 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/image-list: foo-image=<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>
     # 変更対象のファイルの相対パスを設定する
-    # .spec.source.pathキーを基準とする
+    # .spec.source.path キーを基準とする
     argocd-image-updater.argoproj.io/write-back-target: "helmvalues:values.yaml"
     # コンテナイメージのタグ名をフィルタリングする
     argocd-image-updater.argoproj.io/foo-image.allow-tags: regexp:^v[0-9]+\.[0-9]+\.[0-9]+$
-    # YAMLファイルのコンテナイメージ名のパスを設定する
+    # YAML ファイルのコンテナイメージ名のパスを設定する
     argocd-image-updater.argoproj.io/foo-image.helm.image-name: image.repository
-    # YAMLファイルのタグ名のパスを設定する
+    # YAML ファイルのタグ名のパスを設定する
     argocd-image-updater.argoproj.io/foo-image.helm.image-tag: image.tag
     argocd-image-updater.argoproj.io/write-back-method: git
     argocd-image-updater.argoproj.io/git.branch: main

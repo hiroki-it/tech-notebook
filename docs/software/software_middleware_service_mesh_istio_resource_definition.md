@@ -37,18 +37,18 @@ $ istioctl install --manifests=foo-chart
 
 > - https://www.solo.io/blog/3-most-common-ways-install-istio/
 
-#### ▼ Operatorとして (ユーザー定義)
+#### ▼ Operator として (ユーザー定義)
 
 プロファイルを使用する代わりに、IstioOperator を自前で定義してもよい。
 
 ```yaml
-# istio-operator.yamlファイル
+# istio-operator.yaml ファイル
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
   name: istio-operator
 spec:
-  # Istioのdemoチャートをインストールし、リソースを作成する。
+  # Istio のdemo チャートをインストールし、リソースを作成する。
   profile: demo
 ```
 
@@ -76,7 +76,7 @@ $ minikube start --cpus=4 --memory=16384
 
 ### インストール
 
-#### ▼ Google-APIsから
+#### ▼ Google-APIs から
 
 Google-APIs から、Istio のコンポーネント別にチャートをインストールし、リソースを作成する。
 
@@ -121,7 +121,7 @@ AuthorizationPolicy の適用範囲の仕組みは、RequestAuthentication と�
 
 ### .spec.action
 
-#### ▼ actionとは
+#### ▼ action とは
 
 認可スコープで、認証済みの送信元を許可するか否かを設定する。
 
@@ -141,7 +141,7 @@ spec:
 
 ### .spec.provider
 
-#### ▼ providerとは
+#### ▼ provider とは
 
 認可フェーズの委譲先の ID プロバイダーを設定する。
 
@@ -193,13 +193,13 @@ data:
 
 ### .spec.rules
 
-#### ▼ rulesとは
+#### ▼ rules とは
 
 認可スコープで、実施条件 (例：いずれの Kubernetes リソース、HTTP メソッド、JWT トークンの発行元 ID プロバイダーの識別子) を設定する。
 
 その条件に合致した場合、認証済みの送信元を許可するか否かを実施する。
 
-#### ▼ 特定のServiceAccountを持つPodを送信元として許可する
+#### ▼ 特定の ServiceAccount を持つ Pod を送信元として許可する
 
 送信元 Pod に紐づく ServiceAccount が送信元の場合、認可を実施する。
 
@@ -226,7 +226,7 @@ spec:
 
 > - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#identified_workload
 
-#### ▼ 特定のNamespaceを送信元として許可する
+#### ▼ 特定の Namespace を送信元として許可する
 
 特定の Namespace が送信元の場合、認可を実施する。
 
@@ -247,7 +247,7 @@ spec:
 
 > - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#identified_namespace
 
-#### ▼ 正しいJWTを許可する
+#### ▼ 正しい JWT を許可する
 
 リクエストヘッダーにある JWT トークンの発行元 ID プロバイダーが適切な場合、認可を実施するように設定する。
 
@@ -264,7 +264,7 @@ spec:
   rules:
     - when:
         - key: request.auth.claims[iss]
-          # JWTトークンがある場合にのみ許可する
+          # JWT トークンがある場合にのみ許可する
           values: ["<JWTトークンの発行元IDプロバイダーの識別子 (issuer)>"]
 ```
 
@@ -279,7 +279,7 @@ spec:
   # 許可する
   action: ALLOW
   rules:
-    # fromを設定しない場合、指定したパスではJWTトークンがなくても許可する
+    # from を設定しない場合、指定したパスでは JWT トークンがなくても許可する
     - to:
         - operation:
             paths:
@@ -323,7 +323,7 @@ spec:
 
 > - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#deny_all_access
 
-#### ▼ 非TLSを拒否する
+#### ▼ 非 TLS を拒否する
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -345,7 +345,7 @@ spec:
 
 ### .spec.selector
 
-#### ▼ selectorとは
+#### ▼ selector とは
 
 AuthorizationPolicy の設定を適用する Kubernetes リソースを設定する。
 
@@ -371,7 +371,7 @@ spec:
 
 ### .spec.exportTo
 
-#### ▼ exportToとは
+#### ▼ exportTo とは
 
 その DestinationRule にリクエストできる Namespace を設定する。
 
@@ -447,7 +447,7 @@ kind: DestinationRule
 metadata:
   name: foo-destination-rule
 spec:
-  host: foo-service.default.svc.cluster.local # Service名でも良いが完全修飾ドメイン名のほうが良い。
+  host: foo-service.default.svc.cluster.local # Service 名でも良いが完全修飾ドメイン名のほうが良い。
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
@@ -471,7 +471,7 @@ spec:
 
 ### .spec.subsets
 
-#### ▼ subsetsとは
+#### ▼ subsets とは
 
 VirtualService を起点とした Pod のカナリアリリースで使用する。
 
@@ -496,10 +496,10 @@ spec:
   subsets:
     - name: v1
       labels:
-        version: v1 # 旧Pod
+        version: v1 # 旧 Pod
     - name: v2
       labels:
-        version: v2 # 新Pod
+        version: v2 # 新 Pod
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#Subset
@@ -537,7 +537,7 @@ spec:
   trafficPolicy:
     connectionPool:
       http:
-        # HTTP KeepAliveを無効にする
+        # HTTP KeepAlive を無効にする
         maxRequestsPerConnection: 1
 ```
 
@@ -1023,7 +1023,7 @@ metadata:
 spec:
   trafficPolicy:
     tls:
-      mode: DISABLE # 非TLS
+      mode: DISABLE # 非 TLS
 ```
 
 ```yaml
@@ -1045,7 +1045,7 @@ metadata:
 spec:
   trafficPolicy:
     tls:
-      mode: MUTUAL # 自己管理下の相互TLS認証
+      mode: MUTUAL # 自己管理下の相互 TLS 認証
 ```
 
 ```yaml
@@ -1056,7 +1056,7 @@ metadata:
 spec:
   trafficPolicy:
     tls:
-      mode: ISTIO_MUTUAL # Istio管理下の相互TLS認証
+      mode: ISTIO_MUTUAL # Istio 管理下の相互 TLS 認証
 ```
 
 > - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
@@ -1192,7 +1192,7 @@ spec:
 
 ### .spec.configPatches.match
 
-#### ▼ matchとは
+#### ▼ match とは
 
 フィルターの設定値を変更する場合、その実行条件を設定する。
 
@@ -1252,7 +1252,7 @@ metadata:
 spec:
   configPatches:
     - match:
-        # istio-ingressgatewayとistio-proxyコンテナの両方に適用する
+        # istio-ingressgateway とistio-proxy コンテナの両方に適用する
         - context: ANY
 ```
 
@@ -1264,7 +1264,7 @@ metadata:
 spec:
   configPatches:
     - match:
-        # istio-proxyコンテナのIngressリスナー後のフィルターに適用する
+        # istio-proxy コンテナの Ingress リスナー後のフィルターに適用する
         - context: SIDECAR_INBOUND
 ```
 
@@ -1276,7 +1276,7 @@ metadata:
 spec:
   configPatches:
     - match:
-        # istio-ingressgateway内のistio-proxyコンテナに適用する
+        # istio-ingressgateway 内の istio-proxy コンテナに適用する
         - context: GATEWAY
 ```
 
@@ -1288,7 +1288,7 @@ metadata:
 spec:
   configPatches:
     - match:
-        # istio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)
+        # istio-proxy コンテナのアウトバウンド通信 (Egress リスナー後のフィルター)
         - context: SIDECAR_OUTBOUND
 ```
 
@@ -1300,7 +1300,7 @@ spec:
 
 ### .spec.configPatches.patch
 
-#### ▼ patchとは
+#### ▼ patch とは
 
 `.spec.configPatches.match` キーに設定した設定値があった場合、フィルターの設定値の変更内容を設定する。
 
@@ -1419,9 +1419,9 @@ spec:
 
 <br>
 
-## 04-02. EnvoyFilterのレートリミット
+## 04-02. EnvoyFilter のレートリミット
 
-### Istioのレートリミットとは
+### Istio のレートリミットとは
 
 執筆時点で、Istio のトラフィック管理系リソースにはレートリミットの設定がない。
 
@@ -1447,9 +1447,9 @@ spec:
   configPatches:
     - applyTo: HTTP_FILTER
       match:
-        # istio-proxyコンテナのインバウンド通信の処理に適用する
+        # istio-proxy コンテナのインバウンド通信の処理に適用する
         context: SIDECAR_INBOUND
-        # Listenerにレートリミットを設定する
+        # Listener にレートリミットを設定する
         listener:
           filterChain:
             filter:
@@ -1463,7 +1463,7 @@ spec:
             type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
             value:
               stat_prefix: http_local_rate_limiter
-              # 4秒中に4リクエスト数までを指定する
+              # 4 秒中に 4リクエスト数までを指定する
               token_bucket:
                 max_tokens: 4
                 tokens_per_fill: 4
@@ -1496,7 +1496,7 @@ spec:
   configPatches:
     - applyTo: HTTP_FILTER
       match:
-        # istio-proxyコンテナのインバウンド通信の処理に適用する
+        # istio-proxy コンテナのインバウンド通信の処理に適用する
         context: SIDECAR_INBOUND
         listener:
           filterChain:
@@ -1513,7 +1513,7 @@ spec:
               stat_prefix: http_local_rate_limiter
     - applyTo: HTTP_ROUTE
       match:
-        # istio-proxyコンテナのインバウンド通信の処理に適用する
+        # istio-proxy コンテナのインバウンド通信の処理に適用する
         context: SIDECAR_INBOUND
         routeConfiguration:
           vhost:
@@ -1529,7 +1529,7 @@ spec:
               type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
               value:
                 stat_prefix: http_local_rate_limiter
-                # 4秒中に4リクエスト数までを指定する
+                # 4 秒中に 4リクエスト数までを指定する
                 token_bucket:
                   max_tokens: 4
                   tokens_per_fill: 4
@@ -1554,7 +1554,7 @@ spec:
 > - https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit
 > - https://learncloudnative.com/blog/2022-09-08-ratelimit-istio
 
-#### ▼ JWTの同じ `sub` に対して
+#### ▼ JWT の同じ `sub` に対して
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1633,14 +1633,14 @@ metadata:
 spec:
   workloadSelector:
     labels:
-      # Istio Ingress Gatewayに合致させる
+      # Istio Ingress Gateway に合致させる
       istio: ingressgateway
   configPatches:
     - applyTo: HTTP_FILTER
       match:
-        # Gatewayの処理に適用する
+        # Gateway の処理に適用する
         context: GATEWAY
-        # Listenerにレートリミットを設定する
+        # Listener にレートリミットを設定する
         listener:
           filterChain:
             filter:
@@ -1655,7 +1655,7 @@ spec:
           typed_config:
             "@type": type.googleapis.com/envoy.extensions.filters.http.ratelimit.v3.RateLimit
             domain: ratelimit
-            # true：istio-proxyコンテナが失敗のレスポンスを返信する
+            # true：istio-proxy コンテナが失敗のレスポンスを返信する
             # false：マイクロサービスが失敗のレスポンスを返信する
             failure_mode_deny: true
             timeout: 10s
@@ -1680,7 +1680,7 @@ spec:
   configPatches:
     - applyTo: VIRTUAL_HOST
       match:
-        # Gatewayの処理に適用する
+        # Gateway の処理に適用する
         context: GATEWAY
         routeConfiguration:
           vhost:
@@ -1702,7 +1702,7 @@ spec:
 
 <br>
 
-## 04-03. EnvoyFilterのKeepAliveの設定
+## 04-03. EnvoyFilter のKeepAlive の設定
 
 istio-ingressgateway 内の istio-proxy で、KeepAlive を実行できるようにする。
 
@@ -1716,7 +1716,7 @@ spec:
   configPatches:
     - applyTo: LISTENER
       match:
-        # istio-ingressgatewayのフィルターの設定値を変更する
+        # istio-ingressgateway のフィルターの設定値を変更する
         context: GATEWAY
         listener:
           name: 0.0.0.0_8443
@@ -1728,22 +1728,22 @@ spec:
           socket_options:
             - level: 1
               name: 9
-              # KeepAliveを有効化する
+              # KeepAlive を有効化する
               int_value: 1
               state: STATE_PREBIND
             - level: 6
               name: 4
-              # 15秒間の無通信が発生したら、KeepAliveを実行する
+              # 15 秒間の無通信が発生したら、KeepAlive を実行する
               int_value: 15
               state: STATE_PREBIND
             - level: 6
               name: 5
-              # 15秒間隔で、KeepAliveを実行する
+              # 15 秒間隔で、KeepAlive を実行する
               int_value: 15
               state: STATE_PREBIND
             - level: 6
               name: 6
-              # 10回応答がなければ終了する
+              # 10 回応答がなければ終了する
               int_value: 3
               state: STATE_PREBIND
 ```
@@ -1752,9 +1752,9 @@ spec:
 
 <br>
 
-## 04-04. EnvoyFilter以外のカスタマイズ方法
+## 04-04. EnvoyFilter 以外のカスタマイズ方法
 
-### VirtualService、DestinationRuleの定義
+### VirtualService、DestinationRule の定義
 
 VirtualService と DestinationRule の設定値は、istio-proxy に適用される。
 
@@ -1764,7 +1764,7 @@ VirtualService と DestinationRule の設定値は、istio-proxy に適用され
 
 <br>
 
-### annotationsの定義
+### annotations の定義
 
 Deployment や Pod の `.metadata.anontations` キーにて、istio-proxy ごとのオプション値を設定する。
 
@@ -1772,7 +1772,7 @@ Deployment や Pod の `.metadata.anontations` キーにて、istio-proxy ごと
 
 <br>
 
-### istio-proxyの定義
+### istio-proxy の定義
 
 Deployment や Pod で istio-proxy を定義することにより設定を変更できる。
 
@@ -1792,29 +1792,29 @@ spec:
       containers:
         - name: app
           image: app
-        # istio-proxyコンテナの設定を変更する。
+        # istio-proxy コンテナの設定を変更する。
         - name: istio-proxy
           lifecycle:
-            # istio-proxyコンテナ開始直後の処理
+            # istio-proxy コンテナ開始直後の処理
             postStart:
               exec:
-                # istio-proxyコンテナが、必ずマイクロサービスよりも先に起動する。
-                # pilot-agentの起動完了を待機する。
+                # istio-proxy コンテナが、必ずマイクロサービスよりも先に起動する。
+                # pilot-agent の起動完了を待機する。
                 command:
                   - |
                     pilot-agent wait
-            # istio-proxyコンテナ終了直前の処理
+            # istio-proxy コンテナ終了直前の処理
             preStop:
               exec:
-                # istio-proxyコンテナが、必ずマイクロサービスよりも後に終了する。
-                # envoyプロセスとpilot-agentプロセスの終了を待機する。
+                # istio-proxy コンテナが、必ずマイクロサービスよりも後に終了する。
+                # envoy プロセスと pilot-agent プロセスの終了を待機する。
                 command:
                   - "/bin/bash"
                   - "-c"
                   - |
                     sleep 5
                     while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done
-      # マイクロサービスとistio-proxyコンテナの両方が終了するのを待つ
+      # マイクロサービスと istio-proxy コンテナの両方が終了するのを待つ
       terminationGracePeriodSeconds: 45
 ```
 
@@ -1826,7 +1826,7 @@ spec:
 
 ### .spec.selector
 
-#### ▼ selectorとは
+#### ▼ selector とは
 
 Istio Ingress Gateway/EgressGateway に付与された `.metadata.labels` キーを設定する。
 
@@ -2054,7 +2054,7 @@ spec:
 
 ### .spec.servers.tls.mode
 
-#### ▼ modeとは
+#### ▼ mode とは
 
 送信元と Gateway の間の暗号化方式を設定する。
 
@@ -2200,7 +2200,7 @@ spec:
 apiVersion: security.istio.io/v1
 kind: PeerAuthentication
 metadata:
-  # foo内の全てのistio-proxyにPeerAuthenticationを適用する
+  # foo 内の全ての istio-proxy にPeerAuthentication を適用する
   namespace: foo
   name: peer-authentication
 spec:
@@ -2208,7 +2208,7 @@ spec:
     matchLabels:
       app: foo
   mtls:
-    mode: STRICT # 相互TLS認証を使用する。
+    mode: STRICT # 相互 TLS 認証を使用する。
 ```
 
 <br>
@@ -2228,12 +2228,12 @@ spec:
 
 相互 TLS 認証のタイプを設定する。
 
-| 項目         | 説明                                                                                                  |
-| ------------ | ----------------------------------------------------------------------------------------------------- |
-| `UNSET`      | 記入中...                                                                                             |
-| `DISABLE`    | 相互TLS認証を使用しない。                                                                             |
-| `PERMISSIVE` | 相互TLS認証のとき、istio-proxyは受信するプロトコルでHTTPSプロトコルとHTTPプロトコルの両方を許可する。 |
-| `STRICT`     | 相互TLS認証のとき、istio-proxyは受信するプロトコルでHTTPSプロトコルのみを許可し、HTTPを許可しない。   |
+| 項目         | 説明                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------ |
+| `UNSET`      | 記入中...                                                                                                    |
+| `DISABLE`    | 相互 TLS 認証を使用しない。                                                                                  |
+| `PERMISSIVE` | 相互 TLS 認証のとき、istio-proxy は受信するプロトコルで HTTPS プロトコルと HTTP プロトコルの両方を許可する。 |
+| `STRICT`     | 相互 TLS 認証のとき、istio-proxy は受信するプロトコルで HTTPS プロトコルのみを許可し、HTTP を許可しない。    |
 
 **＊実装例＊**
 
@@ -2241,12 +2241,12 @@ spec:
 apiVersion: security.istio.io/v1
 kind: PeerAuthentication
 metadata:
-  # foo内の全てのistio-proxyにPeerAuthenticationを適用する
+  # foo 内の全ての istio-proxy にPeerAuthentication を適用する
   namespace: foo
   name: peer-authentication
 spec:
   mtls:
-    mode: STRICT # 相互TLS認証を使用する。
+    mode: STRICT # 相互 TLS 認証を使用する。
 ```
 
 相互 TLS 認証を使用する場合はサーバー証明書が必要になり、サーバー証明書がないと以下のようなエラーになってしまう。
@@ -2323,7 +2323,7 @@ $ kubectl logs <IstiodコントロールプレーンのPod> -n istio-system
 
 ### .spec.jwtRules
 
-#### ▼ jwtRulesとは
+#### ▼ jwtRules とは
 
 Bearer 認証で使用する JWT トークンの発行元 ID プロバイダーを設定する。
 
@@ -2340,20 +2340,20 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWTトークンの発行元IDプロバイダーの識別子を設定する
+    # JWT トークンの発行元 ID プロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: https://foo-issuer.com
-      # IDプロバイダーのJWKsエンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
-      # ブラウザから、またはAPIに直接接続する
+      # ID プロバイダーの JWKs エンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
+      # ブラウザから、または API に直接接続する
       jwksUri: https://example.com/.well-known/jwks.json
-      # 既存のJWTを再利用し、宛先マイクロサービスにそのまま転送する
+      # 既存の JWT を再利用し、宛先マイクロサービスにそのまま転送する
       forwardOriginalToken: true
-      # Authorizationヘッダーを指定する
+      # Authorization ヘッダーを指定する
       fromHeaders:
         - name: Authorization
           prefix: "Bearer "
 ---
-# RequestAuthenticationで設定したAuthorizationヘッダーがない場合には認可エラーとする
+# RequestAuthentication で設定した Authorization ヘッダーがない場合には認可エラーとする
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
@@ -2364,7 +2364,7 @@ spec:
   rules:
     - when:
         - key: request.auth.claims[iss]
-          # JWTトークンがある場合にのみ許可する
+          # JWT トークンがある場合にのみ許可する
           values: ["foo-issuer.com"]
 ```
 
@@ -2455,7 +2455,7 @@ metadata:
 spec:
   jwtRules:
     fromCookies:
-      # Cookieヘッダーの中でアクセストークンが設定されたキーを指定する
+      # Cookie ヘッダーの中でアクセストークンが設定されたキーを指定する
       - <アクセストークンキー>
 ```
 
@@ -2475,7 +2475,7 @@ metadata:
 spec:
   jwtRules:
     fromHeaders:
-      # Authorizationヘッダーを指定する
+      # Authorization ヘッダーを指定する
       - name: Authorization
         prefix: "Bearer "
 ```
@@ -2548,11 +2548,11 @@ spec:
   exportTo:
     - "*"
   hosts:
-    # L4プロトコルでは、この設定は実際には使われない
-    # VirtualServiceでは "." をつけないとエラーになるため、ServiceEntryも合わせておく
+    # L4 プロトコルでは、この設定は実際には使われない
+    # VirtualService では "." をつけないとエラーになるため、ServiceEntry も合わせておく
     - tcp
   address:
-    # L4プロトコルでは、この設定でルーティングする
+    # L4 プロトコルでは、この設定でルーティングする
     - 127.0.0.1/32
   location: MESH_EXTERNAL
   ports:
@@ -2580,7 +2580,7 @@ spec:
     - number: 3306
       name: tcp-mysql
       protocol: TCP
-  # Hostヘッダーがあるため、DNSでIPアドレスを取得する
+  # Host ヘッダーがあるため、DNS でIP アドレスを取得する
   resolution: DNS
 ```
 
@@ -2591,7 +2591,7 @@ spec:
 
 ### .spec.exportTo
 
-#### ▼ exportToとは
+#### ▼ exportTo とは
 
 その ServiceEntry にリクエストできる Namespace を設定する。
 
@@ -2611,7 +2611,7 @@ spec:
 
 ### .spec.hosts
 
-#### ▼ hostsとは
+#### ▼ hosts とは
 
 コンフィグストレージに登録する宛先のドメイン名を設定する。
 
@@ -2645,7 +2645,7 @@ spec:
 
 ### .spec.location
 
-#### ▼ locationとは
+#### ▼ location とは
 
 登録したシステムがサービスメッシュ内か否かを設定する。
 
@@ -2683,7 +2683,7 @@ spec:
 
 ### .spec.ports
 
-#### ▼ portsとは
+#### ▼ ports とは
 
 コンフィグストレージに登録する宛先のポート番号を設定する。
 
@@ -2720,7 +2720,7 @@ spec:
 
 ### .spec.resolution
 
-#### ▼ resolutionとは
+#### ▼ resolution とは
 
 コンフィグストレージに登録する宛先の IP アドレスの設定する。
 
@@ -2853,7 +2853,7 @@ Namespace で Telemety の対象の istio-proxy を絞れる。
 apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 ```
 
@@ -2863,7 +2863,7 @@ metadata:
 
 ### accessLogging
 
-#### ▼ accessLoggingとは
+#### ▼ accessLogging とは
 
 同じ Namespace 内の istio-proxy を対象として、アクセスログの作成方法を設定する。
 
@@ -2872,14 +2872,14 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: access-log-provider
-  # istio-proxyをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  # istio-proxy をインジェクションしている各 Namespace で作成する
+  # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 spec:
   selector:
     matchLabels:
       name: app
-  # Envoyをアクセスログプロバイダーとして設定する
+  # Envoy をアクセスログプロバイダーとして設定する
   accessLogging:
     - providers:
         - name: envoy
@@ -2908,7 +2908,7 @@ data:
 
 ### metrics
 
-#### ▼ metricsとは
+#### ▼ metrics とは
 
 同じ Namespace 内の istio-proxy を対象として、メトリクスの作成方法を設定する。
 
@@ -2917,8 +2917,8 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: metrics-provider
-  # istio-proxyをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  # istio-proxy をインジェクションしている各 Namespace で作成する
+  # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 spec:
   selector:
@@ -2935,7 +2935,7 @@ spec:
 
 ### tracing
 
-#### ▼ tracingとは
+#### ▼ tracing とは
 
 同じ Namespace 内の istio-proxy を対象として、スパンの作成方法を設定する。
 
@@ -2944,8 +2944,8 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: trace-provider
-  # istio-proxyをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  # istio-proxy をインジェクションしている各 Namespace で作成する
+  # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 spec:
   selector:
@@ -2974,7 +2974,7 @@ spec:
     - providers:
         - name: opentelemetry
       customTags:
-        # HTTPヘッダーから設定する
+        # HTTP ヘッダーから設定する
         http.url.path:
           header:
             name: :path
@@ -2995,7 +2995,7 @@ spec:
 
 ### .spec.exportTo
 
-#### ▼ exportToとは
+#### ▼ exportTo とは
 
 その VirtualService にリクエストできる Namespace を設定する。
 
@@ -3023,8 +3023,8 @@ spec:
     - "*"
   gateways:
     - foo-igress
-  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
-  # そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする
+  # Istio Ingress Gateway は複数の種類の API へのリクエストを受信する
+  # そのため、後続の VirtualService では、複数の種類の Host ヘッダー値を受信するため、ワイルドカードとする
   hosts:
     - "*"
 ```
@@ -3056,7 +3056,7 @@ spec:
 
 ### .spec.hosts
 
-#### ▼ hostsとは
+#### ▼ hosts とは
 
 VirtualService の設定値を適用する `Host` ヘッダー値を設定する。
 
@@ -3075,7 +3075,7 @@ metadata:
   name: foo-virtual-service
 spec:
   # 特定のマイクロサービスへのリクエストのみを扱うため、ホスト名もそれのみを許可する
-  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
+  # ただし、gateways オプションがある VirtualService ではワイルドカードする
   hosts:
     - foo
 ```
@@ -3084,7 +3084,7 @@ spec:
 
 ### .spec.gateways
 
-#### ▼ gatewaysとは
+#### ▼ gateways とは
 
 インバウンド通信をいずれの Gateway から受信するかを設定する。
 
@@ -3110,8 +3110,8 @@ metadata:
 spec:
   gateways:
     - foo-namespace/foo-gateway
-  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
-  # そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする
+  # Istio Ingress Gateway は複数の種類の API へのリクエストを受信する
+  # そのため、後続の VirtualService では、複数の種類の Host ヘッダー値を受信するため、ワイルドカードとする
   hosts:
     - "*"
 ```
@@ -3136,8 +3136,8 @@ metadata:
 spec:
   gateways:
     - foo-ingressgateway
-  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
-  # そのため、後続のVirtualServiceでは、複数の種類のHostヘッダー値を受信するため、ワイルドカードとする
+  # Istio Ingress Gateway は複数の種類の API へのリクエストを受信する
+  # そのため、後続の VirtualService では、複数の種類の Host ヘッダー値を受信するため、ワイルドカードとする
   hosts:
     - "*"
 ```
@@ -3149,19 +3149,19 @@ metadata:
   name: foo-virtual-service-egress
 spec:
   hosts:
-    #  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。
+    #  Host ヘッダー値が external.com の時に VirtualService を適用する。
     - external.com
   gateways:
-    # PodからIstio Egress GatewayのPodへの通信で使用する
-    # gateway名と両方設定する場合は、デフォルト値としての省略はできない
+    # Pod から Istio Egress Gateway のPod への通信で使用する
+    # gateway 名と両方設定する場合は、デフォルト値としての省略はできない
     - mesh
-    # Istio Egress Gatewayからエントリ済みシステムへの通信で使用する
+    # Istio Egress Gateway からエントリ済みシステムへの通信で使用する
     - foo/foo-egressgateway
   http:
-    # external.comに対するリクエストは、Istio Egress Gatewayにルーティング (リダイレクト) する
+    # external.com に対するリクエストは、Istio Egress Gateway にルーティング (リダイレクト) する
     - match:
         - gateways:
-            # PodからIstio Egress GatewayのPodへの通信で使用する
+            # Pod から Istio Egress Gateway のPod への通信で使用する
             - mesh
           port: 80
       route:
@@ -3169,16 +3169,16 @@ spec:
             host: istio-egressgateway.istio-egress.svc.cluster.local
             port:
               number: 80
-    # Istio Egress Gatewayに対するリクエストは、エントリ済システムにルーティングする
+    # Istio Egress Gateway に対するリクエストは、エントリ済システムにルーティングする
     - match:
         - gateways:
-            # Istio Egress Gatewayからエントリ済みシステムへの通信で使用する
+            # Istio Egress Gateway からエントリ済みシステムへの通信で使用する
             - foo/foo-egressgateway
           port: 80
       route:
         - destination:
-            # ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する
-            # ただし、ServiceEntryがホストに対して名前解決できていないと、そのホスト値を設定できない
+            # ServiceEntry の.spec.hosts キーで指定しているホスト値を設定する
+            # ただし、ServiceEntry がホストに対して名前解決できていないと、そのホスト値を設定できない
             host: external.com
             port:
               number: 80
@@ -3193,18 +3193,18 @@ metadata:
   name: foo-virtual-service-egress
 spec:
   hosts:
-    #  Hostヘッダー値がexternal.comの時にVirtualServiceを適用する。
+    #  Host ヘッダー値が external.com の時に VirtualService を適用する。
     - external.com
   gateways:
-    # PodからIstio Egress GatewayのPodへの通信で使用する
+    # Pod から Istio Egress Gateway のPod への通信で使用する
     - mesh
-    # Istio Egress Gatewayからエントリ済みシステムへの通信で使用する
+    # Istio Egress Gateway からエントリ済みシステムへの通信で使用する
     - foo/foo-egressgateway
   tls:
-    # external.comに対するリクエストは、Istio Egress Gatewayにルーティング (リダイレクト) する
+    # external.com に対するリクエストは、Istio Egress Gateway にルーティング (リダイレクト) する
     - match:
         - gateways:
-            # PodからIstio Egress GatewayのPodへの通信で使用する
+            # Pod から Istio Egress Gateway のPod への通信で使用する
             - mesh
           port: 443
           sniHosts:
@@ -3215,16 +3215,16 @@ spec:
             port:
               number: 443
   http:
-    # Istio Egress Gatewayに対するリクエストは、エントリ済システムにルーティングする
+    # Istio Egress Gateway に対するリクエストは、エントリ済システムにルーティングする
     - match:
         - gateways:
-            # Istio Egress Gatewayからエントリ済みシステムへの通信で使用する
+            # Istio Egress Gateway からエントリ済みシステムへの通信で使用する
             - foo/foo-egressgateway
           port: 443
       route:
         - destination:
-            # ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する
-            # ただし、ServiceEntryがホストに対して名前解決できていないと、そのホスト値を設定できない
+            # ServiceEntry の.spec.hosts キーで指定しているホスト値を設定する
+            # ただし、ServiceEntry がホストに対して名前解決できていないと、そのホスト値を設定できない
             host: external.com
             port:
               number: 443
@@ -3239,8 +3239,8 @@ spec:
   exportTo:
     - "*"
   hosts:
-    # アプリはDBのFQDNを指定する
-    # VirtualSErviceではこれを指定する
+    # アプリは DB のFQDN を指定する
+    # VirtualSErvice ではこれを指定する
     - <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
   gateways:
     - mesh
@@ -3261,7 +3261,7 @@ spec:
           port: 3306
       route:
         - destination:
-            # ServiceEntryにそのままのHostヘッダーでフォワーディングする
+            # ServiceEntry にそのままの Host ヘッダーでフォワーディングする
             host: <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
             port:
               number: 3306
@@ -3288,7 +3288,7 @@ spec:
     # デフォルト値のため、設定は不要である
     - mesh
   hosts:
-    # ワイルドカードを指定できず、特定のHostヘッダーを許可する必要がある
+    # ワイルドカードを指定できず、特定の Host ヘッダーを許可する必要がある
     - account-app
 ```
 
@@ -3306,7 +3306,7 @@ HTTP/1.1、HTTP/2 (例：gRPC、GraphQL など) のプロトコルによる通�
 
 ### .spec.http.corsPolicy
 
-#### ▼ corsPolicyとは
+#### ▼ corsPolicy とは
 
 ブラウザではデフォルトで CORS が有効になっており、正しいリクエストが CORS を突破できるように対処する必要がある。
 
@@ -3318,7 +3318,7 @@ HTTP/1.1、HTTP/2 (例：gRPC、GraphQL など) のプロトコルによる通�
 
 ### .spec.http.fault
 
-#### ▼ faultとは
+#### ▼ fault とは
 
 発生させるフォールトインジェクションを設定する。
 
@@ -3370,7 +3370,7 @@ spec:
 
 ### .spec.http.match
 
-#### ▼ matchとは
+#### ▼ match とは
 
 受信した通信のうち、ルールを適用するもののメッセージ構造を設定する。
 
@@ -3405,8 +3405,8 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
-  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
+  # Istio Ingress Gateway は複数の種類の API へのリクエストを受信する
+  # ただし、gateways オプションがある VirtualService ではワイルドカードする
   hosts:
     - foo
   http:
@@ -3448,7 +3448,7 @@ spec:
   http:
     - match:
         - gateways:
-            # PodからIstio Egress GatewayのPodへの通信で使用する
+            # Pod から Istio Egress Gateway のPod への通信で使用する
             - mesh
           port: 443
       route:
@@ -3458,13 +3458,13 @@ spec:
               number: 443
     - match:
         - gateways:
-            # Istio Egress Gatewayからエントリ済みシステムへの通信で使用する
+            # Istio Egress Gateway からエントリ済みシステムへの通信で使用する
             - foo-ingressgateway
           port: 443
       route:
         - destination:
-            # ServiceEntryの.spec.hostsキーで指定しているホスト値を設定する
-            # ただし、ServiceEntryがホストに対して名前解決できていないと、そのホスト値を設定できない
+            # ServiceEntry の.spec.hosts キーで指定しているホスト値を設定する
+            # ただし、ServiceEntry がホストに対して名前解決できていないと、そのホスト値を設定できない
             host: httpbin.org
             port:
               number: 443
@@ -3499,7 +3499,7 @@ spec:
 
 ### .spec.http.retries
 
-#### ▼ retriesとは
+#### ▼ retries とは
 
 リトライ条件を設定する。
 
@@ -3532,7 +3532,7 @@ spec:
         attempts: 3
         # リトライの処理タイムアウト時間
         perTryTimeout: 10s
-        # Envoyのx-envoy-retry-onの値
+        # Envoy のx-envoy-retry-on の値
         retryOn: gateway-error
 ```
 
@@ -3559,7 +3559,7 @@ spec:
         attempts: 3
         # リトライの処理タイムアウト時間
         perTryTimeout: 10s
-        # Envoyのx-envoy-retry-onの値
+        # Envoy のx-envoy-retry-on の値
         retryOn: gateway-error
 ```
 
@@ -3627,14 +3627,14 @@ spec:
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 spec:
-  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
-  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
+  # Istio Ingress Gateway は複数の種類の API へのリクエストを受信する
+  # ただし、gateways オプションがある VirtualService ではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   http:
     - route:
         - destination:
-            # Service名でも良い。
+            # Service 名でも良い。
             host: foo-service.foo-namespace.svc.cluster.local
 ```
 
@@ -3652,8 +3652,8 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
-  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
+  # Istio Ingress Gateway は複数の種類の API へのリクエストを受信する
+  # ただし、gateways オプションがある VirtualService ではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   http:
@@ -3684,25 +3684,25 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
-  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
+  # Istio Ingress Gateway は複数の種類の API へのリクエストを受信する
+  # ただし、gateways オプションがある VirtualService ではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   http:
     - route:
         - destination:
-            # Service名でも良い
+            # Service 名でも良い
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v1 # 旧Pod
+            subset: v1 # 旧 Pod
           weight: 70
         - destination:
-            # Service名でも良い
+            # Service 名でも良い
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v2 # 新Pod
+            subset: v2 # 新 Pod
           weight: 30
 ```
 
@@ -3725,25 +3725,25 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
-  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
+  # Istio Ingress Gateway は複数の種類の API へのリクエストを受信する
+  # ただし、gateways オプションがある VirtualService ではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   http:
     - route:
         - destination:
-            # Service名でも良い
+            # Service 名でも良い
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v1 # 旧Pod
+            subset: v1 # 旧 Pod
           weight: 70
         - destination:
-            # Service名でも良い
+            # Service 名でも良い
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v2 # 新Pod
+            subset: v2 # 新 Pod
           weight: 30
 ```
 
@@ -3754,7 +3754,7 @@ spec:
 
 ### .spec.http.timeout
 
-#### ▼ timeoutとは
+#### ▼ timeout とは
 
 istio-proxy の宛先にリクエストを送信してから返信があるまでの処理タイムアウト時間を設定する (DestinationRule は接続タイムアウト) 。
 
@@ -3773,18 +3773,18 @@ spec:
   http:
     - route:
         - destination:
-            # Service名でも良い
+            # Service 名でも良い
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v1 # 旧Pod
+            subset: v1 # 旧 Pod
           weight: 70
         - destination:
-            # Service名でも良い
+            # Service 名でも良い
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 80
-            subset: v2 # 新Pod
+            subset: v2 # 新 Pod
           weight: 30
       # 処理タイムアウト
       timeout: 40s
@@ -3798,7 +3798,7 @@ spec:
 
 ### .spec.tcp
 
-#### ▼ tcpとは
+#### ▼ tcp とは
 
 `.spec.http` キーや `.spec.tls` キーとは異なり、TCP プロトコルや独自プロトコル (例：MySQL など) による通信を DestinationRule に紐づく Pod へルーティングする。
 
@@ -3831,14 +3831,14 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
-  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
+  # Istio Ingress Gateway は複数の種類の API へのリクエストを受信する
+  # ただし、gateways オプションがある VirtualService ではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   tcp:
     - route:
         - destination:
-            # Service名でも良い
+            # Service 名でも良い
             # foo-service
             host: foo-service.foo-namespace.svc.cluster.local
 ```
@@ -3855,14 +3855,14 @@ kind: VirtualService
 metadata:
   name: foo-virtual-service
 spec:
-  # Istio Ingress Gatewayは複数の種類のAPIへのリクエストを受信する
-  # ただし、gatewaysオプションがあるVirtualServiceではワイルドカードする
+  # Istio Ingress Gateway は複数の種類の API へのリクエストを受信する
+  # ただし、gateways オプションがある VirtualService ではワイルドカードする
   hosts:
     - foo-service.foo-namespace.svc.cluster.local
   tcp:
     - route:
         - destination:
-            # Service名でも良い
+            # Service 名でも良い
             # foo-service
             host: foo-service.foo-namespace.svc.cluster.local
             port:
@@ -3884,20 +3884,20 @@ spec:
   tcp:
     - route:
         - destination:
-            # Service名でも良い
+            # Service 名でも良い
             # foo-service
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 9000
-            subset: v1 # 旧Pod
+            subset: v1 # 旧 Pod
           weight: 70
         - destination:
-            # Service名でも良い
+            # Service 名でも良い
             # foo-service
             host: foo-service.foo-namespace.svc.cluster.local
             port:
               number: 9000
-            subset: v2 # 新Pod
+            subset: v2 # 新 Pod
           weight: 30
 ```
 
@@ -3905,7 +3905,7 @@ spec:
 
 ### .spec.tls
 
-#### ▼ tlsとは
+#### ▼ tls とは
 
 `.spec.http` キーや `.spec.tcp` キーとは異なり、HTTPS プロトコルの通信を DestinationRule に紐づく Pod へルーティングする。
 
@@ -3915,7 +3915,7 @@ spec:
 
 > - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute
 
-#### ▼ Istio Egress GatewayのVirtualServiceでの注意点
+#### ▼ Istio Egress Gateway のVirtualService での注意点
 
 `.spec.tls` キーで送信する場合、Istio Egress Gateway はアプリケーションデータを復号できないため、プロトコルを TCP として扱う。
 

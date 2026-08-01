@@ -3,7 +3,7 @@ title: 【IT技術の知見】HTTP認証＠認証
 description: HTTP認証＠認証の知見を記録しています。
 ---
 
-# HTTP認証＠認証
+# HTTP 認証＠認証
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: HTTP認証＠認証の知見を記録しています。
 
 <br>
 
-## 01. HTTP認証とは
+## 01. HTTP 認証とは
 
 HTTP リクエストのなかで認証する認証スキームのこと。
 

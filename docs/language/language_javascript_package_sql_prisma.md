@@ -3,7 +3,7 @@ title: 【IT技術の知見】Prisma＠SQLパッケージ
 description: Prisma＠SQLパッケージの知見を記録しています。
 ---
 
-# Prisma＠SQLパッケージ
+# Prisma＠SQL パッケージ
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Prisma＠SQLパッケージの知見を記録しています。
 
 <br>
 
-## 01. Prismaの仕組み
+## 01. Prisma の仕組み
 
 PrismaClient (JavaScript パッケージ) は、クエリエンジン (バイナリ) に接続リクエストを送信する。
 
@@ -156,7 +156,7 @@ $ yarn prisma db seed
 
 ### datasource
 
-#### ▼ datasourceとは
+#### ▼ datasource とは
 
 DB 情報を設定する。
 
@@ -193,7 +193,7 @@ q+werty%3D%2F%3B
 > - https://www.prisma.io/docs/orm/reference/connection-urls
 > - https://unix.stackexchange.com/a/159254
 
-#### ▼ urlパラメーター
+#### ▼ url パラメーター
 
 URL のパラメーターとして、以下などを設定できる。
 
@@ -366,7 +366,7 @@ main()
 
 ## 05. Seed
 
-### Seedとは
+### Seed とは
 
 `yarn prisma db` コマンドで DB に挿入できる初期データである。
 
@@ -464,7 +464,7 @@ Prisma は、トランザクションが何らかの理由で失敗した場合�
 
 ### PrismaClientKnownRequestError
 
-#### ▼ PrismaClientKnownRequestErrorとは
+#### ▼ PrismaClientKnownRequestError とは
 
 Prisma Client が DB に対してトランザクション処理を実行しエラーが発生したとする。
 

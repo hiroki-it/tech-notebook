@@ -21,7 +21,7 @@ hide:
 
 <br>
 
-### CIツール
+### CI ツール
 
 - #### [︎GitHub Actions](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_github_actions.html)
 
@@ -43,7 +43,7 @@ hide:
 
 <br>
 
-### CDツール
+### CD ツール
 
 - #### ︎<u>ArgoCD</u>
 
@@ -55,9 +55,9 @@ hide:
   >   > - ##### [共通項目](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_common.html)
   >   > - ##### [プラグイン](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_plugin.html)
   >   > - ##### [認証／認可系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_auth.html)
-  >   > - ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_configmap.html)
-  >   > - ##### [Secret系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_secret.html)
-  >   > - ##### [Job系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_job.html)
+  >   > - ##### [ConfigMap 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_configmap.html)
+  >   > - ##### [Secret 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_secret.html)
+  >   > - ##### [Job 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_job.html)
   > - ##### [Image Updater](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_image_updater_resource_definition.html)
 
 - #### ︎<u>Argo Rollouts</u>

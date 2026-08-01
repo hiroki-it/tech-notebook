@@ -49,13 +49,13 @@ CPU として、『マイクロプロセッサ』を使用したコンピュー�
 
 <br>
 
-### A/D変換器によるアナログ情報からデジタル情報への変換
+### A/D 変換器によるアナログ情報からデジタル情報への変換
 
 ![AD変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AD変換.png)
 
 <br>
 
-### D/A変換器によるデジタル情報からアナログ情報への変換
+### D/A 変換器によるデジタル情報からアナログ情報への変換
 
 ![DA変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DA変換.png)
 
@@ -129,7 +129,7 @@ CPU として、『マイクロプロセッサ』を使用したコンピュー�
 
 ### ディスプレイ
 
-#### ▼ CRTディスプレイ
+#### ▼ CRT ディスプレイ
 
 #### ▼ 液晶ディスプレイ
 
@@ -141,7 +141,7 @@ CPU として、『マイクロプロセッサ』を使用したコンピュー�
 
 ![液晶ディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/液晶ディスプレイ.jpg)
 
-#### ▼ 有機ELディスプレイ
+#### ▼ 有機 EL ディスプレイ
 
 有機化合物に電圧を加えることによって発光させ、画面を表示させる。
 
@@ -159,7 +159,7 @@ CPU として、『マイクロプロセッサ』を使用したコンピュー�
 
 ![パナソニック製プラズマディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パナソニック製プラズマディスプレイ.jpg)
 
-#### ▼ LEDディスプレイ
+#### ▼ LED ディスプレイ
 
 ![LEDディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LEDディスプレイ.jpg)
 

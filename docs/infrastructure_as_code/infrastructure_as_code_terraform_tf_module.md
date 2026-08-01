@@ -254,7 +254,7 @@ provider "pagerduty" {
 }
 ```
 
-#### ▼ マルチprovidersとは
+#### ▼ マルチ providers とは
 
 複数の `provider` ブロックを実装し、エイリアスを使用して、これらを動的に切り替える方法。
 

@@ -112,7 +112,7 @@ frontend_mono_repository/
 
 ```yaml
 # バックエンドモノレポの場合
-# JetBrains製品をエディタとする場合
+# JetBrains 製品をエディタとする場合
 backend_mono_repository/
 ├── src/
 │   ├── foo/
@@ -126,7 +126,7 @@ backend_mono_repository/
 
 ```yaml
 # フロントエンドモノレポの場合
-# JetBrains製品をエディタとする場合
+# JetBrains 製品をエディタとする場合
 frontend_mono_repository/
 ├── src/
 │   ├── qux/
@@ -140,7 +140,7 @@ frontend_mono_repository/
 
 <br>
 
-## 03. コンテナIaCツールリポジトリ
+## 03. コンテナ IaC ツールリポジトリ
 
 ### 開発環境
 
@@ -156,8 +156,8 @@ IaC ツールに Kubernetes を使用した場合を示す。
 project/
 ├── backend_mono_repository
 ├── frontend_mono_repository
-└── manifests_repository # コンテナのIaCツールを管理するリポジトリ
-    ├── skaffold.yaml # 相対パスを設定し、mono_repositoryを参照可能にする。
+└── manifests_repository # コンテナの IaC ツールを管理するリポジトリ
+    ├── skaffold.yaml # 相対パスを設定し、mono_repository を参照可能にする。
     ├── argocd/
     ├── kubernetes/
     ├── istio/
@@ -166,12 +166,12 @@ project/
 
 <br>
 
-## 04. クラウドインフラIaCツールリポジトリ
+## 04. クラウドインフラ IaC ツールリポジトリ
 
 IaC ツールに Terraform を使用した場合を示す。
 
 ```yaml
-# クラウドインフラのIaCツールを管理するリポジトリ
+# クラウドインフラの IaC ツールを管理するリポジトリ
 infrastructure_repository/
 ├── modules/
 ├── prd/

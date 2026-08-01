@@ -84,9 +84,9 @@ description: リクエスト／レスポンス方式＠通信方式の知見を�
 
 <br>
 
-## 02. Ajaxによる非同期通信
+## 02. Ajax による非同期通信
 
-### Ajaxとは：Asynchronous JavaScript + XML
+### Ajax とは：Asynchronous JavaScript + XML
 
 JavaScript で非同期通信を実装する手法のこと。
 
@@ -94,7 +94,7 @@ JavaScript、HTML、XHTML、CSS、DOM、XML、XSLT を組み合わせる。
 
 <br>
 
-### Ajaxの仕組み
+### Ajax の仕組み
 
 ![AJAXの処理フロー](https://user-images.githubusercontent.com/42175286/58467340-6741cb80-8176-11e9-9692-26e6401f1de9.png)
 
@@ -148,7 +148,7 @@ JavaScript、HTML、XHTML、CSS、DOM、XML、XSLT を組み合わせる。
 
 歴史的に、Ajax を実装するための方法がいくつかある。
 
-#### ▼ xhrオブジェクト
+#### ▼ xhr オブジェクト
 
 JavaScript のビルトインオブジェクトである。
 
@@ -179,11 +179,11 @@ JavaScript Promise を実装しやすくする。
 
 <br>
 
-## 02-02. Ajaxの実装
+## 02-02. Ajax の実装
 
-### xhrオブジェクトの場合
+### xhr オブジェクトの場合
 
-#### ▼ GETリクエスト
+#### ▼ GET リクエスト
 
 **＊実装例＊**
 
@@ -210,7 +210,7 @@ xhr.send();
 
 > - https://blog.capilano-fw.com/?p=6920#Ajax
 
-#### ▼ POSTリクエスト
+#### ▼ POST リクエスト
 
 **＊実装例＊**
 
@@ -258,9 +258,9 @@ xhr.send(queryString);
 
 <br>
 
-### JQueryオブジェクトの場合
+### JQuery オブジェクトの場合
 
-#### ▼ GETリクエスト
+#### ▼ GET リクエスト
 
 **＊実装例＊**
 
@@ -270,7 +270,7 @@ const url = "https://example.com/";
 $.get(url);
 ```
 
-#### ▼ POSTリクエスト
+#### ▼ POST リクエスト
 
 **＊実装例＊**
 
@@ -286,7 +286,7 @@ const body = {
 $.post(url, params);
 ```
 
-#### ▼ 任意のHTTPメソッド
+#### ▼ 任意の HTTP メソッド
 
 任意の HTTP メソッド、URL、ヘッダー、メッセージボディなどを設定し、非同期的にパケットを送受信する。
 
@@ -331,9 +331,9 @@ $.ajax({
 
 <br>
 
-### Axiosオブジェクトの場合
+### Axios オブジェクトの場合
 
-#### ▼ GETリクエスト
+#### ▼ GET リクエスト
 
 **＊実装例＊**
 
@@ -378,7 +378,7 @@ async function pollBackend() {
 pollBackend();
 ```
 
-#### ▼ POSTリクエスト
+#### ▼ POST リクエスト
 
 **＊実装例＊**
 

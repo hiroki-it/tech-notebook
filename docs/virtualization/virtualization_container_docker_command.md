@@ -17,7 +17,7 @@ description: コマンド＠Dockerの知見を記録しています。
 
 ### attach
 
-#### ▼ attachとは
+#### ▼ attach とは
 
 **＊例＊**
 
@@ -70,7 +70,7 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 
 ### buildx
 
-#### ▼ buildxとは
+#### ▼ buildx とは
 
 `docker build` コマンドを拡張する。
 
@@ -132,7 +132,7 @@ $ docker buildx use foo-instance
 
 ### commit
 
-#### ▼ commitとは
+#### ▼ commit とは
 
 停止中コンテナからコンテナイメージを作成する。
 
@@ -162,7 +162,7 @@ $ docker container prune
 
 ### cp
 
-#### ▼ cpとは
+#### ▼ cp とは
 
 Dockerfile の `COPY` コマンドを使用してコンテナ内に配置しているファイルに関して、変更のたびにコンテナイメージをビルドを実行することは面倒のため、ホストからコンテナにコピーし、再読み出しを実行する。
 
@@ -187,7 +187,7 @@ $ docker logs <コンテナ名>
 
 ### create
 
-#### ▼ createとは
+#### ▼ create とは
 
 **＊例＊**
 
@@ -219,7 +219,7 @@ $ docker exec -it <起動中コンテナ名> /bin/bash
 $ docker exec -it <起動中コンテナ名> /bin/sh
 ```
 
-#### ▼ attach、execの違い
+#### ▼ attach、exec の違い
 
 まず `docker attach` コマンドでは、起動中コンテナに接続する。
 
@@ -276,7 +276,7 @@ $ docker container ps -a --no-trunc # コンテナのフェーズがUPになっ�
 
 ### search
 
-#### ▼ searchとは
+#### ▼ search とは
 
 **＊例＊**
 
@@ -290,7 +290,7 @@ $ docker search <コンテナイメージ名>
 
 ### images
 
-#### ▼ imagesとは
+#### ▼ images とは
 
 **＊例＊**
 
@@ -324,7 +324,7 @@ $ docker rmi --force $(sudo docker images --filter "dangling=true" --all --quiet
 
 ### inspect
 
-#### ▼ inspectとは
+#### ▼ inspect とは
 
 **＊例＊**
 
@@ -449,7 +449,7 @@ $ docker pull <コンテナイメージ名>:<バージョンタグ>
 
 ### push
 
-#### ▼ pushとは
+#### ▼ push とは
 
 **＊例＊**
 
@@ -614,7 +614,7 @@ $ docker start -i <停止中コンテナ名>
 
 ### trust
 
-#### ▼ trustとは
+#### ▼ trust とは
 
 コンテナイメージを署名する。
 
@@ -652,7 +652,7 @@ $ docker trust inspect <コンテナイメージ名>:<バージョンタグ>
 
 ### stop
 
-#### ▼ stopとは
+#### ▼ stop とは
 
 **＊例＊**
 

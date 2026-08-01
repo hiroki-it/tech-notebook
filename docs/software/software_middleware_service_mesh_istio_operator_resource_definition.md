@@ -100,7 +100,7 @@ metadata:
 
 ### .spec.component
 
-#### ▼ componentとは
+#### ▼ component とは
 
 IstioOperator 管理で Istio リソースを作成する。
 
@@ -129,7 +129,7 @@ spec:
         # HorizontalPodAutoscaler
         hpaSpec:
           maxReplicas: 10
-          minReplicas: 2 # componentを冗長化する
+          minReplicas: 2 # component を冗長化する
         affinity:
           nodeAffinity:
             preferredDuringSchedulingIgnoredDuringExecution:
@@ -138,7 +138,7 @@ spec:
                   matchExpressions:
                     - key: node.kubernetes.io/nodetype
                       operator: In
-                      # meshというNodeグループにスケジューリングさせられるようにする。
+                      # mesh という Node グループにスケジューリングさせられるようにする。
                       values:
                         - mesh
 ```
@@ -279,7 +279,7 @@ kind: Service
 metadata:
   annotations:
     kubectl.kubernetes.io/last-applied-configuration: |
-      {...} # ここにも、.json形式で設定値が記載されている。
+      {...} # ここにも、.json 形式で設定値が記載されている。
   creationTimestamp: "2022-01-01T12:00:00Z"
   labels:
     app: istio-ingressgateway
@@ -373,7 +373,7 @@ spec:
 
 ### .spec.defaultRevision
 
-#### ▼ defaultRevisionとは
+#### ▼ defaultRevision とは
 
 ```yaml
 apiVersion: install.istio.io/v1alpha1
@@ -391,7 +391,7 @@ spec:
 
 ### .spec.hub
 
-#### ▼ hubとは
+#### ▼ hub とは
 
 Istio リソースを構成するコンテナのベースイメージのレジストリを設定する。
 
@@ -409,7 +409,7 @@ spec:
 
 ### .spec.namespace
 
-#### ▼ namespaceとは
+#### ▼ namespace とは
 
 IstioOperator 管理で作成される Istio リソースの Namespace を設定する。
 
@@ -429,7 +429,7 @@ spec:
 
 ### .spec.profile
 
-#### ▼ profileとは
+#### ▼ profile とは
 
 プロファイルを設定する。
 
@@ -451,7 +451,7 @@ spec:
 
 ### .spec.revision
 
-#### ▼ revisionとは
+#### ▼ revision とは
 
 Istiod コントロールプレーンをカナリアリリースを使用してアップグレードする場合、新しく作成するバージョンを設定する。
 
@@ -474,7 +474,7 @@ spec:
 
 ### .spec.tag
 
-#### ▼ tagとは
+#### ▼ tag とは
 
 Istio リソースを構成するコンテナのベースイメージのバージョンを設定する。
 
@@ -495,7 +495,7 @@ spec:
 
 ### .spec.values
 
-#### ▼ valuesとは
+#### ▼ values とは
 
 `manifests/charts/global.yaml` ファイルの設定値を上書きする。
 
@@ -562,7 +562,7 @@ spec:
       # Istio Ingress Gateway
       istio-ingressgateway:
         env: {}
-        # IstioOperatorをroot権限の実行ユーザーを使用する
+        # IstioOperator をroot 権限の実行ユーザーを使用する
         runAsRoot: "true"
         autoscaleEnabled: "true"
         type: LoadBalancer

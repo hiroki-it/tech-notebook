@@ -13,7 +13,7 @@ description: confest＠コード規約違反の知見を記録しています。
 
 <br>
 
-## 01. confestの仕組み
+## 01. confest の仕組み
 
 ### 検出項目
 
@@ -35,7 +35,7 @@ Rego によるユーザー定義のポリシーに基づいて、さまざまな
 
 ### インストール
 
-#### ▼ brewリポジトリから
+#### ▼ brew リポジトリから
 
 ```bash
 $ brew install conftest
@@ -90,7 +90,7 @@ violation[msg] {
 
 ### test
 
-#### ▼ testとは
+#### ▼ test とは
 
 設定ファイルを検査する。
 

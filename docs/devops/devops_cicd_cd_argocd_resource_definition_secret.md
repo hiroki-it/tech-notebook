@@ -3,7 +3,7 @@ title: 【IT技術の知見】Secret系＠リソース定義
 description: Secret系＠リソース定義の知見を記録しています。
 ---
 
-# Secret系＠リソース定義
+# Secret 系＠リソース定義
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Secret系＠リソース定義の知見を記録しています。
 
 <br>
 
-## 01. 専用Secret
+## 01. 専用 Secret
 
 ArgoCD の各種コンポーネントの機密な変数やファイルを管理する。
 
@@ -44,7 +44,7 @@ data:
 
 ## 03. argocd-repo
 
-### argocd-repoとは
+### argocd-repo とは
 
 ArgoCD がプライベートリポジトリをポーリングするときに必要な資格情報を設定する。
 
@@ -86,7 +86,7 @@ Helm チャートを対象とする場合、`helm repo add` コマンドを実�
 ユーザー名は、空文字以外の任意の文字列を設定できる。
 
 ```yaml
-# foo-repositoryをポーリングするためのargocd-repo
+# foo-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -105,7 +105,7 @@ data:
   # アクセストークンを設定する
   password: ******
 ---
-# bar-repositoryをポーリングするためのargocd-repo
+# bar-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -127,14 +127,14 @@ data:
 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/private-repositories/#access-token
 
-#### ▼ HTTPS認証の場合
+#### ▼ HTTPS 認証の場合
 
 HTTPS 認証に必要なユーザー名とパスワードを設定する。
 
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数の Secret が必要になる。
 
 ```yaml
-# foo-repositoryをポーリングするためのargocd-repo
+# foo-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -148,11 +148,11 @@ data:
   name: foo-repository
   url: https://github.com/hiroki-hasegawa/foo-manifest.git
   type: git
-  # HTTPS認証に必要なユーザー名とパスワードを設定する。
+  # HTTPS 認証に必要なユーザー名とパスワードを設定する。
   username: hiroki-it
   password: pass
 ---
-# bar-repositoryをポーリングするためのargocd-repo
+# bar-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -166,21 +166,21 @@ data:
   name: bar-repository
   url: https://github.com/hiroki-hasegawa/bar-manifest.git
   type: git
-  # HTTPS認証に必要なユーザー名とパスワードを設定する。
+  # HTTPS 認証に必要なユーザー名とパスワードを設定する。
   username: hiroki-it
   password: pass
 ```
 
 > - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
 
-#### ▼ SSH公開鍵認証の場合
+#### ▼ SSH 公開鍵認証の場合
 
 SSH 公開鍵認証に必要な秘密鍵を設定する。
 
 ここでは、プライベートなマニフェストリポジトリが異なるレジストリにあるとしており、複数の Secret が必要になる。
 
 ```yaml
-# foo-repositoryをポーリングするためのargocd-repo
+# foo-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -194,11 +194,11 @@ data:
   name: foo-repository
   url: git@github.com:hiroki-hasegawa/foo-manifest.git
   type: git
-  # SSH公開鍵認証に必要な秘密鍵を設定する。
+  # SSH 公開鍵認証に必要な秘密鍵を設定する。
   sshPrivateKey: |
     MIIC2 ...
 ---
-# bar-repositoryをポーリングするためのargocd-repo
+# bar-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -212,14 +212,14 @@ data:
   name: bar-repository
   url: git@github.com:hiroki-hasegawa/bar-manifest.git
   type: git
-  # SSH公開鍵認証に必要な秘密鍵を設定する。
+  # SSH 公開鍵認証に必要な秘密鍵を設定する。
   sshPrivateKey: |
     MIIEp ...
 ```
 
 <br>
 
-### Helmチャートリポジトリの場合
+### Helm チャートリポジトリの場合
 
 #### ▼ 注意点
 
@@ -230,14 +230,14 @@ data:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
 
-#### ▼ HTTPS認証の場合
+#### ▼ HTTPS 認証の場合
 
 HTTPS 認証に必要なユーザー名とパスワードを設定する。
 
 ここでは、プライベートな Helm チャートリポジトリが異なるレジストリにあるとしており、複数の Secret が必要になる。
 
 ```yaml
-# foo-repositoryをポーリングするためのargocd-repo
+# foo-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -247,15 +247,15 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  # Helmチャートリポジトリ名
+  # Helm チャートリポジトリ名
   name: foo-repository
-  # HelmチャートリポジトリのURL
+  # Helm チャートリポジトリの URL
   url: https://github.com/hiroki-hasegawa/foo-charts.git
   type: helm
   username: foo
   password: bar
 ---
-# bar-repositoryをポーリングするためのargocd-repo
+# bar-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -265,9 +265,9 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  # Helmチャートリポジトリ名
+  # Helm チャートリポジトリ名
   name: bar-repository
-  # HelmチャートリポジトリのURL
+  # Helm チャートリポジトリの URL
   url: https://github.com/hiroki-hasegawa/bar-charts.git
   type: helm
   username: baz
@@ -278,7 +278,7 @@ data:
 
 <br>
 
-### OCIリポジトリの場合
+### OCI リポジトリの場合
 
 #### ▼ 注意点
 
@@ -292,14 +292,14 @@ OCI プロトコルの有効化 (`.enableOCI` キー) が必要であるが、�
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
 > - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
 
-#### ▼ HTTPS認証の場合
+#### ▼ HTTPS 認証の場合
 
 HTTPS 認証に必要なユーザー名とパスワードを設定する。
 
 ここでは、プライベートな OCI リポジトリが異なるレジストリにあるとしており、複数の Secret が必要になる。
 
 ```yaml
-# foo-repositoryをポーリングするためのargocd-repo
+# foo-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -309,16 +309,16 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  # OCIリポジトリ名
+  # OCI リポジトリ名
   name: foo-oci-repository
-  # OCIリポジトリのURL
+  # OCI リポジトリの URL
   url: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
   type: helm
   username: foo
   password: bar
-  enableOCI: true # OCIリポジトリを有効化する。
+  enableOCI: true # OCI リポジトリを有効化する。
 ---
-# bar-repositoryをポーリングするためのargocd-repo
+# bar-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -328,14 +328,14 @@ metadata:
     argocd.argoproj.io/secret-type: repository
 type: Opaque
 data:
-  # OCIリポジトリ名
+  # OCI リポジトリ名
   name: bar-oci-repository
-  # OCIリポジトリのURL
+  # OCI リポジトリの URL
   url: <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com
   type: helm
   username: baz
   password: qux
-  # OCIリポジトリを有効化する。
+  # OCI リポジトリを有効化する。
   enableOCI: "true"
 ```
 
@@ -350,7 +350,7 @@ Amazon ECR のように資格情報に有効期限がある場合は、資格情
 
 ## 04. argocd-repo-creds
 
-### argocd-repo-credsとは
+### argocd-repo-creds とは
 
 ArgoCD がプライベートリポジトリをポーリングするときに必要な資格情報を設定する。
 
@@ -367,7 +367,7 @@ argocd-repo とは異なり、`1` 個の資格情報で複数のリポジトリ�
 
 ### マニフェストリポジトリの場合
 
-#### ▼ HTTPS認証の場合
+#### ▼ HTTPS 認証の場合
 
 設定できる項目は、argocd-repo と同じである。
 
@@ -387,7 +387,7 @@ type: Opaque
 data:
   type: git
   url: https://github.com/hiroki-hasegawa
-  # HTTPS認証に必要なユーザー名とパスワードを設定する。
+  # HTTPS 認証に必要なユーザー名とパスワードを設定する。
   username: hiroki-it
   password: pass
 ```
@@ -395,7 +395,7 @@ data:
 また、argocd-repo には資格情報 (`.username` キー、`.password` キー) を設定しないようにする。
 
 ```yaml
-# foo-repositoryをポーリングするためのargocd-repo
+# foo-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -411,7 +411,7 @@ data:
   # https://github.com/hiroki-hasegawa に前方一致する。
   url: https://github.com/hiroki-hasegawa/foo-manifest.git
 ---
-# bar-repositoryをポーリングするためのargocd-repo
+# bar-repository をポーリングするための argocd-repo
 apiVersion: v1
 kind: Secret
 metadata:
@@ -438,7 +438,7 @@ ArgoCD は、argocd-repo-creds の `.url` キーを使用して、argocd-repo �
 
 ## 05. argo-secret (必須)
 
-### argocd-secretとは
+### argocd-secret とは
 
 以下の資格情報やサーバー証明書を設定する。
 
@@ -548,7 +548,7 @@ metadata:
     app.kubernetes.io/part-of: argocd
 type: Opaque
 data:
-  # base64方式でエンコードしたクライアントシークレット
+  # base64 方式でエンコードしたクライアントシークレット
   oidc.auth0.clientSecret: *****
 ```
 
@@ -563,7 +563,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: argocd
 data:
-  # OIDCに必要なIDやトークンを設定する
+  # OIDC に必要な ID やトークンを設定する
   oidc.config: |
     name: Auth0
     clientID: *****
@@ -577,9 +577,9 @@ data:
 
 <br>
 
-## 06. cluster-<エンドポイントURL>
+## 06. cluster-<エンドポイント URL>
 
-### cluster-<エンドポイントURL>とは
+### cluster-<エンドポイント URL>とは
 
 ArgoCD の application-controller がデプロイ先と異なる Cluster で稼働している場合に、デプロイ先の Cluster の ServiceAccount と application-controller を紐付ける必要がある。
 
@@ -592,7 +592,7 @@ ArgoCD の application-controller は、`cluster-<エンドポイントURL>` と
 
 ### awsAuthConfig
 
-#### ▼ Amazon EKSの場合
+#### ▼ Amazon EKS の場合
 
 Amazon EKS の場合、
 
@@ -654,7 +654,7 @@ data:
 
 ## 06-02. セットアップ
 
-### Amazon EKS Clusterの場合
+### Amazon EKS Cluster の場合
 
 #### ▼ 手順
 
@@ -744,7 +744,7 @@ cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been config
 > - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
 > - https://github.com/argoproj/argo-cd/issues/4651#issuecomment-1006960125
 
-#### ▼ プリンシパルIAMロールとアクセスエントリー
+#### ▼ プリンシパル IAM ロールとアクセスエントリー
 
 Amazon EKS アクセスエントリーを使用する場合、`argocd cluster add` コマンドは不要になる。
 

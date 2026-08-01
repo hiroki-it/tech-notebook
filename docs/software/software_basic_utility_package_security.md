@@ -17,7 +17,7 @@ description: セキュリティ系＠パッケージの知見を記録してい�
 
 ### インストール
 
-#### ▼ brewリポジトリから
+#### ▼ brew リポジトリから
 
 ```bash
 $ brew install sops
@@ -25,7 +25,7 @@ $ brew install sops
 
 <br>
 
-### SOPSの構成要素
+### SOPS の構成要素
 
 #### ▼ 平文ファイル
 
@@ -100,7 +100,7 @@ sops:
 creation_rules:
   # 特定の平文ファイル名を設定する。
   - path_regex: ./values/value\.yaml
-    # AWS KMSを暗号化キーとして使用する。
+    # AWS KMS を暗号化キーとして使用する。
     kms: "arn:aws:kms:ap-northeast-1:<AWSアカウントID>:key/*****"
 ```
 
@@ -108,7 +108,7 @@ creation_rules:
 creation_rules:
   # ワイルドカードで平文ファイルを再帰的に指定できる。
   - path_regex: ./values/*\.yaml
-    # Google Cloud CKMを暗号化キーとして使用する。
+    # Google Cloud CKM を暗号化キーとして使用する。
     gcp_kms: "projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key"
 ```
 

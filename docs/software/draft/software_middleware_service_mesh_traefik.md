@@ -63,7 +63,7 @@ Cert Manager と連携する必要がある。
 
 ```yaml
 {
-  # JSON形式
+  # JSON 形式
   "jsonPayload": {
       "Duration": 5446226,
       "TLSVersion": "1.3",

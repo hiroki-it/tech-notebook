@@ -49,7 +49,7 @@ timeout = 60
 
 <br>
 
-## 01-02. pipコマンド
+## 01-02. pip コマンド
 
 ### cache
 
@@ -77,7 +77,7 @@ $ pip3 cache remove <パッケージ名>
 
 ### check
 
-#### ▼ checkとは
+#### ▼ check とは
 
 インストールされているパッケージ間の依存関係を正しく解決できるか否かを確認する。
 
@@ -99,7 +99,7 @@ wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django
 
 ### install
 
-#### ▼ installとは
+#### ▼ install とは
 
 指定したパッケージをインストールする。
 
@@ -168,7 +168,7 @@ $ pip3 install -r requirements.txt --prefix=/usr/local
 
 ### freeze
 
-#### ▼ freezeとは
+#### ▼ freeze とは
 
 pip でインストールされたパッケージを元に、要件ファイルを作成する。
 
@@ -191,7 +191,7 @@ $ pip3 freeze > uninstall.txt
 
 ### list
 
-#### ▼ listとは
+#### ▼ list とは
 
 現在インストールされているパッケージの一覧を取得する。
 
@@ -231,7 +231,7 @@ setuptools         60.5.0  60.9.3 wheel
 
 ### show
 
-#### ▼ showとは
+#### ▼ show とは
 
 pip でインストールしたパッケージ情報を取得する。
 
@@ -259,7 +259,7 @@ Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 
 ### uninstall
 
-#### ▼ uninstallとは
+#### ▼ uninstall とは
 
 指定したパッケージをアンインストールする。
 
@@ -337,7 +337,7 @@ flask-json==0.4.0 \
 
 <br>
 
-### 02-02. pip-compileコマンド
+### 02-02. pip-compile コマンド
 
 #### ▼ --generate-hashes
 

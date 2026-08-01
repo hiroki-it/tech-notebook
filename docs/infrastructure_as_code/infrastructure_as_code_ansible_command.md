@@ -13,9 +13,9 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 <br>
 
-## 01. ansibleコマンド
+## 01. ansible コマンド
 
-### ansible-playbookコマンドとの違い
+### ansible-playbook コマンドとの違い
 
 単一のタスクを実行できる。
 
@@ -23,7 +23,7 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 <br>
 
-## 02. ansible-communityコマンド
+## 02. ansible-community コマンド
 
 Ansible のバージョンを確認する。
 
@@ -37,9 +37,9 @@ $ ansible-community --version
 
 <br>
 
-## 03. ansible-playbookコマンド
+## 03. ansible-playbook コマンド
 
-### ansibleコマンドとの違い
+### ansible コマンドとの違い
 
 複数のタスクを含む Playbook を実行できる。
 
@@ -81,7 +81,7 @@ $ ansible-playbook foo-playbook.yml -i ./inventories --vault-password-file foo-f
 
 ### -i
 
-#### ▼ -iとは
+#### ▼ -i とは
 
 inventory ファイルを指定する。
 
@@ -125,7 +125,7 @@ $ ansible-playbook -u foo-user <playbookファイル> -i <inventoryファイル/
 
 <br>
 
-## 04. ansible-vaultコマンド
+## 04. ansible-vault コマンド
 
 ### decrypt
 
@@ -163,11 +163,11 @@ $ANSIBLE_VAULT;1.1;AES256
 
 <br>
 
-## 05. ansible-inventoryコマンド
+## 05. ansible-inventory コマンド
 
 ### --list
 
-#### ▼ --listとは
+#### ▼ --list とは
 
 `inventory` ファイルを指定し、`json` 形式に変換する。
 

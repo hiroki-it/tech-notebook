@@ -13,7 +13,7 @@ description: metrics-server＠ハードウェアリソース管理系の知見�
 
 <br>
 
-## 01. metrics-serverの仕組み
+## 01. metrics-server の仕組み
 
 ### アーキテクチャ
 
@@ -51,9 +51,9 @@ Kubernetes の Node と Pod (それ以外の Kubernetes リソースは対象外
 
 <br>
 
-### 拡張APIサーバー
+### 拡張 API サーバー
 
-#### ▼ 拡張APIサーバーとは
+#### ▼ 拡張 API サーバーとは
 
 拡張 API サーバーは、Service と APIService を介して、クライアント (`kubectl top` コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) からのリクエストを受信し、メトリクスの元になるデータポイントを含むレスポンスを返信する。
 
@@ -87,7 +87,7 @@ kubelet のデーモンはデータポイント収集用エンドポイント (�
 
 ## 01-02. マニフェスト
 
-### Deployment配下のPod
+### Deployment 配下の Pod
 
 記入中...
 
@@ -108,10 +108,10 @@ spec:
         - --secure-port=4443
         - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
         - --kubelet-use-node-status-port
-        # データポイントの収集間隔を設定する。間隔が短すぎると、kube-apiserverに負荷がかかる
+        # データポイントの収集間隔を設定する。間隔が短すぎると、kube-apiserver に負荷がかかる
         # https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#how-often-metrics-are-scraped
         - --metric-resolution=15s
-        # Minikubeでは、kubelet-insecure-tlsオプションを有効化する
+        # Minikube では、kubelet-insecure-tls オプションを有効化する
         # @see https://speakerdeck.com/y_sera15/metrics-serverwosekiyuanatlsdedepuroisitemita?slide=5
         - --kubelet-insecure-tls
       resources:
@@ -137,7 +137,7 @@ spec:
           scheme: HTTPS
         periodSeconds: 10
         failureThreshold: 3
-        # metrics-serverの準備完了を待たずにReadinessProbeヘルスチェックを実施しないように、初回のヘルスチェックを開始するまでの待機時間を延長する
+        # metrics-server の準備完了を待たずに ReadinessProbe ヘルスチェックを実施しないように、初回のヘルスチェックを開始するまでの待機時間を延長する
         # https://github.com/kubernetes-sigs/metrics-server/issues/1056#issuecomment-1288198994
         initialDelaySeconds: 80
       securityContext:
@@ -188,7 +188,7 @@ spec:
 
 ### node
 
-#### ▼ nodeとは
+#### ▼ node とは
 
 Node のハードウェアリソースの消費量を取得する。
 
@@ -227,7 +227,7 @@ node-2    <unknown>   <unknown>  <unknown>      <unknown>
 
 ### pod
 
-#### ▼ podとは
+#### ▼ pod とは
 
 Pod のハードウェアリソースの消費量を取得する。
 
@@ -267,11 +267,11 @@ foo-pod    <unknown>   <unknown>  <unknown>      <unknown>
 
 <br>
 
-## 03. Podの自動水平スケーリング/自動垂直スケーリング
+## 03. Pod の自動水平スケーリング/自動垂直スケーリング
 
 ### HorizontalPodAutoscaler
 
-#### ▼ HorizontalPodAutoscalerとは
+#### ▼ HorizontalPodAutoscaler とは
 
 Deployment、StatefulSet、ReplicaSet の単位で Pod の自動水平スケーリングを実行する。
 
@@ -286,7 +286,7 @@ HorizontalPodAutoscaler を使用するためには、metrics-server も別途�
 > - https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
 > - https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/
 
-#### ▼ 最大Pod数の求め方
+#### ▼ 最大 Pod 数の求め方
 
 オートスケーリング時の現在の Pod 数は、次の計算式で算出される。
 
@@ -329,7 +329,7 @@ baz        baz-deployment   Deployment/baz-deployment   <unknown>/80%   1       
 > - https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#migrating-deployments-and-statefulsets-to-horizontal-autoscaling
 > - https://stackoverflow.com/a/66431624/12771072
 
-#### ▼ メトリクスでのPodの増減
+#### ▼ メトリクスでの Pod の増減
 
 メトリクス上では、既存の Pod が削除されて、新しい Pod が作成されていることを確認できる。
 
@@ -337,14 +337,14 @@ baz        baz-deployment   Deployment/baz-deployment   <unknown>/80%   1       
 
 ### VerticalPodAutoscaler
 
-#### ▼ VerticalPodAutoscalerとは
+#### ▼ VerticalPodAutoscaler とは
 
 Pod の垂直スケーリングを実行する。
 
 > - https://ccvanishing.hateblo.jp/entry/2018/10/02/203205>
 > - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8>
 
-#### ▼ Podの再作成のない垂直スケーリング
+#### ▼ Pod の再作成のない垂直スケーリング
 
 執筆時点 (2022/12/31) の仕様では、Pod を垂直スケーリングする場合に、Pod の再作成が必要になる。
 
@@ -353,7 +353,7 @@ Pod の垂直スケーリングを実行する。
 | 方法                             | 説明                                                                                                                             |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | マニフェストの新しい設定値の追加 | マニフェストに、垂直スケーリング時のルールに関する設定値 (例：`.spec.containers[*].resources[*].resizePolicy` キー) を追加する。 |
-| eBPFによるインプレース変更       | ハードウェアリソースの不足が検知されたときに、eBPFを使用して、Podのマニフェストを変更するJSONPatch処理をフックする。             |
+| eBPF によるインプレース変更      | ハードウェアリソースの不足が検知されたときに、eBPF を使用して、Pod のマニフェストを変更する JSONPatch 処理をフックする。         |
 
 > - https://speakerdeck.com/masayaaoyama/techfeed-expert-night-7-amsy810?slide=12>
 > - https://qiita.com/shmurata/items/a780a402bb4c9b308cc7#kubelet>

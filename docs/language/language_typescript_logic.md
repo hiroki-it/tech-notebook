@@ -154,7 +154,7 @@ const user = new User("Tom");
 user.name = "Bob";
 ```
 
-#### ▼ update系、change系
+#### ▼ update 系、change 系
 
 ドメインを意識したメソッドを使用して値を変更できる。
 

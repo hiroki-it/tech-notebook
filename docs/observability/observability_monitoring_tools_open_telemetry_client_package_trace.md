@@ -15,7 +15,7 @@ description: 分散トレース＠クライアントパッケージの知見を�
 
 ## 01. TracerProvider
 
-### TracerProviderとは
+### TracerProvider とは
 
 OpenTelemetry をセットアップし、スパンを作成する機能を提供する。
 
@@ -188,7 +188,7 @@ func main()  {
 
 ### 分散トレースの無効化
 
-#### ▼ TracerProviderを実行しない
+#### ▼ TracerProvider を実行しない
 
 一番単純な方法として、スパンを作成しない場合は、TracerProvider のセットアップをコールしないことである。
 
@@ -252,7 +252,7 @@ data:
 
 > - https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300
 
-#### ▼ NoopTracerProviderを使用する
+#### ▼ NoopTracerProvider を使用する
 
 TracerProvider のデフォルト値である。
 
@@ -276,7 +276,7 @@ type noopTracerProvider struct{
 > - https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/noop.go#L35
 
-#### ▼ Samplerを無効化する
+#### ▼ Sampler を無効化する
 
 開発環境では、分散トレースを実施したくない。
 
@@ -366,12 +366,12 @@ func newSampler() sdktrace.Sampler {
 {
   "name": "hello",
   "context": {
-      # ルートスパンのトレースID
+      # ルートスパンのトレース ID
       "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-      # ルートスパンのスパンID
+      # ルートスパンのスパン ID
       "span_id": "0x051581bf3cb55c13",
     },
-  # ルートスパンのため、親スパンのスパンIDがない
+  # ルートスパンのため、親スパンのスパン ID がない
   "parent_id": null,
   "start_time": "2022-04-29T18:52:58.114201Z",
   "end_time": "2022-04-29T18:52:58.114687Z",
@@ -389,7 +389,7 @@ func newSampler() sdktrace.Sampler {
 
 > - https://opentelemetry.io/docs/concepts/signals/traces/
 
-#### ▼ 親スパンX
+#### ▼ 親スパン X
 
 １つ目の親スパンの構造である。
 
@@ -397,12 +397,12 @@ func newSampler() sdktrace.Sampler {
 {
   "name": "hello-greetings",
   "context": {
-      # ルートスパンのトレースID
+      # ルートスパンのトレース ID
       "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-      # 親スパンXのスパンID
+      # 親スパン X のスパン ID
       "span_id": "0x5fb397be34d26b51",
     },
-  # 親スパンXのスパンID (ルートスパンのスパンIDと一致する)
+  # 親スパン X のスパン ID (ルートスパンのスパン ID と一致する)
   "parent_id": "0x051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114304Z",
   "end_time": "2022-04-29T22:52:58.114561Z",
@@ -425,7 +425,7 @@ func newSampler() sdktrace.Sampler {
 
 > - https://opentelemetry.io/docs/concepts/signals/traces/
 
-#### ▼ 親スパンY
+#### ▼ 親スパン Y
 
 ２つ目の親スパンの構造である。
 
@@ -433,12 +433,12 @@ func newSampler() sdktrace.Sampler {
 {
   "name": "hello-salutations",
   "context": {
-      # ルートスパンのトレースID
+      # ルートスパンのトレース ID
       "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-      # 親スパンYのスパンID
+      # 親スパン Y のスパン ID
       "span_id": "0x93564f51e1abe1c2",
     },
-  # 親スパンYのスパンID (ルートスパンのスパンIDと一致する)
+  # 親スパン Y のスパン ID (ルートスパンのスパン ID と一致する)
   "parent_id": "0x051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114492Z",
   "end_time": "2022-04-29T18:52:58.114631Z",
@@ -468,9 +468,9 @@ func newSampler() sdktrace.Sampler {
 
 <br>
 
-### Spanステータス（SpanStatus）
+### Span ステータス（SpanStatus）
 
-#### ▼ Spanステータスとは
+#### ▼ Span ステータスとは
 
 Span に紐づく処理の成否を表す。
 
@@ -496,9 +496,9 @@ Span に紐づく処理の成否を表す。
 
 <br>
 
-### Span種別（SpanKind）
+### Span 種別（SpanKind）
 
-#### ▼ Span種別とは
+#### ▼ Span 種別とは
 
 スパンの作成場所の種類を表す。
 
@@ -740,9 +740,9 @@ func foo()  {
 
 <br>
 
-### Spanイベント
+### Span イベント
 
-#### ▼ Spanイベントとは
+#### ▼ Span イベントとは
 
 スパンの処理時間中の特定時点のイベントを表す。
 
@@ -880,7 +880,7 @@ func main()  {
 
 <br>
 
-### Graceful Shutdown処理
+### Graceful Shutdown 処理
 
 TracerProvider は、Graceful Shutdown 処理を実行するための関数を持っている。
 
@@ -968,13 +968,13 @@ func main()  {
 
 ## 02. Exporter
 
-### Exporterとは
+### Exporter とは
 
 スパンの宛先とするスパン収集ツール (例：AWS Distro for OpenTelemetry Collector、Google Cloud Trace、OpenTelemetry Collector など) を決める処理を持つ。
 
 <br>
 
-### Exporterの種類
+### Exporter の種類
 
 #### ▼ Stdout Exporter
 
@@ -1031,7 +1031,7 @@ Go の場合、`WithEndpoint()` 関数を使用して、スパンの宛先 (例�
 
 > - https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush-2
 
-#### ▼ Graceful Shutdown処理
+#### ▼ Graceful Shutdown 処理
 
 Exporter は、Graceful Shutdown 処理を実行するための関数を持っている。
 
@@ -1130,7 +1130,7 @@ func main()  {
 
 ## 03. ID Generator
 
-### ID Generatorとは
+### ID Generator とは
 
 特定の監視バックエンドの形式で、トレース ID やスパン ID を作成する。
 
@@ -1142,7 +1142,7 @@ ID Generator を使用しない場合、ID Generator は W3C Trace Context 仕�
 
 <br>
 
-### X-Ray仕様
+### X-Ray 仕様
 
 X-Ray 仕様のトレース ID やスパン ID を作成する。
 
@@ -1168,7 +1168,7 @@ func main()  {
 
 ## 04. Span Processor
 
-### Span Processorとは
+### Span Processor とは
 
 他の処理コンポーネントを操作する処理を持つ。
 
@@ -1176,7 +1176,7 @@ func main()  {
 
 <br>
 
-### Span Processorの種類
+### Span Processor の種類
 
 #### ▼ Batch Span Processor
 
@@ -1202,7 +1202,7 @@ Go の場合、`BatchSpanProcessor()` 関数を使用する。
 
 > - https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush-1
 
-#### ▼ Graceful Shutdown処理
+#### ▼ Graceful Shutdown 処理
 
 Span Processor は、Graceful Shutdown 処理を実行するための関数を持っている。
 
@@ -1216,7 +1216,7 @@ Span Processor は、Graceful Shutdown 処理を実行するための関数を�
 
 ## 05. Propagator
 
-### Propagatorとは
+### Propagator とは
 
 トレースコンテキストを宛先マイクロサービスに伝播させる処理を持つ。
 
@@ -1236,7 +1236,7 @@ Carrier からトレースコンテキストを注入する操作を『注入 (I
 
 ### 注入/抽出
 
-#### ▼ W3 Trace Contextの場合
+#### ▼ W3 Trace Context の場合
 
 ```go
 func (tc TraceContext) Inject(ctx context.Context, carrier TextMapCarrier) {
@@ -1386,7 +1386,7 @@ func NewTracerProvider() {
 
 ## 06. Resource
 
-### Resourceとは
+### Resource とは
 
 スパンに属性を設定する処理を持つ。
 
@@ -1394,9 +1394,9 @@ func NewTracerProvider() {
 
 <br>
 
-### Resourceの種類
+### Resource の種類
 
-#### ▼ HTTP/gRPCリクエストの場合
+#### ▼ HTTP/gRPC リクエストの場合
 
 デフォルトで、さまざまな属性を持っている。
 
@@ -1417,7 +1417,7 @@ func NewTracerProvider() {
 
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.20.0/resource.go
 
-#### ▼ DB操作の場合
+#### ▼ DB 操作の場合
 
 デフォルトで、さまざまな属性を持っている。
 
@@ -1433,7 +1433,7 @@ func NewTracerProvider() {
 
 ## 07. Sampler
 
-### Samplerとは
+### Sampler とは
 
 スパンのサンプリング方式やサンプリング率を設定する処理を持つ。
 
@@ -1520,16 +1520,16 @@ OpenTelemetry の仕様では、あるべき環境変数が決まっている。
 
 指定する Sampler やパラメーターを環境変数で設定できる。
 
-| 環境変数                   | 説明                                                                                                                              |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `OTEL_LOGS_EXPORTER`       | ログのExporter名を設定する。                                                                                                      |
-| `OTEL_METRICS_EXPORTER`    | メトリクスのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`prometheus`、`none`、から設定できる。         |
-| `OTEL_PROPAGATORS`         | トレースコンテキスト仕様を設定する。                                                                                              |
-| `OTEL_SERVICE_NAME`        | Resourceの `service.name` を設定する。                                                                                            |
-| `OTEL_RESOURCE_ATTRIBUTES` | Resourceの任意の属性を設定する。キーバリュー式 (`key1=value1,key2=value2`) で設定できる。                                         |
-| `OTEL_TRACES_EXPORTER`     | 分散トレースのExporter名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`jaeger`、`zipkin`、`none`、から設定できる。 |
-| `OTEL_TRACES_SAMPLER`      | 使用するSamplerを設定する。                                                                                                       |
-| `OTEL_TRACES_SAMPLER_ARG`  | Samplerのパラメーター (例：サンプリング率) を設定する。                                                                           |
+| 環境変数                   | 説明                                                                                                                                |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `OTEL_LOGS_EXPORTER`       | ログの Exporter 名を設定する。                                                                                                      |
+| `OTEL_METRICS_EXPORTER`    | メトリクスの Exporter 名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`prometheus`、`none`、から設定できる。         |
+| `OTEL_PROPAGATORS`         | トレースコンテキスト仕様を設定する。                                                                                                |
+| `OTEL_SERVICE_NAME`        | Resource の `service.name` を設定する。                                                                                             |
+| `OTEL_RESOURCE_ATTRIBUTES` | Resource の任意の属性を設定する。キーバリュー式 (`key1=value1,key2=value2`) で設定できる。                                          |
+| `OTEL_TRACES_EXPORTER`     | 分散トレースの Exporter 名を設定する。執筆時点 (2024/02/06) では、`otlp` (HTTP/gRPC) 、`jaeger`、`zipkin`、`none`、から設定できる。 |
+| `OTEL_TRACES_SAMPLER`      | 使用する Sampler を設定する。                                                                                                       |
+| `OTEL_TRACES_SAMPLER_ARG`  | Sampler のパラメーター (例：サンプリング率) を設定する。                                                                            |
 
 > - https://opentelemetry.io/docs/languages/sdk-configuration/general/
 

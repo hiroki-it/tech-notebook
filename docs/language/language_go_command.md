@@ -13,11 +13,11 @@ description: コマンド＠Goの知見を記録しています。
 
 <br>
 
-## 01. goコマンド
+## 01. go コマンド
 
 ### build
 
-#### ▼ buildとは
+#### ▼ build とは
 
 指定したパスをビルド対象として、ビルドのアーティファクトを作成する。
 
@@ -94,7 +94,7 @@ $ go mod tidy
 
 ### env
 
-#### ▼ envとは
+#### ▼ env とは
 
 Go に関する環境変数を出力する。
 
@@ -116,7 +116,7 @@ GOGCCFLAGS="-fPIC -m64 -fmessage-length=0 -fdebug-prefix-map=/tmp/go-build887404
 
 ### fmt
 
-#### ▼ fmtとは
+#### ▼ fmt とは
 
 指定したパスのファイルのインデントを整形する。
 
@@ -130,7 +130,7 @@ $ go fmt ./...
 
 ### install
 
-#### ▼ installとは
+#### ▼ install とは
 
 `go get` コマンドとは異なり、Go のバイナリをモジュールとしてでなく、ツールとしてグローバルにインストールする。
 
@@ -193,7 +193,7 @@ $ rm ${GOPATH}/bin/foo-package
 
 ### run
 
-#### ▼ runとは
+#### ▼ run とは
 
 `go build` コマンドを実行しつつ、バイナリを実行する。
 
@@ -209,7 +209,7 @@ $ go run ./...
 
 ### test
 
-#### ▼ testとは
+#### ▼ test とは
 
 指定したパスの `foo_test.go` ファイルで『`Test`』から始まるテスト関数を実行する。
 
@@ -296,7 +296,7 @@ $ go version -m <Goのバイナリのパス>
 
 ### vet
 
-#### ▼ vetとは
+#### ▼ vet とは
 
 指定したパスのファイルに対して、静的解析を実施する。
 
@@ -318,7 +318,7 @@ Go では、思想的にモジュールのバージョンを固定して運用�
 
 ### get
 
-#### ▼ getとは
+#### ▼ get とは
 
 指定したパスからモジュールをダウンロードし、これに対して `install` コマンドを実行する。
 
@@ -347,7 +347,7 @@ go: upgraded <ドメインをルートとしたURL> <バージョン>
 > - https://go.dev/doc/go-get-install-deprecation
 > - https://qiita.com/eihigh/items/9fe52804610a8c4b7e41
 
-#### ▼ go mod tidyとの使い分け
+#### ▼ go mod tidy との使い分け
 
 先にインストールしたモジュールのバージョンが優先になり、このバージョンを基準として他のモジュールのバージョンが決まる。
 
@@ -363,7 +363,7 @@ go: upgraded <ドメインをルートとしたURL> <バージョン>
 
 ### mod edit
 
-#### ▼ mod editとは
+#### ▼ mod edit とは
 
 `go.mod` ファイルで指定しているバージョンを変更する。
 
@@ -375,7 +375,7 @@ $ go mod edit
 
 ### mod tidy
 
-#### ▼ mod tidyとは
+#### ▼ mod tidy とは
 
 - `import` で指定されているが `go get` コマンドでインストールされていない場合は、これをインストールする。
 - `import` で指定のないモジュールは、`go.mod` ファイルと `go.sum` ファイルから削除する。
@@ -421,7 +421,7 @@ unused <go.modファイルから削除したモジュール>
 
 > - https://developer.so-tech.co.jp/entry/2022/08/16/110108
 
-#### ▼ go getとの使い分け
+#### ▼ go get との使い分け
 
 `go mod tidy` コマンドは、たとえ `-go` オプションを使用しても、インストールするモジュールのバージョンを完全には制御できない。
 
@@ -437,7 +437,7 @@ unused <go.modファイルから削除したモジュール>
 
 ### mod verify
 
-#### ▼ mod verifyとは
+#### ▼ mod verify とは
 
 `go.sum` ファイルが正しいかどうかを検証する。
 
@@ -479,7 +479,7 @@ go: finding module for package go.module.io/foo-dependency
 
 ### mod download
 
-#### ▼ mod downloadとは
+#### ▼ mod download とは
 
 - `import` で指定されているが `go get` コマンドでインストールされていない場合は、これをインストールする。
 - `import` で指定されているが `go.mod` ファイルと `go.sum` ファイルに定義がない場合は、これを追加する。
@@ -607,7 +607,7 @@ foo-repository/
 ├── go.mod
 ├── go.sum
 └── local-pkg/
-    ├── go.mod # 各モジュールにgo.modを配置する。
+    ├── go.mod # 各モジュールに go.mod を配置する。
     └── module.go
 ```
 

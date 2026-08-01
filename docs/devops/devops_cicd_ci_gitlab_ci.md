@@ -3,7 +3,7 @@ title: 【IT技術の知見】GitLab CI＠CIツール
 description: GitLab CI＠CIツールの知見を記録しています。
 ---
 
-# GitLab CI＠CIツール
+# GitLab CI＠CI ツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: GitLab CI＠CIツールの知見を記録しています。
 
 <br>
 
-## 01. GitLab CIの仕組み
+## 01. GitLab CI の仕組み
 
 ### アーキテクチャ
 
@@ -28,7 +28,7 @@ GitLab Runner は、GitLab リポジトリの `gitlab-ci.yml` ファイルを HT
 
 ### GitLab Runner
 
-#### ▼ GitLab Runnerとは
+#### ▼ GitLab Runner とは
 
 GitLab CI の `gitlab-ci.yml` ファイルで定義したパイプラインを実行する。
 
@@ -89,7 +89,7 @@ go_mod:
   script:
     # 他のプライベートリポジトリのモジュールをインポートする
     - go mod tidy
-    # go mod tidyで差分があれば、CIを失敗させる
+    # go mod tidy で差分があれば、CI を失敗させる
     - git diff --exit-code
 ```
 
@@ -142,7 +142,7 @@ foo_job:
   script:
     - echo foo
   rules:
-    # featureブランチ (develop、main、以外) のみで実行する
+    # feature ブランチ (develop、main、以外) のみで実行する
     - if: $CI_PIPELINE_SOURCE == 'push' && $CI_COMMIT_BRANCH$CI_COMMIT_BRANCH != 'develop' && $CI_COMMIT_BRANCH != 'main'
 ```
 
@@ -164,7 +164,7 @@ foo_job:
   script:
     - echo foo
   rules:
-    # MRを作成/更新したタイミングで発火する
+    # MR を作成/更新したタイミングで発火する
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 ```
 
@@ -200,7 +200,7 @@ foo_job:
 
 ### include
 
-#### ▼ includeとは
+#### ▼ include とは
 
 参照する別リポジトリと CI テンプレートファイルを設定する。
 
@@ -210,7 +210,7 @@ GitLab CI の Job の設定ファイルを、中央集中的なリポジトリ�
 
 > - https://tech-blog.optim.co.jp/entry/2022/06/16/100000
 
-#### ▼ 親リポジトリ側のCIテンプレート
+#### ▼ 親リポジトリ側の CI テンプレート
 
 子リポジトリでは、Job を定義する。
 
@@ -267,7 +267,7 @@ variables:
 
 ```yaml
 include:
-  # GitLab CIのテンプレートを管理するリポジトリ
+  # GitLab CI のテンプレートを管理するリポジトリ
   - project: project/ci-template-repository-1
     ref: main
     file:
@@ -280,7 +280,7 @@ include:
       - qux-job.yml
 
 foo_1_job:
-  # 親リポジトリで定義した隠しJobをコールする
+  # 親リポジトリで定義した隠し Job をコールする
   extends: .foo_job
   stage: build
   script:
@@ -290,7 +290,7 @@ foo_1_job:
     PATH: "path_1"
 
 foo_2_job:
-  # 親リポジトリで定義した隠しJobをコールする
+  # 親リポジトリで定義した隠し Job をコールする
   extends: .foo_job
   stage: build
   script:
@@ -327,26 +327,26 @@ baz_job:
 variables:
   GITLAB_COMMENT_VERSION: "6.0.1"
 
-# github-commentを準備する
+# github-comment を準備する
 .install_github_comment:
   stage: build
   image: alpine/git:latest
   script:
-    # github-commentをインストールする
+    # github-comment をインストールする
     - |
       apk add --upgrade curl tar jq
       LATEST_DOWNLOAD_URL=$(curl -sL https://api.github.com/repos/suzuki-shunsuke/github-comment/releases/latest | jq -r ".assets[].browser_download_url" | grep linux_amd64)
       curl -sL -O "${LATEST_DOWNLOAD_URL}"
       tar zxvf *.tar.gz
     - ./github-comment --version
-    # CIの実行環境で各リポジトリに配布するgithub-comment.yamlファイルを作成する
+    # CI の実行環境で各リポジトリに配布する github-comment.yaml ファイルを作成する
     - |
       cat << 'EOF' > github-comment.yaml
       # https://suzuki-shunsuke.github.io/github-comment/getting-started
       ---
       exec:
         # 静的解析以外の処理のためのテンプレート
-        # -kオプションで何も指定しない場合、defaultテンプレートになる
+        # -k オプションで何も指定しない場合、default テンプレートになる
         default:
           - when: "true"
             template: |
@@ -404,13 +404,13 @@ variables:
   artifacts:
     paths:
       - ./github-comment
-      # github-commentの設定ファイルを配布する
+      # github-comment の設定ファイルを配布する
       - github-comment.yaml
 ````
 
-### variables (Jobレベルでも設定可)
+### variables (Job レベルでも設定可)
 
-#### ▼ variablesとは
+#### ▼ variables とは
 
 Job 内で使用する変数を設定する。
 
@@ -432,8 +432,8 @@ variables:
 可読性が高くなる。
 
 ```yaml
-# variables.ymlファイル
-# variablesで空文字を設定する
+# variables.yml ファイル
+# variables で空文字を設定する
 variables:
   FOO: ""
 ```
@@ -454,7 +454,7 @@ foo_job:
 空文字を設定したい場合、`variables` キーに設定しても空文字として出力されない。
 
 ```yaml
-# variablesで空文字を設定する
+# variables で空文字を設定する
 variables:
   FOO: ""
 
@@ -466,7 +466,7 @@ foo_job:
 ```
 
 ```yaml
-# variablesを定義しない
+# variables を定義しない
 
 foo_job:
   stage: build
@@ -500,7 +500,7 @@ foo_job:
 
 ### workflow
 
-#### ▼ workflowとは
+#### ▼ workflow とは
 
 GitLab CI 自体の発火を制御する。
 
@@ -511,23 +511,23 @@ GitLab CI 自体の発火を制御する。
 GitLab CI が発火する条件を設定する。
 
 ```yaml
-# ブランチ名に応じて、CIで使用する実行コンテナ名を切り替える
-# main、develop、MR作成/変更、の順に条件を検証する。
+# ブランチ名に応じて、CI で使用する実行コンテナ名を切り替える
+# main、develop、MR 作成/変更、の順に条件を検証する。
 workflow:
   rules:
-    # mainブランチにて、任意の方法でパイプラインを実行した場合
+    # main ブランチにて、任意の方法でパイプラインを実行した場合
     - if: $CI_COMMIT_REF_NAME == 'main'
       variables:
         ENV: "prd"
-    # developブランチにて、任意の方法でパイプラインを実行した場合
+    # develop ブランチにて、任意の方法でパイプラインを実行した場合
     - if: $CI_COMMIT_REF_NAME == 'develop'
       variables:
         ENV: "stg"
-    # MRにて、任意の方法でパイプラインを実行した場合
+    # MR にて、任意の方法でパイプラインを実行した場合
     - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
       variables:
         ENV: "tes"
-    # 上記以外で、webから手動でパイプラインを実行した場合
+    # 上記以外で、web から手動でパイプラインを実行した場合
     - if: $CI_PIPELINE_SOURCE == 'web'
       variables:
         ENV: "tes"
@@ -535,7 +535,7 @@ workflow:
 setup-manifest:
   stage: build
   image: alpine/helm:latest
-  # ブランチ名に応じて、valuesファイルを切り替える
+  # ブランチ名に応じて、values ファイルを切り替える
   script:
     - helm lint . -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}"
     - helm template . -f "${VALUES_FILE_PATH}" -f "${SECRETS_FILE_PATH}" > manifest.yaml
@@ -575,11 +575,11 @@ fmt:
   stage: build
   script:
     - terraform fmt -check -recursive
-  # 0以外の全ての終了コードの場合のみ終了する
-  # インデントを揃えるべき場所がある場合、Jobを失敗させる
+  # 0 以外の全ての終了コードの場合のみ終了する
+  # インデントを揃えるべき場所がある場合、Job を失敗させる
   allow_failure: "true"
   rules:
-    # MRを作成/更新したタイミングで発火する
+    # MR を作成/更新したタイミングで発火する
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 ```
 
@@ -587,10 +587,10 @@ fmt:
 foo_job:
   stage: build
   script:
-    # 『echo foo-1』が失敗しても、終了コードを1にしてJobを中断させない
+    # 『echo foo-1』が失敗しても、終了コードを 1にして Job を中断させない
     - echo foo-1 || true
     - echo foo-2
-  # 0以外の全ての終了コードの場合のみ終了する
+  # 0 以外の全ての終了コードの場合のみ終了する
   allow_failure: "true"
 ```
 
@@ -614,7 +614,7 @@ foo_job:
 
 ### artifacts
 
-#### ▼ artifactsとは
+#### ▼ artifacts とは
 
 GitLab では、以前のステージの Job のファイルを後続の Job へデフォルトで継承できる。
 
@@ -649,7 +649,7 @@ bar_job:
 # デプロイステージ
 baz_job:
   stage: deploy
-  # foo_jobのartifactsは継承できるが、bar_jobのartifactsは継承できない
+  # foo_job のartifacts は継承できるが、bar_job のartifacts は継承できない
   needs:
     - foo_job
   script:
@@ -657,7 +657,7 @@ baz_job:
 
 qux_job:
   stage: deploy
-  # foo_jobとbar_jobの両方のartifactsを継承できる
+  # foo_job とbar_job の両方の artifacts を継承できる
   needs:
     - foo_job
     - bar_job
@@ -667,7 +667,7 @@ qux_job:
 
 > - https://docs.gitlab.com/ci/yaml/index.html#needsartifacts
 
-#### ▼ artifactsが不要な場合
+#### ▼ artifacts が不要な場合
 
 GitLab では、以前のステージの Job のファイルを後続の Job にデフォルトで継承できる。
 
@@ -684,7 +684,7 @@ foo_job:
 bar_job:
   stage: deploy
   script:
-    # buildステージのファイルを使用する
+    # build ステージのファイルを使用する
     ...
 ```
 
@@ -696,7 +696,7 @@ bar_job:
 
 ### before_script
 
-#### ▼ before_scriptとは
+#### ▼ before_script とは
 
 記入中...
 
@@ -704,7 +704,7 @@ bar_job:
 
 ### cache
 
-#### ▼ cacheとは
+#### ▼ cache とは
 
 指定したディレクトリのキャッシュを作成する。
 
@@ -787,7 +787,7 @@ baz_job:
   stage: deploy
   script:
     - echo baz
-  # foo_jobのアーティファクトのみを継承する
+  # foo_job のアーティファクトのみを継承する
   dependencies:
     - foo_job
 ```
@@ -799,7 +799,7 @@ baz_job:
 
 ### image
 
-#### ▼ imageとは
+#### ▼ image とは
 
 Job の実行コンテナを設定する。
 
@@ -847,7 +847,7 @@ foo_job:
 
 ### needs
 
-#### ▼ needsとは
+#### ▼ needs とは
 
 Job 間の依存関係を設定する。
 
@@ -862,7 +862,7 @@ foo_job:
   script:
     - echo foo
 
-# fooの後に、baz_jobと並行実行する
+# foo の後に、baz_job と並行実行する
 bar_job:
   stage: build
   needs:
@@ -870,7 +870,7 @@ bar_job:
   script:
     - echo bar
 
-# fooの後に、bar_jobと並行実行する
+# foo の後に、bar_job と並行実行する
 baz_job:
   stage: build
   needs:
@@ -883,7 +883,7 @@ baz_job:
 
 ### parallel
 
-#### ▼ parallelとは
+#### ▼ parallel とは
 
 特定の Job を並列処理する。
 
@@ -896,7 +896,7 @@ foo_job:
           - foo1
           - foo2
           - foo3
-  # foo1、foo2、foo3を出力する異なるJobを並列処理する
+  # foo1、foo2、foo3 を出力する異なる Job を並列処理する
   script:
     - echo ${ENV}
 ```
@@ -921,7 +921,7 @@ foo_job:
           - foo1
           - foo2
           - foo3
-  # foo1、foo2、foo3を出力する異なるJobを並列処理する
+  # foo1、foo2、foo3 を出力する異なる Job を並列処理する
   script:
     - echo ${ENV}
 
@@ -929,14 +929,14 @@ baz_job:
   stage: deploy
   script:
     - echo baz
-  # foo_jobのfoo1のアーティファクトのみを継承する
+  # foo_job のfoo1 のアーティファクトのみを継承する
   dependencies:
     - "foo_job: [foo1]"
 ```
 
 > - https://docs.gitlab.com/ci/jobs/job_control.html#fetch-artifacts-from-a-parallelmatrix-job
 
-#### ▼ Jobの依存関係
+#### ▼ Job の依存関係
 
 並列処理した各 Job に対して、Job の依存関係を設定できる。
 
@@ -948,7 +948,7 @@ stages:
 foo_job:
   stage: build
   parallel:
-    # foo1、foo2、foo3を出力する異なるJobを並列処理する
+    # foo1、foo2、foo3 を出力する異なる Job を並列処理する
     matrix:
       - ENV:
           - foo1
@@ -965,7 +965,7 @@ baz_job:
     - job: foo_job
       parallel:
         matrix:
-          # foo_jobのfoo2に依存する
+          # foo_job のfoo2 に依存する
           - ENV: foo2
 ```
 
@@ -976,7 +976,7 @@ baz_job:
 
 ### rules
 
-#### ▼ rulesとは
+#### ▼ rules とは
 
 Job の発火条件を設定する。
 
@@ -992,14 +992,14 @@ Job の発火条件を設定する。
 
 ```yaml
 check_tag:
-  # OR条件
+  # OR 条件
   rules:
-    # mainブランチのみ
+    # main ブランチのみ
     - if: $CI_COMMIT_BRANCH == 'main'
       variables:
         TAG_NAME: "main"
 
-    # hotfixから始まるブランチのみ
+    # hotfix から始まるブランチのみ
     - if: $CI_COMMIT_BRANCH =~ /^hotfix.*$/
       variables:
         TAG_NAME: "hotfix-${CI_COMMIT_SHA}"
@@ -1022,7 +1022,7 @@ gemerate_template:
   script:
     - helm template . -f foo-values.yaml -f foo-secrets.yaml > foo.yaml
   rules:
-    # webイベント (パイプライン実行ボタン) の場合
+    # web イベント (パイプライン実行ボタン) の場合
     - if: $CI_PIPELINE_SOURCE == "web"
     # ファイルやディレクトリ内に差分があった場合
     - changes:
@@ -1046,7 +1046,7 @@ Job の CI の実行コンテナとは別のサービスコンテナを作成す
 
 ```yaml
 foo_job:
-  # CIの実行環境
+  # CI の実行環境
   image: docker:19.03.0
   # サービスコンテナ
   services:
@@ -1065,7 +1065,7 @@ Job でアプリコンテナを動かし、DB コンテナを別に起動して�
 
 > - https://qiita.com/kytiken/items/a95ef8c1fccfc4a9b089#example
 
-#### ▼ TLSの無効化 (非暗号化)
+#### ▼ TLS の無効化 (非暗号化)
 
 GitLab CI 上で Docker in Docker を使用する場合、実行コンテナとサービスコンテナでセットアップが必要である。
 
@@ -1075,16 +1075,16 @@ variables:
   DOCKER_DRIVER: "overlay2"
   # ホストの設定
   DOCKER_HOST: "tcp://docker:2375"
-  # TLSの無効化 (非暗号化)
+  # TLS の無効化 (非暗号化)
   DOCKER_TLS_CERTDIR: ""
 
 foo_job:
-  # CIの実行環境
+  # CI の実行環境
   image: docker:19.03.0
   # サービスコンテナ
   services:
     - name: docker:19.03.0-dind
-      # TLSの無効化 (非暗号化)
+      # TLS の無効化 (非暗号化)
       command: ["--tls=false"]
 ```
 
@@ -1143,7 +1143,7 @@ qux_job:
 
 ### script
 
-#### ▼ scriptとは
+#### ▼ script とは
 
 Job で実行する処理を設定する。
 
@@ -1191,7 +1191,7 @@ bar:
         - foo/*
         - foo/**/*
   trigger:
-    # 各ディレクトリ配下に置いた子の.gitlab-ci.ymlファイルを読み込む
+    # 各ディレクトリ配下に置いた子の.gitlab-ci.yml ファイルを読み込む
     include: foo/.gitlab-ci.yml
     strategy: depend
 ```
@@ -1202,7 +1202,7 @@ bar:
 
 ### when
 
-#### ▼ whenとは
+#### ▼ when とは
 
 Job を実行する条件を設定する。
 
@@ -1247,7 +1247,7 @@ baz_job:
   stage: build
   script:
     - echo bar
-  # BAZ変数がfalseの場合は実行しない (never)
+  # BAZ 変数が false の場合は実行しない (never)
   rules:
     - if: $BAZ == 'false'
       when: never
@@ -1268,12 +1268,12 @@ baz_job:
 
 ### 同じファイル
 
-#### ▼ anchorの隠しJob化
+#### ▼ anchor の隠し Job 化
 
 anchor として定義した処理を隠し Job 化する。
 
 ```yaml
-# GitLabの他のリポジトリからモジュールをプルするために、資格情報をセットアップする
+# GitLab の他のリポジトリからモジュールをプルするために、資格情報をセットアップする
 .setup_git: &setup_git
   - echo "machine foo.gitlab.com" > ~/.netrc
   - echo "login ${GIT_USER}" >> ~/.netrc
@@ -1287,20 +1287,20 @@ go_mod:
   script:
     # 他のプライベートリポジトリのモジュールをインポートする
     - go mod tidy
-    # go mod tidyで差分があれば、CIを失敗させる
+    # go mod tidy で差分があれば、CI を失敗させる
     - git diff --exit-code
 ```
 
 > - https://docs.gitlab.com/ci/yaml/yaml_optimization/#anchors
 
-#### ▼ `before_script` キーの隠しJob化
+#### ▼ `before_script` キーの隠し Job 化
 
 `before_script` キーを隠し Job 化することで、共通のスクリプトとして使用できる。
 
 ただし、呼び出す側で別の `before_script` キーがあると、上書きしてしまう。
 
 ```yaml
-# GitLabの他のリポジトリからモジュールをプルするために、資格情報をセットアップする
+# GitLab の他のリポジトリからモジュールをプルするために、資格情報をセットアップする
 .setup_git:
   before_script:
     - echo "machine foo.gitlab.com" > ~/.netrc

@@ -13,7 +13,7 @@ description: リソース＠Istioの知見を記録しています。
 
 <br>
 
-## 01. K8sリソース／IstioリソースとEnvoy設定値の関係
+## 01. K8s リソース／Istio リソースと Envoy 設定値の関係
 
 ### 一覧表
 
@@ -54,7 +54,7 @@ metadata:
 
 ## 02. Gateway
 
-### Gatewayとは
+### Gateway とは
 
 #### ▼ ロードバランサーで使用する場合
 
@@ -66,7 +66,7 @@ Gateway は、Istio Ingress Gateway の一部として、Node 外から受信し
 > - https://micpsm.hatenablog.com/entry/k8s-istio-dx
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
 
-#### ▼ Pod間通信のみで使用する場合
+#### ▼ Pod 間通信のみで使用する場合
 
 Pod 間通信には不要である。
 
@@ -74,7 +74,7 @@ Pod 間通信には不要である。
 
 <br>
 
-### Envoyの設定値として
+### Envoy の設定値として
 
 #### ▼ リスナーとして
 
@@ -135,7 +135,7 @@ configs:
 
 ## 02-02. Istio Ingress Gateway
 
-### Istio Ingress Gatewayとは
+### Istio Ingress Gateway とは
 
 サービスメッシュ内宛の通信をロードバランシングする `L4`/`L7` ロードバランサーを作成する。
 
@@ -150,7 +150,7 @@ Kubernetes リソースの Ingress の代わりとして使用できる。
 
 <br>
 
-### Istio Ingress Gatewayの仕組み
+### Istio Ingress Gateway の仕組み
 
 ![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ingress-gateway.png)
 
@@ -171,21 +171,21 @@ metadata:
   name: istio-ingressgateway
   namespace: ingress
 spec:
-  # Serviceタイプは選択可能である。
+  # Service タイプは選択可能である。
   type: NodePort
-  # ルーティンング先のPod (istio-ingressgateway-*****) の識別子が設定される。
+  # ルーティンング先の Pod (istio-ingressgateway-*****) の識別子が設定される。
   selector:
     app: istio-ingressgateway
     istio: ingressgateway
-  # ルーティング先のPodのポート番号が設定される。
+  # ルーティング先の Pod のポート番号が設定される。
   ports:
     - name: http-foo
-      # Nodeが待ち受けるポート番号
+      # Node が待ち受けるポート番号
       nodePort: 30001
-      # NodePort Serviceが待ち受けるポート番号
+      # NodePort Service が待ち受けるポート番号
       port: 443
       protocol: TCP
-      # NodePort Serviceの宛先ポート番号 (Istio Ingress GatewayのPodが待ち受けるポート番号)
+      # NodePort Service の宛先ポート番号 (Istio Ingress Gateway のPod が待ち受けるポート番号)
       targetPort: 443
     - name: http-bar
       nodePort: 30002
@@ -213,7 +213,7 @@ metadata:
 spec:
   containers:
     - args:
-        # pilot-agent proxyコマンド
+        # pilot-agent proxy コマンド
         # https://istio.io/latest/docs/reference/commands/pilot-agent/#pilot-agent-proxy
         - proxy
         - router
@@ -225,7 +225,7 @@ spec:
       image: docker.io/istio/proxyv2:<リビジョン>
       name: istio-proxy
       # 待ち受けるポート番号の仕様
-      # コンテナの公開ポートがspec.containers[*].portsキーに定義されていなくても問題ない。
+      # コンテナの公開ポートが spec.containers[*].ports キーに定義されていなくても問題ない。
       ports:
         - containerPort: 15090
           name: http-envoy-prom
@@ -245,7 +245,7 @@ spec:
 
 <br>
 
-### 複数のIstio Ingress Gateway
+### 複数の Istio Ingress Gateway
 
 もし複数の Istio Ingress Gateway Deployment を Helm でデプロイする場合は、Istio Ingress Gateway ごとに、gateway チャートのリリースを分けることになる。
 
@@ -263,7 +263,7 @@ spec:
 
 ### エラー
 
-#### ▼ 宛先Podに接続できない
+#### ▼ 宛先 Pod に接続できない
 
 `upstream connect error or disconnect/reset before headers. reset reason: connection termination` というエラーになる。
 
@@ -280,7 +280,7 @@ spec:
 
 ## 02-03. Istio Egress Gateway
 
-### Istio Egress Gatewayとは
+### Istio Egress Gateway とは
 
 Istio Egress Gateway は、サービスメッシュ外宛ての通信をロードバランシングする `L4`/`L7` ロードバランサーを作成する。
 
@@ -300,15 +300,15 @@ Istio Egress Gateway を使用しない場合、サービスメッシュ外へ�
 
 <br>
 
-### Envoyの設定値として
+### Envoy の設定値として
 
 Istiod コントロールプレーンは、ServiceEntry の設定値を Envoy のクラスターに変換する。
 
 <br>
 
-### 送信元PodとIstio Egress Gateway間の通信
+### 送信元 Pod とIstio Egress Gateway 間の通信
 
-#### ▼ 相互TLS認証
+#### ▼ 相互 TLS 認証
 
 送信元マイクロサービスは HTTP を指定し、istio-proxy のクライアント証明書と Istio Egress Gateway のサーバー証明書で相互 TLS 認証を実施する。
 
@@ -336,7 +336,7 @@ Istio Egress Gateway はアプリケーションデータを復号できない�
 
 <br>
 
-### 関連するIstioリソース
+### 関連する Istio リソース
 
 Istio サイドカーモードとアンビエントモードの間で、Istio Egress Gateway に必要な Istio リソースが異なる。
 
@@ -360,7 +360,7 @@ Istio Ingress Gateway (厳密に言うと Gateway) は、独自プロトコル (
 
 ## 03. VirtualService
 
-### VirtualServiceとは
+### VirtualService とは
 
 #### ▼ ロードバランサーで使用する場合
 
@@ -372,7 +372,7 @@ VirtualService は、Istio Ingress Gateway の一部として、受信した `L4
 > - https://knowledge.sakura.ad.jp/20489/
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
 
-#### ▼ Pod間通信のみで使用する場合
+#### ▼ Pod 間通信のみで使用する場合
 
 VirtualService は、宛先 Pod に紐づく VirtualService から情報を取得し、これを宛先とする。
 
@@ -382,7 +382,7 @@ VirtualService は、宛先 Pod に紐づく VirtualService から情報を取�
 
 <br>
 
-### Envoyの設定値として
+### Envoy の設定値として
 
 #### ▼ リスナーとして
 
@@ -458,7 +458,7 @@ configs:
     route_config:
       "@type": type.googleapis.com/envoy.config.route.v3.RouteConfiguration
       name: 50002
-      # VirtualService配下のServiceの設定値が変わると、virtual_hostsキーの設定値も変わる
+      # VirtualService 配下の Service の設定値が変わると、virtual_hosts キーの設定値も変わる
       virtual_hosts:
         - name: bar-service.bar-namespace.svc.cluster.local:50002
           domains:
@@ -508,7 +508,7 @@ envoy
 ⬇⬆️︎
 ------------
 ⬇⬆️︎
-envoy # 送信元Envoyからのリクエストをマイクロサービスが受信できるように、リスナーとルートになる
+envoy # 送信元 Envoy からのリクエストをマイクロサービスが受信できるように、リスナーとルートになる
 ⬇⬆️︎
 マイクロサービス
 ```
@@ -573,15 +573,15 @@ helloworld-app-service.services.svc.cluster.local                               
 httpbin-app-service.services.svc.cluster.local                                  50003     -          outbound      EDS            httpbin-app-destination-rule.services
 ```
 
-#### ▼ VirtualService数
+#### ▼ VirtualService 数
 
-|                    | APIゲートウェイをIstioで管理する場合                                                                     | APIゲートウェイをIstioで管理しない場合                                                                                                            |
-| ------------------ | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| VirtualServiceの数 | 外部からのインバウンド通信をAPIゲートウェイにルーティングするVirtualServiceを1つだけ作成しておけばよい。 | APIゲートウェイからすべてのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできるVirtualServiceを定義する必要がある。 |
+|                     | API ゲートウェイを Istio で管理する場合                                                                       | API ゲートウェイを Istio で管理しない場合                                                                                                            |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| VirtualService の数 | 外部からのインバウンド通信を API ゲートウェイにルーティングする VirtualService を1 つだけ作成しておけばよい。 | API ゲートウェイからすべてのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできる VirtualService を定義する必要がある。 |
 
 > - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
 
-### 宛先のServiceのポート番号について
+### 宛先の Service のポート番号について
 
 Istio は、宛先の Service に送信しようとするプロトコルを厳格に認識する。
 
@@ -598,7 +598,7 @@ metadata:
   name: foo-service
 spec:
   ports:
-    # HTTPプロトコルのみ
+    # HTTP プロトコルのみ
     - name: http-foo
       port: 80
 ```
@@ -610,7 +610,7 @@ metadata:
   name: foo-service
 spec:
   ports:
-    # TCPプロトコルのみ
+    # TCP プロトコルのみ
     - name: tcp-foo
       port: 9000
 ```
@@ -626,7 +626,7 @@ metadata:
   name: foo-service
 spec:
   ports:
-    # HTTPプロトコルのみをVirtualServiceから送信できる
+    # HTTP プロトコルのみを VirtualService から送信できる
     - appProtocol: http
       port: 80
 ```
@@ -638,7 +638,7 @@ metadata:
   name: foo-service
 spec:
   ports:
-    # TCPプロトコルのみをVirtualServiceから送信できる
+    # TCP プロトコルのみを VirtualService から送信できる
     - appProtocol: tcp
       port: 9000
 ```
@@ -650,9 +650,9 @@ spec:
 
 <br>
 
-## 04. JWTトークンle
+## 04. JWT トークン le
 
-### JWTトークンleとは
+### JWT トークン le とは
 
 #### ▼ ロードバランサーで使用する場合
 
@@ -666,7 +666,7 @@ Pod の宛先情報は、Kubernetes の Service から取得する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
 
-#### ▼ Pod間通信のみで使用する場合
+#### ▼ Pod 間通信のみで使用する場合
 
 JWT トークン le は、VirtualService で受信した `L4`/`L7` 通信を、いずれの Pod にルーティングするかを決める。
 
@@ -677,7 +677,7 @@ Pod の宛先情報は、Kubernetes の Service から取得する。
 
 <br>
 
-### Envoyの設定値として
+### Envoy の設定値として
 
 #### ▼ クラスターとして
 
@@ -834,7 +834,7 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 ## 05. ServiceEntry
 
-### ServiceEntryとは
+### ServiceEntry とは
 
 ServiceEntry は、クラスター外のドメイン名などを登録する。
 
@@ -854,7 +854,7 @@ Istio`v1.3` より前は、ConfigMap のデフォルトが `REGISTRY_ONLY` に�
 
 <br>
 
-### メッシュ外とクラスター内Podとの通信
+### メッシュ外とクラスター内 Pod との通信
 
 ServiceEntry は、クラスター外の宛先をサービスメッシュに登録する。
 
@@ -866,7 +866,7 @@ ServiceEntry は、クラスター外の宛先をサービスメッシュに登�
 
 ## 06. Sidecar
 
-### Sidecarとは
+### Sidecar とは
 
 istio-proxy に最初限のネットワーク設定を適用する。
 
@@ -878,7 +878,7 @@ Sidecar を使用すると、指定した設定以外の通信を除去し、特
 
 <br>
 
-### ServiceEntryと同時に必要なリソース
+### ServiceEntry と同時に必要なリソース
 
 #### ▼ Istio Egress Gateway
 
@@ -891,7 +891,7 @@ ServiceEntry には、Istio Egress Gateway が必須ではない。
 > - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
 
-#### ▼ ServiceEntryの前段のJWTトークンle
+#### ▼ ServiceEntry の前段の JWT トークン le
 
 ServiceEntry から外部に HTTP リクエストを送信する場合、JWT トークン le は不要である。
 
@@ -923,23 +923,23 @@ metadata:
   namespace: istio-system
 spec:
   configPatches:
-    # ネットワークフィルターであるhttp_connection_managerの設定値を変更する
+    # ネットワークフィルターである http_connection_manager の設定値を変更する
     - applyTo: HTTP_FILTER
       match:
-        # istio-proxyコンテナのアウトバウンド通信 (Egressリスナー後フィルター)
+        # istio-proxy コンテナのアウトバウンド通信 (Egress リスナー後フィルター)
         context: SIDECAR_OUTBOUND
         listener:
           filterChain:
             filter:
               name: envoy.filters.network.http_connection_manager
               subFilter:
-                # マッチ対象のHTTPフィルターを指定する
+                # マッチ対象の HTTP フィルターを指定する
                 name: envoy.filters.http.router
         proxy:
-          # istio-proxyコンテナが1.17系の場合のみ
+          # istio-proxy コンテナが 1.17 系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
-        # http_connection_managerの直前に指定したフィルターを挿入する
+        # http_connection_manager の直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -947,23 +947,23 @@ spec:
             "@type": type.googleapis.com/udpa.type.v1.TypedStruct
             type_url: type.googleapis.com/stats.PluginConfig
             value: {}
-    # ネットワークフィルターであるhttp_connection_managerの設定値を変更する
+    # ネットワークフィルターである http_connection_manager の設定値を変更する
     - applyTo: HTTP_FILTER
       match:
-        # istio-proxyコンテナのインバウンド通信 (Ingressリスナー後フィルター)
+        # istio-proxy コンテナのインバウンド通信 (Ingress リスナー後フィルター)
         context: SIDECAR_INBOUND
         listener:
           filterChain:
             filter:
               name: envoy.filters.network.http_connection_manager
               subFilter:
-                # マッチ対象のHTTPフィルターを指定する
+                # マッチ対象の HTTP フィルターを指定する
                 name: envoy.filters.http.router
         proxy:
-          # istio-proxyコンテナが1.17系の場合のみ
+          # istio-proxy コンテナが 1.17 系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
-        # http_connection_managerの直前に指定したフィルターを挿入する
+        # http_connection_manager の直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -972,23 +972,23 @@ spec:
             type_url: type.googleapis.com/stats.PluginConfig
             value:
               disable_host_header_fallback: "true"
-    # ネットワークフィルターであるhttp_connection_managerの設定値を変更する
+    # ネットワークフィルターである http_connection_manager の設定値を変更する
     - applyTo: HTTP_FILTER
       match:
-        # istio-ingressgateway内のistio-proxyコンテナ
+        # istio-ingressgateway 内の istio-proxy コンテナ
         context: GATEWAY
         listener:
           filterChain:
             filter:
               name: envoy.filters.network.http_connection_manager
               subFilter:
-                # マッチ対象のHTTPフィルターを指定する
+                # マッチ対象の HTTP フィルターを指定する
                 name: envoy.filters.http.router
         proxy:
-          # istio-proxyコンテナが1.17系の場合のみ
+          # istio-proxy コンテナが 1.17 系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
-        # http_connection_managerの直前に指定したフィルターを挿入する
+        # http_connection_manager の直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -1024,7 +1024,7 @@ spec:
     # ネットワークフィルターの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
-        # istio-proxyコンテナのインバウンド通信 (Ingressリスナー後のフィルター)
+        # istio-proxy コンテナのインバウンド通信 (Ingress リスナー後のフィルター)
         context: SIDECAR_INBOUND
         listener:
           filterChain:
@@ -1032,10 +1032,10 @@ spec:
               # マッチ対象のネットワークフィルターを指定する
               name: envoy.filters.network.tcp_proxy
         proxy:
-          # istio-proxyコンテナが1.17系の場合のみ
+          # istio-proxy コンテナが 1.17 系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
-        # tcp_proxyの直前に指定したフィルターを挿入する
+        # tcp_proxy の直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -1046,7 +1046,7 @@ spec:
     # ネットワークフィルターの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
-        # istio-proxyコンテナのアウトバウンド通信 (Egressリスナー後のフィルター)
+        # istio-proxy コンテナのアウトバウンド通信 (Egress リスナー後のフィルター)
         context: SIDECAR_OUTBOUND
         listener:
           filterChain:
@@ -1054,10 +1054,10 @@ spec:
               # マッチ対象のネットワークフィルターを指定する
               name: envoy.filters.network.tcp_proxy
         proxy:
-          # istio-proxyコンテナが1.17系の場合のみ
+          # istio-proxy コンテナが 1.17 系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
-        # tcp_proxyの直前に指定したフィルターを挿入する
+        # tcp_proxy の直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -1068,7 +1068,7 @@ spec:
     # ネットワークフィルターの設定値を変更する
     - applyTo: NETWORK_FILTER
       match:
-        # istio-ingressgateway内のistio-proxyコンテナ
+        # istio-ingressgateway 内の istio-proxy コンテナ
         context: GATEWAY
         listener:
           filterChain:
@@ -1076,10 +1076,10 @@ spec:
               # マッチ対象のネットワークフィルターを指定する
               name: envoy.filters.network.tcp_proxy
         proxy:
-          # istio-proxyコンテナが1.17系の場合のみ
+          # istio-proxy コンテナが 1.17 系の場合のみ
           proxyVersion: ^1\.17.*
       patch:
-        # tcp_proxyの直前に指定したフィルターを挿入する
+        # tcp_proxy の直前に指定したフィルターを挿入する
         operation: INSERT_BEFORE
         value:
           name: istio.stats
@@ -1105,9 +1105,9 @@ Pod 間通信時、相互 TLS 認証を実施する。
 
 <br>
 
-## 08. RequestAuthenticationとAuthorizationPolicy
+## 08. RequestAuthentication とAuthorizationPolicy
 
-### RequestAuthenticationとAuthorizationPolicyとは
+### RequestAuthentication とAuthorizationPolicy とは
 
 Pod 間通信時、JWT による認証と認可を実施する。
 
@@ -1125,7 +1125,7 @@ JWT トークンがない場合、AuthorizationPolicy は `403` レスポンス�
 
 <br>
 
-### Auth0に送信する場合
+### Auth0 に送信する場合
 
 注意点として、そもそもリクエストに JWT トークンが含まれていない場合には認証処理をスキップできてしまう。
 
@@ -1140,19 +1140,19 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWTトークンの発行元IDプロバイダーの識別子を設定する
+    # JWT トークンの発行元 ID プロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: https://<Auth0のドメイン>/
-      # IDプロバイダーのJWKsエンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
+      # ID プロバイダーの JWKs エンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
       jwksUri: https://<Auth0のドメイン>/.well-known/jwks.json
-      # 既存のJWTを再利用し、宛先マイクロサービスにそのままフォワーディングする
+      # 既存の JWT を再利用し、宛先マイクロサービスにそのままフォワーディングする
       forwardOriginalToken: true
-      # Authorizationヘッダーを指定する
+      # Authorization ヘッダーを指定する
       fromHeaders:
         - name: Authorization
           prefix: "Bearer "
 ---
-# AuthorizationPolicyでRequestAuthenticationを強制する
+# AuthorizationPolicy でRequestAuthentication を強制する
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
@@ -1163,7 +1163,7 @@ spec:
   rules:
     - when:
         - key: request.auth.claims[iss]
-          # JWTトークンがある場合にのみ許可する
+          # JWT トークンがある場合にのみ許可する
           values: ["https://<Auth0のドメイン>/"]
 ```
 
@@ -1173,7 +1173,7 @@ spec:
 
 <br>
 
-### Keycloakに送信する場合
+### Keycloak に送信する場合
 
 注意点として、そもそもリクエストに JWT が含まれていない場合には認証処理をスキップできてしまう。
 
@@ -1188,20 +1188,20 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWTトークンの発行元IDプロバイダーの識別子を設定する
+    # JWT トークンの発行元 ID プロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: http://keycloak.com/realms/<realm名>
-      # IDプロバイダーのJWKsエンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
-      # ブラウザから、またはAPIに直接接続する
+      # ID プロバイダーの JWKs エンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
+      # ブラウザから、または API に直接接続する
       jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
-      # 既存のJWTを再利用し、宛先マイクロサービスにそのままフォワーディングする
+      # 既存の JWT を再利用し、宛先マイクロサービスにそのままフォワーディングする
       forwardOriginalToken: true
-      # Authorizationヘッダーを指定する
+      # Authorization ヘッダーを指定する
       fromHeaders:
         - name: Authorization
           prefix: "Bearer "
 ---
-# RequestAuthenticationで設定したAuthorizationヘッダーがない場合には認可エラーとする
+# RequestAuthentication で設定した Authorization ヘッダーがない場合には認可エラーとする
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
@@ -1212,7 +1212,7 @@ spec:
   rules:
     - when:
         - key: request.auth.claims[iss]
-          # JWTトークンがある場合にのみ許可する
+          # JWT トークンがある場合にのみ許可する
           values:
             ["http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>"]
 ```
@@ -1224,7 +1224,7 @@ spec:
 
 <br>
 
-### OAuth2 Proxyを介してKeycloakに送信する場合
+### OAuth2 Proxy を介して Keycloak に送信する場合
 
 注意点として、そもそもリクエストに JWT が含まれていない場合には認証処理をスキップできてしまう。
 
@@ -1239,20 +1239,20 @@ metadata:
   name: foo-request-authentication-jwt
 spec:
   jwtRules:
-    # JWTトークンの発行元IDプロバイダーの識別子を設定する
+    # JWT トークンの発行元 ID プロバイダーの識別子を設定する
     # ブラウザから接続する
     - issuer: http://oauth2-proxy.com/realms/<realm名>
-      # IDプロバイダーのJWKsエンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
-      # ブラウザから、またはAPIに直接接続する
+      # ID プロバイダーの JWKs エンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
+      # ブラウザから、または API に直接接続する
       jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
-      # 既存のJWTを再利用し、宛先マイクロサービスにそのままフォワーディングする
+      # 既存の JWT を再利用し、宛先マイクロサービスにそのままフォワーディングする
       forwardOriginalToken: true
-      # Authorizationヘッダーを指定する
+      # Authorization ヘッダーを指定する
       fromHeaders:
         - name: Authorization
           prefix: "Bearer "
 ---
-# RequestAuthenticationで設定したAuthorizationヘッダーがない場合には認可エラーとする
+# RequestAuthentication で設定した Authorization ヘッダーがない場合には認可エラーとする
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
@@ -1262,7 +1262,7 @@ spec:
     matchLabels:
       app: istio-ingressgateway
   action: CUSTOM
-  # oauth2-proxyプロバイダーの設定を使用する
+  # oauth2-proxy プロバイダーの設定を使用する
   provider:
     name: oauth2-proxy
 ---
@@ -1282,7 +1282,7 @@ data:
           includeRequestHeadersInCheck:
             - cookie
           # 認証の完了後に、元の宛先へのリクエストを変更するかどうかを設定する
-          # リフレッシュしたアクセストークンを元のAuthorizarionヘッダーに設定したい場合、これを設定する必要がある (たぶん)
+          # リフレッシュしたアクセストークンを元の Authorizarion ヘッダーに設定したい場合、これを設定する必要がある (たぶん)
           headersToUpstreamOnAllow:
             - authorization
           headersToDownstreamOnDeny:
@@ -1301,16 +1301,16 @@ data:
 
 これらの環境変数は、いずれ istio-sidecar-injector (ConfigMap) や istio-mesh-cm (ConfigMap) などに移行される可能性がある。
 
-| 環境変数                                         | 対応する設定 (実験段階)                                                                |
-| ------------------------------------------------ | -------------------------------------------------------------------------------------- |
-| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors` を有効化してもよい。                |
-| `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、istio-proxyの代わりにKubernetesのInit Container |
-| `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                                                        |
-| `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                                                        |
-| `PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES` |                                                                                        |
-| `ENABLE_ENHANCED_JWTトークンLE_MERGE`            |                                                                                        |
-| `PILOT_UNIFIED_SIDECAR_SCOPE`                    |                                                                                        |
-| `VERIFY_CERT_AT_CLIENT`                          | どこにこの変数あるんやろか...                                                          |
+| 環境変数                                         | 対応する設定 (実験段階)                                                                   |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| `ENHANCED_RESOURCE_SCOPING`                      | istio-mesh-cm (ConfigMap) で、`discoverySelectors` を有効化してもよい。                   |
+| `ENABLE_NATIVE_SIDECARS`                         | istio-sidecar-injector (ConfigMap) で、istio-proxy の代わりに Kubernetes のInit Container |
+| `ENABLE_RESOLUTION_NONE_TARGET_PORT`             |                                                                                           |
+| `ENABLE_DELIMITED_STATS_TAG_REGEX`               |                                                                                           |
+| `PREFER_JWTトークンLE_TLS_FOR_EXTERNAL_SERVICES` |                                                                                           |
+| `ENABLE_ENHANCED_JWTトークンLE_MERGE`            |                                                                                           |
+| `PILOT_UNIFIED_SIDECAR_SCOPE`                    |                                                                                           |
+| `VERIFY_CERT_AT_CLIENT`                          | どこにこの変数あるんやろか...                                                             |
 
 > - https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go
 

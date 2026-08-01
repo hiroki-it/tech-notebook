@@ -3,11 +3,11 @@ title: 【IT技術の知見】Linux系＠管理ユーティリティ
 description: Linux系＠管理ユーティリティの知見を記録しています。
 ---
 
-# Linux系＠管理ユーティリティ
+# Linux 系＠管理ユーティリティ
 
 ## 01. apk
 
-### apkとは
+### apk とは
 
 Alpine リポジトリのパッケージを管理する。
 
@@ -37,7 +37,7 @@ $ apk add --allow-untrusted <パッケージ名>.apk
 
 ## 02. brew
 
-### brewとは
+### brew とは
 
 Linux で使用できるパッケージを管理する。
 
@@ -146,7 +146,7 @@ $ brew upgrade
 
 ## 03. asdf
 
-### asdfとは
+### asdf とは
 
 Linux で使用できるパッケージを管理する。
 
@@ -183,7 +183,7 @@ sops <バージョン>
 
 ### セットアップ
 
-#### ▼ brewリポジトリから
+#### ▼ brew リポジトリから
 
 `brew` コマンドを使用してインストールする場合、`~/.zshrc` ファイルを編集する必要がある。
 
@@ -191,7 +191,7 @@ sops <バージョン>
 $ brew install asdf
 ```
 
-#### ▼ GitHubリポジトリから
+#### ▼ GitHub リポジトリから
 
 > - https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
@@ -338,7 +338,7 @@ $ asdf install
 
 ### uninstall
 
-#### ▼ uninstallとは
+#### ▼ uninstall とは
 
 プラグインをアンインストールする。
 
@@ -346,7 +346,7 @@ $ asdf install
 $ asdf uninstall <プラグイン名> 1.0.0
 ```
 
-### ▼ uninstallとは
+### ▼ uninstall とは
 
 特定のプラグインをすべてのバージョンをアンインストールする。
 
@@ -358,7 +358,7 @@ $ asdf uninstall <プラグイン名> --all
 
 ## 04. mise
 
-### miseとは
+### mise とは
 
 パッケージをバージョン管理する。
 
@@ -438,7 +438,7 @@ foo = "bar"
 
 ### セットアップ
 
-#### ▼ brewリポジトリから
+#### ▼ brew リポジトリから
 
 ```bash
 $ brew install mise
@@ -518,7 +518,7 @@ $ mise cache prune
 
 ### install
 
-#### ▼ installとは
+#### ▼ install とは
 
 プラグインをインストールする。
 
@@ -556,7 +556,7 @@ $ mise trust
 
 ### uninstall
 
-#### ▼ uninstallとは
+#### ▼ uninstall とは
 
 プラグインをアンインストールする。
 
@@ -568,7 +568,7 @@ $ mise uninstall --all
 
 ## 05. direnv
 
-### direnvとは
+### direnv とは
 
 特定のディレクトリで `.env` ファイルを読み込み、環境変数を OS 上に出力する。
 
@@ -576,7 +576,7 @@ $ mise uninstall --all
 
 ### セットアップ
 
-#### ▼ brewリポジトリから
+#### ▼ brew リポジトリから
 
 ```bash
 $ brew install direnv

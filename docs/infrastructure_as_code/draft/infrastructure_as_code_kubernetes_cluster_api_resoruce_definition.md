@@ -54,34 +54,34 @@ metadata:
   name: foo-anthos-cluster
   namespace: anthos
 spec:
-  type: hybrid # Clusterタイプ
-  profile: default # Clusterプロファイル
-  anthosBareMetalVersion: 1.0.0 # Anthos GKE Clusterのバージョン
-  gkeConnect: # 内部のGKEへの接続情報
+  type: hybrid # Cluster タイプ
+  profile: default # Cluster プロファイル
+  anthosBareMetalVersion: 1.0.0 # Anthos GKE Cluster のバージョン
+  gkeConnect: # 内部の GKE への接続情報
     ...
 
-  controlPlane: # コントロールプレーンNode
+  controlPlane: # コントロールプレーン Node
     ...
 
-  clusterNetwork: # Clusterネットワーク
+  clusterNetwork: # Cluster ネットワーク
     ...
 
-  loadBalancer: # l4ロードバランサー
+  loadBalancer: # l4 ロードバランサー
     ...
 
-  clusterOperations: # Clusterの監視
+  clusterOperations: # Cluster の監視
     ...
 
   storage: #
     ...
 
-  nodeConfig: # 全てのコントロールプレーンNodeとワーカーNodeへの適用値
+  nodeConfig: # 全てのコントロールプレーン Node とワーカーNode への適用値
     ...
 
-  authentication: # コントロールプレーンNodeの認証方法
+  authentication: # コントロールプレーン Node の認証方法
     ...
 
-  nodeAccess: # コントロールプレーンNodeに認証されるユーザーの名前
+  nodeAccess: # コントロールプレーン Node に認証されるユーザーの名前
     ...
 ```
 
@@ -121,7 +121,7 @@ metadata:
 
 ## 02. ConfigTemplate
 
-### EKSConfigTemplateとは
+### EKSConfigTemplate とは
 
 記入中...
 
@@ -220,7 +220,7 @@ metadata:
 
 ## 07. MachinePool
 
-### MachinePoolとは
+### MachinePool とは
 
 ```yaml
 apiVersion: exp.cluster.x-k8s.io/v1alpha3

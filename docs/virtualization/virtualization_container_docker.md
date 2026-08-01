@@ -13,7 +13,7 @@ description: Docker＠コンテナ型仮想化の知見を記録しています�
 
 <br>
 
-## 01. Dockerの仕組み
+## 01. Docker の仕組み
 
 ### アーキテクチャ
 
@@ -25,9 +25,9 @@ Docker は、ホスト OS、Docker コンテナ (ベースイメージ、コン�
 
 <br>
 
-### Dockerコンテナ
+### Docker コンテナ
 
-#### ▼ Dockerコンテナとは
+#### ▼ Docker コンテナとは
 
 namespace と cgroups を使用して、ホスト OS を分割した領域である。
 
@@ -97,7 +97,7 @@ root ユーザーで実行したコンテナのこと。
 
 > - https://jpn.nec.com/cybersecurity/blog/210730/index.html
 
-#### ▼ 非rootコンテナ
+#### ▼ 非 root コンテナ
 
 コンテナランタイムとコンテナ自体の両方を非 root ユーザーで実行したコンテナのこと。
 
@@ -108,11 +108,11 @@ root ユーザーで実行したコンテナのこと。
 
 <br>
 
-## 02. Dockerクライアント
+## 02. Docker クライアント
 
-### dockerクライアント
+### docker クライアント
 
-#### ▼ dockerクライアントとは
+#### ▼ docker クライアントとは
 
 docker クライアントは、`docker` コマンドを使用して docker デーモン API をコールできる。
 
@@ -122,9 +122,9 @@ docker クライアントは、`docker` コマンドを使用して docker デ�
 
 <br>
 
-### dockerデーモン
+### docker デーモン
 
-#### ▼ dockerデーモンとは
+#### ▼ docker デーモンとは
 
 ホスト側に常駐し、コンテナの操作を担うデーモン。
 
@@ -146,7 +146,7 @@ docker クライアントに docker デーモン API を公開する。
 
 ## 04. namespace
 
-### namespaceとは
+### namespace とは
 
 各 namespace を使用して、ホストのカーネルを論理的に分離する。
 
@@ -258,7 +258,7 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
   "log-opts": {
       "max-size": "10m",
       "max-file": "3",
-      # JSONに付与する属性キー
+      # JSON に付与する属性キー
       "labels": "app,env",
     },
 }
@@ -352,7 +352,7 @@ crw-rw-rw- 1 root root 1, 9 Oct 14 11:36 urandom
 crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 ```
 
-#### ▼ nginxイメージ
+#### ▼ nginx イメージ
 
 公式の nginx イメージは、`/dev/stdout` というシンボリックリンクを、`/var/log/nginx/access.log` ファイルに作成している。
 
@@ -362,7 +362,7 @@ crw-rw-rw- 1 root root 1, 5 Oct 14 11:36 zero
 
 > - https://docs.docker.com/config/containers/logging/
 
-#### ▼ php-fpmイメージ
+#### ▼ php-fpm イメージ
 
 記入中...
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】Nginx＠OpenTelemetryクライアントパッケ�
 description: Nginx＠OpenTelemetryクライアントパッケージの知見を記録しています。
 ---
 
-# Nginx＠OpenTelemetryクライアントパッケージ
+# Nginx＠OpenTelemetry クライアントパッケージ
 
 ## はじめに
 

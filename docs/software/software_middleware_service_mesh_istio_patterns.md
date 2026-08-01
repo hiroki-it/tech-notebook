@@ -13,29 +13,29 @@ description: 設計パターン＠Istioの知見を記録しています。
 
 <br>
 
-## 01. 管理下のKubernetes Cluster数
+## 01. 管理下の Kubernetes Cluster 数
 
-### 単一Kubernetes Cluster
-
-記入中...
-
-<br>
-
-### 複数Kubernetes Cluster
+### 単一 Kubernetes Cluster
 
 記入中...
 
 <br>
 
-## 02. Istiodコントロールプレーン数
+### 複数 Kubernetes Cluster
+
+記入中...
+
+<br>
+
+## 02. Istiod コントロールプレーン数
 
 Istiod コントロールプレーン数に関するパターンである。
 
 <br>
 
-## 02-02. 単一Istiodコントロールプレーン
+## 02-02. 単一 Istiod コントロールプレーン
 
-### 単一Istiodコントロールプレーンとは
+### 単一 Istiod コントロールプレーンとは
 
 複数 Kubernetes Cluster のネットワークを横断的に管理する Istiod コントロールプレーンを作成する。
 
@@ -45,9 +45,9 @@ Istiod コントロールプレーンを持つプライマリ Cluster、サー�
 
 <br>
 
-## 02-03. 複数Istiodコントロールプレーン
+## 02-03. 複数 Istiod コントロールプレーン
 
-### 複数Istiodコントロールプレーンとは
+### 複数 Istiod コントロールプレーンとは
 
 Kubernetes Cluster ごとに Istiod コントロールプレーンを作成する。
 
@@ -55,7 +55,7 @@ Kubernetes Cluster ごとに Istiod コントロールプレーンを作成す�
 
 <br>
 
-### 異なるIstiodコントロールプレーン間のデータプレーン共有
+### 異なる Istiod コントロールプレーン間のデータプレーン共有
 
 #### ▼ 同じプライベートネットワーク内の場合
 
@@ -87,14 +87,14 @@ Istio コントロールプレーンとデータプレーンを異なるクラ�
 
 <br>
 
-### シングルIstiod
+### シングル Istiod
 
 プライマリークラスターに Istio コントロールプレーンと Istio Ingress Gateway や Istio Egress Gateway を配置し、リモートクラスターにはデータプレーンを配置する。
 
 > - https://istio.io/latest/docs/setup/install/external-controlplane/
 > - https://istio.io/latest/blog/2020/new-deployment-model/
 
-### マルチIstiod
+### マルチ Istiod
 
 プライマリークラスターに親 Istio コントロールプレーンを配置し、リモートクラスターには子 Istio コントロールプレーンとデータプレーンを配置する。
 
@@ -132,7 +132,7 @@ Istio コントロールプレーンとデータプレーンを異なるクラ�
 
 <br>
 
-### データプレーンが非Kubernetesのコンテナの場合
+### データプレーンが非 Kubernetes のコンテナの場合
 
 クラウド上のコンテナ (例：Amazon ECS) がコントロールプレーン Node と同じプライベートネットワーク内に所属している場合、クラウド上のコンテナをサービスメッシュに参加させる。
 
@@ -160,7 +160,7 @@ Istio コントロールプレーンとデータプレーンを異なるクラ�
 
 ## 05. テナント分離
 
-### Namespaceテナント
+### Namespace テナント
 
 Istio のサービスメッシュは、管理下の複数の Namespace をテナントとして分離する。
 
@@ -170,7 +170,7 @@ Namespace as-a-Service として提供する。
 
 <br>
 
-### Clusterテナント
+### Cluster テナント
 
 Istio のサービスメッシュは、管理下の複数 Kubernetes Cluster をテナントとして分離する。
 

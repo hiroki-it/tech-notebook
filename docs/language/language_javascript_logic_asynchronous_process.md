@@ -49,7 +49,7 @@ asyncMethod();
 
 ## 02. JavaScript Promise
 
-### JavaScript Promiseとは
+### JavaScript Promise とは
 
 JavaScript で、非同期処理の成否を管理し、後続する処理を定義できるオブジェクトのこと。
 
@@ -73,17 +73,17 @@ const asyncFunc = () => {
 > - https://promisesaplus.com/
 > - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
 
-### Promiseオブジェクトの種類
+### Promise オブジェクトの種類
 
 ネイティブな JavaScript の Promise オブジェクト、JQuery の Promise オブジェクトがある。
 
 ネイティブのほうが、Promise オブジェクトの仕様により則った機能を持つ。
 
-| リリース日 | 提供                                 | 種類                | 説明                                                                                                            | 補足                                                                                       |
-| ---------- | ------------------------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| 2012       | JQueryパッケージのDeferredモジュール | Promiseオブジェクト | バージョン1.5でPromiseオブジェクトが導入された。<br>・https://api.jquery.com/category/version/1.5/              | ・https://api.jquery.com/category/deferred-object/                                         |
-| 2015       | ビルトインオブジェクト               | Promiseオブジェクト | JQueryのPromiseオブジェクトを参考にして、ES2015から新しく使用できるようになった。                               | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise    |
-| 2017       | ビルトインオブジェクト               | async/await宣言     | ES2017から新しく使用できるようになった。ビルトインオブジェクトのPromiseオブジェクトをより使用しやすくしたもの。 | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
+| リリース日 | 提供                                    | 種類                 | 説明                                                                                                               | 補足                                                                                       |
+| ---------- | --------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| 2012       | JQuery パッケージの Deferred モジュール | Promise オブジェクト | バージョン 1.5 で Promise オブジェクトが導入された。<br>・https://api.jquery.com/category/version/1.5/              | ・https://api.jquery.com/category/deferred-object/                                         |
+| 2015       | ビルトインオブジェクト                  | Promise オブジェクト | JQuery の Promise オブジェクトを参考にして、ES2015 から新しく使用できるようになった。                               | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise    |
+| 2017       | ビルトインオブジェクト                  | async/await 宣言     | ES2017 から新しく使用できるようになった。ビルトインオブジェクトの Promise オブジェクトをより使用しやすくしたもの。 | ・https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function |
 
 > - https://stackoverflow.com/questions/32831143/javascript-promise-vs-jquery-deferred
 
@@ -105,7 +105,7 @@ const asyncFunc = () => {
 
 <br>
 
-### Promiseオブジェクトのコンストラクタを使用する場合
+### Promise オブジェクトのコンストラクタを使用する場合
 
 Promise インスタンスのコールバック関数に渡す。
 
@@ -160,7 +160,7 @@ console.log(asyncFunc());
 
 <br>
 
-### Promiseオブジェクトのコンストラクタを使用しない場合
+### Promise オブジェクトのコンストラクタを使用しない場合
 
 Promise オブジェクトから直接的に `resolve()` 関数や `reject()` 関数をコールする。
 
@@ -229,7 +229,7 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 ## 02-03. then-catch-finally
 
-### then-catch-finallyとは
+### then-catch-finally とは
 
 try-catch-finally 句に相当する。
 
@@ -314,9 +314,9 @@ resolveFunc.then((value) => {
 
 ## 03. async/await
 
-### async宣言
+### async 宣言
 
-#### ▼ async宣言とは
+#### ▼ async 宣言とは
 
 非同期処理の定義で Promise オブジェクトを明示的に使用する場合、Promise オブジェクトのコンストラクタに非同期処理を持つ関数を渡す必要がある。
 
@@ -364,9 +364,9 @@ console.log(asyncFunc()); // Promise { "SUCCESS" }
 
 <br>
 
-### await宣言
+### await 宣言
 
-#### ▼ await宣言とは
+#### ▼ await 宣言とは
 
 非同期処理を順次処理に、処理の完了を待つようにする。
 
@@ -420,7 +420,7 @@ const asyncFunc = async () => {
 };
 ```
 
-#### ▼ そもそも非同期にしなければawait宣言は不要なのでは？
+#### ▼ そもそも非同期にしなければ await 宣言は不要なのでは？
 
 関数を非同期処理化しなければ、`await` 宣言がそもそも不要なのではという疑問がある。
 
@@ -437,7 +437,7 @@ const asyncFunc = async () => {
 
 ### try-catch
 
-#### ▼ try-catchとは
+#### ▼ try-catch とは
 
 `try-catch` では、特定の処理のなかで起こる想定できない例外を捉えられる。
 
@@ -484,7 +484,7 @@ const asyncFunc = async () => {
 
 ### async-retry
 
-#### ▼ async-retryとは
+#### ▼ async-retry とは
 
 `async` による非同期処理をリトライする。
 
@@ -543,7 +543,7 @@ console.log(response);
 
 ## 04. JQuery Promise
 
-### JQuery Promiseとは
+### JQuery Promise とは
 
 JQuery パッケージの提供する独自の Promise オブジェクトである。
 

@@ -17,7 +17,7 @@ description: 設定ファイル＠PostgreSQLの知見を記録しています。
 
 ### インストール
 
-#### ▼ dnfリポジトリから
+#### ▼ dnf リポジトリから
 
 `psql` コマンドのみをインストールしたい場合
 
@@ -111,7 +111,7 @@ PostgreSQL でレコードを UPDATE/DELETE すると、操作前のレコード
 
 ### log_directory
 
-#### ▼ log_directoryとは
+#### ▼ log_directory とは
 
 実行ログの出力先のディレクトリを設定する。
 
@@ -155,7 +155,7 @@ $ cat /var/lib/postgresql-Sun.log | grep -E "^2023-01-01 12:00" | grep "statemen
 
 ### log_line_prefix
 
-#### ▼ log_line_prefixとは
+#### ▼ log_line_prefix とは
 
 ログのプレフィクスの形式を設定する。
 

@@ -17,7 +17,7 @@ description: チャート＠Helmの知見を記録しています。
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 > - https://helm.sh/docs/intro/install/#from-apt-debianubuntu
 
@@ -45,7 +45,7 @@ $ sudo apt-get install helm
 
 ### apiVersion
 
-#### ▼ apiVersionとは
+#### ▼ apiVersion とは
 
 > - https://helm.sh/docs/topics/chart_repository/#the-index-file
 
@@ -53,7 +53,7 @@ $ sudo apt-get install helm
 
 ### entries
 
-#### ▼ entriesとは
+#### ▼ entries とは
 
 > - https://helm.sh/docs/topics/chart_repository/#the-index-file
 
@@ -61,7 +61,7 @@ $ sudo apt-get install helm
 
 ### generated
 
-#### ▼ generatedとは
+#### ▼ generated とは
 
 コマンドによって `index.yaml` ファイルが作成された日付を設定する。
 
@@ -75,7 +75,7 @@ generated: "2022-01-01T12:00:00.197173+09:00"
 
 ### apiVersion
 
-#### ▼ apiVersionとは
+#### ▼ apiVersion とは
 
 Helm のバージョンを設定する。
 
@@ -92,7 +92,7 @@ apiVersion: v2
 
 ### appVersion
 
-#### ▼ appVersionとは
+#### ▼ appVersion とは
 
 Kubernetes 上で稼働するアプリケーションの Helm リリースバージョンを設定する。
 
@@ -111,7 +111,7 @@ appVersion: <バージョンタグ>
 
 ### description
 
-#### ▼ descriptionとは
+#### ▼ description とは
 
 チャートの説明を設定する。
 
@@ -123,7 +123,7 @@ description: The chart of foo
 
 ### dependencies
 
-#### ▼ dependenciesとは
+#### ▼ dependencies とは
 
 依存対象のサブチャートを設定する。
 
@@ -156,15 +156,15 @@ $ helm repo add bar https://bar.com/bar-chart
 サブチャートには、`values` ファイルで変数を渡せる。
 
 ```yaml
-# 親チャートのvaluesファイル
+# 親チャートの values ファイル
 foo:
   enabled: true
-  # fooサブチャートのvaluesファイルにある.replicasキーに値を渡す。
+  # foo サブチャートの values ファイルにある.replicas キーに値を渡す。
   replicas: 2
 
 bar:
   enabled: true
-  # barサブチャートのvaluesファイルにある.replicasキーに値を渡す。
+  # bar サブチャートの values ファイルにある.replicas キーに値を渡す。
   replicas: 2
 ```
 
@@ -173,12 +173,12 @@ dependencies:
   - name: foo
     version: 1.0.0
     repository: https://foo.com/foo-chart
-    # valuesファイルで foo.enabled を true にした場合
+    # values ファイルで foo.enabled を true にした場合
     condition: foo.enabled
   - name: bar
     version: 1.0.0
     repository: https://bar.com/bar-chart
-    # valuesファイルで bar.enabled を true にした場合
+    # values ファイルで bar.enabled を true にした場合
     condition: bar.enabled
 ```
 
@@ -198,7 +198,7 @@ kubeVersion: ">=1.22.0-0"
 
 ### maintainers
 
-#### ▼ maintainersとは
+#### ▼ maintainers とは
 
 チャートの管理者を設定する。
 
@@ -213,7 +213,7 @@ maintainers:
 
 ### name
 
-#### ▼ nameとは
+#### ▼ name とは
 
 Helm で作成される Kubernetes リソースの接頭辞を設定する。
 
@@ -227,7 +227,7 @@ name: foo
 
 ### type
 
-#### ▼ typeとは
+#### ▼ type とは
 
 チャートのタイプを設定する。
 
@@ -255,7 +255,7 @@ type: library
 
 ### version
 
-#### ▼ versionとは
+#### ▼ version とは
 
 チャートアーカイブ (`.tgz` 形式ファイル) の Helm リリースバージョンを設定する。
 
@@ -289,9 +289,9 @@ version: <バージョンタグ>
 
 ```yaml
 {{- define "global.template.labels" }}
-# Helmリリース名
+# Helm リリース名
 app.kubernetes.io/instance: {{ .Release.Name }}
-# ツール名 (v2ならTiller、v3ならHelm)
+# ツール名 (v2 なら Tiller、v3 なら Helm)
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 # チャートバージョン
 app.kubernetes.io/version: {{ .Chart.AppVersion }}

@@ -13,7 +13,7 @@ description: Cert Manager＠セキュリティ系ミドルウェアの知見を�
 
 <br>
 
-## 01. Cert Managerの仕組み
+## 01. Cert Manager の仕組み
 
 ### アーキテクチャ
 

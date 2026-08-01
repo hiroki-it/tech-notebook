@@ -13,7 +13,7 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 <br>
 
-## 01. Load Balancerとは
+## 01. Load Balancer とは
 
 記入中...
 

@@ -1,4 +1,4 @@
-# 【導入】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説
+# 【導入】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説
 
 # 01. はじめに
 
@@ -73,14 +73,14 @@
 
 以下の表で、マイクロサービスアーキテクチャに関する歴史を解説しました。
 
-| 年代                                                                                                           | アーキテクチャスタイル         | 説明                                                                                                                                                                                                                                                                                                                                                                                                 | 参考                                                                                                                                                                                                            |
-| -------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1999年                                                                                                         | モノリシックアーキテクチャ     | バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた。                                                                                                                                                                                                                                                                                                                         | [https://en.wikipedia.org/wiki/Monolithic_application](https://en.wikipedia.org/wiki/Monolithic_application)                                                                                                    |
-| 1900年後半〜2000年前半                                                                                         | サービス指向アーキテクチャ     | Michael BellやThomas Erlらが、アプリを機能の粒度で分割するアーキテクチャを提唱した。ただ『機能』という粒度に分割の指針がなかった。様々な課題があったため、概念としては提唱されていても、実装方法の確立にまでは至らなかった。                                                                                                                                                                         | ・[https://en.wikipedia.org/wiki/Service-oriented_architecture](https://en.wikipedia.org/wiki/Service-oriented_architecture) ・[https://www.amazon.co.jp/dp/B09B5L4NVT](https://www.amazon.co.jp/dp/B09B5L4NVT) |
-| 2003年                                                                                                         | DDD                            | Eric EvansはDDDを提唱した。DDDは、オブジェクト指向分析設計から派生した分析設計の方法の一種である。特に機能要件を解決するアプリケーションに有効である。オブジェクト指向分析設計のベタープラクティスを集め、より強化することにつながった。                                                                                                                                                             | ・[https://www.amazon.co.jp/dp/481440073X](https://www.amazon.co.jp/dp/481440073X)                                                                                                                              |
-| ・[https://en.wikipedia.org/wiki/Domain-driven_design](https://en.wikipedia.org/wiki/Domain-driven_design)     |                                |                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                                                                                                                                                                 |
-| 2014年                                                                                                         | マイクロサービスアーキテクチャ | Simon Brownは、モノリシックアーキテクチャは、時間経過とともに、無秩序でつぎはぎだらけになり得ることを指摘した。Martin FowlerとJames Lewisは、サービス指向アーキテクチャとDDDを統合し、アプリを独立したマイクロサービスの集まりに分割するアーキテクチャを提唱した。サービス指向アーキテクチャにDDDの高凝集/低結合の考え方を取り入れることで、サービス指向アーキテクチャを実装可能な理論に昇華させた。 | ・[https://dzone.com/articles/distributed-big-balls-mud](https://dzone.com/articles/distributed-big-balls-mud)                                                                                                  |
-| ・[https://martinfowler.com/articles/microservices.html](https://martinfowler.com/articles/microservices.html) |                                |                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                                                                                                                                                                 |
+| 年代                                                                                                           | アーキテクチャスタイル         | 説明                                                                                                                                                                                                                                                                                                                                                                                                        | 参考                                                                                                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1999 年                                                                                                        | モノリシックアーキテクチャ     | バックエンドのアーキテクチャとしてモノリシックアーキテクチャが台頭していた。                                                                                                                                                                                                                                                                                                                                | [https://en.wikipedia.org/wiki/Monolithic_application](https://en.wikipedia.org/wiki/Monolithic_application)                                                                                                    |
+| 1900 年後半〜2000 年前半                                                                                       | サービス指向アーキテクチャ     | Michael Bell やThomas Erl らが、アプリを機能の粒度で分割するアーキテクチャを提唱した。ただ『機能』という粒度に分割の指針がなかった。様々な課題があったため、概念としては提唱されていても、実装方法の確立にまでは至らなかった。                                                                                                                                                                              | ・[https://en.wikipedia.org/wiki/Service-oriented_architecture](https://en.wikipedia.org/wiki/Service-oriented_architecture) ・[https://www.amazon.co.jp/dp/B09B5L4NVT](https://www.amazon.co.jp/dp/B09B5L4NVT) |
+| 2003 年                                                                                                        | DDD                            | Eric Evans はDDD を提唱した。DDD は、オブジェクト指向分析設計から派生した分析設計の方法の一種である。特に機能要件を解決するアプリケーションに有効である。オブジェクト指向分析設計のベタープラクティスを集め、より強化することにつながった。                                                                                                                                                                 | ・[https://www.amazon.co.jp/dp/481440073X](https://www.amazon.co.jp/dp/481440073X)                                                                                                                              |
+| ・[https://en.wikipedia.org/wiki/Domain-driven_design](https://en.wikipedia.org/wiki/Domain-driven_design)     |                                |                                                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                 |
+| 2014 年                                                                                                        | マイクロサービスアーキテクチャ | Simon Brown は、モノリシックアーキテクチャは、時間経過とともに、無秩序でつぎはぎだらけになり得ることを指摘した。Martin Fowler とJames Lewis は、サービス指向アーキテクチャと DDD を統合し、アプリを独立したマイクロサービスの集まりに分割するアーキテクチャを提唱した。サービス指向アーキテクチャに DDD の高凝集/低結合の考え方を取り入れることで、サービス指向アーキテクチャを実装可能な理論に昇華させた。 | ・[https://dzone.com/articles/distributed-big-balls-mud](https://dzone.com/articles/distributed-big-balls-mud)                                                                                                  |
+| ・[https://martinfowler.com/articles/microservices.html](https://martinfowler.com/articles/microservices.html) |                                |                                                                                                                                                                                                                                                                                                                                                                                                             |                                                                                                                                                                                                                 |
 
 |
 | 2015 年 | モジュラーモノリス | Martin Flowler はモジュラーモノリスを提唱した。モジュラモノリスでは、マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で、アプリを細かいモジュールに分割する。最初にモジュラーモノリスとして設計し、マイクロサービスアーキテクチャに移行していくという選択肢もある。 | ・[https://martinfowler.com/bliki/MonolithFirst.html](https://martinfowler.com/bliki/MonolithFirst.html) |
@@ -101,28 +101,28 @@
 
 # 03. クラウドネイティブ
 
-## CNCFによる定義づけ
+## CNCF による定義づけ
 
 CNCF は、クラウドネイティブを以下のように定義づけしています。
 
 マイクロサービスアーキテクチャを構築するために適した技術であることがわかります。
 
-> クラウドネイティブ技術は、パブリッククラウド、プライベートクラウド、ハイブリッドクラウドなどの近代的でダイナミックな環境において、スケーラブルなアプリケーションを構築および実行するための能力を組織にもたらします。 このアプローチの代表例に、コンテナ、サービスメッシュ、マイクロサービス、イミュータブルインフラストラクチャ、および宣言型APIがあります。
+> クラウドネイティブ技術は、パブリッククラウド、プライベートクラウド、ハイブリッドクラウドなどの近代的でダイナミックな環境において、スケーラブルなアプリケーションを構築および実行するための能力を組織にもたらします。 このアプローチの代表例に、コンテナ、サービスメッシュ、マイクロサービス、イミュータブルインフラストラクチャ、および宣言型 API があります。
 
 [https://github.com/cncf/toc/blob/main/DEFINITION.md](https://github.com/cncf/toc/blob/main/DEFINITION.md)
 
 ## クラウドネイティブに関する歴史
 
-| 年代      | 技術                   | 説明                                                                                     | 参考                                                                                                                           |
-| --------- | ---------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| 2004      | AWS                    | AWSは、同社初のクラウドサービスとしてSQSを公開した。                                     | [https://en.wikipedia.org/wiki/Amazon_Web_Services](https://en.wikipedia.org/wiki/Amazon_Web_Services)                         |
-| 2008      | Google Cloud           | Google Cloudは、同社初のクラウドサービスとしてApp Engineを公開した。                     | [https://en.wikipedia.org/wiki/Google_Cloud_Platform](https://en.wikipedia.org/wiki/Google_Cloud_Platform)                     |
-| 2010      | Azure                  | Azureは、同社初のクラウドサービスとしてWindows Azureを公開した。                         | [https://en.wikipedia.org/wiki/Microsoft_Azure](https://en.wikipedia.org/wiki/Microsoft_Azure)                                 |
-| 2013      | Docker                 | dotCloudが、仮想化技術としてコンテナを公開した。                                         | [https://en.wikipedia.org/wiki/Docker\_(software)](<https://en.wikipedia.org/wiki/Docker_(software)>)                          |
-| 2014      | Kubernetes             | GoogleがKubernetesを発表した。                                                           | [https://kubernetes.io/blog/2024/06/06/10-years-of-kubernetes/](https://kubernetes.io/blog/2024/06/06/10-years-of-kubernetes/) |
-| 2014-2024 | CNCFプロジェクト21分野 | Kubernetesの登場後、CNCFでは21分野に渡るクラウドネイティブ技術のプロジェクトが登場した。 | [https://landscape.cncf.io/](https://landscape.cncf.io/)                                                                       |
+| 年代      | 技術                      | 説明                                                                                         | 参考                                                                                                                           |
+| --------- | ------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| 2004      | AWS                       | AWS は、同社初のクラウドサービスとして SQS を公開した。                                      | [https://en.wikipedia.org/wiki/Amazon_Web_Services](https://en.wikipedia.org/wiki/Amazon_Web_Services)                         |
+| 2008      | Google Cloud              | Google Cloud は、同社初のクラウドサービスとして App Engine を公開した。                      | [https://en.wikipedia.org/wiki/Google_Cloud_Platform](https://en.wikipedia.org/wiki/Google_Cloud_Platform)                     |
+| 2010      | Azure                     | Azure は、同社初のクラウドサービスとして Windows Azure を公開した。                          | [https://en.wikipedia.org/wiki/Microsoft_Azure](https://en.wikipedia.org/wiki/Microsoft_Azure)                                 |
+| 2013      | Docker                    | dotCloud が、仮想化技術としてコンテナを公開した。                                            | [https://en.wikipedia.org/wiki/Docker\_(software)](<https://en.wikipedia.org/wiki/Docker_(software)>)                          |
+| 2014      | Kubernetes                | Google がKubernetes を発表した。                                                             | [https://kubernetes.io/blog/2024/06/06/10-years-of-kubernetes/](https://kubernetes.io/blog/2024/06/06/10-years-of-kubernetes/) |
+| 2014-2024 | CNCF プロジェクト 21 分野 | Kubernetes の登場後、CNCF では 21 分野に渡るクラウドネイティブ技術のプロジェクトが登場した。 | [https://landscape.cncf.io/](https://landscape.cncf.io/)                                                                       |
 
-## CNCFによるツール分類
+## CNCF によるツール分類
 
 CNCF では、ツールを以下で分類しています。
 
@@ -138,7 +138,7 @@ CNCF では、ツールを以下で分類しています。
 | サービスメッシュ                       | Istio🐬                                                                           |
 | リモートプロシージャーコール           | gRPC                                                                              |
 | サービスプロキシ                       | Envoy                                                                             |
-| API Gateway                            | 今回はサービスプロキシのNginxで代替                                               |
+| API Gateway                            | 今回はサービスプロキシの Nginx で代替                                             |
 | 調整とサービスディスカバリー           | CoreDNS                                                                           |
 | クラウドネイティブネットワーク         | Amazon VPC CNI                                                                    |
 | コンテナランタイム                     | Containerd                                                                        |
@@ -186,7 +186,7 @@ flowchart LR
 
 ```
 
-### API Gateway領域
+### API Gateway 領域
 
 マイクロサービスアーキテクチャの API Gateway 領域のデザインパターンは以下のとおりです。
 
@@ -236,18 +236,18 @@ flowchart LR
 | ユースケース (五十音順)      | ツール (アルファベット順)                                           |
 | ---------------------------- | ------------------------------------------------------------------- |
 | IaC                          | Helm、Kubernetes、Terraform                                         |
-| L7ロードバランサー           | AWS ALB                                                             |
-| L7/L4ロードバランサー        | Istio EgressGateway、Istio IngressGateway、Nginx Ingress Controller |
+| L7 ロードバランサー          | AWS ALB                                                             |
+| L7/L4 ロードバランサー       | Istio EgressGateway、Istio IngressGateway、Nginx Ingress Controller |
 | コンテナオーケストレーション | Amazon EKS                                                          |
 | コンテナランタイム           | Containerd                                                          |
 | サービスメッシュ             | Istio🐬                                                             |
 | CI/CD                        | ArgoCD、GitHub Actions                                              |
 | テレメトリー                 | Fluentd / FluentBit、Grafana、Kiali、OpenTelemetry、Prometheus      |
 | 認証関連                     | OAuth2 Proxy、Keycloak                                              |
-| Node管理                     | Karpenter                                                           |
-| Pod管理                      | descheduler                                                         |
+| Node 管理                    | Karpenter                                                           |
+| Pod 管理                     | descheduler                                                         |
 | インシデント管理             | Slack、Incident.io                                                  |
-| その他                       | 周辺のAWSリソース                                                   |
+| その他                       | 周辺の AWS リソース                                                 |
 
 ## マイクロサービスアーキテクチャから概説
 
@@ -257,31 +257,31 @@ flowchart LR
 
 主に以下のツールからなります。(五十音順)
 
-| ユースケース (五十音順)      | ツール (アルファベット順)                                                        |
-| ---------------------------- | -------------------------------------------------------------------------------- |
-| API Gateway                  | Nginx                                                                            |
-| L7ロードバランサー           | AWS ALB                                                                          |
-| L7/L4ロードバランサー        | Istio EgressGateway、Istio IngressGateway                                        |
-| IDプロバイダー               | Google、Keycloak                                                                 |
-| コンテナオーケストレーション | Amazon EKS                                                                       |
-| コンテナランタイム           | Containerd                                                                       |
-| サービスメッシュ             | Istio🐬                                                                          |
-| DB                           | Aurora MySQL                                                                     |
-| フロントエンドアプリ         | 任意の言語                                                                       |
-| マイクロサービス             | 任意の言語、Keyacloak (認証マイクロサービス) 、Temporal (Sagaオーケストレーター) |
-| その他                       | 周辺のAWSリソース                                                                |
+| ユースケース (五十音順)      | ツール (アルファベット順)                                                         |
+| ---------------------------- | --------------------------------------------------------------------------------- |
+| API Gateway                  | Nginx                                                                             |
+| L7 ロードバランサー          | AWS ALB                                                                           |
+| L7/L4 ロードバランサー       | Istio EgressGateway、Istio IngressGateway                                         |
+| ID プロバイダー              | Google、Keycloak                                                                  |
+| コンテナオーケストレーション | Amazon EKS                                                                        |
+| コンテナランタイム           | Containerd                                                                        |
+| サービスメッシュ             | Istio🐬                                                                           |
+| DB                           | Aurora MySQL                                                                      |
+| フロントエンドアプリ         | 任意の言語                                                                        |
+| マイクロサービス             | 任意の言語、Keyacloak (認証マイクロサービス) 、Temporal (Saga オーケストレーター) |
+| その他                       | 周辺の AWS リソース                                                               |
 
 # 05-15. アプリ領域を参照
 
-[【アプリ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説](https://example.com)
+[【アプリ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説](https://example.com)
 
 # 16-19. インフラ領域を参照
 
-[【インフラ領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説](https://example.com)
+[【インフラ領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説](https://example.com)
 
 # 20-26. 横断領域を参照
 
-[【横断領域】DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説](https://example.com)
+[【横断領域】DDD とクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説](https://example.com)
 
 # 27. おわりに
 

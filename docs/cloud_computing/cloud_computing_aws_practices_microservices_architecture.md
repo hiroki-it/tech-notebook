@@ -13,7 +13,7 @@ description: マイクロサービスアーキテクチャ＠AWSの知見を記�
 
 <br>
 
-## 01. Amazon EKSによるリクエスト駆動型マイクロサービスアーキテクチャ
+## 01. Amazon EKS によるリクエスト駆動型マイクロサービスアーキテクチャ
 
 自著『クラウドネイティブ技術とマイクロサービスアーキテクチャーのつながり』を確認する。
 
@@ -21,17 +21,17 @@ description: マイクロサービスアーキテクチャ＠AWSの知見を記�
 
 <br>
 
-## 02. Amazon ECSによるリクエスト駆動型マイクロサービスアーキテクチャ
+## 02. Amazon ECS によるリクエスト駆動型マイクロサービスアーキテクチャ
 
-### Amazon ECSによるマイクロサービスアーキテクチャ
+### Amazon ECS によるマイクロサービスアーキテクチャ
 
 記入中...
 
 <br>
 
-### Amazon VPC内のマイクロサービス領域
+### Amazon VPC 内のマイクロサービス領域
 
-#### ▼ マルチECSサービス
+#### ▼ マルチ ECS サービス
 
 Amazon ECS クラスターに複数の Amazon ECS サービスを作成する。
 
@@ -45,7 +45,7 @@ Kubernetes Cluster 上でこれを稼働させることが推奨である。
 
 > - https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
 
-#### ▼ Amazon Route 53とAWS Cloud Mapによるサービス検出
+#### ▼ Amazon Route 53 とAWS Cloud Map によるサービス検出
 
 AWS CloudMap を使用して、Amazon ECS タスクの宛先情報を動的に Amazon Route 53 に追加削除する。
 
@@ -58,7 +58,7 @@ AWS CloudMap を使用して、Amazon ECS タスクの宛先情報を動的に A
 > - https://dev.classmethod.jp/articles/ecs-service-discovery/
 > - https://aws.amazon.com/jp/builders-flash/202409/web-app-architecture-design-pattern/
 
-#### ▼ Amazon ECS Service Connectによるサービス検出
+#### ▼ Amazon ECS Service Connect によるサービス検出
 
 ![aws_ecs_service-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ecs_service-connect.png)
 
@@ -66,9 +66,9 @@ AWS CloudMap を使用して、Amazon ECS タスクの宛先情報を動的に A
 
 <br>
 
-## 03. AWS Lambdaによるイベント駆動型マイクロサービスアーキテクチャ
+## 03. AWS Lambda によるイベント駆動型マイクロサービスアーキテクチャ
 
-### AWS Lambdaによるイベント駆動型マイクロサービスアーキテクチャ
+### AWS Lambda によるイベント駆動型マイクロサービスアーキテクチャ
 
 AWS Lambda をマイクロサービス単位で稼働させる。
 
@@ -80,13 +80,13 @@ Kubernetes Cluster 上でこれを稼働させることが推奨である。
 
 <br>
 
-### Amazon VPC外のAPIゲートウェイ領域
+### Amazon VPC 外の API ゲートウェイ領域
 
 RESTful-API を Amazon API Gateway で構築する。
 
 <br>
 
-### Amazon VPC内のマイクロサービス領域
+### Amazon VPC 内のマイクロサービス領域
 
 #### ▼ ドメインサービス
 
@@ -124,7 +124,7 @@ AWS Cognito オーソライザーを使用する。
 
 <br>
 
-### Amazon VPC内のデータベース領域
+### Amazon VPC 内のデータベース領域
 
 #### ▼ 永続データの場合
 
@@ -142,17 +142,17 @@ Amazon RDS には DB 接続の上限数があり、前段に Amazon RDS プロ�
 
 <br>
 
-### Amazon VPC内のL3管理
+### Amazon VPC 内の L3 管理
 
-#### ▼ publicサブネット
+#### ▼ public サブネット
 
 AWS NAT Gateway を配置し、ネットワークを作成する。
 
-#### ▼ protectedサブネット
+#### ▼ protected サブネット
 
 AWS Lambda を配置し、ネットワークを作成する。
 
-#### ▼ privateサブネット
+#### ▼ private サブネット
 
 Amazon RDS プロキシーと Amazon RDS を配置し、ネットワークを作成する。
 

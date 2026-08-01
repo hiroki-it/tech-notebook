@@ -3,7 +3,7 @@ title: 【IT技術の知見】コントロールプレーン＠Istioサイドカ
 description: コントロールプレーン＠Istioサイドカーの知見を記録しています。
 ---
 
-# コントロールプレーン＠Istioサイドカー
+# コントロールプレーン＠Istio サイドカー
 
 ## はじめに
 
@@ -29,7 +29,7 @@ description: コントロールプレーン＠Istioサイドカーの知見を�
 
 <br>
 
-### Envoyの設定値への変換
+### Envoy の設定値への変換
 
 記入中...
 
@@ -83,8 +83,8 @@ spec:
       containers:
         - args:
             - discovery
-            # pilot-discoveryコマンドのオプション
-            # 15014番ポートの開放
+            # pilot-discovery コマンドのオプション
+            # 15014 番ポートの開放
             - --monitoringAddr=:15014
             - --log_output_level=default:info
             - --log_as_json
@@ -92,26 +92,26 @@ spec:
             - cluster.local
             - --keepaliveMaxServerConnectionAge
             - 30m
-          # pilotイメージ
+          # pilot イメージ
           image: docker.io/istio/pilot:<リビジョン>
           imagePullPolicy: IfNotPresent
-          # discoveryコンテナ
+          # discovery コンテナ
           name: discovery
           # 待ち受けるポート番号の仕様
           ports:
-            # 8080番ポートの開放
+            # 8080 番ポートの開放
             - containerPort: 8080
               protocol: TCP
-            # 15010番ポートの開放
+            # 15010 番ポートの開放
             - containerPort: 15010
               protocol: TCP
-            # 15017番ポートの開放
+            # 15017 番ポートの開放
             - containerPort: 15017
               protocol: TCP
           env:
-            # 15012番ポートの開放
+            # 15012 番ポートの開放
             - name: ISTIOD_ADDR
-              value: istiod-<リビジョン>.istio-system.svc:15012 # 15012番ポートの開放
+              value: istiod-<リビジョン>.istio-system.svc:15012 # 15012 番ポートの開放
 
           ...
 
@@ -182,12 +182,12 @@ metadata:
     release: istiod
 spec:
   ports:
-    # webhookサーバーに対するリクエストを待ち受ける。
+    # webhook サーバーに対するリクエストを待ち受ける。
     - name: https-webhook
       port: 443
       protocol: TCP
       targetPort: 15017
-    # xDSサーバーに対するリクエストを待ち受ける。
+    # xDS サーバーに対するリクエストを待ち受ける。
     - name: grpc-xds
       port: 15010
       protocol: TCP
@@ -203,7 +203,7 @@ spec:
       protocol: TCP
       targetPort: 15014
   selector:
-    # ルーティング先のistiodコントールプレーン (Deployment配下のPod)
+    # ルーティング先の istiod コントールプレーン (Deployment 配下の Pod)
     app: istiod
     istio.io/rev: <リビジョン>
 ```
@@ -231,14 +231,14 @@ metadata:
     istio.io/tag: <エイリアス>
 webhooks:
   - name: rev.namespace.sidecar-injector.istio.io
-    # mutating-admissionステップ発火条件を登録する。
+    # mutating-admission ステップ発火条件を登録する。
     rules:
       - apiGroups: [""]
         apiVersions: ["v1"]
         operations: ["CREATE", "UPDATE"]
         resources: ["pods"]
         scope: "*"
-    # IstiodのServiceの宛先情報を登録する。
+    # Istiod のService の宛先情報を登録する。
     clientConfig:
       service:
         name: istiod-<リビジョン>
@@ -247,10 +247,10 @@ webhooks:
         path: "/inject"
         port: 443
       caBundle: Ci0tLS0tQk...
-    # webhookサーバーのコールに失敗した場合の処理を設定する。
+    # webhook サーバーのコールに失敗した場合の処理を設定する。
     failurePolicy: Fail
     matchPolicy: Equivalent
-    # 適用するNamespaceを設定する。
+    # 適用する Namespace を設定する。
     namespaceSelector:
       matchExpressions:
         - key: istio.io/rev
@@ -274,9 +274,9 @@ Istio (`v1.1`) の `discovery` コンテナは、Config Ingestion レイヤー�
 
 <br>
 
-### Config Ingestionレイヤー
+### Config Ingestion レイヤー
 
-#### ▼ Config Ingestionレイヤーとは
+#### ▼ Config Ingestion レイヤーとは
 
 Cluster で作成された Istio リソースの状態を取得する。
 
@@ -284,9 +284,9 @@ Cluster で作成された Istio リソースの状態を取得する。
 
 <br>
 
-### Config translationレイヤー
+### Config translation レイヤー
 
-#### ▼ Config translationレイヤーとは
+#### ▼ Config translation レイヤーとは
 
 取得したカスタムリソースの状態を Envoy の設定値に変換する。
 
@@ -327,9 +327,9 @@ Istio リソースを Envoy のエンドポイントに変換する。
 
 <br>
 
-### Config servingレイヤー
+### Config serving レイヤー
 
-#### ▼ Config servingレイヤーとは
+#### ▼ Config serving レイヤーとは
 
 Envoy の設定値に基づいて、istio-proxy を Pod に提供する。
 
@@ -346,7 +346,7 @@ pilot-agent を介して、Envoy との間で定期的にリモートプロシ�
 > - https://rocdu.gitbook.io/deep-understanding-of-istio/10/1#streamaggregatedresources
 > - https://www.cnblogs.com/luozhiyun/p/14088989.html
 
-#### ▼ XDS-APIの実装
+#### ▼ XDS-API の実装
 
 ```go
 package xds
@@ -529,7 +529,7 @@ $ curl http://127.0.0.1:15014/debug
 
 <br>
 
-## 03. pilot-discoveryコマンド
+## 03. pilot-discovery コマンド
 
 ### 実行オプションの渡し方
 

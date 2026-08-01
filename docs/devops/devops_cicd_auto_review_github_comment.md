@@ -13,7 +13,7 @@ description: github-comment＠自動レビューツールの知見を記録し�
 
 <br>
 
-## 01. github-commentとは
+## 01. github-comment とは
 
 任意のツールの標準出力/標準エラー出力の結果を、レビューコメントとして GitHub に POST リクエストを送信する。
 
@@ -45,7 +45,7 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 
 ### -var
 
-#### ▼ -varとは
+#### ▼ -var とは
 
 レビューコメントのテンプレートの `{{ .Vars.<変数> }}` に出力できる変数を定義する。
 
@@ -149,7 +149,7 @@ echo Test "Next K8s Version: ${K8S_NEXT_VERSION}"
 
 ### exec
 
-#### ▼ execとは
+#### ▼ exec とは
 
 コマンドを実行し、標準出力/標準エラー出力の出力内容からレビューコメントを作成する。
 
@@ -163,7 +163,7 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 
 ### hide
 
-#### ▼ hideとは
+#### ▼ hide とは
 
 テンプレートで定義した条件に応じて、レビューコメントを非表示にする。
 
@@ -204,7 +204,7 @@ GitHub に送信するレビューコメントのテンプレートを設定す�
 
 ### exec
 
-#### ▼ execとは
+#### ▼ exec とは
 
 `github-comment exec` コマンドの結果に使用するテンプレート
 
@@ -212,7 +212,7 @@ GitHub に送信するレビューコメントのテンプレートを設定す�
 
 ```yaml
 ---
-# github-comment execコマンドで使用するテンプレート
+# github-comment exec コマンドで使用するテンプレート
 exec:
   # テンプレート名
   default:
@@ -224,7 +224,7 @@ exec:
 
 ```yaml
 ---
-# github-comment execコマンドで使用するテンプレート
+# github-comment exec コマンドで使用するテンプレート
 exec:
   # テンプレート名
   default:
@@ -357,7 +357,7 @@ hide:
 | 記法                        | 説明                                                 | 中身                                                            |
 | --------------------------- | ---------------------------------------------------- | --------------------------------------------------------------- |
 | `{{ template "status" . }}` | 終了ステータスコードが `0` なら ✅ 、それ以外なら ❌ | `:{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:` |
-| `{{ template "link" . }}`   | Jobへのリンク                                        | CIツールによって異なる。                                        |
+| `{{ template "link" . }}`   | Job へのリンク                                       | CI ツールによって異なる。                                       |
 
 > - https://suzuki-shunsuke.github.io/github-comment/builtin-template
 
@@ -402,7 +402,7 @@ exec:
 
 ### when
 
-#### ▼ whenとは
+#### ▼ when とは
 
 テンプレートを使用する条件を設定する。
 

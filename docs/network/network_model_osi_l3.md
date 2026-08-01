@@ -3,7 +3,7 @@ title: 【IT技術の知見】L3＠OSI参照モデル
 description: L3＠OSI参照モデルの知見を記録しています。
 ---
 
-# L3＠OSI参照モデル
+# L3＠OSI 参照モデル
 
 ## はじめに
 

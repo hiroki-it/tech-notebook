@@ -13,7 +13,7 @@ description: TypeScriptの知見を記録しています。
 
 <br>
 
-## 01. TypeScriptとは
+## 01. TypeScript とは
 
 静的型付けのフロントエンド言語である。
 
@@ -85,7 +85,7 @@ Hello, undefined!
 
 ### const
 
-#### ▼ constアサーション
+#### ▼ const アサーション
 
 const で宣言／代入された変数に関して、再代入できないようにする。
 
@@ -216,7 +216,7 @@ const value2 = obj[key]; // 456
 const value3 = obj["baz-qux"]; // 789
 ```
 
-#### ▼ Recordによる定義
+#### ▼ Record による定義
 
 Record を使用することで、オブジェクト型をわかりやすく定義できる。
 
@@ -477,7 +477,7 @@ const logger = (): void => {
 
 <br>
 
-### Errorオブジェクト型
+### Error オブジェクト型
 
 #### ▼ ビルトイン
 
@@ -489,7 +489,7 @@ interface Error {
 }
 ```
 
-#### ▼ 独自のErrorオブジェクト型
+#### ▼ 独自の Error オブジェクト型
 
 ステータスコードに応じたエラーを継承すると、`try-catch` で扱いやすくなる。
 
@@ -794,21 +794,21 @@ type エイリアス宣言のほうが型としての強制力が高い。
 
 また、interface 宣言はオブジェクト指向の文脈でメソッドの仕様を持たせることが多く、型の文脈では適さない（と個人的に思っている）
 
-| 項目           | typeエイリアス宣言                | interface宣言 |
-| -------------- | --------------------------------- | ------------- |
-| 継承           | 基本はできない (交差型のみできる) | できる        |
-| 継承時の上書き | 基本はできない (交差型のみできる) | できる        |
-| 同名の型       | できない                          | できる        |
-| Mapped Types型 | できる                            | できない      |
+| 項目            | type エイリアス宣言               | interface 宣言 |
+| --------------- | --------------------------------- | -------------- |
+| 継承            | 基本はできない (交差型のみできる) | できる         |
+| 継承時の上書き  | 基本はできない (交差型のみできる) | できる         |
+| 同名の型        | できない                          | できる         |
+| Mapped Types 型 | できる                            | できない       |
 
 > - https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E9%81%95%E3%81%84
 > - https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91
 
 <br>
 
-### typeエイリアス宣言
+### type エイリアス宣言
 
-#### ▼ typeエイリアス宣言とは
+#### ▼ type エイリアス宣言とは
 
 オブジェクト以外の型を宣言する場合、type エイリアス宣言を使用する。
 
@@ -896,7 +896,7 @@ function method(arg: AB): void {
 
 <br>
 
-### interface宣言
+### interface 宣言
 
 オブジェクトの型を宣言する場合、interface 宣言を使用する。
 
@@ -921,7 +921,7 @@ interface Foo {
 - `export` コマンドで出力する
 - コンテナの環境変数として出力する
 
-#### ▼ dotenvパッケージ
+#### ▼ dotenv パッケージ
 
 `dotenv` パッケージ
 
@@ -965,7 +965,7 @@ const myEnv: Env = {
 
 ### import
 
-#### ▼ importとは
+#### ▼ import とは
 
 ```typescript
 import {logger} from "./logger";
@@ -986,7 +986,7 @@ import {
 } from "./foo";
 ```
 
-#### ▼ 動的import
+#### ▼ 動的 import
 
 一部のモジュールはサーダーレンダリング中に読み込むことができず、ファイルの上部で import するとエラーになることがある。
 
@@ -1025,7 +1025,7 @@ useEffect(() => {
 
 ### export
 
-#### ▼ exportとは
+#### ▼ export とは
 
 ```typescript
 export {logger} from "./logger";

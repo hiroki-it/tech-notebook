@@ -15,7 +15,7 @@ description: config.yml＠CircleCIの知見を記録しています。
 
 ## 01. version
 
-### versionとは
+### version とは
 
 CircleCI のバージョンを宣言。
 
@@ -31,7 +31,7 @@ version: 2.1
 
 ### parameters
 
-#### ▼ parametersとは
+#### ▼ parameters とは
 
 | パラメーター名      | 参照範囲                                                                | 値を設定する場所 |
 | ------------------- | ----------------------------------------------------------------------- | ---------------- |
@@ -52,7 +52,7 @@ version: 2.1
 << parameters.foo >>
 ```
 
-#### ▼ job parameterを参照
+#### ▼ job parameter を参照
 
 定義できるデータ型は、job parameter と同じ。
 
@@ -106,7 +106,7 @@ commands:
       - run: echo << parameters.to >>
 ```
 
-#### ▼ string型
+#### ▼ string 型
 
 引数として、任意の文字列を渡したいときに使用する。
 
@@ -134,7 +134,7 @@ jobs:
         type: string
     steps:
       - print:
-          # parametersの値を渡す
+          # parameters の値を渡す
           message: Printing << parameters.file >>
       - run: cat << parameters.file >>
 
@@ -142,11 +142,11 @@ workflows:
   my-workflow:
     jobs:
       - cat-file:
-          # workflowにてstring型の値を設定
+          # workflow にて string 型の値を設定
           file: test.txt
 ```
 
-#### ▼ boolean型
+#### ▼ boolean 型
 
 多くの場合、引数が True の場合のみ、特定の `steps` キーを実行したいときに使用する。
 
@@ -170,12 +170,12 @@ jobs:
     machine: "true"
     steps:
       - when:
-          # 引数がtrueの場合
+          # 引数が true の場合
           condition: << parameters.custom_checkout >>
           steps:
             - run: echo "my custom checkout"
       - unless:
-          # 引数のfalseの場合
+          # 引数の false の場合
           condition: << parameters.custom_checkout >>
           steps:
             - checkout
@@ -184,11 +184,11 @@ workflows:
   build-test-deploy:
     jobs:
       - job_with_optional_custom_checkout:
-          # workflowにてboolean型の値を設定
+          # workflow にて boolean 型の値を設定
           custom_checkout: "true"
 ```
 
-#### ▼ enum型
+#### ▼ enum 型
 
 引数として、特定の文字列や整数のみを渡したいときに使用する。
 
@@ -210,7 +210,7 @@ jobs:
         enum: ["tes", "stg", "prd"]
     steps:
       - run:
-        # デフォルト値testを与える時は何も設定しない
+        # デフォルト値 test を与える時は何も設定しない
         name: Deploy to << parameters.environment >>
         command: |
           # 何らかの処理
@@ -219,7 +219,7 @@ workflows:
   deploy:
     jobs:
       - deploy:
-          # workflowにてenum型のデータを設定する
+          # workflow にて enum 型のデータを設定する
           environment: stg
 ```
 
@@ -235,7 +235,7 @@ workflows:
 << parameters.foo >>
 ```
 
-#### ▼ job parametersを参照
+#### ▼ job parameters を参照
 
 引数として、任意の文字列を `executors` へ渡したいときに使用する。
 
@@ -264,11 +264,11 @@ jobs:
     executor:
       name: python
       tag: "2.7"
-      # jobにてstring型の値を設定
+      # job にて string 型の値を設定
       myspecialvar: "myspecialvalue"
 ```
 
-#### ▼ workflowで値を設定する
+#### ▼ workflow で値を設定する
 
 公式リファレンスには載っていないため、方法としては非推奨。
 
@@ -295,7 +295,7 @@ jobs:
   build:
     # 引数の定義
     parameters:
-      # executorをデータ型として選択
+      # executor をデータ型として選択
       executor_param:
         type: executor
     executor: << parameters.executor_param >>
@@ -305,16 +305,16 @@ workflows:
   build-push:
     jobs:
       - build:
-          # jobにてexecutor名を設定し、加えてexecutorに値を渡す
+          # job にて executor 名を設定し、加えて executor に値を渡す
           executor_param:
             name: python
-            # バージョン3.5を設定
+            # バージョン 3.5 を設定
             tag: "2.7"
             myspecialvar: "myspecialvalue"
       - build:
           executor_param:
             name: python
-            # バージョン3.5を設定
+            # バージョン 3.5 を設定
             tag: "3.5"
             myspecialvar: "myspecialvalue"
 ```
@@ -331,7 +331,7 @@ workflows:
 << pipeline.parameters.foo >>
 ```
 
-#### ▼ job parametersを参照
+#### ▼ job parameters を参照
 
 定義できるデータ型は、job parameter と同じ。
 
@@ -377,21 +377,21 @@ workflows:
 
 ### jobs
 
-#### ▼ jobsとは
+#### ▼ jobs とは
 
 複数の `job` を定義する。
 
 workflows を使用しない場合は、少なくとも `1` 個の `job` には `build` という名前を使用しなければならない。
 
-#### ▼ jobの粒度
+#### ▼ job の粒度
 
 ![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png)
 
-| 粒度   | 説明                                                         | 備考                                                       |
-| ------ | ------------------------------------------------------------ | ---------------------------------------------------------- |
-| build  | プログラムの実行環境を作成する。                             | buildとtestを分割しにくい場合は、同じjobで定義してもよい。 |
-| test   | 種々のテスト (Unitテスト、Functionalテストなど) を実行する。 |                                                            |
-| deploy | ステージング環境または本番環境にデプロイする。               |                                                            |
+| 粒度   | 説明                                                           | 備考                                                           |
+| ------ | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| build  | プログラムの実行環境を作成する。                               | build とtest を分割しにくい場合は、同じ job で定義してもよい。 |
+| test   | 種々のテスト (Unit テスト、Functional テストなど) を実行する。 |                                                                |
+| deploy | ステージング環境または本番環境にデプロイする。                 |                                                                |
 
 <br>
 
@@ -401,7 +401,7 @@ workflows を使用しない場合は、少なくとも `1` 個の `job` には 
 
 job を実行する仮想環境を選択できる。
 
-#### ▼ dockerタイプとは
+#### ▼ docker タイプとは
 
 コンテナを実行環境として設定する。
 
@@ -432,7 +432,7 @@ jobs:
       - checkout
       # コンテナが入れ子にならないようにする。
       - setup_remote_docker
-      - run: | # DockerHubに対するログイン
+      - run: | # DockerHub に対するログイン
           echo "$DOCKER_PASS" \
             | docker login --username $DOCKER_USER --password-stdin
           docker run -d --name db company/proprietary-db:1.2.3
@@ -440,13 +440,13 @@ jobs:
       # コンテナイメージのビルド
       - run: docker build -t company/app:$CIRCLE_BRANCH .
 
-      # コンテナイメージのDockerHubに対するデプロイ
+      # コンテナイメージの DockerHub に対するデプロイ
       - run: docker push company/app:$CIRCLE_BRANCH
 ```
 
 > - https://circleci.com/docs/ja/2.0/building-docker-images/
 
-#### ▼ machineタイプとは
+#### ▼ machine タイプとは
 
 Linux サーバーを実行環境として設定する。
 
@@ -462,7 +462,7 @@ jobs:
     machine: "true"
     steps:
       - checkout
-      - run: | # DockerHubに対するログイン
+      - run: | # DockerHub に対するログイン
           echo "$DOCKER_PASS" \
             | docker login --username $DOCKER_USER --password-stdin
           docker run -d --name db company/proprietary-db:1.2.3
@@ -470,7 +470,7 @@ jobs:
       # コンテナイメージのビルド
       - run: docker build -t company/app:$CIRCLE_BRANCH .
 
-      # コンテナイメージのDockerHubに対するデプロイ
+      # コンテナイメージの DockerHub に対するデプロイ
       - run: docker push company/app:$CIRCLE_BRANCH
 ```
 
@@ -498,7 +498,7 @@ jobs:
 
 ### steps
 
-#### ▼ stepsとは
+#### ▼ steps とは
 
 処理を map 型で定義する。
 
@@ -518,16 +518,16 @@ jobs:
     parameters:
       custom_checkout_parameters:
         type: bool
-        # デフォルト値はfalse
+        # デフォルト値は false
         default: "false"
     machine: "true"
     steps:
-      # 引数がtrueの場合
+      # 引数が true の場合
       - when:
           condition: << parameters.custom_checkout_parameters >>
           steps:
             - run: echo "ユーザー定義のチェックアウト処理"
-      # 引数がfalseの場合
+      # 引数が false の場合
       - unless:
           condition: << parameters.custom_checkout_parameters >>
           steps:
@@ -570,17 +570,17 @@ version: 2.1
 jobs:
   build:
     steps:
-      # composer.jsonが変更されている場合は処理をスキップ。
+      # composer.json が変更されている場合は処理をスキップ。
       - restore_cache:
           key:
             - v1-dependecies-{{ checksum "composer.json" }}
             - v1-dependencies-
-      # 取得したcomposer.jsonを元に、差分のvendorをインストール
+      # 取得した composer.json を元に、差分の vendor をインストール
       - run:
           name: Run composer install
           commands: |
             composer install -n --prefer-dist
-      # 最新のvendorディレクトリのキャッシュを作成
+      # 最新の vendor ディレクトリのキャッシュを作成
       - save_cache:
           key: v1-dependecies-{{ checksum "composer.json" }}
           paths:
@@ -632,7 +632,7 @@ version: 2.1
 commands:
   restore_vendor:
     steps:
-      # composer.jsonの実装が変更されていない場合は処理をスキップ。
+      # composer.json の実装が変更されていない場合は処理をスキップ。
       - restore_cache:
           key:
             - v1-dependencies-{{ checksum "composer.json" }}
@@ -640,7 +640,7 @@ commands:
 
   save_vendor:
     steps:
-      # 最新のvendorを保管。
+      # 最新の vendor を保管。
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
@@ -650,7 +650,7 @@ jobs:
   build:
     steps:
       - restore_vendor
-      # 取得したcomposer.jsonを元に、差分のvendorをインストール
+      # 取得した composer.json を元に、差分の vendor をインストール
       - run:
           name: Run composer install
           commands: |
@@ -672,11 +672,11 @@ version: 2.1
 jobs:
   jobA:
     steps:
-      # Workspaceにファイルをアップロード
+      # Workspace にファイルをアップロード
       - persist_to_workspace:
-          # jobAにて、Workspaceとするディレクトリのroot
+          # jobA にて、Workspace とするディレクトリの root
           root: /tmp/workspace
-          # Rootディレクトリを基準とした相対パス ("./"以外の場合は、ディレクトリの作成が必要)
+          # Root ディレクトリを基準とした相対パス ("./"以外の場合は、ディレクトリの作成が必要)
           # パラメーターは環境変数として出力できないので注意
           paths:
             - target/application.jar
@@ -685,7 +685,7 @@ jobs:
     steps:
       # ディレクトリ配下
       - attach_workspace:
-        # jobAとは異なるディレクトリ配下にファイルをダウンロードしても良い
+        # jobA とは異なるディレクトリ配下にファイルをダウンロードしても良い
         at: /tmp/workspace
 ```
 
@@ -713,7 +713,7 @@ jobs:
 
 ## 04. commands
 
-### commandsとは
+### commands とは
 
 設定を部品化し、異なる `jobs` キーで `steps` キーとして繰り返し利用できる。
 
@@ -734,7 +734,7 @@ commands:
         type: string
         default: "Hello World"
     steps:
-      # parametersの値を渡す
+      # parameters の値を渡す
       - run: echo << parameters.text >>
 
 jobs:
@@ -742,7 +742,7 @@ jobs:
     docker:
       - image: "circleci/node:9.6.1"
     steps:
-      # command名
+      # command 名
       - sayhello:
           # 引数名: 渡す値
           text: "Lev"
@@ -754,7 +754,7 @@ jobs:
 
 ### executors
 
-#### ▼ executorsとは
+#### ▼ executors とは
 
 実行環境に関する設定を部品化し、異なる `jobs` キーで繰り返し利用できる。
 
@@ -789,7 +789,7 @@ jobs:
 
 ## 06. workflow
 
-### workflowの粒度
+### workflow の粒度
 
 #### ▼ ブランチ別
 
@@ -849,7 +849,7 @@ workflows:
 
 <br>
 
-### 特殊なsteps
+### 特殊な steps
 
 #### ▼ pre-steps、post-steps
 
@@ -878,12 +878,12 @@ workflows:
   build:
     jobs:
       - bar:
-          # Workspace前に実行する処理
+          # Workspace 前に実行する処理
           pre-steps:
             - run:
                 command: |
                   echo "install custom dependency"
-          # Workspace後に実行する処理
+          # Workspace 後に実行する処理
           post-steps:
             - run:
                 command: |
@@ -899,17 +899,17 @@ workflows:
   build:
     jobs:
       - aws-foo/build-push-yyy:
-          # Workspace前に実行する処理
+          # Workspace 前に実行する処理
           pre-steps:
             - run:
                 command: |
                   echo "FOO"
-          # Workspace後に実行する処理
+          # Workspace 後に実行する処理
           post-steps:
             - run:
                 command: |
                   echo "FOO"
-          # Orbsのオプション
+          # Orbs のオプション
           name: foo
           dockerfile: foo
           tag: foo
@@ -919,7 +919,7 @@ workflows:
 
 ### filters
 
-#### ▼ filtersとは
+#### ▼ filters とは
 
 コミットされたときに `jobs` キーが発火するブランチ名、あるいは発火しないブランチ名を設定する。
 
@@ -983,10 +983,10 @@ workflows:
 
 処理を実行するディレクトリーを指定する。
 
-| レベル        | 説明                                                                                                                                                           |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| job、executor | プロジェクトをチェックアウトするディレクトリを指定する。executorまたはjobでworking_directoryを宣言できる。両方で宣言していた場合は、executorの値が優先される。 |
-| steps         | 指定したディレクトリーに移動する。                                                                                                                             |
+| レベル        | 説明                                                                                                                                                                |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| job、executor | プロジェクトをチェックアウトするディレクトリを指定する。executor または job でworking_directory を宣言できる。両方で宣言していた場合は、executor の値が優先される。 |
+| steps         | 指定したディレクトリーに移動する。                                                                                                                                  |
 
 > - https://www.engilaboo.com/circleci-working-directory/
 > - https://nju33.com/notes/circleci/articles
@@ -995,7 +995,7 @@ workflows:
 
 ## 08. 環境変数
 
-### CircleCIにおける環境変数とは
+### CircleCI における環境変数とは
 
 #### ▼ 環境変数の出力可能
 
@@ -1019,8 +1019,8 @@ working_directory: /go/src/github.com/$ORGNAME/$REPONAME
 | Bash       | `export`、`source` キー、`$BASH_ENV` | `run` キーにおける `command` キー内のシェルのみで参照できる。ただし、`$BASH_ENV` を使用すれば、異なる `commands` 間で値を共有可能。 |
 | Container  | `environment` キー                   | `jobs` キー内の特定のコンテナのシェルのみで参照できる。                                                                             |
 | Job        | `environment` キー                   | `jobs` キー内のシェルのみで参照できる。                                                                                             |
-| Project    | Environment Variables能力            | リポジトリ内のシェルのみ参照できる。                                                                                                |
-| Global     | Contexts能力                         | 異なるリポジトリ間のシェルで参照できる。                                                                                            |
+| Project    | Environment Variables 能力           | リポジトリ内のシェルのみ参照できる。                                                                                                |
+| Global     | Contexts 能力                        | 異なるリポジトリ間のシェルで参照できる。                                                                                            |
 
 #### ▼ 環境変数の出力方法
 
@@ -1059,7 +1059,7 @@ jobs:
       - checkout
       - run:
           name: Make env file
-          # base64方式のエンコード値をデコードし、.envファイルをコピーする
+          # base64 方式のエンコード値をデコードし、.env ファイルをコピーする
           command: |
             echo ${ENV_FILE} | base64 -d > .env
       - run:
@@ -1074,9 +1074,9 @@ jobs:
 
 <br>
 
-### Bashレベル
+### Bash レベル
 
-#### ▼ commandキーによる設定
+#### ▼ command キーによる設定
 
 一番参照範囲が小さく、`run` キーにおける同じ `command` キー内のみで参照できる。
 
@@ -1132,7 +1132,7 @@ jobs:
             echo "export PATH=/path/to/foo/bin:$PATH" >> $BASH_ENV
             echo "export VERY_IMPORTANT=$(cat important_value)" >> $BASH_ENV
       - run:
-          name: Echo # BASH_ENVが自動的に読み込まれる。
+          name: Echo # BASH_ENV が自動的に読み込まれる。
           command: |
             echo "$PATH"
             echo "$VERY_IMPORTANT"
@@ -1199,7 +1199,7 @@ EOF
 
 <br>
 
-### Containerレベル
+### Container レベル
 
 Bash レベルより参照範囲が大きく、`jobs` キー内のみで参照できる。
 
@@ -1212,14 +1212,14 @@ jobs:
   build:
     docker:
       - image: postgres:9.4.1
-        # imageと同じ階層で定義 ()
+        # image と同じ階層で定義 ()
         environment:
           POSTGRES_USER: root
 ```
 
 <br>
 
-### Projectレベル
+### Project レベル
 
 Container レベルより参照範囲が大きく、プロジェクト内、すなわちリポジトリ内のみで参照できる。
 
@@ -1229,7 +1229,7 @@ Environment Variables を使用する。
 
 <br>
 
-### Grobalレベル
+### Grobal レベル
 
 Project レベルより参照範囲が大きく、異なるプロジェクト間、すなわちリポジトリ間で参照できる。
 
@@ -1239,9 +1239,9 @@ Contexts を使用する。
 
 ## 09. Docker Compose in CircleCI
 
-### docker-composeのインストール
+### docker-compose のインストール
 
-#### ▼ dockerタイプの場合
+#### ▼ docker タイプの場合
 
 自分で docker-compose をインストールする必要がある。実行環境としてのコンテナと、ビルドしたコンテナが入れ子にならないように、`setup_remote_docker` を実行する必要がある。ただし、ボリュームマウントを使用できなくなるので注意する。
 
@@ -1268,7 +1268,7 @@ jobs:
             docker-compose up --build -d
 ```
 
-#### ▼ machineタイプの場合 (推奨)
+#### ▼ machine タイプの場合 (推奨)
 
 実行環境に machine タイプを選択した場合、docker-compose がプリインストールされている。
 
@@ -1323,7 +1323,7 @@ commands:
 
 jobs:
   build_and_test:
-    # Docker Composeの時はmachineタイプを使用する
+    # Docker Compose の時は machine タイプを使用する
     machine:
       image: ubuntu-1604:201903-01
     steps:
@@ -1347,31 +1347,31 @@ jobs:
             docker network create foo-network
             docker-compose up --build -d
       - restore_vendor
-      # コンテナに対してcomspoerコマンドを送信
+      # コンテナに対して comspoer コマンドを送信
       - run:
           name: Composer install
           command: |
             docker-compose exec laravel-container composer install -n --prefer-dist
       - save_vendor
-      # Dockerizeをインストール
+      # Dockerize をインストール
       - docker/install-dockerize:
           version: v0.6.1
       - run:
-          # waitコマンドの代わりにsleepコマンドでも良い。
+          # wait コマンドの代わりに sleep コマンドでも良い。
           name: Wait for MySQL to be ready
           command: |
             dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
-      # コンテナに対してDBマイグレーションコマンドを送信
+      # コンテナに対して DB マイグレーションコマンドを送信
       - run:
           name: Run artisan migration
           command: |
             docker-compose exec laravel-container php artisan migrate --force
-      # コンテナに対してPHP-Unitコマンドを送信
+      # コンテナに対して PHP-Unit コマンドを送信
       - run:
           name: Run unit test
           command: |
             docker-compose exec laravel-container ./vendor/bin/phpunit
-      # コンテナに対してPHP-Stanコマンドを送信
+      # コンテナに対して PHP-Stan コマンドを送信
       - run:
           name: Run static test
           command: |
@@ -1382,7 +1382,7 @@ jobs:
 
 ### DLC：Docker Layer Cache
 
-#### ▼ DLCとは
+#### ▼ DLC とは
 
 CircleCI でコンテナイメージをビルドした後、各イメージレイヤーのキャッシュを DLC ボリュームに作成する。
 
@@ -1406,10 +1406,10 @@ orbs:
 
 jobs:
   build_and_test:
-    # Docker Composeの時はmachineタイプを使用する
+    # Docker Compose の時は machine タイプを使用する
     machine:
       image: ubuntu-1604:201903-01
-      # DLCを有効化
+      # DLC を有効化
       docker_layer_caching: "true"
     steps:
       - checkout
@@ -1441,7 +1441,7 @@ jobs:
     executor: docker/docker
     steps:
       - setup_remote_docker:
-          # DLCを有効化
+          # DLC を有効化
           docker_layer_caching: "true"
       - checkout
       - docker/check

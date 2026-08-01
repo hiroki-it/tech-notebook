@@ -13,7 +13,7 @@ description: HAProxy＠ロードバランサー系ミドルウェアの知見を
 
 <br>
 
-## 01. HAProxyの仕組み
+## 01. HAProxy の仕組み
 
 ### アーキテクチャ
 

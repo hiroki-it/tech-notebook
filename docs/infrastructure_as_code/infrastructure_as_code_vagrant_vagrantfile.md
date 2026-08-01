@@ -13,7 +13,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 <br>
 
-## 01. Vagrantの仕組み
+## 01. Vagrant の仕組み
 
 ### アーキテクチャ
 
@@ -68,14 +68,14 @@ Vagrantfile 自体をプロビジョナーとして使用もできる。
 
 #### ▼ プロビジョナーの種類
 
-| プロビジョナー名 | ユースケース                                                                          | 補足                                                       |
-| ---------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| シェル           | Vagrantfile自体をプロビジョニングツールとして使用する。                               | ・https://www.vagrantup.com/docs/provisioning/shell        |
-| Ansible          | Vagrantfileでプロビジョニングを実行する代わりに、Ansibleを使用する。                  | ・https://www.vagrantup.com/docs/provisioning/ansible      |
-| CFEngine         | Vagrantfileでプロビジョニングを実行する代わりに、CFEngineを使用する。                 | ・https://www.vagrantup.com/docs/provisioning/cfengine     |
-| Chef             | Vagrantfileでプロビジョニングを実行する代わりに、Chefを使用する。                     | ・https://www.vagrantup.com/docs/provisioning/chef_common  |
-| Docker           | Vagrantfileでプロビジョニングを実行する代わりに、Dockerfile (に似た記述) を使用する。 | ・https://www.vagrantup.com/docs/provisioning/docker       |
-| Puppet           | Vagrantfileでプロビジョニングを実行する代わりに、Puppetを使用する。                   | ・https://www.vagrantup.com/docs/provisioning/puppet_apply |
+| プロビジョナー名 | ユースケース                                                                           | 補足                                                       |
+| ---------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| シェル           | Vagrantfile 自体をプロビジョニングツールとして使用する。                               | ・https://www.vagrantup.com/docs/provisioning/shell        |
+| Ansible          | Vagrantfile でプロビジョニングを実行する代わりに、Ansible を使用する。                 | ・https://www.vagrantup.com/docs/provisioning/ansible      |
+| CFEngine         | Vagrantfile でプロビジョニングを実行する代わりに、CFEngine を使用する。                | ・https://www.vagrantup.com/docs/provisioning/cfengine     |
+| Chef             | Vagrantfile でプロビジョニングを実行する代わりに、Chef を使用する。                    | ・https://www.vagrantup.com/docs/provisioning/chef_common  |
+| Docker           | Vagrantfile でプロビジョニングを実行する代わりに、Dockerfile (に似た記述) を使用する。 | ・https://www.vagrantup.com/docs/provisioning/docker       |
+| Puppet           | Vagrantfile でプロビジョニングを実行する代わりに、Puppet を使用する。                  | ・https://www.vagrantup.com/docs/provisioning/puppet_apply |
 
 <br>
 
@@ -91,7 +91,7 @@ Vagrantfile にプロバイダーとプロビジョナーの操作を設定し�
 
 ## 02. Vagrant.configure
 
-### Vagrant.configureとは
+### Vagrant.configure とは
 
 Vagrantfile のバージョンを設定する。
 
@@ -109,7 +109,7 @@ end
 
 ## 03. config.vm
 
-### config.vmとは
+### config.vm とは
 
 仮想環境の構成を設定する。
 
@@ -117,7 +117,7 @@ end
 
 ### config.vm.box
 
-#### ▼ boxとは
+#### ▼ box とは
 
 仮想環境のベースとする VirtualBox のボックス名を設定する。
 
@@ -149,7 +149,7 @@ end
 
 ### config.vm.hostname
 
-#### ▼ hostnameとは
+#### ▼ hostname とは
 
 仮想環境にホスト名を設定する。
 
@@ -165,7 +165,7 @@ end
 
 ### config.vm.box_check_update
 
-#### ▼ box_check_updateとは
+#### ▼ box_check_update とは
 
 Vagrant の更新通知を設定する。
 
@@ -181,7 +181,7 @@ end
 
 ### config.vm.network
 
-#### ▼ networkとは
+#### ▼ network とは
 
 仮想環境のネットワークを設定する。
 
@@ -241,7 +241,7 @@ end
 
 ### config.vm.provider
 
-#### ▼ providerとは
+#### ▼ provider とは
 
 プロバイダー固有のオプションを設定する。
 
@@ -282,7 +282,7 @@ end
 
 ### config.vm.provision
 
-#### ▼ provisionとは
+#### ▼ provision とは
 
 仮想環境のプロビジョニングを設定する。
 
@@ -370,7 +370,7 @@ end
 
 ### config.vm.synced_folder
 
-#### ▼ synced_folderとは
+#### ▼ synced_folder とは
 
 ホストのディレクトリを仮想環境にマウントする。
 

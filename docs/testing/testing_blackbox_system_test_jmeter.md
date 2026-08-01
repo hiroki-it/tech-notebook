@@ -15,7 +15,7 @@ description: JMeter＠システムテストの知見を記録しています。
 
 ## 01. セットアップ
 
-### yumリポジトリから
+### yum リポジトリから
 
 ```bash
 $ yum install java-1.8.0-openjdk
@@ -30,7 +30,7 @@ $ tar xvzf apache-jmeter-5.2.1.tgz
 
 <br>
 
-## 02. JMeterの仕組み
+## 02. JMeter の仕組み
 
 ### アーキテクチャ
 

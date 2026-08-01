@@ -13,7 +13,7 @@ description: PHPStan＠静的解析の知見を記録しています。
 
 <br>
 
-## 01. PHPStanとは
+## 01. PHPStan とは
 
 レベルに応じて、静的解析を実施する。
 
@@ -36,7 +36,7 @@ $ vendor/bin/phpstan analyse
 
 <br>
 
-## 03. phpstan.neonファイル
+## 03. phpstan.neon ファイル
 
 ### `phpstan.neonファイル` とは
 

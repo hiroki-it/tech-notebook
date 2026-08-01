@@ -3,7 +3,7 @@ title: 【IT技術の知見】データプレーン＠Istioサイドカー
 description: データプレーン＠Istioサイドカーの知見を記録しています。
 ---
 
-# データプレーン＠Istioサイドカー
+# データプレーン＠Istio サイドカー
 
 ## はじめに
 
@@ -45,7 +45,7 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 
 ### istio-iptables
 
-#### ▼ istio-iptablesとは
+#### ▼ istio-iptables とは
 
 istio-iptables は、istio-proxy を持つ Pod 内のネットワークの経路を制御する。
 
@@ -156,7 +156,7 @@ Istio`v1.9` までは `127.0.0.1` で、`v1.10` から `127.0.0.6` になった�
 > - https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/
 > - https://engineering.mercari.com/blog/entry/20211021-istio1-10-inbound-fowarding/
 
-#### ▼ Pod外からのインバウンド通信の場合
+#### ▼ Pod 外からのインバウンド通信の場合
 
 Pod 外からマイクロサービスへのインバウンド通信は、istio-iptables により、istio-proxy の `15006` 番ポートにリダイレクトされる。
 
@@ -167,7 +167,7 @@ istio-proxy はこれを受信し、ローカルホスト (`http://127.0.0.6:<�
 > - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-1-remote-pod---local-pod
 
-#### ▼ Pod外へのアウトバウンド通信の場合
+#### ▼ Pod 外へのアウトバウンド通信の場合
 
 マイクロサービスから Pod 外へのアウトバウンド通信は、istio-iptables により、istio-proxy の `15001` 番ポートにリダイレクトされる。
 
@@ -190,7 +190,7 @@ istio-proxy はこれを受信し、ローカルホスト (`http://127.0.0.6:<�
 
 ### istio-proxy
 
-#### ▼ istio-proxyとは
+#### ▼ istio-proxy とは
 
 ![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-proxy.png)
 
@@ -254,36 +254,36 @@ spec:
       containers:
         - name: app
           image: app
-        # istio-proxyコンテナの設定を変更する。
+        # istio-proxy コンテナの設定を変更する。
         - name: istio-proxy
           lifecycle:
-            # istio-proxyコンテナ開始直後の処理
+            # istio-proxy コンテナ開始直後の処理
             postStart:
               exec:
-                # istio-proxyコンテナが、必ずマイクロサービスよりも先に起動する。
-                # pilot-agentの起動完了を待機する。
+                # istio-proxy コンテナが、必ずマイクロサービスよりも先に起動する。
+                # pilot-agent の起動完了を待機する。
                 command:
                   - |
                     pilot-agent wait
-            # istio-proxyコンテナ終了直前の処理
+            # istio-proxy コンテナ終了直前の処理
             preStop:
               exec:
-                # istio-proxyコンテナが、必ずマイクロサービスよりも後に終了する。
-                # envoyプロセスとpilot-agentプロセスの終了を待機する。
+                # istio-proxy コンテナが、必ずマイクロサービスよりも後に終了する。
+                # envoy プロセスと pilot-agent プロセスの終了を待機する。
                 command:
                   - "/bin/bash"
                   - "-c"
                   - |
                     sleep 5
                     while [ $(netstat -plnt | grep tcp | egrep -v 'envoy|pilot-agent' | wc -l) -ne 0 ]; do sleep 1; done
-      # マイクロサービスとistio-proxyコンテナの両方が終了するのを待つ
+      # マイクロサービスと istio-proxy コンテナの両方が終了するのを待つ
       terminationGracePeriodSeconds: 45
 ```
 
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
 > - https://umi0410.github.io/en/blog/devops/istio-exit-on-zero-active-connections/
 
-#### ▼ InitContainerとして
+#### ▼ InitContainer として
 
 Kubernetes の `v1.28` では、InitContainer でサイドカーを作成できるようになった。
 
@@ -324,9 +324,9 @@ spec:
 
 <br>
 
-### istio-cniによる `istio-validation` コンテナ
+### istio-cni による `istio-validation` コンテナ
 
-#### ▼ istio-iniとの関係性
+#### ▼ istio-ini との関係性
 
 ![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-cni.png)
 
@@ -345,7 +345,7 @@ istio-cni を使用する場合、iptables の設定はノード上の istio-cni
 > - https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
 > - https://en.wikipedia.org/wiki/Iptables
 
-#### ▼ istio-cniとは
+#### ▼ istio-cni とは
 
 各 Node 上で、istio-cni は `istio-cni-node` という名前の DaemonSet として稼働する。
 
@@ -368,9 +368,9 @@ istio-cni の DaemonSet が istio-iptables を適用し終了することを待�
 
 ## 02-02. istio-proxy
 
-### pilot-agent (新istio-agent)
+### pilot-agent (新 istio-agent)
 
-#### ▼ pilot-agentとは
+#### ▼ pilot-agent とは
 
 もともとは、istio-agent といわれていた。
 
@@ -383,7 +383,7 @@ ADS-API との間で双方向ストリーミング RPC を確立し、Envoy か�
 > - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
 > - https://www.oreilly.com/library/view/the-enterprise-path/9781492041795/ch04.html
 
-#### ▼ ADSクライアントの実装
+#### ▼ ADS クライアントの実装
 
 ```go
 package adsc
@@ -503,7 +503,7 @@ func (a *ADSC) handleRecv() {
 
 > - https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L544-L587
 
-#### ▼ ADSクライアントとしての `istioctl` コマンドの実装
+#### ▼ ADS クライアントとしての `istioctl` コマンドの実装
 
 `Run()` 関数による XDS-API との通信は、`istioctl` コマンドでも使用されている。
 
@@ -533,7 +533,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 ### Envoy
 
-#### ▼ Envoyとは
+#### ▼ Envoy とは
 
 istio-proxy にて、リバースプロキシとして動作する。Envoy は、pilot-agent を介して、ADS-API にリモートプロシージャーコールを実行する。また反対に、XDS-API からのリモートプロシージャーコールを pilot-agent を介して受信する。
 
@@ -545,13 +545,13 @@ istio-proxy にて、リバースプロキシとして動作する。Envoy は�
 
 ### ヘルスチェック
 
-#### ▼ 自身のstartProbe
+#### ▼ 自身の startProbe
 
 istio-proxy は、`10` 分以上起動が完了しないと、Pod が終了する。
 
 > - https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default
 
-#### ▼ マイクロサービスのHTTPヘルスチェック
+#### ▼ マイクロサービスの HTTP ヘルスチェック
 
 Istio のパケット暗号化で相互 TLS を導入している場合、istio-proxy がリクエストを受信するために、クライアント証明書が必要である。
 
@@ -570,7 +570,7 @@ Istio のパケット暗号化で相互 TLS を導入している場合、istio-
 > - https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/
 > - https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B
 
-#### ▼ マイクロサービスのTCPヘルスチェック
+#### ▼ マイクロサービスの TCP ヘルスチェック
 
 kubelet は、対象のポート番号でプロセスがリクエストを待ち受けているかのみを検証する。
 
@@ -585,7 +585,7 @@ kubelet は、対象のポート番号でプロセスがリクエストを待ち
 
 <br>
 
-### istio-proxyが終了するまでの仕組み
+### istio-proxy が終了するまでの仕組み
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
@@ -718,7 +718,7 @@ istio_request_messages_total{...}
 
 <br>
 
-## 03. pilot-agentコマンド
+## 03. pilot-agent コマンド
 
 ### 実行オプションの渡し方
 
@@ -758,7 +758,7 @@ $ pilot-agent wait
 
 <br>
 
-## 04. pilot-agentコマンドの環境変数
+## 04. pilot-agent コマンドの環境変数
 
 ### `SECRET_TTL	`
 

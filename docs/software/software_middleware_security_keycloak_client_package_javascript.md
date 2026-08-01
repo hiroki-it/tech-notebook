@@ -3,7 +3,7 @@ title: 【IT技術の知見】JavaScript＠Keycloakクライアント
 description: JavaScript＠Keycloakクライアントの知見を記録しています。
 ---
 
-# JavaScript＠Keycloakクライアント
+# JavaScript＠Keycloak クライアント
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: JavaScript＠Keycloakクライアントの知見を記録してい�
 
 <br>
 
-## 01. Keycloakクライアント
+## 01. Keycloak クライアント
 
 Keycloak クライアントになりうる JavaScript パッケージにはいくつかある。
 

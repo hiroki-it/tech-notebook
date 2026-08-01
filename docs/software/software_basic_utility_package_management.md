@@ -25,13 +25,13 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 ## 02. パッケージ管理ユーティリティ
 
-### Linux系
+### Linux 系
 
 Linux 系の OS すべてで使える。
 
 <br>
 
-### Debian系
+### Debian 系
 
 - apt
 - apt-get
@@ -39,7 +39,7 @@ Linux 系の OS すべてで使える。
 
 <br>
 
-### RedHat系
+### RedHat 系
 
 - rpm
 - yum
@@ -51,7 +51,7 @@ Linux 系の OS すべてで使える。
 
 ### phpenv (PHP)
 
-#### ▼ phpenvとは
+#### ▼ phpenv とは
 
 複数のバージョンの PHP を管理し、切り替えられる。
 
@@ -59,7 +59,7 @@ Linux 系の OS すべてで使える。
 
 ### pyenv (Python)
 
-#### ▼ pyenvとは
+#### ▼ pyenv とは
 
 複数のバージョンの Python を管理し、切り替えられる。
 
@@ -75,7 +75,7 @@ $ pyenv which python
 
 ### rbenv (Ruby)
 
-#### ▼ rbenvとは
+#### ▼ rbenv とは
 
 複数のバージョンの Ruby を管理し、切り替えられる。
 

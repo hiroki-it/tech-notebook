@@ -32,7 +32,7 @@ description: バリデーションロジック＠Goの知見を記録してい�
 |       **`"あ"`**       |            |                    |                 |                                                   |
 |      **`false`**       |            |                    |                 |                                                   |
 |       **`true`**       |     ✅     |                    |                 |                                                   |
-|   **`[]`** (空slice)   |            |                    |                 |                                                   |
+|  **`[]`** (空 slice)   |            |                    |                 |                                                   |
 
 > - https://stackoverflow.com/a/18595217
 > - https://www.geeksforgeeks.org/zero-value-in-golang/

@@ -13,7 +13,7 @@ description: Custom Controller＠カスタムリソースの知見を記録し�
 
 <br>
 
-## 01. Custom Controllerとは
+## 01. Custom Controller とは
 
 カスタムリソースのための kube-controller に相当する。
 
@@ -23,7 +23,7 @@ description: Custom Controller＠カスタムリソースの知見を記録し�
 
 <br>
 
-## 02. Custom Controllerの仕組み
+## 02. Custom Controller の仕組み
 
 ### アーキテクチャ
 
@@ -33,9 +33,9 @@ Custom Controller は、client-go コンポーネントと custom-controller コ
 
 <br>
 
-### client-goコンポーネント
+### client-go コンポーネント
 
-#### ▼ client-goコンポーネントの仕組み
+#### ▼ client-go コンポーネントの仕組み
 
 リフレクター、インフォーマー、インデクサー、から構成される。
 
@@ -67,9 +67,9 @@ Delta FIFO キューから Kubernetes リソースの実体を取得する。
 
 <br>
 
-### custom-controllerコンポーネント
+### custom-controller コンポーネント
 
-#### ▼ custom-controllerコンポーネントとは
+#### ▼ custom-controller コンポーネントとは
 
 リソースイベントハンドラー、ワークキュー、アイテム処理、から構成される。
 
@@ -123,7 +123,7 @@ kube-controller に不具合があると、etcd 上の CRD の通りにカスタ
 
 <br>
 
-### reconciliationループ
+### reconciliation ループ
 
 kube-controller-manager は、Node にある Custom Controller を反復的に実行する。
 
@@ -144,15 +144,15 @@ Custom Controller を自前で実装する。
 > - https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events
 > - https://github.com/hhiroshell/storage-bucket-prober/blob/main/controllers/storagebucket_controller.go
 
-#### ▼ OSSを使用する場合
+#### ▼ OSS を使用する場合
 
 > - https://github.com/mercari/certificate-expiry-monitor-controller
 
 <br>
 
-## 05. Operatorパターン
+## 05. Operator パターン
 
-### Operatorパターンとは
+### Operator パターンとは
 
 Custom Controller を内蔵し、特定のカスタムリソースをセットアップする責務を持つ。
 
@@ -160,7 +160,7 @@ Custom Controller を内蔵し、特定のカスタムリソースをセット�
 
 <br>
 
-### Operatorパターンの仕組み
+### Operator パターンの仕組み
 
 #### ▼ アーキテクチャ
 
@@ -204,7 +204,7 @@ Operator が kube-apiserver にリクエストを送信できるように、Oper
 
 <br>
 
-### Operatorパターンの例
+### Operator パターンの例
 
 OperatorHub で公開されている。
 
@@ -217,7 +217,7 @@ OperatorHub で公開されている。
 
 <br>
 
-## 06. Operatorのフレームワーク
+## 06. Operator のフレームワーク
 
 ### KubeBuilder
 
@@ -227,7 +227,7 @@ OperatorHub で公開されている。
 
 ### OperatorFramework
 
-#### ▼ OperatorFrameworkとは
+#### ▼ OperatorFramework とは
 
 Operator を開発するためのフレームワークのこと。
 

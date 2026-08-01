@@ -3,7 +3,7 @@ title: 【IT技術の知見】Reactパッケージ＠JavaScript
 description: Reactパッケージ＠JavaScriptの知見を記録しています。
 ---
 
-# Reactパッケージ＠JavaScript
+# React パッケージ＠JavaScript
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Reactパッケージ＠JavaScriptの知見を記録しています�
 
 <br>
 
-## 01. Reactパッケージとは
+## 01. React パッケージとは
 
 フロントエンドのパッケージ群である。
 
@@ -30,9 +30,9 @@ description: Reactパッケージ＠JavaScriptの知見を記録しています�
 
 ## 02. セットアップ
 
-### UIレンダリングパターン
+### UI レンダリングパターン
 
-#### ▼ CSRモード
+#### ▼ CSR モード
 
 エントリーポイント (`main` ファイル) で DOM ツリーのルートによる `render()` 関数の実行が必要である。
 
@@ -73,13 +73,13 @@ createRoot(document.getElementById('root')!).render(
 > - https://react.dev/reference/react-dom/client
 > - https://react.dev/reference/react-dom/client/createRoot
 
-#### ▼ SSRモード
+#### ▼ SSR モード
 
 記入中...
 
 > - https://react.dev/reference/react-dom/server
 
-#### ▼ SSGモード
+#### ▼ SSG モード
 
 記入中...
 
@@ -141,9 +141,9 @@ createRoot(document.getElementById("root")!).render(
 
 <br>
 
-## 04. Reactによる独自コンポーネント
+## 04. React による独自コンポーネント
 
-### Reactによる独自コンポーネントとは
+### React による独自コンポーネントとは
 
 React は汎用的な UI レンダリングロジックと状態管理ロジックを提供する。
 
@@ -221,7 +221,7 @@ React では、関数コンポーネントで `async` 宣言は使用できな�
 > - https://stackoverflow.com/a/78877882/12771072
 > - https://stackoverflow.com/a/75689915/12771072
 
-#### ▼ 引数がある場合はProps型を定義する
+#### ▼ 引数がある場合は Props 型を定義する
 
 関数コンポーネントに引数がある場合、引数の型として Props 型を定義するとよい。
 
@@ -278,7 +278,7 @@ const Counter = React.memo(function Counter({ value }: Props) {
 
 ### useEffect
 
-#### ▼ useEffectとは
+#### ▼ useEffect とは
 
 react コンポーネント内で、状態の変化に応じて非同期処理を使用できるようにする。
 
@@ -504,7 +504,7 @@ console.log(JSON.stringify(state));
 
 ## 06 イベント
 
-### SyntheticEventを拡張したChangeEvent
+### SyntheticEvent を拡張した ChangeEvent
 
 ```typescript
 import React from "react";

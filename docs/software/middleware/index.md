@@ -13,7 +13,7 @@ hide:
 
 ## 🤝🏻ミドルウェア
 
-### Web系
+### Web 系
 
 - #### <u>Nginx</u>
 
@@ -48,7 +48,7 @@ hide:
 
 <br>
 
-### リレーショナルDB系
+### リレーショナル DB 系
 
 - #### <u>︎RDBMS</u>
 
@@ -72,7 +72,7 @@ hide:
 
 - #### [アンチパターン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_antipatterns.html)
 
-- #### [ER図](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_er.html)
+- #### [ER 図](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_er.html)
 
 <br>
 
@@ -85,7 +85,7 @@ hide:
 
 <br>
 
-### <u>NoSQL DB系</u>
+### <u>NoSQL DB 系</u>
 
 - #### [NoSQL DB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb.html)
 
@@ -96,7 +96,7 @@ hide:
 
 <br>
 
-### 時系列DB系
+### 時系列 DB 系
 
 - #### [TSDB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb.html)
 
@@ -130,7 +130,7 @@ hide:
   > - ##### <u>アンビエントモード</u>
   >   > - ##### [コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_ambient_control_plane.html)
   >   > - ##### [データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_ambient_data_plane.html)
-  > - ##### [Istioを採用しない場合との比較](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_non.html)
+  > - ##### [Istio を採用しない場合との比較](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_non.html)
   > - ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_command.html)
   > - ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_practices.html)
   > - ##### [︎リソース](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource.html)
@@ -138,15 +138,15 @@ hide:
   > - ##### <u>リソース定義</u>
   >   > - ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition.html)
   >   > - ##### [共通項目](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_common.html)
-  >   > - ##### [ConfigMap系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_configmap.html)
-  >   > - ##### [Secret系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_secret.html)
+  >   > - ##### [ConfigMap 系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_configmap.html)
+  >   > - ##### [Secret 系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_secret.html)
   > - ##### <u>︎IstioOperator</u>
   >   > - ##### [︎IstioOperator](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator.html)
   >   > - ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator_resource_definition.html)
 
 <br>
 
-### DNS系
+### DNS 系
 
 - #### <u>CoreDNS</u>
   > - ##### [CoreDNS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns.html)

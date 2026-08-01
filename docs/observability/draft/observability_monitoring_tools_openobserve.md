@@ -13,7 +13,7 @@ description: Openobserve＠監視ツールの知見を記録しています。
 
 <br>
 
-## 01. Openobserveの仕組み
+## 01. Openobserve の仕組み
 
 テレメトリーを統合的に監視する。
 

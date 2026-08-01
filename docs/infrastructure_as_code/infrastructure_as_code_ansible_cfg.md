@@ -24,11 +24,11 @@ Ansible 自体を設定する。
 
 <br>
 
-## 02. defaultsセクション
+## 02. defaults セクション
 
 ### hostfile
 
-#### ▼ hostfileとは
+#### ▼ hostfile とは
 
 `inventory` ファイルの場所を指定する
 
@@ -43,7 +43,7 @@ hostfile = /etc/ansible/inventories
 
 ### remote_user
 
-#### ▼ remote_userとは
+#### ▼ remote_user とは
 
 タスクの実行ユーザーを設定する。
 
@@ -58,7 +58,7 @@ remote_user = ansible
 
 ### private_key_file
 
-#### ▼ private_key_fileとは
+#### ▼ private_key_file とは
 
 管理対象ノードへの SSH 公開鍵認証に使用する秘密鍵を設定する。
 
@@ -73,7 +73,7 @@ private_key_file = /etc/ansible/ssh_keys/prd-foo.pem
 
 ### host_key_checking
 
-#### ▼ host_key_checkingとは
+#### ▼ host_key_checking とは
 
 管理対象ノードに関するフィンガープリント値が作成されているか否かを検証する。
 
@@ -91,7 +91,7 @@ host_key_checking = False
 
 ### host_pattern_mismatch
 
-#### ▼ host_pattern_mismatchとは
+#### ▼ host_pattern_mismatch とは
 
 管理対象ノードが inventory ファイルに見つからない場合の返却値を設定する。
 

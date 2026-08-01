@@ -3,7 +3,7 @@ title: 【IT技術の知見】CI/CDパイプライン＠Terraform
 description: CI/CDパイプライン＠Terraformの知見を記録しています。
 ---
 
-# CI/CDパイプライン＠Terraform
+# CI/CD パイプライン＠Terraform
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 
 <br>
 
-## 01. CircleCIを使用したCI/CDパイプライン
+## 01. CircleCI を使用した CI/CD パイプライン
 
 ### 要素
 
@@ -29,8 +29,8 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 
 | jobs        | 説明                                                                                                    |
 | ----------- | ------------------------------------------------------------------------------------------------------- |
-| plan        | aws-cliのインストールから `terraform plan -out` コマンドまでの一連の処理を実行する。                    |
-| 承認Job     |                                                                                                         |
+| plan        | aws-cli のインストールから `terraform plan -out` コマンドまでの一連の処理を実行する。                   |
+| 承認 Job    |                                                                                                         |
 | apply       | ステージング環境または本番環境に対して、`terraform apply` コマンドを実行する。                          |
 | plan (任意) | `terraform apply` によって差分が無くなったかを、`terraform plan` コマンドをあらためて実行し、確認する。 |
 
@@ -68,7 +68,7 @@ executors:
       ENV: << parameters.env >>
 
 commands:
-  # AWSにデプロイするための環境を作成します。
+  # AWS にデプロイするための環境を作成します。
   aws_setup:
     steps:
       - run:
@@ -90,7 +90,7 @@ commands:
             set -x
             source ./ops/assume.sh
 
-  # terraform initを行います。
+  # terraform init を行います。
   terraform_init:
     steps:
       - run:
@@ -99,7 +99,7 @@ commands:
             set -x
             source ./ops/terraform_init.sh
 
-  # terraform fmtを行います。
+  # terraform fmt を行います。
   terraform_fmt:
     steps:
       - run:
@@ -108,7 +108,7 @@ commands:
             set -x
             source ./ops/terraform_fmt.sh
 
-  # terraform validateを行います。
+  # terraform validate を行います。
   terraform_validate:
     steps:
       - run:
@@ -118,7 +118,7 @@ commands:
             source ./export_aws_envs.sh
             source ./ops/terraform_validate.sh
 
-  # terraform planを行います。
+  # terraform plan を行います。
   terraform_plan:
     steps:
       - run:
@@ -129,7 +129,7 @@ commands:
             source ./ops/terraform_plan.sh
             ls -la
 
-  # terraform applyを行います。
+  # terraform apply を行います。
   terraform_apply:
     steps:
       - run:

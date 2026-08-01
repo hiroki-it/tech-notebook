@@ -3,7 +3,7 @@ title: 【IT技術の知見】データプレーン＠Istioアンビエント
 description: データプレーン＠Istioアンビエントの知見を記録しています。
 ---
 
-# データプレーン＠Istioアンビエント
+# データプレーン＠Istio アンビエント
 
 ## はじめに
 
@@ -36,13 +36,13 @@ ztunnel Pod を経由した段階で HTTPS プロトコルになる。
 ⬇⬆️︎
 リダイレクト
 ⬇⬆️︎
-# L4ロードバランサー
-ztunnel Pod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
+# L4 ロードバランサー
+ztunnel Pod (L4) # DaemonSet 配下の Pod なので、Node ごとにいる
 ⬇⬆️︎
 ⬇⬆️︎ # HBONE
 ⬇⬆️︎
-# L7ロードバランサー
-waypoint-proxy Pod (L7) # Deployment配下のPodなので、任意のNodeにいる
+# L7 ロードバランサー
+waypoint-proxy Pod (L7) # Deployment 配下の Pod なので、任意の Node にいる
 ⬇⬆️︎
 マイクロサービスのPod
 ```
@@ -52,18 +52,18 @@ waypoint-proxy Pod (L7) # Deployment配下のPodなので、任意のNodeにい�
 ```yaml
 マイクロサービスのPod # 送信元
 ⬇⬆️︎
-# L4ロードバランサー
-ztunnel Pod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
+# L4 ロードバランサー
+ztunnel Pod (L4) # DaemonSet 配下の Pod なので、Node ごとにいる
 ⬇⬆️︎
 ⬇⬆️︎ # HBONE
 ⬇⬆️︎
-# L7ロードバランサー
-waypoint-proxy Pod (L7) # Deployment配下のPodなので、任意のNodeにいる
+# L7 ロードバランサー
+waypoint-proxy Pod (L7) # Deployment 配下の Pod なので、任意の Node にいる
 ⬇⬆️︎
 ⬇⬆️︎ # HBONE
 ⬇⬆️︎
-# L4ロードバランサー
-ztunnel Pod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
+# L4 ロードバランサー
+ztunnel Pod (L4) # DaemonSet 配下の Pod なので、Node ごとにいる
 ⬇⬆️︎
 マイクロサービスのPod # 宛先
 ```
@@ -73,13 +73,13 @@ ztunnel Pod (L4) # DaemonSet配下のPodなので、Nodeごとにいる
 ```yaml
 パブリックネットワーク
 ⬆️⬇
-# L7ロードバランサー
-waypoint-proxy Pod (L7) # Deployment配下なので、任意のNodeにいる
+# L7 ロードバランサー
+waypoint-proxy Pod (L7) # Deployment 配下なので、任意の Node にいる
 ⬆️⬇
 ⬆️⬇ # HBONE
 ⬆️⬇
-# L4ロードバランサー
-ztunnel Pod (L4) # DaemonSet配下なので、Nodeごとにいる
+# L4 ロードバランサー
+ztunnel Pod (L4) # DaemonSet 配下なので、Node ごとにいる
 ⬆️⬇
 リダイレクト
 ⬆️⬇
@@ -99,7 +99,7 @@ ztunnel Pod (L4) # DaemonSet配下なので、Nodeごとにいる
 
 ### istio-cni
 
-#### ▼ istio-cniとは
+#### ▼ istio-cni とは
 
 実体は、DaemonSet として稼働する。
 
@@ -126,7 +126,7 @@ istio-cni は、`/var/run/ztunnel/ztunnel.sock` ファイル経由で ztunnel �
 > - https://www.rfc-editor.org/rfc/rfc8926.html
 > - https://www.reddit.com/r/kubernetes/comments/1cygujm/comment/l59qh64/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
-#### ▼ Google Cloud Meshに関して
+#### ▼ Google Cloud Mesh に関して
 
 Google Cloud Mesh では、istio-cni のロジックが GKE に統合されており、istio-cni が存在しない。
 
@@ -138,7 +138,7 @@ Google Cloud Mesh では、istio-cni のロジックが GKE に統合されて�
 
 ### ztunnel
 
-#### ▼ ztunnelとは
+#### ▼ ztunnel とは
 
 サービスメッシュ内の `L4` トラフィックを管理する。
 
@@ -190,7 +190,7 @@ ztunnel へのリダイレクトの仕組みは一度リプレイスされてい
 
 ### waypoint-proxy
 
-#### ▼ waypoint-proxyとは
+#### ▼ waypoint-proxy とは
 
 サービスメッシュ内の `L7` トラフィックを管理する。
 
@@ -457,7 +457,7 @@ waypoint-proxy は、サービス検出により宛先情報を取得し、ま�
 
 > - https://www.anyflow.net/sw-engineer/istio-ambient-mode
 
-#### ▼ NamespaceかつNodeのリバースプロキシとして
+#### ▼ Namespace かつ Node のリバースプロキシとして
 
 waypoint-proxy は、Namespace かつ Node のリバースプロキシである。
 

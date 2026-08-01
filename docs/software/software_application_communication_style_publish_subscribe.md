@@ -48,10 +48,10 @@ Apache Kafka のプル型では、サブスクライブによる購読予約を 
 - RabbitMQ (プル型だけでなく、プッシュ型も選べる)
 - Apache Kafka
 
-| メッセージブローカー | プル型のSubscribe | サブスクライブのポーリング受信 |
-| -------------------- | ----------------- | ------------------------------ |
-| Apache Kafka         | 必要              | 必要                           |
-| RabbitMQ             | 不要              | 必要                           |
+| メッセージブローカー | プル型の Subscribe | サブスクライブのポーリング受信 |
+| -------------------- | ------------------ | ------------------------------ |
+| Apache Kafka         | 必要               | 必要                           |
+| RabbitMQ             | 不要               | 必要                           |
 
 > - https://qiita.com/riita10069/items/40b1bcc36c25b197077c
 
@@ -75,11 +75,11 @@ Apache Kafka のプル型では、サブスクライブによる購読予約を 
 - Amazon SNS
 - Amazon EventBridge
 
-| メッセージブローカー | プッシュ型のSubscribe | サブスクライブへの送信 |
-| -------------------- | --------------------- | ---------------------- |
-| Apache Kafka         | 非対応                | 非対応                 |
-| RabbitMQ             | 必要                  | 自動                   |
-| Amazon EventBridge   | 必要                  | 自動                   |
+| メッセージブローカー | プッシュ型の Subscribe | サブスクライブへの送信 |
+| -------------------- | ---------------------- | ---------------------- |
+| Apache Kafka         | 非対応                 | 非対応                 |
+| RabbitMQ             | 必要                   | 自動                   |
+| Amazon EventBridge   | 必要                   | 自動                   |
 
 <br>
 
@@ -136,14 +136,14 @@ Apache Kafka のプル型では、サブスクライブによる購読予約を 
 
 ## 04. メッセージに使用するプロトコル
 
-| プロトコル                           | 通信方式                     | 対応するメッセージ中継システム例             | 一般的 |
-| ------------------------------------ | ---------------------------- | -------------------------------------------- | ------ |
-| AMQP                                 | バイナリ                     | RabbitMQ、Apache Qpid                        | ✅     |
-| MQTT                                 | バイナリ                     | EMQX                                         | ✅     |
-| Kafka Protocol (Kafka独自プロトコル) | バイナリ                     | Apache Kafka                                 | ✅     |
-| STOMP                                | テキスト                     | RabbitMQ                                     |        |
-| HTTP/1.1、Webhook                    | テキスト (例：JSON、XMLなど) | Amazon SQS、Amazon SNS、Google Cloud Pub/Sub |        |
-| HTTP/2 (例：gRPC、GraphQLなど)       | バイナリ (例：Protocolbuf)   | 調査中...                                    |        |
-| WebSocket                            | テキスト、バイナリ           | 調査中...                                    |        |
+| プロトコル                            | 通信方式                      | 対応するメッセージ中継システム例             | 一般的 |
+| ------------------------------------- | ----------------------------- | -------------------------------------------- | ------ |
+| AMQP                                  | バイナリ                      | RabbitMQ、Apache Qpid                        | ✅     |
+| MQTT                                  | バイナリ                      | EMQX                                         | ✅     |
+| Kafka Protocol (Kafka 独自プロトコル) | バイナリ                      | Apache Kafka                                 | ✅     |
+| STOMP                                 | テキスト                      | RabbitMQ                                     |        |
+| HTTP/1.1、Webhook                     | テキスト (例：JSON、XML など) | Amazon SQS、Amazon SNS、Google Cloud Pub/Sub |        |
+| HTTP/2 (例：gRPC、GraphQL など)       | バイナリ (例：Protocolbuf)    | 調査中...                                    |        |
+| WebSocket                             | テキスト、バイナリ            | 調査中...                                    |        |
 
 <br>

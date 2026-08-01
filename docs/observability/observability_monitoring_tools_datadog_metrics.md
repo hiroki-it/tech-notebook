@@ -13,9 +13,9 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 <br>
 
-## 01. Processエージェント (サーバーの場合)
+## 01. Process エージェント (サーバーの場合)
 
-### Processエージェントとは
+### Process エージェントとは
 
 デーモンである datadog エージェントに含まれている。
 
@@ -35,9 +35,9 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 <br>
 
-## 02. Processエージェント (Amazon ECS Fargateの場合)
+## 02. Process エージェント (Amazon ECS Fargate の場合)
 
-### Processエージェントとは
+### Process エージェントとは
 
 サーバーの場合と同様にして、アプリケーションからメトリクスを受信し、Datadog にフォワーディングする。
 
@@ -45,11 +45,11 @@ description: メトリクス＠Datadogの知見を記録しています。
 
 <br>
 
-## 02-02. Cluster/Nodeエージェント (Kubernetesの場合)
+## 02-02. Cluster/Node エージェント (Kubernetes の場合)
 
-### Cluster/Nodeエージェントとは
+### Cluster/Node エージェントとは
 
-#### ▼ Kubernetesの場合
+#### ▼ Kubernetes の場合
 
 Cluster やワーカーNode からメトリクスを受信し、コントロールプレーン Node の kube-apiserver にフォワーディングする。
 
@@ -58,7 +58,7 @@ Cluster やワーカーNode からメトリクスを受信し、コントロー�
 > - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
 > - https://blog.serverworks.co.jp/k8s-datadog
 
-#### ▼ Kubernetes + Istioの場合
+#### ▼ Kubernetes + Istio の場合
 
 記入中...
 

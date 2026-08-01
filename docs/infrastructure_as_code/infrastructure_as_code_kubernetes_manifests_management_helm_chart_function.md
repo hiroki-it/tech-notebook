@@ -19,33 +19,33 @@ description: アクション＠チャートの知見を記録しています。
 
 デプロイツール内 (例：ArgoCD、Flux) で Helm を使用する場合、そのツールの実行環境によってバージョン値が変わる。
 
-| 変数名                          | デフォルト値             | 値                                                                                                                                                                                                                                                                                                                                |
-| ------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.Release.Name`                 |                          | リリース名                                                                                                                                                                                                                                                                                                                        |
-| `.Release.Time`                 |                          | リリースした時間                                                                                                                                                                                                                                                                                                                  |
-| `.Release.Namespace`            |                          | リリースされる名前空間                                                                                                                                                                                                                                                                                                            |
-| `.Release.Service`              | `v3` の場合 `Helm`、`v2` | リリースに使用したツール名                                                                                                                                                                                                                                                                                                        |
-| `.Release.Revision`             |                          | リリースのリビジョン                                                                                                                                                                                                                                                                                                              |
-| `.Release.IsUpgrade`            |                          | upgradeかrollback操作の場合、trueがセットされる                                                                                                                                                                                                                                                                                   |
-| `.Release.IsInstall`            |                          | install操作の場合、trueがセットされる                                                                                                                                                                                                                                                                                             |
-| `.Values`                       |                          | valuesファイルもしくはユーザーから-fで指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能                                                                                                                                                                               |
-| `.Chart.ApiVersion`             |                          | Chart.yamlに記載されるチャートAPIのバージョン                                                                                                                                                                                                                                                                                     |
-| `.Chart.Name`                   |                          | Chart.yamlに記載されるチャートの名前                                                                                                                                                                                                                                                                                              |
-| `.Chart.Version`                |                          | Chart.yamlに記載されるチャート自体のバージョン                                                                                                                                                                                                                                                                                    |
-| `.Chart.KubeVersion`            |                          | Chart.yamlに記載される互換性のあるKubernetesバージョン                                                                                                                                                                                                                                                                            |
-| `.Chart.Description`            |                          | Chart.yamlに記載されるチャートの概要一文                                                                                                                                                                                                                                                                                          |
-| `.Chart.Home`                   |                          | Chart.yamlに記載されるサイトのURL                                                                                                                                                                                                                                                                                                 |
-| `.Chart.Sources`                |                          | Chart.yamlに記載されるソースコードのURL                                                                                                                                                                                                                                                                                           |
-| `.Chart.Maintainers`            |                          | Chart.yamlに記載されるチャートのメンテナーの名前とEmail (配列)                                                                                                                                                                                                                                                                    |
-| `.Chart.engine`                 |                          | Chart.yamlに記載されるテンプレートエンジン                                                                                                                                                                                                                                                                                        |
-| `.Chart.Icon`                   |                          | Chart.yamlに記載されるアイコンのURL                                                                                                                                                                                                                                                                                               |
-| `.Chart.AppVersion`             |                          | Chart.yamlに記載されるコンテナアプリケーションのバージョン                                                                                                                                                                                                                                                                        |
-| `.Chart.Deprecated`             |                          | Chart.yamlに記載されるチャートの推奨／非推奨 (boolean値)                                                                                                                                                                                                                                                                          |
-| `.Capabilities.APIVersions`     |                          | Kubernetesリソースのバージョン                                                                                                                                                                                                                                                                                                    |
-| `.Capabilities.APIVersions.Has` |                          | そのkube-apiserverのバージョンで、そのAPIバージョンを使用可能かどうか。例えば、EndpointSliceは特定のバージョン以降でしか使用できない。<br>- https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91 |
-| `.Capabilities.KubeVersion`     |                          | コンテキストのKubernetesバージョン                                                                                                                                                                                                                                                                                                |
-| `.Template.Name`                |                          | カレントパスの相対ファイルパス                                                                                                                                                                                                                                                                                                    |
-| `.Template.BasePath`            |                          | チャートのtemplatesディレクトリの相対パス                                                                                                                                                                                                                                                                                         |
+| 変数名                          | デフォルト値             | 値                                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `.Release.Name`                 |                          | リリース名                                                                                                                                                                                                                                                                                                                             |
+| `.Release.Time`                 |                          | リリースした時間                                                                                                                                                                                                                                                                                                                       |
+| `.Release.Namespace`            |                          | リリースされる名前空間                                                                                                                                                                                                                                                                                                                 |
+| `.Release.Service`              | `v3` の場合 `Helm`、`v2` | リリースに使用したツール名                                                                                                                                                                                                                                                                                                             |
+| `.Release.Revision`             |                          | リリースのリビジョン                                                                                                                                                                                                                                                                                                                   |
+| `.Release.IsUpgrade`            |                          | upgrade かrollback 操作の場合、true がセットされる                                                                                                                                                                                                                                                                                     |
+| `.Release.IsInstall`            |                          | install 操作の場合、true がセットされる                                                                                                                                                                                                                                                                                                |
+| `.Values`                       |                          | values ファイルもしくはユーザーから-f で指定されたファイルからテンプレートに渡される値。変数名は任意で定義。「Values.変数キー名」で変数の値を取得可能                                                                                                                                                                                  |
+| `.Chart.ApiVersion`             |                          | Chart.yaml に記載されるチャート API のバージョン                                                                                                                                                                                                                                                                                       |
+| `.Chart.Name`                   |                          | Chart.yaml に記載されるチャートの名前                                                                                                                                                                                                                                                                                                  |
+| `.Chart.Version`                |                          | Chart.yaml に記載されるチャート自体のバージョン                                                                                                                                                                                                                                                                                        |
+| `.Chart.KubeVersion`            |                          | Chart.yaml に記載される互換性のある Kubernetes バージョン                                                                                                                                                                                                                                                                              |
+| `.Chart.Description`            |                          | Chart.yaml に記載されるチャートの概要一文                                                                                                                                                                                                                                                                                              |
+| `.Chart.Home`                   |                          | Chart.yaml に記載されるサイトの URL                                                                                                                                                                                                                                                                                                    |
+| `.Chart.Sources`                |                          | Chart.yaml に記載されるソースコードの URL                                                                                                                                                                                                                                                                                              |
+| `.Chart.Maintainers`            |                          | Chart.yaml に記載されるチャートのメンテナーの名前と Email (配列)                                                                                                                                                                                                                                                                       |
+| `.Chart.engine`                 |                          | Chart.yaml に記載されるテンプレートエンジン                                                                                                                                                                                                                                                                                            |
+| `.Chart.Icon`                   |                          | Chart.yaml に記載されるアイコンの URL                                                                                                                                                                                                                                                                                                  |
+| `.Chart.AppVersion`             |                          | Chart.yaml に記載されるコンテナアプリケーションのバージョン                                                                                                                                                                                                                                                                            |
+| `.Chart.Deprecated`             |                          | Chart.yaml に記載されるチャートの推奨／非推奨 (boolean 値)                                                                                                                                                                                                                                                                             |
+| `.Capabilities.APIVersions`     |                          | Kubernetes リソースのバージョン                                                                                                                                                                                                                                                                                                        |
+| `.Capabilities.APIVersions.Has` |                          | その kube-apiserver のバージョンで、その API バージョンを使用可能かどうか。例えば、EndpointSlice は特定のバージョン以降でしか使用できない。<br>- https://github.com/prometheus-community/helm-charts/blob/0e2aa2e9c47e3eb5fadbb0186808bc5996001afe/charts/kube-prometheus-stack/templates/prometheus-operator/clusterrole.yaml#L82-L91 |
+| `.Capabilities.KubeVersion`     |                          | コンテキストの Kubernetes バージョン                                                                                                                                                                                                                                                                                                   |
+| `.Template.Name`                |                          | カレントパスの相対ファイルパス                                                                                                                                                                                                                                                                                                         |
+| `.Template.BasePath`            |                          | チャートの templates ディレクトリの相対パス                                                                                                                                                                                                                                                                                            |
 
 > - https://helm.sh/docs/chart_template_guide/builtin_objects/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
@@ -104,8 +104,8 @@ description: アクション＠チャートの知見を記録しています。
 そのため、`{{- if }}` から `{{- end }}` の外側でも変数を使用できる。
 
 ```yaml
-# 実行環境はdevかprdしかないものとする。
-# .values.environmentが "prd" の場合はprintf関数でサブドメインを作成し、それではない場合は空文字とする
+# 実行環境は dev かprd しかないものとする。
+# .values.environment が "prd" の場合は printf 関数でサブドメインを作成し、それではない場合は空文字とする
 {{- $subDomain := ternary (printf "%s." .values.environment ) "" .values.environment "prd" }}
 url: https://{{ $subDomain }}{{.Values.serviceName }}.com
 ```
@@ -123,7 +123,7 @@ url: https://{{ $subDomain }}{{.Values.serviceName }}.com
 
 <br>
 
-## 02. Helmのコメントアウト
+## 02. Helm のコメントアウト
 
 Helm のテンプレート内にコメントアウトを定義する。
 
@@ -161,7 +161,7 @@ Helm のコメントの前に不要な改行が挿入されないように、`{{
 
 ### include
 
-#### ▼ includeとは
+#### ▼ include とは
 
 `define()` 関数で定義したテンプレートを加工して出力する。
 
@@ -174,7 +174,7 @@ Helm のコメントの前に不要な改行が挿入されないように、`{{
 
 ### template
 
-#### ▼ templateとは
+#### ▼ template とは
 
 `define()` 関数で定義したテンプレートをそのまま出力する。
 
@@ -189,14 +189,14 @@ Helm のコメントの前に不要な改行が挿入されないように、`{{
 
 ### Values
 
-#### ▼ Valuesとは
+#### ▼ Values とは
 
 `values` ファイルの特定のキー値を出力する。
 
 特定の条件下で、`values` ファイルを２階層以上に設定できなくなる現象の理由がわかっていない...。
 
 ```yaml
-# valuesファイル
+# values ファイル
 global:
   env: prd
   appName: foo
@@ -213,7 +213,7 @@ metadata:
 
 > - https://github.com/helm/helm/issues/8026
 
-#### ▼ metadataキーで使用する場合の注意点
+#### ▼ metadata キーで使用する場合の注意点
 
 マニフェストの``.metadata.`キーの値には文字列しか設定できない。
 
@@ -224,10 +224,10 @@ metadata:
 int 型にならないように、`values` ファイルの出力先をダブルクオーテーションで囲うとよい。
 
 ```yaml
-# valuesファイル
+# values ファイル
 metadata:
   labels:
-    # マニフェストで、int型で出力しようとする。
+    # マニフェストで、int 型で出力しようとする。
     id: "1"
 ```
 
@@ -237,7 +237,7 @@ kind: Deployment
 metadata:
   name: foo
   labels:
-    # int型にならないように、ダブルクオーテーションで囲う。
+    # int 型にならないように、ダブルクオーテーションで囲う。
     id: "{{ .Values.metadata.labels.id }}"
 ```
 
@@ -247,7 +247,7 @@ metadata:
 
 ### default
 
-#### ▼ defaultとは
+#### ▼ default とは
 
 出力された値が空文字 (`""`) や `false` の場合に、それを上書きしてデフォルト値として出力する。
 
@@ -291,18 +291,18 @@ bar:
 
 ### toYaml
 
-#### ▼ toYamlとは
+#### ▼ toYaml とは
 
 出力されたデータをそのままの形で出力する。
 
 `values` ファイルに map 型や list 型をそのまま出力する場合に使用する。
 
-#### ▼ map型の場合
+#### ▼ map 型の場合
 
 map 型を出力する。
 
 ```yaml
-# valuesファイル
+# values ファイル
 parameters:
   foo: FOO
   bar: BAR
@@ -318,12 +318,12 @@ data: {{- toYaml .Values.parameters | nindent 2}}
 
 > - https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
 
-#### ▼ list型の場合
+#### ▼ list 型の場合
 
 list 型を出力する。
 
 ```yaml
-# valuesファイル
+# values ファイル
 containers:
   - name: foo
     image: foo:latest
@@ -394,7 +394,7 @@ baz:
 ルートを明示することにより、`range()` 関数内でも `yaml` ファイルの正しいルートにリクエストを送信できるようになる。
 
 ```yaml
-# マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる
+# マニフェスト全体を range 関数で囲う場合は、区切り記号 (---) を入れる
 {{- range $.Values.foo.namespaces }}
 ---
 apiVersion: apps/v1
@@ -416,7 +416,7 @@ metadata:
 
 ### range
 
-#### ▼ rangeとは
+#### ▼ range とは
 
 同じ階層にあるほかの `yaml` ファイルのキーとその値を格納し、`foreach()` 関数のように出力する。
 
@@ -431,7 +431,7 @@ metadata:
 もし、以下のような平文ファイルがあるとする。
 
 ```yaml
-# plane.yamlファイル
+# plane.yaml ファイル
 foo: FOO
 bar: bar
 ```
@@ -439,7 +439,7 @@ bar: bar
 これを `base64` 方式で変換し、`values` ファイルの `config` キー配下に定義したとする。
 
 ```yaml
-# valuesファイル
+# values ファイル
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
@@ -477,15 +477,15 @@ config:
 ```
 
 ```yaml
-# マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる
+# マニフェスト全体を range 関数で囲う場合は、区切り記号 (---) を入れる
 {{- range $key, $value := .Values.config }}
 ---
 {{- if or (eq $key "foo") (eq $key "baz") }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  # foo-map、baz-mapを作成できる。
-  # bar-mapは作成されない。
+  # foo-map、baz-map を作成できる。
+  # bar-map は作成されない。
   name: {{ $key }}-map
 data:
   ...
@@ -498,7 +498,7 @@ data:
 配列型を入力値として使用できる。
 
 ```yaml
-# valuesファイル
+# values ファイル
 ipAddresses:
   - 192.168.0.1/32
   - 192.168.0.2/32
@@ -538,7 +538,7 @@ kind: ConfigMap
 metadata:
   name: foo-config-map
 data:
-  # 現在のパスをfooに変更する。
+  # 現在のパスを foo に変更する。
   {{- with .Values.foo }}
   foo1: {{ .foo1 }}
   foo2: {{ .foo2 }}
@@ -551,7 +551,7 @@ data:
 
 ### required
 
-#### ▼ requiredとは
+#### ▼ required とは
 
 記入中...
 
@@ -563,7 +563,7 @@ data:
 
 ### fromYaml
 
-#### ▼ fromYamlとは
+#### ▼ fromYaml とは
 
 string 型を map 型に変換する。
 
@@ -572,7 +572,7 @@ string 型を map 型に変換する。
 もし、以下のような平文ファイルあるとする。
 
 ```yaml
-# plane.yamlファイル
+# plane.yaml ファイル
 foo: FOO
 bar: bar
 ```
@@ -580,7 +580,7 @@ bar: bar
 これを `base64` 方式で変換し、`values` ファイルの `config` キー配下に定義したとする。
 
 ```yaml
-# valuesファイル
+# values ファイル
 config: eHh4OiB5eXkKenp6OiBxcXEK
 ```
 
@@ -607,7 +607,7 @@ data:
 
 ### splitList
 
-#### ▼ splitListとは
+#### ▼ splitList とは
 
 string 型を指定した文字で分割し、list 型に変換する
 
@@ -616,7 +616,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 ```
 
 ```yaml
-# printf関数を使用して、一度strig型に変換している。
+# printf 関数を使用して、一度 strig 型に変換している。
 {{- printf "%s" .Values.url | splitList "/"}}
 # [https:  github.com hiroki-hasegawa foo-repository.git]
 ```
@@ -625,7 +625,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 
 <br>
 
-## 08. string型の関数
+## 08. string 型の関数
 
 ### contains
 
@@ -643,7 +643,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 
 ### printf
 
-#### ▼ printfとは
+#### ▼ printf とは
 
 さまざまなデータ型を string 型で出力する。
 
@@ -660,9 +660,9 @@ Helm のテンプレート内に、アクションや変数以外の理由で `{
 エスケープしたい文字列にバッククオートが含まれる場合、『``{{`<記号を含む文字列>`}}``』を使用できず、他のエスケープ方法 (`{{"<記号>"}}`、`printf()` 関数) が必要になる。
 
 ```yaml
-# Helmのテンプレート
+# Helm のテンプレート
 
-# Alertmanagerの通知内容の定義は以下を参考にした。
+# Alertmanager の通知内容の定義は以下を参考にした。
 # https://www.infinityworks.com/insights/slack-prometheus-alertmanager/
 
 ---
@@ -672,7 +672,7 @@ receivers:
       - channel: prd
         send_resolved: true
         api_url: https://hooks.slack.com/services/*****
-        # 波括弧 ({}) をエスケープするために、『{{``}}』とprintfを使用している。
+        # 波括弧 ({}) をエスケープするために、『{{``}}』と printf を使用している。
         # エスケープする場合は、必ず改行で出力する必要がある。
         text: |
           {{`{{ range .Alerts }}`}}
@@ -691,7 +691,7 @@ receivers:
 
 ### trimSuffix
 
-#### ▼ trimSuffixとは
+#### ▼ trimSuffix とは
 
 string 型から指定した文字を削除し、再取得する。
 
@@ -700,7 +700,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 ```
 
 ```yaml
-# printf関数を使用して、一度strig型に変換している。
+# printf 関数を使用して、一度 strig 型に変換している。
 {{- $list := printf "%s" .Values.url | splitList "/" }}
 
 # [https:  github.com hiroki-hasegawa foo-repository.git]
@@ -716,11 +716,11 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 
 <br>
 
-## 08-02. list型の関数
+## 08-02. list 型の関数
 
 ### last
 
-#### ▼ lastとは
+#### ▼ last とは
 
 list 型の最後を取得する。
 
@@ -744,7 +744,7 @@ lists:
 
 ### b64enc
 
-#### ▼ b64encとは
+#### ▼ b64enc とは
 
 `base64` 方式でエンコードする。
 
@@ -753,7 +753,7 @@ Secret の `.data` キーでは、他の Kubernetes リソースへの出力時�
 **＊実装例＊**
 
 ```yaml
-# valuesファイル
+# values ファイル
 username: hiroki-it
 password: pass
 ```
@@ -764,7 +764,7 @@ kind: Secret
 metadata:
   name: foo-secret
 data:
-  # base64方式でエンコードする。
+  # base64 方式でエンコードする。
   username: {{.Values.username | b64enc}}
   password: {{.Values.password | b64enc}}
 ```
@@ -804,7 +804,7 @@ kind: Secret
 metadata:
   name: foo-{{ $name }}-{{ $id }}
 data:
-  # base64方式でエンコードする。
+  # base64 方式でエンコードする。
   username: {{.Values.github.username | b64enc}}
   password: {{.Values.github.password | b64enc}}
 
@@ -816,13 +816,13 @@ data:
 セキュリティではなく、変化しない一意な名前の Kubernetes リソース (特に ConfigMap、Secret) を作成できるように、接尾辞に base64 方式のエンコード値を使用する。
 
 ```yaml
-# valuesファイル
+# values ファイル
 repositoryUrls:
   - https://github.com/argoproj/argo-cd
 ```
 
 ```yaml
-# マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる
+# マニフェスト全体を range 関数で囲う場合は、区切り記号 (---) を入れる
 {{- range .Values.repositoryUrls | b64enc }}
 ---
 apiVersion: v1
@@ -865,7 +865,7 @@ webhooks:
 
 ### sha256sum
 
-#### ▼ sha256sumとは
+#### ▼ sha256sum とは
 
 入力内容をハッシュ値に変換する。
 
@@ -961,7 +961,7 @@ Helm の関数のなかには処理結果に改行コードを挿入するもの
 
 ### indent
 
-#### ▼ indentとは
+#### ▼ indent とは
 
 改行せずに、そのままスペースを挿入したうえで、内容を出力する。
 
@@ -981,7 +981,7 @@ Helm の関数のなかには処理結果に改行コードを挿入するもの
 ```
 
 ```yaml
-# 2つ分のスペースを挿入した上で、出力する。
+# 2 つ分のスペースを挿入した上で、出力する。
 baz:
 {{- include "foo-template" . | indent 2 }}
 ```
@@ -1000,7 +1000,7 @@ baz:
 
 ### nindent
 
-#### ▼ nindentとは
+#### ▼ nindent とは
 
 改行しつつ、スペースを挿入したうえで、内容を出力する。
 
@@ -1020,7 +1020,7 @@ baz:
 ```
 
 ```yaml
-# 改行しつつ、2つ分のスペースを挿入した上で、出力する。
+# 改行しつつ、2 つ分のスペースを挿入した上で、出力する。
 baz:
 {{- include "foo-template" . | nindent 2 }}
 ```
@@ -1042,7 +1042,7 @@ baz:
 
 ### hasKey
 
-#### ▼ hasKeyとは
+#### ▼ hasKey とは
 
 指定したキーが存在する場合、`true` を返却する。
 
@@ -1071,7 +1071,7 @@ foo:
 > - https://lzone.de/blog/Helm-template-check-if-key-exists
 > - https://helm.sh/docs/chart_template_guide/function_list/#haskey
 
-#### ▼ indexでも代用可
+#### ▼ index でも代用可
 
 `index()` 関数で `hasKey()` 関数を代用できる。
 
@@ -1111,7 +1111,7 @@ foo:
 
 <br>
 
-### AND条件
+### AND 条件
 
 `and` 演算子と `()` 記号を使用する。
 
@@ -1125,7 +1125,7 @@ foo:
 
 <br>
 
-### OR条件
+### OR 条件
 
 `or` 演算子と `()` 記号を使用する。
 
@@ -1139,7 +1139,7 @@ foo:
 
 <br>
 
-### NOT条件
+### NOT 条件
 
 `ne` 演算子 (not equal の略) を使用する。
 
@@ -1162,7 +1162,7 @@ foo:
 `.Files.Get` 関数でファイルから取得できる。
 
 ```yaml
-# マニフェスト全体をrange関数で囲う場合は、区切り記号 (---) を入れる
+# マニフェスト全体を range 関数で囲う場合は、区切り記号 (---) を入れる
 {{- range $file, $_ := .Files.Glob "dashboards/*.json" }}
 ---
 apiVersion: v1

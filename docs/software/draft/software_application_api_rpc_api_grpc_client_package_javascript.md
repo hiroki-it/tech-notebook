@@ -3,7 +3,7 @@ title: 【IT技術の知見】JavaScript＠gRPCクライアントパッケージ
 description: JavaScript＠gRPCクライアントパッケージの知見を記録しています。
 ---
 
-# JavaScript＠gRPCクライアントパッケージ
+# JavaScript＠gRPC クライアントパッケージ
 
 ## はじめに
 
@@ -17,7 +17,7 @@ description: JavaScript＠gRPCクライアントパッケージの知見を記�
 
 ### サーバー側
 
-#### ▼ Protocol Buffer自動作成ツール
+#### ▼ Protocol Buffer 自動作成ツール
 
 npm リポジトリから、Protocol Buffer 自動作成ツールをインストールする。
 
@@ -25,15 +25,15 @@ npm リポジトリから、Protocol Buffer 自動作成ツールをインスト
 $ npm install grpc-tools
 ```
 
-#### ▼ gRPCサーバー
+#### ▼ gRPC サーバー
 
 記入中...
 
 <br>
 
-### gRPCクライアントパッケージ側
+### gRPC クライアントパッケージ側
 
-#### ▼ gRPCクライアントパッケージパッケージ
+#### ▼ gRPC クライアントパッケージパッケージ
 
 npm リポジトリから、gRPC クライアントパッケージをインストールする。
 
@@ -43,7 +43,7 @@ $ npm install grpc
 
 <br>
 
-### gRPCサーバーとクライアントの両方
+### gRPC サーバーとクライアントの両方
 
 #### ▼ `proto` ファイル
 

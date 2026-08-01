@@ -3,7 +3,7 @@ title: 【IT技術の知見】goreleaser＠CDツール
 description: goreleaser＠CDツールの知見を記録しています。
 ---
 
-# goreleaser＠CDツール
+# goreleaser＠CD ツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: goreleaser＠CDツールの知見を記録しています。
 
 <br>
 
-## goreleaserとは
+## goreleaser とは
 
 さまざまな OS や CPU アーキテクチャ向けに `go build` の成果物を作成し、GitHub のリリースページに送信する。
 

@@ -25,7 +25,7 @@ description: 開発組織の編成＠開発体制の知見を記録していま�
 
 ### Strong ownership
 
-#### ▼ Strong ownershipとは
+#### ▼ Strong ownership とは
 
 1 つの開発チームが 1 つのマイクロサービスに責任を持つ。他のチームがそのマイクロサービスの開発に関わりたい場合、マイクロサービスの担当チームに依頼するか、プルリクエストで承認を得る必要がある。
 
@@ -83,7 +83,7 @@ description: 開発組織の編成＠開発体制の知見を記録していま�
 
 ### Collective ownership
 
-#### ▼ Collective ownershipとは
+#### ▼ Collective ownership とは
 
 任意のチームが任意のマイクロサービスに責任を持つ。
 

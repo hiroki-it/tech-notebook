@@ -15,7 +15,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 ## 01. CVE：Common Vulnerabilities and Exposures)
 
-### CVEとは
+### CVE とは
 
 報告された脆弱性レポートについて、一意な番号をつけて管理した DB のこと。
 
@@ -24,7 +24,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 <br>
 
-### CVEのDBの種類
+### CVE のDB の種類
 
 #### ▼ GitHub
 
@@ -54,7 +54,7 @@ RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 
 <br>
 
-### その他のDB
+### その他の DB
 
 - NVD
 - ICAT
@@ -65,7 +65,7 @@ RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 
 ## 02. サイバー攻撃の種類
 
-### Man In The Middle攻撃 (中間者攻撃)
+### Man In The Middle 攻撃 (中間者攻撃)
 
 #### ▼ 中間者攻撃とは
 
@@ -77,7 +77,7 @@ RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 
 ### CSRF：Cross-Site Request Forgeries
 
-#### ▼ CSRFとは
+#### ▼ CSRF とは
 
 ユーザーがとあるフォームからログイン後、セッション ID を保持したまま悪意のあるサイトに接続したとする。
 
@@ -91,9 +91,9 @@ RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 
 <br>
 
-### セッションID固定化
+### セッション ID 固定化
 
-#### ▼ セッションID固定化とは
+#### ▼ セッション ID 固定化とは
 
 記入中...
 
@@ -105,7 +105,7 @@ RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 
 ### Directory traversal
 
-#### ▼ Directory traversalとは
+#### ▼ Directory traversal とは
 
 traversal は、横断する (ディレクトリを乗り越える) の意味。
 
@@ -115,9 +115,9 @@ traversal は、横断する (ディレクトリを乗り越える) の意味。
 
 <br>
 
-### DoS攻撃：Denial of Service (サービス拒否攻撃)
+### DoS 攻撃：Denial of Service (サービス拒否攻撃)
 
-#### ▼ DoS攻撃とは (サービス拒否攻撃)
+#### ▼ DoS 攻撃とは (サービス拒否攻撃)
 
 Web サーバーに大量のリクエストを送信し、障害を起こす手法。
 
@@ -129,19 +129,19 @@ Dos 攻撃は IP アドレスを指定して防御できるが、DDos 攻撃は�
 
 ![DoS攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DoS攻撃.png)
 
-> - https://ja.m.wikipedia.org/wiki/DoS攻撃
+> - https://ja.m.wikipedia.org/wiki/DoS 攻撃
 
 #### ▼ EDos
 
 Web サーバーに大量のリクエストを送信し、クラウドサービスの重量課金額を上げさせる手法。
 
-> - https://ja.m.wikipedia.org/wiki/DoS攻撃
+> - https://ja.m.wikipedia.org/wiki/DoS 攻撃
 
 <br>
 
-### SQLインジェクション
+### SQL インジェクション
 
-#### ▼ SQLインジェクションとは
+#### ▼ SQL インジェクションとは
 
 DB のクエリのパラメーターとなる入力に、不正な文字列を入力して不正なクエリを送信させ、DB の情報を抜き取る手法。
 
@@ -176,7 +176,7 @@ SELECT * from USER where USER_NAME = 'foo' and PASSWORD = 'aaa' or '1' ='1'
 
 ### XSS：Cross Site Scripting
 
-#### ▼ XSSとは
+#### ▼ XSS とは
 
 Web アプリによる HTML 出力のエスケープ処理の欠陥を悪用し、利用者の Web ブラウザで悪意のあるスクリプトを実行させる手法。
 
@@ -219,9 +219,9 @@ Web アプリによる HTML 出力のエスケープ処理の欠陥を悪用し�
 
 <br>
 
-### Brute-force攻撃とReverse Brute-force攻撃
+### Brute-force 攻撃と Reverse Brute-force 攻撃
 
-#### ▼ Brute-force攻撃とReverse Brute-force攻撃とは
+#### ▼ Brute-force 攻撃と Reverse Brute-force 攻撃とは
 
 Brute-force は力ずくの意味。ID を固定して、パスワードを総当たりで試す手法。
 
@@ -269,7 +269,7 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 ### DNS Cache Poisoning
 
-#### ▼ DNS Cache Poisoningとは
+#### ▼ DNS Cache Poisoning とは
 
 キャッシュ DNS サーバーが持つ IP アドレスを偽の IP アドレスに変え、偽のサイトに強制的に接続させる手法。
 
@@ -279,7 +279,7 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 ### Back Door
 
-#### ▼ Back Doorとは
+#### ▼ Back Door とは
 
 例えば、サイトのカード決済画面やサーバーに潜ませることによって、カード情報を第三者に送信する手法。
 

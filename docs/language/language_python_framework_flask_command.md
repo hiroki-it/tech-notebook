@@ -13,9 +13,9 @@ description: コマンド＠Flaskの知見を記録しています。
 
 <br>
 
-## 01. flaskコマンド
+## 01. flask コマンド
 
-### flaskコマンドとは
+### flask コマンドとは
 
 アプリケーションを実行する。
 
@@ -31,7 +31,7 @@ $ export FLASK_APP=main.py
 
 ### route
 
-#### ▼ routeとは
+#### ▼ route とは
 
 登録済みのルーティングの一覧を取得する。
 
@@ -49,7 +49,7 @@ static          GET      /static/<path:filename>
 
 ### run
 
-#### ▼ runとは
+#### ▼ run とは
 
 Flask クラスの `run()` 関数と同じ機能を持ち、インバウンド通信のリッスンを開始する。
 

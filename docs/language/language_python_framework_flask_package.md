@@ -15,7 +15,7 @@ description: パッケージ＠Flaskの知見を記録しています。
 
 ## 01. authlib.integrations.flask_client
 
-### authlib.integrations.flask_clientとは
+### authlib.integrations.flask_client とは
 
 > - https://github.com/lepture/authlib/tree/master/authlib/integrations/flask_client
 
@@ -196,7 +196,7 @@ def home():
 
 ## 02. flask_oidc.OpenIDConnect
 
-### flask_oidc.OpenIDConnectとは
+### flask_oidc.OpenIDConnect とは
 
 ```python
 from flask_oidc import OpenIDConnect

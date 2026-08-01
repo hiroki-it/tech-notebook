@@ -17,16 +17,16 @@ description: 汎用ロジック＠マイクロサービスの知見を記録し�
 
 ### 汎用パッケージ
 
-#### ▼ telemetryパッケージ
+#### ▼ telemetry パッケージ
 
 ```yaml
 telemetry/
 ├── README.md
 ├── go.mod
 ├── go.sum
-├── logger.go # Goのロガーを使用したセットアップ処理を実装する
-├── metrics.go # prometheusパッケージを使用したセットアップ処理を実行する
-└── trace.go # opentelemetryパッケージを使用したセットアップ処理を実行する
+├── logger.go # Go のロガーを使用したセットアップ処理を実装する
+├── metrics.go # prometheus パッケージを使用したセットアップ処理を実行する
+└── trace.go # opentelemetry パッケージを使用したセットアップ処理を実行する
 ```
 
 #### ▼ logger.go

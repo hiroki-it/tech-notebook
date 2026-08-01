@@ -13,7 +13,7 @@ description: YAML：YAML Ain't a Markup Language＠データ記述型言語の�
 
 <br>
 
-## 01. YAMLとは
+## 01. YAML とは
 
 異なる言語間やサーバー間で変換できるデータ記述型言語である。
 

@@ -17,7 +17,7 @@ description: パッケージ＠Node.jsの知見を記録しています。
 
 ### pino
 
-#### ▼ pinoとは
+#### ▼ pino とは
 
 Node.js のロガーである。
 
@@ -36,7 +36,7 @@ Node.js のロガーは通常バックエンドでしか使用できないが、
 }
 ```
 
-#### ▼ info関数 (そのほか、error関数など)
+#### ▼ info 関数 (そのほか、error 関数など)
 
 指定のログレベルのメッセージを出力する。
 
@@ -138,7 +138,7 @@ function getTraceId(headers) {
 > - https://zenn.dev/itte/articles/ce93b081048691#%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B
 > - https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/
 
-#### ▼ browserモジュール
+#### ▼ browser モジュール
 
 ```javascript
 import pino from "pino/browser";
@@ -157,7 +157,7 @@ logger.error({err: new Error("error!")}, "エラー発生");
 
 ### winston
 
-#### ▼ winstonとは
+#### ▼ winston とは
 
 Node.js のロガーである。
 
@@ -223,24 +223,24 @@ export const logger = winston.createLogger({
 
 #### ▼ 環境変数
 
-|             |                                                                      |
-| ----------- | -------------------------------------------------------------------- |
-| `LOG_LEVEL` | ログレベルを設定する。                                               |
-| `LOG_QUIET` | ログ出力の有無を設定する。場合によっては、CI環境でログを無効化する。 |
+|             |                                                                       |
+| ----------- | --------------------------------------------------------------------- |
+| `LOG_LEVEL` | ログレベルを設定する。                                                |
+| `LOG_QUIET` | ログ出力の有無を設定する。場合によっては、CI 環境でログを無効化する。 |
 
 ```yaml
-# infoレベル
+# info レベル
 {message: "test", level: "info", time: "2025-05-27T21:47:28.454+09:00"}
 ```
 
 ```yaml
-# errorレベル
+# error レベル
 {message: "test", level: "error", time: "2025-05-27T21:47:28.454+09:00"}
 ```
 
 <br>
 
-## 02. node.jsのプロセスの操作
+## 02. node.js のプロセスの操作
 
 ### 新しいプロセスの実行
 

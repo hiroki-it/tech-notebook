@@ -3,7 +3,7 @@ title: 【IT技術の知見】YAMLクエリ＠クエリロジック
 description: YAMLクエリ＠クエリロジックの知見を記録しています。
 ---
 
-# YAMLクエリ＠クエリロジック
+# YAML クエリ＠クエリロジック
 
 ## はじめに
 
@@ -17,7 +17,7 @@ description: YAMLクエリ＠クエリロジックの知見を記録していま
 
 ### セットアップ
 
-#### ▼ GitHubリポジトリから
+#### ▼ GitHub リポジトリから
 
 ```bash
 # GitHubのバイナリファイルのリリースページから、テキストのURLを取得する。
@@ -29,7 +29,7 @@ $ sudo chmod +x /usr/local/bin/yq
 
 ## 01-02. オプション
 
-### 例で使用するYAML
+### 例で使用する YAML
 
 以降で使用する YAML データを以下の通りとする。
 
@@ -64,7 +64,7 @@ $ find ./* -name "*.yaml" -exec yq 'del(.spec.foo)' -i {} \;
 
 ### keys
 
-#### ▼ keysとは
+#### ▼ keys とは
 
 キー名を取得する。
 
@@ -91,7 +91,7 @@ $ yq -i '.metadata.namespace = "foo"' manifest.yaml
 
 ### -P
 
-#### ▼ -Pとは
+#### ▼ -P とは
 
 `json` ファイルを `yaml` ファイルに変換する。
 
@@ -103,7 +103,7 @@ $ yq -P foo.json > foo.yaml
 
 ## 01-03. reduce
 
-### reduceとは
+### reduce とは
 
 入力された `yaml` ファイルを処理し、新しい `yaml` ファイルとして出力する。
 
@@ -111,7 +111,7 @@ $ yq -P foo.json > foo.yaml
 
 ## 01-04. ireduce
 
-### ireduceとは
+### ireduce とは
 
 ```bash
 $ yq eval-all '. as $item ireduce ({}; . * $item )' foo.yaml bar.yaml

@@ -3,7 +3,7 @@ title: 【IT技術の知見】helmプラグイン＠コマンド
 description: helmプラグイン＠コマンドの知見を記録しています。
 ---
 
-# helmプラグイン＠コマンド
+# helm プラグイン＠コマンド
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: helmプラグイン＠コマンドの知見を記録しています
 
 ## 01. helm-dashboard
 
-### helm-dashboardとは
+### helm-dashboard とは
 
 `helm` コマンドで確認できる情報 (例：インストールされている Helm チャート、リビジョン履歴など) をダッシュボードで表示する。
 
@@ -45,7 +45,7 @@ $ helm dashboard
 
 ## 02. helm-diff
 
-### helm-diffとは
+### helm-diff とは
 
 3 方向の戦略的マージパッチを使用して、『`helm get` コマンドによる最新のリリースによるマニフェスト』『`helm template` コマンドによる現在のチャートによるマニフェスト』『前回リリース後の Helm 以外の方法によるマニフェスト』を比較する。
 
@@ -77,7 +77,7 @@ Amazon S3 をチャートリポジトリとして使用するために、チャ�
 
 ## 04. helm-secrets
 
-### helm-secretsとは
+### helm-secrets とは
 
 暗号化ツールを使用して、`values` ファイルを復号し、Secret のデータとして注入する。
 
@@ -109,7 +109,7 @@ Secret の元となるデータを管理するバックエンドとして、以�
 
 <br>
 
-## 04-02. バックエンドがSOPSの場合
+## 04-02. バックエンドが SOPS の場合
 
 ### 注意点
 
@@ -126,7 +126,7 @@ zendesk 製を使用している場合、SOPS の `secrets` ファイルの名�
 
 <br>
 
-### secretsサブコマンド無しの場合
+### secrets サブコマンド無しの場合
 
 #### ▼ `secrets://`
 
@@ -155,7 +155,7 @@ $ helm secrets template <チャートへのパス> -f <SOPSが作成したsecret
 以下のような SOPS の `secrets` ファイルがあるとする。
 
 ```yaml
-# secretsファイル
+# secrets ファイル
 foo: F799Q8CQ...
 
 sops:
@@ -167,7 +167,7 @@ sops:
 
   ...
 
-  # 暗号化時に使用したSOPSのバージョン
+  # 暗号化時に使用した SOPS のバージョン
   version: 3.7.0
 ```
 
@@ -218,7 +218,7 @@ Decrypting ./values/secrets.yaml
 ```
 
 ```yaml
-# .yaml.decファイル
+# .yaml.dec ファイル
 db:
   user: root
   password: password

@@ -17,7 +17,7 @@ description: apache.conf@Apacheの知見を記録しています。
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ apt install apache2
@@ -66,11 +66,11 @@ Include ディレクティブを使用すれば、任意の名前で設定ファ
 
 <br>
 
-## 03. Coreにおける設定ディレクティブ
+## 03. Core における設定ディレクティブ
 
 ### ServerRoot
 
-#### ▼ ServerRootとは
+#### ▼ ServerRoot とは
 
 他の設定ディレクティブで、相対パスが設定されている場合に適用される。
 
@@ -94,7 +94,7 @@ ServerRoot /opt/rh/httpd24/root/etc/httpd
 
 ### VirtualHost
 
-#### ▼ VirtualHostとは
+#### ▼ VirtualHost とは
 
 ディレクティブを囲うディレクティブの一種。
 
@@ -123,11 +123,11 @@ NameVirtualHost *:80
 </VirtualHost>
 ```
 
-#### ▼ IPベースVirtualHost
+#### ▼ IP ベース VirtualHost
 
 各ドメインに異なる IP アドレスを割り振る仮想ホスト。
 
-#### ▼ 名前ベースVirtualHost
+#### ▼ 名前ベース VirtualHost
 
 すべてのドメインに同じ IP アドレスを割り振る仮想ホスト。
 
@@ -135,7 +135,7 @@ NameVirtualHost *:80
 
 ### DocumentRoot
 
-#### ▼ DocumentRootとは
+#### ▼ DocumentRoot とは
 
 ドキュメントのルートディレクトリを設定する。
 
@@ -165,7 +165,7 @@ index.html 以外の名前をエントリーポイントにする場合、ファ
 
 ### Directory
 
-#### ▼ Directoryとは
+#### ▼ Directory とは
 
 ディレクティブを囲うディレクティブの一種。
 
@@ -184,7 +184,7 @@ index.html 以外の名前をエントリーポイントにする場合、ファ
 
 ### User、Group
 
-#### ▼ Userとは
+#### ▼ User とは
 
 httpd プロセスのユーザー名を設定する。
 
@@ -196,7 +196,7 @@ httpd プロセスによって作成されたファイルの所有者名は、�
 User apache
 ```
 
-#### ▼ Groupとは
+#### ▼ Group とは
 
 httpd プロセスのグループ名を設定する。
 
@@ -248,7 +248,7 @@ MaxKeepAliveRequests 1000
 
 <br>
 
-## 03-02. mod_soにおける設定ディレクティブ
+## 03-02. mod_so における設定ディレクティブ
 
 ### LoadModule
 
@@ -269,11 +269,11 @@ LoadModule dir_module modules/mod_dir.so
 
 <br>
 
-## 03-03. mod_dirにおける設定ディレクティブ
+## 03-03. mod_dir における設定ディレクティブ
 
 ### DirectoryIndex
 
-#### ▼ DirectoryIndexとは
+#### ▼ DirectoryIndex とは
 
 Directory ディレクティブによってリクエストされたディレクトリのインデックスファイルをレスポンスする。
 
@@ -298,7 +298,7 @@ Directory ディレクティブによってリクエストされたディレク�
 
 ### AllowOverride
 
-#### ▼ AllowOverrideとは
+#### ▼ AllowOverride とは
 
 別に用意した `.htaccess` ファイルにて、有効化するディレクティブを設定する。
 
@@ -343,11 +343,11 @@ AllowOverride Indexes
 
 <br>
 
-## 03-04. mod_writeにおける設定ディレクティブ
+## 03-04. mod_write における設定ディレクティブ
 
 ### RewriteCond
 
-#### ▼ RewriteCondとは
+#### ▼ RewriteCond とは
 
 条件分岐と、それによる処理を設定する。
 
@@ -373,7 +373,7 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 
 > - https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html
 
-#### ▼ RewriteRuleとは
+#### ▼ RewriteRule とは
 
 条件分岐による処理を設定する。
 
@@ -391,11 +391,11 @@ RewriteRule ^(.*)?$ https://%{HTTP_HOST}$1 [R=301,L]
 
 <br>
 
-## 03-05. mod_setenvifにおける設定ディレクティブ
+## 03-05. mod_setenvif における設定ディレクティブ
 
 ### SetEnvIf
 
-#### ▼ SetEnvIfとは
+#### ▼ SetEnvIf とは
 
 条件分岐と環境変数の設定を設定する。
 
@@ -410,11 +410,11 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 
 <br>
 
-## 03-06. mod_log_configにおける設定ディレクティブ
+## 03-06. mod_log_config における設定ディレクティブ
 
 ### LogFormat
 
-#### ▼ LogFormatとは
+#### ▼ LogFormat とは
 
 アクセスログファイルの書式を設定する。
 
@@ -464,7 +464,7 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 ### ErrorLog
 
-#### ▼ ErrorLogとは
+#### ▼ ErrorLog とは
 
 エラーログファイルの書式を設定する。
 
@@ -482,7 +482,7 @@ ErrorLog /var/log/httpd/error_log
 
 ### LogLevel
 
-#### ▼ LogLevelとは
+#### ▼ LogLevel とは
 
 ログに出力する下限のレグレベルを設定する。
 
@@ -492,11 +492,11 @@ LogLevel warn
 
 <br>
 
-## 03-07. mod_sslにおける設定ディレクティブ
+## 03-07. mod_ssl における設定ディレクティブ
 
 ### SSLCertificateFile
 
-#### ▼ SSLCertificateFileとは
+#### ▼ SSLCertificateFile とは
 
 PKI における公開鍵の検証に必要なサーバー証明書のディレクトリを設定する。
 
@@ -512,7 +512,7 @@ SSLCertificateFile /etc/httpd/conf.d/server.crt
 
 ### SSLCertificateKeyFile
 
-#### ▼ SSLCertificateKeyFileとは
+#### ▼ SSLCertificateKeyFile とは
 
 PKI における公開鍵の検証に必要な秘密鍵のディレクトリを設定する。
 
@@ -524,11 +524,11 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 <br>
 
-## 03-08. mod_headersにおける設定ディレクティブ
+## 03-08. mod_headers における設定ディレクティブ
 
 ### Header
 
-#### ▼ Headerとは
+#### ▼ Header とは
 
 レスポンスヘッダーを設定する。
 

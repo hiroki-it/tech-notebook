@@ -396,7 +396,7 @@ echo $sum;
 
 ### continue
 
-#### ▼ continueとは
+#### ▼ continue とは
 
 反復処理の現在のループをスキップし、次のループを開始する。
 
@@ -420,7 +420,7 @@ foreach ($array as $key => $value) {
 // 5は奇数です
 ```
 
-#### ▼ array_walkを使用した代替法
+#### ▼ array_walk を使用した代替法
 
 反復処理のループを `continue` でスキップするときと同じ動作を、配列を処理する関数のコールバック関数の早期リターンで実現できる。
 
@@ -450,7 +450,7 @@ array_walk($array, function ($value, $key) {
 
 ### break
 
-#### ▼ breakとは
+#### ▼ break とは
 
 反復処理の現在のループを停止し、以降のループも実行しない。
 

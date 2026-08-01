@@ -3,7 +3,7 @@ title: 【IT技術の知見】Redash＠BIツール
 description: Redash＠BIツールの知見を記録しています。
 ---
 
-# Redash＠BIツール
+# Redash＠BI ツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Redash＠BIツールの知見を記録しています。
 
 <br>
 
-## 01. Redashとは
+## 01. Redash とは
 
 SQLite で DB にクエリを送信し、ユーザー定義のビジネス成果指標のメトリクスの元になるデータポイントを作成する。
 

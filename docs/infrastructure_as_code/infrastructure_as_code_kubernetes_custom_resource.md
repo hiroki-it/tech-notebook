@@ -58,9 +58,9 @@ Failed to render chart: exit status 1: Error: unable to build kubernetes objects
 
 メモ程度に、カスタムリソースで起こった固有の問題を記載しておく。
 
-| 問題                                                                                                                                                                       | 解決策                                                                                                                                                                                                         | 該当のカスタムリソース |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| `.spec.affinity` キーの変更を適用するために、Podを再スケジューリングさせた。`.spec.affinity` キーの設定が機能せず、変更前と同じNodeにPodが再スケジューリングされてしまう。 | PersistentVolumeが再作成されておらず、既存のPersistentVolumeに紐付けるために、同じNodeにPodを再スケジューリングさせている可能性がある。Podを再スケジューリングさせた後に、すぐにPersistentVolumeも再作成する。 | Prometheus系           |
+| 問題                                                                                                                                                                           | 解決策                                                                                                                                                                                                                  | 該当のカスタムリソース |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| `.spec.affinity` キーの変更を適用するために、Pod を再スケジューリングさせた。`.spec.affinity` キーの設定が機能せず、変更前と同じ Node にPod が再スケジューリングされてしまう。 | PersistentVolume が再作成されておらず、既存の PersistentVolume に紐付けるために、同じ Node にPod を再スケジューリングさせている可能性がある。Pod を再スケジューリングさせた後に、すぐに PersistentVolume も再作成する。 | Prometheus 系          |
 
 <br>
 
@@ -84,7 +84,7 @@ CRD とカスタムリソースを含むチャートをインストールする�
 
 <br>
 
-### Custom Controllerによる管理
+### Custom Controller による管理
 
 #### ▼ 非チャートとして
 
@@ -98,7 +98,7 @@ Custom Controller のチャートをインストールし、後は Custom Contro
 
 ## 03. CRD
 
-### CRDとは
+### CRD とは
 
 カスタムリソースを宣言的に定義する。
 
@@ -139,8 +139,8 @@ apiVersion: apiextensions.k8s.io/v1
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  # pluralキー名は、foos
-  # groupキー名は、example.com
+  # plural キー名は、foos
+  # group キー名は、example.com
   name: foos.example.com
 ```
 
@@ -148,7 +148,7 @@ metadata:
 
 ### .spec.group
 
-#### ▼ groupとは
+#### ▼ group とは
 
 カスタムリソースが所属する API グループの名前を設定する。
 
@@ -170,7 +170,7 @@ spec:
 
 ### .spec.scope
 
-#### ▼ scopeとは
+#### ▼ scope とは
 
 カスタムリソースを『Namespaced スコープ』あるいは『Cluster スコープ』な Kubernetes リソースとするかを設定する。
 
@@ -188,7 +188,7 @@ spec:
 > - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
 > - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
 
-#### ▼ Clusterの場合
+#### ▼ Cluster の場合
 
 同じカスタムリソースが Cluster 内に `1` 個のみ存在できるようにする。
 
@@ -206,7 +206,7 @@ spec:
 > - https://uzimihsr.github.io/post/2021-07-12-kubernetes-crd-controller-practice/#crd%E3%81%AE%E4%BD%9C%E6%88%90
 > - https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/
 
-#### ▼ Namespacedの場合
+#### ▼ Namespaced の場合
 
 同じカスタムリソースが Namespace 内に `1` 個のみ存在できるようにする。
 
@@ -228,7 +228,7 @@ spec:
 
 ### .spec.names
 
-#### ▼ namesとは
+#### ▼ names とは
 
 カスタムリソースの名前を設定する。
 
@@ -328,7 +328,7 @@ $ kubectl get fo
 
 ### .spec.versions
 
-#### ▼ versionsとは
+#### ▼ versions とは
 
 CRD に対応するカスタムリソースに関して、API グループのバージョンを設定する。
 
@@ -408,11 +408,11 @@ spec:
             spec:
               type: object
               properties:
-                # カスタムリソースの.spec.messageキーに文字列を設定できるようになる。
+                # カスタムリソースの.spec.message キーに文字列を設定できるようになる。
                 message:
                   # 説明文
                   description: Echo message
-                  # string型
+                  # string 型
                   type: string
 ```
 

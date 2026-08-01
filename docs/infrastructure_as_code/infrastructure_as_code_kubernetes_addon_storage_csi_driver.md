@@ -3,7 +3,7 @@ title: 【IT技術の知見】ストレージCSIドライバー＠ストレー�
 description: ストレージCSIドライバー＠ストレージ系の知見を記録しています。
 ---
 
-# ストレージCSIドライバー＠ストレージ系
+# ストレージ CSI ドライバー＠ストレージ系
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: ストレージCSIドライバー＠ストレージ系の知見を�
 
 <br>
 
-## 01. ストレージCSIドライバーとは
+## 01. ストレージ CSI ドライバーとは
 
 StorageClass に合わせて PersistentVolume を自動的に作成する。
 
@@ -21,7 +21,7 @@ StorageClass に合わせて PersistentVolume を自動的に作成する。
 
 <br>
 
-## 02. ストレージCSIドライバーの種類
+## 02. ストレージ CSI ドライバーの種類
 
 ### HostPath CSI
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】Amazon RDS＠AWSリソース
 description: Amazon RDS＠AWSリソース
 ---
 
-# Amazon RDS＠AWSリソース
+# Amazon RDS＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Amazon RDS＠AWSリソース
 
 <br>
 
-## 01. Amazon RDSとは
+## 01. Amazon RDS とは
 
 記入中...
 
@@ -21,15 +21,15 @@ description: Amazon RDS＠AWSリソース
 
 ## 02. セットアップ (コンソールの場合)
 
-## 2-02. セットアップ (Terraformの場合)
+## 2-02. セットアップ (Terraform の場合)
 
 ```terraform
 # 記入中...
 ```
 
-### 他のDBエンジンの比較
+### 他の DB エンジンの比較
 
-#### ▼ DBMSに対応するRDB
+#### ▼ DBMS に対応する RDB
 
 | DBMS                | RDB        | 互換性           |
 | ------------------- | ---------- | ---------------- |
@@ -48,9 +48,9 @@ RDB が Amazon Aurora か Amazon RDS かで機能に差があり、Amazon Aurora
 
 <br>
 
-### OSの隠蔽
+### OS の隠蔽
 
-#### ▼ OSの隠蔽とは
+#### ▼ OS の隠蔽とは
 
 Amazon RDS は、EC2 内に DBMS が稼働したものであるが、このほとんどが隠蔽されている。
 
@@ -207,12 +207,12 @@ $ aws rds modify-db-instance \
 | インスタンスクラス                   | あり               | ・`2` 個のインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかるとおり、長いダウンタイム (約 `6`～`8` 分) が発生する。そのため、フェイルオーバーを利用したダウンタイムの最小化を行う。<br>・https://dev.classmethod.jp/articles/rds-scaleup-instancetype/ <br>・プライマリーインスタンスのイベント<br>![rds_change-instance-class_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_primary-instance.png)<br>・リードレプリカのイベント<br>![rds_change-instance-class_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_read-replica.png) |
 | サブネットグループ                   | あり               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | メンテナンスウィンドウ               | 条件付きでなし     | ダウンタイムが発生する操作が保留中になっている状態で、メンテナンス時間を現在が含まれるように変更すると、保留中の操作がすぐに適用される。そのため、ダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| パフォーマンスインサイト             | 条件付きでなし     | パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメーターグループの `performance_schema` を有効化する必要がある。パラメーターグループの変更をDBインスタンスに反映させるうえで再起動が必要なため、ここでダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| パフォーマンスインサイト             | 条件付きでなし     | パフォーマンスインサイトの有効化ではダウンタイムが発生しない。ただし、有効化のためにパラメーターグループの `performance_schema` を有効化する必要がある。パラメーターグループの変更を DB インスタンスに反映させるうえで再起動が必要なため、ここでダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | バックアップウインドウ               | 条件付きでなし     | `0` から `0` 以外の値、`0` 以外の値から `0` に変更した場合、ダウンタイムが発生する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| パラメーターグループ                 | なし               | パラメーターグループ自体の変更ではダウンタイムは発生しない。また、静的パラメーターはパラメーターグループの変更に合わせて適用される。ただし、動的パラメーターを変更した場合は、これをDBインスタンスに反映させるために再起動が必要であり、ここでダウンタイムが発生する。<br>https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html                                                                                                                                                                                                                                                                                                                                                                                                  |
+| パラメーターグループ                 | なし               | パラメーターグループ自体の変更ではダウンタイムは発生しない。また、静的パラメーターはパラメーターグループの変更に合わせて適用される。ただし、動的パラメーターを変更した場合は、これを DB インスタンスに反映させるために再起動が必要であり、ここでダウンタイムが発生する。<br>https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html                                                                                                                                                                                                                                                                                                                                                                                                |
 | セキュリティグループ                 | なし               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | マイナーバージョン自動アップグレード | なし               | エンジンバージョンの変更にはダウンタイムが発生するが、自動アップグレードの設定にはダウンタイムが発生しない。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| ストレージのAutoScaling              | なし               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ストレージの AutoScaling             | なし               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
 
@@ -220,7 +220,7 @@ $ aws rds modify-db-instance \
 
 ## 06. フェイルオーバー
 
-### Amazon RDSのフェイルオーバーとは
+### Amazon RDS のフェイルオーバーとは
 
 スタンバイレプリカがプライマリーインスタンスに昇格する。
 
@@ -262,9 +262,9 @@ DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用�
 
 <br>
 
-## 08. Amazon RDSプロキシ
+## 08. Amazon RDS プロキシ
 
-### Amazon RDSプロキシとは
+### Amazon RDS プロキシとは
 
 クラウド DB プロキシとして働く。
 
@@ -291,7 +291,7 @@ Amazon RDS プロキシは、Amazon RDS の同時接続の上限数を考慮し�
 
 ### ユースケース
 
-#### ▼ AWS LambdaのデータベースにAmazon RDSを使用する場合
+#### ▼ AWS Lambda のデータベースに Amazon RDS を使用する場合
 
 リクエスト駆動型アプリケーションの場合、複数のリクエストに対して単一の DB 接続を再利用できる。
 

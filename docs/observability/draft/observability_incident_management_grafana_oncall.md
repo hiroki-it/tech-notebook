@@ -13,13 +13,13 @@ description: Grafana OnCall＠インシデント管理ツールの知見を記�
 
 <br>
 
-## 01. Grafana OnCallとは
+## 01. Grafana OnCall とは
 
 記入中...
 
 <br>
 
-## 01. Grafana OnCallの仕組み
+## 01. Grafana OnCall の仕組み
 
 Grafana OnCall は、Grafana OnCall Engine、DB、から構成されている。
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】AWS EBS CSIドライバー＠Amazon EKSアドオ�
 description: AWS EBS CSIドライバー＠Amazon EKSアドオンの知見を記録しています。
 ---
 
-# AWS EBS CSIドライバー＠Amazon EKSアドオン
+# AWS EBS CSI ドライバー＠Amazon EKS アドオン
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: AWS EBS CSIドライバー＠Amazon EKSアドオンの知見を記�
 
 <br>
 
-## 01. AWS EBS CSIドライバー
+## 01. AWS EBS CSI ドライバー
 
 ### アーキテクチャ
 
@@ -29,9 +29,9 @@ PersistentVolume に AWS EBS を紐付け、Pod が AWS EBS を PersistentVolume
 
 ## 02. セットアップ
 
-### EKSアドオンとして
+### EKS アドオンとして
 
-#### ▼ Terraformの場合
+#### ▼ Terraform の場合
 
 Terraform を使用する。
 
@@ -130,7 +130,7 @@ metadata:
 
 IRSA により、ServiceAccount を介して Pod と AWS IAM ロールが紐づく。
 
-#### ▼ Helmの場合
+#### ▼ Helm の場合
 
 Helm を使用する。
 
@@ -158,7 +158,7 @@ AWS EBS CSI ドライバーは、Deployment (ebs-csi-controller) 、ServiceAccou
 
 <br>
 
-### Deployment配下のPod
+### Deployment 配下の Pod
 
 記入中...
 
@@ -206,9 +206,9 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   csi:
-    # AWS EBS CSIドライバーをプロビジョナーに設定する
+    # AWS EBS CSI ドライバーをプロビジョナーに設定する
     driver: ebs.csi.aws.com
-    # 手動で作成したAWS EBSのIDを設定する。
+    # 手動で作成した AWS EBS のID を設定する。
     volumeHandle: vol-*****
 ```
 
@@ -303,7 +303,7 @@ metadata:
 parameters:
   type: gp3
 provisioner: ebs.csi.aws.com
-# PersistentVolumeClaimが削除された時に、AWS EBSも自動的に削除できるようにする
+# PersistentVolumeClaim が削除された時に、AWS EBS も自動的に削除できるようにする
 reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
 ```
@@ -353,7 +353,7 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  # AWS EBS CSIドライバーがプロビジョナーに指定されたStorageClassを要求する
+  # AWS EBS CSI ドライバーがプロビジョナーに指定された StorageClass を要求する
   storageClassName: foo-storage-class
 ```
 

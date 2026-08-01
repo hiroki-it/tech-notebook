@@ -3,7 +3,7 @@ title: 【IT技術の知見】Code兄弟＠AWSリソース
 description: Code兄弟＠AWSリソースの知見を記録しています。
 ---
 
-# Code兄弟＠AWSリソース
+# Code 兄弟＠AWS リソース
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: Code兄弟＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. Code兄弟サービス
+## 01. Code 兄弟サービス
 
-### Code兄弟サービス
+### Code 兄弟サービス
 
 #### ▼ CodePipeline
 
@@ -43,7 +43,7 @@ CodeCommit は、他のコード管理サービスで代用できる。
 
 ### `buildspec.yml` ファイル
 
-#### ▼ Amazon ECSの場合
+#### ▼ Amazon ECS の場合
 
 Amazon ECS のために、CodeBuild の設定する。
 
@@ -67,9 +67,9 @@ phases:
       docker: 18
   preBuild:
     commands:
-      # Amazon ECRにログイン
+      # Amazon ECR にログイン
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
-      # Amazon ECRのURLをCodeBuildの環境変数から作成
+      # Amazon ECR のURL をCodeBuild の環境変数から作成
       - REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}
       # バージョンタグはコミットのハッシュ値を使用
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
@@ -82,11 +82,11 @@ phases:
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   postBuild:
     commands:
-      # Amazon ECRにコンテナイメージをプッシュする。
-      # コミットハッシュ値のタグの前に、latestタグのコンテナイメージをプッシュしておく。
+      # Amazon ECR にコンテナイメージをプッシュする。
+      # コミットハッシュ値のタグの前に、latest タグのコンテナイメージをプッシュしておく。
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      # Amazon ECRにあるデプロイ先のコンテナイメージの情報 (imageDetail.json)
+      # Amazon ECR にあるデプロイ先のコンテナイメージの情報 (imageDetail.json)
       - printf '[{"name":"hello-world","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 
 # デプロイ対象とするビルドのアーティファクト
@@ -108,7 +108,7 @@ artifacts:
 
 ### インプレースデプロイメント
 
-#### ▼ CodeDeployエージェント
+#### ▼ CodeDeploy エージェント
 
 オンプレミスサーバーに CodeDeploy エージェントをインストールし、CodeDeploy エージェントにサーバー情報を登録する必要がある。
 
@@ -121,7 +121,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 <br>
 
-## 04. CodeDeploy (Amazon EC2の場合)
+## 04. CodeDeploy (Amazon EC2 の場合)
 
 ### 利用できるデプロイメント手法
 
@@ -143,7 +143,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 <br>
 
-## 04-02. CodeDeploy (AWS Lambdaの場合)
+## 04-02. CodeDeploy (AWS Lambda の場合)
 
 ### 利用できるデプロイメント手法
 
@@ -153,7 +153,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 <br>
 
-## 04-03. CodeDeploy (Amazon ECSの場合)
+## 04-03. CodeDeploy (Amazon ECS の場合)
 
 ### 利用できるデプロイメント手法
 
@@ -174,7 +174,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 ```yaml
 [
   {
-    "imageUri": "<イメージリポジトリURL>", # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
+    "imageUri": "<イメージリポジトリURL>", # <AWS アカウント ID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "name": "<コンテナ名>",
   },
 ]
@@ -240,10 +240,10 @@ version: 0.0
 
 Resources:
   - TargetService:
-      # 使用するAWSリソース
+      # 使用する AWS リソース
       Type: AWS::Amazon ECS::Service
       Properties:
-        # 使用するAmazon ECSタスク定義
+        # 使用する Amazon ECS タスク定義
         TaskDefinition: "<TASK_DEFINITION>"
         # 使用するロードバランサー
         LoadBalancerInfo:
@@ -290,18 +290,18 @@ CodeDeploy は、CodeBuild から渡された `imageDetail.json` ファイルを
             {
               # コンテナポート
               "containerPort": 80,
-              # Amazon ECSのホストのポート
+              # Amazon ECS のホストのポート
               "hostPort": 80,
               "protocol": "tcp",
             },
           ],
         "secrets": [
-            # データ永続化用のDBの接続情報
+            # データ永続化用の DB の接続情報
             {"name": "DB_HOST", "valueFrom": "/ecs/DB_HOST"},
             {"name": "DB_DATABASE", "valueFrom": "/ecs/DB_DATABASE"},
             {"name": "DB_PASSWORD", "valueFrom": "/ecs/DB_PASSWORD"},
             {"name": "DB_USERNAME", "valueFrom": "/ecs/DB_USERNAME"},
-            # セッションキャッシュ用のインメモリDBの接続情報
+            # セッションキャッシュ用のインメモリ DB の接続情報
             {"name": "REDIS_HOST", "valueFrom": "/ecs/REDIS_HOST"},
             {"name": "REDIS_PASSWORD", "valueFrom": "/ecs/REDIS_PASSWORD"},
             {"name": "REDIS_PORT", "valueFrom": "/ecs/REDIS_PORT"},
@@ -327,9 +327,9 @@ CodeDeploy は、CodeBuild から渡された `imageDetail.json` ファイルを
 
 <br>
 
-## 04-04. CodeDeployと他のAWSリソースとの連携
+## 04-04. CodeDeploy と他の AWS リソースとの連携
 
-### AutoScalingグループ
+### AutoScaling グループ
 
 > - https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
 

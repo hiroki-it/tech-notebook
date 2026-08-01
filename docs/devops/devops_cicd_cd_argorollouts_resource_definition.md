@@ -15,7 +15,7 @@ description: リソース定義＠Argo Rolloutsの知見を記録しています
 
 ## 01. Rollout
 
-### Rolloutとは
+### Rollout とは
 
 Kubernetes の Deployment に代わって、Pod のライフサイクルを管理する。
 
@@ -25,7 +25,7 @@ Deployment よりも複雑な手法で Pod をデプロイできる。
 
 ### .spec.analysis
 
-#### ▼ analysisとは
+#### ▼ analysis とは
 
 Progressive Delivery を使用する場合、詳細を設定する。
 
@@ -61,7 +61,7 @@ spec:
 
 ### .spec.strategy
 
-#### ▼ strategyとは
+#### ▼ strategy とは
 
 デプロイ手法を設定する。
 
@@ -77,11 +77,11 @@ ArgoCD の `strategy` オプションを使用することにより、これら�
 
 | 設定項目                | 説明                                                                                                                                                     |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `activeService`         | 現環境へのルーティングに使用するServiceを設定する。                                                                                                      |
+| `activeService`         | 現環境へのルーティングに使用する Service を設定する。                                                                                                    |
 | `autoPromotionEnabled`  | 現環境から新環境への自動切り替えを有効化するか否かを設定する。もし無効化した場合、`autoPromotionSeconds` の秒数だけ切り替えを待機する。                  |
 | `autoPromotionSeconds`  | 現環境から新環境への切り替えを手動で実行する場合、切り替えを待機する最大秒数を設定する。最大秒数が経過すると、自動的に切り替わってしまうことに注意する。 |
-| `previewReplicaCount`   | 新環境のPod数を設定する。                                                                                                                                |
-| `previewService`        | 新環境へのルーティングに使用するServiceを設定する。                                                                                                      |
+| `previewReplicaCount`   | 新環境の Pod 数を設定する。                                                                                                                              |
+| `previewService`        | 新環境へのルーティングに使用する Service を設定する。                                                                                                    |
 | `scaleDownDelaySeconds` |                                                                                                                                                          |
 
 ```yaml
@@ -100,7 +100,7 @@ spec:
       autoPromotionEnabled: "true"
       scaleDownDelaySeconds: 30
   template:
-  # ここでDeploymentと同じような設定を実装する
+  # ここで Deployment と同じような設定を実装する
 ```
 
 > - https://argoproj.github.io/argo-rollouts/features/bluegreen/
@@ -113,9 +113,9 @@ spec:
 
 カナリアリリースを使用して、新しい Pod をデプロイする。
 
-| キー   | 説明                                                                                                                                                      |
-| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `step` | カナリアリリースの手順を設定する。<br>・`setWeight`：新しいPodへの重み付けを設定する。<br>・`pause`：次の手順に移行せずに待機する。待機秒数を設定できる。 |
+| キー   | 説明                                                                                                                                                        |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `step` | カナリアリリースの手順を設定する。<br>・`setWeight`：新しい Pod への重み付けを設定する。<br>・`pause`：次の手順に移行せずに待機する。待機秒数を設定できる。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -133,7 +133,7 @@ spec:
         - pause:
             duration: 10
   template:
-  # ここでDeploymentと同じような設定を実装する
+  # ここで Deployment と同じような設定を実装する
 ```
 
 > - https://argoproj.github.io/argo-rollouts/features/canary/

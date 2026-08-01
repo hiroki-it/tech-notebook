@@ -3,7 +3,7 @@ title: 【IT技術の知見】BigQuery＠Google Cloudリソース
 description: BigQuery＠Google Cloudリソースの知見を記録しています。
 ---
 
-# BigQuery＠Google Cloudリソース
+# BigQuery＠Google Cloud リソース
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: BigQuery＠Google Cloudリソースの知見を記録していま�
 
 ## 01. BigQuery
 
-### BigQueryとは
+### BigQuery とは
 
 データ分析のステップ (収集/加工/保管、クエリ、可視化) のうちで、収集/加工/保管とクエリを担う。
 
@@ -27,7 +27,7 @@ description: BigQuery＠Google Cloudリソースの知見を記録していま�
 
 <br>
 
-### BIツールとの連携
+### BI ツールとの連携
 
 #### ▼ サービスアカウント
 

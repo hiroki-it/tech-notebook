@@ -34,7 +34,7 @@ hide:
 - #### <u>認証</u>
 
   > - ##### [︎認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication.html)
-  > - ##### [︎HTTP認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html)
+  > - ##### [︎HTTP 認証](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_http.html)
   > - ##### <u>認証アーティファクトによる分類</u>
   >   > - ##### [認証アーティファクトによる分類](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts.html)
   >   > - ##### [認証アーティファクトの運搬](https://hiroki-it.github.io/tech-notebook/security/security_auth_authentication_artifacts_carrier.html)

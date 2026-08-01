@@ -13,7 +13,7 @@ description: Backup＠AWSの知見を記録しています。
 
 <br>
 
-## 01. Backupとは
+## 01. Backup とは
 
 記入中...
 
@@ -21,16 +21,16 @@ description: Backup＠AWSの知見を記録しています。
 
 ## 02. セットアップ
 
-### 対応AWSリソース
+### 対応 AWS リソース
 
 > - https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources
 
-| AWSリソースの種類 | バックアップ内容                                                                    |
-| ----------------- | ----------------------------------------------------------------------------------- |
-| Amazon EC2        | Amazon EC2のAWS AMIを作成する。                                                     |
-| Amazon S3         | Amazon S3バケットの中身のバックアップを作成する。                                   |
-| AWS EBSボリューム | AWS EBSボリュームのバックアップを作成する。スナップショットではないことに注意する。 |
-| Amazon Aurora     | Amazon AuroraのDB Cluster全体のバックアップを作成する。                             |
+| AWS リソースの種類 | バックアップ内容                                                                     |
+| ------------------ | ------------------------------------------------------------------------------------ |
+| Amazon EC2         | Amazon EC2 のAWS AMI を作成する。                                                    |
+| Amazon S3          | Amazon S3 バケットの中身のバックアップを作成する。                                   |
+| AWS EBS ボリューム | AWS EBS ボリュームのバックアップを作成する。スナップショットではないことに注意する。 |
+| Amazon Aurora      | Amazon Aurora のDB Cluster 全体のバックアップを作成する。                            |
 
 <br>
 

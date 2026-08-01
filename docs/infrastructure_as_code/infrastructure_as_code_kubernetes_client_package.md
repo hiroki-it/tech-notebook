@@ -15,7 +15,7 @@ description: クライアントパッケージ＠開発の知見を記録して�
 
 ## 01. client-go
 
-### client-goとは
+### client-go とは
 
 Kubernetes の kube-apiserver と通信できるパッケージ。
 
@@ -33,9 +33,9 @@ kube-apiserver の認証/認可を通過するために、`kubeconfig` ファイ
 
 <br>
 
-### client-goパッケージとkube-apiserverのバージョン整合性
+### client-go パッケージと kube-apiserver のバージョン整合性
 
-#### ▼ client-goパッケージとkube-apiserverの間
+#### ▼ client-go パッケージと kube-apiserver の間
 
 `kubectl` コマンドと kube-apiserver のバージョンの整合性と同様にして、client-go パッケージにも kube-apiserver のバージョンと整合性がある。
 
@@ -52,7 +52,7 @@ kube-apiserver とクライアント側のバージョン差は、前方/後方�
 > - https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
 > - https://kubernetes.io/releases/version-skew-policy/#kubectl
 
-#### ▼ client-goパッケージとマニフェストの間
+#### ▼ client-go パッケージとマニフェストの間
 
 Kubernetes のマニフェストには `.apiVersion` キーが定義されている。
 

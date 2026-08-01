@@ -95,7 +95,7 @@ Web ページをテキストによって構成するための言語をマーク�
 
 ## 01-03. JavaScript
 
-### マークアップ言語へのJavaScriptの組み込み
+### マークアップ言語への JavaScript の組み込み
 
 #### ▼ インラインスクリプト
 
@@ -122,10 +122,10 @@ CDN (グローバルなキャッシュサーバー) の仕組みを使用して�
   src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.min.js"
   integrity="sha256-WzuqEKxV9O7ODH5mbq3dUYcrjOknNnFia8zOyPhurXg="
   crossorigin="anonymous"
-></script>
+> </script>
 ```
 
-#### ▼ scriptタグが複数ある場合
+#### ▼ script タグが複数ある場合
 
 `1` 個の Web ページの `html` ファイル内で、script タグが複数に分散していても、Scripting プロセスでは、1 つにまとめて実行される。
 
@@ -221,7 +221,7 @@ localNum
 
 ### Polyfill
 
-#### ▼ Polyfillとは
+#### ▼ Polyfill とは
 
 JavaScript や HTML の更新にブラウザが追いついていない場合、それを補完するように実装されたパッケージのこと。
 
@@ -229,9 +229,9 @@ JavaScript や HTML の更新にブラウザが追いついていない場合、
 
 <br>
 
-## 02. Downloading処理
+## 02. Downloading 処理
 
-### Downloading処理とは
+### Downloading 処理とは
 
 #### ▼ 非同期的な読み出し
 
@@ -247,7 +247,7 @@ JavaScript や HTML の更新にブラウザが追いついていない場合、
 
 Downloading 処理が終了した Web ページから、次の Parse 処理に進んでいく。
 
-#### ▼ Webページの要素の優先順位
+#### ▼ Web ページの要素の優先順位
 
 `(1)`
 
@@ -269,7 +269,7 @@ Downloading 処理が終了した Web ページから、次の Parse 処理に�
 
 ### Pre-Loading
 
-#### ▼ Pre-Loadingとは
+#### ▼ Pre-Loading とは
 
 Downloading 処理の優先順位を上げるように宣言する。
 
@@ -297,7 +297,7 @@ Downloading 処理の優先順位を上げるように宣言する。
 
 ### Lazy Loading (遅延読み出し)
 
-#### ▼ Lazy Loadingとは
+#### ▼ Lazy Loading とは
 
 条件に合致した要素を随時読み込む。
 
@@ -305,11 +305,11 @@ Downloading 処理の優先順位を上げるように宣言する。
 
 画像ファイルの遅延読み出しでは、読み出し前にダミー画像を表示させておき、遅延読み出し時にダミー画像パスを本来の画像パスに上書きする。
 
-#### ▼ scrollイベントとresizeイベントに基づく遅延読み出し
+#### ▼ scroll イベントと resize イベントに基づく遅延読み出し
 
 scroll イベントと resize イベントを監視し、これらのイベントの発火をトリガーにして、画面内に新しく追加された要素を随時読み込む。
 
-#### ▼ Intersection Observerの仕組みに基づく遅延読み出し
+#### ▼ Intersection Observer の仕組みに基づく遅延読み出し
 
 Intersection Observer の仕組みでは、特定の HTML 要素を指定し、これがほかの要素とどのくらい交差しているかを非同期に検知できる。
 
@@ -417,13 +417,13 @@ JSX.Element
 
 ### Eager Loading
 
-#### ▼ Eager Loadingとは
+#### ▼ Eager Loading とは
 
 <br>
 
-## 02-02. Parse処理
+## 02-02. Parse 処理
 
-### Parse処理とは
+### Parse 処理とは
 
 Downloading 処理によって読み込まれた Web ページを翻訳するプロセス
 
@@ -512,9 +512,9 @@ DOM のインターフェースについては、以下のリンクを参考に�
 
 <br>
 
-## 03. Scripting処理
+## 03. Scripting 処理
 
-### Scripting処理とは
+### Scripting 処理とは
 
 サーバーサイドから Web ページ (`html` ファイル、`.css` ファイル、`js` ファイル、画像ファイル) を取得した後、レンダリングエンジンの HTML の解析が `script` タグに到達する。
 
@@ -528,9 +528,9 @@ JavaScript エンジンは、JavaScript コードを機械語に翻訳し、実�
 
 <br>
 
-### JavaScriptエンジン
+### JavaScript エンジン
 
-#### ▼ JavaScriptエンジンとは
+#### ▼ JavaScript エンジンとは
 
 JavaScript のインタプリタのこと。
 
@@ -584,7 +584,7 @@ JavaScript エンジンは、コードを、字句解析、構造解析、意味
 
 <br>
 
-### JS形式におけるイベントハンドラ関数のコール
+### JS 形式におけるイベントハンドラ関数のコール
 
 #### ▼ `document.getElementById.onclick()` 関数
 
@@ -653,9 +653,9 @@ document.getElementById("btn").addEventListener(
 
 <br>
 
-## 04. Rendering処理
+## 04. Rendering 処理
 
-### Rendering処理とは
+### Rendering 処理とは
 
 レンダリングツリーが作成され、ブラウザ上のどこに何を描画するのかを計算する。
 
@@ -663,9 +663,9 @@ CalculateStyle 処理と Layout 処理に分けられる。
 
 <br>
 
-## 04-02. CalculateStyle処理
+## 04-02. CalculateStyle 処理
 
-### CalculateStyle処理とは
+### CalculateStyle 処理とは
 
 レンダリングエンジンは、DOM ツリーのルートのノードから順に CSSOS ツリーを適用し、Render ツリーを作成する。
 
@@ -673,9 +673,9 @@ CalculateStyle 処理と Layout 処理に分けられる。
 
 <br>
 
-## 04-03. Layout処理
+## 04-03. Layout 処理
 
-### Layout処理とは
+### Layout 処理とは
 
 上記で読み込まれた `html` 形式テキストファイルには、ネストされた 2 つの div がある。
 
@@ -687,25 +687,25 @@ CalculateStyle 処理と Layout 処理に分けられる。
 
 <br>
 
-## 05. Paint処理
+## 05. Paint 処理
 
-### Paint処理とは
+### Paint 処理とは
 
 DOM ツリーの各ノードを、ブラウザ上に描画する。
 
 <br>
 
-## 05-02. Rasterize処理
+## 05-02. Rasterize 処理
 
-### Rasterize処理とは
+### Rasterize 処理とは
 
 記入中...
 
 <br>
 
-## 05-03. CompositeLayers処理
+## 05-03. CompositeLayers 処理
 
-### CompositeLaysers処理とは
+### CompositeLaysers 処理とは
 
 記入中...
 

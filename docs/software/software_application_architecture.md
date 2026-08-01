@@ -64,7 +64,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 ### Twelve-Factor
 
-#### ▼ Twelve-Factorとは
+#### ▼ Twelve-Factor とは
 
 Web システムのソフトウェアを開発するうえでのベストプラクティスのこと。
 

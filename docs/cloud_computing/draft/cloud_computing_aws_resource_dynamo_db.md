@@ -3,7 +3,7 @@ title: 【IT技術の知見】AWS DynamoDB＠AWSリソース
 description: AWS DynamoDB＠AWSリソースの知見を記録しています。
 ---
 
-# AWS DynamoDB＠AWSリソース
+# AWS DynamoDB＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: AWS DynamoDB＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. DynamoDBとは
+## 01. DynamoDB とは
 
 記入中...
 
@@ -21,7 +21,7 @@ description: AWS DynamoDB＠AWSリソースの知見を記録しています。
 
 ## 02. セットアップ
 
-### セットアップ(Terraformの場合)
+### セットアップ(Terraform の場合)
 
 ここでは、auth-user サービスがトークンを AWS DynamoDB に保存するとする。
 

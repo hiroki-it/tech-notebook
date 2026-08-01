@@ -13,7 +13,7 @@ description: Notation＠セキュリティ系ミドルウェアの知見を記�
 
 <br>
 
-## 01. Notary Notationの仕組み
+## 01. Notary Notation の仕組み
 
 コンテナイメージを署名し、また署名を検証する。
 

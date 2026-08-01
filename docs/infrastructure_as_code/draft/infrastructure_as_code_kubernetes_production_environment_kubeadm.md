@@ -3,7 +3,7 @@ title: 【IT技術の知見】Kubeadm＠Kubernetesオーケストレーション
 description: Kubeadm＠Kubernetesオーケストレーションツールの知見を記録しています。
 ---
 
-# Kubeadm＠Kubernetesオーケストレーションツール
+# Kubeadm＠Kubernetes オーケストレーションツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Kubeadm＠Kubernetesオーケストレーションツールの知�
 
 <br>
 
-## 01. Clusterの作成
+## 01. Cluster の作成
 
 ### プリフライトチェック
 
@@ -65,7 +65,7 @@ firewalld が有効かどうかをチェックする。
 
 現在、ポート `6443`、`10250、`10251`、`10252`をチェックしています。
 
-#### ▼ HTTPプロキシチェック
+#### ▼ HTTP プロキシチェック
 
 ホストがプロキシの後ろにいるかどうかをチェックする。
 
@@ -97,7 +97,7 @@ sysctl コマンドで一時的に設定するか、/etc/sysctl.conf ファイ�
 
 API Server、Controller Manager、Scheduler の追加引数が有効かどうかをチェックする。
 
-#### ▼ Etcdチェック
+#### ▼ Etcd チェック
 
 etcd のバージョンチェックを行います。
 

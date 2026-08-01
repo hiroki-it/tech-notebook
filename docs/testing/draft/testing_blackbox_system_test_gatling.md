@@ -15,7 +15,7 @@ description: Gatling＠システムテストの知見を記録しています。
 
 ## 01. セットアップ
 
-### yumリポジトリから
+### yum リポジトリから
 
 ```bash
 $ apt-get install gatling

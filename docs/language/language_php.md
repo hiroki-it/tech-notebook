@@ -13,7 +13,7 @@ description: PHPの知見を記録しています。
 
 <br>
 
-## 01. PHPとは
+## 01. PHP とは
 
 記入中...
 
@@ -23,7 +23,7 @@ description: PHPの知見を記録しています。
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 # 外部リポジトリをインストールする。
@@ -44,7 +44,7 @@ $ apt -y install php=1.0.0
 
 ### Dockerfile
 
-#### ▼ Laravel、PHP-FPMを使用する場合
+#### ▼ Laravel、PHP-FPM を使用する場合
 
 ```dockerfile
 #===================
@@ -93,7 +93,7 @@ COPY ../software /var/www/foo/
 
 ### OPcache
 
-#### ▼ OPcacheとは
+#### ▼ OPcache とは
 
 通常、PHP のコードは実行のたびにバイナリ形式のコードに変換される。
 

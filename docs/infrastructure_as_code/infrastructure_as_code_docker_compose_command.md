@@ -17,7 +17,7 @@ description: コマンド＠Docker composeの知見を記録しています。
 
 ### config
 
-#### ▼ configとは
+#### ▼ config とは
 
 バリデーションとして、`docker-compose.yml` ファイルを展開する。
 
@@ -31,7 +31,7 @@ $ docker compose config
 
 ### build
 
-#### ▼ buildとは
+#### ▼ build とは
 
 イメージをビルドする。
 
@@ -47,7 +47,7 @@ $ docker compose build --no-cache
 
 ### up
 
-#### ▼ upとは
+#### ▼ up とは
 
 指定したサービスのコンテナイメージのビルド、コンテナレイヤー作成、コンテナ作成、コンテナを起動する。
 
@@ -99,7 +99,7 @@ $ docker compose up -f foo-docker-compose.yml
 
 ### run
 
-#### ▼ runとは
+#### ▼ run とは
 
 すでに停止中または起動中コンテナが存在していても、これとは別にコンテナを新しく作成し、起動する。
 
@@ -141,7 +141,7 @@ $ docker compose run --rm -d --service-ports <サービス名>
 
 ### stop
 
-#### ▼ stopとは
+#### ▼ stop とは
 
 指定したサービスの起動中コンテナをすべて停止する。
 
@@ -153,7 +153,7 @@ $ docker compose stop <サービス名>
 
 ### down
 
-#### ▼ downとは
+#### ▼ down とは
 
 コンテナを削除する。
 
@@ -185,7 +185,7 @@ $ docker compose down --volumes --remove-orphans --rmi all
 
 ### logs
 
-#### ▼ logsとは
+#### ▼ logs とは
 
 コンテナ内に入ることなく、起動プロセスから出力されるログを確認できる。
 

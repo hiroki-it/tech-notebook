@@ -19,7 +19,7 @@ description: Google Cloud Storage Bucket＠Google Cloudリソースの知見を�
 
 <br>
 
-## セットアップ (Terraformの場合)
+## セットアップ (Terraform の場合)
 
 ```terraform
 // ファイルを保管するバケット

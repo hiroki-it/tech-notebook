@@ -13,7 +13,7 @@ description: nova＠バージョンテストの知見を記録しています。
 
 <br>
 
-## 01. novaの仕組み
+## 01. nova の仕組み
 
 Helm のチャートリポジトリ上のチャートバージョンと、Cluster 上の実際のバージョンを比較して、非推奨な Helm チャートのバージョン（API バージョンではなく）を検出できる。
 
@@ -56,7 +56,7 @@ $ nova find --config nova.yaml
 
 ### find
 
-#### ▼ findとは
+#### ▼ find とは
 
 非推奨なバージョンの Helm チャートを検証する。
 

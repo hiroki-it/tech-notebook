@@ -16,7 +16,7 @@ title: 【IT技術の知見】パッケージ＠JavaScript
 
 ### セットアップ
 
-#### ▼ yumリポジトリから
+#### ▼ yum リポジトリから
 
 ```bash
 # リポジトリの作成
@@ -200,7 +200,7 @@ Composer の `composer.lock` ファイルに相当する。
 
 <br>
 
-## 01-02. npmコマンド
+## 01-02. npm コマンド
 
 ### init
 
@@ -216,7 +216,7 @@ $ npm init
 
 ### install
 
-#### ▼ installとは
+#### ▼ install とは
 
 アプリケーションにて、`package.lock` ファイルに実装されたパッケージのうちで、インスールされていないものをインストールする。
 
@@ -276,7 +276,7 @@ $ npm install --save--dev
 
 ### update
 
-#### ▼ updateとは
+#### ▼ update とは
 
 すべてのパッケージのバージョンを、`package.json` ファイルの範囲内でアップグレードする。
 
@@ -288,7 +288,7 @@ $ npm update
 
 ### run
 
-#### ▼ runとは
+#### ▼ run とは
 
 ユーザーが定義したエイリアスのコマンドを実行する。
 
@@ -334,7 +334,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 
 ### セットアップ
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ apt-get install yarn
@@ -342,7 +342,7 @@ $ apt-get install yarn
 
 > - https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
 
-#### ▼ npmレジストリから
+#### ▼ npm レジストリから
 
 ```bash
 $ npm install --global yarn
@@ -364,11 +364,11 @@ Composer の `composer.lock` ファイルに相当する。
 
 <br>
 
-## 02-02. yarnコマンド
+## 02-02. yarn コマンド
 
 ### add
 
-#### ▼ addとは
+#### ▼ add とは
 
 指定したパッケージのバージョンを、`package.json` ファイルを無視してインストールする。
 
@@ -394,7 +394,7 @@ $ yarn add <パッケージ名>@<バージョンタグ> --dev
 
 ### audit
 
-#### ▼ auditとは
+#### ▼ audit とは
 
 脆弱性のあるパッケージを検出する。
 
@@ -430,7 +430,7 @@ $ yarn build
 
 ### install
 
-#### ▼ installとは
+#### ▼ install とは
 
 指定したバージョンのパッケージを、`package.json` ファイルの範囲内でインストールする。
 
@@ -528,7 +528,7 @@ $ yarn build
 
 ### upgrade
 
-#### ▼ upgradeとは
+#### ▼ upgrade とは
 
 指定したパッケージを `package.json` ファイルの範囲内でアップグレードする。
 

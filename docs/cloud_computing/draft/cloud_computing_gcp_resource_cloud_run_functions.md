@@ -15,17 +15,17 @@ description: Google Cloud Run Functions＠Google Cloudリソースの知見を�
 
 ## セットアップ (コンソールの場合)
 
-| 項目               | 説明                                                                 |
-| ------------------ | -------------------------------------------------------------------- |
-| トリガー           | Google Cloud Run Functionsを発火させる方法を設定する。               |
-| ランタイム         | CloudFunctionで実行するアプリケーションのランタイムを設定する。      |
-| エントリーポイント | Google Cloud Run Functionsのエントリーポイントとする関数を設定する。 |
+| 項目               | 説明                                                                  |
+| ------------------ | --------------------------------------------------------------------- |
+| トリガー           | Google Cloud Run Functions を発火させる方法を設定する。               |
+| ランタイム         | CloudFunction で実行するアプリケーションのランタイムを設定する。      |
+| エントリーポイント | Google Cloud Run Functions のエントリーポイントとする関数を設定する。 |
 
 <br>
 
-## セットアップ (Terraformの場合)
+## セットアップ (Terraform の場合)
 
-### 世代数v1
+### 世代数 v1
 
 ```terraform
 module "lambda_foo" {
@@ -85,7 +85,7 @@ data "google_client_config" "current" {}
 
 > - https://github.com/terraform-google-modules/terraform-google-event-function
 
-### 世代数v2
+### 世代数 v2
 
 ```terraform
 module "lambda_foo" {

@@ -49,9 +49,9 @@ const mycar = new car("Eagle", "Talon TSi", 1993);
 
 <br>
 
-### function命令
+### function 命令
 
-#### ▼ function命令とは
+#### ▼ function 命令とは
 
 オブジェクトではない関数である。
 
@@ -178,7 +178,7 @@ const a = null;
 console.log(a); // null
 ```
 
-#### ▼ undefinedの返却
+#### ▼ undefined の返却
 
 undefined を返却する場合、`return` のみを記述する。
 
@@ -530,7 +530,7 @@ for (const property in object) {
 // baz
 ```
 
-#### ▼ continueとは
+#### ▼ continue とは
 
 反復処理の現在のループをスキップし、次のループを開始する。
 

@@ -13,7 +13,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 <br>
 
-## 01. Minikubeの仕組み
+## 01. Minikube の仕組み
 
 ### アーキテクチャ
 
@@ -28,7 +28,7 @@ description: Minikube＠開発環境の知見を記録しています。
 > - https://minikube.sigs.k8s.io/docs/commands/
 > - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
 
-#### ▼ Dockerドライバーの場合
+#### ▼ Docker ドライバーの場合
 
 ホスト上にコンテナを作成する。
 
@@ -54,11 +54,11 @@ description: Minikube＠開発環境の知見を記録しています。
 
 #### ▼ ドライバーの種類
 
-| ホスト側のOS | ゲスト (Node) 側のOS              |
-| ------------ | --------------------------------- |
-| Linux        | VirtualBox、Docker、KVM2、...     |
-| MacOS        | VirtualBox、Docker、HyperKit、... |
-| Windows      | VirtualBox、Docker、Hyper-V、...  |
+| ホスト側の OS | ゲスト (Node) 側の OS             |
+| ------------- | --------------------------------- |
+| Linux         | VirtualBox、Docker、KVM2、...     |
+| MacOS         | VirtualBox、Docker、HyperKit、... |
+| Windows       | VirtualBox、Docker、Hyper-V、...  |
 
 > - https://minikube.sigs.k8s.io/docs/drivers/
 
@@ -66,7 +66,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ## 02. マウント
 
-### ホストとNode間マウント
+### ホストと Node 間マウント
 
 #### ▼ マウントの仕組み
 
@@ -88,20 +88,20 @@ $ minikube start
 
 ホスト以下のディレクトリ配下に保管したファイルは、ゲスト仮想環境内の Node の決められたディレクトリにマウントされる。
 
-| ドライバー名  | ホスト側のOS | ホスト側のディレクトリ   | ゲスト仮想環境内のNodeのディレクトリ |
-| ------------- | ------------ | ------------------------ | ------------------------------------ |
-| VirtualBox    | Linux        | `/home`                  | `/hosthome`                          |
-| VirtualBox    | macOS        | `/Users`                 | `/Users`                             |
-| VirtualBox    | Windows      | `C://Users`              | `/c/Users`                           |
-| VMware Fusion | macOS        | `/Users`                 | `/mnt/hgfs/Users`                    |
-| KVM           | Linux        | なし                     |                                      |
-| HyperKit      | Linux        | なし (NFSマウントを参照) |                                      |
+| ドライバー名  | ホスト側の OS | ホスト側のディレクトリ    | ゲスト仮想環境内の Node のディレクトリ |
+| ------------- | ------------- | ------------------------- | -------------------------------------- |
+| VirtualBox    | Linux         | `/home`                   | `/hosthome`                            |
+| VirtualBox    | macOS         | `/Users`                  | `/Users`                               |
+| VirtualBox    | Windows       | `C://Users`               | `/c/Users`                             |
+| VMware Fusion | macOS         | `/Users`                  | `/mnt/hgfs/Users`                      |
+| KVM           | Linux         | なし                      |                                        |
+| HyperKit      | Linux         | なし (NFS マウントを参照) |                                        |
 
 > - https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
 
 <br>
 
-### Nodeとコンテナ間マウント
+### Node とコンテナ間マウント
 
 #### ▼ マウントの仕組み
 
@@ -113,7 +113,7 @@ Minikube には、HostPath CSI ドライバー (`storage-provisioner` アドオ�
 > - https://minikube.sigs.k8s.io/docs/tutorials/volume_snapshots_and_csi/
 > - https://github.com/kubernetes/minikube/blob/master/pkg/storage/storage_provisioner.go
 
-#### ▼ Nodeの永続ディレクトリ
+#### ▼ Node の永続ディレクトリ
 
 Minikube では、Node を再起動するとディレクトリ内のファイルも初期される。
 
@@ -130,7 +130,7 @@ Minikube では、Node を再起動するとディレクトリ内のファイル
 
 > - https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
 
-#### ▼ CSIドライバーを使用しない場合
+#### ▼ CSI ドライバーを使用しない場合
 
 CSI ドライバーを使用しない場合、PersistentVolume で永続ディレクトリにデータを保管する必要がある。
 
@@ -166,7 +166,7 @@ Minikube では、`mount` コマンド、ホスト側の `$MINIKUBE_HOME/files` 
 
 > - https://stackoverflow.com/questions/48534980/mount-local-directory-into-pod-in-minikube
 
-#### ▼ HyperKitドライバーを使用する場合
+#### ▼ HyperKit ドライバーを使用する場合
 
 **＊例＊**
 
@@ -220,9 +220,9 @@ spec:
 
 ## 03. ネットワーク
 
-### KubernetesリソースのCIDRブロック
+### Kubernetes リソースの CIDR ブロック
 
-#### ▼ Nodeの場合
+#### ▼ Node の場合
 
 Node 内で `ip addr` コマンドを実行することにより、Node に割り当てられた CIDR ブロックを確認できる。
 
@@ -290,7 +290,7 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 
 <br>
 
-### Minikube外のdockerネットワーク宛にリクエスト
+### Minikube 外の docker ネットワーク宛にリクエスト
 
 Minikube は、docker ドライバーを使用した場合、デフォルトで `minikube` という docker ネットワークが作成する。
 
@@ -316,7 +316,7 @@ services:
   database:
     container_name: mysql
     networks:
-      # Minikubeのプロファイル名によって、ネットワーク名は異なる (デフォルトは minikube)
+      # Minikube のプロファイル名によって、ネットワーク名は異なる (デフォルトは minikube)
       - minikube
 
 networks:
@@ -329,7 +329,7 @@ networks:
 
 <br>
 
-### Minikube内の『コンテナ』からホスト (`host.minikube.internal`) にリクエスト
+### Minikube 内の『コンテナ』からホスト (`host.minikube.internal`) にリクエスト
 
 Minikube 内の『コンテナ』から『ホスト』に対して、リクエストを送信する。
 
@@ -364,9 +364,9 @@ ff02::2 ip6-allrouters
 
 <br>
 
-## 04-02. Podへの接続
+## 04-02. Pod への接続
 
-### Minikubeの制約
+### Minikube の制約
 
 Minikube は、クラウドプロバイダーとは状況が異なり、Minikube 仮想サーバー内に Node が稼働している。
 
@@ -376,7 +376,7 @@ Minikube は、クラウドプロバイダーとは状況が異なり、Minikube
 
 <br>
 
-### NodePort Serviceの場合
+### NodePort Service の場合
 
 #### ▼ `minikube service` コマンドによる接続
 
@@ -430,7 +430,7 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Podのポー
 
 <br>
 
-### LoadBalancer Serviceの場合
+### LoadBalancer Service の場合
 
 #### ▼ `minikube tunnel` コマンドによる接続
 
@@ -444,7 +444,7 @@ $ curl http://<minikube tunnelコマンドでLoadBalancer Serviceに割り当て
 
 > - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
 
-### ClusterIP Serviceの場合
+### ClusterIP Service の場合
 
 #### ▼ アドオンによる接続
 

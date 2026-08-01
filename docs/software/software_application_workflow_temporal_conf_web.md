@@ -3,7 +3,7 @@ title: 【IT技術の知見】Webスコープ設定ファイル＠Temporal
 description: Webスコープ設定ファイル＠Temporalの知見を記録しています。
 ---
 
-# Webスコープ設定ファイル＠Temporal
+# Web スコープ設定ファイル＠Temporal
 
 ## はじめに
 

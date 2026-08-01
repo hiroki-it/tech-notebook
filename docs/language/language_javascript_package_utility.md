@@ -15,7 +15,7 @@ description: ユーティリティパッケージ＠JavaScriptの知見を記録
 
 ## 01. axios
 
-### axiosとは
+### axios とは
 
 JavaScript Promise を使用した HTTP クライアントパッケージである。
 
@@ -188,7 +188,7 @@ const asyncFunc = async () => {
 
 <br>
 
-### レスポンスのJSON構造
+### レスポンスの JSON 構造
 
 #### ▼ レスポンスの出力
 
@@ -268,7 +268,7 @@ axios.get("/user/12345").then(function (response) {
 
 ## 01-02. axios-retry
 
-### axios-retryとは
+### axios-retry とは
 
 axios パッケージによる非同期処理をリトライする。
 
@@ -339,7 +339,7 @@ console.log(response.data);
 
 ## 02. Nodemon
 
-### Nodemonとは
+### Nodemon とは
 
 JavaScript のソースコードに変更があれば、Node.js 上のプロセスを再起動する。
 
@@ -350,7 +350,7 @@ JavaScript のソースコードに変更があれば、Node.js 上のプロセ�
 
 ## 03. ts-node
 
-### ts-nodeとは
+### ts-node とは
 
 Node.js 上で、TypeScript を JavaScript へコンパイルせずそのまま実行する。
 

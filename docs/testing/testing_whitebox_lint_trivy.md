@@ -13,7 +13,7 @@ description: trivy＠脆弱性診断の知見を記録しています。
 
 <br>
 
-## 01. trivyの仕組み
+## 01. trivy の仕組み
 
 ### 検出項目
 
@@ -75,11 +75,11 @@ vulnerabilities:
 
 <br>
 
-## 04. trivyコマンド
+## 04. trivy コマンド
 
 ### config
 
-#### ▼ configとは
+#### ▼ config とは
 
 > - https://aquasecurity.github.io/trivy/v0.45/docs/scanner/misconfiguration/
 > - https://aquasecurity.github.io/trivy/v0.45/docs/references/configuration/cli/trivy_config/

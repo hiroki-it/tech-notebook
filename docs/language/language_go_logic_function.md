@@ -21,9 +21,9 @@ description: 関数＠Goの知見を記録しています。
 
 > - https://stackoverflow.com/a/49831018
 
-### init関数
+### init 関数
 
-#### ▼ init関数とは
+#### ▼ init 関数とは
 
 パッケージを `import` したタイミングで実行する。
 
@@ -41,7 +41,7 @@ description: 関数＠Goの知見を記録しています。
 
 <br>
 
-### main関数
+### main 関数
 
 #### ▼ `main()` 関数とは
 
@@ -501,15 +501,15 @@ func main() {
 
 <br>
 
-### defer関数
+### defer 関数
 
-#### ▼ defer関数とは
+#### ▼ defer 関数とは
 
 特定の関数の最後に必ず実行される遅延実行関数のこと。
 
 たとえ、ランタイムエラーのように処理が強制的に途中終了しても、その関数の最後に実行される。
 
-#### ▼ 複数のdefer関数
+#### ▼ 複数の defer 関数
 
 defer は複数の関数で宣言できる。
 
@@ -606,7 +606,7 @@ func main() {
 > - https://go.dev/doc/effective_go#recover
 > - https://qiita.com/a-kym/items/1e7c646a776c5b541883
 
-#### ▼ Close処理
+#### ▼ Close 処理
 
 ```go
 
@@ -928,9 +928,9 @@ func FooMiddleware() func(http.Handler) http.Handler {
 
 ## 01-03. エラー時の事後処理
 
-### Graceful Shutdown処理
+### Graceful Shutdown 処理
 
-#### ▼ Graceful Shutdown処理とは
+#### ▼ Graceful Shutdown 処理とは
 
 正常や異常時に、プロセスの終了前に必ず実行したい関数をまとめてコールし、安全にプロセスを終了する仕組みである。
 
@@ -1456,7 +1456,7 @@ func getBoolEnv(key string, fallback bool) bool {
 
 <br>
 
-### string型以外の値
+### string 型以外の値
 
 環境変数はすべて string 型で定義する必要がある。
 
@@ -1724,7 +1724,7 @@ func main() {
 
 <br>
 
-### 配列またはsliceの走査
+### 配列または slice の走査
 
 #### ▼ `for ... range`
 
@@ -1783,7 +1783,7 @@ func main() {
 
 ### 並行処理
 
-#### ▼ Goroutineによる並行処理
+#### ▼ Goroutine による並行処理
 
 指定した処理をバラバラに開始し、またそれぞれの処理がバラバラに終了する。
 
@@ -1884,7 +1884,7 @@ func foo() string {
 
 > - https://stackoverflow.com/a/41439170
 
-#### ▼ Goroutineを入れ子にできる
+#### ▼ Goroutine を入れ子にできる
 
 入れ子で実行した場合でも、全く独立して Goroutine を実行する。
 
@@ -1920,11 +1920,11 @@ func foo() string {
 
 <br>
 
-## 06-02. Goroutineと合わせて使用する処理
+## 06-02. Goroutine と合わせて使用する処理
 
 ### channel (チャネル)
 
-#### ▼ channelとは
+#### ▼ channel とは
 
 異なる Goroutine 間で値を送受信するキューとして動作する。
 
@@ -1958,7 +1958,7 @@ func main() {
 
 > - https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
 
-#### ▼ Goroutine中断方法１ (done channel、close)
+#### ▼ Goroutine 中断方法１ (done channel、close)
 
 Goroutine を中断するための `done` チャネルを作成し、これを `close()` 関数で中断する。
 
@@ -2011,7 +2011,7 @@ func main() {
 > - https://qiita.com/castaneai/items/7815f3563b256ae9b18d#%E9%80%9A%E7%9F%A5%E3%82%92%E9%80%81%E3%82%8B%E9%9A%9B%E3%81%AF-close-%E3%81%A7%E3%82%88%E3%81%84
 > - https://stackoverflow.com/a/22627240
 
-#### ▼ Goroutine中断方法２ (context.cancel、context.Done)
+#### ▼ Goroutine 中断方法２ (context.cancel、context.Done)
 
 `cancel()` 関数の Goroutine の中断を検知する。
 
@@ -2124,7 +2124,7 @@ func main() {
 > - https://www.spinute.org/go-by-example/select.html
 > - https://leben.mobi/go/channel-and-select/go-programming/
 
-#### ▼ WaitGroupとの使い分け
+#### ▼ WaitGroup との使い分け
 
 channel を使用すると、異なる Goroutine 間で値を送受信できる。
 
@@ -2138,7 +2138,7 @@ channel を使用すると、異なる Goroutine 間で値を送受信できる�
 
 ### WaitGroup
 
-#### ▼ WaitGroupとは
+#### ▼ WaitGroup とは
 
 Goroutine を宣言した関数が終了するまで、後続の処理の実行開始を待機する。
 
@@ -2215,7 +2215,7 @@ func print(key int, value string) {
 > - https://free-engineer.life/golang-sync-waitgroup/
 > - https://qiita.com/ruiu/items/dba58f7b03a9a2ffad65
 
-#### ▼ channelとの使い分け
+#### ▼ channel との使い分け
 
 WaitGroup を使用すると、`Add()` 関数、`Done()` 関数、`Wait()` 関数を使用して、Goroutine を簡単に制御できる。
 
@@ -2235,7 +2235,7 @@ WaitGroup を使用すると、`Add()` 関数、`Done()` 関数、`Wait()` 関�
 
 ## 07. エラーキャッチ、例外スロー
 
-### Goにおけるエラーキャッチと例外スロー
+### Go におけるエラーキャッチと例外スロー
 
 #### ▼ 例外スローのある言語の場合
 
@@ -2243,7 +2243,7 @@ WaitGroup を使用すると、`Add()` 関数、`Done()` 関数、`Wait()` 関�
 
 > - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html
 
-#### ▼ Goには例外がない
+#### ▼ Go には例外がない
 
 例えば PHP では、エラーをキャッチし、ソフトウェア開発者がわかる言葉へ変換した例外としてスローする。
 
@@ -2257,7 +2257,7 @@ Go には例外クラスに相当するものがない。
 
 ### エラーキャッチ
 
-#### ▼ nilの比較検証
+#### ▼ nil の比較検証
 
 関数から返却された err インターフェースが、`nil` でなかった場合、エラーであると見なすようにする。
 
@@ -2286,7 +2286,7 @@ log.Print("Do something successfully")
 
 <br>
 
-### errorインターフェース
+### error インターフェース
 
 #### ▼ 標準エラー
 
@@ -2448,9 +2448,9 @@ func main() {
 
 <br>
 
-### xerrorsパッケージ
+### xerrors パッケージ
 
-#### ▼ xerrorsパッケージとは
+#### ▼ xerrors パッケージとは
 
 標準の errors パッケージには、エラーにスタックトレース情報が含まれていない。
 

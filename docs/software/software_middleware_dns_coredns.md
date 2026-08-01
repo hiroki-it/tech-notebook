@@ -3,7 +3,7 @@ title: 【IT技術の知見】CoreDNS＠DNS系ミドルウェア
 description: CoreDNS＠DNS系ミドルウェアの知見を記録しています。
 ---
 
-# CoreDNS＠DNS系ミドルウェア
+# CoreDNS＠DNS 系ミドルウェア
 
 ## はじめに
 
@@ -13,9 +13,9 @@ description: CoreDNS＠DNS系ミドルウェアの知見を記録しています
 
 <br>
 
-## 01. CoreDNS (新kube-dns)
+## 01. CoreDNS (新 kube-dns)
 
-### CoreDNSとは
+### CoreDNS とは
 
 Node 内の権威 DNS サーバーとして、Kubernetes リソースの名前解決する。
 
@@ -94,9 +94,9 @@ data:
 
 <br>
 
-## 02. Serviceの名前解決
+## 02. Service の名前解決
 
-### Serviceの名前解決の仕組み
+### Service の名前解決の仕組み
 
 #### ▼ アーキテクチャ
 
@@ -145,9 +145,9 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 
 <br>
 
-### DNSレコードタイプ別の完全修飾ドメイン名
+### DNS レコードタイプ別の完全修飾ドメイン名
 
-#### ▼ DNSレコードタイプ別の完全修飾ドメイン名とは
+#### ▼ DNS レコードタイプ別の完全修飾ドメイン名とは
 
 Cluster ネットワーク内のすべての Service に完全修飾ドメイン名が割り当てられている。
 
@@ -183,7 +183,7 @@ Service の `.spec.ports.name` キー数だけ、完全修飾ドメイン名が�
 
 ### 名前解決の仕組み
 
-#### ▼ Pod内からServiceに対する正引き名前解決
+#### ▼ Pod 内から Service に対する正引き名前解決
 
 Pod 内のコンテナから宛先の Service に対して、`nslookup` コマンドの正引きする。
 
@@ -215,7 +215,7 @@ Address:  10.105.157.184
 > - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
 > - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
 
-#### ▼ Pod外からServiceに対する正引き名前解決
+#### ▼ Pod 外から Service に対する正引き名前解決
 
 `(1)`
 
@@ -283,7 +283,7 @@ $ kubectl get pod <Pod名> -o yaml | grep containerPort:
 
 : 両方のポート番号が一致しているかを確認する。
 
-#### ▼ Serviceを経由したアウトバウンド通信の送信
+#### ▼ Service を経由したアウトバウンド通信の送信
 
 Service を介して、宛先の Pod に HTTPS リクエストを送信する。
 
@@ -298,15 +298,15 @@ $ kubectl exec -it <Pod名> -c <コンテナ名> -- bash
 
 <br>
 
-## 03. Podの直接的な名前解決
+## 03. Pod の直接的な名前解決
 
-### Podの直接的な名前解決の仕組み
+### Pod の直接的な名前解決の仕組み
 
 Service の名前解決を介さずに、特定の Pod のインスタンスに対して直接的に名前解決できる。
 
 <br>
 
-### DNSレコードタイプ別の完全修飾ドメイン名
+### DNS レコードタイプ別の完全修飾ドメイン名
 
 #### ▼ `A/AAAA` レコードの場合
 
@@ -316,7 +316,7 @@ Service の名前解決を介さずに、特定の Pod のインスタンスに�
 
 <br>
 
-### PodのIPアドレスを固定する
+### Pod のIP アドレスを固定する
 
 Kubernetes では、Pod の IP アドレスを固定できない。
 

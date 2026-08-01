@@ -33,20 +33,20 @@ symfony/
 │   ├── index.php # 本番環境で、カーネルとして動く
 │   └── index_dev.php # 開発環境で、カーネルとして動く
 │
-├── src/ # 主要なPHPファイル
+├── src/ # 主要な PHP ファイル
 │   ├── AppBundle/ # アプリケーションのコード
-│   │  ├── Controller/ # UserCase層
-│   │  ├── Entity/ # エンティティ ⇒ Domain層
-│   │  ├── Repository/ # リポジトリ ⇒ Infrastructure層
+│   │  ├── Controller/ # UserCase 層
+│   │  ├── Entity/ # エンティティ ⇒ Domain 層
+│   │  ├── Repository/ # リポジトリ ⇒ Infrastructure 層
 │   │  ├── Form/ # フォーム
 │   │  └── Resources/
 │   │       └── views/ # 画面テンプレート (※本書では扱わない)
 │   │
 │   └── その他のBundle/ # 汎用的なパッケージのコード (※本書では扱わない)
 │
-├── templates/ # UserInterface層
+├── templates/ # UserInterface 層
 │
-├── test/ # 自動テスト (Unit tests等)
+├── test/ # 自動テスト (Unit tests 等)
 │
 ├── var/ # 自動作成されるファイル
 │   ├── cache/ # キャッシュファイル
@@ -61,13 +61,13 @@ symfony/
 │   ├── symfonyコンポーネント/
 │   └── twig/ # パッケージ
 │
-└── asset/ #ブラウザコンソールに公開されるファイル (css, javascript, image等)
+└── asset/ #ブラウザコンソールに公開されるファイル (css, javascript, image 等)
     ├── admin/
     ├── bootstrap/
     ├── css/
     ├── fontawesome/
     ├── img/ # 画像ファイル
-    ├── jquery/ # jquery (javascriptフレームワーク)
+    ├── jquery/ # jquery (javascript フレームワーク)
     └── js/
 ```
 
@@ -178,7 +178,7 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 ### CLI：Command Line Interface
 
-#### ▼ CLIとは
+#### ▼ CLI とは
 
 シェルスクリプト (`.sh`) 、またはバッチファイル (`.bat`) におけるコマンドの処理内容を定義できる。
 
@@ -227,7 +227,7 @@ class createExampleCommand extends \Symfony\Component\Console\Command\Command
 
 <br>
 
-### CLIをコールするバッチファイル
+### CLI をコールするバッチファイル
 
 #### ▼ `for`
 
@@ -240,7 +240,7 @@ for f in *txt; do
 done
 ```
 
-#### ▼ Cronによるコマンドの自動実行
+#### ▼ Cron によるコマンドの自動実行
 
 **＊例＊**
 
@@ -294,7 +294,7 @@ done
 : カーネルが、その結果をレスポンスオブジェクトとしてクライアントに返す。
 このカーネルを、特別に『HTTP カーネル』と呼ぶ。
 
-**【app.phpの実装例】**
+**【app.php の実装例】**
 
 ```php
 <?php
@@ -356,7 +356,7 @@ public function handle
 
 ### Request、Response
 
-#### ▼ リクエストからのデータ取得、JSON型データを含むレスポンス
+#### ▼ リクエストからのデータ取得、JSON 型データを含むレスポンス
 
 `(1)`
 
@@ -429,7 +429,7 @@ $request->get('foo');
 
 ## 03-03. HttpKernel
 
-### HttpKernelによるリクエストとレスポンス
+### HttpKernel によるリクエストとレスポンス
 
 ![SymfonyのHttpKernelの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SymfonyのHttpKernelの仕組み.png)
 
@@ -447,7 +447,7 @@ Symfony から提供される IoC コンテナのこと。
 
 ### RoutingConfigurator
 
-#### ▼ RoutingConfiguratorとは
+#### ▼ RoutingConfigurator とは
 
 コントローラーに対するルーティングを設定する。
 
@@ -475,7 +475,7 @@ return function (RoutingConfigurator $routes) {
 
 ### FilesystemAdapter
 
-#### ▼ FilesystemAdapterとは
+#### ▼ FilesystemAdapter とは
 
 データをキャッシングできる。
 

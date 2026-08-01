@@ -13,7 +13,7 @@ description: VCluster＠本番環境
 
 <br>
 
-## 01. VClusterの仕組み
+## 01. VCluster の仕組み
 
 ### アーキテクチャ
 
@@ -52,7 +52,7 @@ VCluster は、コントロールプレーン、Syncer、といったコンポ�
 
 ### インストール
 
-#### ▼ vcluster cliの場合
+#### ▼ vcluster cli の場合
 
 ```bash
 # vcluster cliをインストールする
@@ -69,7 +69,7 @@ $ vcluster create <Cluster名> \
 > - https://www.vcluster.com/docs/getting-started/deployment
 > - https://github.com/loft-sh/vcluster/tree/main/charts/eks#get-helm-repository-info
 
-#### ▼ Helmの場合
+#### ▼ Helm の場合
 
 Amazon EKS 上で仮想 Cluster を作成する。
 
@@ -89,11 +89,11 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/vcluster-e
 
 <br>
 
-## 03. vclusterコマンド
+## 03. vcluster コマンド
 
 ### create
 
-#### ▼ createとは
+#### ▼ create とは
 
 仮想 Cluster を作成する。
 
@@ -146,7 +146,7 @@ $ vcluster create foo-cluster \
 
 ### connect
 
-#### ▼ connectとは
+#### ▼ connect とは
 
 仮想 Cluster にポートフォワーディングを実行する。
 

@@ -33,7 +33,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manag
 
 ## 02. Certificate
 
-### Certificateとは
+### Certificate とは
 
 認証局を使用して、秘密鍵と証明書署名要求で署名済みの `X.509` のサーバー証明書 (`.crt` ファイル) を作成する。
 
@@ -46,7 +46,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manag
 
 ### .spec.secretName
 
-#### ▼ secretNameとは
+#### ▼ secretName とは
 
 サーバー証明書、サーバー証明書とペアになる秘密鍵を保持する Secret の名前を設定する。
 
@@ -89,7 +89,7 @@ spec:
 
 ### .spec.dnsNames
 
-#### ▼ dnsNamesとは
+#### ▼ dnsNames とは
 
 サーバー証明書を取得したいドメインを設定する。
 
@@ -111,7 +111,7 @@ spec:
 
 ### .spec.issuerRef
 
-#### ▼ issuerRefとは
+#### ▼ issuerRef とは
 
 サーバー証明書を作成してもらう認証局を設定する。
 
@@ -134,7 +134,7 @@ spec:
 
 ## 03. CertificateRequest
 
-### CertificateRequestとは
+### CertificateRequest とは
 
 秘密鍵から、証明書署名要求 (`.csr` ファイル) を作成する。
 
@@ -163,7 +163,7 @@ spec:
 
 ### .spec.isCA
 
-#### ▼ isCAとは
+#### ▼ isCA とは
 
 秘密鍵と証明書署名要求 (`.csr` ファイル) で署名済みのサーバー証明書が、中間 CA 証明書であるか否かを設定する。
 
@@ -181,7 +181,7 @@ spec:
 
 ### .spec.usages
 
-#### ▼ usagesとは
+#### ▼ usages とは
 
 記入中...
 
@@ -204,7 +204,7 @@ spec:
 
 ### .spec.duration
 
-#### ▼ durationとは
+#### ▼ duration とは
 
 サーバー証明書の有効期限を設定する。
 
@@ -222,7 +222,7 @@ spec:
 
 ### .spec.issuerRef
 
-#### ▼ issuerRefとは
+#### ▼ issuerRef とは
 
 サーバー証明書の作成に使用する認証局を設定する。
 
@@ -243,7 +243,7 @@ spec:
 
 ## 04. ClusterIssuer
 
-### ClusterIssuerとは
+### ClusterIssuer とは
 
 異なる Namespace に対して横断的に証明書を作成する認証局を作成する。
 
@@ -253,7 +253,7 @@ spec:
 
 ### .spec.acme
 
-#### ▼ acmeとは
+#### ▼ acme とは
 
 サーバー証明書を自動的に更新する ACME プロトコルについて設定する。
 
@@ -317,12 +317,12 @@ spec:
   acme:
     solvers:
       - dns01:
-          # Amazon Route 53を委譲先とする。
+          # Amazon Route 53 を委譲先とする。
           route53:
             region: ap-northeast-1
             accessKeyID: <AWSアカウントID>
             secretAccessKeySecretRef:
-              # Route53にリクエストを送信するための資格情報を保持するSecret
+              # Route53 にリクエストを送信するための資格情報を保持する Secret
               name: foo-route53-credentials-secret
               # シークレットアクセスキー名
               key: foo-secret-access-key
@@ -332,7 +332,7 @@ spec:
 
 ## 05. Issuer
 
-### Issuerとは
+### Issuer とは
 
 同じ Namespace に対して証明書を作成する認証局を作成する。
 

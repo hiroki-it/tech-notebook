@@ -3,7 +3,7 @@ title: 【IT技術の知見】L2＠OSI参照モデル
 description: L2＠OSI参照モデルの知見を記録しています。
 ---
 
-# L2＠OSI参照モデル
+# L2＠OSI 参照モデル
 
 ## はじめに
 
@@ -23,7 +23,7 @@ description: L2＠OSI参照モデルの知見を記録しています。
 
 <br>
 
-## 02. MACアドレス：Media Access Control address
+## 02. MAC アドレス：Media Access Control address
 
 NIC、有線 LAN、無線 LAN、スマートフォンなどに紐づけられた機器固有の識別子のこと。
 

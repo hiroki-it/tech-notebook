@@ -13,9 +13,9 @@ description: Playbook＠Ansibleの知見を記録しています。
 
 <br>
 
-## 01. playbookファイル
+## 01. playbook ファイル
 
-### playbookファイルとは
+### playbook ファイルとは
 
 サーバーのセットアップ処理を設定する。
 
@@ -30,17 +30,17 @@ App サーバー、DB サーバー、Web サーバーをセットアップする
 各コンポーネントは `roles` ディレクトリに切り分けている。
 
 ```yaml
-# roleファイル
-# Appサーバー
+# role ファイル
+# App サーバー
 - hosts: app
   become: yes
   force_handlers: "true"
-  # rolesディレクトリ以下に処理を切り分ける。上から順にrolesを実行する。
+  # roles ディレクトリ以下に処理を切り分ける。上から順に roles を実行する。
   roles:
     - shared
     - app
 
-# DBサーバー
+# DB サーバー
 - hosts: db
   become: yes
   force_handlers: "true"
@@ -48,7 +48,7 @@ App サーバー、DB サーバー、Web サーバーをセットアップする
     - shared
     - db
 
-# Webサーバー
+# Web サーバー
 - hosts: web
   become: yes
   force_handlers: "true"
@@ -83,11 +83,11 @@ repository/
 
 <br>
 
-## 01-02. playbookファイルの切り分け
+## 01-02. playbook ファイルの切り分け
 
-### rolesディレクトリ
+### roles ディレクトリ
 
-#### ▼ rolesディレクトリとは
+#### ▼ roles ディレクトリとは
 
 特定の機能に関するタスクが設定されたファイルを配置する。
 
@@ -95,14 +95,14 @@ repository/
 
 > - https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
 
-#### ▼ handlersディレクトリ
+#### ▼ handlers ディレクトリ
 
 task ファイルの後続処理が設定された handler ファイルを配置する。
 
 task ファイルの `notify` オプションで指定できる。
 
 ```yaml
-# handlerファイル
+# handler ファイル
 - name: Restart php-fpm
   service:
     name: php-fpm
@@ -110,17 +110,17 @@ task ファイルの `notify` オプションで指定できる。
 ```
 
 ```yaml
-# taskファイル
+# task ファイル
 - name: Upload www.conf
   ansible.builtin.template:
     src: php-fpm/www.conf.j2
     dest: /etc/php-fpm.d/www.conf
   notify:
-    # handlerの名前を指定する。
+    # handler の名前を指定する。
     - restart_php-fpm
 ```
 
-#### ▼ taskディレクトリ
+#### ▼ task ディレクトリ
 
 playbook ファイルから切り分けたセットアップ処理が設定された task ファイルを配置する。
 
@@ -129,7 +129,7 @@ playbook ファイルから切り分けたセットアップ処理が設定さ�
 PHP 製のアプリケーションが稼働する App サーバーをセットアップする。
 
 ```yaml
-# taskファイル
+# task ファイル
 - name: Install software-properties-common
   ansible.builtin.apt:
     name: software-properties-common
@@ -162,12 +162,12 @@ PHP 製のアプリケーションが稼働する App サーバーをセット�
 - name: Setup composer
   ansible.builtin.shell: |
 
-    # Composerのセットアップ処理
+    # Composer のセットアップ処理
 
     ...
 ```
 
-#### ▼ templateディレクトリ
+#### ▼ template ディレクトリ
 
 アップロードファイルの鋳型となる `j2` ファイルを配置する。
 
@@ -188,9 +188,9 @@ PHP 製のアプリケーションが稼働する App サーバーをセット�
 
 <br>
 
-### group_varsディレクトリ
+### group_vars ディレクトリ
 
-#### ▼ group_varsディレクトリとは
+#### ▼ group_vars ディレクトリとは
 
 複数の管理対象ノードで使用する変数に関するファイルやディレクトリを配置する。
 
@@ -200,12 +200,12 @@ PHP 製のアプリケーションが稼働する App サーバーをセット�
 
 > - https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
 
-#### ▼ group_varファイル
+#### ▼ group_var ファイル
 
 複数の管理対象ノードで使用する変数を設定する。
 
 ```yaml
-# group_varファイル
+# group_var ファイル
 env: prd
 domain: example.com
 ip_addresses:
@@ -241,20 +241,20 @@ ports:
 
 <br>
 
-### host_varsディレクトリ
+### host_vars ディレクトリ
 
-#### ▼ host_varsディレクトリとは
+#### ▼ host_vars ディレクトリとは
 
 特定の管理対象ノードで使用する変数に関するファイルを配置する。
 
-#### ▼ host_varファイル
+#### ▼ host_var ファイル
 
 特定の管理対象ノードで使用する変数を設定する。
 
 <br>
 ### inventoriesディレクトリ
 
-#### ▼ inventoriesディレクトリとは
+#### ▼ inventories ディレクトリとは
 
 管理対象ノードの情報を設定する。
 
@@ -266,7 +266,7 @@ Ansible の実行時に、`-i` オプションでディレクトリを指定す�
 $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 ```
 
-#### ▼ inventoryファイル
+#### ▼ inventory ファイル
 
 管理対象ノードを設定する。
 
@@ -287,12 +287,12 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 もし `yml` 形式の場合は以下の通りとなる。
 
 ```yaml
-# inventoryファイル
+# inventory ファイル
 # テスト環境
 - all:
     hosts:
       app:
-        # 管理対象ノードのIPアドレス
+        # 管理対象ノードの IP アドレス
         ansible_host: 127.0.0.1
         # 管理対象ノードにログインするためのユーザー名
         ansible_user: vagrant
@@ -309,24 +309,24 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 ```
 
 ```yaml
-# inventoryファイル
+# inventory ファイル
 # 本番環境
 - all:
     children:
       # 冗長化サーバーa
       server_a:
         hosts:
-          # Appサーバー
+          # App サーバー
           app:
-            # 管理対象ノードのIPアドレス
+            # 管理対象ノードの IP アドレス
             ansible_host: 192.168.100.101
             # 管理対象ノードにログインするためのユーザー名
             ansible_user: ubuntu
             # 管理対象ノードにログインするためのパスワード
             ansible_password: ubuntu
-            # 管理対象ノードへのSSH公開鍵認証に使用する秘密鍵
+            # 管理対象ノードへの SSH 公開鍵認証に使用する秘密鍵
             ansible_ssh_private_key_file: /etc/ansible/ssh_keys/prd-foo.pem
-          # Webサーバー
+          # Web サーバー
           web:
             ansible_host: 192.168.100.10
             ansible_user: ubuntu
@@ -335,13 +335,13 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
       # 冗長化サーバーc
       server_c:
         hosts:
-          # Appサーバー
+          # App サーバー
           app:
             ansible_host: 192.168.100.102
             ansible_user: ubuntu
             ansible_password: ubuntu
             ansible_ssh_private_key_file: /etc/ansible/ssh_keys/prd-foo.pem
-          # Webサーバー
+          # Web サーバー
           web:
             ansible_host: 192.168.100.11
             ansible_user: ubuntu
@@ -441,17 +441,17 @@ ansible_ssh_private_key_file=/etc/ansible/ssh_keys/prd-foo.pem
 
 <br>
 
-## 02. /roles/handlersセクション
+## 02. /roles/handlers セクション
 
-### handlersセクションとは
+### handlers セクションとは
 
 task セクションの後に実行するセットアップ処理を設定する。
 
 <br>
 
-## 02-02. /roles/targetsセクション
+## 02-02. /roles/targets セクション
 
-### targetsセクションとは
+### targets セクションとは
 
 プレイの実行先のノードを設定する。
 
@@ -463,7 +463,7 @@ task セクションの後に実行するセットアップ処理を設定する
 
 ### name
 
-#### ▼ nameとは
+#### ▼ name とは
 
 プレイの名前を設定する。
 
@@ -475,7 +475,7 @@ task セクションの後に実行するセットアップ処理を設定する
 
 ### hosts
 
-#### ▼ hostsとは
+#### ▼ hosts とは
 
 プレイの実行先のノードを設定する。
 
@@ -487,7 +487,7 @@ task セクションの後に実行するセットアップ処理を設定する
 
 ### become
 
-#### ▼ becomeとは
+#### ▼ become とは
 
 プレイを root 権限 (sudo 権限) で実行するか否かを設定する。
 
@@ -502,7 +502,7 @@ root 以外であれば、`become_user` キーを設定する。
 
 ### gather_facts
 
-#### ▼ gather_factsとは
+#### ▼ gather_facts とは
 
 ファクト変数を収集するか否かを設定する。
 
@@ -510,9 +510,9 @@ root 以外であれば、`become_user` キーを設定する。
 - gather_facts: no
 ```
 
-## 02-03. /roles/tasksセクション
+## 02-03. /roles/tasks セクション
 
-### tasksセクションとは
+### tasks セクションとは
 
 管理対象ノードで実行するセットアップ処理を手続き的に設定する。
 
@@ -524,7 +524,7 @@ root 以外であれば、`become_user` キーを設定する。
 
 ### ansible.builtin.apt
 
-#### ▼ ansible.builtin.aptとは
+#### ▼ ansible.builtin.apt とは
 
 管理対象ノードで、パッケージを apt リポジトリからインストールする。
 
@@ -533,7 +533,7 @@ root 以外であれば、`become_user` キーを設定する。
 **＊実装例＊**
 
 ```yaml
-# nginxをインストールします。
+# nginx をインストールします。
 - name: Install Nginx
   ansible.builtin.apt:
     name: nginx=1.0.0
@@ -547,20 +547,20 @@ root 以外であれば、`become_user` キーを設定する。
 
 ### ansible.builtin.dnf
 
-#### ▼ ansible.builtin.dnfとは
+#### ▼ ansible.builtin.dnf とは
 
 管理対象ノードで、パッケージを dnf リポジトリからインストールする。
 
 **＊実装例＊**
 
 ```yaml
-# cloudwatchエージェントをインストールする。
+# cloudwatch エージェントをインストールする。
 - name: install amazon-cloudwatch-agent
   ansible.builtin.dnf:
     name: amazon-cloudwatch-agent
     state: present
 
-# カスタムメトリクスの元になるデータポイントを収集するために、collectdをインストールする。
+# カスタムメトリクスの元になるデータポイントを収集するために、collectd をインストールする。
 - name: install collectd
   ansible.builtin.dnf:
     name: collectd
@@ -575,7 +575,7 @@ root 以外であれば、`become_user` キーを設定する。
     group: root
     mode: 0644
 
-# cloudwatchエージェントを起動する。
+# cloudwatch エージェントを起動する。
 - name: fetch-config config.json
   ansible.builtin.shell: |
     /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
@@ -584,7 +584,7 @@ root 以外であれば、`become_user` キーを設定する。
       -c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
       -s
 
-# cloudwatchエージェントをsystemdで管理する。
+# cloudwatch エージェントを systemd で管理する。
 - name: enable cloudwatch-agent
   ansible.builtin.systemd:
     name: amazon-cloudwatch-agent
@@ -599,7 +599,7 @@ root 以外であれば、`become_user` キーを設定する。
 **＊実装例＊**
 
 ```yaml
-# nginxをインストールします。
+# nginx をインストールします。
 - name: Install Nginx
   ansible.builtin.yum:
     # バージョンを指定する
@@ -608,7 +608,7 @@ root 以外であれば、`become_user` キーを設定する。
 ```
 
 ```yaml
-# epelリポジトリをインストールします。
+# epel リポジトリをインストールします。
 - name: Install epel-release
   ansible.builtin.yum:
     name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
@@ -621,7 +621,7 @@ root 以外であれば、`become_user` キーを設定する。
 
 ### ansible.builtin.lineinfile
 
-#### ▼ ansible.builtin.lineinfileとは
+#### ▼ ansible.builtin.lineinfile とは
 
 管理対象ノードにあるファイルを行単位で編集する。
 
@@ -634,7 +634,7 @@ SELinux を無効化する。
 **＊実装例＊**
 
 ```yaml
-# SELinuxを無効化します。
+# SELinux を無効化します。
 - name: Disable SELinux
   ansible.builtin.lineinfile:
     path: /etc/selinux/config
@@ -645,7 +645,7 @@ SELinux を無効化する。
 **＊実装例＊**
 
 ```yaml
-# unlimitの設定を追加します
+# unlimit の設定を追加します
 - name: Add ulimit setting
   lineinfile:
     path: /etc/systemd/system.conf.d/50-limits.conf
@@ -656,7 +656,7 @@ SELinux を無効化する。
 **＊実装例＊**
 
 ```yaml
-# rsyslog_conf_fileにstatを格納する
+# rsyslog_conf_file にstat を格納する
 - name: Check if /etc/rsyslog.conf exists
   ansible.builtin.stat:
     path: /etc/rsyslog.conf
@@ -667,7 +667,7 @@ SELinux を無効化する。
     line: "$FileCreateMode 0640"
     regexp: "^$FileCreateMode"
     path: /etc/rsyslog.conf
-  # もしrsyslog_conf_file内にデータがあれば、実行する
+  # もし rsyslog_conf_file 内にデータがあれば、実行する
   when: rsyslog_conf_file.stat.exists
 ```
 
@@ -675,7 +675,7 @@ SELinux を無効化する。
 
 ### ansible.builtin.copy
 
-#### ▼ ansible.builtin.copyとは
+#### ▼ ansible.builtin.copy とは
 
 管理対象ノードのディレクトリにファイルをコピーする。
 
@@ -696,7 +696,7 @@ SELinux を無効化する。
 
 ### ansible.builtin.file
 
-#### ▼ ansible.builtin.fileとは
+#### ▼ ansible.builtin.file とは
 
 管理対象ノードでファイルを操作する。
 
@@ -718,7 +718,7 @@ SELinux を無効化する。
 
 ### ansible.builtin.get_url
 
-#### ▼ ansible.builtin.get_urlとは
+#### ▼ ansible.builtin.get_url とは
 
 管理対象ノードで `curl` コマンドを実行する。
 
@@ -735,7 +735,7 @@ SELinux を無効化する。
 
 ### ansible.builtin.service
 
-#### ▼ ansible.builtin.serviceとは
+#### ▼ ansible.builtin.service とは
 
 管理対象ノードで `service` コマンドの実行を設定する。
 
@@ -744,7 +744,7 @@ SELinux を無効化する。
 **＊実装例＊**
 
 ```yaml
-# serviceコマンドを使用して、nginxを起動します。
+# service コマンドを使用して、nginx を起動します。
 - name: Start nginx service
   ansible.builtin.service:
     name: Start nginx
@@ -756,7 +756,7 @@ SELinux を無効化する。
 
 ### ansible.builtin.shell
 
-#### ▼ ansible.builtin.shellとは
+#### ▼ ansible.builtin.shell とは
 
 管理対象ノードでシェルを実行する。複数行に渡る場合は、『`|`』を使用する。
 
@@ -787,7 +787,7 @@ SELinux を無効化する。
 
 ### ansible.builtin.systemd
 
-#### ▼ ansible.builtin.systemdとは
+#### ▼ ansible.builtin.systemd とは
 
 管理対象ノードで `systemctl` コマンドの実行を設定する。
 
@@ -796,7 +796,7 @@ SELinux を無効化する。
 **＊実装例＊**
 
 ```yaml
-# systemdでnginxのプロセスを管理します。
+# systemd でnginx のプロセスを管理します。
 - name: Start nginx systemd
   ansible.builtin.systemd:
     name: Start nginx
@@ -808,7 +808,7 @@ SELinux を無効化する。
 **＊実装例＊**
 
 ```yaml
-# systemdでcloudwatchエージェントのプロセスを管理します。
+# systemd でcloudwatch エージェントのプロセスを管理します。
 - name: Start cloudwatch-agent systemd
   ansible.builtin.systemd:
     name: amazon-cloudwatch-agent
@@ -821,12 +821,12 @@ SELinux を無効化する。
 
 ユニットの最終的な状態を設定する。
 
-| 設定値      | 説明                                                                  |
-| ----------- | --------------------------------------------------------------------- |
-| `reloaded`  | 最終的な状態としてdeamon_reloadするように、ユニットを再読み込みする。 |
-| `restarted` | 最終的な状態として再起動するように、ユニットを再起動する。            |
-| `started`   | 最終的な状態として停止しているように、ユニットを起動する。            |
-| `stopped`   | 最終的な状態として停止しているさうに、ユニットを停止する。            |
+| 設定値      | 説明                                                                    |
+| ----------- | ----------------------------------------------------------------------- |
+| `reloaded`  | 最終的な状態として deamon_reload するように、ユニットを再読み込みする。 |
+| `restarted` | 最終的な状態として再起動するように、ユニットを再起動する。              |
+| `started`   | 最終的な状態として停止しているように、ユニットを起動する。              |
+| `stopped`   | 最終的な状態として停止しているさうに、ユニットを停止する。              |
 
 > - https://dekitakotono.blogspot.com/2019/05/systemd.html
 
@@ -834,7 +834,7 @@ SELinux を無効化する。
 
 ### ansible.builtin.template
 
-#### ▼ ansible.builtin.templateとは
+#### ▼ ansible.builtin.template とは
 
 テンプレート (`.j2` ファイル) から作成したファイルを管理対象ノードのディレクトリに配置する。
 
@@ -851,7 +851,7 @@ SELinux を無効化する。
 
 ### ansible.builtin.unarchive
 
-#### ▼ ansible.builtin.unarchiveとは
+#### ▼ ansible.builtin.unarchive とは
 
 コントロールノードまたは管理対象ノードで `tar` コマンドを実行することにより、圧縮ファイルを解凍する。
 
@@ -862,7 +862,7 @@ SELinux を無効化する。
   ansible.builtin.unarchive:
     src: /tmp/foo-tool.tar.gz
     dest: /usr/local/bin
-    remote_src: yes # 管理対象ノード上の圧縮ファイルを指定する場合はyesとする。
+    remote_src: yes # 管理対象ノード上の圧縮ファイルを指定する場合は yes とする。
 ```
 
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
@@ -871,7 +871,7 @@ SELinux を無効化する。
 
 ### ansible.builtin.user
 
-#### ▼ ansible.builtin.userとは
+#### ▼ ansible.builtin.user とは
 
 シェルのユーザーを操作する。
 
@@ -894,7 +894,7 @@ SELinux を無効化する。
 
 ### ansible.builtin.yum
 
-#### ▼ ansible.builtin.yumとは
+#### ▼ ansible.builtin.yum とは
 
 管理対象ノードで、パッケージを yum リポジトリからインストールする。
 
@@ -904,7 +904,7 @@ SELinux を無効化する。
 
 ### ansible_env
 
-#### ▼ ansible_envとは
+#### ▼ ansible_env とは
 
 管理対象ノードに設定された環境変数を出力する。
 
@@ -932,7 +932,7 @@ SELinux を無効化する。
 
 ### environment
 
-#### ▼ environmentとは
+#### ▼ environment とは
 
 task 内で出力できる環境変数を設定する。
 
@@ -951,9 +951,9 @@ task 内で出力できる環境変数を設定する。
 
 <br>
 
-## 02-04. /roles/varsセクション
+## 02-04. /roles/vars セクション
 
-### varsセクションとは
+### vars セクションとは
 
 プレイで使用する設定値を変数として設定する。
 
@@ -975,7 +975,7 @@ task 内で出力できる環境変数を設定する。
 ```
 
 ```yaml
-# foo.conf.j2ファイル
+# foo.conf.j2 ファイル
 {{foo}}
 ```
 

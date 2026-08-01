@@ -3,7 +3,7 @@ title: 【IT技術の知見】ER図＠RDB
 description: ER図＠RDBの知見を記録しています。
 ---
 
-# ER図＠RDB
+# ER 図＠RDB
 
 ## マルチテナントの場合
 
@@ -42,18 +42,18 @@ flowchart TB
 
 `RolePolicy` のような中間モデルを用意すると、モデル間を多対多で紐付けられる。
 
-| モデル        | 役割                                                                    |
-| ------------- | ----------------------------------------------------------------------- |
-| `Tenant`      | マルチテナントにおけるデータ分離の単位                                  |
-| `User`        | `Tenant` に所属する利用者。`Role` を通じて操作権限を持つ                |
-| `TenantToken` | `Tenant` に紐づくAPIアクセス用のトークン。`User` と同様に `Role` を持つ |
-| `Role`        | `User` や `TenantToken` に割り当てる権限のまとまり                      |
-| `Policy`      | 画面やAPIに対する操作可否を表すルール                                   |
-| `RolePolicy`  | `Role` と `Policy` を多対多で紐づける中間モデル                         |
-| `Workspace`   | `Tenant` 配下で業務データをまとめる作業領域                             |
-| `Quota`       | `Tenant` ごとの利用上限                                                 |
-| `Foo`         | `Workspace` 配下に作成される業務データの例1                             |
-| `Bar`         | `Workspace` 配下に作成される業務データの例2                             |
+| モデル        | 役割                                                                      |
+| ------------- | ------------------------------------------------------------------------- |
+| `Tenant`      | マルチテナントにおけるデータ分離の単位                                    |
+| `User`        | `Tenant` に所属する利用者。`Role` を通じて操作権限を持つ                  |
+| `TenantToken` | `Tenant` に紐づく API アクセス用のトークン。`User` と同様に `Role` を持つ |
+| `Role`        | `User` や `TenantToken` に割り当てる権限のまとまり                        |
+| `Policy`      | 画面や API に対する操作可否を表すルール                                   |
+| `RolePolicy`  | `Role` と `Policy` を多対多で紐づける中間モデル                           |
+| `Workspace`   | `Tenant` 配下で業務データをまとめる作業領域                               |
+| `Quota`       | `Tenant` ごとの利用上限                                                   |
+| `Foo`         | `Workspace` 配下に作成される業務データの例 1                              |
+| `Bar`         | `Workspace` 配下に作成される業務データの例 2                              |
 
 ```mermaid
 erDiagram

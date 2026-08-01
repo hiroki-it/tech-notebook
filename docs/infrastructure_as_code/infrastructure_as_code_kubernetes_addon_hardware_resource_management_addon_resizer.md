@@ -39,7 +39,7 @@ addon-resizer は、Deployment (nanny) 、ConfigMap (nanny-config) などのマ�
 
 <br>
 
-### Deployment配下のPod
+### Deployment 配下の Pod
 
 #### ▼ nanny
 
@@ -71,7 +71,7 @@ spec:
 
 ### ConfigMap (nanny-config)
 
-#### ▼ metrics-serverの場合
+#### ▼ metrics-server の場合
 
 以下のような ConfigMap を作成する。
 

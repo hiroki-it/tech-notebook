@@ -13,7 +13,7 @@ description: Kubernetes＠IaCの知見を記録しています。
 
 <br>
 
-## 01. Kubernetesの仕組み
+## 01. Kubernetes の仕組み
 
 ### アーキテクチャ
 
@@ -58,16 +58,16 @@ data:
 
 クライアント証明書の場合、これを使用するクライアント側には、クライアント証明書と秘密鍵の両方を配置することになる。
 
-| 送信元                                                                                   | 宛先           | 種類               | Node上の証明書のマウント先 (kubeadmの場合)                                                      | 説明                                                                                                                                                                                                                                                                                                                                                                      |
-| ---------------------------------------------------------------------------------------- | -------------- | ------------------ | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| kube-apiserver                                                                           | kubelet        | クライアント証明書 | `/etc/kubernetes/kubelet.conf ` ファイル (証明書の中身は `/var/lib/kubelet/pki/*.pem` ファイル) | kube-apiserverが、kubeletにHTTPSリクエストを送信するための証明書。                                                                                                                                                                                                                                                                                                        |
-| kube-apiserver                                                                           | etcd           | クライアント証明書 | 記入中...                                                                                       | kube-apiserverが、etcdにHTTPSリクエストを送信するための証明書。                                                                                                                                                                                                                                                                                                           |
-| kube-apiserverクライアント (`kubectl` クライアント、Kubernetesリソース) のローカルマシン | kube-apiserver | クライアント証明書 | `/etc/kubernetes/admin.conf` ファイル                                                           | クライアントが、kube-apiserverにHTTPSリクエストを送信するための証明書。証明書の値は、`kubeconfig` ファイルの `client-certificate-data` キーに設定されている。証明書に不一致があると、クライアントからのリクエストで、『`x509: certificate has expired or is not yet valid`』や『`error: You must be logged in to the server (Unauthorized)`』というエラーになってしまう。 |
-| kube-controller-manager                                                                  | kube-apiserver | クライアント証明書 | `/etc/kubernetes/controller-manager.conf ` ファイル                                             | kube-controller-managerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、`kubeconfig` ファイルも必要になる。                                                                                                                                                                                                                                       |
-| kube-scheduler                                                                           | kube-apiserver | クライアント証明書 | `/etc/kubernetes/scheduler.conf ` ファイル                                                      | kube-schedulerがkube-apiserverにHTTPSリクエストを送信するための証明書。証明書とは別に、`kubeconfig` ファイルも必要になる。                                                                                                                                                                                                                                                |
-| その他のコンポーネント                                                                   | kube-apiserver | サーバー証明書     | 記入中...                                                                                       | kube-apiserverが各コンポーネントからHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                               |
-| kube-apiserver                                                                           | kubelet        | サーバー証明書     | 記入中                                                                                          | kubeletが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                                    |
-| kube-apiserver                                                                           | front-proxy    | サーバー証明書     | 記入中...                                                                                       | front-proxyが、kube-apiserverからのHTTPSリクエストを受信するための証明書。                                                                                                                                                                                                                                                                                                |
+| 送信元                                                                                     | 宛先           | 種類               | Node 上の証明書のマウント先 (kubeadm の場合)                                                    | 説明                                                                                                                                                                                                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------ | -------------- | ------------------ | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| kube-apiserver                                                                             | kubelet        | クライアント証明書 | `/etc/kubernetes/kubelet.conf ` ファイル (証明書の中身は `/var/lib/kubelet/pki/*.pem` ファイル) | kube-apiserver が、kubelet にHTTPS リクエストを送信するための証明書。                                                                                                                                                                                                                                                                                                       |
+| kube-apiserver                                                                             | etcd           | クライアント証明書 | 記入中...                                                                                       | kube-apiserver が、etcd にHTTPS リクエストを送信するための証明書。                                                                                                                                                                                                                                                                                                          |
+| kube-apiserver クライアント (`kubectl` クライアント、Kubernetes リソース) のローカルマシン | kube-apiserver | クライアント証明書 | `/etc/kubernetes/admin.conf` ファイル                                                           | クライアントが、kube-apiserver にHTTPS リクエストを送信するための証明書。証明書の値は、`kubeconfig` ファイルの `client-certificate-data` キーに設定されている。証明書に不一致があると、クライアントからのリクエストで、『`x509: certificate has expired or is not yet valid`』や『`error: You must be logged in to the server (Unauthorized)`』というエラーになってしまう。 |
+| kube-controller-manager                                                                    | kube-apiserver | クライアント証明書 | `/etc/kubernetes/controller-manager.conf ` ファイル                                             | kube-controller-manager がkube-apiserver にHTTPS リクエストを送信するための証明書。証明書とは別に、`kubeconfig` ファイルも必要になる。                                                                                                                                                                                                                                      |
+| kube-scheduler                                                                             | kube-apiserver | クライアント証明書 | `/etc/kubernetes/scheduler.conf ` ファイル                                                      | kube-scheduler がkube-apiserver にHTTPS リクエストを送信するための証明書。証明書とは別に、`kubeconfig` ファイルも必要になる。                                                                                                                                                                                                                                               |
+| その他のコンポーネント                                                                     | kube-apiserver | サーバー証明書     | 記入中...                                                                                       | kube-apiserver が各コンポーネントから HTTPS リクエストを受信するための証明書。                                                                                                                                                                                                                                                                                              |
+| kube-apiserver                                                                             | kubelet        | サーバー証明書     | 記入中                                                                                          | kubelet が、kube-apiserver からの HTTPS リクエストを受信するための証明書。                                                                                                                                                                                                                                                                                                  |
+| kube-apiserver                                                                             | front-proxy    | サーバー証明書     | 記入中...                                                                                       | front-proxy が、kube-apiserver からの HTTPS リクエストを受信するための証明書。                                                                                                                                                                                                                                                                                              |
 
 > - https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster
 > - https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/
@@ -162,21 +162,21 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 ## 03-02. Clusters as-a-Service
 
-### Clusters as-a-Serviceとは
+### Clusters as-a-Service とは
 
 テナントごとに Cluster を作成する。
 
 <br>
 
-### 実Cluster分割の場合
+### 実 Cluster 分割の場合
 
-#### ▼ 実Cluster単位のテナントとは
+#### ▼ 実 Cluster 単位のテナントとは
 
 テナントごとに、独立した Cluster を提供する。
 
 一番簡単である。
 
-#### ▼ 複数Kubernetes Clusterを一元管理
+#### ▼ 複数 Kubernetes Cluster を一元管理
 
 以下のツールを使用して、複数 Kubernetes Cluster を一元管理できる。
 
@@ -190,15 +190,15 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 ## 03-03. Control-planes as-a-Service
 
-### Control-planes as-a-Serviceとは
+### Control-planes as-a-Service とは
 
 テナントごとに、独立したコントロールプレーンを提供する。
 
 <br>
 
-### 仮想Clusterの場合
+### 仮想 Cluster の場合
 
-#### ▼ 仮想Cluster単位のテナントとは
+#### ▼ 仮想 Cluster 単位のテナントとは
 
 ホスト Cluster 上で、テナントごとに仮想 Cluster を作成する。
 
@@ -210,7 +210,7 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 > - https://www.linkedin.com/pulse/kubernetes-virtual-clusters-enabling-hard-cost-gokul-chandra/
 > - https://loft.sh/blog/kubernetes-multi-tenancy-why-virtual-clusters-are-the-best-solution/
 
-#### ▼ 仮想Clusterプロビジョニングツール
+#### ▼ 仮想 Cluster プロビジョニングツール
 
 アルファベット順
 
@@ -236,15 +236,15 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 ## 03-03. Namespaces as-a-Service
 
-### Namespaces as-a-Serviceとは
+### Namespaces as-a-Service とは
 
 テナントごとに、独立した Namespace を提供する。
 
 <br>
 
-### 階層Namespaceの場合
+### 階層 Namespace の場合
 
-#### ▼ 階層Namespace単位のテナントとは
+#### ▼ 階層 Namespace 単位のテナントとは
 
 Namespace に親子関係を定義し、各 Namespace をテナントとする。
 
@@ -252,9 +252,9 @@ Namespace に親子関係を定義し、各 Namespace をテナントとする�
 
 <br>
 
-### Namespaceの場合
+### Namespace の場合
 
-#### ▼ Namespace単位のテナントとは
+#### ▼ Namespace 単位のテナントとは
 
 単一の Kubernetes Cluster 上に、テナントごとに Namespace を作成する。
 
@@ -317,9 +317,9 @@ Namespace を分割するとシステムを理解しやすくなるため、そ�
 
 <br>
 
-### Nodeグループの場合
+### Node グループの場合
 
-#### ▼ Nodeグループ単位のテナントとは
+#### ▼ Node グループ単位のテナントとは
 
 単一の Kubernetes Cluster を Node グループで分割する。
 
@@ -353,7 +353,7 @@ Namespace を分割するとシステムを理解しやすくなるため、そ�
 
 ### capsule
 
-#### ▼ capsuleとは
+#### ▼ capsule とは
 
 capsule では、Tenant というカスタムリソースを作成し、テナントを実装する。
 
@@ -404,7 +404,7 @@ metadata:
 
 ### kiosk
 
-#### ▼ kioskとは
+#### ▼ kiosk とは
 
 kiosk では、Account というカスタムリソースを作成し、テナントを実装する。
 
@@ -489,7 +489,7 @@ resources:
 
 ### KubeZoo
 
-#### ▼ KubeZooとは
+#### ▼ KubeZoo とは
 
 KubeZoo では、Tenant というカスタムリソースを作成し、テナントを実装する。
 

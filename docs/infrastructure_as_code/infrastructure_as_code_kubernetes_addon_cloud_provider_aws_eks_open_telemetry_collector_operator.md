@@ -3,7 +3,7 @@ title: 【IT技術の知見】AWS OpenTelemetry Collector Operator＠Amazon EKS�
 description: AWS OpenTelemetry Collector Operator＠Amazon EKSアドオンの知見を記録しています。
 ---
 
-# AWS OpenTelemetry Collector Operator＠Amazon EKSアドオン
+# AWS OpenTelemetry Collector Operator＠Amazon EKS アドオン
 
 ## はじめに
 
@@ -23,9 +23,9 @@ AWS OpenTelemetry Collector Operator は、OpenTelemetry Collector に関する�
 
 ## 02. セットアップ
 
-### EKSアドオンとして
+### EKS アドオンとして
 
-#### ▼ OpenTelemetryによるHelmチャートの場合
+#### ▼ OpenTelemetry による Helm チャートの場合
 
 OpenTelemetry による Helm チャートの場合、Kubernetes リソースで OpenTelemetry Collector を作成することになる。
 
@@ -35,7 +35,7 @@ OpenTelemetry による Helm チャートの場合、Kubernetes リソースで 
 > - https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/
 > - https://gallery.ecr.aws/aws-observability/aws-otel-collector
 
-#### ▼ AWSによるHelmチャートの場合
+#### ▼ AWS による Helm チャートの場合
 
 AWS による Helm チャートを使用する場合、Kubernetes リソースで OpenTelemetry Collector を作成することになる。
 
@@ -43,7 +43,7 @@ AWS による Helm チャートを使用する場合、Kubernetes リソース�
 
 > - https://github.com/aws-observability/aws-otel-helm-charts
 
-#### ▼ Terraformの場合
+#### ▼ Terraform の場合
 
 Terraform を使用する場合、カスタムリソースで OpenTelemetry Collector を作成することになる。
 

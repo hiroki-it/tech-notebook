@@ -13,7 +13,7 @@ description: GraphQL＠GraphQL-APIの知見を記録しています。
 
 <br>
 
-## 01. GraphQLの仕組み
+## 01. GraphQL の仕組み
 
 ### アーキテクチャ
 
@@ -29,9 +29,9 @@ GraphQL は、GraphQL-API の GraphQL サーバー、GraphQL クライアント�
 
 <br>
 
-### GraphQLサーバー
+### GraphQL サーバー
 
-#### ▼ APIスキーマ
+#### ▼ API スキーマ
 
 GraphQL-API が受信する CRUD のデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。
 
@@ -40,7 +40,7 @@ GraphQL-API が受信する CRUD のデータ型や必須データを定義し�
 
 <br>
 
-### GraphQLクライアント
+### GraphQL クライアント
 
 #### ▼ クエリ
 
@@ -54,7 +54,7 @@ GraphQL-API に送信する CRUD の実際のデータを定義したもの。
 
 ### Query
 
-#### ▼ APIスキーマ (サーバー側)
+#### ▼ API スキーマ (サーバー側)
 
 **＊例＊**
 
@@ -118,7 +118,7 @@ $ curl \
 
 ### Mutation
 
-#### ▼ APIスキーマ (サーバー側)
+#### ▼ API スキーマ (サーバー側)
 
 **＊例＊**
 

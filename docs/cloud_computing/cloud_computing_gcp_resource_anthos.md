@@ -3,7 +3,7 @@ title: 【IT技術の知見】Anthos＠Google Cloud Google Cloudリソース
 description: Anthos＠Google Cloudリソースの知見を記録しています。
 ---
 
-# Anthos＠Google Cloudリソース
+# Anthos＠Google Cloud リソース
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Anthos＠Google Cloudリソースの知見を記録しています�
 
 ## 01. Anthos
 
-### Anthosの仕組み
+### Anthos の仕組み
 
 #### ▼ アーキテクチャ
 
@@ -28,11 +28,11 @@ Anthos は、Google Anthos GKE Cluster、Google Anthos Service Mesh、Google Ant
 
 ### Google Anthos GKE Cluster
 
-#### ▼ Google Anthos GKE Clusterとは
+#### ▼ Google Anthos GKE Cluster とは
 
 Google GKE Cluster (コントロールプレーン Node、ワーカーNode を含む) から構成される。
 
-#### ▼ アタッチCluster
+#### ▼ アタッチ Cluster
 
 Anthos の Google GKE Cluster 部分の能力を、Kubernetes のほかの実行環境 (Amazon EKS、Azure AKS、RKE、K3S や K3D) の Cluster に委譲する。
 
@@ -45,7 +45,7 @@ Anthos の Kubernetes のバージョンは、各実行環境の Cluster が対�
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/attach-kubernetes-clusters
 > - https://www.jetstack.io/blog/anthos-attached-clusters/
 
-#### ▼ Anthos、Kubernetesのバージョンの対応
+#### ▼ Anthos、Kubernetes のバージョンの対応
 
 > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
 
@@ -53,7 +53,7 @@ Anthos の Kubernetes のバージョンは、各実行環境の Cluster が対�
 
 ### Google Anthos Service Mesh
 
-#### ▼ Google Anthos Service Meshとは
+#### ▼ Google Anthos Service Mesh とは
 
 Traffic Director、Mesh CA、Managed backends、といったコンポーネントから構成される。
 
@@ -80,7 +80,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 ### Google Anthos Config Management
 
-#### ▼ Google Anthos Config Managementとは
+#### ▼ Google Anthos Config Management とは
 
 一連の acm-operator (cluster-operator など) から構成される。
 
@@ -88,7 +88,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 > - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
 
-#### ▼ acm-operatorの仕組み
+#### ▼ acm-operator の仕組み
 
 一連の acm-operator (cluster-operator など) は、組み合わさって動作する。
 
@@ -164,7 +164,7 @@ Google Anthos GKE Cluster のライフサイクルも Google Cloud から管理�
 
 ### on-ベアメタルの仕組み
 
-#### ▼ 複数Kubernetes Clusterタイプ
+#### ▼ 複数 Kubernetes Cluster タイプ
 
 複数 Kubernetes Cluster タイプの on-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーン Node の所属する管理 Cluster、ワーカーNode の所属するユーザーCluster、`L4` (トランスポート層) のロードバランサーから構成される。
 
@@ -177,7 +177,7 @@ Google Anthos GKE Cluster のライフサイクルも Google Cloud から管理�
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
 
-#### ▼ スタンドアローンClusterタイプ (ハイブリッドタイプ)
+#### ▼ スタンドアローン Cluster タイプ (ハイブリッドタイプ)
 
 スタンドアローン Cluster タイプ (ハイブリッドタイプ) の on-ベアメタルは、ワークステーション (仮想サーバー) 、コントロールプレーン Node とワーカーNode の両方が所属するベアメタル Cluster、といったコンポーネントから構成される。
 
@@ -208,7 +208,7 @@ Kind がコンテナを構築するために、Google Anthos Cluster の構築�
 $ systemctl start docker
 ```
 
-#### ▼ ブートストラップCluster
+#### ▼ ブートストラップ Cluster
 
 Kind がコンテナ内で作成する仮想的な Google Anthos Cluster のこと。
 
@@ -226,7 +226,7 @@ $ kubectl get pod \
 
 ## 02-03. on-Google Cloud
 
-### on-Google Cloudの仕組み
+### on-Google Cloud の仕組み
 
 Google Cloud 環境上に Google Anthos GKE Cluster を作成する。
 
@@ -244,11 +244,11 @@ Google Cloud の API を経由して、他のクラウドプロバイダー (例
 
 <br>
 
-## 03. bmctlコマンド
+## 03. bmctl コマンド
 
 ### check preflight
 
-#### ▼ check preflightとは
+#### ▼ check preflight とは
 
 `bmctl upgrade` コマンドの実行時に実施されるプリフライトチェックのみを実施する。
 
@@ -258,7 +258,7 @@ $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace
 
 ### update
 
-#### ▼ updateとは
+#### ▼ update とは
 
 CRD の設定値を変更し、kube-apiserver に送信する。
 
@@ -272,7 +272,7 @@ $ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace
 
 ### upgrade
 
-#### ▼ upgradeとは
+#### ▼ upgrade とは
 
 Anthos の Kubernetes のバージョンをプリフライトチェックで検証し、成功すればアップグレードする。
 

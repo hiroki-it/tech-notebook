@@ -13,30 +13,30 @@ description: golangci-lint＠静的解析の知見を記録しています。
 
 <br>
 
-## 01. golangci-lintとは
+## 01. golangci-lint とは
 
 Go のさまざまな静的解析ツールをまとめて実行できる。
 
 ```yaml
-# golangci-lintの公式リポジトリのサンプルを参考にする
+# golangci-lint の公式リポジトリのサンプルを参考にする
 # @see https://github.com/golangci/golangci-lint/blob/main/.golangci.yml
 version: "2"
 
 linters:
   enable:
-    # HTTPレスポンスボディのClose漏れを検出する
+    # HTTP レスポンスボディの Close 漏れを検出する
     - bodyclose
     # 返却値のエラーハンドリング漏れを検出する
     - errcheck
-    # go vetのエラーを検出する
+    # go vet のエラーを検出する
     - govet
     # 意味のない代入を検出する
     - ineffassign
     # 英単語のスペルミスを検出する
     - misspell
-    # nolintコメントの不足を検出する
+    # nolint コメントの不足を検出する
     - nolintlint
-    # Goのスタイル規約や命名規約違反を検出する
+    # Go のスタイル規約や命名規約違反を検出する
     - staticcheck
     # 不要な型変換を検出する
     - unconvert
@@ -47,9 +47,9 @@ linters:
 
 formatters:
   enable:
-    # gofmtによる整形差分を検出する
+    # gofmt による整形差分を検出する
     - gofmt
-    # importの並び順や不要importを検出する
+    # import の並び順や不要 import を検出する
     - goimports
 ```
 
@@ -58,14 +58,14 @@ formatters:
 
 <br>
 
-## 02. CIへの導入
+## 02. CI への導入
 
 ### GitLab CI
 
 ```yaml
 variables:
   GO_VERSION: "<Goのバージョン>"
-  # golangci-lintのイメージレイヤーから、使用しているGoバージョンを確認する必要がある
+  # golangci-lint のイメージレイヤーから、使用している Go バージョンを確認する必要がある
   # @see https://hub.docker.com/layers/golangci/golangci-lint/v1.50-alpine/images/sha256-9f44001cd4ce1e9749f2f1fb63adb76787b7dfcc77cb7b54e65e74ddac4132d8?context=explore
   GOLANGCI_LINT: "<golangci-lintのバージョン>"
 
@@ -80,7 +80,7 @@ go_build:
     # バージョンを確認する
     - go version
     - go mod tidy
-    # go mod tidyで差分があれば、CIを失敗させる
+    # go mod tidy で差分があれば、CI を失敗させる
     - git diff --exit-code
 
 go_lint:
@@ -89,10 +89,10 @@ go_lint:
   script:
     - go version
     # 有効化している静的解析の一覧を表示する
-    # GitLab CIでは色が無効になってしまうため、有効化する
+    # GitLab CI では色が無効になってしまうため、有効化する
     - golangci-lint linters --color always
     # 静的解析を実行する
-    # GitLab CIでは色が無効になってしまうため、有効化する
+    # GitLab CI では色が無効になってしまうため、有効化する
     - golangci-lint run --color always --timeout 5m
 ```
 
@@ -116,16 +116,16 @@ run:
   concurrency: 4
   timeout: 5m
   issues-exit-code: 2
-  # testファイルがあるか否かを設定する
+  # test ファイルがあるか否かを設定する
   tests: false
-  # 設定ファイル、go.mod、Gitルート、作業ディレクトリのどれを基準に相対パスを解釈するかを設定する
+  # 設定ファイル、go.mod、Git ルート、作業ディレクトリのどれを基準に相対パスを解釈するかを設定する
   relative-path-mode: gomod
   build-tags:
     - mytag
   modules-download-mode: readonly
   allow-parallel-runners: false
   allow-serial-runners: true
-  # Goのバージョンを指定する
+  # Go のバージョンを指定する
   go: "1.23"
 ```
 
@@ -160,7 +160,7 @@ output:
 ```yaml
 # 使用するリンターを選ぶ
 linters:
-  # defaultにはstandard、all、none、fastを指定できる
+  # default には standard、all、none、fast を指定できる
   default: none
   enable:
 
@@ -169,7 +169,7 @@ linters:
     - gosec
     - govet
 
-    # staticcheckを使用する
+    # staticcheck を使用する
     - staticcheck
 
     ...
@@ -188,7 +188,7 @@ linters:
 # 使用するリンターにオプションを設定する
 linters:
   settings:
-    # staticcheckにオプションを設定する
+    # staticcheck にオプションを設定する
     staticcheck:
       checks: [ "all" ]
 
@@ -309,7 +309,7 @@ severity:
 
 <br>
 
-### v1系からの変更点
+### v1 系からの変更点
 
 v2 系では `linters-settings` は `linters.settings` に移動した。
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】CloudTrail＠AWSリソース
 description: CloudTrail＠AWSリソースの知見を記録しています。
 ---
 
-# CloudTrail＠AWSリソース
+# CloudTrail＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: CloudTrail＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. CloudTrailとは
+## 01. CloudTrail とは
 
 IAM ユーザーによる操作や、ロールの紐付けの履歴 (証跡) を記録し、ログファイルとして S3 にフォワーディングする。
 

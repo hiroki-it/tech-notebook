@@ -4,7 +4,7 @@ description: ConfigMap 系＠リソース定義の知見を記録しています
 
 ---
 
-# ConfigMap系＠リソース定義
+# ConfigMap 系＠リソース定義
 
 ## はじめに
 
@@ -14,7 +14,7 @@ description: ConfigMap 系＠リソース定義の知見を記録しています
 
 <br>
 
-## 01. 専用ConfigMap
+## 01. 専用 ConfigMap
 
 Istio の各コンポーネントの機密でない変数やファイルを管理する。
 
@@ -22,7 +22,7 @@ Istio の各コンポーネントの機密でない変数やファイルを管�
 
 ## 02 istio-ca-root-cert
 
-### istio-ca-root-certとは
+### istio-ca-root-cert とは
 
 Istiod コントロールプレーン (`discovery` コンテナ) による中間認証局を使用する場合、`istio-ca-root-cert` を自動的に作成する。
 
@@ -53,7 +53,7 @@ Istio コントロールプレーンのログから、CA 証明書の作成を�
 
 ### root-cert.pem
 
-#### ▼ root-cert.pemとは
+#### ▼ root-cert.pem とは
 
 CA 証明書 (ルート証明書) を設定する。
 
@@ -62,7 +62,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: istio-ca-root-cert
-  namespace: app # マイクロサービスのNamespace
+  namespace: app # マイクロサービスの Namespace
 data:
   root-cert.pem: |
     -----BEGIN CERTIFICATE-----
@@ -138,7 +138,7 @@ spec:
 
 ### accessLogEncoding
 
-#### ▼ accessLogEncodingとは
+#### ▼ accessLogEncoding とは
 
 istio-proxy で作成するアクセスログのファイル形式を設定する。
 
@@ -159,7 +159,7 @@ data:
 
 ### accessLogFile
 
-#### ▼ accessLogFileとは
+#### ▼ accessLogFile とは
 
 istio-proxy で作成するアクセスログの出力先を設定する。
 
@@ -183,7 +183,7 @@ data:
 
 ### caCertificates
 
-#### ▼ caCertificatesとは
+#### ▼ caCertificates とは
 
 ルート認証局の CA 証明書や、中間認証局名を設定する。
 
@@ -199,7 +199,7 @@ data:
       proxyMetadata:
         ISTIO_META_CERT_SIGNER: istio-system
     caCertificates:
-        # ルート認証局のCA証明書 
+        # ルート認証局の CA 証明書 
       - pem: |
           Ci0tLS0tQk...
         # 中間認証局名
@@ -217,7 +217,7 @@ data:
 
 ### discoverySelectors
 
-#### ▼ discoverySelectorsとは
+#### ▼ discoverySelectors とは
 
 `ENHANCED_RESOURCE_SCOPING` を有効化し、Istiod コントロールプレーンが watch する Namespace を限定する。
 Istiod はすべての Namespace を watch するが、特定の Namespace のみを watch するようにできる。
@@ -269,7 +269,7 @@ data:
 
 ### defaultHttpRetryPolicy
 
-#### ▼ defaultHttpRetryPolicyとは
+#### ▼ defaultHttpRetryPolicy とは
 
 リトライポリシーのデフォルト値を設定する。
 
@@ -303,11 +303,11 @@ istio-proxy のアウトバウンド通信時リトライ条件は以下であ�
 
 ![istio_inbound-retry_reset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_inbound-retry_reset.png)
 
-| HTTP/1.1、HTTP/2のステータスコード                                        | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                                                                             |
+| HTTP/1.1、HTTP/2 のステータスコード                                       | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                                                                             |
 | ------------------------------------------------------------------------- | :--------------------------------: | :------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `connect-failure`                                                         |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、接続タイムアウト (Connection timeout) が起こった場合に、リトライを実行する。                                                 |
-| `gateway-error`                                                           |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、Gateway系ステータスコード (`502`、`503`、`504`) が返信された場合に、リトライを実行する。冪性がない可能性がある。             |
-| `retriable-status-codes` (`5xx` のように任意のステータスコードを設定する) |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、指定したHTTPステータスであった場合に、リトライを実行する。冪等性がない可能性がある。                                         |
+| `gateway-error`                                                           |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、Gateway 系ステータスコード (`502`、`503`、`504`) が返信された場合に、リトライを実行する。冪性がない可能性がある。            |
+| `retriable-status-codes` (`5xx` のように任意のステータスコードを設定する) |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、指定した HTTP ステータスであった場合に、リトライを実行する。冪等性がない可能性がある。                                       |
 | `reset`                                                                   |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、接続切断／接続リセット／読み取りタイムアウト (Read timeout) が起こった場合に、リトライを実行する。冪等性がない可能性がある。 |
 
 > - https://cloud.google.com/storage/docs/retry-strategy?hl=ja#retryable
@@ -315,13 +315,13 @@ istio-proxy のアウトバウンド通信時リトライ条件は以下であ�
 > - https://github.com/istio/istio/issues/35774#issuecomment-953877524
 > - https://cloud.google.com/storage/docs/retry-strategy?hl=ja
 
-| HTTP/2のステータスコード | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                                                                                                        |
-| ------------------------ | :--------------------------------: | :------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cancelled`              |                 ⭕️                 |                | **マイクロサービスからのアウトバウンド**通信時、gRPCステータスコードが `Cancelled` であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。 |
-| `deadline-exceeded`      |                 ⭕️                 |       ✅       | マイクロサービスからアウトバウンド通信時、gRPCステータスコードが `DeadlineExceeded` であった場合に、リトライを実行する。                                                                            |
-| `refused-stream`         |                 ⭕️                 |       ✅       | 同時接続上限数を超過するストリームをマイクロサービスが作成しようとした場合に、リトライを実行する。                                                                                                  |
-| `resource-exhausted`     |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、gRPCステータスコードが `ResourceExhausted` であった場合に、リトライを実行する。                                                                         |
-| `unavailable`            |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった場合に、リトライを実行する。                                                                  |
+| HTTP/2 のステータスコード | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                                                                                                         |
+| ------------------------- | :--------------------------------: | :------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cancelled`               |                 ⭕️                 |                | **マイクロサービスからのアウトバウンド**通信時、gRPC ステータスコードが `Cancelled` であった場合に、リトライを実行する。送信元がリクエストを切断しているため、リトライするべきではない可能性がある。 |
+| `deadline-exceeded`       |                 ⭕️                 |       ✅       | マイクロサービスからアウトバウンド通信時、gRPC ステータスコードが `DeadlineExceeded` であった場合に、リトライを実行する。                                                                            |
+| `refused-stream`          |                 ⭕️                 |       ✅       | 同時接続上限数を超過するストリームをマイクロサービスが作成しようとした場合に、リトライを実行する。                                                                                                   |
+| `resource-exhausted`      |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、gRPC ステータスコードが `ResourceExhausted` であった場合に、リトライを実行する。                                                                         |
+| `unavailable`             |                 ⭕️                 |       ✅       | マイクロサービスからのアウトバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった場合に、リトライを実行する。                                                                   |
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on
@@ -332,15 +332,15 @@ istio-proxy のインバウンド通信時のリトライ条件は以下であ�
 
 執筆時点 (2025/02/26) では、`ENABLE_INBOUND_RETRY_POLICY` 変数を `true` (デフォルト値) にすると使用できる。
 
-| HTTP/1.1のステータスコード | マイクロサービスに通信が届いている | 冪等性がある | 理由                                                                                                 |
-| -------------------------- | :--------------------------------: | :----------: | ---------------------------------------------------------------------------------------------------- |
-| `reset-before-request`     |                 ×                  |      ✅      | マイクロサービスへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。 |
+| HTTP/1.1 のステータスコード | マイクロサービスに通信が届いている | 冪等性がある | 理由                                                                                                 |
+| --------------------------- | :--------------------------------: | :----------: | ---------------------------------------------------------------------------------------------------- |
+| `reset-before-request`      |                 ×                  |      ✅      | マイクロサービスへのインバウンド通信時、マイクロサービスにリクエストをフォワーディングできなかった。 |
 
 <br>
 
 ### defaultProviders
 
-#### ▼ defaultProvidersとは
+#### ▼ defaultProviders とは
 
 `extensionProviders` キーで定義したもののうち、デフォルトで使用するプロバイダーを設定する。
 
@@ -369,9 +369,9 @@ data:
     extensionProviders:
       - name: opentelemetry-grpc
         opentelemetry:
-          # OpenTelemetry Collectorを宛先として設定する
+          # OpenTelemetry Collector を宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
-          # gRPC用のエンドポイントを設定する
+          # gRPC 用のエンドポイントを設定する
           port: 4317
 ```
 
@@ -413,7 +413,7 @@ data:
 
 ### enablePrometheusMerge
 
-#### ▼ enablePrometheusMergeとは
+#### ▼ enablePrometheusMerge とは
 
 マイクロサービスと istio-proxy をマージするかどうかを設定する。
 
@@ -434,7 +434,7 @@ data:
 
 ### enableTracing
 
-#### ▼ enableTracingとは
+#### ▼ enableTracing とは
 
 istio-proxy でトレース ID とスパン ID を作成するか否かを設定する。
 
@@ -475,7 +475,7 @@ data:
 
 ### ingressSelector
 
-#### ▼ ingressSelectorとは
+#### ▼ ingressSelector とは
 
 すべての istio-proxy に関して、使用する Gateway の `.metadata.labels.istio` キーの値を設定する。
 
@@ -496,7 +496,7 @@ data:
 
 ### ingressService
 
-#### ▼ ingressServiceとは
+#### ▼ ingressService とは
 
 すべての istio-proxy に関して、使用する Ingress Controller の `.metadata.labels.istio` キーの値を設定する。
 
@@ -519,7 +519,7 @@ data:
 
 ### proxyHttpPort
 
-#### ▼ proxyHttpPortとは
+#### ▼ proxyHttpPort とは
 
 すべての istio-proxy に関して、Cluster 外からのインバウンド通信 (特に HTTP プロトコル) を待ち受けるポート番号を設定する。
 
@@ -557,7 +557,7 @@ data:
 
 ### outboundTrafficPolicy
 
-#### ▼ outboundTrafficPolicyとは
+#### ▼ outboundTrafficPolicy とは
 
 サービスメッシュ外へのリクエストの宛先の種類 (`PassthroughCluster`、`BlackHoleCluster`) を設定する。
 
@@ -583,7 +583,7 @@ data:
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 > - https://discuss.istio.io/t/setting-outboundtrafficpolicy-mode-in-configmap/7041/3
 
-#### ▼ ALLOW_ANYの注意点
+#### ▼ ALLOW_ANY の注意点
 
 サービスメッシュ外の "クラスター外" の宛先であれば、`ALLOW_ANY` のため接続可能である (Kiali 上は PassthroughCluster という表記) 。
 
@@ -598,7 +598,7 @@ data:
 
 ### proxyListenPort
 
-#### ▼ proxyListenPortとは
+#### ▼ proxyListenPort とは
 
 すべての istio-proxy に関して、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。
 
@@ -619,7 +619,7 @@ data:
 
 ## 04-01-02. defaultConfig
 
-### defaultConfigとは
+### defaultConfig とは
 
 Istio のすべてのコンポーネントに適用する変数のデフォルト値を設定する。
 
@@ -654,7 +654,7 @@ spec:
 ```
 
 ```yaml
-# APIがまだ用意されておらず、現状は設定できない
+# API がまだ用意されておらず、現状は設定できない
 apiVersion: networking.istio.io/v1beta1
 kind: ProxyConfig
 metadata:
@@ -759,9 +759,9 @@ data:
     defaultConfig:
       envoyAccessLogService: 
         address: <Envoyのアクセスログの宛先Service名>:15000
-        # Istioコントロールプレーンをルート認証局とする
+        # Istio コントロールプレーンをルート認証局とする
         tlsSettings: ISTIO_MUTUAL
-        # TCP KeepAliveを実施する
+        # TCP KeepAlive を実施する
         tcpKeepalive:
           probes: 9
           time: 2
@@ -789,9 +789,9 @@ data:
     defaultConfig:
       envoyMetricsService: 
         address: <Envoyのメトリクスの宛先Service名>:15000
-        # Istioコントロールプレーンをルート認証局とする
+        # Istio コントロールプレーンをルート認証局とする
         tlsSettings: ISTIO_MUTUAL
-        # TCP KeepAliveを実施する
+        # TCP KeepAlive を実施する
         tcpKeepalive:
           probes: 9
           time: 2
@@ -1323,7 +1323,7 @@ spec:
 > - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy
 
-#### ▼ 固定 (HTTPリクエスト)
+#### ▼ 固定 (HTTP リクエスト)
 
 ServiceEntry で HTTP リクエストを受信した場合、DNS キャッシュのドメインと IP アドレスを固定で紐づける。
 
@@ -1356,7 +1356,7 @@ spec:
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#dns-capture-in-action
 
-#### ▼ 動的 (HTTPリクエスト)
+#### ▼ 動的 (HTTP リクエスト)
 
 ServiceEntry で HTTP リクエストを受信した場合、DNS キャッシュのドメインと IP アドレスを動的に紐づける。
 
@@ -1391,7 +1391,7 @@ spec:
 
 > - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#address-auto-allocation
 
-#### ▼ 動的 (TCP接続)
+#### ▼ 動的 (TCP 接続)
 
 ServiceEntry で、TCP 接続として扱われるホストヘッダー持ち独自プロトコル (例：MySQL や Redis 以外の非対応プロトコルなど) を受信した場合、DNS キャッシュのドメインと IP アドレスを動的に紐づける。
 
@@ -1521,14 +1521,14 @@ AuthorizationPolicy による認可処理を外部の認可プロバイダーに
 
 ### envoyExtAuthzHttp
 
-#### ▼ envoyExtAuthzHttpとは
+#### ▼ envoyExtAuthzHttp とは
 
 外部の認可プロバイダーへの通信に HTTP/1.1 プロトコルを使用する。
 
 > - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-EnvoyExternalAuthorizationHttpProvider
 
-#### ▼ OAuth2 Proxyの場合
+#### ▼ OAuth2 Proxy の場合
 
 OAuth2 Proxy を任意の認可プロバイダーの前段に置き、OAuth2 Proxy で認可プロバイダーを宛先に設定する。
 
@@ -1549,7 +1549,7 @@ data:
         envoyExtAuthzHttp:
           service: oauth2-proxy.foo.svc.cluster.local
           port: 4180
-        # HTTPリクエストに含めるヘッダー
+        # HTTP リクエストに含めるヘッダー
         includeHeadersInCheck:
           - cookie
           - authorization
@@ -1577,7 +1577,7 @@ spec:
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
 > - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
 
-#### ▼ Open Agent Policyの場合
+#### ▼ Open Agent Policy の場合
 
 Open Agent Policy を外部の認可プロバイダーとして設定する。
 
@@ -1596,7 +1596,7 @@ data:
         envoyExtAuthzHttp:
           service: open-policy-agent.foo.svc.cluster.local
           port: 9191
-        # HTTPリクエストに含めるヘッダー
+        # HTTP リクエストに含めるヘッダー
         includeHeadersInCheck:
           - cookie
           - authorization
@@ -1606,7 +1606,7 @@ data:
 
 > - https://www.openpolicyagent.org/docs/envoy/tutorial-istio#2-configure-the-mesh-to-define-the-external-authorizer
 
-#### ▼ Keycloakの場合
+#### ▼ Keycloak の場合
 
 Keycloak は、ID プロバイダーとしてだけでなく認可プロバイダーとしても使用できる。
 
@@ -1637,7 +1637,7 @@ Keycloak は、ID プロバイダーとしてだけでなく認可プロバイ�
 
 ### datadog
 
-#### ▼ datadogとは
+#### ▼ datadog とは
 
 datadog のトレースコンテキスト仕様 (datadog の独自仕様) でトレース ID とスパン ID を作成する。
 
@@ -1659,14 +1659,14 @@ data:
     extensionProviders:
       - name: datadog-http
         datadog:
-          # datadogエージェントを宛先として設定する
+          # datadog エージェントを宛先として設定する
           service: datadog-agent.foo-namespace.svc.cluster.local
           port: 8126
       - name: envoy-log
         envoyFileAccessLog
 ```
 
-#### ▼ Telemetryの定義
+#### ▼ Telemetry の定義
 
 Datadog に送信するためには、`.mesh.extensionProviders[*].datadog` キーに設定した宛先情報を使用して、Telemetry を定義する必要がある。
 
@@ -1677,17 +1677,17 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: tracing-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  # サイドカーをインジェクションしている各 Namespace で作成する
+  # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 spec:
-  # Datadogにスパンを送信させるPodを設定する
+  # Datadog にスパンを送信させる Pod を設定する
   selector:
     matchLabels:
       name: app
   tracing:
     - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
+        # mesh.extensionProviders[*].name キーで設定した名前
         - name: datadog-http
       randomSamplingPercentage: 100
 ```
@@ -1699,18 +1699,18 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: access-log-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  # サイドカーをインジェクションしている各 Namespace で作成する
+  # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 spec:
-  # Datadogにアクセスログを送信させるPodを設定する
+  # Datadog にアクセスログを送信させる Pod を設定する
   selector:
     matchLabels:
       name: app
-  # Envoyをアクセスログプロバイダーとして設定する
+  # Envoy をアクセスログプロバイダーとして設定する
   accessLogging:
     - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
+        # mesh.extensionProviders[*].name キーで設定した名前
         - name: envoy-log
 ```
 
@@ -1723,7 +1723,7 @@ spec:
 
 ### opentelemetry
 
-#### ▼ opentelemetryとは
+#### ▼ opentelemetry とは
 
 OpenTelemetry のトレースコンテキスト仕様 (W3C Trace Context) でトレース ID とスパン ID を作成する。
 
@@ -1747,25 +1747,25 @@ data:
     extensionProviders:
       - name: opentelemetry-grpc
         opentelemetry:
-          # OpenTelemetry Collectorを宛先として設定する
+          # OpenTelemetry Collector を宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
-          # gRPC用のエンドポイントを設定する
+          # gRPC 用のエンドポイントを設定する
           port: 4317
       - name: opentelemetry-http
         opentelemetry:
-          # OpenTelemetry Collectorを宛先として設定する
+          # OpenTelemetry Collector を宛先として設定する
           service: opentelemetry-collector.foo-namespace.svc.cluster.local
-          # HTTP用のエンドポイントを設定する
+          # HTTP 用のエンドポイントを設定する
           port: 4318
             http:
-            # HTTPリクエストの場合はパスが必要である
+            # HTTP リクエストの場合はパスが必要である
             path: /v1/traces
       - name: envoy-log
         envoyFileAccessLog:
           path: /dev/stdout
 ```
 
-#### ▼ Telemetryの定義
+#### ▼ Telemetry の定義
 
 OpenTelemetry に送信するためには、`.mesh.extensionProviders[*].opentelemetry` キーに設定した宛先情報を使用して、Telemetry を定義する必要がある。
 
@@ -1776,17 +1776,17 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: tracing-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  # サイドカーをインジェクションしている各 Namespace で作成する
+  # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 spec:
-  # Opentelemetryにスパンを送信させるPodを設定する
+  # Opentelemetry にスパンを送信させる Pod を設定する
   selector:
     matchLabels:
       name: app
   tracing:
     - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
+        # mesh.extensionProviders[*].name キーで設定した名前
         - name: opentelemetry-grpc
       randomSamplingPercentage: 100
 ```
@@ -1798,18 +1798,18 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: access-log-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  # サイドカーをインジェクションしている各 Namespace で作成する
+  # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 spec:
-  # OpenTelemetryにアクセスログを送信させるPodを設定する
+  # OpenTelemetry にアクセスログを送信させる Pod を設定する
   selector:
     matchLabels:
       name: app
-  # Envoyをアクセスログプロバイダーとして設定する
+  # Envoy をアクセスログプロバイダーとして設定する
   accessLogging:
     - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
+        # mesh.extensionProviders[*].name キーで設定した名前
         - name: envoy-log
 ```
 
@@ -1825,7 +1825,7 @@ spec:
 
 ### prometheus
 
-#### ▼ prometheusとは
+#### ▼ prometheus とは
 
 メトリクスの監視バックエンドとする Prometheus の宛先情報を設定する。
 
@@ -1860,7 +1860,7 @@ data:
     extensionProviders:
       - name: jaeger-http
         jaeger:
-          # jaegerエージェントを宛先として設定する
+          # jaeger エージェントを宛先として設定する
           service: jaeger-agent.foo-namespace.svc.cluster.local
           port: 8126
       - name: envoy-log
@@ -1877,17 +1877,17 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: tracing-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  # サイドカーをインジェクションしている各 Namespace で作成する
+  # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 spec:
-  # Datadogにスパンを送信させるPodを設定する
+  # Datadog にスパンを送信させる Pod を設定する
   selector:
     matchLabels:
       name: app
   tracing:
     - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
+        # mesh.extensionProviders[*].name キーで設定した名前
         - name: jaeger-http
       randomSamplingPercentage: 100
 ```
@@ -1899,18 +1899,18 @@ apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
   name: access-log-provider
-  # サイドカーをインジェクションしている各Namespaceで作成する
-  # もしistio-systemを指定した場合は、istio-proxyコンテナのある全てのNamespaceが対象になる
+  # サイドカーをインジェクションしている各 Namespace で作成する
+  # もし istio-system を指定した場合は、istio-proxy コンテナのある全ての Namespace が対象になる
   namespace: foo
 spec:
-  # ZipkinやJaegerにアクセスログを送信させるPodを設定する
+  # Zipkin やJaeger にアクセスログを送信させる Pod を設定する
   selector:
     matchLabels:
       name: app
-  # Envoyをアクセスログプロバイダーとして設定する
+  # Envoy をアクセスログプロバイダーとして設定する
   accessLogging:
     - providers:
-        # mesh.extensionProviders[*].nameキーで設定した名前
+        # mesh.extensionProviders[*].name キーで設定した名前
         - name: envoy-log
 ```
 
@@ -1921,7 +1921,7 @@ spec:
 
 ### envoyFileAccessLog
 
-#### ▼ envoyFileAccessLogとは
+#### ▼ envoyFileAccessLog とは
 
 Envoy のアクセスログを設定する。
 
@@ -1996,7 +1996,7 @@ data:
 
 ### config
 
-#### ▼ configとは
+#### ▼ config とは
 
 Istiod コントロールプレーン (`discovery` コンテナ) のため、Istio のサイドカーインジェクションの変数や patch 処理の内容を管理する。
 
@@ -2016,7 +2016,7 @@ data:
     template: "{{ Template_Version_And_Istio_Version_Mismatched_Check_Installation }}"
     templates:
       sidecar: |
-        # Helmのテンプレート
+        # Helm のテンプレート
 ```
 
 #### ▼ .templates.sidecar
@@ -2036,7 +2036,7 @@ data:
     templates:
       sidecar: |
 
-        ... # Helmのテンプレート
+        ... # Helm のテンプレート
 ```
 
 > - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
@@ -2068,7 +2068,7 @@ data:
 
 <br>
 
-## 06. pilot-discoveryコマンドの環境変数
+## 06. pilot-discovery コマンドの環境変数
 
 ### `CITADEL_SELF_SIGNED_CA_CERT_TTL`
 
@@ -2390,11 +2390,11 @@ spec:
             value: istiod
 ```
 
-| 設定値       | 説明                                                   |
-| ------------ | ------------------------------------------------------ |
-| `istiod`     | Istiodが提供するサーバー証明書を使用する。             |
-| `kubernetes` | KubernetesのSecretで管理するサーバー証明書を使用する。 |
-| `none`       | サーバー証明書を使用しない。                           |
+| 設定値       | 説明                                                     |
+| ------------ | -------------------------------------------------------- |
+| `istiod`     | Istiod が提供するサーバー証明書を使用する。              |
+| `kubernetes` | Kubernetes のSecret で管理するサーバー証明書を使用する。 |
+| `none`       | サーバー証明書を使用しない。                             |
 
 > - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
 

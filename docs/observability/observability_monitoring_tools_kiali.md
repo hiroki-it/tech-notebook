@@ -13,7 +13,7 @@ description: Kiali＠監視ツールの知見を記録しています。
 
 <br>
 
-## 01. Kialiの仕組み
+## 01. Kiali の仕組み
 
 ### アーキテクチャ
 
@@ -38,7 +38,7 @@ Kiali は、バックエンドコンポーネントとフロントエンドコ�
 > - https://kiali.io/docs/architecture/architecture/#kiali-back-end
 > - https://kiali.io/docs/faq/general/#requiredmetrics
 
-#### ▼ Kilaiが使用するIstioメトリクス
+#### ▼ Kilai が使用する Istio メトリクス
 
 Kiali は、以下のメトリクスを使用してメッシュトポロジーやそのほかのグラフを作成する。
 
@@ -81,7 +81,7 @@ Kiali は、Deployment、ConfigMap、Service などのマニフェストから�
 
 <br>
 
-### Deployment配下のPod
+### Deployment 配下の Pod
 
 #### ▼ 設定例
 
@@ -146,7 +146,7 @@ data:
     ...
 ```
 
-#### ▼ Istioとの対応
+#### ▼ Istio との対応
 
 Kiali のバージョンは、Istio と対応関係にある。
 
@@ -187,7 +187,7 @@ spec:
 
 ## 02. コンソールの歩き方
 
-### Workloadsタブ
+### Workloads タブ
 
 基本的には、このタブを確認する。
 
@@ -195,26 +195,26 @@ spec:
 
 <br>
 
-### Graphタブ
+### Graph タブ
 
 #### ▼ メッシュトポロジータイプ
 
 > - https://kiali.io/docs/features/topology/#graph-types
 > - https://istio.io/latest/docs/tasks/observability/kiali/#viewing-and-editing-istio-configuration-yaml
 
-#### ▼ Appグラフ
+#### ▼ App グラフ
 
 アプリコンテナ間 (Pod 間) の通信を表示する。
 
-#### ▼ Serviceグラフ
+#### ▼ Service グラフ
 
 Virtual Service 間の通信を表示する。
 
-#### ▼ Versioned Appグラフ
+#### ▼ Versioned App グラフ
 
 バージョン付きのアプリコンテナ間 (Pod 間) の通信を表示する。
 
-#### ▼ Workloadグラフ
+#### ▼ Workload グラフ
 
 Workload (例：Deployment、DaemonSet、StatefulSet、Job など) の通信を表示する。
 
@@ -250,7 +250,7 @@ TCP スリーウェイハンドシェイクのレスポンスタイムやエラ�
 
 そのため、アプリコンテナの Namespace のみをフィルタリングして表示する。
 
-#### ▼ 相互TLS認証
+#### ▼ 相互 TLS 認証
 
 デフォルトでは、マイクロサービス間のいずれの通信が相互 TLS 認証になっているかを表示しない。
 
@@ -279,7 +279,7 @@ TCP スリーウェイハンドシェイクのレスポンスタイムやエラ�
 
 <br>
 
-### Istioのマニフェストの検証
+### Istio のマニフェストの検証
 
 Kiali では、Istio リソースのマニフェストを検証できる。
 

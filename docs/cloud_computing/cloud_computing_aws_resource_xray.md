@@ -13,7 +13,7 @@ description: X-Ray＠AWSの知見を記録しています。
 
 <br>
 
-## 01. X-Rayとは
+## 01. X-Ray とは
 
 ### 仕組み
 
@@ -32,7 +32,7 @@ description: X-Ray＠AWSの知見を記録しています。
 
 <br>
 
-### X-Rayデーモン
+### X-Ray デーモン
 
 EC2 であればデーモンプロセスとして、Amazon ECS であればサイドカーとして稼働させる。
 
@@ -52,19 +52,19 @@ Amazon EKS で DamonSet として稼働させる。
 
 ### サンプリング
 
-| 項目                | 説明                                                                                  |
-| ------------------- | ------------------------------------------------------------------------------------- |
-| Limits              | スパンの収集に関する上限値を設定する。                                                |
-| Matching criteria   | スパンのキーに基づくフィルタリングの一致条件を設定する。                              |
-| Matching attributes | AWS以外の文脈で付与されたラベル (例：OpenTelemetryのAttribute) の一致条件を設定する。 |
+| 項目                | 説明                                                                                    |
+| ------------------- | --------------------------------------------------------------------------------------- |
+| Limits              | スパンの収集に関する上限値を設定する。                                                  |
+| Matching criteria   | スパンのキーに基づくフィルタリングの一致条件を設定する。                                |
+| Matching attributes | AWS 以外の文脈で付与されたラベル (例：OpenTelemetry のAttribute) の一致条件を設定する。 |
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html
 
 ### 暗号化
 
-| 項目         | 説明                                                                              |
-| ------------ | --------------------------------------------------------------------------------- |
-| 暗号化タイプ | 分散トレースの暗号化キー (例：AWSマネージドキー、セルフマネージドキー) を選べる。 |
+| 項目         | 説明                                                                               |
+| ------------ | ---------------------------------------------------------------------------------- |
+| 暗号化タイプ | 分散トレースの暗号化キー (例：AWS マネージドキー、セルフマネージドキー) を選べる。 |
 
 #### ▼ グループ
 
@@ -72,11 +72,11 @@ Amazon EKS で DamonSet として稼働させる。
 | ------------ | -------------------------------------------------- |
 | フィルター式 | スパンのグルーピング条件を設定する。               |
 | インサイト   | インサイトメトリクスを連携するかどうかを設定する。 |
-| タグ         | AWSリソースタグを設定する。                        |
+| タグ         | AWS リソースタグを設定する。                       |
 
 <br>
 
-## 02. セットアップ (Terraformの場合)
+## 02. セットアップ (Terraform の場合)
 
 ```terraform
 resource "aws_xray_group" "environment" {
@@ -125,7 +125,7 @@ responsetime >= 5 AND responsetime <= 10
 
 > - https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html#console-filters-syntax
 
-#### ▼ HTTPヘッダー
+#### ▼ HTTP ヘッダー
 
 HTTP ヘッダー値でトレース ID をフィルタリングする。
 
@@ -141,7 +141,7 @@ http.useragent = "ELB-HealthChecker/2.0"
 
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-X-Ray_0228_v1.pdf#page=29
 
-#### ▼ AWSリソース
+#### ▼ AWS リソース
 
 AWS リソース名でトレース ID をフィルタリングする。
 
@@ -161,7 +161,7 @@ service(id(name: "<AWSリソース名>", type: "AWS::EC2::Instance"))
 
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-X-Ray_0228_v1.pdf#page=29
 
-#### ▼ 送信元/宛先のAWSリソース
+#### ▼ 送信元/宛先の AWS リソース
 
 送信元と宛先の AWS リソース名でトレース ID をフィルタリングする。
 
@@ -206,7 +206,7 @@ subsegment.put_annotation("component", value)
 
 ### テレメトリー間の連携
 
-#### ▼ Amazon CloudWatch Logsとの連携
+#### ▼ Amazon CloudWatch Logs との連携
 
 あらかじめ、分散トレースに紐づくログがあるロググループ名を設定し、またログには X-Ray 仕様のトレース ID を出力しておく必要がある。
 
@@ -238,16 +238,16 @@ fields @log, @timestamp, @message
 
 ```yaml
 {
-  # スパンのトレースID
+  # スパンのトレース ID
   "trace_id": "1-581cf771-a006649127e371903a2de979",
-  # スパンのスパンID
+  # スパンのスパン ID
   "id": "70de5b6f19ff9a0a",
   "name": "example.com",
   "start_time": 1.478293361271E9,
   "end_time": 1.478293361449E9,
   "service": {...},
   "user": {...},
-  # アプリケーションを実行しているAWSリソースの種類 (例：EC2、Amazon ECS、Elastic Beanstalk)
+  # アプリケーションを実行している AWS リソースの種類 (例：EC2、Amazon ECS、Elastic Beanstalk)
   "origin": {...},
   "parent_id": {...},
   "http": {...},
@@ -267,7 +267,7 @@ fields @log, @timestamp, @message
 
 ```yaml
 {
-  # スキーマURL
+  # スキーマ URL
   "$schema": "http://json-schema.org/draft-04/schema#",
   "description": "Segment document schema",
   # スキーマのバージョン
@@ -290,7 +290,7 @@ fields @log, @timestamp, @message
 
 <br>
 
-### ID系
+### ID 系
 
 #### ▼ `id`
 
@@ -373,7 +373,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 <br>
 
-### AWSリソース系
+### AWS リソース系
 
 #### ▼ `aws` キー
 
@@ -381,7 +381,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 ```yaml
 {
-  # AWSリソース情報
+  # AWS リソース情報
   "aws": {
       "elastic_beanstalk":
         {
@@ -402,7 +402,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
             "arn": "arn:aws:logs:us-west-2:012345678912:log-group:my-cw-log-group",
           },
         ],
-      # X-Rayのクライアントパッケージ情報
+      # X-Ray のクライアントパッケージ情報
       "xray":
         {
           "auto_instrumentation": false,
@@ -419,11 +419,11 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 ```yaml
 {
-  # 400系ステータスの場合
+  # 400 系ステータスの場合
   "error": false,
-  # 500系ステータスの場合,
+  # 500 系ステータスの場合,
   "fault": true,
-  # 429ステータスの場合
+  # 429 ステータスの場合
   "throttle": false,
 }
 ```
@@ -455,9 +455,9 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 <br>
 
-## 05. OpenTelemetryとX-Rayの対応関係
+## 05. OpenTelemetry とX-Ray の対応関係
 
-### OpenTelemetryとX-Ray
+### OpenTelemetry とX-Ray
 
 #### ▼ 一覧
 
@@ -480,7 +480,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 <br>
 
-### HTTPリクエストのスパン属性
+### HTTP リクエストのスパン属性
 
 #### ▼ 一覧
 
@@ -509,7 +509,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 <br>
 
-### AWSのスパン属性
+### AWS のスパン属性
 
 #### ▼ 一覧
 
@@ -524,7 +524,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 <br>
 
-### SDKのスパンメタデータ
+### SDK のスパンメタデータ
 
 #### ▼ 一覧
 
@@ -536,7 +536,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 <br>
 
-### AWSリソースのスパンメタデータ
+### AWS リソースのスパンメタデータ
 
 #### ▼ 一覧
 
@@ -590,7 +590,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 
 <br>
 
-## 06. AWS Lambdaの場合
+## 06. AWS Lambda の場合
 
 ### 初期化
 

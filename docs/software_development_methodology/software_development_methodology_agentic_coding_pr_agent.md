@@ -13,7 +13,7 @@ description: PR Agent＠エージェンティックコーディングの知見�
 
 <br>
 
-## 01. PR Agentとは
+## 01. PR Agent とは
 
 メンションに応じて自動で PR の内容を読み取り、レビューを実施する。
 
@@ -28,7 +28,7 @@ workflow:
   rules:
     - if: $CI_COMMIT_TAG
     - if: $CI_COMMIT_BRANCH
-    # もしworkflowのルールを設定している場合、merge_request_eventをルールの条件としないと、ワークフローが起動しない
+    # もし workflow のルールを設定している場合、merge_request_event をルールの条件としないと、ワークフローが起動しない
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 stages:
@@ -42,11 +42,11 @@ pr_agent:
     name: pr-agent:latest
     entrypoint: [""]
   variables:
-    # Cross-region-inferenceに対応するためにusを指定する
-    # 対応不要の場合はap-northeast-1でもよい
+    # Cross-region-inference に対応するために us を指定する
+    # 対応不要の場合は ap-northeast-1 でもよい
     AWS_REGION_NAME: "us-east-1"
   before_script:
-    # もしAWS Bedlockを使用する場合は、資格情報を取得する
+    # もし AWS Bedlock を使用する場合は、資格情報を取得する
   script:
     - cd /app
     - echo "Running PR Agent action step"
@@ -60,7 +60,7 @@ pr_agent:
     - python -m pr_agent.cli --pr_url="$MR_URL" improve
   allow_failure: true
   rules:
-    # merge_request_eventの時にJobを発火させないと、PR AgentはMRの情報を取得できずにエラーになってしまう
+    # merge_request_event の時に Job を発火させないと、PR Agent は MR の情報を取得できずにエラーになってしまう
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 ```
 
@@ -91,7 +91,7 @@ pr_agent:
 
 ## 02. Webhook
 
-### Webhookを使用したCI発火
+### Webhook を使用した CI 発火
 
 PR 上で `/<コマンド>` を実行することで、Webhook を介して PR-Agent を実行できる。
 
@@ -125,7 +125,7 @@ pr-agent の使い方を出力する。
 
 <br>
 
-## 03. configセクション
+## 03. config セクション
 
 ### model
 
@@ -201,7 +201,7 @@ use_wiki_settings_file=false
 
 <br>
 
-## 04 github_appセクション
+## 04 github_app セクション
 
 ### handle_push_trigger
 
@@ -214,7 +214,7 @@ handle_push_trigger=false
 
 <br>
 
-## 05. pr_descriptionセクション
+## 05. pr_description セクション
 
 ### enable_help
 
@@ -294,7 +294,7 @@ extra_instructions="""\
 
 <br>
 
-## 06. pr_reviewerセクション
+## 06. pr_reviewer セクション
 
 ### enable_help_text
 
@@ -336,7 +336,7 @@ require_score_review=true
 
 <br>
 
-## 07. pr_code_suggestionsセクション
+## 07. pr_code_suggestions セクション
 
 ### extra_instructions
 

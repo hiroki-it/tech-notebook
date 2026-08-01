@@ -13,7 +13,7 @@ description: 設定ファイル＠Promtailの知見を記録しています。
 
 <br>
 
-## 01. Promtailは非推奨
+## 01. Promtail は非推奨
 
 Promtail は非推奨で、Grafana Alloy への移行が推奨になった。
 

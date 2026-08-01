@@ -13,7 +13,7 @@ description: コンポーネント＠Symfonyの知見を記録しています。
 
 <br>
 
-## 01. Doctrine ORMとは
+## 01. Doctrine ORM とは
 
 Symfony に組み込まれている ORM。
 
@@ -23,9 +23,9 @@ Data Mapper パターンで実装されている。
 
 <br>
 
-## 02. DoctrineによるCRUD
+## 02. Doctrine による CRUD
 
-### SQLの定義
+### SQL の定義
 
 #### ▼ `createQueryBuilder()` 関数
 

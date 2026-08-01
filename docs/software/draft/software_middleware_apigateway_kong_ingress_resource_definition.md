@@ -77,7 +77,7 @@ spec:
 
 ### config
 
-#### ▼ grpc-gatewayプラグインの場合
+#### ▼ grpc-gateway プラグインの場合
 
 ```yaml
 apiVersion: configuration.konghq.com/v1
@@ -97,7 +97,7 @@ $ kubectl annotate service <サービス名> konghq.com/plugins=grpc-gateway-plu
 > - https://docs.konghq.com/hub/kong-inc/grpc-gateway/how-to/basic-example/
 > - https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c
 
-#### ▼ jwtプラグインの場合
+#### ▼ jwt プラグインの場合
 
 ```yaml
 apiVersion: configuration.konghq.com/v1
@@ -118,7 +118,7 @@ $ kubectl annotate service <サービス名> konghq.com/plugins=jwt-plugin
 > - https://docs.konghq.com/hub/kong-inc/jwt/how-to/basic-example/
 > - https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c
 
-#### ▼ key-authプラグインの場合
+#### ▼ key-auth プラグインの場合
 
 ```yaml
 apiVersion: configuration.konghq.com/v1
@@ -139,7 +139,7 @@ $ kubectl annotate service <サービス名> konghq.com/plugins=key-auth-plugin
 > - https://docs.konghq.com/hub/kong-inc/key-auth/how-to/basic-example/
 > - https://qiita.com/santasan1224/items/19fcb7ec54883a8b8ee9#%E3%81%95%E3%81%A3%E3%81%8D%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AB%E8%AA%8D%E8%A8%BC%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B
 
-#### ▼ opentelemetryプラグインの場合
+#### ▼ opentelemetry プラグインの場合
 
 ```yaml
 apiVersion: configuration.konghq.com/v1
@@ -160,7 +160,7 @@ $ kubectl annotate service <サービス名> konghq.com/plugins=opentelemetry-pl
 
 > - https://docs.konghq.com/hub/kong-inc/opentelemetry/how-to/basic-example/
 
-#### ▼ rate-limitingプラグイン
+#### ▼ rate-limiting プラグイン
 
 ```yaml
 apiVersion: configuration.konghq.com/v1

@@ -3,7 +3,7 @@ title: 【IT技術の知見】Secret系＠リソース定義
 description: Secret系＠リソース定義の知見を記録しています。
 ---
 
-# Secret系＠リソース定義
+# Secret 系＠リソース定義
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Secret系＠リソース定義の知見を記録しています。
 
 <br>
 
-## 01. 専用Secret
+## 01. 専用 Secret
 
 Istio の各種コンポーネントの機密な変数やファイルを管理する。
 
@@ -21,7 +21,7 @@ Istio の各種コンポーネントの機密な変数やファイルを管理�
 
 ## 02. istio-ca-secret
 
-### istio-ca-secretとは
+### istio-ca-secret とは
 
 Istiod コントロールプレーンの自己署名のための証明書を管理する。
 
@@ -121,7 +121,7 @@ data:
 
 ## 02. istio-remote-secret
 
-### istio-remote-secretとは
+### istio-remote-secret とは
 
 複数 Kubernetes Cluster メッシュを採用する場合に必要である。
 

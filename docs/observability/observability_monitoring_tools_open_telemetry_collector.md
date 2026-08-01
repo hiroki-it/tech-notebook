@@ -13,7 +13,7 @@ description: OpenTelemetry Collector＠監視ツールの知見を記録して�
 
 <br>
 
-## 01. OpenTelemetry Collectorの仕組み
+## 01. OpenTelemetry Collector の仕組み
 
 ### アーキテクチャ
 
@@ -36,7 +36,7 @@ otel クライアントパッケージからのテレメトリーデータを、
 
 ### Receiver
 
-#### ▼ Receiverとは
+#### ▼ Receiver とは
 
 OTLP 形式のテレメトリーを受信する。
 
@@ -56,7 +56,7 @@ Prometheus にリクエストを送信し、Prometheus の持つメトリクス�
 
 ### Processor
 
-#### ▼ Processorとは
+#### ▼ Processor とは
 
 テレメトリーを監視バックエンドへ送信する前に、事前処理を実行する。
 
@@ -68,7 +68,7 @@ OpenTelemetry クライアントの Processor と同じである。
 
 ### Exporter
 
-#### ▼ Exporterとは
+#### ▼ Exporter とは
 
 OTLP 形式やいくつかの OSS 形式 (例：Prometheus、Jaeger など) のテレメトリーを監視バックエンドに送信する。
 
@@ -113,9 +113,9 @@ OpenTelemetry と X-Ray の間で互換性のないデータ (例：OpenTelemetr
 
 ## 02. セットアップ
 
-### AWS側
+### AWS 側
 
-#### ▼ Terraformの公式モジュールの場合
+#### ▼ Terraform の公式モジュールの場合
 
 ここでは、X-Ray に接続すると仮定する。
 
@@ -237,7 +237,7 @@ data:
 
 <br>
 
-### DaemonSet (DaemonSetモード)
+### DaemonSet (DaemonSet モード)
 
 ```yaml
 apiVersion: apps/v1
@@ -326,7 +326,7 @@ spec:
 
 <br>
 
-### Deployment (Deploymentモード)
+### Deployment (Deployment モード)
 
 ```yaml
 apiVersion: apps/v1
@@ -429,7 +429,7 @@ spec:
 
 <br>
 
-### StatefulSet (StatefulSetモード)
+### StatefulSet (StatefulSet モード)
 
 記入中...
 
@@ -446,7 +446,7 @@ spec:
 
 <br>
 
-## 06. CNCFのメトリクスをクラウドプロバイダーに対応させる
+## 06. CNCF のメトリクスをクラウドプロバイダーに対応させる
 
 ### AWS
 
@@ -465,7 +465,7 @@ spec:
 > - https://aws-otel.github.io/docs/getting-started/container-insights/eks-infra#default-configuration-to-support-c[…]tch-container-insights-for-eks-ec2
 > - https://aws-otel.github.io/docs/getting-started/cloudwatch-metrics
 
-#### ▼ サポートしているPrometheusメトリクス
+#### ▼ サポートしている Prometheus メトリクス
 
 すべての Prometheus メトリクスにサポートしているわけでない。
 

@@ -82,7 +82,7 @@ Dockerfile 上で `install.sh` ファイルを実行し、ツールをインス�
 
 ### セットアップ
 
-#### ▼ InitContainerで連携先ツールをインストール
+#### ▼ InitContainer で連携先ツールをインストール
 
 連携先ツールをインストールする InitContainers を配置する。
 
@@ -103,8 +103,8 @@ spec:
   ...
 
   initContainers:
-    # お好きなツールをインストールするInitContainer
-    # ツールごとにInitContainerを作成する
+    # お好きなツールをインストールする InitContainer
+    # ツールごとに InitContainer を作成する
     # Helm
     - name: helm-installer
       image: alpine:3.17.3
@@ -129,7 +129,7 @@ spec:
       volumeMounts:
         - name: custom-tools
           mountPath: /custom-tools
-    # helm-secretsプラグイン
+    # helm-secrets プラグイン
     - name: helm-secrets-installer
       image: alpine:latest
       command:
@@ -178,7 +178,7 @@ spec:
         - name: custom-tools
           mountPath: /custom-tools
 
-  # 共有Volume
+  # 共有 Volume
   volumes:
     - name: custom-tools
       emptyDir: {}
@@ -225,17 +225,17 @@ spec:
   containers:
     - name: repo-server
       image: quay.io/argoproj/argocd:latest
-      # コマンドのパラーメーターは、argocd-cmd-params-cmから渡す
+      # コマンドのパラーメーターは、argocd-cmd-params-cm から渡す
       args:
         - /usr/local/bin/argocd-repo-server
         - --port=8081
         - --metrics-port=8084
       volumeMounts:
-        # コンテナ間で通信するためのUnixドメインソケットファイルをコンテナにマウントする
+        # コンテナ間で通信するための Unix ドメインソケットファイルをコンテナにマウントする
         - mountPath: /home/argocd/cmp-server/plugins
           name: plugins
-    # ConfigManagementPluginに定義した処理を実行するサイドカー
-    # argocd-cmp-serverコマンドは "plugin.yaml" の名前しか指定できないため、ConfigManagementPluginごとにサイドカーを作成する
+    # ConfigManagementPlugin に定義した処理を実行するサイドカー
+    # argocd-cmp-server コマンドは "plugin.yaml" の名前しか指定できないため、ConfigManagementPlugin ごとにサイドカーを作成する
     - name: foo-plugin-cmp-server
       image: ubuntu:latest
       command:
@@ -243,18 +243,18 @@ spec:
         - /var/run/argocd/argocd-cmp-server
       securityContext:
         runAsNonRoot: true
-        # サイドカーのコンテナプロセスのユーザーIDは999とする。
+        # サイドカーのコンテナプロセスのユーザーID は999 とする。
         runAsUser: 999
       volumeMounts:
         - name: var-files
           mountPath: /var/run/argocd
-        # コンテナ間で通信するためのUnixドメインソケットファイルをコンテナにマウントする
+        # コンテナ間で通信するための Unix ドメインソケットファイルをコンテナにマウントする
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
         # リポジトリから取得したクローンを保管するディレクトリをコンテナにマウントする
         - name: tmp
           mountPath: /tmp
-        # ConfigManagementPluginのマニフェスト (foo-plugin.yaml) を "plugin.yaml" の名前でコンテナにマウントする
+        # ConfigManagementPlugin のマニフェスト (foo-plugin.yaml) を "plugin.yaml" の名前でコンテナにマウントする
         - name: argocd-cmp-cm
           mountPath: /home/argocd/cmp-server/config/plugin.yaml
           subPath: foo-plugin.yaml
@@ -271,7 +271,7 @@ spec:
       volumeMounts:
         - name: var-files
           mountPath: /var/run/argocd
-        # コンテナ間で通信するためのUnixドメインソケットファイルをコンテナにマウントする
+        # コンテナ間で通信するための Unix ドメインソケットファイルをコンテナにマウントする
         - name: plugins
           mountPath: /home/argocd/cmp-server/plugins
         # リポジトリから取得したクローンを保管するディレクトリをコンテナにマウントする
@@ -284,7 +284,7 @@ spec:
     ...
 
   initContainers:
-    # ConfigManagementPlugin用のサイドカーにargocdのバイナリをコピーするInitContainer
+    # ConfigManagementPlugin 用のサイドカーに argocd のバイナリをコピーする InitContainer
     - name: copyutil
       image: quay.io/argoproj/argocd:latest
       command:
@@ -296,7 +296,7 @@ spec:
         - name: var-files
           mountPath: /var/run/argocd
 
-  # Podの共有Volume
+  # Pod の共有 Volume
   volumes:
     - name: argocd-cmp-cm
       configMap:
@@ -356,7 +356,7 @@ ArgoCD の公式の仕様で、サイドカーは単一のプラグインしか�
 
 > - https://github.com/argoproj/argo-cd/discussions/12278#discussioncomment-5338514
 
-#### ▼ argocd-cmp-cmでマニフェスト作成時の追加処理を定義
+#### ▼ argocd-cmp-cm でマニフェスト作成時の追加処理を定義
 
 argocd-cmp-cm 配下で、ConfigManagementPlugin を `plugin.yaml` ファイルとして管理する。
 
@@ -378,7 +378,7 @@ data:
       namespace: argocd
       name: foo-plugin # プラグイン名
     spec:
-      # マニフェストの作成前に必要なファイル (例：Chart.yamlなど) がリポジトリにあるかの確認処理を定義する
+      # マニフェストの作成前に必要なファイル (例：Chart.yaml など) がリポジトリにあるかの確認処理を定義する
       discover:
         find:
           glob: "<正規表現>" 
@@ -411,7 +411,7 @@ Application の `.spec.source.plugin.env` キーで設定した環境変数が�
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#convert-the-configmap-entry-into-a-config-file
 
-#### ▼ Applicationでのプラグインを使用
+#### ▼ Application でのプラグインを使用
 
 Application の `.spec.plugin.name` キーで、`.configManagementPlugins` キーで設定した独自のプラグイン名を設定する。
 
@@ -432,7 +432,7 @@ spec:
 
 <br>
 
-## 02. Helmとの連携
+## 02. Helm との連携
 
 repo-server は Helm を実行できるため、これのサイドカーは不要である。
 
@@ -454,9 +454,9 @@ spec:
     - name: argocd-repo-server
       image: quay.io/argoproj/argocd:latest
       volumeMounts:
-        # Helmのバイナリファイルを配置するパスを指定する。
+        # Helm のバイナリファイルを配置するパスを指定する。
         - mountPath: /usr/local/bin/helm
-          # Podの共有Volumeを経由して、コンテナ内でHelmを使用する。
+          # Pod の共有 Volume を経由して、コンテナ内で Helm を使用する。
           name: custom-tools
 
       ...
@@ -468,7 +468,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainerにHelmをインストールする。
+      # InitContainer にHelm をインストールする。
       args:
         - |
           apk --update add wget
@@ -477,11 +477,11 @@ spec:
           cp ./linux-amd64/helm /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
-        # Podの共有VolumeにHelmを配置する。
+        # Pod の共有 Volume にHelm を配置する。
         - name: custom-tools
           mountPath: /custom-tools
 
-  # Podの共有Volume
+  # Pod の共有 Volume
   volumes:
     - name: custom-tools
       emptyDir: {}
@@ -489,9 +489,9 @@ spec:
 
 <br>
 
-## 03. Helmfileとの連携
+## 03. Helmfile との連携
 
-### Helmfileの実行方法
+### Helmfile の実行方法
 
 repo-server は Helmfile を実行できず、サイドカーが必要である。
 
@@ -499,7 +499,7 @@ repo-server は Helmfile を実行できず、サイドカーが必要である�
 
 ### セットアップ
 
-#### ▼ Helmfileのインストール
+#### ▼ Helmfile のインストール
 
 Helmfile を使用できるように、Helmfile をインストールする。
 
@@ -545,14 +545,14 @@ spec:
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           name: argocd-cmp-cm
           subPath: helmfile.yaml
-        # Podの共有Volumeを経由して、コンテナ内でHelmfileを使用する。
+        # Pod の共有 Volume を経由して、コンテナ内で Helmfile を使用する。
         - mountPath: /usr/local/bin
           name: custom-tools
         - mountPath: /etc/ssl
           name: certificate
         - mountPath: /helm-working-dir
           name: helmfile-working-dir
-        # Podの共有Volumeを経由して、コンテナ内でhelmプラグインを使用する。
+        # Pod の共有 Volume を経由して、コンテナ内で helm プラグインを使用する。
         - mountPath: /helm-working-dir/plugins
           name: helm-working-dir
 
@@ -567,7 +567,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainerにHelmfileをインストールする。
+      # InitContainer にHelmfile をインストールする。
       args:
         - |
           apk --update add wget
@@ -579,7 +579,7 @@ spec:
           chown -R 999 /helm-working-dir
           chmod -R u+rwx /helm-working-dir
       volumeMounts:
-        # Podの共有VolumeにHelmfileを配置する。
+        # Pod の共有 Volume にHelmfile を配置する。
         - name: custom-tools
           mountPath: /custom-tools
     # SOPS
@@ -588,14 +588,14 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainerに、SOPSをインストールする。
+      # InitContainer に、SOPS をインストールする。
       args:
         - |
           apk --update add wget
           wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
           chmod +x /custom-tools/sops
       volumeMounts:
-        # Podの共有Volumeに、SOPSを配置する。
+        # Pod の共有 Volume に、SOPS を配置する。
         - name: custom-tools
           mountPath: /custom-tools
     - name: helm-plugins-installer
@@ -603,7 +603,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainerに、helmプラグインをインストールする。
+      # InitContainer に、helm プラグインをインストールする。
       args:
         - |
           apk --update add wget
@@ -613,16 +613,16 @@ spec:
           chown -R 999 /helm-working-dir/plugins
           chmod -R u+rwx /helm-working-dir/plugins/
       volumeMounts:
-        # Podの共有Volumeにhelmプラグインを配置する。
+        # Pod の共有 Volume にhelm プラグインを配置する。
         - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
 
-  # Podの共有Volume
+  # Pod の共有 Volume
   volumes:
-    # SOPSなどを含む
+    # SOPS などを含む
     - name: custom-tools
       emptyDir: {}
-    # helm-secretsを含む
+    # helm-secrets を含む
     - name: helm-working-dir
       emptyDir: {}
 ```
@@ -631,7 +631,7 @@ spec:
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#adding-tools-via-volume-mounts
 > - https://lyz-code.github.io/blue-book/devops/helmfile/#installation
 
-#### ▼ helmfileの処理の定義
+#### ▼ helmfile の処理の定義
 
 `helmfile template` コマンドを実行することにより、マニフェストを作成する。
 
@@ -699,9 +699,9 @@ spec:
 
 <br>
 
-## 04. helmプラグインとの連携
+## 04. helm プラグインとの連携
 
-### helmプラグインの実行方法
+### helm プラグインの実行方法
 
 repo-server は helm プラグインを実行できず、サイドカーが必要である。
 
@@ -709,7 +709,7 @@ repo-server は helm プラグインを実行できず、サイドカーが必�
 
 ### セットアップ
 
-#### ▼ helmプラグインのインストール
+#### ▼ helm プラグインのインストール
 
 helm プラグインを使用できるように、helm プラグインをインストールする。
 
@@ -750,12 +750,12 @@ spec:
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           name: argocd-cmp-cm
           subPath: helm-secrets.yaml
-        # SOPSのバイナリファイルを配置するパスを指定する。
+        # SOPS のバイナリファイルを配置するパスを指定する。
         - mountPath: /usr/local/bin
           name: custom-tools
         - mountPath: /etc/ssl
           name: certificate
-        # Podの共有Volumeを経由して、コンテナ内でhelm-secretsを使用する。
+        # Pod の共有 Volume を経由して、コンテナ内で helm-secrets を使用する。
         - mountPath: /helm-working-dir/plugins
           name: helm-working-dir
 
@@ -768,7 +768,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainerにHelmをインストールする。
+      # InitContainer にHelm をインストールする。
       args:
         - |
           apk --update add wget
@@ -779,7 +779,7 @@ spec:
           cp ./linux-amd64/helm /custom-tools/
           chmod +x /custom-tools
       volumeMounts:
-        # Podの共有VolumeにHelmを配置する。
+        # Pod の共有 Volume にHelm を配置する。
         - name: custom-tools
           mountPath: /custom-tools
     # SOPS
@@ -788,14 +788,14 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainerに、SOPSをインストールする。
+      # InitContainer に、SOPS をインストールする。
       args:
         - |
           apk --update add wget
           wget -qO /custom-tools/sops https://github.com/mozilla/sops/releases/download/v3.7.3/sops-v3.7.3.linux
           chmod +x /custom-tools/sops
       volumeMounts:
-        # Podの共有Volumeに、SOPSを配置する。
+        # Pod の共有 Volume に、SOPS を配置する。
         - name: custom-tools
           mountPath: /custom-tools
     - name: helm-plugins-installer
@@ -803,7 +803,7 @@ spec:
       command:
         - /bin/sh
         - -c
-      # InitContainerに、helmプラグインをインストールする。
+      # InitContainer に、helm プラグインをインストールする。
       args:
         - |
           apk --update add wget
@@ -813,16 +813,16 @@ spec:
           chown -R 999 /helm-working-dir/plugins
           chmod -R u+rwx /helm-working-dir/plugins/
       volumeMounts:
-        # Podの共有Volumeにhelmプラグインを配置する。
+        # Pod の共有 Volume にhelm プラグインを配置する。
         - name: helm-working-dir
           mountPath: /helm-working-dir/plugins
 
-  # Podの共有Volume
+  # Pod の共有 Volume
   volumes:
-    # SOPSなどを含む
+    # SOPS などを含む
     - name: custom-tools
       emptyDir: {}
-    # helm-secretsを含む
+    # helm-secrets を含む
     - name: helm-working-dir
       emptyDir: {}
 ```
@@ -837,7 +837,7 @@ spec:
 
 ### セットアップ
 
-#### ▼ helmプラグインの処理の定義
+#### ▼ helm プラグインの処理の定義
 
 helm プラグインの処理の定義する。
 
@@ -871,8 +871,8 @@ data:
         command: 
           - /bin/bash
           - -c
-        # jkroepke製のhelm-secretsの場合
-        # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイルを使用してhelmコマンドを実行する。
+        # jkroepke 製の helm-secrets の場合
+        # 暗号化された values ファイル (SOPS のsecrets ファイル) 、平文の values ファイルを使用して helm コマンドを実行する。
         args:
           - >
             set -euo pipefail;
@@ -911,8 +911,8 @@ data:
         command: 
           - /bin/bash
           - -c
-        # zendesk製のhelm-secretsの場合
-        # 暗号化されたvaluesファイル (SOPSのsecretsファイル) 、平文のvaluesファイルを使用してhelmコマンドを実行する。
+        # zendesk 製の helm-secrets の場合
+        # 暗号化された values ファイル (SOPS のsecrets ファイル) 、平文の values ファイルを使用して helm コマンドを実行する。
         args:
           - >
             set -euo pipefail;
@@ -962,7 +962,7 @@ spec:
 
 ### クラウドプロバイダー上の暗号化キーを使用する場合
 
-#### ▼ ServiceAccountの作成
+#### ▼ ServiceAccount の作成
 
 `repo-server` コンテを持つ Pod に紐付ける ServiceAccount を作成する。
 
@@ -975,14 +975,14 @@ metadata:
   name: argocd-repo-server
   namespace: argocd
   annotations:
-    # AWS KMSに認可スコープを持つAWS IAMロールと紐付けられるようにする。
+    # AWS KMS に認可スコープを持つ AWS IAM ロールと紐付けられるようにする。
     eks.amazonaws.com/role-arn: <AWS IAMロールのARN>
 automountServiceAccountToken: true
 ```
 
 > - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
 
-#### ▼ helm-secretsの使用
+#### ▼ helm-secrets の使用
 
 ポーリングしているリポジトリのルート直下に、以下のような `.sops.yaml` ファイルが配置されているとしている。
 
@@ -1018,13 +1018,13 @@ spec:
 
 ## 05. Kustomize
 
-### Kustomizeの実行方法
+### Kustomize の実行方法
 
 repo-server は Kustomize を実行できるため、これのサイドカーは不要である。
 
 ### セットアップ
 
-#### ▼ Kustomizeのインストール
+#### ▼ Kustomize のインストール
 
 デフォルトで ArgoCD にインストールされている Kustomize の推奨バージョン以外を使用したい場合、Kustomize を InitContainer でインストールする必要がある。
 
@@ -1044,9 +1044,9 @@ spec:
     - name: argocd-repo-server
       image: quay.io/argoproj/argocd:latest
       volumeMounts:
-        # Kustomizeのバイナリファイルを配置するパスを指定する。
+        # Kustomize のバイナリファイルを配置するパスを指定する。
         - mountPath: /usr/local/bin/kustomize
-          # Podの共有Volumeを経由して、コンテナ内でKustomizeを使用する。
+          # Pod の共有 Volume を経由して、コンテナ内で Kustomize を使用する。
           name: custom-tools
           subPath: kustomize
 
@@ -1055,13 +1055,13 @@ spec:
 
   initContainers:
     # Kustomize
-    # ArgoCDにデフォルトでインストールされているバージョン以外は、InitContainerでインストールする必要がある
+    # ArgoCD にデフォルトでインストールされているバージョン以外は、InitContainer でインストールする必要がある
     - name: kustomize-installer
       image: alpine:latest
       command:
         - /bin/sh
         - -c
-      # InitContainerにKustomizeをインストールする。
+      # InitContainer にKustomize をインストールする。
       args:
         - |
           apk --update add wget
@@ -1070,12 +1070,12 @@ spec:
           cp kustomize /custom-tools/
           chmod +x /custom-tools/kustomize
       volumeMounts:
-        # Podの共有VolumeにKustomizeを配置する。
+        # Pod の共有 Volume にKustomize を配置する。
         - mountPath: /usr/local/bin/kustomize
           name: custom-tools
           subPath: kustomize
 
-  # Podの共有Volume
+  # Pod の共有 Volume
   volumes:
     - name: custom-tools
       emptyDir: {}
@@ -1117,7 +1117,7 @@ spec:
   targetRevision: main
   path: .
   kustomize:
-    # Kustomizeにデフォルトでインストールされていないバージョンを指定する
+    # Kustomize にデフォルトでインストールされていないバージョンを指定する
     version: v1.0.0
 ```
 
@@ -1125,7 +1125,7 @@ spec:
 
 ## 06. KSOPS
 
-### KSOPSの実行方法
+### KSOPS の実行方法
 
 repo-server は KSOPS を実行できる (`kustomize` コマンドで `--enable-alpha-plugins` オプションを有効化するだけのため) ため、これのサイドカーは不要である。
 
@@ -1133,7 +1133,7 @@ repo-server は KSOPS を実行できる (`kustomize` コマンドで `--enable-
 
 ### セットアップ
 
-#### ▼ KSOPSのインストール
+#### ▼ KSOPS のインストール
 
 KSOPS を使用できるように、KSOPS をインストールする。
 
@@ -1164,14 +1164,14 @@ spec:
         - name: XDG_CONFIG_HOME
           value: /.config
       volumeMounts:
-        # Podの共有Volumeを経由して、コンテナ内でKustomizeを使用する。
+        # Pod の共有 Volume を経由して、コンテナ内で Kustomize を使用する。
         - name: custom-tools
-          # Kustomizeのバイナリファイルを配置するパスを指定する。
-          # ArgoCDにデフォルトでインストールされたKustomizeを上書きする
+          # Kustomize のバイナリファイルを配置するパスを指定する。
+          # ArgoCD にデフォルトでインストールされた Kustomize を上書きする
           mountPath: /usr/local/bin/kustomize
           subPath: kustomize
-        # ArgoCDは、repo-server上でKustomizeを実行するための専用オプションが多く持っている
-        # これを活かすためにKSOPSはサイドカーではなくrepo-serverで実行する
+        # ArgoCD は、repo-server 上で Kustomize を実行するための専用オプションが多く持っている
+        # これを活かすために KSOPS はサイドカーではなく repo-server で実行する
         - name: custom-tools
           subPath: ksops
           mountPath: /.config/kustomize/plugin/viaduct.ai/v1/ksops/ksops
@@ -1182,29 +1182,29 @@ spec:
     # KSOPS
     # https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
     - name: ksops-installer
-      # Kustomizeのバージョンに合わせて、インストールするべきバージョンを決める
+      # Kustomize のバージョンに合わせて、インストールするべきバージョンを決める
       # https://github.com/viaduct-ai/kustomize-sops/blob/master/scripts/install-kustomize.sh
       image: viaductoss/ksops:v4.1.1
       command:
         - /bin/sh
         - -c
-      # InitContainerにKustomizeをインストールする。
+      # InitContainer にKustomize をインストールする。
       args:
-        # Kustomizeは別のInitContainerでインストールしているため、ここではKSOPSのバイナリのみをコピーする
+        # Kustomize は別の InitContainer でインストールしているため、ここでは KSOPS のバイナリのみをコピーする
         - |
           cp ksops /custom-tools/
       volumeMounts:
-        # Podの共有Volumeに、KSOPSを配置する。
+        # Pod の共有 Volume に、KSOPS を配置する。
         - name: custom-tools
           mountPath: /custom-tools
     # Kustomize
-    # ArgoCDにデフォルトでインストールされているバージョン以外は、InitContainerでインストールする必要がある
+    # ArgoCD にデフォルトでインストールされているバージョン以外は、InitContainer でインストールする必要がある
     - name: kustomize-installer
       image: alpine:latest
       command:
         - /bin/sh
         - -c
-      # InitContainerにKustomizeをインストールする。
+      # InitContainer にKustomize をインストールする。
       args:
         - |
           apk --update add wget
@@ -1213,12 +1213,12 @@ spec:
           cp kustomize /custom-tools/
           chmod +x /custom-tools/kustomize
       volumeMounts:
-        # Podの共有VolumeにKustomizeを配置する。
+        # Pod の共有 Volume にKustomize を配置する。
         - mountPath: /usr/local/bin/kustomize
           name: custom-tools
           subPath: kustomize
 
-  # Podの共有Volume
+  # Pod の共有 Volume
   volumes:
     - name: custom-tools
       emptyDir: {}
@@ -1272,9 +1272,9 @@ spec:
 
 <br>
 
-## 07. Vaultとの連携
+## 07. Vault との連携
 
-### Vaultの実行方法
+### Vault の実行方法
 
 repo-server は Vault を実行できず、サイドカーが必要である。
 
@@ -1282,14 +1282,14 @@ repo-server は Vault を実行できず、サイドカーが必要である。
 
 ### セットアップ
 
-#### ▼ Vaultのインストール
+#### ▼ Vault のインストール
 
 Vault を使用できるように、Vault をインストールする。
 
 > - https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd
 > - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
 
-#### ▼ vaultの処理の定義
+#### ▼ vault の処理の定義
 
 `helm template` コマンドでマニフェストを作成し、また Vault で変数を復号する。
 
@@ -1403,14 +1403,14 @@ spec:
 
 ArgoCD と連携したツールでは、コマンドで以下の環境変数を使用できる。
 
-| 環境変数                               |   例   | 説明                                           |
-| -------------------------------------- | :----: | ---------------------------------------------- |
-| `ARGOCD_RECONCILIATION_TIMEOUT`        | `180s` |                                                |
-| `ARGOCD_REPO_SERVER_LOGFORMAT`         |        |                                                |
-| `ARGOCD_REPO_SERVER_LOGLEVEL`          |        |                                                |
-| `ARGOCD_REPO_SERVER_OTLP_ADDRESS`      |        |                                                |
-| `ARGOCD_REPO_SERVER_PARALLELISM_LIMIT` |        |                                                |
-| `ARGOCD_USER_ID`                       | `999`  | ArgoCDのプロセスの実行ユーザー番号を設定する。 |
+| 環境変数                               |   例   | 説明                                            |
+| -------------------------------------- | :----: | ----------------------------------------------- |
+| `ARGOCD_RECONCILIATION_TIMEOUT`        | `180s` |                                                 |
+| `ARGOCD_REPO_SERVER_LOGFORMAT`         |        |                                                 |
+| `ARGOCD_REPO_SERVER_LOGLEVEL`          |        |                                                 |
+| `ARGOCD_REPO_SERVER_OTLP_ADDRESS`      |        |                                                 |
+| `ARGOCD_REPO_SERVER_PARALLELISM_LIMIT` |        |                                                 |
+| `ARGOCD_USER_ID`                       | `999`  | ArgoCD のプロセスの実行ユーザー番号を設定する。 |
 
 > - https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/
 

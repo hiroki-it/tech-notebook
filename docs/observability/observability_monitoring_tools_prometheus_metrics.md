@@ -21,7 +21,7 @@ description: メトリクス＠Prometheus
 
 Prometheus のダッシュボードでメトリクスをクエリすると、検索結果に表示される。
 
-#### ▼ Counter型
+#### ▼ Counter 型
 
 累計で常に増加するメトリクス (例：リクエスト数) が所属する。
 
@@ -36,7 +36,7 @@ Counter は `rate()` 関数で秒当たりの増減で集約することが多�
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
 > - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
-#### ▼ Gauge型
+#### ▼ Gauge 型
 
 動的に増減するメトリクス (例：CPU 使用率、Pod 数) が所属する。
 
@@ -47,14 +47,14 @@ Gauge はそれ自体が増減であるため、Grafana ダッシュボード上
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge
 > - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
-#### ▼ Histogram型
+#### ▼ Histogram 型
 
 時間の範囲を単位とするメトリクス (例：レスポンスタイム) が所属する。
 
 > - https://prometheus.io/docs/tutorials/understanding_metric_types/#histogram
 > - https://prometheus.io/docs/practices/histograms/
 
-#### ▼ Summary型
+#### ▼ Summary 型
 
 統計的な分位数を単位とするメトリクス
 
@@ -71,7 +71,7 @@ Prometheus のメトリクスには、メタデータとして『ラベル』を
 
 <br>
 
-## 02. Prometheus自身のメトリクス
+## 02. Prometheus 自身のメトリクス
 
 ### 命名規則
 
@@ -133,7 +133,7 @@ prometheus_tsdb_compaction_chunk_samples_sum
 
 ## 02-02. 外部から収集したデータポイント
 
-### Amazon EKSから収集したデータポイント
+### Amazon EKS から収集したデータポイント
 
 Amazon EKS で利用できる API 名を表す。
 
@@ -147,7 +147,7 @@ aggregator_unavailable_apiservice{job="apiserver", name="v1.metrics.eks.amazonaw
 
 <br>
 
-### kubeletから収集したデータポイント
+### kubelet から収集したデータポイント
 
 #### ▼ container_cpu_usage_seconds_total
 

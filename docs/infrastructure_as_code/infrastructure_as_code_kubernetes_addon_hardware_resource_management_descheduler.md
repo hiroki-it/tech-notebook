@@ -43,7 +43,7 @@ $ kubectl get events -n foo
 
 <br>
 
-### kube-schedulerだけでは足りない理由
+### kube-scheduler だけでは足りない理由
 
 Node のハードウェアリソースの消費量が動的に高まった場合、kube-scheduler は不適切な Node から Pod を退避し、別の Node へ再スケジューリングできない。
 
@@ -86,12 +86,12 @@ metadata:
   name: descheduler
   namespace: descheduler
 spec:
-  # 毎日 00:00 (JST) にdeschedulerを実行する
-  # Amazon EKSはUTCでタイムゾーンを設定しているため、9時間分ずらす必要がある
+  # 毎日 00:00 (JST) に descheduler を実行する
+  # Amazon EKS はUTC でタイムゾーンを設定しているため、9 時間分ずらす必要がある
   schedule: "0 15 * * *"
 
   # その他の例
-  # 12:00 と 24:00 (JST) にdeschedulerを実行する
+  # 12:00 と 24:00 (JST) に descheduler を実行する
   # schedule: "0 3,15 * * *"
 
   concurrencyPolicy: Forbid
@@ -102,7 +102,7 @@ spec:
       template:
         metadata:
           annotations:
-            # ConfigMapの変更に応じて、Jobを更新する。
+            # ConfigMap の変更に応じて、Job を更新する。
             checksum/configmap: *****
           labels:
             app.kubernetes.io/name: descheduler
@@ -187,7 +187,7 @@ data:
 
 ## 02. DeschedulerPolicy
 
-### DeschedulerPolicyとは
+### DeschedulerPolicy とは
 
 退避の対象とする Pod の選定ルールを設定する。
 
@@ -215,12 +215,12 @@ strategies:
     enabled: "true"
     params:
       nodeResourceUtilizationThresholds:
-        # ターゲット閾値 (この値を超過したNodeからPodを退避させる)
+        # ターゲット閾値 (この値を超過した Node から Pod を退避させる)
         targetThresholds:
           cpu: 70
           memory: 70
           pods: 70
-        # 閾値 (kube-schedulerを使用して、この値を超過していないNodeにPodを再スケジューリングさせる)
+        # 閾値 (kube-scheduler を使用して、この値を超過していない Node にPod を再スケジューリングさせる)
         thresholds:
           cpu: 20
           memory: 20
@@ -262,7 +262,7 @@ strategies:
     params:
       failedPods:
         minPodLifetimeSeconds: 3600
-        # Failedステータスになった理由でフィルタリングする
+        # Failed ステータスになった理由でフィルタリングする
         reasons:
           - NodeAffinity
         includingInitContainers: "true"

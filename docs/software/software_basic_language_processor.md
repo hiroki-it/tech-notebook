@@ -173,7 +173,7 @@ JVM 言語 (例：Java、Scala、Kotlin など) に当てはまる。
 
 <br>
 
-### C言語とJavaのOSへの依存度比較
+### C 言語と Java のOS への依存度比較
 
 記入中...
 

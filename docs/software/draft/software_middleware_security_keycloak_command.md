@@ -25,7 +25,7 @@ $ kc.sh build
 
 ### start
 
-#### ▼ startとは
+#### ▼ start とは
 
 本番環境モードで起動する。
 

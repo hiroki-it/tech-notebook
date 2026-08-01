@@ -17,7 +17,7 @@ description: リソース定義＠Argo Workflowsの知見を記録していま�
 
 ### .spec.entrypoint
 
-#### ▼ entrypointとは
+#### ▼ entrypoint とは
 
 一番最初に使用するテンプレート名を設定する。
 
@@ -37,7 +37,7 @@ spec:
 
 ### .spec.templates
 
-#### ▼ templatesとは
+#### ▼ templates とは
 
 パイプラインの処理を設定する。
 
@@ -68,7 +68,7 @@ spec:
 
 ### .spec.workflowTemplateRef
 
-#### ▼ workflowTemplateRefとは
+#### ▼ workflowTemplateRef とは
 
 切り分けた WorkflowTemplate の名前を設定する。
 
@@ -91,7 +91,7 @@ spec:
 
 ### .spec.templates
 
-#### ▼ templatesとは
+#### ▼ templates とは
 
 パイプラインの処理を設定する。
 

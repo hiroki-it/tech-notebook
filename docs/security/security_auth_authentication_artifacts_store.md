@@ -5,15 +5,15 @@ description: 認証アーティファクトの保管＠認証アーティファ�
 
 # 認証アーティファクトの保管＠認証アーティファクトによる分類
 
-## 01. ブラウザのSessionStorage
+## 01. ブラウザの SessionStorage
 
-### ブラウザのSessionStorageとは
+### ブラウザの SessionStorage とは
 
 ブラウザのストレージ機能であり、ブラウザを閉じると削除される。
 
 <br>
 
-### セッションIDの保存
+### セッション ID の保存
 
 フロントエンドアーキテクチャが CSR の場合に採用できる。
 
@@ -69,9 +69,9 @@ SSR のアプリケーションはブラウザを操作できないため、ブ�
 
 <br>
 
-## 02. ブラウザのLocalStorage
+## 02. ブラウザの LocalStorage
 
-### ブラウザのLocalStorageとは
+### ブラウザの LocalStorage とは
 
 ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。
 
@@ -149,9 +149,9 @@ LocalStorage は SessionStorage と比べて保管期間が長いため、XSS �
 
 <br>
 
-## 03. ブラウザのCookie
+## 03. ブラウザの Cookie
 
-### ブラウザのCookieとは
+### ブラウザの Cookie とは
 
 ブラウザのストレージ機能であり、明示的に削除しない限りは保存し続ける。
 

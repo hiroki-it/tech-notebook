@@ -13,17 +13,17 @@ description: Nuxt.js＠フレームワークの知見を記録しています。
 
 <br>
 
-## 01. Nuxt.jsとは
+## 01. Nuxt.js とは
 
 Vue.js フレームワークを使用したフレームワークである。
 
 <br>
 
-## 02. Nuxt.js用yarnコマンド
+## 02. Nuxt.js 用 yarn コマンド
 
-### serverモード (SSRモード)
+### server モード (SSR モード)
 
-#### ▼ serverモードとは
+#### ▼ server モードとは
 
 アプリケーションを SSR として稼働させる。
 
@@ -89,9 +89,9 @@ $ yarn start
 
 <br>
 
-### staticモード (SSGモード)
+### static モード (SSG モード)
 
-#### ▼ staticモードとは
+#### ▼ static モードとは
 
 アプリケーションを SSG として稼働させる。
 
@@ -152,7 +152,7 @@ $ yarn start
 
 <br>
 
-### ビルド時のWebpackオプション
+### ビルド時の Webpack オプション
 
 SSR モードと SSG モードで、`build` コマンド時に使用される Webpack の最適化方法を指定できる。
 

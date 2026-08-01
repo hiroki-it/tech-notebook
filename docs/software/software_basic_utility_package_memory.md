@@ -17,7 +17,7 @@ description: メモリ系＠パッケージの知見を記録しています。
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ apt install pstree
@@ -29,7 +29,7 @@ $ apt-get install pstree
 
 <br>
 
-### pstreeとは
+### pstree とは
 
 プロセスの親子関係をツリー状に取得する。
 
@@ -53,7 +53,7 @@ $ pstree
 
 ### インストール
 
-#### ▼ pipリポジトリから
+#### ▼ pip リポジトリから
 
 > - http://supervisord.org/installing.html#installing-a-distribution-package
 
@@ -63,7 +63,7 @@ $ pip3 install supervisor
 
 <br>
 
-### supervisorの構成要素
+### supervisor の構成要素
 
 #### ▼ supervisor
 
@@ -88,9 +88,9 @@ supervisor 自体のプロセスのこと。
 
 <br>
 
-### supervisordセクション
+### supervisord セクション
 
-#### ▼ supervisordセクションとは
+#### ▼ supervisord セクションとは
 
 supervisor の `supervisord` プロセスのプールを設定する。
 
@@ -167,9 +167,9 @@ user=root
 
 <br>
 
-### programセクション
+### program セクション
 
-#### ▼ programセクションとは
+#### ▼ program セクションとは
 
 デーモン化されたプロセスを設定する。
 
@@ -286,7 +286,7 @@ user=root
 
 <br>
 
-### groupセクション
+### group セクション
 
 #### ▼ priority
 
@@ -332,9 +332,9 @@ $ supervisorctl update
 
 <br>
 
-## 03. systemctl：system control (新service)
+## 03. systemctl：system control (新 service)
 
-### systemctlの構成要素
+### systemctl の構成要素
 
 #### ▼ systemctl
 
@@ -351,11 +351,11 @@ $ supervisorctl update
 
 ユニットは拡張子の違いで判別する。
 
-| ユニットタイプ  | ユニットの拡張子 | 説明                                         |
-| --------------- | ---------------- | -------------------------------------------- |
-| serviceユニット | `.service`       | プロセス起動停止に関するデーモン。           |
-| mountユニット   | `.mount`         | ファイルのマウントに関するデーモン。         |
-| socketユニット  | `.socket`        | ソケットとプロセスの紐付けに関するデーモン。 |
+| ユニットタイプ   | ユニットの拡張子 | 説明                                         |
+| ---------------- | ---------------- | -------------------------------------------- |
+| service ユニット | `.service`       | プロセス起動停止に関するデーモン。           |
+| mount ユニット   | `.mount`         | ファイルのマウントに関するデーモン。         |
+| socket ユニット  | `.socket`        | ソケットとプロセスの紐付けに関するデーモン。 |
 
 > - https://www.kabegiwablog.com/entry/2018/06/11/100000
 
@@ -363,7 +363,7 @@ $ supervisorctl update
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ apt install systemd
@@ -389,7 +389,7 @@ $ apt-get install systemd
 > - https://zaki-hmkc.hatenablog.com/entry/2021/04/11/003202
 > - https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
 
-#### ▼ Unitセクション
+#### ▼ Unit セクション
 
 ユニットの種類に関係ない全般的なオプションを設定する。
 
@@ -404,7 +404,7 @@ Documentation=man:apachectl(8)
 OnFailure=notify-email@%i.service
 ```
 
-#### ▼ Serviceセクション
+#### ▼ Service セクション
 
 service ユニットのオプションを設定する。
 
@@ -438,7 +438,7 @@ OPTIONS=foo
 > - https://oji-cloud.net/2023/10/03/post-7777/
 > - https://kazuhira-r.hatenablog.com/entry/2021/12/02/161200
 
-#### ▼ Installセクション
+#### ▼ Install セクション
 
 ユニットのインストール (`systemctl enable` コマンドの実行) 時のオプションを設定する。
 
@@ -659,7 +659,7 @@ $ systemctl stop nginx.service
 
 ### journalctl
 
-#### ▼ journalctlとは
+#### ▼ journalctl とは
 
 system で管理するすべてのユニットの標準出力と標準エラー出力のログを取得する。
 
@@ -690,7 +690,7 @@ $ journalctl -f -u foo.service | grep -i error
 
 <br>
 
-### systemdのアラート
+### systemd のアラート
 
 #### ▼ アラートを直接的に通知する場合
 
@@ -750,7 +750,7 @@ StandardError=file:/var/log/foo-service/stderr.log
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ apt install xclip
@@ -760,7 +760,7 @@ $ apt install xclip
 $ apt-get install xclip
 ```
 
-#### ▼ yumリポジトリから
+#### ▼ yum リポジトリから
 
 ```bash
 $ yum install -y xclip
@@ -768,7 +768,7 @@ $ yum install -y xclip
 
 <br>
 
-### xclipとは
+### xclip とは
 
 標準出力/標準エラー出力の内容をコピーし、メモリ上に保持する。
 
@@ -778,7 +778,7 @@ $ yum install -y xclip
 
 ### -selection
 
-#### ▼ -selectionとは
+#### ▼ -selection とは
 
 コピーした内容を保持する場所を選択する。
 

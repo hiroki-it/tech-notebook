@@ -3,7 +3,7 @@ title: 【IT技術の知見】Ingress系＠CNCF
 description: Ingress系＠CNCFの知見を記録しています。
 ---
 
-# Ingress系＠CNCF
+# Ingress 系＠CNCF
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Ingress系＠CNCFの知見を記録しています。
 
 ## 01. IngressClassParams
 
-### IngressClassParamsとは
+### IngressClassParams とは
 
 外部の Ingress Controller を使用する場合、Ingress に渡すオプションを設定する。
 

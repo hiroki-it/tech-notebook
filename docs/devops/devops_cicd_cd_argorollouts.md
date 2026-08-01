@@ -3,7 +3,7 @@ title: 【IT技術の知見】Argo Rollouts＠CDツール
 description: Argo Rollouts＠CDツールの知見を記録しています。
 ---
 
-# Argo Rollouts＠CDツール
+# Argo Rollouts＠CD ツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Argo Rollouts＠CDツールの知見を記録しています。
 
 <br>
 
-## 01. Argo Rolloutsの仕組み
+## 01. Argo Rollouts の仕組み
 
 ### アーキテクチャ
 
@@ -29,7 +29,7 @@ Argo Rollouts リソースの Reconciliation を実行する。
 
 <br>
 
-### ArgoCDのダッシュボードの拡張
+### ArgoCD のダッシュボードの拡張
 
 Argo Rollouts と ArgoCD は異なる Cluster 上に独立して存在できる。
 

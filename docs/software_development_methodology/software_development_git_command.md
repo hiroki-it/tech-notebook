@@ -59,7 +59,7 @@ $ git branch -M main
 
 ### 認証
 
-#### ▼ HTTPSリクエスト
+#### ▼ HTTPS リクエスト
 
 ベーシック認証で GitHub にログインし、クローンする。
 
@@ -88,7 +88,7 @@ password <パスワード>
 > - https://qiita.com/azusanakano/items/8dc1d7e384b00239d4d9#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%B8%A1%E6%96%B9%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95
 > - https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d
 
-#### ▼ SSH公開鍵認証
+#### ▼ SSH 公開鍵認証
 
 SSH 公開鍵認証で GitHub にログインし、クローンする。
 
@@ -154,11 +154,11 @@ $ git clone --depth 1 https://github.com/hiroki-hasegawa/foo-repository.git
 
 ### 設定の影響範囲の種類
 
-| 影響範囲 | 意味                           | 上書き順 | 設定ファイルの場所                 |
-| :------- | :----------------------------- | -------- | :--------------------------------- |
-| system   | 全PCユーザーの全リポジトリ     | 1        | `/etc/gitconfig`                   |
-| global   | 現在のPCユーザーの全リポジトリ | 2        | `~/.gitconfig`                     |
-| local    | 現在のリポジトリ               | 3        | `<GitHubリポジトリ名>/.git/config` |
+| 影響範囲 | 意味                             | 上書き順 | 設定ファイルの場所                 |
+| :------- | :------------------------------- | -------- | :--------------------------------- |
+| system   | 全 PC ユーザーの全リポジトリ     | 1        | `/etc/gitconfig`                   |
+| global   | 現在の PC ユーザーの全リポジトリ | 2        | `~/.gitconfig`                     |
+| local    | 現在のリポジトリ                 | 3        | `<GitHubリポジトリ名>/.git/config` |
 
 <br>
 
@@ -246,7 +246,7 @@ $ git config --global core.editor "vim -c "set fenc=utf-8""
 
 ## init
 
-### initとは
+### init とは
 
 ローカルマシンのディレクトリと GitHub リポジトリを紐付ける。
 
@@ -258,7 +258,7 @@ $ git init
 
 <br>
 
-### GitHubへの公開鍵の登録方法
+### GitHub への公開鍵の登録方法
 
 GitHub と SSH 公開鍵認証するために、秘密鍵と公開鍵は次の方法で作成し、GitHub アカウント設定画面の SSH の項目に登録する。
 
@@ -593,7 +593,7 @@ $ git checkout -b feature/3 d7e49b04
 
 ## cherry-pick
 
-### cherry-pickとは
+### cherry-pick とは
 
 現在のブランチに対して、指定したコミットそれ単体をマージする。
 
@@ -702,7 +702,7 @@ esac
 
 ## stash
 
-### stashとは
+### stash とは
 
 ファイルが、『インデックス』 (=`add`) あるいは『HEAD』 (=コミット) に存在している状態で、異なるローカルブランチを `checkout` しようとすると、以下のエラーが出る。
 
@@ -829,7 +829,7 @@ $ git stash clear
 
 ## status
 
-### statusとは
+### status とは
 
 add ステージや commit ステージにファイルが存在しているか否かを取得する。
 
@@ -870,7 +870,7 @@ git push origin HEAD
 
 ## revert
 
-### revertとは
+### revert とは
 
 作業中のローカルブランチで、指定の履歴を削除する。
 
@@ -904,7 +904,7 @@ $ git revert <コミットID> --edit
 
 <br>
 
-### -m <マージナンバー> <マージコミットID>
+### -m <マージナンバー> <マージコミット ID>
 
 指定したマージコミットのみを打ち消す新しいコミットを作成する。
 
@@ -929,7 +929,7 @@ $ git revert -m 1 xyz
 
 ## reset
 
-### resetとは
+### reset とは
 
 作業中のローカルブランチで、指定の履歴まで戻し、それ以降を削除する。
 
@@ -947,7 +947,7 @@ $ git reset HEAD <ファイル名/パス>
 
 <br>
 
-### --soft <コミットID>
+### --soft <コミット ID>
 
 作業中のブランチで、最新の HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
 
@@ -959,7 +959,7 @@ $ git reset --soft <コミットID>
 
 <br>
 
-### --mixed <コミットID>
+### --mixed <コミット ID>
 
 作業中のローカルブランチで、インデックス (=`add` 後) 、HEAD (=コミット後) を指定の履歴まで戻し、それ以降を削除する。
 
@@ -971,7 +971,7 @@ $ git reset --mixed <コミットID>
 
 <br>
 
-### --hard <コミットID> (ブランチ)
+### --hard <コミット ID> (ブランチ)
 
 作業中のローカルブランチで、最新のワークツリー (=ディレクトリ) を指定の履歴まで戻す。
 
@@ -991,7 +991,7 @@ $ git reset --hard <ブランチ名>
 
 <br>
 
-### resetの使用例
+### reset の使用例
 
 `(1)`
 
@@ -1057,7 +1057,7 @@ To github.com:hiroki-hasegawa/foo-repository.git
 
 <br>
 
-### 強制的にpullする
+### 強制的に pull する
 
 ```bash
 $ git reset --hard origin/<ブランチ名>
@@ -1067,7 +1067,7 @@ $ git reset --hard origin/<ブランチ名>
 
 ## rebase
 
-### rebaseとは (注意点あり)
+### rebase とは (注意点あり)
 
 作業中のローカルブランチで、ブランチの派生元を変更する。
 
@@ -1082,7 +1082,7 @@ $ git reset --hard origin/<ブランチ名>
 
 <br>
 
-### --interactive <コミットID>
+### --interactive <コミット ID>
 
 派生元を変更する機能を応用して、過去のコミットのメッセージ変更、削除、統合などを実行する。
 
@@ -1175,7 +1175,7 @@ $ git merge <ブランチ名> --allow-unrelated-histories
 
 で解決し、プッシュする。
 
-**＊例 (Author名とCommiter名の変更) ＊**
+**＊例 (Author 名と Commiter 名の変更) ＊**
 
 `(1)`
 
@@ -1326,7 +1326,7 @@ $ git push -u origin <作成したブランチ名>
 
 <br>
 
-### origin <コミットID>:main
+### origin <コミット ID>:main
 
 トラウマコマンド。
 

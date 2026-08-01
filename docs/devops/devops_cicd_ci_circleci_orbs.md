@@ -15,7 +15,7 @@ description: Orbs＠CircleCIの知見を記録しています。
 
 ## 01. Orbs
 
-### Orbsとは
+### Orbs とは
 
 CircleCI から提供される汎用的なパッケージの使用を読み込む。
 
@@ -31,7 +31,7 @@ CircleCI から提供される汎用的なパッケージの使用を読み込�
 | commands     | `step` キーに割り当てられる。      |
 | executors    | `executors` キーに割り当てられる。 |
 
-#### ▼ Orbsのデメリット
+#### ▼ Orbs のデメリット
 
 Orbs のパッケージの処理の最小単位は `step` である。
 
@@ -104,7 +104,7 @@ orbs:
   aws-cli: circleci/aws-cli@1.3.1
 
 jobs:
-  # Amazon CloudFrontのキャッシュを削除する
+  # Amazon CloudFront のキャッシュを削除する
   cloudfront_create_invalidation:
     docker:
       - image: cimg/python:3.9-node
@@ -120,7 +120,7 @@ workflows:
   # ステージング環境にデプロイ
   develop:
     jobs:
-      # 直前に承認Jobを挿入する
+      # 直前に承認 Job を挿入する
       - hold:
           name: hold_create_invalidation_stg
           type: approval
@@ -134,7 +134,7 @@ workflows:
   # 本番環境にデプロイ
   main:
     jobs:
-      # 直前に承認Jobを挿入する
+      # 直前に承認 Job を挿入する
       - hold:
           name: hold_create_invalidation_prd
           type: approval
@@ -205,22 +205,22 @@ orbs:
 jobs:
   aws-ecr/build-and-push-image:
     name: ecr_build_and_push_image
-    # Docker Layer Cacheを使用するか否か (有料)
+    # Docker Layer Cache を使用するか否か (有料)
     remote-docker-layer-caching: "true"
     # リポジトリがない時に作成するか否か。
     create-repo: "true"
     no-output-timeout: 20m
-    # projectを作業ディレクトリとした時の相対パス
+    # project を作業ディレクトリとした時の相対パス
     dockerfile: ./infra/docker/Dockerfile
     path: "."
     profile-name: myProfileName
     repo: "{$SERVICE}-repository"
-    # CircleCIのハッシュ値によるバージョニング
+    # CircleCI のハッシュ値によるバージョニング
     # ハッシュ値だけでなく、プレフィクスに日付をつけてもよい。
     tag: $CIRCLE_SHA1
-    # job内にて、attach_workspaceステップを実行。
+    # job 内にて、attach_workspace ステップを実行。
     attach-workspace: "true"
-    # attach_workspaceステップ実行時のrootディレクトリ
+    # attach_workspace ステップ実行時の root ディレクトリ
     workspace-root: <ディレクトリ名>
 ```
 
@@ -234,12 +234,12 @@ jobs:
 
 ECR イメージを使用して、新しいリビジョンの Amazon ECS タスク定義を作成し、加えてこれを使用してコンテナをデプロイする。
 
-| 設定値                         | 説明                                                                                                   |                                                                                                                                                                                                                                                       |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `container-image-name-updates` | コンテナ定義のコンテナ名とバージョンタグを上書きする。                                                 | イメージはCircleCIのハッシュ値でタグ付けしているので必須。                                                                                                                                                                                            |
-| `verify-revision-is-deployed`  | ローリングアップデートのAmazon ECSタスクがAmazon ECSタスク定義の必要数に合致したかを継続的に監視する。 | 例えば、Amazon ECSタスクが『`Running` フェーズ』にならずに『Stoppedフェーズ』になってしまう場合や、既存のAmazon ECSタスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態はAmazon ECSタスクの必要数に合致しないため、検知できる。 |
-| `max-poll-attempts`            | ポーリングの最大試行回数を設定する。`poll-interval` と掛け合わせて、そう実行時間を定義できる。         | 総実行時間を延長するとき、間隔秒数はできるだけ短いほうが無駄な実行時間が発生しないため、最大回数を増やす。                                                                                                                                            |
-| `poll-interval`                | 試行の間隔秒数を設定する。`max-poll-attempts` と掛け合わせて、そう実行時間を定義できる。               |                                                                                                                                                                                                                                                       |
+| 設定値                         | 説明                                                                                                       |                                                                                                                                                                                                                                                             |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `container-image-name-updates` | コンテナ定義のコンテナ名とバージョンタグを上書きする。                                                     | イメージは CircleCI のハッシュ値でタグ付けしているので必須。                                                                                                                                                                                                |
+| `verify-revision-is-deployed`  | ローリングアップデートの Amazon ECS タスクが Amazon ECS タスク定義の必要数に合致したかを継続的に監視する。 | 例えば、Amazon ECS タスクが『`Running` フェーズ』にならずに『Stopped フェーズ』になってしまう場合や、既存の Amazon ECS タスクが『Stopped』にならずに『Running』のままになってしまう場合、この状態は Amazon ECS タスクの必要数に合致しないため、検知できる。 |
+| `max-poll-attempts`            | ポーリングの最大試行回数を設定する。`poll-interval` と掛け合わせて、そう実行時間を定義できる。             | 総実行時間を延長するとき、間隔秒数はできるだけ短いほうが無駄な実行時間が発生しないため、最大回数を増やす。                                                                                                                                                  |
+| `poll-interval`                | 試行の間隔秒数を設定する。`max-poll-attempts` と掛け合わせて、そう実行時間を定義できる。                   |                                                                                                                                                                                                                                                             |
 
 オプションを使用して、`max-poll-attempts` (ポーリングの最大試行回数) と `poll-interval` (試行の間隔秒数) で、ポーリングの総実行時間を定義できる。
 
@@ -257,15 +257,15 @@ orbs:
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_rolling_update
-    # Amazon ECSタスク定義名を指定
+    # Amazon ECS タスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
-    # Amazon ECSクラスター名を指定
+    # Amazon ECS クラスター名を指定
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
-    # コンテナ定義のコンテナ名とバージョンタグを上書き。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
+    # コンテナ定義のコンテナ名とバージョンタグを上書き。イメージは CircleCI のハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # Amazon ECSタスク定義に基づくAmazon ECSタスク数の監視
+    # Amazon ECS タスク定義に基づく Amazon ECS タスク数の監視
     verify-revision-is-deployed: "true"
     # 監視の試行回数
     max-poll-attempts: 30
@@ -312,21 +312,21 @@ orbs:
 jobs:
   aws-ecs/deploy-update-service:
     name: ecs_update_service_by_code_deploy
-    # Amazon ECSタスク定義名を指定
+    # Amazon ECS タスク定義名を指定
     family: "${SERVICE}-ecs-task-definition"
-    # Amazon ECSクラスター名を指定
+    # Amazon ECS クラスター名を指定
     cluster-name: "${SERVICE}-cluster"
     # サービス名を指定
     service-name: "${SERVICE}-service"
-    # CodeDeployにおけるデプロイの作成を設定
+    # CodeDeploy におけるデプロイの作成を設定
     deployment-controller: CODE_DEPLOY
     codedeploy-application-name: $SERVICE
     codedeploy-deployment-group-name: "${SERVICE}-deployment-group"
     codedeploy-load-balanced-container-name: www-container
     codedeploy-load-balanced-container-port: 80
-    # コンテナ名とバージョンタグを指定。イメージはCircleCIのハッシュ値でタグ付けしているので必須。
+    # コンテナ名とバージョンタグを指定。イメージは CircleCI のハッシュ値でタグ付けしているので必須。
     container-image-name-updates: "container=laravel,tag=${CIRCLE_SHA1},container=nginx,tag=${CIRCLE_SHA1}"
-    # Amazon ECSサービス更新後のAmazon ECSタスク監視
+    # Amazon ECS サービス更新後の Amazon ECS タスク監視
     verify-revision-is-deployed: "true"
 
 workflows:
@@ -378,18 +378,18 @@ jobs:
   aws-ecs/run-task:
     name: ecs_run_task_for_migration
     cluster: "${SERVICE}-ecs-cluster"
-    # LATESTとするとその時点の最新バージョンを自動的に割り振られてしまう。
+    # LATEST とするとその時点の最新バージョンを自動的に割り振られてしまう。
     platform-version: 1.4.0
     awsvpc: "true"
     launch-type: FARGATE
     subnet-ids: $AWS_SUBNET_IDS
     security-group-ids: $AWS_SECURITY_GROUPS
-    # Amazon ECSタスク定義名。最新リビジョンが自動補完される。
+    # Amazon ECS タスク定義名。最新リビジョンが自動補完される。
     task-definition: "${SERVICE}-ecs-task-definition"
     # php artisan migrate --force || php artisan migrate:rollback --force
-    # DBマイグレーションが失敗したら、1つ前までの履歴までロールバックを実行する (マイグレーションファイル数に関係なく、1つ前の履歴に戻せばよい)
-    # Amazon ECSタスク起動時にDBマイグレーションのコマンドを実行するように、Laravelコンテナのcommandキーを上書き
-    # DBマイグレーションの確認画面を表示しないために、forceオプションをつける
+    # DB マイグレーションが失敗したら、1 つ前までの履歴までロールバックを実行する (マイグレーションファイル数に関係なく、1 つ前の履歴に戻せばよい)
+    # Amazon ECS タスク起動時に DB マイグレーションのコマンドを実行するように、Laravel コンテナの command キーを上書き
+    # DB マイグレーションの確認画面を表示しないために、force オプションをつける
     overrides: "{\\\"containerOverrides\\\":[{\\\"name\\\": \\\"laravel-container\\\",\\\"command\\\": [\\\"bash\\\", \\\"-c\\\", \\\"php artisan migrate --force || php artisan migrate:rollback --force\\\"]}]}"
 
 workflows:
@@ -440,17 +440,17 @@ jobs:
   aws-code-deploy/deploy:
     name: code_deploy
     application-name: $SERVICE}
-    # appspecファイルを保管するバケット名
+    # appspec ファイルを保管するバケット名
     bundle-bucket: "${SERVICE}-bucket"
-    # appspecファイルのあるディレクトリ
+    # appspec ファイルのあるディレクトリ
     bundle-source: ./infra/aws_codedeploy
-    # appspecファイルをzipファイルで保管
+    # appspec ファイルを zip ファイルで保管
     bundle-type: zip
-    # zipファイル名
+    # zip ファイル名
     bundle-key: foo-bundle
     deployment-config: CodeDeployDefault.ECSAllAtOnce
     deployment-group: "${SERVICE}-deployment-group"
-    # Amazon ECSにリクエストを送信できるCodeDeployサービスロール
+    # Amazon ECS にリクエストを送信できる CodeDeploy サービスロール
     service-role-arn: $CODE_DEPLOY_ROLE_FOR_ECS
 
 workflows:
@@ -494,7 +494,7 @@ orbs:
   slack: circleci/slack@4.1
 
 commands:
-  # 他のJob内で使用できるようにcommandとして定義
+  # 他の Job 内で使用できるように command として定義
   notify_of_failure:
     steps:
       - slack/notify:

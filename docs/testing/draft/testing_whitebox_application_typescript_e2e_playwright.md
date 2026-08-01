@@ -3,7 +3,7 @@ title: 【IT技術の知見】Playwright＠E2Eテスト
 description: Playwright＠E2Eテストの知見を記録しています。
 ---
 
-# Playwright＠E2Eテスト
+# Playwright＠E2E テスト
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Playwright＠E2Eテストの知見を記録しています。
 
 ## 01. セットアップ
 
-### JavaScriptの場合
+### JavaScript の場合
 
 ```bash
 # npm を使う場合
@@ -33,7 +33,7 @@ $ pnpm create playwright
 
 <br>
 
-### Pythonの場合
+### Python の場合
 
 ```bash
 $ pip install pytest-playwright
@@ -53,7 +53,7 @@ $ pip install pytest-playwright
 
 ## 03. テストスイート
 
-### JavaScriptの場合
+### JavaScript の場合
 
 実際のユーザーを模した一連の操作を JavaScript のコードで表現する。
 
@@ -140,7 +140,7 @@ test("Post タイトルと作成者確認", async ({page}) => {
 
 <br>
 
-### Pythonの場合
+### Python の場合
 
 実際のユーザーを模した一連の操作を Python のコードで表現する。
 

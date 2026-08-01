@@ -109,7 +109,7 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
 | リクエストヘッダー   | 出力方法                             | 例                                                        |
 | -------------------- | ------------------------------------ | --------------------------------------------------------- |
 | traceparent          | `%REQ(TRACEPARENT)%`                 | `00-d34ea2aa01d34d0fda79c6d09b097a83-fd0eae41e95a263c-01` |
-| HTTPメソッド         | `%REQ(:METHOD)%`                     | `GET`                                                     |
+| HTTP メソッド        | `%REQ(:METHOD)%`                     | `GET`                                                     |
 | パス                 | `%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%` | `/foo/1`                                                  |
 | ユーザーエージェント | `%REQ(USER-AGENT)%'`                 | `curl/8.7.1`                                              |
 | X-Forwarded-for      | `%REQ(X-FORWARDED-FOR)%`             | 記入中...                                                 |
@@ -150,23 +150,23 @@ Cluster 外からのリクエスト/Pod 間通信時のレスポンスの補足�
 
 宛先が原因のメッセージは以下の通りである。
 
-| 名前  | 正式名称                          | ステータスコード | 説明                                                                        |
-| ----- | --------------------------------- | :--------------: | --------------------------------------------------------------------------- |
-| `NC`  | `NO_CLUSTER_FOUND`                |       なし       | クラスターの設定が見つからず、Envoyは宛先に接続できなかった。               |
-| `UC`  | `UPSTREAM_CONNECTION_TERMINATION` |      `503`       | 遭遇率が一番高い。Envoyは何らかの理由で宛先に接続できなかった。             |
-| `UF`  | `UPSTREAM_CONNECTION_FAILURE`     |      `503`       | Envoyは通信障害で宛先に接続できなかった。                                   |
-| `UH`  | `NO_HEALTHY_UPSTREAM`             |      `503`       | Envoyは宛先異常で接続できなかった。                                         |
-| `UT`  | `UPSTREAM_REQUEST_TIMEOUT`        |      `503`       | Envoyはタイムアウトで宛先に接続できなかった。                               |
-| `UO`  | `UPSTREAM_OVERFLOW`               |      `503`       | サーキットブレイカーで、Envoyは宛先に接続できなかった。                     |
-| `URX` | `UPSTREAM_RETRY_LIMIT_EXCEEDED`   |       なし       | 宛先に対するリトライの上限数の超過で、Envoyは宛先に接続拒否されてしまった。 |
+| 名前  | 正式名称                          | ステータスコード | 説明                                                                         |
+| ----- | --------------------------------- | :--------------: | ---------------------------------------------------------------------------- |
+| `NC`  | `NO_CLUSTER_FOUND`                |       なし       | クラスターの設定が見つからず、Envoy は宛先に接続できなかった。               |
+| `UC`  | `UPSTREAM_CONNECTION_TERMINATION` |      `503`       | 遭遇率が一番高い。Envoy は何らかの理由で宛先に接続できなかった。             |
+| `UF`  | `UPSTREAM_CONNECTION_FAILURE`     |      `503`       | Envoy は通信障害で宛先に接続できなかった。                                   |
+| `UH`  | `NO_HEALTHY_UPSTREAM`             |      `503`       | Envoy は宛先異常で接続できなかった。                                         |
+| `UT`  | `UPSTREAM_REQUEST_TIMEOUT`        |      `503`       | Envoy はタイムアウトで宛先に接続できなかった。                               |
+| `UO`  | `UPSTREAM_OVERFLOW`               |      `503`       | サーキットブレイカーで、Envoy は宛先に接続できなかった。                     |
+| `URX` | `UPSTREAM_RETRY_LIMIT_EXCEEDED`   |       なし       | 宛先に対するリトライの上限数の超過で、Envoy は宛先に接続拒否されてしまった。 |
 
 送信元が原因のメッセージは以下の通りである。
 
-| 名前  | 正式名称                            | ステータスコード | 説明                                                                            |
-| ----- | ----------------------------------- | :--------------: | ------------------------------------------------------------------------------- |
-| `DC`  | `DOWNSTREAM_CONNECTION_TERMINATION` |       なし       | Envoyの宛先へのリクエストが中断され、Envoyはレスポンスを受信できなかった。      |
-| `DPE` | `DOWNSTREAM_PROTOCOL_ERROR`         |       なし       | EnvoyはHTTPリクエストのエラーで送信元に接続できなかった。                       |
-| `NR`  | `NO_ROUTE_FOUND`                    |      `404`       | ルートやフィルターチェーンの設定が見つからず、Envoyは送信元に接続できなかった。 |
+| 名前  | 正式名称                            | ステータスコード | 説明                                                                             |
+| ----- | ----------------------------------- | :--------------: | -------------------------------------------------------------------------------- |
+| `DC`  | `DOWNSTREAM_CONNECTION_TERMINATION` |       なし       | Envoy の宛先へのリクエストが中断され、Envoy はレスポンスを受信できなかった。     |
+| `DPE` | `DOWNSTREAM_PROTOCOL_ERROR`         |       なし       | Envoy はHTTP リクエストのエラーで送信元に接続できなかった。                      |
+| `NR`  | `NO_ROUTE_FOUND`                    |      `404`       | ルートやフィルターチェーンの設定が見つからず、Envoy は送信元に接続できなかった。 |
 
 > - https://github.com/istio/proxy/blob/1.14.3/extensions/common/util.cc#L29-L56
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage
@@ -178,7 +178,7 @@ Cluster 外からのリクエスト/Pod 間通信時のレスポンスの補足�
 
 ### 監視バックエンドへの送信
 
-#### ▼ Amazon CloudWatch Logsの場合
+#### ▼ Amazon CloudWatch Logs の場合
 
 直接的に Amazon CloudWatch Logs に送信できない。
 
@@ -201,7 +201,7 @@ Envoy のメトリクスには、`envoy_` というプレフィクスがつい�
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/stats
 > - https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy-metrics.html
 
-#### ▼ Envoy自身系
+#### ▼ Envoy 自身系
 
 `envoy_server_*****` をプレフィクスとするメトリクスがある。
 
@@ -263,13 +263,13 @@ Envoy は、自身を通過したリクエストの Carrier (例：HTTP ヘッ�
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
 
-#### ▼ Carrierの種類
+#### ▼ Carrier の種類
 
 Envoy では、さまざまな Carrier を使用できる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
 
-#### ▼ リクエストIDの作成
+#### ▼ リクエスト ID の作成
 
 Envoy は ID を自動作成する。
 
@@ -277,7 +277,7 @@ Envoy は ID を自動作成する。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
 
-#### ▼ IDの結合
+#### ▼ ID の結合
 
 Envoy は、`X-REQUEST-ID` ヘッダーの自動作成 ID と `X-CLIENT-TRACE-ID` の外部作成 ID を結合する
 
@@ -315,7 +315,7 @@ Envoy は、Exporter としてスパンを監視バックエンドに送信す�
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/http_tracer.proto#envoy-v3-api-msg-config-trace-v3-tracing
 
-#### ▼ X-Rayの場合
+#### ▼ X-Ray の場合
 
 スパンを X-Ray デーモンに送信して、X-Ray で分散トレースを監視できる。
 

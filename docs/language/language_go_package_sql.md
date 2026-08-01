@@ -3,7 +3,7 @@ title: 【IT技術の知見】SQLパッケージ＠Go
 description: SQLパッケージ＠Goの知見を記録しています。
 ---
 
-# SQLパッケージ＠Go
+# SQL パッケージ＠Go
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: SQLパッケージ＠Goの知見を記録しています。
 
 ## 01. gorm
 
-### gormとは
+### gorm とは
 
 Go 製の ORM である。
 
@@ -27,9 +27,9 @@ Go 製の ORM である。
 
 <br>
 
-### DBとの接続
+### DB との接続
 
-#### ▼ MySQLの場合
+#### ▼ MySQL の場合
 
 ```go
 package db
@@ -79,9 +79,9 @@ func Close(db *gorm.DB) error {
 
 <br>
 
-### gormモデル
+### gorm モデル
 
-#### ▼ gormモデル埋め込み
+#### ▼ gorm モデル埋め込み
 
 構造体に gorm モデルを埋め込むと、ID やタイムスタンプレコードをフィールドとして追加する。
 
@@ -108,7 +108,7 @@ type User struct {
 
 > - https://gorm.io/docs/models.html#embedded_struct
 
-#### ▼ DBへのマッピング
+#### ▼ DB へのマッピング
 
 Gorm は、構造体を DB に自動的にマッピングする。
 
@@ -193,7 +193,7 @@ db.Where("age = 20").Find(&user)
 
 <br>
 
-### DBマイグレーション
+### DB マイグレーション
 
 #### ▼ `TableName()` 関数
 
@@ -424,7 +424,7 @@ db.Save(&user)
 
 ### WithContext
 
-#### ▼ WithContextとは
+#### ▼ WithContext とは
 
 gorm クエリにコンテキストを設定する。
 
@@ -448,7 +448,7 @@ db.WithContext(ctx).Find(&users)
 
 ### Exec
 
-#### ▼ Execとは
+#### ▼ Exec とは
 
 SQL ステートメントをそのまま実行する。
 
@@ -468,11 +468,11 @@ db.Exec(fmt.Sprintf("SET SESSION max_execution_time=%d;", 10))
 
 ### Hook
 
-#### ▼ Hookとは
+#### ▼ Hook とは
 
 CRUD の関数の前後に設定した独自処理を実行できるようにする。
 
-#### ▼ 特定のCRUD関数の前後
+#### ▼ 特定の CRUD 関数の前後
 
 ```go
 package db
@@ -490,7 +490,7 @@ func NewDb() {
 
 > - https://golang.withcodeexample.com/blog/golang-gorm-hooks-guide/
 
-#### ▼ すべてのCRUD関数の前後
+#### ▼ すべての CRUD 関数の前後
 
 ```go
 package db
@@ -516,7 +516,7 @@ func (user *User) AfterSave(tx *gorm.DB) (err error) {
 
 ### Statement
 
-#### ▼ Statementとは
+#### ▼ Statement とは
 
 gorm クエリに関する情報を持つ。
 

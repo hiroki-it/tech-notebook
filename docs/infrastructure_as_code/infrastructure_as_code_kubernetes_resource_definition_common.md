@@ -15,7 +15,7 @@ description: 共通項目＠リソース定義の知見を記録しています�
 
 ## 01. apiVersion
 
-### apiVersionとは
+### apiVersion とは
 
 API グループのバージョンを設定する。
 
@@ -32,7 +32,7 @@ apiVersion: v1
 
 <br>
 
-### APIグループ
+### API グループ
 
 #### ▼ バージョンの段階
 
@@ -55,7 +55,7 @@ apiVersion: v1
 
 ## 03. metadata.annotation
 
-### annotationとは
+### annotation とは
 
 任意のキーと値を設定する。
 
@@ -66,7 +66,7 @@ apiVersion: v1
 
 <br>
 
-### 任意のKubernetesリソースの場合
+### 任意の Kubernetes リソースの場合
 
 #### ▼ kubectl.kubernetes.io/last-applied-configuration
 
@@ -97,13 +97,13 @@ Kubernetes リソースに関する情報を設定する。
 
 `.metadata.annotations` キー配下にも同じキーがあることに注意する。
 
-| キー                      | 値の例                        | 説明                                           |
-| ------------------------- | ----------------------------- | ---------------------------------------------- |
-| `kubernetes.io/createdby` | `aws-ebs-dynamic-provisioner` | Kubernetesリソースを作成したツールを設定する。 |
+| キー                      | 値の例                        | 説明                                            |
+| ------------------------- | ----------------------------- | ----------------------------------------------- |
+| `kubernetes.io/createdby` | `aws-ebs-dynamic-provisioner` | Kubernetes リソースを作成したツールを設定する。 |
 
 <br>
 
-### Ingressの場合
+### Ingress の場合
 
 #### ▼ kubernetes.io/ingress.class
 
@@ -142,7 +142,7 @@ metadata:
 
 <br>
 
-### PersistentVolumeの場合
+### PersistentVolume の場合
 
 #### ▼ `pv.kubernetes.io` キー
 
@@ -152,14 +152,14 @@ kube-controller が設定してくれるため、開発者が設定する必要�
 
 #### ▼ 種類
 
-| キー                                   | 値の例                                                                      | 説明                                                                                  |
-| -------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `pv.kubernetes.io/bound-by-controller` | `yes`                                                                       | PersistentVolumeのCSIドライバーのControllerがプロビジョニングしたかどうかを設定する。 |
-| `pv.kubernetes.io/provisioned-by`      | `ebs.csi.aws.com` (AWS EBS CSIドライバー)、`kubernetes.io/aws-ebs` (非推奨) | そのPersistVolumeを作成したツールを設定する。                                         |
+| キー                                   | 値の例                                                                       | 説明                                                                                      |
+| -------------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `pv.kubernetes.io/bound-by-controller` | `yes`                                                                        | PersistentVolume のCSI ドライバーの Controller がプロビジョニングしたかどうかを設定する。 |
+| `pv.kubernetes.io/provisioned-by`      | `ebs.csi.aws.com` (AWS EBS CSI ドライバー)、`kubernetes.io/aws-ebs` (非推奨) | その PersistVolume を作成したツールを設定する。                                           |
 
 <br>
 
-### PersistentVolumeClaimの場合
+### PersistentVolumeClaim の場合
 
 #### ▼ `volume.kubernetes.io` キーとは
 
@@ -167,16 +167,16 @@ PersistentVolumeClaim に関する情報を設定する。
 
 kube-controller が設定してくれるため、開発者が設定する必要はない。
 
-| キー                                       | 値の例                                                                                                             | 説明                                                                                                                                                                                                                                       |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `volume.kubernetes.io/storage-provisioner` | `ebs.csi.aws.com` (AWS EBS CSIドライバー)、`kubernetes.io/aws-ebs` (非推奨)、`k8s.io/minikube-hostpath` (Minikube) | PersistentVolumeClaimに紐づくPersistentVolumeを作成したツールを設定する。                                                                                                                                                                  |
-| `volume.kubernetes.io/selected-node`       | `ip-*-*-*-*.ap-northeast-1.compute.internal`                                                                       | PersistentVolumeClaimに紐づくPersistentVolumeが配置されているNode名を設定する。正しいNode名を指定しないと、`N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector` というエラーになってしまう。 |
+| キー                                       | 値の例                                                                                                              | 説明                                                                                                                                                                                                                                              |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `volume.kubernetes.io/storage-provisioner` | `ebs.csi.aws.com` (AWS EBS CSI ドライバー)、`kubernetes.io/aws-ebs` (非推奨)、`k8s.io/minikube-hostpath` (Minikube) | PersistentVolumeClaim に紐づく PersistentVolume を作成したツールを設定する。                                                                                                                                                                      |
+| `volume.kubernetes.io/selected-node`       | `ip-*-*-*-*.ap-northeast-1.compute.internal`                                                                        | PersistentVolumeClaim に紐づく PersistentVolume が配置されている Node 名を設定する。正しい Node 名を指定しないと、`N node(s) had volume node affinity conflict, N node(s) didn't match Pod's node affinity/selector` というエラーになってしまう。 |
 
 <br>
 
 ## 03-02. metadata.finalizers
 
-### finalizersとは
+### finalizers とは
 
 Kubernetes リソースに親子関係がある場合に、親リソースよりも先に子リソースを削除できるようにするため、親リソースの削除を防ぐ。
 
@@ -220,7 +220,7 @@ metadata:
 
 ## 03-04. metadata.labels
 
-### labelsとは
+### labels とは
 
 Kubernetes が、Kubernetes リソースの一意に識別するための情報を設定する。
 
@@ -244,7 +244,7 @@ int 型を割り当てようとするとエラーになり、これは Helm の 
 
 <br>
 
-### 予約Label
+### 予約 Label
 
 キー名のプレフィクスとして、`kubernetes.io/` と `k8s.io/` は予約されている。
 
@@ -252,7 +252,7 @@ int 型を割り当てようとするとエラーになり、これは Helm の 
 
 <br>
 
-### 任意のKubernetesリソースの場合
+### 任意の Kubernetes リソースの場合
 
 #### ▼ `app.kubernetes.io` キー
 
@@ -261,15 +261,15 @@ Kubernetes 上で稼働するコンテナの情報を設定する。
 | キー                           | 値の例                      | 説明                                                                       |
 | ------------------------------ | --------------------------- | -------------------------------------------------------------------------- |
 | `app.kubernetes.io/app`        | `foo`、`foo-service`        | マイクロサービス名を設定する。                                             |
-| `app.kubernetes.io/component`  | `app`、`database`           | K8sリソースをシステムの要素と捉えたときに、その役割名を設定する。          |
-| `app.kubernetes.io/created-by` | `kube-controller-manager`   | このKubernetesリソースを作成したリソースやユーザーを設定する。             |
+| `app.kubernetes.io/component`  | `app`、`database`           | K8s リソースをシステムの要素と捉えたときに、その役割名を設定する。         |
+| `app.kubernetes.io/created-by` | `kube-controller-manager`   | この Kubernetes リソースを作成したリソースやユーザーを設定する。           |
 | `app.kubernetes.io/env`        | `prd`、`stg`、`tes`、`dev`  | アプリケーションの実行環境名を設定する。                                   |
 | `app.kubernetes.io/instance`   | `mysql-12345`               | アプリケーションのインスタンス名を設定する。                               |
-| `app.kubernetes.io/managed-by` | `helm`、`foo-operator`      | K8sリソースの管理ツール名を設定する。                                      |
+| `app.kubernetes.io/managed-by` | `helm`、`foo-operator`      | K8s リソースの管理ツール名を設定する。                                     |
 | `app.kubernetes.io/name`       | `foo-service`、`prometheus` | アプリ側であればマイクロサービス名、インフラ側であればツール名を設定する。 |
-| `app.kubernetes.io/part-of`    | `bar`                       | K8sリソースをシステムの要素と捉えたときに、その親のシステム名を設定する。  |
-| `app.kubernetes.io/type`       | `host` (PVのマウント対象)   | リソースの設定方法の種類名を設定する。                                     |
-| `app.kubernetes.io/version`    | `5.7.21`                    | K8sリソースのリリースバージョン名を設定する。                              |
+| `app.kubernetes.io/part-of`    | `bar`                       | K8s リソースをシステムの要素と捉えたときに、その親のシステム名を設定する。 |
+| `app.kubernetes.io/type`       | `host` (PV のマウント対象)  | リソースの設定方法の種類名を設定する。                                     |
+| `app.kubernetes.io/version`    | `5.7.21`                    | K8s リソースのリリースバージョン名を設定する。                             |
 
 > - https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
 
@@ -283,15 +283,15 @@ Kubernetes リソースに関する情報を設定する。
 
 kube-controller が設定してくれるため、開発者が設定する必要はない。
 
-| キー                     | 値の例                                                   | 説明                                |
-| ------------------------ | -------------------------------------------------------- | ----------------------------------- |
-| `kubernetes.io/arch`     | `amd64`                                                  | NodeのCPUアーキテクチャを設定する。 |
-| `kubernetes.io/hostname` | `ip-*-*-*-*.ap-northeast-1.compute.internal` (AWSの場合) | Nodeのホスト名を設定する。          |
-| `kubernetes.io/os`       | `linux`                                                  | NodeのOSを設定する。                |
+| キー                     | 値の例                                                    | 説明                                  |
+| ------------------------ | --------------------------------------------------------- | ------------------------------------- |
+| `kubernetes.io/arch`     | `amd64`                                                   | Node のCPU アーキテクチャを設定する。 |
+| `kubernetes.io/hostname` | `ip-*-*-*-*.ap-northeast-1.compute.internal` (AWS の場合) | Node のホスト名を設定する。           |
+| `kubernetes.io/os`       | `linux`                                                   | Node のOS を設定する。                |
 
 <br>
 
-### Nodeの場合
+### Node の場合
 
 #### ▼ ラベルの設定方法
 
@@ -307,17 +307,17 @@ kubelet の `--node-labels` オプションを使用すると、Node にラベ�
 
 Node の情報を設定する。
 
-| キー                          | 値の例                       | 説明                                                                |
-| ----------------------------- | ---------------------------- | ------------------------------------------------------------------- |
-| `node.kubernetes.io/nodetype` | `batch`、`ingress`、`master` | コンテナを持つPodのスケジューリング先とするNodeグループを設定する。 |
+| キー                          | 値の例                       | 説明                                                                    |
+| ----------------------------- | ---------------------------- | ----------------------------------------------------------------------- |
+| `node.kubernetes.io/nodetype` | `batch`、`ingress`、`master` | コンテナを持つ Pod のスケジューリング先とする Node グループを設定する。 |
 
 #### ▼ `node-role.kubernetes.io` キー
 
 Node の taints を設定する。
 
-| キー                             | 値の例                           | 説明                                      |
-| -------------------------------- | -------------------------------- | ----------------------------------------- |
-| `node-role.kubernetes.io/master` | `NoSchedule`、`PreferNoSchedule` | Podのスケジューリングのルールを設定する。 |
+| キー                             | 値の例                           | 説明                                       |
+| -------------------------------- | -------------------------------- | ------------------------------------------ |
+| `node-role.kubernetes.io/master` | `NoSchedule`、`PreferNoSchedule` | Pod のスケジューリングのルールを設定する。 |
 
 #### ▼ `topology.kubernetes.io` キー
 
@@ -325,10 +325,10 @@ Node に関する情報を設定する。
 
 kube-controller が設定してくれるため、開発者が設定する必要はない。
 
-| キー                            | 値の例                        | 説明                                     |
-| ------------------------------- | ----------------------------- | ---------------------------------------- |
-| `topology.kubernetes.io/region` | `ap-northeast-1` (AWSの場合)  | Nodeが稼働しているリージョンを設定する。 |
-| `topology.kubernetes.io/zone`   | `ap-northeast-1a` (AWSの場合) | Nodeが稼働しているAZを設定する。         |
+| キー                            | 値の例                         | 説明                                      |
+| ------------------------------- | ------------------------------ | ----------------------------------------- |
+| `topology.kubernetes.io/region` | `ap-northeast-1` (AWS の場合)  | Node が稼働しているリージョンを設定する。 |
+| `topology.kubernetes.io/zone`   | `ap-northeast-1a` (AWS の場合) | Node が稼働している AZ を設定する。       |
 
 <br>
 
@@ -340,11 +340,11 @@ kube-controller が設定してくれるため、開発者が設定する必要�
 
 特定の Kubernetes リソースに関して認可スコープを狭くしたい場合、`.rules` キー配下でそれを定義する。
 
-| キー                                           | 値の例 | 説明                                                                                  |
-| ---------------------------------------------- | ------ | ------------------------------------------------------------------------------------- |
-| `rbac.authorization.k8s.io/aggregate-to-admin` | `true` | Cluster内のすべてのKubernetesリソースにすべての操作が可能な認可スコープを設定する。   |
-| `rbac.authorization.k8s.io/aggregate-to-edit`  | `true` | Namespace内のすべてのKubernetesリソースに変更操作が可能な認可スコープを設定する。     |
-| `rbac.authorization.k8s.io/aggregate-to-view`  | `true` | Cluster内のすべてのKubernetesリソースに対して閲覧操作が可能な認可スコープを設定する。 |
+| キー                                           | 値の例 | 説明                                                                                     |
+| ---------------------------------------------- | ------ | ---------------------------------------------------------------------------------------- |
+| `rbac.authorization.k8s.io/aggregate-to-admin` | `true` | Cluster 内のすべての Kubernetes リソースにすべての操作が可能な認可スコープを設定する。   |
+| `rbac.authorization.k8s.io/aggregate-to-edit`  | `true` | Namespace 内のすべての Kubernetes リソースに変更操作が可能な認可スコープを設定する。     |
+| `rbac.authorization.k8s.io/aggregate-to-view`  | `true` | Cluster 内のすべての Kubernetes リソースに対して閲覧操作が可能な認可スコープを設定する。 |
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -355,14 +355,14 @@ metadata:
     rbac.authorization.k8s.io/aggregate-to-edit: true
     rbac.authorization.k8s.io/aggregate-to-view: true
   name: foo
-rules: ... # 特定のKubernetesリソースの認可スコープを狭めたい場合は、.rulesキーでそれを定義する
+rules: ... # 特定の Kubernetes リソースの認可スコープを狭めたい場合は、.rules キーでそれを定義する
 ```
 
 <br>
 
 ## 03-05. metadata.managedFields
 
-### managedFieldsとは
+### managedFields とは
 
 特定のマネージャーが管理するマニフェストのキー部分が自動的に割り当てられており、ここにないキーは管理外である。
 
@@ -400,47 +400,47 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   managedFields:
-    # kubectlコマンドによる管理
+    # kubectl コマンドによる管理
     - manager: kubectl # デフォルト値
       apiVersion: apps/v1
-      # kube-apiserverに対するリクエスト内容。ここでは、kubectl applyコマンドの実行履歴を確認できる。
+      # kube-apiserver に対するリクエスト内容。ここでは、kubectl apply コマンドの実行履歴を確認できる。
       operation: Apply
-      # kubectlコマンドが管理するマニフェストのキー部分
+      # kubectl コマンドが管理するマニフェストのキー部分
       fields: ...
 
-    # kubectlコマンドによる管理
+    # kubectl コマンドによる管理
     - manager: kubectl # デフォルト値
       apiVersion: apps/v1
-      # kube-apiserverに対するリクエスト内容。ここでは、kubectl editコマンドの実行履歴を確認できる。
+      # kube-apiserver に対するリクエスト内容。ここでは、kubectl edit コマンドの実行履歴を確認できる。
       operation: Edit
-      # kubectlコマンドが管理するマニフェストのキー部分
+      # kubectl コマンドが管理するマニフェストのキー部分
       fields: ...
 
-    # kube-controller-managerによる管理 (後からの変更)
+    # kube-controller-manager による管理 (後からの変更)
     - manager: kube-controller-manager
       apiVersion: apps/v1
-      # kube-apiserverに対するリクエスト内容
+      # kube-apiserver に対するリクエスト内容
       operation: Update
       time: "2022-01-01T16:00:00.000Z"
-      # kube-controller-managerが管理するマニフェストのキー部分
+      # kube-controller-manager が管理するマニフェストのキー部分
       fields: ...
 
-    # operatorによる管理 (後からの変更)
+    # operator による管理 (後からの変更)
     - manager: operator
       apiVersion: apps/v1
-      # kube-apiserverに対するリクエスト内容
+      # kube-apiserver に対するリクエスト内容
       operation: Update
       time: "2022-01-01T16:00:00.000Z"
-      # operatorが管理するマニフェストのキー部分
+      # operator が管理するマニフェストのキー部分
       fields: ...
 
-    # ArgoCDのapplication-controllerによる管理 (後からの変更)
+    # ArgoCD のapplication-controller による管理 (後からの変更)
     - manager: argocd-application-controller
       apiVersion: apps/v1
-      # kube-apiserverに対するリクエスト内容
+      # kube-apiserver に対するリクエスト内容
       operation: Update
       time: "2022-01-01T16:00:00.000Z"
-      # ArgoCDのapplication-controllerが管理するマニフェストのキー部分
+      # ArgoCD のapplication-controller が管理するマニフェストのキー部分
       fields: ...
 ```
 
@@ -448,7 +448,7 @@ metadata:
 
 ## 03-06. metadata.name
 
-### nameとは
+### name とは
 
 Kubernetes リソースを一意に識別するための名前を設定する。
 
@@ -475,7 +475,7 @@ Kubernetes にとって `.metadata.name` キーは ID であり、後から変�
 
 ## 03-07. metadata.namespace
 
-### namespaceとは
+### namespace とは
 
 Kubernetes リソースを作成する Namespace を設定する。
 
@@ -516,7 +516,7 @@ metadata:
 
 ### status
 
-#### ▼ statusとは
+#### ▼ status とは
 
 Kubernetes リソースの現在の状態を設定する。
 
@@ -530,7 +530,7 @@ Kubernetes リソースごとに、`.status` キー配下の構造は異なっ�
 
 ### conditions
 
-#### ▼ conditionsとは
+#### ▼ conditions とは
 
 `.status` キーの履歴を設定する。
 
@@ -569,7 +569,7 @@ status:
 
 ### observedGeneration
 
-#### ▼ observedGenerationとは
+#### ▼ observedGeneration とは
 
 kube-controller や Custom Controller が Kubernetes リソースの状態を管理している場合に、これらが検知した `.metadata.generation` キーの値を設定する。
 

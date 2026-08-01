@@ -3,7 +3,7 @@ title: 【IT技術の知見】IAM＠Google Cloudリソース
 description: IAM＠Google Cloudリソースの知見を記録しています。
 ---
 
-# IAM＠Google Cloudリソース
+# IAM＠Google Cloud リソース
 
 ## はじめに
 
@@ -172,7 +172,7 @@ $ gcloud info
 
 ## 05. Workload Identity
 
-### Workload Identityとは
+### Workload Identity とは
 
 GoogleCloud 外リソース (例：AWS、Azure、Kubernetes など) から GoogleCloud リソースの API にリクエストを送信する場合に、外部リソースをサービスアカウントに紐づけて、API にリクエストを送信できるようにする仕組みのこと。
 
@@ -184,7 +184,7 @@ GoogleCloud 外リソース (例：AWS、Azure、Kubernetes など) から Googl
 
 <br>
 
-### Workload Identityの仕組み
+### Workload Identity の仕組み
 
 #### ▼ アーキテクチャ
 
@@ -202,7 +202,7 @@ GoogleCloud 外リソース (例：AWS、Azure、Kubernetes など) から Googl
 > - https://christina04.hatenablog.com/entry/workload-identity-federation
 > - https://zenn.dev/k6s4i53rx/articles/18a72c2db8c9e9
 
-#### ▼ Workload Identityプール
+#### ▼ Workload Identity プール
 
 GoogleCloud 外リソースのグループを設定する。
 
@@ -226,7 +226,7 @@ GoogleCloud 外リソースのグループを設定する。
 
 <br>
 
-### Google CloudとAWSの連携の場合
+### Google Cloud とAWS の連携の場合
 
 AWS IAM ロール名とこれに紐づけるサービスアカウント名を Workload Identity に設定する。
 

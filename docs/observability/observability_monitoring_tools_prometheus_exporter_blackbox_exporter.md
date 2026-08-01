@@ -13,7 +13,7 @@ description: Blackbox Exporter＠Prometheus
 
 <br>
 
-## 01. Blackbox Exporterの仕組み
+## 01. Blackbox Exporter の仕組み
 
 ### アーキテクチャ
 
@@ -28,7 +28,7 @@ Blackbox Exporter は、外部システムに特定のプロトコル (例：HTT
 
 <br>
 
-### Prometheusによるデータポイント収集
+### Prometheus によるデータポイント収集
 
 ![blackbox_exporter_prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_prometheus_architecture.png)
 
@@ -87,7 +87,7 @@ data:
 
 <br>
 
-### Deployment配下のPod
+### Deployment 配下の Pod
 
 外部システムに対してヘルスチェックを実施する。
 
@@ -228,19 +228,19 @@ modules:
 
 ### http probe
 
-#### ▼ http probeとは
+#### ▼ http probe とは
 
 監視対象に送信する HTTP リクエストを定義する。
 
-#### ▼ GETリクエストの場合
+#### ▼ GET リクエストの場合
 
 外形監視で GET リクエストを送信する。
 
 ```yaml
 modules:
-  # GETリクエストの場合 (HTTPS)
+  # GET リクエストの場合 (HTTPS)
   https_2xx_get:
-    # HTTPプロトコルを使用する
+    # HTTP プロトコルを使用する
     prober: http
     timeout: 5s
     # http probe
@@ -249,9 +249,9 @@ modules:
       valid_http_versions:
         - HTTP/1.1
         - HTTP/2.0
-      # 優先するIPアドレスの種類
+      # 優先する IP アドレスの種類
       preferred_ip_protocol: ip4
-      # IPV6が使えない場合に、IPv4に切り替える
+      # IPV6 が使えない場合に、IPv4 に切り替える
       ip_protocol_fallback: "true"
       follow_redirects: "true"
     tcp:
@@ -262,9 +262,9 @@ modules:
       ip_protocol_fallback: "true"
       recursion_desired: "true"
 
-  # GETリクエストの場合 (HTTPS)
+  # GET リクエストの場合 (HTTPS)
   http_2xx_get:
-    # HTTPプロトコルを使用する
+    # HTTP プロトコルを使用する
     prober: http
     timeout: 5s
     # http probe
@@ -272,9 +272,9 @@ modules:
       # レスポンスの期待ステータスコード
       valid_http_versions:
         - HTTP/1.1
-      # 優先するIPアドレスの種類
+      # 優先する IP アドレスの種類
       preferred_ip_protocol: ip4
-      # IPV6が使えない場合に、IPv4に切り替える
+      # IPV6 が使えない場合に、IPv4 に切り替える
       ip_protocol_fallback: "true"
       tls_config:
         # サーバー証明書を任意にする
@@ -284,15 +284,15 @@ modules:
 > - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
 > - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
 
-#### ▼ POSTリクエストの場合
+#### ▼ POST リクエストの場合
 
 外形監視にて、HTTP プロトコルで POST リクエストを送信する。
 
 ```yaml
 modules:
-  # POSTリクエストの場合
+  # POST リクエストの場合
   http_2xx_post:
-    # HTTPプロトコルを使用する
+    # HTTP プロトコルを使用する
     prober: http
     timeout: 30s
     # http probe
@@ -300,7 +300,7 @@ modules:
       # レスポンスの期待ステータスコード
       valid_status_codes:
         - 200
-      # IPV6が使えない場合に、IPv4に切り替える
+      # IPV6 が使えない場合に、IPv4 に切り替える
       ip_protocol_fallback: "true"
       method: POST
       # リクエストヘッダー
@@ -345,7 +345,7 @@ probe_success
 
 #### ▼ よく使用するメトリクス
 
-| メトリクス      | メトリクスの種類 | 説明                                                                 | PromQL例                                                                                              |
+| メトリクス      | メトリクスの種類 | 説明                                                                 | PromQL 例                                                                                             |
 | --------------- | ---------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | `probe_success` | Gauge            | 監視対象の状態を表す。`1` であれば稼働中、`0` であれば停止中である。 | `sum((probe_success{namespace="foo-namespace"})) / count((probe_success{namespace="foo-namespace"}))` |
 

@@ -13,7 +13,7 @@ description: Webhook-API＠APIの知見を記録しています。
 
 <br>
 
-## 01. Webhook-APIの仕組み
+## 01. Webhook-API の仕組み
 
 ### アーキテクチャ
 

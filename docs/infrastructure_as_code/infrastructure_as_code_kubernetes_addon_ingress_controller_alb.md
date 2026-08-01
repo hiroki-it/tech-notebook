@@ -13,7 +13,7 @@ description: AWS Load Balancer Controller＠Ingress Controllerの知見を記録
 
 <br>
 
-## 01. AWS Load Balancer Controllerの仕組み
+## 01. AWS Load Balancer Controller の仕組み
 
 ### アーキテクチャ
 
@@ -34,7 +34,7 @@ aws-load-balancer-controller は、etcd 上の Ingress のマニフェストを�
 
 <br>
 
-### Nodeをターゲットグループに登録/ドレイン
+### Node をターゲットグループに登録/ドレイン
 
 #### ▼ 登録の流れ
 
@@ -54,7 +54,7 @@ AWS Load Balancer Controller は、以下の仕組みでターゲットグルー
 
 <br>
 
-### Serviceタイプ
+### Service タイプ
 
 NodePort Service を使用しなければならない。
 
@@ -67,10 +67,10 @@ AWS Load Balancer Controller を使用する場合は、NodePort Service のポ�
 ⬇⬆️︎
 Amazon Route 53
 ⬇⬆️︎
-# L7ロードバランサー (単一のL7ロードバランサーを作成し、異なるポートを開放する複数のL4ロードバランサーの振り分ける)
+# L7 ロードバランサー (単一の L7 ロードバランサーを作成し、異なるポートを開放する複数の L4 ロードバランサーの振り分ける)
 AWS Load Balancer ControllerによるAWS ALB
 ⬇⬆️︎
-# L4ロードバランサー
+# L4 ロードバランサー
 NodePort Service (ポート番号はランダムでよい)
 ⬇⬆️︎
 Pod
@@ -83,7 +83,7 @@ Pod
 
 ## 01-02. 設計パターン
 
-### AWS Load Balancer Controllerを使用しない場合
+### AWS Load Balancer Controller を使用しない場合
 
 もし AWS CLB を作成したい場合は、AWS Load Balancer Controller を使用しない。
 
@@ -91,7 +91,7 @@ LoadBalancer Service を作成すると、Amazon EKS 内の cloud-controller-man
 
 <br>
 
-### TargetGroupBindingパターン
+### TargetGroupBinding パターン
 
 > - https://aws.amazon.com/jp/blogs/news/patterns-for-targetgroupbinding-with-aws-load-balancer-controller/
 
@@ -99,7 +99,7 @@ LoadBalancer Service を作成すると、Amazon EKS 内の cloud-controller-man
 
 ## 02. セットアップ
 
-### AWS側
+### AWS 側
 
 #### ▼ 共通
 
@@ -114,7 +114,7 @@ Ingress で作成する AWS ALB をパブリックサブネットで作成する
 > - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
 
-#### ▼ Terraformの公式モジュールの場合
+#### ▼ Terraform の公式モジュールの場合
 
 AWS Load Balancer Controller のセットアップのうち、AWS 側で必要なものをまとめる。
 
@@ -265,7 +265,7 @@ kube-system     foo-aws-load-balancer-controller    arn:aws:iam::<AWSアカウ�
 ```yaml
 $ kubectl get serviceaccount -n kube-system foo-aws-load-balancer-controller -o yaml
 ---
-# 作成されたServiceAccount
+# 作成された ServiceAccount
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -286,9 +286,9 @@ secrets:
 
 <br>
 
-### Kubernetes側
+### Kubernetes 側
 
-#### ▼ Helmの場合
+#### ▼ Helm の場合
 
 AWS Load Balancer Controller のセットアップのうち、Kubernetes 側で必要なものをまとめる。
 
@@ -389,7 +389,7 @@ AWS Load Balancer Controller は、Deployment (aws-load-balancer-controller) 、
 
 <br>
 
-### Deployment配下のPod
+### Deployment 配下の Pod
 
 #### ▼ aws-load-balancer-controller
 
@@ -404,22 +404,22 @@ metadata:
 spec:
   containers:
     - args:
-        # AWS ALBでL7ロードバランシングするCluster名を設定する
+        # AWS ALB でL7 ロードバランシングする Cluster 名を設定する
         - "--cluster-name=foo-cluster"
-        # Ingressに紐づけるIngressClassを設定する
+        # Ingress に紐づける IngressClass を設定する
         - "--ingress-class=alb"
-        # AWS ALBのあるリージョンを設定する
+        # AWS ALB のあるリージョンを設定する
         - "--aws-region=ap-northeast-1"
-        # AWS ALBのあるVPCのIDを設定する
+        # AWS ALB のある VPC のID を設定する
         - "--aws-vpc-id=vpc-*****"
       name: aws-load-balancer-controller
       image: public.ecr.aws/eks/aws-load-balancer-controller:v2.4.0
       ports:
-        # 内蔵されているwebhookサーバー
+        # 内蔵されている webhook サーバー
         - containerPort: 9443
           name: webhook-server
           protocol: TCP
-          # 内蔵されているmetricsサーバー
+          # 内蔵されている metrics サーバー
         - containerPort: 8080
           name: metrics-server
           protocol: TCP

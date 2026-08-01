@@ -13,7 +13,7 @@ description: Javaの知見を記録しています。
 
 <br>
 
-## 01. Javaとは
+## 01. Java とは
 
 記入中...
 
@@ -23,7 +23,7 @@ JVM 言語 (例：Java、Scala、Kotlin など) のコードを、Java バイト
 
 <br>
 
-## 03. Javaのコンパイルの仕組み
+## 03. Java のコンパイルの仕組み
 
 ![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png)
 
@@ -64,7 +64,7 @@ Java では、コードの実行前と実行中の二段階で機械語を翻訳
 
 <br>
 
-### CPU消費
+### CPU 消費
 
 #### ▼ ウォームアップとは
 
@@ -95,7 +95,7 @@ JVM 言語 (例：Java、Scala、Kotlin など) 製のアプリケーション�
 
 > - https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot
 
-#### ▼ Kubernetes環境の場合
+#### ▼ Kubernetes 環境の場合
 
 ReadinessProbe ヘルスチェックでウォームアップを実施する。
 

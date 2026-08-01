@@ -17,7 +17,7 @@ description: テンプレート＠Packerの知見を記録しています。
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 > - https://www.packer.io/downloads
 
@@ -29,7 +29,7 @@ $ sudo apt-get update && sudo apt-get install packer
 
 <br>
 
-### CIによる自動化
+### CI による自動化
 
 #### ▼ GitLab CI
 
@@ -44,7 +44,7 @@ stages:
 
 build_ami:
   stage: build
-  # CIの実行環境
+  # CI の実行環境
   image: docker:19.03.0
   # サービスコンテナ
   services:
@@ -76,7 +76,7 @@ build_ami:
   script:
     - export SOURCE_IMAGE_ID=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 --region ${AWS_DEFAULT_REGION} --query 'Parameters[0].Value' --output text)
     - echo "source ami-id: $SOURCE_IMAGE_ID"
-    # Packerを実行する
+    # Packer を実行する
     - packer init template.pkr.hcl
     - packer build template.pkr.hcl
     - AMI_NAME="foo-$(date "+%Y-%m-%d")"
@@ -139,13 +139,13 @@ build {
 
 ## 03. provisioner
 
-### provisionerとは
+### provisioner とは
 
 サーバー/コンテナのプロビジョナーを設定する。
 
 <br>
 
-### ansibleの場合
+### ansible の場合
 
 #### ▼ playbook_file
 
@@ -171,7 +171,7 @@ build {
 
 <br>
 
-### shell-localの場合
+### shell-local の場合
 
 #### ▼ shell-local
 
@@ -192,9 +192,9 @@ build {
 
 <br>
 
-### shellの場合
+### shell の場合
 
-#### ▼ shellとは
+#### ▼ shell とは
 
 Ansible は、コントロールノード (ansible デプロイサーバー) と管理対象ノード (ansible デプロイ先サーバー) から構成される。
 
@@ -215,7 +215,7 @@ build {
 
 ## 04. packer
 
-### packerとは
+### packer とは
 
 <br>
 
@@ -241,13 +241,13 @@ packer {
 
 ## 05. source
 
-### sourceとは
+### source とは
 
 作成するマシンイメージやコンテナイメージの内容を設定する。
 
 <br>
 
-### amazon-ebsの場合
+### amazon-ebs の場合
 
 #### ▼ ami_name
 
@@ -384,7 +384,7 @@ source "amazon-ebs" "foo" {
 
 ## 06. variable
 
-### variableとは
+### variable とは
 
 ファイル内で使用する変数を設定する。
 

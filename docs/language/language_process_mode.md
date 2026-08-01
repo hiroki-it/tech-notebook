@@ -31,7 +31,7 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 動的型付け言語では、エントリーポイントの定義方法が強制されず、指定したファイルの先頭行がエントリーポイントになる。
 
-#### ▼ PHPの場合
+#### ▼ PHP の場合
 
 慣例として、`index.php` ファイルをエントリーポイントとすることになっている。
 
@@ -49,7 +49,7 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 『`main()`』という名前の関数でエントリーポイントを定義させる言語が多い。
 
-#### ▼ Javaの場合
+#### ▼ Java の場合
 
 修飾子が『`public static`』、返却値型が『`void`』、引数名が『`args`』、引数型が『`String[]`』である `main()` 関数が、自動的にエントリーポイントになる。
 
@@ -66,7 +66,7 @@ public class Main
 }
 ```
 
-#### ▼ Goの場合
+#### ▼ Go の場合
 
 パッケージ名が『`main`』である `main.go` ファイルが、自動的にエントリーポイントとなる。
 
@@ -118,20 +118,20 @@ func main() {
 
 ### 言語別の並列処理
 
-#### ▼ PHPの場合
+#### ▼ PHP の場合
 
 parallel パッケージを使用する。
 
 > - https://github.com/krakjoe/parallel
 > - https://qiita.com/WhiteGrouse/items/6fb906386b8fbabd6405
 
-#### ▼ JavaScriptの場合
+#### ▼ JavaScript の場合
 
 Web Worker を使用する。
 
 > - https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
 
-#### ▼ Goの場合
+#### ▼ Go の場合
 
 Goroutines を使用する。
 
@@ -182,7 +182,7 @@ Goroutines を使用する。
 
 言語別に、非同期処理の成否を管理し、後続する処理を定義できる機能が提供されている。
 
-#### ▼ JavaScriptの場合
+#### ▼ JavaScript の場合
 
 Node.js 上で実行するための JavaScript のビルトイン関数 (特に I/O 処理系) は、非同期処理化するための実装がなされている。
 

@@ -13,9 +13,9 @@ description: SREing：Site Reliability Engineering＠DevOpsの知見を記録し
 
 <br>
 
-## 01. SREingの用語集
+## 01. SREing の用語集
 
-### SREingとは
+### SREing とは
 
 #### ▼ 引用：[サイトリライアビリティエンジニアリング](https://www.amazon.co.jp/dp/4873117917)
 
@@ -33,13 +33,13 @@ Platform Engineering とは異なり、サイトの信頼性向上から DevOps 
 
 信頼性とは『定められた条件下と期間にわたり、システムが求められる機能を障害を発生させることなく実行する確率』のこと。
 
-#### ▼ 引用：[SRE実践の手引](https://eh-career.com/engineerhub/entry/2019/12/05/103000)
+#### ▼ 引用：[SRE 実践の手引](https://eh-career.com/engineerhub/entry/2019/12/05/103000)
 
 SREer の具体的な行動を明確にするためには、サイトの信頼性を表す指標 (SLI) と、指標の具体的な目標値 (SLO) を定義する必要がある。
 
 エラーバジェットの残量を考慮に入れ、リスクを取りながら、サイトの信頼性の維持に努める。
 
-#### ▼ 引用：[SREの基本と組織への導入](https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/)
+#### ▼ 引用：[SRE の基本と組織への導入](https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/)
 
 ソフトウェアのもっとも重要な機能は信頼性であり、信頼性の程度はサイトのユーザーによって決められるべきである。
 
@@ -51,7 +51,7 @@ SREer の具体的な行動を明確にするためには、サイトの信頼�
 
 <br>
 
-## 02. SREingが有用な業態
+## 02. SREing が有用な業態
 
 ### 人命に関する安全性を担保しなくてもよい業態
 
@@ -73,9 +73,9 @@ SREing には、継続的な改善によって、システムの信頼性を向�
 
 <br>
 
-## 03. SREingの組織モデルの種類
+## 03. SREing の組織モデルの種類
 
-### プロダクトチーム内フルスタックSREer型 (Embedded SRE)
+### プロダクトチーム内フルスタック SREer 型 (Embedded SRE)
 
 特定のプロダクトの信頼性を高めるために、アプリチームと同じチームに SREer が参画し、フルスタック的に SREing する。
 
@@ -83,7 +83,7 @@ SREing には、継続的な改善によって、システムの信頼性を向�
 
 <br>
 
-### フルスタックSREerチーム型
+### フルスタック SREer チーム型
 
 さまざまなプロダクトの信頼性を高めるために、SREer 自体をチームとして定義し、SREer チーム全体としてフルスタック的に SREing する。
 
@@ -97,7 +97,7 @@ SREer チームは、T 字型のスキルを持ったさまざまなエンジニ
 
 <br>
 
-### ツール開発SREer型
+### ツール開発 SREer 型
 
 さまざまなプロダクトの信頼性を高めるために、SREer がアプリチームを支援する自前ライブラリを開発する。
 
@@ -105,7 +105,7 @@ SREer チームは、T 字型のスキルを持ったさまざまなエンジニ
 
 <br>
 
-### プラットフォームSREer型
+### プラットフォーム SREer 型
 
 さまざまなプロダクトの信頼性を高めるために、SREer がアプリチームやチーム内 SREer を支援するインフラを開発する。
 
@@ -113,7 +113,7 @@ SREer チームは、T 字型のスキルを持ったさまざまなエンジニ
 
 <br>
 
-### Enabling SREer型 (CCoE)
+### Enabling SREer 型 (CCoE)
 
 前者に SRE のプラクティスを広める。
 
@@ -154,7 +154,7 @@ SRE チームの Value から、SREer に必要な技術がわかる。
 
 ### ニュース
 
-#### ▼ SREウィークリー
+#### ▼ SRE ウィークリー
 
 > - https://sreweekly.com/about-sre-weekly-2/
 

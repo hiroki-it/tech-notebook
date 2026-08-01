@@ -13,7 +13,7 @@ description: Karpenter＠ハードウェアリソース管理系の知見を記�
 
 <br>
 
-## 01. Karpenterの仕組み
+## 01. Karpenter の仕組み
 
 ### アーキテクチャ
 
@@ -27,7 +27,7 @@ Karpenter は、Karpenter Controller から構成される。
 
 ### Karpenter Controller
 
-#### ▼ Karpenter Controllerとは
+#### ▼ Karpenter Controller とは
 
 Karpenter Controller は、Karpenter の Custom Controller として、カスタムリソースを作成/変更する。
 
@@ -42,7 +42,7 @@ Karpenter Controller は、Karpenter の Custom Controller として、カスタ
 > - https://karpenter.sh/preview/reference/threat-model/#architecture--actors
 > - https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921
 
-#### ▼ Podのバインド
+#### ▼ Pod のバインド
 
 Karpenter は、新しい Node に Pod をバインドし、kube-scheduler が Node に Pod をスケジューリングさせることを待つ。
 
@@ -150,7 +150,7 @@ Karpenter は、さまざまな情報に基づいて、Node をスケーリン�
 > - https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation
 > - https://tech-blog.cloud-config.jp/2022-04-07-boids-algorithm
 
-#### ▼ Podのスケジューリングの可否
+#### ▼ Pod のスケジューリングの可否
 
 kube-scheduler から情報を取得し、新しい Pod を Node 上にスケジューリングできない状態 (`Pending` 状態) を検知し、Node のスケジューリングを検討する。
 
@@ -181,7 +181,7 @@ kube-scheduler から情報を取得し、新しい Pod を Node 上にスケジ
 
 <br>
 
-### 削除対象のNode選定
+### 削除対象の Node 選定
 
 #### ▼ Finalizer
 
@@ -217,7 +217,7 @@ Karpenter 外から削除操作 (例：`kubectl delete` コマンド) があっ�
 
 <br>
 
-### AWSリソースとの連携
+### AWS リソースとの連携
 
 #### ▼ 起動テンプレート
 
@@ -230,11 +230,11 @@ Karpenter の Karpenter Controller は、起動テンプレートを作成した
 > - https://github.com/aws/karpenter/blob/main/designs/unmanaged-launch-template-removal.md
 > - https://github.com/aws/karpenter/issues/3369#issuecomment-1460174547
 
-#### ▼ Amazon EC2フリート
+#### ▼ Amazon EC2 フリート
 
 > - https://qiita.com/o2346/items/6277a7ff6b1826d8de11
 
-#### ▼ マネージドNodeグループ (有無に関係ない)
+#### ▼ マネージド Node グループ (有無に関係ない)
 
 Karpenter は、マネージド Node グループの有無に関係なく、Node をスケーリングできる。
 
@@ -247,9 +247,9 @@ Karpenter は、マネージド Node グループの有無に関係なく、Node
 
 <br>
 
-### Karpenterとcluster-autoscaler
+### Karpenter とcluster-autoscaler
 
-#### ▼ Karpenterのいいところ
+#### ▼ Karpenter のいいところ
 
 AWS の場合のみ、cluster-autoscaler の代わりに Karpenter を使用できる。
 
@@ -261,7 +261,7 @@ Karpenter では、作成される Node のスペックを事前に指定する�
 
 > - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
 
-#### ▼ cluster-autoscalerのいいところ
+#### ▼ cluster-autoscaler のいいところ
 
 cluster-autoscaler はクラウドプロバイダーによらず使用できるが、Karpenter は執筆時点 (2023/02/26) では AWS 上でしか使用できない。
 
@@ -325,7 +325,7 @@ Expiration、Drift、Consolidation の順に Node を検証し、削除可能な
 
 <br>
 
-### マルチAZ
+### マルチ AZ
 
 Karpenter では、Node を作成する AZ を設定できない。
 
@@ -337,9 +337,9 @@ Karpenter では、Node を作成する AZ を設定できない。
 
 ## 03. セットアップ
 
-### AWS側
+### AWS 側
 
-#### ▼ Terraformの公式モジュール (1) の場合
+#### ▼ Terraform の公式モジュール (1) の場合
 
 `terraform-aws-modules/iam/.../iam-assumable-role-with-oidc` を使用する。
 
@@ -522,7 +522,7 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
 > - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1
 > - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
-#### ▼ Terraformの公式モジュール (2) の場合
+#### ▼ Terraform の公式モジュール (2) の場合
 
 `terraform-aws-modules/eks/.../karpenter` を使用する。
 
@@ -588,7 +588,7 @@ module "eks_iam_karpenter_controller" {
 
 <br>
 
-### メモリをGuaranteed QoSにする
+### メモリを Guaranteed QoS にする
 
 Pod の特に `resources` キーで、上限 (`.spec.containers[*].resources.limits`) が設定されていないと、使用量がバーストする。
 

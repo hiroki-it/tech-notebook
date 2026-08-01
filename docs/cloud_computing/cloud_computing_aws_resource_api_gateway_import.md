@@ -3,7 +3,7 @@ title: 【IT技術の知見】Amazon API Gatewayへのymlインポート＠AWS
 description: Amazon API Gatewayへのymlインポート＠AWSの知見を記録しています。
 ---
 
-# Amazon API Gatewayへのymlインポート＠AWS
+# Amazon API Gateway への yml インポート＠AWS
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Amazon API Gatewayへのymlインポート＠AWSの知見を記録�
 
 <br>
 
-## 01. Amazon API Gateway拡張機能
+## 01. Amazon API Gateway 拡張機能
 
 #### ▼ 必要なキー
 
@@ -41,7 +41,7 @@ Amazon API Gateway のインポートに当たり、OpenAPI の `yaml` ファイ
 
 > - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
 
-#### ▼ セットアップ (Amazon VPCリンク&プロキシ統合)
+#### ▼ セットアップ (Amazon VPC リンク&プロキシ統合)
 
 ```yaml
 paths:
@@ -54,15 +54,15 @@ paths:
       # 統合
       #===========================
       x-amazon-apigateway-integration:
-        httpMethod: "GET" # フォワーディングするHTTPメソッド
-        uri: "http://<NLBのDNS名>/api/v1/users/" # フォワーディング先のバックエンドURL
+        httpMethod: "GET" # フォワーディングする HTTP メソッド
+        uri: "http://<NLBのDNS名>/api/v1/users/" # フォワーディング先のバックエンド URL
         requestParameters:
-          integration.request.header.X-API-Key: "'*****'" # フォワーディングするカスタムヘッダーとAPIキー
+          integration.request.header.X-API-Key: "'*****'" # フォワーディングするカスタムヘッダーと API キー
           integration.request.querystring.userId: method.request.querystring.userId # マッピングするクエリパラメーター
           # パスパラメーター間のマッピングであれば、integration.request.path.userId: method.request.path.userId
           # 他パラメーターからボディへのマッピングであれば、integration.request.header.userId: method.request.body.userId
-        connectionType: VPC_LINK # Amazon VPCリンクを使用
-        connectionId: <Amazon VPCリンクID> # Amazon VPCリンクのID
+        connectionType: VPC_LINK # Amazon VPC リンクを使用
+        connectionId: <Amazon VPCリンクID> # Amazon VPC リンクの ID
         passthroughBehavior: when_no_match # プロキシ統合の場合は設定の変更不可で固定
         type: http_proxy # プロキシ統合を使用
         responses: # プロキシ統合の場合は設定の変更不可で固定
@@ -70,7 +70,7 @@ paths:
             statusCode: 200
 ```
 
-#### ▼ セットアップ (Amazon VPCリンク&非プロキシ統合の場合)
+#### ▼ セットアップ (Amazon VPC リンク&非プロキシ統合の場合)
 
 パススルー条件や response キー以下の統合レスポンスを設定できる。
 
@@ -198,7 +198,7 @@ x-amazon-apigateway-request-validators:
 
 <br>
 
-## 02. サンプルYAML
+## 02. サンプル YAML
 
 ### サンプルについて
 
@@ -228,7 +228,7 @@ Swagger Editor で API の仕様書の `html` ファイルを確認できる。
 
 <br>
 
-### Amazon VPCリンク＆プロキシ統合
+### Amazon VPC リンク＆プロキシ統合
 
 **実装例**
 
@@ -236,17 +236,17 @@ Swagger Editor で API の仕様書の `html` ファイルを確認できる。
 openapi: 3.0.0
 
 info:
-  title: foo-api-with-proxy-integration # API名
-  description: The API for example with proxy integration # APIの説明
+  title: foo-api-with-proxy-integration # API 名
+  description: The API for example with proxy integration # API の説明
   termsOfService: https://example.com/terms/ # 利用規約
   contact:
     name: API support # 連絡先名
-    url: https://example.com/support # 連絡先に関するURL
+    url: https://example.com/support # 連絡先に関する URL
     email: support@example.com # メールアドレス
   license:
     name: Apache 2.0 # ライセンス
     url: https://www.apache.org/licenses/LICENSE-2.0.html # URL
-  version: 1.0.0 # APIドキュメントのバージョン
+  version: 1.0.0 # API ドキュメントのバージョン
 
 servers:
   - url: https://{env}.example.com/api/v1
@@ -261,11 +261,11 @@ servers:
 
 paths:
   #===========================
-  # pathsオブジェクト
+  # paths オブジェクト
   #===========================
   /users:
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     get:
       tags:
@@ -277,7 +277,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: クエリ文字列パラメーターおよびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters:
         - in: query # パスにパラメーターを割り当てる。
           name: userId
@@ -301,7 +301,7 @@ paths:
                     userId: 1
                     name: Hiroki
               schema:
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -332,7 +332,7 @@ paths:
           default:
             statusCode: 200
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     post:
       tags:
@@ -344,7 +344,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: 本文、クエリ文字列パラメーター、およびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters: []
       requestBody: # リクエストボディにパラメーターを割り当てる。
         description: ユーザーID
@@ -352,8 +352,8 @@ paths:
           application/json: # MIME type
             example: # リクエストボディ例
               userId: 1
-            schema: # APIスキーマ
-              $ref: "#/components/schemas/user" # Userモデルを参照する。
+            schema: # API スキーマ
+              $ref: "#/components/schemas/user" # User モデルを参照する。
       #===========================
       # メソッドレスポンス
       #===========================
@@ -395,11 +395,11 @@ paths:
           default:
             statusCode: 200
   #===========================
-  # pathsオブジェクト
+  # paths オブジェクト
   #===========================
   /users/{userId}:
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     get:
       tags:
@@ -411,7 +411,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: クエリ文字列パラメーターおよびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
@@ -432,8 +432,8 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # APIスキーマ
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+              schema: # API スキーマ
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -475,7 +475,7 @@ paths:
           default:
             statusCode: 200
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     put:
       tags:
@@ -487,7 +487,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: 本文、クエリ文字列パラメーター、およびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
@@ -508,8 +508,8 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # APIスキーマ
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+              schema: # API スキーマ
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -563,15 +563,15 @@ x-amazon-apigateway-request-validators:
 
 components:
   #===========================
-  # callbackキーの共通化
+  # callback キーの共通化
   #===========================
   callbacks: {}
   #===========================
-  # linkキーの共通化
+  # link キーの共通化
   #===========================
   links: {}
   #===========================
-  # responseキーの共通化
+  # response キーの共通化
   #===========================
   responses:
     unauthorized:
@@ -586,7 +586,7 @@ components:
           schema:
             $ref: "#/components/schemas/error" # 異常系モデルを参照する。
   #===========================
-  # schemaキーの共通化
+  # schema キーの共通化
   #===========================
   schemas:
     # ユーザー
@@ -612,10 +612,10 @@ components:
           items:
             type: string
   #===========================
-  # securityフィールドの共通化
+  # security フィールドの共通化
   #===========================
   securitySchemes:
-    # APIキー認証
+    # API キー認証
     apiKeyAuth:
       description: APIキー認証
       type: apiKey
@@ -625,7 +625,7 @@ components:
 
 <br>
 
-### Amazon VPCリンク＆非プロキシ統合
+### Amazon VPC リンク＆非プロキシ統合
 
 **実装例**
 
@@ -633,17 +633,17 @@ components:
 openapi: 3.0.0
 
 info:
-  title: foo-api-with-non-proxy-integration # API名
-  description: The API for example with non-proxy integration. # APIの説明
+  title: foo-api-with-non-proxy-integration # API 名
+  description: The API for example with non-proxy integration. # API の説明
   termsOfService: https://example.com/terms/ # 利用規約
   contact:
     name: API support # 連絡先名
-    url: https://example.com/support # 連絡先に関するURL
+    url: https://example.com/support # 連絡先に関する URL
     email: support@example.com # メールアドレス
   license:
     name: Apache 2.0 # ライセンス
     url: https://www.apache.org/licenses/LICENSE-2.0.html # URL
-  version: 1.0.0 # APIドキュメントのバージョン
+  version: 1.0.0 # API ドキュメントのバージョン
 
 servers:
   - url: https://{env}.example.com/api/v1
@@ -658,11 +658,11 @@ servers:
 
 paths:
   #===========================
-  # pathsオブジェクト
+  # paths オブジェクト
   #===========================
   /users:
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     get:
       tags:
@@ -674,7 +674,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: クエリ文字列パラメーターおよびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters:
         - in: query # パスにパラメーターを割り当てる。
           name: userId
@@ -698,7 +698,7 @@ paths:
                     userId: 1
                     name: Hiroki
               schema:
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -735,7 +735,7 @@ paths:
           401:
             statusCode: 401
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     post:
       tags:
@@ -747,7 +747,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: 本文、クエリ文字列パラメーター、およびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters: []
       requestBody: # リクエストボディにパラメーターを割り当てる。
         description: ユーザーID
@@ -755,8 +755,8 @@ paths:
           application/json: # MIME type
             example: # リクエストボディ例
               userId: 1
-            schema: # APIスキーマ
-              $ref: "#/components/schemas/user" # Userモデルを参照する。
+            schema: # API スキーマ
+              $ref: "#/components/schemas/user" # User モデルを参照する。
       #===========================
       # メソッドレスポンス
       #===========================
@@ -807,11 +807,11 @@ paths:
             statusCode: 401
         # type: http
   #===========================
-  # pathsオブジェクト
+  # paths オブジェクト
   #===========================
   /users/{userId}:
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     get:
       tags:
@@ -823,7 +823,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: クエリ文字列パラメーターおよびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
@@ -844,8 +844,8 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # APIスキーマ
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+              schema: # API スキーマ
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -895,7 +895,7 @@ paths:
           404:
             statusCode: 404
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     put:
       tags:
@@ -907,7 +907,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: 本文、クエリ文字列パラメーター、およびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
@@ -928,8 +928,8 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # APIスキーマ
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+              schema: # API スキーマ
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -989,15 +989,15 @@ x-amazon-apigateway-request-validators:
 
 components:
   #===========================
-  # callbackキーの共通化
+  # callback キーの共通化
   #===========================
   callbacks: {}
   #===========================
-  # linkキーの共通化
+  # link キーの共通化
   #===========================
   links: {}
   #===========================
-  # responseキーの共通化
+  # response キーの共通化
   #===========================
   responses:
     unauthorized:
@@ -1012,7 +1012,7 @@ components:
           schema:
             $ref: "#/components/schemas/error" # 異常系モデルを参照する。
   #===========================
-  # schemaキーの共通化
+  # schema キーの共通化
   #===========================
   schemas:
     # ユーザー
@@ -1038,10 +1038,10 @@ components:
           items:
             type: string
   #===========================
-  # securityフィールドの共通化
+  # security フィールドの共通化
   #===========================
   securitySchemes:
-    # APIキー認証
+    # API キー認証
     apiKeyAuth:
       description: APIキー認証
       type: apiKey
@@ -1067,17 +1067,17 @@ X-API-Key: *****
 openapi: 3.0.0
 
 info:
-  title: foo-api-with-mock-integration # API名
-  description: The API for example with mock integration # APIの説明
+  title: foo-api-with-mock-integration # API 名
+  description: The API for example with mock integration # API の説明
   termsOfService: https://example.com/terms/ # 利用規約
   contact:
     name: API support # 連絡先名
-    url: https://example.com/support # 連絡先に関するURL
+    url: https://example.com/support # 連絡先に関する URL
     email: support@example.com # メールアドレス
   license:
     name: Apache 2.0 # ライセンス
     url: https://www.apache.org/licenses/LICENSE-2.0.html # URL
-  version: 1.0.0 # APIドキュメントのバージョン
+  version: 1.0.0 # API ドキュメントのバージョン
 
 servers:
   - url: https://{env}.example.com/api/v1
@@ -1092,11 +1092,11 @@ servers:
 
 paths:
   #===========================
-  # pathsオブジェクト
+  # paths オブジェクト
   #===========================
   /users:
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     get:
       tags:
@@ -1108,7 +1108,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: クエリ文字列パラメーターおよびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters:
         - in: query # パスにパラメーターを割り当てる。
           name: userId
@@ -1132,7 +1132,7 @@ paths:
                     userId: 1
                     name: Hiroki
               schema:
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -1164,7 +1164,7 @@ paths:
           401:
             statusCode: 401
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     post:
       tags:
@@ -1176,7 +1176,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: 本文、クエリ文字列パラメーター、およびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters: []
       requestBody: # リクエストボディにパラメーターを割り当てる。
         description: ユーザーID
@@ -1184,8 +1184,8 @@ paths:
           application/json: # MIME type
             example: # リクエストボディ例
               userId: 1
-            schema: # APIスキーマ
-              $ref: "#/components/schemas/user" # Userモデルを参照する。
+            schema: # API スキーマ
+              $ref: "#/components/schemas/user" # User モデルを参照する。
       #===========================
       # メソッドレスポンス
       #===========================
@@ -1230,11 +1230,11 @@ paths:
             statusCode: 401
         # type: mock
   #===========================
-  # pathsオブジェクト
+  # paths オブジェクト
   #===========================
   /users/{userId}:
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     get:
       tags:
@@ -1246,7 +1246,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: クエリ文字列パラメーターおよびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
@@ -1267,8 +1267,8 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # APIスキーマ
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+              schema: # API スキーマ
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -1313,7 +1313,7 @@ paths:
           404:
             statusCode: 404
     #===========================
-    # path itemオブジェクト
+    # path item オブジェクト
     #===========================
     put:
       tags:
@@ -1325,7 +1325,7 @@ paths:
       #===========================
       x-amazon-apigateway-request-validator: 本文、クエリ文字列パラメーター、およびヘッダーの検証
       security:
-        - apiKeyAuth: [] # APIキーの必須化
+        - apiKeyAuth: [] # API キーの必須化
       parameters:
         - in: path # パスにパラメーターを割り当てる。
           name: userId
@@ -1346,8 +1346,8 @@ paths:
               example: # ボディ例
                 userId: 1
                 name: Hiroki
-              schema: # APIスキーマ
-                $ref: "#/components/schemas/user" # Userモデルを参照する。
+              schema: # API スキーマ
+                $ref: "#/components/schemas/user" # User モデルを参照する。
         "400":
           description: Bad Request レスポンス
           content:
@@ -1402,15 +1402,15 @@ x-amazon-apigateway-request-validators:
 
 components:
   #===========================
-  # callbackキーの共通化
+  # callback キーの共通化
   #===========================
   callbacks: {}
   #===========================
-  # linkキーの共通化
+  # link キーの共通化
   #===========================
   links: {}
   #===========================
-  # responseキーの共通化
+  # response キーの共通化
   #===========================
   responses:
     unauthorized:
@@ -1425,7 +1425,7 @@ components:
           schema:
             $ref: "#/components/schemas/error" # 異常系モデルを参照する。
   #===========================
-  # schemaキーの共通化
+  # schema キーの共通化
   #===========================
   schemas:
     # ユーザー
@@ -1451,10 +1451,10 @@ components:
           items:
             type: string
   #===========================
-  # securityフィールドの共通化
+  # security フィールドの共通化
   #===========================
   securitySchemes:
-    # APIキー認証
+    # API キー認証
     apiKeyAuth:
       description: APIキー認証
       type: apiKey

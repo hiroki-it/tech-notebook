@@ -13,7 +13,7 @@ description: Envoy＠サービスメッシュ系ミドルウェアの知見を�
 
 <br>
 
-## 01. Envoyの仕組み
+## 01. Envoy の仕組み
 
 ### アーキテクチャ
 
@@ -77,7 +77,7 @@ Envoy は、ホットリロード処理によって通信を切断すること�
 
 ### XDS-API
 
-#### ▼ XDS-APIとは
+#### ▼ XDS-API とは
 
 コントロールプレーンの XDS-API は、Envoy からリモートプロシージャーコールを受信し、通信の宛先情報を返信する API を持つサーバー。主要なサーバーの一覧を示す。
 
@@ -144,9 +144,9 @@ Envoy の実行時に、リスナーの暗号化の設定を動的に検出可�
 
 <br>
 
-### XDS-APIのエンドポイント
+### XDS-API のエンドポイント
 
-#### ▼ XDS-APIのエンドポイントとは
+#### ▼ XDS-API のエンドポイントとは
 
 コントロールプレーンの XDS-API にはエンドポイントがある。Envoy からリモートプロシージャーコールを受信し、通信の宛先情報を返信する。
 
@@ -258,7 +258,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 > - https://hinawatts.medium.com/timeout-settings-in-envoy-proxy-a368f3006933
 > - https://stackoverflow.com/a/32365658
 
-#### ▼ XDS-APIとの通信の仕組み
+#### ▼ XDS-API との通信の仕組み
 
 Envoy は、XDS-API にリモートプロシージャーコールを単方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。
 
@@ -367,7 +367,7 @@ static_resources:
                 http_filters:
                   - name: envoy.filters.http.router
                     typed_config:
-                      # HTTPフィルターを指定する
+                      # HTTP フィルターを指定する
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
                 route_config:
                   - name: "50001"
@@ -483,7 +483,7 @@ Istio を使用して、`envoy` コンテナを稼働させるとする。
 Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
 
 ```yaml
-# foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。
+# foo-pod 内の envoy コンテナが、以下の envoy.yaml ファイルで構成されているとする。
 # 仮想アウトバウンドリスナー
 - name: 172.16.0.1_50001
   accessLog:
@@ -496,11 +496,11 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
         "@type": type.googleapis.com/envoy.extensions.access_loggers.file.v3.FileAccessLog
         path: /dev/stdout
   address:
-    # 宛先IPアドレスとポート番号が合致した場合に、このリスナーで処理される。
+    # 宛先 IP アドレスとポート番号が合致した場合に、このリスナーで処理される。
     socketAddress:
-      # ServiceのIPアドレス
-      address: 172.16.0.1 # 全ての宛先IPアドレスを合致させる場合は、0.0.0.0 とする。
-      # Serviceのポート番号
+      # Service のIP アドレス
+      address: 172.16.0.1 # 全ての宛先 IP アドレスを合致させる場合は、0.0.0.0 とする。
+      # Service のポート番号
       portValue: 50001
   bindToPort: "false"
   filterChains:
@@ -629,7 +629,7 @@ TCP プロトコルの処理や後続の HTTP フィルターの管理を実施�
 
 <br>
 
-### HTTPフィルター
+### HTTP フィルター
 
 HTTP リクエストの処理を実施する。
 
@@ -642,13 +642,13 @@ HTTP リクエストの処理を実施する。
 
 <br>
 
-### UDPリスナーフィルター
+### UDP リスナーフィルター
 
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/udp/udp
 
 <br>
 
-### RBACフィルター
+### RBAC フィルター
 
 認証／認可を実施する。
 
@@ -659,7 +659,7 @@ HTTP リクエストの処理を実施する。
 
 <br>
 
-### MySQLフィルター (`mysql_proxy`)
+### MySQL フィルター (`mysql_proxy`)
 
 MySQL プロトコル内の SQL を解析、メトリクスとして収集する。
 
@@ -754,7 +754,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
             # パスベースルーティング
             prefix: /
           route:
-            # クラスター (ここではKubernetesのService)
+            # クラスター (ここでは Kubernetes のService)
             cluster: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
     - name: allow_any
       domains:
@@ -764,7 +764,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
             prefix: /
           route:
             cluster: PassthroughCluster
-# Node外からbar-podにリクエストを送信する時に選ばれる。
+# Node 外から bar-pod にリクエストを送信する時に選ばれる。
 - name: "50002"
   virtualHosts:
     - name: bar-service.bar-namespace.svc.cluster.local:50002
@@ -793,7 +793,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
             prefix: /
           route:
             cluster: PassthroughCluster
-# Node外からbaz-podにリクエストを送信する時に選ばれる。
+# Node 外から baz-pod にリクエストを送信する時に選ばれる。
 - name: "50003"
   virtualHosts:
     - name: baz-service.baz-namespace.svc.cluster.local:50003
@@ -858,7 +858,7 @@ static_resources:
               - endpoint:
                   address:
                     socket_address:
-                      # 宛先のIPアドレス
+                      # 宛先の IP アドレス
                       address: 10.0.0.1
                       # 宛先が待ち受けるポート番号
                       port_value: 80
@@ -959,8 +959,8 @@ Istio を使用して、`envoy` コンテナを稼働させるとする。
 Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
 
 ```yaml
-# foo-pod内のenvoyコンテナが、以下のenvoy.yamlファイルで構成されているとする。
-# クラスター (ここではKubernetesのService)
+# foo-pod 内の envoy コンテナが、以下の envoy.yaml ファイルで構成されているとする。
+# クラスター (ここでは Kubernetes のService)
 - name: outbound|50001|v1|foo-service.foo-namespace.svc.cluster.local
   connectTimeout: 0.25s
   type: STATIC
@@ -973,7 +973,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
           - endpoint:
               address:
                 socketAddress:
-                  # 宛先 (ここではPod) のIPアドレス
+                  # 宛先 (ここでは Pod) の IP アドレス
                   address: 10.0.0.1
                   # 宛先が待ち受けるポート番号
                   portValue: 80
@@ -1163,7 +1163,7 @@ Envoy はマルチスレッドでパケットを処理する。
 
 ### リバースプロキシのミドルウェアとして
 
-#### ▼ 外からインバウンド通信から待ち受ける (Ingressリスナー／インバウンドリスナー)
+#### ▼ 外からインバウンド通信から待ち受ける (Ingress リスナー／インバウンドリスナー)
 
 Envoy は、リバースプロキシとして、外部 (例：ロードバランサー、他の Envoy) からインバウンド通信を待ち受ける。
 
@@ -1178,7 +1178,7 @@ Envoy は、リバースプロキシとして、外部 (例：ロードバラン
 > - https://blog.51cto.com/wangguishe/5789228
 > - https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/
 
-#### ▼ ローカルホストにあるマイクロサービスから待ち受ける (Egressリスナー／アウトバウンドリスナー)
+#### ▼ ローカルホストにあるマイクロサービスから待ち受ける (Egress リスナー／アウトバウンドリスナー)
 
 Envoy は、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。
 
@@ -1212,11 +1212,11 @@ Envoy
 ```yaml
 Envoy
 ⬇⬆️
-⬇⬆️ # TCPプロトコル
+⬇⬆️ # TCP プロトコル
 ⬇⬆️
 Nginx
 ⬇⬆️
-⬇⬆️ # FastCGIプロトコル
+⬇⬆️ # FastCGI プロトコル
 ⬇⬆️
 マイクロサービス
 ```

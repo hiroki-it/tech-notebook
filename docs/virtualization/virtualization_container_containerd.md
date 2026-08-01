@@ -13,7 +13,7 @@ description: Containerd＠仮想化の知見を記録しています。
 
 <br>
 
-## 01. Containerdの仕組み
+## 01. Containerd の仕組み
 
 > - https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
 
@@ -100,7 +100,7 @@ Containerd は、テキスト形式ログを作成する。
 
 <br>
 
-### Dockerのログとの比較
+### Docker のログとの比較
 
 Docker は、`json` 形式をログを作成する。
 

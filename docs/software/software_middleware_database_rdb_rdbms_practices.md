@@ -17,7 +17,7 @@ description: プラクティス集＠RDBMSの知見を記録しています。
 
 ### テーブルの種類
 
-#### ▼ masterテーブル
+#### ▼ master テーブル
 
 初期開発時に作成して以降、めったに変更処理を実行せず、読み出し処理を主とするテーブル。
 
@@ -26,7 +26,7 @@ description: プラクティス集＠RDBMSの知見を記録しています。
 > - https://innoscale.de/en/difference-master-data-and-transaction-data/
 > - https://products.sint.co.jp/topsic/blog/database-basic-knowledge
 
-#### ▼ transactionテーブル
+#### ▼ transaction テーブル
 
 初期開発時に作成して以降、頻繁に変更処理を実行するテーブル。
 
@@ -39,7 +39,7 @@ description: プラクティス集＠RDBMSの知見を記録しています。
 
 ### 命名規則
 
-#### ▼ masterテーブルとtransactionテーブルがわかるようにすること
+#### ▼ master テーブルと transaction テーブルがわかるようにすること
 
 master テーブルと transaction テーブルがわかるようにする命名する。
 

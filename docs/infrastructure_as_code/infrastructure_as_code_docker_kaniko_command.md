@@ -13,7 +13,7 @@ description: コマンド＠Kanikoの知見を記録しています。
 
 <br>
 
-## 01. /kaniko/executorコマンド
+## 01. /kaniko/executor コマンド
 
 ### --build-arg
 

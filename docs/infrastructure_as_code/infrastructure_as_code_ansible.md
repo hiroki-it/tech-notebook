@@ -13,7 +13,7 @@ description: Ansible＠IaCの知見を記録しています。
 
 <br>
 
-## 01. Ansibleの仕組み
+## 01. Ansible の仕組み
 
 ### アーキテクチャ
 
@@ -47,7 +47,7 @@ Ansible は、コントロールノード (ansible デプロイサーバー) と
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ sudo apt -y install sshpass
@@ -124,8 +124,8 @@ repository/
 repository/
 ├── playbook.yml
 ├── roles/
-│   ├── app/ # Appサーバー
-│   │   ├── defaults/ # rolesディレクトリ内で使用するデフォルト変数を配置する。
+│   ├── app/ # App サーバー
+│   │   ├── defaults/ # roles ディレクトリ内で使用するデフォルト変数を配置する。
 │   │   │   └── foo.yml
 │   │   │
 │   │   ├── files/ # 管理対象ノードにコピーするファイルを配置する。
@@ -143,12 +143,12 @@ repository/
 │   │   ├── templates/ # テンプレートを配置する。
 │   │   │   └── foo.conf.j2
 │   │   │
-│   │   └── vars/ # rolesディレクトリ内で使用する上書き変数を配置する。
+│   │   └── vars/ # roles ディレクトリ内で使用する上書き変数を配置する。
 │   │       └── main.yml
 │   │
 │   ├── shared/ # 共通
-│   ├── db/ # DBサーバー
-│   └── web/ # Webサーバー
+│   ├── db/ # DB サーバー
+│   └── web/ # Web サーバー
 │
 ...
 ```
@@ -159,8 +159,8 @@ repository/
 repository/
 ├── playbook.yml
 ├── roles/
-│   ├── app/ # Appサーバー
-│   │   ├── defaults/ # rolesディレクトリ内で使用するデフォルト変数を配置する。
+│   ├── app/ # App サーバー
+│   │   ├── defaults/ # roles ディレクトリ内で使用するデフォルト変数を配置する。
 │   │   │   └── foo.yml
 │   │   │
 │   │   ├── files/ # 管理対象ノードにコピーするファイルを配置する。
@@ -178,12 +178,12 @@ repository/
 │   │   ├── templates/ # テンプレートを配置する。
 │   │   │   └── foo.conf.j2
 │   │   │
-│   │   └── vars/ # rolesディレクトリ内で使用する上書き変数を配置する。
+│   │   └── vars/ # roles ディレクトリ内で使用する上書き変数を配置する。
 │   │       └── main.yml
 │   │
 │   ├── shared/ # 共通
-│   ├── db/ # DBサーバー
-│   └── web/ # Webサーバー
+│   ├── db/ # DB サーバー
+│   └── web/ # Web サーバー
 │
 ...
 ```

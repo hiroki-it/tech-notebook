@@ -3,7 +3,7 @@ title: 【IT技術の知見】ArgoCD＠CDツール
 description: ArgoCD＠CDツールの知見を記録しています。
 ---
 
-# ArgoCD＠CDツール
+# ArgoCD＠CD ツール
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: ArgoCD＠CDツールの知見を記録しています。
 
 <br>
 
-## 01. ArgoCDの仕組み
+## 01. ArgoCD の仕組み
 
 ### アーキテクチャ
 
@@ -32,7 +32,7 @@ ArgoCD は、argocd-server、repo-server、redis-server、dex-server、applicati
 
 ## 02. repo-server
 
-### repo-serverとは
+### repo-server とは
 
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 > - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
@@ -45,7 +45,7 @@ ArgoCD は、argocd-server、repo-server、redis-server、dex-server、applicati
 
 ## 03. application-controller
 
-### application-controllerとは
+### application-controller とは
 
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 > - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
@@ -55,7 +55,7 @@ ArgoCD は、argocd-server、repo-server、redis-server、dex-server、applicati
 
 <br>
 
-### GitOpsエンジン
+### GitOps エンジン
 
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 > - https://github.com/argoproj/gitops-engine/tree/master/pkg
@@ -92,7 +92,7 @@ ApplicationSet リソースの Reconciliation を実行する。
 
 ## 06. dex-server
 
-### dex-serverとは
+### dex-server とは
 
 > - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
 > - https://github.com/dexidp/dex#connectors
@@ -104,7 +104,7 @@ ApplicationSet リソースの Reconciliation を実行する。
 
 ## 07. argocd-server (argocd-apiserver)
 
-### argocd-serverとは
+### argocd-server とは
 
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
 > - https://weseek.co.jp/tech/95/#i-7
@@ -139,7 +139,7 @@ ApplicationSet リソースの Reconciliation を実行する。
 
 ### 拡張機能
 
-#### ▼ Argo Rolloutsの場合
+#### ▼ Argo Rollouts の場合
 
 Argo Rollouts をダッシュボードで操作する場合、執筆時点 (2023/05/24) で拡張機能としてインストールする必要がある。
 
@@ -149,7 +149,7 @@ Argo Rollouts をダッシュボードで操作する場合、執筆時点 (2023
 
 ## 08. image-updater
 
-### image-updaterとは
+### image-updater とは
 
 image-updater を採用しない場合、GitOps のステップのなかで、マニフェストリポジトリ上にプルリクエストを作成するステップがある。
 

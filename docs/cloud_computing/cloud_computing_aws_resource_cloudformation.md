@@ -3,7 +3,7 @@ title: 【IT技術の知見】CloudFormation＠AWSリソース
 description: CloudFormation＠AWSの知見を記録しています。
 ---
 
-# CloudFormation＠AWSリソース
+# CloudFormation＠AWS リソース
 
 ## はじめに
 

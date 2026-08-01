@@ -15,7 +15,7 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 
 ## 01. dig
 
-### digとは
+### dig とは
 
 正引きの名前解決する
 
@@ -101,7 +101,7 @@ $ dig -x 182.22.28.252
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ apt install dnsutils
@@ -111,7 +111,7 @@ $ apt install dnsutils
 $ apt-get install dnsutils
 ```
 
-#### ▼ yumリポジトリから
+#### ▼ yum リポジトリから
 
 ```bash
 $ yum install -y bind-utils
@@ -121,7 +121,7 @@ $ yum install -y bind-utils
 
 ### nslookup
 
-#### ▼ nslookupとは
+#### ▼ nslookup とは
 
 正引き/逆引きによる名前解決する。
 
@@ -219,7 +219,7 @@ ns4.google.com  internet address = 216.239.38.10
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ apt install net-tools
@@ -229,7 +229,7 @@ $ apt install net-tools
 $ apt-get install net-tools
 ```
 
-#### ▼ yumリポジトリから
+#### ▼ yum リポジトリから
 
 ```bash
 $ yum install -y net-tools
@@ -276,13 +276,13 @@ tcp6       0      0 :::15020                :::*                    LISTEN      
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ apt install speedtest-cli
 ```
 
-#### ▼ brewリポジトリから
+#### ▼ brew リポジトリから
 
 ```bash
 $ brew install speedtest-cli
@@ -290,7 +290,7 @@ $ brew install speedtest-cli
 
 <br>
 
-### speedtest-cliとは
+### speedtest-cli とは
 
 SPEEDTEST の API を使用して、ダウンロード (下り) とアップロード (上り) のスループットを解析する。
 
@@ -312,7 +312,7 @@ Upload: 182.00 Mbit/s # アップロード速度
 
 ### インストール
 
-#### ▼ aptリポジトリから
+#### ▼ apt リポジトリから
 
 ```bash
 $ apt install tcpdump
@@ -322,7 +322,7 @@ $ apt install tcpdump
 $ apt-get install tcpdump
 ```
 
-#### ▼ yumリポジトリから
+#### ▼ yum リポジトリから
 
 ```bash
 $ yum install -y tcpdump
@@ -330,7 +330,7 @@ $ yum install -y tcpdump
 
 <br>
 
-### tcpdumpとは
+### tcpdump とは
 
 今現在処理されているパケット (インバウンド通信とアウトバウンド通信) の情報を取得する。
 
@@ -476,7 +476,7 @@ $ tcpdump src port 80
 
 ## 06. traceroute
 
-### tracerouteとは
+### traceroute とは
 
 宛先に UDP プロトコル/ICMP プロトコル (デフォルトは UDP プロトコル) でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元 IP アドレスを取得する。
 
@@ -612,7 +612,7 @@ $ traceroute *.*.*.* -T -p 443
 
 <br>
 
-## 06-02. tracerouteの代わり
+## 06-02. traceroute の代わり
 
 ### tracepath
 
@@ -636,7 +636,7 @@ $ tracepath -n google.com
 
 ### tcptraceroute
 
-#### ▼ tcptracerouteとは
+#### ▼ tcptraceroute とは
 
 `traceroute` コマンドのバージョンによっては、`-T` オプションがない場合もある。
 

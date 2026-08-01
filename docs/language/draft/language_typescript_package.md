@@ -15,7 +15,7 @@ description: パッケージ＠TypeScriptの知見を記録しています。
 
 ## 01. oidc-client-ts
 
-### oidc-client-tsとは
+### oidc-client-ts とは
 
 TypeScript で OIDC を実施するためのパッケージ。
 
@@ -76,7 +76,7 @@ userManager.signoutRedirect();
 
 ## 02. zod
 
-### zodとは
+### zod とは
 
 データ型のバリデーションを実行する。
 
@@ -110,7 +110,7 @@ const userRequest = z.object({
 
 ### parse、safeParse
 
-#### ▼ parse、safeParseとは
+#### ▼ parse、safeParse とは
 
 `parse()` 関数は成功時に値を返し、失敗時にエラーをスローする。
 

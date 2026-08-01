@@ -15,7 +15,7 @@ description: Kong Ingress＠Kongの知見を記録しています。
 
 ## 01. KongIngress
 
-### KongIngressとは
+### KongIngress とは
 
 記入中...
 
@@ -25,7 +25,7 @@ description: Kong Ingress＠Kongの知見を記録しています。
 
 ## 02. KongPlugin
 
-### KongPluginとは
+### KongPlugin とは
 
 KongIngress を拡張する。
 

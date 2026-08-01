@@ -3,7 +3,7 @@ title: 【IT技術の知見】AWS Lambda関数＠AWS Lambda
 description: AWS Lambda関数＠AWS Lambdaの知見を記録しています。
 ---
 
-# AWS Lambda関数＠AWS Lambda
+# AWS Lambda 関数＠AWS Lambda
 
 ## はじめに
 
@@ -23,7 +23,7 @@ description: AWS Lambda関数＠AWS Lambdaの知見を記録しています。
 
 <br>
 
-### AWS Lambdaハンドラ関数
+### AWS Lambda ハンドラ関数
 
 #### ▼ 非同期ハンドラ関数 (Async handlers)
 
@@ -136,11 +136,11 @@ exports.handler = (event, context, callback) => {
 
 #### ▼ 予約された引数の説明
 
-| 引数                | 説明                                                                                                                         | 補足                                                                                                                                                                     |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| eventオブジェクト   | HTTPリクエストに関するデータが代入されている。                                                                               | AWS Lambdaにリクエストを送信するAWSリソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>・https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
-| contextオブジェクト | AWS Lambdaに関するデータ (名前、バージョンなど) を取得できる関数とプロパティが代入されている。                               | オブジェクトの構造は以下の通り<br>・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                                                     |
-| callback関数        | 代入されている関数の実体は不明である。すべての処理が終了するまで実行が待機され、AWS Lambdaのコール元にレスポンスを返信する。 | ・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                                                       |
+| 引数                 | 説明                                                                                                                          | 補足                                                                                                                                                                        |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| event オブジェクト   | HTTP リクエストに関するデータが代入されている。                                                                               | AWS Lambda にリクエストを送信する AWS リソースごとに、オブジェクトの構造が異なる。構造は以下の通り。<br>・https://docs.aws.amazon.com/lambda/latest/dg/lambda-services.html |
+| context オブジェクト | AWS Lambda に関するデータ (名前、バージョンなど) を取得できる関数とプロパティが代入されている。                               | オブジェクトの構造は以下の通り<br>・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html                                                                        |
+| callback 関数        | 代入されている関数の実体は不明である。すべての処理が終了するまで実行が待機され、AWS Lambda のコール元にレスポンスを返信する。 | ・https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html                                                                                                          |
 
 #### ▼ テストとデバッグ
 
@@ -152,11 +152,11 @@ AWS Lambda で関数を作成すると、Amazon CloudWatch Logs のロググル�
 
 <br>
 
-## 02. Goによる実装
+## 02. Go による実装
 
 ### aws-lambda-go
 
-#### ▼ aws-lambda-goとは
+#### ▼ aws-lambda-go とは
 
 Go を使用して、AWS Lambda-API に対してリクエストを送信し、AWS リソースを操作できる。
 
@@ -204,13 +204,13 @@ context オブジェクトと event オブジェクトをパラメーターと�
 
 <br>
 
-### eventオブジェクトの種類
+### event オブジェクトの種類
 
 #### ▼ 全種類
 
 > - https://github.com/aws/aws-lambda-go/tree/master/events#overview
 
-#### ▼ Amazon SNSイベントの場合
+#### ▼ Amazon SNS イベントの場合
 
 ```go
 package main
@@ -235,7 +235,7 @@ func main() {
 }
 ```
 
-#### ▼ Amazon CloudWatchイベントの場合
+#### ▼ Amazon CloudWatch イベントの場合
 
 ```go
 package main
@@ -260,7 +260,7 @@ func main() {
 }
 ```
 
-#### ▼ Amazon API Gatewayイベントの場合
+#### ▼ Amazon API Gateway イベントの場合
 
 ```go
 package main
@@ -347,13 +347,13 @@ func main() {
 
 #### ▼ レポートログ
 
-| 機能名          |                                              |
-| --------------- | -------------------------------------------- |
-| RequestId       | リクエストID                                 |
-| Duration        | イベントの処理時間                           |
-| Billed Duration | AWS Lambdaの課金対象の時間                   |
-| Memory Size     | AWS Lambdaのメモリサイズ                     |
-| Max Memory Used | AWS Lambdaが実際に使用するメモリの最大サイズ |
+| 機能名          |                                               |
+| --------------- | --------------------------------------------- |
+| RequestId       | リクエスト ID                                 |
+| Duration        | イベントの処理時間                            |
+| Billed Duration | AWS Lambda の課金対象の時間                   |
+| Memory Size     | AWS Lambda のメモリサイズ                     |
+| Max Memory Used | AWS Lambda が実際に使用するメモリの最大サイズ |
 
 #### ▼ ログの出力方法
 
@@ -373,7 +373,7 @@ Amazon CloudWatch Logs にてこれを確認する。
 
 <br>
 
-## 03. JavaScriptによる実装
+## 03. JavaScript による実装
 
 ### デフォルトで使用できるパッケージ
 
@@ -383,10 +383,10 @@ Amazon CloudWatch Logs にてこれを確認する。
 
 もし後続の処理で非同期処理の結果を使用したい場合、非同期処理の状態を Promise オブジェクトで管理する必要がある。
 
-| パッケージ名               | 説明                                                                               | 補足                                                                |
-| -------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| JavaScriptの標準パッケージ | JavaScriptにビルトイン関数を使用できる                                             | ・https://nodejs.org/api/index.html                                 |
-| `aws-sdk.js`               | JavaScriptを使用して、AWS-APIに対してリクエストを送信し、AWSリソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
+| パッケージ名                | 説明                                                                                  | 補足                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| JavaScript の標準パッケージ | JavaScript にビルトイン関数を使用できる                                               | ・https://nodejs.org/api/index.html                                 |
+| `aws-sdk.js`                | JavaScript を使用して、AWS-API に対してリクエストを送信し、AWS リソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
 
@@ -394,9 +394,9 @@ Amazon CloudWatch Logs にてこれを確認する。
 
 ### 非同期処理の成否の管理
 
-#### ▼ JavaScriptの標準パッケージの場合
+#### ▼ JavaScript の標準パッケージの場合
 
-#### ▼ aws-sdk.jsの場合
+#### ▼ aws-sdk.js の場合
 
 各 AWS オブジェクトの関数の後に、`promise()` 関数をチェーンできる。
 
@@ -859,7 +859,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 <br>
 
-## 04. Pythonによる実装
+## 04. Python による実装
 
 <br>
 

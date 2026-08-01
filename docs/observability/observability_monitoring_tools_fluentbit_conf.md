@@ -13,9 +13,9 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
 
 <br>
 
-## 01. SERVICEセクション
+## 01. SERVICE セクション
 
-### SERVICEとは
+### SERVICE とは
 
 パイプライン全体の設定やファイルの読み出しを設定する。
 
@@ -92,7 +92,7 @@ Fluent Bit v1.8.6
 
 ## 02. INPUT
 
-### INPUTとは
+### INPUT とは
 
 ログのパイプラインへのインプット方法を設定する。
 
@@ -146,9 +146,9 @@ Inputs
 
 <br>
 
-### dummyプラグイン
+### dummy プラグイン
 
-#### ▼ dummyプラグインとは
+#### ▼ dummy プラグインとは
 
 ダミーの構造化ログをパイプラインにインプットする。
 
@@ -184,9 +184,9 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 <br>
 
-### fluentbit_metricsプラグイン
+### fluentbit_metrics プラグイン
 
-#### ▼ fluentbit_metricsプラグインとは
+#### ▼ fluentbit_metrics プラグインとは
 
 自身のメトリクスの元になるデータポイントを収集する。
 
@@ -217,9 +217,9 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 <br>
 
-### forwardプラグイン
+### forward プラグイン
 
-#### ▼ forwardプラグインとは
+#### ▼ forward プラグインとは
 
 受信したログを指定されたポートで受信し、パイプラインにインプットする。
 
@@ -267,9 +267,9 @@ $ /fluent-bit/bin/fluent-bit \
 
 <br>
 
-### kubernetes-eventsプラグイン
+### kubernetes-events プラグイン
 
-#### ▼ kubernetes-eventsプラグインとは
+#### ▼ kubernetes-events プラグインとは
 
 Kubernetes リソースのイベントをログとして収集する。
 
@@ -298,7 +298,7 @@ kubernetes-event-exporter の代わりに使用できる。
 
 ### systemd
 
-#### ▼ systemdプラグインとは
+#### ▼ systemd プラグインとは
 
 systemd のログを収集する。
 
@@ -313,9 +313,9 @@ systemd のログを収集する。
 
 <br>
 
-### tailプラグイン
+### tail プラグイン
 
-#### ▼ tailプラグインとは
+#### ▼ tail プラグインとは
 
 指定したパスに継続的にアウトプットされるログファイルを順次結合し、パイプラインにインプットする。
 
@@ -400,7 +400,7 @@ $ fluent-bit \
 
 ## 03. PARSER
 
-### PARSERとは
+### PARSER とは
 
 非構造化ログを構造化ログに変換する。
 
@@ -410,9 +410,9 @@ $ fluent-bit \
 
 <br>
 
-### 自前criプラグイン
+### 自前 cri プラグイン
 
-#### ▼ 自前criプラグインとは
+#### ▼ 自前 cri プラグインとは
 
 執筆時点 (2023/04/04) では、公式が cri プラグインを提供していない。
 
@@ -479,7 +479,7 @@ cri プラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ
 
 ## 04. FILTER
 
-### FILTERとは
+### FILTER とは
 
 ログのキーや値を加工する。
 
@@ -498,9 +498,9 @@ cri プラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ
 
 <br>
 
-### grepプラグイン
+### grep プラグイン
 
-#### ▼ grepプラグインとは
+#### ▼ grep プラグインとは
 
 ログが構造化ログの場合、条件にマッチしたログのみを取得する。
 
@@ -533,7 +533,7 @@ cri プラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ
 
 ### modify
 
-#### ▼ modifyプラグインとは
+#### ▼ modify プラグインとは
 
 ログが構造化ログの場合、ログの構造を変更する。
 
@@ -585,9 +585,9 @@ FILTER セクションで、modify プラグインを定義する。
 
 <br>
 
-### modifyプラグイン
+### modify プラグイン
 
-#### ▼ modifyプラグインとは
+#### ▼ modify プラグインとは
 
 ログが構造化ログの場合、キーや値を追加/コピー/変更/削除する。
 
@@ -615,9 +615,9 @@ FILTER セクションで、modify プラグインを定義する。
 
 <br>
 
-### multilineプラグイン
+### multiline プラグイン
 
-#### ▼ multilineプラグインとは
+#### ▼ multiline プラグインとは
 
 マッチした複数行のログを結合する。
 
@@ -704,9 +704,9 @@ Laravel のスタックトレースを結合する。
 
 <br>
 
-### parserプラグイン
+### parser プラグイン
 
-#### ▼ parserプラグインとは
+#### ▼ parser プラグインとは
 
 マッチしたログを解析し、正規表現の名前付きキャプチャ機能 (`?<foo>`) を使用して新しいキーに文字列を抽出する。
 
@@ -735,9 +735,9 @@ FluentBit は、内部的には ruby 製関数を使用して正規表現を検�
 
 <br>
 
-### stdoutプラグイン
+### stdout プラグイン
 
-#### ▼ stdoutプラグインとは
+#### ▼ stdout プラグインとは
 
 マッチしたログを、OUTPUT を経ずに標準出力へそのまま出力する。
 
@@ -790,7 +790,7 @@ Fluent Bit v1.8.6
 
 ## 05. STREAM_TASK
 
-### STREAM_TASKとは
+### STREAM_TASK とは
 
 現在のデータストリームからログを抽出し、新しいストリームを作成する。
 
@@ -809,9 +809,9 @@ Fluent Bit v1.8.6
 
 <br>
 
-### SQLステートメント
+### SQL ステートメント
 
-#### ▼ SQLステートメントとは
+#### ▼ SQL ステートメントとは
 
 STREAM_TASK セッションは、ユーザー定義の SQL ステートメントで定義される。
 
@@ -867,7 +867,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ## 06. BUFFER
 
-### BUFFERとは
+### BUFFER とは
 
 ログを蓄え、これを順番に ROUTING へ渡す。
 
@@ -878,11 +878,11 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 <br>
 
-### SERVICEから
+### SERVICE から
 
 <br>
 
-### INPUTから
+### INPUT から
 
 #### ▼ storage.type
 
@@ -941,7 +941,7 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 
 <br>
 
-### OUTPUTから
+### OUTPUT から
 
 記入中...
 
@@ -949,7 +949,7 @@ drwxr-xr-x. 11 root root     150  9月 13 20:42 ..
 
 ## 07. ROUTING、OUTPUT
 
-### ROUTING、OUTPUTとは
+### ROUTING、OUTPUT とは
 
 ログのアウトプット先を設定する。
 
@@ -1011,9 +1011,9 @@ Outputs
 
 <br>
 
-### AWS全部入り
+### AWS 全部入り
 
-#### ▼ AWS全部入り
+#### ▼ AWS 全部入り
 
 すべての AWS 系プラグインを含んでいる
 
@@ -1025,9 +1025,9 @@ AWS から提供されるほかのすべての FluentBit イメージを束ね�
 
 <br>
 
-### cloudwatch_logプラグイン (新cloudwatchプラグイン)
+### cloudwatch_log プラグイン (新 cloudwatch プラグイン)
 
-#### ▼ cloudwatch_logプラグインとは
+#### ▼ cloudwatch_log プラグインとは
 
 ログを Amazon CloudWatch Logs にルーティングする。
 
@@ -1100,9 +1100,9 @@ Amazon CloudWatch Logs に送信されるデータは JSON 型である。
 
 <br>
 
-### datadogプラグイン
+### datadog プラグイン
 
-#### ▼ datadogプラグインとは
+#### ▼ datadog プラグインとは
 
 ログを datadog プラグインにルーティングする。
 
@@ -1150,9 +1150,9 @@ Amazon CloudWatch Logs に送信されるデータは JSON 型である。
 
 <br>
 
-### kinesis_firehoseプラグイン
+### kinesis_firehose プラグイン
 
-#### ▼ kinesis_firehoseプラグインとは
+#### ▼ kinesis_firehose プラグインとは
 
 ログを KinesisFirehose にルーティングする。
 
@@ -1162,9 +1162,9 @@ kinesis_firehose プラグインがプリインストールされているベー
 
 <br>
 
-### kinesis_streamsプラグイン
+### kinesis_streams プラグイン
 
-#### ▼ kinesis_streamsプラグインとは
+#### ▼ kinesis_streams プラグインとは
 
 ログを KinesisStreams にルーティングする。
 
@@ -1174,7 +1174,7 @@ kinesis_streams プラグインがプリインストールされているベー�
 
 <br>
 
-### lokiプラグイン
+### loki プラグイン
 
 Grafana Loki にログを送信する。
 
@@ -1189,9 +1189,9 @@ Grafana Loki にログを送信する。
 
 <br>
 
-### newRelicプラグイン
+### newRelic プラグイン
 
-#### ▼ newRelicプラグインとは
+#### ▼ newRelic プラグインとは
 
 ログを NewRelic にルーティングする。
 
@@ -1203,9 +1203,9 @@ newRelic プラグインがプリインストールされているベースイ�
 
 <br>
 
-### nullプラグイン
+### null プラグイン
 
-#### ▼ nullプラグインとは
+#### ▼ null プラグインとは
 
 アウトプットを破棄する。
 
@@ -1233,9 +1233,9 @@ $ /fluent-bit/bin/fluent-bit \
 
 <br>
 
-### stackdriverプラグイン
+### stackdriver プラグイン
 
-#### ▼ stackdriverプラグインとは
+#### ▼ stackdriver プラグインとは
 
 ログを Google Cloud Logging にルーティングする。
 
@@ -1256,9 +1256,9 @@ stackdriver プラグインはビルトインプラグインである。
 
 <br>
 
-### stdoutプラグイン
+### stdout プラグイン
 
-#### ▼ stdoutプラグインとは
+#### ▼ stdout プラグインとは
 
 標準出力にアウトプットする、FluentBit の実行ログに混じって、対象のログがアウトプットされることになる。
 

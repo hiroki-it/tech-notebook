@@ -13,7 +13,7 @@ description: polaris＠ベストプラクティス違反の知見を記録して
 
 <br>
 
-## 01. polarisの仕組み
+## 01. polaris の仕組み
 
 ### 検出項目
 
@@ -72,7 +72,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/polaris --
 
 ### checks
 
-#### ▼ checksとは
+#### ▼ checks とは
 
 検査項目ごとに重要度レベル (ignore、warning、danger) を設定する。
 
@@ -112,28 +112,28 @@ polaris の実行時に、重要度が `danger` 以上のルールを検証す�
 
 ```yaml
 checks:
-  # Podのcpuの設定し忘れ
+  # Pod のcpu の設定し忘れ
   cpuLimitsMissing: danger
   cpuRequestsMissing: danger
 
-  # Deploymentのreplicasが1個である
+  # Deployment のreplicas が1 個である
   deploymentMissingReplicas: danger
 
-  # PodのLivenessProbeヘルスチェックの設定し忘れ
+  # Pod のLivenessProbe ヘルスチェックの設定し忘れ
   livenessProbeMissing: danger
 
-  # Podのメモリの設定し忘れ
+  # Pod のメモリの設定し忘れ
   memoryLimitsMissing: danger
   memoryRequestsMissing: danger
 
-  # PodDisruptionBudgetの作成し忘れ
-  # PodDisruptionBudgetで指定したラベル値をDeploymentが持たない場合でも、Missingとみなす‍♂️
+  # PodDisruptionBudget の作成し忘れ
+  # PodDisruptionBudget で指定したラベル値を Deployment が持たない場合でも、Missing とみなす‍♂️
   missingPodDisruptionBudget: danger
 
-  # PodのpriorityClassの設定し忘れ
+  # Pod のpriorityClass の設定し忘れ
   priorityClassNotSet: danger
 
-  # PodのReadinessProbeヘルスチェックの設定し忘れ
+  # Pod のReadinessProbe ヘルスチェックの設定し忘れ
   readinessProbeMissing: danger
 ```
 
@@ -143,7 +143,7 @@ checks:
 
 ### customChecks
 
-#### ▼ customChecksとは
+#### ▼ customChecks とは
 
 カスタムルールを定義する。
 
@@ -161,8 +161,8 @@ checks:
   daemonSetPriorityClassMissing: danger
 
 customChecks:
-  # DaemonSetのpriorityClassの設定し忘れを検証する
-  # ビルトインのpriorityClassNotSetルールではWorkload全体を検証してしまうため、DaemonSet限定のルールを定義した
+  # DaemonSet のpriorityClass の設定し忘れを検証する
+  # ビルトインの priorityClassNotSet ルールでは Workload 全体を検証してしまうため、DaemonSet 限定のルールを定義した
   daemonSetPriorityClassMissing:
     successMessage: In DaemonSet, priority class is set
     failureMessage: In DaemonSet, priority class should be set
@@ -174,29 +174,29 @@ customChecks:
       required:
         - spec
       properties:
-        # .specキーに関するルール
+        # .spec キーに関するルール
         spec:
           type: object
           required:
             - template
           properties:
-            # .spec.templateキーに関するルール
+            # .spec.template キーに関するルール
             template:
               type: object
               required:
                 - spec
               properties:
-                # .spec.template.specキーに関するルール
+                # .spec.template.spec キーに関するルール
                 spec:
                   type: object
                   required:
                     - priorityClassName
                   properties:
-                    # .spec.template.spec.priorityClassNameキーに関するルール
+                    # .spec.template.spec.priorityClassName キーに関するルール
                     priorityClassName:
                       type: string
                       not:
-                        # ostring型が空値であった場合にエラーとする
+                        # ostring 型が空値であった場合にエラーとする
                         const: ""
 ```
 
@@ -206,7 +206,7 @@ checks:
   deploymentAffinityMissing: danger
 
 customChecks:
-  # Deploymentのaffinityの設定し忘れを検証する
+  # Deployment のaffinity の設定し忘れを検証する
   deploymentAffinityMissing:
     successMessage: In Deployment, affinity is set
     failureMessage: In Deployment, affinity should be set
@@ -218,29 +218,29 @@ customChecks:
       required:
         - spec
       properties:
-        # .specキーに関するルール
+        # .spec キーに関するルール
         spec:
           type: object
           required:
             - template
           properties:
-            # .spec.templateキーに関するルール
+            # .spec.template キーに関するルール
             template:
               type: object
               required:
                 - spec
               properties:
-                # .spec.template.specキーに関するルール
+                # .spec.template.spec キーに関するルール
                 spec:
                   type: object
                   required:
                     - affinity
                   properties:
-                    # .spec.template.spec.affinityキーに関するルール
+                    # .spec.template.spec.affinity キーに関するルール
                     affinity:
                       type: object
                       not:
-                        # object型が空値であった場合にエラーとする
+                        # object 型が空値であった場合にエラーとする
                         const: {}
 ```
 
@@ -250,7 +250,7 @@ checks:
   deploymentNodeSelectorMissing: danger
 
 customChecks:
-  # DeploymentのnodeSelectorの設定し忘れを検証する
+  # Deployment のnodeSelector の設定し忘れを検証する
   deploymentNodeSelectorMissing:
     successMessage: In Deployment, nodeSelector is set
     failureMessage: In Deployment, nodeSelector should be set
@@ -297,14 +297,14 @@ checks:
   missingHorizontalPodAutoscalerWithDeployment: danger
 
 customChecks:
-  # Deploymentを作成している場合、HorizontalPodAutoscalerも作成していることを検証する
+  # Deployment を作成している場合、HorizontalPodAutoscaler も作成していることを検証する
   missingHorizontalPodAutoscalerWithDeployment:
     successMessage: HorizontalPodAutoscaler exists
     failureMessage: HorizontalPodAutoscaler should exist
     category: Reliability
     target: apps/Deployment
     schema: {}
-    # Deploymentがある場合に合わせて必要なKubernetesリソースを定義する
+    # Deployment がある場合に合わせて必要な Kubernetes リソースを定義する
     additionalSchemas:
       autoscaling/HorizontalPodAutoscaler: {}
 ```
@@ -334,9 +334,9 @@ mutations:
 
 ```yaml
 exemptions:
-  # Namespace名
+  # Namespace 名
   - namespace: kube-system
-    # Controller名 (Workload名)
+    # Controller 名 (Workload 名)
     controllerNames:
       - dns-controller
       - ebs-csi-controller
@@ -366,7 +366,7 @@ exemptions:
 
 ### audit
 
-#### ▼ auditとは
+#### ▼ audit とは
 
 マニフェストがルールに違反しているかどうかを検証する。
 

@@ -13,9 +13,9 @@ description: リソース定義＠AWS Load Balancer Controllerの知見を記録
 
 <br>
 
-## 01. Ingressの `.metadata.annotations` キー
+## 01. Ingress の `.metadata.annotations` キー
 
-### Ingressの `.metadata.annotations` キーとは
+### Ingress の `.metadata.annotations` キーとは
 
 特定の Nginx のルーティングルールを決める。
 
@@ -73,8 +73,8 @@ kind: Ingress
 metadata:
   name: foo-alb-http-ingress
   annotations:
-    # HTTPヘルスチェックのパス
-    # HTTPヘルスチェックのパスはPodの種類によって異なる
+    # HTTP ヘルスチェックのパス
+    # HTTP ヘルスチェックのパスは Pod の種類によって異なる
     alb.ingress.kubernetes.io/healthcheck-path: /healthz/ready
 ```
 
@@ -84,8 +84,8 @@ kind: Ingress
 metadata:
   name: foo-alb-grpc-ingress
   annotations:
-    # gRPCのヘルスチェックパス
-    # gRPCのヘルスチェックパスはPodの種類によらず同じ
+    # gRPC のヘルスチェックパス
+    # gRPC のヘルスチェックパスは Pod の種類によらず同じ
     alb.ingress.kubernetes.io/healthcheck-path: /grpc.health.v1.Health/Check
 ```
 
@@ -243,7 +243,7 @@ kind: Ingress
 metadata:
   name: foo-alb-ingress
   annotations:
-    # Ingressに紐づけるServiceはNodePort Serviceとする
+    # Ingress に紐づける Service はNodePort Service とする
     alb.ingress.kubernetes.io/target-type: instance
 ```
 
@@ -264,7 +264,7 @@ kind: Ingress
 metadata:
   name: foo-alb-ingress
   annotations:
-    # Ingressに紐づけるServiceはClusterIP Serviceとする
+    # Ingress に紐づける Service はClusterIP Service とする
     alb.ingress.kubernetes.io/target-type: ip
 ```
 
@@ -308,7 +308,7 @@ metadata:
 
 <br>
 
-## 02. Ingressの `.spec.rules` キー
+## 02. Ingress の `.spec.rules` キー
 
 AWS ALB のリスナールールを定義するために、Ingress の `.spec.rules` キーを設定する。
 

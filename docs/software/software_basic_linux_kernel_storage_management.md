@@ -3,7 +3,7 @@ title: 【IT技術の知見】ストレージ管理＠Linuxカーネル
 description: ストレージ管理＠Linuxカーネルの知見を記録しています。
 ---
 
-# ストレージ管理＠Linuxカーネル
+# ストレージ管理＠Linux カーネル
 
 ## はじめに
 
@@ -197,7 +197,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 ### パーティション、マウントポイントの確認方法
 
-#### ▼ Linuxの場合
+#### ▼ Linux の場合
 
 Linux では、パーティションとマウントポイントは `df` コマンドで確認できる。
 
@@ -236,13 +236,13 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 > - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
 > - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/750chkfstype.html
 
-#### ▼ Windowsの場合
+#### ▼ Windows の場合
 
 Windows では、C ドライブと D ドライブがパーティションに相当する。
 
 > - http://www.miloweb.net/partition.html
 
-#### ▼ MacOSの場合
+#### ▼ MacOS の場合
 
 MacOS では、`diskutil` コマンドを実行することにより、パーティションとマウントポイントを確認できる。
 
@@ -291,7 +291,7 @@ $ diskutil list
 
 ### 論理ボリュームの確認方法
 
-#### ▼ Linuxの場合
+#### ▼ Linux の場合
 
 **＊例＊**
 
@@ -352,7 +352,7 @@ Linux カーネルが入出力装置や標準入出力を操作できるよう�
 
 ### デバイスファイルの確認方法
 
-#### ▼ Linuxの場合
+#### ▼ Linux の場合
 
 **＊例＊**
 
@@ -565,7 +565,7 @@ NFS サーバーに配置されたファイルを、他のサーバー (NFS ク�
 
 ### セットアップ
 
-#### ▼ NFSの場合
+#### ▼ NFS の場合
 
 `(1)`
 

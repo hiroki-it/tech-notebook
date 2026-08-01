@@ -114,9 +114,9 @@ PID  TTY  TIME     CMD
 
 <br>
 
-### OOMキラー：Out Of Memory Killer
+### OOM キラー：Out Of Memory Killer
 
-#### ▼ OOMキラーとは
+#### ▼ OOM キラーとは
 
 物理メモリ、ストレージ上のスワップ領域などプロセスが使用可能なすべての区画を使用し、プロセスを新しく割り当てる区画がなくなってしまった場合に実行される。
 
@@ -180,21 +180,21 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 言語によって、シングルスレッドまたはマルチスレッドのどちらでプログラムを実行するのかが異なる。
 
-| 言語                                    | シングルスレッド |       マルチスレッド       |
-| --------------------------------------- | :--------------: | :------------------------: |
-| C                                       |                  |             ✅             |
-| C#                                      |                  |             ✅             |
-| C++                                     |                  |             ✅             |
-| Go                                      |                  |             ✅             |
-| Java                                    |                  |             ✅             |
-| JavaScript、TypeScript（ブラウザ上）    |        ✅        |                            |
-| JavaScript、TypeScript（Node.js上など） |   ✅（通常時）   | ✅（Worker Threads使用時） |
-| Kotlin                                  |                  |             ✅             |
-| PHP                                     |        ✅        |                            |
-| Python                                  |        ✅        |                            |
-| Ruby                                    |        ✅        |                            |
-| Rust                                    |                  |             ✅             |
-| Swift                                   |                  |             ✅             |
+| 言語                                     | シングルスレッド |       マルチスレッド        |
+| ---------------------------------------- | :--------------: | :-------------------------: |
+| C                                        |                  |             ✅              |
+| C#                                       |                  |             ✅              |
+| C++                                      |                  |             ✅              |
+| Go                                       |                  |             ✅              |
+| Java                                     |                  |             ✅              |
+| JavaScript、TypeScript（ブラウザ上）     |        ✅        |                             |
+| JavaScript、TypeScript（Node.js 上など） |   ✅（通常時）   | ✅（Worker Threads 使用時） |
+| Kotlin                                   |                  |             ✅              |
+| PHP                                      |        ✅        |                             |
+| Python                                   |        ✅        |                             |
+| Ruby                                     |        ✅        |                             |
+| Rust                                     |                  |             ✅              |
+| Swift                                    |                  |             ✅              |
 
 #### ▼ Node.js
 
@@ -237,7 +237,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
       └─ goroutine #2（計算処理）
 ```
 
-#### ▼ Go上でNode.js環境を実行する
+#### ▼ Go 上で Node.js 環境を実行する
 
 Go では、goroutine が Node.js 環境を実行すると、親プロセス上にある子プロセスとして deno プロセスが立ちあがる。
 
@@ -291,7 +291,7 @@ CPU のコアは、メモリ上のプロセス内にある複数のスレッド�
 
 <br>
 
-## 03. CPU上のプロセス管理方式
+## 03. CPU 上のプロセス管理方式
 
 ### 優先順方式
 

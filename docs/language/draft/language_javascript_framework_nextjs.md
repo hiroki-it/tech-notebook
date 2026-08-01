@@ -13,7 +13,7 @@ description: Next.js＠フレームワークの知見を記録しています。
 
 <br>
 
-## 01. Next.jsとは
+## 01. Next.js とは
 
 React パッケージを使用したフレームワークである。
 
@@ -21,9 +21,9 @@ React パッケージを使用したフレームワークである。
 
 ## 02. セットアップ
 
-### UIレンダリングパターン
+### UI レンダリングパターン
 
-#### ▼ CSRモード
+#### ▼ CSR モード
 
 以下の場合は CSR モードになり、SPA をレンダリングする。
 
@@ -75,7 +75,7 @@ export default CsrPage;
 
 > - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6
 
-#### ▼ SSRモード
+#### ▼ SSR モード
 
 以下の場合は SSR モードになる。
 
@@ -139,7 +139,7 @@ Route (app)                              Size     First Load JS
 > - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB
 > - https://zenn.dev/shouta0715/articles/6823ea33cd3778#2.-force-dynamic
 
-#### ▼ SSGモード
+#### ▼ SSG モード
 
 以下の場合は SSG モードになる。
 
@@ -201,7 +201,7 @@ Route (app)                              Size     First Load JS
 > - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-2
 > - https://zenn.dev/shouta0715/articles/6823ea33cd3778#1.-auto
 
-#### ▼ ISRモード
+#### ▼ ISR モード
 
 以下の場合は ISR モードになる。
 
@@ -281,19 +281,19 @@ Route (app)                              Size     First Load JS
 
 ### モード
 
-#### ▼ CSRモード
+#### ▼ CSR モード
 
 記入中...
 
-#### ▼ SSRモード
+#### ▼ SSR モード
 
 記入中...
 
-#### ▼ SSGモード
+#### ▼ SSG モード
 
 記入中...
 
-#### ▼ APIルートモード（Route Handlerモード）
+#### ▼ API ルートモード（Route Handler モード）
 
 『Route Handler モード』ともいう。
 
@@ -314,7 +314,7 @@ export default (_: NextApiRequest, res: NextApiResponse) => {
 
 ### ランタイム
 
-#### ▼ Node.jsランタイム
+#### ▼ Node.js ランタイム
 
 JavaScript または TypeScript を Node.js 上で稼働させる。
 
@@ -322,7 +322,7 @@ Next.js の多くのコンポーネントが Node.js ランタイムである。
 
 > - https://nextjs.org/docs/app/api-reference/file-conventions/proxy
 
-#### ▼ Edgeランタイム
+#### ▼ Edge ランタイム
 
 JavaScript または TypeScript をエッジ（例：Cloudflare、Amazon CloudFront、Fastly など）
 
@@ -349,12 +349,12 @@ export const runtime = 'edge'
 
 ### プレフィクス
 
-| モード                                   | 出力タイミング             | `NEXT_PUBLIC_****` |      `****` (`NEXT_PUBLIC` なし)      |
-| ---------------------------------------- | -------------------------- | :----------------: | :-----------------------------------: |
-| SSRモード                                | サーバーへのリクエストごと |         ✅         |                  ✅                   |
-| SSGモード                                | サーバーのビルド時         |         ✅         |                  ✅                   |
-| CSRモード                                | ブラウザ上                 |         ✅         |                  ❌                   |
-| APIルートモード (厳密にはモードではない) | サーバーへのリクエストごと |         ✅         | ✅ (`api` ディレクトリ配下で読み込む) |
+| モード                                    | 出力タイミング             | `NEXT_PUBLIC_****` |      `****` (`NEXT_PUBLIC` なし)      |
+| ----------------------------------------- | -------------------------- | :----------------: | :-----------------------------------: |
+| SSR モード                                | サーバーへのリクエストごと |         ✅         |                  ✅                   |
+| SSG モード                                | サーバーのビルド時         |         ✅         |                  ✅                   |
+| CSR モード                                | ブラウザ上                 |         ✅         |                  ❌                   |
+| API ルートモード (厳密にはモードではない) | サーバーへのリクエストごと |         ✅         | ✅ (`api` ディレクトリ配下で読み込む) |
 
 <br>
 
@@ -404,7 +404,7 @@ dotenv パッケージは不要である。
 
 ## 04. ルーティング
 
-### UIとAPI
+### UI と API
 
 #### ▼ ディレクトリ
 
@@ -417,7 +417,7 @@ app/
 ├── about/
 │   └── page.tsx                # example.com/about であり、そのパスのトップページとして機能する
 │
-├── api/                        # APIルート：example.com/api/
+├── api/                        # API ルート：example.com/api/
 │   ├── user/
 │   │   └── route.ts            # example.com/api/user （GET, POST など）
 │   └── posts/

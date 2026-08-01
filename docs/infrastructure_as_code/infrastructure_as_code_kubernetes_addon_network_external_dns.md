@@ -13,7 +13,7 @@ description: ExternalDNS＠ネットワーク系の知見を記録していま�
 
 <br>
 
-## 01. ExternalDNSアドオンの仕組み
+## 01. ExternalDNS アドオンの仕組み
 
 ### アーキテクチャ
 
@@ -27,7 +27,7 @@ Ingress Controller (例：aws-load-balancer-controller、glb-controller) と合�
 
 <br>
 
-### AWSの場合
+### AWS の場合
 
 以下のような Ingress を定義したとする。
 
@@ -100,7 +100,7 @@ ExternalDNS アドオンは、Deployment (external-dns) 、Service などのマ�
 
 <br>
 
-### Deployment配下のPod
+### Deployment 配下の Pod
 
 #### ▼ external-dns
 
@@ -118,21 +118,21 @@ spec:
     - name: external-dns
       image: registry.k8s.io/external-dns/external-dns:v0.13.2
       args:
-        # DNSゾーンタイプを設定する
+        # DNS ゾーンタイプを設定する
         - --aws-zone-type=public
         - --log-level=info
         - --log-format=text
         - --registry=txt
-        # DNSレコード追加のために検知するKubernetesリソースを設定する
+        # DNS レコード追加のために検知する Kubernetes リソースを設定する
         - --source=service
         - --source=ingress
-        # DNSレコード追加対象のDNSゾーン (例：Amazon Route 53のホストゾーン) を設定する
+        # DNS レコード追加対象の DNS ゾーン (例：Amazon Route 53 のホストゾーン) を設定する
         - --domain-filter=example.com
-        # Ingressからルールを削除した場合に、対応するAWSリソース (AWS ALBリスナールール、Amazon Route 53 DNSレコード) も削除する
+        # Ingress からルールを削除した場合に、対応する AWS リソース (AWS ALB リスナールール、Amazon Route 53 DNS レコード) も削除する
         - --policy=sync
         - --provider=aws
         - --txt-owner-id=external-dns
-        # ExternalDNSで作成するレコードタイプを設定する (AAAAは不要なので設定していない)
+        # ExternalDNS で作成するレコードタイプを設定する (AAAA は不要なので設定していない)
         - --managed-record-types=A
         - --managed-record-types=CNAME
       env:
@@ -226,9 +226,9 @@ subjects:
 
 ## 03. セットアップ
 
-### Kubernetes側
+### Kubernetes 側
 
-#### ▼ Helmの場合
+#### ▼ Helm の場合
 
 Helm を使用する。
 
@@ -244,9 +244,9 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/external-d
 
 <br>
 
-### AWS側
+### AWS 側
 
-#### ▼ Terraformの公式モジュールの場合
+#### ▼ Terraform の公式モジュールの場合
 
 ArgoCD のセットアップのうち、AWS 側で必要なものをまとめる。
 

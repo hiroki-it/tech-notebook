@@ -17,7 +17,7 @@ description: コマンド＠Helmの知見を記録しています。
 
 ### create
 
-#### ▼ createとは
+#### ▼ create とは
 
 指定したパスにチャートのサンプルファイルを作成する。
 
@@ -31,7 +31,7 @@ $ helm create <チャートへのパス>
 
 ### destroy
 
-#### ▼ destroyとは
+#### ▼ destroy とは
 
 指定した Helm リリースでインストールされたチャートを削除する。
 
@@ -117,7 +117,7 @@ HELM_REPOSITORY_CONFIG="/.config/helm/repositories.yaml"
 
 ### get
 
-#### ▼ getとは
+#### ▼ get とは
 
 特定の Helm リリースに含まれる `helm template` コマンドの結果を取得する。
 
@@ -131,7 +131,7 @@ $ helm get <Helmリリース名>
 
 ### history
 
-#### ▼ historyとは
+#### ▼ history とは
 
 指定した Helm リリースの履歴を取得する。
 
@@ -150,7 +150,7 @@ REVISION         UPDATED                    STATUS     CHART               APP V
 
 ### install
 
-#### ▼ installとは
+#### ▼ install とは
 
 チャートなどを指定し、Kubernetes リソースとして作成する。
 
@@ -164,7 +164,7 @@ $ helm install <Helmリリース名> <チャートへのパス>
 | ----------------------------------------------------------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | チャートへのパス                                                        | `./foo-chart`                                               |                                                                                                                                                                  |
 | `<チャートレジストリ名>/<チャートリポジトリ名>`                         | `foo-registry/foo-repository`                               | ・https://zenn.dev/mikutas/articles/2ab146fa1ea35b                                                                                                               |
-| チャートリポジトリURL                                                   | `https://example.com/foo-chart`                             |                                                                                                                                                                  |
+| チャートリポジトリ URL                                                  | `https://example.com/foo-chart`                             |                                                                                                                                                                  |
 | `<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>` | `https://example.com/foo-chart foo-registry/foo-repository` |                                                                                                                                                                  |
 | チャートアーカイブへのパス                                              | `./foo-chart-<バージョンタグ>.tgz`                          | `values` ファイルを使用する場合、`values` ファイルはチャートアーカイブ (`.tgz` 形式ファイル) の外にある必要がある。<br>・https://helm.sh/docs/helm/helm_install/ |
 
@@ -289,7 +289,7 @@ $ helm install foo-release . -f foo-values.yaml --wait
 
 ### lint
 
-#### ▼ lintとは
+#### ▼ lint とは
 
 チャートの構造の誤り (例：`values` ファイルや `Chart.yaml` ファイルがあるか) を実行する。
 
@@ -370,7 +370,7 @@ $ helm lint <チャートへのパス> --strict -f foo-values.yaml
 
 ### list
 
-#### ▼ listとは
+#### ▼ list とは
 
 Helm リリースの一覧を取得する。
 
@@ -389,7 +389,7 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 
 ### package
 
-#### ▼ packageとは
+#### ▼ package とは
 
 チャートからチャートアーカイブ (`.tgz` 形式ファイル) を作成する。
 
@@ -451,7 +451,7 @@ $ helm plugin uninstall secrets
 
 ### pull
 
-#### ▼ pullとは
+#### ▼ pull とは
 
 指定したチャートリポジトリからチャートをチャートアーカイブ (`.tgz` 形式ファイル) でプルする。
 
@@ -486,7 +486,7 @@ $ helm pull <チャートリポジトリURL> --version <バージョンタグ>
 
 ### push
 
-#### ▼ pushとは
+#### ▼ push とは
 
 チャートリポジトリにチャートをプッシュする。
 
@@ -507,7 +507,7 @@ $ helm push <チャートアーカイブへのパス> oci://<AWSアカウントI
 
 ### registry
 
-#### ▼ registryとは
+#### ▼ registry とは
 
 チャートリポジトリを操作する。
 
@@ -534,7 +534,7 @@ $ aws ecr get-login-password --region ap-northeast-1 | helm registry login \
 
 ### repo
 
-#### ▼ repoとは
+#### ▼ repo とは
 
 チャートリポジトリを操作する。
 
@@ -619,7 +619,7 @@ Update Complete. ⎈Happy Helming!⎈
 
 ### search
 
-#### ▼ searchとは
+#### ▼ search とは
 
 事前に `helm repo add` コマンドで追加しておいたチャートリポジトリを検索する。
 
@@ -696,7 +696,7 @@ $ helm show values foo-chart
 
 ### template
 
-#### ▼ templateとは
+#### ▼ template とは
 
 Kubernetes に作成されるリソースのマニフェストを出力する。
 
@@ -738,7 +738,7 @@ $ helm template . -f foo-values.yaml -f <暗号化されたYAMLファイル> >| 
 ```
 
 ```yaml
-# 暗号化されたYAMLファイル
+# 暗号化された YAML ファイル
 foo: ***
 ```
 
@@ -785,7 +785,7 @@ $ helm template . -f foo-values.yaml --show-only ./templates/bar
 
 ### uninstall
 
-#### ▼ uninstallとは
+#### ▼ uninstall とは
 
 Helm リリースを指定し、その Helm リリースでインストールされた Kubernetes リソースを削除する。
 
@@ -805,7 +805,7 @@ $ helm uninstall foo-release
 
 ### upgrade
 
-#### ▼ upgradeとは
+#### ▼ upgrade とは
 
 指定したバージョンのチャートを使用して、Helm リリースをアップグレードする。
 

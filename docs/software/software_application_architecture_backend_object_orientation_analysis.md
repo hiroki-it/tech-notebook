@@ -29,7 +29,7 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 ## 02. DFD：Data Flow Diagram (データフロー図)
 
-### DFDとは
+### DFD とは
 
 ![データフロー図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データフロー図.jpg)
 
@@ -62,7 +62,7 @@ DFD、ユースケース図、アクティビティ図などがある。
 | サブジェクト：<br>![usecase-diagram_subject](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_subject.png)           | アクターとソフトウェアの境界線を表す。                                                                                                                                                                                                     |                               |
 | パッケージ：<br>![usecase-diagram_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_package.png)             | アクターによって提供する機能に違いがある場合、これの境界線を表す。                                                                                                                                                                         |                               |
 | 関連：<br>![usecase-diagram_association](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_association.png)           | アクターと機能を結ぶことにより、機能がアクターに提供されることを表す。                                                                                                                                                                     |                               |
-| 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_genelization.png)         | アクター間またはユースケース間に、is-a-kind-ofな関係 (グループとメンバーの関係性) があることを表す。                                                                                                                                       |                               |
+| 汎化：<br>![usecase-diagram_genelization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_genelization.png)         | アクター間またはユースケース間に、is-a-kind-of な関係 (グループとメンバーの関係性) があることを表す。                                                                                                                                      |                               |
 | 包含：<br>![usecase-diagram_include](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png)                   | 矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。                                                                                                                                                                             | `<< invoke >>` も同じである。 |
 | 先行：<br>`<< precedes >>`                                                                                                                                         | 矢印元の機能が必ず先に使用されてから、矢印先の機能が使用されることを表す。                                                                                                                                                                 |                               |
 | 拡張：<br>![usecase-diagram_extend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png)                     | 矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。                                                                                                                                                     |                               |

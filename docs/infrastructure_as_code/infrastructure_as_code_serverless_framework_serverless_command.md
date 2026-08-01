@@ -13,11 +13,11 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 
 <br>
 
-## 01. serverlessコマンド
+## 01. serverless コマンド
 
 ### print
 
-#### ▼ printとは
+#### ▼ print とは
 
 ```bash
 $ serverless print
@@ -35,7 +35,7 @@ $ serverless print --FOO foo
 
 ### deploy
 
-#### ▼ deployとは
+#### ▼ deploy とは
 
 クラウドインフラを作成する。
 

@@ -13,7 +13,7 @@ description: Cilium@ネットワーク系の知見を記録しています。
 
 <br>
 
-## 01. Ciliumの仕組み
+## 01. Cilium の仕組み
 
 ### アーキテクチャ
 
@@ -23,9 +23,9 @@ Cilium は、Cilium エージェント、Cilium CNI、から構成される。
 
 <br>
 
-### Ciliumエージェント
+### Cilium エージェント
 
-#### ▼ Ciliumエージェントとは
+#### ▼ Cilium エージェントとは
 
 コンテナ上のプロセスは、コンテナのカーネルに対してシステムコールを実行する。
 
@@ -40,7 +40,7 @@ Cilium エージェントは、システムコールのイベントが発生し�
 
 ### Cilium CNI
 
-#### ▼ Cilium CNIとは
+#### ▼ Cilium CNI とは
 
 Kubernetes のデフォルトの CNI と衝突するため、これを無効化する必要がある。
 
@@ -48,7 +48,7 @@ Kubernetes のデフォルトの CNI と衝突するため、これを無効化�
 
 > - https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/
 
-#### ▼ Istioとの連携
+#### ▼ Istio との連携
 
 Cilium CNI と istio-proxy を組み合わせて、トラフィックを制御する。
 
@@ -72,9 +72,9 @@ Istio と Cilium サービスメッシュの間で競合する機能 (例えば�
 
 <br>
 
-## 02. Ciliumサービスメッシュ
+## 02. Cilium サービスメッシュ
 
-### Ciliumサービスメッシュの仕組み
+### Cilium サービスメッシュの仕組み
 
 Cilium エージェント上では Envoy プロセスが動いている。
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】Debian系＠管理ユーティリティ
 description: Debian系＠管理ユーティリティの知見を記録しています。
 ---
 
-# Debian系＠管理ユーティリティ
+# Debian 系＠管理ユーティリティ
 
 ## はじめに
 

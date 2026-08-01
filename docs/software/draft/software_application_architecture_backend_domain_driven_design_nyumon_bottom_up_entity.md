@@ -63,7 +63,7 @@ const createUser = (id: UserId, name: string, email: string): User | Error => {
 
 <br>
 
-### IDで等価性バリデーションできる
+### ID で等価性バリデーションできる
 
 値オブジェクトとは異なり、ID で等価性バリデーションができる。
 
@@ -145,7 +145,7 @@ export const deleteUser = (id: UserId): boolean => {
 
 ## 03. エンティティで実装するべきロジックの見つけ方
 
-### CRUD系関数の対象
+### CRUD 系関数の対象
 
 CRUD 系関数（`create`、`find`、`update`、`delete`）の対象となるオブジェクトはエンティティの可能性がある。
 

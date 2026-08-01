@@ -23,7 +23,7 @@ Go のソースコードに変更があれば、ホットリロードし、コ�
 
 ## aws/aws-lambda-go
 
-### aws-lambda-goとは
+### aws-lambda-go とは
 
 以下のリンクを参考にせよ。
 
@@ -33,13 +33,13 @@ Go のソースコードに変更があれば、ホットリロードし、コ�
 
 ## aws/aws-sdk-go-v2
 
-### aws-sdk-go-v2とは
+### aws-sdk-go-v2 とは
 
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions
 
 <br>
 
-### awsとは
+### aws とは
 
 汎用的な関数が同梱されている。
 
@@ -50,7 +50,7 @@ Go のソースコードに変更があれば、ホットリロードし、コ�
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String
 > - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString
 
-#### ▼ serviceパッケージ
+#### ▼ service パッケージ
 
 記入中...
 
@@ -60,7 +60,7 @@ Go のソースコードに変更があれば、ホットリロードし、コ�
 
 ## spf13/cobra
 
-### cobraとは
+### cobra とは
 
 Go のコマンドラインツールを作成するツールである。
 
@@ -219,7 +219,7 @@ $ foo do --period 30 --limit 500
 
 ## go-chi/chi
 
-### go-chiとは
+### go-chi とは
 
 ミドルウェアパターン (特にルーティング) のパッケージである。
 
@@ -279,7 +279,7 @@ $ godoc -http=:8080
 
 ## princjef/gomarkdoc
 
-### CI上で実行する
+### CI 上で実行する
 
 CI 上で `gomarkdoc` コマンドを実行する。
 
@@ -332,7 +332,7 @@ $ gomarkdoc ./... -o {{.Dir}}/DOCUMENT.md
 設定ファイルを指定して、`gomarkdoc` コマンドを実行する。
 
 ```yaml
-# .gomarkdoc.ymlファイル
+# .gomarkdoc.yml ファイル
 output: "{{.Dir}}/DOCUMENT.md" # ダブルクオーテーションで囲わないとエラーになる
 repository:
   defaultBranch: main
@@ -396,7 +396,7 @@ $  gomarkdoc . \
 
 ## ondrajz/go-callvis
 
-### go-callvisとは
+### go-callvis とは
 
 Go のコールグラフを作成する。
 
@@ -486,7 +486,7 @@ SQL の発行時に、SQL を属性に持つスパンを自動的に作成する
 
 ## grpc-ecosystem/grpc-gateway
 
-### grpc-gatewayとは
+### grpc-gateway とは
 
 HTTP で受信したリクエストを gRPC に変換して送信する。
 
@@ -497,7 +497,7 @@ HTTP で受信したリクエストを gRPC に変換して送信する。
 
 ### 設定
 
-#### ▼ 独自HTTPヘッダーを保持する
+#### ▼ 独自 HTTP ヘッダーを保持する
 
 grpc-gateway では、デフォルトでは、HTTP ヘッダーの独自ヘッダーを gRPC のメタデータに変換せず破棄してしまう。
 
@@ -544,7 +544,7 @@ func matcher(key string) (string, bool) {
 
 ## grpc/grpc-go
 
-### grpc-goとは
+### grpc-go とは
 
 Go で gRPC を扱えるようにする。
 
@@ -692,7 +692,7 @@ func main() {
 
 ### Tracer
 
-#### ▼ Tracerとは
+#### ▼ Tracer とは
 
 スパンを作成するための Tracer を作成する。
 
@@ -738,7 +738,7 @@ func foo()  {
 
 ### GetTextMapPropagator
 
-#### ▼ GetTextMapPropagatorとは
+#### ▼ GetTextMapPropagator とは
 
 設定した Propagator を取得する。
 
@@ -813,7 +813,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 
 ## otel/propagation
 
-### otel/propagationとは
+### otel/propagation とは
 
 OpenTelemetry の Propagation
 
@@ -941,7 +941,7 @@ func main()  {
 
 ## otel/sdk
 
-### otel/sdkとは
+### otel/sdk とは
 
 OpenTelemetry の TracerProvider を作成する。
 
@@ -949,7 +949,7 @@ OpenTelemetry の TracerProvider を作成する。
 
 ## otel/trace
 
-### otel/traceとは
+### otel/trace とは
 
 記入中...
 
@@ -1297,7 +1297,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 ## open-telemetry/opentelemetry-go-contrib/otelgin
 
-### otelginとは
+### otelgin とは
 
 受信したリクエストの Carrier (HTTP ヘッダー) から Gin コンテキスト (`gin.Context`) を自動的に抽出 (Extract) しつつ、送信するリクエストの Carrier (HTTP ヘッダー) に Gin コンテキスト (`gin.Context`) を自動的に注入 (Inject) する。
 
@@ -1341,7 +1341,7 @@ func main() {
 
 ## uptrace/opentelemetry-go-extra/otelgorm
 
-### otelgormとは
+### otelgorm とは
 
 クエリ実行前のミドルウェアパターンとしてスパンを自動的に作成し、事後にはこのスパンに SQL ステートメント (`gorm.Create`、`gorm.Query`、`gorm.Delete`、`gorm.Update`、`gorm.Row`、`gorm.Raw`) を自動的に設定する。
 
@@ -1464,7 +1464,7 @@ func NewDb()  {
 
 ## open-telemetry/opentelemetry-go-contrib/otelgrpc
 
-### otelgrpcとは
+### otelgrpc とは
 
 受信したリクエストの Carrier (メタデータ) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストの Carrier (メタデータ) にコンテキストを自動的に注入 (Inject) する。
 
@@ -1501,7 +1501,7 @@ type metadataSupplier struct {
 
 ### クライアント側
 
-#### ▼ ClientInterceptor系関数
+#### ▼ ClientInterceptor 系関数
 
 gRPC リクエスト送信時のインターセプター処理として `otelgrpc` パッケージを設定する。
 
@@ -1602,7 +1602,7 @@ func main() {
 
 ### サーバー側
 
-#### ▼ ServerInterceptor系関数
+#### ▼ ServerInterceptor 系関数
 
 gRPC リクエスト受信時のインターセプター処理として `otelgrpc` パッケージを設定する。
 
@@ -1775,7 +1775,7 @@ gRPC の場合、リモートプロシージャーコールなため、スパン
 
 ## open-telemetry/opentelemetry-go-contrib/otelhttp
 
-### otelhttpとは
+### otelhttp とは
 
 受信したリクエストの Carrier (HTTP ヘッダー) からコンテキストを自動的に抽出 (Extract) しつつ、送信するリクエストの Carrier (HTTP ヘッダー) にコンテキストを自動的に注入 (Inject) する。
 
@@ -1954,7 +1954,7 @@ func SetSpanNameFormatter(next http.Handler) http.Handler {
 
 ## otlptracegrpc
 
-### otlptracegrpcとは
+### otlptracegrpc とは
 
 OTLP 形式でテレメトリーを送信する Exporter を作成する。
 
@@ -1968,7 +1968,7 @@ OpenTelemetry Collector を使用している場合、Receiver の gRPC 用の�
 
 ## otlptracehttp
 
-### otlptracehttpとは
+### otlptracehttp とは
 
 OTLP 形式でテレメトリーを送信する Exporter を作成する。
 
@@ -1982,7 +1982,7 @@ OpenTelemetry Collector を使用している場合、Receiver の HTTP 用の�
 
 ## google/sqlcommenter
 
-### sqlcommenterとは
+### sqlcommenter とは
 
 gorm で発行した SQL にスパンの情報をコメントアウトとして付与する。
 
@@ -2066,7 +2066,7 @@ Carrier のインターフェースである。
 
 ### TextMapPropagator
 
-#### ▼ TextMapPropagatorとは
+#### ▼ TextMapPropagator とは
 
 Propagator を複数持つ。
 
@@ -2074,7 +2074,7 @@ Propagator を複数持つ。
 
 ## propagator/autoprop
 
-### propagator/autopropとは
+### propagator/autoprop とは
 
 > - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#example-NewTextMapPropagator-Environment
 
@@ -2138,7 +2138,7 @@ func main()  {
 
 ## go-playground/validator
 
-### validatorとは
+### validator とは
 
 <br>
 
@@ -2390,7 +2390,7 @@ func main() {
 
 ### SugaredLogger
 
-#### ▼ SugaredLoggerとは
+#### ▼ SugaredLogger とは
 
 Zap の Logger のラッパーである。
 

@@ -13,7 +13,7 @@ description: コマンド＠Apacheの知見を記録しています。
 
 <br>
 
-## 01. apachectlコマンド
+## 01. apachectl コマンド
 
 ### configtest
 
@@ -53,7 +53,7 @@ $ apachectl -t
 
 <br>
 
-## 02. httpdコマンド
+## 02. httpd コマンド
 
 ### -D
 
@@ -121,7 +121,7 @@ $ httpd -S
 
 <br>
 
-## 03. serviceコマンドによる操作
+## 03. service コマンドによる操作
 
 ### httpd configtest
 

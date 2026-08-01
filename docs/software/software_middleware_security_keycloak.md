@@ -13,7 +13,7 @@ description: Keycloak＠セキュリティ系ミドルウェアの知見を記�
 
 <br>
 
-## 01. Keycloakとは
+## 01. Keycloak とは
 
 アプリケーションに代わって、認証／認可処理を実行する。
 
@@ -24,7 +24,7 @@ description: Keycloak＠セキュリティ系ミドルウェアの知見を記�
 
 <br>
 
-## 01-02. Keycloakの仕組み
+## 01-02. Keycloak の仕組み
 
 ### アーキテクチャ
 
@@ -54,7 +54,7 @@ Keycloak からセッションデータを取得し、DB に永続化する。
 
 <br>
 
-## 01-03. Keycloakの拡張性設計
+## 01-03. Keycloak の拡張性設計
 
 ### クラスタリング設計
 
@@ -159,9 +159,9 @@ Keycloak は CPU とメモリを使用する。
 
 ## 02. SSO
 
-### SSOの種類
+### SSO の種類
 
-#### ▼ OIDCの場合
+#### ▼ OIDC の場合
 
 - 認可コードフロー (標準フロー)
 - 暗黙的フロー
@@ -188,11 +188,11 @@ master realm でログイン後、ユーザー定義の realm を作成すると
 
 記入中...
 
-#### ▼ X509証明書の場合
+#### ▼ X509 証明書の場合
 
 記入中...
 
-#### ▼ JWTの場合
+#### ▼ JWT の場合
 
 Keycloak クライアントは、『ヘッダー』『ペイロード』『署名』のそれぞれの JSON 型データを `base64` 方式によってエンコードし、ドットでつなぐ。
 
@@ -205,7 +205,7 @@ Keycloak クライアントは、『ヘッダー』『ペイロード』『署�
 
 <br>
 
-### JWTとクライアントシークレットの場合
+### JWT とクライアントシークレットの場合
 
 記入中...
 
@@ -221,12 +221,12 @@ Keycloak クライアントは、『ヘッダー』『ペイロード』『署�
 
 ### セッション、Cookie、アクセストークンの有効期限
 
-#### ▼ OIDCの場合
+#### ▼ OIDC の場合
 
 | 項目                           | 説明                                                               |
 | ------------------------------ | ------------------------------------------------------------------ |
-| SSOのセッションアイドル        | ブラウザを操作しなかった場合に、再認証が必要になる有効期限を表す、 |
-| アクセストークンのライフスパン | OIDCのアクセストークンの有効期限を表す。                           |
+| SSO のセッションアイドル       | ブラウザを操作しなかった場合に、再認証が必要になる有効期限を表す、 |
+| アクセストークンのライフスパン | OIDC のアクセストークンの有効期限を表す。                          |
 
 > - https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/server_administration_guide/managing_user_sessions#timeouts
 
@@ -316,7 +316,7 @@ $ curl https://<Keycloakのドメイン名>/realms/<realm名>/.well-known/openid
 }
 ```
 
-#### ▼ / (issuerエンドポイント)
+#### ▼ / (issuer エンドポイント)
 
 JWT トークンの発行元 ID プロバイダーの識別子である。
 
@@ -340,7 +340,7 @@ GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conne
 
 > - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
 
-#### ▼ /certs (JWKsエンドポイント)
+#### ▼ /certs (JWKs エンドポイント)
 
 アクセストークンの署名を検証する。
 
@@ -415,13 +415,13 @@ POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conn
 
 ### バックチャネル
 
-#### ▼ IDプロバイダーへのリクエスト
+#### ▼ ID プロバイダーへのリクエスト
 
 アプリケーションは、ID プロバイダーのログアウトエンドポイント (`/logout`) に POST リクエストを送信する。
 
 ```yaml
 # リクエスト
-# IDプロバイダーのログアウトエンドポイント
+# ID プロバイダーのログアウトエンドポイント
 POST /realms/<realm名>/protocol/openid-connect/logout HTTP/1.1
 ---
 Host: <Keycloakのドメイン名>
@@ -433,7 +433,7 @@ client_id=python-client&client_secret=a07f9...8213d1&refresh_token=eyJhbGci...tw
 
 | パラメーター    | 説明                     |
 | --------------- | ------------------------ |
-| `client_id`     | クライアントID           |
+| `client_id`     | クライアント ID          |
 | `client_secret` | クライアントシークレット |
 | `refresh_token` | リフレッシュトークン     |
 
@@ -470,7 +470,7 @@ Keycloak は、このセッション ID でログアウトすべきクライア�
   "expiration": 1606364002,
   "resource": "kc-tomcat",
   "action": "LOGOUT",
-  # アプリケーション間で共有しているクライアントのセッションID
+  # アプリケーション間で共有しているクライアントのセッション ID
   "adapterSessionIds": ["FC60BED115518DFB043EDDB77F0E0A8E"],
   "notBefore": 0,
   "keycloakSessionIds": ["ac04ef9d-7793-481c-a5c7-5750560e3c14"],
@@ -480,7 +480,7 @@ Keycloak は、このセッション ID でログアウトすべきクライア�
 > - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%81%9D%E3%81%AE%E4%BB%96
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#k_logout-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
-#### ▼ IDプロバイダーからのレスポンス
+#### ▼ ID プロバイダーからのレスポンス
 
 ID プロバイダーのログアウトエンドポイントは、アプリケーションにレスポンスを送信する。
 
@@ -496,26 +496,26 @@ HTTP/1.1 204 No Content
 
 ### フロントチャネル
 
-#### ▼ IDプロバイダーへのリクエスト
+#### ▼ ID プロバイダーへのリクエスト
 
 ブラウザは、ID プロバイダーのログアウトエンドポイント (`/logout`) に GET リクエストを送信する。
 
 ```yaml
 # リクエスト
-# IDプロバイダーのログアウトエンドポイント
+# ID プロバイダーのログアウトエンドポイント
 GET http://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout?id_token_hint=eyJhbGciOiJS...RE2AZmGgKJAj-HlHw&post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Flogout%2Fcomplete&state=e18689b0503aab42574427fb575645aca0065bb758aa8463acf4506fe8a61e81
 ```
 
-| パラメーター               | 説明                          |
-| -------------------------- | ----------------------------- |
-| `id_token_hint`            | IDトークン                    |
-| `post_logout_redirect_uri` | ログアウト後のリダイレクトURL |
-| `state`                    | CSRF対策の文字列              |
+| パラメーター               | 説明                           |
+| -------------------------- | ------------------------------ |
+| `id_token_hint`            | ID トークン                    |
+| `post_logout_redirect_uri` | ログアウト後のリダイレクト URL |
+| `state`                    | CSRF 対策の文字列              |
 
 > - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
-#### ▼ IDプロバイダーからのレスポンス
+#### ▼ ID プロバイダーからのレスポンス
 
 ID プロバイダーのログアウトエンドポイントは、ブラウザにレスポンスを送信する。
 

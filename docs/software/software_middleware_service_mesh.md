@@ -134,8 +134,8 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 |                                        | 共有ライブラリパターン | サイドカーパターン | サイドカーレスパターン |
 | -------------------------------------- | ---------------------- | :----------------: | :--------------------: |
-| Nodeのハードウェアリソース消費量       |                        |         ×          |          `⭕️`          |
-| Nodeのストレージ使用量                 |                        |         △          |           △            |
+| Node のハードウェアリソース消費量      |                        |         ×          |          `⭕️`          |
+| Node のストレージ使用量                |                        |         △          |           △            |
 | データプレーンの冗長性                 |                        |        `⭕️`        |           △            |
 | マイクロサービスごとの設定カスタマイズ |                        |        `⭕️`        |           △            |
 | 単純性                                 |                        |         ×          |          `⭕️`          |
@@ -164,19 +164,19 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 <br>
 
-### OSSごとの実装方法
+### OSS ごとの実装方法
 
 データプレーンとコントロールプレーンの組み合わせにはさまざまある。
 
 ここでは代表的な OSS と、そのデータプレーン/コントロールプレーンの実装例、および Envoy の xDS API との関係性を整理する。
 
-| OSS名   | データプレーンの実装                | コントロールプレーンの実装 | xDS APIとの関係                              |
-| ------- | ----------------------------------- | -------------------------- | -------------------------------------------- |
-| Istio   | Envoy                               | Istiod                     | EnvoyのxDS APIをフルに活用                   |
-| Linkerd | ビルトインプロキシ (linkerd2-proxy) | Destination、Identity など | 独自プロキシであり、EnvoyのxDSとは非互換     |
-| Consul  | ビルトインプロキシ、Envoy           | Consul control plane       | Envoy連携時に一部のxDS APIを利用             |
-| SPIRE   | Envoy                               | SPIRE                      | EnvoyのSDS (Secret Discovery Service) を利用 |
-| ...     | ...                                 | ...                        | ...                                          |
+| OSS 名  | データプレーンの実装                | コントロールプレーンの実装 | xDS API との関係                              |
+| ------- | ----------------------------------- | -------------------------- | --------------------------------------------- |
+| Istio   | Envoy                               | Istiod                     | Envoy のxDS API をフルに活用                  |
+| Linkerd | ビルトインプロキシ (linkerd2-proxy) | Destination、Identity など | 独自プロキシであり、Envoy のxDS とは非互換    |
+| Consul  | ビルトインプロキシ、Envoy           | Consul control plane       | Envoy 連携時に一部の xDS API を利用           |
+| SPIRE   | Envoy                               | SPIRE                      | Envoy のSDS (Secret Discovery Service) を利用 |
+| ...     | ...                                 | ...                        | ...                                           |
 
 > - https://www.amazon.co.jp/dp/1492043788
 > - https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20

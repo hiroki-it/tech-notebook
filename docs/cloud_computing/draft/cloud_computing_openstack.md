@@ -13,7 +13,7 @@ description: OpenStack＠クラウドコンピューティングの知見を記�
 
 <br>
 
-## 01. OpenStackとは
+## 01. OpenStack とは
 
 IaaS を構築するためのコンポーネントを提供する。
 

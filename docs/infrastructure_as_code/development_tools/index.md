@@ -11,7 +11,7 @@ hide:
 
 <br>
 
-## 🌊 K8sアプリ
+## 🌊 K8s アプリ
 
 ### <u>開発環境</u>
 
@@ -49,7 +49,7 @@ hide:
   > - ##### [︎Helm](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm.html)
   > - ##### <u>コマンド</u>
   >   > - ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command.html)
-  >   > - ##### [helmプラグイン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command_plugin.html)
+  >   > - ##### [helm プラグイン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_command_plugin.html)
   > - ##### <u>チャート</u>
   >   > - ##### [チャート](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart.html)
   >   > - ##### [関数](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_manifests_management_helm_chart_function.html)

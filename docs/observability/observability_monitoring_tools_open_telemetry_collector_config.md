@@ -192,7 +192,7 @@ exporters:
 
 ## 02. exporters
 
-### exportersとは
+### exporters とは
 
 Exporter を設定する。
 
@@ -202,7 +202,7 @@ OpenTelemetry Collector は、設定した監視バックエンドにテレメ�
 
 ### awsxray
 
-#### ▼ awsxrayとは
+#### ▼ awsxray とは
 
 X-Ray にスパンを送信する。
 
@@ -261,7 +261,7 @@ exporters:
 
 ### debug
 
-#### ▼ debugとは
+#### ▼ debug とは
 
 標準エラー出力にテレメトリーを出力する。
 
@@ -364,7 +364,7 @@ exporters:
 
 ### otlp
 
-#### ▼ otlpとは
+#### ▼ otlp とは
 
 OTLP 形式で指定したエンドポイントに gRPC でテレメトリーを送信する。
 
@@ -382,7 +382,7 @@ exporters:
 
 ### otlphttp
 
-#### ▼ otlphttpとは
+#### ▼ otlphttp とは
 
 OTLP 形式で指定したエンドポイントに HTTP でテレメトリーを送信する。
 
@@ -398,7 +398,7 @@ exporters:
 
 ## 03. extensions
 
-### extensionとは
+### extension とは
 
 記入中...
 
@@ -418,7 +418,7 @@ extensions:
 
 ## 04. processors
 
-### processorsとは
+### processors とは
 
 Processor を設定する
 
@@ -426,7 +426,7 @@ Processor を設定する
 
 ### attribute
 
-#### ▼ attributeとは
+#### ▼ attribute とは
 
 テレメトリーに付与する属性を設定する。
 
@@ -470,7 +470,7 @@ processors:
 
 ### batch
 
-#### ▼ batchとは
+#### ▼ batch とは
 
 テレメトリーファイルを圧縮するバッチ処理を実行し、送信サイズを小さくしたうえで Exporter に渡す。
 
@@ -510,7 +510,7 @@ processors:
 processors:
   span:
     name:
-      # http.urlという属性から値を抽出する
+      # http.url という属性から値を抽出する
       from_attributes:
         - http.method
         - http.url.path
@@ -518,7 +518,7 @@ processors:
       separator: " "
     include:
       match_type: strict
-      # istio-proxyコンテナの作成したスパンのみを対象とする
+      # istio-proxy コンテナの作成したスパンのみを対象とする
       attributes:
         - key: component
           value: proxy
@@ -528,7 +528,7 @@ processors:
 
 ## 05. receivers
 
-### receiversとは
+### receivers とは
 
 Receiver を設定する。
 
@@ -540,7 +540,7 @@ OpenTelemetry のクライアントは、Receiver を指定し、テレメトリ
 
 ### otlp
 
-#### ▼ otlpとは
+#### ▼ otlp とは
 
 OTLP 形式でテレメトリーを受信する。
 
@@ -626,7 +626,7 @@ service:
 
 ### telemetry
 
-#### ▼ telemetryとは
+#### ▼ telemetry とは
 
 OpenTelemetry Collector 自体のテレメトリーの作成方法を設定する。
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】L1＠OSI参照モデル
 description: L1＠OSI参照モデルの知見を記録しています。
 ---
 
-# L1＠OSI参照モデル
+# L1＠OSI 参照モデル
 
 ## はじめに
 
@@ -25,7 +25,7 @@ description: L1＠OSI参照モデルの知見を記録しています。
 
 ## 02. LAN：Local Area Network
 
-### LANとは
+### LAN とは
 
 限定された領域のみで通信できるネットワークのこと。
 
@@ -39,7 +39,7 @@ LAN 内に配置された NAT ルーターが、WAN 内のグローバル IP ア
 
 <br>
 
-### LANの構成
+### LAN の構成
 
 #### ▼ サブネット
 
@@ -68,7 +68,7 @@ AWS や Google Cloud でも、VPC を同様のサブネットに分割すると�
 
 ## 03. WAN：Wide Area Network
 
-### WANとは
+### WAN とは
 
 ![network_wan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_wan.png)
 
@@ -89,7 +89,7 @@ WAN 内では、各 LAN はグローバル IP アドレスで識別されてい�
 
 <br>
 
-### WANの種類
+### WAN の種類
 
 #### ▼ 専用線方式
 
@@ -129,7 +129,7 @@ WAN を経由したプライベートな通信時、パケットの送信元と�
 
 <br>
 
-### WANの実現方法
+### WAN の実現方法
 
 WAN の実現は、`1980` 年代のアナログ専用線から始まった。
 

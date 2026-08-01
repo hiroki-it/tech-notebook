@@ -85,7 +85,7 @@ data:
 
 > - https://stackoverflow.com/a/38941123
 
-### HelmテンプレートによるConfigMap作成
+### Helm テンプレートによる ConfigMap 作成
 
 ダッシュボードは JSON ファイルとして管理し、ConfigMap テンプレートへ出力すると、管理しやすい。
 
@@ -132,8 +132,8 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
   "panels": [
       {
         "datasource": null,
-        # 全体の横幅は24
-        # パネルで分割する場合、w値を割る
+        # 全体の横幅は 24
+        # パネルで分割する場合、w 値を割る
         "gridPos": {"h": 36, "w": 24, "x": 0, "y": 0},
         "id": 3,
         "links": [],
@@ -157,7 +157,7 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
   "refresh": "",
   "schemaVersion": 30,
   "style": "dark",
-  # リポジトリ名やリポジトリURLをタグにつける
+  # リポジトリ名やリポジトリ URL をタグにつける
   "tags": ["<リポジトリ名>", "github.com/example"],
   "templating": {"list": []},
   "time": {"from": "now-6h", "to": "now"},
@@ -326,7 +326,7 @@ data:
 
 ### コミュニティダッシュボードの共通仕様
 
-#### ▼ USEメトリクス
+#### ▼ USE メトリクス
 
 『`USE`』という名前を含むコミュニティダッシュボードがある。
 
@@ -335,7 +335,7 @@ data:
 > - https://grafana.com/docs/grafana/latest/dashboards/build-dashboards/best-practices/#use-method
 > - https://grafana.com/blog/2022/06/06/grafana-dashboards-a-complete-guide-to-all-the-different-types-you-can-build/?pg=webinar-getting-started-with-grafana-dashboard-design-amer&plcmt=related-content-1#usereds-dashboards
 
-#### ▼ REDメトリクス
+#### ▼ RED メトリクス
 
 『`RED`』という名前を含むコミュニティダッシュボードがある。
 
@@ -346,7 +346,7 @@ data:
 
 <br>
 
-### kubernetes-mixinsのGrafanaダッシュボード
+### kubernetes-mixins の Grafana ダッシュボード
 
 kubernetes-mixins は Grafana ダッシュボードを公開している。
 
@@ -359,9 +359,9 @@ kubernetes-mixins のレコーディングルールが定義済みであるこ�
 
 Alertmanager の Pod からデータポイントを収集する。
 
-| ダッシュボード名          | 監視対象          | 説明                                       |
-| ------------------------- | ----------------- | ------------------------------------------ |
-| `Alertmanager / Overview` | AlertmanagerのPod | Alertmanager固有のメトリクスを分析できる。 |
+| ダッシュボード名          | 監視対象           | 説明                                        |
+| ------------------------- | ------------------ | ------------------------------------------- |
+| `Alertmanager / Overview` | Alertmanager の Pod | Alertmanager 固有のメトリクスを分析できる。 |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/alertmanager/dashboards
 
@@ -369,9 +369,9 @@ Alertmanager の Pod からデータポイントを収集する。
 
 ArgoCD の Pod からデータポイントを収集する。
 
-| ダッシュボード名 | 監視対象    | 説明                                 |
-| ---------------- | ----------- | ------------------------------------ |
-| `ArgoCD`         | ArgoCDのPod | ArgoCD固有のメトリクスを分析できる。 |
+| ダッシュボード名 | 監視対象     | 説明                                  |
+| ---------------- | ------------ | ------------------------------------- |
+| `ArgoCD`         | ArgoCD の Pod | ArgoCD 固有のメトリクスを分析できる。 |
 
 > - https://github.com/argoproj/argo-cd/blob/v2.7.6/examples/dashboard.json
 
@@ -379,23 +379,23 @@ ArgoCD の Pod からデータポイントを収集する。
 
 CoreDNS の Pod からデータポイントを収集する。
 
-| ダッシュボード名 | 監視対象     | 説明                                                                                                 |
-| ---------------- | ------------ | ---------------------------------------------------------------------------------------------------- |
-| `CoreDNS`        | CoreDNSのPod | CoreDNSのPodに対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を分析できる。 |
+| ダッシュボード名 | 監視対象      | 説明                                                                                                   |
+| ---------------- | ------------- | ------------------------------------------------------------------------------------------------------ |
+| `CoreDNS`        | CoreDNS の Pod | CoreDNS の Pod に対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を分析できる。 |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/coredns/dashboards
 
-#### ▼ Kubernetesコンポーネント
+#### ▼ Kubernetes コンポーネント
 
 Kubernetes コンポーネントからデータポイントを収集する。
 
-| ダッシュボード名                  | 監視対象                | 説明                                                                                                                             | おすすめ |
-| --------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Kubernetes / API server`         | kube-apiserver          | kube-apiserverのSLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU使用率、メモリ使用率) を分析できる。 |          |
-| `Kubernetes / Kubelet`            | kubelet                 |                                                                                                                                  |          |
-| `Kubernetes / Proxy`              | kube-proxy              |                                                                                                                                  |          |
-| `Kubernetes / Controller Manager` | kube-controller-manager |                                                                                                                                  |          |
-| `Kubernetes / Scheduler`          | kube-scheduler          |                                                                                                                                  |          |
+| ダッシュボード名                  | 監視対象                | 説明                                                                                                                               | おすすめ |
+| --------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `Kubernetes / API server`         | kube-apiserver          | kube-apiserver の SLI、エラーバジェット、ハードウェアリソースの消費に関するメトリクス (例：CPU 使用率、メモリ使用率) を分析できる。 |          |
+| `Kubernetes / Kubelet`            | kubelet                 |                                                                                                                                    |          |
+| `Kubernetes / Proxy`              | kube-proxy              |                                                                                                                                    |          |
+| `Kubernetes / Controller Manager` | kube-controller-manager |                                                                                                                                    |          |
+| `Kubernetes / Scheduler`          | kube-scheduler          |                                                                                                                                    |          |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards
 
@@ -405,15 +405,15 @@ Pod からデータポイントを収集する。
 
 kubelet からデータポイントを収集できるようにしておく必要がある。
 
-| ダッシュボード名                                    | 監視対象 | メトリクス                           | 説明                                                                                                                                                                                                                        | おすすめ |
-| --------------------------------------------------- | -------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Kubernetes / Compute Resources / Cluster`          | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) の合計を分析できる。Cluster全体のハードウェアリソースの分析に役立つ。                                                          | ★        |
-| `Kubernetes / Compute Resources / Namespace (Pods)` | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) をNamespace単位で分析できる。同じNamespace複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。 |          |
-| `Kubernetes / Compute Resources / Node (Pods)`      | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) をNode単位で分析できる。同じNodeの複数のPod (削除されたPodも含む) のメトリクスの累計を一括して確認したい場合に役立つ。         |          |
-| `Kubernetes / Compute Resources / Pod`              | Pod      | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) をPod単位で分析できる。各Podや特定のPodの状況を確認したい場合に役立つ。                                                        |          |
-| `Kubernetes / Networking / Cluster`                 | Pod      | ネットワークの性能指標               | Podのネットワークの性能指標メトリクス (例：帯域幅、秒当たりパケット受信数) の合計を分析できる。Cluster全体のネットワークの分析に役立つ。                                                                                    | ★        |
-| `Kubernetes / Networking / Namespace (Pods)`        | Pod      | ネットワークの性能指標               | Podのネットワーク性能指標メトリクスをNamespace単位で分析できる。複数のPod (削除されたPodも含む) のメトリクスを一括して確認したい場合に役立つ。                                                                              |          |
-| `Kubernetes / Networking / Pod`                     | Pod      | ネットワークの性能指標               | Podのネットワーク性能指標メトリクスをPod単位で分析できる。Podを個別に確認したい場合に役立つ。                                                                                                                               |          |
+| ダッシュボード名                                    | 監視対象 | メトリクス                           | 説明                                                                                                                                                                                                                                  | おすすめ |
+| --------------------------------------------------- | -------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `Kubernetes / Compute Resources / Cluster`          | Pod      | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) の合計を分析できる。Cluster 全体のハードウェアリソースの分析に役立つ。                                                                | ★        |
+| `Kubernetes / Compute Resources / Namespace (Pods)` | Pod      | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Namespace 単位で分析できる。同じ Namespace 複数の Pod (削除された Pod も含む) のメトリクスの累計を一括して確認したい場合に役立つ。 |          |
+| `Kubernetes / Compute Resources / Node (Pods)`      | Pod      | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Node 単位で分析できる。同じ Node の複数の Pod (削除された Pod も含む) のメトリクスの累計を一括して確認したい場合に役立つ。         |          |
+| `Kubernetes / Compute Resources / Pod`              | Pod      | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Pod 単位で分析できる。各 Pod や特定の Pod の状況を確認したい場合に役立つ。                                                         |          |
+| `Kubernetes / Networking / Cluster`                 | Pod      | ネットワークの性能指標               | Pod のネットワークの性能指標メトリクス (例：帯域幅、秒当たりパケット受信数) の合計を分析できる。Cluster 全体のネットワークの分析に役立つ。                                                                                            | ★        |
+| `Kubernetes / Networking / Namespace (Pods)`        | Pod      | ネットワークの性能指標               | Pod のネットワーク性能指標メトリクスを Namespace 単位で分析できる。複数の Pod (削除された Pod も含む) のメトリクスを一括して確認したい場合に役立つ。                                                                                  |          |
+| `Kubernetes / Networking / Pod`                     | Pod      | ネットワークの性能指標               | Pod のネットワーク性能指標メトリクスを Pod 単位で分析できる。Pod を個別に確認したい場合に役立つ。                                                                                                                                     |          |
 
 > - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L23
 > - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml#L23
@@ -428,20 +428,20 @@ Node からデータポイントを収集する。
 
 kubelet からデータポイントを収集できるようにしておく必要がある。
 
-| ダッシュボード名                                         | 監視対象                | メトリクス                           | 説明                                                                                                                       | おすすめ |
-| -------------------------------------------------------- | ----------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `Kubernetes / Compute Resources / Namespace (Workloads)` | Deployment、StatefulSet | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) をNamespace単位で分析できる。 |          |
-| `Kubernetes / Compute Resources / Workload`              | Deployment、StatefulSet | ハードウェアリソース使用率メトリクス | Podのハードウェアリソース使用率メトリクス (例：CPU使用率、メモリ使用率、CPU空きサイズ率など) をWorkload 単位で分析できる。 |          |
-| `Kubernetes / Networking / Namespace (Workload)`         | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Podのネットワーク性能指標メトリクスをNamespace単位で分析できる。                                                           |          |
-| `Kubernetes / Networking / Workload`                     | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Podのネットワーク性能指標メトリクスをWorkload単位で分析できる。                                                            |          |
+| ダッシュボード名                                         | 監視対象                | メトリクス                           | 説明                                                                                                                            | おすすめ |
+| -------------------------------------------------------- | ----------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `Kubernetes / Compute Resources / Namespace (Workloads)` | Deployment、StatefulSet | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Namespace 単位で分析できる。 |          |
+| `Kubernetes / Compute Resources / Workload`              | Deployment、StatefulSet | ハードウェアリソース使用率メトリクス | Pod のハードウェアリソース使用率メトリクス (例：CPU 使用率、メモリ使用率、CPU 空きサイズ率など) を Workload 単位で分析できる。  |          |
+| `Kubernetes / Networking / Namespace (Workload)`         | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Pod のネットワーク性能指標メトリクスを Namespace 単位で分析できる。                                                             |          |
+| `Kubernetes / Networking / Workload`                     | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Pod のネットワーク性能指標メトリクスを Workload 単位で分析できる。                                                              |          |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards
 
 #### ▼ PersistentVolume
 
-| ダッシュボード名                  | 監視対象         | 説明                                                      | おすすめ |
-| --------------------------------- | ---------------- | --------------------------------------------------------- | -------- |
-| `Kubernetes / Persistent Volumes` | PersistentVolume | Persistent Volumeの使用率に関するメトリクスを分析できる。 |          |
+| ダッシュボード名                  | 監視対象         | 説明                                                       | おすすめ |
+| --------------------------------- | ---------------- | ---------------------------------------------------------- | -------- |
+| `Kubernetes / Persistent Volumes` | PersistentVolume | Persistent Volume の使用率に関するメトリクスを分析できる。 |          |
 
 #### ▼ Node
 
@@ -449,11 +449,11 @@ Node からデータポイントを収集する。
 
 Node Exporter からデータポイントを収集できるようにしておく必要がある。
 
-| ダッシュボード名                       | 監視対象 | メトリクス    | 説明                                                                                     | おすすめ |
-| -------------------------------------- | -------- | ------------- | ---------------------------------------------------------------------------------------- | -------- |
-| `Node Exporter / USE Method / Cluster` | Node     | USEメトリクス | NodeのUSEメトリクスの合計を分析できる。Cluster全体のハードウェアリソースの分析に役立つ。 | ★        |
-| `Node Exporter / USE Method / Node`    | Node     | USEメトリクス | NodeのUSEメトリクスをNode単位で分析できる。                                              |          |
-| `Node Exporter / Nodes`                | Node     | ハードウェア  | Nodeのハードウェアリソース使用率メトリクスをNode単位で分析できる。                       |          |
+| ダッシュボード名                       | 監視対象 | メトリクス     | 説明                                                                                        | おすすめ |
+| -------------------------------------- | -------- | -------------- | ------------------------------------------------------------------------------------------- | -------- |
+| `Node Exporter / USE Method / Cluster` | Node     | USE メトリクス | Node の USE メトリクスの合計を分析できる。Cluster 全体のハードウェアリソースの分析に役立つ。 | ★        |
+| `Node Exporter / USE Method / Node`    | Node     | USE メトリクス | Node の USE メトリクスを Node 単位で分析できる。                                             |          |
+| `Node Exporter / Nodes`                | Node     | ハードウェア   | Node のハードウェアリソース使用率メトリクスを Node 単位で分析できる。                       |          |
 
 > - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-cluster-rsrc-use.yaml#L23
 > - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-rsrc-use.yaml#L23
@@ -462,10 +462,10 @@ Node Exporter からデータポイントを収集できるようにしておく
 
 Prometheus の Pod からデータポイントを収集する。
 
-| ダッシュボード名            | 監視対象        | 説明 |
-| --------------------------- | --------------- | ---- |
-| `Prometheus / Remote Write` | PrometheusのPod |      |
-| `Prometheus / Overview`     | PrometheusのPod |      |
+| ダッシュボード名            | 監視対象         | 説明 |
+| --------------------------- | ---------------- | ---- |
+| `Prometheus / Remote Write` | Prometheus の Pod |      |
+| `Prometheus / Overview`     | Prometheus の Pod |      |
 
 > - https://github.com/monitoring-mixins/website/tree/master/assets/prometheus/dashboards
 
@@ -475,14 +475,14 @@ Istio の Pod からデータポイントを収集する。
 
 `istioctl dashboard grafana` コマンドでもインストールできる。
 
-| ダッシュボード名                 | 監視対象                           | 説明                                                                             |
-| -------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------- |
-| `Istio Wasm Extension Dashboard` |                                    |                                                                                  |
-| `Istio Mesh Dashboard`           |                                    | HTTPプロトコルとTCPプロトコルのメトリクスを確認したい場合に役立つ。              |
-| `Istio Control Plane Dashboard`  | IstiodのPod                        |                                                                                  |
-| `Istio Performance Dashboard`    | Istio Ingress Gateway、istio-proxy |                                                                                  |
-| `Istio Workload Dashboard`       | Istioのカスタムリソース            |                                                                                  |
-| `Istio Service Dashboard`        | Istio VirtualService               | Istio Ingress Gatewayの宛先のServiceに関するメトリクスを確認したい場合に役立つ。 |
+| ダッシュボード名                 | 監視対象                           | 説明                                                                                |
+| -------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------- |
+| `Istio Wasm Extension Dashboard` |                                    |                                                                                     |
+| `Istio Mesh Dashboard`           |                                    | HTTP プロトコルと TCP プロトコルのメトリクスを確認したい場合に役立つ。              |
+| `Istio Control Plane Dashboard`  | Istiod の Pod                       |                                                                                     |
+| `Istio Performance Dashboard`    | Istio Ingress Gateway、istio-proxy |                                                                                     |
+| `Istio Workload Dashboard`       | Istio のカスタムリソース           |                                                                                     |
+| `Istio Service Dashboard`        | Istio VirtualService               | Istio Ingress Gateway の宛先の Service に関するメトリクスを確認したい場合に役立つ。 |
 
 > - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana
 > - https://github.com/istio/istio/blob/1.14.3/manifests/addons/dashboards
@@ -603,7 +603,7 @@ Istio の Pod からデータポイントを収集する。
 
 ### panels
 
-#### ▼ panelsとは
+#### ▼ panels とは
 
 メトリクスを PromQL でクエリして表示するパネルを定義する。
 
@@ -623,10 +623,10 @@ PromQL を定義する。
 
 ```yaml
 {
-  # panelsセクション
+  # panels セクション
   "panels": [
       {
-        # stylesセクション
+        # styles セクション
         "styles": [
             {
               # 表の列名
@@ -747,18 +747,18 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 
 ```yaml
 {
-  # templatingセクション
+  # templating セクション
   "templating": {
-      # listセクション
+      # list セクション
       "list": [
           # データソース値のプルダウン
           {
             # デフォルトのフィルタリング値
-            # プルダウンの値を変更すれば、current値も動的に変わる
+            # プルダウンの値を変更すれば、current 値も動的に変わる
             "current": {
                 # 固定できるように true としておく
                 "selected": "true",
-                # デフォルトのデータソースのフィルタリング値をPrometheusとする
+                # デフォルトのデータソースのフィルタリング値を Prometheus とする
                 "text": "Prometheus",
                 "value": "Prometheus",
               },
@@ -766,14 +766,14 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "error": null,
             # プルダウンを常に表示できるように 0 (false) とする
             "hide": 0,
-            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
+            # multi オプションを無効化しているため、All のチェックボックスは無効化する
             "includeAll": "false",
             "label": null,
             "multi": "false",
             # データソース名。変数名としても使用できるようになる。
             "name": "datasource",
             "options": [],
-            # 最初のデータソースはPrometheusとする。
+            # 最初のデータソースは Prometheus とする。
             "query": "prometheus",
             "refresh": 1,
             "regex": "",
@@ -781,12 +781,12 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             # 変数タイプを設定する。
             "type": "datasource",
           },
-          # clusterラベル値のプルダウン
+          # cluster ラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
-                # デフォルトのclusterラベルのフィルタリング値を null とする
+                # デフォルトの cluster ラベルのフィルタリング値を null とする
                 "isNone": "true",
                 # ラベルが選ばれない限り表示されないため、 false としておく
                 "selected": "false",
@@ -799,25 +799,25 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
-            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
+            # multi オプションを無効化しているため、All のチェックボックスは無効化する
             "includeAll": "false",
             "label": null,
-            # clusterは1つだけ選ぶようにする
+            # cluster は 1 つだけ選ぶようにする
             "multi": "false",
             # ラベル名。変数名としても使用できるようになる。
             "name": "cluster",
             "options": [],
             "query": {
                 # メトリクスと、それから取得するラベルを設定する。
-                # 指定したデータソースの時に、kube_pod_infoメトリクスがclusterラベルを持っている必要がある。
+                # 指定したデータソースの時に、kube_pod_info メトリクスが cluster ラベルを持っている必要がある。
                 "query": "label_values(kube_pod_info, cluster)",
                 # query<小文字から始まる任意の識別子>で事前定義しておくこともできる。
-                # queryを採用する場合、query以降の文字列は、"^[a-z][a-zA-Z0-9_]*$"の正規表現内の文字列にする必要がある。
+                # query を採用する場合、query 以降の文字列は、"^[a-z][a-zA-Z0-9_]*$"の正規表現内の文字列にする必要がある。
                 "refId": "Prometheus-cluster-Variable-Query",
               },
             "refresh": 2,
-            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
+            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             # アルファベットの昇順にする。
@@ -827,13 +827,13 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # namespaceラベル値のプルダウン
+          # namespace ラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
                 # デフォルトでは全てのラベル値を選択する
-                # multiラベルの場合は、配列とする
+                # multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
@@ -844,7 +844,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
-            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
+            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
             # 全ての値の中から複数選択して選べるようにする。
@@ -852,13 +852,13 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "name": "namespace",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
+                # 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
                 "query": 'label_values(kube_pod_info{cluster=\"$cluster\"}, namespace)',
                 "refId": "Prometheus-namespace-Variable-Query",
               },
             "refresh": 2,
-            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
+            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -867,13 +867,13 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # deploymentラベル値のプルダウン
+          # deployment ラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
                 # デフォルトでは全てのラベル値を選択する
-                # multiラベルの場合は、配列とする
+                # multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
@@ -884,7 +884,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
-            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
+            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
@@ -892,13 +892,13 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "name": "service",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_deployment_status_conditionトリクスが各種ラベルを持っている必要がある。
+                # 指定したデータソースの時に、kube_deployment_status_condition トリクスが各種ラベルを持っている必要がある。
                 "query": 'label_values(kube_deployment_status_condition{cluster=\"$cluster\", namespace=\"$namespace\"}, deployment)',
                 "refId": "Prometheus-pod-Variable-Query",
               },
             "refresh": 2,
-            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
+            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -907,13 +907,13 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # serviceラベル値のプルダウン
+          # service ラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
                 # デフォルトでは全てのラベル値を選択する
-                # multiラベルの場合は、配列とする
+                # multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
@@ -924,7 +924,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
-            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
+            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
@@ -932,13 +932,13 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "name": "service",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_service_infoメトリクスが各種ラベルを持っている必要がある。
+                # 指定したデータソースの時に、kube_service_info メトリクスが各種ラベルを持っている必要がある。
                 "query": 'label_values(kube_service_info{cluster=\"$cluster\", namespace=\"$namespace\"}, serviec)',
                 "refId": "Prometheus-pod-Variable-Query",
               },
             "refresh": 2,
-            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
+            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -947,13 +947,13 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # podラベル値のプルダウン
+          # pod ラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
                 # デフォルトでは全てのラベル値を選択する
-                # multiラベルの場合は、配列とする
+                # multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
@@ -964,7 +964,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
-            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
+            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
@@ -972,13 +972,13 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "name": "pod",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
+                # 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
                 "query": 'label_values(kube_pod_info{cluster=\"$cluster\", namespace=\"$namespace\"}, pod)',
                 "refId": "Prometheus-pod-Variable-Query",
               },
             "refresh": 2,
-            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
+            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -987,15 +987,15 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # label_eks_amazonaws_com_nodegroupラベル値のプルダウン
+          # label_eks_amazonaws_com_nodegroup ラベル値のプルダウン
           {
             "allValue": null,
             "current": {},
             "datasource": "$datasource",
-            # kube-state-metricsで、--metric-labels-allowlist=nodes=[*] を設定しておく
+            # kube-state-metrics で、--metric-labels-allowlist=nodes=[*] を設定しておく
             "definition": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
             "hide": 0,
-            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
+            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
@@ -1013,13 +1013,13 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # nodeラベル値のプルダウン
+          # node ラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
                 # デフォルトでは全てのラベルを表示する
-                # multiラベルの場合は、配列とする
+                # multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
@@ -1030,7 +1030,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
-            # multiオプションを有効化しており、全てを選べるようにAllのチェックボックスも有効化する
+            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
@@ -1038,14 +1038,14 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "name": "namespace",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_node_labelsメトリクスが各種ラベルを持っている必要がある。
-                # label_eks_amazonaws_com_nodegroupラベルの値はプルダウンですでに取得しており、変数として使用する。
+                # 指定したデータソースの時に、kube_node_labels メトリクスが各種ラベルを持っている必要がある。
+                # label_eks_amazonaws_com_nodegroup ラベルの値はプルダウンですでに取得しており、変数として使用する。
                 "query": 'label_values(kube_node_labels{label_eks_amazonaws_com_nodegroup=\"$nodegroup\"}, node)',
                 "refId": "Prometheus-node-Variable-Query",
               },
             "refresh": 2,
-            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
+            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -1054,13 +1054,13 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # containerラベル値のプルダウン
+          # container ラベル値のプルダウン
           {
             "allValue": null,
             # プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
                 # デフォルトでは全てのラベルを表示する
-                # multiラベルの場合は、配列とする
+                # multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
@@ -1071,7 +1071,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "description": null,
             "error": null,
             "hide": 0,
-            # multiオプションを無効化しているため、Allのチェックボックスは無効化する
+            # multi オプションを無効化しているため、All のチェックボックスは無効化する
             "includeAll": "false",
             "label": null,
             # 全ての値の中から複数のラベル値を選択して選べるようにする。
@@ -1079,14 +1079,14 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "name": "container",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_pod_infoメトリクスが各種ラベルを持っている必要がある。
-                # nodeラベルの値はプルダウンですでに取得しており、変数として使用する。
+                # 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
+                # node ラベルの値はプルダウンですでに取得しており、変数として使用する。
                 "query": 'label_values(kube_pod_container_info{cluster=\"$cluster\",instance=\"$node\",pod=\"$pod\"}, container)',
                 "refId": "Prometheus-container-Variable-Query",
               },
             "refresh": 2,
-            # もし特定のlabel_valuesのみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values内で『=~』を使ったほうが良いかもしれない。
+            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -1108,7 +1108,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 
 ```yaml
 {
-  # panelsセクション
+  # panels セクション
   "panels": [
     {
       "targets":

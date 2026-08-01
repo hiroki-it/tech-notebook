@@ -33,7 +33,7 @@ description: ブロック＠Terraformの知見を記録しています。
 
 ### `resource` ブロックの実装方法
 
-#### ▼ AWSの場合
+#### ▼ AWS の場合
 
 **＊実装例＊**
 
@@ -61,7 +61,7 @@ resource "aws_lb" "this" {
 
 ### `data` ブロックの実装方法
 
-#### ▼ AWSの場合
+#### ▼ AWS の場合
 
 **＊実装例＊**
 
@@ -360,7 +360,7 @@ resource "aws_subnet" "private_datastore" {
 }
 ```
 
-#### ▼ list型 `output` ブロック
+#### ▼ list 型 `output` ブロック
 
 インデックスキーをアスタリスクを指定した場合、list 型になる。
 
@@ -677,7 +677,7 @@ resource "aws_nat_gateway" "this" {
 }
 ```
 
-#### ▼ Amazon S3バケットポリシー vs. パブリックアクセスブロックポリシー
+#### ▼ Amazon S3 バケットポリシー vs. パブリックアクセスブロックポリシー
 
 例として、Amazon S3 を示す。
 
@@ -940,7 +940,7 @@ resource "aws_subnet" "public" {
 }
 ```
 
-#### ▼ 冗長化されたAZにおける設定
+#### ▼ 冗長化された AZ における設定
 
 冗長化された AZ で共通のルートテーブルを作成する場合、そこで、`for_each` 引数を使用すると、少ない実装で作成できる。
 
@@ -1054,7 +1054,7 @@ output "public_c_subnet_id" {
 }
 ```
 
-#### ▼ map型で `output` ブロック
+#### ▼ map 型で `output` ブロック
 
 **＊実装例＊**
 
@@ -1120,7 +1120,7 @@ resource "aws_lb" "this" {
 
 > - https://www.terraform.io/language/expressions/dynamic-blocks
 
-#### ▼ map型の場合
+#### ▼ map 型の場合
 
 **＊実装例＊**
 
@@ -1207,7 +1207,7 @@ resource "aws_security_group" "ec2" {
 }
 ```
 
-#### ▼ list型の場合
+#### ▼ list 型の場合
 
 **＊実装例＊**
 
@@ -1476,7 +1476,7 @@ resource "aws_security_group" "ec2" {
 
 <br>
 
-## 07. tpl形式の切り出しと読み出し
+## 07. tpl 形式の切り出しと読み出し
 
 ### `templatefile()` 関数
 
@@ -1525,7 +1525,7 @@ resource "aws_s3_bucket_policy" "alb" {
 }
 ```
 
-#### ▼ path式
+#### ▼ path 式
 
 | 変数                  | 値                                                             | 例                     |
 | --------------------- | -------------------------------------------------------------- | ---------------------- |
@@ -1542,9 +1542,9 @@ resource "aws_s3_bucket_policy" "alb" {
 
 <br>
 
-### containerDefinitionsの設定
+### containerDefinitions の設定
 
-#### ▼ containerDefinitionsとは
+#### ▼ containerDefinitions とは
 
 Amazon ECS タスク定義のうち、コンテナを定義する部分のこと。
 
@@ -1581,15 +1581,15 @@ integer 型を通常変数として渡せるように、拡張子を json では
   {
     # コンテナ名
     "name": "laravel",
-    # ECRのURL。タグを指定しない場合はlatestが割り当てられる。
+    # ECR のURL。タグを指定しない場合は latest が割り当てられる。
     "image": "${laravel_ecr_repository_url}",
     "essential": "true",
     "portMappings": [
         {
-          # Amazon ECSのコンテナのポート番号
+          # Amazon ECS のコンテナのポート番号
           "containerPort":
             80
-            # Amazon ECSのホストのポート番号 ,
+            # Amazon ECS のホストのポート番号 ,
           "hostPort": 80,
           "protocol": "tcp",
         },
@@ -1598,7 +1598,7 @@ integer 型を通常変数として渡せるように、拡張子を json では
         {
           # アプリケーションの環境変数名
           "name": "DB_HOST",
-          # AWS Systems Managerのパラメーター名
+          # AWS Systems Manager のパラメーター名
           "valueFrom": "/prd-foo/DB_HOST",
         },
         {"name": "DB_DATABASE", "valueFrom": "/prd-foo/DB_DATABASE"},

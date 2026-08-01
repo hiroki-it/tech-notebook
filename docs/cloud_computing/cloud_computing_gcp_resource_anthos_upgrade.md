@@ -13,7 +13,7 @@ description: アップグレード＠Anthosの知見を記録しています。
 
 <br>
 
-## 01. Kubernetesのアップグレード (ベアメタル環境の場合)
+## 01. Kubernetes のアップグレード (ベアメタル環境の場合)
 
 ### アップグレードの仕組み
 
@@ -52,11 +52,11 @@ spec:
 
 また、Anthos GKE Cluster のバージョンと Kubernetes のバージョンの対応関係を確認する。
 
-| Anthos GKE Clusterのバージョン | Kubernetesのバージョン |
-| ------------------------------ | ---------------------- |
-| ` 1.11` 系                     | `v1.22.8-gke`          |
-| `1.12` 系                      | `v1.23.5-gke`          |
-| ...                            | ...                    |
+| Anthos GKE Cluster のバージョン | Kubernetes のバージョン |
+| ------------------------------- | ----------------------- |
+| ` 1.11` 系                      | `v1.22.8-gke`           |
+| `1.12` 系                       | `v1.23.5-gke`           |
+| ...                             | ...                     |
 
 > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support
 
@@ -157,7 +157,7 @@ $ kubectl get deployment -A
 
 <br>
 
-## 02. Istioのアップグレード (オンプレミス環境、ベアメタル環境、他のクラウドプロバイダーの場合)
+## 02. Istio のアップグレード (オンプレミス環境、ベアメタル環境、他のクラウドプロバイダーの場合)
 
 ### 注意!!!!
 
@@ -217,7 +217,7 @@ $ mv asmcli asmcli_1140-0
 
 ### アップグレードの実施
 
-#### ▼ 新しいIstiodコントロールプレーンをインストール
+#### ▼ 新しい Istiod コントロールプレーンをインストール
 
 `(4)`
 
@@ -270,7 +270,7 @@ $ ./repository/asmcli-1140-0 install \
 > - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade#about_canary_upgrades
 > - https://istio.io/latest/docs/setup/upgrade/canary/
 
-#### ▼ 新しいIstiodコントロールプレーンを確認
+#### ▼ 新しい Istiod コントロールプレーンを確認
 
 `(6)`
 
@@ -307,7 +307,7 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 > - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview
 > - https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
 
-#### ▼ Namespaceの `.metadata.labels` キーを付け替える。
+#### ▼ Namespace の `.metadata.labels` キーを付け替える。
 
 `(7)`
 
@@ -391,7 +391,7 @@ $ kubectl get namespace -L istio.io/rev
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_gateways
 > - https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane
 
-#### ▼ Istio Ingress Gatewayのistio-proxyをアップグレード
+#### ▼ Istio Ingress Gateway のistio-proxy をアップグレード
 
 `(11)`
 
@@ -423,7 +423,7 @@ gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
 $ istioctl proxy-status
 ```
 
-#### ▼ アプリケーションのistio-proxyをアップグレード
+#### ▼ アプリケーションの istio-proxy をアップグレード
 
 `(13)`
 
@@ -458,7 +458,7 @@ $ istioctl proxy-status
 > - https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane
 > - https://istio.io/latest/docs/setup/upgrade/canary/#data-plane
 
-#### ▼ webhookの向き先を新しいIstiodコントロールプレーンに完全に変更
+#### ▼ webhook の向き先を新しい Istiod コントロールプレーンに完全に変更
 
 `(15)`
 
@@ -560,7 +560,7 @@ istio.io/rev: asm-1140-0
 istio.io/tag: default
 ```
 
-#### ▼ 古いIstiodコントロールプレーンを削除
+#### ▼ 古い Istiod コントロールプレーンを削除
 
 `(19)`
 
@@ -577,7 +577,7 @@ $ kubectl delete Service,Deployment,HorizontalPodAutoscaler,PodDisruptionBudget 
 $ kubectl get all -n istio-system
 ```
 
-#### ▼ 古いIstiodコントロールプレーンを削除を削除
+#### ▼ 古い Istiod コントロールプレーンを削除を削除
 
 `(20)`
 
@@ -593,7 +593,7 @@ $ kubectl delete validatingwebhookconfiguration istio-validator-asm-1140-0-istio
 $ kubectl get validatingwebhookconfiguration -n istio-system
 ```
 
-#### ▼ 古いIstioOperatorを削除を削除
+#### ▼ 古い IstioOperator を削除を削除
 
 `(21)`
 
@@ -628,7 +628,7 @@ $ kubectl get pod -A -o wide
 
 <br>
 
-## 03. NodeのOSのアップグレード (ベアメタル環境の場合)
+## 03. Node のOS のアップグレード (ベアメタル環境の場合)
 
 ベアメタル環境の場合、Google Cloud は Node の OS のバージョンを管理してくれず、Google Cloud 外でアップグレードする必要がある。
 

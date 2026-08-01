@@ -3,7 +3,7 @@ title: 【IT技術の知見】Incident Management＠AWS
 description: Incident Management＠AWSの知見を記録しています。
 ---
 
-# Incident Management＠AWSリソース
+# Incident Management＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Incident Management＠AWSの知見を記録しています。
 
 <br>
 
-## 01. Incident Managerとは
+## 01. Incident Manager とは
 
 ![aws_incident_manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_incident_manager.png)
 

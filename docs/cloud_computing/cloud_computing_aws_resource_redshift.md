@@ -3,7 +3,7 @@ title: 【IT技術の知見】Amazon Redshift＠AWSリソース
 description: Amazon Redshift＠AWSリソースの知見を記録しています。
 ---
 
-# Amazon Redshift＠AWSリソース
+# Amazon Redshift＠AWS リソース
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: Amazon Redshift＠AWSリソースの知見を記録しています�
 
 ## 01. Amazon Redshift
 
-### Amazon Redshiftとは
+### Amazon Redshift とは
 
 データウェアハウスとして働く。
 

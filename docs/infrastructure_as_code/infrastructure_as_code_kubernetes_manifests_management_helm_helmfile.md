@@ -13,7 +13,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 <br>
 
-## 01. Helmfileの仕組み
+## 01. Helmfile の仕組み
 
 `helm` コマンドを宣言的に実行できる。
 
@@ -35,22 +35,22 @@ description: Helmfile＠Helmの知見を記録しています。
 
 ```yaml
 repository/
-├── foo/ # fooサービス
+├── foo/ # foo サービス
 │   ├── helmfile.d/
 │   │   └── helmfile.yaml
 │   │
 │   ├── chart/ # チャート (外部チャートを使用する場合は不要)
-│   └── values/ # 環境別のvaluesファイル
+│   └── values/ # 環境別の values ファイル
 │
-├── bar/ # barサービス
-└── baz/ # bazサービス
+├── bar/ # bar サービス
+└── baz/ # baz サービス
 ```
 
 > - https://speakerdeck.com/j5ik2o/helmfilenituite
 
 <br>
 
-## 03. helmfile.dファイル
+## 03. helmfile.d ファイル
 
 ### `helmfile.yaml` ファイルとは
 
@@ -97,7 +97,7 @@ releases:
     namespace: <Namespace名>
     chart: <チャートリポジトリ名>/<チャート名>
     version: <バージョンタグ>
-    # 実行環境ごとに、読み込むvalues.yaml.gotmplファイルを切り替える。
+    # 実行環境ごとに、読み込む values.yaml.gotmpl ファイルを切り替える。
     values:
       {{- if or (eq .Environment.Name "tes") (eq .Environment.Name "stg") }}
       - common-values-nonprd.yaml.gotmpl
@@ -273,7 +273,7 @@ releases:
 ```yaml
 releases:
   - chart: <チャートリポジトリ名>/foo-chart
-    # 依存先の設定値は同じvaluesファイルで一括して管理する
+    # 依存先の設定値は同じ values ファイルで一括して管理する
     values:
       - foo-values.yaml
     dependencies:
@@ -284,7 +284,7 @@ releases:
 依存先チャートで `values` ファイルの指定はいらないが、extra チャート側でデフォルト値を設定しておく必要がある
 
 ```yaml
-# extraチャートのデフォルト値
+# extra チャートのデフォルト値
 
 foo: ""
 bar: ""
@@ -299,7 +299,7 @@ repositories:
 
 releases:
   - chart: <チャートリポジトリ名>/foo-chart
-    # 依存先の設定値は同じvaluesファイルで一括して管理する
+    # 依存先の設定値は同じ values ファイルで一括して管理する
     values:
       - foo-values.yaml
     dependencies:
@@ -363,12 +363,12 @@ releases:
   - name: bar
     chart: <チャートリポジトリ名>/bar-chart
     needs:
-      # fooリリースの次にインストールする
+      # foo リリースの次にインストールする
       - foo
   - name: baz
     chart: <チャートリポジトリ名>/baz-chart
     needs:
-      # barリリースの次にインストールする
+      # bar リリースの次にインストールする
       - bar
 ```
 
@@ -401,14 +401,14 @@ releases:
 
 ```yaml
 repository/
-├── foo/ # fooサービス
+├── foo/ # foo サービス
 │   ├── helmfile.yaml
 │   │
-│   ├── chart/ # チャート (チャート内のvaluesファイルは指定する必要はない)
-│   └── overwrite-values.yaml # 上書き用のvaluesファイル
+│   ├── chart/ # チャート (チャート内の values ファイルは指定する必要はない)
+│   └── overwrite-values.yaml # 上書き用の values ファイル
 │
-├── bar/ # barサービス
-└── baz/ # bazサービス
+├── bar/ # bar サービス
+└── baz/ # baz サービス
 ```
 
 もし `{{ .Environment.Name }}` を使用したい場合は、`environments` キーのほうで values ファイルを読み込ませるようにする。
@@ -520,11 +520,11 @@ secrets:
 
 <br>
 
-## 04. Helmfile固有の関数
+## 04. Helmfile 固有の関数
 
-### Helmリリースのリスト
+### Helm リリースのリスト
 
-#### ▼ 同じチャートを異なるNamespaceでデプロイ
+#### ▼ 同じチャートを異なる Namespace でデプロイ
 
 `release` キー配下に同じチャートを宣言すれば、同じチャートを異なる Namespace にデプロイできる。
 
@@ -553,7 +553,7 @@ Istio のリソースをアプリケーションのチャートより前にデ�
 
 ```yaml
 releases:
-  # Istioリソースを含む
+  # Istio リソースを含む
   - name: foo-istio
     chart: istio
     version: 1.0.0
@@ -594,7 +594,7 @@ releases:
 apiVersion: security.istio.io/v1
 kind: PeerAuthentication
 metadata:
-  # Namespaceを出力する
+  # Namespace を出力する
   name: {{.Release.Namespace}}
 spec:
   mtls:
@@ -628,7 +628,7 @@ releases:
 apiVersion: telemetry.istio.io/v1
 kind: Telemetry
 metadata:
-  # Namespaceを出力する
+  # Namespace を出力する
   name: {{.Release.Namespace}}
 spec:
   accessLogging:
@@ -644,7 +644,7 @@ spec:
 
 ### readFile
 
-#### ▼ readFileとは
+#### ▼ readFile とは
 
 テキストファイルを相対パスで読み込み、レンダリングする。
 
@@ -692,7 +692,7 @@ data:
 
 > - https://github.com/roboll/helmfile/issues/731#issuecomment-877718674
 
-#### ▼ JSONファイルを読み込める
+#### ▼ JSON ファイルを読み込める
 
 Helm には `.Files.Get` 関数や `.Files.Glob` 関数がある。
 
@@ -711,9 +711,9 @@ data:
 
 <br>
 
-## 05. values.gotmplファイル
+## 05. values.gotmpl ファイル
 
-### values.gotmplファイルとは
+### values.gotmpl ファイルとは
 
 Helm では `values` ファイルをテンプレート化できないが、Helmfile ではこれが可能である。
 
@@ -723,7 +723,7 @@ Helm では `values` ファイルをテンプレート化できないが、Helmf
 
 <br>
 
-### helmfileでの指定
+### helmfile での指定
 
 Helmfile では、`environments` キーの後に `releases` キーが読み込まれる。
 
@@ -733,7 +733,7 @@ Helmfile では、`environments` キーの後に `releases` キーが読み込�
 environments:
   {{.Environment.Name}}:
     values:
-      # common-values.yaml.gotmplファイルに値を渡すvaluesファイル
+      # common-values.yaml.gotmpl ファイルに値を渡す values ファイル
       - values-{{ .Environment.Name }}.yaml
 
 repositories:
@@ -745,7 +745,7 @@ releases:
     chart: foo-repository/foo-chart
     version: <バージョンタグ>
     values:
-      # 実行環境間で共有するvaluesファイル
+      # 実行環境間で共有する values ファイル
       - common-values.yaml.gotmpl
 ```
 
@@ -755,7 +755,7 @@ releases:
 
 <br>
 
-### 共通valuesファイルとの使い分け
+### 共通 values ファイルとの使い分け
 
 `common-values.yaml.gotmpl` ファイルを使用する代わりに、共有の `values` ファイルを使用する方法もある。
 
@@ -763,7 +763,7 @@ releases:
 environments:
   {{.Environment.Name}}:
     values:
-      # 環境別のvaluesファイル
+      # 環境別の values ファイル
       - values-{{ .Environment.Name }}.yaml
 
 repositories:
@@ -775,7 +775,7 @@ releases:
     chart: foo-repository/foo-chart
     version: <バージョンタグ>
     values:
-      # 実行環境間で共有するvaluesファイル
+      # 実行環境間で共有する values ファイル
       - common-values.yaml
 ```
 

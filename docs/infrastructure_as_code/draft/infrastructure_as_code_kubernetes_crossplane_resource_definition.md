@@ -57,7 +57,7 @@ spec:
 
 > - https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.17.0
 
-#### ▼ Amazon S3バケット
+#### ▼ Amazon S3 バケット
 
 ```yaml
 apiVersion: s3.aws.crossplane.io/v1beta1
@@ -201,9 +201,9 @@ spec:
                   region: "us-east-2"
             patches:
               - type: FromCompositeFieldPath
-                # AcmeBucket XRの.spec.desiredRegionフィールドから値をコピーする
+                # AcmeBucket XR の.spec.desiredRegion フィールドから値をコピーする
                 fromFieldPath: spec.desiredRegion
-                # Bucketの.spec.forProvider.regionフィールドに値を適用する
+                # Bucket の.spec.forProvider.region フィールドに値を適用する
                 toFieldPath: spec.forProvider.region
 ```
 
@@ -213,7 +213,7 @@ spec:
 
 ## 04. Provider
 
-### AWSの場合
+### AWS の場合
 
 #### ▼ package
 
@@ -255,7 +255,7 @@ spec:
 
 <br>
 
-### Helmの場合
+### Helm の場合
 
 #### ▼ package
 

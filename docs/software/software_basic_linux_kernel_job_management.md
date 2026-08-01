@@ -3,7 +3,7 @@ title: 【IT技術の知見】ジョブ管理＠Linuxカーネル
 description: ジョブ管理＠Linuxカーネルの知見を記録しています。
 ---
 
-# ジョブ管理＠Linuxカーネル
+# ジョブ管理＠Linux カーネル
 
 ## はじめに
 

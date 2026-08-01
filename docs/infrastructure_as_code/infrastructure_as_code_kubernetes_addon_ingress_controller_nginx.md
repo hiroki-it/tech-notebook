@@ -13,7 +13,7 @@ description: Nginx Ingress Controller＠Ingress Controllerの知見を記録し�
 
 <br>
 
-## 01. Nginx Ingress Controllerの仕組み
+## 01. Nginx Ingress Controller の仕組み
 
 `L4`/`L7` ロードバランサーとして、インバウンド通信を `L4`/`L7` ロードバランシングする。
 
@@ -31,7 +31,7 @@ description: Nginx Ingress Controller＠Ingress Controllerの知見を記録し�
 
 ### Service
 
-#### ▼ FastCGIプロトコル
+#### ▼ FastCGI プロトコル
 
 Nginx Ingress Controller は、受信したリクエストを FastCGI プロトコルでフォワーディングできる。
 
@@ -46,7 +46,7 @@ spec:
   selector:
     app: foo-app
   ports:
-    # Nginx Ingress ControllerがTCPプロトコルに変換してくれる
+    # Nginx Ingress Controller がTCP プロトコルに変換してくれる
     - protocol: TCP
       port: 9000
       targetPort: 9000

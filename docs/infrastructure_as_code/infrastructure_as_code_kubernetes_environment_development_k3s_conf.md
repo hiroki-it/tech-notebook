@@ -17,7 +17,7 @@ description: 設定ファイル＠K3Sの知見を記録しています。
 
 ### configs
 
-#### ▼ configsとは
+#### ▼ configs とは
 
 K3S Cluster 内の Pod が使用するイメージレジストリ情報を設定する。
 

@@ -3,7 +3,7 @@ title: 【IT技術の知見】Nginx＠Web系ミドルウェア
 description: Nginx＠Web系ミドルウェアの知見を記録しています。
 ---
 
-# Nginx＠Web系ミドルウェア
+# Nginx＠Web 系ミドルウェア
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: Nginx＠Web系ミドルウェアの知見を記録しています�
 
 <br>
 
-## 01. Nginxの仕組み
+## 01. Nginx の仕組み
 
 ### アーキテクチャ
 
@@ -34,7 +34,7 @@ Nginx の起動時、最初にマスタープロセスが実行され、Nginx �
 
 <br>
 
-### Radix Treeアルゴリズム
+### Radix Tree アルゴリズム
 
 Nginx は、リクエストの IP アドレスを照合して、リクエストを許可/拒否する。
 
@@ -118,7 +118,7 @@ Nginx を配置し、リクエストを Web サーバーにルーティングす
 
 リバースプロキシのミドルウェアとして使用する場合、Nginx をパブリックネットワークに公開しさえすれば、パブリックネットワークから Nginx を介して、後段の Web サーバーにリクエストを送信できるようになる。
 
-#### ▼ HTTP/HTTPSプロトコルの場合
+#### ▼ HTTP/HTTPS プロトコルの場合
 
 Nginx は、HTTP/HTTPS リクエストをルーティングする。
 
@@ -227,7 +227,7 @@ http {
 > - https://qiita.com/toritori0318/items/d82f9beccd76ea8ccb85
 > - https://gist.github.com/toritori0318/2dc2b64ff696822b02d202bf1fc2f5b2
 
-#### ▼ FastCGIプロトコルの場合
+#### ▼ FastCGI プロトコルの場合
 
 ![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NginxとPHP-FPMの組み合わせ.png)
 
@@ -283,7 +283,7 @@ http {
 }
 ```
 
-#### ▼ gRPCプロトコルの場合
+#### ▼ gRPC プロトコルの場合
 
 Nginx は、HTTP/HTTPS/gRPC リクエストを gRPC としてルーティングする。
 
@@ -339,7 +339,7 @@ stream {
 
 クライアントサイドに Nginx を配置し、リクエストを外部ネットワークにルーティングする。
 
-#### ▼ HTTP/HTTPSプロトコルの場合
+#### ▼ HTTP/HTTPS プロトコルの場合
 
 ```nginx
 worker_processes  1;
@@ -495,9 +495,9 @@ stream {
 
 <br>
 
-### APIゲートウェイとして
+### API ゲートウェイとして
 
-#### ▼ APIゲートウェイに必要な機能
+#### ▼ API ゲートウェイに必要な機能
 
 Nginx を API ゲートウェイとして使用する。
 

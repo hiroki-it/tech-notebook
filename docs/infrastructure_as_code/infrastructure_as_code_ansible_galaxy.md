@@ -13,7 +13,7 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 <br>
 
-## 01. Ansible Galaxyとは
+## 01. Ansible Galaxy とは
 
 `role` ディレクトリ配下を role モジュールとして別リポジトリに切り分け、これをリモート参照する仕組みのこと。
 
@@ -23,14 +23,14 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 ## 02. 参照される側
 
-### roleモジュールのディレクトリ構成
+### role モジュールのディレクトリ構成
 
-#### ▼ 複数のtaskがある場合
+#### ▼ 複数の task がある場合
 
 `meta` ディレクトリ配下に、role モジュールを宣言する設定ファイルを配置する。
 
 ```yaml
-foo-role-module-repository/ # roleモジュール
+foo-role-module-repository/ # role モジュール
 │
 ├── defaults/
 │   └── main.yml
@@ -69,12 +69,12 @@ foo-role-module-repository/ # roleモジュール
 > - https://docs.ansible.com/ansible/latest/galaxy/dev_guide.html#creating-roles-for-galaxy
 > - https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
 
-#### ▼ 複数のtaskがある場合
+#### ▼ 複数の task がある場合
 
 `meta` ディレクトリ配下に、role モジュールを宣言する設定ファイルを配置する。
 
 ```yaml
-foo-role-module-repository/ # roleモジュール
+foo-role-module-repository/ # role モジュール
 │
 ├── defaults/
 │   └── main.yml
@@ -141,7 +141,7 @@ repository/
 ```yaml
 - name: foo-role
   scm: git
-  # roleモジュールのあるリポジトリ
+  # role モジュールのあるリポジトリ
   src: https://github.com/hiroki-hasegawa/foo-role-module-repository.git
   # ブランチ
   version: main

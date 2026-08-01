@@ -21,10 +21,10 @@ description: 認証／認可系パッケージ＠Laravelの知見を記録して
 
 ドライバーとプロバイダーを定義する。
 
-| ガードの種類 | 説明                                                 |
-| ------------ | ---------------------------------------------------- |
-| Webガード    | フォーム認証のために使用する。                       |
-| APIガード    | Bearer認証、APIキー認証、OAuthなどのために使用する。 |
+| ガードの種類 | 説明                                                    |
+| ------------ | ------------------------------------------------------- |
+| Web ガード   | フォーム認証のために使用する。                          |
+| API ガード   | Bearer 認証、API キー認証、OAuth などのために使用する。 |
 
 > - https://readouble.com/laravel/8.x/ja/authentication.html#introduction
 
@@ -44,10 +44,10 @@ API ガードの認証で使用するトークンを JWT に変更したいと�
 
 #### ▼ ドライバーとは
 
-| ドライバーの種類  | 認証の種類                     | 実装クラス         | 備考                                                          |
-| ----------------- | ------------------------------ | ------------------ | ------------------------------------------------------------- |
-| sessionドライバー | フォーム認証                   | SessionGuardクラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
-| tokenドライバー   | Bearer認証、APIキー認証、OAuth | TokenGuardクラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html   |
+| ドライバーの種類   | 認証の種類                       | 実装クラス          | 備考                                                          |
+| ------------------ | -------------------------------- | ------------------- | ------------------------------------------------------------- |
+| session ドライバー | フォーム認証                     | SessionGuard クラス | https://laravel.com/api/8.x/Illuminate/Auth/SessionGuard.html |
+| token ドライバー   | Bearer 認証、API キー認証、OAuth | TokenGuard クラス   | https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html   |
 
 ドライバーの種類に応じて、AuthManager クラスが Guard インターフェースの実装クラスを返却する。
 
@@ -103,7 +103,7 @@ BeforeMiddleware で認証済みのユーザーか否かを検証し、もし未
 
 ### フォーム認証
 
-#### ▼ sessionドライバー
+#### ▼ session ドライバー
 
 session ドライバーを選択する。
 
@@ -436,7 +436,7 @@ class AuthServiceProvider extends ServiceProvider
 }
 ```
 
-#### ▼ AuthorizeMiddlewareによる認可
+#### ▼ AuthorizeMiddleware による認可
 
 ルーティング時に DB レコードレベルの認可スコープを定義する。
 
@@ -588,9 +588,9 @@ class FooController extends Controller
 
 <br>
 
-## 03. Passportパッケージ
+## 03. Passport パッケージ
 
-### Passportパッケージとは
+### Passport パッケージとは
 
 OAuth を実装できる。
 
@@ -608,7 +608,7 @@ $ composer require laravel/passport
 
 > - https://readouble.com/laravel/8.x/ja/passport.html
 
-#### ▼ OAuthのトークン管理テーブルを作成
+#### ▼ OAuth のトークン管理テーブルを作成
 
 事前に、Passport の管理テーブルを作成する必要があるため、DB マイグレーションを実行する。
 
@@ -636,8 +636,8 @@ DB マイグレーション後、以下のテーブルを作成する。
 | テーブル名                    | 説明                                                                                                                                                                                               |
 | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | oauth_access_tokens           | すべてのアクセストークンを管理する。                                                                                                                                                               |
-| oauth_auth_codes              | Authorization Code Grantタイプの情報を管理する。                                                                                                                                                   |
-| oauth_clients                 | Passportで使用している付与タイプを管理する。                                                                                                                                                       |
+| oauth_auth_codes              | Authorization Code Grant タイプの情報を管理する。                                                                                                                                                  |
+| oauth_clients                 | Passport で使用している付与タイプを管理する。                                                                                                                                                      |
 | oauth_personal_access_clients | パーソナルアクセストークンタイプの情報を管理する。                                                                                                                                                 |
 | oauth_refresh_tokens          | リフレッシュトークンを管理する。アクセストークンの有効期限が切れたときに、再作成をリクエストするために使用する。<br>- https://auth0.com/blog/jp-refresh-tokens-what-are-they-and-when-to-use-them/ |
 
@@ -678,7 +678,7 @@ $ php artisan passport:client --password
 
 <br>
 
-### 実装できるOAuthの種類
+### 実装できる OAuth の種類
 
 #### ▼ OAuth
 
@@ -914,7 +914,7 @@ $response = $client->request("GET", "/api/user", [
 return (string)$response->getBody();
 ```
 
-#### ▼ APIガード用のテーブル
+#### ▼ API ガード用のテーブル
 
 **＊実装例＊**
 
@@ -1014,9 +1014,9 @@ $token = $user->createToken("<任意のアクセストークン文字列>", ["pl
 
 <br>
 
-## 03-02. Sanctumパッケージ
+## 03-02. Sanctum パッケージ
 
-### Sanctumパッケージとは
+### Sanctum パッケージとは
 
 API キー認証とフォーム認証機能の認証処理のみを提供する。
 
@@ -1036,7 +1036,7 @@ $ composer require laravel/sanctum
 
 <br>
 
-### APIキー認証
+### API キー認証
 
 フロントエンド (外部のアプリケーションを含む) は任意とし、API のみを実装する場合、使用が適している。
 
@@ -1046,7 +1046,7 @@ $ composer require laravel/sanctum
 
 <br>
 
-### SPA認証
+### SPA 認証
 
 フロントエンドにファーストパーティの SPA (自社の SPA) を使用して、バックエンドの API を実装する場合、使用が適している。
 
@@ -1056,9 +1056,9 @@ $ composer require laravel/sanctum
 
 <br>
 
-## 03-03. Fortifyパッケージ
+## 03-03. Fortify パッケージ
 
-### Fortifyパッケージとは
+### Fortify パッケージとは
 
 Laravel が持つすべての認証機能のバックエンド処理を提供する。
 
@@ -1067,9 +1067,9 @@ Laravel が持つすべての認証機能のバックエンド処理を提供す
 
 <br>
 
-## 03-04. Breezeパッケージ
+## 03-04. Breeze パッケージ
 
-### Breezeパッケージとは
+### Breeze パッケージとは
 
 Laravel が持つすべての認証機能のバックエンド (認証+ルーティング+DB アクセス) 処理と、これに対応するフロントエンド処理を提供する。
 
@@ -1102,9 +1102,9 @@ $ php artisan breeze:install
 
 <br>
 
-## 03-05. UIパッケージ (Laravel 7系以前)
+## 03-05. UI パッケージ (Laravel 7 系以前)
 
-### UIパッケージとは
+### UI パッケージとは
 
 Laravel が持つすべての認証機能のバックエンド (認証+ルーティング+DB アクセス) 処理と、これに対応するフロントエンド処理を提供する。
 

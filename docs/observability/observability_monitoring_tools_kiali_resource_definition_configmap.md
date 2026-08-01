@@ -3,7 +3,7 @@ title: 【IT技術の知見】ConfigMap系＠リソース定義
 description: ConfigMap系＠リソース定義の知見を記録しています。
 ---
 
-# ConfigMap系＠リソース定義
+# ConfigMap 系＠リソース定義
 
 ## はじめに
 
@@ -15,7 +15,7 @@ description: ConfigMap系＠リソース定義の知見を記録しています�
 
 ## kiali-cm
 
-### kiali-cmファイルとは
+### kiali-cm ファイルとは
 
 Kiali の `config.yaml` ファイルを管理する。
 
@@ -109,7 +109,7 @@ data:
       openid: {}
       openshift:
         client_id_prefix: kiali
-      # 認証なしでKialiにログインできるようにする
+      # 認証なしで Kiali にログインできるようにする
       strategy: anonymous
 ```
 
@@ -165,12 +165,12 @@ data:
   config.yaml: |
     external_services:
       custom_dashboards:
-        # Kialiの性能が悪い場合は、自動検出を無効化する。
+        # Kiali の性能が悪い場合は、自動検出を無効化する。
         # https://kiali.io/docs/faq/general/#why-is-the-workload-or-application-detail-page-so-slow-or-not-responding
         discovery_enabled: false
         enabled: true
         prometheus:
-          # PrometheusのServiceの宛先情報を設定する。
+          # Prometheus の Service の宛先情報を設定する。
           url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
 ```
 
@@ -190,7 +190,7 @@ data:
   config.yaml: |
     grafana:
       auth:
-        # Grafanaでベーシック認証を使用している場合
+        # Grafana でベーシック認証を使用している場合
         type: basic
         username: admin
         password: prom-operator
@@ -204,9 +204,9 @@ data:
             namespace: var-namespace
             workload: var-workload
       enabled: true
-      # GrafanaのServiceの宛先情報を設定する。
+      # Grafana の Service の宛先情報を設定する。
       in_cluster_url: http://foo-grafana.foo-namespace.svc.cluster.local
-      # Kialiダッシュボードからのリダイレクト先とするGrafanaダッシュボードのURLを設定する。
+      # Kiali ダッシュボードからのリダイレクト先とする Grafana ダッシュボードの URL を設定する。
       url: http://foo.grafana.com
 ```
 
@@ -226,23 +226,23 @@ data:
   config.yaml: |
     istio:
       component_status:
-        # ステータスを連携したいIstioのコンポーネントを設定する
+        # ステータスを連携したい Istio のコンポーネントを設定する
         components:
           - app_label: istiod
           - app_label: istio-ingressgateway
             namespace: istio-ingress
           - app_label: istio-egressgateway
             namespace: istio-egress
-        # Masthead indicatorを表示するかどうかを設定する。
+        # Masthead indicator を表示するかどうかを設定する。
         # https://kiali.io/docs/features/security/#masthead-indicator
         enabled: true
-      # Istioが使用しているConfigMap名
+      # Istio が使用している ConfigMap 名
       config_map_name: istio-<リビジョン>
       istio_identity_domain: svc.cluster.local
       istio_sidecar_annotation: sidecar.istio.io/status
       istio_status_enabled: true
       root_namespace: istio-system
-      # サービスメッシュ全体のヘルスチェックのため、IstioのServiceの宛先情報を設定する。
+      # サービスメッシュ全体のヘルスチェックのため、Istio の Service の宛先情報を設定する。
       url_service_version: http://istiod-<リビジョン>.istio-system.svc.cluster.local:15014/version
 ```
 
@@ -261,7 +261,7 @@ metadata:
 data:
   config.yaml: |
     prometheus:
-      # PrometheusのServiceの宛先情報を設定する。
+      # Prometheus の Service の宛先情報を設定する。
       url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
 ```
 

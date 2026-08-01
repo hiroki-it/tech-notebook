@@ -15,7 +15,7 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 
 ## 01. configValidationMode
 
-### configValidationModeとは
+### configValidationMode とは
 
 設定ファイルのバリデーションの実行時に、エラーを出力するレベルを設定する。
 
@@ -31,7 +31,7 @@ configValidationMode: warn
 
 ## 02. custom
 
-### customとは
+### custom とは
 
 スコープが `serverless.yml` ファイル内のみの変数を設定する。
 
@@ -48,7 +48,7 @@ custom:
 
 ## 03. frameworkVersion
 
-### frameworkVersionとは
+### frameworkVersion とは
 
 Serverless Framework のバージョンを設定する。
 
@@ -64,7 +64,7 @@ frameworkVersion: "2"
 
 ## 04. functions
 
-### functionsとは
+### functions とは
 
 > - https://www.serverless.com/framework/docs/providers/aws/guide/functions
 
@@ -235,7 +235,7 @@ functions:
 
 ## 05. package
 
-### packageとは
+### package とは
 
 作成されるアーティファクトのパスを設定する。
 
@@ -257,7 +257,7 @@ package:
 
 ## 06. provider
 
-### providerとは
+### provider とは
 
 Serverless Framework で操作するクラウドインフラベンダーを設定する。
 
@@ -290,7 +290,7 @@ provider:
   ecr:
     images:
       base:
-        uri: <イメージリポジトリURL>@<バージョンタグ> # <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
+        uri: <イメージリポジトリURL>@<バージョンタグ> # <AWS アカウント ID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
 ```
 
 <br>
@@ -376,13 +376,13 @@ provider:
 
 ## 07. resources
 
-### resourcesとは (awsプロバイダーの場合)
+### resources とは (aws プロバイダーの場合)
 
 > - https://www.serverless.com/framework/docs/providers/aws/guide/resources
 
 <br>
 
-### IAMロール
+### IAM ロール
 
 IAM ロールを作成する。
 
@@ -412,7 +412,7 @@ resources:
 
 ## 08. service
 
-### serviceとは (awsプロバイダーの場合)
+### service とは (aws プロバイダーの場合)
 
 **＊実装例＊**
 
@@ -426,7 +426,7 @@ service: foo-service
 
 ## 09. useDotenv
 
-### useDotenvとは
+### useDotenv とは
 
 **＊実装例＊**
 
@@ -438,7 +438,7 @@ useDotenv: "true"
 
 ## 10. variablesResolutionMode
 
-### variablesResolutionModeとは
+### variablesResolutionMode とは
 
 **＊実装例＊**
 

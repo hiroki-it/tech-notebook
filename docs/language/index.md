@@ -20,7 +20,7 @@ hide:
 - #### <u>JSON</u>
 
   > - ##### [︎JSON](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_json.html)
-  > - ##### [︎JSONクエリ](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_json_query.html)
+  > - ##### [︎JSON クエリ](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_json_query.html)
 
 - #### <u>YAML</u>
 
@@ -30,8 +30,8 @@ hide:
 
   > - ##### [Protocol Buffer](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer.html)
   > - ##### [コマンド](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer_command.html)
-  > - ##### <u>Protocol Bufferコンパイラー</u>
-  >   > - ##### [Goプラグイン](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer_compiler_go.html)
+  > - ##### <u>Protocol Buffer コンパイラー</u>
+  >   > - ##### [Go プラグイン](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer_compiler_go.html)
 
 <br>
 
@@ -56,7 +56,7 @@ hide:
 - #### <u>パッケージ</u>
 
   > - ##### [ビルトインパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package_builtin.html)
-  > - ##### [SQLパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package_sql.html)
+  > - ##### [SQL パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package_sql.html)
   > - ##### [ユーティリティパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_go_package_utility.html)
 
 <br>
@@ -97,8 +97,8 @@ hide:
 
   > - ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_management.html)
   > - ##### [︎ユーティリティパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_utility.html)
-  > - ##### [︎Reactパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_react.html)
-  > - ##### <u>︎SQLパッケージ</u>
+  > - ##### [︎React パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_react.html)
+  > - ##### <u>︎SQL パッケージ</u>
   >   > - ##### [Prisma](https://hiroki-it.github.io/tech-notebook/language/language_javascript_package_sql_prisma.html)
 
 - #### <u>ブラウザ</u>
@@ -144,7 +144,7 @@ hide:
 - #### <u>パッケージ</u>
 
   > - ##### [︎パッケージ管理](https://hiroki-it.github.io/tech-notebook/language/language_php_package_management.html)
-  > - ##### [︎SQLパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html)
+  > - ##### [︎SQL パッケージ](https://hiroki-it.github.io/tech-notebook/language/language_php_package_sql.html)
   > - ##### [︎ユーティリティパッケージ](https://hiroki-it.github.io/tech-notebook/language/language_php_package_utility.html)
 
 <br>

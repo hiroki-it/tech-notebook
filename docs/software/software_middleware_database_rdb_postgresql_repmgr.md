@@ -13,7 +13,7 @@ description: Repmgr＠PostgreSQLの知見を記録しています。
 
 <br>
 
-## 01. Repmgrの仕組み
+## 01. Repmgr の仕組み
 
 ### アーキテクチャ
 

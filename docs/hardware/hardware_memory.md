@@ -17,7 +17,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 ### DRAM：Dynamic RAM
 
-#### ▼ DRAMとは
+#### ▼ DRAM とは
 
 メインメモリとして使用される。
 
@@ -29,7 +29,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 ### Mask ROM
 
-#### ▼ Mask ROMとは
+#### ▼ Mask ROM とは
 
 ![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-1.png)
 
@@ -39,7 +39,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 ### Programmable ROM
 
-#### ▼ Programmable ROMとは
+#### ▼ Programmable ROM とは
 
 ![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-2.png)
 
@@ -109,7 +109,7 @@ CPU とメインメモリの間に、キャッシュメモリを何段階か配�
 
 ### キャッシュメモリへの書き込み方式の種類
 
-#### ▼ Write-throught方式
+#### ▼ Write-throught 方式
 
 CPU は、命令をメインメモリとキャッシュメモリの両方に書き込む。
 
@@ -117,7 +117,7 @@ CPU は、命令をメインメモリとキャッシュメモリの両方に書�
 
 ![Write-through方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Write-through方式.jpg)
 
-#### ▼ Write-back方式
+#### ▼ Write-back 方式
 
 CPU は、キャッシュメモリのみに書き込む。
 
@@ -139,7 +139,7 @@ CPU は、キャッシュメモリのみに書き込む。
 
 ### SRAM：Static RAM
 
-#### ▼ SRAMとは
+#### ▼ SRAM とは
 
 キャッシュメモリとして使用される。
 
@@ -171,11 +171,11 @@ Chrome の場合は、CacheStorage に保管される。
 
 ### サーバーサイドキャッシュ
 
-#### ▼ CDNキャッシュ
+#### ▼ CDN キャッシュ
 
 記入中...
 
-#### ▼ API Gatewayキャッシュ
+#### ▼ API Gateway キャッシュ
 
 記入中...
 
@@ -183,7 +183,7 @@ Chrome の場合は、CacheStorage に保管される。
 
 記入中...
 
-#### ▼ Webサーバーキャッシュ
+#### ▼ Web サーバーキャッシュ
 
 リバースプロキシサーバーの使用するメモリ上で、レスポンスされた静的コンテンツのキャッシュを作成する。
 
@@ -199,7 +199,7 @@ Laravel のキャッシュ機能については、以下のリンクを参考に
 
 > - https://readouble.com/laravel/8.x/ja/cache.html
 
-#### ▼ DBキャッシュ
+#### ▼ DB キャッシュ
 
 記入中...
 
@@ -213,7 +213,7 @@ Laravel のキャッシュ機能については、以下のリンクを参考に
 
 | データ                                      | 理由                                                                       |
 | ------------------------------------------- | -------------------------------------------------------------------------- |
-| フォーム認証ページ                          | 無関係のユーザーに認証済みのWebページが返信されてしまう。                  |
+| フォーム認証ページ                          | 無関係のユーザーに認証済みの Web ページが返信されてしまう。                |
 | 緯度経度/フリーワードに基づく検索結果ページ | パターン数が多く、キャッシュですべてのページを網羅することが現実的でない。 |
 
 <br>
@@ -222,7 +222,7 @@ Laravel のキャッシュ機能については、以下のリンクを参考に
 
 ### クライアントサイドキャッシュ使用/不使用の検証
 
-#### ▼ ETag値による検証
+#### ▼ ETag 値による検証
 
 ブラウザは、Etag 値を使用してキャッシュの実現する。
 
@@ -364,7 +364,7 @@ Expires: Sat, 01 Jan 2000 00:00:00 GMT
 
 <br>
 
-## 04. GPUとVRAM
+## 04. GPU と VRAM
 
 ### GPU
 

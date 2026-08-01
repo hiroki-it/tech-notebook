@@ -13,11 +13,11 @@ description: コマンド＠ArgoCDの知見を記録しています。
 
 <br>
 
-## 01. argocd appコマンド
+## 01. argocd app コマンド
 
 ### create
 
-#### ▼ createとは
+#### ▼ create とは
 
 ArgoCD のアプリケーションを作成する。
 
@@ -39,7 +39,7 @@ $ argocd app create foo-application \
 
 ### delete
 
-#### ▼ deleteとは
+#### ▼ delete とは
 
 ArgoCD の Application を削除する。
 
@@ -84,7 +84,7 @@ $ argocd app get --hard-refresh
 
 ### set
 
-#### ▼ setとは
+#### ▼ set とは
 
 指定した Application で、オプションを有効化する。
 
@@ -96,7 +96,7 @@ $ argocd app set foo-application --sync-policy automated
 
 ### sync
 
-#### ▼ syncとは
+#### ▼ sync とは
 
 指定した Application で、Sync のドライランを実行する。
 
@@ -124,7 +124,7 @@ $ argocd app sync foo-application --local=<ディレクトリへのパス> --pro
 
 <br>
 
-## 02. argocd adminコマンド
+## 02. argocd admin コマンド
 
 ### cluster
 
@@ -148,11 +148,11 @@ https://kubernetes.default.svc  0      Successful  1                 10         
 
 <br>
 
-## 03. argocd clusterコマンド
+## 03. argocd cluster コマンド
 
 ### add
 
-#### ▼ addとは
+#### ▼ add とは
 
 ArgoCD にポーリングさせたい Cluster を登録する。
 
@@ -178,11 +178,11 @@ $ argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボ�
 
 <br>
 
-## 04. argocd repoコマンド
+## 04. argocd repo コマンド
 
 ### repo
 
-#### ▼ repoとは
+#### ▼ repo とは
 
 ArgoCD がプライベートリポジトリをポーリングする場合、リポジトリを操作する。
 
@@ -204,11 +204,11 @@ $ argocd repo add oci://<OCIレジストリ名> \
 
 <br>
 
-## 05. argocd loginコマンド
+## 05. argocd login コマンド
 
 ### login
 
-#### ▼ loginとは
+#### ▼ login とは
 
 ダッシュボードにログインする。
 
@@ -237,9 +237,9 @@ $ argocd login <ArgoCDのドメイン名> --sso --sso-port 465
 
 <br>
 
-## 06. argocd-application-controllerコマンド
+## 06. argocd-application-controller コマンド
 
-### argocd-application-controllerコマンドとは
+### argocd-application-controller コマンドとは
 
 application-controller を操作するコマンドである。
 
@@ -271,9 +271,9 @@ $ argocd-application-controller --application-namespaces "*"
 
 <br>
 
-## 07. argocd-serverコマンド
+## 07. argocd-server コマンド
 
-### argocd-serverコマンドとは
+### argocd-server コマンドとは
 
 argocd-server を操作するコマンドである。
 

@@ -13,7 +13,7 @@ description: コマンド＠Nginxの知見を記録しています。
 
 <br>
 
-## 01. nginxコマンド
+## 01. nginx コマンド
 
 ### -c
 
@@ -56,7 +56,7 @@ $ nginx -t
 
 <br>
 
-## 02. serviceコマンドによる操作
+## 02. service コマンドによる操作
 
 ### configtest
 

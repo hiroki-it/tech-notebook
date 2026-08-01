@@ -3,7 +3,7 @@ title: 【IT技術の知見】GKE＠Google Cloudリソース
 description: GKE＠Google Cloudリソースの知見を記録しています。
 ---
 
-# GKE＠Google Cloudリソース
+# GKE＠Google Cloud リソース
 
 ## はじめに
 

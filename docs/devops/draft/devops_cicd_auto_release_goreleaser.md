@@ -42,7 +42,7 @@ archives:
 before:
   hooks:
     - go mod tidy
-    # go mod tidyで差分があれば、CIを失敗させる
+    # go mod tidy で差分があれば、CI を失敗させる
     - git diff --exit-code
     - go generate ./...
 ```
@@ -84,7 +84,7 @@ version: 1
 
 <br>
 
-## 02. goreleaserコマンド
+## 02. goreleaser コマンド
 
 記入中...
 

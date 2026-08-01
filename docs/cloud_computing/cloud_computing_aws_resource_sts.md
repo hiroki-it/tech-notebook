@@ -3,7 +3,7 @@ title: 【IT技術の知見】STS＠AWSリソース
 description: STS＠AWSリソースの知見を記録しています。
 ---
 
-# STS＠AWSリソース
+# STS＠AWS リソース
 
 ## はじめに
 
@@ -13,7 +13,7 @@ description: STS＠AWSリソースの知見を記録しています。
 
 <br>
 
-## 01. STSとは：Security Token Service
+## 01. STS とは：Security Token Service
 
 認証済みの AWS IAM ユーザーに対して、特定の AWS アカウントの AWS リソースに認可スコープを持つ一時的な資格情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つ AWS IAM ユーザーを発行する。
 
@@ -29,7 +29,7 @@ AssumeRole (権限委譲) によって、ユーザーの AWS IAM ロールを動
 
 > - https://cloud.oreda.net/aws/iam/assumerole#assume_role%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF
 
-### 1. AWS IAMロールに信頼ポリシーを紐付け
+### 1. AWS IAM ロールに信頼ポリシーを紐付け
 
 必要なポリシーが設定された AWS IAM ロールを作成する。
 
@@ -60,7 +60,7 @@ AssumeRole (権限委譲) によって、ユーザーの AWS IAM ロールを動
 
 <br>
 
-### 2. AWS IAMロールを引き受けた資格情報をリクエスト
+### 2. AWS IAM ロールを引き受けた資格情報をリクエスト
 
 信頼されたエンティティから、STS のエンドポイント (`https://sts.amazonaws.com`) に対して、ロールの紐付けをリクエストする。
 
@@ -214,9 +214,9 @@ aws s3 ls --profile <プロファイル名> <tfstateファイルが管理され�
 
 <br>
 
-## 03. STSで発行されるAWS IAMユーザー
+## 03. STS で発行される AWS IAM ユーザー
 
-### Trusted Entityの事前作成
+### Trusted Entity の事前作成
 
 事前に、元となる AWS IAM ユーザー (Trusted Entity) を作成しておく。
 
@@ -231,7 +231,7 @@ Trusted Entity を使って、必要な AWS IAM ロールを STS から発行し
 
 <br>
 
-### AWS IAMユーザーの自動更新
+### AWS IAM ユーザーの自動更新
 
 STS で発行された AWS IAM ユーザーには、その AWS アカウント内のみで使用できるロールが紐付けられている。
 
@@ -241,7 +241,7 @@ STS で発行された AWS IAM ユーザーには、その AWS アカウント�
 
 <br>
 
-### 発行するAWS IAMユーザーの切り替え
+### 発行する AWS IAM ユーザーの切り替え
 
 AWS IAM ユーザーを一括で管理しておき、特定の AWS アカウントでは特定の認可スコープを委譲する。
 
@@ -251,7 +251,7 @@ AWS IAM ユーザーを一括で管理しておき、特定の AWS アカウン�
 
 <br>
 
-## 04. AWS IAMユーザーの発行元
+## 04. AWS IAM ユーザーの発行元
 
 ### フェデレーテッドユーザー
 
@@ -261,15 +261,15 @@ AWS IAM ユーザーを一括で管理しておき、特定の AWS アカウン�
 
 <br>
 
-### OIDC、Web IDフェデレーション
+### OIDC、Web ID フェデレーション
 
-#### ▼ OIDC、Web IDフェデレーションとは
+#### ▼ OIDC、Web ID フェデレーションとは
 
 OIDC または Web ID フェデレーションによる認証／認可を使用する。
 
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
-#### ▼ CognitoをIDプロバイダーとする場合
+#### ▼ Cognito をID プロバイダーとする場合
 
 Cognito を ID プロバイダーとして使用するように、信頼されたエンティティを設定する。
 
@@ -291,7 +291,7 @@ Cognito を ID プロバイダーとして使用するように、信頼され�
 }
 ```
 
-#### ▼ Amazon EKSをIDプロバイダーとする場合
+#### ▼ Amazon EKS をID プロバイダーとする場合
 
 ![Amazon EKS_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EKS_oidc.png)
 
@@ -347,7 +347,7 @@ IRSA により、ServiceAccount を介して Pod と AWS IAM ロールが紐づ�
 > - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
 > - https://moneyforward-dev.jp/entry/2021/12/19/irsa/
 
-#### ▼ その他のIDプロバイダー
+#### ▼ その他の ID プロバイダー
 
 - Auth0
 - Keycloak
@@ -355,7 +355,7 @@ IRSA により、ServiceAccount を介して Pod と AWS IAM ロールが紐づ�
 
 <br>
 
-### SAMLベースフェデレーション
+### SAML ベースフェデレーション
 
 SAML による認証／認可を使用する。
 
@@ -363,9 +363,9 @@ SAML による認証／認可を使用する。
 
 <br>
 
-## 05. AWS IAMロールの委譲先ユーザー
+## 05. AWS IAM ロールの委譲先ユーザー
 
-### AWS IAMロールの委譲先ユーザー
+### AWS IAM ロールの委譲先ユーザー
 
 AWS IAM ユーザー、AWS リソース、フェデレーテッドユーザー、に AWS IAM ロールを委譲できる。
 
@@ -375,9 +375,9 @@ AWS IAM ユーザー、AWS リソース、フェデレーテッドユーザー�
 
 <br>
 
-### AWS IAMロールの委譲先ユーザーの種類
+### AWS IAM ロールの委譲先ユーザーの種類
 
-#### ▼ AWS IAMユーザー
+#### ▼ AWS IAM ユーザー
 
 AWS IAM ロールと同じ/異なる AWS アカウントの AWS IAM ユーザーに委譲できる。
 
@@ -385,7 +385,7 @@ AWS IAM ユーザーの場合、外部 ID が必要になる。
 
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
 
-#### ▼ AWSリソース
+#### ▼ AWS リソース
 
 AWS IAM ロールと同じ/異なる AWS アカウントの AWS リソースに委譲できる。
 
@@ -432,7 +432,7 @@ AWS IAM ロールの信頼されたエンティティに、AWS OIDC で発行さ
 
 > - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
 
-#### ▼ 外部OIDC
+#### ▼ 外部 OIDC
 
 AWS IAM ロールの信頼されたエンティティに、外部 OIDC サービスで発行されたユーザーを設定する。
 

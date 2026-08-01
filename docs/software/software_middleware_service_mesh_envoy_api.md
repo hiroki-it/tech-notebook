@@ -113,7 +113,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/clusters
 
 ### サービスメッシュツールごとの比較
 
-#### ▼ Istioの場合
+#### ▼ Istio の場合
 
 Istio を使用している場合には、宛先の IP アドレスとポート番号が登録されている。
 
@@ -190,9 +190,9 @@ $ kubectl exec \
 
 <br>
 
-### include_edsパラメーター
+### include_eds パラメーター
 
-#### ▼ include_edsパラメーターとは
+#### ▼ include_eds パラメーターとは
 
 サービス検出によって動的に登録された設定値 (特に、エンドポイント) を、`json` 形式でレスポンスとして返信する。
 
@@ -258,7 +258,7 @@ configs:
         cluster_name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
         # いずれかのエンドポイントにロードバランシング
         endpoints:
-           # bar-podのあるリージョン
+           # bar-pod のあるリージョン
           - locality:
               region: ap-northeast-1
               zone: ap-northeast-1a
@@ -267,9 +267,9 @@ configs:
               - endpoint:
                   address:
                     socket_address:
-                      # 冗長化されたbar-podのIPアドレス
+                      # 冗長化された bar-pod のIP アドレス
                       address: 11.0.0.1
-                      # bar-pod内のコンテナが待ち受けるポート番号
+                      # bar-pod 内のコンテナが待ち受けるポート番号
                       port_value: 80
                   health_check_config: {}
                 health_status: HEALTHY
@@ -288,9 +288,9 @@ configs:
               - endpoint:
                   address:
                     socket_address:
-                      # 冗長化されたbar-podのIPアドレス
+                      # 冗長化された bar-pod のIP アドレス
                       address: 11.0.0.2
-                      # bar-pod内のコンテナが待ち受けるポート番号
+                      # bar-pod 内のコンテナが待ち受けるポート番号
                       port_value: 80
                   health_check_config: {}
                 health_status: HEALTHY
@@ -309,9 +309,9 @@ configs:
               - endpoint:
                   address:
                     socket_address:
-                      # 冗長化されたbaz-podのIPアドレス
+                      # 冗長化された baz-pod のIP アドレス
                       address: 11.0.0.3
-                      # baz-pod内のコンテナが待ち受けるポート番号
+                      # baz-pod 内のコンテナが待ち受けるポート番号
                       port_value: 80
                   health_check_config: {}
                 health_status: HEALTHY
@@ -336,9 +336,9 @@ configs:
 
 <br>
 
-### resourceパラメーター
+### resource パラメーター
 
-#### ▼ resourceパラメーターとは
+#### ▼ resource パラメーターとは
 
 `config_dump` エンドポイントの `json` 形式のレスポンスのうち、JSON のルートに反復して出現するキーをフィルタリングし、返信する。
 
@@ -477,7 +477,7 @@ configs:
         name: 0.0.0.0_50002
         address:
           socket_address:
-            # 受信したパケットのうちで、宛先IPアドレスでフィルタリングできるようにする。
+            # 受信したパケットのうちで、宛先 IP アドレスでフィルタリングできるようにする。
             address: 0.0.0.0
             # 受信したパケットのうちで、宛先ポート番号でフィルタリングできるようにする。
             port_value: 50002
@@ -540,8 +540,8 @@ configs:
       name: 50002
       virtual_hosts:
         # 仮想ホスト名
-        # foo-podからbar-podにリクエストを送信する時に選ばれる
-        # Kubernetes上では、Serviecの完全修飾ドメイン名が仮想ホスト名になる
+        # foo-pod から bar-pod にリクエストを送信する時に選ばれる
+        # Kubernetes 上では、Serviec の完全修飾ドメイン名が仮想ホスト名になる
         - name: bar-service.bar-namespace.svc.cluster.local:50002
           # ホストベースルーティング
           domains:
@@ -622,7 +622,7 @@ configs:
       address:
         socket_address:
           address: 0.0.0.0
-          # kubeletからのヘルスチェックを受信するためのポート番号
+          # kubelet からのヘルスチェックを受信するためのポート番号
           port_value: 15021
 
    ...
