@@ -34,7 +34,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 ホストで作成されるデータが継続的に変化する場合に適しており、例えば開発環境でアプリケーションをホストコンテナ間と共有する方法として推奨である。
 
-しかし、ホスト側のデータを永続化する方法としては不適である。
+しかし、ホスト側のデータを永続化する方法には適さない。
 
 ![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bind-mount.png)
 
@@ -120,7 +120,7 @@ $ cat settings.json
 
 ホストで作成されるデータをめったに変更しない場合に適しており、例えば DB レコードをホストコンテナ間と共有する方法として推奨である。
 
-しかし、例えばアプリケーションやパッケージといったような変更されやすいデータを共有する方法としては不適である。
+しかし、例えばアプリケーションやパッケージのような変更されやすいデータを共有する方法には適さない。
 
 ![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png)
 

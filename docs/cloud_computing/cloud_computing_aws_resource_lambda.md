@@ -80,7 +80,7 @@ AWS Lambda は、API (ランタイム API、ログ API、拡張 API) と実行�
 
 AWS Lambda が発火する。
 
-実行環境が作成され、関数を実行するための準備が行われる。
+AWS Lambda は実行環境を作成し、関数を実行するために準備する。
 
 #### ▼ Invoke フェーズ
 

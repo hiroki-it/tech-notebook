@@ -932,7 +932,7 @@ $ terraform taint \
     module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>
 ```
 
-この後の `terraform plan` コマンドのログからも、`-/+` で削除が行われる想定で、差分を比較していることがわかる。
+この後の `terraform plan` コマンドのログからも、`-/+` で削除する想定で、差分を比較していることがわかる。
 
 ```bash
 $ terraform plan -var-file=foo.tfvars

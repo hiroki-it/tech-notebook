@@ -197,7 +197,7 @@ class Foo
 }
 ```
 
-finally 句は、try 句や catch 句の返却処理が行われる直前に実行されるため、finally 句では、`return` や `continue` を使用しないようにする。
+finally 句は、try 句や catch 句が値を返す直前に実行されるため、finally 句では、`return` や `continue` を使用しないようにする。
 
 ```php
 <?php

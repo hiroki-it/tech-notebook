@@ -15,7 +15,7 @@ description: アルゴリズムロジック＠PHPの知見を記録していま�
 
 ## 01. 並び替えのアルゴリズム
 
-例えば、次のような表では、どのような仕組みで『昇順』『降順』への並び替えが行われるのだろうか。
+例えば、次のような表では、どのような仕組みで『昇順』『降順』に並び替えるのだろうか。
 
 ![ソートの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ソートの仕組み.gif)
 

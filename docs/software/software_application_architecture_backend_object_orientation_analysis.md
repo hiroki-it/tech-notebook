@@ -120,7 +120,7 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 アクターとソフトウェアの出入力を基に、ユーザーの要求に対するソフトウェアの『動的な振舞』を表す。
 
-オブジェクト間の関係性に基づくシーケンス図とは異なり、図式化の目的としてはユースケース図と似ている。
+オブジェクト間の関係性に基づくシーケンス図とは異なり、図式化の目的はユースケース図と似ている。
 
 ![system-sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system-sequence-diagram.png)
 
