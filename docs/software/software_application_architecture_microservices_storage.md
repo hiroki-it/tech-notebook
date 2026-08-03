@@ -59,7 +59,7 @@ Shared DB の場合に、マイクロサービス別にテーブルを作成す�
 
 各マイクロサービスで個別に DB を用意する。
 
-ローカルトランザクションや分散トランザクション処理を実施する必要がある。
+ローカルトランザクションや分散トランザクションを処理する必要がある。
 
 ![microservices_diff-db](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_diff-db.png)
 

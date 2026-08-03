@@ -250,7 +250,7 @@ Google Cloud の API を経由して、他のクラウドプロバイダー (例
 
 #### ▼ check preflight とは
 
-`bmctl upgrade` コマンドの実行時に実施されるプリフライトチェックのみを実施する。
+`bmctl upgrade` コマンドの実行時と同じプリフライトチェックだけを実行する。
 
 ```bash
 $ ~/baremetal/bmctl check preflight -c foo-anthos-cluster -n foo-namespace

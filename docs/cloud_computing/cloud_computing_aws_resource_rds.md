@@ -88,7 +88,7 @@ SHOW VARIABLES LIKE '%version%';
 
 ### メンテナンスウインドウ
 
-DB クラスター/DB インスタンスの設定の変更をスケジューリングさせる。
+DB クラスター/DB インスタンスの設定変更をスケジュールする。
 
 > - https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
 
@@ -106,7 +106,7 @@ Amazon CloudWatch Metrics の `DatabaseConnections` メトリクスから、DB �
 
 ![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_pending-maintenance.png)
 
-ユーザーが予定した設定変更は『保留中の変更』として表示される一方で、AWS によって定期的に行われるハードウェア/OS/DB エンジンのバージョンを強制アップグレードは『保留中のメンテナンス』として表示される。
+ユーザーが予定した設定変更は『保留中の変更』として表示される一方で、AWS が定期的に実施するハードウェア/OS/DB エンジンの強制バージョンアップは『保留中のメンテナンス』として表示される。
 
 『次のメンテナンスウィンドウ』を選択すれば、実行タイミングをメンテナンスウィンドウ内に設定できる。ただし、これを選択しない場合は『日付の適用』に表示された時間帯で強制実行される。
 

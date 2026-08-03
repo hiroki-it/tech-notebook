@@ -144,8 +144,19 @@ http_headers = { Authorization = "Bearer <ここにパーソナルアクセス�
 ```toml
 [mcp_servers.playwright]
 command = "npx"
-args = ["-y", "@playwright/mcp@latest"]
+# memoryを指定することで、ログファイルを作成させない
+args = ["-y", "@playwright/mcp@latest", "--output-mode=memory"]
 startup_timeout_sec = 60.0
+```
+
+<br>
+
+### IntelliJ の場合
+
+
+```toml
+[mcp_servers.idea]
+url = "http://127.0.0.1:64342/stream"
 ```
 
 ## 04. Skills

@@ -273,7 +273,7 @@ Downloading 処理が終了した Web ページから、次の Parse 処理に�
 
 Downloading 処理の優先順位を上げるように宣言する。
 
-優先度の高い分割 Web ページは、次の Parse 処理、Scripting 処理も行われる。
+優先度の高い分割 Web ページでは、次の Parse 処理や Scripting 処理も行われる。
 
 そのため、JS ファイルの Scripting 処理が、以降の image ファイルの Downloading 処理よりも早くに行われることがある。
 
