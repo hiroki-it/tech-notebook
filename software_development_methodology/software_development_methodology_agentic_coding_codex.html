@@ -32388,6 +32388,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#intellij" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IntelliJ の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -33580,6 +33591,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#intellij" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IntelliJ の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -33880,8 +33902,14 @@ osascript<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quo
 <h3 id="playwright">Playwright の場合<a class="headerlink" href="#playwright" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">[mcp_servers.playwright]</span>
 <span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;npx&quot;</span>
-<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-y&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@playwright/mcp@latest&quot;</span><span class="p">]</span>
+<span class="c1"># memoryを指定することで、ログファイルを作成させない</span>
+<span class="n">args</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-y&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@playwright/mcp@latest&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--output-mode=memory&quot;</span><span class="p">]</span>
 <span class="n">startup_timeout_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">60.0</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="intellij">IntelliJ の場合<a class="headerlink" href="#intellij" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">[mcp_servers.idea]</span>
+<span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:64342/stream&quot;</span>
 </code></pre></div>
 <h2 id="04-skills">04. Skills<a class="headerlink" href="#04-skills" title="Permanent link">&para;</a></h2>
 <h3 id="_3">ディレクトリ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -33940,7 +33968,7 @@ name: feature-design
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月3日 20:11:02 JST">2026-08-03</span>
   </span>
 
     
