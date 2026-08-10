@@ -364,6 +364,41 @@ main()
 
 <br>
 
+### $queryRawと$queryRawUnsafe
+
+#### ▼ $queryRaw
+
+プレースホルダーの値を生SQLに渡す場合に使用する。
+
+例えば、`${email}` は 単なる値として SQL に渡されるため、`email` に SQL 文が含まれていても、SQL の命令としては実行されない。
+
+```typescript
+const email = request.email;
+
+const users = await prisma.$queryRaw<User[]>`
+  SELECT * FROM User WHERE email = ${email}
+`;
+```
+
+#### ▼ $queryRawUnsafe
+
+SQL 文自体を変数にしたい場合に使用する。
+
+例えば、`SELECT * FROM` を含む SQL 文全体を変数にする。
+
+ただし 、意図しないSQLを実行される『SQL インジェクション』を受ける危険性がある。
+
+
+
+```typescript
+const sql = "SELECT * FROM User";
+
+const users = await prisma.$queryRawUnsafe<User[]>(sql);
+```
+
+
+<br>
+
 ## 05. Seed
 
 ### Seed とは
