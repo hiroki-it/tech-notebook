@@ -14367,7 +14367,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        テストスイート、テストケース
+        テストスイート内の処理ステップ
       
     </span>
   </a>
@@ -14376,6 +14376,17 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        テストスイート、テストケース
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         テストケースの設計
@@ -14387,7 +14398,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 正常系、異常系、境界値
@@ -14398,7 +14409,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ テストケースの命名
@@ -14464,7 +14475,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         ヘルパー
@@ -33462,7 +33473,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        テストスイート、テストケース
+        テストスイート内の処理ステップ
       
     </span>
   </a>
@@ -33471,6 +33482,17 @@
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        テストスイート、テストケース
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         テストケースの設計
@@ -33482,7 +33504,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 正常系、異常系、境界値
@@ -33493,7 +33515,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ テストケースの命名
@@ -33559,7 +33581,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         ヘルパー
@@ -33740,7 +33762,33 @@
 </code></pre></div>
 <p><br></p>
 <h2 id="03-e2e">03. E2E テストの設計<a class="headerlink" href="#03-e2e" title="Permanent link">&para;</a></h2>
-<h3 id="_2">テストスイート、テストケース<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_2">テストスイート内の処理ステップ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>テストスイートの最初にDB本体とテーブルを作成する。</p>
+<p>各テストケースの最初では <code>TRUNCATE</code> 文でテーブル内のデータを掃除し、そのうえでテストケースを順番に実行する。</p>
+<p>テストスイートはほかと独立しており、並列できる。</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">E2EテストスイートA（ほかのテストスイートとは独立）</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── 初回のみ</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── DB本体を作成</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── テーブルを作成（yarn prisma migrate dev）</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── テストケース1</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── テーブル内のデータのみを掃除（TRUNCATE文）</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── 初期データを投入（dbSeed.ts）</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── テストを実行</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">├── テストケース2</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── テーブル内のデータのみを掃除（TRUNCATE文）</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── 初期データを投入（dbSeed.ts）</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── テストを実行</span>
+<span class="l l-Scalar l-Scalar-Plain">│</span>
+<span class="l l-Scalar l-Scalar-Plain">└── テストケース3</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── テーブル内のデータのみを掃除（TRUNCATE文）</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">├── 初期データを投入（dbSeed.ts）</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">└── テストを実行</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="_3">テストスイート、テストケース<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><code>describe()</code> 関数を使用して、テストスイートを定義できる。</p>
 <p>テストスイートは階層的に定義でき、最大２階層まではあってもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;パブリックな関数名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -33752,8 +33800,8 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_3">テストケースの設計<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ 正常系、異常系、境界値<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h3 id="_4">テストケースの設計<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="_5">▼ 正常系、異常系、境界値<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>正常系、異常系、境界値のテストケースをテストスイートの種別におく。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;&lt;パブリックな関数名&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 
@@ -33794,7 +33842,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="_5">▼ テストケースの命名<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h4 id="_6">▼ テストケースの命名<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p><code>test()</code> 関数と <code>it()</code> 関数は、振る舞いの主語（濁した主語）としての <code>it</code> または <code>test</code> として見ることができる。</p>
 <p>つぎのように命名すると、<code>it</code> または <code>test</code> がテストケース名の主語になって、振る舞いに着目してる感がでる。</p>
 <p>例えば、<code>&lt;期待される動作&gt; when &lt;入力内容&gt;</code> で命名する。</p>
@@ -33889,7 +33937,7 @@
 <span class="p p-Indicator">}</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_6">ヘルパー<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h3 id="_7">ヘルパー<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nx">Cypress</span><span class="p">.</span><span class="nx">Commands</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;login&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// fixture/users/data.jsonファイルを使用する</span>
 <span class="w">  </span><span class="nx">cy</span><span class="p">.</span><span class="nx">fixture</span><span class="p">(</span><span class="s2">&quot;users/data&quot;</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">seed</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -34021,7 +34069,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月10日 16:21:46 JST">2026-08-10</span>
   </span>
 
     
