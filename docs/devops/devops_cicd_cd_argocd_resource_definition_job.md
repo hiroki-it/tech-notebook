@@ -97,6 +97,8 @@ spec:
 
 その場合、`ArgoCD Sync開始 ---> DBマイグレーション ---> アプリ起動 ---> ArgoCD Sync完了` という流れになる。
 
+例えば、Dockerfileにマイグレーション処理を組み込む。
+
 ```dockerfile
 FROM node:22.11.0-bullseye-slim as base
 

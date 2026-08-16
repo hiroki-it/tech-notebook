@@ -725,9 +725,11 @@ spec:
 
 ### aws.interruptionQueueName
 
-割り込み処理を有効化する場合に、Amazon SQS の名前を設定する。
+SQSにあるイベントを監視する場合に使用する。
 
-別途、Amazon SQS を作成し、Karpenter に Amazon SQS への権限を付与しておく必要がある。
+たとえば、EventBridgeからSQSにスポットインスタンス停止イベントを通知しておき、これをKarpenterで監視する。
+
+スポットインスタンスの停止前に、新しいNodeを起動できるようになる。
 
 ```yaml
 apiVersion: v1

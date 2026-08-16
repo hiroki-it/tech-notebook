@@ -768,3 +768,31 @@ services:
 > - https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md
 
 <br>
+
+## 10. Zscalerを使用している場合
+
+Zscalerを使用している場合、Docker Desktopの環境からコンテナイメージをプルしようとすると失敗する。
+
+`~/.cert/zscaler.cer`を、Docker Desktopがレジストリごとに参照する証明書ディレクトリへコピーする。
+
+```bash
+# Docker Hubのイメージ取得先用ディレクトリを作成
+mkdir -p ~/.docker/certs.d/registry-1.docker.io
+
+# Docker Hubの認証先用ディレクトリを作成
+mkdir -p ~/.docker/certs.d/auth.docker.io
+
+# Zscaler証明書をイメージ取得先用に登録
+cp ~/.cert/zscaler.cer ~/.docker/certs.d/registry-1.docker.io/ca.crt
+
+# Zscaler証明書を認証先用に登録
+cp ~/.cert/zscaler.cer ~/.docker/certs.d/auth.docker.io/ca.crt
+
+# イメージ取得先用証明書の権限を設定
+chmod 644 ~/.docker/certs.d/registry-1.docker.io/ca.crt
+
+# 認証先用証明書の権限を設定
+chmod 644 ~/.docker/certs.d/auth.docker.io/ca.crt
+```
+
+<br>
