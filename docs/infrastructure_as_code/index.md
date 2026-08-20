@@ -66,6 +66,7 @@ hide:
   >   > - ##### [︎ブロック](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_tf_block.html)
   >   > - ##### [︎モジュール](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_tf_module.html)
   > - ##### <u>プロバイダー</u>
+  >   > - ##### [︎独自プロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_self.html)
   >   > - ##### [︎AWS プロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.html)
   >   > - ##### [︎Kubernetes プロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.html)
   > - ##### [︎CI/CD パイプライン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html)

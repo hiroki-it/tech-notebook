@@ -106,7 +106,7 @@ markdown_extensions:
   # 目次の設定
   # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/?h=conten#table-of-contents
   - toc:
-      title: 'このページの内容'
+      title: "このページの内容"
       permalink: true
       toc_depth: 4
   # メタタグの有効化
@@ -700,6 +700,7 @@ nav:
                   - ブロック: infrastructure_as_code/infrastructure_as_code_terraform_tf_block.md
                   - モジュール: infrastructure_as_code/infrastructure_as_code_terraform_tf_module.md
               - ■ プロバイダー:
+                  - 独自プロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_self.md
                   - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.md
                   - Kubernetesプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.md
               - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.md
