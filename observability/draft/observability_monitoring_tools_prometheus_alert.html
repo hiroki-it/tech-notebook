@@ -33340,6 +33340,111 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現場の判断に応じて無効化するアラート
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="現場の判断に応じて無効化するアラート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubeletservercertificaterenewalerrors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ KubeletServerCertificateRenewalErrors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeletclientcertificaterenewalerrors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ KubeletClientCertificateRenewalErrors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeclientcertificateexpiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ KubeClientCertificateExpiration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeapidown_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ KubeAPIDown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeapierrorbudgetburn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ KubeAPIErrorBudgetBurn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeapiterminatedrequests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ KubeAPITerminatedRequests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeaggregatedapidown" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ KubeAggregatedAPIDown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeaggregatedapierrors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ KubeAggregatedAPIErrors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -33483,15 +33588,76 @@
 <blockquote>
 <ul>
 <li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificateexpiration/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificateexpiration/</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tls/certificate-rotation/">https://kubernetes.io/docs/tasks/tls/certificate-rotation/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<p>証明書の自動更新に失敗したことを示す<code>KubeletServerCertificateRenewalErrors</code>と<code>KubeletClientCertificateRenewalErrors</code>は無効化しない。</p>
-<p>また、AWSが管理するコンポーネントのアラートでも、利用者影響の検知やAWSへの問い合わせに必要な<code>KubeAPIDown</code>などは無効化しない。</p>
+<h3 id="_3">現場の判断に応じて無効化するアラート<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="kubeletservercertificaterenewalerrors">▼ <code>KubeletServerCertificateRenewalErrors</code><a class="headerlink" href="#kubeletservercertificaterenewalerrors" title="Permanent link">&para;</a></h4>
+<p>サーバー証明書の自動更新に失敗すると発火する。</p>
+<p>利用者側で更新失敗を検知する必要性を踏まえて、無効化を判断する。</p>
 <blockquote>
 <ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletservercertificaterenewalerrors/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletservercertificaterenewalerrors/</a></li>
+</ul>
+</blockquote>
+<h4 id="kubeletclientcertificaterenewalerrors">▼ <code>KubeletClientCertificateRenewalErrors</code><a class="headerlink" href="#kubeletclientcertificaterenewalerrors" title="Permanent link">&para;</a></h4>
+<p>クライアント証明書の自動更新に失敗すると発火する。</p>
+<p>利用者側で更新失敗を検知する必要性を踏まえて、無効化を判断する。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificaterenewalerrors/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificaterenewalerrors/</a></li>
+</ul>
+</blockquote>
+<h4 id="kubeclientcertificateexpiration">▼ <code>KubeClientCertificateExpiration</code><a class="headerlink" href="#kubeclientcertificateexpiration" title="Permanent link">&para;</a></h4>
+<p>Kubernetes API Serverへ接続したクライアント証明書の有効期限が近づくと発火する。</p>
+<p>EKS内部の証明書だけでなく、利用者が作成したクライアント証明書も対象になる可能性があるため、クライアント証明書による認証を使用しているかを踏まえて無効化を判断する。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeclientcertificateexpiration/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeclientcertificateexpiration/</a></li>
+</ul>
+</blockquote>
+<h4 id="kubeapidown_1">▼ <code>KubeAPIDown</code><a class="headerlink" href="#kubeapidown_1" title="Permanent link">&para;</a></h4>
+<p>Kubernetes API Serverからレスポンスがなくなると発火する。</p>
+<p>利用者影響の検知やAWSへの問い合わせに使うかを踏まえて、無効化を判断する。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown/</a></li>
+</ul>
+</blockquote>
+<h4 id="kubeapierrorbudgetburn">▼ <code>KubeAPIErrorBudgetBurn</code><a class="headerlink" href="#kubeapierrorbudgetburn" title="Permanent link">&para;</a></h4>
+<p>Kubernetes API Serverのエラー率またはレイテンシーによってエラーバジェットを急速に消費すると発火する。</p>
+<p>利用者影響の早期検知やAWSへの問い合わせに使うかを踏まえて、無効化を判断する。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapierrorbudgetburn/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapierrorbudgetburn/</a></li>
+</ul>
+</blockquote>
+<h4 id="kubeapiterminatedrequests">▼ <code>KubeAPITerminatedRequests</code><a class="headerlink" href="#kubeapiterminatedrequests" title="Permanent link">&para;</a></h4>
+<p>Kubernetes API Serverがリクエストを終了すると発火する。</p>
+<p>API操作への影響を監視するかを踏まえて、無効化を判断する。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapiterminatedrequests/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapiterminatedrequests/</a></li>
+</ul>
+</blockquote>
+<h4 id="kubeaggregatedapidown">▼ <code>KubeAggregatedAPIDown</code><a class="headerlink" href="#kubeaggregatedapidown" title="Permanent link">&para;</a></h4>
+<p>拡張APIからレスポンスがなくなると発火する。</p>
+<p>対象の拡張APIを使用しているかを踏まえて、無効化を判断する。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapidown/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapidown/</a></li>
+</ul>
+</blockquote>
+<h4 id="kubeaggregatedapierrors">▼ <code>KubeAggregatedAPIErrors</code><a class="headerlink" href="#kubeaggregatedapierrors" title="Permanent link">&para;</a></h4>
+<p>拡張APIのエラー率が高くなると発火する。</p>
+<p>対象の拡張APIを使用しているかを踏まえて、無効化を判断する。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapierrors/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapierrors/</a></li>
+</ul>
+<ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-architecture.html">https://docs.aws.amazon.com/eks/latest/userguide/eks-architecture.html</a></li>
-<li><a href="https://kubernetes.io/docs/tasks/tls/certificate-rotation/">https://kubernetes.io/docs/tasks/tls/certificate-rotation/</a></li>
 </ul>
 </blockquote>
 <p><br></p>
@@ -33515,7 +33681,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月27日 15:28:49 JST">2026-08-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月27日 15:34:44 JST">2026-08-27</span>
   </span>
 
     
