@@ -128,14 +128,76 @@ kubeletの証明書ローテーション機能がこの証明書も自動更新�
 そのため、EKS上では利用者が手動で更新する必要がなく、このアラートを通知する必要性は低い。
 
 > - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificateexpiration/
+> - https://kubernetes.io/docs/tasks/tls/certificate-rotation/
 
 <br>
 
-証明書の自動更新に失敗したことを示す`KubeletServerCertificateRenewalErrors`と`KubeletClientCertificateRenewalErrors`は無効化しない。
+### 現場の判断に応じて無効化するアラート
 
-また、AWSが管理するコンポーネントのアラートでも、利用者影響の検知やAWSへの問い合わせに必要な`KubeAPIDown`などは無効化しない。
+#### ▼ `KubeletServerCertificateRenewalErrors`
+
+サーバー証明書の自動更新に失敗すると発火する。
+
+利用者側で更新失敗を検知する必要性を踏まえて、無効化を判断する。
+
+> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletservercertificaterenewalerrors/
+
+#### ▼ `KubeletClientCertificateRenewalErrors`
+
+クライアント証明書の自動更新に失敗すると発火する。
+
+利用者側で更新失敗を検知する必要性を踏まえて、無効化を判断する。
+
+> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificaterenewalerrors/
+
+#### ▼ `KubeClientCertificateExpiration`
+
+Kubernetes API Serverへ接続したクライアント証明書の有効期限が近づくと発火する。
+
+EKS内部の証明書だけでなく、利用者が作成したクライアント証明書も対象になる可能性があるため、クライアント証明書による認証を使用しているかを踏まえて無効化を判断する。
+
+> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeclientcertificateexpiration/
+
+#### ▼ `KubeAPIDown`
+
+Kubernetes API Serverからレスポンスがなくなると発火する。
+
+利用者影響の検知やAWSへの問い合わせに使うかを踏まえて、無効化を判断する。
+
+> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown/
+
+#### ▼ `KubeAPIErrorBudgetBurn`
+
+Kubernetes API Serverのエラー率またはレイテンシーによってエラーバジェットを急速に消費すると発火する。
+
+利用者影響の早期検知やAWSへの問い合わせに使うかを踏まえて、無効化を判断する。
+
+> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapierrorbudgetburn/
+
+#### ▼ `KubeAPITerminatedRequests`
+
+Kubernetes API Serverがリクエストを終了すると発火する。
+
+API操作への影響を監視するかを踏まえて、無効化を判断する。
+
+> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapiterminatedrequests/
+
+#### ▼ `KubeAggregatedAPIDown`
+
+拡張APIからレスポンスがなくなると発火する。
+
+対象の拡張APIを使用しているかを踏まえて、無効化を判断する。
+
+> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapidown/
+
+#### ▼ `KubeAggregatedAPIErrors`
+
+拡張APIのエラー率が高くなると発火する。
+
+対象の拡張APIを使用しているかを踏まえて、無効化を判断する。
+
+> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapierrors/
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/eks-architecture.html
-> - https://kubernetes.io/docs/tasks/tls/certificate-rotation/
 
 <br>
