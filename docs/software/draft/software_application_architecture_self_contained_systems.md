@@ -19,8 +19,11 @@ description: 自己完結アーキテクチャ＠アーキテクチャの知見�
 
 自己完結システム内のバックエンドを複数のマイクロサービスの分割することで、部分的なマイクロサービスアーキテクチャとすることもできる。
 
+UIはマイクロフロントエンドとしてUIレンダリングする。
+
 ![self-contained-systems](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/self-contained-systems.png)
 
+> - https://microservices.io/patterns/decomposition/self-contained-service.html
 > - https://www.infoq.com/articles/scs-microservices-done-right/
 > - https://scs-architecture.org/vs-ms.html
 
