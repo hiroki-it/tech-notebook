@@ -33262,6 +33262,89 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#amazon-eks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon EKS上で無効化しても問題がないアラート
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Amazon EKS上で無効化しても問題がないアラート">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断基準
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubecontrollermanagerdown_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KubeControllerManagerDown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeschedulerdown_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KubeSchedulerDown
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        etcdに関するアラート
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeletservercertificateexpiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KubeletServerCertificateExpiration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeletclientcertificateexpiration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KubeletClientCertificateExpiration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -33341,6 +33424,77 @@
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="amazon-eks">Amazon EKS上で無効化しても問題がないアラート<a class="headerlink" href="#amazon-eks" title="Permanent link">&para;</a></h2>
+<h3 id="_2">判断基準<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>EKSでは、コントロールプレーンなどAWSの責任範囲に含まれるコンポーネントをAWSが運用し、障害時もAWSが復旧する。</p>
+<p>利用者による対応が不要な事象を通知しても、利用者側では直接対処できず、運用上のノイズになる。</p>
+<p>そのため、AWSが管理し、利用者側で個別に対応する必要がない対象のアラートを無効化しても、運用上の支障はない。</p>
+<p><br></p>
+<h3 id="kubecontrollermanagerdown_1"><code>KubeControllerManagerDown</code><a class="headerlink" href="#kubecontrollermanagerdown_1" title="Permanent link">&para;</a></h3>
+<p>AWSが管理するコントロールプレーン内のkube-controller-managerからレスポンスがなくなると発火する。</p>
+<p>Amazon EKSでは利用者がkube-controller-managerへ直接対処しないため、無効化してもよい。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontrollermanagerdown/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontrollermanagerdown/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="kubeschedulerdown_1"><code>KubeSchedulerDown</code><a class="headerlink" href="#kubeschedulerdown_1" title="Permanent link">&para;</a></h3>
+<p>AWSが管理するコントロールプレーン内のkube-schedulerからレスポンスがなくなると発火する。</p>
+<p>Amazon EKSでは利用者がkube-schedulerへ直接対処しないため、無効化してもよい。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeschedulerdown/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeschedulerdown/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="etcd">etcdに関するアラート<a class="headerlink" href="#etcd" title="Permanent link">&para;</a></h3>
+<p>次のアラートは、AWSが管理するコントロールプレーン内のetcdで、それぞれの異常を検知すると発火する。</p>
+<p>Amazon EKSでは利用者がetcdへ直接対処しないため、無効化してもよい。</p>
+<ul>
+<li><code>etcdBackendQuotaLowSpace</code></li>
+<li><code>etcdGRPCRequestsSlow</code></li>
+<li><code>etcdHighFsyncDurations</code></li>
+<li><code>etcdHighNumberOfFailedGRPCRequests</code></li>
+<li><code>etcdInsufficientMembers</code></li>
+<li><code>etcdMembersDown</code></li>
+<li><code>etcdNoLeader</code></li>
+</ul>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/etcd/">https://runbooks.prometheus-operator.dev/runbooks/etcd/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="kubeletservercertificateexpiration"><code>KubeletServerCertificateExpiration</code><a class="headerlink" href="#kubeletservercertificateexpiration" title="Permanent link">&para;</a></h3>
+<p>EC2 Node内のkubeletがHTTPS通信で使用するSSLサーバー証明書の有効期限が7日未満になると発火する。</p>
+<p>EKS内部の仕組みがこの証明書を自動更新する。</p>
+<p>そのため、利用者が証明書を手動で更新する必要がなく、このアラートを通知する必要性は低い。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletservercertificateexpiration/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletservercertificateexpiration/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="kubeletclientcertificateexpiration"><code>KubeletClientCertificateExpiration</code><a class="headerlink" href="#kubeletclientcertificateexpiration" title="Permanent link">&para;</a></h3>
+<p>kubeletがKubernetes API Serverとの通信に使用するクライアント証明書の有効期限が7日未満になると発火する。</p>
+<p>kubeletの証明書ローテーション機能がこの証明書も自動更新する。</p>
+<p>そのため、EKS上では利用者が手動で更新する必要がなく、このアラートを通知する必要性は低い。</p>
+<blockquote>
+<ul>
+<li><a href="https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificateexpiration/">https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificateexpiration/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<p>証明書の自動更新に失敗したことを示す<code>KubeletServerCertificateRenewalErrors</code>と<code>KubeletClientCertificateRenewalErrors</code>は無効化しない。</p>
+<p>また、AWSが管理するコンポーネントのアラートでも、利用者影響の検知やAWSへの問い合わせに必要な<code>KubeAPIDown</code>などは無効化しない。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-architecture.html">https://docs.aws.amazon.com/eks/latest/userguide/eks-architecture.html</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tls/certificate-rotation/">https://kubernetes.io/docs/tasks/tls/certificate-rotation/</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
 
 
@@ -33361,7 +33515,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 18:41:26 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月27日 15:28:49 JST">2026-08-27</span>
   </span>
 
     
