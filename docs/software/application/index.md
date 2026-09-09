@@ -62,6 +62,8 @@ hide:
 
 - #### [データ処理ワークフロー](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_data_processing_workflow.html)
 
+- #### [キャッシュ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_cache.html)
+
 - #### <u>マイクロサービス</u>
 
   > - ##### [マイクロサービス設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_microservices_services_design.html)

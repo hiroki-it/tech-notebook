@@ -216,87 +216,8 @@ flowchart LR
 
 ![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリ全体設計.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%96%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%A2%E3%83%97%E3%83%AA%E5%85%A8%E4%BD%93%E8%A8%AD%E8%A8%88.drawio.png)
 
-# 06-02. フロントエンドの関連パターン
-
-## CDN パターン
-
-CDN パターンは、クラウドアーキテクチャで採用できるパターンです。
-
-CDN パターンでは、物理的に世界の様々な場所にあるエッジサーバーがキャッシュサーバーとして機能します。
-
-CDN パターンはマイクロサービスアーキテクチャとは直接的な関連性が低いです。
-
-ただ、マイクロサービスアーキテクチャでこれを採用すると仕組みが複雑になるため、概説します。
-
-```mermaid
-flowchart LR
-
-  クラウドデザインパターン --- CDN
 
 
-```
-
-[Cloud Architecture Patterns](https://www.oreilly.com/library/view/cloud-architecture-patterns/9781449357979/ch14.html)
-
-### キャッシュ返却処理のシーケンス
-
-CDN の仕組みでは、オリジン (フロントエンドアプリ) のダウンストリームに、CDN DNS サーバーとエッジサーバーを配置します。
-
-エッジサーバーのデータセンターは様々な場所にあります。
-
-ブラウザ (PC、スマホ) の送信元からもっとも近いデータセンターにあるエッジサーバーが、静的ファイルのキャッシュを作成し、レスポンスします。
-
-以下のシーケンス図では、マイクロサービスアーキテクチャでの CDN の仕組みを解説しています。
-
-```mermaid
----
-title: マイクロサービスアーキテクチャでのCDNの仕組み
----
-sequenceDiagram
-
-    autonumber
-
-    actor ブラウザ (PC、スマホ)
-    participant ブラウザ (PC、スマホ)
-    participant ドメインレジストリ (Route53)
-    participant CDN DNSサーバー
-    participant エッジサーバー
-    participant オリジン (フロントエンドアプリ)
-    participant API Gatewayなど
-
-    ブラウザ (PC、スマホ) ->> ドメインレジストリ (Route53): 正引き
-
-    ドメインレジストリ (Route53) ->> CDN DNSサーバー: 正引き
-
-    CDN DNSサーバー -->> ドメインレジストリ (Route53): IPアドレス
-
-    ドメインレジストリ (Route53) -->> ブラウザ (PC、スマホ): IPアドレス
-
-    ブラウザ (PC、スマホ) ->> ドメインレジストリ (Route53): リクエスト
-
-    ドメインレジストリ (Route53) ->> エッジサーバー: リクエスト
-
-    エッジサーバー ->> エッジサーバー: キャッシュ検索
-
-    alt キャッシュがあれば
-      エッジサーバー -->> ブラウザ (PC、スマホ): レスポンス<br>(静的ファイル)
-    else キャッシュがなければ
-      エッジサーバー ->> オリジン (フロントエンドアプリ) : リクエスト
-    end
-
-    オリジン (フロントエンドアプリ) ->> API Gatewayなど : リクエスト
-
-    API Gatewayなど -->> オリジン (フロントエンドアプリ) : レスポンス<br>(静的ファイル)
-
-    オリジン (フロントエンドアプリ) -->> エッジサーバー : レスポンス<br>(静的ファイル)
-
-    エッジサーバー ->> エッジサーバー : キャッシュ作成
-
-    エッジサーバー -->> ブラウザ (PC、スマホ): レスポンス<br>(静的ファイル)
-
-```
-
-[How CloudFront delivers content - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html#HowCloudFrontWorksContentDelivery)
 
 # 07. API Gateway 分割方法
 
