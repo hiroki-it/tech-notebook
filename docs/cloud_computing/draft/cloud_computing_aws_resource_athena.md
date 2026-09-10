@@ -18,7 +18,7 @@ description: AWS Athena＠AWSリソースの知見を記録しています。
 
 ### Terraform
 
-保存されたクエリをTerraformで定義しておく
+保存されたクエリをTerraformで定義しておく。
 
 ```terraform
 resource "aws_athena_named_query" "create_table_foo_alb_logs" {
@@ -92,3 +92,18 @@ TBLPROPERTIES (
   'storage.location.template' = 's3://${s3_bucket_name}/${elb_name}/AWSLogs/${account_id}/elasticloadbalancing/${region}/$${date}'
 );
 ```
+
+1. terraform applyをすると、「保存したクエリ」にCREATE文がでる 
+2. CREATE文をコンソール上で実行し、テーブルを作成する 
+3. SELECT文を実行し、テーブル列に基づく構造のログをS3から取得する
+
+```sql
+SELECT *
+FROM alb_logs
+WHERE date = date_format(current_date, '%Y/%m/%d')
+ORDER BY from_iso8601_timestamp(time) DESC
+LIMIT 10;
+```
+
+<br>
+
