@@ -80,6 +80,7 @@ metadata:
   namespace: system
   name: foo-pod-failure-one-mode
   annotations:
+    # 平常時は障害注入を無効化しておく
     experiment.chaos-mesh.org/pause: "true"
 spec:
   schedule: "30 10 21 3 *"
@@ -118,6 +119,7 @@ metadata:
   namespace: system
   name: foo-pod-kill-one-mode
   annotations:
+    # 平常時は障害注入を無効化しておく
     experiment.chaos-mesh.org/pause: "true"
 spec:
   schedule: "35 10 21 3 *"
@@ -153,6 +155,7 @@ metadata:
   namespace: system
   name: foo-response-delay-one-mode
   annotations:
+    # 平常時は障害注入を無効化しておく
     experiment.chaos-mesh.org/pause: "true"
 spec:
   schedule: "40 10 21 3 *"
@@ -196,6 +199,7 @@ metadata:
   namespace: system
   name: foo-network-loss-one-mode
   annotations:
+    # 平常時は障害注入を無効化しておく
     experiment.chaos-mesh.org/pause: "true"
 spec:
   schedule: "45 10 21 3 *"
@@ -238,6 +242,7 @@ metadata:
   namespace: system
   name: foo-cpu-stress-one-mode
   annotations:
+    # 平常時は障害注入を無効化しておく
     experiment.chaos-mesh.org/pause: "true"
 spec:
   schedule: "50 10 21 3 *"
@@ -278,6 +283,7 @@ metadata:
   namespace: system
   name: foo-memory-stress-one-mode
   annotations:
+    # 平常時は障害注入を無効化しておく
     experiment.chaos-mesh.org/pause: "true"
 spec:
   schedule: "55 10 21 3 *"
