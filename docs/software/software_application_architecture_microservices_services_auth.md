@@ -73,7 +73,7 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 
 その後、Cookie に JWT を保管する。
 
-次回、Kong Gateway (API ゲートウェイ) がフロントエンドからのリクエストを Keycloak にフォワーディングし、JWT トークンの署名を検証する。
+次回、Kong Gateway (API ゲートウェイ) は Keycloak から取得した公開鍵を使用し、フロントエンドから受信した JWT トークンの署名を検証する。
 
 結果に応じて、宛先マイクロサービスにルーティングするかどうかを決める。
 
@@ -257,7 +257,7 @@ API ゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 認可マイクロサービスとして認可プロバイダーを配置する。
 
-認可スコープを検証し、もしマイクロサービスの認可スコープが不十分であれば、リクエストを拒否する。
+認可プロバイダーは、アカウント属性やワークロード ID の認可スコープに基づいて操作の許否を決定し、その結果をマイクロサービスに返信する。マイクロサービスは結果に応じてリクエストを許可または拒否する。
 
 ![microservices_authorization_centralized-authorization_external-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization_external-provider.png)
 

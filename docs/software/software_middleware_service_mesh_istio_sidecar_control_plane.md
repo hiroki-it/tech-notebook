@@ -490,13 +490,13 @@ Istiod コントロールプレーンは、サービスレジストリ (例：et
 
 ### `15012` 番
 
-`discovery` コンテナの `15012` 番ポートでは、マイクロサービス間で相互 TLS 認証による HTTPS プロトコルを使用する場合、istio-proxy からのサーバー証明書に関するリクエストを待ち受け、`discovery` コンテナ内のプロセスに渡す。
+`discovery` コンテナの `15012` 番ポートでは、マイクロサービス間で相互 TLS 認証による HTTPS プロトコルを使用する場合、istio-proxy からの証明書署名要求を待ち受け、`discovery` コンテナ内のプロセスに渡す。
 
-リクエストの内容に応じて、サーバー証明書と秘密鍵を含むレスポンスを返信する。
+リクエストの内容に応じて、署名済みのクライアント証明書とサーバー証明書を含むレスポンスを返信する。秘密鍵は istio-proxy 内の pilot-agent プロセスが作成し、Istiod には送信しない。
 
 istio-proxy はこれを受信し、pilot-agent は Envoy にこれらを紐付ける。
 
-また、サーバー証明書の有効期限が切れれば、istio-proxy からのリクエストに応じて、新しいサーバー証明書と秘密鍵を作成する。
+また、証明書の有効期限が切れる前に、istio-proxy は秘密鍵から証明書署名要求を再作成して送信し、新しい署名済み証明書を取得する。
 
 ![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_certificate.png)
 

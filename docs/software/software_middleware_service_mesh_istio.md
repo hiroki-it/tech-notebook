@@ -410,7 +410,7 @@ AuthorizationPolicy で認可プロバイダー (例：Keycloak、Open Policy Ag
 3. Istiod は署名済みのクライアント証明書／サーバー証明書を pilot-agent プロセスへ返し、pilot-agent プロセスの SDS-API が Envoy プロセスに配布する。
 4. Istiod コントロールプレーンは、CA 証明書を持つ `istio-ca-root-cert` (ConfigMap) を自動的に作成する。`istio-ca-root-cert` は istio-proxy にマウントされ、証明書を検証するために使用する。
 5. istio-proxy 間で相互 TLS 認証できるようになる。
-6. 証明書が失効すると、istio-proxy の証明書が自動的に差し代わる。Pod の再起動は不要である。
+6. 証明書の有効期限が切れる前に、istio-proxy は秘密鍵から証明書署名要求を再作成して Istiod に送信し、新しい証明書を取得する。Pod の再起動は不要である。
 
 ![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
 

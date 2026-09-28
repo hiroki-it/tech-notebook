@@ -50,7 +50,7 @@ jaeger クライアントパッケージは、コンテナ内でデーモンと�
 
 jaeger エージェントは、Pod 内でサイドカーとして常駐し、アプリコンテナからスパンの受信をリッスンする。
 
-もし、サービスメッシュツール (例：Istio、Linkerd) のサイドカーモデルと Jaeger の両方を採用する場合、jaeger エージェントの代わりにサイドカーを使用することになるため、jaeger エージェントは不要になる。
+Istio と Jaeger を連携する場合、istio-proxy は、Istio に登録したトレースプロバイダーへスパンを送信する。Jaeger Agent の要否は、そのトレースプロバイダーと収集経路の構成によって決まる。
 
 > - https://www.jaegertracing.io/docs/latest/architecture/#agent
 
@@ -62,7 +62,7 @@ Jaeger Collector は、プッシュ型で jaeger エージェントからコン�
 
 Jaeger のダッシュボードは、このローカルストレージからスパンを取得し、分散トレースとして可視化する。
 
-もし、サービスメッシュツール (例：Istio、Linkerd) のサイドカーモデルと Jaeger の両方を採用する場合、jaeger エージェントの代わりに、サイドカーがプロキシ (例：Jaeger Collector) にスパンを送信する責務を持つ。
+Istio と連携する場合、istio-proxy は、MeshConfig で登録し Telemetry で選択したトレースプロバイダーへスパンを送信する。
 
 > - https://www.jaegertracing.io/docs/latest/architecture/#collector
 
