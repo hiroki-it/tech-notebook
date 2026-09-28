@@ -27,7 +27,7 @@ Envoy には静的/動的な設定がある。
 
 一方で動的な設定は、xDS サーバーによって Envoy の実行時に初めて適用される。
 
-Envoy は、xDS サーバーとの間で、リモートプロシージャーコールを双方向で起動時/定期的に実行し、取得した宛先情報を自身に登録する。
+Istio の Envoy は、pilot-agent を介して Istiod の ADS-API とストリーミング方式で通信し、Envoy 設定値をリアルタイムで取得する。
 
 > - https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e
 > - https://i-beam.org/2019/03/13/envoy-xds-server/
@@ -260,7 +260,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 #### ▼ XDS-API との通信の仕組み
 
-Envoy は、XDS-API にリモートプロシージャーコールを単方向/双方向で実行し、返信/送信された宛先情報を動的に設定する。
+Istio の Envoy は、pilot-agent を介して Istiod の ADS-API にリモートプロシージャーコールし、ストリーミング方式で取得した Envoy 設定値を動的に設定する。
 
 Envoy が組み込まれたサービスメッシュツール (例：Istio、Linkerd) では、Envoy のコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。
 
@@ -289,9 +289,9 @@ Envoy が組み込まれたサービスメッシュツール (例：Istio、Link
 
 `(5)`
 
-: Envoy は、リスナーとクラスターを XDS-API から定期的に取得する。
+: Envoy は、ADS-API のストリームを介して更新された設定値をリアルタイムで取得する。
 
-     取得した宛先情報を自身に設定する。
+     取得した設定値を自身に設定する。
 
 #### ▼ 実装
 

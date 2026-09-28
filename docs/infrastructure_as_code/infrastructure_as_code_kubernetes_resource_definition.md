@@ -3428,6 +3428,8 @@ spec:
 
 kubelet がヘルスチェックを実行することで、コンテナがトラフィックを処理可能かを確認する。
 
+ReadinessProbe に失敗した場合、Pod は Service のルーティング対象から除外される。
+
 `terminationGracePeriodSeconds` は、`.spec.terminationGracePeriodSeconds` キーで Pod 単位の待機時間を設定できる。
 
 ```yaml

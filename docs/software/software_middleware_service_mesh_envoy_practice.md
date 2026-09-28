@@ -265,7 +265,7 @@ Envoy
 
 #### ▼ x-envoy-overloaded
 
-送信元 Envoy のアウトバウンド通信時に、サーキットブレイカーまたはメンテナンスモードによってリクエストが遮断されたことを表す。
+送信元 Envoy のアウトバウンド通信時に、接続プールに基づくサーキットブレイカーによってリクエストが遮断されたことを表す。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-overloaded
 > - https://aws.amazon.com/cn/blogs/china/how-to-use-metrics-and-logs-to-troubleshoot-app-mesh-related-network-problems/

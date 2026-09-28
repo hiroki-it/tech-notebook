@@ -237,8 +237,11 @@ Istio のサービスメッシュ外のネットワークからのインバウ�
 
 - 通常の istio-proxy の場合
   - `holdApplicationUntilProxyStarts` キーを `true` にする (`.spec.containers[*].lifecycle.postStart.exec.command` キーへ対応)
-  - `EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数を `true` に設定する (`.spec.containers[*].lifecycle.preStop.exec.command` キーへ対応)
+  - `.spec.containers[*].lifecycle.preStop.exec.command` キーで、マイクロサービスの終了後に istio-proxy が終了するようにする
 - InitContainer による istio-proxy を使用する場合 (両方に対応)
+
+なお、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数は起動／終了順序ではなく、Envoy のドレイン処理を安全に完了するための設定である。
+ネイティブサイドカーを使用する場合も、`MINIMUM_DRAIN_DURATION` 変数と組み合わせて設定する。
 
 ```yaml
 apiVersion: apps/v1
@@ -589,25 +592,23 @@ kubelet は、対象のポート番号でプロセスがリクエストを待ち
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
-istio-proxy は、Envoy プロセスを安全に停止する。
+istio-proxy は、Envoy プロセスを安全に停止するためにドレイン処理を実行する。
 
 `(1)`
 
-: istio-proxy は Graceful Drain モード待機時間を開始する。
+: kubelet が、istio-proxy 内の親プロセスである pilot-agent に `SIGTERM` シグナルを送信する。
 
 `(2)`
 
-: Envoy は、接続のドレイン処理を実施する。
-
-    Podの`.metadata.annotations.proxy.istio.io/config.terminationDrainDuration`値 (デフォルト`5`秒) の待機時間だけ、リクエストを受信しながら移行していく。
+: pilot-agent は Envoy のドレイン処理を開始する。
 
 `(3)`
 
-: Envoy は、プロセスの Graceful Drain モードを終了する。
+: Envoy は新規通信の待ち受けを停止し、現在処理中の通信がなくなるまでドレイン処理の終了を待機してから終了する。
 
 `(4)`
 
-: istio-proxy に SIGKILL シグナルを送信する。
+: Envoy の終了後に pilot-agent が終了し、istio-proxy が終了する。
 
 > - https://sreake.com/blog/istio-proxy-stop-behavior/
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy

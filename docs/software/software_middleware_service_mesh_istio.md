@@ -179,16 +179,14 @@ p99、1000 rps/s、240 秒間の負荷の場合である。
 
 ### ネットワークレイヤー
 
-L3/L4/L7 に対応している。
-
-ただし、Cilium サービスメッシュとは異なり、L3 の設定をユーザーは変更できない。
+L4/L7 に対応している。
 
 > - https://istio.io/latest/blog/2024/ambient-vs-cilium/
 
 ### パケット処理の仕組み
 
 1. istio-proxy にて、リスナーでリクエストを受信する。
-2. EnvoyFilter があれば、これをリスナーフィルターとして Envoy に適用する。
+2. フィルターでリクエストを処理する。
 3. ルートでリクエストを受け取る。
 4. クラスターでリクエストを受け取る。
 5. クラスター配下のエンドポイントにリクエストを送信する。
@@ -408,8 +406,8 @@ AuthorizationPolicy で認可プロバイダー (例：Keycloak、Open Policy Ag
 クライアント証明書／サーバー証明書を提供しつつ、これを定期的に自動更新する。
 
 1. Istiod コントロールプレーンは、`istio-ca-secret` (Secret) を自己署名する。
-2. Istiod コントロールプレーンは、istio-proxy から送信された秘密鍵と証明書署名要求で署名済みのクライアント証明書／サーバー証明書を作成する。追加設定がない場合、istio-proxy の pilot-agent プロセスが動作する。pilot-agent プロセスは秘密鍵と証明書署名要求を自動で作成する。
-3. istio-proxy からのリクエストに応じて、Istiod の SDS-API がクライアント証明書／サーバー証明書を istio-proxy に配布する。
+2. Istiod コントロールプレーンは、istio-proxy から送信された証明書署名要求をもとに、署名済みのクライアント証明書／サーバー証明書を作成する。追加設定がない場合、istio-proxy の pilot-agent プロセスが秘密鍵と証明書署名要求を自動で作成し、証明書署名要求だけを Istiod に送信する。
+3. Istiod は署名済みのクライアント証明書／サーバー証明書を pilot-agent プロセスへ返し、pilot-agent プロセスの SDS-API が Envoy プロセスに配布する。
 4. Istiod コントロールプレーンは、CA 証明書を持つ `istio-ca-root-cert` (ConfigMap) を自動的に作成する。`istio-ca-root-cert` は istio-proxy にマウントされ、証明書を検証するために使用する。
 5. istio-proxy 間で相互 TLS 認証できるようになる。
 6. 証明書が失効すると、istio-proxy の証明書が自動的に差し代わる。Pod の再起動は不要である。
@@ -426,7 +424,7 @@ AuthorizationPolicy で認可プロバイダー (例：Keycloak、Open Policy Ag
 
 Istiod コントロールプレーン (`discovery` コンテナ) を中間認証局として使用し、ルート認証局を Istio 以外に委譲できる。
 
-外部のルート認証局は、istio-proxy から送信された秘密鍵と証明書署名要求で署名済みのサーバー証明書を作成する。
+外部のルート認証局は Istiod 用の中間 CA 証明書を発行する。Istiod は、この中間 CA 証明書を使用して、istio-proxy から送信された証明書署名要求をもとに署名済みのクライアント証明書／サーバー証明書を作成する。
 
 - CertManager (ルート認証局、署名済み証明書の発行、マウント用 Secret への証明書埋め込み、自動ローテーション)
 - HashiCorp Vault (ルート認証局) + CertManager (署名済み証明書の発行、マウント用 Secret への証明書埋め込み、自動ローテーション)
@@ -443,7 +441,7 @@ Istiod コントロールプレーン (`discovery` コンテナ) を中間認証
 
 #### ▼ 相互 TLS 認証とは
 
-相互 TLS 認証を実施し、`L7` のアプリケーションデータを暗号化/復号する。
+相互 TLS 認証を実施し、L4/L7 通信のアプリケーションデータを暗号化/復号する。
 
 > - https://istio.io/latest/docs/concepts/security/#authentication-architecture
 

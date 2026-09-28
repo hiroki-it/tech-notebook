@@ -168,11 +168,11 @@ Pod
 
 <br>
 
-### サブセット名を `1` 個にする
+### デフォルトルートにサブセットを指定する
 
-Istio リソースで設定するサブセット名は `1` 個だけにする。
+複数のサブセットを定義する場合でも、デフォルトルートでは特定のサブセットを指定する。
 
-これにより、Istio Ingress Gateway で受信した通信を、特定のバージョンの Pod にルーティングできる。
+これにより、個別のルーティング条件に一致しない通信も、特定のバージョンの Pod にルーティングできる。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -197,9 +197,9 @@ spec:
 
 ### Istio リソースのリクエスト可能な範囲を限定する
 
-Istio リソースの `.spec.exportTo` キーでは『`.` (ドット) 』を設定する。
+Istio リソースを同じ Namespace 内だけに公開する場合、`.spec.exportTo` キーでは『`.` (ドット) 』を設定する。
 
-これにより、同じ Namespace からしかリクエストを受信できないようにする。
+これにより、Istiod が設定を同じ Namespace のプロキシだけに配布する。
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3

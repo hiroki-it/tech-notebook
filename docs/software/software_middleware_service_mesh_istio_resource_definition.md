@@ -435,9 +435,7 @@ spec:
 
 ### .spec.host
 
-インバウンド通信のルーティング元とする Service の名前を設定する。
-
-これにより、Envoy は特定の Service からのルーティングのみ受信するようになる。
+トラフィックポリシーの適用対象とする宛先 Service または ServiceEntry のホスト名を設定する。
 
 **＊実装例＊**
 
@@ -516,11 +514,7 @@ spec:
 
 デフォルトでは上限がない。
 
-`2` 以上であれば TCP KeepAlive を実施する。`1` とする場合は TCP KeepAlive を無効にする。
-
-また、サーキットブレイカーを開始するための外れ値の閾値になる。
-
-上限を超過した場合、Pod へのルーティングが停止し、何らかの意図したエラーを返信する (サーキットブレイカー) 。
+`1` とする場合は HTTP KeepAlive を無効にし、リクエストごとに接続を閉じる。
 
 HTTP/2 の場合は、TCP 上で単一または複数のストリームを確立し、ストリーム内で単一または複数のリクエスト／レスポンスを並行的に送受信する。
 
@@ -710,7 +704,7 @@ spec:
 
 #### ▼ connectionPool.tcp.maxConnections
 
-キューに入れられる TCP 接続の最大数を設定する。
+同時に確立できる TCP 接続の最大数を設定する。
 
 **＊実装例＊**
 
@@ -881,9 +875,7 @@ spec:
 
 #### ▼ outlierDetection.minHealthPercent
 
-指定された割合で正常になるように、ルーティング先を決める。
-
-異常なルーティング先がある場合は正常なほうにルーティングし、異常なルーティング先が回復することを待つ。
+宛先サブセットの正常率が指定値を下回った場合に、外れ値検出を無効化するための最低正常率を設定する。
 
 **＊実装例＊**
 
@@ -2551,7 +2543,7 @@ spec:
     # L4 プロトコルでは、この設定は実際には使われない
     # VirtualService では "." をつけないとエラーになるため、ServiceEntry も合わせておく
     - tcp
-  address:
+  addresses:
     # L4 プロトコルでは、この設定でルーティングする
     - 127.0.0.1/32
   location: MESH_EXTERNAL
@@ -2561,7 +2553,7 @@ spec:
       protocol: TCP
 ```
 
-`L7` プロトコル (HTTP、HTTPS、MySQL など) では、リクエストに Host ヘッダーがある。
+`L7` プロトコル (HTTP、HTTPS など) では、リクエストに Host ヘッダーがある。
 
 送信側の VirtualService の `.spec.http[*].route[*].destination` では、Host ヘッダーに "." をつけないとエラーになるため、受信側の ServiceEntry も合わせておく (例：`tcp.smtp`) とよい。
 
@@ -2759,7 +2751,7 @@ kind: ServiceEntry
 metadata:
   name: foo-service-entry
 spec:
-  resolution: DNS
+  resolution: NONE
 ```
 
 <br>
