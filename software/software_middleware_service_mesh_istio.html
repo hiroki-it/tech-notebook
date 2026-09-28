@@ -35829,7 +35829,7 @@
 <h2 id="03">03. アンビエントモード (サイドカーレスパターン)<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_10">アンビエントモードとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>アンビエントモードは、サイドカーレスパターンのサービスメッシュを実装したものである。</p>
-<p>各 Node 上にエージェントとして Envoy を稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。</p>
+<p>各 Node 上では DaemonSet 配下の Pod として ztunnel を稼働させ、必要に応じて Deployment 配下の Pod として waypoint-proxy を稼働させる。ztunnel は L4、waypoint-proxy は L7 を中心とする非機能ロジックを担う。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.csdn.net/cr7258/article/details/126870859">https://blog.csdn.net/cr7258/article/details/126870859</a></li>
@@ -36114,7 +36114,7 @@
 <h2 id="07">07. テレメトリーの作成<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <h3 id="oss">他の OSS との連携<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h3>
 <p>istio-proxy は、テレメトリーを作成する。</p>
-<p>各監視ツールは、プル型 (ツールが Istiod から収集) やプッシュ型 (Istiod がツールに送信) でこのテレメトリーを収集する。</p>
+<p>各監視ツールは、プル型で Istio Ingress/Egress Gateway、istio-proxy、Istiod からデータポイントを収集する。スパンは、istio-proxy がプッシュ型で収集ツールに送信する。</p>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=17">https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=17</a></li>
@@ -36123,7 +36123,7 @@
 <p><br></p>
 <h2 id="07-02">07-02. メトリクス<a class="headerlink" href="#07-02" title="Permanent link">&para;</a></h2>
 <h3 id="_35">メトリクスの作成と送信<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
-<p>istio-proxy はメトリクスの元になるデータポイントを作成し、Istiod コントロールプレーン (<code>discovery</code> コンテナ) に送信する。</p>
+<p>istio-proxy はメトリクスの元になるデータポイントを記録し、Prometheus は istio-proxy の <code>:15020/stats/prometheus</code> エンドポイントから収集する。Istiod は Istio 自体に関するデータポイントを記録し、Prometheus はこれも Istiod から収集する。</p>
 <p>Prometheus は、<code>discovery</code> コンテナの <code>/stats/prometheus</code> エンドポイント (<code>15090</code> 番ポート) からメトリクスの元になるデータポイントを収集する。</p>
 <p>なお、istio-proxy にも <code>/stats/prometheus</code> エンドポイントはある。</p>
 <blockquote>
@@ -36269,7 +36269,7 @@
 </tbody>
 </table>
 <h4 id="istio-proxy_1">▼ istio-proxy に関するメトリクス<a class="headerlink" href="#istio-proxy_1" title="Permanent link">&para;</a></h4>
-<p>Prometheus 上でメトリクスをクエリすると、Istiod コントロールプレーン (<code>discovery</code> コンテナ) から収集したデータポイントを取得できる。</p>
+<p>Prometheus 上でメトリクスをクエリすると、istio-proxy の <code>:15020/stats/prometheus</code> エンドポイントから収集したデータポイントを取得できる。</p>
 <table>
 <thead>
 <tr>
@@ -36742,7 +36742,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月28日 15:39:09 JST">2026-09-28</span>
   </span>
 
     

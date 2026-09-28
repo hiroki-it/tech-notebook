@@ -35413,8 +35413,8 @@
 </ul>
 </blockquote>
 <h4 id="_9">▼ 宛先/送信元<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>アップストリームは、Envoy のレスポンスの宛先を表す。</p>
-<p>ダウンストリームは、Envoy のレスポンスの送信元を表す。</p>
+<p>アップストリームは、Envoy がリクエストを転送する宛先を表す。</p>
+<p>ダウンストリームは、Envoy にリクエストを送信する送信元を表す。</p>
 <blockquote>
 <ul>
 <li><a href="https://hinawatts.medium.com/timeout-settings-in-envoy-proxy-a368f3006933">https://hinawatts.medium.com/timeout-settings-in-envoy-proxy-a368f3006933</a></li>
@@ -35807,8 +35807,8 @@
 <p><br></p>
 <h2 id="03-04">03-04. ルート<a class="headerlink" href="#03-04" title="Permanent link">&para;</a></h2>
 <h3 id="_20">ルートとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<p>リスナーのサブセットである。</p>
-<p>ルートでは、リスナーで処理した通信を受け取り、特定のクラスターの IP アドレスとポートにルーティングする。</p>
+<p>ルートは、リスナーで受信した通信の宛先を選ぶ設定値である。</p>
+<p>ルートでは、リスナーで処理した通信を受け取り、宛先のクラスターを決める。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010">https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010</a></li>
@@ -36156,7 +36156,7 @@
 <p><br></p>
 <h2 id="03-06">03-06. エンドポイント<a class="headerlink" href="#03-06" title="Permanent link">&para;</a></h2>
 <h3 id="_31">エンドポイントとは<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
-<p>クラスターのサブセットである。</p>
+<p>エンドポイントは、クラスターが負荷分散先として選ぶ宛先の設定値である。</p>
 <p>エンドポイントでは、クラスターでロードバランシングされた通信を受け取り、IP アドレスとポート番号を指定して、宛先に送信する。</p>
 <blockquote>
 <ul>
@@ -36165,7 +36165,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_32">エンドポイントの静的な登録<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
-<p><code>static_resources.clusters</code> キー配下で、リスナーと合わせて設定する。</p>
+<p><code>static_resources.clusters</code> キー配下で、クラスターと合わせて設定する。</p>
 <blockquote>
 <ul>
 <li><a href="https://skyao.io/learning-envoy/architecture/concept/cluster.html">https://skyao.io/learning-envoy/architecture/concept/cluster.html</a></li>
@@ -36175,7 +36175,7 @@
 <p><br></p>
 <h3 id="_33">エンドポイントの動的な登録<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <p>Envoy は、起動時にコントロールプレーンの EDS-API にリモートプロシージャーコールを単方向/双方向で実行し、宛先のエンドポイントを取得する。</p>
-<p>また、Envoy はルートに宛先のエンドポイント設定を自身に動的に設定する。</p>
+<p>また、Envoy は宛先のエンドポイント設定を自身に動的に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">...</span>
 
 <span class="c1">// リモートプロシージャーコール</span>
@@ -36345,7 +36345,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:57:24 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月28日 15:39:09 JST">2026-09-28</span>
   </span>
 
     
