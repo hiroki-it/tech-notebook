@@ -38630,8 +38630,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <p><br></p>
 <h3 id="spechost">.spec.host<a class="headerlink" href="#spechost" title="Permanent link">&para;</a></h3>
-<p>インバウンド通信のルーティング元とする Service の名前を設定する。</p>
-<p>これにより、Envoy は特定の Service からのルーティングのみ受信するようになる。</p>
+<p>トラフィックポリシーの適用対象とする宛先 Service または ServiceEntry のホスト名を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -38695,9 +38694,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="connectionpoolhttpmaxrequestsperconnection">▼ connectionPool.http.maxRequestsPerConnection<a class="headerlink" href="#connectionpoolhttpmaxrequestsperconnection" title="Permanent link">&para;</a></h4>
 <p>1 つの TCP 接続で許可される HTTP1.1 と HTTP/2 プロトコルのリクエストの最大数を設定する。</p>
 <p>デフォルトでは上限がない。</p>
-<p><code>2</code> 以上であれば TCP KeepAlive を実施する。<code>1</code> とする場合は TCP KeepAlive を無効にする。</p>
-<p>また、サーキットブレイカーを開始するための外れ値の閾値になる。</p>
-<p>上限を超過した場合、Pod へのルーティングが停止し、何らかの意図したエラーを返信する (サーキットブレイカー) 。</p>
+<p><code>1</code> とする場合は HTTP KeepAlive を無効にし、リクエストごとに接続を閉じる。</p>
 <p>HTTP/2 の場合は、TCP 上で単一または複数のストリームを確立し、ストリーム内で単一または複数のリクエスト／レスポンスを並行的に送受信する。</p>
 <p>そのため、リクエストの上限値を正確に検知することは難しく、おおよそになる。</p>
 <p><strong>＊実装例＊</strong></p>
@@ -38855,7 +38852,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="connectionpooltcpmaxconnections">▼ connectionPool.tcp.maxConnections<a class="headerlink" href="#connectionpooltcpmaxconnections" title="Permanent link">&para;</a></h4>
-<p>キューに入れられる TCP 接続の最大数を設定する。</p>
+<p>同時に確立できる TCP 接続の最大数を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -38996,8 +38993,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="outlierdetectionminhealthpercent">▼ outlierDetection.minHealthPercent<a class="headerlink" href="#outlierdetectionminhealthpercent" title="Permanent link">&para;</a></h4>
-<p>指定された割合で正常になるように、ルーティング先を決める。</p>
-<p>異常なルーティング先がある場合は正常なほうにルーティングし、異常なルーティング先が回復することを待つ。</p>
+<p>宛先サブセットの正常率が指定値を下回った場合に、外れ値検出を無効化するための最低正常率を設定する。</p>
 <p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -40457,7 +40453,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">    </span><span class="c1"># L4 プロトコルでは、この設定は実際には使われない</span>
 <span class="w">    </span><span class="c1"># VirtualService では &quot;.&quot; をつけないとエラーになるため、ServiceEntry も合わせておく</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp</span>
-<span class="w">  </span><span class="nt">address</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">addresses</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># L4 プロトコルでは、この設定でルーティングする</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">127.0.0.1/32</span>
 <span class="w">  </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MESH_EXTERNAL</span>
@@ -40466,7 +40462,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tcp</span>
 <span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
 </code></pre></div>
-<p><code>L7</code> プロトコル (HTTP、HTTPS、MySQL など) では、リクエストに Host ヘッダーがある。</p>
+<p><code>L7</code> プロトコル (HTTP、HTTPS など) では、リクエストに Host ヘッダーがある。</p>
 <p>送信側の VirtualService の <code>.spec.http[*].route[*].destination</code> では、Host ヘッダーに "." をつけないとエラーになるため、受信側の ServiceEntry も合わせておく (例：<code>tcp.smtp</code>) とよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
@@ -40621,7 +40617,7 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-service-entry</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DNS</span>
+<span class="w">  </span><span class="nt">resolution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NONE</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="10-sidecar">10. Sidecar<a class="headerlink" href="#10-sidecar" title="Permanent link">&para;</a></h2>
@@ -41683,7 +41679,7 @@ $<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> <
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月28日 17:12:45 JST">2026-09-28</span>
   </span>
 
     

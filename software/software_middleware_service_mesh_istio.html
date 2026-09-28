@@ -35839,8 +35839,7 @@
 <p><br></p>
 <h2 id="03_1">03. トラフィック管理<a class="headerlink" href="#03_1" title="Permanent link">&para;</a></h2>
 <h3 id="_11">ネットワークレイヤー<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>L3/L4/L7 に対応している。</p>
-<p>ただし、Cilium サービスメッシュとは異なり、L3 の設定をユーザーは変更できない。</p>
+<p>L4/L7 に対応している。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/blog/2024/ambient-vs-cilium/">https://istio.io/latest/blog/2024/ambient-vs-cilium/</a></li>
@@ -35849,7 +35848,7 @@
 <h3 id="_12">パケット処理の仕組み<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <ol>
 <li>istio-proxy にて、リスナーでリクエストを受信する。</li>
-<li>EnvoyFilter があれば、これをリスナーフィルターとして Envoy に適用する。</li>
+<li>フィルターでリクエストを処理する。</li>
 <li>ルートでリクエストを受け取る。</li>
 <li>クラスターでリクエストを受け取る。</li>
 <li>クラスター配下のエンドポイントにリクエストを送信する。</li>
@@ -36053,8 +36052,8 @@
 <p>クライアント証明書／サーバー証明書を提供しつつ、これを定期的に自動更新する。</p>
 <ol>
 <li>Istiod コントロールプレーンは、<code>istio-ca-secret</code> (Secret) を自己署名する。</li>
-<li>Istiod コントロールプレーンは、istio-proxy から送信された秘密鍵と証明書署名要求で署名済みのクライアント証明書／サーバー証明書を作成する。追加設定がない場合、istio-proxy の pilot-agent プロセスが動作する。pilot-agent プロセスは秘密鍵と証明書署名要求を自動で作成する。</li>
-<li>istio-proxy からのリクエストに応じて、Istiod の SDS-API がクライアント証明書／サーバー証明書を istio-proxy に配布する。</li>
+<li>Istiod コントロールプレーンは、istio-proxy から送信された証明書署名要求をもとに、署名済みのクライアント証明書／サーバー証明書を作成する。追加設定がない場合、istio-proxy の pilot-agent プロセスが秘密鍵と証明書署名要求を自動で作成し、証明書署名要求だけを Istiod に送信する。</li>
+<li>Istiod は署名済みのクライアント証明書／サーバー証明書を pilot-agent プロセスへ返し、pilot-agent プロセスの SDS-API が Envoy プロセスに配布する。</li>
 <li>Istiod コントロールプレーンは、CA 証明書を持つ <code>istio-ca-root-cert</code> (ConfigMap) を自動的に作成する。<code>istio-ca-root-cert</code> は istio-proxy にマウントされ、証明書を検証するために使用する。</li>
 <li>istio-proxy 間で相互 TLS 認証できるようになる。</li>
 <li>証明書が失効すると、istio-proxy の証明書が自動的に差し代わる。Pod の再起動は不要である。</li>
@@ -36071,7 +36070,7 @@
 </blockquote>
 <h4 id="_33">▼ 外部ツールをルート認証局として使用する場合<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
 <p>Istiod コントロールプレーン (<code>discovery</code> コンテナ) を中間認証局として使用し、ルート認証局を Istio 以外に委譲できる。</p>
-<p>外部のルート認証局は、istio-proxy から送信された秘密鍵と証明書署名要求で署名済みのサーバー証明書を作成する。</p>
+<p>外部のルート認証局は Istiod 用の中間 CA 証明書を発行する。Istiod は、この中間 CA 証明書を使用して、istio-proxy から送信された証明書署名要求をもとに署名済みのクライアント証明書／サーバー証明書を作成する。</p>
 <ul>
 <li>CertManager (ルート認証局、署名済み証明書の発行、マウント用 Secret への証明書埋め込み、自動ローテーション)</li>
 <li>HashiCorp Vault (ルート認証局) + CertManager (署名済み証明書の発行、マウント用 Secret への証明書埋め込み、自動ローテーション)</li>
@@ -36087,7 +36086,7 @@
 <h2 id="06-03">06-03. 証明書の認証方式<a class="headerlink" href="#06-03" title="Permanent link">&para;</a></h2>
 <h3 id="tls_1">相互 TLS 認証<a class="headerlink" href="#tls_1" title="Permanent link">&para;</a></h3>
 <h4 id="tls_2">▼ 相互 TLS 認証とは<a class="headerlink" href="#tls_2" title="Permanent link">&para;</a></h4>
-<p>相互 TLS 認証を実施し、<code>L7</code> のアプリケーションデータを暗号化/復号する。</p>
+<p>相互 TLS 認証を実施し、L4/L7 通信のアプリケーションデータを暗号化/復号する。</p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/concepts/security/#authentication-architecture">https://istio.io/latest/docs/concepts/security/#authentication-architecture</a></li>
@@ -36742,7 +36741,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月28日 15:39:09 JST">2026-09-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月28日 17:12:45 JST">2026-09-28</span>
   </span>
 
     
