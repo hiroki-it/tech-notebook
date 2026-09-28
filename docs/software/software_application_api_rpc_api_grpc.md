@@ -333,7 +333,7 @@ HTTP/1.1 の場合、`1` 個のリクエストとレスポンスを送受信す�
 
 - `DeadlineExceeded` (`4`)
 - `ResourceExhausted` (`8`)
-- `DeadlineExceeded` (`4`)
+- `Unavailable` (`14`)
 
 なお、`Canceled` は gRPC クライアントがこれ以上のリクエストを必要としていない可能性があり、不要である。
 

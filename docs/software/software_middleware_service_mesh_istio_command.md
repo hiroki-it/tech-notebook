@@ -60,7 +60,7 @@ $ export PATH=$PWD/bin:$PATH
 
 Istio の機能のセットを提供する。
 
-実際には設定済みの IstioOperator であり、`istioctl` コマンドのインストール時、`manifests` ディレクトリ以下に配置される。
+プロファイルに応じて、Istiod、Istio Ingress/Egress Gateway、ztunnel、istio-cni などのデプロイ対象が決まる。
 
 > - https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
@@ -176,7 +176,7 @@ $ istioctl install -y --set profile=demo
 
 > - https://istio.io/latest/docs/setup/additional-setup/config-profiles/
 
-#### ▼ `revision` (基本的に必須)
+#### ▼ `revision`
 
 インストールされる Kubernetes リソース名や、`.metadata.labels.istio.io/rev` キーにリビジョンをつけて、Istio をインストールする。
 
@@ -202,7 +202,7 @@ istio-sidecar-injector            4          23s
 
 インストールする Istio は `istioctl` コマンドのバージョンで決まるため、`revision` キーのリビジョンと実際にインストールする Istio のバージョンは無関係である。
 
-執筆時点 (2023/02/23) で、`istioctl` コマンドを使用してエイリアスを設定する方法はなく、自動的に `default` になってしまう。
+リビジョンには、`istioctl tag set` コマンドで `default` や `stable` などのリビジョンタグを設定できる。
 
 ```bash
 $ kubectl get mutatingwebhookconfiguration

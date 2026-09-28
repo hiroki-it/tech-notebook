@@ -88,11 +88,6 @@ AWS ALB
   # L4 ロードバランサー
 NodePort Service (Istio Ingress Gateway)
 ⬇⬆️︎
-Gateway
-⬇⬆️︎
-VirtualService
-⬇⬆️︎
-  # L4 ロードバランサー
 ClusterIP Service
 ⬇⬆️︎
 Pod

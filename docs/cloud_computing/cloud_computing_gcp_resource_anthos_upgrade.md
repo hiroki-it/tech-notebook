@@ -407,7 +407,7 @@ $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
 
 : 新バージョンの istio-proxy がインジェクションされたことを、イメージタグから確認する。
 
-     代わりに、`istioctl proxy-status`コマンドでも良い。
+     `istioctl proxy-status` コマンドではバージョンを確認できないため、イメージタグまたは `istioctl version` コマンドで確認する。
 
 ```bash
 # 新バージョンのリビジョン：asm-1140-0
@@ -419,8 +419,8 @@ $ kubectl get pod \
 gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
 
 
-# 代わりに、istioctl proxy-statusコマンドでも良い。
-$ istioctl proxy-status
+# または、istioctl versionコマンドでデータプレーンのバージョンを確認する。
+$ istioctl version
 ```
 
 #### ▼ アプリケーションの istio-proxy をアップグレード
@@ -439,7 +439,7 @@ $ kubectl rollout restart deployment app-deployment -n app
 
 : 新バージョンの istio-proxy がインジェクションされたことを、イメージタグから確認する。
 
-     代わりに、`istioctl proxy-status`コマンドでも良い。
+     `istioctl proxy-status` コマンドではバージョンを確認できないため、イメージタグまたは `istioctl version` コマンドで確認する。
 
 ```bash
 # 新バージョンのリビジョン：asm-1140-0
@@ -450,8 +450,8 @@ $ kubectl get pod \
 
 gcr.io/gke-release/asm/proxyv2:1.14.0-asm.1
 
-# 代わりに、istioctl proxy-statusコマンドでも良い。
-$ istioctl proxy-status
+# または、istioctl versionコマンドでデータプレーンのバージョンを確認する。
+$ istioctl version
 ```
 
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_gateways

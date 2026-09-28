@@ -276,10 +276,10 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 
 ```bash
 # 秒当たりの平均増加率を５分間で集約する
-sum(rate(istio_requests_total{reporter="source", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
+sum(rate(istio_requests_total{reporter="source", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="source"}[5m]))
 ```
 
-`reporter="destination"` の場合、送信元 istio-proxy からメトリクスを取得することになり、宛先 istio-proxy がアプリから受信したステータスコードを集約する。
+`reporter="destination"` の場合、宛先 istio-proxy からメトリクスを取得することになり、宛先 istio-proxy がアプリから受信したステータスコードを集約する。
 
 `pod` ラベルから取得できるのは、宛先の Pod 名である。
 
@@ -303,12 +303,12 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 
 ```bash
 # 秒当たりの平均増加率を５分間で集約する
-sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
+sum(rate(istio_requests_total{reporter="source", response_code=~"0"}[5m])) / sum(rate(istio_requests_total{reporter="source"}[5m]))
 ```
 
-`pod` ラベルから取得できるのは、宛先の Pod 名である。
+`reporter="destination"` の場合、宛先 istio-proxy からメトリクスを取得することになり、宛先 istio-proxy がアプリから受信しなかったことを集約する。
 
-`reporter="destination"` の場合、送信元 istio-proxy からメトリクスを取得することになり、宛先 istio-proxy がアプリから受信しなかったことを集約する。
+`pod` ラベルから取得できるのは、宛先の Pod 名である。
 
 ```bash
 # 秒当たりの平均増加率を５分間で集約する

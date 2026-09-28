@@ -15,6 +15,8 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 ## 01. セットアップ
 
+IstioOperator によるデプロイ方法は、執筆 2026 年時点では非推奨である。
+
 ### インストール
 
 #### ▼ チャートとして

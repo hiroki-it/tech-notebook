@@ -65,9 +65,9 @@ spec:
 
 デプロイ手法を設定する。
 
-大前提として、そもそも ArgoCD は `kubectl apply` コマンドでリソースを作成しているだけなため、デプロイ手法は、Deployment の `.spec.strategy` キーや、DaemonSet と StatefulSet の `.spec.updateStrategy` キーの設定値に依存する。
+大前提として、そもそも ArgoCD は Kubernetes リソースを同期するため、通常の Kubernetes リソースのデプロイ手法は、Deployment の `.spec.strategy` キーや、DaemonSet と StatefulSet の `.spec.updateStrategy` キーの設定値に依存する。
 
-ArgoCD の `strategy` オプションを使用することで、これらの Kubernetes リソース自体を冗長化し、より安全に apply を行える。
+一方、Rollout の `.spec.strategy` キーを使用すると、ブルー/グリーンデプロイメントやカナリアリリースを実装できる。
 
 #### ▼ blueGreen
 
@@ -113,9 +113,9 @@ spec:
 
 カナリアリリースを使用して、新しい Pod をデプロイする。
 
-| キー   | 説明                                                                                                                                                        |
-| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `step` | カナリアリリースの手順を設定する。<br>・`setWeight`：新しい Pod への重み付けを設定する。<br>・`pause`：次の手順に移行せずに待機する。待機秒数を設定できる。 |
+| キー    | 説明                                                                                                                                                        |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `steps` | カナリアリリースの手順を設定する。<br>・`setWeight`：新しい Pod への重み付けを設定する。<br>・`pause`：次の手順に移行せずに待機する。待機秒数を設定できる。 |
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -140,9 +140,9 @@ spec:
 > - https://argoproj.github.io/argo-rollouts/concepts/#canary
 > - https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
 
-サービスメッシュツールでは手動カナリアリリースを実装できる。
+Istio では、VirtualService と DestinationRule を使用してカナリアリリースを実装できる。
 
-これと連携し、サービスメッシュツール（例：Istio）で自動カナリアリリースを実現できる。
+Argo Rollouts と Istio を連携すると、VirtualService の振り分け率を段階的に変更するカナリアリリースを自動化できる。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -154,9 +154,18 @@ spec:
   strategy:
     # カナリアリリース
     canary:
+      canaryService: foo-canary-service
+      stableService: foo-stable-service
+      trafficRouting:
+        istio:
+          virtualService:
+            name: foo-virtual-service
+            routes:
+              - primary
       steps:
-        canaryService: canary-virtual-service
-        stableService: stable-virtual-service
+        - setWeight: 25
+        - pause:
+            duration: 10
 ```
 
 > - https://argo-rollouts.readthedocs.io/en/latest/features/traffic-management/istio/

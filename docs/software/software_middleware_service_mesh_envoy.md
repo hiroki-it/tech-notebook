@@ -251,9 +251,9 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 #### ▼ 宛先/送信元
 
-アップストリームは、Envoy のレスポンスの宛先を表す。
+アップストリームは、Envoy がリクエストを転送する宛先を表す。
 
-ダウンストリームは、Envoy のレスポンスの送信元を表す。
+ダウンストリームは、Envoy にリクエストを送信する送信元を表す。
 
 > - https://hinawatts.medium.com/timeout-settings-in-envoy-proxy-a368f3006933
 > - https://stackoverflow.com/a/32365658
@@ -672,9 +672,9 @@ MySQL プロトコル内の SQL を解析、メトリクスとして収集する
 
 ### ルートとは
 
-リスナーのサブセットである。
+ルートは、リスナーで受信した通信の宛先を選ぶ設定値である。
 
-ルートでは、リスナーで処理した通信を受け取り、特定のクラスターの IP アドレスとポートにルーティングする。
+ルートでは、リスナーで処理した通信を受け取り、宛先のクラスターを決める。
 
 > - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
 
@@ -1045,7 +1045,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 
 ### エンドポイントとは
 
-クラスターのサブセットである。
+エンドポイントは、クラスターが負荷分散先として選ぶ宛先の設定値である。
 
 エンドポイントでは、クラスターでロードバランシングされた通信を受け取り、IP アドレスとポート番号を指定して、宛先に送信する。
 
@@ -1055,7 +1055,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 
 ### エンドポイントの静的な登録
 
-`static_resources.clusters` キー配下で、リスナーと合わせて設定する。
+`static_resources.clusters` キー配下で、クラスターと合わせて設定する。
 
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
@@ -1066,7 +1066,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 
 Envoy は、起動時にコントロールプレーンの EDS-API にリモートプロシージャーコールを単方向/双方向で実行し、宛先のエンドポイントを取得する。
 
-また、Envoy はルートに宛先のエンドポイント設定を自身に動的に設定する。
+また、Envoy は宛先のエンドポイント設定を自身に動的に設定する。
 
 ```protobuf
 

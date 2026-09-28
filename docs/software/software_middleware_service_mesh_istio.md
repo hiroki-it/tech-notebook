@@ -168,7 +168,7 @@ p99、1000 rps/s、240 秒間の負荷の場合である。
 
 アンビエントモードは、サイドカーレスパターンのサービスメッシュを実装したものである。
 
-各 Node 上にエージェントとして Envoy を稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。
+各 Node 上では DaemonSet 配下の Pod として ztunnel を稼働させ、必要に応じて Deployment 配下の Pod として waypoint-proxy を稼働させる。ztunnel は L4、waypoint-proxy は L7 を中心とする非機能ロジックを担う。
 
 > - https://blog.csdn.net/cr7258/article/details/126870859
 > - https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
@@ -472,7 +472,7 @@ Istiod コントロールプレーン (`discovery` コンテナ) を中間認証
 
 istio-proxy は、テレメトリーを作成する。
 
-各監視ツールは、プル型 (ツールが Istiod から収集) やプッシュ型 (Istiod がツールに送信) でこのテレメトリーを収集する。
+各監視ツールは、プル型で Istio Ingress/Egress Gateway、istio-proxy、Istiod からデータポイントを収集する。スパンは、istio-proxy がプッシュ型で収集ツールに送信する。
 
 > - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=17
 
@@ -482,7 +482,7 @@ istio-proxy は、テレメトリーを作成する。
 
 ### メトリクスの作成と送信
 
-istio-proxy はメトリクスの元になるデータポイントを作成し、Istiod コントロールプレーン (`discovery` コンテナ) に送信する。
+istio-proxy はメトリクスの元になるデータポイントを記録し、Prometheus は istio-proxy の `:15020/stats/prometheus` エンドポイントから収集する。Istiod は Istio 自体に関するデータポイントを記録し、Prometheus はこれも Istiod から収集する。
 
 Prometheus は、`discovery` コンテナの `/stats/prometheus` エンドポイント (`15090` 番ポート) からメトリクスの元になるデータポイントを収集する。
 
@@ -627,7 +627,7 @@ spec:
 
 #### ▼ istio-proxy に関するメトリクス
 
-Prometheus 上でメトリクスをクエリすると、Istiod コントロールプレーン (`discovery` コンテナ) から収集したデータポイントを取得できる。
+Prometheus 上でメトリクスをクエリすると、istio-proxy の `:15020/stats/prometheus` エンドポイントから収集したデータポイントを取得できる。
 
 | メトリクス名                          | 単位     | 説明                                                                                                                                                                                    |
 | ------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

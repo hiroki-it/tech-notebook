@@ -1563,20 +1563,7 @@ Gateway は共有の Namespace に配置し、HTTPRoute はマイクロサービ
 
 #### ▼ Nginx の場合
 
-Nginx を作成する。
-
-```yaml
-apiVersion: gateway.networking.k8s.io/v1
-kind: Gateway
-metadata:
-  name: gateway
-  namespace: istio-ingress
-spec:
-  gatewayClassName: istio
-```
-
-> - https://gateway-api.sigs.k8s.io/api-types/gateway/
-> - https://developer.mamezou-tech.com/blogs/2022/07/24/k8s-gateway-api-intro/
+GatewayClass の `.metadata.name` に合わせて `gatewayClassName` を設定する。
 
 #### ▼ istio の場合
 

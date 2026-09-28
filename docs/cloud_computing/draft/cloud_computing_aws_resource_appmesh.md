@@ -31,9 +31,7 @@ VirtualRouter、VirtualService、VirtualNode、One-Way TLS/mTLS から構成さ�
 
 App Mesh 上の Envoy は X-Ray デーモンにスパンを送信し、X-Ray で分散トレースを監視できるようにする。
 
-一方で、Istio 上の Envoy はこの機能を使えない。
-
-代わりに OpenTelemetry Collector へスパンを送信する必要がある。
+Istio 上の Envoy でもスパンを記録し、OpenTelemetry Collector へ送信できる。
 
 この点で、App Mesh は AWS との親和性が高い。
 

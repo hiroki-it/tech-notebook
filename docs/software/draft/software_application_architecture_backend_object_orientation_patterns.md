@@ -49,7 +49,6 @@ HTTP リクエストを受信する API とこれを処理するハンドラー�
 - リトライ
 - 暗号化／復号
 - レートリミット
-- キャッシュ処理
 
 > - https://www.patterns.dev/posts/mediator-pattern
 > - https://levelup.gitconnected.com/piping-middleware-pattern-fc519481c2d7

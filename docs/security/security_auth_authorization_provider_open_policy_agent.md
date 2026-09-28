@@ -216,7 +216,7 @@ webhooks:
     clientConfig:
       # webhook サーバーを Cluster 内部に自作する場合は、webhook サーバーに証明書バンドルを登録する。
       caBundle: Ci0tLS0tQk...
-      # Istiod の Service の宛先情報を登録する。
+      # Gatekeeper の Webhook Service の宛先情報を登録する。
       service:
         name: gatekeeper-webhook-service
         namespace: gatekeeper-system
@@ -245,7 +245,7 @@ webhooks:
     clientConfig:
       # webhook サーバーを Cluster 内部に自作する場合は、webhook サーバーに証明書バンドルを登録する。
       caBundle: Ci0tLS0tQk...
-      # Istiod の Service の宛先情報を登録する。
+      # Gatekeeper の Webhook Service の宛先情報を登録する。
       service:
         name: gatekeeper-webhook-service
         namespace: gatekeeper-system

@@ -17,7 +17,8 @@ description: Istio Ingress Controller＠Ingress Controllerの知見を記録し�
 
 `L4`/`L7` ロードバランサーとしての `istio-proxy` を使用して、通信をロードバランシングする。
 
-Gateway と VirtualService から Istio Ingress Gateway/EgressGateway を作成した場合と同様にして、Istio Ingress Gateway/EgressGateway を作成する。
+Kubernetes Ingress API の Ingress に定義したルーティングルールを処理する。
+Istio API の Gateway と VirtualService で流入制御する Istio Ingress Gateway とは、使用する API と機能が異なる。
 
 > - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/
 

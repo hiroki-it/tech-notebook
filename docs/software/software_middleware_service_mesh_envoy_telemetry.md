@@ -238,11 +238,11 @@ Envoy のメトリクスには、`envoy_` というプレフィクスがつい�
 
 ### 監視バックエンドへの送信
 
-Envoy の `15090` 番ポートでは、データポイント収集ツール (例：Prometheus) からのリクエストを待ち受ける。
+Istio の istio-proxy は、`15020` 番ポートでデータポイント収集ツール (例：Prometheus) からのリクエストを待ち受ける。
 
 Envoy が、`/stats/prometheus` エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。
 
-もしサービスメッシュツール (例：Istio、Linkerd など) を使用する場合、コントロールプレーン側にも同じエンドポイントがあり、データポイント収集ツールはこちら側を指定することが多い。
+Istio を使用する場合、Prometheus は Istio Ingress/Egress Gateway と istio-proxy の `/stats/prometheus` エンドポイントからアプリケーション通信に関するデータポイントを収集し、Istiod から Istio に関するデータポイントを収集する。
 
 ```bash
 # envoyコンテナからメトリクスを取得する。
@@ -250,7 +250,7 @@ $ kubectl exec \
     -it foo-pod \
     -n foo-namespace \
     -c envoy \
-    -- bash -c "curl http://127.0.0.1:15090/stats/prometheus"
+    -- bash -c "curl http://127.0.0.1:15020/stats/prometheus"
 ```
 
 <br>

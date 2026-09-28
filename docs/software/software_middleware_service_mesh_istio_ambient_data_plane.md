@@ -17,15 +17,15 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 ![istio_ambient-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_architecture.png)
 
-アンビエントモードは、データプレーン、コントロールプレーン Node、といったコンポーネントから構成される。Node 内の単一プロキシを使用して、サービスメッシュを実装する。
+アンビエントモードは、データプレーンとコントロールプレーンから構成される。データプレーンでは、各 Node の ztunnel と必要に応じて配置する waypoint-proxy を使用して、サービスメッシュを実装する。
 
 マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービス検出の必要性、パケットのアプリケーションデータの暗号化、テレメトリー作成など) を解決する責務を持つ。
 
-Node 外からのインバウンド通信と Node 外へのアウトバウンド通信は、ztunnel Pod を経由して、一度 waypoint-proxy Pod にリダイレクトされる。
+L7 トラフィック管理が必要な通信は、ztunnel Pod から waypoint-proxy Pod に中継される。L4 トラフィック管理のみの場合、waypoint-proxy Pod は経由しない。
 
 サイドカーモードを将来的に廃止するということはなく、好きなほうを選べるようにするらしい。
 
-ztunnel Pod を経由した段階で HTTPS プロトコルになる。
+ztunnel Pod 間、または ztunnel Pod と waypoint-proxy Pod の間では、HBONE トンネル内で L4／L7 トラフィックを送受信する。
 
 ハードウェアリソース消費量の少ない `L4` プロトコルと、消費量の多い `L7` プロトコルでは処理の責務が分離されているため、サイドカーモードと比較して、`L4` プロトコルのみを処理する場合、Node のハードウェアリソース消費量を節約できる。
 
@@ -166,9 +166,9 @@ ztunnel へのリダイレクトの仕組みは一度リプレイスされてい
 
 一方で、インバウンド通信の仕組みは以下の通りである。
 
-1. Pod が `L4` インバウンド通信を受信する。
+1. Pod 宛ての `L4` インバウンド通信が到着する。
 2. Pod 内 iptables が通信を ztunnel Pod にリダイレクトする。
-3. Pod 内マイクロサービスが `L4` アウトバウンド通信を受信する。
+3. ztunnel Pod が Pod 内マイクロサービスへ `L4` インバウンド通信を中継する。
 
 ![istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail.png)
 
@@ -449,7 +449,7 @@ spec:
 
 #### ▼ 仕組み
 
-Namespace 外からの `L7` インバウンド通信を HBORN を経由して受信し、Namespace 内の宛先 Pod に送信する。
+Namespace 外からの `L7` インバウンド通信を HBONE を経由して受信し、Namespace 内の宛先 Pod に送信する。
 
 waypoint-proxy は、サービス検出により宛先情報を取得し、証明書を管理する。
 

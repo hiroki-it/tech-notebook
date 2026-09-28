@@ -25,23 +25,23 @@ description: コントロールプレーン＠Istioアンビエントの知見�
 
 (たぶん) Envoy の設定値は以下のように機能している。
 
-送信元 ztunnel の Envoy の `L4` 処理で
+送信元 ztunnel の `L4` 処理で
 
 1. 前半の Listener と Cluster：宛先マイクロサービスを決める
 2. 後半の Listener と Cluster：宛先 waypoint-proxy を決める
 
 waypoint-proxy の Envoy の `L7` 処理で
 
-1. inbound_CONNECT_terminate Listener：HBORN を経由したリクエストを受信する
+1. inbound_CONNECT_terminate Listener：HBONE を経由したリクエストを受信する
 2. Internal Inbound VIP Cluster：Inbound VIP Listener にルーティングする
 3. Inbound VIP Listener：VirtualService のルーティングポリシーを適用する
 4. Inbound VIP Cluster：Inbound Pod Listener にロードバランシングする
-5. Inbound Pod Listener：HBORN のメタデータをセットアップする
+5. Inbound Pod Listener：HBONE のメタデータをセットアップする
 6. Inbound Pod Cluster
 7. inbound_CONNECT_originate Listener
 8. inbound_CONNECT_originate Cluster：宛先 ztunnel を決める
 
-宛先 ztunnel の Envoy の `L4` 処理で
+宛先 ztunnel の `L4` 処理で
 
 1. Listener と Cluster：宛先マイクロサービスを決める
 
