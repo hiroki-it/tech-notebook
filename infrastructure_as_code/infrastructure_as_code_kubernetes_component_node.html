@@ -34652,11 +34652,11 @@
 <p><br></p>
 <h2 id="04-kube-proxy">04. kube-proxy<a class="headerlink" href="#04-kube-proxy" title="Permanent link">&para;</a></h2>
 <h3 id="kube-proxy">kube-proxy とは<a class="headerlink" href="#kube-proxy" title="Permanent link">&para;</a></h3>
-<p>kube-proxy は、サービス検出と <code>L4</code> ロードバランシングを実行する。</p>
-<p>このとき、ワーカーNode をクライアント、コントロールプレーンをサービスレジストリ、としたクライアントサイドパターンのサービス検出を実現する。</p>
+<p>kube-proxy は、Service のルーティングと <code>L4</code> ロードバランシングを実行する。</p>
+<p>このとき、kube-proxy は Service と EndpointSlice を監視し、iptables または IPVS の転送ルールを書き換える。</p>
 <p>各ワーカーNode 上で DaemonSet として稼働する。</p>
-<p>Service ネットワークさえ作成できていれば、Service と Pod が同じワーカーNode 上にあるか否かに限らず、Service は、ワーカーNode の宛先情報ルールを使用して Pod を動的に検出できる。</p>
-<p>ただし、宛先の IP アドレスは動的に変化するため、別途 CoreDNS も使用して、サービス検出を実装する。</p>
+<p>Service ネットワークさえ作成できていれば、Service と Pod が同じワーカーNode 上にあるか否かにかかわらず、Service はワーカーNode の転送ルールを使用して Pod に通信をルーティングできる。</p>
+<p>サービス検出には、別途 CoreDNS などの権威 DNS ツールを使用する。</p>
 <p><img alt="kubernetes_kube-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png" /></p>
 <blockquote>
 <ul>
@@ -35157,7 +35157,7 @@ $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 22:00:45 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月29日 14:36:38 JST">2026-09-29</span>
   </span>
 
     

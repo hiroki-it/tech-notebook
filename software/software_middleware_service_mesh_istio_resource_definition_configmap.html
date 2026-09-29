@@ -10,7 +10,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="俺 (長谷川広樹) が、業務や学習から得た技術的な知見をドキュメント形式で記録したサイトです。">
+        <meta name="description" content="ConfigMap 系＠リソース定義の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -33,7 +33,7 @@
     
     
       
-        <title>ConfigMap系 - 俺の技術ノート</title>
+        <title>【IT 技術の知見】ConfigMap 系＠リソース定義 - 俺の技術ノート</title>
       
     
     
@@ -166,7 +166,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ConfigMap系
+              【IT 技術の知見】ConfigMap 系＠リソース定義
             
           </span>
         </div>
@@ -36361,10 +36361,6 @@
   
 
 
-<p>ふ---
-title: 【IT 技術の知見】ConfigMap 系＠リソース定義
-description: ConfigMap 系＠リソース定義の知見を記録しています。</p>
-<hr />
 <h1 id="configmap">ConfigMap 系＠リソース定義<a class="headerlink" href="#configmap" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
@@ -36379,7 +36375,7 @@ description: ConfigMap 系＠リソース定義の知見を記録しています
 <p><br></p>
 <h2 id="02-istio-ca-root-cert">02 istio-ca-root-cert<a class="headerlink" href="#02-istio-ca-root-cert" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ca-root-cert">istio-ca-root-cert とは<a class="headerlink" href="#istio-ca-root-cert" title="Permanent link">&para;</a></h3>
-<p>Istiod コントロールプレーン (<code>discovery</code> コンテナ) による中間認証局を使用する場合、<code>istio-ca-root-cert</code> を自動的に作成する。</p>
+<p>Istiod コントロールプレーン (<code>discovery</code> コンテナ) による認証局を使用する場合、<code>istio-ca-root-cert</code> を自動的に作成する。</p>
 <p>ルート認証局から発行された CA 証明書 (ルート証明書) をもち、各マイクロサービスの Pod にマウントされる。</p>
 <p>各マイクロサービスに配布された証明書を検証するために使用される。</p>
 <p>Istio コントロールプレーンのログから、CA 証明書の作成を確認できる。</p>
@@ -36855,8 +36851,8 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <p><br></p>
 <h3 id="ingressservice">ingressService<a class="headerlink" href="#ingressservice" title="Permanent link">&para;</a></h3>
 <h4 id="ingressservice_1">▼ ingressService とは<a class="headerlink" href="#ingressservice_1" title="Permanent link">&para;</a></h4>
-<p>すべての istio-proxy に、使用する Ingress Controller の <code>.metadata.labels.istio</code> キーの値を設定する。</p>
-<p>デフォルトでは、Ingress として <code>ingressgateway</code> が設定される。</p>
+<p>すべての istio-proxy に、使用する Ingress Controller の Service 名を設定する。</p>
+<p>デフォルトでは、<code>istio-ingressgateway</code> が設定される。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36874,7 +36870,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <p><br></p>
 <h3 id="proxyhttpport">proxyHttpPort<a class="headerlink" href="#proxyhttpport" title="Permanent link">&para;</a></h3>
 <h4 id="proxyhttpport_1">▼ proxyHttpPort とは<a class="headerlink" href="#proxyhttpport_1" title="Permanent link">&para;</a></h4>
-<p>すべての istio-proxy に、Cluster 外からのインバウンド通信 (特に HTTP プロトコル) を待ち受けるポート番号を設定する。</p>
+<p>istio-proxy を HTTP プロキシとして使用する場合に、HTTP リクエストを待ち受けるポート番号を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36940,7 +36936,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 <p><br></p>
 <h3 id="proxylistenport">proxyListenPort<a class="headerlink" href="#proxylistenport" title="Permanent link">&para;</a></h3>
 <h4 id="proxylistenport_1">▼ proxyListenPort とは<a class="headerlink" href="#proxylistenport_1" title="Permanent link">&para;</a></h4>
-<p>すべての istio-proxy に、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。</p>
+<p>すべての istio-proxy に、マイクロサービスからのアウトバウンド通信を待ち受けるポート番号を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38524,7 +38520,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
 </blockquote>
 <p><br></p>
 <h3 id="pilot_enable_redis_filter"><code>PILOT_ENABLE_REDIS_FILTER</code><a class="headerlink" href="#pilot_enable_redis_filter" title="Permanent link">&para;</a></h3>
-<p>Envoy の <code>redis_proxy</code> を有効化し、MySQL のメトリクスを収集できるようにする。</p>
+<p>Envoy の <code>redis_proxy</code> を有効化し、Redis のメトリクスを収集できるようにする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38599,7 +38595,7 @@ Istiod はすべての Namespace を watch するが、特定の Namespace の�
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月29日 14:36:38 JST">2026-09-29</span>
   </span>
 
     

@@ -34344,14 +34344,14 @@
 <p><br></p>
 <h2 id="02">02. トレースコンテキスト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_9">トレースコンテキストとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>各スパンに含まれる情報のこと。</p>
+<p>スパン群を紐付けるために、コンポーネント間で運搬する情報のこと。</p>
 <ul>
 <li>各種 ID</li>
 <li>マイクロサービスの属性情報</li>
 </ul>
 <p><br></p>
 <h3 id="_10">トレースコンテキスト作成の仕組み<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>ロードバランサー (例：Istio Ingress Gateway、AWS ALB) や API ゲートウェイ (例：Amazon API Gateway) が最初にトレースコンテキストを作成する。</p>
+<p>リクエストを最初に処理するコンポーネントが、ルートスパンとトレースコンテキストを作成する。例えば、フロントエンドアプリケーションやロードバランサー (例：Istio Ingress Gateway、AWS ALB) 、API ゲートウェイ (例：Amazon API Gateway) が該当する。</p>
 <p>これらは、トレースコンテキストが ID を持っているかを検証する。</p>
 <p>もし ID がなければ、スパンに ID を新しく割り当てる。</p>
 <p><img alt="distributed-tracing" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-tracing.png" /></p>
@@ -34373,15 +34373,15 @@
 <tbody>
 <tr>
 <td>トレース ID</td>
-<td>リクエスト ID である。すべてのマイクロサービスで同じになる。</td>
+<td>一つのトレースを構成するスパン群で共通する ID である。</td>
 </tr>
 <tr>
 <td>スパン ID</td>
-<td>各マイクロサービス固有の処理 ID である。 すべてのマイクロサービスで異なっている。</td>
+<td>各スパンを識別する ID である。</td>
 </tr>
 <tr>
 <td>親スパン ID</td>
-<td>クライアントのマイクロサービスの処理 ID である。クライアントが同じマイクロサービス間で同じになる。</td>
+<td>親スパンを識別する ID である。ルートスパンには親スパン ID が存在しない。</td>
 </tr>
 </tbody>
 </table>
@@ -34824,7 +34824,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年8月1日 19:52:31 JST">2026-08-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年9月29日 14:36:38 JST">2026-09-29</span>
   </span>
 
     
