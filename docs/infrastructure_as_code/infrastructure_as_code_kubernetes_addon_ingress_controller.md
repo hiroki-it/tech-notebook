@@ -15,7 +15,7 @@ description: Ingress Controller＠Ingress Controller系の知見を記録して�
 
 ## 01. Ingress Controller とは
 
-Ingress Controller は、kube-controller のように単一/複数の Ingress に watch イベントを送信する。
+Ingress Controller は、kube-controller のように単一/複数の Ingress を監視する。
 
 Ingress のルールに応じたリバースプロキシやロードバランサー (Ingress Controller の種類による) を作成し、Node 外から受信した通信を Service にルーティングする。
 
@@ -104,14 +104,6 @@ Ingress に定義したルーティングのルールを検知する。
 Kubernetes Cluster に単一の Ingress Controller を作成するとよい。
 
 また、各 Namespace 用に定義した Ingress を使用して、各 Namespace の Service にルーティングするとよい。
-
-<br>
-
-### インバウンド通信とアウトバウンド通信
-
-Ingress Controller は、名前では Ingress となっているが Egress (アウトバウンド通信) も扱う。
-
-> - https://www.f5.com/ja_jp/company/blog/nginx/guide-to-choosing-ingress-controller-part-1-identify-requirements
 
 <br>
 

@@ -1,4 +1,4 @@
-ふ---
+---
 title: 【IT 技術の知見】ConfigMap 系＠リソース定義
 description: ConfigMap 系＠リソース定義の知見を記録しています。
 
@@ -24,7 +24,7 @@ Istio の各コンポーネントの機密でない変数やファイルを管�
 
 ### istio-ca-root-cert とは
 
-Istiod コントロールプレーン (`discovery` コンテナ) による中間認証局を使用する場合、`istio-ca-root-cert` を自動的に作成する。
+Istiod コントロールプレーン (`discovery` コンテナ) による認証局を使用する場合、`istio-ca-root-cert` を自動的に作成する。
 
 ルート認証局から発行された CA 証明書 (ルート証明書) をもち、各マイクロサービスの Pod にマウントされる。
 
@@ -498,9 +498,9 @@ data:
 
 #### ▼ ingressService とは
 
-すべての istio-proxy に、使用する Ingress Controller の `.metadata.labels.istio` キーの値を設定する。
+すべての istio-proxy に、使用する Ingress Controller の Service 名を設定する。
 
-デフォルトでは、Ingress として `ingressgateway` が設定される。
+デフォルトでは、`istio-ingressgateway` が設定される。
 
 ```yaml
 apiVersion: v1
@@ -521,7 +521,7 @@ data:
 
 #### ▼ proxyHttpPort とは
 
-すべての istio-proxy に、Cluster 外からのインバウンド通信 (特に HTTP プロトコル) を待ち受けるポート番号を設定する。
+istio-proxy を HTTP プロキシとして使用する場合に、HTTP リクエストを待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: v1
@@ -600,7 +600,7 @@ data:
 
 #### ▼ proxyListenPort とは
 
-すべての istio-proxy に、他マイクロサービスからのインバウンド通信を待ち受けるポート番号を設定する。
+すべての istio-proxy に、マイクロサービスからのアウトバウンド通信を待ち受けるポート番号を設定する。
 
 ```yaml
 apiVersion: v1
@@ -2442,7 +2442,7 @@ data:
 
 ### `PILOT_ENABLE_REDIS_FILTER`
 
-Envoy の `redis_proxy` を有効化し、MySQL のメトリクスを収集できるようにする。
+Envoy の `redis_proxy` を有効化し、Redis のメトリクスを収集できるようにする。
 
 ```yaml
 apiVersion: apps/v1

@@ -68,6 +68,6 @@ hide:
 
   > - ##### [︎システムテスト](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html)
   > - ##### [︎JMeter](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test_jmeter.html)
-  > - ##### [ChaosMesh](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test_chaos_mesh.html)
+  > - ##### [Chaos Mesh](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test_chaos_mesh.html)
 
 <br>

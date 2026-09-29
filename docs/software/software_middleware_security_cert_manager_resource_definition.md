@@ -136,7 +136,7 @@ spec:
 
 ### CertificateRequest とは
 
-秘密鍵から、証明書署名要求 (`.csr` ファイル) を作成する。
+作成済みの証明書署名要求 (`.csr` ファイル) を認証局へ送信し、署名済み証明書を要求する。
 
 > - https://cert-manager.io/docs/concepts/certificaterequest/
 > - https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate
@@ -147,7 +147,7 @@ spec:
 
 #### ▼ request
 
-証明書署名要求 (`.csr` ファイル) の作成に必要な秘密鍵を設定する。
+認証局へ送信する証明書署名要求 (`.csr` ファイル) を Base64 エンコードして設定する。
 
 ```yaml
 apiVersion: cert-manager.io/v1

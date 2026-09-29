@@ -17,7 +17,7 @@ description: リソース定義＠AWS Load Balancer Controllerの知見を記録
 
 ### Ingress の `.metadata.annotations` キーとは
 
-特定の Nginx のルーティングルールを決める。
+AWS ALB のルーティングルールを決める。
 
 Ingress で `alb` の IngressClass を指定する必要がある。
 

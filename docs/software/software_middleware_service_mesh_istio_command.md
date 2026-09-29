@@ -1039,7 +1039,7 @@ istio.io/tag: default
 
 ### proxy-status とは
 
-Istio Ingress Gateway/EgressGateway、istio-proxy のステータスを取得する。
+Istiod と Istio Ingress/Egress Gateway、istio-proxy 間の xDS 設定の同期状態を取得する。
 
 ```bash
 $ istioctl proxy-status
@@ -1107,7 +1107,7 @@ Checked 3 Istio Deployments
 
 ### version とは
 
-Istiod コントロールプレーンのバージョンを取得する。
+istioctl、Istiod コントロールプレーン、データプレーンのバージョンを取得する。
 
 ```bash
 $ istioctl version

@@ -112,15 +112,15 @@ spec: ...
 
 ### kube-proxy とは
 
-kube-proxy は、サービス検出と `L4` ロードバランシングを実行する。
+kube-proxy は、Service のルーティングと `L4` ロードバランシングを実行する。
 
-このとき、ワーカーNode をクライアント、コントロールプレーンをサービスレジストリ、としたクライアントサイドパターンのサービス検出を実現する。
+このとき、kube-proxy は Service と EndpointSlice を監視し、iptables または IPVS の転送ルールを書き換える。
 
 各ワーカーNode 上で DaemonSet として稼働する。
 
-Service ネットワークさえ作成できていれば、Service と Pod が同じワーカーNode 上にあるか否かに限らず、Service は、ワーカーNode の宛先情報ルールを使用して Pod を動的に検出できる。
+Service ネットワークさえ作成できていれば、Service と Pod が同じワーカーNode 上にあるか否かにかかわらず、Service はワーカーNode の転送ルールを使用して Pod に通信をルーティングできる。
 
-ただし、宛先の IP アドレスは動的に変化するため、別途 CoreDNS も使用して、サービス検出を実装する。
+サービス検出には、別途 CoreDNS などの権威 DNS ツールを使用する。
 
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png)
 

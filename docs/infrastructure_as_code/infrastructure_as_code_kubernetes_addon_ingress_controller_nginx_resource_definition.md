@@ -17,7 +17,7 @@ description: Nginx Ingress Controller＠Ingress Controllerの知見を記録し�
 
 ### Ingress の `.metadata.annotations` キーとは
 
-特定の ALB のリスナールールを決める。
+Nginx のルーティングルールを決める。
 
 Ingress で `nginx` の IngressClass を指定する必要がある。
 

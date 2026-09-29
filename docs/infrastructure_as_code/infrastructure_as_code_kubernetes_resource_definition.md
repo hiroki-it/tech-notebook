@@ -1217,7 +1217,9 @@ spec:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: 60
+        target:
+          type: Utilization
+          averageUtilization: 60
 ```
 
 > - https://zenn.dev/lapi/articles/e7ae967aa5161b#hpa%E3%81%AE%E8%A8%AD%E5%AE%9A

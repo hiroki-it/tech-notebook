@@ -76,9 +76,7 @@ Istio と Cilium サービスメッシュの間で競合する機能 (例えば�
 
 ### Cilium サービスメッシュの仕組み
 
-Cilium エージェント上では Envoy プロセスが動いている。
-
-マイクロサービス間の通信時には、eBPF ではなく Envoy を使用する。
+Cilium Service Mesh は、eBPF と Envoy を使用して通信を処理する。
 
 なお、Cilium サービスメッシュは前提として Cilium CNI を必要とする。
 

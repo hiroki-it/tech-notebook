@@ -449,7 +449,7 @@ spec:
 
 #### ▼ 仕組み
 
-Namespace 外からの `L7` インバウンド通信を HBONE を経由して受信し、Namespace 内の宛先 Pod に送信する。
+送信元 ztunnel から `L7` トラフィックを HBONE を経由して受信し、宛先側の ztunnel に中継する。
 
 waypoint-proxy は、サービス検出により宛先情報を取得し、証明書を管理する。
 
@@ -457,15 +457,13 @@ waypoint-proxy は、サービス検出により宛先情報を取得し、証�
 
 > - https://www.anyflow.net/sw-engineer/istio-ambient-mode
 
-#### ▼ Namespace かつ Node のリバースプロキシとして
+#### ▼ Namespace のリバースプロキシとして
 
-waypoint-proxy は、Namespace かつ Node のリバースプロキシである。
+waypoint-proxy は、Namespace のリバースプロキシである。
 
 アウトバウンド通信には関与せず、宛先リバースプロキシとしてのみ機能する。
 
 マイクロサービス Pod がいる Namespace 単位で waypoint-proxy を作成するとよい。
-
-また、マイクロサービス Pod が乗りうる Node (または Node グループ) に最低一個ずつスケジューリングするよう、waypoint-proxy Pod を冗長化しつつ Affinity を設定するとよい
 
 ![istio_ambient-mesh_waypoint-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_reverse-proxy.png)
 

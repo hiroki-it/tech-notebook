@@ -205,9 +205,9 @@ data:
             workload: var-workload
       enabled: true
       # Grafana の Service の宛先情報を設定する。
-      in_cluster_url: http://foo-grafana.foo-namespace.svc.cluster.local
+      internal_url: http://foo-grafana.foo-namespace.svc.cluster.local
       # Kiali ダッシュボードからのリダイレクト先とする Grafana ダッシュボードの URL を設定する。
-      url: http://foo.grafana.com
+      external_url: http://foo.grafana.com
 ```
 
 > - https://kiali.io/docs/configuration/p8s-jaeger-grafana/grafana/
@@ -282,7 +282,7 @@ data:
     tracing:
       enabled: true
       provider: tempo
-      internal_url: http://grafana-tempo.istio-system.svc.cluster.local:3100
+      internal_url: http://grafana-tempo.grafana-tempo.svc.cluster.local:3200
       use_grpc: false
 ```
 

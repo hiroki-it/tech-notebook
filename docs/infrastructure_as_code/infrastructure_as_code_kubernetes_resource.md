@@ -695,7 +695,7 @@ Cluster 内のネットワークを制御する。
 
 各 Service 配下に存在する。Service でルーティング先の Pod の宛先情報を分割して管理し、Pod の増減に合わせて、Pod の宛先情報を追加/削除する。
 
-kube-proxy によるサービス検出のために、Pod の宛先情報を提供する。
+kube-proxy によるルーティングのために、Pod の宛先情報を提供する。
 
 Kubernetes の v1.6 より前は Endpoints が使用されていた。
 

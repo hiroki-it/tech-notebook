@@ -28,9 +28,9 @@ Open Policy Agent は、Open Policy Agent、`rego` ファイル、DB、といっ
 
 ### Open Policy Agent
 
-Open Policy Agent は、`rego` ファイルのロジックに基づいて、boolean 値を返す。
+Open Policy Agent は、`rego` ファイルの認可スコープに基づいて許否を決定し、boolean 値を返す。
 
-返却された boolean 値を使用して、クライアント側 (例：アプリケーション、kube-apiserver) で認可スコープ内の処理を実行する。
+返却された boolean 値に基づいて、クライアント側 (例：アプリケーション、kube-apiserver) で認可結果を適用する。
 
 ![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent.png)
 
@@ -58,9 +58,9 @@ Open Policy Agent は、`rego` ファイルのロジックに基づいて、bool
 
 アプリケーションの認可スコープ定義の責務を認可マイクロサービスとして切り分ける。
 
-アプリケーションは Open Policy Agent にリクエストを送信し、Open Policy Agent は認可スコープに応じて boolean 値を返す。
+アプリケーションは Open Policy Agent にリクエストを送信し、Open Policy Agent は認可スコープに基づいて許否を決定して boolean 値を返す。
 
-返却された boolean 値を使用して、アプリケーションは認可スコープ内の処理を実行する。
+返却された boolean 値に基づいて、アプリケーションは認可結果を適用する。
 
 #### ▼ 資格情報の作成
 

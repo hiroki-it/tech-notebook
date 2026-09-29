@@ -163,7 +163,7 @@ $ kubectl get deployment -A
 
 Anthos Service Mesh のドキュメントを確認すると、Istio をカナリア方式でアップグレードしている。
 
-Istio のカナリア方式のアップグレードでは、新しい istio-proxy をインジェクションする方法として、`istio.io/rev` キーのリビジョンを書き換える方法と、MutatingWebhookConfiguration のエイリアスの紐付けを変更する方法がある。
+Istio のカナリア方式のアップグレードでは、Namespace の `istio.io/rev` キーに設定したリビジョンタグを、新しい Istiod コントロールプレーンのリビジョンに紐付け直す。
 
 Anthos Service Mesh のアップグレードでは、何らかの事情でこれらの両方の手順が混じっており、Istio とは方法が若干異なっている。
 
@@ -364,7 +364,7 @@ metadata:
 
 `(9)`
 
-: Istio の `istio.io/rev` キーを使用して、特定の Namespace の `istio-injection` キーを上書きする。
+: Istio の `istio.io/rev` キーにリビジョンタグが設定されていることを確認する。
 
      多くの場合、istio-proxyはIstio Ingress GatewayとアプリケーションのPodのNamespaceにインジェクションしているはずである。そこで、それらのNamespaceを指定する。
 
@@ -374,10 +374,10 @@ metadata:
 
 ```bash
 # Istio Ingress Gatewayの特定のNamespace
-$ kubectl label ns ingress istio.io/rev=asm-1140-0 istio-injection- --overwrite
+$ kubectl label ns ingress istio.io/rev=default istio-injection- --overwrite
 
 # アプリケーションの特定のNamespace
-$ kubectl label ns app istio.io/rev=asm-1140-0 istio-injection- --overwrite
+$ kubectl label ns app istio.io/rev=default istio-injection- --overwrite
 ```
 
 `(10)`
@@ -395,9 +395,9 @@ $ kubectl get namespace -L istio.io/rev
 
 `(11)`
 
-: Istio Ingress Gateway の Pod を再作成し、新バージョンの istio-proxy を自動的にインジェクションする。
+: Istio Ingress Gateway の Pod を再作成し、新バージョンに更新する。
 
-     カナリア方式のため、webhook-serviceがそのままで新しいistio-proxyをインジェクションできる。
+     Istio Ingress Gateway 自体が istio-proxy であるため、サイドカーとして istio-proxy をインジェクションするわけではない。
 
 ```bash
 $ kubectl rollout restart deployment istio-ingressgateway -n istio-ingress
@@ -587,7 +587,7 @@ $ kubectl get all -n istio-system
 $ kubectl get validatingwebhookconfiguration -n istio-system
 
 
-$ kubectl delete validatingwebhookconfiguration istio-validator-asm-1140-0-istio-system -n istio-system --ignore-not-found=true
+$ kubectl delete validatingwebhookconfiguration istio-validator-asm-1130-0-istio-system --ignore-not-found=true
 
 
 $ kubectl get validatingwebhookconfiguration -n istio-system

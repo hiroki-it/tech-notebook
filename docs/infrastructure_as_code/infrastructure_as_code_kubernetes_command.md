@@ -1021,7 +1021,7 @@ baz-application    baz-project    Unknown
 
 ```bash
 $ kubectl get service istio-ingressgateway \
-    -n istio-system \
+    -n istio-ingress \
     -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
 ```
 

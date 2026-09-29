@@ -197,7 +197,7 @@ data:
               datasourceUid: Tempo
       - name: Tempo
         type: tempo
-        url: http://grafana-tempo.istio-system.svc.cluster.local:3100
+        url: http://grafana-tempo.grafana-tempo.svc.cluster.local:3200
         basicAuth: false
 ```
 
@@ -222,7 +222,7 @@ data:
     datasources:
       - name: Tempo
         type: tempo
-        url: http://grafana-tempo.istio-system.svc.cluster.local:3100
+        url: http://grafana-tempo.grafana-tempo.svc.cluster.local:3200
         basicAuth: false
         jsonData:
           # ログとトレース間を相関させる

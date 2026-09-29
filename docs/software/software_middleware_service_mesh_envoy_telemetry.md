@@ -240,9 +240,9 @@ Envoy のメトリクスには、`envoy_` というプレフィクスがつい�
 
 Istio の istio-proxy は、`15020` 番ポートでデータポイント収集ツール (例：Prometheus) からのリクエストを待ち受ける。
 
-Envoy が、`/stats/prometheus` エンドポイントでリクエストを待ち受けており、データポイントを含むレスポンスを返信する。
+pilot-agent が、`:15020/stats/prometheus` エンドポイントでリクエストを待ち受け、Envoy 統計とアプリケーション通信に関する情報をデータポイントとして公開する。
 
-Istio を使用する場合、Prometheus は Istio Ingress/Egress Gateway と istio-proxy の `/stats/prometheus` エンドポイントからアプリケーション通信に関するデータポイントを収集し、Istiod から Istio に関するデータポイントを収集する。
+Istio を使用する場合、Prometheus は Istio Ingress/Egress Gateway と istio-proxy の `:15020/stats/prometheus` エンドポイントからアプリケーション通信に関するデータポイントや Envoy 統計を収集し、Istiod から Istio に関するデータポイントを収集する。
 
 ```bash
 # envoyコンテナからメトリクスを取得する。
@@ -290,13 +290,11 @@ Envoy は、`X-REQUEST-ID` ヘッダーの自動作成 ID と `X-CLIENT-TRACE-ID
 
 #### ▼ スパンの送信
 
-Envoy は、Exporter としてスパンを監視バックエンドに送信する。
+Envoy はスパンを記録し、設定した収集エージェントに送信する。
 
-これにより、マイクロサービス側で Exporter を実装する必要がなくなる。
+これにより、マイクロサービス側でスパンの記録や送信を実装しなくても、コンポーネント間通信のスパンを記録できる。
 
-ただし、マイクロサービス側で Exporter を設定しないと、Envoy とマイクロサービスの処理時間を合計したスパンを送信する。
-
-マイクロサービスと Envoy の両方で設定すると、Envoy とマイクロサービスをちゃんと区別したスパンになる。
+ただし、マイクロサービス内の処理をスパンとして記録する場合は、マイクロサービス側にも計装が必要になる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
 > - https://istio.io/latest/about/faq/distributed-tracing/#how-envoy-based-tracing-works

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ChaosMesh＠システムテスト
-description: ChaosMesh＠システムテストの知見を記録しています。
+title: 【IT技術の知見】Chaos Mesh＠システムテスト
+description: Chaos Mesh＠システムテストの知見を記録しています。
 ---
 
-# ChaosMesh＠システムテスト
+# Chaos Mesh＠システムテスト
 
 ## はじめに
 
@@ -13,11 +13,11 @@ description: ChaosMesh＠システムテストの知見を記録しています�
 
 <br>
 
-## 01. ChaosMesh の仕組み
+## 01. Chaos Mesh の仕組み
 
 ### アーキテクチャ
 
-ChaosMesh は、chaos-dashboard、chaos-controller-manager、chaos-daemon、といったコンポーネントから構成されている。
+Chaos Mesh は、chaos-dashboard、chaos-controller-manager、chaos-daemon、といったコンポーネントから構成されている。
 
 他のカオスエンジニアリングツール (例：Chaos monkey、Chaos Kong) と比べて、Kubernetes により合った手法でカオスエンジニアリングを実行できる。
 

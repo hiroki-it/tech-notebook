@@ -125,7 +125,7 @@ data:
 
 複数 Kubernetes Cluster メッシュを採用する場合に必要である。
 
-プライマリ Cluster がリモート Cluster の kube-apiserver をコールできるように、サーバー証明書を持つ。
+プライマリ Cluster にある Istiod がリモート Cluster と通信するための接続情報を持つ。
 
 > - https://istio.io/latest/docs/setup/install/multicluster/primary-remote_multi-network/
 
