@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】PR Agent＠エージェンティックコーディング
-description: PR Agent＠エージェンティックコーディングの知見を記録しています。
+title: 【IT技術の知見】PR Agent＠LLM
+description: PR Agent＠LLMの知見を記録しています。
 ---
 
-# PR Agent＠エージェンティックコーディング
+# PR Agent＠LLM
 
 ## はじめに
 

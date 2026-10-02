@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Codex＠エージェンティックコーディング
-description: Codex＠エージェンティックコーディングの知見を記録しています。
+title: 【IT技術の知見】Codex＠LLM
+description: Codex＠LLMの知見を記録しています。
 ---
 
-# Codex＠エージェンティックコーディング
+# Codex＠LLM
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Claude Code＠エージェンティックコーディング
-description: Claude Code＠エージェンティックコーディングの知見を記録しています。
+title: 【IT技術の知見】Claude Code＠LLM
+description: Claude Code＠LLMの知見を記録しています。
 ---
 
-# Claude Code＠エージェンティックコーディング
+# Claude Code＠LLM
 
 ## はじめに
 
