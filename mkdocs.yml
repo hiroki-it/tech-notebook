@@ -943,26 +943,27 @@ nav:
               - Googleサーチコンソール: observability/observability_monitoring_tools_google_search_console.md
       - ■ インシデント管理ツール:
           - PagerDuty: observability/observability_incident_management_pagerduty.md
-
+  - 🤖 LLM:
+      - llm/index.md
+      - ■ Claude Code:
+          - Claude Code: llm/llm_claude_code.md
+      - ■ Codex:
+          - Codex: llm/llm_codex.md
+          - スキル: llm/llm_codex_skills.md
+      - ■ PR Agent:
+          - PR Agent: llm/llm_pr_agent.md
+      - ■ AIドキュメント:
+          - AIドキュメント (プロダクトコンテキスト): llm/llm_ai_document_context.md
+          - AIドキュメント (パッケージ選定): llm/llm_ai_document_application_package_selection.md
+          - AIドキュメント (API定義書): llm/llm_ai_document_api.md
+          - AIドキュメント (DB設計): llm/llm_ai_document_database.md
+          - AIドキュメント (ユニットテスト設計): llm/llm_ai_document_testing.md
+          - AIドキュメント (システムの調査と実装): llm/llm_ai_document_investigation_and_implementation.md
+          - AIドキュメント (巨大システムの調査): llm/llm_ai_document_investigation_large_system.md
+          - AIドキュメント (レビュー): llm/llm_ai_document_review.md
   - 👥 開発手法:
       - software_development_methodology/index.md
       - 開発手法論: software_development_methodology/software_development_methodology.md
-      - ■ エージェンティックコーディング:
-          - ■ Claude Code:
-              - Claude Code: software_development_methodology/software_development_methodology_agentic_coding_claude_code.md
-          - ■ Codex:
-              - Codex: software_development_methodology/software_development_methodology_agentic_coding_codex.md
-              - スキル: software_development_methodology/software_development_methodology_agentic_coding_codex_skills.md
-          - PR Agent: software_development_methodology/software_development_methodology_agentic_coding_pr_agent.md
-          - ■ AIドキュメント:
-              - AIドキュメント (プロダクトコンテキスト): software_development_methodology/software_development_methodology_agentic_coding_ai_document_context.md
-              - AIドキュメント (パッケージ選定): software_development_methodology/software_development_methodology_agentic_coding_ai_document_application_package_selection.md
-              - AIドキュメント (API定義書): software_development_methodology/software_development_methodology_agentic_coding_ai_document_api.md
-              - AIドキュメント (DB設計): software_development_methodology/software_development_methodology_agentic_coding_ai_document_database.md
-              - AIドキュメント (ユニットテスト設計): software_development_methodology/software_development_methodology_agentic_coding_ai_document_testing.md
-              - AIドキュメント (システムの調査と実装): software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_and_implementation.md
-              - AIドキュメント (巨大システムの調査): software_development_methodology/software_development_methodology_agentic_coding_ai_document_investigation_large_system.md
-              - AIドキュメント (レビュー): software_development_methodology/software_development_methodology_agentic_coding_ai_document_review.md
       - 組織論: software_development_methodology/software_development_organization.md
       - OSSコントリビューション: software_development_methodology/software_development_oss_contribution.md
       - テクノロジーマネージメント: software_development_methodology/software_development_technology_management.md
@@ -977,3 +978,4 @@ nav:
           - ■ Git:
               - コマンド: software_development_methodology/software_development_git_command.md
               - GitHub: software_development_methodology/software_development_git_github.md
+
