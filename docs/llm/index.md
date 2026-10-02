@@ -11,6 +11,7 @@ hide:
 
   > - ##### <u>Claude Code</u>
   >   > - ##### [Claude Code](https://hiroki-it.github.io/tech-notebook/llm/llm_claude_code.html)
+  >   > - ##### [Claude Code Actions](https://hiroki-it.github.io/tech-notebook/llm/llm_claude_code_actions.html)
   > - ##### <u>Codex</u>
   >   > - ##### [Codex](https://hiroki-it.github.io/tech-notebook/llm/llm_codex.html)
   >   > - ##### [スキル](https://hiroki-it.github.io/tech-notebook/llm/llm_codex_skills.html)

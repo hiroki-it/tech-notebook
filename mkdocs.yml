@@ -947,6 +947,7 @@ nav:
       - llm/index.md
       - ■ Claude Code:
           - Claude Code: llm/llm_claude_code.md
+          - Claude Code Actions: llm/llm_claude_code_actions.md
       - ■ Codex:
           - Codex: llm/llm_codex.md
           - スキル: llm/llm_codex_skills.md
@@ -978,4 +979,3 @@ nav:
           - ■ Git:
               - コマンド: software_development_methodology/software_development_git_command.md
               - GitHub: software_development_methodology/software_development_git_github.md
-
