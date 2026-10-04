@@ -734,7 +734,7 @@ class ExecutorConstant
 }
 ```
 
-> - https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285
+> - [framework/src/Illuminate/Database/Eloquent/Model.php at 9362a29ce298428591369be8d101d51876406fc8 · laravel/framework · GitHub](https://github.com/laravel/framework/blob/9362a29ce298428591369be8d101d51876406fc8/src/Illuminate/Database/Eloquent/Model.php#L255-L285)
 
 <br>
 
@@ -2698,7 +2698,7 @@ public function authorize()
 ![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
 
 > - [Laravelミドルウェアの基本入門（＆出力HTMLをminifyしWebサイト高速化） \| Ritolabo](https://www.ritolab.com/posts/69)
-> - https://www.c-sharpcorner.com/article/asp-net-core-middleware/
+> - [ASP.NET Core - Middleware](https://www.c-sharpcorner.com/article/asp-net-core-middleware/)
 
 #### ▼ BeforeMiddlewareware
 
@@ -2790,7 +2790,7 @@ class FooAfterMiddleware
 
 CSRF トークンによる CSRF の防御については、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html
+> - [【IT技術の知見】サイバー攻撃＠セキュリティ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html)
 
 #### ▼ VerifyCsrfToken
 

@@ -43,7 +43,7 @@ OTLP 形式のテレメトリーを受信する。
 HTTPS で受信する場合には、サーバー証明書が必要である。
 
 > - [opentelemetry-collector/receiver/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md)
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration
+> - [opentelemetry-collector/config/configtls/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration)
 
 #### ▼ Prometheus Receiver
 

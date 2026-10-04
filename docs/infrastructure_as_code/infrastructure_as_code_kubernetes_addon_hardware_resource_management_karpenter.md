@@ -134,7 +134,7 @@ Karpenter はバージョニングされてない独立した起動テンプレ�
 Karpenter を使用しない場合、クラウドプロバイダーの Node 数は固定である。
 
 > - [Karpenter - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs)
-> - https://aws.amazon.com/blogs/containers/managing-pod-scheduling-constraints-and-groupless-node-upgrades-with-karpenter-in-amazon-eks/
+> - [Managing Pod Scheduling Constraints and Groupless Node Upgrades with Karpenter in Amazon EKS \| Containers](https://aws.amazon.com/blogs/containers/managing-pod-scheduling-constraints-and-groupless-node-upgrades-with-karpenter-in-amazon-eks/)
 > - https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010
 
 <br>

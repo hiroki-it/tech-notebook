@@ -35,7 +35,7 @@ type Context struct {
 }
 ```
 
-> - https://pkg.go.dev/github.com/gin-gonic/gin#Context
+> - [gin package - github.com/gin-gonic/gin - Go Packages](https://pkg.go.dev/github.com/gin-gonic/gin#Context)
 
 <br>
 
@@ -95,7 +95,7 @@ func Middleware(service string, opts ...Option) gin.HandlerFunc {
 
 Content-Type ヘッダーの MIME タイプに応じて、バインド関数をコールし分ける。
 
-> - https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind
+> - [gin package - github.com/gin-gonic/gin - Go Packages](https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.Bind)
 
 <br>
 
@@ -114,7 +114,7 @@ type User struct {
 }
 ```
 
-> - https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON
+> - [gin package - github.com/gin-gonic/gin - Go Packages](https://pkg.go.dev/github.com/gin-gonic/gin?utm_source=godoc#Context.BindJSON)
 
 <br>
 
@@ -134,7 +134,7 @@ type User struct {
 
 値が存在しない場合は、第二返却値で `false` を返却する。
 
-> - https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get
+> - [gin package - github.com/gin-gonic/gin - Go Packages](https://pkg.go.dev/github.com/gin-gonic/gin#Context.Get)
 
 <br>
 
@@ -215,7 +215,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 値が存在しない場合は、ランタイムエラーとなる。
 
-> - https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet
+> - [gin package - github.com/gin-gonic/gin - Go Packages](https://pkg.go.dev/github.com/gin-gonic/gin#Context.MustGet)
 
 <br>
 
@@ -275,7 +275,7 @@ func getRequestHeader(ginCtx *gin.Context) string {
 }
 ```
 
-> - https://yuji-ueda.hatenadiary.jp/entry/2019/10/13/104227
+> - [ginでcontextからHeaderの情報を取得する方法 - はい！今やってます！](https://yuji-ueda.hatenadiary.jp/entry/2019/10/13/104227)
 
 **＊実装例＊**
 
@@ -300,7 +300,7 @@ func printRequestHeaderList(ginCtx *gin.Context) {
 }
 ```
 
-> - https://gist.github.com/178inaba/a428496ebdc31edd16c84e78103d45ac
+> - [Print header with golang. · GitHub](https://gist.github.com/178inaba/a428496ebdc31edd16c84e78103d45ac)
 
 <br>
 
@@ -320,7 +320,7 @@ func printRequestHeaderList(ginCtx *gin.Context) {
 
 当該のリクエストで利用できる map 型データに、値を保管する。
 
-> - https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set
+> - [gin package - github.com/gin-gonic/gin - Go Packages](https://pkg.go.dev/github.com/gin-gonic/gin#Context.Set)
 
 #### ▼ 注意点
 
@@ -467,7 +467,7 @@ func BazMiddleware(next http.Handler) http.HandlerFunc {
 }
 ```
 
-> - https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813
+> - [Using http.Handler? · Issue #293 · gin-gonic/gin · GitHub](https://github.com/gin-gonic/gin/issues/293#issuecomment-103681813)
 
 #### ▼ `gin.HandlerFunc` から `http.Handler` への変換
 
@@ -515,6 +515,6 @@ ginCtx.JSON(
 
 標準のルールの一覧は、以下のリンクを参考にせよ。
 
-> - https://github.com/go-playground/validator/blob/v10.15.1/baked_in.go#L70-L235
+> - [validator/baked\_in.go at v10.15.1 · go-playground/validator · GitHub](https://github.com/go-playground/validator/blob/v10.15.1/baked_in.go#L70-L235)
 
 <br>

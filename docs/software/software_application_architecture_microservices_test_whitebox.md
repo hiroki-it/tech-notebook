@@ -9,7 +9,7 @@ description: ホワイトボックステスト＠テスト領域の知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -63,7 +63,7 @@ Fooクラスやfoo関数の内部処理
 > - [【書き起こし】Scenario-Based Integration Testing Platform for Microservices – 森 健太【Merpay Tech Fest 2021】 \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/)
 > - [What Are Different Types of Tests for Microservices? - Parasoft](https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/)
 > - [How to Test Microservices](https://semaphoreci.com/blog/test-microservices)
-> - https://www.cortex.io/post/an-overview-of-the-key-microservices-testing-strategies-types-of-tests-the-best-testing-tools
+> - [Microservices Testing: Effective Strategies, Test Types & Tools \| Cortex](https://www.cortex.io/post/an-overview-of-the-key-microservices-testing-strategies-types-of-tests-the-best-testing-tools)
 
 <br>
 

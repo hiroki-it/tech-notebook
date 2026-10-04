@@ -95,7 +95,7 @@ $ kubectl annotate service <サービス名> konghq.com/plugins=grpc-gateway-plu
 ```
 
 > - https://docs.konghq.com/hub/kong-inc/grpc-gateway/how-to/basic-example/
-> - https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c
+> - [Medium](https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c)
 
 #### ▼ jwt プラグインの場合
 
@@ -116,7 +116,7 @@ $ kubectl annotate service <サービス名> konghq.com/plugins=jwt-plugin
 ```
 
 > - https://docs.konghq.com/hub/kong-inc/jwt/how-to/basic-example/
-> - https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c
+> - [Medium](https://medium.com/@pratik.manandhar99/implementing-kong-api-gateway-with-grpc-on-a-kubernetes-cluster-240f6132219c)
 
 #### ▼ key-auth プラグインの場合
 

@@ -9,7 +9,7 @@ description: リソース＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -146,7 +146,7 @@ Kubernetes リソースの Ingress の代わりとして使用できる。
 > - [Istio / Ingress Gateways](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/)
 > - [Technology Preview - Istio Service Mesh Application — StarlingX documentation](https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html)
 > - https://youtu.be/TW9XivfIFAY?t=330
-> - https://www.solo.io/topics/istio/istio-ingress-gateway/
+> - [Istio Ingress Gateway: Gateway vs VirtualService \| Solo.io](https://www.solo.io/topics/istio/istio-ingress-gateway/)
 
 <br>
 
@@ -241,7 +241,7 @@ spec:
 > - [Istio Traffic management](https://bcho.tistory.com/1367)
 > - [Istio IngressGateway周辺を理解する #kubernetes - Qiita](https://qiita.com/J_Shell/items/296cd00569b0c7692be7)
 > - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
-> - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
+> - [Exposing services through Istio Ingress Gateway](https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/)
 
 <br>
 
@@ -294,7 +294,7 @@ Istio Egress Gateway を使用しない構成でも、ServiceEntry で外部の�
 > - https://istio.io/v1.10/blog/2019/egress-performance/#egress-traffic-cases
 > - [Technology Preview - Istio Service Mesh Application — StarlingX documentation](https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html)
 > - https://youtu.be/TW9XivfIFAY?t=330
-> - https://www.solo.io/topics/istio/istio-ingress-gateway/
+> - [Istio Ingress Gateway: Gateway vs VirtualService \| Solo.io](https://www.solo.io/topics/istio/istio-ingress-gateway/)
 
 <br>
 
@@ -338,7 +338,7 @@ Istio Egress Gateway はアプリケーションデータを復号できない�
 
 Istio サイドカーモードとアンビエントモードの間で、Istio Egress Gateway に必要な Istio リソースが異なる。
 
-> - https://www.solo.io/blog/egress-gateways-made-easy
+> - [Egress Gateways Made Easy with Istio Ambient Mode \| Solo.io](https://www.solo.io/blog/egress-gateways-made-easy)
 
 <br>
 

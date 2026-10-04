@@ -1285,6 +1285,6 @@ Error: error creating ECR repository: RepositoryAlreadyExistsException: The repo
 
 : 実インフラは変更されず、`tfstate` ファイルに状態が書き込まれる。
 
-> - https://medium.com/@mehmetodabashi/how-to-updateterraform-state-file-with-manually-changed-resources-2407b4843a55
+> - [Medium](https://medium.com/@mehmetodabashi/how-to-updateterraform-state-file-with-manually-changed-resources-2407b4843a55)
 
 <br>

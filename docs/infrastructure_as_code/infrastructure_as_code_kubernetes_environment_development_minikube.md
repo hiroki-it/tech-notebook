@@ -9,7 +9,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,8 +25,8 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_virtual_machine_driver.png)
 
-> - https://minikube.sigs.k8s.io/docs/commands/
-> - https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/
+> - [Commands \| minikube](https://minikube.sigs.k8s.io/docs/commands/)
+> - [Minikube – Creating a cluster – Richard Rose Blog](https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/)
 
 #### ▼ Docker ドライバーの場合
 
@@ -38,7 +38,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_docker_driver.png)
 
-> - https://zenn.dev/castaneai/articles/local-kubernetes-networking
+> - [ローカルKubernetes環境のネットワークを攻略する](https://zenn.dev/castaneai/articles/local-kubernetes-networking)
 
 <br>
 
@@ -50,7 +50,7 @@ description: Minikube＠開発環境の知見を記録しています。
 
 ホスト側の OS (Linux、MacOS、Windows) や、これら OS のバージョンによって、使用できるドライバーが異なる。
 
-> - https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320
+> - [M1 MacにおけるHyperkitとそれが必要なアプリケーションの利用について - ytooyamaのブログ](https://ytooyama.hatenadiary.jp/entry/2021/06/04/154320)
 
 #### ▼ ドライバーの種類
 
@@ -111,7 +111,7 @@ Minikube には、HostPath CSI ドライバー (`storage-provisioner` アドオ�
 
 > - [Persistent Volumes \| minikube](https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi)
 > - [CSI Driver and Volume Snapshots \| minikube](https://minikube.sigs.k8s.io/docs/tutorials/volume_snapshots_and_csi/)
-> - https://github.com/kubernetes/minikube/blob/master/pkg/storage/storage_provisioner.go
+> - [minikube/pkg/storage/storage\_provisioner.go at master · kubernetes/minikube · GitHub](https://github.com/kubernetes/minikube/blob/master/pkg/storage/storage_provisioner.go)
 
 #### ▼ Node の永続ディレクトリ
 

@@ -164,7 +164,7 @@ Python アプリケーションをフレームワークで開発している場�
 http = 0.0.0.0:5000
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#http)
 
 <br>
 
@@ -177,7 +177,7 @@ http = 0.0.0.0:5000
 logto = /dev/stdout
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#logto
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#logto)
 
 <br>
 
@@ -190,7 +190,7 @@ logto = /dev/stdout
 master = true
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#master)
 
 <br>
 
@@ -203,7 +203,7 @@ Python でアプリケーションファクトリーパターンを採用して�
 module = src:create_app()
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#module-wsgi)
 
 <br>
 
@@ -214,7 +214,7 @@ module = src:create_app()
 processes = 1
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#processes
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#processes)
 
 <br>
 
@@ -225,7 +225,7 @@ processes = 1
 py-autoreload = 1
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#py-autoreload
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#py-autoreload)
 
 <br>
 
@@ -238,7 +238,7 @@ py-autoreload = 1
 python-path = /var/www/foo
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#python-path
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#python-path)
 
 <br>
 
@@ -253,7 +253,7 @@ Python アプリケーションをフレームワークで開発している場�
 socket = /etc/uwsgi/uwsgi.sock:5000
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#socket
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#socket)
 > - [NginxとuWSGIでHelloWorld #Python - Qiita](https://qiita.com/koyoru1214/items/57461b920dfc11f67683)
 
 <br>
@@ -267,7 +267,7 @@ uwsgi プロセス終了時にソケットファイルを削除するか否か�
 vacuum = true
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#vacuum)
 
 <br>
 
@@ -280,7 +280,7 @@ vacuum = true
 wsgi-file = main.py
 ```
 
-> - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#wsgi-file
+> - [Configuration Options — uWSGI 2.0 ドキュメント](https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#wsgi-file)
 > - [4-2. uWSGIでDjangoアプリを動かす基礎 – Django学習帳](https://django.kurodigi.com/uwsgi-basic/)
 
 <br>

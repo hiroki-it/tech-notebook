@@ -197,6 +197,6 @@ CSR または SSR のアプリケーションは、`Cookie` ヘッダーを介�
 
 フロントエンドアプリケーションが SSR の場合に採用できる。
 
-> - https://redis.io/solutions/authentication-token-storage/
+> - [Authentication token storage solutions with Redis](https://redis.io/solutions/authentication-token-storage/)
 
 <br>

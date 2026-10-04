@@ -41,7 +41,7 @@ flowchart LR
     pagerDuty -...-> aws
 ```
 
-> - https://mermaid.js.org/syntax/flowchart.html?id=flowcharts-basic-syntax
+> - [Flowcharts Syntax \| Mermaid](https://mermaid.js.org/syntax/flowchart.html?id=flowcharts-basic-syntax)
 
 <br>
 

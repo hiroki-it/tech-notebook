@@ -128,7 +128,7 @@ DB のテーブルを分割して管理する。
 テーブルをレコード方向に分割して管理する。
 
 > - [データベースのパーティションとインデックスについて #SQL - Qiita](https://qiita.com/Hashimoto-Noriaki/items/6a4dd9c5f0e1d2cf5203)
-> - https://aws.amazon.com/jp/blogs/news/sharding-with-amazon-relational-database-service/
+> - [Amazon Relational Database Service を使用したシャーディング \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/sharding-with-amazon-relational-database-service/)
 
 #### ▼ 垂直パーティンション
 

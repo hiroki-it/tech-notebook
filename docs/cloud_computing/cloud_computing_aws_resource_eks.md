@@ -139,7 +139,7 @@ module "eks_foo" {
 }
 ```
 
-> - https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest#usage
+> - [Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest#usage)
 
 <br>
 

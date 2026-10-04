@@ -9,7 +9,7 @@ description: CI/CD＠技術的要素の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -261,7 +261,7 @@ CI ツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tek
 ![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png)
 
 > - [「Kubernetes Native」なCI/CDとは何か――クラウドネイティブ時代に至る歴史、主要ツール、パイプラインとフローの在り方：Cloud Nativeチートシート（5） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html)
-> - https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9
+> - [Medium](https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9)
 
 <br>
 

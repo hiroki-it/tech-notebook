@@ -50,7 +50,7 @@ resource "aws_eks_addon" "aws_ebs_csi_driver" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon#example-usage
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon#example-usage)
 > - https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html
 
 ```terraform
@@ -81,7 +81,7 @@ module "iam_assumable_role_with_oidc_ebs_csi_driver" {
 }
 ```
 
-> - https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
+> - [Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage)
 
 また、StorageClass を定義する必要があるが、Terraform かマニフェストでよい。
 
@@ -112,7 +112,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 ```
 
 > - [Storage Classes \| Kubernetes](https://kubernetes.io/docs/concepts/storage/storage-classes/)
-> - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class#example-usage
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class#example-usage)
 
 別途、AWS EBS CSI ドライバーの Pod に紐付ける ServiceAccount を作成し、IAM ロールの ARN を設定する。
 

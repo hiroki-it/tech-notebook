@@ -962,7 +962,7 @@ func main()  {
 
 > - [Tracing SDK \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown)
 > - [trace package - go.opentelemetry.io/otel/sdk/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.Shutdown)
-> - https://christina04.hatenablog.com/entry/opentelemetry-collector
+> - [OpenTelemetry Collectorでデータを一元的に管理する - Carpe Diem](https://christina04.hatenablog.com/entry/opentelemetry-collector)
 
 <br>
 
@@ -1014,7 +1014,7 @@ Google Cloud Trace をスパンの宛先とする。
 
 例えば Go の場合、`github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/trace` パッケージからコールできる。
 
-> - https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+> - [Cloud RunでOpenTelemetry Collectorをサイドカーとして動かす](https://zenn.dev/google_cloud_jp/articles/20230516-cloud-run-otel#%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/CHANGELOG.md#0290---2022-04-11
 
 <br>
@@ -1124,7 +1124,7 @@ func main()  {
 ```
 
 > - [Tracing SDK \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-2)
-> - https://christina04.hatenablog.com/entry/opentelemetry-collector
+> - [OpenTelemetry Collectorでデータを一元的に管理する - Carpe Diem](https://christina04.hatenablog.com/entry/opentelemetry-collector)
 
 <br>
 
@@ -1210,7 +1210,7 @@ Span Processor は、Graceful Shutdown 処理を実行するための関数を�
 
 > - [Tracing SDK \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1)
 > - [trace package - go.opentelemetry.io/otel/sdk/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor)
-> - https://christina04.hatenablog.com/entry/opentelemetry-collector
+> - [OpenTelemetry Collectorでデータを一元的に管理する - Carpe Diem](https://christina04.hatenablog.com/entry/opentelemetry-collector)
 
 <br>
 
@@ -1461,7 +1461,7 @@ func NewTracerProvider() {
 | Tail-based | サーバー側 (OpenTelemetry Collector) で、収集したスパンからサンプリングする (実際はすべてをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
 
 > - [OpenTelemetryでのSampling - Carpe Diem](https://christina04.hatenablog.com/entry/opentelemetry-sampling)
-> - https://opentelemetry.io/docs/concepts/sampling/
+> - [Sampling \| OpenTelemetry](https://opentelemetry.io/docs/concepts/sampling/)
 
 #### ▼ クライアント側のサンプリング率
 
@@ -1480,7 +1480,7 @@ Tail-based 方式の場合、前提としてアプリケーションですべて
 
 > - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26)
 > - [OpenTelemetry CollectorでTail-based samplingする](https://zenn.dev/ishii1648/articles/167e199bab5396)
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141
+> - [opentelemetry-go/sdk/trace/sampling.go at v1.22.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141)
 > - [Sampling \| OpenTelemetry](https://opentelemetry.io/docs/concepts/sampling/#tail-sampling)
 
 #### ▼ サーバー側 (OpenTelemetry Collector) のサンプリング率
@@ -1531,7 +1531,7 @@ OpenTelemetry の仕様では、あるべき環境変数が決まっている。
 | `OTEL_TRACES_SAMPLER`      | 使用する Sampler を設定する。                                                                                                       |
 | `OTEL_TRACES_SAMPLER_ARG`  | Sampler のパラメーター (例：サンプリング率) を設定する。                                                                            |
 
-> - https://opentelemetry.io/docs/languages/sdk-configuration/general/
+> - [General SDK Configuration \| OpenTelemetry](https://opentelemetry.io/docs/languages/sdk-configuration/general/)
 
 <br>
 
@@ -1555,6 +1555,6 @@ OpenTelemetry の仕様では、あるべき環境変数が決まっている。
 | `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL`  |      |
 | `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL` |      |
 
-> - https://opentelemetry.io/docs/languages/sdk-configuration/otlp-exporter/
+> - [OTLP Exporter Configuration \| OpenTelemetry](https://opentelemetry.io/docs/languages/sdk-configuration/otlp-exporter/)
 
 <br>

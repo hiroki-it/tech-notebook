@@ -142,7 +142,7 @@ Cookie: session=*****
 `Cookie` ヘッダーでペイロードとタイムスタンプを署名するためのキーを設定する。
 
 > - [Python : FlaskのsessionのKeyValueが、セッションCookieにどのように格納されているのかを調べてみた #ShellScript - Qiita](https://qiita.com/showchan33/items/b714cca80985b3db2565#3%E3%81%A4%E7%9B%AE%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AF%E7%BD%B2%E5%90%8D)
-> - https://flask.palletsprojects.com/en/stable/api/#flask.Flask.secret_key
+> - [API — Flask Documentation (3.1.x)](https://flask.palletsprojects.com/en/stable/api/#flask.Flask.secret_key)
 
 <br>
 
@@ -343,7 +343,7 @@ session.permanent = True
 session['username'] = user
 ```
 
-> - https://flask.palletsprojects.com/en/stable/api/#flask.session.permanent
+> - [API — Flask Documentation (3.1.x)](https://flask.palletsprojects.com/en/stable/api/#flask.session.permanent)
 > - [【Flask】Sessionについて #Python - Qiita](https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF)
 
 <br>

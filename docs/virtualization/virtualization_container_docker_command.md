@@ -102,7 +102,7 @@ $ docker buildx build --push
 $ docker buildx build --platform linux/amd64
 ```
 
-> - https://docs.docker.com/reference/cli/docker/buildx/build/
+> - [docker buildx build \| Docker Docs](https://docs.docker.com/reference/cli/docker/buildx/build/)
 
 #### ▼ create
 

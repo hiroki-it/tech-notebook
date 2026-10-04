@@ -9,7 +9,7 @@ description: Google Cloud Storage Bucket＠Google Cloudリソースの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -43,7 +43,7 @@ resource "google_storage_bucket_object" "foo" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket
-> - https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_object
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket)
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/storage_bucket_object)
 
 <br>

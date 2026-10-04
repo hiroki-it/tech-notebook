@@ -34,7 +34,7 @@ dependencies {
 }
 ```
 
-> - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
+> - [GitHub - logfellow/logstash-logback-encoder: Logback JSON encoder and appenders · GitHub](https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields)
 
 #### ▼ ログ構造
 
@@ -80,7 +80,7 @@ logback を設定する。
 ```
 
 > - [LogstashのLogback JSON encoderで、Logbackで出力するログをJSONエンコードする - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923)
-> - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
+> - [GitHub - logfellow/logstash-logback-encoder: Logback JSON encoder and appenders · GitHub](https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields)
 
 #### ▼ info、error
 
@@ -124,7 +124,7 @@ public class Foo extends Application{
 ```
 
 > - [LogstashのLogback JSON encoderで、Logbackで出力するログをJSONエンコードする - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923)
-> - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
+> - [GitHub - logfellow/logstash-logback-encoder: Logback JSON encoder and appenders · GitHub](https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields)
 
 #### ▼ MDC
 
@@ -196,6 +196,6 @@ public class Foo extends Application{
 ```
 
 > - [LogstashのLogback JSON encoderで、Logbackで出力するログをJSONエンコードする - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923)
-> - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
+> - [GitHub - logfellow/logstash-logback-encoder: Logback JSON encoder and appenders · GitHub](https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields)
 
 <br>

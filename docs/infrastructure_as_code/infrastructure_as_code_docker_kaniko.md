@@ -59,8 +59,8 @@ spec:
         secretName: aws-credentials
 ```
 
-> - https://github.com/GoogleContainerTools/kaniko#running-kaniko
-> - https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-amazon-ecr
+> - [GitHub - GoogleContainerTools/kaniko: Build Container Images In Kubernetes · GitHub](https://github.com/GoogleContainerTools/kaniko#running-kaniko)
+> - [GitHub - GoogleContainerTools/kaniko: Build Container Images In Kubernetes · GitHub](https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-amazon-ecr)
 
 <br>
 

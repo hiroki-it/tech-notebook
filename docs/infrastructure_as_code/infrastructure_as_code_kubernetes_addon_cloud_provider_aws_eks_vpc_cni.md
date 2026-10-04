@@ -49,7 +49,7 @@ CNI バイナリは、L-IPAM デーモンから IP アドレスを取得する�
 Pod を新しく作成するときに、kubelet からのリクエストによって、新しい Pod を Node 内の Cluster ネットワークに参加させる。
 
 > - [Assign IPs to Pods with the Amazon VPC CNI - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html)
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29)
 
 <br>
 
@@ -294,9 +294,9 @@ spec:
                       - fargate
 ```
 
-> - https://github.com/aws/amazon-vpc-cni-k8s/blob/v1.15.3/config/master/aws-k8s-cni.yaml#L351-L567
+> - [amazon-vpc-cni-k8s/config/master/aws-k8s-cni.yaml at v1.15.3 · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/v1.15.3/config/master/aws-k8s-cni.yaml#L351-L567)
 > - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-now-supports-kubernetes-network-policies/
-> - https://github.com/aws/aws-network-policy-agent
+> - [GitHub - aws/aws-network-policy-agent: Network Policy Agent is a daemonset that is responsible for enforcing configured network policies on the cluster. · GitHub](https://github.com/aws/aws-network-policy-agent)
 
 <br>
 
@@ -346,9 +346,9 @@ Kubernetes のバージョンに応じて、異なるアドオンのバージョ
 | `WARM_PREFIX_TARGET`                    |                                                                                                                                                                                                                                                                                                | `1`                                                                                |
 | `WARM_IP_TARGET`                        | `WARM_ENI_TARGET` と競合するため、デフォルトでは設定されていない。Amazon EC2/Fargate ワーカーNode 当たりでウォーム状態にしておくセカンダリープライベート IP アドレス数を設定する。`WARM_ENI_TARGET` の値が小さすぎると、EC2-API のコール回数が増え、リクエスト数制限にひっかかる可能性がある。 | `2`                                                                                |
 
-> - https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
+> - [GitHub - aws/amazon-vpc-cni-k8s: Networking plugin repository for pod networking in Kubernetes using Elastic Network Interfaces on AWS · GitHub](https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables)
 > - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments)
-> - https://repost.aws/ja/knowledge-center/eks-configure-cni-plugin-use-ip-address
+> - [VPC サブネットの IP アドレスを使用するように CNI プラグインを設定する \| AWS re:Post](https://repost.aws/ja/knowledge-center/eks-configure-cni-plugin-use-ip-address)
 > - [EKS Cluster の消費 IP 数を減らす - YasuBlog](https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress)
 > - [Amazon EKS ワーカーノードが確保するIPアドレスを減らす](https://zenn.dev/nshmura/articles/fbb53aaf6fed8c)
 > - [EKSのPodのSecurityGroupを試す - ぐるっとぐりっど](https://www.grugrut.net/posts/202107250958/)
@@ -519,7 +519,7 @@ Pod の上限数を上げる場合、Amazon EKS が属する Amazon VPC サブ�
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
 > - [EKS Cluster の消費 IP 数を減らす - YasuBlog](https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress)
 > - [EKSでPrivate IPアドレス枯渇したのでaws-nodeの設定を見直した #kubernetes - Qiita](https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99)
-> - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#minimum_ip_target-%E3%81%A8-warm_ip_target%E3%81%AB%E3%82%88%E3%82%8Bip%E7%A2%BA%E4%BF%9D%E3%81%AE%E4%BE%8B
+> - [Amazon EKS ワーカーノードが確保するIPアドレスを減らす](https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#minimum_ip_target-%E3%81%A8-warm_ip_target%E3%81%AB%E3%82%88%E3%82%8Bip%E7%A2%BA%E4%BF%9D%E3%81%AE%E4%BE%8B)
 
 <br>
 
@@ -529,7 +529,7 @@ Pod の上限数を上げる場合、Amazon EKS が属する Amazon VPC サブ�
 
 AWS の ENI には、Prefix delegation (プレフィクス委譲) という機能がある。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix
+> - [Manage prefixes for your network interfaces - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix)
 
 L-IPAM デーモンは、元からあるこの機能を利用し、Node の ENI に CIDR (サブネット内の `*.*.*.*/28`) を割り当て、これから取得した IP アドレスを Pod に割り当てる。
 
@@ -539,8 +539,8 @@ Prefix delegation モードを使用する場合、Node を配置する AWS サ�
 
 ![aws-eks-vpc-cni_prefix-delegation-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png)
 
-> - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/
-> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
+> - [Prefix Mode for Linux - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/)
+> - [Amazon VPC CNI プラグインでノード 1 台に配置可能な Pod 数を増やすために \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/)
 
 <br>
 
@@ -550,7 +550,7 @@ Prefix delegation モードを使用する場合、Node を配置する AWS サ�
 
 Prefix delegation モードを採用可能なインスタンスタイプを選ぶ。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances
+> - [Amazon EC2 instance types - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances)
 
 Amazon VPC CNI の環境変数の `ENABLE_PREFIX_DELEGATION` に `true` を設定する。
 
@@ -615,8 +615,8 @@ $ ./max-pods-calculator.sh \
   --kubelet-extra-args "--max-pods=<max-pods-calculator.shファイルから取得したPodの最大数>"
 ```
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
-> - https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/
+> - [Assign more IP addresses to Amazon EKS nodes with prefixes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html)
+> - [Amazon VPC CNI プラグインでノード 1 台に配置可能な Pod 数を増やすために \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/)
 
 #### ▼ 環境変数
 
@@ -636,7 +636,7 @@ AWS は、Prefix delegation モードのほうを使ってほしいのかもし�
 
 実際、セカンダリーIP アドレス割り当てモードでは、割り当てられる IP アドレスが劇的に増えないため、Prefix delegation モードのほうがよい。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
+> - [Assign more IP addresses to Amazon EKS nodes with prefixes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html)
 
 #### ▼ セカンダリーIP アドレス割り当てモードからの移行
 
@@ -644,14 +644,14 @@ AWS は、Prefix delegation モードのほうを使ってほしいのかもし�
 
 ローリングアップグレードで移行する場合、セカンダリーIP アドレス割り当てモードと Prefix delegation モードの両方を Node に適用してしまう。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
-> - https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/#replace-all-nodes-during-the-transition-to-prefix-delegation
+> - [Assign more IP addresses to Amazon EKS nodes with prefixes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html)
+> - [Prefix Mode for Linux - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/#replace-all-nodes-during-the-transition-to-prefix-delegation)
 
 <br>
 
 ### シナリオ
 
-> - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md
+> - [amazon-vpc-cni-k8s/docs/prefix-and-ip-target.md at master · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md)
 
 <br>
 
@@ -662,6 +662,6 @@ AWS は、Prefix delegation モードのほうを使ってほしいのかもし�
 - Cilium (`L3`/`L4`/`L7`)
 - Cloud-Native Contail Networking
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/alternate-cni-plugins.html
+> - [Alternate CNI plugins for Amazon EKS clusters - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alternate-cni-plugins.html)
 
 <br>

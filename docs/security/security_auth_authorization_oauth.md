@@ -9,7 +9,7 @@ description: OAuth＠認可の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -79,7 +79,7 @@ OAuth には脆弱性があるが、OIDC であればこれに対処できる。
 ![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
 
 > - [一番分かりやすい OpenID Connect の説明 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe)
-> - https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-2
+> - [Auth0 を使って ID Token と Access Token の違いをざっくり理解する \| DevelopersIO](https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-2)
 > - [OAuth認証の脆弱性とOpenIDConnectでなぜ解決されるのか分かりやすく解説](https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B)
 
 <br>

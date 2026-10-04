@@ -26,7 +26,7 @@ description: イベントメッシュ＠イベントメッシュ系ミドルウ�
 メッセージブローカー／キュー向けの通信プロトコルが主要な場合は、イベントメッシュツールを使用するほうがよい。
 
 > - [サービスメッシュ、Istioがマイクロサービスのトラフィック制御、セキュリティ、可観測性に欠かせない理由：Cloud Nativeチートシート（9） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013)
-> - https://www.redhat.com/ja/topics/integration/what-is-an-event-mesh
+> - [イベントメッシュとは](https://www.redhat.com/ja/topics/integration/what-is-an-event-mesh)
 > - [The Potential for Using a Service Mesh for Event-Driven Messaging - InfoQ](https://www.infoq.com/articles/service-mesh-event-driven-messaging/)
 > - [What is an Event Mesh? \| Solace](https://solace.com/what-is-an-event-mesh/)
 

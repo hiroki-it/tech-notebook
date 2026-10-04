@@ -334,7 +334,7 @@ status:
 
 補足として、以下の方法でユーザー定義の Istio Ingress Gateway を作成できる (かなり大変) 。
 
-> - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
+> - [Medium](https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d)
 > - [User defined IngressGateway not configured correctly with istioctl · Issue #23303 · istio/istio · GitHub](https://github.com/istio/istio/issues/23303)
 
 #### ▼ istiodRemote

@@ -152,7 +152,7 @@ Kiali のバージョンは、Istio と対応関係にある。
 
 Kiali のバージョンに応じたリビジョンの Istio を指定する。
 
-> - https://kiali.io/docs/installation/installation-guide/prerequisites/#version-compatibility
+> - [Prerequisites \| Kiali](https://kiali.io/docs/installation/installation-guide/prerequisites/#version-compatibility)
 
 <br>
 

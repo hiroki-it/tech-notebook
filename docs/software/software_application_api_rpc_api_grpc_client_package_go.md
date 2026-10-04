@@ -9,7 +9,7 @@ description: Go＠gRPCクライアントパッケージの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -126,7 +126,7 @@ protoc \
 ```
 
 > - [Docker image を導入して protobuf を使う - freee Developers Hub](https://developers.freee.co.jp/entry/new-arch-protobuf-docker-image)
-> - https://github.com/namely/docker-protoc
+> - [GitHub - namely/docker-protoc: Docker images for generating protocol buffer definitions · GitHub](https://github.com/namely/docker-protoc)
 
 <br>
 
@@ -160,7 +160,7 @@ $ protoc -I=. --go_out=. --go-grpc_out=. foo.proto
 $ protoc -I=. --go_out=. --go-grpc_out=. *.proto
 ```
 
-> - https://github.com/golang/protobuf/issues/1070#issuecomment-607465055
+> - [plugins are not supported : grpc · Issue #1070 · golang/protobuf · GitHub](https://github.com/golang/protobuf/issues/1070#issuecomment-607465055)
 > - [gRPC/Go で簡単なサーバーとクライアントを実装する - y-zumiの日記](https://y-zumi.hatenablog.com/entry/2019/09/07/011741)
 
 #### ▼ RPC-API 仕様書
@@ -288,7 +288,7 @@ type UnaryClientInterceptor func(
 
 エラー時に、Span ステータスとエラーメッセージをスパンに設定してくれる。
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L107
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go at v1.25.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L107)
 
 これを gRPC サーバーとの接続作成時に、`WithChainUnaryInterceptor()` 関数に渡す。
 
@@ -421,7 +421,7 @@ type StreamClientInterceptor func(
 
 エラー時に、Span ステータスとエラーメッセージをスパンに設定してくれる。
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L257
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go at v1.25.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L257)
 
 これを gRPC サーバーとの接続作成時に、`WithChainStreamInterceptor()` 関数に渡す。
 
@@ -594,7 +594,7 @@ func main() {
 }
 ```
 
-> - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v1.4.0/recovery/doc.go
+> - [go-grpc-middleware/recovery/doc.go at v1.4.0 · grpc-ecosystem/go-grpc-middleware · GitHub](https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v1.4.0/recovery/doc.go)
 > - [go-grpc-middleware/recoveryを利用してpanicから回復する - forza alex](https://ybalexdp.hatenablog.com/entry/grpc_recovery)
 
 #### ▼ フィルター系
@@ -860,7 +860,7 @@ func main() {
 }
 ```
 
-> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - [いまさらだけどgRPCに入門したので分かりやすくまとめてみた #Go - Qiita](https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96)
 > - [サーバーとクライアントの作成 \| ent](https://entgo.io/ja/docs/grpc-server-and-client/)
 
 <br>
@@ -1047,7 +1047,7 @@ func main() {
 }
 ```
 
-> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - [いまさらだけどgRPCに入門したので分かりやすくまとめてみた #Go - Qiita](https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96)
 
 <br>
 
@@ -1126,7 +1126,7 @@ service FooService {
 ```
 
 > - [grpc-gatewayでgRPCとREST両対応のサーバを作る \| フューチャー技術ブログ](https://future-architect.github.io/articles/20220624a/#grpc-gateway%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C)
-> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - [いまさらだけどgRPCに入門したので分かりやすくまとめてみた #Go - Qiita](https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96)
 > - [protocの使い方 - Carpe Diem](https://christina04.hatenablog.com/entry/protoc-usage)
 
 <br>
@@ -1165,7 +1165,7 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 補足として、`pb.go` ファイルには、gRPC サーバーとして登録するための `Register<ファイル名>ServiceServer` 関数が定義される。
 
 > - [protocの使い方 - Carpe Diem](https://christina04.hatenablog.com/entry/protoc-usage)
-> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
+> - [いまさらだけどgRPCに入門したので分かりやすくまとめてみた #Go - Qiita](https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96)
 
 <br>
 
@@ -1286,7 +1286,7 @@ func NewIncomingContext(ctx context.Context, md MD) context.Context {
 }
 ```
 
-> - https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go
+> - [grpc-go/metadata/metadata.go at v1.63.0 · grpc/grpc-go · GitHub](https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go)
 
 #### ▼ FromOutgoingContext
 
@@ -1337,7 +1337,7 @@ func NewOutgoingContext(ctx context.Context, md MD) context.Context {
 }
 ```
 
-> - https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go
+> - [grpc-go/metadata/metadata.go at v1.63.0 · grpc/grpc-go · GitHub](https://github.com/grpc/grpc-go/blob/v1.63.0/metadata/metadata.go)
 
 #### ▼ Get
 

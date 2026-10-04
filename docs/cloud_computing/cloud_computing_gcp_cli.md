@@ -452,7 +452,7 @@ foo-gke-cluster    asia-northeast1  1.22.0-gke       *.*.*.*      e2-medium     
 
 記入中...
 
-> - https://cloud.google.com/sdk/gcloud/reference/container/node-pools/describe
+> - [gcloud container node-pools describe \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/container/node-pools/describe)
 
 #### ▼ describe
 
@@ -476,7 +476,7 @@ upgradeSettings:
   strategy: BLUE_GREEN # ブルー/グリーンアップグレード
 ```
 
-> - https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies#inspect-upgrade-settings
+> - [Configure node upgrade strategies \| Google Kubernetes Engine (GKE) \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-pool-upgrade-strategies#inspect-upgrade-settings)
 
 #### ▼ update
 
@@ -501,7 +501,7 @@ $ gcloud container node-pools update foo-node-pool \
     --max-unavailable-upgrade=1
 ```
 
-> - https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0
+> - [Medium](https://medium.com/google-cloud-jp/gke-upgrade-strategy-8568f450f9d0)
 
 <br>
 

@@ -21,7 +21,7 @@ Node 内の権威 DNS サーバーとして、Kubernetes リソースの名前�
 
 ![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
 
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29)
 
 <br>
 
@@ -141,7 +141,7 @@ kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 ```
 
 > - [KubernetesのPod内からの名前解決を検証する](https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/)
-> - https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101
+> - [It's DNS - but how do you troubleshoot Kubernetes DNS? With Cilium.](https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101)
 
 <br>
 

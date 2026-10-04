@@ -116,7 +116,7 @@ Amazon CloudWatch Metrics の `DatabaseConnections` メトリクスから、DB �
 
 ![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_pending-maintenance_action.png)
 
-> - https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/
+> - [【速報】Amazon RDS：メンテナンスへの柔軟な対応が可能に（pending-maintenance） \| DevelopersIO](https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/)
 
 <br>
 
@@ -176,7 +176,7 @@ $ aws rds apply-pending-maintenance-action \
   --apply-action <取り消したいアクション名>
 ```
 
-> - https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/
+> - [いつ来るの？Amazon Relational Database Service (RDS)/Amazon Auroraの「保留中のメンテナンス」の「next window」について \| DevelopersIO](https://dev.classmethod.jp/articles/mean-of-next-window-in-pending-maintenance-and-set-maintenance-schedule/)
 
 <br>
 

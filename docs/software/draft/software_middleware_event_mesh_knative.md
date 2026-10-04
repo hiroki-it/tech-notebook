@@ -9,7 +9,7 @@ description: Knative＠パブリッシュ／サブスクライブ方式の知見
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -51,7 +51,7 @@ Knative のイベントメッシュ (Knative Eventing) は、イベントブロ�
 
 ![knative_architecture_event-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture_event-mesh.png)
 
-> - https://knative.dev/docs/eventing/event-mesh/
+> - [Redirecting...](https://knative.dev/docs/eventing/event-mesh/)
 > - [Event-Driven applications with CloudEvents on Kubernetes \| Salaboy](https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/)
 > - [Knative Eventingでイベント駆動なアプリケーションを体験する #kubernetes - Qiita](https://qiita.com/ryutoyasugi/items/3801660d83826a802718#knative-eventing%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 

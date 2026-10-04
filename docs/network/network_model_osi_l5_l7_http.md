@@ -37,7 +37,7 @@ description: HTTP＠L5 ~ L7の知見を記録しています。
 
 コンテキストクラスが用意されている。
 
-> - https://docs.microsoft.com/en-us/dotnet/api/system.web.routing.requestcontext?view=netframework-4.8
+> - [RequestContext Class (System.Web.Routing) \| Microsoft Learn](https://docs.microsoft.com/en-us/dotnet/api/system.web.routing.requestcontext?view=netframework-4.8)
 
 #### ▼ Gin の場合
 
@@ -45,7 +45,7 @@ Go のフレームワーク。
 
 コンテキスト構造体が用意されている。
 
-> - https://pkg.go.dev/github.com/gin-gonic/gin#Context
+> - [gin package - github.com/gin-gonic/gin - Go Packages](https://pkg.go.dev/github.com/gin-gonic/gin#Context)
 
 #### ▼ Nuxt.js の場合
 
@@ -53,7 +53,7 @@ JavaScript のフレームワーク。
 
 コンテキストオブジェクトが用意されている。
 
-> - https://nuxtjs.org/ja/docs/internals-glossary/context/
+> - [Nuxt 2 - コンテキスト](https://nuxtjs.org/ja/docs/internals-glossary/context/)
 
 #### ▼ Lambda の場合
 
@@ -69,7 +69,7 @@ HTTP リクエストのたびに、送信元と宛先間で TCP スリーウェ�
 
 ![http-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/http-keepalive.png)
 
-> - https://server-setting.info/centos/nginx-keepalive-setting.html
+> - [nginx でKeepAliveを設定してみる \| レンタルサーバー・自宅サーバー設定・構築のヒント](https://server-setting.info/centos/nginx-keepalive-setting.html)
 > - [【図解】TCP Keep-Alive/http Keep-Aliveの仕組みと違い ～Client/Serverの挙動とメリット,設定～ \| SEの道標](https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/#toc7)
 
 <br>
@@ -401,7 +401,7 @@ text=a&text2=b
 
 GET リクエストではあるが、ボディにクエリパラメーターを記述して送信する方法がある。
 
-> - https://github.com/postmanlabs/postman-app-support/issues/131
+> - [Option to send GET request body · Issue #131 · postmanlabs/postman-app-support · GitHub](https://github.com/postmanlabs/postman-app-support/issues/131)
 
 <br>
 
@@ -590,7 +590,7 @@ API に認証/認可プロセスが存在せず、トークン発行と参照権
 
 一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html
+> - [【IT技術の知見】RDBMS＠DB系ミドルウェア - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html)
 
 #### ▼ `412` (リソースアクセスエラー)
 
@@ -868,7 +868,7 @@ Set-Cookie: sessionId=<セッションID>
 
 GoogleConsole におけるセッションについては、以下のリンクを参考にせよ。
 
-> - https://support.google.com/analytics/answer/6086069?hl=ja
+> - [セッション - アナリティクス ヘルプ](https://support.google.com/analytics/answer/6086069?hl=ja)
 
 <br>
 
@@ -1034,7 +1034,7 @@ session.gc_divisor = 1
 - IP ハッシュ
 
 > - https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/
-> - https://aws.amazon.com/jp/what-is/load-balancing/
+> - [ロードバランシングとは? - ロードバランシングアルゴリズムの説明 - AWS](https://aws.amazon.com/jp/what-is/load-balancing/)
 
 #### ▼ 動的方式
 
@@ -1047,7 +1047,7 @@ session.gc_divisor = 1
 - 最小レスポンス時間
 
 > - https://www.cloudflare.com/ja-jp/learning/performance/types-of-load-balancing-algorithms/
-> - https://aws.amazon.com/jp/what-is/load-balancing/
+> - [ロードバランシングとは? - ロードバランシングアルゴリズムの説明 - AWS](https://aws.amazon.com/jp/what-is/load-balancing/)
 
 <br>
 

@@ -3931,7 +3931,7 @@ spec:
 
 > - [Images \| Kubernetes](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)
 > - [Pull an Image from a Private Registry \| Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret)
-> - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
+> - [Medium](https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc)
 
 <br>
 
@@ -4434,7 +4434,7 @@ spec:
       effect: NoSchedule
 ```
 
-> - https://blog.devops.dev/taints-and-tollerations-vs-node-affinity-42ec5305e11a
+> - [Medium](https://blog.devops.dev/taints-and-tollerations-vs-node-affinity-42ec5305e11a)
 > - [KubernetesのTaintsとTolerationsについて #kubernetes - Qiita](https://qiita.com/sheepland/items/8fedae15e157c102757f#effect%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%A8%E3%81%9D%E3%81%AE%E5%8A%B9%E6%9E%9C)
 
 #### ▼ NoExecute
@@ -4467,7 +4467,7 @@ spec:
       effect: NoExecute
 ```
 
-> - https://blog.devops.dev/taints-and-tollerations-vs-node-affinity-42ec5305e11a
+> - [Medium](https://blog.devops.dev/taints-and-tollerations-vs-node-affinity-42ec5305e11a)
 > - [KubernetesのTaintsとTolerationsについて #kubernetes - Qiita](https://qiita.com/sheepland/items/8fedae15e157c102757f#effect%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%A8%E3%81%9D%E3%81%AE%E5%8A%B9%E6%9E%9C)
 
 <br>
@@ -4941,7 +4941,7 @@ spec:
   minAvailable: 3
 ```
 
-> - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
+> - [Specifying a Disruption Budget for your Application \| Kubernetes](https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget)
 > - [Kubernetes DrainとPod Disruption Budget(PDB)](https://zenn.dev/sasakiki/articles/a71d9158020266)
 
 <br>
@@ -4976,7 +4976,7 @@ spec:
         app.kubernetes.io/name: foo-pod
 ```
 
-> - https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget
+> - [Specifying a Disruption Budget for your Application \| Kubernetes](https://kubernetes.io/docs/tasks/run-application/configure-pdb/#specifying-a-poddisruptionbudget)
 
 <br>
 
@@ -5378,7 +5378,7 @@ data:
 
 > - [Secrets \| Kubernetes](https://kubernetes.io/docs/concepts/configuration/secret/#docker-config-secrets)
 > - [Pull an Image from a Private Registry \| Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
-> - https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc
+> - [Medium](https://medium.com/makotows-blog/kubernetes-private-registry-tips-image-pullsecretse-20dfb808dfc-e20dfb808dfc)
 
 #### ▼ kubernetes.io/service-account-token
 
@@ -5416,8 +5416,8 @@ secrets:
 
 > - https://stackoverflow.com/a/72258300
 > - [Kubernetes v1.24でServiceAccountのトークンを生成・取得する - zaki work log](https://zaki-hmkc.hatenablog.com/entry/2022/07/27/002213)
-> - https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets
-> - https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#token-controller
+> - [Secrets \| Kubernetes](https://kubernetes.io/docs/concepts/configuration/secret/#service-account-token-secrets)
+> - [Managing Service Accounts \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#token-controller)
 
 #### ▼ kubernetes.io/tls
 
@@ -5461,7 +5461,7 @@ data:
   password: baz
 ```
 
-> - https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets
+> - [Secrets \| Kubernetes](https://kubernetes.io/docs/concepts/configuration/secret/#opaque-secrets)
 
 <br>
 
@@ -5524,8 +5524,8 @@ spec:
   externalTrafficPolicy: Local
 ```
 
-> - https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-nodeport
-> - https://thinkit.co.jp/article/13738?page=0%2C1
+> - [Using Source IP \| Kubernetes](https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-nodeport)
+> - [NodePort \| Think IT（シンクイット）](https://thinkit.co.jp/article/13738?page=0%2C1)
 > - [k8sでクライアントのソースIPを維持するのは結構大変ということがわかってきた · GitHub](https://gist.github.com/IMOKURI/fc27c28139c575b7decf3ac1126db767)
 
 <br>
@@ -5687,7 +5687,7 @@ spec:
       targetPort: 9000 # デフォルトでは、spec.ports.port キーと同じ値になる。
 ```
 
-> - https://qiita.com/MahoTakara/items/d18d8f9b36416353066c#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%AE%9A%E7%BE%A9
+> - [Kubernetes "サービス"の概要についての自習ノート #kubernetes - Qiita](https://qiita.com/MahoTakara/items/d18d8f9b36416353066c#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E5%AE%9A%E7%BE%A9)
 
 <br>
 
@@ -5718,8 +5718,8 @@ spec:
     - *.*.*.*/*
 ```
 
-> - https://repost.aws/ja/knowledge-center/eks-cidr-ip-address-loadbalancer
-> - https://cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer-parameters?hl=ja
+> - [Amazon EKS で LoadBalancer の CIDR IP アドレスを制限する \| AWS re:Post](https://repost.aws/ja/knowledge-center/eks-cidr-ip-address-loadbalancer)
+> - [LoadBalancer Service のパラメータ \| GKE networking \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/service-load-balancer-parameters?hl=ja)
 
 <br>
 
@@ -5741,7 +5741,7 @@ spec:
     app.kubernetes.io/name: foo-pod
 ```
 
-> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+> - [Labels and Selectors \| Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 
 <br>
 
@@ -5772,7 +5772,7 @@ spec:
   sessionAffinity: ClientIP
 ```
 
-> - https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity
+> - [Virtual IPs and Service Proxies \| Kubernetes](https://kubernetes.io/docs/reference/networking/virtual-ips/#session-affinity)
 > - [Enable Session Affinity (a.k.a Sticky Session) to Kubernetes service · GitHub](https://gist.github.com/fjudith/e8acc791f015adf6fd47e5ad7be736cb)
 > - [Kubernetes道場 9日目 - Serviceについて - Toku's Blog](https://cstoku.dev/posts/2018/k8sdojo-09/#sessionaffinity)
 
@@ -5816,7 +5816,7 @@ spec:
       timeoutSeconds: 3600
 ```
 
-> - https://kubernetes.io/docs/reference/networking/virtual-ips/#session-stickiness-timeout
+> - [Virtual IPs and Service Proxies \| Kubernetes](https://kubernetes.io/docs/reference/networking/virtual-ips/#session-stickiness-timeout)
 
 <br>
 
@@ -6044,7 +6044,7 @@ spec:
 > - [Secret の自動マウントをオプトアウトするかどうか : automountServiceAccountToken フィールド - kakakakakku blog](https://kakakakakku.hatenablog.com/entry/2021/07/12/095208)
 > - [Managing Service Accounts \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/#serviceaccount-admission-controller)
 > - [BoundServiceAccountTokenVolumeを有効にしてみる #kubernetes - Qiita](https://qiita.com/hiyosi/items/35c22507b2a85892c707)
-> - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
+> - [詳解: IAM Roles for Service Accounts \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/)
 
 <br>
 

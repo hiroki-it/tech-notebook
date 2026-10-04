@@ -29,6 +29,6 @@ description: ハードウェアの知見を記録しています。
 
 ![hardware_computer_five-parts](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware_computer_five-parts.png)
 
-> - https://living-maou.com/computer-composition/
+> - [【子ども向け】コンピュータのしくみを分かりやすく解説（五大装置） – リビングの魔王](https://living-maou.com/computer-composition/)
 
 <br>

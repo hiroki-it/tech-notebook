@@ -100,7 +100,7 @@ RESTfulAPI では、すべての HTTP メソッドのうち、主に以下の `4
 | DELETE        | 削除系 (データの削除)                                                        | `https://example.com/users/{id}` | delete         |
 
 > - https://noumenon-th.net/programming/2020/01/30/laravel-crud/
-> - https://cloud.google.com/discover/what-is-rest-api?hl=ja
+> - [REST API の基本と実装 \| Google Cloud](https://cloud.google.com/discover/what-is-rest-api?hl=ja)
 
 POST リクエストと PUT リクエストの重要な違いについてまとめる。
 

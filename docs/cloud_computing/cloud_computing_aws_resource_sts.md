@@ -343,7 +343,7 @@ metadata:
 
 IRSA により、ServiceAccount を介して Pod と AWS IAM ロールが紐づく。
 
-> - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
+> - [詳解: IAM Roles for Service Accounts \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/)
 > - [EKS運用のGitLab RunnerジョブにAWSのIAMロールを適用する方法 \| DevelopersIO](https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13)
 > - [IRSAをマルチアカウントAWS環境のEKSクラスタに導入した話 - Money Forward Developers Blog](https://moneyforward-dev.jp/entry/2021/12/19/irsa/)
 

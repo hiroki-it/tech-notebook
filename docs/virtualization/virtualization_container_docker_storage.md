@@ -223,7 +223,7 @@ Docker on Linux のみで使用できる。
 
 そのため、バインドマウントより安全である。
 
-> - https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952
+> - [Medium](https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952)
 > - [Docker volumes vs. bind mounts - LogRocket Blog](https://blog.logrocket.com/docker-volumes-vs-bind-mounts/)
 > - https://devops4solutions.com/storage-options-in-docker/
 

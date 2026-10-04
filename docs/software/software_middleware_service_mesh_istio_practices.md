@@ -9,7 +9,7 @@ description: プラクティス集＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -349,7 +349,7 @@ Istio の開発プロジェクトでは、マイナーバージョンを `1` 個
 そのため、マイナーバージョンを `2` 個以上跨いだアップグレードを推奨していない。
 
 > - [Istio / Upgrade Istio](https://istio.io/latest/docs/setup/upgrade/)
-> - https://thenewstack.io/upgrading-istio-without-downtime/
+> - [Upgrading Istio without Downtime - The New Stack](https://thenewstack.io/upgrading-istio-without-downtime/)
 
 #### ▼ Istiod コントロールプレーンでダウンタイムを発生させない
 
@@ -359,13 +359,13 @@ Istiod コントロールプレーンでダウンタイムが発生すると、i
 
 Istiod コントロールプレーンをカナリアアップグレードを採用する。
 
-> - https://thenewstack.io/upgrading-istio-without-downtime/
+> - [Upgrading Istio without Downtime - The New Stack](https://thenewstack.io/upgrading-istio-without-downtime/)
 
 #### ▼ Istio Ingress Gateway でダウンタイムを発生させない
 
 Istio Ingress Gateway でダウンタイムが発生すると、アプリへのインバウンド通信が遮断されてしまう。
 
-> - https://thenewstack.io/upgrading-istio-without-downtime/
+> - [Upgrading Istio without Downtime - The New Stack](https://thenewstack.io/upgrading-istio-without-downtime/)
 
 <br>
 

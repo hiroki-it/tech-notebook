@@ -178,7 +178,7 @@ Keycloak では、Admin アカウントの認証は master realm で、それ以
 
 master realm でログイン後、ユーザー定義の realm を作成するとよい。
 
-> - https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm
+> - [Server Administration Guide](https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm)
 
 <br>
 
@@ -377,7 +377,7 @@ GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conne
 ```
 
 > - [Securing applications and services with OpenID Connect - Keycloak](https://www.keycloak.org/securing-apps/oidc-layers#_endpoints)
-> - https://thinkit.co.jp/article/17621
+> - [Keycloakのインストールと構築例 \| Keycloakで実現するAPIセキュリティ \| Think IT（シンクイット）](https://thinkit.co.jp/article/17621)
 > - [Configuring and using token exchange - Keycloak](https://www.keycloak.org/securing-apps/token-exchange)
 
 #### ▼ /userinfo
@@ -405,9 +405,9 @@ POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conn
 ```
 
 > - [Securing applications and services with OpenID Connect - Keycloak](https://www.keycloak.org/securing-apps/oidc-layers#_endpoints)
-> - https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4884254#gistcomment-4884254
-> - https://qiita.com/suke_masa/items/e04880c5cf7232b60004
-> - https://qiita.com/i7a7467/items/b7eaa2deb0378fc3b2aa
+> - [Simple python example using flask, flask\_oidc and keycloak · GitHub](https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4884254#gistcomment-4884254)
+> - [KeycloakのLogout Endpointでログアウトする #Keycloak - Qiita](https://qiita.com/suke_masa/items/e04880c5cf7232b60004)
+> - [KeycloakのLogoutEndpointとTokenRevocationEndpointについて #Keycloak - Qiita](https://qiita.com/i7a7467/items/b7eaa2deb0378fc3b2aa)
 
 <br>
 
@@ -438,7 +438,7 @@ client_id=python-client&client_secret=a07f9...8213d1&refresh_token=eyJhbGci...tw
 | `refresh_token` | リフレッシュトークン     |
 
 > - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
-> - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - [Keycloakのシングル・ログアウト(SLO)についてのまとめ #OIDC - Qiita](https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 #### ▼ アプリケーションへのリクエスト
 
@@ -478,7 +478,7 @@ Keycloak は、このセッション ID でログアウトすべきクライア�
 ```
 
 > - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%81%9D%E3%81%AE%E4%BB%96)
-> - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#k_logout-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - [Keycloakのシングル・ログアウト(SLO)についてのまとめ #OIDC - Qiita](https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#k_logout-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 #### ▼ ID プロバイダーからのレスポンス
 
@@ -490,7 +490,7 @@ HTTP/1.1 204 No Content
 ```
 
 > - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%90%E3%83%83%E3%82%AF%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
-> - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - [Keycloakのシングル・ログアウト(SLO)についてのまとめ #OIDC - Qiita](https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 <br>
 
@@ -513,7 +513,7 @@ GET http://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connec
 | `state`                    | CSRF 対策の文字列              |
 
 > - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
-> - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - [Keycloakのシングル・ログアウト(SLO)についてのまとめ #OIDC - Qiita](https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 #### ▼ ID プロバイダーからのレスポンス
 
@@ -530,6 +530,6 @@ http://localhost:8000/logout/complete?state=e18689b0503aab42574427fb575645aca006
 | `state`      | リクエスト時の `state` パラメーターの値 |
 
 > - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
-> - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - [Keycloakのシングル・ログアウト(SLO)についてのまとめ #OIDC - Qiita](https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 <br>

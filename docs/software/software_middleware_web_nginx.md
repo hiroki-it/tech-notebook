@@ -103,7 +103,7 @@ ngx_stream_geoip_module.so
 STOPSIGNAL SIGQUIT
 ```
 
-> - https://hub.docker.com/layers/library/nginx/stable/images/sha256-4bc28d4e48f07ef005f0af92e14eca234bd169dad402266eb9df39ac73e5c12e
+> - [Image Layer Details - sha256-4bc28d4e48f07ef005f0af92e14eca234bd169dad402266eb9df39ac73e5c12e:stable](https://hub.docker.com/layers/library/nginx/stable/images/sha256-4bc28d4e48f07ef005f0af92e14eca234bd169dad402266eb9df39ac73e5c12e)
 > - [Nginx の Docker コンテナがデフォルトで graceful shutdown になってちょっと幸せ #kubernetes - Qiita](https://qiita.com/ynd/items/62ec382c69fb45710cb6#%E3%81%93%E3%82%8C%E3%81%8B%E3%82%89%E3%81%AE%E5%9B%9E%E9%81%BF%E6%96%B9%E6%B3%95)
 
 <br>

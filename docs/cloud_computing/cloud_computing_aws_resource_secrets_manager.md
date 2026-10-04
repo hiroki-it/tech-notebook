@@ -21,7 +21,7 @@ description: AWS Secrets Manager＠AWSリソースの知見を記録していま
 
 Kubernetes のシークレットの概念が取り入れられている。
 
-> - https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae
+> - [Medium](https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae)
 
 <br>
 

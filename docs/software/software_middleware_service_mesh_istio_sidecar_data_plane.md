@@ -9,7 +9,7 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -26,7 +26,7 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 UDP には対応していない。
 
 > - [Istio / Architecture](https://istio.io/latest/docs/ops/deployment/architecture/)
-> - https://techblog.zozo.com/entry/zozotown-istio-production-ready
+> - [Istioによるサービスメッシュをどのようにプロダクションレディにするか - ZOZO TECH BLOG](https://techblog.zozo.com/entry/zozotown-istio-production-ready)
 > - https://www.amazon.co.jp/dp/1617295825
 
 <br>
@@ -66,7 +66,7 @@ $ pilot-agent istio-iptables \
     -d 15090,15020
 ```
 
-> - https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0
+> - [istio-proxyがどのように通信を仲介しているかを知る](https://zenn.dev/tayusa/articles/aa54bbff3d0d2d#iptables%E3%81%8C%E6%9B%B4%E6%96%B0%E3%81%95%E3%82%8C%E3%82%8B%E3%82%BF%E3%82%A4%E3%83%9F%E3%83%B3%E3%82%B0)
 
 #### ▼ ルール
 
@@ -143,7 +143,7 @@ num  target     prot  opt  source     destination
 
 > - https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/
 > - https://www.mapion.co.jp/news/column/cobs2366068-1-all/
-> - https://zenn.dev/tayusa/articles/aa54bbff3d0d2d
+> - [istio-proxyがどのように通信を仲介しているかを知る](https://zenn.dev/tayusa/articles/aa54bbff3d0d2d)
 
 #### ▼ ローカルホストは `127.0.0.1` ではない
 
@@ -154,7 +154,7 @@ istio-proxy がインバウンドをマイクロサービスに送信すると�
 Istio`v1.9` までは `127.0.0.1` で、`v1.10` から `127.0.0.6` になった。
 
 > - https://docs.google.com/document/d/1j-5_XpeMTnT9mV_8dbSOeU7rfH-5YNtN_JJFZ2mmQ_w
-> - https://github.com/istio/istio/issues/29603
+> - [Document the 127.0.0.6 magic · Issue #29603 · istio/istio · GitHub](https://github.com/istio/istio/issues/29603)
 > - https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/
 > - [iptables から理解する Istio 1.10 から変更された Inbound Forwarding \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/20211021-istio1-10-inbound-fowarding/)
 
@@ -224,7 +224,7 @@ Istio のサービスメッシュ外のネットワークからのインバウ�
 
 仕様上、Nginx や Apache を必須とする言語 (例：PHP) では、Pod 内にリバースプロキシが `2` 個ある構成になってしまうことに注意する。
 
-> - https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2
+> - [istio/pilot/docker/Dockerfile.proxyv2 at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2)
 > - https://www.amazon.co.jp/dp/1617295825
 > - [Istio Sidecar's interception mechanism for traffic - SoByte](https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process)
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/
@@ -324,8 +324,8 @@ spec:
       restartPolicy: Always
 ```
 
-> - https://github.com/istio/istio/blob/1.19.0-beta.0/pkg/kube/inject/inject.go#L426-L436
-> - https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers#proposal
+> - [istio/pkg/kube/inject/inject.go at 1.19.0-beta.0 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.19.0-beta.0/pkg/kube/inject/inject.go#L426-L436)
+> - [enhancements/keps/sig-node/753-sidecar-containers at master · kubernetes/enhancements · GitHub](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/753-sidecar-containers#proposal)
 
 <br>
 
@@ -347,7 +347,7 @@ istio-cni を使用する場合、iptables の設定はノード上の istio-cni
 
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 > - https://www.redhat.com/architect/istio-CNI-plugin
-> - https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
+> - [Istio / Install the Istio CNI node agent](https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation)
 > - [iptables - Wikipedia](https://en.wikipedia.org/wiki/Iptables)
 
 #### ▼ istio-cni とは
@@ -358,7 +358,7 @@ istio-cni は、CNI プラグインのバイナリと設定を Node 上のファ
 
 Kubernetes の Pod 作成時に、CNI の仕組みを介して Pod のネットワーク名前空間に iptables を設定する。
 
-> - https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration
+> - [Traffic in ambient mesh: Istio CNI and node configuration \| Solo.io](https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration)
 > - [Istio / Install the Istio CNI node agent](https://istio.io/latest/docs/setup/additional-setup/cni/)
 
 #### ▼ `istio-validation` コンテナ
@@ -367,7 +367,7 @@ istio-cni を採用している場合にのみ挿入されるコンテナ。
 
 istio-cni の DaemonSet が istio-iptables を適用し終了することを待機するために、これが完了したかどうかを検証する。
 
-> - https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
+> - [Istio / Install the Istio CNI node agent](https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation)
 
 <br>
 
@@ -383,7 +383,7 @@ istio-cni の DaemonSet が istio-iptables を適用し終了することを待�
 
 ADS-API との間で双方向ストリーミング RPC を確立し、Envoy から ADS-API へのリクエストと、ADS-API から返される Envoy 設定値を中継する。
 
-> - https://rocdu.gitbook.io/deep-understanding-of-istio/6/5
+> - [pilot-agent如何转发xds到istiod \| deep-understanding-of-istio](https://rocdu.gitbook.io/deep-understanding-of-istio/6/5)
 > - [\[istio源码分析\]\[pilot\] pilot之ads - 简书](https://www.jianshu.com/p/60e45bc9c4ac)
 > - [Istio Pilot代码深度解析 \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/)
 > - https://www.oreilly.com/library/view/the-enterprise-path/9781492041795/ch04.html
@@ -442,7 +442,7 @@ func (a *ADSC) Run() error {
 }
 ```
 
-> - https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446
+> - [istio/pkg/adsc/adsc.go at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L420-L446)
 
 `handleRecv()` 関数内で、Envoy の各処理コンポーネントを整理し、最後に `XDSUpdates` チャネルへ値を送信している。
 
@@ -506,7 +506,7 @@ func (a *ADSC) handleRecv() {
 }
 ```
 
-> - https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L544-L587
+> - [istio/pkg/adsc/adsc.go at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/pkg/adsc/adsc.go#L544-L587)
 
 #### ▼ ADS クライアントとしての `istioctl` コマンドの実装
 
@@ -532,7 +532,7 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 }
 ```
 
-> - https://github.com/istio/istio/blob/1.14.3/istioctl/pkg/xds/client.go#L44-L73
+> - [istio/istioctl/pkg/xds/client.go at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/istioctl/pkg/xds/client.go#L44-L73)
 
 <br>
 
@@ -613,8 +613,8 @@ istio-proxy は、Envoy プロセスを安全に停止するためにドレイ�
 : Envoy の終了後に pilot-agent が終了し、istio-proxy が終了する。
 
 > - [istio-proxy 停止時の挙動 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio-proxy-stop-behavior/)
-> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
-> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
+> - [KubernetesのPodを安全に終了する（istio-proxy編） - Carpe Diem](https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy)
+> - [ABEMA における GKE スケール戦略と Anthos Service Mesh 活用事例 Deep Dive - Speaker Deck](https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80)
 
 <br>
 
@@ -629,9 +629,9 @@ istio-proxy の `15000` 番ポートでは、Envoy のダッシュボードに�
 istio-proxy@<Pod名>: $ curl http://127.0.0.1:15000/config_dump
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump
+> - [Administration interface — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump)
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#15000
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin
+> - [Administration interface — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/admin)
 
 <br>
 
@@ -759,7 +759,7 @@ istio-proxy のプロセスが起動完了するまで待機する。
 $ pilot-agent wait
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#pilot-agent-wait
+> - [Istio / pilot-agent](https://istio.io/latest/docs/reference/commands/pilot-agent/#pilot-agent-wait)
 
 <br>
 
@@ -769,6 +769,6 @@ $ pilot-agent wait
 
 istio-proxy の証明書の有効期限を設定する。
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/
+> - [Istio / pilot-agent](https://istio.io/latest/docs/reference/commands/pilot-agent/)
 
 <br>

@@ -123,7 +123,7 @@ Kubernetes のシークレットの概念が取り入れられている。
 
 パラメーターのタイプはすべて『SecureString』としたほうがよい。
 
-> - https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae
+> - [Medium](https://medium.com/awesome-cloud/aws-difference-between-secrets-manager-and-parameter-store-systems-manager-f02686604eae)
 
 <br>
 

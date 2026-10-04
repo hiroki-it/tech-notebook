@@ -436,7 +436,7 @@ resource "aws_acm_certificate" "example" {
 
 > - https://www.terraform.io/language/modules/sources
 > - [Terraform公式ドキュメントに学ぶmoduleのアンチパターンとその対処法5選 #Terraform - Qiita](https://qiita.com/bigwheel/items/2b420183639416b5c6bb)
-> - https://registry.terraform.io/namespaces/terraform-aws-modules
+> - [Terraform Registry](https://registry.terraform.io/namespaces/terraform-aws-modules)
 
 #### ▼ ローカルモジュールをコールする場合
 

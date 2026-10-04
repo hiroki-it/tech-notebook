@@ -19,7 +19,7 @@ description: 設定ファイル＠Traefikの知見を記録しています。
 accessLog: {}
 ```
 
-> - https://doc.traefik.io/traefik/observability/access-logs/
+> - [Redirecting...](https://doc.traefik.io/traefik/observability/access-logs/)
 
 <br>
 
@@ -31,7 +31,7 @@ log:
   format: json
 ```
 
-> - https://doc.traefik.io/traefik/observability/logs/
+> - [Redirecting...](https://doc.traefik.io/traefik/observability/logs/)
 
 <br>
 
@@ -41,6 +41,6 @@ log:
 tracing: {}
 ```
 
-> - https://doc.traefik.io/traefik/observability/tracing/opentelemetry/
+> - [Redirecting...](https://doc.traefik.io/traefik/observability/tracing/opentelemetry/)
 
 <br>

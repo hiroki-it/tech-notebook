@@ -127,7 +127,7 @@ CPU クレジットは一定の割合で回復する。
 > - https://pages.awscloud.com/rs/112-TZM-766/images/20210603-Instance_Choice_and_Graviton2.pdf#page=12
 > - https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=16
 > - https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=22
-> - https://aws.amazon.com/jp/ec2/instance-types/
+> - [インスタンスタイプ](https://aws.amazon.com/jp/ec2/instance-types/)
 > - [EC2 インスタンスタイプの種類や選び方！AWS初心者向けに今一度整理 - ForgeVision Engineer Blog](https://techblog.forgevision.com/entry/aws-ec2-instance-bgr)
 > - [【初心者向け】Amazon EC2インスタンスタイプの選び方は？種類ごとの特徴を解説 ｜コラム｜NURO Biz（ニューロ・ビズ）](https://biz.nuro.jp/column/aws-mama-022/)
 
@@ -648,7 +648,7 @@ Amazon EC2 に AutoScaling グループを適用している場合は、AWS EBS 
 
 AWS AutoScaling のスケールイン時に、削除された Amazon EC2 の AWS EBS ボリュームが削除されないため、未使用の AWS EBS ボリュームがどんどん溜まっていく問題が起こる。
 
-> - https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2
+> - [EBSの自動削除オフに気をつけよう #AWS - Qiita](https://qiita.com/YujiHamada3/items/c890a3de8937ea20bbb2)
 
 <br>
 
@@ -672,13 +672,13 @@ $ df -hT
 
 記入中...
 
-> - https://docs.aws.amazon.com/ebs/latest/userguide/ebs-attaching-volume.html
+> - [Attach an Amazon EBS volume to an Amazon EC2 instance - Amazon EBS](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-attaching-volume.html)
 
 #### ▼ マルチアタッチ
 
 ボリュームタイプが `io1` または `io2` の AWS EBS ボリュームは、複数の Amazon EC2 に横断して紐づけられる。
 
-> - https://docs.aws.amazon.com/ebs/latest/userguide/working-with-multi-attach.html
+> - [Enable Multi-Attach for an Amazon EBS volume - Amazon EBS](https://docs.aws.amazon.com/ebs/latest/userguide/working-with-multi-attach.html)
 
 #### ▼ デタッチ
 
@@ -692,8 +692,8 @@ $ umount -d /dev/nvme1n1
 
 代わりに、Amazon EC2 を停止したうえでボリュームをデタッチすると、コマンドを手動で実行する必要がなく簡単である。
 
-> - https://docs.aws.amazon.com/ebs/latest/userguide/ebs-detaching-volume.html#umount-detach-volume
-> - https://pentan.info/server/linux/umount_busy.html
+> - [Detach an Amazon EBS volume from an Amazon EC2 instance - Amazon EBS](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-detaching-volume.html#umount-detach-volume)
+> - [target is busyやdevice is busyをumountする方法 - \[Linux \[Red Hat/CentOSなど\]/サーバー\] ぺんたん info](https://pentan.info/server/linux/umount_busy.html)
 
 <br>
 
@@ -709,8 +709,8 @@ AWS EBS ボリュームのコピーのこと。
 
 ソフトウェアと AWS EBS ボリュームのコピーの両方が内蔵された AWS AMI とは区別すること。
 
-> - https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html#how_snapshots_work
-> - https://repost.aws/ja/knowledge-center/ebs-snapshot-ec2-ami-creation-slow
+> - [Amazon EBS snapshots - Amazon EBS](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html#how_snapshots_work)
+> - [EC2 AMI や EBS スナップショットの作成が遅くなる原因をトラブルシューティングする \| AWS re:Post](https://repost.aws/ja/knowledge-center/ebs-snapshot-ec2-ami-creation-slow)
 > - https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
 
 #### ▼ セットアップ
@@ -730,8 +730,8 @@ AWS SSM Session Manager を使用して Amazon EC2 に接続し、ログイン�
 
 ![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_session-manager.png)
 
-> - https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html
-> - https://dev.classmethod.jp/articles/ssh-through-session-manager/
+> - [Session Manager を使って Private EC2 にアクセスする方法 - galife](https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html)
+> - [セッションマネージャー越しにSSHアクセスすると何が嬉しいのか \| DevelopersIO](https://dev.classmethod.jp/articles/ssh-through-session-manager/)
 
 #### ▼ systems-manager エージェント
 
@@ -855,8 +855,8 @@ Amazon VPC エンドポイントを経由すれば異なる Amazon VPC に送信
 
 ![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_traffic-mirroring.png)
 
-> - https://dev.classmethod.jp/articles/how-to-capture-packets-outside-ec2-with-vpc-traffic-mirroring/
-> - https://dev.classmethod.jp/articles/amazon-vpc-traffic-mirroring-supports-sending-mirrored-traffic-gateway-load-balancer/
+> - [【ハンズオン】VPCトラフィクミラーリングを使ってEC2にログインせずにパケットキャプチャする方法を学ぼう#AWSSummit \| DevelopersIO](https://dev.classmethod.jp/articles/how-to-capture-packets-outside-ec2-with-vpc-traffic-mirroring/)
+> - [\[アップデート\] Amazon VPC Traffic Mirroring が Gateway Load Balancer へのトラフィックの送信をサポートしました \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-vpc-traffic-mirroring-supports-sending-mirrored-traffic-gateway-load-balancer/)
 
 <br>
 

@@ -636,7 +636,7 @@ MySQL コンテナの datadir ディレクトリ (`/var/lib/mysql`) に、docker
 
 datadir ディレクトリについては、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html
+> - [【IT技術の知見】設定ファイル＠MySQL - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html)
 
 ```yaml
 service:

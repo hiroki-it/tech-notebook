@@ -111,7 +111,7 @@ $ curl http://localhost:3000/metrics
 ```
 
 > - https://www.redhat.com/sysadmin/introduction-prometheus-metrics-and-performance-monitoring
-> - https://itnext.io/prometheus-for-beginners-5f20c2e89b6c
+> - [Medium](https://itnext.io/prometheus-for-beginners-5f20c2e89b6c)
 
 <br>
 

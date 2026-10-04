@@ -39,7 +39,7 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
     Http_Server On
 ```
 
-> - https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file#config_section
+> - [Configuration file \| Fluent Bit: Official Manual](https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file#config_section)
 > - https://stackoverflow.com/questions/47735850/what-exactly-is-flushing
 
 <br>
@@ -142,7 +142,7 @@ Inputs
 
 ビルトインのプラグインは、ソースコードから確認できる。
 
-> - https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275
+> - [fluent-bit/CMakeLists.txt at v2.1.4 · fluent/fluent-bit · GitHub](https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275)
 
 <br>
 
@@ -161,7 +161,7 @@ Inputs
 ```
 
 > - https://docs.fluentbit.io/manual/pipeline/inputs/dummy
-> - https://docs.fluentbit.io/manual/local-testing/logging-pipeline
+> - [Run a logging pipeline locally \| Fluent Bit: Official Manual](https://docs.fluentbit.io/manual/local-testing/logging-pipeline)
 
 #### ▼ セットアップ
 
@@ -486,7 +486,7 @@ cri プラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ
 ![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_filter.png)
 
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/filter
-> - https://docs.fluentbit.io/manual/concepts/key-concepts#filtering
+> - [Key concepts \| Fluent Bit: Official Manual](https://docs.fluentbit.io/manual/concepts/key-concepts#filtering)
 
 <br>
 
@@ -494,7 +494,7 @@ cri プラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ
 
 ビルトインのプラグインは、ソースコードから確認できる。
 
-> - https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275
+> - [fluent-bit/CMakeLists.txt at v2.1.4 · fluent/fluent-bit · GitHub](https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275)
 
 <br>
 
@@ -805,7 +805,7 @@ Fluent Bit v1.8.6
 
 ![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_stream-task.png)
 
-> - https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor
+> - [Overview \| Fluent Bit: Official Manual](https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor)
 
 <br>
 
@@ -815,7 +815,7 @@ Fluent Bit v1.8.6
 
 STREAM_TASK セッションは、ユーザー定義の SQL ステートメントで定義される。
 
-> - https://github.com/fluent/fluent-bit/tree/master/src/stream_processor
+> - [fluent-bit/src/stream\_processor at master · fluent/fluent-bit · GitHub](https://github.com/fluent/fluent-bit/tree/master/src/stream_processor)
 
 #### ▼ CREATE STREAM
 
@@ -1007,7 +1007,7 @@ Outputs
 
 ビルトインのプラグインは、ソースコードから確認できる。
 
-> - https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275
+> - [fluent-bit/CMakeLists.txt at v2.1.4 · fluent/fluent-bit · GitHub](https://github.com/fluent/fluent-bit/blob/v2.1.4/CMakeLists.txt#L157-L275)
 
 <br>
 
@@ -1021,7 +1021,7 @@ Outputs
 
 AWS から提供されるほかのすべての FluentBit イメージを束ねたベースイメージを使用する。
 
-> - https://github.com/aws/aws-for-fluent-bit
+> - [GitHub - aws/aws-for-fluent-bit: The source of the amazon/aws-for-fluent-bit container image · GitHub](https://github.com/aws/aws-for-fluent-bit)
 
 <br>
 
@@ -1199,7 +1199,7 @@ Grafana Loki にログを送信する。
 
 newRelic プラグインがプリインストールされているベースイメージを使用する。
 
-> - https://github.com/newrelic/newrelic-fluent-bit-output
+> - [GitHub - newrelic/newrelic-fluent-bit-output: A Fluent Bit output plugin that sends logs to New Relic · GitHub](https://github.com/newrelic/newrelic-fluent-bit-output)
 
 <br>
 

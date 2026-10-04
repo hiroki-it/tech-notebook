@@ -9,7 +9,7 @@ description: リソース定義＠Karpenterの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,7 +24,7 @@ Cluster スコープな Kubernetes リソースであるため、Namespace は�
 Terraform の `aws_launch_template` ブロックと競合する。
 
 > - https://github.com/aws/karpenter/issues/3369#issuecomment-1432380048
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template)
 
 <br>
 
@@ -88,7 +88,7 @@ spec:
 ```
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/
-> - https://github.com/aws/karpenter-provider-aws/blob/v1.1.1/test/suites/storage/suite_test.go#L372-L389
+> - [karpenter-provider-aws/test/suites/storage/suite\_test.go at v1.1.1 · aws/karpenter-provider-aws · GitHub](https://github.com/aws/karpenter-provider-aws/blob/v1.1.1/test/suites/storage/suite_test.go#L372-L389)
 
 <br>
 
@@ -118,7 +118,7 @@ spec:
 ```
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#specmetadataoptions
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
+> - [Use instance metadata to manage your EC2 instance - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
 
 <br>
 
@@ -388,7 +388,7 @@ spec:
     consolidateAfter: 30s
 ```
 
-> - https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/
+> - [Karpenter のご紹介 – オープンソースの高性能 Kubernetes Cluster Autoscaler \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/introducing-karpenter-an-open-source-high-performance-kubernetes-cluster-autoscaler/)
 > - https://karpenter.sh/preview/concepts/disruption/#automated-methods
 
 #### ▼ expireAfter
@@ -525,7 +525,7 @@ spec:
 ```
 
 > - https://karpenter.sh/preview/concepts/nodepools/
-> - https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration
+> - [Kubelet Configuration (v1beta1) \| Kubernetes](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration)
 
 <br>
 
@@ -853,7 +853,7 @@ data:
     }
 ```
 
-> - https://github.com/uber-go/zap/blob/aa3e73ec0896f8b066ddf668597a02f89628ee50/config.go#L58-L94
+> - [zap/config.go at aa3e73ec0896f8b066ddf668597a02f89628ee50 · uber-go/zap · GitHub](https://github.com/uber-go/zap/blob/aa3e73ec0896f8b066ddf668597a02f89628ee50/config.go#L58-L94)
 
 <br>
 

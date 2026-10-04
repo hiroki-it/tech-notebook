@@ -83,7 +83,7 @@ Amazon S3 をチャートリポジトリとして使用するために、チャ�
 
 また反対に、Secret のデータを復号する。
 
-> - https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
+> - [helm-secretsの使い方 - メモ置き場](https://scrapbox.io/mikutas/helm-secrets%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9)
 
 <br>
 
@@ -121,7 +121,7 @@ zendesk 製を使用している場合、SOPS の `secrets` ファイルの名�
 
 一方で jkeroepke 製では、執筆時点 (2022/11/29) で、`secrets` ファイルの名前が任意である。
 
-> - https://github.com/zendesk/helm-secrets#usage-and-examples
+> - [GitHub - zendesk/helm-secrets: DEPRECATED A helm plugin that help manage secrets with Git workflow and store them anywhere · GitHub](https://github.com/zendesk/helm-secrets#usage-and-examples)
 > - https://github.com/jkroepke/helm-secrets/wiki/Usage
 
 <br>
@@ -136,7 +136,7 @@ SOPS の `secrets` ファイルを指定するときに `secrets://` を使用�
 $ helm template . -f secrets://foo-secrets.yaml
 ```
 
-> - https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler
+> - [GitHub - jkroepke/helm-secrets: A helm plugin that help manage secrets with Git workflow and store them anywhere · GitHub](https://github.com/jkroepke/helm-secrets#decrypt-secrets-via-protocol-handler)
 
 #### ▼ -f
 
@@ -224,7 +224,7 @@ db:
   password: password
 ```
 
-> - https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> - [helm-secretsを使ってみた #kubernetes - Qiita](https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62)
 
 #### ▼ encrypt
 
@@ -249,6 +249,6 @@ sops:
   ...
 ```
 
-> - https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62
+> - [helm-secretsを使ってみた #kubernetes - Qiita](https://qiita.com/knqyf263/items/4bb1c961037d0ea55a62)
 
 <br>

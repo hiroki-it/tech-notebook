@@ -87,7 +87,7 @@ GET http://127.0.0.1:8080
 
 - Redis
 
-> - https://designvault.medium.com/understanding-database-protocols-how-databases-communicate-c1ab61e21a40
+> - [Medium](https://designvault.medium.com/understanding-database-protocols-how-databases-communicate-c1ab61e21a40)
 
 <br>
 

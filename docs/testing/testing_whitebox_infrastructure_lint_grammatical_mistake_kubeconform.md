@@ -66,7 +66,7 @@ JSON schema written to foo-v1alpha3.json
 JSON schema written to foo-v1beta1.json
 ```
 
-> - https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06#21e5
+> - [Medium](https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06#21e5)
 > - [KubeconformをGitLab CIに組み込んで、k8sのマニフェストがAPIの仕様に沿うか検査する](https://zenn.dev/tayusa/articles/1aa96e6ceb838a#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E7%94%9F%E6%88%90)
 
 <br>

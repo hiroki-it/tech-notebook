@@ -29,7 +29,7 @@ description: IAM＠Google Cloudリソースの知見を記録しています。
 - ドメイン
 - Kubernetes の ServiceAccount
 
-> - https://cloud.google.com/iam/docs/principal-identifiers?hl=ja
+> - [Principal identifiers \| Identity and Access Management (IAM) \| Google Cloud Documentation](https://cloud.google.com/iam/docs/principal-identifiers?hl=ja)
 > - [GCP の使い方 (1) IAM を使ってみよう｜研修コースに参加してみた \| SEプラス 研修 Topics](https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html)
 
 <br>

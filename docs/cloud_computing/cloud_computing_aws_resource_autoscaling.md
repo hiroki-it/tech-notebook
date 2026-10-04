@@ -111,7 +111,7 @@ resource "aws_launch_template" "foo" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group)
 
 ### 起動テンプレート
 
@@ -185,7 +185,7 @@ resource "aws_launch_template" "foo" {
 }
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template)
 
 #### ▼ アクティビティ通知
 
@@ -227,7 +227,7 @@ resource "aws_sns_topic" "foo" {
 
 ```
 
-> - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_notification
+> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_notification)
 
 <br>
 

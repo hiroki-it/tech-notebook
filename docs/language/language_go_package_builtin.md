@@ -1309,7 +1309,7 @@ func FooMiddleware() func(http.Handler) http.Handler {
 ![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
 
 > - [Laravelミドルウェアの基本入門（＆出力HTMLをminifyしWebサイト高速化） \| Ritolabo](https://www.ritolab.com/posts/69)
-> - https://www.c-sharpcorner.com/article/asp-net-core-middleware/
+> - [ASP.NET Core - Middleware](https://www.c-sharpcorner.com/article/asp-net-core-middleware/)
 
 #### ▼ 認証系
 

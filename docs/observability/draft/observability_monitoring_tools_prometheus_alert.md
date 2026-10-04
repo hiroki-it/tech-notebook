@@ -9,7 +9,7 @@ description: アラート＠Prometheusの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -128,7 +128,7 @@ kubeletの証明書ローテーション機能がこの証明書も自動更新�
 そのため、EKS上では利用者が手動で更新する必要がなく、このアラートを通知する必要性は低い。
 
 > - [Kubelet Client Certificate Expiration \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificateexpiration/)
-> - https://kubernetes.io/docs/tasks/tls/certificate-rotation/
+> - [Configure Certificate Rotation for the Kubelet \| Kubernetes](https://kubernetes.io/docs/tasks/tls/certificate-rotation/)
 
 <br>
 

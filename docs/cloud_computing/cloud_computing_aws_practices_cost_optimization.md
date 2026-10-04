@@ -130,7 +130,7 @@ AWS EBS ボリュームは、ボリュームの使用率に関わらず、最大
 また、注意点として、リージョンごとに料金体系が異なる。
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ebs-volume-charges/
-> - https://aws.amazon.com/jp/ebs/pricing/
+> - [EBS の料金](https://aws.amazon.com/jp/ebs/pricing/)
 
 <br>
 
@@ -189,7 +189,7 @@ Fargate では、Fargate ワーカーNode 内で Pod が使用したリソース
 
 そのため、冗長化する Pod 数を減らすことにより、料金を抑えられる。
 
-> - https://aws.amazon.com/jp/fargate/pricing/
+> - [AWS Fargate の料金](https://aws.amazon.com/jp/fargate/pricing/)
 
 **＊例＊**
 

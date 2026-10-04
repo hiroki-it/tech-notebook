@@ -74,7 +74,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 ![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スワッピング方式.png)
 
 > - [メモリの実記憶管理の種類とメリット、デメリットを学ぼう！（スワッピング、オーバーレイとは？） - ITの学び](https://itmanabi.com/real-memory-mng/)
-> - https://www.sophia-it.com/content/%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97
+> - [「スワップ」の意味や使い方 わかりやすく解説 Weblio辞書](https://www.sophia-it.com/content/%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97)
 
 #### ▼ スワップファイル
 

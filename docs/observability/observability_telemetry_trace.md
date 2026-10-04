@@ -25,7 +25,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 > - https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
 > - [ディストリビューティッド（分散）トレーシング：マイクロサービス全体でリクエストを追跡 \| New Relic Documentation](https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/)
-> - https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058
+> - [Medium](https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058)
 > - https://www.aspecto.io/blog/jaeger-tracing-the-ultimate-guide/
 
 <br>
@@ -153,7 +153,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 > - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing
 > - [分散トレーシングの仕組み 「ログの対応付け」と「受け渡すHTTPヘッダー」を大体5分で理解する](https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B)
-> - https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643
+> - [Medium](https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643)
 
 #### ▼ 異なる言語間での受け渡し
 
@@ -176,7 +176,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 > - [Propagators API \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution)
 > - [OpenTelemetryで分散トレーシング - Carpe Diem](https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry)
-> - https://medium.com/@danielbcorreia/context-propagation-in-opentelemetry-3f53ab31bcf5
+> - [Medium](https://medium.com/@danielbcorreia/context-propagation-in-opentelemetry-3f53ab31bcf5)
 
 #### ▼ W3C Trace Context
 
@@ -347,7 +347,7 @@ SaaS ツールによって JSON 型の構造が異なる。
 | `foo-server GET get_account/{accountId}` | `<サーバー名> <HTTPメソッド名> <アプリケーションの関数名>/<パラメーター名 (具体的なIDではなく)>` |    ⭕️    |
 | `foo-db foo-table`                       | `<DB名> <テーブル名>`                                                                            |    ⭕️    |
 
-> - https://medium.com/@emmanuel.courreges/jaeger-tracing-and-opentelemetry-usage-guidelines-cdc1fcf48415
+> - [Medium](https://medium.com/@emmanuel.courreges/jaeger-tracing-and-opentelemetry-usage-guidelines-cdc1fcf48415)
 > - https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch04.html
 
 <br>

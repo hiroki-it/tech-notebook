@@ -144,7 +144,7 @@ Deployment は、Cluster 内の Pod のレプリカ数を指定された数だ�
 > - [Jobs \| Kubernetes](https://kubernetes.io/docs/concepts/workloads/controllers/job/)
 > - [Kubernetes "ジョブ" についての自習ノート #kubernetes - Qiita](https://qiita.com/MahoTakara/items/82853097a1911671a704)
 > - https://dev.appswingby.com/kubernetes/kubernetes-%E3%81%A7-job%E3%82%92%E8%87%AA%E5%8B%95%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8Bttlsecondsafterfinished%E3%81%8Cv1-21%E3%81%A7beta%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F%E4%BB%B6/
-> - https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8
+> - [Medium](https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8)
 
 #### ▼ DB マイグレーション
 
@@ -224,7 +224,7 @@ $ kubectl delete job test-job -n foo
 > - [CronJobで定義したJobを任意のタイミングで実行する](https://zenn.dev/kennygt51/articles/2497931b8264de)
 > - [CronJob をその場で Job を作って実行する方法 #kubernetes - Qiita](https://qiita.com/koudaiii/items/586a8a0e0f763ddf9a05)
 > - https://serverfault.com/questions/809632/is-it-possible-to-rerun-kubernetes-job
-> - https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8
+> - [Medium](https://faun.pub/batch-and-cron-jobs-in-kubernetes-cbd29c35fd8)
 
 <br>
 
@@ -705,7 +705,7 @@ Kubernetes の v1.6 より前は Endpoints が使用されていた。
 
 ![kubernetes_endpoint-slices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_endpoint-slices.png)
 
-> - https://kubernetes.io/blog/2020/09/02/scaling-kubernetes-networking-with-endpointslices/#splitting-endpoints-up-with-the-endpointslice-api
+> - [Scaling Kubernetes Networking With EndpointSlices \| Kubernetes](https://kubernetes.io/blog/2020/09/02/scaling-kubernetes-networking-with-endpointslices/#splitting-endpoints-up-with-the-endpointslice-api)
 
 <br>
 
@@ -747,8 +747,8 @@ NodePort Service や LoadBalancer Service と同様に、外部からのリク�
 
 ![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress.png)
 
-> - https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress
-> - https://thinkit.co.jp/article/18263
+> - [Ingress \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress)
+> - [Kubernetes上のコンテナをIngressでインターネットに公開するまで \| ステップアップしながら段階的に学ぶ Kubernetes実践入門 \| Think IT（シンクイット）](https://thinkit.co.jp/article/18263)
 > - [Kubernetes NodePort vs LoadBalancer vs Ingress? When should I use what? (Kubernetes NodePort と LoadBalancer と Ingress のどれを使うべきか) を訳した - 寝ても覚めてもこんぴうた](https://chidakiyo.hatenablog.com/entry/2018/09/10/Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress%3F_When_should_I_use_what%3F_%28Kubernetes_NodePort_%E3%81%A8_LoadBalancer_%E3%81%A8_Ingress_%E3%81%AE%E3%81%A9%E3%82%8C%E3%82%92%E4%BD%BF%E3%81%86)
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20210715-01/
 
@@ -764,7 +764,7 @@ NodePort Service や LoadBalancer Service と同様に、外部からのリク�
 
 ![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_path.png)
 
-> - https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout
+> - [Ingress \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout)
 
 #### ▼ ホストベースルーティング
 
@@ -774,7 +774,7 @@ NodePort Service や LoadBalancer Service と同様に、外部からのリク�
 
 ![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_host.png)
 
-> - https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting
+> - [Ingress \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting)
 
 <br>
 
@@ -818,7 +818,7 @@ DaemonSet や Job で使用する例は少ないが、Pod さえあればすべ�
 
 ![kubernetes_kube-proxy_service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png)
 
-> - https://kubernetes.io/docs/concepts/services-networking/service/
+> - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/)
 > - [【Kubernetes】kube-proxy停止時はServiceとPodのIPアドレスが新たに紐づかなくなる - (O+P)ut](https://www.mtioutput.com/entry/kube-proxy-iptable)
 > - https://www.amazon.co.jp/dp/B079TG2M5N/ (チャプター5)
 > - [DaemonSet \| Kubernetes](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#communicating-with-daemon-pods)
@@ -864,7 +864,7 @@ Ingress がないと Cluster ネットワーク内からしかアクセスでき
 そのため、クラウドプロバイダーのリソースと Kubernetes リソースが密結合になり、責務の境界が曖昧になってしまう。
 
 > - [実践 Kubernetes ～コンテナ管理のスタンダードツールを使いこなす - アイマガジン｜i Magazine｜IS magazine](https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/)
-> - https://thinkit.co.jp/article/18263
+> - [Kubernetes上のコンテナをIngressでインターネットに公開するまで \| ステップアップしながら段階的に学ぶ Kubernetes実践入門 \| Think IT（シンクイット）](https://thinkit.co.jp/article/18263)
 > - [Kubernetes: Service の静的 IP 用レンジを分割する (ServiceIPStaticSubrange) #kubernetes - Qiita](https://qiita.com/tkusumi/items/da474798c5c9be88d9c5#%E8%83%8C%E6%99%AF)
 
 #### ▼ NodePort Service
@@ -1012,8 +1012,8 @@ Pod
 なお、注意点として、Ingress Controller は `L7` ロードバランサーを自動的にプロビジョニングする。
 
 > - [実践 Kubernetes ～コンテナ管理のスタンダードツールを使いこなす - アイマガジン｜i Magazine｜IS magazine](https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/)
-> - https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0
-> - https://thinkit.co.jp/article/18263
+> - [Medium](https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0)
+> - [Kubernetes上のコンテナをIngressでインターネットに公開するまで \| ステップアップしながら段階的に学ぶ Kubernetes実践入門 \| Think IT（シンクイット）](https://thinkit.co.jp/article/18263)
 > - [KubernetesのClusterIP、NodePort、LoadBalancerの違いを理解する \| 株式会社アイオス](https://www.ios-net.co.jp/blog/20230621-1179/)
 
 #### ▼ ExternalName Service
@@ -1403,7 +1403,7 @@ Node のストレージ上に Volume を作成し、これをコンテナにバ�
 マルチ Node はサポートしていないため、本番環境では非推奨である。
 
 > - [Persistent Volumes \| Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#types-of-persistent-volumes)
-> - https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
+> - [10 Kubernetes Best Practices You Can Easily Apply to Your Clusters - The New Stack](https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/)
 
 #### ▼ Local (本番環境で推奨)
 
@@ -1535,7 +1535,7 @@ $ docker inspect <コンテナID>
     }
 ```
 
-> - https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/
+> - [10 Kubernetes Best Practices You Can Easily Apply to Your Clusters - The New Stack](https://thenewstack.io/10-kubernetes-best-practices-you-can-easily-apply-to-your-clusters/)
 > - [Kubernetes基礎(6)：Volume-emptyDir, hostPath, PV/PVC #kubernetes - Qiita](https://qiita.com/umkyungil/items/218be95f7a1f8d881415)
 
 #### ▼ EmptyDir
@@ -1552,7 +1552,7 @@ Pod の既存のストレージ上に Volume (`/var/lib/kubelet/pods/<PodのUUID
 
 > - [Kubernetes基礎(6)：Volume-emptyDir, hostPath, PV/PVC #kubernetes - Qiita](https://qiita.com/umkyungil/items/218be95f7a1f8d881415)
 > - [Kubernetes道場 5日目 - Volumeについて - Toku's Blog](https://cstoku.dev/posts/2018/k8sdojo-05/)
-> - https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5
+> - [Medium](https://pradiptabanerjee.medium.com/how-to-size-a-memory-backed-kubernetes-emptydir-volume-cdfe39d1b7e5)
 
 #### ▼ Node 外ストレージツールの Volume
 
@@ -1771,7 +1771,7 @@ kube-apiserver が、Kubernetes リソース (特に Pod) を認証可能にす�
 
 Pod で ServiceAccount の指定がない場合、service-account-admission-controller は Pod に ServiceAccount を自動的に設定する。
 
-> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+> - [Authenticating \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/authentication/)
 > - [明日 Kubernetes が少し楽しくなる認証の話 \| cloud.config Tech Blog](https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/)
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
@@ -1829,7 +1829,7 @@ kube-apiserver が、クライアントを認証可能にする。別途、RoleB
 
 クライアントの認証に必要なクライアント証明書は、`kubeconfig` ファイルに登録する必要がある。
 
-> - https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+> - [Authenticating \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/authentication/)
 > - [明日 Kubernetes が少し楽しくなる認証の話 \| cloud.config Tech Blog](https://tech-blog.cloud-config.jp/2021-12-04-kubernetes-authentication/)
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
@@ -1870,7 +1870,7 @@ Cluster スコープな Kubernetes リソースやカスタムリソース (Name
 
 Role、ClusterRole を使用して認可スコープを制御する仕組みのこと。
 
-> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+> - [Using RBAC Authorization \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
 
 <br>
 
@@ -1883,7 +1883,7 @@ ClusterRole を、UserAccount / ServiceAccount / Group に紐付ける。
 注意点として、ClusterRole のみの紐付けに使用できる。
 
 > - [ロールベース アクセス制御を使用してクラスタ内でのアクションを認可する \| GKE security \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja)
-> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+> - [Using RBAC Authorization \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding)
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
 #### ▼ RoleBinding
@@ -1897,7 +1897,7 @@ Role や ClusterRole を、UserAccount / ServiceAccount / Group に紐付ける�
 もし ClusterRole を紐づけた場合は、その UserAccount / ServiceAccount / Group は、Cluster スコープの Kubernetes リソースやカスタムリソースに関する権限を得る。
 
 > - [ロールベース アクセス制御を使用してクラスタ内でのアクションを認可する \| GKE security \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control?hl=ja)
-> - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding
+> - [Using RBAC Authorization \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#rolebinding-and-clusterrolebinding)
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
 
 <br>

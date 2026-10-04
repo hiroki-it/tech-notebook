@@ -51,6 +51,6 @@ $ packer init template.pkr.hcl
 $ packer validate template.pkr.hcl
 ```
 
-> - https://developer.hashicorp.com/packer/docs/commands/validate
+> - [packer validate command reference \| Packer \| HashiCorp Developer](https://developer.hashicorp.com/packer/docs/commands/validate)
 
 <br>

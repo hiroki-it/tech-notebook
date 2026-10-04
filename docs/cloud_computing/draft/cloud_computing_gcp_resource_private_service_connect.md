@@ -21,6 +21,6 @@ description: PrivateServiceConnect＠Google Cloudリソースの知見を記録�
 
 注意点として、PrivateServiceConnect は、それ専用の中継 VPC 内に作成する。
 
-> - https://cloud.google.com/vpc/docs/private-service-connect
+> - [Private Service Connect \| Virtual Private Cloud \| Google Cloud Documentation](https://cloud.google.com/vpc/docs/private-service-connect)
 
 <br>

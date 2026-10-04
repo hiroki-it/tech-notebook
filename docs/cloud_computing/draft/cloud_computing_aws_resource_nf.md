@@ -37,6 +37,6 @@ ALB
 EC2
 ```
 
-> - https://aws.amazon.com/blogs/networking-and-content-delivery/deployment-models-for-aws-network-firewall/
+> - [Deployment models for AWS Network Firewall \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/deployment-models-for-aws-network-firewall/)
 
 <br>

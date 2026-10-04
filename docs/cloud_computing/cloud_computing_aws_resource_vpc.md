@@ -217,9 +217,9 @@ NAT 処理 (DNAT、SNAT) を実行し、パブリック IP アドレス (Amazon 
 
 ![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
 
-> - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
+> - [Attach multiple IPs to a NAT Gateway to scale your egress traffic pattern \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/)
 > - https://docs.aws.amazon.com/vpc/latest/userguide/Amazon VPC_Internet_Gateway.html
-> - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
+> - [【図解/AWS】インターネットGWとNAT-GWの違い〜各メリット、パブリックサブネットとは〜 \| SEの道標](https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/)
 
 <br>
 
@@ -231,7 +231,7 @@ AWS NAT Gateway からのリクエストであれば、送信元 IP アドレス
 
 一方で、宛先 IP アドレスや宛先ポート番号は変換しない。
 
-> - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
+> - [【図解/AWS】インターネットGWとNAT-GWの違い〜各メリット、パブリックサブネットとは〜 \| SEの道標](https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/)
 
 <br>
 
@@ -243,7 +243,7 @@ Internet Gateway の SNAT 処理では、Amazon VPC 内からリクエストを�
 
 ![internet-gateway_nat-gateway_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png)
 
-> - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
+> - [Attach multiple IPs to a NAT Gateway to scale your egress traffic pattern \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/)
 
 <br>
 
@@ -266,8 +266,8 @@ SNAT 処理 (SNAT 処理のみで、DNAT 処理は持たない) を実行し、�
 ![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
 
 > - [NAT gateways - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics)
-> - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
-> - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
+> - [Attach multiple IPs to a NAT Gateway to scale your egress traffic pattern \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/)
+> - [【図解/AWS】インターネットGWとNAT-GWの違い〜各メリット、パブリックサブネットとは〜 \| SEの道標](https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/)
 
 <br>
 
@@ -281,7 +281,7 @@ AWS NAT Gateway の SNAT 処理では、プライベートサブネットから�
 
 ![internet-gateway_nat-gateway_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png)
 
-> - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
+> - [Attach multiple IPs to a NAT Gateway to scale your egress traffic pattern \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/)
 
 <br>
 

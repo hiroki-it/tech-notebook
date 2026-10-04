@@ -33,7 +33,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 ![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_remote-storage_architecture.png)
 
-> - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview
+> - [VictoriaMetrics: Cluster version](https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview)
 > - [VictoriaMetrics: FAQ](https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api)
 > - [Introducing Prometheus Agent Mode, an Efficient and Cloud-Native Way for Metric Forwarding \| Prometheus](https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case)
 
@@ -107,13 +107,13 @@ VictoriaMetrics を監視バックエンドかつ監視フロントエンドと�
 
 クラスターNode モードでは、各コンポーネントは冗長化される。
 
-> - https://docs.victoriametrics.com/cluster-victoriametrics/
+> - [VictoriaMetrics: Cluster version](https://docs.victoriametrics.com/cluster-victoriametrics/)
 
 #### ▼ インストール
 
 もう一方のシングル Node モードとは、バイナリ (`-cluster` という接尾辞がつく) やセットアップ方法が異なる。
 
-> - https://docs.victoriametrics.com/cluster-victoriametrics/#binaries
+> - [VictoriaMetrics: Cluster version](https://docs.victoriametrics.com/cluster-victoriametrics/#binaries)
 
 #### ▼ アップグレード
 

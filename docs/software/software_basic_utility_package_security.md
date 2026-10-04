@@ -9,7 +9,7 @@ description: セキュリティ系＠パッケージの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -135,7 +135,7 @@ $ sops -e ./values/foo-values.yaml -k $SOPS_KMS_ARN
 
 `EnvVar` キーの定義された項目を参照せよ。
 
-> - https://github.com/getsops/sops/blob/v3.7.3/cmd/sops/main.go#L542-L701
+> - [sops/cmd/sops/main.go at v3.7.3 · getsops/sops · GitHub](https://github.com/getsops/sops/blob/v3.7.3/cmd/sops/main.go#L542-L701)
 
 <br>
 

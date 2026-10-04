@@ -19,7 +19,7 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 かなり大変なため、Dockerfile や Istio 経由でインストールすることが推奨。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/start/install
+> - [Installing Envoy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/install)
 
 <br>
 
@@ -36,7 +36,7 @@ FROM envoyproxy/envoy:v1.20.1
 COPY envoy.yaml /etc/envoy/envoy.yaml
 RUN chmod go+r /etc/envoy/envoy.yaml
 ```
-> - https://www.envoyproxy.io/docs/envoy/latest/start/docker
+> - [Using the Envoy Docker Image — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/docker)
 
 <br>
 
@@ -46,8 +46,8 @@ RUN chmod go+r /etc/envoy/envoy.yaml
 
 Istio は、Envoy をベースとしたリバースプロキシを自動的に挿入する。この場合、`/etc/istio/proxy/envoy-rev0.json` ファイルを設定ファイルとして扱う。
 
-> - https://istio.io/latest/docs/ops/deployment/architecture/#envoy
-> - https://cloud.tencent.com/developer/article/1701214
+> - [Istio / Architecture](https://istio.io/latest/docs/ops/deployment/architecture/#envoy)
+> - [Istio中的流量配置-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1701214)
 
 <br>
 
@@ -61,7 +61,7 @@ Istio は、Envoy をベースとしたリバースプロキシを自動的に�
 
 そのため、設定ファイルのドキュメントで探す代わりに、API のドキュメントを確認したほうがよい。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/api
+> - [v3 API reference — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/api)
 
 #### ▼ 設計規約について
 
@@ -79,7 +79,7 @@ Envoy では、YAML ファイルのキー名がスネークケースになって
 
 記入中...
 
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#admin
+> - [Envoy admin interface — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#admin)
 
 <br>
 
@@ -159,7 +159,7 @@ admin:
 
 執筆時点 (2022/11/12) では、`listeners` キーと `clusters` キーのみを設定できる。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources
+> - [Configuration: Static — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources)
 > - [Bootstrap configuration — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/bootstrap#config-overview-bootstrap)
 
 <br>
@@ -170,7 +170,7 @@ admin:
 
 受信する通信のリスナーを設定する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
+> - [Configuration: Static — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners)
 
 <br>
 
@@ -260,7 +260,7 @@ static_resources:
                       "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto
+> - [Common access log types (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/accesslog/v3/accesslog.proto)
 
 #### ▼ http_protocol_options
 
@@ -273,7 +273,7 @@ static_resources:
           http_protocol_options:
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#config-core-v3-httpprotocoloptions
+> - [Protocol options (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#config-core-v3-httpprotocoloptions)
 
 #### ▼ typed_config.stat_prefix
 
@@ -487,7 +487,7 @@ static_resources:
 > - [Life of a Request — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration)
 > - [HTTP route configuration (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto)
 > - [NomadのゲートウェイをNginxからEnvoyに置き換える - kamijin-fanta](https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/)
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration
+> - [HTTP route components (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration)
 
 #### ▼ `virtual_hosts.routes.route.max_stream_duration`
 
@@ -535,7 +535,7 @@ static_resources:
 ```
 
 > - [gRPC timeout processing does not match gRPC semantics · Issue #12578 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/12578)
-> - https://github.com/envoyproxy/envoy/pull/13018
+> - [api: Add max\_stream\_duration to RouteAction by dfawley · Pull Request #13018 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/pull/13018)
 
 Envoy は、gRPC のストリーミングのタイムアウト時間を適切に処理できておらず、`max_grpc_timeout` は非推奨となった。
 
@@ -630,7 +630,7 @@ Envoy
 gRPCサーバー # タイムアウト (DeadlineExceeded を投げる)
 ```
 
-> - https://github.com/istio/istio/pull/45234#discussion_r1213965308
+> - [Set route MaxStreamDuraration so grpc-timeout header can be used by hzxuzhonghu · Pull Request #45234 · istio/istio · GitHub](https://github.com/istio/istio/pull/45234#discussion_r1213965308)
 
 しかし、移行先の `max_stream_duration` にも gRPC による HTTP レスポンスの返信とタイムアウト時間超過による通信切断のタイミングに問題がある。
 
@@ -639,9 +639,9 @@ gRPCサーバー # タイムアウト (DeadlineExceeded を投げる)
 
 そこで、サービスメッシュツール (例：Istio) では、`max_grpc_timeout` を使用し続けている。
 
-> - https://github.com/istio/istio/pull/45234#discussion_r1213965308
+> - [Set route MaxStreamDuraration so grpc-timeout header can be used by hzxuzhonghu · Pull Request #45234 · istio/istio · GitHub](https://github.com/istio/istio/pull/45234#discussion_r1213965308)
 > - [Istio 1.16.4 returning GRPC Unavailable instead of deadline exceeded · Issue #45141 · istio/istio · GitHub](https://github.com/istio/istio/issues/45141)
-> - https://github.com/istio/istio/pull/42049
+> - [avoid using max stream duration for no timeout cases by ramaraochavali · Pull Request #42049 · istio/istio · GitHub](https://github.com/istio/istio/pull/42049)
 
 <br>
 

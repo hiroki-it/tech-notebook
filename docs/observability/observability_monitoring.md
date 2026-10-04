@@ -9,7 +9,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -177,7 +177,7 @@ Amazon の自社調査では、ローディング時間が 100ms 短くなるご
 
 検索エンジン上 (サイト訪問前) のユーザーエンゲージメントのデータポイントを収集し、監視する。
 
-> - https://support.google.com/webmasters/answer/9128668?hl=en
+> - [About Search Console - Search Console Help](https://support.google.com/webmasters/answer/9128668?hl=en)
 > - https://semlabo.com/seo/blog/difference-between-ga-and-gsc/
 
 #### ▼ 合成監視 (外部監視、外形監視)

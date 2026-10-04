@@ -56,7 +56,7 @@ SSR のアプリケーションで以下の順に処理を実行し、データ�
 | 6    | ローダー             | `app/routes`     | UI ロジック、CSS スタイリングロジック、状態管理ロジック | View + ViewModel         | ブラウザ操作に応じて、アクションからデータを取得する。                                                                                                                                                                   |
 | 7    | remix コンポーネント | `app/components` | UI ロジック、CSS スタイリングロジック、状態管理ロジック | View + ViewModel         | ２番に同じ                                                                                                                                                                                                               |
 
-> - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
+> - [ホームページ - EY-Office](https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/)
 
 #### ▼ SSR の場合の詳細な流れ
 
@@ -234,7 +234,7 @@ export default function Posts() {
 }
 ```
 
-> - https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/
+> - [ホームページ - EY-Office](https://www.ey-office.com/blog_archive/2022/07/06/is-remix-ruby-on-rails-in-react/)
 
 #### ▼ 命名
 

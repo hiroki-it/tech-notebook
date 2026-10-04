@@ -164,7 +164,7 @@ resource "aws_iam_policy" "aws_load_balancer_controller" {
 }
 ```
 
-> - https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage
+> - [Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/latest#usage)
 
 別途、AWS Load Balancer Controller の Pod に紐付ける ServiceAccount を作成し、IAM ロールの ARN を設定する。
 

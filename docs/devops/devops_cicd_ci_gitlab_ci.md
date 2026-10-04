@@ -9,7 +9,7 @@ description: GitLab CI＠CIツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -1010,7 +1010,7 @@ check_tag:
         TAG_NAME: "$CI_COMMIT_TAG"
 ```
 
-> - https://hawksnowlog.blogspot.com/2021/08/run-gitlab-ci-only-specified-tags.html
+> - [hawksnowlog: gitlab-ci で特定のタグだけジョブを実行する方法](https://hawksnowlog.blogspot.com/2021/08/run-gitlab-ci-only-specified-tags.html)
 > - https://gitlab-docs.creationline.com/ee/ci/yaml/#rulesif
 
 #### ▼ changes
@@ -1063,7 +1063,7 @@ Job でアプリコンテナを動かし、DB コンテナを別に起動して�
 
 これを回避するために使用する。
 
-> - https://qiita.com/kytiken/items/a95ef8c1fccfc4a9b089#example
+> - [GitLab CIで知っておくと便利かもしれないtips #GitLab-CI - Qiita](https://qiita.com/kytiken/items/a95ef8c1fccfc4a9b089#example)
 
 #### ▼ TLS の無効化 (非暗号化)
 
@@ -1196,7 +1196,7 @@ bar:
     strategy: depend
 ```
 
-> - https://dev.classmethod.jp/articles/gitlab-ci-yml-trigger/
+> - [triggerを使って.gitlab-ci.ymlを分割する \| DevelopersIO](https://dev.classmethod.jp/articles/gitlab-ci-yml-trigger/)
 
 <br>
 

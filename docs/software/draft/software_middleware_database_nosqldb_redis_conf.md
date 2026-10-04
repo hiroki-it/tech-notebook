@@ -15,7 +15,7 @@ description: 設定ファイル＠Redisの知見を記録しています。
 
 ## 01. GENERAL
 
-> - https://github.com/redis/redis/blob/unstable/redis.conf
+> - [redis/redis.conf at unstable · redis/redis · GitHub](https://github.com/redis/redis/blob/unstable/redis.conf)
 
 <br>
 
@@ -27,7 +27,7 @@ description: 設定ファイル＠Redisの知見を記録しています。
 dir /data
 ```
 
-> - https://github.com/redis/redis/blob/unstable/redis.conf
+> - [redis/redis.conf at unstable · redis/redis · GitHub](https://github.com/redis/redis/blob/unstable/redis.conf)
 
 <br>
 
@@ -37,12 +37,12 @@ dir /data
 save ""
 ```
 
-> - https://github.com/redis/redis/blob/unstable/redis.conf
+> - [redis/redis.conf at unstable · redis/redis · GitHub](https://github.com/redis/redis/blob/unstable/redis.conf)
 
 <br>
 
 ## 03. REPLICATION
 
-> - https://github.com/redis/redis/blob/unstable/redis.conf
+> - [redis/redis.conf at unstable · redis/redis · GitHub](https://github.com/redis/redis/blob/unstable/redis.conf)
 
 <br>

@@ -19,7 +19,7 @@ description: インシデント管理＠監視の知見を記録しています�
 
 すべてのエラーイベントがインシデントというわけではない。
 
-> - https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management
+> - [問題管理とインシデント管理の比較 \| アトラシアン \| アトラシアン](https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management)
 > - [What is an Incident? - PagerDuty Incident Response Documentation](https://response.pagerduty.com/before/what_is_an_incident/)
 
 <br>
@@ -292,7 +292,7 @@ fields @timestamp, @message, @logStream
 | MTTD：Mean Time To Diagnose     | 障害の障害開始地点から修復開始地点までの平均障害時間のこと。異常を検出するまでにどのくらいの時間がかかったのかがわかる。                                                      |                                                                       |
 | MTTR：Mean Time To Repair       | 障害の回復開始地点終了から終了地点間までの平均障害時間のこと。どのくらいの間、回復せずに異常稼働していたのかがわかる。可用性テスト時の目標値の RTO とは異なることに注意する。 | ・https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/ |
 
-> - https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf
+> - [MTTR、MTBF、MTTD、MTTFの違いは何ですか？ - LogicMonitor](https://www.logicmonitor.jp/blog/whats-the-difference-between-mttr-mttd-mttf-and-mtbf)
 > - https://www.researchgate.net/figure/A-schematic-diagram-of-MTTF-MTTR-and-MTBF_fig5_334205633
 
 #### ▼ 稼働率

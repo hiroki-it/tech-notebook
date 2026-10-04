@@ -103,7 +103,7 @@ RPO は最後のバックアップ時点である。
 
 一方で金銭的コストが低い。
 
-> - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
+> - [AWS でのディザスタリカバリ (DR) アーキテクチャ、パートI：クラウドでのリカバリの戦略 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/)
 > - [AWS 上でのディザスタリカバリ (DR) 構成 4 パターン \| michimani log](https://michimani.net/post/aws-architecture-for-disaster-recovery/)
 > - [バックアップ・リストアによる BCP 対策のためのクラウド構成と料金試算例 \| AWS](https://aws.amazon.com/jp/cdp/cdp-dr/)
 
@@ -125,7 +125,7 @@ RPO は最後の同期時点である。
 
 一方で金銭的コストが低い。
 
-> - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
+> - [AWS でのディザスタリカバリ (DR) アーキテクチャ、パートI：クラウドでのリカバリの戦略 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/)
 > - [AWS 上でのディザスタリカバリ (DR) 構成 4 パターン \| michimani log](https://michimani.net/post/aws-architecture-for-disaster-recovery/)
 
 <br>
@@ -146,7 +146,7 @@ RPO は最後の同期時点である。
 
 一方で、金銭的コストが高い。
 
-> - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
+> - [AWS でのディザスタリカバリ (DR) アーキテクチャ、パートI：クラウドでのリカバリの戦略 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/)
 > - [AWS 上でのディザスタリカバリ (DR) 構成 4 パターン \| michimani log](https://michimani.net/post/aws-architecture-for-disaster-recovery/)
 
 <br>
@@ -165,7 +165,7 @@ RPO は最後の同期時点である。
 
 一方で、金銭的コストが高い。
 
-> - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
+> - [AWS でのディザスタリカバリ (DR) アーキテクチャ、パートI：クラウドでのリカバリの戦略 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/)
 > - [AWS 上でのディザスタリカバリ (DR) 構成 4 パターン \| michimani log](https://michimani.net/post/aws-architecture-for-disaster-recovery/)
 
 <br>

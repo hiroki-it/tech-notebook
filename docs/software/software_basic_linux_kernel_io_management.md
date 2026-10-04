@@ -101,7 +101,7 @@ root      2928  0.0  0.0   9732  3316 pts/0    R+   14:08   0:00 ps -aux
 $ cat /proc/1/fd/1
 ```
 
-> - https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
+> - [https://debimate.jp/post/ja/2020-07-04-%E8%B5%B7%E5%8B%95%E6%B8%88%E3%81%BF%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E4%BE%8B%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AE%E6%A8%99/](https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/)
 
 #### ▼ 標準出力とファイルに出力
 
@@ -171,7 +171,7 @@ root      2928  0.0  0.0   9732  3316 pts/0    R+   14:08   0:00 ps -aux
 $ cat /proc/1/fd/2
 ```
 
-> - https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/
+> - [https://debimate.jp/post/ja/2020-07-04-%E8%B5%B7%E5%8B%95%E6%B8%88%E3%81%BF%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E4%BE%8B%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AE%E6%A8%99/](https://debimate.jp/2020/07/04/%e8%b5%b7%e5%8b%95%e6%b8%88%e3%81%bf%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%88%e4%be%8b%ef%bc%9a%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e3%83%97%e3%83%ad%e3%82%bb%e3%82%b9%ef%bc%89%e3%81%ae%e6%a8%99/)
 
 <br>
 

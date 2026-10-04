@@ -181,7 +181,7 @@ Helm のコメントの前に不要な改行が挿入されないように、`{{
 `template()` 関数では出力内容を変数に格納できない。そのため、変数に格納できる `include()` 関数が推奨である。
 
 > - [Named Templates \| Helm](https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function)
-> - https://itnext.io/use-named-templates-like-functions-in-helm-charts-641fbcec38da
+> - [Medium](https://itnext.io/use-named-templates-like-functions-in-helm-charts-641fbcec38da)
 
 <br>
 
@@ -600,7 +600,7 @@ data:
 ```
 
 > - [Template Function List \| Helm](https://helm.sh/docs/chart_template_guide/function_list/#fromyaml)
-> - https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4
+> - [Medium](https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4)
 > - https://stackoverflow.com/a/62832814
 
 <br>

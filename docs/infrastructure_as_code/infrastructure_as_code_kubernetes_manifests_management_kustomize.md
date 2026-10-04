@@ -91,7 +91,7 @@ spec:
               mountPath: /go/src
 ```
 
-> - https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file
+> - [GitHub - kubernetes-sigs/kustomize: Customization of kubernetes YAML configurations · GitHub](https://github.com/kubernetes-sigs/kustomize#1-make-a-kustomization-file)
 
 <br>
 
@@ -103,7 +103,7 @@ spec:
 
 `overlays` ディレクトリ配下にあるファイルの処理方法を設定する。
 
-> - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
+> - [GitHub - kubernetes-sigs/kustomize: Customization of kubernetes YAML configurations · GitHub](https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays)
 > - [Kustomizeでできること一覧 #kubernetes - Qiita](https://qiita.com/Morix1500/items/d08a09b6c6e43efa191d)
 
 #### ▼ resources

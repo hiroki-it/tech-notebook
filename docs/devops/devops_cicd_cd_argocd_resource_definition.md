@@ -129,7 +129,7 @@ $ kubectl create namespace argocd
 $ helm install <Helmリリース名> <チャートリポジトリ名>/argo-cd -n argocd --version <バージョンタグ>
 ```
 
-> - https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart
+> - [argo-helm/charts/argo-cd at main · argoproj/argo-helm · GitHub](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd#installing-the-chart)
 
 #### ▼ Operator として
 
@@ -823,7 +823,7 @@ Kubernetes のカスタムリソースから定義される。
 
 ポーリング対象の Kubernetes リソースやカスタムリソースを設定する。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/crds/application-crd.yaml
+> - [argo-cd/manifests/crds/application-crd.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/crds/application-crd.yaml)
 > - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#multiple-configuration-objects)
 
 #### ▼ 自己ポーリング
@@ -929,7 +929,7 @@ spec:
 ```
 
 > - [Sync Options - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs)
-> - https://mixi-developers.mixi.co.jp/update-argocd-to-v2-3-0-d609bbf16662
+> - [Medium](https://mixi-developers.mixi.co.jp/update-argocd-to-v2-3-0-d609bbf16662)
 
 <br>
 
@@ -1157,7 +1157,7 @@ helmfile と同じように `helm` コマンドを宣言的に実行しつつ、
 
 > - [Helm - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins)
 > - [argo-cd/docs/operator-manual/application.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L25)
-> - https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c
+> - [Medium](https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c)
 
 `helm` コマンドに渡す `values` ファイルの値をハードコーディングする。
 
@@ -1347,7 +1347,7 @@ spec:
     repoURL: https://foo-bucket.s3.ap-northeast-1.amazonaws.com
 ```
 
-> - https://medium.com/gitops-and-argo-cd-overview/using-amazon-s3-as-a-helm-chart-repository-with-argo-cd-1b61a5bda798
+> - [Medium](https://medium.com/gitops-and-argo-cd-overview/using-amazon-s3-as-a-helm-chart-repository-with-argo-cd-1b61a5bda798)
 
 #### ▼ targetRevision
 
@@ -1710,7 +1710,7 @@ spec:
 ```
 
 > - [ArgoCD ApplicationSetを動かしてみる - TECHSTEP](https://techstep.hatenablog.com/entry/2021/12/02/085034)
-> - https://blog.argoproj.io/introducing-the-applicationset-controller-for-argo-cd-982e28b62dc5
+> - [Medium](https://blog.argoproj.io/introducing-the-applicationset-controller-for-argo-cd-982e28b62dc5)
 
 <br>
 

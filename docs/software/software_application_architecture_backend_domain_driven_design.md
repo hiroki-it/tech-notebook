@@ -9,7 +9,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 必ずしもオブジェクト指向設計でドメイン駆動設計に沿う必要はなく、通常のオブジェクト指向分析設計をしても問題はない。
 
-> - https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html
+> - [\[ 技術講座 \] Domain-Driven Designのエッセンス 第1回｜オブジェクトの広場](https://www.ogis-ri.co.jp/otc/hiroba/technical/DDDEssence/chap1.html)
 > - https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E9%A7%86%E5%8B%95%E8%A8%AD%E8%A8%88
 
 <br>
@@ -52,7 +52,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 : コンテキストマップを作成し、境界づけられたコンテキスト間の関係を明らかにする。
 
-> - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+> - [DDDのドメイン・サブドメイン・ユビキタス言語・境界づけられたコンテキストを整理する #ドメイン駆動設計 - Qiita](https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4)
 
 <br>
 
@@ -86,7 +86,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 : 運用後に問題が発生した場合、特にオブジェクト図とドメインモデル図を修正する。場合によっては、デザインパターンに切り分ける。
 
-> - https://booth.pm/ja/items/3363104
+> - [ドメイン駆動設計 サンプルコード&FAQ - little-hands - BOOTH](https://booth.pm/ja/items/3363104)
 
 <br>
 
@@ -112,7 +112,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 例えば、ToC なドメインには、マーケーティング部による業務 (ユーザー集客業務、広告運用業務) がある。
 
-> - https://github.com/little-hands/ddd-q-and-a/issues/191
+> - [前から疑問だったのですが、DDDってtoCのサービスでもうまく機能するのでしょうか？toCのサービスの場合、どのようにドメインエキスパートを探す、あるいは設定するのでしょうか。 · Issue #191 · little-hands/ddd-q-and-a · GitHub](https://github.com/little-hands/ddd-q-and-a/issues/191)
 
 #### ▼ 例：インターネット広告代理店
 
@@ -126,7 +126,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![internet_advertising_agency_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet_advertising_agency_domain.png)
 
-> - https://labs.septeni.co.jp/entry/2021/04/15/130000
+> - [ドメイン駆動設計(DDD)との格闘 - 広義のドメイン・狭義のドメインの理解 - FLINTERS Engineer's Blog](https://labs.septeni.co.jp/entry/2021/04/15/130000)
 
 #### ▼ 例：完全個室ジムを運営するハコジム
 
@@ -173,8 +173,8 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context.png)
 
-> - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
-> - https://labs.septeni.co.jp/entry/2021/04/15/130000
+> - [DDDのドメイン・サブドメイン・ユビキタス言語・境界づけられたコンテキストを整理する #ドメイン駆動設計 - Qiita](https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4)
+> - [ドメイン駆動設計(DDD)との格闘 - 広義のドメイン・狭義のドメインの理解 - FLINTERS Engineer's Blog](https://labs.septeni.co.jp/entry/2021/04/15/130000)
 
 #### ▼ ドメインエキスパートとは
 
@@ -203,7 +203,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ただ、コアドメインが外部に依存すると、その SaaS で障害が起こったときにコアドメインのシステムも停止する可能性があるため、注意が必要である。
 
-> - https://medium.com/nick-tune-tech-strategy-blog/core-domain-patterns-941f89446af5
+> - [Medium](https://medium.com/nick-tune-tech-strategy-blog/core-domain-patterns-941f89446af5)
 > - [Aligning organization and architecture with strategic DDD - Speaker Deck](https://speakerdeck.com/mploed/aligning-organization-and-architecture-with-strategic-ddd?slide=26)
 
 #### ▼ 例：完全個室ジムを運営するハコジム
@@ -421,7 +421,7 @@ class Book {
 
 ![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
 
-> - https://note.com/alpinc/n/nab47ab9273c6
+> - [全社員ユビキタス言語で話す！？ドメイン勉強会レポート｜Scalebase株式会社](https://note.com/alpinc/n/nab47ab9273c6)
 > - [Scalebase株式会社](https://thealp.co.jp/)
 
 #### ▼ 例：会計アプリケーションを提供する freee
@@ -540,7 +540,7 @@ QR決済取引管理ポータル：管理者がQR決済取引を照会し、例�
 
 ![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/context-map.png)
 
-> - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+> - [DDDのドメイン・サブドメイン・ユビキタス言語・境界づけられたコンテキストを整理する #ドメイン駆動設計 - Qiita](https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4)
 
 #### ▼ 記法
 
@@ -588,7 +588,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 > - https://codezine.jp/article/detail/11968
 > - https://www.amazon.co.jp/dp/B082WXZVPC
-> - https://booth.pm/ja/items/3363104
+> - [ドメイン駆動設計 サンプルコード&FAQ - little-hands - BOOTH](https://booth.pm/ja/items/3363104)
 
 #### ▼ ドメインモデル図
 
@@ -600,7 +600,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 この『具体例から抽象を導く』という作業により、オブジェクト思考分析よりも現実に沿ったモデリングが可能になる。
 
-> - https://booth.pm/ja/items/3363104
+> - [ドメイン駆動設計 サンプルコード&FAQ - little-hands - BOOTH](https://booth.pm/ja/items/3363104)
 
 #### ▼ ドメインオブジェクト図
 
@@ -608,7 +608,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 > - https://codezine.jp/article/detail/11968
 > - https://www.amazon.co.jp/dp/B082WXZVPC
-> - https://booth.pm/ja/items/3363104
+> - [ドメイン駆動設計 サンプルコード&FAQ - little-hands - BOOTH](https://booth.pm/ja/items/3363104)
 
 #### ▼ コアドメイン/サブドメインのモデリング
 
@@ -616,7 +616,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 ![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context_modeling.png)
 
-> - https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4
+> - [DDDのドメイン・サブドメイン・ユビキタス言語・境界づけられたコンテキストを整理する #ドメイン駆動設計 - Qiita](https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4)
 
 #### ▼ 記法
 
@@ -630,7 +630,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 ドメインルールを吹き出しに書き込むことにより、ソフトウェアの構造のみでなくドメインルールも表す。
 
-> - https://booth.pm/ja/items/3363104
+> - [ドメイン駆動設計 サンプルコード&FAQ - little-hands - BOOTH](https://booth.pm/ja/items/3363104)
 > - [PlantUMLを通じてドメインモデル図の書き方を学ぶ - EurekaMoments](https://www.eureka-moments-blog.com/entry/2018/12/29/145802)
 > - [PlantUML/DomainModelDiagram/DomainModelDiagram.pdf at master · ShisatoYano/PlantUML · GitHub](https://github.com/ShisatoYano/PlantUML/blob/master/DomainModelDiagram/DomainModelDiagram.pdf)
 
@@ -649,8 +649,8 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 いずれのほうも非常に参考になる (モデリングは難しい) 。
 
 > - [チケット : チケット料金 \| シネマシティ](https://cinemacity.co.jp/ticket/)
-> - https://twitter.com/little_hand_s/status/1150763962062913536?lang=ar
-> - https://github.com/bookreadking/ddd-modeling-impplementation-guilde/tree/master/ticket-modeling/eichisanden
+> - [松岡@AI/DDD/アジャイル على X: "コードの話が主な文脈かもとは思いつつ、モデリングと書いてあるので普段やっているように「ユースケース図→ドメインモデル図→コード」という流れを踏んでみる。 まずはユースケース図。この段階で前提を削ぎ落としておかないとモデリング対象が膨らんでいくので重要。 #チケット料金モデリング" / X](https://twitter.com/little_hand_s/status/1150763962062913536?lang=ar)
+> - [ddd-modeling-impplementation-guilde/ticket-modeling/eichisanden at master · bookreadking/ddd-modeling-impplementation-guilde · GitHub](https://github.com/bookreadking/ddd-modeling-impplementation-guilde/tree/master/ticket-modeling/eichisanden)
 
 `(1)`
 
@@ -745,8 +745,8 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 - ICONIX (ユースケース駆動)
 - イベントストーミング (これはイベントソーシングでも使える)
 
-> - https://flxy.jp/media/article/23938
-> - https://zenn.dev/team_soda/articles/9c7e818df81152#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E6%89%8B%E6%B3%95
+> - [ドメインエキスパート/エンジニアと語るDDD実践例 \[CTO meetup イベントレポート\] - FLEXY（フレキシー）](https://flxy.jp/media/article/23938)
+> - [イベントストーミングを咀嚼する](https://zenn.dev/team_soda/articles/9c7e818df81152#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E6%89%8B%E6%B3%95)
 > - [state ソーシング、 event ソーシング 【スタイルの選択肢】 \| システム設計日記](http://masuda220.jugem.jp/?eid=435)
 
 #### ▼ テーブル構造
@@ -779,10 +779,10 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 CQRS と相性がよい。
 
-> - https://qiita.com/suin/items/f559e3dcde7c811ed4e1
+> - [DDD: ImmutableなEntityの実装方法〜ステートソーシングなEntityとイベントソーシングなEntity〜 #Scala - Qiita](https://qiita.com/suin/items/f559e3dcde7c811ed4e1)
 > - [What do you mean by “Event-Driven”?](https://martinfowler.com/articles/201701-event-driven.html)
 > - [Event Sourcing 完全に理解した](https://zenn.dev/shmi593/articles/56c890962bb807)
-> - https://zenn.dev/team_soda/articles/9c7e818df81152#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E6%89%8B%E6%B3%95
+> - [イベントストーミングを咀嚼する](https://zenn.dev/team_soda/articles/9c7e818df81152#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E6%89%8B%E6%B3%95)
 
 #### ▼ モデリングフレームワーク
 

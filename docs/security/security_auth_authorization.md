@@ -22,7 +22,7 @@ description: 認可＠認証／認可の知見を記録しています。
 ![authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/authorization.png)
 
 > - [Authorization Academy - What is Authorization?](https://www.osohq.com/academy/what-is-authorization)
-> - https://dev.classmethod.jp/articles/authentication-and-authorization/#toc-2
+> - [よくわかる認証と認可 \| DevelopersIO](https://dev.classmethod.jp/articles/authentication-and-authorization/#toc-2)
 
 <br>
 

@@ -9,7 +9,7 @@ description: Kubernetes＠IaCの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -482,7 +482,7 @@ resources:
 
 実装方法がなかなか複雑で、移行の実装方法は記入中...
 
-> - https://aws.amazon.com/jp/blogs/news/set-up-soft-multi-tenancy-with-kiosk-on-amazon-elastic-kubernetes-service/
+> - [Amazon Elastic Kubernetes Service で Kiosk にソフトマルチテナンシーをセットアップする \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/set-up-soft-multi-tenancy-with-kiosk-on-amazon-elastic-kubernetes-service/)
 > - [GitHub - loft-sh/kiosk: kiosk 🏢 Multi-Tenancy Extension For Kubernetes - Secure Cluster Sharing & Self-Service Namespace Provisioning · GitHub](https://github.com/loft-sh/kiosk#51-manifest-templates)
 
 <br>

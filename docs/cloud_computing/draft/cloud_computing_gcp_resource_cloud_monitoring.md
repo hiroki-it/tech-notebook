@@ -17,7 +17,7 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 
 ![google_cloud_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_monitoring.png)
 
-> - https://xebia.com/blog/how-to-manage-cloud-build-notifications/
+> - [How To Manage Cloud Build Alerts \| Xebia](https://xebia.com/blog/how-to-manage-cloud-build-notifications/)
 
 <br>
 
@@ -38,7 +38,7 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 ポリシー (例：閾値、メトリクス再集約など) 、通知チャンネルを作成できる。
 
 > - [指標しきい値のアラート ポリシーを作成する \| Cloud Monitoring \| Google Cloud Documentation](https://cloud.google.com/monitoring/alerts/using-alerting-ui?hl=ja)
-> - https://cloud.google.com/monitoring/support/notification-options?hl=ja
+> - [通知チャンネルを作成して管理する \| Cloud Monitoring \| Google Cloud Documentation](https://cloud.google.com/monitoring/support/notification-options?hl=ja)
 
 #### ▼ メトリクスフィルター
 

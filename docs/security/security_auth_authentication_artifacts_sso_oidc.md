@@ -163,7 +163,7 @@ OAuth の認可コードフローと仕組みが似ており、アクセスト�
 
 > - https://wagby.com/wdn8/juser-oidc.html
 > - [OpenID Connect入門（Authorization Codeフローを画面遷移と共に説明します） #OIDC - Qiita](https://qiita.com/nabeatsu/items/380058915629c0ce795e#authorization-code-%E3%83%95%E3%83%AD%E3%83%BC)
-> - https://ysyau.medium.com/spa-and-rest-api-application-friendly-oauth-2-0-oidc-login-flow-80ba927ff47d
+> - [Medium](https://ysyau.medium.com/spa-and-rest-api-application-friendly-oauth-2-0-oidc-login-flow-80ba927ff47d)
 
 <br>
 

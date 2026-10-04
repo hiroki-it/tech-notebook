@@ -9,7 +9,7 @@ description: gRPC＠RPC-APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -85,7 +85,7 @@ service Request {
 }
 ```
 
-> - https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
+> - [goでgRPCの4つの通信方式やってみた(Dockerのサンプルあり) #Go - Qiita](https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc)
 > - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
 > - [gRPC におけるタイムアウト時の挙動 - 理系学生日記](https://kiririmode.hatenablog.jp/entry/20190623/1561247109)
 
@@ -118,7 +118,7 @@ service Notification {
 }
 ```
 
-> - https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc
+> - [goでgRPCの4つの通信方式やってみた(Dockerのサンプルあり) #Go - Qiita](https://qiita.com/tomo0/items/310d8ffe82749719e029#server-streaming-rpc)
 > - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
 
 <br>
@@ -150,7 +150,7 @@ service Upload {
 }
 ```
 
-> - https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc
+> - [goでgRPCの4つの通信方式やってみた(Dockerのサンプルあり) #Go - Qiita](https://qiita.com/tomo0/items/310d8ffe82749719e029#client-streaming-rpc)
 > - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
 
 <br>
@@ -194,7 +194,7 @@ service Chat {
 }
 ```
 
-> - https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc
+> - [goでgRPCの4つの通信方式やってみた(Dockerのサンプルあり) #Go - Qiita](https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc)
 > - [Go で実装しながら gRPC を理解する - reboooot․net](https://reboooot.net/post/hello-grpc/)
 > - [gRPCにおける各RPC方式の実装方法【Bidirectional streaming RPC】 - Carpe Diem](https://christina04.hatenablog.com/entry/2017/11/13/203000)
 > - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
@@ -234,7 +234,7 @@ gRPC のリクエストでは、メタデータをヘッダーに格納する。
 | `user-agent`           |                                    |
 | ...                    |                                    |
 
-> - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests
+> - [grpc/doc/PROTOCOL-HTTP2.md at master · grpc/grpc · GitHub](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests)
 > - [メタデータの送受信｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata)
 > - [grpc-gatewayのエラーレスポンスをカスタマイズする](https://soichisumi.net/2019/04/grpc-custom-error-response/)
 

@@ -306,7 +306,7 @@ Istio リソースを Envoy のリスナーに変換する。
 
 > - [istio/pilot/pkg/xds/lds.go at 1.20.0 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/lds.go#L92-L105)
 > - [istio/pilot/pkg/networking/grpcgen/lds.go at 1.20.0 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/lds.go#L61-L71)
-> - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L96-L118
+> - [istio/pilot/pkg/networking/core/v1alpha3/listener.go at 1.20.0 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/listener.go#L96-L118)
 
 #### ▼ ルートの場合
 
@@ -314,7 +314,7 @@ Istio リソースを Envoy のルートに変換する。
 
 > - [istio/pilot/pkg/xds/rds.go at 1.20.0 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.20.0/pilot/pkg/xds/rds.go#L62-L68)
 > - [istio/pilot/pkg/networking/grpcgen/rds.go at 1.20.0 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/grpcgen/rds.go#L29-L40)
-> - https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/httproute.go#L57-L113
+> - [istio/pilot/pkg/networking/core/v1alpha3/httproute.go at 1.20.0 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.20.0/pilot/pkg/networking/core/v1alpha3/httproute.go#L57-L113)
 
 #### ▼ クラスターの場合
 

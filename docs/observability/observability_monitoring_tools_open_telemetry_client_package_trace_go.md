@@ -1003,7 +1003,7 @@ func NewTracerProvider() (func(context.Context) error, error) {
 > - [AWS Distro for OpenTelemetry を使ってトレースを X-Ray でサクッと可視化する on EKS](https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4)
 > - [aws-otel-community/sample-apps/go-sample-app/collection/client.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go)
 > - [aws-otel-go/sampleapp/main.go at main · aws-observability/aws-otel-go · GitHub](https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L119-L154)
-> - https://aws.amazon.com/blogs/opensource/go-support-for-aws-x-ray-now-available-in-aws-distro-for-opentelemetry/
+> - [Go support for AWS X-Ray now available in AWS Distro for OpenTelemetry \| AWS Open Source Blog](https://aws.amazon.com/blogs/opensource/go-support-for-aws-x-ray-now-available-in-aws-distro-for-opentelemetry/)
 > - [opentelemetry-go-contrib/propagators/aws/xray/propagator.go at v1.18.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/propagator.go)
 > - [opentelemetry-go-contrib/propagators/aws/xray/idgenerator.go at v1.18.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/idgenerator.go#L67C1-L74)
 

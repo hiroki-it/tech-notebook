@@ -43,7 +43,7 @@ description: Goのテストツール＠アプリケーションのホワイト�
 | goprintffuncname         | `printf` のような関数の名前が `f` で終わっているかを検証する。 |                                                                                                                                         |
 | revive                   | 用意されたコード規約に則っているかを検証する。                 |                                                                                                                                         |
 
-> - https://golangci-lint.run/usage/linters/
+> - [https://golangci-lint.run/docs/linters/](https://golangci-lint.run/usage/linters/)
 
 #### ▼ 脆弱性
 
@@ -52,7 +52,7 @@ description: Goのテストツール＠アプリケーションのホワイト�
 | govulncheck |          |      |
 | gosec       |          |      |
 
-> - https://golangci-lint.run/usage/linters/
+> - [https://golangci-lint.run/docs/linters/](https://golangci-lint.run/usage/linters/)
 > - [Vulnerability Management for Go - The Go Programming Language](https://go.dev/blog/vuln)
 > - [SAST tools for Golang - #3 by bluefire - Getting Help - Go Forum](https://forum.golangbridge.org/t/sast-tools-for-golang/32325/3)
 
@@ -60,7 +60,7 @@ description: Goのテストツール＠アプリケーションのホワイト�
 
 ユーザー定義のコード規約違反を検証する。
 
-> - https://golangci-lint.run/usage/linters/
+> - [https://golangci-lint.run/docs/linters/](https://golangci-lint.run/usage/linters/)
 
 <br>
 
@@ -98,7 +98,7 @@ description: Goのテストツール＠アプリケーションのホワイト�
 
 補足として、Go では 1 つのディレクトリ内に 1 つのパッケージ名しか宣言できないが、ブラックボックステストのために『`_test`』を加えることは許されている。
 
-> - https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36
+> - [Medium](https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36)
 
 <br>
 
@@ -559,7 +559,7 @@ func TestClient_ShouldReturnSuccess_WhenRequestSucceeds(t *testing.T) {
 }
 ```
 
-> - https://medium.com/zus-health/mocking-outbound-http-requests-in-go-youre-probably-doing-it-wrong-60373a38d2aa
+> - [Medium](https://medium.com/zus-health/mocking-outbound-http-requests-in-go-youre-probably-doing-it-wrong-60373a38d2aa)
 
 #### ▼ 外部のファイルシステム（`t.TempDir`）
 

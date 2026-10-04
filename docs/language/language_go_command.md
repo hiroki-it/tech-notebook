@@ -9,7 +9,7 @@ description: コマンド＠Goの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -160,7 +160,7 @@ $ ${GOPATH}/bin/foo-package --version
 ```
 
 > - [Deprecation of 'go get' for installing executables - The Go Programming Language](https://go.dev/doc/go-get-install-deprecation)
-> - https://github.com/golang/go/issues/44840#issuecomment-1828537390
+> - [cmd/go: go install cmd@version errors out when module with main package has replace directive · Issue #44840 · golang/go · GitHub](https://github.com/golang/go/issues/44840#issuecomment-1828537390)
 > - [go install で落とした binary に PATH を通す - okkun\_sh's blog](https://okkun-sh.hatenablog.com/entry/2023/06/16/013008)
 
 #### ▼ 最新バージョンの指定
@@ -393,7 +393,7 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
         go get github.com/hiroki-hasegawa/bar/cmd
 ```
 
-> - https://go.dev/ref/mod#go-mod-tidy
+> - [Go Modules Reference - The Go Programming Language](https://go.dev/ref/mod#go-mod-tidy)
 > - [go mod完全に理解した](https://zenn.dev/optimisuke/articles/105feac3f8e726830f8c#go-mod-tidy)
 > - [【Go】パッケージ/モジュールやgo modコマンドについてまとめ - フラミナル](https://blog.framinal.life/entry/2021/04/11/013819#go-mod-tidy)
 
@@ -407,7 +407,7 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 $ go mod tidy -go <バージョン>
 ```
 
-> - https://zenn.dev/spiegel/articles/20210223-go-module-aware-mode#go-%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B
+> - [Go のモジュール管理【バージョン 1.17 改訂版】](https://zenn.dev/spiegel/articles/20210223-go-module-aware-mode#go-%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96%E3%82%92%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B)
 
 #### ▼ `-v`
 
@@ -447,7 +447,7 @@ $ go mod verify
 all modules verified
 ```
 
-> - https://go.dev/ref/mod#go-mod-verify
+> - [Go Modules Reference - The Go Programming Language](https://go.dev/ref/mod#go-mod-verify)
 
 #### ▼ `but does not contain package`
 
@@ -484,8 +484,8 @@ go: finding module for package go.module.io/foo-dependency
 - `import` で指定されているが `go get` コマンドでインストールされていない場合は、これをインストールする。
 - `import` で指定されているが `go.mod` ファイルと `go.sum` ファイルに定義がない場合は、これを追加する。
 
-> - https://go.dev/ref/mod#go-mod-download
-> - https://github.com/golang/go/issues/35832#issuecomment-571799739
+> - [Go Modules Reference - The Go Programming Language](https://go.dev/ref/mod#go-mod-download)
+> - [cmd/go: go mod download and go mod tidy produce different go.sum · Issue #35832 · golang/go · GitHub](https://github.com/golang/go/issues/35832#issuecomment-571799739)
 
 <br>
 
@@ -543,7 +543,7 @@ func main() {
 }
 ```
 
-> - https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
+> - [Modules · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file)
 > - [go mod tidyをもっと詳しく調べてみた - SO Technologies 開発者ブログ](https://developer.so-tech.co.jp/entry/2022/08/16/110108)
 
 #### ▼ パブリックリポジトリから (開発中)

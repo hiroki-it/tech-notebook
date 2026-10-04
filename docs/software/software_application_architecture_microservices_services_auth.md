@@ -80,7 +80,7 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 ![microservices_authentication_type_sso_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso_gateway.png)
 
 > - [Securing APIs with Kong and Keycloak - Part 1](https://www.jerney.io/secure-apis-kong-keycloak-1/)
-> - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
+> - [Medium](https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53)
 > - [Keycloak: security in the world of microservices](https://www.altkomsoftware.com/blog/keycloak-security-in-microservices/)
 > - https://stackoverflow.com/a/53396041
 > - [マイクロサービスでの認証認可 #OAuth - Qiita](https://qiita.com/unhurried/items/998a386ccbc1ad4b8e61#rfc-8693-oauth-20-token-exchange)
@@ -121,7 +121,7 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 > - [Microservices における認証と認可の設計パターン - Please Sleep](https://please-sleep.cou929.nu/microservices-auth-design.html)
 > - [マイクロサービス時代のセッション管理 - Retty Tech Blog](https://engineer.retty.me/entry/2019/12/21/171549)
 > - [A different approach to User Sessions in Microservices using Redis - DEV Community](https://dev.to/honatas/a-different-approach-to-user-sessions-in-microservices-5bpi)
-> - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
+> - [Medium](https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53)
 
 <br>
 
@@ -170,7 +170,7 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 ![microservices_authentication_type_jwt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_jwt.png)
 
 > - [Microservices における認証と認可の設計パターン - Please Sleep](https://please-sleep.cou929.nu/microservices-auth-design.html)
-> - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
+> - [Medium](https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53)
 > - [マイクロサービス時代のセッション管理 - Retty Tech Blog](https://engineer.retty.me/entry/2019/12/21/171549)
 
 <br>

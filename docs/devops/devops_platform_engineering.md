@@ -168,7 +168,7 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 記入中...
 
-> - https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/
+> - [組織のクラウドオペレーションをいかにモダナイズするか \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/)
 
 <br>
 
@@ -176,7 +176,7 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 記入中...
 
-> - https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/
+> - [組織のクラウドオペレーションをいかにモダナイズするか \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/)
 
 <br>
 
@@ -184,7 +184,7 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 記入中...
 
-> - https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/
+> - [組織のクラウドオペレーションをいかにモダナイズするか \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/)
 
 <br>
 
@@ -192,6 +192,6 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 記入中...
 
-> - https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/
+> - [組織のクラウドオペレーションをいかにモダナイズするか \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/how-organizations-are-modernizing-for-cloud-operations/)
 
 <br>

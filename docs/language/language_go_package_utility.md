@@ -27,7 +27,7 @@ Go のソースコードに変更があれば、ホットリロードし、コ�
 
 以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html
+> - [【IT技術の知見】AWS Lambda関数＠AWS Lambda - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_lambda_function.html)
 
 <br>
 
