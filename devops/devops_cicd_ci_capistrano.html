@@ -33553,39 +33553,11 @@
                   
 
 
+
   
   
 
 
-<h1 id="capistranoci">Capistrano＠CI ツール<a class="headerlink" href="#capistranoci" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="01-capistrano">01. Capistrano の仕組み<a class="headerlink" href="#01-capistrano" title="Permanent link">&para;</a></h2>
-<h3 id="_2">パイプライン構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>インプレースデプロイメントを実装する。</p>
-<p><img alt="capistrano_ec2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capistrano_ec2.png" /></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>自身のパソコンからデプロイサーバーにリモート通信する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
-<p>デプロイサーバーの自動デプロイツール (例：Capistrano) が、デプロイサーバーから Web サーバーにリモート通信する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
-<p>自動デプロイツールが、Web サーバーの Git を操作し、<code>git pull</code> コマンドあるいは <code>git clone</code> コマンドを実行する。</p>
-<p>その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。</p>
-</dd>
-</dl>
-<p><br></p>
 
 
 
@@ -33617,11 +33589,12 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <img class="author-avatar" src="https://github.com/hiroki-it.png?size=40" alt="" width="20" height="20" loading="lazy">
       
     </span>
     <nav>
-      hiroki-it
+      
+        長谷川広樹
     </nav>
   </span>
 
@@ -33629,6 +33602,36 @@
     
   </aside>
 
+
+<h1 id="capistranoci">Capistrano＠CI ツール<a class="headerlink" href="#capistranoci" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-capistrano">01. Capistrano の仕組み<a class="headerlink" href="#01-capistrano" title="Permanent link">&para;</a></h2>
+<h3 id="_2">パイプライン構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>インプレースデプロイメントを実装する。</p>
+<p><img alt="capistrano_ec2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capistrano_ec2.png" /></p>
+<dl>
+<dt><code>(1)</code></dt>
+<dd>
+<p>自身のパソコンからデプロイサーバーにリモート通信する。</p>
+</dd>
+<dt><code>(2)</code></dt>
+<dd>
+<p>デプロイサーバーの自動デプロイツール (例：Capistrano) が、デプロイサーバーから Web サーバーにリモート通信する。</p>
+</dd>
+<dt><code>(3)</code></dt>
+<dd>
+<p>自動デプロイツールが、Web サーバーの Git を操作し、<code>git pull</code> コマンドあるいは <code>git clone</code> コマンドを実行する。</p>
+<p>その結果、GitHubリポジトリからデプロイサーバーに指定のブランチの状態が取り込まれる。</p>
+</dd>
+</dl>
+<p><br></p>
 
   
 

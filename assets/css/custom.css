@@ -470,3 +470,13 @@ blockquote {
 /*    margin:0;*/
 /*    padding:0*/
 /*}*/
+
+/* 投稿者名の左にGitHubプロフィール画像を表示する。 */
+.md-typeset .md-source-file__fact .author-avatar {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  margin: 0;
+}

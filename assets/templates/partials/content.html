@@ -1,0 +1,10 @@
+{# ページ上部に投稿者・更新日を表示する。 #}
+{% include "partials/tags.html" %}
+{% include "partials/actions.html" %}
+{% include "partials/page-authors.html" %}
+{% if "\u003ch1" not in page.content %}
+  <h1>{{ page.title | d(config.site_name, true)}}</h1>
+{% endif %}
+{{ page.content }}
+{% include "partials/feedback.html" %}
+{% include "partials/comments.html" %}

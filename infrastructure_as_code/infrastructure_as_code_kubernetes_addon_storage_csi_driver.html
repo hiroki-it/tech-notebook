@@ -33601,33 +33601,11 @@
                   
 
 
+
   
   
 
 
-<h1 id="csi">ストレージ CSI ドライバー＠ストレージ系<a class="headerlink" href="#csi" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="01-csi">01. ストレージ CSI ドライバーとは<a class="headerlink" href="#01-csi" title="Permanent link">&para;</a></h2>
-<p>StorageClass に合わせて PersistentVolume を自動的に作成する。</p>
-<p>また、PersistentVolume と外部ストレージを紐づける。</p>
-<p><br></p>
-<h2 id="02-csi">02. ストレージ CSI ドライバーの種類<a class="headerlink" href="#02-csi" title="Permanent link">&para;</a></h2>
-<h3 id="hostpath-csi">HostPath CSI<a class="headerlink" href="#hostpath-csi" title="Permanent link">&para;</a></h3>
-<p><code>.spec.hostPath</code> キーの設定された PersistentVolume を自動的に作成する。</p>
-<p>ストレージ CSI ドライバーといいながら外部ストレージを使用しておらず、基本的には開発環境のモックとして使用する。</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/kubernetes-csi/csi-driver-host-path">GitHub - kubernetes-csi/csi-driver-host-path: A sample (non-production) CSI Driver that creates a local directory as a volume on a single node · GitHub</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 
 
 
@@ -33659,11 +33637,12 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <img class="author-avatar" src="https://github.com/hiroki-it.png?size=40" alt="" width="20" height="20" loading="lazy">
       
     </span>
     <nav>
-      hiroki-it
+      
+        長谷川広樹
     </nav>
   </span>
 
@@ -33671,6 +33650,30 @@
     
   </aside>
 
+
+<h1 id="csi">ストレージ CSI ドライバー＠ストレージ系<a class="headerlink" href="#csi" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-csi">01. ストレージ CSI ドライバーとは<a class="headerlink" href="#01-csi" title="Permanent link">&para;</a></h2>
+<p>StorageClass に合わせて PersistentVolume を自動的に作成する。</p>
+<p>また、PersistentVolume と外部ストレージを紐づける。</p>
+<p><br></p>
+<h2 id="02-csi">02. ストレージ CSI ドライバーの種類<a class="headerlink" href="#02-csi" title="Permanent link">&para;</a></h2>
+<h3 id="hostpath-csi">HostPath CSI<a class="headerlink" href="#hostpath-csi" title="Permanent link">&para;</a></h3>
+<p><code>.spec.hostPath</code> キーの設定された PersistentVolume を自動的に作成する。</p>
+<p>ストレージ CSI ドライバーといいながら外部ストレージを使用しておらず、基本的には開発環境のモックとして使用する。</p>
+<blockquote>
+<ul>
+<li><a href="https://github.com/kubernetes-csi/csi-driver-host-path">GitHub - kubernetes-csi/csi-driver-host-path: A sample (non-production) CSI Driver that creates a local directory as a volume on a single node · GitHub</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
   
 

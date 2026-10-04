@@ -33593,36 +33593,11 @@
                   
 
 
+
   
   
 
 
-<h1 id="control-toweraws">Control Tower＠AWS リソース<a class="headerlink" href="#control-toweraws" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="01-control-tower">01. Control Tower とは<a class="headerlink" href="#01-control-tower" title="Permanent link">&para;</a></h2>
-<p>Control Tower は、AWS Organizations、IdentityCenter (AWS SSO の後継)、Account Factory、AWS Config、AWS CloudTrail を一括で作成する。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/controltower/latest/userguide/roles-how.html">How AWS Control Tower works with roles to create and manage accounts - AWS Control Tower</a></li>
-<li><a href="https://ryonotes.com/difference-between-organizations-and-control-tower/">【AWS解説】AWS OrganizationsとAWS Control Towerの違いをまとめてみた - RyoNotes</a></li>
-<li><a href="https://product.st.inc/entry/2022/12/23/102300">AWS Organizations &amp; IAM Identity Center利用をオススメしてみる(AWS Organizations活用のリアル補足) - STORES Product Blog</a></li>
-<li><a href="https://zenn.dev/sakojun/articles/20220716-aws-controltower#control-tower%E3%81%AF%E3%81%A9%E3%82%93%E3%81%AA%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%8B">AWSでマルチアカウントするならControl Towerなのか？</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-control-tower">02. Control Tower の仕組み<a class="headerlink" href="#02-control-tower" title="Permanent link">&para;</a></h2>
-<h3 id="aws-organizations">AWS Organizations<a class="headerlink" href="#aws-organizations" title="Permanent link">&para;</a></h3>
-<p>AWS Organizations の CreateAccount-API をコールして、AWS アカウントを作成する。</p>
-<p>さらに AWS Organizations は、この AWS アカウントを作成するときに、AWS アカウント内に IAM ロールを作成する。</p>
-<p>既存のアカウントを Control Tower に移行する場合、既存のアカウントで作成された IAM ユーザーと IAM グループが不要になるため、これらを削除する必要がある。</p>
-<p><br></p>
 
 
 
@@ -33654,11 +33629,12 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <img class="author-avatar" src="https://github.com/hiroki-it.png?size=40" alt="" width="20" height="20" loading="lazy">
       
     </span>
     <nav>
-      hiroki-it
+      
+        長谷川広樹
     </nav>
   </span>
 
@@ -33666,6 +33642,33 @@
     
   </aside>
 
+
+<h1 id="control-toweraws">Control Tower＠AWS リソース<a class="headerlink" href="#control-toweraws" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-control-tower">01. Control Tower とは<a class="headerlink" href="#01-control-tower" title="Permanent link">&para;</a></h2>
+<p>Control Tower は、AWS Organizations、IdentityCenter (AWS SSO の後継)、Account Factory、AWS Config、AWS CloudTrail を一括で作成する。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/controltower/latest/userguide/roles-how.html">How AWS Control Tower works with roles to create and manage accounts - AWS Control Tower</a></li>
+<li><a href="https://ryonotes.com/difference-between-organizations-and-control-tower/">【AWS解説】AWS OrganizationsとAWS Control Towerの違いをまとめてみた - RyoNotes</a></li>
+<li><a href="https://product.st.inc/entry/2022/12/23/102300">AWS Organizations &amp; IAM Identity Center利用をオススメしてみる(AWS Organizations活用のリアル補足) - STORES Product Blog</a></li>
+<li><a href="https://zenn.dev/sakojun/articles/20220716-aws-controltower#control-tower%E3%81%AF%E3%81%A9%E3%82%93%E3%81%AA%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%8B">AWSでマルチアカウントするならControl Towerなのか？</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="02-control-tower">02. Control Tower の仕組み<a class="headerlink" href="#02-control-tower" title="Permanent link">&para;</a></h2>
+<h3 id="aws-organizations">AWS Organizations<a class="headerlink" href="#aws-organizations" title="Permanent link">&para;</a></h3>
+<p>AWS Organizations の CreateAccount-API をコールして、AWS アカウントを作成する。</p>
+<p>さらに AWS Organizations は、この AWS アカウントを作成するときに、AWS アカウント内に IAM ロールを作成する。</p>
+<p>既存のアカウントを Control Tower に移行する場合、既存のアカウントで作成された IAM ユーザーと IAM グループが不要になるため、これらを削除する必要がある。</p>
+<p><br></p>
 
   
 

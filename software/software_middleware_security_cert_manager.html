@@ -33579,32 +33579,11 @@
                   
 
 
+
   
   
 
 
-<h1 id="cert-manager">Cert Manager＠セキュリティ系ミドルウェア<a class="headerlink" href="#cert-manager" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="01-cert-manager">01. Cert Manager の仕組み<a class="headerlink" href="#01-cert-manager" title="Permanent link">&para;</a></h2>
-<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Cert Manager はクライアント／サーバー証明書を作成し、Secret に保管する。</p>
-<p>この Secret 上で、クライアント／サーバー証明書と、そのペアとなる秘密鍵を管理する。</p>
-<p>Pod 内のコンテナに Secret をマウントし、Pod 間の通信でサーバー認証を実施する。</p>
-<p><img alt="cert-manager_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cert-manager_architecture.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://piotrminkowski.com/2022/12/02/renew-certificates-on-kubernetes-with-cert-manager-and-reloader/">https://piotrminkowski.com/2022/12/02/renew-certificates-on-kubernetes-with-cert-manager-and-reloader/</a></li>
-<li><a href="https://youtu.be/rOe9UpHcnKk?t=301">https://youtu.be/rOe9UpHcnKk?t=301</a></li>
-</ul>
-</blockquote>
-<p><br></p>
 
 
 
@@ -33636,11 +33615,12 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="投稿者">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <img class="author-avatar" src="https://github.com/hiroki-it.png?size=40" alt="" width="20" height="20" loading="lazy">
       
     </span>
     <nav>
-      hiroki-it
+      
+        長谷川広樹
     </nav>
   </span>
 
@@ -33648,6 +33628,29 @@
     
   </aside>
 
+
+<h1 id="cert-manager">Cert Manager＠セキュリティ系ミドルウェア<a class="headerlink" href="#cert-manager" title="Permanent link">&para;</a></h1>
+<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="01-cert-manager">01. Cert Manager の仕組み<a class="headerlink" href="#01-cert-manager" title="Permanent link">&para;</a></h2>
+<h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>Cert Manager はクライアント／サーバー証明書を作成し、Secret に保管する。</p>
+<p>この Secret 上で、クライアント／サーバー証明書と、そのペアとなる秘密鍵を管理する。</p>
+<p>Pod 内のコンテナに Secret をマウントし、Pod 間の通信でサーバー認証を実施する。</p>
+<p><img alt="cert-manager_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cert-manager_architecture.png" /></p>
+<blockquote>
+<ul>
+<li><a href="https://piotrminkowski.com/2022/12/02/renew-certificates-on-kubernetes-with-cert-manager-and-reloader/">https://piotrminkowski.com/2022/12/02/renew-certificates-on-kubernetes-with-cert-manager-and-reloader/</a></li>
+<li><a href="https://youtu.be/rOe9UpHcnKk?t=301">https://youtu.be/rOe9UpHcnKk?t=301</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 
   
 
