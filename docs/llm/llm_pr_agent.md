@@ -68,6 +68,52 @@ pr_agent:
 
 <br>
 
+### GitHub Actions
+
+`.github/workflows/pr-agent.yml` に配置し、Actions secrets に `OPENAI_KEY` を登録する。PR の作成・更新時に自動レビューし、PR の会話欄で `/review`、`/describe`、`/improve` とコメントして再実行できる。自動レビューは同じリポジトリ内の PR を対象とし、コメントからの実行はリポジトリの所有者・メンバー・コラボレーターに限定する。
+
+```yaml
+name: PR Agent
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review, synchronize]
+  issue_comment:
+    types: [created]
+
+permissions: {}
+
+jobs:
+  pr-agent:
+    # Bot、自動レビュー対象外のfork、通常のIssueへのコメントは処理しない。
+    if: >-
+      github.event.sender.type != 'Bot' &&
+      ((github.event_name == 'pull_request' &&
+        github.event.pull_request.head.repo.full_name == github.repository) ||
+       (github.event_name == 'issue_comment' && github.event.issue.pull_request &&
+        startsWith(github.event.comment.body, '/') &&
+        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),
+                 github.event.comment.author_association)))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      # PRの取得とコメント投稿はActionが行うため、checkoutは不要。
+      - uses: the-pr-agent/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+`@main` は公式の導入例に合わせている。運用時は、動作を確認したコミット SHA に固定して更新を管理できる。Bedrock を使う場合は、後述の `.pr_agent.toml` のモデル設定に加え、AWS の認証とリージョンを設定する。
+
+> - [PR-Agent GitHub Integration](https://github.com/qodo-ai/pr-agent/blob/main/docs/docs/installation/github.md)
+
+<br>
+
 ## 自動レビュー
 
 ### レビュー依頼前
@@ -252,8 +298,6 @@ enable_pr_type=false
 ```
 
 ### inline_file_summary、collapsible_file_list、enable_semantic_files_types
-
-<br>
 
 Changes walkthrough セクションを設定する。
 

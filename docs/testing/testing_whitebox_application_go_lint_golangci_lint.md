@@ -98,6 +98,47 @@ go_lint:
 
 <br>
 
+### GitHub Actions
+
+`.github/workflows/golangci-lint.yml` に配置する。Go のバージョンは `go.mod` に合わせ、既存の `.golangci.yml` を使って静的解析する。
+
+```yaml
+name: Go lint
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Check module files
+        run: |
+          go mod tidy
+          # モジュール定義に変更が必要な場合はCIを失敗させる。
+          git diff --exit-code -- go.mod go.sum
+      - uses: golangci/golangci-lint-action@v9
+        with:
+          # .golangci.ymlのversion: "2"に対応するv2系を使う。
+          version: v2.3.4
+          args: --timeout=5m
+```
+
+golangci-lint を更新する場合は、プロジェクトの Go バージョンと設定ファイルの互換性も確認する。
+
+> - [golangci-lint GitHub Action](https://github.com/golangci/golangci-lint-action)
+
+<br>
+
 ## 03. .golangci.yml
 
 golangci-lint v2 系では、設定ファイルに `version: "2"` を指定する。

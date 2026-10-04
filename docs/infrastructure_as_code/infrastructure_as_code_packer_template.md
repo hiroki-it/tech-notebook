@@ -92,6 +92,62 @@ build_ami:
 
 <br>
 
+#### ▼ GitHub Actions
+
+`.github/workflows/packer.yml` に配置し、手動実行またはタグの push で AMI を作成する。Repository variables に `AWS_ACCOUNT_ID` を登録し、AWS 側には `sts.amazonaws.com` を audience とする GitHub OIDC プロバイダーと `github-actions-packer` IAM ロールを用意する。ロールの信頼ポリシーで対象リポジトリ・ブランチ・タグを制限し、AMI 作成に必要な権限を付与する。
+
+```yaml
+name: Build AMI
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+  # AWSのIAMロールを引き受けるためのOIDCトークンを取得する。
+  id-token: write
+
+env:
+  AWS_REGION: ap-northeast-1
+
+jobs:
+  build-ami:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/github-actions-packer
+          aws-region: ${{ env.AWS_REGION }}
+      - uses: hashicorp/setup-packer@v3
+        with:
+          version: '1.14.0'
+      - name: Resolve source AMI
+        run: |
+          SOURCE_IMAGE_ID=$(aws ssm get-parameter \
+            --name /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 \
+            --query 'Parameter.Value' --output text)
+          # Packerの実行ステップにAMI IDを渡す。
+          echo "SOURCE_IMAGE_ID=$SOURCE_IMAGE_ID" >> "$GITHUB_ENV"
+      - name: Build AMI
+        run: |
+          packer init template.pkr.hcl
+          packer validate template.pkr.hcl
+          packer build template.pkr.hcl
+```
+
+`template.pkr.hcl` は `env("SOURCE_IMAGE_ID")` で取得した AMI ID を参照する想定である。テンプレートが異なる変数名を使う場合は、それに合わせて渡し方を変更する。
+
+> - [Setup HashiCorp Packer](https://github.com/hashicorp/setup-packer)
+> - [Configure AWS Credentials](https://github.com/aws-actions/configure-aws-credentials)
+
+<br>
+
 ## 02. build
 
 ### sources
