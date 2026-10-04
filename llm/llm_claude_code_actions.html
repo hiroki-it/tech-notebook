@@ -32200,10 +32200,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#gitlab" class="md-nav__link">
+  <a href="#github" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GitLab
+        GitHub
       
     </span>
   </a>
@@ -33478,10 +33478,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#gitlab" class="md-nav__link">
+  <a href="#github" class="md-nav__link">
     <span class="md-ellipsis">
       
-        GitLab
+        GitHub
       
     </span>
   </a>
@@ -33600,36 +33600,61 @@
 </ul>
 <p><br></p>
 <h2 id="02">02. セットアップ<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">stages</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ai</span>
+<h3 id="github">GitHub<a class="headerlink" href="#github" title="Permanent link">&para;</a></h3>
+<p>Issue や PR に <code>@claude この問題を調査してください</code> とコメントすると、Action がコメント本文を依頼として取り込み、結果を同じスレッドに返信する。
+修正を依頼した場合、Issue では変更ブランチと PR 作成リンクを用意し、開いている PR ではそのブランチを更新する。
+事前に <code>/install-github-app</code> で Claude の GitHub App と <code>ANTHROPIC_API_KEY</code> secret を設定し、以下のワークフローを <code>.github/workflows/claude.yml</code> としてデフォルトブランチに配置する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Claude Code</span>
 
-<span class="nt">claude</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ai</span>
-<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node:24-alpine3.21</span>
-<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;$CI_PIPELINE_SOURCE</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">&quot;web&quot;&#39;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;$CI_PIPELINE_SOURCE</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">&quot;merge_request_event&quot;&#39;</span>
-<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">GIT_STRATEGY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fetch</span>
-<span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apk add --no-cache git curl bash</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">curl -fsSL https://claude.ai/install.sh | bash</span>
-<span class="w">    </span><span class="c1"># インストール先を PATH に追加する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">export PATH=&quot;$HOME/.local/bin:$PATH&quot;</span>
-<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
-<span class="w">      </span><span class="no">claude</span>
-<span class="w">      </span><span class="no">-p &quot;${AI_FLOW_INPUT:-リポジトリを確認し、改善が必要な箇所を報告してください}&quot;</span>
-<span class="w">      </span><span class="no">--permission-mode acceptEdits</span>
-<span class="w">      </span><span class="no">--allowedTools &quot;Bash Read Edit Write&quot;</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">issue_comment</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">created</span><span class="p p-Indicator">]</span>
+
+<span class="c1"># 既定のトークン権限を無効化し、ジョブごとに必要な権限を追加する。</span>
+<span class="nt">permissions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+
+<span class="nt">concurrency</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">claude-${{ github.repository }}</span>
+<span class="w">  </span><span class="nt">cancel-in-progress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">claude</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># メンションを含む、許可された投稿者の新規コメントだけを処理する。</span>
+<span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
+<span class="w">      </span><span class="no">contains(github.event.comment.body, &#39;@claude&#39;) &amp;&amp;</span>
+<span class="w">      </span><span class="no">contains(fromJSON(&#39;[&quot;OWNER&quot;,&quot;MEMBER&quot;,&quot;COLLABORATOR&quot;]&#39;),</span>
+<span class="w">               </span><span class="no">github.event.comment.author_association)</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">timeout-minutes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">    </span><span class="nt">permissions</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">      </span><span class="nt">issues</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">      </span><span class="nt">pull-requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">      </span><span class="c1"># ClaudeのGitHub App認証に使うOIDCトークンの取得を許可する。</span>
+<span class="w">      </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">          </span><span class="c1"># Git設定にGitHubトークンを保存しない。</span>
+<span class="w">          </span><span class="nt">persist-credentials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Respond to Claude mention</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropics/claude-code-action@v1</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">anthropic_api_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ANTHROPIC_API_KEY }}</span>
+<span class="w">          </span><span class="c1"># ユーザーが投稿した「@claude ...」のコメント全文を、依頼のプロンプトとして受け取る。</span>
+<span class="w">          </span><span class="c1"># ActionがIssue・PRの参考データと依頼を取り込み、Claudeへ渡す。</span>
+<span class="w">          </span><span class="c1"># promptは指定せず、メンションへの応答モードを使用する。</span>
+<span class="w">          </span><span class="nt">trigger_phrase</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;@claude&#39;</span>
+<span class="w">          </span><span class="c1"># CLI引数で、エージェントの最大ターン数を指定する。</span>
+<span class="w">          </span><span class="nt">claude_args</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;--max-turns</span><span class="nv"> </span><span class="s">50&#39;</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://code.claude.com/docs/ja/gitlab-ci-cd">Claude Code GitLab CI/CD - Claude Code Docs</a></li>
+<li><a href="https://github.com/anthropics/claude-code-action">Claude Code Action</a></li>
+<li><a href="https://github.com/anthropics/claude-code-action/blob/main/docs/capabilities-and-limitations.md">Capabilities &amp; Limitations</a></li>
 </ul>
 </blockquote>
-<p><br></p>
 
 
 
@@ -33650,7 +33675,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:30:58 JST">2026-10-04</span>
   </span>
 
     
