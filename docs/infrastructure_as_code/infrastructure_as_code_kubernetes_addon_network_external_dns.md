@@ -23,7 +23,7 @@ Ingress Controller (例：aws-load-balancer-controller、glb-controller) と合�
 
 ![external-dns_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png)
 
-> - https://networkop.co.uk/post/2020-08-k8s-gateway/
+> - [Self-hosted external DNS resolver for Kubernetes \| networkop](https://networkop.co.uk/post/2020-08-k8s-gateway/)
 
 <br>
 
@@ -87,8 +87,8 @@ spec:
             pathType: Prefix
 ```
 
-> - https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/alb-ingress/#ingress-examples
-> - https://kubernetes-sigs.github.io/external-dns/latest/docs/faq/#how-do-i-specify-a-dns-name-for-my-kubernetes-objects
+> - [Using ExternalDNS with alb-ingress-controller - external-dns](https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/alb-ingress/#ingress-examples)
+> - [FAQ - external-dns](https://kubernetes-sigs.github.io/external-dns/latest/docs/faq/#how-do-i-specify-a-dns-name-for-my-kubernetes-objects)
 
 <br>
 
@@ -142,8 +142,8 @@ spec:
   ...
 ```
 
-> - https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/ANS_Group_SafeDNS/#manifest-for-clusters-with-rbac-enabled
-> - https://qiita.com/nakamasato/items/8215b7b86add58f77810
+> - [Setting up ExternalDNS for Services on ANS Group's SafeDNS - external-dns](https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/ANS_Group_SafeDNS/#manifest-for-clusters-with-rbac-enabled)
+> - [\[Kubernetes\] external-dnsのPolicyの種類とそれぞれのPolicyに対応する変更ロジック #kubernetes - Qiita](https://qiita.com/nakamasato/items/8215b7b86add58f77810)
 
 このとき、`--annotation-filter` オプションを使用すると、条件に合致するアノテーションを持つ Ingress や Service を、ExternalDNS の検知から除外する。
 
@@ -170,8 +170,8 @@ spec:
 
 ```
 
-> - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#running-an-internal-and-external-dns-service
-> - https://github.com/kubernetes-sigs/external-dns/issues/1910#issuecomment-803640491
+> - [external-dns/docs/faq.md at master · kubernetes-sigs/external-dns · GitHub](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/faq.md#running-an-internal-and-external-dns-service)
+> - [Disable external-dns for specific ingresses · Issue #1910 · kubernetes-sigs/external-dns · GitHub](https://github.com/kubernetes-sigs/external-dns/issues/1910#issuecomment-803640491)
 
 <br>
 
@@ -220,7 +220,7 @@ subjects:
     namespace: kube-system
 ```
 
-> - https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/aws/#manifest-for-clusters-without-rbac-enabled
+> - [Setting up ExternalDNS for Services on AWS - external-dns](https://kubernetes-sigs.github.io/external-dns/v0.12.2/tutorials/aws/#manifest-for-clusters-without-rbac-enabled)
 
 <br>
 
@@ -240,7 +240,7 @@ $ helm repo add <チャートリポジトリ名> https://kubernetes-sigs.github.
 $ helm install <Helmリリース名> <チャートリポジトリ名>/external-dns -n kube-system --version <バージョンタグ>
 ```
 
-> - https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns
+> - [external-dns/charts/external-dns at master · kubernetes-sigs/external-dns · GitHub](https://github.com/kubernetes-sigs/external-dns/tree/master/charts/external-dns)
 
 <br>
 

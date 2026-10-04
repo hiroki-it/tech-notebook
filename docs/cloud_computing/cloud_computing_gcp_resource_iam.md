@@ -9,7 +9,7 @@ description: IAM＠Google Cloudリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -30,7 +30,7 @@ description: IAM＠Google Cloudリソースの知見を記録しています。
 - Kubernetes の ServiceAccount
 
 > - https://cloud.google.com/iam/docs/principal-identifiers?hl=ja
-> - https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
+> - [GCP の使い方 (1) IAM を使ってみよう｜研修コースに参加してみた \| SEプラス 研修 Topics](https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html)
 
 <br>
 
@@ -115,7 +115,7 @@ $ gcloud info
 
 ファイルパスを指定しない場合、`$HOME/.config/gcloud/application_default_credentials.json` ファイルを読み込む。
 
-> - https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#personal
+> - [アプリケーションのデフォルト認証情報の仕組み \| Authentication \| Google Cloud Documentation](https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#personal)
 
 #### ▼ ファイルパスの指定する場合
 
@@ -123,7 +123,7 @@ $ gcloud info
 
 サービスアカウントとしてのリソースは、これを自動的に読み込み、サービスアカウントに紐づく。
 
-> - https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#GAC
+> - [アプリケーションのデフォルト認証情報の仕組み \| Authentication \| Google Cloud Documentation](https://cloud.google.com/docs/authentication/application-default-credentials?hl=ja#GAC)
 
 <br>
 
@@ -159,14 +159,14 @@ $ gcloud info
 | プロジェクトレベルのカスタムロース | `projects/<プロジェクトID>/roles/<識別名>` |
 | 組織レベルのカスタムロール         | `organizations/<組織ID>/roles/<識別名>`    |
 
-> - https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
-> - https://cloud.google.com/iam/docs/roles-overview?hl=ja#components
+> - [GCP の使い方 (1) IAM を使ってみよう｜研修コースに参加してみた \| SEプラス 研修 Topics](https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html)
+> - [ロールと権限 \| Identity and Access Management (IAM) \| Google Cloud Documentation](https://cloud.google.com/iam/docs/roles-overview?hl=ja#components)
 
 <br>
 
 ## 04. ポリシー
 
-> - https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html
+> - [GCP の使い方 (1) IAM を使ってみよう｜研修コースに参加してみた \| SEプラス 研修 Topics](https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html)
 
 <br>
 
@@ -180,7 +180,7 @@ GoogleCloud 外リソース (例：AWS、Azure、Kubernetes など) から Googl
 
 一方で、Workload Identity ではサービスアカウントキーの代わりにトークンを使用する。
 
-> - https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation
+> - [Workload Identity連携でAWS（EC2/ECS/EKS）からサービスアカウントキーなしでBigQueryにアクセスする](https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation)
 
 <br>
 
@@ -199,8 +199,8 @@ GoogleCloud 外リソース (例：AWS、Azure、Kubernetes など) から Googl
 
 ![google-cloud_workload-identity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png)
 
-> - https://christina04.hatenablog.com/entry/workload-identity-federation
-> - https://zenn.dev/k6s4i53rx/articles/18a72c2db8c9e9
+> - [Workload Identity Federationを図で理解する - Carpe Diem](https://christina04.hatenablog.com/entry/workload-identity-federation)
+> - [GKE のワークロードから GCP サービスへ 安全 にアクセスする 〜 Workload Identity 入門 〜](https://zenn.dev/k6s4i53rx/articles/18a72c2db8c9e9)
 
 #### ▼ Workload Identity プール
 
@@ -235,7 +235,7 @@ AWS IAM ロール名とこれに紐づけるサービスアカウント名を Wo
 AWS IAM ロールを経由して、サービスアカウントを使用できるようになる。
 
 > - https://gmor-sys.com/2022/12/09/linking-aws-role-and-gcp-accounts/#outline__2
-> - https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation#amazon-eks%E3%81%8B%E3%82%89%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
-> - https://www.softbank.jp/biz/blog/cloud-technology/articles/202206/eks-to-gcp/
+> - [Workload Identity連携でAWS（EC2/ECS/EKS）からサービスアカウントキーなしでBigQueryにアクセスする](https://zenn.dev/ohsawa0515/articles/gcp-workload-identity-federation#amazon-eks%E3%81%8B%E3%82%89%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88)
+> - [Workload Identityを用いてEKSクラスタからGoogle Cloudへアクセスする｜クラウドテクノロジーブログ｜ソフトバンク](https://www.softbank.jp/biz/blog/cloud-technology/articles/202206/eks-to-gcp/)
 
 <br>

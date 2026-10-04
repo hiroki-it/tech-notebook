@@ -35,9 +35,9 @@ description: Kinesis＠AWSリソースの知見を記録しています。
 
 Kinesis を使用せずに、リアルタイム処理のストリーミングデータを直接送信してもよい。ただ、通信頻度が瞬間的に増加することなく、定常的に送信できる。
 
-> - https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html
+> - [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
 > - https://techtarget.itmedia.co.jp/tt/news/2103/27/news02.html
-> - https://www.engineer-memo.net/20200310-5498
+> - [リアルタイムのログ収集アーキテクチャーを調べる - エンジニアの何でもメモ帳](https://www.engineer-memo.net/20200310-5498)
 
 <br>
 
@@ -68,6 +68,6 @@ Kinesis を使用せずに、リアルタイム処理のストリーミングデ
 
 リアルタイム処理のストリーミングデータ (例：動画データ、音声データなど) を継続的に収集し、分析する。
 
-> - https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html
+> - [What Is Amazon Kinesis Data Analytics for SQL Applications? - Amazon Kinesis Data Analytics for SQL Applications Developer Guide](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/what-is.html)
 
 <br>

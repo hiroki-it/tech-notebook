@@ -9,7 +9,7 @@ description: SAML＠SSOの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -37,6 +37,6 @@ SAML では、XML ベースのアクセストークンを使用する。
 
 これは JWT 仕様ではない。
 
-> - https://envader.plus/article/347
+> - [JWTとは？トークン認証の仕組みとSAMLとの違いをわかりやすく解説 \| エンベーダー](https://envader.plus/article/347)
 
 <br>

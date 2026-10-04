@@ -9,7 +9,7 @@ description: コントロールプレーン＠Istioアンビエントの知見�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -42,6 +42,6 @@ ztunnel は Envoy プロセスではないため、Envoy の Listener と Cluste
 
 > - https://jimmysong.io/en/blog/ambient-mesh-l7-traffic-path/
 > - https://juejin.cn/post/7161975827473645575
-> - https://www.zhaohuabing.com/post/2022-10-17-ambient-deep-dive-3/
+> - [Istio Ambient 模式流量管理实现机制详解（三） \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2022-10-17-ambient-deep-dive-3/)
 
 <br>

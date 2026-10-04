@@ -9,7 +9,7 @@ description: Reactパッケージ＠JavaScriptの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,7 +24,7 @@ description: Reactパッケージ＠JavaScriptの知見を記録しています�
 - react-scripts (webpack、babel からなる)
 
 > - https://tokuty.com/2023/02/17/react%E3%82%92%E6%9C%80%E4%BD%8E%E9%99%90%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%A7%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/#toc7
-> - https://qiita.com/7280ayubihs/items/12c2e18b1d2460111051
+> - [React開発環境構築 #React - Qiita](https://qiita.com/7280ayubihs/items/12c2e18b1d2460111051)
 
 <br>
 
@@ -70,20 +70,20 @@ createRoot(document.getElementById('root')!).render(
 )
 ```
 
-> - https://react.dev/reference/react-dom/client
-> - https://react.dev/reference/react-dom/client/createRoot
+> - [Client React DOM APIs – React](https://react.dev/reference/react-dom/client)
+> - [createRoot – React](https://react.dev/reference/react-dom/client/createRoot)
 
 #### ▼ SSR モード
 
 記入中...
 
-> - https://react.dev/reference/react-dom/server
+> - [Server React DOM APIs – React](https://react.dev/reference/react-dom/server)
 
 #### ▼ SSG モード
 
 記入中...
 
-> - https://react.dev/reference/react-dom/static
+> - [Static React DOM APIs – React](https://react.dev/reference/react-dom/static)
 
 <br>
 
@@ -93,7 +93,7 @@ createRoot(document.getElementById('root')!).render(
 
 記入中...
 
-> - https://zenn.dev/cocomina/articles/recommended-export
+> - [exportは名前付きエクスポートでやりましょう](https://zenn.dev/cocomina/articles/recommended-export)
 
 <br>
 
@@ -137,7 +137,7 @@ createRoot(document.getElementById("root")!).render(
 );
 ```
 
-> - https://zenn.dev/cocomina/articles/recommended-export
+> - [exportは名前付きエクスポートでやりましょう](https://zenn.dev/cocomina/articles/recommended-export)
 
 <br>
 
@@ -182,8 +182,8 @@ export class MyComponent extends Component {
 }
 ```
 
-> - https://qiita.com/omo_taku/items/18da0c020672a368f166#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88
-> - https://zenn.dev/swata_dev/articles/7f8ef4333057d7
+> - [【React】クラスコンポーネント vs 関数コンポーネント【初心者に分かりやすく】 #JavaScript - Qiita](https://qiita.com/omo_taku/items/18da0c020672a368f166#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88)
+> - [なぜクラスコンポーネントより関数コンポーネントが推奨されるのか？](https://zenn.dev/swata_dev/articles/7f8ef4333057d7)
 
 <br>
 
@@ -209,8 +209,8 @@ export const MyComponent = () => {
 };
 ```
 
-> - https://qiita.com/omo_taku/items/18da0c020672a368f166#%E9%96%A2%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88
-> - https://zenn.dev/swata_dev/articles/7f8ef4333057d7
+> - [【React】クラスコンポーネント vs 関数コンポーネント【初心者に分かりやすく】 #JavaScript - Qiita](https://qiita.com/omo_taku/items/18da0c020672a368f166#%E9%96%A2%E6%95%B0%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88)
+> - [なぜクラスコンポーネントより関数コンポーネントが推奨されるのか？](https://zenn.dev/swata_dev/articles/7f8ef4333057d7)
 
 #### ▼ `async` 宣言不可
 
@@ -356,8 +356,8 @@ export const MyComponent = () => {
 };
 ```
 
-> - https://qiita.com/Akihiro0711/items/dae74e3e73063a80b249
-> - https://qiita.com/apollo_program/items/01fa3c4621155f64f930#useeffect%E3%81%AE%E7%AC%AC%E4%BA%8C%E5%BC%95%E6%95%B0%E3%82%92%E8%AA%A4%E3%82%8B%E3%81%A8%E7%84%A1%E9%99%90%E3%83%AB%E3%83%BC%E3%83%97%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B
+> - [useEffectで非同期処理(async/ await)する際の注意点 #React - Qiita](https://qiita.com/Akihiro0711/items/dae74e3e73063a80b249)
+> - [React hooksでapiなどの非同期処理(async/await)を実施する方法と注意点 #JavaScript - Qiita](https://qiita.com/apollo_program/items/01fa3c4621155f64f930#useeffect%E3%81%AE%E7%AC%AC%E4%BA%8C%E5%BC%95%E6%95%B0%E3%82%92%E8%AA%A4%E3%82%8B%E3%81%A8%E7%84%A1%E9%99%90%E3%83%AB%E3%83%BC%E3%83%97%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B)
 
 #### ▼ 第二引数
 
@@ -391,7 +391,7 @@ export const App = () => {
 };
 ```
 
-> - https://zenn.dev/kimura141899/articles/4f33b899cb0bca#%E5%89%AF%E4%BD%9C%E7%94%A8%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B-%E7%AC%AC2%E5%BC%95%E6%95%B0%E3%81%AE%E5%87%BA%E7%95%AA
+> - [Reactの基本を学ぶ Hooks:useEffect偏](https://zenn.dev/kimura141899/articles/4f33b899cb0bca#%E5%89%AF%E4%BD%9C%E7%94%A8%E3%82%92%E5%88%B6%E5%BE%A1%E3%81%99%E3%82%8B-%E7%AC%AC2%E5%BC%95%E6%95%B0%E3%81%AE%E5%87%BA%E7%95%AA)
 
 #### ▼ 実行の順番
 
@@ -429,7 +429,7 @@ export App = () => {
 }
 ```
 
-> - https://zenn.dev/kimura141899/articles/4f33b899cb0bca#useeffect%E3%81%A8%E3%82%8A%E3%81%82%E3%81%88%E3%81%9A%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F
+> - [Reactの基本を学ぶ Hooks:useEffect偏](https://zenn.dev/kimura141899/articles/4f33b899cb0bca#useeffect%E3%81%A8%E3%82%8A%E3%81%82%E3%81%88%E3%81%9A%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F)
 
 <br>
 
@@ -475,7 +475,7 @@ export default function App() {
 }
 ```
 
-> - https://zenn.dev/codeciao/articles/1c72bcdd4e22d3
+> - [\[React\] useMemoはいつ使うべきなのか](https://zenn.dev/codeciao/articles/1c72bcdd4e22d3)
 
 <br>
 
@@ -498,7 +498,7 @@ console.log(state.fooKey);
 console.log(JSON.stringify(state));
 ```
 
-> - https://ja.react.dev/reference/react/useState
+> - [useState – React](https://ja.react.dev/reference/react/useState)
 
 <br>
 

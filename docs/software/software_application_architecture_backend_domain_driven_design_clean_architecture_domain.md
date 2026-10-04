@@ -9,7 +9,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -296,8 +296,8 @@ class YmdType extends Type
 
 補足として、ドメイン層でリポジトリを使用することを嫌って、ドメインサービスの処理をユースケース層のアプリケーションサービスで定義しても問題ない。
 
-> - https://github.com/little-hands/ddd-q-and-a/issues/159
-> - https://www.amazon.co.jp/dp/B082WXZVPC
+> - [ドメインサービスについての質問です。ドメインサービスは誰が呼ぶのですか？ユースケースにDIして使うのでしょうか？だとするとドメインサービスの中でリポジトリーを使用しても良いのでしょうか？それともユースケースでリポジトリを使用してドメインサー... · Issue #159 · little-hands/ddd-q-and-a · GitHub](https://github.com/little-hands/ddd-q-and-a/issues/159)
+> - [Amazon.co.jp: ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本 eBook : 成瀬 允宣: Kindleストア](https://www.amazon.co.jp/dp/B082WXZVPC)
 > - https://codezine.jp/article/detail/10318
 
 #### ▼ 重複確認
@@ -347,8 +347,8 @@ class CheckDuplicateFooService
 ```
 
 > - https://stackoverflow.com/questions/45007667/cqrs-ddd-how-to-validate-products-existence-before-adding-them-to-order
-> - https://www.amazon.co.jp/dp/B082WXZVPC
-> - https://github.com/little-hands/ddd-q-and-a/issues/573
+> - [Amazon.co.jp: ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本 eBook : 成瀬 允宣: Kindleストア](https://www.amazon.co.jp/dp/B082WXZVPC)
+> - [「ユーザーの名前はユニークであること」というような要件の場合、このユニークバリデーションチェックはどこの層でチェックするのが良いのでしょうか？単純に考えるとユーザーをRepositoryのsaveに食わせて、Repositoryのsave内... · Issue #573 · little-hands/ddd-q-and-a · GitHub](https://github.com/little-hands/ddd-q-and-a/issues/573)
 
 #### ▼ 認可
 
@@ -403,10 +403,10 @@ class AuthorizeFooService
 }
 ```
 
-> - https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html
+> - [Authorization and authentication in clean architecture](https://lessthan12ms.com/authorization-and-authentication-in-clean-architecture.html)
 > - https://medium.com/@martinezdelariva/authentication-and-authorization-in-ddd-671f7a5596ac
-> - https://github.com/lezhnev74/ema/blob/master/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php
-> - https://github.com/little-hands/ddd-q-and-a/issues/121
+> - [ema/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php at master · lezhnev74/ema · GitHub](https://github.com/lezhnev74/ema/blob/master/src/Domain/Note/Commands/ModifyNote/ModifyNoteAuthorizer.php)
+> - [DDDを採用した場合、認可に関する知識をどのレイヤー（Domain,Application,ControllerやAPI Gateway）に置くのが適切でしょうか？例えばブログサービスなどで自分のブログの内容を編集できるAPIがあるとします... · Issue #121 · little-hands/ddd-q-and-a · GitHub](https://github.com/little-hands/ddd-q-and-a/issues/121)
 
 #### ▼ ドメイン例外
 
@@ -629,7 +629,7 @@ final class User
 
 ドメイン層とユースケース層のアプリケーションサービスのいずれに実装する必要があるかは、モデリングの対象がドメインルールに基づくものなのか、ソフトウェア利用者のユースケースに基づくものなのかである。
 
-> - https://www.amazon.co.jp/dp/B082WXZVPC
+> - [Amazon.co.jp: ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本 eBook : 成瀬 允宣: Kindleストア](https://www.amazon.co.jp/dp/B082WXZVPC)
 
 <br>
 
@@ -1696,7 +1696,7 @@ class DogOrder
 }
 ```
 
-> - https://it-trend.jp/sales_management/article/11-0031
+> - [販売管理の業務フローを図でわかりやすく解説！効率化するには？ \| ITトレンド](https://it-trend.jp/sales_management/article/11-0031)
 
 #### ▼ 集約とは
 
@@ -1718,7 +1718,7 @@ class DogOrder
 
 そのため、ビジネスロジックとしてのまとまりと、トランザクションとしてのまとまりの両方から、ルートエンティティの単位を定義づけるとよい。
 
-> - https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1
+> - [Repositoryパターンのアンチパターン #デザインパターン - Qiita](https://qiita.com/mikesorae/items/ff8192fb9cf106262dbf#%E5%AF%BE%E7%AD%96-1)
 > - https://codezine.jp/article/detail/10776
 > - https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/インフラストラクチャ層-persistence-layer-design#define-one-repository-per-aggregate
 

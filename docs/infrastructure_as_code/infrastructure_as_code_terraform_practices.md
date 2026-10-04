@@ -9,7 +9,7 @@ description: プラクティス集＠Terraformの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -792,7 +792,7 @@ $ asdf install
 
 Makefile のコマンドを実行する前に、`provider.tf` ファイルの `backend` オプションを、『s3』から『local』に変更する。
 
-> - https://repl.info/archives/1435/
+> - [Terraformのbackendを使いこなしたい - repl.info](https://repl.info/archives/1435/)
 
 ```terraform
 terraform {
@@ -840,7 +840,7 @@ crash.log
 crash.*.log
 ```
 
-> - https://github.com/github/gitignore/blob/main/Terraform.gitignore
+> - [gitignore/Terraform.gitignore at main · github/gitignore · GitHub](https://github.com/github/gitignore/blob/main/Terraform.gitignore)
 
 <br>
 
@@ -871,7 +871,7 @@ crash.*.log
 ただし、リソースによっては `ignore_changes` 引数を使えないものがある (例：SSM パラメーターストア) 。
 
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#storing-secrets
-> - https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9
+> - [\[Terraform\] 誤解されがちなignore\_changesの動き・機密情報はstateに保持されるのか？ \| DevelopersIO](https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-9)
 
 `(1)`
 
@@ -1072,7 +1072,7 @@ Terraform の整形コマンド (`terraform fmt` コマンド) を使用して�
 
 リリースの粒度を小さくし、差分が少なくなるようにする。
 
-> - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> - [Automated Testing for Terraform, Docker, Packer, Kubernetes, and More - InfoQ](https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/)
 
 #### ▼ ユニットテスト
 
@@ -1086,7 +1086,7 @@ Terraform の整形コマンド (`terraform fmt` コマンド) を使用して�
 
 残骸のリソースが残るかもしれない。そのため、テスト環境のリソースもツール (例：cloud-nuke) で削除する。
 
-> - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> - [Automated Testing for Terraform, Docker, Packer, Kubernetes, and More - InfoQ](https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/)
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform?hl=ja#test
 
 #### ▼ 機能テスト
@@ -1107,7 +1107,7 @@ Terraform の整形コマンド (`terraform fmt` コマンド) を使用して�
 
 残骸のリソースが残るかもしれない。そのため、テスト環境のリソースもツール (例：cloud-nuke) で削除する。
 
-> - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> - [Automated Testing for Terraform, Docker, Packer, Kubernetes, and More - InfoQ](https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/)
 
 <br>
 
@@ -1173,7 +1173,7 @@ EC2
 Amazon RDS
 ```
 
-> - https://www.infracloud.io/blogs/testing-iac-terratest/
+> - [Testing your Infrastructure as Code using Terratest](https://www.infracloud.io/blogs/testing-iac-terratest/)
 
 #### ▼ システムテスト
 
@@ -1281,7 +1281,7 @@ DB インスタンスの設定変更でダウンタイムが発生する場合�
 
 Amazon RDS の項目として書かれており、Aurora ではないが、おおよそ同じであるため参考にしている。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+> - [Modifying an Amazon RDS DB instance - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings)
 
 <br>
 

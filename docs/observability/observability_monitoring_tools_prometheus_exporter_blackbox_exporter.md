@@ -9,7 +9,7 @@ description: Blackbox Exporter＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -32,7 +32,7 @@ Blackbox Exporter は、外部システムに特定のプロトコル (例：HTT
 
 ![blackbox_exporter_prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blackbox_exporter_prometheus_architecture.png)
 
-> - https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/
+> - [Private Site](https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/)
 
 <br>
 
@@ -52,7 +52,7 @@ $ kubectl create namespace prometheus
 $ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus-blackbox-exporter -n prometheus --version <バージョンタグ>
 ```
 
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart
+> - [helm-charts/charts/prometheus-blackbox-exporter at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-blackbox-exporter#install-chart)
 
 <br>
 
@@ -83,7 +83,7 @@ data:
         timeout: 5s
 ```
 
-> - https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/
+> - [Private Site](https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/)
 
 <br>
 
@@ -133,7 +133,7 @@ spec:
         name: blackbox-exporter
 ```
 
-> - https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/
+> - [Private Site](https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/)
 
 <br>
 
@@ -161,7 +161,7 @@ spec:
     k8s-app: blackbox-exporter
 ```
 
-> - https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/
+> - [Private Site](https://devopscounsel.com/prometheus-blackbox-exporter-setup-on-kubernetes/)
 
 <br>
 
@@ -281,8 +281,8 @@ modules:
         insecure_skip_verify: "true"
 ```
 
-> - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
-> - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
+> - [blackbox\_exporter/CONFIGURATION.md at master · prometheus/blackbox\_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe)
+> - [blackbox\_exporter/example.yml at master · prometheus/blackbox\_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/example.yml)
 
 #### ▼ POST リクエストの場合
 
@@ -321,9 +321,9 @@ modules:
       recursion_desired: "true"
 ```
 
-> - https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe
-> - https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter
-> - https://github.com/prometheus/blackbox_exporter/blob/master/example.yml
+> - [blackbox\_exporter/CONFIGURATION.md at master · prometheus/blackbox\_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/CONFIGURATION.md#http_probe)
+> - [Prometheus Blackbox Exporter and POST calls \| @abiydv](https://abiydv.github.io/posts/prometheus-blackbox-monitor-post-api/#step-1---blackbox-exporter)
+> - [blackbox\_exporter/example.yml at master · prometheus/blackbox\_exporter · GitHub](https://github.com/prometheus/blackbox_exporter/blob/master/example.yml)
 
 <br>
 
@@ -349,6 +349,6 @@ probe_success
 | --------------- | ---------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | `probe_success` | Gauge            | 監視対象の状態を表す。`1` であれば稼働中、`0` であれば停止中である。 | `sum((probe_success{namespace="foo-namespace"})) / count((probe_success{namespace="foo-namespace"}))` |
 
-> - https://qiita.com/mmorita44/items/8eca5e6fae9fd40807ce#%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95
+> - [PrometheusとBlackbox Exporterでサーバ死活監視 #prometheus - Qiita](https://qiita.com/mmorita44/items/8eca5e6fae9fd40807ce#%E9%81%8B%E7%94%A8%E6%96%B9%E6%B3%95)
 
 <br>

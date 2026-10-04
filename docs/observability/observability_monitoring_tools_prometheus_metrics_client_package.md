@@ -9,7 +9,7 @@ description: メトリクス＠クライアントパッケージの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -48,6 +48,6 @@ $ curl http://<アプリケーションのIPアドレス>:2112/metrics
 ...
 ```
 
-> - https://prometheus.io/docs/guides/go-application/
+> - [Instrumenting a Go application for Prometheus \| Prometheus](https://prometheus.io/docs/guides/go-application/)
 
 <br>

@@ -9,7 +9,7 @@ description: 3大クラウド (クラウドコンピューティング) の知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,13 +31,13 @@ description: 3大クラウド (クラウドコンピューティング) の知�
 
 ベンダーが、システムを稼働させるために必要なソフトウェアとハードウェアをどこまで提供するかによって、サービスの名称が異なる。
 
-> - https://blogs.itmedia.co.jp/itsolutionjuku/2019/07/post_725.html
+> - [【図解】コレ１枚でわかる多様化するクラウド･サービスの区分：ITソリューション塾：オルタナティブ・ブログ](https://blogs.itmedia.co.jp/itsolutionjuku/2019/07/post_725.html)
 
 #### ▼ パブリッククラウド
 
 あらゆるユーザーが利用できるように公開されているクラウドサービスのこと。
 
-> - https://www.gadgeblo.com/cloud-service-brand/
+> - [国産パブリッククラウド/国内クラウド事業者まとめ\[日本製\]\[IaaS\] \| Gadgeblo](https://www.gadgeblo.com/cloud-service-brand/)
 
 **＊例＊**
 
@@ -72,12 +72,12 @@ description: 3大クラウド (クラウドコンピューティング) の知�
 
 ![on-premises_iaas_caas_paas_faas_saas](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/on-premises_iaas_caas_paas_faas_saas.png)
 
-> - https://dzone.com/articles/caas-services-through-aws-azure-and-google-cloud
-> - https://www.google.com/search?q=gcp+paas&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6y9r0-8r3AhXBdN4KHftqAxsQ_AUoAXoECAEQAw&biw=1600&bih=912&dpr=1.8#imgrc=thXAUUoo_mfDCM
-> - https://licensecounter.jp/azure/blog/series/awsazureiaaspaas.html
-> - https://cloud-textbook.com/46/#baremetal
-> - https://www.edomtt.co.jp/staff_blog/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%A8%E3%81%AF%EF%BC%9Faws%E3%81%A8%E3%81%AF%EF%BC%9F%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91%E3%81%AB%E5%9F%BA/
-> - https://qiita.com/siro33950/items/f693d8acf9116c0f1319
+> - [CaaS Services Through AWS, Azure, and Google Cloud](https://dzone.com/articles/caas-services-through-aws-azure-and-google-cloud)
+> - [Google Search](https://www.google.com/search?q=gcp+paas&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6y9r0-8r3AhXBdN4KHftqAxsQ_AUoAXoECAEQAw&biw=1600&bih=912&dpr=1.8#imgrc=thXAUUoo_mfDCM)
+> - [【特集「AWS vs. Azure」 #2】AWSとAzure、IaaS／PaaSの機能差はいかに......？｜SB C&S株式会社](https://licensecounter.jp/azure/blog/series/awsazureiaaspaas.html)
+> - [クラウド仮想マシン比較解説まとめ \| クラウドサービス徹底比較・徹底解説 (2022年版)](https://cloud-textbook.com/46/#baremetal)
+> - [クラウドサービスとは？AWSとは？初心者向けに基本やメリットを分かりやすく解説｜東京青山のホームページ制作会社｜株式会社エドムインクリメント](https://www.edomtt.co.jp/staff_blog/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%A8%E3%81%AF%EF%BC%9Faws%E3%81%A8%E3%81%AF%EF%BC%9F%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91%E3%81%AB%E5%9F%BA/)
+> - [AWSのPaaS, SaaSを利用して開発を効率化する #Cloud - Qiita](https://qiita.com/siro33950/items/f693d8acf9116c0f1319)
 
 <br>
 
@@ -127,7 +127,7 @@ CaaS で構築したシステムは、FaaS と同じくサーバーの管理が�
 | Google Cloud | Google Cloud Run          |
 | Azure        | Azure Container Instances |
 
-> - https://dev.to/aws-builders/understanding-aws-fargate-serverless-container-or-caas-4kd7
+> - [Understanding AWS Fargate (Serverless Container or CaaS) - DEV Community](https://dev.to/aws-builders/understanding-aws-fargate-serverless-container-or-caas-4kd7)
 
 #### ▼ PaaS
 
@@ -151,7 +151,7 @@ FaaS で構築したシステムは、CaaS と同じくサーバーの管理が�
 | Google Cloud | Google AppSheet |
 | Azure        | Azure Functions |
 
-> - https://hantechnote.wordpress.com/2019/12/01/%E4%BB%96%E3%81%AE%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E3%83%A2%E3%83%87%E3%83%AB%E3%81%A8%E3%81%AF%EF%BC%9F/
+> - [他のクラウドコンピューティングのモデルとは？ – Technical Notes](https://hantechnote.wordpress.com/2019/12/01/%E4%BB%96%E3%81%AE%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E3%83%A2%E3%83%87%E3%83%AB%E3%81%A8%E3%81%AF%EF%BC%9F/)
 
 #### ▼ NoCode
 
@@ -161,7 +161,7 @@ FaaS で構築したシステムは、CaaS と同じくサーバーの管理が�
 | Google Cloud | Google Cloud Run Functions |
 | Azure        | Azure Logic Apps           |
 
-> - https://cloudsecurityalliance.jp/newblog/2021/02/09/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E9%80%B2%E5%8C%96%E3%81%A8%E6%96%B0%E3%81%9F%E3%81%AA%E8%B2%AC%E4%BB%BB/
+> - [クラウドコンピューティングの進化と新たな責任共有モデル \| CSAジャパンブログページ](https://cloudsecurityalliance.jp/newblog/2021/02/09/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AE%E9%80%B2%E5%8C%96%E3%81%A8%E6%96%B0%E3%81%9F%E3%81%AA%E8%B2%AC%E4%BB%BB/)
 
 #### ▼ SaaS
 

@@ -17,7 +17,7 @@ description: TCP階層モデル＠ネットワークの知見を記録してい�
 
 基本的に、OSI 階層モデルに寄せて整理しているため、以下のノートを参照すること。
 
-> - https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html
+> - [【IT技術の知見】OSI参照モデル＠ネットワーク＠ネットワーク - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/network/network_model_osi.html)
 
 <br>
 
@@ -47,6 +47,6 @@ TCP/IP モデルで使用されるプロトコルのうち、もっとも代表�
 
 ![tcp-ip_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-ip_structure.png)
 
-> - https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC
+> - [ルーター - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC)
 
 <br>

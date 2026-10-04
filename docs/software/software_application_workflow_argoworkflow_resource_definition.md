@@ -9,7 +9,7 @@ description: リソース定義＠Argo Workflowsの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,7 +31,7 @@ spec:
   entrypoint: foo-template
 ```
 
-> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - [Argo Workflow入門](https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220)
 
 <br>
 
@@ -62,7 +62,7 @@ spec:
             echo "Hello World"
 ```
 
-> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - [Argo Workflow入門](https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220)
 
 <br>
 
@@ -83,7 +83,7 @@ spec:
     name: foo-workflow
 ```
 
-> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - [Argo Workflow入門](https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220)
 
 <br>
 
@@ -110,7 +110,7 @@ spec:
             echo "Hello World"
 ```
 
-> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - [Argo Workflow入門](https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220)
 
 #### ▼ script
 
@@ -134,11 +134,11 @@ spec:
             echo "Hello World"
 ```
 
-> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - [Argo Workflow入門](https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220)
 
 #### ▼ steps
 
-> - https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220
+> - [Argo Workflow入門](https://zenn.dev/nameless_gyoza/articles/argo-wf-20200220)
 
 <br>
 
@@ -169,7 +169,7 @@ data:
       send: [app-sync-succeeded]
 ```
 
-> - https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers
+> - [Argo CD Notifications入門](https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#triggers)
 
 #### ▼ data.service
 
@@ -188,7 +188,7 @@ data:
     token: *****
 ```
 
-> - https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services
+> - [Argo CD Notifications入門](https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#services)
 
 #### ▼ data.template
 
@@ -210,6 +210,6 @@ data:
     message: "ArgoCD sync in {{ .context.env }}"
 ```
 
-> - https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates
+> - [Argo CD Notifications入門](https://zenn.dev/nameless_gyoza/articles/introduction-argocd-notifications#templates)
 
 <br>

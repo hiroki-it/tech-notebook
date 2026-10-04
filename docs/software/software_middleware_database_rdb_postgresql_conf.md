@@ -9,7 +9,7 @@ description: 設定ファイル＠PostgreSQLの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -56,7 +56,7 @@ $ psql -U <ユーザー名> -h <DBホスト名> -p <ポート番号> -d <DB名>
 $ export PGPASSWORD=<パスワード>
 ```
 
-> - https://qiita.com/IysKG213/items/2af29ba1f6da87199de0
+> - [psqlでログインするときのパスワード入力を省略する #PostgreSQL - Qiita](https://qiita.com/IysKG213/items/2af29ba1f6da87199de0)
 
 #### ▼ オートバキュームの手動実行
 
@@ -70,8 +70,8 @@ $ vacuum
 $ vacuum <テーブル名>
 ```
 
-> - https://postgresweb.com/post-5194
-> - https://qiita.com/neustrashimy/items/b3d64b749582b32ad0ff
+> - [【PostgreSQL】VACUUMとは、VACUUM FULLの実行 \| PostgresWeb – ポスグレウェブ](https://postgresweb.com/post-5194)
+> - [PostgreSQLのvacuumについて調べたメモ #PostgreSQL - Qiita](https://qiita.com/neustrashimy/items/b3d64b749582b32ad0ff)
 
 <br>
 
@@ -95,7 +95,7 @@ PostgreSQL は、オートバキュームによって DB 上の残骸タプル�
 
 今回のオートバキュームと次回のオートバキュームの間で実行できるトランザクションは `20` 億回と決まっているため、ある程度の間隔でオートバキュームを実行する必要がある。
 
-> - https://www.postgresql.jp/document/8.0/html/sql-vacuum.html
+> - [VACUUM](https://www.postgresql.jp/document/8.0/html/sql-vacuum.html)
 
 #### ▼ タプルと残骸タプル
 
@@ -119,7 +119,7 @@ PostgreSQL でレコードを UPDATE/DELETE すると、操作前のレコード
 log_directory = /var/lib/pgsql
 ```
 
-> - https://zatoima.github.io/postgresql-about-monitoring-log.html
+> - [PostgreSQLの監視のためのログ設定について \| zatoima](https://zatoima.github.io/postgresql-about-monitoring-log.html)
 
 #### ▼ ログローテーション
 
@@ -163,7 +163,7 @@ $ cat /var/lib/postgresql-Sun.log | grep -E "^2023-01-01 12:00" | grep "statemen
 log_line_prefix = '%m [%p]: user=%u,db=%d,app=%a,client=%r,xid=%x '
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1702/16/news015_3.html
+> - [【PostgreSQL】最低限設定しておくべきログ関連パラメータ3選：データベースサポート最前線の現場から（8）（3/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1702/16/news015_3.html)
 
 <br>
 
@@ -175,7 +175,7 @@ log_line_prefix = '%m [%p]: user=%u,db=%d,app=%a,client=%r,xid=%x '
 log_min_duration_statement = 100ms
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1702/16/news015_3.html
+> - [【PostgreSQL】最低限設定しておくべきログ関連パラメータ3選：データベースサポート最前線の現場から（8）（3/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1702/16/news015_3.html)
 
 <br>
 

@@ -9,7 +9,7 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -39,9 +39,9 @@ description: 監視ツール＠可観測性の知見を記録しています。
 |                                 ⬇️                                 |                   ⬇️                   |           ⬇️           |                    ⬇️                    |                                 ⬇️                                  |           ⬇️            |           ⬇️           |
 |                           アラートの作成                           |       Amazon CloudWatch アラーム       | Datadog ダッシュボード |                    -                     |                         prometheus サーバー                         |            -            |  prometheus サーバー   |
 
-> - https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars
-> - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6
-> - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19
+> - [CNCF Landscape](https://landscape.cncf.io/card-mode?category=monitoring&grouping=category&sort=stars)
+> - [モニタリング入門 / Monitoring Feat. VictoriaMetrics - Speaker Deck](https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=6)
+> - [Istioを活用したObservability基盤の構築と運用 / Constructing and operating the observability platform using Istio - Speaker Deck](https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19)
 
 #### ▼ 組み合わせの例
 
@@ -84,10 +84,10 @@ description: 監視ツール＠可観測性の知見を記録しています。
 | ⬇️                                                         |                    ⬇️                    |              ⬇️              |              ⬇️              |         ⬇️          |                ⬇️                |                            ⬇️                             |            ⬇️             |
 | アラートの作成                                             |       (Amazon CloudWatch アラーム)       |              -               |              -               |          -          |                -                 |                             -                             |             -             |
 
-> - https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars
-> - https://qiita.com/kazookie/items/eef3071a0667cb4d5136
+> - [CNCF Landscape](https://landscape.cncf.io/card-mode?category=logging&grouping=category&sort=stars)
+> - [ログ収集ツールの比較 #Fluentd - Qiita](https://qiita.com/kazookie/items/eef3071a0667cb4d5136)
 > - https://www.reddit.com/r/kubernetes/comments/qv6qqx/comment/hkul7kb/?utm_source=share&utm_medium=web2x&context=3
-> - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19
+> - [Istioを活用したObservability基盤の構築と運用 / Constructing and operating the observability platform using Istio - Speaker Deck](https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19)
 
 #### ▼ 組み合わせの例
 
@@ -131,10 +131,10 @@ description: 監視ツール＠可観測性の知見を記録しています。
 | ⬇️                                                         |              ⬇️              |               ⬇️               |             ⬇️             |                          ⬇️                           |               ⬇️                |             ⬇️              |        ⬇️        |
 | アラートの作成                                             |              -               |               -                |             -              |                           -                           |                -                |              -              |        -         |
 
-> - https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars
+> - [CNCF Landscape](https://landscape.cncf.io/card-mode?category=tracing&grouping=category&sort=stars)
 > - https://docs.openshift.com/container-platform/4.7/distr_tracing/distr_tracing_install/distr-tracing-deploying-otel.html#distr-tracing-config-otel-collector_deploying-distr-tracing-data-collection
-> - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#022
-> - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19
+> - [マイクロサービスの障害で胃を痛めないための「シン・オブザーバビリティ基盤」をOpenTelemetryで作る：Cloud Nativeチートシート（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#022)
+> - [Istioを活用したObservability基盤の構築と運用 / Constructing and operating the observability platform using Istio - Speaker Deck](https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=19)
 
 #### ▼ 組み合わせの例
 
@@ -168,8 +168,8 @@ description: 監視ツール＠可観測性の知見を記録しています。
 | ログと分散トレース間の紐付け       |      (ログは Amazon CloudWatch Logs に要保管)       | (ログは Datadog に要保管) | (ログの保管ツールの種類に制限あり) |
 | メトリクスと分散トレース間の紐付け | (一部の言語の x-ray クライアントパッケージのみ対応) | (ログは Datadog に要保管) | (ログの保管ツールの種類に制限あり) |
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#03
-> - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#04
+> - [マイクロサービスの障害で胃を痛めないための「シン・オブザーバビリティ基盤」をOpenTelemetryで作る：Cloud Nativeチートシート（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#03)
+> - [マイクロサービスの障害で胃を痛めないための「シン・オブザーバビリティ基盤」をOpenTelemetryで作る：Cloud Nativeチートシート（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html#04)
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy_servicelens_CloudWatch_agent_logintegration.html
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy_servicelens_CloudWatch_agent_segments.html
 
@@ -185,7 +185,7 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 このとき、可観測性を使用してデバッグしていく。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#01
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#01)
 
 <br>
 
@@ -195,7 +195,7 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 メッシュトポロジー (例：Kiali) を使用して、いずれのマイクロサービス間の通信がボトルネックになっているのかを見つける。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021)
 
 #### `(2)` メトリクス
 
@@ -203,7 +203,7 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 コンポーネント単位でフィルタリングできるようなメトリクスダッシュボードがあると、原因を特定しやすい。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#022
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#022)
 
 #### `(3)` ログ
 
@@ -211,7 +211,7 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 ログにレスポンスタイムやエラーメッセージを出力していると、原因を特定しやすい。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#023
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#023)
 
 <br>
 
@@ -223,13 +223,13 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 ハードウェアリソース系のメトリクスを監視できるようなメトリクスダッシュボードがあると、原因を特定しやすい。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#042
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#042)
 
 #### `(5)` 状態系メトリクス
 
 ステータス系のメトリクスから、いずれのコンポーネント (例：Node、Deployment、Pod、コンテナ) がボトルネックになっているのかを見つける。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#043
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#043)
 
 #### `(6)` ネットワーク系メトリクス
 
@@ -241,38 +241,38 @@ description: 監視ツール＠可観測性の知見を記録しています。
 
 #### `(7)` Pod のハードウェアリソース不足
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#061
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#061)
 
 #### `(8)` Node のハードウェアリソース不足
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#062
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#062)
 
 #### `(9)` ミドルウェア/アプリケーションのロジックの問題
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#063
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#063)
 
 #### `(10)` Node の障害
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#064
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#064)
 
 #### `(11)` Resource Quota の問題
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#065
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#065)
 
 #### `(12)` Eviction の発生 (Pod の予期せぬ退避)
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#066
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#066)
 
 #### `(13)` コンテナイメージの Pull エラー
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#067
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#067)
 
 #### `(14)` Liveness Probe の失敗
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#068
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#068)
 
 #### `(15)` ミドルウェア/アプリケーションに関するその他の問題
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#069
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#069)
 
 <br>

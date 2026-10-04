@@ -9,7 +9,7 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,9 +27,9 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 
 一方で要件として不要ならば、サービスメッシュツール自体を採用する必要はない、という判断になる。
 
-> - https://www.amazon.co.jp/dp/1492043788
-> - https://servicemesh.es/
-> - https://tetrate.io/blog/istio-vs-linkerd-vs-consul/
+> - [Amazon \| Istio: Up and Running: Using a Service Mesh to Connect, Secure, Control, and Observe \| Calcote, Lee, Butcher, Zack \| Design Tools & Techniques](https://www.amazon.co.jp/dp/1492043788)
+> - [servicemesh.es \| Service Mesh Comparison](https://servicemesh.es/)
+> - [Istio vs. Linkerd vs. Consul](https://tetrate.io/blog/istio-vs-linkerd-vs-consul/)
 
 <br>
 
@@ -41,7 +41,7 @@ description: サービスメッシュの担う責務＠サービスメッシュ�
 - Amazon VPC Lattice
 - Amazon ECS Service Connect
 
-> - https://jimmysong.io/blog/migrating-from-aws-app-mesh-to-istio-a-comprehensive-guide/
+> - [Migrating from AWS App Mesh to Istio: A Comprehensive Guide …](https://jimmysong.io/blog/migrating-from-aws-app-mesh-to-istio-a-comprehensive-guide/)
 
 <br>
 
@@ -112,7 +112,7 @@ Istio は、JWT の検証によるアカウント認証や、アカウント属�
 | 相互 TLS 認証          | 相互 TLS 認証ツール<br>(例：Spiffe)                                              | `⭕️`<br>(Spiffe へ置き換えできる) |  `⭕️`   |  `⭕️`  |        `⭕️`        |
 | JWT による Bearer 認証 | アプリで実装、認証プロキシ (例：OAuth2 Proxy など) や SSO プロキシ(例：Dex など) |               `⭕️`                |    ×    |  `⭕️`  |         ×          |
 
-> - https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
+> - [Istioを活用したセキュアなマイクロサービスの実現/Secure Microservices with Istio - Speaker Deck](https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18)
 
 <br>
 
@@ -127,7 +127,7 @@ Kubernetes では、Pod の作成に応じて証明書の Kubernetes リソー�
 | 相互 TLS 認証            | 相互 TLS 認証ツール<br>(例：Spiffe)                                              | `⭕️`<br>(Spiffe へ置き換えできる) |  `⭕️`   |  `⭕️`  |        `⭕️`        |
 | サーバー証明書の自動更新 | ・手動でサーバー証明書を更新<br>・サーバー証明書管理ツール<br>(例：Cert Manager) |               `⭕️`                |    ×    |  `⭕️`  |        `⭕️`        |
 
-> - https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18
+> - [Istioを活用したセキュアなマイクロサービスの実現/Secure Microservices with Istio - Speaker Deck](https://speakerdeck.com/ido_kara_deru/secure-microservices-with-istio?slide=18)
 
 <br>
 
@@ -177,7 +177,7 @@ Kubernetes では、Pod の作成に応じて証明書の Kubernetes リソー�
 
 | 責務                                               | Kubernetes<br>(サービスメッシュ採用せず) | Kiali | X-Ray |
 | -------------------------------------------------- | ---------------------------------------- | :---: | :---: |
-| 必要なメトリクスの元になるデータポイントを収集する | 記入中...                                | `⭕`️  | `⭕️`  |
+| 必要なメトリクスを取得する | 記入中...                                | `⭕`️  | `⭕️`  |
 | サービスメッシュトポロジーをモデリングする         | 記入中...                                | `⭕️`  | `⭕️`  |
 | サービスメッシュトポロジーをモデリングする         | 記入中...                                | `⭕️`  | `⭕️`  |
 

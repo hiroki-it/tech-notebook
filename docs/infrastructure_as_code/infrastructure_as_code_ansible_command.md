@@ -9,7 +9,7 @@ description: コマンド＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -63,7 +63,7 @@ $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレク
 $ ansible-playbook foo-playbook.yml -i ./inventories --ask-vault-pass
 ```
 
-> - https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
+> - [Ansible Vault を試す #Ansible - Qiita](https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8)
 
 <br>
 
@@ -75,7 +75,7 @@ ansible-vault プラグインによって暗号化されたパスワードファ
 $ ansible-playbook foo-playbook.yml -i ./inventories --vault-password-file foo-file
 ```
 
-> - https://tekunabe.hatenablog.jp/entry/2022/03/02/211657
+> - [\[Ansible\] --vault-password-file で指定するファイルはスクリプトでも可なので環境変数も参照できる - てくなべ](https://tekunabe.hatenablog.jp/entry/2022/03/02/211657)
 
 <br>
 
@@ -109,7 +109,7 @@ $ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 $ ansible-playbook foo-playbook.yml -i ./inventories
 ```
 
-> - https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849
+> - [Ansible の inventory 指定はディレクトリが良い #Ansible - Qiita](https://qiita.com/prsdnt_hanage/items/447813fb566c1c582849)
 
 <br>
 
@@ -135,7 +135,7 @@ $ ansible-playbook -u foo-user <playbookファイル> -i <inventoryファイル/
 $ ansible-vault decrypt parameters.yml
 ```
 
-> - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
+> - [hawksnowlog: ansible vault 超入門](https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html)
 
 <br>
 
@@ -158,8 +158,8 @@ $ANSIBLE_VAULT;1.1;AES256
 *****
 ```
 
-> - https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8
-> - https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html
+> - [Ansible Vault を試す #Ansible - Qiita](https://qiita.com/yteraoka/items/d18e3c353b6e15ca84a8)
+> - [hawksnowlog: ansible vault 超入門](https://hawksnowlog.blogspot.com/2020/11/ansible-vault.html)
 
 <br>
 
@@ -181,7 +181,7 @@ $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list
 $ ansible-inventory -i ./inventories/inventory --list
 ```
 
-> - https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
+> - [ansible-inventory tips \| dd if=/dev/brain of=/var/log/site](https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/)
 
 #### ▼ -y
 
@@ -197,6 +197,6 @@ $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y
 $ ansible-inventory -i ./inventories/inventory --list -y
 ```
 
-> - https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/
+> - [ansible-inventory tips \| dd if=/dev/brain of=/var/log/site](https://evrard.me/convert-ansible-inventories-with-ansible-inventory-cli/)
 
 <br>

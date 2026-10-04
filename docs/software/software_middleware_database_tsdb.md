@@ -9,7 +9,7 @@ description: TSDBの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: TSDBの知見を記録しています。
 
 ![tsdb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tsdb.png)
 
-> - https://thecustomizewindows.com/2019/10/what-is-time-series-database-tsdb/
+> - [What is Time Series Database (TSDB)?](https://thecustomizewindows.com/2019/10/what-is-time-series-database-tsdb/)
 
 <br>
 
@@ -32,7 +32,7 @@ description: TSDBの知見を記録しています。
 - タイムスタンプをレコードにする
 - メトリクスの種類をレコードにする
 
-> - https://qiita.com/KentOhwada_AlibabaCloudJapan/items/743ffcf8a2441de1167f#%E6%99%82%E7%B3%BB%E5%88%97%E3%83%87%E3%83%BC%E3%82%BF%E3%83%A2%E3%83%87%E3%83%AB
+> - [時系列データベース：主なコンセプトと特徴 #Database - Qiita](https://qiita.com/KentOhwada_AlibabaCloudJapan/items/743ffcf8a2441de1167f#%E6%99%82%E7%B3%BB%E5%88%97%E3%83%87%E3%83%BC%E3%82%BF%E3%83%A2%E3%83%87%E3%83%AB)
 
 <br>
 

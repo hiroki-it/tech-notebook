@@ -9,7 +9,7 @@ description: パッケージ管理＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -26,7 +26,7 @@ description: パッケージ管理＠PHPの知見を記録しています。
 
 #### ▼ インストール
 
-> - https://getcomposer.org/download/
+> - [Composer](https://getcomposer.org/download/)
 
 ```bash
 # インストーラーをダウンロードする。
@@ -75,8 +75,8 @@ $ php -r "unlink('composer-setup.php');"
 }
 ```
 
-> - https://getcomposer.org/doc/04-schema.md#autoload
-> - https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
+> - [The composer.json schema - Composer](https://getcomposer.org/doc/04-schema.md#autoload)
+> - [PHPの名前空間とクラス名のエイリアス、オートロード：Web業界で働くためのPHP入門（終）（3/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html)
 
 #### ▼ config
 
@@ -98,7 +98,7 @@ Composer コマンドにあるオプションのデフォルト値を設定す�
 }
 ```
 
-> - https://getcomposer.org/doc/04-schema.md#config
+> - [The composer.json schema - Composer](https://getcomposer.org/doc/04-schema.md#config)
 
 #### ▼ require
 
@@ -175,7 +175,7 @@ Composer コマンドにあるオプションのデフォルト値を設定す�
 }
 ```
 
-> - https://getcomposer.org/doc/04-schema.md#package-links
+> - [The composer.json schema - Composer](https://getcomposer.org/doc/04-schema.md#package-links)
 
 #### ▼ scripts
 
@@ -206,7 +206,7 @@ Composer コマンドにあるオプションのデフォルト値を設定す�
 }
 ```
 
-> - https://getcomposer.org/doc/04-schema.md#scripts
+> - [The composer.json schema - Composer](https://getcomposer.org/doc/04-schema.md#scripts)
 
 #### ▼ version
 
@@ -224,7 +224,7 @@ Composer のバージョンを設定する。
 }
 ```
 
-> - https://getcomposer.org/doc/04-schema.md#version
+> - [The composer.json schema - Composer](https://getcomposer.org/doc/04-schema.md#version)
 
 <br>
 
@@ -320,7 +320,7 @@ $ composer clear-cache
 $ composer create-project --prefer-dist laravel/lumen .
 ```
 
-> - https://getcomposer.org/doc/03-cli.md#create-project
+> - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#create-project)
 
 <br>
 
@@ -362,7 +362,7 @@ $ composer dump-autoload
 {"autoload": {"psr-4": {}}}
 ```
 
-> - https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-
+> - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-)
 
 <br>
 
@@ -374,7 +374,7 @@ $ composer dump-autoload
 $ composer init
 ```
 
-> - https://getcomposer.org/doc/03-cli.md#init
+> - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#init)
 
 <br>
 
@@ -388,8 +388,8 @@ $ composer init
 $ composer install
 ```
 
-> - https://getcomposer.org/doc/03-cli.md#install-i
-> - https://prograshi.com/framework/laravel/require-update-install/
+> - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#install-i)
+> - [【Laravel】composer require, install, updateの違い｜composer.jsonとcomposer.lockの違いと役割](https://prograshi.com/framework/laravel/require-update-install/)
 
 #### ▼ -vvv
 
@@ -435,7 +435,7 @@ $ composer install --prefer-source
 
 指定したパッケージをアンインストールした後、再インストールする。
 
-> - https://getcomposer.org/doc/03-cli.md#reinstall
+> - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#reinstall)
 
 ```bash
 $ composer reinstall <パッケージ名>
@@ -463,8 +463,8 @@ $ composer install -vvv
 $ composer remove <パッケージ名>
 ```
 
-> - https://5balloons.info/remove-composer-package-and-its-dependencies-from-laravel/
-> - https://getcomposer.org/doc/03-cli.md#remove
+> - [Remove Composer Package and its Dependencies from Laravel - 5Balloons Tech](https://5balloons.info/remove-composer-package-and-its-dependencies-from-laravel/)
+> - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#remove)
 
 <br>
 
@@ -478,8 +478,8 @@ $ composer remove <パッケージ名>
 
 コマンドを使用せずに自分で実装してもよい。
 
-> - https://getcomposer.org/doc/03-cli.md#require
-> - https://prograshi.com/framework/laravel/require-update-install/
+> - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#require)
+> - [【Laravel】composer require, install, updateの違い｜composer.jsonとcomposer.lockの違いと役割](https://prograshi.com/framework/laravel/require-update-install/)
 
 ```bash
 $ composer require <パッケージ名>:^1.0
@@ -514,8 +514,8 @@ $ composer <スクリプト名>
 $ composer update
 ```
 
-> - https://getcomposer.org/doc/03-cli.md#update
-> - https://prograshi.com/framework/laravel/require-update-install/
+> - [Command-line interface / Commands - Composer](https://getcomposer.org/doc/03-cli.md#update)
+> - [【Laravel】composer require, install, updateの違い｜composer.jsonとcomposer.lockの違いと役割](https://prograshi.com/framework/laravel/require-update-install/)
 
 #### ▼ -vvv
 

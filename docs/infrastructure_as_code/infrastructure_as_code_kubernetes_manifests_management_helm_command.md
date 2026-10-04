@@ -25,7 +25,7 @@ description: コマンド＠Helmの知見を記録しています。
 $ helm create <チャートへのパス>
 ```
 
-> - https://helm.sh/docs/helm/helm_create/
+> - [helm create \| Helm](https://helm.sh/docs/helm/helm_create/)
 
 <br>
 
@@ -51,7 +51,7 @@ $ kubectl get crd
 $ kubectl delete crd <CRD名>
 ```
 
-> - https://github.com/helm/helm/issues/7418#issuecomment-581849772
+> - [\`Error: rendered manifests contain a resource that already exists\` but nothing shows up on \`helm list --all\` · Issue #7418 · helm/helm · GitHub](https://github.com/helm/helm/issues/7418#issuecomment-581849772)
 
 <br>
 
@@ -72,7 +72,7 @@ Update Complete. ⎈Happy Helming!⎈
 Saving 1 charts
 ```
 
-> - https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89
+> - [Helmの概要とChart(チャート)の作り方 #Docker - Qiita](https://qiita.com/thinksphere/items/5f3e918015cf4e63a0bc#helm-dependency-build%E3%81%AB%E3%82%88%E3%82%8B%E4%BE%9D%E5%AD%98%E3%83%81%E3%83%A3%E3%83%BC%E3%83%88%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89)
 > - https://selfnote.work/20211129/programming/learning-helm-6/#Dependencies
 
 <br>
@@ -112,7 +112,7 @@ HELM_REPOSITORY_CACHE="/.config/helm/repository"
 HELM_REPOSITORY_CONFIG="/.config/helm/repositories.yaml"
 ```
 
-> - https://helm.sh/docs/helm/helm/
+> - [helm \| Helm](https://helm.sh/docs/helm/helm/)
 > - https://stackoverflow.com/questions/62924278/where-are-helm-charts-stored-locally/66416122#66416122
 
 ### get
@@ -125,7 +125,7 @@ HELM_REPOSITORY_CONFIG="/.config/helm/repositories.yaml"
 $ helm get <Helmリリース名>
 ```
 
-> - https://helm.sh/docs/helm/helm_get_manifest/
+> - [helm get manifest \| Helm](https://helm.sh/docs/helm/helm_get_manifest/)
 
 <br>
 
@@ -144,7 +144,7 @@ REVISION         UPDATED                    STATUS     CHART               APP V
 <Helmリリース名>   Wed Jan 01 12:00:00 2020   DEPLOYED   foo-1.0.0  1.0.0    Upgraded successfully
 ```
 
-> - https://helm.sh/docs/helm/helm_history/
+> - [helm history \| Helm](https://helm.sh/docs/helm/helm_history/)
 
 <br>
 
@@ -168,7 +168,7 @@ $ helm install <Helmリリース名> <チャートへのパス>
 | `<チャートリポジトリURL> <チャートレジストリ名>/<チャートリポジトリ名>` | `https://example.com/foo-chart foo-registry/foo-repository` |                                                                                                                                                                  |
 | チャートアーカイブへのパス                                              | `./foo-chart-<バージョンタグ>.tgz`                          | `values` ファイルを使用する場合、`values` ファイルはチャートアーカイブ (`.tgz` 形式ファイル) の外にある必要がある。<br>・https://helm.sh/docs/helm/helm_install/ |
 
-> - https://helm.sh/docs/helm/helm_install/
+> - [helm install \| Helm](https://helm.sh/docs/helm/helm_install/)
 
 #### ▼ --disable-openapi-validation
 
@@ -228,7 +228,7 @@ $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.ya
 $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.yaml -f bar-values.yaml
 ```
 
-> - https://helm.sh/docs/helm/helm_install/#options
+> - [helm install \| Helm](https://helm.sh/docs/helm/helm_install/#options)
 
 #### ▼ kube-context
 
@@ -254,7 +254,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/<チャー
 $ helm install <チャートリポジトリ名>/<チャート名> --generate-name
 ```
 
-> - https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
+> - [Using Helm \| Helm](https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package)
 > - https://stackoverflow.com/a/57347077
 
 #### ▼ --force
@@ -267,7 +267,7 @@ $ helm install <チャートリポジトリ名>/<チャート名> --generate-nam
 $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.yaml --force
 ```
 
-> - https://helm.sh/docs/helm/helm_install/
+> - [helm install \| Helm](https://helm.sh/docs/helm/helm_install/)
 
 #### ▼ --wait
 
@@ -283,7 +283,7 @@ $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.ya
 $ helm install foo-release . -f foo-values.yaml --wait
 ```
 
-> - https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
+> - [Using Helm \| Helm](https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback)
 
 <br>
 
@@ -319,8 +319,8 @@ $ helm lint <チャートへのパス> -f foo-values.yaml
 Error: 1 chart(s) linted, 1 chart(s) failed
 ```
 
-> - https://helm.sh/docs/helm/helm_lint/
-> - https://redhat-cop.github.io/ci/linting-testing-helm-charts.html
+> - [helm lint \| Helm](https://helm.sh/docs/helm/helm_lint/)
+> - [Linting and Testing Helm Charts \| Red Hat Communities of Practice](https://redhat-cop.github.io/ci/linting-testing-helm-charts.html)
 
 #### ▼ -f
 
@@ -364,7 +364,7 @@ warning でも終了コード `1` (失敗) で終えるようにする。
 $ helm lint <チャートへのパス> --strict -f foo-values.yaml
 ```
 
-> - https://github.com/helm/helm/pull/11760
+> - [Fail strict lints when unused values are provided by drewgonzales360 · Pull Request #11760 · helm/helm · GitHub](https://github.com/helm/helm/pull/11760)
 
 <br>
 
@@ -383,7 +383,7 @@ NAME         VERSION   UPDATED                   STATUS    CHART
 <Helmリリース名>   1         Wed Jan 01 12:00:00 2020  DEPLOYED  foo-chart-<バージョンタグ> # <-- チャートのバージョンがわかる。
 ```
 
-> - https://helm.sh/docs/helm/helm_list/
+> - [helm list \| Helm](https://helm.sh/docs/helm/helm_list/)
 
 <br>
 
@@ -405,7 +405,7 @@ $ helm package <fooチャートへのパス> <barチャートへのパス> <baz�
 Successfully packaged chart and saved it to: /foo-<バージョンタグ>.tgz
 ```
 
-> - https://helm.sh/docs/helm/helm_package/
+> - [helm package \| Helm](https://helm.sh/docs/helm/helm_package/)
 
 #### ▼ -d
 
@@ -472,7 +472,7 @@ OCI リポジトリからもプルできる。
 $ helm pull oci://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/<チャート名>
 ```
 
-> - https://helm.sh/blog/storing-charts-in-oci/
+> - [Storing Helm Charts in OCI Registries \| Helm](https://helm.sh/blog/storing-charts-in-oci/)
 
 #### ▼ --version
 
@@ -556,7 +556,7 @@ $ helm show all <チャートリポジトリ名>
 Error: failed to download "<チャートリポジトリ名>"
 ```
 
-> - https://knowledge.sakura.ad.jp/23603/
+> - [事実上の標準ツールとなっているKubernetes向けデプロイツール「Helm」入門 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/23603/)
 
 #### ▼ index
 
@@ -613,7 +613,7 @@ Hang tight while we grab the latest from your chart repositories...
 Update Complete. ⎈Happy Helming!⎈
 ```
 
-> - https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
+> - [Using Helm \| Helm](https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories)
 
 <br>
 
@@ -623,7 +623,7 @@ Update Complete. ⎈Happy Helming!⎈
 
 事前に `helm repo add` コマンドで追加しておいたチャートリポジトリを検索する。
 
-> - https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
+> - [Using Helm \| Helm](https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts)
 
 #### ▼ hub
 
@@ -690,7 +690,7 @@ $ helm show values <チャート名>
 $ helm show values foo-chart
 ```
 
-> - https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing
+> - [Using Helm \| Helm](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing)
 
 <br>
 
@@ -799,7 +799,7 @@ $ helm uninstall <Helmリリース名>
 $ helm uninstall foo-release
 ```
 
-> - https://helm.sh/docs/helm/helm_uninstall/
+> - [helm uninstall \| Helm](https://helm.sh/docs/helm/helm_uninstall/)
 
 <br>
 
@@ -813,7 +813,7 @@ Helm は、CRD を含むチャートのインストールはサポートして�
 
 そのため、`helm upgrade` コマンド時には CRD のインストールを実行する仕様になっている。
 
-> - https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
+> - [Using Helm \| Helm](https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure)
 
 #### ▼ --atomic
 
@@ -875,7 +875,7 @@ $ helm upgrade --skip-crds --install <Helmリリース名> <チャートへの�
 $ helm upgrade --skip-crds --install foo-release . -f foo-values.yaml >| release.yaml
 ```
 
-> - https://helm.sh/docs/helm/helm_upgrade/
+> - [helm upgrade \| Helm](https://helm.sh/docs/helm/helm_upgrade/)
 
 #### ▼ --wait
 
@@ -891,6 +891,6 @@ $ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.ya
 $ helm upgrade foo-release . -f foo-values.yaml --wait
 ```
 
-> - https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
+> - [Using Helm \| Helm](https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback)
 
 <br>

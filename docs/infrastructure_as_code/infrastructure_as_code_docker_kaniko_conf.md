@@ -9,7 +9,7 @@ description: 設定ファイル＠Kanikoの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -40,7 +40,7 @@ Kaniko のオプションを設定する。
 }
 ```
 
-> - https://github.com/awslabs/amazon-ecr-credential-helper#configuration
+> - [GitHub - awslabs/amazon-ecr-credential-helper: Automatically gets credentials for Amazon ECR on docker push/docker pull · GitHub](https://github.com/awslabs/amazon-ecr-credential-helper#configuration)
 
 #### ▼ 機密情報の設定
 
@@ -57,7 +57,7 @@ $ cat <<EOF > /kaniko/.docker/config.json
   EOF
 ```
 
-> - https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-different-registries
-> - https://int128.hatenablog.com/entry/2019/09/25/204930
+> - [GitHub - GoogleContainerTools/kaniko: Build Container Images In Kubernetes · GitHub](https://github.com/GoogleContainerTools/kaniko/tree/main#pushing-to-different-registries)
+> - [GitLab RunnerとkanikoでDockerイメージをビルドする - GeekFactory](https://int128.hatenablog.com/entry/2019/09/25/204930)
 
 <br>

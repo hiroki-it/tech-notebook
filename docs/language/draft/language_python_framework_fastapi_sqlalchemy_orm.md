@@ -9,7 +9,7 @@ description: SQLAlchemy ORM＠FastAPIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -52,7 +52,7 @@ def get_db():
         session_local.close()
 ```
 
-> - https://fastapi.tiangolo.com/tutorial/sql-databases/#create-the-sqlalchemy-parts
+> - [SQL (Relational) Databases - FastAPI](https://fastapi.tiangolo.com/tutorial/sql-databases/#create-the-sqlalchemy-parts)
 
 <br>
 
@@ -120,11 +120,11 @@ class FooController():
          return JSONResponse(jsonable_encoder(foo))
 ```
 
-> - https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data
+> - [SQL（リレーショナル）データベース - FastAPI](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-data)
 
 Depends 関数について
 
-> - https://zenn.dev/sh0nk/books/537bb028709ab9/viewer/b92ab0#di
+> - [DB操作（CRUDs）｜FastAPI入門](https://zenn.dev/sh0nk/books/537bb028709ab9/viewer/b92ab0#di)
 
 > DB 接続部分に DI を利用することにより、ビジネスロジックと DB が密結合になることを防ぎます。
 

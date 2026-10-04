@@ -27,7 +27,7 @@ $ git clone https://github.com/prometheus-operator/prometheus-operator.git
 $ kubectl create -f bundle.yaml
 ```
 
-> - https://github.com/prometheus-operator/prometheus-operator#kube-prometheus
+> - [GitHub - prometheus-operator/prometheus-operator: Prometheus Operator creates/configures/manages Prometheus clusters atop Kubernetes · GitHub](https://github.com/prometheus-operator/prometheus-operator#kube-prometheus)
 
 #### ▼ 非チャートとして (kube-prometheus)
 
@@ -43,7 +43,7 @@ $ kubectl wait --for condition=Established --all CustomResourceDefinition --name
 $ kubectl apply -f manifests/
 ```
 
-> - https://github.com/prometheus-operator/kube-prometheus
+> - [GitHub - prometheus-operator/kube-prometheus: Use Prometheus to monitor Kubernetes and applications running on Kubernetes · GitHub](https://github.com/prometheus-operator/kube-prometheus)
 
 #### ▼ チャートとして (kube-prometheus-stack)
 
@@ -59,13 +59,13 @@ $ kubectl create namespace prometheus
 $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-> - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
-> - https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542
+> - [helm-charts/charts/kube-prometheus-stack at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+> - [Kubernetes環境へのPrometheus導入の検討 - GMOインターネットグループ グループ研究開発本部](https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/)
+> - [Helmチャートを使ったPrometheusのデプロイ (Prometheus Operator編) - zaki work log](https://zaki-hmkc.hatenablog.com/entry/2020/10/16/003542)
 
 他のインストール方法と名前が似ていることに注意する。
 
-> - https://github.com/prometheus-operator/prometheus-operator#prometheus-operator-vs-kube-prometheus-vs-community-helm-chart
+> - [GitHub - prometheus-operator/prometheus-operator: Prometheus Operator creates/configures/manages Prometheus clusters atop Kubernetes · GitHub](https://github.com/prometheus-operator/prometheus-operator#prometheus-operator-vs-kube-prometheus-vs-community-helm-chart)
 > - https://stackoverflow.com/questions/54422566/what-is-the-difference-between-the-core-os-projects-kube-prometheus-and-promethe
 
 #### ▼ チャートとして (prometheus)
@@ -84,7 +84,7 @@ $ kubectl create namespace prometheus
 $ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus -n prometheus --version <バージョンタグ>
 ```
 
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus
+> - [helm-charts/charts/prometheus at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus)
 
 #### ▼ バイナリとして
 
@@ -605,7 +605,7 @@ spec:
   retention: 14d
 ```
 
-> - https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282
+> - [How can i change Prometheus‘s args,for example "--storage.tsdb.retention" · Issue #2666 · prometheus-operator/prometheus-operator · GitHub](https://github.com/prometheus-operator/prometheus-operator/issues/2666#issuecomment-510465282)
 
 <br>
 
@@ -667,7 +667,7 @@ PrometheusRule の定義に応じて、prometheus コンテナの `/etc/promethe
 
 有効になっている PrometheusRule は、Prometheus ダッシュボードの Status > Rule タブで確認できる。
 
-> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> - [Defining recording rules \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/)
 
 <br>
 
@@ -696,7 +696,7 @@ expr: |
 record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
 ```
 
-> - https://monitoring.mixins.dev/kubernetes/#k8srules
+> - [kubernetes \| Monitoring Mixins](https://monitoring.mixins.dev/kubernetes/#k8srules)
 
 <br>
 
@@ -706,7 +706,7 @@ record: node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate
 
 自前ルールを定義してもよいが、セットアップの簡単さや Prometheus のアップグレードへの追従しやすさの観点から、公開されたルール (例：kubernetes-mixins、runbooks) を使用したほうがよい。
 
-> - https://monitoring.mixins.dev
+> - [Prometheus Monitoring Mixins \| Monitoring Mixins](https://monitoring.mixins.dev)
 
 #### ▼ kubernetes-mixins の PrometheusRule
 
@@ -714,14 +714,14 @@ kubernetes-mixins では、アラートルールとレコーディングルー�
 
 kubernetes-mixins は Grafana ダッシュボードも公開しており、kubernetes-mixins のレコーディングルールが定義済みであることを前提にしている。
 
-> - https://github.com/monitoring-mixins/website/tree/master/assets
-> - https://monitoring.mixins.dev
+> - [website/assets at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets)
+> - [Prometheus Monitoring Mixins \| Monitoring Mixins](https://monitoring.mixins.dev)
 
 #### ▼ runbooks
 
 prometheus-oprator では、アラートルールとレコーディングルールのレシピが公開されている。
 
-> - https://runbooks.prometheus-operator.dev/
+> - [Introduction \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/)
 
 <br>
 
@@ -738,7 +738,7 @@ prometheus-oprator では、アラートルールとレコーディングルー�
 | ExternalURL       | string 型 | `.ExternalURL`                                                                    | Alertmanger の URL が割り当てられている。                                                                                                                                                                    |
 
 > - https://www.amazon.co.jp/dp/4910313001
-> - https://prometheus.io/docs/alerting/latest/notifications/
+> - [Notification template reference \| Prometheus](https://prometheus.io/docs/alerting/latest/notifications/)
 > - https://grafana.com/blog/2020/02/25/step-by-step-guide-to-setting-up-prometheus-alertmanager-with-slack-pagerduty-and-gmail/
 
 <br>
@@ -751,7 +751,7 @@ prometheus-oprator では、アラートルールとレコーディングルー�
 
 アラートが多すぎる場合、アラートをグループ化し、通知頻度を調節するとよい。
 
-> - https://prometheus.io/docs/alerting/latest/alertmanager/#grouping
+> - [Alertmanager \| Prometheus](https://prometheus.io/docs/alerting/latest/alertmanager/#grouping)
 
 #### ▼ name
 
@@ -818,7 +818,7 @@ spec:
              source: gin
 ```
 
-> - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+> - [Alerting rules \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
 
 #### ▼ rules (レコーディングルールの場合)
 
@@ -849,7 +849,7 @@ spec:
           expr: ...
 ```
 
-> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
+> - [Defining recording rules \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/)
 
 <br>
 
@@ -948,9 +948,9 @@ spec:
 ```
 
 > - https://prometheus-operator.dev/docs/operator/design/#servicemonitor
-> - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html
-> - https://observability.thomasriley.co.uk/monitoring-kubernetes/metrics/kubelet-cadvisor/
-> - https://qiita.com/ryysud/items/23eab7110de7337a8bf3
+> - [Kubernetes活用への道のり 第5回 Prometheus・Grafanaで可視化してみよう \| オブジェクトの広場](https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part5.html)
+> - [Kubelet & cAdvisor :: Observability for Kubernetes](https://observability.thomasriley.co.uk/monitoring-kubernetes/metrics/kubelet-cadvisor/)
+> - [kubelet から提供される cAdvisor メトリクスについて #kubernetes - Qiita](https://qiita.com/ryysud/items/23eab7110de7337a8bf3)
 
 <br>
 
@@ -1009,7 +1009,7 @@ spec:
 ```
 
 > - https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/
-> - https://github.com/prometheus-operator/prometheus-operator/issues/135#issuecomment-313087336
+> - [node\_exporters are using the IP as instance name (should be hostname?) · Issue #135 · prometheus-operator/prometheus-operator · GitHub](https://github.com/prometheus-operator/prometheus-operator/issues/135#issuecomment-313087336)
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config
 
 #### ▼ path
@@ -1027,7 +1027,7 @@ spec:
     - path: /metrics
 ```
 
-> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> - [続くといいな日記 – Prometheus Operator で k8s を監視する](https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/)
 
 #### ▼ port
 
@@ -1044,7 +1044,7 @@ spec:
     - port: http-foo
 ```
 
-> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> - [続くといいな日記 – Prometheus Operator で k8s を監視する](https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/)
 
 #### ▼ scheme
 
@@ -1123,7 +1123,7 @@ metadata:
   namespace: kube-system
 ```
 
-> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> - [続くといいな日記 – Prometheus Operator で k8s を監視する](https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/)
 
 <br>
 
@@ -1156,7 +1156,7 @@ metadata:
     app.kubernetes.io/name: foo-service
 ```
 
-> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> - [続くといいな日記 – Prometheus Operator で k8s を監視する](https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/)
 > - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md
 
 **＊例＊**

@@ -19,7 +19,7 @@ description: オンコール＠監視の知見を記録しています。
 
 アラートが通知されたときに、エラー修正の担当者に連絡できる状態 (メールアドレス、電話番号、SMS など) にあること。
 
-> - https://response.pagerduty.com/oncall/being_oncall/
+> - [Being On-Call - PagerDuty Incident Response Documentation](https://response.pagerduty.com/oncall/being_oncall/)
 
 <br>
 
@@ -106,7 +106,7 @@ description: オンコール＠監視の知見を記録しています。
 
 エラーイベントと見なすログステータスの目安は以下の通りである。
 
-> - https://engineering.otobank.co.jp/entry/2016/09/20/181756
+> - [ログレベルちゃんと使い分けてますか？ - OTOBANK Engineering Blog](https://engineering.otobank.co.jp/entry/2016/09/20/181756)
 
 | ログステータス | 説明                                             | 重要度レベルへの変換例  |
 | -------------- | ------------------------------------------------ | ----------------------- |

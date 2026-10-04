@@ -45,7 +45,7 @@ MySQL は、TCP スリーウェイハンドシェイクで TCP 接続を確立�
 
 つまり、アプリケーションは DB への接続時に TCP スリーウェイハンドシェイクを実行し、MySQL にクエリを送信するときは MySQL プロコトルを使用することになる。
 
-> - https://gihyo.jp/dev/serial/01/mysql-road-construction-news/0078
+> - [第78回 MySQLプロトコルのハンドシェイクパケットを眺めてみる \| gihyo.jp](https://gihyo.jp/dev/serial/01/mysql-road-construction-news/0078)
 > - http://www.cybergarage.org/memo/rdbms_query_protocols/
 
 <br>
@@ -130,7 +130,7 @@ string 型のカラムについて、WHERE 句の比較における値の特定�
 
 カラム/テーブル/DB 単位で設定でき、比較するカラム同士では同じ照合順序が設定されている必要がある。
 
-> - https://johobase.com/sqlserver-where-collate/
+> - [レコードの検索時に照合順序を指定（大文字と小文字、全角と半角などを区別せずに検索）\[SQL Server\] \| JOHOBASE](https://johobase.com/sqlserver-where-collate/)
 
 #### ▼ 照合順序の種類
 
@@ -153,7 +153,7 @@ string 型のカラムについて、WHERE 句の比較における値の特定�
 
 MySQL では、`\r\n` を使用して、レコード内の値を改行する。
 
-> - https://www.sukerou.com/2020/09/mysql.html
+> - [MySQLで改行コードを挿入/置換する方法-スケ郎のお話](https://www.sukerou.com/2020/09/mysql.html)
 
 ```mysql
 INSERT INTO foo_table (id,description) VALUES (1,'前の行\r\n後の行');
@@ -260,7 +260,7 @@ DB インデックス数が減るため、処理性能が高まったり、レ�
 
 各テーブルのプライマリーキーは採番テーブルを元に割り当てられるため、連番ではなく飛び飛びになる。
 
-> - http://blog.livedoor.jp/sasata299/archives/51280681.html
+> - [LAST\_INSERT\_IDを使って採番テーブルを扱う - (ﾟ∀ﾟ)o彡 sasata299's blog](http://blog.livedoor.jp/sasata299/archives/51280681.html)
 
 あらかじめ、最初のレコードのみ手動で挿入しておく。
 
@@ -296,8 +296,8 @@ SELECT LAST_INSERT_ID();
 | `MYSQL_ROOT_PASSWORD`        | `root` ユーザーのパスワードを設定する。デフォルトではランダム値になる。 |
 | `MYSQL_PASSWORD`             | 一般ユーザーのパスワードを設定する。                                    |
 
-> - https://qiita.com/taqm/items/8b6b896ec4a9a0b84886#environment
-> - https://qiita.com/takyam/items/de87252fca60a9c914c6
+> - [Docker(Compose)を使ったローカル開発用MySQLの準備 #docker-compose - Qiita](https://qiita.com/taqm/items/8b6b896ec4a9a0b84886#environment)
+> - [docker-composeでmysql使うとき初回起動時に複数のDBを作る方法 #Docker - Qiita](https://qiita.com/takyam/items/de87252fca60a9c914c6)
 
 <br>
 
@@ -321,7 +321,7 @@ MySQL クライアントが接続を切断した場合、MySQL 側では `Aborte
 [Note] Aborted connection 251 to db: 'db_name' user: 'user_name' host: 'host_name' (Got an error reading communication packets)
 ```
 
-> - https://weblabo.oscasierra.net/mysql-error-reading-communication-packets/
+> - [MySQLで「Got an error reading communication packets」というエラーが出力される原因と対策 \|](https://weblabo.oscasierra.net/mysql-error-reading-communication-packets/)
 > - https://stackoverflow.com/a/23690699/12771072
 
 <br>

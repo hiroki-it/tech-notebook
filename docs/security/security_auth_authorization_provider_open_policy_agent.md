@@ -9,7 +9,7 @@ description: Open Policy Agent＠認可プロバイダーの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,8 +21,8 @@ Open Policy Agent は、Open Policy Agent、`rego` ファイル、DB、といっ
 
 ![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png)
 
-> - https://www.velotio.com/engineering-blog/deploy-opa-on-kubernetes
-> - https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
+> - [OPA On Kubernetes: An Introduction For Beginners](https://www.velotio.com/engineering-blog/deploy-opa-on-kubernetes)
+> - [Open Policy Agentの活用事例 (AWS上での稼働) #Authorization - Qiita](https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728)
 
 <br>
 
@@ -34,7 +34,7 @@ Open Policy Agent は、`rego` ファイルの認可スコープに基づいて�
 
 ![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent.png)
 
-> - https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728
+> - [Open Policy Agentの活用事例 (AWS上での稼働) #Authorization - Qiita](https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728)
 
 <br>
 
@@ -70,7 +70,7 @@ Open Policy Agent は、`rego` ファイルの認可スコープに基づいて�
 
      ここでは、各アカウントが一般社員または管理職のいずれかであるかを定義している。
 
-> - https://thinkit.co.jp/article/17511
+> - [注目のOpen Policy Agent、その概要とKubernetesでの活用事例 \| 現場で役立つTipsが盛りだくさん! Kubernetesのアレやコレ \| Think IT（シンクイット）](https://thinkit.co.jp/article/17511)
 
 ```yaml
 # subordinates.json ファイル
@@ -95,7 +95,7 @@ $ curl \
 
 : 認可スコープ定義のロジックを `rego` 形式で作成する。
 
-> - https://thinkit.co.jp/article/17511
+> - [注目のOpen Policy Agent、その概要とKubernetesでの活用事例 \| 現場で役立つTipsが盛りだくさん! Kubernetesのアレやコレ \| Think IT（シンクイット）](https://thinkit.co.jp/article/17511)
 
 ```erlang
 package httpapi.authz
@@ -191,8 +191,8 @@ kube-apiserver の validating-admission ステップ時に、Gatekeeper の webh
 
 ![kubernetes_open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_open-policy-agent.png)
 
-> - https://blog.mosuke.tech/entry/2022/06/07/admission-webhook-opa/
-> - https://www.infracloud.io/blogs/opa-and-gatekeeper/
+> - [Admission Webhookを作って遊んで、その仕組みを理解しよう（Gatekeeper編）](https://blog.mosuke.tech/entry/2022/06/07/admission-webhook-opa/)
+> - [Differences between OPA and Gatekeeper for Kubernetes Admission Control](https://www.infracloud.io/blogs/opa-and-gatekeeper/)
 
 #### ▼ gatekeeper-validating-webhook-configuration
 

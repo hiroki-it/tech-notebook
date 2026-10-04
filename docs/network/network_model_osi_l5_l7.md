@@ -9,7 +9,7 @@ description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 
 アプリケーションが待ち受けるプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3 など) を処理する層である。
 
-> - https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4
+> - [アプリケーション層 - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4)
 
 <br>
 
@@ -43,7 +43,7 @@ description: L5 ~ L7＠OSI参照モデルの知見を記録しています。
 $ sudo lsof -i -P | grep LISTEN
 ```
 
-> - https://netdekagaku.com/netstat-command/
+> - [netstatコマンドでポートに紐づいたプロセスを調べよう！ \| .LOG](https://netdekagaku.com/netstat-command/)
 
 <br>
 
@@ -101,7 +101,7 @@ $ sudo lsof -i -P | grep LISTEN
 
 : 宛先のアプリ( 例：任意のアプリ、Gmail など) は、各々が指定したプロトコルに応じて、POP/IMAP サーバーからメールデータを定期的に取得する。
 
-> - https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/
+> - [【送受信編】「POP」や「IMAP」ってよくわからない・・という人必見 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/)
 
 #### ▼ SMTP サーバーのモック
 
@@ -223,7 +223,7 @@ THREAD=ORDEREDSUBJECT MULTIAPPEND
 0015 OK STATUS completed
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/0106/13/news001.html
+> - [IMAP4（Internet Mail Access Protocol version 4）〜前編：インターネット・プロトコル詳説（8） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/0106/13/news001.html)
 > - https://superuser.com/a/218592
 
 <br>
@@ -247,6 +247,6 @@ THREAD=ORDEREDSUBJECT MULTIAPPEND
 - MongoDB
 
 > - https://designvault.medium.com/understanding-database-protocols-how-databases-communicate-c1ab61e21a40
-> - https://zenn.dev/haru141/articles/71d0decda29e31#mysql%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
+> - [アプリケーションはMySQLとどのように接続するのか【MySQLプロトコル】](https://zenn.dev/haru141/articles/71d0decda29e31#mysql%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB)
 
 <br>

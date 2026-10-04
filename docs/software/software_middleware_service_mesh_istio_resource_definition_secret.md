@@ -9,7 +9,7 @@ description: Secret系＠リソース定義の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -127,6 +127,6 @@ data:
 
 プライマリ Cluster にある Istiod がリモート Cluster と通信するための接続情報を持つ。
 
-> - https://istio.io/latest/docs/setup/install/multicluster/primary-remote_multi-network/
+> - [Istio / Install Primary-Remote on different networks](https://istio.io/latest/docs/setup/install/multicluster/primary-remote_multi-network/)
 
 <br>

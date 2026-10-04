@@ -9,7 +9,7 @@ description: Gin＠フレームワークの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -83,7 +83,7 @@ func Middleware(service string, opts ...Option) gin.HandlerFunc {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/github.com/gin-gonic/gin/otelgin/gintrace.go#L31-L95
+> - [opentelemetry-go-contrib/instrumentation/github.com/gin-gonic/gin/otelgin/gintrace.go at v1.25.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.25.0/instrumentation/github.com/gin-gonic/gin/otelgin/gintrace.go#L31-L95)
 
 <br>
 

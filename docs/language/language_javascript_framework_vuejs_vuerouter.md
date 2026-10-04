@@ -77,7 +77,7 @@ Web アプリ全体に 1 つ存在し、全体的な Router 機能を管理し�
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `push` | `query` オブジェクトを引数とする。履歴スタック内に新しい履歴を追加し、現在をその履歴とする。また、ブラウザの戻る操作で、履歴スタック内の 1 つ前の履歴に移動する。 |
 
-> - https://router.vuejs.org/guide/essentials/navigation.html
+> - [Programmatic Navigation \| Vue Router](https://router.vuejs.org/guide/essentials/navigation.html)
 
 **＊実装例＊**
 

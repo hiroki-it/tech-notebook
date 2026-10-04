@@ -9,7 +9,7 @@ description: 設定ファイル＠Keycloakの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,7 +27,7 @@ Keycloak では、コマンドオプション、環境変数、`keycloak.conf` �
 db=postgres
 ```
 
-> - https://qiita.com/m-takai/items/7d8b97767cd9544f4f41#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88
+> - [Keycloak Ver.17でデフォルトとなったQuarkusディストリビューションについて #Keycloak - Qiita](https://qiita.com/m-takai/items/7d8b97767cd9544f4f41#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%BF%E3%81%86%E5%A0%B4%E5%90%88)
 
 <br>
 
@@ -40,7 +40,7 @@ db=postgres
 | `KC_BOOTSTRAP_ADMIN_USERNAME` | `admin` | Keycloak のルートユーザー名を設定する。           |
 | `KC_BOOTSTRAP_ADMIN_PASSWORD` | `admin` | Keycloak のルートユーザーのパスワードを設定する。 |
 
-> - https://www.keycloak.org/server/all-config#category-bootstrap_admin
+> - [All configuration - Keycloak](https://www.keycloak.org/server/all-config#category-bootstrap_admin)
 
 <br>
 
@@ -61,7 +61,7 @@ db=postgres
 
 Keycloak と各 DB のバージョンの相性を確認しておく必要がある。
 
-> - https://access.redhat.com/articles/7033107
+> - [Red Hat build of Keycloak Supported Configurations - Red Hat Customer Portal](https://access.redhat.com/articles/7033107)
 
 #### ▼
 
@@ -73,7 +73,7 @@ Keycloak と各 DB のバージョンの相性を確認しておく必要があ�
 | `KC_DB_USERNAME`     | `keycloak`                            |                                                                                                             |
 | `KC_DB_PASSWORD`     | `password`                            |                                                                                                             |
 
-> - https://www.keycloak.org/server/all-config#category-database
+> - [All configuration - Keycloak](https://www.keycloak.org/server/all-config#category-database)
 
 <br>
 
@@ -83,7 +83,7 @@ Keycloak と各 DB のバージョンの相性を確認しておく必要があ�
 | ----------------------- | ------ | ------------------------------------------------------- |
 | `KC_HTTP_RELATIVE_PATH` | `/`    | Keycloak の認証エンドポイントのプレフィクスを設定する。 |
 
-> - https://www.keycloak.org/server/all-config#category-http
+> - [All configuration - Keycloak](https://www.keycloak.org/server/all-config#category-http)
 
 <br>
 
@@ -93,7 +93,7 @@ Keycloak と各 DB のバージョンの相性を確認しておく必要があ�
 | ------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `KC_HOSTNAME` | `localhost` (Docker の場合) | Keycloak のエンドポイントのホスト名を設定する。各種認証エンドポイント全体のホスト名に影響する。Kubernetes 内に Keycloak を置く場合、これは設定しない。 |
 
-> - https://www.keycloak.org/server/all-config#category-hostname_v2
+> - [All configuration - Keycloak](https://www.keycloak.org/server/all-config#category-hostname_v2)
 
 <br>
 
@@ -103,7 +103,7 @@ Keycloak と各 DB のバージョンの相性を確認しておく必要があ�
 | -------------- | ------- | --------------------------------- |
 | `KC_LOG_LEVEL` | `debug` | Keycloak のログレベルを設定する。 |
 
-> - https://www.keycloak.org/server/all-config#category-logging
+> - [All configuration - Keycloak](https://www.keycloak.org/server/all-config#category-logging)
 
 <br>
 
@@ -122,7 +122,7 @@ Keycloak と各 DB のバージョンの相性を確認しておく必要があ�
 | `-Djgroups.dns.query`        | `<KeycloakクラスターのService名>.<Namespace名>.svc.cluster.local` | Keycloak クラスター内の Keycloak クラスターインスタンスを返却する DNS を設定する。 |
 | `-Djava.net.preferIPv4Stack` | `true`                                                            |                                                                                    |
 
-> - https://www.keycloak.org/server/configuration-production
+> - [Configuring Keycloak for production - Keycloak](https://www.keycloak.org/server/configuration-production)
 > - https://docs.redhat.com/en/documentation/red_hat_data_grid/8.0/html/configuring_data_grid/cluster_transport#jgroups_system_props-configuring
 
 <br>
@@ -135,7 +135,7 @@ Keycloak のログイン後、`Cookie` ヘッダーによって運搬される�
 
 `<セッションID>.keycloak-0-27504` の形式になる。
 
-> - https://qiita.com/i7a7467/items/57ef85d601a854519ff3#auth_session_id
+> - [KeycloakのCookieについて #Keycloak - Qiita](https://qiita.com/i7a7467/items/57ef85d601a854519ff3#auth_session_id)
 
 <br>
 
@@ -162,14 +162,14 @@ JWT のサイトでデコードすると、中身を確認できる。
 }
 ```
 
-> - https://qiita.com/i7a7467/items/57ef85d601a854519ff3#keycloak_identity
+> - [KeycloakのCookieについて #Keycloak - Qiita](https://qiita.com/i7a7467/items/57ef85d601a854519ff3#keycloak_identity)
 > - https://stackoverflow.com/a/50840122
 
 <br>
 
 ### KEYCLOAK_SESSION
 
-> - https://qiita.com/i7a7467/items/57ef85d601a854519ff3#keycloak_session
+> - [KeycloakのCookieについて #Keycloak - Qiita](https://qiita.com/i7a7467/items/57ef85d601a854519ff3#keycloak_session)
 > - https://stackoverflow.com/a/50840122
 
 <br>

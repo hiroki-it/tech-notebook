@@ -9,7 +9,7 @@ description: アプリケーションデータ安全性＠AWSの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,8 +31,8 @@ AWS リソースごとにセキュリティを考慮する。
 | データリンク層       | `L2`         | Amazon VPC、サブネット                                      |
 | 物理層               | `L1`         | 仮想化のため、意識しなくてもよい。                          |
 
-> - https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html
-> - https://aws.amazon.com/jp/elasticloadbalancing/features/
+> - [コラム - AWSではじめよう、ネットワークの世界 \| 第2回 『OSI階層モデル』をマスターして、『通信』を理解しよう！｜CTC教育サービス 研修/トレーニング](https://www.school.ctc-g.co.jp/columns/tsumura/tsumura02.html)
+> - [ネットワークトラフィックディストリビューション - Elastic Load Balancing - アマゾン ウェブ サービス](https://aws.amazon.com/jp/elasticloadbalancing/features/)
 
 <br>
 
@@ -48,7 +48,7 @@ AWS リソースごとにセキュリティを考慮する。
 
 なお、パブリックサブネットには Amazon EC2 は置かない。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - [Infrastructure protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html)
 
 <br>
 
@@ -68,8 +68,8 @@ RFC1918 では、以下の CIDR ブロックが推奨である。
 | `172.16.0.0/12`              | `172.16.0.0`～`172.31.255.255`   | `1048576`  |
 | `192.168.0.0/16`             | `192.168.0.0`～`192.168.255.255` | `65536`    |
 
-> - https://note.com/takashi_sakurada/n/n502fb0299938
-> - https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
+> - [【AWS】Amazon VPCに割り当てるCIDRブロックはどれぐらいが良いのか｜櫻田貴士](https://note.com/takashi_sakurada/n/n502fb0299938)
+> - [プライベートIPアドレス − ＠IT ネットワーク用語事典](https://atmarkit.itmedia.co.jp/aig/06network/privateip.html)
 
 <br>
 
@@ -126,7 +126,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 | AWS Lambda                | Elastic Network Interface 数と同じ個数               |
 
 > - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
-> - https://dev.classmethod.jp/articles/amazon-vpc-5-tips/
+> - [Amazon VPC設計時に気をつけたい基本の5のこと \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-vpc-5-tips/)
 
 #### ▼ アクセスタイプ別の命名
 
@@ -140,7 +140,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 ![subnet_accsess-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_accsess-type.png)
 
-> - https://mihono-bourbon.com/aws-network-1/
+> - [AWS はじめてのネットワーク構築 1 – ほのぼの万事屋 \| ほのぼの万事屋](https://mihono-bourbon.com/aws-network-1/)
 
 #### ▼ コンポーネントタイプ別の命名
 
@@ -154,7 +154,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 | application サブネット | プライベート | 内部ネットワークとして動作する。App サーバー (Amazon EC2、Amazon ECS、Amazon EKS) 、リバースプロキシサーバー (Amazon EC2、Amazon ECS、Amazon EKS) 、AWS SSM Session Manager で接続する踏み台サーバー (Amazon EC2) を配置する。 |
 | datastore サブネット   | プライベート | 内部ネットワークとして動作する。DB サーバー (Amazon Aurora、AWS Redis) を配置する。                                                                                                                                            |
 
-> - https://dev.classmethod.jp/articles/create_nat_gateway/
+> - [必要な時だけNAT Gatewayを作成する方法 \| DevelopersIO](https://dev.classmethod.jp/articles/create_nat_gateway/)
 
 <br>
 
@@ -195,7 +195,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 | :---------------------------------------------: | :----: |
 | `10.0.0.0/24` (サブネット `1` の CIDR ブロック) | local  |
 
-> - https://koejima.com/archives/1950/
+> - [ネットワークエンジニアが教える！AWSのVPCルーターの全て \| one more step](https://koejima.com/archives/1950/)
 
 <br>
 
@@ -205,7 +205,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 `L3` の攻撃をセキュリティグループや Transit Gateway で防御する。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - [Infrastructure protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html)
 
 <br>
 
@@ -266,7 +266,7 @@ $ aws ssm start-session --target <踏み台サーバー (Amazon EC2) インス�
 | -------- | ---------- | -------- | -------- | -------- |
 | 設定なし | 設定なし   | 設定なし | 設定なし | 設定なし |
 
-> - https://qiita.com/s_yanada/items/0f64f746095d85ba3e4c
+> - [SSM セッションマネージャーによるBastion設計 #AWS - Qiita](https://qiita.com/s_yanada/items/0f64f746095d85ba3e4c)
 > - https://blog.dcs.co.jp/aws/20221124-serverless-bastion.html
 
 #### ▼ EFS の場合
@@ -332,7 +332,7 @@ AWS ALB から Amazon EC2 にリクエストをルーティングする場合、
 | ------ | ---------- | ------ | ------------------------------------------- | ----------- |
 | HTTPS  | TCP        | `443`  | 宛先の Amazon EC2 のセキュリティグループ ID | Full access |
 
-> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules
+> - [Security groups for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-update-security-groups.html#security-group-recommended-rules)
 
 <br>
 
@@ -352,7 +352,7 @@ AWS データセンター間の通信で使用する Transit Gateway であれ�
 
 代わりに、アプリケーションの実装で防御してもよい。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - [Infrastructure protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html)
 
 <br>
 
@@ -362,7 +362,7 @@ AWS データセンター間の通信で使用する Transit Gateway であれ�
 
 `L7` の攻撃を防御する。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - [Infrastructure protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html)
 
 <br>
 
@@ -503,7 +503,7 @@ AWS が事前に用意している防御ルールで、よくある `L7` に対�
 
 安全性と利便性から、パブリックネットワークと信頼できるネットワーク (例：データセンター、プライベートネットワークなど) の境界を SSL/TLS 終端とすることが多い。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - [Infrastructure protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html)
 
 <br>
 
@@ -515,6 +515,6 @@ AWS が事前に用意している防御ルールで、よくある `L7` に対�
 
 SSH 公開鍵認証を採用しないことにより、SSH 公開鍵を管理する負荷や漏洩のリスクを低減する。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html
+> - [Infrastructure protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html)
 
 <br>

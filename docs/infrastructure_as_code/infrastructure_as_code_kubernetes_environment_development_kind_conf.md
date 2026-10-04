@@ -9,7 +9,7 @@ description: 設定ファイル＠Kindの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -62,7 +62,7 @@ nodes:
             node-labels: "ingress-ready=true"
 ```
 
-> - https://kind.sigs.k8s.io/docs/user/configuration/#kubeadm-config-patches
+> - [kind – Configuration](https://kind.sigs.k8s.io/docs/user/configuration/#kubeadm-config-patches)
 
 #### ▼ role
 
@@ -78,7 +78,7 @@ nodes:
   - role: worker
 ```
 
-> - https://kind.sigs.k8s.io/docs/user/configuration/#nodes
+> - [kind – Configuration](https://kind.sigs.k8s.io/docs/user/configuration/#nodes)
 
 #### ▼ image
 
@@ -98,6 +98,6 @@ nodes:
     image: kindest/node:v1.28.0
 ```
 
-> - https://kind.sigs.k8s.io/docs/user/configuration/#kubernetes-version
+> - [kind – Configuration](https://kind.sigs.k8s.io/docs/user/configuration/#kubernetes-version)
 
 <br>

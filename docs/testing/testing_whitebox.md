@@ -9,7 +9,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: ホワイトボックステストの知見を記録しています�
 
 ![testing_whitebox-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_whitebox-test.png)
 
-> - https://hldc.co.jp/blog/2018/05/25/1387/
+> - [みんな知ってるホワイトボックステスト、ブラックボックステスト。でもグレーボックステストとは…？ \| ハートランド・ザ・ワールド](https://hldc.co.jp/blog/2018/05/25/1387/)
 
 <br>
 
@@ -37,7 +37,7 @@ description: ホワイトボックステストの知見を記録しています�
 - 回帰テスト
 - 結合テスト
 
-> - https://xtech.nikkei.com/it/article/Watcher/20060809/245528/
+> - [マルウエアを解析する（その1）～ホワイトボックス手法とブラックボックス手法～ \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/Watcher/20060809/245528/)
 
 <br>
 
@@ -53,8 +53,8 @@ description: ホワイトボックステストの知見を記録しています�
 
 そのため、特にインタプリタ方式言語では実施したほうがよい。
 
-> - https://golangtokyo.github.io/codelab/find-gophers/?index=codelab#5
-> - https://devblog.thebase.in/entry/2018/12/24/110000
+> - [静的解析をはじめよう - Gopherをさがせ！](https://golangtokyo.github.io/codelab/find-gophers/?index=codelab#5)
+> - [Goによる静的解析入門 - BASEプロダクトチームブログ](https://devblog.thebase.in/entry/2018/12/24/110000)
 
 #### ▼ 型検証
 
@@ -123,7 +123,7 @@ Fooクラスやfoo関数の内部処理
 
 テスト用 DB を `docker-compose.yml` ファイルによって用意する方法については、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html
+> - [【IT技術の知見】docker-compose.yml＠Docker compose - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html)
 
 <br>
 
@@ -173,7 +173,7 @@ Roy Osherove 氏の命名規則に従って、`<テスト対象の関数名>_<�
 
 Roy Osherove 氏の命名規則については、以下のリンクを参考にせよ。
 
-> - https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
+> - [Naming standards for unit tests — Roy Osherove](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html)
 
 <br>
 
@@ -181,7 +181,7 @@ Roy Osherove 氏の命名規則については、以下のリンクを参考に�
 
 ユニットテストのアサーション関数で、期待値と実際値を比較する場合、期待値を定数として管理したほうがよい。
 
-> - https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html
+> - [Naming standards for unit tests — Roy Osherove](https://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html)
 
 <br>
 
@@ -201,7 +201,7 @@ Roy Osherove 氏の命名規則については、以下のリンクを参考に�
 
 ユニットテストでは、各コンポーネントの依存対象のコンポーネントをテストダブル (代替品) に置き換える。
 
-> - https://en.wikipedia.org/wiki/Test_double
+> - [Test double - Wikipedia](https://en.wikipedia.org/wiki/Test_double)
 
 <br>
 
@@ -457,7 +457,7 @@ A と B は、『1』または『0』になり得るとする。
 | `75` 以上    | 変更によって誤修正が生じる。 | `98`%      |
 
 > - https://jp.mathworks.com/discovery/cyclomatic-complexity.html
-> - https://szk-takanori.hatenablog.com/entry/20111219/p1
+> - [循環的複雑度を活かしたバグ潜在リスクの軽減 - 現場のためのソフトウェア開発プロセス - たかのり日記](https://szk-takanori.hatenablog.com/entry/20111219/p1)
 
 <br>
 
@@ -512,9 +512,9 @@ DB、外部API
 注意点として、特定のコンポーネント間の連携をテストする『結合テスト』の一種ではない。
 
 > - https://www.testim.io/blog/end-to-end-testing-vs-integration-testing/
-> - https://commerce-engineer.rakuten.careers/entry/tech/0031
+> - [E2Eテスト: 導入の必要性・何を導入するのか - R-Hack（楽天グループ株式会社）](https://commerce-engineer.rakuten.careers/entry/tech/0031)
 > - https://www.chalkboard.me/2020/08/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%86%E3%82%B9%E3%83%88%E6%96%B9%E6%B3%95%E3%81%AE%E8%AA%BF%E6%9F%BB/
-> - https://speakerdeck.com/hgsgtk/real-world-e2e-testing?slide=4
+> - [E2Eのテスト環境とテストデータの理想と現実 〜現実のシステムでE2Eテストを作り維持する工夫と具体事例〜 / real world e2e testing - Speaker Deck](https://speakerdeck.com/hgsgtk/real-world-e2e-testing?slide=4)
 
 <br>
 
@@ -546,9 +546,9 @@ DB、外部API
 
 実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施する。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/developer-guide/test-e2e.md
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/test.sh
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/Makefile#L400-L402
+> - [argo-cd/docs/developer-guide/test-e2e.md at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/developer-guide/test-e2e.md)
+> - [argo-cd/hack/test.sh at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/test.sh)
+> - [argo-cd/Makefile at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/Makefile#L400-L402)
 
 #### ▼ フロントエンド系ツール
 
@@ -562,8 +562,8 @@ DB、外部API
 - Selenium
 - TestCafe
 
-> - https://qiita.com/os1ma/items/5429cd8e12ac43a6a803#%E5%88%86%E9%A1%9E%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F
-> - https://commerce-engineer.rakuten.careers/entry/tech/0031
+> - [E2E テスト自動化ツールをざっと調べたまとめ #e2e - Qiita](https://qiita.com/os1ma/items/5429cd8e12ac43a6a803#%E5%88%86%E9%A1%9E%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F)
+> - [E2Eテスト: 導入の必要性・何を導入するのか - R-Hack（楽天グループ株式会社）](https://commerce-engineer.rakuten.careers/entry/tech/0031)
 
 #### ▼ バックエンド系ツール
 
@@ -575,6 +575,6 @@ DB、外部API
 - Postman
 - Karate
 
-> - https://qiita.com/os1ma/items/5429cd8e12ac43a6a803#%E5%88%86%E9%A1%9E%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F
+> - [E2E テスト自動化ツールをざっと調べたまとめ #e2e - Qiita](https://qiita.com/os1ma/items/5429cd8e12ac43a6a803#%E5%88%86%E9%A1%9E%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F)
 
 <br>

@@ -9,7 +9,7 @@ description: リソース定義＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,11 +31,11 @@ $ istioctl install --set profile=demo revision=1-10-0
 $ istioctl install --manifests=foo-chart
 ```
 
-> - https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts
+> - [Istio / Install with Istioctl](https://istio.io/latest/docs/setup/install/istioctl/#install-from-external-charts)
 
 執筆時点 (2023/01/16) で IstioOperator は非推奨になっている。
 
-> - https://www.solo.io/blog/3-most-common-ways-install-istio/
+> - [3 Common Ways to Install Istio \| Solo.io](https://www.solo.io/blog/3-most-common-ways-install-istio/)
 
 #### ▼ Operator として (ユーザー定義)
 
@@ -103,7 +103,7 @@ IngressGateway のインストールは必須でない。
 $ helm install <Helmリリース名> <チャートリポジトリ名>/gateway -n istio-system --version <バージョンタグ>
 ```
 
-> - https://istio.io/latest/docs/setup/install/helm/#installation-steps
+> - [Istio / Install with Helm](https://istio.io/latest/docs/setup/install/helm/#installation-steps)
 
 <br>
 
@@ -113,7 +113,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/gateway -n
 
 AuthorizationPolicy の適用範囲の仕組みは、RequestAuthentication と同じである。
 
-作成した Namespace に対して適用され、`istio-system` に置いた場合はすべての Namespace に適用される。
+作成した Namespace に対して適用され、MeshConfig の `rootNamespace` (デフォルトは `istio-system`) に置いた場合はすべての Namespace のデフォルト設定になる。
 
 もし、適用範囲を小さくしたい場合は、`.spec.selector` キーを使用する。
 
@@ -134,8 +134,8 @@ spec:
   action: ALLOW
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/authorization-policy/
-> - https://news.mynavi.jp/techplus/article/kubernetes-30/
+> - [Istio / Authorization Policy](https://istio.io/latest/docs/reference/config/security/authorization-policy/)
+> - [Kubernetes入門(30) Istioを使ったサービスメッシュ構築 - 特徴3：Security \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/kubernetes-30/)
 
 <br>
 
@@ -185,9 +185,9 @@ data:
             - authorization
 ```
 
-> - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
-> - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
-> - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
+> - [\[Kuberntes\] 汎用OAuth2 Proxyをサービスの手前に置く：認証認可編](https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2)
+> - [\[Kuberntes\] 汎用OAuth2 Proxyをサービスの手前に置く：認証認可編](https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1)
+> - [Istio / External Authorization](https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer)
 
 <br>
 
@@ -224,7 +224,7 @@ spec:
             methods: ["GET"]
 ```
 
-> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#identified_workload
+> - [認可ポリシーの概要 \| Cloud Service Mesh \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#identified_workload)
 
 #### ▼ 特定の Namespace を送信元として許可する
 
@@ -245,7 +245,7 @@ spec:
             methods: ["GET"]
 ```
 
-> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#identified_namespace
+> - [認可ポリシーの概要 \| Cloud Service Mesh \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#identified_namespace)
 
 #### ▼ 正しい JWT を許可する
 
@@ -290,8 +290,8 @@ spec:
               - /static*
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/authorization-policy/
-> - https://istio.io/latest/docs/reference/config/security/authorization-policy/#Rule-From
+> - [Istio / Authorization Policy](https://istio.io/latest/docs/reference/config/security/authorization-policy/)
+> - [Istio / Authorization Policy](https://istio.io/latest/docs/reference/config/security/authorization-policy/#Rule-From)
 
 #### ▼ すべてを拒否する
 
@@ -306,7 +306,7 @@ spec:
     - {}
 ```
 
-> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#allow_nothing
+> - [認可ポリシーの概要 \| Cloud Service Mesh \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#allow_nothing)
 
 #### ▼ すべてを許可する
 
@@ -321,7 +321,7 @@ spec:
     - {}
 ```
 
-> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#deny_all_access
+> - [認可ポリシーの概要 \| Cloud Service Mesh \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#deny_all_access)
 
 #### ▼ 非 TLS を拒否する
 
@@ -339,7 +339,7 @@ spec:
             notPrincipals: ["*"]
 ```
 
-> - https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#reject_plaintext_requests
+> - [認可ポリシーの概要 \| Cloud Service Mesh \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/security/authorization-policy-overview?hl=ja#reject_plaintext_requests)
 
 <br>
 
@@ -362,8 +362,8 @@ spec:
       app: foo-pod
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/authorization-policy/
-> - https://news.mynavi.jp/techplus/article/kubernetes-30/
+> - [Istio / Authorization Policy](https://istio.io/latest/docs/reference/config/security/authorization-policy/)
+> - [Kubernetes入門(30) Istioを使ったサービスメッシュ構築 - 特徴3：Security \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/kubernetes-30/)
 
 <br>
 
@@ -375,7 +375,7 @@ spec:
 
 DestinationRule の設定を公開する Namespace を設定する。
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService)
 
 #### ▼ `*` (アスタリスク)
 
@@ -448,7 +448,7 @@ spec:
   host: foo-service.default.svc.cluster.local # Service 名でも良いが完全修飾ドメイン名のほうが良い。
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule)
 
 **＊実装例＊**
 
@@ -463,7 +463,7 @@ spec:
   host: istio-egressgateway.istio-egress.svc.cluster.local
 ```
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic
+> - [Istio / Egress Gateways](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic)
 
 <br>
 
@@ -500,9 +500,9 @@ spec:
         version: v2 # 新 Pod
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#Subset
-> - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
-> - https://blog.1q77.com/2020/03/istio-part3/
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#Subset)
+> - [Istioのトラフィック制御ならブルーグリーンデプロイメント、カナリアリリース、フォールトインジェクション、サーキットブレーカーは簡単にできる：Cloud Nativeチートシート（11） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html)
+> - [Istio 導入への道 - VirtualService 編](https://blog.1q77.com/2020/03/istio-part3/)
 
 <br>
 
@@ -516,9 +516,9 @@ spec:
 
 `1` とする場合は HTTP KeepAlive を無効にし、リクエストごとに接続を閉じる。
 
-HTTP/2 の場合は、TCP 上で単一または複数のストリームを確立し、ストリーム内で単一または複数のリクエスト／レスポンスを並行的に送受信する。
+HTTP/2 の場合は、1 つの TCP 接続上で複数のストリームを使用し、複数のリクエスト／レスポンスを並行して送受信できる。
 
-そのため、リクエストの上限値を正確に検知することは難しく、おおよそになる。
+istio-proxy は HTTP/2 ストリームを個別に数える。
 
 **＊実装例＊**
 
@@ -547,8 +547,8 @@ spec:
         maxRequestsPerConnection: 100
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-field-config-core-v3-httpprotocoloptions-max-requests-per-connection
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings)
+> - [Protocol options (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-field-config-core-v3-httpprotocoloptions-max-requests-per-connection)
 
 #### ▼ connectionPool.http.http1MaxPendingRequests
 
@@ -570,8 +570,8 @@ spec:
         http1MaxPendingRequests: 4000
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings
-> - https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-HTTPSettings)
+> - [DestinationRuleによる流量制限の選択肢と挙動 #openshift - Qiita](https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#http1maxpendingrequests)
 
 #### ▼ connectionPool.http.http2MaxRequests
 
@@ -593,7 +593,7 @@ spec:
         http2MaxRequests: 4000
 ```
 
-> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=115
+> - [ABEMA における GKE スケール戦略と Anthos Service Mesh 活用事例 Deep Dive - Speaker Deck](https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=115)
 
 #### ▼ connectionPool.http.idleTimeout
 
@@ -615,7 +615,7 @@ spec:
         idleTimeout: 1000s
 ```
 
-> - https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B
+> - [VirtualServiceとDestinationRuleのざっくりとした違い #kubernetes - Qiita](https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B)
 
 #### ▼ connectionPool.http.maxConcurrentStreams
 
@@ -637,7 +637,7 @@ spec:
         maxConcurrentStreams: 1000
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-field-config-core-v3-http2protocoloptions-max-concurrent-streams
+> - [Protocol options (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-field-config-core-v3-http2protocoloptions-max-concurrent-streams)
 
 #### ▼ connectionPool.tcp.connectTimeout
 
@@ -700,7 +700,7 @@ spec:
           interval: 75s
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings-tcp_keepalive
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings-tcp_keepalive)
 
 #### ▼ connectionPool.tcp.maxConnections
 
@@ -720,8 +720,8 @@ spec:
         maxConnections: 100
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings
-> - https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#maxconnections
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#ConnectionPoolSettings-TCPSettings)
+> - [DestinationRuleによる流量制限の選択肢と挙動 #openshift - Qiita](https://qiita.com/sonq/items/4cee6f85f91ea7dfcbbf#maxconnections)
 
 #### ▼ outlierDetection.baseEjectionTime
 
@@ -753,9 +753,9 @@ spec:
 ```
 
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
-> - https://speakerdeck.com/nutslove/istioru-men?slide=25
-> - https://ryo-koike.com/ja/blog/istio-advantages/#%E3%82%B5%E3%83%BC%E3%82%AD%E3%83%83%E3%83%88%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AB%E3%83%BC
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
+> - [Istio入門 - Speaker Deck](https://speakerdeck.com/nutslove/istioru-men?slide=25)
+> - [IstioがKubernetesクラスタにもたらす4つのメリット \| Ryo Koike](https://ryo-koike.com/ja/blog/istio-advantages/#%E3%82%B5%E3%83%BC%E3%82%AD%E3%83%83%E3%83%88%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AB%E3%83%BC)
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection)
 
 #### ▼ outlierDetection.consecutiveGatewayErrors
 
@@ -785,8 +785,8 @@ spec:
 ```
 
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
-> - https://speakerdeck.com/nutslove/istioru-men?slide=25
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection-consecutive_gateway_errors
+> - [Istio入門 - Speaker Deck](https://speakerdeck.com/nutslove/istioru-men?slide=25)
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection-consecutive_gateway_errors)
 
 #### ▼ outlierDetection.consecutive5xxErrors
 
@@ -815,8 +815,8 @@ spec:
       baseEjectionTime: 30s
 ```
 
-> - https://techblog.zozo.com/entry/zozotown-istio-circuit-breaker
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection-consecutive_5xx_errors
+> - [Istioサーキットブレーカーで備えるマイクロサービスの連鎖障害 - ZOZO TECH BLOG](https://techblog.zozo.com/entry/zozotown-istio-circuit-breaker)
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection-consecutive_5xx_errors)
 
 #### ▼ outlierDetection.interval
 
@@ -844,8 +844,8 @@ spec:
 ```
 
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
-> - https://speakerdeck.com/nutslove/istioru-men?slide=25
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
+> - [Istio入門 - Speaker Deck](https://speakerdeck.com/nutslove/istioru-men?slide=25)
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection)
 
 #### ▼ outlierDetection.maxEjectionPercent
 
@@ -893,7 +893,7 @@ spec:
 ```
 
 > - https://ibrahimhkoyuncu.medium.com/istio-powered-resilience-advanced-circuit-breaking-and-chaos-engineering-for-microservices-c3aefcb8d9a9
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#OutlierDetection)
 
 #### ▼ loadBalancer
 
@@ -915,7 +915,7 @@ spec:
       simple: ROUND_ROBIN
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings)
 
 **＊実装例＊**
 
@@ -940,8 +940,8 @@ spec:
               "<リージョン名2>/<ゾーン名2>/*": 30
 ```
 
-> - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/
-> - https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/
+> - [Istio / Locality weighted distribution](https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/)
+> - [Istio / Locality Load Balancing](https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/)
 
 **＊実装例＊**
 
@@ -956,12 +956,12 @@ spec:
   trafficPolicy:
     loadBalancer:
       # 最小リクエスト数
-      simple: LEAST_CONN
+      simple: LEAST_REQUEST
 ```
 
 #### ▼ portLevelSettings.loadBalancer
 
-Pod について、ポート番号別ルーティングの負荷分散方式を設定する。
+Service の待ち受けポート番号ごとに、負荷分散方式を設定する。
 
 **＊実装例＊**
 
@@ -977,11 +977,11 @@ spec:
           simple: ROUND_ROBIN
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy)
 
 #### ▼ portLevelSettings.port
 
-Pod のポート番号別ルーティングで使用するポート番号を設定する。
+トラフィックポリシーの適用対象とする Service の待ち受けポート番号を設定する。
 
 **＊実装例＊**
 
@@ -997,7 +997,7 @@ spec:
           number: 80
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#TrafficPolicy-PortTrafficPolicy)
 
 #### ▼ tls.mode
 
@@ -1051,11 +1051,11 @@ spec:
       mode: ISTIO_MUTUAL # Istio 管理下の相互 TLS 認証
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode)
 
 #### ▼ tls.clientCertificate
 
-自己管理下の相互 TLS 認証 (`MUTUAL`) の場合、使用するサーバー証明書を設定する。
+自己管理下の相互 TLS 認証 (`MUTUAL`) の場合、使用するクライアント証明書のパスを設定する。
 
 Istio 管理下の相互 TLS 認証 (`ISTIO_MUTUAL`) の場合、Istiod コントロールプレーンは作成した SSL 署名書を自動的に割り当てるので、設定不要である。
 
@@ -1070,10 +1070,10 @@ spec:
   trafficPolicy:
     tls:
       mode: MUTUAL
-      privateKey: /etc/certs/client_private_key.pem
+      clientCertificate: /etc/certs/client-cert.pem
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings)
 
 #### ▼ loadBalancer.warmup.aggression
 
@@ -1096,11 +1096,11 @@ spec:
         aggression: 1
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup)
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration)
 > - https://stackoverflow.com/a/75942527/12771072
 > - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
+> - [Slow start mode — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start)
 
 #### ▼ loadBalancer.warmup.duration
 
@@ -1121,10 +1121,10 @@ spec:
         aggression: 1
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-warmup)
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#WarmupConfiguration)
 > - https://discuss.istio.io/t/need-help-setting-up-slow-start-in-kubernetes/16692
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start
+> - [Slow start mode — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/slow_start)
 
 <br>
 
@@ -1132,7 +1132,7 @@ spec:
 
 ### .spec.configPatches.applyTo
 
-適用したいフィルター名を設定する。
+パッチの適用対象とする Envoy の処理 (例：LISTENER、CLUSTER、HTTP_FILTER) を設定する。
 
 **＊実装例＊**
 
@@ -1148,7 +1148,7 @@ spec:
     - applyTo: NETWORK_FILTER
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo)
 
 **＊実装例＊**
 
@@ -1164,7 +1164,7 @@ spec:
     - applyTo: HTTP_FILTER
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo)
 
 **＊実装例＊**
 
@@ -1180,7 +1180,7 @@ spec:
     - applyTo: LISTENER_FILTER
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo)
 
 <br>
 
@@ -1230,7 +1230,7 @@ spec:
               name: envoy.filters.network.http_connection_manager
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ListenerMatch)
 
 #### ▼ context
 
@@ -1247,7 +1247,7 @@ spec:
   configPatches:
     - match:
         # istio-ingressgateway と istio-proxy コンテナの両方に適用する
-        - context: ANY
+        context: ANY
 ```
 
 ```yaml
@@ -1259,7 +1259,7 @@ spec:
   configPatches:
     - match:
         # istio-proxy コンテナの Ingress リスナー後のフィルターに適用する
-        - context: SIDECAR_INBOUND
+        context: SIDECAR_INBOUND
 ```
 
 ```yaml
@@ -1271,7 +1271,7 @@ spec:
   configPatches:
     - match:
         # istio-ingressgateway 内の istio-proxy コンテナに適用する
-        - context: GATEWAY
+        context: GATEWAY
 ```
 
 ```yaml
@@ -1283,11 +1283,11 @@ spec:
   configPatches:
     - match:
         # istio-proxy コンテナのアウトバウンド通信 (Egress リスナー後のフィルター)
-        - context: SIDECAR_OUTBOUND
+        context: SIDECAR_OUTBOUND
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext)
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter)
 > - https://niravshah2705.medium.com/redirect-from-istio-e2553afc4a29
 
 <br>
@@ -1315,7 +1315,7 @@ spec:
         operation: MERGE
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation)
 
 **＊実装例＊**
 
@@ -1332,7 +1332,7 @@ spec:
         operation: INSERT_BEFORE
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation)
 
 **＊実装例＊**
 
@@ -1349,7 +1349,7 @@ spec:
         operation: INSERT_FIRST
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation)
 
 **＊実装例＊**
 
@@ -1364,7 +1364,7 @@ spec:
         operation: MERGE
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation)
 
 #### ▼ value
 
@@ -1388,15 +1388,15 @@ spec:
             "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-FilterClass)
 
 <br>
 
-### .spec.configPatches.priority
+### .spec.priority
 
-フィルターの適用タイミングを設定する。
+複数の EnvoyFilter が同じコンポーネントに適用される場合、パッチの適用順を設定する。
 
-マイナス値の場合、デフォルトのフィルターよりも先に適用する。
+数字の昇順に適用し、同じ値の場合は作成時刻、完全修飾リソース名の順で決まる。
 
 **＊実装例＊**
 
@@ -1409,7 +1409,7 @@ spec:
   priority: -1
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter)
 
 <br>
 
@@ -1545,8 +1545,8 @@ spec:
                       value: "true"
 ```
 
-> - https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit
-> - https://learncloudnative.com/blog/2022-09-08-ratelimit-istio
+> - [Istio / Enabling Rate Limits using Envoy](https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#local-rate-limit)
+> - [Istio Rate Limiting: Configure a Local Rate Limiter in Envoy \| Learn Cloud Native](https://learncloudnative.com/blog/2022-09-08-ratelimit-istio)
 
 #### ▼ JWT の同じ `sub` に対して
 
@@ -1692,7 +1692,7 @@ spec:
                     descriptor_key: "PATH"
 ```
 
-> - https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#global-rate-limit
+> - [Istio / Enabling Rate Limits using Envoy](https://istio.io/latest/docs/tasks/policy-enforcement/rate-limit/#global-rate-limit)
 
 <br>
 
@@ -1742,7 +1742,7 @@ spec:
               state: STATE_PREBIND
 ```
 
-> - https://blog.1q77.com/2020/12/istio-downstream-tcpkeepalive/
+> - [Istio で Downstream への TCP keepalive を送る方法](https://blog.1q77.com/2020/12/istio-downstream-tcpkeepalive/)
 
 <br>
 
@@ -1752,17 +1752,17 @@ spec:
 
 VirtualService と DestinationRule の設定値は、istio-proxy に適用される。
 
-> - https://sreake.com/blog/istio/
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/
-> - https://istio.io/latest/docs/reference/config/networking/destination-rule/
+> - [Istio の timeout, retry, circuit breaking, etc \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio/)
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/)
+> - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/)
 
 <br>
 
 ### annotations の定義
 
-Deployment や Pod の `.metadata.anontations` キーにて、istio-proxy ごとのオプション値を設定する。
+Deployment や Pod の `.metadata.annotations` キーにて、istio-proxy ごとのオプション値を設定する。
 
-> - https://istio.io/latest/docs/reference/config/annotations/
+> - [Istio / Resource Annotations](https://istio.io/latest/docs/reference/config/annotations/)
 
 <br>
 
@@ -1812,7 +1812,7 @@ spec:
       terminationGracePeriodSeconds: 45
 ```
 
-> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
+> - [Istio / Installing the Sidecar](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection)
 
 <br>
 
@@ -1849,7 +1849,7 @@ metadata:
     istio: ingressgateway
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway
+> - [Istio / Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/#Gateway)
 
 <br>
 
@@ -1872,7 +1872,7 @@ spec:
         name: http
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+> - [Istio / Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/#Port)
 
 #### ▼ number
 
@@ -1897,7 +1897,7 @@ spec:
         number: 30000
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+> - [Istio / Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/#Port)
 
 #### ▼ protocol
 
@@ -1942,8 +1942,8 @@ spec:
         protocol: MySQL
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
-> - https://github.com/istio/istio/blob/master/pkg/config/protocol/instance.go#L68-L94
+> - [Istio / Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/#Port)
+> - [istio/pkg/config/protocol/instance.go at master · istio/istio · GitHub](https://github.com/istio/istio/blob/master/pkg/config/protocol/instance.go#L68-L94)
 
 #### ▼ targetPort
 
@@ -1962,7 +1962,7 @@ spec:
         targetPort: 80
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#Port
+> - [Istio / Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/#Port)
 
 <br>
 
@@ -2017,7 +2017,7 @@ spec:
         caCertificates: root-cert.pem
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
+> - [Istio / Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings)
 
 <br>
 
@@ -2052,7 +2052,7 @@ spec:
 
 送信元と Gateway の間の暗号化方式を設定する。
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode
+> - [Istio / Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings-TLSmode)
 
 #### ▼ SIMPLE
 
@@ -2132,9 +2132,9 @@ spec:
         mode: PASSTHROUGH
 ```
 
-> - https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#pass-through_of_httpstls_connections
-> - https://www.danielstechblog.io/run-the-istio-ingress-gateway-with-tls-termination-and-tls-passthrough/amp/
-> - https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-sni-passthrough/#configure-an-ingress-gateway
+> - [GKE クラスタで Cloud Service Mesh Egress ゲートウェイを使用する: チュートリアル \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#pass-through_of_httpstls_connections)
+> - [Run the Istio ingress gateway with TLS termination and TLS passthrough – Daniel's Tech Blog](https://www.danielstechblog.io/run-the-istio-ingress-gateway-with-tls-termination-and-tls-passthrough/amp/)
+> - [Istio / Ingress Gateway without TLS Termination](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-sni-passthrough/#configure-an-ingress-gateway)
 
 <br>
 
@@ -2153,7 +2153,7 @@ spec:
         privateKey: /etc/certs/privatekey.pem
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
+> - [Istio / Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings)
 
 <br>
 
@@ -2178,7 +2178,7 @@ spec:
         serverCertificate: /etc/certs/server.pem
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings
+> - [Istio / Gateway](https://istio.io/latest/docs/reference/config/networking/gateway/#ServerTLSSettings)
 
 <br>
 
@@ -2213,10 +2213,10 @@ spec:
 
 特定の Namespace 内のすべての istio-proxy 間通信時、相互 TLS 認証を有効化するか否かを設定する。
 
-特定の Pod 間でのみ相互 TLS 認証を使用したい場合、DestinationRule でサーバー証明書を設定する。
+特定の Pod にのみ受信時の相互 TLS 認証の条件を適用したい場合、PeerAuthentication の `.spec.selector.matchLabels` キーで対象を指定する。
 
-> - https://www.mtioutput.com/entry/istio-mtls-onoff
-> - https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html
+> - [【Istio】DestinationRuleで設定した相互TLSをPeerAuthenticationで上書きする - (O+P)ut](https://www.mtioutput.com/entry/istio-mtls-onoff)
+> - [Kubernetes certificate based mutual auth with different CAs \| Hemant Kumar](https://hemantkumar.net/kubernetes-mutual-auth-with-diffferent-cas.html)
 
 #### ▼ mode
 
@@ -2249,7 +2249,7 @@ spec:
 transport failure reason: TLS error: *****:SSL routines:OPENSSL_internal:SSLV3_ALERT_CERTIFICATE_EXPIRED
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode
+> - [Istio / PeerAuthentication](https://istio.io/latest/docs/reference/config/security/peer_authentication/#PeerAuthentication-MutualTLS-Mode)
 
 <br>
 
@@ -2270,8 +2270,8 @@ spec:
   concurrency: 0
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyConfig
-> - https://github.com/istio/istio/discussions/48596#discussioncomment-7993485
+> - [Istio / ProxyConfig](https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyConfig)
+> - [Difference between envoy.ProxyConfig and meshconfig.ProxyConfig · istio/istio · Discussion #48596 · GitHub](https://github.com/istio/istio/discussions/48596#discussioncomment-7993485)
 
 <br>
 
@@ -2292,8 +2292,8 @@ spec:
     ISTIO_META_DNS_CAPTURE: "false"
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyConfig
-> - https://github.com/istio/istio/discussions/48596#discussioncomment-7993485
+> - [Istio / ProxyConfig](https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyConfig)
+> - [Difference between envoy.ProxyConfig and meshconfig.ProxyConfig · istio/istio · Discussion #48596 · GitHub](https://github.com/istio/istio/discussions/48596#discussioncomment-7993485)
 
 <br>
 
@@ -2303,7 +2303,7 @@ spec:
 
 RequestAuthentication の適用範囲の仕組みは、AuthorizationPolicy と同じである。
 
-作成した Namespace に対して適用され、`istio-system` に置いた場合はすべての Namespace に適用される。
+作成した Namespace に対して適用され、MeshConfig の `rootNamespace` (デフォルトは `istio-system`) に置いた場合はすべての Namespace のデフォルト設定になる。
 
 もし、適用範囲を小さくしたい場合は、`.spec.selector` キーを使用する。
 
@@ -2359,21 +2359,19 @@ spec:
     - when:
         - key: request.auth.claims[iss]
           # JWT トークンがある場合にのみ許可する
-          values: ["foo-issuer.com"]
+          values: ["https://foo-issuer.com"]
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/request_authentication/
-> - https://istio.io/latest/docs/concepts/security/#request-authentication
-> - https://news.mynavi.jp/techplus/article/kubernetes-30/
-> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
+> - [Istio / RequestAuthentication](https://istio.io/latest/docs/reference/config/security/request_authentication/)
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#request-authentication)
+> - [Kubernetes入門(30) Istioを使ったサービスメッシュ構築 - 特徴3：Security \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/kubernetes-30/)
+> - [403 instead of 401 when there's no JWT · Issue #26559 · istio/istio · GitHub](https://github.com/istio/istio/issues/26559#issuecomment-675682440)
 
 #### ▼ issuer
 
 JWT トークンの発行元 ID プロバイダーの識別子を設定する。
 
-JWT トークンの発行元 ID プロバイダーの情報を取得できる。
-
-ブラウザから接続する必要がある。
+JWT トークンの `iss` クレームと照合する発行者識別子であり、ID プロバイダーのドキュメントで値を確認する。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2385,7 +2383,7 @@ spec:
     - issuer: https://foo-issuer.com
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-issuer
+> - [Istio / RequestAuthentication](https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-issuer)
 
 #### ▼ jwksUri
 
@@ -2401,7 +2399,7 @@ spec:
     - jwksUri: https://example.com/.well-known/jwks.json
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-jwks_uri
+> - [Istio / RequestAuthentication](https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-jwks_uri)
 
 #### ▼ forwardOriginalToken
 
@@ -2431,7 +2429,7 @@ spec:
     - forwardOriginalToken: false
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-forward_original_token
+> - [Istio / RequestAuthentication](https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-forward_original_token)
 
 #### ▼ fromCookies
 
@@ -2453,7 +2451,7 @@ spec:
         - <アクセストークンキー>
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_cookies
+> - [Istio / RequestAuthentication](https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_cookies)
 
 #### ▼ fromHeaders
 
@@ -2474,14 +2472,14 @@ spec:
           prefix: "Bearer "
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_headers
-> - https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTHeader
+> - [Istio / RequestAuthentication](https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTRule-from_headers)
+> - [Istio / RequestAuthentication](https://istio.io/latest/docs/reference/config/security/request_authentication/#JWTHeader)
 
 #### ▼ outputPayloadToHeader
 
-JWT を伝播するための新しいヘッダー名を設定する。
+検証済み JWT ペイロードを伝播するための新しいヘッダー名を設定する。
 
-検証後の JWT を新しいヘッダーに割り当て、宛先マイクロサービスに伝播する。
+検証済み JWT ペイロードを新しいヘッダーに割り当て、宛先マイクロサービスに伝播する。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2499,7 +2497,7 @@ spec:
 
 ### .spec.selector
 
-JWT による Bearer 認証を適用する Kubernetes リソース名を設定する。
+JWT による Bearer 認証を適用するワークロードのラベルを設定する。
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2512,8 +2510,8 @@ spec:
       app: istio-ingressgateway
 ```
 
-> - https://istio.io/latest/docs/reference/config/security/request_authentication/
-> - https://news.mynavi.jp/techplus/article/kubernetes-30/
+> - [Istio / RequestAuthentication](https://istio.io/latest/docs/reference/config/security/request_authentication/)
+> - [Kubernetes入門(30) Istioを使ったサービスメッシュ構築 - 特徴3：Security \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/kubernetes-30/)
 
 <br>
 
@@ -2523,7 +2521,9 @@ spec:
 
 ### .spec.addresses
 
-ルーティング先の IP アドレスを設定する。
+ServiceEntry で受け入れる仮想の宛先 IP アドレスを設定する。
+
+宛先コンポーネントの実際の固定 IP アドレスを設定する場合は、`.spec.endpoints` キーを使用する。
 
 `L4` プロトコル (TCPL など) では、リクエストに Host ヘッダーがない。
 
@@ -2574,12 +2574,12 @@ spec:
     - number: 3306
       name: tcp-mysql
       protocol: TCP
-  # Host ヘッダーがあるため、DNS で IP アドレスを取得する
+  # 宛先のドメイン名を DNS で名前解決する
   resolution: DNS
 ```
 
-> - https://techblog.recruit.co.jp/article-605/
-> - https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-addresses
+> - [サービスメッシュを実現するIstioをEKS上で動かす - その3 EKSでRDSなど外部サービスと接続してみる \| リクルート テックブログ](https://techblog.recruit.co.jp/article-605/)
+> - [Istio / Service Entry](https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-addresses)
 
 <br>
 
@@ -2635,7 +2635,7 @@ spec:
     - <DBクラスター名>.cluster-<id>.ap-northeast-1.rds.amazonaws.com
 ```
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/wildcard-egress-hosts/
+> - [Istio / Egress using Wildcard Hosts](https://istio.io/latest/docs/tasks/traffic-management/egress/wildcard-egress-hosts/)
 
 <br>
 
@@ -2658,7 +2658,7 @@ spec:
   location: MESH_EXTERNAL
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-Location
+> - [Istio / Service Entry](https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-Location)
 
 #### ▼ MESH_INTERNAL
 
@@ -2673,7 +2673,7 @@ spec:
   location: MESH_INTERNAL
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-Location
+> - [Istio / Service Entry](https://istio.io/latest/docs/reference/config/networking/service-entry/#ServiceEntry-Location)
 
 <br>
 
@@ -2737,7 +2737,7 @@ spec:
   resolution: DNS
 ```
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/
+> - [Istio / Egress Gateways](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/)
 
 #### ▼ NONE
 
@@ -2780,7 +2780,7 @@ spec:
       app: foo-1
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/sidecar/#Sidecar
+> - [Istio / Sidecar](https://istio.io/latest/docs/reference/config/networking/sidecar/#Sidecar)
 
 <br>
 
@@ -2806,7 +2806,7 @@ spec:
       defaultEndpoint: 127.0.0.1:80
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/sidecar/#IstioIngressListener
+> - [Istio / Sidecar](https://istio.io/latest/docs/reference/config/networking/sidecar/#IstioIngressListener)
 
 <br>
 
@@ -2833,7 +2833,7 @@ spec:
         - bar-namespace.svc.cluster.local
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/sidecar/#IstioEgressListener
+> - [Istio / Sidecar](https://istio.io/latest/docs/reference/config/networking/sidecar/#IstioEgressListener)
 
 <br>
 
@@ -2843,7 +2843,7 @@ spec:
 
 Namespace で Telemety の対象の istio-proxy を絞れる。
 
-もし `istio-system` を指定した場合、Root Namespace という設定になり、istio-proxy コンテナのあるすべての Namespace が対象になる。
+MeshConfig の `rootNamespace` (デフォルトは `istio-system`) に所属させた場合、istio-proxy コンテナのあるすべての Namespace のデフォルト設定になる。
 
 ```yaml
 apiVersion: telemetry.istio.io/v1
@@ -2853,7 +2853,7 @@ metadata:
   namespace: foo
 ```
 
-> - https://istio.io/latest/docs/tasks/observability/telemetry/#scope-inheritance-and-overrides
+> - [Istio / Telemetry API](https://istio.io/latest/docs/tasks/observability/telemetry/#scope-inheritance-and-overrides)
 
 <br>
 
@@ -2881,7 +2881,7 @@ spec:
         - name: envoy
 ```
 
-> - https://istio.io/latest/docs/reference/config/telemetry/#AccessLogging
+> - [Istio / Telemetry](https://istio.io/latest/docs/reference/config/telemetry/#AccessLogging)
 
 ConfigMap で設定する場合は、以下のように設定する。
 
@@ -2898,7 +2898,7 @@ data:
     accessLogFile: /dev/stdout
 ```
 
-> - https://istio.io/latest/docs/tasks/observability/logs/access-log/#using-mesh-config
+> - [Istio / Envoy Access Logs](https://istio.io/latest/docs/tasks/observability/logs/access-log/#using-mesh-config)
 
 <br>
 
@@ -2925,7 +2925,7 @@ spec:
         - name: prometheus
 ```
 
-> - https://istio.io/latest/docs/reference/config/telemetry/#Metrics
+> - [Istio / Telemetry](https://istio.io/latest/docs/reference/config/telemetry/#Metrics)
 
 <br>
 
@@ -2953,7 +2953,7 @@ spec:
       randomSamplingPercentage: 100
 ```
 
-> - https://istio.io/latest/docs/reference/config/telemetry/#Tracing
+> - [Istio / Telemetry](https://istio.io/latest/docs/reference/config/telemetry/#Tracing)
 
 #### ▼ customTags
 
@@ -2995,7 +2995,7 @@ spec:
 
 VirtualService の設定を公開する Namespace を設定する。
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService)
 
 #### ▼ `*` (アスタリスク)
 
@@ -3084,7 +3084,7 @@ spec:
 
 インバウンド通信をいずれの Gateway から受信するかを設定する。
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#VirtualService)
 
 #### ▼ `<Namespace名>/<Gateway名>`
 
@@ -3180,7 +3180,7 @@ spec:
               number: 80
 ```
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic
+> - [Istio / Egress Gateways](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-gateway/#egress-gateway-for-http-traffic)
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3263,8 +3263,8 @@ spec:
               number: 3306
 ```
 
-> - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
-> - https://istio.io/latest/blog/2018/egress-tcp/
+> - [Using Istio to MITM our users’ traffic \| Steven Reitsma](https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic)
+> - [Istio / Consuming External TCP Services](https://istio.io/latest/blog/2018/egress-tcp/)
 
 #### ▼ mesh
 
@@ -3296,7 +3296,7 @@ HTTP/1.1、HTTP/2 (例：gRPC、GraphQL など) のプロトコルによる通�
 
 `.spec.tcp` キーや `.spec.tls` キーとは異なり、マイクロサービスが HTTP プロトコルで通信を送受信し、istio-proxy 間で相互 TLS 認証を実施する場合、これを使用する。
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRoute)
 
 <br>
 
@@ -3308,7 +3308,7 @@ HTTP/1.1、HTTP/2 (例：gRPC、GraphQL など) のプロトコルによる通�
 
 多くの場合、バックエンドアプリケーションで CORS に対処することが多いが、istio-proxy で対処できる。
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#CorsPolicy
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#CorsPolicy)
 
 <br>
 
@@ -3338,7 +3338,7 @@ spec:
             value: 100
 ```
 
-> - https://speakerdeck.com/nutslove/istioru-men?slide=19
+> - [Istio入門 - Speaker Deck](https://speakerdeck.com/nutslove/istioru-men?slide=19)
 
 **＊実装例＊**
 
@@ -3360,7 +3360,7 @@ spec:
             value: 100
 ```
 
-> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=124
+> - [ABEMA における GKE スケール戦略と Anthos Service Mesh 活用事例 Deep Dive - Speaker Deck](https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=124)
 
 <br>
 
@@ -3422,7 +3422,7 @@ spec:
             host: sp
 ```
 
-> - https://www.mtioutput.com/entry/oc-istio-header
+> - [【Istio/Virtualservice】Headerのブラウザ情報を用いてトラフィック管理を行う - (O+P)ut](https://www.mtioutput.com/entry/oc-istio-header)
 
 #### ▼ gateways
 
@@ -3466,7 +3466,7 @@ spec:
               number: 443
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPMatchRequest
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPMatchRequest)
 
 #### ▼ uri
 
@@ -3502,11 +3502,11 @@ spec:
 
 **＊実装例＊**
 
-500 系ステータスの場合、`attempts` の数だけリトライする。
+Gateway 系ステータス (`502`、`503`、`504`) の場合、`attempts` の数だけリトライする。
 
 各リトライで処理の結果が返却されるまでの処理タイムアウト時間を `perTryTimeout` で設定する。
 
-初回リクエストのリトライを `timeout` で、失敗時のリトライの処理タイムアウト時間を `retries.perTryTimeout` で設定する。
+リクエストの処理タイムアウト時間を `timeout` で、リトライ 1 回あたりの処理タイムアウト時間を `retries.perTryTimeout` で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3533,7 +3533,7 @@ spec:
 
 Gateway 系ステータス (`502`、`503`、`504`) の場合、`attempts` の数だけリトライする。
 
-初回リクエストのリトライを `timeout` で、失敗時のリトライの処理タイムアウト時間を `retries.perTryTimeout` で設定する。
+リクエストの処理タイムアウト時間を `timeout` で、リトライ 1 回あたりの処理タイムアウト時間を `retries.perTryTimeout` で設定する。
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3558,9 +3558,9 @@ spec:
         retryOn: gateway-error
 ```
 
-> - https://speakerdeck.com/nutslove/istioru-men?slide=18
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRetry
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
+> - [Istio入門 - Speaker Deck](https://speakerdeck.com/nutslove/istioru-men?slide=18)
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRetry)
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on)
 
 #### ▼ attempt
 
@@ -3604,9 +3604,9 @@ spec:
         retryOn: connect-failure,refused-stream,unavailable
 ```
 
-> - https://sreake.com/blog/istio/
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
-> - https://github.com/istio/istio/issues/50506#issuecomment-2230102675
+> - [Istio の timeout, retry, circuit breaking, etc \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio/)
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on)
+> - [Add feature flag to disable default retry policy · Issue #50506 · istio/istio · GitHub](https://github.com/istio/istio/issues/50506#issuecomment-2230102675)
 
 <br>
 
@@ -3633,7 +3633,7 @@ spec:
             host: foo-service.foo-namespace.svc.cluster.local
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination)
 
 #### ▼ destination.port
 
@@ -3659,7 +3659,7 @@ spec:
               number: 80
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination)
 
 #### ▼ destination.subset
 
@@ -3701,8 +3701,8 @@ spec:
           weight: 30
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination
-> - https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#Destination)
+> - [Istioのトラフィック制御ならブルーグリーンデプロイメント、カナリアリリース、フォールトインジェクション、サーキットブレーカーは簡単にできる：Cloud Nativeチートシート（11） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2112/21/news009.html)
 
 #### ▼ weight
 
@@ -3742,8 +3742,8 @@ spec:
           weight: 30
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination
-> - https://speakerdeck.com/nutslove/istioru-men?slide=20
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPRouteDestination)
+> - [Istio入門 - Speaker Deck](https://speakerdeck.com/nutslove/istioru-men?slide=20)
 
 <br>
 
@@ -3785,9 +3785,9 @@ spec:
       timeout: 40s
 ```
 
-> - https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto
-> - https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B
+> - [Istio / Request Timeouts](https://istio.io/latest/docs/tasks/traffic-management/request-timeouts/)
+> - [HTTP route components (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto)
+> - [VirtualServiceとDestinationRuleのざっくりとした違い #kubernetes - Qiita](https://qiita.com/Takagi_/items/129acd03e76fce5c295b#%E5%AE%9F%E9%9A%9B%E3%81%ABhttp%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E8%A8%AD%E5%AE%9A%E3%82%84%E3%82%A2%E3%82%A4%E3%83%89%E3%83%AB%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E5%88%87%E6%96%AD%E3%81%95%E3%81%9B%E3%82%8B%E3%81%AB%E3%81%AF%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B)
 
 <br>
 
@@ -3797,7 +3797,7 @@ spec:
 
 `.spec.http` キーや `.spec.tls` キーとは異なり、TCP プロトコルや独自プロトコル (例：MySQL など) による通信を DestinationRule に紐づく Pod へルーティングする。
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#TCPRoute)
 
 #### ▼ match
 
@@ -3904,11 +3904,11 @@ spec:
 
 `.spec.http` キーや `.spec.tcp` キーとは異なり、HTTPS プロトコルの通信を DestinationRule に紐づく Pod へルーティングする。
 
-マイクロサービスが HTTPS プロトコルで通信を送受信し、istio-proxy 間で相互 TLS 認証を実施する場合、これを使用する。
+マイクロサービスが HTTPS プロトコルで通信を送受信し、istio-proxy が TLS を終端せずに通過させる場合、これを使用する。
 
 他に、マイクロサービスが HTTPS リクエストを送信し、Istio Egress Gateway でこれをそのまま通過させる (`PASSTHROUGH`) 場合も必要になる。
 
-> - https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute
+> - [Istio / Virtual Service](https://istio.io/latest/docs/reference/config/networking/virtual-service/#TLSRoute)
 
 #### ▼ Istio Egress Gateway の VirtualService での注意点
 
@@ -3941,10 +3941,10 @@ $ sudo dpkg -i istio-sidecar.deb
 $ sudo systemctl start istio
 ```
 
-> - https://istio.io/latest/blog/2020/workload-entry/
-> - https://qiita.com/ipppppei/items/b376602ae6c325e3a55e
-> - https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine
-> - https://istio.io/latest/docs/examples/virtual-machines/
+> - [Istio / Introducing Workload Entries](https://istio.io/latest/blog/2020/workload-entry/)
+> - [IstioのMesh内に仮想マシンを取り込む #kubernetes - Qiita](https://qiita.com/ipppppei/items/b376602ae6c325e3a55e)
+> - [Istio / Virtual Machine Installation](https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine)
+> - [Istio / Bookinfo with a Virtual Machine](https://istio.io/latest/docs/examples/virtual-machines/)
 
 <br>
 
@@ -3967,9 +3967,9 @@ $ sudo dpkg -i istio-sidecar.deb
 $ sudo systemctl start istio
 ```
 
-> - https://istio.io/latest/blog/2020/workload-entry/
-> - https://qiita.com/ipppppei/items/b376602ae6c325e3a55e
-> - https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine
-> - https://istio.io/latest/docs/examples/virtual-machines/
+> - [Istio / Introducing Workload Entries](https://istio.io/latest/blog/2020/workload-entry/)
+> - [IstioのMesh内に仮想マシンを取り込む #kubernetes - Qiita](https://qiita.com/ipppppei/items/b376602ae6c325e3a55e)
+> - [Istio / Virtual Machine Installation](https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine)
+> - [Istio / Bookinfo with a Virtual Machine](https://istio.io/latest/docs/examples/virtual-machines/)
 
 <br>

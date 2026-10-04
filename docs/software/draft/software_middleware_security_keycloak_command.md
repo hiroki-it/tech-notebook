@@ -9,7 +9,7 @@ description: コマンド＠Keycloakの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -39,7 +39,7 @@ $ kc.sh build
 $ kc.sh start
 ```
 
-> - https://www.keycloak.org/server/configuration#_starting_keycloak
+> - [Configuring Keycloak - Keycloak](https://www.keycloak.org/server/configuration#_starting_keycloak)
 
 #### ▼ --cache-stack
 
@@ -54,8 +54,8 @@ $ kc.sh start --cache-stack kubernetes
 | `jdbc-ping`  | JDBC_PING | TCP        | `7800`、`57800` |
 | `kubernetes` | DNS_PING  | TCP        |
 
-> - https://www.keycloak.org/server/caching#_transport_stacks
-> - https://www.keycloak.org/server/caching#_network_ports
+> - [Configuring distributed caches - Keycloak](https://www.keycloak.org/server/caching#_transport_stacks)
+> - [Configuring distributed caches - Keycloak](https://www.keycloak.org/server/caching#_network_ports)
 
 #### ▼ --import-realm
 
@@ -67,7 +67,7 @@ $ kc.sh start --cache-stack kubernetes
 $ kc.sh start --import-realm
 ```
 
-> - https://www.keycloak.org/server/importExport#_importing_a_realm_during_startup
+> - [Importing and exporting realms - Keycloak](https://www.keycloak.org/server/importExport#_importing_a_realm_during_startup)
 
 #### ▼ --optimized
 
@@ -77,7 +77,7 @@ $ kc.sh start --import-realm
 $ kc.sh start --optimized
 ```
 
-> - https://www.keycloak.org/server/configuration#_creating_an_optimized_keycloak_build
+> - [Configuring Keycloak - Keycloak](https://www.keycloak.org/server/configuration#_creating_an_optimized_keycloak_build)
 
 <br>
 
@@ -96,6 +96,6 @@ $ kc.sh start --optimized
 $ kc.sh start-dev
 ```
 
-> - https://www.keycloak.org/server/configuration#_starting_keycloak
+> - [Configuring Keycloak - Keycloak](https://www.keycloak.org/server/configuration#_starting_keycloak)
 
 <br>

@@ -9,7 +9,7 @@ description: Claude Code＠LLMの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: Claude Code＠LLMの知見を記録しています。
 | `.claude/rules`  | 常時                                                                  | Claude Code にインプットするコンテキストを定義する                                                                       |
 | `.claude/skills` | `/<スキル名>` の実行時                                                | 特定の場面のみで Claude Code にインプットさせたいコンテキストと、その命令を定義する。                                    |
 
-> - https://izanami.dev/post/47deb6b9-0965-41e7-b128-12f5937e8748
+> - [Claude Codeの CLAUDE.md、Rules、Skills、Subagents、MCPs使い分け - izanami](https://izanami.dev/post/47deb6b9-0965-41e7-b128-12f5937e8748)
 
 <br>
 

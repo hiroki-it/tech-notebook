@@ -9,7 +9,7 @@ description: 暗号方式＠アプリケーションデータの暗号化技術�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -168,8 +168,8 @@ description: 暗号方式＠アプリケーションデータの暗号化技術�
 
 『`TLS` + 鍵交換方式 + 認証方式 + `WITH` + 暗号アルゴリズム + ハッシュ関数』で表される暗号化技術の組み合わせ表記方法のこと。
 
-> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
-> - https://active.nikkeibp.co.jp/atclact/active/17/032000256/032000005/
+> - [100種類以上あった「暗号スイート」をたった5種類に、TLS 1.3が互換性を捨てたワケ \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/)
+> - [安全性が高いTLSへの移行で解決 - 狙われるセキュリティプロトコル：日経クロステック Active](https://active.nikkeibp.co.jp/atclact/active/17/032000256/032000005/)
 
 <br>
 
@@ -186,7 +186,7 @@ TLS1.2 の場合、以下の表記である。
 - TLS_RSA_WITH_AES_256_GCM_SHA384
 - TLS_RSA_WITH_AES_128_GCM_SHA256
 
-> - https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/
-> - https://active.nikkeibp.co.jp/atclact/active/17/032000256/032000005/
+> - [100種類以上あった「暗号スイート」をたった5種類に、TLS 1.3が互換性を捨てたワケ \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/02306/121900003/)
+> - [安全性が高いTLSへの移行で解決 - 狙われるセキュリティプロトコル：日経クロステック Active](https://active.nikkeibp.co.jp/atclact/active/17/032000256/032000005/)
 
 <br>

@@ -9,7 +9,7 @@ description: ポート＠L4の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,8 +25,8 @@ description: ポート＠L4の知見を記録しています。
 - USB ポート
 - LAN ポート
 
-> - http://faq3.dospara.co.jp/faq/show/3708?site_domain=default
-> - https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/
+> - [パソコン本体背面、各コネクタと端子の接続方法 \| ドスパラ サポートFAQ よくあるご質問](http://faq3.dospara.co.jp/faq/show/3708?site_domain=default)
+> - [ポートって何を指していますか \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/)
 
 <br>
 
@@ -34,8 +34,8 @@ description: ポート＠L4の知見を記録しています。
 
 `L7` (アプリケーション層) にて、物理サーバー、仮想サーバー、コンテナ内のアプリケーションのプロセスが待ち受けるポートのこと。
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/
-> - https://ascii.jp/elem/000/000/434/434183/2/
+> - [ポートって何を指していますか \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20060228/231293/)
+> - [ASCII.jp：TCPのキモはコネクションとポート番号 (2/4)](https://ascii.jp/elem/000/000/434/434183/2/)
 
 <br>
 
@@ -75,7 +75,7 @@ IANA：Internet Assigned Numbers Authority (インターネット割当番号公
 | ...                                       | ...                    |
 
 > - https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=alt
-> - https://abhp.net/it/IT_Port_No_100000.html
+> - [ポート番号 一覧 危険な ポート番号 閉じておいた方が良い ポート番号 - Windows ＆ IT](https://abhp.net/it/IT_Port_No_100000.html)
 
 #### ▼ 登録済みポート番号 (`1024`～`49151`)
 
@@ -88,7 +88,7 @@ IANA が登録申請を受けて公開しているポート番号。
 | 企業が共有している | HTTP/1.1、HTTP/2 (例：gRPC、GraphQL など) | `8080`                 |
 | ...                | ...                                       | ...                    |
 
-> - https://abhp.net/it/IT_Port_No_100000.html
+> - [ポート番号 一覧 危険な ポート番号 閉じておいた方が良い ポート番号 - Windows ＆ IT](https://abhp.net/it/IT_Port_No_100000.html)
 
 #### ▼ 動的/非公式ポート番号 (`49152`～`65535`)
 
@@ -96,7 +96,7 @@ IANA が登録申請を受けて公開しているポート番号。
 
 もちろん、そのポート番号で待ち受ける必要がなければ、脆弱性から閉じておくほうがよい。
 
-> - https://abhp.net/it/IT_Port_No_100000.html
+> - [ポート番号 一覧 危険な ポート番号 閉じておいた方が良い ポート番号 - Windows ＆ IT](https://abhp.net/it/IT_Port_No_100000.html)
 
 <br>
 

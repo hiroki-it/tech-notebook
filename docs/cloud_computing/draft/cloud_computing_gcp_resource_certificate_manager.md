@@ -25,7 +25,7 @@ AWS Certificate Manager でクライアント証明書を作成する場合、AW
 
 オレオレのクライアント証明書と同じ手順が必要になる。
 
-> - https://qiita.com/unitia0323/items/76882184c7359854ade8
+> - [AWS Certificate Manager(ACM)でクライアント証明書を発行してnginxに設定する方法 #acm - Qiita](https://qiita.com/unitia0323/items/76882184c7359854ade8)
 
 <br>
 

@@ -9,7 +9,7 @@ description: NoSQL＠DB系ミドルウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -51,9 +51,9 @@ RDB とは異なり、データをメインメモリに保管する。
 
 インメモリ DB を採用する場合は、データ保管とプロセス割り当ての間でメモリ領域を奪い合うことになるため、メモリサイズを大きくする必要がある。
 
-> - https://e-words.jp/w/%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%A2%E3%83%AA.html
-> - https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
-> - https://www.mydistributed.systems/2020/07/an-overview-of-storage-engines.html
+> - [インメモリ（オンメモリ）とは - IT用語辞典 e-Words](https://e-words.jp/w/%E3%82%A4%E3%83%B3%E3%83%A1%E3%83%A2%E3%83%AA.html)
+> - [What is the difference between memory and storage? - Kingston Technology](https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage)
+> - [In-memory vs. On-disk Databases](https://www.mydistributed.systems/2020/07/an-overview-of-storage-engines.html)
 
 <br>
 
@@ -105,7 +105,7 @@ sequenceDiagram
       Redis->>foo.ts: ロック自動解放
 ```
 
-> - https://kumagi.hatenablog.com/entry/distributed_lock
-> - https://scrapbox.io/mopp/%E5%88%86%E6%95%A3%E3%83%AD%E3%83%83%E3%82%AF
+> - [分散ロックという名の過ち - Software Transactional Memo](https://kumagi.hatenablog.com/entry/distributed_lock)
+> - [分散ロック - mopp](https://scrapbox.io/mopp/%E5%88%86%E6%95%A3%E3%83%AD%E3%83%83%E3%82%AF)
 
 <br>

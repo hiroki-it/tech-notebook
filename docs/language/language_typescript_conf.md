@@ -9,7 +9,7 @@ description: 設定＠TypeScriptの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: 設定＠TypeScriptの知見を記録しています。
 {"exclude": ["<ファイル名>"]}
 ```
 
-> - https://qiita.com/ryokkkke/items/390647a7c26933940470#exclude
+> - [tsconfig.jsonの主要オプションを理解する #TypeScript - Qiita](https://qiita.com/ryokkkke/items/390647a7c26933940470#exclude)
 
 <br>
 
@@ -31,7 +31,7 @@ description: 設定＠TypeScriptの知見を記録しています。
 {"include": ["<ファイル名>"]}
 ```
 
-> - https://qiita.com/ryokkkke/items/390647a7c26933940470#include
+> - [tsconfig.jsonの主要オプションを理解する #TypeScript - Qiita](https://qiita.com/ryokkkke/items/390647a7c26933940470#include)
 
 <br>
 
@@ -63,6 +63,6 @@ description: 設定＠TypeScriptの知見を記録しています。
 }
 ```
 
-> - https://qiita.com/ryokkkke/items/390647a7c26933940470#compileroptions
+> - [tsconfig.jsonの主要オプションを理解する #TypeScript - Qiita](https://qiita.com/ryokkkke/items/390647a7c26933940470#compileroptions)
 
 <br>

@@ -9,7 +9,7 @@ description: Go＠言語の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -37,7 +37,7 @@ $ yum install -y epel-release
 $ yum install -y golang
 ```
 
-> - https://www.cyberithub.com/install-go-on-centos/
+> - [Easy Steps to Install GO Using YUM on CentOS 7 \| CyberITHub](https://www.cyberithub.com/install-go-on-centos/)
 
 <br>
 
@@ -153,8 +153,8 @@ $ rm -rf /usr/local/go
 $ asdf uninstall go <古いバージョン>
 ```
 
-> - https://zenn.dev/wasuwa/articles/3d2e65516b760e
-> - https://qiita.com/snyt45/items/2425a849db8947001587
+> - [【初心者向け】丁寧な Go のバージョンアップ手順](https://zenn.dev/wasuwa/articles/3d2e65516b760e)
+> - [既にGo言語がインストール済みの場合に新しいバージョンに切り替える #バージョン管理 - Qiita](https://qiita.com/snyt45/items/2425a849db8947001587)
 
 #### ▼ PPA リポジトリから
 
@@ -175,7 +175,7 @@ $ apt update
 $ apt install golang-go
 ```
 
-> - https://zenn.dev/tamagram/articles/fd744d10e2e680
+> - [めんどくないGoのバージョンアップ](https://zenn.dev/tamagram/articles/fd744d10e2e680)
 
 <br>
 
@@ -220,7 +220,7 @@ go-repository/
     └── template
 ```
 
-> - https://github.com/golang-standards/project-layout
+> - [GitHub - golang-standards/project-layout: Standard Go Project Layout · GitHub](https://github.com/golang-standards/project-layout)
 
 #### ▼ `bin`
 
@@ -354,7 +354,7 @@ Go では文の処理はセミコロンで区切られる。
 
 Go の命名規則は、GitHub の Wiki に記載されている。
 
-> - https://github.com/golang/go/wiki/CodeReviewComments
+> - [CodeReviewComments · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/CodeReviewComments)
 
 <br>
 
@@ -374,7 +374,7 @@ Go の命名規則は、GitHub の Wiki に記載されている。
 
 ただし、テストファイルは、パッケージ名を『`foo_test`』としてよい。
 
-> - https://github.com/golang/go/wiki/CodeReviewComments#package-names
+> - [CodeReviewComments · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/CodeReviewComments#package-names)
 
 <br>
 
@@ -406,7 +406,7 @@ Go の命名規則は、GitHub の Wiki に記載されている。
 
 末尾に『`er`』をつける。
 
-> - https://golang.org/doc/effective_go#interface-names
+> - [Effective Go - The Go Programming Language](https://golang.org/doc/effective_go#interface-names)
 
 <br>
 
@@ -426,7 +426,7 @@ httpClient であれば、修飾語は『`http`』被修飾語『`client`』で�
 
 そのため、レシーバ名または引数名では『`cl`』とする。
 
-> - https://github.com/golang/go/wiki/CodeReviewComments#receiver-names
+> - [CodeReviewComments · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/CodeReviewComments#receiver-names)
 > - https://yyh-gl.github.io/tech-blog/blog/go-ddd-entity-vo/
 
 <br>
@@ -441,13 +441,13 @@ httpClient であれば、修飾語は『`http`』被修飾語『`client`』で�
 
 ただし、スコープの大きな変数に省略した名前をつけると、重複する可能性があるため、省略せずにローワーキャメルケースで命名してもよい。
 
-> - https://github.com/golang/go/wiki/CodeReviewComments#variable-names
+> - [CodeReviewComments · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/CodeReviewComments#variable-names)
 
 省略名については、略語検索サイトで探す。
 
 代わりに、Go リファレンスからその単語がどう省略されているかを探してもよい。
 
-> - https://www.allacronyms.com/
+> - [All Acronyms - Acronym Lookup and Abbreviation Guide](https://www.allacronyms.com/)
 
 #### ▼ 通常の変数名
 
@@ -591,7 +591,7 @@ func readConfig() error {
 
 記入中...
 
-> - https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences
+> - [CodeReviewComments · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences)
 
 <br>
 
@@ -599,7 +599,7 @@ func readConfig() error {
 
 Uber 社が採用しているお作法。
 
-> - https://github.com/uber-go/guide/blob/master/style.md
+> - [guide/style.md at master · uber-go/guide · GitHub](https://github.com/uber-go/guide/blob/master/style.md)
 
 <br>
 
@@ -609,7 +609,7 @@ Go には標準でイミュータブルの機能がない。これを無理に�
 
 そのため、イミュータブルにするか否かは慎重に判断する。
 
-> - https://zenn.dev/nobonobo/articles/9a9f12b27bfde9#go%E3%81%AF%E3%81%AA%E3%81%9C%E3%82%A4%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%96%E3%83%AB%E4%BF%AE%E9%A3%BE%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%EF%BC%9F
-> - https://future-architect.github.io/articles/20190713/#Q-immutable%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%8C%E3%81%97%E3%81%9F%E3%81%84%E3%81%AE%E3%81%A7%E3%81%99%E3%81%8C%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B%EF%BC%9F
+> - [Goのなぜ問答](https://zenn.dev/nobonobo/articles/9a9f12b27bfde9#go%E3%81%AF%E3%81%AA%E3%81%9C%E3%82%A4%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%BF%E3%83%96%E3%83%AB%E4%BF%AE%E9%A3%BE%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%EF%BC%9F)
+> - [Goを学ぶときにつまずきやすいポイントFAQ \| フューチャー技術ブログ](https://future-architect.github.io/articles/20190713/#Q-immutable%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%8C%E3%81%97%E3%81%9F%E3%81%84%E3%81%AE%E3%81%A7%E3%81%99%E3%81%8C%E3%81%A9%E3%81%86%E3%81%99%E3%82%8C%E3%81%B0%E3%81%84%E3%81%84%E3%81%A7%E3%81%97%E3%82%87%E3%81%86%E3%81%8B%EF%BC%9F)
 
 <br>

@@ -51,7 +51,7 @@ API ゲートウェイの責務をどのように分割するかに応じて、�
 ![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_public-api-pattern.png)
 
 > - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
-> - https://www.linkedin.com/posts/raul-junco_nobody-likes-making-20-calls-to-render-a-activity-7198293633882632192-3QS4/
+> - [Nobody likes making 20 calls to render a page. 3 Aggregation Patterns your consumers will love. 1. Central Aggregating Gateway It is middleware between user interfaces and microservices… \| Raul Junco \| 42 comments](https://www.linkedin.com/posts/raul-junco_nobody-likes-making-20-calls-to-render-a-activity-7198293633882632192-3QS4/)
 
 #### ▼ BFF：Backends For Frontends
 
@@ -69,16 +69,16 @@ API ゲートウェイの責務をどのように分割するかに応じて、�
 
 > - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 > - https://codezine.jp/article/detail/11305?p=4
-> - https://www.watch.impress.co.jp/docs/news/1339451.html
+> - [メガバンクによる新たな少額決済インフラ「ことら」。'22年度上期開始 - Impress Watch](https://www.watch.impress.co.jp/docs/news/1339451.html)
 > - https://stackoverflow.com/a/73598888
 
 #### ▼ Federated Gateway
 
 BFF ではアプリケーションの種類ごとに API　Gateway を作成したが、Federated Gateway では各 API ゲートウェイのエンドポイントを統合する。
 
-> - https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/
+> - [ホームページ - EY-Office](https://www.ey-office.com/blog_archive/2021/12/23/i-checked-graphql-federation/)
 > - https://tech.smartshopping.co.jp/backend-development-with-graphql
-> - https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32
+> - [プロトコル、インターフェースとしてのGraphQL - Speaker Deck](https://speakerdeck.com/sonatard/purotokoru-intahuesutositenographql?slide=32)
 
 <br>
 
@@ -108,20 +108,20 @@ API ゲートウェイの API 形式に応じて、分割パターンがある�
 
 API ゲートウェイは、マイクロサービス間で共通する問題 (認証、ロギング、サーバー証明書など) を処理する責務を持ちます。
 
-> - https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-offloading
+> - [ゲートウェイ オフロード パターン - Azure Architecture Center \| Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-offloading)
 
 #### ▼ Gateway ルーティングパターン
 
 API ゲートウェイは、複数のマイクロサービスにリクエストをルーティングする責務を持ちます。
 
-> - https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-routing
+> - [ゲートウェイ ルーティング パターン - Azure Architecture Center \| Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-routing)
 
 #### ▼ Gateway アグリゲーターパターン
 
 API ゲートウェイに API Composition を適用した方法である。
 
 > - https://stackoverflow.com/a/68074337/12771072
-> - https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-aggregation
+> - [ゲートウェイの集計パターン - Azure Architecture Center \| Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/architecture/patterns/gateway-aggregation)
 
 <br>
 
@@ -143,8 +143,8 @@ GraphQL で API ゲートウェイを実装する場合は、特に注意が必�
 
 ただ、フロントエンド領域と API ゲートウェイ領域の開発チームの両方が GraphQL の知識を持ってれば、これは起こらない。
 
-> - https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy
-> - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9
+> - [ZOZOTOWNにおける段階的なIstioサービスメッシュ化戦略 - ZOZO TECH BLOG](https://techblog.zozo.com/entry/zozotown-phased-istio-service-meshing-strategy)
+> - [APIゲートウェイ Kongを使って開発してる話。 #APIGateway - Qiita](https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9)
 
 #### ▼ OSS を使用する場合
 
@@ -156,8 +156,8 @@ API ゲートウェイの OSS (Kong、Tyk、Apigee、Kuma、Nginx、Envoy、Apac
 Amazon Route 53 ---> AWS ALB ---> APIゲートウェイ (例：TypeScriptアプリ、Nginx) ---> マイクロサービスPod
 ```
 
-> - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
-> - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9
+> - [How to choose the right API Gateway for your platform: Comparison of Kong, Tyk, KrakenD, Apigee, and alternatives \| Moesif Blog](https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/)
+> - [APIゲートウェイ Kongを使って開発してる話。 #APIGateway - Qiita](https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9)
 
 #### ▼ クラウドプロバイダーのマネージドサービスを使用する場合
 
@@ -171,8 +171,8 @@ Amazon Route 53 ---> Amazon API Gateway ---> AWS ALB ---> マイクロサービ�
 
 その場合、フロントエンドアプリケーションが API ゲートウェイに通信できるように、フロントエンドアプリケーションとバックエンドアプリケーションを異なる Kubernetes で動かす必要がある。
 
-> - https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/
-> - https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9
+> - [Amazon API Gateway を Amazon EKS における Ingress として利用する \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/api-gateway-as-an-ingress-controller-for-eks/)
+> - [APIゲートウェイ Kongを使って開発してる話。 #APIGateway - Qiita](https://qiita.com/takurUN/items/aace0e60744d0ec92cf6#2-4-api%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92kong%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F%E7%90%86%E7%94%B1%E3%82%B3%E3%82%B9%E3%83%88%E6%9C%80%E9%81%A9)
 
 <br>
 

@@ -21,7 +21,7 @@ kube-apiserver から `15` 分以上レスポンスがない場合に発火す�
 
 Kubernetes Cluster のアップグレード時に発火する可能性がある。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown/
+> - [Kube API Down \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown/)
 
 <br>
 
@@ -29,7 +29,7 @@ Kubernetes Cluster のアップグレード時に発火する可能性がある�
 
 Deployment で指定したレプリカ数の Pod がない場合に発火する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubedeploymentreplicasmismatch/
+> - [Kube Deployment Replicas Mismatch \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubedeploymentreplicasmismatch/)
 
 <br>
 
@@ -37,7 +37,7 @@ Deployment で指定したレプリカ数の Pod がない場合に発火する�
 
 コントロールプレーン Node 側の kube-apiserver とワーカーNode 側の kubelet のバージョンが一致していない場合に発火する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeversionmismatch/
+> - [Kube Version Mismatch \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeversionmismatch/)
 
 <br>
 
@@ -45,7 +45,7 @@ Deployment で指定したレプリカ数の Pod がない場合に発火する�
 
 kube-controller-manager からレスポンスがない場合に発火する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontrollermanagerdown/
+> - [Kube Controller Manager Down \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontrollermanagerdown/)
 
 <br>
 
@@ -53,7 +53,7 @@ kube-controller-manager からレスポンスがない場合に発火する。
 
 kube-scheduler からレスポンスがない場合に発火する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontrollermanagerdown/
+> - [Kube Controller Manager Down \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontrollermanagerdown/)
 
 <br>
 
@@ -75,7 +75,7 @@ AWSが管理するコントロールプレーン内のkube-controller-managerか
 
 Amazon EKSでは利用者がkube-controller-managerへ直接対処しないため、無効化してもよい。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontrollermanagerdown/
+> - [Kube Controller Manager Down \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecontrollermanagerdown/)
 
 <br>
 
@@ -85,7 +85,7 @@ AWSが管理するコントロールプレーン内のkube-schedulerからレス
 
 Amazon EKSでは利用者がkube-schedulerへ直接対処しないため、無効化してもよい。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeschedulerdown/
+> - [Kube Scheduler Down \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeschedulerdown/)
 
 <br>
 
@@ -103,7 +103,7 @@ Amazon EKSでは利用者がetcdへ直接対処しないため、無効化して
 - `etcdMembersDown`
 - `etcdNoLeader`
 
-> - https://runbooks.prometheus-operator.dev/runbooks/etcd/
+> - [etcd \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/etcd/)
 
 <br>
 
@@ -115,7 +115,7 @@ EKS内部の仕組みがこの証明書を自動更新する。
 
 そのため、利用者が証明書を手動で更新する必要がなく、このアラートを通知する必要性は低い。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletservercertificateexpiration/
+> - [Kubelet Server Certificate Expiration \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletservercertificateexpiration/)
 
 <br>
 
@@ -127,7 +127,7 @@ kubeletの証明書ローテーション機能がこの証明書も自動更新�
 
 そのため、EKS上では利用者が手動で更新する必要がなく、このアラートを通知する必要性は低い。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificateexpiration/
+> - [Kubelet Client Certificate Expiration \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificateexpiration/)
 > - https://kubernetes.io/docs/tasks/tls/certificate-rotation/
 
 <br>
@@ -140,7 +140,7 @@ kubeletの証明書ローテーション機能がこの証明書も自動更新�
 
 利用者側で更新失敗を検知する必要性を踏まえて、無効化を判断する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletservercertificaterenewalerrors/
+> - [Kubelet Server Certificate Renewal Errors \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletservercertificaterenewalerrors/)
 
 #### ▼ `KubeletClientCertificateRenewalErrors`
 
@@ -148,7 +148,7 @@ kubeletの証明書ローテーション機能がこの証明書も自動更新�
 
 利用者側で更新失敗を検知する必要性を踏まえて、無効化を判断する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificaterenewalerrors/
+> - [Kubelet Client Certificate Renewal Errors \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeletclientcertificaterenewalerrors/)
 
 #### ▼ `KubeClientCertificateExpiration`
 
@@ -156,7 +156,7 @@ Kubernetes API Serverへ接続したクライアント証明書の有効期限�
 
 EKS内部の証明書だけでなく、利用者が作成したクライアント証明書も対象になる可能性があるため、クライアント証明書による認証を使用しているかを踏まえて無効化を判断する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeclientcertificateexpiration/
+> - [Kube Client Certificate Expiration \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeclientcertificateexpiration/)
 
 #### ▼ `KubeAPIDown`
 
@@ -164,7 +164,7 @@ Kubernetes API Serverからレスポンスがなくなると発火する。
 
 利用者影響の検知やAWSへの問い合わせに使うかを踏まえて、無効化を判断する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown/
+> - [Kube API Down \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown/)
 
 #### ▼ `KubeAPIErrorBudgetBurn`
 
@@ -172,7 +172,7 @@ Kubernetes API Serverのエラー率またはレイテンシーによってエ�
 
 利用者影響の早期検知やAWSへの問い合わせに使うかを踏まえて、無効化を判断する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapierrorbudgetburn/
+> - [Kube API Error Budget Burn \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapierrorbudgetburn/)
 
 #### ▼ `KubeAPITerminatedRequests`
 
@@ -180,7 +180,7 @@ Kubernetes API Serverがリクエストを終了すると発火する。
 
 API操作への影響を監視するかを踏まえて、無効化を判断する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapiterminatedrequests/
+> - [Kube API Terminated Requests \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapiterminatedrequests/)
 
 #### ▼ `KubeAggregatedAPIDown`
 
@@ -188,7 +188,7 @@ API操作への影響を監視するかを踏まえて、無効化を判断す�
 
 対象の拡張APIを使用しているかを踏まえて、無効化を判断する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapidown/
+> - [Kube Aggregated API Down \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapidown/)
 
 #### ▼ `KubeAggregatedAPIErrors`
 
@@ -196,8 +196,8 @@ API操作への影響を監視するかを踏まえて、無効化を判断す�
 
 対象の拡張APIを使用しているかを踏まえて、無効化を判断する。
 
-> - https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapierrors/
+> - [Kube Aggregated API Errors \| kube-prometheus runbooks](https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapierrors/)
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/eks-architecture.html
+> - [Amazon EKS architecture - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/eks-architecture.html)
 
 <br>

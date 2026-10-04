@@ -9,7 +9,7 @@ description: vite＠JavaScriptの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: vite＠JavaScriptの知見を記録しています。
 $ vite build
 ```
 
-> - https://vite.dev/guide/cli#vite-build
+> - [Command Line Interface \| Vite](https://vite.dev/guide/cli#vite-build)
 
 <br>
 
@@ -40,7 +40,7 @@ $ vite dev
 $ vite
 ```
 
-> - https://vite.dev/guide/cli#vite
+> - [Command Line Interface \| Vite](https://vite.dev/guide/cli#vite)
 
 #### ▼ --host
 
@@ -55,8 +55,8 @@ $ vite dev --host
 $ vite dev --host 0.0.0.0
 ```
 
-> - https://qiita.com/Junpei_Takagi/items/3615505dcabd2e97f3e1
-> - https://vite.dev/config/server-options#server-host
+> - [【Vue3】Viteで起動したローカル開発サーバーにIPアドレスで外部からアクセスする方法 #Vue.js - Qiita](https://qiita.com/Junpei_Takagi/items/3615505dcabd2e97f3e1)
+> - [Server Options \| Vite](https://vite.dev/config/server-options#server-host)
 
 <br>
 

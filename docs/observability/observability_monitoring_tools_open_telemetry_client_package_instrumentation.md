@@ -7,7 +7,7 @@ description: 計装＠OpenTelemetryの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -32,13 +32,13 @@ OpenTelemetry の TracerProvider をアプリケーションの実行時に動�
 自動計装は手動計装より処理が増えるため、言語 (例：Java) によっては起動パフォーマンスに影響する可能性がある。
 
 > - https://opentelemetry.io/docs/instrumentation/
-> - https://buildersbox.corp-sansan.com/entry/2023/05/15/110000
+> - [Vol. 04 Cloud RunでCloud Trace以外のAPMを使う場合の一工夫 - Sansan Tech Blog](https://buildersbox.corp-sansan.com/entry/2023/05/15/110000)
 
 #### ▼ インタプリタ言語
 
 インタプリタ言語 (実行時にコンパイルする言語) の場合、実行時に動的にパッチを組み込むツール (例：モンキーパッチ) を使用する。
 
-> - https://blog.ojisan.io/otel-node-sdk/
+> - [OpenTelemetry の Node.js Example で SDKが何をしているのか \| blog.ojisan.io](https://blog.ojisan.io/otel-node-sdk/)
 > - https://opentelemetry.io/docs/languages/python/automatic/example/
 
 **＊例＊**
@@ -53,7 +53,7 @@ $ export OTEL_SERVICE_NAME="<サービス名>"
 $ node --require @opentelemetry/auto-instrumentations-node/register app.js
 ```
 
-> - https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=24
+> - [計測の手間を省きたい！OpenTelemetry に見る”自動計装”のイマ / Getting started auto instrumentation with OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=24)
 
 ```bash
 # Pythonの場合
@@ -63,7 +63,7 @@ $ export OTEL_SERVICE_NAME="<サービス名>"
 $ opentelemetry-instrument python app.py
 ```
 
-> - https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=25
+> - [計測の手間を省きたい！OpenTelemetry に見る”自動計装”のイマ / Getting started auto instrumentation with OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=25)
 
 #### ▼ コンパイル言語
 
@@ -84,7 +84,7 @@ $ export OTEL_SERVICE_NAME="<サービス名>"
 $ java -jar app.jar
 ```
 
-> - https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=23
+> - [計測の手間を省きたい！OpenTelemetry に見る”自動計装”のイマ / Getting started auto instrumentation with OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=23)
 
 <br>
 
@@ -109,6 +109,6 @@ $ java -jar app.jar
 
 記入中...
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html
+> - [マイクロサービスの障害で胃を痛めないための「シン・オブザーバビリティ基盤」をOpenTelemetryで作る：Cloud Nativeチートシート（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2303/07/news009.html)
 
 <br>

@@ -9,7 +9,7 @@ description: Amazon RDS＠AWSリソース
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -56,7 +56,7 @@ Amazon RDS は、EC2 内に DBMS が稼働したものであるが、このほ�
 
 そのため DB サーバーのようには操作できず、OS のバージョン確認や SSH 公開鍵認証を行えない。
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/
+> - [［5］RDSのつまずきポイント、DBサーバーと思うと失敗する \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/)
 
 #### ▼ 確認方法
 
@@ -90,7 +90,7 @@ SHOW VARIABLES LIKE '%version%';
 
 DB クラスター/DB インスタンスの設定変更をスケジュールする。
 
-> - https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/
+> - [Amazon RDS メンテナンスのよくある問い合わせを紹介してみる \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/)
 
 <br>
 
@@ -110,7 +110,7 @@ Amazon CloudWatch Metrics の `DatabaseConnections` メトリクスから、DB �
 
 『次のメンテナンスウィンドウ』を選択すれば、実行タイミングをメンテナンスウィンドウ内に設定できる。ただし、これを選択しない場合は『日付の適用』に表示された時間帯で強制実行される。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html
+> - [Maintaining a DB instance - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html)
 
 補足として保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
 
@@ -193,8 +193,8 @@ $ aws rds modify-db-instance \
     --apply-immediately
 ```
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.ApplyImmediately
-> - https://qiita.com/tinoji/items/e150ffdc2045e8b85a56
+> - [Modifying an Amazon RDS DB instance - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.ApplyImmediately)
+> - [RDSのインスタンス変更をキャンセルする #AWS - Qiita](https://qiita.com/tinoji/items/e150ffdc2045e8b85a56)
 
 <br>
 
@@ -214,7 +214,7 @@ $ aws rds modify-db-instance \
 | マイナーバージョン自動アップグレード | なし               | エンジンバージョンの変更にはダウンタイムが発生するが、自動アップグレードの設定にはダウンタイムが発生しない。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ストレージの AutoScaling             | なし               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+> - [Modifying an Amazon RDS DB instance - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings)
 
 <br>
 
@@ -224,7 +224,7 @@ $ aws rds modify-db-instance \
 
 スタンバイレプリカがプライマリーインスタンスに昇格する。
 
-- https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html
+- [Configuring and managing a Multi-AZ deployment for Amazon RDS - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html)
 
 <br>
 
@@ -242,11 +242,11 @@ DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用�
 
 : 特定の条件下のみで、フェイルオーバーが自動的に実行される。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover
+> - [Configuring and managing a Multi-AZ deployment for Amazon RDS - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html#Concepts.MultiAZ.Failover)
 
 (3) Amazon RDS の Amazon RDS では条件に当てはまらない場合、リードレプリカを手動でフェイルオーバーさせる。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime
+> - [Upgrades of the RDS for MySQL DB engine - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.ReducedDowntime)
 
 (4) フェイルオーバー時に約 `1`～`2` 分のダウンタイムが発生する。
 
@@ -258,7 +258,7 @@ DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用�
 
 コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探したほうがよい。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html
+> - [Amazon RDS event categories and event messages - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html)
 
 <br>
 
@@ -284,7 +284,7 @@ Amazon RDS プロキシは、Amazon RDS の同時接続の上限数を考慮し�
 
 ![aws_rds-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy.png)
 
-> - https://blog.denet.co.jp/service-relay-2021-0711/
+> - [【RDS】AWSサービスしりとりリレー 第11日目 - DENET 技術ブログ](https://blog.denet.co.jp/service-relay-2021-0711/)
 > - https://blog.sgnet.co.jp/2020/10/java-db.html
 
 <br>
@@ -301,6 +301,6 @@ Amazon RDS には DB 接続の上限数があり、前段に Amazon RDS プロ�
 
 ![aws_rds-proxy_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy_lambda.png)
 
-> - https://qiita.com/teradonburi/items/86400ea82a65699672ad
+> - [Lambda+RDSはアンチパターン #AWS - Qiita](https://qiita.com/teradonburi/items/86400ea82a65699672ad)
 
 <br>

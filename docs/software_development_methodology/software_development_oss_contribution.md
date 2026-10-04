@@ -9,7 +9,7 @@ description: OSSコントリビューション＠開発手法の知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,8 +21,8 @@ OSS によっては、`help wanted` や `good first issue` といったラベル
 
 OSS コントリビューションに入門しやすくなっている。
 
-> - https://clotributor.dev/
-> - https://www.kubernetes.dev/docs/guide/help-wanted/
+> - [CLOTributor](https://clotributor.dev/)
+> - [Help Wanted and Good First Issue Labels \| Kubernetes Contributors](https://www.kubernetes.dev/docs/guide/help-wanted/)
 
 <br>
 
@@ -30,7 +30,7 @@ OSS コントリビューションに入門しやすくなっている。
 
 OSS コントリビューションするためのツールに関するバグを修正する。
 
-> - https://speakerdeck.com/bells17/kubernetes-code-contributionru-men?slide=28
+> - [Kubernetes Code Contribution入門 - Speaker Deck](https://speakerdeck.com/bells17/kubernetes-code-contributionru-men?slide=28)
 
 <br>
 
@@ -38,7 +38,7 @@ OSS コントリビューションするためのツールに関するバグを�
 
 エディタで Warning がでる箇所を修正する。
 
-> - https://speakerdeck.com/bells17/kubernetes-code-contributionru-men?slide=22
+> - [Kubernetes Code Contribution入門 - Speaker Deck](https://speakerdeck.com/bells17/kubernetes-code-contributionru-men?slide=22)
 
 <br>
 
@@ -50,7 +50,7 @@ OSS コントリビューションするためのツールに関するバグを�
 
 公式リポジトリのフォークリポジトリを作る。
 
-> - https://www.kubernetes.dev/docs/guide/github-workflow/
+> - [GitHub Workflow \| Kubernetes Contributors](https://www.kubernetes.dev/docs/guide/github-workflow/)
 
 #### 2. 開発環境にフォークリポジトリをクローンする
 
@@ -60,7 +60,7 @@ OSS コントリビューションするためのツールに関するバグを�
 $ git clone --depth 1 git@github.com:hiroki-it/kubernetes.git
 ```
 
-> - https://www.kubernetes.dev/docs/guide/github-workflow/
+> - [GitHub Workflow \| Kubernetes Contributors](https://www.kubernetes.dev/docs/guide/github-workflow/)
 
 #### 3. ユーザー名とメールを登録する
 
@@ -112,8 +112,8 @@ $ git rebase upstream/master
 $ git reset --hard origin/master
 ```
 
-> - https://www.kubernetes.dev/docs/guide/github-workflow/
-> - https://qiita.com/xtetsuji/items/555a1ef19ed21ee42873
+> - [GitHub Workflow \| Kubernetes Contributors](https://www.kubernetes.dev/docs/guide/github-workflow/)
+> - [GitHubでFork/cloneしたリポジトリを本家リポジトリに追従する #Git - Qiita](https://qiita.com/xtetsuji/items/555a1ef19ed21ee42873)
 
 #### 6. 変更をコミットする
 
@@ -127,7 +127,7 @@ $ git checkout -b feature/add_foo
 $ git commit
 ```
 
-> - https://www.kubernetes.dev/docs/guide/github-workflow/
+> - [GitHub Workflow \| Kubernetes Contributors](https://www.kubernetes.dev/docs/guide/github-workflow/)
 
 #### 7. フォークリポジトリにコミットをプッシュする
 
@@ -137,13 +137,13 @@ $ git commit
 $ git push https://github.com/hiroki-it/kubernetes/kubernetes.git feature/add_foo
 ```
 
-> - https://www.kubernetes.dev/docs/guide/github-workflow/
+> - [GitHub Workflow \| Kubernetes Contributors](https://www.kubernetes.dev/docs/guide/github-workflow/)
 
 #### 8. プルリクエストを作る
 
 フォークリポジトリ上の作業ブランチから公式リポジトリに対してプルリクエストを作る。
 
-> - https://www.kubernetes.dev/docs/guide/github-workflow/
+> - [GitHub Workflow \| Kubernetes Contributors](https://www.kubernetes.dev/docs/guide/github-workflow/)
 
 <br>
 
@@ -153,7 +153,7 @@ $ git push https://github.com/hiroki-it/kubernetes/kubernetes.git feature/add_fo
 
 ライセンス契約後、プルリクエストで `/easycla` というコメントを送信する。
 
-> - https://www.kubernetes.dev/docs/guide/pull-requests/#the-pull-request-submit-process
+> - [Pull Request Process \| Kubernetes Contributors](https://www.kubernetes.dev/docs/guide/pull-requests/#the-pull-request-submit-process)
 > - https://github.com/kubernetes/community/blob/master/CLA.md
 
 <br>
@@ -170,7 +170,7 @@ $ make test
 $ make test-integration
 ```
 
-> - https://www.kubernetes.dev/docs/guide/pull-requests/#run-local-verifications
+> - [Pull Request Process \| Kubernetes Contributors](https://www.kubernetes.dev/docs/guide/pull-requests/#run-local-verifications)
 
 <br>
 
@@ -211,6 +211,6 @@ kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: fu
 kubernetes/staging/src/k8s.io/cluster-bootstrap/util/secrets/secrets.go:66:3: function "V" should not be used, convert to contextual logging
 ```
 
-> - https://github.com/kubernetes-sigs/logtools/tree/main/logcheck
+> - [logtools/logcheck at main · kubernetes-sigs/logtools · GitHub](https://github.com/kubernetes-sigs/logtools/tree/main/logcheck)
 
 <br>

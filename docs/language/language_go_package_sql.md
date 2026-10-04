@@ -23,7 +23,7 @@ Go 製の ORM である。
 
 執筆時点 (2022/01/31) では、gorm と beego が接戦している。
 
-> - https://github.com/d-tsuji/awesome-go-orms
+> - [GitHub - d-tsuji/awesome-go-orms: ORMs for Go, most starred on GitHub. · GitHub](https://github.com/d-tsuji/awesome-go-orms)
 
 <br>
 
@@ -75,7 +75,7 @@ func Close(db *gorm.DB) error {
 }
 ```
 
-> - https://gorm.io/docs/connecting_to_the_database.html#MySQL
+> - [Connecting to a Database \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/connecting_to_the_database.html#MySQL)
 
 <br>
 
@@ -106,7 +106,7 @@ type User struct {
 }
 ```
 
-> - https://gorm.io/docs/models.html#embedded_struct
+> - [Declaring Models \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/models.html#embedded_struct)
 
 #### ▼ DB へのマッピング
 
@@ -132,7 +132,7 @@ type User struct {
 }
 ```
 
-> - https://gorm.io/docs/models.html#Conventions
+> - [Declaring Models \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/models.html#Conventions)
 
 #### ▼ プライマリーキー
 
@@ -158,7 +158,7 @@ type User struct {
 }
 ```
 
-> - https://gorm.io/docs/conventions.html#ID-as-Primary-Key
+> - [Conventions \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/conventions.html#ID-as-Primary-Key)
 
 #### ▼ SoftDelete
 
@@ -189,7 +189,7 @@ db.Where("age = ?", 20).Delete(&User{})
 db.Where("age = 20").Find(&user)
 ```
 
-> - https://gorm.io/docs/delete.html#Soft-Delete
+> - [Delete \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/delete.html#Soft-Delete)
 
 <br>
 
@@ -217,7 +217,7 @@ func (User) TableName() string {
 }
 ```
 
-> - https://gorm.io/docs/conventions.html#TableName
+> - [Conventions \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/conventions.html#TableName)
 
 <br>
 
@@ -266,7 +266,7 @@ func CreateFoo(db *gorm.DB) error {
 }
 ```
 
-> - https://gorm.io/docs/transactions.html#A-Specific-Example
+> - [Transactions \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/transactions.html#A-Specific-Example)
 
 <br>
 
@@ -290,7 +290,7 @@ result.Error
 result.RowsAffected
 ```
 
-> - https://gorm.io/docs/create.html#Create-Record
+> - [Create \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/create.html#Create-Record)
 
 <br>
 
@@ -313,7 +313,7 @@ result.RowsAffected
 result.Error
 ```
 
-> - https://gorm.io/docs/query.html#Retrieving-all-objects
+> - [Query \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/query.html#Retrieving-all-objects)
 
 #### ▼ 単一/複数レコード取得
 
@@ -332,7 +332,7 @@ db.First(&user, "10")
 db.Find(&users, []int{1,2,3})
 ```
 
-> - https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key
+> - [Query \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/query.html#Retrieving-objects-with-primary-key)
 
 <br>
 
@@ -359,7 +359,7 @@ db.Model(&user).Update("name", "hello")
 db.Model(&user).Where("active = ?", true).Update("name", "hello")
 ```
 
-> - https://gorm.io/docs/update.html#Update-single-column
+> - [Update \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/update.html#Update-single-column)
 
 #### ▼ 複数レコード更新 (暗黙的)
 
@@ -379,7 +379,7 @@ db.Model(&user).Updates(User{Name: "hello", Age: 18, Active: "false"})
 db.Model(&user).Updates(map[string]interface{}{"name": "hello", "age": 18, "active": "false"})
 ```
 
-> - https://gorm.io/docs/update.html#Updates-multiple-columns
+> - [Update \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/update.html#Updates-multiple-columns)
 
 #### ▼ 複数レコード更新 (明示的)
 
@@ -397,7 +397,7 @@ db.Model(&user).Select("Name", "Age").Updates(User{Name: "new_name", Age: 0})
 db.Model(&user).Select("*").Updates(User{Name: "jinzhu", Role: "admin", Age: 0})
 ```
 
-> - https://gorm.io/docs/update.html#Update-Selected-Fields
+> - [Update \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/update.html#Update-Selected-Fields)
 
 #### ▼ 全レコード更新
 
@@ -416,7 +416,7 @@ user.Age = 100
 db.Save(&user)
 ```
 
-> - https://gorm.io/docs/update.html#Save-All-Fields
+> - [Update \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/update.html#Save-All-Fields)
 
 <br>
 
@@ -441,7 +441,7 @@ defer cancel()
 db.WithContext(ctx).Find(&users)
 ```
 
-> - https://gorm.io/docs/context.html#Context-Timeout
+> - [Context \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/context.html#Context-Timeout)
 > - https://elahe-dstn.medium.com/query-timeout-a-gopher-perspective-3caa221566e0
 
 <br>
@@ -462,7 +462,7 @@ db.Exec("UPDATE users SET money = ? WHERE name = ?", gorm.Expr("money * ? + ?", 
 db.Exec(fmt.Sprintf("SET SESSION max_execution_time=%d;", 10))
 ```
 
-> - https://gorm.io/docs/sql_builder.html
+> - [SQL Builder \| GORM - The fantastic ORM library for Golang, aims to be developer friendly.](https://gorm.io/docs/sql_builder.html)
 
 <br>
 

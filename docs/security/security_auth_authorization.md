@@ -9,7 +9,7 @@ description: 認可＠認証／認可の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: 認可＠認証／認可の知見を記録しています。
 
 ![authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/authorization.png)
 
-> - https://www.osohq.com/academy/what-is-authorization
+> - [Authorization Academy - What is Authorization?](https://www.osohq.com/academy/what-is-authorization)
 > - https://dev.classmethod.jp/articles/authentication-and-authorization/#toc-2
 
 <br>

@@ -13,7 +13,7 @@ Webpack を Laravel を介して操作できるパッケージのこと。
 
 Breeze パッケージにも同梱されている。
 
-> - https://readouble.com/laravel/8.x/ja/mix.html
+> - [8.x アセットのコンパイル（Mix） Laravel](https://readouble.com/laravel/8.x/ja/mix.html)
 
 <br>
 
@@ -40,7 +40,7 @@ $ npm run watch
 
 ## 02. 認証系パッケージ
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_package_auth.html
+> - [【IT技術の知見】認証／認可系パッケージ＠Laravel - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_package_auth.html)
 
 <br>
 
@@ -50,7 +50,7 @@ $ npm run watch
 
 #### ▼ コード
 
-> - https://github.com/BenSampo/laravel-enum
+> - [GitHub - BenSampo/laravel-enum: Simple, extensible and powerful enumeration implementation for Laravel. · GitHub](https://github.com/BenSampo/laravel-enum)
 
 #### ▼ enum 型のクラスの定義
 
@@ -155,7 +155,7 @@ $staff->roleType->isSalesRole(); // false
 
 PHPStrom で Laravel を開発する場合、拡張機能を提供する。
 
-> - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
+> - [GitHub - barryvdh/laravel-ide-helper: IDE Helper for Laravel · GitHub](https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances)
 > - https://pleiades.io/help/phpstorm/laravel.html
 
 プロバイダーを `app.php` ファイルに登録する必要がある。
@@ -184,7 +184,7 @@ return [
 
 PHPStrom で、関数が定義された場所にジャンプできるように、`_ide_helper.php` ファイルを作成する。
 
-> - https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades
+> - [GitHub - barryvdh/laravel-ide-helper: IDE Helper for Laravel · GitHub](https://github.com/barryvdh/laravel-ide-helper#automatic-phpdoc-generation-for-laravel-facades)
 
 ```bash
 $ php artisan ide-helper:generate
@@ -194,7 +194,7 @@ $ php artisan ide-helper:generate
 
 PHPStrom で、Laravel の Eloquent モデルでのアノテーションを自動作成する。
 
-> - https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models
+> - [GitHub - barryvdh/laravel-ide-helper: IDE Helper for Laravel · GitHub](https://github.com/barryvdh/laravel-ide-helper#automatic-PHPDocs-for-models)
 
 ```bash
 $ php artisan ide-helper:models
@@ -204,7 +204,7 @@ $ php artisan ide-helper:models
 
 PHPStrom で、Laravel の関数を予測表示できるように、`phpstorm.meta.php` ファイルを作成する。
 
-> - https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances
+> - [GitHub - barryvdh/laravel-ide-helper: IDE Helper for Laravel · GitHub](https://github.com/barryvdh/laravel-ide-helper#phpstorm-meta-for-container-instances)
 
 ```bash
 $ php artisan ide-helper:meta

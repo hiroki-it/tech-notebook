@@ -9,7 +9,7 @@ description: Google Cloud CLI＠Google Cloudリソースの知見を記録して
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -58,7 +58,7 @@ Traceback (most recent call last):
 
 プリンシパル (例：ユーザー、サービスアカウント、グループ、ドメイン、Kubernetes の ServiceAccount) の認証する。
 
-> - https://cloud.google.com/sdk/gcloud/reference/auth
+> - [gcloud auth \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/auth)
 
 #### ▼ activate-service-account
 
@@ -94,8 +94,8 @@ ACTIVE  ACCOUNT
 *       bar-serviceaccount@bar-project.iam.gserviceaccount.com
 ```
 
-> - https://cloud.google.com/sdk/gcloud/reference/auth/activate-service-account
-> - https://qiita.com/zaru/items/a419f306385f240e4fe6#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E8%AA%8D%E8%A8%BC
+> - [gcloud auth activate-service-account \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/auth/activate-service-account)
+> - [gcloudコマンドをサーバにインストールして認証する #GoogleCloud - Qiita](https://qiita.com/zaru/items/a419f306385f240e4fe6#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E8%AA%8D%E8%A8%BC)
 > - https://stackoverflow.com/a/52387709
 
 #### ▼ application-default login
@@ -123,7 +123,7 @@ $ gcloud auth application-default login
 }
 ```
 
-> - https://christina04.hatenablog.com/entry/gcp-auth
+> - [gcloud auth login と gcloud auth application-default login - Carpe Diem](https://christina04.hatenablog.com/entry/gcp-auth)
 
 #### ▼ list
 
@@ -148,7 +148,7 @@ Google Cloud SDK による Google Cloud リソースへのアクセスを認証�
 $ gcloud auth login
 ```
 
-> - https://christina04.hatenablog.com/entry/gcp-auth
+> - [gcloud auth login と gcloud auth application-default login - Carpe Diem](https://christina04.hatenablog.com/entry/gcp-auth)
 
 #### ▼ login --update-adc
 
@@ -160,7 +160,7 @@ $ gcloud auth login
 $ gcloud auth login --update-adc
 ```
 
-> - https://blog.pokutuna.com/entry/application-default-credentials
+> - [GCP の Application Default Credentials を使った認証 - ぽ靴な缶](https://blog.pokutuna.com/entry/application-default-credentials)
 
 #### ▼ print-access-token
 
@@ -265,7 +265,7 @@ The latest available version is: 400.0.0
 └──────────────────┴──────────────────────────────────────────────────────┴──────────────────────────┴──────────┘
 ```
 
-> - https://cloud.google.com/sdk/docs/components
+> - [Managing gcloud CLI components \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/docs/components)
 
 <br>
 
@@ -306,7 +306,7 @@ foo   False      example@gmail.com   foo-project
 bar   True
 ```
 
-> - https://cloud.google.com/sdk/gcloud/reference/config/configurations/create
+> - [gcloud config configurations create \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/config/configurations/create)
 
 #### ▼ list
 
@@ -320,7 +320,7 @@ foo   False      example@gmail.com   foo-project
 bar   True       example@gmail.com   bar-project
 ```
 
-> - https://cloud.google.com/sdk/gcloud/reference/config/configurations/list
+> - [gcloud config configurations list \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/config/configurations/list)
 
 #### ▼ rename
 
@@ -353,7 +353,7 @@ bar       True       example@gmail.com   bar-project   asia-northeast1-a
 $ gcloud config configurations activate foo-foo
 ```
 
-> - https://cloud.google.com/sdk/gcloud/reference/config/configurations/rename
+> - [gcloud config configurations rename \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/config/configurations/rename)
 
 <br>
 
@@ -419,7 +419,7 @@ foo   False      example@gmail.com   foo-project   asia-northeast1-a
 bar   True       example@gmail.com   bar-project   asia-northeast1-a
 ```
 
-> - https://qiita.com/sonots/items/906798c408132e26b41c
+> - [gcloud でプロジェクトの切り替え設定 #GoogleCloud - Qiita](https://qiita.com/sonots/items/906798c408132e26b41c)
 
 <br>
 
@@ -427,7 +427,7 @@ bar   True       example@gmail.com   bar-project   asia-northeast1-a
 
 #### ▼ container clusters とは
 
-> - https://cloud.google.com/sdk/gcloud/reference/container/clusters
+> - [gcloud container clusters \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/container/clusters)
 
 #### ▼ list
 
@@ -442,7 +442,7 @@ NAME               LOCATION         MASTER_VERSION   MASTER_IP    MACHINE_TYPE  
 foo-gke-cluster    asia-northeast1  1.22.0-gke       *.*.*.*      e2-medium      1.22.0-gke      3           RUNNING
 ```
 
-> - https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters
+> - [Manage clusters \| Google Kubernetes Engine (GKE) \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/managing-clusters#viewing_your_clusters)
 
 <br>
 
@@ -597,7 +597,7 @@ foo-project-***    foo-project   *****
 bar-project-***    bar-project   *****
 ```
 
-> - https://cloud.google.com/sdk/gcloud/reference/projects/list
+> - [gcloud projects list \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/projects/list)
 
 <br>
 
@@ -613,7 +613,7 @@ Google Cloud Logging からログを読み出す。
 $ gcloud logging read 'resource.labels.container_name="foo-container"' --limit 1
 ```
 
-> - https://cloud.google.com/sdk/gcloud/reference/logging/read
+> - [gcloud logging read \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/logging/read)
 
 #### ▼ write
 
@@ -631,8 +631,8 @@ $ gcloud logging write test-log "これはテストログです"
 $ gcloud logging write --payload-type=json test-log '{"id":1,"name":"これはテストログです"}'
 ```
 
-> - https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E9%9D%9E%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF
-> - https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF
+> - [GCPチュートリアル試行「Stackdriver Logging でログエントリの読み取りと書き込み」 #GoogleCloud - Qiita](https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E9%9D%9E%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF)
+> - [GCPチュートリアル試行「Stackdriver Logging でログエントリの読み取りと書き込み」 #GoogleCloud - Qiita](https://qiita.com/sky0621/items/383153cf5c7458dd0005#%E6%A7%8B%E9%80%A0%E5%8C%96%E3%83%AD%E3%82%B0%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF)
 
 ### Google Cloud Storage
 
@@ -644,7 +644,7 @@ $ gcloud logging write --payload-type=json test-log '{"id":1,"name":"これは�
 $ gcloud storage cp gs://<Google Cloud Storage名>/<オブジェクトのファイルパス> <ローカルマシンのファイルパス>
 ```
 
-> - https://cloud.google.com/sdk/gcloud/reference/storage/cp
+> - [gcloud storage cp \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/storage/cp)
 
 ディレクトリごとコピーする場合は、`--recursive` オプションを使用する。
 

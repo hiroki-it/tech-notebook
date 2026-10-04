@@ -9,7 +9,7 @@ description: goldilocks＠ベストプラクティス違反の知見を記録し
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -36,7 +36,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/goldilocks
 $ kubectl -n goldilocks port-forward svc/goldilocks-dashboard 8080:80
 ```
 
-> - https://goldilocks.docs.fairwinds.com/installation/#installation-2
+> - [Installation \| goldilocks Documentation](https://goldilocks.docs.fairwinds.com/installation/#installation-2)
 
 <br>
 

@@ -9,7 +9,7 @@ description: 共通項目＠リソース定義の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: 共通項目＠リソース定義の知見を記録しています�
 | ------------ | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `finalizers` | `resources-finalizer.argocd.argoproj.io` | Application のカスケード削除をデフォルトで有効化する。これを有効化していると、マニフェスト管理ツール (例：Helm) で Application を削除した場合も、カスケード削除が実行される。削除がスタックすることが多発するため、使用しないほうがよい。 |
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/
+> - [App Deletion - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/)
 
 <br>
 

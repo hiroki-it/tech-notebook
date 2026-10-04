@@ -9,7 +9,7 @@ description: ブラックボックステスト＠マイクロサービスアー�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -42,6 +42,6 @@ description: ブラックボックステスト＠マイクロサービスアー�
 
 ![microservices_blackbox-test_external-api-mock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_blackbox-test_external-api-mock.png)
 
-> - https://semaphore.io/blog/test-microservices
+> - [How to Test Microservices](https://semaphore.io/blog/test-microservices)
 
 <br>

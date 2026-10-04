@@ -9,7 +9,7 @@ description: Codex＠LLMの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -87,7 +87,7 @@ SAFE_MESSAGE=$(echo "$TRIMMED_MESSAGE" | tr '\n' ' ' | sed 's/"/\\"/g')
 osascript -e "display notification \"$SAFE_MESSAGE\" with title \"Codexの作業が完了\""
 ```
 
-> - https://blog.lai.so/codex-rs-intro/
+> - [新Codex CLIの使い方](https://blog.lai.so/codex-rs-intro/)
 
 <br>
 

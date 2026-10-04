@@ -21,8 +21,8 @@ Kuberbetes オーケストレーションツール (例：Kubeadm) を組み合�
 
 仮想サーバーの各コンポーネントを作成する QEMU、仮想サーバーのライフサイクルを管理する libvirt などを使用している。
 
-> - https://github.com/kubevirt/kubevirt/blob/main/docs/vm-configuration.md#virtual-machine-configuration
-> - https://wiki.archlinux.jp/index.php/Libvirt
-> - https://xtech.nikkei.com/it/article/Keyword/20100709/350133/
+> - [kubevirt/docs/vm-configuration.md at main · kubevirt/kubevirt · GitHub](https://github.com/kubevirt/kubevirt/blob/main/docs/vm-configuration.md#virtual-machine-configuration)
+> - [libvirt - ArchWiki](https://wiki.archlinux.jp/index.php/Libvirt)
+> - [QEMU \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/Keyword/20100709/350133/)
 
 <br>

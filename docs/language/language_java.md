@@ -58,8 +58,8 @@ Java では、コードの実行前と実行中の二段階で機械語を翻訳
 : 結果的に、OS (制御プログラム？) へ依存せず、命令できる (C 言語) 。
 
 > - https://stackoverflow.com/a/1481903/12771072
-> - https://www.baeldung.com/java-jvm-warmup
-> - https://eng-entrance.com/java-jlt
+> - [How to Warm Up the JVM \| Baeldung](https://www.baeldung.com/java-jvm-warmup)
+> - [【2分でわかる】JavaのJITとは？ 簡単説明](https://eng-entrance.com/java-jlt)
 > - https://levelup.gitconnected.com/a-deep-dive-into-classloader-reflection-dynamic-typing-and-runtime-modifiable-classes-in-java-c83d6d689b2
 
 <br>
@@ -82,10 +82,10 @@ JVM 言語 (例：Java、Scala、Kotlin など) 製のアプリケーション�
 ![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png)
 
 > - https://stackoverflow.com/a/1481903/12771072
-> - https://www.baeldung.com/java-jvm-warmup
-> - https://eng-entrance.com/java-jlt
+> - [How to Warm Up the JVM \| Baeldung](https://www.baeldung.com/java-jvm-warmup)
+> - [【2分でわかる】JavaのJITとは？ 簡単説明](https://eng-entrance.com/java-jlt)
 > - https://levelup.gitconnected.com/a-deep-dive-into-classloader-reflection-dynamic-typing-and-runtime-modifiable-classes-in-java-c83d6d689b2
-> - https://speakerdeck.com/kazu_kichi_67/java-x-spring-bootzhi-apurikesiyonnokorudosutatonili-tixiang-kau?slide=14
+> - [Java x Spring Boot Warm up - Speaker Deck](https://speakerdeck.com/kazu_kichi_67/java-x-spring-bootzhi-apurikesiyonnokorudosutatonili-tixiang-kau?slide=14)
 
 #### ▼ ウォームアップの実装
 
@@ -93,15 +93,15 @@ JVM 言語 (例：Java、Scala、Kotlin など) 製のアプリケーション�
 
 ユーザーへの公開前に、このエンドポイントにリクエストを送信しておく。
 
-> - https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot
+> - [Liveness and Readiness Probes with Spring Boot](https://spring.io/blog/2020/03/25/liveness-and-readiness-probes-with-spring-boot)
 
 #### ▼ Kubernetes 環境の場合
 
 ReadinessProbe ヘルスチェックでウォームアップを実施する。
 
-> - https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48
-> - https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=49
-> - https://techblog.zozo.com/entry/zozomat-jvm-warmup
+> - [KubernetesでJVMアプリを動かすための実践的ノウハウ集 / JVM on Kubernetes - Speaker Deck](https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=48)
+> - [KubernetesでJVMアプリを動かすための実践的ノウハウ集 / JVM on Kubernetes - Speaker Deck](https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=49)
+> - [ZOZOMATにおけるJVMの暖機運転の導入と改善効果について - ZOZO TECH BLOG](https://techblog.zozo.com/entry/zozomat-jvm-warmup)
 
 <br>
 
@@ -119,7 +119,7 @@ JVM は以下でメモリを消費するため、これらすべてを合計し�
 - Thread
 - GC
 
-> - https://dev.classmethod.jp/articles/using-native-memory-by-jvm/
+> - [Using Native Memory by JVM \| DevelopersIO](https://dev.classmethod.jp/articles/using-native-memory-by-jvm/)
 
 <br>
 
@@ -129,6 +129,6 @@ JVM は以下でメモリを消費するため、これらすべてを合計し�
 
 コンテナイメージは、LTS (headless) が軽量なのでおすすめ。
 
-> - https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=27
+> - [KubernetesでJVMアプリを動かすための実践的ノウハウ集 / JVM on Kubernetes - Speaker Deck](https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=27)
 
 <br>

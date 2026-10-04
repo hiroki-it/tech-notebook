@@ -9,7 +9,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ IstioOperator は執筆時点 (2025/03/06) で非推奨であり、代わりに 
 
 ![istio_istio-operator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-operator.png)
 
-> - https://tetrate.io/blog/what-is-istio-operator/
+> - [What is an Istio Operator?](https://tetrate.io/blog/what-is-istio-operator/)
 > - https://github.com/istio-ecosystem/sail-operator/blob/main/docs/README.md#migrating-from-istio-in-cluster-operator
 
 <br>
@@ -45,6 +45,6 @@ IstioOperator + Istiod + Istio Ingress Gateway から、Istiod + Istio Ingress G
 
 IstioOperator が管理対象を判定するラベルを削除する。
 
-> - https://tech.gunosy.io/entry/migrate_from_istio_operator_to_helm
+> - [Istio Operatorやめました - Gunosy Tech Blog](https://tech.gunosy.io/entry/migrate_from_istio_operator_to_helm)
 
 <br>

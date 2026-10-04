@@ -9,7 +9,7 @@ description: Node Exporter＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -43,7 +43,7 @@ $ mv /tmp/node_exporter/node_exporter-1.0.0.linux-amd64 /usr/local/bin/node_expo
 $ /usr/local/bin/node_exporter --web.listen-address=":9100"
 ```
 
-> - https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88
+> - [prometheusポート変更起動方法メモ #centos7 - Qiita](https://qiita.com/ezaqiita/items/c3cd9faa2fd52da5d7a6#node-exporter%E3%81%AE%E5%A0%B4%E5%90%88)
 
 <br>
 
@@ -61,7 +61,7 @@ $ kubectl create namespace prometheus
 $ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus-node-exporter -n prometheus --version <バージョンタグ>
 ```
 
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter
+> - [helm-charts/charts/prometheus-node-exporter at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter)
 
 複数の Exporter を一括してインストールする場合、例えば kube-prometheus-stack チャートがある。
 
@@ -75,7 +75,7 @@ $ kubectl create namespace prometheus
 $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+> - [helm-charts/charts/kube-prometheus-stack at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 
 <br>
 
@@ -108,7 +108,7 @@ node_exporter_build_info{branch="HEAD",goversion="go1.15.8",revision="4e837d4da7
 ...
 ```
 
-> - https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics
+> - [Monitoring Linux host metrics with the Node Exporter \| Prometheus](https://prometheus.io/docs/guides/node-exporter/#node-exporter-metrics)
 > - https://grafana.com/oss/prometheus/exporters/node-exporter/assets/node_exporter_sample_scrape.txt
 
 <br>
@@ -124,7 +124,7 @@ Node の CPU 使用率を取得する。
 rate(node_cpu_seconds_total[1m])
 ```
 
-> - https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87
+> - [\[Prometheus\] Node ExporterでCPUとメモリとディスクを監視する #prometheus - Qiita](https://qiita.com/Esfahan/items/01833c1592910fb11858#cpu%E4%BD%BF%E7%94%A8%E7%8E%87)
 
 <br>
 
@@ -136,7 +136,7 @@ Node のメモリ使用率を取得する。
 node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
 ```
 
-> - https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87
+> - [\[Prometheus\] Node ExporterでCPUとメモリとディスクを監視する #prometheus - Qiita](https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8E%87)
 
 <br>
 
@@ -160,7 +160,7 @@ Node のディスク使用率を取得する。
 100 - (node_filesystem_avail_bytes{job="foo-node"} / node_filesystem_size_bytes{job="foo-node"} ) * 100
 ```
 
-> - https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F
+> - [\[Prometheus\] Node ExporterでCPUとメモリとディスクを監視する #prometheus - Qiita](https://qiita.com/Esfahan/items/01833c1592910fb11858#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E5%AE%B9%E9%87%8F)
 
 <br>
 
@@ -176,7 +176,7 @@ rate(node_disk_io_time_seconds_total[1m])
 ```
 
 > - https://brian-candler.medium.com/interpreting-prometheus-metrics-for-linux-disk-i-o-utilization-4db53dfedcfc
-> - https://christina04.hatenablog.com/entry/prometheus-node-monitoring
+> - [Prometheus でNodeのモニタリング - Carpe Diem](https://christina04.hatenablog.com/entry/prometheus-node-monitoring)
 > - https://www.qoosky.io/techs/42affa2c4b
 
 <br>
@@ -195,7 +195,7 @@ rate(node_disk_read_time_seconds_total[1m]) / rate(node_disk_reads_completed_tot
 rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_total[1m])
 ```
 
-> - https://christina04.hatenablog.com/entry/prometheus-node-monitoring
+> - [Prometheus でNodeのモニタリング - Carpe Diem](https://christina04.hatenablog.com/entry/prometheus-node-monitoring)
 
 <br>
 

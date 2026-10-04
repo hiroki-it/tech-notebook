@@ -9,7 +9,7 @@ description: 分散DB＠DB系ミドルウェアの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: 分散DB＠DB系ミドルウェアの知見を記録しています
 
 永続データを複数に分割して管理し、これらを組み合わせて単一の DB のように扱う。
 
-> - https://www.mongodb.com/resources/basics/databases/distributed-database
+> - [What Is A Distributed Database? \| MongoDB](https://www.mongodb.com/resources/basics/databases/distributed-database)
 
 <br>
 

@@ -9,7 +9,7 @@ description: 仮想化の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,7 +25,7 @@ description: 仮想化の知見を記録しています。
 
 物理サーバー上で、物理サーバーのハードウェアとソフトウェアの要素を完全に仮想化する。
 
-> - https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization
+> - [Explaining Hardware Virtualization and Containerization \| TechWell](https://www.techwell.com/techwell-insights/2019/09/explaining-hardware-virtualization-and-containerization)
 > - https://www.paloaltonetworks.jp/company/in-the-news/2019/making-containers-more-isolated-an-overview-of-sandboxed-container-technologies
 
 <br>
@@ -95,8 +95,8 @@ description: 仮想化の知見を記録しています。
 - LXC
 - OpenVZ
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
-> - https://news.mynavi.jp/techplus/article/zerocontena-7/
+> - [DockerがKubernetesのコードから消滅した理由、歴史的背景、ツールごとの対応方法総まとめ：Cloud Nativeチートシート（16） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html)
+> - [ITの基本から押さえるコンテナ入門(7) コンテナの選択肢 - DockerにKubernetes、どれを選ぶべき? \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/zerocontena-7/)
 
 <br>
 

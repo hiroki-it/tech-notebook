@@ -275,7 +275,7 @@ spec:
 
 > - https://karpenter.sh/preview/concepts/nodeclasses/#spectags
 > - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/#4-install-karpenter
-> - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
+> - [Maintain nodes yourself with self-managed nodes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/worker.html)
 
 #### ▼ ユーザー定義のタグ
 
@@ -548,7 +548,7 @@ spec:
 
 > - https://karpenter.sh/preview/concepts/nodepools/
 > - https://github.com/aws/karpenter/tree/main/examples/provisioner
-> - https://speakerdeck.com/toshikish/autoscaling-gitlab-ci-cd-with-karpenter?slide=31
+> - [【CI/CD 2023】Karpenter を活用した GitLab CI/CD ジョブ実行基盤の自動スケール - Speaker Deck](https://speakerdeck.com/toshikish/autoscaling-gitlab-ci-cd-with-karpenter?slide=31)
 
 <br>
 
@@ -671,7 +671,7 @@ spec:
 
 > - https://karpenter.sh/preview/concepts/nodepools/
 > - https://github.com/aws/karpenter/tree/main/examples/provisioner
-> - https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#provisioner%E4%BD%9C%E6%88%90
+> - [Karpenterのオートスケールを試してみました \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#provisioner%E4%BD%9C%E6%88%90)
 
 #### ▼ 指定できるキー名
 
@@ -742,7 +742,7 @@ data:
 ```
 
 > - https://karpenter.sh/preview/reference/settings/
-> - https://verifa.io/blog/how-to-create-nodeless-aws-eks-clusters-with-karpenter/index.html#enable-interruption-handling-optional
+> - [How to create nodeless AWS EKS clusters with Karpenter for autoscaling - Verifa](https://verifa.io/blog/how-to-create-nodeless-aws-eks-clusters-with-karpenter/index.html#enable-interruption-handling-optional)
 
 <br>
 
@@ -906,6 +906,6 @@ spec:
 ```
 
 > - https://karpenter.sh/docs/concepts/disruption/#pod-level-controls
-> - https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
+> - [Karpenter - Amazon EKS](https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html)
 
 <br>

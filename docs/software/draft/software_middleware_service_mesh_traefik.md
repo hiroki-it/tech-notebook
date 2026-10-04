@@ -9,7 +9,7 @@ description: Traefik＠サービスメッシュ系ミドルウェアの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -115,7 +115,7 @@ Cert Manager と連携する必要がある。
 }
 ```
 
-> - https://doc.traefik.io/traefik/v1.7/configuration/logs/
+> - [Logs \| Traefik \| v1.7](https://doc.traefik.io/traefik/v1.7/configuration/logs/)
 
 <br>
 
@@ -123,6 +123,6 @@ Cert Manager と連携する必要がある。
 
 Traefik Mesh は、内部で Traefik Proxy を使用するサービスメッシュである。
 
-> - https://doc.traefik.io/traefik-mesh/
+> - [Traefik Mesh: Simpler Service Mesh - Traefik Mesh](https://doc.traefik.io/traefik-mesh/)
 
 <br>

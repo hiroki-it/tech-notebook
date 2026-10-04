@@ -9,7 +9,7 @@ description: Composition API＠Vue.jsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -35,7 +35,7 @@ export function useTodo() {
 }
 ```
 
-> - https://qiita.com/silane1001/items/f5f61f51fd785e031eb1
-> - https://zenn.dev/gagaga/articles/state-management
+> - [【Vue3】もはやVuexとかPiniaって使わなくて良くない？ #Vue.js - Qiita](https://qiita.com/silane1001/items/f5f61f51fd785e031eb1)
+> - [「状態管理」って何？](https://zenn.dev/gagaga/articles/state-management)
 
 <br>

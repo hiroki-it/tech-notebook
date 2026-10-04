@@ -28,9 +28,9 @@ description: 可観測性の知見を記録しています。
 想定外の不具合はインシデントの原因になるため、想定外の不具合の表面化はインシデントの予防につながる。
 
 > - https://unlimited.humio.com/rs/756-LMY-106/images/Distributed-Systems-Observability-eBook.pdf#page=11
-> - https://sookocheff.com/post/architecture/testing-in-production/
-> - https://www.sentinelone.com/blog/observability-production-systems-why-how/
-> - https://kakakakakku.hatenablog.com/entry/2020/05/25/064548
+> - [Testing in Production — Building Observable Distributed Systems \| Kevin Sookocheff](https://sookocheff.com/post/architecture/testing-in-production/)
+> - [Observability in Your Systems: The Why and How \| Scalyr](https://www.sentinelone.com/blog/observability-production-systems-why-how/)
+> - [オブザーバビリティ（可観測性）とは何か？を学べる「Distributed Systems Observability」を読んだ - kakakakakku blog](https://kakakakakku.hatenablog.com/entry/2020/05/25/064548)
 
 <br>
 
@@ -59,7 +59,7 @@ NewRelic や Datadog はテレメトリーの要素をすべて持つ。
 また、AWS では CloudWatch (メトリクス+ログ) と X-Ray (分散トレース) を両方利用すると、これらの要素を満たせたことになり、可観測性を実現できる。
 
 > - https://www.forbes.com/sites/andythurai/2021/02/02/aiops-vs-observability-vs-monitoringwhat-is-the-difference-are-you-using-the-right-one-for-your-enterprise/
-> - https://knowledge.sakura.ad.jp/26395/
+> - [Observabilityをはじめよう！(前編) 〜Observabilityの背景と構成要素〜 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/26395/)
 
 <br>
 
@@ -71,7 +71,7 @@ NewRelic や Datadog はテレメトリーの要素をすべて持つ。
 
 多くの場合、各テレメトリーの収集ツールは別々に用意する必要があるが、OpenTelemetry ではこれらの収集機能をフレームワークとして提供しようとしている。
 
-> - https://syu-m-5151.hatenablog.com/entry/2022/07/12/115434
+> - [2022年版 OpenTelemetryを知れば世界が平和に - じゃあ、おうちで学べる](https://syu-m-5151.hatenablog.com/entry/2022/07/12/115434)
 > - https://www.splunk.com/en_us/data-insider/what-is-opentelemetry.html
 
 <br>

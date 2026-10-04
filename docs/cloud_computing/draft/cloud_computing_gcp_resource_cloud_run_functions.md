@@ -9,7 +9,7 @@ description: Google Cloud Run Functions＠Google Cloudリソースの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -83,7 +83,7 @@ resource "google_pubsub_topic" "foo_function" {
 data "google_client_config" "current" {}
 ```
 
-> - https://github.com/terraform-google-modules/terraform-google-event-function
+> - [GitHub - terraform-google-modules/terraform-google-event-function: Responds to logging events with a Cloud Function · GitHub](https://github.com/terraform-google-modules/terraform-google-event-function)
 
 ### 世代数 v2
 
@@ -178,7 +178,7 @@ resource "google_pubsub_topic" "foo_function" {
 data "google_client_config" "current" {}
 ```
 
-> - https://github.com/GoogleCloudPlatform/terraform-google-cloud-functions
-> - https://cloud.google.com/functions/docs/tutorials/terraform-pubsub?hl=ja#create_your_maintf_file
+> - [GitHub - GoogleCloudPlatform/terraform-google-cloud-functions: Deploys Cloud Functions (Gen 2) · GitHub](https://github.com/GoogleCloudPlatform/terraform-google-cloud-functions)
+> - [Terraform Pub/Sub のチュートリアル \| Cloud Run functions \| Google Cloud Documentation](https://cloud.google.com/functions/docs/tutorials/terraform-pubsub?hl=ja#create_your_maintf_file)
 
 <br>

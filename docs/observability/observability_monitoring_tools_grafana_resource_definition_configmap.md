@@ -62,7 +62,7 @@ spec:
           readOnly: "true"
 ```
 
-> - https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-datasources
+> - [helm-charts/charts/grafana at main · grafana/helm-charts · GitHub](https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-datasources)
 
 <br>
 
@@ -102,8 +102,8 @@ data:
               datasourceUid: Tempo
 ```
 
-> - https://grafana.com/grafana/plugins/prometheus/
-> - https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
+> - [Prometheus plugin for Grafana \| Grafana Labs](https://grafana.com/grafana/plugins/prometheus/)
+> - [Prometheus data source \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source)
 
 #### ▼ VictoriaMetrics の場合
 
@@ -132,7 +132,7 @@ data:
           timeInterval: 30s
 ```
 
-> - https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source
+> - [Prometheus data source \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/prometheus/#configure-the-data-source)
 
 #### ▼ Amazon CloudWatch の場合
 
@@ -157,8 +157,8 @@ data:
           defaultRegion: ap-northeast-1
 ```
 
-> - https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/#provision-the-data-source
-> - https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/query-editor/#common-query-editor-fields
+> - [Amazon CloudWatch data source \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/#provision-the-data-source)
+> - [Amazon CloudWatch query editor \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/query-editor/#common-query-editor-fields)
 
 #### ▼ Grafana Loki
 
@@ -201,9 +201,9 @@ data:
         basicAuth: false
 ```
 
-> - https://grafana.com/docs/grafana/latest/datasources/loki/#provision-the-data-source
+> - [Loki data source \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/loki/#provision-the-data-source)
 > - https://grafana.com/docs/grafana/next/datasources/loki/configure-loki-data-source/#derived-fields
-> - https://github.com/grafana/loki/issues/9209#issuecomment-1882710470
+> - [Derived fields in combination with line\_format · Issue #9209 · grafana/loki · GitHub](https://github.com/grafana/loki/issues/9209#issuecomment-1882710470)
 > - https://github.com/grafana/grafana/issues/92699#issuecomment-2374259684
 
 #### ▼ Grafana Tempo
@@ -268,8 +268,8 @@ data:
                 query: avg(container_memory_usage_bytes{__ignore_usage__="",$$__tags})
 ```
 
-> - https://grafana.com/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/#example-file
-> - https://grafana.com/docs/grafana/latest/datasources/zipkin/#provision-the-data-source
+> - [Configure the Tempo data source \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/tempo/configure-tempo-data-source/#example-file)
+> - [Zipkin data source \| Grafana documentation](https://grafana.com/docs/grafana/latest/datasources/zipkin/#provision-the-data-source)
 > - https://grafana.com/docs/grafana/latest/datasources/jaeger/#provision-the-data-source
 
 <br>
@@ -280,7 +280,7 @@ Grafana の `grafana.ini` ファイルを管理する。
 
 > - https://github.com/grafana/grafana/blob/main/conf/defaults.ini
 > - https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#configuration-file-location
-> - https://www.server-world.info/query?os=CentOS_Stream_9&p=grafana
+> - [CentOS Stream 9 : Grafana : インストール : Server World](https://www.server-world.info/query?os=CentOS_Stream_9&p=grafana)
 
 <br>
 
@@ -312,7 +312,7 @@ data:
 ```
 
 > - https://github.com/grafana/grafana/blob/v10.1.0/conf/defaults.ini#L565-L578
-> - https://github.com/grafana/grafana/issues/10727#issuecomment-832617680
+> - [Unauthorized · Issue #10727 · grafana/grafana · GitHub](https://github.com/grafana/grafana/issues/10727#issuecomment-832617680)
 
 <br>
 
@@ -634,7 +634,7 @@ data:
           path: /var/lib/grafana/dashboards/remote
 ```
 
-> - https://github.com/grafana/helm-charts/issues/127#issuecomment-776311048
+> - [Import Dashboard features · Issue #127 · grafana/helm-charts · GitHub](https://github.com/grafana/helm-charts/issues/127#issuecomment-776311048)
 
 <br>
 
@@ -713,8 +713,8 @@ data:
           path: /var/lib/grafana/dashboards/remote
 ```
 
-> - https://grafana.com/tutorials/provision-dashboards-and-data-sources/#provision-a-dashboard
-> - https://github.com/grafana/helm-charts/issues/127#issuecomment-776311048
+> - [Provision dashboards and data sources \| Grafana Labs](https://grafana.com/tutorials/provision-dashboards-and-data-sources/#provision-a-dashboard)
+> - [Import Dashboard features · Issue #127 · grafana/helm-charts · GitHub](https://github.com/grafana/helm-charts/issues/127#issuecomment-776311048)
 
 <br>
 
@@ -726,7 +726,7 @@ Grafana の `provider.yaml` ファイルを管理する。
 
 ダッシュボードのフォルダを定義できる。
 
-> - https://github.com/ezienecker/grafana-sidecar-folder-sample/tree/master
+> - [GitHub - ezienecker/grafana-sidecar-folder-sample: Installs the web dashboarding system Grafana with sidecar support. Additionally add dashboards from configmaps to specific folders in grafana. · GitHub](https://github.com/ezienecker/grafana-sidecar-folder-sample/tree/master)
 
 <br>
 
@@ -837,8 +837,8 @@ data:
     ` }}
 ```
 
-> - https://www.grugrut.net/posts/202008032123/
-> - https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-dashboards
+> - [kubernetes-mixinのダッシュボードでgrafanaダッシュボードを簡単に構築する - ぐるっとぐりっど](https://www.grugrut.net/posts/202008032123/)
+> - [helm-charts/charts/grafana at main · grafana/helm-charts · GitHub](https://github.com/grafana/helm-charts/tree/main/charts/grafana#sidecar-for-dashboards)
 
 <br>
 
@@ -941,7 +941,7 @@ data:
 
 またその他に、kubernetes-mixins も同時にインストールするようになっている。
 
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
-> - https://monitoring.mixins.dev
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14 at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14)
+> - [Prometheus Monitoring Mixins \| Monitoring Mixins](https://monitoring.mixins.dev)
 
 <br>

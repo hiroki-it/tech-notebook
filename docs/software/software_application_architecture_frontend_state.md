@@ -9,7 +9,7 @@ description: 状態管理＠フロントエンドアーキテクチャの知見�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -90,7 +90,7 @@ Vue.js では、意識せずに MVVM アーキテクチャで実装できるよ�
 
 - CSR
 
-> - http://fluorite2.sblo.jp/article/189587309.html
+> - [SSRアプリではMVCが主流で、SPAではMVVMが主流、だとしてそれは何故だろうか？: ほしまど のweblog](http://fluorite2.sblo.jp/article/189587309.html)
 
 <br>
 

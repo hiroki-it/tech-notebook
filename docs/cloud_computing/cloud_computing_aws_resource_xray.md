@@ -9,7 +9,7 @@ description: X-Ray＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -36,7 +36,7 @@ description: X-Ray＠AWSの知見を記録しています。
 
 EC2 であればデーモンプロセスとして、Amazon ECS であればサイドカーとして稼働させる。
 
-> - https://dev.classmethod.jp/articles/re-introduction-2022-x-ray/
+> - [AWS再入門ブログリレー2022 X-Ray編 \| DevelopersIO](https://dev.classmethod.jp/articles/re-introduction-2022-x-ray/)
 
 <br>
 
@@ -58,7 +58,7 @@ Amazon EKS で DamonSet として稼働させる。
 | Matching criteria   | スパンのキーに基づくフィルタリングの一致条件を設定する。                                 |
 | Matching attributes | AWS 以外の文脈で付与されたラベル (例：OpenTelemetry の Attribute) の一致条件を設定する。 |
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html
+> - [Configuring sampling rules - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)
 
 ### 暗号化
 
@@ -123,7 +123,7 @@ responsetime >= 5
 responsetime >= 5 AND responsetime <= 10
 ```
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html#console-filters-syntax
+> - [Using filter expressions - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html#console-filters-syntax)
 
 #### ▼ HTTP ヘッダー
 
@@ -199,8 +199,8 @@ subsegment.put_annotation("component", value)
 
 似たものとしてメタデータがあるが、こちらはフィルタリングに使用できない。
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-annotations
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python-segment.html#xray-sdk-python-segment-annotations
+> - [AWS X-Ray concepts - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-annotations)
+> - [Add annotations and metadata to segments with the X-Ray SDK for Python - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python-segment.html#xray-sdk-python-segment-annotations)
 
 <br>
 
@@ -210,7 +210,7 @@ subsegment.put_annotation("component", value)
 
 あらかじめ、分散トレースに紐づくログがあるロググループ名を設定し、ログには X-Ray 仕様のトレース ID を出力しておく必要がある。
 
-> - https://zenn.dev/k6s4i53rx/articles/69ef65b84dd799#%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95
+> - [OpenTelemetry Go を使ったトレースとログの紐付け on AWS CloudWatch](https://zenn.dev/k6s4i53rx/articles/69ef65b84dd799#%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95)
 
 X-Ray の画面では、分散トレースのトレース ID に応じて、以下のようなログクエリをロググループに自動発行する。
 
@@ -222,7 +222,7 @@ fields @log, @timestamp, @message
 | sort @timestamp, @message desc
 ```
 
-> - https://zenn.dev/k6s4i53rx/articles/69ef65b84dd799#%E7%B5%90%E6%9E%9C
+> - [OpenTelemetry Go を使ったトレースとログの紐付け on AWS CloudWatch](https://zenn.dev/k6s4i53rx/articles/69ef65b84dd799#%E7%B5%90%E6%9E%9C)
 
 <br>
 
@@ -259,7 +259,7 @@ fields @log, @timestamp, @message
 }
 ```
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields
+> - [AWS X-Ray segment documents - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields)
 
 #### ▼ セグメントのスキーマ
 
@@ -286,7 +286,7 @@ fields @log, @timestamp, @message
 }
 ```
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html
+> - [AWS X-Ray segment documents - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html)
 
 <br>
 
@@ -306,7 +306,7 @@ W3C Trace Context 仕様のルートスパンの ID に相当する。
 
 例えば、`1-58406520-a006649127e371903a2de979` になる。
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields
+> - [AWS X-Ray segment documents - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-fields)
 
 #### ▼ `parent_id` キー
 
@@ -349,7 +349,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 }
 ```
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments
+> - [AWS X-Ray segment documents - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-subsegments)
 
 <br>
 
@@ -369,7 +369,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 }
 ```
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-http
+> - [AWS X-Ray segment documents - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-http)
 
 <br>
 
@@ -428,7 +428,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 }
 ```
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-errors
+> - [AWS X-Ray segment documents - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-errors)
 
 <br>
 
@@ -451,7 +451,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 }
 ```
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-sql
+> - [AWS X-Ray segment documents - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html#api-segmentdocuments-sql)
 
 <br>
 
@@ -586,7 +586,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.24.0/resource.go#L1866-L1871
+> - [opentelemetry-go/semconv/v1.24.0/resource.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.24.0/resource.go#L1866-L1871)
 
 <br>
 
@@ -613,7 +613,7 @@ func init() {
 }
 ```
 
-> - https://qiita.com/smith-30/items/225e27e6d9a110bce725
+> - [lambda を go で動かし、X-Rayでtraceするまで #AWS - Qiita](https://qiita.com/smith-30/items/225e27e6d9a110bce725)
 
 <br>
 
@@ -667,7 +667,7 @@ func getExample(ctx context.Context) ([]byte, error) {
 }
 ```
 
-> - https://qiita.com/smith-30/items/225e27e6d9a110bce725
+> - [lambda を go で動かし、X-Rayでtraceするまで #AWS - Qiita](https://qiita.com/smith-30/items/225e27e6d9a110bce725)
 
 <br>
 
@@ -721,7 +721,7 @@ func getExample(ctx context.Context) ([]byte, error) {
 }
 ```
 
-> - https://qiita.com/smith-30/items/225e27e6d9a110bce725
+> - [lambda を go で動かし、X-Rayでtraceするまで #AWS - Qiita](https://qiita.com/smith-30/items/225e27e6d9a110bce725)
 
 <br>
 
@@ -739,6 +739,6 @@ func main() {
 }
 ```
 
-> - https://qiita.com/smith-30/items/225e27e6d9a110bce725
+> - [lambda を go で動かし、X-Rayでtraceするまで #AWS - Qiita](https://qiita.com/smith-30/items/225e27e6d9a110bce725)
 
 <br>

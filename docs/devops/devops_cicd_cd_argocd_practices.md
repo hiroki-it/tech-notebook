@@ -9,7 +9,7 @@ description: プラクティス集＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -67,9 +67,9 @@ repo-server は、レプリカ当たり同時に 1 つの処理しかできな�
 
 Application がポーリングするリポジトリのパス直下に `.argocd-allow-concurrency` ファイルを配置しておくと並行処理をしてくれる。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#enable-concurrent-processing
-> - https://blog.manabusakai.com/2021/09/concurrent-processing-of-argo-cd/
+> - [Overview - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#monorepo-scaling-considerations)
+> - [Overview - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#enable-concurrent-processing)
+> - [Argo CD の並行処理を有効にしたらハマった \| はったりエンジニアの備忘録](https://blog.manabusakai.com/2021/09/concurrent-processing-of-argo-cd/)
 > - https://saikiranpikili.medium.com/make-your-argocd-super-fast-9c75fa94b840
 
 #### ▼ キャッシュ作成範囲を小さくする (`manifest-generate-paths`)
@@ -108,7 +108,7 @@ spec:
     namespace: default
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#manifest-paths-annotation
+> - [Overview - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#manifest-paths-annotation)
 > - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
 > - https://medium.com/@michail.gebka/optimizing-argocd-for-monorepo-setup-7c5f548e5575
 > - https://faun.dev/c/stories/keskad/optimizing-argocd-repo-server-to-work-with-kustomize-in-monorepo/
@@ -175,8 +175,8 @@ data:
 ```
 
 > - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
-> - https://github.com/argoproj/argo-cd/issues/3282#issue-587535971
+> - [Overview - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller)
+> - [Performance tuning documentation · Issue #3282 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/3282#issue-587535971)
 > - https://web.archive.org/web/20231202091510/https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 
 - Application`1000` 個の場合、`--status-processors` に `50`、`--operation-processors` に `25` を指定
@@ -187,9 +187,9 @@ Application 数が多くなるほど、Reconciliation の処理キューを空�
 大量の Application を Reconciliation する場合、次のような対処方法がある。
 
 > - https://aws.amazon.com/jp/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
+> - [Overview - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller)
 > - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
+> - [argocd-application-controller Command Reference - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/)
 
 #### ▼ レプリカ当たりの負荷を低減 (`ARGOCD_CONTROLLER_REPLICAS`)
 
@@ -216,7 +216,7 @@ spec:
 ```
 
 > - https://foxutech.com/upscale-your-continuous-deployment-at-enterprise-grade-with-argocd/
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller
+> - [Overview - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-application-controller)
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/
 > - https://saikiranpikili.medium.com/make-your-argocd-super-fast-9c75fa94b840
 
@@ -354,7 +354,7 @@ spec:
               value: 3
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-server
+> - [Overview - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/high_availability/#argocd-server)
 
 #### ▼ サイドカーのメモリ
 
@@ -388,7 +388,7 @@ ArgoCD の Application と、ポーリング対象の Cluster を別々の Clust
 
 複数 Kubernetes Cluster にデプロイする Application を管理しやすい。
 
-> - https://twitter.com/yaml_villager/status/1625857205928075267
+> - [Aikawa on X: "@Hiroki\_\_IT 補足ありがとうございます（イメージしてるのと大体合ってました）。 deploy用のk8s（Argo CDが載ってる）と、deployされるアプリケーションが乗るk8s、という構図はよくあるかなと思います。 deploy用のk8sでプロダクト毎にArgo CD本体を建てる意味ってあるのかな？というのが不思議だった程度です。" / X](https://twitter.com/yaml_villager/status/1625857205928075267)
 
 <br>
 
@@ -410,7 +410,7 @@ ArgoCD の Application と、ポーリング対象の Cluster を別々の Clust
 
 GitOps のベストプラクティスに則って、アプリケーションリポジトリとマニフェストリポジトリに分割する。
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/best_practices
+> - [Best Practices - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/best_practices)
 
 #### ▼ アプリ領域
 
@@ -506,9 +506,9 @@ Application の `.resource` キー配下で、紐づく子 Application を管理
 
 ![root-application](https://raw.githubusercontent.com/hiroki-it/helm-charts-practice/main/root-application.png)
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern
+> - [Cluster Bootstrapping - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern)
 > - https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c
-> - https://www.arthurkoziel.com/setting-up-argocd-with-helm/
+> - [Setting up Argo CD with Helm](https://www.arthurkoziel.com/setting-up-argocd-with-helm/)
 
 #### ▼ root-application (第１階層の Application)
 
@@ -587,7 +587,7 @@ child-argocd-repository/
 
 記入中...
 
-> - https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B
+> - [Argo CDを使ってIstioをバージョンアップする - 電通総研 テックブログ](https://tech.isid.co.jp/entry/2022/12/05/Argo_CD%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6Istio%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B)
 
 <br>
 
@@ -672,7 +672,7 @@ ArgoCD では、認可スコープ (argocd-rbac-cm) と AppProject を紐付け�
 
 CD ツール (例：ArgoCD、Flux など) によっては、公式リポジトリで脆弱性診断を実施してくれている。
 
-> - https://argo-cd.readthedocs.io/en/stable/developer-guide/static-code-analysis/
+> - [Code Quality and Security Scanning - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/developer-guide/static-code-analysis/)
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/.github/workflows/README.md
 
 <br>
@@ -768,7 +768,7 @@ $ kubectl patch crd applications.argoproj.io \
     --type=merge
 ```
 
-> - https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
+> - [kubernetes – カスケード削除(連鎖削除) \| HYOUBLOG](https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/)
 
 `(3)`
 
@@ -817,7 +817,7 @@ ArgoCD を使用しない場合と同様にして、ConfigMap や Secret の設�
 
 Ingress、StatefulSet、DaemonSet、で特定の設定値を使用していると、ArgoCD の `Progressing` 状態でスタックすることがある。
 
-> - https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state
+> - [FAQ - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-stuck-in-progressing-state)
 
 <br>
 
@@ -825,8 +825,8 @@ Ingress、StatefulSet、DaemonSet、で特定の設定値を使用している�
 
 Sync 後に Kubernetes リソースの状態が変更されるような場合、Sync しても Synced ステータスではなく OutOfSync ステータスになってしまう。
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/
-> - https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync
+> - [Diff Customization - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/)
+> - [FAQ - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/faq/#why-is-my-application-still-outofsync-immediately-after-a-successful-sync)
 
 <br>
 
@@ -891,13 +891,13 @@ ArgoCD 自体を ArgoCD で管理できないため、手動やマニフェス�
 - 別のドメインで B/G Cluster に接続する方法。DNS レコードが異なる。一番簡単だが、ドメインを変更しないといけない。
 - B/G Cluster を Amazon Route 53 で切り替える方法。DNS レコードは既存のものを使って、これに紐づく AWS ALB が異なる。DNS キャッシュに注意する。
 
-> - https://masayosu.hatenablog.com/entry/2022/12/14/090000
+> - [EKSクラスターのB/Gアップグレード作業の改善で取り組んでいること - masayosu’s blog](https://masayosu.hatenablog.com/entry/2022/12/14/090000)
 
 #### ▼ 既存の AWS ALB を使用する場合
 
 - TargetGroupBinding を新しく採用し、AWS ALB の振り分けの重みづけで B/G Cluster を切り替える方法。ArgoCD が複数のプロダクトを管理している場合、プロダクトごとに切り替えられない。
 
-> - https://masayosu.hatenablog.com/entry/2022/12/14/090000
+> - [EKSクラスターのB/Gアップグレード作業の改善で取り組んでいること - masayosu’s blog](https://masayosu.hatenablog.com/entry/2022/12/14/090000)
 
 <br>
 
@@ -948,10 +948,10 @@ ArgoCD はデータポイントを作成し、これを Prometheus で収集で�
 | `argocd_git_request_total`            |     Counter      | repo-server の `git ls-remote` コマンドや `git fetch` コマンドの実行数を表す。これらは、`request_type` ラベルで `ls-remote` と `fetch` という値で取得できる。キャッシュが更新される頻度が高いと `git fetch` コマンドの実行頻度も高くなる。 |
 
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Monitoring-and-Alerting
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/
+> - [Metrics - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/metrics/)
 > - https://aws.amazon.com/blogs/opensource/argo-cd-application-controller-scalability-testing-on-amazon-eks/
 > - https://itnext.io/sync-10-000-argo-cd-applications-in-one-shot-bfcda04abe5b
-> - https://argo-cd.readthedocs.io/en/stable/proposals/004-scalability-benchmarking/#proposal
+> - [Argo CD Scalability Benchmarking - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/proposals/004-scalability-benchmarking/#proposal)
 
 <br>
 
@@ -1139,9 +1139,9 @@ ArgoCD のコンポーネント (特に、application-controller、argocd-server
 
 この場合、レプリカ数や CPU 数を増やすことにより、並列処理数を増やす必要がある。
 
-> - https://github.com/argoproj/argo-cd/issues/11116
-> - https://techblog.zozo.com/entry/measure-argocd-introduction
-> - https://zenn.dev/hodagi/articles/2bc3fa10df186c
+> - [ArgoCD doesn't respect application.namespaces · Issue #11116 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/11116)
+> - [Argo CD導入設計とリリースフロー改善の取り組み - ZOZO TECH BLOG](https://techblog.zozo.com/entry/measure-argocd-introduction)
+> - [Kubernetesの仮想クラスタについてとりとめもなく語る](https://zenn.dev/hodagi/articles/2bc3fa10df186c)
 
 <br>
 

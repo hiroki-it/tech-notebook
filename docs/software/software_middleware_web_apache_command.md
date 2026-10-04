@@ -9,7 +9,7 @@ description: コマンド＠Apacheの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: コマンド＠Apacheの知見を記録しています。
 $ apachectl configtest
 ```
 
-> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+> - [apachectl - Apache HTTP Server Control Interface - Apache HTTP Server Version 2.5](https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html)
 
 <br>
 
@@ -37,7 +37,7 @@ Graceful Restart できる。
 $ apachectl graceful
 ```
 
-> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+> - [apachectl - Apache HTTP Server Control Interface - Apache HTTP Server Version 2.5](https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html)
 
 <br>
 
@@ -49,7 +49,7 @@ $ apachectl graceful
 $ apachectl -t
 ```
 
-> - https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html
+> - [apachectl - Apache HTTP Server Control Interface - Apache HTTP Server Version 2.5](https://httpd.apache.org/docs/trunk/ja/programs/apachectl.html)
 
 <br>
 
@@ -67,7 +67,7 @@ $ httpd -t -D DUMP_CONFIG 2>/dev/null \
     | awk "{print $4}"
 ```
 
-> - https://httpd.apache.org/docs/2.4/programs/httpd.html
+> - [httpd - Apache Hypertext Transfer Protocol Server - Apache HTTP Server Version 2.4](https://httpd.apache.org/docs/2.4/programs/httpd.html)
 
 <br>
 
@@ -81,7 +81,7 @@ $ httpd -t -D DUMP_CONFIG 2>/dev/null \
 $ httpd -l
 ```
 
-> - https://httpd.apache.org/docs/2.4/programs/httpd.html
+> - [httpd - Apache Hypertext Transfer Protocol Server - Apache HTTP Server Version 2.4](https://httpd.apache.org/docs/2.4/programs/httpd.html)
 
 <br>
 
@@ -93,7 +93,7 @@ $ httpd -l
 $ httpd -L
 ```
 
-> - https://httpd.apache.org/docs/2.4/programs/httpd.html
+> - [httpd - Apache Hypertext Transfer Protocol Server - Apache HTTP Server Version 2.4](https://httpd.apache.org/docs/2.4/programs/httpd.html)
 
 <br>
 
@@ -105,7 +105,7 @@ $ httpd -L
 $ httpd -M
 ```
 
-> - https://httpd.apache.org/docs/2.4/programs/httpd.html
+> - [httpd - Apache Hypertext Transfer Protocol Server - Apache HTTP Server Version 2.4](https://httpd.apache.org/docs/2.4/programs/httpd.html)
 
 <br>
 
@@ -117,7 +117,7 @@ $ httpd -M
 $ httpd -S
 ```
 
-> - https://httpd.apache.org/docs/2.4/programs/httpd.html
+> - [httpd - Apache Hypertext Transfer Protocol Server - Apache HTTP Server Version 2.4](https://httpd.apache.org/docs/2.4/programs/httpd.html)
 
 <br>
 
@@ -131,6 +131,6 @@ Apache の設定ファイルのバリデーションを実行する。
 $ service httpd configtest
 ```
 
-> - http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+> - [ApacheとNginxを素早くシンタックスチェックする \| RickyNews](http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/)
 
 <br>

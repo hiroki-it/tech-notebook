@@ -9,7 +9,7 @@ description: Kubernetesプロバイダー＠Terraformの知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -40,6 +40,6 @@ provider "kubernetes" {
 
 Kubernetes との対応バージョンは、client-go パッケージのバージョンを確認する。
 
-> - https://github.com/hashicorp/terraform-provider-kubernetes/blob/main/go.mod
+> - [terraform-provider-kubernetes/go.mod at main · hashicorp/terraform-provider-kubernetes · GitHub](https://github.com/hashicorp/terraform-provider-kubernetes/blob/main/go.mod)
 
 <br>

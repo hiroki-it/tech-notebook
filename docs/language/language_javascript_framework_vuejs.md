@@ -19,7 +19,7 @@ description: Vue.js＠フレームワークの知見を記録しています。
 
 #### ▼ MVVM アーキテクチャとは
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html
+> - [【IT技術の知見】フロントエンドアーキテクチャ＠フロントエンドアーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_frontend.html)
 
 #### ▼ MVVM アーキテクチャにおける各層の責務
 
@@ -137,7 +137,7 @@ Vue コンストラクタ関数を使用して、インスタンス化するこ�
 
 各コンポーネントで個別に状態を変化させたいものは、`props` オプションではなく、`data` オプションとして扱う。
 
-> - https://v1-jp.vuejs.org/guide/instance.html
+> - [Vue インスタンス - vue.js](https://v1-jp.vuejs.org/guide/instance.html)
 
 **＊実装例＊**
 

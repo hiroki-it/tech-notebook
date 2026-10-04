@@ -9,7 +9,7 @@ description: オブジェクト指向分析＠アーキテクチャの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -126,7 +126,7 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 > - https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd>
 > - https://digitalgyan.org/difference-between-sequence-diagram-and-a-system-sequence-diagram/
-> - https://katzn.hatenablog.com/entry/2013/05/08/235531
+> - [システムシーケンス図の作成 - ドメイン駆動開発道](https://katzn.hatenablog.com/entry/2013/05/08/235531)
 
 <br>
 
@@ -157,8 +157,8 @@ stateDiagram-v2
     error --> success : 全ログがErrorではない
 ```
 
-> - https://cacoo.com/ja/blog/what-is-state-machine-diagram/
-> - https://github.com/yohang/Finite
+> - [状態遷移図（ステートマシン図）とは？業務の流れを把握し効率化するためのポイントを解説 \| オンラインホワイトボードツール Cacoo(カクー)](https://cacoo.com/ja/blog/what-is-state-machine-diagram/)
+> - [GitHub - yohang/Finite: A Simple PHP Finite State Machine · GitHub](https://github.com/yohang/Finite)
 > - https://yohan.giarel.li/Finite/
 
 <br>
@@ -195,7 +195,7 @@ stateDiagram-v2
 | スロット         | インスタンスが保持する具体的な状態を表す。『`<属性名>:<データ型> = <値>`』で表記する。                                                   |
 | リンク           | インスタンス間の関係性を表す。何かしらの関係性があれば、すべてリンクとして定義する。                                                     |
 
-> - https://thinkit.co.jp/article/40/3/3.html
+> - [第3回：クラス図とオブジェクト図を学ぼう！ (3/3) \| Think IT（シンクイット）](https://thinkit.co.jp/article/40/3/3.html)
 > - https://www.itsenka.com/contents/development/uml/object.html
 
 <br>

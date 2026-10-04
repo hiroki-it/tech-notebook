@@ -21,8 +21,8 @@ description: プラクティス集＠Kubernetesコンポーネントの知見を
 
 コントロールプレーン Node は `3`~`7` 台を作成し、Etcd の可用性を担保する。
 
-> - https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/
-> - https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/
+> - [Why should a Kubernetes control plane be three nodes?](https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/)
+> - [Raft - Kubernetes(etcd)のHA構成はなぜ3台以上？ \| TECHSCORE BLOG](https://www.techscore.com/blog/2019/03/28/raft-consensus-algorithm/)
 
 <br>
 
@@ -92,8 +92,8 @@ LivenessProbe ヘルスチェックは、コンテナで障害が起こるとコ
 
 Pod の `.spec.securityContext` キーを使用して、コンテナのプロセスの実行ユーザーに認可スコープを付与する。
 
-> - https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-> - https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18
+> - [Configure a Security Context for a Pod or Container \| Kubernetes](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
+> - [サイバー攻撃から Kubernetes クラスタを守るための効果的なセキュリティ対策 - Speaker Deck](https://speakerdeck.com/kyohmizu/saibagong-ji-kara-kubernetes-kurasutawoshou-rutamefalsexiao-guo-de-nasekiyuriteidui-ce?slide=18)
 
 <br>
 
@@ -111,7 +111,7 @@ Pod の `.spec.securityContext` キーを使用して、コンテナのプロセ
 
 あるいは、セッションストレージツールの代わりにスティッキーセッションを使用してもこの問題を避けられる。
 
-> - https://qiita.com/tomoyk/items/67722472a55b8dc7d01d#3-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BF%9D%E7%AE%A1%E5%85%88
-> - https://dev.classmethod.jp/articles/stateless_ec2/#toc-4
+> - [なぜK8sでWebアプリのセッションが壊れるか? ～原因と対処～ #kubernetes - Qiita](https://qiita.com/tomoyk/items/67722472a55b8dc7d01d#3-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BF%9D%E7%AE%A1%E5%85%88)
+> - [スティッキーセッションを使っていなければApplication Load Balancer障害に耐えれたかも？？？ Amazon EC2をステートレスにする為にやるべきこと \| DevelopersIO](https://dev.classmethod.jp/articles/stateless_ec2/#toc-4)
 
 <br>

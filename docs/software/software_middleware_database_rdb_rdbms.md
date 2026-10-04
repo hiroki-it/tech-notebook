@@ -9,7 +9,7 @@ description: RDBMS＠DB系ミドルウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,8 +31,8 @@ RDBMS は、リレーショナルエンジン、DB エンジン (ストレージ
 
 ![DB管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DB管理システムの仕組み.png)
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/
-> - https://atmarkit.itmedia.co.jp/ait/articles/1007/26/news087.html
+> - [基礎から理解するデータベースのしくみ（1） \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/)
+> - [内部動作を知らずしてチューニングは語れない：真・Dr. K's SQL Serverチューニング研修（3）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1007/26/news087.html)
 
 <br>
 
@@ -42,7 +42,7 @@ RDBMS は、リレーショナルエンジン、DB エンジン (ストレージ
 
 記入中...
 
-> - https://qiita.com/ishishow/items/280a9d049b8f7bcbc14a
+> - [MySQLのストレージエンジンについて #MySQL - Qiita](https://qiita.com/ishishow/items/280a9d049b8f7bcbc14a)
 
 <br>
 
@@ -54,9 +54,9 @@ RDBMS は、リレーショナルエンジン、DB エンジン (ストレージ
 
 RDBMS が DB のデータを CRUD 処理するために必要なソフトウェアのこと。
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/
-> - https://atmarkit.itmedia.co.jp/ait/articles/1007/26/news087.html
-> - https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3
+> - [基礎から理解するデータベースのしくみ（1） \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/)
+> - [内部動作を知らずしてチューニングは語れない：真・Dr. K's SQL Serverチューニング研修（3）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1007/26/news087.html)
+> - [データベースエンジン - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3)
 
 #### ▼ DB エンジンの種類
 
@@ -104,8 +104,8 @@ RDB は、ストレージにデータを保存する。
 
 ストレージ (例：HDD、SSD) 上にデータを保管する DB を、メモリ上に保管することと比較して、オンディスク DB という。
 
-> - https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage
-> - https://www.mydistributed.systems/2020/07/an-overview-of-storage-engines.html
+> - [What is the difference between memory and storage? - Kingston Technology](https://www.kingston.com/en/blog/pc-performance/difference-between-memory-storage)
+> - [In-memory vs. On-disk Databases](https://www.mydistributed.systems/2020/07/an-overview-of-storage-engines.html)
 
 <br>
 
@@ -119,7 +119,7 @@ DB のテーブルを分割して管理する。
 
 分割しても、DBMS クライアントからは単一のテーブルとして扱える。
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20090512/329853/
+> - [［データベース設計編］安易なパーティション分割をしてはいけない \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20090512/329853/)
 
 #### ▼ 水平パーティション (シャーディング)
 
@@ -127,14 +127,14 @@ DB のテーブルを分割して管理する。
 
 テーブルをレコード方向に分割して管理する。
 
-> - https://qiita.com/Hashimoto-Noriaki/items/6a4dd9c5f0e1d2cf5203
+> - [データベースのパーティションとインデックスについて #SQL - Qiita](https://qiita.com/Hashimoto-Noriaki/items/6a4dd9c5f0e1d2cf5203)
 > - https://aws.amazon.com/jp/blogs/news/sharding-with-amazon-relational-database-service/
 
 #### ▼ 垂直パーティンション
 
 テーブルをカラム方向に分割して管理する
 
-> - https://aws.amazon.com/jp/what-is/database-sharding/
+> - [データベースシャーディングとは? - シャードデータベースの説明 - AWS](https://aws.amazon.com/jp/what-is/database-sharding/)
 
 <br>
 
@@ -152,7 +152,7 @@ DB インデックスとして保管したカラムから特定のレコード�
 
 DB インデックスを使用しない場合、SQL の実行時にすべてカラムを取得するため、実行時間がテーブルのカラム数に依存してしまう。
 
-> - https://qiita.com/towtow/items/4089dad004b7c25985e3
+> - [DBのインデックスと複合インデックス #DB - Qiita](https://qiita.com/towtow/items/4089dad004b7c25985e3)
 
 #### ▼ クラスターDB インデックス（自動作成）
 
@@ -182,7 +182,7 @@ CREATE INDEX foo_index
 
 そして、カラムのレコードの昇順で並び替えられ、DB インデックスとして保管される。
 
-> - https://qiita.com/towtow/items/4089dad004b7c25985e3
+> - [DBのインデックスと複合インデックス #DB - Qiita](https://qiita.com/towtow/items/4089dad004b7c25985e3)
 
 ```mysql
 CREATE INDEX foo_index
@@ -300,7 +300,7 @@ RDBMS の種類に応じたクエリが必要になる。
 
 TCP/IP プロトコルを使用する。
 
-> - https://en.wikipedia.org/wiki/Database_connection
+> - [Database connection - Wikipedia](https://en.wikipedia.org/wiki/Database_connection)
 
 #### ▼ DB セッション
 
@@ -331,8 +331,8 @@ TCP/IP プロトコルを使用する。
 
 ![db_connection-pool](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_connection-pool.png)
 
-> - https://support.asteria.com/hc/ja/articles/228983127-%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%AB%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B
-> - https://gihyo.jp/dev/serial/01/db-academy/000502
+> - [コネクションプールとは何ですか？ – ASTERIA Warp サポートサイト-ADN](https://support.asteria.com/hc/ja/articles/228983127-%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%AB%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B)
+> - [最終回 治療としてのパフォーマンスチューニング―システムの病気はどう治す？（2） \| gihyo.jp](https://gihyo.jp/dev/serial/01/db-academy/000502)
 
 #### ▼ 接続プールに対する待機キュー
 
@@ -340,7 +340,7 @@ TCP/IP プロトコルを使用する。
 
 このときに、送信されたリクエストは待機キューで解放を待つ。
 
-> - https://itpfdoc.hitachi.co.jp/manuals/3020/30203m0360/EM030358.HTM
+> - [コネクション枯渇時のコネクション取得待ち](https://itpfdoc.hitachi.co.jp/manuals/3020/30203m0360/EM030358.HTM)
 
 <br>
 

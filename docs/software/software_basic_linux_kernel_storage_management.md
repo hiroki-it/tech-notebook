@@ -9,7 +9,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -26,7 +26,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 ファイルストレージとして、ローカルファイルストレージ (例：ローカルドライブ) とクラウドファイルストレージ (例：Google ドライブ、AWS EFS など) がある。
 
 > - https://massive.io/file-transfer/file-storage-vs-object-storage/#file-storage
-> - https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2
+> - [AWS のストレージサービス EBS、EFS、S3、FSxなどの違い \| 株式会社スタイルズ](https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2)
 
 #### ▼ オブジェクトストレージ
 
@@ -35,7 +35,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 オブジェクトストレージとして、ローカルオブジェクトストレージとクラウドオブジェクトストレージ (例：Amazon S3) がある。
 
 > - https://massive.io/file-transfer/file-storage-vs-object-storage/#object-storage
-> - https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2
+> - [AWS のストレージサービス EBS、EFS、S3、FSxなどの違い \| 株式会社スタイルズ](https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2)
 
 #### ▼ ブロックストレージ
 
@@ -44,7 +44,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 ブロックストレージとして、特定の DB (例：RDB、TSDB など) やボリューム (例：AWS EBS) がある。
 
 > - https://massive.io/file-transfer/file-storage-vs-object-storage/#block-storage
-> - https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2
+> - [AWS のストレージサービス EBS、EFS、S3、FSxなどの違い \| 株式会社スタイルズ](https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2)
 
 #### ▼ キーバリューストレージ
 
@@ -76,7 +76,7 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 : パーティション、物理ボリューム、論理ボリューム、ファイルシステムは拡張できていないため、拡張していく。
 
-> - https://isleofhoso.com/linux-lvm-extend/
+> - [【Linux】LVMで論理ボリューム拡張-4ステップで設定できる \| ほそぼそ話](https://isleofhoso.com/linux-lvm-extend/)
 
 ```bash
 $ lsblk
@@ -180,7 +180,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 ![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/partition_volume.png)
 
-> - https://win2012r2.com/2018/05/13/post-268/
+> - [ディスク、パーティション、ドライブ、ボリュームの違い \| Windows 実践ガイド](https://win2012r2.com/2018/05/13/post-268/)
 > - http://www.miloweb.net/partition.html
 
 <br>
@@ -191,7 +191,7 @@ tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 
 パーティションにアクセスできるディレクトリのこと。
 
-> - https://allabout.co.jp/gm/gc/438839/
+> - [Linux パーティションの基本 \[Linuxの使い方\] All About](https://allabout.co.jp/gm/gc/438839/)
 
 <br>
 
@@ -233,8 +233,8 @@ tmpfs                 tmpfs      3.8G     0  3.8G     0%  /sys/fs/cgroup
 tmpfs                 tmpfs      777M     0  777M     0%  /run/user/1000
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
-> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/750chkfstype.html
+> - [【 df 】コマンド――ディスクの空き領域を表示する：Linux基本コマンドTips（58） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1)
+> - [＠IT：マウントされているファイルシステムの種類を調べるには](https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/750chkfstype.html)
 
 #### ▼ Windows の場合
 
@@ -246,7 +246,7 @@ Windows では、C ドライブと D ドライブがパーティションに相�
 
 MacOS では、`diskutil` コマンドを実行することで、パーティションとマウントポイントを確認できる。
 
-> - https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280
+> - [【macos】外付けデバイスの操作をコマンドから（diskutilコマンドを使ったmount、unmount、ファイル操作） #macOS - Qiita](https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280)
 
 **＊例＊**
 
@@ -285,7 +285,7 @@ $ diskutil list
 
 ![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logical-volume.png)
 
-> - https://xtech.nikkei.com/it/article/Keyword/20071012/284413/
+> - [LVM \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/Keyword/20071012/284413/)
 
 <br>
 
@@ -329,7 +329,7 @@ $ lvdisplay
   Block device          253:1
 ```
 
-> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
+> - [LVMの情報を表示するには − ＠IT](https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html)
 
 <br>
 
@@ -345,8 +345,8 @@ Linux カーネルが入出力装置や標準入出力を操作できるよう�
 
 デバイスファイルを操作すると、入出力装置や標準入出力に対してその操作が実行される。
 
-> - https://e-words.jp/w/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.html
-> - https://qiita.com/angel_p_57/items/1faafa275525469788b4
+> - [デバイスファイル（スペシャルファイル）とは - IT用語辞典 e-Words](https://e-words.jp/w/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB.html)
+> - [Linuxのファイルの種類 #初心者 - Qiita](https://qiita.com/angel_p_57/items/1faafa275525469788b4)
 
 <br>
 
@@ -471,7 +471,7 @@ crw-------  watchdog0             # システムリセット
 crw-rw-rw-  zero                  # ゼロ出力 (読み込むとゼロ)
 ```
 
-> - https://zenn.dev/ysuito/articles/5abf6e3e6a8c13
+> - [linuxのデバイスファイル(/dev)一覧](https://zenn.dev/ysuito/articles/5abf6e3e6a8c13)
 
 <br>
 
@@ -483,7 +483,7 @@ crw-rw-rw-  zero                  # ゼロ出力 (読み込むとゼロ)
 
 HHD (`/dev/hd`) 、メモリなどがある。
 
-> - https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+> - [デバイスファイル - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB)
 
 #### ▼ キャラクターデバイス (キャラクタースペシャルファイル)
 
@@ -491,7 +491,7 @@ HHD (`/dev/hd`) 、メモリなどがある。
 
 プリンター (`/dev/lp`) 、モデム、ターミナルなどがある。
 
-> - https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+> - [デバイスファイル - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB)
 
 #### ▼ 擬似デバイス
 
@@ -499,7 +499,7 @@ HHD (`/dev/hd`) 、メモリなどがある。
 
 標準入出力 (`/dev/stdin`、`/dev/stdout`) や破棄 (`/dev/null`) などがある。
 
-> - https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
+> - [デバイスファイル - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%87%E3%83%90%E3%82%A4%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB)
 
 <br>
 
@@ -510,7 +510,7 @@ HHD (`/dev/hd`) 、メモリなどがある。
 パーティション内のファイルをデータとして使用できるようにする機能のこと。
 
 > - https://www.infraeye.com/study/linuxz22.html
-> - https://ameblo.jp/bakery-diary/entry-12639340661.html
+> - [Linuxのパーティションとファイルシステムとマウント \| 若手エンジニアのブログ](https://ameblo.jp/bakery-diary/entry-12639340661.html)
 
 <br>
 
@@ -532,8 +532,8 @@ $ mkfs -t xfs /dev/sda5
 $ mkfs -t xfs /dev/xvdb
 ```
 
-> - https://kazmax.zpp.jp/linux_beginner/mkfs.html
-> - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
+> - [Linux パーティションにmkfsでファイルシステムを作る](https://kazmax.zpp.jp/linux_beginner/mkfs.html)
+> - [LPICよくある質問集第②回～コマンド由来編～その6 \| TECH PROjin](https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/)
 
 #### ▼ `mke2fs` コマンドの場合
 
@@ -548,8 +548,8 @@ $ mke2fs -t <ファイルシステムのタイプ> <パーティションのデ�
 $ mke2fs -t ext4 /dev/sda5
 ```
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20140324/545285/
-> - https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/
+> - [【mke2fs】ext2/ext3/ext4ファイルシステムを作成する \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20140324/545285/)
+> - [LPICよくある質問集第②回～コマンド由来編～その6 \| TECH PROjin](https://tech.pjin.jp/blog/2017/02/06/the-questions-of-lpic-part2-the-origin-of-commands-no6/)
 
 <br>
 
@@ -571,7 +571,7 @@ NFS サーバーに配置されたファイルを、他のサーバー (NFS ク�
 
 : ホスト側の MacOS にて、`/etc/exports` ファイルにマウントオプションを設定する。また、`/etc/exports` ファイルを検証する。
 
-> - https://qiita.com/imaiworks/items/b657046ea499ec8fd95c
+> - [macOS CatalinaからNFS exportsするには #nfs - Qiita](https://qiita.com/imaiworks/items/b657046ea499ec8fd95c)
 
 ```bash
 # マウントオプションを設定する。
@@ -606,7 +606,7 @@ Exports list on localhost:
 
 : NFS クライアントにて、必要なパッケージをインストールする。
 
-> - https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78
+> - [nfsマウント #Ubuntu - Qiita](https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78)
 
 ```bash
 # Ubuntuの場合

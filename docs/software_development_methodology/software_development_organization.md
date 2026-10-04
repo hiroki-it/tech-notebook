@@ -9,7 +9,7 @@ description: 組織論＠開発手法の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -29,8 +29,8 @@ description: 組織論＠開発手法の知見を記録しています。
 
 深く狭い `I` 型人材になる傾向がある。
 
-> - https://note.com/cwmasaki/n/nb181309fac93
-> - https://blog.trainocate.co.jp/blog/IT-engineer
+> - [エンジニアを分類する、3つのタイプ｜山本 正喜 / kubell CEO](https://note.com/cwmasaki/n/nb181309fac93)
+> - [ITエンジニア市場価値を上げる｜トレノケート公式ブログ](https://blog.trainocate.co.jp/blog/IT-engineer)
 
 #### ▼ プロダクト指向
 
@@ -44,8 +44,8 @@ description: 組織論＠開発手法の知見を記録しています。
 
 広く浅い `ー` 型人材になる傾向がある。
 
-> - https://note.com/cwmasaki/n/nb181309fac93
-> - https://thinkit.co.jp/article/17898
+> - [エンジニアを分類する、3つのタイプ｜山本 正喜 / kubell CEO](https://note.com/cwmasaki/n/nb181309fac93)
+> - [これからの時代で生き残るために「DX戦略に重宝されるエンジニア」を目指そう \| 時代や環境に左右されない、ITエンジニアの生き方・働き方・学び方 \| Think IT（シンクイット）](https://thinkit.co.jp/article/17898)
 
 #### ▼ 組織指向
 
@@ -55,7 +55,7 @@ description: 組織論＠開発手法の知見を記録しています。
 
 広く浅い `ー` 型人材になる傾向がある。
 
-> - https://note.com/cwmasaki/n/nb181309fac93
+> - [エンジニアを分類する、3つのタイプ｜山本 正喜 / kubell CEO](https://note.com/cwmasaki/n/nb181309fac93)
 
 <br>
 
@@ -65,7 +65,7 @@ description: 組織論＠開発手法の知見を記録しています。
 
 よりよいプロダクトを開発するためには、チームにこれらの人材すべてが揃っているべきである。
 
-> - https://note.com/cwmasaki/n/nb181309fac93
+> - [エンジニアを分類する、3つのタイプ｜山本 正喜 / kubell CEO](https://note.com/cwmasaki/n/nb181309fac93)
 
 <br>
 
@@ -79,8 +79,8 @@ IT エンジニアには、さまざまなキャリアパスがある。
 
 ![engineer_carrier-path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/engineer_carrier-path.png)
 
-> - https://www.nogawanogawa.work/entry/management_career
-> - https://www.netvisionacademy.com/column/910/
+> - [【読んでみた】エンジニアのためのマネジメントキャリアパス ―テックリードからCTOまでマネジメントスキル向上ガイド - どこにでもいるSEの備忘録](https://www.nogawanogawa.work/entry/management_career)
+> - [エンジニアのキャリアパスの種類は？ 目標の決め方と職種別の事例も紹介 \| ITコラム \| ネットビジョンアカデミー【公式】｜新宿のネットワークエンジニア講座](https://www.netvisionacademy.com/column/910/)
 
 <br>
 
@@ -119,13 +119,13 @@ flowchart LR
     ジェネラストの基点 --> プロダクトマネージャー
 ```
 
-> - https://qiita.com/vankobe/items/9a951d814db6b1180074#%E8%AA%B2%E9%A1%8C%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%AF%E5%85%A8%E3%81%A6%E3%82%92%E6%B1%82%E3%82%81%E3%82%89%E3%82%8C%E3%82%8B-or-%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%98%E3%82%83%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E6%B1%82%E3%82%81%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84
+> - [一人前のその先へ！！！一歩踏み出すためのエンジニアキャリアwhy型・how型という考え方 #初心者 - Qiita](https://qiita.com/vankobe/items/9a951d814db6b1180074#%E8%AA%B2%E9%A1%8C%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%AF%E5%85%A8%E3%81%A6%E3%82%92%E6%B1%82%E3%82%81%E3%82%89%E3%82%8C%E3%82%8B-or-%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%81%98%E3%82%83%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E6%B1%82%E3%82%81%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84)
 > - https://www.youtube.com/watch?v=ljFZqeXYLXo
-> - https://qiita.com/darquro/items/d9efb7b5b789c152905f#%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AE%E4%BB%95%E4%BA%8B
-> - https://qiita.com/hirokidaichi/items/95678bb1cef32629c317#%E3%83%86%E3%82%AF%E3%83%8E%E3%83%AD%E3%82%B8%E3%83%BC%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88
-> - https://scrapbox.io/ohbarye/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E3%82%B9%E3%82%AD%E3%83%AB
-> - https://roadmap.sh/engineering-manager
-> - https://pr.forkwell.com/tech_event_reports/staff-engineer/
+> - [迷わないためのエンジニアリングマネージャーの心構え #キャリア - Qiita](https://qiita.com/darquro/items/d9efb7b5b789c152905f#%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AE%E4%BB%95%E4%BA%8B)
+> - [エンジニアリングマネージャ/プロダクトマネージャのための知識体系と読書ガイド #アーキテクチャ - Qiita](https://qiita.com/hirokidaichi/items/95678bb1cef32629c317#%E3%83%86%E3%82%AF%E3%83%8E%E3%83%AD%E3%82%B8%E3%83%BC%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88)
+> - [エンジニアリングマネジメントスキル - ohbarye](https://scrapbox.io/ohbarye/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%E3%82%B9%E3%82%AD%E3%83%AB)
+> - [Engineering Manager](https://roadmap.sh/engineering-manager)
+> - [「スタッフエンジニアとは？役割・スキル・キャリアパスを徹底解説！」増井 雄一郎 \| Forkwell Press \| フォークウェルプレス](https://pr.forkwell.com/tech_event_reports/staff-engineer/)
 
 <br>
 
@@ -149,7 +149,7 @@ LegalOn Technologies では、エンジニアに IC・TL・Manager の３つの�
 ラダーがかなり細分化されて、ラダーに応じてどうあるべきかの役割わかりやすい。
 
 > - https://docs.google.com/spreadsheets/d/1jad5ybRc5XqIPMRyz9eHAwCL6rUlFJ5NCakqoO_Uu08/edit?pli=1&gid=1832796022#gid=1832796022
-> - https://tech.legalforce.co.jp/entry/2023/08/04/144207
+> - [LegalOn Technologies のエンジニアグレード評価基準を公開します - LegalOn Technologies Engineering Blog](https://tech.legalforce.co.jp/entry/2023/08/04/144207)
 
 <br>
 
@@ -178,8 +178,8 @@ LegalOn Technologies では、エンジニアに IC・TL・Manager の３つの�
 | リリース                            |         ✅         |         ✅         |          ✅          |               ✅                |                          |
 | 運用保守                            |         ✅         |         ✅         |          ✅          |               ✅                |                          |
 
-> - https://qiita.com/ma91n/items/207f32db1b51754d6933#2-11-%E5%8F%A3%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E6%AD%A3%E8%A7%A3%E3%82%92%E6%8F%90%E7%A4%BA%E3%81%99%E3%82%8B%E3%81%AE%E3%82%82%E5%A4%A7%E4%BA%8B
-> - https://www.nogawanogawa.work/entry/management_career
+> - [テックリードになって気をつけていること #テックリード - Qiita](https://qiita.com/ma91n/items/207f32db1b51754d6933#2-11-%E5%8F%A3%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E6%AD%A3%E8%A7%A3%E3%82%92%E6%8F%90%E7%A4%BA%E3%81%99%E3%82%8B%E3%81%AE%E3%82%82%E5%A4%A7%E4%BA%8B)
+> - [【読んでみた】エンジニアのためのマネジメントキャリアパス ―テックリードからCTOまでマネジメントスキル向上ガイド - どこにでもいるSEの備忘録](https://www.nogawanogawa.work/entry/management_career)
 
 <br>
 
@@ -192,6 +192,6 @@ LegalOn Technologies では、エンジニアに IC・TL・Manager の３つの�
 そうでないと、`30` 代後半で書類選考すら通りにくくなる。
 
 > - https://youtu.be/1u82PcgOgFs?t=289
-> - https://note.com/spectol/n/ne36f77560b6f
+> - [リーダー経験のないシステムエンジニアがこの先生きのこるには｜太田フランクリン@シンガポール](https://note.com/spectol/n/ne36f77560b6f)
 
 <br>

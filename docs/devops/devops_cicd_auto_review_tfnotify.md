@@ -9,7 +9,7 @@ description: tfnotify＠自動レビューツールの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,17 +23,17 @@ CircleCI で利用する場合は、ダウンロードした tfnotify のバイ�
 
 環境別に tfnotify を配置しておくとよい。
 
-> - https://github.com/mercari/tfnotify/releases/tag/v0.7.0
+> - [Release v0.7.0 · mercari/tfnotify · GitHub](https://github.com/mercari/tfnotify/releases/tag/v0.7.0)
 
 tfnotify をより強化した tfcmt というツールがある。
 
-> - https://github.com/suzuki-shunsuke/tfcmt
+> - [GitHub - suzuki-shunsuke/tfcmt: tfcmt enhances mercari/tfnotify in many ways, including Terraform \>= v0.15 support and advanced formatting options · GitHub](https://github.com/suzuki-shunsuke/tfcmt)
 
 tfnotify と tfcmt は、GitHub の API のみサポートしている。
 
 GitLab の場合は tfcmt-gitlab を使用するとよい。
 
-> - https://github.com/hirosassa/tfcmt-gitlab
+> - [GitHub - hirosassa/tfcmt-gitlab: tfcmt-gitlab is a CLI command to parse and notify Terraform execution results. This command supports GitLab as a CI and notification platform. · GitHub](https://github.com/hirosassa/tfcmt-gitlab)
 
 <br>
 

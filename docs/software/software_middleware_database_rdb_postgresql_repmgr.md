@@ -9,7 +9,7 @@ description: Repmgr＠PostgreSQLの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -52,7 +52,7 @@ repmgrd は、DB インスタンス間でフェイルオーバーできるよう
 
 記入中...
 
-> - https://repmgr.org/docs/current/installation-packages.html
+> - [2.2. Installing repmgr from packages](https://repmgr.org/docs/current/installation-packages.html)
 
 <br>
 
@@ -76,6 +76,6 @@ ID | Name  | Role    | Status    | Upstream | Location | Priority | Timeline | C
 5  | node5 | witness | * running | node1    | default  | 0        | n/a      | host=db_node5 dbname=repmgr user=repmgr
 ```
 
-> - https://repmgr.org/docs/current/repmgr-cluster-show.html
+> - [repmgr cluster show](https://repmgr.org/docs/current/repmgr-cluster-show.html)
 
 <br>

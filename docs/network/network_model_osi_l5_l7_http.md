@@ -9,7 +9,7 @@ description: HTTP＠L5 ~ L7の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -70,7 +70,7 @@ HTTP リクエストのたびに、送信元と宛先間で TCP スリーウェ�
 ![http-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/http-keepalive.png)
 
 > - https://server-setting.info/centos/nginx-keepalive-setting.html
-> - https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/#toc7
+> - [【図解】TCP Keep-Alive/http Keep-Aliveの仕組みと違い ～Client/Serverの挙動とメリット,設定～ \| SEの道標](https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/#toc7)
 
 <br>
 
@@ -632,7 +632,7 @@ Gateway Timeout (`504` ステータス) とやや似ている。
 
 しかし、`504` ステータスとは異なり、何らかのエラーのレスポンスが返信されていることを表す。
 
-> - https://e-words.jp/w/502%E3%82%A8%E3%83%A9%E3%83%BC.html
+> - [502エラー（HTTP 502 Bad Gateway）とは - IT用語辞典 e-Words](https://e-words.jp/w/502%E3%82%A8%E3%83%A9%E3%83%BC.html)
 
 #### ▼ `503` (ビジネスロジックエラー)
 
@@ -652,7 +652,7 @@ Gateway Timeout (`504` ステータス) とやや似ている。
 
 ![status-code_504](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/status-code_504.png)
 
-> - https://dotnetblog.asphostportal.com/steps-to-fix-504-bad-gateway-timeout-error/
+> - [Steps to Fix 504 Bad Gateway Timeout Error - ASP.NET Hosting Tips & Guides](https://dotnetblog.asphostportal.com/steps-to-fix-504-bad-gateway-timeout-error/)
 
 <br>
 
@@ -676,7 +676,7 @@ Gateway Timeout (`504` ステータス) とやや似ている。
 - `503` (同上)
 - `504` (同上)
 
-> - https://cloud.google.com/storage/docs/retry-strategy?hl=ja
+> - [再試行の方法 \| Cloud Storage \| Google Cloud Documentation](https://cloud.google.com/storage/docs/retry-strategy?hl=ja)
 
 <br>
 
@@ -694,7 +694,7 @@ Gateway Timeout (`504` ステータス) とやや似ている。
 
 その他の違いについては、以下のリンクを参考にせよ。
 
-> - https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference
+> - [Scott Forsyth's Blog - URL Rewrite vs. Redirect; What’s the difference?](https://blogs.iis.net/owscott/url-rewrite-vs-redirect-what-s-the-difference)
 
 #### ▼ リライトとフォワードの違い
 
@@ -771,7 +771,7 @@ POST https://example.com/users/12345?format=json
 
 HTTP はステートレスなプロトコルであるが、Cookie 情報により擬似的にステートフルな通信できる。
 
-> - https://www.engilaboo.com/definitely-understand-cookie-session/
+> - [CookieとSessionを今度こそ完全に理解する【分かりやすく図解】｜Webエンジニア研究室](https://www.engilaboo.com/definitely-understand-cookie-session/)
 
 #### ▼ Cookie 情報に関わるヘッダー
 
@@ -932,21 +932,21 @@ php_value[session.save_handler] = redis
 php_value[session.save_path] = "tcp://foo-redis.*****.ng.0001.apne1.cache.amazonaws.com:6379"
 ```
 
-> - https://github.com/phpredis/phpredis/issues/1097
-> - https://qiita.com/supertaihei02/items/53e36252afa3ea157d38
-> - https://blog.frevo-works.co.jp/entry/2019/09/24/112603
+> - [PHP 7.1 + Pecl-Redis-3.1.1RC2 - ignored session.save\_path in php.ini · Issue #1097 · phpredis/phpredis · GitHub](https://github.com/phpredis/phpredis/issues/1097)
+> - [PHPセッションをmemcachedで管理する件 #Memcached - Qiita](https://qiita.com/supertaihei02/items/53e36252afa3ea157d38)
+> - [セッション管理方式のお話 - 革命のブログ](https://blog.frevo-works.co.jp/entry/2019/09/24/112603)
 
 #### ▼ サーバーメモリ
 
 サーバーにて、メモリ上で保管する。
 
-> - https://blog.frevo-works.co.jp/entry/2019/09/24/112603
+> - [セッション管理方式のお話 - 革命のブログ](https://blog.frevo-works.co.jp/entry/2019/09/24/112603)
 
 #### ▼ ストレージ
 
 SessionStorage (例：Redis、ElastiCache など) や DB (例：MySQL) にて、レコード形式で保管する。
 
-> - https://blog.frevo-works.co.jp/entry/2019/09/24/112603
+> - [セッション管理方式のお話 - 革命のブログ](https://blog.frevo-works.co.jp/entry/2019/09/24/112603)
 
 ### セッションデータの有効期限と初期化確率
 
@@ -973,7 +973,7 @@ session.gc_probability = 1
 session.gc_divisor = 1
 ```
 
-> - https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor
+> - [PHP: 実行時設定 - Manual](https://www.php.net/manual/ja/session.configuration.php#ini.session.gc-divisor)
 
 <br>
 
@@ -1018,8 +1018,8 @@ session.gc_divisor = 1
 `L7` ロードバランサーは、これらの情報に基づいて通信を待ち受けるサーバーに、通信をロードバランシングする。
 
 > - https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef
-> - https://www.infraexpert.com/study/tcpip16.html
-> - https://hakobe932.hatenablog.com/entry/2018/04/11/123000
+> - [HTTPとは](https://www.infraexpert.com/study/tcpip16.html)
+> - [gRPCのロードバランシング - はこべにっき ♨](https://hakobe932.hatenablog.com/entry/2018/04/11/123000)
 
 <br>
 
@@ -1057,6 +1057,6 @@ session.gc_divisor = 1
 
 `L7` プロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3 など) のヘッダーを保持し、NAT の仕組みで `L4` ヘッダーに含まれる宛先 IP アドレスやポート番号を変更している。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/0302/05/news001.html
+> - [パケットフローから負荷分散の基本を理解する：ロードバランサの本質（1） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/0302/05/news001.html)
 
 <br>

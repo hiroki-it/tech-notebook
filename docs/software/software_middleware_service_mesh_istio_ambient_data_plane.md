@@ -9,7 +9,7 @@ description: データプレーン＠Istioアンビエントの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -88,12 +88,12 @@ ztunnel Pod (L4) # DaemonSet 配下なので、Node ごとにいる
 マイクロサービスのPod
 ```
 
-> - https://istio.io/latest/blog/2022/introducing-ambient-mesh/
-> - https://istio.io/latest/blog/2022/get-started-ambient/#install-istio-with-ambient-mode
-> - https://github.com/istio/istio/blob/experimental-ambient/manifests/charts/istio-control/istio-discovery/files/waypoint.yaml
-> - https://www.sobyte.net/post/2022-09/istio-ambient/
-> - https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/
-> - https://blog.howardjohn.info/posts/ambient-not-node-proxy/
+> - [Istio / Introducing Ambient Mesh](https://istio.io/latest/blog/2022/introducing-ambient-mesh/)
+> - [Istio / Get Started with Istio Ambient Mesh](https://istio.io/latest/blog/2022/get-started-ambient/#install-istio-with-ambient-mode)
+> - [istio/manifests/charts/istio-control/istio-discovery/files/waypoint.yaml at experimental-ambient · istio/istio · GitHub](https://github.com/istio/istio/blob/experimental-ambient/manifests/charts/istio-control/istio-discovery/files/waypoint.yaml)
+> - [Istio's ambient mode - SoByte](https://www.sobyte.net/post/2022-09/istio-ambient/)
+> - [译文：重磅消息 - Istio 引入 Ambient Mesh 模式 \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2022-09-08-introducing-ambient-mesh/)
+> - [Istio Ambient is not a "Node Proxy" \| howardjohn's blog](https://blog.howardjohn.info/posts/ambient-not-node-proxy/)
 
 <br>
 
@@ -119,9 +119,9 @@ istio-cni は、`/var/run/ztunnel/ztunnel.sock` ファイル経由で ztunnel �
 
 注意点として、Cilium は iptable の代わりに eBPF を使用する。
 
-> - https://sreake.com/blog/istio-ambient-mesh-inpod-redirection/#inpod_redirection_%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3
-> - https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration
-> - https://www.rfc-editor.org/rfc/rfc8926.html
+> - [Istio Ambient Mesh の inpod redirection 試してみた \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio-ambient-mesh-inpod-redirection/#inpod_redirection_%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3)
+> - [Traffic in ambient mesh: Istio CNI and node configuration \| Solo.io](https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration)
+> - [RFC 8926: Geneve: Generic Network Virtualization Encapsulation](https://www.rfc-editor.org/rfc/rfc8926.html)
 > - https://www.reddit.com/r/kubernetes/comments/1cygujm/comment/l59qh64/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
 #### ▼ Google Cloud Mesh について
@@ -130,7 +130,7 @@ Google Cloud Mesh では、istio-cni のロジックが GKE に統合されて�
 
 代わりに、NEG などを使用する。
 
-> - https://cloud.google.com/blog/products/containers-kubernetes/container-native-load-balancing-on-gke-now-generally-available?hl=en
+> - [Container-native load balancing on GKE now generally available \| Google Cloud Blog](https://cloud.google.com/blog/products/containers-kubernetes/container-native-load-balancing-on-gke-now-generally-available?hl=en)
 
 <br>
 
@@ -146,7 +146,7 @@ ztunnel Pod は、`/var/run/ztunnel/ztunnel.sock` ファイル経由で istio-cn
 
 そのため、ztunnel Pod は istio-cni と同じ Node 上に作成する必要がある (Namespace は違っていてもよい) 。
 
-> - https://github.com/istio/istio/wiki/Troubleshooting-Istio-Ambient#scenario-pod-fails-to-run-with-failed-to-create-pod-sandbox
+> - [Troubleshooting Istio Ambient · istio/istio Wiki · GitHub](https://github.com/istio/istio/wiki/Troubleshooting-Istio-Ambient#scenario-pod-fails-to-run-with-failed-to-create-pod-sandbox)
 
 #### ▼ 新しい仕組み (inpod redirection)
 
@@ -170,9 +170,9 @@ ztunnel へのリダイレクトの仕組みは一度リプレイスされてい
 
 ![istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail.png)
 
-> - https://www.solo.io/blog/istio-ambient-mesh-any-cni
+> - [Running Istio Ambient Mesh With Any CNI \| Solo.io](https://www.solo.io/blog/istio-ambient-mesh-any-cni)
 > - https://medium.com/@Nick_Chekushkin/implementation-and-benefits-of-istio-ambient-mesh-optimizing-resources-and-improving-security-in-189ce4bad313
-> - https://imesh.ai/blog/istio-ambient-install-eks/
+> - [Implement Istio Ambient Mesh on EKS in 5 Steps](https://imesh.ai/blog/istio-ambient-install-eks/)
 
 #### ▼ 古い仕組み
 
@@ -180,9 +180,9 @@ ztunnel へのリダイレクトの仕組みは一度リプレイスされてい
 
 新しい仕組みは『inpod redirection』と呼ばれている。
 
-> - https://www.solo.io/blog/istio-ambient-mesh-any-cni
-> - https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels
-> - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
+> - [Running Istio Ambient Mesh With Any CNI \| Solo.io](https://www.solo.io/blog/istio-ambient-mesh-any-cni)
+> - [Traffic in ambient mesh: Redirection using iptables and GENEVE tunnels \| Solo.io](https://www.solo.io/blog/traffic-ambient-mesh-redirection-iptables-geneve-tunnels)
+> - [Traffic in ambient mesh: Ztunnel, eBPF configuration, and waypoint proxies \| Solo.io](https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint)
 
 <br>
 
@@ -453,7 +453,7 @@ waypoint-proxy は、サービス検出により宛先情報を取得し、証�
 
 ![istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview.png)
 
-> - https://www.anyflow.net/sw-engineer/istio-ambient-mode
+> - [Istio Internals: Ambient mode](https://www.anyflow.net/sw-engineer/istio-ambient-mode)
 
 #### ▼ Namespace のリバースプロキシとして
 
@@ -465,7 +465,7 @@ waypoint-proxy は、Namespace のリバースプロキシである。
 
 ![istio_ambient-mesh_waypoint-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_reverse-proxy.png)
 
-> - https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint
+> - [Traffic in ambient mesh: Ztunnel, eBPF configuration, and waypoint proxies \| Solo.io](https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint)
 
 <br>
 
@@ -511,6 +511,6 @@ ztunnel (L4)
 マイクロサービスCのPod
 ```
 
-> - https://ambientmesh.io/docs/observability/tracing/
+> - [Enable tracing – Ambient Mesh](https://ambientmesh.io/docs/observability/tracing/)
 
 <br>

@@ -17,6 +17,6 @@ description: Claude Code Action＠Claude Codeの知見を記録しています�
 
 メンションに応じて自動で Issue の内容を読み取り、実装をプッシュし、PR を作成する。
 
-> - https://code.claude.com/docs/ja/how-claude-code-works
+> - [Claude Code の仕組み - Claude Code Docs](https://code.claude.com/docs/ja/how-claude-code-works)
 
 <br>

@@ -9,7 +9,7 @@ description: FireLens＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -77,7 +77,7 @@ Fargate からログを送信すると、コンテナ内で稼働する FluentBi
 
 作成のための実装例については、以下のリンクを参考にせよ。
 
-> - https://github.com/aws-samples/amazon-ecs-firelens-examples
+> - [GitHub - aws-samples/amazon-ecs-firelens-examples: Sample logging architectures for FireLens on Amazon ECS and AWS Fargate. · GitHub](https://github.com/aws-samples/amazon-ecs-firelens-examples)
 > - https://aws.amazon.com/jp/blogs/news/announcing-firelens-a-new-way-to-manage-container-logs/
 
 #### ▼ ログのルーティング先
@@ -98,7 +98,7 @@ Amazon ECS タスクのコンテナ定義で、Amazon ECR パブリックギャ�
 
 デフォルトで内蔵されている `conf` ファイルの設定をそのまま使用する場合は、こちらを採用する。
 
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr
+> - [AWS for Fluent Bit image repositories for Amazon ECS - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-ecr)
 
 #### ▼ プライベート Amazon ECR リポジトリを使用する場合
 
@@ -112,9 +112,9 @@ Amazon ECS タスクのコンテナ定義で、プライベート Amazon ECR リ
 FROM amazon/aws-for-fluent-bit:latest
 ```
 
-> - https://hub.docker.com/r/amazon/aws-for-fluent-bit
-> - https://github.com/aws/aws-for-fluent-bit
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-dockerhub
+> - [amazon/aws-for-fluent-bit - Docker Image](https://hub.docker.com/r/amazon/aws-for-fluent-bit)
+> - [GitHub - aws/aws-for-fluent-bit: The source of the amazon/aws-for-fluent-bit container image · GitHub](https://github.com/aws/aws-for-fluent-bit)
+> - [AWS for Fluent Bit image repositories for Amazon ECS - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html#firelens-image-dockerhub)
 
 <br>
 
@@ -225,7 +225,7 @@ FireLens コンテナのデフォルトの設定ファイル。
 
 ローカルマシンで FluentBit コンテナを起動した場合と異なる構成になっていることに注意する。
 
-> - https://dev.classmethod.jp/articles/check-fluent-bit-conf/
+> - [FireLens（Fluent Bit）の設定ファイルをローカル実行時とFireLensで起動したときの違いを見比べてみる \| DevelopersIO](https://dev.classmethod.jp/articles/check-fluent-bit-conf/)
 
 ```bash
 [INPUT]
@@ -267,7 +267,7 @@ FireLens コンテナにカスタム値を設定する。
 
 これにより、FireLens コンテナの `fluent-bit.conf` ファイルに、カスタムファイルを読み込むための INCLUDE 文が挿入される。
 
-> - https://dev.classmethod.jp/articles/check-fluent-bit-conf/
+> - [FireLens（Fluent Bit）の設定ファイルをローカル実行時とFireLensで起動したときの違いを見比べてみる \| DevelopersIO](https://dev.classmethod.jp/articles/check-fluent-bit-conf/)
 
 ```bash
 [INPUT]
@@ -325,7 +325,7 @@ FireLens コンテナにカスタム値を設定する。
     auto_create_group true
 ```
 
-> - https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf
+> - [aws-for-fluent-bit/fluent-bit.conf at mainline · aws/aws-for-fluent-bit · GitHub](https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf)
 
 #### ▼ OUTPUT セクションとプラグイン
 
@@ -372,9 +372,9 @@ Amazon ECR パブリックギャラリーからプルしたコンテナイメー
 ...
 ```
 
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html
-> - https://github.com/aws/aws-for-fluent-bit/blob/mainline/examples/fluent-bit/systems-manager-ec2/plugins.conf
-> - https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4
+> - [AWS for Fluent Bit image repositories for Amazon ECS - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/firelens-using-fluentbit.html)
+> - [aws-for-fluent-bit/examples/fluent-bit/systems-manager-ec2/plugins.conf at mainline · aws/aws-for-fluent-bit · GitHub](https://github.com/aws/aws-for-fluent-bit/blob/mainline/examples/fluent-bit/systems-manager-ec2/plugins.conf)
+> - [FireLens（Fluent Bit）CloudWatch Logsの新プラグインを使ったログストリーム作成方法 \| DevelopersIO](https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4)
 
 <br>
 
@@ -394,7 +394,7 @@ Amazon ECS のプラットフォームバージョンが `v1.3.0` のとき、�
 
 その場合は PARSER セクションにて、正規表現の名前付きキャプチャを使用してコンテナ名を抽出すると、以降のセクションで処理しやすくなる。
 
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v3.html
+> - [Amazon ECS task metadata endpoint version 3 - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-metadata-endpoint-v3.html)
 
 ```bash
 [PARSER]
@@ -439,7 +439,7 @@ PARSER セクションでコンテナ名を抽出したおかげで、STREAM_TAS
 
 FireLens コンテナで複数行のログを処理したい場合、`parsers_multiline.conf` ファイルで MULTILINE_PARSER を設定する必要がある。
 
-> - https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md
+> - [amazon-ecs-firelens-examples/examples/fluent-bit/filter-multiline/README.md at mainline · aws-samples/amazon-ecs-firelens-examples · GitHub](https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md)
 
 #### ▼ MULTILINE_PARSER セクション
 

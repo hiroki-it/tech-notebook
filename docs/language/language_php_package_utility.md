@@ -9,7 +9,7 @@ description: ユーティリティパッケージ＠PHPの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: ユーティリティパッケージ＠PHPの知見を記録して�
 
 ### Carbon とは
 
-> - https://github.com/briannesbitt/Carbon
+> - [GitHub - briannesbitt/Carbon: A simple PHP API extension for DateTime. · GitHub](https://github.com/briannesbitt/Carbon)
 
 <br>
 
@@ -144,7 +144,7 @@ $carbon = Carbon::parse("2019-07-07 19:07:07")
 
 他の同様パッケージとして、Linq がある。
 
-> - https://github.com/TimeToogo/Pinq/
+> - [GitHub - TimeToogo/Pinq: PHP Integrated Query, a real LINQ library for PHP · GitHub](https://github.com/TimeToogo/Pinq/)
 
 <br>
 
@@ -189,7 +189,7 @@ class Foo
 
 しかし、Guzzle パッケージの Client を使えば、サーバから他サーバ (例：外部の API など) に対して、リクエストの送受信できる。
 
-> - https://github.com/guzzle/guzzle
+> - [GitHub - guzzle/guzzle: Guzzle, an extensible PHP HTTP client · GitHub](https://github.com/guzzle/guzzle)
 
 <br>
 
@@ -218,7 +218,7 @@ $response = $client->request(
 );
 ```
 
-> - https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters
+> - [Quickstart — Guzzle Documentation](https://docs.guzzlephp.org/en/stable/quickstart.html#query-string-parameters)
 
 #### ▼ POST リクエスト
 
@@ -250,7 +250,7 @@ $response = $client->request(
 );
 ```
 
-> - https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests
+> - [Quickstart — Guzzle Documentation](https://docs.guzzlephp.org/en/stable/quickstart.html#post-form-requests)
 
 <br>
 
@@ -298,7 +298,7 @@ $body = json_decode($response->getBody(), true);
 
 ローカルまたは指定した URL の `html` ファイルから、PDF や画像のファイルを作成するパッケージ。
 
-> - https://github.com/KnpLabs/snappy
+> - [GitHub - KnpLabs/snappy: PHP library allowing thumbnail, snapshot or PDF generation from a url or a html page. Wrapper for wkhtmltopdf/wkhtmltoimage · GitHub](https://github.com/KnpLabs/snappy)
 
 <br>
 
@@ -328,7 +328,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 フロントエンドからリクエストされるデータには、JavaScript と PHP の両方によるバリデーションが必要である。
 
-> - https://github.com/Respect/Validation
+> - [GitHub - Respect/Validation: The most awesome validation engine ever created for PHP · GitHub](https://github.com/Respect/Validation)
 
 ```php
 <?php
@@ -346,7 +346,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 ![line_messaging-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/line_messaging-api.png)
 
-> - https://github.com/line/line-bot-sdk-php
-> - https://developers.line.biz/ja/docs/messaging-api/overview/
+> - [GitHub - line/line-bot-sdk-php: LINE Messaging API SDK for PHP · GitHub](https://github.com/line/line-bot-sdk-php)
+> - [Messaging APIの概要 \| LINE Developers](https://developers.line.biz/ja/docs/messaging-api/overview/)
 
 <br>

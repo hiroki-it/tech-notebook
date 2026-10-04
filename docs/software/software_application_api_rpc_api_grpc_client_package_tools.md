@@ -9,7 +9,7 @@ description: クライアントツール＠gRPCクライアントパッケージ
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: クライアントツール＠gRPCクライアントパッケージ
 
 gRPC サーバーのテストに使える。
 
-> - https://github.com/ktr0731/evans
+> - [GitHub - ktr0731/evans: Evans: more expressive universal gRPC client · GitHub](https://github.com/ktr0731/evans)
 
 <br>
 

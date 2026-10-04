@@ -10,7 +10,7 @@ description: ConfigMap 系＠リソース定義の知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -45,7 +45,7 @@ Istio コントロールプレーンのログから、CA 証明書の作成を�
 
 ![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
 
-> - https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/
+> - [Replacing Istio CA Certificate · Zufar Dhiyaulhaq](https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/)
 > - https://training.linuxfoundation.cn/news/407
 > - https://developers.redhat.com/articles/2023/08/24/integrate-openshift-service-mesh-cert-manager-and-vault#default_and_pluggable_ca_scenario
 
@@ -130,7 +130,7 @@ spec:
   meshConfig: ...
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig)
 
 <br>
 
@@ -153,7 +153,7 @@ data:
     accessLogEncoding: JSON
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-AccessLogEncoding
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-AccessLogEncoding)
 
 <br>
 
@@ -176,8 +176,8 @@ data:
     accessLogFile: /dev/stdout
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
-> - https://github.com/istio/istio/issues/11938#issuecomment-465938259
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig)
+> - [1.1.0-rc-0: egress gateway proxy doesn't log the curl request when routing external HTTP service · Issue #11938 · istio/istio · GitHub](https://github.com/istio/istio/issues/11938#issuecomment-465938259)
 
 <br>
 
@@ -209,9 +209,9 @@ data:
           - clusterissuers.cert-manager.io/bar
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-CertificateData
-> - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/#deploy-istio-with-default-cert-signer-info
-> - https://istio.io/latest/docs/ops/integrations/certmanager/
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-CertificateData)
+> - [Istio / Custom CA Integration using Kubernetes CSR](https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/#deploy-istio-with-default-cert-signer-info)
+> - [Istio / cert-manager](https://istio.io/latest/docs/ops/integrations/certmanager/)
 
 <br>
 
@@ -239,7 +239,7 @@ data:
           istio.io/rev: default
 ```
 
-> - https://istio.io/latest/news/releases/1.22.x/announcing-1.22/upgrade-notes/#default-value-of-the-feature-flag-enhanced_resource_scoping-to-true
+> - [Istio / Istio 1.22 Upgrade Notes](https://istio.io/latest/news/releases/1.22.x/announcing-1.22/upgrade-notes/#default-value-of-the-feature-flag-enhanced_resource_scoping-to-true)
 > - https://github.com/istio/api/blob/v1.22.1/mesh/v1alpha1/config.proto#L1252-L1274
 
 #### ▼ REGISTRY_ONLY
@@ -262,7 +262,7 @@ data:
       mode: REGISTRY_ONLY
 ```
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
+> - [Istio / Accessing External Services](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services)
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 
 <br>
@@ -288,7 +288,7 @@ data:
       retryOn: connect-failure,deadline-exceeded,refused-stream,unavailable
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-default_http_retry_policy
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-default_http_retry_policy)
 
 #### ▼ アウトバウンド通信時のリトライ条件
 
@@ -310,10 +310,10 @@ istio-proxy のアウトバウンド通信時リトライ条件は以下であ�
 | `retriable-status-codes` (`5xx` のように任意のステータスコードを設定する) |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、指定した HTTP ステータスであった場合に、リトライを実行する。冪等性がない可能性がある。                                       |
 | `reset`                                                                   |                 ⭕️                 |                | マイクロサービスからのアウトバウンド通信時、接続切断／接続リセット／読み取りタイムアウト (Read timeout) が起こった場合に、リトライを実行する。冪等性がない可能性がある。 |
 
-> - https://cloud.google.com/storage/docs/retry-strategy?hl=ja#retryable
-> - https://github.com/istio/istio/issues/51704#issuecomment-2188555136
-> - https://github.com/istio/istio/issues/35774#issuecomment-953877524
-> - https://cloud.google.com/storage/docs/retry-strategy?hl=ja
+> - [再試行の方法 \| Cloud Storage \| Google Cloud Documentation](https://cloud.google.com/storage/docs/retry-strategy?hl=ja#retryable)
+> - [Implement retry on connection reset to upstream · Issue #51704 · istio/istio · GitHub](https://github.com/istio/istio/issues/51704#issuecomment-2188555136)
+> - [Can we set \`reset\` as default retry policy? · Issue #35774 · istio/istio · GitHub](https://github.com/istio/istio/issues/35774#issuecomment-953877524)
+> - [再試行の方法 \| Cloud Storage \| Google Cloud Documentation](https://cloud.google.com/storage/docs/retry-strategy?hl=ja)
 
 | HTTP/2 のステータスコード | マイクロサービスに通信が届いている | リトライが有効 | リトライ条件                                                                                                                                                                                         |
 | ------------------------- | :--------------------------------: | :------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -323,8 +323,8 @@ istio-proxy のアウトバウンド通信時リトライ条件は以下であ�
 | `resource-exhausted`      |                 ⭕️                 |       条件による       | マイクロサービスからのアウトバウンド通信時、gRPC ステータスコードが `ResourceExhausted` であった場合に、リトライを実行する。                                                                         |
 | `unavailable`             |                 ⭕️                 |              | マイクロサービスからのアウトバウンド通信時、宛先が gRPC ステータスコードの `Unavailable` を返信した場合に、リトライを実行する。冪等性に注意する。                                                                   |
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on)
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on)
 
 #### ▼ インバウンド通信時のリトライ条件
 
@@ -375,7 +375,7 @@ data:
           port: 4317
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-DefaultProviders
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-DefaultProviders)
 
 Envoy のアクセスログの場合、代わりに `.mesh.accessLogEncoding` キーと `.mesh.accessLogFile` キーを設定する。
 
@@ -428,7 +428,7 @@ data:
     enablePrometheusMerge: true
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/)
 
 <br>
 
@@ -449,10 +449,10 @@ data:
     enableTracing: true
 ```
 
-> - https://istio.io/latest/docs/tasks/observability/distributed-tracing/mesh-and-proxy-config/#available-tracing-configurations
-> - https://istio.io/latest/docs/ops/integrations/jaeger/
-> - https://istio.io/latest/docs/ops/integrations/zipkin/#option-2-customizable-install
-> - https://zenn.dev/riita10069/articles/service-mesh
+> - [Istio / Configure tracing using MeshConfig and pod annotations](https://istio.io/latest/docs/tasks/observability/distributed-tracing/mesh-and-proxy-config/#available-tracing-configurations)
+> - [Istio / Jaeger](https://istio.io/latest/docs/ops/integrations/jaeger/)
+> - [Istio / Zipkin](https://istio.io/latest/docs/ops/integrations/zipkin/#option-2-customizable-install)
+> - [サービスメッシュの本質は、トラフィック管理や可観測性ではない](https://zenn.dev/riita10069/articles/service-mesh)
 
 <br>
 
@@ -469,7 +469,7 @@ data:
     inboundClusterStatName: inbound|%SERVICE_PORT%|%SERVICE_PORT_NAME%|%SERVICE_FQDN%
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-inbound_cluster_stat_name
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-inbound_cluster_stat_name)
 
 <br>
 
@@ -477,7 +477,7 @@ data:
 
 #### ▼ ingressSelector とは
 
-すべての istio-proxy に、使用する Gateway の `.metadata.labels.istio` キーの値を設定する。
+Istio Ingress Controller が処理対象とする Deployment のリソースラベルを設定する。
 
 デフォルトでは、Ingress として `ingressgateway` が設定される。
 
@@ -498,7 +498,7 @@ data:
 
 #### ▼ ingressService とは
 
-すべての istio-proxy に、使用する Ingress Controller の Service 名を設定する。
+Istio Ingress Controller が処理対象とする Service 名を設定する。
 
 デフォルトでは、`istio-ingressgateway` が設定される。
 
@@ -513,7 +513,7 @@ data:
     ingressService: ingressgateway
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig)
 
 <br>
 
@@ -534,7 +534,7 @@ data:
     proxyHttpPort: 80
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig)
 
 <br>
 
@@ -551,7 +551,7 @@ data:
     outboundClusterStatName: outbound|%SERVICE_PORT%|%%SUBSET_NAME%%|%SERVICE_FQDN%
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-outbound_cluster_stat_name
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-outbound_cluster_stat_name)
 
 <br>
 
@@ -579,7 +579,7 @@ data:
       mode: ALLOW_ANY
 ```
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
+> - [Istio / Accessing External Services](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services)
 > - https://istiobyexample.dev/monitoring-egress-traffic/
 > - https://discuss.istio.io/t/setting-outboundtrafficpolicy-mode-in-configmap/7041/3
 
@@ -613,7 +613,7 @@ data:
     proxyListenPort: 80
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig)
 
 <br>
 
@@ -621,7 +621,7 @@ data:
 
 ### defaultConfig とは
 
-Istio のすべてのコンポーネントに適用する変数のデフォルト値を設定する。
+Istio Ingress/Egress Gateway と istio-proxy に適用する変数のデフォルト値を設定する。
 
 他に ProxyConfig (と思ったが、ProxyConfig のドキュメントに載っていない設定は無理みたい) 、Pod の `.metadata.annotations.proxy.istio.io/config` キーでも設定できる。
 
@@ -663,8 +663,8 @@ spec:
   discoveryAddress: istiod:15012
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-> - https://github.com/istio/api/blob/master/networking/v1beta1/proxy_config.proto
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig)
+> - [api/networking/v1beta1/proxy\_config.proto at master · istio/api · GitHub](https://github.com/istio/api/blob/master/networking/v1beta1/proxy_config.proto)
 
 <br>
 
@@ -768,8 +768,8 @@ data:
           interval: 75
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-envoy_access_log_service
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService)
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-envoy_access_log_service)
 
 <br>
 
@@ -798,8 +798,8 @@ data:
           interval: 75
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-envoy_metrics_service
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#RemoteService)
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-envoy_metrics_service)
 
 <br>
 
@@ -828,12 +828,12 @@ spec:
   holdApplicationUntilProxyStarts: true
 ```
 
-> - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB
-> - https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters
+> - [Sidecar 初始化完成后再启动应用程序 \| Istio 运维实战](https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E8%A7%A3%E8%80%A6%E5%BA%94%E7%94%A8%E6%9C%8D%E5%8A%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%90%AF%E5%8A%A8%E4%BE%9D%E8%B5%96%E5%85%B3%E7%B3%BB)
+> - [【インターンレポート】Istioの導入によるKubernetesクラスタの可観測性の向上](https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters)
 
 オプションを有効化すると、istio-proxy の `.spec.containers[*].lifecycle.postStart.exec.command` キーに、`pilot-agent -wait` コマンドが挿入される。
 
-`.spec.containers[*].lifecycle.preStop.exec.command` キーへの自動設定は、`EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数で対応する。
+終了順序は、istio-proxy の `.spec.containers[*].lifecycle.preStop.exec.command` キーで調整する。
 
 ```yaml
 ...
@@ -853,7 +853,7 @@ spec:
 ...
 ```
 
-> - https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F
+> - [Sidecar 初始化完成后再启动应用程序 \| Istio 运维实战](https://www.zhaohuabing.com/istio-guide/docs/best-practice/startup-dependence/#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE-sidecar-%E5%92%8C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F)
 
 <br>
 
@@ -882,9 +882,9 @@ data:
 
 `istio-cni` でも、Helm チャートで別に設定すれば、`distroless` 型を選べる。
 
-> - https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyImage
-> - https://cloud.google.com/service-mesh/docs/enable-optional-features-in-cluster?hl=ja#distroless_proxy_image
-> - https://istio.io/latest/docs/ops/configuration/security/harden-docker-images/
+> - [Istio / ProxyConfig](https://istio.io/latest/docs/reference/config/networking/proxy-config/#ProxyImage)
+> - [クラスタ内コントロール プレーンでオプション機能を有効にする \| Cloud Service Mesh \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/enable-optional-features-in-cluster?hl=ja#distroless_proxy_image)
+> - [Istio / Harden Docker Container Images](https://istio.io/latest/docs/ops/configuration/security/harden-docker-images/)
 
 <br>
 
@@ -906,9 +906,7 @@ data:
 
 ### proxyHeaders
 
-デフォルト値は `true` である。
-
-`x-envoy` ヘッダーを有効化するか否かを設定する。
+istio-proxy が通信を中継するときに追加、変更、削除する HTTP ヘッダーを設定する。
 
 例えば、接続プール上限超過によるサーキットブレイカーが起こったことを示す `x-envoy-overloaded` ヘッダーがある。
 
@@ -922,8 +920,7 @@ data:
   mesh: |
     defaultConfig:
       proxyHeaders:
-        envoyDebugHeaders: 
-          forwardedClientCert: SANITIZE
+        forwardedClientCert: SANITIZE
         server:
           disabled: true
         requestId:
@@ -936,9 +933,9 @@ data:
           mode: IN_MESH
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-proxy_headers
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#http-headers-consumed-from-downstreams
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-proxy_headers)
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#http-headers-consumed-from-downstreams)
+> - [HTTP header manipulation — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers)
 
 <br>
 
@@ -1025,7 +1022,7 @@ data:
       ...
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#Tracing
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#Tracing)
 
 <br>
 
@@ -1060,8 +1057,8 @@ spec:
   tracingServiceName: APP_LABEL_AND_NAMESPACE
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-TracingServiceName
-> - https://istio.io/latest/docs/reference/config/labels/#ServiceCanonicalName
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig-TracingServiceName)
+> - [Istio / Resource Labels](https://istio.io/latest/docs/reference/config/labels/#ServiceCanonicalName)
 
 <br>
 
@@ -1082,7 +1079,7 @@ data:
     trustDomain: cluster.local
 ```
 
-> - https://istio.io/latest/docs/tasks/security/authorization/authz-td-migration/
+> - [Istio / Trust Domain Migration](https://istio.io/latest/docs/tasks/security/authorization/authz-td-migration/)
 
 <br>
 
@@ -1105,7 +1102,7 @@ data:
         BOOTSTRAP_XDS_AGENT: "true"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - [Istio / pilot-agent](https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars)
 
 <br>
 
@@ -1128,7 +1125,7 @@ data:
         ENABLE_DEFERRED_CLUSTER_CREATION: "true"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - [Istio / pilot-agent](https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars)
 
 <br>
 
@@ -1153,8 +1150,8 @@ data:
         EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY: "true"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+> - [Istio / pilot-agent](https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars)
+> - [Istio / Announcing Istio 1.24.0](https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries)
 
 <br>
 
@@ -1179,8 +1176,8 @@ data:
         ENABLE_INBOUND_RETRY_POLICY: "true"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+> - [Istio / pilot-agent](https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars)
+> - [Istio / Announcing Istio 1.24.0](https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries)
 
 <br>
 
@@ -1196,7 +1193,7 @@ istio-proxy へのリクエストが無くなってから、Envoy のプロセ�
 
 ドレイン処理の終了を待機する最小時間は、`MINIMUM_DRAIN_DURATION` で設定する。
 
-オプションを有効化すると、istio-proxy の `.spec.containers[*].lifecycle.preStop.exec.command` キーに、`sleep` コマンドが自動で挿入される。
+istio-proxy の終了順序を調整する場合は、`.spec.containers[*].lifecycle.preStop.exec.command` キーに待機処理を設定する。
 
 `.spec.containers[*].lifecycle.postStart.exec.command` キーへの自動設定は、`.mesh.defaultConfig.holdApplicationUntilProxyStarts` キーで対応する。
 
@@ -1215,8 +1212,8 @@ data:
         EXIT_ON_ZERO_ACTIVE_CONNECTIONS: "false"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
+> - [Istio / pilot-agent](https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars)
+> - [ABEMA における GKE スケール戦略と Anthos Service Mesh 活用事例 Deep Dive - Speaker Deck](https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80)
 
 <br>
 
@@ -1239,7 +1236,7 @@ data:
         ISTIO_META_CERT_SIGNER: ""
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
+> - [Istio / pilot-agent](https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars)
 
 <br>
 
@@ -1282,9 +1279,9 @@ spec:
       protocol: HTTP
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started
-> - https://istio.io/latest/news/releases/1.25.x/announcing-1.25/change-notes/#deprecation-notices
+> - [Istio / pilot-agent](https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars)
+> - [Istio / DNS Proxying](https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#getting-started)
+> - [Istio / Istio 1.25.0 Change Notes](https://istio.io/latest/news/releases/1.25.x/announcing-1.25/change-notes/#deprecation-notices)
 
 <br>
 
@@ -1300,8 +1297,8 @@ spec:
 
 なお、DNS キャッシュのドメインと IP アドレスを固定で紐付けることもできる。
 
-> - https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy
+> - [Istio / pilot-agent](https://istio.io/latest/docs/reference/commands/pilot-agent/#envvars)
+> - [Istio / DNS Proxying](https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy)
 
 #### ▼ 固定 (HTTP リクエスト)
 
@@ -1334,7 +1331,7 @@ spec:
       protocol: HTTP
 ```
 
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#dns-capture-in-action
+> - [Istio / DNS Proxying](https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#dns-capture-in-action)
 
 #### ▼ 動的 (HTTP リクエスト)
 
@@ -1369,7 +1366,7 @@ spec:
       protocol: HTTP
 ```
 
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#address-auto-allocation
+> - [Istio / DNS Proxying](https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#address-auto-allocation)
 
 #### ▼ 動的 (TCP 接続)
 
@@ -1430,9 +1427,9 @@ spec:
   resolution: DNS
 ```
 
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#external-tcp-services-without-vips
-> - https://github.com/istio/istio/discussions/51942#discussioncomment-9989752
-> - https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters
+> - [Istio / DNS Proxying](https://istio.io/latest/docs/ops/configuration/traffic-management/dns-proxy/#external-tcp-services-without-vips)
+> - [Routing L4 Traffic Based on Host in Istio Gateway · istio/istio · Discussion #51942 · GitHub](https://github.com/istio/istio/discussions/51942#discussioncomment-9989752)
+> - [【インターンレポート】Istioの導入によるKubernetesクラスタの可観測性の向上](https://engineering.linecorp.com/ja/blog/istio-introduction-improve-observability-of-ubernetes-clusters)
 
 <br>
 
@@ -1471,8 +1468,8 @@ data:
         MINIMUM_DRAIN_DURATION: "5s"
 ```
 
-> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
-> - https://github.com/istio/istio/pull/35059#discussion_r711500175
+> - [ABEMA における GKE スケール戦略と Anthos Service Mesh 活用事例 Deep Dive - Speaker Deck](https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80)
+> - [terminate envoy when number of active connections is zero by ramaraochavali · Pull Request #35059 · istio/istio · GitHub](https://github.com/istio/istio/pull/35059#discussion_r711500175)
 
 <br>
 
@@ -1484,8 +1481,8 @@ data:
 
 `ISTIO_META_DNS_CAPTURE` を有効にしないと、`PILOT_ENABLE_IP_AUTOALLOCATE` は機能しない。
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
-> - https://istio.io/latest/news/releases/1.25.x/announcing-1.25/change-notes/#deprecation-notices
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
+> - [Istio / Istio 1.25.0 Change Notes](https://istio.io/latest/news/releases/1.25.x/announcing-1.25/change-notes/#deprecation-notices)
 
 <br>
 
@@ -1495,7 +1492,7 @@ data:
 
 AuthorizationPolicy による認可処理を外部の認可プロバイダーに委譲する。
 
-> - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/
+> - [Istio / External Authorization](https://istio.io/latest/docs/tasks/security/authorization/authz-custom/)
 
 <br>
 
@@ -1505,8 +1502,8 @@ AuthorizationPolicy による認可処理を外部の認可プロバイダーに
 
 外部の認可プロバイダーへの通信に HTTP/1.1 プロトコルを使用する。
 
-> - https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-EnvoyExternalAuthorizationHttpProvider
+> - [Istio / External Authorization](https://istio.io/latest/docs/tasks/security/authorization/authz-custom/#define-the-external-authorizer)
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-EnvoyExternalAuthorizationHttpProvider)
 
 #### ▼ OAuth2 Proxy の場合
 
@@ -1554,8 +1551,8 @@ spec:
             paths: ["/login"]
 ```
 
-> - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
-> - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
+> - [\[Kuberntes\] 汎用OAuth2 Proxyをサービスの手前に置く：認証認可編](https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2)
+> - [\[Kuberntes\] 汎用OAuth2 Proxyをサービスの手前に置く：認証認可編](https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1)
 
 #### ▼ Open Policy Agent の場合
 
@@ -1584,7 +1581,7 @@ data:
 
 **実装例**
 
-> - https://www.openpolicyagent.org/docs/envoy/tutorial-istio#2-configure-the-mesh-to-define-the-external-authorizer
+> - [Tutorial: Istio \| Open Policy Agent](https://www.openpolicyagent.org/docs/envoy/tutorial-istio#2-configure-the-mesh-to-define-the-external-authorizer)
 
 #### ▼ Keycloak の場合
 
@@ -1592,8 +1589,8 @@ Keycloak は、ID プロバイダーとしてだけでなく認可プロバイ�
 
 ただし、前段に OAuth2 Proxy を置くことが一般的である。
 
-> - https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2
-> - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1
+> - [\[Kuberntes\] 汎用OAuth2 Proxyをサービスの手前に置く：認証認可編](https://zenn.dev/takitake/articles/a91ea116cabe3c#istio%E3%81%AB%E5%A4%96%E9%83%A8%E8%AA%8D%E5%8F%AF%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%99%BB%E9%8C%B2)
+> - [\[Kuberntes\] 汎用OAuth2 Proxyをサービスの手前に置く：認証認可編](https://zenn.dev/takitake/articles/a91ea116cabe3c#%E5%BF%85%E8%A6%81%E3%81%AA%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90-1)
 
 <br>
 
@@ -1611,7 +1608,7 @@ Keycloak は、ID プロバイダーとしてだけでなく認可プロバイ�
 
 プロバイダーによって、いずれのテレメトリーを送信するのかが異なる。
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider)
 
 <br>
 
@@ -1643,7 +1640,8 @@ data:
           service: datadog-agent.foo-namespace.svc.cluster.local
           port: 8126
       - name: envoy-log
-        envoyFileAccessLog
+        envoyFileAccessLog:
+          path: /dev/stdout
 ```
 
 #### ▼ Telemetry の定義
@@ -1694,10 +1692,10 @@ spec:
         - name: envoy-log
 ```
 
-> - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27
+> - [istio/operator/pkg/util/testdata/overlay-iop.yaml at 1.19.1 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L26-L27)
 > - https://docs.datadoghq.com/containers/docker/apm/?tab=linux#tracing-from-the-host
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-DatadogTracingProvider
-> - https://istio.io/latest/docs/reference/config/telemetry/
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-DatadogTracingProvider)
+> - [Istio / Telemetry](https://istio.io/latest/docs/reference/config/telemetry/)
 
 <br>
 
@@ -1793,13 +1791,13 @@ spec:
         - name: envoy-log
 ```
 
-> - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging
-> - https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L36-L37
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-OpenTelemetryTracingProvider
-> - https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection
-> - https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml
-> - https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099.
-> - https://istio.io/latest/docs/reference/config/telemetry/
+> - [Istio / OpenTelemetry](https://istio.io/latest/docs/tasks/observability/logs/otel-provider/#enable-envoys-access-logging)
+> - [istio/operator/pkg/util/testdata/overlay-iop.yaml at 1.19.1 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.19.1/operator/pkg/util/testdata/overlay-iop.yaml#L36-L37)
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-OpenTelemetryTracingProvider)
+> - [Istio / Telemetry API](https://istio.io/latest/docs/tasks/observability/telemetry/#provider-selection)
+> - [istio/samples/open-telemetry/tracing/telemetry.yaml at master · istio/istio · GitHub](https://github.com/istio/istio/blob/master/samples/open-telemetry/tracing/telemetry.yaml)
+> - [Medium](https://itnext.io/debugging-microservices-on-k8s-with-istio-opentelemetry-and-tempo-4c36c97d6099.)
+> - [Istio / Telemetry](https://istio.io/latest/docs/reference/config/telemetry/)
 
 <br>
 
@@ -1807,10 +1805,12 @@ spec:
 
 #### ▼ prometheus とは
 
-メトリクスの監視バックエンドとする Prometheus の宛先情報を設定する。
+Prometheus をメトリクスプロバイダーとして設定する。
+
+宛先情報を設定する項目はなく、Prometheus が istio-proxy のメトリクスエンドポイントから収集する。
 
 > - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-PrometheusMetricsProvider
-> - https://istio.io/latest/docs/reference/config/telemetry/
+> - [Istio / Telemetry](https://istio.io/latest/docs/reference/config/telemetry/)
 
 <br>
 
@@ -1839,7 +1839,7 @@ data:
     enableTracing: true
     extensionProviders:
       - name: jaeger-http
-        jaeger:
+        zipkin:
           # jaeger エージェントを宛先として設定する
           service: jaeger-agent.foo-namespace.svc.cluster.local
           port: 8126
@@ -1894,7 +1894,7 @@ spec:
         - name: envoy-log
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider)
 > - https://discuss.istio.io/t/integrating-jaeger-tracing-using-telemetry-api/14759
 
 <br>
@@ -1939,7 +1939,7 @@ data:
               x_forwarded_for: '%REQ(X-FORWARDED-FOR)%'
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
+> - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules)
 
 <br>
 
@@ -2019,7 +2019,7 @@ data:
         ... # Helm のテンプレート
 ```
 
-> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection
+> - [Istio / Installing the Sidecar](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#customizing-injection)
 > - https://github.com/istio/istio/blob/1.20.3/pkg/kube/inject/inject.go#L303
 
 <br>
@@ -2043,8 +2043,8 @@ data:
     }
 ```
 
-> - https://karlstoney.com/ci-for-istio-mesh/
-> - https://blog.1q77.com/2020/03/istio-part12/
+> - [CI for Istio Mesh](https://karlstoney.com/ci-for-istio-mesh/)
+> - [Istio 導入への道 – sidecar の調整編](https://blog.1q77.com/2020/03/istio-part12/)
 
 <br>
 
@@ -2062,14 +2062,15 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: CITADEL_SELF_SIGNED_CA_CERT_TTL
-            value: 87600h0m0s
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: CITADEL_SELF_SIGNED_CA_CERT_TTL
+              value: 87600h0m0s
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 
 <br>
 
@@ -2085,14 +2086,15 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: CITADEL_SELF_SIGNED_ROOT_CERT_CHECK_INTERVAL
-            value: 1h0m0s
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: CITADEL_SELF_SIGNED_ROOT_CERT_CHECK_INTERVAL
+              value: 1h0m0s
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 
 <br>
 
@@ -2116,7 +2118,7 @@ spec:
               value: Kubernetes
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 
 <br>
 
@@ -2134,15 +2136,15 @@ metadata:
   namespace: istio-system
 spec:
   template:
-  　spec:
-    containers:
-      - name: discovery
-        env:
-          - name: DEFAULT_WORKLOAD_CERT_TTL
-            value: 24h0m0s
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: DEFAULT_WORKLOAD_CERT_TTL
+              value: 24h0m0s
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 
 <br>
 
@@ -2170,7 +2172,7 @@ spec:
               value: "true"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 
 <br>
 
@@ -2198,8 +2200,8 @@ spec:
               value: "true"
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/bootstrap/v3/bootstrap.proto#config-bootstrap-v3-bootstrap-deferredstatoptions
-> - https://martinfowler.com/bliki/LazyInitialization.html
+> - [Bootstrap (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/bootstrap/v3/bootstrap.proto#config-bootstrap-v3-bootstrap-deferredstatoptions)
+> - [Lazy Initialization](https://martinfowler.com/bliki/LazyInitialization.html)
 
 <br>
 
@@ -2225,7 +2227,7 @@ spec:
               value: "true"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 
 <br>
 
@@ -2253,7 +2255,7 @@ spec:
               value: "true"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 
 <br>
 
@@ -2285,8 +2287,8 @@ spec:
               value: "true"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
-> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
+> - [Istio / Announcing Istio 1.24.0](https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries)
 
 <br>
 
@@ -2320,9 +2322,9 @@ spec:
               value: "true"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
-> - https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries
-> - https://karlstoney.com/retry-policies-in-istio/
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
+> - [Istio / Announcing Istio 1.24.0](https://istio.io/latest/news/releases/1.24.x/announcing-1.24/#improved-retries)
+> - [Retry Policies in Istio](https://karlstoney.com/retry-policies-in-istio/)
 
 <br>
 
@@ -2340,14 +2342,15 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: PILOT_TRACE_SAMPLING
-            value: 1
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: PILOT_TRACE_SAMPLING
+              value: 1
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 
 <br>
 
@@ -2363,11 +2366,12 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: PILOT_CERT_PROVIDER
-            value: istiod
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: PILOT_CERT_PROVIDER
+              value: istiod
 ```
 
 | 設定値       | 説明                                                      |
@@ -2376,7 +2380,7 @@ spec:
 | `kubernetes` | Kubernetes の Secret で管理するサーバー証明書を使用する。 |
 | `none`       | サーバー証明書を使用しない。                              |
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 
 <br>
 
@@ -2392,11 +2396,12 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: PILOT_ENABLE_MYSQL_FILTER
-            value: "true"
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: PILOT_ENABLE_MYSQL_FILTER
+              value: "true"
 ```
 
 `proxyStatsMatcher` でも設定が必要である。
@@ -2415,8 +2420,8 @@ data:
           - ".*mysql.*"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-enable-mysql-filter
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/mysql_proxy_filter#statistics
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-enable-mysql-filter)
+> - [MySQL proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/mysql_proxy_filter#statistics)
 
 <br>
 
@@ -2432,11 +2437,12 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: PILOT_ENABLE_REDIS_FILTER
-            value: "true"
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: PILOT_ENABLE_REDIS_FILTER
+              value: "true"
 ```
 
 `proxyStatsMatcher` でも設定が必要である。
@@ -2455,8 +2461,8 @@ data:
           - ".*redis.*"
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-enable-mysql-filter
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/redis_proxy_filter
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#pilot-enable-mysql-filter)
+> - [Redis proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/redis_proxy_filter)
 
 <br>
 
@@ -2472,13 +2478,14 @@ metadata:
   namespace: istio-system
 spec:
   template:
-    containers:
-      - name: discovery
-        env:
-          - name: PILOT_JWT_PUB_KEY_REFRESH_INTERVAL
-            value: 20m0s
+    spec:
+      containers:
+        - name: discovery
+          env:
+            - name: PILOT_JWT_PUB_KEY_REFRESH_INTERVAL
+              value: 20m0s
 ```
 
-> - https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars
+> - [Istio / pilot-discovery](https://istio.io/latest/docs/reference/commands/pilot-discovery/#envvars)
 
 <br>

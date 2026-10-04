@@ -9,7 +9,7 @@ description: RabbitMQ＠メッセージング系ミドルウェアの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,14 +19,14 @@ description: RabbitMQ＠メッセージング系ミドルウェアの知見を�
 
 送受信の関係が多対多のパブリッシュ／サブスクライブ方式である。
 
-> - https://tech.asoview.co.jp/entry/2022/04/06/102637
-> - https://aws.amazon.com/jp/compare/the-difference-between-rabbitmq-and-kafka/
+> - [Amazon Kinesis Data Streams + Protocol Buffersで実現するイベント駆動アーキテクチャー - asoview! Tech Blog](https://tech.asoview.co.jp/entry/2022/04/06/102637)
+> - [カフカ対ラビットMQ？ カフカと RabbitMQ の違い-AWS](https://aws.amazon.com/jp/compare/the-difference-between-rabbitmq-and-kafka/)
 
 <br>
 
 ## 02. パブリッシュ
 
-> - https://www.rabbitmq.com/docs/publishers#basics
+> - [Publishers \| RabbitMQ](https://www.rabbitmq.com/docs/publishers#basics)
 
 <br>
 
@@ -38,7 +38,7 @@ description: RabbitMQ＠メッセージング系ミドルウェアの知見を�
 
 注意点として、Kafka のプル型は RabbitMQ と仕組みが異なり、サブスクライブによる購読予約を Kafka に実行して予約し、そのうえで Kafka にポーリング (Kafka Protocol) を実行する必要がある。
 
-> - https://www.rabbitmq.com/docs/consumers#polling
+> - [Consumers \| RabbitMQ](https://www.rabbitmq.com/docs/consumers#polling)
 
 <br>
 
@@ -46,7 +46,7 @@ description: RabbitMQ＠メッセージング系ミドルウェアの知見を�
 
 プッシュ型のサブスクライブの場合、Rabbit MQ はメッセージを宛先に送信する。
 
-> - https://www.rabbitmq.com/docs/consumers#subscribing
+> - [Consumers \| RabbitMQ](https://www.rabbitmq.com/docs/consumers#subscribing)
 
 <br>
 
@@ -54,7 +54,7 @@ description: RabbitMQ＠メッセージング系ミドルウェアの知見を�
 
 メッセージプロトコル (例：AMQP、STOMP、MQTT など) だけでなく、 一部の `L7` プロトコル (例：HTTP) にも対応している。
 
-> - https://www.rabbitmq.com/docs/protocols
-> - https://www.rabbitmq.com/docs/publishers#protocols
+> - [Which protocols does RabbitMQ support? \| RabbitMQ](https://www.rabbitmq.com/docs/protocols)
+> - [Publishers \| RabbitMQ](https://www.rabbitmq.com/docs/publishers#protocols)
 
 <br>

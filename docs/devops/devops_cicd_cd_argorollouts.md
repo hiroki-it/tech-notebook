@@ -9,7 +9,7 @@ description: Argo Rollouts＠CDツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: Argo Rollouts＠CDツールの知見を記録しています。
 
 argo-rollouts-controller、ダッシュボードから構成される。
 
-> - https://argo-rollouts.readthedocs.io/en/stable/architecture/
+> - [Architecture - Argo Rollouts - Kubernetes Progressive Delivery Controller](https://argo-rollouts.readthedocs.io/en/stable/architecture/)
 
 <br>
 
@@ -35,7 +35,7 @@ Argo Rollouts と ArgoCD は異なる Cluster 上に独立して存在できる�
 
 ArgoCD のダッシュボードを拡張すると、ArgoCD から Argo Rollouts を操作できるようになる。
 
-> - https://argo-rollouts.readthedocs.io/en/latest/FAQ/#how-does-argo-rollouts-integrate-with-argo-cd
-> - https://github.com/argoproj-labs/rollout-extension
+> - [FAQ - Argo Rollouts - Kubernetes Progressive Delivery Controller](https://argo-rollouts.readthedocs.io/en/latest/FAQ/#how-does-argo-rollouts-integrate-with-argo-cd)
+> - [GitHub - argoproj-labs/rollout-extension: Argo Rollout visualization in Argo CD Web UI · GitHub](https://github.com/argoproj-labs/rollout-extension)
 
 <br>

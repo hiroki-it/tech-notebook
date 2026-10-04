@@ -9,7 +9,7 @@ description: 認証／認可＠Laravelの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -39,7 +39,7 @@ description: 認証／認可＠Laravelの知見を記録しています。
 | 14  | View                                                    | `blade.php` ファイルを基に静的ファイルを作成する。                                                                      |
 | 15  | レスポンスを返信する。                                  |                                                                                                                         |
 
-> - https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/
+> - [The Integration of Laravel with Swoole (Part 1)](https://blog.albert-chen.com/the-integration-of-laravel-with-swoole-part-1/)
 
 <br>
 
@@ -173,7 +173,7 @@ class FooCommand extends Command
 $ php artisan command:do-foo
 ```
 
-> - https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands
+> - [8.x Artisanコンソール Laravel](https://readouble.com/laravel/8.x/ja/artisan.html#writing-commands)
 
 <br>
 
@@ -294,7 +294,7 @@ return [
 
 この場合、環境変数に `2` 個のインスタンスのエンドポイントを実装する必要がある。
 
-> - https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A
+> - [8.x データベース：準備 Laravel](https://readouble.com/laravel/8.x/ja/database.html#contentContainer:~:text=Read%EF%BC%8FWrite%E6%8E%A5%E7%B6%9A)
 
 ```bash
 DB_HOST_PRIMARY=<プライマリーインスタンスのエンドポイント>
@@ -345,7 +345,7 @@ return [
 ];
 ```
 
-> - https://imanengineer.net/laravel-how-to-configure-master-slave-db/
+> - [Laravelでマスター／スレーブ構成のデータベースに接続するための設定 \| I am a software engineer](https://imanengineer.net/laravel-how-to-configure-master-slave-db/)
 
 <br>
 
@@ -410,7 +410,7 @@ final class UserCreatedEvent
 event(new UserCreatedEvent($user));
 ```
 
-> - https://readouble.com/laravel/8.x/ja/events.html#defining-events
+> - [8.x イベント Laravel](https://readouble.com/laravel/8.x/ja/events.html#defining-events)
 
 #### ▼ Eloquent モデルの CRUD イベント
 
@@ -446,7 +446,7 @@ class User extends Authenticatable
 }
 ```
 
-> - https://readouble.com/laravel/8.x/ja/eloquent.html#events
+> - [8.x Eloquentの準備 Laravel](https://readouble.com/laravel/8.x/ja/eloquent.html#events)
 
 **＊実装例＊**
 
@@ -750,7 +750,7 @@ Laravel ではデフォルトで Handler クラスがすべてのステップを
 
 エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html
+> - [【IT技術の知見】エラーとエラーハンドリング＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html)
 
 <br>
 
@@ -816,7 +816,7 @@ Laravel はスローされる例外のメッセージをスタックトレース
 "}
 ```
 
-> - https://readouble.com/laravel/8.x/ja/errors.html#configuration
+> - [8.x エラー処理 Laravel](https://readouble.com/laravel/8.x/ja/errors.html#configuration)
 
 <br>
 
@@ -850,7 +850,7 @@ class Handler extends ExceptionHandler
 }
 ```
 
-> - https://cpoint-lab.co.jp/article/201905/9841/
+> - [【Laravel】report関数で例外を握りつぶさない様にする \| 株式会社シーポイントラボ｜浜松のWEBシステム・RTK-GNSS開発](https://cpoint-lab.co.jp/article/201905/9841/)
 
 <br>
 
@@ -883,7 +883,7 @@ class Handler extends ExceptionHandler
 }
 ```
 
-> - https://cpoint-lab.co.jp/article/201905/9841/
+> - [【Laravel】report関数で例外を握りつぶさない様にする \| 株式会社シーポイントラボ｜浜松のWEBシステム・RTK-GNSS開発](https://cpoint-lab.co.jp/article/201905/9841/)
 
 <br>
 
@@ -1334,7 +1334,7 @@ Route::prefix("foos")->group(function () {
 
 または、RouteServiceProvider クラスに `pattern()` 関数を定義すると、各エンドポイントに対する正規表現を一括で実行できる。
 
-> - https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
+> - [8.x ルーティング Laravel](https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints)
 
 **＊実装例＊**
 
@@ -1722,7 +1722,7 @@ class FooController extends Controller
 
 以下リンクを参考にせよ。
 
-> - https://readouble.com/laravel/8.x/ja/helpers.html#method-view
+> - [8.x ヘルパ Laravel](https://readouble.com/laravel/8.x/ja/helpers.html#method-view)
 
 <br>
 
@@ -1792,7 +1792,7 @@ return [
 
 ### `bcrypt()` ヘルパー
 
-> - https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt
+> - [8.x ヘルパ Laravel](https://readouble.com/laravel/8.x/ja/helpers.html#method-bcrypt)
 
 ```php
 <?php
@@ -1804,7 +1804,7 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 ### `redirect()` ヘルパー
 
-> - https://blog.capilano-fw.com/?p=566
+> - [Laravelリダイレクト実例・全５パターン – console dot log](https://blog.capilano-fw.com/?p=566)
 
 <br>
 
@@ -1816,7 +1816,7 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 `response()` ヘルパーは初期値として `200` ステータスが設定されているが、`view()` 関数や `setStatusCode()` 関数を使用して、明示的に設定してもよい。
 
-> - https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php
+> - [framework/src/Illuminate/Contracts/Routing/ResponseFactory.php at 8.x · laravel/framework · GitHub](https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php)
 
 **＊実装例＊**
 
@@ -1911,7 +1911,7 @@ class FooController extends Controller
 
 ドメインは自動的に補完される。
 
-> - https://readouble.com/laravel/8.x/ja/helpers.html#method-route
+> - [8.x ヘルパ Laravel](https://readouble.com/laravel/8.x/ja/helpers.html#method-route)
 
 ```php
 <?php
@@ -1984,7 +1984,7 @@ $path = storage_path("app/file.txt");
 
 ドメインは自動的に補完される。
 
-> - https://readouble.com/laravel/5.7/ja/urls.html
+> - [5.7 URL生成 Laravel](https://readouble.com/laravel/5.7/ja/urls.html)
 
 ```php
 <?php
@@ -2007,7 +2007,7 @@ Farker クラスは、プロパティにランダムなデータを保持して�
 
 このプロパティを特に、Formatters という。
 
-> - https://fwhy.github.io/faker-docs/
+> - [FakerPHP非公式リファレンス for v1.24.1 \| FakerPHP非公式リファレンス](https://fwhy.github.io/faker-docs/)
 
 #### ▼ Factory によるレコード定義
 
@@ -2048,7 +2048,7 @@ class FooFactory extends Factory
 
 Factory に対応する Eloquent モデルで使用する必要がある。
 
-> - https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories
+> - [8.x データベーステスト Laravel](https://readouble.com/laravel/8.x/ja/database-testing.html#creating-models-using-factories)
 
 ```php
 class Foo
@@ -2248,7 +2248,7 @@ class FooController extends Controller
 }
 ```
 
-> - https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests
+> - [7.x バリデーション Laravel](https://readouble.com/laravel/7.x/ja/validation.html#creating-form-requests)
 > - https://laravel.com/api/8.x/Illuminate/Http/Request.html#method_validate
 
 #### ▼ ルール定義 & バリデーション自動実行
@@ -2697,7 +2697,7 @@ public function authorize()
 
 ![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
 
-> - https://www.ritolab.com/posts/69
+> - [Laravelミドルウェアの基本入門（＆出力HTMLをminifyしWebサイト高速化） \| Ritolabo](https://www.ritolab.com/posts/69)
 > - https://www.c-sharpcorner.com/article/asp-net-core-middleware/
 
 #### ▼ BeforeMiddlewareware
@@ -2778,13 +2778,13 @@ class FooAfterMiddleware
 
 暗号化したくない場合は、`Cookie` ヘッダーのキー名を `except` プロパティに設定する。
 
-> - https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2
+> - [これでセッションとクッキーの理解はスッキリ！(Laravel編) \| アールエフェクト](https://reffect.co.jp/laravel/laravel-sessions-understand#cookie-2)
 
 #### ▼ StartSession
 
 セッションの開始の開始点になる。
 
-> - https://qiita.com/wim/items/b1db5202cce6b38bc47b
+> - [Laravelでセッションを利用できるまでの準備の流れ #Laravel - Qiita](https://qiita.com/wim/items/b1db5202cce6b38bc47b)
 
 また、同一セッションで一意な CSRF トークンを作成する。
 
@@ -2800,7 +2800,7 @@ CSRF トークンによる CSRF の防御については、以下のリンクを
 
 一般的に、CSRF トークンは `Cookie` ヘッダーに割り当てることもできるが、Laravel ではリクエストボディを使用する必要がある。
 
-> - https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests
+> - [8.x CSRF保護 Laravel](https://readouble.com/laravel/8.x/ja/csrf.html#preventing-csrf-requests)
 
 <br>
 
@@ -2932,7 +2932,7 @@ class FooController extends Controller
 }
 ```
 
-> - https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+> - [8.x HTTP Requests Laravel](https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input)
 
 #### ▼ クエリパラメーター
 
@@ -2961,7 +2961,7 @@ class FooController extends Controller
 }
 ```
 
-> - https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input
+> - [8.x HTTP Requests Laravel](https://readouble.com/laravel/8.x/ja/requests.html#retrieving-input)
 
 #### ▼ パスパラメータ
 
@@ -3046,7 +3046,7 @@ class FooController extends Controller
 }
 ```
 
-> - https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/
+> - [FormRequestを使う](https://www.larajapan.com/2020/03/09/formrequest%E3%82%92%E4%BD%BF%E3%81%86/)
 
 <br>
 
@@ -3060,7 +3060,7 @@ class FooController extends Controller
 
 `logging.php` ファイルから、指定された設定が選択される。
 
-> - https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers
+> - [8.x ログ Laravel](https://readouble.com/laravel/8.x/ja/logging.html#available-channel-drivers)
 
 ```bash
 LOG_CHANNEL=<オプション名>
@@ -3081,7 +3081,7 @@ $ chmod -R 777 /var/www/foo/storage
 
 Laravel と PHP-FPM のプロセスはそれぞれ独立しているため、Laravel のログの出力先を変更しても、PHP-FPM のログの出力先は変更されない。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html
+> - [【IT技術の知見】PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系ミドルウェア - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html)
 
 #### ▼ `stack` キー
 
@@ -3571,7 +3571,7 @@ Schema::create("foos", function (Blueprint $table) {
 });
 ```
 
-> - https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements
+> - [8.x マイグレーション Laravel](https://readouble.com/laravel/8.x/ja/migrations.html#column-method-bigIncrements)
 
 #### ▼ `unsignedBigInteger()` 関数
 
@@ -3592,7 +3592,7 @@ Schema::create("foos", function (Blueprint $table) {
 });
 ```
 
-> - https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger
+> - [8.x マイグレーション Laravel](https://readouble.com/laravel/8.x/ja/migrations.html#column-method-unsignedBigInteger)
 
 #### ▼ `string()` 関数
 
@@ -3712,7 +3712,7 @@ MailMessage クラスの関数を使用して、E メール通知の内容を作
 
 `markdown()` 関数を使用することで、マークダウン形式で定義できる。
 
-> - https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message
+> - [8.x 通知 Laravel](https://readouble.com/laravel/8.x/ja/notifications.html#writing-the-message)
 > - https://laravel.com/api/8.x/Illuminate/Notifications/Messages/MailMessage.html#method_markdown
 
 ```php
@@ -3804,11 +3804,11 @@ class TfaTokenNotification extends Notification
 }
 ```
 
-> - https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications
+> - [8.x 通知 Laravel](https://readouble.com/laravel/8.x/ja/notifications.html#formatting-sms-notifications)
 
 #### ▼ Slack 通知内容の定義
 
-> - https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications
+> - [8.x 通知 Laravel](https://readouble.com/laravel/8.x/ja/notifications.html#formatting-slack-notifications)
 
 #### ▼ DB 通知内容の定義
 
@@ -3852,7 +3852,7 @@ class TfaTokenNotification extends Notification
 }
 ```
 
-> - https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications
+> - [7.x 通知 Laravel](https://readouble.com/laravel/7.x/ja/notifications.html#database-notifications)
 
 <br>
 
@@ -4016,8 +4016,8 @@ Notification::route('mail', $user->email_address)
             ->notify(new FooMotification());
 ```
 
-> - https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model
-> - https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications
+> - [Notifications without Eloquent User Model](https://laracasts.com/discuss/channels/laravel/notifications-without-eloquent-user-model)
+> - [8.x 通知 Laravel](https://readouble.com/laravel/8.x/ja/notifications.html#on-demand-notifications)
 
 <br>
 
@@ -4216,7 +4216,7 @@ class Kernel extends HttpKernel
 
 ルーティング時に使用するパラメーター名とコントローラーの関数の引数型と変数名が同じであり、かつパラメーターに数値が割り当てられた場合、その数値を ID とする Eloquent モデルが自動的にインジェクションされる。
 
-> - https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding
+> - [8.x ルーティング Laravel](https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding)
 
 **＊実装例＊**
 
@@ -4270,12 +4270,12 @@ Blade を使用してサーバ側の CSRF トークンを取り出し、input �
 <form method="POST" action="/profile">@csrf ...</form>
 ```
 
-> - https://readouble.com/laravel/8.x/ja/csrf.html
+> - [8.x CSRF保護 Laravel](https://readouble.com/laravel/8.x/ja/csrf.html)
 
 Blade を使用しない場合、セッション開始時のレスポンスの `Set-Cookie` に CSRF トークンが割り当てられるため、これを取り出して `X-CSRF-TOKEN` ヘッダーや `X-XSRF-TOKEN` ヘッダーに割り当てる。CSRF トークンはリクエストのたびに変わり、次のリクエストで使用する必要がある。
 
-> - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token
-> - https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token
+> - [8.x CSRF保護 Laravel](https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-csrf-token)
+> - [8.x CSRF保護 Laravel](https://readouble.com/laravel/8.x/ja/csrf.html#csrf-x-xsrf-token)
 > - https://stackoverflow.com/questions/42408177/what-is-the-difference-between-x-xsrf-token-and-x-csrf-token
 
 #### ▼ HTTP クライアントツール側の対応
@@ -4419,7 +4419,7 @@ DB ファサードを使用するよりも。
 
 このとき、`LOAD DATA LOCAL INFILE` 文を使用すると、高速で処理できる。
 
-> - https://i-407.com/blog/tech/n3/
+> - [How to Import Large CSV Files into MySQL Faster \| i-407](https://i-407.com/blog/tech/n3/)
 
 ```php
 <?php
@@ -4560,7 +4560,7 @@ class DatabaseSeeder extends Seeder
 
 ServiceContainer、バインド、リゾルブについては、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> - [【IT技術の知見】クラス＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
 
 ```php
 <?php
@@ -4608,7 +4608,7 @@ Laravel では、クラスは ServiceContainer に自動的にバインドされ
 
 ただし、混合型の場合は引数の型を指定できないため、リゾルブは実行できない。
 
-> - https://readouble.com/laravel/8.x/ja/container.html#automatic-injection
+> - [8.x サービスコンテナ Laravel](https://readouble.com/laravel/8.x/ja/container.html#automatic-injection)
 
 **＊実装例＊**
 
@@ -4835,7 +4835,7 @@ class Interactor
 
 `make()` 関数の引数にクラスの名前空間を渡すことにより、インスタンスがリゾルブされる。
 
-> - https://readouble.com/laravel/8.x/ja/container.html#the-make-method
+> - [8.x サービスコンテナ Laravel](https://readouble.com/laravel/8.x/ja/container.html#the-make-method)
 
 **＊実装例＊**
 
@@ -4999,7 +4999,7 @@ return [
 
 また、すべてのルーティングに適用する処理を定義する。
 
-> - https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints
+> - [8.x ルーティング Laravel](https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints)
 
 **＊実装例＊**
 
@@ -5045,7 +5045,7 @@ class RouteServiceProvider extends ServiceProvider
 
 加えて、Throttle ミドルウェアに制限名を渡し、指定したルートにリクエスト上限数を適用させる。もし制限を超えた場合、`configureRateLimiting()` 関数によって `429` ステータスでレスポンスが返信される。
 
-> - https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting
+> - [8.x ルーティング Laravel](https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting)
 
 **＊実装例＊**
 
@@ -5270,10 +5270,10 @@ Session クラスの関数は、`attribute` プロパティを使用して、セ
 > - https://laravel.com/api/8.x/Illuminate/Session/Store.html#method_start
 > - https://laravel.com/api/8.x/Illuminate/Session/Store.html#method_loadSession
 > - https://laravel.com/api/8.x/Illuminate/Session/Store.html#method_readFromHandler
-> - https://www.php.net/manual/ja/sessionhandlerinterface.read.php
+> - [PHP: SessionHandlerInterface::read - Manual](https://www.php.net/manual/ja/sessionhandlerinterface.read.php)
 > - https://laravel.com/api/8.x/Illuminate/Session/Middleware/StartSession.html#method_saveSession
 > - https://laravel.com/api/8.x/Illuminate/Session/Store.html#method_save
-> - https://www.php.net/manual/ja/sessionhandlerinterface.write.php
+> - [PHP: SessionHandlerInterface::write - Manual](https://www.php.net/manual/ja/sessionhandlerinterface.write.php)
 
 <br>
 

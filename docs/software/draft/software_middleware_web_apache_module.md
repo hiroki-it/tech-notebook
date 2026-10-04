@@ -9,7 +9,7 @@ description: モジュール＠Apacheの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,6 +17,6 @@ description: モジュール＠Apacheの知見を記録しています。
 
 OpenTelemetry コミュニティ製のモジュールであり、Apache を OpenTelemetry で計装できるようにする。
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/httpd
+> - [opentelemetry-cpp-contrib/instrumentation/httpd at main · open-telemetry/opentelemetry-cpp-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/httpd)
 
 <br>

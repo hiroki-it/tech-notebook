@@ -9,7 +9,7 @@ description: Nuxt.js＠フレームワークの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -44,7 +44,7 @@ $ yarn dev
 
 補足として、`yarn dev` コマンドを実行した場合、環境変数の `NODE_ENV` が `development` になる。
 
-> - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> - [Nuxt.jsでprocess.env.NODE\_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
 
 #### ▼ `build`
 
@@ -85,7 +85,7 @@ $ yarn start
 
 補足として、`yarn start` コマンドを実行した場合、環境変数の `NODE_ENV` が `production` になる。
 
-> - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> - [Nuxt.jsでprocess.env.NODE\_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
 
 <br>
 
@@ -112,11 +112,11 @@ Node サーバーを起動し、サーバー内で JavaScript から静的ファ
 $ yarn dev
 ```
 
-> - https://nuxtjs.org/ja/docs/get-started/commands/#target-static
+> - [Nuxt 2 - コマンドと開発](https://nuxtjs.org/ja/docs/get-started/commands/#target-static)
 
 補足として、`yarn dev` コマンドを実行した場合、環境変数の `NODE_ENV` が `development` になる。
 
-> - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> - [Nuxt.jsでprocess.env.NODE\_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
 
 #### ▼ `generate`
 
@@ -135,7 +135,7 @@ SSG モードのために使用する。
 $ yarn generate
 ```
 
-> - https://nuxtjs.org/ja/docs/get-started/commands/#target-static
+> - [Nuxt 2 - コマンドと開発](https://nuxtjs.org/ja/docs/get-started/commands/#target-static)
 
 #### ▼ `start`
 
@@ -148,7 +148,7 @@ $ yarn start
 
 補足として、`yarn start` コマンドを実行した場合、環境変数の `NODE_ENV` が `production` になる。
 
-> - https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc
+> - [Nuxt.jsでprocess.env.NODE\_ENVを参照する際の挙動についてまとめてみた #JavaScript - Qiita](https://qiita.com/y-temp4/items/84bb16e2ccf8efaf82fc)
 
 <br>
 
@@ -240,7 +240,7 @@ console.log(API_URL);
 ```
 
 > - https://levelup.gitconnected.com/what-are-env-files-and-how-to-use-them-in-nuxt-7f194f083e3d
-> - https://zenn.dev/osachi/articles/5e765cf6540591#process.env%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B8%A1%E3%81%992%E3%81%A4%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81
+> - [Nuxt3でprocess.envに環境データを渡す方法 ~ node.jsのprocess確認 ~](https://zenn.dev/osachi/articles/5e765cf6540591#process.env%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B8%A1%E3%81%992%E3%81%A4%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81)
 
 #### ▼ 実行環境への出力
 
@@ -259,7 +259,7 @@ services:
       API_URL: https://example.com/api
 ```
 
-> - https://zenn.dev/osachi/articles/5e765cf6540591#process.env%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B8%A1%E3%81%992%E3%81%A4%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81
+> - [Nuxt3でprocess.envに環境データを渡す方法 ~ node.jsのprocess確認 ~](https://zenn.dev/osachi/articles/5e765cf6540591#process.env%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%B8%A1%E3%81%992%E3%81%A4%E3%81%AE%E3%82%A2%E3%83%97%E3%83%AD%E3%83%BC%E3%83%81)
 
 <br>
 
@@ -326,8 +326,8 @@ export function foo() {
 }
 ```
 
-> - https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig
-> - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
+> - [Nuxt 2 - Nuxt configuration file](https://nuxtjs.org/docs/directory-structure/nuxt-config/#privateruntimeconfig)
+> - [Nuxt.jsの正しい環境変数の設定・利用方法 \| mktia's note](https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/)
 
 #### ▼ publicRuntimeConfig
 
@@ -365,8 +365,8 @@ export function foo() {
 }
 ```
 
-> - https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig
-> - https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/
+> - [Nuxt 2 - Nuxt configuration file](https://nuxtjs.org/docs/directory-structure/nuxt-config/#publicruntimeconfig)
+> - [Nuxt.jsの正しい環境変数の設定・利用方法 \| mktia's note](https://blog.mktia.com/dotenv-is-no-longer-need-in-nuxt/)
 
 #### ▼ quiet
 
@@ -403,7 +403,7 @@ const nuxtConfig: Configuration = {
 };
 ```
 
-> - https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/
+> - [Nuxt 2 - The serverMiddleware Property](https://nuxtjs.org/docs/configuration-glossary/configuration-servermiddleware/)
 
 <br>
 
@@ -429,19 +429,19 @@ const nuxtConfig: Configuration = {
 
 SSG モードの `generate` コマンドの実行時に、アーティファクトが配置される。
 
-> - https://nuxtjs.org/ja/docs/directory-structure/dist
+> - [Nuxt 2 - 配布ディレクトリ](https://nuxtjs.org/ja/docs/directory-structure/dist)
 
 <br>
 
 ### `module` ディレクトリ
 
-> - https://nuxtjs.org/docs/directory-structure/modules
+> - [Nuxt 2 - Modules directory](https://nuxtjs.org/docs/directory-structure/modules)
 
 <br>
 
 ### `plugin` ディレクトリ
 
-> - https://nuxtjs.org/docs/directory-structure/plugins/
+> - [Nuxt 2 - Plugins directory](https://nuxtjs.org/docs/directory-structure/plugins/)
 > - https://github.com/nuxt/nuxt.js/issues/2820
 
 <br>

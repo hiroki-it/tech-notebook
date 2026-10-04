@@ -9,7 +9,7 @@ description: PipeCD＠CDツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,7 +27,7 @@ description: PipeCD＠CDツールの知見を記録しています。
 
 デプロイ先で、コントロールプレーンからのリクエストを中継する。
 
-> - https://pipecd.dev/docs-v0.45.x/installation/install-piped/
+> - [Install Piped \| PipeCD](https://pipecd.dev/docs-v0.45.x/installation/install-piped/)
 
 <br>
 
@@ -41,8 +41,8 @@ PipeCD をデプロイ先の Amazon ECS Cluster で一緒に動かす。
 
 同じ Amazon ECS Cluster の専用 Service 上で PipeCD を動かし、Git のリポジトリをポーリングする。
 
-> - https://pipecd.dev/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/
-> - https://pipecd.dev/docs-v0.45.x/user-guide/managing-application/adding-an-application/
+> - [PipeCD best practice 02 - control plane on ECS \| PipeCD](https://pipecd.dev/blog/2023/02/07/pipecd-best-practice-02-control-plane-on-ecs/)
+> - [Adding an application \| PipeCD](https://pipecd.dev/docs-v0.45.x/user-guide/managing-application/adding-an-application/)
 
 #### ▼ 外部の Amazon ECS Cluster
 
@@ -52,7 +52,7 @@ PipeCD は、サーバーやコンテナ (Amazon EKS、Amazon ECS、Amazon EC2) 
 
 なお、デプロイ先の Amazon ECS Cluster にエージェントをインストールする必要がある。
 
-> - https://pipecd.dev/docs-v0.45.x/installation/install-piped/
+> - [Install Piped \| PipeCD](https://pipecd.dev/docs-v0.45.x/installation/install-piped/)
 
 <br>
 
@@ -67,7 +67,7 @@ spec:
     team: bar
 ```
 
-> - https://pipecd.dev/docs-v0.45.x/user-guide/managing-application/adding-an-application/
-> - https://pipecd.dev/docs-v0.45.x/user-guide/configuration-reference/#ecs-application
+> - [Adding an application \| PipeCD](https://pipecd.dev/docs-v0.45.x/user-guide/managing-application/adding-an-application/)
+> - [Configuration reference \| PipeCD](https://pipecd.dev/docs-v0.45.x/user-guide/configuration-reference/#ecs-application)
 
 <br>

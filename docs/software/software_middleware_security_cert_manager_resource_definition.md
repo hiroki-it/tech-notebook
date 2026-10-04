@@ -9,7 +9,7 @@ description: リソース定義＠Cert Managerの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,7 +27,7 @@ $ kubectl create namespace cert-manager
 $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manager -n cert-manager --version <バージョンタグ>
 ```
 
-> - https://cert-manager.io/docs/installation/helm/#steps
+> - [Helm - cert-manager Documentation](https://cert-manager.io/docs/installation/helm/#steps)
 
 <br>
 
@@ -40,7 +40,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/cert-manag
 証明書自体は、紐づく Secret に割り当てられる。
 
 > - https://cert-manager.io/docs/concepts/certificate/
-> - https://zenn.dev/masaaania/articles/e54119948bbaa2#issuer
+> - [cert-manager基礎知識](https://zenn.dev/masaaania/articles/e54119948bbaa2#issuer)
 
 <br>
 
@@ -60,7 +60,7 @@ spec:
   secretName: foo-certificate-secret
 ```
 
-> - https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
+> - [cert-manager基礎知識](https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB)
 
 #### ▼ サーバー証明書を使用する
 
@@ -83,7 +83,7 @@ spec:
       secretName: foo-certificate-secret
 ```
 
-> - https://zenn.dev/masaaania/articles/e54119948bbaa2#ingress-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
+> - [cert-manager基礎知識](https://zenn.dev/masaaania/articles/e54119948bbaa2#ingress-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB)
 
 <br>
 
@@ -105,7 +105,7 @@ spec:
     - foo.example.com
 ```
 
-> - https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
+> - [cert-manager基礎知識](https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB)
 
 <br>
 
@@ -128,7 +128,7 @@ spec:
     group: cert-manager.io
 ```
 
-> - https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB
+> - [cert-manager基礎知識](https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate-manifest%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB)
 
 <br>
 
@@ -139,7 +139,7 @@ spec:
 作成済みの証明書署名要求 (`.csr` ファイル) を認証局へ送信し、署名済み証明書を要求する。
 
 > - https://cert-manager.io/docs/concepts/certificaterequest/
-> - https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate
+> - [cert-manager基礎知識](https://zenn.dev/masaaania/articles/e54119948bbaa2#certificate)
 
 <br>
 
@@ -247,7 +247,7 @@ spec:
 
 異なる Namespace に対して横断的に証明書を作成する認証局を作成する。
 
-> - https://blog.1q77.com/2020/03/cert-manager/#issuer-%E3%81%AE%E7%99%BB%E9%8C%B2
+> - [cert-manager で証明書管理](https://blog.1q77.com/2020/03/cert-manager/#issuer-%E3%81%AE%E7%99%BB%E9%8C%B2)
 
 <br>
 
@@ -340,7 +340,7 @@ spec:
 
 もし複数の Namespace に対して横断的に証明書を作成したい場合、ClusterIssuer を使用する必要がある。
 
-> - https://cert-manager.io/docs/concepts/issuer/
+> - [Issuer - cert-manager Documentation](https://cert-manager.io/docs/concepts/issuer/)
 
 <br>
 

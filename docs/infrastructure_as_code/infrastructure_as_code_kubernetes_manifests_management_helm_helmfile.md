@@ -9,7 +9,7 @@ description: Helmfile＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -46,7 +46,7 @@ repository/
 └── baz/ # baz サービス
 ```
 
-> - https://speakerdeck.com/j5ik2o/helmfilenituite
+> - [Helm/Helmfileについて - Speaker Deck](https://speakerdeck.com/j5ik2o/helmfilenituite)
 
 <br>
 
@@ -143,7 +143,7 @@ $ helmfile -e prd -f helmfile.yaml apply --set region=tokyo
 
 `helmfile` コマンドの実行時に、`helmfile.yaml` ファイルへ環境名を渡せる。
 
-> - https://helmfile.readthedocs.io/en/latest/#environment-values
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#environment-values)
 
 #### ▼ 実行環境名を渡したいだけの場合
 
@@ -172,7 +172,7 @@ releases:
 $ helmfile -e prd apply
 ```
 
-> - https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
+> - [Helm/Helmfileについて - Speaker Deck](https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22)
 
 #### ▼ 実行環境名を渡す以外こともやりたい場合
 
@@ -221,7 +221,7 @@ helmfiles:
   - path: ./helmfile.d/baz.yaml
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#selectors
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#selectors)
 
 <br>
 
@@ -326,7 +326,7 @@ releases:
       - extra-values.yaml
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart
+> - [Advanced Features - helmfile](https://helmfile.readthedocs.io/en/latest/advanced-features/#adding-dependencies-without-forking-the-chart)
 
 #### ▼ set
 
@@ -372,7 +372,7 @@ releases:
       - bar
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#dag-aware-installationdeletion-ordering-with-needs
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#dag-aware-installationdeletion-ordering-with-needs)
 
 #### ▼ namespace
 
@@ -487,7 +487,7 @@ releases:
       - foo-values.yaml
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#oci-registries
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#oci-registries)
 
 #### ▼ url
 
@@ -516,7 +516,7 @@ secrets:
   - ./foo-secrets.yaml
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#secrets
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#secrets)
 
 <br>
 
@@ -690,7 +690,7 @@ data:
 #     foo, bar, baz
 ```
 
-> - https://github.com/roboll/helmfile/issues/731#issuecomment-877718674
+> - [readFile reads only first line · Issue #731 · roboll/helmfile · GitHub](https://github.com/roboll/helmfile/issues/731#issuecomment-877718674)
 
 #### ▼ JSON ファイルを読み込める
 
@@ -749,9 +749,9 @@ releases:
       - common-values.yaml.gotmpl
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#environment-values
-> - https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22
-> - https://zenn.dev/johnmanjiro13/articles/3f12eeda0762b9#%E7%8B%AC%E8%87%AA%E3%81%AEhelm-chart%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6helmfile%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#environment-values)
+> - [Helm/Helmfileについて - Speaker Deck](https://speakerdeck.com/j5ik2o/helmfilenituite?slide=22)
+> - [Helmfileを使ってHelm Chartにないリソースを作成・管理する](https://zenn.dev/johnmanjiro13/articles/3f12eeda0762b9#%E7%8B%AC%E8%87%AA%E3%81%AEhelm-chart%E3%82%92%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6helmfile%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B)
 
 <br>
 

@@ -9,7 +9,7 @@ description: Webスコープ設定ファイル＠Temporalの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,7 +24,7 @@ auth:
   enabled: true
 ```
 
-> - https://docs.temporal.io/references/web-ui-configuration#auth
+> - [Temporal Web UI configuration reference \| Temporal Documentation](https://docs.temporal.io/references/web-ui-configuration#auth)
 
 <br>
 
@@ -49,7 +49,7 @@ enabled: true
       - email
 ```
 
-> - https://docs.temporal.io/references/web-ui-configuration#auth
-> - https://github.com/temporalio/ui-server/blob/main/config/development.yaml#L24-L39
+> - [Temporal Web UI configuration reference \| Temporal Documentation](https://docs.temporal.io/references/web-ui-configuration#auth)
+> - [ui-server/config/development.yaml at main · temporalio/ui-server · GitHub](https://github.com/temporalio/ui-server/blob/main/config/development.yaml#L24-L39)
 
 <br>

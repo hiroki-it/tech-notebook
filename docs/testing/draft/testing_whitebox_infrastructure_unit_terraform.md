@@ -9,7 +9,7 @@ description: Terratest＠ユニットテストの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -36,7 +36,7 @@ AWS リソースを単体コンポーネントと捉えて、ユニットテス�
 - Goss
 - Serverspec
 
-> - https://abstraction.blog/2021/06/20/terraform-testing-tools-comparison
+> - [Comparing top 5 tools to test Terraform code \| Abstraction.blog](https://abstraction.blog/2021/06/20/terraform-testing-tools-comparison)
 
 <br>
 

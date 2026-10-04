@@ -9,7 +9,7 @@ description: Debian系＠管理ユーティリティの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -43,7 +43,7 @@ tinc: /usr/share/doc/tinc/tinc.html/zlib.html
 zlib1g-dev: /usr/include/zlib.h
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1709/08/news020.html
-> - https://embedded.hatenadiary.org/entry/20081101/p3
+> - [【 apt-file 】コマンド――特定のファイルが収録されているパッケージを探す：Linux基本コマンドTips（142） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1709/08/news020.html)
+> - [Ubuntuで足りないファイルがどのパッケージにあるか調べる方法 - 組み込みの人。](https://embedded.hatenadiary.org/entry/20081101/p3)
 
 <br>

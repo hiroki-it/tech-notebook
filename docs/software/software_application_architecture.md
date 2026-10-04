@@ -9,7 +9,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 アプリケーションのデフォルト値だけでなく、インフラに関するツールのデフォルト値にも適用できる考え方である。
 
-> - https://en.wikipedia.org/wiki/Convention_over_configuration
+> - [Convention over configuration - Wikipedia](https://en.wikipedia.org/wiki/Convention_over_configuration)
 
 #### ▼ 意味のあるデフォルト値
 
@@ -34,7 +34,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 利用者の認知負荷を減らし、またトラブルシューティングの助けになる。
 
 > - https://softwareengineering.stackexchange.com/a/63929
-> - https://blog.scottlogic.com/2018/11/22/default-values-in-code-and-configuration.html
+> - [Default values in code and configuration](https://blog.scottlogic.com/2018/11/22/default-values-in-code-and-configuration.html)
 
 <br>
 
@@ -42,7 +42,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 記入中...
 
-> - https://zenn.dev/nanagi/articles/0e899711611630#dry%EF%BC%88don't-repeat-yourself%EF%BC%89
+> - [ソフトウェア設計についての原則や法則についてまとめてみた](https://zenn.dev/nanagi/articles/0e899711611630#dry%EF%BC%88don't-repeat-yourself%EF%BC%89)
 
 <br>
 
@@ -50,7 +50,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 記入中...
 
-> - https://zenn.dev/nanagi/articles/0e899711611630#kiss%E3%81%AE%E5%8E%9F%E5%89%87%EF%BC%88keep-it-simple-stupid.%EF%BC%89
+> - [ソフトウェア設計についての原則や法則についてまとめてみた](https://zenn.dev/nanagi/articles/0e899711611630#kiss%E3%81%AE%E5%8E%9F%E5%89%87%EF%BC%88keep-it-simple-stupid.%EF%BC%89)
 
 <br>
 
@@ -58,7 +58,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 記入中...
 
-> - https://zenn.dev/nanagi/articles/0e899711611630#solid
+> - [ソフトウェア設計についての原則や法則についてまとめてみた](https://zenn.dev/nanagi/articles/0e899711611630#solid)
 
 <br>
 
@@ -68,7 +68,7 @@ description: アーキテクチャ＠アプリケーションの知見を記録�
 
 Web システムのソフトウェアを開発するうえでのベストプラクティスのこと。
 
-> - https://12factor.net/ja/
+> - [The Twelve-Factor App （日本語訳）](https://12factor.net/ja/)
 
 <br>
 
@@ -76,6 +76,6 @@ Web システムのソフトウェアを開発するうえでのベストプラ�
 
 記入中...
 
-> - https://zenn.dev/nanagi/articles/0e899711611630#yagni%EF%BC%88you-ain't-gonna-need-it.%EF%BC%89
+> - [ソフトウェア設計についての原則や法則についてまとめてみた](https://zenn.dev/nanagi/articles/0e899711611630#yagni%EF%BC%88you-ain't-gonna-need-it.%EF%BC%89)
 
 <br>

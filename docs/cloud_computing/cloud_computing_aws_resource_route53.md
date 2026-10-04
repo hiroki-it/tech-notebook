@@ -9,7 +9,7 @@ description: Amazon Route 53＠AWSリソース
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: Amazon Route 53＠AWSリソース
 
 名前の由来は、名前解決時に `53` 番ポートを使用するためである。
 
-> - https://go-journey.club/archives/2665
+> - [【AWS】 Amazon Route 53について解説 – AWSインフラ研究所](https://go-journey.club/archives/2665)
 
 <br>
 
@@ -42,7 +42,7 @@ description: Amazon Route 53＠AWSリソース
 
 各ホストゾーンにドメインの名前解決方法を定義した DNS レコードを設定する。
 
-> - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure
+> - [How internet traffic is routed to your website or web application - Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure)
 
 #### ▼ DNS レコードタイプの種類
 
@@ -104,8 +104,8 @@ DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 �
 
 ドメイン名の名前解決ルールを設定する。
 
-> - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html
-> - https://zenn.dev/seyama/articles/02118b0914183e
+> - [Choosing a routing policy - Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
+> - [Amazon Route 53のルーティングがすごすぎる件](https://zenn.dev/seyama/articles/02118b0914183e)
 
 #### ▼ シンプル
 
@@ -140,7 +140,7 @@ DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 �
 
 ![aws_route53_routing-policy_weighted-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_route53_routing-policy_weighted-routing.png)
 
-> - https://tech-blog.yayoi-kk.co.jp/entry/2021/12/06/000000
+> - [AWS Route53の加重ルーティング機能で本番インフラを無停止・段階的にECS環境に移行する - 弥生開発者ブログ](https://tech-blog.yayoi-kk.co.jp/entry/2021/12/06/000000)
 
 <br>
 

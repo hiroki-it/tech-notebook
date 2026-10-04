@@ -31,9 +31,9 @@ CQRS では、これはプロセスマネージャパターンとして知られ
 
 一方で Saga パターンとも呼ばれるが、分散トランザクションでも同じ用語があるため、混乱を避けるためにプロセスマネージャパターンとする。
 
-> - https://github.com/czeslavo/process-manager
+> - [GitHub - czeslavo/process-manager: Exploration of CQRS process-manager concept. · GitHub](https://github.com/czeslavo/process-manager)
 > - https://www.oreilly.com/library/view/what-is-domain-driven/9781492057802/ch04.html
-> - https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN
+> - [Reference 6: A Saga on Sagas \| Microsoft Learn](<https://docs.microsoft.com/ja-jp/previous-versions/msp-n-p/jj591569(v=pandp.10)?redirectedfrom=MSDN>)
 
 #### ▼ 各マイクロサービスのアーキテクチャ
 
@@ -49,7 +49,7 @@ EC サイトがあり、その商品販売ドメインを販売サブドメイ�
 
 ![microservices-architecture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices-architecture_onion-architecture.png)
 
-> - https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation
+> - [境界づけられたコンテキスト 実装編 - ドメイン駆動設計用語解説 \[DDD\] - little hands' lab](https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation)
 
 <br>
 
@@ -67,7 +67,7 @@ EC サイトがあり、その商品販売ドメインを販売サブドメイ�
 | すでに複数のサブドメインを含む境界づけられたコンテキストに分割されている |            不可            |      可      | 記入中... |
 | すでに単一のサブドメインを含む境界づけられたコンテキストに分割されている |             可             |      可      | 記入中... |
 
-> - https://qiita.com/crossroad0201/items/32673d3e52e006205c48#ddd%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%80%83%E5%AF%9F
+> - [DDDの構成要素とマイクロサービスの単位をどう合わせるべきか #ドメイン駆動設計 - Qiita](https://qiita.com/crossroad0201/items/32673d3e52e006205c48#ddd%E3%81%A8%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%80%83%E5%AF%9F)
 
 解決領域となる境界づけられたコンテキストがサブドメインのなかに `1` 個しか含まれていない場合は、境界づけられたコンテキストでマイクロサービスを分割することになる。
 
@@ -79,10 +79,10 @@ EC サイトがあり、その商品販売ドメインを販売サブドメイ�
 
 ![service_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_bounded-context.png)
 
-> - https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/architect-microservice-container-applications/identify-microservice-domain-model-boundaries
-> - https://microservices.io/patterns/decomposition/decompose-by-subdomain.html
+> - [各マイクロサービスのドメイン モデル境界の識別 - .NET \| Microsoft Learn](https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/architect-microservice-container-applications/identify-microservice-domain-model-boundaries)
+> - [Pattern: Decompose by subdomain](https://microservices.io/patterns/decomposition/decompose-by-subdomain.html)
 > - https://www.amazon.co.jp/dp/4873119316/
-> - https://booth.pm/ja/items/1835632
+> - [ドメイン駆動設計 モデリング/実装ガイド - little-hands - BOOTH](https://booth.pm/ja/items/1835632)
 
 #### ▼ ルートエンティティ単位 (エンティティサービス)
 
@@ -107,10 +107,10 @@ DB レコードの書き込み/読み出しのトランザクション処理を�
 
 そのほか、各マイクロサービスで DB を完全に独立させることや、SAGA パターンを使用することがある。
 
-> - https://www.koslib.com/posts/entity-services-anti-pattern/
-> - https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/
+> - [A simplistic explanation of the entity services anti-pattern - koslib](https://www.koslib.com/posts/entity-services-anti-pattern/)
+> - [Services By Lifecycle - michaelnygard.com](https://www.michaelnygard.com/blog/2018/01/services-by-lifecycle/)
 > - https://medium.com/transferwise-engineering/how-to-avoid-entity-services-58bacbe3ee0b
-> - https://www.infoq.com/news/2017/12/entity-services-antipattern/
+> - [Entity Services is an Antipattern - InfoQ](https://www.infoq.com/news/2017/12/entity-services-antipattern/)
 
 <br>
 
@@ -182,7 +182,7 @@ DB レコードの書き込み/読み出しのトランザクション処理を�
 
 分散モノリスにならないように、マイクロサービス間で使用するライブラリが重複することを許容する必要がある。
 
-> - https://www.infoq.com/jp/news/2016/03/services-distributed-monolith/
+> - [分散されたモノリスになってしまうマイクロサービス - InfoQ](https://www.infoq.com/jp/news/2016/03/services-distributed-monolith/)
 > - https://r-kaga.com/blog/what-is-distributed-monolith
 
 <br>

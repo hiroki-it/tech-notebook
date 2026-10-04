@@ -9,7 +9,7 @@ description: リソース定義＠Knativeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -52,6 +52,6 @@ spec:
               value: "Go Sample v1"
 ```
 
-> - https://knative.dev/docs/serving/services/creating-services/#procedure
+> - [Creating a Service - Knative](https://knative.dev/docs/serving/services/creating-services/#procedure)
 
 <br>

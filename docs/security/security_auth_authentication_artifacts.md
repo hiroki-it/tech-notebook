@@ -25,8 +25,8 @@ description: 認証アーティファクトによる分類＠認証の知見を�
 | **検証方法** | セッションストレージにあるセッション ID と、DBやメモリで保存したIDの照合 | 登録した API キーとの照合     | セッションストレージにあるセッション ID と、DBやメモリで保存したIDの照合 | ID プロバイダーから取得した公開鍵による署名検証                                         | ID プロバイダーのイントロスペクションエンドポイントからのレスポンス |
 | **使用例**  | API キーを使用した簡易的な認証など                      | API キーを使用した簡易的な認証など | フォーム認証など                                 | OIDC や OAuth2 、ユーザーが任意で発行できる有効期限が数時間の API キーなど（プラットフォームSaaSでよく使う） | OAuth2 など                           |
 
-> - https://supertokens.com/blog/token-based-authentication-vs-session-based-authentication
-> - https://zenn.dev/oreilly_ota/articles/31d66fab5c184e#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A8%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%AE%E9%81%95%E3%81%84
+> - [Token Based Authentication vs Session Based Authentication](https://supertokens.com/blog/token-based-authentication-vs-session-based-authentication)
+> - [セッション認証とトークン認証について](https://zenn.dev/oreilly_ota/articles/31d66fab5c184e#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A8%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%AE%E9%81%95%E3%81%84)
 
 <br>
 
@@ -53,8 +53,8 @@ description: 認証アーティファクトによる分類＠認証の知見を�
 
 いずれかのコンポーネントでセッション ID が消失しても復元できるように、SessionStorage を使用する必要がある。
 
-> - https://supertokens.com/blog/token-based-authentication-vs-session-based-authentication
-> - https://zenn.dev/oreilly_ota/articles/31d66fab5c184e#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A8%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%AE%E9%81%95%E3%81%84
+> - [Token Based Authentication vs Session Based Authentication](https://supertokens.com/blog/token-based-authentication-vs-session-based-authentication)
+> - [セッション認証とトークン認証について](https://zenn.dev/oreilly_ota/articles/31d66fab5c184e#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A8%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%AE%E9%81%95%E3%81%84)
 
 <br>
 
@@ -74,7 +74,7 @@ description: 認証アーティファクトによる分類＠認証の知見を�
 
 > - https://h50146.www5.hpe.com/products/software/security/icewall/iwsoftware/report/pdfs/certification.pdf
 > - https://auth0.com/docs/sessions/cookies#cookie-based-authentication
-> - https://qiita.com/toshiya/items/e7dcc7610b15884b167e#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AB%E3%82%88%E3%82%8B%E8%AA%8D%E8%A8%BC
+> - [Basic認証とフォームによる認証についてのまとめ #server - Qiita](https://qiita.com/toshiya/items/e7dcc7610b15884b167e#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%81%AB%E3%82%88%E3%82%8B%E8%AA%8D%E8%A8%BC)
 
 <br>
 
@@ -200,8 +200,8 @@ authorization: Digest realm="<realm名>" nonce="<サーバー側が作成した�
 
 一方で、トークンは無効化が難しく漏洩した場合に脆弱性が高くなる、有効期限を短く設定する必要がある。
 
-> - https://supertokens.com/blog/token-based-authentication-vs-session-based-authentication
-> - https://zenn.dev/oreilly_ota/articles/31d66fab5c184e#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A8%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%AE%E9%81%95%E3%81%84
+> - [Token Based Authentication vs Session Based Authentication](https://supertokens.com/blog/token-based-authentication-vs-session-based-authentication)
+> - [セッション認証とトークン認証について](https://zenn.dev/oreilly_ota/articles/31d66fab5c184e#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%A8%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E8%AA%8D%E8%A8%BC%E3%81%AE%E9%81%95%E3%81%84)
 
 <br>
 
@@ -233,8 +233,8 @@ Opaque トークンでは、トークンはランダム値で、署名と有効�
 | XML ベースのトークン  | SAML            | 記入中...<br>                                                                                                                    |
 | API キー        | API キーベース認証     | 記入中...                                                                                                                        |
 
-> - https://qiita.com/TakahikoKawasaki/items/1c1bcf24b46ebd2030f5#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3jwtid%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E5%8C%85%E5%90%AB%E9%96%A2%E4%BF%82
-> - https://zenn.dev/mikakane/articles/tutorial_for_openid#oidc-%E5%88%A9%E7%94%A8%E3%81%95%E3%82%8C%E3%82%8B-id-token-%E3%81%AE%E8%A6%8F%E7%B4%84
+> - [図解 JWS/JWE/JWT/IDトークン/アクセストークンの包含関係 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/1c1bcf24b46ebd2030f5#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3jwtid%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E5%8C%85%E5%90%AB%E9%96%A2%E4%BF%82)
+> - [OIDC と JWT の関わり - Oauth2.0 との違いなど](https://zenn.dev/mikakane/articles/tutorial_for_openid#oidc-%E5%88%A9%E7%94%A8%E3%81%95%E3%82%8C%E3%82%8B-id-token-%E3%81%AE%E8%A6%8F%E7%B4%84)
 > - https://medium.com/@iamprovidence/token-gang-bearer-token-reference-token-opaque-token-self-contained-token-jwt-access-token-6e0191093cd0
 
 #### ▼ アクセストークン
@@ -271,7 +271,7 @@ Authorization: <パーソナルアクセストークン>
 | GitHub     | パーソナルアクセストークン | HTTPS プロトコルを使用して、プライベートリポジトリにリクエストを送信するために必要。HTTPS プロトコルを使用する場面として、アプリケーションの拡張機能の GitHub 連携、リポジトリのパッケージ化などがある。<br>- https://docs.github.com/ja/github/authenticating-to-github/creating-a-personal-access-token |
 
 > - https://www.contentful.com/help/personal-access-tokens/
-> - https://architecting.hateblo.jp/entry/2020/03/27/033758
+> - [Web API認証方式のパターン - プログラミング初心者がアーキテクトっぽく語る](https://architecting.hateblo.jp/entry/2020/03/27/033758)
 
 #### ▼ API キーベース認証
 
@@ -287,8 +287,8 @@ POST https://example.com/foo
 x-api-key: <APIキー>
 ```
 
-> - https://architecting.hateblo.jp/entry/2020/03/27/033758
-> - https://www.gomomento.com/blog/api-keys-vs-tokens-whats-the-difference
+> - [Web API認証方式のパターン - プログラミング初心者がアーキテクトっぽく語る](https://architecting.hateblo.jp/entry/2020/03/27/033758)
+> - [API keys vs tokens - what’s the difference? - Momento](https://www.gomomento.com/blog/api-keys-vs-tokens-whats-the-difference)
 
 <br>
 
@@ -312,7 +312,7 @@ Bearer 認証にて、トークンとして使用する。
 
 そのため、アクセストークン文字列が流出してしまわないよう、厳重に管理する必要がある。
 
-> - https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3
+> - [The OAuth 2.0 Authorization Framework: Bearer Token Usage（日本語）](https://openid-foundation-japan.github.io/rfc6750.ja.html#anchor3)
 
 #### ▼ JWT
 
@@ -330,7 +330,7 @@ Bearer 認証にて、トークンとして使用する。
 
      必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプなどが必要なことが多い。
 
-> - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
+> - [アクセストークンのリクエスト方法 \| Amazon Device Messaging](https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format)
 > - https://ja.developer.box.com/reference/post-oauth2-token/#request
 
 ```yaml
@@ -348,7 +348,7 @@ client_id=*****&grant_type=client_credentials&scope=messaging:push
 
      他に、有効期限、権限のスコープ、指定できる認証スキーマなどが提供されることが多い。
 
-> - https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format
+> - [アクセストークンのリクエスト方法 \| Amazon Device Messaging](https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format)
 > - https://ja.developer.box.com/reference/resources/access-token/
 
 ```yaml
@@ -413,7 +413,7 @@ WWW-Authenticate: Basic realm="<realm名>", charaset="UTF-8"
 
 ### 正常系/異常系レスポンス
 
-> - https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1
+> - [Bearer認証について #Web - Qiita](https://qiita.com/h_tyokinuhata/items/ab8e0337085997be04b1)
 
 成功の場合は、realm 属性を空にしたレスポンスを返信する。
 
@@ -479,7 +479,7 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 そのため、ログアウトが起こる。
 
-> - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
+> - [Cookieの破棄されるタイミングについて #cookie - Qiita](https://qiita.com/kandalog/items/80d7574e6bd00afd5150)
 
 #### ▼ レスポンスの `Expires` ヘッダーで設定されたタイミング
 
@@ -491,4 +491,4 @@ WWW-Authenticate: Bearer error="insufficient_scope"
 
 有効期限がない場合、`Expires` ヘッダーの値は `Session` となり、この Cookie を特に『Session Cookie』という。
 
-> - https://qiita.com/kandalog/items/80d7574e6bd00afd5150
+> - [Cookieの破棄されるタイミングについて #cookie - Qiita](https://qiita.com/kandalog/items/80d7574e6bd00afd5150)

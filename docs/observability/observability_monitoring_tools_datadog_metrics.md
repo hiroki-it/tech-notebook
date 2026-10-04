@@ -55,8 +55,8 @@ Cluster やワーカーNode からメトリクスを受信し、コントロー�
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
 
-> - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
-> - https://blog.serverworks.co.jp/k8s-datadog
+> - [Datadog Cluster Agent のご紹介 \| Datadog](https://www.datadoghq.com/ja/blog/datadog-cluster-agent/)
+> - [KubernetesのDatadogAgentインストール手順 - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/k8s-datadog)
 
 #### ▼ Kubernetes + Istio の場合
 
@@ -64,7 +64,7 @@ Cluster やワーカーNode からメトリクスを受信し、コントロー�
 
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png)
 
-> - https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/
+> - [みんなの銀行に学ぶ、マイクロサービス時代のシステム監視 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/)
 > - https://docs.datadoghq.com/integrations/istio/
 
 <br>

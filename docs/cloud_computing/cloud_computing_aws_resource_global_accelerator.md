@@ -76,6 +76,6 @@ Global Accelerator を使用しない場合、クライアント PC のリージ
 
 以下のサイトで、Global Accelerator を使用した場合としなかった場合のレスポンスタイムを比較できる。
 
-> - https://speedtest.globalaccelerator.aws/#/
+> - [AWS Global Accelerator Speed Comparison](https://speedtest.globalaccelerator.aws/#/)
 
 <br>

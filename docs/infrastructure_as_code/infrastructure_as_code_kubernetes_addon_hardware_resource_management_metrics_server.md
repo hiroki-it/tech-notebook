@@ -9,7 +9,7 @@ description: metrics-server＠ハードウェアリソース管理系の知見�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -45,9 +45,9 @@ Kubernetes の Node と Pod (それ以外の Kubernetes リソースは対象外
 
 ![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
 
-> - https://speakerdeck.com/bells17/metrics-server?slide=20
-> - https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base
-> - https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#what-metrics-are-exposed-by-the-metrics-server
+> - [Metrics Server - Speaker Deck](https://speakerdeck.com/bells17/metrics-server?slide=20)
+> - [metrics-server/manifests/base at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base)
+> - [metrics-server/FAQ.md at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#what-metrics-are-exposed-by-the-metrics-server)
 
 <br>
 
@@ -60,7 +60,7 @@ Kubernetes の Node と Pod (それ以外の Kubernetes リソースは対象外
 データポイントはローカルストレージに保管している。
 
 > - https://software.fujitsu.com/jp/manual/manualiles/m220004/j2ul2762/01z201/j2762-00-02-11-01.html
-> - https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58
+> - [独自メトリクスによるPodの水平スケール #kubernetes - Qiita](https://qiita.com/Ladicle/items/f97ab3653e8efa0e9d58)
 
 <br>
 
@@ -80,7 +80,7 @@ kubelet のデーモンはデータポイント収集用エンドポイント (�
 
 ![metrics-server_scraper](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png)
 
-> - https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/
+> - [Resource metrics pipeline \| Kubernetes](https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/)
 > - https://luandy-4171.medium.com/the-kubernetes-metrics-and-monitoring-architecture-8999c4bb5a04
 
 <br>
@@ -154,7 +154,7 @@ spec:
       name: tmp-dir
 ```
 
-> - https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/deployment.yaml
+> - [metrics-server/manifests/base/deployment.yaml at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/deployment.yaml)
 
 <br>
 
@@ -180,7 +180,7 @@ spec:
   versionPriority: 100
 ```
 
-> - https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/apiservice.yaml
+> - [metrics-server/manifests/base/apiservice.yaml at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/blob/master/manifests/base/apiservice.yaml)
 
 <br>
 
@@ -206,7 +206,7 @@ baz-node   352m         4%     9430Mi          33%
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
 
-> - https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
+> - [AWS EKS Kubernetes Horizontal Pod Autoscaler HPA - StackSimplify](https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/)
 
 #### ▼ デバッグ
 
@@ -221,7 +221,7 @@ node-1    582m        7%         9792Mi         61%
 node-2    <unknown>   <unknown>  <unknown>      <unknown>
 ```
 
-> - https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-metrics-for-all-or-subset-of-nodes
+> - [metrics-server/KNOWN\_ISSUES.md at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-metrics-for-all-or-subset-of-nodes)
 
 <br>
 
@@ -263,7 +263,7 @@ NAME       CPU(cores)  CPU%       MEMORY(bytes)  MEMORY%
 foo-pod    <unknown>   <unknown>  <unknown>      <unknown>
 ```
 
-> - https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-pod-metrics
+> - [metrics-server/KNOWN\_ISSUES.md at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/blob/master/KNOWN_ISSUES.md#kubelet-doesnt-report-pod-metrics)
 
 <br>
 
@@ -283,8 +283,8 @@ HorizontalPodAutoscaler を使用するためには、metrics-server も別途�
 
 ![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
 
-> - https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/
-> - https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/
+> - [AWS EKS Kubernetes Horizontal Pod Autoscaler HPA - StackSimplify](https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/)
+> - [EKSのAuto Scalingを試してみた \| DevelopersIO](https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/)
 
 #### ▼ 最大 Pod 数の求め方
 
@@ -318,7 +318,7 @@ bar        bar-deployment   Deployment/bar-deployment   <unknown>/80%   1       
 baz        baz-deployment   Deployment/baz-deployment   <unknown>/80%   1         1         1          391d
 ```
 
-> - https://blog.framinal.life/entry/2020/04/14/190601
+> - [HorizontalPodAutoscaler利用時に「Warning FailedGetResourceMetric horizontal-pod-autoscaler missing request for cpu」が発生する - フラミナル](https://blog.framinal.life/entry/2020/04/14/190601)
 
 #### ▼ レプリカ数との衝突
 

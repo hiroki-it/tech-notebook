@@ -9,7 +9,7 @@ description: UIレンダリングパターン＠フロントエンドアーキ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,7 +24,7 @@ description: UIレンダリングパターン＠フロントエンドアーキ�
 5. SSG
 6. ISR
 
-> - https://qiita.com/kimizuy/items/d33420330479f8c85449
+> - [Webアプリパターンの歴史 - SST、AJAX、CSR、SSR、SSG、そしてISR #JavaScript - Qiita](https://qiita.com/kimizuy/items/d33420330479f8c85449)
 
 <br>
 
@@ -38,8 +38,8 @@ description: UIレンダリングパターン＠フロントエンドアーキ�
 - transpile によって、新しい実装規格をブラウザが対応可能な古い規格に変換する
 - minify によって、インデントやコメントを取り除く
 
-> - https://qiita.com/renbowroad/items/47fd562767e5d1c31b4a#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E3%83%93%E3%83%AB%E3%83%89%E5%87%A6%E7%90%86%E3%81%A8%E3%81%9D%E3%81%AE%E7%9B%AE%E7%9A%84
-> - https://blog.tyspine.com/why-build-javascript/
+> - [JavaScriptにおけるビルドとは #JavaScript - Qiita](https://qiita.com/renbowroad/items/47fd562767e5d1c31b4a#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E3%83%93%E3%83%AB%E3%83%89%E5%87%A6%E7%90%86%E3%81%A8%E3%81%9D%E3%81%AE%E7%9B%AE%E7%9A%84)
+> - [なぜJavascriptにビルドが必要？フロントエンド開発の知識をアップデートしよう \| つよし工房](https://blog.tyspine.com/why-build-javascript/)
 
 <br>
 
@@ -51,7 +51,7 @@ description: UIレンダリングパターン＠フロントエンドアーキ�
 
 サーバーサイドのフレームワークを使用して単純なアプリケーションを作る場合、まだまだ現役の技術である。
 
-> - https://qiita.com/kimizuy/items/d33420330479f8c85449
+> - [Webアプリパターンの歴史 - SST、AJAX、CSR、SSR、SSG、そしてISR #JavaScript - Qiita](https://qiita.com/kimizuy/items/d33420330479f8c85449)
 
 <br>
 
@@ -83,8 +83,8 @@ CSR では、ページ全体の静的ファイルをリクエストするのは�
 ![SPアプリにおけるデータ通信の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SPアプリにおけるデータ通信の仕組み.png)
 
 > - https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
-> - https://zenn.dev/bitarts/articles/37260ddb28ae5d
-> - https://qiita.com/kimizuy/items/d33420330479f8c85449
+> - [図解 CSR, SSR, SG(SSG), ISR](https://zenn.dev/bitarts/articles/37260ddb28ae5d)
+> - [Webアプリパターンの歴史 - SST、AJAX、CSR、SSR、SSG、そしてISR #JavaScript - Qiita](https://qiita.com/kimizuy/items/d33420330479f8c85449)
 
 <br>
 
@@ -104,8 +104,8 @@ CSR の仕組みで作成したアプリは SPA である (Ajax とは SPA 内�
 
 ![csr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csr.png)
 
-> - https://zenn.dev/bitarts/articles/37260ddb28ae5d
-> - https://qiita.com/shinkai_/items/79e539b614ac52e48ca4
+> - [図解 CSR, SSR, SG(SSG), ISR](https://zenn.dev/bitarts/articles/37260ddb28ae5d)
+> - [今さら聞けないSPA（シングルページアプリケーション）とは #初心者 - Qiita](https://qiita.com/shinkai_/items/79e539b614ac52e48ca4)
 
 <br>
 
@@ -117,7 +117,7 @@ CSR では、ブラウザ上の JavaScript がバックエンドからデータ�
 
 ![csr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csr.png)
 
-> - https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#1-%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0-csr
+> - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#1-%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0-csr)
 
 <br>
 
@@ -171,8 +171,8 @@ function App() {
 }
 ```
 
-> - https://zenn.dev/gagaga/articles/state-management
-> - https://qiita.com/shohta-noda/items/a6c1b5264cb2fee7fc6d#%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86
+> - [「状態管理」って何？](https://zenn.dev/gagaga/articles/state-management)
+> - [フロントエンドエンジニアがSPAを開発する上で理解しておきたいこと #JavaScript - Qiita](https://qiita.com/shohta-noda/items/a6c1b5264cb2fee7fc6d#%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86)
 
 <br>
 
@@ -184,13 +184,13 @@ MPA と比較して、データを非同期的に通信できるため、1 つ�
 
 ![従来WebアプリとSPAの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来ウェブアプリとSPAの処理速度の違い.png)
 
-> - https://www.switchitmaker2.com/seo/spa/
+> - [SPAとは？メリット・デメリットや、SEO対策で重要なポイントも紹介 \| 東京SEOメーカーAIO戦略室｜AI検索最適化（LLMO/AIO/GEO/AEO/SEO）専門会社［国内・海外］アドマノ株式会社](https://www.switchitmaker2.com/seo/spa/)
 
 #### ▼ SEO
 
 CSR の場合、Google のクローラーはページを認識しにくい。その結果、Web ページのインデックス登録に失敗する可能性がある。
 
-> - https://www.switchitmaker2.com/seo/spa/
+> - [SPAとは？メリット・デメリットや、SEO対策で重要なポイントも紹介 \| 東京SEOメーカーAIO戦略室｜AI検索最適化（LLMO/AIO/GEO/AEO/SEO）専門会社［国内・海外］アドマノ株式会社](https://www.switchitmaker2.com/seo/spa/)
 
 <br>
 
@@ -220,7 +220,7 @@ SSR では、フロントエンドアプリケーションへのリクエスト�
 | Rendering                      | サーバー |
 | Paiting                        | ブラウザ |
 
-> - https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8
+> - [Webサイト表示の流れをざっくりとまとめた。HTML,CSSからSPA,SSR,SSGまで。 \| ただ屋ぁのブログ](https://tadtadya.com/summary-of-the-web-site-display-process-flow/#index-list-8)
 > - https://ja.nuxtjs.org/docs/2.x/concepts/server-side-rendering
 
 <br>
@@ -237,7 +237,7 @@ SSR では、フロントエンドアプリケーションへのリクエスト�
 
 ![ssr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssr.png)
 
-> - https://qiita.com/rita0222/items/66fec6e7be5987bace3c
+> - [Server-Side Renderingって何なのさ ～あるいは雑な用語定義に対するお気持ち表明～ #JavaScript - Qiita](https://qiita.com/rita0222/items/66fec6e7be5987bace3c)
 > - https://qiita.com/kyrieleison/items/4ac5bcc331aee6394440#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E5%85%B1%E6%9C%89<br>
 
 <br>
@@ -252,7 +252,7 @@ SSR では、フロントエンドアプリケーションへのリクエスト�
 
 ![ssr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssr.png)
 
-> - https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#2-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0-ssr
+> - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#2-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0-ssr)
 
 <br>
 
@@ -275,7 +275,7 @@ SSR では、フロントエンドアプリケーションへのリクエスト�
 
 動的な要素 (例：ランダム表示) を含む静的ファイルについては、該当の部分で Ajax を使用できるようにしておく。
 
-> - https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg
+> - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg)
 
 ![ssg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png)
 
@@ -289,7 +289,7 @@ SSG では、フロントエンドアプリケーションのビルド時にバ�
 
 ![ssg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png)
 
-> - https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg
+> - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg)
 
 <br>
 
@@ -312,7 +312,7 @@ SSG と同じで事前にビルドし、静的ファイル (例：`html` ファ�
 ![isr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/isr.png)
 
 > - https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
-> - https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#4-%E3%82%A4%E3%83%B3%E3%82%AF%E3%83%AA%E3%83%A1%E3%83%B3%E3%82%BF%E3%83%AB%E9%9D%99%E7%9A%84%E5%86%8D%E7%94%9F%E6%88%90-isr
+> - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#4-%E3%82%A4%E3%83%B3%E3%82%AF%E3%83%AA%E3%83%A1%E3%83%B3%E3%82%BF%E3%83%AB%E9%9D%99%E7%9A%84%E5%86%8D%E7%94%9F%E6%88%90-isr)
 
 <br>
 
@@ -320,7 +320,7 @@ SSG と同じで事前にビルドし、静的ファイル (例：`html` ファ�
 
 ![isr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/isr.png)
 
-> - https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg
+> - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg)
 
 <br>
 
@@ -328,7 +328,7 @@ SSG と同じで事前にビルドし、静的ファイル (例：`html` ファ�
 
 SSR と CSR を組み合わせた UI レンダリングパターンであり、SST（Server Side Templating）に似ている。
 
-> - https://nuxt.com/docs/4.x/guide/concepts/rendering
+> - [Rendering Modes · Nuxt Concepts v4](https://nuxt.com/docs/4.x/guide/concepts/rendering)
 
 <br>
 

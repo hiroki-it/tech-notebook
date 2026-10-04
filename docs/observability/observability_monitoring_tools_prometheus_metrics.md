@@ -9,7 +9,7 @@ description: メトリクス＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -33,7 +33,7 @@ Counter は `rate()` 関数で秒当たりの増減で集約することが多�
 
 `rate()` 関数を使用しない場合、メトリクスの単位は『累計〇〇』になる。
 
-> - https://prometheus.io/docs/tutorials/understanding_metric_types/#counter
+> - [Understanding metric types \| Prometheus](https://prometheus.io/docs/tutorials/understanding_metric_types/#counter)
 > - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
 #### ▼ Gauge 型
@@ -44,22 +44,22 @@ Counter は `rate()` 関数で秒当たりの増減で集約することが多�
 
 Gauge はそれ自体が増減であるため、Grafana ダッシュボード上では、メトリクスの単位を『〇 (元のメトリクスそのまま) 』とすることがほとんどである。
 
-> - https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge
+> - [Understanding metric types \| Prometheus](https://prometheus.io/docs/tutorials/understanding_metric_types/#gauge)
 > - https://chronosphere.io/learn/an-introduction-to-the-four-primary-types-of-prometheus-metrics/
 
 #### ▼ Histogram 型
 
 時間の範囲を単位とするメトリクス (例：レスポンスタイム) が所属する。
 
-> - https://prometheus.io/docs/tutorials/understanding_metric_types/#histogram
-> - https://prometheus.io/docs/practices/histograms/
+> - [Understanding metric types \| Prometheus](https://prometheus.io/docs/tutorials/understanding_metric_types/#histogram)
+> - [Histograms and summaries \| Prometheus](https://prometheus.io/docs/practices/histograms/)
 
 #### ▼ Summary 型
 
 統計的な分位数を単位とするメトリクス
 
-> - https://prometheus.io/docs/tutorials/understanding_metric_types/#summary
-> - https://prometheus.io/docs/practices/histograms/
+> - [Understanding metric types \| Prometheus](https://prometheus.io/docs/tutorials/understanding_metric_types/#summary)
+> - [Histograms and summaries \| Prometheus](https://prometheus.io/docs/practices/histograms/)
 
 <br>
 
@@ -67,7 +67,7 @@ Gauge はそれ自体が増減であるため、Grafana ダッシュボード上
 
 Prometheus のメトリクスには、メタデータとして『ラベル』を付与できる。
 
-> - https://docs.logz.io/docs/user-guide/infrastructure-monitoring/introduction-to-prometheus/explore-metrics-prometheus/#prometheus-metrics-metadata-labels
+> - [Explore Your Prometheus Metrics \| Logz.io Docs](https://docs.logz.io/docs/user-guide/infrastructure-monitoring/introduction-to-prometheus/explore-metrics-prometheus/#prometheus-metrics-metadata-labels)
 
 <br>
 
@@ -90,7 +90,7 @@ process_cpu_seconds_total
 http_request_duration_seconds
 ```
 
-> - https://prometheus.io/docs/practices/naming/#metric-names
+> - [Metric and label naming \| Prometheus](https://prometheus.io/docs/practices/naming/#metric-names)
 
 <br>
 
@@ -105,7 +105,7 @@ prometheus_tsdb_head_samples_appended_total
 ```
 
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-> - https://christina04.hatenablog.com/entry/prometheus-node-exporter
+> - [Prometheus の基本的な使い方【Node exporter】 - Carpe Diem](https://christina04.hatenablog.com/entry/prometheus-node-exporter)
 
 #### ▼ prometheus_tsdb_compaction_chunk_size_bytes_sum
 
@@ -116,7 +116,7 @@ prometheus_tsdb_compaction_chunk_size_bytes_sum
 ```
 
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-> - https://christina04.hatenablog.com/entry/prometheus-node-exporter
+> - [Prometheus の基本的な使い方【Node exporter】 - Carpe Diem](https://christina04.hatenablog.com/entry/prometheus-node-exporter)
 
 #### ▼ prometheus_tsdb_compaction_chunk_samples_sum
 
@@ -127,7 +127,7 @@ prometheus_tsdb_compaction_chunk_samples_sum
 ```
 
 > - https://valyala.medium.com/prometheus-storage-technical-terms-for-humans-4ab4de6c3d48
-> - https://christina04.hatenablog.com/entry/prometheus-node-exporter
+> - [Prometheus の基本的な使い方【Node exporter】 - Carpe Diem](https://christina04.hatenablog.com/entry/prometheus-node-exporter)
 
 <br>
 
@@ -143,7 +143,7 @@ aggregator_unavailable_apiservice{job="apiserver", name="<API名>"}
 aggregator_unavailable_apiservice{job="apiserver", name="v1.metrics.eks.amazonaws.com"}
 ```
 
-> - https://docs.aws.amazon.com/grafana/latest/userguide/solution-eks.html#solution-eks-metrics
+> - [Solution for Monitoring Amazon EKS infrastructure with Amazon Managed Grafana - Amazon Managed Grafana](https://docs.aws.amazon.com/grafana/latest/userguide/solution-eks.html#solution-eks-metrics)
 
 <br>
 
@@ -173,7 +173,7 @@ sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(k
 sum(rate(container_cpu_usage_seconds_total{container!=""}[5m])) by (pod) / sum(kube_pod_container_resource_limits{resource="cpu"}) by (pod) * 100
 ```
 
-> - https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/
+> - [Prometheus と Grafana を使用して AWS Fargate で Amazon EKS をモニタリングする \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/)
 > - https://signoz.io/guides/prometheus-queries-to-get-cpu-and-memory-usage-in-kubernetes-pods/#how-to-query-cpu-usage-in-kubernetes-pods-with-prometheus
 
 #### ▼ container_memory_working_set_bytes
@@ -192,7 +192,7 @@ sum(container_memory_working_set_bytes) by (pod) / sum(kube_pod_container_resour
 sum(container_memory_working_set_bytes) by (pod) / sum(kube_pod_container_resource_limits{resource="memory"}) by (pod) * 100
 ```
 
-> - https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/
+> - [Prometheus と Grafana を使用して AWS Fargate で Amazon EKS をモニタリングする \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/)
 > - https://signoz.io/guides/prometheus-queries-to-get-cpu-and-memory-usage-in-kubernetes-pods/#how-to-query-cpu-usage-in-kubernetes-pods-with-prometheus
 
 <br>

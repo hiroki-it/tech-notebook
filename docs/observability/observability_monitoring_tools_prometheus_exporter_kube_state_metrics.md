@@ -9,7 +9,7 @@ description: kube-state-metrics＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -37,7 +37,7 @@ $ kubectl create namespace prometheus
 $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-state-metrics -n prometheus --version <バージョンタグ>
 ```
 
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics
+> - [helm-charts/charts/kube-state-metrics at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-state-metrics)
 
 <br>
 
@@ -105,8 +105,8 @@ spec:
 ```
 
 > - https://www.densify.com/docs/WebHelp_Densify_Cloud/Content/Data_Collection_for_Public_Cloud_Systems/Container_Data_Collection_Prerequisites.htm
-> - https://github.com/kubernetes/kube-state-metrics/blob/main/docs/developer/cli-arguments.md#available-options
-> - https://github.com/kubernetes/kube-state-metrics/issues/1501#issuecomment-991076751
+> - [kube-state-metrics/docs/developer/cli-arguments.md at main · kubernetes/kube-state-metrics · GitHub](https://github.com/kubernetes/kube-state-metrics/blob/main/docs/developer/cli-arguments.md#available-options)
+> - [pod\_labels does not exists in kube\_pod\_labels metric · Issue #1501 · kubernetes/kube-state-metrics · GitHub](https://github.com/kubernetes/kube-state-metrics/issues/1501#issuecomment-991076751)
 
 <br>
 
@@ -128,8 +128,8 @@ kube_service_info
 ...
 ```
 
-> - https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics
-> - https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/
+> - [kube-state-metrics/docs at main · kubernetes/kube-state-metrics · GitHub](https://github.com/kubernetes/kube-state-metrics/tree/main/docs#exposed-metrics)
+> - [【Kubernetes】Metrics Serverとkube-state-metrics](https://amateur-engineer-blog.com/kube-state-metrics-and-metrics-server/)
 
 #### ▼ よく使用するメトリクス
 
@@ -148,7 +148,7 @@ kube_service_info
 | `kube_daemonset_status_number_available`         | Count            | DaemonSet で指定している Pod のレプリカ数のうち、現在利用できる Pod 数を表す。                                     | `kube_daemonset_status_number_available{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`         |
 | `kube_daemonset_status_number_unavailable`       | Count            | DaemonSet で指定している Pod のレプリカ数のうち、現在利用できない Pod 数を表す。                                   | `kube_daemonset_status_number_unavailable{job="kube-state-metrics",deployment="foo-deployment",namespace="foo"}`       |
 
-> - https://github.com/kubernetes/kube-state-metrics/tree/main/docs
-> - https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1
+> - [kube-state-metrics/docs at main · kubernetes/kube-state-metrics · GitHub](https://github.com/kubernetes/kube-state-metrics/tree/main/docs)
+> - [Kubernetes モニタリング用メトリクスまとめ](https://zenn.dev/sasakiki/articles/f47e4b2ea08bd1)
 
 <br>

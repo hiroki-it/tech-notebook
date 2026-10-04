@@ -9,7 +9,7 @@ description: envoy.yaml＠Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,13 +31,12 @@ Dockerfile にて、自前の `/etc/envoy/envoy.yaml` ファイルを組み込�
 
 拡張子は、`yml` ではなく、`yaml` とする。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/start/docker
-
 ```dockerfile
 FROM envoyproxy/envoy:v1.20.1
 COPY envoy.yaml /etc/envoy/envoy.yaml
 RUN chmod go+r /etc/envoy/envoy.yaml
 ```
+> - https://www.envoyproxy.io/docs/envoy/latest/start/docker
 
 <br>
 
@@ -161,7 +160,7 @@ admin:
 執筆時点 (2022/11/12) では、`listeners` キーと `clusters` キーのみを設定できる。
 
 > - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#static-resources
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/bootstrap#config-overview-bootstrap
+> - [Bootstrap configuration — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/bootstrap#config-overview-bootstrap)
 
 <br>
 
@@ -193,9 +192,7 @@ static_resources:
 
 #### ▼ address
 
-受信したパケットのうちで、宛先 IP アドレスでフィルタリング可能にする。
-
-『`0.0.0.0`』とすると、任意の宛先 IP アドレスを指定するパケットをフィルタリングできるようになる。
+通信を待ち受ける IP アドレスを設定する。
 
 **＊実装例＊**
 
@@ -209,7 +206,7 @@ static_resources:
 
 #### ▼ port_value
 
-受信したパケットのうちで、宛先ポート番号でフィルタリング可能にする。
+通信を待ち受けるポート番号を設定する。
 
 **＊実装例＊**
 
@@ -241,7 +238,7 @@ static_resources:
             - name: envoy.filters.network.http_connection_manager
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter
+> - [Filters — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/filter)
 
 #### ▼ typed_config.access_log
 
@@ -293,8 +290,8 @@ static_resources:
                 stat_prefix: ingress_http
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix
-> - https://i-beam.org/2019/02/03/envoy-static-load-balancer/
+> - [Envoy admin interface — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/admin#stat-prefix)
+> - [Envoy Proxyで作るHTTPロードバランサー \| Folioscope](https://i-beam.org/2019/02/03/envoy-static-load-balancer/)
 
 <br>
 
@@ -310,7 +307,7 @@ static_resources:
 
 RPC では、JSON 内のデータのデータ型を指定するために使用する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration
+> - [Extension configuration — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/extension#config-overview-extension-configuration)
 > - https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#any
 
 #### ▼ `network.tcp_proxy`
@@ -336,8 +333,8 @@ static_resources:
                 ...
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
+> - [TCP proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter)
+> - [Network filters — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network)
 
 #### ▼ `network.http_connection_manager`
 
@@ -363,8 +360,8 @@ static_resources:
                    ...
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_connection_management
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
+> - [HTTP connection management — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_connection_management)
+> - [Network filters — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network)
 
 #### ▼ `http.router`
 
@@ -395,8 +392,8 @@ static_resources:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter)
+> - [Life of a Request — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration)
 
 #### ▼ `http.grpc_web`
 
@@ -431,9 +428,9 @@ static_resources:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration
+> - [gRPC-Web — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_web_filter)
+> - [gRPC HTTP/1.1 bridge — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_http1_bridge_filter#config-http-filters-grpc-bridge)
+> - [Life of a Request — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration)
 
 <br>
 
@@ -487,9 +484,9 @@ static_resources:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto
-> - https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/
+> - [Life of a Request — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request.html#configuration)
+> - [HTTP route configuration (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route.proto)
+> - [NomadのゲートウェイをNginxからEnvoyに置き換える - kamijin-fanta](https://blog.kamijin-fanta.info/2020/12/consul-with-envoy/)
 > - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-routeaction-maxstreamduration
 
 #### ▼ `virtual_hosts.routes.route.max_stream_duration`
@@ -537,7 +534,7 @@ static_resources:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
 ```
 
-> - https://github.com/envoyproxy/envoy/issues/12578
+> - [gRPC timeout processing does not match gRPC semantics · Issue #12578 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/12578)
 > - https://github.com/envoyproxy/envoy/pull/13018
 
 Envoy は、gRPC のストリーミングのタイムアウト時間を適切に処理できておらず、`max_grpc_timeout` は非推奨となった。
@@ -637,13 +634,13 @@ gRPCサーバー # タイムアウト (DeadlineExceeded を投げる)
 
 しかし、移行先の `max_stream_duration` にも gRPC による HTTP レスポンスの返信とタイムアウト時間超過による通信切断のタイミングに問題がある。
 
-> - https://github.com/envoyproxy/envoy/issues/16129
-> - https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029
+> - [Inconsistent timeout handling between max\_stream\_timeout and router global timeout · Issue #16129 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/16129)
+> - [Return gRPC error status when max\_stream\_duration is reached for gRPC requests · Issue #13925 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/13925#issuecomment-725205029)
 
 そこで、サービスメッシュツール (例：Istio) では、`max_grpc_timeout` を使用し続けている。
 
 > - https://github.com/istio/istio/pull/45234#discussion_r1213965308
-> - https://github.com/istio/istio/issues/45141
+> - [Istio 1.16.4 returning GRPC Unavailable instead of deadline exceeded · Issue #45141 · istio/istio · GitHub](https://github.com/istio/istio/issues/45141)
 > - https://github.com/istio/istio/pull/42049
 
 <br>
@@ -662,7 +659,7 @@ static_resources:
     - name: foo_listener
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto
+> - [Listener configuration (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/listener/v3/listener.proto)
 
 <br>
 
@@ -674,7 +671,7 @@ static_resources:
 
 対象が `1` 個であっても、`clusters` キーは必須である。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
+> - [Configuration: Static — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters)
 
 <br>
 
@@ -705,7 +702,7 @@ static_resources:
             "max_requests": 100000
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers
+> - [Circuit breaking — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_circuit_breakers.html?highlight=circuit_breakers)
 
 <br>
 
@@ -763,7 +760,7 @@ static_resources:
 
 ルーティング先の IP アドレスとポート番号のリストを設定する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router
+> - [Router (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router)
 
 **＊実装例＊**
 
@@ -841,7 +838,7 @@ HTTPS リクエストを送受信する場合に、証明書を設定する。
 
 また、静的な値を設定したとする。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-one-static-resource
+> - [Secret discovery service (SDS) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-one-static-resource)
 
 ```yaml
 static_resources:
@@ -904,7 +901,7 @@ static_resources:
 
 サービスメッシュツールを使用せずに、`envoy` コンテナを直接的に稼働させるとする。また、コントロールプレーンの SDS-API から取得した動的な値を設定したとする。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server
+> - [Secret discovery service (SDS) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server)
 
 <br>
 
@@ -916,7 +913,7 @@ static_resources:
 
 ルーティング先のアドレスを IP アドレスではなくドメイン名で指定する場合、必須である。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types
+> - [Service discovery — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types)
 
 **＊実装例＊**
 
@@ -970,7 +967,7 @@ static_resources:
             max_concurrent_streams: 100
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-msg-config-core-v3-http2protocoloptions
+> - [Protocol options (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/protocol.proto#envoy-v3-api-msg-config-core-v3-http2protocoloptions)
 
 #### ▼ upstream_http_protocol_options
 
@@ -992,7 +989,7 @@ static_resources:
 
 動的に宛先情報を設定する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-dynamic-filesystem#dynamic-resources
+> - [Configuration: Dynamic from filesystem — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-dynamic-filesystem#dynamic-resources)
 
 <br>
 
@@ -1004,7 +1001,7 @@ ADS-API について設定する。
 
 Envoy が ADS-API にリクエストを送信するように設定できる。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
+> - [xDS API endpoints — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service)
 
 #### ▼ grpc_services
 
@@ -1014,7 +1011,7 @@ ADS-API として使用するクラスター名を設定する。
 
 ADS-API の宛先情報は、`static_resources.clusters` キー配下で設定しておく。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc
+> - [gRPC services (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc)
 
 **＊実装例＊**
 
@@ -1069,10 +1066,10 @@ static_resources:
                   cluster_name: xds_cluster
 ```
 
-> - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15
-> - https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40
-> - https://github.com/salrashid123/envoy_discovery/blob/8f939d1ba7aaf8724651a9e2530099da4ab686d6/envoy_config.yaml#L39-L74
-> - https://i-beam.org/2019/03/13/envoy-xds-server/
+> - [envoy\_control/baseline.yaml at eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a · salrashid123/envoy\_control · GitHub](https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L9-L15)
+> - [envoy\_control/baseline.yaml at eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a · salrashid123/envoy\_control · GitHub](https://github.com/salrashid123/envoy_control/blob/eaa30c1ec5d6bb7baa8ddc1a3a78d9125313cb6a/baseline.yaml#L27-L40)
+> - [envoy\_discovery/envoy\_config.yaml at 8f939d1ba7aaf8724651a9e2530099da4ab686d6 · salrashid123/envoy\_discovery · GitHub](https://github.com/salrashid123/envoy_discovery/blob/8f939d1ba7aaf8724651a9e2530099da4ab686d6/envoy_config.yaml#L39-L74)
+> - [Envoy ProxyのためのEDSサーバーを作る \| Folioscope](https://i-beam.org/2019/03/13/envoy-xds-server/)
 
 **＊実装例＊**
 
@@ -1177,7 +1174,7 @@ dynamic_resources:
 
 ### overload_manager とは
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#
+> - [Overload manager — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#)
 
 <br>
 
@@ -1195,6 +1192,6 @@ resource_monitors:
       max_active_downstream_connections: 1000
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#limiting-active-connections
+> - [Overload manager — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/overload_manager/overload_manager#limiting-active-connections)
 
 <br>

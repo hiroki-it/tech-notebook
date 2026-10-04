@@ -9,7 +9,7 @@ description: Amazon API Gatewayへのymlインポート＠AWSの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: Amazon API Gatewayへのymlインポート＠AWSの知見を記録�
 
 Amazon API Gateway のインポートに当たり、OpenAPI の `yaml` ファイルにキーを新たに実装する必要がある。
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html
+> - [OpenAPI extensions for API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html)
 
 <br>
 
@@ -29,17 +29,17 @@ Amazon API Gateway のインポートに当たり、OpenAPI の `yaml` ファイ
 
 該当する HTTP メソッドで統合リクエストや統合レスポンスを定義するために `x-amazon-apigateway-integration` キー が必要である。各項目の説明は以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html
+> - [x-amazon-apigateway-integration object - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html)
 
 各種パラメーターもマッピングできる。
 
 メソッドリクエストから統合リクエストへのマッピングについては、以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-requestParameters.html
+> - [x-amazon-apigateway-integration.requestParameters object - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-requestParameters.html)
 
 統合レスポンスからメソッドレスポンスへのマッピングについては、以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html
+> - [x-amazon-apigateway-integration.responseParameters object - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html)
 
 #### ▼ セットアップ (Amazon VPC リンク&プロキシ統合)
 
@@ -208,7 +208,7 @@ x-amazon-apigateway-request-validators:
 
 Swagger Editor で API の仕様書の `html` ファイルを確認できる。
 
-> - https://editor.swagger.io/
+> - [SwaggerEditor](https://editor.swagger.io/)
 
 - OpenAPI 仕様のバージョン 2.0 と 3.0 をサポートしている。
 - `x-amazon-apigateway-integration` キーを各 HTTP メソッドに定義する。
@@ -224,7 +224,7 @@ Swagger Editor で API の仕様書の `html` ファイルを確認できる。
 
 その他の非対応記述については、以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis
+> - [Amazon API Gateway important notes - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis)
 
 <br>
 

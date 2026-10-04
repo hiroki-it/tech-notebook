@@ -9,7 +9,7 @@ description: ネットワークの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -72,7 +72,7 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 
 ただし、レイテンシーと区別しない場合がある。
 
-> - https://ec-orange.jp/ec-media/?p=24447
+> - [レイテンシとは：定義から計測サイトまで用語にまつわるトピックを解説 \| ECのミライを考えるメディア \| EC-ORANGE](https://ec-orange.jp/ec-media/?p=24447)
 
 <br>
 
@@ -84,7 +84,7 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 
 ただし、レスポンスタイムと区別しない場合がある。
 
-> - https://ec-orange.jp/ec-media/?p=24447
+> - [レイテンシとは：定義から計測サイトまで用語にまつわるトピックを解説 \| ECのミライを考えるメディア \| EC-ORANGE](https://ec-orange.jp/ec-media/?p=24447)
 
 <br>
 
@@ -103,7 +103,7 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 インターネットや WAN の帯域幅が狭いと、ダウンロード (例：インストール、コンテナイメージのプル) やアップロード (例：POST リクエスト、コンテナイメージのプッシュ) に時間がかかる。
 
 > - https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html
-> - https://aws.amazon.com/jp/compare/the-difference-between-throughput-and-latency/#seo-faq-pairs#relationship-between-bandwidth-latency-and-throughput
+> - [スループットとレイテンシー - コンピュータネットワークパフォーマンスの違い - AWS](https://aws.amazon.com/jp/compare/the-difference-between-throughput-and-latency/#seo-faq-pairs#relationship-between-bandwidth-latency-and-throughput)
 
 <br>
 
@@ -122,7 +122,7 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 ![伝送速度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/伝送速度.png)
 
 > - https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html
-> - https://aws.amazon.com/jp/compare/the-difference-between-throughput-and-latency/#seo-faq-pairs#relationship-between-bandwidth-latency-and-throughput
+> - [スループットとレイテンシー - コンピュータネットワークパフォーマンスの違い - AWS](https://aws.amazon.com/jp/compare/the-difference-between-throughput-and-latency/#seo-faq-pairs#relationship-between-bandwidth-latency-and-throughput)
 
 #### ▼ 伝送
 
@@ -143,12 +143,12 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 
 ![トラフィック](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィック.png)
 
-> - https://xtech.nikkei.com/it/article/Keyword/20070222/262872/
+> - [トラフィック \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/Keyword/20070222/262872/)
 
 総務省のパケットペイロードで、日本のブロードバンド大手 5 社の総トラフィックを年次でグラフ化したものがある。
 
 ![トラフィックのグラフ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィックのグラフ.png)
 
-> - https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/
+> - [トラフィック年3割増でも大丈夫、光インターネットの姿 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/)
 
 <br>

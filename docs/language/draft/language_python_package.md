@@ -9,7 +9,7 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -60,7 +60,7 @@ logger.addHandler(logHandler)
 logger.info("<メッセージ>")
 ```
 
-> - https://github.com/madzak/python-json-logger
+> - [GitHub - madzak/python-json-logger: Json Formatter for the standard python logger · GitHub](https://github.com/madzak/python-json-logger)
 
 <br>
 
@@ -91,8 +91,8 @@ log = structlog.get_logger()
 log.info("<メッセージ>")
 ```
 
-> - https://github.com/hynek/structlog
-> - https://www.structlog.org/en/stable/getting-started.html
+> - [GitHub - hynek/structlog: Simple, powerful, and fast logging for Python. · GitHub](https://github.com/hynek/structlog)
+> - [Getting Started — structlog 26.1.0 documentation](https://www.structlog.org/en/stable/getting-started.html)
 
 <br>
 
@@ -150,7 +150,7 @@ logger.add(
 )
 ```
 
-> - https://github.com/Delgan/loguru?tab=readme-ov-file#structured-logging-as-needed
+> - [GitHub - Delgan/loguru: Python logging made (stupidly) simple · GitHub](https://github.com/Delgan/loguru?tab=readme-ov-file#structured-logging-as-needed)
 
 #### ▼ info、error
 

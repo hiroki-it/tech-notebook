@@ -9,7 +9,7 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -51,7 +51,7 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 
 認証マイクロサービスが単一障害点になるというデメリットがある。
 
-> - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#sso-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%AE%A1%E7%90%86
+> - [マイクロサービスにおける認証・認可を考える](https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#sso-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E7%AE%A1%E7%90%86)
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6
 
 ### SSO パターンの仕組み
@@ -60,8 +60,8 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 
 ![microservices_authentication_type_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso.png)
 
-> - https://please-sleep.cou929.nu/microservices-auth-design.html
-> - https://engineer.retty.me/entry/2019/12/21/171549
+> - [Microservices における認証と認可の設計パターン - Please Sleep](https://please-sleep.cou929.nu/microservices-auth-design.html)
+> - [マイクロサービス時代のセッション管理 - Retty Tech Blog](https://engineer.retty.me/entry/2019/12/21/171549)
 
 <br>
 
@@ -79,11 +79,11 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 
 ![microservices_authentication_type_sso_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso_gateway.png)
 
-> - https://www.jerney.io/secure-apis-kong-keycloak-1/
+> - [Securing APIs with Kong and Keycloak - Part 1](https://www.jerney.io/secure-apis-kong-keycloak-1/)
 > - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
-> - https://www.altkomsoftware.com/blog/keycloak-security-in-microservices/
+> - [Keycloak: security in the world of microservices](https://www.altkomsoftware.com/blog/keycloak-security-in-microservices/)
 > - https://stackoverflow.com/a/53396041
-> - https://qiita.com/unhurried/items/998a386ccbc1ad4b8e61#rfc-8693-oauth-20-token-exchange
+> - [マイクロサービスでの認証認可 #OAuth - Qiita](https://qiita.com/unhurried/items/998a386ccbc1ad4b8e61#rfc-8693-oauth-20-token-exchange)
 
 <br>
 
@@ -101,7 +101,7 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 
 (認証マイクロサービスだけでなく各マイクロサービスもセッションストレージツールへ接続できるようにする必要があるらしいが、Keycloak ではそんなことない)
 
-> - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86
+> - [マイクロサービスにおける認証・認可を考える](https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#%E5%88%86%E6%95%A3%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AB%E3%82%88%E3%82%8B%E7%AE%A1%E7%90%86)
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=6
 
 <br>
@@ -118,9 +118,9 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 
 ![microservices_authentication_type_session](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_session.png)
 
-> - https://please-sleep.cou929.nu/microservices-auth-design.html
-> - https://engineer.retty.me/entry/2019/12/21/171549
-> - https://dev.to/honatas/a-different-approach-to-user-sessions-in-microservices-5bpi
+> - [Microservices における認証と認可の設計パターン - Please Sleep](https://please-sleep.cou929.nu/microservices-auth-design.html)
+> - [マイクロサービス時代のセッション管理 - Retty Tech Blog](https://engineer.retty.me/entry/2019/12/21/171549)
+> - [A different approach to User Sessions in Microservices using Redis - DEV Community](https://dev.to/honatas/a-different-approach-to-user-sessions-in-microservices-5bpi)
 > - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
 
 <br>
@@ -169,9 +169,9 @@ description: 認証／認可＠マイクロサービスの知見を記録して�
 
 ![microservices_authentication_type_jwt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_jwt.png)
 
-> - https://please-sleep.cou929.nu/microservices-auth-design.html
+> - [Microservices における認証と認可の設計パターン - Please Sleep](https://please-sleep.cou929.nu/microservices-auth-design.html)
 > - https://blog.stackademic.com/backend-for-frontend-authentication-pattern-in-go-5fe5ec7ced53
-> - https://engineer.retty.me/entry/2019/12/21/171549
+> - [マイクロサービス時代のセッション管理 - Retty Tech Blog](https://engineer.retty.me/entry/2019/12/21/171549)
 
 <br>
 
@@ -189,10 +189,10 @@ API ゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 認証マイクロサービスはトークンベース認証を使用し、API Gateway を介して、非 SSO で認証を実施する。
 
-> - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86
+> - [マイクロサービスにおける認証・認可を考える](https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86)
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8
-> - https://engineer.retty.me/entry/2019/12/21/171549
-> - https://please-sleep.cou929.nu/microservices-auth-design.html
+> - [マイクロサービス時代のセッション管理 - Retty Tech Blog](https://engineer.retty.me/entry/2019/12/21/171549)
+> - [Microservices における認証と認可の設計パターン - Please Sleep](https://please-sleep.cou929.nu/microservices-auth-design.html)
 
 <br>
 
@@ -210,10 +210,10 @@ API ゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 ![microservices_authentication_type_opaque-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_opaque-token.png)
 
-> - https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86
+> - [マイクロサービスにおける認証・認可を考える](https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86)
 > - https://iopscience.iop.org/article/10.1088/1742-6596/910/1/012060/pdf#page=8
-> - https://engineer.retty.me/entry/2019/12/21/171549
-> - https://please-sleep.cou929.nu/microservices-auth-design.html
+> - [マイクロサービス時代のセッション管理 - Retty Tech Blog](https://engineer.retty.me/entry/2019/12/21/171549)
+> - [Microservices における認証と認可の設計パターン - Please Sleep](https://please-sleep.cou929.nu/microservices-auth-design.html)
 
 <br>
 
@@ -234,9 +234,9 @@ API ゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 ![aws_jwt-authorizer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_jwt-authorizer.png)
 
-> - https://qiita.com/KWS_0901/items/9b37712ed4bff75e1d4f
-> - https://auth0.com/blog/securing-aws-http-apis-with-jwt-authorizers/#Test-It-Out-
-> - https://dev.classmethod.jp/articles/amazon-api-gateway-http-api-authz-auth0/#%25E7%25A2%25BA%25E8%25AA%258D%25E3%2581%2597%25E3%2581%25A6%25E3%2581%25BF%25E3%2582%258B
+> - [API Gateway JWT Authorizerメモ #AWS - Qiita](https://qiita.com/KWS_0901/items/9b37712ed4bff75e1d4f)
+> - [Securing AWS HTTP APIs with JWT Authorizers](https://auth0.com/blog/securing-aws-http-apis-with-jwt-authorizers/#Test-It-Out-)
+> - [Amazon API GatewayのHTTP APIをAuth0と統合して保護してみる \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-api-gateway-http-api-authz-auth0/#%25E7%25A2%25BA%25E8%25AA%258D%25E3%2581%2597%25E3%2581%25A6%25E3%2581%25BF%25E3%2582%258B)
 
 <br>
 
@@ -250,8 +250,8 @@ API ゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 ![microservices_authorization_centralized-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization.png)
 
-> - https://www.osohq.com/academy/what-is-authorization
-> - https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89
+> - [Authorization Academy - What is Authorization?](https://www.osohq.com/academy/what-is-authorization)
+> - [認可のアーキテクチャに関する考察（Authorization Academy IIを読んで）](https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89)
 
 #### ▼ 認可プロバイダーへの委譲
 
@@ -261,8 +261,8 @@ API ゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 ![microservices_authorization_centralized-authorization_external-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization_external-provider.png)
 
-> - https://thinkit.co.jp/article/22484
-> - https://developer.mamezou-tech.com/blogs/2022/07/01/openapi-generator-5/
+> - [Keycloakと認可プロダクトを利用したマイクロサービスにおける認証認可の実現 \| CNCF IncubatingプロジェクトになったKeycloak入門 \| Think IT（シンクイット）](https://thinkit.co.jp/article/22484)
+> - [第5回 Open Policy Agent とサイドカーパターンによる認可の実装 \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/07/01/openapi-generator-5/)
 
 <br>
 
@@ -276,8 +276,8 @@ API ゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 ![microservices_authorization_decentralized-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_decentralized-authorization.png)
 
-> - https://www.osohq.com/academy/what-is-authorization
-> - https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89
+> - [Authorization Academy - What is Authorization?](https://www.osohq.com/academy/what-is-authorization)
+> - [認可のアーキテクチャに関する考察（Authorization Academy IIを読んで）](https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89)
 
 <br>
 
@@ -287,7 +287,7 @@ API ゲートウェイは、認証を集中的に管理し、認証とアクセ�
 
 ![microservices_authorization_hybrid-authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_hybrid-authorization.png)
 
-> - https://www.osohq.com/academy/what-is-authorization
-> - https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89
+> - [Authorization Academy - What is Authorization?](https://www.osohq.com/academy/what-is-authorization)
+> - [認可のアーキテクチャに関する考察（Authorization Academy IIを読んで）](https://zenn.dev/she_techblog/articles/6eff1f28d107be#decision%EF%BC%88%E8%AA%8D%E5%8F%AF%E3%81%AE%E5%88%A4%E6%96%AD%EF%BC%89%E3%81%AE%E5%AE%9F%E8%A3%85%E6%96%B9%E6%B3%95%EF%BC%88options-for-implementing-authorization-decisions%EF%BC%89)
 
 <br>

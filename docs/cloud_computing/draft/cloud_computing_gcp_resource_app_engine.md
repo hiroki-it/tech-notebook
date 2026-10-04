@@ -9,7 +9,7 @@ description: App Engine＠Google Cloudリソースの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,6 +27,6 @@ description: App Engine＠Google Cloudリソースの知見を記録していま
 
 IAM ユーザーに一時的にロールを付与する。
 
-> - https://cloud.google.com/iam/docs/conditions-overview#resources
+> - [Overview of IAM Conditions \| Identity and Access Management (IAM) \| Google Cloud Documentation](https://cloud.google.com/iam/docs/conditions-overview#resources)
 
 <br>

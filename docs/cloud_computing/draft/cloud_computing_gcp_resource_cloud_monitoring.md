@@ -9,7 +9,7 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -37,7 +37,7 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 
 ポリシー (例：閾値、メトリクス再集約など) 、通知チャンネルを作成できる。
 
-> - https://cloud.google.com/monitoring/alerts/using-alerting-ui?hl=ja
+> - [指標しきい値のアラート ポリシーを作成する \| Cloud Monitoring \| Google Cloud Documentation](https://cloud.google.com/monitoring/alerts/using-alerting-ui?hl=ja)
 > - https://cloud.google.com/monitoring/support/notification-options?hl=ja
 
 #### ▼ メトリクスフィルター
@@ -51,6 +51,6 @@ description: Cloud Monitoring＠Google Cloudリソースの知見を記録して
 resource.type = "cloud_run_revision" AND metric.type = "cloudfunctions.googleapis.com/function/execution_count" AND metric.labels.status != "ok"
 ```
 
-> - https://cloud.google.com/run/docs/logging?hl=ja#viewing-logs-gcloud-read
+> - [Cloud Run でのログの記録と表示 \| Google Cloud Documentation](https://cloud.google.com/run/docs/logging?hl=ja#viewing-logs-gcloud-read)
 
 <br>

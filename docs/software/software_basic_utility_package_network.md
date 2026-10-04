@@ -9,7 +9,7 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,8 +19,8 @@ description: ネットワーク系＠パッケージの知見を記録してい�
 
 正引きの名前解決する
 
-> - https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC
-> - https://dev.classmethod.jp/articles/dig-route53-begginer/
+> - [奥が深いDNSサーバーとdigコマンド #dns - Qiita](https://qiita.com/hypermkt/items/610b5042d290348a9dfa#%E3%83%98%E3%83%83%E3%83%80%E3%83%BC)
+> - [DNSド素人がdigコマンドとRoute 53を使って、DNSについてあれこれ学んでみた \| DevelopersIO](https://dev.classmethod.jp/articles/dig-route53-begginer/)
 
 ```bash
 $ dig yahoo.co.jp
@@ -68,7 +68,7 @@ yahoo.co.jp.            35      IN      A       182.22.25.252
 
 逆引きの名前解決する。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html
+> - [DNSサーバーが正常に動作しているかどうか確認するには？ digコマンド：ネットワーク管理の基本Tips - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1409/25/news001.html)
 
 ```bash
 $ dig -x 182.22.28.252
@@ -129,7 +129,7 @@ $ yum install -y bind-utils
 
 #### ▼ オプション無し
 
-> - https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
+> - [Linux環境でnslookupやdigコマンドでDNSを学ぶ #dns - Qiita](https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59)
 
 **＊例＊**
 
@@ -161,7 +161,7 @@ Address:  172.217.175.3 # IPv4アドレス
 権威 DNS サーバーを使用して名前解決する場合、引数なしで `nslookup` コマンドを実行する。
 
 > - http://linux.kororo.jp/cont/server/nslookup_dns.php
-> - https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59
+> - [Linux環境でnslookupやdigコマンドでDNSを学ぶ #dns - Qiita](https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59)
 
 ```bash
 $ nslookup
@@ -239,7 +239,7 @@ $ yum install -y net-tools
 
 ### 接続状態の一覧
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/0207/20/news003.html
+> - [TCP/IP通信の状態を調べる「netstat」コマンドを使いこなす【Windows OS】：Tech TIPS（1/2 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/0207/20/news003.html)
 
 <br>
 
@@ -345,8 +345,8 @@ $ tcpdump
 ```
 
 > - http://blog.livedoor.jp/sonots/archives/18239717.html
-> - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
-> - https://www.ecoop.net/memo/archives/detect_ping_with_tcpdump.html
+> - [tcpdump の見方を勉強 - Please Sleep](https://please-sleep.cou929.nu/tcpdump-study-pt1.html)
+> - [\[Linux\] ping された事を検知する(tcpdump) \| てくめも@ecoop.net](https://www.ecoop.net/memo/archives/detect_ping_with_tcpdump.html)
 
 インバウンド通信のみ、あるいはアウトバウンド通信のみのパケットを取得するのはやや面倒である。
 
@@ -374,8 +374,8 @@ $ tcpdump
 09:36:20.885482 IP 10.0.1.23.65428 > 93.184.216.119.http: Flags [.], ack 1, win 16384, length 0
 ```
 
-> - https://please-sleep.cou929.nu/tcpdump-study-pt1.html
-> - https://e-words.jp/w/SYN-ACK%E3%83%91%E3%82%B1%E3%83%83%E3%83%88.html
+> - [tcpdump の見方を勉強 - Please Sleep](https://please-sleep.cou929.nu/tcpdump-study-pt1.html)
+> - [SYN/ACKパケットとは - IT用語辞典 e-Words](https://e-words.jp/w/SYN-ACK%E3%83%91%E3%82%B1%E3%83%83%E3%83%88.html)
 
 <br>
 
@@ -396,7 +396,7 @@ $ tcpdump <コマンド/オプション> \
 $ tcpdump icmp -i eth0
 ```
 
-> - https://protocol.nekono.tokyo/2017/03/15/tcp-dump%E3%81%A7ping%E3%81%AE%E5%8F%97%E4%BF%A1%E3%82%92%E7%A2%BA%E8%AA%8D/
+> - [売り出し中のドメイン名です](https://protocol.nekono.tokyo/2017/03/15/tcp-dump%E3%81%A7ping%E3%81%AE%E5%8F%97%E4%BF%A1%E3%82%92%E7%A2%BA%E8%AA%8D/)
 
 <br>
 
@@ -408,7 +408,7 @@ $ tcpdump icmp -i eth0
 $ tcpdump -i eth0
 ```
 
-> - https://qiita.com/tossh/items/4cd33693965ef231bd2a
+> - [超絶初心者むけtcpdumpの使い方 #Network - Qiita](https://qiita.com/tossh/items/4cd33693965ef231bd2a)
 
 <br>
 
@@ -416,7 +416,7 @@ $ tcpdump -i eth0
 
 すべてのネットワークインターフェースにて、指定したプロトコルを使用したパケットを取得する。
 
-> - https://go-journey.club/archives/1472
+> - [tcpdump のインストールと使い方 パケット解析をする – AWSインフラ研究所](https://go-journey.club/archives/1472)
 
 ```bash
 $ tcpdump -nn ip
@@ -430,7 +430,7 @@ $ tcpdump -nn ip
 
 すべてのネットワークインターフェースにて、指定したポート番号に対するパケットを取得する。
 
-> - https://go-journey.club/archives/1472
+> - [tcpdump のインストールと使い方 パケット解析をする – AWSインフラ研究所](https://go-journey.club/archives/1472)
 
 ```bash
 $ tcpdump -nn port 80
@@ -444,7 +444,7 @@ $ tcpdump -nn port 80
 
 パケットを宛先情報でフィルタリングし、パケットを取得する。
 
-> - https://orebibou.com/ja/home/201505/20150525_001/
+> - [tcpdumpコマンドで覚えておきたい使い方4個 \| 俺的備忘録 〜なんかいろいろ〜](https://orebibou.com/ja/home/201505/20150525_001/)
 
 #### ▼ port
 
@@ -462,7 +462,7 @@ $ tcpdump dst port 80
 
 パケットを送信元情報でフィルタリングし、パケットを取得する。
 
-> - https://orebibou.com/ja/home/201505/20150525_001/
+> - [tcpdumpコマンドで覚えておきたい使い方4個 \| 俺的備忘録 〜なんかいろいろ〜](https://orebibou.com/ja/home/201505/20150525_001/)
 
 #### ▼ port
 
@@ -482,9 +482,9 @@ $ tcpdump src port 80
 
 ![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/traceroute.png)
 
-> - https://webkaru.net/linux/traceroute-command/
-> - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
-> - https://beginners-network.com/tracert_traceroute.html
+> - [Linuxコマンド【 traceroute 】ホストまでの経路を表示する - Linux入門 - Webkaru](https://webkaru.net/linux/traceroute-command/)
+> - [コンテンツが存在しません｜よくあるご質問｜法人向けクラウドサービスのbit-drive](https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false)
+> - [ネットワーク入門サイト - tracert・traceroute](https://beginners-network.com/tracert_traceroute.html)
 
 **＊例＊**
 
@@ -532,7 +532,7 @@ traceroute to google.com (173.194.38.98), 30 hops max, 60 byte packets
 ...
 ```
 
-> - https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/
+> - [図解 tracert の見方 ~WindowsとLinuxの違い(icmp/udp),経路途中のIPが表示されない理由~ \| SEの道標](https://milestone-of-se.nesuke.com/nw-basic/ip/traceroute/)
 
 <br>
 
@@ -575,8 +575,8 @@ traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
  9  173.194.38.105  2.165 ms  1.719 ms  1.840 ms # 最後のルーター
 ```
 
-> - https://webkaru.net/linux/traceroute-command/
-> - https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false
+> - [Linuxコマンド【 traceroute 】ホストまでの経路を表示する - Linux入門 - Webkaru](https://webkaru.net/linux/traceroute-command/)
+> - [コンテンツが存在しません｜よくあるご質問｜法人向けクラウドサービスのbit-drive](https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false)
 
 <br>
 
@@ -642,7 +642,7 @@ $ tracepath -n google.com
 
 その場合の代わりとして `tcptraceroute` コマンドを使用する。
 
-> - https://succzero.hatenablog.com/entry/2013/09/01/181615
+> - [tracerouteで応答がないときはtcptracerouteを試す - 一歩前進](https://succzero.hatenablog.com/entry/2013/09/01/181615)
 
 **＊例＊**
 

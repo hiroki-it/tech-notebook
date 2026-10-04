@@ -9,7 +9,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: Vagrantfile＠Vagrantの知見を記録しています。
 
 ### アーキテクチャ
 
-> - http://delftswa.github.io/chapters/vagrant/
+> - [Vagrant](http://delftswa.github.io/chapters/vagrant/)
 
 <br>
 
@@ -305,7 +305,7 @@ end
 ```
 
 > - https://www.vagrantup.com/docs/provisioning/shell
-> - https://monologu.com/vagrant-shell-provisioning/
+> - [【Vagrant】シェルプロビジョニングの実行方法 \| アナグマのモノローグ](https://monologu.com/vagrant-shell-provisioning/)
 
 #### ▼ ansible
 
@@ -364,7 +364,7 @@ end
 ```
 
 > - https://www.vagrantup.com/docs/provisioning/ansible_local
-> - https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant
+> - [Vagrant + Ansible で開発環境を作るなら ansible\_local プロビジョナがいい！ - Shin x Blog](https://blog.shin1x1.com/entry/ansible_local-provisioner-in-vagrant)
 
 <br>
 
@@ -413,6 +413,6 @@ end
 これらから、おおよそ『`RSync > NFS > SMB > VirtualBox共有ディレクトリ`』の順で性能がよくなると考えておけばよい。
 
 > - https://serverfault.com/questions/268369/why-rsync-is-faster-than-nfs
-> - https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/
+> - [【比較】NFSとCIFS/SMBの仕組みと違い,速度 \| SEの道標](https://milestone-of-se.nesuke.com/sv-advanced/file-server/nfs-cifs-smb-summary/)
 
 <br>

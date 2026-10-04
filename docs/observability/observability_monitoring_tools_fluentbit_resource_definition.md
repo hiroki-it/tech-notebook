@@ -9,7 +9,7 @@ description: リソース定義＠FluentBitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,7 +31,7 @@ $ kubectl create namespace fluent
 $ helm install <Helmリリース名> <リポジトリ名>/fluent-bit -n fluent --version <バージョンタグ>
 ```
 
-> - https://github.com/fluent/helm-charts/tree/main/charts/fluent-bit
+> - [helm-charts/charts/fluent-bit at main · fluent/helm-charts · GitHub](https://github.com/fluent/helm-charts/tree/main/charts/fluent-bit)
 
 #### ▼ Amazon EKS 専用のチャートとして
 
@@ -45,6 +45,6 @@ $ helm repo update
 $ helm install <Helmリリース名> <リポジトリ名>/aws-for-fluent-bit -n kube-system --version <バージョンタグ>
 ```
 
-> - https://github.com/aws/eks-charts/tree/master/stable/aws-for-fluent-bit
+> - [eks-charts/stable/aws-for-fluent-bit at master · aws/eks-charts · GitHub](https://github.com/aws/eks-charts/tree/master/stable/aws-for-fluent-bit)
 
 <br>

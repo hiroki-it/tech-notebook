@@ -9,7 +9,7 @@ description: ACID＠RDBMSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,8 +19,8 @@ description: ACID＠RDBMSの知見を記録しています。
 
 トランザクション処理を実現するため必要な機能を略して『ACID』という。
 
-> - http://tooljp.com/jyosho/docs/ACID/ACID.html
-> - https://atmarkit.itmedia.co.jp/ait/articles/1801/31/news011.html
+> - [ACIDとは \| トランザクション処理の性質 \| Atomicity,Consistency,Isolation,Durability](http://tooljp.com/jyosho/docs/ACID/ACID.html)
+> - [NoSQLは「一貫性あるトランザクションを実現できない」という誤解：NoSQLベストプラクティス（7）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1801/31/news011.html)
 
 <br>
 
@@ -94,8 +94,8 @@ description: ACID＠RDBMSの知見を記録しています。
 
 複数の SQL ステートメント (特に、INSERT、UPDATE、DELETE) をセットで扱い、まとめて DB に書き込む。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/0803/24/news138_2.html
-> - https://oss-db.jp/dojo/dojo_01
+> - [トランザクション処理をさらっとマスターしよう：さらっと覚えるSQL＆T-SQL入門（12）（2/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/0803/24/news138_2.html)
+> - [第1回 トランザクションについて](https://oss-db.jp/dojo/dojo_01)
 
 #### ▼ PDO による RDB の書き込み系の操作
 
@@ -135,7 +135,7 @@ try{
 
 ただし、データの不整合を避けるために、トランザクション内の各クエリ処理を非同期化することは避ける。
 
-> - https://radiochemical.hatenablog.com/entry/2020/11/22/152511
+> - [goroutineを使ってdatabaseに並列でInsertするサンプル - すきま風](https://radiochemical.hatenablog.com/entry/2020/11/22/152511)
 > - https://stackoverflow.com/a/69421830/12771072
 
 #### ▼ Doctrine による RDB の書き込み系の操作
@@ -173,7 +173,7 @@ SELECT txid_current();
 
 ![DBMSによるメモリとディスクの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DBMSによるメモリとディスクの使い分け.jpg)
 
-> - https://www.kimullaa.com/posts/201910271500/
+> - [PostgreSQL WALログの仕組みとタイミングを理解したい](https://www.kimullaa.com/posts/201910271500/)
 
 #### ▼ WAL：Write ahead log (ログ先行書き込み)
 
@@ -187,8 +187,8 @@ SELECT txid_current();
 
 また、DB ファイルに書き込むよりも書き込みサイズが少なく済むため、短時間で終了する。
 
-> - https://gihyo.jp/dev/serial/01/db-academy/000202
-> - https://www.kimullaa.com/posts/201910271500/
+> - [第2回 トランザクションを知ればデータベースがわかる―「データ復旧」「同時実行制御」を行う“不完全な”しくみ（2） \| gihyo.jp](https://gihyo.jp/dev/serial/01/db-academy/000202)
+> - [PostgreSQL WALログの仕組みとタイミングを理解したい](https://www.kimullaa.com/posts/201910271500/)
 
 <br>
 
@@ -202,7 +202,7 @@ SELECT txid_current();
 
 ![トランザクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランザクション.jpg)
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+> - [耐久性を確保する「障害回復機能」を理解する：「データベーススペシャリスト試験」戦略的学習のススメ（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html)
 
 <br>
 
@@ -214,8 +214,8 @@ SELECT txid_current();
 
 クエリ言語 (例：MySQL) ごとに、ロールバックのクエリ (例：`ROLLBACK`) が用意されている。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
-> - https://tech.pjin.jp/blog/2020/11/30/%E3%80%90sql%E5%85%A5%E9%96%80%E3%80%91%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88%E3%81%A8%E3%83%AD%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF/
+> - [耐久性を確保する「障害回復機能」を理解する：「データベーススペシャリスト試験」戦略的学習のススメ（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html)
+> - [【SQL基礎】コミットとロールバック \| TECH PROjin](https://tech.pjin.jp/blog/2020/11/30/%E3%80%90sql%E5%85%A5%E9%96%80%E3%80%91%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88%E3%81%A8%E3%83%AD%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF/)
 
 #### ▼ システム障害からの回復
 
@@ -235,7 +235,7 @@ SELECT txid_current();
 
 このとき、ストレージ上のジャーナルファイルの更新後ログを使用して、ストレージ上の DB ファイルに更新結果を反映させる。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+> - [耐久性を確保する「障害回復機能」を理解する：「データベーススペシャリスト試験」戦略的学習のススメ（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html)
 
 #### ▼ システム障害からの回復
 
@@ -255,7 +255,7 @@ SELECT txid_current();
 
 ![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/媒体障害の障害回復機能.jpg)
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html
+> - [耐久性を確保する「障害回復機能」を理解する：「データベーススペシャリスト試験」戦略的学習のススメ（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html)
 
 **＊例＊**
 
@@ -310,7 +310,7 @@ INSERT INTO `mst_staff` (`code`, `name`, `password`) VALUES
 
 RDBMS またはアプリケーションによる `UPDATE` 処理競合問題を回避する仕組みのことである。
 
-> - https://qiita.com/momotaro98/items/5e37eefc62d726a30aee
+> - [排他制御に関する用語を大雑把に理解しよう「ロックとセマフォ」「共有ロックと排他ロック」「楽観的ロックと悲観的ロック」 #Database - Qiita](https://qiita.com/momotaro98/items/5e37eefc62d726a30aee)
 
 <br>
 
@@ -341,7 +341,7 @@ RDBMS またはアプリケーションによる `UPDATE` 処理競合問題を�
 
 ![排他制御-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png)
 
-> - https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc
+> - [排他制御（楽観ロック・悲観ロック）の基礎 #SQL - Qiita](https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc)
 
 <br>
 
@@ -359,8 +359,8 @@ RDBMS またはアプリケーションによる `UPDATE` 処理競合問題を�
 
 アプリケーションや RDBMS では、トランザクションのロック待機時間を設定しておく (例：prisma の `maxWait` 値、MySQL の `innodb_lock_wait_timeout` 値) 。そして、これを超過した場合はエラーになるよう設定する。
 
-> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
-> - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
+> - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
+> - [データベースのロックについて #Database - Qiita](https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 <br>
 
@@ -368,22 +368,22 @@ RDBMS またはアプリケーションによる `UPDATE` 処理競合問題を�
 
 記入中...
 
-> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
-> - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
+> - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
+> - [データベースのロックについて #Database - Qiita](https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 #### ▼ ネクストキーロック
 
 記入中...
 
-> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
-> - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
+> - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
+> - [データベースのロックについて #Database - Qiita](https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 #### ▼ 空振りロック
 
 記入中...
 
-> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
-> - https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E
+> - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
+> - [データベースのロックについて #Database - Qiita](https://qiita.com/Mizut452/items/045ef7079b2fa1e09bbc#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E7%AF%84%E5%9B%B2%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 <br>
 
@@ -399,7 +399,7 @@ RDBMS またはアプリケーションによる `UPDATE` 処理競合問題を�
 
 DBMS の機能で、排他制御する方法である。
 
-> - https://qiita.com/daiching/items/835fa37de22b397eece0#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AB%E3%81%AF%EF%BC%92%E7%A8%AE%E9%A1%9E%E3%81%AE%E6%A6%82%E5%BF%B5%E3%81%8C%E3%81%82%E3%82%8B
+> - [データベースの「ロック」という概念は2種類ある #SQL - Qiita](https://qiita.com/daiching/items/835fa37de22b397eece0#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AB%E3%81%AF%EF%BC%92%E7%A8%AE%E9%A1%9E%E3%81%AE%E6%A6%82%E5%BF%B5%E3%81%8C%E3%81%82%E3%82%8B)
 
 <br>
 
@@ -418,7 +418,7 @@ MySQL では、『`SELECT ... LOCK IN SHARE MODE`』を使用する。
 ![排他制御-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif)
 
 > - https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
-> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
+> - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
 
 <br>
 
@@ -435,7 +435,7 @@ MySQL では、『`SELECT ... FOR UPDATE`』を使用する。
 ![排他制御-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif)
 
 > - https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
-> - https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks
+> - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
 
 <br>
 
@@ -462,7 +462,7 @@ MySQL では、『`SELECT ... FOR UPDATE`』を使用する。
 
 アプリケーションの実装で、排他制御する方法である。
 
-> - https://qiita.com/daiching/items/835fa37de22b397eece0#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AB%E3%81%AF%EF%BC%92%E7%A8%AE%E9%A1%9E%E3%81%AE%E6%A6%82%E5%BF%B5%E3%81%8C%E3%81%82%E3%82%8B
+> - [データベースの「ロック」という概念は2種類ある #SQL - Qiita](https://qiita.com/daiching/items/835fa37de22b397eece0#%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AB%E3%81%AF%EF%BC%92%E7%A8%AE%E9%A1%9E%E3%81%AE%E6%A6%82%E5%BF%B5%E3%81%8C%E3%81%82%E3%82%8B)
 
 <br>
 
@@ -483,7 +483,7 @@ DB のレコードにはバージョン値 (例：最終更新日時など) が�
 競合によるエラーを表す `409` ステータスをレスポンスとして返信するとよい。
 
 > - https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html
-> - https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/
+> - [悲観ロックと楽観ロックの違い - ITを分かりやすく解説](https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/)
 
 #### ▼ ORM の楽観的ロックについて
 
@@ -509,7 +509,7 @@ PHP の ORM である Doctrine のロック機能については、以下のリ�
 アプリケーションで悲観的ロックを実装することは難易度が高く、基本的には DB が提供するロックを使用する。
 
 > - https://e-words.jp/w/%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF-%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF.html
-> - https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/
+> - [悲観ロックと楽観ロックの違い - ITを分かりやすく解説](https://medium-company.com/%E6%82%B2%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%A8%E6%A5%BD%E8%A6%B3%E3%83%AD%E3%83%83%E3%82%AF%E3%81%AE%E9%81%95%E3%81%84/)
 
 <br>
 
@@ -529,7 +529,7 @@ PHP の ORM である Doctrine のロック機能については、以下のリ�
 
 > - https://stackoverflow.com/questions/40615565/test-performance-rollback-vs-restoring-point
 > - https://dev.mysql.com/doc/refman/8.0/en/point-in-time-recovery.html
-> - https://www.techscore.com/blog/2014/12/22/mysql%E3%81%A8posqgresql%E3%81%AEpitr%E3%81%AB%E3%82%88%E3%82%8B%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%EF%BC%86%E3%83%AA%E3%82%AB%E3%83%90%E3%83%AA%E3%81%AE%E9%81%95%E3%81%84%EF%BC%88/
+> - [MysqlとPostgreSQLのPITRによるバックアップ＆リカバリの違い（まとめ） \| TECHSCORE BLOG](https://www.techscore.com/blog/2014/12/22/mysql%E3%81%A8posqgresql%E3%81%AEpitr%E3%81%AB%E3%82%88%E3%82%8B%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%EF%BC%86%E3%83%AA%E3%82%AB%E3%83%90%E3%83%AA%E3%81%AE%E9%81%95%E3%81%84%EF%BC%88/)
 
 #### ▼ ツール
 

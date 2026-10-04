@@ -9,7 +9,7 @@ description: Notation＠セキュリティ系ミドルウェアの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -60,7 +60,7 @@ $ notation policy import aws/signer_policy.json
 }
 ```
 
-> - https://github.com/aws-samples/k8s-notary-admission?tab=readme-ov-file#operation
+> - [GitHub - aws-samples/k8s-notary-admission · GitHub](https://github.com/aws-samples/k8s-notary-admission?tab=readme-ov-file#operation)
 
 <br>
 

@@ -9,7 +9,7 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: パッケージ管理＠Pythonの知見を記録しています。
 
 ### セットアップ
 
-> - https://pip.pypa.io/en/stable/installation/
+> - [Installation - pip documentation v26.2.1](https://pip.pypa.io/en/stable/installation/)
 
 <br>
 
@@ -45,7 +45,7 @@ break-system-packages = true
 timeout = 60
 ```
 
-> - https://pip.pypa.io/en/stable/topics/configuration/
+> - [Configuration - pip documentation v26.2.1](https://pip.pypa.io/en/stable/topics/configuration/)
 
 <br>
 
@@ -61,7 +61,7 @@ timeout = 60
 $ pip3 cache purge
 ```
 
-> - https://qiita.com/yknaka_/items/d9f444f37cb418088081#pip201%E4%BB%A5%E9%99%8D%E3%81%AE%E5%A0%B4%E5%90%88
+> - [pipのキャッシュを削除 #Cache - Qiita](https://qiita.com/yknaka_/items/d9f444f37cb418088081#pip201%E4%BB%A5%E9%99%8D%E3%81%AE%E5%A0%B4%E5%90%88)
 
 #### ▼ remove
 
@@ -71,7 +71,7 @@ $ pip3 cache purge
 $ pip3 cache remove <パッケージ名>
 ```
 
-> - https://qiita.com/yknaka_/items/d9f444f37cb418088081#pip201%E4%BB%A5%E9%99%8D%E3%81%AE%E5%A0%B4%E5%90%88
+> - [pipのキャッシュを削除 #Cache - Qiita](https://qiita.com/yknaka_/items/d9f444f37cb418088081#pip201%E4%BB%A5%E9%99%8D%E3%81%AE%E5%A0%B4%E5%90%88)
 
 <br>
 
@@ -107,7 +107,7 @@ wagtail 2.6.1 has requirement django-modelcluster<5.0,>=4.2, but you have django
 $ pip3 install <パッケージ名>
 ```
 
-> - https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install
+> - [pip install — pip 10.0.0.dev0 documentation](https://pip-python3.readthedocs.io/en/latest/reference/pip_install.html#pip-install)
 
 #### ▼ --upgrade
 
@@ -134,7 +134,7 @@ $ pip3 freeze --local \
     | xargs -n1 pip3 install -U
 ```
 
-> - https://gist.github.com/e8l/c20ab194091dd02fafe7
+> - [pipでパッケージ全体をアップデートする · GitHub](https://gist.github.com/e8l/c20ab194091dd02fafe7)
 
 pip 自身をアップグレードする。
 
@@ -185,7 +185,7 @@ $ pip3 freeze >| requirements.txt
 $ pip3 freeze > uninstall.txt
 ```
 
-> - https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html
+> - [pip freeze — pip 10.0.0.dev0 documentation](https://pip-python3.readthedocs.io/en/latest/reference/pip_freeze.html)
 
 <br>
 
@@ -253,7 +253,7 @@ Requires: sphinxcontrib-applehelp, imagesize, docutils, sphinxcontrib-serializin
 Required-by: sphinxcontrib.sqltable, sphinx-rtd-theme, recommonmark
 ```
 
-> - https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html
+> - [pip show — pip 10.0.0.dev0 documentation](https://pip-python3.readthedocs.io/en/latest/reference/pip_show.html)
 
 <br>
 
@@ -281,7 +281,7 @@ $ pip3 uninstall -y -r uninstall.txt
 $ pip3 cache purge
 ```
 
-> - https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html
+> - [pip uninstall — pip 10.0.0.dev0 documentation](https://pip-python3.readthedocs.io/en/latest/reference/pip_uninstall.html)
 
 <br>
 
@@ -289,7 +289,7 @@ $ pip3 cache purge
 
 ### セットアップ
 
-> - https://pip.pypa.io/en/stable/installation/
+> - [Installation - pip documentation v26.2.1](https://pip.pypa.io/en/stable/installation/)
 
 <br>
 

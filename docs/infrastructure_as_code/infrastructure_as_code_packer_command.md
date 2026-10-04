@@ -9,7 +9,7 @@ description: コマンド＠Packerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: コマンド＠Packerの知見を記録しています。
 $ packer build template.pkr.hcl
 ```
 
-> - https://developer.hashicorp.com/packer/docs/commands/build
+> - [packer build - Commands \| Packer \| HashiCorp Developer](https://developer.hashicorp.com/packer/docs/commands/build)
 
 <br>
 
@@ -31,7 +31,7 @@ $ packer build template.pkr.hcl
 $ packer fmt -recursive
 ```
 
-> - https://developer.hashicorp.com/packer/docs/commands/fmt
+> - [packer fmt command reference \| Packer \| HashiCorp Developer](https://developer.hashicorp.com/packer/docs/commands/fmt)
 
 <br>
 

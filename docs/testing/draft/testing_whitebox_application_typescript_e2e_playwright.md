@@ -9,7 +9,7 @@ description: Playwright＠E2Eテストの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -28,7 +28,7 @@ $ yarn create playwright
 $ pnpm create playwright
 ```
 
-> - https://playwright.dev/docs/intro#installing-playwright
+> - [Installation \| Playwright](https://playwright.dev/docs/intro#installing-playwright)
 > - https://zenn.dev/cloud_ace/articles/5024fa2fefcb9f#playwright-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9
 
 <br>
@@ -39,7 +39,7 @@ $ pnpm create playwright
 $ pip install pytest-playwright
 ```
 
-> - https://playwright.dev/python/docs/intro
+> - [Installation \| Playwright Python](https://playwright.dev/python/docs/intro)
 
 <br>
 
@@ -161,6 +161,6 @@ def test_get_started_link(page: Page):
     expect(page.get_by_role("heading", name="Installation")).to_be_visible()
 ```
 
-> - https://playwright.dev/python/docs/intro
+> - [Installation \| Playwright Python](https://playwright.dev/python/docs/intro)
 
 <br>

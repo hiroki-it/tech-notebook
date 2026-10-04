@@ -9,7 +9,7 @@ description: コマンド＠Kubernetesの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -40,7 +40,7 @@ $ ln -s /etc/kubernetes/kubeconfig config
 $ kubectl get pod --kubeconfig=/etc/kubernetes/kubeconfig
 ```
 
-> - https://blog.inductor.me/entry/2021/03/13/205452
+> - [KUBECONFIGのすべて - inductor's blog](https://blog.inductor.me/entry/2021/03/13/205452)
 
 <br>
 
@@ -78,7 +78,7 @@ $ kubectl annotate --overwrite pod foo-pod <キー名>- -n foo-namespace
 
 すべての項目を更新できるわけでない。
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply)
 
 #### ▼ -f -R
 
@@ -135,9 +135,9 @@ ClientSideApply では、クライアント側の制約により `metadata.annot
 
 そういった場合は、ServerSideApply で解決できる。
 
-> - https://kubernetes.io/docs/reference/using-api/server-side-apply/#using-server-side-apply-in-a-controller
+> - [Server-Side Apply \| Kubernetes](https://kubernetes.io/docs/reference/using-api/server-side-apply/#using-server-side-apply-in-a-controller)
 > - https://zenn.dev/ap_com/articles/63d61765d43983
-> - https://github.com/prometheus-operator/prometheus-operator/issues/4439
+> - [Fix prometheus CRD being too big · Issue #4439 · prometheus-operator/prometheus-operator · GitHub](https://github.com/prometheus-operator/prometheus-operator/issues/4439)
 
 <br>
 
@@ -155,7 +155,7 @@ CoreDNS is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/services
 Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/services/https:metrics-server:/proxy
 ```
 
-> - https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info
+> - [Kubernetes道場 23日目 - kubectlを網羅する - Toku's Blog](https://cstoku.dev/posts/2018/k8sdojo-23/#cluster-info)
 
 <br>
 
@@ -165,7 +165,7 @@ Metrics-server is running at https://*.*.*.*:443/api/v1/namespaces/kube-system/s
 
 `kubeconfig` ファイルのパラメーターを操作する。
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config)
 
 #### ▼ current-context
 
@@ -292,7 +292,7 @@ users:
 $ kubectl cordon <Node名>
 ```
 
-> - https://made.livesense.co.jp/entry/2023/03/28/080000#Pod%E3%81%8C%E9%85%8D%E7%BD%AE%E3%81%95%E3%82%8C%E3%81%AA%E3%81%84%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8BCordon
+> - [Managed Node GroupでEKSの更新作業を楽にした話 - LIVESENSE ENGINEER BLOG](https://made.livesense.co.jp/entry/2023/03/28/080000#Pod%E3%81%8C%E9%85%8D%E7%BD%AE%E3%81%95%E3%82%8C%E3%81%AA%E3%81%84%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8BCordon)
 
 <br>
 
@@ -302,7 +302,7 @@ $ kubectl cordon <Node名>
 
 ホスト PC のファイルまたはディレクトリを指定した Pod 内のコンテナにコピーする。
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#cp)
 
 #### ▼ オプション無し
 
@@ -344,7 +344,7 @@ $ kubectl create -f ./kubernetes/foo-service.yaml
 service/foo-service created
 ```
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create)
 
 #### ▼ deployment
 
@@ -374,7 +374,7 @@ $ kubectl create secret docker-registry foo-secret \
     -n foo-namespace
 ```
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-docker-registry-em-)
 > - https://stackoverflow.com/questions/46297949/sharing-secret-across-namespaces
 
 #### ▼ secret generic
@@ -407,8 +407,8 @@ $ kubectl create secret generic foo-secret --from-literal=username="bar" --from-
 secret/foo-secret created
 ```
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-
-> - https://qiita.com/toshihirock/items/38d09b2822a347c3f958
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-generic-em-)
+> - [\[k8s\] Secrets について確認したときのメモ #kubernetes - Qiita](https://qiita.com/toshihirock/items/38d09b2822a347c3f958)
 
 #### ▼ secret tls
 
@@ -418,7 +418,7 @@ secret/foo-secret created
 $ kubectl create secret tls tls-secret --cert=/etc/ssl/certs/foo.crt --key=./foo.key
 ```
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-secret-tls-em-)
 
 <br>
 
@@ -442,7 +442,7 @@ Pod の場合、オプションのない `kubectl delete` コマンドが Gracef
 $ kubectl delete pod foo-pod
 ```
 
-> - https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods
+> - [Force Delete StatefulSet Pods \| Kubernetes](https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods)
 
 **＊例＊**
 
@@ -465,8 +465,8 @@ Pod を強制的に削除する。
 $ kubectl delete pod <TerminatingステータスのままのPod名> --force --grace-period=0
 ```
 
-> - https://www.opensourcetech.tokyo/entry/20211207/1638879696
-> - https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#force-deletion
+> - ["Terminating"のまま削除できないPodの強制削除(kubernetes) - Opensourcetechブログ](https://www.opensourcetech.tokyo/entry/20211207/1638879696)
+> - [Force Delete StatefulSet Pods \| Kubernetes](https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#force-deletion)
 
 <br>
 
@@ -507,7 +507,7 @@ PolicyRule:
 
 ```
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe)
 
 #### ▼ -A
 
@@ -569,9 +569,9 @@ $ kubectl drain <Node名>
 
 ![kubernetes_drain_node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_drain_node.png)
 
-> - https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service
+> - [Safely Drain a Node \| Kubernetes](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service)
 > - https://amazon.co.jp/dp/1491979682
-> - https://cstoku.dev/posts/2018/k8sdojo-21/
+> - [Kubernetes道場 21日目 - Cordon / Drain / PodDisruptionBudgetについて - Toku's Blog](https://cstoku.dev/posts/2018/k8sdojo-21/)
 > - https://medium.com/@yanglyu5201/kubernetes-drain-node-vs-cordon-node-8b979eb7bbbe
 
 <br>
@@ -596,7 +596,7 @@ $ kubectl edit deployment foo-deployment
 $ kubectl edit statefulset foo-statefulset
 ```
 
-> - https://github.com/kubernetes/kubernetes/issues/24913
+> - [pod updates:how to change the fields of spec.containers\[\].resources.limits.cpu(memory)? · Issue #24913 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/issues/24913)
 
 <br>
 
@@ -608,7 +608,7 @@ $ kubectl edit statefulset foo-statefulset
 
 注意点として、シェルのないコンテナ (distroless 型など) はそもそもシェルを実行できないため、ログインもできない。
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#exec)
 
 #### ▼ -it
 
@@ -640,8 +640,8 @@ Defaulted container "foo-container" out of: foo-container, bar-container
 
 Service を作成する。
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose
-> - https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#expose)
+> - [kubectl run/create/expose のススメ #kubernetes - Qiita](https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908)
 
 #### ▼ --type、--port、--target-port
 
@@ -684,13 +684,13 @@ $ kubectl expose <Service名> \
 
 詳細な情報を参照するときは、`kubectl describe` コマンドを使用する。
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get)
 
 **＊例＊**
 
 特定の Namespace のすべての Kubernetes リソースを取得する。
 
-> - https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/
+> - [kubectl get all は全リソースの情報を表示しない \| text․superbrothers․dev](https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/)
 
 ```bash
 $ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | tr "\n" "," | sed -e 's/,$//')" -n foo-namespace
@@ -1009,7 +1009,7 @@ bar-application    bar-project    OutOfSync
 baz-application    baz-project    Unknown
 ```
 
-> - https://kubernetes.io/docs/reference/kubectl/#formatting-output
+> - [Command line tool (kubectl) \| Kubernetes](https://kubernetes.io/docs/reference/kubectl/#formatting-output)
 
 #### ▼ -o jsonpath
 
@@ -1290,7 +1290,7 @@ $ kubectl get all -A --show-labels | grep -v "argocd.argoproj.io/instance"
 $ kubectl get pod -w
 ```
 
-> - https://qiita.com/kyontra/items/b435ab6e33ffbed51f10
+> - [kubectl getを定期実行する方法 #kubectl - Qiita](https://qiita.com/kyontra/items/b435ab6e33ffbed51f10)
 
 <br>
 
@@ -1352,7 +1352,7 @@ $ kubectl label --overwrite namespace foo istio.io/rev=1-0-0 istio-injection-
 
 指定したリソースのログを取得する。
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs)
 
 #### ▼ -c
 
@@ -1434,8 +1434,8 @@ $ kubectl replace --force -f foo.yaml
 
 Deployment、DaemonSet、StatefulSet、でコピーされた Pod を操作する。
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout
-> - https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#rollout)
+> - [k8sのrollout機能 - aaabbb\_200904の日記](https://aaabbb-200904.hatenablog.jp/entry/2018/05/04/013848)
 
 #### ▼ restart
 
@@ -1460,9 +1460,9 @@ $ kubectl rollout restart daemonset foo-daemonset -n foo-namespace
 $ kubectl rollout restart statefulset foo-statefulset -n foo-namespace
 ```
 
-> - https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000
-> - https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16
-> - https://qiita.com/rururu_kenken/items/508ebef59e2f30d957dc
+> - [定期的にPodを再作成する方法 - 世界中の羊をかき集めて](https://shepherdmaster.hateblo.jp/entry/2021/03/14/100000)
+> - [【Kubernetes】Deploymentのロールアウト関連操作まとめ](https://amateur-engineer-blog.com/kubernetes-deployment-rollout/#toc16)
+> - [\[備忘録\]SecretやConfigMapのみを変更した時にローリングアップデートを実行させる方法 #kubernetes - Qiita](https://qiita.com/rururu_kenken/items/508ebef59e2f30d957dc)
 
 <br>
 
@@ -1474,7 +1474,7 @@ JSON/`yaml` 形式を入力値として、リソースの設定値を変更す�
 
 ただし、マニフェストは変更されない。
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch)
 
 #### ▼ cronjob
 
@@ -1492,7 +1492,7 @@ PersistentVolume の設定値を変更する。
 
 削除されないボリュームを削除する。
 
-> - https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465
+> - [Can't remove terminating persistent volumes (PV) · Issue #77258 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/issues/77258#issuecomment-514543465)
 
 ```bash
 $ kubectl get pv \
@@ -1526,9 +1526,9 @@ $ kubectl port-forward svc/<Service名> <ホストポート番号>:<Serviceの�
 $ curl http://127.0.0.1:<ホストポート番号>
 ```
 
-> - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod
+> - [Use Port Forwarding to Access Applications in a Cluster \| Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/#forward-a-local-port-to-a-port-on-the-pod)
 > - https://stackoverflow.com/questions/53898627/mysql-remote-connect-over-ssh-to-a-kubernetes-pod
-> - https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B
+> - [\[Kubernetes\] クラスタ外から ClusterIP の Service にいい感じにアクセスする #kubernetes - Qiita](https://qiita.com/superbrothers/items/0dca5d2a10727fc14734#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E5%A4%96%E3%81%8B%E3%82%89-clusterip-%E3%81%AB%E7%B4%90%E3%81%A5%E3%81%8F-pod-%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B)
 
 #### ▼ 複数のポートをフォワーディングする
 
@@ -1545,7 +1545,7 @@ Forwarding from 127.0.0.1:8443 -> 9090
 Forwarding from [::1]:8443 -> 9090
 ```
 
-> - https://github.com/derailed/k9s/issues/779#issue-642826402
+> - [Support multiple ports for port-forward to a single Pod · Issue #779 · derailed/k9s · GitHub](https://github.com/derailed/k9s/issues/779#issue-642826402)
 
 異なる Pod や Service の場合、`&` (1 つだけ) でつなぐと、同時にポートフォワーディングできる。
 
@@ -1584,7 +1584,7 @@ $ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'
 Starting to serve on [::]:8001
 ```
 
-> - https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy
+> - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#proxy)
 
 <br>
 
@@ -1594,7 +1594,7 @@ Starting to serve on [::]:8001
 
 Deployment、Pod、Job を作成する。
 
-> - https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908
+> - [kubectl run/create/expose のススメ #kubernetes - Qiita](https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908)
 
 #### ▼ --restart、--image、--port
 
@@ -1642,7 +1642,7 @@ $ kubectl taint node foo-node app=batch:NoSchedule
 
 これにより、以下の `.spec.tolerations` キーが付与された Pod しかスケジューリングさせられない。
 
-> - https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
+> - [KubernetesのTaintsとTolerationsについて #kubernetes - Qiita](https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B)
 
 ```yaml
 apiVersion: v1
@@ -1693,7 +1693,7 @@ spec:
       effect: NoSchedule
 ```
 
-> - https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B
+> - [KubernetesのTaintsとTolerationsについて #kubernetes - Qiita](https://qiita.com/sheepland/items/8fedae15e157c102757f#pod%E3%81%ABtolerations%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E4%BE%8B)
 
 #### ▼ `-` (ラベル値のハイフン)
 
@@ -1705,7 +1705,7 @@ spec:
 $ kubectl taint node foo-node app=batch:NoSchedule-
 ```
 
-> - https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel
+> - [Nodeに決められたPod以外配置させない方法 - galife](https://garafu.blogspot.com/2019/06/asign-pod-strategy-2.html#taints-setdel)
 
 <br>
 
@@ -1746,6 +1746,6 @@ Server Version: version.Info{
 ```
 
 > - https://stackoverflow.com/questions/60991658/kubectl-what-does-client-vs-server
-> - https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194
+> - [server version and client version in Kubernetes (kubectl version) · Issue #93635 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/issues/93635#issuecomment-667702194)
 
 <br>

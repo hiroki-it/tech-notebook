@@ -156,7 +156,7 @@ describe("<テストスイート>", () => {
 
 Cypress のドキュメントに BDD（振る舞い駆動開発）の記載がある。
 
-> https://docs.cypress.io/app/core-concepts/writing-and-organizing-tests
+> [Writing and organizing Cypress tests \| Cypress Documentation](https://docs.cypress.io/app/core-concepts/writing-and-organizing-tests)
 
 <br>
 

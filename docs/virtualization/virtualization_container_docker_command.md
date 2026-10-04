@@ -9,7 +9,7 @@ description: コマンド＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -74,7 +74,7 @@ $ docker build --file Dockerfile --tag <コンテナイメージ名>:<バージ�
 
 `docker build` コマンドを拡張する。
 
-> - https://github.com/docker/buildx
+> - [GitHub - docker/buildx: Docker CLI plugin for extended build capabilities with BuildKit · GitHub](https://github.com/docker/buildx)
 
 #### ▼ bake
 
@@ -618,7 +618,7 @@ $ docker start -i <停止中コンテナ名>
 
 コンテナイメージを署名する。
 
-> - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
+> - [Docker のコンテントトラスト \| Docker ドキュメント](https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust)
 
 #### ▼ inspect
 

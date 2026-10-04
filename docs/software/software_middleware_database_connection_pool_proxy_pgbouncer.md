@@ -44,7 +44,7 @@ PgBouncer は、クエリのロードバランサーには使用できない。
 
 ![pgbouncer_load-balancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pgbouncer_load-balancer.png)
 
-> - https://www.percona.com/blog/scaling-postgresql-using-connection-poolers-and-load-balancers-for-an-enterprise-grade-environment/
-> - https://github.com/pgbouncer/pgbouncer/issues/93#issuecomment-158463342
+> - [Scaling PostgreSQL with Poolers and Load Balancers](https://www.percona.com/blog/scaling-postgresql-using-connection-poolers-and-load-balancers-for-an-enterprise-grade-environment/)
+> - [should allow for clear failure towards load balancers if postgresql is down · Issue #93 · pgbouncer/pgbouncer · GitHub](https://github.com/pgbouncer/pgbouncer/issues/93#issuecomment-158463342)
 
 <br>

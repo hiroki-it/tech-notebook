@@ -9,7 +9,7 @@ description: Amazon VPC＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -40,7 +40,7 @@ EKS の場合、Amazon VPC (`L3`) 上に Amazon VPC CNI を配置することに
 | プライベート IP アドレス | 手動/自動 | プライベート            | 動的 IP アドレス | 動的な IP アドレスのため、インスタンスを再作成すると変化する。   |
 | Elastic IP               | 手動      | グローバル              | 静的 IP アドレス | 静的な IP アドレスのため、インスタンスを再作成しても保持される。 |
 
-> - https://awsjp.com/AWS/hikaku/Elastic-IP_Public-IP-hikaku.html
+> - [EC2 における Public IP と Elastic IPの違いに関して](https://awsjp.com/AWS/hikaku/Elastic-IP_Public-IP-hikaku.html)
 > - https://qiita.com/masato930/items/ba242f0171a76ce0994f
 
 #### ▼ DNS 名の割り当て
@@ -49,8 +49,8 @@ Amazon VPC 内で作成されたインスタンスにはパブリック IP ア�
 
 `enableDnsHostnames` オプションと `enableDnsSupport` オプションと有効化すると、インスタンスに DNS 名が割り当てられるようになる。
 
-> - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
-> - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating
+> - [DNS attributes for your VPC - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support)
+> - [DNS attributes for your VPC - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating)
 
 #### ▼ 紐付け
 
@@ -183,8 +183,8 @@ AWS NAT Gateway の代わりに Amazon VPC エンドポイントを使用する�
 
 もし、このプライベート IP アドレスにプライベート DNS を紐付ける場合は、Amazon VPC の `enableDnsHostnames` オプションと `enableDnsSupport` オプションを有効化する必要がある。
 
-> - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support
-> - https://zenn.dev/momota/articles/b571b763575120
+> - [DNS attributes for your VPC - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support)
+> - [Interface VPC Endpoint(PrivateLink)を使用してAmazon Athenaに接続する](https://zenn.dev/momota/articles/b571b763575120)
 
 **＊リソース例＊**
 
@@ -265,7 +265,7 @@ SNAT 処理 (SNAT 処理のみで、DNAT 処理は持たない) を実行し、�
 
 ![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
 
-> - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics
+> - [NAT gateways - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics)
 > - https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/
 > - https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
@@ -291,8 +291,8 @@ AWS NAT Gateway の SNAT 処理では、プライベートサブネットから�
 
 専用の AMI から作成した EC2 で、NAT 処理 (SNAT 処理のみで、DNAT 処理は持たない) を持つ。
 
-> - https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html
-> - https://zenn.dev/yoshinori_satoh/articles/aws-nat-pattern#nat%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9(ec2)
+> - [Compare NAT gateways and NAT instances - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html)
+> - [AWS VPCのNATインスタンスとNATゲートウェイ](<https://zenn.dev/yoshinori_satoh/articles/aws-nat-pattern#nat%E3%82%A4%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%B3%E3%82%B9(ec2)>)
 
 <br>
 
@@ -353,14 +353,14 @@ Direct Connect がオンプレミスとの通信機能を持つため、Transit 
 
 ![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transit-gateway.png)
 
-> - https://docs.aws.amazon.com/vpc/latest/tgw/tgw-best-design-practices.html
-> - https://www.ashisuto.co.jp/db_blog/article/aws-transitgateway.html
+> - [AWS Transit Gateway design best practices - Amazon VPC](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-best-design-practices.html)
+> - [AWS Transit Gatewayとは？特徴やユースケース、料金を解説 \| アシスト](https://www.ashisuto.co.jp/db_blog/article/aws-transitgateway.html)
 
 #### ▼ AWS 間
 
 AWS 間の通信の場合、アプリケーションデータを自動的に暗号化する。
 
-> - https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html
+> - [What is AWS Transit Gateway for Amazon VPC? - Amazon VPC](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html)
 
 <br>
 
@@ -370,9 +370,9 @@ Amazon EC2、Amazon ECS、Amazon EKS、AWS Lambda 間を接続する。
 
 ![vpc-lattice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-lattice.png)
 
-> - https://yuj1osm.hatenablog.com/entry/2023/04/16/170124
-> - https://qiita.com/k-sasaki-hisys-biz/items/28ba5762aa9544694021
-> - https://qiita.com/minorun365/items/7f73aa1fe1ef2ca0c2c7#%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
+> - [Amazon VPC Latticeが一般提供されたので試してみた - yuj1osm's tech blog](https://yuj1osm.hatenablog.com/entry/2023/04/16/170124)
+> - [Amazon VPC Lattice が GA したので Lattice 経由で Lambda を呼んでみた #AWS - Qiita](https://qiita.com/k-sasaki-hisys-biz/items/28ba5762aa9544694021)
+> - [しれっと登場したVPC Latticeって何者!? よく分からんから3行で頼む！ #AWS - Qiita](https://qiita.com/minorun365/items/7f73aa1fe1ef2ca0c2c7#%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97)
 
 <br>
 
@@ -401,8 +401,8 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 ...
 ```
 
-> - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
-> - https://kikuchitk7.hatenablog.com/entry/2022/03/28/152414
+> - [Logging IP traffic using VPC Flow Logs - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html)
+> - [VPC Flow Logs で取得したフローログを CloudWatch Logs に発行する - technical notes](https://kikuchitk7.hatenablog.com/entry/2022/03/28/152414)
 
 <br>
 

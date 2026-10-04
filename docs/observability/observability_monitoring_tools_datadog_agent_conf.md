@@ -85,7 +85,7 @@ datadog エージェントをインストールすると、`datadog.yaml.example
 > - https://app.datadoghq.com/account/settings#agent
 > - https://docs.datadoghq.com/getting_started/agent/#configuration
 > - https://docs.datadoghq.com/agent/guide/agent-configuration-files/
-> - https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml
+> - [datadog-agent/pkg/config/config\_template.yaml at main · DataDog/datadog-agent · GitHub](https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml)
 
 <br>
 
@@ -158,7 +158,7 @@ datadog エージェントにデフォルトで内蔵されている設定をそ
 [{"name": "datadog", "image": "datadog/agent:latest"}]
 ```
 
-> - https://hub.docker.com/r/datadog/agent
+> - [datadog/agent - Docker Image](https://hub.docker.com/r/datadog/agent)
 
 #### ▼ ECR パブリックギャラリーを使用する場合
 
@@ -171,7 +171,7 @@ datadog エージェントにデフォルトで内蔵されている設定をそ
 ```
 
 > - https://gallery.ecr.aws/datadog/agent
-> - https://github.com/DataDog/datadog-agent
+> - [GitHub - DataDog/datadog-agent: Main repository for Datadog Agent · GitHub](https://github.com/DataDog/datadog-agent)
 
 #### ▼ プライベート ECR リポジトリを使用する場合
 
@@ -196,7 +196,7 @@ FROM data/agent:latest
 ]
 ```
 
-> - https://hub.docker.com/r/datadog/agent
+> - [datadog/agent - Docker Image](https://hub.docker.com/r/datadog/agent)
 
 <br>
 

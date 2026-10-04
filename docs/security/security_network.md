@@ -22,7 +22,7 @@ description: ︎ネットワークセキュリティ＠セキュリティの知�
 - DoS (サービス拒否)
 - 特権昇格
 
-> - https://www.crowdstrike.com/ja-jp/cybersecurity-101/threat-intelligence/threat-model/
+> - [脅威モデルとは？\| クラウドストライク](https://www.crowdstrike.com/ja-jp/cybersecurity-101/threat-intelligence/threat-model/)
 
 <br>
 
@@ -44,7 +44,7 @@ description: ︎ネットワークセキュリティ＠セキュリティの知�
 
 ![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
-> - https://digital-jyoshisu.com/archives/468
+> - [WAFとは?~WAFの概要と機能、導入時のポイントについて解説～ - 情シスのデジタル化](https://digital-jyoshisu.com/archives/468)
 
 <br>
 
@@ -60,8 +60,8 @@ description: ︎ネットワークセキュリティ＠セキュリティの知�
 
 ![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリング.gif)
 
-> - https://www.rworks.jp/system/system-column/sys-entry/21277/
-> - https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/
+> - [ファイアウォール（FW）とは？仕組みや機能と併せてWAFなどとの違いについても解説 \| クラウド導入・システム運用ならアールワークスへ](https://www.rworks.jp/system/system-column/sys-entry/21277/)
+> - [ファイアウォールの種類を詳しく解説｜導入の必要性やメリットについても紹介 \| テックマガジン from FEnetインフラ](https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/)
 
 #### ▼ iptables (Linux/Ubuntu) による標準的ネットワークファイアウォール
 
@@ -101,8 +101,8 @@ COMMIT
 ```
 
 > - https://christina04.hatenablog.com/entry/iptables-outline-
-> - https://linuc.org/study/knowledge/540/
-> - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#filter%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB
+> - [「/etc/sysconfig/iptables」ファイル - Linux技術者認定 LinuC \| LPI-Japan](https://linuc.org/study/knowledge/540/)
+> - [iptables まとめ #Linux - Qiita](https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#filter%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB)
 
 #### ▼ firewalld (CentOS) による標準的ネットワークファイアウォール
 
@@ -110,8 +110,8 @@ CentOS での firewalld は、標準的なパケットフィルタリング型�
 
 デフォルトでは、すべてのインバウンド通信が拒否、すべてのアウトバウンド通信が許可、となっている。
 
-> - https://tooljp.com/linux/Redhat7/faqRedhat7/html/firewalld-wiki.html
-> - https://knowledge.sakura.ad.jp/22269/
+> - [【Redhat 7】firewalld まとめ \| CentOS7 \| CentOS 7.2](https://tooljp.com/linux/Redhat7/faqRedhat7/html/firewalld-wiki.html)
+> - [Firewalld編～サーバーへ不要な通信はさせない～ – Linuxセキュリティ入門(2) \| さくらのナレッジ](https://knowledge.sakura.ad.jp/22269/)
 
 **＊例＊**
 
@@ -154,7 +154,7 @@ Windows ネットワークファイアウォールは、Windows におけるネ�
 
 ![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリングの設定.gif)
 
-> - https://pc-karuma.net/windows-10-firewall-open-port/
+> - [Windows 10 - ファイアウォールの特定ポート番号の通信を許可する方法 - PC設定のカルマ](https://pc-karuma.net/windows-10-firewall-open-port/)
 
 **＊例＊**
 
@@ -164,7 +164,7 @@ Windows ネットワークファイアウォールは、Windows におけるネ�
 
 パケットペイロードに基づいて、パケットを許可する必要があるか否かを決める。
 
-> - https://www.rworks.jp/system/system-column/sys-entry/21277/
+> - [ファイアウォール（FW）とは？仕組みや機能と併せてWAFなどとの違いについても解説 \| クラウド導入・システム運用ならアールワークスへ](https://www.rworks.jp/system/system-column/sys-entry/21277/)
 
 <br>
 
@@ -172,7 +172,7 @@ Windows ネットワークファイアウォールは、Windows におけるネ�
 
 `L4` (トランスポート層) の段階でサイバー攻撃を遮断するネットワークファイアウォールのこと。
 
-> - https://www.rworks.jp/system/system-column/sys-entry/21277/
+> - [ファイアウォール（FW）とは？仕組みや機能と併せてWAFなどとの違いについても解説 \| クラウド導入・システム運用ならアールワークスへ](https://www.rworks.jp/system/system-column/sys-entry/21277/)
 
 <br>
 
@@ -182,7 +182,7 @@ Windows ネットワークファイアウォールは、Windows におけるネ�
 
 `L3` (ネットワーク層) から `L6` (プレゼンテーション層) までに対するサイバー攻撃 (Dos 攻撃、Syn フラッド攻撃、パケットフラグメンテーション攻撃など) を遮断するセキュリティシステムのこと。
 
-> - https://digital-jyoshisu.com/archives/468
+> - [WAFとは?~WAFの概要と機能、導入時のポイントについて解説～ - 情シスのデジタル化](https://digital-jyoshisu.com/archives/468)
 
 ![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
@@ -230,7 +230,7 @@ IP アドレスの制限は `L3` 防御、プロトコルとポート番号制�
 
 ![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
 
-> - https://digital-jyoshisu.com/archives/468
+> - [WAFとは?~WAFの概要と機能、導入時のポイントについて解説～ - 情シスのデジタル化](https://digital-jyoshisu.com/archives/468)
 > - https://www.geeksforgeeks.org/difference-between-waf-and-firewall/
 
 <br>
@@ -243,7 +243,7 @@ IP アドレスの制限は `L3` 防御、プロトコルとポート番号制�
 | アプライアンス型                 | Web アプリファイアウォールのソフトウェアがすでにセットアップされたハードウェアを購入し、これを配置する。 | FortiWeb、Imperva SecureSphere、SiteGuard など                   |
 | クラウド型                       | クラウドプロバイダーが提供する Web アプリファイアウォールを配置する。                                    | AWS WAF、Google Cloud Armor、Cloudbric、Scutum、CrowdStrike など |
 
-> - https://liskul.com/waf-15products-35757
+> - [【2026年版/比較表つき】WAFおすすめ33選を比較！選び方も紹介 \| LISKUL](https://liskul.com/waf-15products-35757)
 
 <br>
 
@@ -257,7 +257,7 @@ sha256 によって作成された文字列をファイル情報として添付�
 
 `L7` のアプリケーションデータを暗号化/復号するわけではない。
 
-> - https://academy.gmocloud.com/know/20200116/8627
+> - [チェックサム(checksum)とは？初心者でも分かりやすく解説！ \| GMOクラウドアカデミー](https://academy.gmocloud.com/know/20200116/8627)
 
 <br>
 
@@ -273,7 +273,7 @@ sha256 によって作成された文字列をファイル情報として添付�
 
 ![csrf-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf-token.png)
 
-> - https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf
+> - [9.5. CSRF対策 — TERASOLUNA Server Framework for Java (5.x) Development Guideline 5.2.0.RELEASE documentation](https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf)
 
 <br>
 
@@ -332,8 +332,8 @@ x-csrf-token: <トークン>
 
      トークンが変更されていれば、誤った入力フォームからのリクエストとして判定し、`401`ステータスを返却する。
 
-> - https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700
-> - https://qiita.com/mpyw/items/0595f07736cfa5b1f50c#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95
+> - [\[Q&A\] CSRFトークンをGETで送信するのは危険ですか？ - Qiita](https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700)
+> - [これで完璧！今さら振り返る CSRF 対策と同一オリジンポリシーの基礎 #PHP - Qiita](https://qiita.com/mpyw/items/0595f07736cfa5b1f50c#%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95)
 
 <br>
 
@@ -355,7 +355,7 @@ DB の SQL クエリのパラメーターとなる入力では、『シングル
 
 例えば、Web アプリファイアウォールを使用する。
 
-> - https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html
+> - [AWS Managed Rules rule groups list - AWS WAF, AWS Firewall Manager, AWS Shield Advanced, and AWS Shield network security director](https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-list.html)
 
 <br>
 
@@ -385,7 +385,7 @@ DB の SQL クエリのパラメーターとなる入力では、『シングル
 
 ![cors](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cors.png)
 
-> - https://developer.mozilla.org/ja/docs/Glossary/Origin
+> - [Origin (オリジン) - 用語集 \| MDN](https://developer.mozilla.org/ja/docs/Glossary/Origin)
 
 <br>
 
@@ -436,7 +436,7 @@ return new Promise((resolve, reject) => {
 });
 ```
 
-> - https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88
+> - [CORSまとめ #JavaScript - Qiita](https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88)
 
 `(2)`
 
@@ -498,8 +498,8 @@ Access-Control-Allow-Headers: *
 
 ドメインではなく、オリジンであることに注意する。
 
-> - https://zenn.dev/agektmr/articles/f8dcd345a88c97
-> - https://azisava.sakura.ne.jp/programming/0017.html#sec4-1
+> - [same-site/cross-site, same-origin/cross-originをちゃんと理解する](https://zenn.dev/agektmr/articles/f8dcd345a88c97)
+> - [Cookieの仕様 - プログラミング雑ネタ集](https://azisava.sakura.ne.jp/programming/0017.html#sec4-1)
 
 #### ▼ Domain 属性の仕組み
 
@@ -557,7 +557,7 @@ Set-Cookie: HttpOnly
 
 ここでリクエストを制御しているのは、オリジンではなく、ドメインであることに注意する。
 
-> - https://zenn.dev/agektmr/articles/f8dcd345a88c97
+> - [same-site/cross-site, same-origin/cross-originをちゃんと理解する](https://zenn.dev/agektmr/articles/f8dcd345a88c97)
 
 ```yaml
 200 OK
@@ -601,8 +601,8 @@ Blowfish 方式では、同じパスワードの文字列であっても異な�
 
 Blowfish 方式で作成されたハッシュ値は、異なるルールで作成された複数のハッシュ値の組み合わせである。
 
-> - https://medium-company.com/%E3%82%B9%E3%83%88%E3%83%AC%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0/
-> - https://medium-company.com/bcrypt/
+> - [【パスワード】ストレッチングとは - ITを分かりやすく解説](https://medium-company.com/%E3%82%B9%E3%83%88%E3%83%AC%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0/)
+> - [【パスワード】bcryptとは - ITを分かりやすく解説](https://medium-company.com/bcrypt/)
 
 #### ▼ 構造
 

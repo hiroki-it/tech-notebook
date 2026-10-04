@@ -9,7 +9,7 @@ description: コマンド＠Limaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -35,7 +35,7 @@ $ limactl start template://ubuntu-24.10 \
     --disk 30G
 ```
 
-> - https://lima-vm.io/docs/templates/
+> - [Templates \| Lima](https://lima-vm.io/docs/templates/)
 
 <br>
 

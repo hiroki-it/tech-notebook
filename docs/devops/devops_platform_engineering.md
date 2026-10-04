@@ -9,7 +9,7 @@ description: Platform Engineering＠DevOpsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 ![platform-engineering_ai](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering_ai.png)
 
-> - https://jimmysong.io/blog/cloud-native-ai-whitepaper/
+> - [In-depth Analysis of CNCF's Cloud Native AI Whitepaper \| …](https://jimmysong.io/blog/cloud-native-ai-whitepaper/)
 
 <br>
 
@@ -33,15 +33,15 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 アプリ/インフラチームに対して、サービスとして提供する。
 
-> - https://techblog.ap-com.co.jp/entry/2023/01/18/170829
-> - https://techblog.ap-com.co.jp/entry/2023/03/09/120721
+> - [プラットフォームエンジニアリング(Platform Engineering)とは？ 解説と考察 - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/01/18/170829)
+> - [なぜDevOpsの発展にプラットフォームエンジニアリングが必要になるのか？ - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/03/09/120721)
 
 #### ▼ 目的
 
 アプリ/インフラチームの体験と生産性向上を高めるためである。
 
-> - https://techblog.ap-com.co.jp/entry/2023/01/18/170829
-> - https://techblog.ap-com.co.jp/entry/2023/03/09/120721
+> - [プラットフォームエンジニアリング(Platform Engineering)とは？ 解説と考察 - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/01/18/170829)
+> - [なぜDevOpsの発展にプラットフォームエンジニアリングが必要になるのか？ - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/03/09/120721)
 
 #### ▼ 体制
 
@@ -49,8 +49,8 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 このチームでは、アプリ/インフラチームに提供する技術の領域を限定しない。
 
-> - https://techblog.ap-com.co.jp/entry/2023/01/18/170829
-> - https://techblog.ap-com.co.jp/entry/2023/03/09/120721
+> - [プラットフォームエンジニアリング(Platform Engineering)とは？ 解説と考察 - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/01/18/170829)
+> - [なぜDevOpsの発展にプラットフォームエンジニアリングが必要になるのか？ - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/03/09/120721)
 
 #### ▼ サービス形態
 
@@ -58,8 +58,8 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 セルフサービスでは、利用者側が自律的にプラットフォームの機能を導入できる。
 
-> - https://techblog.ap-com.co.jp/entry/2023/01/18/170829
-> - https://techblog.ap-com.co.jp/entry/2023/03/09/120721
+> - [プラットフォームエンジニアリング(Platform Engineering)とは？ 解説と考察 - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/01/18/170829)
+> - [なぜDevOpsの発展にプラットフォームエンジニアリングが必要になるのか？ - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/03/09/120721)
 
 <br>
 
@@ -80,7 +80,7 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 - Port
 - Backstage
 
-> - https://github.com/backstage/backstage
+> - [GitHub - backstage/backstage: Backstage is an open framework for building developer portals · GitHub](https://github.com/backstage/backstage)
 
 <br>
 
@@ -105,7 +105,7 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 - リファレンス
 
 > - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
-> - https://cloud.google.com/blog/ja/products/application-development/golden-paths-for-engineering-execution-consistency
+> - [道を照らす: プラットフォーム エンジニアリング、ゴールデンパス、セルフサービスのパワー \| Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/products/application-development/golden-paths-for-engineering-execution-consistency)
 
 <br>
 

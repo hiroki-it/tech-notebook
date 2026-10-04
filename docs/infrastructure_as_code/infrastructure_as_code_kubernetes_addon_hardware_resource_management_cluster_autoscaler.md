@@ -9,7 +9,7 @@ description: cluster-autoscaler＠ハードウェアリソース管理系の知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,8 +27,8 @@ cluster-autoscaler を使用しない場合、クラウドプロバイダーの 
 
 クラウドプロバイダーのコンソール画面から Node の希望数を手動で増やし、しばらくすると cluster-autoscaler がこれを適切な数に自動的に元に戻すことから、動作を確認できる。
 
-> - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8
-> - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html
+> - [Kubernetesのオートスケール/Kubernetes Autoscale Deep Dive - Speaker Deck](https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=8)
+> - [Scale cluster compute with Karpenter and Cluster Autoscaler - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html)
 
 <br>
 
@@ -48,14 +48,14 @@ cluster-autoscaler は、ハードウェアリソース不足が原因でスケ�
 
 ![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-autoscaler.png)
 
-> - https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#pod%E3%81%AE%E8%B2%A0%E8%8D%B7%E9%87%8F%E3%81%AB%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpametricsserverclusterautoscaler
+> - [EKSにおけるAutoScalingパターン — じゃあ、したためておきます](https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#pod%E3%81%AE%E8%B2%A0%E8%8D%B7%E9%87%8F%E3%81%AB%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpametricsserverclusterautoscaler)
 > - https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#when-does-cluster-autoscaler-change-the-size-of-a-cluster
 
 #### ▼ Kubernetes 以外のメトリクスを条件すると仮定する場合
 
 Kubernetes 以外のメトリクス (例：Amazon CloudWatch、Google Cloud Monitoring) を条件とする場合は、metrics-server は不要である。
 
-> - https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#%E5%A4%96%E9%83%A8%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%A6%E3%81%AE%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpacloudwatchclusterautoscaler
+> - [EKSにおけるAutoScalingパターン — じゃあ、したためておきます](https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#%E5%A4%96%E9%83%A8%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%A6%E3%81%AE%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpacloudwatchclusterautoscaler)
 
 <br>
 
@@ -67,7 +67,7 @@ Karpenter は、EC2 のグループ (例：Amazon EC2 フリート) に関する
 
 ![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
-> - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
+> - [Karpenter - умное масштабирование Kubernetes кластера](https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru)
 
 <br>
 
@@ -181,7 +181,7 @@ NodeGroups:
 
 ```
 
-> - https://speakerdeck.com/zuiurs/kubernetes-cluster-autoscaler-deep-dive?slide=33
+> - [Kubernetes Cluster Autoscaler Deep Dive - Speaker Deck](https://speakerdeck.com/zuiurs/kubernetes-cluster-autoscaler-deep-dive?slide=33)
 
 <br>
 
@@ -194,7 +194,7 @@ NodeGroups:
 | cluster-autoscaler | `k8s.io/cluster-autoscaler/<Amazon EKS Cluster名>` | `owned` | cluster-autoscaler を使用する場合、cluster-autoscaler が EC2 ワーカーNode を検出するために必要である。<br>- https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html |
 | 同上               | `k8s.io/cluster-autoscaler/enabled`                | `true`  | 同上                                                                                                                                                                          |
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html
+> - [Scale cluster compute with Karpenter and Cluster Autoscaler - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html)
 
 <br>
 
@@ -222,7 +222,7 @@ NodeGroups:
 
 : 結果として、`2` 台それぞれで `70`%を消費する Pod をスケジューリングさせている。
 
-> - https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=44
+> - [Kubernetesのオートスケール/Kubernetes Autoscale Deep Dive - Speaker Deck](https://speakerdeck.com/oracle4engineer/kubernetes-autoscale-deep-dive?slide=44)
 
 <br>
 

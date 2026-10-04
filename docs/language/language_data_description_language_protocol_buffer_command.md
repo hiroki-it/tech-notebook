@@ -9,7 +9,7 @@ description: コマンド＠Protocol Bufferの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -28,7 +28,7 @@ description: コマンド＠Protocol Bufferの知見を記録しています。
 $ protoc -I=. --go_out=. foo.proto
 ```
 
-> - https://christina04.hatenablog.com/entry/protoc-usage
+> - [protocの使い方 - Carpe Diem](https://christina04.hatenablog.com/entry/protoc-usage)
 
 <br>
 
@@ -38,7 +38,7 @@ $ protoc -I=. --go_out=. foo.proto
 
 `proto` ファイルから `pb` ファイルをコンパイルするときのオプションを設定する。
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
+> - [protoファイルからコードを自動生成する｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B)
 
 <br>
 
@@ -52,7 +52,7 @@ $ protoc -I=. --go_out=. foo.proto
 $ protoc -I=. --go_out=. --go_opt=paths=source_relative foo.proto
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
+> - [protoファイルからコードを自動生成する｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B)
 
 <br>
 
@@ -70,7 +70,7 @@ $ protoc \
     foo.proto
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
+> - [protoファイルからコードを自動生成する｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B)
 
 #### ▼ require_unimplemented_servers
 
@@ -88,8 +88,8 @@ $ protoc \
     foo.proto
 ```
 
-> - https://github.com/grpc/grpc-go/blob/master/cmd/protoc-gen-go-grpc/README.md
-> - https://note.com/dd_techblog/n/nb8b925d21118
+> - [grpc-go/cmd/protoc-gen-go-grpc/README.md at master · grpc/grpc-go · GitHub](https://github.com/grpc/grpc-go/blob/master/cmd/protoc-gen-go-grpc/README.md)
+> - [Go言語でのgRPCコード生成(2020年10月以降版)｜電通デジタル｜Tech Blog​](https://note.com/dd_techblog/n/nb8b925d21118)
 
 <br>
 
@@ -99,7 +99,7 @@ $ protoc \
 
 `pb` ファイルの出力先パスを設定する。
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
+> - [protoファイルからコードを自動生成する｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B)
 
 <br>
 

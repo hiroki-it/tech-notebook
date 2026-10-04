@@ -9,7 +9,7 @@ description: リクエスト／レスポンス方式＠通信方式の知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -45,7 +45,7 @@ description: リクエスト／レスポンス方式＠通信方式の知見を�
 
 送信元アプリケーションは、宛先のアプリケーションの障害を受けてしまう。
 
-> - https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/
+> - [Microservice Integration Patterns: Point-to-Point vs Message Broker](https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/)
 
 #### ▼ メッセージキューを経由する場合
 
@@ -61,7 +61,7 @@ description: リクエスト／レスポンス方式＠通信方式の知見を�
 
 送信元アプリケーションは、宛先のアプリケーションの障害を受けない。
 
-> - https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/
+> - [Microservice Integration Patterns: Point-to-Point vs Message Broker](https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/)
 
 <br>
 
@@ -80,7 +80,7 @@ description: リクエスト／レスポンス方式＠通信方式の知見を�
 - gRPC の双方向ストリーミング RPC
 - Websocket
 
-> - https://qiita.com/namusyaka/items/71cf27fd3242adbf348c
+> - [HTTP/2における双方向通信とgRPCとこれから #http2 - Qiita](https://qiita.com/namusyaka/items/71cf27fd3242adbf348c)
 
 <br>
 
@@ -160,14 +160,14 @@ JavaScript のビルトインオブジェクトである。
 
 JavaScript のビルトイン関数である。
 
-> - https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch
+> - [フェッチ API の使用 - Web API \| MDN](https://developer.mozilla.org/ja/docs/Web/API/Fetch_API/Using_Fetch)
 
 #### ▼ JQuery Promise
 
 JQuery パッケージが提供する、非同期処理化のためのオブジェクトである。
 
-> - https://api.jquery.com/category/ajax/shorthand-methods/
-> - https://api.jquery.com/jquery.ajax
+> - [Shorthand Methods \| jQuery API Documentation](https://api.jquery.com/category/ajax/shorthand-methods/)
+> - [jQuery.ajax() \| jQuery API Documentation](https://api.jquery.com/jquery.ajax)
 
 #### ▼ JavaScript Promise
 
@@ -175,7 +175,7 @@ JavaScript が提供する、非同期処理化のためのビルトインオブ
 
 JavaScript Promise を実装しやすくする。
 
-> - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+> - [async function - JavaScript \| MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
 
 <br>
 
@@ -208,7 +208,7 @@ xhr.onload = () => {
 xhr.send();
 ```
 
-> - https://blog.capilano-fw.com/?p=6920#Ajax
+> - [Ajax送信の歴史！fetch、axios、jQuery、XMLHttpRequest – console dot log](https://blog.capilano-fw.com/?p=6920#Ajax)
 
 #### ▼ POST リクエスト
 
@@ -254,7 +254,7 @@ xhr.onload = () => {
 xhr.send(queryString);
 ```
 
-> - https://blog.capilano-fw.com/?p=6920#Ajax
+> - [Ajax送信の歴史！fetch、axios、jQuery、XMLHttpRequest – console dot log](https://blog.capilano-fw.com/?p=6920#Ajax)
 
 <br>
 
@@ -292,7 +292,7 @@ $.post(url, params);
 
 Promise オブジェクトを返却する。
 
-> - https://api.jquery.com/jquery.ajax
+> - [jQuery.ajax() \| jQuery API Documentation](https://api.jquery.com/jquery.ajax)
 
 **＊実装例＊**
 

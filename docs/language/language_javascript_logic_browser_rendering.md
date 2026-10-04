@@ -9,7 +9,7 @@ description: レンダリングロジック＠JavaScriptを記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: レンダリングロジック＠JavaScriptを記録しています
 
 ブラウザのウィンドウ (ブラウザタブ) を表すオブジェクトである。
 
-> - https://developer.mozilla.org/ja/docs/Web/API/Window
+> - [Window - Web API \| MDN](https://developer.mozilla.org/ja/docs/Web/API/Window)
 
 <br>
 
@@ -53,7 +53,7 @@ setTimeout(() => {
 }, 5000);
 ```
 
-> - https://developer.mozilla.org/ja/docs/Web/API/Window/clearInterval
+> - [Window: clearInterval() メソッド - Web API \| MDN](https://developer.mozilla.org/ja/docs/Web/API/Window/clearInterval)
 
 <br>
 
@@ -70,7 +70,7 @@ await new Promise((resolve) => {
 });
 ```
 
-> - https://developer.mozilla.org/ja/docs/Web/API/Window/setTimeout
+> - [Window: setTimeout() メソッド - Web API \| MDN](https://developer.mozilla.org/ja/docs/Web/API/Window/setTimeout)
 
 <br>
 
@@ -106,6 +106,6 @@ setTimeout(() => {
 }, 5000);
 ```
 
-> - https://developer.mozilla.org/ja/docs/Web/API/Window/setInterval
+> - [Window: setInterval() メソッド - Web API \| MDN](https://developer.mozilla.org/ja/docs/Web/API/Window/setInterval)
 
 <br>

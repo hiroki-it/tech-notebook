@@ -9,7 +9,7 @@ description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -35,7 +35,7 @@ PHP-FPM では、リクエストのたびにプロセスを起動するわけで
 
 あらかじめ準備されたプロセス群を『プール』という。
 
-> - https://hackers-high.com/linux/php-fpm-config/#php-fpm
+> - [php-fpm の設定を理解してサイトのパフォーマンスを向上させる – Hacker's High](https://hackers-high.com/linux/php-fpm-config/#php-fpm)
 
 <br>
 
@@ -54,7 +54,7 @@ PHP-FPM と PHP は、それぞれ独立した子プロセスとして実行さ�
 ![php-fpm_fastcgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php-fpm_fastcgi.png)
 
 > - https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_component.html
+> - [【IT技術の知見】コンポーネント＠Laravel - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_framework_laravel_component.html)
 
 <br>
 

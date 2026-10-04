@@ -50,8 +50,8 @@ $ ./vendor/bin/phpstan analyse --error-format=raw --no-progress -l 5 index.php \
     | reviewdog -reporter=github-pr-review -f=phpstan
 ```
 
-> - https://qiita.com/ishii1648/items/4878b01823113b50128d#%E5%AE%9F%E8%A3%85
-> - https://r-tech14.com/reviewdog/#toc2
+> - [checkovをreviewdogに対応させた話 #Python - Qiita](https://qiita.com/ishii1648/items/4878b01823113b50128d#%E5%AE%9F%E8%A3%85)
+> - [reviewdogを飼ってレビュー楽にしよう（PHP編） \| R Tech Blog](https://r-tech14.com/reviewdog/#toc2)
 
 #### ▼ yamllint
 
@@ -129,7 +129,7 @@ runner:
     level: warning
 ```
 
-> - https://github.com/reviewdog/reviewdog/tree/master#reviewdog-config-file
-> - https://github.com/reviewdog/reviewdog/blob/master/.reviewdog.yml
+> - [GitHub - reviewdog/reviewdog: 🐶 Automated code review tool integrated with any code analysis tools regardless of programming language · GitHub](https://github.com/reviewdog/reviewdog/tree/master#reviewdog-config-file)
+> - [reviewdog/.reviewdog.yml at master · reviewdog/reviewdog · GitHub](https://github.com/reviewdog/reviewdog/blob/master/.reviewdog.yml)
 
 <br>

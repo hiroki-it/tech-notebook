@@ -9,7 +9,7 @@ description: Custom Controller＠カスタムリソースの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -39,8 +39,8 @@ Custom Controller は、client-go コンポーネントと custom-controller コ
 
 リフレクター、インフォーマー、インデクサーから構成される。
 
-> - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components
-> - https://speakerdeck.com/bells17/controller-runtime-deep-dive?slide=35
+> - [sample-controller/docs/controller-client-go.md at master · kubernetes/sample-controller · GitHub](https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#client-go-components)
+> - [controller-runtime Deep Dive - Speaker Deck](https://speakerdeck.com/bells17/controller-runtime-deep-dive?slide=35)
 
 #### ▼ リフレクター
 
@@ -48,8 +48,8 @@ kube-apiserver から Kubernetes リソースのマニフェストの変更を�
 
 また、変更内容に応じて作成した Kubernetes リソースの実体を Delta FIFO キューに格納する。
 
-> - https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/reflector.go
-> - https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/delta_fifo.go
+> - [client-go/tools/cache/reflector.go at v12.0.0 · kubernetes/client-go · GitHub](https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/reflector.go)
+> - [client-go/tools/cache/delta\_fifo.go at v12.0.0 · kubernetes/client-go · GitHub](https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/delta_fifo.go)
 
 #### ▼ インフォーマー
 
@@ -57,13 +57,13 @@ Delta FIFO キューから Kubernetes リソースの実体を取得する。
 
 また、取得した実体をインデクサーを介して保管し、Kubernetes リソースの種類に応じてリソースイベントハンドラーをコールする。
 
-> - https://github.com/kubernetes/client-go/tree/v12.0.0/informers
+> - [client-go/informers at v12.0.0 · kubernetes/client-go · GitHub](https://github.com/kubernetes/client-go/tree/v12.0.0/informers)
 
 #### ▼ インデクサー
 
 キャッシュとして、Kubernetes リソースの実体を Node のメモリ上に保管する。
 
-> - https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/store.go
+> - [client-go/tools/cache/store.go at v12.0.0 · kubernetes/client-go · GitHub](https://github.com/kubernetes/client-go/blob/v12.0.0/tools/cache/store.go)
 
 <br>
 
@@ -75,8 +75,8 @@ Delta FIFO キューから Kubernetes リソースの実体を取得する。
 
 これらを組み合わせて、Reconciliation を実行する。
 
-> - https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components
-> - https://speakerdeck.com/bells17/controllerwozuo-tutemiyou-kubernetes-controllerhansuon?slide=7
+> - [sample-controller/docs/controller-client-go.md at master · kubernetes/sample-controller · GitHub](https://github.com/kubernetes/sample-controller/blob/master/docs/controller-client-go.md#custom-controller-components)
+> - [Controllerを作ってみよう ~ Kubernetes Controllerハンズオン ~ - Speaker Deck](https://speakerdeck.com/bells17/controllerwozuo-tutemiyou-kubernetes-controllerhansuon?slide=7)
 
 #### ▼ リソースイベントハンドラー
 
@@ -141,12 +141,12 @@ kube-controller-manager は、Node にある Custom Controller を反復的に�
 
 Custom Controller を自前で実装する。
 
-> - https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events
-> - https://github.com/hhiroshell/storage-bucket-prober/blob/main/controllers/storagebucket_controller.go
+> - [カスタムコントローラーで任意のイベントを起点にReconcileを実行する](https://zenn.dev/hhiroshell/articles/custom-controller-for-out-of-cluster-events)
+> - [storage-bucket-prober/controllers/storagebucket\_controller.go at main · hhiroshell/storage-bucket-prober · GitHub](https://github.com/hhiroshell/storage-bucket-prober/blob/main/controllers/storagebucket_controller.go)
 
 #### ▼ OSS を使用する場合
 
-> - https://github.com/mercari/certificate-expiry-monitor-controller
+> - [GitHub - mercari/certificate-expiry-monitor-controller: Certificate Expiry Monitor Controller monitors the expiration of TLS certificates used in Ingress. · GitHub](https://github.com/mercari/certificate-expiry-monitor-controller)
 
 <br>
 
@@ -156,7 +156,7 @@ Custom Controller を自前で実装する。
 
 Custom Controller を内蔵し、特定のカスタムリソースをセットアップする責務を持つ。
 
-> - https://zoetrope.github.io/kubebuilder-training/
+> - [つくって学ぶKubebuilder · つくって学ぶKubebuilder](https://zoetrope.github.io/kubebuilder-training/)
 
 <br>
 
@@ -194,7 +194,7 @@ Operator は関連するすべての CRD を要求し、たとえその CRD に�
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://stackoverflow.com/questions/47848258/what-is-the-difference-between-a-kubernetes-controller-and-a-kubernetes-operator
 > - https://www.howtogeek.com/devops/what-are-kubernetes-controllers-and-operators/
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#delete-a-customresourcedefinition
+> - [Extend the Kubernetes API with CustomResourceDefinitions \| Kubernetes](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#delete-a-customresourcedefinition)
 
 #### ▼ 認可スコープ付与リソース
 
@@ -213,7 +213,7 @@ OperatorHub で公開されている。
 - PrometheusOperator
 - ...
 
-> - https://operatorhub.io/
+> - [OperatorHub.io \| The registry for Kubernetes Operators](https://operatorhub.io/)
 
 <br>
 
@@ -231,7 +231,7 @@ OperatorHub で公開されている。
 
 Operator を開発するためのフレームワークのこと。
 
-> - https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes
+> - [Introducing the Operator Framework: Building Apps on Kubernetes](https://www.redhat.com/en/blog/introducing-operator-framework-building-apps-kubernetes)
 
 #### ▼ Operator SDK
 

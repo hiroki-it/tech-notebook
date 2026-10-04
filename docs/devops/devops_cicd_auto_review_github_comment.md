@@ -39,7 +39,7 @@ $ tar zxvf github-comment_<バージョン>_linux_amd64.tar.gz
 $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 ```
 
-> - https://suzuki-shunsuke.github.io/github-comment/getting-started
+> - [Getting Started \| github-comment](https://suzuki-shunsuke.github.io/github-comment/getting-started)
 
 <br>
 
@@ -87,7 +87,7 @@ exec:
         </details>
 ````
 
-> - https://suzuki-shunsuke.github.io/github-comment/config/#define-variables
+> - [Configuration \| github-comment](https://suzuki-shunsuke.github.io/github-comment/config/#define-variables)
 
 **＊実装例＊**
 
@@ -157,7 +157,7 @@ echo Test "Next K8s Version: ${K8S_NEXT_VERSION}"
 $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 ```
 
-> - https://suzuki-shunsuke.github.io/github-comment/getting-started
+> - [Getting Started \| github-comment](https://suzuki-shunsuke.github.io/github-comment/getting-started)
 
 <br>
 
@@ -171,9 +171,9 @@ $ ./github-comment exec -k <テンプレート名> -- <好きなコマンド>
 $ ./github-comment hide -k <テンプレート名>
 ```
 
-> - https://tech-blog.yayoi-kk.co.jp/entry/2022/05/10/110000
+> - [GitHub Actionsでterraform planするworking directoryを動的に抽出する - 弥生開発者ブログ](https://tech-blog.yayoi-kk.co.jp/entry/2022/05/10/110000)
 > - https://studist.tech/terraform-plan-9429ab6392a9
-> - https://suzuki-shunsuke.github.io/github-comment/hide/
+> - [Hide comments \| github-comment](https://suzuki-shunsuke.github.io/github-comment/hide/)
 
 <br>
 
@@ -198,7 +198,7 @@ GitHub に送信するレビューコメントのテンプレートを設定す�
 | `{{ .JoinCommand }}`    | バイナリ名のみの実行コマンド名         |
 | `{{ .ExitCode }}`       | 終了ステータスコード                   |
 
-> - https://suzuki-shunsuke.github.io/github-comment/config/#exec
+> - [Configuration \| github-comment](https://suzuki-shunsuke.github.io/github-comment/config/#exec)
 
 <br>
 
@@ -298,7 +298,7 @@ exec:
         </details>
 ````
 
-> - https://github.com/suzuki-shunsuke/github-comment/blob/main/github-comment.yaml
+> - [github-comment/github-comment.yaml at main · suzuki-shunsuke/github-comment · GitHub](https://github.com/suzuki-shunsuke/github-comment/blob/main/github-comment.yaml)
 
 #### ▼ 必要なコマンド
 
@@ -344,7 +344,7 @@ hide:
 <!-- github-comment: {"SHA1":"*****","TemplateKey":"test","Vars":{"target":""}} -->
 ```
 
-> - https://github.com/suzuki-shunsuke/tfaction-example/blob/main/github-comment.yaml
+> - [tfaction-example/github-comment.yaml at main · suzuki-shunsuke/tfaction-example · GitHub](https://github.com/suzuki-shunsuke/tfaction-example/blob/main/github-comment.yaml)
 
 <br>
 
@@ -359,7 +359,7 @@ hide:
 | `{{ template "status" . }}` | 終了ステータスコードが `0` なら ✅ 、それ以外なら ❌ | `:{{ if eq .ExitCode 0 }}white_check_mark{{ else }}x{{ end }}:` |
 | `{{ template "link" . }}`   | Job へのリンク                                       | CI ツールによって異なる。                                       |
 
-> - https://suzuki-shunsuke.github.io/github-comment/builtin-template
+> - [Builtin Templates \| github-comment](https://suzuki-shunsuke.github.io/github-comment/builtin-template)
 
 #### ▼ link
 
@@ -396,7 +396,7 @@ exec:
         </details>
 ````
 
-> - https://suzuki-shunsuke.github.io/github-comment/builtin-template#link
+> - [Builtin Templates \| github-comment](https://suzuki-shunsuke.github.io/github-comment/builtin-template#link)
 
 <br>
 
@@ -476,6 +476,6 @@ exec:
         </details>
 ````
 
-> - https://suzuki-shunsuke.github.io/github-comment/getting-started
+> - [Getting Started \| github-comment](https://suzuki-shunsuke.github.io/github-comment/getting-started)
 
 <br>

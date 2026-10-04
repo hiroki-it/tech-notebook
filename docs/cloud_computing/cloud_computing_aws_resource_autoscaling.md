@@ -9,7 +9,7 @@ description: AutoScaling＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ AWS ALB を使用して、起動テンプレートを基にした Amazon EC2 の
 
 ![Auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Auto-scaling.png)
 
-> - https://www.a-frontier.jp/technology/aws10/
+> - [エーフロンティア｜EC2 AutoScaling環境を構築しスケールアウト・スケールインの動作を確認する](https://www.a-frontier.jp/technology/aws10/)
 
 <br>
 
@@ -318,7 +318,7 @@ CPU 平均使用率に段階的な閾値を設定する。
 | スケールインクールダウン期間       | スケールインを完了してから、次回のスケールインを発動できるまでの時間を設定する。                              |                                                                                                                                                                                                                                           |
 | スケールインの無効化               |                                                                                                               |                                                                                                                                                                                                                                           |
 
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html
+> - [Use a target metric to scale Amazon ECS services - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html)
 
 <br>
 
@@ -330,8 +330,8 @@ CPU 平均使用率に段階的な閾値を設定する。
 
 負荷に合わせて動的にスケーリングするのではなく、一定の間隔で規則的にスケーリングする。
 
-> - https://blog.takuros.net/entry/2020/08/11/082712
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html
+> - [AWSのAutoScalingの整理 スケーリングポリシー編 - プログラマでありたい](https://blog.takuros.net/entry/2020/08/11/082712)
+> - [Scheduled scaling for Amazon EC2 Auto Scaling - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html)
 
 <br>
 
@@ -339,7 +339,7 @@ CPU 平均使用率に段階的な閾値を設定する。
 
 ### 仕組み
 
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html
+> - [Health checks for instances in an Auto Scaling group - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html)
 
 <br>
 
@@ -351,7 +351,7 @@ Amazon EC2 が自身をヘルスチェックし、異常な Amazon EC2 があれ
 
 `impaired`、`stopping`、`stopped`、`shutting-down`、`terminated` が異常である。
 
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html
+> - [About the health checks for your Auto Scaling group - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html)
 
 <br>
 
@@ -363,7 +363,7 @@ AWS ALB が Amazon EC2 をヘルスチェックし、異常な Amazon EC2 があ
 
 `Unhealthy` が異常である。
 
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html
+> - [About the health checks for your Auto Scaling group - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/health-checks-overview.html)
 
 <br>
 
@@ -371,6 +371,6 @@ AWS ALB が Amazon EC2 をヘルスチェックし、異常な Amazon EC2 があ
 
 AWS EBS が自身をヘルスチェックし、異常なボリュームがあれば、必要に応じて Amazon EC2 を作成し直す。
 
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/monitor-and-replace-instances-with-impaired-ebs-volumes.html
+> - [Monitor Auto Scaling instances with impaired Amazon EBS volumes using health checks - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/monitor-and-replace-instances-with-impaired-ebs-volumes.html)
 
 <br>

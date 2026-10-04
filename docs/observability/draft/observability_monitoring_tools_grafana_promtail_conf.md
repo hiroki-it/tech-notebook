@@ -17,7 +17,7 @@ description: 設定ファイル＠Promtailの知見を記録しています。
 
 Promtail は非推奨で、Grafana Alloy への移行が推奨になった。
 
-> - https://grafana.com/docs/alloy/latest/set-up/migrate/from-promtail/
+> - [Migrate from Promtail to Grafana Alloy \| Grafana Alloy documentation](https://grafana.com/docs/alloy/latest/set-up/migrate/from-promtail/)
 
 <br>
 

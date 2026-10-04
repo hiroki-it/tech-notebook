@@ -142,8 +142,8 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![hacogym_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_domain.png)
 
-> - https://hacogym.jp/
-> - https://zenn.dev/hsshss/articles/e11efefc7011ab
+> - [24時間個室ジム・パーソナルトレーニングジム \| ハコジム](https://hacogym.jp/)
+> - [実際の業務とDDD - スマートロック開発日誌 #2](https://zenn.dev/hsshss/articles/e11efefc7011ab)
 
 #### ▼ 例：監視 SaaS
 
@@ -204,7 +204,7 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 ただ、コアドメインが外部に依存すると、その SaaS で障害が起こったときにコアドメインのシステムも停止する可能性があるため、注意が必要である。
 
 > - https://medium.com/nick-tune-tech-strategy-blog/core-domain-patterns-941f89446af5
-> - https://speakerdeck.com/mploed/aligning-organization-and-architecture-with-strategic-ddd?slide=26
+> - [Aligning organization and architecture with strategic DDD - Speaker Deck](https://speakerdeck.com/mploed/aligning-organization-and-architecture-with-strategic-ddd?slide=26)
 
 #### ▼ 例：完全個室ジムを運営するハコジム
 
@@ -216,8 +216,8 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 
 ![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_subdomain.png)
 
-> - https://hacogym.jp/
-> - https://zenn.dev/hsshss/articles/e11efefc7011ab
+> - [24時間個室ジム・パーソナルトレーニングジム \| ハコジム](https://hacogym.jp/)
+> - [実際の業務とDDD - スマートロック開発日誌 #2](https://zenn.dev/hsshss/articles/e11efefc7011ab)
 
 **＊例＊**
 
@@ -227,7 +227,7 @@ EC サイトを運営するアスクルの例。
 
 配送/注文/商品/ユーザ管理/在庫/受注をそれぞれサブドメインとしている (コアドメインは明言されていない) 。
 
-> - https://speakerdeck.com/askul/ddd-and-clean-architecture-at-lohaco?slide=28
+> - [実録！LOHACOにおけるDDDとCleanなArchitecture/DDD and Clean Architecture at LOHACO - Speaker Deck](https://speakerdeck.com/askul/ddd-and-clean-architecture-at-lohaco?slide=28)
 
 <br>
 
@@ -241,7 +241,7 @@ EC サイトを運営するアスクルの例。
 
 ![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain-model.png)
 
-> - https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63
+> - [ユビキタス言語についての知見を共有します #DDD - Qiita](https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63)
 
 #### ▼ ユビキタス言語を見つける議論フレームワーク
 
@@ -264,7 +264,7 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 | ...  | ...      | ...                    |
 | ...  | ...      | ...                    |
 
-> - https://zenn.dev/leaner_dev/articles/20210922-ubiquitous-language?redirected=1
+> - [ユビキタス言語策定したらビジネス理解がめっちゃ捗った話](https://zenn.dev/leaner_dev/articles/20210922-ubiquitous-language?redirected=1)
 
 <br>
 
@@ -311,7 +311,7 @@ Figma などのツールを使用して、画面ごとにドメインイベン�
 |                              |                    |        |                      |
 |                              |                    |        |                      |
 
-> - https://next-engine.net/ec-blog/order-flow/
+> - [受注業務フローとは？改善方法やメリットも解説！ - ネクストエンジン｜ECの受注・在庫・出荷を自動化](https://next-engine.net/ec-blog/order-flow/)
 
 #### ▼ 例：書籍 EC サイト
 
@@ -398,8 +398,8 @@ class Book {
 
 ![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_bounded-context.png)
 
-> - https://hacogym.jp/
-> - https://zenn.dev/hsshss/articles/e11efefc7011ab
+> - [24時間個室ジム・パーソナルトレーニングジム \| ハコジム](https://hacogym.jp/)
+> - [実際の業務とDDD - スマートロック開発日誌 #2](https://zenn.dev/hsshss/articles/e11efefc7011ab)
 
 #### ▼ 例：契約請求管理アプリケーションを提供するアルプ
 
@@ -422,7 +422,7 @@ class Book {
 ![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
 
 > - https://note.com/alpinc/n/nab47ab9273c6
-> - https://thealp.co.jp/
+> - [Scalebase株式会社](https://thealp.co.jp/)
 
 #### ▼ 例：会計アプリケーションを提供する freee
 
@@ -438,7 +438,7 @@ class Book {
 
 ![freee_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
 
-> - https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22
+> - [freee会計からマイクロサービスを切り出すのに4年かかりました / 4 Years for Carving Out A Micro Service from freee Accounting. - Speaker Deck](https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22)
 
 #### ▼ 個人間送金ドメイン
 
@@ -631,8 +631,8 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 ドメインルールを吹き出しに書き込むことにより、ソフトウェアの構造のみでなくドメインルールも表す。
 
 > - https://booth.pm/ja/items/3363104
-> - https://www.eureka-moments-blog.com/entry/2018/12/29/145802
-> - https://github.com/ShisatoYano/PlantUML/blob/master/DomainModelDiagram/DomainModelDiagram.pdf
+> - [PlantUMLを通じてドメインモデル図の書き方を学ぶ - EurekaMoments](https://www.eureka-moments-blog.com/entry/2018/12/29/145802)
+> - [PlantUML/DomainModelDiagram/DomainModelDiagram.pdf at master · ShisatoYano/PlantUML · GitHub](https://github.com/ShisatoYano/PlantUML/blob/master/DomainModelDiagram/DomainModelDiagram.pdf)
 
 **＊例＊**
 
@@ -640,7 +640,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 2. ヒアリング内容からユビキタス言語を抽出し、ドメインモデル図を作成する
 3. ドメインモデル図からエンティティと値オブジェクトを含むルートエンティティを作成する
 
-> - https://qiita.com/little_hand_s/items/dfa4b156f533ba1a1491
+> - [DDD ドメインモデリングサンプル #設計 - Qiita](https://qiita.com/little_hand_s/items/dfa4b156f533ba1a1491)
 
 **＊例＊**
 
@@ -648,7 +648,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 いずれのほうも非常に参考になる (モデリングは難しい) 。
 
-> - https://cinemacity.co.jp/ticket/
+> - [チケット : チケット料金 \| シネマシティ](https://cinemacity.co.jp/ticket/)
 > - https://twitter.com/little_hand_s/status/1150763962062913536?lang=ar
 > - https://github.com/bookreadking/ddd-modeling-impplementation-guilde/tree/master/ticket-modeling/eichisanden
 
@@ -747,7 +747,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 > - https://flxy.jp/media/article/23938
 > - https://zenn.dev/team_soda/articles/9c7e818df81152#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E6%89%8B%E6%B3%95
-> - http://masuda220.jugem.jp/?eid=435
+> - [state ソーシング、 event ソーシング 【スタイルの選択肢】 \| システム設計日記](http://masuda220.jugem.jp/?eid=435)
 
 #### ▼ テーブル構造
 
@@ -780,8 +780,8 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 CQRS と相性がよい。
 
 > - https://qiita.com/suin/items/f559e3dcde7c811ed4e1
-> - https://martinfowler.com/articles/201701-event-driven.html
-> - https://zenn.dev/shmi593/articles/56c890962bb807
+> - [What do you mean by “Event-Driven”?](https://martinfowler.com/articles/201701-event-driven.html)
+> - [Event Sourcing 完全に理解した](https://zenn.dev/shmi593/articles/56c890962bb807)
 > - https://zenn.dev/team_soda/articles/9c7e818df81152#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%A2%E3%83%87%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%AE%E6%89%8B%E6%B3%95
 
 #### ▼ モデリングフレームワーク
@@ -812,7 +812,7 @@ Git のようにして過去の状態を参照できる。
 | ...  | ...           | ...                 | ...               | ...                                              |
 
 > - https://youtu.be/Jtcp9ry8ZcE?t=1066
-> - https://qiita.com/uzawa-sorich/items/261021c1d265b20117ab#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0es%E3%81%A3%E3%81%A6%E4%BD%95
+> - [SQLでもイベントソーシングはできるという話 #設計 - Qiita](https://qiita.com/uzawa-sorich/items/261021c1d265b20117ab#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0es%E3%81%A3%E3%81%A6%E4%BD%95)
 
 #### ▼ イベント仲介システム
 
@@ -851,8 +851,8 @@ MVC との関係は次のとおりである。
 | -                  | ユースケース層 (新しく実装する)    |
 
 > - https://www.amazon.co.jp/dp/4798121967
-> - https://techblog.yahoo.co.jp/entry/2021011230061115/
-> - https://zenn.dev/praha/articles/5c05ab671fb7ab#%E6%AE%8B%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF%E4%B8%80%E7%95%AA%E5%A4%96%E5%81%B4%E3%81%AEui%2Finfrastructure%E3%81%AE%E3%81%A9%E3%81%A1%E3%82%89%E3%81%8B
+> - [ドメイン駆動設計で保守性をあげたリニューアル事例 〜 ショッピングクーポンの設計紹介 - Yahoo! JAPAN Tech Blog](https://techblog.yahoo.co.jp/entry/2021011230061115/)
+> - [DDDにおける認証の実装場所](https://zenn.dev/praha/articles/5c05ab671fb7ab#%E6%AE%8B%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%AF%E4%B8%80%E7%95%AA%E5%A4%96%E5%81%B4%E3%81%AEui%2Finfrastructure%E3%81%AE%E3%81%A9%E3%81%A1%E3%82%89%E3%81%8B)
 
 #### ▼ ３層の場合
 
@@ -862,7 +862,7 @@ MVC との関係は次のとおりである。
 - ビジネスロジック層 (ユースケース、ドメインモデル、認可)
 - インフラストラクチャ層 (永続化)
 
-> - https://note.sompo-sys.com/n/n62fdd17a7dc4
+> - [旬なアーキテクチャって何だろう？｜ＳＯＭＰＯシステムズ(株)【公式note】](https://note.sompo-sys.com/n/n62fdd17a7dc4)
 
 <br>
 
@@ -894,8 +894,8 @@ MVC との関係は次のとおりである。
 
 ![onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/onion-architecture.png)
 
-> - https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/
-> - https://little-hands.hatenablog.com/entry/2017/10/11/075634
+> - [The Onion Architecture : part 1 \| Programming with Palermo](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/)
+> - [ドメイン駆動 + オニオンアーキテクチャ概略\[DDD\] - little hands' lab](https://little-hands.hatenablog.com/entry/2017/10/11/075634)
 
 <br>
 
@@ -905,6 +905,6 @@ MVC との関係は次のとおりである。
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpeg)
 
-> - https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+> - [Clean Coder Blog](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
 <br>

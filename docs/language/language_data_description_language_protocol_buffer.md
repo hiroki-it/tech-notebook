@@ -9,7 +9,7 @@ description: Protocol Buffer＠データ記述型言語の知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -41,8 +41,8 @@ message Person {
 }
 ```
 
-> - https://protobuf.dev/overview/#syntax
-> - https://protobuf.dev/programming-guides/enum/
+> - [Overview \| Protocol Buffers Documentation](https://protobuf.dev/overview/#syntax)
+> - [Enum Behavior \| Protocol Buffers Documentation](https://protobuf.dev/programming-guides/enum/)
 
 <br>
 
@@ -50,7 +50,7 @@ message Person {
 
 記入中...
 
-> - https://protobuf.dev/overview/#syntax
+> - [Overview \| Protocol Buffers Documentation](https://protobuf.dev/overview/#syntax)
 
 <br>
 
@@ -67,7 +67,7 @@ message Person {
 }
 ```
 
-> - https://protobuf.dev/overview/#syntax
+> - [Overview \| Protocol Buffers Documentation](https://protobuf.dev/overview/#syntax)
 
 <br>
 
@@ -75,7 +75,7 @@ message Person {
 
 記入中...
 
-> - https://protobuf.dev/overview/#syntax
+> - [Overview \| Protocol Buffers Documentation](https://protobuf.dev/overview/#syntax)
 
 <br>
 
@@ -119,7 +119,7 @@ Protocol Buffer コンパイラーは、`proto` ファイルから `pb` ファ�
 syntax = "proto3";
 ```
 
-> - https://protobuf.dev/programming-guides/proto3/
-> - https://protobuf.dev/programming-guides/proto3/#generated
+> - [Language Guide (proto 3) \| Protocol Buffers Documentation](https://protobuf.dev/programming-guides/proto3/)
+> - [Language Guide (proto 3) \| Protocol Buffers Documentation](https://protobuf.dev/programming-guides/proto3/#generated)
 
 <br>

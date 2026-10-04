@@ -9,7 +9,7 @@ description: OSI参照モデル＠ネットワークの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -35,7 +35,7 @@ OSI 参照モデルは、次の `7` 階層から構成される。
 
 ![OSI参照モデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSI参照モデル.png)
 
-> - https://www.infraexpert.com/study/networking3.html
+> - [OSI参照モデル - その1](https://www.infraexpert.com/study/networking3.html)
 
 <br>
 
@@ -51,7 +51,7 @@ OSI 参照モデルは、次の `7` 階層から構成される。
 
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 
-> - https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks
+> - [Host Based Networks Vs. Client Server Networks \| Techwalla](https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks)
 
 <br>
 
@@ -101,7 +101,7 @@ OSI 参照モデルの各層と通信機器の間の対応関係は以下の通�
 
 : サーバーにて、アプリケーションのプロセスが特定のポート番で受信している。アプリケーションによってパケットが処理される。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/0007/19/news001_2.html
+> - [第3回 OSI参照モデル：詳説 TCP/IPプロトコル（2/5 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/0007/19/news001_2.html)
 
 <br>
 
@@ -116,8 +116,8 @@ OSI 参照モデルの各層と通信機器の間の対応関係は以下の通�
 ![パケットの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットの構造.jpg)
 
 > - https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
-> - https://www.sophia-it.com/content/%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89
-> - https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/
+> - [ペイロードの意味や定義 わかりやすく解説 Weblio辞書](https://www.sophia-it.com/content/%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89)
+> - [伝送データを暗号化しなければならない \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/)
 
 <br>
 
@@ -179,8 +179,8 @@ OSI 参照モデルの各層と通信機器の間の対応関係は以下の通�
 
 : パケットを HTTP リクエストとして送信する。
 
-> - https://twitter.com/bytebytego/status/1683351605528395778
-> - https://ox0xo.github.io/networking/wireshark
-> - https://www.n-study.com/network-architecture/osi-communication-flow/
+> - [Bytebytego on X: "How is data sent over the network? Why do we need so many layers in the OSI model? The diagram below shows how data is encapsulated and de-encapsulated when transmitting over the network. 🔹 Step 1: When Device A sends data to Device B over the network via the HTTP protocol, it … / X](https://twitter.com/bytebytego/status/1683351605528395778)
+> - [TCP/IPの概要](https://ox0xo.github.io/networking/wireshark)
+> - [OSI参照モデルでの通信の仕組み \| ネットワークアーキテクチャ \| ネットワークのおべんきょしませんか？](https://www.n-study.com/network-architecture/osi-communication-flow/)
 
 <br>

@@ -15,7 +15,7 @@ description: Containerd＠仮想化の知見を記録しています。
 
 ## 01. Containerd の仕組み
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html
+> - [DockerがKubernetesのコードから消滅した理由、歴史的背景、ツールごとの対応方法総まとめ：Cloud Nativeチートシート（16） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2206/03/news010.html)
 
 <br>
 
@@ -48,13 +48,13 @@ OOMScoreAdjust=-999
 WantedBy=multi-user.target
 ```
 
-> - https://github.com/containerd/containerd/blob/main/containerd.service
+> - [containerd/containerd.service at main · containerd/containerd · GitHub](https://github.com/containerd/containerd/blob/main/containerd.service)
 
 <br>
 
 ## 03. コマンド
 
-> - https://intl.cloud.tencent.com/jp/document/product/457/31088
+> - [ContainerdとDockerの選択方法](https://intl.cloud.tencent.com/jp/document/product/457/31088)
 
 <br>
 
@@ -96,7 +96,7 @@ Containerd は、テキスト形式ログを作成する。
 }
 ```
 
-> - https://sotoiwa.hatenablog.com/entry/2021/09/14/081727
+> - [EKSでContainerdを試す - sotoiwa’s blog](https://sotoiwa.hatenablog.com/entry/2021/09/14/081727)
 
 <br>
 
@@ -112,6 +112,6 @@ Docker は、`json` 形式をログを作成する。
 }
 ```
 
-> - https://smallit.co.jp/blog/958/
+> - [Kubernetesのコンテナランタイムがcontainerd場合のFluent Bitでのログ転送について - ブログ - 株式会社Smallit（スモーリット）](https://smallit.co.jp/blog/958/)
 
 <br>

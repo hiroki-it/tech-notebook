@@ -9,7 +9,7 @@ description: apache.conf@Apacheの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -33,7 +33,7 @@ Apache の主要な設定ファイル。
 
 Include ディレクティブを使用すれば、任意の名前で設定ファイルを追加できる。
 
-> - https://httpd.apache.org/docs/2.4/ja/configuring.html#main
+> - [設定ファイル - Apache HTTP サーバ バージョン 2.4](https://httpd.apache.org/docs/2.4/ja/configuring.html#main)
 
 <br>
 
@@ -45,8 +45,8 @@ Include ディレクティブを使用すれば、任意の名前で設定ファ
 
 ただし、このファイルはインフラエンジニアの責務であり、アプリエンジニアで Apache の設定を定義したい場合、`.htaccess` ファイルを使用する。
 
-> - https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess
-> - https://ja.wikipedia.org/wiki/.htaccess
+> - [設定ファイル - Apache HTTP サーバ バージョン 2.4](https://httpd.apache.org/docs/2.4/ja/configuring.html#htaccess)
+> - [.htaccess - Wikipedia](https://ja.wikipedia.org/wiki/.htaccess)
 
 #### ▼ ルートディレクトリに置いた場合
 
@@ -54,7 +54,7 @@ Include ディレクティブを使用すれば、任意の名前で設定ファ
 
 ![htaccess影響範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/htaccess影響範囲.png)
 
-> - https://htaccess.cman.jp/attention/
+> - [htaccess留意事項](https://htaccess.cman.jp/attention/)
 
 #### ▼ それ以外のディレクトリに置いた場合
 
@@ -62,7 +62,7 @@ Include ディレクティブを使用すれば、任意の名前で設定ファ
 
 ![htaccess影響範囲_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/htaccess影響範囲_2.png)
 
-> - https://htaccess.cman.jp/attention/
+> - [htaccess留意事項](https://htaccess.cman.jp/attention/)
 
 <br>
 
@@ -104,7 +104,7 @@ Apache の稼働するサーバーが、複数のドメインを仮想的に持�
 
 複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、`Host` ヘッダー値がいずれの ServerName 値と一致するかで決まる。
 
-> - https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html
+> - [名前ベースのバーチャルホスト - Apache HTTP サーバ バージョン 2.5](https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html)
 
 **＊実装例＊**
 
@@ -222,7 +222,7 @@ TCP KeepAlive を有効化する。
 KeepAlive On
 ```
 
-> - https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/
+> - [【図解】TCP Keep-Alive/http Keep-Aliveの仕組みと違い ～Client/Serverの挙動とメリット,設定～ \| SEの道標](https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/)
 
 #### ▼ KeepAliveTimeout
 
@@ -556,7 +556,7 @@ Header set Referrer-Policy "no-referrer-when-downgrade" always
 
 補足として、Chrome85 以降の `Referrer-Policy` ヘッダー初期値の仕様変更については、以下のリンクを参考にせよ。
 
-> - https://www.chromestatus.com/feature/6251880185331712
+> - [Chrome Platform Status](https://www.chromestatus.com/feature/6251880185331712)
 
 #### ▼ unset
 

@@ -9,7 +9,7 @@ description: 管理ユーティリティ＠ユーティリティの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -89,7 +89,7 @@ $ pyenv which python
 $ rbenv global <バージョン>
 ```
 
-> - https://qiita.com/Yinaura/items/0b021984bb21ae77816d
+> - [rbenv \| global と local と .ruby-version の微妙な関係 #Ruby - Qiita](https://qiita.com/Yinaura/items/0b021984bb21ae77816d)
 
 #### ▼ loval
 
@@ -101,6 +101,6 @@ $ rbenv global <バージョン>
 $ rbenv local <バージョン>
 ```
 
-> - https://qiita.com/Yinaura/items/0b021984bb21ae77816d
+> - [rbenv \| global と local と .ruby-version の微妙な関係 #Ruby - Qiita](https://qiita.com/Yinaura/items/0b021984bb21ae77816d)
 
 <br>

@@ -23,8 +23,8 @@ Web サイトのクラウドインフラの実行環境ごとに作成したほ�
 
 アカウント ID は機密ではないため、仮にバージョン管理してしまうようなことがあっても問題ない。
 
-> - https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-identifiers.html
-> - https://www.lastweekinaws.com/blog/are-aws-account-ids-sensitive-information/
+> - [View AWS account identifiers - AWS Account Management](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-identifiers.html)
+> - [Are AWS account IDs sensitive information? - Last Week in AWS Blog](https://www.lastweekinaws.com/blog/are-aws-account-ids-sensitive-information/)
 
 <br>
 
@@ -51,7 +51,7 @@ Web サイトのクラウドインフラの実行環境ごとに作成したほ�
 例えば、Tokyo (`ap-northeast-1`) から Virginia (`us-east-1`) への通信の色で、レイテンシーの程度がわかる。
 
 > - https://www.cloudping.co/grid
-> - https://github.com/mda590/cloudping.co
+> - [GitHub - mda590/cloudping.co: AWS Inter-Region Latency Monitoring · GitHub](https://github.com/mda590/cloudping.co)
 
 <br>
 

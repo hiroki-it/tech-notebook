@@ -9,7 +9,7 @@ description: Keycloak＠セキュリティ系ミドルウェアの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたする。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -20,7 +20,7 @@ description: Keycloak＠セキュリティ系ミドルウェアの知見を記�
 認証／認可に関する API を公開し、認証時のアカウントの CRUD や、認可時のアカウントに対する権限スコープ付与ができる。
 
 > - https://www.keycloak.org/docs-api/22.0.1/rest-api/index.html
-> - https://blog.linkode.co.jp/entry/2023/08/23/000000
+> - [KeycloakのAdmin REST APIでユーザを作成する - Linkode.TechBlog](https://blog.linkode.co.jp/entry/2023/08/23/000000)
 
 <br>
 
@@ -66,9 +66,9 @@ Keycloak クラスターでは、JGroups は Infinispan クラスターインス
 
 ![keycloak_clustering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_clustering.png)
 
-> - https://www.keycloak.org/2019/05/keycloak-cluster-setup
-> - https://qiita.com/yoonis/items/4f4a9df0f6f8e858bd4a#keycloak%E5%86%97%E9%95%B7%E6%A7%8B%E6%88%90%E3%81%AE%E6%A6%82%E8%A6%81
-> - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
+> - [Page Redirection](https://www.keycloak.org/2019/05/keycloak-cluster-setup)
+> - [Keycloakを冗長構成で動かしてみる #SSO - Qiita](https://qiita.com/yoonis/items/4f4a9df0f6f8e858bd4a#keycloak%E5%86%97%E9%95%B7%E6%A7%8B%E6%88%90%E3%81%AE%E6%A6%82%E8%A6%81)
+> - [Keycloak の クラスタリングで利用されるプロトコル #Keycloak - Qiita](https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB)
 
 <br>
 
@@ -80,8 +80,8 @@ Keycloak クラスターでは、JGroups は Infinispan クラスターインス
 
 `7800` 番ポート (以前は `7600` 番だった) を使用し、TCP プロトコルのレプリケーション通信を実施する。
 
-> - https://www.keycloak.org/2019/05/keycloak-cluster-setup
-> - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
+> - [Page Redirection](https://www.keycloak.org/2019/05/keycloak-cluster-setup)
+> - [Keycloak の クラスタリングで利用されるプロトコル #Keycloak - Qiita](https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB)
 
 #### ▼ JDBC_PING
 
@@ -91,9 +91,9 @@ Keycloak クラスターでは、JGroups は Infinispan クラスターインス
 
 `7800` 番 (以前は `7600` 番だった) と `57800` 番のポートを使用し、TCP プロトコルのレプリケーション通信を実施する。
 
-> - https://www.keycloak.org/2019/05/keycloak-cluster-setup
-> - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
-> - https://www.keycloak.org/server/caching#_network_ports
+> - [Page Redirection](https://www.keycloak.org/2019/05/keycloak-cluster-setup)
+> - [Keycloak の クラスタリングで利用されるプロトコル #Keycloak - Qiita](https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB)
+> - [Configuring distributed caches - Keycloak](https://www.keycloak.org/server/caching#_network_ports)
 
 #### ▼ DNS_PING
 
@@ -108,15 +108,15 @@ Keycloak クラスターでは、JGroups は Infinispan クラスターインス
   - KC_CACHE_STACK=kubernetes
   - JAVA_OPTS_APPEND=-Djgroups.dns.query=<Headless Service の DNS 名>
 
-> - https://openstandia.jp/tech/column/ac_keycloak20231216/
-> - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
+> - [EKSを使ってクラスタ構成のKeycloakを構築してみた \| OSSサポートのOpenStandia™【NRI】](https://openstandia.jp/tech/column/ac_keycloak20231216/)
+> - [Keycloak の クラスタリングで利用されるプロトコル #Keycloak - Qiita](https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB)
 
 #### ▼ KUBE_PING
 
 サービスレジストリ (例：Etcd) 内の宛先情報として使用する。
 
-> - https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB
-> - https://github.com/jgroups-extras/jgroups-kubernetes
+> - [Keycloak の クラスタリングで利用されるプロトコル #Keycloak - Qiita](https://qiita.com/t-mogi/items/ba38a614c1637a8aef93#jgroups-%E3%81%AE-discovery-%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB)
+> - [GitHub - jgroups-extras/jgroups-kubernetes: JGroups discovery protocol for Kubernetes · GitHub](https://github.com/jgroups-extras/jgroups-kubernetes)
 
 <br>
 
@@ -127,7 +127,7 @@ Keycloak クラスターでは、JGroups は Infinispan クラスターインス
 Keycloak は CPU とメモリを使用する。
 
 > - https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/high_availability_guide/concepts-memory-and-cpu-sizing-#concepts-memory-and-cpu-sizing-calculation-example
-> - https://qiita.com/takashyan/items/16b9277daeba5fcdca33#%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E5%9F%BA%E7%A4%8E%E5%80%A4%E3%81%AE%E9%A0%85%E7%9B%AE
+> - [keycloakのサイジング #SSO - Qiita](https://qiita.com/takashyan/items/16b9277daeba5fcdca33#%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E5%9F%BA%E7%A4%8E%E5%80%A4%E3%81%AE%E9%A0%85%E7%9B%AE)
 
 #### ▼ CPU
 
@@ -140,7 +140,7 @@ Keycloak は CPU とメモリを使用する。
 - 350 回のリクエストのリフレッシュトークン ➡️ 1 vCPU
 
 > - https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/high_availability_guide/concepts-memory-and-cpu-sizing-#concepts-memory-and-cpu-sizing-calculation-example
-> - https://qiita.com/takashyan/items/16b9277daeba5fcdca33#%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E5%9F%BA%E7%A4%8E%E5%80%A4%E3%81%AE%E9%A0%85%E7%9B%AE
+> - [keycloakのサイジング #SSO - Qiita](https://qiita.com/takashyan/items/16b9277daeba5fcdca33#%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E5%9F%BA%E7%A4%8E%E5%80%A4%E3%81%AE%E9%A0%85%E7%9B%AE)
 
 #### ▼ メモリ
 
@@ -153,7 +153,7 @@ Keycloak は CPU とメモリを使用する。
 - 50000 のアクティブセッション用 ➡️ 余剰 250 MB
 
 > - https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/24.0/html/high_availability_guide/concepts-memory-and-cpu-sizing-#concepts-memory-and-cpu-sizing-calculation-example
-> - https://qiita.com/takashyan/items/16b9277daeba5fcdca33#%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E5%9F%BA%E7%A4%8E%E5%80%A4%E3%81%AE%E9%A0%85%E7%9B%AE
+> - [keycloakのサイジング #SSO - Qiita](https://qiita.com/takashyan/items/16b9277daeba5fcdca33#%E3%82%B5%E3%82%A4%E3%82%B8%E3%83%B3%E3%82%B0%E5%9F%BA%E7%A4%8E%E5%80%A4%E3%81%AE%E9%A0%85%E7%9B%AE)
 
 <br>
 
@@ -200,8 +200,8 @@ Keycloak クライアントは、『ヘッダー』『ペイロード』『署�
 
 その後、Keycloak の認可エンドポイントに JWT を送信する。
 
-> - https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0
-> - https://qiita.com/t-mogi/items/2728586959f16849443f#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E5%81%B4%E3%81%A7%E3%81%AE%E5%AF%BE%E5%BF%9C
+> - [JWT の仕組み](https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0)
+> - [Keycloak : JWT によるクライアント認証 #JWT - Qiita](https://qiita.com/t-mogi/items/2728586959f16849443f#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E5%81%B4%E3%81%A7%E3%81%AE%E5%AF%BE%E5%BF%9C)
 
 <br>
 
@@ -240,8 +240,8 @@ Keycloak クライアントは、『ヘッダー』『ペイロード』『署�
 
 ![keycloak_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_authorization.png)
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html
-> - https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E8%AA%8D%E5%8F%AF%E8%A8%AD%E5%AE%9A
+> - [Keycloakで認可サービスを試してみよう［前編］：Keycloak超入門（8）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html)
+> - [keyclaokの認可機能を利用する #JavaScript - Qiita](https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E8%AA%8D%E5%8F%AF%E8%A8%AD%E5%AE%9A)
 
 <br>
 
@@ -251,8 +251,8 @@ Keycloak クライアントは、『ヘッダー』『ペイロード』『署�
 
 ![keycloak_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_authorization.png)
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html
-> - https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9
+> - [Keycloakで認可サービスを試してみよう［前編］：Keycloak超入門（8）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html)
+> - [keyclaokの認可機能を利用する #JavaScript - Qiita](https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9)
 
 <br>
 
@@ -262,8 +262,8 @@ Keycloak クライアントは、『ヘッダー』『ペイロード』『署�
 
 ![keycloak_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_authorization.png)
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html
-> - https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9
+> - [Keycloakで認可サービスを試してみよう［前編］：Keycloak超入門（8）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html)
+> - [keyclaokの認可機能を利用する #JavaScript - Qiita](https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9)
 
 <br>
 
@@ -326,7 +326,7 @@ JWT トークンの発行元 ID プロバイダーの識別子である。
 GET https://<Keycloakのドメイン名>/realms/<realm名>
 ```
 
-> - https://datatracker.ietf.org/doc/html/rfc8414#section-2
+> - [RFC 8414 - OAuth 2.0 Authorization Server Metadata](https://datatracker.ietf.org/doc/html/rfc8414#section-2)
 
 #### ▼ /auth (認可エンドポイント)
 
@@ -338,7 +338,7 @@ Keycloak のほかのエンドポイントとは異なり、インターネッ�
 GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/auth
 ```
 
-> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
+> - [Securing applications and services with OpenID Connect - Keycloak](https://www.keycloak.org/securing-apps/oidc-layers#_endpoints)
 
 #### ▼ /certs (JWKs エンドポイント)
 
@@ -350,7 +350,7 @@ GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conne
 GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/certs
 ```
 
-> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
+> - [Securing applications and services with OpenID Connect - Keycloak](https://www.keycloak.org/securing-apps/oidc-layers#_endpoints)
 
 #### ▼ /introspect (イントロスペクションエンドポイント)
 
@@ -362,7 +362,7 @@ GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conne
 POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token/introspect
 ```
 
-> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
+> - [Securing applications and services with OpenID Connect - Keycloak](https://www.keycloak.org/securing-apps/oidc-layers#_endpoints)
 
 #### ▼ /token
 
@@ -376,9 +376,9 @@ POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conn
 GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/token
 ```
 
-> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
+> - [Securing applications and services with OpenID Connect - Keycloak](https://www.keycloak.org/securing-apps/oidc-layers#_endpoints)
 > - https://thinkit.co.jp/article/17621
-> - https://www.keycloak.org/securing-apps/token-exchange
+> - [Configuring and using token exchange - Keycloak](https://www.keycloak.org/securing-apps/token-exchange)
 
 #### ▼ /userinfo
 
@@ -404,7 +404,7 @@ GET https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-conne
 POST https://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connect/logout?client_id=<クライアントID>&client_secret=<クライアントシークレット>&refresh_token=<リフレッシュトークン>
 ```
 
-> - https://www.keycloak.org/securing-apps/oidc-layers#_endpoints
+> - [Securing applications and services with OpenID Connect - Keycloak](https://www.keycloak.org/securing-apps/oidc-layers#_endpoints)
 > - https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4884254#gistcomment-4884254
 > - https://qiita.com/suke_masa/items/e04880c5cf7232b60004
 > - https://qiita.com/i7a7467/items/b7eaa2deb0378fc3b2aa
@@ -437,7 +437,7 @@ client_id=python-client&client_secret=a07f9...8213d1&refresh_token=eyJhbGci...tw
 | `client_secret` | クライアントシークレット |
 | `refresh_token` | リフレッシュトークン     |
 
-> - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88
+> - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 #### ▼ アプリケーションへのリクエスト
@@ -477,7 +477,7 @@ Keycloak は、このセッション ID でログアウトすべきクライア�
 }
 ```
 
-> - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%81%9D%E3%81%AE%E4%BB%96
+> - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%81%9D%E3%81%AE%E4%BB%96)
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#k_logout-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 #### ▼ ID プロバイダーからのレスポンス
@@ -489,7 +489,7 @@ ID プロバイダーのログアウトエンドポイントは、アプリケ�
 HTTP/1.1 204 No Content
 ```
 
-> - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%90%E3%83%83%E3%82%AF%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88
+> - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%90%E3%83%83%E3%82%AF%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 <br>
@@ -512,7 +512,7 @@ GET http://<Keycloakのドメイン名>/realms/<realm名>/protocol/openid-connec
 | `post_logout_redirect_uri` | ログアウト後のリダイレクト URL |
 | `state`                    | CSRF 対策の文字列              |
 
-> - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88
+> - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 #### ▼ ID プロバイダーからのレスポンス
@@ -529,7 +529,7 @@ http://localhost:8000/logout/complete?state=e18689b0503aab42574427fb575645aca006
 | ------------ | --------------------------------------- |
 | `state`      | リクエスト時の `state` パラメーターの値 |
 
-> - https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88
+> - [Keycloak ログアウト方法 メモ #備忘録 - Qiita](https://qiita.com/KWS_0901/items/7ad9794b344823221710#%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB-%E3%83%AD%E3%82%B0%E3%82%A2%E3%82%A6%E3%83%88)
 > - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
 
 <br>

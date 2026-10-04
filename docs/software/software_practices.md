@@ -9,7 +9,7 @@ description: プラクティス集＠ソフトウェアの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,7 +27,7 @@ description: プラクティス集＠ソフトウェアの知見を記録して�
 
 マイナーバージョンごとにアップグレードを検証する。
 
-> - https://speakerdeck.com/yoshiakiyamasaki/20181201-mysqlbaziyonatupufalseji-chu-zhi-shi?slide=33
+> - [20181201\_MySQLバージョンアップの基礎知識.pdf - Speaker Deck](https://speakerdeck.com/yoshiakiyamasaki/20181201-mysqlbaziyonatupufalseji-chu-zhi-shi?slide=33)
 
 #### ▼ アンケート
 

@@ -9,7 +9,7 @@ description: パッケージ＠Flaskの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -61,8 +61,8 @@ print(oauth.<IDプロバイダー名>.api_base_url)
 
 > - https://docs.authlib.org/en/latest/client/flask.html
 > - https://docs.authlib.org/en/latest/client/flask.html#flask-openid-connect-client
-> - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
-> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
+> - [demo-oauth-client/flask-google-login/app.py at master · authlib/demo-oauth-client · GitHub](https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py)
+> - [istio/samples/bookinfo/src/productpage/productpage.py at master · hiroki-it/istio · GitHub](https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py)
 
 <br>
 
@@ -110,8 +110,8 @@ def callback():
 ```
 
 > - https://docs.authlib.org/en/latest/client/flask.html#routes-for-authorization
-> - https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py
-> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
+> - [demo-oauth-client/flask-google-login/app.py at master · authlib/demo-oauth-client · GitHub](https://github.com/authlib/demo-oauth-client/blob/master/flask-google-login/app.py)
+> - [istio/samples/bookinfo/src/productpage/productpage.py at master · hiroki-it/istio · GitHub](https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py)
 
 <br>
 
@@ -140,7 +140,7 @@ def logout():
     return response
 ```
 
-> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
+> - [istio/samples/bookinfo/src/productpage/productpage.py at master · hiroki-it/istio · GitHub](https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py)
 
 <br>
 
@@ -190,7 +190,7 @@ def home():
     return response
 ```
 
-> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
+> - [istio/samples/bookinfo/src/productpage/productpage.py at master · hiroki-it/istio · GitHub](https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py)
 
 <br>
 
@@ -212,8 +212,8 @@ app.config.update({
 oidc = OpenIDConnect(app)
 ```
 
-> - https://github.com/fedora-infra/flask-oidc/
-> - https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4983728#gistcomment-4983728
+> - [GitHub - fedora-infra/flask-oidc: OpenID Connect support for Flask · GitHub](https://github.com/fedora-infra/flask-oidc/)
+> - [Simple python example using flask, flask\_oidc and keycloak · GitHub](https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a?permalink_comment_id=4983728#gistcomment-4983728)
 
 <br>
 
@@ -237,6 +237,6 @@ oidc = OpenIDConnect(app)
 }
 ```
 
-> - https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a#file-client_secrets-json
+> - [Simple python example using flask, flask\_oidc and keycloak · GitHub](https://gist.github.com/thomasdarimont/145dc9aa857b831ff2eff221b79d179a#file-client_secrets-json)
 
 <br>

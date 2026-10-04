@@ -9,7 +9,7 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -34,8 +34,8 @@ description: VictoriaMetrics＠TSDBの知見を記録しています。
 ![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_remote-storage_architecture.png)
 
 > - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview
-> - https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api
-> - https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
+> - [VictoriaMetrics: FAQ](https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api)
+> - [Introducing Prometheus Agent Mode, an Efficient and Cloud-Native Way for Metric Forwarding \| Prometheus](https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case)
 
 #### ▼ 監視バックエンドかつ監視フロントエンドとして
 
@@ -53,8 +53,8 @@ VictoriaMetrics を監視バックエンドかつ監視フロントエンドと�
 
 ![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_monitoring_architecture.png)
 
-> - https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10
-> - https://www.sobyte.net/post/2022-05/vmalert/
+> - [モニタリング入門 / Monitoring Feat. VictoriaMetrics - Speaker Deck](https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10)
+> - [Use vmalert instead of Prometheus to monitor alarms - SoByte](https://www.sobyte.net/post/2022-05/vmalert/)
 
 <br>
 
@@ -66,19 +66,19 @@ VictoriaMetrics を監視バックエンドかつ監視フロントエンドと�
 
 シングル Node モードでは、各コンポーネントは冗長化されない。
 
-> - https://docs.victoriametrics.com/single-server-victoriametrics/
+> - [VictoriaMetrics: Single-node version](https://docs.victoriametrics.com/single-server-victoriametrics/)
 
 #### ▼ インストール
 
 もう一方のクラスターNode モードとは、バイナリ (特に接尾辞はない) やセットアップ方法が異なる。
 
-> - https://docs.victoriametrics.com/single-server-victoriametrics/#how-to-build-from-sources
+> - [VictoriaMetrics: Single-node version](https://docs.victoriametrics.com/single-server-victoriametrics/#how-to-build-from-sources)
 
 #### ▼ アップグレード
 
 シングル Node モードの場合、ダウンタイムを避けられない。
 
-> - https://docs.victoriametrics.com/faq/#how-to-upgrade-or-downgrade-victoriametrics-without-downtime
+> - [VictoriaMetrics: FAQ](https://docs.victoriametrics.com/faq/#how-to-upgrade-or-downgrade-victoriametrics-without-downtime)
 
 #### ▼ ログ
 
@@ -119,8 +119,8 @@ VictoriaMetrics を監視バックエンドかつ監視フロントエンドと�
 
 クラスターNode モードの場合、ダウンタイムを避けられる。
 
-> - https://docs.victoriametrics.com/faq/#how-to-upgrade-or-downgrade-victoriametrics-without-downtime
-> - https://docs.victoriametrics.com/cluster-victoriametrics/#updating--reconfiguring-cluster-nodes
+> - [VictoriaMetrics: FAQ](https://docs.victoriametrics.com/faq/#how-to-upgrade-or-downgrade-victoriametrics-without-downtime)
+> - [VictoriaMetrics: Cluster version](https://docs.victoriametrics.com/cluster-victoriametrics/#updating--reconfiguring-cluster-nodes)
 
 <br>
 
@@ -148,8 +148,8 @@ VictoriaMetrics は、クエリの実行前に、ディスクに永続化した�
 
 そのため、ストレージのデータサイズが多くなるのに伴って、メモリ上のデータポイントが常時/突発的に多くなり、OOM キラーになることがある。
 
-> - https://docs.victoriametrics.com/FAQ.html#how-to-set-a-memory-limit-for-victoriametrics-components
-> - https://docs.victoriametrics.com/#storage
+> - [VictoriaMetrics: FAQ](https://docs.victoriametrics.com/FAQ.html#how-to-set-a-memory-limit-for-victoriametrics-components)
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#storage)
 
 #### ▼ クエリ言語
 
@@ -157,7 +157,7 @@ VictoriaMetrics は、クエリの実行前に、ディスクに永続化した�
 
 これは PromQL ではないが、文法はほぼ PromQL と同じである。
 
-> - https://docs.victoriametrics.com/MetricsQL.html
+> - [VictoriaMetrics: MetricsQL](https://docs.victoriametrics.com/MetricsQL.html)
 
 #### ▼ カーディナリティ
 
@@ -167,7 +167,7 @@ VictoriaMetrics は、クエリの実行前に、ディスクに永続化した�
 
 ![victoria-metrics_cardinality](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_cardinality.png)
 
-> - https://victoriametrics.com/blog/cardinality-explorer/
+> - [Cardinality explorer](https://victoriametrics.com/blog/cardinality-explorer/)
 
 <br>
 
@@ -181,7 +181,7 @@ VictoriaMetrics は、クエリの実行前に、ディスクに永続化した�
 
 公式での情報は見つからなかったが、圧縮率は約 `10%` らしい。
 
-> - https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84
+> - [VictoriaMetricsを使ってみた話 #prometheus - Qiita](https://qiita.com/nikita/items/482a77a829c81cd919f0#1%E5%9C%A7%E7%B8%AE%E7%8E%87%E3%81%8C%E9%AB%98%E3%81%84)
 
 #### ▼ ディレクトリ構成
 
@@ -216,7 +216,7 @@ $ du -hs /var/lib/victoriametrics/data
 
 VictoriaMetrics は、容量節約のためにデータブロックを定期的にバックグラウンドでマージし、大きなブロックにする。
 
-> - https://docs.victoriametrics.com/#storage
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#storage)
 
 #### ▼ ReadOnly モード
 
@@ -226,7 +226,7 @@ ReadOnly モードにより、vmstorage の空きサイズが `minFreeDiskSpaceB
 
 これにより、vmstorage の最大サイズを超えてデータを書き込むことを防いでいる。
 
-> - https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269
+> - [Read-only mode for vmstorage · Issue #269 · VictoriaMetrics/VictoriaMetrics · GitHub](https://github.com/VictoriaMetrics/VictoriaMetrics/issues/269)
 
 #### ▼ 保管期間
 
@@ -240,9 +240,9 @@ VictoriaMetrics の起動時に、`victoria-metrics-prod` コマンドの `-rete
 
 日時的な削除処理によって、CPU やディスク I/O がスパイクになることがある。
 
-> - https://docs.victoriametrics.com/#retention
-> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
-> - https://github.com/VictoriaMetrics/VictoriaMetrics/issues/1401
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#retention)
+> - [Optimizing the Storage of Large Volumes of Metrics for a … \| Percona Community](https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/)
+> - [High CPU, RAM and disk IO usage once per the configured -retentionPeriod · Issue #1401 · VictoriaMetrics/VictoriaMetrics · GitHub](https://github.com/VictoriaMetrics/VictoriaMetrics/issues/1401)
 
 #### ▼ ストレージの必要サイズの見積もり
 
@@ -250,7 +250,7 @@ vmstorage の `/var/lib/victoriametrics` ディレクトリ配下の増加量 (�
 
 また、`20`%の空きサイズを考慮するために、増加量を `1.2` 倍する必要がある。
 
-> - https://docs.victoriametrics.com/#capacity-planning
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#capacity-planning)
 
 **＊例＊**
 
@@ -351,8 +351,8 @@ $ systemctl daemon-reload
 $ systemctl start victoriametrics
 ```
 
-> - https://github.com/VictoriaMetrics/VictoriaMetrics/blob/master/package/victoria-metrics.service
-> - https://hnakamur.github.io/blog/2019/12/23/install-victoria-metrics/
+> - [VictoriaMetrics/package/victoria-metrics.service at master · VictoriaMetrics/VictoriaMetrics · GitHub](https://github.com/VictoriaMetrics/VictoriaMetrics/blob/master/package/victoria-metrics.service)
+> - [VictoriaMetricsのインストール · hnakamur's blog](https://hnakamur.github.io/blog/2019/12/23/install-victoria-metrics/)
 > - https://www.vultr.com/docs/install-and-configure-victoriametrics-on-debian/
 
 <br>

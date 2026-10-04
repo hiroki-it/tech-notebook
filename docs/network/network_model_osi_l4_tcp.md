@@ -9,7 +9,7 @@ description: TCP＠L4の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -35,7 +35,7 @@ TCP 接続のたびに、送信元と宛先間で TCP スリーウェイハン�
 
 ![tcp-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-keepalive.png)
 
-> - https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/#toc2
+> - [【図解】TCP Keep-Alive/http Keep-Aliveの仕組みと違い ～Client/Serverの挙動とメリット,設定～ \| SEの道標](https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/#toc2)
 > - https://www.ibm.com/docs/ja/zos/2.4.0?topic=functions-tcp-keepalive
 
 <br>
@@ -65,7 +65,7 @@ TCP 接続のたびに、送信元と宛先間で TCP スリーウェイハン�
 
 <!-- prettier-ignore-end -->
 
-> - https://hana-shin.hatenablog.com/entry/2022/04/06/205912#31-ECONNREFUSEDTCP%E3%81%AE%E5%A0%B4%E5%90%88
+> - [ECONNREFUSEDとECONNRESETについて - hana\_shinのLinux技術ブログ](https://hana-shin.hatenablog.com/entry/2022/04/06/205912#31-ECONNREFUSEDTCP%E3%81%AE%E5%A0%B4%E5%90%88)
 
 <br>
 
@@ -101,7 +101,7 @@ TCP 接続中に宛先のプロセスが終了し、接続を強制的に切断�
 
 <!-- prettier-ignore-end -->
 
-> - https://hana-shin.hatenablog.com/entry/2022/04/06/205912#33-ECONNRESET
-> - https://zenn.dev/rescuenow/articles/a01f0effdf3391#%E3%80%8Cconnection-reset-by-peer%E3%80%8D%E3%81%A8%E3%81%AF%EF%BC%9F
+> - [ECONNREFUSEDとECONNRESETについて - hana\_shinのLinux技術ブログ](https://hana-shin.hatenablog.com/entry/2022/04/06/205912#33-ECONNRESET)
+> - [HTTPリクエストにおける「Connection Reset by Peer」が発生する条件とは？](https://zenn.dev/rescuenow/articles/a01f0effdf3391#%E3%80%8Cconnection-reset-by-peer%E3%80%8D%E3%81%A8%E3%81%AF%EF%BC%9F)
 
 <br>

@@ -29,9 +29,9 @@ Fooクラスやfoo関数の内部処理
 返却値として出力
 ```
 
-> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
-> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
-> - https://semaphoreci.com/blog/test-microservices
+> - [【書き起こし】Scenario-Based Integration Testing Platform for Microservices – 森 健太【Merpay Tech Fest 2021】 \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/)
+> - [What Are Different Types of Tests for Microservices? - Parasoft](https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/)
+> - [How to Test Microservices](https://semaphoreci.com/blog/test-microservices)
 
 <br>
 
@@ -59,10 +59,10 @@ Fooクラスやfoo関数の内部処理
 
 マイクロサービスがそれ単体でまさしく動作するかを検証する。
 
-> - https://martinfowler.com/articles/microservice-testing/#testing-component-introduction
-> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
-> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
-> - https://semaphoreci.com/blog/test-microservices
+> - [Testing Strategies in a Microservice Architecture](https://martinfowler.com/articles/microservice-testing/#testing-component-introduction)
+> - [【書き起こし】Scenario-Based Integration Testing Platform for Microservices – 森 健太【Merpay Tech Fest 2021】 \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/)
+> - [What Are Different Types of Tests for Microservices? - Parasoft](https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/)
+> - [How to Test Microservices](https://semaphoreci.com/blog/test-microservices)
 > - https://www.cortex.io/post/an-overview-of-the-key-microservices-testing-strategies-types-of-tests-the-best-testing-tools
 
 <br>
@@ -109,8 +109,8 @@ Fooクラスやfoo関数の内部処理
 
 ![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test.png)
 
-> - https://riotz.works/slides/2020-serverless-meetup-japan-virtual-4/#13
-> - https://zenn.dev/hedrall/articles/cdc-test-20220614
+> - [Pact (Consumer-Driven Contract Testing) を使ってサーバーレスの非同期テストのやりづらさを解決できるか \| Slides \| Riotz.works](https://riotz.works/slides/2020-serverless-meetup-japan-virtual-4/#13)
+> - [マイクロサービス間の整合性を守る、消費者駆動契約テストをNode.jsで試してみる](https://zenn.dev/hedrall/articles/cdc-test-20220614)
 
 <br>
 
@@ -122,7 +122,7 @@ Fooクラスやfoo関数の内部処理
 
 ![cdc-test_contract-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test_contract-service.png)
 
-> - https://docs.pact.io/pact_broker/webhooks#example-cicd-and-webhook-configuration
+> - [Webhooks \| Pact Docs](https://docs.pact.io/pact_broker/webhooks#example-cicd-and-webhook-configuration)
 
 <br>
 
@@ -142,10 +142,10 @@ Fooクラスやfoo関数の内部処理
 
 実際のユーザーを模した一連の操作 (フロントエンドへのリクエスト) を実施し、特定の機能に関するすべてのコンポーネント間 (フロントエンド、各マイクロサービス、外部 API など) の連携のテストを実施する。
 
-> - https://commerce-engineer.rakuten.careers/entry/tech/0031
-> - https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/
-> - https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/
-> - https://semaphoreci.com/blog/test-microservices
+> - [E2Eテスト: 導入の必要性・何を導入するのか - R-Hack（楽天グループ株式会社）](https://commerce-engineer.rakuten.careers/entry/tech/0031)
+> - [【書き起こし】Scenario-Based Integration Testing Platform for Microservices – 森 健太【Merpay Tech Fest 2021】 \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/20210928-mtf2021-day5-3/)
+> - [What Are Different Types of Tests for Microservices? - Parasoft](https://www.parasoft.com/blog/what-are-different-types-of-tests-for-microservices/)
+> - [How to Test Microservices](https://semaphoreci.com/blog/test-microservices)
 
 <br>
 

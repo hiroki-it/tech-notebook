@@ -9,7 +9,7 @@ description: confest＠コード規約違反の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -26,8 +26,8 @@ Rego によるユーザー定義のポリシーに基づいて、さまざまな
 
 一方でビルトインのコード規約はなく、ユーザーが Rego で規約を実装しないといけない。
 
-> - https://github.com/open-policy-agent/conftest
-> - https://www.conftest.dev/examples/
+> - [GitHub - open-policy-agent/conftest: Write tests against structured configuration data using the Open Policy Agent Rego query language · GitHub](https://github.com/open-policy-agent/conftest)
+> - [Examples - Conftest](https://www.conftest.dev/examples/)
 
 <br>
 
@@ -63,8 +63,8 @@ deny[msg] {
 }
 ```
 
-> - https://github.com/open-policy-agent/conftest
-> - https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B
+> - [GitHub - open-policy-agent/conftest: Write tests against structured configuration data using the Open Policy Agent Rego query language · GitHub](https://github.com/open-policy-agent/conftest)
+> - [【Conftest入門】Kubernetesのmanifestファイルをバリデーションする #kubernetes - Qiita](https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B)
 
 #### ▼ violation
 
@@ -82,7 +82,7 @@ violation[msg] {
 }
 ```
 
-> - https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B
+> - [【Conftest入門】Kubernetesのmanifestファイルをバリデーションする #kubernetes - Qiita](https://qiita.com/Udomomo/items/10ed2dbfef85812808da#conftest%E3%81%A7policy%E3%82%92%E6%9B%B8%E3%81%84%E3%81%A6%E3%81%BF%E3%82%8B)
 
 <br>
 
@@ -106,6 +106,6 @@ FAIL - deployment.yaml - Containers must provide app label for pod selectors
 2 tests, 0 passed, 0 warnings, 2 failures, 0 exceptions
 ```
 
-> - https://www.conftest.dev/
+> - [Conftest](https://www.conftest.dev/)
 
 <br>

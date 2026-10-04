@@ -9,7 +9,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -28,7 +28,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | 2018         | モジュラーモノリスアーキテクチャ   | ミニマイクロサービスアーキテクチャではマイクロサービスの粒度が大きくなったものの、複数のマイクロサービスが必要になることは変わらず、その分だけ開発チームが必要になる問題は解決されなかった。そこで、Root Insurance 社はモジュラーモノリスを提唱した。モジュラモノリスでは、マイクロサービスアーキテクチャとモノリスアーキテクチャの間をとった粒度で、アプリケーションを細かいモジュールに分割する。最初、モジュラーモノリスとして設計し、マイクロサービスアーキテクチャに移行していくという選択肢もある。             | ・https://medium.com/@dan_manges/the-modular-monolith-rails-architecture-fb1023826fc4 <br>・https://creators-note.chatwork.com/entry/2020/12/02/090000 <br>・https://eh-career.com/engineerhub/entry/2022/07/25/093000 |
 
 > - https://medium.com/@techworldwithmilan/most-common-software-architecture-styles-86881d779683
-> - https://tech-blog.rakus.co.jp/entry/20201218/architecture
+> - [アーキテクチャ 【まとめ】 -マイクロサービス、ミニサービス、モジュラーモノリス、モノリシックアーキテクチャを並べて比べてみました- - RAKUS Developers Blog \| ラクス エンジニアブログ](https://tech-blog.rakus.co.jp/entry/20201218/architecture)
 
 <br>
 
@@ -43,7 +43,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 |                    | ミニマイクロサービス | アプリケーションがサブドメイン (または境界づけられたコンテキスト) を単位としたマイクロサービスに分割されており、アプリケーションを構成するマイクロサービスのある程度のまとまりをデプロイの単位とする。また、DB を各マイクロサービスで共有する。                                                                                                                                                                          |
 | 一番小さい         | マイクロ             | アプリケーションがサブドメイン (または境界づけられたコンテキスト) を単位としたマイクロサービスに分割されており、1 つの集約を分割の単位とすることもある。アプリケーションを構成するマイクロサービスそれぞれをデプロイの単位とする。また、DB を各マイクロサービスで共有せずに、マイクロサービスごとに配置する。                                                                                                                            |
 
-> - https://tech-blog.rakus.co.jp/entry/20201218/architecture
+> - [アーキテクチャ 【まとめ】 -マイクロサービス、ミニサービス、モジュラーモノリス、モノリシックアーキテクチャを並べて比べてみました- - RAKUS Developers Blog \| ラクス エンジニアブログ](https://tech-blog.rakus.co.jp/entry/20201218/architecture)
 
 <br>
 
@@ -53,14 +53,14 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 フロントエンド領域とバックエンド領域を分離した段階では、フロントエンド領域とバックエンド領域が異なるアプリケーションとして分離される。
 
-マイクロサービスでの段階では、さらにバックエンドが複数のアプリケーションと API アグリゲーション層に分離される。
+マイクロサービスでの段階では、さらにバックエンドが複数のアプリケーションに分離され、必要に応じて API アグリゲーション層を配置する。
 
 ![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/presentation_domain_separation.png)
 
 > - https://cloud.google.com/architecture/devops/devops-tech-architecture
 > - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
 > - https://bliki-ja.github.io/PresentationDomainSeparation/
-> - https://tech.mti.co.jp/entry/2021/04/12/112833
+> - [MicroFrontends について調査しました - エムティーアイ エンジニアリングブログ](https://tech.mti.co.jp/entry/2021/04/12/112833)
 
 <br>
 
@@ -74,13 +74,13 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![microservices_related-patterns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_related-patterns.jpg)
 
-> - https://microservices.io/patterns/
+> - [A pattern language for microservices](https://microservices.io/patterns/)
 
 **＊実装例＊**
 
 `microservices.io` サイトで紹介しきれていない実装方法は、`softwarepatternslexicon` サイトで確認できる。
 
-> - https://softwarepatternslexicon.com/microservices/
+> - [Microservices Architecture & Design Patterns \| Software Patterns Lexicon](https://softwarepatternslexicon.com/microservices/)
 
 #### ▼ マイクロサービスアーキテクチャとクラウドネイティブ
 
@@ -103,7 +103,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | 自己回復                       | Kubernetes Deployment                   |
 | ...                            | ...                                     |
 
-> - https://en.wikipedia.org/wiki/Microservices#A_comparison_of_platforms
+> - [Microservices - Wikipedia](https://en.wikipedia.org/wiki/Microservices#A_comparison_of_platforms)
 > - https://developers.redhat.com/articles/2023/04/05/kubernetes-patterns-path-cloud-native
 
 <br>
@@ -157,7 +157,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google.png)
 
-> - https://github.com/GoogleCloudPlatform/microservices-demo
+> - [GitHub - GoogleCloudPlatform/microservices-demo: Sample cloud-first application with 10 microservices showcasing Kubernetes, Istio, and gRPC. · GitHub](https://github.com/GoogleCloudPlatform/microservices-demo)
 
 #### ▼ E コマース (メルカリのサンプル)
 
@@ -173,7 +173,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_mercari.png)
 
-> - https://github.com/mercari/mercari-microservices-example
+> - [GitHub - mercari/mercari-microservices-example · GitHub](https://github.com/mercari/mercari-microservices-example)
 
 #### ▼ E コマース (Datadog のサンプル)
 
@@ -190,7 +190,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 | store-frontend         | フロントエンドアプリケーション | UI                                          |
 | users-service          | 業務マイクロサービス           | 境界づけられたコンテキスト (ユーザー管理)   |
 
-> - https://github.com/DataDog/ecommerce-workshop
+> - [GitHub - DataDog/ecommerce-workshop: ## Auto-archived due to inactivity. ## Example eCommerce App for workshops and observability · GitHub](https://github.com/DataDog/ecommerce-workshop)
 
 #### ▼ E コマース (Amazon)
 
@@ -214,7 +214,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![service_amazon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_amazon.png)
 
-> - https://www.codekarle.com/system-design/Amazon-system-design.html
+> - [CodeKarle: Amazon System Design \| E Commerce System Design](https://www.codekarle.com/system-design/Amazon-system-design.html)
 
 #### ▼ SNS (Twitter)
 
@@ -232,7 +232,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_twitter.png)
 
-> - https://www.codekarle.com/system-design/Twitter-system-design.html
+> - [CodeKarle: Twitter System Design](https://www.codekarle.com/system-design/Twitter-system-design.html)
 
 #### ▼ 地図 (Google Map)
 
@@ -251,7 +251,7 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 ![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png)
 
-> - https://www.codekarle.com/system-design/Google_Maps-system-design.html
+> - [CodeKarle: Google Maps System Design \| Apple Maps System Design](https://www.codekarle.com/system-design/Google_Maps-system-design.html)
 
 <br>
 
@@ -261,9 +261,9 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 マイクロサービスアーキテクチャのフレームワークとして、Dapr、Spring Cloud、Axon、Eventuate、MicroProfile LRA などがある。
 
-> - https://speakerdeck.com/polar3130/portable-microservices-with-dapr-and-kubernetes?slide=24
-> - https://www.publickey1.jp/blog/19/dapr.html
-> - https://github.com/dapr/dapr
+> - [Dapr × Kubernetes ではじめるポータブルなマイクロサービス / portable microservices with Dapr and Kubernetes - Speaker Deck](https://speakerdeck.com/polar3130/portable-microservices-with-dapr-and-kubernetes?slide=24)
+> - [マイクロソフト、マイクロサービス開発を容易にする「Dapr」をオープンソースで公開。サービス間呼び出し、ステート管理、サービス間メッセージングなど提供 － Publickey](https://www.publickey1.jp/blog/19/dapr.html)
+> - [GitHub - dapr/dapr: Dapr is a portable runtime for building distributed applications across cloud and edge, combining event-driven architecture with workflow orchestration. · GitHub](https://github.com/dapr/dapr)
 
 #### ▼ サービスメッシュとの違い
 

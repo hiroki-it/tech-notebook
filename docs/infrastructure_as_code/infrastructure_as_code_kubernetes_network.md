@@ -23,7 +23,7 @@ Node ネットワークの作成は、Kubernetes の実行環境のネットワ�
 
 ![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node-network.png)
 
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10)
 
 <br>
 
@@ -39,8 +39,8 @@ Service ネットワークの作成は、Kubernetes が担う。
 
 ![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_service-network.png)
 
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=13
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=39
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=13)
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=39)
 
 <br>
 
@@ -54,7 +54,7 @@ Cluster ネットワークの作成は、CNI が担う。
 
 ![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-network.png)
 
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11)
 
 <br>
 
@@ -66,7 +66,7 @@ Pod 内のネットワークのみを経由して、他のコンテナにリク�
 
 Pod ごとにネットワークインターフェースが付与され、また IP アドレスが割り当てられる。
 
-> - https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate
+> - [How do Pods communicate in Kubernetes? - Tutorial Works](https://www.tutorialworks.com/kubernetes-pod-communication/#how-do-containers-in-the-same-pod-communicate)
 
 <br>
 
@@ -82,7 +82,7 @@ Pod のネットワークは複数の種類の名前空間から構成される�
 
 ![kubernetes_pod-network_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod-network_namespace.png)
 
-> - https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway
+> - [What are Kubernetes Pods Anyway? \| Ian Lewis](https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway)
 
 #### ▼ IPC 名前空間
 
@@ -92,8 +92,8 @@ Kubernetes のセキュリティ上の理由から、デフォルトでは Pod �
 
 そのため、コンテナのプロセスは Node のプロセスと通信できないようになっている。
 
-> - https://qiita.com/mamorita/items/15437a1dbcc00919fa4e
-> - https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured
+> - [Kubernetesによる同一Pod内コンテナのプロセス間通信 #kubernetes - Qiita](https://qiita.com/mamorita/items/15437a1dbcc00919fa4e)
+> - [Kubernetes Basics Tutorial: Host IPC Should Not Be Configured](https://www.fairwinds.com/blog/kubernetes-basics-tutorial-host-ipc-should-not-be-configured)
 > - https://medium.com/@chrispisano/limiting-pod-privileges-hostpid-57ce07b05896
 
 ### Network 名前空間
@@ -124,7 +124,7 @@ Service は `L4` ロードバランサーとして、インバウンド通信を
 
 ![kubernetes_network_l4-l7](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png)
 
-> - https://www.netone.co.jp/media/detail/20191226-1/
+> - [Kubernetesネットワーク入門 \| ネットワンシステムズ](https://www.netone.co.jp/media/detail/20191226-1/)
 
 <br>
 
@@ -147,7 +147,7 @@ Pod 内のコンテナから宛先の Pod にリクエストを送信する。
 | Node が異なる場合 | Node ネットワーク + Cluster ネットワーク + Service ネットワーク |
 | Node が同じ場合   | Cluster ネットワーク + Service ネットワーク                     |
 
-> - https://kubernetes.io/docs/concepts/cluster-administration/networking/
+> - [Cluster Networking \| Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 
 <br>
 
@@ -210,8 +210,8 @@ kubelet は、Pod 内のコンテナに Service の宛先情報 (プロトコル
 
 Pod 内のコンテナは、これを使用し、Service を介して Pod にリクエストを送信する。
 
-> - https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services
-> - https://cstoku.dev/posts/2018/k8sdojo-09/#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fservice%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A
+> - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services)
+> - [Kubernetes道場 9日目 - Serviceについて - Toku's Blog](https://cstoku.dev/posts/2018/k8sdojo-09/#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fservice%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A)
 
 **＊実装例＊**
 
@@ -258,9 +258,9 @@ search default.svc.cluster.local svc.cluster.local cluster.local
 options ndots:5
 ```
 
-> - https://amateur-engineer-blog.com/kubernetes-dns/
-> - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
+> - [【Kubernetes】DNSについて知る](https://amateur-engineer-blog.com/kubernetes-dns/)
+> - [KubernetesのPod内からの名前解決を検証する](https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/)
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42)
 
 #### ▼ ndots
 
@@ -292,8 +292,8 @@ options ndots:5
 
 : `example.com.`
 
-> - https://techblog.stanby.co.jp/entry/EKS_Coredns
-> - https://zenn.dev/toversus/articles/d9faba80f68ea2#kubernetes-%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3
+> - [EKSのCoreDNSを安定させるための取り組み - Stanby Tech Blog](https://techblog.stanby.co.jp/entry/EKS_Coredns)
+> - [Kubernetes と名前解決](https://zenn.dev/toversus/articles/d9faba80f68ea2#kubernetes-%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3)
 
 <br>
 
@@ -359,8 +359,8 @@ $ kubectl debug node/<Node名> \
 $ kubectl delete -n default node-debugger-*****
 ```
 
-> - https://qiita.com/tkusumi/items/a62c209972bd0d4913fc
-> - https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89
+> - [Kubernetes: アプリケーションのデバッグ方法 (kubectl exec など) #kubernetes - Qiita](https://qiita.com/tkusumi/items/a62c209972bd0d4913fc)
+> - [kubernetes clusterにcurlのPodを立ててコンテナログインするコマンド - jiroshinのScrapBox](https://scrapbox.io/jiroshin-knowledge/kubernetes_cluster%E3%81%ABcurl%E3%81%AEPod%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%99%E3%82%8B%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89)
 
 #### ▼ デバッグ用 Pod を起動しておく
 

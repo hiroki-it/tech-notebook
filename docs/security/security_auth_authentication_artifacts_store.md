@@ -52,10 +52,10 @@ SSR のアプリケーションはブラウザを操作できないため、ブ�
 </script>
 ```
 
-> - https://developer.mozilla.org/ja/docs/Web/API/Window/sessionStorage#%E4%BE%8B
-> - https://zenn.dev/simsim/articles/3f3e043dd750e8
+> - [Window: sessionStorage プロパティ - Web API \| MDN](https://developer.mozilla.org/ja/docs/Web/API/Window/sessionStorage#%E4%BE%8B)
+> - [SessionStorageとLocalStorageとCookiesの違いと利用例](https://zenn.dev/simsim/articles/3f3e043dd750e8)
 > - https://magazine.techacademy.jp/magazine/32870
-> - https://mizumotok.hatenablog.jp/entry/2021/08/04/114431#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E6%89%80
+> - [SPA認証トークンはlocalStorageでもCookieでもない、Auth0方式はいいねというお話 - @mizumotokのブログ](https://mizumotok.hatenablog.jp/entry/2021/08/04/114431#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E6%89%80)
 
 <br>
 
@@ -119,8 +119,8 @@ LocalStorage は SessionStorage と比べて保管期間が長いため、XSS �
 </script>
 ```
 
-> - https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage#%E4%BE%8B
-> - https://qiita.com/masuda-sankosc/items/cff6131efd6e1b5138e6#%E6%A7%8B%E6%96%87
+> - [Window: localStorage プロパティ - Web API \| MDN](https://developer.mozilla.org/ja/docs/Web/API/Window/localStorage#%E4%BE%8B)
+> - [Local Storageを使ってみる #JavaScript - Qiita](https://qiita.com/masuda-sankosc/items/cff6131efd6e1b5138e6#%E6%A7%8B%E6%96%87)
 
 <br>
 
@@ -130,16 +130,16 @@ LocalStorage は SessionStorage と比べて保管期間が長いため、XSS �
 
 次回のログイン時に、最近閲覧した情報として表示する。
 
-> - https://webliker.info/web-skill/how-to-use-localstrage/
+> - [【サンプル付き】Local Storageとは？使い方を詳しく解説｜webliker（ウェブライカー）](https://webliker.info/web-skill/how-to-use-localstrage/)
 
 <br>
 
 ### 場所
 
-> - https://developer.chrome.com/docs/devtools/storage/localstorage/
-> - https://zenn.dev/simsim/articles/3f3e043dd750e8
+> - [View and edit local storage \| Chrome DevTools \| Chrome for Developers](https://developer.chrome.com/docs/devtools/storage/localstorage/)
+> - [SessionStorageとLocalStorageとCookiesの違いと利用例](https://zenn.dev/simsim/articles/3f3e043dd750e8)
 > - https://magazine.techacademy.jp/magazine/32870
-> - https://mizumotok.hatenablog.jp/entry/2021/08/04/114431#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E6%89%80
+> - [SPA認証トークンはlocalStorageでもCookieでもない、Auth0方式はいいねというお話 - @mizumotokのブログ](https://mizumotok.hatenablog.jp/entry/2021/08/04/114431#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E6%89%80)
 
 **＊例＊**
 
@@ -171,9 +171,9 @@ CSR または SSR のアプリケーションは、`Cookie` ヘッダーを介�
 
 ブラウザを閉じても、ブラウザは Cookie のアクセストークンを破棄せず、認証の成功状態を維持できる。
 
-> - https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720
+> - [How do i get access-token from local storage is SSR without cookie? · vercel/next.js · Discussion #39915 · GitHub](https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720)
 > - https://zenn.dev/link/comments/90928f69712b11
-> - https://zenn.dev/marton/articles/67f7ec30cda716
+> - [SSRのNext.jsにJWT TokenをHeaderに追加してtRPC通信を行う](https://zenn.dev/marton/articles/67f7ec30cda716)
 
 #### ▼ 場所
 
@@ -181,7 +181,7 @@ CSR または SSR のアプリケーションは、`Cookie` ヘッダーを介�
 
 クライアント PC が MacOS であれば、Chrome は `/Users/<ユーザー名>/Library/Application Support/Google/Chrome/Default/Cookies` ディレクトリに `Cookie` ヘッダーの値を保管する。
 
-> - https://qiita.com/EasyCoder/items/8ce7dfd75d05079be9d7#cookie%E3%81%AF%E3%81%A9%E3%81%93%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B
+> - [cookieについてまとめ #初心者 - Qiita](https://qiita.com/EasyCoder/items/8ce7dfd75d05079be9d7#cookie%E3%81%AF%E3%81%A9%E3%81%93%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%95%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B)
 
 <br>
 

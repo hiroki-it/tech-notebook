@@ -9,7 +9,7 @@ description: レンダリングの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -409,9 +409,9 @@ JSX.Element
 />
 ```
 
-> - https://www.telerik.com/blogs/intersection-observer-api-makes-lazy-loading-a-snap
-> - https://velog.io/@katanazero86/Intersection-Observer-API
-> - https://ics.media/entry/190902/
+> - [Intersection Observer API Makes Lazy Loading a Snap](https://www.telerik.com/blogs/intersection-observer-api-makes-lazy-loading-a-snap)
+> - [Intersection Observer API](https://velog.io/@katanazero86/Intersection-Observer-API)
+> - [JSでのスクロール連動エフェクトにはIntersection Observerが便利 - ICS MEDIA](https://ics.media/entry/190902/)
 
 <br>
 
@@ -486,7 +486,7 @@ DOM ツリーを作成する途中で script タグに到達すると、いっ�
 
 DOM のインターフェースについては、以下のリンクを参考にせよ。
 
-> - https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
+> - [ドキュメントオブジェクトモデル (DOM) - Web API \| MDN](https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model)
 
 ![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree.png)
 

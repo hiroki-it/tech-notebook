@@ -9,7 +9,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: サイバー攻撃＠セキュリティの知見を記録してい�
 
 報告された脆弱性レポートについて、一意な番号をつけて管理した DB のこと。
 
-> - https://www.nic.ad.jp/ja/basics/terms/cve.html
+> - [インターネット用語1分解説～CVEとは～ - JPNIC](https://www.nic.ad.jp/ja/basics/terms/cve.html)
 > - https://www.toyo.co.jp/onetech_blog/articles/detail/id=36064
 
 <br>
@@ -32,13 +32,13 @@ GitHub で脆弱性に関する Issue が立てられ、これが致命的であ
 
 GitHub 上の OSS の CVE は、GitHub Advisory Database で検索できる。
 
-> - https://github.com/advisories
+> - [GitHub Advisory Database · GitHub](https://github.com/advisories)
 
 また、各リポジトリのセキュリティの項目で各 OSS の CVE を確認できる。
 
 > - https://docs.github.com/ja/code-security/getting-started/adding-a-security-policy-to-your-repository
-> - https://github.com/argoproj/argo-cd/security
-> - https://github.com/istio/istio/security
+> - [Overview · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/security)
+> - [Overview · istio/istio · GitHub](https://github.com/istio/istio/security)
 
 #### ▼ GitLab
 
@@ -50,7 +50,7 @@ GitLab 上の OSS の CVE は、GitLab Advisory Database で検索できる。
 
 RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 
-> - https://access.redhat.com/security/security-updates/cve
+> - [Security Updates](https://access.redhat.com/security/security-updates/cve)
 
 <br>
 
@@ -59,7 +59,7 @@ RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 - NVD
 - ICAT
 
-> - https://ja.wikipedia.org/wiki/%E8%84%86%E5%BC%B1%E6%80%A7%E6%83%85%E5%A0%B1%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9
+> - [脆弱性情報データベース - Wikipedia](https://ja.wikipedia.org/wiki/%E8%84%86%E5%BC%B1%E6%80%A7%E6%83%85%E5%A0%B1%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9)
 
 <br>
 
@@ -71,7 +71,7 @@ RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 
 二者間の通信に割り込み、情報漏洩/改竄/なりすましによって通信を攻撃する。
 
-> - https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/
+> - [中間者 (MITM) 攻撃 \| Rapid7](https://www.rapid7.com/ja/fundamentals/man-in-the-middle-mitm-attacks/)
 
 <br>
 
@@ -170,7 +170,7 @@ SELECT * from USER where USER_NAME = 'foo' and PASSWORD = 'aaa' or '1' ='1'
 
 この SQL は、`'1' ='1'` により `true` となり、処理に成功してしまう。
 
-> - https://zenn.dev/mo_ri_regen/articles/sql-injection
+> - [SQLインジェクションについてまとめてみた](https://zenn.dev/mo_ri_regen/articles/sql-injection)
 
 <br>
 
@@ -204,8 +204,8 @@ Web アプリによる HTML 出力のエスケープ処理の欠陥を悪用し�
 
 スクリプトは、Cookie をサイトに送信する。
 
-> - https://zenn.dev/oreo2990/articles/d33a264b2d8b4c
-> - https://www.tohoho-web.com/ex/xss.html
+> - [XSSを理解して安全なWebアプリケーションを作る](https://zenn.dev/oreo2990/articles/d33a264b2d8b4c)
+> - [クロスサイトスクリプティング(XSS) - とほほのWWW入門](https://www.tohoho-web.com/ex/xss.html)
 
 <br>
 

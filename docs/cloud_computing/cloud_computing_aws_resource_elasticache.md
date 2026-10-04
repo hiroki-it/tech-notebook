@@ -19,8 +19,8 @@ description: Amazon ElastiCache＠AWSリソースの知見を記録していま�
 
 Redis と Memcached がある。
 
-> - https://qiita.com/hharu/items/c8c2954290f920f8a2f6
-> - https://christina04.hatenablog.com/entry/redis-distributed-locking
+> - [Redisのキャッシュストア以外の使い方 #Redis - Qiita](https://qiita.com/hharu/items/c8c2954290f920f8a2f6)
+> - [Redisを使った分散ロック (SETNX, Redlock) - Carpe Diem](https://christina04.hatenablog.com/entry/redis-distributed-locking)
 
 <br>
 
@@ -130,8 +130,8 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 
 ![クエリCache管理機能_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クエリCache管理機能_1.png)
 
-> - https://aws.amazon.com/jp/blogs/news/optimize-cost-and-boost-performance-of-rds-for-mysql-using-amazon-elasticache-for-redis/
-> - https://yakst.com/ja/posts/4612
+> - [Amazon ElastiCache を使用して RDS for MySQL ワークロードのコストを最適化し、パフォーマンスを向上させる \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/optimize-cost-and-boost-performance-of-rds-for-mysql-using-amazon-elasticache-for-redis/)
+> - [MySQL 8.0 : クエリーキャッシュのサポート終了 \| Yakst](https://yakst.com/ja/posts/4612)
 
 #### ▼ 仕組み
 

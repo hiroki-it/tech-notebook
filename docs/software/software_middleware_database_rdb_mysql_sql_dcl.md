@@ -9,7 +9,7 @@ description: DCL＠SQLの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: DCL＠SQLの知見を記録しています。
 
 トランザクション処理を制御するクエリのこと。
 
-> - https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DCL-Data-Control-Language
+> - [SQLの種類(DDL、DML、DCL) \| 酒と涙とRubyとRailsと](https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DCL-Data-Control-Language)
 
 <br>
 
@@ -207,6 +207,6 @@ SELECT *
 FROM score;
 ```
 
-> - https://tech.pjin.jp/blog/2020/11/30/%E3%80%90sql%E5%85%A5%E9%96%80%E3%80%91%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88%E3%81%A8%E3%83%AD%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF/
+> - [【SQL基礎】コミットとロールバック \| TECH PROjin](https://tech.pjin.jp/blog/2020/11/30/%E3%80%90sql%E5%85%A5%E9%96%80%E3%80%91%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88%E3%81%A8%E3%83%AD%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF/)
 
 <br>

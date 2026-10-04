@@ -9,7 +9,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -33,7 +33,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 ![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-1.png)
 
-> - https://www.amazon.co.jp/dp/4297124513
+> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
 <br>
 
@@ -43,7 +43,7 @@ description: メモリ＠ハードウェアの知見を記録しています。
 
 ![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-2.png)
 
-> - https://www.amazon.co.jp/dp/4297124513
+> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
 <br>
 
@@ -133,7 +133,7 @@ CPU は、キャッシュメモリのみに書き込む。
 
 ![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p171-1.png)
 
-> - https://www.amazon.co.jp/dp/4297124513
+> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
 <br>
 
@@ -165,7 +165,7 @@ Chrome の場合は、CacheStorage に保管される。
 
 ![client_side_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client_side_cache.png)
 
-> - https://developer.chrome.com/docs/devtools/storage/cache/
+> - [View cache data \| Chrome DevTools \| Chrome for Developers](https://developer.chrome.com/docs/devtools/storage/cache/)
 
 <br>
 
@@ -197,7 +197,7 @@ AWS では、Amazon CloudFront におけるキャッシュがこれに相当す�
 
 Laravel のキャッシュ機能については、以下のリンクを参考にせよ。
 
-> - https://readouble.com/laravel/8.x/ja/cache.html
+> - [8.x キャッシュ Laravel](https://readouble.com/laravel/8.x/ja/cache.html)
 
 #### ▼ DB キャッシュ
 
@@ -392,7 +392,7 @@ GPU と VRAM のサイズによって、扱うことのできる解像度と色�
 
 色数によって、`1` ドット当たりに必要なビット数が異なる。
 
-> - https://www.amazon.co.jp/dp/4297124513
+> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
 ![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p204.jpg)
 

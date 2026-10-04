@@ -9,7 +9,7 @@ description: Docker＠コンテナ型仮想化の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -34,7 +34,7 @@ namespace と cgroups を使用して、ホスト OS を分割した領域であ
 namespace では、カーネルを分離できるため、カーネルの要素 (プロセス、マウントポイント、ネットワーク、ファイル構造、ユーザー、グループなど) を独立させられる。
 
 > - https://www.itbook.info/network/docker06.html
-> - https://tech-lab.sios.jp/archives/18811
+> - [【連載】世界一わかりみが深いコンテナ & Docker入門 〜 その1:コンテナってなに？ 〜 \| SIOS Tech Lab](https://tech-lab.sios.jp/archives/18811)
 
 #### ▼ ベースイメージ
 
@@ -66,7 +66,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 ```
 
 > - https://www.creationline.com/lab/35518
-> - https://tech-lab.sios.jp/archives/21103#OverlayFS
+> - [【連載】世界一わかりみが深いコンテナ & Docker入門 〜 その6:Dockerのファイルシステムってどうなってるの？ 〜 \| SIOS Tech Lab](https://tech-lab.sios.jp/archives/21103#OverlayFS)
 
 #### ▼ コンテナレイヤー
 
@@ -74,7 +74,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 ![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
 
-> - https://blog.codecamp.jp/programming-docker-image-container
+> - [Dockerのイメージとコンテナの違い \| CodeCampus](https://blog.codecamp.jp/programming-docker-image-container)
 
 <br>
 
@@ -88,14 +88,14 @@ root ユーザー権限の Capability (CHOWN、NET_RAW、CAP_SYS_BOOT、CAP_AUDI
 
 /proc 配下には Node へのアクセスを中継するファイルがあるため、特権コンテナの実行ユーザーは Node 上で任意のコマンドを実行できる。
 
-> - https://jpn.nec.com/cybersecurity/blog/210730/index.html
-> - https://zenn.dev/mizuba/articles/f37889a137e28d
+> - [特権コンテナの脅威から学ぶコンテナセキュリティ: NECセキュリティブログ \| NEC](https://jpn.nec.com/cybersecurity/blog/210730/index.html)
+> - [/procファイルシステム：Linuxの心臓部への窓](https://zenn.dev/mizuba/articles/f37889a137e28d)
 
 #### ▼ 通常コンテナ
 
 root ユーザーで実行したコンテナのこと。
 
-> - https://jpn.nec.com/cybersecurity/blog/210730/index.html
+> - [特権コンテナの脅威から学ぶコンテナセキュリティ: NECセキュリティブログ \| NEC](https://jpn.nec.com/cybersecurity/blog/210730/index.html)
 
 #### ▼ 非 root コンテナ
 
@@ -103,8 +103,8 @@ root ユーザーで実行したコンテナのこと。
 
 これらのユーザーは、Capability を全く持たない。
 
-> - https://jpn.nec.com/cybersecurity/blog/210730/index.html
-> - https://rootlesscontaine.rs/
+> - [特権コンテナの脅威から学ぶコンテナセキュリティ: NECセキュリティブログ \| NEC](https://jpn.nec.com/cybersecurity/blog/210730/index.html)
+> - [Rootless Containers \| Rootless Containers](https://rootlesscontaine.rs/)
 
 <br>
 
@@ -156,9 +156,9 @@ docker クライアントに docker デーモン API を公開する。
 
 注意点として、Kubernetes とは namespace の種類が異なる。
 
-> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4
-> - https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway
-> - https://tech-lab.sios.jp/archives/18811
+> - [第2回 コンテナの仕組みとLinuxカーネルのコンテナ機能［1］名前空間とは？ \| gihyo.jp](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4)
+> - [What are Kubernetes Pods Anyway? \| Ian Lewis](https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway)
+> - [【連載】世界一わかりみが深いコンテナ & Docker入門 〜 その1:コンテナってなに？ 〜 \| SIOS Tech Lab](https://tech-lab.sios.jp/archives/18811)
 
 <br>
 
@@ -168,7 +168,7 @@ SysV IPC オブジェクト、POSIX メッセージキューを分離する。
 
 コンテナは、同じ IPC namespace に属するほかのプロセスと通信できる。
 
-> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5
+> - [第2回 コンテナの仕組みとLinuxカーネルのコンテナ機能［1］名前空間とは？ \| gihyo.jp](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5)
 
 <br>
 
@@ -178,7 +178,7 @@ SysV IPC オブジェクト、POSIX メッセージキューを分離する。
 
 各コンテナが独立した、ネットワークデバイス、アドレス、ポート、ルーティングテーブル、フィルタを持てるようになる。
 
-> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h7
+> - [第2回 コンテナの仕組みとLinuxカーネルのコンテナ機能［1］名前空間とは？ \| gihyo.jp](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h7)
 
 <br>
 
@@ -188,7 +188,7 @@ SysV IPC オブジェクト、POSIX メッセージキューを分離する。
 
 各コンテナが独立してマウントを処理できるようになる。
 
-> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h2
+> - [第2回 コンテナの仕組みとLinuxカーネルのコンテナ機能［1］名前空間とは？ \| gihyo.jp](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h2)
 
 <br>
 
@@ -200,7 +200,7 @@ SysV IPC オブジェクト、POSIX メッセージキューを分離する。
 
 逆に言うと、同じ PID namespace に属するプロセスの PID は同じになる。
 
-> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5
+> - [第2回 コンテナの仕組みとLinuxカーネルのコンテナ機能［1］名前空間とは？ \| gihyo.jp](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h5)
 
 <br>
 
@@ -216,8 +216,8 @@ SysV IPC オブジェクト、POSIX メッセージキューを分離する。
 
 これに伴い、コンテナを root ユーザーで実行することに脆弱性がある。
 
-> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h8
-> - https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations
+> - [第2回 コンテナの仕組みとLinuxカーネルのコンテナ機能［1］名前空間とは？ \| gihyo.jp](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h8)
+> - [Isolate containers with a user namespace \| Docker Docs](https://docs.docker.com/engine/security/userns-remap/#user-namespace-known-limitations)
 
 <br>
 
@@ -227,7 +227,7 @@ SysV IPC オブジェクト、POSIX メッセージキューを分離する。
 
 各コンテナが独立したドメインを持てるようになる。
 
-> - https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h4
+> - [第2回 コンテナの仕組みとLinuxカーネルのコンテナ機能［1］名前空間とは？ \| gihyo.jp](https://gihyo.jp/admin/serial/01/linux_containers/0002#sec4_h4)
 
 <br>
 
@@ -283,7 +283,7 @@ Amazon ECS コンテナの awsfirelens ドライバーは、fluentd ドライバ
 ```
 
 > - https://docs.docker.com/config/containers/logging/fluentd/
-> - https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/
+> - [詳解 FireLens – Amazon ECS タスクで高度なログルーティングを実現する機能を深く知る \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-firelens-for-amazon-ecs-tasks/)
 
 #### ▼ none
 

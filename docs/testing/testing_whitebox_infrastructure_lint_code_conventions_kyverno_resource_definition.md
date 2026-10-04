@@ -9,7 +9,7 @@ description: リソース定義＠Kyvernoの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,7 +31,7 @@ $ kubectl create namespace kyverno
 $ helm install <Helmリリース名> <チャートリポジトリ名>/kyverno -n kyverno --version <バージョンタグ>
 ```
 
-> - https://kyverno.github.io/kyverno/
+> - [Kyverno Helm Chart \| kyverno](https://kyverno.github.io/kyverno/)
 
 <br>
 
@@ -141,7 +141,7 @@ spec:
               app.kubernetes.io/name: "?*"
 ```
 
-> - https://zenn.dev/k6s4i53rx/articles/5942b9e77b041b#dry-run-%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B
+> - [Kyvernoで作成したポリシーを"実環境のリソースでリハーサル（dry-run）"する](https://zenn.dev/k6s4i53rx/articles/5942b9e77b041b#dry-run-%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B)
 
 **＊実装例＊**
 

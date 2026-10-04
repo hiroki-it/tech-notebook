@@ -9,7 +9,7 @@ description: AWS Chatbot＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -41,6 +41,6 @@ AWS リソースのイベントを、Amazon EventBridge (Amazon CloudWatch イ�
 
 サポート対象の AWS リソースは以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/chatbot/latest/adminguide/related-services.html#cloudwatchevents
+> - [Monitoring AWS services using Amazon Q Developer in chat applications - Amazon Q Developer in chat applications](https://docs.aws.amazon.com/chatbot/latest/adminguide/related-services.html#cloudwatchevents)
 
 <br>

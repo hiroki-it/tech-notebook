@@ -9,7 +9,7 @@ description: SSO＠認証アーティファクトによる分類の知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -57,7 +57,7 @@ SSO には、認証フェーズと認可フェーズがあり、`3` 個の役割
 | ID プロバイダー  | トークン (例：アクセストークン、ID トークンなど) を作成するサーバーのこと。 | Ouath 認証の仕組みにおける認可サーバー。     |
 | API サーバー     | クライアントに対して、リソースのレスポンスを返信するサーバーのこと。        | Ouath 認証の仕組みにおけるリソースサーバー。 |
 
-> - https://japan.zdnet.com/article/35126144/
+> - [APIセキュリティ入門（2）：APIの認証と認可をスケールする手法 - ZDNET Japan](https://japan.zdnet.com/article/35126144/)
 
 <br>
 
@@ -93,6 +93,6 @@ API クライアントは、ID プロバイダーに資格情報 (例：クラ�
 
 ![auth0_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/auth0_sso.png)
 
-> - https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25
+> - [Auth0を使った認証基盤導入の取り組みとシングルログアウトの話 / ginzarails\_vol35\_presentation - Speaker Deck](https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25)
 
 <br>

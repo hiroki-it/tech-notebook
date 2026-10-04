@@ -29,15 +29,15 @@ Pod を Node 内の Cluster ネットワークに参加させると、異なる 
 
 ![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png)
 
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
-> - https://kubernetes.io/docs/concepts/cluster-administration/networking/
-> - https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29)
+> - [Cluster Networking \| Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
+> - [CalicoによるKubernetesピュアL3ネットワーキング - Yahoo! JAPAN Tech Blog](https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/)
 
 <br>
 
 ### CNI と CRI の関係
 
-> - https://jimmysong.io/blog/cni-deep-dive/
+> - [CNI Essentials: Powering Kubernetes' Network \| Jimmy Song](https://jimmysong.io/blog/cni-deep-dive/)
 
 <br>
 
@@ -45,15 +45,15 @@ Pod を Node 内の Cluster ネットワークに参加させると、異なる 
 
 #### ▼ Pod と Node 間の通信
 
-> - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/166890
+> - [ホストと自身に配置されているPodの通信｜Kubernetesネットワーク 徹底解説](https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/166890)
 
 #### ▼ 同じ Node 上の Pod 間
 
-> - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/238ea7
+> - [同一ホスト上でのPod間通信｜Kubernetesネットワーク 徹底解説](https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/238ea7)
 
 #### ▼ 異なる Node 上の Pod 間
 
-> - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/0d112c#calico%E6%96%B9%E5%BC%8F
+> - [異なるホスト上でのPod間通信｜Kubernetesネットワーク 徹底解説](https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/0d112c#calico%E6%96%B9%E5%BC%8F)
 
 <br>
 
@@ -68,10 +68,10 @@ Pod を Node 内の Cluster ネットワークに参加させると、異なる 
 ![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode.png)
 
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/
-> - https://www.netstars.co.jp/kubestarblog/k8s-3/
+> - [3.《CNI および CNI プラグインについて》 - NETSTARS](https://www.netstars.co.jp/kubestarblog/k8s-3/)
 > - https://www1.gifu-u.ac.jp/~hry_lab/rs-overlay.html
 > - https://www.slideshare.net/ThomasGraf5/cilium-bringing-the-bpf-revolution-to-kubernetes-networking-and-security#28
-> - https://caddi.tech/archives/3864
+> - [Ciliumを試す -サービスメッシュにサイドカーが必須だと思っていたがそんなことはなかったぜ- - CADDi Tech Blog](https://caddi.tech/archives/3864)
 
 <br>
 
@@ -84,9 +84,9 @@ CNI によって、`L2` または `L3` を提供する。
 - Weave (`L2`)
 - Cilium (`L3`/`L4`/`L7`)
 
-> - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
-> - https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/
-> - https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/0d112c#flannel%E6%96%B9%E5%BC%8F
+> - [Creating a cluster with kubeadm \| Kubernetes](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
+> - [CalicoによるKubernetesピュアL3ネットワーキング - Yahoo! JAPAN Tech Blog](https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/)
+> - [異なるホスト上でのPod間通信｜Kubernetesネットワーク 徹底解説](https://zenn.dev/taisho6339/books/fc6facfb640d242dc7ec/viewer/0d112c#flannel%E6%96%B9%E5%BC%8F)
 > - https://medium.com/mhiro2/learn-calico-3f4962b2c26c
 
 <br>
@@ -99,7 +99,7 @@ Pod のネットワークインターフェース (`eth`) 、Node の仮想ネ�
 
 ![kubernetes_cni-addon_overlay-mode_same-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_same-node.png)
 
-> - https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode
+> - [Kubernetes Network Deep Dive (NodePort, ClusterIP, Flannel) #Docker - Qiita](https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode)
 
 #### ▼ 異なる Node 上の Pod 間通信
 
@@ -107,7 +107,7 @@ Pod のネットワークインターフェース (`eth`) 、Node の仮想ネ�
 
 ![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
 
-> - https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode
+> - [Kubernetes Network Deep Dive (NodePort, ClusterIP, Flannel) #Docker - Qiita](https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode)
 
 <br>
 
@@ -117,7 +117,7 @@ Pod のネットワークインターフェース (`eth`) 、Node の仮想ネ�
 
 ルーティングテーブルを使用して、Cluster ネットワークを作成し、異なる Node 上の Pod 間を接続する。
 
-> - https://www.netstars.co.jp/kubestarblog/k8s-3/
+> - [3.《CNI および CNI プラグインについて》 - NETSTARS](https://www.netstars.co.jp/kubestarblog/k8s-3/)
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 
 <br>
@@ -130,8 +130,8 @@ CNI によって、`L2` または `L3` を提供する。
 - flannel-hostgw (`L3`)
 - sriov
 
-> - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network
-> - https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/
+> - [Creating a cluster with kubeadm \| Kubernetes](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#pod-network)
+> - [CalicoによるKubernetesピュアL3ネットワーキング - Yahoo! JAPAN Tech Blog](https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/)
 > - https://medium.com/mhiro2/learn-calico-3f4962b2c26c
 
 <br>
@@ -142,7 +142,7 @@ CNI によって、`L2` または `L3` を提供する。
 
 アンダーレイネットワークを使用して、Cluster ネットワークを作成し、異なる Node 上の Pod 間を接続する。
 
-> - https://www.netstars.co.jp/kubestarblog/k8s-3/
+> - [3.《CNI および CNI プラグインについて》 - NETSTARS](https://www.netstars.co.jp/kubestarblog/k8s-3/)
 
 <br>
 
@@ -160,7 +160,7 @@ CNI によって、`L2` または `L3` を提供する。
 - Multus
 - Whereabout
 
-> - https://qiita.com/ynakaoku/items/14884f4fb04423bf9747
-> - https://antrea.io/docs/v1.11.3/
+> - [Antrea Cluster Network Policy を使う (2021年版) #kubernetes - Qiita](https://qiita.com/ynakaoku/items/14884f4fb04423bf9747)
+> - [Antrea](https://antrea.io/docs/v1.11.3/)
 
 <br>

@@ -9,7 +9,7 @@ description: 言語の種類＠言語を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,9 +21,9 @@ description: 言語の種類＠言語を記録しています。
 
 ![プログラミング言語と設計手法の歴史](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プログラミング言語と設計手法の歴史.png)
 
-> - https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/
-> - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
-> - https://umtp-japan.org/event-seminar/4233
+> - [What exactly is a programming paradigm?](https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/)
+> - [プログラミングパラダイム一覧！種類やそれぞれの概要を簡単に解説！ ｜ 案件評判](https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/)
+> - [第9回UMTPモデリング技術ワークショップ 議論詳細 - UMTP 特定非営利活動法人UMLモデリング推進協議会](https://umtp-japan.org/event-seminar/4233)
 
 <br>
 
@@ -51,9 +51,9 @@ description: 言語の種類＠言語を記録しています。
 | Scala      |          |        |         ✅         |        |   ✅   |   ✅   |        |
 | SQL        |          |        |                    |        |   ✅   |        |        |
 
-> - https://web-camp.io/magazine/archives/61816
-> - https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/
-> - https://style.potepan.com/articles/12941.html
+> - [プログラミングパラダイムとは？種類やそれぞれの特徴を詳しく解説 - SHIFT TERAS CAMPUS](https://web-camp.io/magazine/archives/61816)
+> - [プログラミングパラダイム一覧！種類やそれぞれの概要を簡単に解説！ ｜ 案件評判](https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/)
+> - [プログラミングの考え方を変えるパラダイムとは？分かりやすく解説しました！ \| ポテパンスタイル](https://style.potepan.com/articles/12941.html)
 
 <br>
 
@@ -105,7 +105,7 @@ JVM (Java Virtual Machine) によって、中間言語方式で翻訳される�
 - Groovy
 - Kotlin
 
-> - https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/
+> - [1.2 Javaとは \| 神田ITスクール](https://kanda-it-school-kensyu.com/java-basic-intro-contents/jbi_ch01/jbi_0102/)
 
 <br>
 
@@ -115,7 +115,7 @@ JVM (Java Virtual Machine) によって、中間言語方式で翻訳される�
 
 プログラミングの構成要素 (データ、変数、関数) に対して、『型』という特性を付与する仕組みのこと。
 
-> - https://ja.wikipedia.org/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
+> - [型システム - Wikipedia](https://ja.wikipedia.org/wiki/%E5%9E%8B%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0)
 
 <br>
 

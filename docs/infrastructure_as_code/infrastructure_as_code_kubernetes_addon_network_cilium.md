@@ -9,7 +9,7 @@ description: Cilium@ネットワーク系の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: Cilium@ネットワーク系の知見を記録しています。
 
 Cilium は、Cilium エージェント、Cilium CNI から構成される。
 
-> - https://caddi.tech/archives/3864
+> - [Ciliumを試す -サービスメッシュにサイドカーが必須だと思っていたがそんなことはなかったぜ- - CADDi Tech Blog](https://caddi.tech/archives/3864)
 
 <br>
 
@@ -33,8 +33,8 @@ Cilium エージェントは、システムコールのイベントが発生し�
 
 これにより、Cilium はシステムコールのテレメトリーを収集できる。
 
-> - https://www.publickey1.jp/blog/22/grafanaciliumebpfciliumgrafana.html
-> - https://gihyo.jp/admin/column/newyear/2022/cloudnative-prospect
+> - [GrafanaとCiliumが戦略的提携。eBPFベースの強力な可観測性のCiliumとGrafanaの統合を推進 － Publickey](https://www.publickey1.jp/blog/22/grafanaciliumebpfciliumgrafana.html)
+> - [2022年に注目したいCloudNative関連技術 \| gihyo.jp](https://gihyo.jp/admin/column/newyear/2022/cloudnative-prospect)
 
 <br>
 
@@ -46,7 +46,7 @@ Kubernetes のデフォルトの CNI と衝突するため、これを無効化�
 
 デフォルトの CNI を無効化すると、この CNI と kube-proxy が Cilium CNI に置き換わる。
 
-> - https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/
+> - [Kubernetes Without kube-proxy — Cilium 1.20.2 documentation](https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/)
 
 #### ▼ Istio との連携
 
@@ -68,7 +68,7 @@ Istio と Cilium サービスメッシュの間で競合する機能 (例えば�
 
 しかし、全体としてかなり複雑な設定になりそうです
 
-> - https://docs.cilium.io/en/latest/network/servicemesh/istio/#istio-configuration
+> - [Integration with Istio — Cilium 1.21.0-dev documentation](https://docs.cilium.io/en/latest/network/servicemesh/istio/#istio-configuration)
 
 <br>
 
@@ -82,8 +82,8 @@ Cilium Service Mesh は、eBPF と Envoy を使用して通信を処理する。
 
 そのため、Istio のように、既存の Kubernetes のネットワークを残したままサービスメッシュを導入できない。
 
-> - https://docs.cilium.io/en/stable/network/servicemesh/
-> - https://caddi.tech/archives/3864
+> - [Service Mesh — Cilium 1.20.2 documentation](https://docs.cilium.io/en/stable/network/servicemesh/)
+> - [Ciliumを試す -サービスメッシュにサイドカーが必須だと思っていたがそんなことはなかったぜ- - CADDi Tech Blog](https://caddi.tech/archives/3864)
 
 <br>
 
@@ -93,6 +93,6 @@ Node 上の Pod 間の通信を IPSec や WireGuard で暗号化する。
 
 ![cilium-service-mesh_tls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cilium-service-mesh_tls.png)
 
-> - https://isovalent.com/blog/post/2022-05-03-servicemesh-security/
+> - [Next-Generation Mutual Authentication (mTLS) with Cilium Service Mesh](https://isovalent.com/blog/post/2022-05-03-servicemesh-security/)
 
 <br>

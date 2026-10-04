@@ -9,7 +9,7 @@ description: Amazon CloudFront＠AWSリソースの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -46,7 +46,7 @@ VPC の外側 (パブリックネットワーク) に配置されている。
 | Restriction              |                                                                           |      |
 | Invalidation             | Amazon CloudFront に保管されているキャッシュを削除できる。                |      |
 
-> - https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/
+> - [WordPressで構築されているウェブサイトにCloudFrontを立てて高速化＆セキュリティ強化② \| ソフトウェア開発のギークフィード](https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/)
 
 #### ▼ General
 
@@ -155,7 +155,7 @@ CLoudFront からオリジンに `Host` ヘッダーをルーティングしな�
 
 Amazon CloudFront は世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。
 
-> - https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc
+> - [コンテンツ配信ネットワークの主な機能 – パフォーマンス、セキュリティ – Amazon CloudFront](https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc)
 
 <br>
 
@@ -167,8 +167,8 @@ Amazon CloudFront のドメインは、Amazon Route 53 の DNS レコードと�
 
 ![cloudfront_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
 
-> - https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html
+> - [AWS テクニカルトレーナーと学ぶ Amazon CloudFront ~ エッジロケーションを使った通信の仕組み - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name)
+> - [How CloudFront delivers content - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html)
 
 <br>
 
@@ -178,8 +178,8 @@ Amazon CloudFront のドメインは、Amazon Route 53 の DNS レコードと�
 
 地理的にクライアントからもっとも近い場所にあるキャッシュサーバーである。
 
-> - https://xtech.nikkei.com/it/atclncf/service/00040/101700001/
-> - https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name
+> - [Amazon CloudFront \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/atclncf/service/00040/101700001/)
+> - [AWS テクニカルトレーナーと学ぶ Amazon CloudFront ~ エッジロケーションを使った通信の仕組み - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name)
 
 #### ▼ 全エッジサーバーの IP アドレス
 
@@ -222,8 +222,8 @@ Amazon CloudFront ではリクエストが JSON として扱われており、JS
 
 最終的に、対象のファイルが Amazon CloudFront のキャッシュ作成の対象となっているかは、レスポンスのヘッダーに含まれる『`X-Cache:`』が『`Hit from cloudfront`』または『`Miss from cloudfront`』のどちらで判断できる。
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html
+> - [Control origin requests with a policy - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html)
+> - [Control the cache key with a policy - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html)
 
 <br>
 
@@ -241,7 +241,7 @@ Amazon CloudFront ではリクエストが JSON として扱われており、JS
 | 一部ルーティング | 一部のヘッダーのルーティングを拒否し、ヘッダーのないリクエストをルーティングする。   | 指定したヘッダーのみをキャッシュキーとみなす。日付に関するヘッダー (例：Accept-Datetime) などの動的な値をキャッシュキーとしてしまうと。同一と見なすリクエストがほとんどなくなり、ヒットしなくなる。そのため、ヘッダーをオリジンにルーティングしつつ、動的になりやすい値を持つヘッダーをキャッシュキーにしないようにする必要がある。ヒット率の向上のため、クエリストリングや `Cookie` ヘッダーの静的な値をキャッシュキーに設定するとよい。 |
 | 全拒否           | すべてのヘッダーのルーティングを拒否し、ヘッダーのないリクエストをルーティングする。 | キャッシュを作成しない。                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web
+> - [Cache content based on request headers - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html#header-caching-web)
 
 #### ▼ `Cookie` ヘッダーに基づくキャッシュ作成
 
@@ -265,7 +265,7 @@ GoogleAnalytics のキーはブラウザから Ajax で Google に送信され�
 | 一部ルーティング | 一部の `Cookie` ヘッダーのルーティングを拒否し、`Cookie` ヘッダーのないリクエストをルーティングする。   | 指定した `Cookie` ヘッダーのみキャッシュキーとみなす。`Cookie` ヘッダーはユーザーごとに一意になることが多く、動的であるが、それ以外のヘッダーやクエリ文字でキャッシュを判定するようになるため、同一と見なすリクエストが増え、ヒット率の向上につながる。 |
 | 全拒否           | すべての `Cookie` ヘッダーのルーティングを拒否し、`Cookie` ヘッダーのないリクエストをルーティングする。 | キャッシュを作成しない。                                                                                                                                                                                                                                |
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
+> - [Cache content based on cookies - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html)
 
 #### ▼ クエリストリングに基づくキャッシュ作成
 
@@ -279,7 +279,7 @@ GoogleAnalytics のキーはブラウザから Ajax で Google に送信され�
 | 一部拒否 | 一部のクエリストリングのルーティングを拒否し、クエリストリングのないリクエストをオリジンにルーティングする。 | 指定したクエリストリングのみをキャッシュキーとみなす。 |
 | 全拒否   | すべてのクエリストリングのルーティングを拒否し、クエリストリングのないリクエストをルーティングする。         | キャッシュを作成しない。                               |
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html
+> - [Cache content based on query string parameters - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html)
 
 <br>
 
@@ -303,13 +303,13 @@ GoogleAnalytics のキーはブラウザから Ajax で Google に送信され�
 - `Expires` ヘッダー
 - TTL の設定
 
-> - https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#RequestS3Caching
+> - [Amazon S3 オリジンに対するリクエストとレスポンスの動作 - Amazon CloudFront](https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#RequestS3Caching)
 
 #### ▼ オリジン
 
 オリジンが Amazon S3 の場合、メタデータからレスポンスに付与する HTTP ヘッダーを設定できる。
 
-> - https://techblog.insightedge.jp/entry/aws-cf-s3-cache
+> - [S3から配信する静的WebコンテンツにCache-Controlを設定してキャッシュ対策 - Insight Edge Tech Blog](https://techblog.insightedge.jp/entry/aws-cf-s3-cache)
 
 <br>
 
@@ -319,7 +319,7 @@ GoogleAnalytics のキーはブラウザから Ajax で Google に送信され�
 
 #### ▼ ヒット率の向上について
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html
+> - [Cache content based on request headers - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html)
 
 <br>
 
@@ -333,7 +333,7 @@ Amazon CloudFront は、最初のフォワーディング時に、`Cookie` ヘ�
 
 キャッシュ作成のルールを理解すれば、キャッシュのヒット率を向上させられる。
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html
+> - [Cache content based on cookies - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html)
 
 <br>
 
@@ -347,8 +347,8 @@ Amazon CloudFront は、最初のフォワーディング時に、クエリス�
 
 キャッシュ作成のルールを理解すれば、キャッシュのヒット率を向上させられる。
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html#query-string-parameters-optimizing-caching
+> - [Increase the proportion of requests that are served directly from the CloudFront caches (cache hit ratio) - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/cache-hit-ratio.html#cache-hit-ratio-query-string-parameters)
+> - [Cache content based on query string parameters - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html#query-string-parameters-optimizing-caching)
 
 #### ▼ クエリストリングの順番を固定する
 
@@ -431,6 +431,6 @@ The document tree is shown below.
 
 Lamnda@Edge を使用した Amazon CloudFront の場合は、AWS Lambda@Edge を経由して、カスタムエラーページをレスポンスする必要がある。
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html
+> - [How CloudFront processes HTTP 4xx and 5xx status codes from your origin - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HTTPStatusCodes.html)
 
 <br>

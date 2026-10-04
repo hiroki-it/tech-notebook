@@ -9,7 +9,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,8 +21,8 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 ![docker_storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_storage.png)
 
-> - https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/
-> - https://maku77.github.io/docker/mount/
+> - [What is Docker storage? Learn Everything about Docker storage (Theory) - GeekyLane](https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/)
+> - [https://maku77.github.io/p/hxhzgxf/](https://maku77.github.io/docker/mount/)
 
 <br>
 
@@ -39,7 +39,7 @@ description: ストレージ＠Dockerの知見を記録しています。
 ![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bind-mount.png)
 
 > - https://docs.docker.com/storage/bind-mounts/
-> - https://www.takapy.work/entry/2019/02/24/110932
+> - [【初心者向け】実際に動かしながらDockerを学ぶ〜後編〜 - First Draft](https://www.takapy.work/entry/2019/02/24/110932)
 
 <br>
 
@@ -125,7 +125,7 @@ $ cat settings.json
 ![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png)
 
 > - https://docs.docker.com/storage/volumes/
-> - https://www.takapy.work/entry/2019/02/24/110932
+> - [【初心者向け】実際に動かしながらDockerを学ぶ〜後編〜 - First Draft](https://www.takapy.work/entry/2019/02/24/110932)
 
 <br>
 
@@ -135,7 +135,7 @@ docker エリア (`/var/lib/docker/volumes` ディレクトリ) に保管され�
 
 また、デバイスファイルに紐づくディレクトリ (`/var/lib/docker/volumes/<ボリューム名>/_data`) をマウントポイントといい、マウントポイントに対してマウント処理が必要である。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
+> - [【 mountpoint 】コマンド――指定した場所がマウントポイントかどうかを調べる：Linux基本コマンドTips（186） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html)
 
 <br>
 
@@ -224,7 +224,7 @@ Docker on Linux のみで使用できる。
 そのため、バインドマウントより安全である。
 
 > - https://medium.com/@axbaretto/best-practices-for-securing-containers-8bf8ae0d9952
-> - https://blog.logrocket.com/docker-volumes-vs-bind-mounts/
+> - [Docker volumes vs. bind mounts - LogRocket Blog](https://blog.logrocket.com/docker-volumes-vs-bind-mounts/)
 > - https://devops4solutions.com/storage-options-in-docker/
 
 <br>
@@ -242,7 +242,7 @@ Docker on Linux のみで使用できる。
 これにより、本番環境ではこのコンテナイメージをプルしさえすれば、アプリケーションを使用できるようになる。
 
 > - https://www.nyamucoro.com/entry/2018/03/15/200412
-> - https://blog.fagai.net/2018/02/22/docker%E3%81%AE%E7%90%86%E8%A7%A3%E3%82%92%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E5%8B%98%E9%81%95%E3%81%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E8%A9%B1/
+> - [Dockerの理解をいくらか勘違いしていた話 \| そこそこWebエンジニアの記録。](https://blog.fagai.net/2018/02/22/docker%E3%81%AE%E7%90%86%E8%A7%A3%E3%82%92%E3%81%84%E3%81%8F%E3%82%89%E3%81%8B%E5%8B%98%E9%81%95%E3%81%84%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E8%A9%B1/)
 
 <br>
 

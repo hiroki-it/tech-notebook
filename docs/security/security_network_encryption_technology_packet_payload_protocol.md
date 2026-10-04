@@ -9,7 +9,7 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
 
-> - https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php
+> - [it-shikaku.jp - 技術要素 - 11.セキュリティ - 5.セキュリティ実装技術 - 1.ネットワークセキュリティ](https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php)
 
 <br>
 
@@ -33,8 +33,8 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/情報漏洩_改竄_なりすまし_1.png)
 
-> - https://nrm.recruitment.jp/column/detail/id=631
-> - https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/
+> - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
+> - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
 
 <br>
 
@@ -46,8 +46,8 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/情報漏洩_改竄_なりすまし_2.png)
 
-> - https://nrm.recruitment.jp/column/detail/id=631
-> - https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/
+> - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
+> - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
 
 <br>
 
@@ -59,8 +59,8 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 ![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/情報漏洩_改竄_なりすまし_3.png)
 
-> - https://nrm.recruitment.jp/column/detail/id=631
-> - https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/
+> - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
+> - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
 
 <br>
 
@@ -70,8 +70,8 @@ description: 暗号化プロトコル＠アプリケーションデータの暗�
 
 署名の証跡によって、否認を防ぐ。
 
-> - https://nrm.recruitment.jp/column/detail/id=631
-> - https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/
+> - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
+> - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
 
 <br>
 
@@ -204,9 +204,9 @@ SSH と FTP を組み合わせたプロトコルではなく、SSH の能力を�
 | ゲートウェイマシン | 宛先マシンで稼働する Web アプリケーションのクライアントであり、ブラウザが稼働している。 |                             | ✅ (Guacamole サーバー + guard) |             ✅              |
 | 宛先マシン         | 異なるネットワーク内で Web アプリが稼働している。                                       |                             |                                 |                             |
 
-> - https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1
+> - [【リモートデスクトップ】の仕組みとセキュリティ強化～インターネット接続と暗号化～ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc1)
 > - https://ja.helpleft.com/internet/what-is-remote-desktop-protocol.html
-> - https://openstandia.jp/oss_info/guacamole/
+> - [Apache Guacamoleとは？詳細情報を解説 \| OSSサポートのOpenStandia™【NRI】](https://openstandia.jp/oss_info/guacamole/)
 
 #### ▼ 他の暗号化プロトコルとの組み合わせ
 
@@ -214,7 +214,7 @@ SSH と FTP を組み合わせたプロトコルではなく、SSH の能力を�
 
 例えば、VPN で許可されたユーザーのみがゲートウェイマシンへ通信できるようにしておく。
 
-> - https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2
+> - [【リモートデスクトップ】の仕組みとセキュリティ強化～インターネット接続と暗号化～ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/windows-basic/remote-desktop-security/#toc2)
 
 <br>
 
@@ -234,7 +234,7 @@ SSL/TLS を使用した通信では、TLS ライブラリ (例：OpenSSL、Borin
 
 ![encryption_protocol_ssh-tls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_ssh-tls.png)
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/
+> - [伝送データを暗号化しなければならない \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/)
 
 #### ▼ SNI (SSL/TLS の拡張)
 
@@ -249,7 +249,7 @@ SSL/TLS を使用した通信では、TLS ライブラリ (例：OpenSSL、Borin
 これに対処するため、SNI を使用する。
 
 > - https://www.idcf.jp/rentalserver/user-support/knowledge/ssl/sni.html
-> - https://qiita.com/ikm82/items/d48298d21ab46d102a67#sni%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7
+> - [SNI（Server Name Indication）の必要性 #サーバー - Qiita](https://qiita.com/ikm82/items/d48298d21ab46d102a67#sni%E3%81%AE%E5%BF%85%E8%A6%81%E6%80%A7)
 
 #### ▼ `L5`〜`L7` のプロトコルの暗号化
 
@@ -265,7 +265,7 @@ Chrome では、HTTPS リクエストの使用時にサーバー証明書の不�
 
 ![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg)
 
-> - https://xtech.nikkei.com/it/atcl/column/16/072100153/072100007/
+> - [TLSはWeb専用なの？ \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/atcl/column/16/072100153/072100007/)
 
 <br>
 
@@ -301,7 +301,7 @@ Docker であればプロキシを設定するか、Dockerfile にルート証�
 
 > - https://www.nrapki.jp/client-certificate/telework/
 > - https://help.zscaler.com/zia/about-ssl-inspection
-> - https://docs.docker.com/guides/zscaler/#the-role-of-certificates-in-docker
+> - [Using Docker with Zscaler \| Docker Docs](https://docs.docker.com/guides/zscaler/#the-role-of-certificates-in-docker)
 
 #### ▼ 相互 TLS 認証 (mTLS)
 
@@ -315,7 +315,7 @@ TLS ハンドシェイクで、双方向のピア認証を実施する。
 
 ![mtls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtls.png)
 
-> - https://apidog.com/jp/blog/how-to-proceed-mtls-api/#mtls%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF
+> - [TLS相互認証（mTLS）とは、APIのmTLSを実装する](https://apidog.com/jp/blog/how-to-proceed-mtls-api/#mtls%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF)
 
 <br>
 
@@ -339,7 +339,7 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 ![IPsecによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるインターネットVPN.jpg)
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/
+> - [伝送データを暗号化しなければならない \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/)
 
 #### ▼ IPsec によるパケットのカプセル化
 
@@ -366,7 +366,7 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 > - www.amazon.co.jp/dp/B0756SS7N3
 > - https://www.securelink.com/blog/whats-difference-vpn-desktop-sharing-remote-access/
 > - https://www.netmotionsoftware.com/ja/blog/connectivity/jpn-5-vpn-protocols
-> - https://www.iim.co.jp/products/zscaler/zpa/
+> - [クラウドセキュリティ ソリューション Zscaler](https://www.iim.co.jp/products/zscaler/zpa/)
 
 #### ▼ アプリケーションデータの暗号化/復号
 
@@ -378,6 +378,6 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 ![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSLによるインターネットVPN.jpg)
 
-> - https://www.n-study.com/internet-vpn/ssl-vpn-overview/
+> - [SSL-VPNの実現方式 \| インターネットVPN \| ネットワークのおべんきょしませんか？](https://www.n-study.com/internet-vpn/ssl-vpn-overview/)
 
 <br>

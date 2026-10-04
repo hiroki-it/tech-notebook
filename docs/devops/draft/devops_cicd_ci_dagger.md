@@ -9,7 +9,7 @@ description: Dagger＠CIツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,4 +21,4 @@ CI ツール上では Dagger をインストールするのみでよい。
 
 これにより、CI ツールへ依存せずに CI/CD パイプラインを実装できる。
 
-> - https://zenn.dev/ymtdzzz/articles/43488f08209e8b
+> - [DaggerでベンダーフリーなCIパイプラインを作成する](https://zenn.dev/ymtdzzz/articles/43488f08209e8b)

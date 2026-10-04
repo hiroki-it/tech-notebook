@@ -9,7 +9,7 @@ description: Secret系＠リソース定義の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: Secret系＠リソース定義の知見を記録しています。
 
 ArgoCD の各種コンポーネントの機密な変数やファイルを管理する。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration)
 
 <br>
 
@@ -52,8 +52,8 @@ argocd-repo-creds とは異なり、`1` 個の資格情報で `1` 個のリポ�
 
 なお、パブリックリポジトリの場合は、argocd-repo 自体が不要である。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-repositories.yaml
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
+> - [argo-cd/docs/operator-manual/argocd-repositories.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-repositories.yaml)
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories)
 
 <br>
 
@@ -67,7 +67,7 @@ Secret タイプは `repository` とする。
 
 Helm チャートを対象とする場合、`helm repo add` コマンドを実行することに相当する。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories)
 
 <br>
 
@@ -125,7 +125,7 @@ data:
   password: ******
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/private-repositories/#access-token
+> - [Private Repositories - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/private-repositories/#access-token)
 
 #### ▼ HTTPS 認証の場合
 
@@ -171,7 +171,7 @@ data:
   password: pass
 ```
 
-> - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
+> - [Security - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication)
 
 #### ▼ SSH 公開鍵認証の場合
 
@@ -227,8 +227,8 @@ data:
 
 ただし、ポーリングする複数のプライベートな Helm チャートリポジトリが、すべて `1` 個の Helm チャートレジストリ内にある場合は、Secret は `1` 個でよい。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-> - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories)
+> - [How to add an OCI helm repository in declarative mode · Issue #7121 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708)
 
 #### ▼ HTTPS 認証の場合
 
@@ -274,7 +274,7 @@ data:
   password: qux
 ```
 
-> - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
+> - [Security - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication)
 
 <br>
 
@@ -288,9 +288,9 @@ OCI プロトコルの有効化 (`.enableOCI` キー) が必要であるが、�
 
 ただし、ポーリングする複数のリポジトリが、すべて `1` 個の OCI レジストリ内にある場合は、Secret は `1` 個でよい。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/util/helm/cmd.go#L262
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories
-> - https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708
+> - [argo-cd/util/helm/cmd.go at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/util/helm/cmd.go#L262)
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#helm-chart-repositories)
+> - [How to add an OCI helm repository in declarative mode · Issue #7121 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/7121#issuecomment-921165708)
 
 #### ▼ HTTPS 認証の場合
 
@@ -341,10 +341,10 @@ data:
 
 Amazon ECR のように資格情報に有効期限がある場合は、資格情報を定期的に書き換えられるようにする。例えば、aws-ecr-credential チャートを使用する。
 
-> - https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication
-> - https://qiita.com/moriryota62/items/7d94027881d6fe9a478d
+> - [Security - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/release-2.0/operator-manual/security/#authentication)
+> - [K8sで使うECRアクセス用のSecretを自動更新する #kubernetes - Qiita](https://qiita.com/moriryota62/items/7d94027881d6fe9a478d)
 > - https://stackoverflow.com/questions/66851895/how-to-deploy-helm-charts-which-are-stored-in-aws-ecr-using-argocd
-> - https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential
+> - [aws-ecr-credential 1.4.2 · helm/architectminds](https://artifacthub.io/packages/helm/architectminds/aws-ecr-credential)
 
 <br>
 
@@ -360,8 +360,8 @@ argocd-repo とは異なり、`1` 個の資格情報で複数のリポジトリ�
 
 なお、パブリックリポジトリの場合は、argocd-repo-creds 自体が不要である。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-repo-creds.yaml
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+> - [argo-cd/docs/operator-manual/argocd-repo-creds.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-repo-creds.yaml)
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials)
 
 <br>
 
@@ -432,7 +432,7 @@ ArgoCD は、argocd-repo-creds の `.url` キーを使用して、argocd-repo �
 
 前方一致した URL を持つすべての argocd-repo で、argocd-repo-creds の資格情報 (`.username` キー、`.password` キー) が適用される。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials)
 
 <br>
 
@@ -446,7 +446,7 @@ ArgoCD は、argocd-repo-creds の `.url` キーを使用して、argocd-repo �
 - ArgoCD が apiserver にリクエストを送信するためのサーバー証明書と秘密鍵
 - Webhook リクエストを送信するためのサーバー証明書
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-secret.yaml
+> - [argo-cd/docs/operator-manual/argocd-secret.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-secret.yaml)
 
 <br>
 
@@ -573,7 +573,7 @@ data:
 
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#sensitive-data-and-sso-client-secrets
+> - [Overview - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#sensitive-data-and-sso-client-secrets)
 
 <br>
 
@@ -585,8 +585,8 @@ ArgoCD の application-controller がデプロイ先と異なる Cluster で稼�
 
 ArgoCD の application-controller は、`cluster-<エンドポイントURL>` という Secret を介して、デプロイ先の ServiceAccount と紐づく。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters
-> - https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters)
+> - [GitHub - mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops · GitHub](https://github.com/mumoshu/decouple-apps-and-eks-clusters-with-tf-and-gitops#argocd-cluster-secret)
 
 <br>
 
@@ -621,7 +621,7 @@ data:
   server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#eks
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#eks)
 
 <br>
 
@@ -646,7 +646,7 @@ data:
   shard: 3
 ```
 
-> - https://ca-srg.dev/45d51b9059e44f62b2aafdd5b0e6f7f1#block-8dd20c94825c4c3fadd492ef384a579e
+> - [HA構成のArgoCDパフォーマンス最適化への道 - CyberAgent SRG #ca\_srg](https://ca-srg.dev/45d51b9059e44f62b2aafdd5b0e6f7f1#block-8dd20c94825c4c3fadd492ef384a579e)
 
 <br>
 
@@ -699,7 +699,7 @@ $ argocd login <ArgoCDのドメイン名> \
     --sso
 ```
 
-> - https://github.com/argoproj/argo-cd/issues/9679#issuecomment-1254222366
+> - [argocd login just hangs on 2.4.0 · Issue #9679 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/9679#issuecomment-1254222366)
 
 `(4)`
 
@@ -725,7 +725,7 @@ INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated
 Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/
+> - [argocd cluster add Command Reference - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/)
 
 `(6)`
 
@@ -739,8 +739,8 @@ cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been config
 
 もしタイムアウトになる場合、kube-apiserver の IP アドレスのアクセス制限に引っ掛かっていないかを確認する。
 
-> - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
-> - https://github.com/argoproj/argo-cd/issues/4651#issuecomment-1006960125
+> - [ArgoCDで外部のクラスターにアプリケーションをデプロイ \| DevelopersIO](https://dev.classmethod.jp/articles/argocd-for-external-cluster/)
+> - [Create ArgoCD cluster with declarative setup using existing secret containing kubeconfig · Issue #4651 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/4651#issuecomment-1006960125)
 
 #### ▼ プリンシパル IAM ロールとアクセスエントリー
 
@@ -752,7 +752,7 @@ Amazon EKS アクセスエントリーを使用する場合、`argocd cluster ad
 
 ![argocd_access-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_access-entry.png)
 
-> - https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/
+> - [EKS クラスターへのアクセス制御を EKS API 経由で実施可能になったので試してみた \| DevelopersIO](https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/)
 > - https://medium.com/@dedicatted/secure-argocd-multi-cluster-deployment-in-aws-eks-with-irsa-0a6332a881bd
 
 <br>

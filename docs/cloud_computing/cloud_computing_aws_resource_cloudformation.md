@@ -39,7 +39,7 @@ StackSets を使用すると、複数のリージョンのみでなく、複数�
 
 ![cloudformation_stacksets](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudformation_stacksets.png)
 
-> - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html
+> - [Managing stacks across accounts and Regions with StackSets - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html)
 > - https://dev.classmethod.jp/articles/introducing-cloudformation-stacksets/clou
 
 <br>
@@ -85,7 +85,7 @@ Resources:
       Addresses: !Ref AllowAddresses
 ```
 
-> - https://dev.classmethod.jp/articles/cloudfromation-used-commadelimitedlist/
+> - [CloudFormation 文字列の配列をパラメータで渡してテンプレートを実行したいとき、CommaDelimitedListを使ってみる \| DevelopersIO](https://dev.classmethod.jp/articles/cloudfromation-used-commadelimitedlist/)
 
 <br>
 
@@ -93,6 +93,6 @@ Resources:
 
 特定のスタックで作成されたリソース値を他のスタックで使用できるようにする。
 
-> - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html
+> - [CloudFormation template Outputs syntax - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html)
 
 <br>

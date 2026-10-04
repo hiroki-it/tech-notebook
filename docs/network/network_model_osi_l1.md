@@ -9,7 +9,7 @@ description: L1＠OSI参照モデルの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: L1＠OSI参照モデルの知見を記録しています。
 
 ケーブルや通信信号を処理する層である。
 
-> - https://hogetech.info/network/osi/layer1
+> - [【OSI 参照モデル】L1 物理層・イーサネットとは【TCP/IP】 \| ほげほげテクノロジー – IT 技術学習サイト](https://hogetech.info/network/osi/layer1)
 
 <br>
 
@@ -35,7 +35,7 @@ LAN 内に配置された NAT ルーターが、WAN 内のグローバル IP ア
 
 ![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_lan.jpeg)
 
-> - http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152
+> - [【ご参考】いまさら聞けないインターネット・ネットワーク概論 4／5](http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152)
 
 <br>
 
@@ -50,7 +50,7 @@ AWS や Google Cloud でも、VPC を同様のサブネットに分割すると�
 ![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internal_dmz_external.png)
 
 > - https://www.techtarget.com/searchsecurity/definition/DMZ
-> - https://www.ntt.com/business/services/network/internet-connect/ocn-business/bocn/knowledge/archive_09.html
+> - [ファイアウォール(Fire Wall)とは? 設定方法､しくみや種類を簡単に解説 \| NTTドコモビジネス 法人のお客さま](https://www.ntt.com/business/services/network/internet-connect/ocn-business/bocn/knowledge/archive_09.html)
 
 #### ▼ パブリックサブネット内のサーバー
 
@@ -85,7 +85,7 @@ WAN 内では、各 LAN はグローバル IP アドレスで識別されてい�
 その一方で、通信の利用者が限られているため、サイバー攻撃の脆弱性が低い。
 
 > - https://qiita.com/hymnofpeace/items/7f09a7a10e843552a8cb
-> - https://xtech.nikkei.com/it/article/COLUMN/20080715/310872/
+> - [WANプロトコル編 第1回 WANの基礎 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20080715/310872/)
 
 <br>
 
@@ -99,7 +99,7 @@ WAN を経由したプライベートな通信時、パケットの送信元と�
 
 他の WAN よりも、安定した通信速度で安全に通信できる。
 
-> - http://makiyamashinji.web.fc2.com/emprus/design/wan.html
+> - [WAN接続の種類](http://makiyamashinji.web.fc2.com/emprus/design/wan.html)
 
 #### ▼ 回線交換方式
 
@@ -111,8 +111,8 @@ WAN を経由したプライベートな通信時、パケットの送信元と�
 
 ![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_circuit-switching-system.png)
 
-> - https://www.itpassportsiken.com/kakomon/28_haru/q71.html
-> - https://www.infraexpert.com/study/wan3.html
+> - [ITパスポート平成28年春期問71 ネットワークの変換方式に関する記述｜ITパスポート試験ドットコム](https://www.itpassportsiken.com/kakomon/28_haru/q71.html)
+> - [WAN - 専用線、PSTN、ISDN](https://www.infraexpert.com/study/wan3.html)
 
 #### ▼ パケット交換方式
 
@@ -124,8 +124,8 @@ WAN を経由したプライベートな通信時、パケットの送信元と�
 
 ![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_packet-switching-system.png)
 
-> - https://www.itpassportsiken.com/kakomon/28_haru/q71.html
-> - https://www.infraexpert.com/study/wan3.html
+> - [ITパスポート平成28年春期問71 ネットワークの変換方式に関する記述｜ITパスポート試験ドットコム](https://www.itpassportsiken.com/kakomon/28_haru/q71.html)
+> - [WAN - 専用線、PSTN、ISDN](https://www.infraexpert.com/study/wan3.html)
 
 <br>
 

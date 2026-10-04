@@ -9,7 +9,7 @@ description: ConfigMap系＠リソース定義の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ ArgoCD の各コンポーネントの機密でない変数やファイルを管�
 
 ConfigMap では、`.metadata.labels` キー配下に、必ず `app.kubernetes.io/part-of: argocd` キーを割り当てる必要がある。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#atomic-configuration)
 
 <br>
 
@@ -29,7 +29,7 @@ ConfigMap では、`.metadata.labels` キー配下に、必ず `app.kubernetes.i
 
 ArgoCD の各コンポーネントで共通する値を設定する。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cm.yaml
+> - [argo-cd/docs/operator-manual/argocd-cm.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cm.yaml)
 
 <br>
 
@@ -76,8 +76,8 @@ rules:
       - create
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/#enabling-the-terminal
-> - https://qiita.com/tkusumi/items/300c566a74b6b64e7e89#rbac%E3%81%A7%E3%81%AE%E6%A8%A9%E9%99%90%E8%A8%AD%E5%AE%9A
+> - [Web-based Terminal - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/#enabling-the-terminal)
+> - [Kubernetes: RBACの設定におけるAPIリソース #kubernetes - Qiita](https://qiita.com/tkusumi/items/300c566a74b6b64e7e89#rbac%E3%81%A7%E3%81%AE%E6%A8%A9%E9%99%90%E8%A8%AD%E5%AE%9A)
 
 #### ▼ exec.enabled
 
@@ -97,7 +97,7 @@ data:
   exec.shells: bash,sh,powershell,cmd
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/#changing-allowed-shells
+> - [Web-based Terminal - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/web_based_terminal/#changing-allowed-shells)
 
 <br>
 
@@ -123,7 +123,7 @@ data:
   application.instanceLabelKey: argocd.argoproj.io/instance
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cm.yaml#L238
+> - [argo-cd/docs/operator-manual/argocd-cm.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cm.yaml#L238)
 
 #### ▼ ラベル挿入のタイミング
 
@@ -135,7 +135,7 @@ ConfigMap や Secret のファイル変更に合わせてチェックサム値�
 
 なお、CRD には挿入しない仕様になっている。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/controller/sync.go#L246
+> - [argo-cd/controller/sync.go at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/controller/sync.go#L246)
 
 #### ▼ Root の Application 名の重複
 
@@ -147,9 +147,9 @@ Root の Application 名が重複している場合、たとえ Namespace が異
 
 ちなみに、Cluster スコープの ArgoCD に限り、`.spec.sourceNamespaces` キーを使用して、この重複を許可できる。
 
-> - https://github.com/argoproj/argo-cd/issues/9420
-> - https://github.com/argoproj/argo-cd/issues/2352
-> - https://github.com/argoproj/argo-cd/issues/2785
+> - [ArgoCD overrides application with the same name evenso namespace and project-name is differnt. · Issue #9420 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/9420)
+> - [Mixed applications when multiple ArgoCD has applications with same name · Issue #2352 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/2352)
+> - [Locking "App Of Apps" to a single project and namespace · Issue #2785 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/2785)
 
 <br>
 
@@ -175,8 +175,8 @@ data:
   application.resourceTrackingMethod: annotation
 ```
 
-> - https://argo-cd.readthedocs.io/en/latest/user-guide/resource_tracking/#choosing-a-tracking-method
-> - https://ca-srg.dev/b40dd428e47641699959c4f2d70c8428
+> - [Resource Tracking - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/latest/user-guide/resource_tracking/#choosing-a-tracking-method)
+> - [ArgoCD Tracking IDについて - CyberAgent SRG #ca\_srg](https://ca-srg.dev/b40dd428e47641699959c4f2d70c8428)
 
 <br>
 
@@ -216,7 +216,7 @@ metadata:
 spec: ...
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#configuring-global-projects-v18
+> - [Projects - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#configuring-global-projects-v18)
 
 <br>
 
@@ -255,7 +255,7 @@ data:
   kustomize.buildOptions.v2.0.0: --enable-alpha-plugins --enable-exec
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters
+> - [Kustomize - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize-build-optionsparameters)
 
 <br>
 
@@ -314,7 +314,7 @@ spec:
     version: v1.0.0
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
+> - [Kustomize - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions)
 
 <br>
 
@@ -358,9 +358,9 @@ data:
   url: <URL>
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
-> - https://dexidp.io/docs/connectors/github/#configuration
+> - [Overview - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#existing-oidc-provider)
+> - [External URL Links - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/)
+> - [Authentication Through GitHub \| Dex](https://dexidp.io/docs/connectors/github/#configuration)
 
 #### ▼ Dex を介して委譲先 Web サイトに接続する場合
 
@@ -394,9 +394,9 @@ data:
   url: <URL>
 ```
 
-> - https://dexidp.io/docs/connectors/github/
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/
+> - [Authentication Through GitHub \| Dex](https://dexidp.io/docs/connectors/github/)
+> - [Overview - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex)
+> - [External URL Links - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/external-url/)
 
 <br>
 
@@ -406,7 +406,7 @@ data:
 
 ConfigMap でリポジトリの URL を管理する方法は、将来的に廃止される予定である。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#legacy-behaviour)
 
 <br>
 
@@ -434,7 +434,7 @@ data:
       - /spec/metrics
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration
+> - [Diff Customization - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#system-level-configuration)
 
 <br>
 
@@ -444,8 +444,8 @@ data:
 
 ArgoCD の各コンポーネント (application-controller、dex-server、redis-server、repo-server) の起動コマンドに渡すオプションを設定する。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cmd-params-cm.yaml
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/additional-configuration-method/
+> - [argo-cd/docs/operator-manual/argocd-cmd-params-cm.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-cmd-params-cm.yaml)
+> - [Additional configuration method - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/additional-configuration-method/)
 
 <br>
 
@@ -465,8 +465,8 @@ data:
   application.namespaces: foo-application-ns
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#change-workload-startup-parameters
-> - https://github.com/argoproj/argo-cd/issues/11638#issuecomment-1357963028
+> - [Applications in any namespace - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#change-workload-startup-parameters)
+> - [Application in any namespace \| Synced with NO resources deployed · Issue #11638 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/11638#issuecomment-1357963028)
 
 <br>
 
@@ -561,8 +561,8 @@ data:
 
 ArgoCD を構成する Kubernetes リソースにリクエストを送信するための認可スコープを紐付ける。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-rbac-cm.yaml
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/
+> - [argo-cd/docs/operator-manual/argocd-rbac-cm.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-rbac-cm.yaml)
+> - [RBAC Configuration - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/)
 
 <br>
 
@@ -580,10 +580,10 @@ Casbin の記法を使用して、ロールと認可スコープを定義しつ�
 | `g` (グループ)       | `g, <グループ名> <ロール名>`                                                                                        | グループにロールを紐付ける。                                                                       |
 
 > - https://stackoverflow.com/a/73784100
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-permission-structure
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/model.conf
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#application-rbac
+> - [RBAC Configuration - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-permission-structure)
+> - [argo-cd/assets/model.conf at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/model.conf)
+> - [argo-cd/assets/builtin-policy.csv at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv)
+> - [Applications in any namespace - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#application-rbac)
 
 <br>
 
@@ -627,11 +627,11 @@ data:
   scopes: "[groups]"
 ```
 
-> - https://krrrr.hatenablog.com/entry/2022/01/23/201700
-> - https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv
-> - https://weseek.co.jp/tech/95/#SSO_RBAC
-> - https://techblog.zozo.com/entry/mlops-argocd
+> - [Argo CDにおける認可設定 - decadence](https://krrrr.hatenablog.com/entry/2022/01/23/201700)
+> - [Argo CD における LDAP 認証と、LDAP グループを利用した権限制御 #kubernetes - Qiita](https://qiita.com/dtn/items/9bcae313b8cb3583977e#argocd-cm-rbac-configmap-%E3%81%AE%E4%BD%9C%E6%88%90)
+> - [argo-cd/assets/builtin-policy.csv at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv)
+> - [GitOpsをArgoCDで学ぶ](https://weseek.co.jp/tech/95/#SSO_RBAC)
+> - [MLOpsマルチテナントクラスタへのArgo CDの導入と運用 - ZOZO TECH BLOG](https://techblog.zozo.com/entry/mlops-argocd)
 
 **＊実装例＊**
 
@@ -740,9 +740,9 @@ data:
   scopes: "[groups]"
 ```
 
-> - https://hatappi.blog/entry/2020/08/23/025033
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv
+> - [Argo CD で 個人の Github アカウントでログインして権限管理をする - hatappi.blog](https://hatappi.blog/entry/2020/08/23/025033)
+> - [RBAC Configuration - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#tying-it-all-together)
+> - [argo-cd/assets/builtin-policy.csv at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv)
 
 #### ▼ ID プロバイダーのメールアドレスに紐付ける場合
 
@@ -778,8 +778,8 @@ data:
   scopes: "[email]"
 ```
 
-> - https://hatappi.blog/entry/2020/08/23/025033
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv
+> - [Argo CD で 個人の Github アカウントでログインして権限管理をする - hatappi.blog](https://hatappi.blog/entry/2020/08/23/025033)
+> - [argo-cd/assets/builtin-policy.csv at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/assets/builtin-policy.csv)
 
 <br>
 
@@ -795,7 +795,7 @@ argocd-server、repo-server、dex-server、は HTTPS リクエストを受信で
 
 ConfigMap 上のサーバー証明書の代わりに、ArgoCD 外のサーバー証明書 (例：Cert Manager) を使用してもよい。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration
+> - [TLS configuration - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#tls-configuration)
 
 <br>
 
@@ -805,7 +805,7 @@ argocd-server は dex-server に対して HTTPS リクエストを送信する�
 
 この ConfigMap は、そのためのサーバー証明書を管理する。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-inbound-tls-for-argocd-dex-server
+> - [TLS configuration - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-inbound-tls-for-argocd-dex-server)
 
 <br>
 
@@ -815,7 +815,7 @@ application-controller、argocd-server、は repo-server に対して HTTPS リ�
 
 この ConfigMap は、そのためのサーバー証明書を管理する。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components
+> - [TLS configuration - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-between-argo-cd-components)
 
 <br>
 
@@ -825,7 +825,7 @@ application-controller、argocd-server、は repo-server に対して HTTPS リ�
 
 この ConfigMap は、そのためのサーバー証明書を管理する。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-for-argocd-server
+> - [TLS configuration - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#configuring-tls-for-argocd-server)
 
 <br>
 
@@ -837,8 +837,8 @@ ArgoCD では、コンテナイメージの `/etc/ssl` ディレクトリにデ�
 
 この ConfigMap は、そのためにユーザーが定義したサーバー証明書を管理する。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-tls-certs-cm.yaml
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repositories-using-self-signed-tls-certificates-or-are-signed-by-custom-ca)
+> - [argo-cd/docs/operator-manual/argocd-tls-certs-cm.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-tls-certs-cm.yaml)
 
 <br>
 
@@ -869,7 +869,7 @@ data:
     vs-ssh.visualstudio.com ssh-rsa AAAAB ...
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml
+> - [argo-cd/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/argocd-ssh-known-hosts-cm.yaml)
 
 <br>
 

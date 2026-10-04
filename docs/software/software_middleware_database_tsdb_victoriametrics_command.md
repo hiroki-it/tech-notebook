@@ -29,9 +29,9 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 $ victoria-metrics-prod -downsampling.period=30d:5m
 ```
 
-> - https://docs.victoriametrics.com/#downsampling
-> - http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
-> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#downsampling)
+> - [Downsampling — OpenTSDB 2.4 documentation](http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html)
+> - [Optimizing the Storage of Large Volumes of Metrics for a … \| Percona Community](https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/)
 
 <br>
 
@@ -51,8 +51,8 @@ $ victoria-metrics-prod -downsampling.period=30d:5m
 $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 ```
 
-> - https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#replication-and-data-safety
-> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
+> - [VictoriaMetrics: Cluster version](https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#replication-and-data-safety)
+> - [Optimizing the Storage of Large Volumes of Metrics for a … \| Percona Community](https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/)
 
 <br>
 
@@ -88,7 +88,7 @@ DB への書き込みの同時実行時に、キューで待機する最大時�
 $ victoria-metrics-prod -insert.maxQueueDuration=32
 ```
 
-> - https://docs.victoriametrics.com/#list-of-command-line-flags
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#list-of-command-line-flags)
 
 <br>
 
@@ -108,10 +108,10 @@ DB への書き込みの最大同時実行数を設定する。
 $ victoria-metrics-prod -maxConcurrentInserts=<ホストマシンのCPUのコア数に応じて自動的に設定される>
 ```
 
-> - https://docs.victoriametrics.com/#list-of-command-line-flags
-> - https://victoriametrics.com/blog/tsdb-performance-techniques-limiting-concurrency/
-> - https://github.com/VictoriaMetrics/VictoriaMetrics/issues/946#issuecomment-740635526
-> - https://github.com/VictoriaMetrics/VictoriaMetrics/blob/v1.103.0/lib/writeconcurrencylimiter/concurrencylimiter.go#L18
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#list-of-command-line-flags)
+> - [Performance optimization techniques in time series databases: Limiting concurrency](https://victoriametrics.com/blog/tsdb-performance-techniques-limiting-concurrency/)
+> - [maxConcurrentInserts default value when running inside a container · Issue #946 · VictoriaMetrics/VictoriaMetrics · GitHub](https://github.com/VictoriaMetrics/VictoriaMetrics/issues/946#issuecomment-740635526)
+> - [VictoriaMetrics/lib/writeconcurrencylimiter/concurrencylimiter.go at v1.103.0 · VictoriaMetrics/VictoriaMetrics · GitHub](https://github.com/VictoriaMetrics/VictoriaMetrics/blob/v1.103.0/lib/writeconcurrencylimiter/concurrencylimiter.go#L18)
 
 <br>
 
@@ -127,7 +127,7 @@ VictoriaMetrics では、デフォルトで `30` 個しかラベルをつけら�
 $ victoria-metrics-prod -maxLabelsPerTimeseries=30
 ```
 
-> - https://docs.victoriametrics.com/#list-of-command-line-flags
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#list-of-command-line-flags)
 
 <br>
 
@@ -141,7 +141,7 @@ VictoriaMetrics が使用できるメモリサイズを設定する。
 $ victoria-metrics-prod -memory.allowedBytes=100000
 ```
 
-> - https://docs.victoriametrics.com/#resource-usage-limits
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#resource-usage-limits)
 
 <br>
 
@@ -157,7 +157,7 @@ VictoriaMetrics が使用できるメモリサイズのうちで、許容する�
 $ victoria-metrics-prod -memory.allowedPercent=80
 ```
 
-> - https://docs.victoriametrics.com/#resource-usage-limits
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#resource-usage-limits)
 
 <br>
 
@@ -173,8 +173,8 @@ $ victoria-metrics-prod -memory.allowedPercent=80
 $ victoria-metrics-prod -retentionPeriod=90d
 ```
 
-> - https://docs.victoriametrics.com/#retention
-> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#retention)
+> - [Optimizing the Storage of Large Volumes of Metrics for a … \| Percona Community](https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/)
 
 <br>
 
@@ -228,7 +228,7 @@ $ victoria-metrics-prod -storage.cacheSizeIndexDBTagFilters=0
 $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 ```
 
-> - https://docs.victoriametrics.com/#storage
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#storage)
 
 <br>
 
@@ -263,7 +263,7 @@ $ vmctl-prod vm-native \
     --vm-native-filter-time-start='2022-11-20T00:00:00Z'
 ```
 
-> - https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics
+> - [VictoriaMetrics: vmctl](https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics)
 
 #### ▼ vm-native-filter-time-end
 
@@ -277,7 +277,7 @@ $ vmctl-prod vm-native \
     --vm-native-filter-time-end='2022-11-31T00:00:00Z'
 ```
 
-> - https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics
+> - [VictoriaMetrics: vmctl](https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics)
 
 #### ▼ vm-native-filter-match
 
@@ -291,7 +291,7 @@ $ vmctl-prod vm-native \
     --vm-native-filter-match='{__name__!~"vm_.*"}'
 ```
 
-> - https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics
+> - [VictoriaMetrics: vmctl](https://docs.victoriametrics.com/vmctl/#migrating-data-from-victoriametrics)
 
 <br>
 
@@ -309,7 +309,7 @@ $ curl http://<VictoriaMetricsのURL>:8428/api/v1/export \
     > filename.json
 ```
 
-> - https://docs.victoriametrics.com/#how-to-export-time-series
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#how-to-export-time-series)
 
 <br>
 
@@ -325,7 +325,7 @@ $ curl -X POST http://<VictoriaMetricsのURL>:8428/api/v1/import \
     --data-binary "@filename.json"
 ```
 
-> - https://docs.victoriametrics.com/#how-to-export-time-series
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#how-to-export-time-series)
 
 <br>
 
@@ -342,7 +342,7 @@ $ curl \
     -d 'query=vm_http_request_errors_total'
 ```
 
-> - https://docs.victoriametrics.com/url-examples.html#apiv1query
+> - [VictoriaMetrics: API examples](https://docs.victoriametrics.com/url-examples.html#apiv1query)
 
 <br>
 
@@ -357,7 +357,7 @@ Prometheus の HTTP サーバーとおおよそ同じ書き込みエンドポイ
 $ curl -X POST http://<VictoriaMetricsのURL>:8428/api/v1/write
 ```
 
-> - https://docs.victoriametrics.com/#high-availability
+> - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#high-availability)
 
 <br>
 

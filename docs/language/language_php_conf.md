@@ -9,7 +9,7 @@ description: 設定＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -38,7 +38,7 @@ Additional .ini files parsed:      /usr/local/etc/php/conf.d/docker-php-ext-bcma
 /usr/local/etc/php/conf.d/docker-php-ext-sodium.ini
 ```
 
-> - https://www.php.net/manual/ja/configuration.file.php
+> - [PHP: 設定ファイル - Manual](https://www.php.net/manual/ja/configuration.file.php)
 
 <br>
 
@@ -114,7 +114,7 @@ zend.assertions = 1
 mbstring.language = Japanese
 ```
 
-> - https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
+> - [PHP7.4 ぼくのかんがえたさいきょうのphp.ini #Laravel - Qiita](https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9)
 
 <br>
 
@@ -180,6 +180,6 @@ opcache.preload = /var/www/preload.php
 opcache.preload_user = www-data
 ```
 
-> - https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9
+> - [PHP7.4 ぼくのかんがえたさいきょうのphp.ini #Laravel - Qiita](https://qiita.com/ucan-lab/items/0d74378e1b9ba81699a9)
 
 <br>

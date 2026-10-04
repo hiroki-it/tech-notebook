@@ -9,7 +9,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![アドレス空間管理の種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/アドレス空間管理の種類.png)
 
-> - https://itmanabi.com/real-memory-mng/
+> - [メモリの実記憶管理の種類とメリット、デメリットを学ぼう！（スワッピング、オーバーレイとは？） - ITの学び](https://itmanabi.com/real-memory-mng/)
 
 <br>
 
@@ -35,7 +35,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![単一区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単一区画方式.png)
 
-> - https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
+> - [記憶管理 \| ITの基礎知識｜ITパスポート・基本情報](https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/)
 
 #### ▼ 多重区画方式とは
 
@@ -45,7 +45,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![多重区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/多重区画方式.png)
 
-> - https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
+> - [記憶管理 \| ITの基礎知識｜ITパスポート・基本情報](https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/)
 
 <br>
 
@@ -59,7 +59,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![可変区画方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/可変区画方式.png)
 
-> - https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/
+> - [記憶管理 \| ITの基礎知識｜ITパスポート・基本情報](https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/)
 
 <br>
 
@@ -73,7 +73,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 ![スワッピング方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スワッピング方式.png)
 
-> - https://itmanabi.com/real-memory-mng/
+> - [メモリの実記憶管理の種類とメリット、デメリットを学ぼう！（スワッピング、オーバーレイとは？） - ITの学び](https://itmanabi.com/real-memory-mng/)
 > - https://www.sophia-it.com/content/%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97
 
 #### ▼ スワップファイル
@@ -96,7 +96,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 物理メモリを使用しているオブジェクトが何かしらから参照されているか否かを元に、解放するか否かを判定する。
 
-> - https://geechs-job.com/tips/details/35
+> - [5分で分かる！ガベージコレクション(GC)の仕組み解説](https://geechs-job.com/tips/details/35)
 
 #### ▼ メモリリーク
 
@@ -106,7 +106,7 @@ description: メモリ管理＠Linuxカーネルの知見を記録していま�
 
 メトリクスを見ると、メモリ使用量が少しずつ増えていく現象が起こる。
 
-> - https://geechs-job.com/tips/details/35
+> - [5分で分かる！ガベージコレクション(GC)の仕組み解説](https://geechs-job.com/tips/details/35)
 
 #### ▼ アルゴリズム
 
@@ -132,7 +132,7 @@ Java では、JVM：Java Virtual Machine (Java 仮想マシン) が、メモリ�
 
 ![ページの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページの構造.png)
 
-> - http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html
+> - [メモリ管理](http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html)
 
 #### ▼ ページイン/ページアウト
 

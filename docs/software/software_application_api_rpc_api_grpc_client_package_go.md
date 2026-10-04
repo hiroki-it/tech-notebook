@@ -31,9 +31,9 @@ $ asdf plugin add protoc https://github.com/paxosglobal/asdf-protoc.git
 $ asdf install protoc
 ```
 
-> - https://grpc.io/docs/protoc-installation/
-> - https://maku.blog/p/37e6uck/
-> - https://github.com/pseudomuto/protoc-gen-doc/blob/master/Dockerfile
+> - [Protocol Buffer Compiler Installation \| gRPC](https://grpc.io/docs/protoc-installation/)
+> - [protoc コマンドで .proto ファイルをコンパイルする (Protocol Buffers Compiler)｜まくろぐ](https://maku.blog/p/37e6uck/)
+> - [protoc-gen-doc/Dockerfile at master · pseudomuto/protoc-gen-doc · GitHub](https://github.com/pseudomuto/protoc-gen-doc/blob/master/Dockerfile)
 
 #### ▼ Protocol Buffer コンパイラーGo プラグイン
 
@@ -49,8 +49,8 @@ $ protoc-gen-go --version
 protoc-gen-go <バージョン>
 ```
 
-> - https://pkg.go.dev/github.com/golang/protobuf/protoc-gen-go
-> - https://github.com/juaruipav/grpc-go-docker-helloworld/blob/master/server/Dockerfile#L7-L8
+> - [protoc-gen-go command - github.com/golang/protobuf/protoc-gen-go - Go Packages](https://pkg.go.dev/github.com/golang/protobuf/protoc-gen-go)
+> - [grpc-go-docker-helloworld/server/Dockerfile at master · juaruipav/grpc-go-docker-helloworld · GitHub](https://github.com/juaruipav/grpc-go-docker-helloworld/blob/master/server/Dockerfile#L7-L8)
 > - https://medium.com/@jitenderkmr/exploring-grpc-gateway-in-golang-building-a-reverse-proxy-for-seamless-restful-integration-d342fe5248c4
 
 #### ▼ Protocol Buffer コンパイラーGo-gRPC プラグイン
@@ -67,7 +67,7 @@ $ protoc-gen-go-grpc --version
 protoc-gen-go-grpc <バージョン>
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc#section-readme
+> - [protoc-gen-go-grpc command - google.golang.org/grpc/cmd/protoc-gen-go-grpc - Go Packages](https://pkg.go.dev/google.golang.org/grpc/cmd/protoc-gen-go-grpc#section-readme)
 > - https://stackoverflow.com/a/60580149/12771072
 > - https://stackoverflow.com/a/64849053/12771072
 
@@ -125,7 +125,7 @@ protoc \
   *.proto
 ```
 
-> - https://developers.freee.co.jp/entry/new-arch-protobuf-docker-image
+> - [Docker image を導入して protobuf を使う - freee Developers Hub](https://developers.freee.co.jp/entry/new-arch-protobuf-docker-image)
 > - https://github.com/namely/docker-protoc
 
 <br>
@@ -140,8 +140,8 @@ gRPC クライアントと gRPC サーバーの両方で、サービス定義フ
 
 サービス定義ファイルにインターフェースとメッセージ構造を実装し、このファイルから `pb.go` ファイルをコンパイルする。
 
-> - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
-> - https://engineering.mercari.com/blog/entry/2019-05-31-040000/
+> - [gRPC/Go で簡単なサーバーとクライアントを実装する - y-zumiの日記](https://y-zumi.hatenablog.com/entry/2019/09/07/011741)
+> - [gRPCを用いたマイクロサービスのAPI仕様の記述 \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/2019-05-31-040000/)
 > - https://docs.wantedly.dev/fields/the-system/apis#protofairu
 
 #### ▼ `pb.go` ファイルとは
@@ -161,7 +161,7 @@ $ protoc -I=. --go_out=. --go-grpc_out=. *.proto
 ```
 
 > - https://github.com/golang/protobuf/issues/1070#issuecomment-607465055
-> - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
+> - [gRPC/Go で簡単なサーバーとクライアントを実装する - y-zumiの日記](https://y-zumi.hatenablog.com/entry/2019/09/07/011741)
 
 #### ▼ RPC-API 仕様書
 
@@ -183,7 +183,7 @@ $ protoc --doc_out=. --doc_opt=html,index.html *.proto
 
 サーバーを gRPC サーバーとして登録する必要がある。
 
-> - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
+> - [gRPC/Go で簡単なサーバーとクライアントを実装する - y-zumiの日記](https://y-zumi.hatenablog.com/entry/2019/09/07/011741)
 
 <br>
 
@@ -197,7 +197,7 @@ $ protoc --doc_out=. --doc_opt=html,index.html *.proto
 
 Go の gRPC サーバーをリモートプロシージャーコールする。
 
-> - https://y-zumi.hatenablog.com/entry/2019/09/07/011741
+> - [gRPC/Go で簡単なサーバーとクライアントを実装する - y-zumiの日記](https://y-zumi.hatenablog.com/entry/2019/09/07/011741)
 
 <br>
 
@@ -329,7 +329,7 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+> - [インターセプタの導入 - サーバーサイド編｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF)
 
 #### ▼ 自前のインターセプター
 
@@ -396,7 +396,7 @@ func UnaryClientInterceptor(opts ...fooOption) grpc.UnaryClientInterceptor {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor#%E8%87%AA%E4%BD%9Cunary-interceptor%E3%81%AE%E5%AE%9F%E8%A3%85
+> - [インターセプタの導入 - クライアントサイド編｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor#%E8%87%AA%E4%BD%9Cunary-interceptor%E3%81%AE%E5%AE%9F%E8%A3%85)
 
 <br>
 
@@ -462,7 +462,7 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+> - [インターセプタの導入 - サーバーサイド編｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF)
 
 #### ▼ 自前のインターセプター
 
@@ -535,7 +535,7 @@ type wrapClientStream struct {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+> - [インターセプタの導入 - クライアントサイド編｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF)
 
 <br>
 
@@ -595,7 +595,7 @@ func main() {
 ```
 
 > - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v1.4.0/recovery/doc.go
-> - https://ybalexdp.hatenablog.com/entry/grpc_recovery
+> - [go-grpc-middleware/recoveryを利用してpanicから回復する - forza alex](https://ybalexdp.hatenablog.com/entry/grpc_recovery)
 
 #### ▼ フィルター系
 
@@ -655,7 +655,7 @@ type UnaryServerInterceptor func(
     ) (resp interface{}, err error)
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+> - [インターセプタの導入 - サーバーサイド編｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#unary-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF)
 
 #### ▼ 自前のインターセプター
 
@@ -739,7 +739,7 @@ type StreamServerInterceptor func(
 	) error
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF
+> - [インターセプタの導入 - サーバーサイド編｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor#stream-rpc%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%BB%E3%83%97%E3%82%BF)
 
 #### ▼ 自前のインターセプター
 
@@ -861,7 +861,7 @@ func main() {
 ```
 
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-> - https://entgo.io/ja/docs/grpc-server-and-client/
+> - [サーバーとクライアントの作成 \| ent](https://entgo.io/ja/docs/grpc-server-and-client/)
 
 <br>
 
@@ -936,8 +936,8 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor
-> - https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme
+> - [インターセプタの導入 - サーバーサイド編｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/serverinterceptor)
+> - [grpc\_middleware package - github.com/grpc-ecosystem/go-grpc-middleware - Go Packages](https://pkg.go.dev/github.com/grpc-ecosystem/go-grpc-middleware#section-readme)
 
 <br>
 
@@ -985,7 +985,7 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/healthcheck
+> - [gRPCコンテナにヘルスチェックを実行する｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/healthcheck)
 
 <br>
 
@@ -1089,8 +1089,8 @@ func main() {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L46-L49
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go at v1.18.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L46-L49)
+> - [インターセプタの導入 - クライアントサイド編｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/clientinterceptor)
 
 <br>
 
@@ -1125,9 +1125,9 @@ service FooService {
 }
 ```
 
-> - https://future-architect.github.io/articles/20220624a/#grpc-gateway%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C
+> - [grpc-gatewayでgRPCとREST両対応のサーバを作る \| フューチャー技術ブログ](https://future-architect.github.io/articles/20220624a/#grpc-gateway%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C)
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-> - https://christina04.hatenablog.com/entry/protoc-usage
+> - [protocの使い方 - Carpe Diem](https://christina04.hatenablog.com/entry/protoc-usage)
 
 <br>
 
@@ -1164,7 +1164,7 @@ func RegisterFooServiceServer(s *grpc.Server, srv FooServiceServer) {
 
 補足として、`pb.go` ファイルには、gRPC サーバーとして登録するための `Register<ファイル名>ServiceServer` 関数が定義される。
 
-> - https://christina04.hatenablog.com/entry/protoc-usage
+> - [protocの使い方 - Carpe Diem](https://christina04.hatenablog.com/entry/protoc-usage)
 > - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
 
 <br>
@@ -1204,7 +1204,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Append
+> - [metadata package - google.golang.org/grpc/metadata - Go Packages](https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Append)
 
 #### ▼ AppendToOutgoingContext
 
@@ -1231,8 +1231,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc/metadata#AppendToOutgoingContext
-> - https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side
+> - [metadata package - google.golang.org/grpc/metadata - Go Packages](https://pkg.go.dev/google.golang.org/grpc/metadata#AppendToOutgoingContext)
+> - [grpc-go/Documentation/grpc-metadata.md at master · grpc/grpc-go · GitHub](https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side)
 
 #### ▼ FromIncomingContext
 
@@ -1264,7 +1264,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc/metadata#FromIncomingContext
+> - [metadata package - google.golang.org/grpc/metadata - Go Packages](https://pkg.go.dev/google.golang.org/grpc/metadata#FromIncomingContext)
 
 内部的には `mdIncomingKey` というコンテキストキー名を指定している。
 
@@ -1315,7 +1315,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc/metadata#FromOutgoingContext
+> - [metadata package - google.golang.org/grpc/metadata - Go Packages](https://pkg.go.dev/google.golang.org/grpc/metadata#FromOutgoingContext)
 
 内部的には `mdIncomingKey` というコンテキストキー名を指定している。
 
@@ -1368,7 +1368,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Get
+> - [metadata package - google.golang.org/grpc/metadata - Go Packages](https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Get)
 
 #### ▼ New
 
@@ -1419,7 +1419,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc/metadata#New
+> - [metadata package - google.golang.org/grpc/metadata - Go Packages](https://pkg.go.dev/google.golang.org/grpc/metadata#New)
 
 #### ▼ NewIncomingContext
 
@@ -1452,8 +1452,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc/metadata#NewIncomingContext
-> - https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side
+> - [metadata package - google.golang.org/grpc/metadata - Go Packages](https://pkg.go.dev/google.golang.org/grpc/metadata#NewIncomingContext)
+> - [grpc-go/Documentation/grpc-metadata.md at master · grpc/grpc-go · GitHub](https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side)
 
 #### ▼ NewOutgoingContext
 
@@ -1486,8 +1486,8 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc/metadata#NewOutgoingContext
-> - https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side
+> - [metadata package - google.golang.org/grpc/metadata - Go Packages](https://pkg.go.dev/google.golang.org/grpc/metadata#NewOutgoingContext)
+> - [grpc-go/Documentation/grpc-metadata.md at master · grpc/grpc-go · GitHub](https://github.com/grpc/grpc-go/blob/master/Documentation/grpc-metadata.md#sending-and-receiving-metadata---client-side)
 
 #### ▼ Set
 
@@ -1518,7 +1518,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Set
+> - [metadata package - google.golang.org/grpc/metadata - Go Packages](https://pkg.go.dev/google.golang.org/grpc/metadata#MD.Set)
 
 <br>
 
@@ -1551,7 +1551,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88--%3E-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%B8%E3%81%AE%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E9%80%81%E5%8F%97%E4%BF%A1
+> - [メタデータの送受信｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88--%3E-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%B8%E3%81%AE%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E9%80%81%E5%8F%97%E4%BF%A1)
 
 <br>
 
@@ -1583,7 +1583,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%8C%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%97%E4%BF%A1%E3%81%99%E3%82%8B
+> - [メタデータの送受信｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%8C%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%97%E4%BF%A1%E3%81%99%E3%82%8B)
 
 <br>
 
@@ -1621,7 +1621,7 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%8B%E3%82%89%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B
+> - [メタデータの送受信｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%8B%E3%82%89%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B)
 
 #### ▼ クライアント側
 
@@ -1655,6 +1655,6 @@ func (s *fooServer) Foo(ctx context.Context, req *foopb.FooRequest) (*foopb.FooR
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%81%8C%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%97%E4%BF%A1%E3%81%99%E3%82%8B
+> - [メタデータの送受信｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%81%8C%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%97%E4%BF%A1%E3%81%99%E3%82%8B)
 
 <br>

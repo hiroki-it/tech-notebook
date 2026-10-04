@@ -26,7 +26,7 @@ addon-resizer は、サイドカーコンテナとして稼働し、指定した
 コンテナの増加に合わせて要求量を動的に変更できるよう、addon-resizer を使用する。
 
 > - https://github.com/kubernetes/autoscaler/tree/master/addon-resizer>
-> - https://github.com/kubernetes/autoscaler/tree/master/addon-resizer/deploy
+> - [autoscaler/addon-resizer/deploy at master · kubernetes/autoscaler · GitHub](https://github.com/kubernetes/autoscaler/tree/master/addon-resizer/deploy)
 > - https://qiita.com/superbrothers/items/650d6591aa6531bdbd08>
 
 <br>

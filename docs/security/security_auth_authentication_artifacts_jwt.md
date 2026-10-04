@@ -30,7 +30,7 @@ JWT トークンそのものをサーバー側に保存する必要はない。
 ランダムな文字列をこれら認証のトークンとするより、JWT を使用したほうがより安全である。
 
 > - https://meetup-jp.toast.com/3511
-> - https://dev.classmethod.jp/articles/json-signing-jws-jwt-usecase/
+> - [JWTによるJSONに対する電子署名と、そのユースケース \| DevelopersIO](https://dev.classmethod.jp/articles/json-signing-jws-jwt-usecase/)
 
 <br>
 
@@ -40,7 +40,7 @@ JWT トークンそのものをサーバー側に保存する必要はない。
 
 JWT は以下のサイトから取得できる。
 
-> - https://jwt.io/
+> - [JSON Web Tokens - jwt.io](https://jwt.io/)
 
 例えば JavaScript であれば、以下のような処理を実行し、JWT を作成する。
 
@@ -54,7 +54,7 @@ const token =
   base64urlEncoding(signature);
 ```
 
-> - https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0
+> - [JWT の仕組み](https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0)
 
 <br>
 
@@ -73,7 +73,7 @@ const header = {
 };
 ```
 
-> - https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%98%E3%83%83%E3%83%80
+> - [JWT の仕組み](https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%98%E3%83%83%E3%83%80)
 
 #### ▼ ペイロード
 
@@ -103,9 +103,9 @@ const payload = {
 };
 ```
 
-> - https://kamichidu.github.io/post/2017/01/24-about-json-web-token/
-> - https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89
-> - https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0
+> - [JSON Web Token（JWT）のClaimについて · なるはやで いい感じの 動作確認](https://kamichidu.github.io/post/2017/01/24-about-json-web-token/)
+> - [JWT の仕組み](https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89)
+> - [IDトークンが分かれば OpenID Connect が分かる #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/8f0e422c7edd2d220e06#64-jwt-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0)
 
 #### ▼ 署名（暗号ダイジェスト）
 
@@ -133,8 +133,8 @@ JWT トークンには以下の種類がある。
 | アクセストークン | ID プロバイダーのツールによっては JWT 仕様 (例：Keycloak) なため Self-contained トークン |
 | ID トークン      | 必ず JWT 仕様であり、Self-contained トークン                                             |
 
-> - https://qiita.com/TakahikoKawasaki/items/1c1bcf24b46ebd2030f5#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3jwtid%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E5%8C%85%E5%90%AB%E9%96%A2%E4%BF%82
-> - https://zenn.dev/mikakane/articles/tutorial_for_openid#oidc-%E5%88%A9%E7%94%A8%E3%81%95%E3%82%8C%E3%82%8B-id-token-%E3%81%AE%E8%A6%8F%E7%B4%84
+> - [図解 JWS/JWE/JWT/IDトークン/アクセストークンの包含関係 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/1c1bcf24b46ebd2030f5#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3jwtid%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E5%8C%85%E5%90%AB%E9%96%A2%E4%BF%82)
+> - [OIDC と JWT の関わり - Oauth2.0 との違いなど](https://zenn.dev/mikakane/articles/tutorial_for_openid#oidc-%E5%88%A9%E7%94%A8%E3%81%95%E3%82%8C%E3%82%8B-id-token-%E3%81%AE%E8%A6%8F%E7%B4%84)
 
 <br>
 
@@ -144,7 +144,7 @@ JWT トークンには以下の種類がある。
 
 JWT トークン (例：ID トークン) の情報 (署名部分、有効期限、発行元など) から、JWT トークンの署名を検証できる。
 
-> - https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE
+> - [JWTの署名とか検証って結局なんやねん！を簡単に解説！ #初心者 - Qiita](https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE)
 
 <br>
 
@@ -158,8 +158,8 @@ JWT の署名の検証方法には以下があり、公開鍵による検証が�
 - 認可サーバーから取得した共通鍵
 - 認可サーバーのイントロスペクションエンドポイント
 
-> - https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E3%81%A1%E3%81%AA%E3%81%BF%E3%81%ABrs256%E3%81%AE%E5%A0%B4%E5%90%88
-> - https://zenn.dev/ringo_to/articles/5cf471e5e48b9a#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E6%A4%9C%E8%A8%BC%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%AF%E4%BA%8C%E3%81%A4%E3%81%AE%E6%96%B9%E6%B3%95%E3%81%8C%E3%81%82%E3%82%8B
+> - [JWTの署名とか検証って結局なんやねん！を簡単に解説！ #初心者 - Qiita](https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E3%81%A1%E3%81%AA%E3%81%BF%E3%81%ABrs256%E3%81%AE%E5%A0%B4%E5%90%88)
+> - [イチカラOAuthとOIDC理解#4 - アクセストークンを検証してみる](https://zenn.dev/ringo_to/articles/5cf471e5e48b9a#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E6%A4%9C%E8%A8%BC%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%AF%E4%BA%8C%E3%81%A4%E3%81%AE%E6%96%B9%E6%B3%95%E3%81%8C%E3%81%82%E3%82%8B)
 
 <br>
 
@@ -173,7 +173,7 @@ JWT の署名の検証方法には以下があり、公開鍵による検証が�
 
 ID プロバイダー側に秘密鍵、クライアント側に公開鍵を配置する。
 
-> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
+> - [JWT認証の流れを理解する #初学者向け - Qiita](https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88)
 
 #### ▼ 初回認証時
 
@@ -187,7 +187,7 @@ ID プロバイダー側に秘密鍵、クライアント側に公開鍵を配�
 
 ![jwt_public_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_generate_token.png)
 
-> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
+> - [JWT認証の流れを理解する #初学者向け - Qiita](https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88)
 
 #### ▼ 次回認証時
 
@@ -201,8 +201,8 @@ ID プロバイダー側に秘密鍵、クライアント側に公開鍵を配�
 
 ![jwt_public_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_verify_token.png)
 
-> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
-> - https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE
+> - [JWT認証の流れを理解する #初学者向け - Qiita](https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88)
+> - [JWTの署名とか検証って結局なんやねん！を簡単に解説！ #初心者 - Qiita](https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE)
 
 <br>
 
@@ -228,7 +228,7 @@ ID プロバイダー側に秘密鍵、クライアント側に公開鍵を配�
 
 ![jwt_common_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_generate_token.png)
 
-> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
+> - [JWT認証の流れを理解する #初学者向け - Qiita](https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88)
 
 #### ▼ 次回認証時
 
@@ -240,7 +240,7 @@ ID プロバイダー側に秘密鍵、クライアント側に公開鍵を配�
 
 ![jwt_common_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_verify_token.png)
 
-> - https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88
+> - [JWT認証の流れを理解する #初学者向け - Qiita](https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88)
 
 <br>
 
@@ -264,11 +264,11 @@ authorization: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSON�
 
 また、スマホアプリも `Cookie` ヘッダーより `Authorization` ヘッダーがいいらしい。
 
-> - https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a
+> - [認証トークンをCookieに保存するのは卒業しよう #JavaScript - Qiita](https://qiita.com/hirohero/items/d74bc04e16e6d05d2a4a)
 > - https://softwareengineering.stackexchange.com/a/141434
 > - https://www.bokukoko.info/entry/2015/12/20/%E8%AA%8D%E8%A8%BC%E3%82%92%E5%90%AB%E3%82%80_API_%E9%96%8B%E7%99%BA%E3%81%A7%E6%A4%9C%E8%A8%8E%E3%81%99%E3%81%B9%E3%81%8D%E3%81%93%E3%81%A8
 > - https://stackoverflow.com/questions/72180420/is-there-any-reason-to-use-http-header-authorization-to-send-jwt-token-instead-o/72182434#72182434
-> - https://qiita.com/ledmonster/items/0ee1e757af231aa927b1#%E8%AA%8D%E8%A8%BC%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%96%B9%E9%87%9D
+> - [モバイルアプリのユーザ認証方法についてまとめてみた #OAuth - Qiita](https://qiita.com/ledmonster/items/0ee1e757af231aa927b1#%E8%AA%8D%E8%A8%BC%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%96%B9%E9%87%9D)
 
 <br>
 
@@ -293,8 +293,8 @@ cookie: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエン�
 | `Cookie` ヘッダー                                               | CSRF トークン          |     ⭕     |                                                                          |
 | SameSiteCookie                                                  |                        |     ⭕     | SPA と API が同一オリジンの必要がある。                                  |
 
-> - https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8
-> - https://blog.flatt.tech/entry/auth0_access_token_poc
+> - [SPAのログイン認証のベストプラクティスがわからなかったのでわりと網羅的に研究してみた〜JWT or Session どっち？〜 #JavaScript - Qiita](https://qiita.com/Hiro-mi/items/18e00060a0f8654f49d6#%E6%97%A9%E8%A6%8B%E8%A1%A8)
+> - [【PoC編】XSSへの耐性においてブラウザのメモリ空間方式はLocal Storage方式より安全か？ - GMO Flatt Security Blog](https://blog.flatt.tech/entry/auth0_access_token_poc)
 
 <br>
 
@@ -304,6 +304,6 @@ cookie: Bearer <ヘッダーJSONエンコード値>.<ペイロードJSONエン�
 - branca-token
 - PASETO
 
-> - https://qiita.com/take4s5i/items/009b0b6797b752921a78#paseto
+> - [JSON Web Token(JWT)って結局使っていいの？ #authentication - Qiita](https://qiita.com/take4s5i/items/009b0b6797b752921a78#paseto)
 
 <br>

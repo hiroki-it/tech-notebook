@@ -9,7 +9,7 @@ description: VCluster＠本番環境
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -127,7 +127,7 @@ $ vcluster create foo-cluster \
     --kubernetes-version=<バージョン>
 ```
 
-> - https://github.com/loft-sh/vcluster/issues/519#issuecomment-1522026776
+> - [Create docs page on how to upgrade vcluster to a newer kubernetes version · Issue #519 · loft-sh/vcluster · GitHub](https://github.com/loft-sh/vcluster/issues/519#issuecomment-1522026776)
 
 #### ▼ --isolate
 
@@ -162,7 +162,7 @@ Forwarding from 127.0.0.1:8443 -> 8443
 Forwarding from [::1]:8443 -> 8443
 ```
 
-> - https://ryusa.hatenablog.com/entry/2021/05/22/221614
+> - [Kubernetesの仮想化ツールvclusterに触れてみる話 - メモ - RyuSA](https://ryusa.hatenablog.com/entry/2021/05/22/221614)
 
 なお、仮想 Cluster に直接的にコマンドを送信できる。
 

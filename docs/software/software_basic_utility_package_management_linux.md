@@ -11,7 +11,7 @@ description: Linux系＠管理ユーティリティの知見を記録してい�
 
 Alpine リポジトリのパッケージを管理する。
 
-> - https://pkgs.alpinelinux.org/packages
+> - [Package index - Alpine Linux packages](https://pkgs.alpinelinux.org/packages)
 
 <br>
 
@@ -31,7 +31,7 @@ $ wget <該当のバージョンのalpineパッケージ>.apk
 $ apk add --allow-untrusted <パッケージ名>.apk
 ```
 
-> - https://uepon.hatenadiary.com/entry/2023/03/20/165648
+> - [Alpine Linuxのapkで旧バージョンパッケージをインストール - uepon日々の備忘録](https://uepon.hatenadiary.com/entry/2023/03/20/165648)
 
 <br>
 
@@ -43,8 +43,8 @@ Linux で使用できるパッケージを管理する。
 
 最新バージョンしか管理できず、以前のバージョンを管理できない。
 
-> - https://docs.brew.sh/FAQ#how-do-i-keep-old-versions-of-a-formula-when-upgrading
-> - https://christina04.hatenablog.com/entry/install-old-version-with-homebrew
+> - [Homebrew Documentation: FAQ (Frequently Asked Questions)](https://docs.brew.sh/FAQ#how-do-i-keep-old-versions-of-a-formula-when-upgrading)
+> - [Homebrewで過去のバージョンを使いたい【tap版】 - Carpe Diem](https://christina04.hatenablog.com/entry/install-old-version-with-homebrew)
 
 <br>
 
@@ -60,7 +60,7 @@ $ brew autoremove --dry-run
 $ brew autoremove
 ```
 
-> - https://parashuto.com/rriver/tools/homebrew-most-used-commands
+> - [Homebrewで覚えておくと便利なコマンド一覧 \| Rriver](https://parashuto.com/rriver/tools/homebrew-most-used-commands)
 
 <br>
 
@@ -72,7 +72,7 @@ $ brew autoremove
 $ brew cleanup
 ```
 
-> - https://qiita.com/akameco/items/9e5026e892661b75e7b3
+> - [brew cleanupでMacを掃除してストレージ容量を確保する方法 #tips - Qiita](https://qiita.com/akameco/items/9e5026e892661b75e7b3)
 
 <br>
 
@@ -128,7 +128,7 @@ brew 本体をアップグレードする。
 $ brew update
 ```
 
-> - https://qiita.com/akameco/items/9e5026e892661b75e7b3
+> - [brew cleanupでMacを掃除してストレージ容量を確保する方法 #tips - Qiita](https://qiita.com/akameco/items/9e5026e892661b75e7b3)
 
 <br>
 
@@ -140,7 +140,7 @@ brew 本体とパッケージの両方をアップグレードする。
 $ brew upgrade
 ```
 
-> - https://www.curict.com/item/bc/bcc0607.html
+> - [Homebrew - Homebrew自身をアップデートする](https://www.curict.com/item/bc/bcc0607.html)
 
 <br>
 
@@ -193,7 +193,7 @@ $ brew install asdf
 
 #### ▼ GitHub リポジトリから
 
-> - https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+> - [Getting Started \| asdf](https://asdf-vm.com/guide/getting-started.html#_3-install-asdf)
 
 ```bash
 $ git clone --depth 1 https://github.com/asdf-vm/asdf.git ~/.asdf
@@ -304,7 +304,7 @@ asdf
 $ asdf reshim
 ```
 
-> - https://blog.framinal.life/entry/2021/07/30/205745
+> - [go getしたらreshimする - フラミナル](https://blog.framinal.life/entry/2021/07/30/205745)
 
 <br>
 
@@ -362,7 +362,7 @@ $ asdf uninstall <プラグイン名> --all
 
 パッケージをバージョン管理する。
 
-> - https://blog.sh1ma.dev/articles/20240108_from_asdf_to_mise
+> - [asdf, direnvをやめてmiseに移行する](https://blog.sh1ma.dev/articles/20240108_from_asdf_to_mise)
 
 <br>
 
@@ -370,7 +370,7 @@ $ asdf uninstall <プラグイン名> --all
 
 インストール可能なプラグイン一覧をリポジトリから確認できる。
 
-> - https://github.com/mise-plugins/registry/tree/main/plugins
+> - [registry/plugins at main · mise-plugins/registry · GitHub](https://github.com/mise-plugins/registry/tree/main/plugins)
 
 <br>
 
@@ -390,7 +390,7 @@ bar = '1.0.0'
 baz = '1.0.0'
 ```
 
-> - https://mise.jdx.dev/configuration.html
+> - [Configuration \| mise-en-place](https://mise.jdx.dev/configuration.html)
 
 #### ▼ settings
 
@@ -426,13 +426,13 @@ status = { missing_tools = "if_other_versions_installed", show_env = false, show
 foo = "bar"
 ```
 
-> - https://mise.jdx.dev/configuration.html#global-config-config-mise-config-toml
+> - [Configuration \| mise-en-place](https://mise.jdx.dev/configuration.html#global-config-config-mise-config-toml)
 
 <br>
 
 ### 環境変数
 
-> - https://mise.jdx.dev/configuration.html#environment-variables
+> - [Configuration \| mise-en-place](https://mise.jdx.dev/configuration.html#environment-variables)
 
 <br>
 
@@ -457,7 +457,7 @@ $ export MISE_LOG_LEVEL=error
 $ mise activate bash
 ```
 
-> - https://mise.jdx.dev/cli/activate.html
+> - [mise activate \| mise-en-place](https://mise.jdx.dev/cli/activate.html)
 
 <br>
 
@@ -472,7 +472,7 @@ Path                    Tools
 ~/repository/mise.toml  foo, bar, baz
 ```
 
-> - https://mise.jdx.dev/cli/config.html
+> - [mise config \| mise-en-place](https://mise.jdx.dev/cli/config.html)
 
 <br>
 
@@ -496,7 +496,7 @@ settings:
 No problems found
 ```
 
-> - https://mise.jdx.dev/cli/doctor.html
+> - [mise doctor \| mise-en-place](https://mise.jdx.dev/cli/doctor.html)
 
 <br>
 
@@ -512,7 +512,7 @@ No problems found
 $ mise cache prune
 ```
 
-> - https://github.com/jdx/mise/issues/2962#issuecomment-2643564685
+> - [Error getting latest version for python: git failed · Issue #2962 · jdx/mise · GitHub](https://github.com/jdx/mise/issues/2962#issuecomment-2643564685)
 
 <br>
 
@@ -538,7 +538,7 @@ $ mise install
 $ mise install -f
 ```
 
-> - https://mise.jdx.dev/cli/install.html
+> - [mise install \| mise-en-place](https://mise.jdx.dev/cli/install.html)
 
 <br>
 
@@ -550,7 +550,7 @@ $ mise install -f
 $ mise trust
 ```
 
-> - https://mise.jdx.dev/cli/trust.html
+> - [mise trust \| mise-en-place](https://mise.jdx.dev/cli/trust.html)
 
 <br>
 
@@ -592,7 +592,7 @@ $ echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
 $ echo 'eval "$(direnv hook bash)"' >> ~/.bash
 ```
 
-> - https://direnv.net/docs/hook.html
+> - [Setup \| direnv](https://direnv.net/docs/hook.html)
 
 <br>
 
@@ -622,9 +622,9 @@ export GIT_AUTHOR_NAME=$NAME
 export GIT_AUTHOR_EMAIL=$MAIL
 ```
 
-> - https://blog.nijohando.jp/post/direnv/
-> - https://zenn.dev/yumainaura/articles/qiita-2020-03-03t14_16_50-09_00-#set--a-%E3%81%A8%E3%81%AF
-> - https://note.com/shimakaze_soft/n/n53949cc818d1
+> - [direnvでディレクトリ毎に設定を切り替える](https://blog.nijohando.jp/post/direnv/)
+> - [.env ( dotenv ) ファイルの定義をシェルの環境変数として export するコマンドの例 ( set -a; source .](https://zenn.dev/yumainaura/articles/qiita-2020-03-03t14_16_50-09_00-#set--a-%E3%81%A8%E3%81%AF)
+> - [Macで環境変数を管理するためのdirenvの設定方法｜shimakaze\_soft](https://note.com/shimakaze_soft/n/n53949cc818d1)
 
 #### ▼ `.envrc` ファイルの登録
 

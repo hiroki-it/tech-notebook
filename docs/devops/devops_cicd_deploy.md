@@ -9,7 +9,7 @@ description: デプロイ手法＠リリースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -48,7 +48,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 デプロイノートや PRR モデルを導入することで、これを実装する。
 
 > - https://www.atlassian.com/ja/agile/software-development/release
-> - https://tech-blog.optim.co.jp/entry/2020/07/01/080000
+> - [Production Readyと開発プロセス改善 - OPTiM TECH BLOG](https://tech-blog.optim.co.jp/entry/2020/07/01/080000)
 
 <br>
 
@@ -61,7 +61,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 その後、アプリケーションを再起動する。
 
 > - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
-> - https://developer.hatenastaff.com/entry/2020/06/26/150300
+> - [デプロイ今昔 - Hatena Developer Blog](https://developer.hatenastaff.com/entry/2020/06/26/150300)
 
 <br>
 
@@ -71,8 +71,8 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 
 ただし、CodeDeploy のようにロードバランサ－を使用し、現環境と新環境のルーティングを切り替えるようにすると、ダウンタイムを防げる。
 
-> - https://garafu.blogspot.com/2018/11/release-strategy.html
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
+> - [デプロイ / リリース 手法 まとめ - galife](https://garafu.blogspot.com/2018/11/release-strategy.html)
+> - [Integrating CodeDeploy with Elastic Load Balancing - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place)
 
 <br>
 
@@ -84,8 +84,8 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 - Git (手動で `git pull` コマンド)
 - Istio
 
-> - https://qiita.com/zaburo/items/8886be1a733aaf581045
-> - https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
+> - [gitでシンプルなデプロイ環境を作る #Git - Qiita](https://qiita.com/zaburo/items/8886be1a733aaf581045)
+> - [Istio / Canary Upgrades](https://istio.io/latest/docs/setup/upgrade/canary/#control-plane)
 
 <br>
 
@@ -105,13 +105,13 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 
 このとき、マネージドなデプロイツールを使用すると、ルーティング先の切り替え作業がより簡単になる。
 
-> - https://webapp.io/blog/what-are-rolling-deployments/
-> - https://www.designet.co.jp/ossinfo/kubernetes/update/
+> - [What are rolling deployments?](https://webapp.io/blog/what-are-rolling-deployments/)
+> - [Kubernetesのローリングアップデート \| OSSのデージーネット](https://www.designet.co.jp/ossinfo/kubernetes/update/)
 
 補足として、Kubernetes のアップグレード手法のインプレースアップグレードも、ローリングアップデートに所属する。
 
 > - https://logmi.jp/tech/articles/323033
-> - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
+> - [より安全なEKS cluster update方法を模索する](https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely)
 
 <br>
 
@@ -129,7 +129,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 
 新アプリケーションの起動を確認してから、旧アプリケーションを停止するため、ダウンタイムが発生しない。
 
-> - https://garafu.blogspot.com/2018/11/release-strategy.html
+> - [デプロイ / リリース 手法 まとめ - galife](https://garafu.blogspot.com/2018/11/release-strategy.html)
 
 <br>
 
@@ -149,7 +149,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 『ブルー/グリーン』という言葉は、これに由来している。
 
 > - https://gitlab.com/snippets/1846041
-> - https://martinfowler.com/bliki/BlueGreenDeployment.html
+> - [Blue Green Deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html)
 
 以下の手順で実施する。
 
@@ -176,8 +176,8 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
      この時、マネージドなデプロイツールを使用すると、ルーティング先の切り替え作業がより簡単になる。
 
 > - https://aws.typepad.com/sajp/2015/12/what-is-blue-green-deployment.html
-> - https://developer.hatenastaff.com/entry/2020/06/26/150300
-> - https://atmarkit.itmedia.co.jp/ait/articles/1612/13/news005_2.html
+> - [デプロイ今昔 - Hatena Developer Blog](https://developer.hatenastaff.com/entry/2020/06/26/150300)
+> - [「ブルーグリーンデプロイメントの仕組み」を理解する：OpenStack上に構築する、ブルーグリーンデプロイメント実践入門（2）（2/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1612/13/news005_2.html)
 
 <br>
 
@@ -205,7 +205,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 
 新アプリケーションの起動を確認してから、旧アプリケーションを停止するため、ダウンタイムが発生しない。
 
-> - https://garafu.blogspot.com/2018/11/release-strategy.html
+> - [デプロイ / リリース 手法 まとめ - galife](https://garafu.blogspot.com/2018/11/release-strategy.html)
 
 <br>
 
@@ -228,7 +228,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 
 システムのユーザーがバグに寛容でないと採用できないリリース手法である。
 
-> - https://www.linkedin.com/pulse/canary-deployment-simple-words-jakub-hajek/
+> - [About canary deployment in simple words](https://www.linkedin.com/pulse/canary-deployment-simple-words-jakub-hajek/)
 > - https://codechacha.com/ja/what-is-canary-development-test/
 
 <br>
@@ -257,7 +257,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 
      この時、マネージドなデプロイツールを使用すると、ルーティング先の重み付け値の変更作業がより簡単になる。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1804/12/news071.html
+> - [GoogleとNetflix、オープンソースのカナリア分析自動化サービス「Kayenta」をリリース：本番環境への変更の反映を迅速、適切に判断できる - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1804/12/news071.html)
 > - https://www.techtarget.com/searchitoperations/answer/When-to-use-canary-vs-blue-green-vs-rolling-deployment
 
 <br>
@@ -283,7 +283,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 
 特定の関係者 (社員、協力会社) のリクエストのみを新環境にルーティングし、これらの手を借りて、本番環境で実地的に検証する (例：該当のエラーメトリクスが基準値を満たすか) 。
 
-> - https://blog.bltinc.co.jp/entry/2020/04/27/090000
+> - [DCR (Dark Canary Release) でリリースしてみた件 - Colorful Bullet](https://blog.bltinc.co.jp/entry/2020/04/27/090000)
 
 <br>
 
@@ -305,7 +305,7 @@ DevOps の CI/CD パイプラインを導入することで、これを実装す
 
 を使用したいユーザーだけがトグルなどで有効化できるようにしておき、本番環境で実地的に検証する (例：該当のエラーメトリクスが基準値を満たすか) 。
 
-> - https://scrapbox.io/nobuoka-pub/%E3%83%80%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3%E3%83%81
+> - [ダークローンチ - nobuoka-pub](https://scrapbox.io/nobuoka-pub/%E3%83%80%E3%83%BC%E3%82%AF%E3%83%AD%E3%83%BC%E3%83%B3%E3%83%81)
 > - https://newrelic.com/jp/resources/undefined/next-phase-of-devops
 
 <br>

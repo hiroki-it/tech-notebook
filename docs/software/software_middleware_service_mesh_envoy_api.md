@@ -9,7 +9,7 @@ description: API＠Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: API＠Envoyの知見を記録しています。
 
 Envoy の設定値をレスポンスとして返信する。ただ、欲しい設定をどのエンドポイントから取得すればよいのかが個人的にはわかりにくい。
 
-そのため、サービスメッシュツール (例：Istio、Linkerd) でサポートされている付属ツール (例：`istioctl proxy-config` コマンド) を使用したほうがよい。
+そのため、Envoy を使用するサービスメッシュツール (例：Istio) の付属ツール (例：`istioctl proxy-config` コマンド) を使用したほうがよい。
 
 ```bash
 # envoyコンテナ内でローカルホストにリクエストを送信する。
@@ -63,8 +63,8 @@ $ kubectl exec \
   /stats/recentlookups/enable: enable recording of reset stat-name lookup names
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/admin
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface
+> - [Admin — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/admin)
+> - [Administration interface — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/admin#administration-interface)
 
 <br>
 
@@ -107,7 +107,7 @@ $ kubectl exec \
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/clusters
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters
+> - [Administration interface — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--clusters)
 
 <br>
 
@@ -186,7 +186,7 @@ $ kubectl exec \
 - version_info
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto
+> - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#configdump-proto)
 
 <br>
 
@@ -230,7 +230,7 @@ $ kubectl exec \
 - version_info
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds
+> - [Administration interface — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?include_eds)
 
 #### ▼ `dynamic_endpoint_configs` キー
 
@@ -332,7 +332,7 @@ configs:
     ...
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig
+> - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-endpointsconfigdump-dynamicendpointconfig)
 
 <br>
 
@@ -347,7 +347,7 @@ configs:
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={}
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=
+> - [Administration interface — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump?resource=)
 
 #### ▼ dynamic_active_clusters
 
@@ -363,7 +363,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 ```
 
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster
+> - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster)
 
 **＊例＊**
 
@@ -400,10 +400,10 @@ configs:
   ...
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
+> - [Administration interface — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/admin#get--config_dump)
+> - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump)
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-2-check-initial-config-and-web-response
-> - https://cloud.tencent.com/developer/article/1701214
+> - [Istio中的流量配置-腾讯云开发者社区-腾讯云](https://cloud.tencent.com/developer/article/1701214)
 
 #### ▼ dynamic_warm_clusters
 
@@ -417,8 +417,8 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 {} # ウォーミングアップ中のクラスターが無ければ、空配列になる。
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump
+> - [Cluster manager — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming)
+> - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump)
 
 **＊例＊**
 
@@ -452,7 +452,7 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener
+> - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener)
 
 **＊例＊**
 
@@ -517,7 +517,7 @@ configs:
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig
+> - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig)
 
 **＊例＊**
 

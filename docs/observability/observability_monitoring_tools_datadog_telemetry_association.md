@@ -27,7 +27,7 @@ description: テレメトリー間の紐付け＠Datadog
 | `version` | メトリクス、ログ、分散トレースの作成元のリリースバージョンを示す。                                                 |
 
 > - https://docs.datadoghq.com/getting_started/tagging/
-> - https://www.datadoghq.com/ja/blog/tagging-best-practices/
+> - [Datadog でシステムにタグを付けるためのベストプラクティス \| Datadog](https://www.datadoghq.com/ja/blog/tagging-best-practices/)
 
 <br>
 

@@ -23,8 +23,8 @@ description: Grafana Mimir＠Grafanaの知見を記録しています。
 
 読み込みエンドポイントを指定すれば、store-gateway を経由して、任意のオブジェクトストレージからメトリクスを取得できる。
 
-> - https://grafana.com/docs/mimir/latest/get-started/about-grafana-mimir-architecture/
-> - https://news.ycombinator.com/item?id=32779662
+> - [Grafana Mimir architecture \| Grafana Mimir documentation](https://grafana.com/docs/mimir/latest/get-started/about-grafana-mimir-architecture/)
+> - [Grafana Mimir and VictoriaMetrics: performance tests \| Hacker News](https://news.ycombinator.com/item?id=32779662)
 
 <br>
 

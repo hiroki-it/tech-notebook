@@ -17,7 +17,7 @@ description: Ansible Galaxy＠Ansibleの知見を記録しています。
 
 `role` ディレクトリ配下を role モジュールとして別リポジトリに切り分け、これをリモート参照する仕組みのこと。
 
-> - https://knowledge.sakura.ad.jp/3118/
+> - [Ansibleを実用的に。ansible-galaxyのロールをファイル管理しよう \| さくらのナレッジ](https://knowledge.sakura.ad.jp/3118/)
 
 <br>
 
@@ -67,7 +67,7 @@ foo-role-module-repository/ # role モジュール
 ```
 
 > - https://docs.ansible.com/ansible/latest/galaxy/dev_guide.html#creating-roles-for-galaxy
-> - https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
+> - [\[Ansible\] playbookと別リポジトリ管理のroleを実行するにはroles/requirements.ymlを使う (CLI / Tower) - zaki work log](https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243)
 
 #### ▼ 複数の task がある場合
 
@@ -99,7 +99,7 @@ foo-role-module-repository/ # role モジュール
 ```
 
 > - https://docs.ansible.com/ansible/latest/galaxy/dev_guide.html#creating-roles-for-galaxy
-> - https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
+> - [\[Ansible\] playbookと別リポジトリ管理のroleを実行するにはroles/requirements.ymlを使う (CLI / Tower) - zaki work log](https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243)
 
 <br>
 
@@ -130,7 +130,7 @@ repository/
 └── playbook.yml
 ```
 
-> - https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243
+> - [\[Ansible\] playbookと別リポジトリ管理のroleを実行するにはroles/requirements.ymlを使う (CLI / Tower) - zaki work log](https://zaki-hmkc.hatenablog.com/entry/2021/08/19/193243)
 
 <br>
 

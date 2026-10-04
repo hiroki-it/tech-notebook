@@ -9,7 +9,7 @@ description: GitHub＠Gitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -62,7 +62,7 @@ repository/
 │
 ```
 
-> - https://qiita.com/nyamogera/items/3fe6985b45fbd5377184
+> - [GitHubのIssue・Pull Requestのテンプレート機能を使おう #GitHub - Qiita](https://qiita.com/nyamogera/items/3fe6985b45fbd5377184)
 
 #### ▼ タイトル
 
@@ -224,7 +224,7 @@ $ tar zxvf *.tar.gz
 $ ./foo-bainary --version
 ```
 
-> - https://zenn.dev/dzeyelid/articles/66213c631caf09883675
+> - [Check! Terraform で GitHub の最新リリースの assets のダウンロードURLを取得する](https://zenn.dev/dzeyelid/articles/66213c631caf09883675)
 
 <br>
 
@@ -236,8 +236,8 @@ Git でソフトウェアを開発する場合、役割を持たせたブラン�
 
 ![git-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/git-flow.png)
 
-> - https://github.com/Voronenko/gitflow-release
-> - https://qiita.com/pandama09396862/items/9f013fa7b60f4d12d1d8
+> - [GitHub - Voronenko/gitflow-release: Approach for implementing git-flow releasing model · GitHub](https://github.com/Voronenko/gitflow-release)
+> - [Git-flow GitHub-flow GitLab-flowという開発フローについてまとめる #Git - Qiita](https://qiita.com/pandama09396862/items/9f013fa7b60f4d12d1d8)
 
 <br>
 
@@ -256,7 +256,7 @@ Git でソフトウェアを開発する場合、役割を持たせたブラン�
 | ステージング環境 (ユーザー受け入れ環境)   | `develop/staging` (`develop/ua`)      |
 | 本番環境                                  | `release`                             |
 
-> - https://note.com/gunj/n/nf139710d0e4a
+> - [開発環境、テスト環境、ステージング環境、本番環境について｜gun](https://note.com/gunj/n/nf139710d0e4a)
 
 #### ▼ `main` ブランチ (production)
 
@@ -332,7 +332,7 @@ CI ツールや CD ツールを使用して、コミット (マージコミッ�
 | マイナー (`Y`) | 機能の追加/変更/バグ修正である。後方のバージョンと互換性がある。ユーザーは、実装を追加するだけで新機能を利用でき、また実装を変更せずに既存機能を利用できる。 |
 | パッチ (`Z`)   | 機能のバグ修正である。後方のバージョンと互換性がある。ユーザーは、実装はそのままで既存機能を利用できる。                                                     |
 
-> - https://semver.org/lang/ja/
+> - [セマンティック バージョニング 2.0.0 \| Semantic Versioning](https://semver.org/lang/ja/)
 
 #### ▼ リリース名
 
@@ -444,14 +444,14 @@ Your branch is ahead of "origin/feature/update_foo" by 10 commits.
 
 : プッシュする。このとき、マージコミットを作成するとき、基点ブランチ以外からマージしていると、差分のコミットが 1 つにまとまらない。
 
-> - http://www-creators.com/archives/1938
+> - [git merge でのコンフリクト(競合)の解決方法まとめ \| WWWクリエイターズ](http://www-creators.com/archives/1938)
 
 #### ▼ GitHub を使用して
 
 プルリクエスト上に『Resolve conflicts』ボタンが出現し、ここからコンフリクトを修正できる。
 
 > - https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github
-> - https://qiita.com/Kto_pi/items/4fd6bdec72e852763315
+> - [GitHubのWebでコンフリクトを直す方法 #Git - Qiita](https://qiita.com/Kto_pi/items/4fd6bdec72e852763315)
 
 #### ▼ エディタを使用して
 

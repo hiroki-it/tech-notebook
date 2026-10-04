@@ -9,7 +9,7 @@ description: コンポーネント＠FastAPIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -69,6 +69,6 @@ I/O バウンドが発生しない場合や `async/await` 宣言をサポート�
 
 ただし、`async/await` 宣言をサポートしているパッケージはほとんどない。
 
-> - https://qiita.com/ffggss/items/e4c06f86fb28a62948e0
+> - [FastAPIの"def"と"async def"って結局「どっちを使えば良いんじゃろう？」 #Python3 - Qiita](https://qiita.com/ffggss/items/e4c06f86fb28a62948e0)
 
 <br>

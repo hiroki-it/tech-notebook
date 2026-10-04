@@ -9,7 +9,7 @@ description: Uvicorn＠アプリケーション系ミドルウェアの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -80,7 +80,7 @@ if __name__ == "__main__":
 
 > - https://www.uvicorn.org/#running-with-gunicorn
 > - https://www.uvicorn.org/deployment/#gunicorn
-> - https://breezymind.com/uvicorn-0-16-0-performance-problem/
+> - [uvicorn 0.16.0 성능문제](https://breezymind.com/uvicorn-0-16-0-performance-problem/)
 
 ```dockerfile
 FROM python:3.10-slim

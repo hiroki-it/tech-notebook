@@ -21,8 +21,8 @@ Helm は、helm クライアント、チャートレジストリ、複数のチ�
 
 ![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/helm_architecture.png)
 
-> - https://cloudacademy.com/course/introduction-to-helm-1034/helm-architecture/
-> - https://helm.sh/ja/docs/glossary/
+> - [Architecture - Introduction to Helm Lesson \| QA Learning Platform](https://cloudacademy.com/course/introduction-to-helm-1034/helm-architecture/)
+> - [Glossary \| Helm](https://helm.sh/ja/docs/glossary/)
 > - https://deeeet.com/writing/2018/01/10/kubernetes-yaml/
 
 <br>
@@ -44,7 +44,7 @@ Helm の `v2` では、2 方向の戦略的マージパッチを採用してい�
 そのため、Helm 以外の方法 (例：`kubectl edit` コマンド、`kubectl apply` コマンド) でマニフェストが変更されたことを検知できず、チャートの宣言通りに Helm リリースやロールバックを実施できなかった。
 
 > - https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches
-> - https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1
+> - [helmfile: difference between sync and apply (Helm 3) - DEV Community](https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1)
 
 #### ▼ 3 方向の戦略的マージパッチ
 
@@ -59,7 +59,7 @@ Helm の `v3` では、3 方向の戦略的マージパッチを採用してい�
 そのため、チャートと現在のマニフェストと比較できない。
 
 > - https://helm.sh/docs/faq/changes_since_helm2/#improved-upgrade-strategy-3-way-strategic-merge-patches
-> - https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1
+> - [helmfile: difference between sync and apply (Helm 3) - DEV Community](https://dev.to/derlin/helmfile-difference-between-sync-and-apply-helm-3-28o1)
 
 <br>
 
@@ -83,7 +83,7 @@ Kubernetes をアップグレードした場合に、Helm もアップグレー�
 
 このロジックでは、Kubernetes の新しいバージョンでコントロールプレーンコンポーネントに変更があった場合に、それに対応するような処理を実行する。
 
-> - https://helm.sh/docs/topics/version_skew/#supported-version-skew
+> - [Helm Version Support Policy \| Helm](https://helm.sh/docs/topics/version_skew/#supported-version-skew)
 
 <br>
 
@@ -119,7 +119,7 @@ Kubernetes をアップグレードした場合に、Helm もアップグレー�
 | 形式 | `https://<チャートレジストリのドメイン名>/<チャートリポジトリ名>` |
 | 例   | `https://example.com/foo-chart`                                   |
 
-> - https://helm.sh/docs/topics/chart_repository/#create-a-chart-repository
+> - [The Chart Repository Guide \| Helm](https://helm.sh/docs/topics/chart_repository/#create-a-chart-repository)
 
 <br>
 
@@ -159,8 +159,8 @@ repository/ # チャートリポジトリ
 ...
 ```
 
-> - https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure
-> - https://zenn.dev/mikutas/articles/2ab146fa1ea35b
+> - [The Chart Repository Guide \| Helm](https://helm.sh/docs/topics/chart_repository/#the-chart-repository-structure)
+> - [GitHubプライベートリポジトリをHelmリポジトリにする](https://zenn.dev/mikutas/articles/2ab146fa1ea35b)
 
 #### ▼ リポジトリをマニフェストリポジトリとしてのまま扱う場合
 
@@ -177,7 +177,7 @@ repository/ # マニフェストリポジトリ
 ...
 ```
 
-> - https://codefresh.io/docs/docs/new-helm/helm-best-practices/#helm-repositories-are-optional
+> - [Bootstrap · Content moved](https://codefresh.io/docs/docs/new-helm/helm-best-practices/#helm-repositories-are-optional)
 
 <br>
 
@@ -209,10 +209,10 @@ repository/
 ...
 ```
 
-> - https://helm.sh/docs/topics/charts/#the-chart-file-structure
-> - https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements
-> - https://helm.sh/docs/helm/helm_package/
-> - https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart
+> - [Charts \| Helm](https://helm.sh/docs/topics/charts/#the-chart-file-structure)
+> - [charts/CONTRIBUTING.md at master · helm/charts · GitHub](https://github.com/helm/charts/blob/master/CONTRIBUTING.md#technical-requirements)
+> - [helm package \| Helm](https://helm.sh/docs/helm/helm_package/)
+> - [General Conventions \| Helm](https://helm.sh/docs/chart_best_practices/conventions/#usage-of-the-words-helm-and-chart)
 
 <br>
 
@@ -250,7 +250,7 @@ sh.helm.release.v1.bar-chart.v5        helm.sh/release.v1    1      49d
 
 ```
 
-> - https://helm.sh/docs/intro/using_helm/#three-big-concepts
-> - https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest
+> - [Using Helm \| Helm](https://helm.sh/docs/intro/using_helm/#three-big-concepts)
+> - [Deprecated Kubernetes APIs \| Helm](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest)
 
 <br>

@@ -9,7 +9,7 @@ description: トランザクション管理＠マイクロサービスの知見�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: トランザクション管理＠マイクロサービスの知見�
 
 - パターン不要 (各マイクロサービスの従来のトランザクション)
 
-> - https://microservices.io/patterns/data/shared-database.html
+> - [Pattern: Shared database](https://microservices.io/patterns/data/shared-database.html)
 > - https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared
 
 <br>
@@ -37,7 +37,7 @@ description: トランザクション管理＠マイクロサービスの知見�
 また、これらの各 DB に対する各トランザクション処理を紐付けられるように、トランザクションに ID (例：UUID) を割り当てる必要がある。
 
 > - https://software.fujitsu.com/jp/manual/manualfiles/M090098/B1WS0321/03Z200/B0321-00-03-12-01.html
-> - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
+> - [🐾 Does your microservice deserve its own database? - DEV Community](https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2)
 
 #### ▼ ローカルトランザクション処理を実装できるパターン
 
@@ -46,7 +46,7 @@ description: トランザクション管理＠マイクロサービスの知見�
 一方で、連鎖させる必要がない場合は特に名前がないが、便宜上『連鎖不要のローカルトランザクション』とする。
 
 > - https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared
-> - https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E
+> - [マイクロサービスの Saga パターンについて #DDD - Qiita](https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 <br>
 
@@ -62,14 +62,14 @@ description: トランザクション管理＠マイクロサービスの知見�
 
 非推奨である。
 
-> - https://thinkit.co.jp/article/14639?page=0%2C1
+> - [マイクロサービスの適用基準 \| Think IT（シンクイット）](https://thinkit.co.jp/article/14639?page=0%2C1)
 
 #### ▼ グローバルトランザクション処理を実装できるパターン
 
 グローバルトランザクション処理を実装できるパターンとして、二相コミット (２フェーズコミット) がある。
 
-> - https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/
-> - https://thinkit.co.jp/article/19251
+> - [分散トランザクションに挑戦しよう！](https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/)
+> - [CNDT2021、分散トランザクションを実装するScalar DBを開発元のエンジニアが解説 \| CloudNative Days Tokyo 2021レポート \| Think IT（シンクイット）](https://thinkit.co.jp/article/19251)
 
 <br>
 
@@ -82,8 +82,8 @@ description: トランザクション管理＠マイクロサービスの知見�
 非推奨である。
 
 > - https://developers.redhat.com/articles/2021/09/21/distributed-transaction-patterns-microservices-compared
-> - https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/
-> - https://www.excellence-blog.com/2017/03/31/%EF%BC%92%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88/
+> - [分散トランザクションに挑戦しよう！](https://www.ogis-ri.co.jp/otc/hiroba/technical/DTP/step2/)
+> - [２フェーズコミット - エクセレンス★ブログ](https://www.excellence-blog.com/2017/03/31/%EF%BC%92%E3%83%95%E3%82%A7%E3%83%BC%E3%82%BA%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88/)
 
 <br>
 
@@ -104,8 +104,8 @@ description: トランザクション管理＠マイクロサービスの知見�
 - Scalar DB
 - Google Spanner
 
-> - https://thinkit.co.jp/article/19251
-> - https://japan.zdnet.com/article/35104267/2/
+> - [CNDT2021、分散トランザクションを実装するScalar DBを開発元のエンジニアが解説 \| CloudNative Days Tokyo 2021レポート \| Think IT（シンクイット）](https://thinkit.co.jp/article/19251)
+> - [グーグルのグローバル分散DB「Cloud Spanner」は何が違うのか - (page 2) - ZDNET Japan](https://japan.zdnet.com/article/35104267/2/)
 
 <br>
 
@@ -128,16 +128,16 @@ Saga オーケストレーターは、これらのマイクロサービスをコ
 ![saga-pattern_usecase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_usecase.png)
 
 > - https://iorilan.medium.com/i-asked-this-system-design-question-to-3-guys-during-a-developer-interview-and-none-of-them-gave-9c23abe45687
-> - https://thinkit.co.jp/article/14639?page=0%2C1
+> - [マイクロサービスの適用基準 \| Think IT（シンクイット）](https://thinkit.co.jp/article/14639?page=0%2C1)
 > - https://qiita.com/nk2/items/d9e9a220190549107282
-> - https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420
-> - https://github.com/yongk/orderdemo?tab=readme-ov-file#bounded-context-mappings
+> - [マイクロサービスの Saga パターンについて #DDD - Qiita](https://qiita.com/yasuabe2613/items/b0c92ab8c45d80318420)
+> - [GitHub - yongk/orderdemo: Demo - Axon - Bounded contexts - Saga pattern - Contract testing · GitHub](https://github.com/yongk/orderdemo?tab=readme-ov-file#bounded-context-mappings)
 
 <br>
 
 ### Saga パターンと ACID
 
-> - https://engineers.ntt.com/entry/2023/12/12/095337#Saga%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%AE%9F%E7%8F%BE%E3%81%95%E3%82%8C%E3%82%8B%E5%AE%89%E5%85%A8%E6%80%A7
+> - [複数サービス間でのデータの整合性維持に向けたSagaの実装 - NTT docomo Business Engineers' Blog](https://engineers.ntt.com/entry/2023/12/12/095337#Saga%E3%81%AB%E3%82%88%E3%81%A3%E3%81%A6%E5%AE%9F%E7%8F%BE%E3%81%95%E3%82%8C%E3%82%8B%E5%AE%89%E5%85%A8%E6%80%A7)
 
 <br>
 
@@ -147,8 +147,8 @@ Saga オーケストレーターは、これらのマイクロサービスをコ
 
 Saga オーケストレーターをステートマシン図や State パターンでモデリングし、ステートマシンを実装する。
 
-> - https://zenn.dev/twugo/books/21cb3a6515e7b8/viewer/b48713
-> - https://qiita.com/AsahinaKei/items/ce8e5d7bc375af23c719
+> - [ステートパターン（State Pattern）｜(非公式和訳）Unity - level up your code with game programming patterns](https://zenn.dev/twugo/books/21cb3a6515e7b8/viewer/b48713)
+> - [デザインパターン Stateパターン #Java - Qiita](https://qiita.com/AsahinaKei/items/ce8e5d7bc375af23c719)
 > - https://stackoverflow.com/a/20446959/12771072
 
 <br>
@@ -164,9 +164,9 @@ Saga オーケストレーターをステートマシン図や State パター�
 ![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png)
 
 > - https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga
-> - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
+> - [【図解】コレ１枚でわかるオーケストレーションとコレオグラフィ：ITソリューション塾：オルタナティブ・ブログ](https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html)
 > - https://medium.com/google-cloud-jp/gcp-saga-microservice-7c03a16a7f9d
-> - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
+> - [コレオグラフィ vs オーケストレーション \| フィオラノ ソフトウェア ジャパン ブログ](https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/)
 
 <br>
 
@@ -188,8 +188,8 @@ Saga オーケストレーターは、Order サービス (`T1`) 、Inventory サ
 
 ![saga-pattern_orchestrator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator.png)
 
-> - https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation
-> - https://dzone.com/articles/modelling-saga-as-a-state-machine
+> - [Saga orchestration pattern - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation)
+> - [Modeling Saga as a State Machine](https://dzone.com/articles/modelling-saga-as-a-state-machine)
 > - https://www.baeldung.com/cs/saga-pattern-microservices
 > - https://medium.com/@vinciabhinav7/saga-design-pattern-569ec942079
 > - https://blog.knoldus.com/distributed-transactions-and-saga-patterns/
@@ -251,7 +251,7 @@ AWS StepFunctions のステートも設計例として、参考になる。
 | 3    | `b38229c6-30df-4166-a725-8b2c578e5ed5` | CreditApproval            | 2          | `"{ \"order-id\": 2, \"customer-id\": 456, ... }"`                                                             | STARTED             | `"{\"creditApproval\":\"STARTED\"}"`                           | 〃                                                      | 〃           | 〃         |
 | ...  | ...                                    | ...                       | ...        | ...                                                                                                            | ...                 | ...                                                            | ...                                                     | ...          | ...        |
 
-> - https://www.infoq.com/articles/saga-orchestration-outbox/
+> - [Saga Orchestration for Microservices Using the Outbox Pattern - InfoQ](https://www.infoq.com/articles/saga-orchestration-outbox/)
 > - https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html
 
 <br>
@@ -270,9 +270,9 @@ Saga ステータスチェッカーは、トランザクション ID を使用�
 
 ![saga-pattern_orchestrator_status-checker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg)
 
-> - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md
-> - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md
-> - https://microservices.io/patterns/data/saga.html#resulting-context
+> - [saga-orchestration-serverless/docs/architecture/workflows.md at main · Azure-Samples/saga-orchestration-serverless · GitHub](https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md)
+> - [saga-orchestration-serverless/docs/architecture/additional-patterns.md at main · Azure-Samples/saga-orchestration-serverless · GitHub](https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md)
+> - [Pattern: Saga](https://microservices.io/patterns/data/saga.html#resulting-context)
 
 <br>
 
@@ -287,7 +287,7 @@ Saga ステータスチェッカーは、トランザクション ID を使用�
 ローカルトランザクションの進捗度に応じて、次のローカルトラザクションや補償トランザクション処理を実行する。
 
 > - https://blog.bitsrc.io/how-to-use-saga-pattern-in-microservices-9eaadde79748
-> - https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams
+> - [How-To: Implement Saga Pattern with Copilot - Copilot.rocks 🤘🏻](https://copilot.rocks/implementing-architectural-patterns/20-implementing-saga-pattern/#architecture-diagrams)
 
 #### ▼ メッセージキューを経由する場合
 
@@ -303,8 +303,8 @@ Saga オーケストレーターは、メッセージブローカーに対して
 
 ![orchestration_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration_message-queue.png)
 
-> - https://www.12-technology.com/2021/08/dbsaga.html
-> - https://qiita.com/somen440/items/a6c323695627235128e9
+> - [\[SAGAパターン\]コレオグラフィとオーケストレーションのメリット・デメリット - TeDokology](https://www.12-technology.com/2021/08/dbsaga.html)
+> - [\[golang\] オーケストレーションベースのサーガパターンに優しく入門する #マイクロサービス - Qiita](https://qiita.com/somen440/items/a6c323695627235128e9)
 
 <br>
 
@@ -330,7 +330,7 @@ Saga オーケストレーターは、メッセージブローカーに対して
 
 ![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png)
 
-> - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions
+> - [クラウドネイティブ データ パターン - .NET \| Microsoft Learn](https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions)
 
 #### ▼ 実装例 (Go の `defer()` 関数)
 
@@ -411,7 +411,7 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 }
 ```
 
-> - https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
+> - [samples-go/saga/workflow.go at main · temporalio/samples-go · GitHub](https://github.com/temporalio/samples-go/blob/main/saga/workflow.go)
 
 #### ▼ 実装例 (Go の slice)
 
@@ -503,7 +503,7 @@ func main() {
 ```
 
 > - https://dsysd-dev.medium.com/writing-temporal-workflows-in-golang-part-1-9f50f6ef23d5
-> - https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85
+> - [\[golang\] オーケストレーションベースのサーガパターンに優しく入門する #マイクロサービス - Qiita](https://qiita.com/somen440/items/a6c323695627235128e9#%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AE%E3%82%B5%E3%83%BC%E3%82%AC%E5%AE%9F%E8%A3%85)
 
 #### ▼ 実装例 (TypeScript の配列)
 
@@ -590,7 +590,7 @@ export const saga = df.orchestrator(function* (context) {
 });
 ```
 
-> - https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF
+> - [✅冪等なAPIと補償トランザクションで整合性を担保する｜実践 Microsoft Microservices](https://zenn.dev/tatta/books/4e993c596e7dc9/viewer/83e94d#%E8%A3%9C%E5%84%9F%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B6%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF)
 
 #### ▼ 実装例 (Go の slice)
 
@@ -778,8 +778,8 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 ...
 ```
 
-> - https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go
-> - https://github.com/semotpan/saga-orchestration-go/blob/main/src/reservation/internal/controller/reservation/controller.go
+> - [saga-orchestration-go/src/pkg/saga/saga.go at main · semotpan/saga-orchestration-go · GitHub](https://github.com/semotpan/saga-orchestration-go/blob/main/src/pkg/saga/saga.go)
+> - [saga-orchestration-go/src/reservation/internal/controller/reservation/controller.go at main · semotpan/saga-orchestration-go · GitHub](https://github.com/semotpan/saga-orchestration-go/blob/main/src/reservation/internal/controller/reservation/controller.go)
 
 <br>
 
@@ -796,9 +796,9 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 ![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png)
 
 > - https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga
-> - https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html
-> - https://zenn.dev/yoshii0110/articles/74dfcf4132a805
-> - https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/
+> - [【図解】コレ１枚でわかるオーケストレーションとコレオグラフィ：ITソリューション塾：オルタナティブ・ブログ](https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html)
+> - [Sagaパターンについて](https://zenn.dev/yoshii0110/articles/74dfcf4132a805)
+> - [コレオグラフィ vs オーケストレーション \| フィオラノ ソフトウェア ジャパン ブログ](https://www.fiorano.com/jp/blog/integration/integration-architecture/%E3%82%B3%E3%83%AC%E3%82%AA%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3-vs-%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/)
 
 <br>
 
@@ -814,7 +814,7 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 
 ![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_example.png)
 
-> - https://github.com/fedeoliv/microservices-transactions
+> - [GitHub - fedeoliv/microservices-transactions: Choreography-based sagas to maintain data consistency in a microservice architecture. · GitHub](https://github.com/fedeoliv/microservices-transactions)
 
 #### ▼ OSS を使用する場合
 
@@ -832,8 +832,8 @@ Saga オーケストレーターのドメインモデリングにイベントソ
 - Google Cloud Run Functions、マイクロサービス間のパブリッシュ／サブスクライブ方式の Google Cloud リソース (例：Google
   Eventarc)
 
-> - https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-choreography.html
-> - https://d.nekoruri.jp/entry/2023/03/15/20230216serverless
+> - [Saga choreography pattern - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-choreography.html)
+> - [#ssmjp で最近のサーバーレスの話をしました - めもおきば](https://d.nekoruri.jp/entry/2023/03/15/20230216serverless)
 
 <br>
 
@@ -845,7 +845,7 @@ Saga オーケストレーターのドメインモデリングにイベントソ
 
 ![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern.png)
 
-> - https://www.12-technology.com/2021/08/dbsaga.html
+> - [\[SAGAパターン\]コレオグラフィとオーケストレーションのメリット・デメリット - TeDokology](https://www.12-technology.com/2021/08/dbsaga.html)
 
 <br>
 
@@ -888,7 +888,7 @@ Confirm フェーズでは、ローカルトランザクション処理をコミ
 Cancel フェーズでは、以前のフェーズで問題があった場合、ロールバックする。
 
 > - https://www.ibm.com/blogs/think/jp-ja/microservices-applications-enabled-by-ibmcloud-managed-services/
-> - https://dev.to/yedf2/best-practice-for-tcc-distributed-transaction-in-go-402m
+> - [Best Practice for TCC Distributed Transaction In Go - DEV Community](https://dev.to/yedf2/best-practice-for-tcc-distributed-transaction-in-go-402m)
 > - https://www.oracle.com/a/otn/docs/jp-dev-days-microservices.pdf#page=9
 
 <br>
@@ -928,9 +928,9 @@ Outbox パターンでは、Saga ログテーブルに加えて、Outbox テー�
 
 ![saga-pattern_orchestrator_outbox-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png)
 
-> - https://microservices.io/patterns/data/transactional-outbox.html
-> - https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B
-> - https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/
+> - [Pattern: Transactional outbox](https://microservices.io/patterns/data/transactional-outbox.html)
+> - [マイクロサービスアーキテクチャにおけるデータ整合性について #microservices - Qiita](https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B)
+> - [Reliable Microservices Data Exchange With the Outbox Pattern](https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/)
 
 **＊実装例＊**
 
@@ -960,15 +960,15 @@ Saga オーケストレーターのクライアントやマイクロサービス
 
 ![saga-pattern_orchestrator_outbox-pattern_polling-publisher](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png)
 
-> - https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/
-> - https://microservices.io/patterns/data/polling-publisher.html
-> - https://github.com/debezium/debezium-examples/tree/main/saga
-> - https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10
+> - [Reliable Microservices Data Exchange With the Outbox Pattern](https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/)
+> - [Pattern: Polling publisher](https://microservices.io/patterns/data/polling-publisher.html)
+> - [debezium-examples/saga at main · debezium/debezium-examples · GitHub](https://github.com/debezium/debezium-examples/tree/main/saga)
+> - [Kafkaを用いたマイクロサービスSagaパターンの検証 #Debezium - Qiita](https://qiita.com/Kiminori-Kurihara/items/24dc08adbb8eeb69ac10)
 
 #### ▼ Transaction log tailing パターンとは
 
 トランザクションログ (例：MySQL バイナリログ、PostgreSQL WAL など) を追跡する。
 
-> - https://microservices.io/patterns/data/transaction-log-tailing.html
+> - [Pattern: Transaction log tailing](https://microservices.io/patterns/data/transaction-log-tailing.html)
 
 <br>

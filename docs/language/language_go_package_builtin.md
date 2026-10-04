@@ -9,7 +9,7 @@ description: ビルトインパッケージ@Goの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -71,7 +71,7 @@ type Context interface {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-context/viewer/definition
+> - [contextの概要｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/definition)
 
 <br>
 
@@ -111,8 +111,8 @@ func fooHandler(ctx context.Context) {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
-> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
+> - [Valueメソッド｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A)
+> - [Valueメソッドを有効に使うtips｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF)
 
 #### ▼ WithValue
 
@@ -144,8 +144,8 @@ func fooHandler(ctx context.Context) {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A
-> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
+> - [Valueメソッド｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/value#%E3%81%BE%E3%81%A8%E3%82%81-%26-%E6%AC%A1%E7%AB%A0%E4%BA%88%E5%91%8A)
+> - [Valueメソッドを有効に使うtips｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF)
 
 キー名は、プリミティブ型以外を設定しないと、エラーになる。
 
@@ -154,7 +154,7 @@ func fooHandler(ctx context.Context) {
 should not use built-in type string as key for value; define your own type to avoid collisions
 ```
 
-> - https://qiita.com/behiron/items/aec3e1a848f789153d86
+> - [GoのcontextのValueのkeyの型を再考する #Go - Qiita](https://qiita.com/behiron/items/aec3e1a848f789153d86)
 
 <br>
 
@@ -164,7 +164,7 @@ should not use built-in type string as key for value; define your own type to av
 
 コンテキストにタイムアウト時間を設定する。
 
-> - https://zenn.dev/hsaki/books/golang-context/viewer/deadline#withdeadline%E9%96%A2%E6%95%B0
+> - [Deadlineメソッドとタイムアウト｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/deadline#withdeadline%E9%96%A2%E6%95%B0)
 
 <br>
 
@@ -212,8 +212,8 @@ func main()  {
 }
 ```
 
-> - https://pkg.go.dev/context#example-WithTimeout
-> - https://zenn.dev/hsaki/books/golang-context/viewer/deadline#withtimeout%E9%96%A2%E6%95%B0
+> - [context package - context - Go Packages](https://pkg.go.dev/context#example-WithTimeout)
+> - [Deadlineメソッドとタイムアウト｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/deadline#withtimeout%E9%96%A2%E6%95%B0)
 
 **＊実装例＊**
 
@@ -313,8 +313,8 @@ func main() {
 }
 ```
 
-> - https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B
-> - https://pkg.go.dev/context#Context
+> - [Go言語でContextを活用する3つのパターン #ConTeXt - Qiita](https://qiita.com/atsutama/items/566c38b4a5f3f0d26e44#http%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E4%BE%8B)
+> - [context package - context - Go Packages](https://pkg.go.dev/context#Context)
 
 <br>
 
@@ -322,7 +322,7 @@ func main() {
 
 #### ▼ Goroutine 間での伝達
 
-> - https://zenn.dev/hsaki/books/golang-context/viewer/definition#%E5%87%A6%E7%90%86%E3%81%8C%E8%A4%87%E6%95%B0%E5%80%8B%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%BC%E3%83%81%E3%83%B3%E3%82%92%E3%81%BE%E3%81%9F%E3%81%90%E4%BE%8B
+> - [contextの概要｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/definition#%E5%87%A6%E7%90%86%E3%81%8C%E8%A4%87%E6%95%B0%E5%80%8B%E3%81%AE%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%BC%E3%83%81%E3%83%B3%E3%82%92%E3%81%BE%E3%81%9F%E3%81%90%E4%BE%8B)
 
 <br>
 
@@ -442,7 +442,7 @@ func main() {
 ```
 
 > - https://golangbyexample.com/using-context-in-golang-complete-guide/
-> - https://castaneai.hatenablog.com/entry/2020/01/28/133843
+> - [context.Contextの親子とキャンセル処理の順序 - castaneaiのブログ](https://castaneai.hatenablog.com/entry/2020/01/28/133843)
 
 #### ▼ リクエストスコープ
 
@@ -469,8 +469,8 @@ type Context struct {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF
-> - https://pkg.go.dev/github.com/gin-gonic/gin#Context
+> - [Valueメソッドを有効に使うtips｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/appliedvalue#value%E3%81%A8%E3%81%97%E3%81%A6%E4%B8%8E%E3%81%88%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF%E3%83%BB%E4%B8%8E%E3%81%88%E3%82%8B%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AA%E3%81%84%E3%83%87%E3%83%BC%E3%82%BF)
+> - [gin package - github.com/gin-gonic/gin - Go Packages](https://pkg.go.dev/github.com/gin-gonic/gin#Context)
 
 <br>
 
@@ -778,7 +778,7 @@ $ go run main.go foo bar baz
 [foo bar baz]
 ```
 
-> - https://golang.hateblo.jp/entry/2018/10/22/080000
+> - [Go言語(golang) flagパッケージでコマンドライン引数をパース - golangの日記](https://golang.hateblo.jp/entry/2018/10/22/080000)
 
 <br>
 
@@ -815,7 +815,7 @@ Usage of main.go:
         (optional) absolute path to the kubeconfig file (default "/Users/foo/.kube/config")
 ```
 
-> - https://qiita.com/oruharo/items/8f98e75264b9d6c7df2a#flag
+> - [Go勉強(3) kubernetes client-goのexamplesを読んでみる #Client-go - Qiita](https://qiita.com/oruharo/items/8f98e75264b9d6c7df2a#flag)
 
 <br>
 
@@ -1071,7 +1071,7 @@ func main() {
 }
 ```
 
-> - https://pkg.go.dev/encoding/hex#EncodeToString
+> - [hex package - encoding/hex - Go Packages](https://pkg.go.dev/encoding/hex#EncodeToString)
 
 <br>
 
@@ -1083,7 +1083,7 @@ func main() {
 
 Go にはデフォルトで、ロギング用パッケージが用意されている。
 
-> - https://pkg.go.dev/log
+> - [log package - log - Go Packages](https://pkg.go.dev/log)
 > - https://zenn.dev/link/comments/0247de9ed6c174
 
 <br>
@@ -1162,7 +1162,7 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/snowcrush/articles/21f28163e067cb
+> - [log.Fatalは使わないようにしよう](https://zenn.dev/snowcrush/articles/21f28163e067cb)
 
 <br>
 
@@ -1174,7 +1174,7 @@ func main() {
 
 ただし、`panic` ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である (ビルド失敗の原因がわからずに時間を溶かした経験あり) 。
 
-> - https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
+> - [CodeReviewComments · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/CodeReviewComments#dont-panic)
 
 **＊実装例＊**
 
@@ -1264,7 +1264,7 @@ type Handler interface {
 }
 ```
 
-> - https://azukiazusa.dev/blog/go-http/#handler%E6%A7%8B%E9%80%A0%E4%BD%93
+> - [Go 言語 標準パッケージでHTTPサーバー](https://azukiazusa.dev/blog/go-http/#handler%E6%A7%8B%E9%80%A0%E4%BD%93)
 
 #### ▼ HandlerFunc
 
@@ -1294,7 +1294,7 @@ func FooMiddleware() func(http.Handler) http.Handler {
 }
 ```
 
-> - https://azukiazusa.dev/blog/go-http/#handlerfunc
+> - [Go 言語 標準パッケージでHTTPサーバー](https://azukiazusa.dev/blog/go-http/#handlerfunc)
 
 <br>
 
@@ -1308,7 +1308,7 @@ func FooMiddleware() func(http.Handler) http.Handler {
 
 ![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LaravelのMiddlewareクラスの仕組み.png)
 
-> - https://www.ritolab.com/posts/69
+> - [Laravelミドルウェアの基本入門（＆出力HTMLをminifyしWebサイト高速化） \| Ritolabo](https://www.ritolab.com/posts/69)
 > - https://www.c-sharpcorner.com/article/asp-net-core-middleware/
 
 #### ▼ 認証系
@@ -1819,8 +1819,8 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/nekoshita/articles/dba0a7139854bb
-> - https://pkg.go.dev/context#CancelFunc
+> - [Go v1.16に追加されたsignal.NotifyContextを試す](https://zenn.dev/nekoshita/articles/dba0a7139854bb)
+> - [context package - context - Go Packages](https://pkg.go.dev/context#CancelFunc)
 
 <br>
 

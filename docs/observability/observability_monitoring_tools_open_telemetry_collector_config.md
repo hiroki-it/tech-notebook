@@ -9,7 +9,7 @@ description: 設定ファイル＠OpenTelemetry Collectorの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -28,8 +28,8 @@ description: 設定ファイル＠OpenTelemetry Collectorの知見を記録し�
 $ otelcol --config relay.yaml
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol
-> - https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/manifest.yaml
+> - [opentelemetry-collector-releases/distributions/otelcol at main · open-telemetry/opentelemetry-collector-releases · GitHub](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol)
+> - [opentelemetry-collector-releases/distributions/otelcol/manifest.yaml at main · open-telemetry/opentelemetry-collector-releases · GitHub](https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol/manifest.yaml)
 
 #### ▼ otel/opentelemetry-collector-k8s
 
@@ -41,8 +41,8 @@ $ otelcol --config relay.yaml
 $ otelcol-k8s --config relay.yaml
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-k8s
-> - https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-k8s/manifest.yaml
+> - [opentelemetry-collector-releases/distributions/otelcol-k8s at main · open-telemetry/opentelemetry-collector-releases · GitHub](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-k8s)
+> - [opentelemetry-collector-releases/distributions/otelcol-k8s/manifest.yaml at main · open-telemetry/opentelemetry-collector-releases · GitHub](https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-k8s/manifest.yaml)
 
 #### ▼ otel/opentelemetry-collector-contrib
 
@@ -55,8 +55,8 @@ $ otelcol-k8s --config relay.yaml
 $ otelcol-contrib --config relay.yaml
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib
-> - https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-contrib/manifest.yaml
+> - [opentelemetry-collector-releases/distributions/otelcol-contrib at main · open-telemetry/opentelemetry-collector-releases · GitHub](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib)
+> - [opentelemetry-collector-releases/distributions/otelcol-contrib/manifest.yaml at main · open-telemetry/opentelemetry-collector-releases · GitHub](https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol-contrib/manifest.yaml)
 
 <br>
 
@@ -104,8 +104,8 @@ service:
 
 タイプは、コア機能と拡張機能から選べる。
 
-> - https://github.com/open-telemetry/opentelemetry-collector
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib
+> - [GitHub - open-telemetry/opentelemetry-collector: OpenTelemetry Collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector)
+> - [GitHub - open-telemetry/opentelemetry-collector-contrib: Contrib repository for the OpenTelemetry Collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib)
 
 #### ▼ 同じタイプの複数定義
 
@@ -128,7 +128,7 @@ service:
         - prometheusremotewrite/2
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#basics
+> - [Configuration \| OpenTelemetry](https://opentelemetry.io/docs/collector/configuration/#basics)
 
 <br>
 
@@ -150,7 +150,7 @@ exporters:
       cert_file: client.crt
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md
+> - [opentelemetry-collector/config/configtls/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md)
 
 #### ▼ insecure
 
@@ -168,7 +168,7 @@ exporters:
       insecure: true
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md
+> - [opentelemetry-collector/config/configtls/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md)
 
 #### ▼ key_file
 
@@ -186,7 +186,7 @@ exporters:
       key_file: client.key
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md
+> - [opentelemetry-collector/config/configtls/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md)
 
 <br>
 
@@ -210,7 +210,7 @@ X-Ray にスパンを送信する。
 
 そのため、AWS 製のコンテナイメージ (`public.ecr.aws/aws-observability/aws-otel-collector`) に差し替えておく必要がある。
 
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - [分散トレーシング(OpenTelemetry / AWS X-Ray) \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/ops/awsxray/#opentelemetry-collector%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
 #### ▼ index_all_attributes
 
@@ -230,7 +230,7 @@ exporters:
     index_all_attributes: true
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration
+> - [opentelemetry-collector-contrib/exporter/awsxrayexporter/README.md at main · open-telemetry/opentelemetry-collector-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration)
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-X-Ray_0228_v1.pdf#page=22
 
 #### ▼ no_verify_ssl
@@ -243,7 +243,7 @@ exporters:
     no_verify_ssl: true
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration
+> - [opentelemetry-collector-contrib/exporter/awsxrayexporter/README.md at main · open-telemetry/opentelemetry-collector-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration)
 
 #### ▼ region
 
@@ -255,7 +255,7 @@ exporters:
     region: ap-northeast-1
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration
+> - [opentelemetry-collector-contrib/exporter/awsxrayexporter/README.md at main · open-telemetry/opentelemetry-collector-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsxrayexporter/README.md#exporter-configuration)
 
 <br>
 
@@ -327,7 +327,7 @@ Attributes:
   { "kind": "exporter", "data_type": "traces", "name": "debug" }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md
+> - [opentelemetry-collector/exporter/debugexporter/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/debugexporter/README.md)
 
 <br>
 
@@ -376,7 +376,7 @@ exporters:
     endpoint: grafana-tempo.grafana-tempo.svc.cluster.local:4317
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/otlpexporter/README.md
+> - [opentelemetry-collector/exporter/otlpexporter/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/otlpexporter/README.md)
 
 <br>
 
@@ -402,7 +402,7 @@ exporters:
 
 記入中...
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md
+> - [opentelemetry-collector/extension/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md)
 
 <br>
 
@@ -444,7 +444,7 @@ processors:
         action: insert
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md
+> - [opentelemetry-collector-contrib/processor/attributesprocessor/README.md at main · open-telemetry/opentelemetry-collector-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/attributesprocessor/README.md)
 
 #### ▼ k8sattribute
 
@@ -464,7 +464,7 @@ processors:
 ```
 
 > - https://opentelemetry.io/docs/kubernetes/collector/components/
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md
+> - [opentelemetry-collector-contrib/processor/k8sattributesprocessor/README.md at main · open-telemetry/opentelemetry-collector-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor/README.md)
 
 <br>
 
@@ -476,7 +476,7 @@ processors:
 
 推奨である。
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md
+> - [opentelemetry-collector/processor/batchprocessor/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md)
 
 #### ▼ timeout
 
@@ -486,7 +486,7 @@ processors:
     timeout: 8192s
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md
+> - [opentelemetry-collector/processor/batchprocessor/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md)
 
 #### ▼ send_batch_size
 
@@ -500,7 +500,7 @@ processors:
     send_batch_size: 0
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md
+> - [opentelemetry-collector/processor/batchprocessor/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md)
 
 <br>
 
@@ -534,7 +534,7 @@ Receiver を設定する。
 
 OpenTelemetry のクライアントは、Receiver を指定し、テレメトリーを送信する。
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md
+> - [opentelemetry-collector/receiver/otlpreceiver/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md)
 
 <br>
 
@@ -558,7 +558,7 @@ OTLP 形式でテレメトリーを受信する。
 
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md
+> - [opentelemetry-collector/receiver/otlpreceiver/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md)
 
 #### ▼ http
 
@@ -574,7 +574,7 @@ receivers:
         endpoint: <Pod (自分) のIPアドレス>:4318
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md
+> - [opentelemetry-collector/receiver/otlpreceiver/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md)
 
 #### ▼ grpc
 
@@ -600,7 +600,7 @@ service:
     - health_check
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#service
+> - [Configuration \| OpenTelemetry](https://opentelemetry.io/docs/collector/configuration/#service)
 
 <br>
 
@@ -620,7 +620,7 @@ service:
         - awsxray
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#service
+> - [Configuration \| OpenTelemetry](https://opentelemetry.io/docs/collector/configuration/#service)
 
 <br>
 
@@ -630,8 +630,8 @@ service:
 
 OpenTelemetry Collector 自体のテレメトリーの作成方法を設定する。
 
-> - https://opentelemetry.io/docs/collector/configuration/#telemetry
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
+> - [Configuration \| OpenTelemetry](https://opentelemetry.io/docs/collector/configuration/#telemetry)
+> - [opentelemetry-collector/service/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md)
 
 #### ▼ logs
 
@@ -656,8 +656,8 @@ service:
         service: foo
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
-> - https://opentelemetry.io/docs/collector/internal-telemetry/#configure-internal-logs
+> - [opentelemetry-collector/service/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md)
+> - [Internal telemetry \| OpenTelemetry](https://opentelemetry.io/docs/collector/internal-telemetry/#configure-internal-logs)
 
 ログレベルが `debug` の場合、例えば以下になる。
 
@@ -678,7 +678,7 @@ service:
       address: <PodのIPアドレス>:8888
 ```
 
-> - https://opentelemetry.io/docs/collector/configuration/#telemetry
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md
+> - [Configuration \| OpenTelemetry](https://opentelemetry.io/docs/collector/configuration/#telemetry)
+> - [opentelemetry-collector/service/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/README.md)
 
 <br>

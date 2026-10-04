@@ -9,7 +9,7 @@ description: クラス＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: クラス＠PHPの知見を記録しています。
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html
+> - [【IT技術の知見】オブジェクト指向設計＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html)
 
 <br>
 
@@ -245,7 +245,7 @@ $car = new Car();
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html
+> - [【IT技術の知見】オブジェクト指向設計＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html)
 
 <br>
 
@@ -727,7 +727,7 @@ PHP では、集約や合成の関係性を作り、委譲先クラスの関数�
 
 #### ▼ 継承よりも優れた点
 
-> - https://qiita.com/sonatard/items/2b4b70694fd680f6297c#3-%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E4%BD%95%E6%95%85go%E3%81%AF%E7%B6%99%E6%89%BF%E3%82%92%E5%BB%83%E6%AD%A2%E3%81%97%E3%81%A6%E5%A7%94%E8%AD%B2%E3%82%92%E6%8E%A8%E5%A5%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B
+> - [オブジェクト指向言語としてGoをやろうとするとハマる点を整理してみる #Go - Qiita](https://qiita.com/sonatard/items/2b4b70694fd680f6297c#3-%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82%E4%BD%95%E6%95%85go%E3%81%AF%E7%B6%99%E6%89%BF%E3%82%92%E5%BB%83%E6%AD%A2%E3%81%97%E3%81%A6%E5%A7%94%E8%AD%B2%E3%82%92%E6%8E%A8%E5%A5%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B)
 
 <br>
 
@@ -832,7 +832,7 @@ Composer のオートロード機能を有効化したうえで、外部ファ�
 
 注意点として、composer のオートロードを使用しない場合、`require()` 関数と `use` の両方が必要である。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html
+> - [PHPの名前空間とクラス名のエイリアス、オートロード：Web業界で働くためのPHP入門（終）（3/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1808/01/news009_3.html)
 
 #### ▼ 外部ファイルのクラスから関数をコール
 
@@ -904,7 +904,7 @@ class Bar
 
 ### use な関係とは
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html
+> - [【IT技術の知見】オブジェクト指向設計＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html)
 
 <br>
 
@@ -959,8 +959,8 @@ final class User
 
 『依存性注入』と訳すのは混乱を招くため、『依存オブジェクト注入』と訳すようにする。
 
-> - https://en.wikipedia.org/wiki/Dependency_injection#Types_of_dependency_injection
-> - https://little-hands.hatenablog.com/entry/2018/05/27/dependency-injection
+> - [Dependency injection - Wikipedia](https://en.wikipedia.org/wiki/Dependency_injection#Types_of_dependency_injection)
+> - [Dependency Injectionを「依存性の注入」と訳すのは非常に悪い誤訳 - little hands' lab](https://little-hands.hatenablog.com/entry/2018/05/27/dependency-injection)
 
 #### ▼ コンストラクタインジェクションとは
 
@@ -1453,8 +1453,8 @@ LCOM の計測方法にはいくつか種類がある。
 
 LCOM4 は、クラスの各関数内で、保持するすべてのデータにアクセスしているほど、凝集度が高いと見なす方法である。
 
-> - https://www.amazon.co.jp/dp/B082WXZVPC
-> - https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d
+> - [Amazon.co.jp: ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本 eBook : 成瀬 允宣: Kindleストア](https://www.amazon.co.jp/dp/B082WXZVPC)
+> - [存在感の薄い「凝集度」に光を当てる - LCOMでクラスを凝集度を測定しよう #JavaScript - Qiita](https://qiita.com/fujiharuka/items/65125592bd31e2a1c16d)
 
 <br>
 

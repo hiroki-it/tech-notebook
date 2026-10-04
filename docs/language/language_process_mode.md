@@ -9,7 +9,7 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: 言語別の処理方式＠言語の知見を記録しています�
 
 エントリーポイントのファイルや関数を開始点として、そのプログラムに含まれるすべてのファイルの処理が実行される。
 
-> - https://en.wikipedia.org/wiki/Entry_point
+> - [Entry point - Wikipedia](https://en.wikipedia.org/wiki/Entry_point)
 
 <br>
 
@@ -89,10 +89,10 @@ func main() {
 
 開始と終了はバラバラであり、処理の実行が重複する場合もある。
 
-> - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
+> - [Difference Between Concurrency and Parallelism (with Comparison Chart) - Tech Differences](https://techdifferences.com/difference-between-concurrency-and-parallelism.html)
 > - https://hobik-site.blogspot.com/2018/03/cpu.html
-> - https://moz.hatenablog.jp/entry/2018/04/10/175643
-> - https://zenn.dev/hsaki/books/golang-concurrency/viewer/term
+> - [並行 (Concurrent) 、並列 (Parallel) 、非同期 (Asynchrony) の違い - mozblog - もずぶろぐ -](https://moz.hatenablog.jp/entry/2018/04/10/175643)
+> - [並行処理と並列処理｜Goでの並行処理を徹底解剖！](https://zenn.dev/hsaki/books/golang-concurrency/viewer/term)
 
 <br>
 
@@ -110,9 +110,9 @@ func main() {
 
 開始は同時であるが、終了はバラバラになる。
 
-> - https://techdifferences.com/difference-between-concurrency-and-parallelism.html
+> - [Difference Between Concurrency and Parallelism (with Comparison Chart) - Tech Differences](https://techdifferences.com/difference-between-concurrency-and-parallelism.html)
 > - https://hobik-site.blogspot.com/2018/03/cpu.html
-> - https://moz.hatenablog.jp/entry/2018/04/10/175643
+> - [並行 (Concurrent) 、並列 (Parallel) 、非同期 (Asynchrony) の違い - mozblog - もずぶろぐ -](https://moz.hatenablog.jp/entry/2018/04/10/175643)
 
 <br>
 
@@ -122,14 +122,14 @@ func main() {
 
 parallel パッケージを使用する。
 
-> - https://github.com/krakjoe/parallel
-> - https://qiita.com/WhiteGrouse/items/6fb906386b8fbabd6405
+> - [GitHub - krakjoe/parallel: A succinct parallel concurrency API for PHP8 · GitHub](https://github.com/krakjoe/parallel)
+> - [PHP7.4からのマルチスレッド #PHP - Qiita](https://qiita.com/WhiteGrouse/items/6fb906386b8fbabd6405)
 
 #### ▼ JavaScript の場合
 
 Web Worker を使用する。
 
-> - https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers
+> - [ウェブワーカーの使用 - Web API \| MDN](https://developer.mozilla.org/ja/docs/Web/API/Web_Workers_API/Using_web_workers)
 
 #### ▼ Go の場合
 
@@ -140,7 +140,7 @@ Goroutines を使用する。
 それが理由か否かはわからないが、Go のドキュメントでは、Goroutines は `concurrency` の項目に記載されている。
 
 > - https://medium.com/sprocket-inc/goroutine-concurrent-and-parallel-programming-669eaae55e73
-> - https://golang.org/doc/effective_go#concurrency
+> - [Effective Go - The Go Programming Language](https://golang.org/doc/effective_go#concurrency)
 > - https://qiita.com/taigamikami/items/fc798cdd6a4eaf9a7d5e
 
 <br>
@@ -167,8 +167,8 @@ Goroutines を使用する。
 
 しかし、後続の処理に非同期処理の結果を使用するものが含まれている場合、この処理だけは非同期処理の後に実行されるように定義する必要がある。
 
-> - https://qiita.com/kiyodori/items/da434d169755cbb20447
-> - https://qiita.com/klme_u6/items/ea155f82cbe44d6f5d88
+> - [非同期処理ってどういうこと？JavaScriptで一から学ぶ #Node.js - Qiita](https://qiita.com/kiyodori/items/da434d169755cbb20447)
+> - [JavaScriptの非同期処理を並列処理と勘違いしていませんか？ #WebWorkers - Qiita](https://qiita.com/klme_u6/items/ea155f82cbe44d6f5d88)
 
 <br>
 
@@ -201,6 +201,6 @@ console.log(input);
 ```
 
 > - https://engineer.recruit-lifestyle.co.jp/techblog/2019-12-13-node-async-io/
-> - https://blog.honjala.net/entry/2018/08/08/022027
+> - [node.jsがやたら非同期化しようとするのをasync/awaitでどうにか同期化する - ほんじゃーねっと](https://blog.honjala.net/entry/2018/08/08/022027)
 
 <br>

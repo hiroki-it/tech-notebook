@@ -9,7 +9,7 @@ description: PromQL＠メトリクス
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,14 +21,14 @@ description: PromQL＠メトリクス
 
 特定の時点のとき系列データのこと。
 
-> - https://prometheus.io/docs/prometheus/latest/querying/basics/#instant-vector-selectors
+> - [Querying basics \| Prometheus](https://prometheus.io/docs/prometheus/latest/querying/basics/#instant-vector-selectors)
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Range vector
 
 特定の期間のとき系列データのこと。
 
-> - https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors
+> - [Querying basics \| Prometheus](https://prometheus.io/docs/prometheus/latest/querying/basics/#range-vector-selectors)
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
 
 #### ▼ Scalar
@@ -36,14 +36,14 @@ description: PromQL＠メトリクス
 浮動小数点の数値型データのこと。
 
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
-> - https://prometheus.io/docs/prometheus/latest/querying/basics/#float-literals
+> - [Querying basics \| Prometheus](https://prometheus.io/docs/prometheus/latest/querying/basics/#float-literals)
 
 #### ▼ String
 
 文字列型データのこと。
 
 > - https://it-engineer.hateblo.jp/entry/2019/01/19/150849
-> - https://prometheus.io/docs/prometheus/latest/querying/basics/#string-literals
+> - [Querying basics \| Prometheus](https://prometheus.io/docs/prometheus/latest/querying/basics/#string-literals)
 
 <br>
 
@@ -68,7 +68,7 @@ resource.labels.pod_name=~"pod$"
 resource.labels.pod_name=~".*pod.*"
 ```
 
-> - https://cocoinit23.com/prometheus-query-regular-expression-wildcard/
+> - [Prometheusのクエリに正規表現を使ってワイルドカードを実現する \| cocoinit23](https://cocoinit23.com/prometheus-query-regular-expression-wildcard/)
 
 #### ▼ エスケープ
 
@@ -82,7 +82,7 @@ resource.labels.pod_name=~".*pod.*"
 sum(envoy_cluster_outlier_detection_ejections_active{pod=~"^foo.*$",namespace=~"bookinfo", cluster_name=~".*\\|v2\\|bar.*"}) by (pod,cluster_name)
 ```
 
-> - https://github.com/grafana/grafana/issues/4234#issuecomment-191683898
+> - [Invalid regex escape in Prometheus queries · Issue #4234 · grafana/grafana · GitHub](https://github.com/grafana/grafana/issues/4234#issuecomment-191683898)
 
 <br>
 
@@ -150,7 +150,7 @@ sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, respons
 ...
 ```
 
-> - https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B
+> - [Prometheusクエリ道場 #監視 - Qiita](https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#2-3-%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E9%9B%86%E8%A8%88%E3%81%99%E3%82%8B)
 
 #### ▼ count
 
@@ -172,7 +172,7 @@ increase(<Counter型メトリクス名>[5m])
 = rate(<Counter型メトリクス名>[1h]) * 5 * 60
 ```
 
-> - https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates
+> - [PromLabs \| Blog - How Exactly Does PromQL Calculate Rates?](https://promlabs.com/blog/2021/01/29/how-exactly-does-promql-calculate-rates)
 
 #### ▼ sum
 
@@ -262,7 +262,7 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 
 > - https://grafana.com/docs/grafana-cloud/monitor-applications/asserts/enable-prom-metrics-collection/infrastructure/istio/#request-error-and-latency-metrics
 > - https://stackoverflow.com/q/62137292/12771072
-> - https://github.com/istio/istio/discussions/47571
+> - [How "reporter" label works in latency metrics? · istio/istio · Discussion #47571 · GitHub](https://github.com/istio/istio/discussions/47571)
 
 **例**
 
@@ -288,8 +288,8 @@ sum(rate(istio_requests_total{reporter="source", response_code=~"4.*"}[5m])) / s
 sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
-> - https://cloud.google.com/stackdriver/docs/managed-prometheus/exporters/istio?hl=ja#rules-alerts
-> - https://github.com/istio/istio/discussions/47571
+> - [Istio \| Google Cloud Observability \| Google Cloud Documentation](https://cloud.google.com/stackdriver/docs/managed-prometheus/exporters/istio?hl=ja#rules-alerts)
+> - [How "reporter" label works in latency metrics? · istio/istio · Discussion #47571 · GitHub](https://github.com/istio/istio/discussions/47571)
 
 **例**
 
@@ -315,7 +315,7 @@ sum(rate(istio_requests_total{reporter="source", response_code=~"0"}[5m])) / sum
 sum(rate(istio_requests_total{reporter="destination", response_code=~"0"}[5m])) / sum(rate(istio_requests_total{reporter="destination"}[5m]))
 ```
 
-> - https://github.com/istio/istio/discussions/47571
+> - [How "reporter" label works in latency metrics? · istio/istio · Discussion #47571 · GitHub](https://github.com/istio/istio/discussions/47571)
 
 #### ▼ `[]` (ウィンドウ)
 
@@ -329,8 +329,8 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"0"}[5m])) 
 rate(<Counter型メトリクス名>[5m])
 ```
 
-> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/promql_1.html
-> - https://christina04.hatenablog.com/entry/prometheus-rate
+> - [PromQLを始めましょう：チートシートもあります！ \| ブログ \| Sysdig \| 株式会社SCSK](https://www.scsk.jp/sp/sysdig/blog/container_monitoring/promql_1.html)
+> - [Prometheusのrateを理解する - Carpe Diem](https://christina04.hatenablog.com/entry/prometheus-rate)
 > - https://qiita.com/t_nakayama0714/items/1231751e72804d52c20a#3-0-range-vector%E3%81%A8instant-vector>
 > - https://gavin-zhou.medium.com/victoriametrics%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%88%E3%82%8A%E3%82%88%E3%81%84prometheus-rate-%E9%96%A2%E6%95%B0-6a69c36cee8f
 
@@ -346,7 +346,7 @@ Prometheus でデータポイントを収集できるか否かで、コンテナ
 absent(container_tasks_state{name="<コンテナ名>",state="running"}) == 1
 ```
 
-> - https://zenn.dev/big_tanukiudon/scraps/3c44bbd33de4d3
+> - [【Prometheus】PromQLテンプレート例](https://zenn.dev/big_tanukiudon/scraps/3c44bbd33de4d3)
 
 <br>
 
@@ -397,7 +397,7 @@ rate(prometheus_tsdb_head_samples_appended_total[1h])
 {container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="oo-prometheus-service"} <集約値>
 ```
 
-> - https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+> - [Who murdered my lovely Prometheus container in Kubernetes cluster?](https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/)
 
 <br>
 
@@ -441,10 +441,10 @@ rate(prometheus_tsdb_head_samples_appended_total[1h]) *
 {container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", service="foo-prometheus-service"} <集約値>
 ```
 
-> - https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/
-> - https://www.robustperception.io/how-much-space-does-the-wal-take-up/
-> - https://discuss.prometheus.io/t/prometheus-storage-requirements/268/4
-> - https://gist.github.com/mikejoh/c172b2400909d33c37199c9114df61ef
+> - [How much disk space do Prometheus blocks use? – Robust Perception \| Prometheus Monitoring Experts](https://www.robustperception.io/how-much-disk-space-do-prometheus-blocks-use/)
+> - [How much space does the WAL take up? – Robust Perception \| Prometheus Monitoring Experts](https://www.robustperception.io/how-much-space-does-the-wal-take-up/)
+> - [Prometheus Storage Requirements - #4 by gregGT - Scaling / Clustering / Long-Term Storage - Prometheus Monitoring System](https://discuss.prometheus.io/t/prometheus-storage-requirements/268/4)
+> - [Prometheus troubleshooting · GitHub](https://gist.github.com/mikejoh/c172b2400909d33c37199c9114df61ef)
 
 <br>
 
@@ -468,7 +468,7 @@ rate(prometheus_remote_storage_bytes_total[1h]) *
 {container="prometheus", endpoint="web", instance="*.*.*.*:9090", job="foo-prometheus", namespace="prometheus", pod="foo-prometheus-pod", remote_name="victoria-metrics", service="oo-prometheus-service", url="https://*.*.*.*:8248/api/v1/write"} <集約値>
 ```
 
-> - https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
+> - [prometheus.remote\_write \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics)
 > - https://grafana.com/blog/2021/04/12/how-to-troubleshoot-remote-write-issues-in-prometheus/
 
 #### ▼ 送信メタデータサイズ
@@ -489,7 +489,7 @@ rate(prometheus_remote_storage_samples_retries_total[1h]) *
 60 * 60 * 24
 ```
 
-> - https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics
+> - [prometheus.remote\_write \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/prometheus.remote_write/#debug-metrics)
 
 #### ▼ リモート送信シャード数
 

@@ -62,15 +62,15 @@ Gateway は、Istio Ingress Gateway の一部として、Node 外から受信し
 
 ![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
 
-> - https://istio.io/latest/blog/2018/v1alpha3-routing/
-> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
+> - [Istio / Introducing the Istio v1alpha3 routing API](https://istio.io/latest/blog/2018/v1alpha3-routing/)
+> - [KubernetesとIstioを使ったDX改善 - 後ろを向いて後退します](https://micpsm.hatenablog.com/entry/k8s-istio-dx)
+> - [Service to service plus front proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy)
 
 #### ▼ Pod 間通信のみで使用する場合
 
 Pod 間通信には不要である。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service
+> - [Service to service only — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service)
 
 <br>
 
@@ -129,7 +129,7 @@ configs:
   ...
 ```
 
-> - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
+> - [Istio Traffic Management \| Luckywinds](https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99)
 
 <br>
 
@@ -143,8 +143,8 @@ Gateway と VirtualService の設定値に基づいて、Node 外からインバ
 
 Kubernetes リソースの Ingress の代わりとして使用できる。
 
-> - https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/
-> - https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html
+> - [Istio / Ingress Gateways](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/)
+> - [Technology Preview - Istio Service Mesh Application — StarlingX documentation](https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html)
 > - https://youtu.be/TW9XivfIFAY?t=330
 > - https://www.solo.io/topics/istio/istio-ingress-gateway/
 
@@ -236,10 +236,10 @@ spec:
 # 重要なところ以外を省略しているため、全体像はその都度確認すること。
 ```
 
-> - https://software.danielwatrous.com/istio-ingress-vs-kubernetes-ingress/
+> - [Istio Ingress vs. Kubernetes Ingress – Daniel Watrous on Software and Cloud Engineering](https://software.danielwatrous.com/istio-ingress-vs-kubernetes-ingress/)
 > - https://stackoverflow.com/questions/68711365/why-isnt-the-circuit-breaking-of-istio-working
-> - https://bcho.tistory.com/1367
-> - https://qiita.com/J_Shell/items/296cd00569b0c7692be7
+> - [Istio Traffic management](https://bcho.tistory.com/1367)
+> - [Istio IngressGateway周辺を理解する #kubernetes - Qiita](https://qiita.com/J_Shell/items/296cd00569b0c7692be7)
 > - https://blog.jayway.com/2018/10/22/understanding-istio-ingress-gateway-in-kubernetes/
 > - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
 
@@ -272,9 +272,9 @@ spec:
 - Istio Ingress Gateway に関する Service、VirtualService、DestinationRule の設定の不備で接続できない
 - タイムアウト時間が短すぎる
 
-> - https://github.com/istio/istio/issues/27513#issuecomment-1095620598
-> - https://github.com/istio/istio/issues/27513#issuecomment-1186410179
-> - https://zenn.dev/toshikish/articles/d0dd54ae067bed
+> - [upstream connect error or disconnect/reset before headers. reset reason: connection termination · Issue #27513 · istio/istio · GitHub](https://github.com/istio/istio/issues/27513#issuecomment-1095620598)
+> - [upstream connect error or disconnect/reset before headers. reset reason: connection termination · Issue #27513 · istio/istio · GitHub](https://github.com/istio/istio/issues/27513#issuecomment-1186410179)
+> - [Istio のサービスへの接続でプロトコルエラーになる](https://zenn.dev/toshikish/articles/d0dd54ae067bed)
 
 <br>
 
@@ -290,9 +290,9 @@ Istio Egress Gateway を使用すると、istio-proxy からの通信を一度�
 
 Istio Egress Gateway を使用しない構成でも、ServiceEntry で外部の宛先を登録すれば、istio-proxy はその宛先へ直接通信できる。
 
-> - https://knowledge.sakura.ad.jp/20489/
+> - [マイクロサービスアーキテクチャ向けにサービスメッシュを提供する「Istio」の概要と環境構築、トラフィックルーティング設定 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/20489/)
 > - https://istio.io/v1.10/blog/2019/egress-performance/#egress-traffic-cases
-> - https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html
+> - [Technology Preview - Istio Service Mesh Application — StarlingX documentation](https://docs.starlingx.io/admintasks/kubernetes/istio-service-mesh-application-eee5ebb3d3c4.html)
 > - https://youtu.be/TW9XivfIFAY?t=330
 > - https://www.solo.io/topics/istio/istio-ingress-gateway/
 
@@ -317,7 +317,7 @@ Istio Egress Gateway はアプリケーションデータを復号できるた�
 ![istio-egressgateway_mtls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_mtls.png)
 
 > - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
-> - https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#tls_origination_at_the_egress_gateway
+> - [GKE クラスタで Cloud Service Mesh Egress ゲートウェイを使用する: チュートリアル \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#tls_origination_at_the_egress_gateway)
 
 #### ▼ サーバー認証 (Passthrough)
 
@@ -330,7 +330,7 @@ Istio Egress Gateway はアプリケーションデータを復号できない�
 ![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
 
 > - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
-> - https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#pass-through_of_httpstls_connections
+> - [GKE クラスタで Cloud Service Mesh Egress ゲートウェイを使用する: チュートリアル \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#pass-through_of_httpstls_connections)
 
 <br>
 
@@ -352,7 +352,7 @@ Istio Ingress Gateway (厳密に言うと Gateway) は、独自プロトコル (
 
 宛先が独自プロトコルリクエストのポート番号だけで宛先 (例：ServiceEntry、外部サーバーなど) を決めてしまう。
 
-> - https://github.com/istio/istio/discussions/51942#discussioncomment-9989752
+> - [Routing L4 Traffic Based on Host in Istio Gateway · istio/istio · Discussion #51942 · GitHub](https://github.com/istio/istio/discussions/51942#discussioncomment-9989752)
 
 <br>
 
@@ -366,9 +366,9 @@ VirtualService は、Istio Ingress Gateway の一部として、受信した `L4
 
 ![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
 
-> - https://tech.uzabase.com/entry/2018/11/26/110407
-> - https://knowledge.sakura.ad.jp/20489/
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
+> - [Kubernetes + Istioでblue-green deploymentを実現する - Uzabase for Engineers](https://tech.uzabase.com/entry/2018/11/26/110407)
+> - [マイクロサービスアーキテクチャ向けにサービスメッシュを提供する「Istio」の概要と環境構築、トラフィックルーティング設定 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/20489/)
+> - [Service to service plus front proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy)
 
 #### ▼ Pod 間通信のみで使用する場合
 
@@ -376,7 +376,7 @@ istio-proxy は、VirtualService に設定した宛先に通信をルーティ�
 
 このとき、VirtualService と DestinationRule を使用する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service
+> - [Service to service only — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service)
 
 <br>
 
@@ -435,7 +435,7 @@ configs:
   ...
 ```
 
-> - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
+> - [Istio Traffic Management \| Luckywinds](https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99)
 
 #### ▼ ルートとして
 
@@ -511,9 +511,9 @@ envoy # 送信元 Envoy からのリクエストをマイクロサービスが�
 マイクロサービス
 ```
 
-> - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
-> - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
-> - https://sreake.com/blog/istio/
+> - [Istio Traffic Management \| Luckywinds](https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99)
+> - [IstioのTraffic Managementの動作イメージを掴もう - Enjoy Architecting](https://taisho6339.hatenablog.com/entry/2020/05/11/235435)
+> - [Istio の timeout, retry, circuit breaking, etc \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio/)
 
 Envoy のリスナーとルートを確認すれば、VirtualService の設定が正しく適用できているかを確認できる。
 
@@ -551,7 +551,7 @@ http.50004     blackhole:50004     *           /*                     404
 ```
 
 > - https://stackoverflow.com/a/73824193
-> - https://micpsm.hatenablog.com/entry/k8s-istio-dx
+> - [KubernetesとIstioを使ったDX改善 - 後ろを向いて後退します](https://micpsm.hatenablog.com/entry/k8s-istio-dx)
 
 #### ▼ `503` ステータス
 
@@ -577,7 +577,7 @@ httpbin-app-service.services.svc.cluster.local                                  
 | ------------------- | -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
 | VirtualService の数 | 外部からのインバウンド通信を API ゲートウェイにルーティングする VirtualService を 1 つだけ作成しておけばよい。 | API ゲートウェイからすべてのマイクロサービスにルーティングできるように、各マイクロサービスにルーティングできる VirtualService を定義する必要がある。 |
 
-> - https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/
+> - [How to choose the right API Gateway for your platform: Comparison of Kong, Tyk, KrakenD, Apigee, and alternatives \| Moesif Blog](https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/)
 
 ### 宛先の Service のポート番号について
 
@@ -641,8 +641,8 @@ spec:
       port: 9000
 ```
 
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/
-> - https://zenn.dev/toshikish/articles/d0dd54ae067bed
+> - [Istio / Protocol Selection](https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/)
+> - [Istio のサービスへの接続でプロトコルエラーになる](https://zenn.dev/toshikish/articles/d0dd54ae067bed)
 
 <br>
 
@@ -662,7 +662,7 @@ Pod の宛先情報は、Kubernetes の Service から取得する。
 
 ![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png)
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
+> - [Service to service plus front proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy)
 
 #### ▼ Pod 間通信のみで使用する場合
 
@@ -670,8 +670,8 @@ DestinationRule は、VirtualService で受信した `L4`/`L7` 通信を、い�
 
 Pod の宛先情報は、Kubernetes の Service から取得する。
 
-> - https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service
+> - [Istio / Understanding TLS Configuration](https://istio.io/latest/docs/ops/configuration/traffic-management/tls-configuration/#sidecars)
+> - [Service to service only — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service)
 
 <br>
 
@@ -806,14 +806,14 @@ envoy
 ⬇⬆️︎
 ------------
 ⬇⬆️︎
-envoy # 送信元Envoyからのリクエストをマイクロサービスが受信できるように、クラスターとエンドポイントになる
+envoy # 送信元 Envoy からのリクエストをリスナーで受信し、マイクロサービスに中継する
 ⬇⬆️︎
 マイクロサービス
 ```
 
-> - https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99
-> - https://taisho6339.hatenablog.com/entry/2020/05/11/235435
-> - https://sreake.com/blog/istio/
+> - [Istio Traffic Management \| Luckywinds](https://luckywinds.github.io/docs/system/service-mesh/istio-traffic-management/#%E9%80%9A%E7%94%A8%E8%A7%84%E5%88%99)
+> - [IstioのTraffic Managementの動作イメージを掴もう - Enjoy Architecting](https://taisho6339.hatenablog.com/entry/2020/05/11/235435)
+> - [Istio の timeout, retry, circuit breaking, etc \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio/)
 
 Envoy のクラスターとエンドポイントを確認すれば、DestinationRule の設定が正しく適用できているかを確認できる。
 
@@ -846,9 +846,9 @@ Istio`v1.3` より前は、ConfigMap のデフォルトが `REGISTRY_ONLY` に�
 
 ![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png)
 
-> - https://tech.uzabase.com/entry/2018/11/26/110407
-> - https://jimmysong.io/blog/externalname-and-serviceentry/
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
+> - [Kubernetes + Istioでblue-green deploymentを実現する - Uzabase for Engineers](https://tech.uzabase.com/entry/2018/11/26/110407)
+> - [External Service Aliases: ExternalName vs ServiceEntry …](https://jimmysong.io/blog/externalname-and-serviceentry/)
+> - [Istio / Accessing External Services](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services)
 
 <br>
 
@@ -872,7 +872,7 @@ istio-proxy に最初限のネットワーク設定を適用する。
 
 Sidecar を使用すると、指定した設定以外の通信を除去し、特定の Pod 間でのみ通信できるようになる。
 
-> - https://jksdaba.hatenablog.com/entry/2021/03/29/013423
+> - [IstioのSidecarリソースについてのちょっとメモ。 - 記録。](https://jksdaba.hatenablog.com/entry/2021/03/29/013423)
 
 <br>
 
@@ -884,18 +884,18 @@ ServiceEntry には、Istio Egress Gateway が必須ではない。
 
 Istio Egress Gateway を使用しない構成では、istio-proxy は ServiceEntry で登録した外部の宛先へ直接通信する。
 
-> - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
+> - [Using Istio to MITM our users’ traffic \| Steven Reitsma](https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic)
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
 
 #### ▼ ServiceEntry の前段の DestinationRule
 
 ServiceEntry から外部に HTTP リクエストを送信する場合、DestinationRule は不要である。
 
-しかし、ServiceEntry から宛先に HTTP リクエストを送信する場合、DestinationRule は不要である。
+ただし、istio-proxy や Istio Egress Gateway で平文 HTTP リクエストを暗号化し、宛先に HTTPS リクエストを送信する場合、DestinationRule でサーバー認証 (`SIMPLE`) を設定する必要がある。
 
-> - https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic
+> - [Using Istio to MITM our users’ traffic \| Steven Reitsma](https://reitsma.io/blog/using-istio-to-mitm-our-users-traffic)
 > - https://discuss.istio.io/t/ingress-egress-serviceentry-data-flow-issues-for-istio-api-gateway/14202
-> - https://cloud.google.com/blog/ja/products/containers-kubernetes/moving-and-measuring-services-as-part-of-a-mesh
+> - [Anthos Service Mesh: 外部サービスとの連携 - 指標とトレース \| Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/products/containers-kubernetes/moving-and-measuring-services-as-part-of-a-mesh)
 
 <br>
 
@@ -997,9 +997,9 @@ spec:
   priority: -1
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo)
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext)
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation)
 
 #### ▼ `network.tcp_proxy` をマッチ対象とする場合
 
@@ -1087,9 +1087,9 @@ spec:
   priority: -1
 ```
 
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext
-> - https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo)
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-PatchContext)
+> - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation)
 
 <br>
 
@@ -1097,7 +1097,7 @@ spec:
 
 Pod 間通信時、相互 TLS 認証を実施する。
 
-> - https://news.mynavi.jp/techplus/article/kubernetes-30/
+> - [Kubernetes入門(30) Istioを使ったサービスメッシュ構築 - 特徴3：Security \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/kubernetes-30/)
 
 <br>
 
@@ -1115,9 +1115,9 @@ JWT トークンがない場合、AuthorizationPolicy は `403` レスポンス�
 
 また、Nginx 製の BFF など、認証処理を実装しにくい場所にのみ採用してもよい。
 
-> - https://news.mynavi.jp/techplus/article/kubernetes-30/
+> - [Kubernetes入門(30) Istioを使ったサービスメッシュ構築 - 特徴3：Security \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/kubernetes-30/)
 > - https://www.reddit.com/r/istio/comments/1cazua5/comment/l0v73tx/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
+> - [403 instead of 401 when there's no JWT · Issue #26559 · istio/istio · GitHub](https://github.com/istio/istio/issues/26559#issuecomment-675682440)
 
 <br>
 
@@ -1163,9 +1163,9 @@ spec:
           values: ["https://<Auth0のドメイン>/"]
 ```
 
-> - https://tech.jxpress.net/entry/deploy-secure-api-with-istio-and-auth0-in-5-mins
-> - https://istio.io/latest/docs/concepts/security/#request-authentication
-> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
+> - [IstioとAuth0でJWT認証付きAPIを5分でデプロイする - JX通信社エンジニアブログ](https://tech.jxpress.net/entry/deploy-secure-api-with-istio-and-auth0-in-5-mins)
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#request-authentication)
+> - [403 instead of 401 when there's no JWT · Issue #26559 · istio/istio · GitHub](https://github.com/istio/istio/issues/26559#issuecomment-675682440)
 
 <br>
 
@@ -1213,10 +1213,10 @@ spec:
             ["http://keycloak.com/realms/<realm名>"]
 ```
 
-> - https://thinkit.co.jp/article/18023
+> - [コンテナ上のマイクロサービスの認証強化 ～IstioとKeycloak～ \| Keycloakで実現するAPIセキュリティ \| Think IT（シンクイット）](https://thinkit.co.jp/article/18023)
 > - https://www.keycloak.org/docs/latest/securing_apps/index.html#_certificate_endpoint
-> - https://istio.io/latest/docs/concepts/security/#request-authentication
-> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#request-authentication)
+> - [403 instead of 401 when there's no JWT · Issue #26559 · istio/istio · GitHub](https://github.com/istio/istio/issues/26559#issuecomment-675682440)
 
 <br>
 
@@ -1237,10 +1237,10 @@ spec:
   jwtRules:
     # JWT トークンの発行元 ID プロバイダーの識別子を設定する
     # ブラウザから接続する
-    - issuer: http://oauth2-proxy.com/realms/<realm名>
+    - issuer: http://keycloak.com/realms/<realm名>
       # ID プロバイダーの JWKs エンドポイントを設定し、アクセストークン署名検証のための公開鍵を取得する
       # ブラウザから、または API に直接接続する
-      jwksUri: http://oauth2-proxy.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
+      jwksUri: http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>/protocol/openid-connect/certs
       # 既存の JWT を再利用し、宛先マイクロサービスにそのままフォワーディングする
       forwardOriginalToken: true
       # Authorization ヘッダーを指定する
@@ -1286,8 +1286,8 @@ data:
 ```
 
 > - https://venafi.com/blog/istio-oidc/
-> - https://istio.io/latest/docs/concepts/security/#request-authentication
-> - https://github.com/istio/istio/issues/26559#issuecomment-675682440
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#request-authentication)
+> - [403 instead of 401 when there's no JWT · Issue #26559 · istio/istio · GitHub](https://github.com/istio/istio/issues/26559#issuecomment-675682440)
 
 <br>
 
@@ -1308,6 +1308,6 @@ data:
 | `PILOT_UNIFIED_SIDECAR_SCOPE`                    |                                                                                            |
 | `VERIFY_CERT_AT_CLIENT`                          | どこにこの変数あるんやろか...                                                              |
 
-> - https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go
+> - [istio/pilot/pkg/features/experimental.go at release-1.23 · istio/istio · GitHub](https://github.com/istio/istio/blob/release-1.23/pilot/pkg/features/experimental.go)
 
 <br>

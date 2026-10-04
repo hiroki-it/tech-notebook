@@ -9,7 +9,7 @@ description: HTTP認証＠認証の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,7 +24,7 @@ HTTP リクエストのなかで認証する認証スキームのこと。
 資格情報の一時的な保管は、ブラウザの WebStorege で行うため、認証解除 (ログアウト) をサーバー側で完全に制御できない。
 
 > - https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
-> - https://architecting.hateblo.jp/entry/2020/03/27/130535
+> - [Basic認証、Digest認証、Bearer認証、OAuth認証方式について - プログラミング初心者がアーキテクトっぽく語る](https://architecting.hateblo.jp/entry/2020/03/27/130535)
 > - https://developer.mozilla.org/ja/docs/Web/HTTP/Authentication#authentication_schemes
 
 <br>

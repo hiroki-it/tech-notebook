@@ -58,6 +58,6 @@ claude:
       --allowedTools "Bash Read Edit Write"
 ```
 
-> - https://code.claude.com/docs/ja/gitlab-ci-cd
+> - [Claude Code GitLab CI/CD - Claude Code Docs](https://code.claude.com/docs/ja/gitlab-ci-cd)
 
 <br>

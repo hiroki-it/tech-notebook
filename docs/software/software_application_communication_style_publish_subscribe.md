@@ -53,7 +53,7 @@ Apache Kafka のプル型では、サブスクライブによる購読予約を 
 | Apache Kafka         | 必要               | 必要                           |
 | RabbitMQ             | 不要               | 必要                           |
 
-> - https://qiita.com/riita10069/items/40b1bcc36c25b197077c
+> - [非同期に使われるPub/SubモデルのPush方式とPull方式ってどう違うの？ #sqs - Qiita](https://qiita.com/riita10069/items/40b1bcc36c25b197077c)
 
 <br>
 
@@ -67,7 +67,7 @@ Apache Kafka のプル型では、サブスクライブによる購読予約を 
 
 これに対処するため、メッセージ中継システムでリトライやデッドレターキューが必要になる。
 
-> - https://qiita.com/riita10069/items/40b1bcc36c25b197077c
+> - [非同期に使われるPub/SubモデルのPush方式とPull方式ってどう違うの？ #sqs - Qiita](https://qiita.com/riita10069/items/40b1bcc36c25b197077c)
 
 #### ▼ 例
 

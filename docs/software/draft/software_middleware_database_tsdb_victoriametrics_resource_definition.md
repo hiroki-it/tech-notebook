@@ -9,7 +9,7 @@ description: リソース定義＠VictoriaMetricsの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,6 +31,6 @@ $ kubectl create namespace victoria-metrics
 $ helm install <Helmリリース名> <チャートリポジトリ名>/victoria-metrics-cluster -n victoria-metrics --version <バージョンタグ>
 ```
 
-> - https://github.com/VictoriaMetrics/helm-charts
+> - [GitHub - VictoriaMetrics/helm-charts: Helm charts for VictoriaMetrics, VictoriaLogs and ecosystem · GitHub](https://github.com/VictoriaMetrics/helm-charts)
 
 <br>

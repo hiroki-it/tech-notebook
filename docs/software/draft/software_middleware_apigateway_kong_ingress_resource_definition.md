@@ -9,7 +9,7 @@ description: リソース定義＠Kong Ingressの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,7 +27,7 @@ $ kubectl create namespace kong-ingress
 $ helm install <Helmリリース名> <チャートリポジトリ名>/ingress -n kong-ingress --version <バージョンタグ>
 ```
 
-> - https://github.com/Kong/charts/blob/main/charts/ingress/README.md
+> - [charts/charts/ingress/README.md at main · Kong/charts · GitHub](https://github.com/Kong/charts/blob/main/charts/ingress/README.md)
 
 <br>
 

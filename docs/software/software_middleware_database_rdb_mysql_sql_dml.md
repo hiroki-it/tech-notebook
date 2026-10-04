@@ -17,7 +17,7 @@ description: DML＠SQLの知見を記録しています。
 
 テーブル上のレコードを操作するクエリのこと。
 
-> - https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DML-Data-Manipulation-Language
+> - [SQLの種類(DDL、DML、DCL) \| 酒と涙とRubyとRailsと](https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DML-Data-Manipulation-Language)
 
 <br>
 

@@ -19,7 +19,7 @@ description: プラクティス集＠Istioの知見を記録しています。
 
 クラウドプロバイダーで Istio を稼働させる場合、各 AZ や各リージョンにコントロールプレーンを `1` 個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。
 
-> - https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters
+> - [Istio / Deployment Best Practices](https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-fewer-clusters)
 
 <br>
 
@@ -27,7 +27,7 @@ description: プラクティス集＠Istioの知見を記録しています。
 
 コントロールプレーンの可用性を高めるために、コントロールプレーンを異なる AZ に冗長化させる。
 
-> - https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones
+> - [Istio / Deployment Best Practices](https://istio.io/latest/docs/ops/best-practices/deployment/#deploy-across-multiple-availability-zones)
 
 <br>
 
@@ -81,7 +81,7 @@ spec:
 ```
 
 > - https://www.kabegiwablog.com/entry/2020/08/31/224827
-> - https://github.com/istio/istio/issues/6324#issuecomment-760156652
+> - [Better support for sidecar containers in batch jobs · Issue #6324 · istio/istio · GitHub](https://github.com/istio/istio/issues/6324#issuecomment-760156652)
 > - https://youtu.be/2_Nan81j03o?t=1915
 
 <br>
@@ -94,7 +94,7 @@ spec:
 
 セキュリティ上の理由から、Istio Ingress Gateway と Istiod コントロールプレーンは異なる Namespace におくほうがよい。
 
-> - https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway
+> - [Istio / Installing Gateways](https://istio.io/latest/docs/setup/additional-setup/gateway/#deploying-a-gateway)
 
 #### ▼ NodePort Service を選ぶ
 
@@ -129,8 +129,8 @@ LoadBalancer Service では、クラウドプロバイダーのリソースと K
 
 NodePort Service を選ぶためには、Istio Ingress Gateway ではなく、IstioOperator や istio チャート上で Service のタイプを設定し、Istio Ingress Gateway を作成する必要がある。
 
-> - https://github.com/istio/istio/issues/28310#issuecomment-733079966
-> - https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39
+> - [Istio-ingress nodeport service changes · Issue #28310 · istio/istio · GitHub](https://github.com/istio/istio/issues/28310#issuecomment-733079966)
+> - [istio/manifests/charts/gateway/values.yaml at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/manifests/charts/gateway/values.yaml#L39)
 
 #### ▼ ClusterIP Service を選ぶ (AWS Load Balancer Controller を使用する場合のみ)
 
@@ -155,9 +155,13 @@ Pod (istio-proxy)
 
 > - https://lab.mo-t.com/blog/k8s-update-load-balancer
 
-#### ▼ マイクロサービスごとに作成する
+#### ▼ 共有入口と占有入口を選ぶ
 
-単一障害点になることを防ぐために、`1` 個の Istio Ingress Gateway ですべてのマイクロサービスにルーティングするのではなく、マイクロサービスことに用意する。
+Istio Ingress Gateway を複数の Namespace で共有する共有入口パターンと、特定の Namespace が占有する占有入口パターンがある。
+
+入口の責任範囲を分割する必要がない場合は共有し、流入経路や管理の責任範囲を分けたい場合は Namespace ごとに配置する。
+
+占有入口パターンでは、問題の原因を切り分けやすくなる一方で、Istio Ingress Gateway の管理が煩雑になる。
 
 <br>
 
@@ -184,7 +188,7 @@ spec:
             subset: v1
 ```
 
-> - https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services
+> - [Istio / Traffic Management Best Practices](https://istio.io/latest/docs/ops/best-practices/traffic-management/#set-default-routes-for-services)
 
 <br>
 
@@ -212,7 +216,7 @@ spec:
             host: foo
 ```
 
-> - https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration
+> - [Istio / Traffic Management Best Practices](https://istio.io/latest/docs/ops/best-practices/traffic-management/#cross-namespace-configuration)
 
 <br>
 
@@ -226,7 +230,7 @@ DestinationRule を更新する前に新しいサブセットを持つ VirtualSe
 
 DestinationRule を最初に更新し、正常に完了することを待機した後に、VirtualService を更新する。
 
-> - https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes
+> - [Istio / Traffic Management Best Practices](https://istio.io/latest/docs/ops/best-practices/traffic-management/#avoid-503-errors-while-reconfiguring-service-routes)
 
 <br>
 
@@ -336,7 +340,7 @@ Istio では、マイナーバージョンごとのアップグレードを推�
 
 実質的に半年ごとにアップグレード工数が発生する。
 
-> - https://istio.io/latest/docs/releases/supported-releases/#support-status-of-istio-releases
+> - [Istio / Supported Releases](https://istio.io/latest/docs/releases/supported-releases/#support-status-of-istio-releases)
 
 #### ▼ マイナーバージョン単位でアップグレード
 
@@ -344,7 +348,7 @@ Istio の開発プロジェクトでは、マイナーバージョンを `1` 個
 
 そのため、マイナーバージョンを `2` 個以上跨いだアップグレードを推奨していない。
 
-> - https://istio.io/latest/docs/setup/upgrade/
+> - [Istio / Upgrade Istio](https://istio.io/latest/docs/setup/upgrade/)
 > - https://thenewstack.io/upgrading-istio-without-downtime/
 
 #### ▼ Istiod コントロールプレーンでダウンタイムを発生させない
@@ -401,7 +405,7 @@ $ istioctl install
 $ kubectl rollout restart deployment app-deployment -n app
 ```
 
-> - https://istio.io/latest/docs/setup/upgrade/in-place/
+> - [Istio / In-place Upgrades](https://istio.io/latest/docs/setup/upgrade/in-place/)
 
 <br>
 
@@ -409,11 +413,11 @@ $ kubectl rollout restart deployment app-deployment -n app
 
 #### ▼ カナリア方式とは
 
-> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548
+> - [【Istio⛵️】Istioを安全にアップグレードするカナリア方式とその仕組み - 好きな技術を布教したい 😗](https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548)
 
 #### ▼ `istioctl` コマンドの場合
 
-> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548
+> - [【Istio⛵️】Istioを安全にアップグレードするカナリア方式とその仕組み - 好きな技術を布教したい 😗](https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548)
 
 #### ▼ `helm` コマンドの場合
 

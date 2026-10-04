@@ -9,7 +9,7 @@ description: 機械語と進数の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -694,7 +694,7 @@ Reset 側に『1』を入力すると、両方の出力結果は変化する。
 0000 0000 0000 1000
 ```
 
-> - https://ameblo.jp/kou05/entry-10883110086.html
+> - [過去問解説：シフト演算と論理演算＜基本情報技術者試験＞ \| 独学で合格できる☆基本情報技術者試験](https://ameblo.jp/kou05/entry-10883110086.html)
 
 **＊例題＊**
 

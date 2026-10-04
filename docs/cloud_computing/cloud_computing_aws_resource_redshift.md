@@ -9,7 +9,7 @@ description: Amazon Redshift＠AWSリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,8 +21,8 @@ description: Amazon Redshift＠AWSリソースの知見を記録しています�
 
 DB よりも柔軟性の高い保管形式で、データレイク (例：Amazon S3 など) のデータを処理したうえで管理できる。
 
-> - https://aws.amazon.com/jp/big-data/datalakes-and-analytics/datalakes/?nc=sn&loc=4
-> - https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake#:~:text=risks%20more%20efficiently.-,What's%20the%20difference%20between%20a%20data%20lake%20and%20a%20data,as%20specific%20BI%20use%20cases.
+> - [Data Lakes on AWS](https://aws.amazon.com/jp/big-data/datalakes-and-analytics/datalakes/?nc=sn&loc=4)
+> - [What is a Data Lake? Data Lake vs. Warehouse \| Microsoft Azure](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake#:~:text=risks%20more%20efficiently.-,What's%20the%20difference%20between%20a%20data%20lake%20and%20a%20data,as%20specific%20BI%20use%20cases.)
 
 <br>
 
@@ -30,6 +30,6 @@ DB よりも柔軟性の高い保管形式で、データレイク (例：Amazon
 
 Apache Spark を使用して、大きなサイズのデータを高速に並列処理できる。
 
-> - https://aws.amazon.com/jp/blogs/news/new-amazon-redshift-integration-with-apache-spark/
+> - [NEW – Amazon Redshift と Apache Spark の統合 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/new-amazon-redshift-integration-with-apache-spark/)
 
 <br>

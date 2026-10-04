@@ -9,7 +9,7 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -38,8 +38,8 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 - サービスメッシュのスコープ
 - コントロールプレーンの冗長化数
 
-> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#control-plane-performance
-> - https://istio.io/latest/docs/ops/configuration/mesh/configuration-scoping/
+> - [Istio / Performance and Scalability](https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#control-plane-performance)
+> - [Istio / Configuration Scoping](https://istio.io/latest/docs/ops/configuration/mesh/configuration-scoping/)
 
 <br>
 
@@ -55,7 +55,7 @@ description: Istio＠サービスメッシュ系ミドルウェアの知見を�
 - 送信元の接続数
 - など...
 
-> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#data-plane-performance
+> - [Istio / Performance and Scalability](https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#data-plane-performance)
 
 #### ▼ メモリを消費する処理
 
@@ -71,7 +71,7 @@ CPU と同じように、以下の情報によって、データプレーンで�
 
 - istio-proxy 内の Envoy プロセスが持つ宛先情報量
 
-> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#data-plane-performance
+> - [Istio / Performance and Scalability](https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#data-plane-performance)
 
 #### ▼ サービスメッシュ有無による違い
 
@@ -89,7 +89,7 @@ Istio のドキュメントでは、以下のハードウェアリソースを�
 | waypoint-proxy のコンテナ | 0.25 vCPU | 60 Mi  |
 | ztunnel のコンテナ        | 0.06 vCPU | 12 Mi  |
 
-> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage
+> - [Istio / Performance and Scalability](https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#sidecar-and-ztunnel-resource-usage)
 
 **例**
 
@@ -113,7 +113,7 @@ istio-proxy をインジェクションすると、Pod あたりで以下のハ�
 | サービス I | 0.0001 vCPU  | 0.0004 vCPU  |     322 Mi      |     411 Mi      |
 | 合計       | 0.0020 vCPU  | 0.0047 vCPU  |     1778 Mi     |     2119 Mi     |
 
-> - https://www.alpha.co.jp/blog/202205_01/#%E4%BD%BF%E7%94%A8%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E4%B8%8A%E6%98%87
+> - [サービスメッシュ導入の前に知っておくべきこと - アルファテックブログ](https://www.alpha.co.jp/blog/202205_01/#%E4%BD%BF%E7%94%A8%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E4%B8%8A%E6%98%87)
 
 <br>
 
@@ -127,8 +127,8 @@ istio-proxy をインジェクションすると、Pod あたりで以下のハ�
 - RequestAuthentication による JWT トークンの検証
 - PeerAuthentication による相互 TLS 認証
 
-> - https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#latency-for-istio-124
-> - https://istio.io/latest/blog/2020/large-scale-security-policy-performance-tests/#conclusion
+> - [Istio / Performance and Scalability](https://istio.io/latest/docs/ops/deployment/performance-and-scalability/#latency-for-istio-124)
+> - [Istio / Large Scale Security Policy Performance Tests](https://istio.io/latest/blog/2020/large-scale-security-policy-performance-tests/#conclusion)
 
 #### ▼ サービスメッシュ有無による違い
 
@@ -142,7 +142,7 @@ p99、1000 req/sec、240 秒間の負荷の場合である。
 
 ![istio_sidecar-mode_latency](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mode_latency.png)
 
-> - https://istio.io/latest/blog/2019/performance-best-practices/
+> - [Istio / Best Practices: Benchmarking Service Mesh Performance](https://istio.io/latest/blog/2019/performance-best-practices/)
 
 #### ▼ モードによる違い
 
@@ -156,9 +156,9 @@ p99、1000 req/sec、240 秒間の負荷の場合である。
 
 各 Pod にサイドカーとして Envoy を稼働させ、これが各マイクロサービスのインフラ領域の責務をに担う。
 
-> - https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
-> - https://speakerdeck.com/16yuki0702/distributed-tracing-at-openshift-meetup-tokyo20191018?slide=35
-> - https://zenn.dev/riita10069/articles/service-mesh
+> - [Beyond Istio OSS - The Current State and Future of the Istio …](https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management)
+> - [Distributed Tracing@OpenShift Meetup Tokyo20191018 - Speaker Deck](https://speakerdeck.com/16yuki0702/distributed-tracing-at-openshift-meetup-tokyo20191018?slide=35)
+> - [サービスメッシュの本質は、トラフィック管理や可観測性ではない](https://zenn.dev/riita10069/articles/service-mesh)
 
 <br>
 
@@ -171,7 +171,7 @@ p99、1000 req/sec、240 秒間の負荷の場合である。
 各 Node 上では DaemonSet 配下の Pod として ztunnel を稼働させ、必要に応じて Deployment 配下の Pod として waypoint-proxy を稼働させる。ztunnel は L4、waypoint-proxy は L7 を中心とする非機能ロジックを担う。
 
 > - https://blog.csdn.net/cr7258/article/details/126870859
-> - https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management
+> - [Beyond Istio OSS - The Current State and Future of the Istio …](https://jimmysong.io/blog/beyond-istio-oss/#sidecar-management)
 
 <br>
 
@@ -181,7 +181,7 @@ p99、1000 req/sec、240 秒間の負荷の場合である。
 
 L4/L7 に対応している。
 
-> - https://istio.io/latest/blog/2024/ambient-vs-cilium/
+> - [Istio / Scaling in the Clouds: Istio Ambient vs. Cilium](https://istio.io/latest/blog/2024/ambient-vs-cilium/)
 
 ### パケット処理の仕組み
 
@@ -191,8 +191,8 @@ L4/L7 に対応している。
 4. クラスターでリクエストを受け取る。
 5. クラスター配下のエンドポイントにリクエストを送信する。
 
-> - https://github.com/istio/istio/issues/34030#issuecomment-880012551
-> - https://qiita.com/DaichiSasak1/items/1fb781e5dd2fa549ac48#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E5%87%A6%E7%90%86%E3%83%95%E3%83%AD%E3%83%BC
+> - [Why does Istio need so many envoy listeners? · Issue #34030 · istio/istio · GitHub](https://github.com/istio/istio/issues/34030#issuecomment-880012551)
+> - [Istio ~EnvoyFilter入門~ #kubernetes - Qiita](https://qiita.com/DaichiSasak1/items/1fb781e5dd2fa549ac48#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E5%87%A6%E7%90%86%E3%83%95%E3%83%AD%E3%83%BC)
 
 <br>
 
@@ -218,7 +218,7 @@ L4/L7 に対応している。
 
 外部システムは識別できない。
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#security-note
+> - [Istio / Accessing External Services](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#security-note)
 > - https://istio.io/v1.14/blog/2019/egress-performance/
 
 #### ▼ 登録した外部システムに送信できるようにする
@@ -227,7 +227,7 @@ L4/L7 に対応している。
 
 外部システムを識別できる。
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#security-note
+> - [Istio / Accessing External Services](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#security-note)
 > - https://istio.io/v1.14/blog/2019/egress-performance/
 
 <br>
@@ -240,14 +240,14 @@ L4/L7 に対応している。
 
 外部システムは識別できない。
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened
+> - [Istio / Accessing External Services](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened)
 > - https://istio.io/v1.14/blog/2019/egress-performance/
 
 #### ▼ istio-proxy を経由せずに送信できるようにする
 
 サービスメッシュ内のマイクロサービスから、istio-proxy を経由せずに、外部システムにリクエストを送信できるようにする。
 
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened
+> - [Istio / Accessing External Services](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#understanding-what-happened)
 > - https://istio.io/v1.14/blog/2019/egress-performance/
 
 <br>
@@ -265,12 +265,12 @@ ServiceEntry を使用すれば、名前をつけられる。
 注意点として、`REGISTRY_ONLY` モードを有効化すると、ServiceEntry で登録された宛先以外のサービスメッシュ外への全通信が `BlackHoleCluster` 扱いになってしまう。
 
 > - https://istiobyexample.dev/monitoring-egress-traffic/
-> - https://dev.to/hsatac/howto-find-egress-traffic-destination-in-istio-service-mesh-4l61
-> - https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services
+> - [HowTo: Find egress traffic destination in Istio service mesh - DEV Community](https://dev.to/hsatac/howto-find-egress-traffic-destination-in-istio-service-mesh-4l61)
+> - [Istio / Accessing External Services](https://istio.io/latest/docs/tasks/traffic-management/egress/egress-control/#envoy-passthrough-to-external-services)
 
 #### ▼ `BlackHoleCluster`
 
-IP アドレスを指定して送信できない宛先のこと。
+`REGISTRY_ONLY` モードで、ServiceEntry に登録されていないサービスメッシュ外の宛先のこと。
 
 基本的に、サービスメッシュ外へのリクエストは失敗し、`502` ステータスになる (`502 Bad Gateway`)。
 
@@ -286,15 +286,15 @@ IP アドレスを指定して送信できない宛先のこと。
 
 ランダムな障害を意図的にインジェクションし、サービスメッシュの動作を検証する。
 
-> - https://istio.io/latest/docs/tasks/traffic-management/fault-injection/
-> - https://istio.io/latest/docs/examples/microservices-istio/production-testing/
+> - [Istio / Fault Injection](https://istio.io/latest/docs/tasks/traffic-management/fault-injection/)
+> - [Istio / Test in production](https://istio.io/latest/docs/examples/microservices-istio/production-testing/)
 
 #### ▼ テストの種類
 
 | テスト名               | 内容                                                                                                                                                                                       |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Delay インジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の遅延を発生させる。`<br>`・https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
-| Abort インジェクション | マイクロサービスに対するインバウンド通信にて、意図的に通信の中止を発生させる。`<br>`・https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
+| Delay インジェクション | 通信元の istio-proxy で、宛先への HTTP リクエストを意図的に遅延させる。`<br>`・https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-delay-fault |
+| Abort インジェクション | 通信元の istio-proxy で、宛先に HTTP リクエストを中継せず、エラーレスポンスを返信する。`<br>`・https://istio.io/latest/docs/tasks/traffic-management/fault-injection/#injecting-an-http-abort-fault |
 
 #### ▼ サーキットブレイカー
 
@@ -314,10 +314,10 @@ Istio では、外れ値の排除率を `100`%とすることで、ステータ�
 - Istio では、接続プールの上限を条件として、サーキットブレイカーを発動する
 - Istio では、ステータスコードの外れ値を条件を `100`%とすることにより、サーキットブレイカーを発動する
 
-> - https://istio.io/latest/docs/concepts/traffic-management/#working-with-your-applications
-> - https://github.com/istio/istio/issues/20778#issuecomment-1099766930
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/outlier
+> - [Istio / Traffic Management](https://istio.io/latest/docs/concepts/traffic-management/#working-with-your-applications)
+> - [Configuring Fallback for Circuit Breaker, Timeout and Retry · Issue #20778 · istio/istio · GitHub](https://github.com/istio/istio/issues/20778#issuecomment-1099766930)
+> - [Circuit breaking — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking)
+> - [Outlier detection — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/outlier)
 
 <br>
 
@@ -337,14 +337,14 @@ istio-proxy は、マイクロサービスに対する kubelet のヘルスチ�
 
 Pod 間通信時、正しい送信元 Envoy の通信であることを認証する。
 
-> - https://istio.io/latest/docs/concepts/security/#authentication-architecture
-> - https://news.mynavi.jp/techplus/article/kubernetes-30/
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#authentication-architecture)
+> - [Kubernetes入門(30) Istioを使ったサービスメッシュ構築 - 特徴3：Security \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/kubernetes-30/)
 
 #### ▼ 相互 TLS 認証
 
 相互 TLS 認証を実施し、送信元 Pod の通信を認証する。
 
-> - https://istio.io/latest/docs/concepts/security/#authentication
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#authentication)
 
 #### ▼ JWT による Bearer 認証 (ID プロバイダーに認証識別フェーズを委譲)
 
@@ -357,7 +357,7 @@ JWT トークンの取得方法として、例えば以下の方法がある。
 - 送信元 Pod が ID プロバイダーから JWT を直接取得する。
 - 送信元/宛先の間に認証プロキシ (例：OAuth2 Proxy、Dex など) を配置し、認証プロキシで ID プロバイダーから JWT を取得する。
 
-> - https://istio.io/latest/docs/concepts/security/#authentication-architecture
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#authentication-architecture)
 
 #### ▼ マイクロサービスの認証について
 
@@ -373,15 +373,15 @@ Pod 間通信時、AuthorizationPolicy を使用して、JWT トークンのア�
 
 ![istio_authorization-policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_authorization-policy.png)
 
-> - https://istio.io/latest/docs/concepts/security/#authorization-policies
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#authorization-policies)
 > - https://www.styra.com/blog/authorize-better-istio-traffic-policies-with-opa-styra-das/
-> - https://news.mynavi.jp/techplus/article/kubernetes-30/
+> - [Kubernetes入門(30) Istioを使ったサービスメッシュ構築 - 特徴3：Security \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/kubernetes-30/)
 
 #### ▼ 通信の認可の委譲
 
 AuthorizationPolicy で認可プロバイダー (例：Keycloak、Open Policy Agent) を指定し、認可フェーズを委譲できる。
 
-> - https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3
+> - [\[Kuberntes\] 汎用OAuth2 Proxyをサービスの手前に置く：認証認可編](https://zenn.dev/takitake/articles/a91ea116cabe3c#%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E5%9B%B3)
 
 #### ▼ マイクロサービスの認可について
 
@@ -405,7 +405,7 @@ AuthorizationPolicy で認可プロバイダー (例：Keycloak、Open Policy Ag
 
 クライアント証明書／サーバー証明書を提供しつつ、これを定期的に自動更新する。
 
-1. Istiod コントロールプレーンは、`istio-ca-secret` (Secret) を自己署名する。
+1. Istiod コントロールプレーンは、ルート CA 証明書を自己署名し、証明書とペアになる秘密鍵を `istio-ca-secret` (Secret) に保存する。
 2. Istiod コントロールプレーンは、istio-proxy から送信された証明書署名要求をもとに、署名済みのクライアント証明書／サーバー証明書を作成する。追加設定がない場合、istio-proxy の pilot-agent プロセスが秘密鍵と証明書署名要求を自動で作成し、証明書署名要求だけを Istiod に送信する。
 3. Istiod は署名済みのクライアント証明書／サーバー証明書を pilot-agent プロセスへ返し、pilot-agent プロセスの SDS-API が Envoy プロセスに配布する。
 4. Istiod コントロールプレーンは、CA 証明書を持つ `istio-ca-root-cert` (ConfigMap) を自動的に作成する。`istio-ca-root-cert` は istio-proxy にマウントされ、証明書を検証するために使用する。
@@ -414,10 +414,10 @@ AuthorizationPolicy で認可プロバイダー (例：Keycloak、Open Policy Ag
 
 ![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
 
-> - https://istio.io/latest/docs/concepts/security/#pki
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#pki)
 > - https://developers.redhat.com/articles/2023/08/24/integrate-openshift-service-mesh-cert-manager-and-vault#default_and_pluggable_ca_scenario
 > - https://www.reddit.com/r/istio/comments/x1l1sm/if_istio_caroot_certificate_expires_do_you_need/
-> - https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/
+> - [Replacing Istio CA Certificate · Zufar Dhiyaulhaq](https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/)
 > - https://training.linuxfoundation.cn/news/407
 
 #### ▼ 外部ツールをルート認証局として使用する場合
@@ -429,8 +429,8 @@ Istiod コントロールプレーン (`discovery` コンテナ) を中間認証
 - CertManager (ルート認証局、署名済み証明書の発行、マウント用 Secret への証明書埋め込み、自動ローテーション)
 - HashiCorp Vault (ルート認証局) + CertManager (署名済み証明書の発行、マウント用 Secret への証明書埋め込み、自動ローテーション)
 
-> - https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/
-> - https://istio.io/latest/docs/ops/integrations/certmanager/
+> - [Istio / Custom CA Integration using Kubernetes CSR](https://istio.io/latest/docs/tasks/security/cert-management/custom-ca-k8s/)
+> - [Istio / cert-manager](https://istio.io/latest/docs/ops/integrations/certmanager/)
 > - https://jimmysong.io/en/blog/cert-manager-spire-istio/
 
 <br>
@@ -443,7 +443,7 @@ Istiod コントロールプレーン (`discovery` コンテナ) を中間認証
 
 相互 TLS 認証を実施し、L4/L7 通信のアプリケーションデータを暗号化/復号する。
 
-> - https://istio.io/latest/docs/concepts/security/#authentication-architecture
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#authentication-architecture)
 
 #### 暗号スイート
 
@@ -454,7 +454,7 @@ Istiod コントロールプレーン (`discovery` コンテナ) を中間認証
 - TLS_AES_256_GCM_SHA384
 - TLS_AES_128_GCM_SHA256
 
-> - https://istio.io/latest/docs/concepts/security/#mutual-tls-authentication
+> - [Istio / Security](https://istio.io/latest/docs/concepts/security/#mutual-tls-authentication)
 
 #### ▼ TLS タイムアウト
 
@@ -472,7 +472,7 @@ istio-proxy は、テレメトリーを作成する。
 
 各監視ツールは、プル型で Istio Ingress/Egress Gateway、istio-proxy、Istiod からデータポイントを収集する。スパンは、istio-proxy がプッシュ型で収集ツールに送信する。
 
-> - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=17
+> - [Istioを活用したObservability基盤の構築と運用 / Constructing and operating the observability platform using Istio - Speaker Deck](https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=17)
 
 <br>
 
@@ -486,8 +486,8 @@ Prometheus は、`discovery` コンテナの `/metrics` エンドポイント (`
 
 なお、istio-proxy にも `/stats/prometheus` エンドポイントはある。
 
-> - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/
-> - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=22
+> - [Istio / Visualizing Metrics with Grafana](https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/)
+> - [Istioを活用したObservability基盤の構築と運用 / Constructing and operating the observability platform using Istio - Speaker Deck](https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=22)
 
 <br>
 
@@ -524,7 +524,7 @@ scrape_configs:
         regex: .*-envoy-prom
 ```
 
-> - https://istio.io/latest/docs/ops/integrations/prometheus/#option-2-customized-scraping-configurations
+> - [Istio / Prometheus](https://istio.io/latest/docs/ops/integrations/prometheus/#option-2-customized-scraping-configurations)
 
 #### ▼ カスタムリソースの場合
 
@@ -609,9 +609,9 @@ spec:
           targetLabel: pod_name
 ```
 
-> - https://github.com/istio/istio/blob/1.19.3/samples/addons/extras/prometheus-operator.yaml
+> - [istio/samples/addons/extras/prometheus-operator.yaml at 1.19.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.19.3/samples/addons/extras/prometheus-operator.yaml)
 > - https://discuss.istio.io/t/scraping-istio-metrics-from-prometheus-operator-e-g-using-servicemonitor/10632
-> - https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=23
+> - [Istioを活用したObservability基盤の構築と運用 / Constructing and operating the observability platform using Istio - Speaker Deck](https://speakerdeck.com/ido_kara_deru/constructing-and-operating-the-observability-platform-using-istio?slide=23)
 
 <br>
 
@@ -631,7 +631,7 @@ Prometheus 上でメトリクスをクエリすると、istio-proxy の `:15020/
 | ------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `istio_requests_total`                | カウント | istio-proxy が受信した総リクエスト数を表す。メトリクスの名前空間に対してさまざまなディメンションを設定できる。`<br>`・https://blog.christianposta.com/understanding-istio-telemetry-v2/ |
 | `istio_request_duration_milliseconds_{bucket,count,sum}` | ミリ秒 | istio-proxy が受信したリクエストの処理時間の分布を表す。                                                                                                                                      |
-| `istio_request_messages_total`        | カウント | istio-proxy が受信した gRPC による総 HTTP リクエスト数を表す。                                                                                                                          |
+| `istio_request_messages_total`        | カウント | gRPC クライアントが送信した gRPC over HTTP/2 によるリクエストの総数を表す。                                                                                                                          |
 | `istio_response_messages_total`       | カウント | gRPC サーバーが返信した gRPC over HTTP/2 によるレスポンスの総数を表す。                                                                                                                          |
 
 | `istio_request_duration_milliseconds_sum` | ミリ秒 | istio-proxy が起動以降のすべてのリクエスト期間の合計 |
@@ -640,9 +640,9 @@ Prometheus 上でメトリクスをクエリすると、istio-proxy の `:15020/
 | `envoy_cluster_upstream_rq_retry_backoff_expotential` | カウント | 記入中... |
 | `envoy_cluster_upstream_rq_retry_limit_exceeded` | カウント | 記入中... |
 
-> - https://istio.io/latest/docs/reference/config/metrics/#metrics
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats
-> - https://www.zhaohuabing.com/post/2023-02-14-istio-metrics-deep-dive/
+> - [Istio / Istio Standard Metrics](https://istio.io/latest/docs/reference/config/metrics/#metrics)
+> - [Statistics — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats)
+> - [深入理解 Istio Metrics \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2023-02-14-istio-metrics-deep-dive/)
 
 #### ▼ メトリクスのラベル
 
@@ -669,8 +669,8 @@ Istio Ingress Gateway を経由せずにサービスメッシュ外からイン�
 | `source_cluster`                 | 送信元の Kubernetes Cluster 名を表す。                                         | `Kubernetes`                                                                                      |                                                                                                                                                                                                                                                                               |
 | `source_workload`                | 送信元の Deployment 名を表す。                                                 | `foo-deployment`                                                                                  |                                                                                                                                                                                                                                                                               |
 
-> - https://istio.io/latest/docs/reference/config/metrics/#labels
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#command-operators
+> - [Istio / Istio Standard Metrics](https://istio.io/latest/docs/reference/config/metrics/#labels)
+> - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#command-operators)
 > - https://itnext.io/where-does-the-unknown-taffic-in-istio-come-from-4a9a7e4454c3
 
 <br>
@@ -724,13 +724,13 @@ istio-proxy は、マイクロサービスへのアクセスログ (インバウ
 }
 ```
 
-> - https://istio.io/latest/docs/tasks/observability/logs/access-log/
+> - [Istio / Envoy Access Logs](https://istio.io/latest/docs/tasks/observability/logs/access-log/)
 
 #### ▼ ログの送信
 
 istio-proxy は、アクセスログをログ収集ツール (例：OpenTelemetry Collector) に送信する。
 
-> - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
+> - [Istio / OpenTelemetry](https://istio.io/latest/docs/tasks/observability/logs/otel-provider/)
 
 <br>
 
@@ -766,10 +766,10 @@ istio-proxy から送信する場合は、MeshConfig の `extensionProviders` �
 
 Envoy では宛先としてサポートしていても、istio-proxy では使用できない場合がある。(例：X-Ray デーモン)
 
-> - https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/
-> - https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/productpage/productpage.py#L180-L237
-> - https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/details/details.rb#L130-L187
-> - https://github.com/istio/istio/issues/36599
+> - [Istio / Overview](https://istio.io/latest/docs/tasks/observability/distributed-tracing/overview/)
+> - [istio/samples/bookinfo/src/productpage/productpage.py at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/productpage/productpage.py#L180-L237)
+> - [istio/samples/bookinfo/src/details/details.rb at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/samples/bookinfo/src/details/details.rb#L130-L187)
+> - [Ability to send traces to AWS X-ray · Issue #36599 · istio/istio · GitHub](https://github.com/istio/istio/issues/36599)
 
 <br>
 
@@ -844,7 +844,7 @@ config:
           - span
 ```
 
-> - https://github.com/istio/istio/issues/21100
+> - [Document how to customise the tracing span names · Issue #21100 · istio/istio · GitHub](https://github.com/istio/istio/issues/21100)
 
 <br>
 

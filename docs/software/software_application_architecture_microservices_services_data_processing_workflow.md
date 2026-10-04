@@ -9,7 +9,7 @@ description: データ処理ワークフロー＠マイクロサービスの知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -26,7 +26,7 @@ description: データ処理ワークフロー＠マイクロサービスの知�
 
 ちょっとしたデータ処理ワークフローであれば、マイクロサービスとして切り分けずに、モノリスアプリケーションのユースケース層でこれらのフローを実施する
 
-> - https://speakerdeck.com/hiroki_hasegawa/kubernetesdeshi-jian-suru-platform-engineering-zui-gao-su-du-dedu-miba-itaru?slide=12
+> - [『Kubernetes ☸️ で実践する Platform Engineering 』を最高速度で読み抜いたる！！👊🏻 - Speaker Deck](https://speakerdeck.com/hiroki_hasegawa/kubernetesdeshi-jian-suru-platform-engineering-zui-gao-su-du-dedu-miba-itaru?slide=12)
 
 <br>
 

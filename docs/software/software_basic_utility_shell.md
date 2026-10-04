@@ -9,7 +9,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,7 +25,7 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 ![shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell.png)
 
-> - http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+> - [シェルの概念と機能](http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html)
 
 <br>
 
@@ -39,8 +39,8 @@ description: シェル＠ユーティリティの知見を記録しています�
 
 パスワードは、`/etc/passwd` ファイルに設定されている。
 
-> - https://xtech.nikkei.com/it/article/Keyword/20090130/323875/
-> - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+> - [ログイン・シェル \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/Keyword/20090130/323875/)
+> - [ログインシェルとインタラクティブシェルの違い](https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html)
 
 #### ▼ su -
 
@@ -76,7 +76,7 @@ $ ssh
 
 資格情報を必要とせず、最初に起動するシェルのこと。
 
-> - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
+> - [ログインシェルとインタラクティブシェルの違い](https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html)
 
 #### ▼ su <ユーザー名>
 
@@ -130,7 +130,7 @@ Last login: Mon Jun 20 13:36:40 JST 2022 on pts/0
 -bash # ログインシェルの場合、シェルの前にハイフンが付く。
 ```
 
-> - https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/
+> - [ログインシェルと非ログインシェルの違い \| Delft スタック](https://www.delftstack.com/ja/howto/linux/difference-between-a-login-shell-and-a-non-login-shell/)
 
 補足として、もしシェルスクリプト内でこれを実行した場合は、そのファイル名を取得できる。
 
@@ -141,7 +141,7 @@ Last login: Mon Jun 20 13:36:40 JST 2022 on pts/0
 echo $0 # foo.sh
 ```
 
-> - https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337
+> - [初心者向けシェルスクリプトの基本コマンドの紹介 #ShellScript - Qiita](https://qiita.com/zayarwinttun/items/0dae4cb66d8f4bd2a337)
 
 <br>
 
@@ -151,7 +151,7 @@ echo $0 # foo.sh
 
 ![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell_history.png)
 
-> - https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/
+> - [メジャーなshellの種類まとめ \| KENGOの気まぐれブログ](https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/)
 
 #### ▼ 設定ファイル
 
@@ -167,8 +167,8 @@ echo $0 # foo.sh
 | `~/.bash_login` ファイル   | `~/.zlogin` ファイル   | ログインシェルの起動時。profile ファイルと機能が重複するため、個人的には使用しない。 |
 | `~/.bash_logout` ファイル  | `~/.zlogout` ファイル  | `exit` コマンド時                                                                    |
 
-> - https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html
-> - https://leico.github.io/TechnicalNote/Mac/catalina-zsh
+> - [ログインシェルとインタラクティブシェルの違い](https://tooljp.com/windows/chigai/html/Linux/loginShell-interactiveShell-chigai.html)
+> - [Catalina から zsh になって bash\_profile が利用できなくなった](https://leico.github.io/TechnicalNote/Mac/catalina-zsh)
 > - https://suwaru.tokyo/zshenv/
 
 #### ▼ 確認方法
@@ -191,7 +191,7 @@ $ echo $SHELL
 
 ![shell_variable_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell_variable_scope.png)
 
-> - https://qiita.com/kure/items/f76d8242b97280a247a1
+> - [シェル変数と環境変数の違いをコマンドラインで確認する #Linux - Qiita](https://qiita.com/kure/items/f76d8242b97280a247a1)
 
 #### ▼ シェル変数
 
@@ -218,7 +218,7 @@ $ bash foo.sh
 FOO=$(echo "foo")
 ```
 
-> - https://qiita.com/kure/items/f76d8242b97280a247a1
+> - [シェル変数と環境変数の違いをコマンドラインで確認する #Linux - Qiita](https://qiita.com/kure/items/f76d8242b97280a247a1)
 
 #### ▼ 環境変数
 
@@ -241,7 +241,7 @@ $ bash foo.sh
 foo # 出力される
 ```
 
-> - https://qiita.com/kure/items/f76d8242b97280a247a1
+> - [シェル変数と環境変数の違いをコマンドラインで確認する #Linux - Qiita](https://qiita.com/kure/items/f76d8242b97280a247a1)
 
 #### ▼ 置換してから出力する
 
@@ -254,7 +254,7 @@ $ VERSION=1.0.0 # シェル変数を定義する。
 echo "${VERSION//\./-}"
 ```
 
-> - https://qiita.com/aosho235/items/c36568830a8d47288284
+> - [bashの変数内文字列置換まとめ #Bash - Qiita](https://qiita.com/aosho235/items/c36568830a8d47288284)
 
 <br>
 
@@ -280,7 +280,7 @@ $ apk add bash
 
 子プロセスの終了時に、親プロセスに終了ステータス (`0`〜`255`) が返却される。
 
-> - https://en.wikipedia.org/wiki/Exit_status
+> - [Exit status - Wikipedia](https://en.wikipedia.org/wiki/Exit_status)
 
 <br>
 
@@ -298,8 +298,8 @@ $ apk add bash
 | `128 + 2` | スクリプトが `Ctrl+C` で終了             | `Ctrl+C` はシグナル `2` で終了するため、`Ctrl+C` が実行された可能性がある。 (`128 + 2 = 130`) | Ctrl+C                                        |
 | `255`     | 範囲外の終了ステータス                   | `exit` コマンドに 0〜255 以外の整数を渡している可能性がある。                                 | `$ exit -1`                                   |
 
-> - https://tldp.org/LDP/abs/html/exitcodes.html
-> - https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b
+> - [Exit Codes With Special Meanings](https://tldp.org/LDP/abs/html/exitcodes.html)
+> - [コマンドラインツールを書くなら知っておきたい Bash の 予約済み Exit Code #Zsh - Qiita](https://qiita.com/Linda_pp/items/1104d2d9a263b60e104b)
 
 <br>
 
@@ -342,7 +342,7 @@ $ echo "" ; echo $?
 0 # 終了コードが 0 である
 ```
 
-> - https://qiita.com/takayuki206/items/f4d0dbb45e5ee2ee698e
+> - [実行したコマンドの終了コードを表示する #Bash - Qiita](https://qiita.com/takayuki206/items/f4d0dbb45e5ee2ee698e)
 
 <br>
 
@@ -361,7 +361,7 @@ $ echo foo; echo bar; echo baz
 ```
 
 > - https://jehupc.exblog.jp/15729095/
-> - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
+> - [Linuxコマンドを連続して使うには #UNIX - Qiita](https://qiita.com/egawa_kun/items/714394609eef6be8e0bf)
 
 #### ▼ 終了ステータスが `0` の場合のみ
 
@@ -374,7 +374,7 @@ $ echo foo && echo bar && echo baz
 ```
 
 > - https://jehupc.exblog.jp/15729095/
-> - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
+> - [Linuxコマンドを連続して使うには #UNIX - Qiita](https://qiita.com/egawa_kun/items/714394609eef6be8e0bf)
 
 #### ▼ 終了ステータスが `0` 以外の場合のみ
 
@@ -387,7 +387,7 @@ $ echo foo || echo bar || echo baz
 ```
 
 > - https://jehupc.exblog.jp/15729095/
-> - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
+> - [Linuxコマンドを連続して使うには #UNIX - Qiita](https://qiita.com/egawa_kun/items/714394609eef6be8e0bf)
 
 <br>
 
@@ -402,6 +402,6 @@ $ echo foo & echo bar & echo baz
 ```
 
 > - https://jehupc.exblog.jp/15729095/
-> - https://qiita.com/egawa_kun/items/714394609eef6be8e0bf
+> - [Linuxコマンドを連続して使うには #UNIX - Qiita](https://qiita.com/egawa_kun/items/714394609eef6be8e0bf)
 
 <br>

@@ -9,7 +9,7 @@ description: Prisma＠SQLパッケージの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -32,7 +32,7 @@ PrismaClient は、クエリエンジンに切断リクエストを送信する�
 ![architecture_prisma](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_prisma.png)
 
 > - https://www.prisma.io/docs/orm/more/under-the-hood/engines
-> - https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3
+> - [Prisma ORMを使いこなす ~歴史と対RDB運用の知見を添えて~](https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3)
 
 <br>
 
@@ -72,7 +72,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 ```
 
-> - https://learningift.com/blogs/h0gbL56h1iq/%E3%80%90%E5%88%9D%E5%BF%83%E8%80%85%E7%94%A8%E3%80%91prisma%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6#part5
+> - [【初心者用】Prismaについて \| ラーニンギフト株式会社\[公式\] \| エンジベース、レックテレワーク、ゲーマーズハイの運営、受託開発・SES・オフショア開発](https://learningift.com/blogs/h0gbL56h1iq/%E3%80%90%E5%88%9D%E5%BF%83%E8%80%85%E7%94%A8%E3%80%91prisma%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6#part5)
 
 <br>
 
@@ -100,7 +100,7 @@ $ prisma migrate dev --create-only
 $ prisma migrate deploy
 ```
 
-> - https://tech-blog.s-yoshiki.com/entry/315
+> - [Prisma頻出コマンドとマイグレーションの運用 \| 404 motivation not found](https://tech-blog.s-yoshiki.com/entry/315)
 
 #### ▼ reset
 
@@ -112,7 +112,7 @@ $ prisma migrate deploy
 $ prisma migrate reset --force
 ```
 
-> - https://tech-blog.s-yoshiki.com/entry/315
+> - [Prisma頻出コマンドとマイグレーションの運用 \| 404 motivation not found](https://tech-blog.s-yoshiki.com/entry/315)
 
 #### ▼ rollback
 
@@ -134,7 +134,7 @@ ALTER TABLE `UserDetail` DROP FOREIGN KEY `UserDetail_userId_fkey`;
 DROP TABLE `UserDetail`;
 ```
 
-> - https://qiita.com/ore88ore/items/d09b9035af75ff4e9456#%E9%81%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9E%E3%82%A4%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E3%83%AD%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B
+> - [Prisma Migrate の導入から各種実行方法について試してみた #TypeScript - Qiita](https://qiita.com/ore88ore/items/d09b9035af75ff4e9456#%E9%81%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%9E%E3%82%A4%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E3%83%AD%E3%83%BC%E3%83%AB%E3%83%90%E3%83%83%E3%82%AF%E3%81%99%E3%82%8B)
 
 <br>
 
@@ -200,8 +200,8 @@ URL のパラメーターとして、以下などを設定できる。
 - コネションプールの接続上限数 (`connection_limit`)
 - 接続プール内の接続が解放されるまでキューで待機する時間 (`pool_timeout`)
 
-> - https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#prismaclient%E3%81%AB%E6%B8%A1%E3%81%99datasource-url%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF
-> - https://dev.classmethod.jp/articles/prisma-engines-connection-pooling-parameters/#pool_timeout
+> - [Prisma ORMを使いこなす ~歴史と対RDB運用の知見を添えて~](https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#prismaclient%E3%81%AB%E6%B8%A1%E3%81%99datasource-url%E3%81%AE%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF)
+> - [Prismaのコネクションプール関連のパラメータについて確認してみた \| DevelopersIO](https://dev.classmethod.jp/articles/prisma-engines-connection-pooling-parameters/#pool_timeout)
 
 <br>
 

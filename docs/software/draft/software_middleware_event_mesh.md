@@ -9,7 +9,7 @@ description: イベントメッシュ＠イベントメッシュ系ミドルウ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,10 +25,10 @@ description: イベントメッシュ＠イベントメッシュ系ミドルウ�
 
 メッセージブローカー／キュー向けの通信プロトコルが主要な場合は、イベントメッシュツールを使用するほうがよい。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
+> - [サービスメッシュ、Istioがマイクロサービスのトラフィック制御、セキュリティ、可観測性に欠かせない理由：Cloud Nativeチートシート（9） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013)
 > - https://www.redhat.com/ja/topics/integration/what-is-an-event-mesh
-> - https://www.infoq.com/articles/service-mesh-event-driven-messaging/
-> - https://solace.com/what-is-an-event-mesh/
+> - [The Potential for Using a Service Mesh for Event-Driven Messaging - InfoQ](https://www.infoq.com/articles/service-mesh-event-driven-messaging/)
+> - [What is an Event Mesh? \| Solace](https://solace.com/what-is-an-event-mesh/)
 
 <br>
 

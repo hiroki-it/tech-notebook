@@ -41,7 +41,7 @@ tags: # tags フィールド
 externalDocs: # externalDocs フィールド
 ```
 
-> - https://spec.openapis.org/oas/v3.1.0#fixed-fields
+> - [OpenAPI Specification v3.1.0](https://spec.openapis.org/oas/v3.1.0#fixed-fields)
 
 <br>
 
@@ -53,7 +53,7 @@ OpenAPI 仕様を共有して閲覧できるように、仕様書の静的ファ
 
 さらに、静的な Web サイトとして公開すると、チーム内で共有するとなおよい。
 
-> - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
+> - [APIドキュメントをRedocで一新しました \| AQ Tech Blog](https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc)
 
 #### ▼ ReDoc の場合
 
@@ -87,14 +87,14 @@ $ npm install -g redoc-cli
 $ redoc-cli bundle openapi.yaml redoc.html
 ```
 
-> - https://qiita.com/icck/items/97d00495ec324e1902d6
-> - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
+> - [作ったOpenAPIのyamlからReDocを使ってドキュメント生成する方法 #OpenAPI - Qiita](https://qiita.com/icck/items/97d00495ec324e1902d6)
+> - [APIドキュメントをRedocで一新しました \| AQ Tech Blog](https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc)
 
 #### ▼ Swagger UI／Swagger Codegen の場合
 
 Swagger UI／Swagger Codegen を使用して、OpenAPI 仕様から静的ファイルを作成する。
 
-> - https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc
+> - [APIドキュメントをRedocで一新しました \| AQ Tech Blog](https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc)
 
 #### ▼ OpenAPI Generator の場合
 
@@ -106,7 +106,7 @@ OpenAPI Generator を使用して、OpenAPI 仕様から静的ファイルを作
 $ openapi-generator generate -i docs/openapi.yaml -o docs/html -g html
 ```
 
-> - https://ky-yk-d.hatenablog.com/entry/2019/01/13/234108#OpenAPI-Generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%82%92%E8%A9%A6%E3%81%99
+> - [OpenAPI GeneratorでRESTful APIの定義書から色々自動生成する #OpenAPI - こまぶろ](https://ky-yk-d.hatenablog.com/entry/2019/01/13/234108#OpenAPI-Generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%82%92%E8%A9%A6%E3%81%99)
 
 #### ▼ oapi-codegen の場合
 
@@ -249,8 +249,8 @@ func GetProducts(c *gin.Context) {
 }
 ```
 
-> - https://zenn.dev/team_soda/articles/b749228a360454#openapi-generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fschema%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C
-> - https://openapi-generator.tech/docs/generators/
+> - [OpenAPI Generator を使った Schema駆動開発](https://zenn.dev/team_soda/articles/b749228a360454#openapi-generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fschema%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C)
+> - [Generators List \| OpenAPI Generator](https://openapi-generator.tech/docs/generators/)
 
 #### ▼ oapi-codegen の場合
 
@@ -266,7 +266,7 @@ oapi-codegen -package=openapi -generate=types,client,spec openapi.yaml > api.go
 
 API ゲートウェイによる OpenAPI 仕様のインポートについては、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html
+> - [【IT技術の知見】Amazon API Gatewayへのymlインポート＠AWS - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html)
 
 <br>
 
@@ -715,6 +715,6 @@ RESTful-API が受信する CRUD のデータ型や必須データを定義し�
 }
 ```
 
-> - https://spec.openapis.org/oas/v3.1.0#data-types
+> - [OpenAPI Specification v3.1.0](https://spec.openapis.org/oas/v3.1.0#data-types)
 
 <br>

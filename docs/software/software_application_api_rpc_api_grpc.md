@@ -27,10 +27,10 @@ RESTful-API に対するリクエストではリクエストのヘッダーや�
 
 ![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_architecture.png)
 
-> - https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96
-> - https://openstandia.jp/oss_info/grpc/
-> - https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411
-> - https://atmarkit.itmedia.co.jp/ait/articles/1501/26/news009.html
+> - [いまさらだけどgRPCに入門したので分かりやすくまとめてみた #Go - Qiita](https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96)
+> - [gRPCとは？詳細情報を解説 \| OSSサポートのOpenStandia™【NRI】](https://openstandia.jp/oss_info/grpc/)
+> - [インフラエンジニアが学ぶと良さそうなgRPCサーバーについて - じゃあ、おうちで学べる](https://syu-m-5151.hatenablog.com/entry/2022/04/12/130411)
+> - [システム間連携のアーキテクチャ、4つの基本パターンと正しい適用のポイント：徹底解説！ ITアーキテクトとは何か？（4）（1/2 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1501/26/news009.html)
 
 <br>
 
@@ -55,7 +55,7 @@ gRPC では、gRPC クライアントと gRPC サーバーの間の通信方式�
 
 ![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png)
 
-> - https://fintan.jp/page/1521/
+> - [gRPCのServer-Streaming RPCを用いたPUSH通知の実現事例 \| Fintan](https://fintan.jp/page/1521/)
 > - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
 
 <br>
@@ -87,7 +87,7 @@ service Request {
 
 > - https://qiita.com/tomo0/items/310d8ffe82749719e029#unary-rpc
 > - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
-> - https://kiririmode.hatenablog.jp/entry/20190623/1561247109
+> - [gRPC におけるタイムアウト時の挙動 - 理系学生日記](https://kiririmode.hatenablog.jp/entry/20190623/1561247109)
 
 <br>
 
@@ -195,8 +195,8 @@ service Chat {
 ```
 
 > - https://qiita.com/tomo0/items/310d8ffe82749719e029#bidirectional-streaming-rpc
-> - https://reboooot.net/post/hello-grpc/
-> - https://christina04.hatenablog.com/entry/2017/11/13/203000
+> - [Go で実装しながら gRPC を理解する - reboooot․net](https://reboooot.net/post/hello-grpc/)
+> - [gRPCにおける各RPC方式の実装方法【Bidirectional streaming RPC】 - Carpe Diem](https://christina04.hatenablog.com/entry/2017/11/13/203000)
 > - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
 
 <br>
@@ -212,7 +212,7 @@ service Chat {
 | トランスポートヘッダー                   | あり                          | あり                       |
 | IP ヘッダー                              | あり                          | あり                       |
 
-> - https://www.wallarm.com/what/what-is-http-2-and-how-is-it-different-from-http-1
+> - [HTTP/1 vs HTTP/2 What is the Difference?](https://www.wallarm.com/what/what-is-http-2-and-how-is-it-different-from-http-1)
 
 <br>
 
@@ -235,16 +235,16 @@ gRPC のリクエストでは、メタデータをヘッダーに格納する。
 | ...                    |                                    |
 
 > - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#requests
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata
-> - https://soichisumi.net/2019/04/grpc-custom-error-response/
+> - [メタデータの送受信｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata)
+> - [grpc-gatewayのエラーレスポンスをカスタマイズする](https://soichisumi.net/2019/04/grpc-custom-error-response/)
 
 #### ▼ レスポンスメタデータ
 
 gRPC のレスポンスでは、エラーに関するメタデータをトレーラーに、それ以外のメタデータをヘッダーに格納する。
 
-> - https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata
-> - https://soichisumi.net/2019/04/grpc-custom-error-response/
+> - [grpc/doc/PROTOCOL-HTTP2.md at master · grpc/grpc · GitHub](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md#responses)
+> - [メタデータの送受信｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/metadata)
+> - [grpc-gatewayのエラーレスポンスをカスタマイズする](https://soichisumi.net/2019/04/grpc-custom-error-response/)
 
 <br>
 
@@ -256,7 +256,7 @@ TCP 接続を確立中、レスポンスの返信があるまで、次のリク�
 
 つまり、単一のリクエストとレスポンスが単一の TCP 接続を占有し、レスポンスの返信があるまで次のリクエスト送信を待たないといけない (HTTP HoL ブロッキング) 。
 
-> - https://www.honai.me/blog/post/how-http-works-4-http2/#http%2F1.x-%E3%81%AE%E8%AA%B2%E9%A1%8C
+> - [連載「入門HTTP」 (4) HTTP/2](https://www.honai.me/blog/post/how-http-works-4-http2/#http%2F1.x-%E3%81%AE%E8%AA%B2%E9%A1%8C)
 
 #### ▼ gRPC の場合
 
@@ -264,7 +264,7 @@ TCP 接続を確立中、レスポンスの返信がなくても、次のリク�
 
 つまり、複数のリクエストとレスポンスが単一の TCP 接続を共有し、レスポンスがなくとも次のリクエストを並行的に送信できる。
 
-> - https://www.honai.me/blog/post/how-http-works-4-http2/#http%2F1.x-%E3%81%AE%E8%AA%B2%E9%A1%8C
+> - [連載「入門HTTP」 (4) HTTP/2](https://www.honai.me/blog/post/how-http-works-4-http2/#http%2F1.x-%E3%81%AE%E8%AA%B2%E9%A1%8C)
 
 <br>
 
@@ -274,7 +274,7 @@ TCP 接続を確立中、レスポンスの返信がなくても、次のリク�
 
 HTTP/1.1 の場合、`1` 個のリクエストとレスポンスを送受信する。
 
-> - https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one
+> - [Scaling microservices with gRPC: part one \| Thoughtworks](https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one)
 > - https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6
 
 #### ▼ gRPC の場合
@@ -291,9 +291,9 @@ HTTP/1.1 の場合、`1` 個のリクエストとレスポンスを送受信す�
 
 ![grpc_streaming-rpc_response-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_streaming-rpc_response-time.png)
 
-> - https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one
+> - [Scaling microservices with gRPC: part one \| Thoughtworks](https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one)
 > - https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6
-> - https://zenn.dev/zawawahoge/articles/8690c7bd521099#http%2F2%E3%81%AE%E5%BC%B7%E3%81%BF%EF%BC%9A%E5%A4%9A%E9%87%8D%E5%8C%96
+> - [僕「gRPC streaming RPC って何？」](https://zenn.dev/zawawahoge/articles/8690c7bd521099#http%2F2%E3%81%AE%E5%BC%B7%E3%81%BF%EF%BC%9A%E5%A4%9A%E9%87%8D%E5%8C%96)
 
 <br>
 
@@ -321,9 +321,9 @@ HTTP/1.1 の場合、`1` 個のリクエストとレスポンスを送受信す�
 | `500`           | `15`          | `DataLoss`           |                                                                                                                                                                                                                   |
 | `401`           | `16`          | `Unauthenticated`    |                                                                                                                                                                                                                   |
 
-> - https://grpc.io/docs/guides/status-codes/
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84
-> - https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84
+> - [Status Codes \| gRPC](https://grpc.io/docs/guides/status-codes/)
+> - [gRPCにおけるステータスコード｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84)
+> - [gRPCにおけるステータスコード｜作ってわかる！ はじめてのgRPC](https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/errorcode#http%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84)
 
 #### ▼ リトライすべきステータスコード
 
@@ -353,7 +353,7 @@ TCP 接続とリクエスト／レスポンスにタイムアウト時間を適�
 
 gRPC は、TCP 接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を `grpc-timeout` ヘッダーに設定する。
 
-> - https://github.com/envoyproxy/envoy/issues/12578#issue-676405512
+> - [gRPC timeout processing does not match gRPC semantics · Issue #12578 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/12578#issue-676405512)
 
 #### ▼ ストリーミング RPC の場合
 
@@ -363,7 +363,7 @@ gRPC は、TCP 接続の確立前にタイムアウト時間を開始し、ス�
 
 gRPC は、TCP 接続の確立前にタイムアウト時間を開始し、ストリーミング時に残りのタイムアウト時間を `grpc-timeout` ヘッダーに設定する。
 
-> - https://github.com/envoyproxy/envoy/issues/12578#issue-676405512
+> - [gRPC timeout processing does not match gRPC semantics · Issue #12578 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/12578#issue-676405512)
 
 <br>
 

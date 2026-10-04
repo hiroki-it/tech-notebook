@@ -9,7 +9,7 @@ description: エラーとエラーハンドリング＠PHPの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: エラーとエラーハンドリング＠PHPの知見を記録し�
 
 以下リンクを参考にせよ。
 
-> - https://www.php.net/manual/ja/reserved.exceptions.php
+> - [PHP: 定義済みの例外 - Manual](https://www.php.net/manual/ja/reserved.exceptions.php)
 
 <br>
 
@@ -35,7 +35,7 @@ description: エラーとエラーハンドリング＠PHPの知見を記録し�
 
 エラーコードのデフォルト値はゼロである。
 
-> - https://www.php.net/manual/ja/exception.construct.php
+> - [PHP: Exception::\_\_construct - Manual](https://www.php.net/manual/ja/exception.construct.php)
 
 エラーコードはステータスコードと異なり、例外を識別するためのものである。
 
@@ -297,8 +297,8 @@ class Foo
 
 補足として、この例外をロギングする場合、スタックトレースログとして出力される。
 
-> - http://blog.tojiru.net/article/455279557.html
-> - https://www.php.net/manual/ja/exception.construct.php
+> - [PHPにおける例外クラスの設計考察: Architect Note](http://blog.tojiru.net/article/455279557.html)
+> - [PHP: Exception::\_\_construct - Manual](https://www.php.net/manual/ja/exception.construct.php)
 
 <br>
 
@@ -325,7 +325,7 @@ class Foo
 
 #### ▼ `error_log()` 関数
 
-> - https://www.php.net/manual/ja/function.error-log.php
+> - [PHP: error\_log - Manual](https://www.php.net/manual/ja/function.error-log.php)
 
 ```php
 error_log(
@@ -367,7 +367,7 @@ class Notification
 
 他に、Logger インターフェースを使用することも多い。
 
-> - https://github.com/php-fig/log
+> - [GitHub - php-fig/log · GitHub](https://github.com/php-fig/log)
 
 ```php
 <?php

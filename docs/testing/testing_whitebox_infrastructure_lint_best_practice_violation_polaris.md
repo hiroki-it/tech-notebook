@@ -21,9 +21,9 @@ description: polaris＠ベストプラクティス違反の知見を記録して
 
 Helm チャートのまま検査できず、一度マニフェストとして渡す必要がある。
 
-> - https://polaris.docs.fairwinds.com/checks/security/
-> - https://polaris.docs.fairwinds.com/checks/efficiency/
-> - https://polaris.docs.fairwinds.com/checks/reliability/
+> - [Security \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/checks/security/)
+> - [Efficiency \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/checks/efficiency/)
+> - [Reliability \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/checks/reliability/)
 
 <br>
 
@@ -42,7 +42,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/polaris --
 $ kubectl port-forward --namespace polaris svc/polaris-dashboard 8080:80
 ```
 
-> - https://polaris.docs.fairwinds.com/dashboard/#installation
+> - [Dashboard \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/dashboard/#installation)
 
 #### ▼ CLI
 
@@ -52,7 +52,7 @@ $ brew tap FairwindsOps/tap
 $ brew install FairwindsOps/tap/polaris
 ```
 
-> - https://polaris.docs.fairwinds.com/infrastructure-as-code/
+> - [Infrastructure as Code \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/infrastructure-as-code/)
 
 #### ▼ Admission Controller
 
@@ -64,7 +64,7 @@ $ helm repo add <チャートリポジトリ名> https://charts.fairwinds.com/st
 $ helm install <Helmリリース名> <チャートリポジトリ名>/polaris --namespace polaris --set webhook.enable=true --set dashboard.enable=false
 ```
 
-> - https://polaris.docs.fairwinds.com/admission-controller/#installation
+> - [Admission Controller \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/admission-controller/#installation)
 
 <br>
 
@@ -101,7 +101,7 @@ checks:
   ...
 ```
 
-> - https://polaris.docs.fairwinds.com/customization/checks/
+> - [Check Settings \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/customization/checks/)
 > - https://github.com/FairwindsOps/polaris/tree/master/checks
 
 #### ▼ 重要度レベルの変更
@@ -137,7 +137,7 @@ checks:
   readinessProbeMissing: danger
 ```
 
-> - https://polaris.docs.fairwinds.com/customization/checks/
+> - [Check Settings \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/customization/checks/)
 
 <br>
 
@@ -147,7 +147,7 @@ checks:
 
 カスタムルールを定義する。
 
-> - https://polaris.docs.fairwinds.com/customization/custom-checks/
+> - [Custom Checks \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/customization/custom-checks/)
 
 #### ▼ 設定し忘れの検証
 
@@ -283,7 +283,7 @@ customChecks:
                         const: {}
 ```
 
-> - https://polaris.docs.fairwinds.com/customization/custom-checks/#basic-example
+> - [Custom Checks \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/customization/custom-checks/#basic-example)
 
 #### ▼ 作成し忘れ
 
@@ -309,7 +309,7 @@ customChecks:
       autoscaling/HorizontalPodAutoscaler: {}
 ```
 
-> - https://polaris.docs.fairwinds.com/customization/custom-checks/#resource-presence
+> - [Custom Checks \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/customization/custom-checks/#resource-presence)
 
 <br>
 
@@ -322,7 +322,7 @@ mutations:
   - pullPolicyNotAlways
 ```
 
-> - https://www.fairwinds.com/blog/how-polaris-kubernetes-mutations-work
+> - [Kubernetes Mutations with Polaris: How it Works](https://www.fairwinds.com/blog/how-polaris-kubernetes-mutations-work)
 
 <br>
 
@@ -357,7 +357,7 @@ exemptions:
   ...
 ```
 
-> - https://polaris.docs.fairwinds.com/customization/checks/
+> - [Check Settings \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/customization/checks/)
 > - https://github.com/FairwindsOps/polaris/blob/master/examples/config.yaml
 
 <br>
@@ -387,7 +387,7 @@ INFO[0000] 1 danger items found in audit
 $ polaris audit --audit-path manifest.yaml --format pretty
 ```
 
-> - https://polaris.docs.fairwinds.com/infrastructure-as-code/#pretty-print-results
+> - [Infrastructure as Code \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/infrastructure-as-code/#pretty-print-results)
 
 #### ▼ --only-show-failed-tests
 
@@ -433,7 +433,7 @@ Polaris audited Path manifest.yaml at 2023-09-13T03:27:57+09:00
     Final score: 85
 ```
 
-> - https://polaris.docs.fairwinds.com/infrastructure-as-code/#output-only-showing-failed-tests
+> - [Infrastructure as Code \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/infrastructure-as-code/#output-only-showing-failed-tests)
 
 #### ▼ --helm-chart、--helm-values
 
@@ -443,7 +443,7 @@ Helm チャートを指定する。
 $ polaris audit --helm-chart ./chart --helm-values ./chart/values.yaml
 ```
 
-> - https://polaris.docs.fairwinds.com/infrastructure-as-code/#audit-helm-charts
+> - [Infrastructure as Code \| Fairwinds Polaris Documentation](https://polaris.docs.fairwinds.com/infrastructure-as-code/#audit-helm-charts)
 
 #### ▼ --set-exit-code-on-danger
 

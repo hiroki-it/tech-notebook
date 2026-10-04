@@ -149,8 +149,8 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 ![certificate_sign](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_sign.png)
 
-> - https://dev.classmethod.jp/articles/ssl-certificate-system/
-> - https://blog.serverworks.co.jp/server-cert-verification
+> - [SSL証明書の署名と検証 \| DevelopersIO](https://dev.classmethod.jp/articles/ssl-certificate-system/)
+> - [【初心者向け】サーバ証明書の検証の流れについてまとめてみた - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/server-cert-verification)
 
 #### ▼ TLS ハンドシェイク開始
 
@@ -172,8 +172,8 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 ![certificate_validate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_validate.png)
 
-> - https://dev.classmethod.jp/articles/ssl-certificate-system/
-> - https://blog.serverworks.co.jp/server-cert-verification
+> - [SSL証明書の署名と検証 \| DevelopersIO](https://dev.classmethod.jp/articles/ssl-certificate-system/)
+> - [【初心者向け】サーバ証明書の検証の流れについてまとめてみた - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/server-cert-verification)
 
 #### ▼ 識別子の照合
 
@@ -204,7 +204,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 | AWS          | AWS Trust Services          | Starfield 社   |
 | Google Cloud | Google Cloud Trust Services | 記入中...      |
 
-> - https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54
+> - [改めて学ぶ、Vaultの基本 - Speaker Deck](https://speakerdeck.com/jacopen/gai-metexue-bu-vaultfalseji-ben?slide=54)
 
 <br>
 
@@ -218,7 +218,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 ![認証局自体のなりすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/認証局自体の成りすまし防止.png)
 
-> - https://zeropasoakita.livedoor.blog/archives/20294837.html
+> - [【素朴な疑問】ルート証明書って何？【今さら聞けない】 : 0から楽しむパソコン講座のブログ](https://zeropasoakita.livedoor.blog/archives/20294837.html)
 
 <br>
 
@@ -244,9 +244,9 @@ $ apt-get install -y ca-certificates
 $ yum install -y ca-certificates
 ```
 
-> - https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
+> - [中間証明書とは？SSL中間CA証明書の必要性やエラー・確認方法を紹介 \| Webmedia](https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html)
 > - https://www.quora.com/What-is-the-difference-between-CA-certificate-and-SSL-certificate
-> - https://www.nic.ad.jp/ja/newsletter/No69/0800.html
+> - [Webブラウザと認証局、トラストアンカーを巡る技術動向 - JPNIC](https://www.nic.ad.jp/ja/newsletter/No69/0800.html)
 
 <br>
 
@@ -258,7 +258,7 @@ $ yum install -y ca-certificates
 
 もしルート認証局に署名されていない中間認証局でサーバー証明書を署名すると、『この Web サイトで提示されたセキュリティ証明書は、信頼された証明機関から発行されたものではありません』といったような警告文が出る。
 
-> - https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html
+> - [中間証明書とは？SSL中間CA証明書の必要性やエラー・確認方法を紹介 \| Webmedia](https://itra.co.jp/webmedia/points_of_ssl_ca_certification.html)
 
 <br>
 
@@ -266,7 +266,7 @@ $ yum install -y ca-certificates
 
 記入中...
 
-> - https://itkq.jp/blog/2020/06/20/x509-chain/
+> - [一見不可解な TLS 証明書失効](https://itkq.jp/blog/2020/06/20/x509-chain/)
 
 <br>
 
@@ -295,8 +295,8 @@ Web サイトのドメインの購入者が、ペアになる秘密鍵と組み�
 -----END CERTIFICATE-----
 ```
 
-> - https://www.mtioutput.com/entry/2019/01/02/090000
-> - https://portal.kitcloud.net/documents/1356
+> - [コマンドによるサーバー証明書と中間証明書の連結 - (O+P)ut](https://www.mtioutput.com/entry/2019/01/02/090000)
+> - [\[SSL\] SSLサーバ証明書に中間CA証明書が必要な場合，その中間CA証明書はどうやってインストールするのか？ - GO-Global for Windows - デンタルシステムズ株式会社（クラウド事業部）技術支援センター](https://portal.kitcloud.net/documents/1356)
 > - https://diary.bis5.net/2013/12/10/450.html
 
 <br>
@@ -321,7 +321,7 @@ Web サイトのドメインの購入者が、ペアになる秘密鍵と組み�
 
 ![client-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client-certificate.png)
 
-> - https://www.cybertrust.co.jp/blog/certificate-authority/client-authentication/client-certificate-authentication.html
+> - [クライアント認証とは？｜BLOG｜サイバートラスト](https://www.cybertrust.co.jp/blog/certificate-authority/client-authentication/client-certificate-authentication.html)
 
 <br>
 
@@ -365,7 +365,7 @@ notAfter=<終了期限>
 | RFC 5280 Appendix A | IETF                     | SAN の構文 (ASN.1 形式) や使用例を含む技術的詳細を定義する。   |
 | RFC 2459            | IETF                     | RFC 5280 の前身である。                                        |
 
-> - https://ja.wikipedia.org/wiki/X.509
+> - [X.509 - Wikipedia](https://ja.wikipedia.org/wiki/X.509)
 
 <br>
 
@@ -399,8 +399,8 @@ $ openssl x509 \
     -out ca.crt
 ```
 
-> - https://qiita.com/paseri2022/items/a250ccf415819996163b#%E3%83%AB%E3%83%BC%E3%83%88%E8%AA%8D%E8%A8%BC%E5%B1%80%E3%82%AA%E3%83%AC%E3%82%AA%E3%83%AC%E8%AA%8D%E8%A8%BC%E5%B1%80%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B
-> - https://ken-ohwada.hatenadiary.org/entry/2021/02/27/122111
+> - [openssl オレオレ認証局で証明書発行 #Ubuntu - Qiita](https://qiita.com/paseri2022/items/a250ccf415819996163b#%E3%83%AB%E3%83%BC%E3%83%88%E8%AA%8D%E8%A8%BC%E5%B1%80%E3%82%AA%E3%83%AC%E3%82%AA%E3%83%AC%E8%AA%8D%E8%A8%BC%E5%B1%80%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B)
+> - [openssl コマンドを使って オレオレ認証局を作成してサーバ証明書を発行する - ken ohwada 雑記帳](https://ken-ohwada.hatenadiary.org/entry/2021/02/27/122111)
 
 <br>
 
@@ -415,7 +415,7 @@ $ openssl x509 \
 例えば Nginx ならば、`/etc/nginx/ssl` ディレクトリ配下にサーバー証明書 (`.crt`) と `/etc/ssl/private` ディレクトリ配下に秘密鍵 (`.key`) の両方を配置する。
 
 > - https://www.networkinghowtos.com/howto/configure-nginx-to-use-ssl-certificates/
-> - https://qiita.com/yuta_vamdemic/items/613490ca284bd50da213
+> - [NGINXで中間証明書を指定する #nginx - Qiita](https://qiita.com/yuta_vamdemic/items/613490ca284bd50da213)
 
 #### ▼ OS の場合
 
@@ -424,7 +424,7 @@ OS ごとに、デフォルトのディレクトリが異なる。
 例えば Ubuntu ならば、`/etc/ssl/certs` ディレクトリ配下にサーバー証明書 (`.crt`) を、`/etc/ssl/private` ディレクトリ配下に秘密鍵 (`.key`) を配置する。
 
 > - https://ubuntu.com/server/docs/security-certificates
-> - https://scrapbox.io/nwtgck/Ubuntu%E3%81%A7SSL%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AF%E3%81%A9%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%86%85%E3%81%AB%E7%BD%AE%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%8B%EF%BC%9F
+> - [UbuntuでSSL証明書はどのディレクトリ内に置くべきか？ - nwtgck / Ryo Ota](https://scrapbox.io/nwtgck/Ubuntu%E3%81%A7SSL%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AF%E3%81%A9%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E5%86%85%E3%81%AB%E7%BD%AE%E3%81%8F%E3%81%B9%E3%81%8D%E3%81%8B%EF%BC%9F)
 
 <br>
 
@@ -438,9 +438,9 @@ OS ごとに、デフォルトのディレクトリが異なる。
 | 証明書署名要求 | 秘密鍵から作成され、公開鍵であるサーバー証明書を作成するために使用する。 | `.csr`、`.txt`                        |
 | サーバー証明書 | 秘密鍵とペアになる公開鍵として動作する。                                 | `pem`、`.crt`、`.cert`、`.ca`、`.txt` |
 
-> - https://www.ssl-concier.com/news/topics/164
-> - https://install-memo.hatenadiary.org/entry/20110906/1315291837
-> - https://qiita.com/kunichiko/items/12cbccaadcbf41c72735#crt-cer-key-csr%E3%81%AF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E5%86%85%E5%AE%B9%E3%82%92%E8%A1%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B
+> - [【用語明解】証明書の申請で登場する各種ファイルの見分け方 \| 大手正規SSL証明書が定価よりMAX66％OFFから 【 SSLコンシェル 】](https://www.ssl-concier.com/news/topics/164)
+> - [SSL証明書のKEYファイル・CSRファイル・CRTファイルのチェック方法 - install memo](https://install-memo.hatenadiary.org/entry/20110906/1315291837)
+> - [RSA鍵、証明書のファイルフォーマットについて #OpenSSL - Qiita](https://qiita.com/kunichiko/items/12cbccaadcbf41c72735#crt-cer-key-csr%E3%81%AF%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E5%86%85%E5%AE%B9%E3%82%92%E8%A1%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B)
 
 #### ▼ 作成手順
 
@@ -609,11 +609,11 @@ $ curl https://foo.example.com -v
 * Connection #0 to host foo.example.com left intact
 ```
 
-> - https://www.karakaram.com/creating-self-signed-certificate/
-> - https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd
-> - https://weblabo.oscasierra.net/openssl-gencert-1/
-> - https://gist.github.com/x-yuri/8178c9aa2dcf8acbe4ccc2a07313b22d
-> - https://ozuma.hatenablog.jp/entry/20130511/1368284304
+> - [オレオレSSL証明書（自己署名証明書）を作るワンライナー - karakaram-blog](https://www.karakaram.com/creating-self-signed-certificate/)
+> - [オレオレ証明書・秘密鍵・CSR全部まとめて作るワンライナー #HTTPS - Qiita](https://qiita.com/marcy-terui/items/2f63d7f170ff82531245#comment-15815a021373f84e74bd)
+> - [OpenSSL で SSL 自己証明書を発行する手順 \|](https://weblabo.oscasierra.net/openssl-gencert-1/)
+> - [Generating SSL certificates · GitHub](https://gist.github.com/x-yuri/8178c9aa2dcf8acbe4ccc2a07313b22d)
+> - [オレオレ証明書をopensslで作る（詳細版） - ろば電子が詰まつてゐる](https://ozuma.hatenablog.jp/entry/20130511/1368284304)
 
 #### ▼ 一括管理
 
@@ -653,7 +653,7 @@ $ keytool -import -alias <エイリアス> -file <秘密鍵>.pem -keystore <公�
 | 証明書署名要求     | 秘密鍵から作成され、公開鍵であるクライアント証明書を作成するために使用する。 | `.csr`、`.txt`                        |
 | クライアント証明書 | 秘密鍵とペアになる公開鍵として動作する。                                     | `pem`、`.crt`、`.cert`、`.ca`、`.txt` |
 
-> - https://vpslife.server-memo.net/create_client_cert/
+> - [自己署名でクライアント証明書の作成方法（オレオレ証明書） \| VPS Life](https://vpslife.server-memo.net/create_client_cert/)
 
 #### ▼ 作成手順
 
@@ -739,10 +739,10 @@ $ openssl pkcs12 -export -inkey client.key -in client.crt -out client.p12
 $ curl https://foo.example.com -v
 ```
 
-> - https://www.konekuri.com/87/
-> - https://www.tumblr.com/y-yagi/18179788088/%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9
-> - https://vpslife.server-memo.net/create_client_cert/
-> - https://qiita.com/deko2369/items/1c7757a7b19e97a3e7a4#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8
-> - https://vpslife.server-memo.net/import_client_chrome_edge/
+> - [Let’s Encryptと自己認証局でクライアント証明書接続 \| こねくりブログ](https://www.konekuri.com/87/)
+> - [クライアント証明書の作り方 – @y-yagi on Tumblr](https://www.tumblr.com/y-yagi/18179788088/%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9)
+> - [自己署名でクライアント証明書の作成方法（オレオレ証明書） \| VPS Life](https://vpslife.server-memo.net/create_client_cert/)
+> - [Root CAとサーバ証明書、クライアント証明書を作る #OpenSSL - Qiita](https://qiita.com/deko2369/items/1c7757a7b19e97a3e7a4#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8)
+> - [Webブラウザにクライアント証明書を登録する方法 \| VPS Life](https://vpslife.server-memo.net/import_client_chrome_edge/)
 
 <br>

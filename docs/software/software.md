@@ -9,7 +9,7 @@ description: ソフトウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: ソフトウェアの知見を記録しています。
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software.png)
 
-> - https://thinkit.co.jp/article/11526
+> - [ITインフラの全体像を理解しよう \| 新人エンジニアのためのインフラ入門 ーBFT道場 Think IT支部 \| Think IT（シンクイット）](https://thinkit.co.jp/article/11526)
 
 <br>
 
@@ -45,7 +45,7 @@ description: ソフトウェアの知見を記録しています。
 
 ![ネイティブアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ネイティブアプリ.png)
 
-> - https://www.sbbit.jp/article/cont1/28197
+> - [HTML5によるハイブリッドアプリ開発の「Apache Cordova」とは？IBMやSAPがなぜ注目？ 企業向けモバイルアプリ開発の問題が決着か｜ビジネス+IT](https://www.sbbit.jp/article/cont1/28197)
 
 **＊例＊**
 
@@ -65,7 +65,7 @@ URL を指定して Web サーバーにリクエストを送信することで�
 
 すべての人が無料で利用できるものと、お金を払った人だけが利用できるものがある。
 
-> - https://www.sbbit.jp/article/cont1/28197
+> - [HTML5によるハイブリッドアプリ開発の「Apache Cordova」とは？IBMやSAPがなぜ注目？ 企業向けモバイルアプリ開発の問題が決着か｜ビジネス+IT](https://www.sbbit.jp/article/cont1/28197)
 
 **＊例＊**
 
@@ -93,7 +93,7 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 
 ![ハイブリッドアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハイブリッドアプリ.png)
 
-> - https://www.sbbit.jp/article/cont1/28197
+> - [HTML5によるハイブリッドアプリ開発の「Apache Cordova」とは？IBMやSAPがなぜ注目？ 企業向けモバイルアプリ開発の問題が決着か｜ビジネス+IT](https://www.sbbit.jp/article/cont1/28197)
 
 **＊例＊**
 
@@ -110,7 +110,7 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 - IIS
 - Apache Tomcat (App サーバーと Web サーバーの両方の機能を持つ)
 
-> - https://thinkit.co.jp/article/11837
+> - [ミドルウェア(Web、AP、DB)について知ろう \| 新人エンジニアのためのインフラ入門 ーBFT道場 Think IT支部 \| Think IT（シンクイット）](https://thinkit.co.jp/article/11837)
 > - https://www.javatpoint.com/apache-tomcat-server-vs-apache-webserver
 
 <br>
@@ -122,7 +122,7 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 - NGINX Unit (Web サーバーの Nginx と組み合わせて使用できるミドルウェア)
 - Apache Tomcat (App サーバーと Web サーバーの両方の機能を持つ)
 
-> - https://thinkit.co.jp/article/11837
+> - [ミドルウェア(Web、AP、DB)について知ろう \| 新人エンジニアのためのインフラ入門 ーBFT道場 Think IT支部 \| Think IT（シンクイット）](https://thinkit.co.jp/article/11837)
 > - https://www.javatpoint.com/apache-tomcat-server-vs-apache-webserver
 
 <br>
@@ -134,7 +134,7 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 - PostgreSQL
 - Oracle Database
 
-> - https://thinkit.co.jp/article/11837
+> - [ミドルウェア(Web、AP、DB)について知ろう \| 新人エンジニアのためのインフラ入門 ーBFT道場 Think IT支部 \| Think IT（シンクイット）](https://thinkit.co.jp/article/11837)
 
 <br>
 
@@ -274,6 +274,6 @@ Windows 8 以降で採用されている新しい Firmware
 
 ![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSS一覧.png)
 
-> - https://openstandia.jp/oss_info/
+> - [オープンソースソフトウェア（OSS）一覧 \| OSSサポートのOpenStandia™【NRI】](https://openstandia.jp/oss_info/)
 
 <br>

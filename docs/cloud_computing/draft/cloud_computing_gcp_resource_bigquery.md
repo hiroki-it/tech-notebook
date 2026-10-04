@@ -35,8 +35,8 @@ description: BigQuery＠Google Cloudリソースの知見を記録していま�
 
 発行した資格情報を BI ツールに登録する。
 
-> - https://knowledge.insight-lab.co.jp/bi/lookerandbigquery
-> - https://cloud.google.com/looker/docs/db-config-google-bigquery?hl=ja#authentication_with_bigquery_service_accounts
+> - [LookerとBigQueryのデータを連携させる方法についてご紹介します](https://knowledge.insight-lab.co.jp/bi/lookerandbigquery)
+> - [Google BigQuery \| Looker \| Google Cloud Documentation](https://cloud.google.com/looker/docs/db-config-google-bigquery?hl=ja#authentication_with_bigquery_service_accounts)
 
 #### ▼ Google Cloud OAuth
 
@@ -44,7 +44,7 @@ Google Cloud OAuth の情報を認証に使用する。
 
 発行した資格情報を BI ツールに登録する。
 
-> - https://knowledge.insight-lab.co.jp/bi/lookerandbigquery
-> - https://cloud.google.com/looker/docs/db-config-google-bigquery?hl=ja#authentication_with_oauth
+> - [LookerとBigQueryのデータを連携させる方法についてご紹介します](https://knowledge.insight-lab.co.jp/bi/lookerandbigquery)
+> - [Google BigQuery \| Looker \| Google Cloud Documentation](https://cloud.google.com/looker/docs/db-config-google-bigquery?hl=ja#authentication_with_oauth)
 
 <br>

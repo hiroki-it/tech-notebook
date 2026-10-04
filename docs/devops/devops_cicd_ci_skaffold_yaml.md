@@ -39,7 +39,7 @@ Skaffold の各ステージでは、それ専用のツールをコールでき�
 
 ![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline_tools.png)
 
-> - https://skaffold.dev/docs/#skaffold-workflow-and-architecture
+> - [Skaffold 2.0 Documentation \| Skaffold](https://skaffold.dev/docs/#skaffold-workflow-and-architecture)
 
 <br>
 
@@ -68,7 +68,7 @@ build:
     - image: bar-web
 ```
 
-> - https://skaffold.dev/docs/references/yaml/#build-artifacts-image
+> - [skaffold.yaml \| Skaffold](https://skaffold.dev/docs/references/yaml/#build-artifacts-image)
 
 #### ▼ context
 
@@ -87,7 +87,7 @@ build:
       context: ./src/bar
 ```
 
-> - https://skaffold.dev/docs/references/yaml/#build-artifacts-context
+> - [skaffold.yaml \| Skaffold](https://skaffold.dev/docs/references/yaml/#build-artifacts-context)
 
 #### ▼ docker
 
@@ -147,7 +147,7 @@ build:
     useBuildkit: "false"
 ```
 
-> - https://genzouw.com/entry/2021/07/17/100615/2724/
+> - [イメージのビルド高速化機構 Docker BuildKit、BuildX を理解していなかったので調べてみました \| ゲンゾウ用ポストイット](https://genzouw.com/entry/2021/07/17/100615/2724/)
 
 <br>
 
@@ -163,7 +163,7 @@ build:
     gitCommit: {}
 ```
 
-> - https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags
+> - [https://skaffold.dev/docs/taggers/](https://skaffold.dev/docs/pipeline-stages/taggers/#gitcommit-uses-git-commitsreferences-as-tags)
 
 #### ▼ sha256
 
@@ -175,7 +175,7 @@ build:
     sha256: {}
 ```
 
-> - https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images
+> - [https://skaffold.dev/docs/taggers/](https://skaffold.dev/docs/pipeline-stages/taggers/#sha256-uses-latest-to-tag-images)
 
 <br>
 
@@ -205,7 +205,7 @@ portForward:
 
 Kubernetes リソースのテスト方法を定義する。
 
-> - https://skaffold.dev/docs/pipeline-stages/testers/
+> - [https://skaffold.dev/docs/testers/](https://skaffold.dev/docs/pipeline-stages/testers/)
 
 <br>
 
@@ -230,7 +230,7 @@ fileExistenceTests:
     shouldExist: "true"
 ```
 
-> - https://qiita.com/Kta-M/items/83db480075caabcb0b7a
+> - [今度はあんまりゴツくない！？「わりとゴツいKubernetesハンズオン」そのあとに #AWS - Qiita](https://qiita.com/Kta-M/items/83db480075caabcb0b7a)
 
 <br>
 
@@ -240,7 +240,7 @@ fileExistenceTests:
 
 Kubernetes リソースのデプロイ手法を定義する。
 
-> - https://skaffold.dev/docs/pipeline-stages/deployers/
+> - [https://skaffold.dev/docs/deployers/](https://skaffold.dev/docs/pipeline-stages/deployers/)
 
 <br>
 
@@ -260,7 +260,7 @@ deploy:
       - ./**/**/**.yaml # ワイルドカードを使用できる。
 ```
 
-> - https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/
+> - [https://skaffold.dev/docs/deployers/kubectl/](https://skaffold.dev/docs/pipeline-stages/deployers/kubectl/)
 
 <br>
 
@@ -281,6 +281,6 @@ deploy:
           helm: {}
 ```
 
-> - https://skaffold.dev/docs/pipeline-stages/deployers/helm/
+> - [https://skaffold.dev/docs/deployers/helm/](https://skaffold.dev/docs/pipeline-stages/deployers/helm/)
 
 <br>

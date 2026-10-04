@@ -19,13 +19,13 @@ description: EMQX＠メッセージング系ミドルウェアの知見を記録
 
 送受信の関係が多対多のパブリッシュ／サブスクライブ方式である。
 
-> - https://www.cloudamqp.com/blog/rabbitmq-mqtt-vs-emqx.html
+> - [RabbitMQ MQTT vs EMQX - CloudAMQP](https://www.cloudamqp.com/blog/rabbitmq-mqtt-vs-emqx.html)
 
 <br>
 
 ## 02. パブリッシュ
 
-> - https://www.cloudamqp.com/blog/rabbitmq-mqtt-vs-emqx.html
+> - [RabbitMQ MQTT vs EMQX - CloudAMQP](https://www.cloudamqp.com/blog/rabbitmq-mqtt-vs-emqx.html)
 
 <br>
 
@@ -35,7 +35,7 @@ EMQX のサブスクライブはプッシュ型である。
 
 EMQX はメッセージをサブスクライバーに送信する。
 
-> - https://www.emqx.com/en/blog/mqtt-5-introduction-to-publish-subscribe-model
+> - [Introduction to MQTT Publish-Subscribe Pattern \| EMQ](https://www.emqx.com/en/blog/mqtt-5-introduction-to-publish-subscribe-model)
 
 <br>
 

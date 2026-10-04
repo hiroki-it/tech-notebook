@@ -1861,9 +1861,9 @@ Istio コントロールプレーンは Amazon EKS コントロールプレー�
 
 <br>
 
-図 39 で、Amazon EKS 上でのサービスメッシュ外の L7 トラフィック管理の設計例を示します。
+図 39 で、Amazon EKS 上でサービスメッシュ外を対象としたサービス検出の設計例を示します。
 
-サービスメッシュ外では、L7 ロードバランサーとして Kubernetes 標準機能と Coordination & Service Discovery 分野のツールを使用できます。
+サービスメッシュ外では、サービス検出に Kubernetes 標準機能と Coordination & Service Discovery 分野のツールを使用できます。
 
 例えば、CoreDNS は Kubernetes Service と連携し、送信元 Pod からの問い合わせに応じて宛先の IP アドレスを返します *73 *74 。
 
@@ -1873,7 +1873,7 @@ Istio コントロールプレーンは Amazon EKS コントロールプレー�
 
 <br>
 
-図 40. Amazon EKS 上でのサービスメッシュ外の L7 トラフィック管理の設計例
+図 40. Amazon EKS 上でサービスメッシュ外を対象としたサービス検出の設計例
 
 ![40](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/40.png)
 
@@ -1885,7 +1885,7 @@ L4 ロードバランサーとして Kubernetes 標準機能を使用できま�
 
 例えば、Kubernetes Service と kube-proxy は iptables または IPVS と連携し、リクエストを宛先 Pod にルーティングします \*82 。
 
-kube-proxy は新しい Pod の IP アドレスを iptables に追加し、また Kubernetes Service は iptables に基づいてリクエストを Pod にロードバランシングします。
+kube-proxy は宛先 Pod の情報に応じて iptables または IPVS の転送ルールを書き換え、Kubernetes Service 宛てのリクエストを Pod にロードバランシングします。
 
 前述のとおり、AWS はマネージドな kube-proxy アドオンを提供します。
 
@@ -2050,9 +2050,9 @@ flowchart LR
 
 例えば、Istio は署名済みの証明書をサイドカーコンテナに組み込み、定期的にこれを更新します \*86 。
 
-Istio コントロールプレーンは自己を署名し、ルート認証局としてサイドカーコンテナのクライアント／サーバー証明書を署名します。
+Istio コントロールプレーンは証明書を自己署名し、ルート認証局としてサイドカーコンテナのクライアント／サーバー証明書を署名します。
 
-さらに Istio コントロールプレーンはサイドカーコンテナに証明書を組み込み、証明書の有効期限が切れる前に自動的に更新します。
+サイドカーコンテナ内の pilot-agent は秘密鍵を作成し、この秘密鍵から CSR を作成して Istio コントロールプレーンに送信し、署名済み証明書を取得します。証明書の有効期限が切れる前に CSR を再作成して送信し、証明書を更新します。
 
 この仕組みにより、サイドカーコンテナ間で相互 TLS 認証を継続的に実施できるようになります \*87 。
 

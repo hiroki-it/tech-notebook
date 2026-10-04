@@ -9,7 +9,7 @@ description: メモリ系＠パッケージの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -55,7 +55,7 @@ $ pstree
 
 #### ▼ pip リポジトリから
 
-> - http://supervisord.org/installing.html#installing-a-distribution-package
+> - [Installing — Supervisor 4.3.0 documentation](http://supervisord.org/installing.html#installing-a-distribution-package)
 
 ```bash
 $ pip3 install supervisor
@@ -71,20 +71,20 @@ Python 製のユーティリティである。
 
 メモリ上の複数のプロセスをデーモン化し、一括で管理する。
 
-> - http://supervisord.org/index.html
+> - [Supervisor: A Process Control System — Supervisor 4.3.0 documentation](http://supervisord.org/index.html)
 > - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
 
 #### ▼ supervisorctl
 
 supervisord を操作する。
 
-> - http://supervisord.org/introduction.html#supervisor-components
+> - [Introduction — Supervisor 4.3.0 documentation](http://supervisord.org/introduction.html#supervisor-components)
 
 #### ▼ supervisord
 
 supervisor 自体のプロセスのこと。
 
-> - http://supervisord.org/introduction.html#supervisor-components
+> - [Introduction — Supervisor 4.3.0 documentation](http://supervisord.org/introduction.html#supervisor-components)
 
 <br>
 
@@ -100,7 +100,7 @@ supervisor の `supervisord` プロセスのプールを設定する。
 ...
 ```
 
-> - http://supervisord.org/configuration.html#supervisord-section-settings
+> - [Configuration File — Supervisor 4.3.0 documentation](http://supervisord.org/configuration.html#supervisord-section-settings)
 
 #### ▼ directory
 
@@ -183,8 +183,8 @@ user=root
 ...
 ```
 
-> - http://supervisord.org/configuration.html#program-x-section-settings
-> - https://christina04.hatenablog.com/entry/2015/07/21/215525
+> - [Configuration File — Supervisor 4.3.0 documentation](http://supervisord.org/configuration.html#program-x-section-settings)
+> - [Supervisorでプロセスを管理 - Carpe Diem](https://christina04.hatenablog.com/entry/2015/07/21/215525)
 
 #### ▼ autorestart
 
@@ -251,7 +251,7 @@ stderr_logfile=/dev/stderr
 stderr_logfile_maxbytes=0
 ```
 
-> - http://supervisord.org/configuration.html#supervisord-section-values
+> - [Configuration File — Supervisor 4.3.0 documentation](http://supervisord.org/configuration.html#supervisord-section-values)
 
 #### ▼ stdout_logfile_backups
 
@@ -318,7 +318,7 @@ programs=bar,baz
 $ supervisorctl restart <デーモン名>
 ```
 
-> - http://supervisord.org/running.html#supervisorctl-actions
+> - [Running Supervisor — Supervisor 4.3.0 documentation](http://supervisord.org/running.html#supervisorctl-actions)
 
 #### ▼ update
 
@@ -328,7 +328,7 @@ $ supervisorctl restart <デーモン名>
 $ supervisorctl update
 ```
 
-> - http://supervisord.org/running.html#supervisorctl-actions
+> - [Running Supervisor — Supervisor 4.3.0 documentation](http://supervisord.org/running.html#supervisorctl-actions)
 
 <br>
 
@@ -340,7 +340,7 @@ $ supervisorctl update
 
 メモリ上のプロセスをデーモン化する機能を持つ systemd を制御する。
 
-> - https://cameong.hatenablog.com/entry/2016/10/18/121400
+> - [systemd を利用してプロセスをデーモン化する - cameong’s blog](https://cameong.hatenablog.com/entry/2016/10/18/121400)
 > - https://www.crazyengineers.com/threads/supervisord-vs-systemd-which-is-better-and-why.103871
 
 #### ▼ systemd：system daemon
@@ -385,8 +385,8 @@ $ apt-get install systemd
 
 カスタムユニットファイルは、`/etc/sytemd/system` ディレクトリ配下に配置する。
 
-> - https://tex2e.github.io/blog/linux/create-my-systemd-service
-> - https://zaki-hmkc.hatenablog.com/entry/2021/04/11/003202
+> - [systemd のユニットファイルの作り方 \| 晴耕雨読](https://tex2e.github.io/blog/linux/create-my-systemd-service)
+> - [\[Linux\] systemdのユニットファイルを自分で書いてプログラムをdaemon動作させてみる - zaki work log](https://zaki-hmkc.hatenablog.com/entry/2021/04/11/003202)
 > - https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_file_modify
 
 #### ▼ Unit セクション
@@ -435,8 +435,8 @@ OPTIONS=foo
 ```
 
 > - https://serverfault.com/a/806620
-> - https://oji-cloud.net/2023/10/03/post-7777/
-> - https://kazuhira-r.hatenablog.com/entry/2021/12/02/161200
+> - [systemd / ulimit 制限のプロパティ一覧 \| Oji-Cloud](https://oji-cloud.net/2023/10/03/post-7777/)
+> - [systemd制御下で動作するプロセスの、リソース制御を行う - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2021/12/02/161200)
 
 #### ▼ Install セクション
 
@@ -504,7 +504,7 @@ $ systemctl is-failed <ユニット名>
 active
 ```
 
-> - https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units-ja#
+> - [Systemctlサービスを使用してSystemdサービスとユニットを管理する方法 \| DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units-ja#)
 
 #### ▼ list-units
 
@@ -536,7 +536,7 @@ dev-mqueue.mount                  loaded active mounted POSIX Message Queue File
 ...
 ```
 
-> - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+> - [【Linux】systemctlの使い方 ~オプション一覧,自動起動,list-units/list-unit-filesの見方, reloadとrestartの違い, runningとexitedの違い~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/)
 
 #### ▼ list-unit-files
 
@@ -637,7 +637,7 @@ CGroup: /system.slice/rsyslog.service
 mq959 /usr/sbin/rsyslogd -n
 ```
 
-> - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/
+> - [【Linux】systemctlの使い方 ~オプション一覧,自動起動,list-units/list-unit-filesの見方, reloadとrestartの違い, runningとexitedの違い~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/linux-basic/systemctl/)
 
 #### ▼ stop
 
@@ -669,7 +669,7 @@ system で管理するすべてのユニットの標準出力と標準エラー�
 $ journalctl | grep -i error
 ```
 
-> - https://qiita.com/aosho235/items/9fbff75e9cccf351345c
+> - [journalctl 最低限覚えておくコマンド #journalctl - Qiita](https://qiita.com/aosho235/items/9fbff75e9cccf351345c)
 > - https://unix.stackexchange.com/a/57243
 
 #### ▼ -u
@@ -725,7 +725,7 @@ WantedBy=multi-user.target
 ```
 
 > - https://serverfault.com/a/924434
-> - https://northernlightlabs.se/2014-07-05/systemd-status-mail-on-unit-failure.html
+> - [Systemd status mail on unit failure · Northern Light Labs](https://northernlightlabs.se/2014-07-05/systemd-status-mail-on-unit-failure.html)
 
 #### ▼ アラートを間接的に通知する場合
 
@@ -742,7 +742,7 @@ StandardOutput=file:/var/log/foo-service/stdout.log
 StandardError=file:/var/log/foo-service/stderr.log
 ```
 
-> - https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c
+> - [Forward systemd service logs to AWS Cloudwatch · GitHub](https://gist.github.com/adam-hanna/06afe09209589c80ba460662f7dce65c)
 
 <br>
 

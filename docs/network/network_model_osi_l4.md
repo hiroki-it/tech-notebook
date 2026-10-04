@@ -9,7 +9,7 @@ description: L4＠OSI参照モデルの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: L4＠OSI参照モデルの知見を記録しています。
 
 アプリケーション層のプロトコルを適切なアプリケーションに振り分けるプロトコル (例：TCP、UDP など) を処理する層である。
 
-> - https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E5%B1%A4
+> - [トランスポート層 - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%A9%E3%83%B3%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%88%E5%B1%A4)
 
 <br>
 
@@ -117,9 +117,9 @@ Unix で使用されるソケットのこと。
 
 ![unix-domain-socket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/unix-domain-socket.png)
 
-> - https://en.wikipedia.org/wiki/Unix_domain_socket
-> - https://ascii.jp/elem/000/001/415/1415088/
-> - https://blog.bnikka.com/server/unix-socket.html
+> - [Unix domain socket - Wikipedia](https://en.wikipedia.org/wiki/Unix_domain_socket)
+> - [ASCII.jp：Unixドメインソケット (1/2)](https://ascii.jp/elem/000/001/415/1415088/)
+> - [WordPressの高速化｜MySQLへUNIXソケットで接続して爆速に](https://blog.bnikka.com/server/unix-socket.html)
 
 #### ▼ 通信方法
 
@@ -133,7 +133,7 @@ unix://./etc/foo.sock
 
 同じ OS 上で稼働するコンテナのプロセス間の通信でも使用できる。
 
-> - https://www.miketheman.net/2021/12/28/container-to-container-communication/
+> - [Container-to-Container Communication – Mike's House](https://www.miketheman.net/2021/12/28/container-to-container-communication/)
 
 <br>
 
@@ -145,7 +145,7 @@ unix://./etc/foo.sock
 
 異なる OS 間のメッセージを中継するときは、ミドルウェアとしてのメッセージキューを経由する。
 
-> - https://en.wikipedia.org/wiki/Message_queue
+> - [Message queue - Wikipedia](https://en.wikipedia.org/wiki/Message_queue)
 
 <br>
 
@@ -172,8 +172,8 @@ unix://./etc/foo.sock
 `L4` ロードバランサーは、これらの情報に基づいて通信を待ち受けるサーバーに、通信をロードバランシングする。
 
 > - https://medium.com/@crazy_nuclei/l4-vs-l7-load-balancers-64e47610e2ef
-> - https://www.infraexpert.com/study/tcpip8.html
-> - https://hakobe932.hatenablog.com/entry/2018/04/11/123000
-> - https://asnokaze.hatenablog.com/entry/20150421/1429621022
+> - [TCPヘッダとは](https://www.infraexpert.com/study/tcpip8.html)
+> - [gRPCのロードバランシング - はこべにっき ♨](https://hakobe932.hatenablog.com/entry/2018/04/11/123000)
+> - [NginxのTCP Load BalancingがOSS版でも使えるらしいので試す - ASnoKaze blog](https://asnokaze.hatenablog.com/entry/20150421/1429621022)
 
 <br>

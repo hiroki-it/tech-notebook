@@ -31,7 +31,7 @@ spec:
   scope: Namespaced
 ```
 
-> - https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/crd.yaml
+> - [sample-controller/artifacts/examples/crd.yaml at master · kubernetes/sample-controller · GitHub](https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/crd.yaml)
 
 <br>
 
@@ -89,7 +89,7 @@ spec:
     availableReplicas: 2
 ```
 
-> - https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/example-foo.yaml
+> - [sample-controller/artifacts/examples/example-foo.yaml at master · kubernetes/sample-controller · GitHub](https://github.com/kubernetes/sample-controller/blob/master/artifacts/examples/example-foo.yaml)
 
 <br>
 
@@ -488,10 +488,10 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 }
 ```
 
-> - https://github.com/kubernetes/sample-controller/blob/master/controller.go
-> - https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93
-> - https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go
-> - https://kk-river108.hatenablog.com/entry/2020/12/16/184915
+> - [sample-controller/controller.go at master · kubernetes/sample-controller · GitHub](https://github.com/kubernetes/sample-controller/blob/master/controller.go)
+> - [実践入門 Kubernetes カスタムコントローラーへの道 - osamtimizer](https://scrapbox.io/osamtimizer/%E5%AE%9F%E8%B7%B5%E5%85%A5%E9%96%80_Kubernetes_%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%81%B8%E3%81%AE%E9%81%93)
+> - [k8s-controller-example/pkg/controller/controller.go at main · bells17/k8s-controller-example · GitHub](https://github.com/bells17/k8s-controller-example/blob/main/pkg/controller/controller.go)
+> - [Custom Controller の開発で使えそうなコード集 #Kubernetes2 Advent Calendar 2020 16日目 - SWEet](https://kk-river108.hatenablog.com/entry/2020/12/16/184915)
 > - https://zenn.dev/ap_com/articles/45f7a646f62f52#main%E9%96%A2%E6%95%B0
 
 #### ▼ main.go

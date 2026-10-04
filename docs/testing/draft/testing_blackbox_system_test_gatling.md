@@ -9,7 +9,7 @@ description: Gatling＠システムテストの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: Gatling＠システムテストの知見を記録しています。
 $ apt-get install gatling
 ```
 
-> - https://www.swtestacademy.com/gatling-installation-configuration/
+> - [Gatling Installation & Configuration](https://www.swtestacademy.com/gatling-installation-configuration/)
 
 <br>
 
@@ -54,8 +54,8 @@ gatling {
 }
 ```
 
-> - https://hkawabata.github.io/technical-note/note/OSS/gatling.html
-> - https://github.com/gatling/gatling/blob/v3.9.5/gatling-core/src/main/resources/gatling-defaults.conf#L76-L88
+> - [Gatling \| technical-note](https://hkawabata.github.io/technical-note/note/OSS/gatling.html)
+> - [gatling/gatling-core/src/main/resources/gatling-defaults.conf at v3.9.5 · gatling/gatling · GitHub](https://github.com/gatling/gatling/blob/v3.9.5/gatling-core/src/main/resources/gatling-defaults.conf#L76-L88)
 
 <br>
 
@@ -89,9 +89,9 @@ Choose a simulation number:
      [5] computerdatabase.advanced.AdvancedSimulationStep05
 ```
 
-> - https://qiita.com/hogucc/items/e213a93f5b3a3cd3c96f
-> - https://docs.gatling.io/guides/optimize-scripts/passing-parameters/
-> - https://docs.gatling.io/concepts/configuration/
+> - [負荷試験テストツールGatlingの使い方 #Scala - Qiita](https://qiita.com/hogucc/items/e213a93f5b3a3cd3c96f)
+> - [Passing parameters to a Gatling simulation](https://docs.gatling.io/guides/optimize-scripts/passing-parameters/)
+> - [Gatling configuration reference](https://docs.gatling.io/concepts/configuration/)
 
 <br>
 
@@ -145,20 +145,20 @@ Reports generated in 0s.
 ```
 
 > - https://gatling.io/docs/gatling/reference/current/stats/reports/
-> - https://developer.mamezou-tech.com/blogs/2023/04/29/load-test-with-gatling/
-> - https://qiita.com/hogucc/items/e213a93f5b3a3cd3c96f
-> - https://blog.studysapuri.jp/entry/school-communication-with-gatling
+> - [Gatling - DSL で API の負荷テストを書いて実行する \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2023/04/29/load-test-with-gatling/)
+> - [負荷試験テストツールGatlingの使い方 #Scala - Qiita](https://qiita.com/hogucc/items/e213a93f5b3a3cd3c96f)
+> - [負荷試験、Gatlingを使ってやってみた - スタディサプリ Product Team Blog](https://blog.studysapuri.jp/entry/school-communication-with-gatling)
 
 <br>
 
 ## 04. 性能テスト
 
-> - https://blog.studysapuri.jp/entry/school-communication-with-gatling
+> - [負荷試験、Gatlingを使ってやってみた - スタディサプリ Product Team Blog](https://blog.studysapuri.jp/entry/school-communication-with-gatling)
 
 <br>
 
 ## 05. ロードテスト
 
-> - https://blog.studysapuri.jp/entry/school-communication-with-gatling
+> - [負荷試験、Gatlingを使ってやってみた - スタディサプリ Product Team Blog](https://blog.studysapuri.jp/entry/school-communication-with-gatling)
 
 <br>

@@ -21,7 +21,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 想定内という点で、可観測性と区別できる。
 
-> - https://en.wikipedia.org/wiki/Website_monitoring
+> - [Website monitoring - Wikipedia](https://en.wikipedia.org/wiki/Website_monitoring)
 > - https://blog.thundra.io/observability-driven-development-for-serverless
 > - https://www.amazon.co.jp/dp/4873118646
 
@@ -49,7 +49,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 ![monitoring_collecting_pull_push](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monitoring_collecting_pull_push.png)
 
-> - https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007
+> - [Pull or Push: How to Select Monitoring Systems? - Alibaba Cloud Community](https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007)
 
 #### ▼ テレメトリーの保管
 
@@ -66,7 +66,7 @@ description: 監視＠可観測性の知見を記録しています。
 | 世代数                                | ローテションの結果作成されるファイルの世代数 (例：`5`) をポリシーとして決めておくとよい。ただ、これは設定できないツールがある。                                                                                                                                                   |
 
 > - https://www.timescale.com/blog/a-different-and-often-better-way-to-downsample-your-prometheus-metrics/
-> - https://qiita.com/yamotuki/items/628f9bf399cc9b59f3cb
+> - [「結局アクセスログってどれくらい保存しておけばいいの？」に答える関係法令 #ログ - Qiita](https://qiita.com/yamotuki/items/628f9bf399cc9b59f3cb)
 
 #### ▼ テレメトリーの可視化
 
@@ -102,7 +102,7 @@ description: 監視＠可観測性の知見を記録しています。
 
 エラーがインシデントの場合、担当者はこれを迅速に解決する必要がある。
 
-> - https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=19
+> - [Wantedlyの障害対応文化とインシデントコマンダー / Wantedly Incident Commander - Speaker Deck](https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=19)
 
 #### ▼ サービスレベルとの照合
 
@@ -198,9 +198,9 @@ Amazon の自社調査では、ローディング時間が 100ms 短くなるご
 - Grafana Cloud Synthetic
 - Amazon CloudWatch Synthetics
 
-> - https://takehora.hatenadiary.jp/entry/2019/07/05/012036
-> - https://www.manageengine.jp/products/Applications_Manager/solution_synthetic-monitoring.html
-> - https://speakerdeck.com/dogggggo/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
+> - [「外形監視」という訳語の間違い - Webパフォーマンスについて](https://takehora.hatenadiary.jp/entry/2019/07/05/012036)
+> - [外形監視とは？仕組み・従来の監視との違い・おすすめツールを解説](https://www.manageengine.jp/products/Applications_Manager/solution_synthetic-monitoring.html)
+> - [より意味のある監視を目指して、外形監視の有効活用 - Speaker Deck](https://speakerdeck.com/dogggggo/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19)
 
 <br>
 
@@ -233,7 +233,7 @@ Amazon の自社調査では、ローディング時間が 100ms 短くなるご
 | Count 系         | データポイントのタイムスタンプ、数       | 数を単位とするアプリケーションのバックエンド領域のメトリクス (例：リクエストの受信数、ログイン数)                                                       |
 | Histogram 系     | データポイントのタイムスタンプ、処理時間 | 時間を単位とするアプリケーションのバックエンド領域のメトリクス (例：SQL にかかる時間、ビルドまたはデプロイの開始/完了時間、外部 API コールにかかる時間) |
 
-> - https://prometheus.io/docs/concepts/metric_types/
+> - [Metric types \| Prometheus](https://prometheus.io/docs/concepts/metric_types/)
 
 #### ▼ 性能 (APM)
 
@@ -241,18 +241,18 @@ Amazon の自社調査では、ローディング時間が 100ms 短くなるご
 
 特に性能に関わるメトリクス (例：CPU 使用率、レスポンスタイム、分散トレースにおけるマイクロサービス間のスループット、エラー率、リクエスト数、連続稼働時間) のデータポイントを収集し、監視する。
 
-> - https://aws.amazon.com/what-is/application-performance-monitoring/#:~:text=Application%20performance%20monitoring%20(APM)%20is,receive%20a%20positive%20application%20experience.
+> - [What is APM? - Application Performance Monitoring Explained - AWS](<https://aws.amazon.com/what-is/application-performance-monitoring/#:~:text=Application%20performance%20monitoring%20(APM)%20is,receive%20a%20positive%20application%20experience.>)
 
 #### ▼ カスタムメトリクス
 
 サーバー内に StatsD エージェントをデーモンとして常駐させ、アプリケーションで `statsd` パッケージを使用すると、ユーザーの定義したカスタムメトリクスの元になるデータポイントを収集できる。
 
-> - https://github.com/statsd/statsd/wiki
+> - [Home · statsd/statsd Wiki · GitHub](https://github.com/statsd/statsd/wiki)
 
 Amazon CloudWatch では、StatsD からのメトリクスの送信をサポートしている。
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html
-> - https://qiita.com/murata-tomohide/items/9bd1320865b2eba47538
+> - [Retrieve custom metrics with StatsD - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-custom-metrics-statsd.html)
+> - [CloudWatchAgentのStatsDを試してみる #CloudWatch-Agent - Qiita](https://qiita.com/murata-tomohide/items/9bd1320865b2eba47538)
 
 <br>
 
@@ -370,7 +370,7 @@ OSI 参照モデルのいずれのレイヤーまでの動作を確認するか�
 | `L7` チェック        | `L1` から `L7` (アプリケーション層) まで | サーバー/コンテナ上のアプリケーションのエンドポイントに HTTP リクエストを送信し、HTTP レスポンスを検証する。正しい HTTP レスポンスが返信されれば、アプリケーション自体とその開放ポートが正しく動作していると判断できる。                                                         |
 
 > - https://www.f5.com/ja_jp/services/resources/glossary/health-check
-> - https://a-film-production-technique-seminar.com/fppat/materials/fpts_frp_sugeno_intro_lb01/index.html
+> - [Film Production Pipelines and Artist Techniques](https://a-film-production-technique-seminar.com/fppat/materials/fpts_frp_sugeno_intro_lb01/index.html)
 > - https://www.fujitsu.com/jp/products/network/security-bandwidth-control-load-balancer/ipcom/material/data/1/7.html
 
 <br>
@@ -407,7 +407,7 @@ Cron の処理結果を監視する。
   8 6 * * * /foo-cron.sh && curl -fsS --retry 5 -o /dev/null https://hc-ping.com/ping/<healthchecksのID>
 ```
 
-> - https://healthchecks.io/docs/monitoring_cron_jobs/
+> - [How to Monitor Cron Jobs with Healthchecks.io](https://healthchecks.io/docs/monitoring_cron_jobs/)
 
 #### ▼ Runitor を使用して結果を送信する場合
 
@@ -424,7 +424,7 @@ Runitor を使用しない場合、Cron の標準出力/標準エラー出力の
   8 6 * * * /usr/local/bin/runitor -api-url https://hc-ping.com/ping -uuid <healthchecksのID> -- /foo-cron.sh
 ```
 
-> - https://github.com/bdd/runitor
+> - [GitHub - bdd/runitor: A command runner with healthchecks.io integration · GitHub](https://github.com/bdd/runitor)
 
 <br>
 
@@ -437,7 +437,7 @@ Runitor を使用しない場合、Cron の標準出力/標準エラー出力の
 クラウドプロバイダーの多くがステータスページを公開しているため、これを監視する。
 
 > - https://health.aws.amazon.com/health/status
-> - https://status.cloud.google.com/?hl=ja
+> - [Google Cloud Service Health](https://status.cloud.google.com/?hl=ja)
 > - https://status.azure.com/ja-jp/status
 
 <br>
@@ -450,9 +450,9 @@ Runitor を使用しない場合、Cron の標準出力/標準エラー出力の
 
 ヘルスチェックのためのリクエストを送信しないという点で、『アクティブヘルスチェック』とは異なる。
 
-> - https://neinvalli.hatenablog.com/entry/2017/10/31/002839
+> - [nginx upstream パッシブヘルスチェックはかなり使える (max\_fails, fail\_timeout) - Neinvalli](https://neinvalli.hatenablog.com/entry/2017/10/31/002839)
 > - https://docs.konghq.com/gateway/latest/how-kong-works/health-checks/
-> - https://api7.ai/blog/health-check-ensures-high-availability
+> - [Mastering APISIX Health Checks: Active and Passive Monitoring Strategies - API7.ai](https://api7.ai/blog/health-check-ensures-high-availability)
 
 <br>
 
@@ -466,8 +466,8 @@ Runitor を使用しない場合、Cron の標準出力/標準エラー出力の
 
 なお、BI ツールは DB からビジネスに関するテレメトリーを収集し、監視できるようにする。
 
-> - https://www.datadoghq.com/solutions/real-time-business-intelligence/
-> - https://qiita.com/tomo_will/items/e0f00b3f08ac607286da#bi%E3%83%84%E3%83%BC%E3%83%AB%E6%AF%8E%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9
+> - [Real-Time Business Intelligence \| Datadog](https://www.datadoghq.com/solutions/real-time-business-intelligence/)
+> - [\[各論\]BIツール導入のための比較軸をまとめてみた。 #Tableau - Qiita](https://qiita.com/tomo_will/items/e0f00b3f08ac607286da#bi%E3%83%84%E3%83%BC%E3%83%AB%E6%AF%8E%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B9%E3%82%B1%E3%83%BC%E3%82%B9)
 
 <br>
 

@@ -9,7 +9,7 @@ description: プロジェクトマネジメント＠開発手法の知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: プロジェクトマネジメント＠開発手法の知見を記�
 - プロジェクト全体会議で PM に報告する。
 - 担当領域の進行を妨げる技術的な課題を自身またはメンバーにやってもらって解決する。
 
-> - https://www.bold.ne.jp/engineer-club/project-leader
+> - [プロジェクトリーダ（PL）とは？役割や必要スキル、PMとの違いを解説](https://www.bold.ne.jp/engineer-club/project-leader)
 
 <br>
 
@@ -54,7 +54,7 @@ description: プロジェクトマネジメント＠開発手法の知見を記�
 
 ![project-management-skills_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_1.png)
 
-> - https://www.amazon.co.jp/dp/4798177415
+> - [プロジェクトマネジメントの基本が全部わかる本 交渉・タスクマネジメント・計画立案から見積り・契約・要件定義・設計・テスト・保守改善まで \| 橋本 将功 \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4798177415)
 
 <br>
 

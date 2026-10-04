@@ -9,7 +9,7 @@ description: Next.js＠フレームワークの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -73,7 +73,7 @@ const CsrPage = () => {
 export default CsrPage;
 ```
 
-> - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6
+> - [【Next.js14】CSR・SSR・SSG・ISR の違いと実装方法 #JavaScript - Qiita](https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6)
 
 #### ▼ SSR モード
 
@@ -136,8 +136,8 @@ Route (app)                              Size     First Load JS
 ƒ  (Dynamic)  server-rendered on demand
 ```
 
-> - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB
-> - https://zenn.dev/shouta0715/articles/6823ea33cd3778#2.-force-dynamic
+> - [【Next.js14】CSR・SSR・SSG・ISR の違いと実装方法 #JavaScript - Qiita](https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB)
+> - [【Next.js】Route Segment Configのページレンダリング手法をまとめてみた](https://zenn.dev/shouta0715/articles/6823ea33cd3778#2.-force-dynamic)
 
 #### ▼ SSG モード
 
@@ -198,8 +198,8 @@ Route (app)                              Size     First Load JS
 ○  (Static)  prerendered as static content
 ```
 
-> - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-2
-> - https://zenn.dev/shouta0715/articles/6823ea33cd3778#1.-auto
+> - [【Next.js14】CSR・SSR・SSG・ISR の違いと実装方法 #JavaScript - Qiita](https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-2)
+> - [【Next.js】Route Segment Configのページレンダリング手法をまとめてみた](https://zenn.dev/shouta0715/articles/6823ea33cd3778#1.-auto)
 
 #### ▼ ISR モード
 
@@ -242,7 +242,7 @@ const IsrPage = async () => {
 export default IsrPage;
 ```
 
-> - https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-3
+> - [【Next.js14】CSR・SSR・SSG・ISR の違いと実装方法 #JavaScript - Qiita](https://qiita.com/whopper1962/items/1d1a7179845b3e1d3084#%E6%9D%A1%E4%BB%B6-3)
 
 #### ▼ ハイブリッド
 
@@ -275,7 +275,7 @@ Route (app)                              Size     First Load JS
 ƒ  (Dynamic)  server-rendered on demand
 ```
 
-> - https://zenn.dev/sunnyheee/articles/df10b4ae614cfa#hybrid-web-app
+> - [Next.js CSR/SSG/ISR/SSR/Hybrid](https://zenn.dev/sunnyheee/articles/df10b4ae614cfa#hybrid-web-app)
 
 <br>
 
@@ -320,7 +320,7 @@ JavaScript または TypeScript を Node.js 上で稼働させる。
 
 Next.js の多くのコンポーネントが Node.js ランタイムである。
 
-> - https://nextjs.org/docs/app/api-reference/file-conventions/proxy
+> - [File-system conventions: proxy.js \| Next.js](https://nextjs.org/docs/app/api-reference/file-conventions/proxy)
 
 #### ▼ Edge ランタイム
 
@@ -334,7 +334,7 @@ export const runtime = 'edge'
 ...
 ```
 
-> - https://nextjs.org/docs/app/api-reference/edge
+> - [API Reference: Edge Runtime \| Next.js](https://nextjs.org/docs/app/api-reference/edge)
 
 <br>
 
@@ -374,31 +374,31 @@ dotenv パッケージは不要である。
 
 すべての `yarn` コマンドで自動的に読み込まれる。
 
-> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+> - [Next.jsの環境変数設定まとめ #Next.js - Qiita](https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 #### ▼ `.env.development` ファイル
 
 `yarn dev` コマンドで自動的に読み込まれる。
 
-> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+> - [Next.jsの環境変数設定まとめ #Next.js - Qiita](https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 #### ▼ `.env.development.local` ファイル
 
 `yarn dev` コマンドで自動的に読み込まれる。
 
-> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+> - [Next.jsの環境変数設定まとめ #Next.js - Qiita](https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 #### ▼ `.env.production` ファイル
 
 `yarn start` コマンドと `next build` コマンドで自動的に読み込まれる。
 
-> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+> - [Next.jsの環境変数設定まとめ #Next.js - Qiita](https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 #### ▼ `.env.production.local` ファイル
 
 `yarn start` コマンドと `next build` コマンドで自動的に読み込まれる。
 
-> - https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E
+> - [Next.jsの環境変数設定まとめ #Next.js - Qiita](https://qiita.com/ktanoooo/items/64cad61096cf45f18c24#env%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E)
 
 <br>
 

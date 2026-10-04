@@ -21,7 +21,7 @@ Kubernetes は、コントロールコンポーネント、Node コンポーネ�
 
 ![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_architecture.png)
 
-> - https://kubernetes.io/docs/concepts/overview/components/
+> - [Kubernetes Components \| Kubernetes](https://kubernetes.io/docs/concepts/overview/components/)
 
 <br>
 
@@ -44,7 +44,7 @@ data:
     -----END CERTIFICATE-----
 ```
 
-> - https://qiita.com/uesyn/items/f46b066772781317653d#introducing-rootcaconfigmap
+> - [Kubernetes 1.20: 変更点まとめ(What's new!) #kubernetes - Qiita](https://qiita.com/uesyn/items/f46b066772781317653d#introducing-rootcaconfigmap)
 
 <br>
 
@@ -69,8 +69,8 @@ data:
 | kube-apiserver                                                                             | kubelet        | サーバー証明書     | 記入中                                                                                          | kubelet が、kube-apiserver からの HTTPS リクエストを受信するための証明書。                                                                                                                                                                                                                                                                                                   |
 | kube-apiserver                                                                             | front-proxy    | サーバー証明書     | 記入中...                                                                                       | front-proxy が、kube-apiserver からの HTTPS リクエストを受信するための証明書。                                                                                                                                                                                                                                                                                               |
 
-> - https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster
-> - https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/
+> - [PKI certificates and requirements \| Kubernetes](https://kubernetes.io/docs/setup/best-practices/certificates/#how-certificates-are-used-by-your-cluster)
+> - [【図解】クライアント証明書(https,eap-tls)の仕組み ~シーケンス,クライアント認証,メリット~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-advanced/digicert/client-cert/)
 
 <br>
 
@@ -107,13 +107,13 @@ Config によっては、証明書のパスが設定されている場合があ�
 $ openssl x509 -noout -dates -in <証明書へのパス>
 ```
 
-> - https://github.com/prometheus-operator/kube-prometheus/issues/881#issuecomment-452356415
+> - [KubeClientCertificateExpiration always alert · Issue #881 · prometheus-operator/kube-prometheus · GitHub](https://github.com/prometheus-operator/kube-prometheus/issues/881#issuecomment-452356415)
 
 #### ▼ 更新方法
 
 `kubelet` プロセスの実行時に、`--rotate-certificates` オプションを有効化すると、証明書の更新処理を自動化できる。
 
-> - https://kubernetes.io/docs/tasks/tls/certificate-rotation/#enabling-client-certificate-rotation
+> - [Configure Certificate Rotation for the Kubelet \| Kubernetes](https://kubernetes.io/docs/tasks/tls/certificate-rotation/#enabling-client-certificate-rotation)
 
 <br>
 
@@ -123,7 +123,7 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 各 Kubernetes リソースの処理範囲を制限するために、Kubernetes リソースをグルーピングする。
 
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/
+> - [Multi-tenancy \| Kubernetes](https://kubernetes.io/docs/concepts/security/multi-tenancy/)
 
 <br>
 
@@ -136,16 +136,16 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 例えば、Cluster 内にリクエストを送信する開発者が、プロダクトの開発チーム (フロントエンドチーム、バックエンドチーム、インフラチーム) の場合である。
 
 > - https://www.amazon.co.jp/dp/B072TS9ZQZ
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
-> - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#soft-multi-tenancy
+> - [Multi-tenancy \| Kubernetes](https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation)
+> - [Multi-tenancy - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#soft-multi-tenancy)
 
 #### ▼ ハードマルチテナンシー
 
 信頼できない開発者も Cluster にリクエストを送信する場合 (例：複数の協力会社がいる、Kubernetes をサービスとして公開している) に、悪意ある操作を防ぐ目的でマルチテナント化する。
 
 > - https://www.amazon.co.jp/dp/B072TS9ZQZ
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation
-> - https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#hard-multi-tenancy
+> - [Multi-tenancy \| Kubernetes](https://kubernetes.io/docs/concepts/security/multi-tenancy/#isolation)
+> - [Multi-tenancy - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/security/docs/multitenancy/#hard-multi-tenancy)
 
 <br>
 
@@ -153,10 +153,10 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 後述する。
 
-> - https://kubernetes.io/blog/2021/04/15/three-tenancy-models-for-kubernetes/
-> - https://www.cognixia.com/blog/what-are-the-three-tenancy-models-for-kubernetes/
+> - [Three Tenancy Models For Kubernetes \| Kubernetes](https://kubernetes.io/blog/2021/04/15/three-tenancy-models-for-kubernetes/)
+> - [What are the three tenancy models for Kubernetes?](https://www.cognixia.com/blog/what-are-the-three-tenancy-models-for-kubernetes/)
 > - https://medium.com/eureka-engineering/pairs-eureka-%E3%81%AEeks-production%E7%92%B0%E5%A2%83%E3%81%AE%E8%A8%AD%E8%A8%88%E3%81%A8%E9%81%8B%E7%94%A8%E3%81%AE%E3%81%8A%E8%A9%B1-74608ff640df
-> - https://tag-app-delivery.cncf.io/blog/clusters-for-all-cloud-tenants/
+> - [Clusters for all cloud tenants \| CNCF TAG App Delivery](https://tag-app-delivery.cncf.io/blog/clusters-for-all-cloud-tenants/)
 
 <br>
 
@@ -184,7 +184,7 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 - Gardener
 
 > - https://ranchermanager.docs.rancher.com/v2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps
-> - https://github.com/gardener/gardener
+> - [GitHub - gardener/gardener: Homogeneous Kubernetes clusters at scale on any infrastructure using hosted control planes. · GitHub](https://github.com/gardener/gardener)
 
 <br>
 
@@ -206,9 +206,9 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 仮想 Cluster 間でコントロールプレーンは分離されている。
 
-> - https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
-> - https://www.linkedin.com/pulse/kubernetes-virtual-clusters-enabling-hard-cost-gokul-chandra/
-> - https://loft.sh/blog/kubernetes-multi-tenancy-why-virtual-clusters-are-the-best-solution/
+> - [Multi-tenancy in Kubernetes: implementation and optimization \| CNCF](https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/)
+> - [Kubernetes Virtual Clusters - Enabling Hard Multi-Tenancy and Cost Optimization](https://www.linkedin.com/pulse/kubernetes-virtual-clusters-enabling-hard-cost-gokul-chandra/)
+> - [Kubernetes Multi-Tenancy: Why Virtual Clusters Are The Best Solution \| vCluster](https://loft.sh/blog/kubernetes-multi-tenancy-why-virtual-clusters-are-the-best-solution/)
 
 #### ▼ 仮想 Cluster プロビジョニングツール
 
@@ -219,10 +219,10 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 - vcluster
 - virtual cluster
 
-> - https://github.com/kubernetes-retired/multi-tenancy/tree/master/incubator/virtualcluster
+> - [multi-tenancy/incubator/virtualcluster at master · kubernetes-retired/multi-tenancy · GitHub](https://github.com/kubernetes-retired/multi-tenancy/tree/master/incubator/virtualcluster)
 > - https://www.vcluster.com/docs/what-are-virtual-clusters#why-use-virtual-kubernetes-clusters
-> - https://github.com/kcp-dev/kcp
-> - https://github.com/virtual-kubelet/tensile-kube
+> - [GitHub - kcp-dev/kcp: Kubernetes-like control planes for form-factors and use-cases beyond Kubernetes and container workloads. · GitHub](https://github.com/kcp-dev/kcp)
+> - [GitHub - virtual-kubelet/tensile-kube: A Kubernetes Provider · GitHub](https://github.com/virtual-kubelet/tensile-kube)
 
 <br>
 
@@ -248,7 +248,7 @@ $ openssl x509 -noout -dates -in <証明書へのパス>
 
 Namespace に親子関係を定義し、各 Namespace をテナントとする。
 
-> - https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/
+> - [Multi-tenancy in Kubernetes: implementation and optimization \| CNCF](https://www.cncf.io/blog/2022/11/09/multi-tenancy-in-kubernetes-implementation-and-optimization/)
 
 <br>
 
@@ -266,8 +266,8 @@ Namespace に親子関係を定義し、各 Namespace をテナントとする�
 
 そのため、Cluster 自体を分割したほうがよい。
 
-> - https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html
-> - https://aptakube.com/blog/namespaces-best-practices
+> - [10.1 Organizing objects into Namespaces · Kubernetes实战（第二版）](https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html)
+> - [Best Practices for Kubernetes Namespaces](https://aptakube.com/blog/namespaces-best-practices)
 > - https://www.appvia.io/blog/best-practices-for-kubernetes-namespaces/
 > - https://cloud.redhat.com/blog/kubernetes-namespaces-demystified-how-to-make-the-most-of-them
 
@@ -280,9 +280,9 @@ Namespace に親子関係を定義し、各 Namespace をテナントとする�
 ![namespace_teams](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespace_teams.png)
 
 > - https://www.amazon.co.jp/dp/1617293725
-> - https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-organizing-with-namespaces?hl=en
-> - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
-> - https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html
+> - [Kubernetes best practices: Specifying Namespaces in YAML \| Google Cloud Blog](https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-organizing-with-namespaces?hl=en)
+> - [Kubernetes、namespaceの分け方に迷った場合に考えること](https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/)
+> - [10.1 Organizing objects into Namespaces · Kubernetes实战（第二版）](https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html)
 
 #### ▼ 機密性の高さ別
 
@@ -290,8 +290,8 @@ Namespace に親子関係を定義し、各 Namespace をテナントとする�
 
 Namespace に NetworkPolicy を設定し、Namespace 間で Kubernetes リソースの通信を制限できる。
 
-> - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
-> - https://techstep.hatenablog.com/entry/2020/09/06/160435
+> - [Kubernetes、namespaceの分け方に迷った場合に考えること](https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/)
+> - [Kubernetesのマルチテナントの現状を整理する - TECHSTEP](https://techstep.hatenablog.com/entry/2020/09/06/160435)
 
 #### ▼ ハードウェアリソースの要求量別
 
@@ -299,7 +299,7 @@ Namespace に NetworkPolicy を設定し、Namespace 間で Kubernetes リソー
 
 Namespace に ResourceQuota や LimitRange を設定し、一方の Namespace でハードウェアリソースの要求量が増えても、他方の Namespace には影響しないようにできる。
 
-> - https://techstep.hatenablog.com/entry/2020/09/06/160435
+> - [Kubernetesのマルチテナントの現状を整理する - TECHSTEP](https://techstep.hatenablog.com/entry/2020/09/06/160435)
 
 #### ▼ プロダクト別
 
@@ -313,7 +313,7 @@ Namespace に ResourceQuota や LimitRange を設定し、一方の Namespace �
 
 Namespace を分割するとシステムを理解しやすくなるため、それだけで分ける意義がある。
 
-> - https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/
+> - [Kubernetes、namespaceの分け方に迷った場合に考えること](https://blog.mosuke.tech/entry/2020/04/09/kubernetes-namespace/)
 
 <br>
 
@@ -323,7 +323,7 @@ Namespace を分割するとシステムを理解しやすくなるため、そ�
 
 単一の Kubernetes Cluster を Node グループで分割する。
 
-> - https://kubernetes.io/docs/concepts/security/multi-tenancy/#node-isolation
+> - [Multi-tenancy \| Kubernetes](https://kubernetes.io/docs/concepts/security/multi-tenancy/#node-isolation)
 
 #### ▼ ハードウェアリソースの要求量別
 
@@ -345,9 +345,9 @@ Namespace を分割するとシステムを理解しやすくなるため、そ�
 - kubezoo
 
 > - https://github.com/clastix/capsule
-> - https://github.com/loft-sh/kiosk
-> - https://github.com/kubewharf/kubezoo
-> - https://github.com/cloud-ark/kubeplus
+> - [GitHub - loft-sh/kiosk: kiosk 🏢 Multi-Tenancy Extension For Kubernetes - Secure Cluster Sharing & Self-Service Namespace Provisioning · GitHub](https://github.com/loft-sh/kiosk)
+> - [GitHub - kubewharf/kubezoo: a lightweight kubernetes multi-tenancy gateway · GitHub](https://github.com/kubewharf/kubezoo)
+> - [GitHub - cloud-ark/kubeplus: Kubernetes Operator for delivering SaaS-style, namespace-isolated multi-tenant application instances on Kubernetes · GitHub](https://github.com/cloud-ark/kubeplus)
 
 <br>
 
@@ -412,8 +412,8 @@ Space は Namespace と紐づいている。
 
 Account は、Space を介して、複数の Namespace を管理する。
 
-> - https://github.com/loft-sh/kiosk#workflow--interactions
-> - https://github.com/loft-sh/kiosk#3-working-with-spaces
+> - [GitHub - loft-sh/kiosk: kiosk 🏢 Multi-Tenancy Extension For Kubernetes - Secure Cluster Sharing & Self-Service Namespace Provisioning · GitHub](https://github.com/loft-sh/kiosk#workflow--interactions)
+> - [GitHub - loft-sh/kiosk: kiosk 🏢 Multi-Tenancy Extension For Kubernetes - Secure Cluster Sharing & Self-Service Namespace Provisioning · GitHub](https://github.com/loft-sh/kiosk#3-working-with-spaces)
 
 #### ▼ テナントの実装
 
@@ -483,7 +483,7 @@ resources:
 実装方法がなかなか複雑で、移行の実装方法は記入中...
 
 > - https://aws.amazon.com/jp/blogs/news/set-up-soft-multi-tenancy-with-kiosk-on-amazon-elastic-kubernetes-service/
-> - https://github.com/loft-sh/kiosk#51-manifest-templates
+> - [GitHub - loft-sh/kiosk: kiosk 🏢 Multi-Tenancy Extension For Kubernetes - Secure Cluster Sharing & Self-Service Namespace Provisioning · GitHub](https://github.com/loft-sh/kiosk#51-manifest-templates)
 
 <br>
 
@@ -497,6 +497,6 @@ Space は Namespace と紐づいている。
 
 Account は、Space を介して、複数の Namespace を管理する。
 
-> - https://github.com/kubewharf/kubezoo/blob/main/docs/design.md
+> - [kubezoo/docs/design.md at main · kubewharf/kubezoo · GitHub](https://github.com/kubewharf/kubezoo/blob/main/docs/design.md)
 
 <br>

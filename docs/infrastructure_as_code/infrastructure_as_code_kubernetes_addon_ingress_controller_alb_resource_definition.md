@@ -9,7 +9,7 @@ description: リソース定義＠AWS Load Balancer Controllerの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,9 +23,9 @@ Ingress で `alb` の IngressClass を指定する必要がある。
 
 AWS Load Balancer Controller は、Ingress の `.metadata.annotations` キーと `.spec.rules` キーの設定に応じて、AWS ALB を自動的にプロビジョニングする。
 
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/
-> - https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f
+> - [Ingress - AWS Load Balancer Controller \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/)
+> - [Annotations - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/guide/ingress/annotations/)
+> - [AWS Load Balancer Controllerお試し #kubernetes - Qiita](https://qiita.com/murata-tomohide/items/ea4d9acefda92e05e20f)
 
 <br>
 
@@ -46,8 +46,8 @@ metadata:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-1:<AWSアカウントID>:certificate/*****
 ```
 
-> - https://nobelabo.hatenablog.com/entry/2022/10/01/201138
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/cert_discovery/
+> - [Amazon EKS にて Ingress で SSL を有効化してみる - のべラボ.blog](https://nobelabo.hatenablog.com/entry/2022/10/01/201138)
+> - [Certificate Discovery - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/cert_discovery/)
 
 #### ▼ オートディスカバリー
 
@@ -57,7 +57,7 @@ aws-load-balancer-controller は、Ingress の `.spec.tls` キーや `.spec.rule
 
 例えば Ingress で `.spec.rules[*].hosts` キーに `foo.example.com` を設定していた場合、aws-load-balancer-controller は `*.example.com` で認証されたサーバー証明書を AWS Certificate Manager から探す。
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/cert_discovery/#discover-via-ingress-rule-host
+> - [Certificate Discovery - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/cert_discovery/#discover-via-ingress-rule-host)
 
 <br>
 
@@ -90,7 +90,7 @@ metadata:
 ```
 
 > - https://lab.mo-t.com/blog/k8s-update-load-balancer
-> - https://dev.classmethod.jp/articles/ingress-healthcheck-ip-or-instance/#toc-3
+> - [EKSのIngressにてターゲットタイプがipとinstanceの場合におけるALBのヘルスチェック挙動を調べてみた \| DevelopersIO](https://dev.classmethod.jp/articles/ingress-healthcheck-ip-or-instance/#toc-3)
 
 <br>
 
@@ -109,8 +109,8 @@ metadata:
     alb.ingress.kubernetes.io/healthcheck-port: 80
 ```
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/annotations/#health-check
-> - https://dev.classmethod.jp/articles/ingress-healthcheck-ip-or-instance/#toc-3
+> - [Annotations - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.11/guide/ingress/annotations/#health-check)
+> - [EKSのIngressにてターゲットタイプがipとinstanceの場合におけるALBのヘルスチェック挙動を調べてみた \| DevelopersIO](https://dev.classmethod.jp/articles/ingress-healthcheck-ip-or-instance/#toc-3)
 
 <br>
 
@@ -176,7 +176,7 @@ metadata:
     alb.ingress.kubernetes.io/group.name: foo-common-alb
 ```
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#ingressgroup
+> - [Annotations - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#ingressgroup)
 
 <br>
 
@@ -247,8 +247,8 @@ metadata:
     alb.ingress.kubernetes.io/target-type: instance
 ```
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing
-> - https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
+> - [Annotations - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing)
+> - [Route application and HTTP traffic with Application Load Balancers - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html)
 
 #### ▼ `ip` の場合
 
@@ -268,9 +268,9 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
 ```
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing
-> - https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
-> - https://dev.classmethod.jp/articles/lbc-service-no-target-group/
+> - [Annotations - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/guide/ingress/annotations/#traffic-routing)
+> - [Route application and HTTP traffic with Application Load Balancers - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html)
+> - [【EKS小ネタ】AWS Load Balancer Controller(LBC)で構築したIngress(ALB)の接続先として正しくServiceが設定されていないとターゲットグループの設定がされない【Backend service does not exist】 \| DevelopersIO](https://dev.classmethod.jp/articles/lbc-service-no-target-group/)
 
 <br>
 
@@ -287,7 +287,7 @@ metadata:
     alb.ingress.kubernetes.io/waf-acl-id: *****
 ```
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn
+> - [Annotations - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn)
 
 <br>
 
@@ -304,7 +304,7 @@ metadata:
     alb.ingress.kubernetes.io/wafv2-acl-arn: arn:aws:wafv2:ap-northeast-1:<AWSアカウントID>:regional/webacl/<WAFのACL名>/<ID>
 ```
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn
+> - [Annotations - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/ingress/annotations/#wafv2-acl-arn)
 
 <br>
 
@@ -312,6 +312,6 @@ metadata:
 
 AWS ALB のリスナールールを定義するために、Ingress の `.spec.rules` キーを設定する。
 
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+> - [Ingress - AWS Load Balancer Controller \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/)
 
 <br>

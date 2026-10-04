@@ -102,7 +102,7 @@ document.cookie = "user=Tarou";
 console.log(document.cookie);
 ```
 
-> - https://tcd-theme.com/2021/11/javascript-cookie.html
+> - [【JavaScriptの応用】Cookieの操作 \| ワードプレステーマTCD](https://tcd-theme.com/2021/11/javascript-cookie.html)
 
 #### ▼ 取得
 
@@ -115,7 +115,7 @@ const cookie = document.cookie;
 console.log(cookie);
 ```
 
-> - https://tcd-theme.com/2021/11/javascript-cookie.html
+> - [【JavaScriptの応用】Cookieの操作 \| ワードプレステーマTCD](https://tcd-theme.com/2021/11/javascript-cookie.html)
 
 #### ▼ 削除
 
@@ -131,6 +131,6 @@ document.cookie = "user=Tarou; expires=Mon, 1 Nov 2021 20:00:00 GMT";
 document.cookie = "user=Tarou; max-age=0";
 ```
 
-> - https://tcd-theme.com/2021/11/javascript-cookie.html
+> - [【JavaScriptの応用】Cookieの操作 \| ワードプレステーマTCD](https://tcd-theme.com/2021/11/javascript-cookie.html)
 
 <br>

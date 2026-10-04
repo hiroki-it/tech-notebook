@@ -9,7 +9,7 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -32,8 +32,8 @@ description: ストレージ領域＠マイクロサービスアーキテクチ�
 
 この場合、単一の DB 上で、DB スキーマやテーブルをマイクロサービスごとに作成する必要がある。
 
-> - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
-> - https://microservices.io/patterns/data/shared-database.html
+> - [🐾 Does your microservice deserve its own database? - DEV Community](https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2)
+> - [Pattern: Shared database](https://microservices.io/patterns/data/shared-database.html)
 
 #### ▼ マイクロサービス別の DB スキーマ
 
@@ -41,7 +41,7 @@ Shared DB の場合に、マイクロサービス別に DB スキーマを作成
 
 ![microservices_share-db_diff-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-table.png)
 
-> - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
+> - [🐾 Does your microservice deserve its own database? - DEV Community](https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2)
 
 #### ▼ マイクロサービス別のテーブル
 
@@ -49,7 +49,7 @@ Shared DB の場合に、マイクロサービス別にテーブルを作成す�
 
 ![microservices_share-db_diff-scheme](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-scheme.png)
 
-> - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
+> - [🐾 Does your microservice deserve its own database? - DEV Community](https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2)
 
 <br>
 
@@ -63,8 +63,8 @@ Shared DB の場合に、マイクロサービス別にテーブルを作成す�
 
 ![microservices_diff-db](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_diff-db.png)
 
-> - https://microservices.io/patterns/data/database-per-service.html
-> - https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2
+> - [Pattern: Database per service](https://microservices.io/patterns/data/database-per-service.html)
+> - [🐾 Does your microservice deserve its own database? - DEV Community](https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2)
 
 #### ▼ 境界づけられたコンテキスト分割とも相性がいい
 
@@ -120,7 +120,7 @@ DDL はマイクロサービスから切り離し、DDL 専用のツール（例
 
 一方で、管理が大変になる
 
-> - https://github.com/golang-migrate/migrate
+> - [GitHub - golang-migrate/migrate: Database migrations. CLI and Golang library. · GitHub](https://github.com/golang-migrate/migrate)
 
 <br>
 
@@ -130,7 +130,7 @@ DDL はマイクロサービスから切り離し、DDL 専用のツール（例
 
 キーバリューDB、ドキュメント DB、RDB、グラフ DB を異なるデータベースで管理する。
 
-> - https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence
+> - [ポリグロット・パーシステンスとマルチモデルデータベース](https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence)
 
 <br>
 
@@ -138,7 +138,7 @@ DDL はマイクロサービスから切り離し、DDL 専用のツール（例
 
 キーバリューDB、ドキュメント DB、RDB、グラフ DB を同じデータベースで管理する。
 
-> - https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence
+> - [ポリグロット・パーシステンスとマルチモデルデータベース](https://jp.drinet.co.jp/blog/datamanagement/polyglotpersistence)
 
 <br>
 

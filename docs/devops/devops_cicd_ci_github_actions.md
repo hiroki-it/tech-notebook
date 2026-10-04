@@ -9,7 +9,7 @@ description: GitHub Actions＠CIツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -29,13 +29,13 @@ GitHub Actions Runner は、GitHub リポジトリの設定ファイルを HTTPS
 
 GitHub Actions の設定ファイルで定義したパイプラインを実行する。
 
-> - https://github.com/actions/runner
+> - [GitHub - actions/runner: The Runner for GitHub Actions :rocket: · GitHub](https://github.com/actions/runner)
 
 #### ▼ Self hosted Runner
 
 GitHub Actions のパイプラインをサーバー (例：オンプレサーバー、Amazon EC2 など) 上で実行する。
 
-> - https://fintan.jp/page/4177/
+> - [ECSでGitHub Actionsのセルフホストrunnerを動かす \| Fintan](https://fintan.jp/page/4177/)
 
 <br>
 
@@ -51,7 +51,7 @@ GitHub とは別の実行環境 (例：AWS Lambda) で稼働し、GitHub の API
 
 ![github_apps](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/github_apps.png)
 
-> - https://zenn.dev/takamin55/articles/569875e8346948
+> - [GitHub Appとは？ 作りながら仕組みを理解する](https://zenn.dev/takamin55/articles/569875e8346948)
 
 <br>
 
@@ -157,7 +157,7 @@ jobs:
           echo success
 ```
 
-> - https://nju33.com/notes/github-actions/articles/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%88%B6%E5%BE%A1
+> - [ステータスによるステップの制御 - GitHub Actions \| nju33](https://nju33.com/notes/github-actions/articles/%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%81%AB%E3%82%88%E3%82%8B%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E3%81%AE%E5%88%B6%E5%BE%A1)
 
 #### ▼ if
 
@@ -211,7 +211,7 @@ jobs:
         uses: actions/checkout@v2
 ```
 
-> - https://github.com/marketplace?category=&query=&type=actions&verification=
+> - [Marketplace · GitHub](https://github.com/marketplace?category=&query=&type=actions&verification=)
 
 #### ▼ with
 
@@ -304,7 +304,7 @@ jobs:
 ```
 
 > - https://docs.github.com/ja/actions/using-workflows/reusing-workflows#creating-a-reusable-workflow
-> - https://zenn.dev/dzeyelid/articles/fc4bd999fbccd8#github-actions-%E3%81%A7%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%81%8B%E3%82%89%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%9B%E3%82%8B%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%82%92%E4%BD%9C%E6%88%90%E3%81%A7%E3%81%8D%E3%82%8B
+> - [Check! GitHub Actions 再利用可能なワークフローのポイントを抑える](https://zenn.dev/dzeyelid/articles/fc4bd999fbccd8#github-actions-%E3%81%A7%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%81%8B%E3%82%89%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%9B%E3%82%8B%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%95%E3%83%AD%E3%83%BC%E3%82%92%E4%BD%9C%E6%88%90%E3%81%A7%E3%81%8D%E3%82%8B)
 
 <br>
 
@@ -570,13 +570,13 @@ runs:
         FOO=${{ inputs.bar }}
 ```
 
-> - https://zenn.dev/kinjosan/articles/bd82e07aa69080
+> - [Github Workflow で compositeを使って再利用性を高める - slack編](https://zenn.dev/kinjosan/articles/bd82e07aa69080)
 
 この機能は以前は非対応であったため、`add-mask` コマンドを使用した方法がネット上で見つかることに注意する。
 
-> - https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1
-> - https://github.com/actions/runner/issues/643#issuecomment-708228940
-> - https://github.com/actions/runner/issues/475#issuecomment-1092734499
+> - [GitHub Actionsで実装した湯婆婆にマスクをつける #GitHubActions - Qiita](https://qiita.com/nogic1008/items/6934b1b6d6e0cf7912d1)
+> - [add-mask doesn't work with workflow\_dispatch inputs · Issue #643 · actions/runner · GitHub](https://github.com/actions/runner/issues/643#issuecomment-708228940)
+> - [usage of add-mask still echoes the value to the log · Issue #475 · actions/runner · GitHub](https://github.com/actions/runner/issues/475#issuecomment-1092734499)
 
 #### ▼ 注意点
 
@@ -658,7 +658,7 @@ jobs:
           source ./bar.sh
 ```
 
-> - https://btj0.com/blog/github/use-env/
+> - [git pushできない環境変数をGitHub Actionsで利用する方法](https://btj0.com/blog/github/use-env/)
 > - https://stackoverflow.com/questions/67972124/github-return-empty-string-as-secrets-while-running-actions
 > - https://stackoverflow.com/a/61428342
 
@@ -907,6 +907,6 @@ jobs:
 ```
 
 > - https://docs.github.com/en/actions/using-jobs/defining-outputs-for-jobs
-> - https://swfz.hatenablog.com/entry/2020/04/18/160235
+> - [GitHub ActionsでJobのOutputの値を後続Jobで参照する - notebook](https://swfz.hatenablog.com/entry/2020/04/18/160235)
 
 <br>

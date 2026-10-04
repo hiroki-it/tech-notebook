@@ -9,7 +9,7 @@ description: PrometheusOperator＠Prometheusの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: PrometheusOperator＠Prometheusの知見を記録しています。
 
 PrometheusOperator は、Prometheus、Alertmanager、Expoter (Node Exporter、kube-state-metrics) 、Grafana、といったコンポーネントから構成されている。
 
-> - https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/
+> - [続くといいな日記 – Prometheus Operator で k8s を監視する](https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/)
 
 <br>
 
@@ -61,6 +61,6 @@ $ kubectl apply --server-side -f "https://raw.githubusercontent.com/prometheus-c
 
 現状、PrometheusOperator という名前のカスタムリソースはない。
 
-> - https://github.com/prometheus-operator/kube-prometheus/tree/main/manifests
+> - [kube-prometheus/manifests at main · prometheus-operator/kube-prometheus · GitHub](https://github.com/prometheus-operator/kube-prometheus/tree/main/manifests)
 
 <br>

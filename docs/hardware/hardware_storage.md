@@ -39,8 +39,8 @@ Google Drive のストリーミング機能では、仮想ドライブをロー�
 
 仮想ドライブ上のファイルを変更すると、Google Drive にその状態が同期される。
 
-> - https://jisaku-pc.net/hddnavi/disk_drive.html
-> - https://pctrouble.net/storage/disk_drive.html
+> - [ドライブとディスクの違いって？同じじゃないの？ \| パソコントラブル 原因＆解決](https://jisaku-pc.net/hddnavi/disk_drive.html)
+> - [「ディスク」と「ドライブ」の違い - PCと解](https://pctrouble.net/storage/disk_drive.html)
 
 <br>
 

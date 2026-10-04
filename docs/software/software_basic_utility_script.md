@@ -9,7 +9,7 @@ description: スクリプト＠ユーティリティの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -60,8 +60,8 @@ echo foo
 echo bar
 ```
 
-> - https://qiita.com/kite_999/items/e77fb521fc39454244e7#%E3%83%92%E3%82%A2%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%81%A8%E3%81%AF
-> - https://webkaru.net/php/here-document/
+> - [知ると便利なヒアドキュメント #Linux - Qiita](https://qiita.com/kite_999/items/e77fb521fc39454244e7#%E3%83%92%E3%82%A2%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E3%81%A8%E3%81%AF)
+> - [PHPの基本構文「ヒアドキュメント」 - PHP入門 - Webkaru](https://webkaru.net/php/here-document/)
 
 #### ▼ ヒアドキュメント内の記号エスケープ
 
@@ -86,7 +86,7 @@ echo foo
 echo bar
 ```
 
-> - https://qiita.com/mofmofneko/items/bf003d14670644dd6197
+> - [ヒアドキュメントの変数エスケープ #shell - Qiita](https://qiita.com/mofmofneko/items/bf003d14670644dd6197)
 
 バックスラッシュを使用して、個別にエスケープできる。
 
@@ -107,7 +107,7 @@ echo foo
 echo ${BAR} # エスケープしたため、変数は展開しない
 ```
 
-> - https://qiita.com/watertight/items/96596f8da4f8c71632b0
+> - [ヒアドキュメントのパラメータ展開を個別に制御する（及びそれに関してハマったところ） #Bash - Qiita](https://qiita.com/watertight/items/96596f8da4f8c71632b0)
 
 #### ▼ ヒアドキュメント内への変数展開
 
@@ -264,7 +264,7 @@ fi
 
 また、シェルスクリプト内で定義したシェル変数は、シェルスクリプトの実行後も維持される。
 
-> - https://qiita.com/kure/items/f76d8242b97280a247a1
+> - [シェル変数と環境変数の違いをコマンドラインで確認する #Linux - Qiita](https://qiita.com/kure/items/f76d8242b97280a247a1)
 
 ```bash
 $ source hello.sh
@@ -282,7 +282,7 @@ $ source hello.sh
 $ bash hello.sh
 ```
 
-> - https://qiita.com/kure/items/f76d8242b97280a247a1
+> - [シェル変数と環境変数の違いをコマンドラインで確認する #Linux - Qiita](https://qiita.com/kure/items/f76d8242b97280a247a1)
 
 #### ▼ `.` (ドット)
 
@@ -304,7 +304,7 @@ $ . hello.sh
 $ ./hello.sh
 ```
 
-> - https://qiita.com/kure/items/f76d8242b97280a247a1
+> - [シェル変数と環境変数の違いをコマンドラインで確認する #Linux - Qiita](https://qiita.com/kure/items/f76d8242b97280a247a1)
 
 <br>
 
@@ -409,7 +409,7 @@ baz qux:
 	echo "baz"
 ```
 
-> - https://advancedinsight.jp/using_phony_target_for_makefile/
+> - [Site is undergoing maintenance](https://advancedinsight.jp/using_phony_target_for_makefile/)
 
 <br>
 
@@ -426,7 +426,7 @@ echo:
 	echo "${FOO}" # 何も出力されない
 ```
 
-> - https://make-muda.net/2014/10/1824/
+> - [Makefileのお勉強 \| MUDAなことをしよう。](https://make-muda.net/2014/10/1824/)
 
 #### ▼ 遅延評価代入
 
@@ -439,7 +439,7 @@ echo:
 	echo "${FOO}" # fooを出力できる
 ```
 
-> - https://make-muda.net/2014/10/1824/
+> - [Makefileのお勉強 \| MUDAなことをしよう。](https://make-muda.net/2014/10/1824/)
 
 ターゲット内では、標準出力への出力をシェル変数に代入できない。
 
@@ -454,7 +454,7 @@ echo:
 	echo "${FOO}"
 ```
 
-> - https://qiita.com/vega77/items/5206c397258b5b372fc4
+> - [Makefileで外部プログラムの実行結果を変数に取り込む #sh - Qiita](https://qiita.com/vega77/items/5206c397258b5b372fc4)
 
 <br>
 
@@ -491,7 +491,7 @@ foo:
 
 このときに慣例として、ターゲット名は `make` (ターゲット無し) と `install` になっていることが多い。
 
-> - https://qiita.com/chihiro/items/f270744d7e09c58a50a5
+> - [configure, make, make install とは何か #Linux - Qiita](https://qiita.com/chihiro/items/f270744d7e09c58a50a5)
 
 `(1)`
 

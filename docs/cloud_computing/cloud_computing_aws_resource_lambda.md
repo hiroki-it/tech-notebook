@@ -9,7 +9,7 @@ description: AWS Lambda＠AWSリソース
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -244,7 +244,7 @@ AWS Lambda を実行するためには、デプロイされた関数を使用す
 - AWS DynamoDB
 - Amazon RDS プロキシと Amazon RDS
 
-> - https://zenn.dev/medicalforce/articles/e26b9cbe16305f#%E8%83%8C%E6%99%AF
+> - [Lambda×RDSで構成するサーバレスアーキテクチャのIaCツール選定](https://zenn.dev/medicalforce/articles/e26b9cbe16305f#%E8%83%8C%E6%99%AF)
 
 <br>
 
@@ -305,7 +305,7 @@ Amazon CloudFront のビューワーリクエスト、オリジンリクエス�
 
 各トリガーの event オブジェクトへのマッピングは、リンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html
+> - [Lambda@Edge event structure - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/lambda-event-structure.html)
 
 <br>
 
@@ -353,7 +353,7 @@ AWS Lambda の拡張機能である。
 
 ![lambda-web-adapter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-web-adapter.png)
 
-> - https://aws.amazon.com/jp/builders-flash/202301/lambda-web-adapter/
+> - [Lambda Web Adapter でウェブアプリを (ほぼ) そのままサーバーレス化する (2025 年改訂版) - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202301/lambda-web-adapter/)
 > - https://github.com/awslabs/aws-lambda-web-adapter
 
 <br>

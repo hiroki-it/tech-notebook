@@ -9,7 +9,7 @@ description: IstioOperator＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -64,7 +64,7 @@ $ kubectl apply -f istio-operator.yaml
 istiooperator.install.istio.io/istio-operator created
 ```
 
-> - https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+> - [Istio / Install with Istioctl](https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile)
 > - https://istio.io/latest/docs/setup/install/operator/#install-istio-with-the-operator
 
 #### ▼ チャートとして
@@ -106,8 +106,8 @@ metadata:
 
 IstioOperator 管理で Istio リソースを作成する。
 
-> - https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en
-> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec
+> - [Deploying custom Istio gateways in an IstioOperator \| IBM Cloud Docs](https://cloud.ibm.com/docs/containers?topic=containers-istio-custom-gateway&locale=en)
+> - [Istio / IstioOperator Options](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioComponentSetSpec)
 
 #### ▼ `<component名>`.k8s
 
@@ -164,7 +164,7 @@ spec:
 ```
 
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
-> - https://github.com/istio/istio/issues/22491#issuecomment-604745090
+> - [istioctl manifest with empty profile does not create EnvoyFilter CRD for pilot · Issue #22491 · istio/istio · GitHub](https://github.com/istio/istio/issues/22491#issuecomment-604745090)
 
 #### ▼ cni
 
@@ -269,7 +269,7 @@ spec:
                 targetPort: 80
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022
+> - [Istioのインストール、サイドカープロキシ（Envoy）の挿入、マイクロサービスの可視化：Cloud Nativeチートシート（10） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html#022)
 
 最終的な設定値は、`kubectl get` コマンドで確認できる。
 
@@ -335,7 +335,7 @@ status:
 補足として、以下の方法でユーザー定義の Istio Ingress Gateway を作成できる (かなり大変) 。
 
 > - https://faun.pub/setup-multiple-ingress-gateways-in-istio-52ad0dc7f99d
-> - https://github.com/istio/istio/issues/23303
+> - [User defined IngressGateway not configured correctly with istioctl · Issue #23303 · istio/istio · GitHub](https://github.com/istio/istio/issues/23303)
 
 #### ▼ istiodRemote
 
@@ -387,7 +387,7 @@ spec:
   defaultRevision: "true"
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+> - [Istio / IstioOperator Options](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec)
 
 <br>
 
@@ -425,7 +425,7 @@ spec:
   namespace: foo
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+> - [Istio / IstioOperator Options](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec)
 
 <br>
 
@@ -447,7 +447,7 @@ spec:
   profile: default
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
+> - [Istio / IstioOperator Options](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec)
 
 <br>
 
@@ -469,8 +469,8 @@ spec:
   revision: 1-10-0 # ハイフン繋ぎのバージョン表記
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec
-> - https://istio.io/latest/docs/setup/upgrade/canary/
+> - [Istio / IstioOperator Options](https://istio.io/latest/docs/reference/config/istio.operator.v1alpha1/#IstioOperatorSpec)
+> - [Istio / Canary Upgrades](https://istio.io/latest/docs/setup/upgrade/canary/)
 
 <br>
 
@@ -490,8 +490,8 @@ spec:
   tag: 1.12.1
 ```
 
-> - https://hub.docker.com/r/istio/proxyv2/tags
-> - https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2
+> - [istio/proxyv2 - Docker Image](https://hub.docker.com/r/istio/proxyv2/tags)
+> - [istio/pilot/docker/Dockerfile.proxyv2 at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2)
 
 <br>
 
@@ -501,7 +501,7 @@ spec:
 
 `manifests/charts/global.yaml` ファイルの設定値を上書きする。
 
-> - https://github.com/istio/istio/blob/1.14.3/manifests/profiles/default.yaml#L43
+> - [istio/manifests/profiles/default.yaml at 1.14.3 · istio/istio · GitHub](https://github.com/istio/istio/blob/1.14.3/manifests/profiles/default.yaml#L43)
 
 #### ▼ base
 
@@ -651,6 +651,6 @@ spec:
               ...
 ```
 
-> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental
+> - [Istio / Installing the Sidecar](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#custom-templates-experimental)
 
 <br>

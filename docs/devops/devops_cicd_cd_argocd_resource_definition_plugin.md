@@ -9,7 +9,7 @@ description: プラグイン＠リソース定義の知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -57,8 +57,8 @@ lrwxrwxrwx 1 root root        21 Mar 23 15:11 argocd-server -> /usr/local/bin/ar
 lrwxrwxrwx 1 root root        28 Mar 23 14:44 uid_entrypoint.sh -> /usr/local/bin/entrypoint.sh
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
-> - https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81
+> - [Custom Tooling - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling)
+> - [ArgoCDでHelmfileを使う - kobtea.net](https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/#%E6%A6%82%E8%A6%81)
 > - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
 
 各ツールの推奨バージョンは、以下のコマンドで取得できる。
@@ -68,15 +68,15 @@ $ curl -s https://raw.githubusercontent.com/argoproj/argo-cd/<タグ>/hack/tool-
     | grep version=
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L58-L62
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/tool-versions.sh
+> - [argo-cd/Dockerfile at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L58-L62)
+> - [argo-cd/hack/tool-versions.sh at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/tool-versions.sh)
 
 `tool-version.sh` ファイルで定義した変数は、`install.sh` ファイルで出力されている。
 
 Dockerfile 上で `install.sh` ファイルを実行し、ツールをインストールしている。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L31-L32
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/install.sh#L26
+> - [argo-cd/Dockerfile at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/Dockerfile#L31-L32)
+> - [argo-cd/hack/install.sh at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/hack/install.sh#L26)
 
 <br>
 
@@ -340,13 +340,13 @@ Flags:
       --otlp-address string      OpenTelemetry collector address to send traces to
 ```
 
-> - https://thedatabaseme.de/2022/12/02/enhanced-with-plugins-make-argocd-more-powerful-with-plugins-running-as-sidecar/
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/install.yaml#L17305-L17567
-> - https://argocd-operator.readthedocs.io/en/latest/usage/config_management_2.0/
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/examples/plugins/helm/argocd-repo-server-deployment-patch.yaml
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins
-> - https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation
+> - [Enhanced with plugins – Make ArgoCD more powerful with plugins running as sidecar – The Database Me](https://thedatabaseme.de/2022/12/02/enhanced-with-plugins-make-argocd-more-powerful-with-plugins-running-as-sidecar/)
+> - [argo-cd/manifests/install.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/install.yaml#L17305-L17567)
+> - [Config Management - Argo CD Operator](https://argocd-operator.readthedocs.io/en/latest/usage/config_management_2.0/)
+> - [argo-cd/examples/plugins/helm/argocd-repo-server-deployment-patch.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/examples/plugins/helm/argocd-repo-server-deployment-patch.yaml)
+> - [Config Management Plugins - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#register-the-plugin-sidecar)
+> - [v2.3 to 2.4 - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/2.3-2.4/#remove-the-shared-volume-from-any-sidecar-plugins)
+> - [Config-Management-Plugin-Enhancement - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/proposals/config-management-plugin-v2/#installation)
 
 ArgoCD の公式の仕様で、サイドカーは単一のプラグインしか実行できない。
 
@@ -354,7 +354,7 @@ ArgoCD の公式の仕様で、サイドカーは単一のプラグインしか�
 
 もし、部分的に重複するプラグイン (例：純粋な helm-secrets、helm-secrets を使用する Helmfile) を ArgoCD が使用する場合、それぞれのサイドカーにバイナリ (例：一方には helm-secrets、もう一方には Helmfile と helm-secrets) を用意する必要がある。
 
-> - https://github.com/argoproj/argo-cd/discussions/12278#discussioncomment-5338514
+> - [use multiple plugins in sidecar installation method · argoproj/argo-cd · Discussion #12278 · GitHub](https://github.com/argoproj/argo-cd/discussions/12278#discussioncomment-5338514)
 
 #### ▼ argocd-cmp-cm でマニフェスト作成時の追加処理を定義
 
@@ -408,8 +408,8 @@ Application の `.spec.source.plugin.env` キーで設定した環境変数が�
 
 なお、ConfigManagementPlugin はカスタムリソースではないため、CRD は不要である。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#convert-the-configmap-entry-into-a-config-file
+> - [Config Management Plugins - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin)
+> - [Config Management Plugins - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#convert-the-configmap-entry-into-a-config-file)
 
 #### ▼ Application でのプラグインを使用
 
@@ -627,9 +627,9 @@ spec:
       emptyDir: {}
 ```
 
-> - https://github.com/travisghansen/argo-cd-helmfile#installation
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#adding-tools-via-volume-mounts
-> - https://lyz-code.github.io/blue-book/devops/helmfile/#installation
+> - [GitHub - travisghansen/argo-cd-helmfile: Integration between argo-cd and helmfile · GitHub](https://github.com/travisghansen/argo-cd-helmfile#installation)
+> - [Custom Tooling - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#adding-tools-via-volume-mounts)
+> - [Helmfile - The Blue Book](https://lyz-code.github.io/blue-book/devops/helmfile/#installation)
 
 #### ▼ helmfile の処理の定義
 
@@ -667,8 +667,8 @@ data:
             helmfile -f $ARGOCD_ENV_HELMFILE -e $ARGOCD_ENV_RELEASE_ENV template
 ```
 
-> - https://github.com/travisghansen/argo-cd-helmfile#installation
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
+> - [GitHub - travisghansen/argo-cd-helmfile: Integration between argo-cd and helmfile · GitHub](https://github.com/travisghansen/argo-cd-helmfile#installation)
+> - [Config Management Plugins - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin)
 
 <br>
 
@@ -695,7 +695,7 @@ spec:
         value: prd
 ```
 
-> - https://github.com/travisghansen/argo-cd-helmfile#intro
+> - [GitHub - travisghansen/argo-cd-helmfile: Integration between argo-cd and helmfile · GitHub](https://github.com/travisghansen/argo-cd-helmfile#intro)
 
 <br>
 
@@ -827,9 +827,9 @@ spec:
       emptyDir: {}
 ```
 
-> - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#using-initcontainers
+> - [ArgoCD Integration · jkroepke/helm-secrets Wiki · GitHub](https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#installation-on-argo-cd)
+> - [Custom Tooling - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling)
+> - [Helm - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#using-initcontainers)
 
 <br>
 
@@ -924,7 +924,7 @@ data:
 ```
 
 > - https://hackernoon.com/how-to-handle-kubernetes-secrets-with-argocd-and-sops-r92d3wt1
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
+> - [Config Management Plugins - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin)
 
 <br>
 
@@ -980,7 +980,7 @@ metadata:
 automountServiceAccountToken: true
 ```
 
-> - https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location
+> - [ArgoCD Integration · jkroepke/helm-secrets Wiki · GitHub](https://github.com/jkroepke/helm-secrets/wiki/ArgoCD-Integration#external-key-location)
 
 #### ▼ helm-secrets の使用
 
@@ -1096,7 +1096,7 @@ data:
   kustomize.path.<バージョン>: /usr/local/bin/kustomize
 ```
 
-> - https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
+> - [GitHub - viaduct-ai/kustomize-sops: KSOPS - A Flexible Kustomize Plugin for SOPS Encrypted Resources · GitHub](https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-)
 
 <br>
 
@@ -1143,7 +1143,7 @@ KSOPS はコンテナイメージがあるため、軽量の InitContainer を�
 
 ArgoCD のビルトインの Kustomize のバージョンの場合、Kustomize をインストールする必要はない。
 
-> - https://github.com/viaduct-ai/kustomize-sops/blob/v4.2.1/Makefile#L29-L30
+> - [kustomize-sops/Makefile at v4.2.1 · viaduct-ai/kustomize-sops · GitHub](https://github.com/viaduct-ai/kustomize-sops/blob/v4.2.1/Makefile#L29-L30)
 
 **＊実装例＊**
 
@@ -1224,8 +1224,8 @@ spec:
       emptyDir: {}
 ```
 
-> - https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
-> - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
+> - [GitHub - viaduct-ai/kustomize-sops: KSOPS - A Flexible Kustomize Plugin for SOPS Encrypted Resources · GitHub](https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-)
+> - [kustomize pluginでmanifestを動的に操作する - blog::wnotes.net](https://blog.wnotes.net/posts/howto-make-kustomize-plugin)
 > - https://blog.devgenius.io/argocd-with-kustomize-and-ksops-2d43472e9d3b
 
 <br>
@@ -1246,7 +1246,7 @@ data:
   kustomize.path.<バージョン>: /usr/local/bin/kustomize
 ```
 
-> - https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-
+> - [GitHub - viaduct-ai/kustomize-sops: KSOPS - A Flexible Kustomize Plugin for SOPS Encrypted Resources · GitHub](https://github.com/viaduct-ai/kustomize-sops#argo-cd-integration-)
 
 ### プラグインの使用
 
@@ -1268,7 +1268,7 @@ spec:
     version: v1.0.0
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions
+> - [Kustomize - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#custom-kustomize-versions)
 
 <br>
 
@@ -1286,8 +1286,8 @@ repo-server は Vault を実行できず、サイドカーが必要である。
 
 Vault を使用できるように、Vault をインストールする。
 
-> - https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling
+> - [Installation - Argo CD Vault Plugin](https://argocd-vault-plugin.readthedocs.io/en/stable/installation/#installing-in-argo-cd)
+> - [Custom Tooling - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/#custom-tooling)
 
 #### ▼ vault の処理の定義
 
@@ -1325,8 +1325,8 @@ data:
             helm template $ARGOCD_ENV_HELM_RELEASE_NAME . --include-crds | argocd-vault-plugin generate -
 ```
 
-> - https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin
+> - [Usage - Argo CD Vault Plugin](https://argocd-vault-plugin.readthedocs.io/en/stable/usage/#with-helm)
+> - [Config Management Plugins - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/config-management-plugins/#sidecar-plugin)
 
 <br>
 
@@ -1354,7 +1354,7 @@ spec:
           value: foo
 ```
 
-> - https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86
+> - [argocd-vault-pluginを触ってみた](https://zenn.dev/nameless_gyoza/articles/argocd-vault-plugin#%E5%85%B7%E4%BD%93%E7%9A%84%E3%81%AA%E6%89%8B%E9%A0%86)
 
 <br>
 
@@ -1412,6 +1412,6 @@ ArgoCD と連携したツールでは、コマンドで以下の環境変数を�
 | `ARGOCD_REPO_SERVER_PARALLELISM_LIMIT` |        |                                                 |
 | `ARGOCD_USER_ID`                       | `999`  | ArgoCD のプロセスの実行ユーザー番号を設定する。 |
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/
+> - [Build Environment - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/build-environment/)
 
 <br>

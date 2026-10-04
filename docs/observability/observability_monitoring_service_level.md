@@ -9,7 +9,7 @@ description: サービスレベル＠監視の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -61,8 +61,8 @@ EC サイトであれば、以下の一連の行動がクリティカルユー�
 
 : 商品を購入する。
 
-> - https://cloud.google.com/blog/products/management-tools/practical-guide-to-setting-slos
-> - https://speakerdeck.com/dogggggo/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19
+> - [Learn how to set SLOs -- SRE tips \| Google Cloud Blog](https://cloud.google.com/blog/products/management-tools/practical-guide-to-setting-slos)
+> - [より意味のある監視を目指して、外形監視の有効活用 - Speaker Deck](https://speakerdeck.com/dogggggo/yoriyi-wei-falsearujian-shi-womu-zhi-site-wai-xing-jian-shi-falseyou-xiao-huo-yong?slide=19)
 
 <br>
 
@@ -72,7 +72,7 @@ EC サイトであれば、以下の一連の行動がクリティカルユー�
 
 クリティカルユーザージャーニーの満足度に影響を与えるメトリクス (リクエストとレスポンスの可用性/遅延/品質、データ処理のカバレッジ/正確性/鮮度/スループット、ストレージのスループット/遅延など) を SLI とするとよい。
 
-> - https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/
+> - [\[レポート\] SRE の基本と組織への導入 〜サービスレベル目標やエラー予算などサービスの信頼性に対する考え方〜 #GoogleCloudDay \| DevelopersIO](https://dev.classmethod.jp/articles/202105-report-gcd21-d3-infra-01/)
 > - https://medium.com/google-cloud-jp/sre-slo-d7c6aee1fb0e
 
 #### ▼ メトリクスの例 (Microsoft)
@@ -84,8 +84,8 @@ MTtx メトリクスを SLI とし、そのダッシュボードを作成する�
 具体的には、可用性は稼働時間を基に定量化できる。
 
 > - https://www.amazon.co.jp/dp/4873119618
-> - https://qiita.com/hz1_d/items/ca24e1d131bf475e23b1
-> - https://www.linkedin.com/pulse/high-availability-vs-fault-tolerance-jon-bonso
+> - [AWSの高可用性と耐障害性をまとめてみる #AWS - Qiita](https://qiita.com/hz1_d/items/ca24e1d131bf475e23b1)
+> - [High Availability vs. Fault Tolerance](https://www.linkedin.com/pulse/high-availability-vs-fault-tolerance-jon-bonso)
 
 #### ▼ RED メトリクス
 
@@ -115,7 +115,7 @@ SLO だけがユーザーの満足度を決めるわけではなく、新機能�
 
 ![slo_user-happiness](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/slo_user-happiness.png)
 
-> - https://cloud.google.com/blog/products/devops-sre/shrinking-the-impact-of-production-incidents-using-sre-principles-cre-life-lessons?hl=en
+> - [Shrinking the impact of production incidents using SRE principles—CRE Life Lessons \| Google Cloud Blog](https://cloud.google.com/blog/products/devops-sre/shrinking-the-impact-of-production-incidents-using-sre-principles-cre-life-lessons?hl=en)
 
 <br>
 
@@ -141,7 +141,7 @@ SLO だけがユーザーの満足度を決めるわけではなく、新機能�
 
 累計 `7.2` 時間の SLO 違反は許容できる。
 
-> - https://speakerdeck.com/yukaneko/sre-hefalsedi-bu-pagerduty-x-datadog-woshi-yong-sitapin-zhi-guan-li?slide=6
+> - [SRE への第一歩 PagerDuty × DataDog を使用した品質管理 - Speaker Deck](https://speakerdeck.com/yukaneko/sre-hefalsedi-bu-pagerduty-x-datadog-woshi-yong-sitapin-zhi-guan-li?slide=6)
 
 #### ▼ バーンレート
 
@@ -155,8 +155,8 @@ SLO だけがユーザーの満足度を決めるわけではなく、新機能�
 
 ![burn-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burn-rate.png)
 
-> - https://sre.google/workbook/alerting-on-slos/
-> - https://engineering.mercari.com/blog/entry/20211215-practical_alerting_methods_based_on_customer_impact/
+> - [Google SRE - Prometheus Alerting: Turn SLOs into Alerts](https://sre.google/workbook/alerting-on-slos/)
+> - [お客さま影響に基づく実践的なアラート方法 \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/20211215-practical_alerting_methods_based_on_customer_impact/)
 
 <br>
 
@@ -205,7 +205,7 @@ Datadog では、平常時のメトリクスのデータから予測値を算出
 
 #### ▼ 目標値の例 (Google)
 
-> - https://cloud.google.com/blog/ja/products/gcp/building-good-slos-cre-life-lessons
+> - [優れた SLO を策定するには : CRE が現場で学んだこと \| Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/products/gcp/building-good-slos-cre-life-lessons)
 
 <br>
 
@@ -267,7 +267,7 @@ AWS ではサービスレベルの項目として、サーバー稼働率を採�
 
 各リソースに SLA が定義されている。
 
-> - https://aws.amazon.com/jp/legal/service-level-agreements/
+> - [AWS サービスレベルアグリーメント](https://aws.amazon.com/jp/legal/service-level-agreements/)
 
 **＊例＊**
 

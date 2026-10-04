@@ -67,7 +67,7 @@ spec:
           name: fastcgi
 ```
 
-> - https://kubernetes.github.io/ingress-nginx/user-guide/fcgi-services/
-> - https://www.tecmint.com/connect-nginx-to-php-fpm/
+> - [Exposing FCGI services - Ingress-Nginx Controller](https://kubernetes.github.io/ingress-nginx/user-guide/fcgi-services/)
+> - [How to Connect NGINX to PHP-FPM Using UNIX or TCP/IP Socket](https://www.tecmint.com/connect-nginx-to-php-fpm/)
 
 <br>

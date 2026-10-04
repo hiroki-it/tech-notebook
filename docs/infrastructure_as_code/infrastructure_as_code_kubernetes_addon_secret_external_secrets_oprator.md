@@ -21,8 +21,8 @@ External Secrets Operator は、external-secrets、external-secrets-controller �
 
 ![external-secrets-operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-secrets-operator_architecture.png)
 
-> - https://external-secrets.io/v0.8.1/
-> - https://techblog.zozo.com/entry/kubernetes-external-secrets-to-external-secrets-operator
+> - [Introduction - External Secrets Operator](https://external-secrets.io/v0.8.1/)
+> - [Kubernetes External SecretsからExternal Secrets Operatorに移行した話 〜他ツールとの比較・移行戦略・工夫したポイント〜 - ZOZO TECH BLOG](https://techblog.zozo.com/entry/kubernetes-external-secrets-to-external-secrets-operator)
 
 <br>
 

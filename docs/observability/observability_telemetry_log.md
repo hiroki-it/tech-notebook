@@ -96,7 +96,7 @@ jsonPayload.traceId="<トレースID>"
 | ペイロード | タイムスタンプ、 ログステータス、ログメッセージ、エラーコード、トレース ID、スパン ID、親スパン ID、サーバー/クライアントの IP アドレス、ユーザーエージェント、ステータスコード、その他セキュリティ上問題ない ID (トランザクション ID、相関 ID、リクエスト ID) など |
 | ラベル     | 実行環境名、リージョン名、Cluster 名、Node 名、Namespace 名、Pod 名、マイクロサービス名、コンテナ名など                                                                                                                                                             |
 
-> - https://qiita.com/kawasima/items/569a06c934e8f81e731d
+> - [マイクロサービスのロギングベストプラクティス #ログ - Qiita](https://qiita.com/kawasima/items/569a06c934e8f81e731d)
 
 #### ▼ インフラ
 
@@ -111,7 +111,7 @@ jsonPayload.traceId="<トレースID>"
 
 ログメッセージは文章ではないため、ピリオドや句点はつけない。
 
-> - https://github.com/olsh/resharper-structured-logging/discussions/28#discussioncomment-676481
+> - [why not using period in the end · olsh/resharper-structured-logging · Discussion #28 · GitHub](https://github.com/olsh/resharper-structured-logging/discussions/28#discussioncomment-676481)
 
 <br>
 
@@ -129,7 +129,7 @@ jsonPayload.traceId="<トレースID>"
 - サーバーのディスク容量やメモリが不足し、アプリケーションが停止したり応答しなくなった場合
 - セキュリティ侵害や機密データへの不正アクセスを検出した場合
 
-> - https://sematext.com/blog/logging-levels/
+> - [Logging Levels: What They Are & How to Choose Them - Sematext](https://sematext.com/blog/logging-levels/)
 
 #### ▼ ERROR
 
@@ -144,7 +144,7 @@ jsonPayload.traceId="<トレースID>"
 - アプリケーションの CRUD 処理に失敗した場合
 - JSON オブジェクトのデコードに失敗した場合
 
-> - https://sematext.com/blog/logging-levels/
+> - [Logging Levels: What They Are & How to Choose Them - Sematext](https://sematext.com/blog/logging-levels/)
 
 #### ▼ WARNING
 
@@ -158,7 +158,7 @@ jsonPayload.traceId="<トレースID>"
 - 推奨の設定になっていない場合
 - 脆弱性がある場合
 
-> - https://sematext.com/blog/logging-levels/
+> - [Logging Levels: What They Are & How to Choose Them - Sematext](https://sematext.com/blog/logging-levels/)
 
 #### ▼ INFO
 
@@ -169,7 +169,7 @@ jsonPayload.traceId="<トレースID>"
 - イベントの変化 (例：`PENDING` イベントから `IN PROGRESS` イベントへの移行など) が起こった場合
 - アプリケーションの機能に影響を与える外部依存システム (例：DB、API など) でイベントが起こった場合
 
-> - https://sematext.com/blog/logging-levels/
+> - [Logging Levels: What They Are & How to Choose Them - Sematext](https://sematext.com/blog/logging-levels/)
 
 #### ▼ DEBUG
 
@@ -180,7 +180,7 @@ jsonPayload.traceId="<トレースID>"
 - アプリケーションのイベントに関する詳細情報
 - 外部依存システム (例：DB、API など) の送信 (例：リクエスト、クエリ) と受信 (例：レスポンス、DB レコード) の詳細情報
 
-> - https://sematext.com/blog/logging-levels/
+> - [Logging Levels: What They Are & How to Choose Them - Sematext](https://sematext.com/blog/logging-levels/)
 
 <br>
 

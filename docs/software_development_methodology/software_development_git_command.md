@@ -9,7 +9,7 @@ description: コマンド@Gitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -41,7 +41,7 @@ $ git branch --all
 $ git branch | xargs git branch -d
 ```
 
-> - https://qiita.com/mather314/items/a1536c52a2eb0426b2b5
+> - [gitの不要なブランチを消すコマンド #Git - Qiita](https://qiita.com/mather314/items/a1536c52a2eb0426b2b5)
 
 ### branch -M
 
@@ -51,7 +51,7 @@ $ git branch | xargs git branch -d
 $ git branch -M main
 ```
 
-> - https://qiita.com/obonno3/items/f44bb730facc29a3b7d5
+> - [git branch -m(-M) オプションってなに！？ #Git - Qiita](https://qiita.com/obonno3/items/f44bb730facc29a3b7d5)
 
 <br>
 
@@ -85,8 +85,8 @@ login <ユーザー名>
 password <パスワード>
 ```
 
-> - https://qiita.com/azusanakano/items/8dc1d7e384b00239d4d9#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%B8%A1%E6%96%B9%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95
-> - https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d
+> - [GitHubでユーザ名・パスワード省略（push, pull） #GitHub - Qiita](https://qiita.com/azusanakano/items/8dc1d7e384b00239d4d9#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC%E3%83%89%E4%B8%A1%E6%96%B9%E7%9C%81%E7%95%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95)
+> - [gitレポジトリとhttpで通信する場合にユーザ情報の入力を省略する #Git - Qiita](https://qiita.com/r-tamura/items/c6e49a3eb7f7f8aafb9d)
 
 #### ▼ SSH 公開鍵認証
 
@@ -110,8 +110,8 @@ $ git clone git@<ssh-configファイルでのサーバー接続名>:<組織名>/
 $ git clone https://<ユーザー名>:<トークン>@github.com/<GitHubリポジトリ名>.git
 ```
 
-> - https://blog.stu345.com/github-clone_using_token/
-> - https://qiita.com/reflet/items/b7ed9979828819b2b42c
+> - [Githubのリポジトリにトークンを使ってアクセスする \| Notes to Forget](https://blog.stu345.com/github-clone_using_token/)
+> - [githubからアクセストークンでcloneする #GitHub - Qiita](https://qiita.com/reflet/items/b7ed9979828819b2b42c)
 
 <br>
 
@@ -134,7 +134,7 @@ $ git clone https://github.com/hiroki-hasegawa/foo-repository.git foo
 $ git clone --recursive https://github.com/hiroki-hasegawa/foo-repository.git
 ```
 
-> - https://blog.kyanny.me/entry/2020/07/04/172905
+> - [git clone --recursive と git clone --recurse-submodules は同じ - @kyanny's blog](https://blog.kyanny.me/entry/2020/07/04/172905)
 
 #### ▼ --depth
 
@@ -146,7 +146,7 @@ $ git clone --recursive https://github.com/hiroki-hasegawa/foo-repository.git
 $ git clone --depth 1 https://github.com/hiroki-hasegawa/foo-repository.git
 ```
 
-> - https://kakakakakku.hatenablog.com/entry/2017/03/22/195640
+> - [知っておくと便利な git clone --depth と git diff --indent-heuristic - kakakakakku blog](https://kakakakakku.hatenablog.com/entry/2017/03/22/195640)
 
 <br>
 
@@ -465,8 +465,8 @@ and the repository exists.
 
 そのため、更新頻度の高いリポジトリをサブモジュールにすると、取り込む作業が大変になる。
 
-> - https://qiita.com/kohashi/items/f4a50c5436b326e9475b
-> - https://blog.kyanny.me/entry/2020/07/04/172905
+> - [Git: Submodule地獄からの脱出 #GitHub - Qiita](https://qiita.com/kohashi/items/f4a50c5436b326e9475b)
+> - [git clone --recursive と git clone --recurse-submodules は同じ - @kyanny's blog](https://blog.kyanny.me/entry/2020/07/04/172905)
 
 <br>
 
@@ -487,7 +487,7 @@ $ git submodule add --branch main https://github.com/hiroki-hasegawa/foo-sub-mod
 	branch = main
 ```
 
-> - https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93
+> - [Git Submodules でサブモジュール内のリポジトリをリモートの master の最新版に追従する](https://zenn.dev/noraworld/articles/follow-latest-version-with-git-submodules#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AE-master-%E3%81%AB%E8%BF%BD%E5%BE%93)
 
 <br>
 
@@ -681,8 +681,8 @@ echo "差分なし";
 ```
 
 > - https://stackoverflow.com/a/74817537
-> - https://zenn.dev/aki_artisan/articles/bash-test-option-zn
-> - https://qiita.com/XYZXYZXYZ/items/9bc17ec8466fa6bf875a
+> - [bashのif文における -z -n オプション](https://zenn.dev/aki_artisan/articles/bash-test-option-zn)
+> - [スペースがある文字列を変数にする場合 シェルスクリプト #Linux - Qiita](https://qiita.com/XYZXYZXYZ/items/9bc17ec8466fa6bf875a)
 
 ```bash
 EXIT_CODE=$(git diff origin/main --quiet)
@@ -839,7 +839,7 @@ add ステージや commit ステージにファイルが存在しているか�
 
 CI の自動化で使用することが多い。
 
-> - https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/
+> - [The short version of 'git status' and the close but different '--porcelain' mode \| Stefan Judis Web Development](https://www.stefanjudis.com/today-i-learned/the-short-version-of-git-status-and-the-close-but-different-porcelain-mode/)
 
 ```bash
  $ git status --porcelain
@@ -1077,8 +1077,8 @@ $ git reset --hard origin/<ブランチ名>
 
 処理結果が `git merge` コマンドと似ているが、`git rebase` コマンドはマージコミットを作らず、ない。
 
-> - https://zenn.dev/tana0102/articles/475d8952933af6#git-rebase%E3%81%AE%E5%9F%BA%E6%9C%AC
-> - https://zenn.dev/tana0102/articles/475d8952933af6#git-merge%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84
+> - [git rebaseの具体的なメリット](https://zenn.dev/tana0102/articles/475d8952933af6#git-rebase%E3%81%AE%E5%9F%BA%E6%9C%AC)
+> - [git rebaseの具体的なメリット](https://zenn.dev/tana0102/articles/475d8952933af6#git-merge%E3%81%A8%E3%81%AE%E9%81%95%E3%81%84)
 
 <br>
 
@@ -1416,7 +1416,7 @@ $ git filter-branch --force --env-filter '
     ' -- --all
 ```
 
-> - https://zenn.dev/flyingbarbarian/articles/241627cae5988a
+> - [Gitのcommitの名前やメールアドレスを過去からまとめて変更する](https://zenn.dev/flyingbarbarian/articles/241627cae5988a)
 
 <br>
 

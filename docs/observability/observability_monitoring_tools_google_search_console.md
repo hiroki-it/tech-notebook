@@ -25,7 +25,7 @@ description: Googleサーチコンソール＠監視ツールの知見を記録�
 
 ユーザーが検索エンジンを使用するときは、この DB インデックスを基に検索結果が表示される。
 
-> - https://smakoma.com/understand-search-engine.html
+> - [検索エンジンの仕組みを理解する。クローラー、インデックス、アルゴリズムとは？ \| スマコマ](https://smakoma.com/understand-search-engine.html)
 
 #### ▼ クローラーの種類
 
@@ -39,7 +39,7 @@ description: Googleサーチコンソール＠監視ツールの知見を記録�
 | Baiduspider      | Baidu        |
 | Mail.RU_Bot      | Mail.ru      |
 
-> - https://technical-seo.jp/crawler/
+> - [クローラーとは？意味や種類、巡回の仕組みについて解説 \| テクニカルSEO BLOG](https://technical-seo.jp/crawler/)
 
 **例**
 
@@ -67,7 +67,7 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 - 検索エンジンにリクエストを送信し、サイトに訪問してくる。
 - Google サーチコンソールに登録された `sitemap.xml` ファイルを基に、サイトに訪問してくる。
 
-> - https://www.allegro-inc.com/seo/xml-sitemap/
+> - [XMLサイトマップの作り方・更新・分割運用までを押さえる実践ガイド - アレグロマーケティング](https://www.allegro-inc.com/seo/xml-sitemap/)
 
 <br>
 
@@ -79,7 +79,7 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 
 Google サーチコンソールに登録でき、検索クローラーがサイトの情報を収集するのを助ける。
 
-> - https://www.allegro-inc.com/seo/xml-sitemap/
+> - [XMLサイトマップの作り方・更新・分割運用までを押さえる実践ガイド - アレグロマーケティング](https://www.allegro-inc.com/seo/xml-sitemap/)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -126,7 +126,7 @@ Web サイトの全ページのうち、どのくらいが検索エンジンの 
 | エラー       | 登録されなかった              |
 | 除外         | 登録されなかった              |
 
-> - https://support.google.com/webmasters/answer/7440203#status_type
+> - [Page indexing report - Search Console Help](https://support.google.com/webmasters/answer/7440203#status_type)
 
 <br>
 

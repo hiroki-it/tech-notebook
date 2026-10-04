@@ -9,7 +9,7 @@ description: admission-controllers＠コントロールプレーン系の知見�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -22,8 +22,8 @@ description: admission-controllers＠コントロールプレーン系の知見�
 ![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers.png)
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
-> - https://knowledge.sakura.ad.jp/21129/
-> - https://www.sobyte.net/post/2022-07/k8s-auth/
+> - [Kubernetesのユーザー管理と認証・権限確認機構を理解しよう \| さくらのナレッジ](https://knowledge.sakura.ad.jp/21129/)
+> - [Kubernetes API Server Authentication and Authorization Mechanism - SoByte](https://www.sobyte.net/post/2022-07/k8s-auth/)
 
 <br>
 
@@ -40,8 +40,8 @@ kube-apiserver クライアント (`kubectl` クライアント、Kubernetes リ
 ![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png)
 
 > - https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/
-> - https://www.digihunch.com/2022/01/kubernetes-admission-control/
-> - https://gashirar.hatenablog.com/entry/2020/10/31/141357
+> - [Kubernetes Admission Control](https://www.digihunch.com/2022/01/kubernetes-admission-control/)
+> - [Kubernetes Admission Webhook覚書き - gashirar's blog](https://gashirar.hatenablog.com/entry/2020/10/31/141357)
 
 <br>
 
@@ -88,9 +88,9 @@ Webhook 系プラグイン (例：MutatingAdmissionWebhook、ValidatingAdmission
 
 サーバー証明書を含む Secret の作成は `kube-webhook-certgen` イメージで `create` コマンドを実行することで、Configuration への挿入は `patch` コマンドを実行することで実現している。
 
-> - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-create
-> - https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-patch
-> - https://tokibi.hatenablog.com/entry/2020/01/07/150359
+> - [Ingress Nginxは何をしてるのか - ストイックに生きたい](https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-create)
+> - [Ingress Nginxは何をしてるのか - ストイックに生きたい](https://blog.sakamo.dev/post/ingress-nginx/#ingress-nginx-admission-patch)
+> - [KubernetesのDynamic Admission Controlを試してみる - tokibiブログ](https://tokibi.hatenablog.com/entry/2020/01/07/150359)
 
 <br>
 
@@ -106,7 +106,7 @@ webhook サーバーから返信された AdmissionReview を含むレスポン�
 
 ![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_admission-review.png)
 
-> - https://gashirar.hatenablog.com/entry/2020/10/31/141357
+> - [Kubernetes Admission Webhook覚書き - gashirar's blog](https://gashirar.hatenablog.com/entry/2020/10/31/141357)
 > - https://medium.com/ibm-cloud/diving-into-kubernetes-mutatingadmissionwebhook-6ef3c5695f74
 
 #### ▼ MutatingWebhookConfiguration
@@ -163,7 +163,7 @@ webhooks:
             - <エイリアス>
 ```
 
-> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+> - [Admission Webhookを作って遊んで、その仕組みを理解しよう（説明編）](https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/)
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
 
 <br>
@@ -176,7 +176,7 @@ ValidatingAdmissionWebhook プラグインを使用すると、validating-admiss
 
 ユーザー定義の処理が定義された webhook サーバーを別途用意しておく必要がある。
 
-> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+> - [Admission Webhookを作って遊んで、その仕組みを理解しよう（説明編）](https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/)
 
 #### ▼ ValidatingWebhookConfiguration
 
@@ -221,8 +221,8 @@ webhooks:
 ```
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-configuration
-> - https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24
-> - https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/
+> - [Kubernetesと連携するアプリケーション開発手法 / openshiftjp10-amsy810 - Speaker Deck](https://speakerdeck.com/masayaaoyama/openshiftjp10-amsy810?slide=24)
+> - [Admission Webhookを作って遊んで、その仕組みを理解しよう（説明編）](https://blog.mosuke.tech/entry/2022/05/15/admission-webhook-1/)
 
 <br>
 
@@ -234,7 +234,7 @@ AdmissionReview は、リクエストを定義する AdmissionRequest と、レ�
 
 admission-controller アドオンと webhook サーバーの間で送受信するリクエスト／レスポンスのデータである。
 
-> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> - [v1 package - k8s.io/api/admission/v1 - Go Packages](https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview)
 
 ```yaml
 {
@@ -307,8 +307,8 @@ kube-apiserver は、特定のリクエストを受信すると、webhook サー
 ```
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
-> - https://tokibi.hatenablog.com/entry/2020/01/07/150359
-> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> - [KubernetesのDynamic Admission Controlを試してみる - tokibiブログ](https://tokibi.hatenablog.com/entry/2020/01/07/150359)
+> - [v1 package - k8s.io/api/admission/v1 - Go Packages](https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview)
 
 #### ▼ AdmissionResponse
 
@@ -350,9 +350,9 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処
 ```
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
-> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
-> - https://github.com/morvencao/kube-sidecar-injector/blob/4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01/cmd/webhook.go#L218-L225
-> - https://jsonpatch.com/
+> - [v1 package - k8s.io/api/admission/v1 - Go Packages](https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview)
+> - [kube-sidecar-injector/cmd/webhook.go at 4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01 · morvencao/kube-sidecar-injector · GitHub](https://github.com/morvencao/kube-sidecar-injector/blob/4e010f4cdee8baf3cd3f3f59ec9b95e5db9b9f01/cmd/webhook.go#L218-L225)
+> - [JSON Patch \| jsonpatch.com](https://jsonpatch.com/)
 
 <br>
 
@@ -362,7 +362,7 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処
 
 kube-apiserver は、mutating-admission ステップと同じ AdmissionReview 内の AdmissionRequest にリクエストパラメータを格納し、リクエストとして送信する。
 
-> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> - [v1 package - k8s.io/api/admission/v1 - Go Packages](https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview)
 
 #### ▼ AdmissionResponse
 
@@ -389,6 +389,6 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse にバリデ�
 ```
 
 > - https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#webhook-request-and-response
-> - https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview
+> - [v1 package - k8s.io/api/admission/v1 - Go Packages](https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview)
 
 <br>

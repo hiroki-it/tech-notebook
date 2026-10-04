@@ -9,7 +9,7 @@ description: Argo Workflows＠ワークフローの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -47,7 +47,7 @@ type archivedWorkflowMetadata struct {
 }
 ```
 
-> - https://github.com/argoproj/argo-workflows/blob/main/persist/sqldb/workflow_archive.go#L25-L37
+> - [argo-workflows/persist/sqldb/workflow\_archive.go at main · argoproj/argo-workflows · GitHub](https://github.com/argoproj/argo-workflows/blob/main/persist/sqldb/workflow_archive.go#L25-L37)
 > - https://pages.awscloud.com/rs/112-TZM-766/images/20230928_34th_ISV_DiveDeepSeminar_freee.pdf#page=11
 
 <br>
@@ -64,8 +64,8 @@ application-controller を分離されている理由は、ArgoCD Workflow の�
 
 ![argocd_argo-workflow_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argo-workflow_architecture.png)
 
-> - https://argoproj.github.io/argo-workflows/architecture/
-> - https://www.wantedly.com/companies/wantedly/post_articles/302473
+> - [Architecture - Argo Workflows - The workflow engine for Kubernetes](https://argoproj.github.io/argo-workflows/architecture/)
+> - [Argo Workflows: 推薦基盤向けワークフローエンジンを Kubernetes で運用して1年経ったので振り返る \| Wantedly Engineer Blog](https://www.wantedly.com/companies/wantedly/post_articles/302473)
 
 <br>
 
@@ -75,7 +75,7 @@ application-controller を分離されている理由は、ArgoCD Workflow の�
 
 Argo Workflows 上でコンテナをビルドし、イメージレジストリにプッシュする。
 
-> - https://zenn.dev/tnoyama/articles/d3358cc82f6173#gitops%E3%82%92%E8%80%83%E3%81%88%E3%82%8B%E3%81%A8
+> - [TEKTONとArgoを比較してみた](https://zenn.dev/tnoyama/articles/d3358cc82f6173#gitops%E3%82%92%E8%80%83%E3%81%88%E3%82%8B%E3%81%A8)
 > - https://www.reddit.com/r/kubernetes/comments/18683bz/why_use_argo_workflows_over_github_actions/
 
 <br>

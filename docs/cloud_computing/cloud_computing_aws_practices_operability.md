@@ -9,7 +9,7 @@ description: 運用性＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: 運用性＠AWSの知見を記録しています。
 
 例えば、BI ツール (例：Redash、Metabase、Google Cloud Looker など) を採用し、DB から読み込んだデータ (例：取引履歴) をメトリクスとする。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html
+> - [Operate - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html)
 
 #### ▼ DevOps 成果
 
@@ -49,7 +49,7 @@ Code 三兄弟のデータポイントを収集し、メトリクスとして分
 
 システムに関するメトリクスを監視する。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html
+> - [Operate - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html)
 
 #### ▼ ユーザー定義の名前空間
 
@@ -75,7 +75,7 @@ Code 三兄弟のデータポイントを収集し、メトリクスとして分
 | `TargetConnectionErrorCount`     | カウント | ターゲットグループ内のターゲットに対する通信でエラーが発生した数をデータポイントとする。          |                                                                |
 | `TargetTLSNegotiationErrorCount` | カウント | ターゲットグループ内のターゲットへの HTTPS プロトコルでエラーが発生した数をデータポイントとする。 |                                                                |
 
-> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html
+> - [CloudWatch metrics for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html)
 
 #### ▼ Amazon API Gateway
 
@@ -88,7 +88,7 @@ Code 三兄弟のデータポイントを収集し、メトリクスとして分
 | `4XXError`           | カウント   | `400` 系ステータスの数をデータポイントとする。                                                                                              | ・統計 : 期間内合計数<br>・期間 : `24` 時間<br>・閾値 : `>= 1` |
 | `5XXError`           | カウント   | `500` 系ステータスの数をデータポイントとする。アプリケーションが停止してしまうようなインシデントを検出することに適する。                    | ・統計 : 期間内合計数<br>・期間 : `5` 分<br>・閾値 : `>= 1`    |
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics
+> - [Amazon API Gateway dimensions and metrics - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics)
 
 #### ▼ Amazon EC2
 
@@ -101,13 +101,13 @@ Code 三兄弟のデータポイントを収集し、メトリクスとして分
 | `StatusCheckFailed_Instance` | カウント | インスタンスのインスタンスステータスの失敗数をデータポイントとする。インスタンスが停止してしまうようなインシデントに適する。反対に、インスタンスが正常に稼働していて、プロセスが停止しているようなインシデントを検出することには不適である。<br>https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks |                                                                  |
 | `StatusCheckFailed_System`   | カウント | インスタンスのシステムステータスの失敗数をデータポイントとする。AWS の障害によるインシデントの検出に適する。<br>https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html#types-of-instance-status-checks                                                                                                                                 |                                                                  |
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics
+> - [CloudWatch metrics that are available for your instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html#ec2-cloudwatch-metrics)
 
 似たメトリクスに `StatusCheckFailed_System` や `StatusCheckFailed_Instance` がある。
 
 これらは AWS 側が原因のメトリクスであるため、ユーザーが監視する必要はない。
 
-> - https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html
+> - [StatusCheckFailed\_System, StatusCheckFailed\_Instance ,StatusCheckFailedの違い](https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html)
 
 #### ▼ Amazon ECS
 
@@ -121,7 +121,7 @@ ClusterName ディメンションと ServiceName ディメンションを使用�
 | `MemoryUtilization` | %        | Amazon ECS クラスターまたはサービスで使用されているメモリ使用率をデータポイントとする。 | ・統計 : 期間内平均使用率<br>・期間 : `5` 分<br>・閾値 : `>= 80` |                                                                         |
 | `RunningTaskCount`  | カウント | 稼働中の Amazon ECS タスク数をデータポイントとする。                                    |                                                                  | Amazon ECS タスク数の増減の遷移から、デプロイのおおよその時間がわかる。 |
 
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics
+> - [Monitor Amazon ECS using CloudWatch - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics)
 
 #### ▼ Amazon ElastiCache Redis
 
@@ -166,7 +166,7 @@ Amazon RDS のコンソール画面にも同じメトリクスが表示される
 | `DatabaseConnections` | カウント | DB インスタンスへの接続数をデータポイントとする。失敗した接続も含まれている可能性があり、実際よりはやや多めに計測される。 | ・統計 : 期間内合計数<br>・期間 : `5` 分<br>・閾値 : `>= 400`     | クライアントが DB にリクエストしている時間帯がわかるため、メンテナンスウィンドウの実施時間の参考になる。 |
 | `FreeableMemory`      | バイト数 | DB インスタンスの使用できるメモリサイズをデータポイントとする。                                                           | ・統計 : 期間内最大サイズ<br>・期間 : `5` 分<br>・閾値 : `>= 2`GB |                                                                                                          |
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics
+> - [Monitoring Amazon RDS metrics with Amazon CloudWatch - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics)
 
 #### ▼ Amazon S3
 

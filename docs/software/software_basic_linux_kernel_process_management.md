@@ -9,7 +9,7 @@ description: プロセス管理＠基本ソフトウェアの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -35,7 +35,7 @@ description: プロセス管理＠基本ソフトウェアの知見を記録し�
 
 OS が稼働している間、メモリ上のアドレス空間の区画に恒常的に割り当てられているプロセスを、特に『デーモン (常駐プログラム) 』という。
 
-> - https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3.html
+> - [デーモンとは - IT用語辞典 e-Words](https://e-words.jp/w/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3.html)
 
 <br>
 
@@ -45,8 +45,8 @@ OS が稼働している間、メモリ上のアドレス空間の区画に恒�
 
 一方のプロセスから他方のプロセスへの命令である。
 
-> - https://qiita.com/Kernel_OGSun/items/e96cef5487e25517a576#1-%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB%E3%81%A8%E3%81%AF
-> - https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB_(Unix)
+> - [Linux シグナルの基本と仕組み (カーネル v5.5 時点) #まとめ - Qiita](https://qiita.com/Kernel_OGSun/items/e96cef5487e25517a576#1-%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB%E3%81%A8%E3%81%AF)
+> - [シグナル (Unix) - Wikipedia](<https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB_(Unix)>)
 
 #### ▼ シグナルの種類
 
@@ -58,9 +58,9 @@ OS が稼働している間、メモリ上のアドレス空間の区画に恒�
 | `SIGTSTP`        | プロセスを一時中断する。                 | キーボードで `Ctrl + Z` を打つ。 |
 | `SIGQUIT`        | プロセスを終了させつつ、コアダンプする。 | キーボードで `Ctrl + Q` を打つ。 |
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1708/04/news015.html
-> - https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB_(Unix)
-> - https://qiita.com/Kernel_OGSun/items/e96cef5487e25517a576#2-%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB%E5%88%A9%E7%94%A8%E4%BE%8B
+> - [Linuxの「シグナル」って何だろう？：“応用力”をつけるためのLinux再入門（16） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1708/04/news015.html)
+> - [シグナル (Unix) - Wikipedia](<https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB_(Unix)>)
+> - [Linux シグナルの基本と仕組み (カーネル v5.5 時点) #まとめ - Qiita](https://qiita.com/Kernel_OGSun/items/e96cef5487e25517a576#2-%E3%82%B7%E3%82%B0%E3%83%8A%E3%83%AB%E5%88%A9%E7%94%A8%E4%BE%8B)
 
 <br>
 
@@ -82,8 +82,8 @@ PID  TTY  TIME     CMD
   1  ??   9:23.33  /sbin/launchd
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html
-> - https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html
+> - [Linuxの「プロセス」って何だろう？：“応用力”をつけるためのLinux再入門（13）（2/2 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html)
+> - [【IT技術の知見】シェル＠ユーティリティ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html)
 
 #### ▼ 同時処理できるリクエスト数
 
@@ -110,7 +110,7 @@ PID  TTY  TIME     CMD
 ![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/process.png)
 
 > - https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
-> - https://webpia.jp/thread_process/
+> - [プロセスとスレッドの違いとは？超わかりやすく解説！【図解とプログラム付き】 \| Webpia](https://webpia.jp/thread_process/)
 
 <br>
 
@@ -122,7 +122,7 @@ PID  TTY  TIME     CMD
 
 現在割り当てられているプロセスのうち、もっとも使用領域の大きいプロセスを強制的に終了する。
 
-> - https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/
+> - [Linux - OOM Killer の発動を抑制！ - mk-mode BLOG](https://www.mk-mode.com/blog/2016/03/15/linux-control-oomkiller/)
 
 #### ▼ 確認方法
 
@@ -135,7 +135,7 @@ Jan  1 00:00:00 localhost kernel: Out of memory: Kill process 17143 (java) score
 Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-vm:7790724kB, anon-rss:4108910kB, file-rss:6822kB, shmem-rss:0kB
 ```
 
-> - https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3
+> - [プロセスが突然死んだときのOOM Killerの確認方法とプロセス停止を回避する方法 - aegif Labo Blog Alfresco](https://aegif.jp/alfresco/tech-info/-/20201119-alfresco/1.3)
 
 <br>
 
@@ -151,8 +151,8 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 ![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/thread.png)
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html
-> - https://webpia.jp/thread_process/
+> - [第1回 マルチスレッドはこんなときに使う：連載.NETマルチスレッド・プログラミング入門 - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html)
+> - [プロセスとスレッドの違いとは？超わかりやすく解説！【図解とプログラム付き】 \| Webpia](https://webpia.jp/thread_process/)
 
 <br>
 
@@ -170,7 +170,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 ![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multi-thread.png)
 
-> - https://webpia.jp/thread_process/
+> - [プロセスとスレッドの違いとは？超わかりやすく解説！【図解とプログラム付き】 \| Webpia](https://webpia.jp/thread_process/)
 
 <br>
 
@@ -279,7 +279,7 @@ CPU のコアは、メモリ上のプロセス内にある単一のスレッド�
 
 ![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multithreading.png)
 
-> - https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+> - [【図解】ハイパースレッディング(SMT)の仕組み ~メリットとデメリット,悪影響や脆弱性などの問題~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/)
 
 #### ▼ 同時マルチスレッド
 
@@ -287,7 +287,7 @@ CPU のコアは、メモリ上のプロセス内にある複数のスレッド�
 
 ![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/simultaneous-multithreading.png)
 
-> - https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/
+> - [【図解】ハイパースレッディング(SMT)の仕組み ~メリットとデメリット,悪影響や脆弱性などの問題~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/)
 
 <br>
 

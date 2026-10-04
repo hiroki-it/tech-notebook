@@ -9,7 +9,7 @@ description: trivy＠脆弱性診断の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -53,7 +53,7 @@ $ kubectl create namespace trivy
 $ helm install <Helmリリース名> <チャートリポジトリ名>/trivy-operator -n trivy
 ```
 
-> - https://aquasecurity.github.io/trivy-operator/v0.15.1/getting-started/installation/helm/
+> - [Helm - Trivy Operator](https://aquasecurity.github.io/trivy-operator/v0.15.1/getting-started/installation/helm/)
 
 <br>
 

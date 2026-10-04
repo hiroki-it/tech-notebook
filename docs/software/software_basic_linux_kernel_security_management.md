@@ -9,7 +9,7 @@ description: セキュリティ＠基本ソフトウェアの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,8 +21,8 @@ description: セキュリティ＠基本ソフトウェアの知見を記録し�
 
 `/etc/systemd/limits.conf` ファイルとしても設定できる。
 
-> - https://qiita.com/hot_study_man/items/24e2bb953d4dca539c75
-> - https://kazuhira-r.hatenablog.com/entry/2021/12/02/161200
+> - [システムリソースの制限(ulimit) #Linux - Qiita](https://qiita.com/hot_study_man/items/24e2bb953d4dca539c75)
+> - [systemd制御下で動作するプロセスの、リソース制御を行う - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2021/12/02/161200)
 
 <br>
 

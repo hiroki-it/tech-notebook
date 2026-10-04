@@ -29,9 +29,9 @@ description: AWS KMS＠AWSリソースの知見を記録しています。
 
 暗号化キーを使用できるユーザーをキーポリシーで設定できない。
 
-> - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk
+> - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk)
 > - https://medium.com/@neonforge/why-you-shouldnt-use-aws-managed-kms-keys-83d9eb9d5090
-> - https://aws.amazon.com/kms/features/#AWS_Service_Integration
+> - [Features \| AWS Key Management Service (KMS) \| Amazon Web Services (AWS)](https://aws.amazon.com/kms/features/#AWS_Service_Integration)
 
 <br>
 
@@ -41,7 +41,7 @@ description: AWS KMS＠AWSリソースの知見を記録しています。
 
 暗号化キーを使用できるユーザーをキーポリシーで設定できる。
 
-> - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-mgmt
+> - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-mgmt)
 > - https://medium.com/@neonforge/why-you-shouldnt-use-aws-managed-kms-keys-83d9eb9d5090
 
 <br>
@@ -60,7 +60,7 @@ description: AWS KMS＠AWSリソースの知見を記録しています。
 
 ![kms_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_multi-region.png)
 
-> - https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html
+> - [Multi-Region keys in AWS KMS - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
 
 <br>
 
@@ -107,20 +107,20 @@ AWS KMS のリクエスト制限を設定する。
 
 暗号化キーを対称型 (ペアは不要) または非対称 (パブリックとプライベートのペアが必要) とするかを設定する。
 
-> - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks
-> - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#asymmetric-keys-concept
+> - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks)
+> - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#asymmetric-keys-concept)
 
 #### ▼ オリジン
 
 記入中...
 
-> - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin
+> - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin)
 
 #### ▼ キーの仕様
 
 記入中...
 
-> - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec
+> - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec)
 
 #### ▼ キーの用途
 
@@ -130,7 +130,7 @@ AWS KMS のリクエスト制限を設定する。
 - 署名と検証 (`SIGN_VERIFY`)
 - MC の生成と検証 (`GENERATE_VERIFY_MAC`)
 
-> - https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-usage
+> - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-usage)
 
 <br>
 
@@ -140,7 +140,7 @@ AWS KMS のリクエスト制限を設定する。
 
 ![kms_key_rotation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_key_rotation.png)
 
-> - https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html
+> - [Rotate AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
 
 <br>
 
@@ -152,6 +152,6 @@ AWS マネージド型では設定できず、セルフマネージド型での�
 
 AWS KMS を使用できるユーザーや AWS リソースを制限できるようになる。
 
-> - https://zenn.dev/m_taiki/articles/77c9542649aca0#%E7%B5%90%E8%AB%96
+> - [KMSのデフォルトのキーポリシーの内容について](https://zenn.dev/m_taiki/articles/77c9542649aca0#%E7%B5%90%E8%AB%96)
 
 <br>

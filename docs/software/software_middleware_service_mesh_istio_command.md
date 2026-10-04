@@ -50,7 +50,7 @@ $ cd istio-1.12.1
 $ export PATH=$PWD/bin:$PATH
 ```
 
-> - https://istio.io/latest/docs/setup/getting-started/#download
+> - [Istio / Getting Started](https://istio.io/latest/docs/setup/getting-started/#download)
 
 <br>
 
@@ -62,7 +62,7 @@ Istio の機能のセットを提供する。
 
 プロファイルに応じて、Istiod、Istio Ingress/Egress Gateway、ztunnel、istio-cni などのデプロイ対象が決まる。
 
-> - https://istio.io/latest/docs/setup/additional-setup/config-profiles/
+> - [Istio / Installation Configuration Profiles](https://istio.io/latest/docs/setup/additional-setup/config-profiles/)
 
 #### ▼ プロファイルの種類
 
@@ -73,8 +73,8 @@ Istio の機能のセットを提供する。
 | istio-ingressgateway |    ✅    |    ✅    |                   なし                   |   なし   |         なし         |    ？     |   ✅    |   ？   | 記入中... |
 | istiod               |    ✅    |    ✅    |                   なし                   |   なし   |          ✅          |    ？     |   ✅    |   ？   | 記入中... |
 
-> - https://github.com/istio/istio/tree/1.24.2/manifests/profiles
-> - https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html
+> - [istio/manifests/profiles at 1.24.2 · istio/istio · GitHub](https://github.com/istio/istio/tree/1.24.2/manifests/profiles)
+> - [Istioのインストール、サイドカープロキシ（Envoy）の挿入、マイクロサービスの可視化：Cloud Nativeチートシート（10） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2111/05/news005.html)
 > - https://betterprogramming.pub/getting-started-with-istio-on-kubernetes-e582800121ea
 
 <br>
@@ -101,8 +101,8 @@ $ istioctl analyze
 Info [IST0118] (Service default/foo-service) Port name (port: 80, targetPort: 80) doesn't follow the naming convention of Istio port.
 ```
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze
-> - https://jimmysong.io/blog/istio-configuration-safety-common-misconfigurations/#istioctl-analyze
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-analyze)
+> - [Istio Configuration Security: How to Avoid Misconfigurations …](https://jimmysong.io/blog/istio-configuration-safety-common-misconfigurations/#istioctl-analyze)
 
 <br>
 
@@ -136,7 +136,7 @@ $ istioctl x uninstall --purge
 
 プロファイルをインストールし、加えて設定値を変更する。
 
-> - https://istio.io/latest/docs/setup/install/istioctl/
+> - [Istio / Install with Istioctl](https://istio.io/latest/docs/setup/install/istioctl/)
 
 <br>
 
@@ -148,7 +148,7 @@ IstioOperator のマニフェストを送信し、Kubernetes リソースを作�
 $ istioctl install -y -f ./istio-operator.yaml
 ```
 
-> - https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile
+> - [Istio / Install with Istioctl](https://istio.io/latest/docs/setup/install/istioctl/#install-istio-using-the-default-profile)
 
 <br>
 
@@ -174,7 +174,7 @@ $ istioctl install -y --set meshConfig.accessLogFile=/dev/stdout
 $ istioctl install -y --set profile=demo
 ```
 
-> - https://istio.io/latest/docs/setup/additional-setup/config-profiles/
+> - [Istio / Installation Configuration Profiles](https://istio.io/latest/docs/setup/additional-setup/config-profiles/)
 
 #### ▼ `revision`
 
@@ -251,7 +251,7 @@ horizontalpodautoscaler.autoscaling/istio-ingressgateway   Deployment/istio-ingr
 horizontalpodautoscaler.autoscaling/istiod-1-10-0          Deployment/istiod-1-10-0          <unknown>/80%   1         5         1          35m
 ```
 
-- https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
+- [Istio / Canary Upgrades](https://istio.io/latest/docs/setup/upgrade/canary/#control-plane)
 
 <br>
 
@@ -263,8 +263,8 @@ istio-proxy を手動でインジェクションする。
 
 代わりに、`enabled` 値が割り当てられた `.metadata.labels.istio-injection` キーを Namespace に付与してもよい。
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject
-> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-kube-inject)
+> - [Istio / Installing the Sidecar](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#manual-sidecar-injection)
 
 <br>
 
@@ -284,7 +284,7 @@ $ istioctl kube-inject -f pod.yaml
 
 yml ファイルの差分を取得する。
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-manifest-diff)
 
 ```bash
 $ istioctl manifest diff <変更前マニフェストへのパス> <変更後マニフェストへのパス>
@@ -315,7 +315,7 @@ Operator controller will watch namespaces: istio-system
 
 Istio のプロファイルを操作する。
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-profile)
 
 <br>
 
@@ -351,9 +351,9 @@ Istio 上で管理される Envoy の構成情報を取得する。
 $ istioctl proxy-config <設定項目> <Pod名> -n <Namespace名>
 ```
 
-> - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config
-> - https://sreake.com/blog/istio/
+> - [Istio / Debugging Envoy and Istiod](https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration)
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config)
+> - [Istio の timeout, retry, circuit breaking, etc \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio/)
 
 <br>
 
@@ -479,8 +479,8 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 ...
 ```
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-cluster
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#supported-service-discovery-types
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-cluster)
+> - [Service discovery — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#supported-service-discovery-types)
 
 `yaml` 形式で取得すれば、より詳細な設定値を確認できる。
 
@@ -506,8 +506,8 @@ $ istioctl proxy-config cluster foo-pod \
     serviceName: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
 ```
 
-> - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
-> - https://www.amazon.co.jp/Istio-Action-Christian-Posta/dp/1617295825
+> - [Istio / Debugging Envoy and Istiod](https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration)
+> - [Amazon \| Istio in Action \| Posta, Christian E., Maloku, Rinor \| Software Development](https://www.amazon.co.jp/Istio-Action-Christian-Posta/dp/1617295825)
 
 #### ▼ --fqdn
 
@@ -562,7 +562,7 @@ unix://./etc/istio/proxy/SDS                         HEALTHY     OK             
 unix://./etc/istio/proxy/XDS                         HEALTHY     OK                xds-grpc
 ```
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-endpoint
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-endpoint)
 
 `yaml` 形式で取得すれば、より詳細な設定値を確認できる。
 
@@ -617,7 +617,7 @@ $ istioctl proxy-config endpoints foo-pod \
 ...
 ```
 
-> - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
+> - [Istio / Debugging Envoy and Istiod](https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration)
 
 #### ▼ --cluster
 
@@ -656,7 +656,7 @@ ADDRESS               PORT                          MATCH                       
 172.16.0.3            50003                         ALL                                   Cluster: outbound|50003|v1|baz-service.baz-namespace.svc.cluster.local
 ```
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-listener
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-listener)
 
 <br>
 
@@ -691,7 +691,7 @@ NAME                         DOMAINS                                     MATCH  
 ...
 ```
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-route
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-config-route)
 
 `yaml` 形式で取得すれば、より詳細な設定値を確認できる。
 
@@ -807,7 +807,7 @@ $ istioctl proxy-config routes foo-pod \
 ...
 ```
 
-> - https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration
+> - [Istio / Debugging Envoy and Istiod](https://istio.io/latest/docs/ops/diagnostic-tools/proxy-cmd/#deep-dive-into-envoy-configuration)
 
 #### ▼ --name
 
@@ -839,7 +839,7 @@ $ istioctl x precheck
   To get started, check out https://istio.io/latest/docs/setup/getting-started/
 ```
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-experimental-precheck
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-experimental-precheck)
 
 ## tag
 
@@ -851,8 +851,8 @@ Namespace の `.metadata.labels.istio.io/rev` キーの値を書き換えずに�
 
 具体的には、MutatingWebhookConfiguration の `.metadata.labels` キーにあるエイリアス (`istio.io/tag` キーの値) と、エイリアスの実体 (`.metadata.labels.istio.io/rev` キーの値) を操作する。
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag
-> - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag)
+> - [Istio / Announcing Support for 1.8 to 1.10 Direct Upgrades](https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110)
 > - https://fabianlee.org/2021/09/20/istio-canary-upgrade-of-operator-between-istio-1-7-and-1-8/
 
 <br>
@@ -881,7 +881,7 @@ $ istioctl tag generate default --revision 1-10-0
 $ istioctl tag generate default --revision 1-0-1
 ```
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-tag-generate)
 
 <br>
 
@@ -1052,7 +1052,7 @@ bar-pod.default                           SYNCED     SYNCED     SYNCED     SYNCE
 baz-pod.default                           SYNCED     SYNCED     SYNCED     SYNCED       istiod-*****     1.12.1
 ```
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-proxy-status)
 
 <br>
 
@@ -1073,7 +1073,7 @@ This will install the Istio <バージョンタグ> default profile with ["Istio
 ✅ Installation complete                                                                                                                                                                                      Making this installation the default for injection and validation.
 ```
 
-> - https://istio.io/latest/docs/setup/upgrade/in-place/
+> - [Istio / In-place Upgrades](https://istio.io/latest/docs/setup/upgrade/in-place/)
 
 <br>
 
@@ -1099,7 +1099,7 @@ Checked 3 Istio Deployments
 ✅ Istio is installed and verified successfully
 ```
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-verify-install)
 
 <br>
 

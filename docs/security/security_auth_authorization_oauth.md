@@ -36,7 +36,7 @@ OAuth は認可フェーズのみで構成されているため、間違って�
 | 認可サーバー       | 認可     | リフレッシュトークンを含むアクセストークンを発行するサーバーのこと。 | 認可サーバーがリダイレクト先のクライアントアプリケーションの URL をレスポンスに割り当てられるように、クライアントアプリケーションの開発者が URL を事前登録しておく必要がある。認可サーバーを利用する開発者用に、コンソール画面が用意されていることが多い。<br>https://qiita.com/TakahikoKawasaki/items/8567c80528da43c7e844 |
 | リソースサーバー   | 認可     | 連携先アカウントを提供するサーバーのこと。                           |                                                                                                                                                                                                                                                                                                                             |
 
-> - https://ssaits.jp/promapedia/technology/oauth.html
+> - [OAuth認可とは何か？Webサービス間の認可連携の仕組みを解説 \| Promapedia（プロマペディア）｜プロジェクトマネジメント用語辞典](https://ssaits.jp/promapedia/technology/oauth.html)
 
 <br>
 
@@ -54,7 +54,7 @@ OAuth には、仕組み別に『認可コードフロー』『暗黙的フロ�
 
 アクセストークンの情報 (署名部分、有効期限、発行元など) から、アクセストークンの署名を検証できる。
 
-> - https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE
+> - [JWTの署名とか検証って結局なんやねん！を簡単に解説！ #初心者 - Qiita](https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE)
 
 <br>
 
@@ -78,9 +78,9 @@ OAuth には脆弱性があるが、OIDC であればこれに対処できる。
 
 ![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
 
-> - https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
+> - [一番分かりやすい OpenID Connect の説明 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe)
 > - https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-2
-> - https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B
+> - [OAuth認証の脆弱性とOpenIDConnectでなぜ解決されるのか分かりやすく解説](https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B)
 
 <br>
 
@@ -108,7 +108,7 @@ OAuth では、認証スキーマとして Bearer 認証の採用例が多い。
 | Implicit Grant           | 非推奨である。<br>https://oauth.net/2/grant-types/implicit/                                                                                                                                                                             |                                                                                                                                                           |
 | Password Grant           | ユーザー名とパスワードを照合し、アクセストークンを付与する。非推奨である。<br>・https://oauth.net/2/grant-types/password/<br>・https://developer.okta.com/blog/2018/06/29/what-is-the-oauth2-password-grant#the-oauth-20-password-grant | Laravel の Password Grant Token 機能は、Password Grant タイプを使用している。<br>https://readouble.com/laravel/8.x/ja/passport.html#password-grant-tokens |
 
-> - https://oauth.net/2/grant-types/
+> - [OAuth Grant Types](https://oauth.net/2/grant-types/)
 
 <br>
 
@@ -122,7 +122,7 @@ OAuth では、認証スキーマとして Bearer 認証の採用例が多い。
 
 > - https://cloudentity.com/developers/basics/oauth-grant-types/authorization-code-flow/
 > - https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
-> - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f
+> - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f)
 
 <br>
 
@@ -136,7 +136,7 @@ OIDC ではなく OAuth のため、ID トークンではなく、リフレッ�
 
 ![oauth_authorization-code_facebook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code_facebook.png)
 
-> - https://contents.saitolab.org/oauth/
+> - [OAuthの仕組み丸分かり体験サイト](https://contents.saitolab.org/oauth/)
 
 #### ▼ ブラウザ ⇄ SSO でログインしたい Web サイト
 
@@ -169,7 +169,7 @@ HOST: authorization-server.com # 認可サーバーのホスト
 | `code_challenge`       | チャレンジ           |                                 | 任意                        |
 | `code_challege_method` | メソッド             |                                 | 任意                        |
 
-> - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
+> - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#11-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88)
 
 `(3)`
 
@@ -202,7 +202,7 @@ Location: https://www.免許証作成サイト.com/callback?code=<認可コー�
 | `code`                       | 認可コード   |     | 必須                                                                   |
 | `state`                      | 任意の文字列 |     | 認可リクエストのクエリストリングで、`state` キーが使用されていれば必須 |
 
-> - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#12-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9
+> - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#12-%E8%AA%8D%E5%8F%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9)
 
 #### ▼ ブラウザ ⇄ SSO でログインしたい Web サイト ⇄ 認証フェーズの委譲先の Web サイト
 
@@ -234,7 +234,7 @@ Content-Type: application/x-www-form-urlencoded
 | `client_id`        | クライアント ID          | `foo-client`                   | 条件により必須                                                                           |
 | `client_secret`    | クライアントシークレット | `*****`                        | 条件により必須                                                                           |
 
-> - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88
+> - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#13-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%B8%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88)
 
 `(8)`
 
@@ -262,7 +262,7 @@ Pragma: no-cache
 }
 ```
 
-> - https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9
+> - [OAuth 2.0 全フローの図解と動画 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/200951e5b5929f840a1f#14-%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%8B%E3%82%89%E3%81%AE%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9)
 
 `(10)`
 
@@ -294,6 +294,6 @@ Pragma: no-cache
 アクセストークンの失効期限をリフレッシュトークンで管理する方法である。
 
 > - https://cloudentity.com/developers/basics/oauth-grant-types/refresh-token-flow/
-> - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#1-oauth-20-rfc-6749
+> - [OAuth & OpenID Connect 関連仕様まとめ #openid\_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#1-oauth-20-rfc-6749)
 
 <br>

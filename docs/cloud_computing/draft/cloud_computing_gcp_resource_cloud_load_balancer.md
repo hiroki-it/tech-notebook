@@ -9,7 +9,7 @@ description: Load Balancer＠Google Cloudリソースの知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -57,12 +57,12 @@ Load Balancer は、通過したリクエストにヘッダーを付与する。
 - `X-Cloud-Trace-Context`: `<trace-id>/<span-id>;<trace-options>` (リクエストのみ)
 - `X-Forwarded-For`: `[<supplied-value>,]<client-ip>,<load-balancer-ip>` (リクエストのみ)
 
-> - https://cloud.google.com/load-balancing/docs/https?hl=ja#target-proxies
+> - [外部アプリケーション ロードバランサの概要 \| Cloud Load Balancing \| Google Cloud Documentation](https://cloud.google.com/load-balancing/docs/https?hl=ja#target-proxies)
 
 #### ▼ X-Cloud-Trace-Context
 
 Google Cloud 独自の仕様である。
 
-> - https://cloud.google.com/trace/docs/trace-context?hl=ja#context-propagation-protocols
+> - [トレース コンテキスト \| Cloud Trace \| Google Cloud Documentation](https://cloud.google.com/trace/docs/trace-context?hl=ja#context-propagation-protocols)
 
 <br>

@@ -9,7 +9,7 @@ description: Ceph＠ストレージ系ミドルウェアの知見を記録して
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: Ceph＠ストレージ系ミドルウェアの知見を記録して
 
 さまざまなストレージ (ブロックストレージ、ファイルストレージ、オブジェクトストレージ) として機能する。
 
-> - https://docs.ceph.com/en/reef/
+> - [Welcome to Ceph — Ceph Documentation](https://docs.ceph.com/en/reef/)
 
 <br>
 
@@ -27,7 +27,7 @@ description: Ceph＠ストレージ系ミドルウェアの知見を記録して
 
 記入中...
 
-> - https://docs.ceph.com/en/reef/architecture/
+> - [Architecture — Ceph Documentation](https://docs.ceph.com/en/reef/architecture/)
 
 <br>
 

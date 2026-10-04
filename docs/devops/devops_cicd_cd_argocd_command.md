@@ -9,7 +9,7 @@ description: コマンド＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -33,7 +33,7 @@ $ argocd app create foo-application \
     --sync-option CreateNamespace=false
 ```
 
-> - https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/
+> - [Argocd app create - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/release-1.8/user-guide/commands/argocd_app_create/)
 
 <br>
 
@@ -57,8 +57,8 @@ $ argocd app delete <ArgoCDのアプリケーション名> --cascade=true
 $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/faq/
-> - https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/
+> - [FAQ - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/faq/)
+> - [kubernetes – カスケード削除(連鎖削除) \| HYOUBLOG](https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/)
 
 代わりに、`kubectl` コマンドを使用して ArgoCD の Application を削除してもよい。
 
@@ -66,7 +66,7 @@ $ argocd app delete <ArgoCDのアプリケーション名> --cascade=false
 $ kubectl delete app <ArgoCDのアプリケーション名>
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl
+> - [App Deletion - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#deletion-using-kubectl)
 
 <br>
 
@@ -104,7 +104,7 @@ $ argocd app set foo-application --sync-policy automated
 $ argocd app sync foo-application --project foo-project
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_app_sync/
+> - [argocd app sync Command Reference - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_app_sync/)
 
 #### ▼ --dry-run
 
@@ -120,7 +120,7 @@ $ argocd app sync foo-application --dry-run --project foo-project
 $ argocd app sync foo-application --local=<ディレクトリへのパス> --project foo-project
 ```
 
-> - https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836
+> - [How to sync local changes with argocd · Issue #839 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/839#issuecomment-452270836)
 
 <br>
 
@@ -144,7 +144,7 @@ https://*.*.*.*                 3      Successful  35                282        
 https://kubernetes.default.svc  0      Successful  1                 10          3192
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/
+> - [Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/)
 
 <br>
 
@@ -232,8 +232,8 @@ SSO でログインする。
 $ argocd login <ArgoCDのドメイン名> --sso --sso-port 465
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_login/
-> - https://github.com/argoproj/argo-cd/issues/4104#issuecomment-685454997
+> - [argocd login Command Reference - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_login/)
+> - [Can't login with argocd cli when using oidc sso · Issue #4104 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/4104#issuecomment-685454997)
 
 <br>
 
@@ -245,7 +245,7 @@ application-controller を操作するコマンドである。
 
 application-controller のコンテナの起動コマンドとしても使われている。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
+> - [argocd-application-controller Command Reference - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/)
 
 <br>
 
@@ -279,7 +279,7 @@ argocd-server を操作するコマンドである。
 
 argocd-server のコンテナの起動コマンドとしても使われている。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-server/
+> - [argocd-server Command Reference - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-server/)
 
 <br>
 

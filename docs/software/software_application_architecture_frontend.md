@@ -27,7 +27,7 @@ description: フロントエンドアーキテクチャ＠フロントエンド�
 
 - SSR
 
-> - http://fluorite2.sblo.jp/article/189587309.html
+> - [SSRアプリではMVCが主流で、SPAではMVVMが主流、だとしてそれは何故だろうか？: ほしまど のweblog](http://fluorite2.sblo.jp/article/189587309.html)
 
 <br>
 
@@ -41,7 +41,7 @@ Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 | pages                  | Pages                       |
 | layouts                | Templates                   |
 
-> - https://tec.tecotec.co.jp/entry/2020/03/27/090000
+> - [Nuxt.jsにおけるAtomic Designを考える - テコテック開発者ブログ](https://tec.tecotec.co.jp/entry/2020/03/27/090000)
 
 <br>
 
@@ -66,10 +66,10 @@ Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
    └─ api/
 ```
 
-> - https://feature-sliced.design/ja/docs/get-started/overview
-> - https://zenn.dev/moneyforward/articles/e1ed48c3974811
+> - [概要 \| Feature-Sliced Design](https://feature-sliced.design/ja/docs/get-started/overview)
+> - [個人的におすすめしたいFeature-Sliced Designというフロントエンドアーキテクチャ設計方法論](https://zenn.dev/moneyforward/articles/e1ed48c3974811)
 > - https://feature-sliced.github.io/documentation/examples
-> - https://github.com/feature-sliced/documentation
+> - [GitHub - feature-sliced/documentation: Architectural methodology for frontend projects · GitHub](https://github.com/feature-sliced/documentation)
 
 <br>
 
@@ -79,7 +79,7 @@ Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 
 やめましょう。
 
-> - https://panda-program.com/posts/clean-architecture-and-frontend
+> - [クリーンアーキテクチャはなぜフロントエンドに合わないのか - パンダのプログラミングブログ](https://panda-program.com/posts/clean-architecture-and-frontend)
 
 <br>
 
@@ -113,15 +113,15 @@ Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 
 各 `iframe` タグが表示したいコンポーネントの URL を `src` タグで指定する。
 
-> - https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaIframes
+> - [Micro Frontends](https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaIframes)
 
 #### ▼ `script` タグ
 
-> - https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaJavascript
+> - [Micro Frontends](https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaJavascript)
 
 #### ▼ web コンポーネント
 
-> - https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaWebComponents
+> - [Micro Frontends](https://martinfowler.com/articles/micro-frontends.html#Run-timeIntegrationViaWebComponents)
 
 <br>
 
@@ -129,7 +129,7 @@ Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 
 #### ▼ エッジサイド合成パターンとは
 
-> - https://martinfowler.com/articles/micro-frontends.html#Build-timeIntegration
+> - [Micro Frontends](https://martinfowler.com/articles/micro-frontends.html#Build-timeIntegration)
 
 <br>
 
@@ -139,6 +139,6 @@ Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 
 サーバーサイド側 (ブラウザ上) で、静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) を合成する。
 
-> - https://martinfowler.com/articles/micro-frontends.html#Server-sideTemplateComposition
+> - [Micro Frontends](https://martinfowler.com/articles/micro-frontends.html#Server-sideTemplateComposition)
 
 <br>

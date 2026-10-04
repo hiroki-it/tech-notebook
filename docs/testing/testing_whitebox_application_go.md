@@ -9,7 +9,7 @@ description: Goのテストツール＠アプリケーションのホワイト�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -53,8 +53,8 @@ description: Goのテストツール＠アプリケーションのホワイト�
 | gosec       |          |      |
 
 > - https://golangci-lint.run/usage/linters/
-> - https://go.dev/blog/vuln
-> - https://forum.golangbridge.org/t/sast-tools-for-golang/32325/3
+> - [Vulnerability Management for Go - The Go Programming Language](https://go.dev/blog/vuln)
+> - [SAST tools for Golang - #3 by bluefire - Getting Help - Go Forum](https://forum.golangbridge.org/t/sast-tools-for-golang/32325/3)
 
 #### ▼ コード規約違反
 
@@ -191,7 +191,7 @@ func TestFoo_ShouldReturnSuccess_WhenSomethingSucceeds(t *testing.T) {
 }
 ```
 
-> - https://github.com/golang/go/wiki/TableDrivenTests
+> - [TableDrivenTests · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/TableDrivenTests)
 
 <br>
 

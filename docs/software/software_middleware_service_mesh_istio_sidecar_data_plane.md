@@ -25,7 +25,7 @@ description: データプレーン＠Istioサイドカーの知見を記録し�
 
 UDP には対応していない。
 
-> - https://istio.io/latest/docs/ops/deployment/architecture/
+> - [Istio / Architecture](https://istio.io/latest/docs/ops/deployment/architecture/)
 > - https://techblog.zozo.com/entry/zozotown-istio-production-ready
 > - https://www.amazon.co.jp/dp/1617295825
 
@@ -41,7 +41,7 @@ UDP には対応していない。
 
 ![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-init.png)
 
-> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> - [Istio Sidecar's interception mechanism for traffic - SoByte](https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process)
 
 <br>
 
@@ -156,7 +156,7 @@ Istio`v1.9` までは `127.0.0.1` で、`v1.10` から `127.0.0.6` になった�
 > - https://docs.google.com/document/d/1j-5_XpeMTnT9mV_8dbSOeU7rfH-5YNtN_JJFZ2mmQ_w
 > - https://github.com/istio/istio/issues/29603
 > - https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/
-> - https://engineering.mercari.com/blog/entry/20211021-istio1-10-inbound-fowarding/
+> - [iptables から理解する Istio 1.10 から変更された Inbound Forwarding \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/20211021-istio1-10-inbound-fowarding/)
 
 #### ▼ Pod 外からのインバウンド通信の場合
 
@@ -166,7 +166,7 @@ istio-proxy はこれを受信し、ローカルホスト (`http://127.0.0.6:<�
 
 ![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png)
 
-> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> - [Istio Sidecar's interception mechanism for traffic - SoByte](https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process)
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-1-remote-pod---local-pod
 
 #### ▼ Pod 外へのアウトバウンド通信の場合
@@ -177,7 +177,7 @@ istio-proxy はこれを受信し、ローカルホスト (`http://127.0.0.6:<�
 
 ![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_other.png)
 
-> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> - [Istio Sidecar's interception mechanism for traffic - SoByte](https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process)
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-2-local-pod---remote-pod
 
 #### ▼ ローカルホスト通信の場合
@@ -226,7 +226,7 @@ Istio のサービスメッシュ外のネットワークからのインバウ�
 
 > - https://github.com/istio/istio/blob/1.14.3/pilot/docker/Dockerfile.proxyv2
 > - https://www.amazon.co.jp/dp/1617295825
-> - https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process
+> - [Istio Sidecar's interception mechanism for traffic - SoByte](https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process)
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/
 
 #### ▼ 起動／終了の順番の制御
@@ -274,7 +274,7 @@ spec:
             preStop:
               exec:
                 # istio-proxy コンテナが、必ずマイクロサービスよりも後に終了する。
-                # envoy プロセスと pilot-agent プロセスの終了を待機する。
+                # マイクロサービスのプロセスがポートの待ち受けを終了するまで待機する。
                 command:
                   - "/bin/bash"
                   - "-c"
@@ -285,8 +285,8 @@ spec:
       terminationGracePeriodSeconds: 45
 ```
 
-> - https://sreake.com/blog/istio-proxy-stop-behavior/
-> - https://umi0410.github.io/en/blog/devops/istio-exit-on-zero-active-connections/
+> - [istio-proxy 停止時の挙動 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio-proxy-stop-behavior/)
+> - [When your istio proxy containers terminate before your application containers gracefully shutdown, try configuring EXIT\_ON\_ZERO\_ACTIVE\_CONNECTIONS \| Software Engineer - Jinsu Park](https://umi0410.github.io/en/blog/devops/istio-exit-on-zero-active-connections/)
 
 #### ▼ InitContainer として
 
@@ -348,7 +348,7 @@ istio-cni を使用する場合、iptables の設定はノード上の istio-cni
 > - https://tanzu.vmware.com/developer/guides/service-routing-istio-refarch/
 > - https://www.redhat.com/architect/istio-CNI-plugin
 > - https://istio.io/latest/docs/setup/additional-setup/cni/#race-condition-mitigation
-> - https://en.wikipedia.org/wiki/Iptables
+> - [iptables - Wikipedia](https://en.wikipedia.org/wiki/Iptables)
 
 #### ▼ istio-cni とは
 
@@ -359,7 +359,7 @@ istio-cni は、CNI プラグインのバイナリと設定を Node 上のファ
 Kubernetes の Pod 作成時に、CNI の仕組みを介して Pod のネットワーク名前空間に iptables を設定する。
 
 > - https://www.solo.io/blog/traffic-ambient-mesh-istio-cni-node-configuration
-> - https://istio.io/latest/docs/setup/additional-setup/cni/
+> - [Istio / Install the Istio CNI node agent](https://istio.io/latest/docs/setup/additional-setup/cni/)
 
 #### ▼ `istio-validation` コンテナ
 
@@ -381,11 +381,11 @@ istio-cni の DaemonSet が istio-iptables を適用し終了することを待�
 
 実体は、GitHub の `pilot-agent` ディレクトリ配下の `main.go` ファイルで実行される Go のバイナリファイルである。
 
-ADS-API との間で双方向ストリーミング RPC を確立し、Envoy からの ADS-API へのリクエストと反対に ADS-API からのリクエストを中継する。
+ADS-API との間で双方向ストリーミング RPC を確立し、Envoy から ADS-API へのリクエストと、ADS-API から返される Envoy 設定値を中継する。
 
 > - https://rocdu.gitbook.io/deep-understanding-of-istio/6/5
-> - https://www.jianshu.com/p/60e45bc9c4ac
-> - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
+> - [\[istio源码分析\]\[pilot\] pilot之ads - 简书](https://www.jianshu.com/p/60e45bc9c4ac)
+> - [Istio Pilot代码深度解析 \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/)
 > - https://www.oreilly.com/library/view/the-enterprise-path/9781492041795/ch04.html
 
 #### ▼ ADS クライアントの実装
@@ -435,7 +435,7 @@ func (a *ADSC) Run() error {
 
 	a.RecvWg.Add(1)
 
-	// ADS-APIからリクエストを受信し、Envoyの各処理コンポーネント別に整理する。
+	// ADS-APIからEnvoy設定値を受信し、設定の種類別に整理する。
 	go a.handleRecv()
 
 	return nil
@@ -540,9 +540,9 @@ func GetXdsResponse(dr *discovery.DiscoveryRequest, ns string, serviceAccount st
 
 #### ▼ Envoy とは
 
-istio-proxy にて、リバースプロキシとして動作する。Envoy は、pilot-agent を介して、ADS-API にリモートプロシージャーコールを実行する。また反対に、XDS-API からのリモートプロシージャーコールを pilot-agent を介して受信する。
+istio-proxy にて、リバースプロキシとして動作する。Envoy は、pilot-agent を介して、ADS-API にリモートプロシージャーコールを実行する。そのストリーミング通信で、ADS-API から返される Envoy 設定値を pilot-agent を介して取得する。
 
-> - https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/
+> - [Istio Pilot代码深度解析 \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2019-10-21-pilot-discovery-code-analysis/)
 > - https://www.programmersought.com/article/5797698845/
 > - https://blog.51cto.com/wangguishe/5800533
 
@@ -554,7 +554,7 @@ istio-proxy にて、リバースプロキシとして動作する。Envoy は�
 
 istio-proxy は、`10` 分以上起動が完了しないと、Pod が終了する。
 
-> - https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default
+> - [Istio / Istio 1.20 Upgrade Notes](https://istio.io/latest/news/releases/1.20.x/announcing-1.20/upgrade-notes/#startupprobe-added-to-sidecar-by-default)
 
 #### ▼ マイクロサービスの HTTP ヘルスチェック
 
@@ -572,8 +572,8 @@ Istio のパケット暗号化で相互 TLS を導入している場合、istio-
 
 なお、Pod の `.metadata.annotations` に `sidecar.istio.io/rewriteAppHTTPProbers: "false"` を設定しておくと、これを無効化できる。
 
-> - https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/
-> - https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B
+> - [Istio / Health Checking of Istio Services](https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/)
+> - [istio: 健康检查](https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B)
 
 #### ▼ マイクロサービスの TCP ヘルスチェック
 
@@ -585,8 +585,8 @@ kubelet は、対象のポート番号でプロセスがリクエストを待ち
 
 これにより、kueblet がマイクロサービスに TCP ヘルスチェックを実施できるようになる。
 
-> - https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/
-> - https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B
+> - [Istio / Health Checking of Istio Services](https://istio.io/latest/docs/ops/configuration/mesh/app-health-check/)
+> - [istio: 健康检查](https://ieevee.com/tech/2022/06/27/10-health-check.html#%E5%81%A5%E5%BA%B7%E7%9B%91%E6%B5%8B)
 
 <br>
 
@@ -612,7 +612,7 @@ istio-proxy は、Envoy プロセスを安全に停止するためにドレイ�
 
 : Envoy の終了後に pilot-agent が終了し、istio-proxy が終了する。
 
-> - https://sreake.com/blog/istio-proxy-stop-behavior/
+> - [istio-proxy 停止時の挙動 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio-proxy-stop-behavior/)
 > - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
 > - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
 
@@ -682,7 +682,7 @@ istio-proxy の `15021` 番ポートでは、kubelet からの ReadinessProbe �
 istio-proxy 内の Envoy が、`/healthz/ready` エンドポイントで ReadinessProbe ヘルスチェックを待ち受けており、もし Envoy が停止してれば `503` レスポンスを返却する。
 
 > - https://jimmysong.io/en/blog/istio-components-and-ports/#ports-in-sidecar
-> - https://sreake.com/blog/istio-proxy-stop-behavior/
+> - [istio-proxy 停止時の挙動 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio-proxy-stop-behavior/)
 
 <br>
 

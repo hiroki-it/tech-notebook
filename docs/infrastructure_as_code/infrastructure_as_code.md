@@ -9,7 +9,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 構成ファイルの実装に基づくプロビジョニングによって、インフラ (ハードウェア、OS、そしてミドルウェア) を管理する手法のこと。
 
-> - https://en.wikipedia.org/wiki/Infrastructure_as_code
+> - [Infrastructure as code - Wikipedia](https://en.wikipedia.org/wiki/Infrastructure_as_code)
 
 <br>
 
@@ -85,9 +85,9 @@ description: IaC：Infrastructure as Codeの知見を記録しています。
 
 一方で、順番さえ理解していれば、構成ファイルを簡単に実装できるため、学習コストが低い。
 
-> - https://ja.wikipedia.org/wiki/Infrastructure_as_Code
+> - [Infrastructure as Code - Wikipedia](https://ja.wikipedia.org/wiki/Infrastructure_as_Code)
 > - https://techblog.locoguide.co.jp/entry/2021/05/24/145342
-> - https://architecting.hateblo.jp/entry/2020/03/22/020137
+> - [オーケストレーションツールと構成管理ツール - プログラミング初心者がアーキテクトっぽく語る](https://architecting.hateblo.jp/entry/2020/03/22/020137)
 
 <br>
 
@@ -102,7 +102,7 @@ OS とミドルウェアのプロビジョニングが得意であり、クラ�
 - Ansible
 - Chef
 
-> - https://www.lac.co.jp/lacwatch/service/20201216_002380.html
+> - [TerraformとAnsible～それぞれの得意領域と使い分け～ \| LAC WATCH](https://www.lac.co.jp/lacwatch/service/20201216_002380.html)
 
 <br>
 
@@ -139,7 +139,7 @@ OS とミドルウェアのプロビジョニングが得意であり、クラ�
 
 その一方で、最終的な状態を定義しさえすれば、作成/更新/削除の順序はツールが解決してくれるため、インフラの構成管理のコストが少ない。
 
-> - https://ja.wikipedia.org/wiki/Infrastructure_as_Code
+> - [Infrastructure as Code - Wikipedia](https://ja.wikipedia.org/wiki/Infrastructure_as_Code)
 > - https://techblog.locoguide.co.jp/entry/2021/05/24/145342
 
 <br>
@@ -156,7 +156,7 @@ OS とミドルウェアのプロビジョニングが得意であり、クラ�
 - Puppet
 - Vagrantfile
 
-> - https://www.lac.co.jp/lacwatch/service/20201216_002380.html
+> - [TerraformとAnsible～それぞれの得意領域と使い分け～ \| LAC WATCH](https://www.lac.co.jp/lacwatch/service/20201216_002380.html)
 
 #### ▼ マシンイメージプロビジョニング
 
@@ -189,8 +189,8 @@ OS とミドルウェアのプロビジョニングが得意であり、クラ�
 - Docker Swarm
 - Kubernetes
 
-> - https://qiita.com/kounan13/items/57adfbf3a5f209afa586
-> - https://knowledge.sakura.ad.jp/9473/
+> - [IaC関連ツールまとめ #kubernetes - Qiita](https://qiita.com/kounan13/items/57adfbf3a5f209afa586)
+> - [AnsibleでDockerコンテナを作成する「Ansible Container」を使ってみる \| さくらのナレッジ](https://knowledge.sakura.ad.jp/9473/)
 > - https://www.aquasec.com/cloud-native-academy/docker-container/docker-orchestration/
 
 <br>
@@ -211,7 +211,7 @@ OS とミドルウェアのプロビジョニングが得意であり、クラ�
 - Terraform
 - Vagrant
 
-> - https://www.lac.co.jp/lacwatch/service/20201216_002380.html
+> - [TerraformとAnsible～それぞれの得意領域と使い分け～ \| LAC WATCH](https://www.lac.co.jp/lacwatch/service/20201216_002380.html)
 
 #### ▼ クラウドインフライメージプロビジョニング
 
@@ -228,7 +228,7 @@ OS とミドルウェアのプロビジョニングが得意であり、クラ�
 サーバーを最終的な状態に至らせるまでに実行する一連の処理のこと。
 
 > - https://securesamba.com/term/%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0/
-> - https://www.redhat.com/ja/topics/automation/what-is-provisioning#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0
+> - [プロビジョニングとは](https://www.redhat.com/ja/topics/automation/what-is-provisioning#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0)
 
 <br>
 
@@ -278,7 +278,7 @@ OS とミドルウェアのプロビジョニングが得意であり、クラ�
 - Docker Swarm
 - Kubernetes
 
-> - https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/
+> - [Simplifying the mystery: When to use docker, docker-compose, docker swarm and Kubernetes - TechRepublic](https://www.techrepublic.com/article/simplifying-the-mystery-when-to-use-docker-docker-compose-and-kubernetes/)
 
 <br>
 

@@ -27,7 +27,7 @@ description: Vault＠セキュリティ系ミドルウェアの知見を記録�
 api_addr = "http://127.0.0.1:8200"
 ```
 
-> - https://blog.bedrock.day/c6c685ac64e211ed9870
+> - [Vaultで独自認証局を立てて一つの証明書で3大クラウドにMQTT接続する \| moritalous blog](https://blog.bedrock.day/c6c685ac64e211ed9870)
 
 <br>
 
@@ -37,7 +37,7 @@ api_addr = "http://127.0.0.1:8200"
 cluster_addr = "https://127.0.0.1:8201"
 ```
 
-> - https://blog.bedrock.day/c6c685ac64e211ed9870
+> - [Vaultで独自認証局を立てて一つの証明書で3大クラウドにMQTT接続する \| moritalous blog](https://blog.bedrock.day/c6c685ac64e211ed9870)
 
 <br>
 
@@ -47,7 +47,7 @@ cluster_addr = "https://127.0.0.1:8201"
 disable_mlock = true
 ```
 
-> - https://blog.bedrock.day/c6c685ac64e211ed9870
+> - [Vaultで独自認証局を立てて一つの証明書で3大クラウドにMQTT接続する \| moritalous blog](https://blog.bedrock.day/c6c685ac64e211ed9870)
 
 <br>
 
@@ -60,7 +60,7 @@ listener "tcp" {
 }
 ```
 
-> - https://blog.bedrock.day/c6c685ac64e211ed9870
+> - [Vaultで独自認証局を立てて一つの証明書で3大クラウドにMQTT接続する \| moritalous blog](https://blog.bedrock.day/c6c685ac64e211ed9870)
 
 <br>
 
@@ -73,7 +73,7 @@ storage "raft" {
 }
 ```
 
-> - https://blog.bedrock.day/c6c685ac64e211ed9870
+> - [Vaultで独自認証局を立てて一つの証明書で3大クラウドにMQTT接続する \| moritalous blog](https://blog.bedrock.day/c6c685ac64e211ed9870)
 
 <br>
 
@@ -83,6 +83,6 @@ storage "raft" {
 ui = true
 ```
 
-> - https://blog.bedrock.day/c6c685ac64e211ed9870
+> - [Vaultで独自認証局を立てて一つの証明書で3大クラウドにMQTT接続する \| moritalous blog](https://blog.bedrock.day/c6c685ac64e211ed9870)
 
 <br>

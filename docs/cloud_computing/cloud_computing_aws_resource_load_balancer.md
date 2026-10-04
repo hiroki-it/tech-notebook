@@ -9,7 +9,7 @@ description: LB＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,10 +24,10 @@ description: LB＠AWSリソースの知見を記録しています。
 | GLB：Gateway Load Balancer     | `L3` (ネットワーク層) 、`L4` | IP                             | IP アドレス、Amazon EC2 インスタンス         | 不可                      | IP アドレスフィールド、ポート番号フィールド | 不可                 |
 | CLB：Classic Load Balancer     | `L4`、`L7`                   | HTTP、HTTPS、TCP、SSL/TLS      | なし                                         | URL、HTTP ヘッダー        | IP アドレスフィールド、ポート番号フィールド | 可                   |
 
-> - https://aws.amazon.com/jp/elasticloadbalancing/features/
-> - https://faq.support.nifcloud.com/faq/show/420?site_domain=default
-> - https://www.infraexpert.com/study/tcpip8.html
-> - https://aws.amazon.com/jp/elasticloadbalancing/faqs/
+> - [ネットワークトラフィックディストリビューション - Elastic Load Balancing - アマゾン ウェブ サービス](https://aws.amazon.com/jp/elasticloadbalancing/features/)
+> - [ロードバランサー（L4）とL7ロードバランサー（Ivanti Virtual Traffic Man \| FJcloud-V FAQ](https://faq.support.nifcloud.com/faq/show/420?site_domain=default)
+> - [TCPヘッダとは](https://www.infraexpert.com/study/tcpip8.html)
+> - [ネットワークトラフィックディストリビューション - Elastic Load Balancing のよくある質問 - アマゾン ウェブ サービス](https://aws.amazon.com/jp/elasticloadbalancing/faqs/)
 
 <br>
 
@@ -322,7 +322,7 @@ ALB の実体で、各 ALB インスタンスが異なるグローバル IP ア�
 
 ![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb-instance.png)
 
-> - https://blog.takuros.net/entry/2019/08/27/075726
+> - [マルチAZ構成で単一AZの障害の影響を受けるのは何故か？ - プログラマでありたい](https://blog.takuros.net/entry/2019/08/27/075726)
 
 #### ▼ 割り当てられる IP アドレス
 
@@ -374,7 +374,7 @@ ALB を経由したリクエストには、リクエストヘッダーに `X-For
 SetEnvIf X-Forwarded-Proto https HTTPS=on
 ```
 
-> - https://www.d-wood.com/blog/2017/11/29_9354.html
+> - [AWS 上の WordPress が HTTPS で正常に表示されない場合の対処 \| DriftwoodJP](https://www.d-wood.com/blog/2017/11/29_9354.html)
 
 #### ▼ アプリケーションにおける対処方法
 
@@ -398,7 +398,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 }
 ```
 
-> - https://www.d-wood.com/blog/2017/11/29_9354.html
+> - [AWS 上の WordPress が HTTPS で正常に表示されない場合の対処 \| DriftwoodJP](https://www.d-wood.com/blog/2017/11/29_9354.html)
 
 <br>
 
@@ -408,7 +408,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 ターゲットに対するリクエストフォワーディング時の負荷分散方式を設定する。
 
-> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview
+> - [What is an Application Load Balancer? - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview)
 
 #### ▼ ラウンドロビン方式
 
@@ -418,7 +418,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 受信したリクエストを、未処理のリクエスト数がもっとも少ないターゲットにルーティングする。
 
-> - https://www.infraexpert.com/study/loadbalancer4.html
+> - [ロードバランサ - ロードバランシングの種類](https://www.infraexpert.com/study/loadbalancer4.html)
 
 #### ▼ スロースタート方式
 
@@ -426,7 +426,7 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要な JVM 言語製アプリケーション) にいきなり高負荷をかけないようにできる。
 
-> - https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/edit-target-group-attributes.html#slow-start-mode
+> - [Application Load Balancer のターゲットグループ属性を編集する - Elastic Load Balancing](https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/edit-target-group-attributes.html#slow-start-mode)
 > - https://aws.amazon.com/jp/about-aws/whats-new/2018/05/application-load-balancer-announces-slow-start-support/
 
 <br>
@@ -473,8 +473,8 @@ arn:aws:elasticloadbalancing:us-east-2:123456789012:targetgroup/my-targets/73e2d
 TID_123456
 ```
 
-> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-log-entry-examples
-> - https://dev.classmethod.jp/articles/alb-log-to-s3/#toc-1
+> - [Access logs for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-log-entry-examples)
+> - [ALBのアクセスログをS3に保存して中身を読み解いてみる \| DevelopersIO](https://dev.classmethod.jp/articles/alb-log-to-s3/#toc-1)
 
 <br>
 
@@ -490,7 +490,7 @@ AWS WAF をアタッチし、L7 を防御する。
 
 ALB、NLB、ではもともと実装されていたキューを廃止した経緯がある。
 
-> - https://repost.aws/ja/knowledge-center/elb-capacity-troubleshooting
+> - [Elastic Load Balancing 容量のトラブルシューティング \| AWS re:Post](https://repost.aws/ja/knowledge-center/elb-capacity-troubleshooting)
 > - https://stackoverflow.com/a/49421971
 
 <br>

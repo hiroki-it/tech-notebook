@@ -49,7 +49,7 @@ resources:
   - applicationset-crd.yaml
 ```
 
-> - https://github.com/argoproj/argo-cd/tree/master/manifests/crds
+> - [argo-cd/manifests/crds at master · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/tree/master/manifests/crds)
 
 <br>
 
@@ -104,7 +104,7 @@ spec:
 `overlays` ディレクトリ配下にあるファイルの処理方法を設定する。
 
 > - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
-> - https://qiita.com/Morix1500/items/d08a09b6c6e43efa191d
+> - [Kustomizeでできること一覧 #kubernetes - Qiita](https://qiita.com/Morix1500/items/d08a09b6c6e43efa191d)
 
 #### ▼ resources
 
@@ -176,9 +176,9 @@ Generator (例：SecretGenerator、ConfigMapGenerator) のプラグインは、�
 
 一歩で Transformer は、マニフェストを部分的に書き換える。
 
-> - https://github.com/kubernetes-sigs/kustomize/blob/master/examples/configureBuiltinPlugin.md
-> - https://blog.wnotes.net/posts/howto-make-kustomize-plugin
-> - https://www.techscore.com/blog/2019/08/01/change-kustomize-build-behavior/
+> - [kustomize/examples/configureBuiltinPlugin.md at master · kubernetes-sigs/kustomize · GitHub](https://github.com/kubernetes-sigs/kustomize/blob/master/examples/configureBuiltinPlugin.md)
+> - [kustomize pluginでmanifestを動的に操作する - blog::wnotes.net](https://blog.wnotes.net/posts/howto-make-kustomize-plugin)
+> - [kustomize の generator / transformer の振る舞いを変えてみる \| TECHSCORE BLOG](https://www.techscore.com/blog/2019/08/01/change-kustomize-build-behavior/)
 
 <br>
 
@@ -215,9 +215,9 @@ SOPS を使用して、復号したデータを Secret にデータを注入す�
 
 SOPS で使用できる暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGP など) を KSOPS でも使用できる。
 
-> - https://github.com/viaduct-ai/kustomize-sops/blob/v3.0.0/README.md#argo-cd-helm-chart-with-custom-tooling
-> - https://github.com/viaduct-ai/kustomize-sops/issues/117#issuecomment-852174964
-> - https://github.com/viaduct-ai/kustomize-sops/blob/master/Dockerfile
+> - [kustomize-sops/README.md at v3.0.0 · viaduct-ai/kustomize-sops · GitHub](https://github.com/viaduct-ai/kustomize-sops/blob/v3.0.0/README.md#argo-cd-helm-chart-with-custom-tooling)
+> - [build works with ksops-exec but not ksops · Issue #117 · viaduct-ai/kustomize-sops · GitHub](https://github.com/viaduct-ai/kustomize-sops/issues/117#issuecomment-852174964)
+> - [kustomize-sops/Dockerfile at master · viaduct-ai/kustomize-sops · GitHub](https://github.com/viaduct-ai/kustomize-sops/blob/master/Dockerfile)
 
 #### ▼ セットアップ
 
@@ -229,7 +229,7 @@ SOPS は内蔵されており、不要である。
 $ curl -s https://raw.githubusercontent.com/viaduct-ai/kustomize-sops/master/scripts/install-ksops-archive.sh | bash
 ```
 
-> - https://github.com/viaduct-ai/kustomize-sops/tree/master#1-download-and-install-ksops
+> - [GitHub - viaduct-ai/kustomize-sops: KSOPS - A Flexible Kustomize Plugin for SOPS Encrypted Resources · GitHub](https://github.com/viaduct-ai/kustomize-sops/tree/master#1-download-and-install-ksops)
 
 <br>
 

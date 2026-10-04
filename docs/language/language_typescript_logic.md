@@ -354,7 +354,7 @@ function foo(): string | unknown {
 }
 ```
 
-> - https://qiita.com/frozenbonito/items/e708dfb3ab7c1fd3824d
+> - [TypeScript のエラーハンドリングを考える #TypeScript - Qiita](https://qiita.com/frozenbonito/items/e708dfb3ab7c1fd3824d)
 
 #### ▼ any
 
@@ -379,7 +379,7 @@ function foo(): string | any {
 }
 ```
 
-> - https://qiita.com/frozenbonito/items/e708dfb3ab7c1fd3824d
+> - [TypeScript のエラーハンドリングを考える #TypeScript - Qiita](https://qiita.com/frozenbonito/items/e708dfb3ab7c1fd3824d)
 
 <br>
 
@@ -707,7 +707,7 @@ async function getUserNames(
 }
 ```
 
-> - https://zenn.dev/coconala/articles/reasons-for-continuing-to-learn#%E3%82%82%E3%81%97%E3%80%81%E3%81%93%E3%81%93%E3%81%BE%E3%81%A7%E3%81%AE%E3%81%99%E3%81%B9%E3%81%A6%E3%82%92%E5%AD%A6%E3%82%93%E3%81%A0%E3%82%89
+> - [同じ5行のコードが全く違って見える12の瞬間、なぜ私たちは学ぶのか？](https://zenn.dev/coconala/articles/reasons-for-continuing-to-learn#%E3%82%82%E3%81%97%E3%80%81%E3%81%93%E3%81%93%E3%81%BE%E3%81%A7%E3%81%AE%E3%81%99%E3%81%B9%E3%81%A6%E3%82%92%E5%AD%A6%E3%82%93%E3%81%A0%E3%82%89)
 
 <br>
 

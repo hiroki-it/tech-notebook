@@ -9,7 +9,7 @@ description: Incident Management＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -51,9 +51,9 @@ Amazon CloudWatch アラームのアラートを、Incident Manager にインシ
 
 : 問題を解決できれば、クローズに移行する。
 
-> - https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-creation.html
+> - [Creating incidents automatically or manually in Incident Manager - Incident Manager](https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-creation.html)
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-Black-Belt_2023_AWS-SystemsManager-IncidentManager_0430_v1.pdf#page=34
-> - https://blog.serverworks.co.jp/incidentmanager-automation-2
-> - https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=19
+> - [Incident ManagerとAutomationを使って運用自動化を試してみた -その2 - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/incidentmanager-automation-2)
+> - [Wantedlyの障害対応文化とインシデントコマンダー / Wantedly Incident Commander - Speaker Deck](https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=19)
 
 <br>

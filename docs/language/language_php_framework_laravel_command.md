@@ -9,7 +9,7 @@ description: コマンド＠Laravelの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: コマンド＠Laravelの知見を記録しています。
 
 アプリケーションの開発に役立つコマンドを提供する。
 
-> - https://readouble.com/laravel/8.x/ja/artisan.html
+> - [8.x Artisanコンソール Laravel](https://readouble.com/laravel/8.x/ja/artisan.html)
 
 <br>
 
@@ -154,7 +154,7 @@ $ php artisan migrate:rollback --step=1
 $ php artisan migrate
 ```
 
-> - https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+> - [8.x マイグレーション Laravel](https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations)
 
 #### ▼ reset
 
@@ -164,7 +164,7 @@ $ php artisan migrate
 $ php artisan migrate:reset
 ```
 
-> - https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations
+> - [8.x マイグレーション Laravel](https://readouble.com/laravel/8.x/ja/migrations.html#rolling-back-migrations)
 
 #### ▼ refresh
 
@@ -174,7 +174,7 @@ $ php artisan migrate:reset
 $ php artisan migrate:refresh
 ```
 
-> - https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command
+> - [8.x マイグレーション Laravel](https://readouble.com/laravel/8.x/ja/migrations.html#roll-back-migrate-using-a-single-command)
 
 #### ▼ fresh
 
@@ -196,7 +196,7 @@ DB マイグレーション時、テーブルがすでに存在するエラー�
 SQLSTATE[42S01]: <テーブル名> table or view already exists
 ```
 
-> - https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate
+> - [8.x マイグレーション Laravel](https://readouble.com/laravel/8.x/ja/migrations.html#drop-all-tables-migrate)
 
 #### ▼ --force
 
@@ -208,7 +208,7 @@ CI/CD パイプライン時に、この確認画面で Yes/No を入力できな
 $ php artisan migrate --force
 ```
 
-> - https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production
+> - [8.x マイグレーション Laravel](https://readouble.com/laravel/8.x/ja/migrations.html#forcing-migrations-to-run-in-production)
 
 <br>
 

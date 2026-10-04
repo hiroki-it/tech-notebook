@@ -9,7 +9,7 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,7 +25,7 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 configValidationMode: warn
 ```
 
-> - https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
+> - [Serverless Framework - AWS Lambda Guide - Serverless.yml Reference \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml)
 
 <br>
 
@@ -58,7 +58,7 @@ Serverless Framework のバージョンを設定する。
 frameworkVersion: "2"
 ```
 
-> - https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml
+> - [Serverless Framework - AWS Lambda Guide - Serverless.yml Reference \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/guide/serverless.yml)
 
 <br>
 
@@ -66,7 +66,7 @@ frameworkVersion: "2"
 
 ### functions とは
 
-> - https://www.serverless.com/framework/docs/providers/aws/guide/functions
+> - [Serverless Framework - AWS Lambda Functions \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/guide/functions)
 
 <br>
 
@@ -88,7 +88,7 @@ functions:
 
 Lambda 関数の変数を設定する。
 
-> - https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables
+> - [Serverless Framework - AWS Lambda Functions \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables)
 
 **＊実装例＊**
 
@@ -121,7 +121,7 @@ functions:
           pattern: ${file(./event_bridge/patterns/pattern.json)}
 ```
 
-> - https://www.serverless.com/framework/docs/providers/aws/events/event-bridge
+> - [Serverless Framework - AWS Lambda Events - Event Bridge \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/events/event-bridge)
 
 #### ▼ sqs
 
@@ -138,7 +138,7 @@ functions:
       - sqs:arn:aws:sqs:region:<AWSアカウントID>:prd-foo-queue
 ```
 
-> - https://www.serverless.com/framework/docs/providers/aws/events/sqs
+> - [Serverless Framework - AWS Lambda Events - SQS Queues \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/events/sqs)
 
 <br>
 
@@ -163,7 +163,7 @@ functions:
 
 Lambda 関数のリトライ回数を設定する。
 
-> - https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts
+> - [Serverless Framework - AWS Lambda Functions \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts)
 
 **＊実装例＊**
 
@@ -239,7 +239,7 @@ functions:
 
 作成されるアーティファクトのパスを設定する。
 
-> - https://www.serverless.com/framework/docs/providers/aws/guide/packaging
+> - [Serverless Framework - Packaging \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/guide/packaging)
 
 <br>
 
@@ -378,7 +378,7 @@ provider:
 
 ### resources とは (aws プロバイダーの場合)
 
-> - https://www.serverless.com/framework/docs/providers/aws/guide/resources
+> - [Serverless Framework - AWS Infrastructure Resources \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/guide/resources)
 
 <br>
 
@@ -420,7 +420,7 @@ resources:
 service: foo-service
 ```
 
-> - https://www.serverless.com/framework/docs/providers/aws/guide/services
+> - [Serverless Framework Services \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/guide/services)
 
 <br>
 

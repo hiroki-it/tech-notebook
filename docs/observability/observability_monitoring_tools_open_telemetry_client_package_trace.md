@@ -9,7 +9,7 @@ description: 分散トレース＠クライアントパッケージの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -99,10 +99,10 @@ func main()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace
-> - https://christina04.hatenablog.com/entry/opentelemetry-in-go
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=20
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=21
+> - [trace package - go.opentelemetry.io/otel/sdk/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace)
+> - [OpenTelemetryのTraceをGoで試してみる - Carpe Diem](https://christina04.hatenablog.com/entry/opentelemetry-in-go)
+> - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=20)
+> - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=21)
 
 <br>
 
@@ -182,7 +182,7 @@ func main()  {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.24.0/sdk/trace/provider.go#L37-L56
+> - [opentelemetry-go/sdk/trace/provider.go at v1.24.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.24.0/sdk/trace/provider.go#L37-L56)
 
 <br>
 
@@ -250,7 +250,7 @@ data:
   TRACE_ENABLED: "true"
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300
+> - [Disable opentelemetry-go based on a flag · open-telemetry/opentelemetry-go · Discussion #2659 · GitHub](https://github.com/open-telemetry/opentelemetry-go/discussions/2659#discussioncomment-2307300)
 
 #### ▼ NoopTracerProvider を使用する
 
@@ -272,9 +272,9 @@ type noopTracerProvider struct{
 }
 ```
 
-> - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/noop.go#L35
+> - [How to enable/disable opentelemetry tracing dynamically · open-telemetry/community · Discussion #1048 · GitHub](https://github.com/open-telemetry/community/discussions/1048#discussioncomment-5052458)
+> - [noop package - go.opentelemetry.io/otel/trace/noop - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/trace@v1.24.0/noop#NewTracerProvider)
+> - [opentelemetry-go/trace/noop.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/noop.go#L35)
 
 #### ▼ Sampler を無効化する
 
@@ -338,8 +338,8 @@ func newSampler() sdktrace.Sampler {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NeverSample
-> - https://github.com/open-telemetry/community/discussions/1048#discussioncomment-2678508
+> - [trace package - go.opentelemetry.io/otel/sdk/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NeverSample)
+> - [How to enable/disable opentelemetry tracing dynamically · open-telemetry/community · Discussion #1048 · GitHub](https://github.com/open-telemetry/community/discussions/1048#discussioncomment-2678508)
 > - https://stackoverflow.com/a/75901212
 
 #### ▼ `OTEL_SDK_DISABLED` を有効化する
@@ -348,8 +348,8 @@ func newSampler() sdktrace.Sampler {
 
 ただし、言語 (例：Go) によってはサポートしていない場合がある。
 
-> - https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration
-> - https://github.com/open-telemetry/opentelemetry-go/issues/3559
+> - [Environment Variable Specification \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
+> - [Support OTEL\_SDK\_DISABLED environment variable. · Issue #3559 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/issues/3559)
 > - https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables
 
 <br>
@@ -387,7 +387,7 @@ func newSampler() sdktrace.Sampler {
 }
 ```
 
-> - https://opentelemetry.io/docs/concepts/signals/traces/
+> - [Traces \| OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/traces/)
 
 #### ▼ 親スパン X
 
@@ -423,7 +423,7 @@ func newSampler() sdktrace.Sampler {
 }
 ```
 
-> - https://opentelemetry.io/docs/concepts/signals/traces/
+> - [Traces \| OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/traces/)
 
 #### ▼ 親スパン Y
 
@@ -454,7 +454,7 @@ func newSampler() sdktrace.Sampler {
 }
 ```
 
-> - https://opentelemetry.io/docs/concepts/signals/traces/
+> - [Traces \| OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/traces/)
 
 <br>
 
@@ -464,7 +464,7 @@ func newSampler() sdktrace.Sampler {
 
 ブラウザを経由する処理（例：ログインの認可リクエスト）では、トレースが途切れてしまうが、SpanLink でこれを関連づけられる。
 
-> - https://tech.bm-sms.co.jp/entry/2024/05/21/110000
+> - [Datadogでもサポート（ベータ版）されているOpenTelemetryのSpan Linkを試した - エス・エム・エス エンジニア テックブログ](https://tech.bm-sms.co.jp/entry/2024/05/21/110000)
 
 <br>
 
@@ -478,13 +478,13 @@ Span に紐づく処理の成否を表す。
 
 スパンに対応する処理が成功したことを表す。
 
-> - https://opentelemetry.io/docs/concepts/signals/traces/#span-status
+> - [Traces \| OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/traces/#span-status)
 
 #### ▼ Error
 
 スパンに対応する処理が失敗したことを表す。
 
-> - https://opentelemetry.io/docs/concepts/signals/traces/#span-status
+> - [Traces \| OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/traces/#span-status)
 
 #### ▼ Ok
 
@@ -492,7 +492,7 @@ Span に紐づく処理の成否を表す。
 
 成功以外としない場合に使用する。
 
-> - https://opentelemetry.io/docs/concepts/signals/traces/#span-status
+> - [Traces \| OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/traces/#span-status)
 
 <br>
 
@@ -502,7 +502,7 @@ Span に紐づく処理の成否を表す。
 
 スパンの作成場所の種類を表す。
 
-> - https://opentelemetry.io/docs/concepts/signals/traces/#span-kind
+> - [Traces \| OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/traces/#span-kind)
 
 #### ▼ Unspecified
 
@@ -541,7 +541,7 @@ func foo()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+> - [trace package - go.opentelemetry.io/otel/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind)
 
 #### ▼ Internal
 
@@ -580,7 +580,7 @@ func foo()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+> - [trace package - go.opentelemetry.io/otel/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind)
 
 #### ▼ Server
 
@@ -619,7 +619,7 @@ func foo()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+> - [trace package - go.opentelemetry.io/otel/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind)
 
 #### ▼ Client
 
@@ -658,7 +658,7 @@ func foo()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+> - [trace package - go.opentelemetry.io/otel/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind)
 
 #### ▼ Producer
 
@@ -697,7 +697,7 @@ func foo()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+> - [trace package - go.opentelemetry.io/otel/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind)
 
 #### ▼ Consumer
 
@@ -736,7 +736,7 @@ func foo()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind
+> - [trace package - go.opentelemetry.io/otel/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanKind)
 
 <br>
 
@@ -747,7 +747,7 @@ func foo()  {
 スパンの処理中に発生した特定時点のイベントを表す。
 
 > - https://opentelemetry.io/docs/languages/go/instrumentation/#events
-> - https://blog.cybozu.io/entry/2023/04/12/170000
+> - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
 
 <br>
 
@@ -796,7 +796,7 @@ func main() {
 }
 ```
 
-> - https://opentelemetry.io/docs/specs/otel/error-handling/#configuring-error-handlers
+> - [Error handling in OpenTelemetry \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/error-handling/#configuring-error-handlers)
 
 <br>
 
@@ -874,9 +874,9 @@ func main()  {
 }
 ```
 
-> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush
-> - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.ForceFlush
-> - https://christina04.hatenablog.com/entry/opentelemetry-in-go
+> - [Tracing SDK \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush)
+> - [trace package - go.opentelemetry.io/otel/sdk/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.ForceFlush)
+> - [OpenTelemetryのTraceをGoで試してみる - Carpe Diem](https://christina04.hatenablog.com/entry/opentelemetry-in-go)
 
 <br>
 
@@ -960,8 +960,8 @@ func main()  {
 }
 ```
 
-> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown
-> - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.Shutdown
+> - [Tracing SDK \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown)
+> - [trace package - go.opentelemetry.io/otel/sdk/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TracerProvider.Shutdown)
 > - https://christina04.hatenablog.com/entry/opentelemetry-collector
 
 <br>
@@ -1029,7 +1029,7 @@ Go の場合、`WithEndpoint()` 関数を使用して、スパンの宛先 (例�
 
 #### ▼ 未送信スパンの送信
 
-> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush-2
+> - [Tracing SDK \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush-2)
 
 #### ▼ Graceful Shutdown 処理
 
@@ -1123,7 +1123,7 @@ func main()  {
 }
 ```
 
-> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-2
+> - [Tracing SDK \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-2)
 > - https://christina04.hatenablog.com/entry/opentelemetry-collector
 
 <br>
@@ -1162,7 +1162,7 @@ func main()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/aws/xray
+> - [xray package - go.opentelemetry.io/contrib/propagators/aws/xray - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/aws/xray)
 
 <br>
 
@@ -1172,7 +1172,7 @@ func main()  {
 
 他の処理コンポーネントを操作する処理を持つ。
 
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17
+> - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=17)
 
 <br>
 
@@ -1200,7 +1200,7 @@ Go の場合、`BatchSpanProcessor()` 関数を使用する。
 
 #### ▼ 未送信スパンの送信
 
-> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush-1
+> - [Tracing SDK \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/trace/sdk/#forceflush-1)
 
 #### ▼ Graceful Shutdown 処理
 
@@ -1208,8 +1208,8 @@ Span Processor は、Graceful Shutdown 処理を実行するための関数を�
 
 なお、TracerProvider で Graceful Shutdown 処理を実行すれば、Span Processor も連鎖的に Graceful Shutdown できる。
 
-> - https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1
-> - https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor
+> - [Tracing SDK \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/trace/sdk/#shutdown-1)
+> - [trace package - go.opentelemetry.io/otel/sdk/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SpanProcessor)
 > - https://christina04.hatenablog.com/entry/opentelemetry-collector
 
 <br>
@@ -1230,7 +1230,7 @@ Carrier からトレースコンテキストを注入する操作を『注入 (I
 
 複数の Propagator を持ち、マイクロサービス上での要求に応じて、Propagator を動的に切り替えられる。
 
-> - https://opentelemetry.io/docs/specs/otel/context/api-propagators/#composite-propagator
+> - [Propagators API \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/context/api-propagators/#composite-propagator)
 
 <br>
 
@@ -1376,9 +1376,9 @@ func NewTracerProvider() {
 }
 ```
 
-> - https://zenn.dev/k6s4i53rx/articles/2fa37a293cf228#%E2%96%A0-propagator-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
-> - https://blog.cybozu.io/entry/2023/04/12/170000
-> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
+> - [Apache Kafka を使った非同期処理で分散トレーシングをする with OpenTelemetry](https://zenn.dev/k6s4i53rx/articles/2fa37a293cf228#%E2%96%A0-propagator-%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
+> - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
+> - [OpenTelemetryで分散トレーシング - Carpe Diem](https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry)
 > - https://www.lottohub.jp/posts/otelsql-grpc/
 > - https://github.com/openzipkin/b3-propagation#overall-process
 
@@ -1390,7 +1390,7 @@ func NewTracerProvider() {
 
 スパンに属性を設定する処理を持つ。
 
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
+> - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16)
 
 <br>
 
@@ -1437,7 +1437,7 @@ func NewTracerProvider() {
 
 スパンのサンプリング方式やサンプリング率を設定する処理を持つ。
 
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19
+> - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=19)
 
 <br>
 
@@ -1460,7 +1460,7 @@ func NewTracerProvider() {
 | Head-based | クライアント側で、スパンをサンプリングする。パフォーマンス (例：CPU、メモリ、スループット) に影響が低いが、エラーリクエストをサンプリングできない。                                                                            |
 | Tail-based | サーバー側 (OpenTelemetry Collector) で、収集したスパンからサンプリングする (実際はすべてをサンプリングすることが多い) 。パフォーマンス (例：CPU、メモリ、スループット) に影響があるが、エラーリクエストもトレーシングできる。 |
 
-> - https://christina04.hatenablog.com/entry/opentelemetry-sampling
+> - [OpenTelemetryでのSampling - Carpe Diem](https://christina04.hatenablog.com/entry/opentelemetry-sampling)
 > - https://opentelemetry.io/docs/concepts/sampling/
 
 #### ▼ クライアント側のサンプリング率
@@ -1478,10 +1478,10 @@ Tail-based 方式の場合、前提としてアプリケーションですべて
 | `TraceIdRationBased` | 指定した割合でスパンをランダムにサンプリングする。                                        |
 | `ParentBased`        | 親スパンの設定を継承する。`TraceIdRationBased` と組み合わせて使用することが多い。         |
 
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26
-> - https://zenn.dev/ishii1648/articles/167e199bab5396
+> - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=26)
+> - [OpenTelemetry CollectorでTail-based samplingする](https://zenn.dev/ishii1648/articles/167e199bab5396)
 > - https://github.com/open-telemetry/opentelemetry-go/blob/v1.22.0/sdk/trace/sampling.go#L135-L141
-> - https://opentelemetry.io/docs/concepts/sampling/#tail-sampling
+> - [Sampling \| OpenTelemetry](https://opentelemetry.io/docs/concepts/sampling/#tail-sampling)
 
 #### ▼ サーバー側 (OpenTelemetry Collector) のサンプリング率
 
@@ -1501,8 +1501,8 @@ processors:
     policies: [{name: always-sample, type: always_sample}]
 ```
 
-> - https://zenn.dev/ishii1648/articles/167e199bab5396#processors
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
+> - [OpenTelemetry CollectorでTail-based samplingする](https://zenn.dev/ishii1648/articles/167e199bab5396#processors)
+> - [opentelemetry-collector-contrib/processor/tailsamplingprocessor at main · open-telemetry/opentelemetry-collector-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
 
 <br>
 

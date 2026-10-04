@@ -49,8 +49,8 @@ Amazon ECS のために、CodeBuild の設定する。
 
 ルートディレクトリの直下に配置しておく。
 
-> - https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
-> - https://docs.aws.amazon.com/codepipeline/latest/userguide/ecs-cd-pipeline.html
+> - [Build specification reference for CodeBuild - AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)
+> - [Tutorial: Amazon ECS Standard Deployment with CodePipeline - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/ecs-cd-pipeline.html)
 
 **＊実装例＊**
 
@@ -116,8 +116,8 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 ![code-deploy_agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/code-deploy_agent.png)
 
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-on-premises.html
-> - https://inokara.hateblo.jp/entry/2015/07/15/175955
+> - [Working with on-premises instances for CodeDeploy - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-on-premises.html)
+> - [CodeDeploy をオンプレミス環境で利用してみる - ようへいの日々精進XP](https://inokara.hateblo.jp/entry/2015/07/15/175955)
 
 <br>
 
@@ -127,19 +127,19 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 インプレースデプロイ、ブルー/グリーンデプロイメントを利用できる。
 
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> - [Working with deployments in CodeDeploy - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html)
 
 <br>
 
 ### インプレースデプロイメント
 
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place
+> - [What is CodeDeploy? - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html#welcome-deployment-overview-in-place)
 
 <br>
 
 ### ブルー/グリーンデプロイメント
 
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html
+> - [Create a deployment group for an EC2/On-Premises blue/green deployment (console) - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-groups-create-blue-green.html)
 
 <br>
 
@@ -149,7 +149,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 ブルー/グリーンデプロイメントを利用できる。
 
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> - [Working with deployments in CodeDeploy - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html)
 
 <br>
 
@@ -159,7 +159,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 ローリングアップデート、ブルー/グリーンデプロイメントを利用できる。
 
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html
+> - [Working with deployments in CodeDeploy - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployments.html)
 
 <br>
 
@@ -180,8 +180,8 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 ]
 ```
 
-> - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#pipelines-create-image-definitions
-> - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
+> - [Image definitions file reference - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#pipelines-create-image-definitions)
+> - [CodeBuild/CodeDeploy/CodePipeline で ECS にデプロイする素振り - ngyukiの日記](https://ngyuki.hatenablog.com/entry/2021/04/07/043415)
 
 <br>
 
@@ -227,7 +227,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 : 元の現環境 (Prod ブルー) は削除される。
 
-> - https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1
+> - [CodeDeploy によるECS でのBlue/Greenデプロイの話 - 電通総研 テックブログ](https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1)
 
 #### ▼ `appspec.yml` ファイル
 
@@ -252,7 +252,7 @@ Resources:
         PlatformVersion: "1.4.0"
 ```
 
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html
+> - [AppSpec 'resources' section (Amazon ECS and AWS Lambda deployments only) - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html)
 
 #### ▼ `imageDetail.json` ファイル
 
@@ -260,8 +260,8 @@ Resources:
 
 これはリポジトリへ事前に配置するのではなく、CI/CD パイプライン上で動的に作成するようにしたほうがよい。
 
-> - https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen
-> - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
+> - [Image definitions file reference - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/file-reference.html#file-reference-ecs-bluegreen)
+> - [CodeBuild/CodeDeploy/CodePipeline で ECS にデプロイする素振り - ngyukiの日記](https://ngyuki.hatenablog.com/entry/2021/04/07/043415)
 
 #### ▼ `taskdef.json` ファイル
 
@@ -322,8 +322,8 @@ CodeDeploy は、CodeBuild から渡された `imageDetail.json` ファイルを
 }
 ```
 
-> - https://ngyuki.hatenablog.com/entry/2021/04/07/043415
-> - https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html#tutorials-ecs-ecr-codedeploy-taskdefinition
+> - [CodeBuild/CodeDeploy/CodePipeline で ECS にデプロイする素振り - ngyukiの日記](https://ngyuki.hatenablog.com/entry/2021/04/07/043415)
+> - [Tutorial: Create a pipeline with an Amazon ECR source and ECS-to-CodeDeploy deployment - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-ecs-ecr-codedeploy.html#tutorials-ecs-ecr-codedeploy-taskdefinition)
 
 <br>
 
@@ -331,7 +331,7 @@ CodeDeploy は、CodeBuild から渡された `imageDetail.json` ファイルを
 
 ### AutoScaling グループ
 
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html
+> - [Integrating CodeDeploy with Amazon EC2 Auto Scaling - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-auto-scaling.html)
 
 <br>
 
@@ -345,6 +345,6 @@ CodeDeploy のデプロイの途中、ターゲットグループからインス
 
 デプロイが正常に完了次第、ターゲットグループにインスタンスを再登録し、リクエストできる。
 
-> - https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place
+> - [Integrating CodeDeploy with Elastic Load Balancing - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/integrations-aws-elastic-load-balancing.html#integrations-aws-elastic-load-balancing-in-place)
 
 <br>

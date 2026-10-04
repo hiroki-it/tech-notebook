@@ -8,7 +8,7 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -43,7 +43,7 @@ asyncMethod();
 // foo
 ```
 
-> - https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86
+> - [非同期処理ってどういうこと？JavaScriptで一から学ぶ #Node.js - Qiita](https://qiita.com/kiyodori/items/da434d169755cbb20447#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86)
 
 <br>
 
@@ -70,8 +70,8 @@ const asyncFunc = () => {
 };
 ```
 
-> - https://promisesaplus.com/
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
+> - [Promises/A+](https://promisesaplus.com/)
+> - [Promise - JavaScript \| MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 ### Promise オブジェクトの種類
 
@@ -156,7 +156,7 @@ console.log(asyncFunc());
 // Promise { 'SUCCESS' }
 ```
 
-> - https://qiita.com/okashoi/items/b786f94f534372efc705#resolve-%E3%82%84-reject-%E3%81%8C%E5%91%BC%E3%81%B0%E3%82%8C%E3%81%9F%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AF%E5%87%A6%E7%90%86%E3%81%AF%E4%B8%AD%E6%96%AD%E3%81%97%E3%81%AA%E3%81%84
+> - [Promise で resolve/reject が呼ばれても処理は中断しない #JavaScript - Qiita](https://qiita.com/okashoi/items/b786f94f534372efc705#resolve-%E3%82%84-reject-%E3%81%8C%E5%91%BC%E3%81%B0%E3%82%8C%E3%81%9F%E3%81%A0%E3%81%91%E3%81%A7%E3%81%AF%E5%87%A6%E7%90%86%E3%81%AF%E4%B8%AD%E6%96%AD%E3%81%97%E3%81%AA%E3%81%84)
 
 <br>
 
@@ -243,7 +243,7 @@ Promise オブジェクトの `then()` 関数、`catch()` 関数、`finally()` �
 
 Promise オブジェクトの `resolve()` 関数の結果を引数に受け取り、コールバック関数を実行する。
 
-> - https://qiita.com/saka212/items/9b6cfe06b464580c2ee6#promise%E3%81%AE%E5%9F%BA%E6%9C%AC
+> - [Promiseとthenのメソッドチェーン（直列・並列・値の受け取り・引数） #JavaScript - Qiita](https://qiita.com/saka212/items/9b6cfe06b464580c2ee6#promise%E3%81%AE%E5%9F%BA%E6%9C%AC)
 
 <br>
 
@@ -253,7 +253,7 @@ Promise オブジェクトの `resolve()` 関数の結果を引数に受け取�
 
 Promise オブジェクトの `reject()` 関数の結果を引数に受け取り、コールバック関数を実行する。
 
-> - https://qiita.com/saka212/items/9b6cfe06b464580c2ee6#promise%E3%81%AE%E5%9F%BA%E6%9C%AC
+> - [Promiseとthenのメソッドチェーン（直列・並列・値の受け取り・引数） #JavaScript - Qiita](https://qiita.com/saka212/items/9b6cfe06b464580c2ee6#promise%E3%81%AE%E5%9F%BA%E6%9C%AC)
 
 #### ▼ コンストラクタを使用する場合
 
@@ -269,7 +269,7 @@ rejectFunc.catch((err) => {
 });
 ```
 
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
+> - [Promise - JavaScript \| MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods)
 
 <br>
 
@@ -360,7 +360,7 @@ const asyncFunc = async () => {
 console.log(asyncFunc()); // Promise { "SUCCESS" }
 ```
 
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
+> - [async function - JavaScript \| MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function)
 
 <br>
 
@@ -430,8 +430,8 @@ const asyncFunc = async () => {
 
 ただ、使用するパッケージの仕様が非同期処理になっている場合 (例：Node.js 上で使用できる JavaScript には非同期処理の関数が多い) 、`await` 宣言を使用せざるを得ない。
 
-> - https://blog.honjala.net/entry/2018/08/08/022027
-> - https://zenn.dev/h_tatsuru/articles/28149eac34d55c#%F0%9F%90%B2%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%A8%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%AE%E6%A9%9F%E8%83%BD%E4%BE%8B
+> - [node.jsがやたら非同期化しようとするのをasync/awaitでどうにか同期化する - ほんじゃーねっと](https://blog.honjala.net/entry/2018/08/08/022027)
+> - [JavaScriptにおける同期処理と非同期処理の理解: ECサイトの例を交えて](https://zenn.dev/h_tatsuru/articles/28149eac34d55c#%F0%9F%90%B2%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%A8%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%AE%E6%A9%9F%E8%83%BD%E4%BE%8B)
 
 <br>
 
@@ -478,7 +478,7 @@ const asyncFunc = async () => {
 };
 ```
 
-> - https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods
+> - [Promise - JavaScript \| MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#instance_methods)
 
 <br>
 
@@ -536,8 +536,8 @@ const response = await retry(
 console.log(response);
 ```
 
-> - https://www.memory-lovers.blog/entry/2022/06/16/100000
-> - https://zenn.dev/ak2ie/articles/af0f1d31a185c0
+> - [TypeScriptのPromiseでretryしたい(async-retry/node-retry) - くらげになりたい。](https://www.memory-lovers.blog/entry/2022/06/16/100000)
+> - [async-retryを使ったTypeScriptでのリトライ＋テスト](https://zenn.dev/ak2ie/articles/af0f1d31a185c0)
 
 <br>
 
@@ -547,7 +547,7 @@ console.log(response);
 
 JQuery パッケージの提供する独自の Promise オブジェクトである。
 
-> - https://qiita.com/fakefurcoronet/items/cb2d2eba1a2e39f6643d
+> - [JavaScriptのPromiseとjQueryのPromise #JavaScript - Qiita](https://qiita.com/fakefurcoronet/items/cb2d2eba1a2e39f6643d)
 
 <br>
 

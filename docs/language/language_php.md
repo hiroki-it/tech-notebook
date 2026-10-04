@@ -9,7 +9,7 @@ description: PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -38,7 +38,7 @@ $ apt-get update
 $ apt -y install php=1.0.0
 ```
 
-> - https://loop-never-ends.com/ubuntu-php-install/
+> - [Ubuntuに最新版のPHPをインストールする \| LOOP NEVER ENDS](https://loop-never-ends.com/ubuntu-php-install/)
 
 <br>
 
@@ -101,7 +101,7 @@ COPY ../software /var/www/foo/
 
 これにより、PHP のコードの実行が高速化される。
 
-> - https://weblabo.oscasierra.net/php-opcache/
+> - [OPcacheを利用してPHPを高速にしよう \|](https://weblabo.oscasierra.net/php-opcache/)
 
 <br>
 

@@ -9,7 +9,7 @@ description: パッケージ＠Rubyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -96,7 +96,7 @@ server.mount_proc '/details' do |req, res|
 end
 ```
 
-> - https://logger.rocketjob.io/
+> - [Semantic Logger for Ruby or Rails. Supports Graylog, Bugsnag, MongoDB, Splunk, Syslog, NewRelic.](https://logger.rocketjob.io/)
 
 #### ▼ フィールドの追加
 
@@ -180,6 +180,6 @@ def get_trace_id(headers)
 end
 ```
 
-> - https://logger.rocketjob.io/
+> - [Semantic Logger for Ruby or Rails. Supports Graylog, Bugsnag, MongoDB, Splunk, Syslog, NewRelic.](https://logger.rocketjob.io/)
 
 <br>

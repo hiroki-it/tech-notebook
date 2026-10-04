@@ -159,9 +159,9 @@ $ go install
 $ ${GOPATH}/bin/foo-package --version
 ```
 
-> - https://go.dev/doc/go-get-install-deprecation
+> - [Deprecation of 'go get' for installing executables - The Go Programming Language](https://go.dev/doc/go-get-install-deprecation)
 > - https://github.com/golang/go/issues/44840#issuecomment-1828537390
-> - https://okkun-sh.hatenablog.com/entry/2023/06/16/013008
+> - [go install で落とした binary に PATH を通す - okkun\_sh's blog](https://okkun-sh.hatenablog.com/entry/2023/06/16/013008)
 
 #### ▼ 最新バージョンの指定
 
@@ -173,7 +173,7 @@ $ ${GOPATH}/bin/foo-package --version
 $ go install <モジュール名>@HEAD
 ```
 
-> - https://zenn.dev/podhmo/articles/f7d6b5ccc389b5ecef02
+> - [go getで常に最新のcommitを使いたい場合](https://zenn.dev/podhmo/articles/f7d6b5ccc389b5ecef02)
 
 #### ▼ バイナリのアンインストール
 
@@ -247,7 +247,7 @@ $ go test -cover ./...
 $ go test -coverpkg=./... -coverprofile=coverage.txt ./...
 ```
 
-> - https://www.getto.systems/entry/2020/08/09/190650
+> - [golang で test カバレッジを計測する - げっとシステムログ](https://www.getto.systems/entry/2020/08/09/190650)
 
 #### ▼ -coverprofile
 
@@ -257,7 +257,7 @@ $ go test -coverpkg=./... -coverprofile=coverage.txt ./...
 $ go test -coverprofile=coverage.txt ./...
 ```
 
-> - https://kiririmode.hatenablog.jp/entry/20210204/1612450799
+> - [Golangで複数パッケージをまとめてカバレッジを取得する - 理系学生日記](https://kiririmode.hatenablog.jp/entry/20210204/1612450799)
 
 <br>
 
@@ -273,7 +273,7 @@ $ go test -coverprofile=coverage.txt ./...
 $ go tool cover -func coverage.txt
 ```
 
-> - https://gihyo.jp/article/2023/03/tukinami-go-05
+> - [Goのカバレッジツールを使いこなす \| gihyo.jp](https://gihyo.jp/article/2023/03/tukinami-go-05)
 
 <br>
 
@@ -290,7 +290,7 @@ $ go version -m <Goのバイナリのパス>
 ...
 ```
 
-> - https://knqyf263.hatenablog.com/entry/2021/02/12/162928
+> - [Goのバイナリから依存するmodule情報を取り出す方法 - knqyf263's blog](https://knqyf263.hatenablog.com/entry/2021/02/12/162928)
 
 <br>
 
@@ -344,8 +344,8 @@ go: downloading <ドメインをルートとしたURL> <バージョン>
 go: upgraded <ドメインをルートとしたURL> <バージョン>
 ```
 
-> - https://go.dev/doc/go-get-install-deprecation
-> - https://qiita.com/eihigh/items/9fe52804610a8c4b7e41
+> - [Deprecation of 'go get' for installing executables - The Go Programming Language](https://go.dev/doc/go-get-install-deprecation)
+> - [Go1.16からは go get は使わず go install を使おう #Go - Qiita](https://qiita.com/eihigh/items/9fe52804610a8c4b7e41)
 
 #### ▼ go mod tidy との使い分け
 
@@ -357,7 +357,7 @@ go: upgraded <ドメインをルートとしたURL> <バージョン>
 
 もしすべてのモジュールのバージョンを開発者に限らず揃えたいなら、`go mod tidy` コマンドを使用する。
 
-> - https://blog.lufia.org/entry/2020/02/24/171513
+> - [Goモジュールでツールもバージョン管理する - Plan 9とGo言語のブログ](https://blog.lufia.org/entry/2020/02/24/171513)
 
 <br>
 
@@ -394,8 +394,8 @@ cmd/main.go:4:5: missing go.sum entry for module providing package github.com/fo
 ```
 
 > - https://go.dev/ref/mod#go-mod-tidy
-> - https://zenn.dev/optimisuke/articles/105feac3f8e726830f8c#go-mod-tidy
-> - https://blog.framinal.life/entry/2021/04/11/013819#go-mod-tidy
+> - [go mod完全に理解した](https://zenn.dev/optimisuke/articles/105feac3f8e726830f8c#go-mod-tidy)
+> - [【Go】パッケージ/モジュールやgo modコマンドについてまとめ - フラミナル](https://blog.framinal.life/entry/2021/04/11/013819#go-mod-tidy)
 
 #### ▼ `-go`
 
@@ -419,7 +419,7 @@ $ go mod tidy -v
 unused <go.modファイルから削除したモジュール>
 ```
 
-> - https://developer.so-tech.co.jp/entry/2022/08/16/110108
+> - [go mod tidyをもっと詳しく調べてみた - SO Technologies 開発者ブログ](https://developer.so-tech.co.jp/entry/2022/08/16/110108)
 
 #### ▼ go get との使い分け
 
@@ -431,7 +431,7 @@ unused <go.modファイルから削除したモジュール>
 
 ただし、Go の思想に則り、`go mod tidy` コマンドを実行して常に新しいバージョンを使用することを推奨する。
 
-> - https://blog.lufia.org/entry/2020/02/24/171513
+> - [Goモジュールでツールもバージョン管理する - Plan 9とGo言語のブログ](https://blog.lufia.org/entry/2020/02/24/171513)
 
 <br>
 
@@ -473,7 +473,7 @@ go: finding module for package go.module.io/foo-dependency
         go.module.io/foo-dependency/bar: module go.module.io/foo-dependency@latest found (v1.27.0), but does not contain package go.module.io/foo-dependency/bar
 ```
 
-> - https://budougumi0617.github.io/2019/09/20/fix-go-mod-tidy-does-not-contain-package/
+> - [go mod tidyするとmodule ... found, but does not contain package ...エラーで失敗する - My External Storage](https://budougumi0617.github.io/2019/09/20/fix-go-mod-tidy-does-not-contain-package/)
 
 <br>
 
@@ -544,7 +544,7 @@ func main() {
 ```
 
 > - https://github.com/golang/go/wiki/Modules#should-i-commit-my-gosum-file-as-well-as-my-gomod-file
-> - https://developer.so-tech.co.jp/entry/2022/08/16/110108
+> - [go mod tidyをもっと詳しく調べてみた - SO Technologies 開発者ブログ](https://developer.so-tech.co.jp/entry/2022/08/16/110108)
 
 #### ▼ パブリックリポジトリから (開発中)
 
@@ -592,8 +592,8 @@ github.com/foo@v1.0.0: verifying module: github.com/foo@v1.0.0: reading https://
 $ go env -w GOPRIVATE=github.com/foo.git,github.com/bar.git,...
 ```
 
-> - https://goproxy.io/docs/GOPRIVATE-env.html
-> - https://kawaken.dev/posts/20220426_goprivate/
+> - [GOPRIVATE Environment](https://goproxy.io/docs/GOPRIVATE-env.html)
+> - [Go で GOPRIVATE を設定して社内などのリポジトリを利用する - kawaken.dev](https://kawaken.dev/posts/20220426_goprivate/)
 
 #### ▼ ローカルマシンから
 
@@ -624,7 +624,7 @@ go 1.16
 
 パス実際、`unknown revision` のエラーで、バージョンを見つけられない。
 
-> - https://qiita.com/hnishi/items/a9217249d7832ed2c035
+> - [Go Modules でインターネット上のレポジトリにはないローカルパッケージを import する方法 #Go - Qiita](https://qiita.com/hnishi/items/a9217249d7832ed2c035)
 
 ```go
 module github.com/hiroki-hasegawa/foo-repository

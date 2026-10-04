@@ -21,7 +21,7 @@ description: ジョブ管理＠Linuxカーネルの知見を記録していま�
 
 定期的なバッチ処理を、特に『ジョブ』という。
 
-> - https://strategicppm.wordpress.com/2010/01/20/batch-vs-job-processes-becoming-more-efficient/
+> - [Batch vs. Job Processes – Becoming More Efficient \| Strategic PPM](https://strategicppm.wordpress.com/2010/01/20/batch-vs-job-processes-becoming-more-efficient/)
 > - https://www.quora.com/What-is-the-difference-between-cron-job-and-batch-job
 
 <br>
@@ -34,8 +34,8 @@ description: ジョブ管理＠Linuxカーネルの知見を記録していま�
 
 Unix では `at` や `cron` に、また Windows ではタスクスケジューラーがジョブ管理機能を持つ。
 
-> - https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%96%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
-> - https://japan.zdnet.com/glossary/exp/%E3%82%B8%E3%83%A7%E3%83%96%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%A9/?s=4
+> - [ジョブ管理システム - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%B8%E3%83%A7%E3%83%96%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0)
+> - [用語検索 - ZDNET Japan](https://japan.zdnet.com/glossary/exp/%E3%82%B8%E3%83%A7%E3%83%96%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%A9/?s=4)
 
 <br>
 

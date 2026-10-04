@@ -9,7 +9,7 @@ description: config.yml＠CircleCIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -988,8 +988,8 @@ workflows:
 | job、executor | プロジェクトをチェックアウトするディレクトリを指定する。executor または job で working_directory を宣言できる。両方で宣言していた場合は、executor の値が優先される。 |
 | steps         | 指定したディレクトリーに移動する。                                                                                                                                   |
 
-> - https://www.engilaboo.com/circleci-working-directory/
-> - https://nju33.com/notes/circleci/articles
+> - [【CircleCI】working\_directoryの挙動を実験して確かめてみた｜Webエンジニア研究室](https://www.engilaboo.com/circleci-working-directory/)
+> - [CircleCI 1 / 2 \| nju33](https://nju33.com/notes/circleci/articles)
 
 <br>
 
@@ -1138,7 +1138,7 @@ jobs:
             echo "$VERY_IMPORTANT"
 ```
 
-> - https://github.com/circleci/circleci-docs/issues/1650
+> - [$BASH\_ENV does not seem to be sourced · Issue #1650 · circleci/circleci-docs · GitHub](https://github.com/circleci/circleci-docs/issues/1650)
 
 #### ▼ シェルスクリプトによる設定
 
@@ -1292,7 +1292,7 @@ Docker Compose は、コンテナの作成の順番を制御できるものの�
 
 代わりに、sleep コマンドを使用してもよい。
 
-> - https://github.com/docker/compose/issues/374#issuecomment-126312313
+> - [Is there a way to delay container startup to support dependant services with a longer startup time · Issue #374 · docker/compose · GitHub](https://github.com/docker/compose/issues/374#issuecomment-126312313)
 
 **＊実装例＊**
 

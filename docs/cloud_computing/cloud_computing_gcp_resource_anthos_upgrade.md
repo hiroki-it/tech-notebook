@@ -9,7 +9,7 @@ description: アップグレード＠Anthosの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -93,7 +93,7 @@ $ ~/baremetal/bmctl upgrade cluster \
 ```
 
 > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/how-to/upgrade
-> - https://cloud.google.com/blog/topics/anthos/best-practices-for-upgrading-anthos-on-bare-metal
+> - [Best practices for upgrading Anthos on bare metal \| Google Cloud Blog](https://cloud.google.com/blog/topics/anthos/best-practices-for-upgrading-anthos-on-bare-metal)
 
 `(5)`
 
@@ -268,7 +268,7 @@ $ ./repository/asmcli-1140-0 install \
 
 > - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview#transitioning_from_install_asm
 > - https://cloud.google.com/service-mesh/docs/unified-install/plan-upgrade#about_canary_upgrades
-> - https://istio.io/latest/docs/setup/upgrade/canary/
+> - [Istio / Canary Upgrades](https://istio.io/latest/docs/setup/upgrade/canary/)
 
 #### ▼ 新しい Istiod コントロールプレーンを確認
 
@@ -305,7 +305,7 @@ istio-revision-tag-default             1          3m18s # 現在のリビジョ�
 
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_with_optional_features
 > - https://cloud.google.com/service-mesh/docs/unified-install/asmcli-overview
-> - https://istio.io/latest/docs/setup/upgrade/canary/#control-plane
+> - [Istio / Canary Upgrades](https://istio.io/latest/docs/setup/upgrade/canary/#control-plane)
 
 #### ▼ Namespace の `.metadata.labels` キーを付け替える。
 
@@ -456,7 +456,7 @@ $ istioctl version
 
 > - https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_gateways
 > - https://cloud.google.com/service-mesh/docs/gateways#in-cluster_control_plane
-> - https://istio.io/latest/docs/setup/upgrade/canary/#data-plane
+> - [Istio / Canary Upgrades](https://istio.io/latest/docs/setup/upgrade/canary/#data-plane)
 
 #### ▼ webhook の向き先を新しい Istiod コントロールプレーンに完全に変更
 

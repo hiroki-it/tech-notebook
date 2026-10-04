@@ -9,7 +9,7 @@ description: AWS WAF＠AWSリソース
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -113,7 +113,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 計測結果に応じて、Count モードを無効化し、拒否できるようにする。
 
-> - https://oji-cloud.net/2020/09/18/post-5501/
+> - [WafCharmの COUNT/BLOCK Actionの追跡方法 \| Oji-Cloud](https://oji-cloud.net/2020/09/18/post-5501/)
 
 #### ▼ ルールグループアクションの上書き
 
@@ -128,7 +128,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 | Block                            | OFF          | ON               | そもそも Count モードが無効なため、上書きオプションは能力せずに、Block が実行される。                                             |
 | Block                            | OFF          | OFF              | そもそも Count モードが無効なため、マネージドルールの Block が実行される (と思っていたが、結果として Count として動作する模様) 。 |
 
-> - https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html
+> - [Overriding rule group actions in AWS WAF - AWS WAF, AWS Firewall Manager, AWS Shield Advanced, and AWS Shield network security director](https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html)
 
 #### ▼ セキュリティグループとの関係
 
@@ -138,7 +138,7 @@ AWS WAF を紐付けられるリソースにセキュリティグループも紐
 
 両方にルールが定義されてると混乱を生むため、HTTP プロトコルや HTTPS プロトコルに関するルールは AWS WAF に定義し、それ以外のプロトコルに関するルールはセキュリティグループで定義するようにしておく。
 
-> - https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/
+> - [AWS WAF のルールと ALB のセキュリティグループどちらが先に評価されますか？ \| DevelopersIO](https://dev.classmethod.jp/articles/waf-alb_evaluation-sequence/)
 
 <br>
 
@@ -196,6 +196,6 @@ AWS WAF マネージドルールを採用している場合、マネージドル
 
 以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/waf/latest/developerguide/limits.html
+> - [AWS WAF quotas - AWS WAF, AWS Firewall Manager, AWS Shield Advanced, and AWS Shield network security director](https://docs.aws.amazon.com/waf/latest/developerguide/limits.html)
 
 <br>

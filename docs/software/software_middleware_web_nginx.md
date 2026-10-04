@@ -9,7 +9,7 @@ description: Nginx＠Web系ミドルウェアの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -30,7 +30,7 @@ Nginx の起動時、最初にマスタープロセスが実行され、Nginx �
 キャッシュマネージャは、保管したキャッシュの有効期限を管理する。
 
 > - https://www.codetd.com/en/article/12312272
-> - https://rainbow-engine.com/nginx-apache-difference/
+> - [ApacheとNginxの違いやそれぞれの特徴について – Rainbow Engine](https://rainbow-engine.com/nginx-apache-difference/)
 
 <br>
 
@@ -40,7 +40,7 @@ Nginx は、リクエストの IP アドレスを照合して、リクエスト�
 
 このとき、Radix Tree アルゴリズムに基づいて、IP アドレスを高速で照合している。
 
-> - https://csatlas.com/c-radix-tree-nginx/
+> - [C: Radix Tree (Trie) Implementation from nginx Source Code — Computer Science Atlas](https://csatlas.com/c-radix-tree-nginx/)
 
 <br>
 
@@ -85,7 +85,7 @@ ngx_http_xslt_filter_module-debug.so
 ngx_stream_geoip_module.so
 ```
 
-> - https://nginx.org/en/linux_packages.html#dynmodules
+> - [nginx: Linux packages](https://nginx.org/en/linux_packages.html#dynmodules)
 > - https://heartbeats.jp/hbblog/2016/02/nginx-dynamic-modules.html
 
 <br>
@@ -95,7 +95,7 @@ ngx_stream_geoip_module.so
 #### ▼ Graceful Drain
 
 > - https://serverfault.com/a/775356
-> - https://nginx.org/en/docs/http/ngx_http_upstream_conf_module.html#drain
+> - [Module ngx\_http\_upstream\_conf\_module](https://nginx.org/en/docs/http/ngx_http_upstream_conf_module.html#drain)
 
 #### ▼ Graceful Shutdown
 
@@ -104,7 +104,7 @@ STOPSIGNAL SIGQUIT
 ```
 
 > - https://hub.docker.com/layers/library/nginx/stable/images/sha256-4bc28d4e48f07ef005f0af92e14eca234bd169dad402266eb9df39ac73e5c12e
-> - https://qiita.com/ynd/items/62ec382c69fb45710cb6#%E3%81%93%E3%82%8C%E3%81%8B%E3%82%89%E3%81%AE%E5%9B%9E%E9%81%BF%E6%96%B9%E6%B3%95
+> - [Nginx の Docker コンテナがデフォルトで graceful shutdown になってちょっと幸せ #kubernetes - Qiita](https://qiita.com/ynd/items/62ec382c69fb45710cb6#%E3%81%93%E3%82%8C%E3%81%8B%E3%82%89%E3%81%AE%E5%9B%9E%E9%81%BF%E6%96%B9%E6%B3%95)
 
 <br>
 
@@ -224,8 +224,8 @@ http {
 }
 ```
 
-> - https://qiita.com/toritori0318/items/d82f9beccd76ea8ccb85
-> - https://gist.github.com/toritori0318/2dc2b64ff696822b02d202bf1fc2f5b2
+> - [NginxでWebサーバ間をトレースするrequest\_id #nginx - Qiita](https://qiita.com/toritori0318/items/d82f9beccd76ea8ccb85)
+> - [request\_id 引き回し · GitHub](https://gist.github.com/toritori0318/2dc2b64ff696822b02d202bf1fc2f5b2)
 
 #### ▼ FastCGI プロトコルの場合
 
@@ -327,7 +327,7 @@ stream {
 ```
 
 > - https://www.nginx.co.jp/blog/nginx-1-13-10-grpc/
-> - https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89
+> - [gRPC-WebのProxyをNginxにしてみた #nginx - Qiita](https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89)
 
 <br>
 
@@ -448,8 +448,8 @@ http {
 }
 ```
 
-> - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
-> - https://ktrysmt.github.io/blog/name-specification-of-nginx/
+> - [nginx TCP Load Balancerで複数RDSへの接続をProxyする - ZOZO TECH BLOG](https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A)
+> - [Nginxの名前解決についてまとめ](https://ktrysmt.github.io/blog/name-specification-of-nginx/)
 
 #### ▼ `L4` ロードバランサーの場合 (実装がかなり複雑になる)
 
@@ -489,9 +489,9 @@ stream {
 }
 ```
 
-> - https://engineering.mercari.com/blog/entry/2016-08-17-170114/
-> - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
-> - https://ktrysmt.github.io/blog/name-specification-of-nginx/
+> - [nginxによるTCPロードバランサー \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/2016-08-17-170114/)
+> - [nginx TCP Load Balancerで複数RDSへの接続をProxyする - ZOZO TECH BLOG](https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A)
+> - [Nginxの名前解決についてまとめ](https://ktrysmt.github.io/blog/name-specification-of-nginx/)
 
 <br>
 
@@ -539,7 +539,7 @@ server {
 > - https://marcospereirajr.com.br/using-nginx-as-api-gateway-7bebb3614e48
 > - https://www.nginx.com/blog/deploying-nginx-plus-as-an-api-gateway-part-1/
 > - https://www.codingexplorations.com/blog/setting-up-an-api-gateway-using-nginx
-> - https://github.com/nanit/api-gateway-example/blob/master/app/services/authentication.conf
+> - [api-gateway-example/app/services/authentication.conf at master · nanit/api-gateway-example · GitHub](https://github.com/nanit/api-gateway-example/blob/master/app/services/authentication.conf)
 
 #### ▼ 認証
 
@@ -588,6 +588,6 @@ http {
 }
 ```
 
-> - https://github.com/jinnerbichler/keycloak-nginx/blob/master/nginx.conf
+> - [keycloak-nginx/nginx.conf at master · jinnerbichler/keycloak-nginx · GitHub](https://github.com/jinnerbichler/keycloak-nginx/blob/master/nginx.conf)
 
 <br>

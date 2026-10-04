@@ -85,7 +85,7 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 ```
 
 > - https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
-> - https://chroju.dev/blog/terraform_state_introduction
+> - [Terraform state 概論 - chroju.dev](https://chroju.dev/blog/terraform_state_introduction)
 
 #### ▼ `state.lock` ファイル
 
@@ -108,7 +108,7 @@ terraform {
 ```
 
 > - https://blog-benri-life.com/terraform-state-lock-s3/
-> - https://developer.hashicorp.com/terraform/language/backend/s3#state-locking
+> - [Backend Type: s3 \| Terraform \| HashiCorp Developer](https://developer.hashicorp.com/terraform/language/backend/s3#state-locking)
 
 #### ▼ 残骸ロックの解除方法
 
@@ -138,7 +138,7 @@ Lock Info:
 $ terraform force-unlock 89e54252-fef0-2a68-17bf-e0bb411ff1e3
 ```
 
-> - https://dev.classmethod.jp/articles/terraform-state-lock-on-local/
+> - [TerraformでState Lockエラーが発生したら \| DevelopersIO](https://dev.classmethod.jp/articles/terraform-state-lock-on-local/)
 
 <br>
 
@@ -161,8 +161,8 @@ $ terraform init -upgrade
 ```
 
 > - https://www.terraform.io/language/files/dependency-lock
-> - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently
-> - https://qiita.com/mziyut/items/0f4109c425165f5011df
+> - [.terraform.lock.hcl 完全に理解した / How to update .terraform.lock.hcl efficiently - Speaker Deck](https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently)
+> - [terraform init を実行し \`.terraform.lock.hcl\` に差分が生じた際に疑うこと #Terraform - Qiita](https://qiita.com/mziyut/items/0f4109c425165f5011df)
 > - https://rurukblog.com/post/terraform-lock-hcl/
 
 #### ▼ version
@@ -221,7 +221,7 @@ provider "registry.terraform.io/hashicorp/aws" {
 | `h1`   | 開発者が使用している OS を表すハッシュ値を設定する。`zh` タグの `zip` パッケージの OS 名に存在しない OS 値が、`h1` タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。                                                                |
 | `zh`   | プロバイダーの `zip` パッケージ (`terraform-provider-aws_<バージョン>_<OS名>`) のチェックサムハッシュ値を設定する。`h1` タグの OS 値に存在しない OS 名の `zip` パッケージが、`zh` タグに設定されている場合、通信中に改竄されたと見なされ、エラーになってしまう。 |
 
-> - https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12
+> - [.terraform.lock.hcl 完全に理解した / How to update .terraform.lock.hcl efficiently - Speaker Deck](https://speakerdeck.com/minamijoyo/how-to-update-terraform-dot-lock-dot-hcl-efficiently?slide=12)
 
 <br>
 

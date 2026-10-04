@@ -9,7 +9,7 @@ description: Certificate Manager＠AWSリソースを記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -45,9 +45,9 @@ DNS 検証か E メール検証かを設定する。
 | ルート認証局   | Starfield 認証局、Amazon 認証局 |
 
 > - https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html
-> - https://www.amazontrust.com/repository/
-> - https://dev.classmethod.jp/articles/ssl-introduction-for-aws-client-vpn/#%25E5%25AE%259F%25E9%259A%259B%25E3%2581%25AB%25E8%25A6%258B%25E3%2581%25A6%25E3%2581%25BF%25E3%2582%258B
-> - https://speakerdeck.com/minorun365/zheng-ming-shu-tutehe-datuke-awsnozhong-jian-cayi-xing-nibei-eru?slide=10
+> - [Repository \| Amazon Trust Services](https://www.amazontrust.com/repository/)
+> - [SSLを改めて理解してから AWS Client VPN に挑む \| DevelopersIO](https://dev.classmethod.jp/articles/ssl-introduction-for-aws-client-vpn/#%25E5%25AE%259F%25E9%259A%259B%25E3%2581%25AB%25E8%25A6%258B%25E3%2581%25A6%25E3%2581%25BF%25E3%2582%258B)
+> - [証明書って何だっけ？ 〜AWSの中間CA移行に備える〜 - Speaker Deck](https://speakerdeck.com/minorun365/zheng-ming-shu-tutehe-datuke-awsnozhong-jian-cayi-xing-nibei-eru?slide=10)
 
 <br>
 
@@ -61,7 +61,7 @@ DNS 検証か E メール検証かを設定する。
 
 ドメインを購入できるサービス (例：AWS、GCP、GMO) に検証方法が用意されている。
 
-> - https://docs.aws.amazon.com/acm/latest/userguide/domain-ownership-validation.html
+> - [Validate domain ownership for AWS Certificate Manager public certificates - AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/domain-ownership-validation.html)
 > - https://jp.globalsign.com/support/proceeding/147.html
 
 #### ▼ 検証方法の変更
@@ -84,8 +84,8 @@ CM によって Amazon Route 53 へ自動作成される CNAME レコード値�
 
 注意点として、ドメインを AWS 以外 (例：お名前ドットコム) で購入している場合は、NS レコード値を購入先のサービスのドメインレジストラに手作業で登録する必要があることに注意する。
 
-> - https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html
-> - https://dev.classmethod.jp/articles/route53-domain-onamae/
+> - [AWS Certificate Manager DNS validation - AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html)
+> - [お名前.comで取得したドメインをRoute53のネームサーバで管理設定してみた \| DevelopersIO](https://dev.classmethod.jp/articles/route53-domain-onamae/)
 
 ### E メール検証
 
@@ -93,7 +93,7 @@ CM によって Amazon Route 53 へ自動作成される CNAME レコード値�
 
 ドメインを AWS 以外 (例：お名前ドットコム) で購入している場合は、そちらで設定したメールアドレス宛に確認メールを送信する。
 
-> - https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html
+> - [AWS Certificate Manager email validation - AWS Certificate Manager](https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html)
 
 <br>
 
@@ -181,7 +181,7 @@ Amazon EC2/Amazon ECS/Amazon EKS で SSL/TLS 終端とする場合、Amazon EC2/
 | Amazon Route 53 ➡️ AWS ALB (AWS Certificate Manager のサーバー証明書) ➡️ Lightsail (AWS 以外のサーバー証明書)                        | Lightsail                                    |
 | Amazon Route 53 ➡️ NLB (AWS Certificate Manager のサーバー証明書) ➡️ Amazon EC2/Amazon ECS/Amazon EKS (AWS 以外のサーバー証明書)     | Amazon EC2/Amazon ECS/Amazon EKS             |
 
-> - https://dev.classmethod.jp/articles/alb-backend-https/#toc-1
+> - [ALBとバックエンドEC2間をHTTPS通信させてみた \| DevelopersIO](https://dev.classmethod.jp/articles/alb-backend-https/#toc-1)
 
 #### ▼ Amazon Route 53 ➡️ Load Balancer Controller 由来) の場合
 
@@ -233,6 +233,6 @@ Amazon Aurora RDS にサーバー証明書を紐づける。
 
 Amazon EC2/Amazon ECS/Amazon EKS から Amazon Aurora RDS へのアプリケーションデータを暗号化できる。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html
+> - [Rotating your SSL/TLS certificate - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html)
 
 <br>

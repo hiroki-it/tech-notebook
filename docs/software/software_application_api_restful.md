@@ -9,7 +9,7 @@ description: RESTful-API＠APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -74,7 +74,7 @@ HTTP リクエストを、『リソースに対する操作』とらえ、リク
 
 エンドポイント は、リソース 1 つごと、あるいはまとまりごとに割り振られる。
 
-> - https://apidog.com/jp/blog/api-endpoint-and-its-testing/#%E2%91%A1api%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC
+> - [徹底解説：APIエンドポイントとは？それをテストする方法は？](https://apidog.com/jp/blog/api-endpoint-and-its-testing/#%E2%91%A1api%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC)
 
 <br>
 
@@ -114,7 +114,7 @@ POST リクエストと PUT リクエストの重要な違いについてまと�
 | リクエストパラメーターの場所 | メッセージボディに JSON 型データなどを割り当てる。     | パスパラメーターに id など、またメッセージボディに JSON 型データなどを割り当てる。                       |
 
 > - https://stackoverflow.com/a/2691891/12771072
-> - https://restfulapi.net/rest-put-vs-post/
+> - [Difference between PUT and POST in REST API](https://restfulapi.net/rest-put-vs-post/)
 
 <br>
 
@@ -126,8 +126,8 @@ POST リクエストと PUT リクエストの重要な違いについてまと�
 
 このとき、操作するリソース名がわかりやすいような名詞を使用する。
 
-> - https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad
-> - https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-use-nouns-instead-of-verbs-in-endpoint-paths
+> - [RESTful API Design: nouns are good, verbs are bad \| Google Cloud Blog](https://cloud.google.com/blog/products/api-management/restful-api-design-nouns-are-good-verbs-are-bad)
+> - [Best practices for REST API design - Stack Overflow](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-use-nouns-instead-of-verbs-in-endpoint-paths)
 
 ただし慣例として、認証のエンドポイントが動詞 (`login`、`logout`、`register`) になることは許容されている。
 
@@ -428,7 +428,7 @@ POST/PUT メソッドでは、処理後のデータを 200 レスポンスとし
 もし処理後のデータを返信しない場合、あらためて GET リクエストを送信する必要があり、余分な API コールが必要になってしまう。
 
 > - https://developer.ntt.com/ja/blog/741a176b-372f-4666-b649-b677dd23e3f3
-> - https://qiita.com/wim/items/dbb6def4e207f6048735
+> - [HTTPメソッド~GETとPOST時々PUT with DELETE~ #初心者 - Qiita](https://qiita.com/wim/items/dbb6def4e207f6048735)
 
 #### ▼ DELETE ではメッセージのみをレスポンス
 
@@ -437,7 +437,7 @@ DELETE メソッドでは、メッセージのみを 200 レスポンスとし�
 空ボディ 204 レスポンスとして返信してもよい。
 
 > - https://stackoverflow.com/questions/25970523/restful-what-should-a-delete-response-body-contain/50792918
-> - https://qiita.com/fukuma_biz/items/a9e8d18467fe3e04068e#4-delete---%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E5%89%8A%E9%99%A4
+> - [HTTPメソッド(CRUD)についてまとめた #Web - Qiita](https://qiita.com/fukuma_biz/items/a9e8d18467fe3e04068e#4-delete---%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E5%89%8A%E9%99%A4)
 
 #### ▼ ステータスコードは不要
 
@@ -525,6 +525,6 @@ CSV ファイルダウンロード機能では、データを CSV ファイル�
 }
 ```
 
-> - https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8
+> - [WebAPIでエラーをどう表現すべき？15のサービスを調査してみた #JSON - Qiita](https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8)
 
 <br>

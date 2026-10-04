@@ -9,7 +9,7 @@ description: 保管データの暗号化技術＠ネットワークセキュリ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,7 +25,7 @@ description: 保管データの暗号化技術＠ネットワークセキュリ�
 
 暗号化キー自体を安全に保管するハードウェアのこと。
 
-> - https://www.sarion.co.jp/ref/ref_hsm_primer_sec1.html
+> - [HSM超入門講座 「HSMとは?」 -- Sarion Systems Research](https://www.sarion.co.jp/ref/ref_hsm_primer_sec1.html)
 
 <br>
 

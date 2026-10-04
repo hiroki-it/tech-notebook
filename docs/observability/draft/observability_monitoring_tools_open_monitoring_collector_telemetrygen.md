@@ -9,7 +9,7 @@ description: Telemetrygen＠OpenTelemetry Collectorの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,11 +19,11 @@ description: Telemetrygen＠OpenTelemetry Collectorの知見を記録してい�
 
 別途、宛先の OpenTelemetry Collector を起動し、ログを出力しておく。
 
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
+> - [opentelemetry-collector-contrib/cmd/telemetrygen at main · open-telemetry/opentelemetry-collector-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen)
 
 検証用のツールとして、他に以下がある。
 
-> - https://github.com/equinix-labs/otel-cli
+> - [GitHub - equinix-labs/otel-cli: OpenTelemetry command-line tool for sending events from shell scripts & similar environments · GitHub](https://github.com/equinix-labs/otel-cli)
 > - https://newrelic.com/jp/blog/how-to-relic/how-to-observe-your-cicd-pipelines-with-opentelemetry
 
 <br>

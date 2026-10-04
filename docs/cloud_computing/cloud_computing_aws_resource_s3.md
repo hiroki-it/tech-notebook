@@ -157,7 +157,7 @@ module "s3_foo" {
 }
 ```
 
-> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+> - [Access logs for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions)
 
 #### ▼ Amazon CloudFront のファイル読み出しを許可
 
@@ -186,7 +186,7 @@ module "s3_foo" {
 }
 ```
 
-> - https://dev.classmethod.jp/articles/amazon-cloudfront-origin-access-control/
+> - [\[NEW\] CloudFrontからS3への新たなアクセス制御方法としてOrigin Access Control (OAC)が発表されました！ \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-cloudfront-origin-access-control/)
 
 #### ▼ Amazon CloudFront のアクセスログの保管を許可
 
@@ -276,7 +276,7 @@ module "s3_foo" {
 [{"AllowedOrigins": ["https://example.jp"]}]
 ```
 
-> - https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManageCorsUsing.html#cors-allowed-origin
+> - [Elements of a CORS configuration - Amazon Simple Storage Service](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ManageCorsUsing.html#cors-allowed-origin)
 
 <br>
 
@@ -288,6 +288,6 @@ module "s3_foo" {
 
 Amazon S3 では、署名付き URL を発行し、Amazon S3 への認可スコープを外部のユーザーに一時的に付与する。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html
+> - [メール添付＆パスワード後送をやめたいときの「Amazon S3」の「署名付きURL」によるファイル共有：AWSチートシート - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html)
 
 <br>

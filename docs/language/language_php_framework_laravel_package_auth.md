@@ -9,7 +9,7 @@ description: 認証／認可系パッケージ＠Laravelの知見を記録して
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -26,17 +26,17 @@ description: 認証／認可系パッケージ＠Laravelの知見を記録して
 | Web ガード   | フォーム認証のために使用する。                          |
 | API ガード   | Bearer 認証、API キー認証、OAuth などのために使用する。 |
 
-> - https://readouble.com/laravel/8.x/ja/authentication.html#introduction
+> - [8.x 認証 Laravel](https://readouble.com/laravel/8.x/ja/authentication.html#introduction)
 
 #### ▼ カスタムガード
 
 Laravel がデフォルトで持たないドライバーとプロバイダーを持つガードを定義する。
 
-> - https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards
+> - [8.x 認証 Laravel](https://readouble.com/laravel/8.x/ja/authentication.html#adding-custom-guards)
 
 API ガードの認証で使用するトークンを JWT に変更したいときには、以下のパッケージがおすすめ。
 
-> - https://github.com/tymondesigns/jwt-auth
+> - [GitHub - tymondesigns/jwt-auth: 🔐 JSON Web Token Authentication for Laravel & Lumen · GitHub](https://github.com/tymondesigns/jwt-auth)
 
 <br>
 
@@ -76,7 +76,7 @@ return [
 ];
 ```
 
-> - https://teratail.com/questions/171582
+> - [【Laravel】auth()-\>user() のuser()はどこからきているのか \| teratail](https://teratail.com/questions/171582)
 > - https://laravel.com/api/8.x/Illuminate/Auth/AuthManager.html
 > - https://laravel.com/api/8.x/Illuminate/Contracts/Auth/Guard.html#method_user
 > - https://laravel.com/api/8.x/Illuminate/Auth/TokenGuard.html#method_user
@@ -87,7 +87,7 @@ BeforeMiddleware で認証済みのユーザーか否かを検証し、もし未
 
 これにより、未認証のユーザーがコントローラーを実行することを防ぐ。
 
-> - https://qiita.com/yamotuki/items/b96978f8e379e285ecb6
+> - [Laravel のルーティングでauthenticate middlewareを使って認証する3つの方法 #PHP - Qiita](https://qiita.com/yamotuki/items/b96978f8e379e285ecb6)
 
 <br>
 
@@ -97,7 +97,7 @@ BeforeMiddleware で認証済みのユーザーか否かを検証し、もし未
 
 アカウントデータを DB から読み込むオブジェクトを定義する。
 
-> - https://readouble.com/laravel/8.x/ja/authentication.html#introduction
+> - [8.x 認証 Laravel](https://readouble.com/laravel/8.x/ja/authentication.html#introduction)
 
 <br>
 
@@ -115,7 +115,7 @@ SessionGuard クラスの `attempt()` 関数をコールしてパスワードを
 
 `redirect()` 関数で、認証後の初期ページにリダイレクトする。
 
-> - https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users
+> - [8.x 認証 Laravel](https://readouble.com/laravel/8.x/ja/authentication.html#authenticating-users)
 
 ```php
 <?php
@@ -170,7 +170,7 @@ class RouteServiceProvider extends ServiceProvider
 
 ユーザーごとに認証方法を区別しつつ、同じ認証後の Web ページにリダイレクトさせられる。
 
-> - https://blog.capilano-fw.com/?p=8159
+> - [【Laravel Jetstream】複数モデルでログインできるようにする（Multi Auth） – console dot log](https://blog.capilano-fw.com/?p=8159)
 
 **＊実装例＊**
 
@@ -347,7 +347,7 @@ Policy クラスの関数によって、リクエスト中の認証済みユー�
 
 Eloquent モデルと Policy クラスの紐付けは AuthServiceProvider クラスで定義する
 
-> - https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97
+> - [【Laravel】 認証や認可に関する補足資料 #PHP - Qiita](https://qiita.com/mpyw/items/8c5413b99b8e299f7002#%E7%AC%AC1%E5%BC%95%E6%95%B0%E3%81%AF%E5%BF%85%E3%81%9A-authenticatable-%E3%81%AB%E3%81%AA%E3%82%8B%E4%BD%86%E3%81%97)
 
 ```php
 <?php
@@ -471,7 +471,7 @@ Route::group(['middleware' => ['auth:web']], function () {
 });
 ```
 
-> - https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware
+> - [8.x 認可 Laravel](https://readouble.com/laravel/8.x/ja/authorization.html#via-middleware)
 
 #### ▼ `authorization()` 関数による認可
 
@@ -527,8 +527,8 @@ class FooController extends Controller
 }
 ```
 
-> - https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers
-> - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
+> - [8.x 認可 Laravel](https://readouble.com/laravel/8.x/ja/authorization.html#via-controller-helpers)
+> - [8.x 認可 Laravel](https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context)
 
 #### ▼ `can()` 関数による認可
 
@@ -583,8 +583,8 @@ class FooController extends Controller
 }
 ```
 
-> - https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model
-> - https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context
+> - [8.x 認可 Laravel](https://readouble.com/laravel/8.x/ja/authorization.html#via-the-user-model)
+> - [8.x 認可 Laravel](https://readouble.com/laravel/8.x/ja/authorization.html#supplying-additional-context)
 
 <br>
 
@@ -606,7 +606,7 @@ Composer でインストールする必要がある。
 $ composer require laravel/passport
 ```
 
-> - https://readouble.com/laravel/8.x/ja/passport.html
+> - [8.x Laravel Passport Laravel](https://readouble.com/laravel/8.x/ja/passport.html)
 
 #### ▼ OAuth のトークン管理テーブルを作成
 
@@ -1010,7 +1010,7 @@ $token = $user->createToken("<任意のアクセストークン文字列>")->acc
 $token = $user->createToken("<任意のアクセストークン文字列>", ["place-orders"])->accessToken;
 ```
 
-> - https://readouble.com/laravel/8.x/ja/passport.html#personal-access-tokens
+> - [8.x Laravel Passport Laravel](https://readouble.com/laravel/8.x/ja/passport.html#personal-access-tokens)
 
 <br>
 
@@ -1022,7 +1022,7 @@ API キー認証とフォーム認証機能の認証処理のみを提供する�
 
 ルーティングと DB アクセスに関する処理は提供しない。
 
-> - https://readouble.com/laravel/8.x/ja/sanctum.html
+> - [8.x Laravel Sanctum Laravel](https://readouble.com/laravel/8.x/ja/sanctum.html)
 
 <br>
 
@@ -1040,9 +1040,9 @@ $ composer require laravel/sanctum
 
 フロントエンド (外部のアプリケーションを含む) は任意とし、API のみを実装する場合、使用が適している。
 
-> - https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication
+> - [8.x Laravel Sanctum Laravel](https://readouble.com/laravel/8.x/ja/sanctum.html#api-token-authentication)
 > - https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
-> - https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
+> - [Why is it bad to use Sanctum API tokens to authenticate your own first-party SPA?](https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa)
 
 <br>
 
@@ -1050,9 +1050,9 @@ $ composer require laravel/sanctum
 
 フロントエンドにファーストパーティの SPA (自社の SPA) を使用して、バックエンドの API を実装する場合、使用が適している。
 
-> - https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication
+> - [8.x Laravel Sanctum Laravel](https://readouble.com/laravel/8.x/ja/sanctum.html#spa-authentication)
 > - https://stackoverflow.com/questions/65550823/laravel-sanctum-api-token-security
-> - https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa
+> - [Why is it bad to use Sanctum API tokens to authenticate your own first-party SPA?](https://laracasts.com/discuss/channels/laravel/why-is-it-bad-to-use-sanctum-api-tokens-to-authenticate-your-own-first-party-spa)
 
 <br>
 
@@ -1062,8 +1062,8 @@ $ composer require laravel/sanctum
 
 Laravel が持つすべての認証機能のバックエンド処理を提供する。
 
-> - https://readouble.com/laravel/8.x/ja/fortify.html
-> - https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
+> - [8.x Laravel Fortify Laravel](https://readouble.com/laravel/8.x/ja/fortify.html)
+> - [8.x Laravel Fortify Laravel](https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum)
 
 <br>
 
@@ -1073,14 +1073,14 @@ Laravel が持つすべての認証機能のバックエンド処理を提供す
 
 Laravel が持つすべての認証機能のバックエンド (認証+ルーティング+DB アクセス) 処理と、これに対応するフロントエンド処理を提供する。
 
-> - https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze
-> - https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum
+> - [8.x スターターキット Laravel](https://readouble.com/laravel/8.x/ja/starter-kits.html#laravel-breeze)
+> - [8.x Laravel Fortify Laravel](https://readouble.com/laravel/8.x/ja/fortify.html#laravel-fortify-and-laravel-sanctum)
 
 <br>
 
 ### セットアップ
 
-> - https://github.com/laravel/breeze
+> - [GitHub - laravel/breeze: Minimal Laravel authentication scaffolding with Blade, Vue, or React + Tailwind. · GitHub](https://github.com/laravel/breeze)
 
 #### ▼ インストール
 
@@ -1108,7 +1108,7 @@ $ php artisan breeze:install
 
 Laravel が持つすべての認証機能のバックエンド (認証+ルーティング+DB アクセス) 処理と、これに対応するフロントエンド処理を提供する。
 
-> - https://readouble.com/laravel/7.x/ja/authentication.html
+> - [7.x 認証 Laravel](https://readouble.com/laravel/7.x/ja/authentication.html)
 
 <br>
 

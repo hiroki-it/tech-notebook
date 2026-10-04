@@ -9,7 +9,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：マイクロサービス間通信の制御、マイクロサービス間通信のセキュリティ、テレメトリー作成など) を各マイクロサービスで実装する必要がある。サービスメッシュの導入による恩恵と負担を比較し、導入の要否を判断する。
 
-> - https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
+> - [What is Service Mesh and why is it needed in Kubernetes?](https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/)
 
 <br>
 
@@ -40,8 +40,8 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 ![mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mesh.png)
 
 > - https://solace.com/blog/event-mesh-service-mesh-for-microservices/
-> - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html
-> - https://solace.com/what-is-an-event-mesh/
+> - [サービスメッシュ、Istioがマイクロサービスのトラフィック制御、セキュリティ、可観測性に欠かせない理由：Cloud Nativeチートシート（9） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html)
+> - [What is an Event Mesh? \| Solace](https://solace.com/what-is-an-event-mesh/)
 
 <br>
 
@@ -70,8 +70,8 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 サービスメッシュの概念により、アプリエンジニアがこれらのロジックを意識せずに (透過的に) 、インフラストラクチャ層より上層 (
 インターフェース層、ユースケース層、ドメイン層) の実装に注力できる。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013
-> - https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/
+> - [サービスメッシュ、Istioがマイクロサービスのトラフィック制御、セキュリティ、可観測性に欠かせない理由：Cloud Nativeチートシート（9） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html#013)
+> - [What is Service Mesh and why is it needed in Kubernetes?](https://www.opsmx.com/blog/what-is-service-mesh-and-why-is-it-necessary/)
 
 <br>
 
@@ -83,8 +83,8 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 各マイクロサービスに共有ライブラリを配置する。
 
-> - https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14
-> - https://isovalent.com/blog/post/2021-12-08-ebpf-servicemesh/
+> - [Cilium Service Mesh - ServiceMeshCon Europe 2022 - Speaker Deck](https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14)
+> - [How eBPF will solve Service Mesh - Goodbye Sidecars](https://isovalent.com/blog/post/2021-12-08-ebpf-servicemesh/)
 > - https://www.oreilly.com/library/view/mastering-api-architecture/9781492090625/ch04.html
 
 <br>
@@ -100,7 +100,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 ![service-discovery_kubernetes_vs_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery_kubernetes_vs_istio.png)
 
 > - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
-> - https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure
+> - [Service Mesh 通信インフラストラクチャ - .NET \| Microsoft Learn](https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure)
 
 #### ▼ 透過的
 
@@ -108,7 +108,7 @@ description: サービスメッシュ＠サービスメッシュ系ミドルウ�
 
 例えば、iptables によるサイドカープロキシへのリダイレクトがある。
 
-> - https://docs.kernel.org/networking/tproxy.html
+> - [Transparent proxy support — The Linux Kernel documentation](https://docs.kernel.org/networking/tproxy.html)
 
 #### ▼ 適するリバースプロキシ
 
@@ -126,7 +126,7 @@ Envoy、Nginx、HAProxy のレイテンシーの比較では、Envoy のレイ�
 
 Node 上にエージェントを配置し、これを経由してマイクロサービス間で通信する。
 
-> - https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14
+> - [Cilium Service Mesh - ServiceMeshCon Europe 2022 - Speaker Deck](https://speakerdeck.com/tgraf/cilium-service-mesh-servicemeshcon-europe-2022?slide=14)
 
 <br>
 
@@ -140,8 +140,8 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 | マイクロサービスごとの設定カスタマイズ |                        |        `⭕️`        |           △            |
 | 単純性                                 |                        |         ×          |          `⭕️`          |
 
-> - https://codersociety.com/blog/articles/kubernetes-logging
-> - https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411
+> - [Kubernetes Logging in Production — Coder Society](https://codersociety.com/blog/articles/kubernetes-logging)
+> - [Comprehensive Analysis of Kubernetes Log Collection Principles - Alibaba Cloud Community](https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411)
 > - https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
 
 <br>
@@ -179,8 +179,8 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 | ...     | ...                                 | ...                        | ...                                            |
 
 > - https://www.amazon.co.jp/dp/1492043788
-> - https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20
-> - https://qiita.com/ryysud/items/bbfc730e17f53be65ce0
+> - [Securing the Service Mesh with SPIRE - Speaker Deck](https://speakerdeck.com/ryysud/securing-the-service-mesh-with-spire?slide=20)
+> - [Envoy + SPIRE + OPA で Service Mesh を構築する #envoy - Qiita](https://qiita.com/ryysud/items/bbfc730e17f53be65ce0)
 
 <br>
 
@@ -204,7 +204,7 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 - ロードバランサー
 - 名前解決 (DNS ベースでサービスを検出する場合のみ)
 
-> - https://www.baeldung.com/cs/service-discovery-microservices
+> - [Service Discovery in Microservices \| Baeldung on Computer Science](https://www.baeldung.com/cs/service-discovery-microservices)
 
 <br>
 
@@ -226,16 +226,16 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 : 送信元マイクロサービスは、ロードバランサーを経由して、宛先マイクロサービスにリクエストを送信する。
 
-> - https://microservices.io/patterns/client-side-discovery.html
-> - https://www.baeldung.com/cs/service-discovery-microservices
+> - [Pattern: Client-side service discovery](https://microservices.io/patterns/client-side-discovery.html)
+> - [Service Discovery in Microservices \| Baeldung on Computer Science](https://www.baeldung.com/cs/service-discovery-microservices)
 > - https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509
-> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
+> - [Service Discovery in Kubernetes: Combining the Best of Two Worlds](https://iximiuz.com/en/posts/service-discovery-in-kubernetes/)
 
 #### ▼ 実装方法
 
 - Netflix Eureka
 
-> - https://github.com/Netflix/eureka
+> - [GitHub - Netflix/eureka: AWS Service registry for resilient mid-tier load balancing and failover. · GitHub](https://github.com/Netflix/eureka)
 
 <br>
 
@@ -259,9 +259,9 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 : ロードバランサーは、宛先マイクロサービスにリクエストをルーティングする。
 
-> - https://microservices.io/patterns/server-side-discovery.html
-> - https://www.baeldung.com/cs/service-discovery-microservices
-> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
+> - [Pattern: Server-side service discovery](https://microservices.io/patterns/server-side-discovery.html)
+> - [Service Discovery in Microservices \| Baeldung on Computer Science](https://www.baeldung.com/cs/service-discovery-microservices)
+> - [Service Discovery in Kubernetes: Combining the Best of Two Worlds](https://iximiuz.com/en/posts/service-discovery-in-kubernetes/)
 > - https://blog.bitsrc.io/service-discovery-pattern-in-microservices-55d314fac509
 > - https://www.north-47.com/knowledge-base/service-discovery-in-a-microservices-architecture-client-vs-service-side-discovery/
 
@@ -272,7 +272,7 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 - サービス検出機能を持つリバースプロキシ (例：素の Envoy、Traefik など)
 - クラウド (例：AWS ALB)
 
-> - https://traefik.io/glossary/service-discovery/
+> - [What is Service Discovery \| Traefik Labs](https://traefik.io/glossary/service-discovery/)
 
 <br>
 
@@ -285,7 +285,7 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 サービスレジストリ (例：etcd) に自身を登録し、宛先を問い合わせ、宛先にルーティングする責務は、クライアント側マイクロサービスにある。
 
 > - https://softwarepatternslexicon.com/microservices/service-discovery/self-registration/
-> - https://www.codeprimers.com/service-discovery-in-microservice-architecture/
+> - [Service Discovery in Microservice Architecture \| Code Primers](https://www.codeprimers.com/service-discovery-in-microservice-architecture/)
 
 <br>
 
@@ -302,6 +302,6 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 - ゼロトラスト
 - ハイブリッドクラウド
 
-> - https://jimmysong.io/blog/beyond-istio-oss/#istio-future
+> - [Beyond Istio OSS - The Current State and Future of the Istio …](https://jimmysong.io/blog/beyond-istio-oss/#istio-future)
 
 <br>

@@ -9,7 +9,7 @@ description: Temporal＠ワークフローの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,7 +24,7 @@ Temporal は、Temporal クライアント、Temporal サーバー、ステー�
 > - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
 > - https://michaelangelo.io/blog/temporal-sqs#temporal-components
 > - https://blog.lorensr.me/how-durable-execution-works-462c060f7cb7
-> - https://temporal.io/blog/sergey-inversion-of-execution
+> - [Inversion of Execution \| Temporal](https://temporal.io/blog/sergey-inversion-of-execution)
 
 <br>
 
@@ -33,7 +33,7 @@ Temporal は、Temporal クライアント、Temporal サーバー、ステー�
 Temporal クライアントは、Temporal サーバーをコールし、Temporal ワーカーによって登録されたワークフローを実行する。
 
 > - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
-> - https://temporal.io/blog/sergey-inversion-of-execution
+> - [Inversion of Execution \| Temporal](https://temporal.io/blog/sergey-inversion-of-execution)
 
 <br>
 
@@ -42,7 +42,7 @@ Temporal クライアントは、Temporal サーバーをコールし、Temporal
 Temporal サーバーは、内蔵するメッセージ中継システムを操作してワークフローの現在のステートを管理し、ステートの履歴を DB に永続化する。
 
 > - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
-> - https://temporal.io/blog/sergey-inversion-of-execution
+> - [Inversion of Execution \| Temporal](https://temporal.io/blog/sergey-inversion-of-execution)
 
 <br>
 
@@ -101,15 +101,15 @@ temporal=# \dt
  ...
 ```
 
-> - https://github.com/temporalio/temporal/blob/main/schema/postgresql/v12/temporal/schema.sql
-> - https://github.com/temporalio/temporal/blob/main/schema/mysql/v8/visibility/schema.sql
+> - [temporal/schema/postgresql/v12/temporal/schema.sql at main · temporalio/temporal · GitHub](https://github.com/temporalio/temporal/blob/main/schema/postgresql/v12/temporal/schema.sql)
+> - [temporal/schema/mysql/v8/visibility/schema.sql at main · temporalio/temporal · GitHub](https://github.com/temporalio/temporal/blob/main/schema/mysql/v8/visibility/schema.sql)
 
 #### ▼ MySQL の場合
 
 主に、`temporal`DB と `temporal_visibility` を使用する。
 
-> - https://github.com/temporalio/temporal/blob/main/schema/mysql/v8/temporal/schema.sql
-> - https://github.com/temporalio/temporal/blob/main/schema/postgresql/v12/visibility/schema.sql
+> - [temporal/schema/mysql/v8/temporal/schema.sql at main · temporalio/temporal · GitHub](https://github.com/temporalio/temporal/blob/main/schema/mysql/v8/temporal/schema.sql)
+> - [temporal/schema/postgresql/v12/visibility/schema.sql at main · temporalio/temporal · GitHub](https://github.com/temporalio/temporal/blob/main/schema/postgresql/v12/visibility/schema.sql)
 
 <br>
 
@@ -125,8 +125,8 @@ temporal=# \dt
 
 ![temporal_worker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_worker_architecture.png)
 
-> - https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like
-> - https://temporal.io/blog/sergey-inversion-of-execution
+> - [Background Check Application Design \| Learn Temporal](https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like)
+> - [Inversion of Execution \| Temporal](https://temporal.io/blog/sergey-inversion-of-execution)
 
 <br>
 
@@ -145,12 +145,12 @@ Temporal を Saga パターンのオーケストレーターとして使用す�
 ![temporal_saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_saga-pattern.png)
 
 > - https://learn.temporal.io/tutorials/php/booking_saga/#review-the-saga-architecture-pattern
-> - https://temporal.io/blog/saga-pattern-made-easy
-> - https://github.com/efortuna/sagas-temporal-trip-booking/tree/main
-> - https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/4
-> - https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/6
-> - https://spiral.dev/blog/temporal-workflow-and-microservices
-> - https://github.com/guntenbein/temporal_microservices/tree/main/cmd
+> - [Saga Design Pattern Explained for Distributed Systems \| Temporal](https://temporal.io/blog/saga-pattern-made-easy)
+> - [GitHub - efortuna/sagas-temporal-trip-booking: how to write a vacation booking system that uses sagas to compensate if booking fails. It does so in Java and Go. · GitHub](https://github.com/efortuna/sagas-temporal-trip-booking/tree/main)
+> - [Springboot microservices managed by Temporal.io + RabbitMQ - #4 by maxim - Community Support - Temporal Community Forum](https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/4)
+> - [Springboot microservices managed by Temporal.io + RabbitMQ - #6 by maxim - Community Support - Temporal Community Forum](https://community.temporal.io/t/springboot-microservices-managed-by-temporal-io-rabbitmq/1489/6)
+> - [Temporal Workflow & Microservices Explained \| Spiral Scout](https://spiral.dev/blog/temporal-workflow-and-microservices)
+> - [temporal\_microservices/cmd at main · guntenbein/temporal\_microservices · GitHub](https://github.com/guntenbein/temporal_microservices/tree/main/cmd)
 
 #### ▼ マネージドサービスよりも適切な理由
 
@@ -176,8 +176,8 @@ Temporal の大きな特徴は、次のとおりである。
 
 なお、Temporal に類似した OSS として、他に Cadence がある。
 
-> - https://thinhdanggroup.github.io/temporal-airflow/
-> - https://pipekit.io/blog/temporal-vs-argo-workflows
+> - [Temporal vs Airflow: A Comparative Analysis - ThinhDA](https://thinhdanggroup.github.io/temporal-airflow/)
+> - [Pipekit \| Managed Argo Workflows & Enterprise Support](https://pipekit.io/blog/temporal-vs-argo-workflows)
 
 #### ▼ Temporal クライアント
 
@@ -549,7 +549,7 @@ func TransferMoney(ctx workflow.Context, transferDetails TransferDetails) (err e
 }
 ```
 
-> - https://github.com/temporalio/samples-go/blob/main/saga/workflow.go
+> - [samples-go/saga/workflow.go at main · temporalio/samples-go · GitHub](https://github.com/temporalio/samples-go/blob/main/saga/workflow.go)
 
 <br>
 
@@ -594,11 +594,11 @@ sequenceDiagram
     APIゲートウェイ -->> フロントエンド: レスポンス
 ```
 
-> - https://temporal.io/blog/workflow-engine-principles
-> - https://keithtenzer.com/temporal/Temporal_Fundamentals_Basics/#application-worker
-> - https://keithtenzer.com/temporal/Temporal_Fundamentals_Basics/#workflow-starter
-> - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md
-> - https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md
+> - [Workflow Engine Design Principles with Temporal \| Temporal](https://temporal.io/blog/workflow-engine-principles)
+> - [Temporal Fundamentals Part I: Basics - Keith Tenzer’s Blog](https://keithtenzer.com/temporal/Temporal_Fundamentals_Basics/#application-worker)
+> - [Temporal Fundamentals Part I: Basics - Keith Tenzer’s Blog](https://keithtenzer.com/temporal/Temporal_Fundamentals_Basics/#workflow-starter)
+> - [saga-orchestration-serverless/docs/architecture/workflows.md at main · Azure-Samples/saga-orchestration-serverless · GitHub](https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md)
+> - [saga-orchestration-serverless/docs/architecture/additional-patterns.md at main · Azure-Samples/saga-orchestration-serverless · GitHub](https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md)
 
 <br>
 

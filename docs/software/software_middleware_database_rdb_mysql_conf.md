@@ -45,7 +45,7 @@ $ yum install -y mysql
 $ yum install -y mysql mysql-server
 ```
 
-> - https://qiita.com/gologo13/items/1bdba6085ec79153bf1a
+> - [Dockerコンテナ内にmysqlサーバを立てる #MySQL - Qiita](https://qiita.com/gologo13/items/1bdba6085ec79153bf1a)
 
 <br>
 
@@ -181,7 +181,7 @@ MySQL プロセスの実行ログを出力する。
 $ less mysqld.log | grep "temporary password"
 ```
 
-> - https://beyondjapan.com/blog/2020/07/mysql-password/
+> - [これで解決！忘れてしまったMySQLのrootユーザーパスワードを変更する \| 株式会社ビヨンド](https://beyondjapan.com/blog/2020/07/mysql-password/)
 > - https://insource-mkd.co.jp/staff-blog/10868/
 
 <br>
@@ -271,8 +271,8 @@ select user, host, plugin from mysql.user;
 +------------------+-----------+-----------------------+
 ```
 
-> - https://github.com/docker-library/mysql/issues/1048#issuecomment-2091216633
-> - https://next4us-ti.hatenablog.com/entry/2021/12/18/072123
+> - [latest image has no connection · Issue #1048 · docker-library/mysql · GitHub](https://github.com/docker-library/mysql/issues/1048#issuecomment-2091216633)
+> - [MySQL8.0を再起動するとアプリからつながらなくなる理由 - 41から始めました](https://next4us-ti.hatenablog.com/entry/2021/12/18/072123)
 
 <br>
 
@@ -351,7 +351,7 @@ innodb_lock_wait_timeout = 50
 ```
 
 > - https://dev.mysql.com/doc/refman/8.4/en/innodb-parameters.html#sysvar_innodb_lock_wait_timeout
-> - https://qiita.com/picapica/items/09322fa98254a3b4a099#%E5%85%88%E3%81%AB%E8%A6%81%E7%B4%84
+> - [【MySQL】innodb\_lock\_wait\_timeoutはメタデータロック時にはタイムアウトしない。 #mysql5.6 - Qiita](https://qiita.com/picapica/items/09322fa98254a3b4a099#%E5%85%88%E3%81%AB%E8%A6%81%E7%B4%84)
 
 <br>
 

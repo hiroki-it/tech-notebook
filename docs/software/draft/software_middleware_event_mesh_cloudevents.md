@@ -9,7 +9,7 @@ description: CloudEvents＠パブリッシュ／サブスクライブ方式の�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,8 +25,8 @@ description: CloudEvents＠パブリッシュ／サブスクライブ方式の�
 
 ![cloudevents_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudevents_architecture.png)
 
-> - https://github.com/cloudevents/spec
-> - https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/
+> - [GitHub - cloudevents/spec: CloudEvents Specification · GitHub](https://github.com/cloudevents/spec)
+> - [Event-Driven applications with CloudEvents on Kubernetes \| Salaboy](https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/)
 
 <br>
 
@@ -73,7 +73,7 @@ func main() {
 }
 ```
 
-> - https://cloudevents.github.io/sdk-go/#send-your-first-cloudevent
+> - [Home \| Golang SDK for CloudEvents](https://cloudevents.github.io/sdk-go/#send-your-first-cloudevent)
 
 <br>
 
@@ -101,6 +101,6 @@ func main() {
 }
 ```
 
-> - https://cloudevents.github.io/sdk-go/#receive-your-first-cloudevent
+> - [Home \| Golang SDK for CloudEvents](https://cloudevents.github.io/sdk-go/#receive-your-first-cloudevent)
 
 <br>

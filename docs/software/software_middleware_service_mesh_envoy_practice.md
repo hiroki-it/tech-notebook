@@ -9,7 +9,7 @@ description: プラクティス@Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: プラクティス@Envoyの知見を記録しています。
 
 Envoy が CoreDNS との通信に失敗している可能性がある。
 
-> - https://christina04.hatenablog.com/entry/istio-and-envoy-errors
+> - [IstioやEnvoyで発生するネットワーク系エラー - Carpe Diem](https://christina04.hatenablog.com/entry/istio-and-envoy-errors)
 
 <br>
 
@@ -66,8 +66,8 @@ Envoy
 
 ![envoy_upstream-request-timeout_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png)
 
-> - https://christina04.hatenablog.com/entry/istio-and-envoy-errors
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage
+> - [IstioやEnvoyで発生するネットワーク系エラー - Carpe Diem](https://christina04.hatenablog.com/entry/istio-and-envoy-errors)
+> - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage)
 
 #### ▼ Envoy へのインバウンド通信の場合
 
@@ -86,8 +86,8 @@ Envoy
 
 ![envoy_upstream-request-timeout_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png)
 
-> - https://christina04.hatenablog.com/entry/istio-and-envoy-errors
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage
+> - [IstioやEnvoyで発生するネットワーク系エラー - Carpe Diem](https://christina04.hatenablog.com/entry/istio-and-envoy-errors)
+> - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage)
 
 <br>
 
@@ -134,7 +134,7 @@ Envoy
 ... # 宛先
 ```
 
-> - https://github.com/envoyproxy/envoy/issues/13068
+> - [Envoy sometimes returns "upstream response timeout" before an upstream is associated with the stream · Issue #13068 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/13068)
 
 #### ▼ Envoy へのインバウンド通信の場合
 
@@ -151,7 +151,7 @@ Envoy
 マイクロサービス # 宛先
 ```
 
-> - https://github.com/envoyproxy/envoy/issues/13068
+> - [Envoy sometimes returns "upstream response timeout" before an upstream is associated with the stream · Issue #13068 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/13068)
 
 <br>
 
@@ -231,7 +231,7 @@ Envoy
 
 記入中...
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#http-request-headers-set-on-upstream-calls
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#http-request-headers-set-on-upstream-calls)
 
 <br>
 
@@ -247,7 +247,7 @@ Envoy
 
 送信元 Envoy は、この Envoy をロードバランシングの宛先から外す。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-immediate-health-check-fail
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-immediate-health-check-fail)
 
 <br>
 
@@ -261,20 +261,20 @@ Envoy
 
 宛先マイクロサービスの処理時間と宛先 Envoy からのレスポンスタイムの合計時間を表す。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-upstream-service-time
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-upstream-service-time)
 
 #### ▼ x-envoy-overloaded
 
 送信元 Envoy のアウトバウンド通信時に、接続プールに基づくサーキットブレイカーによってリクエストが遮断されたことを表す。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-overloaded
-> - https://aws.amazon.com/cn/blogs/china/how-to-use-metrics-and-logs-to-troubleshoot-app-mesh-related-network-problems/
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-overloaded)
+> - [如何利用指标和日志排查App Mesh相关网络问题 \| 亚马逊AWS官方博客](https://aws.amazon.com/cn/blogs/china/how-to-use-metrics-and-logs-to-troubleshoot-app-mesh-related-network-problems/)
 
 #### ▼ x-envoy-loadl-overloaded
 
 送信元 Envoy のインバウンド通信時に、サーキットブレイカーによってリクエストが遮断されたことを表す。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#x-envoy-local-overloaded
-> - https://github.com/envoyproxy/envoy/issues/1573#issue-254090540
+> - [HTTP header manipulation — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#x-envoy-local-overloaded)
+> - [Add x-envoy-overloaded response header · Issue #1573 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/issues/1573#issue-254090540)
 
 <br>

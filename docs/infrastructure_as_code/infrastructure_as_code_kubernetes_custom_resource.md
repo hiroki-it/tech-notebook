@@ -9,7 +9,7 @@ description: カスタムリソース＠Kubernetesの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -39,8 +39,8 @@ CRD は、Helm の管理外 (`kubectl` コマンド) で作成/変更したほ�
 - CRD をアップグレードした場合に、スキーマに機能廃止があると、カスタムリソースで廃止されたその機能を使用できなくなる。
 - CRD 自体を誤って削除すると、これに対応するカスタムリソースも自動的に削除される。
 
-> - https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/
-> - https://www.amazon.co.jp/dp/B08FZX8PYW
+> - [Custom Resources \| Kubernetes](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+> - [Amazon.co.jp: Kubernetes完全ガイド 第2版 impress top gearシリーズ eBook : 青山真也: Kindleストア](https://www.amazon.co.jp/dp/B08FZX8PYW)
 
 <br>
 
@@ -112,8 +112,8 @@ Custom Controller のチャートをインストールし、後は Custom Contro
 
 例えば『`example.com`』というグループと『`v1`』というバージョンを定義したとすると、カスタムリソースからは `example.com/v1` という API からコールできるようになる。
 
-> - https://hi1280.hatenablog.com/entry/2019/11/15/003101
-> - https://www.takutakahashi.dev/lazy-custom-controller-for-kubernetes/
+> - [KubernetesのCustom Resourceを試した - なになれ](https://hi1280.hatenablog.com/entry/2019/11/15/003101)
+> - [Kubernetes Custom Controller を手抜きで作る技術 - takutakahashi.dev](https://www.takutakahashi.dev/lazy-custom-controller-for-kubernetes/)
 
 <br>
 
@@ -163,8 +163,8 @@ spec:
   group: example.com
 ```
 
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
-> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+> - [Extend the Kubernetes API with CustomResourceDefinitions \| Kubernetes](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
+> - [Kubernetesに無限の可能性を生み出す「Operator」「CRD」「カスタムコントローラー」とは：Cloud Nativeチートシート（8） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html)
 
 <br>
 
@@ -185,8 +185,8 @@ spec:
   scope: Namespaced
 ```
 
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
-> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+> - [Extend the Kubernetes API with CustomResourceDefinitions \| Kubernetes](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
+> - [Kubernetesに無限の可能性を生み出す「Operator」「CRD」「カスタムコントローラー」とは：Cloud Nativeチートシート（8） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html)
 
 #### ▼ Cluster の場合
 
@@ -204,7 +204,7 @@ spec:
 ```
 
 > - https://uzimihsr.github.io/post/2021-07-12-kubernetes-crd-controller-practice/#crd%E3%81%AE%E4%BD%9C%E6%88%90
-> - https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/
+> - [Create Kubernetes custom resource definitions](https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/)
 
 #### ▼ Namespaced の場合
 
@@ -222,7 +222,7 @@ spec:
 ```
 
 > - https://uzimihsr.github.io/post/2021-07-12-kubernetes-crd-controller-practice/#crd%E3%81%AE%E4%BD%9C%E6%88%90
-> - https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/
+> - [Create Kubernetes custom resource definitions](https://developer.ibm.com/tutorials/kubernetes-custom-resource-definitions/)
 
 <br>
 
@@ -255,7 +255,7 @@ kind: Foo
 spec: ...
 ```
 
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - [Extend the Kubernetes API with CustomResourceDefinitions \| Kubernetes](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
 
 #### ▼ plural
 
@@ -277,7 +277,7 @@ spec:
 $ kubectl get foos
 ```
 
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - [Extend the Kubernetes API with CustomResourceDefinitions \| Kubernetes](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
 
 #### ▼ singular
 
@@ -299,7 +299,7 @@ spec:
 $ kubectl get foo
 ```
 
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - [Extend the Kubernetes API with CustomResourceDefinitions \| Kubernetes](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
 
 #### ▼ shortNames
 
@@ -322,7 +322,7 @@ spec:
 $ kubectl get fo
 ```
 
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - [Extend the Kubernetes API with CustomResourceDefinitions \| Kubernetes](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
 
 <br>
 
@@ -350,7 +350,7 @@ spec:
   ...
 ```
 
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/#specify-multiple-versions
+> - [Versions in CustomResourceDefinitions \| Kubernetes](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/#specify-multiple-versions)
 
 #### ▼ name
 
@@ -368,7 +368,7 @@ spec:
     - name: v1
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+> - [Kubernetesに無限の可能性を生み出す「Operator」「CRD」「カスタムコントローラー」とは：Cloud Nativeチートシート（8） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html)
 
 #### ▼ served
 
@@ -386,7 +386,7 @@ spec:
     - served: "true"
 ```
 
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+> - [Extend the Kubernetes API with CustomResourceDefinitions \| Kubernetes](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
 
 #### ▼ schema
 
@@ -416,8 +416,8 @@ spec:
                   type: string
 ```
 
-> - https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema
-> - https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html
+> - [Extend the Kubernetes API with CustomResourceDefinitions \| Kubernetes](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/#specifying-a-structural-schema)
+> - [Kubernetesに無限の可能性を生み出す「Operator」「CRD」「カスタムコントローラー」とは：Cloud Nativeチートシート（8） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2109/10/news013.html)
 
 #### ▼ storage
 
@@ -434,6 +434,6 @@ spec:
 ```
 
 > - https://stackoverflow.com/questions/69558910/what-does-storage-means-in-kubernetes-crd
-> - https://speakerdeck.com/uesyn/k8s-storage-version-migration?slide=5
+> - [そのクラスタ本当にアップグレードして大丈夫？ Storage Version の更新も忘れずにしよう！ / k8s-storage-version-migration - Speaker Deck](https://speakerdeck.com/uesyn/k8s-storage-version-migration?slide=5)
 
 <br>

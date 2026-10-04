@@ -9,7 +9,7 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -611,7 +611,7 @@ FILTER セクションで、modify プラグインを定義する。
 ```
 
 > - https://docs.fluentbit.io/manual/pipeline/filters/modify
-> - https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251
+> - [Fluent Bitでレコードを変更する（record\_modifier、modify、lua） - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2020/08/16/225251)
 
 <br>
 
@@ -625,7 +625,7 @@ FILTER セクションで、modify プラグインを定義する。
 
 ただし、本番環境ではログが複数行にならないようにアプリケーション側で実装し、ログを収集して可視化する段階でフィルタリングできれば問題ない、という考え方もある。
 
-> - https://qiita.com/roundrop@github/items/8989b7f29d70f618e503
+> - [logback で出すログを強制的に１行にして収集しやすく・運用しやすくする #Java - Qiita](https://qiita.com/roundrop@github/items/8989b7f29d70f618e503)
 
 #### ▼ セットアップ
 
@@ -715,7 +715,7 @@ Laravel のスタックトレースを結合する。
 
 FluentBit での名前付きキャプチャについては、Fluentd のドキュメントを参考にせよ。
 
-> - https://docs.fluentd.org/parser/regexp
+> - [regexp · Fluentd 1.0 Documentation](https://docs.fluentd.org/parser/regexp)
 
 #### ▼ バリデーション
 
@@ -723,11 +723,11 @@ FluentBit は、内部的には ruby 製関数を使用して正規表現を検�
 
 そのため、これを確認できるバリデーションツールを使用する。
 
-> - http://rubular.com/
+> - [Rubular: a Ruby regular expression editor](http://rubular.com/)
 
 代わりに、Fluentd の正規表現チェッカーでもよい。
 
-> - http://fluentular.herokuapp.com/
+> - [Fluentular: a Fluentd regular expression editor](http://fluentular.herokuapp.com/)
 
 #### ▼ セットアップ
 
@@ -1033,17 +1033,17 @@ AWS から提供されるほかのすべての FluentBit イメージを束ね�
 
 もともと、『cloudwatch プラグイン』という名前だった。
 
-> - https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4
+> - [FireLens（Fluent Bit）CloudWatch Logsの新プラグインを使ったログストリーム作成方法 \| DevelopersIO](https://dev.classmethod.jp/articles/fluent-bit-used-cloudwatch-logs-new-plugin/#toc-4)
 
 #### ▼ セットアップ
 
 cloudwatch_logs プラグインがプリインストールされているベースイメージを使用する。
 
-> - https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit
+> - [GitHub - aws/amazon-cloudwatch-logs-for-fluent-bit: A Fluent Bit output plugin for CloudWatch Logs · GitHub](https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit)
 
 設定ファイルに予約された AWS 変数については、以下のリンクを参考にせよ。
 
-> - https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names
+> - [GitHub - aws/amazon-cloudwatch-logs-for-fluent-bit: A Fluent Bit output plugin for CloudWatch Logs · GitHub](https://github.com/aws/amazon-cloudwatch-logs-for-fluent-bit#templating-log-group-and-stream-names)
 
 ```bash
 # ---------------------------------------------
@@ -1096,7 +1096,7 @@ Amazon CloudWatch Logs に送信されるデータは JSON 型である。
 }
 ```
 
-> - https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html
+> - [FireLens で rewrite\_tag による複数ターゲットへのログの振り分け \| Stuck inside](https://blog.msysh.me/posts/2020/07/split_logs_into_multiple_target_with_firelens_and_rewrite_tag.html)
 
 <br>
 
@@ -1146,7 +1146,7 @@ Amazon CloudWatch Logs に送信されるデータは JSON 型である。
     dd_tags           env:prd-foo
 ```
 
-> - https://github.com/DataDog/fluent-plugin-datadog
+> - [GitHub - DataDog/fluent-plugin-datadog: Fluentd output plugin for Datadog: https://www.datadog.com · GitHub](https://github.com/DataDog/fluent-plugin-datadog)
 
 <br>
 
@@ -1158,7 +1158,7 @@ Amazon CloudWatch Logs に送信されるデータは JSON 型である。
 
 kinesis_firehose プラグインがプリインストールされているベースイメージを使用する。
 
-> - https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit
+> - [GitHub - aws/amazon-kinesis-firehose-for-fluent-bit: A Fluent Bit output plugin for Amazon Kinesis Data Firehose · GitHub](https://github.com/aws/amazon-kinesis-firehose-for-fluent-bit)
 
 <br>
 
@@ -1170,7 +1170,7 @@ kinesis_firehose プラグインがプリインストールされているベー
 
 kinesis_streams プラグインがプリインストールされているベースイメージを使用する。
 
-> - https://github.com/aws/amazon-kinesis-streams-for-fluent-bit
+> - [GitHub - aws/amazon-kinesis-streams-for-fluent-bit: A Fluent Bit output plugin for Kinesis Streams · GitHub](https://github.com/aws/amazon-kinesis-streams-for-fluent-bit)
 
 <br>
 
@@ -1252,7 +1252,7 @@ stackdriver プラグインはビルトインプラグインである。
 ```
 
 > - https://docs.fluentbit.io/manual/pipeline/outputs/stackdriver
-> - https://qiita.com/suzuyui/items/2217a357099130fc7236#stackdriver-output-plugin
+> - [オンプレ VM から Fluent Bit を使用して Cloud Logging へのログ送信 #GoogleCloud - Qiita](https://qiita.com/suzuyui/items/2217a357099130fc7236#stackdriver-output-plugin)
 
 <br>
 

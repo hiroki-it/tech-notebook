@@ -9,7 +9,7 @@ description: ユーティリティ (サービスプログラム) ＠基本ソフ
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: ユーティリティ (サービスプログラム) ＠基本ソフ
 
 ### Unix 系の標準ユーティリティ
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html
+> - [【IT技術の知見】Unix系標準ユーティリティ＠ユーティリティ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html)
 
 <br>
 
@@ -83,7 +83,7 @@ Posix ではファイル末尾の改行を『終了』として認識する。
 
 この問題に合わせて、一部のツール (例：GitHub) では、ファイルの末尾に改行がないと、警告文がでるようになっている。
 
-> - https://joachimschuster.de/posts/why-inserting-newline-at-the-end-of-file/
+> - [What is this ‘no newline at end of file’ - Joachim Schuster’s blog](https://joachimschuster.de/posts/why-inserting-newline-at-the-end-of-file/)
 > - https://stackoverflow.com/a/729795
 
 <br>

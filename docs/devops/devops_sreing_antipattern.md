@@ -9,7 +9,7 @@ description: アンチパターン＠SREingの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: アンチパターン＠SREingの知見を記録しています。
 
 ### はじめに
 
-> - https://www.amazon.co.jp/dp/4873119618
+> - [SREの探求 ―様々な企業におけるサイトリライアビリティエンジニアリングの導入と実践 \| David N.Blank-Edelman, 山口能迪, 渡邉了介 \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4873119618)
 
 <br>
 
@@ -172,7 +172,7 @@ description: アンチパターン＠SREingの知見を記録しています。
 
 ![infrastructure_mutable_immutable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_mutable_immutable.jpeg)
 
-> - https://xtech.nikkei.com/it/atcl/ncd/14/082500015/
+> - [ITインフラは使い捨てへ \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/atcl/ncd/14/082500015/)
 
 #### ▼ 問題点
 
@@ -217,7 +217,7 @@ SREer の役割の `1` 個として、システムの設計段階でレビュー
 
 一方で、システムの数が多くなると、コンサルのステップがボトルネックになり、リリースの頻度が低くなる。
 
-> - https://x-tech5.co.jp/2022/02/21/204/
+> - [SRE実践の形：7種類の SRE 実践パターン - 株式会社X-Tech5](https://x-tech5.co.jp/2022/02/21/204/)
 
 #### ▼ 解決策
 
@@ -302,7 +302,7 @@ MTTF を重要視し、MTTR を軽視してしまうこと。
 
 機能変更によって、コンポーネント間にどのような依存関係が新しく追加されるかを自動的に検出し、記録可能にする。
 
-> - https://github.com/ortelius/ortelius
+> - [GitHub - ortelius/ortelius: The mission of the Ortelius community is to expose weak links in the software supply chain by continuously gathering and analyzing software supply chain intelligence. · GitHub](https://github.com/ortelius/ortelius)
 
 <br>
 
@@ -346,7 +346,7 @@ MTTF を重要視し、MTTR を軽視してしまうこと。
 
 また SLO は高過ぎればよいということもなく、例えば `99.5`%と `99.9`%の信頼性の間でユーザー評価が変わらないのであれば、労力をかけて `99.99`%にする必要はない。
 
-> - https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html
+> - [Document history - AMS Advanced User Guide](https://docs.aws.amazon.com/managedservices/latest/userguide/doc-history-ug.html)
 
 <br>
 

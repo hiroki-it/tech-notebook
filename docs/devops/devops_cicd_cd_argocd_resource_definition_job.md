@@ -9,7 +9,7 @@ description: Job系＠リソース定義の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -34,7 +34,7 @@ metadata:
   generateName: foo-hook
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name
+> - [Resource hooks - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/#generate-name)
 
 <br>
 
@@ -54,8 +54,8 @@ Job に、ArgoCD の `Sync` フェーズを設定する。
 | PostSync | Sync の後            | ヘルスチェック                                                              |
 | SyncFail | Sync の失敗時        | Sync 失敗の残骸となった Kubernetes リソースの削除処理                       |
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves
+> - [Resource hooks - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/)
+> - [Sync Phases and Waves - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#sync-phases-and-waves)
 
 **＊実行例＊**
 
@@ -116,8 +116,8 @@ $ kubectl exec -it <Pod名> -- bash
 /usr/local/src/foo/node_modules/.bin/prisma migrate deploy
 ```
 
-> - https://qiita.com/butterv/items/65d8663dfa3a69f1bc55
-> - https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/
+> - [ArgoCDで、DBのマイグレーションが完了してからデプロイする #kubernetes - Qiita](https://qiita.com/butterv/items/65d8663dfa3a69f1bc55)
+> - [Kubernetes の Job でマイグレーションを実行する \| はったりエンジニアの備忘録](https://blog.manabusakai.com/2018/04/migration-job-on-kubernetes/)
 
 #### ▼ argocd.argoproj.io/sync-wave
 
@@ -162,7 +162,7 @@ metadata:
     argocd.argoproj.io/sync-wave: 1 # 優先度 1
 ```
 
-> - https://weseek.co.jp/tech/95/
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves
+> - [GitOpsをArgoCDで学ぶ](https://weseek.co.jp/tech/95/)
+> - [Sync Phases and Waves - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves)
 
 <br>

@@ -9,7 +9,7 @@ description: K3S＠開発環境の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,7 +24,7 @@ $ chmod a+x /usr/local/bin/k3s
 $ k3s version
 ```
 
-> - https://docs.k3s.io/installation/configuration#configuration-with-binary
+> - [Configuration Options \| K3s](https://docs.k3s.io/installation/configuration#configuration-with-binary)
 
 <br>
 
@@ -39,8 +39,8 @@ $ sudo chown runner $HOME/.kube/config
 $ sudo chmod go-r $HOME/.kube/config
 ```
 
-> - https://future-architect.github.io/articles/20200929/
-> - https://docs.k3s.io/installation/configuration#configuration-with-install-script
+> - [k3sを知る、動かす、感じる \| フューチャー技術ブログ](https://future-architect.github.io/articles/20200929/)
+> - [Configuration Options \| K3s](https://docs.k3s.io/installation/configuration#configuration-with-install-script)
 
 <br>
 
@@ -64,6 +64,6 @@ K3S Cluster を作成する。
 $ k3s server
 ```
 
-> - https://docs.k3s.io/cli/server
+> - [server \| K3s](https://docs.k3s.io/cli/server)
 
 <br>

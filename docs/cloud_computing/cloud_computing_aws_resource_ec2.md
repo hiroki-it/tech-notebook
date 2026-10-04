@@ -23,7 +23,7 @@ description: Amazon EC2＠AWSリソースの知見を記録しています。
 
 ベストプラクティスについては、以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-best-practices.html
+> - [Best practices for Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-best-practices.html)
 
 <br>
 
@@ -105,7 +105,7 @@ CPU クレジットは一定の割合で回復する。
 
 詳しくは以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html
+> - [Burstable performance instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
 
 #### ▼ アプリケーションのドメインに合わせたインスタンスタイプ
 
@@ -128,8 +128,8 @@ CPU クレジットは一定の割合で回復する。
 > - https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=16
 > - https://pages.awscloud.com/rs/112-TZM-766/images/C2-07.pdf#page=22
 > - https://aws.amazon.com/jp/ec2/instance-types/
-> - https://techblog.forgevision.com/entry/aws-ec2-instance-bgr
-> - https://biz.nuro.jp/column/aws-mama-022/
+> - [EC2 インスタンスタイプの種類や選び方！AWS初心者向けに今一度整理 - ForgeVision Engineer Blog](https://techblog.forgevision.com/entry/aws-ec2-instance-bgr)
+> - [【初心者向け】Amazon EC2インスタンスタイプの選び方は？種類ごとの特徴を解説 ｜コラム｜NURO Biz（ニューロ・ビズ）](https://biz.nuro.jp/column/aws-mama-022/)
 
 #### ▼ ファミリーに応じたスペック範囲
 
@@ -166,8 +166,8 @@ Amazon EC2 では、ブロックデバイスにルートデバイスボリュー
 
 複数のルートボリュームを紐付ける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリへマウントするようにしておく。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html
-> - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
+> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html)
+> - [【 mountpoint 】コマンド――指定した場所がマウントポイントかどうかを調べる：Linux基本コマンドTips（186） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html)
 
 #### ▼ AWS EBS ボリューム
 
@@ -183,9 +183,9 @@ AWS EBS で保管されているルートデバイスボリュームで、推奨
 
 また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
+> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts)
+> - [AMI types and characteristics in Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device)
+> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage)
 
 #### ▼ インスタンスストアボリューム
 
@@ -199,8 +199,8 @@ AWS EBS ボリュームとは異なり、コンピューティングとして動
 
 そのため、インスタンスストアボリュームは、Amazon EC2 を削除すると一緒に削除されてしまう。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts)
+> - [AMI types and characteristics in Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device)
 
 <br>
 
@@ -219,7 +219,7 @@ Amazon EC2 のライフサイクルにはフェーズがある。
 | shutting-down | インスタンスを削除している途中である。                             |
 | terminated    | インスタンスの削除が完了した。                                     |
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+> - [Amazon EC2 instance state changes - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
 
 <br>
 
@@ -295,8 +295,8 @@ StandardOutput=journal+console
 WantedBy=multi-user.target
 ```
 
-> - https://qiita.com/yamada-hakase/items/657fead978491e8db92f#2-2-cloud-configservice%E3%81%AE%E4%B8%AD%E8%BA%AB%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B
-> - https://oji-cloud.net/2022/06/30/post-7063/#3_sreake_motouchi_times
+> - [インスタンス作成時にUser Dataで指定した設定が遅れる理由 #AWS - Qiita](https://qiita.com/yamada-hakase/items/657fead978491e8db92f#2-2-cloud-configservice%E3%81%AE%E4%B8%AD%E8%BA%AB%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B)
+> - [systemd 管理のサービスをcloud-init の後に実行する \| Oji-Cloud](https://oji-cloud.net/2022/06/30/post-7063/#3_sreake_motouchi_times)
 
 <br>
 
@@ -312,7 +312,7 @@ AWS AMI を入れ替える場合、コンテナイメージと同様に Amazon E
 
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html
 > - https://aws.typepad.com/sajp/2014/04/trainingfaqbest10.html
-> - https://qiita.com/Jerid/items/c8c7b09797fc5f9f182e#ami%E3%81%A8snapshot%E3%81%AE%E9%81%95%E3%81%84
+> - [AMIとsnapshotによるバックアップと復元 #AWS - Qiita](https://qiita.com/Jerid/items/c8c7b09797fc5f9f182e#ami%E3%81%A8snapshot%E3%81%AE%E9%81%95%E3%81%84)
 
 <br>
 
@@ -322,13 +322,13 @@ AWS AMI を入れ替える場合、コンテナイメージと同様に Amazon E
 
 AWS EBS ボリュームを持つ Amazon EC2 を作成する AWS AMI のこと。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+> - [AMI types and characteristics in Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device)
 
 #### ▼ instance store-backed AMI
 
 インスタンスストアボリュームを持つ Amazon EC2 を作成する AWS AMI のこと。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device
+> - [AMI types and characteristics in Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device)
 
 <br>
 
@@ -338,7 +338,7 @@ AMI の作成時に再起動が基本的に必要になる。
 
 これは無効にできる。ただし、データが欠損する恐れもある。
 
-> - https://qiita.com/mechamogera/items/60a23cf5a52f8ebd8417
+> - [No RebootでAMIを作成したらファイルが消えたりした #AWS - Qiita](https://qiita.com/mechamogera/items/60a23cf5a52f8ebd8417)
 
 <br>
 
@@ -350,7 +350,7 @@ AMI の作成時に再起動が基本的に必要になる。
 | 特定のアカウント間                | `⭕️` |
 | すべてのアカウント間 (パブリック) | `⭕️` |
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html
+> - [Understand shared AMI usage in Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharing-amis.html)
 
 <br>
 
@@ -360,7 +360,7 @@ AMI の作成時に再起動が基本的に必要になる。
 
 Linux ディストリビューション別に AWS AMI OS を配布している。
 
-> - https://aws.amazon.com/jp/mp/linux/
+> - [AWS での Linux](https://aws.amazon.com/jp/mp/linux/)
 
 #### ▼ Amazon Linux
 
@@ -624,7 +624,7 @@ Amazon EC2 の初期作成時に、ストレージの追加の項目で『終了
 
 これにより、Amazon EC2 が削除されても、AWS EBS ボリュームを削除しないようにできる。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage
+> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage)
 
 #### ▼ Amazon EC2 の作成後に永続化する
 
@@ -739,7 +739,7 @@ AWS Systems Manager を使用して Amazon EC2 に接続する場合、Amazon EC
 
 カスタム AMI であれば自身でインストールし、最適化された AWS AMI であれば事前にインストールされている。
 
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html
+> - [Find AMIs with the SSM Agent preinstalled - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html)
 
 #### ▼ Amazon VPC エンドポイントの作成
 
@@ -779,7 +779,7 @@ ENI が必要な AWS リソースには、デフォルトでプライマリーEN
 
 ![aws_eni_primary-eni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_primary-eni.png)
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
+> - [Elastic network interfaces - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics)
 > - https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0
 
 #### ▼ セカンダリーENI (`eth1`)
@@ -790,7 +790,7 @@ ENI が必要な AWS リソースには、デフォルトでプライマリーEN
 
 ![aws_eni_secondary-eni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_secondary-eni.png)
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/scenarios-enis.html
+> - [Multiple network interfaces for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/scenarios-enis.html)
 > - https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0
 
 <br>
@@ -805,7 +805,7 @@ ENI に紐付けられた IP アドレスを、ALB に割り当てる。
 
 ENI に紐付けられた IP アドレスを、Amazon EC2 に割り当てる。
 
-- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics
+- [Elastic network interfaces - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics)
 
 #### ▼ Fargate 環境の Amazon EC2
 
@@ -821,7 +821,7 @@ ENI に Elastic IP アドレスが紐付けられる。
 
 この ENI を他の AWS リソースに紐付けることにより、ENI を経由して、Elastic IP を紐付けられる。
 
-- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses
+- [Elastic network interfaces - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses)
 
 #### ▼ GlobalAccelerator
 
@@ -897,7 +897,7 @@ Amazon EC2 に紐づけた CIDR から IP アドレスを取得する。
 | 自動割り当て | 予約の有無に関係なく、`*.*.*.*/28` の CIDR の数を指定し、その数だけ割り当てる。  |
 | 手動割り当て | あらかじめサブネットに予約しておいた `*.*.*.*/28` の CIDR を指定し、割り当てる。 |
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html
+> - [Prefix delegation for Amazon EC2 network interfaces - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html)
 
 <br>
 
@@ -907,7 +907,7 @@ ENI に割り当てる CIDR (サブネット内の `*.*.*.*/28`) は、`16` 個�
 
 ENI には複数の CIDR を紐づけられるため、`16` 個の倍数だけ、Amazon EC2 内で取得できる IP アドレスが増える。
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix
+> - [Manage prefixes for your network interfaces - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-prefixes.html#view-prefix)
 
 <br>
 
@@ -927,13 +927,13 @@ CIDR 内のセカンダリープライベート IP アドレスが使用中で�
 
 もちろん、サブネットを新しく作成すれば使用中のセカンダリープライベート IP アドレスがないため、その解放を待つ必要はない。
 
-> - https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html
+> - [Subnet CIDR reservations - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html)
 
 <br>
 
 ### 外部のサブネットから IP アドレスを拝借する
 
-> - https://aws.github.io/aws-eks-best-practices/networking/custom-networking/
+> - [Custom Networking - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/custom-networking/)
 
 <br>
 
@@ -965,6 +965,6 @@ unused_ips=['*.*.*.*', '*.*.*.*', ...]
 cidr=*.*.*.*/* cidr_ips=<全てのIPアドレス数> reserved=<予約されたIPアドレス数> used=<使用中のIPアドレス数> unused=<未使用のIPアドレス数>
 ```
 
-> - https://github.com/shu85t/aws_describe_unused_ips
+> - [GitHub - shu85t/aws\_describe\_unused\_ips: Python Script that describes Unused IPs for the specified Subnet · GitHub](https://github.com/shu85t/aws_describe_unused_ips)
 
 <br>

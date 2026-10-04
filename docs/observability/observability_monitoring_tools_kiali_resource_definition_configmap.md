@@ -9,7 +9,7 @@ description: ConfigMap系＠リソース定義の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -174,7 +174,7 @@ data:
           url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
 ```
 
-> - https://kiali.io/docs/configuration/custom-dashboard/
+> - [Custom Dashboards \| Kiali](https://kiali.io/docs/configuration/custom-dashboard/)
 
 #### ▼ grafana
 
@@ -211,7 +211,7 @@ data:
         external_url: http://foo.grafana.com
 ```
 
-> - https://kiali.io/docs/configuration/p8s-jaeger-grafana/grafana/
+> - [Grafana \| Kiali](https://kiali.io/docs/configuration/p8s-jaeger-grafana/grafana/)
 
 #### ▼ istio
 
@@ -248,7 +248,7 @@ data:
         url_service_version: http://istiod-<リビジョン>.istio-system.svc.cluster.local:15014/version
 ```
 
-> - https://kiali.io/docs/configuration/istio/
+> - [Istio Environment \| Kiali](https://kiali.io/docs/configuration/istio/)
 
 #### ▼ prometheus
 
@@ -268,7 +268,7 @@ data:
         url: http://foo-prometheus.foo-namespace.svc.cluster.local:9090
 ```
 
-> - https://kiali.io/docs/configuration/p8s-jaeger-grafana/prometheus/
+> - [Prometheus \| Kiali](https://kiali.io/docs/configuration/p8s-jaeger-grafana/prometheus/)
 
 #### ▼ tracing
 
@@ -290,7 +290,7 @@ data:
         use_grpc: false
 ```
 
-> - https://kiali.io/docs/configuration/p8s-jaeger-grafana/tracing/tempo/
+> - [Grafana Tempo \| Kiali](https://kiali.io/docs/configuration/p8s-jaeger-grafana/tracing/tempo/)
 
 <br>
 
@@ -530,7 +530,7 @@ data:
       signing_key: *****
 ```
 
-> - https://kiali.io/docs/configuration/authentication/session-configs/
+> - [Session options \| Kiali](https://kiali.io/docs/configuration/authentication/session-configs/)
 
 <br>
 
@@ -741,8 +741,8 @@ data:
       web_root: /kiali
 ```
 
-> - https://kiali.io/docs/configuration/
-> - https://kiali.io/docs/configuration/kialis.kiali.io/#property-details
+> - [Configuration \| Kiali](https://kiali.io/docs/configuration/)
+> - [Kiali CR Reference \| Kiali](https://kiali.io/docs/configuration/kialis.kiali.io/#property-details)
 
 <br>
 

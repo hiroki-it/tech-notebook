@@ -9,7 +9,7 @@ description: Clusterスコープ設定ファイル＠Temporalの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,7 +27,7 @@ $ kubectl create namespace temporalio
 $ helm install <Helmリリース名> <チャートリポジトリ名>/temporalio -n temporalio
 ```
 
-> - https://github.com/temporalio/helm-charts
+> - [GitHub - temporalio/helm-charts: Temporal Helm charts · GitHub](https://github.com/temporalio/helm-charts)
 
 <br>
 

@@ -44,8 +44,8 @@ metadata:
 spec: ...
 ```
 
-> - https://argocd-image-updater.readthedocs.io/en/stable/configuration/images/
-> - https://www.cncf.io/blog/2024/11/05/mastering-argo-cd-image-updater-with-helm-a-complete-configuration-guide/
+> - [Images - Argo CD Image Updater](https://argocd-image-updater.readthedocs.io/en/stable/configuration/images/)
+> - [Mastering Argo CD image updater with Helm: a complete configuration guide \| CNCF](https://www.cncf.io/blog/2024/11/05/mastering-argo-cd-image-updater-with-helm-a-complete-configuration-guide/)
 
 <br>
 
@@ -133,8 +133,8 @@ data:
     g, image-updater, role:image-updater
 ```
 
-> - https://argocd-image-updater.readthedocs.io/en/v0.1.0/install/start/#create-a-local-user-within-argocd
-> - https://argocd-image-updater.readthedocs.io/en/v0.1.0/install/start/#granting-rbac-permissions-in-argocd
+> - [Getting Started - Argo CD Image Updater](https://argocd-image-updater.readthedocs.io/en/v0.1.0/install/start/#create-a-local-user-within-argocd)
+> - [Getting Started - Argo CD Image Updater](https://argocd-image-updater.readthedocs.io/en/v0.1.0/install/start/#granting-rbac-permissions-in-argocd)
 
 <br>
 

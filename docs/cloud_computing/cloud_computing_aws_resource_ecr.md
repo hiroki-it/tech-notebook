@@ -9,7 +9,7 @@ description: Amazon ECR＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -69,13 +69,13 @@ $ docker tag <イメージID> <イメージリポジトリURL>:<バージョン�
 $ docker push <イメージリポジトリURL>:<バージョンタグ>
 ```
 
-> - https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+> - [Pushing a Docker image to an Amazon ECR private repository - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html)
 
 #### ▼ helm チャートの場合
 
 調査中...
 
-> - https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html
+> - [Pushing a Helm chart to an Amazon ECR private repository - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/push-oci-artifact.html)
 
 <br>
 
@@ -91,7 +91,7 @@ Amazon ECR のコンテナイメージの有効期間を定義できる。
 | イメージのステータス | ルールを適用するイメージの条件として、タグの有無や文字列を設定できる。             |                                                                                                                     |
 | 一致条件             | イメージの有効期間として、同条件に当てはまるイメージが削除される閾値を設定できる。 | 個数、プッシュされてからの期間や世代数などを閾値として設定できる。                                                  |
 
-> - https://dev.classmethod.jp/articles/ecr-lifecycle/
+> - [ECRのライフサイクルポリシー設定によるリポジトリ容量の節約 \| DevelopersIO](https://dev.classmethod.jp/articles/ecr-lifecycle/)
 
 <br>
 
@@ -103,7 +103,7 @@ Docker のベストプラクティスに則り、タグ名に `latest` を使用
 
 代わりに、コンテナイメージのバージョンごとに異なるタグ名となるように、ハッシュ値 (例：GitHub のコミット ID) を使用する。
 
-> - https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/
+> - [Docker 開発のベストプラクティス \| Docker ドキュメント](https://matsuand.github.io/docs.docker.jp.onthefly/develop/dev-best-practices/)
 
 <br>
 
@@ -144,6 +144,6 @@ AWS IAM ポリシーよりも強い。
 
 このとき、プルスルーキャッシュリポジトリはコピーをプライベートリポジトリに自動的にプルしてくれる。
 
-> - https://dev.classmethod.jp/articles/ecr-pull-through-cache-repositories/
+> - [Amazon ECRに「プルスルーキャッシュリポジトリ」機能が追加されました #reinvent \| DevelopersIO](https://dev.classmethod.jp/articles/ecr-pull-through-cache-repositories/)
 
 <br>

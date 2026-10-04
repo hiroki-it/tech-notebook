@@ -17,7 +17,7 @@ description: YAML：YAML Ain't a Markup Language＠データ記述型言語の�
 
 異なる言語間やサーバー間で変換できるデータ記述型言語である。
 
-> - https://en.wikipedia.org/wiki/YAML
+> - [YAML - Wikipedia](https://en.wikipedia.org/wiki/YAML)
 
 <br>
 
@@ -102,7 +102,7 @@ command: |
 { "command" => "echo foo\necho bar\n" }
 ```
 
-> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - [プログラマーのための YAML 入門 (初級編)](https://magazine.rubyist.net/articles/0009/0009-YAML.html)
 
 #### ▼ `|+` (パイプ、プラス)
 
@@ -124,7 +124,7 @@ command: |+
 { "command" => "echo foo\necho bar\n" }
 ```
 
-> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - [プログラマーのための YAML 入門 (初級編)](https://magazine.rubyist.net/articles/0009/0009-YAML.html)
 
 #### ▼ `|-` (パイプ、マイナス)
 
@@ -145,7 +145,7 @@ command: |-
 { "command" => "echo foo\necho bar" }
 ```
 
-> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - [プログラマーのための YAML 入門 (初級編)](https://magazine.rubyist.net/articles/0009/0009-YAML.html)
 
 #### ▼ `>` (大なり)
 
@@ -181,7 +181,7 @@ command: >
   fi
 ```
 
-> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - [プログラマーのための YAML 入門 (初級編)](https://magazine.rubyist.net/articles/0009/0009-YAML.html)
 
 #### ▼ `>+` (大なり、プラス)
 
@@ -205,7 +205,7 @@ command: >+
 { "command" => "echo foo && echo bar\n" }
 ```
 
-> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - [プログラマーのための YAML 入門 (初級編)](https://magazine.rubyist.net/articles/0009/0009-YAML.html)
 
 #### ▼ `>-` (大なり、マイナス)
 
@@ -228,6 +228,6 @@ command: >-
 { "command" => "echo foo && echo bar" }
 ```
 
-> - https://magazine.rubyist.net/articles/0009/0009-YAML.html
+> - [プログラマーのための YAML 入門 (初級編)](https://magazine.rubyist.net/articles/0009/0009-YAML.html)
 
 <br>

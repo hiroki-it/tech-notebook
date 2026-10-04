@@ -9,7 +9,7 @@ description: I/O (入出力) 管理＠Linuxカーネルの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,7 +27,7 @@ I/O は、文脈によって意味合いが異なる。
 | ネットワークの場合     | インバウンド通信、アウトバウンド通信 |
 
 > - https://www.idcf.jp/words/io.html
-> - https://itkq.jp/blog/2017/05/10/linux-file-and-io/
+> - [Linux におけるファイル I/O の基礎](https://itkq.jp/blog/2017/05/10/linux-file-and-io/)
 
 <br>
 
@@ -53,7 +53,7 @@ I/O 自体が文脈によって意味合いが異なるが、IOPS はストレ�
 
 ![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stdin_stdout_stderr.png)
 
-> - http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
+> - [標準入出力, リダイレクション，パイプ / シェルの設定 - Applied Mathematics 7 (2020)](http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/)
 
 <br>
 
@@ -67,13 +67,13 @@ I/O 自体が文脈によって意味合いが異なるが、IOPS はストレ�
 
 ![stdin_stdout_stderr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stdin_stdout_stderr.png)
 
-> - http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/
+> - [標準入出力, リダイレクション，パイプ / シェルの設定 - Applied Mathematics 7 (2020)](http://www.cas.cmc.osaka-u.ac.jp/~paoon/Lectures/2020-7Semester-AppliedMath7/04_standard-io/)
 
 #### ▼ 標準出力にすべて出力
 
 コマンド処理の後に『`2>&1`』を追加すると、標準エラー出力の出力を標準出力へリダイレクトできる。この結果、処理のすべての結果を標準出力へ出力できるようになる。
 
-> - https://teratail.com/questions/1285
+> - [2\>&1はどういう意味？ \| teratail](https://teratail.com/questions/1285)
 
 **＊例＊**
 
@@ -121,7 +121,7 @@ $ echo "text" | tee stdout.log
 $ echo "text" |& tee stdout.log
 ```
 
-> - https://atsum.in/linux/tee-stderr/
+> - [teeコマンドで標準エラー出力もファイルに出力する - suer TIL](https://atsum.in/linux/tee-stderr/)
 
 <br>
 
@@ -141,7 +141,7 @@ $ echo "text" |& tee stdout.log
 
 この結果、処理のすべての結果を標準エラー出力へ出力できるようになる。
 
-> - https://teratail.com/questions/1285
+> - [2\>&1はどういう意味？ \| teratail](https://teratail.com/questions/1285)
 
 ```bash
 $ echo "text" 1>&2
@@ -186,7 +186,7 @@ $ cat /proc/1/fd/2
 プロセスの標準入力に対するフォワーディングは、多くの場合にユーティリティのパラメーターにファイルを渡すことと同じである。
 
 > - https://qiita.com/r18j21/items/0e7d0e48c02d14ed9893
-> - https://e-yota.com/webservice/shellscript_stdin_stdout_stderr_symbol/
+> - [シェルスクリプト 標準入出力のリダイレクト記号について (標準入出力の変更・標準出力の末尾追加・標準エラー出力の変更） \| エコテキブログ](https://e-yota.com/webservice/shellscript_stdin_stdout_stderr_symbol/)
 
 <br>
 
@@ -250,7 +250,7 @@ $ echo 'Hello World' >> stdout.txt
 
 ![pipeline_shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pipeline_shell.png)
 
-> - http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html
+> - [シェルの概念と機能](http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html)
 
 <br>
 
@@ -288,7 +288,7 @@ $ tcpdump dst port 443 \
 ...
 ```
 
-> - https://it-ojisan.tokyo/awk-f/
+> - [awkの-Fオプションで区切り文字を指定する方法 \| ITを使っていこう](https://it-ojisan.tokyo/awk-f/)
 
 #### ▼ `echo` コマンドに対する入力
 
@@ -338,7 +338,7 @@ $ sudo pgrep \
 | `Ctrl + b` | 一ページ戻り                         |
 | `/文字列`  | 以降の文字を検索し、ハイライトする。 |
 
-> - https://tech.pjin.jp/blog/infra_engneer/more-less/
+> - [ページング処理 ～moreコマンド・lessコマンド～ \| TECH PROjin](https://tech.pjin.jp/blog/infra_engneer/more-less/)
 
 **＊例＊**
 
@@ -368,8 +368,8 @@ $ printenv | sort -f
 $ cat table.txt | sort -f -u
 ```
 
-> - https://academy.gmocloud.com/know/20210625/12063
-> - https://atmarkit.itmedia.co.jp/ait/articles/1611/14/news021.html#sample1
+> - [sortコマンドとは？Linuxコマンドでファイルの中身を並び替えする方法をご紹介](https://academy.gmocloud.com/know/20210625/12063)
+> - [【uniq】コマンド――重複している行を削除する：Linux基本コマンドTips（64） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1611/14/news021.html#sample1)
 
 #### ▼ uniq プロセスに対する入力
 

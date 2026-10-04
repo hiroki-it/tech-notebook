@@ -15,6 +15,6 @@ description: Nginx＠OpenTelemetryクライアントパッケージの知見を�
 
 ## 01. otel_ngx_module
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx
+> - [opentelemetry-cpp-contrib/instrumentation/nginx at main · open-telemetry/opentelemetry-cpp-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx)
 
 <br>

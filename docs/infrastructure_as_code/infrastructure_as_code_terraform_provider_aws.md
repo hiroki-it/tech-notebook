@@ -309,7 +309,7 @@ API Gateway のステージ名を参照するためには、resource を使用�
 
 API Gateway の各 ARN については、以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
+> - [API Gateway Amazon Resource Name (ARN) reference - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html)
 
 **＊実装例＊**
 
@@ -638,7 +638,7 @@ AWS ALB や AWS NLB の作成 (※リスナーも含む可能性) が完全に�
 
 リスナーの後に Amazon ECS サービスを作成するようにし、『ターゲットグループ ➡️ ALB/NLB ➡️ リスナー ➡️ Amazon ECS サービス』の順で `resource` ブロックを作成可能にする。
 
-> - https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022
+> - [\[AWS\] Creating of ALB, Target Group and Service in one script causes errors · Issue #12634 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/12634#issuecomment-313215022)
 
 #### `(4)`AWS Auto Scaling グループによる ECS タスク数の増減を無視
 
@@ -741,8 +741,8 @@ Internet Gateway の後に EC2 を作成可能にする。
 
 なお、`aws_volume_attachment` リソースでこのオプションを追加する PR が現座進行形で提出されている。
 
-> - https://dev.classmethod.jp/articles/terraform-ec2-ebs_block_device-size-up/
-> - https://github.com/hashicorp/terraform-provider-aws/pull/31869
+> - [\[Terraform\] EC2のEBS追加ボリュームをサイズ拡張しようとしたらハマった話 \| DevelopersIO](https://dev.classmethod.jp/articles/terraform-ec2-ebs_block_device-size-up/)
+> - [Feat: Add delete\_on\_termination option on EBS volume attachment by rclaveau-tech · Pull Request #31869 · hashicorp/terraform-provider-aws · GitHub](https://github.com/hashicorp/terraform-provider-aws/pull/31869)
 
 <br>
 
@@ -1234,7 +1234,7 @@ status code: 400, request id: *****
 
 このエラーが発生した場合、コンソール画面上でリスナーを削除したうえで、もう一度 `terraform apply` コマンドを実行する。
 
-> - https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529
+> - [Cannot rename ALB Target Group if Listener present · Issue #1315 · hashicorp/terraform-provider-aws · GitHub](https://github.com/hashicorp/terraform-provider-aws/issues/1315#issuecomment-415423529)
 
 <br>
 
@@ -1369,8 +1369,8 @@ DB クラスターでは、レプリケーションのために、`3` 個の AZ 
 Terraform がこれを認識しないように、`ignore_changes` 引数で AZ を指定しておく必要がある。
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster#availability_zones
-> - https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633
-> - https://github.com/hashicorp/terraform-provider-aws/issues/1111
+> - [Question: AWS RDS Resource Recreation · Issue #7307 · hashicorp/terraform-provider-aws · GitHub](https://github.com/hashicorp/terraform-provider-aws/issues/7307#issuecomment-457441633)
+> - [Aurora launches instances in at least 3 AZ even if less are specified · Issue #1111 · hashicorp/terraform-provider-aws · GitHub](https://github.com/hashicorp/terraform-provider-aws/issues/1111)
 
 #### `(4)` インスタンスを配置する AZ は選択できない
 
@@ -1401,7 +1401,7 @@ Amazon Aurora では、クラスターにインスタンスを 1 つだけ紐付
 AZ のマップデータに対して `for_each` 引数を使用することで、各 AZ に最低 1 つのインスタンスを配置するように設定できる。
 
 > - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/rds_cluster_instance
-> - https://github.com/hashicorp/terraform/issues/5333
+> - [how to create aws\_rds\_cluster instance (aurora) with multi\_az flag? · Issue #5333 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/5333)
 
 #### `(7)` インスタンスタイプは別々に設定する
 
@@ -1429,7 +1429,7 @@ Amazon Aurora では、紐付けられたサブネットグループが複数の
 
 そのため、サブネットグループに複数のサブネットを紐付けるようにする。
 
-> - https://github.com/hashicorp/terraform/issues/5333
+> - [how to create aws\_rds\_cluster instance (aurora) with multi\_az flag? · Issue #5333 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/5333)
 
 <br>
 
@@ -1714,7 +1714,7 @@ ALB のアクセスログを送信するバケット内には、自動的に『/
 
 東京リージョンの ELB サービスアカウント ID は『`582318560864`』である。
 
-> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions
+> - [Access logs for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions)
 
 ```yaml
 {

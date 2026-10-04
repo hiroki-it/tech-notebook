@@ -23,8 +23,8 @@ UIはマイクロフロントエンドとしてUIレンダリングする。
 
 ![self-contained-systems](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/self-contained-systems.png)
 
-> - https://microservices.io/patterns/decomposition/self-contained-service.html
-> - https://www.infoq.com/articles/scs-microservices-done-right/
-> - https://scs-architecture.org/vs-ms.html
+> - [Self-contained service](https://microservices.io/patterns/decomposition/self-contained-service.html)
+> - [Self Contained Systems (SCS): Microservices Done Right - InfoQ](https://www.infoq.com/articles/scs-microservices-done-right/)
+> - [Self-contained Systems (SCS) vs. Microservices](https://scs-architecture.org/vs-ms.html)
 
 <br>

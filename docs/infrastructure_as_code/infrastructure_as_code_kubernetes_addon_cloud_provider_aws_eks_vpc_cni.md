@@ -9,7 +9,7 @@ description: Amazon VPC CNI＠Amazon EKSアドオンの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ Amazon VPC CNI が Amazon EKS Cluster 内にない場合、EC2 ワーカーNode 
 
 ![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
 
-> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
+> - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
 > - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
 > - https://medium.com/engineered-publicis-sapient/container-network-interface-cni-for-eks-4b1cbfff0f4e
 
@@ -37,7 +37,7 @@ Amazon VPC CNI は、L-IPAM デーモン (`aws-node` という名前の DaemonSe
 
 Amazon EKS Cluster 内にネットワークを作成する。
 
-> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#understand-security-context
+> - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#understand-security-context)
 > - https://sigridjin.medium.com/notes-on-eks-networking-i-aws-cni-e6d97e22dec6
 
 <br>
@@ -48,7 +48,7 @@ CNI バイナリは、L-IPAM デーモンから IP アドレスを取得する�
 
 Pod を新しく作成するときに、kubelet からのリクエストによって、新しい Pod を Node 内の Cluster ネットワークに参加させる。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html
+> - [Assign IPs to Pods with the Amazon VPC CNI - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html)
 > - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29
 
 <br>
@@ -306,7 +306,7 @@ spec:
 
 Kubernetes のバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html#vpc-add-on-update
+> - [Assign IPs to Pods with the Amazon VPC CNI - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html#vpc-add-on-update)
 
 <br>
 
@@ -347,11 +347,11 @@ Kubernetes のバージョンに応じて、異なるアドオンのバージョ
 | `WARM_IP_TARGET`                        | `WARM_ENI_TARGET` と競合するため、デフォルトでは設定されていない。Amazon EC2/Fargate ワーカーNode 当たりでウォーム状態にしておくセカンダリープライベート IP アドレス数を設定する。`WARM_ENI_TARGET` の値が小さすぎると、EC2-API のコール回数が増え、リクエスト数制限にひっかかる可能性がある。 | `2`                                                                                |
 
 > - https://github.com/aws/amazon-vpc-cni-k8s#cni-configuration-variables
-> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments
+> - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/#configure-ip-and-eni-target-values-in-address-constrained-environments)
 > - https://repost.aws/ja/knowledge-center/eks-configure-cni-plugin-use-ip-address
-> - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
-> - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c
-> - https://www.grugrut.net/posts/202107250958/
+> - [EKS Cluster の消費 IP 数を減らす - YasuBlog](https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress)
+> - [Amazon EKS ワーカーノードが確保するIPアドレスを減らす](https://zenn.dev/nshmura/articles/fbb53aaf6fed8c)
+> - [EKSのPodのSecurityGroupを試す - ぐるっとぐりっど](https://www.grugrut.net/posts/202107250958/)
 
 <br>
 
@@ -408,7 +408,7 @@ Capacity:
 
 ```
 
-> - https://qiita.com/okubot55/items/2c25d75bd72bac629829
+> - [Amazon EKS のノード1台に起動できるPod の制限数を増やす #AWS - Qiita](https://qiita.com/okubot55/items/2c25d75bd72bac629829)
 
 <br>
 
@@ -428,7 +428,7 @@ L-IPAM デーモンは、元からあるこの機能を利用し、Node の AWS 
 
 ![aws-eks-vpc-cni-addon_standard-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png)
 
-> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
+> - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
 > - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
 > - https://medium.com/elotl-blog/kubernetes-networking-on-aws-part-ii-47906de2921d
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
@@ -473,9 +473,9 @@ L-IPAM デーモンは、元からあるこの機能を利用し、Node の AWS 
 
 ![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
-> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
-> - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md#local-ip-address-manager-l-ipam
-> - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+> - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
+> - [amazon-vpc-cni-k8s/docs/cni-proposal.md at master · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md#local-ip-address-manager-l-ipam)
+> - [CNCF CNI プラグイン #kubernetes - Qiita](https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
 
 <br>
 
@@ -515,10 +515,10 @@ Pod の上限数を上げる場合、Amazon EKS が属する Amazon VPC サブ�
 
 : Pod が `12` 個を超えた段階で、合計のセカンダリープライベート IP アドレス数は `2` 個のウォーム状態数を維持しながら増えていく。
 
-> - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md
+> - [amazon-vpc-cni-k8s/docs/eni-and-ip-target.md at master · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/eni-and-ip-target.md)
 > - https://github.com/awslabs/amazon-eks-ami/blob/master/files/eni-max-pods.txt
-> - https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress
-> - https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99
+> - [EKS Cluster の消費 IP 数を減らす - YasuBlog](https://dunkshoot.hatenablog.com/entry/eks_reduce_number_of_ipaddress)
+> - [EKSでPrivate IPアドレス枯渇したのでaws-nodeの設定を見直した #kubernetes - Qiita](https://qiita.com/hkame/items/1378f9176a26e39d93c7#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AE%E7%A2%BA%E4%BF%9Dip%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E6%B8%9B%E3%82%89%E3%81%99)
 > - https://zenn.dev/nshmura/articles/fbb53aaf6fed8c#minimum_ip_target-%E3%81%A8-warm_ip_target%E3%81%AB%E3%82%88%E3%82%8Bip%E7%A2%BA%E4%BF%9D%E3%81%AE%E4%BE%8B
 
 <br>

@@ -9,7 +9,7 @@ description: アクション＠チャートの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -47,8 +47,8 @@ description: アクション＠チャートの知見を記録しています。
 | `.Template.Name`                |                          | カレントパスの相対ファイルパス                                                                                                                                                                                                                                                                                                         |
 | `.Template.BasePath`            |                          | チャートの templates ディレクトリの相対パス                                                                                                                                                                                                                                                                                            |
 
-> - https://helm.sh/docs/chart_template_guide/builtin_objects/
-> - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> - [Built-in Objects \| Helm](https://helm.sh/docs/chart_template_guide/builtin_objects/)
+> - [忘れたとき読んだらキュンです！――Helmチャートの作成方法とリポジトリ公開方法：Cloud Nativeチートシート（4） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042)
 
 <br>
 
@@ -60,7 +60,7 @@ description: アクション＠チャートの知見を記録しています。
 {{- $domain := "https://{{ .Values.serviceName }}.argocd.com" }}
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> - [忘れたとき読んだらキュンです！――Helmチャートの作成方法とリポジトリ公開方法：Cloud Nativeチートシート（4） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042)
 > - https://kb.novaordis.com/index.php/Helm_Variables
 
 <br>
@@ -119,7 +119,7 @@ url: https://{{ $subDomain }}{{.Values.serviceName }}.com
 
 テンプレートの関数 (例：`include`、`template`) 、`_helpers.tpl` ファイルで定義する。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042
+> - [忘れたとき読んだらキュンです！――Helmチャートの作成方法とリポジトリ公開方法：Cloud Nativeチートシート（4） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2104/15/news009.html#042)
 
 <br>
 
@@ -143,7 +143,7 @@ Helm のコメントの前に不要な改行が挿入されないように、`{{
 {{- /* コメント */-}}
 ```
 
-> - https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments
+> - [Templates \| Helm](https://helm.sh/docs/chart_best_practices/templates/#comments-yaml-comments-vs-template-comments)
 
 `*/}}` にはスペースを含めずに、一繋ぎで定義する。
 
@@ -155,7 +155,7 @@ Helm のコメントの前に不要な改行が挿入されないように、`{{
 
 `template` ディレクトリ配下のテンプレートを出力する。
 
-> - https://helm.sh/docs/chart_template_guide/control_structures/
+> - [Flow Control \| Helm](https://helm.sh/docs/chart_template_guide/control_structures/)
 
 <br>
 
@@ -167,8 +167,8 @@ Helm のコメントの前に不要な改行が挿入されないように、`{{
 
 加工内容はパラメーターで設定できる。
 
-> - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
-> - https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function
+> - [Named Templates \| Helm](https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function)
+> - [Chart Development Tips and Tricks \| Helm](https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-include-function)
 
 <br>
 
@@ -180,7 +180,7 @@ Helm のコメントの前に不要な改行が挿入されないように、`{{
 
 `template()` 関数では出力内容を変数に格納できない。そのため、変数に格納できる `include()` 関数が推奨である。
 
-> - https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function
+> - [Named Templates \| Helm](https://helm.sh/docs/chart_template_guide/named_templates/#the-include-function)
 > - https://itnext.io/use-named-templates-like-functions-in-helm-charts-641fbcec38da
 
 <br>
@@ -211,7 +211,7 @@ metadata:
     app.kubernetes.io/name: {{ .Values.global.appName }}
 ```
 
-> - https://github.com/helm/helm/issues/8026
+> - [nil pointer evaluating interface when upper level doesn't exist prevents usage of default function · Issue #8026 · helm/helm · GitHub](https://github.com/helm/helm/issues/8026)
 
 #### ▼ metadata キーで使用する場合の注意点
 
@@ -257,7 +257,7 @@ metadata:
 {{.Values.foo | default "foo"}}
 ```
 
-> - https://helm-playground.com/cheatsheet.html#variables
+> - [Helm template syntax cheat sheet](https://helm-playground.com/cheatsheet.html#variables)
 
 #### ▼ キーが存在しなくてもデフォルト値を表現
 
@@ -316,7 +316,7 @@ metadata:
 data: {{- toYaml .Values.parameters | nindent 2}}
 ```
 
-> - https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0
+> - [Helm Templateについて色々説明してみる #kubernetes - Qiita](https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E9%96%A2%E6%95%B0)
 
 #### ▼ list 型の場合
 
@@ -408,7 +408,7 @@ metadata:
 {{- end }}
 ```
 
-> - https://helm.sh/docs/chart_template_guide/control_structures/
+> - [Flow Control \| Helm](https://helm.sh/docs/chart_template_guide/control_structures/)
 
 <br>
 
@@ -420,7 +420,7 @@ metadata:
 
 同じ階層にあるほかの `yaml` ファイルのキーとその値を格納し、`foreach()` 関数のように出力する。
 
-> - https://helm.sh/docs/chart_template_guide/control_structures/
+> - [Flow Control \| Helm](https://helm.sh/docs/chart_template_guide/control_structures/)
 
 #### ▼ マップ型を扱う場合
 
@@ -460,7 +460,7 @@ data:
   {{- end }}
 ```
 
-> - https://helm-playground.com/cheatsheet.html#loops
+> - [Helm template syntax cheat sheet](https://helm-playground.com/cheatsheet.html#loops)
 
 **＊実装例＊**
 
@@ -518,7 +518,7 @@ data:
     {{- end }}
 ```
 
-> - https://helm.sh/docs/chart_template_guide/control_structures/
+> - [Flow Control \| Helm](https://helm.sh/docs/chart_template_guide/control_structures/)
 
 <br>
 
@@ -545,7 +545,7 @@ data:
   {{- end }}
 ```
 
-> - https://helm.sh/docs/chart_template_guide/control_structures/#modifying-scope-using-with
+> - [Flow Control \| Helm](https://helm.sh/docs/chart_template_guide/control_structures/#modifying-scope-using-with)
 
 <br>
 
@@ -555,7 +555,7 @@ data:
 
 記入中...
 
-> - https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function
+> - [Chart Development Tips and Tricks \| Helm](https://helm.sh/docs/howto/charts_tips_and_tricks/#using-the-required-function)
 
 <br>
 
@@ -599,7 +599,7 @@ data:
   {{- end }}
 ```
 
-> - https://helm.sh/docs/chart_template_guide/function_list/#fromyaml
+> - [Template Function List \| Helm](https://helm.sh/docs/chart_template_guide/function_list/#fromyaml)
 > - https://fenyuk.medium.com/helm-for-kubernetes-handling-secrets-with-sops-d8149df6eda4
 > - https://stackoverflow.com/a/62832814
 
@@ -621,7 +621,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 # [https:  github.com hiroki-hasegawa foo-repository.git]
 ```
 
-> - https://helm-playground.com/#t=N7AEAcCcEsDsBcBmoBEBSAzi0A6AagIYA2ArgKYY4mRGgA%2BoG4R08AMtBvKgPTYC%2B-IA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
+> - [Helm Playground \| Debug Helm templates in your browser](https://helm-playground.com/#t=N7AEAcCcEsDsBcBmoBEBSAzi0A6AagIYA2ArgKYY4mRGgA%2BoG4R08AMtBvKgPTYC%2B-IA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA)
 
 <br>
 
@@ -647,7 +647,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 
 さまざまなデータ型を string 型で出力する。
 
-> - https://helm.sh/docs/chart_template_guide/function_list/#printf
+> - [Template Function List \| Helm](https://helm.sh/docs/chart_template_guide/function_list/#printf)
 
 #### ▼ エスケープ
 
@@ -685,7 +685,7 @@ receivers:
           {{`{{ end }}`}}
 ```
 
-> - https://github.com/helm/helm/issues/2798#issuecomment-890478869
+> - [Can Helm support to ignore {{expr}} which is just for configuration but not render? · Issue #2798 · helm/helm · GitHub](https://github.com/helm/helm/issues/2798#issuecomment-890478869)
 
 <br>
 
@@ -712,7 +712,7 @@ url: https://github.com/hiroki-hasegawa/foo-repository.git
 # foo-repository
 ```
 
-> - https://helm-playground.com/#t=N7C0AIBIBsEsGcAu4BcBecAHATrAdogGbgBEApPCeAHQBqAhtAK4Cm81T204APuPJjiIAMgmQkA9FQC%2B0gFAgIkbC0wB7eLERrsATwBy9ALYtUGaPSRQ4VvolxGAyk0KFYAD1LUA5lpnzFKBV1TW09QxNwWSA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA
+> - [Helm Playground \| Debug Helm templates in your browser](https://helm-playground.com/#t=N7C0AIBIBsEsGcAu4BcBecAHATrAdogGbgBEApPCeAHQBqAhtAK4Cm81T204APuPJjiIAMgmQkA9FQC%2B0gFAgIkbC0wB7eLERrsATwBy9ALYtUGaPSRQ4VvolxGAyk0KFYAD1LUA5lpnzFKBV1TW09QxNwWSA&v=K4JwNgXABAFgLnADgZwgejQcwJZxsAIwDoBjAewFs0ZsQyBrbAWhgENkBTTVgd1bQBmZMkxAdEZZLjIgAnkRxwAUEA)
 
 <br>
 
@@ -736,7 +736,7 @@ lists:
 # baz
 ```
 
-> - https://helm.sh/docs/chart_template_guide/function_list/#last-mustlast
+> - [Template Function List \| Helm](https://helm.sh/docs/chart_template_guide/function_list/#last-mustlast)
 
 <br>
 
@@ -859,7 +859,7 @@ webhooks:
 ...
 ```
 
-> - https://helm.sh/docs/chart_template_guide/function_list/#genca
+> - [Template Function List \| Helm](https://helm.sh/docs/chart_template_guide/function_list/#genca)
 
 <br>
 
@@ -907,8 +907,8 @@ spec:
                 name: foo-secret
 ```
 
-> - https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments
-> - https://sminamot-dev.hatenablog.com/entry/2020/03/22/130017
+> - [Chart Development Tips and Tricks \| Helm](https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments)
+> - [k8sでConfigMap/Secretsの更新時に環境変数へ反映するデプロイフローについて - えんじにあメモ](https://sminamot-dev.hatenablog.com/entry/2020/03/22/130017)
 
 <br>
 
@@ -944,7 +944,7 @@ baz:
     bar: BAR
 ```
 
-> - https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87
+> - [Helm Templateについて色々説明してみる #kubernetes - Qiita](https://qiita.com/keiSunagawa/items/db0db26579d918c81457#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E6%A7%8B%E6%96%87)
 
 #### ▼ `-}}`
 
@@ -954,8 +954,8 @@ Helm の関数のなかには処理結果に改行コードを挿入するもの
 
 ただし基本的には、`-}}` は使用しないほうがよいらしい。
 
-> - https://github.com/helm/helm/issues/4191#issuecomment-539149037
-> - https://racchai.hatenablog.com/entry/2016/05/24/070000
+> - [Helm comments broken, greedily eating pre/post whitespace · Issue #4191 · helm/helm · GitHub](https://github.com/helm/helm/issues/4191#issuecomment-539149037)
+> - [Linuxのbase64コマンドでハマったのでメモ - らっちゃいブログ](https://racchai.hatenablog.com/entry/2016/05/24/070000)
 
 <br>
 
@@ -993,7 +993,7 @@ baz:
     bar: BAR
 ```
 
-> - https://helm.sh/docs/chart_template_guide/function_list/#indent
+> - [Template Function List \| Helm](https://helm.sh/docs/chart_template_guide/function_list/#indent)
 > - https://www.skyarch.net/blog/?p=16660#28
 
 <br>
@@ -1034,7 +1034,7 @@ baz:
 ```
 
 > - https://www.skyarch.net/blog/?p=16660#29
-> - https://helm.sh/docs/chart_template_guide/function_list/#nindent
+> - [Template Function List \| Helm](https://helm.sh/docs/chart_template_guide/function_list/#nindent)
 
 <br>
 
@@ -1069,7 +1069,7 @@ foo:
 ```
 
 > - https://lzone.de/blog/Helm-template-check-if-key-exists
-> - https://helm.sh/docs/chart_template_guide/function_list/#haskey
+> - [Template Function List \| Helm](https://helm.sh/docs/chart_template_guide/function_list/#haskey)
 
 #### ▼ index でも代用可
 
@@ -1149,7 +1149,7 @@ foo:
 {{- end }}
 ```
 
-> - https://helm-playground.com/cheatsheet.html#conditionals
+> - [Helm template syntax cheat sheet](https://helm-playground.com/cheatsheet.html#conditionals)
 
 <br>
 
@@ -1179,11 +1179,11 @@ data:
 ```
 
 > -
-> - https://helm.sh/docs/chart_template_guide/function_list/#file-functions
-> - https://helm.sh/docs/chart_template_guide/accessing_files/
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
+> - [Template Function List \| Helm](https://helm.sh/docs/chart_template_guide/function_list/#file-functions)
+> - [Accessing Files Inside Templates \| Helm](https://helm.sh/docs/chart_template_guide/accessing_files/)
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14 at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14)
 > - https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm
-> - https://github.com/helm/helm/issues/4515#issuecomment-415303665
+> - [File name only · Issue #4515 · helm/helm · GitHub](https://github.com/helm/helm/issues/4515#issuecomment-415303665)
 
 <br>
 
@@ -1203,6 +1203,6 @@ data:
 {{- end }}
 ```
 
-> - https://austindewey.com/2018/12/28/helm-tricks-input-validation-with-required-and-fail/
+> - [Helm Tricks: Input Validation With ‘Required’ And ‘Fail’\<!-- --\> - Austin Dewey](https://austindewey.com/2018/12/28/helm-tricks-input-validation-with-required-and-fail/)
 
 <br>

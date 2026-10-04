@@ -9,7 +9,7 @@ description: Orbs＠CircleCIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -71,7 +71,7 @@ jobs:
           region: $AWS_REGION_ENV_VAR_NAME
 ```
 
-> - https://github.com/circleci/circleci-docs/issues/1650
+> - [$BASH\_ENV does not seem to be sourced · Issue #1650 · circleci/circleci-docs · GitHub](https://github.com/circleci/circleci-docs/issues/1650)
 
 <br>
 
@@ -180,7 +180,7 @@ EOF
 aws configure list
 ```
 
-> - https://zenn.dev/keita_hino/articles/a39e98b59b7afb
+> - [【GitHub Actions】S3へのデプロイ後にCloudFrontのキャッシュを削除する](https://zenn.dev/keita_hino/articles/a39e98b59b7afb)
 > - https://nshmura.com/posts/automate-cache-cleaning-of-cloudfront/
 
 <br>
@@ -414,7 +414,7 @@ workflows:
                 - main
 ```
 
-> - https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html
+> - [run-task — AWS CLI 2.37.9 Command Reference](https://docs.aws.amazon.com/cli/latest/reference/ecs/run-task.html)
 
 <br>
 

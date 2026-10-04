@@ -9,7 +9,7 @@ description: Direct Connect＠AWSリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: Direct Connect＠AWSリソースの知見を記録しています�
 
 ![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/direct-connect.png)
 
-> - https://prtimes.jp/main/html/rd/p/000000050.000009999.html
+> - [AWS認定プレミアコンサルティングパートナーのcloudpack AWSを専用線で直結する『AWS Direct Connect』を利用するためのノウハウを記したホワイトペーパーを公開 \| KDDIアイレット株式会社のプレスリリース](https://prtimes.jp/main/html/rd/p/000000050.000009999.html)
 
 <br>
 
@@ -43,7 +43,7 @@ DirectConnect と複数のプライベートネットワーク (Amazon VPC) を�
 
 TransitGateway が必要になるため、各 Amazon VPC 上にそのためのルートテーブルを作成する必要がある。
 
-> - https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect-aws-transit-gateway.html
+> - [AWS Direct Connect + AWS Transit Gateway - Amazon Virtual Private Cloud Connectivity Options](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect-aws-transit-gateway.html)
 > - https://medium.com/@datapath_io/aws-direct-connect-vs-vpn-vs-direct-connect-gateway-97900cdf7d04
 
 <br>
@@ -54,8 +54,8 @@ TransitGateway が必要になるため、各 Amazon VPC 上にそのための�
 
 AWS Site-to-Site VPN を採用する場合、 IPSec を使用してアプリケーションデータだけでなくパケットペイロード全体を暗号化できる。
 
-> - https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html
-> - https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/
+> - [Encryption in AWS Direct Connect - AWS Direct Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html)
+> - [伝送データを暗号化しなければならない \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/)
 
 <br>
 
@@ -63,7 +63,7 @@ AWS Site-to-Site VPN を採用する場合、 IPSec を使用してアプリケ�
 
 MACsec を有効化した場合、MACsec を使用してアプリケーションデータを暗号化できる。
 
-> - https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html
-> - https://blog.serverworks.co.jp/everyday-aws-172
+> - [Encryption in AWS Direct Connect - AWS Direct Connect](https://docs.aws.amazon.com/directconnect/latest/UserGuide/encryption-in-transit.html)
+> - [【毎日AWS #172 トークスクリプト】【AWSアップデート 4/1】Amazon CloudWatch Metric Streams が一般提供開始 【Announcing Amazon CloudWatch Metric Streams】 - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/everyday-aws-172)
 
 <br>

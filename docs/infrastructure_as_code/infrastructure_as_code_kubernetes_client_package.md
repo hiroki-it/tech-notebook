@@ -21,7 +21,7 @@ Kubernetes の kube-apiserver と通信できるパッケージ。
 
 使用できる API の型を拡張するために、`k8s.io/api` パッケージや `k8s.io/apimachinery` パッケージも必要になる。
 
-> - https://zenn.dev/castaneai/articles/k8s-go-client-first-step
+> - [Kubernetes APIをGoから使う最初の一歩](https://zenn.dev/castaneai/articles/k8s-go-client-first-step)
 
 <br>
 
@@ -29,7 +29,7 @@ Kubernetes の kube-apiserver と通信できるパッケージ。
 
 kube-apiserver の認証/認可を通過するために、`kubeconfig` ファイルをコンテナにマウントする必要がある。
 
-> - https://nishipy.com/archives/1363
+> - [client-goで、Kubernetes API serverとやりとりしてみる \| Nishipy Notes](https://nishipy.com/archives/1363)
 
 <br>
 
@@ -49,8 +49,8 @@ kube-apiserver とクライアント側のバージョン差は、前方/後方�
 
 そのため、client-go パッケージを定期的にアップグレードする必要がある。
 
-> - https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version
-> - https://kubernetes.io/releases/version-skew-policy/#kubectl
+> - [client-go/INSTALL.md at master · kubernetes/client-go · GitHub](https://github.com/kubernetes/client-go/blob/master/INSTALL.md#using-a-specific-version)
+> - [Version Skew Policy \| Kubernetes](https://kubernetes.io/releases/version-skew-policy/#kubectl)
 
 #### ▼ client-go パッケージとマニフェストの間
 
@@ -70,7 +70,7 @@ kube-apiserver のバージョンに応じて、公式リポジトリが用意�
 
 ArgoCD の `2.3.0` では、client-go パッケージのバージョンが `0.23.1` であった。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.3.0/go.mod#L83
+> - [argo-cd/go.mod at v2.3.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.3.0/go.mod#L83)
 
 このことから、ArgoCD は `2.3.0` が Kubernetes の `1.23.1` で稼働できることがわかる。
 

@@ -9,7 +9,7 @@ description: Amazon EKS＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: Amazon EKS＠AWSリソースの知見を記録しています。
 
 データプレーンの Amazon VPC 外に存在している。
 
-> - https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/
+> - [Control Plane - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/)
 
 #### ▼ コントロールプレーンの仕組み
 
@@ -31,7 +31,7 @@ Amazon EKS のコントロールプレーンは、開発者や他の AWS リソ�
 
 ![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane.png)
 
-> - https://www.sunnycloud.jp/column/20210315-01/
+> - [EKS on Fargateの特徴、通常のEKSとの違いは何か？（第1回） \| SunnyCloud](https://www.sunnycloud.jp/column/20210315-01/)
 
 <br>
 
@@ -179,7 +179,7 @@ $ kubectl config use-context <ClusterのARN>
 $ kubectl get pod
 ```
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
+> - [Get started with Amazon EKS – AWS Management Console and AWS CLI - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html)
 > - https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard
 
 <br>
@@ -208,7 +208,7 @@ kube-apiserver のインターネットへの公開範囲を設定できる。
 
 プライベートアクセスの場合、Amazon VPC 内部からのみリクエストできるように制限でき、送信元 IP アドレスを指定してアクセスを許可できる。
 
-> - https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/
+> - [\[アップデート\] EKSでパブリックエンドポイントへのIPアドレスによるアクセス制限が可能になりました \| DevelopersIO](https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/)
 
 <br>
 
@@ -231,7 +231,7 @@ etcd # Amazon EKS アップグレードインサイトで検証
 ```
 
 > - https://aws.amazon.com/blogs/containers/accelerate-the-testing-and-verification-of-amazon-eks-upgrades-with-upgrade-insights/
-> - https://qiita.com/kyohei_tsuno/items/27eafb4cff4c14c9c9bd
+> - [EKS Upgrade insightsを利用してクラスターアップデート時に影響あるAPI等を確認する #kubernetes - Qiita](https://qiita.com/kyohei_tsuno/items/27eafb4cff4c14c9c9bd)
 
 <br>
 
@@ -309,10 +309,10 @@ data:
      AWS IAMユーザーは、Kubernetesリソースを操作できる。
 
 > - https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/
-> - https://dzone.com/articles/amazon-eks-authentication-amp-authorization-proces
-> - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737
-> - https://www.karakaram.com/eks-system-masters-group/
-> - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
+> - [Amazon EKS Authentication and Authorization Process](https://dzone.com/articles/amazon-eks-authentication-amp-authorization-proces)
+> - [EKSでの認証認可 〜aws-iam-authenticatorとIRSAのしくみ〜 - もうずっといなかぐらし](https://katainaka0503.hatenablog.com/entry/2019/12/07/091737)
+> - [EKSのsystem:mastersアクセス許可とは何か - karakaram-blog](https://www.karakaram.com/eks-system-masters-group/)
+> - [EKSのaws-authとかIRSAとか](https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#1.-%E5%A4%96%E9%83%A8%E3%81%8B%E3%82%89eks%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88)
 
 <br>
 
@@ -406,8 +406,8 @@ data:
 ```
 
 > - https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/
-> - https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/
-> - https://github.com/argoproj/argo-cd/issues/2347#issuecomment-1963555799
+> - [EKS クラスターへのアクセス制御を EKS API 経由で実施可能になったので試してみた \| DevelopersIO](https://dev.classmethod.jp/articles/eks-access-management-with-iam-access-entry/)
+> - [trouble using --aws-role-arn option when adding EKS cluster with argocd CLI · Issue #2347 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/2347#issuecomment-1963555799)
 
 #### ▼ 宛先
 
@@ -484,7 +484,7 @@ resource "aws_iam_role" "access_entry_argocd" {
 | AWS IAM ユーザー                              | ServiceAccount、UserAccount | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                          |
 | AWS IAM ロール                                | Role、ClusterRole           | ・https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html                                                                                                                                                                                                                          |
 
-> - https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare
+> - [AWS EKSとECSの比較と選択基準](https://zenn.dev/yoshinori_satoh/articles/2021-02-13-eks-ecs-compare)
 
 <br>
 
@@ -496,7 +496,7 @@ Fargate ワーカーNode や Amazon EC2 ワーカーNode の管理グループ�
 
 Kubernetes Cluster に相当する。
 
-> - https://www.sunnycloud.jp/column/20210315-01/
+> - [EKS on Fargateの特徴、通常のEKSとの違いは何か？（第1回） \| SunnyCloud](https://www.sunnycloud.jp/column/20210315-01/)
 
 <br>
 
@@ -508,7 +508,7 @@ Kubernetes Cluster に相当する。
 
 ![eks_multi-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_multi-node.png)
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/eks-networking.html
+> - [Configure networking for Amazon EKS clusters - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/eks-networking.html)
 
 #### ▼ ワーカーNode 間のファイル共有
 
@@ -518,7 +518,7 @@ Pod のファイルはワーカーNode にマウントされるため、異な�
 
 ただしできるだけ、ワーカーNode をステートフルではなくステートレスにする必要があり、Pod のファイルはワーカーNode の外で管理する必要がある。
 
-> - https://blog.linkode.co.jp/entry/2020/07/01/142155
+> - [EKS で永続ボリュームを利用する - Linkode.TechBlog](https://blog.linkode.co.jp/entry/2020/07/01/142155)
 
 <br>
 
@@ -605,11 +605,11 @@ spec:
               path: token
 ```
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
-> - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1
-> - https://onsd.hatenablog.com/entry/2019/09/21/015522
-> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/main.tf#L223-L242
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html
+> - [Create an IAM OIDC provider for your cluster - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html)
+> - [EKSのaws-authとかIRSAとか](https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#%E7%99%BB%E9%8C%B2%E6%89%8B%E9%A0%86-1)
+> - [IAM Roles for Service Accounts を Terraformで手軽に体験してみる - onsd’s blog](https://onsd.hatenablog.com/entry/2019/09/21/015522)
+> - [terraform-aws-eks/main.tf at v19.16.0 · terraform-aws-modules/terraform-aws-eks · GitHub](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/main.tf#L223-L242)
+> - [Obtain the thumbprint for an OpenID Connect identity provider - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html)
 
 `(2)`
 
@@ -692,10 +692,10 @@ AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/to
 ```
 
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
-> - https://www.bigtreetc.com/column/eks-irsa/
-> - https://katainaka0503.hatenablog.com/entry/2019/12/07/091737#ServiceAccount%E3%81%AEIAM-%E3%83%AD%E3%83%BC%E3%83%ABIRSA
+> - [株式会社ビッグツリーテクノロジー＆コンサルティング \| EKSを理解する（第2回）IRSAを用いたPod単位のIAMロール割り当て](https://www.bigtreetc.com/column/eks-irsa/)
+> - [EKSでの認証認可 〜aws-iam-authenticatorとIRSAのしくみ〜 - もうずっといなかぐらし](https://katainaka0503.hatenablog.com/entry/2019/12/07/091737#ServiceAccount%E3%81%AEIAM-%E3%83%AD%E3%83%BC%E3%83%ABIRSA)
 > - https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/
-> - https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#2.-eks%E3%81%8B%E3%82%89aws%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%B8%E3%81%A8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88
+> - [EKSのaws-authとかIRSAとか](https://zenn.dev/nameless_gyoza/articles/eks-authentication-authorization-20210211#2.-eks%E3%81%8B%E3%82%89aws%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%B8%E3%81%A8%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%E5%A0%B4%E5%90%88)
 
 <br>
 
@@ -711,7 +711,7 @@ AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/to
 $ aws eks update-kubeconfig --region ap-northeast-1 --name foo-eks-cluster
 ```
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html
+> - [Get started with Amazon EKS – AWS Management Console and AWS CLI - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html)
 
 `(2)`
 
@@ -789,7 +789,7 @@ $ kubectl get service -A jsonpath='{.spec.clusterIP}'
 172.20.0.10
 ```
 
-> - https://repost.aws/questions/QU1ppbhrVsQJaFSuT3Gr0u6A/what-is-service-ipv4-range-in-eks-console
+> - [What is "Service IPv4 range" in EKS console? \| AWS re:Post](https://repost.aws/questions/QU1ppbhrVsQJaFSuT3Gr0u6A/what-is-service-ipv4-range-in-eks-console)
 > - https://marcincuber.medium.com/amazon-eks-with-custom-service-ipv4-cidr-a698cece481
 
 <br>
@@ -800,8 +800,8 @@ Pod の IP アドレスは、Amazon EC2 の ENI とセカンダリープライ�
 
 Amazon VPC CNI 内の L-IPAM デーモンは、ENI とセカンダリープライベート IP アドレスの情報を CNI にプールする。
 
-> - https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/
-> - https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
+> - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
+> - [CNCF CNI プラグイン #kubernetes - Qiita](https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
 
 <br>
 
@@ -825,8 +825,8 @@ Pod をパブリックサブネットに配置した場合、パブリックネ�
 
 このとき、`POD_SECURITY_GROUP_ENFORCING_MODE=standard` に設定された Amazon VPC CNI は SNAT 処理を実行し、クライアント側 Pod の送信元 IP アドレスを Amazon EC2 ワーカーNode のプライマリーENI (`eth0`) の IP アドレスに変換する。
 
-> - https://note.com/tyrwzl/n/n715a8ef3c28a
-> - https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html
+> - [EKS の SNAT の挙動から学ぶ EKS ネットワーキング｜Takahiro Yamada](https://note.com/tyrwzl/n/n715a8ef3c28a)
+> - [Assign security groups to individual Pods - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/security-groups-for-pods.html)
 
 <br>
 
@@ -838,7 +838,7 @@ Pod をプライベートサブネットに配置した場合、プライベー�
 
 ![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png)
 
-> - https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html
+> - [Deploy a gRPC-based application on an Amazon EKS cluster and access it with an Application Load Balancer - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html)
 
 #### ▼ 宛先情報の管理方法
 
@@ -893,7 +893,7 @@ Amazon EKS Cluster を作成すると、ENI も作成する。
 | AWS Systems Manager               | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。                                         |
 | AWS Secrets Manager               | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Manager を使用するため。                                                                                  |
 
-> - https://dev.classmethod.jp/articles/eks_basic/
+> - [EKS入門者向けに「今こそ振り返るEKSの基礎」というタイトルで登壇しました #jawsug\_ct \| DevelopersIO](https://dev.classmethod.jp/articles/eks_basic/)
 > - https://aws.amazon.com/jp/blogs/news/de-mystifying-cluster-networking-for-amazon-eks-worker-nodes/
 
 #### ▼ Amazon VPC 内のほかの AWS リソースへのリクエスト
@@ -916,7 +916,7 @@ Amazon VPC 外から NLB への `443` 番ポートに対するネットワーク
 
 ![eks_control-plane_worker_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network.png)
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html
+> - [Cluster API server endpoint - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 
 <br>
 
@@ -928,7 +928,7 @@ Amazon VPC 外から NLB への `443` 番ポートに対するネットワーク
 
 プライベートサブネット内にワーカーNode がある場合、AWS NAT Gateway を経由して、kube-apiserver にリクエストを送信することになる。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
+> - [Cluster API server endpoint - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access)
 
 #### ▼ パブリックとプライベートの場合
 
@@ -952,7 +952,7 @@ Amazon VPC 外の AWS リソース (例：Amazon EKS コントロールプレー
 | AWS Systems Manager               | Interface          | `ssm.ap-northeast-1.amazonaws.com`                                                 | AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。                                         |
 | Secrets Manager                   | Interface          | `ssmmessage.ap-northeast-1.amazonaws.com`                                          | Secrets Manager を使用するため。                                                                                  |
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
+> - [Cluster API server endpoint - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access)
 
 #### ▼ プライベートのみの場合
 
@@ -966,9 +966,9 @@ Amazon VPC 外の AWS リソース (例：Amazon EKS コントロールプレー
 - Amazon VPC 内の踏み台 Amazon EC2 から
 - Amazon VPC 内の Cloud9 から
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access
-> - https://note.com/tyrwzl/n/nf28cd4372b18
-> - https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance
+> - [Cluster API server endpoint - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#private-access)
+> - [プライベートな EKS のコントロールプレーンにローカル環境からアクセスする｜Takahiro Yamada](https://note.com/tyrwzl/n/nf28cd4372b18)
+> - [EKSのコンテキスト間違いを防ぐ](https://zenn.dev/yoshinori_satoh/articles/eks-kubectl-instance)
 
 <br>
 
@@ -986,7 +986,7 @@ Fargate と比べてカスタマイズ性が高く、ワーカーNode 当たり�
 
 ![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_on_ec2.png)
 
-> - https://www.sunnycloud.jp/column/20210315-01/
+> - [EKS on Fargateの特徴、通常のEKSとの違いは何か？（第1回） \| SunnyCloud](https://www.sunnycloud.jp/column/20210315-01/)
 
 <br>
 
@@ -1002,10 +1002,10 @@ Amazon EC2 ワーカーNode 内の Pod が Amazon ECR からコンテナイメ�
 
 `aws-node` の Pod が AWS のネットワーク系の API にリクエストを送信できるように、IRSA 用の ServiceAccount に `AmazonEKS_CNI_Policy` (IPv4 の場合) または `AmazonEKS_CNI_IPv6_Policy` (IPv6 の場合) を付与する必要がある。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html
-> - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html
-> - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2ContainerRegistryReadOnly.html
-> - https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKS_CNI_Policy.html
+> - [Amazon EKS node IAM role - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html)
+> - [AmazonEKSWorkerNodePolicy - AWS Managed Policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKSWorkerNodePolicy.html)
+> - [AmazonEC2ContainerRegistryReadOnly - AWS Managed Policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2ContainerRegistryReadOnly.html)
+> - [AmazonEKS\_CNI\_Policy - AWS Managed Policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEKS_CNI_Policy.html)
 
 <br>
 
@@ -1039,7 +1039,7 @@ Node グループは、Amazon EC2 ワーカーNode が配置されるプライ�
 
 AWS Auto Scaling グループの機能を使用すれば、Amazon EC2 ワーカーNode の自動的な起動/停止やヘルスチェックを設定できる。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
+> - [Simplify node lifecycle with managed node groups - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
 > - https://www.techtarget.com/searchaws/tip/2-options-to-deploy-Kubernetes-on-AWS-EKS-vs-self-managed
 > - https://www.reddit.com/r/kubernetes/comments/v8pckh/eks_selfmanaged_nodes_vs_node_group/
 
@@ -1049,8 +1049,8 @@ AWS Auto Scaling グループの機能を使用すれば、Amazon EC2 ワーカ�
 
 Amazon EKS のテスト環境の請求料金を節約するため、昼間に通常の個数へスケールアウトし、夜間に `0` 個へスケールインするようにすれば、ワーカーNode を夜間だけ停止させられる。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html
-> - https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97
+> - [Simplify node lifecycle with managed node groups - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
+> - [AWS EKSを使う時の注意点と見ておくべきドキュメントまとめ - フラミナル](https://blog.framinal.life/entry/2020/07/19/044328#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E5%9E%8B%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97)
 
 #### ▼ 起動テンプレートと AWS Auto Scaling グループとの紐付け
 
@@ -1059,7 +1059,7 @@ Amazon EKS のテスト環境の請求料金を節約するため、昼間に通
 どのような Amazon EC2 Node を管理するのかは起動テンプレートと AWS Auto Scaling グループを使用して定義する必要がある。
 
 > - https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/
-> - https://qiita.com/Uro3/items/d966b9bf77dc2b81e7f2
+> - [\[AWS\] EKSマネージドノードグループでLaunch Templatesがサポートされたことで便利になったこと #kubernetes - Qiita](https://qiita.com/Uro3/items/d966b9bf77dc2b81e7f2)
 
 <br>
 
@@ -1090,8 +1090,8 @@ Node グループ (マネージド Node グループ、セルフマネージド 
 
 もし負荷の状況に応じてスケーリングしたい場合、Node のスケーリングツール (例：ClusterAutoscaler、Karpenter など) を使用しないと、最大数と最小数の設定に応じたスケーリングを実施してくれない。
 
-> - https://qiita.com/motani/items/b32f1607d34ae8e5bc00#%E6%A6%82%E8%A6%81
-> - https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs
+> - [EKS Managed Node Group を EventBridge で毎日「起動/削除」する #AWS - Qiita](https://qiita.com/motani/items/b32f1607d34ae8e5bc00#%E6%A6%82%E8%A6%81)
+> - [Karpenter - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs)
 
 <br>
 
@@ -1103,7 +1103,7 @@ Node グループ (マネージド Node グループ、セルフマネージド 
 | ------ | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Name` | Amazon EC2 ワーカーNode の名前 | Node グループで指定する起動テンプレートのタグに、`Name` タグを設定しておく。Amazon EC2 ワーカーNode の名前は `Name` タグで決まるため、起動テンプレートでワーカーNode 名を設定できる。 |
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html
+> - [Customize managed nodes with launch templates - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 
 #### ▼ セルフマネージド Node グループ
 
@@ -1112,7 +1112,7 @@ Node グループ (マネージド Node グループ、セルフマネージド 
 | `Name`                                         | Amazon EC2 ワーカーNode の名前 | Amazon EC2 の名前は `Name` タグで決まる仕組みのため、Node グループに参加させる Amazon EC2 ワーカーNode の `Name` タグに、ワーカーNode 名を設定しておく。 |
 | `kubernetes.io/cluster/<Amazon EKS Cluster名>` | `owned`                        | セルフマネージド型の Amazon EC2 ワーカーNode を使用する場合、ユーザーが作成した Amazon EC2 を Node グループに参加させるために、必要である。              |
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
+> - [Maintain nodes yourself with self-managed nodes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/worker.html)
 
 <br>
 
@@ -1127,7 +1127,7 @@ Amazon EC2 に関するヘルスチェック (例：Amazon EC2 の正常性) は
 Node に関するヘルスチェック (例：Amazon EC2 内の kubelet の正常性) は、Amazon EKS アドオンの Node 監視エージェントで設定できる。
 
 > - https://www.reddit.com/r/aws/comments/1hg998p/comment/m2hfdns/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-> - https://docs.aws.amazon.com/eks/latest/userguide/node-health.html
+> - [Detect node health issues and enable automatic node repair - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/node-health.html)
 
 <br>
 
@@ -1145,7 +1145,7 @@ Node に関するヘルスチェック (例：Amazon EC2 内の kubelet の正�
 
 Amazon EC2 ワーカーNode を種類ごとに異なる AWS AMI で作成し、特定のアプリケーションを含む Pod は特定の Amazon EC2 ワーカーNode にスケジューリングさせる (例：計算処理系アプリは Amazon EKS 最適化高速 AMI の Amazon EC2 ワーカーNode 上で動かす) といった方法でもよい。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
+> - [Create nodes with optimized Amazon Linux AMIs - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html)
 
 #### ▼ Amazon EKS 最適化 Amazon Linux
 
@@ -1167,8 +1167,8 @@ $ aws ssm get-parameter \
     --output text
 ```
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html
-> - https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html
+> - [Create nodes with optimized Amazon Linux AMIs - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami.html)
+> - [Retrieve recommended Amazon Linux AMI IDs - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html)
 
 #### ▼ Amazon EKS 最適化高速 Amazon Linux
 
@@ -1192,8 +1192,8 @@ $ aws ssm get-parameter \
     --output text
 ```
 
-> - https://dev.classmethod.jp/articles/bottlerocket/#toc-1
-> - https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami-bottlerocket.html
+> - [【速報】コンテナ実行専用OSのBottlerocketがパブリックプレビューで発表されました！ \| DevelopersIO](https://dev.classmethod.jp/articles/bottlerocket/#toc-1)
+> - [Create nodes with optimized Bottlerocket AMIs - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/eks-optimized-ami-bottlerocket.html)
 
 <br>
 
@@ -1249,7 +1249,7 @@ Amazon EC2 ワーカーNode の kubelet を設定する。
 }
 ```
 
-> - https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/kubelet-config.json
+> - [amazon-eks-ami/files/kubelet-config.json at v20231106 · awslabs/amazon-eks-ami · GitHub](https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/kubelet-config.json)
 
 <br>
 
@@ -1264,8 +1264,8 @@ Amazon EC2 Node の起動時に任意のコマンドを実行できるように�
 一方で、マネージド Node グループにて、起動テンプレートを使用せずに Amazon EC2 ワーカーNode を作成する場合、ユーザーデータファイルを自動で作成してくれるため、これは不要である。
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/eks-worker-nodes-cluster/
-> - https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data
-> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/user_data.md
+> - [Customize managed nodes with launch templates - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data)
+> - [terraform-aws-eks/docs/user\_data.md at master · terraform-aws-modules/terraform-aws-eks · GitHub](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/docs/user_data.md)
 
 #### ▼ `bootstrap.sh` ファイル
 
@@ -1307,8 +1307,8 @@ set -o xtrace
 | `--kubelet-extra-args`  | `--node-labels=nodetype=foo --max-pods=110` | KubeletConfiguration のデフォルト値を上書きする。                                                                                                                                                       |
 | `--use-max-pods`        | `false`                                     | kubelet の `--max-pods` オプションを有効化するフラグを設定する。Kubelet が実行可能な Pod 数を設定する。Kubelet ではこのオプションは非推奨になっており、代わりに KubeletConfiguration に渡すようにする。 |
 
-> - https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/bootstrap.sh#L17-L41
-> - https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
+> - [amazon-eks-ami/files/bootstrap.sh at v20231106 · awslabs/amazon-eks-ami · GitHub](https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/bootstrap.sh#L17-L41)
+> - [kubelet \| Kubernetes](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
 
 ユーザーデータファイル内で必要なパラメーターの注意点として、各パラメーターはハードコーディングしないようにする。
 
@@ -1337,8 +1337,8 @@ source "${EXPORT_ENVS}"
   --container-runtime containerd
 ```
 
-> - https://qiita.com/th_/items/8ffb28dd6d27779a6c9d
-> - https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html
+> - [パラメータストアからEC2に環境変数を設定する #AWS - Qiita](https://qiita.com/th_/items/8ffb28dd6d27779a6c9d)
+> - [AWS EC2起動時に パラメータストアの値 を 環境変数 に 設定する 方法 - galife](https://garafu.blogspot.com/2020/08/ec2-set-env-from-paramstore.html)
 
 #### ▼ Amazon EC2 ワーカーNode のコンテナイメージキャッシュ削除
 
@@ -1436,8 +1436,8 @@ sudo systemctl restart systemd-logind
   --container-runtime containerd
 ```
 
-> - https://blog.skouf.com/posts/enabling-graceful-node-shutdown-on-eks-in-kubernetes-1-21/
-> - https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown
+> - [Enabling graceful node shutdown on EKS in Kubernetes 1.21 - skouf.com](https://blog.skouf.com/posts/enabling-graceful-node-shutdown-on-eks-in-kubernetes-1-21/)
+> - [Nodes \| Kubernetes](https://kubernetes.io/docs/concepts/architecture/nodes/#graceful-node-shutdown)
 
 `Failed` ステータスの Pod は、そのままでは削除できない。
 
@@ -1452,7 +1452,7 @@ for ns in $(kubectl get namespace -o name | cut -d / -f 2); do
 done
 ```
 
-> - https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36
+> - [terminated-pod-cleaner/chart/templates/cronjob.yaml at main · yteraoka/terminated-pod-cleaner · GitHub](https://github.com/yteraoka/terminated-pod-cleaner/blob/main/chart/templates/cronjob.yaml#L33-L36)
 
 <br>
 
@@ -1494,9 +1494,9 @@ WantedBy=multi-user.target
 $ timedatectl set-timezone America/Vancouver
 ```
 
-> - https://github.com/awslabs/amazon-eks-ami/blob/main/templates/al2023/provisioners/install-worker.sh#L94-L95
+> - [amazon-eks-ami/templates/al2023/provisioners/install-worker.sh at main · awslabs/amazon-eks-ami · GitHub](https://github.com/awslabs/amazon-eks-ami/blob/main/templates/al2023/provisioners/install-worker.sh#L94-L95)
 > - https://github.com/awslabs/amazon-eks-ami/blob/main/templates/shared/runtime/configure-clocksource.service
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/change-time-zone-of-instance.html
+> - [Change the time zone of your instance - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/change-time-zone-of-instance.html)
 
 <br>
 
@@ -1516,8 +1516,8 @@ AWS Auto Scaling グループのタグ付け機能を使用して、`kubernetes.
 
 なお、起動テンプレートも合わせて使用でき、これは任意である。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/worker.html
-> - https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html
+> - [Maintain nodes yourself with self-managed nodes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/worker.html)
+> - [Create self-managed Amazon Linux nodes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
 
 <br>
 
@@ -1580,7 +1580,7 @@ resource "aws_autoscaling_group_tag" "foo" {
 }
 ```
 
-> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/modules/eks-managed-node-group/main.tf
+> - [terraform-aws-eks/modules/eks-managed-node-group/main.tf at v19.16.0 · terraform-aws-modules/terraform-aws-eks · GitHub](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/modules/eks-managed-node-group/main.tf)
 
 ### セルフマネージド Node グループの場合
 
@@ -1612,7 +1612,7 @@ resource "aws_autoscaling_group" "foo" {
 }
 ```
 
-> - https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/modules/self-managed-node-group/main.tf
+> - [terraform-aws-eks/modules/self-managed-node-group/main.tf at v19.16.0 · terraform-aws-modules/terraform-aws-eks · GitHub](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/modules/self-managed-node-group/main.tf)
 
 <br>
 
@@ -1642,7 +1642,7 @@ Fargate ワーカーNode 内のログをフォワーディングするうえで�
 
 ロググーティングツールとして、FluentBit をサポートしている。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html
+> - [Start AWS Fargate logging for your cluster - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html)
 
 `(1)`
 
@@ -1700,10 +1700,10 @@ data:
 
      そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) には、ServiceAccountとAWS IAMロールの紐付けが必要である。
 
-> - https://nishipy.com/archives/1122
-> - https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/
-> - https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html
-> - https://kumano-te.com/activities/apply-iam-roles-to-eks-service-accounts
+> - [EKSで、別AWSアカウントのECRリポジトリのDockerイメージをpullする方法 \| Nishipy Notes](https://nishipy.com/archives/1122)
+> - [Kubernetes クラスタが AWS 上でコンテナイメージを pull するときの権限まわりの話 \| トリの部屋](https://toris.io/2021/01/how-kubernetes-pulls-private-container-images-on-aws/)
+> - [Get started with AWS Fargate for your cluster - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/fargate-getting-started.html)
+> - [EKSでServiceAccount毎にIAMロールを作成してpod毎に権限を変更する - Kumanote Tech Blog](https://kumano-te.com/activities/apply-iam-roles-to-eks-service-accounts)
 > - https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
 <br>
@@ -1716,8 +1716,8 @@ data:
 
 Amazon EC2 ワーカーNode と比較して、使用できない機能については、以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/fargate.html
-> - https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html
+> - [Simplify compute management with AWS Fargate - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html)
+> - [Install SSM Agent on Amazon EKS worker nodes by using Kubernetes DaemonSet - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/install-ssm-agent-on-amazon-eks-worker-nodes-by-using-kubernetes-daemonset.html)
 
 <br>
 
@@ -1735,7 +1735,7 @@ Amazon EC2 ワーカーNode と比べてカスタマイズ性が低く、ワー�
 
 一方で、各 Amazon EC2 のハードウェアリソースの消費量をユーザーが管理しなくてもよいため、Kubernetes のホストの管理が楽である。
 
-> - https://www.sunnycloud.jp/column/20210315-01/
+> - [EKS on Fargateの特徴、通常のEKSとの違いは何か？（第1回） \| SunnyCloud](https://www.sunnycloud.jp/column/20210315-01/)
 
 #### ▼ Fargate ワーカーNode を使用できない場合
 
@@ -1746,7 +1746,7 @@ Amazon EC2 ワーカーNode と比べてカスタマイズ性が低く、ワー�
 - EmptyDir Volume 以外が必要である。
 - Fargate ワーカーNode では、サービスメッシュに AppMesh しか使えない。もし、AppMesh を使いたくない場合は、Amazon EC2 ワーカーNode を使用する。
 
-> - https://qiita.com/mumoshu/items/c9dea2d82a402b4f9c31#managed-node-group%E3%81%A8eks-on-fargate%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91
+> - [入門 EKS on Fargate #kubernetes - Qiita](https://qiita.com/mumoshu/items/c9dea2d82a402b4f9c31#managed-node-group%E3%81%A8eks-on-fargate%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91)
 
 #### ▼ Fargate プロファイル
 
@@ -1759,7 +1759,7 @@ Fargate を設定する。
 | ポッドセレクタ (Namespace) | Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod の Namespace の値を設定する。       | ・`kube-system` や `default` を指定する Kubernetes リソースが稼働できるように、ポッドセレクタにこれを追加する必要がある。<br>・Istio や ArgoCD を、それ専用の Namespace で稼働させる場合は、その Namespace のためのプロファイルを作成しておく必要がある。                              |
 | ポッドセレクタ (Label)     | Amazon EKS Fargate ワーカーNode にスケジューリングさせる Pod を固定できるように、Pod の任意の label キーの値を設定する。 |                                                                                                                                                                                                                                                                                        |
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components
+> - [Define which Pods use AWS Fargate when launched - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html#fargate-profile-components)
 
 <br>
 
@@ -1779,8 +1779,8 @@ AWS は IaaS のため、AWS AMI を指定すれば、Node の OS のアップ�
 
 執筆時点 (2022/01/28) では、AWS の API を経由して `updateConfig` 値を設定すれば、アップグレード時のサージ数を設定できる。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
-> - https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateNodegroupConfig.html#API_UpdateNodegroupConfig_RequestSyntax
+> - [Understand each phase of node updates - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html)
+> - [UpdateNodegroupConfig - Amazon EKS](https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateNodegroupConfig.html#API_UpdateNodegroupConfig_RequestSyntax)
 
 <br>
 
@@ -1820,9 +1820,9 @@ Amazon EKS Cluster のアップグレード時、以下の仕組みでデータ�
 
 : 最終的に、アップグレード前のワーカーNode 数 (Node 希望数) に戻る。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#common-scenarios-termination-rebalancing
+> - [Understand each phase of node updates - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html)
+> - [Auto Scaling benefits for application architecture - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage)
+> - [Control which Auto Scaling instances terminate during scale in - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#common-scenarios-termination-rebalancing)
 
 <br>
 

@@ -9,7 +9,7 @@ description: Playbook＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -79,7 +79,7 @@ repository/
 │
 ```
 
-> - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF
+> - [プレイブックの基本｜Ansible の使い方](https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#%E3%83%97%E3%83%AC%E3%82%A4%E3%83%96%E3%83%83%E3%82%AF%E3%81%A8%E3%81%AF)
 
 <br>
 
@@ -93,7 +93,7 @@ repository/
 
 `playbook.yml` ファイルを切り分けるために使用する。
 
-> - https://ansible-workbook.readthedocs.io/ja/latest/role/role.html
+> - [ロール — Ansible ワークブック ドキュメント](https://ansible-workbook.readthedocs.io/ja/latest/role/role.html)
 
 #### ▼ handlers ディレクトリ
 
@@ -198,7 +198,7 @@ PHP 製のアプリケーションが稼働する App サーバーをセット�
 
 自動的に読み込まれ、`playbook` ファイルや `inventory` ファイルで出力できる。
 
-> - https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97
+> - [Ansibleまとめ #仕様 - Qiita](https://qiita.com/WisteriaWave/items/0e5dda7ddc13b22188c7#215-%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E5%A4%89%E6%95%B0%E3%83%9B%E3%82%B9%E3%83%88%E5%A4%89%E6%95%B0%E3%81%AE%E5%A4%96%E5%87%BA%E3%81%97)
 
 #### ▼ group_var ファイル
 
@@ -260,7 +260,7 @@ ports:
 
 Ansible の実行時に、`-i` オプションでディレクトリを指定する。
 
-> - https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge
+> - [\[Ansible\] -i オプションでディレクトリを指定すると複数のインベントリファイルをマージできる - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/02/23/ansible_inventory_merge)
 
 ```bash
 $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
@@ -279,8 +279,8 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 プロビジョニングの実行対象はロードバランサーから一時的に切り離すようにすることにより、プロビジョニングに伴ってインシデントが起こっても、ユーザーへの影響を防げる。
 
 > - https://docs.ansible.com/ansible/2.9/user_guide/intro_inventory.html#inventoryformat
-> - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5
-> - https://tekunabe.hatenablog.jp/entry/2017/11/08/ansible_inventory_ini
+> - [インベントリーの基本｜Ansible の使い方](https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5)
+> - [Ansibleのインベントリファイルの拡張子に .ini を使わない方がいい理由 - てくなべ](https://tekunabe.hatenablog.jp/entry/2017/11/08/ansible_inventory_ini)
 
 **＊実装例＊**
 
@@ -457,7 +457,7 @@ task セクションの後に実行するセットアップ処理を設定する
 
 必須である。
 
-> - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> - [プレイブックの基本｜Ansible の使い方](https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#targets-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3)
 
 <br>
 
@@ -518,7 +518,7 @@ root 以外であれば、`become_user` キーを設定する。
 
 必須である。
 
-> - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> - [プレイブックの基本｜Ansible の使い方](https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter8#tasks-%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3)
 
 <br>
 
@@ -541,7 +541,7 @@ root 以外であれば、`become_user` キーを設定する。
 ```
 
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
-> - https://qiita.com/tkit/items/7ad3e93070e97033f604
+> - [Ansibleのyum module:各state(present,installed,latest,absent,removed)の違い #Ansible - Qiita](https://qiita.com/tkit/items/7ad3e93070e97033f604)
 
 <br>
 
@@ -615,7 +615,7 @@ root 以外であれば、`become_user` キーを設定する。
     state: present
 ```
 
-> - https://qiita.com/tkit/items/7ad3e93070e97033f604
+> - [Ansibleのyum module:各state(present,installed,latest,absent,removed)の違い #Ansible - Qiita](https://qiita.com/tkit/items/7ad3e93070e97033f604)
 
 <br>
 
@@ -629,7 +629,7 @@ root 以外であれば、`become_user` キーを設定する。
 
 SELinux を無効化する。
 
-> - https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook
+> - [\[Ansible\] lineinfile モジュールの基本的な使い方（テキストファイルの行単位の編集） - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook)
 
 **＊実装例＊**
 
@@ -700,7 +700,7 @@ SELinux を無効化する。
 
 管理対象ノードでファイルを操作する。
 
-> - https://tekunabe.hatenablog.jp/entry/2019/03/03/ansible_file_intro
+> - [\[Ansible\] file モジュールの基本的な使い方（ファイルやディレクトリの操作） - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/03/03/ansible_file_intro)
 
 **＊実装例＊**
 
@@ -722,7 +722,7 @@ SELinux を無効化する。
 
 管理対象ノードで `curl` コマンドを実行する。
 
-> - https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url
+> - [ansible.builtin.get\_url - 指定した URL からファイルをダウンロードする](https://zenn.dev/y_mrok/books/ansible-no-module-no-tsukaikata/viewer/ansible_builtin_get_url)
 
 ```yaml
 - name: Download tool
@@ -761,7 +761,7 @@ SELinux を無効化する。
 管理対象ノードでシェルを実行する。複数行に渡る場合は、『`|`』を使用する。
 
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
-> - https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/
+> - [Environment Variables with Ansible \| Ruan Bekker's Blog](https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/)
 
 **＊実装例＊**
 
@@ -828,7 +828,7 @@ SELinux を無効化する。
 | `started`   | 最終的な状態として停止しているように、ユニットを起動する。              |
 | `stopped`   | 最終的な状態として停止しているさうに、ユニットを停止する。              |
 
-> - https://dekitakotono.blogspot.com/2019/05/systemd.html
+> - [systemd モジュール-φ(.. ) のメモ](https://dekitakotono.blogspot.com/2019/05/systemd.html)
 
 <br>
 
@@ -911,7 +911,7 @@ SELinux を無効化する。
 `gather_facts` オプションを有効化する必要がある。
 
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
-> - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
+> - [\[Ansible\] 環境変数を取得する ansible\_env.hoge と lookup("env", "hoge") の違い - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env)
 
 **＊実装例＊**
 
@@ -959,8 +959,8 @@ task 内で出力できる環境変数を設定する。
 
 設定した変数は、`ansible.builtin.template` オプションを使用して `j2` ファイルに出力できる。
 
-> - https://blog.katsubemakito.net/ansible/ansible-1st-4
-> - https://ksaito11.hatenablog.com/entry/2018/10/24/232929
+> - [はじめてのAnsible #4 template編 - ねこの足跡R](https://blog.katsubemakito.net/ansible/ansible-1st-4)
+> - [テンプレートに環境変数を埋め込む。 - ksaitoの日記](https://ksaito11.hatenablog.com/entry/2018/10/24/232929)
 
 **＊実装例＊**
 
@@ -990,7 +990,7 @@ task 内で出力できる環境変数を設定する。
 コントロールノードに設定された環境変数を出力する。
 
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
-> - https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env
+> - [\[Ansible\] 環境変数を取得する ansible\_env.hoge と lookup("env", "hoge") の違い - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env)
 
 **＊実装例＊**
 

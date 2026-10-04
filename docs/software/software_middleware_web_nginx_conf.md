@@ -147,7 +147,7 @@ events {
 }
 ```
 
-> - https://nginx.org/en/docs/ngx_core_module.html#events
+> - [Core functionality](https://nginx.org/en/docs/ngx_core_module.html#events)
 
 <br>
 
@@ -179,7 +179,7 @@ error_log  logs/error.log;
 include /etc/nginx/conf.d/*.conf;
 ```
 
-> - https://nginx.org/en/docs/ngx_core_module.html#include
+> - [Core functionality](https://nginx.org/en/docs/ngx_core_module.html#include)
 
 `include` ディレクティブをどの階層で実行したかによって、指定した設定ファイル内で実行できるディレクティブが異なる。
 
@@ -205,7 +205,7 @@ Nginx では、ビルド時にモジュール (`so` ファイル) をバイナ�
 load_module modules/<動的モジュール名>;
 ```
 
-> - https://nginx.org/en/docs/ngx_core_module.html#load_module
+> - [Core functionality](https://nginx.org/en/docs/ngx_core_module.html#load_module)
 > - https://heartbeats.jp/hbblog/2016/02/nginx-dynamic-modules.html
 
 #### ▼ pid
@@ -222,7 +222,7 @@ worker プロセスが同時に処理できる接続の最大数を設定する�
 worker_connections 1024;
 ```
 
-> - https://nginx.org/en/docs/ngx_core_module.html#worker_connections
+> - [Core functionality](https://nginx.org/en/docs/ngx_core_module.html#worker_connections)
 
 #### ▼ worker_processes
 
@@ -248,8 +248,8 @@ worker_rlimit_nofile 8192;
 GET http://_:80/foo
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_uri
-> - https://blog.utgw.net/entry/2020/03/12/121959
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#var_request_uri)
+> - [nginx の $request\_uri と $uri - 私が歌川です](https://blog.utgw.net/entry/2020/03/12/121959)
 
 <br>
 
@@ -257,7 +257,7 @@ GET http://_:80/foo
 
 受信したリクエストの URL パスが割り当てられている。
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#var_uri
-> - https://blog.utgw.net/entry/2020/03/12/121959
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#var_uri)
+> - [nginx の $request\_uri と $uri - 私が歌川です](https://blog.utgw.net/entry/2020/03/12/121959)
 
 <br>

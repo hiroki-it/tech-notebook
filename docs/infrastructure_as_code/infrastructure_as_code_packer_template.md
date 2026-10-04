@@ -9,7 +9,7 @@ description: テンプレート＠Packerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -88,7 +88,7 @@ build_ami:
     - when: manual
 ```
 
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html
+> - [Calling AMI public parameters in Parameter Store - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html)
 
 <br>
 
@@ -354,7 +354,7 @@ source "amazon-ebs" "foo" {
 }
 ```
 
-> - https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#run-configuration
+> - [Amazon Builder \| Integrations \| Packer \| HashiCorp Developer](https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#run-configuration)
 
 #### ▼ ssh_username
 
@@ -366,7 +366,7 @@ source "amazon-ebs" "foo" {
 }
 ```
 
-> - https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration
+> - [Amazon Builder \| Integrations \| Packer \| HashiCorp Developer](https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration)
 
 #### ▼ temporary_key_pair_type
 
@@ -378,7 +378,7 @@ source "amazon-ebs" "foo" {
 }
 ```
 
-> - https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration
+> - [Amazon Builder \| Integrations \| Packer \| HashiCorp Developer](https://developer.hashicorp.com/packer/integrations/hashicorp/amazon/latest/components/builder/ebs#communicator-configuration)
 
 <br>
 
@@ -409,6 +409,6 @@ Packer では、`variables` ブロックには定数を設定する必要があ�
 
 `variables` ブロックの値を一度 `locals` ブロックで加工する必要がある。
 
-> - https://github.com/hashicorp/packer/issues/9430#issuecomment-645276351
+> - [HCL templates cannot call functions for variable defaults · Issue #9430 · hashicorp/packer · GitHub](https://github.com/hashicorp/packer/issues/9430#issuecomment-645276351)
 
 <br>

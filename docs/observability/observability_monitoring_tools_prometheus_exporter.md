@@ -9,7 +9,7 @@ description: Exporter＠Prometheus
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,8 +27,8 @@ Prometheus はデータポイントをメトリクスとして集約する。
 
 また、各 Exporter は待ち受けるエンドポイントやポート番号が異なっており、Prometheus が各 Exporter からメトリクスの元になるデータポイントを収集できるように、各 Node でエンドポイントやポート番号へのインバウンド通信を許可する必要がある。
 
-> - https://openstandia.jp/oss_info/prometheus
-> - https://danielfm.me/prometheus-for-developers/
+> - [Prometheusとは？詳細情報を解説 \| OSSサポートのOpenStandia™【NRI】](https://openstandia.jp/oss_info/prometheus)
+> - [https://danielfm.me/posts/prometheus-for-developers/](https://danielfm.me/prometheus-for-developers/)
 
 <br>
 
@@ -55,9 +55,9 @@ Exporter には、Kubernetes の Node 上でどう稼働させるかに応じて
 | Pod 内サイドカーパターン | Pod 内にサイドカーとして配置する。               |
 | 埋め込み型パターン       | ライブラリとして、アプリケーション内に埋め込む。 |
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072
-> - https://prometheus.io/docs/instrumenting/exporters/
-> - https://grafana.com/oss/prometheus/exporters/
+> - [かゆいところに手が届く実践「Prometheus」「Grafana」――PromQL、スクレイプ、Exporter、運用のためのポイント：Cloud Nativeチートシート（15） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2205/31/news011.html#072)
+> - [Exporters and integrations \| Prometheus](https://prometheus.io/docs/instrumenting/exporters/)
+> - [Prometheus Exporter Quickstarts \| Grafana Labs](https://grafana.com/oss/prometheus/exporters/)
 
 #### ▼ DaemonSet パターン
 
@@ -112,7 +112,7 @@ $ kubectl create namespace prometheus
 $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+> - [helm-charts/charts/kube-prometheus-stack at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
 
 <br>
 
@@ -140,7 +140,7 @@ $ kubectl create namespace prometheus
 $ helm install <Helmリリース名> <チャートリポジトリ名>/prometheus-mysql-exporter -n prometheus --version <バージョンタグ>
 ```
 
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter
+> - [helm-charts/charts/prometheus-mysql-exporter at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-mysql-exporter)
 
 <br>
 
@@ -161,7 +161,7 @@ postgres_exporter_build_info{branch="",goversion="go1.15.8",revision="",version=
 ...
 ```
 
-> - https://grafana.com/oss/prometheus/exporters/postgres-exporter/
+> - [Prometheus OSS \| Postgres exporter](https://grafana.com/oss/prometheus/exporters/postgres-exporter/)
 > - https://grafana.com/oss/prometheus/exporters/postgres-exporter/assets/postgres_metrics_scrape.txt
 
 <br>
@@ -191,7 +191,7 @@ mysqld_exporter_build_info{branch="HEAD",goversion="go1.12.7",revision="48667bf7
 ...
 ```
 
-> - https://grafana.com/oss/prometheus/exporters/mysql-exporter/
+> - [Prometheus OSS \| MySQL exporter](https://grafana.com/oss/prometheus/exporters/mysql-exporter/)
 > - https://grafana.com/oss/prometheus/exporters/mysql-exporter/assets/mysql_metrics_scrape.txt
 
 <br>
@@ -210,7 +210,7 @@ PostgreSQL のプロセスのステータスを表す。
 pg_up == 0
 ```
 
-> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html
+> - [Prometheusを用いたPostgreSQLの監視におけるメトリクス Top10 \| ブログ \| Sysdig \| 株式会社SCSK](https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html)
 
 #### ▼ PostgreSQL の連続稼働時間
 
@@ -220,9 +220,9 @@ pg_up == 0
 time() - pg_postmaster_start_time_seconds
 ```
 
-> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html
+> - [Prometheusを用いたPostgreSQLの監視におけるメトリクス Top10 \| ブログ \| Sysdig \| 株式会社SCSK](https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html)
 > - https://www.oreilly.com/library/view/postgresql-9-administration/9781849519069/ch02s03.html
-> - https://www.ashisuto.co.jp/db_blog/article/20151221_pg_monitoring.html
+> - [PostgreSQLの監視で押さえておきたい3つの監視項目 \| アシスト](https://www.ashisuto.co.jp/db_blog/article/20151221_pg_monitoring.html)
 
 #### ▼ DB インスタンス間のデータ同期の遅延
 
@@ -234,7 +234,7 @@ PostgreSQL で、Repmgr による DB クラスターを採用している場合�
 pg_replication_lag > 10
 ```
 
-> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html
+> - [Prometheusを用いたPostgreSQLの監視におけるメトリクス Top10 \| ブログ \| Sysdig \| 株式会社SCSK](https://www.scsk.jp/sp/sysdig/blog/container_monitoring/prometheuspostgresql_top10.html)
 
 #### ▼ 残骸タプルサイズ
 
@@ -268,7 +268,7 @@ $ tar -xvf /tmp/process-exporter-0.7.10.linux-amd64.tar.gz -C /tmp
 
 執筆時点 (2023/03/26) 時点で、Process Exporter のチャートはない。
 
-> - https://github.com/ncabatoff/process-exporter
+> - [GitHub - ncabatoff/process-exporter: Prometheus exporter that mines /proc to report on selected processes · GitHub](https://github.com/ncabatoff/process-exporter)
 
 <br>
 
@@ -289,7 +289,7 @@ process_exporter_build_info{build_date="2021-03-11-03:26:58",commit_sha="d0597c8
 ...
 ```
 
-> - https://github.com/ncabatoff/process-exporter#exposing-metrics-through-https
+> - [GitHub - ncabatoff/process-exporter: Prometheus exporter that mines /proc to report on selected processes · GitHub](https://github.com/ncabatoff/process-exporter#exposing-metrics-through-https)
 
 <br>
 
@@ -312,7 +312,7 @@ redis_exporter_build_info{build_date="2021-03-11-03:26:58",commit_sha="d0597c841
 ...
 ```
 
-> - https://grafana.com/oss/prometheus/exporters/redis-exporter/
+> - [Prometheus OSS \| Redis exporter](https://grafana.com/oss/prometheus/exporters/redis-exporter/)
 > - https://grafana.com/oss/prometheus/exporters/redis-exporter/assets/sample_scrape.out.txt
 
 <br>

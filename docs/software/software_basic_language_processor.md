@@ -9,7 +9,7 @@ description: 言語プロセッサー (言語処理プログラム) ＠基本ソ
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -39,7 +39,7 @@ description: 言語プロセッサー (言語処理プログラム) ＠基本ソ
 
 ![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/compiler_language.png)
 
-> - https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+> - [誰でも機械語が読めてパソコンの基本的な仕組みが理解できるようになりそうな記事を書きました #CPU - Qiita](https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF)
 
 #### ▼ コンパイラによるビルド
 
@@ -73,7 +73,7 @@ exe ファイルとなる。
 
 ![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/構文規則と説明.png)
 
-> - https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)
+> - [Flex (lexical analyzer generator) - Wikipedia](<https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)>)
 
 #### `(2)` Syntax analysis (構文解析)
 
@@ -85,7 +85,7 @@ exe ファイルとなる。
 
 コンパイラ型言語の構文解析に失敗したとき、これらの構文解析言語はシンタックスエラーを出力する。
 
-> - https://ja.wikipedia.org/wiki/Bison
+> - [Bison - Wikipedia](https://ja.wikipedia.org/wiki/Bison)
 
 #### `(3)` Semantics analysis (意味解析)
 
@@ -129,7 +129,7 @@ exe ファイルとなる。
 
 ![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interpreted_language.png)
 
-> - https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
+> - [誰でも機械語が読めてパソコンの基本的な仕組みが理解できるようになりそうな記事を書きました #CPU - Qiita](https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF)
 
 <br>
 

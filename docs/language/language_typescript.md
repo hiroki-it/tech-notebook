@@ -9,7 +9,7 @@ description: TypeScriptの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: TypeScriptの知見を記録しています。
 
 拡張子として、`ts` と `tsx` (TypeScript 内に JSX を実装できる) を使用できる。
 
-> - https://ugo.tokyo/ts-config/#outline__1
+> - [TypeScriptの設定ファイル「tsconfig」。最初に知っておきたい設定をピックアップ！ │ Ugo](https://ugo.tokyo/ts-config/#outline__1)
 
 <br>
 
@@ -108,7 +108,7 @@ const obj = {
 } as const;
 ```
 
-> - https://typescriptbook.jp/reference/values-types-variables/const-assertion
+> - [constアサーション「as const」 (const assertion) \| TypeScript入門『サバイバルTypeScript』](https://typescriptbook.jp/reference/values-types-variables/const-assertion)
 
 <br>
 
@@ -123,7 +123,7 @@ let str: string = "hello";
 str = 0; // これはエラーになる
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 #### ▼ 数値 (Number)
 
@@ -132,7 +132,7 @@ let num: number = 0;
 num = "0"; // これはエラーになる
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 #### ▼ 巨大な数値 (bigint)
 
@@ -141,7 +141,7 @@ let big: bigint = 10n;
 big = 0; // これはエラーになる
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 #### ▼ 真偽値 (Boolean)
 
@@ -150,7 +150,7 @@ let bool: boolean = true;
 bool = 1; // これはエラーになる
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 #### ▼ Null
 
@@ -159,7 +159,7 @@ let n: null = null;
 n = undefined; // これはエラーになる
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 #### ▼ Undefined
 
@@ -168,7 +168,7 @@ let u: undefined = undefined;
 u = null; // これはエラーになる
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 #### ▼ シンボル (Symbol)
 
@@ -177,7 +177,7 @@ let sym: symbol = Symbol();
 sym = ""; // これはエラーになる
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%83%97%E3%83%AA%E3%83%9F%E3%83%86%E3%82%A3%E3%83%96%E5%80%A4%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 <br>
 
@@ -258,7 +258,7 @@ const numArray: number[] = [1, 2, 3];
 numArray.push("a");
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%85%8D%E5%88%97%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%85%8D%E5%88%97%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 #### ▼ 配列の走査
 
@@ -318,7 +318,7 @@ const strOrNum: Array<string | number> = ["a", "b", 1, 2];
 const str: Map<string> = {a: "a", b: "b", c: "c"};
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AA%E3%82%AF%E3%82%B9%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AA%E3%82%AF%E3%82%B9%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 #### ▼ 返却値
 
@@ -332,7 +332,7 @@ async function asyncFn(): Promise<string> {
 console.log(await asyncFn());
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%AE-promise-%E3%81%AE%E6%88%BB%E3%82%8A%E5%80%A4
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86%E3%81%AE-promise-%E3%81%AE%E6%88%BB%E3%82%8A%E5%80%A4)
 
 #### ▼ 型変数（ジェネリクス）
 
@@ -432,7 +432,7 @@ const foo = <T>(value: T): Promise<T> => {
 measureFunctionExecutionTime(foo);
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AA%E3%82%AF%E3%82%B9%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AA%E3%82%AF%E3%82%B9%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 <br>
 
@@ -460,7 +460,7 @@ const sum = (x: number, y: number): number => {
 };
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%96%A2%E6%95%B0%E3%81%AE%E5%BC%95%E6%95%B0%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E9%96%A2%E6%95%B0%E3%81%AE%E5%BC%95%E6%95%B0%E3%81%AE%E5%9E%8B%E5%AE%9A%E7%BE%A9)
 
 <br>
 
@@ -473,7 +473,7 @@ const logger = (): void => {
 };
 ```
 
-> - https://zenn.dev/akkie1030/articles/9f2304544245b2#%E6%88%BB%E3%82%8A%E5%80%A4%E3%81%8C%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE-void
+> - [TypeScriptの型定義まとめ【Reactも対応】](https://zenn.dev/akkie1030/articles/9f2304544245b2#%E6%88%BB%E3%82%8A%E5%80%A4%E3%81%8C%E3%81%AA%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE-void)
 
 <br>
 
@@ -604,7 +604,7 @@ function foo(): string | unknown {
 }
 ```
 
-> - https://qiita.com/frozenbonito/items/e708dfb3ab7c1fd3824d
+> - [TypeScript のエラーハンドリングを考える #TypeScript - Qiita](https://qiita.com/frozenbonito/items/e708dfb3ab7c1fd3824d)
 
 #### ▼ any
 
@@ -629,7 +629,7 @@ function foo(): string | any {
 }
 ```
 
-> - https://qiita.com/frozenbonito/items/e708dfb3ab7c1fd3824d
+> - [TypeScript のエラーハンドリングを考える #TypeScript - Qiita](https://qiita.com/frozenbonito/items/e708dfb3ab7c1fd3824d)
 
 <br>
 
@@ -643,7 +643,7 @@ let age = 30; // 変数ageは数値として推論されます
 let isProgrammer = true; // 変数isProgrammerはブール値として推論されます
 ```
 
-> - https://recursionist.io/learn/languages/typescript/introduction/type-inference
+> - [TypeScriptの型推論を徹底解説 - Recursion](https://recursionist.io/learn/languages/typescript/introduction/type-inference)
 
 <br>
 
@@ -655,7 +655,7 @@ let age: number = 30;
 let isProgrammer: boolean = true;
 ```
 
-> - https://recursionist.io/learn/languages/typescript/introduction/type-inference
+> - [TypeScriptの型推論を徹底解説 - Recursion](https://recursionist.io/learn/languages/typescript/introduction/type-inference)
 
 <br>
 
@@ -667,7 +667,7 @@ let isProgrammer: boolean = true;
 
 キャストではないらしい。
 
-> - https://typescript-jp.gitbook.io/deep-dive/type-system/type-assertion
+> - [Type Assertion（型アサーション） \| TypeScript Deep Dive 日本語版](https://typescript-jp.gitbook.io/deep-dive/type-system/type-assertion)
 
 #### ▼ `as` 構文
 
@@ -678,7 +678,7 @@ const value: string | number = "this is a string";
 const strLength: number = (value as string).length;
 ```
 
-> - https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9
+> - [型アサーション「as」(type assertion) \| TypeScript入門『サバイバルTypeScript』](https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9)
 
 #### ▼ アングルブラケット構文
 
@@ -689,7 +689,7 @@ const value: string | number = "this is a string";
 const strLength: number = (<string>value).length;
 ```
 
-> - https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9
+> - [型アサーション「as」(type assertion) \| TypeScript入門『サバイバルTypeScript』](https://typescriptbook.jp/reference/values-types-variables/type-assertion-as#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9)
 
 #### ▼ 非 `null` アサーション (`!`)
 
@@ -720,7 +720,7 @@ function foo(value: string | null) {
 }
 ```
 
-> - https://qiita.com/terry_6518/items/ba54a60afcb758b9b242#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BD%BF%E3%81%84%E6%89%80
+> - [【TypeScript】型ガードと型アサーションでunknown型を使い勝手良くする #TypeScript - Qiita](https://qiita.com/terry_6518/items/ba54a60afcb758b9b242#%E5%9E%8B%E3%82%A2%E3%82%B5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BD%BF%E3%81%84%E6%89%80)
 
 <br>
 
@@ -801,8 +801,8 @@ type エイリアス宣言のほうが型としての強制力が高い。
 | 同名の型        | できない                          | できる         |
 | Mapped Types 型 | できる                            | できない       |
 
-> - https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E9%81%95%E3%81%84
-> - https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91
+> - [interfaceとtypeの違い \| TypeScript入門『サバイバルTypeScript』](https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E9%81%95%E3%81%84)
+> - [interfaceとtypeの違い \| TypeScript入門『サバイバルTypeScript』](https://typescriptbook.jp/reference/object-oriented/interface/interface-vs-type-alias#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%81%A8%E5%9E%8B%E3%82%A8%E3%82%A4%E3%83%AA%E3%82%A2%E3%82%B9%E3%81%AE%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91)
 
 <br>
 
@@ -1056,6 +1056,6 @@ export * from "./errorHandler";
 import {fooLogger, fooErrorHandler} from "~/utils";
 ```
 
-> - https://qiita.com/stin_dev/items/8bc6281dcebb289887be
+> - [【TypeScript】フォルダごとにindex.tsを配置して一括import #TypeScript - Qiita](https://qiita.com/stin_dev/items/8bc6281dcebb289887be)
 
 <br>

@@ -9,7 +9,7 @@ description: LogQL＠Grafana Lokiの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: LogQL＠Grafana Lokiの知見を記録しています。
 
 ログをクエリする。
 
-> - https://grafana.com/docs/loki/latest/query/log_queries/
+> - [Log queries \| Grafana Loki documentation](https://grafana.com/docs/loki/latest/query/log_queries/)
 
 <br>
 
@@ -37,7 +37,7 @@ description: LogQL＠Grafana Lokiの知見を記録しています。
 - bytes_over_time
 - absent_over_time
 
-> - https://grafana.com/docs/loki/latest/query/metric_queries/
+> - [Metric queries \| Grafana Loki documentation](https://grafana.com/docs/loki/latest/query/metric_queries/)
 
 <br>
 

@@ -9,7 +9,7 @@ description: 設定ファイル＠OAuth2 Proxyの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,7 +24,7 @@ providers:
   - clientID: "<クライアントID>"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#provider
+> - [Alpha Configuration \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#provider)
 
 <br>
 
@@ -37,7 +37,7 @@ providers:
   - clientSecret: "<クライアントシークレット>"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#provider
+> - [Alpha Configuration \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#provider)
 
 <br>
 
@@ -50,7 +50,7 @@ providers:
   - oidcConfig: ...
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#provider
+> - [Alpha Configuration \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#provider)
 
 #### ▼ issuerURL
 
@@ -63,7 +63,7 @@ providers:
       issuerURL: "http://keycloak.foo-namespace.svc.cluster.local/realms/<realm名>"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#oidcoptions
+> - [Alpha Configuration \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#oidcoptions)
 
 ```yaml
 # 認証方法が OIDC で、ID プロバイダーが AWS Cognito の場合
@@ -72,7 +72,7 @@ providers:
       issuerURL: "https://cognito-idp.ap-northeast-1.amazonaws.com/<ユーザープールID>"
 ```
 
-> - https://zenn.dev/casa_snona/articles/nginx-with-oauth2-proxy#oauth2-proxy-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90
+> - [Nginx + OAuth2 Proxy で静的 Web サイトに認証機能を追加してみる](https://zenn.dev/casa_snona/articles/nginx-with-oauth2-proxy#oauth2-proxy-%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90)
 
 #### ▼ emailClaim
 
@@ -100,7 +100,7 @@ providers:
   - provider: "oidc"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect
+> - [OpenID Connect \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/openid_connect)
 
 ```yaml
 # 認証方法が任意で、ID プロバイダーが GitHub の場合
@@ -108,7 +108,7 @@ providers:
   - provider: "github"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github
+> - [GitHub \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/github)
 
 ```yaml
 # 認証方法が任意で、ID プロバイダーが Keycloak の場合
@@ -116,7 +116,7 @@ providers:
   - provider: "keycloak"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak
+> - [Keycloak (Deprecated) \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak)
 
 ```yaml
 # 認証方法が OIDC で、ID プロバイダーが Keycloak の場合
@@ -124,7 +124,7 @@ providers:
   - provider: "keycloak-oidc"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc
+> - [Keycloak OIDC \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/providers/keycloak_oidc)
 
 <br>
 
@@ -143,7 +143,7 @@ server:
   - BindAddress: "127.0.0.1:4180"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#server
+> - [Alpha Configuration \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#server)
 
 <br>
 
@@ -154,7 +154,7 @@ server:
   - SecureBindAddress: "127.0.0.1:443"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#server
+> - [Alpha Configuration \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#server)
 
 <br>
 
@@ -168,8 +168,8 @@ server:
 redirect_url: "https://<アプリケーションのドメイン>/oauth2/callback"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options
-> - https://oauth2-proxy.github.io/oauth2-proxy/features/endpoints/
+> - [Overview \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#command-line-options)
+> - [Endpoints \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/features/endpoints/)
 
 <br>
 
@@ -183,7 +183,7 @@ OAuth2 Proxy の送信元に任意のリバースプロキシ (例：Nginx) が�
 reverse_proxy: true
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive
+> - [Overview \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#configuring-for-use-with-the-nginx-auth_request-directive)
 
 <br>
 
@@ -223,10 +223,10 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_auth_request_module.html
-> - https://tech.jxpress.net/entry/2018/08/23/104123
-> - https://techlife.cookpad.com/entry/2015/10/16/080000
-> - https://github.com/oauth2-proxy/oauth2-proxy/issues/1150#issuecomment-817192450
+> - [Module ngx\_http\_auth\_request\_module](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html)
+> - [Nginx と自前の認証システムを組み合わせてセキュアなリソースを制限する - JX通信社エンジニアブログ](https://tech.jxpress.net/entry/2018/08/23/104123)
+> - [nginx で omniauth を利用してアクセス制御を行う - クックパッド開発者ブログ](https://techlife.cookpad.com/entry/2015/10/16/080000)
+> - [Can oauth2-proxy be used to just validate oauth jwt tokens ? · Issue #1150 · oauth2-proxy/oauth2-proxy · GitHub](https://github.com/oauth2-proxy/oauth2-proxy/issues/1150#issuecomment-817192450)
 
 <br>
 
@@ -246,6 +246,6 @@ upstreamConfig:
     - uri: "http://127.0.0.1/"
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#upstream
+> - [Alpha Configuration \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/configuration/alpha-config/#upstream)
 
 <br>

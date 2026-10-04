@@ -9,7 +9,7 @@ description: pluto＠バージョンテストの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,10 +21,10 @@ description: pluto＠バージョンテストの知見を記録しています�
 
 pluto 以外では、ドキュメント、リリースノート、メトリクス (`apiserver_requested_deprecated_apis`) 、監査ログ、で非推奨 apiVersion を確認できる。
 
-> - https://kubernetes.io/docs/reference/using-api/deprecation-guide/
-> - https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.28.md#no-really-you-must-read-this-before-you-upgrade
-> - https://kubernetes.io/blog/2020/09/03/warnings/#metrics
-> - https://kubernetes.io/blog/2020/09/03/warnings/#audit-annotations
+> - [Deprecated API Migration Guide \| Kubernetes](https://kubernetes.io/docs/reference/using-api/deprecation-guide/)
+> - [kubernetes/CHANGELOG/CHANGELOG-1.28.md at master · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.28.md#no-really-you-must-read-this-before-you-upgrade)
+> - [Warning: Helpful Warnings Ahead \| Kubernetes](https://kubernetes.io/blog/2020/09/03/warnings/#metrics)
+> - [Warning: Helpful Warnings Ahead \| Kubernetes](https://kubernetes.io/blog/2020/09/03/warnings/#audit-annotations)
 
 <br>
 
@@ -79,9 +79,9 @@ $ kubectl get crd \
     | grep <リソースの種類 (例：istio) >
 ```
 
-> - https://github.com/FairwindsOps/pluto/blob/master/versions.yaml
-> - https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks
-> - https://github.com/FairwindsOps/pluto/blob/master/docs/contributing/guide.md#versions-updates
+> - [pluto/versions.yaml at master · FairwindsOps/pluto · GitHub](https://github.com/FairwindsOps/pluto/blob/master/versions.yaml)
+> - [Advanced Usage Options \| Pluto Documentation](https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks)
+> - [pluto/docs/contributing/guide.md at master · FairwindsOps/pluto · GitHub](https://github.com/FairwindsOps/pluto/blob/master/docs/contributing/guide.md#versions-updates)
 
 <br>
 
@@ -95,7 +95,7 @@ $ kubectl get crd \
 $ brew install pluto
 ```
 
-> - https://pluto.docs.fairwinds.com/installation/
+> - [Installation \| Pluto Documentation](https://pluto.docs.fairwinds.com/installation/)
 
 <br>
 
@@ -149,8 +149,8 @@ pluto はデフォルトですべての Kubernetes リソースを検証でき�
 $ pluto list-versions -f additional-versions.yaml
 ```
 
-> - https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks
-> - https://github.com/FairwindsOps/pluto/blob/master/versions.yaml
+> - [Advanced Usage Options \| Pluto Documentation](https://pluto.docs.fairwinds.com/advanced/#adding-custom-version-checks)
+> - [pluto/versions.yaml at master · FairwindsOps/pluto · GitHub](https://github.com/FairwindsOps/pluto/blob/master/versions.yaml)
 
 #### ▼ `additional-versions.yaml` ファイル
 
@@ -203,7 +203,7 @@ VirtualService                   networking.istio.io/v1beta1            n/a     
 
 Istio の主要カスタムリソースで `v1` がリリース (2024/05/14) されたので、`v1beta1` が非推奨になる日も近い...。
 
-> - https://istio.io/latest/blog/2024/v1-apis/#overview-of-istio-crds
+> - [Istio / Introducing Istio v1 APIs](https://istio.io/latest/blog/2024/v1-apis/#overview-of-istio-crds)
 
 <br>
 
@@ -239,7 +239,7 @@ $ pluto detect - -o wide -t istio=<Istioの現在のバージョン>
 $ pluto detect - -o wide -t istio=<Istioの次のバージョン>
 ```
 
-> - https://github.com/FairwindsOps/pluto/blob/master/versions.yaml#L568-L571
+> - [pluto/versions.yaml at master · FairwindsOps/pluto · GitHub](https://github.com/FairwindsOps/pluto/blob/master/versions.yaml#L568-L571)
 
 <br>
 
@@ -251,7 +251,7 @@ $ pluto detect - -o wide -t istio=<Istioの次のバージョン>
 $ pluto detect - -o wide
 ```
 
-> - https://pluto.docs.fairwinds.com/advanced/#display-options
+> - [Advanced Usage Options \| Pluto Documentation](https://pluto.docs.fairwinds.com/advanced/#display-options)
 
 マークダウン形式が一番見やすい。
 
@@ -259,7 +259,7 @@ $ pluto detect - -o wide
 $ pluto detect - -o markdown
 ```
 
-> - https://pluto.docs.fairwinds.com/advanced/#display-options
+> - [Advanced Usage Options \| Pluto Documentation](https://pluto.docs.fairwinds.com/advanced/#display-options)
 
 <br>
 
@@ -281,7 +281,7 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 ...
 ```
 
-> - https://kakakakakku.hatenablog.com/entry/2022/07/20/091424
+> - [Pluto : Kubernetes apiVersion の「非推奨と削除」を検出する - kakakakakku blog](https://kakakakakku.hatenablog.com/entry/2022/07/20/091424)
 
 <br>
 
@@ -301,7 +301,7 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 ...
 ```
 
-> - https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster
+> - [QuickStart \| Pluto Documentation](https://pluto.docs.fairwinds.com/quickstart/#api-resources-in-cluster)
 
 <br>
 
@@ -313,8 +313,8 @@ baz-hpa  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autosca
 $ pluto detect-files - -o wide
 ```
 
-> - https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
-> - https://qiita.com/wadason/items/c9d5f6a475bf7764fc9d#%E6%A4%9C%E8%A8%BC
+> - [QuickStart \| Pluto Documentation](https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory)
+> - [plutoによるdeprecation/removalの自動検知 #kubernetes - Qiita](https://qiita.com/wadason/items/c9d5f6a475bf7764fc9d#%E6%A4%9C%E8%A8%BC)
 
 <br>
 
@@ -332,7 +332,7 @@ baz-chart  baz-namespace   HorizontalPodAutoscaler   autoscaling/v2beta1   autos
 ...
 ```
 
-> - https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory
+> - [QuickStart \| Pluto Documentation](https://pluto.docs.fairwinds.com/quickstart/#file-detection-in-a-directory)
 
 <br>
 

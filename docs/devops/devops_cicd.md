@@ -64,7 +64,7 @@ CI パイプラインと CD パイプラインを組み合わせた手法のこ�
 
 ![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png)
 
-> - https://www.redhat.com/ja/topics/devops/what-cicd-pipeline
+> - [CI/CD パイプラインとは](https://www.redhat.com/ja/topics/devops/what-cicd-pipeline)
 
 <br>
 
@@ -82,7 +82,7 @@ CI パイプラインと CD パイプラインを組み合わせた手法のこ�
 |          | コーディング規約に関するレビュー                                           |     `⭕️`     | CI ツールと静的解析ツールで自動化できる。                                                                                           |
 |          | 仕様に関するレビュー                                                       |      ×       | GitHub 上でレビューする必要がある。                                                                                                 |
 
-> - https://tracpath.com/works/devops/11_topics_for_devops/
+> - [DevOpsを実現する11の要素 \| tracpath:Works](https://tracpath.com/works/devops/11_topics_for_devops/)
 
 <br>
 
@@ -112,8 +112,8 @@ CI パイプラインと CD パイプラインを組み合わせた手法のこ�
 | DB マイグレーション        | 本番環境の DB に対するデプロイ。アプリケーションを起動する前に実行する必要がある。 |     `⭕️`     | CD ツールで自動化できる。 |
 | アプリケーションのデプロイ | 本番環境に対するデプロイ                                                           |     `⭕️`     | CD ツールで自動化できる。 |
 
-> - https://blog.kyanny.me/entry/2014/12/24/145001
-> - https://aws.amazon.com/jp/devops/continuous-delivery/
+> - [Continuous Deployment と Continuous Delivery の違い - @kyanny's blog](https://blog.kyanny.me/entry/2014/12/24/145001)
+> - [What is Continuous Delivery? – Amazon Web Services](https://aws.amazon.com/jp/devops/continuous-delivery/)
 
 <br>
 
@@ -130,7 +130,7 @@ CI パイプラインと CD パイプラインを組み合わせた手法のこ�
 
 > - https://r-kaga.com/blog/what-is-progressive-delivery
 > - https://codezine.jp/article/detail/14476
-> - https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25
+> - [3-shake, inc における 「Progressive Dellivery」導入までの悩みと取り組み (CNDT2021) - Speaker Deck](https://speakerdeck.com/tozastation/3-shake-inc-niokeru-progressive-dellivery-dao-ru-madefalsenao-mitoqu-rizu-mi-cndt2021?slide=25)
 
 <br>
 
@@ -260,7 +260,7 @@ CI ツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tek
 
 ![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png)
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
+> - [「Kubernetes Native」なCI/CDとは何か――クラウドネイティブ時代に至る歴史、主要ツール、パイプラインとフローの在り方：Cloud Nativeチートシート（5） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html)
 > - https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9
 
 <br>
@@ -291,7 +291,7 @@ Kubernetes の CI/CD パイプラインに CIOps を採用する場合、セキ�
 
 ただし、どうしても CIOps を採用したいのであれば、暗号化キー (例：AWS KMS、Google Cloud CKM、GPG、PGP など) で `kubeconfig` ファイルを暗号化しておき、これを CI パイプライン内に出力する。
 
-> - https://devops-blog.virtualtech.jp/entry/20220418/1650250499
+> - [GitHub Actions/CircleCIを使ったCIOpsの実践 - とことんDevOps \| 日本仮想化技術のDevOps技術情報メディア](https://devops-blog.virtualtech.jp/entry/20220418/1650250499)
 
 #### ▼ 責務境界の分離
 
@@ -305,7 +305,7 @@ CIOps の場合、CI と CD が強く結合しており、切り分けにくい�
 
 一方で GitOps であれば、CI と CD を切り分けやすいため、CI と CD の構築/運用をアプリチームと SRE チームで分担できるようになる。
 
-> - https://news.mynavi.jp/techplus/article/techp5025/
+> - [Kubernetes入門(15) CI/CDにおける潮流 - CIOpsからGitOpsへ \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/techp5025/)
 
 <br>
 
@@ -319,8 +319,8 @@ CI ツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tek
 
 ![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png)
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html
-> - https://github.com/argoproj/gitops-engine/blob/v0.6.2/specs/design.md
+> - [「Kubernetes Native」なCI/CDとは何か――クラウドネイティブ時代に至る歴史、主要ツール、パイプラインとフローの在り方：Cloud Nativeチートシート（5） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html)
+> - [gitops-engine/specs/design.md at v0.6.2 · argoproj/gitops-engine · GitHub](https://github.com/argoproj/gitops-engine/blob/v0.6.2/specs/design.md)
 
 <br>
 

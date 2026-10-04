@@ -9,7 +9,7 @@ description: プラクティス集＠K8s Clusterの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ GitOps を採用できないため、CIOps になる。
 
 本番環境に対して、ローカルマシンまたは CI ツール (例：GitHub Actions、CircleCI、GitLab CI、Takton など) を使用して、ArgoCD をデプロイする。
 
-> - https://developer.mamezou-tech.com/oss-intro/setup-helmfile/
+> - [setup-helmfile \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/oss-intro/setup-helmfile/)
 
 <br>
 
@@ -41,7 +41,7 @@ GitOps を採用できないため、CIOps になる。
 
 マイナーバージョンを `2` 個以上跨いだアップグレードは非推奨である。
 
-> - https://kubernetes.io/releases/version-skew-policy/
+> - [Version Skew Policy \| Kubernetes](https://kubernetes.io/releases/version-skew-policy/)
 
 #### ▼ コントロールプレーン Node でダウンタイムを発生させない
 
@@ -69,7 +69,7 @@ GitOps を採用できないため、CIOps になる。
 
 静的解析ツール (例：pluto、kubepug) を使用すると検出しやすい。
 
-> - https://eng-blog.iij.ad.jp/archives/17944
+> - [Kubernetesのバージョンアップとの付き合い方 \| IIJ Engineers Blog](https://eng-blog.iij.ad.jp/archives/17944)
 
 #### ▼ 監視ツールで廃止されるメトリクスやクエリロジックを確認する
 
@@ -77,7 +77,7 @@ GitOps を採用できないため、CIOps になる。
 
 これにより、メトリクスの元になるデータポイントを収集できなくなってしまうため、確認が必要である。
 
-> - https://eng-blog.iij.ad.jp/archives/17944
+> - [Kubernetesのバージョンアップとの付き合い方 \| IIJ Engineers Blog](https://eng-blog.iij.ad.jp/archives/17944)
 
 #### ▼ アップグレード後は、Pod だけでなく Workload のコンディションとステータスを確認する
 
@@ -114,7 +114,7 @@ GitOps を採用できないため、CIOps になる。
 
 このアップグレードでは、コントロールプレーン Node はインプレース方式でアップグレードしても、ダウンタイムは発生しないことが保証される。ワーカーNode はダウンタイムが発生する可能性もある。
 
-> - https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades
+> - [Control Plane - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades)
 
 #### ▼ ローリング方式
 
@@ -194,8 +194,8 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 ![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node_scheduling-pod-status.png)
 
-> - https://dunkshoot.hatenablog.com/
-> - https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/
+> - [YasuBlog](https://dunkshoot.hatenablog.com/)
+> - [kubernetes – Nodeの削除 \| HYOUBLOG](https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/)
 
 `(3)`
 
@@ -205,7 +205,7 @@ $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
 
 : 動作が問題なければ、旧 Node グループを削除する。
 
-> - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
+> - [より安全なEKS cluster update方法を模索する](https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely)
 > - https://logmi.jp/tech/articles/323032
 
 > - https://www.slideshare.net/nttdata-tech/anthos-cluster-design-upgrade-strategy-cndt2021-nttdata#44
@@ -232,9 +232,9 @@ ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none> 
 ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none>   73m     v1.25.7-eks-***
 ```
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html
-> - https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/
-> - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge
+> - [Understand each phase of node updates - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html)
+> - [Amazon EKS での Kubernetes アップグレードの計画 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/planning-kubernetes-upgrades-with-amazon-eks/)
+> - [Node upgrade strategies \| Google Kubernetes Engine (GKE) \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#surge)
 
 #### ▼ ブルー/グリーン方式 (マイグレーション方式)
 
@@ -262,8 +262,8 @@ ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none> 
 
 > - https://logmi.jp/tech/articles/323032
 > - https://logmi.jp/tech/articles/323033
-> - https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely
-> - https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy
+> - [より安全なEKS cluster update方法を模索する](https://zenn.dev/nameless_gyoza/articles/how-to-update-eks-cluster-safely)
+> - [Node upgrade strategies \| Google Kubernetes Engine (GKE) \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy)
 
 <br>
 

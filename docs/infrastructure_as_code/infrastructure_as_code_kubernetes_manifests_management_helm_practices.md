@@ -9,7 +9,7 @@ description: プラクティス集＠Helmの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -169,7 +169,7 @@ repository/
 
 また、実行環境ごとにマニフェストの構造に差分があるとし、`templates` ディレクトリ配下に実行環境別のディレクトリを配置する。
 
-> - https://github.com/codefresh-contrib/helm-promotion-sample-app
+> - [GitHub - codefresh-contrib/helm-promotion-sample-app: Sample application that is promoted from QA to Staging to Production · GitHub](https://github.com/codefresh-contrib/helm-promotion-sample-app)
 
 ```yaml
 repository/
@@ -265,7 +265,7 @@ Helm チャートは、特定の種類のマイクロサービスを動かすた
 
 ただし、同じ Kubernetes リソースのマニフェストを複数作成する場合は、識別できる名前をプレフィクスとしてつける。
 
-> - https://helm.sh/docs/chart_best_practices/templates/
+> - [Templates \| Helm](https://helm.sh/docs/chart_best_practices/templates/)
 
 #### ▼ ロジック
 
@@ -290,7 +290,7 @@ data:
 
 拡張子は `yaml` とする。
 
-> - https://helm.sh/docs/chart_best_practices/templates/
+> - [Templates \| Helm](https://helm.sh/docs/chart_best_practices/templates/)
 
 #### ▼ アクションの選定
 
@@ -354,7 +354,7 @@ $ asdf install
 
 アップグレードが正常に完了したことがわかるように、`--wait` オプションを有効化するとよい。
 
-> - https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback
+> - [Using Helm \| Helm](https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback)
 
 `(1)`
 
@@ -380,7 +380,7 @@ Helm は、CRD を含むチャートのインストールはサポートして�
 
 補足として、他のツール (例：ArgoCD、Flux) を介して Helm を実行する場合、`helm upgrade` コマンドではなく、`helm template` コマンドと `kubectl apply` コマンドを使用しているため、この問題は考慮しなくともよくなる。
 
-> - https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you
+> - [Custom Resource Definitions \| Helm](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you)
 
 `(1)`
 
@@ -442,7 +442,7 @@ Helm は、デプロイ済みのリリースを Cluster 内で Secret のデー�
 
 そのため、これを書き換えることになる。
 
-> - https://helm.sh/docs/topics/kubernetes_apis/#helm-users
+> - [Deprecated Kubernetes APIs \| Helm](https://helm.sh/docs/topics/kubernetes_apis/#helm-users)
 
 <br>
 
@@ -533,7 +533,7 @@ Helm で作成したマニフェストをツールの標準入力に渡し、Hel
 
 静的解析のコマンドセットを使用してよい。
 
-> - https://github.com/helm/chart-testing
+> - [GitHub - helm/chart-testing: CLI tool for linting and testing Helm charts · GitHub](https://github.com/helm/chart-testing)
 
 #### ▼ ドライラン
 
@@ -543,7 +543,7 @@ Helm で作成したマニフェストをツールの標準入力に渡し、Hel
 
 Helm リリースの粒度を小さくし、差分が少なくなるようにする。
 
-> - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
+> - [Automated Testing for Terraform, Docker, Packer, Kubernetes, and More - InfoQ](https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/)
 
 #### ▼ ユニットテスト
 
@@ -555,14 +555,14 @@ Helm のユニットテストコマンド (`helm test` コマンド) を使用�
 
 そのため、`helm upgrade` コマンドでインストールされる Helm リリースにテストコードも含まれてしまうことに注意する。
 
-> - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
-> - https://camunda.com/blog/2022/03/test/
+> - [Automated Testing for Terraform, Docker, Packer, Kubernetes, and More - InfoQ](https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/)
+> - [Advanced Test Practices For Helm Charts \| Camunda](https://camunda.com/blog/2022/03/test/)
 
 #### ▼ 回帰テスト
 
 事前に、既存のチャートでゴールデンファイルを作成しておき、回帰テストを実施する。
 
-> - https://camunda.com/blog/2022/03/test/
+> - [Advanced Test Practices For Helm Charts \| Camunda](https://camunda.com/blog/2022/03/test/)
 
 <br>
 
@@ -595,7 +595,7 @@ foo-namespace, foo-deployment, Deployment (apps) has been added:
 
 GitOps ツールの差分を使用して、差分画面の URL を共有する。または CD ツールの通知能力 (例：argocd-bot) を使用して、CD パイプラインの結果が通知されるようにする。
 
-> - https://github.com/argoproj-labs/argocd-bot
+> - [GitHub - argoproj-labs/argocd-bot: Bot to automate Kubernetes deployment via Github PRs · GitHub](https://github.com/argoproj-labs/argocd-bot)
 
 <br>
 
@@ -609,10 +609,10 @@ Helm で作成したマニフェストを Cluster にデプロイし、動作を
 
 GitHub Actions であれば、CI 上に Cluster 構築する Action が提供されている。
 
-> - https://github.com/helm/kind-action
-> - https://github.com/medyagh/setup-minikube
-> - https://github.com/debianmaster/actions-k3s
-> - https://github.com/AbsaOSS/k3d-action
+> - [GitHub - helm/kind-action: A GitHub Action for Kubernetes IN Docker - local clusters for testing Kubernetes · GitHub](https://github.com/helm/kind-action)
+> - [GitHub - medyagh/setup-minikube: official minikube github action, continuous integration test on Kubernetes cluster, test your code on a certified Kubernetes · GitHub](https://github.com/medyagh/setup-minikube)
+> - [GitHub - debianmaster/actions-k3s: Github action for spinning up local k3s instance and running kubectl commands · GitHub](https://github.com/debianmaster/actions-k3s)
+> - [GitHub - AbsaOSS/k3d-action: A GitHub Action to run lightweight ephemeral Kubernetes clusters during workflow. Fundamental advantage of this action is a full customization of embedded k3s clusters. In addition, it provides a private image registry and multi-cluster support. · GitHub](https://github.com/AbsaOSS/k3d-action)
 
 #### ▼ 結合テスト
 
@@ -620,10 +620,10 @@ GitHub Actions であれば、CI 上に Cluster 構築する Action が提供さ
 
 これは、CD パイプライン上で実施してもよいが、デメリットとして `helm upgrade` コマンドで出力される警告ログを確認できなくなってしまう。
 
-> - https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/
-> - https://camunda.com/blog/2022/03/test/
+> - [Automated Testing for Terraform, Docker, Packer, Kubernetes, and More - InfoQ](https://www.infoq.com/presentations/automated-testing-terraform-docker-packer/)
+> - [Advanced Test Practices For Helm Charts \| Camunda](https://camunda.com/blog/2022/03/test/)
 > - https://github.com/camunda/camunda-platform-helm/tree/main/charts/camunda-platform/test
-> - https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically
+> - [Kubernetesの非推奨(deprecated api)を自動検出する](https://zenn.dev/johnn26/articles/detect-kubernetes-deplicated-api-automatically)
 
 #### ▼ システムテスト
 
@@ -631,7 +631,7 @@ GitHub Actions であれば、CI 上に Cluster 構築する Action が提供さ
 
 これは、GitOps による CD パイプライン上で実施してもよいが、デメリットとして GitOps ツール上では `helm upgrade` コマンドで出力される警告ログを確認できなくなってしまう。
 
-> - https://camunda.com/blog/2022/03/test/
+> - [Advanced Test Practices For Helm Charts \| Camunda](https://camunda.com/blog/2022/03/test/)
 
 ## 08. CD パイプライン
 

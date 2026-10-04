@@ -27,7 +27,7 @@ SQL の種類が異なっていても、共通のロジックでクエリを送�
 
 ### PDO とは
 
-> - https://www.javadrive.jp/php/pdo/
+> - [PHP \| PDOの利用](https://www.javadrive.jp/php/pdo/)
 
 <br>
 

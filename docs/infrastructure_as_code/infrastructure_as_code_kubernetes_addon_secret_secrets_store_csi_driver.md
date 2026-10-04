@@ -9,7 +9,7 @@ description: SecretsストアCSIドライバー＠Secret系の知見を記録し
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,8 +25,8 @@ Secret のデータとして注入する External Secrets Operator や helm-secr
 
 ![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/secrets-store-csi-volume.png)
 
-> - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
-> - https://github.com/external-secrets/external-secrets/issues/478#issuecomment-964413129
+> - [Concepts - Secrets Store CSI Driver](https://secrets-store-csi-driver.sigs.k8s.io/concepts.html)
+> - [Clarity: secrets store CSI driver vs external secrets... what to use? · Issue #478 · external-secrets/external-secrets · GitHub](https://github.com/external-secrets/external-secrets/issues/478#issuecomment-964413129)
 > - https://www.reddit.com/r/kubernetes/comments/uj4a56/external_secrets_operator_vs_secret_store_csi/
 
 <br>

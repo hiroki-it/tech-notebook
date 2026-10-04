@@ -9,7 +9,7 @@ description: STS＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,7 +27,7 @@ description: STS＠AWSリソースの知見を記録しています。
 
 AssumeRole (権限委譲) によって、ユーザーの AWS IAM ロールを動的に切り替える。
 
-> - https://cloud.oreda.net/aws/iam/assumerole#assume_role%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF
+> - [【重要】AWS スイッチロールするためのAssumeRoleアクションの設定方法（クロスアカウント） \[クラウドのインフラ技術\]](https://cloud.oreda.net/aws/iam/assumerole#assume_role%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A8%E3%81%AF)
 
 ### 1. AWS IAM ロールに信頼ポリシーを紐付け
 
@@ -154,7 +154,7 @@ STS のエンドポイントから一時的な資格情報が発行される。
 }
 ```
 
-> - https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
+> - [AWS CLI Configuration Variables — AWS CLI 2.37.9 Command Reference](https://docs.aws.amazon.com/cli/latest/topic/config-vars.html)
 
 <br>
 
@@ -227,7 +227,7 @@ Trusted Entity を使って、必要な AWS IAM ロールを STS から発行し
 ![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
 
 > - https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role#10
-> - https://blog.serverworks.co.jp/tech/2020/02/03/multipleawsaccount/
+> - [AssumeRole（スイッチロール）で複数AWSアカウント運用【ビギナー向け】 - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/tech/2020/02/03/multipleawsaccount/)
 
 <br>
 
@@ -247,7 +247,7 @@ AWS IAM ユーザーを一括で管理しておき、特定の AWS アカウン�
 
 ![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_multi-account.png)
 
-> - https://garafu.blogspot.com/2020/11/how-to-switch-role.html
+> - [AWS で 複数アカウント を スイッチロール する方法 - galife](https://garafu.blogspot.com/2020/11/how-to-switch-role.html)
 
 <br>
 
@@ -257,7 +257,7 @@ AWS IAM ユーザーを一括で管理しておき、特定の AWS アカウン�
 
 任意の ID プロバイダーで認証済みのユーザー (フェデレーテッドユーザー) に AWS IAM ロールを付与することにより、AWS リソースにリクエストを送信できる。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
+> - [Identity providers and federation into AWS - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html)
 
 <br>
 
@@ -267,7 +267,7 @@ AWS IAM ユーザーを一括で管理しておき、特定の AWS アカウン�
 
 OIDC または Web ID フェデレーションによる認証／認可を使用する。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> - [Create a role for OpenID Connect federation (console) - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html)
 
 #### ▼ Cognito を ID プロバイダーとする場合
 
@@ -344,8 +344,8 @@ metadata:
 IRSA により、ServiceAccount を介して Pod と AWS IAM ロールが紐づく。
 
 > - https://aws.amazon.com/jp/blogs/news/diving-into-iam-roles-for-service-accounts/
-> - https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13
-> - https://moneyforward-dev.jp/entry/2021/12/19/irsa/
+> - [EKS運用のGitLab RunnerジョブにAWSのIAMロールを適用する方法 \| DevelopersIO](https://dev.classmethod.jp/articles/iam-role-for-gitlab-runner-job/#toc-13)
+> - [IRSAをマルチアカウントAWS環境のEKSクラスタに導入した話 - Money Forward Developers Blog](https://moneyforward-dev.jp/entry/2021/12/19/irsa/)
 
 #### ▼ その他の ID プロバイダー
 
@@ -359,7 +359,7 @@ IRSA により、ServiceAccount を介して Pod と AWS IAM ロールが紐づ�
 
 SAML による認証／認可を使用する。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html
+> - [SAML 2.0 federation - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)
 
 <br>
 
@@ -371,7 +371,7 @@ AWS IAM ユーザー、AWS リソース、フェデレーテッドユーザー�
 
 ![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_sts_assumed-user.png)
 
-> - https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/
+> - [AWS再入門ブログリレー2022 AWS IAM編 \| DevelopersIO](https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/)
 
 <br>
 
@@ -383,7 +383,7 @@ AWS IAM ロールと同じ/異なる AWS アカウントの AWS IAM ユーザー
 
 AWS IAM ユーザーの場合、外部 ID が必要になる。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html
+> - [Access to AWS accounts owned by third parties - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html)
 
 #### ▼ AWS リソース
 
@@ -391,7 +391,7 @@ AWS IAM ロールと同じ/異なる AWS アカウントの AWS リソースに�
 
 AWS IAM リソースの場合、外部 ID が必要になる。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html
+> - [Access to an AWS service - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_services.html)
 
 #### ▼ フェデレーテッドユーザー
 
@@ -399,8 +399,8 @@ OIDC、SAML、によって発行されたユーザーに委譲できる。
 
 OIDC のフェデレーテッドユーザーの場合、発行された JWT が必要になる。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+> - [Access to externally authenticated users (identity federation) - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_federated-users.html)
+> - [Create a role for SAML 2.0 federation (console) - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html)
 
 <br>
 
@@ -430,7 +430,7 @@ AWS IAM ロールの信頼されたエンティティに、AWS OIDC で発行さ
 }
 ```
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> - [Create a role for OpenID Connect federation (console) - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html)
 
 #### ▼ 外部 OIDC
 
@@ -454,7 +454,7 @@ AWS IAM ロールの信頼されたエンティティに、外部 OIDC サービ
 }
 ```
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html
+> - [Create a role for OpenID Connect federation (console) - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html)
 
 #### ▼ AWS SAML
 
@@ -481,6 +481,6 @@ AWS IAM ロールの信頼されたエンティティに、AWS SAML で発行さ
 }
 ```
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html
+> - [Create a role for SAML 2.0 federation (console) - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html)
 
 <br>

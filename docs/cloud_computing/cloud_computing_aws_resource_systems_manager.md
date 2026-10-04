@@ -9,7 +9,7 @@ description: AWS Systems Manager (新SSM) ＠AWSリソースの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -97,7 +97,7 @@ AWS リソースを変更するためには『ランブック (ドキュメン�
 
 ただし、指定した認可スコープを持つユーザーはテンプレートの承認をスキップするように設定できる。
 
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/change-templates.html
+> - [Working with change templates - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-templates.html)
 
 ### 変更リクエスト
 
@@ -107,7 +107,7 @@ AWS リソースを変更するためには『ランブック (ドキュメン�
 
 承認が必要になる。
 
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/change-requests.html
+> - [Working with change requests - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/change-requests.html)
 
 <br>
 
@@ -140,7 +140,7 @@ AWS KMS の暗号化キーを使用すると、パラメーターストアに永
 ![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/parameter-store_kms.png)
 
 > - https://docs.aws.amazon.com/kms/latest/developerguide/services-parameter-store.html
-> - https://note.com/hamaa_affix_tech/n/n02eb412d0327
+> - [AWS KMS SSMでセキュアに環境変数を扱う on Terraform｜ハマー](https://note.com/hamaa_affix_tech/n/n02eb412d0327)
 > - https://tech.libry.jp/entry/2020/09/17/130042
 
 <br>
@@ -161,8 +161,8 @@ SSH 公開鍵認証とは異なり、Internet Gateway 経由ではなく、ssmme
 
 接続したいインスタンスに systems-manager エージェントをインストールする必要がある。
 
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features
-> - https://blog.denet.co.jp/aws-systems-manager-session-manager/
+> - [AWS Systems Manager Session Manager - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#session-manager-features)
+> - [AWS Systems Manager セッションマネージャーを使って、SSH不要でEC2にシェルアクセスしてみた - DENET 技術ブログ](https://blog.denet.co.jp/aws-systems-manager-session-manager/)
 
 <br>
 
@@ -170,7 +170,7 @@ SSH 公開鍵認証とは異なり、Internet Gateway 経由ではなく、ssmme
 
 TLS、Sigv4、AWS KMS を使用して暗号化された接続のこと。
 
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session
+> - [AWS Systems Manager Session Manager - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html#what-is-a-session)
 
 <br>
 

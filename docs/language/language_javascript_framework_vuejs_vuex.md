@@ -9,7 +9,7 @@ description: Vuex＠Vue.jsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,7 +25,7 @@ Vue.js のパッケージの 1 つで、状態を管理する。
 
 ![VueコンポーネントツリーとVuexの関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueコンポーネントツリーとVuexの関係.png)
 
-> - https://zenn.dev/gagaga/articles/state-management
+> - [「状態管理」って何？](https://zenn.dev/gagaga/articles/state-management)
 
 <br>
 

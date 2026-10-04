@@ -9,7 +9,7 @@ description: Ingress Controller＠Ingress Controller系の知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -26,10 +26,10 @@ Kubernetes の周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoC
 ![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png)
 
 > - https://cloud.google.com/community/tutorials/nginx-ingress-gke
-> - https://developers.freee.co.jp/entry/kubernetes-ingress-controller
+> - [KubernetesでのService公開方法に関する検証 - Ingress Controllerの活用 - freee Developers Hub](https://developers.freee.co.jp/entry/kubernetes-ingress-controller)
 > - https://www.containiq.com/post/kubernetes-ingress
-> - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
-> - https://traefik.io/glossary/kubernetes-ingress-and-ingress-controller-101/
+> - [Kubernetes vs. Istio Gateway: The Ultimate Guide \| Mirantis](https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/)
+> - [What is a Kubernetes Ingress Controller \| Traefik Labs](https://traefik.io/glossary/kubernetes-ingress-and-ingress-controller-101/)
 
 <br>
 
@@ -49,11 +49,11 @@ Ingress Controller には種類があり、 Controller ごとに作成するリ�
 | Contour Controller                                             | Envoy                                |    ✅    |    ✅    |
 | ...                                                            | ...                                  |   ...    |   ...    |
 
-> - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
+> - [Ingress Controllers \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
 > - https://www.nginx.com/blog/how-do-i-choose-api-gateway-vs-ingress-controller-vs-service-mesh/
 > - https://www.rancher.co.jp/docs/rancher/v2.x/en/cluster-admin/tools/istio/setup/gateway/
-> - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass
-> - https://github.com/projectcontour/contour
+> - [Istio / Kubernetes Ingress](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/#specifying-ingressclass)
+> - [GitHub - projectcontour/contour: Contour is a Kubernetes ingress controller using Envoy proxy. · GitHub](https://github.com/projectcontour/contour)
 
 <br>
 
@@ -119,9 +119,9 @@ Ingress Controller は、『`***-controller-admission`』という Service で w
 
 その後、『`***-patch`』という Job 配下の Pod が、ValidatingWebhookConfiguration にこのサーバー証明書を設定し、webhook サーバーにサーバー証明書が割り当てられる。
 
-> - https://kubernetes.github.io/ingress-nginx/how-it-works/#avoiding-outage-from-wrong-configuration
-> - https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx#ingress-admission-webhooks
-> - https://blog.sakamo.dev/post/ingress-nginx/
+> - [How it works - Ingress-Nginx Controller](https://kubernetes.github.io/ingress-nginx/how-it-works/#avoiding-outage-from-wrong-configuration)
+> - [ingress-nginx/charts/ingress-nginx at main · kubernetes/ingress-nginx · GitHub](https://github.com/kubernetes/ingress-nginx/tree/main/charts/ingress-nginx#ingress-admission-webhooks)
+> - [Ingress Nginxは何をしてるのか - ストイックに生きたい](https://blog.sakamo.dev/post/ingress-nginx/)
 
 <br>
 
@@ -131,7 +131,7 @@ Ingress Controller は、Secret に設定されたサーバー証明書を参照
 
 ![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
 
-> - https://blog.sakamo.dev/post/ingress-nginx/
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/https/
+> - [Ingress Nginxは何をしてるのか - ストイックに生きたい](https://blog.sakamo.dev/post/ingress-nginx/)
+> - [Ingress - HTTPS通信(Cert Manager) \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/https/)
 
 <br>

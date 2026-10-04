@@ -9,7 +9,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,7 +24,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 ![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace.png)
 
 > - https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
-> - https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/
+> - [ディストリビューティッド（分散）トレーシング：マイクロサービス全体でリクエストを追跡 \| New Relic Documentation](https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/)
 > - https://medium.com/nikeengineering/hit-the-ground-running-with-distributed-tracing-core-concepts-ff5ad47c7058
 > - https://www.aspecto.io/blog/jaeger-tracing-the-ultimate-guide/
 
@@ -44,7 +44,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 ![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png)
 
-> - https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing
+> - [How to Use SkyWalking for Distributed Tracing in Istio? \| …](https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing)
 
 #### ▼ 悪意のあるリクエストの検出
 
@@ -70,7 +70,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 モノリシックアーキテクチャなアプリケーションでは、システムが分散していないため、単なるトレースとなる。
 
-> - https://deepsource.io/blog/distributed-tracing/#monolithic-observability
+> - [What is Distributed Tracing? • DeepSource](https://deepsource.io/blog/distributed-tracing/#monolithic-observability)
 
 **＊例＊**
 
@@ -127,8 +127,8 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 ![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-tracing.png)
 
-> - https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B
-> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+> - [分散トレーシングの仕組み 「ログの対応付け」と「受け渡すHTTPヘッダー」を大体5分で理解する](https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B)
+> - [Request tracing for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html)
 
 #### ▼ ID の種類
 
@@ -140,8 +140,8 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 | スパン ID   | 各スパンを識別する ID である。                                         |
 | 親スパン ID | 親スパンを識別する ID である。ルートスパンには親スパン ID が存在しない。 |
 
-> - https://docs.lightstep.com/docs/understand-distributed-tracing#context
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=5
+> - [Understand distributed tracing](https://docs.lightstep.com/docs/understand-distributed-tracing#context)
+> - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=5)
 
 #### ▼ トレースコンテキスト伝播 (分散トレースコンテキスト伝播)
 
@@ -152,7 +152,7 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 インバウンド通信が HTTP プロコトルでアウトバウンド通信が、gRPC による HTTP リクエストである場合も、ヘッダー間での受け渡しが必要である。
 
 > - https://cloud.google.com/architecture/microservices-architecture-distributed-tracing#distributed_tracing
-> - https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B
+> - [分散トレーシングの仕組み 「ログの対応付け」と「受け渡すHTTPヘッダー」を大体5分で理解する](https://zenn.dev/lempiji/articles/b752b644d22a59#%E5%AE%9F%E8%A3%85%E4%BE%8B)
 > - https://medium.com/@the.real.yushuf/propagate-trace-headers-with-istio-grpc-http-1-1-go-73e7f5382643
 
 #### ▼ 異なる言語間での受け渡し
@@ -174,8 +174,8 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 - Jaeger
 - 独自仕様 (AWS X-Ray、Datadog、LightStep など)
 
-> - https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution
-> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
+> - [Propagators API \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/context/api-propagators/#propagators-distribution)
+> - [OpenTelemetryで分散トレーシング - Carpe Diem](https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry)
 > - https://medium.com/@danielbcorreia/context-propagation-in-opentelemetry-3f53ab31bcf5
 
 #### ▼ W3C Trace Context
@@ -200,7 +200,7 @@ traceparent: 00–0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331–01
 tracestate: abc=00f067aa0ba902b7,xyz=99f067aa0ba902b7
 ```
 
-> - https://www.w3.org/TR/trace-context/
+> - [Trace Context](https://www.w3.org/TR/trace-context/)
 
 #### ▼ B3 (Zipkin)
 
@@ -223,7 +223,7 @@ Host: example.com
 b3: 80f198ee56343ba864fe8b2a57d3eff7-e457b5a2e4d86bd1-1-05e3ac9a4f6e3b90
 ```
 
-> - https://github.com/openzipkin/b3-propagation?tab=readme-ov-file#single-header
+> - [GitHub - openzipkin/b3-propagation: Repository that describes and sometimes implements B3 propagation · GitHub](https://github.com/openzipkin/b3-propagation?tab=readme-ov-file#single-header)
 
 #### ▼ X-Ray
 
@@ -241,7 +241,7 @@ GET /foo-service HTTP/1.1
 trace_id: 1-58406520-a006649127e371903a2de979
 ```
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sendingdata.html#xray-api-traceids
+> - [Sending trace data to AWS X-Ray - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sendingdata.html#xray-api-traceids)
 
 <br>
 
@@ -273,7 +273,7 @@ Zipkin が使用するヘッダーを追加する。
 | `X-B3-TRACEID`      | トレース ID が割り当てられている。                                                   | `463ac35c9f6413ad48485a3953bb6124` |
 | `X-B3-PARENTSPANId` | 親のスパン ID が割り当てられている。ルートスパンの場合、このヘッダーは追加されない。 | `0020000000000001`                 |
 
-> - https://github.com/openzipkin/b3-propagation#multiple-headers
+> - [GitHub - openzipkin/b3-propagation: Repository that describes and sometimes implements B3 propagation · GitHub](https://github.com/openzipkin/b3-propagation#multiple-headers)
 
 #### ▼ AWS X-Ray 系ヘッダー
 
@@ -283,8 +283,8 @@ AWS X-Ray が使用するヘッダーを追加する。
 | ----------------- | --------------------------------------------------------------------- | ------------------------------------- |
 | `X-AMZN-TRACE-ID` | トレース ID が割り当てられている。トレース ID は AWS ALB で作られる。 | `1-5759e988-bd862e3fe1be46a994272793` |
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html
-> - https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html
+> - [AWS X-Ray concepts - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html)
+> - [Request tracing for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html)
 
 #### ▼ OpenTelemetry 系ヘッダー
 
@@ -307,9 +307,9 @@ JSON 型で定義されることが多い。
 
 SaaS ツールによって JSON 型の構造が異なる。
 
-> - https://opentracing.io/docs/overview/spans/
+> - [Spans](https://opentracing.io/docs/overview/spans/)
 > - https://docs.datadoghq.com/tracing/guide/send_traces_to_agent_by_api/#%E3%83%A2%E3%83%87%E3%83%AB
-> - https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines
+> - [Trace API（New Relicフォーマット）によるトレースの報告 \| New Relic Documentation](https://docs.newrelic.com/jp/docs/distributed-tracing/trace-api/report-new-relic-format-traces-trace-api/#new-relic-guidelines)
 
 <br>
 
@@ -332,9 +332,9 @@ SaaS ツールによって JSON 型の構造が異なる。
 | `get_account`             | `<アプリケーションの関数名>`                                       |    ⭕️    | スパン名に ID を命名しない代わりに、スパンの属性に設定するとよい。     |
 | `get_account/{accountId}` | `<アプリケーションの関数名>/<パラメーター名 (具体的なIDではなく)>` |    ⭕️    | スパン名に ID を命名しない代わりに、スパンの属性に設定するとよい。い。 |
 
-> - https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span
-> - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name
-> - https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions
+> - [opentelemetry-specification/specification/trace/api.md at main · open-telemetry/opentelemetry-specification · GitHub](https://github.com/open-telemetry/opentelemetry-specification//blob/main/specification/trace/api.md#span)
+> - [Semantic conventions for HTTP spans \| OpenTelemetry](https://opentelemetry.io/docs/specs/semconv/http/http-spans/#name)
+> - [Semantic conventions for HTTP spans \| OpenTelemetry](https://opentelemetry.io/docs/specs/semconv/http/http-spans/#http-server-semantic-conventions)
 > - https://www.oreilly.com/library/view/distributed-tracing-in/9781492056621/ch04.html
 
 #### ▼ クライアント側の場合
@@ -359,7 +359,7 @@ SaaS ツールによって JSON 型の構造が異なる。
 | バックエンド | イベントの内容 | トレース ID、スパン ID、親スパン ID、処理の開始時間、処理の所要時間、エラーの有無、マイクロサービスの役割名、コールされたエンドポイントなど |
 |              | ラベル         | マイクロサービス名など                                                                                                                      |
 
-> - https://speakerdeck.com/hiroki_hasegawa/ke-guan-ce-xing-niru-men-siyou?slide=17
+> - [🔍 可観測性に入門しよう - Speaker Deck](https://speakerdeck.com/hiroki_hasegawa/ke-guan-ce-xing-niru-men-siyou?slide=17)
 
 <br>
 
@@ -386,7 +386,7 @@ SaaS ツールによって JSON 型の構造が異なる。
 
 分散トレースのスパンにハードウェアリソース消費量の情報を加えたもの。
 
-> - https://zenn.dev/k6s4i53rx/articles/021a1d65af9e95
-> - https://github.com/google/pprof
+> - [Grafana Pyroscope を用いて Go のアプリケーションで継続的プロファイルしてみた](https://zenn.dev/k6s4i53rx/articles/021a1d65af9e95)
+> - [GitHub - google/pprof: pprof is a tool for visualization and analysis of profiling data · GitHub](https://github.com/google/pprof)
 
 <br>

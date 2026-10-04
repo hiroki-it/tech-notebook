@@ -79,7 +79,7 @@ SREing には、継続的な改善によって、システムの信頼性を向�
 
 特定のプロダクトの信頼性を高めるために、アプリチームと同じチームに SREer が参画し、フルスタック的に SREing する。
 
-> - https://x-tech5.co.jp/2022/02/21/204/
+> - [SRE実践の形：7種類の SRE 実践パターン - 株式会社X-Tech5](https://x-tech5.co.jp/2022/02/21/204/)
 
 <br>
 
@@ -93,7 +93,7 @@ SREer チームは、T 字型のスキルを持ったさまざまなエンジニ
 
 お互いが得意不得意を補い合うことにより、SREer チーム全体としてフルスタック的に SREing できるようになる。
 
-> - https://x-tech5.co.jp/2022/02/21/204/
+> - [SRE実践の形：7種類の SRE 実践パターン - 株式会社X-Tech5](https://x-tech5.co.jp/2022/02/21/204/)
 
 <br>
 
@@ -101,7 +101,7 @@ SREer チームは、T 字型のスキルを持ったさまざまなエンジニ
 
 さまざまなプロダクトの信頼性を高めるために、SREer がアプリチームを支援する自前ライブラリを開発する。
 
-> - https://x-tech5.co.jp/2022/02/21/204/
+> - [SRE実践の形：7種類の SRE 実践パターン - 株式会社X-Tech5](https://x-tech5.co.jp/2022/02/21/204/)
 
 <br>
 
@@ -131,7 +131,7 @@ SREer は、`L4` ~ `L7` を領域として業務する。
 
 一方で、SREer チーム全体として `L1` ~ `L3` を補完するために、少数の専門的なインフラエンジニアが必要になる。
 
-> - https://sreake.com/blog/sre-vs-infrastructure-engineer/#section1-2
+> - [SREとインフラエンジニアの違いを3つのポイントで理解する \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/sre-vs-infrastructure-engineer/#section1-2)
 
 <br>
 
@@ -141,14 +141,14 @@ SREer は、`L4` ~ `L7` を領域として業務する。
 
 SRE チームの Value から、SREer に必要な技術がわかる。
 
-> - https://gist.github.com/south37/85d97e02d7816a31053971d63c164880
+> - [infrastructure\_README.md · GitHub](https://gist.github.com/south37/85d97e02d7816a31053971d63c164880)
 
 #### ▼ 3-shake、Topotal
 
 提供しているサービスから、SREer に必要な技術がわかる。
 
-> - https://sreake.com/
-> - https://topotal.com/services/sre-as-a-service
+> - [Sreake（スリーク）｜SREのプロフェッショナルパートナー \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/)
+> - [SRE as a Service \| 株式会社Topotal](https://topotal.com/services/sre-as-a-service)
 
 <br>
 
@@ -156,6 +156,6 @@ SRE チームの Value から、SREer に必要な技術がわかる。
 
 #### ▼ SRE ウィークリー
 
-> - https://sreweekly.com/about-sre-weekly-2/
+> - [About SRE Weekly – SRE WEEKLY](https://sreweekly.com/about-sre-weekly-2/)
 
 <br>

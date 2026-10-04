@@ -92,6 +92,6 @@ module "s3_grafana_tempo" {
 
 Grafana Tempo を条件としたアラートを作成できない。
 
-> - https://github.com/grafana/tempo/discussions/2082#discussioncomment-4898549
+> - [Alerting (alerts) · grafana/tempo · Discussion #2082 · GitHub](https://github.com/grafana/tempo/discussions/2082#discussioncomment-4898549)
 
 <br>

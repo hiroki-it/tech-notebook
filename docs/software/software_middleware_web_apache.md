@@ -9,7 +9,7 @@ description: Apache＠Web系ミドルウェアの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ Apache は、Apache コアとモジュールから構成される。
 
 ![apache_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apache_architecture.png)
 
-> - https://thinkit.co.jp/article/120/1
+> - [モジュールのインストール！ \| Apacheモジュールを使い倒す！ \| Think IT（シンクイット）](https://thinkit.co.jp/article/120/1)
 
 <br>
 
@@ -53,7 +53,7 @@ Apache は、Apache コアとモジュールから構成される。
 
 `mod_fcgid` モジュールを読み込むことによって、FastCGI プロトコルでルーティングできるようになる。
 
-> - https://httpd.apache.org/mod_fcgid/
+> - [mod\_fcgid - FastCGI interface module for Apache 2 - The Apache HTTP Server Project](https://httpd.apache.org/mod_fcgid/)
 
 <br>
 

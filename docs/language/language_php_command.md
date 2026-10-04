@@ -9,7 +9,7 @@ description: コマンド＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -142,7 +142,7 @@ $ php -r '
   '
 ```
 
-> - https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c
+> - [phpinfo()をコマンドラインで呼び出したいのです #PHP - Qiita](https://qiita.com/nokachiru/items/a2146a2f49eb5c98896c)
 
 <br>
 

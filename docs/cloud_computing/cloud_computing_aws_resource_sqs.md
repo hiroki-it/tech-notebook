@@ -9,7 +9,7 @@ description: Amazon SQS＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -29,7 +29,7 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 | 通信方式 | プル型のプロデュース/コンシューム | パブリッシュ／サブスクライブ方式 | パブリッシュ／サブスクライブ方式 |
 
 > - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
-> - https://tech.asoview.co.jp/entry/2022/04/06/102637
+> - [Amazon Kinesis Data Streams + Protocol Buffersで実現するイベント駆動アーキテクチャー - asoview! Tech Blog](https://tech.asoview.co.jp/entry/2022/04/06/102637)
 > - https://docs.aws.amazon.com/decision-guides/latest/sns-or-sqs-or-eventbridge/sns-or-sqs-or-eventbridge.html
 > - https://fourtheorem.com/what-can-you-do-with-eventbridge/
 

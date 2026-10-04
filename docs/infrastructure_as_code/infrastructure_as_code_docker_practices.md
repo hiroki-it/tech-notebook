@@ -23,7 +23,7 @@ description: プラクティス集＠Dockerの知見を記録しています。
 - 必要なコンポーネントだけスケーリングできるようになる
 - 必要なコンポーネントだけアップグレードできるようになる
 
-> - https://www.tutorialworks.com/containers-single-or-multiple-processes/
+> - [Containers: one single process, or multiple processes? - Tutorial Works](https://www.tutorialworks.com/containers-single-or-multiple-processes/)
 > - https://devops.stackexchange.com/questions/447/why-it-is-recommended-to-run-only-one-process-in-a-container
 
 #### ▼ 分割方法
@@ -79,7 +79,7 @@ description: プラクティス集＠Dockerの知見を記録しています。
 ![container_pid_1_problem_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_pid_1_problem_4.png)
 
 > - https://qiita.com/t_katsumura/items/ed105f1c139b24f7fe4f#%E3%82%BE%E3%83%B3%E3%83%93%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E7%99%BA%E7%94%9F%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF
-> - https://tech-lab.sios.jp/archives/18811
+> - [【連載】世界一わかりみが深いコンテナ & Docker入門 〜 その1:コンテナってなに？ 〜 \| SIOS Tech Lab](https://tech-lab.sios.jp/archives/18811)
 
 #### ▼ 対処方法
 
@@ -110,8 +110,8 @@ ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["node", "index.js"]
 ```
 
-> - https://zenn.dev/kouchanne/articles/6485193823ecec5735d4#6.-npm%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7node.js%E3%82%92%E7%AB%8B%E3%81%A1%E4%B8%8A%E3%81%92%E3%81%AA%E3%81%84
-> - https://zenn.dev/yami_beta/articles/333ba1d0fff4d7#handling-kernel-signals
+> - [Node.jsのDockerfile作成のベストプラクティス](https://zenn.dev/kouchanne/articles/6485193823ecec5735d4#6.-npm%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7node.js%E3%82%92%E7%AB%8B%E3%81%A1%E4%B8%8A%E3%81%92%E3%81%AA%E3%81%84)
+> - [Node.js のコンテナイメージを作成するときに気をつけていること](https://zenn.dev/yami_beta/articles/333ba1d0fff4d7#handling-kernel-signals)
 
 <br>
 
@@ -141,8 +141,8 @@ CMD ["nginx", "-g", "daemon off;"]
 ```
 
 > - https://github.com/nginxinc/docker-nginx/blob/1.25.2/Dockerfile-alpine-slim.template#L114
-> - https://nginx.org/en/docs/control.html
-> - https://ubuntu.com/blog/avoiding-dropped-connections-in-nginx-containers-with-stopsignal-sigquit
+> - [Controlling nginx](https://nginx.org/en/docs/control.html)
+> - [Avoiding dropped connections in nginx containers with “STOPSIGNAL SIGQUIT” \| Ubuntu](https://ubuntu.com/blog/avoiding-dropped-connections-in-nginx-containers-with-stopsignal-sigquit)
 
 <br>
 
@@ -170,7 +170,7 @@ ENTRYPOINT ["/app"]
 
 > - https://www.programmerhat.com/docker-sudo-command-not-found/#Why_is_the_sudo_command_not_found_in_docker
 > - https://blog.aquasec.com/docker-security-best-practices
-> - https://www.forcia.com/blog/002273.html
+> - [社内のDockerfileのベストプラクティスを公開します│FORCIA CUBE│フォルシア株式会社](https://www.forcia.com/blog/002273.html)
 
 <br>
 
@@ -208,7 +208,7 @@ gosu パッケージの代わりに、`docker` コマンドの `-u` オプショ
 
 インストールされているパッケージを把握できるベースイメージを使用する。
 
-> - https://www.forcia.com/blog/002273.html
+> - [社内のDockerfileのベストプラクティスを公開します│FORCIA CUBE│フォルシア株式会社](https://www.forcia.com/blog/002273.html)
 
 <br>
 
@@ -233,7 +233,7 @@ Docker in Docker は、特権モードが必要になり、安全性に問題が
 
 `docker trust` コマンドの内部では、Notary Notation が使用されている。
 
-> - https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust
+> - [Docker のコンテントトラスト \| Docker ドキュメント](https://matsuand.github.io/docs.docker.jp.onthefly/engine/security/trust/#signing-images-with-docker-content-trust)
 > - https://codezine.jp/article/detail/15119
 
 <br>
@@ -271,7 +271,7 @@ Docker in Docker は、特権モードが必要になり、安全性に問題が
 | `2`          | 『`2.X`』と『`2.0.X`』のマイナーアップデートのみを追跡する。 |
 | `latest`     | メジャーアップデートとマイナーアップデートを追跡する。       |
 
-> - https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated
+> - [composer - Official Image \| Docker Hub](https://hub.docker.com/_/composer/?tab=description&page=1&ordering=last_updated)
 
 <br>
 
@@ -285,7 +285,7 @@ Docker in Docker は、特権モードが必要になり、安全性に問題が
 | Arm   | `arm64`、`arm/v5`、`arm/v7` |                                                                                                                  |
 | Amd   | `amd64`                     |                                                                                                                  |
 
-> - https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu
+> - [IT業界小話：インテルCPUなのに「AMD64」なのはなぜ？](https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu)
 
 例えば、`MacBook 2020` には Intel、また `MacBook 2021 (M1 Mac)` には ARM ベースの独自 CPU が搭載されているため、ARM に対応したコンテナイメージを選択する必要がある。
 
@@ -313,8 +313,8 @@ $ docker exec -it <起動中コンテナ名> uname -m
 arm64
 ```
 
-> - https://github.com/docker-library/official-images#architectures-other-than-amd64
-> - https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm
+> - [GitHub - docker-library/official-images: Primary source of truth for the Docker "Official Images" program · GitHub](https://github.com/docker-library/official-images#architectures-other-than-amd64)
+> - [M1 Mac の基礎知識｜M1 Mac で Docker を動かすための知識とノウハウ](https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm)
 > - https://linuxfan.info/post-2745
 
 <br>
@@ -374,10 +374,10 @@ RUN dnf upgrade -y \
 |                        | 接尾辞なし                                            | 使用頻度の高いパッケージのみでなく、小さいパッケージもインストールしている。                                                                            | イメージによる | 有                   | イメージによる                   |
 | distroless 型          | 接尾辞なし                                            | 最小限のパッケージのみをインストールしている。                                                                                                          | イメージによる | 有 (非常に少ない)    | イメージによる                   |
 
-> - https://prograshi.com/platform/docker/docker-image-tags-difference/
-> - https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9
+> - [Docker image(イメージ)の違い:alpine,bullseye, buster, slim, stretch, jessie, slim-buster, windowsservercore, latestどれを選ぶべきか？](https://prograshi.com/platform/docker/docker-image-tags-difference/)
+> - [【docker buildのマニアックすぎる狂宴】Container Build Meetup #1に参加してきた #container\_build \| DevelopersIO](https://dev.classmethod.jp/articles/docker-build-meetup-1/#toc-9)
 > - https://qiita.com/t_katsumura/items/462e2ae6321a9b5e473e
-> - https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E)
+> - [Node.js Docker baseイメージには alpine \< distroless \< ubuntu+slim 構成がよさそう](<https://zenn.dev/jrsyo/articles/e42de409e62f5d#%E9%81%B8%E6%8A%9E%E8%82%A2-3.-ubuntu-%2B-slim-%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8-(%E3%83%90%E3%83%A9%E3%83%B3%E3%82%B9-%E2%97%8E)>)
 
 #### ▼ できる限り OS イメージをベースとしない
 
@@ -497,8 +497,8 @@ RUN <<EOF
 EOF
 ```
 
-> - https://www.docker.com/blog/introduction-to-heredocs-in-dockerfiles/
-> - https://kakakakakku.hatenablog.com/entry/2021/08/10/085625
+> - [Introduction to heredocs in Dockerfiles \| Docker](https://www.docker.com/blog/introduction-to-heredocs-in-dockerfiles/)
+> - [Dockerfile で新しく使えるようになった構文「ヒアドキュメント」で複数行の RUN をシュッと書く - kakakakakku blog](https://kakakakakku.hatenablog.com/entry/2021/08/10/085625)
 
 <br>
 
@@ -569,7 +569,7 @@ EXPOSE 8080
 CMD ["java", "-jar", "app.jar"]
 ```
 
-> - https://www.alibabacloud.com/help/en/acr/use-cases/build-an-image-for-a-java-application-by-using-a-dockerfile-with-multi-stage-builds
+> - [Build and pull images - Container Registry - Alibaba Cloud Documentation Center](https://www.alibabacloud.com/help/en/acr/use-cases/build-an-image-for-a-java-application-by-using-a-dockerfile-with-multi-stage-builds)
 
 #### ▼ 実行環境別にステージを分ける場合
 
@@ -665,7 +665,7 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 | 安全性 | ホストコンテナ間をネットワークを分離できるため、安全性が高い | -                                                                              |
 | 性能   | -                                                            | ホストコンテナ間のネットワークを分離しないため、スループットを向上させられる。 |
 
-> - https://www.appsdeveloperblog.com/docker-networking-bridging-host-and-overlay/
+> - [Docker Networking: Bridging, Host, and Overlay](https://www.appsdeveloperblog.com/docker-networking-bridging-host-and-overlay/)
 > - https://jtway.co/docker-network-performance-b95bce32b4b9
 
 <br>
@@ -691,7 +691,7 @@ DockerHub 以外のイメージレジストリを使って、レートリミッ�
 `crane` コマンドを使用すると、イメージレジストリ間のコンテナイメージの移動を簡素化できる。
 
 > - https://medium.com/@spurin/copying-container-images-between-container-registries-e7b734abc701
-> - https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md
+> - [go-containerregistry/cmd/crane/doc/crane\_copy.md at main · google/go-containerregistry · GitHub](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md)
 
 <br>
 
@@ -721,7 +721,7 @@ Dockerfile の文法違反を検証する。
 
 ファイル (例：期待するファイルが存在するか) やバイナリ (コンテナ起動時の `ENTRYPOINT` が正常に動作するかなど) が存在するかを検証する。
 
-> - https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF
+> - [Google の container-structure-test を CircleCI で流す #Docker - Qiita](https://qiita.com/tsubasaogawa/items/d41807d368e7b2635e77#container-structure-test-%E3%81%A8%E3%81%AF)
 
 <br>
 
@@ -764,8 +764,8 @@ services:
 ```
 
 > - https://stackoverflow.com/a/41854997
-> - https://zenn.dev/sun_asterisk/articles/b4b17681d08018
-> - https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md
+> - [Docker の healthcheck を初めて使った話](https://zenn.dev/sun_asterisk/articles/b4b17681d08018)
+> - [docker-compose-healthcheck/README\_JP.md at master · peter-evans/docker-compose-healthcheck · GitHub](https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md)
 
 <br>
 

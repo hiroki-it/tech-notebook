@@ -9,7 +9,7 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,8 +17,8 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 ワーカーNode 上で稼働する Kubernetes コンポーネントのこと。
 
-> - https://cstoku.dev/posts/2018/k8sdojo-24/
-> - https://kubernetes.io/docs/concepts/overview/components/
+> - [Kubernetes道場 24日目 - Kubernetesの各コンポーネントについて - Toku's Blog](https://cstoku.dev/posts/2018/k8sdojo-24/)
+> - [Kubernetes Components \| Kubernetes](https://kubernetes.io/docs/concepts/overview/components/)
 
 <br>
 
@@ -30,8 +30,8 @@ description: Nodeコンポーネント＠Kubernetesの知見を記録してい�
 
 もし手動で作成する場合は、`kubectl` コマンドで `--register-node=false` とする必要がある。
 
-> - https://kubernetes.io/docs/concepts/architecture/nodes/
-> - https://kubernetes.io/docs/concepts/architecture/nodes/#manual-node-administration
+> - [Nodes \| Kubernetes](https://kubernetes.io/docs/concepts/architecture/nodes/)
+> - [Nodes \| Kubernetes](https://kubernetes.io/docs/concepts/architecture/nodes/#manual-node-administration)
 
 <br>
 
@@ -61,8 +61,8 @@ Kubernetes には Node グループというリソースがなく、グループ
 
 Node グループをターゲットとする `L7` ロードバランサーでは、Node グループ内で冗長化ワーカーNode のいずれかへルーティングすることになる。
 
-> - https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6
-> - https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html#cluster-autoscaler
+> - [AWS EKSクラスタを簡単に構築できるeksctlに、「ノードグループ」機能を追加しようとしている話 #kubernetes - Qiita](https://qiita.com/mumoshu/items/9ee00307d6bbab43edb6)
+> - [Scale cluster compute with Karpenter and Cluster Autoscaler - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/autoscaling.html#cluster-autoscaler)
 
 <br>
 
@@ -103,8 +103,8 @@ spec: ...
 
 ただし、cluster-autoscaler を使用すると、各クラウドプロバイダーの API からワーカーNode のオートスケーリングを実行できるようになる。
 
-> - https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler#cluster-autoscaler
-> - https://blog.inductor.me/entry/2021/12/06/165743
+> - [autoscaler/cluster-autoscaler at master · kubernetes/autoscaler · GitHub](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler#cluster-autoscaler)
+> - [Karpenterのファーストインプレッション - inductor's blog](https://blog.inductor.me/entry/2021/12/06/165743)
 
 <br>
 
@@ -125,8 +125,8 @@ Service ネットワークさえ作成できていれば、Service と Pod が�
 ![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png)
 
 > - https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b
-> - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
-> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
+> - [CoreDNS GA for Kubernetes Cluster DNS \| Kubernetes](https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction)
+> - [Service Discovery in Kubernetes: Combining the Best of Two Worlds](https://iximiuz.com/en/posts/service-discovery-in-kubernetes/)
 
 <br>
 
@@ -151,7 +151,7 @@ $ kube-proxy \
 - `minikube tunnel` コマンド
 - LoadBalancer
 
-> - https://kubernetes.io/docs/concepts/cluster-administration/proxies/
+> - [Proxies in Kubernetes \| Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/proxies/)
 
 <br>
 
@@ -170,10 +170,10 @@ $ kube-proxy \
 
 ![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_iptables.png)
 
-> - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables
-> - https://www.mtioutput.com/entry/kube-proxy-iptable
-> - https://github.com/kubernetes/kubernetes/pull/81430
-> - https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/
+> - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables)
+> - [【Kubernetes】kube-proxy停止時はServiceとPodのIPアドレスが新たに紐づかなくなる - (O+P)ut](https://www.mtioutput.com/entry/kube-proxy-iptable)
+> - [Adding EndpointSlice support for kube-proxy ipvs and iptables proxiers by robscott · Pull Request #81430 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/pull/81430)
+> - [実践 Kubernetes ～コンテナ管理のスタンダードツールを使いこなす - アイマガジン｜i Magazine｜IS magazine](https://www.imagazine.co.jp/%e5%ae%9f%e8%b7%b5-kubernetes%e3%80%80%e3%80%80%ef%bd%9e%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e7%ae%a1%e7%90%86%e3%81%ae%e3%82%b9%e3%82%bf%e3%83%b3%e3%83%80%e3%83%bc%e3%83%89%e3%83%84%e3%83%bc%e3%83%ab/)
 
 #### ▼ サービス検出
 
@@ -199,15 +199,15 @@ num  target                     prot   opt   source      destination
 ```
 
 > - https://dream.jp/vps/support/manual/mnl_security_04.html
-> - https://zenn.dev/tayusa/articles/c705cd65b6ee74
+> - [KubernetesのServiceの挙動を確認する](https://zenn.dev/tayusa/articles/c705cd65b6ee74)
 
 #### ▼ `L4` ロードバランシング
 
 iptable 方式の場合、kube-proxy によって検出された Pod の IP アドレスに対して、`L4` ロードバランシングを実行する。
 
 > - https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b
-> - https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies
-> - https://iximiuz.com/en/posts/service-discovery-in-kubernetes/
+> - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies)
+> - [Service Discovery in Kubernetes: Combining the Best of Two Worlds](https://iximiuz.com/en/posts/service-discovery-in-kubernetes/)
 
 <br>
 
@@ -222,8 +222,8 @@ iptable 方式の場合、kube-proxy によって検出された Pod の IP ア�
 
 ![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png)
 
-> - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace
-> - https://github.com/kubernetes/kubernetes/pull/81430
+> - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace)
+> - [Adding EndpointSlice support for kube-proxy ipvs and iptables proxiers by robscott · Pull Request #81430 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/pull/81430)
 
 <br>
 
@@ -240,9 +240,9 @@ kube-proxy の起動時に、`--feature-gates` オプションに `SupportIPVSPr
 
 ![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
 
-> - https://qiita.com/superbrothers/items/5a6a34c5eb919ce872aa#kube-proxy-alpha-ipvs-%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88
-> - https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs
-> - https://github.com/kubernetes/kubernetes/pull/81430
+> - [Kubernetes v1.8: 主な変更点 (Major Themes) #kubernetes - Qiita](https://qiita.com/superbrothers/items/5a6a34c5eb919ce872aa#kube-proxy-alpha-ipvs-%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88)
+> - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs)
+> - [Adding EndpointSlice support for kube-proxy ipvs and iptables proxiers by robscott · Pull Request #81430 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/pull/81430)
 
 <br>
 
@@ -256,7 +256,7 @@ kube-proxy の起動時に、`--feature-gates` オプションに `SupportIPVSPr
 
 ![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet.png)
 
-> - https://thinkit.co.jp/article/17453
+> - [コンテナを使いこなすための心強い味方!「Kubernetes」(前編) \| 初心者のためのコンテナ入門教室 \| Think IT（シンクイット）](https://thinkit.co.jp/article/17453)
 
 <br>
 
@@ -284,7 +284,7 @@ $ kubelet \
     ...
 ```
 
-> - https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options
+> - [kubelet \| Kubernetes](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/#options)
 
 #### ▼ `kubelet-config.json` ファイル (KubeletConfiguration)
 
@@ -346,9 +346,9 @@ kubelet は、使用されていないイメージレイヤー (`5` 分ごと) �
 
 コンテナイメージのガベージコレクションであれば、Node のストレージ使用量が `85`%を超過していると、kubelet は `80`%未満になるようにコンテナイメージの残骸を削除する。
 
-> - https://zenn.dev/tmoka/articles/d7e428da4026a5#%E4%BD%BF%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8
-> - https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/apis/config/v1beta1/defaults.go#L138-L144
-> - https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/images/image_gc_manager.go#L63-L76
+> - [Kubernetesのガベージコレクションについてまとめる](https://zenn.dev/tmoka/articles/d7e428da4026a5#%E4%BD%BF%E3%82%8F%E3%82%8C%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%84%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8)
+> - [kubernetes/pkg/kubelet/apis/config/v1beta1/defaults.go at v1.24.0 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/apis/config/v1beta1/defaults.go#L138-L144)
+> - [kubernetes/pkg/kubelet/images/image\_gc\_manager.go at v1.24.0 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/images/image_gc_manager.go#L63-L76)
 > - https://docker-docs.uclv.cu/storage/storagedriver/#sharing-promotes-smaller-images
 
 #### ▼ ログローテション
@@ -363,8 +363,8 @@ kubelet ではログの保管期間を設定できないため、もし保管期
 
 ![kubernetes_kubelet_log-rotation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet_log-rotation.png)
 
-> - https://blog.mosuke.tech/entry/2021/09/08/kubelet-log-management/
-> - https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/logs/container_log_manager.go
+> - [Kubeletのログ管理を追ってみる](https://blog.mosuke.tech/entry/2021/09/08/kubelet-log-management/)
+> - [kubernetes/pkg/kubelet/logs/container\_log\_manager.go at v1.24.0 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/logs/container_log_manager.go)
 
 <br>
 
@@ -429,8 +429,8 @@ CPUAccounting=true
 MemoryAccounting=true
 ```
 
-> - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/kubelet-integration/#the-kubelet-drop-in-file-for-systemd
-> - https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/kubelet.service
+> - [Configuring each kubelet in your cluster using kubeadm \| Kubernetes](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/kubelet-integration/#the-kubelet-drop-in-file-for-systemd)
+> - [amazon-eks-ami/files/kubelet.service at v20231106 · awslabs/amazon-eks-ami · GitHub](https://github.com/awslabs/amazon-eks-ami/blob/v20231106/files/kubelet.service)
 
 <br>
 
@@ -444,7 +444,7 @@ MemoryAccounting=true
 
 : `/etc/modules-load.d/containerd.conf` ファイルに、カーネルモジュールを設定する。
 
-> - https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0
+> - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0)
 
 ```bash
 overlay
@@ -470,7 +470,7 @@ net.ipv4.ip_forward=1
 net.bridge.bridge-nf-call-ip6tables=1
 ```
 
-> - https://www.memotansu.jp/kubernetes/3790/#toc2
+> - [Kubernetesのインストール方法の解説 （Ubuntu20.04.3＋containerd＋flannel） \| めもたんす](https://www.memotansu.jp/kubernetes/3790/#toc2)
 
 `(4)`
 
@@ -522,7 +522,7 @@ $ add-apt-repository \
 $ apt-get update && apt-get install containerd.io
 ```
 
-> - https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
 #### ▼ Containerd の設定ファイルの準備
 
@@ -530,7 +530,7 @@ $ apt-get update && apt-get install containerd.io
 
 : 設定ファイルとして、`/etc/containerd/config.toml` ファイルを作成する。
 
-> - https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
 ```bash
 $ mkdir -p /etc/containerd
@@ -556,7 +556,7 @@ $ kubelet \
     ...
 ```
 
-> - https://repl.info/archives/2894/
+> - [kubeletが使うコンテナランタイムをdockerからcontainerdに変更する - repl.info](https://repl.info/archives/2894/)
 
 <br>
 
@@ -585,6 +585,6 @@ $ journalctl -u containerd.service
 | Running    | コンテナの起動が完了し、実行中である。                           |
 | Terminated | コンテナが正常/異常に停止した。                                  |
 
-> - https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states
+> - [Pod Lifecycle \| Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-states)
 
 <br>

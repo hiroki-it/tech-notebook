@@ -9,7 +9,7 @@ description: リポジトリの編成＠開発体制の知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,8 +23,8 @@ description: リポジトリの編成＠開発体制の知見を記録してい�
 
 ただし、バージョン管理システム (例：GitHub) によっては、リポジトリのディレクトリ単位で認可スコープを設定できるものがある。
 
-> - https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
-> - https://qiita.com/FumiyaShibusawa/items/c7a3ff4d0793ca2d281f
+> - [コードオーナーについて - GitHubドキュメント](https://docs.github.com/ja/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+> - [CODEOWNERS で特定の人間をレビュー必須にすれば世界は平和になるはず #GitHub - Qiita](https://qiita.com/FumiyaShibusawa/items/c7a3ff4d0793ca2d281f)
 
 <br>
 
@@ -42,9 +42,9 @@ Google ではモノレポによるマイクロサービスアーキテクチャ�
 
 ![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monorepo.png)
 
-> - https://en.wikipedia.org/w/index.php?title=Monorepo
+> - [Monorepo - Wikipedia](https://en.wikipedia.org/w/index.php?title=Monorepo)
 > - https://www.fourtheorem.com/blog/monorepo
-> - https://www.school.ctc-g.co.jp/columns/nakai2/nakai220.html
+> - [コラム - グーグルのクラウドを支えるテクノロジー \| 第20回 Googleのソースコード管理システム ― Piper/CitC｜CTC教育サービス 研修/トレーニング](https://www.school.ctc-g.co.jp/columns/nakai2/nakai220.html)
 
 #### ▼ ポリレポ
 

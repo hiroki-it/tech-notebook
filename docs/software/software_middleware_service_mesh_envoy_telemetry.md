@@ -9,7 +9,7 @@ description: テレメトリー＠Envoyの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -33,7 +33,7 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
 [2016-04-15T20:17:00.310Z] "POST /api/v1/locations HTTP/2" 204 - 154 0 226 100 "10.0.35.28" "nsq2http" "cc21d9b0-cf5c-432b-8c7e-98aeb7988cd2" "locations" "tcp://10.0.2.1:80"
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#default-format-string
+> - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#default-format-string)
 
 #### ▼ 構造化ログ
 
@@ -114,19 +114,19 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
 | ユーザーエージェント | `%REQ(USER-AGENT)%`                 | `curl/8.7.1`                                              |
 | X-Forwarded-for      | `%REQ(X-FORWARDED-FOR)%`             | 記入中...                                                 |
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
+> - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules)
 
 #### ▼ `%RESP()`
 
 レスポンスヘッダーから値を出力する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
+> - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules)
 
 #### ▼ `%TRACE_ID%`
 
 トレースコンテキストの Carrier (例：`traceparent` ヘッダーなど) の値からトレース ID のみを取得し、抽出する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
+> - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules)
 
 #### ▼ `%GRPC_STATUS()%`
 
@@ -138,7 +138,7 @@ gRPC のステータスを出力する。
 
 `%GRPC_STATUS(NUMBER)%` であれば、gRPC のステータスを数値 (`3`) で出力する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules
+> - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#format-rules)
 
 <br>
 
@@ -168,8 +168,8 @@ Cluster 外からのリクエスト/Pod 間通信時のレスポンスの補足�
 | `DPE` | `DOWNSTREAM_PROTOCOL_ERROR`         |       なし       | Envoy は HTTP リクエストのエラーで送信元に接続できなかった。                     |
 | `NR`  | `NO_ROUTE_FOUND`                    |      `404`       | ルートやフィルターチェーンの設定が見つからず、Envoy は送信元に接続できなかった。 |
 
-> - https://github.com/istio/proxy/blob/1.14.3/extensions/common/util.cc#L29-L56
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage
+> - [proxy/extensions/common/util.cc at 1.14.3 · istio/proxy · GitHub](https://github.com/istio/proxy/blob/1.14.3/extensions/common/util.cc#L29-L56)
+> - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage)
 > - https://medium.com/expedia-group-tech/all-about-istio-proxy-5xx-issues-e0221b29e692
 > - https://discuss.istio.io/t/periodic-response-code-0-and-dc-response-flag/9349
 > - https://karlstoney.com/2019/05/31/istio-503s-ucs-and-tcp-fun-times/
@@ -198,8 +198,8 @@ Istio が Prometheus 向けに変換した Envoy メトリクスには、`envoy_
 
 `envoy_downstream_*****` (インバウンド系)、`envoy_upstream_*****` (アウトバウンド系) のメトリクスがある。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/stats
-> - https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy-metrics.html
+> - [Statistics — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/stats)
+> - [Monitoring your application using Envoy metrics - AWS App Mesh](https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy-metrics.html)
 
 #### ▼ Envoy 自身系
 
@@ -207,7 +207,7 @@ Istio が Prometheus 向けに変換した Envoy メトリクスには、`envoy_
 
 注意点として、ドキュメントではプレフィクスが省略されてしまっている。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/statistics
+> - [Statistics — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/statistics)
 
 #### ▼ リスナー系
 
@@ -215,8 +215,8 @@ Istio が Prometheus 向けに変換した Envoy メトリクスには、`envoy_
 
 注意点として、ドキュメントではプレフィクスが省略されてしまっている。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/stats
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter#statistics
+> - [Statistics — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/stats)
+> - [TCP proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/tcp_proxy_filter#statistics)
 
 #### ▼ ルート系
 
@@ -228,7 +228,7 @@ Envoy 統計は `cluster.<クラスター名>.*****` という名前を持つ。
 
 注意点として、ドキュメントではプレフィクスが省略されてしまっている。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats#config-cluster-manager-cluster-stats
+> - [Statistics — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/upstream/cluster_manager/cluster_stats#config-cluster-manager-cluster-stats)
 
 #### ▼ エンドポイント系
 
@@ -261,13 +261,13 @@ $ kubectl exec \
 
 Envoy は、自身を通過したリクエストの Carrier (例：HTTP ヘッダー、gRPC メタデータなど) にリクエスト ID を設定する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
+> - [Tracing — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing)
 
 #### ▼ Carrier の種類
 
 Envoy では、さまざまな Carrier を使用できる。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers
+> - [HTTP header manipulation — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers)
 
 #### ▼ リクエスト ID の作成
 
@@ -275,14 +275,14 @@ Envoy は ID を自動作成する。
 
 また、受信したリクエストの Carrier (例：HTTP ヘッダー、gRPC メタデータなど) に `X-REQUEST-ID` ヘッダーを割り当てる。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
+> - [Tracing — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing)
 
 #### ▼ ID の結合
 
 Envoy は、`X-REQUEST-ID` ヘッダーの自動作成 ID と `X-CLIENT-TRACE-ID` の外部作成 ID を結合する
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#config-http-conn-man-headers-x-client-trace-id
+> - [Tracing — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing)
+> - [HTTP header manipulation — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers#config-http-conn-man-headers-x-client-trace-id)
 
 <br>
 
@@ -296,9 +296,9 @@ Envoy はスパンを記録し、設定した収集エージェントに送信�
 
 ただし、マイクロサービス内の処理をスパンとして記録する場合は、マイクロサービス側にも計装が必要になる。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation
-> - https://istio.io/latest/about/faq/distributed-tracing/#how-envoy-based-tracing-works
-> - https://aws.amazon.com/jp/blogs/news/ship-and-visualize-your-istio-virtual-service-traces-with-aws-x-ray-jp/
+> - [Tracing — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing#arch-overview-tracing-context-propagation)
+> - [Istio / Distributed Tracing FAQ](https://istio.io/latest/about/faq/distributed-tracing/#how-envoy-based-tracing-works)
+> - [AWS X-Ray を使った Istio 仮想サービスのトレースの可視化 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/ship-and-visualize-your-istio-virtual-service-traces-with-aws-x-ray-jp/)
 
 #### ▼ トレースコンテキスト仕様
 
@@ -310,8 +310,8 @@ Envoy はスパンを記録し、設定した収集エージェントに送信�
 - Zipkin (B3)
 - など
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/http_tracer.proto#envoy-v3-api-msg-config-trace-v3-tracing
+> - [Tracing — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/observability/tracing)
+> - [Tracing (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/trace/v3/http_tracer.proto#envoy-v3-api-msg-config-trace-v3-tracing)
 
 #### ▼ X-Ray の場合
 
@@ -321,8 +321,8 @@ Envoy はスパンを記録し、設定した収集エージェントに送信�
 
 注意点として、サービスメッシュツール (例：Istio) によっては、X-Ray デーモンへスパンを送信できず、代わりに OpenTelemetry Collector へスパンを送信しないといけない場合がある。
 
-> - https://github.com/envoyproxy/envoy/blob/v1.27.0/api/envoy/config/trace/v3/xray.proto
-> - https://github.com/istio/istio/issues/36599
+> - [envoy/api/envoy/config/trace/v3/xray.proto at v1.27.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.27.0/api/envoy/config/trace/v3/xray.proto)
+> - [Ability to send traces to AWS X-ray · Issue #36599 · istio/istio · GitHub](https://github.com/istio/istio/issues/36599)
 > - https://www.appmeshworkshop.com/x-ray/
 
 <br>
@@ -352,7 +352,7 @@ Envoy はスパンを記録し、設定した収集エージェントに送信�
 }
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-decorator
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#config-http-filters-router-x-envoy-decorator-operation
+> - [HTTP route components (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/route/v3/route_components.proto#config-route-v3-decorator)
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#config-http-filters-router-x-envoy-decorator-operation)
 
 <br>

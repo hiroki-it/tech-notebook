@@ -27,7 +27,7 @@ kube-apiserver をアップグレードすると、API グループの特定の�
 apiVersion: v1
 ```
 
-> - https://kubernetes.io/docs/reference/using-api/#api-groups
+> - [API Overview \| Kubernetes](https://kubernetes.io/docs/reference/using-api/#api-groups)
 > - https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#-strong-api-groups-strong-
 
 <br>
@@ -42,8 +42,8 @@ apiVersion: v1
 
 もしバージョンの `v2` に Kubernetes が対応していなければ、`v1beta1` や `v2beta2` で回避する方法がある。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/2008/27/news057.html
-> - https://qiita.com/tkusumi/items/cb2dc318875fbef19468
+> - [Kubernetes 1.19がリリース、サポートは1年に延長：IngressはGAになったが…… - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2008/27/news057.html)
+> - [各 Kubernetes バージョンの API バージョン対応表 #kubernetes - Qiita](https://qiita.com/tkusumi/items/cb2dc318875fbef19468)
 
 <br>
 
@@ -89,7 +89,7 @@ metadata:
       {"apiVersion":"extensions/v1beta1","kind":"Deployment" ... }
 ```
 
-> - https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97
+> - [Kubernetes: kubectl apply の動作 #kubernetes - Qiita](https://qiita.com/tkusumi/items/0bf5417c865ef716b221#kubectl-apply-%E3%81%AE%E3%83%91%E3%83%83%E3%83%81%E3%81%AE%E8%A8%88%E7%AE%97)
 
 #### ▼ `kubernetes.io` キー
 
@@ -119,7 +119,7 @@ metadata:
     kubernetes.io/ingress.class: foo-ingress-class
 ```
 
-> - https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation
+> - [Ingress \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/#deprecated-annotation)
 
 #### ▼ ingressclass.kubernetes.io/is-default-class
 
@@ -137,8 +137,8 @@ metadata:
     ingressclass.kubernetes.io/is-default-class: true
 ```
 
-> - https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class
-> - https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do
+> - [Ingress \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/#default-ingress-class)
+> - [Welcome - Ingress-Nginx Controller](https://kubernetes.github.io/ingress-nginx/#i-have-only-one-ingress-controller-in-my-cluster-what-should-i-do)
 
 <br>
 
@@ -193,7 +193,7 @@ metadata:
   deletionTimestamp: "2022-01-01T12:00:00Z"
 ```
 
-> - https://zoetrope.github.io/kubebuilder-training/controller-runtime/deletion.html
+> - [リソースの削除 · つくって学ぶKubebuilder](https://zoetrope.github.io/kubebuilder-training/controller-runtime/deletion.html)
 
 <br>
 
@@ -232,7 +232,7 @@ metadata:
     app.kubernetes.io/name: foo-deployment
 ```
 
-> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+> - [Labels and Selectors \| Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 > - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#metadata
 > - https://blog.getambassador.io/kubernetes-labels-vs-annotations-95fc47196b6d
 
@@ -240,7 +240,7 @@ metadata:
 
 int 型を割り当てようとするとエラーになり、これは Helm の `values` ファイル経由で『数字』を出力しようとする場合に起こる。
 
-> - https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
+> - [Labels and Selectors \| Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 <br>
 
@@ -248,7 +248,7 @@ int 型を割り当てようとするとエラーになり、これは Helm の 
 
 キー名のプレフィクスとして、`kubernetes.io/` と `k8s.io/` は予約されている。
 
-> - https://kubernetes.io/docs/reference/labels-annotations-taints/
+> - [Well-Known Labels, Annotations and Taints \| Kubernetes](https://kubernetes.io/docs/reference/labels-annotations-taints/)
 
 <br>
 
@@ -271,7 +271,7 @@ Kubernetes 上で稼働するコンテナの情報を設定する。
 | `app.kubernetes.io/type`       | `host` (PV のマウント対象)  | リソースの設定方法の種類名を設定する。                                     |
 | `app.kubernetes.io/version`    | `5.7.21`                    | K8s リソースのリリースバージョン名を設定する。                             |
 
-> - https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/
+> - [Recommended Labels \| Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels/)
 
 <br>
 
@@ -301,7 +301,7 @@ kubelet の `--node-labels` オプションを使用すると、Node にラベ�
 --node-labels=nodetype=foo
 ```
 
-> - https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
+> - [kubelet \| Kubernetes](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/)
 
 #### ▼ `node.kubernetes.io` キー
 
@@ -376,10 +376,10 @@ rules: ... # 特定の Kubernetes リソースの認可スコープを狭めた�
 
 ただし、kube-controller や Operator では常に `--force-conflicts` オプションを実行するようになっている。
 
-> - https://qiita.com/superbrothers/items/aeba9406691388b6a19e
-> - https://speakerdeck.com/superbrothers/wakaru-metadata-dot-managedfields?slide=21
-> - https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management
-> - https://kubernetes.io/docs/reference/using-api/server-side-apply/#using-server-side-apply-in-a-controller
+> - [Kubernetes 1.14: Server-side Apply (alpha) #kubernetes - Qiita](https://qiita.com/superbrothers/items/aeba9406691388b6a19e)
+> - [わかる！metadata.managedFields - Speaker Deck](https://speakerdeck.com/superbrothers/wakaru-metadata-dot-managedfields?slide=21)
+> - [Server-Side Apply \| Kubernetes](https://kubernetes.io/docs/reference/using-api/server-side-apply/#field-management)
+> - [Server-Side Apply \| Kubernetes](https://kubernetes.io/docs/reference/using-api/server-side-apply/#using-server-side-apply-in-a-controller)
 
 <br>
 
@@ -591,6 +591,6 @@ status:
 ```
 
 > - https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#typical-status-properties
-> - https://github.com/kubernetes/apimachinery/blob/master/pkg/apis/meta/v1/types.go#L1480-L1485
+> - [apimachinery/pkg/apis/meta/v1/types.go at master · kubernetes/apimachinery · GitHub](https://github.com/kubernetes/apimachinery/blob/master/pkg/apis/meta/v1/types.go#L1480-L1485)
 
 <br>

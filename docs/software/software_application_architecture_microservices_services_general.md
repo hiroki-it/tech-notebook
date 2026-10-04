@@ -130,7 +130,7 @@ func SetupMetrics(ctx context.Context) func() {
 }
 ```
 
-> - https://pkg.go.dev/github.com/prometheus/client_golang/prometheus
+> - [prometheus package - github.com/prometheus/client\_golang/prometheus - Go Packages](https://pkg.go.dev/github.com/prometheus/client_golang/prometheus)
 
 #### ▼ trace.go
 
@@ -242,6 +242,6 @@ func getOtelExporter(options ...otlptracegrpc.Option) (*otlptrace.Exporter, erro
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel
+> - [otel package - go.opentelemetry.io/otel - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel)
 
 <br>

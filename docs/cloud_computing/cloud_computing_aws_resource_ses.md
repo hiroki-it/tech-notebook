@@ -9,7 +9,7 @@ description: Amazon SES＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -223,7 +223,7 @@ SES ---> CloudWatch ---> SNS ---> Lambda ---> Slack
 
 ユーザー名とパスワードは後から確認できないため、メモしておくこと。SMTP-AUTH の仕組みについては、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html
+> - [【IT技術の知見】TCP階層モデル＠ネットワーク - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/network/network_model_tcp.html)
 
 <br>
 

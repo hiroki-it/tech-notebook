@@ -9,7 +9,7 @@ description: CoreDNS＠DNS系ミドルウェアの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -65,7 +65,7 @@ Pod からの問い合わせに対して、名前解決する。
 
 CoreDNS に対する問い合わせを受信し、CoreDNS へルーティングする。
 
-> - https://amateur-engineer-blog.com/kubernetes-dns/#toc6
+> - [【Kubernetes】DNSについて知る](https://amateur-engineer-blog.com/kubernetes-dns/#toc6)
 
 <br>
 
@@ -90,7 +90,7 @@ data:
     }
 ```
 
-> - https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options
+> - [Customizing DNS Service \| Kubernetes](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns-configmap-options)
 
 <br>
 
@@ -112,9 +112,9 @@ Pod 内のコンテナは、自身の `/etc/resolv.conf` ファイルを使用�
 
 この Service の IP アドレスを指定し、Pod にリクエストを送信する。
 
-> - https://speakerdeck.com/bells17/kubernetestocorednsnituiteli-jie-suru?slide=30
+> - [KubernetesとCoreDNSについて理解する - Speaker Deck](https://speakerdeck.com/bells17/kubernetestocorednsnituiteli-jie-suru?slide=30)
 > - https://help.aliyun.com/zh/ack/ack-managed-and-ack-dedicated/user-guide/dns-overview
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=42)
 
 #### ▼ 確認方法
 
@@ -140,7 +140,7 @@ NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   1m0s
 ```
 
-> - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
+> - [KubernetesのPod内からの名前解決を検証する](https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/)
 > - https://isovalent.com/blog/post/its-dns/#kubernetes-dns-101
 
 <br>
@@ -165,10 +165,10 @@ DNS レコードタイプごとに、完全修飾ドメイン名が異なる。
 
 また、同じ Namespace 内でパケットを送受信する場合は、さらに『`<Namespace名>`』も省略でき、『`<Service名>`』のみで名前解決できる。
 
-> - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
-> - https://ameblo.jp/bakery-diary/entry-12613605860.html
-> - https://eng-blog.iij.ad.jp/archives/9998
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
+> - [DNS for Services and Pods \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services)
+> - [【Kubernetes】Serviceの基本的な考え方とクラスタ内DNS \| 若手エンジニアのブログ](https://ameblo.jp/bakery-diary/entry-12613605860.html)
+> - [あなたの知らないKubernetesのServiceの仕組み \| IIJ Engineers Blog](https://eng-blog.iij.ad.jp/archives/9998)
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44)
 
 #### ▼ `SRV` レコードの場合
 
@@ -176,8 +176,8 @@ DNS レコードタイプごとに、完全修飾ドメイン名が異なる。
 
 Service の `.spec.ports.name` キー数だけ、完全修飾ドメイン名が作成される。
 
-> - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
-> - https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44
+> - [DNS for Services and Pods \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services)
+> - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=44)
 
 <br>
 
@@ -212,7 +212,7 @@ Address:  10.105.157.184
 [root@<Pod名>:~] $ nslookup <Serviceの完全修飾ドメイン名>
 ```
 
-> - https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/
+> - [KubernetesのPod内からの名前解決を検証する](https://blog.mosuke.tech/entry/2020/09/09/kuubernetes-dns-test/)
 > - https://kubernetes.io/docs/tasks/debug-application-cluster/debug-service/#does-the-service-work-by-dns-name
 
 #### ▼ Pod 外から Service に対する正引き名前解決
@@ -252,7 +252,7 @@ $ dig nginx-service.default.svc.cluster.local +short @10.244.0.2
 10.101.67.107
 ```
 
-> - https://zenn.dev/tayusa/articles/c705cd65b6ee74
+> - [KubernetesのServiceの挙動を確認する](https://zenn.dev/tayusa/articles/c705cd65b6ee74)
 
 <br>
 
@@ -312,7 +312,7 @@ Service の名前解決を介さずに、特定の Pod のインスタンスに�
 
 対応する完全修飾ドメイン名は、『`<PodのIPアドレス>.<Namespace名>.pod.cluster.local`』である。
 
-> - https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1
+> - [DNS for Services and Pods \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#a-aaaa-records-1)
 
 <br>
 
@@ -332,7 +332,7 @@ Kubernetes では、Pod の IP アドレスを固定できない。
 
 CoreDNS の名前解決と、Service と kube-proxy による IP アドレスとポート番号の動的な検出を組み合わせることにより、サービス検出を実装できる。
 
-> - https://coredns.io/2017/03/01/coredns-for-kubernetes-service-discovery-take-2/
-> - https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction
+> - [CoreDNS for Kubernetes Service Discovery, Take 2](https://coredns.io/2017/03/01/coredns-for-kubernetes-service-discovery-take-2/)
+> - [CoreDNS GA for Kubernetes Cluster DNS \| Kubernetes](https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction)
 
 <br>

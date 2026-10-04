@@ -17,7 +17,7 @@ description: DDL＠SQLの知見を記録しています。
 
 テーブル、DB オブジェクトの操作、に関するクエリのこと。
 
-> - https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DDL-Data-Definition-Language
+> - [SQLの種類(DDL、DML、DCL) \| 酒と涙とRubyとRailsと](https://morizyun.github.io/database/sql-ddl-dml-dcl.html#DDL-Data-Definition-Language)
 
 <br>
 

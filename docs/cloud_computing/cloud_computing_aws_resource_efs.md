@@ -9,7 +9,7 @@ description: Amazon EFS＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -52,7 +52,7 @@ description: Amazon EFS＠AWSリソースの知見を記録しています。
 
 元の残高は、ファイルシステムのスタンダードストレージクラスのサイズに応じて大きくなる。
 
-> - https://docs.aws.amazon.com/efs/latest/ug/performance.html#efs-burst-credits
+> - [Amazon EFS performance specifications - Amazon Elastic File System](https://docs.aws.amazon.com/efs/latest/ug/performance.html#efs-burst-credits)
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-size.png)
 
@@ -60,7 +60,7 @@ description: Amazon EFS＠AWSリソースの知見を記録しています。
 
 このメトリクスが常に減少し続けている場合はプロビジョニングモードのほうがより適切である。
 
-> - https://docs.aws.amazon.com/efs/latest/ug/performance.html#using-throughputmode
+> - [Amazon EFS performance specifications - Amazon Elastic File System](https://docs.aws.amazon.com/efs/latest/ug/performance.html#using-throughputmode)
 
 <br>
 
@@ -70,7 +70,7 @@ description: Amazon EFS＠AWSリソースの知見を記録しています。
 
 ![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/provisioning-mode_credit-balance-size.png)
 
-> - https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput
+> - [Amazon EFS performance specifications - Amazon Elastic File System](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput)
 
 <br>
 
@@ -85,7 +85,7 @@ description: Amazon EFS＠AWSリソースの知見を記録しています。
 $ mount -t efs -o tls fs-*****:/ /var/www/foo
 ```
 
-> - https://qiita.com/tandfy/items/829f9fcc68c4caabc660
+> - [AWS EFS をEC2にマウントしてみる #AWS - Qiita](https://qiita.com/tandfy/items/829f9fcc68c4caabc660)
 
 <br>
 
@@ -103,6 +103,6 @@ fs-*****.efs.ap-northeast-1.amazonaws.com:/ xxx       xxx  xxx       1%   /var/w
 $ umount /var/www/foo
 ```
 
-> - https://qiita.com/tandfy/items/829f9fcc68c4caabc660
+> - [AWS EFS をEC2にマウントしてみる #AWS - Qiita](https://qiita.com/tandfy/items/829f9fcc68c4caabc660)
 
 <br>

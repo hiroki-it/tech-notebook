@@ -9,7 +9,7 @@ description: データ＠Goの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -353,7 +353,7 @@ func main() {
 }
 ```
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html
+> - [【IT技術の知見】クラス＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
 
 <br>
 
@@ -779,7 +779,7 @@ type slice struct {
 
 ![reference-types_slice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/reference-types_slice.png)
 
-> - https://github.com/golang/go/blob/go1.20.7/src/runtime/slice.go#L15-L19
+> - [go/src/runtime/slice.go at go1.20.7 · golang/go · GitHub](https://github.com/golang/go/blob/go1.20.7/src/runtime/slice.go#L15-L19)
 
 <br>
 
@@ -931,7 +931,7 @@ func main() {
 }
 ```
 
-> - https://kamuycikap.hatenablog.com/entry/2022/12/21/173411
+> - [Go言語スライスの任意の範囲を指定 - Kamuycikap - SentenceDataBase](https://kamuycikap.hatenablog.com/entry/2022/12/21/173411)
 
 #### ▼ `[<数値>:<数値>]`
 
@@ -953,7 +953,7 @@ func main() {
 }
 ```
 
-> - https://kamuycikap.hatenablog.com/entry/2022/12/21/173411
+> - [Go言語スライスの任意の範囲を指定 - Kamuycikap - SentenceDataBase](https://kamuycikap.hatenablog.com/entry/2022/12/21/173411)
 
 <br>
 
@@ -999,7 +999,7 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/mikankitten/articles/cfa2ef834e338e#%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%B9(slice)
+> - [Go: pack/unpack演算子と可変長引数関数・Slice](<https://zenn.dev/mikankitten/articles/cfa2ef834e338e#%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%B9(slice)>)
 
 <br>
 
@@ -1242,17 +1242,17 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE1%3A-%E6%9D%A1%E4%BB%B6%E3%82%92%E5%85%A8%E3%81%A6%E6%BA%80%E3%81%9F%E3%81%99
+> - [【Golang】Goでインターフェースを実装する方法3選](https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE1%3A-%E6%9D%A1%E4%BB%B6%E3%82%92%E5%85%A8%E3%81%A6%E6%BA%80%E3%81%9F%E3%81%99)
 
 #### ▼ インターフェースを構造体に埋め込む
 
 構造体のフィールドとして別のインターフェースを埋め込むことにより、埋め込まれた構造体に処理のすべてを委譲する。
 
-> - https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE2%3A-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%92%E6%A7%8B%E9%80%A0%E4%BD%93%E3%81%AB%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80
+> - [【Golang】Goでインターフェースを実装する方法3選](https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE2%3A-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%92%E6%A7%8B%E9%80%A0%E4%BD%93%E3%81%AB%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80)
 
 #### ▼ インターフェースを実装する構造体を構造体に埋め込む
 
-> - https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE3%3A-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%92%E6%BA%80%E3%81%9F%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E6%A7%8B%E9%80%A0%E4%BD%93%E3%82%92%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80
+> - [【Golang】Goでインターフェースを実装する方法3選](https://zenn.dev/koudai/articles/27f8f64d45c795#%E3%82%84%E3%82%8A%E6%96%B9%E3%81%9D%E3%81%AE3%3A-%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E3%82%92%E6%BA%80%E3%81%9F%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E6%A7%8B%E9%80%A0%E4%BD%93%E3%82%92%E5%9F%8B%E3%82%81%E8%BE%BC%E3%82%80)
 
 <br>
 
@@ -1264,7 +1264,7 @@ func main() {
 
 アップキャストの可否を使用して、意図的にエラーを発生させるテクニックがある。
 
-> - https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance
+> - [guide/style.md at master · uber-go/guide · GitHub](https://github.com/uber-go/guide/blob/master/style.md#verify-interface-compliance)
 
 ```go
 package main
@@ -1372,7 +1372,7 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/syumai/articles/c6q5un1j0msim0aj0ca0
+> - [Go 1.18 で interface{} の代わりに any が使えるようになる話](https://zenn.dev/syumai/articles/c6q5un1j0msim0aj0ca0)
 
 <br>
 

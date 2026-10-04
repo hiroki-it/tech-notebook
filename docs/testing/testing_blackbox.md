@@ -23,7 +23,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![testing_black-box-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_black-box-test.png)
 
-> - https://service.shiftinc.jp/column/4801/
+> - [ホワイトボックステストとは？ブラックボックステストとの違いやその手順、よく使われる手法を解説｜ソフトウェアテストのSHIFT](https://service.shiftinc.jp/column/4801/)
 
 <br>
 
@@ -36,7 +36,7 @@ description: ブラックボックステストの知見を記録しています�
 - 回帰テスト
 - システムテスト
 
-> - https://service.shiftinc.jp/column/4801/
+> - [ホワイトボックステストとは？ブラックボックステストとの違いやその手順、よく使われる手法を解説｜ソフトウェアテストのSHIFT](https://service.shiftinc.jp/column/4801/)
 
 <br>
 
@@ -51,8 +51,8 @@ description: ブラックボックステストの知見を記録しています�
 | ステージング環境 (ユーザー受け入れ環境)   | `stg` (`ua`)   | システムの依頼者が社外にいる場合に『ユーザー受け入れ (UA) 環境』ともいう。共有の環境であり、システムの依頼者が社内にいる場合に、その依頼者が動作を確認するために使用する。 |
 | 本番環境                                  | `prd`          | インターネットに公開された環境であり、Testing in production を採用する場合は、一般のユーザーに動作を確認してもらう。                                                       |
 
-> - https://note.com/gunj/n/nf139710d0e4a
-> - https://www-creators.com/archives/780
+> - [開発環境、テスト環境、ステージング環境、本番環境について｜gun](https://note.com/gunj/n/nf139710d0e4a)
+> - [ステージング環境とは？開発環境、検証環境との違いと役割 \| WWWクリエイターズ](https://www-creators.com/archives/780)
 > - https://www.quora.com/What-is-difference-between-testing-environment-and-staging
 
 <br>
@@ -69,7 +69,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
-> - https://pm-rasinban.com/ut-it-st
+> - [単体テスト・結合テスト・総合テストの違い、観点や注意点を簡単に説明する \| 若手エンジニアの羅針盤](https://pm-rasinban.com/ut-it-st)
 
 <br>
 
@@ -81,8 +81,8 @@ description: ブラックボックステストの知見を記録しています�
 | ------------ | -------------------------------------------------------- |
 | 正常系       | 特定のシステムコンポーネントの処理を正しく操作できるか。 |
 
-> - https://webrage.jp/techblog/non_functional_testing
-> - https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6
+> - [非機能テストについて - ソフトウェアテスト・第三者検証ならデロイト トーマツ ウェブレッジ](https://webrage.jp/techblog/non_functional_testing)
+> - [誤解されることが多い「テスト自動化」の範囲について #Selenium - Qiita](https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6)
 
 #### ▼ 非機能テスト
 
@@ -90,8 +90,8 @@ description: ブラックボックステストの知見を記録しています�
 | ------------ | ------------------------------------------------------------------ |
 | 正常系       | 特定のシステムコンポーネントのヘルスチェックが正常になっているか。 |
 
-> - https://webrage.jp/techblog/non_functional_testing
-> - https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E9%9D%9E%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6
+> - [非機能テストについて - ソフトウェアテスト・第三者検証ならデロイト トーマツ ウェブレッジ](https://webrage.jp/techblog/non_functional_testing)
+> - [誤解されることが多い「テスト自動化」の範囲について #Selenium - Qiita](https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E9%9D%9E%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6)
 
 <br>
 
@@ -107,7 +107,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
-> - https://pm-rasinban.com/ut-it-st
+> - [単体テスト・結合テスト・総合テストの違い、観点や注意点を簡単に説明する \| 若手エンジニアの羅針盤](https://pm-rasinban.com/ut-it-st)
 
 <br>
 
@@ -119,8 +119,8 @@ description: ブラックボックステストの知見を記録しています�
 | ------------ | -------------------------------------------------- |
 | 正常系       | システムコンポーネント間の処理を正しく操作できるか |
 
-> - https://webrage.jp/techblog/non_functional_testing
-> - https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6
+> - [非機能テストについて - ソフトウェアテスト・第三者検証ならデロイト トーマツ ウェブレッジ](https://webrage.jp/techblog/non_functional_testing)
+> - [誤解されることが多い「テスト自動化」の範囲について #Selenium - Qiita](https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6)
 
 #### ▼ 非機能テスト
 
@@ -128,8 +128,8 @@ description: ブラックボックステストの知見を記録しています�
 | ------------ | -------------------------------------------------- |
 | 正常系       | システムコンポーネント間でまさしく連携できているか |
 
-> - https://webrage.jp/techblog/non_functional_testing
-> - https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E9%9D%9E%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6
+> - [非機能テストについて - ソフトウェアテスト・第三者検証ならデロイト トーマツ ウェブレッジ](https://webrage.jp/techblog/non_functional_testing)
+> - [誤解されることが多い「テスト自動化」の範囲について #Selenium - Qiita](https://qiita.com/gevanni/items/ff9a27936a1a6df28b9a#-%E9%9D%9E%E6%A9%9F%E8%83%BD%E8%A6%81%E4%BB%B6)
 
 <br>
 
@@ -169,7 +169,7 @@ description: ブラックボックステストの知見を記録しています�
 
 ![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p496.jpg)
 
-> - https://www.amazon.co.jp/dp/4297124513
+> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
 <br>
 
@@ -295,6 +295,6 @@ metrics-server のテストケースを示す。
 
 ## 05. システムテスト (システムテスト)
 
-> - https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html
+> - [【IT技術の知見】システムテスト＠ブラックボックステスト - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/testing/testing_blackbox_system_test.html)
 
 <br>

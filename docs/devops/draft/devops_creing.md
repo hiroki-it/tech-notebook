@@ -9,7 +9,7 @@ description: CREing：Customer Reliability Engineering＠DevOpsの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,8 +23,8 @@ description: CREing：Customer Reliability Engineering＠DevOpsの知見を記�
 
 (DevOps の実装ではないかもしれない)
 
-> - https://blog.cba-japan.com/cre/
-> - https://hatena.co.jp/recruit/career/cre
-> - https://zenn.dev/loglass/articles/cre-1-year-furikaeri
+> - [CREという新たな職種でエンジニアとカスタマーサポートの「スキマ」を埋める｜CBA](https://blog.cba-japan.com/cre/)
+> - [CRE (Customer Reliability Engineer) 職 採用 - 採用情報 - 株式会社はてな](https://hatena.co.jp/recruit/career/cre)
+> - [CREを1年間やってみたふりかえり](https://zenn.dev/loglass/articles/cre-1-year-furikaeri)
 
 <br>

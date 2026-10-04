@@ -9,7 +9,7 @@ description: 回復方法＠信頼性の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -68,7 +68,7 @@ description: 回復方法＠信頼性の知見を記録しています。
 
 > - https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns
 > - https://medium.com/@kumar.atul.2122/timeout-pattern-resilience-microservice-design-pattern-aa7f084bcc66
-> - https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8%E3%81%AF%E5%8D%B1%E9%99%BA%E3%81%A7%E3%81%82%E3%82%8B
+> - [Webアプリケーションにおけるタイムアウトについて](https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%97%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8%E3%81%AF%E5%8D%B1%E9%99%BA%E3%81%A7%E3%81%82%E3%82%8B)
 
 <br>
 
@@ -128,7 +128,7 @@ description: 回復方法＠信頼性の知見を記録しています。
 
 マイクロサービスアーキテクチャでは、上流の通信元マイクロサービスほど処理タイムアウト時間を長くし、下流の宛先マイクロサービスほど短くする (アイドルタイムアウトと逆の設計) 。
 
-> - https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E5%87%A6%E7%90%86%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88
+> - [Webアプリケーションにおけるタイムアウトについて](https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E5%87%A6%E7%90%86%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88)
 
 #### ▼ 接続タイムアウト (Connection timeout)
 
@@ -140,8 +140,8 @@ TCP 接続の確立中、メモリ上で送信データが保持されており�
 
 これを解放する必要がある。
 
-> - https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E6%8E%A5%E7%B6%9A%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88
-> - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14128960434
+> - [Webアプリケーションにおけるタイムアウトについて](https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E6%8E%A5%E7%B6%9A%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88)
+> - [セッションタイムアウトの時間を長くするこで、メモリが不足すると聞きま... - Yahoo!知恵袋](https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q14128960434)
 
 #### ▼ 読み取りタイムアウト (Read timeout)
 
@@ -151,13 +151,13 @@ TCP 接続の確立中、メモリ上で送信データが保持されており�
 
 HTTP リクエストのステータスコードでは、Gateway Timeout (`504`) が相当する。
 
-> - https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%83%AA%E3%83%BC%E3%83%89%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88
+> - [Webアプリケーションにおけるタイムアウトについて](https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%83%AA%E3%83%BC%E3%83%89%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88)
 
 #### ▼ セッションタイムアウト (Session timeout)
 
 通信処理で、L7 のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3 など) による認証後に、無通信状態 (パケットの送受信がない状態) や経過時間を猶予する最大時間である。
 
-> - https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88
+> - [Webアプリケーションにおけるタイムアウトについて](https://zenn.dev/yktakaha4/articles/learn_about_web_application_timeouts#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%BF%E3%82%A4%E3%83%A0%E3%82%A2%E3%82%A6%E3%83%88)
 
 #### ▼ アイドルタイムアウト (Idle timeout)
 
@@ -165,7 +165,7 @@ TCP 接続の確立後、無通信状態 (パケットの送受信がない状�
 
 マイクロサービスアーキテクチャでは、上流の通信元コンポーネントほどアイドルタイムアウト時間を短くし、下流の宛先コンポーネントほど長くする (処理タイムアウトと逆の設計) 。
 
-> - https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/edit-load-balancer-attributes.html#connection-idle-timeout
+> - [Application Load Balancer の属性を編集する - Elastic Load Balancing](https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/edit-load-balancer-attributes.html#connection-idle-timeout)
 
 <br>
 
@@ -199,7 +199,7 @@ blast-radius を最小限にできる。
 ![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png)
 
 > - https://www.geeksforgeeks.org/retry-pattern-in-microservices/
-> - https://digitalvarys.com/what-is-circuit-breaker-design-pattern/
+> - [What is Circuit Breaker Design Pattern? - Digital Varys](https://digitalvarys.com/what-is-circuit-breaker-design-pattern/)
 
 <br>
 
@@ -221,9 +221,9 @@ blast-radius を最小限にできる。
 - キャッシュを使用した前回の処理結果
 - ユーザーによらないデータ (広告、ランキングなど)
 
-> - https://engineering.mercari.com/blog/entry/2018-12-23-150000/
+> - [回復性の高いMicroservicesアーキテクチャを支える技術 \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/2018-12-23-150000/)
 > - https://www.geeksforgeeks.org/microservices-resilience-patterns/#properly-explain-common-resilience-patterns
-> - https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern
+> - [サーキット ブレーカー パターンの実装 - .NET \| Microsoft Learn](https://learn.microsoft.com/ja-jp/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern)
 
 <br>
 
@@ -234,7 +234,7 @@ blast-radius を最小限にできる。
 区画はマイクロサービスの分割単位 (例：境界づけられたコンテキスト) に合わせるとよい。
 
 > - https://www.geeksforgeeks.org/bulkhead-pattern/
-> - https://learn.microsoft.com/ja-jp/azure/architecture/patterns/bulkhead#issues-and-considerations
+> - [バルクヘッド パターン - Azure Architecture Center \| Microsoft Learn](https://learn.microsoft.com/ja-jp/azure/architecture/patterns/bulkhead#issues-and-considerations)
 
 <br>
 

@@ -9,7 +9,7 @@ description: Pythonの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -141,8 +141,8 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--reload"]
 Python の命名規則は、PEP に記載されている。
 
 > - https://www.python.org/dev/peps/pep-0007/
-> - https://pep8-ja.readthedocs.io/ja/latest/
-> - https://qiita.com/naomi7325/items/4eb1d2a40277361e898b
+> - [はじめに — pep8-ja 1.0 ドキュメント](https://pep8-ja.readthedocs.io/ja/latest/)
+> - [Python命名規則一覧 #コーディング規約 - Qiita](https://qiita.com/naomi7325/items/4eb1d2a40277361e898b)
 
 #### ▼ パッケージ
 
@@ -188,7 +188,7 @@ Python の命名規則は、PEP に記載されている。
 
 ディレクトリに相当する。
 
-> - https://docs.python.org/ja/3/reference/import.html#packages
+> - [5. インポートシステム — Python 3.14.8 ドキュメント](https://docs.python.org/ja/3/reference/import.html#packages)
 
 #### ▼ 基本的には `__init__.py` ファイルを配置すること
 
@@ -199,7 +199,7 @@ Python の命名規則は、PEP に記載されている。
 一方で、名前空間パッケージではこれが不要である。
 
 > - https://stackoverflow.com/questions/37139786/is-init-py-not-required-for-packages-in-python-3-3
-> - https://rinatz.github.io/python-book/ch04-02-packages/
+> - [4.2. パッケージ - ゼロから学ぶ Python](https://rinatz.github.io/python-book/ch04-02-packages/)
 
 <br>
 
@@ -209,8 +209,8 @@ Python の命名規則は、PEP に記載されている。
 
 パッケージ内の各ファイルに相当する。
 
-> - https://rinatz.github.io/python-book/ch04-01-modules/
-> - https://qiita.com/msi/items/d91ea3900373ff8b09d7
+> - [4.1. モジュール - ゼロから学ぶ Python](https://rinatz.github.io/python-book/ch04-01-modules/)
+> - [Python の \_\_init\_\_.py とは何なのか #Python - Qiita](https://qiita.com/msi/items/d91ea3900373ff8b09d7)
 
 <br>
 
@@ -226,13 +226,13 @@ Python の命名規則は、PEP に記載されている。
 from <パッケージ名>.<サブパッケージ名>.<モジュール名> import <クラス名、関数名>
 ```
 
-> - https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30
+> - [Pythonインポート周り徹底理解への道 #Python3 - Qiita](https://qiita.com/papi_tokei/items/bc34d798dc7a6d49df30)
 
 #### ▼ アスタリスクを使用しないこと
 
 アスタリスクによるインポートは非推奨である。
 
-> - https://python.civic-apps.com/wildcard-import/
+> - [ワイルドカードインポート(import \*)は推奨されない \| Python Snippets](https://python.civic-apps.com/wildcard-import/)
 
 #### ▼ 絶対パスを使用すること
 
@@ -273,7 +273,7 @@ def bar():
 
 複数のパッケージをインポートする場合、カンマで繋ぐこともできるが、`1` 個ずつインポートしたほうがよい。
 
-> - https://www.tech-teacher.jp/blog/python-import/
+> - [マスターしよう！Pythonでimportを使う方法について徹底解説！ - DS Media by Tech Teacher](https://www.tech-teacher.jp/blog/python-import/)
 
 ```python
 # import foo, bar
@@ -301,6 +301,6 @@ print("foo", flush=True)
 ```
 
 > - https://stackoverflow.com/questions/230751/how-can-i-flush-the-output-of-the-print-function
-> - https://jitaku.work/it/language/python/print-flush/
+> - [Python の Print文 で Flushする方法](https://jitaku.work/it/language/python/print-flush/)
 
 <br>

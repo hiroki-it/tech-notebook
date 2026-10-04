@@ -9,7 +9,7 @@ description: リソース定義＠SecretsストアCSIドライバーの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -29,7 +29,7 @@ $ helm repo update
 $ helm install <Helmリリース名> <チャートリポジトリ名>/secrets-store-csi-driver -n kube-system --version <バージョンタグ>
 ```
 
-> - https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html
+> - [Installation - Secrets Store CSI Driver](https://secrets-store-csi-driver.sigs.k8s.io/getting-started/installation.html)
 
 #### ▼ Amazon EKS 専用のチャートとして
 
@@ -49,7 +49,7 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/secrets-st
 $ kubectl apply -f https://raw.githubusercontent.com/aws/secrets-store-csi-driver-provider-aws/main/deployment/aws-provider-installer.yaml
 ```
 
-> - https://github.com/aws/secrets-store-csi-driver-provider-aws
+> - [GitHub - aws/secrets-store-csi-driver-provider-aws: The AWS provider for the Secrets Store CSI Driver allows you to fetch secrets from AWS Secrets Manager and AWS Systems Manager Parameter Store, and mount them into Kubernetes pods. · GitHub](https://github.com/aws/secrets-store-csi-driver-provider-aws)
 
 <br>
 
@@ -87,7 +87,7 @@ spec:
           secretProviderClass: foo-aws-secret-provider-class
 ```
 
-> - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-secrets-manager%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
+> - [Secrets Store CSI DriverでKubernetesのシークレット情報を管理する \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-secrets-manager%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B)
 > - https://innablr.com.au/blog/what-is-secret-management-and-how-to-integrate-with-k8s-part-2/
 
 <br>
@@ -109,7 +109,7 @@ metadata:
   namespace: foo-namespace # Pod と同じ Namespace
 ```
 
-> - https://www.bigtreetc.com/column/eks-secrets/
+> - [株式会社ビッグツリーテクノロジー＆コンサルティング \| AWS Secrets Managerを使用したKubernetes Secret管理](https://www.bigtreetc.com/column/eks-secrets/)
 
 <br>
 
@@ -128,7 +128,7 @@ spec:
   provider: aws
 ```
 
-> - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+> - [Concepts - Secrets Store CSI Driver](https://secrets-store-csi-driver.sigs.k8s.io/concepts.html)
 
 <br>
 
@@ -138,7 +138,7 @@ spec:
 
 プロバイダーに応じて、参照する Secret のデータを設定する。
 
-> - https://secrets-store-csi-driver.sigs.k8s.io/concepts.html
+> - [Concepts - Secrets Store CSI Driver](https://secrets-store-csi-driver.sigs.k8s.io/concepts.html)
 
 #### ▼ objects (AWS プロバイダーの場合)
 
@@ -161,7 +161,7 @@ spec:
 ```
 
 > - https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_SecretProviderClass
-> - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-secrets-manager%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
+> - [Secrets Store CSI DriverでKubernetesのシークレット情報を管理する \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-secrets-manager%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B)
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1
@@ -180,7 +180,7 @@ spec:
 ```
 
 > - https://docs.aws.amazon.com/systems-manager/latest/userguide/integrating_csi_driver.html#integrating_csi_driver_mount
-> - https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-systems-manager-parameter-store%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B
+> - [Secrets Store CSI DriverでKubernetesのシークレット情報を管理する \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/07/13/secrets-store-csi-driver-intro/#aws-systems-manager-parameter-store%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%AF%E3%83%AC%E3%83%83%E3%83%88%E6%83%85%E5%A0%B1%E3%82%92%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B)
 
 #### ▼ objects (Google Cloud プロバイダーの場合)
 

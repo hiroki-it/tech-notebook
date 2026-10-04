@@ -9,7 +9,7 @@ description: AWS EBS CSIドライバー＠Amazon EKSアドオンの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -111,7 +111,7 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 }
 ```
 
-> - https://kubernetes.io/docs/concepts/storage/storage-classes/
+> - [Storage Classes \| Kubernetes](https://kubernetes.io/docs/concepts/storage/storage-classes/)
 > - https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/storage_class#example-usage
 
 別途、AWS EBS CSI ドライバーの Pod に紐付ける ServiceAccount を作成し、IAM ロールの ARN を設定する。
@@ -144,9 +144,9 @@ $ helm repo update
 $ helm install <Helmリリース名> <リポジトリ名>/aws-ebs-csi-driver -n kube-system --version=<バージョンタグ>
 ```
 
-> - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/charts/aws-ebs-csi-driver
-> - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md#helm
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - [aws-ebs-csi-driver/charts/aws-ebs-csi-driver at master · kubernetes-sigs/aws-ebs-csi-driver · GitHub](https://github.com/kubernetes-sigs/aws-ebs-csi-driver/tree/master/charts/aws-ebs-csi-driver)
+> - [aws-ebs-csi-driver/docs/install.md at master · kubernetes-sigs/aws-ebs-csi-driver · GitHub](https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md#helm)
+> - [ストレージ - AWS EBS \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
 <br>
 
@@ -212,7 +212,7 @@ spec:
     volumeHandle: vol-*****
 ```
 
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - [ストレージ - AWS EBS \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
 #### ▼ PersistentVolumeClaim
 
@@ -272,7 +272,7 @@ spec:
             claimName: foo-persistent-volume-claim
 ```
 
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - [ストレージ - AWS EBS \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
 <br>
 
@@ -329,8 +329,8 @@ resource "kubernetes_storage_class" "gp3_encrypted" {
 }
 ```
 
-> - https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues/1071
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - [EBS drive not removed from AWS when Retain policy used · Issue #1071 · kubernetes-sigs/aws-ebs-csi-driver · GitHub](https://github.com/kubernetes-sigs/aws-ebs-csi-driver/issues/1071)
+> - [ストレージ - AWS EBS \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#ebs-csi%E3%83%89%E3%83%A9%E3%82%A4%E3%83%90%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
 #### ▼ PersistentVolumeClaim
 
@@ -388,6 +388,6 @@ spec:
             claimName: foo-persistent-volume-claim
 ```
 
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0
+> - [ストレージ - AWS EBS \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/storage/ebs/#%E5%8B%95%E7%9A%84%E3%83%97%E3%83%AD%E3%83%93%E3%82%B8%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0)
 
 <br>

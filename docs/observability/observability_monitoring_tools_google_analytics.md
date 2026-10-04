@@ -9,7 +9,7 @@ description: Googleアナリティクス＠監視ツールの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -50,7 +50,7 @@ Google アナリティクスで、メトリクスの元になるデータポイ�
 </head>
 ```
 
-> - https://wacul-ai.com/blog/access-analysis/google-analytics-method/what-is-tracking-code/
+> - [Googleアナリティクスのトラッキングコードとは？確認・発行・設置方法まで徹底解説！ - アクセス解析ツール「AIアナリスト」ブログ](https://wacul-ai.com/blog/access-analysis/google-analytics-method/what-is-tracking-code/)
 
 <br>
 

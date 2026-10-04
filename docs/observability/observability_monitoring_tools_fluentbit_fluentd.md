@@ -9,7 +9,7 @@ description: FluentBit/Fluentd＠監視ツールの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -35,9 +35,9 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 補足として、AWS Kinesis Data Firehose も似たようなバッファリングとルーティングの仕組みを持っている。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html
-> - https://zenn.dev/taisho6339/articles/eff38b47cbdbcb#(2)-%E3%83%90%E3%83%83%E3%83%95%E3%82%A1%E3%81%95%E3%82%8C%E3%81%9F%E6%9C%AA%E9%80%81%E4%BF%A1%E3%81%AE%E3%83%AD%E3%82%B0%E3%81%AE%E6%90%8D%E5%A4%B1%E3%82%92%E9%98%B2%E3%81%90
-> - https://docs.fluentbit.io/manual/about/fluentd-and-fluent-bit
+> - [増えるログ、多様化するログをどう効率的に運用するか：今さら聞けないfluentd〜クラウド時代のログ管理入門（1）（1/2 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1402/06/news007.html)
+> - [KubernetesでFluentdの信頼性を担保するための3つの観点](<https://zenn.dev/taisho6339/articles/eff38b47cbdbcb#(2)-%E3%83%90%E3%83%83%E3%83%95%E3%82%A1%E3%81%95%E3%82%8C%E3%81%9F%E6%9C%AA%E9%80%81%E4%BF%A1%E3%81%AE%E3%83%AD%E3%82%B0%E3%81%AE%E6%90%8D%E5%A4%B1%E3%82%92%E9%98%B2%E3%81%90>)
+> - [Fluentd and Fluent Bit \| Fluent Bit: Official Manual](https://docs.fluentbit.io/manual/about/fluentd-and-fluent-bit)
 
 <br>
 
@@ -47,7 +47,7 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 ![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture_buffer.png)
 
-> - https://www.alpha.co.jp/blog/202103_01
+> - [クラウドにログを保管する仕組みから、敢えてKinesis Data Firehoseを外す - アルファテックブログ](https://www.alpha.co.jp/blog/202103_01)
 
 <br>
 
@@ -61,7 +61,7 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 ![fluent-bit_fluentd_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_message-queue.png)
 
-> - https://www.forcia.com/blog/001316.html
+> - [フォルシアのログ分析基盤チームがアーキテクチャを振り返る│FORCIA CUBE│フォルシア株式会社](https://www.forcia.com/blog/001316.html)
 
 <br>
 
@@ -92,7 +92,7 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 ![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_agent-pattern.png)
 
-> - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
+> - [Common Architecture Patterns with Fluentd and Fluent Bit](https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/)
 
 #### ▼ エージェントパターンの実装例
 
@@ -114,8 +114,8 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 | アプリごとの設定カスタマイズ度が高い      |            ⭕️            |         △          |
 | 単純性が高い                              |            ×             |         ⭕️         |
 
-> - https://codersociety.com/blog/articles/kubernetes-logging
-> - https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411
+> - [Kubernetes Logging in Production — Coder Society](https://codersociety.com/blog/articles/kubernetes-logging)
+> - [Comprehensive Analysis of Kubernetes Log Collection Principles - Alibaba Cloud Community](https://www.alibabacloud.com/blog/comprehensive-analysis-of-kubernetes-log-collection-principles_599411)
 > - https://www.reddit.com/r/kubernetes/comments/ixebxw/can_someone_explain_me_about_pros_and_cons_of/
 
 <br>
@@ -134,7 +134,7 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 ![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
 
-> - https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/
+> - [Common Architecture Patterns with Fluentd and Fluent Bit](https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/)
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works
 
 #### ▼ フォワーダーアグリゲーターパターンの実装例

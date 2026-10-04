@@ -9,7 +9,7 @@ description: JavaScript＠Keycloakクライアントの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -77,7 +77,7 @@ const authLink = setContext((_, {headers}) => {
 ```
 
 > - https://www.keycloak.org/docs/latest/securing_apps/#using-the-adapter
-> - https://qiita.com/mamomamo/items/cdde95feffbb5e524fd4#keycloak%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%BD%9C%E6%88%90
+> - [Keycloakのクライアント・アダプターを試してみる（Angular編） #Angular - Qiita](https://qiita.com/mamomamo/items/cdde95feffbb5e524fd4#keycloak%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%BD%9C%E6%88%90)
 > - https://gitlab.com/gihyo-ms-dev-book/showcase/all-in-one/application/frontend/-/blob/main/src/index.js?ref_type=heads#L49-68
 
 <br>

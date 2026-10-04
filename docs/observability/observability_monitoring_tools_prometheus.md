@@ -9,7 +9,7 @@ description: Prometheus＠監視ツール
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,9 +25,9 @@ Kubernetes リソースに関するメトリクスの元になるデータポイ
 
 ![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_architecture.png)
 
-> - https://danielfm.me/prometheus-for-developers/
-> - https://prometheus.io/docs/introduction/overview/
-> - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
+> - [https://danielfm.me/posts/prometheus-for-developers/](https://danielfm.me/prometheus-for-developers/)
+> - [Overview \| Prometheus](https://prometheus.io/docs/introduction/overview/)
+> - [Prometheusのクエリ機能とアラート機能 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/11635/#Prometheus-3)
 
 <br>
 
@@ -43,8 +43,8 @@ Kubernetes リソースに関するメトリクスの元になるデータポイ
 
 例えば、prometheus-operator を使用した場合は、各コンポーネントのデフォルト値は、`/etc/prometheus/prometheus.yml` ファイルで定義する。
 
-> - https://knowledge.sakura.ad.jp/27501/#Prometheus_Server
-> - https://www.techscore.com/blog/2017/12/07/prometheus-monitoring-setting/
+> - [今日から始めるPrometheusによるシステム監視(1) 〜Prometheusの特徴とアーキテクチャ〜 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/27501/#Prometheus_Server)
+> - [Prometheus 監視をまるっと設定 \| TECHSCORE BLOG](https://www.techscore.com/blog/2017/12/07/prometheus-monitoring-setting/)
 
 <br>
 
@@ -85,8 +85,8 @@ prometheus-prometheus-kube-prometheus-prometheus-operator.yaml
 prometheus-prometheus-kube-prometheus-prometheus.yaml
 ```
 
-> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
-> - https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
+> - [Defining recording rules \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/)
+> - [Alerting rules \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
 
 <br>
 
@@ -133,7 +133,7 @@ Prometheus は、収集したデータポイントをデフォルトで `2` 時�
 
 これにより、Prometheus で障害が発生し、メモリ上のブロックが削除されてしまっても、ストレージからブロックを復元できる。
 
-> - https://prometheus.io/docs/prometheus/latest/storage/#local-storage
+> - [Storage \| Prometheus](https://prometheus.io/docs/prometheus/latest/storage/#local-storage)
 
 ```yaml
 data/
@@ -171,11 +171,11 @@ TSDB のディレクトリは Node にマウントされるため、Node のス�
 
 ストレージサイズが大きすぎると、Prometheus のコンテナは起動できなくなる場合がある。その場合は Node 側でメトリクスブロックを削除する。
 
-> - https://github.com/prometheus/prometheus/issues/8298#issuecomment-747603392
+> - [CrashLoop with "unexpected fault address 0x7f15db1b1000" · Issue #8298 · prometheus/prometheus · GitHub](https://github.com/prometheus/prometheus/issues/8298#issuecomment-747603392)
 
 対処方法として、データポイント数を減らし、データポイント全体のデータサイズを小さくするとよい。
 
-> - https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/
+> - [Who murdered my lovely Prometheus container in Kubernetes cluster?](https://engineering.linecorp.com/en/blog/prometheus-container-kubernetes-cluster/)
 
 <br>
 
@@ -197,7 +197,7 @@ Prometheus では、TSDB (`data` ディレクトリ配下) を採用している
 | `2022-01-02` | `foo-cluster` | `foo-namespace` | ... | `20` | `30`   |
 
 > - https://db-engines.com/en/system/InfluxDB%3BLevelDB%3BPrometheus
-> - https://www.alibabacloud.com/blog/key-concepts-and-features-of-time-series-databases_594734
+> - [Key Concepts and Features of Time Series Databases - Alibaba Cloud Community](https://www.alibabacloud.com/blog/key-concepts-and-features-of-time-series-databases_594734)
 
 <br>
 
@@ -215,9 +215,9 @@ Prometheus と外部の TSDB の両方を冗長化する場合、冗長化され
 
 ![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_remote-storage.png)
 
-> - https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations
-> - https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage
-> - https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case
+> - [Storage \| Prometheus](https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations)
+> - [Integrations \| Prometheus](https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage)
+> - [Introducing Prometheus Agent Mode, an Efficient and Cloud-Native Way for Metric Forwarding \| Prometheus](https://prometheus.io/blog/2021/11/16/agent/#history-of-the-forwarding-use-case)
 
 <br>
 
@@ -231,7 +231,7 @@ Prometheus と外部の TSDB の両方を冗長化する場合、冗長化され
 
 ![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_dynamic-queues_shard.png)
 
-> - https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52
+> - [\[Prometheus Meetup#3\] Victoria Metricsで作りあげる大規模・超負荷システムモニタリング基盤 / Monitoring Platform With Victoria Metrics - Speaker Deck](https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52)
 
 #### ▼ リモートストレージの障害時の書き込み待機
 
@@ -243,7 +243,7 @@ Prometheus と外部の TSDB の両方を冗長化する場合、冗長化され
 
 `2` 時間が過ぎると、WAL ファイルは圧縮されて失われる。
 
-> - https://prometheus.io/docs/practices/remote_write/#remote-write-characteristics
+> - [Remote write tuning \| Prometheus](https://prometheus.io/docs/practices/remote_write/#remote-write-characteristics)
 
 <br>
 
@@ -253,7 +253,7 @@ Prometheus は、現在処理中のブロックをメモリ上に保持し、同
 
 そのため、十分量のメモリの割り当てが必要である。
 
-> - https://prometheus.io/docs/prometheus/latest/storage/#on-disk-layout
+> - [Storage \| Prometheus](https://prometheus.io/docs/prometheus/latest/storage/#on-disk-layout)
 
 <br>
 
@@ -263,8 +263,8 @@ Prometheus は、現在処理中のブロックをメモリ上に保持し、同
 
 TSDB のデータサイズがむやみに増えないよう、最低限のレコーディングルールを定義する。
 
-> - https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/
-> - https://training.promlabs.com/training/recording-rules/recording-rules-overview/motivation
+> - [Defining recording rules \| Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/)
+> - [Recording Rules \| Prometheus Trainings by PromLabs](https://training.promlabs.com/training/recording-rules/recording-rules-overview/motivation)
 > - https://chronosphere.io/learn/prometheus-recording-rules-right-tool/
 
 <br>
@@ -279,10 +279,10 @@ Prometheus のアラートを受信し、特定の条件下で通知する。
 
 ![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alertmanager.png)
 
-> - https://prometheus.io/docs/alerting/latest/alertmanager/
-> - https://www.designet.co.jp/ossinfo/alertmanager/
-> - https://knowledge.sakura.ad.jp/11635/#Prometheus-3
-> - https://amateur-engineer-blog.com/alertmanager-silence/
+> - [Alertmanager \| Prometheus](https://prometheus.io/docs/alerting/latest/alertmanager/)
+> - [OSSのアラート管理〜Alertmanager〜 \| OSSのデージーネット](https://www.designet.co.jp/ossinfo/alertmanager/)
+> - [Prometheusのクエリ機能とアラート機能 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/11635/#Prometheus-3)
+> - [【Prometheus】Alertmanagerでアラートを一時的に停止する](https://amateur-engineer-blog.com/alertmanager-silence/)
 
 <br>
 
@@ -313,7 +313,7 @@ alertname="PrometheusRemoteWriteBehind"
 alertname="PrometheusRemoteWriteDesiredShards"
 ```
 
-> - https://amateur-engineer-blog.com/alertmanager-silence/
+> - [【Prometheus】Alertmanagerでアラートを一時的に停止する](https://amateur-engineer-blog.com/alertmanager-silence/)
 
 <br>
 
@@ -323,7 +323,7 @@ alertname="PrometheusRemoteWriteDesiredShards"
 
 Prometheus がプッシュ型収集でメトリクスの元になるデータポイントを収集するためのエンドポイントとして動作する。
 
-> - https://prometheus.io/docs/practices/pushing/
+> - [When to use the Pushgateway \| Prometheus](https://prometheus.io/docs/practices/pushing/)
 
 <br>
 
@@ -333,7 +333,7 @@ Prometheus がプッシュ型収集でメトリクスの元になるデータポ
 
 プル型収集の宛先の IP アドレスが動的に変化する (例：スケーリングなど) 場合、宛先を動的に検出し、データポイントを収集し続けられるようにする。
 
-> - https://christina04.hatenablog.com/entry/prometheus-service-discovery
+> - [Prometheus の監視対象を ServiceDiscovery で動的に設定する - Carpe Diem](https://christina04.hatenablog.com/entry/prometheus-service-discovery)
 
 <br>
 
@@ -343,6 +343,6 @@ Prometheus のコンポーネントを部分的にマネージドにしたサー
 
 執筆時点 (2023/05/16 時点) では、リモートストレージ、Alertmanager をマネージドにしてくれる。
 
-> - https://www.infoq.com/jp/news/2021/01/aws-grafana-prometheus/
+> - [AWS が Amazon Managed Service for Grafana と Amazon Managed Service for Prometheus を発表 - InfoQ](https://www.infoq.com/jp/news/2021/01/aws-grafana-prometheus/)
 
 <br>

@@ -9,7 +9,7 @@ description: Packer＠IaCの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -43,7 +43,7 @@ AWS AMI の作成後、Amazon EC2 を削除する。
 
 ![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packer_aws.png)
 
-> - https://aws.amazon.com/jp/blogs/mt/migrating-from-hashicorp-packer-to-ec2-image-builder/
-> - https://qiita.com/mitzi2funk/items/c963483a11a1912e3c44#01-2-use-case
+> - [Migrating from HashiCorp Packer to EC2 Image Builder \| AWS Cloud Operations Blog](https://aws.amazon.com/jp/blogs/mt/migrating-from-hashicorp-packer-to-ec2-image-builder/)
+> - [Packer初歩的な利用方法 #AWS - Qiita](https://qiita.com/mitzi2funk/items/c963483a11a1912e3c44#01-2-use-case)
 
 <br>

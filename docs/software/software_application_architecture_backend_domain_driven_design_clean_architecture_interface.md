@@ -9,7 +9,7 @@ description: インターフェース層＠クリーンアーキテクチャの�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -57,7 +57,7 @@ SSO の場合を選んだユーザーの場合、ID プロバイダーから取�
 
 補足として、アウトプットバウンダリはプレゼンターのインターフェースのため、プレゼンターを使用しなければ、アウトプットバウンダリも使用しない。
 
-> - https://izumisy.work/entry/2019/12/12/000521
+> - [クリーンアーキテクチャのUsecaseはなぜControllerへ値を返すのではなくOutput PortとしてPresenterを呼び出すのか - Runner in the High](https://izumisy.work/entry/2019/12/12/000521)
 > - https://codezine.jp/article/detail/9749
 
 <br>

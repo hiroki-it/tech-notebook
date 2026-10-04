@@ -9,7 +9,7 @@ description: Cloud Logging＠Google Cloudリソースの知見を記録してい
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -33,8 +33,8 @@ Cloud Logging でログを処理するための API (`logging.googleapis.com`) �
 | ログルーター、シンク   | 合致した文字列を持つログをトリガーとして、指定した Pub/Sub トピックに振り分ける。                                                          |
 | ログストレージ         | ログを保管する。                                                                                                                           |
 
-> - https://cloud.google.com/logging/docs
-> - https://blog.querier.io/posts/detail/1cgugqqa1ujf/
+> - [Cloud Logging documentation \| Google Cloud Documentation](https://cloud.google.com/logging/docs)
+> - [Cloud Loggingで収集したログをCloud Pub/SubとCloud Functionsを使ってSlackに通知する - Querierブログ](https://blog.querier.io/posts/detail/1cgugqqa1ujf/)
 
 <br>
 
@@ -59,8 +59,8 @@ Cloud Logging でログを処理するための API (`logging.googleapis.com`) �
 
 ![google_cloud_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_logging.png)
 
-> - https://dev.to/alvardev/gcp-cloud-logging-the-basis-45eh
-> - https://cloud.google.com/blog/ja/products/management-tools/automate-your-response-to-a-cloud-logging-event
+> - [GCP Cloud Logging: The Basis - DEV Community](https://dev.to/alvardev/gcp-cloud-logging-the-basis-45eh)
+> - [Cloud Logging のイベントをリアルタイムで検出して対応する \| Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/products/management-tools/automate-your-response-to-a-cloud-logging-event)
 
 #### ▼ ログシンクフィルター
 
@@ -142,9 +142,9 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
 }
 ```
 
-> - https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry
-> - https://cloud.google.com/logging/docs/structured-logging?hl=ja#special-payload-fields
-> - https://qiita.com/ys_nishida/items/8b5274d8f3ec740ffa16
+> - [LogEntry \| Cloud Logging \| Google Cloud Documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry)
+> - [構造化ロギング \| Cloud Logging \| Google Cloud Documentation](https://cloud.google.com/logging/docs/structured-logging?hl=ja#special-payload-fields)
+> - [fluentd で Cloud logging(旧:Stackdriver) にログを送る #GoogleCloud - Qiita](https://qiita.com/ys_nishida/items/8b5274d8f3ec740ffa16)
 
 <br>
 
@@ -152,7 +152,7 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
 
 #### ▼ レシピ
 
-> - https://cloud.google.com/logging/docs/view/query-library#container_queries
+> - [Sample queries \| Cloud Logging \| Google Cloud Documentation](https://cloud.google.com/logging/docs/view/query-library#container_queries)
 
 #### ▼ テキスト検索
 
@@ -170,7 +170,7 @@ resource.labels.pod_name: "pod"
 ```
 
 > - https://tools.bigwave.biz/notes/blog/posts/gcp_logging_query
-> - https://qiita.com/shigeru10/items/f54455e02e9d93e9ba4c
+> - [GCP Loggingで該当のurlのみのログを取得する #GoogleCloud - Qiita](https://qiita.com/shigeru10/items/f54455e02e9d93e9ba4c)
 
 #### ▼ 正規表現
 
@@ -193,7 +193,7 @@ resource.labels.pod_name=~"pod$"
 resource.labels.pod_name=~".*pod.*"
 ```
 
-> - https://cloud.google.com/logging/docs/view/logging-query-language#regular-expressions
+> - [Logging query language \| Google Cloud Documentation](https://cloud.google.com/logging/docs/view/logging-query-language#regular-expressions)
 > - https://stackoverflow.com/questions/71922754/google-cloud-platform-logging-how-to-search-wildcard-strings-in-all-logs
 
 #### ▼ 除外

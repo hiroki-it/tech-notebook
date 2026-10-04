@@ -9,7 +9,7 @@ description: ログ＠Datadogの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,7 +31,7 @@ description: ログ＠Datadogの知見を記録しています。
 
 : ユーザーは、ログの属性値を基に、ログを検索できるようになる。
 
-> - https://developers.cyberagent.co.jp/blog/archives/12565/
+> - [Datadog Logsでアプリケーションログを管理する \| CyberAgent Developers Blog](https://developers.cyberagent.co.jp/blog/archives/12565/)
 
 <br>
 
@@ -49,7 +49,7 @@ description: ログ＠Datadogの知見を記録しています。
 
 : ユーザーは、ログの属性値を基に、ログを検索できるようになる。
 
-> - https://qiita.com/komtaki/items/a2d3f06e2265e55b0c08#2-js%E3%83%AD%E3%82%AC%E3%83%BC%E3%81%AE%E6%A7%8B%E7%AF%89
+> - [DatadogでフロントエンドのJSエラーを収集してサービス改善 #JavaScript - Qiita](https://qiita.com/komtaki/items/a2d3f06e2265e55b0c08#2-js%E3%83%AD%E3%82%AC%E3%83%BC%E3%81%AE%E6%A7%8B%E7%AF%89)
 
 <br>
 
@@ -110,8 +110,8 @@ Cluster やワーカーNode からメトリクスを受信し、コントロー�
 
 ![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
 
-> - https://www.datadoghq.com/ja/blog/datadog-cluster-agent/
-> - https://blog.serverworks.co.jp/k8s-datadog
+> - [Datadog Cluster Agent のご紹介 \| Datadog](https://www.datadoghq.com/ja/blog/datadog-cluster-agent/)
+> - [KubernetesのDatadogAgentインストール手順 - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/k8s-datadog)
 
 #### ▼ Kubernetes + Istio の場合
 
@@ -119,7 +119,7 @@ Cluster やワーカーNode からメトリクスを受信し、コントロー�
 
 ![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png)
 
-> - https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/
+> - [みんなの銀行に学ぶ、マイクロサービス時代のシステム監視 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/)
 > - https://docs.datadoghq.com/integrations/istio/
 
 <br>
@@ -545,7 +545,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 ステータスコードとレベルの対応関係については、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
+> - [【IT技術の知見】監視＠可観測性 - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html)
 
 ```bash
 INFO @http.status_code:[200 TO 299]
@@ -1141,7 +1141,7 @@ autoFilledRule3 ...
 インデックスを使用すれば、Datadog のログ保管のネックになる保管料金を抑えられる。
 
 > - https://docs.datadoghq.com/logs/indexes/
-> - https://tech-blog.abeja.asia/entry/why-datadog
+> - [なぜPrometheusを辞めてDatadogを採用したのか - ABEJA Tech Blog](https://tech-blog.abeja.asia/entry/why-datadog)
 
 #### ▼ アーカイブ
 

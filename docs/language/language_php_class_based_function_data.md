@@ -8,7 +8,7 @@ title: 【IT技術の知見】振る舞い／状態＠PHP
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -132,7 +132,7 @@ foo($state);
 
 同じクラス内と、その子クラス、その親クラスのみで呼び出せる。
 
-> - https://qiita.com/miyapei/items/6c43e8b38317afb5fdce
+> - [【PHP】継承とprotectedと参照パターン #Java - Qiita](https://qiita.com/miyapei/items/6c43e8b38317afb5fdce)
 
 #### ▼ オブジェクト指向の場合
 
@@ -490,7 +490,7 @@ PHP には最初からマジック関数は組み込まれているが、自身�
 
 オブジェクトの不変性は、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html
+> - [【IT技術の知見】ドメイン駆動設計＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
 
 **＊実装例＊**
 
@@ -768,7 +768,7 @@ $D = objB()->objC()->objC();
 
 以下のリンクも参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html
+> - [【IT技術の知見】アルゴリズムロジック＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html)
 
 `(1)`
 
@@ -1791,7 +1791,7 @@ var_dump($result); // true
 
 エスケープのために、必ずバックスラッシュを付ける必要がある。
 
-> - https://www-creators.com/archives/3102
+> - [正規表現：エスケープが必要な文字一覧 \| WWWクリエイターズ](https://www-creators.com/archives/3102)
 
 **＊実装例＊**
 
@@ -1813,7 +1813,7 @@ var_dump($result); // 1
 
 ドットは任意の文字、アスタリスクは直前の文字が `0` 回以上反復すること、プラスは `1` 回以上反復することを意味する。
 
-> - https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1
+> - [正規表現とワイルドカード、そして記号の意味 #Linux - Qiita](https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1)
 
 **＊実装例＊**
 
@@ -1888,7 +1888,7 @@ var_dump($result); // 1
 
 正規表現に規則性がある場合に有効である。
 
-> - http://www.turtle.gr.jp/techno/regular-expression.html
+> - [正規表現の基礎](http://www.turtle.gr.jp/techno/regular-expression.html)
 
 ```php
 <?php

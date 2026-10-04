@@ -108,7 +108,7 @@ Fargate の場合、Amazon ECS コンテナエージェントがプリインス�
 
 ![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png)
 
-> - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
+> - [ECS(EC2)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_ec2_iamrole/)
 > - https://aws.amazon.com/jp/blogs/news/under-the-hood-task-networking-for-amazon-ecs/
 
 #### ▼ Amazon ECS タスク定義
@@ -223,7 +223,7 @@ Amazon ECS Service Connect を使用する。
 
 ![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_nat-gateway.png)
 
-> - https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
+> - [ECS FargateでVPCエンドポイントを使用する](https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint)
 
 代わりに、VPC エンドポイントを配置する。
 
@@ -245,8 +245,8 @@ Amazon ECS サービスが Amazon ECS タスクを操作するために必要な
 
 サービスリンクロールに含まれ、Amazon ECS の作成時に自動的に紐付けられる。
 
-> - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
-> - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
+> - [ECS(Fargate)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_fargate_iamrole/)
+> - [ECS(EC2)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_ec2_iamrole/)
 
 #### ▼ コンテナインスタンスロール
 
@@ -256,8 +256,8 @@ Fargate の場合、不要である。
 
 ![ecs_container-instance-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_container-instance-role.png)
 
-> - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
-> - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
+> - [ECS(Fargate)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_fargate_iamrole/)
+> - [ECS(EC2)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_ec2_iamrole/)
 
 #### ▼ タスクロール
 
@@ -267,8 +267,8 @@ Amazon ECS タスク内のコンテナのアプリケーションが、他の AW
 
 ![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-role.png)
 
-> - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
-> - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
+> - [ECS(Fargate)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_fargate_iamrole/)
+> - [ECS(EC2)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_ec2_iamrole/)
 
 **＊実装例＊**
 
@@ -357,8 +357,8 @@ datadog エージェントが Amazon ECS クラスターやコンテナにリク
 }
 ```
 
-> - https://dev.classmethod.jp/articles/ecs_fargate_iamrole/
-> - https://dev.classmethod.jp/articles/ecs_ec2_iamrole/
+> - [ECS(Fargate)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_fargate_iamrole/)
+> - [ECS(EC2)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_ec2_iamrole/)
 
 <br>
 
@@ -378,7 +378,7 @@ datadog エージェントが Amazon ECS クラスターやコンテナにリク
 | `awslogs-stream-prefix`   | ログ宛先の Amazon CloudWatch Logs のログストリームのプレフィックス名を設定する。       | ログストリームには、『`<プレフィックス名>/<コンテナ名>/<タスクID>`』の形式で送信される。                                                                                                                                         |
 
 > - https://docs.docker.com/config/containers/logging/awslogs/
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options
+> - [Send Amazon ECS logs to CloudWatch - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html#create_awslogs_logdriver_options)
 
 <br>
 
@@ -405,7 +405,7 @@ EC2 をホストとして、コンテナを作成する。
 | Amazon ECS 最適化 Amazon Linux 2 GPU   | GPU が搭載された EC2 を作成できる。                                                                                                  | GPU が必要なアプリケーション (計算処理系、機械学習系のアプリケーション) |
 | Amazon ECS 最適化 Amazon Linux 2 推定  | Amazon EC2 Inf1 インスタンスを作成できる。                                                                                           |                                                                         |
 
-> - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
+> - [Amazon ECS-optimized Linux AMIs - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
 
 <br>
 
@@ -661,7 +661,7 @@ exit ${EXIT_STATUS}
 
 ![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rolling-update.png)
 
-> - https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/
+> - [Amazon ECS でのコンテナデプロイの高速化 \| トリの部屋](https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/)
 
 #### ▼ ブルー/グリーンデプロイメント
 
@@ -690,8 +690,8 @@ AWS NAT Gateway と VPC エンドポイントの両方を作成している場�
 注意点として、パブリックネットワークにリクエストを送信する場合は、VPC エンドポイントのみでなく AWS NAT Gateway も作成する必要がある。
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/vpc-endpoints.html#ecs-vpc-endpoint-ecsexec
-> - https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint
-> - https://dev.classmethod.jp/articles/vpc-endpoint-gateway-type/
+> - [ECS FargateでVPCエンドポイントを使用する](https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint)
+> - [2つのVPCエンドポイントの違いを知る \| DevelopersIO](https://dev.classmethod.jp/articles/vpc-endpoint-gateway-type/)
 
 <br>
 
@@ -767,7 +767,7 @@ AWS Systems Manager を使用してコンテナに接続する場合、コンテ
 
 : 事前の設定がなされているか否かを ecs-exec-checker スクリプトを実行して確認する。
 
-> - https://github.com/aws-containers/amazon-ecs-exec-checker
+> - [GitHub - aws-containers/amazon-ecs-exec-checker: 🚀 Pre-flight checks for ECS Exec · GitHub](https://github.com/aws-containers/amazon-ecs-exec-checker)
 
 ```bash
 #!/bin/bash
@@ -807,7 +807,7 @@ aws ecs execute-command \
 ```
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-exec.html
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html
+> - [Reference: ec2messages, ssmmessages, and other API operations - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html)
 > - https://qiita.com/Shohei_Miwa/items/6e04c9b7f4c0c862eb9e
 
 <br>

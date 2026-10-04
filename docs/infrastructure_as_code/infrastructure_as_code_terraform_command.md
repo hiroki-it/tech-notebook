@@ -9,7 +9,7 @@ description: コマンド＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -77,7 +77,7 @@ $ export TF_CLI_ARGS_plan="--parallelism=50"
 $ export TF_CLI_ARGS_apply="--parallelism=50"
 ```
 
-> - https://developer.hashicorp.com/terraform/cli/commands/apply#parallelism-n
+> - [terraform apply command reference \| Terraform \| HashiCorp Developer](https://developer.hashicorp.com/terraform/cli/commands/apply#parallelism-n)
 
 #### ▼ -refresh-only
 
@@ -199,8 +199,8 @@ Initializing provider plugins...
 - Installed foo/bar v2.3.0 (signed by a HashiCorp partner, key ID *****)
 ```
 
-> - https://spacelift.io/blog/terraform-init
-> - https://reboooot.net/post/what-is-terraform/
+> - [Terraform Init Command: Flags, Errors & Examples](https://spacelift.io/blog/terraform-init)
+> - [Terraform 初心者の超簡単まとめ - reboooot․net](https://reboooot.net/post/what-is-terraform/)
 > - https://www.terraform.io/cli/commands/init#usage
 
 #### ▼ -backend=false
@@ -254,11 +254,11 @@ $ terraform init -reconfigure -backend-config=./foo/backend.tfvars
 ```
 
 > - https://www.terraform.io/cli/commands/init#backend-initialization
-> - https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/
+> - [tfstateをローカルとS3間で移行してみた \| DevelopersIO](https://dev.classmethod.jp/articles/tfstate-s3-local-migration-method/)
 
 また、開発時に一時的に local をバックエンドとして使用する場合にも役立つ。
 
-> - https://repl.info/archives/1435/
+> - [Terraformのbackendを使いこなしたい - repl.info](https://repl.info/archives/1435/)
 
 #### ▼ --migrate-state
 
@@ -370,7 +370,7 @@ main.tf
 $ terraform get
 ```
 
-> - https://ozashu.hatenablog.com/entry/2019/05/07/000541
+> - [Terraformの基本 - Foreverly](https://ozashu.hatenablog.com/entry/2019/05/07/000541)
 
 <br>
 
@@ -390,7 +390,7 @@ $ brew install graphviz
 $ terraform graph | dot -Tpng > graph.png
 ```
 
-> - https://graphviz.org/download/
+> - [Download \| Graphviz](https://graphviz.org/download/)
 
 #### ▼ -draw-cycles
 
@@ -400,7 +400,7 @@ $ terraform graph | dot -Tpng > graph.png
 $ terraform graph -draw-cycles | dot -Tpng > graph.png
 ```
 
-> - https://qiita.com/ringo/items/d06d936209d7abd9dcff
+> - [Terraformで循環参照のエラーが出た時 #tips - Qiita](https://qiita.com/ringo/items/d06d936209d7abd9dcff)
 
 #### ▼ 図形の見方
 
@@ -411,7 +411,7 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 | 四角   | `resource` ブロック、`data` ブロック                     |
 | ノート | `variable` ブロック、`output` ブロック、`local` ブロック |
 
-> - https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355
+> - [Terraformのgraphコマンドで、構成を可視化してみる - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2020/05/02/225355)
 
 #### ▼ 他のツール
 
@@ -423,8 +423,8 @@ $ terraform graph -draw-cycles | dot -Tpng > graph.png
 - Inframap
 - Pluralith
 
-> - https://gkzz.dev/posts/alternative-terraform-graph/
-> - https://dev.classmethod.jp/articles/terraform-visualise-pluralith/
+> - [terraform graph よりビジュアライズな Terraform のインフラリソース可視化ツールを探す \| gkzz.dev](https://gkzz.dev/posts/alternative-terraform-graph/)
+> - [Terraform構成をビジュアライズできるツール Pluralithを使ってAWS構成図を自動作成してみる \| DevelopersIO](https://dev.classmethod.jp/articles/terraform-visualise-pluralith/)
 
 <br>
 
@@ -469,7 +469,7 @@ $ terraform output -json
 ```
 
 > - https://www.terraform.io/cli/commands/output
-> - https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e
+> - [Terraformのoutputとは何か #IaC - Qiita](https://qiita.com/kyntk/items/2cdd38c2438ac257ac4e)
 
 <br>
 
@@ -524,7 +524,7 @@ actions need to be performed.
 
 特定の `resource` ブロックを使用して、`terraform plan` コマンドを実行する。`terraform plan` コマンドの最初の RefreshingState フェーズを実行するブロックも絞り込めるため、特定のブロック RefreshingState フェーズでバグがある場合の回避策にも使用できる。`-target` オプションで指定するアドレスは、`terraform plan` コマンド自身の出力結果や、`terraform state list` コマンドで確認できる。
 
-> - https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
+> - [Terraform target整理(state listで欲しいリソースを選んでapply)](https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/)
 
 ```bash
 $ terraform plan \
@@ -584,7 +584,7 @@ $ terraform plan \
     -refresh=true
 ```
 
-> - https://github.com/hashicorp/terraform/issues/17311
+> - [terraform plan -refresh=true vs. terraform plan -refresh=false · Issue #17311 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/17311)
 
 #### ▼ -parallelism
 
@@ -708,7 +708,7 @@ $ terraform providers lock \
 $ rm .terraform.lock.hcl
 ```
 
-> - https://developer.hashicorp.com/terraform/cli/commands/providers/lock
+> - [terraform providers lock command reference \| Terraform \| HashiCorp Developer](https://developer.hashicorp.com/terraform/cli/commands/providers/lock)
 
 <br>
 
@@ -734,7 +734,7 @@ $ terraform refresh -var-file=foo.tfvars
 
 `tfstate` ファイルで定義されている `resource` ブロック (`tfstate` ファイル上では `managed` モード) の一覧を取得する。`terraform apply` コマンドで `-target` オプションを使用する前のアドレス確認や、`terraform apply` コマンドの実行失敗時に `tfstate` ファイルと実インフラにどのような差分があるかの確認に使用する。
 
-> - https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/
+> - [Terraform target整理(state listで欲しいリソースを選んでapply)](https://tech.fusic.co.jp/posts/2021-09-07-tf-target-state-list/)
 
 ```bash
 $ terraform state list
@@ -836,10 +836,10 @@ $ terraform state rm --dry-run 'module.ec2.aws_instance.bastion["<キー名2>"]'
 $ terraform state rm 'module.ec2.aws_instance.bastion["<キー名2>"]'
 ```
 
-> - https://qiita.com/hz1_d/items/772272a010baa3d7aaed
-> - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
-> - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
-> - https://dev.classmethod.jp/articles/terraform_import_for_each/
+> - [AWSリソースをTerraform管理下から外す方法 #AWS - Qiita](https://qiita.com/hz1_d/items/772272a010baa3d7aaed)
+> - [terraform import したものを取り消したい #Terraform - Qiita](https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6)
+> - [Unable to import instances created using "count" within a module · Issue #18810 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471)
+> - [for\_eachで書いた.tfをterraform importする \| DevelopersIO](https://dev.classmethod.jp/articles/terraform_import_for_each/)
 
 #### ▼ show list
 
@@ -983,7 +983,7 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 似た目的で使用する `terraform apply -refresh-only` コマンドは実インフラの一部の設定値が対象であるが、`import` は実インフラのすべての設定値が対象である。
 
-> - https://dtan4.hatenablog.com/entry/2016/08/18/010652
+> - [terraform import と Terraforming - 端子録](https://dtan4.hatenablog.com/entry/2016/08/18/010652)
 
 <br>
 
@@ -1090,8 +1090,8 @@ resource "aws_instance" "foo" {
 }
 ```
 
-> - https://qiita.com/hiramax/items/093846a2f81426aa3a2f
-> - https://blog.techscore.com/entry/2024/05/29/080000
+> - [terraformに自動コード生成機能が追加 #Terraform - Qiita](https://qiita.com/hiramax/items/093846a2f81426aa3a2f)
+> - [Terraformで既存リソースを簡単コード化 - TECHSCORE BLOG](https://blog.techscore.com/entry/2024/05/29/080000)
 
 <br>
 
@@ -1197,10 +1197,10 @@ $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resour
 $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
 ```
 
-> - https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471
-> - https://dev.classmethod.jp/articles/terraform_import_for_each/
-> - https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6
-> - https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import
+> - [Unable to import instances created using "count" within a module · Issue #18810 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471)
+> - [for\_eachで書いた.tfをterraform importする \| DevelopersIO](https://dev.classmethod.jp/articles/terraform_import_for_each/)
+> - [terraform import したものを取り消したい #Terraform - Qiita](https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6)
+> - [Terraform import のススメ 〜開発効率化編〜 - LayerX エンジニアブログ](https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import)
 
 #### ▼ `import` ブロックの場合
 
@@ -1217,7 +1217,7 @@ aws_instance.foo: Refreshing state... [id=i-052562f6eee9d60d9]
 Apply complete! Resources: 1 imported, 0 added, 0 changed, 0 destroyed.
 ```
 
-> - https://dev.classmethod.jp/articles/terraform-import-command-and-import-block/
+> - [Terraformのimportコマンドとimportブロックを試してみた \| DevelopersIO](https://dev.classmethod.jp/articles/terraform-import-command-and-import-block/)
 
 <br>
 

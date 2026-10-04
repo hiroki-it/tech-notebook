@@ -9,7 +9,7 @@ description: Remix＠フレームワークの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -32,7 +32,7 @@ export async function action({request}) {
 <form method="post"></form>
 ```
 
-> - https://giginc.co.jp/blog/giglab/remix-react-router-v7
+> - [RemixからReact Router v7に移行する方法をまとめました｜東京のWEB制作会社・ホームページ制作会社｜株式会社GIG](https://giginc.co.jp/blog/giglab/remix-react-router-v7)
 
 <br>
 
@@ -136,7 +136,7 @@ export const loader = async () => {
 
 > - https://zenn.dev/ak/articles/cef68c1b67a314#loader
 > - https://zenn.dev/link/comments/8945abe32ae53a
-> - https://qiita.com/taisei-13046/items/9a35c8d969954211f0ed#loader
+> - [Hydrogenを徹底紹介 🔍 〜Remixベースで高パフォーマンスなECサイトを実現〜 #React - Qiita](https://qiita.com/taisei-13046/items/9a35c8d969954211f0ed#loader)
 
 #### ▼ ロギング
 
@@ -381,7 +381,7 @@ export async function action({request}: ActionFunctionArgs) {
 ```
 
 > - https://remix.run/docs/en/main/route/action
-> - https://blog.tomoya.dev/posts/my-best-remix-directory-structure/#%e3%81%84%e3%81%84%e6%84%9f%e3%81%98%e3%81%ae%e3%83%87%e3%82%a3%e3%83%ac%e3%82%af%e3%83%88%e3%83%aa%e6%a7%8b%e6%88%90
+> - [いい感じのRemixのディレクトリ構成 \| 日々、とんは語る。](https://blog.tomoya.dev/posts/my-best-remix-directory-structure/#%e3%81%84%e3%81%84%e6%84%9f%e3%81%98%e3%81%ae%e3%83%87%e3%82%a3%e3%83%ac%e3%82%af%e3%83%88%e3%83%aa%e6%a7%8b%e6%88%90)
 
 #### ▼ ロギング
 
@@ -649,7 +649,7 @@ import {redirect} from "@remix-run/node";
 ```
 
 > - https://reactrouter.com/upgrading/remix
-> - https://giginc.co.jp/blog/giglab/remix-react-router-v7
+> - [RemixからReact Router v7に移行する方法をまとめました｜東京のWEB制作会社・ホームページ制作会社｜株式会社GIG](https://giginc.co.jp/blog/giglab/remix-react-router-v7)
 
 <br>
 
@@ -661,9 +661,9 @@ Remix 自体が React Router に統合されたため、`react-router` パッケ
 import {redirect} from "react-router";
 ```
 
-> - https://reactrouter.com/home
+> - [React Router Home \| React Router](https://reactrouter.com/home)
 > - https://reactrouter.com/upgrading/remix
-> - https://giginc.co.jp/blog/giglab/remix-react-router-v7
+> - [RemixからReact Router v7に移行する方法をまとめました｜東京のWEB制作会社・ホームページ制作会社｜株式会社GIG](https://giginc.co.jp/blog/giglab/remix-react-router-v7)
 
 <br>
 
@@ -679,7 +679,7 @@ Remix では、ブラウザルーティングと API エンドポイントを区
 
 このファイルの処理は、API として処理される。
 
-> - https://zenn.dev/acompany/articles/123c29f46d213c#%E7%B5%B1%E4%B8%80%E7%9A%84%E3%81%AAapi%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%AE%E3%81%AB%E8%8B%A6%E5%8A%B4%E3%81%99%E3%82%8B%E3%80%82
+> - [Remix入門: フロントエンドもバックエンドも爆速開発を実現する次世代Webフレームワーク](https://zenn.dev/acompany/articles/123c29f46d213c#%E7%B5%B1%E4%B8%80%E7%9A%84%E3%81%AAapi%E3%82%A8%E3%83%B3%E3%83%89%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%82%92%E4%BD%9C%E3%82%8B%E3%81%AE%E3%81%AB%E8%8B%A6%E5%8A%B4%E3%81%99%E3%82%8B%E3%80%82)
 > - https://remix.run/docs/en/1.19.3/guides/api-routes
 
 <br>
@@ -699,7 +699,7 @@ app/                        # URL パス
 └── root.tsx
 ```
 
-> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%88basic-routes%EF%BC%89
+> - [ドキュメントを読んだのでRemixのRouting(v2)を整理する](https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%88basic-routes%EF%BC%89)
 
 #### ▼ `<ルート以降のパス>.tsx`
 
@@ -730,7 +730,7 @@ export default function Foo() {
 }
 ```
 
-> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%88basic-routes%EF%BC%89
+> - [ドキュメントを読んだのでRemixのRouting(v2)を整理する](https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%9F%BA%E6%9C%AC%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%EF%BC%88basic-routes%EF%BC%89)
 
 #### ▼ `<ルート以降のパス>.<変数>.tsx` (動的セグメント)
 
@@ -748,7 +748,7 @@ app/                        # URL パス
 └── root.tsx
 ```
 
-> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%8B%95%E7%9A%84%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%EF%BC%88dynamic-segments%EF%BC%89
+> - [ドキュメントを読んだのでRemixのRouting(v2)を整理する](https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%8B%95%E7%9A%84%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%EF%BC%88dynamic-segments%EF%BC%89)
 
 **＊実装例＊**
 
@@ -799,7 +799,7 @@ app/                       #  URL パス                   引き継ぐレイア
 └── root.tsx
 ```
 
-> - https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%91%E3%82%B9%E3%83%AC%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%88%EF%BC%88nested-layouts-without-nested-urls%EF%BC%89
+> - [ドキュメントを読んだのでRemixのRouting(v2)を整理する](https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E3%83%91%E3%82%B9%E3%83%AC%E3%82%B9%E3%83%AB%E3%83%BC%E3%83%88%EF%BC%88nested-layouts-without-nested-urls%EF%BC%89)
 
 #### ▼ 親の `_<ルート以降のパス>.tsx` (親がパスレスルート)
 
@@ -855,8 +855,8 @@ Remix v1 ではサブディレクトリにわけることができる。
 
 以下によると、Remix v2 はデフォルトでは routes にサブディレクトリを作れない。
 
-- https://github.com/remix-run/remix/discussions/8473#discussioncomment-8084973
-- https://v2.remix.run/docs/file-conventions/routes#folders-for-organization
+- [Nested folders and nested / non-nested routes · remix-run/remix · Discussion #8473 · GitHub](https://github.com/remix-run/remix/discussions/8473#discussioncomment-8084973)
+- [Route File Naming \| Remix](https://v2.remix.run/docs/file-conventions/routes#folders-for-organization)
 
 ただ、https://github.com/kiliman/remix-flat-routes を使うと、サブディレクトリを作ることはできる。
 
@@ -896,7 +896,7 @@ Remix の仕様ではディレクトリ構造やファイル名がエンドポ�
 
 > Remix はとても小さなサイトや個人のブログだけを想定しているのですか？Remix は全般的に好きだけど、フラットルートを使うようになったことで、正直 Remix が使いづらくなった。
 >
-> https://github.com/remix-run/remix/discussions/8473#discussioncomment-9174522
+> [Nested folders and nested / non-nested routes · remix-run/remix · Discussion #8473 · GitHub](https://github.com/remix-run/remix/discussions/8473#discussioncomment-9174522)
 
 <br>
 
@@ -927,7 +927,7 @@ export const loader = async () => {
 };
 ```
 
-> - https://remix-docs-ja.techtalk.jp/utils/defer
+> - [defer - Remix ドキュメント 日本語版](https://remix-docs-ja.techtalk.jp/utils/defer)
 
 <br>
 
@@ -944,7 +944,7 @@ export const loader = async () => {
 
 Remix がコンポーネントであることを認識するために、名前の先頭を大文字する。
 
-> - https://dev.classmethod.jp/articles/make-user-defined-component-name-capitalized-in-react/
+> - [Reactでユーザ定義のコンポーネントを使う場合は名前の先頭を大文字としよう \| DevelopersIO](https://dev.classmethod.jp/articles/make-user-defined-component-name-capitalized-in-react/)
 
 <br>
 
@@ -1105,7 +1105,7 @@ Remix は hook を同じ順番、同じ回数でコールする必要がある�
 
 loader を再実行するからといって、ページをリロードしているわけではない。
 
-> - https://reactrouter.com/api/hooks/useRevalidator
+> - [useRevalidator \| React Router](https://reactrouter.com/api/hooks/useRevalidator)
 
 <br>
 
@@ -1119,7 +1119,7 @@ SSR では、Web Storage API と通信できず、ブラウザの LocalStorage �
 
 代わりに、ブラウザの Cookie、サーバーのメモリ、サーバー上のファイルなどに資格情報を保存することになる。
 
-> - https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720
+> - [How do i get access-token from local storage is SSR without cookie? · vercel/next.js · Discussion #39915 · GitHub](https://github.com/vercel/next.js/discussions/39915#discussioncomment-3467720)
 
 <br>
 

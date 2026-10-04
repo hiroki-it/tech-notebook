@@ -9,7 +9,7 @@ description: メタデータ＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -52,7 +52,7 @@ metadata:
     istio-injection: disabled # disabled であれば、istio.io/rev キーと共存できる。
 ```
 
-> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
+> - [Istio / Installing the Sidecar](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy)
 
 <br>
 
@@ -95,7 +95,7 @@ metadata:
     istio-injection: disabled # disabled であれば、istio.io/rev キーと共存できる。
 ```
 
-> - https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110
+> - [Istio / Announcing Support for 1.8 to 1.10 Direct Upgrades](https://istio.io/latest/blog/2021/direct-upgrade/#upgrade-from-18-to-110)
 
 #### ▼ アンビエントモードの場合
 
@@ -113,7 +113,7 @@ metadata:
     istio.io/use-waypoint: istio-waypoint
 ```
 
-> - https://istio.io/latest/docs/ambient/upgrade/helm/
+> - [Istio / Upgrade with Helm](https://istio.io/latest/docs/ambient/upgrade/helm/)
 
 <br>
 
@@ -146,9 +146,9 @@ metadata:
   # istio-engress にはラベルは不要である
 ```
 
-> - https://istio.io/latest/docs/reference/config/labels/#IoIstioDataplaneMode
-> - https://istio.io/latest/docs/ambient/architecture/data-plane/
-> - https://istio.io/latest/docs/ambient/usage/add-workloads/#ambient-labels
+> - [Istio / Resource Labels](https://istio.io/latest/docs/reference/config/labels/#IoIstioDataplaneMode)
+> - [Istio / Ambient data plane](https://istio.io/latest/docs/ambient/architecture/data-plane/)
+> - [Istio / Add workloads to the mesh](https://istio.io/latest/docs/ambient/usage/add-workloads/#ambient-labels)
 
 <br>
 
@@ -174,9 +174,9 @@ metadata:
     istio.io/use-waypoint: istio-waypoint
 ```
 
-> - https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint
-> - https://istio.io/latest/docs/ambient/architecture/data-plane/
-> - https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy
+> - [Istio / Resource Labels](https://istio.io/latest/docs/reference/config/labels/#IoIstioUseWaypoint)
+> - [Istio / Ambient data plane](https://istio.io/latest/docs/ambient/architecture/data-plane/)
+> - [Istio / Configure waypoint proxies](https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy)
 
 <br>
 
@@ -218,8 +218,8 @@ metadata:
     istio.io/use-waypoint-namespace: app
 ```
 
-> - https://www.solo.io/blog/istio-ambient-waypoint-proxy-deployment-model-explained
-> - https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy
+> - [Istio Ambient Mode: Deploying Flexible Waypoint Proxies for Optimized Service Mesh \| Solo.io](https://www.solo.io/blog/istio-ambient-waypoint-proxy-deployment-model-explained)
+> - [Istio / Configure waypoint proxies](https://istio.io/latest/docs/ambient/usage/waypoint/#configure-resources-to-use-a-cross-namespace-waypoint-proxy)
 
 <br>
 
@@ -260,7 +260,7 @@ spec:
 
 Deployment の `.spec.template` キーや、Pod の `.metadata.` キーにて、istio-proxy ごとのオプション値を設定する。Deployment の `.metadata.` キーで定義しないように注意する。
 
-> - https://istio.io/latest/docs/reference/config/annotations/
+> - [Istio / Resource Annotations](https://istio.io/latest/docs/reference/config/annotations/)
 
 <br>
 
@@ -306,13 +306,13 @@ spec:
           configPath: /etc/istio/proxy
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig)
 
 #### ▼ drainDuration
 
 ![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
 
-デフォルト値は `45` である。
+デフォルト値は `45s` (45 秒) である。
 
 istio-proxy 内の Envoy プロセスは、リスナーやフィルターチェーンの変更時にドレイン処理を実施する。
 
@@ -342,8 +342,8 @@ spec:
           drainDuration: "10s"
 ```
 
-> - https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80
-> - https://github.com/istio/istio/pull/35059#discussion_r711500175
+> - [ABEMA における GKE スケール戦略と Anthos Service Mesh 活用事例 Deep Dive - Speaker Deck](https://speakerdeck.com/nagapad/abema-niokeru-gke-scale-zhan-lue-to-anthos-service-mesh-huo-yong-shi-li-deep-dive?slide=80)
+> - [terminate envoy when number of active connections is zero by ramaraochavali · Pull Request #35059 · istio/istio · GitHub](https://github.com/istio/istio/pull/35059#discussion_r711500175)
 
 #### ▼ parentShutdownDuration
 
@@ -371,18 +371,18 @@ spec:
           parentShutdownDuration: "80s"
 ```
 
-> - https://zenn.dev/yatoum/articles/d927c58d74ff05
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-parent-shutdown-time-s
-> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
+> - [IstioのparentShutdownDurationが削除されていた話](https://zenn.dev/yatoum/articles/d927c58d74ff05)
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig)
+> - [Command line options — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-parent-shutdown-time-s)
+> - [KubernetesのPodを安全に終了する（istio-proxy編） - Carpe Diem](https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy)
 
 #### ▼ terminationDrainDuration
 
-デフォルト値は `5` である (対応する `.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION` キーと同じ) 。
+デフォルト値は `5s` (5 秒) である (ConfigMap の `mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION` キーと同じ) 。
 
 `EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数が `false` な場合にのみ設定できる。
 
-`true` の場合は、代わりに Pod の `.mesh.defaultConfig.proxyMetadata.MINIMUM_DRAIN_DURATION` 変数と `## EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数を設定する。
+`true` の場合は、代わりに ConfigMap の `mesh.defaultConfig.proxyMetadata` で `MINIMUM_DRAIN_DURATION` 変数と `EXIT_ON_ZERO_ACTIVE_CONNECTIONS` 変数を設定する。
 
 istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処理を実施する。
 
@@ -410,9 +410,9 @@ spec:
           terminationDrainDuration: "5s"
 ```
 
-> - https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig
-> - https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-drain-time-s
-> - https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy
+> - [Istio / Global Mesh Options](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig)
+> - [Command line options — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/operations/cli#cmdoption-drain-time-s)
+> - [KubernetesのPodを安全に終了する（istio-proxy編） - Carpe Diem](https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy)
 
 <br>
 
@@ -461,7 +461,7 @@ spec:
         sidecar.istio.io/inject: "false"
 ```
 
-> - https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy
+> - [Istio / Installing the Sidecar](https://istio.io/latest/docs/setup/additional-setup/sidecar-injection/#controlling-the-injection-policy)
 
 <br>
 
@@ -486,7 +486,7 @@ spec:
         sidecar.istio.io/proxyCPU: 2
 ```
 
-> - https://istio.io/latest/docs/reference/config/annotations/
+> - [Istio / Resource Annotations](https://istio.io/latest/docs/reference/config/annotations/)
 
 <br>
 
@@ -511,7 +511,7 @@ spec:
         sidecar.istio.io/proxyImage: foo-envoy
 ```
 
-> - https://istio.io/latest/docs/reference/config/annotations/
+> - [Istio / Resource Annotations](https://istio.io/latest/docs/reference/config/annotations/)
 
 <br>
 
@@ -536,6 +536,6 @@ spec:
         sidecar.istio.io/proxyMemory: 4
 ```
 
-> - https://istio.io/latest/docs/reference/config/annotations/
+> - [Istio / Resource Annotations](https://istio.io/latest/docs/reference/config/annotations/)
 
 <br>

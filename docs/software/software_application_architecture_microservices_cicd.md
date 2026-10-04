@@ -9,7 +9,7 @@ description: CI/CD＠マイクロサービスアーキテクチャの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -72,7 +72,7 @@ actions:
       title: "Update image tag to {{ env "CI_COMMIT_TAG" }} on values.yaml"
 ```
 
-> - https://github.com/updatecli/updatecli
+> - [GitHub - updatecli/updatecli: A Declarative Update Policy Engine · GitHub](https://github.com/updatecli/updatecli)
 
 <br>
 

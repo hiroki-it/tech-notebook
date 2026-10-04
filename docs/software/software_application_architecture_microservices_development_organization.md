@@ -46,7 +46,7 @@ description: 開発組織の編成＠開発体制の知見を記録していま�
 
 ![organization_team-topology_stream-aligned-team](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/organization_team-topology_stream-aligned-team.png)
 
-> - https://techblog.ap-com.co.jp/entry/2023/05/22/105800
+> - [Team Topologies: Platform teamはStream aligned teamである - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/05/22/105800)
 > - https://medium.com/beyond-agile-leadership/team-topologies-stream-aligned-team-58faaf5729a8
 > - https://qiita.com/RepKuririn/items/c1683b501a9cd91b018c#3-4%E3%81%A4%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E3%83%81%E3%83%BC%E3%83%A0%E3%82%BF%E3%82%A4%E3%83%97
 
@@ -63,7 +63,7 @@ description: 開発組織の編成＠開発体制の知見を記録していま�
 - QA エンジニア
 - Platform SRE
 
-> - https://techblog.ap-com.co.jp/entry/2023/05/22/105800
+> - [Team Topologies: Platform teamはStream aligned teamである - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/05/22/105800)
 > - https://medium.com/beyond-agile-leadership/team-topologies-stream-aligned-team-58faaf5729a8
 > - https://qiita.com/RepKuririn/items/c1683b501a9cd91b018c#32-platform-teams%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%83%81%E3%83%BC%E3%83%A0
 
@@ -76,7 +76,7 @@ description: 開発組織の編成＠開発体制の知見を記録していま�
 - 特定の領域に専門性を持つバックエンドエンジニア
 - AI エンジニア
 
-> - https://techblog.ap-com.co.jp/entry/2023/05/22/105800
+> - [Team Topologies: Platform teamはStream aligned teamである - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/05/22/105800)
 > - https://www.atlassian.com/devops/frameworks/team-topologies
 
 <br>
@@ -101,7 +101,7 @@ description: 開発組織の編成＠開発体制の知見を記録していま�
 - QA エンジニア
 - Enabling SRE
 
-> - https://techblog.ap-com.co.jp/entry/2023/05/22/105800
+> - [Team Topologies: Platform teamはStream aligned teamである - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/05/22/105800)
 > - https://medium.com/beyond-agile-leadership/team-topologies-stream-aligned-team-58faaf5729a8
 > - https://qiita.com/RepKuririn/items/c1683b501a9cd91b018c#32-platform-teams%E3%83%97%E3%83%A9%E3%83%83%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%83%81%E3%83%BC%E3%83%A0
 

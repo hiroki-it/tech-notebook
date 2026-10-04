@@ -23,7 +23,7 @@ AWS Secrets Manager は、機密データをキーバリュー単位で保管で
 
 カスタマー管理型 AWS KMS を使用し、AWS KMS を操作できるユーザーを制限しています。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html
+> - [Data protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html)
 > - https://www.techtarget.com/searchstorage/feature/NVMe-key-value-storage-vs-block-and-object-storage
 
 <br>
@@ -36,9 +36,9 @@ Amazon Aurora は、永続データをブロック単位で保管できるブロ
 
 永続データ (クラスター全体、自動バックアップ、リードレプリカ全体、スナップショット、ログなど) の暗号化のために、Amazon Aurora では AWS KMS を採用する。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html
-> - https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2
-> - https://qiita.com/zumax/items/ee70a643a0ec803b8671
+> - [Data protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html)
+> - [AWS のストレージサービス EBS、EFS、S3、FSxなどの違い \| 株式会社スタイルズ](https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2)
+> - [Auroraの保管時の暗号化を整理してみた #AWS - Qiita](https://qiita.com/zumax/items/ee70a643a0ec803b8671)
 
 #### ▼ AWS EBS
 
@@ -58,7 +58,7 @@ Amazon S3 は、属性を付与した静的ファイル (例：`html` ファイ�
 
 また、すべての Amazon S3 バケットでパブリックアクセスを無効化する。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html
-> - https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2
+> - [Data protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-dataprot.html)
+> - [AWS のストレージサービス EBS、EFS、S3、FSxなどの違い \| 株式会社スタイルズ](https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2)
 
 <br>

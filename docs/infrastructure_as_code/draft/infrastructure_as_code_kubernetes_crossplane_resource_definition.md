@@ -19,7 +19,7 @@ description: リソース定義＠Crossplaneの知見を記録しています。
 
 #### ▼ カスタムリソース一覧
 
-> - https://marketplace.upbound.io/providers/upbound/provider-aws-rds/v1.17.0
+> - [upbound/provider-aws-rds@v1.17.0 \| Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-aws-rds/v1.17.0)
 
 #### ▼ Cluster
 
@@ -47,7 +47,7 @@ spec:
     namespace: upbound-system
 ```
 
-> - https://marketplace.upbound.io/providers/upbound/provider-aws-rds/v1.17.0/resources/rds.aws.upbound.io/Cluster/v1beta1
+> - [Cluster - upbound/provider-aws-rds@v1.17.0 \| Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-aws-rds/v1.17.0/resources/rds.aws.upbound.io/Cluster/v1beta1)
 
 <br>
 
@@ -55,7 +55,7 @@ spec:
 
 #### ▼ カスタムリソース一覧
 
-> - https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.17.0
+> - [upbound/provider-aws-s3@v1.17.0 \| Upbound Marketplace](https://marketplace.upbound.io/providers/upbound/provider-aws-s3/v1.17.0)
 
 #### ▼ Amazon S3 バケット
 
@@ -125,7 +125,7 @@ spec:
     name: example
 ```
 
-> - https://marketplace.upbound.io/providers/crossplane-contrib/provider-aws/v0.39.0/resources/s3.aws.crossplane.io/Bucket/v1beta1
+> - [Bucket - crossplane-contrib/provider-aws@v0.39.0 \| Upbound Marketplace](https://marketplace.upbound.io/providers/crossplane-contrib/provider-aws/v0.39.0/resources/s3.aws.crossplane.io/Bucket/v1beta1)
 
 <br>
 
@@ -207,7 +207,7 @@ spec:
                 toFieldPath: spec.forProvider.region
 ```
 
-> - https://docs.crossplane.io/master/guides/function-patch-and-transform/
+> - [Function Patch and Transform · Crossplane master](https://docs.crossplane.io/master/guides/function-patch-and-transform/)
 
 <br>
 
@@ -299,6 +299,6 @@ spec:
     name: helm-provider
 ```
 
-> - https://marketplace.upbound.io/providers/crossplane-contrib/provider-helm/v0.19.0/resources/helm.crossplane.io/Release/v1beta1
+> - [Release - crossplane-contrib/provider-helm@v0.19.0 \| Upbound Marketplace](https://marketplace.upbound.io/providers/crossplane-contrib/provider-helm/v0.19.0/resources/helm.crossplane.io/Release/v1beta1)
 
 <br>

@@ -9,7 +9,7 @@ description: 認証／認可系＠リソース定義の知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -182,8 +182,8 @@ secrets:
   - name: argocd-manager-token-*****
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/getting_started/#5-register-a-cluster-to-deploy-apps-to-optional
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/
+> - [Getting Started - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/getting_started/#5-register-a-cluster-to-deploy-apps-to-optional)
+> - [argocd cluster add Command Reference - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/)
 
 <br>
 

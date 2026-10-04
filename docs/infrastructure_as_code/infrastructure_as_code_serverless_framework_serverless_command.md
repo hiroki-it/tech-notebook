@@ -9,7 +9,7 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: コマンド＠Serverless Frameworkの知見を記録していま�
 $ serverless print
 ```
 
-> - https://www.serverless.com/framework/docs/providers/aws/cli-reference/print
+> - [Serverless Framework Commands - AWS Lambda - Print \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/cli-reference/print)
 
 #### ▼ パラメーター有
 
@@ -43,7 +43,7 @@ $ serverless print --FOO foo
 $ serverless deploy
 ```
 
-> - https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy
+> - [Serverless Framework Commands - AWS Lambda - Deploy \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/cli-reference/deploy)
 
 #### ▼ パラメーター
 

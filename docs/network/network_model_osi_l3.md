@@ -19,7 +19,7 @@ description: L3＠OSI参照モデルの知見を記録しています。
 
 異なるネットワーク間でパケットを相互にフォワーディングするプロトコル (例：IP、ICMP、NDP など) を処理する層である。
 
-> - https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E5%B1%A4
+> - [インターネット層 - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88%E5%B1%A4)
 
 <br>
 
@@ -51,6 +51,6 @@ IP パケットのヘッダー情報を使用して、宛先認識する。
 
 Ping (ICMP エコーリクエスト) を送信するためのプロトコルである。
 
-> - https://kaoru1615.hatenablog.com/entry/2018/01/17/213140
+> - [ICMP ってL3のプロトコルですよね？ - なかっちゃんtech blog](https://kaoru1615.hatenablog.com/entry/2018/01/17/213140)
 
 <br>

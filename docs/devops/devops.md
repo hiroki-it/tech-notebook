@@ -9,7 +9,7 @@ description: DevOpsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,8 +21,8 @@ description: DevOpsの知見を記録しています。
 
 DevOps を実践しない状況では、新規/保守開発者 (例：機能追加、機能変更) と運用者 (例：安定稼働のためになるべく機能追加/変更したくない) の利害が一致しないため、ソフトウェアを継続的に改善できない。
 
-> - https://e-words.jp/w/DevOps.html
-> - https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=12
+> - [DevOpsとは - IT用語辞典 e-Words](https://e-words.jp/w/DevOps.html)
+> - [2023年もSRE再考と叫びなさい‼️ - Speaker Deck](https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=12)
 
 <br>
 
@@ -36,14 +36,14 @@ DevOps の要素を実践するエンジニアリングを『`SREing`』、ま�
 
 DevOps の技術的要素は、CI と CD である。
 
-> - https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=23
+> - [2023年もSRE再考と叫びなさい‼️ - Speaker Deck](https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=23)
 > - https://www.veritis.com/blog/meet-full-devops-potential-with-devops-maturity-model/
 
 #### ▼ 組織文化的要素
 
 DevOps の組織文化的要素は、開発者と運用者の協調や、許容の文化である。
 
-> - https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=23
+> - [2023年もSRE再考と叫びなさい‼️ - Speaker Deck](https://speakerdeck.com/nwiizo/2023nian-mosrezai-kao-tojiao-binasai?slide=23)
 > - https://www.veritis.com/blog/meet-full-devops-potential-with-devops-maturity-model/
 
 <br>

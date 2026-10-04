@@ -9,7 +9,7 @@ description: リソース定義＠ArgoCDの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -86,8 +86,8 @@ resource "aws_iam_policy" "argocd_reposerver_policy" {
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/getting_started/
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/install.yaml
+> - [Getting Started - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/getting_started/)
+> - [argo-cd/manifests/install.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/install.yaml)
 
 #### ▼ チャートとして
 
@@ -147,9 +147,9 @@ $ kubectl create -f https://operatorhub.io/install/argocd-operator.yaml
 $ kubectl get csv -n operators
 ```
 
-> - https://blog.mosuke.tech/entry/2021/04/13/argocd/
-> - https://github.com/argoproj-labs/argocd-operator
-> - https://argocd-operator.readthedocs.io/en/latest/install/manual/
+> - [第1回: Argo CD、Operatorでのインストールと主要コンポーネントの解説](https://blog.mosuke.tech/entry/2021/04/13/argocd/)
+> - [GitHub - argoproj-labs/argocd-operator: 💤 The project is effectively dormant 💤 · GitHub](https://github.com/argoproj-labs/argocd-operator)
+> - [Manual Installation - Argo CD Operator](https://argocd-operator.readthedocs.io/en/latest/install/manual/)
 
 <br>
 
@@ -201,7 +201,7 @@ $ curl http://127.0.0.1:8080
 
 : `argocd` コマンドをインストールする。
 
-> - https://argo-cd.readthedocs.io/en/stable/cli_installation/
+> - [Installation - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
 
 ```bash
 $ curl -L -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
@@ -284,7 +284,7 @@ spec:
   type: ClusterIP
 ```
 
-> - https://techstep.hatenablog.com/entry/2020/11/15/121503
+> - [【メモ】 ArgoCDでAWS ALBを利用するときの設定 - TECHSTEP](https://techstep.hatenablog.com/entry/2020/11/15/121503)
 
 #### ▼ 開発環境の場合
 
@@ -460,8 +460,8 @@ spec:
         secretName: argocd-dex-server-tls
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/base/server/argocd-server-deployment.yaml
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#inbound-tls-options-for-argocd-server
+> - [argo-cd/manifests/base/server/argocd-server-deployment.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/base/server/argocd-server-deployment.yaml)
+> - [TLS configuration - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#inbound-tls-options-for-argocd-server)
 
 #### ▼ repo-server
 
@@ -735,7 +735,7 @@ spec:
 
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/base/dex/argocd-dex-server-deployment.yaml
+> - [argo-cd/manifests/base/dex/argocd-dex-server-deployment.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/base/dex/argocd-dex-server-deployment.yaml)
 
 <br>
 
@@ -824,15 +824,15 @@ Kubernetes のカスタムリソースから定義される。
 ポーリング対象の Kubernetes リソースやカスタムリソースを設定する。
 
 > - https://github.com/argoproj/argo-cd/blob/v2.6.0/manifests/crds/application-crd.yaml
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#multiple-configuration-objects
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#multiple-configuration-objects)
 
 #### ▼ 自己ポーリング
 
 Application 自体もカスタムリソースなため、Application が Application 自身のソースの変更をポーリングし、Sync できる。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
-> - https://github.com/argoproj/argo-cd/discussions/7908
-> - https://speakerdeck.com/sshota0809/argocd-teshi-xian-suru-kubernetes-niokeruxuan-yan-de-risosuteriharifalseshi-jian?slide=49
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd)
+> - [Application syncing itself ? · argoproj/argo-cd · Discussion #7908 · GitHub](https://github.com/argoproj/argo-cd/discussions/7908)
+> - [Helm / ArgoCD で実現する Kubernetes における宣言的リソースデリバリーの実践 - Speaker Deck](https://speakerdeck.com/sshota0809/argocd-teshi-xian-suru-kubernetes-niokeruxuan-yan-de-risosuteriharifalseshi-jian?slide=49)
 
 #### ▼ 操作の種類
 
@@ -843,8 +843,8 @@ Application 自体もカスタムリソースなため、Application が Applica
 | Hard Refresh | redis-server に保管されているキャッシュを削除する。また、ポーリング対象リポジトリとのマニフェストの差分を確認する。差分を確認するのみで、apply は実行しない。                                          |
 | Restart      | すでに apply 済みの Kubernetes リソース内のコンテナを再デプロイする。コンテナを再起動するのみで、Kubernetes リソースを作成することはない。<br>- https://twitter.com/reoring/status/1476046977599406087 |
 
-> - https://argo-cd.readthedocs.io/en/stable/core_concepts/
-> - https://github.com/argoproj/argo-cd/discussions/8260
+> - [Core Concepts - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/core_concepts/)
+> - [Sync vs Refresh · argoproj/argo-cd · Discussion #8260 · GitHub](https://github.com/argoproj/argo-cd/discussions/8260)
 
 #### ▼ ヘルスステータスの種類
 
@@ -857,7 +857,7 @@ Application 自体もカスタムリソースなため、Application が Applica
 | Missing      | 記入中...                                                                                                                                                                |
 | Unknown      | 記入中...                                                                                                                                                                |
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap
+> - [Resource Health - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#way-1-define-a-custom-health-check-in-argocd-cm-configmap)
 
 #### ▼ Namespace
 
@@ -869,8 +869,8 @@ Application は、元は ArgocCD の application-controller と同じ Namespace 
 
 また、この方法を採用するのであれば、Namespace ごとに application-controller を分けたほうがシンプルでわかりやすい。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/
-> - https://zenn.dev/cybozu_neco/articles/argocd-sharding#application-controller%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0
+> - [Applications in any namespace - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/)
+> - [シャーディングによるArgo CDパフォーマンス改善](https://zenn.dev/cybozu_neco/articles/argocd-sharding#application-controller%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0)
 
 <br>
 
@@ -903,8 +903,8 @@ spec:
         - /spec/metrics
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration
-> - https://blog.framinal.life/entry/2021/10/04/224722
+> - [Diff Customization - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/diffing/#application-level-configuration)
+> - [【ArgoCD】HPA を使って複数のメトリクスを対象に追加するとOut of Sync状態のままになる - フラミナル](https://blog.framinal.life/entry/2021/10/04/224722)
 
 #### ▼ 合わせて `RespectIgnoreDifferences` キーも使用する
 
@@ -928,7 +928,7 @@ spec:
       - RespectIgnoreDifferences=true
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs
+> - [Sync Options - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#respect-ignore-difference-configs)
 > - https://mixi-developers.mixi.co.jp/update-argocd-to-v2-3-0-d609bbf16662
 
 <br>
@@ -969,7 +969,7 @@ spec:
   project: app # アプリケーションコンポーネント。その他、実行環境 (dev、stg、prd) がよい。
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
+> - [argo-cd/docs/operator-manual/application.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml)
 
 <br>
 
@@ -986,7 +986,7 @@ spec:
 | チャートリポジトリ (例：ArtifactHub、GitHub Pages、内のリポジトリ、Amazon S3) | チャートアーカイブ (`.tgz` 形式ファイル) | Helm を使用して、ArgoCD で間接的に `kubectl apply` コマンドを実行する。パラメーターに応じて、内部的に `helm` コマンドが実行される。 |
 | OCI リポジトリ (例：ECR 内のリポジトリ)                                       | チャートアーカイブ (`.tgz` 形式ファイル) | Helm を使用して、ArgoCD で間接的に `kubectl apply` コマンドを実行する。パラメーターに応じて、内部的に `helm` コマンドが実行される。 |
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
+> - [argo-cd/docs/operator-manual/application.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml)
 
 <br>
 
@@ -1019,8 +1019,8 @@ spec:
       recurse: "true"
 ```
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L78
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
+> - [argo-cd/docs/operator-manual/application.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L78)
+> - [Tool Detection - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/)
 
 #### ▼ path
 
@@ -1075,7 +1075,7 @@ spec:
     repoURL: https://github.com/hiroki-hasegawa/foo-manifests.git
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+> - [Tracking and Deployment Strategies - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git)
 
 #### ▼ targetRevision
 
@@ -1115,7 +1115,7 @@ spec:
     targetRevision: develop # ステージング環境に対応するブランチ
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+> - [Tracking and Deployment Strategies - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git)
 
 <br>
 
@@ -1140,7 +1140,7 @@ spec:
     chart: <チャート名>
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications)
 
 #### ▼ helm
 
@@ -1155,8 +1155,8 @@ helmfile と同じように `helm` コマンドを宣言的に実行しつつ、
 | `valueFiles`  | `helm` コマンドに渡す `values` ファイルを設定する。                                                                                                                                                                                                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `version`     | `helm` コマンドのバージョンを設定する。デフォルトでは、`v3` になる。 ArgoCD 自体を Helm でセットアップする場合は、インストールする Helm のバージョンを指定できる。そのため、このオプションを使用する必要はない。                                                      | ・https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-version                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L25
+> - [Helm - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#helm-plugins)
+> - [argo-cd/docs/operator-manual/application.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L25)
 > - https://mixi-developers.mixi.co.jp/argocd-with-helm-fee954d1003c
 
 `helm` コマンドに渡す `values` ファイルの値をハードコーディングする。
@@ -1221,7 +1221,7 @@ spec:
 
 暗号化された `values` ファイルを使用できる。
 
-> - https://github.com/camptocamp/argocd-helm-sops-example
+> - [GitHub - camptocamp/argocd-helm-sops-example · GitHub](https://github.com/camptocamp/argocd-helm-sops-example)
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1277,7 +1277,7 @@ ArgoCD は Helm の `v2` と `v3` の両方を保持している。
 Helm リリースするチャートの `.apiVersion` キーの値が `v1` であれば、ArgoCD は Helm の `v2` を使用して、一方で `.apiVersion` キーの値が
 `v2` であれば、Helm の `v3` を使用するようになっている。
 
-> - https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681
+> - [Support Helm v3 · Issue #2383 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/2383#issuecomment-584441681)
 
 ArgoCD を介して Helm を実行する場合、内部的には `helm template` コマンドと etcd 上のマニフェストを `kubectl diff` コマンドで比較し、生じた差分を
 `kubectl apply` コマンドを使用してデプロイしている。
@@ -1288,8 +1288,8 @@ $ helm template . --include-crds | kubectl diff -f -
 $ helm template . --include-crds | kubectl apply -f -
 ```
 
-> - https://github.com/helm/helm/issues/6930#issuecomment-555242131
-> - https://qiita.com/kyohmizu/items/118bf654d0288da2294e
+> - [\[helm3\]\[question\] How to render CRDs with helm template? · Issue #6930 · helm/helm · GitHub](https://github.com/helm/helm/issues/6930#issuecomment-555242131)
+> - [ArgoCDのApplicationにhelmを使用する #kubernetes - Qiita](https://qiita.com/kyohmizu/items/118bf654d0288da2294e)
 
 そのため、Helm を手動でマニフェストを Helm リリースする場合とは異なり、カスタムリソースのマニフェストの設定値を変更できる。
 
@@ -1305,9 +1305,9 @@ ID  DATE                           REVISION
 1   2020-04-12 10:49:14 +0900 JST  <バージョンタグ>
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#random-data
+> - [Helm - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/helm/#random-data)
 > - https://medium.com/@ch1aki/argocd%E3%81%A7helm%E3%82%92%E4%BD%BF%E3%81%86%E6%96%B9%E6%B3%95%E3%81%A8%E6%97%A2%E5%AD%98%E3%81%AErelease%E3%82%92argocd%E7%AE%A1%E7%90%86%E3%81%B8%E7%A7%BB%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95-9108295887
-> - https://github.com/argoproj/argo-cd/issues/4537#issuecomment-707997759
+> - [ArgoCD not reporting diff in environment variable configuration · Issue #4537 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/4537#issuecomment-707997759)
 
 #### ▼ repoURL
 
@@ -1330,7 +1330,7 @@ spec:
     repoURL: https://github.com/hiroki-hasegawa/foo-repository.git
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications)
 > - https://cloud.redhat.com/blog/continuous-delivery-with-helm-and-argo-cd
 
 Amazon S3 をチャートリポジトリとして指定できる。
@@ -1366,7 +1366,7 @@ spec:
     targetRevision: <バージョンタグ>
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git
+> - [Tracking and Deployment Strategies - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git)
 
 <br>
 
@@ -1423,7 +1423,7 @@ spec:
 
 単一の Application から、複数のチャートやマニフェストをデプロイする。
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/
+> - [Multiple Sources for an Application - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/)
 
 #### ▼ 公式チャート + ユーザー定義チャート
 
@@ -1511,7 +1511,7 @@ data:
 
 apply 先の Kubernetes を設定する。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
+> - [argo-cd/docs/operator-manual/application.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml)
 
 #### ▼ name
 
@@ -1533,7 +1533,7 @@ spec:
     namespace: foo-namespace
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications)
 
 #### ▼ namespace
 
@@ -1553,8 +1553,8 @@ spec:
 注意点として、Application がリポジトリで検知した Kubernetes リソースの
 `metadata.namespace` キーで、別の Namespace で作成されている場合、そちらが優先される。
 
-> - https://github.com/argoproj/argo-cd/issues/2280#issuecomment-530030455
-> - https://github.com/argoproj/argo-cd/issues/6274#issuecomment-844494318
+> - [Destination namespace is not enforced · Issue #2280 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/2280#issuecomment-530030455)
+> - [argocd ignores destination.namespace and deploys into default namespace · Issue #6274 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/6274#issuecomment-844494318)
 
 #### ▼ server
 
@@ -1588,7 +1588,7 @@ spec:
     server: https://*****.gr7.ap-northeast-1.eks.amazonaws.com
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#applications)
 
 <br>
 
@@ -1616,8 +1616,8 @@ ArgoCD はリポジトリを `3` 分間ごとにポーリングしており、�
 | `prune`      | リソースを作成しつつ、不要になったリソースを自動削除するか否かを設定する。デフォルトでは、GitHub リポジトリでマニフェストが削除されても、ArgoCD はリソースを自動的に削除しない。開発者の気づかないうちに、残骸の Kubernetes リソースが溜まる可能性があるため、有効化したほうがよい。`rev:<番号>` という表記がある Kubernetes リソースは、`prune` を忘れて新旧バージョンが存在していることを表す。Application を削除するときには、Application 配下の Kubernetes リソースが残骸にならないように、Application 配下の Kubernetes リソースを先に削除しておく。 | ・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-pruning                                                                                                                                   |
 | `selfHeal`   | ArgoCD 以外の方法で Cluster 内でマニフェストを変更した場合、リポジトリ (例：GitHub、Helm) の状態に自動 Sync する。デフォルトでは、ArgoCD 以外の方法で変更しても、自動 Sync は実行しない。                                                                                                                                                                                                                                                                                                                                                                 | ・https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automatic-self-healing                                                                                                                              |
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L113
+> - [Automated Sync Policy - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy)
+> - [argo-cd/docs/operator-manual/application.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml#L113)
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1633,7 +1633,7 @@ spec:
       selfHeal: "true"
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy
+> - [Automated Sync Policy - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-policy)
 
 #### ▼ syncOptions
 
@@ -1662,8 +1662,8 @@ spec:
       - ServerSideApply=true
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#sync-options
-> - https://dev.classmethod.jp/articles/argocd-for-external-cluster/
+> - [Sync Options - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#sync-options)
+> - [ArgoCDで外部のクラスターにアプリケーションをデプロイ \| DevelopersIO](https://dev.classmethod.jp/articles/argocd-for-external-cluster/)
 
 <br>
 
@@ -1709,7 +1709,7 @@ spec:
         namespace: foo-namespace
 ```
 
-> - https://techstep.hatenablog.com/entry/2021/12/02/085034
+> - [ArgoCD ApplicationSetを動かしてみる - TECHSTEP](https://techstep.hatenablog.com/entry/2021/12/02/085034)
 > - https://blog.argoproj.io/introducing-the-applicationset-controller-for-argo-cd-982e28b62dc5
 
 <br>
@@ -1726,9 +1726,9 @@ Application が選べる AppProject を制限できるように、Application �
 
 もしすべての Application と AppProject を同じ Namespace で管理してしまうと、自由に AppProject を変更して、その Project にデプロイできてしまう。
 
-> - https://techstep.hatenablog.com/entry/2021/12/30/233323#Project%E3%81%A8%E3%81%AF
-> - https://github.com/argoproj/argo-cd/issues/11058
-> - https://blog.cybozu.io/entry/2020/02/04/110000
+> - [ArgoCD Projectの使い方を整理する - TECHSTEP](https://techstep.hatenablog.com/entry/2021/12/30/233323#Project%E3%81%A8%E3%81%AF)
+> - [Restrict the \`default\` project · Issue #11058 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/11058)
+> - [テナントがArgoCD Applicationを任意に作れるようにする - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2020/02/04/110000)
 
 <br>
 
@@ -1761,8 +1761,8 @@ spec:
 # sourceNamespaces
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#the-default-project
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects
+> - [Projects - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#the-default-project)
+> - [Declarative Setup - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#projects)
 
 <br>
 
@@ -1844,11 +1844,11 @@ spec:
   ...
 ```
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#cluster-scoped-argo-cd-installation
-> - https://github.com/argoproj/argo-cd/pull/9755
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#implementation-details
+> - [Applications in any namespace - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#cluster-scoped-argo-cd-installation)
+> - [feat: Applications in any namespace by jannfis · Pull Request #9755 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/pull/9755)
+> - [Applications in any namespace - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#implementation-details)
 > - https://developers.redhat.com/articles/2022/04/13/manage-namespaces-multitenant-clusters-argo-cd-kustomize-and-helm#a_simple_argo_cd_application
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/
+> - [argocd-application-controller Command Reference - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/server-commands/argocd-application-controller/)
 
 #### ▼ デフォルトの Namespaced スコープモード
 
@@ -1856,8 +1856,8 @@ spec:
 
 そのため、異なる Namespace 間で同じ親 Application があっても、Namespace を超えて親を共有してしまうことがない。
 
-> - https://github.com/argoproj/argo-cd/pull/9755
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#cluster-scoped-argo-cd-installation
+> - [feat: Applications in any namespace by jannfis · Pull Request #9755 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/pull/9755)
+> - [Applications in any namespace - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/app-any-namespace/#cluster-scoped-argo-cd-installation)
 
 <br>
 
@@ -1958,6 +1958,6 @@ $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/arg
 
 ## 06. ConfigManagementPlugin
 
-> - https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_plugin
+> - [【IT技術の知見】プラグイン＠リソース定義 - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_plugin)
 
 <br>

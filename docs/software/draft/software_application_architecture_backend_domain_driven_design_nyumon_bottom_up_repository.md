@@ -15,7 +15,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ## サンプルコード
 
-> - https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter5
+> - [itddd/SampleCodes/Chapter5 at master · nrslib/itddd · GitHub](https://github.com/nrslib/itddd/tree/master/SampleCodes/Chapter5)
 
 <br>
 

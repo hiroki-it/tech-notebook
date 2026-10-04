@@ -9,7 +9,7 @@ description: Eloquent ORM＠Laravelの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ Active Record パターンで実装されている。
 
 内部には PDO が使用されており、Laravel クエリビルダーよりも抽象度が高い。
 
-> - https://readouble.com/laravel/8.x/ja/eloquent.html
+> - [8.x Eloquentの準備 Laravel](https://readouble.com/laravel/8.x/ja/eloquent.html)
 > - https://codezine.jp/article/detail/12805
 
 <br>
@@ -181,9 +181,9 @@ $department = Department::find(1);
 $employees = $department->employees()
 ```
 
-> - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one
-> - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many
-> - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse
+> - [8.x Eloquent:リレーション Laravel](https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-one)
+> - [8.x Eloquent:リレーション Laravel](https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many)
+> - [8.x Eloquent:リレーション Laravel](https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#one-to-many-inverse)
 
 #### ▼ 主キーカラムの定義
 
@@ -570,8 +570,8 @@ Eloquent モデルにはより上位の関数が定義されていないこと�
 | Eloquent リレーション | `Illuminate\Database\Eloquent\Relations\Relation` | Query ビルダー、Eloquent ビルダー、                      |
 | Eloquent モデル       | `Illuminate\Database\Eloquent\Model`              | Query ビルダー、Eloquent ビルダー、Eloquent リレーション |
 
-> - https://www.php.net/manual/ja/language.oop5.overloading.php#object.call
-> - https://qiita.com/mpyw/items/7c7e8dc665584122a275
+> - [PHP: オーバーロード - Manual](https://www.php.net/manual/ja/language.oop5.overloading.php#object.call)
+> - [【Laravel】 第1回 Eloquent ソースコードリーディング - モデルの取得 #PHP - Qiita](https://qiita.com/mpyw/items/7c7e8dc665584122a275)
 
 #### ▼ Eloquent ビルダー
 
@@ -677,8 +677,8 @@ class FooDTO extends Model
 }
 ```
 
-> - https://codelikes.com/laravel-eloquent-basic/#toc9
-> - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
+> - [LaravelでEloquentの使い方(更新・追加・取得・削除) \| コードライク](https://codelikes.com/laravel-eloquent-basic/#toc9)
+> - [LaravelのORMで初心者から職人へ #PHP - Qiita](https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9)
 
 <br>
 
@@ -723,7 +723,7 @@ class FooController extends Controller
 
 > - https://stackoverflow.com/questions/54526479/what-is-the-dafault-ordering-in-laravel-eloquent-modelall-function
 > - https://laravel.com/api/8.x/Illuminate/Support/Collection.html#method_all
-> - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-models
+> - [8.x Eloquentの準備 Laravel](https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-models)
 
 #### ▼ `find()` 関数
 
@@ -762,7 +762,7 @@ class FooController extends Controller
 ```
 
 > - https://laravel.com/api/8.x/Illuminate/Database/Query/Builder.html#method_find
-> - https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models
+> - [8.x Eloquentの準備 Laravel](https://readouble.com/laravel/8.x/ja/eloquent.html#retrieving-single-models)
 
 #### ▼ `first()` 関数
 
@@ -837,7 +837,7 @@ class FooController extends Controller
 }
 ```
 
-> - https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+> - [8.x データベース：クエリビルダ Laravel](https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset)
 
 #### ▼ `orderBy()` 関数
 
@@ -884,7 +884,7 @@ class FooController extends Controller
 }
 ```
 
-> - https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset
+> - [8.x データベース：クエリビルダ Laravel](https://readouble.com/laravel/8.x/ja/queries.html#ordering-grouping-limit-and-offset)
 
 #### ▼ `sortBy()` 関数
 
@@ -915,7 +915,7 @@ class FooController extends Controller
 }
 ```
 
-> - https://readouble.com/laravel/8.x/ja/collections.html#method-sortby
+> - [8.x コレクション Laravel](https://readouble.com/laravel/8.x/ja/collections.html#method-sortby)
 
 #### ▼ `sortByDesc()` 関数
 
@@ -944,7 +944,7 @@ class FooController extends Controller
 }
 ```
 
-> - https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc
+> - [8.x コレクション Laravel](https://readouble.com/laravel/8.x/ja/collections.html#method-sortbydesc)
 
 #### ▼ `with()` 関数
 
@@ -958,11 +958,11 @@ Eloquent モデルには `with()` 関数がない。代わりに、 Eloquent ビ
 
 N+1 問題を防げる。
 
-> - https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading
+> - [8.x Eloquent:リレーション Laravel](https://readouble.com/laravel/8.x/ja/eloquent-relationships.html#eager-loading)
 
 ただし、`with()` 関数に他の関数をチェーンしてしまうと、Eager ロードの後に SQL を発行されてしまうため、Eager ロードの恩恵を得られなくなることに注意する。
 
-> - https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F
+> - [\[Laravel\] Eloquent リレーションと Eager Loading #DB - Qiita](https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F)
 
 **＊実装例＊**
 
@@ -1128,8 +1128,8 @@ class FooDTO extends Model
 }
 ```
 
-> - https://codelikes.com/laravel-eloquent-basic/#toc9
-> - https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9
+> - [LaravelでEloquentの使い方(更新・追加・取得・削除) \| コードライク](https://codelikes.com/laravel-eloquent-basic/#toc9)
+> - [LaravelのORMで初心者から職人へ #PHP - Qiita](https://qiita.com/henriquebremenkanp/items/cd13944b0281297217a9)
 
 <br>
 
@@ -1247,7 +1247,7 @@ Laravel は Active Record パターンを採用しており、これはビジネ
 
 リポジトリパターンについては、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html
+> - [【IT技術の知見】クリーンアーキテクチャ＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)
 
 <br>
 

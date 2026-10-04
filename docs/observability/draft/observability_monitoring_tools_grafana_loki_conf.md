@@ -255,7 +255,7 @@ query_range:
   parallelise_shardable_queries: false
 ```
 
-> - https://github.com/grafana/loki/issues/7649#issuecomment-1625645403
+> - [error notifying frontend/scheduler about finished query · Issue #7649 · grafana/loki · GitHub](https://github.com/grafana/loki/issues/7649#issuecomment-1625645403)
 
 #### ▼ results_cache
 
@@ -288,7 +288,7 @@ ruler:
   alertmanager_url: http://altertmanager.altertmanager.svc.cluster.local:9093
 ```
 
-> - https://grafana.com/docs/loki/latest/alert/#alerting-and-recording-rules
+> - [Alerting and recording rules \| Grafana Loki documentation](https://grafana.com/docs/loki/latest/alert/#alerting-and-recording-rules)
 
 #### ▼ storage
 
@@ -305,7 +305,7 @@ ruler:
     type: s3
 ```
 
-> - https://grafana.com/docs/loki/latest/alert/#alerting-and-recording-rules
+> - [Alerting and recording rules \| Grafana Loki documentation](https://grafana.com/docs/loki/latest/alert/#alerting-and-recording-rules)
 
 #### ▼ wal
 
@@ -315,7 +315,7 @@ ruler:
     dir: /var/loki/ruler-wal
 ```
 
-> - https://grafana.com/docs/loki/latest/alert/#alerting-and-recording-rules
+> - [Alerting and recording rules \| Grafana Loki documentation](https://grafana.com/docs/loki/latest/alert/#alerting-and-recording-rules)
 
 <br>
 

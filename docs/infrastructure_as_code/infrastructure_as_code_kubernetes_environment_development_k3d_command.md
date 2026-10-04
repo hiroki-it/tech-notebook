@@ -21,7 +21,7 @@ $ curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh
 $ k3d version
 ```
 
-> - https://future-architect.github.io/articles/20200929/
+> - [k3sを知る、動かす、感じる \| フューチャー技術ブログ](https://future-architect.github.io/articles/20200929/)
 
 <br>
 
@@ -58,7 +58,7 @@ $ kubectl label node k3d-foo-cluster-agent-1 node-type=ingress --overwrite
 $ kubectl label node k3d-foo-cluster-agent-2 node-type=app --overwrite
 ```
 
-> - https://docs.rancherdesktop.io/how-to-guides/create-multi-node-cluster/
+> - [Create a Multi-Node Cluster with k3d \| Rancher Desktop Docs](https://docs.rancherdesktop.io/how-to-guides/create-multi-node-cluster/)
 
 #### ▼ --config
 
@@ -68,7 +68,7 @@ $ kubectl label node k3d-foo-cluster-agent-2 node-type=app --overwrite
 $ k3d cluster create --config config.yaml
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#usage
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#usage)
 
 #### ▼ --image
 
@@ -78,8 +78,8 @@ Kubernetes のバージョンを指定して、K3D Cluster を作成する。
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1
 ```
 
-> - https://github.com/k3d-io/k3d/discussions/474
-> - https://k3d.io/v5.6.3/usage/commands/k3d_cluster_create/
+> - [create a cluster with a specific k3s version · k3d-io/k3d · Discussion #474 · GitHub](https://github.com/k3d-io/k3d/discussions/474)
+> - [K3d cluster create - k3d](https://k3d.io/v5.6.3/usage/commands/k3d_cluster_create/)
 
 #### ▼ --servers
 
@@ -89,7 +89,7 @@ $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1
 $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --servers 2
 ```
 
-> - https://k3d.io/v5.5.2/usage/multiserver/
+> - [Creating multi-server clusters - k3d](https://k3d.io/v5.5.2/usage/multiserver/)
 
 #### ▼ --volume
 
@@ -101,7 +101,7 @@ $ k3d cluster create foo-cluster --image rancher/k3s:v1.28.0-k3s1 --servers 2
 $ k3d cluster create foo-cluster --volume "registries.yaml:/etc/rancher/k3s/registries.yaml
 ```
 
-> - https://cloudandbuild.jp/blog/article-2#make%E3%81%A7cluster%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%9F%E3%82%8A%E7%A0%B4%E6%A3%84%E3%81%99%E3%82%8B
+> - [k3dとskaffoldで始めるKubernetesローカル開発](https://cloudandbuild.jp/blog/article-2#make%E3%81%A7cluster%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%9F%E3%82%8A%E7%A0%B4%E6%A3%84%E3%81%99%E3%82%8B)
 
 #### ▼ --wait
 

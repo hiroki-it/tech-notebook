@@ -9,7 +9,7 @@ description: AWS Lambda関数＠AWS Lambdaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: AWS Lambda関数＠AWS Lambdaの知見を記録しています。
 
 自身から起動することはなく、外部から要求されて実行される関数のこと。
 
-> - https://garop.com/36/
+> - [ハンドラ \| は \| IT用語辞典](https://garop.com/36/)
 
 <br>
 
@@ -74,7 +74,7 @@ exports.handler = async (event) => {
 };
 ```
 
-> - https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async
+> - [Define Lambda function handler in Node.js - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-async)
 
 #### ▼ 同期ハンドラ関数 (Non-async handlers)
 
@@ -86,7 +86,7 @@ AWS Lambda はハンドラ関数を同期関数としてコールし、引数 (e
 
 `callback()` 関数を使用して、AWS Lambda のコール元に Promise オブジェクトのレスポンスを返信する。
 
-> - https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync
+> - [Define Lambda function handler in Node.js - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync)
 
 (※『Non』が翻訳をおかしくしているため、英語版を推奨)
 
@@ -148,7 +148,7 @@ AWS Lambda で関数を作成すると、Amazon CloudWatch Logs のロググル�
 
 #### ▼ ベストプラクティス
 
-> - https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-code
+> - [Best practices for working with AWS Lambda functions - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-code)
 
 <br>
 
@@ -160,7 +160,7 @@ AWS Lambda で関数を作成すると、Amazon CloudWatch Logs のロググル�
 
 Go を使用して、AWS Lambda-API へリクエストを送信し、AWS リソースを操作できる。
 
-> - https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html
+> - [Building Lambda functions with Go - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-golang.html)
 
 #### ▼ `Start()` 関数
 
@@ -194,13 +194,13 @@ func main() {
 }
 ```
 
-> - https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html
+> - [Define Lambda function handlers in Go - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html)
 
 #### ▼ パラメータ
 
 context オブジェクトと event オブジェクトをパラメーターとして使用できる。
 
-> - https://docs.aws.amazon.com/lambda/latest/dg/golang-context.html
+> - [Using the Lambda context object to retrieve Go function information - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/golang-context.html)
 
 <br>
 
@@ -299,7 +299,7 @@ func main() {
 
 また、JSON をレスポンスもできる。
 
-> - https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html#golang-handler-structs
+> - [Define Lambda function handlers in Go - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/golang-handler.html#golang-handler-structs)
 
 #### ▼ 異常系
 
@@ -361,7 +361,7 @@ func main() {
 
 Amazon CloudWatch Logs にてこれを確認する。
 
-> - https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html
+> - [Log and monitor Go Lambda functions - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/golang-logging.html)
 
 <br>
 
@@ -369,7 +369,7 @@ Amazon CloudWatch Logs にてこれを確認する。
 
 ### AWS Amplify ➡️ Amazon EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
-> - https://github.com/hiroki-it/notify-slack-of-amplify-events
+> - [GitHub - hiroki-it/notify-slack-of-amplify-events: 🏭 クリーンアーキ / Go / Serverless Framework / CircleCI を練習するためのアプリケーション · GitHub](https://github.com/hiroki-it/notify-slack-of-amplify-events)
 
 <br>
 
@@ -388,7 +388,7 @@ Amazon CloudWatch Logs にてこれを確認する。
 | JavaScript の標準パッケージ | JavaScript にビルトイン関数を使用できる                                         | ・https://nodejs.org/api/index.html                                 |
 | `aws-sdk.js`                | JavaScript を使用して、AWS-API へリクエストを送信し、AWS リソースを操作できる。 | ・https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html |
 
-> - https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html
+> - [Building Lambda functions with Node.js - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html)
 
 <br>
 
@@ -428,7 +428,7 @@ exports.handler = async (event) => {
 };
 ```
 
-> - https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/using-promises.html
+> - [Using JavaScript Promises - AWS SDK for JavaScript](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/using-promises.html)
 
 <br>
 
@@ -652,7 +652,7 @@ const postMessageToSlack = (message) => {
 ```
 
 > - https://stackoverflow.com/questions/38533580/nodejs-how-to-promisify-http-request-reject-got-called-two-times
-> - https://gist.github.com/ktheory/df3440b01d4b9d3197180d5254d7fb65#file-httppromise-js
+> - [Easily make HTTPS requests that return promises w/ nodejs · GitHub](https://gist.github.com/ktheory/df3440b01d4b9d3197180d5254d7fb65#file-httppromise-js)
 
 <br>
 

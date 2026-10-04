@@ -9,7 +9,7 @@ description: OAuth2 Proxy＠セキュリティ系ミドルウェアの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -30,7 +30,7 @@ OAuth 2.0 をベースとした SSO (例：OAuth、OIDC など) のアクセス�
 ![oauth2-proxy_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_architecture.png)
 
 > - https://ibrahimhkoyuncu.medium.com/kubernetes-ingress-external-authentication-with-oauth2-proxy-and-keycloak-9924a3b2d34a
-> - https://blog.doctor-cha.com/google-sso-with-kubernetes-oauth-proxy
+> - [쿠버네티스 oauth-proxy로 구글 SSO 적용하기 \| 오토피디아 블로그](https://blog.doctor-cha.com/google-sso-with-kubernetes-oauth-proxy)
 
 <br>
 
@@ -40,7 +40,7 @@ OAuth 2.0 をベースとした SSO (例：OAuth、OIDC など) のアクセス�
 
 クライアントは、OAuth2 Proxy にリクエストを送信し、認証を実施する。
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/
+> - [Welcome \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/)
 
 <br>
 
@@ -81,7 +81,7 @@ spec:
             pathType: Prefix
 ```
 
-> - https://oauth2-proxy.github.io/oauth2-proxy/
+> - [Welcome \| OAuth2 Proxy](https://oauth2-proxy.github.io/oauth2-proxy/)
 > - https://ibrahimhkoyuncu.medium.com/kubernetes-ingress-external-authentication-with-oauth2-proxy-and-keycloak-9924a3b2d34a
 
 <br>
@@ -144,7 +144,7 @@ spec:
             path: /
 ```
 
-> - https://github.com/grafana/grafana/issues/52681#issuecomment-1767046285
+> - [auth.proxy does not work with oauth2\_proxy · Issue #52681 · grafana/grafana · GitHub](https://github.com/grafana/grafana/issues/52681#issuecomment-1767046285)
 > - https://stackoverflow.com/a/73088436/12771072
 
 #### ▼ Kiali

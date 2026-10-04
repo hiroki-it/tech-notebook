@@ -9,7 +9,7 @@ description: IPアドレス＠L3の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,7 +25,7 @@ IP アドレスの例示では、`x` を使用しないようにする。
 
 ![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address.png)
 
-> - https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f
+> - [IPアドレスの例示で xxx.xxx.xxx.xxx を使うな #SNS - Qiita](https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f)
 
 <br>
 
@@ -55,7 +55,7 @@ LAN 内で使用される。
 | `172.16.0.0/12`              | `172.16.0.0`～`172.31.255.255`   | `1048576`  |
 | `192.168.0.0/16`             | `192.168.0.0`～`192.168.255.255` | `65536`    |
 
-> - https://atmarkit.itmedia.co.jp/aig/06network/privateip.html
+> - [プライベートIPアドレス − ＠IT ネットワーク用語事典](https://atmarkit.itmedia.co.jp/aig/06network/privateip.html)
 
 <br>
 
@@ -140,7 +140,7 @@ IP アドレスをクラスとして分類し、各クラスで IP アドレス�
 
 IP アドレスから、その IP アドレスがいずれの国のネットワークが送信元かを判定できる。
 
-> - https://ao-system.net/ipv4country/
+> - [IPアドレスから国名表示 IPv4](https://ao-system.net/ipv4country/)
 
 <br>
 
@@ -152,7 +152,7 @@ IP アドレスから、その IP アドレスがいずれの国のネットワ�
 
 基本的には、`127.0.0.1` を使用する。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/0610/14/news021.html
+> - [ローカルループバックアドレス「127.0.0.1」「::1」「localhost」とは？：Tech TIPS - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/0610/14/news021.html)
 
 <br>
 
@@ -173,7 +173,7 @@ IP アドレスから、その IP アドレスがいずれの国のネットワ�
 - <サービス名>.co.jp
 - <サービス名>.net
 
-> - https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
+> - [ドメイン名とIPアドレスをひも付ける、図で見るDNSの「名前解決」 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/)
 
 <br>
 
@@ -193,7 +193,7 @@ URL は『`プロトコル + 完全修飾ドメイン名 + パス`』から、�
 
 ![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_namespace.png)
 
-> - https://ascii.jp/elem/000/000/419/419685/2/
+> - [ASCII.jp：インターネットで使うドメイン名と名前解決 (2/3)](https://ascii.jp/elem/000/000/419/419685/2/)
 
 #### ▼ DNS ゾーン
 
@@ -201,7 +201,7 @@ URL は『`プロトコル + 完全修飾ドメイン名 + パス`』から、�
 
 一般的なパブリックネットワークで使用する DNS ゾーンタイプを『パブリックゾーン』、一方でプライベートネットワークの場合を『プライベートゾーン』という。
 
-> - https://milestone-of-se.nesuke.com/l7protocol/dns/zone-transfer/
+> - [【図解】DNSゾーン転送の仕組みとシーケンス～フォワーダとの違い,AD統合ゾーン,notify,スタブゾーンのメリット/デメリット～ \| SEの道標](https://milestone-of-se.nesuke.com/l7protocol/dns/zone-transfer/)
 
 #### ▼ ホスト名
 
@@ -235,7 +235,7 @@ URL は『`プロトコル + 完全修飾ドメイン名 + パス`』から、�
 
 > - https://stackoverflow.com/a/57680951
 > - https://www.reddit.com/r/aws/comments/12yo2dp/can_route53_handle_multiple_subdomains_with/
-> - https://github.com/amplify-education/serverless-domain-manager/issues/255#issuecomment-662619960
+> - [Create multi-level sub-domains in AWS Route53 · Issue #255 · amplify-education/serverless-domain-manager · GitHub](https://github.com/amplify-education/serverless-domain-manager/issues/255#issuecomment-662619960)
 
 <br>
 
@@ -255,9 +255,9 @@ GET https://example.com:80/users/777?text1=a&text2=b
 
 クエリパラメーターに URL で使用できない文字がある場合、パーセントエンコーディング方式でエンコーディングする。
 
-> - https://dobon.net/vb/dotnet/internet/urlencode.html
-> - https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%BC%E3%82%BB%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0
-> - https://luozengbin.github.io/blog/2015-05-14-%5B%E8%AA%BF%E6%9F%BB%5Durl%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%83%87%E3%82%B3%E3%83%BC%E3%83%89%E5%87%A6%E7%90%86%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.html
+> - [URLエンコード、URLデコードを行う - .NET Tips (VB.NET,C#...)](https://dobon.net/vb/dotnet/internet/urlencode.html)
+> - [パーセントエンコーディング - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%91%E3%83%BC%E3%82%BB%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0)
+> - [\[調査\]URLパラメータデコード処理について - Akira's Tech Notes](https://luozengbin.github.io/blog/2015-05-14-%5B%E8%AA%BF%E6%9F%BB%5Durl%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%83%87%E3%82%B3%E3%83%BC%E3%83%89%E5%87%A6%E7%90%86%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6.html)
 
 <br>
 
@@ -277,8 +277,8 @@ URL やメールアドレスのドメイン名と IP アドレスを相互変換
 
 そこで、グローバル IP アドレスの代わりに、完全修飾ドメイン名を URL の一部として使用する。
 
-> - https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/
-> - https://www.kagoya.jp/howto/it-glossary/network/nameresolution/
+> - [ドメイン名とIPアドレスをひも付ける、図で見るDNSの「名前解決」 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/00780/062000012/)
+> - [IPアドレスの逆引き・正引きとは？ - カゴヤのサーバー研究室](https://www.kagoya.jp/howto/it-glossary/network/nameresolution/)
 
 <br>
 
@@ -328,13 +328,13 @@ search      bar   baz # domain値で問い合わせに失敗した場合に使�
 $ nslookup example # 実際には、example.fooとなる
 ```
 
-> - https://linuc.org/study/knowledge/507/
+> - [「/etc/resolv.conf」ファイル - Linux技術者認定 LinuC \| LPI-Japan](https://linuc.org/study/knowledge/507/)
 
 #### ▼ ドメイン
 
 ドメインレジストラ (例：Amazon Route 53、Google Cloud DNS、お名前ドットコム) によって管理される。
 
-> - https://www.value-domain.com/media/registry-registrar/
+> - [ドメインの運営を支えるレジストリとは？レジストラ・リセラーとの違いも解説｜バリューノート](https://www.value-domain.com/media/registry-registrar/)
 > - https://help.agathongroup.com/hc/en-us/articles/360040280233-What-is-the-difference-between-a-DNS-provider-a-domain-registrar-and-a-hosting-company-
 
 #### ▼ 名前解決の委譲
@@ -412,7 +412,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 : クライアント PC は、返却された IP アドレスを基にして、Web ページにリクエストを送信する。
 
-> - https://dev.classmethod.jp/articles/forbeginners-from-dns-to-tcp/
-> - https://jprs.jp/glossary/index.php?ID=0152
+> - [\[初心者向け\]Webサービスを利用する際のDNSからTCPコネクションについて再入門 \| DevelopersIO](https://dev.classmethod.jp/articles/forbeginners-from-dns-to-tcp/)
+> - [JPRS用語辞典｜委任](https://jprs.jp/glossary/index.php?ID=0152)
 
 <br>

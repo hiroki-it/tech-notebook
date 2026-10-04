@@ -9,7 +9,7 @@ description: コマンド＠Nginxの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -66,6 +66,6 @@ Nginx の設定ファイルのバリデーションを実行する。
 $ service nginx configtest
 ```
 
-> - http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/
+> - [ApacheとNginxを素早くシンタックスチェックする \| RickyNews](http://www.rickynews.com/blog/2014/09/24/quick-apache-nginx-restart/)
 
 <br>

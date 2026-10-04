@@ -9,7 +9,7 @@ description: 認証＠認証／認可の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -33,14 +33,14 @@ realm ごとに認証を管理する。
 
 例えば Keycloak であれば、Admin アカウントの認証は master realm で、それ以外はユーザー定義の realm、で管理する。
 
-> - https://www.seil.jp/doc/index.html#fn/pppac/cmd/authentication_realm.html
+> - [TECHNICAL MANUAL](https://www.seil.jp/doc/index.html#fn/pppac/cmd/authentication_realm.html)
 > - https://keycloak-documentation.openstandia.jp/21.0/ja_JP/server_admin/index.html#the-master-realm
 
 #### ▼ realm の粒度
 
 マイクロサービスアーキテクチャでは、横断的な realm (こちらがよさそう) 、または各マイクロサービスで realm を作成するとよい。
 
-> - https://github.com/vicjicaman/microservice-realm
+> - [GitHub - vicjicaman/microservice-realm: A blog about it's own development and evolution running on kubernetes. · GitHub](https://github.com/vicjicaman/microservice-realm)
 
 <br>
 

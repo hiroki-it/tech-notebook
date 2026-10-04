@@ -9,7 +9,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html
+> - [【IT技術の知見】Docker＠コンテナ型仮想化 - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html)
 
 <br>
 
@@ -311,8 +311,8 @@ services:
 ```
 
 > - https://stackoverflow.com/a/41854997
-> - https://zenn.dev/sun_asterisk/articles/b4b17681d08018
-> - https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md
+> - [Docker の healthcheck を初めて使った話](https://zenn.dev/sun_asterisk/articles/b4b17681d08018)
+> - [docker-compose-healthcheck/README\_JP.md at master · peter-evans/docker-compose-healthcheck · GitHub](https://github.com/peter-evans/docker-compose-healthcheck/blob/master/README_JP.md)
 
 <br>
 
@@ -379,7 +379,7 @@ services:
       - bar
 ```
 
-> - https://docs.docker.com/compose/how-tos/multiple-compose-files/include/
+> - [Include \| Docker Docs](https://docs.docker.com/compose/how-tos/multiple-compose-files/include/)
 
 <br>
 
@@ -391,7 +391,7 @@ services:
 
 ログのフォワーディング元よりも先に起動する必要がある。
 
-> - https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml
+> - [Docker Compose · Fluentd 1.0 Documentation](https://docs.fluentd.org/container-deployment/docker-compose#step-0-create-docker-compose.yml)
 
 **＊実装例＊**
 
@@ -628,7 +628,7 @@ services:
 
 docker エリアに Volume が作成され、`service` オプション内に設定した `volumes` オプションでボリュームマウントを実行する。
 
-> - https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c
+> - [Docker上のMySQLのデータをVolumeでホストのディレクトリにマウントすると権限周りで面倒なことになる #docker-compose - Qiita](https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c)
 
 **＊実装例＊**
 
@@ -830,8 +830,8 @@ networks:
 (4) 各コンテナは `http://localhost:<コンテナごとのポート番号>` で相互接続できるようになる。
 
 > - https://docs.docker.com/compose/compose-file/compose-file-v2/#external-1
-> - https://nishinatoshiharu.com/external-docker-network/
-> - https://tech.anti-pattern.co.jp/docker-compose/
+> - [異なるDocker環境どうしをDockerネットワークで連携する方法 \| Enjoy IT Life](https://nishinatoshiharu.com/external-docker-network/)
+> - [複数のdocker-compose間で通信する](https://tech.anti-pattern.co.jp/docker-compose/)
 
 #### ▼ docker ネットワーク外からの通信
 
@@ -947,6 +947,6 @@ GRANT ALL ON *.* TO 'foo'@'%' ;
 
 PHPUnit で接続する DB を指定する方法については、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html
+> - [【IT技術の知見】PHPのテストツール＠ホワイトボックステスト - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html)
 
 <br>

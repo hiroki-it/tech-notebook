@@ -9,7 +9,7 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -29,7 +29,7 @@ description: クリーンアーキテクチャ＠アーキテクチャの知見�
 
 ### 構成
 
-> - https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+> - [Clean Coder Blog](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
 ![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpeg)
 
@@ -417,6 +417,6 @@ export default tseslint.config(
 );
 ```
 
-> - https://zenn.dev/sqer/articles/35d56d9850efb2
+> - [「このパスでこのファイルのインポートをさせたくない、、、」をESLintでルール化する](https://zenn.dev/sqer/articles/35d56d9850efb2)
 
 <br>

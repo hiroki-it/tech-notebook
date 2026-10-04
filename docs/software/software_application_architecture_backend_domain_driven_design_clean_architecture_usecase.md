@@ -9,7 +9,7 @@ description: ユースケース層＠クリーンアーキテクチャの知見�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,7 +27,7 @@ description: ユースケース層＠クリーンアーキテクチャの知見�
 
 ![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master//images/clean-architecture_flow.png)
 
-> - http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/
+> - [Implementing Clean Architecture - Of controllers and presenters](http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/)
 
 <br>
 
@@ -80,7 +80,7 @@ Book ルートエンティティと Review ルートエンティティは親子�
 そのため、Review ユースケースが Book リポジトリをコールしてもよい。
 
 > - https://stackoverflow.com/questions/76036673/can-a-usecase-have-repositories-from-different-domains-as-dependencies-followin
-> - https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-domain-driven-design?utm_source=openai#domain-and-application-services
+> - [Use Tactical DDD to Design Microservices - Azure Architecture Center \| Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/microservices/model/tactical-domain-driven-design?utm_source=openai#domain-and-application-services)
 
 一方で、異なる境界づけられたコンテキストに属しているルートエンティティの場合、ユースケースはそれを操作するリポジトリをコールしてはいけない。
 
@@ -88,7 +88,7 @@ Book ルートエンティティと Review ルートエンティティは親子�
 
 これを操作する注文リポジトリと在庫リポジトリをコールしてはいけない。
 
-> - https://zenn.dev/j5ik2o/articles/59de072b6728ff
+> - [複数集約を跨ぐ処理を1つのDBトランザクションで括る前に読む記事](https://zenn.dev/j5ik2o/articles/59de072b6728ff)
 
 <br>
 
@@ -304,7 +304,7 @@ class FooInteractor
 }
 ```
 
-> - https://tech.yappli.io/entry/ddd_usecase
+> - [【戦術的DDD】なぜトランザクションをユースケース層で張るのか - Yappli Tech Blog](https://tech.yappli.io/entry/ddd_usecase)
 
 <br>
 

@@ -19,8 +19,8 @@ description: PHPStan＠静的解析の知見を記録しています。
 
 最初は、必ず検出したい項目 (例：未定義関数、引数/返却値型の誤り) を決めて、これを検出できるレベルを設定するとよい。
 
-> - https://phpstan.org/user-guide/rule-levels
-> - https://creators-note.chatwork.com/entry/2022/05/24/084828#%E8%A7%A3%E6%9E%90%E3%83%AC%E3%83%99%E3%83%AB%E3%82%92%E6%B1%BA%E5%AE%9A%E3%81%99%E3%82%8B
+> - [Rule Levels \| PHPStan](https://phpstan.org/user-guide/rule-levels)
+> - [リリースして11年経過したPHPアプリケーションにPHPStanを導入した - kubell Creator's Note](https://creators-note.chatwork.com/entry/2022/05/24/084828#%E8%A7%A3%E6%9E%90%E3%83%AC%E3%83%99%E3%83%AB%E3%82%92%E6%B1%BA%E5%AE%9A%E3%81%99%E3%82%8B)
 
 <br>
 

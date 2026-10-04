@@ -11,7 +11,7 @@ description: ユニットテスト設計用のドキュメント＠AI用ドキ�
 2. 次のユニットテストのプラクティスを読み込む。
 
 - https://medium.com/@kaanfurkanc/unit-testing-best-practices-3a8b0ddd88b5
-- https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices
+- [Best practices for writing unit tests - .NET \| Microsoft Learn](https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-best-practices)
 
 3. 次の観点でテストケースを追加／改善する。
 

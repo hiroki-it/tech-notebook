@@ -9,7 +9,7 @@ description: ハードウェアの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: ハードウェアの知見を記録しています。
 
 ![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software.png)
 
-> - https://thinkit.co.jp/article/11526
+> - [ITインフラの全体像を理解しよう \| 新人エンジニアのためのインフラ入門 ーBFT道場 Think IT支部 \| Think IT（シンクイット）](https://thinkit.co.jp/article/11526)
 
 <br>
 

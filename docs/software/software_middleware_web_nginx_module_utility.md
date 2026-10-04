@@ -9,7 +9,7 @@ description: ユーティリティモジュール＠Nginxの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -49,7 +49,7 @@ COPY --from=builder /usr/lib/nginx/modules/otel_ngx_module.so /usr/lib/nginx/mod
 
 ```
 
-> - https://github.com/ymtdzzz/nginx-otel-sample/blob/main/nginx/Dockerfile
+> - [nginx-otel-sample/nginx/Dockerfile at main · ymtdzzz/nginx-otel-sample · GitHub](https://github.com/ymtdzzz/nginx-otel-sample/blob/main/nginx/Dockerfile)
 
 #### ▼ ビルド済みモジュールの場合
 
@@ -73,7 +73,7 @@ FROM nginx:<バージョン>-alpine
 
 nginx モジュールが gRPC を使用できるようにする。
 
-> - https://github.com/grpc/grpc
+> - [GitHub - grpc/grpc: C++ based gRPC (C++, Python, Ruby, Objective-C, PHP, C#) · GitHub](https://github.com/grpc/grpc)
 
 <br>
 
@@ -104,8 +104,8 @@ $ make -j2
 $ make install
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801
-> - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89
+> - [Nginx 1.22.0 doesn't start with OpenTelemetry enabled · Issue #199 · open-telemetry/opentelemetry-cpp-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801)
+> - [nginx × New Relic: OpenTelemetryを用いたトレース情報の集約と可視化 #NewRelic - Qiita](https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89)
 
 <br>
 
@@ -115,7 +115,7 @@ $ make install
 
 C++で Nginx を計装できるようにする。
 
-> - https://github.com/open-telemetry/opentelemetry-cpp
+> - [GitHub - open-telemetry/opentelemetry-cpp: The OpenTelemetry C++ Client · GitHub](https://github.com/open-telemetry/opentelemetry-cpp)
 
 <br>
 
@@ -147,8 +147,8 @@ $ make -j2
 $ make install
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801
-> - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89
+> - [Nginx 1.22.0 doesn't start with OpenTelemetry enabled · Issue #199 · open-telemetry/opentelemetry-cpp-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801)
+> - [nginx × New Relic: OpenTelemetryを用いたトレース情報の集約と可視化 #NewRelic - Qiita](https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89)
 
 <br>
 
@@ -162,7 +162,7 @@ gRPC Exporter を使用するために、gRPC パッケージが必要である�
 
 また、Nginx は C++で実装されているため、opentelemetry-cpp パッケージが必要である。
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx
+> - [opentelemetry-cpp-contrib/instrumentation/nginx at main · open-telemetry/opentelemetry-cpp-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/nginx)
 
 <br>
 
@@ -193,9 +193,9 @@ $ make install
 load_module modules/otel_ngx_module.so;
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801
-> - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89
-> - https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E5%88%86%E6%95%A3%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
+> - [Nginx 1.22.0 doesn't start with OpenTelemetry enabled · Issue #199 · open-telemetry/opentelemetry-cpp-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/199#issuecomment-1263857801)
+> - [nginx × New Relic: OpenTelemetryを用いたトレース情報の集約と可視化 #NewRelic - Qiita](https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89)
+> - [nginx × New Relic: OpenTelemetryを用いたトレース情報の集約と可視化 #NewRelic - Qiita](https://qiita.com/MarthaS/items/14da436b6bce5e7d7759#%E5%88%86%E6%95%A3%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0%E3%81%AE%E8%A8%AD%E5%AE%9A)
 
 <br>
 
@@ -252,7 +252,7 @@ Apache または Nginx を OpenTelemetry で計装できるようにする。
 
 otel_apache_module と ngx_http_opentelemetry_module の両方を含んでいる。
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module
+> - [opentelemetry-cpp-contrib/instrumentation/otel-webserver-module at main · open-telemetry/opentelemetry-cpp-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module)
 
 <br>
 
@@ -260,8 +260,8 @@ otel_apache_module と ngx_http_opentelemetry_module の両方を含んでいる
 
 OpenTelemetry コミュニティ製のモジュールであり、Apache を OpenTelemetry で計装できるようにする。
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#apache-webserver-module
-> - https://opentelemetry.io/blog/2022/instrument-apache-httpd-server/
+> - [opentelemetry-cpp-contrib/instrumentation/otel-webserver-module at main · open-telemetry/opentelemetry-cpp-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#apache-webserver-module)
+> - [Learn how to instrument Apache Http Server with OpenTelemetry \| OpenTelemetry](https://opentelemetry.io/blog/2022/instrument-apache-httpd-server/)
 
 <br>
 
@@ -272,7 +272,7 @@ JWT 取得のための認可リクエストを認可サーバーに送信する�
 有料版の Nginx でしか使えない。
 
 > - https://medium.com/@sergey.dudik/nginx-and-keycloak-a-perfect-pair-for-gateway-security-41a801e741f9
-> - https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html
+> - [Module ngx\_http\_auth\_jwt\_module](https://nginx.org/en/docs/http/ngx_http_auth_jwt_module.html)
 
 <br>
 
@@ -280,6 +280,6 @@ JWT 取得のための認可リクエストを認可サーバーに送信する�
 
 OpenTelemetry コミュニティ製のモジュールであり、Nginx を OpenTelemetry で計装できるようにする。
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#nginx-webserver-module
+> - [opentelemetry-cpp-contrib/instrumentation/otel-webserver-module at main · open-telemetry/opentelemetry-cpp-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/instrumentation/otel-webserver-module#nginx-webserver-module)
 
 <br>

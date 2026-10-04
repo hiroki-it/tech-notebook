@@ -9,7 +9,7 @@ description: Dockerfile＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -276,7 +276,7 @@ COPY --from=composer:<バージョン> /usr/bin/composer /usr/bin/composer
 COPY --from=nginx:latest /etc/nginx/nginx.conf /nginx.conf
 ```
 
-> - https://docs.docker.com/build/building/multi-stage/#use-an-external-image-as-a-stage
+> - [Multi-stage builds \| Docker Docs](https://docs.docker.com/build/building/multi-stage/#use-an-external-image-as-a-stage)
 
 <br>
 
@@ -366,7 +366,7 @@ FROM python:latest-slim
 
 PHP-FPM をインストールする場合は、`php:8.0-fpm` である。
 
-> - https://hub.docker.com/_/php
+> - [php - Official Image \| Docker Hub](https://hub.docker.com/_/php)
 
 #### ▼ クラウドプロバイダー (パブリック)
 
@@ -433,7 +433,7 @@ $ crane copy nginx:<バージョン> *****.dkr.ecr.ap-northeast-1.amazonaws.com/
 ```
 
 > - https://medium.com/@spurin/copying-container-images-between-container-registries-e7b734abc701
-> - https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md
+> - [go-containerregistry/cmd/crane/doc/crane\_copy.md at main · google/go-containerregistry · GitHub](https://github.com/google/go-containerregistry/blob/main/cmd/crane/doc/crane_copy.md)
 
 #### ▼ krane
 
@@ -508,7 +508,7 @@ $ docker login --username <ユーザー名> --password <パスワード>
 $ docker buildx build --platform linux/amd64,linux/arm64 -t :latest . --push
 ```
 
-> - https://qiita.com/SuyamaDaichi/items/cadc31df50fd42689661
+> - [Dockerの「マルチCPUアーキテクチャ」に対応したイメージをビルドする #Docker - Qiita](https://qiita.com/SuyamaDaichi/items/cadc31df50fd42689661)
 
 <br>
 
@@ -529,7 +529,7 @@ $ docker buildx build --platform linux/amd64,linux/arm64 -t :latest . --push
 ボリュームマウントを実行する。
 
 > - https://docs.docker.com/engine/reference/builder/#volume
-> - https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d
+> - [DockerのVolume機能について実験してみたことをまとめます #Docker - Qiita](https://qiita.com/namutaka/items/f6a574f75f0997a1bb1d)
 
 <br>
 

@@ -9,7 +9,7 @@ description: Amazon Aurora＠AWSリソース
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: Amazon Aurora＠AWSリソース
 
 Amazon RDS をよりマネージドにした AWS リソースである。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html
+> - [What is Amazon Aurora? - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
 
 <br>
 
@@ -58,7 +58,7 @@ Amazon RDS をよりマネージドにした AWS リソースである。
 | 削除保護                             | Amazon Aurora の DB クラスターの削除を防ぐ。                                                                                                                  | Amazon Aurora の DB クラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、Amazon Aurora の DB クラスターの削除保護になっていても Amazon Aurora の DB インスタンスは削除できる。Amazon Aurora の DB インスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br>https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 > - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon RDS/
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html
+> - [Using SSL/TLS to encrypt a connection to a DB instance or cluster - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html)
 
 #### ▼ Amazon Aurora の DB インスタンス
 
@@ -83,7 +83,7 @@ Amazon Aurora は、EC2 内に DBMS が稼働したものであるが、この�
 
 そのため DB サーバーのようには操作できず、OS のバージョン確認や SSH 公開鍵認証を行えない。
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/
+> - [［5］RDSのつまずきポイント、DBサーバーと思うと失敗する \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/)
 
 #### ▼ 確認方法
 
@@ -128,7 +128,7 @@ SSH 公開鍵認証を使用する場合、ユーザーが自前で DB 接続者
 $ ssh -o serveraliveinterval=60 -f -N -L 3306:<Amazon Auroraのリーダーエンドポイント>:3306 -i "~/.ssh/foo.pem" <踏み台サーバーの実行ユーザー>@<踏み台サーバー (Amazon EC2) のホスト> -p 22
 ```
 
-> - https://qiita.com/shimi7o/items/732e91126ab4a06162a7
+> - [Auroraへの接続にはSSM Session Managerを利用したリモートホストへのポートフォワーディングがおすすめという話 #AWS - Qiita](https://qiita.com/shimi7o/items/732e91126ab4a06162a7)
 
 <br>
 
@@ -140,7 +140,7 @@ $ ssh -o serveraliveinterval=60 -f -N -L 3306:<Amazon Auroraのリーダーエ�
 
 この場合、AWS SSM Session Manager を使用するため、踏み台サーバー (Amazon EC2) をプライベートサブネットに置ける。
 
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh
+> - [Start a session - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh)
 
 <br>
 
@@ -152,7 +152,7 @@ AWS SSM Session Manager の認証を使用する場合、AWS IAM で DB 接続�
 
 この場合、AWS SSM Session Manager を使用するため、踏み台サーバー (Amazon EC2) をプライベートサブネットに置ける。
 
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding
+> - [Start a session - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding)
 
 #### ▼ 前提条件
 
@@ -192,9 +192,9 @@ mysql> SHOW TABLES;
 ...
 ```
 
-> - https://dev.classmethod.jp/articles/ssm-session-manage-port-forwarding/#toc-1
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding
-> - https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html
+> - [SSM Session Managerを使ってポートフォワードする \| DevelopersIO](https://dev.classmethod.jp/articles/ssm-session-manage-port-forwarding/#toc-1)
+> - [Start a session - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding)
+> - [Install the Session Manager plugin on macOS - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html)
 
 <br>
 
@@ -208,7 +208,7 @@ DB に接続したい場合、ポートフォワーディング用の踏み台 P
 
 Helm チャートを作成しておくと、簡単にセットアップできる。
 
-> - https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84
+> - [アプリ開発者のための kubectl 講座](https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84)
 
 <br>
 
@@ -294,7 +294,7 @@ $ helmfile -f helmfile.yaml diff
 $ helmfile -f helmfile.yaml apply
 ```
 
-> - https://hub.docker.com/r/marcnuri/port-forward
+> - [marcnuri/port-forward - Docker Image](https://hub.docker.com/r/marcnuri/port-forward)
 
 #### ▼ コマンド
 
@@ -322,7 +322,7 @@ mysql> SHOW TABLES;
 ...
 ```
 
-> - https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84
+> - [アプリ開発者のための kubectl 講座](https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84)
 
 <br>
 
@@ -330,7 +330,7 @@ mysql> SHOW TABLES;
 
 記入中...
 
-> - https://zenn.dev/quiver/articles/1458e453118254
+> - [ECS Fargateを踏み台にポートフォワードしてVPC内のRDSに接続する](https://zenn.dev/quiver/articles/1458e453118254)
 
 <br>
 
@@ -348,7 +348,7 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 
 ![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster.png)
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
+> - [High availability for Amazon Aurora - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html)
 
 <br>
 
@@ -364,7 +364,7 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 
 これは、Terraform が AWS-API をコールして作成しているためである。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster
+> - [Deleting Aurora DB clusters and DB instances - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster)
 
 <br>
 
@@ -398,8 +398,8 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 | インスタンスエンドポイント | 書き込み/読み出し (指定した Amazon Aurora の DB インスタンスによる) | 特定の Amazon Aurora の DB インスタンス | `<Amazon AuroraのDBインスタンス名>.cwgrq25vlygf.ap-northeast-1.rds.amazonaws.com:<ポート番号>`  | 選択した Amazon Aurora の DB インスタンスに通信できる。フェイルオーバーによってプライマリーインスタンスとリードレプリカが入れ替わっても、エンドポイントは変わらないため、アプリケーションが影響を受ける。非推奨である。                                                                                                                                                                                                                                                                                                                                                 |
 | カスタムエンドポイント     |                                                                     |                                         |                                                                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
-> - https://xtech.nikkei.com/it/atcl/column/16/041400085/042600030/
-> - https://qiita.com/pensuke628/items/5ca7f2d2a53a71528ad1
+> - [［Auroraの落とし穴］読み込みエンドポイントで分散されない \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/atcl/column/16/041400085/042600030/)
+> - [【Aurora】各エンドポイントの違い #AWS - Qiita](https://qiita.com/pensuke628/items/5ca7f2d2a53a71528ad1)
 
 <br>
 
@@ -444,9 +444,9 @@ Amazon Aurora をエンジンバージョンとして選択した場合に使用
 : リードレプリカが再起動され、このときに `20`～`30` 秒ほどダウンタイムが発生する。これらの仕組みのため、アプリケーションでは読み出しエンドポイントを接続先として使用しないようにする必要がある。
 
 > - https://qiita.com/tonishy/items/542f7dd10cc43fd299ab
-> - https://qiita.com/tmiki/items/7ade95c33b8e43c7cb5f
-> - https://noname.work/2407.html
-> - https://www.yuulinux.tokyo/8070/
+> - [【注意】Amazon Aurora(MySQL)でZero Downtime Patch実行時に不具合が発生するケースがある【AWS】 #AWS - Qiita](https://qiita.com/tmiki/items/7ade95c33b8e43c7cb5f)
+> - [【AWS】Auroraエンジンのダウンタイムなしアップグレードについて \| 個人利用で始めるAWS学習記](https://noname.work/2407.html)
+> - [AWS RDSからAuroraへの移行 \| 優技録](https://www.yuulinux.tokyo/8070/)
 
 <br>
 
@@ -462,7 +462,7 @@ Amazon Aurora に SSH 接続したうえで、DB に対して以下のコマン�
 $ mysqlsh util.checkForServerUpgrade()
 ```
 
-> - https://mita2db.hateblo.jp/entry/2023/05/24/214131
+> - [Aurora v2 に Upgrade Checker Utility を実行してみた - mita2 database life](https://mita2db.hateblo.jp/entry/2023/05/24/214131)
 > - https://dev.mysql.com/doc/mysql-shell/8.0/en/mysql-shell-utilities-upgrade.html
 
 <br>
@@ -487,7 +487,7 @@ Amazon RDS にはダウンタイムに関する情報が多いが、Amazon Auror
 | ------------------ | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | エンジンバージョン | あり               | パッチバージョンのアップグレードでは、ZDP でダウンタイムが起こらない可能性がある。ダウンタイムが発生する場合は `20`～`30` 秒程度である。この時間は、ワークロード、クラスターサイズ、バイナリログデータのサイズ、ゼロダウンタイムパッチ適用の発動可否によって変動する。<br>・https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html <br>・https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.Patching.html#AuroraMySQL.Updates.AMVU <br>一方、メジャーバージョンのアップグレードでは、`10` 分のダウンタイムが発生する。<br>https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html#USER_UpgradeDBInstance.MySQL.Major.Overview |
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings
+> - [Modifying an Amazon RDS DB instance - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings)
 
 #### ▼ エンジンタイプによるダウンタイムの最小化
 
@@ -668,7 +668,7 @@ Amazon Aurora の DB インスタンスごとにフェイルオーバーの優�
 
 : 同じサブネット
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html
+> - [High availability for Amazon Aurora - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html)
 
 #### ▼ ダウンタイムを最小化できない場合
 
@@ -709,7 +709,7 @@ Amazon Aurora の DB インスタンスに応じたエンドポイントが用�
 注意点として、Amazon RDS のスケーリングは、ストレージサイズを増加させる垂直スケーリングであり、Amazon Aurora のスケーリングとは仕様が異なっている。
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Amazon Aurora.Integrating.AutoScaling.html
-> - https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/
+> - [AWS Aurora AutoScaling を設定して負荷分散する \| Wedding Park CREATORS Blog](https://engineers.weddingpark.co.jp/aws-aurora-autoscaling/)
 > - https://qiita.com/1_ta/items/3880a8da8a29e4c8d8f0
 
 <br>
@@ -738,7 +738,7 @@ fields @timestamp, @message
 | limit 100
 ```
 
-> - https://tech.excite.co.jp/entry/2023/02/17/114538
+> - [AWSのCloudWatchLogsを使ったRDSのスロークエリ調査について - エキサイト TechBlog.](https://tech.excite.co.jp/entry/2023/02/17/114538)
 
 <br>
 
@@ -777,7 +777,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探したほうがよい。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html
+> - [Amazon RDS event categories and event messages for Aurora - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_Events.Messages.html)
 
 <br>
 
@@ -806,7 +806,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 ![aurora-db-cluster_global_secondary-headless](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster_global_secondary-headless.png)
 
 > - https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/_
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-getting-started.html#aurora-global-database-attach.console.headless
+> - [Getting started with Amazon Aurora Global Database - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-getting-started.html#aurora-global-database-attach.console.headless)
 > - https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/
 
 <br>
@@ -843,12 +843,12 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
      メインリージョンのクラスターがプライマリークラスター、DRリージョンのクラスターがセカンダリークラスターになる。
 
-> - https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-2
-> - https://qiita.com/minorun365/items/2530cf1d1f5793c15c79
+> - [Amazon Aurora Global Databaseをリージョン間でフェイルオーバーさせてみた \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-2)
+> - [Aurora「グローバルDB」を使って災対発動を想定したDRリージョン切り替えやってみた #AWS - Qiita](https://qiita.com/minorun365/items/2530cf1d1f5793c15c79)
 
 注意点として、通常の Amazon Aurora の DB クラスターと比較して、機能が制限される。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations
+> - [Using Amazon Aurora Global Database - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations)
 
 #### ▼ コールドスタンバイ構成
 
@@ -856,7 +856,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 つまり、DR リージョンに Amazon Aurora の DB インスタンスがない。
 
-> - https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-4
+> - [Amazon Aurora Global Databaseをリージョン間でフェイルオーバーさせてみた \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-aurora-global-database-failover-between-region/#toc-4)
 
 <br>
 
@@ -868,7 +868,7 @@ Amazon Aurora Global DB では、プライマリークラスターとセカン�
 
 メジャーバージョンのアップグレードの場合は、Amazon Aurora Global DB 自体をアップグレードする。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-upgrade.html
+> - [Upgrading an Amazon Aurora global database - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-upgrade.html)
 
 <br>
 
@@ -878,6 +878,6 @@ Amazon Aurora Global DB では、リージョン間でデータをコピーし�
 
 そのため、メインリージョンのプライマリークラスターでスナップショットを作成し、これを DR リージョンへコピーするようにする。
 
-> - https://dev.classmethod.jp/articles/lim-rds-move-region-jp/#toc-7
+> - [RDS リージョン間データ移行する方法 \| DevelopersIO](https://dev.classmethod.jp/articles/lim-rds-move-region-jp/#toc-7)
 
 <br>

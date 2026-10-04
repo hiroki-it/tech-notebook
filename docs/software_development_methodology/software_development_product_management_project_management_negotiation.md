@@ -9,7 +9,7 @@ description: 合意形成＠プロジェクトマネジメントの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,8 +19,8 @@ description: 合意形成＠プロジェクトマネジメントの知見を記�
 
 白黒つけるのではなく、グレーゾーンを見つける方法とも言える。
 
-> - https://levtech.jp/media/article/column/detail_655/
-> - https://zenn.dev/bicstone/articles/consensus-building
+> - [ステークホルダーの「インサイト」を掴むと、合意形成がラクになる。プロダクト思考で組織を動かす方法 - レバテックLAB](https://levtech.jp/media/article/column/detail_655/)
+> - [アジャイル組織でプロダクト価値を高める！「合意形成」のポイント](https://zenn.dev/bicstone/articles/consensus-building)
 
 <br>
 

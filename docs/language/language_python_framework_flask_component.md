@@ -9,7 +9,7 @@ description: コンポーネント＠Flaskの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -135,13 +135,13 @@ GET /foo/
 Cookie: session=*****
 ```
 
-> - https://qiita.com/showchan33/items/b714cca80985b3db2565#web%E3%82%B5%E3%83%BC%E3%83%90%E3%81%AE%E5%AE%9F%E8%A3%85%E8%B5%B7%E5%8B%95
+> - [Python : FlaskのsessionのKeyValueが、セッションCookieにどのように格納されているのかを調べてみた #ShellScript - Qiita](https://qiita.com/showchan33/items/b714cca80985b3db2565#web%E3%82%B5%E3%83%BC%E3%83%90%E3%81%AE%E5%AE%9F%E8%A3%85%E8%B5%B7%E5%8B%95)
 
 #### ▼ SECRET_KEY
 
 `Cookie` ヘッダーでペイロードとタイムスタンプを署名するためのキーを設定する。
 
-> - https://qiita.com/showchan33/items/b714cca80985b3db2565#3%E3%81%A4%E7%9B%AE%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AF%E7%BD%B2%E5%90%8D
+> - [Python : FlaskのsessionのKeyValueが、セッションCookieにどのように格納されているのかを調べてみた #ShellScript - Qiita](https://qiita.com/showchan33/items/b714cca80985b3db2565#3%E3%81%A4%E7%9B%AE%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AF%E7%BD%B2%E5%90%8D)
 > - https://flask.palletsprojects.com/en/stable/api/#flask.Flask.secret_key
 
 <br>
@@ -169,8 +169,8 @@ def create_app():
 ```
 
 > - https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
-> - https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py
-> - https://prettyprinted.com/tutorials/automatically_load_environment_variables_in_flask
+> - [flask\_api\_example/app/\_\_init\_\_.py at master · apryor6/flask\_api\_example · GitHub](https://github.com/apryor6/flask_api_example/blob/master/app/__init__.py)
+> - [Automatically Load Environment Variables in Flask](https://prettyprinted.com/tutorials/automatically_load_environment_variables_in_flask)
 
 #### ▼ エントリーポイント
 
@@ -197,8 +197,8 @@ if __name__ == '__main__':
 
 本番環境と開発環境を同様にしたい場合、本番環境だけでなく開発環境でもコマンドを使用しないようにしてもよい。
 
-> - https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/deploy.html
-> - https://serip39.hatenablog.com/entry/2020/07/06/070000
+> - [本番環境への展開（Deploy to Production） — Flask Documentation (2.2.x)](https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/tutorial/deploy.html)
+> - [【Python】Flaskの本番環境構築（Flask + uWSGI + Nginx） - 7839](https://serip39.hatenablog.com/entry/2020/07/06/070000)
 
 <br>
 
@@ -273,7 +273,7 @@ def home():
     return response
 ```
 
-> - https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py
+> - [istio/samples/bookinfo/src/productpage/productpage.py at master · hiroki-it/istio · GitHub](https://github.com/hiroki-it/istio/blob/master/samples/bookinfo/src/productpage/productpage.py)
 
 ### session
 
@@ -289,8 +289,8 @@ app = Flask(__name__)
 session['username'] = user
 ```
 
-> - https://flask.palletsprojects.com/en/stable/quickstart/#sessions
-> - https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF
+> - [Quickstart — Flask Documentation (3.1.x)](https://flask.palletsprojects.com/en/stable/quickstart/#sessions)
+> - [【Flask】Sessionについて #Python - Qiita](https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF)
 
 #### ▼ セッションデータの取得
 
@@ -315,8 +315,8 @@ app = Flask(__name__)
 session.get('username', 'None')
 ```
 
-> - https://flask.palletsprojects.com/en/stable/quickstart/#sessions
-> - https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF
+> - [Quickstart — Flask Documentation (3.1.x)](https://flask.palletsprojects.com/en/stable/quickstart/#sessions)
+> - [【Flask】Sessionについて #Python - Qiita](https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF)
 
 #### ▼ セッションデータの保持期間
 
@@ -344,7 +344,7 @@ session['username'] = user
 ```
 
 > - https://flask.palletsprojects.com/en/stable/api/#flask.session.permanent
-> - https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF
+> - [【Flask】Sessionについて #Python - Qiita](https://qiita.com/eee-lin/items/4e9a2a308ca52b58fd1e#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF)
 
 <br>
 
@@ -364,7 +364,7 @@ with app.test_request_context():
     print(url_for('index', _external=True))
 ```
 
-> - https://flask-web-academy.com/article/flask-urlfor/
+> - [Flaskのurl\_forの使い方を解説 - Flask WebAcademy - Flaskの学習サイト](https://flask-web-academy.com/article/flask-urlfor/)
 
 #### ▼ scheme
 
@@ -380,6 +380,6 @@ ith app.test_request_context():
     print(url_for('index', _external=True, _scheme='https'))
 ```
 
-> - https://flask-web-academy.com/article/flask-urlfor/
+> - [Flaskのurl\_forの使い方を解説 - Flask WebAcademy - Flaskの学習サイト](https://flask-web-academy.com/article/flask-urlfor/)
 
 <br>

@@ -102,7 +102,7 @@ Nginx から PHP-FPM にインバウンド通信をルーティングする場�
 
 補足として、『`www-data`』は `apache` プロセスのユーザー名のデフォルト値である。
 
-> - https://www.php.net/manual/ja/install.fpm.configuration.php
+> - [PHP: 設定 - Manual](https://www.php.net/manual/ja/install.fpm.configuration.php)
 > - https://yoshinorin.net/2017/03/06/php-official-docker-image-trap/
 
 #### ▼ `zz-docker.conf ` ファイルについて
@@ -117,8 +117,8 @@ PHP-FPM の仕様では、同じプールに同じオプションを設定した
 COPY ./php-fpm.d/www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 ```
 
-> - https://www.kengotakimoto.com/posts/laravel_with_docker-compose
-> - https://github.com/usabilla/php-docker-template/blob/master/src/php/fpm/conf/zz-docker.conf.template
+> - [docker-compose + nginx + php-fpm で laravel 環境構築 \| t11o](https://www.kengotakimoto.com/posts/laravel_with_docker-compose)
+> - [php-docker-template/src/php/fpm/conf/zz-docker.conf.template at master · usabilla/php-docker-template · GitHub](https://github.com/usabilla/php-docker-template/blob/master/src/php/fpm/conf/zz-docker.conf.template)
 
 <br>
 
@@ -180,8 +180,8 @@ pid = /run/php-fpm/php-fpm.pid
 
 PHP-FPM の `www` プロセスのプールを設定する。
 
-> - https://www.php.net/manual/ja/install.fpm.configuration.php
-> - https://hackers-high.com/linux/php-fpm-config/
+> - [PHP: 設定 - Manual](https://www.php.net/manual/ja/install.fpm.configuration.php)
+> - [php-fpm の設定を理解してサイトのパフォーマンスを向上させる – Hacker's High](https://hackers-high.com/linux/php-fpm-config/)
 
 <br>
 
@@ -198,7 +198,7 @@ PHP-FPM の `www` プロセスのプールを設定する。
 clear_env = no
 ```
 
-> - https://takapi86.hatenablog.com/entry/2019/07/29/225558
+> - [docker上のPHP5.3-FPMへ環境変数を引き継げるようにする - takapiのブログ](https://takapi86.hatenablog.com/entry/2019/07/29/225558)
 
 <br>
 
@@ -308,8 +308,8 @@ PHP の `ini` ファイルで設定された boolean 値のオプションを上
 
 すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag
-> - https://www.php.net/manual/en/ini.list.php
+> - [PHP: php\_value vs php\_admin\_value and the use of php\_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_flag)
+> - [PHP: List of php.ini directives - Manual](https://www.php.net/manual/en/ini.list.php)
 
 #### ▼ php_admin_flag[log_errors]
 
@@ -330,8 +330,8 @@ PHP の `ini` ファイルで設定された boolean 値以外のオプション
 
 すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value
-> - https://www.php.net/manual/en/ini.list.php
+> - [PHP: php\_value vs php\_admin\_value and the use of php\_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_admin_value)
+> - [PHP: List of php.ini directives - Manual](https://www.php.net/manual/en/ini.list.php)
 
 #### ▼ php_admin_value[error_log]
 
@@ -352,8 +352,8 @@ PHP の `ini` ファイルで設定された boolean 値のオプションを上
 
 すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag
-> - https://www.php.net/manual/en/ini.list.php
+> - [PHP: php\_value vs php\_admin\_value and the use of php\_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_flag)
+> - [PHP: List of php.ini directives - Manual](https://www.php.net/manual/en/ini.list.php)
 
 #### ▼ php_value[display_errors]
 
@@ -374,8 +374,8 @@ PHP の `ini` ファイルで設定された boolean 値以外のオプション
 
 すべてのオプションを上書きできるわけでなく、オプションごとの変更モードによる。
 
-> - https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value
-> - https://www.php.net/manual/en/ini.list.php
+> - [PHP: php\_value vs php\_admin\_value and the use of php\_flag explained · ma.ttias.be](https://ma.ttias.be/php-php_value-vs-php_admin_value-and-the-use-of-php_flag-explained/#php_value)
+> - [PHP: List of php.ini directives - Manual](https://www.php.net/manual/en/ini.list.php)
 
 #### ▼ php_value[session.save_handler]
 
@@ -385,7 +385,7 @@ PHP の `ini` ファイルで設定された boolean 値以外のオプション
 
 `redis` レコード形式でセッション DB (例：PHP Redis、ElastiCache Redis など) に保管するように設定もできる。
 
-> - https://zapanet.info/blog/item/3364
+> - [PHPのセッションファイルの保存場所と設定場所](https://zapanet.info/blog/item/3364)
 
 ```ini
 [www]
@@ -400,7 +400,7 @@ php_value[session.save_handler] = redis
 
 デフォルト値は `/var/lib/php/session` ディレクトリである。
 
-> - https://zapanet.info/blog/item/3364
+> - [PHPのセッションファイルの保存場所と設定場所](https://zapanet.info/blog/item/3364)
 
 ```ini
 [www]

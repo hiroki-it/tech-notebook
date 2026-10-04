@@ -9,7 +9,7 @@ description: Chaos Mesh＠システムテストの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,8 +23,8 @@ Chaos Mesh は、chaos-dashboard、chaos-controller-manager、chaos-daemon、と
 
 ![chaos-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/chaos-mesh_architecture.png)
 
-> - https://chaos-mesh.org/docs/
-> - https://www.publickey1.jp/blog/20/kubernetespodchaos_mesh10.html
+> - [Chaos Mesh Overview \| Chaos Mesh](https://chaos-mesh.org/docs/)
+> - [KubernetesのPodやネットワークをわざと落としまくってカオスエンジニアリングのテストができる「Chaos Mesh」がバージョン1.0に到達 － Publickey](https://www.publickey1.jp/blog/20/kubernetespodchaos_mesh10.html)
 
 <br>
 
@@ -62,8 +62,8 @@ $ kubectl create namespace chaos-testing
 $ helm install <Helmリリース名> <チャートリポジトリ名>/chaos-mesh -n chaos-testing --version <バージョンタグ>
 ```
 
-> - https://chaos-mesh.org/docs/production-installation-using-helm/
-> - https://github.com/chaos-mesh/charts
+> - [Install Chaos Mesh using Helm \| Chaos Mesh](https://chaos-mesh.org/docs/production-installation-using-helm/)
+> - [GitHub - chaos-mesh/charts: Helm repository for Chaos Mesh · GitHub](https://github.com/chaos-mesh/charts)
 
 <br>
 
@@ -104,7 +104,7 @@ spec:
     gracePeriod: 0
 ```
 
-> - https://chaos-mesh.org/docs/simulate-pod-chaos-on-kubernetes/
+> - [Simulate Pod Faults \| Chaos Mesh](https://chaos-mesh.org/docs/simulate-pod-chaos-on-kubernetes/)
 
 <br>
 
@@ -140,7 +140,7 @@ spec:
     action: pod-kill
 ```
 
-> - https://chaos-mesh.org/docs/simulate-pod-chaos-on-kubernetes/
+> - [Simulate Pod Faults \| Chaos Mesh](https://chaos-mesh.org/docs/simulate-pod-chaos-on-kubernetes/)
 
 <br>
 
@@ -184,7 +184,7 @@ spec:
     duration: 2m
 ```
 
-> - https://chaos-mesh.org/docs/simulate-network-chaos-on-kubernetes/
+> - [Simulate Network Faults \| Chaos Mesh](https://chaos-mesh.org/docs/simulate-network-chaos-on-kubernetes/)
 
 <br>
 
@@ -227,7 +227,7 @@ spec:
     duration: 2m
 ```
 
-> - https://chaos-mesh.org/docs/simulate-network-chaos-on-kubernetes/
+> - [Simulate Network Faults \| Chaos Mesh](https://chaos-mesh.org/docs/simulate-network-chaos-on-kubernetes/)
 
 <br>
 
@@ -268,7 +268,7 @@ spec:
     duration: 3m
 ```
 
-> - https://chaos-mesh.org/docs/simulate-heavy-stress-on-kubernetes/
+> - [Simulate Stress Scenarios \| Chaos Mesh](https://chaos-mesh.org/docs/simulate-heavy-stress-on-kubernetes/)
 
 <br>
 
@@ -309,6 +309,6 @@ spec:
     duration: 3m
 ```
 
-> - https://chaos-mesh.org/docs/simulate-heavy-stress-on-kubernetes/
+> - [Simulate Stress Scenarios \| Chaos Mesh](https://chaos-mesh.org/docs/simulate-heavy-stress-on-kubernetes/)
 
 <br>

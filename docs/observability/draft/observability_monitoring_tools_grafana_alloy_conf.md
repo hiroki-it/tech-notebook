@@ -9,7 +9,7 @@ description: 設定ファイル＠Grafana Alloyの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ discovery.kubernetes "pod" {
 }
 ```
 
-> - https://grafana.com/docs/agent/latest/flow/reference/components/discovery.kubernetes/
+> - [discovery.kubernetes \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/discovery.kubernetes/)
 
 <br>
 
@@ -84,8 +84,8 @@ discovery.relabel "pod_logs" {
 }
 ```
 
-> - https://grafana.com/docs/agent/latest/flow/reference/components/discovery.relabel/
-> - https://grafana.com/docs/alloy/latest/collect/logs-in-kubernetes/#pods-logs
+> - [discovery.relabel \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/discovery.relabel/)
+> - [Collect Kubernetes logs and forward them to Loki \| Grafana Alloy documentation](https://grafana.com/docs/alloy/latest/collect/logs-in-kubernetes/#pods-logs)
 
 <br>
 
@@ -99,7 +99,7 @@ local.file_match "kubernetes_pods" {
 }
 ```
 
-> - https://grafana.com/docs/agent/latest/flow/reference/components/local.file_match/
+> - [local.file\_match \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/local.file_match/)
 
 <br>
 
@@ -124,7 +124,7 @@ loki.source.kubernetes "pod_logs" {
 }
 ```
 
-> - https://grafana.com/docs/agent/latest/flow/reference/components/loki.process/
+> - [loki.process \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/loki.process/)
 
 <br>
 
@@ -138,7 +138,7 @@ loki.source.file "kubernetes_pods" {
 }
 ```
 
-> - https://grafana.com/docs/agent/latest/flow/reference/components/loki.source.file/
+> - [loki.source.file \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/loki.source.file/)
 
 <br>
 
@@ -161,7 +161,7 @@ loki.process "pod_logs" {
 }
 ```
 
-> - https://grafana.com/docs/agent/latest/flow/reference/components/loki.source.kubernetes/
+> - [loki.source.kubernetes \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/loki.source.kubernetes/)
 
 <br>
 
@@ -175,7 +175,7 @@ loki.write "pod_logs" {
 }
 ```
 
-> - https://grafana.com/docs/agent/latest/flow/reference/components/loki.write/
+> - [loki.write \| Grafana Agent documentation](https://grafana.com/docs/agent/latest/flow/reference/components/loki.write/)
 
 <br>
 

@@ -9,7 +9,7 @@ description: Ansible＠IaCの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -55,7 +55,7 @@ $ sudo apt -y install python3-pip
 $ pip3 install ansible
 ```
 
-> - https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB
+> - [実習環境｜Ansible の使い方](https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter4#ansible-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
 <br>
 
@@ -79,8 +79,8 @@ repository/
 ```
 
 > - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
-> - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
-> - https://thinkit.co.jp/article/9871
+> - [Ansible - ディレクトリ構成について #ansible-playbook - Qiita](https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0)
+> - [Ansible応用編：より実践的なPlaybookを作り上げる \| 注目の構成管理ツールAnsibleを徹底活用する \| Think IT（シンクイット）](https://thinkit.co.jp/article/9871)
 
 #### ▼ `host_vars` ディレクトリの構成
 
@@ -94,8 +94,8 @@ repository/
 ```
 
 > - https://docs.ansible.com/ansible/2.8/user_guide/playbooks_best_practices.html#alternative-directory-layout
-> - https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0
-> - https://thinkit.co.jp/article/9871
+> - [Ansible - ディレクトリ構成について #ansible-playbook - Qiita](https://qiita.com/makaaso-tech/items/0375081c1600b312e8b0)
+> - [Ansible応用編：より実践的なPlaybookを作り上げる \| 注目の構成管理ツールAnsibleを徹底活用する \| Think IT（シンクイット）](https://thinkit.co.jp/article/9871)
 
 #### ▼ `inventories` ディレクトリの構成
 
@@ -194,7 +194,7 @@ repository/
 
 ### 命名規則
 
-> - http://tdoc.info/blog/2014/10/09/ansible_coding.html
+> - [Ansible コーディング規約 (の例) — そこはかとなく書くよん。 ドキュメント](http://tdoc.info/blog/2014/10/09/ansible_coding.html)
 
 <br>
 
@@ -210,6 +210,6 @@ Ansible の実行時にパスワードを要求し、これが正しければ復
 
 ![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ansible_ansible-vault.png)
 
-> - https://redj.hatenablog.com/entry/2020/05/02/044527
+> - [Ansible Vaultの使い方の調査 - Jaybanuan's Blog](https://redj.hatenablog.com/entry/2020/05/02/044527)
 
 <br>

@@ -9,7 +9,7 @@ description: リソース定義＠ClusterAPIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -38,8 +38,8 @@ spec:
     name: foo-cluster
 ```
 
-> - https://qiita.com/Hiroyuki_OSAKI/items/d41a2c0da6853f62adb8#cluster%E6%96%B0%E8%A6%8F%E4%BD%9C%E6%88%90
-> - https://qiita.com/taishin/items/de9a0d648fdc220ed93d#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E3%81%AE%E4%BD%9C%E6%88%90
+> - [図解: Cluster APIを使ってKubernetesクラスタを作る (on Docker) #kubernetes - Qiita](https://qiita.com/Hiroyuki_OSAKI/items/d41a2c0da6853f62adb8#cluster%E6%96%B0%E8%A6%8F%E4%BD%9C%E6%88%90)
+> - [ArgoCD + Cluster API で EKSクラスタをGitOpsする #kubernetes - Qiita](https://qiita.com/taishin/items/de9a0d648fdc220ed93d#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E3%81%AE%E4%BD%9C%E6%88%90)
 
 <br>
 
@@ -115,7 +115,7 @@ metadata:
   name: capi-quickstart
 ```
 
-> - https://qiita.com/Hiroyuki_OSAKI/items/d41a2c0da6853f62adb8#cluster%E6%96%B0%E8%A6%8F%E4%BD%9C%E6%88%90
+> - [図解: Cluster APIを使ってKubernetesクラスタを作る (on Docker) #kubernetes - Qiita](https://qiita.com/Hiroyuki_OSAKI/items/d41a2c0da6853f62adb8#cluster%E6%96%B0%E8%A6%8F%E4%BD%9C%E6%88%90)
 
 <br>
 
@@ -135,7 +135,7 @@ spec:
   template: {}
 ```
 
-> - https://qiita.com/taishin/items/de9a0d648fdc220ed93d#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%82%92%E8%BF%BD%E5%8A%A0
+> - [ArgoCD + Cluster API で EKSクラスタをGitOpsする #kubernetes - Qiita](https://qiita.com/taishin/items/de9a0d648fdc220ed93d#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%82%92%E8%BF%BD%E5%8A%A0)
 
 <br>
 
@@ -158,7 +158,7 @@ spec:
   associateOIDCProvider: true
 ```
 
-> - https://cluster-api-aws.sigs.k8s.io/topics/bring-your-own-aws-infrastructure.html?highlight=AWSManagedControlPlane#configuring-the-awscluster-specification
+> - [Bring Your Own AWS Infrastructure - Kubernetes Cluster API Provider AWS](https://cluster-api-aws.sigs.k8s.io/topics/bring-your-own-aws-infrastructure.html?highlight=AWSManagedControlPlane#configuring-the-awscluster-specification)
 
 <br>
 
@@ -189,7 +189,7 @@ spec:
     name: capi-quickstart-controlplane-0
 ```
 
-> - https://qiita.com/Hiroyuki_OSAKI/items/d41a2c0da6853f62adb8#machine%E3%82%92%E4%BD%9C%E3%82%8B
+> - [図解: Cluster APIを使ってKubernetesクラスタを作る (on Docker) #kubernetes - Qiita](https://qiita.com/Hiroyuki_OSAKI/items/d41a2c0da6853f62adb8#machine%E3%82%92%E4%BD%9C%E3%82%8B)
 
 <br>
 
@@ -202,7 +202,7 @@ metadata:
   name: capi-quickstart-controlplane-0
 ```
 
-> - https://qiita.com/Hiroyuki_OSAKI/items/d41a2c0da6853f62adb8#machine%E3%82%92%E4%BD%9C%E3%82%8B
+> - [図解: Cluster APIを使ってKubernetesクラスタを作る (on Docker) #kubernetes - Qiita](https://qiita.com/Hiroyuki_OSAKI/items/d41a2c0da6853f62adb8#machine%E3%82%92%E4%BD%9C%E3%82%8B)
 
 <br>
 
@@ -247,7 +247,7 @@ spec:
       version: v1.19.0
 ```
 
-> - https://qiita.com/taishin/items/de9a0d648fdc220ed93d#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%82%92%E8%BF%BD%E5%8A%A0
+> - [ArgoCD + Cluster API で EKSクラスタをGitOpsする #kubernetes - Qiita](https://qiita.com/taishin/items/de9a0d648fdc220ed93d#%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%89%E3%83%8E%E3%83%BC%E3%83%89%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%82%92%E8%BF%BD%E5%8A%A0)
 
 <br>
 
@@ -273,7 +273,7 @@ spec:
     maxSize: 3
 ```
 
-> - https://qiita.com/taishin/items/de9a0d648fdc220ed93d#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E3%81%AE%E4%BD%9C%E6%88%90
+> - [ArgoCD + Cluster API で EKSクラスタをGitOpsする #kubernetes - Qiita](https://qiita.com/taishin/items/de9a0d648fdc220ed93d#%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E3%81%AE%E4%BD%9C%E6%88%90)
 
 <br>
 

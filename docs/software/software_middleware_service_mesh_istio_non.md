@@ -9,7 +9,7 @@ description: Istioを採用しない場合との比較＠Istioの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,23 +21,23 @@ Kubernetes と Istio には重複する能力がいくつか (例：サービス
 
 実際の運用では、サービスメッシュで管理するマイクロサービスなどの Pod に istio-proxy をインジェクションする。
 
-そのため、istio-proxy をインジェクションしない Pod では、Istio ではなく、従来の kube-proxy と Service によるサービス検出を使用することになる。
+そのため、istio-proxy をインジェクションしない Pod では、Istio ではなく、従来の CoreDNS などによるサービス検出と、kube-proxy と Service によるルーティングを使用することになる。
 
 | 能力                                        | Istio + Kubernetes + Envoy                                                                                                                                                                                                                      | Kubernetes + Envoy             | Kubernetes のみ                                  |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------------ |
 | サービスメッシュコントロールプレーン        | Istiod コントロールプレーン (`discovery` コンテナ)                                                                                                                                                                                              | go-control-plane               | なし                                             |
-| サービス検出でのルーティング先設定          | VirtualService + DestinationRule                                                                                                                                                                                                                                 | `route` キー                   | kube-proxy + Service (+ CoreDNS)                 |
-| サービス検出でのリスナー                    | EnvoyFilter + EndpointSlice                                                                                                                                                                                                                     | `listener` キー                | kube-proxy + Service (+ CoreDNS)                 |
+| サービス検出でのルーティング先設定          | VirtualService + DestinationRule                                                                                                                                                                                                                                 | `route` キー                   | kube-proxy + Service + CoreDNS                 |
+| サービス検出でのリスナー                    | EnvoyFilter + EndpointSlice                                                                                                                                                                                                                     | `listener` キー                | kube-proxy + Service + CoreDNS                 |
 | トラフィック管理                            | VirtualService + Service + DestinationRule                                                                                                                                                                                                      | 記入中...                      | Service                                          |
 | サービス検出での追加サービス設定            | ServiceEntry + EndpointSlice                                                                                                                                                                                                                    | `cluster` キー                 | EndpointSlice                                    |
 | Cluster 外 Node に対するサービス検出        | ServiceEntry + WorkloadEntry                                                                                                                                                                                                                                   | `endpoint` キー                | Egress                                           |
 | サービスレジストリ                          | kube-apiserver | etcd                           | kube-apiserver |
 | Node 外からのインバウンド通信のルーティング | ・VirtualService + Gateway (内部的には、NodePort Service または LoadBalancer Service が作成され、これらは Node 外からのインバウンド通信を待ち受けられるため、Ingress は不要である) <br>・Ingress + Istio Ingress Controller + ClusterIP Service | `route` キー + `listener` キー | Ingress + Ingress Controller + ClusterIP Service |
 
-> - https://thenewstack.io/why-do-you-need-istio-when-you-already-have-kubernetes/
-> - https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/
-> - https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/
-> - https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/
+> - [Why Do You Need Istio When You Already Have Kubernetes? - The New Stack](https://thenewstack.io/why-do-you-need-istio-when-you-already-have-kubernetes/)
+> - [Kubernetes vs. Istio Gateway: The Ultimate Guide \| Mirantis](https://www.mirantis.com/blog/your-app-deserves-more-than-kubernetes-ingress-kubernetes-ingress-vs-istio-gateway-webinar/)
+> - [Istio / Kubernetes Ingress](https://istio.io/latest/docs/tasks/traffic-management/ingress/kubernetes-ingress/)
+> - [Exposing services through Istio Ingress Gateway](https://layer5.io/learn/learning-paths/mastering-service-meshes-for-developers/introduction-to-service-meshes/istio/expose-services/)
 
 <br>
 
@@ -74,11 +74,11 @@ Google Cloud Service Mesh では、HTTPRoute などを補うカスタムリソ�
 
 ### メリット
 
-> - https://blog.container-solutions.com/wtf-is-istio
+> - [WTF is Istio?](https://blog.container-solutions.com/wtf-is-istio)
 > - https://www.containiq.com/post/kubernetes-service-mesh
 > - https://jimmysong.io/en/blog/why-do-you-need-istio-when-you-already-have-kubernetes/#shortcomings-of-kube-proxy
-> - https://www.zhaohuabing.com/post/2019-04-16-how-to-choose-ingress-for-service-mesh-english/
-> - https://www.baeldung.com/cs/service-discovery-microservices
+> - [Which One is the Right Choice for the Ingress Gateway of Your Service Mesh? \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2019-04-16-how-to-choose-ingress-for-service-mesh-english/)
+> - [Service Discovery in Microservices \| Baeldung on Computer Science](https://www.baeldung.com/cs/service-discovery-microservices)
 
 <br>
 
@@ -104,7 +104,7 @@ Kubernetes と Istio 上の Pod は、Service の完全修飾ドメイン名の 
 
 Pod 間 (フロントエンド領域とマイクロサービス領域間、マイクロサービス間) では、istio-proxy 間の相互 TLS 認証によって通信を暗号化できる。Auto mTLS が有効な場合、通信元 istio-proxy は宛先に応じて相互 TLS 認証を自動的に選択する。
 
-> - https://github.com/istio/istio/issues/10864#issue-397801391
+> - [Istio on Kubernetes: pod to service communication doesn't work · Issue #10864 · istio/istio · GitHub](https://github.com/istio/istio/issues/10864#issue-397801391)
 > - https://discuss.istio.io/t/pod-to-pod-communication/8939/5
 > - https://stackoverflow.com/a/71502783/12771072
 
@@ -114,6 +114,6 @@ Pod 間 (フロントエンド領域とマイクロサービス領域間、マ�
 
 Kubernetes 上の Pod は、Service の完全修飾ドメイン名の URL (`http://foo-service.default.svc.cluster.local`) を指定すると、その Service の配下にある Pod と HTTP で通信できる。
 
-Pod 間 (フロントエンド領域とマイクロサービス領域間、マイクロサービス間) を HTTPS で通信したい場合、Cert Manager などを使用して、Pod にサーバー証明書やクライアント証明書をマウントする必要がある。
+Pod 間 (フロントエンド領域とマイクロサービス領域間、マイクロサービス間) を HTTPS で通信したい場合、外部認証局や各コンポーネントで証明書の発行・取得を実装し、取得した証明書をメモリやマウントしたファイルなどに保持する必要がある。
 
 <br>

@@ -9,7 +9,7 @@ description: Redis＠NoSQLの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: Redis＠NoSQLの知見を記録しています。
 
 揮発的なため、Redis を再起動するとデータが削除されてしまう。
 
-> - https://qiita.com/KurosawaTsuyoshi/items/f7d74f2c60df188dbd6d
+> - [Redisデータ永続化の種類とサービス稼動時の切り替え注意点 #Redis - Qiita](https://qiita.com/KurosawaTsuyoshi/items/f7d74f2c60df188dbd6d)
 
 <br>
 
@@ -29,7 +29,7 @@ description: Redis＠NoSQLの知見を記録しています。
 
 ディスク上にデータを永続化する。
 
-> - https://qiita.com/KurosawaTsuyoshi/items/f7d74f2c60df188dbd6d
+> - [Redisデータ永続化の種類とサービス稼動時の切り替え注意点 #Redis - Qiita](https://qiita.com/KurosawaTsuyoshi/items/f7d74f2c60df188dbd6d)
 
 <br>
 
@@ -75,7 +75,7 @@ client.setnx('LOCK_NAME', 'foo_lock')  # False
 client.delete('LOCK_NAME')
 ```
 
-> - https://qiita.com/hharu/items/c8c2954290f920f8a2f6#%E5%88%86%E6%95%A3%E3%83%AD%E3%83%83%E3%82%AF
+> - [Redisのキャッシュストア以外の使い方 #Redis - Qiita](https://qiita.com/hharu/items/c8c2954290f920f8a2f6#%E5%88%86%E6%95%A3%E3%83%AD%E3%83%83%E3%82%AF)
 
 #### ▼ TypeScript
 
@@ -118,7 +118,7 @@ await redisClient.connect();
 newLock(redisClient, 10000);
 ```
 
-> - https://redis.io/docs/latest/commands/set/
+> - [SET \| Docs](https://redis.io/docs/latest/commands/set/)
 
 #### ▼ Go
 
@@ -158,6 +158,6 @@ func (c *Client) updateCache(ctx context.Context, contentID string) error {
 }
 ```
 
-> - https://christina04.hatenablog.com/entry/redis-distributed-locking
+> - [Redisを使った分散ロック (SETNX, Redlock) - Carpe Diem](https://christina04.hatenablog.com/entry/redis-distributed-locking)
 
 <br>

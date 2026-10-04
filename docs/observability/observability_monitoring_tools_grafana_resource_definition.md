@@ -9,7 +9,7 @@ description: リソース定義＠Grafanaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -32,7 +32,7 @@ $ kubectl create namespace prometheus
 $ helm install <Helmリリース名> <チャートリポジトリ名>/grafana -n prometheus --version <バージョンタグ>
 ```
 
-> - https://github.com/grafana/helm-charts/tree/main/charts/grafana
+> - [helm-charts/charts/grafana at main · grafana/helm-charts · GitHub](https://github.com/grafana/helm-charts/tree/main/charts/grafana)
 
 Prometheus のコンポーネントとしてインストールしたい場合は、GitHub から全部入りの kube-prometheus-stack チャートをインストールし、リソースを作成する。
 
@@ -46,9 +46,9 @@ $ kubectl create namespace prometheus
 $ helm install <Helmリリース名> <チャートリポジトリ名>/kube-prometheus-stack -n prometheus --version <バージョンタグ>
 ```
 
-> - https://github.com/prometheus-operator/prometheus-operator#helm-chart
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-> - https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/
+> - [GitHub - prometheus-operator/prometheus-operator: Prometheus Operator creates/configures/manages Prometheus clusters atop Kubernetes · GitHub](https://github.com/prometheus-operator/prometheus-operator#helm-chart)
+> - [helm-charts/charts/kube-prometheus-stack at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack)
+> - [Kubernetes環境へのPrometheus導入の検討 - GMOインターネットグループ グループ研究開発本部](https://recruit.gmo.jp/engineer/jisedai/blog/kube-prometheus-stack-investigation/)
 
 <br>
 

@@ -9,7 +9,7 @@ description: メトリクス＠テレメトリーの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -28,7 +28,7 @@ description: メトリクス＠テレメトリーの知見を記録していま�
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png)
 
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch#18
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric
+> - [Metrics concepts - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric)
 
 <br>
 
@@ -88,7 +88,7 @@ description: メトリクス＠テレメトリーの知見を記録していま�
 メトリクスの元になるデータポイントを保管する場合、分析対象の増加に注意する必要がある。
 
 > - https://whatis.techtarget.com/definition/data-point
-> - https://aws.amazon.com/jp/about-aws/whats-new/2017/12/amazon-cloudwatch-alarms-now-alerts-you-when-any-m-out-of-n-metric-datapoints-in-an-interval-are-above-your-threshold/
+> - [Amazon CloudWatch Alarms now alerts you when any M out of N metric datapoints in an interval are above your threshold - AWS](https://aws.amazon.com/jp/about-aws/whats-new/2017/12/amazon-cloudwatch-alarms-now-alerts-you-when-any-m-out-of-n-metric-datapoints-in-an-interval-are-above-your-threshold/)
 
 #### ▼ 収集間隔の縮小/拡大
 
@@ -108,7 +108,7 @@ description: メトリクス＠テレメトリーの知見を記録していま�
 
 ストレージの空きサイズが増え、長期間のデータポイントを保管できるようになる
 
-> - http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html
+> - [Downsampling — OpenTSDB 2.4 documentation](http://opentsdb.net/docs/build/html/user_guide/query/downsampling.html)
 
 #### ▼ データポイントの重複排除
 
@@ -120,7 +120,7 @@ description: メトリクス＠テレメトリーの知見を記録していま�
 
 重複排除のタイミングは、収集ツールの収集間隔と同じ値にするとよい。
 
-> - https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/
+> - [Optimizing the Storage of Large Volumes of Metrics for a … \| Percona Community](https://percona.community/blog/2022/06/02/long-time-keeping-metrics-victoriametrics/)
 
 <br>
 
@@ -130,7 +130,7 @@ description: メトリクス＠テレメトリーの知見を記録していま�
 
 同じ種類のメトリクスを特定のグループ (例：Amazon CloudWatch ならば、ディメンション、名前空間) に集約する。
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
+> - [Metrics concepts - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation)
 
 #### ▼ 集計との違い
 
@@ -156,7 +156,7 @@ http_requests_total{method="GET"} 1027 # {trace_id="4bf9...", span_id="00f0..."}
 
 特に重要なメトリクス (トラフィック、レイテンシー、エラー、サチュレーション) のこと。
 
-> - https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals
+> - [Google SRE monitoring ditributed system - sre golden signals](https://sre.google/sre-book/monitoring-distributed-systems/#xref_monitoring_golden-signals)
 
 #### ▼ トラフィック
 
@@ -186,7 +186,7 @@ http_requests_total{method="GET"} 1027 # {trace_id="4bf9...", span_id="00f0..."}
 サーバー監視対象のメトリクスに所属する。
 
 > - https://codezine.jp/article/detail/11472
-> - https://www.scsk.jp/sp/sysdig/blog/container_monitoring/kubernetes4.html
+> - [Kubernetesモニタリングの4つのゴールデンシグナル \| ブログ \| Sysdig \| 株式会社SCSK](https://www.scsk.jp/sp/sysdig/blog/container_monitoring/kubernetes4.html)
 
 <br>
 

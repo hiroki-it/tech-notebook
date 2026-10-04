@@ -9,7 +9,7 @@ description: Amazon API Gateway＠AWSリソースの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,8 +21,8 @@ description: Amazon API Gateway＠AWSリソースの知見を記録していま�
 
 ![Amazon API Gatewayの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/APIGatewayの仕組み.png)
 
-> - https://dev.classmethod.jp/articles/edge-computing-by-api-gateway/
-> - https://dev.classmethod.jp/articles/cache-api-gateway-by-cloudfront/
+> - [API Gatewayで広がるAWSのエッジコンピューティングの可能性 \| DevelopersIO](https://dev.classmethod.jp/articles/edge-computing-by-api-gateway/)
+> - [Amazon CloudFrontでAPI Gatewayの痒いところに手を届ける \| DevelopersIO](https://dev.classmethod.jp/articles/cache-api-gateway-by-cloudfront/)
 
 <br>
 
@@ -95,13 +95,13 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
 
 以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html
+> - [【IT技術の知見】Amazon API Gatewayへのymlインポート＠AWS - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html)
 
 #### ▼ CORS の突破
 
 正しいリクエストが CORS を突破できるように、異なるオリジンによって表示されたページからのリクエストを許可する。
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html
+> - [CORS for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html)
 
 <br>
 
@@ -122,7 +122,7 @@ Amazon API Gateway と Amazon VPC リンクの間で、リクエスト／レス�
 | エンドポイント URL                 | NLB の DNS 名をドメイン名として、フォワーディング先の URL を設定する。 |
 | デフォルトのタイムアウト時間の使用 |                                                                        |
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html
+> - [Set up a private integration - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html)
 
 #### ▼ メソッドリクエストと統合リクエストのマッピング
 
@@ -148,7 +148,7 @@ Amazon API Gateway と AWS Lambda の間で、リクエスト／レスポンス�
 | 資格情報のキャッシュ               |                                                                                                                                                                  |
 | デフォルトのタイムアウト時間の使用 |                                                                                                                                                                  |
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html
+> - [Lambda integrations for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html)
 
 #### ▼ リクエスト時のマッピング
 
@@ -253,7 +253,7 @@ AWS Lambda 関数名、エンドポイント URL、パラメーターマッピ�
 
 以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html
+> - [API Gateway stage variables reference for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html)
 
 #### ▼ SDK の作成
 
@@ -280,7 +280,7 @@ Amazon API Gateway では、通常のデプロイメントの仕組みが隠蔽�
 | Canary ステージ変数                        |      |
 | キャッシュ                                 |      |
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.html
+> - [Set up an API Gateway canary release deployment - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/canary-release.html)
 
 <br>
 
@@ -292,7 +292,7 @@ Amazon CloudWatch Logs に Amazon API Gateway の実行ログを送信するか�
 
 リクエスト／レスポンスの構造もログへ出力するようにしたほうがよい。
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
+> - [Set up CloudWatch logging for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
 
 #### ▼ カスタムアクセスログ
 
@@ -300,7 +300,7 @@ Amazon CloudWatch Logs に Amazon API Gateway のアクセスログを送信す�
 
 アクセスログを構造化ログとして出力できる。
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
+> - [Set up CloudWatch logging for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
 
 <br>
 
@@ -314,7 +314,7 @@ X-Ray を使用して、Amazon API Gateway を開始点とした分散トレー�
 
 補足として X-Ray では、親スパンをセグメント、子スパンをサブセグメントと呼ぶ。
 
-> - https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-traces
+> - [AWS X-Ray concepts - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-traces)
 
 <br>
 
@@ -328,7 +328,7 @@ X-Ray を使用して、Amazon API Gateway を開始点とした分散トレー�
 | プライベート | Amazon API Gateway のエンドポイントに対するリクエストを、Amazon VPC 内からのみ受け付ける。                |
 | エッジ最適化 | Amazon API Gateway のエンドポイントに対するリクエストを、Amazon CloudFront のエッジサーバーで受け付ける。 |
 
-> - https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-endpoint-types.html
+> - [API endpoint types for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-endpoint-types.html)
 
 <br>
 
@@ -349,6 +349,6 @@ ID プロバイダーが別途必要である。
 | 認証 |             ✅             |                           |
 | 認可 |             ✅             |            ✅             |
 
-> - https://dev.classmethod.jp/articles/aws-cdk-api-gateway-lambda-rest-auth0-lambda-authorizer/
+> - [\[前編\] AWS CDKで API Gateway + Lambda 構成のREST APIを構築して Auth0 + Lambda Authorizerの認可機能を導入してみた \| DevelopersIO](https://dev.classmethod.jp/articles/aws-cdk-api-gateway-lambda-rest-auth0-lambda-authorizer/)
 
 <br>

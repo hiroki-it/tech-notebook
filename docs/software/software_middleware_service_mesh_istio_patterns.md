@@ -9,7 +9,7 @@ description: 設計パターン＠Istioの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -41,7 +41,7 @@ Istiod コントロールプレーン数に関するパターンである。
 
 Istiod コントロールプレーンを持つプライマリ Cluster、サービスメッシュに参加する Cluster のリモート Cluster からなる。
 
-> - https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models
+> - [Istio / Deployment Models](https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models)
 
 <br>
 
@@ -51,7 +51,7 @@ Istiod コントロールプレーンを持つプライマリ Cluster、サー�
 
 Kubernetes Cluster ごとに Istiod コントロールプレーンを作成する。
 
-> - https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models
+> - [Istio / Deployment Models](https://istio.io/latest/docs/ops/deployment/deployment-models/#control-plane-models)
 
 <br>
 
@@ -65,7 +65,7 @@ Kubernetes Cluster ごとに Istiod コントロールプレーンを作成す�
 
 ![istio_multi-service-mesh_cluster_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_same-network.png)
 
-> - https://zenn.dev/kuchima/articles/asm-hybrid-mesh
+> - [Google Cloud とオンプレミス環境間でマルチクラスタ サービスメッシュ (ハイブリッドメッシュ) を構成する](https://zenn.dev/kuchima/articles/asm-hybrid-mesh)
 
 #### ▼ 異なるプライベートネットワーク内の場合
 
@@ -75,7 +75,7 @@ Kubernetes Cluster ごとに Istiod コントロールプレーンを作成す�
 
 ![istio_multi-service-mesh_cluster_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_difficult-network.png)
 
-> - https://zenn.dev/kuchima/articles/asm-hybrid-mesh
+> - [Google Cloud とオンプレミス環境間でマルチクラスタ サービスメッシュ (ハイブリッドメッシュ) を構成する](https://zenn.dev/kuchima/articles/asm-hybrid-mesh)
 
 <br>
 
@@ -91,14 +91,14 @@ Istio コントロールプレーンとデータプレーンを異なるクラ�
 
 プライマリークラスターに Istio コントロールプレーンと Istio Ingress Gateway や Istio Egress Gateway を配置し、リモートクラスターにはデータプレーンを配置する。
 
-> - https://istio.io/latest/docs/setup/install/external-controlplane/
-> - https://istio.io/latest/blog/2020/new-deployment-model/
+> - [Istio / Install Istio with an External Control Plane](https://istio.io/latest/docs/setup/install/external-controlplane/)
+> - [Istio / Deploying Istio Control Planes Outside the Mesh](https://istio.io/latest/blog/2020/new-deployment-model/)
 
 ### マルチ Istiod
 
 プライマリークラスターに複数の Istio コントロールプレーンを配置し、リモートクラスターにはデータプレーンを配置する。
 
-> - https://github.com/istio/istio/wiki/External-Istiod-single-cluster-steps
+> - [External Istiod single cluster steps · istio/istio Wiki · GitHub](https://github.com/istio/istio/wiki/External-Istiod-single-cluster-steps)
 
 <br>
 
@@ -114,8 +114,8 @@ Istio コントロールプレーンとデータプレーンを異なるクラ�
 
 ![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_same-network.png)
 
-> - https://istio.io/latest/docs/ops/deployment/vm-architecture/
-> - https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine
+> - [Istio / Virtual Machine Architecture](https://istio.io/latest/docs/ops/deployment/vm-architecture/)
+> - [Istio / Virtual Machine Installation](https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine)
 
 #### ▼ 異なるプライベートネットワーク内の場合
 
@@ -127,8 +127,8 @@ Istio コントロールプレーンとデータプレーンを異なるクラ�
 
 ![istio_multi-service-mesh_vm_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_difficult-network.png)
 
-> - https://istio.io/latest/docs/ops/deployment/vm-architecture/
-> - https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine
+> - [Istio / Virtual Machine Architecture](https://istio.io/latest/docs/ops/deployment/vm-architecture/)
+> - [Istio / Virtual Machine Installation](https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine)
 
 <br>
 
@@ -138,9 +138,9 @@ Istio コントロールプレーンとデータプレーンを異なるクラ�
 
 コントロールプレーン側では〇 (Amazon ECS を認識するためのリソースが必要なはずだが、調査してもわからず...) の作成、クラウド上のコンテナのホストマシンでは ztunnel デーモンあるいは ztunnel コンテナの実行が必要である。
 
-> - https://aws.amazon.com/blogs/containers/transforming-istio-into-an-enterprise-ready-service-mesh-for-amazon-ecs/
+> - [Transforming Istio into an enterprise-ready service mesh for Amazon ECS \| Containers](https://aws.amazon.com/blogs/containers/transforming-istio-into-an-enterprise-ready-service-mesh-for-amazon-ecs/)
 > - https://github.com/solo-io/ecs-demo/blob/main/tf/ecs_eks_cluster.tf#L126-L151
-> - https://github.com/solo-io/ecs-demo/blob/main/README.md#install-istio-in-ambient-mode-with-ecs-cluster-integration
+> - [ecs-demo/README.md at main · solo-io/ecs-demo · GitHub](https://github.com/solo-io/ecs-demo/blob/main/README.md#install-istio-in-ambient-mode-with-ecs-cluster-integration)
 
 <br>
 
@@ -166,7 +166,7 @@ Istio のサービスメッシュは、管理下の複数の Namespace をテナ
 
 Namespace as-a-Service として提供する。
 
-> - https://istio.io/latest/docs/ops/deployment/deployment-models/#namespace-tenancy
+> - [Istio / Deployment Models](https://istio.io/latest/docs/ops/deployment/deployment-models/#namespace-tenancy)
 
 <br>
 
@@ -176,7 +176,7 @@ Istio のサービスメッシュは、管理下の複数 Kubernetes Cluster を
 
 Clusters as-a-Service として提供する。
 
-> - https://istio.io/latest/docs/ops/deployment/deployment-models/#cluster-tenancy
+> - [Istio / Deployment Models](https://istio.io/latest/docs/ops/deployment/deployment-models/#cluster-tenancy)
 
 <br>
 
@@ -188,7 +188,7 @@ Clusters as-a-Service として提供する。
 
 メッシュテナントを採用すると、複数メッシュパターンになる。
 
-> - https://istio.io/latest/docs/ops/deployment/deployment-models/#mesh-tenancy
-> - https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes
+> - [Istio / Deployment Models](https://istio.io/latest/docs/ops/deployment/deployment-models/#mesh-tenancy)
+> - [Istio / Deployment Models](https://istio.io/latest/docs/ops/deployment/deployment-models/#multiple-meshes)
 
 <br>

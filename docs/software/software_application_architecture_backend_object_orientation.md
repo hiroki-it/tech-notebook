@@ -9,7 +9,7 @@ description: オブジェクト指向＠アーキテクチャの知見を記録�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -39,7 +39,7 @@ description: オブジェクト指向＠アーキテクチャの知見を記録�
 
 機能要件について要件定義しながら、業務フロー図を作成する。
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20080619/308731/
+> - [鈴村さんが指南する業務フロー図の上手な書き方 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20080619/308731/)
 
 #### 2. ユースケース図の作成
 

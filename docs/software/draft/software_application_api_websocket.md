@@ -9,7 +9,7 @@ description: Websocket-API＠APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -33,9 +33,9 @@ description: Websocket-API＠APIの知見を記録しています。
 
 ![websocket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/websocket.png)
 
-> - https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket
+> - [web開発における双方向通信プロトコルまとめ #初心者 - Qiita](https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket)
 > - https://zenn.dev/nameless_sn/articles/websocket_tutorial#websocket%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
-> - https://ja.javascript.info/websocket#ref-1752
+> - [WebSocket](https://ja.javascript.info/websocket#ref-1752)
 
 <br>
 
@@ -186,7 +186,7 @@ import WebSocket from "ws";
 const wss = new WebSocket("wss://localhost:8080");
 ```
 
-> - https://ja.javascript.info/websocket
+> - [WebSocket](https://ja.javascript.info/websocket)
 
 <br>
 
@@ -202,8 +202,8 @@ const wss = new WebSocket("wss://localhost:8080");
 
 ![mqtt-over-websocket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mqtt-over-websocket.png)
 
-> - https://www.hivemq.com/blog/understanding-the-differences-between-mqtt-and-websockets-for-iot/
-> - https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket
+> - [Understanding the Differences between MQTT and WebSockets for IoT \| HiveMQ](https://www.hivemq.com/blog/understanding-the-differences-between-mqtt-and-websockets-for-iot/)
+> - [web開発における双方向通信プロトコルまとめ #初心者 - Qiita](https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket)
 
 <br>
 

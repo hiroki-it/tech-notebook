@@ -9,7 +9,7 @@ description: nova＠バージョンテストの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ Helm のチャートリポジトリ上のチャートバージョンと、Cluste
 
 また、ArgoCD を使っていると、Helm でインストールした履歴が残らないので、nova を使えない。
 
-> - https://github.com/FairwindsOps/nova/issues/45
+> - [Support scanning for updates to Helm-backed ArgoCD Application CRDs · Issue #45 · FairwindsOps/nova · GitHub](https://github.com/FairwindsOps/nova/issues/45)
 
 <br>
 
@@ -36,7 +36,7 @@ desired-versions:
   foo-chart: 1.0.0
 ```
 
-> - https://nova.docs.fairwinds.com/desired-versions/#using-a-config-file
+> - [Setting Desired Versions \| Nova Documentation](https://nova.docs.fairwinds.com/desired-versions/#using-a-config-file)
 
 <br>
 
@@ -70,7 +70,7 @@ Release Name      Installed    Latest    Old     Deprecated
 foo-chart         1.0.0        2.0.0     true    false
 ```
 
-> - https://nova.docs.fairwinds.com/usage/
+> - [Usage \| Nova Documentation](https://nova.docs.fairwinds.com/usage/)
 
 #### ▼ --containers
 

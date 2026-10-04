@@ -9,7 +9,7 @@ description: testify＠Goユニットテストの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -128,7 +128,7 @@ func TestUser_UserName(t *testing.T) {
 }
 ```
 
-> - https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C
+> - [testify/mockでgolangのテストを書く #Go - Qiita](https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%AE%9F%E8%A1%8C)
 
 #### ▼ Called
 
@@ -204,7 +204,7 @@ func TestUser_UserName(t *testing.T) {
 }
 ```
 
-> - https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%A2%E3%83%83%E3%82%AFstruct
+> - [testify/mockでgolangのテストを書く #Go - Qiita](https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%A2%E3%83%83%E3%82%AFstruct)
 
 **＊実装例＊**
 
@@ -237,7 +237,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 }
 ```
 
-> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Mock.Called
+> - [mock package - github.com/stretchr/testify/mock - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Mock.Called)
 
 #### ▼ AssertExpectations
 
@@ -299,7 +299,7 @@ func Test_Mock(t *testing.T) {
 }
 ```
 
-> - https://dev.classmethod.jp/articles/go-testify/#toc-5
+> - [Goテストモジュール Testifyをつかってみた \| DevelopersIO](https://dev.classmethod.jp/articles/go-testify/#toc-5)
 
 #### ▼ AssertNumberOfCalls
 
@@ -362,7 +362,7 @@ func Test_Mock(t *testing.T) {
 }
 ```
 
-> https://dev.classmethod.jp/articles/go-testify/#toc-5
+> [Goテストモジュール Testifyをつかってみた \| DevelopersIO](https://dev.classmethod.jp/articles/go-testify/#toc-5)
 
 <br>
 
@@ -372,7 +372,7 @@ func Test_Mock(t *testing.T) {
 
 モック構造体に渡した引数を保持する。
 
-> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments
+> - [mock package - github.com/stretchr/testify/mock - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments)
 
 #### ▼ Get
 
@@ -479,7 +479,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 }
 ```
 
-> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments.Get
+> - [mock package - github.com/stretchr/testify/mock - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments.Get)
 
 #### ▼ Error
 
@@ -588,7 +588,7 @@ func (m *MockedAmplifyAPI) GetBranch(
 }
 ```
 
-> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments.Error
+> - [mock package - github.com/stretchr/testify/mock - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments.Error)
 
 <br>
 
@@ -671,8 +671,8 @@ func (suite *FooSuite) TestMethod() {
 }
 ```
 
-> - https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66
-> - https://pkg.go.dev/github.com/stretchr/testify/suite
+> - [go-github/github/github\_test.go at master · google/go-github · GitHub](https://github.com/google/go-github/blob/master/github/github_test.go#L36-L66)
+> - [suite package - github.com/stretchr/testify/suite - Go Packages](https://pkg.go.dev/github.com/stretchr/testify/suite)
 
 <br>
 
@@ -684,7 +684,7 @@ func (suite *FooSuite) TestMethod() {
 
 ポインタのメモリアドレス値は一致していなくてもよい。
 
-> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Assertions.Exactly
+> - [assert package - github.com/stretchr/testify/assert - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Assertions.Exactly)
 > - https://bayashi.net/diary/2023/0426
 
 #### ▼ Equal
@@ -693,7 +693,7 @@ func (suite *FooSuite) TestMethod() {
 
 ポインタのメモリアドレス値は一致していなくてもよい。
 
-> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Equal
+> - [assert package - github.com/stretchr/testify/assert - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Equal)
 > - https://bayashi.net/diary/2023/0426
 
 #### ▼ Same
@@ -702,7 +702,7 @@ func (suite *FooSuite) TestMethod() {
 
 ポインタのメモリアドレス値が同じであれば、結果的に値とデータ型も同じになる。
 
-> - https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Same
+> - [assert package - github.com/stretchr/testify/assert - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Same)
 > - https://bayashi.net/diary/2023/0426
 
 <br>

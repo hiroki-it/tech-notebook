@@ -9,7 +9,7 @@ description: ダッシュボード＠Grafanaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -35,7 +35,7 @@ data:
     ` }}
 ```
 
-> - https://grafana.com/grafana/dashboards/
+> - [Grafana dashboards \| Grafana Labs](https://grafana.com/grafana/dashboards/)
 
 <br>
 
@@ -91,7 +91,7 @@ data:
 
 ただ出力時に Helm 起因のエラーが多発するため、自分はこれを不採用とした。
 
-> - https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14 at main · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14)
 > - https://stackoverflow.com/questions/64662568/how-can-i-use-a-json-file-in-my-configmap-yaml-helm
 
 <br>
@@ -191,7 +191,7 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
 
 ConfigMap で作成したダッシュボードは、デフォルトで Grafana の GUI から変更できないようになっている。
 
-> - https://grafana.com/grafana/dashboards/
+> - [Grafana dashboards \| Grafana Labs](https://grafana.com/grafana/dashboards/)
 
 <br>
 
@@ -199,7 +199,7 @@ ConfigMap で作成したダッシュボードは、デフォルトで Grafana �
 
 Grafana Play から、ダッシュボードのいくつかを試せる。
 
-> - https://play.grafana.org/dashboards
+> - [Grafana](https://play.grafana.org/dashboards)
 
 <br>
 
@@ -227,8 +227,8 @@ Istio 関連のコミュニティダッシュボードを使用する場合は�
 │   │
 ```
 
-> - https://monitoring.mixins.dev
-> - https://grafana.com/grafana/dashboards/
+> - [Prometheus Monitoring Mixins \| Monitoring Mixins](https://monitoring.mixins.dev)
+> - [Grafana dashboards \| Grafana Labs](https://grafana.com/grafana/dashboards/)
 
 <br>
 
@@ -352,8 +352,8 @@ kubernetes-mixins は Grafana ダッシュボードを公開している。
 
 kubernetes-mixins のレコーディングルールが定義済みであることを前提にしている。
 
-> - https://github.com/monitoring-mixins/website/tree/master/assets
-> - https://monitoring.mixins.dev
+> - [website/assets at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets)
+> - [Prometheus Monitoring Mixins \| Monitoring Mixins](https://monitoring.mixins.dev)
 
 #### ▼ Alertmanager
 
@@ -363,7 +363,7 @@ Alertmanager の Pod からデータポイントを収集する。
 | ------------------------- | ------------------- | ------------------------------------------- |
 | `Alertmanager / Overview` | Alertmanager の Pod | Alertmanager 固有のメトリクスを分析できる。 |
 
-> - https://github.com/monitoring-mixins/website/tree/master/assets/alertmanager/dashboards
+> - [website/assets/alertmanager/dashboards at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets/alertmanager/dashboards)
 
 #### ▼ ArgoCD
 
@@ -373,7 +373,7 @@ ArgoCD の Pod からデータポイントを収集する。
 | ---------------- | ------------- | ------------------------------------- |
 | `ArgoCD`         | ArgoCD の Pod | ArgoCD 固有のメトリクスを分析できる。 |
 
-> - https://github.com/argoproj/argo-cd/blob/v2.7.6/examples/dashboard.json
+> - [argo-cd/examples/dashboard.json at v2.7.6 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.7.6/examples/dashboard.json)
 
 #### ▼ CoreDNS
 
@@ -383,7 +383,7 @@ CoreDNS の Pod からデータポイントを収集する。
 | ---------------- | -------------- | ------------------------------------------------------------------------------------------------------- |
 | `CoreDNS`        | CoreDNS の Pod | CoreDNS の Pod に対するリクエストに関するメトリクス (例：リクエスト数、レスポンスタイム) を分析できる。 |
 
-> - https://github.com/monitoring-mixins/website/tree/master/assets/coredns/dashboards
+> - [website/assets/coredns/dashboards at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets/coredns/dashboards)
 
 #### ▼ Kubernetes コンポーネント
 
@@ -397,7 +397,7 @@ Kubernetes コンポーネントからデータポイントを収集する。
 | `Kubernetes / Controller Manager` | kube-controller-manager |                                                                                                                                     |          |
 | `Kubernetes / Scheduler`          | kube-scheduler          |                                                                                                                                     |          |
 
-> - https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards
+> - [website/assets/kubernetes/dashboards at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards)
 
 #### ▼ Pod
 
@@ -415,12 +415,12 @@ kubelet からデータポイントを収集できるようにしておく必要
 | `Kubernetes / Networking / Namespace (Pods)`        | Pod      | ネットワークの性能指標               | Pod のネットワーク性能指標メトリクスを Namespace 単位で分析できる。複数の Pod (削除された Pod も含む) のメトリクスを一括して確認したい場合に役立つ。                                                                                  |          |
 | `Kubernetes / Networking / Pod`                     | Pod      | ネットワークの性能指標               | Pod のネットワーク性能指標メトリクスを Pod 単位で分析できる。Pod を個別に確認したい場合に役立つ。                                                                                                                                     |          |
 
-> - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L23
-> - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml#L23
-> - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-node.yaml#L23
-> - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-pod.yaml#L23
-> - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workload.yaml#L23
-> - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workloads-namespace.yaml#L23
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-cluster.yaml#L23)
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-namespace.yaml#L23)
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-node.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-node.yaml#L23)
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-pod.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-pod.yaml#L23)
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workload.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workload.yaml#L23)
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workloads-namespace.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/k8s-resources-workloads-namespace.yaml#L23)
 
 #### ▼ Workload
 
@@ -435,7 +435,7 @@ kubelet からデータポイントを収集できるようにしておく必要
 | `Kubernetes / Networking / Namespace (Workload)`         | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Pod のネットワーク性能指標メトリクスを Namespace 単位で分析できる。                                                             |          |
 | `Kubernetes / Networking / Workload`                     | Deployment、StatefulSet | ネットワーク性能指標メトリクス       | Pod のネットワーク性能指標メトリクスを Workload 単位で分析できる。                                                              |          |
 
-> - https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards
+> - [website/assets/kubernetes/dashboards at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets/kubernetes/dashboards)
 
 #### ▼ PersistentVolume
 
@@ -455,8 +455,8 @@ Node Exporter からデータポイントを収集できるようにしておく
 | `Node Exporter / USE Method / Node`    | Node     | USE メトリクス | Node の USE メトリクスを Node 単位で分析できる。                                             |          |
 | `Node Exporter / Nodes`                | Node     | ハードウェア   | Node のハードウェアリソース使用率メトリクスを Node 単位で分析できる。                        |          |
 
-> - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-cluster-rsrc-use.yaml#L23
-> - https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-rsrc-use.yaml#L23
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-cluster-rsrc-use.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-cluster-rsrc-use.yaml#L23)
+> - [helm-charts/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-rsrc-use.yaml at kube-prometheus-stack-48.4.0 · prometheus-community/helm-charts · GitHub](https://github.com/prometheus-community/helm-charts/blob/kube-prometheus-stack-48.4.0/charts/kube-prometheus-stack/templates/grafana/dashboards-1.14/node-rsrc-use.yaml#L23)
 
 #### ▼ Prometheus
 
@@ -467,7 +467,7 @@ Prometheus の Pod からデータポイントを収集する。
 | `Prometheus / Remote Write` | Prometheus の Pod |      |
 | `Prometheus / Overview`     | Prometheus の Pod |      |
 
-> - https://github.com/monitoring-mixins/website/tree/master/assets/prometheus/dashboards
+> - [website/assets/prometheus/dashboards at master · monitoring-mixins/website · GitHub](https://github.com/monitoring-mixins/website/tree/master/assets/prometheus/dashboards)
 
 #### ▼ Istio
 
@@ -484,10 +484,10 @@ Istio の Pod からデータポイントを収集する。
 | `Istio Workload Dashboard`       | Istio のカスタムリソース           |                                                                                     |
 | `Istio Service Dashboard`        | Istio VirtualService               | Istio Ingress Gateway の宛先の Service に関するメトリクスを確認したい場合に役立つ。 |
 
-> - https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana
+> - [Istio / istioctl](https://istio.io/latest/docs/reference/commands/istioctl/#istioctl-dashboard-grafana)
 > - https://github.com/istio/istio/blob/1.14.3/manifests/addons/dashboards
-> - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#viewing-the-istio-dashboard
-> - https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#about-the-grafana-dashboards
+> - [Istio / Visualizing Metrics with Grafana](https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#viewing-the-istio-dashboard)
+> - [Istio / Visualizing Metrics with Grafana](https://istio.io/latest/docs/tasks/observability/metrics/using-istio-dashboard/#about-the-grafana-dashboards)
 
 <br>
 
@@ -1100,9 +1100,9 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 }
 ```
 
-> - https://github.com/prometheus-operator/kube-prometheus/discussions/603?sort=top
+> - [kube\_pod\_info cluster label · prometheus-operator/kube-prometheus · Discussion #603 · GitHub](https://github.com/prometheus-operator/kube-prometheus/discussions/603?sort=top)
 > - https://stackoverflow.com/questions/64889312/is-there-a-way-to-get-the-cluster-name-of-kubernetes-in-grafana-variables-with-p
-> - https://qiita.com/prodigy413/items/c0c2304e1bc28f644526
+> - [Prometheus サンプル設定 #kubernetes - Qiita](https://qiita.com/prodigy413/items/c0c2304e1bc28f644526)
 
 そのうえで `panel` セクションに `cluster` ラベルを定義すると、メトリクスを `cluster` ラベルでフィルタリングできるようになる。
 

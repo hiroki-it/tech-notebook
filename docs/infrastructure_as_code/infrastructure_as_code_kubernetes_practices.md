@@ -9,7 +9,7 @@ description: プラクティス集＠Kubernetesの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -91,7 +91,7 @@ repository/ # baz サービス
 
 `kubectl` コマンドの実行時にマニフェストの送信の順番を制御しにくいデメリットがある。
 
-> - https://www.amazon.co.jp/dp/B08FZX8PYW
+> - [Amazon.co.jp: Kubernetes完全ガイド 第2版 impress top gearシリーズ eBook : 青山真也: Kindleストア](https://www.amazon.co.jp/dp/B08FZX8PYW)
 
 ```yaml
 repository/
@@ -285,10 +285,10 @@ repository/
 | Node のカスタマイズ性   | 高い                                                                                                                                                                | 低い                                                                           | 高い                                                                                        | 高い                                                                                                        |
 | 料金                    | 無料                                                                                                                                                                | 無料                                                                           | 無料                                                                                        | 非常に高い                                                                                                  |
 
-> - https://minikube.sigs.k8s.io/docs/tutorials/multi_node/
+> - [Using Multi-Node Clusters \| minikube](https://minikube.sigs.k8s.io/docs/tutorials/multi_node/)
 > - https://codefresh.io/kubernetes-tutorial/local-kubernetes-mac-minikube-vs-docker-desktop/
-> - https://blog.cybozu.io/entry/2019/07/03/170000
-> - https://qiita.com/Hiroyuki_OSAKI/items/2395e6bbb98856df12f3#2%E9%87%8D%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3
+> - [お手軽Kubernetesクラスタ作成ツール "kind"の紹介 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2019/07/03/170000)
+> - [kindで軽量テスト用Kubernetesクラスタを作る＆運用する時のTIPS #Docker - Qiita](https://qiita.com/Hiroyuki_OSAKI/items/2395e6bbb98856df12f3#2%E9%87%8D%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%B3)
 
 #### ▼ Kubernetes リソースの apply
 
@@ -311,7 +311,7 @@ repository/
 | メリット                              | すべて自前なため、自由にカスタマイズできる。                                                                                                                                                                               | カスタマイズ性が高い。                                                                                                                                                                                                                                                                                                                                                                    | マネージドであるため、ユーザーが Kubernetes のワーカーNode を管理するコストが低い。執筆時点 (2022 年 3 月) では、Kubernetes の本番環境として、ベタープラクティスである。                                                                                                                                 |
 | デメリット                            | ユーザーが Kubernetes のワーカーNode を管理するコストが高い。                                                                                                                                                              | ユーザーが Kubernetes のワーカーNode を管理するコストが高い。                                                                                                                                                                                                                                                                                                                             | カスタマイズ性が低い                                                                                                                                                                                                                                                                                     |
 
-> - https://techstep.hatenablog.com/entry/2019/12/23/000715
+> - [Kubernetes + Ansible = Kubespray ~KubesprayからAnsibleに入門する~ - TECHSTEP](https://techstep.hatenablog.com/entry/2019/12/23/000715)
 > - https://medium.com/@PlanB./on-premises-kubernetes-is-kubeadm-or-rancher-the-right-choice-c569e51773dc
 
 #### ▼ Kubernetes リソースの apply
@@ -340,7 +340,7 @@ Cluster の複数の実行環境 (`dev-*`、`stg-*`、`prd-*`) を用意した�
 
 冗長化された kube-apiserver のバージョン差は、前方の `1` 個のマイナーバージョン以内に収める必要がある。
 
-> - https://kubernetes.io/releases/version-skew-policy/#kube-apiserver
+> - [Version Skew Policy \| Kubernetes](https://kubernetes.io/releases/version-skew-policy/#kube-apiserver)
 
 <br>
 
@@ -350,7 +350,7 @@ Cluster の複数の実行環境 (`dev-*`、`stg-*`、`prd-*`) を用意した�
 
 `kubectl` コマンドと kube-apiserver のバージョン差は、前方/後方の `1` 個のマイナーバージョン以内に収める必要がある。
 
-> - https://kubernetes.io/releases/version-skew-policy/#kubectl
+> - [Version Skew Policy \| Kubernetes](https://kubernetes.io/releases/version-skew-policy/#kubectl)
 
 <br>
 
@@ -373,7 +373,7 @@ Kubernetes では、稼働する可能性のある Pod 数から、ワーカーN
 | `33`～`64`               | `/25`                               | `128`         |
 | `65`～`110`              | `/24`                               | `256`         |
 
-> - https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr
+> - [Configure maximum Pods per node \| GKE networking \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
 
 <br>
 
@@ -395,7 +395,7 @@ Kubernetes の以下のコンポーネントが、メトリクスエンドポイ
 - kube-scheduler
 - kubelet
 
-> - https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/#metrics-in-kubernetes
+> - [Metrics For Kubernetes System Components \| Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/#metrics-in-kubernetes)
 > - https://sysdig.jp/blog/kubernetes-metrics-ingestion/
 
 <br>
@@ -444,7 +444,7 @@ Kubernetes の以下のコンポーネントが、メトリクスエンドポイ
 | `container_network_receive_bytes_total`  | カウント | 同じ Cluster 内の受信したバイトの累積数をデータポイントとする。 | 記入中...                       |
 | `container_network_transmit_bytes_total` | カウント | 同じ Cluster 内の送信したバイトの累積数をデータポイントとする。 | 記入中...                       |
 
-> - https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/
+> - [Prometheus と Grafana を使用して AWS Fargate で Amazon EKS をモニタリングする \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/)
 
 <br>
 
@@ -465,7 +465,7 @@ Cluster をディメンションとしたメトリクスの監視ポリシーは
 | Node の必要最低数 | カウント | 同じ Cluster 内のワーカーNode 数の必要最低数をデータポイントとする。    | ・統計 : 期間内合計数<br>・期間 : `5` 分<br>・閾値 : `<= 2` |
 | Pod の必要最低数  | カウント | 同じ Cluster 内のワーカーNode の Pod 必要最低数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : `5` 分<br>・閾値 : `<= 1` |
 
-> - https://www.tigera.io/learn/guides/kubernetes-monitoring/
+> - [Kubernetes Monitoring: 6 Tools & 6 Best Practices You Must Know](https://www.tigera.io/learn/guides/kubernetes-monitoring/)
 
 <br>
 
@@ -477,7 +477,7 @@ Pod 全体をディメンションとしたメトリクスの監視ポリシー�
 | ---------------- | -------- | ------------------------------------------------------------- | ----------------------------------------------------------- |
 | Pod の最低必要数 | カウント | 同じ Deployment 内の Pod の必要最低数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : `5` 分<br>・閾値 : `<= 2` |
 
-> - https://www.tigera.io/learn/guides/kubernetes-monitoring/
+> - [Kubernetes Monitoring: 6 Tools & 6 Best Practices You Must Know](https://www.tigera.io/learn/guides/kubernetes-monitoring/)
 
 #### ▼ コンテナ
 
@@ -487,7 +487,7 @@ Pod 全体をディメンションとしたメトリクスの監視ポリシー�
 | ----------------------------- | -------- | ------------------------------------------------------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | ReadinessProbe ヘルスチェック | カウント | コンテナの ReadinessProbe ヘルスチェックの失敗数をデータポイントとする。 | ・統計 : 期間内合計数<br>・期間 : `1` 分<br>・閾値 : `>= 2` | ネットワーク由来の問題で発生することがあるため、連続的に発生したうえでアラートする。 |
 
-> - https://www.tigera.io/learn/guides/kubernetes-monitoring/
+> - [Kubernetes Monitoring: 6 Tools & 6 Best Practices You Must Know](https://www.tigera.io/learn/guides/kubernetes-monitoring/)
 
 <br>
 
@@ -513,8 +513,8 @@ spec:
           protocol: TCP
 ```
 
-> - https://hub.docker.com/r/paulbouwer/hello-kubernetes/
-> - https://hub.docker.com/_/nginx
+> - [paulbouwer/hello-kubernetes - Docker Image](https://hub.docker.com/r/paulbouwer/hello-kubernetes/)
+> - [nginx - Official Image \| Docker Hub](https://hub.docker.com/_/nginx)
 
 #### ▼ ネットワーク系
 
@@ -529,8 +529,8 @@ $ kubectl debug node/<Node名> \
     --image=praqma/network-multitool
 ```
 
-> - https://hub.docker.com/r/praqma/network-multitool
-> - https://hub.docker.com/r/nicolaka/netshoot
+> - [praqma/network-multitool - Docker Image](https://hub.docker.com/r/praqma/network-multitool)
+> - [nicolaka/netshoot - Docker Image](https://hub.docker.com/r/nicolaka/netshoot)
 
 <br>
 
@@ -560,7 +560,7 @@ $ kubectl debug node/<Node名> \
 
 テスト環境に対して `kubectl apply` コマンドを実行することで、既存機能/追加/変更を含むすべてのチャートを組み合わせたシステムテストを実施する。
 
-> - https://camunda.com/blog/2022/03/test/
+> - [Advanced Test Practices For Helm Charts \| Camunda](https://camunda.com/blog/2022/03/test/)
 
 <br>
 
@@ -590,7 +590,7 @@ GitOps の場合、CI パイプライン上だけでなく、CD パイプライ�
 
 Kubernetes の Deployment の Replace 戦略を採用する。非推奨である。ダウンタイムが発生する。
 
-> - https://amateur-engineer-blog.com/kubernetes-recreate/#toc2
+> - [【Kubernetes】Recreateをやってみる](https://amateur-engineer-blog.com/kubernetes-recreate/#toc2)
 
 #### ▼ ローリングアップデート (推奨)
 
@@ -600,7 +600,7 @@ Kubernetes の Deployment の RollingUpdate 戦略を採用する。
 
 Kubernetes では、新旧 Pod と Service を組み合わせることで、擬似的なブルー/グリーンデプロイメントを実現できる。CD ツール (例：Argo Rollouts) の BG デプロイメント機能を採用してもよい。
 
-> - https://argoproj.github.io/argo-rollouts/concepts/#blue-green
+> - [Concepts - Argo Rollouts - Kubernetes Progressive Delivery Controller](https://argoproj.github.io/argo-rollouts/concepts/#blue-green)
 
 #### ▼ カナリアリリース (推奨)
 
@@ -608,13 +608,13 @@ Kubernetes では、新旧 Pod のレプリカ数の割合を調節すること�
 
 注意点として、サービスメッシュツールであると、重み付けの段階的な変更が手動になってしまう。
 
-> - https://argoproj.github.io/argo-rollouts/concepts/#canary
+> - [Concepts - Argo Rollouts - Kubernetes Progressive Delivery Controller](https://argoproj.github.io/argo-rollouts/concepts/#canary)
 
 #### ▼ Progressive Delivery (推奨)
 
 Kubernetes 自体は Progressive Delivery の能力を持たない。CD ツール (例：Argo Rollouts) の Progressive Delivery 機能を採用する。
 
-> - https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery
+> - [Concepts - Argo Rollouts - Kubernetes Progressive Delivery Controller](https://argoproj.github.io/argo-rollouts/concepts/#progressive-delivery)
 
 <br>
 

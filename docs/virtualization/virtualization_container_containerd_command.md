@@ -9,7 +9,7 @@ description: コマンド＠Containerdの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: コマンド＠Containerdの知見を記録しています。
 
 Kubernetes の Node 内で `crictl` コマンドを実行している場合に、Node 内で稼働する Pod を取得する。
 
-> - https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-pods
+> - [Debugging Kubernetes nodes with crictl \| Kubernetes](https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-pods)
 
 ```bash
 $ crictl pods
@@ -34,7 +34,7 @@ POD ID      CREATED             STATE        NAME            NAMESPACE          
 
 コンテナを取得する。
 
-> - https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-containers
+> - [Debugging Kubernetes nodes with crictl \| Kubernetes](https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/#list-containers)
 
 ```bash
 $ crictl ps -a
@@ -49,6 +49,6 @@ CONTAINER   IMAGE   CREATED        STATE       NAME              ATTEMPT        
 
 見にくいため、`crictl` コマンドを使用する。
 
-> - https://repl.info/archives/2894/
+> - [kubeletが使うコンテナランタイムをdockerからcontainerdに変更する - repl.info](https://repl.info/archives/2894/)
 
 <br>

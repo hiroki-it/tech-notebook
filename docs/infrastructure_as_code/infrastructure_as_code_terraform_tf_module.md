@@ -9,7 +9,7 @@ description: モジュール＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -365,7 +365,7 @@ resource "aws_s3_bucket" "bar" {
 }
 ```
 
-> - https://dev.to/drewmullen/terraform-prevent-defaulttags-on-a-specific-resource-n19
+> - [Terraform: Prevent default\_tags on a specific resource - DEV Community](https://dev.to/drewmullen/terraform-prevent-defaulttags-on-a-specific-resource-n19)
 
 #### ▼ モジュールに渡すプロバイダーを切り替える
 
@@ -424,7 +424,7 @@ resource "aws_acm_certificate" "example" {
 | `~>` | 指定したバージョンを上限とする。 |
 | `=`  | 指定したバージョンで固定する。   |
 
-> - https://dev.classmethod.jp/articles/about-terraform-version-required-constraints/
+> - [Terraformのバージョン制約の仕様と挙動を調べてみた \| DevelopersIO](https://dev.classmethod.jp/articles/about-terraform-version-required-constraints/)
 
 <br>
 
@@ -435,7 +435,7 @@ resource "aws_acm_certificate" "example" {
 ルートモジュールで、ローカルモジュールやリモートモジュールをコールし、オプションを設定する。
 
 > - https://www.terraform.io/language/modules/sources
-> - https://qiita.com/bigwheel/items/2b420183639416b5c6bb
+> - [Terraform公式ドキュメントに学ぶmoduleのアンチパターンとその対処法5選 #Terraform - Qiita](https://qiita.com/bigwheel/items/2b420183639416b5c6bb)
 > - https://registry.terraform.io/namespaces/terraform-aws-modules
 
 #### ▼ ローカルモジュールをコールする場合
@@ -676,7 +676,7 @@ Terraform の `2` 個以上のブロックをパッケージ化することに�
 そのため、チャイルドモジュール内でチャイルドモジュールを作成しないようにする。
 
 > - https://www.terraform.io/language/modules#child-modules
-> - https://qiita.com/bigwheel/items/2b420183639416b5c6bb#%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AE%E7%90%86%E7%94%B1-3
+> - [Terraform公式ドキュメントに学ぶmoduleのアンチパターンとその対処法5選 #Terraform - Qiita](https://qiita.com/bigwheel/items/2b420183639416b5c6bb#%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AE%E7%90%86%E7%94%B1-3)
 
 #### ▼ ローカルモジュール
 

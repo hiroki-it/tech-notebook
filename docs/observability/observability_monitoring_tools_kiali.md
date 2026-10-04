@@ -21,7 +21,7 @@ Kiali は、バックエンドコンポーネントとフロントエンドコ�
 
 ![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kiali_architecture.png)
 
-> - https://kiali.io/docs/architecture/architecture/
+> - [Architecture \| Kiali](https://kiali.io/docs/architecture/architecture/)
 
 <br>
 
@@ -35,8 +35,8 @@ Kiali は、バックエンドコンポーネントとフロントエンドコ�
 
 アーキテクチャの図中で点線は、バックエンドコンポーネントが Istiod コントロールプレーンに間接的に依存していることを表している。
 
-> - https://kiali.io/docs/architecture/architecture/#kiali-back-end
-> - https://kiali.io/docs/faq/general/#requiredmetrics
+> - [Architecture \| Kiali](https://kiali.io/docs/architecture/architecture/#kiali-back-end)
+> - [General \| Kiali](https://kiali.io/docs/faq/general/#requiredmetrics)
 
 #### ▼ Kilai が使用する Istio メトリクス
 
@@ -62,14 +62,14 @@ Kiali は、以下のメトリクスを使用してメッシュトポロジー�
 
 その他、監視ツール (例：Jaeger、Grafana) と連携し、Kiali 上のデータから連携先ツールの URL へリダイレクトできるようにする。
 
-> - https://kiali.io/docs/architecture/architecture/#kiali-front-end
+> - [Architecture \| Kiali](https://kiali.io/docs/architecture/architecture/#kiali-front-end)
 
 #### ▼ グラフ化手法
 
 Kiali は、cytoscape.js パッケージを使用し、『幅優先探索グラフ』や『有向グラフ』といったモデリング手法に基づいて、Istio から収集したデータポイントをグラフ化する。
 
 > - https://github.com/kiali/kiali/tree/v1.65.0/frontend/src/components/CytoscapeGraph/graphs
-> - https://blog.js.cytoscape.org/2020/05/11/layouts/#choice-of-layout
+> - [Using layouts · Cytoscape.js](https://blog.js.cytoscape.org/2020/05/11/layouts/#choice-of-layout)
 
 <br>
 
@@ -199,8 +199,8 @@ spec:
 
 #### ▼ メッシュトポロジータイプ
 
-> - https://kiali.io/docs/features/topology/#graph-types
-> - https://istio.io/latest/docs/tasks/observability/kiali/#viewing-and-editing-istio-configuration-yaml
+> - [Topology \| Kiali](https://kiali.io/docs/features/topology/#graph-types)
+> - [Istio / Visualizing Your Mesh](https://istio.io/latest/docs/tasks/observability/kiali/#viewing-and-editing-istio-configuration-yaml)
 
 #### ▼ App グラフ
 
@@ -275,7 +275,7 @@ TCP 通信で送受信したバイト量に基づくスループットを表示�
 - 複数の Namespace に istio-proxy をインジェクションしている場合、Service とマイクロサービスが `NS` とついた線で囲われる。
 - 特定のマイクロサービスに複数の `subset` 値 (例：`v1`、`v2`) が付与されている場合、それらが `A` とついた線で囲われる。
 
-> - https://istio.io/v1.14/docs/tasks/observability/kiali/#generating-a-graph
+> - [Istioldie 1.14 / Visualizing Your Mesh](https://istio.io/v1.14/docs/tasks/observability/kiali/#generating-a-graph)
 
 <br>
 
@@ -285,7 +285,7 @@ Kiali では、Istio リソースのマニフェストを検証できる。
 
 ダッシュボード (Service タブ、Istio Config タブ) の Configuration がエラー表示になっていれば、Istio リソースのマニフェストの問題がわかる。
 
-> - https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration
+> - [Istio / Visualizing Your Mesh](https://istio.io/latest/docs/tasks/observability/kiali/#validating-istio-configuration)
 
 <br>
 
@@ -298,13 +298,13 @@ Kiali では、Istio リソースのマニフェストを検証できる。
 凡例で、レスポンスタイムと閾値 (`rt > ミリ秒数`) を設定し、いずれのマイクロサービス間で通信に時間がかかっているのかを調査できる。
 
 > - https://www.weave.works/blog/working-with-istio-track-your-services-with-kiali
-> - https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021
+> - [Kubernetes障害で泣かないための羅針盤、Observabilityを活用したトラブルシューティングフロー大公開：Cloud Nativeチートシート（14） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2204/14/news008.html#021)
 
 #### ▼ Envoy
 
 Workloads タブから、各 Pod の istio-proxy にどんな Envoy 設定値 (リスナー、ルート、クラスター、エンドポイント) を適用しているかを確認できる。
 
-> - https://kiali.io/docs/features/details/#envoy
+> - [Detail Views \| Kiali](https://kiali.io/docs/features/details/#envoy)
 
 <br>
 
@@ -314,16 +314,16 @@ Workloads タブから、各 Pod の istio-proxy にどんな Envoy 設定値 (�
 
 #### ▼ メトリクスとの紐付け
 
-> - https://kiali.io/docs/features/tracing/#metric-correlation
+> - [Tracing \| Kiali](https://kiali.io/docs/features/tracing/#metric-correlation)
 
 #### ▼ ログとの紐付け
 
-> - https://kiali.io/docs/features/tracing/#logs-correlation
+> - [Tracing \| Kiali](https://kiali.io/docs/features/tracing/#logs-correlation)
 
 <br>
 
 ### サービスメッシュトポロジーとの紐付け
 
-> - https://kiali.io/docs/features/tracing/#graph-correlation
+> - [Tracing \| Kiali](https://kiali.io/docs/features/tracing/#graph-correlation)
 
 <br>

@@ -9,7 +9,7 @@ description: マイクロサービス間通信＠マイクロサービス領域�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -34,7 +34,7 @@ description: マイクロサービス間通信＠マイクロサービス領域�
 | 従来の TCP/IP | 従来の TCP/IP プロトコルを使用する。                                                                                                                                                                                                                                                                                                                                                                           |
 | gRPC          | gRPC over HTTP/2 プロトコルを使用する。HTTP API であると、通信相手のマイクロサービスのエンドポイントをコールした後、エンドポイントに紐づくコントローラーの関数が実行される。一方で gRPC であると、通信相手のマイクロサービスの関数を直接的に実行できる。そのため、HTTP API よりもマイクロサービスの連携に適している。<br>・https://techdozo.dev/grpc-for-microservices-communication/ |
 
-> - https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
+> - [『Microservice Patterns』 まとめ #DDD - Qiita](https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F)
 
 <br>
 
@@ -56,7 +56,7 @@ description: マイクロサービス間通信＠マイクロサービス領域�
 
 一方で、マイクロサービスの実装が簡単になる。
 
-> - https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/
+> - [Microservice Integration Patterns: Point-to-Point vs Message Broker](https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/)
 
 #### ▼ メッセージ中継システムを経由する場合
 
@@ -71,7 +71,7 @@ description: マイクロサービス間通信＠マイクロサービス領域�
 Saga オーケストレーターの宛先マイクロサービスの間にメッセージブローカーを配置するのは、宛先マイクロサービスのローカルトランザクション処理を確実に完了するためである。
 
 > - https://jackynote.medium.com/message-brokers-pros-cons-and-their-crucial-role-in-microservice-3dc6c0df2e53
-> - https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/
+> - [Microservice Integration Patterns: Point-to-Point vs Message Broker](https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/)
 
 <br>
 
@@ -91,9 +91,9 @@ Saga オーケストレーターの宛先マイクロサービスの間にメッ
 
 サブスクライブには、宛先マイクロサービスによるプル型と、メッセージ中継システムによるプッシュ型がある。
 
-> - https://en.wikipedia.org/wiki/Message_queue
-> - https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F
-> - https://aiven.io/blog/introduction-to-event-based-programming#asynchronous-request-response-with-events
+> - [Message queue - Wikipedia](https://en.wikipedia.org/wiki/Message_queue)
+> - [『Microservice Patterns』 まとめ #DDD - Qiita](https://qiita.com/yasuabe2613/items/3bff44e662c922083264#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%81%AE%E5%95%8F%E9%A1%8C%E9%A0%98%E5%9F%9F)
+> - [Introduction to event-based programming](https://aiven.io/blog/introduction-to-event-based-programming#asynchronous-request-response-with-events)
 
 <br>
 
@@ -113,7 +113,7 @@ Saga オーケストレーターの宛先マイクロサービスの間にメッ
 
 もしマイクロサービス間双方向に送信したい場合は、送信元マイクロサービスからメッセージを受信するメッセージブローカーと、宛先マイクロサービスから受信するメッセージブローカーを、別々に配置する。
 
-> - https://en.wikipedia.org/wiki/Message_queue
+> - [Message queue - Wikipedia](https://en.wikipedia.org/wiki/Message_queue)
 > - https://www.scaleuptech.com/de/blog/api-gateway-vs-service-mesh-vs-message-queue/
 
 <br>

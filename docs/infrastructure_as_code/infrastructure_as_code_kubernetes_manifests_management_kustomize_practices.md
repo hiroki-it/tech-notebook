@@ -9,7 +9,7 @@ description: プラクティス集＠Kustomizeの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -37,6 +37,6 @@ repository/
 └── prd/
 ```
 
-> - https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays
+> - [GitHub - kubernetes-sigs/kustomize: Customization of kubernetes YAML configurations · GitHub](https://github.com/kubernetes-sigs/kustomize#2-create-variants-using-overlays)
 
 <br>

@@ -9,7 +9,7 @@ description: Artifact Registry＠Google Cloudリソースの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: Artifact Registry＠Google Cloudリソースの知見を記録し�
 
 コンテナイメージレジストリである GCR の後継である。
 
-> - https://cloud.google.com/blog/ja/products/application-development/understanding-artifact-registry-vs-container-registry
+> - [Artifact Registry: 次世代の Container Registry \| Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/products/application-development/understanding-artifact-registry-vs-container-registry)
 > - https://zenn.dev/cloud_ace/articles/6c401ce3b3bccc
 
 <br>
@@ -67,6 +67,6 @@ $ docker push asia-northeast1-docker.pkg.dev/<プロジェクト名>/<コンテ�
 $ docker pull asia-northeast1-docker.pkg.dev/<プロジェクト名>/<コンテナイメージ名>:1.0.0
 ```
 
-> - https://cloud.google.com/artifact-registry/docs/docker/store-docker-container-images#add-image
+> - [Quickstart: Store Docker container images in Artifact Registry \| Google Cloud Documentation](https://cloud.google.com/artifact-registry/docs/docker/store-docker-container-images#add-image)
 
 <br>

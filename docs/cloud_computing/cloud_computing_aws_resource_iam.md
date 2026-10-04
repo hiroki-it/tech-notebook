@@ -9,7 +9,7 @@ description: AWS IAM＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -43,7 +43,7 @@ AWS リソースを作成したときに自動的に作成されるロール。
 
 サービスリンクロールの一覧については、以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+> - [AWS services that work with IAM - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html)
 
 <br>
 
@@ -409,8 +409,8 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 }
 ```
 
-> - https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html
-> - https://zenn.dev/toshikish/articles/2d9274783acbae
+> - [IAM JSON policy elements: Condition operators - AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition_operators.html)
+> - [AWS IAM ポリシーの StringNotEquals 条件の複数値指定は AND になる](https://zenn.dev/toshikish/articles/2d9274783acbae)
 
 タグを条件として使用できる。
 
@@ -429,7 +429,7 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
     ]}
 ```
 
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1
+> - [Control Amazon EC2 launch template usage in Auto Scaling groups - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1)
 
 <br>
 

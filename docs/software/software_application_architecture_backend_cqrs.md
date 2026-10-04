@@ -9,7 +9,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -32,7 +32,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 `N+1` 問題にも対処できる。
 
 > - https://vaadin.com/learn/tutorials/ddd/tactical_domain_driven_design
-> - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
+> - [CQRS実践入門 \[ドメイン駆動設計\] - little hands' lab](https://little-hands.hatenablog.com/entry/2019/12/02/cqrs)
 
 <br>
 
@@ -48,7 +48,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 そのため、更新系では集約の単位をそのままにして、集約とは無関係な参照系処理を設計できる。
 
-> - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
+> - [CQRS実践入門 \[ドメイン駆動設計\] - little hands' lab](https://little-hands.hatenablog.com/entry/2019/12/02/cqrs)
 
 <br>
 
@@ -86,7 +86,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 > - https://stackoverflow.com/questions/19620404/entity-vs-dto-in-cqrs
 > - https://softwareengineering.stackexchange.com/questions/378909/in-what-layer-are-the-dtos-stored-with-cqrs
-> - https://github.com/exceptionnotfound/SampleCQRS
+> - [GitHub - exceptionnotfound/SampleCQRS: A small demo of a .NET app using Command-Query Responsibility Segregation and Event Sourcing · GitHub](https://github.com/exceptionnotfound/SampleCQRS)
 
 <br>
 
@@ -114,7 +114,7 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 
 > - https://stackoverflow.com/questions/19620404/entity-vs-dto-in-cqrs
 > - https://softwareengineering.stackexchange.com/questions/378909/in-what-layer-are-the-dtos-stored-with-cqrs
-> - https://github.com/exceptionnotfound/SampleCQRS
+> - [GitHub - exceptionnotfound/SampleCQRS: A small demo of a .NET app using Command-Query Responsibility Segregation and Event Sourcing · GitHub](https://github.com/exceptionnotfound/SampleCQRS)
 
 <br>
 
@@ -135,8 +135,8 @@ description: CQRS：Command Query Responsibility Segregation＠アーキテク�
 | 5    | OrderCreated  | Order               | 3                 | OrderCreated オブジェクトを JSON に変換したもの  |
 | ...  | ...           | ...                 | ...               | ...                                              |
 
-> - https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
-> - https://postd.cc/using-cqrs-with-event-sourcing/
-> - https://qiita.com/uzawa-sorich/items/261021c1d265b20117ab#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0es%E3%81%A3%E3%81%A6%E4%BD%95
+> - [CQRS実践入門 \[ドメイン駆動設計\] - little hands' lab](https://little-hands.hatenablog.com/entry/2019/12/02/cqrs)
+> - [CQRSとイベントソーシングの使用法、または「CRUDに何か問題でも？」 \| POSTD](https://postd.cc/using-cqrs-with-event-sourcing/)
+> - [SQLでもイベントソーシングはできるという話 #設計 - Qiita](https://qiita.com/uzawa-sorich/items/261021c1d265b20117ab#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%82%BD%E3%83%BC%E3%82%B7%E3%83%B3%E3%82%B0es%E3%81%A3%E3%81%A6%E4%BD%95)
 
 <br>

@@ -19,7 +19,7 @@ description: チャート＠Helmの知見を記録しています。
 
 #### ▼ apt リポジトリから
 
-> - https://helm.sh/docs/intro/install/#from-apt-debianubuntu
+> - [Installing Helm \| Helm](https://helm.sh/docs/intro/install/#from-apt-debianubuntu)
 
 ```bash
 $ curl https://helm.baltorepo.com/organization/signing.asc | sudo apt-key add -
@@ -39,7 +39,7 @@ $ sudo apt-get install helm
 
 `helm repo index` コマンドによって、`Chart.yaml` ファイルに基づいて自動作成されるため、ユーザーが設定する項目は少ない。
 
-> - https://helm.sh/docs/topics/chart_repository/#the-index-file
+> - [The Chart Repository Guide \| Helm](https://helm.sh/docs/topics/chart_repository/#the-index-file)
 
 <br>
 
@@ -47,7 +47,7 @@ $ sudo apt-get install helm
 
 #### ▼ apiVersion とは
 
-> - https://helm.sh/docs/topics/chart_repository/#the-index-file
+> - [The Chart Repository Guide \| Helm](https://helm.sh/docs/topics/chart_repository/#the-index-file)
 
 <br>
 
@@ -55,7 +55,7 @@ $ sudo apt-get install helm
 
 #### ▼ entries とは
 
-> - https://helm.sh/docs/topics/chart_repository/#the-index-file
+> - [The Chart Repository Guide \| Helm](https://helm.sh/docs/topics/chart_repository/#the-index-file)
 
 <br>
 
@@ -85,7 +85,7 @@ Helm のバージョンを設定する。
 apiVersion: v2
 ```
 
-> - https://helm.sh/docs/topics/charts/#the-apiversion-field
+> - [Charts \| Helm](https://helm.sh/docs/topics/charts/#the-apiversion-field)
 > - https://helm.sh/docs/topics/v2_v3_migration/
 
 <br>
@@ -104,8 +104,8 @@ Helm リリースバージョンは、GitHub の Helm リリースタグで管�
 appVersion: <バージョンタグ>
 ```
 
-> - https://helm.sh/docs/topics/charts/#the-appversion-field
-> - https://github.com/argoproj/argo-helm/blob/argo-cd-5.43.0/charts/argo-cd/templates/_common.tpl#L38
+> - [Charts \| Helm](https://helm.sh/docs/topics/charts/#the-appversion-field)
+> - [argo-helm/charts/argo-cd/templates/\_common.tpl at argo-cd-5.43.0 · argoproj/argo-helm · GitHub](https://github.com/argoproj/argo-helm/blob/argo-cd-5.43.0/charts/argo-cd/templates/_common.tpl#L38)
 
 <br>
 
@@ -147,7 +147,7 @@ $ helm repo add foo https://foo.com/foo-chart
 $ helm repo add bar https://bar.com/bar-chart
 ```
 
-> - https://helm.sh/docs/topics/charts/#chart-dependencies
+> - [Charts \| Helm](https://helm.sh/docs/topics/charts/#chart-dependencies)
 
 #### ▼ サブチャート
 
@@ -182,7 +182,7 @@ dependencies:
     condition: bar.enabled
 ```
 
-> - https://helm.sh/docs/chart_template_guide/subcharts_and_globals/#overriding-values-from-a-parent-chart
+> - [Subcharts and Global Values \| Helm](https://helm.sh/docs/chart_template_guide/subcharts_and_globals/#overriding-values-from-a-parent-chart)
 
 <br>
 
@@ -217,7 +217,7 @@ maintainers:
 
 Helm で作成される Kubernetes リソースの接頭辞を設定する。
 
-> - https://helm.sh/docs/topics/charts/#the-chartyaml-file
+> - [Charts \| Helm](https://helm.sh/docs/topics/charts/#the-chartyaml-file)
 
 ```yaml
 name: foo
@@ -239,7 +239,7 @@ Kubernetes リソースを含むチャートであることを表す。
 type: application
 ```
 
-> - https://helm.sh/docs/topics/charts/#chart-types
+> - [Charts \| Helm](https://helm.sh/docs/topics/charts/#chart-types)
 
 #### ▼ library
 
@@ -249,7 +249,7 @@ Kubernetes リソースを含まず、関数のみを含むチャートである
 type: library
 ```
 
-> - https://helm.sh/docs/topics/charts/#chart-types
+> - [Charts \| Helm](https://helm.sh/docs/topics/charts/#chart-types)
 
 <br>
 
@@ -265,7 +265,7 @@ type: library
 version: <バージョンタグ>
 ```
 
-> - https://helm.sh/docs/topics/charts/#charts-and-versioning
+> - [Charts \| Helm](https://helm.sh/docs/topics/charts/#charts-and-versioning)
 
 <br>
 
@@ -277,7 +277,7 @@ version: <バージョンタグ>
 
 汎用的なテンプレート (`.metadata.labels` キーなど) の出力で使用する。
 
-> - https://helm.sh/docs/chart_template_guide/builtin_objects/
+> - [Built-in Objects \| Helm](https://helm.sh/docs/chart_template_guide/builtin_objects/)
 
 <br>
 
@@ -307,7 +307,7 @@ metadata:
   labels: {{include "global.template.labels" . | indent 4}} # まとめて出力する。
 ```
 
-> - https://codersociety.com/blog/articles/helm-best-practices#3-use-labels-to-find-resources-easily
+> - [13 Best Practices for using Helm — Coder Society](https://codersociety.com/blog/articles/helm-best-practices#3-use-labels-to-find-resources-easily)
 
 <br>
 
@@ -321,7 +321,7 @@ metadata:
 
 共通オプションは、外部チャート内の `_help.tpl` ファイルに出力される。
 
-> - https://knowledge.sakura.ad.jp/23603/
+> - [事実上の標準ツールとなっているKubernetes向けデプロイツール「Helm」入門 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/23603/)
 
 #### ▼ affinity
 
@@ -588,6 +588,6 @@ tolerations:
 }
 ```
 
-> - https://helm.sh/docs/topics/charts/#schema-files
+> - [Charts \| Helm](https://helm.sh/docs/topics/charts/#schema-files)
 
 <br>

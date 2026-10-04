@@ -9,7 +9,7 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -33,14 +33,14 @@ description: アーキテクチャ特性＠システムの知見を記録して�
 アーキテクチャ特性の要素であり、要件書に明示的に記載されている要件である。
 
 > - https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch04.xhtml
-> - https://product.10x.co.jp/entry/defining-architectural-characteristics
+> - [10Xにおけるアーキテクチャ特性の定義 - 10X Product Blog](https://product.10x.co.jp/entry/defining-architectural-characteristics)
 
 #### ▼ 暗黙的要件
 
 アーキテクチャ特性の要素であり、要件書に明示的に記載されていない要件である。
 
 > - https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/ch04.xhtml
-> - https://product.10x.co.jp/entry/defining-architectural-characteristics
+> - [10Xにおけるアーキテクチャ特性の定義 - 10X Product Blog](https://product.10x.co.jp/entry/defining-architectural-characteristics)
 
 <br>
 
@@ -59,7 +59,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 | セキュリティ (安全性)  | 社内ルール、セキュリティリスク分析、セキュリティ診断、セキュリティリスク管理、アクセス利用制限、データ秘匿、不正追跡監視、ネットワーク対策、マルウェア対策、Web 対策、セキュリティインシデント対応 |
 | システム環境エコロジー | システム特性、規格、機材設置環境条件、環境マネジメント                                                                                                                                             |
 
-> - https://www.ipa.go.jp/archive/digital/iot-en-ci/jyouryuu/hikinou/ent03-b.html
+> - [システム構築の上流工程強化（非機能要求グレード）紹介ページ \| アーカイブ \| IPA 独立行政法人 情報処理推進機構](https://www.ipa.go.jp/archive/digital/iot-en-ci/jyouryuu/hikinou/ent03-b.html)
 
 <br>
 
@@ -73,8 +73,8 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 そもそもユーザーの利用しない時間帯の障害であれば、稼働率の計算には含まれないため、可用性が低いことにはならない。
 
-> - https://www.weblio.jp/content/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7
-> - https://bongineer.net/entry/rasis/
+> - [高可用性とは何？ わかりやすく解説 Weblio辞書](https://www.weblio.jp/content/%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7)
+> - [信頼性と可用性の違い - いんふらメモ書き](https://bongineer.net/entry/rasis/)
 
 <br>
 
@@ -100,7 +100,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 また、通常時 `2` 台であれば、負荷を `40`%未満にするとちょうどいい。
 
-> - https://it-trend.jp/words/availability
+> - [可用性とは - 意味の解説｜ITトレンドのIT用語集](https://it-trend.jp/words/availability)
 
 #### ▼ ロードバランシング
 
@@ -110,7 +110,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 これにより、システム全体としての稼働時間を長くする。
 
-> - https://knowledge.sakura.ad.jp/6274/#i-3
+> - [ロードバランサの仕組み – 「さくらのクラウド入門」(4) \| さくらのナレッジ](https://knowledge.sakura.ad.jp/6274/#i-3)
 
 #### ▼ コントロールプレーン/データプレーン
 
@@ -119,8 +119,8 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 一部のデータプレーンで障害が起こっても、他のデータプレーンを制御することにより、システム全体としての可用性を高める。
 
 > - https://ganganichamika.medium.com/separating-data-plane-and-control-plane-9fee0b7f3ef8
-> - https://danieldonbavand.com/2022/03/08/what-is-a-control-and-data-plane-architecture/
-> - https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/control-planes-and-data-planes.html
+> - [Control Plane and Data Plane Architecture – Daniel Donbavand](https://danieldonbavand.com/2022/03/08/what-is-a-control-and-data-plane-architecture/)
+> - [Control planes and data planes - AWS Fault Isolation Boundaries](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-isolation-boundaries/control-planes-and-data-planes.html)
 
 <br>
 
@@ -138,7 +138,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 ![dual-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dual-system.png)
 
-> - https://www.fe-siken.com/kakomon/29_aki/q13.html
+> - [基本情報技術者平成29年秋期問13 デュアルシステムの説明｜基本情報技術者試験.com](https://www.fe-siken.com/kakomon/29_aki/q13.html)
 
 <br>
 
@@ -155,7 +155,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 稼働中インスタンスで障害が発生した場合、待機中インスタンスを稼働中インスタンスに昇格させ、インバウンド通信のルーティング先をこれに切り替える。
 
 > - https://www.idcf.jp/words/failover.html
-> - https://www.itpassportsiken.com/kakomon/02_yosou/q60.html
+> - [オリジナル予想問題2問60 デュプレックスシステム｜ITパスポート試験ドットコム](https://www.itpassportsiken.com/kakomon/02_yosou/q60.html)
 
 #### ▼ スイッチオーバー、フェイルオーバー
 
@@ -203,7 +203,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 ![ha-cluster-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
 
-> - https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
+> - [クラスタシステムとは？概要や目的、歴史、種類を解説 \| ビジネス継続とITについて考える](https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA)
 
 #### ▼ スイッチオーバー、フェイルオーバー
 
@@ -217,7 +217,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 `1` 個の処理を分担できる複数の稼働中ノード (プライマリーインスタンス、スタンバイインスタンス) を配置しつつ、ロードバランシングできるようにした冗長化方法のこと。
 
-> - https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA
+> - [クラスタシステムとは？概要や目的、歴史、種類を解説 \| ビジネス継続とITについて考える](https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA)
 
 #### ▼ スプリットブレイン問題
 
@@ -227,9 +227,9 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 また、冗長化数を奇数にするとよい。
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1612/16/news015.html
-> - https://gihyo.jp/admin/serial/01/pacemaker/0003#sec2
-> - https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/
+> - [仕組みを理解すれば怖くない 「スプリットブレイン」からの復旧方法：DRBDの仕組みを学ぶ（13）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1612/16/news015.html)
+> - [第3回 Pacemakerでいろいろ設定してみよう！［構築応用編］ \| gihyo.jp](https://gihyo.jp/admin/serial/01/pacemaker/0003#sec2)
+> - [The Ultimate Guide to Using etcd with Kubernetes v1.6 \| Mirantis](https://www.mirantis.com/blog/everything-you-ever-wanted-to-know-about-using-etcd-with-kubernetes-v1-6-but-were-afraid-to-ask/)
 
 <br>
 
@@ -293,7 +293,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 継続的に機能追加できるかは、保守性ではなく拡張性である。
 
 > - https://syndicode.com/blog/12-software-architecture-quality-attributes/
-> - https://www.itmanage.co.jp/column/about-system-operation/
+> - [システム運用とは？保守と管理の違いを業務一覧を基に解説 \| ITコラム｜アイティーエム株式会社](https://www.itmanage.co.jp/column/about-system-operation/)
 
 <br>
 
@@ -306,7 +306,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 このときに、運用性は継続的に運用できるかの程度を表す。
 
 > - https://octoperf.com/blog/2019/06/26/non-functional-requirements/
-> - https://www.itmanage.co.jp/column/about-system-operation/
+> - [システム運用とは？保守と管理の違いを業務一覧を基に解説 \| ITコラム｜アイティーエム株式会社](https://www.itmanage.co.jp/column/about-system-operation/)
 
 <br>
 
@@ -332,8 +332,8 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 注意点として、冗長化はいずれかのインスタンスで障害が起こることを前提とした方法なため、信頼性を高める方法ではない。
 
-> - https://www.amazon.co.jp/dp/4873117917
-> - https://bongineer.net/entry/rasis/
+> - [Amazon.co.jp: SRE サイトリライアビリティエンジニアリング ―Googleの信頼性を支えるエンジニアリングチーム : Betsy Beyer, 玉川 竜司: 本](https://www.amazon.co.jp/dp/4873117917)
+> - [信頼性と可用性の違い - いんふらメモ書き](https://bongineer.net/entry/rasis/)
 
 <br>
 
@@ -347,7 +347,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 #### ▼ SLO の遵守
 
-> - https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_service_level.html
+> - [【IT技術の知見】サービスレベル＠監視 - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring_service_level.html)
 
 <br>
 
@@ -357,7 +357,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 システムがビジネスの成長 (例：機能追加/機能変更、DB レコード数増加、負荷の高まり) に継続的に対応できるかの程度を表す。
 
-> - https://e-words.jp/w/%E6%8B%A1%E5%BC%B5%E6%80%A7.html
+> - [拡張性とは - IT用語辞典 e-Words](https://e-words.jp/w/%E6%8B%A1%E5%BC%B5%E6%80%A7.html)
 > - https://www.cyberlinkasp.com/insights/what-is-software-scalability-and-why-is-it-important
 
 <br>
@@ -396,10 +396,10 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 | 信頼性     | ストレージの障害対策など                                                         | ...              | ...                                                                                                |
 | 使いやすさ | ペルソナ、エラー処理など                                                         | ...              | Testing in production (例：カナリアリリース中のテスト、カオスエンジニアリング) を実施する。        |
 
-> - https://thinkit.co.jp/article/17647
+> - [非機能要件の定義 \| 令和時代のシステム開発では、どのような設計書を書くべきか \| Think IT（シンクイット）](https://thinkit.co.jp/article/17647)
 > - https://github.com/YoshiiRyo1/document-templates-for-aws/blob/master/survey/doc_source/non-functional-requirement.md
-> - https://dev.classmethod.jp/articles/survey-non-functional-requirement/
-> - https://www.ipa.go.jp/archive/digital/iot-en-ci/jyouryuu/hikinou/ent03-b.html
+> - [AWS システム構築 非機能要件ヒアリングシートを公開してみた \| DevelopersIO](https://dev.classmethod.jp/articles/survey-non-functional-requirement/)
+> - [システム構築の上流工程強化（非機能要求グレード）紹介ページ \| アーカイブ \| IPA 独立行政法人 情報処理推進機構](https://www.ipa.go.jp/archive/digital/iot-en-ci/jyouryuu/hikinou/ent03-b.html)
 
 <br>
 
@@ -420,8 +420,8 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 ![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software-quality-attributes_measurement.png)
 
 > - https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
-> - https://en.wikipedia.org/wiki/List_of_system_quality_attributes
-> - https://en.wikipedia.org/wiki/Software_quality#Measurement
+> - [List of system quality attributes - Wikipedia](https://en.wikipedia.org/wiki/List_of_system_quality_attributes)
+> - [Software quality - Wikipedia](https://en.wikipedia.org/wiki/Software_quality#Measurement)
 
 <br>
 

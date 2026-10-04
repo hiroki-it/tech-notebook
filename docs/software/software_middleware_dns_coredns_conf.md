@@ -9,7 +9,7 @@ description: 設定ファイル＠CoreDNSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -51,7 +51,7 @@ consul.local:53 {
 }
 ```
 
-> - https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#configuration-of-stub-domain-and-upstream-nameserver-using-coredns
+> - [Customizing DNS Service \| Kubernetes](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#configuration-of-stub-domain-and-upstream-nameserver-using-coredns)
 
 <br>
 
@@ -102,7 +102,7 @@ Cluster 内の DNS 名と Cluster 外のドメインを紐づける。
 }
 ```
 
-> - https://zenn.dev/toshikish/articles/7f555dbf1b4b7d
+> - [Kubernetes クラスタ内ホスト名に CNAME レコードでエイリアスを付与したい](https://zenn.dev/toshikish/articles/7f555dbf1b4b7d)
 
 <br>
 

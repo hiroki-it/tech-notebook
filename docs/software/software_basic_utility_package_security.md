@@ -88,7 +88,7 @@ sops:
     version: 3.6.1
 ```
 
-> - https://blog.serverworks.co.jp/encypt-secrets-by-sops
+> - [SOPSで秘密情報ファイルを安全に管理する - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/encypt-secrets-by-sops)
 
 #### ▼ `.sops.yaml` ファイルを使用する場合
 

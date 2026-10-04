@@ -19,7 +19,7 @@ description: UI設計＠フロントエンドアーキテクチャの知見を�
 
 UI レンダリングロジックを構成する要素を、5 つのレイヤー (Atoms、Molecules、Organisms、Templates、Pages) に分ける設計方法のこと。
 
-> - https://atomicdesign.bradfrost.com/
+> - [Atomic Design by Brad Frost](https://atomicdesign.bradfrost.com/)
 
 <br>
 

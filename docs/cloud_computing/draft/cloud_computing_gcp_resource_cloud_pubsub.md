@@ -19,7 +19,7 @@ description: Cloud Pub/Sub＠Google Cloudリソースの知見を記録してい
 
 ![google_cloud_pub_sub](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_pub_sub.png)
 
-> - https://cloud.google.com/pubsub/docs/pubsub-basics?hl=ja
+> - [Pub/Sub サービスの概要 \| Google Cloud Documentation](https://cloud.google.com/pubsub/docs/pubsub-basics?hl=ja)
 
 <br>
 

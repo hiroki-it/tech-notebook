@@ -15,7 +15,7 @@ description: tfstateファイルの分割＠プラクティス集の知見を記
 
 ## 01. `tfstate` ファイルの分割について
 
-> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/07/05/001756
+> - [【Terraform🧑‍🚀】tfstateファイルの分割パターンとディレクトリー構成への適用 - 好きな技術を布教したい 😗](https://hiroki-hasegawa.hatenablog.jp/entry/2023/07/05/001756)
 
 <br>
 

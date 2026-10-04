@@ -9,7 +9,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: 信頼性＠AWSの知見を記録しています。
 
 インシデント管理ツール (例：PagerDuty、Grafana OnCall、AWS Incident Manager、Slack Apps) を採用し、障害をオンコール担当者に迅速に通知する。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/rel-failmgmt.html
+> - [Failure management - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/rel-failmgmt.html)
 
 <br>
 
@@ -83,7 +83,7 @@ Auto Scaling Group では、Amazon EC2 のハードウェアリソース (CPU、
 
 メインリージョンで災害が起こった場合に、システムの障害にならないように、災害回復用リージョンを用意しておく。
 
-> - https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/rel-failmgmt.html
+> - [Failure management - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/rel-failmgmt.html)
 
 <br>
 
@@ -104,8 +104,8 @@ RPO は最後のバックアップ時点である。
 一方で金銭的コストが低い。
 
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
-> - https://michimani.net/post/aws-architecture-for-disaster-recovery/
-> - https://aws.amazon.com/jp/cdp/cdp-dr/
+> - [AWS 上でのディザスタリカバリ (DR) 構成 4 パターン \| michimani log](https://michimani.net/post/aws-architecture-for-disaster-recovery/)
+> - [バックアップ・リストアによる BCP 対策のためのクラウド構成と料金試算例 \| AWS](https://aws.amazon.com/jp/cdp/cdp-dr/)
 
 <br>
 
@@ -126,7 +126,7 @@ RPO は最後の同期時点である。
 一方で金銭的コストが低い。
 
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
-> - https://michimani.net/post/aws-architecture-for-disaster-recovery/
+> - [AWS 上でのディザスタリカバリ (DR) 構成 4 パターン \| michimani log](https://michimani.net/post/aws-architecture-for-disaster-recovery/)
 
 <br>
 
@@ -147,7 +147,7 @@ RPO は最後の同期時点である。
 一方で、金銭的コストが高い。
 
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
-> - https://michimani.net/post/aws-architecture-for-disaster-recovery/
+> - [AWS 上でのディザスタリカバリ (DR) 構成 4 パターン \| michimani log](https://michimani.net/post/aws-architecture-for-disaster-recovery/)
 
 <br>
 
@@ -166,6 +166,6 @@ RPO は最後の同期時点である。
 一方で、金銭的コストが高い。
 
 > - https://aws.amazon.com/jp/blogs/news/disaster-recovery-dr-architecture-on-aws-part-1-strategies-for-recovery-in-the-cloud/
-> - https://michimani.net/post/aws-architecture-for-disaster-recovery/
+> - [AWS 上でのディザスタリカバリ (DR) 構成 4 パターン \| michimani log](https://michimani.net/post/aws-architecture-for-disaster-recovery/)
 
 <br>

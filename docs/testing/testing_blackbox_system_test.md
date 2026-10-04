@@ -15,7 +15,7 @@ description: システムテスト＠ブラックボックステストの知見�
 
 ![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
 
-> - https://pm-rasinban.com/ut-it-st
+> - [単体テスト・結合テスト・総合テストの違い、観点や注意点を簡単に説明する \| 若手エンジニアの羅針盤](https://pm-rasinban.com/ut-it-st)
 
 <br>
 
@@ -48,7 +48,7 @@ description: システムテスト＠ブラックボックステストの知見�
 | ペネトレーションテスト | 安全性                       |
 
 > - https://www.qbook.jp/column/20180806_667.html
-> - https://thinkit.co.jp/article/17647
+> - [非機能要件の定義 \| 令和時代のシステム開発では、どのような設計書を書くべきか \| Think IT（シンクイット）](https://thinkit.co.jp/article/17647)
 
 <br>
 
@@ -111,8 +111,8 @@ description: システムテスト＠ブラックボックステストの知見�
 
 これらを運用時の監視の参考値にする。
 
-> - https://hub.uni-face.co.jp/performance-test/
-> - https://gihyo.jp/dev/serial/01/tech_station/0008
+> - [性能テストについて纏めてみた – uniface.hub](https://hub.uni-face.co.jp/performance-test/)
+> - [第8回 性能テスト \| gihyo.jp](https://gihyo.jp/dev/serial/01/tech_station/0008)
 
 <br>
 
@@ -124,8 +124,8 @@ description: システムテスト＠ブラックボックステストの知見�
 - スパイクテスト
 - 拡張性テスト
 
-> - https://sqripts.com/2022/08/30/20385/
-> - https://hub.uni-face.co.jp/performance-test/
+> - [性能テストのススメ #1 性能テストの目的と種類 \| Sqripts](https://sqripts.com/2022/08/30/20385/)
+> - [性能テストについて纏めてみた – uniface.hub](https://hub.uni-face.co.jp/performance-test/)
 
 <br>
 
@@ -136,8 +136,8 @@ description: システムテスト＠ブラックボックステストの知見�
 - 平均ハードウェア使用率
 - 時間当たり平均トランザクション数 (TPS：Transaction Per Second)
 
-> - https://hub.uni-face.co.jp/performance-test/
-> - https://gihyo.jp/dev/serial/01/tech_station/0008
+> - [性能テストについて纏めてみた – uniface.hub](https://hub.uni-face.co.jp/performance-test/)
+> - [第8回 性能テスト \| gihyo.jp](https://gihyo.jp/dev/serial/01/tech_station/0008)
 
 <br>
 
@@ -157,10 +157,10 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 | 機能 B | ...                                | ...                           | ...                               |
 | 機能 C | ...                                | ...                           | ...                               |
 
-> - https://gihyo.jp/dev/serial/01/tech_station/0008
-> - https://qiita.com/s9910553/items/ca3dae561489844da646
-> - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/#%E8%B2%A0%E8%8D%B7%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E7%9B%AE%E6%A8%99%E5%80%A4%E8%A8%AD%E5%AE%9A
-> - https://xtech.nikkei.com/it/article/COLUMN/20101101/353654/
+> - [第8回 性能テスト \| gihyo.jp](https://gihyo.jp/dev/serial/01/tech_station/0008)
+> - [オンライン性能テスト概論 第1版 #チューニング - Qiita](https://qiita.com/s9910553/items/ca3dae561489844da646)
+> - [1ヶ月で負荷テストの基礎から学んで実際にやってみた知見 \| BLOG - DeNA Engineering](https://engineering.dena.com/blog/2021/10/healthcare-load-testing/#%E8%B2%A0%E8%8D%B7%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E7%9B%AE%E6%A8%99%E5%80%A4%E8%A8%AD%E5%AE%9A)
+> - [第2回 「応答一律3秒」という性能要件はやめよう \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20101101/353654/)
 
 <br>
 
@@ -168,7 +168,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 オートスケーリングがある場合とない場合で、ネットワークの性能指標 (スループット、レスポンスタイムなど) にどの程度の違いがあるかを確認する。
 
-> - https://blog.studysapuri.jp/entry/school-communication-with-gatling
+> - [負荷試験、Gatlingを使ってやってみた - スタディサプリ Product Team Blog](https://blog.studysapuri.jp/entry/school-communication-with-gatling)
 
 <br>
 
@@ -182,7 +182,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 ![microservices_blackbox-test_external-api-mock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_blackbox-test_external-api-mock.png)
 
-> - https://semaphore.io/blog/test-microservices
+> - [How to Test Microservices](https://semaphore.io/blog/test-microservices)
 
 <br>
 
@@ -194,9 +194,9 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 許容以上の負荷を与えるストレステストとは区別すること。
 
-> - https://hub.uni-face.co.jp/performance-test/
+> - [性能テストについて纏めてみた – uniface.hub](https://hub.uni-face.co.jp/performance-test/)
 > - https://stackify.com/what-is-load-testing/
-> - https://webrage.jp/techblog/non_functional_testing/
+> - [非機能テストについて - ソフトウェアテスト・第三者検証ならデロイト トーマツ ウェブレッジ](https://webrage.jp/techblog/non_functional_testing/)
 
 <br>
 
@@ -206,7 +206,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 実際の負荷状況で、オートスケーリングが品質を満たしているか (有効に機能するか) を確認する。
 
-> - https://blog.studysapuri.jp/entry/school-communication-with-gatling
+> - [負荷試験、Gatlingを使ってやってみた - スタディサプリ Product Team Blog](https://blog.studysapuri.jp/entry/school-communication-with-gatling)
 
 #### ▼ 例
 
@@ -214,7 +214,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 具体的にはテスト時、障害回避処理以外の動作 (エラー、間違った処理、障害回復後にも回復できない、システムダウン) が起こらないか否かを確認する。
 
-> - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
+> - [1ヶ月で負荷テストの基礎から学んで実際にやってみた知見 \| BLOG - DeNA Engineering](https://engineering.dena.com/blog/2021/10/healthcare-load-testing/)
 
 <br>
 
@@ -227,7 +227,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 - Gatling (Scala でシナリオ定義できる)
 - Taurus (他のロードテストツールのラッパー)
 
-> - http://blog.father.gedow.net/2021/08/17/stress-tools/
+> - [負荷試験＃ツール選択 \| 外道父の匠](http://blog.father.gedow.net/2021/08/17/stress-tools/)
 
 #### ▼ 事前作業
 
@@ -317,9 +317,9 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 実地を再現した (許容の限界値を含む) 負荷を与えるロードテストとは区別すること。
 
-> - https://hub.uni-face.co.jp/performance-test/
+> - [性能テストについて纏めてみた – uniface.hub](https://hub.uni-face.co.jp/performance-test/)
 > - https://stackify.com/what-is-load-testing/
-> - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
+> - [1ヶ月で負荷テストの基礎から学んで実際にやってみた知見 \| BLOG - DeNA Engineering](https://engineering.dena.com/blog/2021/10/healthcare-load-testing/)
 
 <br>
 
@@ -332,7 +332,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 - Gatling (Scala でシナリオ定義できる)
 - Taurus (他のロードテストツールのラッパー)
 
-> - http://blog.father.gedow.net/2021/08/17/stress-tools/
+> - [負荷試験＃ツール選択 \| 外道父の匠](http://blog.father.gedow.net/2021/08/17/stress-tools/)
 
 #### ▼ 事前作業
 
@@ -361,8 +361,8 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 これにより、どんな問題が起こるか否かを確認する。
 
-> - https://hub.uni-face.co.jp/performance-test/
-> - https://engineering.dena.com/blog/2021/10/healthcare-load-testing/
+> - [性能テストについて纏めてみた – uniface.hub](https://hub.uni-face.co.jp/performance-test/)
+> - [1ヶ月で負荷テストの基礎から学んで実際にやってみた知見 \| BLOG - DeNA Engineering](https://engineering.dena.com/blog/2021/10/healthcare-load-testing/)
 
 <br>
 
@@ -382,7 +382,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 もし RPO が `5` 分間だとすると、`5` 分間のデータ欠損は回復できず、これを許容することになる。
 
-> - https://e-words.jp/w/RPO.html
+> - [RPO（目標復旧時点 / 回復ポイント目標）とは - IT用語辞典 e-Words](https://e-words.jp/w/RPO.html)
 
 #### ▼ RTO (目標回復時間)
 
@@ -392,7 +392,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 もし RTO が `1` 時間だとすると、`1` 時間は障害が起こったまま (ダウンタイム) になり、これを許容することになる。
 
-> - https://e-words.jp/w/RTO.html
+> - [RTO（目標復旧時間 / システム再開目標）とは - IT用語辞典 e-Words](https://e-words.jp/w/RTO.html)
 
 <br>
 
@@ -436,7 +436,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 |                 | Jaeger の Pod を停止させる。                   | 同上                                                                                                                    | 同上                                                                                                                              | ・オートスケーリングによって、停止した Pod に代わり新しい Pod が起動する。<br>・ダッシュボードにログインできる。<br>・アラートをまさしくルーティングできている。                                         |
 |                 | Istio でフォールトインジェクションを実施する。 | Istio の機能を使用する。                                                                                                | 可用性テストのときだけ、マニフェストにフォールトインジェクションの設定を追加する。                                                | ・オートスケーリングによって、停止した Pod に代わり新しい Pod が起動する。<br>・ダッシュボードにログインできる。<br>・アラートをまさしくルーティングできている。                                         |
 
-> - https://zenn.dev/kentaro36/articles/f8c3d9f961d81e#chaos-engineering-tool-%E6%AF%94%E8%BC%83
+> - [Chaos Engineering Toolの比較](https://zenn.dev/kentaro36/articles/f8c3d9f961d81e#chaos-engineering-tool-%E6%AF%94%E8%BC%83)
 
 <br>
 
@@ -448,7 +448,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 システムで意図的に障害を起こし、そのときの耐障害性が非機能的な品質を満たしているかを検証する。
 
-> - https://blog.cybozu.io/entry/2018/09/06/080000
+> - [分散システムの耐障害性テストの取り組み - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2018/09/06/080000)
 
 <br>
 
@@ -461,7 +461,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 - カナリアリリース中のテスト
 - カオスエンジニアリング
 
-> - https://www.optimizely.com/optimization-glossary/testing-in-production/
+> - [Testing in production](https://www.optimizely.com/optimization-glossary/testing-in-production/)
 
 <br>
 
@@ -490,10 +490,10 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 | Chaos Mesh   | AWS、Google Cloud、Kubernetes |
 | Chaos Monkey | AWS                           |
 
-> - https://principlesofchaos.org/
+> - [PRINCIPLES OF CHAOS ENGINEERING - Principles of chaos engineering](https://principlesofchaos.org/)
 > - https://codezine.jp/article/detail/14526
-> - https://dev.classmethod.jp/articles/what-is-suitable-for-chaos-engineering-chaosconf2019-recap/#toc-6
-> - https://sreake.com/blog/chaosmesh/
+> - [【レポート】Chaos Engineering が合うもの/合わないもの – ChaosConf2019 recap – \| DevelopersIO](https://dev.classmethod.jp/articles/what-is-suitable-for-chaos-engineering-chaosconf2019-recap/#toc-6)
+> - [Chaos Mesh によるカオスエンジニアリング \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/chaosmesh/)
 
 #### ▼ フォールトインジェクション
 
@@ -508,8 +508,8 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 | Istio                         | Kubernetes |
 | AWS Fault Injection Simulator | AWS        |
 
-> - https://linkerd.io/2-edge/features/fault-injection/
-> - https://zenn.dev/kentaro36/articles/f8c3d9f961d81e#chaos-engineering-tool-%E6%AF%94%E8%BC%83
+> - [Fault Injection \| Linkerd](https://linkerd.io/2-edge/features/fault-injection/)
+> - [Chaos Engineering Toolの比較](https://zenn.dev/kentaro36/articles/f8c3d9f961d81e#chaos-engineering-tool-%E6%AF%94%E8%BC%83)
 
 #### ▼ 手順
 
@@ -529,7 +529,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 : 対照群と比較し、『障害は起こる』という仮説を反証する。
 
-> - https://zenn.dev/hodagi/articles/3ce6ccdb00538c
+> - [カオスエンジニアリングの過去と今(前編)](https://zenn.dev/hodagi/articles/3ce6ccdb00538c)
 
 <br>
 
@@ -558,6 +558,6 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 ![test_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_traffic-mirroring.png)
 
 > - https://aws.amazon.com/blogs/networking-and-content-delivery/mirror-production-traffic-to-test-environment-with-vpc-traffic-mirroring/
-> - https://e-words.jp/w/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%9F%E3%83%A9%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0.html
+> - [ポートミラーリング（ミラーポート）とは - IT用語辞典 e-Words](https://e-words.jp/w/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%9F%E3%83%A9%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0.html)
 
 <br>

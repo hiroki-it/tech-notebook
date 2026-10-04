@@ -9,7 +9,7 @@ description: AWS Cognito＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: AWS Cognito＠AWSリソースの知見を記録しています。
 
 ![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
 
-> - https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway
+> - [API GatewayのオーソライザーにCognitoを使用してみた \| DevelopersIO](https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway)
 
 <br>
 
@@ -46,8 +46,8 @@ AWS Lambda オーソライザーは認可だけでなく認証も実施するた
 
 ![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
 
-> - https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway
-> - https://techblog.asia-quest.jp/202503/amazon-cognito-authorizer-to-control-access-to-amazon-api-gateway
+> - [API GatewayのオーソライザーにCognitoを使用してみた \| DevelopersIO](https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway)
+> - [Amazon Cognito オーソライザーによる Amazon API Gatewayへのアクセス制御](https://techblog.asia-quest.jp/202503/amazon-cognito-authorizer-to-control-access-to-amazon-api-gateway)
 
 <br>
 
@@ -55,8 +55,8 @@ AWS Lambda オーソライザーは認可だけでなく認証も実施するた
 
 認証時に認可リクエストを作成し、外部の ID プロバイダーにこれをフォワーディングする。
 
-> - https://dev.classmethod.jp/articles/add-keycloak-to-cognito-with-oidc/
-> - https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html
+> - [CognitoにOpenID Connectを使ってKeycloakを連携させてみる \| DevelopersIO](https://dev.classmethod.jp/articles/add-keycloak-to-cognito-with-oidc/)
+> - [Identity pools third-party identity providers - Amazon Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html)
 
 <br>
 
@@ -64,6 +64,6 @@ AWS Lambda オーソライザーは認可だけでなく認証も実施するた
 
 アカウント情報を管理する。
 
-> - https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html
+> - [Amazon Cognito identity pools - Amazon Cognito](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html)
 
 <br>

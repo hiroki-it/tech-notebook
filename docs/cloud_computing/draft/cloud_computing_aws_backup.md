@@ -45,13 +45,13 @@
 ## AWS Backup を操作する aws-cli コマンドについて
 
 > - https://docs.aws.amazon.com/cli/latest/reference/backup/index.html
-> - https://dev.classmethod.jp/articles/aws_backup_bycli/
+> - [\[小ネタ\]AWS CLIを使ってAWS BakcupでEC2のバックアップを取得してみる \| DevelopersIO](https://dev.classmethod.jp/articles/aws_backup_bycli/)
 
 ## AWS Backup の保管期間
 
 最大 35 日前まで保管でき、また復元できる。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupRetention
+> - [Introduction to backups - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupRetention)
 
 ## AWS STS について
 
@@ -61,7 +61,7 @@ IAM ユーザーに対して、一時的にロールを Assume (委譲) する�
 
 対象の IAM ユーザーには、何も認可スコープを与えないようにしておくと、委譲によってのみ、認可スコープが与えられるようになるため安全。
 
-> - https://blog.serverworks.co.jp/tech/2016/05/18/sts/
+> - [【そんなときどうする？】別のアカウントにセキュアにアクセスしたい！ いまさらきけないSTSとは？ - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/tech/2016/05/18/sts/)
 
 ## セキュリティに関する留意
 

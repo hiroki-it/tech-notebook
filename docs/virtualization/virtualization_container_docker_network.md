@@ -89,9 +89,9 @@ docker network inspect foo-network
 $ docker network create foo-network --subnet=172.18.0.0/16 --gateway=172.18.0.1
 ```
 
-> - https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
-> - https://tech.quartetcom.co.jp/2022/06/29/docker-bridge-network/
-> - https://qiita.com/Toyo_m/items/52fa81948d5746dd2afc#docker%E3%81%AE%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9
+> - [第29回 Docker Networkingの基礎知識 標準的なネットワークを理解する：古賀政純の「攻めのITのためのDocker塾」（5/5 ページ） - ITmedia エンタープライズ](https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html)
+> - [Dockerのブリッジネットワークについて調べました \| QUARTETCOM TECH BLOG](https://tech.quartetcom.co.jp/2022/06/29/docker-bridge-network/)
+> - [Dockerのネットワーク、基礎理解は万全ですか？【Dockerコンテナ・グレートジャーニー④】 #container - Qiita](https://qiita.com/Toyo_m/items/52fa81948d5746dd2afc#docker%E3%81%AE%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9)
 
 #### ▼ 経路例
 
@@ -149,7 +149,7 @@ NETWORK ID          NAME                    DRIVER              SCOPE
 ac017dda93d6        host                    host                local
 ```
 
-> - https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html
+> - [第29回 Docker Networkingの基礎知識 標準的なネットワークを理解する：古賀政純の「攻めのITのためのDocker塾」（5/5 ページ） - ITmedia エンタープライズ](https://www.itmedia.co.jp/enterprise/articles/1609/21/news001_5.html)
 
 <br>
 

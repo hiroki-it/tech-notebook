@@ -50,9 +50,9 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_auth_request_module.html
-> - https://tech.jxpress.net/entry/2018/08/23/104123
-> - https://techlife.cookpad.com/entry/2015/10/16/080000
+> - [Module ngx\_http\_auth\_request\_module](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html)
+> - [Nginx と自前の認証システムを組み合わせてセキュアなリソースを制限する - JX通信社エンジニアブログ](https://tech.jxpress.net/entry/2018/08/23/104123)
+> - [nginx で omniauth を利用してアクセス制御を行う - クックパッド開発者ブログ](https://techlife.cookpad.com/entry/2015/10/16/080000)
 
 <br>
 
@@ -127,8 +127,8 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#http
-> - https://839.hateblo.jp/entry/2019/12/20/090000
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#http)
+> - [nginxのログをjsonでStackdriver Loggingに送る - 839の日記](https://839.hateblo.jp/entry/2019/12/20/090000)
 
 #### ▼ map
 
@@ -167,7 +167,7 @@ http {
 }
 ```
 
-> - https://qiita.com/cubicdaiya/items/d938f3354f424830630b#map%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96
+> - [nginxにおけるmapとその応用 #nginx - Qiita](https://qiita.com/cubicdaiya/items/d938f3354f424830630b#map%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%86%E3%82%A3%E3%83%96)
 
 <br>
 
@@ -217,7 +217,7 @@ location / {
 |    4     |  `~*`  | 正規表現 (大文字・小文字を区別しない) 。 | `https://example.com/images/foo.jpg`                                       |
 |    5     |  なし  | 指定したルートで始まる場合。             | ・`https://example.com/foo.html` <br>・`https://example.com/docs/foo.html` |
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#location
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#location)
 
 <br>
 
@@ -248,7 +248,7 @@ server {
 }
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#server
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#server)
 
 <br>
 
@@ -266,7 +266,7 @@ server {
 default_type application/octet-stream
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#default_type)
 
 #### ▼ listen
 
@@ -286,7 +286,7 @@ listen 80;
 listen 443 ssl;
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#listen)
 
 #### ▼ sendfile
 
@@ -302,7 +302,7 @@ listen 443 ssl;
 sendfile on;
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#sendfile)
 
 #### ▼ server_name
 
@@ -328,7 +328,7 @@ server_name 192.168.0.0;
 server_name 127.0.0.1;
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#server_name)
 
 #### ▼ ssl
 
@@ -340,7 +340,7 @@ HTTPS プロトコルを受信する場合、SSL/TLS プロトコルを有効化
 ssl on;
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#ssl)
 
 #### ▼ ssl_certificate
 
@@ -431,7 +431,7 @@ location ~ \.php$ {
 }
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files
+> - [Module ngx\_http\_core\_module](https://nginx.org/en/docs/http/ngx_http_core_module.html#try_files)
 
 <br>
 
@@ -502,7 +502,7 @@ server {
 index index.php;
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_index_module.html
+> - [Module ngx\_http\_index\_module](https://nginx.org/en/docs/http/ngx_http_index_module.html)
 
 <br>
 
@@ -521,7 +521,7 @@ index index.php;
 add_header Referrer-Policy "no-referrer-when-downgrade";
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
+> - [Module ngx\_http\_headers\_module](https://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header)
 
 <br>
 
@@ -549,9 +549,9 @@ upstream foo_servers {
 }
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream
-> - https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A
-> - https://ktrysmt.github.io/blog/name-specification-of-nginx/
+> - [Module ngx\_http\_upstream\_module](https://nginx.org/en/docs/http/ngx_http_upstream_module.html#upstream)
+> - [nginx TCP Load Balancerで複数RDSへの接続をProxyする - ZOZO TECH BLOG](https://techblog.zozo.com/entry/techblog-rds-proxy#UNIX%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%BD%E3%82%B1%E3%83%83%E3%83%88%E3%82%92%E8%A8%AD%E5%AE%9A)
+> - [Nginxの名前解決についてまとめ](https://ktrysmt.github.io/blog/name-specification-of-nginx/)
 
 <br>
 
@@ -569,7 +569,7 @@ FastCGI プロトコルでインバウンド通信をルーティングする場
 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param
+> - [Module ngx\_http\_fastcgi\_module](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_param)
 
 #### ▼ fastcgi_pass
 
@@ -581,7 +581,7 @@ FastCGI プロトコルでインバウンド通信をルーティングする場
 fastcgi_pass 127.0.0.1:9000;
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass
+> - [Module ngx\_http\_fastcgi\_module](https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_pass)
 
 <br>
 
@@ -605,8 +605,8 @@ if ($host ~* teambox.com) {
 }
 ```
 
-> - https://qiita.com/ukitazume/items/ab1c929783e87227e466
-> - https://gist.github.com/jrom/1760790
+> - [Nginxで複数条件のIF文を書く方法がすごいｗ #nginx - Qiita](https://qiita.com/ukitazume/items/ab1c929783e87227e466)
+> - [nginx hack for multiple conditions · GitHub](https://gist.github.com/jrom/1760790)
 
 <br>
 
@@ -639,8 +639,8 @@ server {
 }
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_grpc_module.html#grpc_pass
-> - https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89
+> - [Module ngx\_http\_grpc\_module](https://nginx.org/en/docs/http/ngx_http_grpc_module.html#grpc_pass)
+> - [gRPC-WebのProxyをNginxにしてみた #nginx - Qiita](https://qiita.com/Morix1500/items/065da20d98ab5e559ea6#nginx%E3%81%AE%E6%A7%8B%E7%AF%89)
 
 <br>
 
@@ -664,7 +664,7 @@ proxy_pass http://127.0.0.1:80;
 proxy_pass $scheme://$host$request_uri;
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass
+> - [Module ngx\_http\_proxy\_module](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass)
 
 <br>
 
@@ -691,8 +691,8 @@ server accepts handled requests
 Reading: 0 Writing: 1 Waiting: 0
 ```
 
-> - https://nginx.org/en/docs/http/ngx_http_stub_status_module.html
-> - https://qiita.com/stanabe/items/a208377100a4ba2ea907
+> - [Module ngx\_http\_stub\_status\_module](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html)
+> - [nginxのメトリクス・ログ・トレースをDatadogでモニターする方法 #apm - Qiita](https://qiita.com/stanabe/items/a208377100a4ba2ea907)
 
 <br>
 
@@ -737,7 +737,7 @@ load_module modules/ngx_otel_module.so;
 
 その他、alpine は Mercurial からインストールするとよい。
 
-> - https://hg.nginx.org/pkg-oss/file/tip/alpine
+> - [hg.nginx.org is decommissioned](https://hg.nginx.org/pkg-oss/file/tip/alpine)
 
 #### ▼ ビルド済みの場合
 
@@ -756,7 +756,7 @@ $ yum install -y nginx-module-otel
 ```
 
 > - https://github.com/nginxinc/nginx-otel?tab=readme-ov-file#installing-the-otel-module-from-packages
-> - https://nginx.org/packages/mainline/alpine/
+> - [Index of /packages/mainline/alpine/](https://nginx.org/packages/mainline/alpine/)
 
 Alpine の場合は、執筆時点 (2024/03/13) で alpine リポジトリに `ngx_otel_module` がなく、Nginx の alpine リポジトリにパッケージがある。
 
@@ -770,8 +770,8 @@ $ wget -qO nginx-module-otel-<リビジョン>.apk https://nginx.org/packages/ma
 $ apk add --allow-untrusted nginx-module-otel-<バージョン>.apk
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/302#issuecomment-1978230701
-> - https://uepon.hatenadiary.com/entry/2023/03/20/165648
+> - [Alpine support? · Issue #302 · open-telemetry/opentelemetry-cpp-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues/302#issuecomment-1978230701)
+> - [Alpine Linuxのapkで旧バージョンパッケージをインストール - uepon日々の備忘録](https://uepon.hatenadiary.com/entry/2023/03/20/165648)
 
 <br>
 
@@ -792,7 +792,7 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/ngx_otel_module.html#otel_exporter
+> - [Module ngx\_otel\_module](https://nginx.org/en/docs/ngx_otel_module.html#otel_exporter)
 
 #### ▼ otel_service_name
 
@@ -802,7 +802,7 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/ngx_otel_module.html#otel_service_name
+> - [Module ngx\_otel\_module](https://nginx.org/en/docs/ngx_otel_module.html#otel_service_name)
 
 #### ▼ otel_trace
 
@@ -814,7 +814,7 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/ngx_otel_module.html#otel_trace
+> - [Module ngx\_otel\_module](https://nginx.org/en/docs/ngx_otel_module.html#otel_trace)
 
 #### ▼ otel_trace_context
 
@@ -825,7 +825,7 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/ngx_otel_module.html#otel_trace_context
+> - [Module ngx\_otel\_module](https://nginx.org/en/docs/ngx_otel_module.html#otel_trace_context)
 > - https://raffaelemarcello.medium.com/nginx-plus-monitoring-and-tracing-harnessing-the-power-of-opentelemetry-65477020d864
 
 #### ▼ otel_span_name
@@ -844,7 +844,7 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/ngx_otel_module.html#otel_span_name
+> - [Module ngx\_otel\_module](https://nginx.org/en/docs/ngx_otel_module.html#otel_span_name)
 > - https://www.nginx.co.jp/blog/tutorial-configure-opentelemetry-for-your-applications-using-nginx/
 
 #### ▼ otel_span_attr
@@ -861,7 +861,7 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/ngx_otel_module.html#otel_span_attr
+> - [Module ngx\_otel\_module](https://nginx.org/en/docs/ngx_otel_module.html#otel_span_attr)
 
 <br>
 
@@ -881,19 +881,19 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/ngx_otel_module.html#variables
+> - [Module ngx\_otel\_module](https://nginx.org/en/docs/ngx_otel_module.html#variables)
 
 #### ▼ `$otel_span_id`
 
 現在のスパン ID が割り当てられている。
 
-> - https://nginx.org/en/docs/ngx_otel_module.html#variables
+> - [Module ngx\_otel\_module](https://nginx.org/en/docs/ngx_otel_module.html#variables)
 
 #### ▼ `$otel_parent_id`
 
 親スパンのスパン ID が割り当てられている。
 
-> - https://nginx.org/en/docs/ngx_otel_module.html#variables
+> - [Module ngx\_otel\_module](https://nginx.org/en/docs/ngx_otel_module.html#variables)
 
 #### ▼ `$otel_parent_sampled`
 
@@ -907,6 +907,6 @@ http {
 }
 ```
 
-> - https://nginx.org/en/docs/ngx_otel_module.html#variables
+> - [Module ngx\_otel\_module](https://nginx.org/en/docs/ngx_otel_module.html#variables)
 
 <br>

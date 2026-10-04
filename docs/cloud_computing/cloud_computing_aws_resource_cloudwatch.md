@@ -9,7 +9,7 @@ description: Amazon CloudWatch＠AWSリソースの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -29,7 +29,7 @@ Amazon CloudWatch は、データポイントからメトリクスの元にな�
 
 ![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png)
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html
+> - [Metrics concepts - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html)
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch#18
 
 #### ▼ 集約の種類
@@ -39,8 +39,8 @@ Amazon CloudWatch は、データポイントからメトリクスの元にな�
 | ディメンション | インスタンスの設定値をグループとした集約のこと (例：インスタンス ID、スペック、AZ など) 。ディメンションが大きすぎると、異なる種類のデータポイントがごちゃまぜに集約される (例えば、Amazon EC2 のストレージで、`/var/lib/foo` パーティションのディスク使用率のデータポイントが `30`%だとする。Amazon EC2 のインスタンス ID をディメンションにした場合に、`/var/lib/foo` 以外のパーティションが `30`%より低いため、インスタンス ID のディメンション全体としては `10%` ほどのディスク使用率になる) 。Amazon CloudWatch アラームではディメンションしか指定できず、ディメンションを正確に集約する必要がある。 |
 | 名前空間       | AWS リソースをグループとした集約のこと (例：Amazon EC2、Amazon RDS、AWS ALB など) 。AWS リソース名で表す。cloudwatch エージェントでカスタムメトリクスの元になるデータポイントを収集すると、名前空間は CWAgent になる。                                                                                                                                                                                                                                                                                                                                                                                    |
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistic
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation
+> - [Metrics concepts - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Statistic)
+> - [Metrics concepts - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Aggregation)
 
 #### ▼ 集約の確認方法
 
@@ -48,7 +48,7 @@ Amazon CloudWatch Metrics 上では、各集約を以下のように確認でき
 
 ![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudwatch_namespace_metric_dimension.png)
 
-> - https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/
+> - [\[アップデート\] CloudWatch Logs メトリクスフィルターでディメンションがサポートされました！ \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/)
 
 <br>
 
@@ -68,7 +68,7 @@ RDS (Amazon Aurora、Amazon RDS) の性能に関するメトリクスの元に�
 
 対応するエンジンバージョンとインスタンスタイプについては、以下のリンクを参考にせよ。
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.Enabling.html
+> - [Enabling and disabling detailed per-query and database counter metrics - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.Enabling.html)
 > - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.Overview.Engines.html
 
 #### ▼ Container インサイト
@@ -111,7 +111,7 @@ Amazon CloudWatch Logs に送る構造化ログには、`metrics` オブジェ�
 }
 ```
 
-> - https://dev.classmethod.jp/articles/cloudwatch-logs-embedded-metrics/
+> - [CloudWatch Logsにカスタムメトリクスを埋め込める、Embedded Metricsが追加されました！ \| DevelopersIO](https://dev.classmethod.jp/articles/cloudwatch-logs-embedded-metrics/)
 > - https://medium.com/@christopheradamson253/monitor-custom-metrics-using-cloudwatch-embedded-metric-format-b1107abd0b9a
 
 <br>
@@ -207,8 +207,8 @@ AWS リソースで作成されたログを収集できる。
 
 大文字と小文字を区別するため、網羅的に設定する必要がある。
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html
-> - https://qiita.com/shimajiri/items/81a4ed0fe39fe337fedb
+> - [Filter pattern syntax for metric filters, subscription filters, filter log events, and Live Tail - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html)
+> - [AWS CloudWatchのログフィルタパターンを分かりやすく解説 #AWS - Qiita](https://qiita.com/shimajiri/items/81a4ed0fe39fe337fedb)
 
 #### ▼ OR 条件
 
@@ -269,7 +269,7 @@ OR 条件と除外条件を組み合わせようとすると、OR 条件が認�
 "ERROR:" -MethodNotAllowedHttpException
 ```
 
-> - https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/
+> - [【CloudWatch Logs】1つのメトリクスフィルターでORパターンマッチングと語句の除外を両立できない（が似たようなことはできる） \| DevelopersIO](https://dev.classmethod.jp/articles/cloudwatch-metricsfilter-filterpattern/)
 
 <br>
 
@@ -342,7 +342,7 @@ initial_position = start_of_file
 log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 ```
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file
+> - [CloudWatch Logs agent reference - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html#agent-configuration-file)
 
 #### ▼ コマンド
 
@@ -425,7 +425,7 @@ fields @timestamp, @message, @logStream
 | limit 100
 ```
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html
+> - [CloudWatch Logs Insights language query syntax - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html)
 
 **＊例＊**
 
@@ -451,7 +451,7 @@ fields @timestamp, @message, @logStream
 | limit 100
 ```
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html#CWL_AnalyzeLogData-discoverable-JSON-logs
+> - [Supported logs and discovered fields - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html#CWL_AnalyzeLogData-discoverable-JSON-logs)
 
 **＊例＊**
 
@@ -501,7 +501,7 @@ Oct 13 19:04:57 *** start-amazon-cloudwatch-agent[2959]: I! Detecting run_as_use
 ```
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-AWS-CloudWatch-Agent.html
-> - https://engineers.weddingpark.co.jp/aws-cloudwatch-ec2/
+> - [CloudWatch で EC2 のメモリ・ディスク使用率を監視する \| Wedding Park CREATORS Blog](https://engineers.weddingpark.co.jp/aws-cloudwatch-ec2/)
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/cloudwatch-memory-metrics-ec2/
 
 <br>
@@ -525,7 +525,7 @@ $ yum install collectd -y
 
 ウィザードを使用して設定ファイル (`amazon-cloudwatch-agent.json` ファイル) をセットアップする場合、ウィザードは `amazon-cloudwatch-agent.json` ファイルを `/opt/aws/amazon-cloudwatch-agent/bin` ディレクトリ配下に自動的に作成する。
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html
+> - [Create the CloudWatch agent configuration file with the wizard - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file-wizard.html)
 
 #### ▼ 手動の場合
 
@@ -536,7 +536,7 @@ $ yum install collectd -y
 | Linux   | `/opt/aws/amazon-cloudwatch-agent/etc`          |
 | Windows | `$Env:ProgramData\Amazon\AmazonCloudWatchAgent` |
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html
+> - [Manually create or edit the CloudWatch agent configuration file - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html)
 
 <br>
 
@@ -550,7 +550,7 @@ cloudwatch エージェントのオプションを設定する。セットアッ
 
 注意点として、cloudwatch エージェントは、起動後に `amazon-cloudwatch-agent.json` ファイルを `/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.d/file_amazon-cloudwatch-agent.json` ファイルとして移動してしまい、元々の `amazon-cloudwatch-agent.json` ファイルは無くなってしまう。
 
-> - https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local
+> - [自宅サーバーにansibleでCloudWatch Agentの設定をしてCloudWatchで監視できるようにした](https://zenn.dev/tokku5552/articles/ansible-cloudwatch-local)
 
 #### ▼ `amazon-cloudwatch-agent-ctl` コマンド
 

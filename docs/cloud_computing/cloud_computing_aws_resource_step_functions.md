@@ -9,7 +9,7 @@ description: Step Functions＠AWSリソースの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -70,7 +70,7 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 | アクション    | StartExecution   |                              |
 | 実行ロール    | IAM ロールの ARN | StartExecution を許可する。  |
 
-> - https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html
+> - [Creating a Step Functions API using API Gateway - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html)
 
 ```yaml
 {

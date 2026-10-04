@@ -21,8 +21,8 @@ Prometheus のメトリクスから各コンテナに最適な CPU/メモリの�
 
 kkr を含めたさまざまなメトリクスを監視する場合、開発元が同じ robusta を使用する。
 
-> - https://github.com/robusta-dev/krr
-> - https://github.com/robusta-dev/robusta
+> - [GitHub - robusta-dev/krr: Prometheus-based Kubernetes Resource Recommendations · GitHub](https://github.com/robusta-dev/krr)
+> - [GitHub - robusta-dev/robusta: Better Prometheus alerts for Kubernetes - smart grouping, AI enrichment, and automatic remediation · GitHub](https://github.com/robusta-dev/robusta)
 
 <br>
 
@@ -36,7 +36,7 @@ krr では、CPU の `.spec.containers[*].resources.limits` キー値の設定�
 
 これにより、コンテナがハードウェアリソース不足を起こす可能性が高くなるためである。
 
-> - https://home.robusta.dev/blog/stop-using-cpu-limits
+> - [For the Love of God, Stop Using CPU Limits on Kubernetes (Updated) — Robusta Blog](https://home.robusta.dev/blog/stop-using-cpu-limits)
 > - https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718
 > - https://blog.netdata.cloud/kubernetes-throttling-doesnt-have-to-suck-let-us-help/
 
@@ -48,7 +48,7 @@ CPU は、`99`%の CPU 処理が余裕を持てるように数値を算出する
 
 メモリは、過去一週間の最大値に `5`%のバッファーを加えて、数値を算出する。
 
-> - https://github.com/robusta-dev/krr#algorithm
+> - [GitHub - robusta-dev/krr: Prometheus-based Kubernetes Resource Recommendations · GitHub](https://github.com/robusta-dev/krr#algorithm)
 
 <br>
 

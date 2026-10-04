@@ -9,7 +9,7 @@ description: パッケージ＠Javaの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -79,7 +79,7 @@ logback を設定する。
 </configuration>
 ```
 
-> - https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923
+> - [LogstashのLogback JSON encoderで、Logbackで出力するログをJSONエンコードする - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923)
 > - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
 
 #### ▼ info、error
@@ -123,7 +123,7 @@ public class Foo extends Application{
 }
 ```
 
-> - https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923
+> - [LogstashのLogback JSON encoderで、Logbackで出力するログをJSONエンコードする - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923)
 > - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
 
 #### ▼ MDC
@@ -195,7 +195,7 @@ public class Foo extends Application{
 }
 ```
 
-> - https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923
+> - [LogstashのLogback JSON encoderで、Logbackで出力するログをJSONエンコードする - CLOVER🍀](https://kazuhira-r.hatenablog.com/entry/2019/03/24/223923)
 > - https://github.com/logfellow/logstash-logback-encoder?tab=readme-ov-file#loggingevent-fields
 
 <br>

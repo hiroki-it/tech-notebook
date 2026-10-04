@@ -9,7 +9,7 @@ description: Envoy＠サービスメッシュ系ミドルウェアの知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -30,8 +30,8 @@ Envoy には静的/動的な設定がある。
 Istio の Envoy は、pilot-agent を介して Istiod の ADS-API とストリーミング方式で通信し、Envoy 設定値をリアルタイムで取得する。
 
 > - https://qiita.com/kitauji/items/a2a7b583ed3f5b4cc47e
-> - https://i-beam.org/2019/03/13/envoy-xds-server/
-> - https://github.com/salrashid123/envoy_discovery#prerequsites
+> - [Envoy ProxyのためのEDSサーバーを作る \| Folioscope](https://i-beam.org/2019/03/13/envoy-xds-server/)
+> - [GitHub - salrashid123/envoy\_discovery: Envoy Discovery service 'hello world' · GitHub](https://github.com/salrashid123/envoy_discovery#prerequsites)
 
 <br>
 
@@ -49,8 +49,8 @@ Istio 管理下では、pilot-agent が Envoy のホットリスタートを無�
 
 ![envoy_hot-reload](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png)
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining
+> - [Hot restart — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart)
+> - [Draining — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining)
 > - https://blog.envoyproxy.io/envoy-hot-restart-1d16b14555b5
 
 <br>
@@ -63,9 +63,9 @@ Istio 管理下では、pilot-agent が Envoy のホットリスタートを無�
 
 このようなリバースプロキシの配置方法をダブルプロキシといい、サイドカーパターンとして機能する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/double_proxy
-> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/double-proxy#install-sandboxes-double-proxy
-> - https://engineers.ntt.com/entry/2021/12/04/131157
+> - [Service to service, front proxy, and double proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/double_proxy)
+> - [Double proxy (with mTLS encryption) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/double-proxy#install-sandboxes-double-proxy)
+> - [おうちで学ぶサービスメッシュを支える透過型プロキシとしてのEnvoy - NTT docomo Business Engineers' Blog](https://engineers.ntt.com/entry/2021/12/04/131157)
 
 <br>
 
@@ -93,11 +93,11 @@ Istio 管理下では、pilot-agent が Envoy のホットリスタートを無�
 
 もし ADS-API で一括して取得しない場合、各 XDS-API から取得できる宛先情報のバージョンがバラバラになってしまう。このため、Envoy の処理コンポーネント間で宛先情報のバージョン競合が発生する可能性もある。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#aggregated-xds-ads
-> - https://www.amazon.co.jp/dp/B09XN9RDY1
-> - https://i-beam.org/2019/01/22/hello-envoy/
-> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - [xDS API endpoints — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#aggregated-discovery-service)
+> - [xDS configuration API overview — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#aggregated-xds-ads)
+> - [Amazon.co.jp: Istio in Action (English Edition) 電子書籍: Posta, Christian E., Maloku, Rinor: 洋書](https://www.amazon.co.jp/dp/B09XN9RDY1)
+> - [Envoy Proxyに入門した \| Folioscope](https://i-beam.org/2019/01/22/hello-envoy/)
+> - [Architecture Analysis of Istio: The Most Popular Service Mesh Project - Alibaba Cloud Community](https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010)
 
 #### ▼ CDS-API：Cluster Discovery Service
 
@@ -105,8 +105,8 @@ Istio 管理下では、pilot-agent が Envoy のホットリスタートを無�
 
 Envoy の実行時に、ルーティング先の Cluster の設定を動的に検出可能にする。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#cds
-> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - [xDS configuration API overview — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#cds)
+> - [Architecture Analysis of Istio: The Most Popular Service Mesh Project - Alibaba Cloud Community](https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010)
 
 #### ▼ EDS-API：Endpoint Discovery Service
 
@@ -114,8 +114,8 @@ Envoy の実行時に、ルーティング先の Cluster の設定を動的に�
 
 Envoy の実行時に、ルーティング先の Cluster に含まれるメンバーを動的に検出可能にする。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#eds
-> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - [xDS configuration API overview — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#eds)
+> - [Architecture Analysis of Istio: The Most Popular Service Mesh Project - Alibaba Cloud Community](https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010)
 
 #### ▼ LDS-API：Listener Discovery Service
 
@@ -123,8 +123,8 @@ Envoy の実行時に、ルーティング先の Cluster に含まれるメン�
 
 Envoy の実行時に、リスナーの設定を動的に検出可能にする。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#lds
-> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - [xDS configuration API overview — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#lds)
+> - [Architecture Analysis of Istio: The Most Popular Service Mesh Project - Alibaba Cloud Community](https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010)
 
 #### ▼ RDS-API：Route Discovery Service
 
@@ -132,8 +132,8 @@ Envoy の実行時に、リスナーの設定を動的に検出可能にする�
 
 Envoy の実行時に、ルーティングの設定を動的に検出可能にする。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#rds
-> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - [xDS configuration API overview — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#rds)
+> - [Architecture Analysis of Istio: The Most Popular Service Mesh Project - Alibaba Cloud Community](https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010)
 
 #### ▼ SDS-API：Secret Discovery Service
 
@@ -141,8 +141,8 @@ Envoy の実行時に、ルーティングの設定を動的に検出可能に�
 
 Envoy の実行時に、リスナーの暗号化の設定を動的に検出可能にする。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#sds
-> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - [xDS configuration API overview — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/dynamic_configuration#sds)
+> - [Architecture Analysis of Istio: The Most Popular Service Mesh Project - Alibaba Cloud Community](https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010)
 
 <br>
 
@@ -152,14 +152,14 @@ Envoy の実行時に、リスナーの暗号化の設定を動的に検出可�
 
 コントロールプレーンの XDS-API にはエンドポイントがある。Envoy からリモートプロシージャーコールを受信し、通信の宛先情報を返信する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints
+> - [xDS API endpoints — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/xds_api#rest-endpoints)
 
 #### ▼ 実装
 
 Envoy を使用するサービス検出ツール (例：Istio) では、コントロールプレーンに `go-control-plane` パッケージが使用されている。
 
-> - https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/resource/v3/resource.go#L34-L43
-> - https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/server/v3/gateway.go#L38-L98
+> - [go-control-plane/pkg/resource/v3/resource.go at v0.11.0 · envoyproxy/go-control-plane · GitHub](https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/resource/v3/resource.go#L34-L43)
+> - [go-control-plane/pkg/server/v3/gateway.go at v0.11.0 · envoyproxy/go-control-plane · GitHub](https://github.com/envoyproxy/go-control-plane/blob/v0.11.0/pkg/server/v3/gateway.go#L38-L98)
 
 ```go
 package resource
@@ -239,7 +239,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 データプレーンの処理は、コンポーネント (リスナー、ルート、クラスター、エンドポイント) から構成される。
 
 > - https://skyao.io/learning-envoy/architecture/concept/#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E6%A6%82%E5%BF%B5
-> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - [Architecture Analysis of Istio: The Most Popular Service Mesh Project - Alibaba Cloud Community](https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010)
 
 #### ▼ インバウンド通信／アウトバウンド通信 の場合
 
@@ -247,7 +247,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 インバウンド通信では Ingress リスナー、アウトバウンド通信では Egress リスナーとして、同じ構成の処理を辿る。
 
-> - https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/
+> - [Istio流量管理实现机制深度解析 \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)
 > - https://s3.us.cloud-object-storage.appdomain.cloud/developer/series/os-academy-istio-2020/nl/zh/static/4-WASM.pdf#page=10
 > - https://s3.us.cloud-object-storage.appdomain.cloud/developer/series/os-academy-istio-2020/nl/zh/static/4-WASM.pdf#page=12
 
@@ -266,8 +266,8 @@ Istio の Envoy は、pilot-agent を介して Istiod の ADS-API にリモー�
 
 Envoy が組み込まれたサービスメッシュツール (例：Istio) では、Envoy のコントロールプレーンへのリモートプロシージャーコール処理の緩衝材として、エージェント (例：pilot-agent) が提供されている。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions
-> - https://i-beam.org/2019/03/13/envoy-xds-server/
+> - [xDS REST and gRPC protocol — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#streaming-grpc-subscriptions)
+> - [Envoy ProxyのためのEDSサーバーを作る \| Folioscope](https://i-beam.org/2019/03/13/envoy-xds-server/)
 
 `(1)`
 
@@ -317,14 +317,14 @@ message DiscoveryResponse {
 
 > - https://skyao.io/learning-envoy/xds/overview/
 > - https://skyao.io/learning-envoy/xds/overview/discovery-message.html
-> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/discovery/v3/discovery.proto#L47-L97
-> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/discovery/v3/discovery.proto#L100-L141
+> - [envoy/api/envoy/service/discovery/v3/discovery.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/discovery/v3/discovery.proto#L47-L97)
+> - [envoy/api/envoy/service/discovery/v3/discovery.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/discovery/v3/discovery.proto#L100-L141)
 
 #### ▼ リクエスト内容の種類
 
 記入中...
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#resource-types
+> - [xDS REST and gRPC protocol — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-docs/xds_protocol#resource-types)
 
 <br>
 
@@ -438,8 +438,8 @@ static_resources:
                               cluster: PassthroughCluster
 ```
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
+> - [Examples — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static)
+> - [Configuration: Static — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners)
 
 #### ▼ 動的なリスナー登録
 
@@ -475,8 +475,8 @@ service ListenerDiscoveryService {
 
 ```
 
-> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/listener/v3/lds.proto#L23-L42
-> - https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87
+> - [envoy/api/envoy/service/listener/v3/lds.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/listener/v3/lds.proto#L23-L42)
+> - [envoy/source/common/config/type\_to\_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
 
 **＊実装例＊**
 
@@ -608,7 +608,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 執筆時点 (2024/01/21) では、HTTP リクエストの処理に関するフィルターはすべて ReadFilter である。
 
 > - https://zhuanlan.zhihu.com/p/464828801
-> - https://istio-insider.mygraphql.com/zh-cn/latest/ch2-envoy/arch/network-filter/network-filter.html
+> - [Network Filter — Istio & Envoy 内幕](https://istio-insider.mygraphql.com/zh-cn/latest/ch2-envoy/arch/network-filter/network-filter.html)
 
 <br>
 
@@ -616,7 +616,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 
 各種プロトコルを受信する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/listener/listener
+> - [Listener filters — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/listener/listener)
 
 <br>
 
@@ -626,8 +626,8 @@ TCP プロトコルを処理し、後続の HTTP フィルターを管理する�
 
 主要なネットワークフィルターとして、`network.http_connection_manager` や `network.tcp_proxy` がある。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/listeners/listener_filters#network-l3-l4-filters
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network
+> - [Listener filters — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/listeners/listener_filters#network-l3-l4-filters)
+> - [Network filters — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/network/network)
 
 <br>
 
@@ -637,27 +637,29 @@ HTTP リクエストを処理する。
 
 主要な HTTP フィルターとして、`http.router` や `http.grpc_web` がある。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_filters
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/http/http
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_routing
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter
+> - [HTTP filters — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_filters)
+> - [HTTP filters — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/http/http)
+> - [HTTP routing — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/http/http_routing)
+> - [Router — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter)
 
 <br>
 
 ### UDP リスナーフィルター
 
-> - https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/udp/udp
+> - [UDP listener filters — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/filter/udp/udp)
 
 <br>
 
 ### RBAC フィルター
 
-認証／認可を実施する。
+認可を実施する。
+
+JWT による認証は、`envoy.filters.http.jwt_authn` フィルターが担う。
 
 主なフィルターとして、`http.rbac.v3.RBAC` がある。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/rbac_filter
-> - https://qiita.com/ryysud/items/17a4f86819b96eb73f64#authorization-policy-%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF
+> - [Role Based Access Control (RBAC) Filter — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/rbac_filter)
+> - [Istio での Authorization Policy を利用したワークロードのアクセス制御 #istio - Qiita](https://qiita.com/ryysud/items/17a4f86819b96eb73f64#authorization-policy-%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF)
 
 <br>
 
@@ -665,8 +667,8 @@ HTTP リクエストを処理する。
 
 MySQL プロトコル内の SQL を解析、メトリクスとして収集する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/mysql
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/mysql_proxy_filter#config-network-filters-mysql-proxy
+> - [MySQL filter — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/mysql)
+> - [MySQL proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/listeners/network_filters/mysql_proxy_filter#config-network-filters-mysql-proxy)
 
 <br>
 
@@ -678,7 +680,7 @@ MySQL プロトコル内の SQL を解析、メトリクスとして収集する
 
 ルートでは、リスナーで処理した通信を受け取り、宛先のクラスターを決める。
 
-> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - [Architecture Analysis of Istio: The Most Popular Service Mesh Project - Alibaba Cloud Community](https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010)
 
 <br>
 
@@ -688,8 +690,8 @@ MySQL プロトコル内の SQL を解析、メトリクスとして収集する
 
 `static_resources.listeners` キー配下で、リスナーと合わせて設定する。
 
-> - https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners
+> - [Examples — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/examples#static)
+> - [Configuration: Static — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#listeners)
 
 #### ▼ 動的なルート登録
 
@@ -725,8 +727,8 @@ service RouteDiscoveryService {
 
 ```
 
-> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/route/v3/rds.proto#L22-L42
-> - https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87
+> - [envoy/api/envoy/service/route/v3/rds.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/route/v3/rds.proto#L22-L42)
+> - [envoy/source/common/config/type\_to\_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
 
 **＊実装例＊**
 
@@ -915,7 +917,7 @@ static_resources:
 ```
 
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
+> - [Configuration: Static — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters)
 
 #### ▼ クラスターの動的な登録
 
@@ -951,8 +953,8 @@ service ClusterDiscoveryService {
 
 ```
 
-> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/cluster/v3/cds.proto#L22-L38
-> - https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87
+> - [envoy/api/envoy/service/cluster/v3/cds.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/cluster/v3/cds.proto#L22-L38)
+> - [envoy/source/common/config/type\_to\_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
 
 **＊実装例＊**
 
@@ -1033,13 +1035,13 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 - TCP (UDP)
 - 独自プロトコル
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/health_checking
+> - [Health checking — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/health_checking)
 
 #### ▼ パッシブヘルスチェック
 
 - サーキットブレイカー
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking
+> - [Circuit breaking — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/circuit_breaking)
 
 <br>
 
@@ -1051,7 +1053,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 
 エンドポイントでは、クラスターでロードバランシングされた通信を受け取り、IP アドレスとポート番号を指定して、宛先に送信する。
 
-> - https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010
+> - [Architecture Analysis of Istio: The Most Popular Service Mesh Project - Alibaba Cloud Community](https://www.alibabacloud.com/blog/architecture-analysis-of-istio-the-most-popular-service-mesh-project_597010)
 
 <br>
 
@@ -1060,7 +1062,7 @@ Kubernetes では、YAML ファイルのキー名の設計規約がローワー�
 `static_resources.clusters` キー配下で、クラスターと合わせて設定する。
 
 > - https://skyao.io/learning-envoy/architecture/concept/cluster.html
-> - https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters
+> - [Configuration: Static — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/start/quick-start/configuration-static#clusters)
 
 <br>
 
@@ -1098,7 +1100,7 @@ service EndpointDiscoveryService {
 
 ```
 
-> - https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/endpoint/v3/eds.proto#L21-L40
+> - [envoy/api/envoy/service/endpoint/v3/eds.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/endpoint/v3/eds.proto#L21-L40)
 
 <br>
 
@@ -1112,8 +1114,8 @@ Envoy はマルチスレッドでパケットを処理する。
 
 これらのスレッドは、そのプロセスに割り当てられているアドレスを共有する。
 
-> - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/intro/threading_model
+> - [Wasm extensions and Envoy extensibility explained – Part 1](https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy)
+> - [Threading model — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/intro/threading_model)
 
 <br>
 
@@ -1130,7 +1132,7 @@ Envoy はマルチスレッドでパケットを処理する。
 - Envoy のプロセスのさまざまな処理 (ホットリスタートなど)
 
 > - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
-> - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
+> - [Wasm extensions and Envoy extensibility explained – Part 1](https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy)
 
 <br>
 
@@ -1149,7 +1151,7 @@ Envoy はマルチスレッドでパケットを処理する。
 ![envoy_thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png)
 
 > - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
-> - https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy
+> - [Wasm extensions and Envoy extensibility explained – Part 1](https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy)
 
 <br>
 
@@ -1175,10 +1177,10 @@ Envoy は、リバースプロキシとして、外部 (例：ロードバラン
 
 ![envoy_ingress-listener](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png)
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology
+> - [Service to service only — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener)
+> - [Life of a Request — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology)
 > - https://blog.51cto.com/wangguishe/5789228
-> - https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/
+> - [Istio流量管理实现机制深度解析 \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)
 
 #### ▼ ローカルホストにあるマイクロサービスから待ち受ける (Egress リスナー／アウトバウンドリスナー)
 
@@ -1190,10 +1192,10 @@ Envoy は、リバースプロキシとして、ローカルホストにある�
 
 ![envoy_egress-listener](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png)
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology
+> - [Service to service only — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener)
+> - [Life of a Request — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology)
 > - https://blog.51cto.com/wangguishe/5789228
-> - https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/
+> - [Istio流量管理实现机制深度解析 \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2018-09-25-istio-traffic-management-impl-intro/)
 
 #### ▼ ローカルホスト外にあるマイクロサービスに送信する
 
@@ -1223,8 +1225,8 @@ Nginx
 マイクロサービス
 ```
 
-> - https://blog.linkode.co.jp/entry/2020/07/06/162915
-> - https://openstandia.jp/oss_info/envoy/
+> - [サービスメッシュと Istio の基本を理解する - Linkode.TechBlog](https://blog.linkode.co.jp/entry/2020/07/06/162915)
+> - [Envoyとは？詳細情報を解説 \| OSSサポートのOpenStandia™【NRI】](https://openstandia.jp/oss_info/envoy/)
 > - https://speakerdeck.com/kurochan/ru-men-envoy?slide=33
 
 <br>
@@ -1237,7 +1239,7 @@ Istio Ingress Gateway で Envoy を使用するユースケースは、これに
 
 ![envoy_loadbalancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_loadbalancer.png)
 
-> - https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy
+> - [Service to service plus front proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy)
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy
 > - https://blog.51cto.com/wangguishe/5789228
 

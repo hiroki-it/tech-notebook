@@ -9,7 +9,7 @@ description: 文化＠組織文化的要素の知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -39,7 +39,7 @@ description: 文化＠組織文化的要素の知見を記録しています。
 
 そこで、心理的安全性のみを最適化するわけではなく、チームの生産性などのほかの要素も考慮に入れながら、バランスのよい最適化を図るようにする。
 
-> - https://www.amazon.co.jp/dp/4873119618
+> - [SREの探求 ―様々な企業におけるサイトリライアビリティエンジニアリングの導入と実践 \| David N.Blank-Edelman, 山口能迪, 渡邉了介 \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4873119618)
 
 <br>
 

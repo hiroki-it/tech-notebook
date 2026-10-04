@@ -9,7 +9,7 @@ description: バリデーションロジック＠PHPの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -48,7 +48,7 @@ DB からの値を直接的に表示する場合と異なり、新しく作ら�
 |     **`array(1)`**     |                  ✅                   |                         ✅                         |
 |     **使いどころ**     | `null` のみをバリデーションしたい場合 | `null`、`0`、`""`、`[]` をバリデーションしたい場合 |
 
-> - https://qiita.com/shinichi-takii/items/00aed26f96cf6bb3fe62
+> - [PHP isset, empty, is\_null の違い早見表 #PHP - Qiita](https://qiita.com/shinichi-takii/items/00aed26f96cf6bb3fe62)
 
 <br>
 

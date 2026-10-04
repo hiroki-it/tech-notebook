@@ -237,7 +237,7 @@ describe("fetchUser", async () => {
 });
 ```
 
-> - https://qiita.com/inasync/items/e0b54e62784710c4b42d
+> - [速習 AAA : Arrange-Act-Assert による読みやすいテスト #C# - Qiita](https://qiita.com/inasync/items/e0b54e62784710c4b42d)
 
 <br>
 
@@ -283,7 +283,7 @@ export default defineConfig({
 });
 ```
 
-> - https://vitest.dev/config/
+> - [Configuring Vitest \| Vitest](https://vitest.dev/config/)
 
 #### ▼ globals
 
@@ -337,7 +337,7 @@ Vitest は TypeScript を直接トランスパイルするため、型を検証�
 
 Vitest の思想では、テストコードの型検証はエディタやビルド時に実施するべきであり、テストコードの実行時には型検証は済んでいるものという考えがある。
 
-> - https://vite.dev/guide/features.html#transpile-only
+> - [Features \| Vite](https://vite.dev/guide/features.html#transpile-only)
 
 <br>
 
@@ -872,7 +872,7 @@ describe("runTask", () => {
 });
 ```
 
-> - https://vitest.dev/api/vi.html#vi-spyon
+> - [Vi \| Vitest](https://vitest.dev/api/vi.html#vi-spyon)
 
 <br>
 

@@ -9,7 +9,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 広義の OS は、ユーティリティや言語プロセッサーも含む基本ソフトウェア全体である。
 
-> - https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB
+> - [カーネル - Wikipedia](https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB)
 
 <br>
 
@@ -33,7 +33,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 ![linux_kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux_kernel_architecture.png)
 
-> - https://manual.atmark-techno.com/armadillo-guide/armadillo-guide-1_ja-2.0.0/ch02.html
+> - [第2章 組み込みLinuxシステムとは](https://manual.atmark-techno.com/armadillo-guide/armadillo-guide-1_ja-2.0.0/ch02.html)
 
 #### ▼ マイクロカーネルの場合
 
@@ -47,8 +47,8 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 カーネルを操作できる関数 (例：read、write など) である。
 
-> - http://curtaincall.weblike.jp/portfolio-unix/api.html
-> - https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
+> - [システムコールを理解する \| UNIX world](http://curtaincall.weblike.jp/portfolio-unix/api.html)
+> - [【図解】Windows/Linuxのカーネルとシェルの違いと役割~一般ユーザとシステムユーザ(サービスユーザ)からの見え方~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/)
 
 #### ▼ システムコールの仕組み
 
@@ -58,7 +58,7 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 ![linux_kernel_system-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux_kernel_system-call.png)
 
-> - https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/
+> - [【図解】Windows/Linuxのカーネルとシェルの違いと役割~一般ユーザとシステムユーザ(サービスユーザ)からの見え方~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/)
 
 <br>
 
@@ -66,23 +66,23 @@ description: Linuxカーネル (制御プログラム) ＠基本ソフトウェ�
 
 #### ▼ プロセス管理
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_process_management.html
+> - [【IT技術の知見】プロセス管理＠基本ソフトウェア - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_process_management.html)
 
 #### ▼ メモリ管理
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_memory_management.html
+> - [【IT技術の知見】メモリ管理＠Linuxカーネル - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_memory_management.html)
 
 #### ▼ ストレージ管理
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_storage_management.html
+> - [【IT技術の知見】ストレージ管理＠Linuxカーネル - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_storage_management.html)
 
 #### ▼ I/O (入出力) 管理
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_io_management.html
+> - [【IT技術の知見】I/O (入出力) 管理＠Linuxカーネル - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_io_management.html)
 
 #### ▼ ジョブ管理
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_job_management.html
+> - [【IT技術の知見】ジョブ管理＠Linuxカーネル - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_job_management.html)
 
 #### ▼ 通信管理
 

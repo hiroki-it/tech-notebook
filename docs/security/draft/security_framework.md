@@ -9,7 +9,7 @@ description: フレームワーク＠セキュリティの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,19 +23,19 @@ description: フレームワーク＠セキュリティの知見を記録して�
 
 そのため、この要件にあったシステムを作る必要がある。
 
-> - https://www.nri-secure.co.jp/glossary/pci-dss
+> - [PCI DSS（Payment Card Industry Data Security Standard）｜セキュリティ用語解説｜NRIセキュア](https://www.nri-secure.co.jp/glossary/pci-dss)
 
 <br>
 
 ### AWS の場合
 
-> - https://speakerdeck.com/iselegant/sustainable-pcidss-operation-on-aws
+> - [PCI DSS準拠から学ぶサステナブルなAWSクラウドネイティブの運用 / Sustainable PCIDSS operation on AWS - Speaker Deck](https://speakerdeck.com/iselegant/sustainable-pcidss-operation-on-aws)
 
 <br>
 
 ### Kubernetes の場合
 
-> - https://raesene.github.io/categories/index.html#Kubernetes-ref
-> - https://www.container-security.site/defenders/PCI_Container_Orchestration_Guidance.html
+> - [Categories · Raesene's Ramblings](https://raesene.github.io/categories/index.html#Kubernetes-ref)
+> - [PCI Container Orchestration Guidance for Kubernetes \| \[“container-security site”\]](https://www.container-security.site/defenders/PCI_Container_Orchestration_Guidance.html)
 
 <br>

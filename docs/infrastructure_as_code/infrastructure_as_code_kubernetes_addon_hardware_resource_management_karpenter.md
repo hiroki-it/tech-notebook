@@ -9,7 +9,7 @@ description: Karpenter＠ハードウェアリソース管理系の知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -40,7 +40,7 @@ Karpenter Controller は、Karpenter の Custom Controller として、カスタ
 ![karpenter_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
 
 > - https://karpenter.sh/preview/reference/threat-model/#architecture--actors
-> - https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921
+> - [Auto ALB Target Group registration · Issue #1381 · aws/karpenter-provider-aws · GitHub](https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921)
 
 #### ▼ Pod のバインド
 
@@ -53,9 +53,9 @@ kube-scheduler の代わりに、Karpenter が Node を選定しているため�
 cluster-autoscaler の Node のスケールアウト後に、kube-scheduler が Node 選定処理に基づいて Pod を Node にバインドするため、スケジューリングまでに時間がかかる。
 
 > - https://karpenter.sh/preview/reference/threat-model/
-> - https://sreake.com/blog/learn-about-karpenter/
+> - [Karpenter について調べてみた \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/learn-about-karpenter/)
 > - https://blog.searce.com/karpenter-a-new-method-to-autoscale-kubernetes-cluster-5f6411914372
-> - https://kubesandclouds.com/2022-01-04-karpenter/
+> - [Karpenter vs Cluster Autoscaler ☸️](https://kubesandclouds.com/2022-01-04-karpenter/)
 
 <br>
 
@@ -133,7 +133,7 @@ Karpenter はバージョニングされてない独立した起動テンプレ�
 
 Karpenter を使用しない場合、クラウドプロバイダーの Node 数は固定である。
 
-> - https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs
+> - [Karpenter - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/karpenter/#use-karpenter-for-workloads-with-changing-capacity-needs)
 > - https://aws.amazon.com/blogs/containers/managing-pod-scheduling-constraints-and-groupless-node-upgrades-with-karpenter-in-amazon-eks/
 > - https://vishnudeva.medium.com/scaling-kubernetes-with-karpenter-1dc785e79010
 
@@ -147,8 +147,8 @@ Karpenter は、さまざまな情報に基づいて、Node をスケーリン�
 
 鳥の群れの動きをモデリングした Boids アルゴリズムに似たような方法で、スケーリング対象の Node を選定する。
 
-> - https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation
-> - https://tech-blog.cloud-config.jp/2022-04-07-boids-algorithm
+> - [karpenter-provider-aws/designs/consolidation.md at main · aws/karpenter-provider-aws · GitHub](https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation)
+> - [【解説】動物の動きを再現する「Boids Algorithm」ってなぁに？？ \| cloud.config Tech Blog](https://tech-blog.cloud-config.jp/2022-04-07-boids-algorithm)
 
 #### ▼ Pod のスケジューリングの可否
 
@@ -177,7 +177,7 @@ kube-scheduler から情報を取得し、新しい Pod を Node 上にスケジ
 - Pod に Affinity があり、統合すると Affinity に違反する。
 
 > - https://karpenter.sh/preview/concepts/disruption/#automated-methods
-> - https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation
+> - [karpenter-provider-aws/designs/consolidation.md at main · aws/karpenter-provider-aws · GitHub](https://github.com/aws/karpenter-provider-aws/blob/main/designs/consolidation.md#selecting-nodes-for-consolidation)
 
 <br>
 
@@ -232,7 +232,7 @@ Karpenter の Karpenter Controller は、起動テンプレートを作成した
 
 #### ▼ Amazon EC2 フリート
 
-> - https://qiita.com/o2346/items/6277a7ff6b1826d8de11
+> - [かんたん! EC2 Fleet #AWS - Qiita](https://qiita.com/o2346/items/6277a7ff6b1826d8de11)
 
 #### ▼ マネージド Node グループ (有無に関係ない)
 
@@ -259,7 +259,7 @@ Karpenter では、作成される Node のスペックを事前に指定する�
 
 ![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
-> - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
+> - [Karpenter - умное масштабирование Kubernetes кластера](https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru)
 
 #### ▼ cluster-autoscaler のいいところ
 
@@ -274,7 +274,7 @@ cluster-autoscaler はクラウドプロバイダーによらず使用できる�
 ![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
 
 > - https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd
-> - https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru
+> - [Karpenter - умное масштабирование Kubernetes кластера](https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru)
 > - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html
 
 <br>
@@ -313,7 +313,7 @@ Karpenter は、スケジューリングできない Pod (`Pending` 状態) が�
 
 : 結果として、`1` 台で `2` 個の Pod をスケジューリングさせている。
 
-> - https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A6%E3%83%88
+> - [Karpenterのオートスケールを試してみました \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/blogs/2022/02/13/introduce-karpenter/#%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A6%E3%83%88)
 > - https://github.com/aws/karpenter/issues/3995#issuecomment-1577137382
 
 #### ▼ スケールイン/スケールダウンの場合
@@ -519,7 +519,7 @@ data "aws_iam_policy_document" "karpenter_controller_policy" {
 
 > - https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles
 > - https://github.com/aws/karpenter/pull/1332#issue-1135967441
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1
+> - [Control Amazon EC2 launch template usage in Auto Scaling groups - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1)
 > - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
 #### ▼ Terraform の公式モジュール (2) の場合
@@ -572,7 +572,7 @@ module "eks_iam_karpenter_controller" {
 
 > - https://karpenter.sh/docs/getting-started/migrating-from-cas/#create-iam-roles
 > - https://github.com/aws/karpenter/pull/1332#issue-1135967441
-> - https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1
+> - [Control Amazon EC2 launch template usage in Auto Scaling groups - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1)
 > - https://github.com/aws/karpenter/issues/1919#issue-1267832624
 
 <br>
@@ -583,8 +583,8 @@ module "eks_iam_karpenter_controller" {
 
 ローカル環境で Karpenter を検証できる。
 
-> - https://kwok.sigs.k8s.io/docs/examples/scalability/scale-using-karpenter/
-> - https://github.com/kubernetes-sigs/karpenter/tree/main/kwok
+> - [Karpenter Autoscaling \| KWOK](https://kwok.sigs.k8s.io/docs/examples/scalability/scale-using-karpenter/)
+> - [karpenter/kwok at main · kubernetes-sigs/karpenter · GitHub](https://github.com/kubernetes-sigs/karpenter/tree/main/kwok)
 
 <br>
 
@@ -596,7 +596,7 @@ Pod の特に `resources` キーで、上限 (`.spec.containers[*].resources.lim
 
 Pod のメモリで上限 (`.spec.containers[*].resources.limits`) = 下限 (`.spec.containers[*].resources.requests`) のように設定する (Guaranteed QoS) と、OOM キラーを避けられる。
 
-> - https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
+> - [Karpenter - Amazon EKS](https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html)
 
 <br>
 
@@ -608,6 +608,6 @@ Pod のメモリで上限 (`.spec.containers[*].resources.limits`) = 下限 (`.s
 
 これを回避するために、インスタンスタイプを幅広く設定するとよい。
 
-> - https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html
+> - [Karpenter - Amazon EKS](https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html)
 
 <br>

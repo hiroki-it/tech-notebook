@@ -23,7 +23,7 @@ description: コマンド＠Knativeの知見を記録しています。
 $ func create -l <言語> <関数名>
 ```
 
-> - https://knative.dev/docs/functions/creating-functions/
+> - [Creating functions - Knative](https://knative.dev/docs/functions/creating-functions/)
 
 <br>
 
@@ -39,6 +39,6 @@ $ func deploy --registry <コンテナレジストリ名>
 http://hello.default.127.0.0.1.sslip.io
 ```
 
-> - https://knative.dev/docs/functions/deploying-functions/#procedure
+> - [Deploying functions - Knative](https://knative.dev/docs/functions/deploying-functions/#procedure)
 
 <br>

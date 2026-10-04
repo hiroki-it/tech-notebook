@@ -9,7 +9,7 @@ description: インシデント管理＠監視の知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -20,7 +20,7 @@ description: インシデント管理＠監視の知見を記録しています�
 すべてのエラーイベントがインシデントというわけではない。
 
 > - https://www.atlassian.com/ja/incident-management/devops/incident-vs-problem-management
-> - https://response.pagerduty.com/before/what_is_an_incident/
+> - [What is an Incident? - PagerDuty Incident Response Documentation](https://response.pagerduty.com/before/what_is_an_incident/)
 
 <br>
 
@@ -36,7 +36,7 @@ description: インシデント管理＠監視の知見を記録しています�
 
 これらを自動化するためのツールがいくつかある。
 
-> - https://smart-stage.jp/topics/itsm_keyword_relate/p3/
+> - [インシデント管理とは – システム管理者向け用語集 \| ITサービス管理ツール「SmartStage ServiceDesk」](https://smart-stage.jp/topics/itsm_keyword_relate/p3/)
 
 **＊技術ツール例＊**
 
@@ -79,7 +79,7 @@ description: インシデント管理＠監視の知見を記録しています�
 | low                          | いつかは解決する必要がある。        |
 | notification                 | 解決する必要はない。                |
 
-> - https://response.pagerduty.com/oncall/alerting_principles/
+> - [Alerting Principles - PagerDuty Incident Response Documentation](https://response.pagerduty.com/oncall/alerting_principles/)
 
 <br>
 
@@ -107,9 +107,9 @@ Slack をインシデント管理ツールとして、Slack に通知された�
 
 注意点として、各ツールはインシデントごとにインシデント対処チャンネルを作るため、対処後にチャンネルの残骸が増えていってしまう。
 
-> - https://note.com/kubopi/n/ne7c60f3c2d94
-> - https://qiita.com/kashee337/items/5791a5dfab7a1019a2cb#%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8
-> - https://incident.io/alternatives/pagerduty
+> - [インシデントフローを整備して自動化しました｜くぼぴー](https://note.com/kubopi/n/ne7c60f3c2d94)
+> - [社内のインシデント体制を改善した話 #障害対応 - Qiita](https://qiita.com/kashee337/items/5791a5dfab7a1019a2cb#%E3%82%84%E3%81%A3%E3%81%9F%E3%81%93%E3%81%A8)
+> - [incident.io vs PagerDuty \| incident.io](https://incident.io/alternatives/pagerduty)
 
 `(1)`
 
@@ -191,7 +191,7 @@ fields @timestamp, @message, @logStream
 
 また、インシデント担当チームを組織し、各担当者にタスクを割り振る。
 
-> - https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=18
+> - [Wantedlyの障害対応文化とインシデントコマンダー / Wantedly Incident Commander - Speaker Deck](https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=18)
 
 #### ▼ 実行
 
@@ -231,7 +231,7 @@ fields @timestamp, @message, @logStream
 
 いくつかのアラートをグループ化するようにし、アラートの通知数を減らす。
 
-> - https://knowledge.sakura.ad.jp/11635/
+> - [Prometheusのクエリ機能とアラート機能 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/11635/)
 
 #### ▼ アラートの条件の調節
 
@@ -247,19 +247,19 @@ fields @timestamp, @message, @logStream
 
 そういった場合は、インシデントの通知を抑制する。
 
-> - https://pagerduty.digitalstacks.net/blog/suppress-your-data/
+> - [余計なアラートを抑制しよう！ \| PagerDuty正規代理店 - DXable](https://pagerduty.digitalstacks.net/blog/suppress-your-data/)
 
 #### ▼ 特定のシステムを無視
 
 特定のシステムにて、発生したインシデントをすべて無視し、インシデントが恒久的に通知されないようにする。
 
-> - https://thinkit.co.jp/article/13558
+> - [モニタリングシステム連携とインシデントの抑制 \| 統合インシデント管理サービスPagerDuty \| Think IT（シンクイット）](https://thinkit.co.jp/article/13558)
 
 #### ▼ インシデントの一時無効化
 
 特定のシステムにて、指定した期間に発生したインシデントを無視し、インシデントが一定期間だけ通知されないようにする。
 
-> - https://thinkit.co.jp/article/13558
+> - [モニタリングシステム連携とインシデントの抑制 \| 統合インシデント管理サービスPagerDuty \| Think IT（シンクイット）](https://thinkit.co.jp/article/13558)
 
 #### ▼ エラーイベントの重要度レベルの調節
 
@@ -267,13 +267,13 @@ fields @timestamp, @message, @logStream
 
 特定のインシデント以外は通知されないようにする。
 
-> - https://thinkit.co.jp/article/13558
+> - [モニタリングシステム連携とインシデントの抑制 \| 統合インシデント管理サービスPagerDuty \| Think IT（シンクイット）](https://thinkit.co.jp/article/13558)
 
 #### ▼ インシデントのグループ化
 
 特定のシステムにて、いくつかのインシデントをグループ化するようにし、インシデントの通知数を減らす。
 
-> - https://knowledge.sakura.ad.jp/11635/
+> - [Prometheusのクエリ機能とアラート機能 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/11635/)
 
 <br>
 
@@ -448,7 +448,7 @@ PagerDuty 社が公開しているテンプレートがある。
 - 社外への周知内容
 ```
 
-> - https://response.pagerduty.com/after/post_mortem_template/
+> - [Postmortem Template - PagerDuty Incident Response Documentation](https://response.pagerduty.com/after/post_mortem_template/)
 
 #### ▼ その他の会社事例
 
@@ -458,6 +458,6 @@ PagerDuty 社が公開しているテンプレートがある。
 | Heroku   | https://status.heroku.com/incidents/151                                                                 |
 | Twilio   | https://www.twilio.com/blog/2013/07/billing-incident-post-mortem-breakdown-analysis-and-root-cause.html |
 
-> - https://response.pagerduty.com/after/effective_post_mortems/#examples
+> - [Effective Postmortems - PagerDuty Incident Response Documentation](https://response.pagerduty.com/after/effective_post_mortems/#examples)
 
 <br>

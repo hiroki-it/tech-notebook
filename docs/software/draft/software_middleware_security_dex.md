@@ -9,7 +9,7 @@ description: Dex＠セキュリティ系ミドルウェアの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: Dex＠セキュリティ系ミドルウェアの知見を記録し�
 
 SSO (例：OAuth、SAML、OIDC など) の ID プロバイダーに認可リクエストを送信する。
 
-> - https://dexidp.io/docs/
+> - [Documentation \| Dex](https://dexidp.io/docs/)
 > - https://medium.com/@sct10876/keycloak-vs-dex-71f7fab29919
 
 <br>
@@ -28,7 +28,7 @@ SSO (例：OAuth、SAML、OIDC など) の ID プロバイダーに認可リク�
 
 認可リクエストの宛先を設定する。
 
-> - https://dexidp.io/docs/connectors/
+> - [Connectors \| Dex](https://dexidp.io/docs/connectors/)
 
 <br>
 
@@ -46,7 +46,7 @@ connectors:
     name: bar
 ```
 
-> - https://qiita.com/hiyosi/items/4baa612a219dc0a87575#multiple-idp-provider
+> - [Dex は v2.0.0 でどうなるのか #kubernetes - Qiita](https://qiita.com/hiyosi/items/4baa612a219dc0a87575#multiple-idp-provider)
 
 <br>
 
@@ -72,7 +72,7 @@ connectors:
         - groupd
 ```
 
-> - https://dexidp.io/docs/connectors/oidc/
+> - [Authentication Through an OpenID Connect Provider \| Dex](https://dexidp.io/docs/connectors/oidc/)
 > - https://dexidp.io/docs/custom-scopes-claims-clients/
 
 <br>

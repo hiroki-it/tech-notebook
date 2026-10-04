@@ -9,7 +9,7 @@ description: データ分析系ミドルウェアの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -21,7 +21,7 @@ description: データ分析系ミドルウェアの知見を記録していま�
 
 さまざまな形式のデータを保管できる。
 
-> - https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake
+> - [What is a Data Lake? Data Lake vs. Warehouse \| Microsoft Azure](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake)
 
 <br>
 
@@ -32,7 +32,7 @@ description: データ分析系ミドルウェアの知見を記録していま�
 - SNS
 - ストリーミングデータ
 
-> - https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake
+> - [What is a Data Lake? Data Lake vs. Warehouse \| Microsoft Azure](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake)
 
 <br>
 
@@ -44,7 +44,7 @@ description: データ分析系ミドルウェアの知見を記録していま�
 
 特定形式のデータのみを保管できる。
 
-> - https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake
+> - [What is a Data Lake? Data Lake vs. Warehouse \| Microsoft Azure](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake)
 
 <br>
 
@@ -55,7 +55,7 @@ description: データ分析系ミドルウェアの知見を記録していま�
 - トランザクションデータ
 - バッチ出力データ
 
-> - https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake
+> - [What is a Data Lake? Data Lake vs. Warehouse \| Microsoft Azure](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-a-data-lake)
 
 <br>
 
@@ -65,6 +65,6 @@ description: データ分析系ミドルウェアの知見を記録していま�
 
 また、汎用的な実装を横断的に提供する。
 
-> - https://www.montecarlodata.com/blog-data-mesh-vs-data-lake-whats-the-difference/
+> - [Data Mesh Vs Data Lake: Pros, Cons, & How To Decide](https://www.montecarlodata.com/blog-data-mesh-vs-data-lake-whats-the-difference/)
 
 <br>

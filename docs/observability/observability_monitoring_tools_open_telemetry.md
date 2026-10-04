@@ -23,8 +23,8 @@ OpenTelemetry を導入することで、テレメトリーごとに異なるイ
 
 ![open-telemetry_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_architecture.png)
 
-> - https://opentelemetry.io/docs/
-> - https://dzone.com/refcardz/getting-started-with-opentelemetry
+> - [Documentation \| OpenTelemetry](https://opentelemetry.io/docs/)
+> - [Getting Started With OpenTelemetry - DZone Refcards](https://dzone.com/refcardz/getting-started-with-opentelemetry)
 
 <br>
 
@@ -48,7 +48,7 @@ otel クライアントパッケージは、テレメトリーデータを API �
 
 ![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png)
 
-> - https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design
+> - [opentelemetry-specification/specification/library-guidelines.md at main · open-telemetry/opentelemetry-specification · GitHub](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design)
 
 <br>
 
@@ -60,7 +60,7 @@ otel クライアントパッケージは、テレメトリーデータを API �
 
 コンポーネント (テレメトリーソース、テレメトリーサブスクライバー) 間でテレメトリーを変換できる。
 
-> - https://opentelemetry.io/docs/specs/otel/schemas/#how-schemas-work
+> - [Telemetry Schemas \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/schemas/#how-schemas-work)
 
 <br>
 
@@ -79,7 +79,7 @@ otel クライアントパッケージは、テレメトリーデータを API �
 
 ![open-telemetry_schema](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_schema.png)
 
-> - https://opentelemetry.io/docs/specs/otel/schemas/#full-schema-aware
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.20.0/schema.go
+> - [Telemetry Schemas \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/schemas/#full-schema-aware)
+> - [opentelemetry-go/semconv/v1.20.0/schema.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.20.0/schema.go)
 
 <br>

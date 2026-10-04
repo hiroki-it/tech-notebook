@@ -9,7 +9,7 @@ description: パッケージ＠Node.jsの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -88,7 +88,7 @@ export const logger = pino({
 ```
 
 > - https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/
-> - https://qiita.com/P-man_Brown/items/6f124e32d9b3ceebe9e1
+> - [【Pino】levelを数値ではなく文字列にする方法 #Next.js - Qiita](https://qiita.com/P-man_Brown/items/6f124e32d9b3ceebe9e1)
 
 <br>
 
@@ -135,7 +135,7 @@ function getTraceId(headers) {
 }
 ```
 
-> - https://zenn.dev/itte/articles/ce93b081048691#%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B
+> - [Node.jsのロガー「pino」の使い方メモ](https://zenn.dev/itte/articles/ce93b081048691#%E7%8B%AC%E8%87%AA%E3%81%AE%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%82%92%E5%87%BA%E5%8A%9B%E3%81%99%E3%82%8B)
 > - https://wiblok.com/ja/nodejs/index/nodejs-request-info-processing-method/
 
 #### ▼ browser モジュール
@@ -219,7 +219,7 @@ export const logger = winston.createLogger({
 
 ログの出力先を設定する。
 
-> - https://github.com/winstonjs/winston/blob/master/docs/transports.md
+> - [winston/docs/transports.md at master · winstonjs/winston · GitHub](https://github.com/winstonjs/winston/blob/master/docs/transports.md)
 
 #### ▼ 環境変数
 
@@ -307,8 +307,8 @@ await new Promise((resolve, reject) => {
 }
 ```
 
-> - https://nodejs.org/api/child_process.html
-> - https://qiita.com/k96mz/items/43444cedbfc2a11a01ea#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89
+> - [Child process \| Node.js v26.10.0 Documentation](https://nodejs.org/api/child_process.html)
+> - [child\_process.spawnを理解する #Node.js - Qiita](https://qiita.com/k96mz/items/43444cedbfc2a11a01ea#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89)
 
 <br>
 
@@ -353,8 +353,8 @@ fs.writeFileSync("output.txt", "書き込む内容");
 // 後続の処理
 ```
 
-> - https://nodejs.org/api/fs.html#fswritefilesyncfile-data-options
-> - https://photo-tea.com/p/17/fs-write-nodejs/
+> - [File system \| Node.js v26.10.0 Documentation](https://nodejs.org/api/fs.html#fswritefilesyncfile-data-options)
+> - [fs.writeFileの使い方。Node.jsでファイルを書き込み\|おちゃカメラ。](https://photo-tea.com/p/17/fs-write-nodejs/)
 
 #### ▼ writeFile
 
@@ -381,8 +381,8 @@ fs.writeFile("output.txt", "書き込む内容", (err) => {
 // 後続の処理
 ```
 
-> - https://nodejs.org/api/fs.html#fswritefilefile-data-options-callback
-> - https://photo-tea.com/p/17/fs-write-nodejs/
+> - [File system \| Node.js v26.10.0 Documentation](https://nodejs.org/api/fs.html#fswritefilefile-data-options-callback)
+> - [fs.writeFileの使い方。Node.jsでファイルを書き込み\|おちゃカメラ。](https://photo-tea.com/p/17/fs-write-nodejs/)
 
 <br>
 
@@ -431,6 +431,6 @@ if (deletedObj) {
 }
 ```
 
-> - https://sunday-morning.app/posts/2020-03-18-node-cache
+> - [node-cacheを使ってメモリにキャッシュする](https://sunday-morning.app/posts/2020-03-18-node-cache)
 
 <br>

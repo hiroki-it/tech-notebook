@@ -9,7 +9,7 @@ description: kubeconform＠API仕様違反テストの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -29,7 +29,7 @@ Kubernetes リソースのスキーマ (カスタムリソースであれば CRD
 $ brew install kubeconform
 ```
 
-> - https://github.com/yannh/kubeconform#installation
+> - [GitHub - yannh/kubeconform: A FAST Kubernetes manifests validator, with support for Custom Resources! · GitHub](https://github.com/yannh/kubeconform#installation)
 
 <br>
 
@@ -67,7 +67,7 @@ JSON schema written to foo-v1beta1.json
 ```
 
 > - https://mixi-developers.mixi.co.jp/kubeconform-2bb477371e06#21e5
-> - https://zenn.dev/tayusa/articles/1aa96e6ceb838a#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E7%94%9F%E6%88%90
+> - [KubeconformをGitLab CIに組み込んで、k8sのマニフェストがAPIの仕様に沿うか検査する](https://zenn.dev/tayusa/articles/1aa96e6ceb838a#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E7%94%9F%E6%88%90)
 
 <br>
 
@@ -148,7 +148,7 @@ Kubernetes リソースのスキーマは、`default` エイリアス (`https://
 
 CRD のスキーマは、`https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json` にある。
 
-> - https://github.com/yannh/kubeconform#overriding-schemas-location
-> - https://github.com/yannh/kubeconform/blob/v0.6.3/pkg/registry/registry.go#L85-L101
+> - [GitHub - yannh/kubeconform: A FAST Kubernetes manifests validator, with support for Custom Resources! · GitHub](https://github.com/yannh/kubeconform#overriding-schemas-location)
+> - [kubeconform/pkg/registry/registry.go at v0.6.3 · yannh/kubeconform · GitHub](https://github.com/yannh/kubeconform/blob/v0.6.3/pkg/registry/registry.go#L85-L101)
 
 <br>

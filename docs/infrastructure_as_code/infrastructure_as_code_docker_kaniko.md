@@ -9,7 +9,7 @@ description: Kaniko＠Dockerの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,8 +27,8 @@ description: Kaniko＠Dockerの知見を記録しています。
 
 2026/02/28 時点でサポートが停止しており、BuildKit などの代替ツールに移行したほうがよい。
 
-> - https://qiita.com/chimame/items/7cf8356b7fb55c0990f9#%E3%81%AA%E3%82%93%E3%81%A7%E4%BD%BF%E3%81%86%E3%81%AE
-> - https://snyk.io/blog/building-docker-images-kubernetes/
+> - [コンテナイメージビルドが遅いなら、Kaniko使うと幸せになれる（全部入りRails Dockerfileを参考に） #GitLab - Qiita](https://qiita.com/chimame/items/7cf8356b7fb55c0990f9#%E3%81%AA%E3%82%93%E3%81%A7%E4%BD%BF%E3%81%86%E3%81%AE)
+> - [Building Docker images in Kubernetes \| Snyk](https://snyk.io/blog/building-docker-images-kubernetes/)
 
 <br>
 
@@ -90,7 +90,7 @@ build:
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination IMAGE_NAME:TAG
 ```
 
-> - https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#docker-hub
+> - [GitLab CI で kaniko を使って Docker Image をビルドしてみる #GitLab-CI - Qiita](https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#docker-hub)
 
 <br>
 
@@ -111,7 +111,7 @@ build:
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination ${ECR_URL}:TAG
 ```
 
-> - https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#aws-ecr
+> - [GitLab CI で kaniko を使って Docker Image をビルドしてみる #GitLab-CI - Qiita](https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#aws-ecr)
 
 <br>
 
@@ -134,6 +134,6 @@ build:
     - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination "asia.gcr.io/${PROJECT_ID}/image_name:TAG"
 ```
 
-> - https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#gcp-gcr
+> - [GitLab CI で kaniko を使って Docker Image をビルドしてみる #GitLab-CI - Qiita](https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#gcp-gcr)
 
 <br>

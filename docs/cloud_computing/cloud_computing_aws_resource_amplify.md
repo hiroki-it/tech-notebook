@@ -9,7 +9,7 @@ description: AWS Amplify＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -70,8 +70,8 @@ GitHub のブランチごとにアプリケーションの CI/CD パイプライ
 
 ただし、App Runner を使用したほうがよいかもしれない。
 
-> - https://zenn.dev/intercept6/articles/4016e9d61ab36761685d
-> - https://devblog.thebase.in/entry/2021/12/22/110000
+> - [App Runnerの登場とAmplify ConsoleのSSR対応でVPCレスなAWSアーキテクチャを夢見た話](https://zenn.dev/intercept6/articles/4016e9d61ab36761685d)
+> - [AWS App RunnerとGitHub Actionsでレビュー環境を構築する - BASEプロダクトチームブログ](https://devblog.thebase.in/entry/2021/12/22/110000)
 
 <br>
 
@@ -120,7 +120,7 @@ $ amplify publish
 
 #### ▼ 連携できるバージョン管理システム
 
-> - https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository
+> - [Getting started with deploying an app to Amplify Hosting - AWS Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository)
 
 #### ▼ 対応するバージョン管理リポジトリ構造
 
@@ -218,7 +218,7 @@ test:
     baseDirectory: <パス>
 ```
 
-> - https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html
-> - https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#deploy-nextjs-app
+> - [Configuring the build settings for an Amplify application - AWS Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html)
+> - [Deploying server-side rendered applications with Amplify Hosting - AWS Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/server-side-rendering-amplify.html#deploy-nextjs-app)
 
 <br>

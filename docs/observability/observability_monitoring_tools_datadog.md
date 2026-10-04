@@ -9,7 +9,7 @@ description: Datadog＠監視ツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -75,7 +75,7 @@ description: Datadog＠監視ツールの知見を記録しています。
 
 ステータスに応じてアラートするか否かの決め方については、以下のリンクを参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html
+> - [【IT技術の知見】監視＠可観測性 - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html)
 
 #### ▼ テンプレート変数
 
@@ -142,7 +142,7 @@ log.attributes.log_status }} ソース名：{{ log.tags.source }} リージョ�
 log.attributes.region }} {{ /is_alert }}
 ```
 
-> - https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b
+> - [Datadog でシステムにタグを付けるためのベストプラクティス \| Datadog](https://www.datadoghq.com/ja/blog/tagging-best-practices/#%e3%83%81%e3%83%bc%e3%83%a0%e7%94%a8%e3%81%ae%e8%87%aa%e5%8b%95%e7%9a%84%e3%81%8b%e3%81%a4%e5%8b%95%e7%9a%84%e3%81%aa%e3%82%a2%e3%83%a9%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b)
 
 <br>
 

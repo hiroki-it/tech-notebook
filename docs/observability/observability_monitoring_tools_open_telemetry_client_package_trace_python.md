@@ -9,7 +9,7 @@ description: Python＠OpenTelemetryクライアントパッケージの知見を
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -79,9 +79,9 @@ tracer = trace.get_tracer(__name__)
 ```
 
 > - https://opentelemetry.io/docs/instrumentation/python/manual/
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L1-L65
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L1-L79
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16
+> - [opentelemetry-operations-python/docs/examples/flask\_e2e/client.py at 7d7a5990a7125d3174af4c3a3443be3f03e7667c · GoogleCloudPlatform/opentelemetry-operations-python · GitHub](https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L1-L65)
+> - [opentelemetry-operations-python/docs/examples/flask\_e2e/server.py at 7d7a5990a7125d3174af4c3a3443be3f03e7667c · GoogleCloudPlatform/opentelemetry-operations-python · GitHub](https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L1-L79)
+> - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=16)
 
 ここでは、`requests` パッケージでリクエストを送信するため、`RequestsInstrumentor()` 関数による初期化も必要である。
 
@@ -97,9 +97,9 @@ print(response.text, flush=True)
 ```
 
 > - https://opentelemetry.io/docs/instrumentation/python/manual/
-> - https://opentelemetry-python-kinvolk.readthedocs.io/en/latest/instrumentation/requests/requests.html
-> - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69
+> - [OpenTelemetry requests Instrumentation — OpenTelemetry Python documentation](https://opentelemetry-python-kinvolk.readthedocs.io/en/latest/instrumentation/requests/requests.html)
+> - [Python インストルメンテーション サンプル \| Cloud Trace \| Google Cloud Documentation](https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export)
+> - [opentelemetry-operations-python/docs/examples/flask\_e2e/client.py at 7d7a5990a7125d3174af4c3a3443be3f03e7667c · GoogleCloudPlatform/opentelemetry-operations-python · GitHub](https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/client.py#L67-L69)
 
 #### ▼ 親スパン作成
 
@@ -132,9 +132,9 @@ def hello_world():
 ```
 
 > - https://opentelemetry.io/docs/instrumentation/python/manual/
-> - https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/flask/flask.html
-> - https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97
+> - [OpenTelemetry Flask Instrumentation — OpenTelemetry Python Contrib documentation](https://opentelemetry-python-contrib.readthedocs.io/en/latest/instrumentation/flask/flask.html)
+> - [Python インストルメンテーション サンプル \| Cloud Trace \| Google Cloud Documentation](https://cloud.google.com/trace/docs/setup/python-ot?hl=ja#export)
+> - [opentelemetry-operations-python/docs/examples/flask\_e2e/server.py at 7d7a5990a7125d3174af4c3a3443be3f03e7667c · GoogleCloudPlatform/opentelemetry-operations-python · GitHub](https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/blob/HEAD/docs/examples/flask_e2e/server.py#L81-L97)
 
 #### ▼ トレースコンテキスト注入と子スパン作成
 

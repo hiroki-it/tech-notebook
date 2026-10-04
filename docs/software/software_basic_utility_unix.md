@@ -9,7 +9,7 @@ description: Unix系標準ユーティリティ＠ユーティリティの知見
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -35,7 +35,7 @@ description: Unix系標準ユーティリティ＠ユーティリティの知見
 $ adduser -s /bin/false foo
 ```
 
-> - https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A
+> - [情報セキュリティの基本 ~セキュアなアカウント管理~ #Linux - Qiita](https://qiita.com/LostEnryu/items/9b0c363877581dc1171f#%E7%84%A1%E5%8A%B9%E3%81%AA%E3%82%B7%E3%82%A7%E3%83%AB%E3%81%AE%E8%A8%AD%E5%AE%9A)
 
 <br>
 
@@ -55,8 +55,8 @@ $ chmod 600 <ファイルへのパス>
 $ chmod 600 <ディレクトリへのパス>
 ```
 
-> - https://kazmax.zpp.jp/linux_beginner/chmod.html
-> - http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
+> - [アクセス権（パーミッション）の変更 - chmod](https://kazmax.zpp.jp/linux_beginner/chmod.html)
+> - [Linux：chmodでファイル、ディレクトリのパーミッションを変更 \| raining](http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4)
 
 <br>
 
@@ -70,7 +70,7 @@ $ chmod 600 <ディレクトリへのパス>
 $ chmod -R 600 <ディレクトリ名>/
 ```
 
-> - http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4
+> - [Linux：chmodでファイル、ディレクトリのパーミッションを変更 \| raining](http://raining.bear-life.com/linux/chmod%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%80%81%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E5%A4%89%E6%9B%B4)
 
 <br>
 
@@ -118,7 +118,7 @@ $ chmod -R 600 <ディレクトリ名>/
 | `g`      | ディレクトリやファイルの所有グループを表す。 |
 | `o`      | その他のアカウントを表す。                   |
 
-> - https://kazmax.zpp.jp/linux_beginner/chmod.html
+> - [アクセス権（パーミッション）の変更 - chmod](https://kazmax.zpp.jp/linux_beginner/chmod.html)
 
 **＊例＊**
 
@@ -142,7 +142,7 @@ $ chmod -R u+rwx foo
 
 現在の `chmod` コマンドの実行者以外に認可スコープを付与する。
 
-> - http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html
+> - [chmod](http://www.damp.tottori-u.ac.jp/~ooshida/unix/chmod.html)
 
 ```bash
 $ chmod go+r <ファイルへのパス>
@@ -156,7 +156,7 @@ $ chmod go+r <ファイルへのパス>
 
 ユーザー所有権、グループ所有権を変更する。
 
-> - https://webkaru.net/linux/chown-command/
+> - [Linuxコマンド【 chown 】ファイルの所有者やグループを変更 - Linux入門 - Webkaru](https://webkaru.net/linux/chown-command/)
 
 ```bash
 $ chown <ユーザー所有権>:<グループ所有権> <ファイル名>
@@ -449,8 +449,8 @@ HTTP プロトコルでリクエストを送信する。
 
 ダウンロード用のユーティリティは、`curl` コマンドよりも `wget` コマンドのほうがよい。
 
-> - https://yamitzky.hatenablog.com/entry/2016/05/13/204107
-> - https://qiita.com/toshihirock/items/c7279fdcf808d3128261
+> - [通信系テストのためのサイトのススメ：example.com、httpbin.org、badssl.com - 病みつきエンジニアブログ](https://yamitzky.hatenablog.com/entry/2016/05/13/204107)
+> - [httpbin を使って HTTP の検証をする #HTTP - Qiita](https://qiita.com/toshihirock/items/c7279fdcf808d3128261)
 > - https://medium.com/@topefolorunso/curl-or-wget-which-is-better-cdb5ddabadfb
 
 <br>
@@ -482,7 +482,7 @@ $ curl -sL https://example.com/foo
 $ curl -s https://example.com/foo.txt | grep version= | sed -e 's/^[^=]*=//'
 ```
 
-> - https://teratail.com/questions/315235#reply-439456
+> - [特定の文字の後の文字列を抜き出したい。 \| teratail](https://teratail.com/questions/315235#reply-439456)
 
 <br>
 
@@ -671,7 +671,7 @@ total                                 557167 390644      140909            74%  
 
 別途、`colordiff` パッケージを入れると見やすくなる。
 
-> - https://kimuson.dev/blog/shell/color_diff/
+> - [diff コマンドを見やすくする \| kimuson.dev](https://kimuson.dev/blog/shell/color_diff/)
 
 <br>
 
@@ -696,7 +696,7 @@ $ diff <(echo 'test') <(echo 'tests')
 +tests
 ```
 
-> - https://tech-blog.rakus.co.jp/entry/20220905/diff
+> - [【diff コマンド】オプションを駆使してファイル比較を楽にする - RAKUS Developers Blog \| ラクス エンジニアブログ](https://tech-blog.rakus.co.jp/entry/20220905/diff)
 
 <br>
 
@@ -807,7 +807,7 @@ $ VAR=FOO\\BAR
 $ echo $VAR
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1705/26/news013.html
+> - [【echo】コマンド――メッセージや環境変数を表示する：Linux基本コマンドTips（113） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1705/26/news013.html)
 
 <br>
 
@@ -892,8 +892,8 @@ I/O サイズ (最小 / 推奨): 512 バイト / 512 バイト
 /dev/vda3   4401152 41943006 37541855  17.9G Linux ファイルシステム C7A19722-4C31-4646-8ED4-DD4D86EFBC50
 ```
 
-> - https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B
-> - https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1
+> - [Linuxディスク関連コマンドまとめ #Linux - Qiita](https://qiita.com/aosho235/items/ad9a4764e77ba43c9d76#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%91%E3%83%BC%E3%83%86%E3%82%A3%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E8%AA%BF%E3%81%B9%E3%82%8B)
+> - [【 df 】コマンド――ディスクの空き領域を表示する：Linux基本コマンドTips（58） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1610/24/news017.html#sample1)
 
 <br>
 
@@ -1022,7 +1022,7 @@ $ fuser -muv <デバイスファイル名>
              root           4239   F....   (root)ssm-session-wor
 ```
 
-> - https://memo.morelents.com/umount-busy/
+> - [「umount target is busy」の解決方法 \| 初心者SEのとりあえずメモ日記](https://memo.morelents.com/umount-busy/)
 
 <br>
 
@@ -1057,7 +1057,7 @@ $ cat foo.txt | grep bar
 
 `grep` コマンドを忘れると、後続のコマンドに取得内容をパラメーターとして渡すことになる。このため、問題が生じる可能性もある。
 
-> - https://zenn.dev/kobayashiyabako/articles/85902e6095ab0cdb7cf5
+> - [grepを忘れただけなのに](https://zenn.dev/kobayashiyabako/articles/85902e6095ab0cdb7cf5)
 
 <br>
 
@@ -1132,7 +1132,7 @@ $ cat foo.txt | grep -i bar
 $ cat foo.txt | grep -v bar
 ```
 
-> - https://qiita.com/mtanabe/items/61bcdd3ab6b0eaa442a8
+> - [【linux】指定した単語を除外してgrepしたい【コマンド】 #Linux - Qiita](https://qiita.com/mtanabe/items/61bcdd3ab6b0eaa442a8)
 
 <br>
 
@@ -1207,7 +1207,7 @@ Linux/Ubuntu での iptables は、標準的な NAPT ルーターかつパケッ
 | `raw`      | 特定のパケットを処理せずにそのまま通過させる。                     | `PREROUTING`、`OUTPUT`                                    |
 | `security` | SELinux を適用する。                                               | `INPUT`、`OUTPUT`、`FORWARD`                              |
 
-> - https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - [iptables まとめ #Linux - Qiita](https://qiita.com/Tocyuki/items/6d90a1ec4dd8e991a1ce#%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 #### ▼ チェイン
 
@@ -1223,7 +1223,7 @@ Linux/Ubuntu での iptables は、標準的な NAPT ルーターかつパケッ
 | `PREROUTING`  | 宛先 IP アドレスとポートを変換する対象のパケットを定義する。ルーティング前に実行する。   |
 | `POSTROUTING` | 送信元 IP アドレスとポートを変換する対象のパケットを定義する。ルーティング後に実行する。 |
 
-> - https://christina04.hatenablog.com/entry/iptables-outline
+> - [iptablesの仕組みを図解 - Carpe Diem](https://christina04.hatenablog.com/entry/iptables-outline)
 
 <br>
 
@@ -1263,7 +1263,7 @@ Chain 名を指定できる。
 $ iptables -L <Chain名>
 ```
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> - [【iptables】パケットフィルタリングを設定する \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/)
 
 #### ▼ -S
 
@@ -1280,7 +1280,7 @@ $ iptables -S
 ...
 ```
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> - [【iptables】パケットフィルタリングを設定する \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/)
 
 <br>
 
@@ -1294,7 +1294,7 @@ Chain 内の各ルールを番号付きで取得する。
 $ iptables --line-number
 ```
 
-> - http://redcinfo-c.blogspot.com/2010/09/iptables.html
+> - [C's Memo: iptables 基本操作](http://redcinfo-c.blogspot.com/2010/09/iptables.html)
 
 #### ▼ -t (--table)
 
@@ -1304,7 +1304,7 @@ $ iptables --line-number
 $ iptables -L -t nat
 ```
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> - [【iptables】パケットフィルタリングを設定する \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/)
 
 #### ▼ -n (--numeric)
 
@@ -1314,7 +1314,7 @@ Chain の IP アドレスを名前解決せずに、IP アドレスのまま取�
 $ iptables -L -n
 ```
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> - [【iptables】パケットフィルタリングを設定する \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/)
 
 #### ▼ -v
 
@@ -1324,7 +1324,7 @@ Chain 内のルールを詳しく取得する。
 $ iptables -L -v
 ```
 
-> - https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/
+> - [【iptables】パケットフィルタリングを設定する \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20140512/556022/)
 
 <br>
 
@@ -1392,8 +1392,8 @@ $ sudo pgrep -f <コマンド名> | sudo xargs kill -9
 
 ローテションされた過去のログファイルでは、ファイル名の末尾に最終日付 (例：`-20220101`) をつけておく。
 
-> - http://proger.blog10.fc2.com/blog-entry-66.html
-> - https://milestone-of-se.nesuke.com/sv-basic/linux-basic/logrotate/
+> - [大規模ファイルを扱うには - 2Gの壁とLSF仕様 - 職業としてのプログラミング](http://proger.blog10.fc2.com/blog-entry-66.html)
+> - [【logrotate】の仕組みと書き方, オプション一覧, 設定反映と再起動について \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/linux-basic/logrotate/)
 
 <br>
 
@@ -1551,8 +1551,8 @@ $ lvdisplay
   Block device          253:1
 ```
 
-> - https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html
-> - https://centossrv.com/lvm-extend.shtml
+> - [LVMの情報を表示するには − ＠IT](https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/a065lvminfo.html)
+> - [論理ボリュームサイズ拡大 - CentOSで自宅サーバー構築](https://centossrv.com/lvm-extend.shtml)
 
 <br>
 
@@ -1562,7 +1562,7 @@ $ lvdisplay
 
 論理ボリュームに紐づくデバイスファイルを指定し、論理ボリュームのサイズを拡張する。
 
-> - https://centossrv.com/lvm-extend.shtml
+> - [論理ボリュームサイズ拡大 - CentOSで自宅サーバー構築](https://centossrv.com/lvm-extend.shtml)
 
 <br>
 
@@ -1570,7 +1570,7 @@ $ lvdisplay
 
 指定した条件で、論理ボリュームを拡張する。
 
-> - https://takuya-1st.hatenablog.jp/entry/2017/01/16/182756
+> - [LVMの lvextend でLVを拡張する - それマグで！](https://takuya-1st.hatenablog.jp/entry/2017/01/16/182756)
 
 **＊例＊**
 
@@ -1674,8 +1674,8 @@ $ swapoff /swap_volume
 $ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 ```
 
-> - https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html
-> - https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html
+> - [【 mount 】コマンド――ファイルシステムをマウントする：Linux基本コマンドTips（183） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1802/15/news035.html)
+> - [【 mountpoint 】コマンド――指定した場所がマウントポイントかどうかを調べる：Linux基本コマンドTips（186） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html)
 
 <br>
 
@@ -1685,8 +1685,8 @@ $ mount -t /dev/sdb1 <マウントポイントとなるディレクトリ>
 
 種類によって、パラメーターの入力方法が異なる。
 
-> - https://docs.oracle.com/cd/E19455-01/806-2717/6jbtqleh6/index.html
-> - https://webkaru.net/linux/mount-command/
+> - [ファイルシステムをマウントする (mount コマンド) (Solaris のシステム管理 (第 1 巻))](https://docs.oracle.com/cd/E19455-01/806-2717/6jbtqleh6/index.html)
+> - [Linuxコマンド【 mount 】ファイルシステムをマウントする - Linux入門 - Webkaru](https://webkaru.net/linux/mount-command/)
 
 NFS によるマウントを実行する。
 
@@ -1708,8 +1708,8 @@ $ mount -t nfs <NFSサーバーのホスト名>:<マウント元ディレクト�
 $ nc <IPアドレス/ドメイン> <ポート番号>
 ```
 
-> - https://qiita.com/chenglin/items/70f06e146db19de5a659
-> - https://qiita.com/kazuki-ma/items/267577ba25ee6af0dba9
+> - [ncコマンドでサービスの接続疎通確認 #Linux - Qiita](https://qiita.com/chenglin/items/70f06e146db19de5a659)
+> - [curl の無い container (alpine) 内から POST リクエストを送る方法 / Fire POST request without curl #Docker - Qiita](https://qiita.com/kazuki-ma/items/267577ba25ee6af0dba9)
 
 <br>
 
@@ -1733,7 +1733,7 @@ nc: connect to 127.0.0.1 port 9000 (tcp) failed: Connection refused
 Connection to 127.0.0.1 9000 port [tcp/*] succeeded!
 ```
 
-> - https://qiita.com/chenglin/items/70f06e146db19de5a659
+> - [ncコマンドでサービスの接続疎通確認 #Linux - Qiita](https://qiita.com/chenglin/items/70f06e146db19de5a659)
 
 <br>
 
@@ -1747,7 +1747,7 @@ TCP スリーウェイハンドシェイクを実行する。
 $ nc -t <IPアドレス/ドメイン> <ポート番号>
 ```
 
-> - https://envader.plus/course/16/scenario/1024
+> - [ncコマンドでサーバーと通信させよう！ \| エンベーダー](https://envader.plus/course/16/scenario/1024)
 
 <br>
 
@@ -1759,7 +1759,7 @@ $ nc -t <IPアドレス/ドメイン> <ポート番号>
 $ echo -en "GET / HTTP/1.1\n\n" | nc -v <ドメイン> 80
 ```
 
-> - https://qiita.com/yasuhiroki/items/d470829ab2e30ee6203f#%E7%B0%A1%E6%98%93%E3%81%BE%E3%81%A8%E3%82%81%E8%A1%A8
+> - [nc コマンド 使い方メモ #Linux - Qiita](https://qiita.com/yasuhiroki/items/d470829ab2e30ee6203f#%E7%B0%A1%E6%98%93%E3%81%BE%E3%81%A8%E3%82%81%E8%A1%A8)
 
 <br>
 
@@ -1817,7 +1817,7 @@ $ od -Ad -tx <ファイルへのパス>
 $ opsnssl enc -aes-256-cbc -d -in encrypted.txt -out plane.txt
 ```
 
-> - https://www.karakaram.com/file-encryption-using-openssl/
+> - [OpenSSLでファイルの暗号化と復号を行う - karakaram-blog](https://www.karakaram.com/file-encryption-using-openssl/)
 
 #### ▼ -e
 
@@ -1827,7 +1827,7 @@ $ opsnssl enc -aes-256-cbc -d -in encrypted.txt -out plane.txt
 $ opsnssl enc -aes-256-cbc -e -in plan.txt -out encrypted.txt
 ```
 
-> - https://www.karakaram.com/file-encryption-using-openssl/
+> - [OpenSSLでファイルの暗号化と復号を行う - karakaram-blog](https://www.karakaram.com/file-encryption-using-openssl/)
 
 <br>
 
@@ -1876,7 +1876,7 @@ AES-256-XTS
 aes256 => AES-256-CBC
 ```
 
-> - https://en.wikipedia.org/wiki/OpenSSL#Algorithms
+> - [OpenSSL - Wikipedia](https://en.wikipedia.org/wiki/OpenSSL#Algorithms)
 
 <br>
 
@@ -1942,7 +1942,7 @@ $ printenv | sort -f
 $ ps -aux | grep <検索文字>
 ```
 
-> - https://ten-snapon.com/archives/2646
+> - [あなたはps -ef派なのか、auxf派なのかをちょっとだけまとめてみた \| ten-snapon.com](https://ten-snapon.com/archives/2646)
 
 #### ▼ -ef
 
@@ -1955,7 +1955,7 @@ $ ps -aux | grep <検索文字>
 $ ps -ef | grep <検索文字>
 ```
 
-> - https://ten-snapon.com/archives/2646
+> - [あなたはps -ef派なのか、auxf派なのかをちょっとだけまとめてみた \| ten-snapon.com](https://ten-snapon.com/archives/2646)
 
 <br>
 
@@ -2047,7 +2047,7 @@ $ find ./* \
     -type f | xargs sed -i '' '2s/$/Foo/g'
 ```
 
-> - https://orebibou.com/ja/home/201602/20160227_001/
+> - [sedで指定した行の先頭・末尾に文字列を追記する \| 俺的備忘録 〜なんかいろいろ〜](https://orebibou.com/ja/home/201602/20160227_001/)
 
 <br>
 
@@ -2283,7 +2283,7 @@ getsockname(3, {sa_family=AF_INET, sin_port=htons(60714), sin_addr=inet_addr("*.
 $ strace -p <プロセスID>
 ```
 
-> - https://tech-lab.sios.jp/archives/17394
+> - [strace でプログラムの動きを追ってみよう \| SIOS Tech Lab](https://tech-lab.sios.jp/archives/17394)
 
 <br>
 
@@ -2299,8 +2299,8 @@ $ strace -p <プロセスID>
 | `fs` 系      | ファイルシステムのパラメーター |
 | `kernel` 系  | カーネルのパラメーター         |
 
-> - https://linuc.org/study/knowledge/527/
-> - https://qiita.com/For_Whom_The_Alarm_Tolls/items/e1b7bc6b630f74f78f63#sysctl
+> - [/etc/sysctl.conf - Linux技術者認定 LinuC \| LPI-Japan](https://linuc.org/study/knowledge/527/)
+> - [systemctlとsysctlの違い #初心者 - Qiita](https://qiita.com/For_Whom_The_Alarm_Tolls/items/e1b7bc6b630f74f78f63#sysctl)
 
 <br>
 
@@ -2316,7 +2316,7 @@ $ strace -p <プロセスID>
 $ tail foo.log
 ```
 
-> - https://eng-entrance.com/linux-command-tail
+> - [tailコマンドについて詳しくまとめました 【Linuxコマンド集】](https://eng-entrance.com/linux-command-tail)
 
 <br>
 
@@ -2468,7 +2468,7 @@ cat ./src.txt | tr "\n" "," > ./dst.txt
 
 OS の情報を表示する。
 
-> - https://linuc.spa-miz.com/2021/01/27/commands-that-are-used-to-verify-system-information/
+> - [unameコマンドでシステムやカーネル情報をサクッと確認 \| リナスク](https://linuc.spa-miz.com/2021/01/27/commands-that-are-used-to-verify-system-information/)
 
 <br>
 
@@ -2502,8 +2502,8 @@ $ uname -m
 amd64
 ```
 
-> - https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#2.-uname-%E3%81%A7-cpu-%E3%81%AE%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%8B
-> - https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu
+> - [M1 Mac の基礎知識｜M1 Mac で Docker を動かすための知識とノウハウ](https://zenn.dev/suzuki_hoge/books/2021-12-m1-docker-5ac3fe0b1c05de/viewer/2-arm#2.-uname-%E3%81%A7-cpu-%E3%81%AE%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%8C%E3%82%8F%E3%81%8B%E3%82%8B)
+> - [IT業界小話：インテルCPUなのに「AMD64」なのはなぜ？](https://blog.future.ad.jp/small-talk-about-it-001-why-is-amd64-even-though-the-intel-cpu)
 
 <br>
 
@@ -2541,7 +2541,7 @@ $ useradd foo
 $ useradd -m foo
 ```
 
-> - https://eng-entrance.com/linux-user-add
+> - [実は簡単！Linuxユーザの作成方法と追加方法](https://eng-entrance.com/linux-user-add)
 
 <br>
 
@@ -2561,7 +2561,7 @@ $ useradd -m foo
 $ watch -n 5 curl http://example.com
 ```
 
-> - https://www.baeldung.com/linux/curl-repeat-url-request
+> - [Repeat URL Request Using cURL \| Baeldung on Linux](https://www.baeldung.com/linux/curl-repeat-url-request)
 
 <br>
 
@@ -2603,7 +2603,7 @@ github.com (github.com) をDNSに問いあわせています... *.*.*.*
 保管完了 [44368/44368]
 ```
 
-> - https://prograshi.com/general/command/curl-o-and-wget-qo/
+> - [curlコマンドの-o-オプションとは何か？意味を実例で解説｜wgetの -qO-オプションの使い方](https://prograshi.com/general/command/curl-o-and-wget-qo/)
 
 <br>
 
@@ -2615,7 +2615,7 @@ github.com (github.com) をDNSに問いあわせています... *.*.*.*
 $ wget -O foo.gz http://www.example.com/
 ```
 
-> - https://www.karakaram.com/notes-on-curl-options/
+> - [curlオプション覚え書き - karakaram-blog](https://www.karakaram.com/notes-on-curl-options/)
 
 `-` の場合、標準出力に処理ログを出力することになり、ダウンロードは起こらない。
 

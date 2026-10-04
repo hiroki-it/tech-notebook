@@ -116,7 +116,7 @@ trigger_upstream_pipeline:
       -F variables[<変数名>]=<値>
 ```
 
-> - https://blogs.networld.co.jp/entry/2023/03/10/090000
+> - [GitとCI/CDに関する知識ゼロのSEが、GitLab.comのCI/CDパイプラインをAPIで外部から実行してみるだけ - ネットワールド らぼ](https://blogs.networld.co.jp/entry/2023/03/10/090000)
 
 <br>
 
@@ -208,7 +208,7 @@ GitLab CI の Job の設定ファイルを、中央集中的なリポジトリ�
 
 ポリレポ構成規約と相性がよい。
 
-> - https://tech-blog.optim.co.jp/entry/2022/06/16/100000
+> - [【CI/CD】GitLabのinclude機能を用いて、マイクロサービスのCI設定ファイルをテンプレート化する - OPTiM TECH BLOG](https://tech-blog.optim.co.jp/entry/2022/06/16/100000)
 
 #### ▼ 親リポジトリ側の CI テンプレート
 
@@ -542,7 +542,7 @@ setup-manifest:
     - cat manifest.yaml
 ```
 
-> - https://natsuhide.hatenablog.com/entry/2022/04/23/192420
+> - [GitLab の CI/CD でデプロイ先に応じて環境変数を変える - ひでメモ](https://natsuhide.hatenablog.com/entry/2022/04/23/192420)
 
 #### ▼ changes
 
@@ -552,7 +552,7 @@ workflow:
     - changes: foo/**/*
 ```
 
-> - https://blogs.networld.co.jp/entry/2022/11/01/090000?_gl=1*1wxr8jb*_gcl_au*MTg4NDE0MjQ1My4xNjkwODAzOTEy
+> - [GitとCI/CDに関する知識ゼロのSEによる、GitLabのCI/CDパイプラインのキーワード解説 ～workflow 編～ - ネットワールド らぼ](https://blogs.networld.co.jp/entry/2022/11/01/090000?_gl=1*1wxr8jb*_gcl_au*MTg4NDE0MjQ1My4xNjkwODAzOTEy)
 
 <br>
 
@@ -608,7 +608,7 @@ foo_job:
       - 3
 ```
 
-> - https://kazmax.zpp.jp/cmd/t/true.1.html
+> - [true - コマンド (プログラム) の説明 - Linux コマンド集 一覧表](https://kazmax.zpp.jp/cmd/t/true.1.html)
 
 <br>
 
@@ -723,7 +723,7 @@ bar_job:
       - ./node_module
 ```
 
-> - https://www.serversus.work/topics/927zjvmew2491o2n1oob/
+> - [Gitlab CI/CD Pipelineでキャッシュを使う方法 \| SERVERSUS](https://www.serversus.work/topics/927zjvmew2491o2n1oob/)
 > - https://docs.gitlab.com/ci/caching/#use-a-fallback-cache-key
 
 #### ▼ policy
@@ -841,7 +841,7 @@ foo_job:
 
 > - https://docs.gitlab.com/user/packages/dependency_proxy/#store-a-docker-image-in-dependency-proxy-cache
 > - https://docs.gitlab.com/user/packages/dependency_proxy/#use-the-dependency-proxy-for-docker-images
-> - https://brettops.io/blog/gitlab-docker-proxy/
+> - [Proxy Docker images via GitLab - Brett Weir](https://brettops.io/blog/gitlab-docker-proxy/)
 
 <br>
 
@@ -1053,8 +1053,8 @@ foo_job:
     - name: docker:19.03.0-dind
 ```
 
-> - https://blog.nestybox.com/2020/10/21/gitlab-dind.html
-> - https://www.ted027.com/post/gitlabci-services-host/
+> - [Securing GitLab CI pipelines with Sysbox \| Nestybox Blog Site](https://blog.nestybox.com/2020/10/21/gitlab-dind.html)
+> - [GitLab-CIでservicesのコンテナに対してアクセスする - 行けたら行く](https://www.ted027.com/post/gitlabci-services-host/)
 > - https://about.gitlab.com/blog/2019/07/31/docker-in-docker-with-docker-19-dot-03/#disable-tls
 
 #### ▼ 複数のコンテナを同時に起動するため
@@ -1090,8 +1090,8 @@ foo_job:
 
 > - https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300
 > - https://docs.avisi.cloud/blog/2021/07/31/running-kubernetes-on-gitlab-ci/
-> - https://containerinfra.com/blog/gitlab/2021-07-31-kubernetes-in-gitlab-ci/
-> - https://gist.github.com/trondhindenes/0307fbe9cda1164115353b4632a31ea9
+> - [https://containerinfra.com/blog/2021/07/31/running-kubernetes-on-gitlab-ci/](https://containerinfra.com/blog/gitlab/2021-07-31-kubernetes-in-gitlab-ci/)
+> - [Run KinD (Kubernetes in Docker) as part of Gitlab CI job · GitHub](https://gist.github.com/trondhindenes/0307fbe9cda1164115353b4632a31ea9)
 
 <br>
 
@@ -1253,7 +1253,7 @@ baz_job:
       when: never
 ```
 
-> - https://blogs.networld.co.jp/entry/2022/11/01/090000
+> - [GitとCI/CDに関する知識ゼロのSEによる、GitLabのCI/CDパイプラインのキーワード解説 ～workflow 編～ - ネットワールド らぼ](https://blogs.networld.co.jp/entry/2022/11/01/090000)
 > - https://stackoverflow.com/a/74885985
 
 <br>

@@ -9,7 +9,7 @@ description: ブロック＠Terraformの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,7 +27,7 @@ description: ブロック＠Terraformの知見を記録しています。
 
 リソースと Terraform の `resource` タイプはおおよそ一致している。
 
-> - https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html
+> - [Supported Resource Types for AWS Config - AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html)
 
 <br>
 
@@ -425,7 +425,7 @@ resource "aws_instance" "example" {
 ```
 
 > - https://www.terraform.io/language/values/locals
-> - https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416
+> - [【モダンTerraform】VariableとLocal Valuesの使い分けについて - febc技術メモ](https://febc-yamamoto.hatenablog.jp/entry/2018/01/30/185416)
 
 #### ▼ よくある
 
@@ -890,9 +890,9 @@ output "foo_kms_key_arn" {
 }
 ```
 
-> - https://discuss.hashicorp.com/t/output-from-a-module-that-has-conditional-count-0/17234/2
-> - https://github.com/hashicorp/terraform/issues/23222#issuecomment-547462883
-> - https://www.bioerrorlog.work/entry/terraform-count-resource-output
+> - [Output from a module that has conditional count = 0 - #2 by apparentlymart - Terraform - HashiCorp Discuss](https://discuss.hashicorp.com/t/output-from-a-module-that-has-conditional-count-0/17234/2)
+> - [Outputs on count=0 resources and null indexed attributes failing in Terraform \>=0.12.11 · Issue #23222 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/23222#issuecomment-547462883)
+> - [count制御したリソースをoutputする \| Terraform - BioErrorLog Tech Blog](https://www.bioerrorlog.work/entry/terraform-count-resource-output)
 
 <br>
 
@@ -1421,7 +1421,7 @@ resource "aws_foo" "foo" {
 }
 ```
 
-> - https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-4
+> - [\[Terraform\] 誤解されがちなignore\_changesの動き・機密情報はstateに保持されるのか？ \| DevelopersIO](https://dev.classmethod.jp/articles/note-about-terraform-ignore-changes/#toc-4)
 
 <br>
 
@@ -1636,7 +1636,7 @@ Terraform では、`variables` ブロックには定数を設定する必要が�
 
 `variables` ブロックの値を一度 `locals` ブロックで加工する必要がある。
 
-> - https://github.com/hashicorp/terraform/issues/17229#issuecomment-361352965
+> - [Interpolate variables inside .tfvars to define another variable · Issue #17229 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/17229#issuecomment-361352965)
 
 <br>
 
@@ -1644,7 +1644,7 @@ Terraform では、`variables` ブロックには定数を設定する必要が�
 
 Terraform のデータ型を JSON 文字列型に変換する。
 
-> - https://developer.hashicorp.com/terraform/language/functions/jsonencode
-> - https://qiita.com/kanga/items/1ae96b7da2a7d76b070e#%E3%81%AA%E3%82%93%E3%81%A7%E5%8B%95%E3%81%8F%E3%81%8B
+> - [jsonencode - Functions - Configuration Language \| Terraform \| HashiCorp Developer](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
+> - [Terraformのjsonencode関数にはJSONを入れても動くよ #AWS - Qiita](https://qiita.com/kanga/items/1ae96b7da2a7d76b070e#%E3%81%AA%E3%82%93%E3%81%A7%E5%8B%95%E3%81%8F%E3%81%8B)
 
 <br>

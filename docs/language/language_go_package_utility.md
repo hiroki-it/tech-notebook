@@ -9,7 +9,7 @@ description: ユーティリティパッケージ@Goの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -17,7 +17,7 @@ description: ユーティリティパッケージ@Goの知見を記録してい�
 
 Go のソースコードに変更があれば、ホットリロードし、コンパイルし直す。
 
-> - https://github.com/air-verse/air
+> - [GitHub - air-verse/air: ☁️ Live reload for Go apps · GitHub](https://github.com/air-verse/air)
 
 <br>
 
@@ -35,7 +35,7 @@ Go のソースコードに変更があれば、ホットリロードし、コ�
 
 ### aws-sdk-go-v2 とは
 
-> - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions
+> - [sdk package versions - github.com/aws/aws-sdk-go-v2 - Go Packages](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2?tab=versions)
 
 <br>
 
@@ -43,18 +43,18 @@ Go のソースコードに変更があれば、ホットリロードし、コ�
 
 汎用的な関数が同梱されている。
 
-> - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions
+> - [aws package versions - github.com/aws/aws-sdk-go-v2/aws - Go Packages](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws?tab=versions)
 
 ポインタ型から string 型に変換する `ToString()` 関数や、反対に string 型からポインタ型に変換する `String()` 関数をよく使用する。
 
-> - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String
-> - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString
+> - [aws package - github.com/aws/aws-sdk-go-v2/aws - Go Packages](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#String)
+> - [aws package - github.com/aws/aws-sdk-go-v2/aws - Go Packages](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/aws#ToString)
 
 #### ▼ service パッケージ
 
 記入中...
 
-> - https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions
+> - [amplify package versions - github.com/aws/aws-sdk-go-v2/service/amplify - Go Packages](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/amplify?tab=versions)
 
 <br>
 
@@ -247,7 +247,7 @@ func main() {
 }
 ```
 
-> - https://github.com/go-chi/chi
+> - [GitHub - go-chi/chi: lightweight, idiomatic and composable router for building Go HTTP services · GitHub](https://github.com/go-chi/chi)
 
 <br>
 
@@ -259,7 +259,7 @@ func main() {
 
 似たものとして、ターミナル上にドキュメントを表示する `go doc` コマンドがある。
 
-> - https://www.linkedin.com/pulse/how-generate-documentation-from-code-golang-alex-guidi/
+> - [How to generate documentation from code with Golang?](https://www.linkedin.com/pulse/how-generate-documentation-from-code-golang-alex-guidi/)
 
 <br>
 
@@ -273,7 +273,7 @@ func main() {
 $ godoc -http=:8080
 ```
 
-> - https://pkg.go.dev/golang.org/x/tools/cmd/godoc
+> - [godoc command - golang.org/x/tools/cmd/godoc - Go Packages](https://pkg.go.dev/golang.org/x/tools/cmd/godoc)
 
 <br>
 
@@ -313,7 +313,7 @@ go_doc:
 
 #### ▼ 一覧
 
-> - https://github.com/princjef/gomarkdoc/blob/master/cmd/gomarkdoc/command.go#L30-L44
+> - [gomarkdoc/cmd/gomarkdoc/command.go at master · princjef/gomarkdoc · GitHub](https://github.com/princjef/gomarkdoc/blob/master/cmd/gomarkdoc/command.go#L30-L44)
 
 #### ▼ `{{.Dir}}`
 
@@ -343,7 +343,7 @@ repository:
 $ gomarkdoc . --config .gomarkdoc.yml
 ```
 
-> - https://github.com/princjef/gomarkdoc?tab=readme-ov-file#additional-options
+> - [GitHub - princjef/gomarkdoc: Generate markdown documentation for Go (golang) code · GitHub](https://github.com/princjef/gomarkdoc?tab=readme-ov-file#additional-options)
 
 <br>
 
@@ -390,7 +390,7 @@ $  gomarkdoc . \
      --repository.url https://github.com/hiroki-hasegawa/foo-repository.git
 ```
 
-> - https://github.com/princjef/gomarkdoc?tab=readme-ov-file#additional-options
+> - [GitHub - princjef/gomarkdoc: Generate markdown documentation for Go (golang) code · GitHub](https://github.com/princjef/gomarkdoc?tab=readme-ov-file#additional-options)
 
 <br>
 
@@ -420,8 +420,8 @@ $ go-callvis .
 no main packages
 ```
 
-> - https://github.com/ondrajz/go-callvis/issues/7#issuecomment-280853441
-> - https://qiita.com/mnuma/items/fa25886c39fe991ecdfd#%E4%BD%BF%E3%81%84%E6%96%B9
+> - [Visualize call graph of Go libs · Issue #7 · ondrajz/go-callvis · GitHub](https://github.com/ondrajz/go-callvis/issues/7#issuecomment-280853441)
+> - [コールグラフで始めるGoコードリーディング #Go - Qiita](https://qiita.com/mnuma/items/fa25886c39fe991ecdfd#%E4%BD%BF%E3%81%84%E6%96%B9)
 
 <br>
 
@@ -433,7 +433,7 @@ Go のビルトインパッケージは除いてグラフ化する。
 $ go-callvis -nostd
 ```
 
-> - https://qiita.com/mnuma/items/fa25886c39fe991ecdfd#%E4%BD%BF%E3%81%84%E6%96%B9
+> - [コールグラフで始めるGoコードリーディング #Go - Qiita](https://qiita.com/mnuma/items/fa25886c39fe991ecdfd#%E4%BD%BF%E3%81%84%E6%96%B9)
 
 <br>
 
@@ -445,7 +445,7 @@ $ go-callvis -nostd
 $ go-callvis -nointer
 ```
 
-> - https://qiita.com/mnuma/items/fa25886c39fe991ecdfd#%E4%BD%BF%E3%81%84%E6%96%B9
+> - [コールグラフで始めるGoコードリーディング #Go - Qiita](https://qiita.com/mnuma/items/fa25886c39fe991ecdfd#%E4%BD%BF%E3%81%84%E6%96%B9)
 
 <br>
 
@@ -471,8 +471,8 @@ gRPC に関するミドルウェアパターン (例：認証、ロギング、�
 
 これを `Chain()` 関数に渡せば、gRPC でさまざまなインターセプターを簡単に実行できる。
 
-> - https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors
-> - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152
+> - [GitHub - grpc-ecosystem/go-grpc-middleware: Golang gRPC Middlewares: interceptor chaining, auth, logging, retries and more. · GitHub](https://github.com/grpc-ecosystem/go-grpc-middleware/tree/main#interceptors)
+> - [go-grpc-middleware/examples/server/main.go at v2.0.0 · grpc-ecosystem/go-grpc-middleware · GitHub](https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/server/main.go#L136-L152)
 
 <br>
 
@@ -480,7 +480,7 @@ gRPC に関するミドルウェアパターン (例：認証、ロギング、�
 
 SQL の発行時に、SQL を属性に持つスパンを自動的に作成する。
 
-> - https://github.com/go-gorm/opentelemetry
+> - [GitHub - go-gorm/opentelemetry: opentelemetry for gorm · GitHub](https://github.com/go-gorm/opentelemetry)
 
 <br>
 
@@ -490,8 +490,8 @@ SQL の発行時に、SQL を属性に持つスパンを自動的に作成する
 
 HTTP で受信したリクエストを gRPC に変換して送信する。
 
-> - https://github.com/grpc-ecosystem/grpc-gateway
-> - https://grpc-ecosystem.github.io/grpc-gateway/
+> - [GitHub - grpc-ecosystem/grpc-gateway: gRPC to JSON proxy generator following the gRPC HTTP spec · GitHub](https://github.com/grpc-ecosystem/grpc-gateway)
+> - [gRPC-Gateway \| gRPC-Gateway Documentation Website](https://grpc-ecosystem.github.io/grpc-gateway/)
 
 <br>
 
@@ -537,7 +537,7 @@ func matcher(key string) (string, bool) {
 }
 ```
 
-> - https://note.com/dd_techblog/n/nd902b7ef8088
+> - [grpc-gateway を実運用で使うための追加実装｜電通デジタル｜Tech Blog​](https://note.com/dd_techblog/n/nd902b7ef8088)
 > - https://yuki-toida.hatenablog.com/entry/2018/10/21/210000
 
 <br>
@@ -548,7 +548,7 @@ func matcher(key string) (string, bool) {
 
 Go で gRPC を扱えるようにする。
 
-> - https://github.com/grpc/grpc-go
+> - [GitHub - grpc/grpc-go: The Go language implementation of gRPC. HTTP/2 based RPC · GitHub](https://github.com/grpc/grpc-go)
 
 <br>
 
@@ -566,7 +566,7 @@ func Dial(target string, opts ...DialOption) (*ClientConn, error) {
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc#Dial
+> - [grpc package - google.golang.org/grpc - Go Packages](https://pkg.go.dev/google.golang.org/grpc#Dial)
 
 #### ▼ DialContext
 
@@ -597,11 +597,11 @@ func main() {
 }
 ```
 
-> - https://pkg.go.dev/google.golang.org/grpc#DialContext
+> - [grpc package - google.golang.org/grpc - Go Packages](https://pkg.go.dev/google.golang.org/grpc#DialContext)
 
 #### ▼ NewClient
 
-> - https://pkg.go.dev/google.golang.org/grpc#NewClient
+> - [grpc package - google.golang.org/grpc - Go Packages](https://pkg.go.dev/google.golang.org/grpc#NewClient)
 
 #### ▼ WithBlock
 
@@ -772,9 +772,9 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-> - https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131
-> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
+> - [Cloud Pub/Sub経由でトレースを取得する](https://zenn.dev/google_cloud_jp/articles/20230626-pubsub-trace#%E4%B8%80%E8%88%AC%E7%9A%84%E3%81%AA%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E6%83%85%E5%A0%B1%E3%81%AE%E4%BC%9D%E6%90%AC%E6%89%8B%E9%A0%86)
+> - [opentelemetry-go-contrib/instrumentation/net/http/otelhttp/handler.go at instrumentation/net/http/otelhttp/v0.42.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/handler.go#L131)
+> - [【OpenTelemetry】カスタムPropagatorでバッチや非同期処理のTraceを行う - ymtdzzz.dev](https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/)
 
 #### ▼ Inject
 
@@ -805,9 +805,9 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114
+> - [opentelemetry-go-contrib/instrumentation/net/http/otelhttp/transport.go at instrumentation/net/http/otelhttp/v0.42.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/net/http/otelhttp/v0.42.0/instrumentation/net/http/otelhttp/transport.go#L114)
 > - https://uptrace.dev/opentelemetry/opentelemetry-traceparent.html
-> - https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/
+> - [【OpenTelemetry】カスタムPropagatorでバッチや非同期処理のTraceを行う - ymtdzzz.dev](https://ymtdzzz.dev/post/opentelemetry-async-tracing-with-custom-propagator/)
 
 <br>
 
@@ -857,7 +857,7 @@ func fooHandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier
+> - [propagation package - go.opentelemetry.io/otel/propagation - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier)
 
 Gin でも同様にして、HTTP ヘッダーを `HeaderCarrier` に渡す。
 
@@ -893,7 +893,7 @@ func fooHandler(ginCtx *gin.Context) {
 
 渡された複数の Propagator からなる Composite Propagator を作成する。
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#NewCompositeTextMapPropagator
+> - [propagation package - go.opentelemetry.io/otel/propagation - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/propagation#NewCompositeTextMapPropagator)
 
 <br>
 
@@ -935,7 +935,7 @@ func main()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#TextMapPropagator
+> - [propagation package - go.opentelemetry.io/otel/propagation - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/propagation#TextMapPropagator)
 
 <br>
 
@@ -986,7 +986,7 @@ func fooHandler(ginCtx *gin.Context) {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#ContextWithSpanContext
+> - [trace package - go.opentelemetry.io/otel/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/trace#ContextWithSpanContext)
 
 <br>
 
@@ -1029,7 +1029,7 @@ func foo()  {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L167-L177
+> - [opentelemetry-go/sdk/trace/span.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L167-L177)
 
 <br>
 
@@ -1083,7 +1083,7 @@ func fooHandler(ctx context.Context) {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L421-L443
+> - [opentelemetry-go/sdk/trace/span.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L421-L443)
 
 <br>
 
@@ -1133,8 +1133,8 @@ func fooHandler(ctx context.Context) {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L179-L199
-> - https://opentelemetry.io/docs/languages/go/instrumentation/#set-span-status
+> - [opentelemetry-go/sdk/trace/span.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/span.go#L179-L199)
+> - [Instrumentation \| OpenTelemetry](https://opentelemetry.io/docs/languages/go/instrumentation/#set-span-status)
 
 <br>
 
@@ -1152,7 +1152,7 @@ type SpanContext struct {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContext
+> - [trace package - go.opentelemetry.io/otel/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContext)
 
 <br>
 
@@ -1218,7 +1218,7 @@ func fooHandler(ginCtx *gin.Context) {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContextFromContext
+> - [trace package - go.opentelemetry.io/otel/trace - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/trace#SpanContextFromContext)
 
 <br>
 
@@ -1257,7 +1257,7 @@ func fooHandler(ginCtx *gin.Context) {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/context.go#L45
+> - [opentelemetry-go/trace/context.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/trace/context.go#L45)
 
 <br>
 
@@ -1291,7 +1291,7 @@ func fooHandler(ginCtx *gin.Context) {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/tracer.go#L24-L56
+> - [opentelemetry-go/sdk/trace/tracer.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/sdk/trace/tracer.go#L24-L56)
 
 <br>
 
@@ -1335,7 +1335,7 @@ func main() {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin#Middleware
+> - [otelgin package - go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin#Middleware)
 
 <br>
 
@@ -1425,7 +1425,7 @@ func (p *otelPlugin) after() gormHookFunc {
 }
 ```
 
-> - https://github.com/uptrace/opentelemetry-go-extra/blob/v0.2.4/otelgorm/otelgorm.go#L101-L169
+> - [opentelemetry-go-extra/otelgorm/otelgorm.go at v0.2.4 · uptrace/opentelemetry-go-extra · GitHub](https://github.com/uptrace/opentelemetry-go-extra/blob/v0.2.4/otelgorm/otelgorm.go#L101-L169)
 
 <br>
 
@@ -1458,7 +1458,7 @@ func NewDb()  {
 }
 ```
 
-> - https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelgorm
+> - [opentelemetry-go-extra/otelgorm at main · uptrace/opentelemetry-go-extra · GitHub](https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelgorm)
 
 <br>
 
@@ -1474,10 +1474,10 @@ func NewDb()  {
 
 `otelgrpc` パッケージを使用しない場合、これらを自前で実装する必要がある。
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc
-> - https://blog.cybozu.io/entry/2023/04/12/170000
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L86-L91
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L302-L307
+> - [otelgrpc package - go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc)
+> - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go at main · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L86-L91)
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go at main · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/main/instrumentation/google.golang.org/grpc/otelgrpc/interceptor.go#L302-L307)
 
 <br>
 
@@ -1495,7 +1495,7 @@ type metadataSupplier struct {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L16-L18
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/metadata\_supplier.go at instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.50.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L16-L18)
 
 <br>
 
@@ -1567,7 +1567,7 @@ func inject(ctx context.Context, propagators propagation.TextMapPropagator) cont
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L65-L74
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/metadata\_supplier.go at instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L65-L74)
 
 #### ▼ NewClientHandler
 
@@ -1634,7 +1634,7 @@ func extract(ctx context.Context, propagators propagation.TextMapPropagator) con
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L89-L98
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/metadata\_supplier.go at instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/instrumentation/google.golang.org/grpc/otelgrpc/v0.49.0/instrumentation/google.golang.org/grpc/otelgrpc/metadata_supplier.go#L89-L98)
 
 #### ▼ NewServerHandler
 
@@ -1735,7 +1735,7 @@ func main()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters#Not
+> - [filters package - go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc/filters#Not)
 
 <br>
 
@@ -1785,10 +1785,10 @@ gRPC の場合、リモートプロシージャーコールなため、スパン
 
 `otelhttp` パッケージを使用しない場合、これらを自前で実装する必要がある。
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
-> - https://blog.cybozu.io/entry/2023/04/12/170000
-> - https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#incoming-request
-> - https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#outgoing-request
+> - [otelhttp package - go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp)
+> - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
+> - [OpenTelemetry で始める分散トレース #Go - Qiita](https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#incoming-request)
+> - [OpenTelemetry で始める分散トレース #Go - Qiita](https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#outgoing-request)
 
 <br>
 
@@ -1821,8 +1821,8 @@ func main() {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewTransport
-> - https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#outgoing-request
+> - [otelhttp package - go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewTransport)
+> - [OpenTelemetry で始める分散トレース #Go - Qiita](https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#outgoing-request)
 
 <br>
 
@@ -1857,8 +1857,8 @@ func main() {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewHandler
-> - https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#incoming-request
+> - [otelhttp package - go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#NewHandler)
+> - [OpenTelemetry で始める分散トレース #Go - Qiita](https://qiita.com/atsu_kg/items/c3ee8141e4638957a947#incoming-request)
 
 #### ▼ WithFilter
 
@@ -1917,7 +1917,7 @@ func SetSpanOptions() otelhttp.Option {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#WithSpanOptions
+> - [otelhttp package - go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#WithSpanOptions)
 
 #### ▼ WithSpanNameFormatter
 
@@ -1948,7 +1948,7 @@ func SetSpanNameFormatter(next http.Handler) http.Handler {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#WithSpanNameFormatter
+> - [otelhttp package - go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp#WithSpanNameFormatter)
 
 <br>
 
@@ -1962,7 +1962,7 @@ OTLP 形式でテレメトリーを送信する Exporter を作成する。
 
 OpenTelemetry Collector を使用している場合、Receiver の gRPC 用のエンドポイントに合わせる。
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+> - [otlptracegrpc package - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc)
 
 <br>
 
@@ -1976,7 +1976,7 @@ OTLP 形式でテレメトリーを送信する Exporter を作成する。
 
 OpenTelemetry Collector を使用している場合、Receiver の HTTP 用のエンドポイントに合わせる。
 
-> - https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+> - [otlptracehttp package - go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp)
 
 <br>
 
@@ -2019,7 +2019,7 @@ func NewDB(
 )
 ```
 
-> - https://google.github.io/sqlcommenter/go/database_sql/
+> - [sqlcommenter](https://google.github.io/sqlcommenter/go/database_sql/)
 
 <br>
 
@@ -2059,8 +2059,8 @@ Carrier のインターフェースである。
 
 `otel/propagation` パッケージには、HTTP ヘッダーを Carrier として使用するための `TextMapCarrier` インターフェースの実装がある。
 
-> - https://qiita.com/behiron/items/cc02e77ed41103f4a195
-> - https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier
+> - [BaggageをREST/gRPC/SQSで伝播できるようにした話 #Go - Qiita](https://qiita.com/behiron/items/cc02e77ed41103f4a195)
+> - [propagation package - go.opentelemetry.io/otel/propagation - Go Packages](https://pkg.go.dev/go.opentelemetry.io/otel/propagation#HeaderCarrier)
 
 <br>
 
@@ -2076,7 +2076,7 @@ Propagator を複数持つ。
 
 ### propagator/autoprop とは
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#example-NewTextMapPropagator-Environment
+> - [autoprop package - go.opentelemetry.io/contrib/propagators/autoprop - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#example-NewTextMapPropagator-Environment)
 
 <br>
 
@@ -2132,7 +2132,7 @@ func main()  {
 }
 ```
 
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#NewTextMapPropagator
+> - [autoprop package - go.opentelemetry.io/contrib/propagators/autoprop - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/propagators/autoprop#NewTextMapPropagator)
 
 <br>
 
@@ -2326,7 +2326,7 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/oyasumipants/articles/6344ba08ee93b7#zap.sync%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - [【Go】ロギングライブラリ zap の概要を掴む](https://zenn.dev/oyasumipants/articles/6344ba08ee93b7#zap.sync%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 #### ▼ With
 
@@ -2384,7 +2384,7 @@ func main() {
 }
 ```
 
-> - https://pkg.go.dev/go.uber.org/zap#Logger.With
+> - [zap package - go.uber.org/zap - Go Packages](https://pkg.go.dev/go.uber.org/zap#Logger.With)
 
 <br>
 
@@ -2427,7 +2427,7 @@ func main() {
 }
 ```
 
-> - https://yuya-hirooka.hatenablog.com/entry/2022/02/20/135714
+> - [GoのロギングライブラリZapを試す - へのへのもへじ](https://yuya-hirooka.hatenablog.com/entry/2022/02/20/135714)
 
 #### ▼ With
 
@@ -2485,6 +2485,6 @@ func main() {
 }
 ```
 
-> - https://pkg.go.dev/go.uber.org/zap#SugaredLogger.With
+> - [zap package - go.uber.org/zap - Go Packages](https://pkg.go.dev/go.uber.org/zap#SugaredLogger.With)
 
 <br>

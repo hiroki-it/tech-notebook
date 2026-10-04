@@ -9,7 +9,7 @@ description: Grafana＠監視ツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ Grafana は、ダッシュボードとストレージから構成されている
 
 ![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images//grafana_architecture.png)
 
-> - https://community.grafana.com/t/architecture-of-grafana/50090
+> - [Architecture of Grafana - Developers & API - Grafana Labs Community Forums](https://community.grafana.com/t/architecture-of-grafana/50090)
 
 <br>
 
@@ -44,8 +44,8 @@ Grafana は、ダッシュボードとストレージから構成されている
 - Thanos
 - VictoriaMetrics
 
-> - https://qiita.com/MetricFire/items/15e024aea40785be622c
-> - https://qiita.com/MetricFire/items/15e024aea40785be622c
+> - [【Grafana】利用可能なデータソースと、そのデータを可視化する方法をご紹介 #grafana - Qiita](https://qiita.com/MetricFire/items/15e024aea40785be622c)
+> - [【Grafana】利用可能なデータソースと、そのデータを可視化する方法をご紹介 #grafana - Qiita](https://qiita.com/MetricFire/items/15e024aea40785be622c)
 
 <br>
 
@@ -70,6 +70,6 @@ Grafana のコンポーネントを部分的にマネージドにしたサービ
 
 執筆時点 (2023/05/16 時点) では、AWS マネージドにしてくれる。
 
-> - https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-vpc.html
+> - [Connect to data sources or notification channels in Amazon VPC from Amazon Managed Grafana - Amazon Managed Grafana](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-vpc.html)
 
 <br>

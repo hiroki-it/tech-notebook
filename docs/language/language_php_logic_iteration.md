@@ -9,7 +9,7 @@ description: 反復ロジック＠PHPの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -99,7 +99,7 @@ foreach ($a as $foo) {
 
 複雑な走査をするために、ビルトイン関数が用意されている。
 
-> - https://www.php.net/manual/ja/ref.array.php
+> - [PHP: 配列 関数 - Manual](https://www.php.net/manual/ja/ref.array.php)
 
 #### ▼ 配列の値へのアクセス
 

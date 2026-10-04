@@ -29,7 +29,7 @@ Deployment よりも複雑な手法で Pod をデプロイできる。
 
 Progressive Delivery を使用する場合、詳細を設定する。
 
-> - https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml
+> - [argo-cd/docs/operator-manual/application.yaml at v2.6.0 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/blob/v2.6.0/docs/operator-manual/application.yaml)
 
 #### ▼ successfulRunHistoryLimit
 
@@ -103,8 +103,8 @@ spec:
   # ここで Deployment と同じような設定を実装する
 ```
 
-> - https://argoproj.github.io/argo-rollouts/features/bluegreen/
-> - https://argoproj.github.io/argo-rollouts/concepts/#blue-green
+> - [BlueGreen - Argo Rollouts - Kubernetes Progressive Delivery Controller](https://argoproj.github.io/argo-rollouts/features/bluegreen/)
+> - [Concepts - Argo Rollouts - Kubernetes Progressive Delivery Controller](https://argoproj.github.io/argo-rollouts/concepts/#blue-green)
 > - https://korattablog.com/2020/06/19/argocd%E3%81%AB%E3%82%88%E3%82%8Bbluegreen%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%82%92%E8%A9%A6%E3%81%99/
 
 #### ▼ canary
@@ -136,8 +136,8 @@ spec:
   # ここで Deployment と同じような設定を実装する
 ```
 
-> - https://argoproj.github.io/argo-rollouts/features/canary/
-> - https://argoproj.github.io/argo-rollouts/concepts/#canary
+> - [Canary - Argo Rollouts - Kubernetes Progressive Delivery Controller](https://argoproj.github.io/argo-rollouts/features/canary/)
+> - [Concepts - Argo Rollouts - Kubernetes Progressive Delivery Controller](https://argoproj.github.io/argo-rollouts/concepts/#canary)
 > - https://korattablog.com/2020/06/19/argocd%E3%81%AEcanary-deployment%E3%82%92%E8%A9%A6%E3%81%99/
 
 Istio では、VirtualService と DestinationRule を使用してカナリアリリースを実装できる。
@@ -168,7 +168,7 @@ spec:
             duration: 10
 ```
 
-> - https://argo-rollouts.readthedocs.io/en/latest/features/traffic-management/istio/
+> - [Istio - Argo Rollouts - Kubernetes Progressive Delivery Controller](https://argo-rollouts.readthedocs.io/en/latest/features/traffic-management/istio/)
 
 <br>
 

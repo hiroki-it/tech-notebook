@@ -9,7 +9,7 @@ description: Glue＠AWSリソースの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -36,6 +36,6 @@ description: Glue＠AWSリソースの知見を記録しています。
 
 Apache Spark を使用して、大きなサイズのデータを高速に並列処理できる。
 
-> - https://docs.aws.amazon.com/glue/latest/dg/spark_and_pyspark.html
+> - [AWS Glue Spark and PySpark jobs - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/spark_and_pyspark.html)
 
 <br>

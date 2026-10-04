@@ -9,7 +9,7 @@ description: 設定ファイル＠Falcoの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,7 +31,7 @@ $ kubectl create namespace falco
 $ helm install <Helmリリース名> <チャートリポジトリ名>/falco -n falco --version <バージョンタグ>
 ```
 
-> - https://falco.org/blog/intro-k8s-security-monitoring/#setting-falco-up-on-kubernetes
+> - [An Introduction to Kubernetes Security using Falco \| Falco](https://falco.org/blog/intro-k8s-security-monitoring/#setting-falco-up-on-kubernetes)
 
 <br>
 
@@ -57,7 +57,7 @@ rules_file:
 ```
 
 > - https://github.com/falcosecurity/falco/tree/master/rules
-> - https://qiita.com/EnKUMA/items/d03f0621a631a0a220cc#falco%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90
+> - [Falcoを利用したPod内実行コマンドのログ取得 #kubernetes - Qiita](https://qiita.com/EnKUMA/items/d03f0621a631a0a220cc#falco%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB%E4%BD%9C%E6%88%90)
 
 <br>
 

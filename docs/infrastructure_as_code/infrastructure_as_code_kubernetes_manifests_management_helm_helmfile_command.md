@@ -9,7 +9,7 @@ description: コマンド＠Helmfileの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -26,7 +26,7 @@ description: コマンド＠Helmfileの知見を記録しています。
 $ helmfile <サブコマンド>
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#cli-reference
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#cli-reference)
 
 #### ▼ -e
 
@@ -36,7 +36,7 @@ Helm リリース対象の実行環境名 (dev、stg、prd) を設定する。
 $ helmfile -e prd <コマンド>
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#cli-reference
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#cli-reference)
 
 **＊例＊**
 
@@ -56,7 +56,7 @@ $ helmfile -e prd apply
 $ helmfile -e prd -f ./helmfile.yaml <コマンド>
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#cli-reference
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#cli-reference)
 
 #### ▼ --interactive
 
@@ -115,7 +115,7 @@ NAME                CHART                VERSION
 foo-release         ./charts/foo         0.0.1
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#apply
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#apply)
 > - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 #### ▼ --skip-crds
@@ -138,7 +138,7 @@ $ helmfile -e prd apply --skip-crds
 $ helmfile -e prd apply --skip-diff-on-install
 ```
 
-> - https://github.com/roboll/helmfile/issues/1840
+> - [Add --skip-diff-on-install to helmfile diff · Issue #1840 · roboll/helmfile · GitHub](https://github.com/roboll/helmfile/issues/1840)
 
 <br>
 
@@ -154,7 +154,7 @@ CRD も削除する。
 $ helmfile -e prd destroy
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#destroy
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#destroy)
 
 #### ▼ 特定の Helm リリースのみ `destroy` したい
 
@@ -200,8 +200,8 @@ helm-diff プラグインでは、前回の Helm リリースと、今回の `he
 $ helmfile -e prd diff
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#diff
-> - https://github.com/databus23/helm-diff#helm-diff-plugin
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#diff)
+> - [GitHub - databus23/helm-diff: A helm plugin that shows a diff explaining what a helm upgrade would change · GitHub](https://github.com/databus23/helm-diff#helm-diff-plugin)
 
 #### ▼ --debug
 
@@ -226,7 +226,7 @@ $ helmfile -e prd --debug diff
 $ HELM_DIFF_COLOR=true helmfile -e prd diff
 ```
 
-> - https://github.com/roboll/helmfile/issues/2043#issuecomment-1081665414
+> - [Missing colors in diff · Issue #2043 · roboll/helmfile · GitHub](https://github.com/roboll/helmfile/issues/2043#issuecomment-1081665414)
 
 #### ▼ grep との組み合わせ
 
@@ -268,7 +268,7 @@ Source: project/manifests/persistent-volume.yaml
 $ helmfile -e prd sync
 ```
 
-> - https://helmfile.readthedocs.io/en/latest/#diff
+> - [helmfile](https://helmfile.readthedocs.io/en/latest/#diff)
 > - https://stackoverflow.com/questions/59703760/helmfile-sync-vs-helmfile-apply
 
 <br>

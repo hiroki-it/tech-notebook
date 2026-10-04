@@ -21,7 +21,7 @@ description: Anthos＠Google Cloudリソースの知見を記録しています�
 
 Anthos は、Google Anthos GKE Cluster、Google Anthos Service Mesh、Google Anthos Config Management、といったコンポーネントから構成される。
 
-> - https://www.fsi.co.jp/blog/5939/
+> - [【第2回】Anthosとは～アプリケーションモダナイズを実現するGoogleの開発アプローチを見る～ \| FUJISOFT Technical Report](https://www.fsi.co.jp/blog/5939/)
 > - https://cloud.google.com/anthos/clusters/docs/multi-cloud/aws/concepts/architecture
 
 <br>
@@ -41,7 +41,7 @@ Anthos の Kubernetes のバージョンは、各実行環境の Cluster が対�
 ![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_attached_cluster.png)
 
 > - https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/previous-generation/how-to/attach-kubernetes-clusters
-> - https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters
+> - [Anthos アタッチ クラスタを使用してすべての Kubernetes クラスタを管理 \| Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters)
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/attach-kubernetes-clusters
 > - https://www.jetstack.io/blog/anthos-attached-clusters/
 
@@ -59,7 +59,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 ![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_service_mesh.png)
 
-> - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/
+> - [Service Management - Cloud Solutions](https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/)
 > - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=20
 
 #### ▼ Traffic Director
@@ -86,7 +86,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 ![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management.png)
 
-> - https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/
+> - [Anthos Config Management (ACM) - Cloud Solutions](https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/)
 
 #### ▼ acm-operator の仕組み
 
@@ -140,7 +140,7 @@ Google Cloud 側の資格情報と、各クラウドプロバイダーの Anthos
 
 cni として、Cilium を使用して Google Anthos GKE Cluster のネットワークを作成する。
 
-> - https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works
+> - [GKE Dataplane V2 \| GKE networking \| Google Cloud Documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/dataplane-v2#how_works)
 
 <br>
 
@@ -266,7 +266,7 @@ CRD の設定値を変更し、kube-apiserver に送信する。
 $ ~/baremetal/bmctl update cluster -c foo-anthos-cluster -n foo-namespace
 ```
 
-> - https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications
+> - [Enable application logging and monitoring \| Anthos on bare metal \| Google Cloud Documentation](https://cloud.google.com/anthos/clusters/docs/bare-metal/1.11/how-to/application-logging-monitoring#enabling_and_for_user_applications)
 
 <br>
 

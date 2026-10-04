@@ -9,7 +9,7 @@ description: 設定ファイル＠Grafana Tempoの知見を記録しています
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -90,7 +90,7 @@ distributor:
 ingester: {}
 ```
 
-> - https://grafana.com/docs/tempo/latest/configuration/#ingester
+> - [Configure Tempo \| Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/configuration/#ingester)
 
 <br>
 
@@ -103,7 +103,7 @@ metrics_generator:
   remote_write_url: http://prometheus-server.prometheus.svc.cluster.local:9009/api/v1/write
 ```
 
-> - https://grafana.com/docs/tempo/latest/configuration/#metrics-generator
+> - [Configure Tempo \| Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/configuration/#metrics-generator)
 
 <br>
 
@@ -170,7 +170,7 @@ storage:
     backend: s3
 ```
 
-> - https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example
+> - [Configure Tempo \| Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example)
 
 #### ▼ local
 
@@ -183,7 +183,7 @@ storage:
       path: /var/tempo/traces
 ```
 
-> - https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example
+> - [Configure Tempo \| Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example)
 
 #### ▼ s3
 
@@ -211,7 +211,7 @@ storage:
       region: ap-northeast-1
 ```
 
-> - https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example
+> - [Configure Tempo \| Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example)
 
 #### ▼ wal
 
@@ -224,7 +224,7 @@ storage:
       path: /var/tempo/wal
 ```
 
-> - https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example
+> - [Configure Tempo \| Grafana Tempo documentation](https://grafana.com/docs/tempo/latest/configuration/#storage-block-configuration-example)
 
 <br>
 

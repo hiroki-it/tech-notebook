@@ -25,8 +25,8 @@ $ wget http://ftp.meisei-u.ac.jp/mirror/apache/dist//jmeter/binaries/apache-jmet
 $ tar xvzf apache-jmeter-5.2.1.tgz
 ```
 
-> - https://jmeter.apache.org/download_jmeter.cgi
-> - https://bbh.bz/2020/04/13/how-to-use-jmeter-at-linux/
+> - [Apache JMeter - Download Apache JMeter](https://jmeter.apache.org/download_jmeter.cgi)
+> - [LinuxでJMeterをインストールして実行する方法 \| bbh](https://bbh.bz/2020/04/13/how-to-use-jmeter-at-linux/)
 
 <br>
 
@@ -38,7 +38,7 @@ JMeter は、以下のコンポーネントから構成されている。
 
 ![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jmeter_architecuture.png)
 
-> - https://www.guru99.com/jmeter-element-reference.html
+> - [JMeter Elements & Components: Thread Group, Samplers](https://www.guru99.com/jmeter-element-reference.html)
 
 <br>
 
@@ -48,7 +48,7 @@ JMeter は、以下のコンポーネントから構成されている。
 
 ![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stress-test_parameter.png)
 
-> - https://tech-blog.rakus.co.jp/entry/2017/08/24/111332
+> - [【図解】はじめてでもわかるJMeterの使い方 - RAKUS Developers Blog \| ラクス エンジニアブログ](https://tech-blog.rakus.co.jp/entry/2017/08/24/111332)
 
 #### ▼ スレッド数
 
@@ -82,7 +82,7 @@ JMeter は、以下のコンポーネントから構成されている。
 
      csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば`10000`個といった高負荷であると、ローカルマシンがフリーズするため注意すること。
 
-> - https://jmeter.apache.org/usermanual/functions.html#__Random
+> - [Apache JMeter - User's Manual: Functions and Variables](https://jmeter.apache.org/usermanual/functions.html#__Random)
 
 `(3)`
 

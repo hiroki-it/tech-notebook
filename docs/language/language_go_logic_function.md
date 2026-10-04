@@ -9,7 +9,7 @@ description: 関数＠Goの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -31,13 +31,13 @@ description: 関数＠Goの知見を記録しています。
 
 なお、`init()` 関数は `init.go` ファイルとして切り分けたほうがよい。
 
-> - https://one-sthead.hatenablog.com/entry/2021/01/19/191538
+> - [golangのinit関数は複数回定義できる - One Step Ahead](https://one-sthead.hatenablog.com/entry/2021/01/19/191538)
 
 #### ▼ `log` パッケージは使用できない
 
 仕様上、`init()` 関数内で `log` パッケージを使用できない。
 
-> - https://forum.golangbridge.org/t/why-does-initiating-a-logger-in-init-function-not-working-outside-the-init-func/23211/2
+> - [Why does initiating a logger in init function not working outside the init func? - #2 by nizigama - Getting Help - Go Forum](https://forum.golangbridge.org/t/why-does-initiating-a-logger-in-init-function-not-working-outside-the-init-func/23211/2)
 
 <br>
 
@@ -153,10 +153,10 @@ func main() {
 }
 ```
 
-> - https://blog.logicoffee.tech/posts/programming/golang-exit.html
-> - https://budougumi0617.github.io/2021/06/30/which_termination_method_should_choose_on_go/#go%E3%81%A7%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95
-> - https://qiita.com/nayuneko/items/9534858156dfd50b43fb#panic%E3%82%92%E3%83%AA%E3%82%AB%E3%83%90%E3%83%BC%E3%81%99%E3%82%8Brecoverdefer
-> - https://qiita.com/nayuneko/items/9534858156dfd50b43fb#panic%E3%82%92%E3%83%AA%E3%82%AB%E3%83%90%E3%83%BC%E3%81%99%E3%82%8Brecoverdefer
+> - [【Golang】Exit, panic, Goexitの違い](https://blog.logicoffee.tech/posts/programming/golang-exit.html)
+> - [Goでプログラムを終了するときのお作法 - My External Storage](https://budougumi0617.github.io/2021/06/30/which_termination_method_should_choose_on_go/#go%E3%81%A7%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%95%E3%81%9B%E3%82%8B%E6%96%B9%E6%B3%95)
+> - [Go言語のエラーハンドリングについて ～panic編～ #Go - Qiita](https://qiita.com/nayuneko/items/9534858156dfd50b43fb#panic%E3%82%92%E3%83%AA%E3%82%AB%E3%83%90%E3%83%BC%E3%81%99%E3%82%8Brecoverdefer)
+> - [Go言語のエラーハンドリングについて ～panic編～ #Go - Qiita](https://qiita.com/nayuneko/items/9534858156dfd50b43fb#panic%E3%82%92%E3%83%AA%E3%82%AB%E3%83%90%E3%83%BC%E3%81%99%E3%82%8Brecoverdefer)
 
 <br>
 
@@ -166,7 +166,7 @@ func main() {
 
 構造体に紐付けられていない関数のこと。
 
-> - https://www.educative.io/answers/what-is-the-difference-between-a-method-and-a-function
+> - [What is the difference between a method and a function?](https://www.educative.io/answers/what-is-the-difference-between-a-method-and-a-function)
 
 **＊実装例＊**
 
@@ -236,8 +236,8 @@ func main() {
 // main.foo
 ```
 
-> - https://forum.golangbridge.org/t/get-function-name/31529/3
-> - https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples
+> - [Get function name - #3 by skillian - Getting Help - Go Forum](https://forum.golangbridge.org/t/get-function-name/31529/3)
+> - [How to get the caller's function name, filename, and line number in a Go function - SoByte](https://www.sobyte.net/post/2022-06/go-func-caller/#usage-examples)
 > - https://stackoverflow.com/a/57949382
 
 #### ▼ 現在のモジュール名の取得
@@ -278,7 +278,7 @@ module example.com/foo
 
 引数の型は、構造体の場合はポインタ型、それ以外のデータの場合はポインタ型以外が推奨である。
 
-> - https://github.com/golang/go/wiki/CodeReviewComments#pass-values
+> - [CodeReviewComments · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/CodeReviewComments#pass-values)
 
 #### ▼ クロージャー (無名関数) とは
 
@@ -339,7 +339,7 @@ func main() {
 
 Go は、言語としてオブジェクトという機能を持っていないが、構造体に関数を紐付けることにより、擬似的にオブジェクトを表現できる。
 
-> - https://qiita.com/T-N0121/items/ecf5b911463ac9fa1d3e#%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%A8%E3%81%AF%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%8A%E3%81%84%E3%81%A6%E5%90%84%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%8C%E6%8C%81%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E8%87%AA%E8%BA%AB%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E6%93%8D%E4%BD%9C
+> - [関数とメソッドの違いがわからなくて少し調べたので自分なりにまとめてみた #Swift - Qiita](https://qiita.com/T-N0121/items/ecf5b911463ac9fa1d3e#%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89%E3%81%A8%E3%81%AF%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%8A%E3%81%84%E3%81%A6%E5%90%84%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%8C%E6%8C%81%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E8%87%AA%E8%BA%AB%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E6%93%8D%E4%BD%9C)
 
 #### ▼ レシーバによる紐付け
 
@@ -603,8 +603,8 @@ func main() {
 // End
 ```
 
-> - https://go.dev/doc/effective_go#recover
-> - https://qiita.com/a-kym/items/1e7c646a776c5b541883
+> - [Effective Go - The Go Programming Language](https://go.dev/doc/effective_go#recover)
+> - [【Golang】recoverについて #Go - Qiita](https://qiita.com/a-kym/items/1e7c646a776c5b541883)
 
 #### ▼ Close 処理
 
@@ -636,8 +636,8 @@ package main
 import _ "<パッケージ名>" // init関数のみを実行する
 ```
 
-> - https://hogesuke.hateblo.jp/entry/2014/09/12/080005
-> - https://qiita.com/atsutama/items/0444ad3fdb25f095b0d6#%E3%83%96%E3%83%A9%E3%83%B3%E3%82%AFimport%E3%81%A3%E3%81%A6
+> - [Go言語にて依存関係を解決するためのimportにはアンダースコア（ブランク識別子）を別名とする - 映画館のイス](https://hogesuke.hateblo.jp/entry/2014/09/12/080005)
+> - [Go言語のブランクimport(\_ "パッケージ名")とは？ #Go - Qiita](https://qiita.com/atsutama/items/0444ad3fdb25f095b0d6#%E3%83%96%E3%83%A9%E3%83%B3%E3%82%AFimport%E3%81%A3%E3%81%A6)
 
 <br>
 
@@ -678,7 +678,7 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/mikankitten/articles/cfa2ef834e338e#%E5%8F%AF%E5%A4%89%E5%80%8B%E5%BC%95%E6%95%B0%E9%96%A2%E6%95%B0(variadic-function)
+> - [Go: pack/unpack演算子と可変長引数関数・Slice](<https://zenn.dev/mikankitten/articles/cfa2ef834e338e#%E5%8F%AF%E5%A4%89%E5%80%8B%E5%BC%95%E6%95%B0%E9%96%A2%E6%95%B0(variadic-function)>)
 
 <br>
 
@@ -740,8 +740,8 @@ func main() {
 }
 ```
 
-> - https://qiita.com/yoshinori_hisakawa/items/f0c326c99fec116070d4
-> - https://blog.kazu69.net/2018/02/22/golang-functional-options/
+> - [Go言語でpythonやscalaのようなDefault引数を実現する #新人プログラマ応援 - Qiita](https://qiita.com/yoshinori_hisakawa/items/f0c326c99fec116070d4)
+> - [golangの関数のオプション引数を実現する \| 69log](https://blog.kazu69.net/2018/02/22/golang-functional-options/)
 
 #### ▼ `append()` 関数によるマージ
 
@@ -1012,9 +1012,9 @@ func main() {
 
 ```
 
-> - https://zenn.dev/nekoshita/articles/dba0a7139854bb
-> - https://zenn.dev/pyotarou/articles/87d43169e0abe0
-> - https://blog.potproject.net/2019/08/29/golang-graceful-shutdown-queue-process/
+> - [Go v1.16に追加されたsignal.NotifyContextを試す](https://zenn.dev/nekoshita/articles/dba0a7139854bb)
+> - [【Go】WebサーバをGraceful Shutdownしてみる](https://zenn.dev/pyotarou/articles/87d43169e0abe0)
+> - [Golangで非同期処理のGraceful Shutdownを独自実装する - blog.potproject.net](https://blog.potproject.net/2019/08/29/golang-graceful-shutdown-queue-process/)
 
 #### ▼ 自前で実装する場合
 
@@ -1129,7 +1129,7 @@ func Invoke(ctx context.Context) error {
 }
 ```
 
-> - https://christina04.hatenablog.com/entry/go-shudown-hooks
+> - [GoでShutdown Hook - Carpe Diem](https://christina04.hatenablog.com/entry/go-shudown-hooks)
 > - https://medium.com/@pthtantai97/mastering-grpc-server-with-graceful-shutdown-within-golangs-hexagonal-architecture-0bba657b8622
 
 **＊実装例＊**
@@ -1311,7 +1311,7 @@ func main() {
 }
 ```
 
-> - https://recursionist.io/learn/languages/go/data-type/variable
+> - [Go言語の変数を解説 - Recursion](https://recursionist.io/learn/languages/go/data-type/variable)
 
 #### ▼ ローカル変数
 
@@ -1333,7 +1333,7 @@ func main() {
 }
 ```
 
-> - https://recursionist.io/learn/languages/go/data-type/variable
+> - [Go言語の変数を解説 - Recursion](https://recursionist.io/learn/languages/go/data-type/variable)
 
 <br>
 
@@ -1452,7 +1452,7 @@ func getBoolEnv(key string, fallback bool) bool {
 ```
 
 > - https://stackoverflow.com/a/40326580
-> - https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html
+> - [hawksnowlog: golang で環境変数のデフォルト値を設定する方法](https://hawksnowlog.blogspot.com/2019/09/set-default-value-for-envval.html)
 
 <br>
 
@@ -1830,7 +1830,7 @@ func main() {
 }
 ```
 
-> - https://qiita.com/gold-kou/items/8e5342d8a30ae8f34dff#goroutine%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B
+> - [【Goのやさしい記事】goroutineと排他制御を10分で入門しよう！ #Go - Qiita](https://qiita.com/gold-kou/items/8e5342d8a30ae8f34dff#goroutine%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B)
 
 #### ▼ 時間のかかる処理と相性がいい
 
@@ -1956,7 +1956,7 @@ func main() {
 }
 ```
 
-> - https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB
+> - [\[Golang\] チャネル \| DeKu](https://dev-yakuza.posstree.com/golang/channel/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB)
 
 #### ▼ Goroutine 中断方法１ (done channel、close)
 
@@ -2006,9 +2006,9 @@ func main() {
 }
 ```
 
-> - https://zenn.dev/hsaki/books/golang-context/viewer/done#context%E5%B0%8E%E5%85%A5%E5%89%8D---done%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AB%E3%82%88%E3%82%8B%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E5%87%A6%E7%90%86
+> - [Doneメソッド｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/done#context%E5%B0%8E%E5%85%A5%E5%89%8D---done%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AB%E3%82%88%E3%82%8B%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%BB%E3%83%AB%E5%87%A6%E7%90%86)
 > - https://www.reddit.com/r/golang/comments/171i5gv/context_cancel_or_done_channel/
-> - https://qiita.com/castaneai/items/7815f3563b256ae9b18d#%E9%80%9A%E7%9F%A5%E3%82%92%E9%80%81%E3%82%8B%E9%9A%9B%E3%81%AF-close-%E3%81%A7%E3%82%88%E3%81%84
+> - [goroutine を安全に止める方法 #Go - Qiita](https://qiita.com/castaneai/items/7815f3563b256ae9b18d#%E9%80%9A%E7%9F%A5%E3%82%92%E9%80%81%E3%82%8B%E9%9A%9B%E3%81%AF-close-%E3%81%A7%E3%82%88%E3%81%84)
 > - https://stackoverflow.com/a/22627240
 
 #### ▼ Goroutine 中断方法２ (context.cancel、context.Done)
@@ -2063,8 +2063,8 @@ func main() {
 }
 ```
 
-> - https://dev.to/mcaci/how-to-use-the-context-done-method-in-go-22me
-> - https://castaneai.hatenablog.com/entry/go-select-ctx-done-tips
+> - [How to use the context.Done() method in Go to signal goroutine completion - DEV Community](https://dev.to/mcaci/how-to-use-the-context-done-method-in-go-22me)
+> - [Go: selectでctx.Done()を受信するときの注意点 - castaneaiのブログ](https://castaneai.hatenablog.com/entry/go-select-ctx-done-tips)
 > - https://www.slideshare.net/takuyaueda967/goroutine-channel-go#20
 
 #### ▼ select
@@ -2121,7 +2121,7 @@ func main() {
 }
 ```
 
-> - https://www.spinute.org/go-by-example/select.html
+> - [サンプルで学ぶ Go 言語：Select](https://www.spinute.org/go-by-example/select.html)
 > - https://leben.mobi/go/channel-and-select/go-programming/
 
 #### ▼ WaitGroup との使い分け
@@ -2132,7 +2132,7 @@ channel を使用すると、異なる Goroutine 間で値を送受信できる�
 
 一方で、channel では `select()` 関数が必要になって、処理が複雑になる点は注意する。
 
-> - https://zenn.dev/mikankitten/articles/6344d71f4f4920#channel-vs-waitgroup
+> - [GoroutineとChannel](https://zenn.dev/mikankitten/articles/6344d71f4f4920#channel-vs-waitgroup)
 
 <br>
 
@@ -2213,7 +2213,7 @@ func print(key int, value string) {
 ```
 
 > - https://free-engineer.life/golang-sync-waitgroup/
-> - https://qiita.com/ruiu/items/dba58f7b03a9a2ffad65
+> - [sync.WaitGroupの正しい使い方 #Go - Qiita](https://qiita.com/ruiu/items/dba58f7b03a9a2ffad65)
 
 #### ▼ channel との使い分け
 
@@ -2223,7 +2223,7 @@ WaitGroup を使用すると、`Add()` 関数、`Done()` 関数、`Wait()` 関�
 
 一方で、WaitGroup では Goroutine 間で値の送受信はできないことに注意する。
 
-> - https://zenn.dev/mikankitten/articles/6344d71f4f4920#channel-vs-waitgroup
+> - [GoroutineとChannel](https://zenn.dev/mikankitten/articles/6344d71f4f4920#channel-vs-waitgroup)
 
 <br>
 
@@ -2241,7 +2241,7 @@ WaitGroup を使用すると、`Add()` 関数、`Done()` 関数、`Wait()` 関�
 
 例外スローの意義は、以下の参考にせよ。
 
-> - https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html
+> - [【IT技術の知見】バリデーションロジック＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html)
 
 #### ▼ Go には例外がない
 

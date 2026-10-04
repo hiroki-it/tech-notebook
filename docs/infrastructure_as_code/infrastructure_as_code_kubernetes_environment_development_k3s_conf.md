@@ -9,7 +9,7 @@ description: 設定ファイル＠K3Sの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -37,7 +37,7 @@ configs:
 $ aws ecr get-login-password --region ap-northeast-1
 ```
 
-> - https://docs.k3s.io/installation/private-registry#configs
-> - https://qiita.com/ynott/items/29373eb7b23b029333dc
+> - [Private Registry Configuration \| K3s](https://docs.k3s.io/installation/private-registry#configs)
+> - [k3sでプライベートレジストリー(Private Registry)を使う(containerd編) #private-registry - Qiita](https://qiita.com/ynott/items/29373eb7b23b029333dc)
 
 <br>

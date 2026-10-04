@@ -9,7 +9,7 @@ description: Node.js＠JavaScriptランタイムの知見を記録していま�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -22,7 +22,7 @@ JavaScript をクライアント側で実行する場合、ブラウザ (例：C
 注意点として、Node.js は言語ではない。
 
 > - https://kinsta.com/jp/knowledgebase/what-is-node-js/#nodejs-4
-> - https://kenko-keep.com/jabascript-nodejs/#toc-1
+> - [Node.jsとブラウザで動くJavaScriptの違いと書き方](https://kenko-keep.com/jabascript-nodejs/#toc-1)
 
 <br>
 
@@ -73,60 +73,60 @@ CMD ["yarn", "dev"]
 
 ### MODULE_NOT_FOUND
 
-> - https://zenn.dev/sasakir/articles/8457791bdd173a#1.-module_not_found
+> - [Node.jsトラブルシューティング：開発者が直面する10の一般的なエラーとその解決策](https://zenn.dev/sasakir/articles/8457791bdd173a#1.-module_not_found)
 
 <br>
 
 ### EADDRINUSE
 
-> - https://zenn.dev/sasakir/articles/8457791bdd173a#2.-eaddrinuse
+> - [Node.jsトラブルシューティング：開発者が直面する10の一般的なエラーとその解決策](https://zenn.dev/sasakir/articles/8457791bdd173a#2.-eaddrinuse)
 
 <br>
 
 ### EACCES
 
-> - https://zenn.dev/sasakir/articles/8457791bdd173a#3.-eacces
+> - [Node.jsトラブルシューティング：開発者が直面する10の一般的なエラーとその解決策](https://zenn.dev/sasakir/articles/8457791bdd173a#3.-eacces)
 
 <br>
 
 ### Unhandled 'error' event
 
-> - https://zenn.dev/sasakir/articles/8457791bdd173a#4.-unhandled-'error'-event
+> - [Node.jsトラブルシューティング：開発者が直面する10の一般的なエラーとその解決策](https://zenn.dev/sasakir/articles/8457791bdd173a#4.-unhandled-'error'-event)
 
 <br>
 
 ### ENOTFOUND
 
-> - https://zenn.dev/sasakir/articles/8457791bdd173a#5.-enotfound
+> - [Node.jsトラブルシューティング：開発者が直面する10の一般的なエラーとその解決策](https://zenn.dev/sasakir/articles/8457791bdd173a#5.-enotfound)
 
 <br>
 
 ### ECONNREFUSED
 
-> - https://zenn.dev/sasakir/articles/8457791bdd173a#6.-econnrefused
+> - [Node.jsトラブルシューティング：開発者が直面する10の一般的なエラーとその解決策](https://zenn.dev/sasakir/articles/8457791bdd173a#6.-econnrefused)
 
 <br>
 
 ### ETIMEDOUT
 
-> - https://zenn.dev/sasakir/articles/8457791bdd173a#7.-etimedout
+> - [Node.jsトラブルシューティング：開発者が直面する10の一般的なエラーとその解決策](https://zenn.dev/sasakir/articles/8457791bdd173a#7.-etimedout)
 
 <br>
 
 ### EPIPE
 
-> - https://zenn.dev/sasakir/articles/8457791bdd173a#8.-epipe
+> - [Node.jsトラブルシューティング：開発者が直面する10の一般的なエラーとその解決策](https://zenn.dev/sasakir/articles/8457791bdd173a#8.-epipe)
 
 <br>
 
 ### ECONNRESET
 
-> - https://zenn.dev/sasakir/articles/8457791bdd173a#9.-econnreset
+> - [Node.jsトラブルシューティング：開発者が直面する10の一般的なエラーとその解決策](https://zenn.dev/sasakir/articles/8457791bdd173a#9.-econnreset)
 
 <br>
 
 ### EMFILE
 
-> - https://zenn.dev/sasakir/articles/8457791bdd173a#10.-emfile
+> - [Node.jsトラブルシューティング：開発者が直面する10の一般的なエラーとその解決策](https://zenn.dev/sasakir/articles/8457791bdd173a#10.-emfile)
 
 <br>

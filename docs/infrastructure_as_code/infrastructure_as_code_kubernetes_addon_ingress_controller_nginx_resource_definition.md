@@ -9,7 +9,7 @@ description: Nginx Ingress Controller＠Ingress Controllerの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -38,7 +38,7 @@ metadata:
     nginx.ingress.kubernetes.io/affinity: cookie
 ```
 
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-nginx/#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81session-affinity
+> - [Ingress - NGINX Ingress Controller \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-nginx/#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E7%B6%AD%E6%8C%81session-affinity)
 
 <br>
 
@@ -55,7 +55,7 @@ metadata:
     nginx.ingress.kubernetes.io/whitelist-source-range: *.*.*.*/*
 ```
 
-> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
+> - [Annotations - Ingress-Nginx Controller](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/)
 
 <br>
 
@@ -72,7 +72,7 @@ metadata:
     nginx.ingress.kubernetes.io/denylist-source-range: *.*.*.*/*
 ```
 
-> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
+> - [Annotations - Ingress-Nginx Controller](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/)
 
 <br>
 
@@ -96,7 +96,7 @@ data:
   proxy-connect-timeout: 10s
 ```
 
-> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#proxy-connect-timeout
+> - [ConfigMap - Ingress-Nginx Controller](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#proxy-connect-timeout)
 
 <br>
 
@@ -112,7 +112,7 @@ data:
   proxy-read-timeout: 10s
 ```
 
-> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#proxy-read-timeout
+> - [ConfigMap - Ingress-Nginx Controller](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#proxy-read-timeout)
 
 <br>
 
@@ -132,6 +132,6 @@ data:
   use-forwarded-headers: "true"
 ```
 
-> - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#use-forwarded-headers
+> - [ConfigMap - Ingress-Nginx Controller](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/#use-forwarded-headers)
 
 <br>

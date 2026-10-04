@@ -9,7 +9,7 @@ description: 分散トレース＠Datadogの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -50,7 +50,7 @@ datadog コンテナ内の datadog エージェントはこれを HTTPS プロ�
 ![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-tracer.png)
 
 > - https://docs.datadoghq.com/tracing/
-> - https://inokara.hateblo.jp/entry/2017/10/01/164446
+> - [Tracing API を PHP で使って少しずつ理解する Datadog APM - ようへいの日々精進XP](https://inokara.hateblo.jp/entry/2017/10/01/164446)
 
 <br>
 
@@ -232,7 +232,7 @@ PHP 用のクライアントパッケージで laravel 内からタグを収集�
 
 タイプの種類については、以下のリンクを参考にせよ。
 
-> - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Type.php
+> - [dd-trace-php/src/api/Type.php at master · DataDog/dd-trace-php · GitHub](https://github.com/DataDog/dd-trace-php/blob/master/src/api/Type.php)
 > - https://docs.datadoghq.com/tracing/visualization/services_list/#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%97
 
 <br>
@@ -246,6 +246,6 @@ PHP 用のクライアントパッケージによって、マイクロサービ�
 コードから、PHP 用のクライアントパッケージがアプリケーションからどのように情報を抜き出し、分散トレースのタグの値を決定しているかがわかる。
 
 > - https://github.com/DataDog/dd-trace-php/tree/master/src/Integrations/Integrations
-> - https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php
+> - [dd-trace-php/src/api/Tag.php at master · DataDog/dd-trace-php · GitHub](https://github.com/DataDog/dd-trace-php/blob/master/src/api/Tag.php)
 
 <br>

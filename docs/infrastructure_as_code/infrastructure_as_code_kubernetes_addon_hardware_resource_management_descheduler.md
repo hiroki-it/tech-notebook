@@ -9,7 +9,7 @@ description: descheduler＠ハードウェアリソース管理系の知見を�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -36,10 +36,10 @@ $ kubectl get events -n foo
 35m         Normal   SuccessfulCreate         replicaset/foo-5c844554c5           Created pod: foo-5c844554c5-vgdjl
 ```
 
-> - https://sreake.com/blog/kubernetes-descheduler/
-> - https://torumakabe.github.io/post/k8s_descheduler/
-> - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8
-> - https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31
+> - [Descheduler for Kubernetes で Pod の再配置 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/kubernetes-descheduler/)
+> - [Kubernetes DeschedulerでPodを再配置する - re-imagine](https://torumakabe.github.io/post/k8s_descheduler/)
+> - [図で理解する Descheduler #k8sjp #ymju / Introduction to Descheduler - Speaker Deck](https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=8)
+> - [PodのAZ分散を実現する Pod Topology Spread ConstraintsとDescheduler - Speaker Deck](https://speakerdeck.com/ksudate/podfalseazfen-san-woshi-xian-suru-pod-topology-spread-constraintstodescheduler?slide=31)
 
 <br>
 
@@ -57,7 +57,7 @@ descheduler を CronJob として定期的に起動させ、Pod を自動的に�
 
 ![descheduler_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
 
-> - https://sreake.com/blog/kubernetes-descheduler/
+> - [Descheduler for Kubernetes で Pod の再配置 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/kubernetes-descheduler/)
 
 <br>
 
@@ -227,8 +227,8 @@ strategies:
           pods: 20
 ```
 
-> - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23
-> - https://sreake.com/blog/kubernetes-descheduler/
+> - [図で理解する Descheduler #k8sjp #ymju / Introduction to Descheduler - Speaker Deck](https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=23)
+> - [Descheduler for Kubernetes で Pod の再配置 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/kubernetes-descheduler/)
 
 #### ▼ RemoveDuplicates
 
@@ -244,8 +244,8 @@ strategies:
     enabled: "true"
 ```
 
-> - https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18
-> - https://sreake.com/blog/kubernetes-descheduler/
+> - [図で理解する Descheduler #k8sjp #ymju / Introduction to Descheduler - Speaker Deck](https://speakerdeck.com/daikurosawa/introduction-to-descheduler?slide=18)
+> - [Descheduler for Kubernetes で Pod の再配置 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/kubernetes-descheduler/)
 
 #### ▼ RemoveFailed
 
@@ -268,8 +268,8 @@ strategies:
         includingInitContainers: "true"
 ```
 
-> - https://github.com/kubernetes-sigs/descheduler#removefailedpods
-> - https://sreake.com/blog/kubernetes-descheduler/
+> - [GitHub - kubernetes-sigs/descheduler: Descheduler for Kubernetes · GitHub](https://github.com/kubernetes-sigs/descheduler#removefailedpods)
+> - [Descheduler for Kubernetes で Pod の再配置 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/kubernetes-descheduler/)
 
 #### ▼ RemovePodsHavingTooManyRestarts
 
@@ -289,7 +289,7 @@ strategies:
         includingInitContainers: "true"
 ```
 
-> - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+> - [descheduler/examples/policy.yaml at master · kubernetes-sigs/descheduler · GitHub](https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml)
 
 #### ▼ RemovePodsViolatingNodeAffinity
 
@@ -303,7 +303,7 @@ strategies:
     enabled: "true"
 ```
 
-> - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+> - [descheduler/examples/policy.yaml at master · kubernetes-sigs/descheduler · GitHub](https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml)
 
 #### ▼ RemovePodsViolatingInterPodAntiAffinity
 
@@ -317,8 +317,8 @@ strategies:
     enabled: "true"
 ```
 
-> - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
-> - https://sreake.com/blog/kubernetes-descheduler/
+> - [descheduler/examples/policy.yaml at master · kubernetes-sigs/descheduler · GitHub](https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml)
+> - [Descheduler for Kubernetes で Pod の再配置 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/kubernetes-descheduler/)
 
 #### ▼ RemovePodsViolatingNodeTaints
 
@@ -340,7 +340,7 @@ strategies:
         includingInitContainers: "true"
 ```
 
-> - https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml
+> - [descheduler/examples/policy.yaml at master · kubernetes-sigs/descheduler · GitHub](https://github.com/kubernetes-sigs/descheduler/blob/master/examples/policy.yaml)
 
 <br>
 
@@ -350,6 +350,6 @@ strategies:
 
 Pod を退避させる前に、他の Node が Pod を再スケジューリングできる条件 (nodeSelector、tolerations、nodeAffinity など) であるかを検証する。
 
-> - https://github.com/kubernetes-sigs/descheduler#node-fit-filtering
+> - [GitHub - kubernetes-sigs/descheduler: Descheduler for Kubernetes · GitHub](https://github.com/kubernetes-sigs/descheduler#node-fit-filtering)
 
 <br>

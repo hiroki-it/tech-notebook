@@ -9,7 +9,7 @@ description: Go＠OpenTelemetryクライアントパッケージの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -111,9 +111,9 @@ func main() {
 }
 ```
 
-> - https://opentelemetry.io/docs/languages/go/instrumentation/#getting-a-tracer
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/internal/global/state.go#L27-L39
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/internal/global/state.go#L57-L70
+> - [Instrumentation \| OpenTelemetry](https://opentelemetry.io/docs/languages/go/instrumentation/#getting-a-tracer)
+> - [opentelemetry-go/internal/global/state.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/internal/global/state.go#L27-L39)
+> - [opentelemetry-go/internal/global/state.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/internal/global/state.go#L57-L70)
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
@@ -138,7 +138,7 @@ func parentFunction(ctx context.Context) {
 }
 ```
 
-> - https://opentelemetry.io/docs/languages/go/instrumentation/#create-nested-spans
+> - [Instrumentation \| OpenTelemetry](https://opentelemetry.io/docs/languages/go/instrumentation/#create-nested-spans)
 
 TracerProvider の作成時だけでなく、スパンの作成のタイミングでも属性を設定できる。
 
@@ -164,8 +164,8 @@ func parentFunction(ctx context.Context) {
 }
 ```
 
-> - https://opentelemetry.io/docs/languages/go/instrumentation/#span-attributes
-> - https://blog.cybozu.io/entry/2023/04/12/170000
+> - [Instrumentation \| OpenTelemetry](https://opentelemetry.io/docs/languages/go/instrumentation/#span-attributes)
+> - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
@@ -185,8 +185,8 @@ func childFunction(ctx context.Context) {
 }
 ```
 
-> - https://opentelemetry.io/docs/languages/go/instrumentation/#create-nested-spans
-> - https://opentelemetry.io/docs/languages/go/instrumentation/#propagators-and-context
+> - [Instrumentation \| OpenTelemetry](https://opentelemetry.io/docs/languages/go/instrumentation/#create-nested-spans)
+> - [Instrumentation \| OpenTelemetry](https://opentelemetry.io/docs/languages/go/instrumentation/#propagators-and-context)
 
 <br>
 
@@ -198,13 +198,13 @@ func childFunction(ctx context.Context) {
 
 #### ▼ Exporter
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/exporters
+> - [opentelemetry-go-contrib/exporters at v1.18.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/exporters)
 
 #### ▼ Propagator
 
 標準の otel クライアントパッケージが宛先として持たないスパン収集ツール (例：AWS Distro for OpenTelemetry Collector) を、使用できるようになる。
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/propagators
+> - [opentelemetry-go-contrib/propagators at v1.18.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/tree/v1.18.0/propagators)
 
 <br>
 
@@ -218,12 +218,12 @@ func childFunction(ctx context.Context) {
 
 #### ▼ AWS Distro for OpenTelemetry Collector
 
-> - https://github.com/aws/aws-xray-sdk-go
-> - https://github.com/aws-samples/aws-xray-sdk-go-sample
+> - [GitHub - aws/aws-xray-sdk-go: AWS X-Ray SDK for the Go programming language. · GitHub](https://github.com/aws/aws-xray-sdk-go)
+> - [GitHub - aws-samples/aws-xray-sdk-go-sample: Sample App for the X-Ray SDK for Go · GitHub](https://github.com/aws-samples/aws-xray-sdk-go-sample)
 
 #### ▼ Google Cloud Trace
 
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go
+> - [GitHub - GoogleCloudPlatform/opentelemetry-operations-go · GitHub](https://github.com/GoogleCloudPlatform/opentelemetry-operations-go)
 
 <br>
 
@@ -345,8 +345,8 @@ func main()  {
 }
 ```
 
-> - https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12
-> - https://opentelemetry.io/docs/languages/go/instrumentation/#getting
+> - [分散トレーシングとOpenTelemetryのススメ / Getting started distributed tracing and OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/fen-san-toresingutoopentelemetrynosusume?slide=12)
+> - [Instrumentation \| OpenTelemetry](https://opentelemetry.io/docs/languages/go/instrumentation/#getting)
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
@@ -439,9 +439,9 @@ func main() {
 ```
 
 > - https://opentelemetry.io/docs/instrumentation/go/manual/
-> - https://zenn.dev/ww24/articles/beae98be198c94#%E8%A8%88%E8%A3%85
+> - [OpenTelemetry in Go](https://zenn.dev/ww24/articles/beae98be198c94#%E8%A8%88%E8%A3%85)
 > - https://opentelemetry.io/docs/reference/specification/trace/sdk/#shutdown
-> - https://blog.cybozu.io/entry/2023/04/12/170000
+> - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
@@ -638,10 +638,10 @@ func NewTracerProvider() (func(context.Context) error, error) {
 }
 ```
 
-> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/otel.go
-> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/controllers/otel.go
-> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L43-L93
+> - [opentelemetry/02/app/TodoBFF/app/controllers/otel.go at main · cloudnativecheetsheet/opentelemetry · GitHub](https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/otel.go)
+> - [opentelemetry/02/app/TodoAPI/app/controllers/otel.go at main · cloudnativecheetsheet/opentelemetry · GitHub](https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoAPI/app/controllers/otel.go)
+> - [opentelemetry/02/app/UserAPI/app/controllers/otel.go at main · cloudnativecheetsheet/opentelemetry · GitHub](https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/otel.go)
+> - [opentelemetry-go/example/otel-collector/main.go at v1.18.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L43-L93)
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
@@ -767,10 +767,10 @@ func checkSession() gin.HandlerFunc {
 
 ```
 
-> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go
-> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go
-> - https://blog.cybozu.io/entry/2023/04/12/170000
-> - https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L122-L125
+> - [opentelemetry/02/app/TodoBFF/app/controllers/route\_auth.go at main · cloudnativecheetsheet/opentelemetry · GitHub](https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/route_auth.go)
+> - [opentelemetry/02/app/TodoBFF/app/controllers/utils.go at main · cloudnativecheetsheet/opentelemetry · GitHub](https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/TodoBFF/app/controllers/utils.go)
+> - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
+> - [opentelemetry-go/example/otel-collector/main.go at v1.18.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.18.0/example/otel-collector/main.go#L122-L125)
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
@@ -890,8 +890,8 @@ func createUser(ginCtx *gin.Context) {
 }
 ```
 
-> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/route.go
-> - https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/utils/utils.go
+> - [opentelemetry/02/app/UserAPI/app/controllers/route.go at main · cloudnativecheetsheet/opentelemetry · GitHub](https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/controllers/route.go)
+> - [opentelemetry/02/app/UserAPI/app/utils/utils.go at main · cloudnativecheetsheet/opentelemetry · GitHub](https://github.com/cloudnativecheetsheet/opentelemetry/blob/main/02/app/UserAPI/app/utils/utils.go)
 
 <br>
 
@@ -1000,12 +1000,12 @@ func NewTracerProvider() (func(context.Context) error, error) {
 }
 ```
 
-> - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
-> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
-> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L119-L154
+> - [AWS Distro for OpenTelemetry を使ってトレースを X-Ray でサクッと可視化する on EKS](https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4)
+> - [aws-otel-community/sample-apps/go-sample-app/collection/client.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go)
+> - [aws-otel-go/sampleapp/main.go at main · aws-observability/aws-otel-go · GitHub](https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L119-L154)
 > - https://aws.amazon.com/blogs/opensource/go-support-for-aws-x-ray-now-available-in-aws-distro-for-opentelemetry/
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/propagator.go
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/idgenerator.go#L67C1-L74
+> - [opentelemetry-go-contrib/propagators/aws/xray/propagator.go at v1.18.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/propagator.go)
+> - [opentelemetry-go-contrib/propagators/aws/xray/idgenerator.go at v1.18.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/propagators/aws/xray/idgenerator.go#L67C1-L74)
 
 #### ▼ 親スパン作成
 
@@ -1087,10 +1087,10 @@ func parent(ctx *gin.Context) {
 }
 ```
 
-> - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
-> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
-> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
-> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97
+> - [AWS Distro for OpenTelemetry を使ってトレースを X-Ray でサクッと可視化する on EKS](https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4)
+> - [aws-otel-community/sample-apps/go-sample-app/collection/client.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go)
+> - [aws-otel-community/sample-apps/go-sample-app/collection/http\_traces.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go)
+> - [aws-otel-go/sampleapp/main.go at main · aws-observability/aws-otel-go · GitHub](https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97)
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
@@ -1168,10 +1168,10 @@ func child(ctx *gin.Context) {
 }
 ```
 
-> - https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
-> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go
-> - https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go
-> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97
+> - [AWS Distro for OpenTelemetry を使ってトレースを X-Ray でサクッと可視化する on EKS](https://zenn.dev/k6s4i53rx/articles/33d5aa4f6a124e#opentelemetry-go-%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E3%82%A2%E3%83%97%E3%83%AA%E5%AE%9F%E8%A3%85%E3%81%A8-eks-%E3%81%B8%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4)
+> - [aws-otel-community/sample-apps/go-sample-app/collection/client.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/client.go)
+> - [aws-otel-community/sample-apps/go-sample-app/collection/http\_traces.go at master · aws-observability/aws-otel-community · GitHub](https://github.com/aws-observability/aws-otel-community/blob/master/sample-apps/go-sample-app/collection/http_traces.go)
+> - [aws-otel-go/sampleapp/main.go at main · aws-observability/aws-otel-go · GitHub](https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L93-L97)
 
 #### ▼ ログへの ID 出力
 
@@ -1190,8 +1190,8 @@ func getXrayTraceID(span trace.Span) string {
 }
 ```
 
-> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L156-L160
-> - https://aws.github.io/copilot-cli/en/docs/developing/observability/#including-trace-logs
+> - [aws-otel-go/sampleapp/main.go at main · aws-observability/aws-otel-go · GitHub](https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L156-L160)
+> - [Observability - AWS Copilot CLI](https://aws.github.io/copilot-cli/en/docs/developing/observability/#including-trace-logs)
 
 <br>
 
@@ -1274,9 +1274,9 @@ func installPropagators() {
 }
 ```
 
-> - https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L35-L71
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L39-L72
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/server/server.go#L37-L70
+> - [golang-samples/opentelemetry/trace/main.go at 2b3125cd62992691f6dec8e86a65c926b1f6ae9e · GoogleCloudPlatform/golang-samples · GitHub](https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L35-L71)
+> - [opentelemetry-operations-go/example/trace/http/client/client.go at main · GoogleCloudPlatform/opentelemetry-operations-go · GitHub](https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L39-L72)
+> - [opentelemetry-operations-go/example/trace/http/server/server.go at main · GoogleCloudPlatform/opentelemetry-operations-go · GitHub](https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/server/server.go#L37-L70)
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
@@ -1326,7 +1326,7 @@ func main() {
 }
 ```
 
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L74-L119
+> - [opentelemetry-operations-go/example/trace/http/client/client.go at main · GoogleCloudPlatform/opentelemetry-operations-go · GitHub](https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L74-L119)
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
@@ -1380,10 +1380,10 @@ func main() {
 }
 ```
 
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L74-L119
-> - https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/server/server.go#L72-L93
-> - https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L73-L84
-> - https://blog.cybozu.io/entry/2023/04/12/170000
+> - [opentelemetry-operations-go/example/trace/http/client/client.go at main · GoogleCloudPlatform/opentelemetry-operations-go · GitHub](https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/client/client.go#L74-L119)
+> - [opentelemetry-operations-go/example/trace/http/server/server.go at main · GoogleCloudPlatform/opentelemetry-operations-go · GitHub](https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/blob/main/example/trace/http/server/server.go#L72-L93)
+> - [golang-samples/opentelemetry/trace/main.go at 2b3125cd62992691f6dec8e86a65c926b1f6ae9e · GoogleCloudPlatform/golang-samples · GitHub](https://github.com/GoogleCloudPlatform/golang-samples/blob/HEAD/opentelemetry/trace/main.go#L73-L84)
+> - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
 
 <br>
 
@@ -1452,8 +1452,8 @@ func NewTracerProvider() (*sdktrace.TracerProvider, error) {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go
-> - https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go at v1.18.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.18.0/instrumentation/google.golang.org/grpc/otelgrpc/example/config/config.go)
+> - [Components \| OpenTelemetry](https://opentelemetry.io/docs/concepts/components/#language-specific-api--sdk-implementations)
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
@@ -1504,10 +1504,10 @@ func (s *server) parent(ctx context.Context) {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L34-L72
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L57-L63
-> - https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/client/main.go#L100-L112
-> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go at v1.19.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/client/main.go#L34-L72)
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go at v1.19.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L57-L63)
+> - [go-grpc-middleware/examples/client/main.go at v2.0.0 · grpc-ecosystem/go-grpc-middleware · GitHub](https://github.com/grpc-ecosystem/go-grpc-middleware/blob/v2.0.0/examples/client/main.go#L100-L112)
+> - [OpenTelemetryで分散トレーシング - Carpe Diem](https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry)
 
 注意点として、直近では `WithStatsHandler()` 関数の使用が推奨になっている。
 
@@ -1537,8 +1537,8 @@ func main() {
 ```
 
 > - https://zenn.dev/cloud_ace/articles/opentelemetry-go#grpc
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryClientInterceptor
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamClientInterceptor
+> - [otelgrpc package - go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryClientInterceptor)
+> - [otelgrpc package - go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamClientInterceptor)
 
 #### ▼ トレースコンテキスト注入と子スパン作成 (サーバー側のみ)
 
@@ -1608,9 +1608,9 @@ func main() {
 }
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L126-L151
-> - https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry
-> - https://blog.cybozu.io/entry/2023/04/12/170000
+> - [opentelemetry-go-contrib/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go at v1.19.0 · open-telemetry/opentelemetry-go-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-go-contrib/blob/v1.19.0/instrumentation/google.golang.org/grpc/otelgrpc/example/server/main.go#L126-L151)
+> - [OpenTelemetryで分散トレーシング - Carpe Diem](https://christina04.hatenablog.com/entry/distributed-tracing-with-opentelemetry)
+> - [今日から分散トレーシングに対応しないといけなくなった人のための opentelemetry-go 入門 - Cybozu Inside Out \| サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2023/04/12/170000)
 
 注意点として、直近では `WithStatsHandler()` 関数の使用が推奨になっている。
 
@@ -1637,8 +1637,8 @@ func main() {
 ```
 
 > - https://zenn.dev/cloud_ace/articles/opentelemetry-go#grpc
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamServerInterceptor
-> - https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryServerInterceptor
+> - [otelgrpc package - go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#StreamServerInterceptor)
+> - [otelgrpc package - go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc - Go Packages](https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc#UnaryServerInterceptor)
 
 <br>
 
@@ -1722,8 +1722,8 @@ func NewTracerProvider() {
 }
 ```
 
-> - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-send-message
-> - https://github.com/udhos/opentelemetry-trace-sqs
+> - [Sending and Receiving Messages in Amazon SQS - AWS SDK for Go (version 1)](https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-send-message)
+> - [GitHub - udhos/opentelemetry-trace-sqs: opentelemetry-trace-sqs propagates Open Telemetry tracing with SQS messages for Go language · GitHub](https://github.com/udhos/opentelemetry-trace-sqs)
 
 #### ▼ 親スパン作成 (クライアント側のみ)
 
@@ -1809,8 +1809,8 @@ func main() {
 }
 ```
 
-> - https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-receive-mesage
-> - https://github.com/udhos/opentelemetry-trace-sqs
+> - [Sending and Receiving Messages in Amazon SQS - AWS SDK for Go (version 1)](https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/sqs-example-receive-message.html#sqs-example-receive-mesage)
+> - [GitHub - udhos/opentelemetry-trace-sqs: opentelemetry-trace-sqs propagates Open Telemetry tracing with SQS messages for Go language · GitHub](https://github.com/udhos/opentelemetry-trace-sqs)
 
 <br>
 
@@ -1874,7 +1874,7 @@ func formatTraceId(ctx context.Context, traceIdType string) string {
 }
 ```
 
-> - https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L156-L160
-> - https://aws.github.io/copilot-cli/en/docs/developing/observability/#including-trace-logs
+> - [aws-otel-go/sampleapp/main.go at main · aws-observability/aws-otel-go · GitHub](https://github.com/aws-observability/aws-otel-go/blob/main/sampleapp/main.go#L156-L160)
+> - [Observability - AWS Copilot CLI](https://aws.github.io/copilot-cli/en/docs/developing/observability/#including-trace-logs)
 
 <br>

@@ -29,7 +29,7 @@ description: ルーター＠L3の知見を記録しています。
 
 通信の宛先を制御することを表す場合、単に『フォワーディングする』よりも『ルーティングする』と表現したほうがよい。
 
-> - https://www.infraexpert.com/study/routing.html
+> - [ルーティングとは、ロンゲストマッチとは](https://www.infraexpert.com/study/routing.html)
 
 #### ▼ パスベースルーティング
 
@@ -65,8 +65,8 @@ URL を基点としたパスに応じて、通信のルーティング先を決�
 
 ![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router.png)
 
-> - https://xtech.nikkei.com/atcl/nxt/column/18/01842/032200010/
-> - https://michisugara.jp/modem_router
+> - [異なるネットワークをつなぐ中継器、「ルーター」とは \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/01842/032200010/)
+> - [モデムとONU、ルーターの違い \| パソコン実践BLOG -道すがら講堂-](https://michisugara.jp/modem_router)
 
 <br>
 
@@ -79,7 +79,7 @@ URL を基点としたパスに応じて、通信のルーティング先を決�
 | エッジルーター (エッジゲートウェイ)   | 一般企業内の拠点間 WAN ネットワーク                | 異なる支社や営業所のネットワーク間を繋ぐ。                                                                           |
 | ブロードバンドルーター、Wifi ルーター | 自宅内のネットワーク                               | 自宅内/外のネットワーク間を繋ぐ。ブロードバンドルーターであれば有線、Wifi ルーターであれば無線で接続することになる。 |
 
-> - https://xtech.nikkei.com/atcl/nxt/column/18/00780/052700006/
+> - [図を見て納得、「ルーター」が担う2大使命とIPデータ通信の仕組み \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/00780/052700006/)
 > - https://book.mynavi.jp/support/pc/5081/pdf/154.pdf
 
 <br>
@@ -92,7 +92,7 @@ URL を基点としたパスに応じて、通信のルーティング先を決�
 
 ホップ数は、`traceroute` コマンドで確認できる。
 
-> - https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0
+> - [ホップ数 ‐ 通信用語の基礎知識](https://www.wdic.org/w/WDIC/%E3%83%9B%E3%83%83%E3%83%97%E6%95%B0)
 
 #### ▼ ホップバイホップルーティング
 
@@ -100,7 +100,7 @@ URL を基点としたパスに応じて、通信のルーティング先を決�
 
 ![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router_hop-by-hop-routing.jpeg)
 
-> - https://ascii.jp/elem/000/000/444/444681/3/
+> - [ASCII.jp：ルーティングとレイヤ3スイッチの関係とは (3/8)](https://ascii.jp/elem/000/000/444/444681/3/)
 
 <br>
 
@@ -131,8 +131,8 @@ NAT 処理を実行できるルーターのこと。
 
 ![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-router.png)
 
-> - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
-> - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
+> - [MCU入門 第9回 NAT/FW トラバーサル 3. NAT/FW トラバーサルの仕組み “NATとは” ｜オンライン会議・Web会議のVTVジャパン](https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html)
+> - [NAT機能について質問です。NAT機能はグローバルIPとプライベ... - Yahoo!知恵袋](https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592)
 
 #### ▼ DNAT 処理：Destination NAT
 
@@ -142,7 +142,7 @@ NAT ルーター自体を複数のプライベートネットワークで共有�
 
 ![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グローバルからプライベートへのnat変換.png)
 
-> - https://rainbow-engine.com/dnat-snat-difference/
+> - [DNATとSNATの違いやそれぞれの特徴について – Rainbow Engine](https://rainbow-engine.com/dnat-snat-difference/)
 
 **＊例＊**
 
@@ -198,7 +198,7 @@ GET https://example.com:53
 
 : これらの『送信元プライベート IP アドレス』が、NAT ルーターで、グローバル IP アドレスに変換される。
 
-> - https://rainbow-engine.com/dnat-snat-difference/
+> - [DNATとSNATの違いやそれぞれの特徴について – Rainbow Engine](https://rainbow-engine.com/dnat-snat-difference/)
 
 #### ▼ 外部 IP アドレス、内部 IP アドレス、ターゲット IP アドレス
 
@@ -242,8 +242,8 @@ AWS や GCP などで使用されているような NAT ルーターはこちら
 
 ![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt-router.png)
 
-> - https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html
-> - https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592
+> - [MCU入門 第9回 NAT/FW トラバーサル 3. NAT/FW トラバーサルの仕組み “NATとは” ｜オンライン会議・Web会議のVTVジャパン](https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html)
+> - [NAT機能について質問です。NAT機能はグローバルIPとプライベ... - Yahoo!知恵袋](https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592)
 
 #### ▼ DNAT 処理の場合
 
@@ -288,7 +288,7 @@ Linux/Ubuntu での iptables は、標準的な NAPT ルーターかつパケッ
 | PREROUTING                           | 宛先 IP アドレスとポートを変換する対象のパケットを定義する。ルーティング前に実行する。   |
 | POSTROUTING                          | 送信元 IP アドレスとポートを変換する対象のパケットを定義する。ルーティング後に実行する。 |
 
-> - https://christina04.hatenablog.com/entry/iptables-outline
+> - [iptablesの仕組みを図解 - Carpe Diem](https://christina04.hatenablog.com/entry/iptables-outline)
 
 **＊例＊**
 
@@ -307,6 +307,6 @@ COMMIT
 ...
 ```
 
-> - https://qiita.com/ponsuke0531/items/6b6255c0402e6ea4a950#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%9B%B8%E3%81%8F
+> - [iptablesを使ってポートフォワードをする #Linux - Qiita](https://qiita.com/ponsuke0531/items/6b6255c0402e6ea4a950#%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E6%9B%B8%E3%81%8F)
 
 <br>

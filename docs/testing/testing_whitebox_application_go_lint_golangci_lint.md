@@ -53,7 +53,7 @@ formatters:
     - goimports
 ```
 
-> - https://golangci-lint.run/usage/linters/
+> - [https://golangci-lint.run/docs/linters/](https://golangci-lint.run/usage/linters/)
 > - https://zenn.dev/sanpo_shiho/books/61bc1e1a30bf27/viewer/642fe9
 
 <br>
@@ -304,8 +304,8 @@ severity:
       severity: info
 ```
 
-> - https://github.com/golangci/golangci-lint/blob/main/.golangci.yml
-> - https://github.com/golangci/golangci-lint/blob/main/.golangci.reference.yml
+> - [golangci-lint/.golangci.yml at main · golangci/golangci-lint · GitHub](https://github.com/golangci/golangci-lint/blob/main/.golangci.yml)
+> - [golangci-lint/.golangci.reference.yml at main · golangci/golangci-lint · GitHub](https://github.com/golangci/golangci-lint/blob/main/.golangci.reference.yml)
 
 <br>
 
@@ -396,7 +396,7 @@ linters:
         - "-SA1004"
 ```
 
-> - https://golangci-lint.run/usage/false-positives/#specific-linter-excludes
+> - [https://golangci-lint.run/docs/linters/false-positives/](https://golangci-lint.run/usage/false-positives/#specific-linter-excludes)
 
 #### ▼ 特定のパス
 
@@ -409,7 +409,7 @@ linters:
           - staticcheck
 ```
 
-> - https://golangci-lint.run/usage/false-positives/#exclude-or-skip
+> - [https://golangci-lint.run/docs/linters/false-positives/](https://golangci-lint.run/usage/false-positives/#exclude-or-skip)
 
 #### ▼ 特定のファイル
 
@@ -418,7 +418,7 @@ linters:
 package pkg
 ```
 
-> - https://golangci-lint.run/usage/false-positives/#nolint-directive
+> - [https://golangci-lint.run/docs/linters/false-positives/](https://golangci-lint.run/usage/false-positives/#nolint-directive)
 
 #### ▼ 特定のコード
 
@@ -477,6 +477,6 @@ func InterceptorFilterHealthCheck() otelgrpc.Option {
 }
 ```
 
-> - https://golangci-lint.run/usage/false-positives/#nolint-directive
+> - [https://golangci-lint.run/docs/linters/false-positives/](https://golangci-lint.run/usage/false-positives/#nolint-directive)
 
 <br>

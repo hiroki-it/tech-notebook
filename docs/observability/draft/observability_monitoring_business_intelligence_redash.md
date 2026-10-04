@@ -9,7 +9,7 @@ description: Redash＠BIツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ SQLite で DB にクエリを送信し、ユーザーが定義したビジネス
 
 ビジネスのドメインオブジェクトを永続化している読み用 DB が必要である。
 
-> - https://zenn.dev/shoezawa/articles/0e72d2aa061262#%E6%B3%A8%E6%84%8F%EF%BC%9A%E6%99%AE%E6%AE%B5%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E9%96%A2%E6%95%B0%E3%82%84%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%8C%E4%BD%BF%E3%81%88%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B
+> - [Redash Query Results の使い方](https://zenn.dev/shoezawa/articles/0e72d2aa061262#%E6%B3%A8%E6%84%8F%EF%BC%9A%E6%99%AE%E6%AE%B5%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E9%96%A2%E6%95%B0%E3%82%84%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%8C%E4%BD%BF%E3%81%88%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B)
 
 <br>
 
@@ -53,6 +53,6 @@ flowchart LR
     Redash --アラート通知--> Slack
 ```
 
-> - https://qiita.com/toyama0919/items/f98c8f107374223ad3a4
+> - [re:dashのAlert機能 #redash - Qiita](https://qiita.com/toyama0919/items/f98c8f107374223ad3a4)
 
 <br>

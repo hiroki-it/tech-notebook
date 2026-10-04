@@ -9,7 +9,7 @@ description: YAMLクエリ＠クエリロジックの知見を記録していま
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -44,7 +44,7 @@ baz:
 
 注意点として、`yq` コマンドは Go テンプレートをサポートしていない。
 
-> - https://github.com/mikefarah/yq/issues/636
+> - [Support Go / Helm templates (at least variables) · Issue #636 · mikefarah/yq · GitHub](https://github.com/mikefarah/yq/issues/636)
 
 <br>
 
@@ -117,6 +117,6 @@ $ yq -P foo.json > foo.yaml
 $ yq eval-all '. as $item ireduce ({}; . * $item )' foo.yaml bar.yaml
 ```
 
-> - https://mikefarah.gitbook.io/yq/operators/reduce#merge-all-yaml-files-together
+> - [Reduce \| yq](https://mikefarah.gitbook.io/yq/operators/reduce#merge-all-yaml-files-together)
 
 <br>

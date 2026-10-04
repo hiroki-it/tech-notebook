@@ -9,7 +9,7 @@ description: 見積もり＠プロジェクトマネジメントの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -38,8 +38,8 @@ description: 見積もり＠プロジェクトマネジメントの知見を記�
 
 このとき、『開発規模 (か) 』『工数 (こ) 』『生産性 (せ) 』の単位間の関係は、『みはじ』と同じになる。
 
-> - https://monoist.itmedia.co.jp/mn/articles/1109/14/news011.html
-> - https://e-words.jp/w/%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E6%95%B0.html
+> - [規模見積もりの王様「LOC見積もり」 〜見積もりの基本技法 その2〜：山浦恒央の“くみこみ”な話（35） - MONOist](https://monoist.itmedia.co.jp/mn/articles/1109/14/news011.html)
+> - [ステップ数（論理LOC / 論理コード行数）とは - IT用語辞典 e-Words](https://e-words.jp/w/%E3%82%B9%E3%83%86%E3%83%83%E3%83%97%E6%95%B0.html)
 
 #### ▼ 開発規模の定量化
 

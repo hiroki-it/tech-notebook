@@ -9,7 +9,7 @@ description: Amazon EKSアドオン＠クラウドプロバイダー系の知見
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -24,7 +24,7 @@ EKS のコントロールプレーンとデータプレーン上で Kubernetes �
 一方で、セルフマネージドタイプではユーザーがアドオンの設定値を定義できる。
 
 > - https://docs.aws.amazon.com/eks/latest/userguide/add-ons-configuration.html
-> - https://qiita.com/masahata/items/ba88d0f9c26b1c2bf6f9
+> - [EKSアドオンが管理するリソース（2021/12/15時点） #eks - Qiita](https://qiita.com/masahata/items/ba88d0f9c26b1c2bf6f9)
 
 <br>
 
@@ -112,7 +112,7 @@ $ helm repo add <チャートリポジトリ名> https://aws.github.io/eks-chart
 $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-vpc-cni -n kube-system --version <バージョンタグ>
 ```
 
-> - https://github.com/aws/eks-charts/tree/master/stable
+> - [eks-charts/stable at master · aws/eks-charts · GitHub](https://github.com/aws/eks-charts/tree/master/stable)
 
 <br>
 
@@ -126,7 +126,7 @@ EKS の各 Node 上で、`kube-dns` という名前の Deployment として稼�
 
 AWS CoreDNS が Amazon EKS Cluster 内にない場合、外部のツール (例：SSO の ID プロバイダーなど) を名前解決できなくなるため、必須である。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
+> - [Manage CoreDNS for DNS in Amazon EKS clusters - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html)
 
 <br>
 
@@ -136,7 +136,7 @@ AWS CoreDNS が Amazon EKS Cluster 内にない場合、外部のツール (例�
 
 Kubernetes のバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html
+> - [Manage CoreDNS for DNS in Amazon EKS clusters - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html)
 
 <br>
 
@@ -146,7 +146,7 @@ Kubernetes のバージョンに応じて、異なるアドオンのバージョ
 
 メトリクスの場合、ストレージとアラートをマネージドにした Managed Prometheus と組み合わせると、データの収集 (プル型のみ) から保管までをマネージドにできる。
 
-> - https://speakerdeck.com/k6s4i53rx/opentelemetrywoyong-itaobservabilityji-pan-noshi-zhuang-with-aws-distro-for-opentelemetry?slide=13
+> - [OpenTelemetryを用いたObservability基盤の実装 with AWS Distro for OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/opentelemetrywoyong-itaobservabilityji-pan-noshi-zhuang-with-aws-distro-for-opentelemetry?slide=13)
 
 <br>
 
@@ -160,7 +160,7 @@ EKS のコントロールプレーン上の kube-apiserver が、Node 外から 
 
 AWS kube-proxy が Amazon EKS Cluster 内にない場合、Pod 内のコンテナのライフサイクルを何も管理できなくなるため、必須である。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
+> - [Manage kube-proxy in Amazon EKS clusters - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html)
 
 <br>
 
@@ -170,7 +170,7 @@ AWS kube-proxy が Amazon EKS Cluster 内にない場合、Pod 内のコンテ�
 
 Kubernetes のバージョンに応じて、異なるアドオンのバージョンを使用する必要がある。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html
+> - [Manage kube-proxy in Amazon EKS clusters - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html)
 
 <br>
 
@@ -181,7 +181,7 @@ Node に関するヘルスチェック (例：Amazon EC2 内の kubelet の正�
 なお、Amazon EC2 に関するヘルスチェック (例：Amazon EC2 の正常性) は、AWS Auto Scaling グループで設定できる。
 
 > - https://www.reddit.com/r/aws/comments/1hg998p/comment/m2hfdns/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-> - https://docs.aws.amazon.com/eks/latest/userguide/node-health.html
+> - [Detect node health issues and enable automatic node repair - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/node-health.html)
 
 <br>
 

@@ -9,7 +9,7 @@ description: PagerDuty＠インシデント管理ツールの知見を記録し�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -52,7 +52,7 @@ Amazon CloudWatch アラームに通知されたエラーイベントのうち�
 : 問題を解決できれば、Resolved 状態に移行する。
 
 > - https://blog.mapbox.com/building-on-call-mapboxs-managed-incident-response-tool-59fadd87317a
-> - https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=19
+> - [Wantedlyの障害対応文化とインシデントコマンダー / Wantedly Incident Commander - Speaker Deck](https://speakerdeck.com/irotoris/wantedly-incident-commander?slide=19)
 
 <br>
 
@@ -76,7 +76,7 @@ PagerDuty では、以下の解決フェーズを設定できる。
 
 ![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_incident_phase.png)
 
-> - https://thinkit.co.jp/article/13420
+> - [PagerDutyのエスカレーションポリシーとサービス \| 統合インシデント管理サービスPagerDuty \| Think IT（シンクイット）](https://thinkit.co.jp/article/13420)
 > - https://support.pagerduty.com/docs/incidents#incident-statuses
 
 #### ▼ Resolved への自動的な移行
@@ -96,7 +96,7 @@ PagerDuty では、以下の解決フェーズを設定できる。
 - エラーイベントの重要度レベルの調節
 - インシデントのグループ化
 
-> - https://thinkit.co.jp/article/13558
+> - [モニタリングシステム連携とインシデントの抑制 \| 統合インシデント管理サービスPagerDuty \| Think IT（シンクイット）](https://thinkit.co.jp/article/13558)
 
 <br>
 
@@ -108,6 +108,6 @@ PagerDuty では、以下の解決フェーズを設定できる。
 
 インシデントコマンドシステムを採用し、ロールを決める。
 
-> - https://response.pagerduty.com/before/different_roles/
+> - [Different Roles - PagerDuty Incident Response Documentation](https://response.pagerduty.com/before/different_roles/)
 
 <br>

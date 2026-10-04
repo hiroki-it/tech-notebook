@@ -9,7 +9,7 @@ description: 設定ファイル＠K3Dの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: 設定ファイル＠K3Dの知見を記録しています。
 apiVersion: k3d.io/v1alpha5
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -29,7 +29,7 @@ apiVersion: k3d.io/v1alpha5
 kind: Simple
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -40,7 +40,7 @@ metadata:
   name: foo-cluster
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -50,7 +50,7 @@ metadata:
 servers: 1
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -60,7 +60,7 @@ servers: 1
 agents: 2
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -73,7 +73,7 @@ kubeAPI:
   hostPort: "6445"
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -83,7 +83,7 @@ kubeAPI:
 image: "rancher/k3s:v1.20.4-k3s1"
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -93,7 +93,7 @@ image: "rancher/k3s:v1.20.4-k3s1"
 network: foo-network
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -103,7 +103,7 @@ network: foo-network
 subnet: 172.28.0.0/16
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -113,7 +113,7 @@ subnet: 172.28.0.0/16
 token: superSecretToken
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -127,7 +127,7 @@ volumes:
       - "agent:*"
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -140,7 +140,7 @@ ports:
       - loadbalancer
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -153,7 +153,7 @@ env:
       - "server:0"
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -245,8 +245,8 @@ registries:
           insecure_skip_verify: true
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
-> - https://github.com/sokube/kciss/blob/998654edac3bd7571a749ea95528ea5e847b7386/k3d-cluster-config-with-private-registry.yml#L23-L34
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
+> - [kciss/k3d-cluster-config-with-private-registry.yml at 998654edac3bd7571a749ea95528ea5e847b7386 · sokube/kciss · GitHub](https://github.com/sokube/kciss/blob/998654edac3bd7571a749ea95528ea5e847b7386/k3d-cluster-config-with-private-registry.yml#L23-L34)
 
 <br>
 
@@ -263,7 +263,7 @@ hostAliases:
       - cloud.flare.dns
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>
 
@@ -304,6 +304,6 @@ options:
         hard: 26677
 ```
 
-> - https://k3d.io/v5.6.3/usage/configfile/#all-options-example
+> - [Using Config Files - k3d](https://k3d.io/v5.6.3/usage/configfile/#all-options-example)
 
 <br>

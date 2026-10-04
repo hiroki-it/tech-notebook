@@ -44,9 +44,9 @@ description: インフラストラクチャ層＠クリーンアーキテクチ�
 | `save()` (`upsert()`)                                            | ルートエンティティのドメインモデル型             | void 型                    | ルートエンティティのドメインモデルを作成/更新する。SELECT 文の IN 句を使用して、同じ識別子のエンティティを DB から読み込めるか否かを確認する。取得できない場合は、更新処理を実行する。`<br>`・https://github.com/little-hands/ddd-q-and-a/issues/241`<br>`・https://github.com/little-hands/ddd-q-and-a/issues/129                                                                                                                                                                                                          |
 | `delete()`                                                       | Id 型                                            | void 型                    | ルートエンティティのドメインモデルを削除する。                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 
-> - https://codewithshadman.com/repository-pattern-csharp/
-> - https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction
-> - https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html#repository-interface-label
+> - [Repository Pattern C# - Code with Shadman](https://codewithshadman.com/repository-pattern-csharp/)
+> - [Generating the repository pattern in Go - stevenferrer.github.io](https://stevenferrer.github.io/posts/generating-the-repository-pattern-in-go/#introduction)
+> - [4.1. ドメイン層の実装 — TERASOLUNA Global Framework Development Guideline 1.0.0.publicreview documentation](https://terasolunaorg.github.io/guideline/public_review/ImplementationAtEachLayer/DomainLayer.html#repository-interface-label)
 
 ### 他の類似するデザインパターンとの比較
 
@@ -79,7 +79,7 @@ description: インフラストラクチャ層＠クリーンアーキテクチ�
 
 これにより、ルートエンティティとテーブルを別々に設計できる。
 
-> - https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html
+> - [【IT技術の知見】RDBMS＠DB系ミドルウェア - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html)
 > - https://codezine.jp/article/detail/10776
 
 <br>
@@ -435,7 +435,7 @@ class DogComboFactory
 
 ![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/design-pattern_middleware.png)
 
-> - https://qiita.com/ktanoooo/items/a746a96b12489ae56553
+> - [Laravel ミドルウェアの設定について #middleware - Qiita](https://qiita.com/ktanoooo/items/a746a96b12489ae56553)
 
 <br>
 
@@ -460,7 +460,7 @@ class DogComboFactory
 フレームワークの機能に依存するため、実装の詳細をインフラストラクチャ層へ置く。
 
 > - https://stackoverflow.com/questions/67148194/domain-driven-design-ddd-domain-event-handlers-where-to-place-them
-> - https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01
+> - [ドメインイベントによるイベント駆動の実装](https://zenn.dev/fuuuuumin65/articles/2c96e8f0b29c01)
 
 ### 命名規則
 
@@ -488,7 +488,7 @@ class DogComboFactory
 
 パスワードのハッシュ化。
 
-> - https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5
+> - [Using Domain-Driven Design(DDD)in Golang - DEV Community](https://dev.to/stevensunflash/using-domain-driven-design-ddd-in-golang-3ee5)
 
 <br>
 

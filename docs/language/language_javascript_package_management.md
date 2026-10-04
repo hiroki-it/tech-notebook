@@ -8,7 +8,7 @@ title: 【IT技術の知見】パッケージ＠JavaScript
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -45,7 +45,7 @@ $ yum install -y nodejs
 }
 ```
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#author
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#author)
 
 #### ▼ bug
 
@@ -55,7 +55,7 @@ $ yum install -y nodejs
 {"bugs": {"url": "https://github.com/hiroki-hasegawa/foo/issues"}}
 ```
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bug
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#bug)
 
 #### ▼ dependencies
 
@@ -76,7 +76,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 }
 ```
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies)
 
 #### ▼ description
 
@@ -84,7 +84,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 {"description": "This is foo package"}
 ```
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#description
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#description)
 
 #### ▼ devDependencies
 
@@ -103,7 +103,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 }
 ```
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#devdependencies
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#devdependencies)
 
 #### ▼ directories
 
@@ -115,7 +115,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 {"directories": {"doc": "foo/doc", "lib": "foo/lib"}}
 ```
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#directories)
 
 #### ▼ engines
 
@@ -123,7 +123,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 使用するバージョンを強制し、他のバージョンではコマンドの実行で失敗する。
 
-> - https://qiita.com/suin/items/994458418c737cc9c3e8
+> - [package.jsonに"engines"を設定すると「このバージョンのNode.jsでしか動かない」を表明できる #JavaScript - Qiita](https://qiita.com/suin/items/994458418c737cc9c3e8)
 
 ```yaml
 {"engines": {"node": "1.0.0", "npm": "1.0.0"}}
@@ -133,7 +133,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 パッケージを説明する Web サイトのリンクを設定する。
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage)
 
 ```yaml
 {"homepage": "https://example.com"}
@@ -143,7 +143,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 エントリポイントとなるファイルを設定する。
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main)
 
 ```yaml
 {"main": "index.js"}
@@ -159,7 +159,7 @@ npm パッケージ名を設定する。
 {"name": "foo"}
 ```
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#name
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#name)
 
 #### ▼ repository
 
@@ -170,7 +170,7 @@ npm パッケージ名を設定する。
 }
 ```
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#repository)
 
 #### ▼ scripts
 
@@ -180,7 +180,7 @@ npm パッケージ名を設定する。
 {"scripts": {"foo": "npm install"}}
 ```
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#scripts
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#scripts)
 
 #### ▼ version
 
@@ -190,7 +190,7 @@ npm パッケージ名を設定する。
 {"version": "<バージョンタグ>"}
 ```
 
-> - https://docs.npmjs.com/cli/v7/configuring-npm/package-json#version
+> - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#version)
 
 <br>
 
@@ -250,7 +250,7 @@ $ npm install --force
 $ npm install --save
 ```
 
-> - https://docs.npmjs.com/cli/v8/commands/npm-install#global
+> - [npm-install \| npm Docs](https://docs.npmjs.com/cli/v8/commands/npm-install#global)
 
 #### ▼ --save
 
@@ -262,7 +262,7 @@ $ npm install --save
 $ npm install --save
 ```
 
-> - https://docs.npmjs.com/cli/v8/commands/npm-install#global
+> - [npm-install \| npm Docs](https://docs.npmjs.com/cli/v8/commands/npm-install#global)
 
 #### ▼ --save--dev
 
@@ -340,7 +340,7 @@ $ export NODE_OPTIONS="--max-old-space-size=2048"
 $ apt-get install yarn
 ```
 
-> - https://phoenixnap.com/kb/how-to-install-yarn-ubuntu
+> - [How to Install Yarn on Ubuntu](https://phoenixnap.com/kb/how-to-install-yarn-ubuntu)
 
 #### ▼ npm レジストリから
 
@@ -348,7 +348,7 @@ $ apt-get install yarn
 $ npm install --global yarn
 ```
 
-> - https://classic.yarnpkg.com/en/docs/install#mac-stable
+> - [Installation \| Yarn](https://classic.yarnpkg.com/en/docs/install#mac-stable)
 
 <br>
 
@@ -402,7 +402,7 @@ $ yarn add <パッケージ名>@<バージョンタグ> --dev
 $ yarn audit
 ```
 
-> - https://zenn.dev/ymmt1089/articles/20221120_node_vulnerability#%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A4%9C%E5%87%BA
+> - [【脆弱性対応】nodeパッケージのバージョンアップを安全に行う](https://zenn.dev/ymmt1089/articles/20221120_node_vulnerability#%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A4%9C%E5%87%BA)
 
 #### ▼ level
 
@@ -412,7 +412,7 @@ $ yarn audit
 $ yarn audit --level critical
 ```
 
-> - https://zenn.dev/ymmt1089/articles/20221120_node_vulnerability#%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A4%9C%E5%87%BA
+> - [【脆弱性対応】nodeパッケージのバージョンアップを安全に行う](https://zenn.dev/ymmt1089/articles/20221120_node_vulnerability#%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%AE%E3%81%82%E3%82%8B%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%81%AE%E6%A4%9C%E5%87%BA)
 
 <br>
 
@@ -446,7 +446,7 @@ $ yarn install <パッケージ名>@<バージョンタグ>
 $ yarn install --check-files
 ```
 
-> - https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files
+> - [yarn install \| Yarn](https://classic.yarnpkg.com/en/docs/cli/install/#toc-yarn-install-check-files)
 
 #### ▼ --production
 
@@ -460,7 +460,7 @@ $ yarn install --check-files
 $ yarn install --production
 ```
 
-> - https://miyahara.hikaru.dev/posts/20200414/
+> - [NODE\_ENV=productionにしてyarn install(npm install)するとdevDependenciesがインストールされない · HikaTechBlog](https://miyahara.hikaru.dev/posts/20200414/)
 
 #### ▼ --verbose
 
@@ -490,7 +490,7 @@ $ yarn install --verbose
 $ yarn lint
 ```
 
-> - https://zenn.dev/yhay81/articles/def73cf8a02864#%E5%B0%8E%E5%85%A5%E6%96%B9%E6%B3%95
+> - [ESLint 10のススメ（Biomeを使わない場合）](https://zenn.dev/yhay81/articles/def73cf8a02864#%E5%B0%8E%E5%85%A5%E6%96%B9%E6%B3%95)
 
 <br>
 
@@ -544,7 +544,7 @@ $ yarn upgrade <パッケージ名>@^<バージョンタグ>
 $ yarn upgrade <パッケージ名>@~<バージョンタグ>
 ```
 
-> - https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+> - [yarn upgradeのあれこれ #CLI - Qiita](https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4)
 
 #### ▼ latest
 
@@ -554,7 +554,7 @@ $ yarn upgrade <パッケージ名>@~<バージョンタグ>
 $ yarn upgrade --latest
 ```
 
-> - https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4
+> - [yarn upgradeのあれこれ #CLI - Qiita](https://qiita.com/teinen_qiita/items/18ca1fb433914e09c9e4)
 
 <br>
 
@@ -602,6 +602,6 @@ $ yarn upgrade --latest
 </html>
 ```
 
-> - https://qiita.com/soarflat/items/28bf799f7e0335b68186
+> - [webpack 4 入門 #JavaScript - Qiita](https://qiita.com/soarflat/items/28bf799f7e0335b68186)
 
 <br>

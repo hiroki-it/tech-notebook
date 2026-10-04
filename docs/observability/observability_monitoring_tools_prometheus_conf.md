@@ -84,7 +84,7 @@ alerting:
             - <AlertmanagerのIPアドレス>:9093
 ```
 
-> - https://amateur-engineer-blog.com/alertmanager-docker-compose/
+> - [【Prometheus】Alertmanagerをローカルで使ってみる](https://amateur-engineer-blog.com/alertmanager-docker-compose/)
 > - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config
 
 <br>
@@ -145,7 +145,7 @@ groups:
           description: 【 {{ $labels.app }} 】{{ $labels.env }} 環境で、Podのメモリ使用率が {{ $value }} になりました。
 ```
 
-> - https://amateur-engineer-blog.com/alertmanager-docker-compose/
+> - [【Prometheus】Alertmanagerをローカルで使ってみる](https://amateur-engineer-blog.com/alertmanager-docker-compose/)
 
 **＊実装例＊**
 
@@ -165,7 +165,7 @@ groups:
           description: "The certificate for {{ $labels.instance }} is about to expire in less than 7 days."
 ```
 
-> - https://promlabs.com/blog/2024/02/06/monitoring-tls-endpoint-certificate-expiration-with-prometheus/
+> - [PromLabs \| Blog - Monitoring TLS Endpoint Certificate Expiration with Prometheus](https://promlabs.com/blog/2024/02/06/monitoring-tls-endpoint-certificate-expiration-with-prometheus/)
 
 #### ▼ scrape_configs セクション
 
@@ -195,7 +195,7 @@ scrape_configs:
           cluster: prd
 ```
 
-> - https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3
+> - [【Prometheus】Node exporterをざっくり理解](https://amateur-engineer-blog.com/prometheus-node-exporter/#toc3)
 
 `labels` キーを使用して、メトリクスにフィルタリング用ラベルを追加できる。
 
@@ -255,9 +255,9 @@ scrape_configs:
         action: keep
 ```
 
-> - https://changineer.info/server/monitoring/monitoring_prometheus_discovery_kubernetes.html
-> - https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically
-> - https://christina04.hatenablog.com/entry/prometheus-service-discovery
+> - [Prometheus サービスディスカバリ (Kubernetes編) \| ネットワークチェンジニアとして](https://changineer.info/server/monitoring/monitoring_prometheus_discovery_kubernetes.html)
+> - [Use file-based service discovery to discover scrape targets \| Prometheus](https://prometheus.io/docs/guides/file-sd/#changing-the-targets-list-dynamically)
+> - [Prometheus の監視対象を ServiceDiscovery で動的に設定する - Carpe Diem](https://christina04.hatenablog.com/entry/prometheus-service-discovery)
 
 <br>
 

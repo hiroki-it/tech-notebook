@@ -9,7 +9,7 @@ description: OpenTelemetry Collector＠監視ツールの知見を記録して�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -30,7 +30,7 @@ otel クライアントパッケージからのテレメトリーデータを、
 ![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
 
 > - https://www.logicmonitor.com/blog/what-is-an-otel-collector
-> - https://istio.io/latest/docs/tasks/observability/logs/otel-provider/
+> - [Istio / OpenTelemetry](https://istio.io/latest/docs/tasks/observability/logs/otel-provider/)
 
 <br>
 
@@ -42,15 +42,15 @@ OTLP 形式のテレメトリーを受信する。
 
 HTTPS で受信する場合には、サーバー証明書が必要である。
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md
+> - [opentelemetry-collector/receiver/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md)
 > - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#server-configuration
 
 #### ▼ Prometheus Receiver
 
 Prometheus にリクエストを送信し、Prometheus の持つメトリクスの元になるデータポイントを収集する。
 
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver
-> - https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8
+> - [opentelemetry-collector-contrib/receiver/prometheusreceiver at main · open-telemetry/opentelemetry-collector-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)
+> - [EKSのメトリクスをCloudWatchに取り込む AWS Distro for OpenTelemetryで #kubernetes - Qiita](https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8)
 
 <br>
 
@@ -62,7 +62,7 @@ Prometheus にリクエストを送信し、Prometheus の持つメトリクス�
 
 OpenTelemetry クライアントの Processor と同じである。
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md
+> - [opentelemetry-collector/processor/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md)
 
 <br>
 
@@ -80,9 +80,9 @@ OpenTelemetry クライアントの Exporter と同じである。
 
 HTTPS で送信する場合には、クライアント証明書が必要である。
 
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md
-> - https://azukiazusa.dev/blog/instrumenting-Node-js-applications-with-open-telemetry/#exporters
-> - https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#client-configuration
+> - [opentelemetry-collector/exporter/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md)
+> - [OpenTelemetry を使用して Node.js アプリケーションを計装する](https://azukiazusa.dev/blog/instrumenting-Node-js-applications-with-open-telemetry/#exporters)
+> - [opentelemetry-collector/config/configtls/README.md at main · open-telemetry/opentelemetry-collector · GitHub](https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/configtls/README.md#client-configuration)
 
 #### ▼ Amazon CloudWatch EMF Exporter
 
@@ -93,8 +93,8 @@ Amazon CloudWatch Metrics は、埋め込みメトリクスフォーマットに
 例えば、Amazon CloudWatch がデフォルトで対応していないメトリクス (例：Prometheus) を一度ログに変換したうえで、カスタムメトリクスとして表示し直すことができる。
 
 > - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/exporter/awsemfexporter
-> - https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-amazon-eks-with-aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/
-> - https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8
+> - [Adding metrics and traces to your application on Amazon EKS with AWS Distro for OpenTelemetry, AWS X-Ray and Amazon CloudWatch \| AWS Cloud Operations Blog](https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-amazon-eks-with-aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/)
+> - [EKSのメトリクスをCloudWatchに取り込む AWS Distro for OpenTelemetryで #kubernetes - Qiita](https://qiita.com/tmokmss/items/1ad885606100f4c210d8#prometheus%E3%83%A1%E3%83%88%E3%83%AA%E3%82%AF%E3%82%B9%E3%81%AE%E5%88%A9%E7%94%A8)
 
 #### ▼ AWS X-Ray Exporter
 
@@ -106,8 +106,8 @@ OpenTelemetry と X-Ray の間で互換性のないデータ (例：OpenTelemetr
 
 そのため、X-Ray の対応するトレースコンテキスト仕様 (例：W3C Trace Context、X-Ray 仕様) ではない場合、スパンを送ったとしても X-Ray 上で分散トレースを作成できない。
 
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246
-> - https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L371-L475
+> - [opentelemetry-collector-contrib/exporter/awsxrayexporter/internal/translator/segment.go at v0.96.0 · open-telemetry/opentelemetry-collector-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L92-L246)
+> - [opentelemetry-collector-contrib/exporter/awsxrayexporter/internal/translator/segment.go at v0.96.0 · open-telemetry/opentelemetry-collector-contrib · GitHub](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.96.0/exporter/awsxrayexporter/internal/translator/segment.go#L371-L475)
 
 <br>
 
@@ -169,7 +169,7 @@ data "aws_iam_policy_document" "opentelemetry_collector_policy" {
 }
 ```
 
-> - https://aws-otel.github.io/docs/setup/permissions
+> - [Configuring Permissions \| AWS Distro for OpenTelemetry](https://aws-otel.github.io/docs/setup/permissions)
 
 <br>
 
@@ -233,7 +233,7 @@ data:
     ...
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/configmap.yaml
+> - [opentelemetry-helm-charts/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/configmap.yaml at opentelemetry-collector-0.80.0 · open-telemetry/opentelemetry-helm-charts · GitHub](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/configmap.yaml)
 
 <br>
 
@@ -321,7 +321,7 @@ spec:
       hostNetwork: false
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/daemonset-only/rendered/daemonset.yaml
+> - [opentelemetry-helm-charts/charts/opentelemetry-collector/examples/daemonset-only/rendered/daemonset.yaml at opentelemetry-collector-0.80.0 · open-telemetry/opentelemetry-helm-charts · GitHub](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/daemonset-only/rendered/daemonset.yaml)
 > - https://medium.com/opentelemetry/deploying-the-opentelemetry-collector-on-kubernetes-2256eca569c9
 
 <br>
@@ -394,7 +394,7 @@ spec:
       hostNetwork: false
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/deployment.yaml
+> - [opentelemetry-helm-charts/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/deployment.yaml at opentelemetry-collector-0.80.0 · open-telemetry/opentelemetry-helm-charts · GitHub](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/deployment.yaml)
 > - https://medium.com/opentelemetry/deploying-the-opentelemetry-collector-on-kubernetes-2256eca569c9
 
 <br>
@@ -425,7 +425,7 @@ spec:
   internalTrafficPolicy: Cluster
 ```
 
-> - https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/service.yaml
+> - [opentelemetry-helm-charts/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/service.yaml at opentelemetry-collector-0.80.0 · open-telemetry/opentelemetry-helm-charts · GitHub](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/opentelemetry-collector-0.80.0/charts/opentelemetry-collector/examples/deployment-otlp-traces/rendered/service.yaml)
 
 <br>
 
@@ -442,7 +442,7 @@ spec:
 この場合、OpenTelemetry Operator が InitContainer を経由して、アプリコンテナに OpenTelemetry の実装を挿入する。
 
 > - https://medium.com/opentelemetry/using-opentelemetry-auto-instrumentation-agents-in-kubernetes-869ec0f42377
-> - https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=52
+> - [計測の手間を省きたい！OpenTelemetry に見る”自動計装”のイマ / Getting started auto instrumentation with OpenTelemetry - Speaker Deck](https://speakerdeck.com/k6s4i53rx/getting-started-auto-instrumentation-with-opentelemetry?slide=52)
 
 <br>
 
@@ -463,12 +463,12 @@ spec:
 
 > - https://aws.amazon.com/blogs/mt/adding-metrics-and-traces-to-your-application-on-ama[…]aws-distro-for-opentelemetry-aws-x-ray-and-amazon-cloudwatch/
 > - https://aws-otel.github.io/docs/getting-started/container-insights/eks-infra#default-configuration-to-support-c[…]tch-container-insights-for-eks-ec2
-> - https://aws-otel.github.io/docs/getting-started/cloudwatch-metrics
+> - [Using CloudWatch Metrics with AWS Distro for OpenTelemetry \| AWS Distro for OpenTelemetry](https://aws-otel.github.io/docs/getting-started/cloudwatch-metrics)
 
 #### ▼ サポートしている Prometheus メトリクス
 
 すべての Prometheus メトリクスにサポートしているわけでない。
 
-> - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-metrics-EKS.html
+> - [Amazon EKS and Kubernetes Container Insights metrics - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-metrics-EKS.html)
 
 <br>

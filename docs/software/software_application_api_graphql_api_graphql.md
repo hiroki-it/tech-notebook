@@ -9,7 +9,7 @@ description: GraphQL＠GraphQL-APIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -25,7 +25,7 @@ GraphQL は、GraphQL-API の GraphQL サーバー、GraphQL クライアント�
 
 ![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/graphql-api.png)
 
-> - https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/
+> - [GraphQL vs. REST - Apollo GraphQL Blog](https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/)
 
 <br>
 
@@ -36,7 +36,7 @@ GraphQL は、GraphQL-API の GraphQL サーバー、GraphQL クライアント�
 GraphQL-API が受信する CRUD のデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。
 
 > - https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E8%A8%AD%E8%A8%88
-> - https://zenn.dev/hsaki/books/golang-graphql/viewer/tutorial
+> - [GraphQLサーバーを動かしてみる｜Goで学ぶGraphQLサーバーサイド入門](https://zenn.dev/hsaki/books/golang-graphql/viewer/tutorial)
 
 <br>
 

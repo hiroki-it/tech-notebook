@@ -9,7 +9,7 @@ description: ドキュメンテーション＠DevOpsの知見を記録してい�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -75,7 +75,7 @@ description: ドキュメンテーション＠DevOpsの知見を記録してい�
 - 環境構築手順書
 - 運用手順書
 
-> - https://dev.classmethod.jp/articles/non-97-operation-manual/
+> - [自己流の手順書フォーマットを公開してみた \| DevelopersIO](https://dev.classmethod.jp/articles/non-97-operation-manual/)
 
 #### ▼ 調査書
 
@@ -135,7 +135,7 @@ description: ドキュメンテーション＠DevOpsの知見を記録してい�
 | 文章校正           | textlint                      | 設定した校正ルールに応じて、テキストファイルの誤った文法を検出する。 |      |
 | リンク切れチェック | markdown-link-check、htmltest | テキストファイル中の URL のリンク切れを検出する。                    |      |
 
-> - https://syu-m-5151.hatenablog.com/entry/2023/03/14/130502
+> - [良いドキュメントを書きたくなる本を読んだらドキュメンタリアンになりたくなった - じゃあ、おうちで学べる](https://syu-m-5151.hatenablog.com/entry/2023/03/14/130502)
 
 <br>
 

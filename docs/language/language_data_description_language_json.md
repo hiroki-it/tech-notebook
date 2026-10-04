@@ -9,7 +9,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -19,7 +19,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 元は JavaScript から生まれた。
 
-> - https://www.json.org/json-en.html
+> - [JSON](https://www.json.org/json-en.html)
 
 <br>
 
@@ -174,7 +174,7 @@ json["prefecture"] = "Tokyo";
 
 以下のサイトで並び替えられる。
 
-> - https://r37r0m0d3l.github.io/json_sort/
+> - [JSON Sorter - Sort JSON keys online](https://r37r0m0d3l.github.io/json_sort/)
 
 <br>
 

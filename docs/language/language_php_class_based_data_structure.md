@@ -8,7 +8,7 @@ title: 【IT技術の知見】データ構造＠PHP
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -256,19 +256,19 @@ PHP の連想配列に相当する。
 
 #### ▼ 単方向リスト
 
-> - https://www.amazon.co.jp/dp/4297124513
+> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
 ![p555-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-1.gif)
 
 #### ▼ 双方向リスト
 
-> - https://www.amazon.co.jp/dp/4297124513
+> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
 ![p555-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-2.gif)
 
 #### ▼ 循環リスト
 
-> - https://www.amazon.co.jp/dp/4297124513
+> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
 ![p555-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-3.gif)
 
@@ -296,7 +296,7 @@ PHP の連想配列に相当する。
 
 以下のリンクを参考にせよ。
 
-> - https://www.php.net/manual/ja/language.types.intro.php
+> - [PHP: はじめに - Manual](https://www.php.net/manual/ja/language.types.intro.php)
 
 <br>
 

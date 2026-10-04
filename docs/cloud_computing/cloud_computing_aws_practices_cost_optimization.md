@@ -9,7 +9,7 @@ description: 金銭的コスト最適化＠AWSの知見を記録しています�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -26,7 +26,7 @@ description: 金銭的コスト最適化＠AWSの知見を記録しています�
 - Web アプリケーションのリソース要求の特徴 (恒常的な要求、瞬間的な要求)
 - ビジネスドメインの性質による夜間や土日のトラフィックの増減 (例えば、Chatwork のようなビジネスチャットツールでは、夜間や土日のトラフィックが減る)
 
-> - https://speakerdeck.com/taishin/jaws-ug-sre-coverage?slide=8
+> - [目指せCoverage100%! AutoScale環境におけるSavings Plans購入戦略 / JAWS-UG\_SRE\_Coverage - Speaker Deck](https://speakerdeck.com/taishin/jaws-ug-sre-coverage?slide=8)
 
 <br>
 
@@ -65,19 +65,19 @@ description: 金銭的コスト最適化＠AWSの知見を記録しています�
 
 各種 AWS リソースの設定の上限値を上げられる。
 
-> - https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html
+> - [What is Service Quotas? - Service Quotas](https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html)
 
 <br>
 
 ### 各種 AWS リソースの上限値
 
-> - https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html
+> - [Service endpoints and quotas - AWS General Reference](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html)
 
 <br>
 
 ### 方法
 
-> - https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html
+> - [Requesting a quota increase - Service Quotas](https://docs.aws.amazon.com/servicequotas/latest/userguide/request-quota-increase.html)
 
 <br>
 
@@ -149,8 +149,8 @@ AWS EBS ボリュームは、ボリュームの使用率に関わらず、最大
 | リザーブドインスタンス   | Amazon EC2 の一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。                                                                                                                  |                                                                                    |
 | スポットインスタンス     | 休止している Amazon EC2 を使用する。格安で使用できる。ただし、スポットインスタンスの絶対数が減少したり、スポットインスタンスの希望ユーザーが増えた場合に、利用を強制的に中断されてしまうことがある。 | ・https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-spot-instances-work.html |
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing
-> - https://tech.nri-net.com/entry/2021/04/21/094600
+> - [What is Amazon EC2? - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html#ec2-pricing)
+> - [AWS OrganizationsとSavings Plansを活用したコスト削減のベストプラクティス - NRIネットコムBlog](https://tech.nri-net.com/entry/2021/04/21/094600)
 
 #### ▼ 実行時間
 
@@ -169,7 +169,7 @@ Amazon EC2 を実行している時間分だけ料金がかかる。
 | shutting-down | なし           |                                                            |
 | terminated    | なし           |                                                            |
 
-> - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
+> - [Amazon EC2 instance state changes - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
 
 <br>
 
@@ -232,7 +232,7 @@ Fargate のコンピューティングの月額料金 = 3.04 USD + 1.33 USD = 4.
 | オンデマンドインスタンス | ・https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_OnDemandDBInstances.html                                                                                                        |
 | リザーブドインスタンス   | RDS インスタンスの一定期間分の使用料金を前払いし、その代わりに安く利用できるようになる。<br>・https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithReservedDBInstances.html |
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html
+> - [DB instance billing for Amazon RDS - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/User_DBInstanceBilling.html)
 
 <br>
 

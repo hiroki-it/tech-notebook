@@ -9,7 +9,7 @@ description: 設定ファイル＠uWSGIの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -36,7 +36,7 @@ uWSGI の起動時の値を設定する。
 `json` 形式や `xml` 形式でも問題ない。
 
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html
-> - https://qiita.com/11ohina017/items/da2ae5b039257752e558
+> - [uWSGIのiniファイルの文法まとめ #nginx - Qiita](https://qiita.com/11ohina017/items/da2ae5b039257752e558)
 
 #### ▼ 起動ログ
 
@@ -111,7 +111,7 @@ uWSGI の `uwsgi` プロセスのプールを設定する。
 callable = app
 ```
 
-> - https://laplace-daemon.com/nginx-uwsgi-flask/
+> - [【Ubuntu】Flask, uWSGI, nginxでHello Worldする方法 \| Laplamon](https://laplace-daemon.com/nginx-uwsgi-flask/)
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#callable
 
 <br>
@@ -254,7 +254,7 @@ socket = /etc/uwsgi/uwsgi.sock:5000
 ```
 
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#socket
-> - https://qiita.com/koyoru1214/items/57461b920dfc11f67683
+> - [NginxとuWSGIでHelloWorld #Python - Qiita](https://qiita.com/koyoru1214/items/57461b920dfc11f67683)
 
 <br>
 
@@ -281,6 +281,6 @@ wsgi-file = main.py
 ```
 
 > - https://uwsgijapanese.readthedocs.io/ja/latest/Options.html#wsgi-file
-> - https://django.kurodigi.com/uwsgi-basic/
+> - [4-2. uWSGIでDjangoアプリを動かす基礎 – Django学習帳](https://django.kurodigi.com/uwsgi-basic/)
 
 <br>

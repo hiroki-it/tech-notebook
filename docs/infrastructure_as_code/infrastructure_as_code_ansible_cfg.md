@@ -9,7 +9,7 @@ description: ansible.cfg＠Ansibleの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -37,7 +37,7 @@ Ansible 自体を設定する。
 hostfile = /etc/ansible/inventories
 ```
 
-> - https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> - [ansible.cfgの項目をリスト化してみた #Ansible - Qiita](https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3)
 
 <br>
 
@@ -52,7 +52,7 @@ hostfile = /etc/ansible/inventories
 remote_user = ansible
 ```
 
-> - https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> - [ansible.cfgの項目をリスト化してみた #Ansible - Qiita](https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3)
 
 <br>
 
@@ -67,7 +67,7 @@ remote_user = ansible
 private_key_file = /etc/ansible/ssh_keys/prd-foo.pem
 ```
 
-> - https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3
+> - [ansible.cfgの項目をリスト化してみた #Ansible - Qiita](https://qiita.com/_croissant_/items/33f06298d7d05bf1e295#defaults%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3)
 
 <br>
 
@@ -83,7 +83,7 @@ host_key_checking = False
 ```
 
 > - https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-key-checking
-> - https://tekunabe.hatenablog.jp/entry/2021/01/17/ansible_stumble_26
+> - [\[Ansible\] 「つまずき Ansible 【Part26】ansible.cfg を触る」ふりかえり - てくなべ](https://tekunabe.hatenablog.jp/entry/2021/01/17/ansible_stumble_26)
 
 <br>
 
@@ -101,6 +101,6 @@ host_pattern_mismatch = error
 ```
 
 > - https://docs.ansible.com/ansible/latest/reference_appendices/config.html#host-pattern-mismatch
-> - https://zenn.dev/akira6592/scraps/24a748660fdea4
+> - [ansible.cfg 気になる設定](https://zenn.dev/akira6592/scraps/24a748660fdea4)
 
 <br>

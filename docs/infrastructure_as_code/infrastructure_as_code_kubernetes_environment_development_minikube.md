@@ -60,7 +60,7 @@ description: Minikube＠開発環境の知見を記録しています。
 | MacOS         | VirtualBox、Docker、HyperKit、... |
 | Windows       | VirtualBox、Docker、Hyper-V、...  |
 
-> - https://minikube.sigs.k8s.io/docs/drivers/
+> - [Drivers \| minikube](https://minikube.sigs.k8s.io/docs/drivers/)
 
 <br>
 
@@ -82,7 +82,7 @@ $ echo nameserver 8.8.8.8 > ~/.minikube/files/etc/foo.conf
 $ minikube start
 ```
 
-> - https://minikube.sigs.k8s.io/docs/handbook/filesync/
+> - [File Sync \| minikube](https://minikube.sigs.k8s.io/docs/handbook/filesync/)
 
 #### ▼ 各ドライバーのマウントディレクトリ
 
@@ -97,7 +97,7 @@ $ minikube start
 | KVM           | Linux         | なし                      |                                        |
 | HyperKit      | Linux         | なし (NFS マウントを参照) |                                        |
 
-> - https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts
+> - [Mounting filesystems \| minikube](https://minikube.sigs.k8s.io/docs/handbook/mount/#driver-mounts)
 
 <br>
 
@@ -109,8 +109,8 @@ Minikube には、HostPath CSI ドライバー (`storage-provisioner` アドオ�
 
 そのため、PersistentVolumeClaim を作成すれば、ゲスト仮想環境内の Node に PersistentVolume が自動的に作成される。
 
-> - https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi
-> - https://minikube.sigs.k8s.io/docs/tutorials/volume_snapshots_and_csi/
+> - [Persistent Volumes \| minikube](https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/#dynamic-provisioning-and-csi)
+> - [CSI Driver and Volume Snapshots \| minikube](https://minikube.sigs.k8s.io/docs/tutorials/volume_snapshots_and_csi/)
 > - https://github.com/kubernetes/minikube/blob/master/pkg/storage/storage_provisioner.go
 
 #### ▼ Node の永続ディレクトリ
@@ -128,7 +128,7 @@ Minikube では、Node を再起動するとディレクトリ内のファイル
 - `/tmp/hostpath_pv`
 - `/tmp/hostpath-provisioner`
 
-> - https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
+> - [Persistent Volumes \| minikube](https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/)
 
 #### ▼ CSI ドライバーを使用しない場合
 
@@ -148,7 +148,7 @@ spec:
     path: /data/pv0001/
 ```
 
-> - https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/
+> - [Persistent Volumes \| minikube](https://minikube.sigs.k8s.io/docs/handbook/persistent_volumes/)
 
 <br>
 
@@ -226,7 +226,7 @@ spec:
 
 Node 内で `ip addr` コマンドを実行することで、Node に割り当てられた CIDR ブロックを確認できる。
 
-> - https://nishipy.com/archives/1467
+> - [KubernetesでNode, Pod, Serviceに割り当てられるIPアドレスの範囲を確認する \| Nishipy Notes](https://nishipy.com/archives/1467)
 
 **＊例＊**
 
@@ -286,7 +286,7 @@ docker@minikube:~$ cat /etc/cni/net.d/100-crio-bridge.conf
 }
 ```
 
-> - https://nishipy.com/archives/1467
+> - [KubernetesでNode, Pod, Serviceに割り当てられるIPアドレスの範囲を確認する \| Nishipy Notes](https://nishipy.com/archives/1467)
 
 <br>
 
@@ -325,7 +325,7 @@ networks:
     external: true
 ```
 
-> - https://zenn.dev/kacky/articles/1e9e3a9b6306d9#docker-compose%E5%81%B4
+> - [ローカル環境でDocker(docker-compose)とKubernetes(minikube)を接続するtips](https://zenn.dev/kacky/articles/1e9e3a9b6306d9#docker-compose%E5%81%B4)
 
 <br>
 
@@ -360,7 +360,7 @@ ff02::2 ip6-allrouters
 
 (フロントエンドの Pod が Keycloak の Pod との間で認証処理を実施するときは、実際には `localhost` でリクエストを送信する必要があり、なぜかよくわからない...)
 
-> - https://minikube.sigs.k8s.io/docs/handbook/host-access/
+> - [Host access \| minikube](https://minikube.sigs.k8s.io/docs/handbook/host-access/)
 
 <br>
 
@@ -414,7 +414,7 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -N docker@127.0.
 $ minikube service istio-ingressgateway --url -n istio-ingress
 ```
 
-> - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
+> - [Accessing apps \| minikube](https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel)
 
 #### ▼ `kubectl port-forward` コマンドによる接続
 
@@ -442,7 +442,7 @@ $ minikube tunnel
 $ curl http://<minikube tunnelコマンドでLoadBalancer Serviceに割り当てられるIPアドレス>:<LoadBalancer Serviceが待ち受けるポート番号>
 ```
 
-> - https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel
+> - [Accessing apps \| minikube](https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-service-with-tunnel)
 
 ### ClusterIP Service の場合
 
@@ -483,8 +483,8 @@ timeout 5
 $ curl http://foo.minikube
 ```
 
-> - https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/
+> - [Ingress DNS \| minikube](https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/)
+> - [ローカル開発環境準備 - 実行環境(minikube) \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/app/minikube/)
 
 #### ▼ `kubectl port-forward` コマンドによる接続
 

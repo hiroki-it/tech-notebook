@@ -9,7 +9,7 @@ description: OIDC＠SSOの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ OAuth をベースとして、認証フェーズを追加し、認証/認可を�
 
 そのため、OAuth の一種ともいえる。
 
-> - https://baasinfo.net/?p=4418
+> - [digglue inc.](https://baasinfo.net/?p=4418)
 > - https://tech.yyh-gl.dev/blog/id_token_and_access_token/
 
 <br>
@@ -34,7 +34,7 @@ OAuth をベースとして、認証フェーズを追加し、認証/認可を�
 
 認証フェーズの委譲先の ID プロバイダー、ログインしたい Web サイトから構成される。
 
-> - https://baasinfo.net/?p=4418
+> - [digglue inc.](https://baasinfo.net/?p=4418)
 > - https://tech.yyh-gl.dev/blog/id_token_and_access_token/
 
 <br>
@@ -55,7 +55,7 @@ OAuth をベースとして、認証フェーズを追加し、認証/認可を�
 | `address` | アカウントの住所             |
 | ...       | ...                          |
 
-> - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim
+> - [OAuth & OpenID Connect 関連仕様まとめ #openid\_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
 
 <br>
 
@@ -78,8 +78,8 @@ ID プロバイダーは、取得したクレームグループに対応した�
 | `address`                      | `address`                                                                                                                                                                        |
 | ユーザー定義のクレームグループ | 自由にクレームを設定できる                                                                                                                                                       |
 
-> - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim
-> - https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims
+> - [OAuth & OpenID Connect 関連仕様まとめ #openid\_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
+> - [Final: OpenID Connect Core 1.0 incorporating errata set 2](https://openid.net/specs/openid-connect-core-1_0.html#ScopeClaims)
 
 #### ▼ `claims` パラメーター
 
@@ -87,8 +87,8 @@ ID プロバイダーは、取得したクレームグループに対応した�
 
 クレームの指定の仕方が複雑らしい...
 
-> - https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim
-> - https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter
+> - [OAuth & OpenID Connect 関連仕様まとめ #openid\_connect - Qiita](https://qiita.com/TakahikoKawasaki/items/185d34814eb9f7ac7ef3#15-%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%A0-claim)
+> - [Final: OpenID Connect Core 1.0 incorporating errata set 2](https://openid.net/specs/openid-connect-core-1_0.html#ClaimsParameter)
 
 <br>
 
@@ -98,7 +98,7 @@ ID プロバイダーは、取得したクレームグループに対応した�
 
 ID トークンの情報 (署名部分、有効期限、発行元など) から、ID トークンの署名を検証できる。
 
-> - https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE
+> - [JWTの署名とか検証って結局なんやねん！を簡単に解説！ #初心者 - Qiita](https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE)
 
 <br>
 
@@ -114,8 +114,8 @@ ID トークンの情報 (署名部分、有効期限、発行元など) から�
 - 認可サーバーから取得した共通鍵
 - 認可サーバーのイントロスペクションエンドポイント
 
-> - https://zenn.dev/ringo_to/articles/5cf471e5e48b9a#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E6%A4%9C%E8%A8%BC%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%AF%E4%BA%8C%E3%81%A4%E3%81%AE%E6%96%B9%E6%B3%95%E3%81%8C%E3%81%82%E3%82%8B
-> - https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE
+> - [イチカラOAuthとOIDC理解#4 - アクセストークンを検証してみる](https://zenn.dev/ringo_to/articles/5cf471e5e48b9a#%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%81%AE%E6%A4%9C%E8%A8%BC%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%AF%E4%BA%8C%E3%81%A4%E3%81%AE%E6%96%B9%E6%B3%95%E3%81%8C%E3%81%82%E3%82%8B)
+> - [JWTの署名とか検証って結局なんやねん！を簡単に解説！ #初心者 - Qiita](https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE)
 
 <br>
 
@@ -144,10 +144,10 @@ OIDC では、OAuth とは異なり、アクセストークン (JWT 仕様かど
 
 ![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
 
-> - https://auth0.com/jp/intro-to-iam/what-is-oauth-2
-> - https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe
-> - https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-3
-> - https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B
+> - [OAuth 2.0 とは何か、どのように役立つのか？ - Auth0](https://auth0.com/jp/intro-to-iam/what-is-oauth-2)
+> - [一番分かりやすい OpenID Connect の説明 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe)
+> - [Auth0 を使って ID Token と Access Token の違いをざっくり理解する \| DevelopersIO](https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-3)
+> - [OAuth認証の脆弱性とOpenIDConnectでなぜ解決されるのか分かりやすく解説](https://zenn.dev/uma002/articles/152fcef798730b#%E3%81%AA%E3%81%9C%E8%84%86%E5%BC%B1%E6%80%A7%E3%81%8C%E7%94%9F%E3%81%BE%E3%82%8C%E3%82%8B%E3%81%AE%E3%81%8B)
 
 <br>
 
@@ -162,7 +162,7 @@ OAuth の認可コードフローと仕組みが似ており、アクセスト�
 ![oidc_codeflow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_codeflow.jpeg)
 
 > - https://wagby.com/wdn8/juser-oidc.html
-> - https://qiita.com/nabeatsu/items/380058915629c0ce795e#authorization-code-%E3%83%95%E3%83%AD%E3%83%BC
+> - [OpenID Connect入門（Authorization Codeフローを画面遷移と共に説明します） #OIDC - Qiita](https://qiita.com/nabeatsu/items/380058915629c0ce795e#authorization-code-%E3%83%95%E3%83%AD%E3%83%BC)
 > - https://ysyau.medium.com/spa-and-rest-api-application-friendly-oauth-2-0-oidc-login-flow-80ba927ff47d
 
 <br>
@@ -177,7 +177,7 @@ OAuth の認可コードフローと仕組みが似ており、アクセスト�
 $ curl http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/auth?response_type=code&client_id=rp1&redirect_uri=http://<アプリケーションのドメイン>/oidc&scope=openid
 ```
 
-> - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
+> - [curlとKeycloakではじめるOpenID Connect #openid\_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
 
 #### ▼ 認可レスポンス受信
 
@@ -187,7 +187,7 @@ Keycloak は認可レスポンスを受信し、アプリに対してリダイ�
 $ curl http://<アプリケーションのドメイン>/oidc?session_state= ... &code=<認証コード>
 ```
 
-> - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
+> - [curlとKeycloakではじめるOpenID Connect #openid\_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
 
 #### ▼ トークンリクエスト送信
 
@@ -211,7 +211,7 @@ $ curl -d "grant_type=authorization_code&code=<認証コード>&redirect_uri=htt
 }
 ```
 
-> - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
+> - [curlとKeycloakではじめるOpenID Connect #openid\_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
 
 #### ▼ ユーザー情報の取得
 
@@ -227,7 +227,7 @@ $ curl -H "Authorization: Bearer <アクセストークン>" http://<Keycloakの
 }
 ```
 
-> - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
+> - [curlとKeycloakではじめるOpenID Connect #openid\_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
 
 #### ▼ アクセストークンの再作成
 
@@ -237,7 +237,7 @@ $ curl -H "Authorization: Bearer <アクセストークン>" http://<Keycloakの
 $ curl -X POST -d "client_id=rp1&client_secret=<Client Secret>&grant_type=refresh_token&refresh_token=<リフレッシュトークン>&scope=openid profile" http://<Keycloakのドメイン>/realms/oidc-sample/protocol/openid-connect/token
 ```
 
-> - https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow
+> - [curlとKeycloakではじめるOpenID Connect #openid\_connect - Qiita](https://qiita.com/t_okkan/items/3478191bbff888a54235#authorization-code-flow)
 
 <br>
 
@@ -245,7 +245,7 @@ $ curl -X POST -d "client_id=rp1&client_secret=<Client Secret>&grant_type=refres
 
 アクセストークンを `Authorization` ヘッダーで運べる。
 
-> - https://github.com/oauth2-proxy/oauth2-proxy/issues/843
+> - [Forward access token from OIDC login as Authorization Bearer token. · Issue #843 · oauth2-proxy/oauth2-proxy · GitHub](https://github.com/oauth2-proxy/oauth2-proxy/issues/843)
 
 <br>
 
@@ -263,7 +263,7 @@ SSO をログアウトする仕組みのこと。
 
 #### ▼ シングル
 
-> - https://zenn.dev/putcho/articles/61bd31a33f8441#rp-initiated-logout
+> - [OpenID Connect RP-Initiated Logout メモ](https://zenn.dev/putcho/articles/61bd31a33f8441#rp-initiated-logout)
 
 #### ▼ グローバル
 
@@ -275,14 +275,14 @@ SSO をログアウトする仕組みのこと。
 
 #### ▼ シングル
 
-> - https://zenn.dev/putcho/articles/61bd31a33f8441#oidc-%E3%81%AE-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%A2%E9%80%A3%E3%81%AE%E4%BB%95%E6%A7%98
+> - [OpenID Connect RP-Initiated Logout メモ](https://zenn.dev/putcho/articles/61bd31a33f8441#oidc-%E3%81%AE-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%A2%E9%80%A3%E3%81%AE%E4%BB%95%E6%A7%98)
 
 #### ▼ グローバル
 
 フロントエンドのブラウザが、ID プロバイダーのログアウトエンドポイント (`<IDプロバイダーのドメイン>/<IDプロバイダーによる>`) に POST リクエストを送信し、すべてのアプリケーションからログアウトする。
 
-> - https://auth0.com/blog/jp-the-not-so-easy-art-of-logging-out/#--------
-> - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - [簡単ではないログアウトの技術 - Auth0のログイン/ログアウト](https://auth0.com/blog/jp-the-not-so-easy-art-of-logging-out/#--------)
+> - [Keycloakのシングル・ログアウト(SLO)についてのまとめ #OIDC - Qiita](https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 <br>
 
@@ -290,7 +290,7 @@ SSO をログアウトする仕組みのこと。
 
 #### ▼ シングル
 
-> - https://zenn.dev/putcho/articles/61bd31a33f8441#oidc-%E3%81%AE-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%A2%E9%80%A3%E3%81%AE%E4%BB%95%E6%A7%98
+> - [OpenID Connect RP-Initiated Logout メモ](https://zenn.dev/putcho/articles/61bd31a33f8441#oidc-%E3%81%AE-%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E9%96%A2%E9%80%A3%E3%81%AE%E4%BB%95%E6%A7%98)
 
 #### ▼ グローバル
 
@@ -300,7 +300,7 @@ ID プロバイダーが、バックエンドのいずれかのアプリケー�
 
 また、フロントエンドのブラウザがバックエンドのアプリケーションにログアウトリクエストを送信し、これが起点となる場合もバックチャネルである。
 
-> - https://auth0.com/blog/jp-the-not-so-easy-art-of-logging-out/#--------
-> - https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6
+> - [簡単ではないログアウトの技術 - Auth0のログイン/ログアウト](https://auth0.com/blog/jp-the-not-so-easy-art-of-logging-out/#--------)
+> - [Keycloakのシングル・ログアウト(SLO)についてのまとめ #OIDC - Qiita](https://qiita.com/yagiaoskywalker/items/2e73fdc3976190e8b7ad#%E5%90%84%E8%B5%B7%E7%82%B9%E3%81%94%E3%81%A8%E3%81%AEslo%E3%82%B7%E3%83%BC%E3%82%B1%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
 <br>

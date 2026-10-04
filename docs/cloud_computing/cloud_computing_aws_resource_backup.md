@@ -9,7 +9,7 @@ description: Backup＠AWSの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -23,7 +23,7 @@ description: Backup＠AWSの知見を記録しています。
 
 ### 対応 AWS リソース
 
-> - https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources
+> - [What is AWS Backup? - AWS Backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources)
 
 | AWS リソースの種類 | バックアップ内容                                                                     |
 | ------------------ | ------------------------------------------------------------------------------------ |
@@ -44,7 +44,7 @@ description: Backup＠AWSの知見を記録しています。
 
 メインリージョンにバックアップを作成し、障害用リージョンにそのコピーを作成する。
 
-> - https://qiita.com/shinon_uk/items/5ee4dcf360b8d5c88779
+> - [AWS Backupを用いてAuroraクロスリージョンコピーしてみる(Terraform) #AWS - Qiita](https://qiita.com/shinon_uk/items/5ee4dcf360b8d5c88779)
 > - https://techblog.finatext.com/aws-cross-region-cross-account-backup-5952a990c1c1
 
 <br>

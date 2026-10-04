@@ -9,7 +9,7 @@ description: AWS Load Balancer Controller＠Ingress Controllerの知見を記録
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -27,10 +27,10 @@ aws-load-balancer-controller は、etcd 上の Ingress のマニフェストを�
 
 ![aws_load_balancer_controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png)
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/service/nlb/
+> - [How it works - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/)
+> - [NLB - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/service/nlb/)
 > - https://blog.recruit.co.jp/rmp/infrastructure/post-21469/
-> - https://aws.amazon.com/cn/blogs/china/use-aws-load-balancer-controller-s-targetgroupbinding-function-to-realize-flexible-load-balancer-management/
+> - [使用 AWS Load Balancer Controller 的 TargetGroupBinding 功能实现灵活的负载均衡器管理 \| 亚马逊AWS官方博客](https://aws.amazon.com/cn/blogs/china/use-aws-load-balancer-controller-s-targetgroupbinding-function-to-realize-flexible-load-balancer-management/)
 
 <br>
 
@@ -76,8 +76,8 @@ NodePort Service (ポート番号はランダムでよい)
 Pod
 ```
 
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4
-> - https://qiita.com/mksamba/items/c0e41a2a63e62a50aea3#21-%E5%85%AC%E9%96%8B%E5%AF%BE%E8%B1%A1%E3%81%AEdeploymentservice%E3%81%AE%E4%BD%9C%E6%88%90
+> - [Ingress - AWS Load Balancer Controller \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%A2%E3%83%97%E3%83%AA%E3%81%AE%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4)
+> - [【初心者】Amazon EKSを使ってみる #3 (AWS Load Balancer Controller によるIngressの利用) #eks - Qiita](https://qiita.com/mksamba/items/c0e41a2a63e62a50aea3#21-%E5%85%AC%E9%96%8B%E5%AF%BE%E8%B1%A1%E3%81%AEdeploymentservice%E3%81%AE%E4%BD%9C%E6%88%90)
 
 <br>
 
@@ -93,7 +93,7 @@ LoadBalancer Service を作成すると、Amazon EKS 内の cloud-controller-man
 
 ### TargetGroupBinding パターン
 
-> - https://aws.amazon.com/jp/blogs/news/patterns-for-targetgroupbinding-with-aws-load-balancer-controller/
+> - [AWS Load Balancer Controller を利用した TargetGroupBinding のパターン \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/patterns-for-targetgroupbinding-with-aws-load-balancer-controller/)
 
 <br>
 
@@ -111,7 +111,7 @@ Ingress で作成する AWS ALB をパブリックサブネットで作成する
 
 またパブリックサブネットまたはプライベートサブネットのいずれであっても `kubernetes.io/cluster/<Amazon EKS Clusterの名前>` (値は、複数の Amazon EKS Cluster で共有するサブネットの場合は `shared`、単一の Amazon EKS Cluster の場合は `owned` とする) を設定する。
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/
+> - [Subnet Discovery - AWS LoadBalancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.1/deploy/subnet_discovery/)
 > - https://repost.aws/knowledge-center/eks-load-balancer-controller-subnets
 
 #### ▼ Terraform の公式モジュールの場合
@@ -182,7 +182,7 @@ IRSA により、ServiceAccount に AWS の IAM ロールが紐づく。
 
 ![aws_load_balancer_controller_irsa](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_irsa.png)
 
-> - https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B
+> - [【EKS】AWS Load Balancer Controller導入手順 #kubernetes - Qiita](https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B)
 
 #### ▼ `awscli` コマンド、`eksctl` コマンドの場合
 
@@ -198,8 +198,8 @@ AWS Load Balancer Controller のセットアップのうち、AWS 側で必要�
 $ curl -L https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.0/docs/install/iam_policy.json -o iam_policy.json
 ```
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html
-> - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#setup-iam-for-serviceaccount
+> - [Route internet traffic with AWS Load Balancer Controller - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html)
+> - [aws-load-balancer-controller/helm/aws-load-balancer-controller at main · kubernetes-sigs/aws-load-balancer-controller · GitHub](https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#setup-iam-for-serviceaccount)
 
 `(2)`
 
@@ -282,7 +282,7 @@ secrets:
   - name: foo-aws-load-balancer-controller-token-****
 ```
 
-> - https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/
+> - [Ingress - AWS Load Balancer Controller \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/)
 
 <br>
 
@@ -332,8 +332,8 @@ $ helm install <Helmリリース名> <チャートリポジトリ名>/aws-load-b
 AWS Load Balancer controller installed!
 ```
 
-> - https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller
-> - https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr
+> - [eks-charts/stable/aws-load-balancer-controller at master · aws/eks-charts · GitHub](https://github.com/aws/eks-charts/tree/master/stable/aws-load-balancer-controller)
+> - [aws-load-balancer-controller/helm/aws-load-balancer-controller at main · kubernetes-sigs/aws-load-balancer-controller · GitHub](https://github.com/kubernetes-sigs/aws-load-balancer-controller/tree/main/helm/aws-load-balancer-controller#tldr)
 
 `(2)`
 
@@ -377,7 +377,7 @@ aws-load-balancer-controller   2/2     2            0           22m
 
      以下の条件を満たす必要がある。
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html
+> - [Route application and HTTP traffic with Application Load Balancers - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html)
 
 <br>
 
@@ -425,7 +425,7 @@ spec:
           protocol: TCP
 ```
 
-> - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/configurations/#controller-command-line-flags
+> - [Configurations - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/configurations/#controller-command-line-flags)
 
 <br>
 
@@ -576,6 +576,6 @@ spec:
 
 ![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
 
-> - https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding
+> - [Workshop Studio](https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding)
 
 <br>

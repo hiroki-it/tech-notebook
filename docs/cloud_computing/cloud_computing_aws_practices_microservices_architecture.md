@@ -9,7 +9,7 @@ description: マイクロサービスアーキテクチャ＠AWSの知見を記�
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -43,7 +43,7 @@ Kubernetes Cluster 上でこれを稼働させることが推奨である。
 
 ![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-fargate_microservices.png)
 
-> - https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/
+> - [AI-Powered Martech Solutions \| TangoCode](https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/)
 
 #### ▼ Amazon Route 53 と AWS Cloud Map によるサービス検出
 
@@ -55,14 +55,14 @@ AWS CloudMap を使用して、Amazon ECS タスクの宛先情報を動的に A
 
 > - https://practical-aws.dev/p/ecs-service-discovery/
 > - https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
-> - https://dev.classmethod.jp/articles/ecs-service-discovery/
-> - https://aws.amazon.com/jp/builders-flash/202409/web-app-architecture-design-pattern/
+> - [ECSのサービスディスカバリーが東京にやってきて、コンテナ間通信の実装が簡単になりました！ \| DevelopersIO](https://dev.classmethod.jp/articles/ecs-service-discovery/)
+> - [Web アプリケーションにおける Amazon ECS / AWS Fargate アーキテクチャデザインパターン - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202409/web-app-architecture-design-pattern/)
 
 #### ▼ Amazon ECS Service Connect によるサービス検出
 
 ![aws_ecs_service-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ecs_service-connect.png)
 
-> - https://aws.amazon.com/jp/builders-flash/202409/web-app-architecture-design-pattern/
+> - [Web アプリケーションにおける Amazon ECS / AWS Fargate アーキテクチャデザインパターン - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202409/web-app-architecture-design-pattern/)
 
 <br>
 
@@ -76,7 +76,7 @@ AWS Lambda をマイクロサービス単位で稼働させる。
 
 Kubernetes Cluster 上でこれを稼働させることが推奨である。
 
-> - https://aws.amazon.com/jp/blogs/news/comparing-design-approaches-for-building-serverless-microservices/
+> - [サーバーレスマイクロサービスを構築するための設計アプローチの比較 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/comparing-design-approaches-for-building-serverless-microservices/)
 
 <br>
 
@@ -92,7 +92,7 @@ RESTful-API を Amazon API Gateway で構築する。
 
 マイクロサービスのドメインロジックを持つ。
 
-> - https://qiita.com/__DASHi__/items/268062f0dba0e93170f2
+> - [【初心者向け】AWS Lambda Layerの作成方法をわかりやすく解説【Python3.9】 #lambda - Qiita](https://qiita.com/__DASHi__/items/268062f0dba0e93170f2)
 
 #### ▼ レイヤーサービス
 
@@ -100,7 +100,7 @@ RESTful-API を Amazon API Gateway で構築する。
 
 Lambda Layer を使用し、サービスコンポーネントがレイヤーコンポーネントを読み込めるようにする。
 
-> - https://qiita.com/__DASHi__/items/268062f0dba0e93170f2
+> - [【初心者向け】AWS Lambda Layerの作成方法をわかりやすく解説【Python3.9】 #lambda - Qiita](https://qiita.com/__DASHi__/items/268062f0dba0e93170f2)
 
 #### ▼ 認証マイクロサービス
 
@@ -110,7 +110,7 @@ AWS Cognito ユーザープールを使用する。
 
 ![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
 
-> - https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway
+> - [API GatewayのオーソライザーにCognitoを使用してみた \| DevelopersIO](https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway)
 
 #### ▼ 認可マイクロサービス
 
@@ -120,7 +120,7 @@ AWS Cognito オーソライザーを使用する。
 
 ![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
 
-> - https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway
+> - [API GatewayのオーソライザーにCognitoを使用してみた \| DevelopersIO](https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway)
 
 <br>
 
@@ -138,7 +138,7 @@ Amazon RDS には DB 接続の上限数があり、前段に Amazon RDS プロ�
 
 ![aws_rds-proxy_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy_lambda.png)
 
-> - https://qiita.com/teradonburi/items/86400ea82a65699672ad
+> - [Lambda+RDSはアンチパターン #AWS - Qiita](https://qiita.com/teradonburi/items/86400ea82a65699672ad)
 
 <br>
 

@@ -9,7 +9,7 @@ description: ArgoCD＠CDツールの知見を記録しています。
 
 本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。
 
-> - https://hiroki-it.github.io/tech-notebook/
+> - [【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/)
 
 <br>
 
@@ -34,10 +34,10 @@ ArgoCD は、argocd-server、repo-server、redis-server、dex-server、applicati
 
 ### repo-server とは
 
-> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - [【ArgoCD🐙】ArgoCDのマイクロサービスアーキテクチャと自動デプロイの仕組み - 好きな技術を布教したい 😗](https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115)
 > - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
-> - https://weseek.co.jp/tech/95/#i-7
+> - [GitOpsをArgoCDで学ぶ](https://weseek.co.jp/tech/95/#i-7)
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 > - https://www.amazon.co.jp/dp/1617297275
 
@@ -47,9 +47,9 @@ ArgoCD は、argocd-server、repo-server、redis-server、dex-server、applicati
 
 ### application-controller とは
 
-> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - [【ArgoCD🐙】ArgoCDのマイクロサービスアーキテクチャと自動デプロイの仕組み - 好きな技術を布教したい 😗](https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115)
 > - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
-> - https://weseek.co.jp/tech/95/#i-7
+> - [GitOpsをArgoCDで学ぶ](https://weseek.co.jp/tech/95/#i-7)
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 > - https://www.amazon.co.jp/dp/1617297275
 
@@ -57,18 +57,18 @@ ArgoCD は、argocd-server、repo-server、redis-server、dex-server、applicati
 
 ### GitOps エンジン
 
-> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
-> - https://github.com/argoproj/gitops-engine/tree/master/pkg
-> - https://github.com/argoproj/argo-cd/tree/master/pkg/apiclient
+> - [【ArgoCD🐙】ArgoCDのマイクロサービスアーキテクチャと自動デプロイの仕組み - 好きな技術を布教したい 😗](https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115)
+> - [gitops-engine/pkg at master · argoproj/gitops-engine · GitHub](https://github.com/argoproj/gitops-engine/tree/master/pkg)
+> - [argo-cd/pkg/apiclient at master · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/tree/master/pkg/apiclient)
 
 <br>
 
 ### 他のコンポーネントとの通信
 
-> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - [【ArgoCD🐙】ArgoCDのマイクロサービスアーキテクチャと自動デプロイの仕組み - 好きな技術を布教したい 😗](https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115)
 > - https://www.ibm.com/blogs/solutions/jp-ja/container-cocreation-center-23/
 > - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
-> - https://weseek.co.jp/tech/95/#i-7
+> - [GitOpsをArgoCDで学ぶ](https://weseek.co.jp/tech/95/#i-7)
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 
 <br>
@@ -77,15 +77,15 @@ ArgoCD は、argocd-server、repo-server、redis-server、dex-server、applicati
 
 ApplicationSet リソースの Reconciliation を実行する。
 
-> - https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/
+> - [Introduction - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/)
 
 <br>
 
 ## 05. redis-server
 
-> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
-> - https://weseek.co.jp/tech/95/
-> - https://blog.manabusakai.com/2021/04/argo-cd-cache/
+> - [【ArgoCD🐙】ArgoCDのマイクロサービスアーキテクチャと自動デプロイの仕組み - 好きな技術を布教したい 😗](https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115)
+> - [GitOpsをArgoCDで学ぶ](https://weseek.co.jp/tech/95/)
+> - [Argo CD はどのように manifest をキャッシュしているのか？ \| はったりエンジニアの備忘録](https://blog.manabusakai.com/2021/04/argo-cd-cache/)
 > - https://medium.com/geekculture/argocd-deploy-your-first-application-414d2a1692cf
 
 <br>
@@ -94,11 +94,11 @@ ApplicationSet リソースの Reconciliation を実行する。
 
 ### dex-server とは
 
-> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
-> - https://github.com/dexidp/dex#connectors
-> - https://weseek.co.jp/tech/95/
-> - https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295
-> - https://zenn.dev/onsd/articles/a3ea24b01da413
+> - [【ArgoCD🐙】ArgoCDのマイクロサービスアーキテクチャと自動デプロイの仕組み - 好きな技術を布教したい 😗](https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115)
+> - [GitHub - dexidp/dex: OpenID Connect (OIDC) identity and OAuth 2.0 provider with pluggable connectors · GitHub](https://github.com/dexidp/dex#connectors)
+> - [GitOpsをArgoCDで学ぶ](https://weseek.co.jp/tech/95/)
+> - [Kubernetes の認証と dex #kubernetes - Qiita](https://qiita.com/superbrothers/items/1822dbc5fc94e1ab5295)
+> - [dexidp/dex と AuthProxy Connector を試す](https://zenn.dev/onsd/articles/a3ea24b01da413)
 
 <br>
 
@@ -107,14 +107,14 @@ ApplicationSet リソースの Reconciliation を実行する。
 ### argocd-server とは
 
 > - https://akuity.io/blog/unveil-the-secret-ingredients-of-continuous-delivery-at-enterprise-scale-with-argocd-kubecon-china-2021/#Argo-CD-Architecture
-> - https://weseek.co.jp/tech/95/#i-7
+> - [GitOpsをArgoCDで学ぶ](https://weseek.co.jp/tech/95/#i-7)
 > - https://medium.com/@outlier.developer/getting-started-with-argocd-for-gitops-kubernetes-deployments-fafc2ad2af0
 
 <br>
 
 ### 他のコンポーネントとの通信
 
-> - https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115
+> - [【ArgoCD🐙】ArgoCDのマイクロサービスアーキテクチャと自動デプロイの仕組み - 好きな技術を布教したい 😗](https://hiroki-hasegawa.hatenablog.jp/entry/2023/05/02/145115)
 
 <br>
 
@@ -143,7 +143,7 @@ ApplicationSet リソースの Reconciliation を実行する。
 
 Argo Rollouts をダッシュボードで操作する場合、執筆時点 (2023/05/24) で拡張機能としてインストールする必要がある。
 
-> - https://github.com/argoproj-labs/rollout-extension
+> - [GitHub - argoproj-labs/rollout-extension: Argo Rollout visualization in Argo CD Web UI · GitHub](https://github.com/argoproj-labs/rollout-extension)
 
 <br>
 
@@ -163,7 +163,7 @@ image-updater は、アプリリポジトリからイメージリポジトリに
 
 その後、マニフェストリポジトリに書き換えをコミットする。
 
-> - https://zenn.dev/nekoshita/articles/02c1e59a487fb4
+> - [ArgoCD Image Updaterを導入しました（導入方法、メリット、デメリット）](https://zenn.dev/nekoshita/articles/02c1e59a487fb4)
 
 <br>
 
@@ -199,8 +199,8 @@ $ kubectl -it exec foo-argocd-repo-server \
     -- bash -c "cd /tmp/_argocd-repo/<URLに基づくUUID> && helm template . -f foo-values.yaml | nl"
 ```
 
-> - https://github.com/argoproj/argo-cd/issues/1446#issue-432385992
-> - https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359
+> - ['argocd-repo-server' don't cleanup helm temp files · Issue #1446 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/1446#issue-432385992)
+> - [argocd-repo-server cannot connect to the in-cluster · Issue #5145 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/5145#issuecomment-754931359)
 
 <br>
 
@@ -230,7 +230,7 @@ Application さえ削除しなければ、Kubernetes リソースをダッシュ
 
 注意点として、マニフェストに何かを追加するような変更は差分として認識されないため、Sync しても元に戻らない。
 
-> - https://qiita.com/masahata/items/e22b0d30b77251b941d8
+> - [ArgoCDで差分が無視されるパターン、その他tips #ArgoCD - Qiita](https://qiita.com/masahata/items/e22b0d30b77251b941d8)
 
 <br>
 
@@ -268,7 +268,7 @@ Application さえ削除しなければ、Kubernetes リソースをダッシュ
 
 : ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。
 
-> - https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html
+> - [Kubernetes活用への道のり 第1回 IaC編 \| オブジェクトの広場](https://www.ogis-ri.co.jp/otc/hiroba/technical/kubernetes_use/part1.html)
 
 #### ▼ テンプレート構成管理ツールを使用した場合
 
@@ -301,7 +301,7 @@ Application さえ削除しなければ、Kubernetes リソースをダッシュ
 : ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。
 
 > - https://medium.com/riskified-technology/how-to-build-a-ci-cd-process-that-deploys-on-kubernetes-and-focuses-on-developer-independence-7dc4c20984a
-> - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes
+> - [Azure DevOpsと Helm を使用した Kubernetes 上のマイクロサービス CI/CD パイプライン - Azure Architecture Center \| Microsoft Learn](https://docs.microsoft.com/ja-jp/azure/architecture/microservices/ci-cd-kubernetes)
 
 <br>
 
@@ -321,7 +321,7 @@ Application さえ削除しなければ、Kubernetes リソースをダッシュ
 
 : ArgoCD がマニフェストの変更を検知し、Kubernetes にプルする。
 
-> - https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1
+> - [GitHubActions + ArgoCD + HELMを使ったGitOps手法でGKEへアプリをデプロイ #helm - Qiita](https://qiita.com/Nishi53454367/items/4a4716dfbeebd70295d1)
 
 <br>
 
