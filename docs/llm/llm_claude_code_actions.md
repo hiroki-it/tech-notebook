@@ -31,33 +31,58 @@ description: Claude Code Actions＠LLMの知見を記録しています。
 
 ## 02. セットアップ
 
-### GitLab
+### GitHub
+
+Issue や PR に `@claude この問題を調査してください` とコメントすると、Action がコメント本文を依頼として取り込み、結果を同じスレッドに返信する。
+修正を依頼した場合、Issue では変更ブランチと PR 作成リンクを用意し、開いている PR ではそのブランチを更新する。
+事前に `/install-github-app` で Claude の GitHub App と `ANTHROPIC_API_KEY` secret を設定し、以下のワークフローを `.github/workflows/claude.yml` としてデフォルトブランチに配置する。
 
 ```yaml
-stages:
-  - ai
+name: Claude Code
 
-claude:
-  stage: ai
-  image: node:24-alpine3.21
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "web"'
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-  variables:
-    GIT_STRATEGY: fetch
-  before_script:
-    - apk add --no-cache git curl bash
-    - curl -fsSL https://claude.ai/install.sh | bash
-    # インストール先を PATH に追加する
-    - export PATH="$HOME/.local/bin:$PATH"
-  script:
-    - >
-      claude
-      -p "${AI_FLOW_INPUT:-リポジトリを確認し、改善が必要な箇所を報告してください}"
-      --permission-mode acceptEdits
-      --allowedTools "Bash Read Edit Write"
+on:
+  issue_comment:
+    types: [created]
+
+# 既定のトークン権限を無効化し、ジョブごとに必要な権限を追加する。
+permissions: {}
+
+concurrency:
+  group: claude-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  claude:
+    # メンションを含む、許可された投稿者の新規コメントだけを処理する。
+    if: >-
+      contains(github.event.comment.body, '@claude') &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),
+               github.event.comment.author_association)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      # ClaudeのGitHub App認証に使うOIDCトークンの取得を許可する。
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # Git設定にGitHubトークンを保存しない。
+          persist-credentials: false
+      - name: Respond to Claude mention
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # ユーザーが投稿した「@claude ...」のコメント全文を、依頼のプロンプトとして受け取る。
+          # ActionがIssue・PRの参考データと依頼を取り込み、Claudeへ渡す。
+          # promptは指定せず、メンションへの応答モードを使用する。
+          trigger_phrase: '@claude'
+          # CLI引数で、エージェントの最大ターン数を指定する。
+          claude_args: '--max-turns 50'
 ```
 
-> - [Claude Code GitLab CI/CD - Claude Code Docs](https://code.claude.com/docs/ja/gitlab-ci-cd)
-
-<br>
+> - [Claude Code Action](https://github.com/anthropics/claude-code-action)
+> - [Capabilities & Limitations](https://github.com/anthropics/claude-code-action/blob/main/docs/capabilities-and-limitations.md)
